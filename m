@@ -1,72 +1,125 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH 5/6] ASoC: cdn-dp: Add cdn DP codec driver
-Date: Fri, 27 May 2016 21:23:12 +0100
-Message-ID: <20160527202312.GB29837@sirena.org.uk>
-References: <1464345942-4795-1-git-send-email-zyw@rock-chips.com>
- <1464345942-4795-6-git-send-email-zyw@rock-chips.com>
+From: Shuyu Wei <wsy2220@gmail.com>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Sat, 28 May 2016 14:43:48 +0800
+Message-ID: <20160528064348.GA19649@debian-dorm>
+References: <20160518225529.GA18671@electric-eye.fr.zoreil.com>
+ <573E2D0C.604@gmx.de>
+ <20160520003145.GA22420@electric-eye.fr.zoreil.com>
+ <20160521160910.GA14945@debian-dorm>
+ <5740E82F.8040903@gmx.de>
+ <20160522091742.GA8681@debian-dorm>
+ <57419853.9050701@gmx.de>
+ <20160522223659.GB5086@electric-eye.fr.zoreil.com>
+ <5743A9DD.8010202@gmx.de>
+ <5744EA24.7060806@gmx.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6083020064919794152=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1464345942-4795-6-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jacob Siverskog <jacob-EZCvousvhKUZux3j3Bed6dkegs52MxvZ@public.gmane.org>, Bard Liao <bardliao-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, Richard Fitzgerald <rf-yzvPICuk2AATkU/dhu1WVueM+bqZidxxQQ4Iyu8u01E@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, anish kumar <yesanishhere-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, "Damien.Horsley" <Damien.Horsley-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, Charles Keepax <ckeepax-yzvPICuk2AATkU/dhu1WVueM+bqZidxxQQ4Iyu8u01E@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Oder Chiou <oder_chiou-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5744EA24.7060806@gmx.de>
+Sender: netdev-owner@vger.kernel.org
+To: Lino Sanfilippo <LinoSanfilippo@gmx.de>
+Cc: Francois Romieu <romieu@fr.zoreil.com>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, al.kochet@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
+On Wed, May 25, 2016 at 01:56:20AM +0200, Lino Sanfilippo wrote:
+> Francois, Shuyu,
+> 
+> this is the patch with the discussed changes.
+> 
+> Shuyu it would be great if you could test this one. If it passes
+> and there are no further objections I will resend it as a regular patch
+> (including commit message, etc.) to the mailing list.
+> 
+> 
+> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+> index a3a9392..ec656b3 100644
+> --- a/drivers/net/ethernet/arc/emac_main.c
+> +++ b/drivers/net/ethernet/arc/emac_main.c
+> @@ -153,18 +153,29 @@ static void arc_emac_tx_clean(struct net_device *ndev)
+>  {
+>  	struct arc_emac_priv *priv = netdev_priv(ndev);
+>  	struct net_device_stats *stats = &ndev->stats;
+> +	unsigned int curr = priv->txbd_curr;
+>  	unsigned int i;
+>  
+> +	/* Make sure buffers and txbd_curr are consistent */
+> +	smp_rmb();
+> +
+>  	for (i = 0; i < TX_BD_NUM; i++) {
+>  		unsigned int *txbd_dirty = &priv->txbd_dirty;
+>  		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
+>  		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
+> -		struct sk_buff *skb = tx_buff->skb;
+> -		unsigned int info = le32_to_cpu(txbd->info);
+> +		unsigned int info;
+> +		struct sk_buff *skb;
+>  
+> -		if ((info & FOR_EMAC) || !txbd->data || !skb)
+> +		if (*txbd_dirty == curr)
+>  			break;
+>  
+> +		info = le32_to_cpu(txbd->info);
+> +
+> +		if (info & FOR_EMAC)
+> +			break;
+> +
+> +		skb = tx_buff->skb;
+> +
+>  		if (unlikely(info & (DROP | DEFR | LTCL | UFLO))) {
+>  			stats->tx_errors++;
+>  			stats->tx_dropped++;
+> @@ -195,8 +206,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
+>  		*txbd_dirty = (*txbd_dirty + 1) % TX_BD_NUM;
+>  	}
+>  
+> -	/* Ensure that txbd_dirty is visible to tx() before checking
+> -	 * for queue stopped.
+> +	/* Ensure that txbd_dirty is visible to tx() and we see the most recent
+> +	 * value for txbd_curr.
+>  	 */
+>  	smp_mb();
+>  
+> @@ -680,27 +691,24 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+>  	dma_unmap_len_set(&priv->tx_buff[*txbd_curr], len, len);
+>  
+>  	priv->txbd[*txbd_curr].data = cpu_to_le32(addr);
+> -
+> -	/* Make sure pointer to data buffer is set */
+> -	wmb();
+> +	priv->tx_buff[*txbd_curr].skb = skb;
+>  
+>  	skb_tx_timestamp(skb);
+>  
+>  	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
+>  
+> -	/* Make sure info word is set */
+> +	/* 1. Make sure that with respect to tx_clean everything is set up
+> +	 * properly before we advance txbd_curr.
+> +	 * 2. Make sure writes to DMA descriptors are completed before we inform
+> +	 * the hardware.
+> +	 */
+>  	wmb();
+>  
+> -	priv->tx_buff[*txbd_curr].skb = skb;
+> -
+>  	/* Increment index to point to the next BD */
+>  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
+>  
+> -	/* Ensure that tx_clean() sees the new txbd_curr before
+> -	 * checking the queue status. This prevents an unneeded wake
+> -	 * of the queue in tx_clean().
+> -	 */
+> -	smp_mb();
+> +	/* Ensure tx_clean() sees the updated value of txbd_curr */
+> +	smp_wmb();
+>  
+>  	if (!arc_emac_tx_avail(priv)) {
+>  		netif_stop_queue(ndev);
 
---===============6083020064919794152==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="DKU6Jbt7q3WqK7+M"
-Content-Disposition: inline
-
-
---DKU6Jbt7q3WqK7+M
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, May 27, 2016 at 06:45:41PM +0800, Chris Zhong wrote:
-> codec driver get some interfaces from cdn-dp driver, than using those
-> to set DP audio formats, corresponding to alsa formats.
-
-I'm not seeing anything Rockchip specific in here...  DisplayPort is
-backwards compatible with HDMI, shouldn't this be using the existing
-hdmi-codec code?
-
---DKU6Jbt7q3WqK7+M
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXSKyvAAoJECTWi3JdVIfQPFUH/279S+euRZtxQ99ytiWz2/Ey
-fFE2/gBYPwGIeGad3t5emZroeNevh9acOKTaPuLdvj2LcRZTSzm1YI6gHG7cP+dz
-qvKWnULhscpAsO4OztpqFXlD9OUP/dUPB21J5SUH0x0zFO8CwIwqaJS6btm7gEP0
-UpoAojHFDNbZbt5S0jUwOIyL2EUWeAL2WURQ7tlq7JhLvxZHxP5KldDrKu4m0+1U
-RuW6A7zivghh6F30oUMbmI1mxDQZeIzbYU+/Dqysk8BcEhe2j+1lOx2PaQxjl1np
-yVMWv714uVUEwSSsBzitqaYtIzOyZf8sEW9A+Ktw0UwKcJBDOYanDPFmXh6IuRk=
-=cUMZ
------END PGP SIGNATURE-----
-
---DKU6Jbt7q3WqK7+M--
-
-
---===============6083020064919794152==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6083020064919794152==--
+After some stress testing, it worked well most of the time.
+But there is a chance that it may get stuck when I use 2 nc process
+to send TCP packects at full speed.  Only when a new rx packet 
+arrive can trigger it to run again. This happens only once per several
+hours. No problem in UDP mode.  I'm not sure if it's related to tx code in
+the driver.
