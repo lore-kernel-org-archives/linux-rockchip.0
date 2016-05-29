@@ -1,36 +1,56 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH 05/54] MAINTAINERS: Add file patterns for rockchip device
- tree bindings
-Date: Sun, 29 May 2016 11:21:38 +0200
-Message-ID: <CAMuHMdVYd01kWvN5Gv_2RtPXFX2VP0nOx7Ys6=em35rk0HoOmA@mail.gmail.com>
-References: <1463907991-7916-1-git-send-email-geert@linux-m68k.org>
-	<1463907991-7916-6-git-send-email-geert@linux-m68k.org>
-	<1575416.jfSztnP7S8@phil>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH v2 1/2] mmc: dw_mmc: remove redundant of set_bit and
+ clear_bit
+Date: Mon, 30 May 2016 08:18:20 +0900
+Message-ID: <574B78BC.10700@samsung.com>
+References: <CGME20160527063715epcas1p1584a3a6340d55ca1d912dc93f2d89bab@epcas1p1.samsung.com>
+ <1464331000-16230-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1575416.jfSztnP7S8@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1464331000-16230-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Shawn,
 
-On Sun, May 22, 2016 at 11:27 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Am Sonntag, 22. Mai 2016, 11:05:42 schrieb Geert Uytterhoeven:
->> Submitters of device tree binding documentation may forget to CC
->> the subsystem maintainer if this is missing.
->
-> The "N: rockchip" line at the bottom of the block catches this nicely
-> already (also just verified with a get_maintainer.pl -f call), so I don't
-> think this new more explicit line is really necessary?
+Applied on my repository.
+Thanks!
 
-Oh right, thanks! I (my bashery) only looked at direct references to
-Documentation/devicetree/bindings. I complely missed the rare users of "N:".
+Best Regards,
+Jaehoon Chung
 
-Will drop this patch.
+On 05/27/2016 03:36 PM, Shawn Lin wrote:
+> dw_mci_get_cd have already dealt with these for
+> both of internal card-detect and gpio card-detect.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2: None
+> 
+>  drivers/mmc/host/dw_mmc.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 829a6ee..cb30e91 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -2616,10 +2616,7 @@ static int dw_mci_init_slot(struct dw_mci *host, unsigned int id)
+>  		mmc->max_seg_size = mmc->max_req_size;
+>  	}
+>  
+> -	if (dw_mci_get_cd(mmc))
+> -		set_bit(DW_MMC_CARD_PRESENT, &slot->flags);
+> -	else
+> -		clear_bit(DW_MMC_CARD_PRESENT, &slot->flags);
+> +	dw_mci_get_cd(mmc);
+>  
+>  	ret = mmc_add_host(mmc);
+>  	if (ret)
+> 
 
-Gr{oetje,eeting}s,
-
-                        Geert
