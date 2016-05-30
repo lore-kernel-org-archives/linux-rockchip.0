@@ -1,62 +1,45 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
- MAX98357A/RT5514/DA7219
-Date: Mon, 30 May 2016 17:03:57 +0100
-Message-ID: <20160530160357.GQ29837@sirena.org.uk>
-References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com>
- <574BEC9D.50007@rock-chips.com>
+From: Lino Sanfilippo <LinoSanfilippo@gmx.de>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Mon, 30 May 2016 23:41:22 +0200
+Message-ID: <574CB382.7030102@gmx.de>
+References: <20160518225529.GA18671@electric-eye.fr.zoreil.com>
+ <573E2D0C.604@gmx.de> <20160520003145.GA22420@electric-eye.fr.zoreil.com>
+ <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
+ <20160522091742.GA8681@debian-dorm> <57419853.9050701@gmx.de>
+ <20160522223659.GB5086@electric-eye.fr.zoreil.com> <5743A9DD.8010202@gmx.de>
+ <5744EA24.7060806@gmx.de> <20160528064348.GA19649@debian-dorm>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="4T94Hejb80K+e1gX"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <574BEC9D.50007-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20160528064348.GA19649@debian-dorm>
+Sender: netdev-owner@vger.kernel.org
+To: Shuyu Wei <wsy2220@gmail.com>
+Cc: Francois Romieu <romieu@fr.zoreil.com>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, al.kochet@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Shuyu,
 
---4T94Hejb80K+e1gX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 28.05.2016 08:43, Shuyu Wei wrote:
+> 
+> After some stress testing, it worked well most of the time.
+> But there is a chance that it may get stuck when I use 2 nc process
+> to send TCP packects at full speed.  Only when a new rx packet 
+> arrive can trigger it to run again. This happens only once per several
+> hours. No problem in UDP mode.  I'm not sure if it's related to tx code in
+> the driver.
+> 
 
-On Mon, May 30, 2016 at 03:32:45PM +0800, Xing Zheng wrote:
-> Hi,
-> Could any guys help me to review this patch?
+This sounds strange. One reason I could imagine for such an issue is that 
+occassionally tx completion interrupts get lost: 
+In this case skbs may not be freed (or be freed too late) which may result in a TCP
+stream getting stuck, because each skb belongs to a socket and there is a limit for
+the allowed number of skbs per socket. TCP would only proceed if the number of pending 
+skbs falls under this limit again but since the tx completion irq is lost, the only thing 
+that could trigger the tx completion handler is another irq, e.g for a received packet.
+At least this could explain what you observed.
 
-Please don't send content free pings and please allow a reasonable time
-for review.  People get busy, go on holiday, attend conferences and so=20
-on so unless there is some reason for urgency (like critical bug fixes)
-please allow at least a couple of weeks for review.  If there have been
-review comments then people may be waiting for those to be addressed.
-Sending content free pings just adds to the mail volume (if they are
-seen at all) and if something has gone wrong you'll have to resend the
-patches anyway.
+Did you see the same issues with the patch before (the one that, as you wrote,
+survived a whole night of stress testing)?
 
-Please don't top post, reply in line with needed context.  This allows
-readers to readily follow the flow of conversation and understand what
-you are talking about and also helps ensure that everything in the
-discussion is being addressed.
-
---4T94Hejb80K+e1gX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXTGRsAAoJECTWi3JdVIfQcQEH/iGNKiR1qqrhtazM8FmtZ36m
-HTse1ltlUcHkAo8VrHvp92rt6tGNjFm6oK/YI8DA0F1Ei8NIJ9yybQKSzzhp1uhG
-EoXeGSx42UZ85QIJstJCjbt8/MGYBlDELSAl4YS3AeKf5FYWYvObexIPWuZYklJe
-8wkO/wmljEJDFmBj0wiI78c+zNpFLQuCOYN2fBxnlXkgk0jNSirYibZ23HwwPyJq
-Nr9sTObnEhglEv7fZwVUnImcYI8vsw+bsMh9Y0aAYBYMipOuls15qmsNx/o2uePH
-/dDpn2Epr364u/xmPjcP3NMe+SappLdz2o46gdnWFYiTpJZfDDTIAV3bust2lOA=
-=DWvB
------END PGP SIGNATURE-----
-
---4T94Hejb80K+e1gX--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Lino
