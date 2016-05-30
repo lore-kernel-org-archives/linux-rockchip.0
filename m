@@ -1,66 +1,148 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: drop "arm,amba-bus" in favor of "simple-bus" part 2
-Date: Mon, 30 May 2016 12:19:21 +0200
-Message-ID: <3072536.5uGCiTBfGN@diego>
-References: <1464574353-31477-1-git-send-email-yamada.masahiro@socionext.com>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 1/2] Documentation: add binding description of Rockchip
+ PCIe controller
+Date: Mon, 30 May 2016 12:08:36 +0100
+Message-ID: <20160530120836.290f0d16@arm.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+	<1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1464574353-31477-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+In-Reply-To: <1463740146-7106-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chanho Min <chanho.min-Hm3cg6mZ9cc@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 30. Mai 2016, 11:12:33 schrieb Masahiro Yamada:
-> Tree-wide replacement was done by commit 2ef7d5f342c1 (ARM, ARM64:
-> dts: drop "arm,amba-bus" in favor of "simple-bus"), but we have some
-> new users of "arm,amba-bus" at Linux 4.7-rc1.  Eliminate them now.
+On Fri, 20 May 2016 18:29:06 +0800
+Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+
+> This patch add some required and optional properties for Rockchip
+> PCIe controller. Also we add a example for how to use it.
 > 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-
-For the Rockchip part,
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
 > ---
 > 
-> In order to not leave these compatible strings for the release,
-> is it OK to apply this patch for Linux 4.7 ?
+>  .../devicetree/bindings/pci/rockchip-pcie.txt      | 93 ++++++++++++++++++++++
+>  1 file changed, 93 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie.txt
 > 
-> 
-> 
->  arch/arm64/boot/dts/lg/lg1312.dtsi       | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/lg/lg1312.dtsi
-> b/arch/arm64/boot/dts/lg/lg1312.dtsi index 3a4e9a2..fbafa24 100644
-> --- a/arch/arm64/boot/dts/lg/lg1312.dtsi
-> +++ b/arch/arm64/boot/dts/lg/lg1312.dtsi
-> @@ -125,7 +125,7 @@
->  		#size-cells = <1>;
->  		#interrupts-cells = <3>;
-> 
-> -		compatible = "arm,amba-bus";
-> +		compatible = "simple-bus";
->  		interrupt-parent = <&gic>;
->  		ranges;
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 46f325a..d7f8e06 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -163,7 +163,7 @@
->  	};
-> 
->  	amba {
-> -		compatible = "arm,amba-bus";
-> +		compatible = "simple-bus";
->  		#address-cells = <2>;
->  		#size-cells = <2>;
->  		ranges;
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> new file mode 100644
+> index 0000000..69a0804
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -0,0 +1,93 @@
+> +* Rockchip AXI PCIe Root Port Bridge DT description
+> +
+> +Required properties:
+> +- #address-cells: Address representation for root ports, set to <3>
+> +- #size-cells: Size representation for root ports, set to <2>
+> +- #interrupt-cells: specifies the number of cells needed to encode an
+> +		interrupt source. The value must be 1.
+> +- compatible: Should contain "rockchip,rk3399-pcie"
+> +- reg: Two register ranges as listed in the reg-names property
+> +- reg-names: The first entry must be "axi-base" for the core registers
+> +	The second entry must be "apb-base" for the client pcie registers
+> +- clocks: Must contain an entry for each entry in clock-names.
+> +		See ../clocks/clock-bindings.txt for details.
+> +- clock-names: Must include the following entries:
+> +	- "aclk_pcie"
+> +	- "aclk_perf_pcie"
+> +	- "hclk_pcie"
+> +	- "clk_pciephy_ref"
+> +- interrupts: Three interrupt entries must be specified.
+> +- interrupt-names: Must include the following names
+> +	- "pcie-sys"
+> +	- "pcie-legacy"
+> +	- "pcie-client"
+> +- resets: Must contain five entries for each entry in reset-names.
+> +	   See ../reset/reset.txt for details.
+> +- reset-names: Must include the following names
+> +	- "phy-rst"
+> +	- "core-rst"
+> +	- "mgmt-rst"
+> +	- "mgmt-sticky-rst"
+> +	- "pipe-rst"
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +- pcie-conf: offset of pcie client block for  configuration
+> +- pcie-status: offset of pcie client block for status
+> +- pcie-laneoff: offset of pcie client block for lane
+> +- msi-parent: Link to the hardware entity that serves as the Message
+> +- pinctrl-names : The pin control state names
+> +- pinctrl-0: The "default" pinctrl state
+> +- interrupt-map-mask and interrupt-map: standard PCI properties
+> +- interrupt-controller: identifies the node as an interrupt controller
+> +
+> +Optional Property:
+> +- ep-gpios: contain the entry for pre-reset gpio
+> +- num-lanes: number of lanes to use
+> +- assigned-clocks, assigned-clock-parents and assigned-clock-rates: standard
+> +		   clock bindings. See ../clock/clock-bindings.txt
+> +
+> +Example:
+> +
+> +pci_express: axi-pcie@f8000000 {
+> +	#address-cells = <3>;
+> +	#size-cells = <2>;
+> +	compatible = "rockchip,rk3399-pcie";
+> +	clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
+> +		 <&cru PCLK_PCIE>, <&cru SCLK_PCIEPHY_REF>;
+> +	clock-names = "aclk_pcie", "aclk_perf_pcie",
+> +		      "hclk_pcie", "clk_pciephy_ref";
+> +	bus-range = <0x0 0x1>;
+> +	interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>,
+> +		     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
+> +	interrupt-names: "pcie-sys", "pcie-legacy", "pcie-client";
+> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+> +	assigned-clock-rates = <100000000>;
+> +	ep-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+> +	ranges = < 0x82000000 0 0xfa000000 0x0 0xfa000000 0 0x600000
+> +		   0x81000000 0 0xfa600000 0x0 0xfa600000 0 0x100000 >;
+> +	num-lanes = <4>;
+> +	reg = < 0x0 0xf8000000 0x0 0x2000000 >, < 0x0 0xfd000000 0x0 0x1000000 >;
+> +	reg-name = "axi-base", "apb-base";
+> +	resets = <&cru SRST_PCIEPHY>, <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
+> +		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>;
+> +	reset-names = "phy-rst", "core-rst", "mgmt-rst", "mgmt-sticky-rst", "pipe-rst";
+> +	rockchip,grf = <&grf>;
+> +	pcie-conf = <0xe220>;
+> +	pcie-status = <0xe2a4>;
+> +	pcie-laneoff = <0xe214>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreq>;
+> +	msi-parent = <&its>;
 
+We've moved away from bare msi-parent for the ITS (notice that the
+binding mandates #msi-cells = <1>). So what you need here is an msi-map
+(as described in Documentation/devicetree/bindings/pci/pci-msi.txt).
+
+Do you have an IOMMU (or some other remapping HW) between the RC and the
+GIC ITS? If so, yo may have to describe the mappings between the PCIe
+RID and the ITS DevID in this msi-map.
+
+> +	#interrupt-cells = <1>;
+> +	interrupt-map-mask = <0 0 0 7>;
+> +	interrupt-map = <0 0 0 1 &pcie_0 1>,
+> +			<0 0 0 2 &pcie_0 2>,
+> +			<0 0 0 3 &pcie_0 3>,
+> +			<0 0 0 4 &pcie_0 4>;
+> +	pcie_0: interrupt-controller {
+> +		interrupt-controller;
+> +		#address-cells = <0>;
+> +		#interrupt-cells = <1>;
+> +	};
+> +
+> +};
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny.
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
