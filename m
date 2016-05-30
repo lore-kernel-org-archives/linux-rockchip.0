@@ -1,149 +1,71 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: add binding description of Rockchip
- PCIe controller
-Date: Mon, 30 May 2016 12:08:36 +0100
-Message-ID: <20160530120836.290f0d16@arm.com>
-References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
-	<1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
+From: Arnaud Pouliquen <arnaud.pouliquen@st.com>
+Subject: Re: [RESEND PATCH 5/6] ASoC: cdn-dp: Add cdn DP codec
+	driver
+Date: Mon, 30 May 2016 14:26:01 +0200
+Message-ID: <574C3159.3010507@st.com>
+References: <1464345942-4795-1-git-send-email-zyw@rock-chips.com>
+ <1464345942-4795-6-git-send-email-zyw@rock-chips.com>
+ <20160527202312.GB29837@sirena.org.uk> <20160530033321.GD16910@localhost>
+ <574BEB15.20704@rock-chips.com> <574BF028.70102@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1463740146-7106-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <574BF028.70102@ti.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jyri Sarha <jsarha@ti.com>, Chris Zhong <zyw@rock-chips.com>, Vinod Koul <vinod.koul@intel.com>, Mark Brown <broonie@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
+Cc: Oder Chiou <oder_chiou@realtek.com>, "Damien.Horsley" <Damien.Horsley@imgtec.com>, Michael Trimarchi <michael@amarulasolutions.com>, "heiko@sntech.de" <heiko@sntech.de>, anish kumar <yesanishhere@gmail.com>, "yzq@rock-chips.com" <yzq@rock-chips.com>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, "dianders@chromium.org" <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Jacob Siverskog <jacob@teenage.engineering>, Philipp Zabel <p.zabel@pengutronix.de>, Bard Liao <bardliao@realtek.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, "tfiga@chromium.org" <tfiga@chromium.org>, Richard Fitzgerald <rf@opensource.wolfsonmicro.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 20 May 2016 18:29:06 +0800
-Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
 
-> This patch add some required and optional properties for Rockchip
-> PCIe controller. Also we add a example for how to use it.
+
+On 05/30/2016 09:47 AM, Jyri Sarha wrote:
+> On 05/30/16 10:26, Chris Zhong wrote:
+>> Hi Mark & Vinod
+>>
+>> Thanks for your suggestion, I am going to use this HDMI codec driver.
+>> But it seems no one use it, currently.
+>>
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> There is three users working on getting their code accepted in main
+> line. I have been trying to get my tda998x patches reviewed for some
+> time now, but not lately, because I have been busy with my other tasks.
 > 
-> ---
+> The two others are Philipp Zabel and Arnaud Pouliquen, both in cc. Not
+> sure if they actually have some patches already queued for mainline.
+Hi,
+hdmi_codec is now available in DRM_next branch, this should allow us to
+push DRM patches in mainline...
+
+Best Regards
+Arnaud
 > 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      | 93 ++++++++++++++++++++++
->  1 file changed, 93 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> Best regards,
+> Jyri
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> new file mode 100644
-> index 0000000..69a0804
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -0,0 +1,93 @@
-> +* Rockchip AXI PCIe Root Port Bridge DT description
-> +
-> +Required properties:
-> +- #address-cells: Address representation for root ports, set to <3>
-> +- #size-cells: Size representation for root ports, set to <2>
-> +- #interrupt-cells: specifies the number of cells needed to encode an
-> +		interrupt source. The value must be 1.
-> +- compatible: Should contain "rockchip,rk3399-pcie"
-> +- reg: Two register ranges as listed in the reg-names property
-> +- reg-names: The first entry must be "axi-base" for the core registers
-> +	The second entry must be "apb-base" for the client pcie registers
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +		See ../clocks/clock-bindings.txt for details.
-> +- clock-names: Must include the following entries:
-> +	- "aclk_pcie"
-> +	- "aclk_perf_pcie"
-> +	- "hclk_pcie"
-> +	- "clk_pciephy_ref"
-> +- interrupts: Three interrupt entries must be specified.
-> +- interrupt-names: Must include the following names
-> +	- "pcie-sys"
-> +	- "pcie-legacy"
-> +	- "pcie-client"
-> +- resets: Must contain five entries for each entry in reset-names.
-> +	   See ../reset/reset.txt for details.
-> +- reset-names: Must include the following names
-> +	- "phy-rst"
-> +	- "core-rst"
-> +	- "mgmt-rst"
-> +	- "mgmt-sticky-rst"
-> +	- "pipe-rst"
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +- pcie-conf: offset of pcie client block for  configuration
-> +- pcie-status: offset of pcie client block for status
-> +- pcie-laneoff: offset of pcie client block for lane
-> +- msi-parent: Link to the hardware entity that serves as the Message
-> +- pinctrl-names : The pin control state names
-> +- pinctrl-0: The "default" pinctrl state
-> +- interrupt-map-mask and interrupt-map: standard PCI properties
-> +- interrupt-controller: identifies the node as an interrupt controller
-> +
-> +Optional Property:
-> +- ep-gpios: contain the entry for pre-reset gpio
-> +- num-lanes: number of lanes to use
-> +- assigned-clocks, assigned-clock-parents and assigned-clock-rates: standard
-> +		   clock bindings. See ../clock/clock-bindings.txt
-> +
-> +Example:
-> +
-> +pci_express: axi-pcie@f8000000 {
-> +	#address-cells = <3>;
-> +	#size-cells = <2>;
-> +	compatible = "rockchip,rk3399-pcie";
-> +	clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
-> +		 <&cru PCLK_PCIE>, <&cru SCLK_PCIEPHY_REF>;
-> +	clock-names = "aclk_pcie", "aclk_perf_pcie",
-> +		      "hclk_pcie", "clk_pciephy_ref";
-> +	bus-range = <0x0 0x1>;
-> +	interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>,
-> +		     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-> +	interrupt-names: "pcie-sys", "pcie-legacy", "pcie-client";
-> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
-> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
-> +	assigned-clock-rates = <100000000>;
-> +	ep-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
-> +	ranges = < 0x82000000 0 0xfa000000 0x0 0xfa000000 0 0x600000
-> +		   0x81000000 0 0xfa600000 0x0 0xfa600000 0 0x100000 >;
-> +	num-lanes = <4>;
-> +	reg = < 0x0 0xf8000000 0x0 0x2000000 >, < 0x0 0xfd000000 0x0 0x1000000 >;
-> +	reg-name = "axi-base", "apb-base";
-> +	resets = <&cru SRST_PCIEPHY>, <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
-> +		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>;
-> +	reset-names = "phy-rst", "core-rst", "mgmt-rst", "mgmt-sticky-rst", "pipe-rst";
-> +	rockchip,grf = <&grf>;
-> +	pcie-conf = <0xe220>;
-> +	pcie-status = <0xe2a4>;
-> +	pcie-laneoff = <0xe214>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreq>;
-> +	msi-parent = <&its>;
-
-We've moved away from bare msi-parent for the ITS (notice that the
-binding mandates #msi-cells = <1>). So what you need here is an msi-map
-(as described in Documentation/devicetree/bindings/pci/pci-msi.txt).
-
-Do you have an IOMMU (or some other remapping HW) between the RC and the
-GIC ITS? If so, yo may have to describe the mappings between the PCIe
-RID and the ITS DevID in this msi-map.
-
-> +	#interrupt-cells = <1>;
-> +	interrupt-map-mask = <0 0 0 7>;
-> +	interrupt-map = <0 0 0 1 &pcie_0 1>,
-> +			<0 0 0 2 &pcie_0 2>,
-> +			<0 0 0 3 &pcie_0 3>,
-> +			<0 0 0 4 &pcie_0 4>;
-> +	pcie_0: interrupt-controller {
-> +		interrupt-controller;
-> +		#address-cells = <0>;
-> +		#interrupt-cells = <1>;
-> +	};
-> +
-> +};
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> On 05/30/2016 11:33 AM, Vinod Koul wrote:
+>>> On Fri, May 27, 2016 at 09:23:12PM +0100, Mark Brown wrote:
+>>>> On Fri, May 27, 2016 at 06:45:41PM +0800, Chris Zhong wrote:
+>>>>> codec driver get some interfaces from cdn-dp driver, than using those
+>>>>> to set DP audio formats, corresponding to alsa formats.
+>>>> I'm not seeing anything Rockchip specific in here...  DisplayPort is
+>>>> backwards compatible with HDMI, shouldn't this be using the existing
+>>>> hdmi-codec code?
+>>>
+>>> Yup, typically only difference between the two would be programming the
+>>> info frame for DP or HDMI, otherwise it is pretty much same stuff...
+>>>
+>>> They should patch hdmi-codec for that, if that is not supported.
+>>>
+>>> Thanks
+>>
+>>
+> 
