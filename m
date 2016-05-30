@@ -1,66 +1,66 @@
-From: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Subject: [PATCH] arm64: dts: drop "arm,
- amba-bus" in favor of "simple-bus" part 2
-Date: Mon, 30 May 2016 11:12:33 +0900
-Message-ID: <1464574353-31477-1-git-send-email-yamada.masahiro@socionext.com>
+From: Vinod Koul <vinod.koul@intel.com>
+Subject: Re: [RESEND PATCH 5/6] ASoC: cdn-dp: Add cdn DP codec driver
+Date: Mon, 30 May 2016 09:03:21 +0530
+Message-ID: <20160530033321.GD16910@localhost>
+References: <1464345942-4795-1-git-send-email-zyw@rock-chips.com>
+ <1464345942-4795-6-git-send-email-zyw@rock-chips.com>
+ <20160527202312.GB29837@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Chanho Min <chanho.min-Hm3cg6mZ9cc@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="SLDf9lqlvOQaIe6s"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20160527202312.GB29837@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, Michael Trimarchi <michael@amarulasolutions.com>, Bard Liao <bardliao@realtek.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, anish kumar <yesanishhere@gmail.com>, Jacob Siverskog <jacob@teenage.engineering>, Richard Fitzgerald <rf@opensource.wolfsonmicro.com>, "Damien.Horsley" <Damien.Horsley@imgtec.com>, Oder Chiou <oder_chiou@realtek.com>, Jyri Sarha <jsarha@ti.com>, Caesar Wang <wxt@rock-chips.com>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Tree-wide replacement was done by commit 2ef7d5f342c1 (ARM, ARM64:
-dts: drop "arm,amba-bus" in favor of "simple-bus"), but we have some
-new users of "arm,amba-bus" at Linux 4.7-rc1.  Eliminate them now.
 
-Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
----
+--SLDf9lqlvOQaIe6s
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-In order to not leave these compatible strings for the release,
-is it OK to apply this patch for Linux 4.7 ?
+On Fri, May 27, 2016 at 09:23:12PM +0100, Mark Brown wrote:
+> On Fri, May 27, 2016 at 06:45:41PM +0800, Chris Zhong wrote:
+> > codec driver get some interfaces from cdn-dp driver, than using those
+> > to set DP audio formats, corresponding to alsa formats.
+>=20
+> I'm not seeing anything Rockchip specific in here...  DisplayPort is
+> backwards compatible with HDMI, shouldn't this be using the existing
+> hdmi-codec code?
 
 
+Yup, typically only difference between the two would be programming the
+info frame for DP or HDMI, otherwise it is pretty much same stuff...
 
- arch/arm64/boot/dts/lg/lg1312.dtsi       | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+They should patch hdmi-codec for that, if that is not supported.
 
-diff --git a/arch/arm64/boot/dts/lg/lg1312.dtsi b/arch/arm64/boot/dts/lg/lg1312.dtsi
-index 3a4e9a2..fbafa24 100644
---- a/arch/arm64/boot/dts/lg/lg1312.dtsi
-+++ b/arch/arm64/boot/dts/lg/lg1312.dtsi
-@@ -125,7 +125,7 @@
- 		#size-cells = <1>;
- 		#interrupts-cells = <3>;
- 
--		compatible = "arm,amba-bus";
-+		compatible = "simple-bus";
- 		interrupt-parent = <&gic>;
- 		ranges;
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 46f325a..d7f8e06 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -163,7 +163,7 @@
- 	};
- 
- 	amba {
--		compatible = "arm,amba-bus";
-+		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
- 		ranges;
--- 
-1.9.1
+Thanks
+--=20
+~Vinod
+
+--SLDf9lqlvOQaIe6s
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXS7SBAAoJEHwUBw8lI4NHOxYQAINJcZyGroE9Mlpe65uX1NFn
+RdHjXBZItMswel4tHS4FT1vPZajM42m5XNviCuwdu672l12bVycY59WskhsHCWh9
+zXkUI1JCogWSvQRHXXTwiOdUo9oMEwJFk+A+3ighS616TrYJ1rTkrLfOh0TcABoJ
+ea4Jw/e9QwLYc0ljejtX0MugDOQyAkvnP7Mv6vVhNCHCJQTh7W0mXnYjTfBp8t6B
+1679tGqTGOCQoCHnDWDQ5Oagr6JTr9qz5n1Kc9mML1orZY27CGFGo5S/la4fSpqS
+ZfE8Clxl3dIu8xVoaKlVTqd2lzfYu9KAnK72iAoqu6E30o4p/qTUTA3ardkeoCtq
+lkIoj80E7xoxSZWNM2UWlm2FNj84PMPZXS79+LLS8vBGVWTZBWN0oocby+kettJ4
+CIsajBpG4pAFSi2ubcATWlJToXMwVy1bEf27SoAB90PSpX31eISpmtPkJjdAbhSu
+FIJro20qur9rmCMPPWxPqj6UK6SUSatc0ejJrNU880wtXcY3GXrkUdQYToMUk9ba
+iy++UkE+2CfTHGYyWwW5N06d/PkUmqXFOJaRj/EF36Psnelbm8N3OhCjxoDMtkTE
+xJxP1yj3N7ZW4xzHHAupZxfa8UtdD8qLyOSvYRyMy/K7Fjv/vzz+rte8nACFKLnw
+ogOugGFQWdfUtSnfbcNM
+=01+U
+-----END PGP SIGNATURE-----
+
+--SLDf9lqlvOQaIe6s--
