@@ -1,68 +1,81 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/5] clocksource: rockchip: remove unnecessary clear irq
- before request_irq
-Date: Tue, 31 May 2016 10:03:37 -0700
-Message-ID: <CAD=FV=U5zqU0CMeg1dDTYHrRqWAxTQO_xk2T7p09GJuj-Fn9Gw@mail.gmail.com>
-References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
- <1464169802-6033-3-git-send-email-wxt@rock-chips.com> <574CC839.60608@linaro.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <574CC839.60608@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@google.com>, Stephen Barber <smbarber@google.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Eddie Cai <cf@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Julius Werner <jwerner@chromium.org>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "spi/rockchip: add the rk3036/rk3228/rk3368 to match for driver" to the spi tree
+Date: Tue, 31 May 2016 18:46:29 +0100
+Message-ID: <E1b7nkL-0006By-NN@debutante>
+References: <1463672824-15367-2-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1463672824-15367-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The patch
 
-On Mon, May 30, 2016 at 4:09 PM, Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
-> On 05/25/2016 11:49 AM, Caesar Wang wrote:
->>
->> From: Huang Tao <huangtao@rock-chips.com>
->>
->> rk_timer_interrupt_clear and rk_timer_disable is unnecessary before
->> request_irq. Timer should keep disabled before booting Linux.
->
->
-> That's true in the perfect world :/ Some version has u-boot letting the
-> timer with irq enabled, therefore as soon as request_irq is done, an irq
-> fires and leads to a kernel panic.
->
-> On the other side, this timer is not used on the other rockchip version than
-> rk3399 because of no need of a broadcast timer, so removing these two lines
-> may be acceptable.
->
-> Can try the changes with another board, eg rk3288 (and forcing to use this
-> timer). Can you do the test and confirm it does not break with different
-> version of u-boot ?
+   spi/rockchip: add the rk3036/rk3228/rk3368 to match for driver
 
-Actually, I'm not even sure that's true in a perfect world.  ;)  There
-are two main problems that might be lurking here:
+has been applied to the spi tree at
 
-1. On exynos5 devices I've worked with, the private timer (MCT)
-actually shared the same physical counter with the ARM Architected
-Timer.  IIRC stopping or resetting the MCT had the effect of stopping
-/ resetting the Arch Timer.  Is it the same for you?  As I understand
-it the Arch Timer isn't supposed to ever be stopped or reset.  If
-firmware left the timer stopped and the kernel happened to be compiled
-without support for the Rockchip timer (but had the Arch Timers) then
-things would be very broken.  Also the early kernel boot might be
-broken if the Arch Timer inits before the Rockchip timer.
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
 
-NOTE: If your timer and the Arch Timer are totally separate then point
-#1 is not important.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-2. Historically in Chrome OS there's been an unofficial agreement that
-the firmware would start its high speed timer as soon as possible at
-bootup and that this could be used to (roughly) measure the time
-between the start of firmware and the start of the kernel.  That means
-that the kernel was expecting the timer to actually be running when it
-started up.  Yup, this is a bit of a hack and I'm not sure it's
-terribly well documented, but it does provide a reason that firmware
-might have left the timer running.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
--Doug
+Thanks,
+Mark
+
+From aa29ea3df27dbba19ef59023d0f7330f2fdc58ae Mon Sep 17 00:00:00 2001
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Date: Fri, 20 May 2016 07:56:21 +0800
+Subject: [PATCH] spi/rockchip: add the rk3036/rk3228/rk3368 to match for
+ driver
+
+In gerenal, the "rockchip,rockchip-spi" string will match the dts
+that's great in spi driver. After all the most of rockchip SoCs ar
+same spi controller.
+
+Then, we should keep the old style to match the dts various.
+
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ drivers/spi/spi-rockchip.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index cd89682065b9..bead5bfcbb0c 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -892,9 +892,12 @@ static const struct dev_pm_ops rockchip_spi_pm = {
+ };
+ 
+ static const struct of_device_id rockchip_spi_dt_match[] = {
++	{ .compatible = "rockchip,rk3036-spi", },
+ 	{ .compatible = "rockchip,rk3066-spi", },
+ 	{ .compatible = "rockchip,rk3188-spi", },
++	{ .compatible = "rockchip,rk3228-spi", },
+ 	{ .compatible = "rockchip,rk3288-spi", },
++	{ .compatible = "rockchip,rk3368-spi", },
+ 	{ .compatible = "rockchip,rk3399-spi", },
+ 	{ },
+ };
+-- 
+2.8.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
