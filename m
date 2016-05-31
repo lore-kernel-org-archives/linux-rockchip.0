@@ -1,81 +1,111 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "spi/rockchip: add the rk3036/rk3228/rk3368 to match for driver" to the spi tree
-Date: Tue, 31 May 2016 18:46:29 +0100
-Message-ID: <E1b7nkL-0006By-NN@debutante>
-References: <1463672824-15367-2-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1463672824-15367-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB
+ Type-C PHY
+Date: Tue, 31 May 2016 12:57:17 -0700
+Message-ID: <CAD=FV=W9iFXX_BfORP-9=8tnu9Ea_f2k1wK_T2j=ZAVA9cFSwg@mail.gmail.com>
+References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com>
+ <1464328939-8073-3-git-send-email-zyw@rock-chips.com> <2812026.ptEv4ktvbn@phil>
+ <5748094F.6030204@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5748094F.6030204@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Chris,
 
-   spi/rockchip: add the rk3036/rk3228/rk3368 to match for driver
+On Fri, May 27, 2016 at 1:46 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+> Hi Heiko
+>
+>
+> On 05/27/2016 04:29 PM, Heiko Stuebner wrote:
+>>
+>> Hi Chris,
+>>
+>> Am Freitag, 27. Mai 2016, 14:02:15 schrieb Chris Zhong:
+>>>
+>>> This patch adds a binding that describes the Rockchip USB Type-C PHY
+>>> for rk3399.
+>>>
+>>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>>> ---
+>>>
+>>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 55
+>>> ++++++++++++++++++++++ 1 file changed, 55 insertions(+)
+>>>   create mode 100644
+>>> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
+>>> mode 100644
+>>> index 0000000..402f667
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>> @@ -0,0 +1,55 @@
+>>> +ROCKCHIP type-c PHY
+>>> +
+>>> +Required properties:
+>>> + - compatible: should be "rockchip,rk3399-typec-phy"
+>>> + - reg : Address and length of the usb phy control register set
+>>> + - rockchip,grf : phandle to the syscon managing the "general
+>>> +   register files"
+>>> + - clocks : phandle + clock specifier for the phy clocks
+>>> + - clock-names: string, clock name, must be "tcpdcore", "tcpdphy_ref";
+>>> + - resets : a list of phandle + reset specifier pairs
+>>> + - reset-names : string reset name, must be:
+>>> +                "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst"
 
-has been applied to the spi tree at
+In other contexts I believe Heiko has requested that a suffix like
+"_rst" not be present in the names of reset signals.  We already know
+that this is a list of reset names so the "_rst" is redundant.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+>>> + - #phy-cells: Must be 0.  See ./phy-bindings.txt for details.
+>>> + - rockchip,usb3phy*: phy registers embed in grf
+>>> +
+>>> +Example:
+>>> +       tcphy0: phy@ff7c0000 {
+>>> +               compatible = "rockchip,rk3399-typec-phy";
+>>> +               reg = <0x0 0xff7c0000 0x0 0x40000>;
+>>> +               #phy-cells = <0>;
+>>> +               rockchip,grf = <&grf>;
+>>> +               clocks = <&cru SCLK_UPHY0_TCPDCORE>,
+>>> +                        <&cru SCLK_UPHY0_TCPDPHY_REF>;
+>>> +               clock-names = "tcpdcore", "tcpdphy_ref";
+>>> +               resets = <&cru SRST_UPHY0>,
+>>> +                        <&cru SRST_UPHY0_PIPE_L00>,
+>>> +                        <&cru SRST_P_UPHY0_TCPHY>;
+>>> +               reset-names = "tcphy_rst", "tcphy_pipe_rst",
+>>> "uphy_tcphy_rst";
+>>> +               rockchip,usb3phy_con0 = <0x0e580 0 16>;
+>>> +               rockchip,usb3phy_con1 = <0x0e584 0 16>;
+>>> +               rockchip,usb3phy_con2 = <0x0e588 0 16>;
+>>> +               rockchip,usb3phy_status0 = <0x0e5c0 0 13>;
+>>> +               rockchip,usb3phy_status1 = <0x0e5c4 0 12>;
+>>
+>> please embedded this register data in the driver instead (not in the
+>> devicetree), matched against the compatible value.
+>> See Frank's usb2phy driver for reference if needed.
+>
+> Okay, I will move them to driver file next version, Thanks.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Just making sure: I saw a RESEND of your original version get posted,
+but nothing that addresses Heiko's comments, right?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Also: note that bindings should be sent in the patch _before_ the
+code.  So instead of:
+  [1] phy: Add USB Type-C PHY driver for rk3399
+  [2] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+  [3] drm/rockchip: vop: add cdn DP support for rk3399
+  [4] Documentation: bindings: add dt documentation for cdn DP controller
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+You should have:
+  [1] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+  [2] phy: Add USB Type-C PHY driver for rk3399
+  [3] Documentation: bindings: add dt documentation for cdn DP controller
+  [4] drm/rockchip: vop: add cdn DP support for rk3399
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
 
-Thanks,
-Mark
-
-From aa29ea3df27dbba19ef59023d0f7330f2fdc58ae Mon Sep 17 00:00:00 2001
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Date: Fri, 20 May 2016 07:56:21 +0800
-Subject: [PATCH] spi/rockchip: add the rk3036/rk3228/rk3368 to match for
- driver
-
-In gerenal, the "rockchip,rockchip-spi" string will match the dts
-that's great in spi driver. After all the most of rockchip SoCs ar
-same spi controller.
-
-Then, we should keep the old style to match the dts various.
-
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/spi/spi-rockchip.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index cd89682065b9..bead5bfcbb0c 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -892,9 +892,12 @@ static const struct dev_pm_ops rockchip_spi_pm = {
- };
- 
- static const struct of_device_id rockchip_spi_dt_match[] = {
-+	{ .compatible = "rockchip,rk3036-spi", },
- 	{ .compatible = "rockchip,rk3066-spi", },
- 	{ .compatible = "rockchip,rk3188-spi", },
-+	{ .compatible = "rockchip,rk3228-spi", },
- 	{ .compatible = "rockchip,rk3288-spi", },
-+	{ .compatible = "rockchip,rk3368-spi", },
- 	{ .compatible = "rockchip,rk3399-spi", },
- 	{ },
- };
--- 
-2.8.1
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Doug
