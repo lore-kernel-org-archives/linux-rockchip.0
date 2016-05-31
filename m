@@ -1,111 +1,214 @@
-From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
 Subject: Re: [PATCH 4/5] clocksource: rockchip: add support for rk3399 SoC
-Date: Tue, 31 May 2016 21:46:23 +0800
-Message-ID: <574D95AF.2020905@rock-chips.com>
+Date: Tue, 31 May 2016 16:06:30 +0200
+Message-ID: <574D9A66.4090209@linaro.org>
 References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
  <1464169802-6033-5-git-send-email-wxt@rock-chips.com>
- <574CCCB4.1030001@linaro.org>
+ <574CCCB4.1030001@linaro.org> <574D95AF.2020905@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <574CCCB4.1030001-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <574D95AF.2020905@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Huang, Tao" <huangtao@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsOgpPbiAyMDE25bm0MDXmnIgzMeaXpSAwNzoyOCwgRGFuaWVsIExlemNhbm8gd3Jv
-dGU6Cj4gT24gMDUvMjUvMjAxNiAxMTo1MCBBTSwgQ2Flc2FyIFdhbmcgd3JvdGU6Cj4+IEZyb206
-IEh1YW5nIFRhbyA8aHVhbmd0YW9Acm9jay1jaGlwcy5jb20+Cj4+Cj4+IFRoZSBDT05UUk9MIHJl
-Z2lzdGVyIG9mZnNldCBpcyBkaWZmZXJlbnQgZnJvbSBvbGQgU29Dcy4KPj4gRm9yIExpbnV4IGRy
-aXZlciwgdGhlcmUgYXJlIG5vdCBmdW5jdGlvbmFsIGNoYW5nZXMgYXQgYWxsLgo+PiBMZXQncyBj
-YWxsIGl0IHYyLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBIdWFuZyBUYW8gPGh1YW5ndGFvQHJvY2st
-Y2hpcHMuY29tPgo+PiBDYzogRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5v
-cmc+Cj4+IENjOiBUaG9tYXMgR2xlaXhuZXIgPHRnbHhAbGludXRyb25peC5kZT4KPj4gQ2M6IEhl
-aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+IFRlc3RlZC1ieTogSmlhbnF1biBYdSA8
-amF5Lnh1QHJvY2stY2hpcHMuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0
-QHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPiAKPiBUaGF0J3MgaGFja2lzaC4KWWVzOiggSSBibGFt
-ZWQgb3VyIElDIGd1eS4KPiAKPiBQbGVhc2UgY29uc2lkZXIgc29tZXRoaW5nIGxpa2U6Cj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xvY2tzb3VyY2Uvcm9ja2NoaXBfdGltZXIuYyAKPiBiL2Ry
-aXZlcnMvY2xvY2tzb3VyY2Uvcm9ja2NoaXBfdGltZXIuYwo+IGluZGV4IGI5OTFiMjguLmI2YmE2
-ZjkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9jbG9ja3NvdXJjZS9yb2NrY2hpcF90aW1lci5jCj4g
-KysrIGIvZHJpdmVycy9jbG9ja3NvdXJjZS9yb2NrY2hpcF90aW1lci5jCj4gQEAgLTE5LDcgKzE5
-LDggQEAKPiAKPiAgICNkZWZpbmUgVElNRVJfTE9BRF9DT1VOVDAJMHgwMAo+ICAgI2RlZmluZSBU
-SU1FUl9MT0FEX0NPVU5UMQkweDA0Cj4gLSNkZWZpbmUgVElNRVJfQ09OVFJPTF9SRUcJMHgxMAo+
-ICsjZGVmaW5lIFRJTUVSX0NPTlRST0xfUkVHMzI4OAkweDEwCj4gKyNkZWZpbmUgVElNRVJfQ09O
-VFJPTF9SRUczMzk5CTB4MUMKPiAgICNkZWZpbmUgVElNRVJfSU5UX1NUQVRVUwkweDE4Cj4gCj4g
-ICAjZGVmaW5lIFRJTUVSX0RJU0FCTEUJCTB4MAo+IEBAIC0zMSw2ICszMiw3IEBACj4gICBzdHJ1
-Y3QgYmNfdGltZXIgewo+ICAgCXN0cnVjdCBjbG9ja19ldmVudF9kZXZpY2UgY2U7Cj4gICAJdm9p
-ZCBfX2lvbWVtICpiYXNlOwo+ICsJdm9pZCBfX2lvbWVtICpjdHJsOwo+ICAgCXUzMiBmcmVxOwo+
-ICAgfTsKPiAKPiBAQCAtNDYsMTUgKzQ4LDIwIEBAIHN0YXRpYyBpbmxpbmUgdm9pZCBfX2lvbWVt
-ICpya19iYXNlKHN0cnVjdCAKPiBjbG9ja19ldmVudF9kZXZpY2UgKmNlKQo+ICAgCXJldHVybiBy
-a190aW1lcihjZSktPmJhc2U7Cj4gICB9Cj4gCj4gK3N0YXRpYyBpbmxpbmUgdm9pZCBfX2lvbWVt
-ICpya19jdHJsKHN0cnVjdCBjbG9ja19ldmVudF9kZXZpY2UgKmNlKQo+ICt7Cj4gKyAgICAgICAg
-cmV0dXJuIHJrX3RpbWVyKGNlKS0+Y3RybDsKPiArfQo+ICsKPiAgIHN0YXRpYyBpbmxpbmUgdm9p
-ZCBya190aW1lcl9kaXNhYmxlKHN0cnVjdCBjbG9ja19ldmVudF9kZXZpY2UgKmNlKQo+ICAgewo+
-IC0Jd3JpdGVsX3JlbGF4ZWQoVElNRVJfRElTQUJMRSwgcmtfYmFzZShjZSkgKyBUSU1FUl9DT05U
-Uk9MX1JFRyk7Cj4gKwl3cml0ZWxfcmVsYXhlZChUSU1FUl9ESVNBQkxFLCBya19jdHJsKGNlKSk7
-Cj4gICB9Cj4gCj4gICBzdGF0aWMgaW5saW5lIHZvaWQgcmtfdGltZXJfZW5hYmxlKHN0cnVjdCBj
-bG9ja19ldmVudF9kZXZpY2UgKmNlLCB1MzIgCj4gZmxhZ3MpCj4gICB7Cj4gICAJd3JpdGVsX3Jl
-bGF4ZWQoVElNRVJfRU5BQkxFIHwgVElNRVJfSU5UX1VOTUFTSyB8IGZsYWdzLAo+IC0JCSAgICAg
-ICBya19iYXNlKGNlKSArIFRJTUVSX0NPTlRST0xfUkVHKTsKPiArCQkgICAgICAgcmtfY3RybChj
-ZSkpOwo+ICAgfQo+IAo+ICAgc3RhdGljIHZvaWQgcmtfdGltZXJfdXBkYXRlX2NvdW50ZXIodW5z
-aWduZWQgbG9uZyBjeWNsZXMsCj4gQEAgLTE3OSw0ICsxODYsMTggQEAgb3V0X3VubWFwOgo+ICAg
-CWlvdW5tYXAoYmNfdGltZXIuYmFzZSk7Cj4gICB9Cj4gCj4gLUNMT0NLU09VUkNFX09GX0RFQ0xB
-UkUocmtfdGltZXIsICJyb2NrY2hpcCxyazMyODgtdGltZXIiLCBya190aW1lcl9pbml0KTsKPiAr
-c3RhdGljIHZvaWQgX19pbml0IHJrMzI4OF90aW1lcl9pbml0KHN0cnVjdCBkZXZpY2Vfbm9kZSAq
-bnApCj4gK3sKPiArCWJjX3RpbWVyLmN0cmwgPSBUSU1FUl9DT05UUk9MX1JFRzMyODg7Cj4gKwly
-a190aW1lcl9pbml0KG5wKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgX19pbml0IHJrMzM5OV90
-aW1lcl9pbml0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApCj4gK3sKPiArICAgICAgICBiY190aW1l
-ci5jdHJsID0gVElNRVJfQ09OVFJPTF9SRUczMzk5Owo+ICsJcmtfdGltZXJfaW5pdChucCk7Cj4g
-K30KPiArCj4gKwo+ICtDTE9DS1NPVVJDRV9PRl9ERUNMQVJFKHJrX3RpbWVyLCAicm9ja2NoaXAs
-cmszMjg4LXRpbWVyIiwgCj4gcmszMjg4X3RpbWVyX2luaXQpOwo+ICtDTE9DS1NPVVJDRV9PRl9E
-RUNMQVJFKHJrX3RpbWVyLCAicm9ja2NoaXAscmszMzk5LXRpbWVyIiwgCj4gcmszMzk5X3RpbWVy
-X2luaXQpOwo+IAo+IAoKSSB0aGluayB5b3UgbWVhbiB0aGlzIHBhdGNoIG90aGVyd2lzZSBjb21w
-aWxlIHdpbGwgZmFpbDoKQEAgLTE5LDcgKzE5LDggQEAKCiAjZGVmaW5lIFRJTUVSX0xPQURfQ09V
-TlQwCTB4MDAKICNkZWZpbmUgVElNRVJfTE9BRF9DT1VOVDEJMHgwNAotI2RlZmluZSBUSU1FUl9D
-T05UUk9MX1JFRwkweDEwCisjZGVmaW5lIFRJTUVSX0NPTlRST0xfUkVHMzI4OAkweDEwCisjZGVm
-aW5lIFRJTUVSX0NPTlRST0xfUkVHMzM5OQkweDFDCiAjZGVmaW5lIFRJTUVSX0lOVF9TVEFUVVMJ
-MHgxOAoKICNkZWZpbmUgVElNRVJfRElTQUJMRQkJMHgwCkBAIC0zMSw2ICszMiw3IEBACiBzdHJ1
-Y3QgYmNfdGltZXIgewogCXN0cnVjdCBjbG9ja19ldmVudF9kZXZpY2UgY2U7CiAJdm9pZCBfX2lv
-bWVtICpiYXNlOworCXUzMiBjdHJsOwogCXUzMiBmcmVxOwogfTsKCkBAIC00NiwxNSArNDgsMjAg
-QEAgc3RhdGljIGlubGluZSB2b2lkIF9faW9tZW0gKnJrX2Jhc2Uoc3RydWN0CmNsb2NrX2V2ZW50
-X2RldmljZSAqY2UpCiAJcmV0dXJuIHJrX3RpbWVyKGNlKS0+YmFzZTsKIH0KCitzdGF0aWMgaW5s
-aW5lIHZvaWQgX19pb21lbSAqcmtfY3RybChzdHJ1Y3QgY2xvY2tfZXZlbnRfZGV2aWNlICpjZSkK
-K3sKKwlyZXR1cm4gcmtfdGltZXIoY2UpLT5iYXNlICsgcmtfdGltZXIoY2UpLT5jdHJsOworfQor
-CiBzdGF0aWMgaW5saW5lIHZvaWQgcmtfdGltZXJfZGlzYWJsZShzdHJ1Y3QgY2xvY2tfZXZlbnRf
-ZGV2aWNlICpjZSkKIHsKLQl3cml0ZWxfcmVsYXhlZChUSU1FUl9ESVNBQkxFLCBya19iYXNlKGNl
-KSArIFRJTUVSX0NPTlRST0xfUkVHKTsKKwl3cml0ZWxfcmVsYXhlZChUSU1FUl9ESVNBQkxFLCBy
-a19jdHJsKGNlKSk7CiB9Cgogc3RhdGljIGlubGluZSB2b2lkIHJrX3RpbWVyX2VuYWJsZShzdHJ1
-Y3QgY2xvY2tfZXZlbnRfZGV2aWNlICpjZSwgdTMyCmZsYWdzKQogewogCXdyaXRlbF9yZWxheGVk
-KFRJTUVSX0VOQUJMRSB8IFRJTUVSX0lOVF9VTk1BU0sgfCBmbGFncywKLQkJICAgICAgIHJrX2Jh
-c2UoY2UpICsgVElNRVJfQ09OVFJPTF9SRUcpOworCQkgICAgICAgcmtfY3RybChjZSkpOwogfQoK
-IHN0YXRpYyB2b2lkIHJrX3RpbWVyX3VwZGF0ZV9jb3VudGVyKHVuc2lnbmVkIGxvbmcgY3ljbGVz
-LApAQCAtMTc5LDQgKzE4NiwxOSBAQCBvdXRfdW5tYXA6CiAJaW91bm1hcChiY190aW1lci5iYXNl
-KTsKIH0KCi1DTE9DS1NPVVJDRV9PRl9ERUNMQVJFKHJrX3RpbWVyLCAicm9ja2NoaXAscmszMjg4
-LXRpbWVyIiwgcmtfdGltZXJfaW5pdCk7CitzdGF0aWMgdm9pZCBfX2luaXQgcmszMjg4X3RpbWVy
-X2luaXQoc3RydWN0IGRldmljZV9ub2RlICpucCkKK3sKKwliY190aW1lci5jdHJsID0gVElNRVJf
-Q09OVFJPTF9SRUczMjg4OworCXJrX3RpbWVyX2luaXQobnApOworfQorCitzdGF0aWMgdm9pZCBf
-X2luaXQgcmszMzk5X3RpbWVyX2luaXQoc3RydWN0IGRldmljZV9ub2RlICpucCkKK3sKKwliY190
-aW1lci5jdHJsID0gVElNRVJfQ09OVFJPTF9SRUczMzk5OworCXJrX3RpbWVyX2luaXQobnApOwor
-fQorCitDTE9DS1NPVVJDRV9PRl9ERUNMQVJFKHJrMzI4OF90aW1lciwgInJvY2tjaGlwLHJrMzI4
-OC10aW1lciIsCisJCSAgICAgICByazMyODhfdGltZXJfaW5pdCk7CitDTE9DS1NPVVJDRV9PRl9E
-RUNMQVJFKHJrMzM5OV90aW1lciwgInJvY2tjaGlwLHJrMzM5OS10aW1lciIsCisJCSAgICAgICBy
-azMzOTlfdGltZXJfaW5pdCk7CgpUaGlzIHBhdGNoIHdpbGwgZ2l2ZSB1cyBhIGxpdHRsZSBsYWdl
-ciB0ZXh0IHNpemUuIElmIHdlIGRvIGRpc2Fzc2VtYmxlLAp3ZSBjYW4gc2VlIGFkZGl0aW9uYWwg
-TERSIGlzIGNhbGxlZC4gSSBjYW4gYWNjZXB0IHRoaXMgcGVyZm9ybWFuY2UgZHJvcC4KU28gd2Ug
-d2lsbCBzZW5kIG5ldyBwYXRjaGVzLgpCVFcsIHRoZSBwYXRjaCAiY2xvY2tzb3VyY2U6IHJvY2tj
-aGlwOiByZW1vdmUgdW5uZWNlc3NhcnkgY2xlYXIgaXJxCmJlZm9yZSByZXF1ZXN0X2lycSIgY2Fu
-IGRyb3AgaWYgd2UgdXNlIHRoaXMgcGF0Y2guCgpUaGFua3MsCkh1YW5nLCBUYW8KCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 05/31/2016 03:46 PM, Huang, Tao wrote:
+> Hi Daniel:
+> On 2016=E5=B9=B405=E6=9C=8831=E6=97=A5 07:28, Daniel Lezcano wrote:
+>> On 05/25/2016 11:50 AM, Caesar Wang wrote:
+>>> From: Huang Tao <huangtao@rock-chips.com>
+>>>
+>>> The CONTROL register offset is different from old SoCs.
+>>> For Linux driver, there are not functional changes at all.
+>>> Let's call it v2.
+>>>
+>>> Signed-off-by: Huang Tao <huangtao@rock-chips.com>
+>>> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+>>> Cc: Thomas Gleixner <tglx@linutronix.de>
+>>> Cc: Heiko Stuebner <heiko@sntech.de>
+>>> Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
+>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>>> ---
+>>
+>> That's hackish.
+> Yes:( I blamed our IC guy.
+>>
+>> Please consider something like:
+>>
+>> diff --git a/drivers/clocksource/rockchip_timer.c
+>> b/drivers/clocksource/rockchip_timer.c
+>> index b991b28..b6ba6f9 100644
+>> --- a/drivers/clocksource/rockchip_timer.c
+>> +++ b/drivers/clocksource/rockchip_timer.c
+>> @@ -19,7 +19,8 @@
+>>
+>>    #define TIMER_LOAD_COUNT0	0x00
+>>    #define TIMER_LOAD_COUNT1	0x04
+>> -#define TIMER_CONTROL_REG	0x10
+>> +#define TIMER_CONTROL_REG3288	0x10
+>> +#define TIMER_CONTROL_REG3399	0x1C
+>>    #define TIMER_INT_STATUS	0x18
+>>
+>>    #define TIMER_DISABLE		0x0
+>> @@ -31,6 +32,7 @@
+>>    struct bc_timer {
+>>    	struct clock_event_device ce;
+>>    	void __iomem *base;
+>> +	void __iomem *ctrl;
+>>    	u32 freq;
+>>    };
+>>
+>> @@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct
+>> clock_event_device *ce)
+>>    	return rk_timer(ce)->base;
+>>    }
+>>
+>> +static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
+>> +{
+>> +        return rk_timer(ce)->ctrl;
+>> +}
+>> +
+>>    static inline void rk_timer_disable(struct clock_event_device *ce=
+)
+>>    {
+>> -	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
+>> +	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
+>>    }
+>>
+>>    static inline void rk_timer_enable(struct clock_event_device *ce,=
+ u32
+>> flags)
+>>    {
+>>    	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
+>> -		       rk_base(ce) + TIMER_CONTROL_REG);
+>> +		       rk_ctrl(ce));
+>>    }
+>>
+>>    static void rk_timer_update_counter(unsigned long cycles,
+>> @@ -179,4 +186,18 @@ out_unmap:
+>>    	iounmap(bc_timer.base);
+>>    }
+>>
+>> -CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_=
+init);
+>> +static void __init rk3288_timer_init(struct device_node *np)
+>> +{
+>> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3288;
+>> +	rk_timer_init(np);
+>> +}
+>> +
+>> +static void __init rk3399_timer_init(struct device_node *np)
+>> +{
+>> +        bc_timer.ctrl =3D TIMER_CONTROL_REG3399;
+>> +	rk_timer_init(np);
+>> +}
+>> +
+>> +
+>> +CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer",
+>> rk3288_timer_init);
+>> +CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3399-timer",
+>> rk3399_timer_init);
+>>
+>>
+>
+> I think you mean this patch otherwise compile will fail:
+> @@ -19,7 +19,8 @@
+>
+>   #define TIMER_LOAD_COUNT0	0x00
+>   #define TIMER_LOAD_COUNT1	0x04
+> -#define TIMER_CONTROL_REG	0x10
+> +#define TIMER_CONTROL_REG3288	0x10
+> +#define TIMER_CONTROL_REG3399	0x1C
+>   #define TIMER_INT_STATUS	0x18
+>
+>   #define TIMER_DISABLE		0x0
+> @@ -31,6 +32,7 @@
+>   struct bc_timer {
+>   	struct clock_event_device ce;
+>   	void __iomem *base;
+> +	u32 ctrl;
+>   	u32 freq;
+>   };
+>
+> @@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct
+> clock_event_device *ce)
+>   	return rk_timer(ce)->base;
+>   }
+>
+> +static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
+> +{
+> +	return rk_timer(ce)->base + rk_timer(ce)->ctrl;
+
+You can do a small optimization by pre-computing 'ctrl' at init time, s=
+o=20
+no need to do this addition each time.
+
+> +}
+> +
+>   static inline void rk_timer_disable(struct clock_event_device *ce)
+>   {
+> -	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
+> +	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
+>   }
+>
+>   static inline void rk_timer_enable(struct clock_event_device *ce, u=
+32
+> flags)
+>   {
+>   	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
+> -		       rk_base(ce) + TIMER_CONTROL_REG);
+> +		       rk_ctrl(ce));
+>   }
+>
+>   static void rk_timer_update_counter(unsigned long cycles,
+> @@ -179,4 +186,19 @@ out_unmap:
+>   	iounmap(bc_timer.base);
+>   }
+>
+> -CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_i=
+nit);
+> +static void __init rk3288_timer_init(struct device_node *np)
+> +{
+> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3288;
+> +	rk_timer_init(np);
+
+	rk_timer_init(np);
+	bc_timer.ctrl =3D bc_timer.base + TIMER_CONTROL_REG3288;
+
+> +}
+> +
+> +static void __init rk3399_timer_init(struct device_node *np)
+> +{
+> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3399;
+> +	rk_timer_init(np);
+
+	rk_timer_init(np);
+	bc_timer.ctrl =3D bc_timer.base + TIMER_CONTROL_REG3399;
+
+> +}
+> +
+> +CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
+> +		       rk3288_timer_init);
+> +CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
+> +		       rk3399_timer_init);
+>
+> This patch will give us a little lager text size. If we do disassembl=
+e,
+> we can see additional LDR is called. I can accept this performance dr=
+op.
+> So we will send new patches.
+> BTW, the patch "clocksource: rockchip: remove unnecessary clear irq
+> before request_irq" can drop if we use this patch.
+
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
