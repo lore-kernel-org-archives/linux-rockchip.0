@@ -1,111 +1,57 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB
- Type-C PHY
-Date: Tue, 31 May 2016 12:57:17 -0700
-Message-ID: <CAD=FV=W9iFXX_BfORP-9=8tnu9Ea_f2k1wK_T2j=ZAVA9cFSwg@mail.gmail.com>
-References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com>
- <1464328939-8073-3-git-send-email-zyw@rock-chips.com> <2812026.ptEv4ktvbn@phil>
- <5748094F.6030204@rock-chips.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v2 0/10] Add RK3399 eDP support and fix some bugs to
+ analogix_dp driver.
+Date: Tue, 31 May 2016 16:01:15 -0400
+Message-ID: <f6fb95e2-6357-5219-ea08-263c017955e4@osg.samsung.com>
+References: <1464066086-21967-1-git-send-email-ykk@rock-chips.com>
+ <5746C321.9000707@rock-chips.com>
+ <4e1c65f8-5a5b-dbb9-35fe-ef09c0758536@osg.samsung.com>
+ <5747E648.6020100@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5748094F.6030204@rock-chips.com>
+In-Reply-To: <5747E648.6020100@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Inki Dae <inki.dae@samsung.com>, Mark Yao <yzq@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Chris,
+Hello Yakir,
 
-On Fri, May 27, 2016 at 1:46 AM, Chris Zhong <zyw@rock-chips.com> wrote:
-> Hi Heiko
->
->
-> On 05/27/2016 04:29 PM, Heiko Stuebner wrote:
+On 05/27/2016 02:16 AM, Yakir Yang wrote:
+> Hi Javier,
+> 
+> On 05/26/2016 08:48 PM, Javier Martinez Canillas wrote:
+>> Hello Yakir,
 >>
->> Hi Chris,
->>
->> Am Freitag, 27. Mai 2016, 14:02:15 schrieb Chris Zhong:
+>> On 05/26/2016 05:34 AM, Yakir Yang wrote:
+>>> Hi Javier,
 >>>
->>> This patch adds a binding that describes the Rockchip USB Type-C PHY
->>> for rk3399.
+>>> On 05/24/2016 01:01 PM, Yakir Yang wrote:
+>>>> Hi all,
+>>>>
+>>>> This series have been posted about one month, still no comments, help here :(
+>>> This series works rightly on Rockchip platform, and most of them haven't touch the
+>>> common analogix_dp driver (except for the hotplug fixed). So i guess Exynos platform
+>>> should also happy with this changes.
 >>>
->>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->>> ---
+>>> But not sure about that. So, is it possible that you could help to check this on Exynos
+>>> Chromebook, if so i would be very grateful about that.
 >>>
->>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 55
->>> ++++++++++++++++++++++ 1 file changed, 55 insertions(+)
->>>   create mode 100644
->>> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>>
->>> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
->>> mode 100644
->>> index 0000000..402f667
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>> @@ -0,0 +1,55 @@
->>> +ROCKCHIP type-c PHY
->>> +
->>> +Required properties:
->>> + - compatible: should be "rockchip,rk3399-typec-phy"
->>> + - reg : Address and length of the usb phy control register set
->>> + - rockchip,grf : phandle to the syscon managing the "general
->>> +   register files"
->>> + - clocks : phandle + clock specifier for the phy clocks
->>> + - clock-names: string, clock name, must be "tcpdcore", "tcpdphy_ref";
->>> + - resets : a list of phandle + reset specifier pairs
->>> + - reset-names : string reset name, must be:
->>> +                "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst"
-
-In other contexts I believe Heiko has requested that a suffix like
-"_rst" not be present in the names of reset signals.  We already know
-that this is a list of reset names so the "_rst" is redundant.
-
->>> + - #phy-cells: Must be 0.  See ./phy-bindings.txt for details.
->>> + - rockchip,usb3phy*: phy registers embed in grf
->>> +
->>> +Example:
->>> +       tcphy0: phy@ff7c0000 {
->>> +               compatible = "rockchip,rk3399-typec-phy";
->>> +               reg = <0x0 0xff7c0000 0x0 0x40000>;
->>> +               #phy-cells = <0>;
->>> +               rockchip,grf = <&grf>;
->>> +               clocks = <&cru SCLK_UPHY0_TCPDCORE>,
->>> +                        <&cru SCLK_UPHY0_TCPDPHY_REF>;
->>> +               clock-names = "tcpdcore", "tcpdphy_ref";
->>> +               resets = <&cru SRST_UPHY0>,
->>> +                        <&cru SRST_UPHY0_PIPE_L00>,
->>> +                        <&cru SRST_P_UPHY0_TCPHY>;
->>> +               reset-names = "tcphy_rst", "tcphy_pipe_rst",
->>> "uphy_tcphy_rst";
->>> +               rockchip,usb3phy_con0 = <0x0e580 0 16>;
->>> +               rockchip,usb3phy_con1 = <0x0e584 0 16>;
->>> +               rockchip,usb3phy_con2 = <0x0e588 0 16>;
->>> +               rockchip,usb3phy_status0 = <0x0e5c0 0 13>;
->>> +               rockchip,usb3phy_status1 = <0x0e5c4 0 12>;
->>
->> please embedded this register data in the driver instead (not in the
->> devicetree), matched against the compatible value.
->> See Frank's usb2phy driver for reference if needed.
+>> Of course, I' ll test. Could you please provide me a branch that I can
+>> pull directly to avoid cherry-picking all the patches from the list?
+>>   
+> Ah, thanks a lot, I do have a tree https://github.com/yakir-Yang/linux/tree/fromlist/3399-edp
 >
-> Okay, I will move them to driver file next version, Thanks.
 
-Just making sure: I saw a RESEND of your original version get posted,
-but nothing that addresses Heiko's comments, right?
+I tested your branch on an Exynos5800 Peach Pi Chromebook and display
+is working correctly. So feel free to add for the whole series:
 
-Also: note that bindings should be sent in the patch _before_ the
-code.  So instead of:
-  [1] phy: Add USB Type-C PHY driver for rk3399
-  [2] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-  [3] drm/rockchip: vop: add cdn DP support for rk3399
-  [4] Documentation: bindings: add dt documentation for cdn DP controller
+Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
 
-You should have:
-  [1] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-  [2] phy: Add USB Type-C PHY driver for rk3399
-  [3] Documentation: bindings: add dt documentation for cdn DP controller
-  [4] drm/rockchip: vop: add cdn DP support for rk3399
-
-
--Doug
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
