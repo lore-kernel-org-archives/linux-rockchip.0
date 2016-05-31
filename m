@@ -1,70 +1,68 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [RFC PATCH v1 0/2]
-Date: Tue, 31 May 2016 16:38:31 +0200
-Message-ID: <20160531143831.GK7231@phenom.ffwll.local>
-References: <1464701856-8695-1-git-send-email-ykk@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/5] clocksource: rockchip: remove unnecessary clear irq
+ before request_irq
+Date: Tue, 31 May 2016 10:03:37 -0700
+Message-ID: <CAD=FV=U5zqU0CMeg1dDTYHrRqWAxTQO_xk2T7p09GJuj-Fn9Gw@mail.gmail.com>
+References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
+ <1464169802-6033-3-git-send-email-wxt@rock-chips.com> <574CC839.60608@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1464701856-8695-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, daniel.vetter@ffwll.ch, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <574CC839.60608@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@google.com>, Stephen Barber <smbarber@google.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Eddie Cai <cf@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Julius Werner <jwerner@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXkgMzEsIDIwMTYgYXQgMDk6Mzc6MzZQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
-ZToKPiBUaGUgZnVsbCBuYW1lIG9mIFBTUiBpcyBQYW5lbCBTZWxmIFJlZnJlc2gsIHBhbmVsIGRl
-dmljZSBjb3VsZCByZWZyZXNoCj4gaXRzZWxmIHdpdGggdGhlIGhhcmR3YXJlIGZyYW1lYnVmZmVy
-IGluIHBhbmVsLCB0aGlzIHdvdWxkIG1ha2UgYSBsb3RzCj4gb2Ygc2Vuc2UgdG8gc2F2ZSB0aGUg
-cG93ZXIgY29uc3VtcHRpb24uCj4gCj4gRm9yIGV4YW1wbGUsIHdoZW4gZGVza3RvcCBoYXZlbid0
-IGNoYW5nZSB0aGUgY29udGV4dCBmb3IgYSBsb25nIHRpbWUsCj4gdGhlbiB3ZSBjb3VsZCByZWZy
-ZXNoIHRoZSBkYXRhIHRvIHRoZSBoYXJkd2FyZSBmcmFtZWJ1ZmZlciBvZiBwYW5lbCwKPiBhbmQg
-dGhlbiBsZXQgcGFuZWwgZW50ZXIgaW50byBQU1IgbW9kZS4gQWZ0ZXIgdGhhdCBzeXN0ZW0gY291
-bGQgcG93ZXJvZmYKPiB0aGUgTENEQyBjb250cm9sbGVyIGFuZCBlRFAgY29udHJvbGxlciwganVz
-dCBsZXQgcGFuZWwgcmVmcmVzaCB0aGUgc2NyZWVuCj4gYnkgaXRzZWxmLgo+IAo+IEl0J3MgaGFy
-ZCB0byBkZWNpZGUgd2hlbiBwYW5lbCBzaG91bGQgZW50ZXIgaW50byBQU1Igb3IgZXhpdCBmcm9t
-IFBTUiwgaW4KPiB0aGlzIHRpbWUgSSBjaG9zZSB0byBsZXQgdGhlIGRybV92YmxhbmsgZW5hYmxl
-L2Rpc2FibGUgZXZlbnQgZHJpdmVyIHRoZSBQU1IuCj4gCj4gVGhpcyB0aHJlYWQgaXMgYmFzZWQg
-b24gTWFyaydzIFJLMzM5OSBWT1AgdGhyZWFkWzBdIGFuZCBteSBSSzMzOTkgZURQCj4gdGhyZWFk
-WzFdLgo+IAo+IFswXTogaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC84ODg2MDQx
-Lwo+IFsxXTogaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85MTMyNzEzLwoKTG9v
-a3MgbGlrZSB5b3UgZGlkbid0IHdpcmUgdXAgdGhlIGRybV9mcmFtZWJ1ZmZlci0+ZnVuY3MtPmRp
-cnR5IGNhbGxiYWNrCmZvciBtYW51YWwgdXBsb2FkIG9mIHNpbXBsZSBjbGllbnRzIGxpa2UgYm9v
-dHNwbGFzaCBvciBmYmRldi4gSSB0aGluawp0aGF0J3MgbmVlZGVkLiBBdCBsZWFzdCBpdCdzIG5l
-ZWRlZCBmb3IgZXZlcnkgb3RoZXIgbWFudWFsIHVwbG9hZCBkc2kgYW5kCmVkcCBwc3IgaW1wbGVt
-ZW50YXRpb24uCi1EYW5pZWwKCj4gCj4gLSBZYWtpcgo+IFRoYW5rcywKPiAKPiAKPiBZYWtpciBZ
-YW5nICgyKToKPiAgIGRybS9yb2NrY2hpcDogYWRkIGEgbm90aWZ5IGV2ZW50IGFib3V0IHZibGFu
-ayBlbmFibGUvZGlzYWJsZQo+ICAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeDogYWRkIGVEUCBQU1Ig
-ZnVuY3Rpb24KPiAKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9jb3JlLmMgfCAgNjkgKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
-bmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgIDUgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jICB8ICA1NCArKysrKysrKysrKwo+ICBkcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oICB8ICAyOCArKysr
-KysKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICAg
-fCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
-LmMgICAgfCAgNjUgKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX25vdGlmeS5jICAgICB8IDEwNSArKysrKysrKysrKysrKysrKysrKysKPiAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9ub3RpZnkuaCAgICAgfCAgMzMgKysr
-KysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAg
-ICB8ICA5NiArKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmggICAgICAgIHwgICAzICsKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgICAgfCAgIDIgKwo+ICBpbmNsdWRlL2RybS9icmlk
-Z2UvYW5hbG9naXhfZHAuaCAgICAgICAgICAgICAgICAgICB8ICAgMyArCj4gIDEyIGZpbGVzIGNo
-YW5nZWQsIDQ2NCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX25vdGlmeS5jCj4gIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX25v
-dGlmeS5oCj4gCj4gLS0gCj4gMS45LjEKPiAKPiAKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJl
-IEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi,
+
+On Mon, May 30, 2016 at 4:09 PM, Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+> On 05/25/2016 11:49 AM, Caesar Wang wrote:
+>>
+>> From: Huang Tao <huangtao@rock-chips.com>
+>>
+>> rk_timer_interrupt_clear and rk_timer_disable is unnecessary before
+>> request_irq. Timer should keep disabled before booting Linux.
+>
+>
+> That's true in the perfect world :/ Some version has u-boot letting the
+> timer with irq enabled, therefore as soon as request_irq is done, an irq
+> fires and leads to a kernel panic.
+>
+> On the other side, this timer is not used on the other rockchip version than
+> rk3399 because of no need of a broadcast timer, so removing these two lines
+> may be acceptable.
+>
+> Can try the changes with another board, eg rk3288 (and forcing to use this
+> timer). Can you do the test and confirm it does not break with different
+> version of u-boot ?
+
+Actually, I'm not even sure that's true in a perfect world.  ;)  There
+are two main problems that might be lurking here:
+
+1. On exynos5 devices I've worked with, the private timer (MCT)
+actually shared the same physical counter with the ARM Architected
+Timer.  IIRC stopping or resetting the MCT had the effect of stopping
+/ resetting the Arch Timer.  Is it the same for you?  As I understand
+it the Arch Timer isn't supposed to ever be stopped or reset.  If
+firmware left the timer stopped and the kernel happened to be compiled
+without support for the Rockchip timer (but had the Arch Timers) then
+things would be very broken.  Also the early kernel boot might be
+broken if the Arch Timer inits before the Rockchip timer.
+
+NOTE: If your timer and the Arch Timer are totally separate then point
+#1 is not important.
+
+
+2. Historically in Chrome OS there's been an unofficial agreement that
+the firmware would start its high speed timer as soon as possible at
+bootup and that this could be used to (roughly) measure the time
+between the start of firmware and the start of the kernel.  That means
+that the kernel was expecting the timer to actually be running when it
+started up.  Yup, this is a bit of a hack and I'm not sure it's
+terribly well documented, but it does provide a reason that firmware
+might have left the timer running.
+
+
+-Doug
