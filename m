@@ -1,214 +1,200 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 4/5] clocksource: rockchip: add support for rk3399 SoC
-Date: Tue, 31 May 2016 16:06:30 +0200
-Message-ID: <574D9A66.4090209@linaro.org>
-References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
- <1464169802-6033-5-git-send-email-wxt@rock-chips.com>
- <574CCCB4.1030001@linaro.org> <574D95AF.2020905@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC PATCH v1 1/2] drm/rockchip: add a notify event about vblank
+ enable/disable
+Date: Tue, 31 May 2016 16:36:15 +0200
+Message-ID: <20160531143615.GJ7231@phenom.ffwll.local>
+References: <1464701856-8695-1-git-send-email-ykk@rock-chips.com>
+ <1464701959-9428-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <574D95AF.2020905@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Huang, Tao" <huangtao@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1464701959-9428-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Heiko Stuebner <heiko@sntech.de>, tfiga@chromium.org, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, Thierry Reding <treding@nvidia.com>, dianders@chromium.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/31/2016 03:46 PM, Huang, Tao wrote:
-> Hi Daniel:
-> On 2016=E5=B9=B405=E6=9C=8831=E6=97=A5 07:28, Daniel Lezcano wrote:
->> On 05/25/2016 11:50 AM, Caesar Wang wrote:
->>> From: Huang Tao <huangtao@rock-chips.com>
->>>
->>> The CONTROL register offset is different from old SoCs.
->>> For Linux driver, there are not functional changes at all.
->>> Let's call it v2.
->>>
->>> Signed-off-by: Huang Tao <huangtao@rock-chips.com>
->>> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
->>> Cc: Thomas Gleixner <tglx@linutronix.de>
->>> Cc: Heiko Stuebner <heiko@sntech.de>
->>> Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
->>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->>> ---
->>
->> That's hackish.
-> Yes:( I blamed our IC guy.
->>
->> Please consider something like:
->>
->> diff --git a/drivers/clocksource/rockchip_timer.c
->> b/drivers/clocksource/rockchip_timer.c
->> index b991b28..b6ba6f9 100644
->> --- a/drivers/clocksource/rockchip_timer.c
->> +++ b/drivers/clocksource/rockchip_timer.c
->> @@ -19,7 +19,8 @@
->>
->>    #define TIMER_LOAD_COUNT0	0x00
->>    #define TIMER_LOAD_COUNT1	0x04
->> -#define TIMER_CONTROL_REG	0x10
->> +#define TIMER_CONTROL_REG3288	0x10
->> +#define TIMER_CONTROL_REG3399	0x1C
->>    #define TIMER_INT_STATUS	0x18
->>
->>    #define TIMER_DISABLE		0x0
->> @@ -31,6 +32,7 @@
->>    struct bc_timer {
->>    	struct clock_event_device ce;
->>    	void __iomem *base;
->> +	void __iomem *ctrl;
->>    	u32 freq;
->>    };
->>
->> @@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct
->> clock_event_device *ce)
->>    	return rk_timer(ce)->base;
->>    }
->>
->> +static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
->> +{
->> +        return rk_timer(ce)->ctrl;
->> +}
->> +
->>    static inline void rk_timer_disable(struct clock_event_device *ce=
-)
->>    {
->> -	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
->> +	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
->>    }
->>
->>    static inline void rk_timer_enable(struct clock_event_device *ce,=
- u32
->> flags)
->>    {
->>    	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
->> -		       rk_base(ce) + TIMER_CONTROL_REG);
->> +		       rk_ctrl(ce));
->>    }
->>
->>    static void rk_timer_update_counter(unsigned long cycles,
->> @@ -179,4 +186,18 @@ out_unmap:
->>    	iounmap(bc_timer.base);
->>    }
->>
->> -CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_=
-init);
->> +static void __init rk3288_timer_init(struct device_node *np)
->> +{
->> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3288;
->> +	rk_timer_init(np);
->> +}
->> +
->> +static void __init rk3399_timer_init(struct device_node *np)
->> +{
->> +        bc_timer.ctrl =3D TIMER_CONTROL_REG3399;
->> +	rk_timer_init(np);
->> +}
->> +
->> +
->> +CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer",
->> rk3288_timer_init);
->> +CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3399-timer",
->> rk3399_timer_init);
->>
->>
->
-> I think you mean this patch otherwise compile will fail:
-> @@ -19,7 +19,8 @@
->
->   #define TIMER_LOAD_COUNT0	0x00
->   #define TIMER_LOAD_COUNT1	0x04
-> -#define TIMER_CONTROL_REG	0x10
-> +#define TIMER_CONTROL_REG3288	0x10
-> +#define TIMER_CONTROL_REG3399	0x1C
->   #define TIMER_INT_STATUS	0x18
->
->   #define TIMER_DISABLE		0x0
-> @@ -31,6 +32,7 @@
->   struct bc_timer {
->   	struct clock_event_device ce;
->   	void __iomem *base;
-> +	u32 ctrl;
->   	u32 freq;
->   };
->
-> @@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct
-> clock_event_device *ce)
->   	return rk_timer(ce)->base;
->   }
->
-> +static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
-> +{
-> +	return rk_timer(ce)->base + rk_timer(ce)->ctrl;
+On Tue, May 31, 2016 at 09:39:19PM +0800, Yakir Yang wrote:
+> EDP PSR function is interesting in vblank enable or disable event,
+> so it would be great introduce a way to notify encoder about this
+> event.
+> 
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 
-You can do a small optimization by pre-computing 'ctrl' at init time, s=
-o=20
-no need to do this addition each time.
+notifiers considered evil, especially if you add a global notifier for
+something that's very specific to a given crtc.
 
-> +}
+I think the better fix would be add a suitable hook to drm_bridge to allow
+encoders to go into self refresh, and to wake them up from self-refresh
+again.
+-Daniel
+
+> ---
+>  drivers/gpu/drm/rockchip/Makefile              |  2 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_notify.c | 66 ++++++++++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_notify.h | 29 +++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c    |  5 ++
+>  4 files changed, 101 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_notify.c
+>  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_notify.h
+> 
+> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
+> index 05d0713..49fee8c 100644
+> --- a/drivers/gpu/drm/rockchip/Makefile
+> +++ b/drivers/gpu/drm/rockchip/Makefile
+> @@ -3,7 +3,7 @@
+>  # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+>  
+>  rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
+> -		rockchip_drm_gem.o rockchip_drm_vop.o
+> +		rockchip_drm_gem.o rockchip_drm_vop.o rockchip_drm_notify.o
+>  rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
+>  
+>  obj-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_notify.c b/drivers/gpu/drm/rockchip/rockchip_drm_notify.c
+> new file mode 100644
+> index 0000000..84111d9
+> --- /dev/null
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_notify.c
+> @@ -0,0 +1,66 @@
+> +#include "rockchip_drm_notify.h"
 > +
->   static inline void rk_timer_disable(struct clock_event_device *ce)
->   {
-> -	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
-> +	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
->   }
->
->   static inline void rk_timer_enable(struct clock_event_device *ce, u=
-32
-> flags)
->   {
->   	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
-> -		       rk_base(ce) + TIMER_CONTROL_REG);
-> +		       rk_ctrl(ce));
->   }
->
->   static void rk_timer_update_counter(unsigned long cycles,
-> @@ -179,4 +186,19 @@ out_unmap:
->   	iounmap(bc_timer.base);
->   }
->
-> -CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_i=
-nit);
-> +static void __init rk3288_timer_init(struct device_node *np)
-> +{
-> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3288;
-> +	rk_timer_init(np);
-
-	rk_timer_init(np);
-	bc_timer.ctrl =3D bc_timer.base + TIMER_CONTROL_REG3288;
-
-> +}
+> +static RAW_NOTIFIER_HEAD(vblank_chain);
+> +static DEFINE_MUTEX(vblank_lock);
 > +
-> +static void __init rk3399_timer_init(struct device_node *np)
+> +/**
+> + * rockchip_drm_vblank_enable - Send Vblank enable event. Will only enable send
+> + * Vblank if there are 1 or fewer notifiers.
+> + */
+> +void rockchip_drm_vblank_enable(void)
 > +{
-> +	bc_timer.ctrl =3D TIMER_CONTROL_REG3399;
-> +	rk_timer_init(np);
-
-	rk_timer_init(np);
-	bc_timer.ctrl =3D bc_timer.base + TIMER_CONTROL_REG3399;
-
+> +	mutex_lock(&vblank_lock);
+> +	raw_notifier_call_chain(&vblank_chain, VBLANK_ENABLE, NULL);
+> +	mutex_unlock(&vblank_lock);
 > +}
+> +EXPORT_SYMBOL_GPL(rockchip_drm_vblank_enable);
 > +
-> +CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
-> +		       rk3288_timer_init);
-> +CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
-> +		       rk3399_timer_init);
->
-> This patch will give us a little lager text size. If we do disassembl=
-e,
-> we can see additional LDR is called. I can accept this performance dr=
-op.
-> So we will send new patches.
-> BTW, the patch "clocksource: rockchip: remove unnecessary clear irq
-> before request_irq" can drop if we use this patch.
+> +/**
+> + * rockchip_drm_vblank_disable - Send VBlank disable event.
+> + */
+> +void rockchip_drm_vblank_disable(void)
+> +{
+> +	mutex_lock(&vblank_lock);
+> +	raw_notifier_call_chain(&vblank_chain, VBLANK_DISABLE, NULL);
+> +	mutex_unlock(&vblank_lock);
+> +}
+> +EXPORT_SYMBOL_GPL(rockchip_drm_vblank_disable);
+> +
+> +/**
+> + * rockchip_drm_vblank_register_notifier - Add notifier to Vblank notifiers.
+> + *
+> + * Enable notifiers are called when we enable/disable vblank. This can be done
+> + * through rockchip_drm_vblank_enable/disable or when there is more than one
+> + * sync notifier. Must call rockchip_drm_vblank_lock before calling this.
+> + * @nb The notifier to add
+> + */
+> +int rockchip_drm_vblank_register_notifier(struct notifier_block *nb)
+> +{
+> +	int ret = 0;
+> +
+> +	if (!nb)
+> +		return -EINVAL;
+> +
+> +	ret = raw_notifier_chain_register(&vblank_chain, nb);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(rockchip_drm_vblank_register_notifier);
+> +
+> +/**
+> + * rockchip_drm_vblank_unregister_notifier - Remove notifier from Vblank
+> + * notifiers.
+> + *
+> + * Must call rockchip_drm_vblank_lock before calling this.
+> + * @nb The notifier to remove.
+> + */
+> +int rockchip_drm_vblank_unregister_notifier(struct notifier_block *nb)
+> +{
+> +	int ret = 0;
+> +
+> +	if (!nb)
+> +		return -EINVAL;
+> +
+> +	ret = raw_notifier_chain_unregister(&vblank_chain, nb);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(rockchip_drm_vblank_unregister_notifier);
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_notify.h b/drivers/gpu/drm/rockchip/rockchip_drm_notify.h
+> new file mode 100644
+> index 0000000..2f28afa
+> --- /dev/null
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_notify.h
+> @@ -0,0 +1,29 @@
+> +/*
+> + * Copyright (C) 2014 Google, Inc.
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#ifndef __ROCKCHIP_DRM_NOTIFY_H
+> +#define __ROCKCHIP_DRM_NOTIFY_H
+> +
+> +#include <linux/notifier.h>
+> +
+> +enum vblank_enable_op {
+> +	VBLANK_ENABLE = 0,
+> +	VBLANK_DISABLE,
+> +};
+> +
+> +void rockchip_drm_vblank_enable(void);
+> +void rockchip_drm_vblank_disable(void);
+> +int rockchip_drm_vblank_register_notifier(struct notifier_block *nb);
+> +int rockchip_drm_vblank_unregister_notifier(struct notifier_block *nb);
+> +
+> +#endif /* __ROCKCHIP_DRM_NOTIFY_H */
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index 257501f..fb6ce4b 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -35,6 +35,7 @@
+>  #include "rockchip_drm_gem.h"
+>  #include "rockchip_drm_fb.h"
+>  #include "rockchip_drm_vop.h"
+> +#include "rockchip_drm_notify.h"
+>  
+>  #define __REG_SET_RELAXED(x, off, mask, shift, v, write_mask) \
+>  		vop_mask_write(x, off, mask, shift, v, write_mask, true)
+> @@ -851,6 +852,8 @@ static int vop_crtc_enable_vblank(struct drm_crtc *crtc)
+>  
+>  	spin_unlock_irqrestore(&vop->irq_lock, flags);
+>  
+> +	rockchip_drm_vblank_enable();
+> +
+>  	return 0;
+>  }
+>  
+> @@ -867,6 +870,8 @@ static void vop_crtc_disable_vblank(struct drm_crtc *crtc)
+>  	VOP_INTR_SET_TYPE(vop, enable, FS_INTR, 0);
+>  
+>  	spin_unlock_irqrestore(&vop->irq_lock, flags);
+> +
+> +	rockchip_drm_vblank_disable();
+>  }
+>  
+>  static void vop_crtc_wait_for_update(struct drm_crtc *crtc)
+> -- 
+> 1.9.1
+> 
+> 
 
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
