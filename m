@@ -1,119 +1,42 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 4/5] clocksource: rockchip: add support for rk3399 SoC
-Date: Tue, 31 May 2016 01:28:52 +0200
-Message-ID: <574CCCB4.1030001@linaro.org>
-References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
- <1464169802-6033-5-git-send-email-wxt@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/2] Add a new Rockchip usb2 phy driver
+Date: Tue, 31 May 2016 14:40:09 +0800
+Message-ID: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464169802-6033-5-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH54rWYiEK1NRB2eb7JE58TQ@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/25/2016 11:50 AM, Caesar Wang wrote:
-> From: Huang Tao <huangtao@rock-chips.com>
->
-> The CONTROL register offset is different from old SoCs.
-> For Linux driver, there are not functional changes at all.
-> Let's call it v2.
->
-> Signed-off-by: Huang Tao <huangtao@rock-chips.com>
-> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
+The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
+IP block than rk3288 and before, and most of phy-related registers are
+also different from the past, so a new phy driver is required necessarily.
 
-That's hackish.
+These series patches add phy-rockchip-inno-usb2.c and the corresponding
+documentation.
 
-Please consider something like:
+Frank Wang (2):
+  Documentation: bindings: add DT documentation for Rockchip USB2PHY
+  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
 
-diff --git a/drivers/clocksource/rockchip_timer.c=20
-b/drivers/clocksource/rockchip_timer.c
-index b991b28..b6ba6f9 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -19,7 +19,8 @@
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   48 ++
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-inno-usb2.c               |  581 ++++++++++++++++++++
+ 4 files changed, 637 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
 
-  #define TIMER_LOAD_COUNT0	0x00
-  #define TIMER_LOAD_COUNT1	0x04
--#define TIMER_CONTROL_REG	0x10
-+#define TIMER_CONTROL_REG3288	0x10
-+#define TIMER_CONTROL_REG3399	0x1C
-  #define TIMER_INT_STATUS	0x18
-
-  #define TIMER_DISABLE		0x0
-@@ -31,6 +32,7 @@
-  struct bc_timer {
-  	struct clock_event_device ce;
-  	void __iomem *base;
-+	void __iomem *ctrl;
-  	u32 freq;
-  };
-
-@@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct=20
-clock_event_device *ce)
-  	return rk_timer(ce)->base;
-  }
-
-+static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
-+{
-+        return rk_timer(ce)->ctrl;
-+}
-+
-  static inline void rk_timer_disable(struct clock_event_device *ce)
-  {
--	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
-+	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
-  }
-
-  static inline void rk_timer_enable(struct clock_event_device *ce, u32=
-=20
-flags)
-  {
-  	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
--		       rk_base(ce) + TIMER_CONTROL_REG);
-+		       rk_ctrl(ce));
-  }
-
-  static void rk_timer_update_counter(unsigned long cycles,
-@@ -179,4 +186,18 @@ out_unmap:
-  	iounmap(bc_timer.base);
-  }
-
--CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_ini=
-t);
-+static void __init rk3288_timer_init(struct device_node *np)
-+{
-+	bc_timer.ctrl =3D TIMER_CONTROL_REG3288;
-+	rk_timer_init(np);
-+}
-+
-+static void __init rk3399_timer_init(struct device_node *np)
-+{
-+        bc_timer.ctrl =3D TIMER_CONTROL_REG3399;
-+	rk_timer_init(np);
-+}
-+
-+
-+CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer",=20
-rk3288_timer_init);
-+CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3399-timer",=20
-rk3399_timer_init);
-
-
-
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+-- 
+1.7.9.5
