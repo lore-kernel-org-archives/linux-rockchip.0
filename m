@@ -1,129 +1,118 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Wed, 01 Jun 2016 17:41:53 +0200
-Message-ID: <4890460.9IGW89muCc@wuerfel>
-References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
- <20160601150929.GA13882@localhost>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [RFC PATCH 2/4] clk: rockchip: rk3399: add ddrc clock support
+Date: Wed, 01 Jun 2016 17:46:22 +0200
+Message-ID: <7336973.nHpy8GhqcO@diego>
+References: <1464773739-18152-1-git-send-email-hl@rock-chips.com> <1464773739-18152-3-git-send-email-hl@rock-chips.com> <CAD=FV=UQoWe7DcPe3sZrocXLmX4JNpBBF1rr+-+T_q3FttihEQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160601150929.GA13882@localhost>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Hannes Reinecke <hare-l3A5Bk7waGM@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UQoWe7DcPe3sZrocXLmX4JNpBBF1rr+-+T_q3FttihEQ@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Lin Huang <hl@rock-chips.com>, =?utf-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, myungjoo.ham@samsung.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Derek Basehore <dbasehore@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wednesday, June 1, 2016 10:09:29 AM CEST Bjorn Helgaas wrote:
-> Hi Arnd,
+Am Mittwoch, 1. Juni 2016, 08:24:48 schrieb Doug Anderson:
+> Lin Huang,
 > 
-> On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
-> > A lot of PCI host bridges require different methods for initiating
-> > type 0 and type 1 config space accesses, leading to duplication of
-> > code.
+> On Wed, Jun 1, 2016 at 2:35 AM, Lin Huang <hl@rock-chips.com> wrote:
+> > add ddrc clock setting, so we can do ddr frequency
+> > scaling on rk3399 platform in future.
 > > 
-> > This adds support for the two different kinds at the pci_ops
-> > level, with the newly added map_bridge/read_bridge/write_bridge
-> > operations for type 1 accesses.
-> > 
-> > When these are not set, we fall back to the regular map_bus/read/write
-> > operations, so all existing drivers keep working, and bridges that
-> > have identical operations continue to only require one set.
-> 
-> This adds new config accessor functions to struct pci_ops and makes
-> the callers responsible for figuring out which one to use.  The
-> benefit is to reduce code duplication in some host bridge drivers
-> (DesignWare and MVEBU so far).
-> 
-> From a design perspective, I'm not comfortable with moving this burden
-> from the host bridge drivers to the callers of the config accessors.
-
-I see
-
-> The pci_ops struct is a pretty low-level thing, but it is declared in
-> include/linux/pci.h and while I think it's ugly to use it outside the
-> PCI core, there's nothing that actually prevents that, and there are
-> several places that do use it, including at least the ones below.  We
-> could argue that many of these don't need updating because they don't
-> need .read_bridge() accessors, but I don't think pci_ops users should
-> be making assumptions like that.
-> 
->   arch/x86/pci/common.c:          return raw_pci_ops->read(domain, bus, devfn, reg, len, val);
->   arch/x86/pci/common.c:          return raw_pci_ext_ops->read(domain, bus, devfn, reg, len, val);
->   arch/x86/pci/intel_mid_pci.c:           if (raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
->   arch/x86/pci/intel_mid_pci.c:                   raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
->   arch/x86/pci/intel_mid_pci.c:           raw_pci_ext_ops->read(domain, busnum, devfn,
->   arch/x86/pci/intel_mid_pci.c:   return raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
->   arch/x86/pci/mmconfig-shared.c: raw_pci_ops->read(0, 0, PCI_DEVFN(0, 0), 0xce, 2, &win);
->   arch/x86/pci/mmconfig-shared.c: raw_pci_ops->read(0, 0, PCI_DEVFN(0, 0), 0x48, 4, &pciexbar);
->   arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, PCI_DEVFN(0, 0), 0, 4, &l);
->   arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, PCI_DEVFN(0, 0), extcfg_regnum,
->   arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, devfn, 0, 4, &l);
-
-All the x86 examples are pci_raw_ops though, not pci_ops.
-
->   drivers/pci/access.c:   res = bus->ops->read(bus, devfn, pos, len, &data);              \
->   drivers/pci/access.c:   ret = dev->bus->ops->read(dev->bus, dev->devfn,                 \
-
-These implement the interface that is expected to be used.
-
->   drivers/pci/access.c:   return dev->vpd->ops->read(dev, pos, count, buf);
-
-and this is pci_vpd_ops, not pci_ops
-
->   arch/sparc/kernel/pci_schizo.c: pbm->pci_ops->read(pbm->pci_bus, 0, PCI_STATUS, 2, &stat);
->   drivers/pci/pci.c:      bus->ops->read(bus, dev->devfn, PCI_COMMAND, 4, &cmd_status_dword);
->   drivers/pci/pcie/aer/aer_inject.c:      rv = ops->read(bus, devfn, where, size, val);
-
-These are indeed some that I missed, but there are only very few of them.
-
-Maybe we can simply change them to use the normal API and come up with
-a way to make the pci_ops harder to misuse? Would it make you feel better
-if we also renamed .read/.write into .read_type0/.write_type0 or something
-like that?
-
-> > In most cases, a driver will only have to override either map_bridge
-> > or read_bridge/write_bridge but not both.
-> > 
-> > Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+> > Signed-off-by: Lin Huang <hl@rock-chips.com>
 > > ---
-> > This is slightly refined over what I had in the "Add PCIe driver for
-> > Rockchip Soc" thread earlier, but probably not the final version yet,
-> > so I'd like to get more feedback on it.
 > > 
-> > In particular, I think it may be useful to add a third set of
-> > functions for the config space of devices that are directly attached
-> > to the host bridge, as those are sometimes (designware, rcar, mvebu)
-> > yet again different from the host bridge itself and from all other
-> > devices. On the other hand, that adds further complexity that we
-> > may want to leave out of the common code, and I honestly can't
-> > seem to come up for a catchy name form the callbacks.
+> >  drivers/clk/rockchip/clk-rk3399.c      | 16 ++++++++++++++++
+> >  include/dt-bindings/clock/rk3399-cru.h |  1 +
+> >  2 files changed, 17 insertions(+)
 > > 
-> >  drivers/pci/access.c | 35 +++++++++++++++++++++++++++--------
-> >  include/linux/pci.h  |  3 +++
-> >  2 files changed, 30 insertions(+), 8 deletions(-)
+> > diff --git a/drivers/clk/rockchip/clk-rk3399.c
+> > b/drivers/clk/rockchip/clk-rk3399.c index f1d8e44..749ea59 100644
+> > --- a/drivers/clk/rockchip/clk-rk3399.c
+> > +++ b/drivers/clk/rockchip/clk-rk3399.c
+> > @@ -118,6 +118,10 @@ PNAME(mux_armclkb_p)                               =
+> > { "clk_core_b_lpll_src",> 
+> >                                                     "clk_core_b_bpll_src",
+> >                                                     "clk_core_b_dpll_src",
+> >                                                     "clk_core_b_gpll_src"
+> >                                                     };
 > > 
-> > diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-> > index d11cdbb8fba3..263606ece211 100644
-> > --- a/drivers/pci/access.c
-> > +++ b/drivers/pci/access.c
-> > @@ -34,9 +34,12 @@ int pci_bus_read_config_##size \
-> >  	u32 data = 0;							\
-> >  	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
-> >  	raw_spin_lock_irqsave(&pci_lock, flags);			\
-> > -	res = bus->ops->read(bus, devfn, pos, len, &data);		\
-> > +	if (!bus->parent == 0 && bus->ops->read_bridge)			\
+> > +PNAME(mux_ddrclk_p)                            = { "clk_ddrc_lpll_src",
+> > +                                                   "clk_ddrc_bpll_src",
+> > +                                                   "clk_ddrc_dpll_src",
+> > +                                                   "clk_ddrc_gpll_src" };
+> > 
+> >  PNAME(mux_aclk_cci_p)                          = { "cpll_aclk_cci_src",
+> >  
+> >                                                     "gpll_aclk_cci_src",
+> >                                                     "npll_aclk_cci_src",
+> > 
+> > @@ -1377,6 +1381,18 @@ static struct rockchip_clk_branch
+> > rk3399_clk_branches[] __initdata = {> 
+> >         COMPOSITE_NOMUX(0, "clk_test", "clk_test_pre", CLK_IGNORE_UNUSED,
+> >         
+> >                         RK3368_CLKSEL_CON(58), 0, 5, DFLAGS,
+> >                         RK3368_CLKGATE_CON(13), 11, GFLAGS),
+> > 
+> > +
+> > +       /* ddrc */
+> > +       GATE(0, "clk_ddrc_lpll_src", "lpll", CLK_IGNORE_UNUSED,
+> > +            RK3399_CLKGATE_CON(3), 0, GFLAGS),
+> > +       GATE(0, "clk_ddrc_bpll_src", "bpll", CLK_IGNORE_UNUSED,
+> > +            RK3399_CLKGATE_CON(3), 1, GFLAGS),
+> > +       GATE(0, "clk_ddrc_dpll_src", "dpll", CLK_IGNORE_UNUSED,
+> > +            RK3399_CLKGATE_CON(3), 2, GFLAGS),
+> > +       GATE(0, "clk_ddrc_gpll_src", "gpll", CLK_IGNORE_UNUSED,
+> > +            RK3399_CLKGATE_CON(3), 3, GFLAGS),
+> > +       COMPOSITE_DDRC(SCLK_DDRCLK, "clk_ddrc", mux_ddrclk_p,
+> > CLK_IGNORE_UNUSED, +                      RK3399_CLKSEL_CON(6), 4, 2,
+> > MFLAGS, 0, 3, DFLAGS),
+> It seems slightly unfortunate that we need CLK_IGNORE_UNUSED on these.
+> Only one of these will ever be used at once and it would be awfully
+> nice if the others could get gated, right?
 > 
->   if (!bus->parent && ...) ?
+> ...presumably this is needed because we might not have an actual
+> driver for DDR Freq and we definitely want to make sure that clk_ddrc
+> is enabled in that case.  I guess what we really want is something
+> like CLK_ENABLE_HAND_OFF eventually, but until then I think you might
+> get slightly better behavior by getting rid of all of these
+> CLK_IGNORE_UNUSED and setting "clk_ddrc" as a critical clock, either
+> using the table in this file or the new flag.
 
-Fixed, thanks for noticing.
+My current feeling is that staying with the homegrown solution for critical 
+clocks might be preferable until the clk-handoff mechanism lands as well, as 
+our critical clocks fall into both categories and I'd like to not touch 
+everything twice.
 
-	Arnd
+The clock above should be controlled by the dcf, so falls into the handoff 
+category (critical until a driver picks up the clock).
+
+Also mixing both new and old approach might get confusing.
+
+But I'm definitly open to counter-arguments :-)
+
+
+> >  };
+> >  
+> >  static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata =
+> >  {
+> > 
+> > diff --git a/include/dt-bindings/clock/rk3399-cru.h
+> > b/include/dt-bindings/clock/rk3399-cru.h index 50a44cf..8a0f0442 100644
+> > --- a/include/dt-bindings/clock/rk3399-cru.h
+> > +++ b/include/dt-bindings/clock/rk3399-cru.h
+> > @@ -131,6 +131,7 @@
+> > 
+> >  #define SCLK_DPHY_RX0_CFG              165
+> >  #define SCLK_RMII_SRC                  166
+> >  #define SCLK_PCIEPHY_REF100M           167
+> > 
+> > +#define SCLK_DDRCLK                    168
+> 
+> Almost certainly you'll want to create a separate patch for the
+> dt-bindings change since it will need to land in a different tree so
+> it can be pulled into both Heiko's clock topic branch and dts64 topic
+> branch.
+
+correct.
