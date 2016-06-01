@@ -1,172 +1,291 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/6] phy: Add USB Type-C PHY driver for rk3399
-Date: Thu, 02 Jun 2016 01:35:44 +0200
-Message-ID: <4995389.1NeJsSFJWj@diego>
-References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com> <1464328939-8073-2-git-send-email-zyw@rock-chips.com> <CAD=FV=V1qX_YTTygsz=v+p6BdG8VZcu8np2nDvm1NiJHDnf==g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+Date: Thu, 02 Jun 2016 01:46:09 +0200
+Message-ID: <1915363.WKK5oRy4Me@diego>
+References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com> <1464676811-7418-3-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=V1qX_YTTygsz=v+p6BdG8VZcu8np2nDvm1NiJHDnf==g@mail.gmail.com>
+In-Reply-To: <1464676811-7418-3-git-send-email-frank.wang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, =?utf-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Guenter Roeck <groeck@google.com>
+Cc: dianders@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris, Doug,
+Hi Frank,
 
-Am Dienstag, 31. Mai 2016, 14:35:39 schrieb Doug Anderson:
-> > diff --git a/drivers/phy/phy-rockchip-typec.c
-> > b/drivers/phy/phy-rockchip-typec.c new file mode 100644
-> > index 0000000..6609cfb
-> > --- /dev/null
-> > +++ b/drivers/phy/phy-rockchip-typec.c
-> > @@ -0,0 +1,823 @@
+Am Dienstag, 31. Mai 2016, 14:40:11 schrieb Frank Wang:
+> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
+> than rk3288 and before, and most of phy-related registers are also
+> different from the past, so a new phy driver is required necessarily.
+> 
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
 
 [...]
 
-> > +#define ADDR_ADJ                       2
+> +static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
+> +{
+> +	struct rockchip_usb2phy *rphy =
+> +		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
+> +	int index;
+> +
+> +	/* make sure all ports in suspended mode */
+> +	for (index = 0; index != rphy->phy_cfg->num_ports; index++)
+> +		if (!rphy->ports[index].suspended)
+> +			return;
 
-what purpose does this ADDR_ADJ serve.
-It is only used in the big block of defines below, but nowhere else in the 
-driver and even the naming does not improve readability as it isn't very 
-descriptive. So you could just as well just use "foo << 2" instead of ADDR_ADJ
+This function can only get called when all clk-references have disabled the 
+clock, so you should never reach that point that one phy port is not 
+suspended?
 
-
-> > +#define CMN_SSM_BANDGAP                        (0x21 << ADDR_ADJ)
-> > +#define CMN_SSM_BIAS                   (0x22 << ADDR_ADJ)
-> > +#define CMN_PLLSM0_PLLEN               (0x29 << ADDR_ADJ)
-> > +#define CMN_PLLSM0_PLLPRE              (0x2a << ADDR_ADJ)
-> > +#define CMN_PLLSM0_PLLVREF             (0x2b << ADDR_ADJ)
-
-[...]
-
-> > +static void tcphy_cfg_24m(struct rockchip_typec_phy *tcphy,
-> > +                         unsigned int num_lanes)
-> > +{
-> > +       unsigned int i;()?
-> > +
-> > +       writel(0x830, tcphy->base + PMA_CMN_CTRL1);
-> > +       for (i = 0; i < num_lanes; i++) {
-> > +               writel(0x90, tcphy->base + XCVR_DIAG_LANE_FCM_EN_MGN(i));
-> > +               writel(0x960, tcphy->base + TX_RCVDET_EN_TMR(i));
-> > +               writel(0x30, tcphy->base + TX_RCVDET_ST_TMR(i));
-> 
-> Would it be too much to ask to get more details about all these magic
-> values?
-
-Magic values are generally not well liked and I guess you will probably see a 
-request for nicely named constants some more ;-)
-Especially, as we also generally want to know that the code in questions 
-actually wants to do.
-
-
-> > +       }
-> > +}
-> > +
-> > +static void tcphy_cfg_usb_pll(struct rockchip_typec_phy *tcphy)
-> > +{
-> > +       unsigned int rdata;
-> > +
-> > +       rdata = readl(tcphy->base + CMN_DIAG_HSCLK_SEL);
-> > +       writel(rdata & 0xfffc, tcphy->base + CMN_DIAG_HSCLK_SEL);
-> > +       writel(0xf0, tcphy->base + CMN_PLL0_VCOCAL_INIT);
-> > +       writel(0x18, tcphy->base + CMN_PLL0_VCOCAL_ITER);
-> > +       writel(0xd0, tcphy->base + CMN_PLL0_INTDIV);
-> > +       writel(0x4a4a, tcphy->base + CMN_PLL0_FRACDIV);
-> > +       writel(0x34, tcphy->base + CMN_PLL0_HIGH_THR);
-> > +       writel(0x1ee, tcphy->base + CMN_PLL0_SS_CTRL1);
-> > +       writel(0x7f03, tcphy->base + CMN_PLL0_SS_CTRL2);
-> > +       writel(0x20, tcphy->base + CMN_PLL0_DSM_DIAG);
-> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_OVRD);
-> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_FBH_OVRD);
-> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_FBL_OVRD);
-> > +       writel(0x7, tcphy->base + CMN_DIAG_PLL0_V2I_TUNE);
-> > +       writel(0x45, tcphy->base + CMN_DIAG_PLL0_CP_TUNE);
-> > +       writel(0x8, tcphy->base + CMN_DIAG_PLL0_LF_PROG);
-
-same here and even if these are some super-secret values, this code definitly 
-needs some explanation what this is doing and what is the expected result.
-
-Same for all the other blocks of magic values. Named constants preferred but 
-at least comments on functionality required.
-
-> > +}
+> +
+> +	/* turn off 480m clk output */
+> +	property_enable(rphy, &rphy->phy_cfg->clkout_ctl, false);
+> +}
+> +
 
 [...]
 
-> > +static int rockchip_typec_phy_probe(struct platform_device *pdev)
-> > +{
-> > +       struct device *dev = &pdev->dev;
-> > +       struct rockchip_typec_phy *tcphy;
-> > +       struct resource *res;
-> > +       struct phy_provider *phy_provider;
-> > +
-> > +       tcphy = devm_kzalloc(dev, sizeof(*tcphy), GFP_KERNEL);
-> > +       if (!tcphy)
-> > +               return -ENOMEM;
-> > +
-> > +       tcphy->dev = dev;
-> > +       platform_set_drvdata(pdev, tcphy);
-> > +
-> > +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +       tcphy->base = devm_ioremap_resource(dev, res);
-> > +       if (IS_ERR(tcphy->base)) {
-> > +               dev_err(dev, "failed to remap phy regs\n");
-> > +               return PTR_ERR(tcphy->base);
-> > +       }
-> > +       tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
-> > +                                                       "rockchip,grf");
-> > +       if (IS_ERR(tcphy->grf_regs)) {
-> > +               dev_err(dev, "%s: could not find grf dt node\n",
-> > __func__);
-> > +               return PTR_ERR(tcphy->grf_regs);
-> > +       }
-> > +
-> > +       tcphy->clk_core = of_clk_get_by_name(dev->of_node, "tcpdcore");
+add something like:
 
-this shouldn't be an of_clk_* function. Your clock is defined in the core 
-device node, so please use a simple
+static void rockchip_usb2phy_clk480m_unregister(void *data)
+{
+	struct rockchip_usb2phy *rphy = data;
 
-	tcphy->clk_core = devm_clk_get(&pdev->dev, "tcpdcore");
+	of_clk_del_provider(rphy->dev->of_node);
+	clk_unregister(rphy->clk480m);
+}
 
-especially as the code right now lacks a matching clk_put(). The of-variant is 
-needed if you get your clock from subnodes, but not when it is defined in the 
-core device node.
+> +static struct clk *
+> +rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+> +{
+> +	struct device_node *node = rphy->dev->of_node;
+> +	struct clk *clk;
+> +	struct clk_init_data init;
+	int ret;
 
+> +
+> +	init.name = "clk_usbphy_480m";
+> +	init.ops = &rockchip_usb2phy_clkout_ops;
+> +	init.flags = CLK_IS_ROOT;
+> +	init.parent_names = NULL;
+> +	init.num_parents = 0;
+> +	rphy->clk480m_hw.init = &init;
+> +
+> +	/* optional override of the clockname */
+> +	of_property_read_string(node, "clock-output-names", &init.name);
+> +
+> +	/* register the clock */
+> +	clk = clk_register(rphy->dev, &rphy->clk480m_hw);
+	if (IS_ERR(clk))
+		return clk:
 
-> > +       if (IS_ERR(tcphy->clk_core)) {
-> > +               dev_err(dev, "%s: could not get uphy core clock\n",
-> > __func__);
-> nit: No real need for __func__.  That's useful to add in when you
-> don't have a "dev" pointer and need a "pr_err" to show something that
-> will help the user find the right line of code.
-> 
-> > +               tcphy->clk_core = NULL;
-> 
-> So is tcpdcore optional or required?  Bindings doc says "required" and
-> the "dev_err" above implies required.  ...but then you don't return an
-> error code.  That makes it optional.  ...but then you use it
-> unconditional elsewhere in this file.  That makes it required.
+	ret = of_clk_add_provider(node, of_clk_src_simple_get, clk);
+	if (ret < 0)
+		goto err_clk_provider;
 
-clk_prepare and clk_enable work with NULL clks just fine (and even return 
-sucessful).
+	ret = devm_add_action(rphy->dev, rockchip_usb2phy_clk480m_unregister, 
+rphy);
+	if (ret < 0)
+		goto err_unreg_action;
 
-> Summary: return an error here, don't just set to NULL.
+	return clk;
 
-But the summary is still correct. If the clock is defined as required, the 
-driver should fail if it's missing.
+err_unreg_action:
+	of_clk_del_provider(node);
+err_clk_provider:
+	clk_unregister(clk);
+	return ERR_PTR(ret);
 
-> > +       }
-> > +
-> > +       tcphy->clk_ref = of_clk_get_by_name(dev->of_node, "tcpdphy_ref");
-> > +       if (IS_ERR(tcphy->clk_core)) {
-> > +               dev_err(dev, "%s: could not get uphy ref clock\n",
-> > __func__); +               tcphy->clk_core = NULL;
-> 
-> "if" test and NULL assignment are for wrong variables.
+> +}
 
-and all the same remarks as for tcpdcore apply.
+[...]
+
+> +/*
+> + * The function manage host-phy port state and suspend/resume phy port
+> + * to save power.
+> + *
+> + * we rely on utmi_linestate and utmi_hostdisconnect to identify whether
+> + * FS/HS is disconnect or not. Besides, we do not need care it is FS
+> + * disconnected or HS disconnected, actually, we just only need get the
+> + * device is disconnected at last through rearm the delayed work,
+> + * to suspend the phy port in _PHY_STATE_DISCONNECT_ case.
+> + *
+> + * NOTE: It will invoke some clk related APIs, so do not invoke it from
+> + * interrupt context.
+
+This does not seem to match the code, as I don't see any clk_* calls,
+
+> + */
+> +static void rockchip_usb2phy_sm_work(struct work_struct *work)
+> +{
+> +	struct rockchip_usb2phy_port *rport =
+> +		container_of(work, struct rockchip_usb2phy_port, sm_work.work);
+> +	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
+> +	unsigned int sh = rport->port_cfg->utmi_hstdet.bitend -
+> +			  rport->port_cfg->utmi_hstdet.bitstart + 1;
+> +	unsigned int ul, uhd, state;
+> +	unsigned int ul_mask, uhd_mask;
+> +	int ret;
+> +
+> +	mutex_lock(&rport->mutex);
+> +
+> +	ret = regmap_read(rphy->grf, rport->port_cfg->utmi_ls.offset, &ul);
+> +	if (ret < 0)
+> +		goto next_schedule;
+> +
+> +	ret = regmap_read(rphy->grf, rport->port_cfg->utmi_hstdet.offset,
+> +			  &uhd);
+> +	if (ret < 0)
+> +		goto next_schedule;
+> +
+> +	uhd_mask = GENMASK(rport->port_cfg->utmi_hstdet.bitend,
+> +			   rport->port_cfg->utmi_hstdet.bitstart);
+> +	ul_mask = GENMASK(rport->port_cfg->utmi_ls.bitend,
+> +			  rport->port_cfg->utmi_ls.bitstart);
+> +
+> +	/* stitch on utmi_ls and utmi_hstdet as phy state */
+> +	state = ((uhd & uhd_mask) >> rport->port_cfg->utmi_hstdet.bitstart) |
+> +		(((ul & ul_mask) >> rport->port_cfg->utmi_ls.bitstart) << sh);
+> +
+> +	switch (state) {
+> +	case PHY_STATE_HS_ONLINE:
+> +		dev_dbg(&rport->phy->dev, "HS online\n");
+> +		break;
+> +	case PHY_STATE_FS_CONNECT:
+> +		/*
+> +		 * For FS device, the online state share with connect state
+> +		 * from utmi_ls and utmi_hstdet register, so we distinguish
+> +		 * them via suspended flag.
+> +		 */
+> +		if (!rport->suspended) {
+> +			dev_dbg(&rport->phy->dev, "FS online\n");
+> +			break;
+> +		}
+> +		/* fall through */
+> +	case PHY_STATE_HS_CONNECT:
+> +		if (rport->suspended) {
+> +			dev_dbg(&rport->phy->dev, "HS/FS connected\n");
+> +			rockchip_usb2phy_resume(rport->phy);
+> +			rport->suspended = false;
+> +		}
+> +		break;
+> +	case PHY_STATE_DISCONNECT:
+> +		if (!rport->suspended) {
+> +			dev_dbg(&rport->phy->dev, "HS/FS disconnected\n");
+> +			rockchip_usb2phy_suspend(rport->phy);
+> +			rport->suspended = true;
+> +		}
+> +
+> +		/*
+> +		 * activate the linestate detection to get the next device
+> +		 * plug-in irq.
+> +		 */
+> +		property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
+> +		property_enable(rphy, &rport->port_cfg->ls_det_en, true);
+> +
+> +		/*
+> +		 * we don't need to rearm the delayed work when the phy port
+> +		 * is suspended.
+> +		 */
+> +		mutex_unlock(&rport->mutex);
+> +		return;
+> +	default:
+> +		dev_dbg(&rport->phy->dev, "unknown phy state\n");
+> +		break;
+> +	}
+> +
+> +next_schedule:
+> +	mutex_unlock(&rport->mutex);
+> +	schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
+> +}
+
+[...]
+
+> +static int rockchip_usb2phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev->of_node;
+> +	struct device_node *child_np;
+> +	struct phy_provider *provider;
+> +	struct rockchip_usb2phy *rphy;
+> +	const struct of_device_id *match;
+> +	int index, ret;
+> +
+> +	rphy = devm_kzalloc(dev, sizeof(*rphy), GFP_KERNEL);
+> +	if (!rphy)
+> +		return -ENOMEM;
+> +
+> +	match = of_match_device(dev->driver->of_match_table, dev);
+> +	if (!match || !match->data) {
+> +		dev_err(dev, "phy configs are not assigned!\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (!dev->parent || !dev->parent->of_node)
+> +		return -ENOMEM;
+> +
+> +	rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
+> +	if (IS_ERR(rphy->grf))
+> +		return PTR_ERR(rphy->grf);
+> +
+> +	rphy->dev = dev;
+> +	rphy->phy_cfg = match->data;
+> +	platform_set_drvdata(pdev, rphy);
+> +
+> +	rphy->clk480m = rockchip_usb2phy_clk480m_register(rphy);
+> +	if (IS_ERR(rphy->clk480m))
+> +		return PTR_ERR(rphy->clk480m);
+> +
+> +	rphy->vbus_host_gpio =
+> +		devm_gpiod_get_optional(dev, "vbus_host", GPIOD_OUT_HIGH);
+> +	if (!rphy->vbus_host_gpio)
+> +		dev_info(dev, "host_vbus is not assigned!\n");
+> +	else if (IS_ERR(rphy->vbus_host_gpio))
+> +		return PTR_ERR(rphy->vbus_host_gpio);
+> +
+> +	index = 0;
+> +	for_each_child_of_node(np, child_np) {
+> +		struct rockchip_usb2phy_port *rport = &rphy->ports[index];
+> +		struct phy *phy;
+> +
+> +		phy = devm_phy_create(dev, child_np, &rockchip_usb2phy_ops);
+> +		if (IS_ERR(phy)) {
+> +			dev_err(dev, "failed to create phy\n");
+> +			ret = PTR_ERR(phy);
+> +			goto put_child;
+> +		}
+> +
+> +		rport->phy = phy;
+> +		rport->port_cfg = &rphy->phy_cfg->port_cfgs[index];
+> +
+> +		/* initialize otg/host port separately */
+> +		if (!of_node_cmp(child_np->name, "host-port")) {
+> +			ret = rockchip_usb2phy_host_port_init(rphy, rport,
+> +							      child_np);
+> +			if (ret)
+> +				goto put_child;
+> +		}
+> +
+> +		phy_set_drvdata(rport->phy, rport);
+> +		index++;
+> +	}
+> +
+> +	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +	return PTR_ERR_OR_ZERO(provider);
+> +
+> +put_child:
+> +	of_node_put(child_np);
+
+> +	of_clk_del_provider(np);
+> +	clk_unregister(rphy->clk480m);
+
+these two can go away, once you have the devm_action described
+near your clk_register function.
+
+> +	return ret;
+> +}
 
 
 Heiko
