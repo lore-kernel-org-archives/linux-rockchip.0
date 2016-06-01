@@ -1,87 +1,181 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [RFC PATCH v1 0/2]
-Date: Wed, 1 Jun 2016 10:54:09 +0800
-Message-ID: <574E4E51.1030308@rock-chips.com>
-References: <1464701856-8695-1-git-send-email-ykk@rock-chips.com>
- <20160531143831.GK7231@phenom.ffwll.local>
+From: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Wed, 1 Jun 2016 10:56:53 +0800
+Message-ID: <574E4EF5.7040005@rock-chips.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+ <57483CAA.8000005@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160531143831.GK7231@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: daniel.vetter@intel.com
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <57483CAA.8000005-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <Lorenzo.Pieralisi-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKT24gMDUvMzEvMjAxNiAxMDozOCBQTSwgRGFuaWVsIFZldHRlciB3cm90ZToK
-PiBPbiBUdWUsIE1heSAzMSwgMjAxNiBhdCAwOTozNzozNlBNICswODAwLCBZYWtpciBZYW5nIHdy
-b3RlOgo+PiBUaGUgZnVsbCBuYW1lIG9mIFBTUiBpcyBQYW5lbCBTZWxmIFJlZnJlc2gsIHBhbmVs
-IGRldmljZSBjb3VsZCByZWZyZXNoCj4+IGl0c2VsZiB3aXRoIHRoZSBoYXJkd2FyZSBmcmFtZWJ1
-ZmZlciBpbiBwYW5lbCwgdGhpcyB3b3VsZCBtYWtlIGEgbG90cwo+PiBvZiBzZW5zZSB0byBzYXZl
-IHRoZSBwb3dlciBjb25zdW1wdGlvbi4KPj4KPj4gRm9yIGV4YW1wbGUsIHdoZW4gZGVza3RvcCBo
-YXZlbid0IGNoYW5nZSB0aGUgY29udGV4dCBmb3IgYSBsb25nIHRpbWUsCj4+IHRoZW4gd2UgY291
-bGQgcmVmcmVzaCB0aGUgZGF0YSB0byB0aGUgaGFyZHdhcmUgZnJhbWVidWZmZXIgb2YgcGFuZWws
-Cj4+IGFuZCB0aGVuIGxldCBwYW5lbCBlbnRlciBpbnRvIFBTUiBtb2RlLiBBZnRlciB0aGF0IHN5
-c3RlbSBjb3VsZCBwb3dlcm9mZgo+PiB0aGUgTENEQyBjb250cm9sbGVyIGFuZCBlRFAgY29udHJv
-bGxlciwganVzdCBsZXQgcGFuZWwgcmVmcmVzaCB0aGUgc2NyZWVuCj4+IGJ5IGl0c2VsZi4KPj4K
-Pj4gSXQncyBoYXJkIHRvIGRlY2lkZSB3aGVuIHBhbmVsIHNob3VsZCBlbnRlciBpbnRvIFBTUiBv
-ciBleGl0IGZyb20gUFNSLCBpbgo+PiB0aGlzIHRpbWUgSSBjaG9zZSB0byBsZXQgdGhlIGRybV92
-YmxhbmsgZW5hYmxlL2Rpc2FibGUgZXZlbnQgZHJpdmVyIHRoZSBQU1IuCj4+Cj4+IFRoaXMgdGhy
-ZWFkIGlzIGJhc2VkIG9uIE1hcmsncyBSSzMzOTkgVk9QIHRocmVhZFswXSBhbmQgbXkgUkszMzk5
-IGVEUAo+PiB0aHJlYWRbMV0uCj4+Cj4+IFswXTogaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
-Zy9wYXRjaC84ODg2MDQxLwo+PiBbMV06IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
-Y2gvOTEzMjcxMy8KPiBMb29rcyBsaWtlIHlvdSBkaWRuJ3Qgd2lyZSB1cCB0aGUgZHJtX2ZyYW1l
-YnVmZmVyLT5mdW5jcy0+ZGlydHkgY2FsbGJhY2sKPiBmb3IgbWFudWFsIHVwbG9hZCBvZiBzaW1w
-bGUgY2xpZW50cyBsaWtlIGJvb3RzcGxhc2ggb3IgZmJkZXYuIEkgdGhpbmsKPiB0aGF0J3MgbmVl
-ZGVkLiBBdCBsZWFzdCBpdCdzIG5lZWRlZCBmb3IgZXZlcnkgb3RoZXIgbWFudWFsIHVwbG9hZCBk
-c2kgYW5kCj4gZWRwIHBzciBpbXBsZW1lbnRhdGlvbi4KPiAtRGFuaWVsClRoYXQncyBncmVhdCwg
-dGhhbmtzIGZvciB5b3VyIHJlbWluZC4gU2VlbXMgbGlrZSB1c2Vyc3BhY2Ugd2hpY2ggZG9lcwpm
-cm9udGJ1ZmZlciByZW5kZXJpbmcgbXVzdCBjYWxsIHRoaXMgaW9jdGwgdG8gZmx1c2ggb3V0IHRo
-ZSBjaGFuZ2VzIG9uCm1hbnVhbC11cGRhdGUgZGlzcGxheSBvdXRwdXRzLiBJdCdzIGhlbHBmdWwg
-dG8gaG9vayB0aGlzIGNhbGxiYWNrIHRvCm5vdGlmeSBlRFAgcmVmcmVzaCB0aGUgZURQIFJGQihy
-ZW1vdGUgZnJhbWUgYnVmZmVyKS4KCkJ1dCBJIHRoaW5rIHRoaXMgaXMgaGFyZCB0byB1c2VkIG9u
-IFJvY2tjaGlwIGVEUCBjb250cm9sbGVyLCBSb2NrY2hpcCBlRFAKZHJpdmVyIGp1c3QgdXNlZCB0
-d28gbW9kZXMsIFNpbmsgRGV2aWNlIFBTUl9TMCAoUFNSIGluYWN0aXZlKSwgYW5kIFNpbmsKRGV2
-aWNlIFBTUl9TMiAoUFNSIGFjdGl2ZSwgZGlzcGxheSBmcm9tIFJGQikuCgpJIHRoaW5rIHRoZSAi
-ZGlydHkiIGNhbGxiYWNrIGlzIG9ubHkgdXNlZCB3aGVuIFNpbmsgZGV2aWNlIGVudGVyIGludG8g
-UFNSX1MzCm1vZGUgKFBTUiBhY3RpdmUsIGNhcHR1cmUgYW5kIGRpc3BsYXkpLCBuZWVkIHRvIHVw
-ZGF0ZSB0aGUgcmVtb3RlIGZyYW1lCmJ1ZmZlci4gQnV0IG9uIFJvY2tjaGlwIHBsYXRmb3JtIHRo
-ZSBwYW5lbCB3b3VsZCBiZSB2ZXJ5IGVhc3kgdG8gbG9zZSBmcmFtZQppbiB0aGlzIFBTUiBtb2Rl
-LiBJJ20gY29uZnVzZWQgaW4gdGhpcyBjYXNlLCBzbyBJIGRpZG4ndCBlbmFibGUgdGhhdC4KCklm
-IHdlIGRpZG4ndCBlbmFibGUgdGhlIFBTUl9TMyBtb2RlLCB0aGVuIHdlIGRvbid0IG5lZWQgdG8g
-dXBkYXRlIHRoZSBwYW5lbApyZW1vdGUgZnJhbWUgYnVmZmVyLCBzbyB0aGlzICItPmRpcnR5IiBj
-YWxsYmFjayB3b3VsZCBiZSB1bnVzZWQgaW4gdGhpcyAKY2FzZS4KClRoYW5rcywKLSBZYWtpcgo+
-PiAtIFlha2lyCj4+IFRoYW5rcywKPj4KPj4KPj4gWWFraXIgWWFuZyAoMik6Cj4+ICAgIGRybS9y
-b2NrY2hpcDogYWRkIGEgbm90aWZ5IGV2ZW50IGFib3V0IHZibGFuayBlbmFibGUvZGlzYWJsZQo+
-PiAgICBkcm0vcm9ja2NoaXA6IGFuYWxvZ2l4OiBhZGQgZURQIFBTUiBmdW5jdGlvbgo+Pgo+PiAg
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDY5
-ICsrKysrKysrKysrKysrCj4+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFs
-b2dpeF9kcF9jb3JlLmggfCAgIDUgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgIDU0ICsrKysrKysrKysrCj4+ICAgZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuaCAgfCAgMjggKysrKysrCj4+ICAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgIDIg
-Ky0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAg
-ICB8ICA2NSArKysrKysrKysrKysrCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9ub3RpZnkuYyAgICAgfCAxMDUgKysrKysrKysrKysrKysrKysrKysrCj4+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9ub3RpZnkuaCAgICAgfCAgMzMgKysr
-KysrKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICAg
-ICAgIHwgIDk2ICsrKysrKysrKysrKysrKysrKysKPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oICAgICAgICB8ICAgMyArCj4+ICAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgICAgfCAgIDIgKwo+PiAgIGluY2x1ZGUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgICAzICsKPj4gICAx
-MiBmaWxlcyBjaGFuZ2VkLCA0NjQgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+PiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX25v
-dGlmeS5jCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fbm90aWZ5LmgKPj4KPj4gLS0gCj4+IDEuOS4xCj4+Cj4+CgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi:
+
+On 2016/5/27 20:25, Marc Zyngier Wrote:
+> [+Lorenzo]
+>
+> On 20/05/16 11:29, Shawn Lin wrote:
+>> RK3399 has a PCIe controller which can be used as Root Complex.
+>> This driver supports a PCIe controller as Root Complex mode.
+>>
+
+[....]
+
+>> +static int rockchip_pcie_init_irq_domain(struct rockchip_pcie_port *pp)
+>> +{
+>> +	struct device *dev = pp->dev;
+>> +	struct device_node *node = dev->of_node;
+>> +	struct device_node *pcie_intc_node =  of_get_next_child(node, NULL);
+>
+> That's really ugly, as it depends on the layout of your DT.
+>
+>> +
+>> +	if (!pcie_intc_node) {
+>> +		dev_err(dev, "No PCIe Intc node found\n");
+>> +		return PTR_ERR(pcie_intc_node);
+>> +	}
+>> +	pp->irq_domain = irq_domain_add_linear(pcie_intc_node, 4,
+>> +					       &intx_domain_ops, pp);
+>
+> Why can't you just register your host controller as the interrupt
+> controller? You don't need an intermediate node for that.
+
+OK, the child node is really no need here, we will use the host 
+controller as interrupt controller next patch. Thanks!
+
+>
+>> +	if (!pp->irq_domain) {
+>> +		dev_err(dev, "Failed to get a INTx IRQ domain\n");
+>> +		return PTR_ERR(pp->irq_domain);
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+>> +{
+>> +	struct rockchip_pcie_port *pp = arg;
+>> +	u32 reg;
+>> +	u32 sub_reg;
+>> +
+>> +	reg = pcie_read(pp, PCIE_CLIENT_INT_STATUS);
+>> +	if (reg & LOC_INT) {
+>> +		dev_dbg(pp->dev, "local interrupt recived\n");
+>> +		sub_reg = pcie_read(pp, PCIE_CORE_INT_STATUS);
+>> +		if (sub_reg & PRFPE)
+>> +			dev_dbg(pp->dev, "Parity error detected while reading from the PNP Receive FIFO RAM\n");
+>> +
+>> +		if (sub_reg & CRFPE)
+>> +			dev_dbg(pp->dev, "Parity error detected while reading from the Completion Receive FIFO RAM\n");
+>> +
+>> +		if (sub_reg & RRPE)
+>> +			dev_dbg(pp->dev, "Parity error detected while reading from Replay Buffer RAM\n");
+>> +
+>> +		if (sub_reg & PRFO)
+>> +			dev_dbg(pp->dev, "Overflow occurred in the PNP Receive FIFO\n");
+>> +
+>> +		if (sub_reg & CRFO)
+>> +			dev_dbg(pp->dev, "Overflow occurred in the Completion Receive FIFO\n");
+>> +
+>> +		if (sub_reg & RT)
+>> +			dev_dbg(pp->dev, "Replay timer timed out\n");
+>> +
+>> +		if (sub_reg & RTR)
+>> +			dev_dbg(pp->dev, "Replay timer rolled over after 4 transmissions of the same TLP\n");
+>> +
+>> +		if (sub_reg & PE)
+>> +			dev_dbg(pp->dev, "Phy error detected on receive side\n");
+>> +
+>> +		if (sub_reg & MTR)
+>> +			dev_dbg(pp->dev, "Malformed TLP received from the link\n");
+>> +
+>> +		if (sub_reg & UCR)
+>> +			dev_dbg(pp->dev, "Malformed TLP received from the link\n");
+>> +
+>> +		if (sub_reg & FCE)
+>> +			dev_dbg(pp->dev, "An error was observed in the flow control advertisements from the other side\n");
+>> +
+>> +		if (sub_reg & CT)
+>> +			dev_dbg(pp->dev, "A request timed out waiting for completion\n");
+>> +
+>> +		if (sub_reg & UTC)
+>> +			dev_dbg(pp->dev, "Unmapped TC error\n");
+>> +
+>> +		if (sub_reg & MMVC)
+>> +			dev_dbg(pp->dev, "MSI mask register changes\n");
+>> +
+>> +		pcie_write(pp, sub_reg, PCIE_CORE_INT_STATUS);
+>> +	}
+>> +
+>> +	pcie_write(pp, reg, PCIE_CLIENT_INT_STATUS);
+>> +
+>> +	return IRQ_HANDLED;
+>> +}
+
+[....]
+
+>> +static irqreturn_t rockchip_pcie_legacy_int_handler(int irq, void *arg)
+>> +{
+>> +	struct rockchip_pcie_port *pp = arg;
+>> +	u32 reg;
+>> +
+>> +	reg = pcie_read(pp, PCIE_CLIENT_INT_STATUS);
+>> +	reg = (reg & ROCKCHIP_PCIE_RPIFR1_INTR_MASK) >>
+>> +	       ROCKCHIP_PCIE_RPIFR1_INTR_SHIFT;
+>> +	generic_handle_irq(irq_find_mapping(pp->irq_domain, ffs(reg)));
+>
+> NAK. What you have here is a chained interrupt controller, please
+> implement it as such.
+
+Your mean is use handle_nested_irq instead of generic_handle_irq here?
+But, I found all other pci host controller drivers use this api.
+
+>
+>> +
+>> +	pcie_write(pp, reg, PCIE_CLIENT_INT_STATUS);
+>> +	return IRQ_HANDLED;
+>> +}
+>> +
+
+[...]
+
+>> +static struct platform_driver rockchip_pcie_driver = {
+>> +	.driver = {
+>> +		.name = "rockchip-pcie",
+>> +		.of_match_table = rockchip_pcie_of_match,
+>> +		.suppress_bind_attrs = true,
+>> +	},
+>> +	.probe = rockchip_pcie_probe,
+>> +	.remove = rockchip_pcie_remove,
+>> +};
+>> +module_platform_driver(rockchip_pcie_driver);
+>> +
+>> +MODULE_AUTHOR("Rockchip Inc");
+>> +MODULE_DESCRIPTION("Rockchip AXI PCIe driver");
+>> +MODULE_LICENSE("GPL v2");
+>>
+>
+> This definitely requires some rework for both the interrupt and MSI
+> parts. I'll leave Lorenzo to comment on the PCI side of things.
+>
+> Thanks,
+>
+> 	M.
+>
+
+Best Regards,
+Li
