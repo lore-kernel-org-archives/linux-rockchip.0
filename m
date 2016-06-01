@@ -1,37 +1,172 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] Documentation: bindings: add DT documentation for Rockchip USB2PHY
-Date: Thu, 02 Jun 2016 00:17:46 +0200
-Message-ID: <4799985.esYaUoo40j@diego>
-References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com> <6548390.RQDBBuPzBf@diego> <574E9845.30501@rock-chips.com>
+Subject: Re: [PATCH 1/6] phy: Add USB Type-C PHY driver for rk3399
+Date: Thu, 02 Jun 2016 01:35:44 +0200
+Message-ID: <4995389.1NeJsSFJWj@diego>
+References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com> <1464328939-8073-2-git-send-email-zyw@rock-chips.com> <CAD=FV=V1qX_YTTygsz=v+p6BdG8VZcu8np2nDvm1NiJHDnf==g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <574E9845.30501@rock-chips.com>
+In-Reply-To: <CAD=FV=V1qX_YTTygsz=v+p6BdG8VZcu8np2nDvm1NiJHDnf==g@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: dianders@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Chris Zhong <zyw@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, =?utf-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Guenter Roeck <groeck@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
+Hi Chris, Doug,
 
-Am Mittwoch, 1. Juni 2016, 16:09:41 schrieb Frank Wang:
-> > You might want to add the bvalid and id interrupts for the otg phys as
-> > well
-> > already - would make handling legacy devicetree files easier. [= if they
-> > get specified later, the driver would always need to also handle
-> > devicetrees where they aren't specified].
+Am Dienstag, 31. Mai 2016, 14:35:39 schrieb Doug Anderson:
+> > diff --git a/drivers/phy/phy-rockchip-typec.c
+> > b/drivers/phy/phy-rockchip-typec.c new file mode 100644
+> > index 0000000..6609cfb
+> > --- /dev/null
+> > +++ b/drivers/phy/phy-rockchip-typec.c
+> > @@ -0,0 +1,823 @@
+
+[...]
+
+> > +#define ADDR_ADJ                       2
+
+what purpose does this ADDR_ADJ serve.
+It is only used in the big block of defines below, but nowhere else in the 
+driver and even the naming does not improve readability as it isn't very 
+descriptive. So you could just as well just use "foo << 2" instead of ADDR_ADJ
+
+
+> > +#define CMN_SSM_BANDGAP                        (0x21 << ADDR_ADJ)
+> > +#define CMN_SSM_BIAS                   (0x22 << ADDR_ADJ)
+> > +#define CMN_PLLSM0_PLLEN               (0x29 << ADDR_ADJ)
+> > +#define CMN_PLLSM0_PLLPRE              (0x2a << ADDR_ADJ)
+> > +#define CMN_PLLSM0_PLLVREF             (0x2b << ADDR_ADJ)
+
+[...]
+
+> > +static void tcphy_cfg_24m(struct rockchip_typec_phy *tcphy,
+> > +                         unsigned int num_lanes)
+> > +{
+> > +       unsigned int i;()?
+> > +
+> > +       writel(0x830, tcphy->base + PMA_CMN_CTRL1);
+> > +       for (i = 0; i < num_lanes; i++) {
+> > +               writel(0x90, tcphy->base + XCVR_DIAG_LANE_FCM_EN_MGN(i));
+> > +               writel(0x960, tcphy->base + TX_RCVDET_EN_TMR(i));
+> > +               writel(0x30, tcphy->base + TX_RCVDET_ST_TMR(i));
 > 
-> Hmmm! you mean that I can specify these properties into documentation,
-> even if the driver have not handled (implemented) them in current?
+> Would it be too much to ask to get more details about all these magic
+> values?
 
-The devicetree bindings are supposed to be a generic hardware-description.
-And a driver then simply implements that binding. So if the interrupt is part 
-of the hardware it can be part of the binding, independent of the driver.
+Magic values are generally not well liked and I guess you will probably see a 
+request for nicely named constants some more ;-)
+Especially, as we also generally want to know that the code in questions 
+actually wants to do.
 
-I guess it really comes down to, will you need those interrupts later in the 
-driver, then they should definitly be specified now, as later on you cannot 
-require them anymore and always need to also support devicetrees not having 
-them.
+
+> > +       }
+> > +}
+> > +
+> > +static void tcphy_cfg_usb_pll(struct rockchip_typec_phy *tcphy)
+> > +{
+> > +       unsigned int rdata;
+> > +
+> > +       rdata = readl(tcphy->base + CMN_DIAG_HSCLK_SEL);
+> > +       writel(rdata & 0xfffc, tcphy->base + CMN_DIAG_HSCLK_SEL);
+> > +       writel(0xf0, tcphy->base + CMN_PLL0_VCOCAL_INIT);
+> > +       writel(0x18, tcphy->base + CMN_PLL0_VCOCAL_ITER);
+> > +       writel(0xd0, tcphy->base + CMN_PLL0_INTDIV);
+> > +       writel(0x4a4a, tcphy->base + CMN_PLL0_FRACDIV);
+> > +       writel(0x34, tcphy->base + CMN_PLL0_HIGH_THR);
+> > +       writel(0x1ee, tcphy->base + CMN_PLL0_SS_CTRL1);
+> > +       writel(0x7f03, tcphy->base + CMN_PLL0_SS_CTRL2);
+> > +       writel(0x20, tcphy->base + CMN_PLL0_DSM_DIAG);
+> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_OVRD);
+> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_FBH_OVRD);
+> > +       writel(0, tcphy->base + CMN_DIAG_PLL0_FBL_OVRD);
+> > +       writel(0x7, tcphy->base + CMN_DIAG_PLL0_V2I_TUNE);
+> > +       writel(0x45, tcphy->base + CMN_DIAG_PLL0_CP_TUNE);
+> > +       writel(0x8, tcphy->base + CMN_DIAG_PLL0_LF_PROG);
+
+same here and even if these are some super-secret values, this code definitly 
+needs some explanation what this is doing and what is the expected result.
+
+Same for all the other blocks of magic values. Named constants preferred but 
+at least comments on functionality required.
+
+> > +}
+
+[...]
+
+> > +static int rockchip_typec_phy_probe(struct platform_device *pdev)
+> > +{
+> > +       struct device *dev = &pdev->dev;
+> > +       struct rockchip_typec_phy *tcphy;
+> > +       struct resource *res;
+> > +       struct phy_provider *phy_provider;
+> > +
+> > +       tcphy = devm_kzalloc(dev, sizeof(*tcphy), GFP_KERNEL);
+> > +       if (!tcphy)
+> > +               return -ENOMEM;
+> > +
+> > +       tcphy->dev = dev;
+> > +       platform_set_drvdata(pdev, tcphy);
+> > +
+> > +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +       tcphy->base = devm_ioremap_resource(dev, res);
+> > +       if (IS_ERR(tcphy->base)) {
+> > +               dev_err(dev, "failed to remap phy regs\n");
+> > +               return PTR_ERR(tcphy->base);
+> > +       }
+> > +       tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
+> > +                                                       "rockchip,grf");
+> > +       if (IS_ERR(tcphy->grf_regs)) {
+> > +               dev_err(dev, "%s: could not find grf dt node\n",
+> > __func__);
+> > +               return PTR_ERR(tcphy->grf_regs);
+> > +       }
+> > +
+> > +       tcphy->clk_core = of_clk_get_by_name(dev->of_node, "tcpdcore");
+
+this shouldn't be an of_clk_* function. Your clock is defined in the core 
+device node, so please use a simple
+
+	tcphy->clk_core = devm_clk_get(&pdev->dev, "tcpdcore");
+
+especially as the code right now lacks a matching clk_put(). The of-variant is 
+needed if you get your clock from subnodes, but not when it is defined in the 
+core device node.
+
+
+> > +       if (IS_ERR(tcphy->clk_core)) {
+> > +               dev_err(dev, "%s: could not get uphy core clock\n",
+> > __func__);
+> nit: No real need for __func__.  That's useful to add in when you
+> don't have a "dev" pointer and need a "pr_err" to show something that
+> will help the user find the right line of code.
+> 
+> > +               tcphy->clk_core = NULL;
+> 
+> So is tcpdcore optional or required?  Bindings doc says "required" and
+> the "dev_err" above implies required.  ...but then you don't return an
+> error code.  That makes it optional.  ...but then you use it
+> unconditional elsewhere in this file.  That makes it required.
+
+clk_prepare and clk_enable work with NULL clks just fine (and even return 
+sucessful).
+
+> Summary: return an error here, don't just set to NULL.
+
+But the summary is still correct. If the clock is defined as required, the 
+driver should fail if it's missing.
+
+> > +       }
+> > +
+> > +       tcphy->clk_ref = of_clk_get_by_name(dev->of_node, "tcpdphy_ref");
+> > +       if (IS_ERR(tcphy->clk_core)) {
+> > +               dev_err(dev, "%s: could not get uphy ref clock\n",
+> > __func__); +               tcphy->clk_core = NULL;
+> 
+> "if" test and NULL assignment are for wrong variables.
+
+and all the same remarks as for tcpdcore apply.
 
 
 Heiko
