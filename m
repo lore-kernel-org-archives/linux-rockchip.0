@@ -1,16 +1,15 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Wed, 1 Jun 2016 16:09:41 +0800
-Message-ID: <574E9845.30501@rock-chips.com>
-References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com>
- <1464676811-7418-2-git-send-email-frank.wang@rock-chips.com>
- <6548390.RQDBBuPzBf@diego>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Wed, 01 Jun 2016 10:24:11 +0200
+Message-ID: <4816755.yFEaWXVu6I@wuerfel>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <8520D5D51A55D047800579B094147198258AF22F@XAP-PVEXMBX01.xlnx.xilinx.com>
+ <57482200.9090008@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6548390.RQDBBuPzBf@diego>
+In-Reply-To: <57482200.9090008-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,84 +19,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH54rWYiEK1NRB2eb7JE58TQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bharat Kumar Gogada <bharat.kumar.gogada-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Friday, May 27, 2016 6:31:28 PM CEST Wenrui Li wrote:
+> Hi,
+> 
+> On 2016/5/27 15:13, Bharat Kumar Gogada wrote:
+> >>>
+> >>>> +
+> >>>> +static int rockchip_pcie_rd_other_conf(struct rockchip_pcie_port *pp,
+> >>>> +                                 struct pci_bus *bus, u32 devfn,
+> >>>> +                                 int where, int size, u32 *val)
+> >>>> +{
+> >>>> +  u32 busdev;
+> >>>> +
+> >>>> +  busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
+> >>>> +                          PCI_FUNC(devfn), where);
+> >>>> +
+> >>>> +  if (busdev & (size - 1)) {
+> >>>> +          *val = 0;
+> >>>> +          return PCIBIOS_BAD_REGISTER_NUMBER;
+> >>>> +  }
+> >>>> +
+> >>>> +  if (size == 4) {
+> >>>> +          *val = readl(pp->reg_base + busdev);
+> >>>> +  } else if (size == 2) {
+> >>>> +          *val = readw(pp->reg_base + busdev);
+> >>>> +  } else if (size == 1) {
+> >>>> +          *val = readb(pp->reg_base + busdev);
+> >>>> +  } else {
+> >>>> +          *val = 0;
+> >>>> +          return PCIBIOS_BAD_REGISTER_NUMBER;
+> >>>> +  }
+> >>>> +  return PCIBIOS_SUCCESSFUL;
+> >>>> +}
+> >>>> +
+> >>>
+> >>> This looks like the normal ECAM operations, you could just call those.
+> >>
+> >> I read ECAM reference code, I found it not support ioremap config space
+> >> for each bus individually on 64-bit systems. Our soc is 64-bit system,
+> >> and bus0 config space base address is 0xfda00000, bus1 base address is
+> >> 0xf8100000. So I think it is not normal ECAM operations, I do not know
+> >> if I have understood correctly?
+> >>
+> > Hi,
+> >
+> > I think Arnd was suggesting to use generic config read/write calls, pci_generic_config_read/pci_generic_config_write
+> > which does above functionality.
+> 
+> Yeah, I seem the pci_generic_config_write use writew/writeb for byte and 
+> word write. but our SOC not support byte and word write in RC config 
+> spcace. So I redefine the the pci_ops.write
 
-On 05/31/2016 05:02 PM, Heiko St=FCbner wrote:
-> Hi Frank,
->
-> Am Dienstag, 31. Mai 2016, 14:40:10 schrieb Frank Wang:
->> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>   .../bindings/phy/phy-rockchip-inno-usb2.txt        |   48
->> ++++++++++++++++++++ 1 file changed, 48 insertions(+)
->>   create mode 100644
->> Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->>
->> diff --git
->> a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt new f=
-ile
->> mode 100644
->> index 0000000..4e537b2
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> @@ -0,0 +1,48 @@
->> +ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
->> +
->> +Required properties (phy (parent) node):
->> + - compatible: should contain:
->> +	* "rockchip,rk3366-usb2phy"
->> + - #clock-cells: should be 0.
->> + - clock-names: specify the 480m output clk name.
->> +
->> +Optional properties:
->> + - vbus_host-gpio: pull gpio high/low to control the host vbus power.
->
-> sorry for not catching that in our earlier talks, but I believe this shou=
-ld be
-> a regulator instead. See for example vcc5_host1, vcc5v_otg in rk3288-veyr=
-on-
-> chromebook.dtsi .
->
+Rihgt, that bug should be documented somewhere. You can also use
+the pci_generic_config_read32/pci_generic_config_write32 functions
+for this.
 
-That is OK, I will correct it in the next version.
+I wonder if we should add a more general way of treating type 1
+config space accesses differently, as a lot of host bridges have
+similar requirements, accessing the registers in a different place,
+different layout, or other constraints.
 
->
->> +Required nodes: a sub-node is required for each port the phy provides.
->> +		The sub-node name is used to identify host or otg port.
->> +
->> +Required properties (port (child) node):
->> + - #phy-cells: must be 0. See ./phy-bindings.txt for details.
->> + - interrupts: irq number for host/otg port.
->
-> make that something like:
-> Specify an interrupt for each entry in interrupt-names.
->
->> + - interrupt-names: interrupt name, in line with irq number.
->
-> make that something like:
-> Shall be "linestate" for the linestate interrupt.
+The patch below would make that very easy to do. Suggestions for
+better naming welcome.
 
-Yeah, Got it.
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
 
-> ---
->
-> You might want to add the bvalid and id interrupts for the otg phys as we=
-ll
-> already - would make handling legacy devicetree files easier. [=3D if the=
-y get
-> specified later, the driver would always need to also handle devicetrees =
-where
-> they aren't specified].
->
-
-Hmmm! you mean that I can specify these properties into documentation, =
-
-even if the driver have not handled (implemented) them in current?
-
-BR.
-Frank
+diff --git a/drivers/pci/access.c b/drivers/pci/access.c
+index d11cdbb8fba3..2f7dcaa63e1d 100644
+--- a/drivers/pci/access.c
++++ b/drivers/pci/access.c
+@@ -34,9 +34,12 @@ int pci_bus_read_config_##size \
+ 	u32 data = 0;							\
+ 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
+ 	raw_spin_lock_irqsave(&pci_lock, flags);			\
+-	res = bus->ops->read(bus, devfn, pos, len, &data);		\
++	if (bus->number == 0 && bus->ops->read0)			\
++		res = bus->ops->read0(bus, devfn, pos, len, &data);	\
++	else								\
++		res = bus->ops->read(bus, devfn, pos, len, &data);	\
+ 	*value = (type)data;						\
+-	raw_spin_unlock_irqrestore(&pci_lock, flags);		\
++	raw_spin_unlock_irqrestore(&pci_lock, flags);			\
+ 	return res;							\
+ }
+ 
+@@ -48,8 +51,11 @@ int pci_bus_write_config_##size \
+ 	unsigned long flags;						\
+ 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
+ 	raw_spin_lock_irqsave(&pci_lock, flags);			\
+-	res = bus->ops->write(bus, devfn, pos, len, value);		\
+-	raw_spin_unlock_irqrestore(&pci_lock, flags);		\
++	if (bus->number == 0 && bus->ops->write0)			\
++		res = bus->ops->write0(bus, devfn, pos, len, value);	\
++	else								\
++		res = bus->ops->write(bus, devfn, pos, len, value);	\
++	raw_spin_unlock_irqrestore(&pci_lock, flags);			\
+ 	return res;							\
+ }
+ 
+@@ -72,7 +78,11 @@ int pci_generic_config_read(struct pci_bus *bus, unsigned int devfn,
+ {
+ 	void __iomem *addr;
+ 
+-	addr = bus->ops->map_bus(bus, devfn, where);
++	if (bus->number == 0 && bus->ops->map_bus0)
++		addr = bus->ops->map_bus0(bus, devfn, where);
++	else
++		addr = bus->ops->map_bus(bus, devfn, where);
++
+ 	if (!addr) {
+ 		*val = ~0;
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+@@ -94,7 +104,10 @@ int pci_generic_config_write(struct pci_bus *bus, unsigned int devfn,
+ {
+ 	void __iomem *addr;
+ 
+-	addr = bus->ops->map_bus(bus, devfn, where);
++	if (bus->number == 0 && bus->ops->map_bus0)
++		addr = bus->ops->map_bus0(bus, devfn, where);
++	else
++		addr = bus->ops->map_bus(bus, devfn, where);
+ 	if (!addr)
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+ 
+@@ -114,7 +127,10 @@ int pci_generic_config_read32(struct pci_bus *bus, unsigned int devfn,
+ {
+ 	void __iomem *addr;
+ 
+-	addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
++	if (bus->number == 0 && bus->ops->map_bus0)
++		addr = bus->ops->map_bus0(bus, devfn, where);
++	else
++		addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
+ 	if (!addr) {
+ 		*val = ~0;
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+@@ -135,7 +151,10 @@ int pci_generic_config_write32(struct pci_bus *bus, unsigned int devfn,
+ 	void __iomem *addr;
+ 	u32 mask, tmp;
+ 
+-	addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
++	if (bus->number == 0 && bus->ops->map_bus0)
++		addr = bus->ops->map_bus0(bus, devfn, where);
++	else
++		addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
+ 	if (!addr)
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+ 
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index df41c4645911..1caae3bd7115 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -580,6 +580,9 @@ struct pci_ops {
+ 	void __iomem *(*map_bus)(struct pci_bus *bus, unsigned int devfn, int where);
+ 	int (*read)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 *val);
+ 	int (*write)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 val);
++	void __iomem *(*map_bus0)(struct pci_bus *bus, unsigned int devfn, int where);
++	int (*read0)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 *val);
++	int (*write0)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 val);
+ };
+ 
+ /*
