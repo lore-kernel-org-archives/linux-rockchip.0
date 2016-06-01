@@ -1,90 +1,74 @@
-From: Wadim Egorov <w.egorov@phytec.de>
-Subject: [RESEND PATCH v5 3/5] mfd: dt-bindings: Add RK818 device tree bindings document
-Date: Thu, 2 Jun 2016 08:50:26 +0200
-Message-ID: <1464850228-17244-3-git-send-email-w.egorov@phytec.de>
-References: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
+Date: Wed, 01 Jun 2016 22:37:28 +0200
+Message-ID: <4967020.J4dsRYGugq@wuerfel>
+References: <1464784332-3775650-1-git-send-email-arnd@arndb.de> <4890460.9IGW89muCc@wuerfel> <20160601190430.GA19546@localhost>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
+In-Reply-To: <20160601190430.GA19546@localhost>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, broonie@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hannes Reinecke <hare@suse.de>, Alex Williamson <alex.williamson@redhat.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK818 PMIC.
+On Wednesday, June 1, 2016 2:04:30 PM CEST Bjorn Helgaas wrote:
+> On Wed, Jun 01, 2016 at 05:41:53PM +0200, Arnd Bergmann wrote:
+> > On Wednesday, June 1, 2016 10:09:29 AM CEST Bjorn Helgaas wrote:
+> > > Hi Arnd,
+> > > 
+> > > On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
+> > > > A lot of PCI host bridges require different methods for initiating
+> > > > type 0 and type 1 config space accesses, leading to duplication of
+> > > > code.
+> > > > 
+> > > > This adds support for the two different kinds at the pci_ops
+> > > > level, with the newly added map_bridge/read_bridge/write_bridge
+> > > > operations for type 1 accesses.
+> > > > 
+> > > > When these are not set, we fall back to the regular map_bus/read/write
+> > > > operations, so all existing drivers keep working, and bridges that
+> > > > have identical operations continue to only require one set.
+> > > 
+> > > This adds new config accessor functions to struct pci_ops and makes
+> > > the callers responsible for figuring out which one to use.  The
+> > > benefit is to reduce code duplication in some host bridge drivers
+> > > (DesignWare and MVEBU so far).
+> > > 
+> > > From a design perspective, I'm not comfortable with moving this burden
+> > > from the host bridge drivers to the callers of the config accessors.
+> > ...
+> 
+> > Maybe we can simply change them to use the normal API and come up with
+> > a way to make the pci_ops harder to misuse? Would it make you feel better
+> > if we also renamed .read/.write into .read_type0/.write_type0 or something
+> > like that?
+> 
+> I'm trying to get a better feel for the tradeoff here.  It seems like
+> an API complication vs. code duplication.
+> 
+> I don't really think the callers should have to figure out which
+> accessor to use.  How much of a benefit do we really gain by
+> complicating the callers?  We've managed for quite a few years with
+> the current scheme, and it seems like only a couple new ARM platforms
+> would benefit.
 
-Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
-Acked-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 37 +++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 3 deletions(-)
+I just did a count of the implementations of pci_ops: I found 107
+instances of 'struct pci_ops', and 67 of them treat type0 and type1
+access differently in some form.
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 4ca6aab..9636ae8 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,7 +1,11 @@
--RK808 Power Management Integrated Circuit
-+RK8XX Power Management Integrated Circuit
-+
-+The rk8xx family current members:
-+rk808
-+rk818
- 
- Required properties:
--- compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk808", "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -13,6 +17,8 @@ Optional properties:
-   default output clock name
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
-+
-+Optional RK808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
- - vcc3-supply:  The input supply for DCDC_REG3
-@@ -29,7 +35,20 @@ Optional properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
- 
--Regulators: All the regulators of RK808 to be instantiated shall be
-+Optional RK818 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- boost-supply: The input supply for DCDC_BOOST
-+- vcc6-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc7-supply:  The input supply for LDO_REG3, LDO_REG5 and LDO_REG7
-+- vcc8-supply:  The input supply for LDO_REG4, LDO_REG6 and LDO_REG8
-+- vcc9-supply:  The input supply for LDO_REG9 and SWITCH_REG
-+- h_5v-supply:  The input supply for HDMI_SWITCH
-+- usb-supply:   The input supply for OTG_SWITCH
-+
-+Regulators: All the regulators of RK8XX to be instantiated shall be
- listed in a child node named 'regulators'. Each regulator is represented
- by a child node of the 'regulators' node.
- 
-@@ -48,6 +67,18 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
- 
-+Following regulators of the RK818 PMIC block are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK818 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9.
-+	- SWITCH_REG
-+	- HDMI_SWITCH
-+	- OTG_SWITCH
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
--- 
-1.9.1
+I'd estimate that about half of them, or roughly a third of the total
+instances would benefit from my change, if we were to do them again.
+Clearly there is no need to change the existing code here when it works,
+unless the benefit is very clear and the code is actively maintained.
+
+In some cases, the difference is only that the root bus has a limited
+set of devices that are allowed to be accessed, so there would
+likely be no benefit of this, compared to e.g. yet another callback
+that checks the validity.
+Some other instances have type0 registers at a different memory location
+from type1, some use different layout inside of that space, and some
+are completely different.
+
+	Arnd
