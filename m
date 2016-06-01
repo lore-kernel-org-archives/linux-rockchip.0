@@ -1,106 +1,103 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Wed, 1 Jun 2016 10:09:29 -0500
-Message-ID: <20160601150929.GA13882@localhost>
-References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
+Date: Wed, 1 Jun 2016 17:19:57 +0200
+Message-ID: <20160601151956.GA29316@ulmo.ba.sec>
+References: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="M9NhX3UHpAaciwkO"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
 Content-Disposition: inline
-In-Reply-To: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
-Sender: linux-pci-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hannes Reinecke <hare@suse.de>, Alex Williamson <alex.williamson@redhat.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, tfiga@chromium.org, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, dianders@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
+--M9NhX3UHpAaciwkO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
-> A lot of PCI host bridges require different methods for initiating
-> type 0 and type 1 config space accesses, leading to duplication of
-> code.
-> 
-> This adds support for the two different kinds at the pci_ops
-> level, with the newly added map_bridge/read_bridge/write_bridge
-> operations for type 1 accesses.
-> 
-> When these are not set, we fall back to the regular map_bus/read/write
-> operations, so all existing drivers keep working, and bridges that
-> have identical operations continue to only require one set.
-
-This adds new config accessor functions to struct pci_ops and makes
-the callers responsible for figuring out which one to use.  The
-benefit is to reduce code duplication in some host bridge drivers
-(DesignWare and MVEBU so far).
-
-From a design perspective, I'm not comfortable with moving this burden
-from the host bridge drivers to the callers of the config accessors.
-
-The pci_ops struct is a pretty low-level thing, but it is declared in
-include/linux/pci.h and while I think it's ugly to use it outside the
-PCI core, there's nothing that actually prevents that, and there are
-several places that do use it, including at least the ones below.  We
-could argue that many of these don't need updating because they don't
-need .read_bridge() accessors, but I don't think pci_ops users should
-be making assumptions like that.
-
-  arch/sparc/kernel/pci_schizo.c: pbm->pci_ops->read(pbm->pci_bus, 0, PCI_STATUS, 2, &stat);
-  arch/x86/pci/common.c:          return raw_pci_ops->read(domain, bus, devfn, reg, len, val);
-  arch/x86/pci/common.c:          return raw_pci_ext_ops->read(domain, bus, devfn, reg, len, val);
-  arch/x86/pci/intel_mid_pci.c:           if (raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
-  arch/x86/pci/intel_mid_pci.c:                   raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
-  arch/x86/pci/intel_mid_pci.c:           raw_pci_ext_ops->read(domain, busnum, devfn,
-  arch/x86/pci/intel_mid_pci.c:   return raw_pci_ext_ops->read(pci_domain_nr(bus), bus->number,
-  arch/x86/pci/mmconfig-shared.c: raw_pci_ops->read(0, 0, PCI_DEVFN(0, 0), 0xce, 2, &win);
-  arch/x86/pci/mmconfig-shared.c: raw_pci_ops->read(0, 0, PCI_DEVFN(0, 0), 0x48, 4, &pciexbar);
-  arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, PCI_DEVFN(0, 0), 0, 4, &l);
-  arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, PCI_DEVFN(0, 0), extcfg_regnum,
-  arch/x86/pci/mmconfig-shared.c:         raw_pci_ops->read(0, bus, devfn, 0, 4, &l);
-  drivers/pci/access.c:   res = bus->ops->read(bus, devfn, pos, len, &data);              \
-  drivers/pci/access.c:   ret = dev->bus->ops->read(dev->bus, dev->devfn,                 \
-  drivers/pci/access.c:   return dev->vpd->ops->read(dev, pos, count, buf);
-  drivers/pci/pci.c:      bus->ops->read(bus, dev->devfn, PCI_COMMAND, 4, &cmd_status_dword);
-  drivers/pci/pcie/aer/aer_inject.c:      rv = ops->read(bus, devfn, where, size, val);
-
-> In most cases, a driver will only have to override either map_bridge
-> or read_bridge/write_bridge but not both.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+On Wed, Jun 01, 2016 at 05:19:12PM +0800, Yakir Yang wrote:
+> There is a bug in RK3399 VOP, when bootloader/kernel only enable
+> VOP Big or VOP Little to display, then VOP IOMMU would failed to
+> reset at the initial time and VOP register couldn't write rightly.
+>=20
+> After do the pure reset of VOP module, then things back to right.
+>=20
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 > ---
-> This is slightly refined over what I had in the "Add PCIe driver for
-> Rockchip Soc" thread earlier, but probably not the final version yet,
-> so I'd like to get more feedback on it.
-> 
-> In particular, I think it may be useful to add a third set of
-> functions for the config space of devices that are directly attached
-> to the host bridge, as those are sometimes (designware, rcar, mvebu)
-> yet again different from the host bridge itself and from all other
-> devices. On the other hand, that adds further complexity that we
-> may want to leave out of the common code, and I honestly can't
-> seem to come up for a catchy name form the callbacks.
-> 
->  drivers/pci/access.c | 35 +++++++++++++++++++++++++++--------
->  include/linux/pci.h  |  3 +++
->  2 files changed, 30 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-> index d11cdbb8fba3..263606ece211 100644
-> --- a/drivers/pci/access.c
-> +++ b/drivers/pci/access.c
-> @@ -34,9 +34,12 @@ int pci_bus_read_config_##size \
->  	u32 data = 0;							\
->  	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
->  	raw_spin_lock_irqsave(&pci_lock, flags);			\
-> -	res = bus->ops->read(bus, devfn, pos, len, &data);		\
-> +	if (!bus->parent == 0 && bus->ops->read_bridge)			\
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/dr=
+m/rockchip/rockchip_drm_vop.c
+> index 1c4d5b5..4150323 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -1292,7 +1292,7 @@ static int vop_initial(struct vop *vop)
+>  {
+>  	const struct vop_data *vop_data =3D vop->data;
+>  	const struct vop_reg_data *init_table =3D vop_data->init_table;
+> -	struct reset_control *ahb_rst;
+> +	struct reset_control *ahb_rst, *axi_rst;
+>  	int i, ret;
+> =20
+>  	vop->hclk =3D devm_clk_get(vop->dev, "hclk_vop");
+> @@ -1331,6 +1331,19 @@ static int vop_initial(struct vop *vop)
+>  	}
+> =20
+>  	/*
+> +	 * do aclk_reset, reset all vop registers.
+> +	 */
+> +	axi_rst =3D devm_reset_control_get(vop->dev, "axi");
 
-  if (!bus->parent && ...) ?
+I don't think you want the managed version here since you only store
+this in a local variable and hence aren't going to need it afterwards.
+Just use reset_control_get() and ...
 
-> +		res = bus->ops->read_bridge(bus, devfn, pos, len, &data);	\
-> +	else								\
-> +		res = bus->ops->read(bus, devfn, pos, len, &data);	\
->  	*value = (type)data;						\
-> -	raw_spin_unlock_irqrestore(&pci_lock, flags);		\
-> +	raw_spin_unlock_irqrestore(&pci_lock, flags);			\
->  	return res;							\
->  }
+> +	if (IS_ERR(axi_rst)) {
+> +		dev_err(vop->dev, "failed to get axi reset\n");
+> +		ret =3D PTR_ERR(axi_rst);
+> +		goto err_disable_aclk;
+> +	}
+> +	reset_control_assert(axi_rst);
+> +	usleep_range(10, 20);
+> +	reset_control_deassert(axi_rst);
+
+call reset_control_put() here.
+
+> +
+> +	/*
+>  	 * do hclk_reset, reset all vop registers.
+>  	 */
+>  	ahb_rst =3D devm_reset_control_get(vop->dev, "ahb");
+
+This uses the same pattern, so you might want to consider reworking this
+as well, though it should be a separate patch.
+
+Thierry
+
+--M9NhX3UHpAaciwkO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJXTv0YAAoJEN0jrNd/PrOhqTEQALu/grUkCZsnE68wsq2QqvfN
+Q+Feb0AF11s2MO16dVpL6RPAaJPPWvpr11lQzo4shzusavR40FIO/8b6pOhNv+MJ
+4icEKDJdAJhFWSjGEJlJXeLTPktaPLrAIXEYGwiCnGp3SXyPre0ZppaO8D9QK/qA
+8fVd+HvlG+sYwQAcTZDO+nY1r/hXLxrp1fMh3lNSCtNt5F5Ux/XVw7hYEtT4dF5R
+QSnZov/kaIUpo/kL84Qzpnshd8lYKIzhFbnVKE69JkQ3uufSlwPV/6CiKOvpXGdF
+/YDfOJNuIDFAK66RcHAaVAUs5pxQ2JvYPE2V/U1xQ3i4LArbpehzEFG8lfM4uzxD
+lFkr42f6gFtsVEiESYzM0Pa1ACHZbMdVaAaFdjJBxg3x9gJfPm+Jt2/0ZYUZ3uZk
+GX+Tn6TYpFDHGFyH5zcl2bTGswmAlMmFd6OZSAsztdIl3qDVe+ePhok1w4ME1zu0
+jGhGYm2ksqg5CL01eaN2PC4MVxFsUZrAoYYTrCNnzoBjxfGxvcAaNi43NKLXGmxZ
+V3zt6auQm+evcV2E8RcU7CKyiy9YQJQkhZtkubSrzd3rpwMpjM2yNJh0521Ixq1J
+M2Dd/Oy0qyyyZMiHMdK1pcpW5ONazNLylyapxUA1sCLNI5xWmLaH0PHXY2i6sVP+
+y0Nw2+H5jOdh0hS7InVA
+=9MB7
+-----END PGP SIGNATURE-----
+
+--M9NhX3UHpAaciwkO--
