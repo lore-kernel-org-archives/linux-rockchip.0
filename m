@@ -1,100 +1,51 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: Re: [PATCH v3 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
-Date: Wed, 01 Jun 2016 17:03:13 +0800
-Message-ID: <574EA4D1.9080303@rock-chips.com>
-References: <1464348682-20831-1-git-send-email-william.wu@rock-chips.com> <e6c6407c-6a46-55c8-c048-cce4fc0e7fa8@cogentembedded.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
+Date: Wed,  1 Jun 2016 17:19:12 +0800
+Message-ID: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e6c6407c-6a46-55c8-c048-cce4fc0e7fa8@cogentembedded.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, tfiga@chromium.org
+Cc: daniel.vetter@ffwll.ch, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Thierry Reding <treding@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Sergei,
-
-On 05/27/2016 07:54 PM, Sergei Shtylyov wrote:
-> Hello.
->
-> On 5/27/2016 2:31 PM, William Wu wrote:
->
->> This patch documents the device tree documentation required for
->
->    Documents the documentation? :-)
-Ah, my commit log seems a little weird. I'll corrcet it next patch. 
-Thanks.:-)
->
->> Rockchip USB3.0 core wrapper consist of USB3.0 IP from Synopsys.
->
->    Consisting?
-I'll correct it next patch. Thanks again.
->
->> It could operate in device mode (SS, HS, FS) and host
->> mode (SS, HS, FS, LS).
->>
->> Signed-off-by: William Wu <william.wu@rock-chips.com>
->> ---
->> Changes in v3:
->> - add dwc3 address (Felipe)
->>
->> Changes in v2:
->> - add rockchip,dwc3.txt to Documentation/devicetree/bindings/ 
->> (Felipe, Brian)
->>
->>
->>  .../devicetree/bindings/usb/rockchip,dwc3.txt      | 45 
->> ++++++++++++++++++++++
->>  1 file changed, 45 insertions(+)
->>  create mode 100644 
->> Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
->>
->> diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt 
->> b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
->> new file mode 100644
->> index 0000000..0bb52fe
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
->> @@ -0,0 +1,45 @@
->> +Rockchip SuperSpeed DWC3 USB SoC controller
->> +
->> +Required properties:
->> +- compatible:    should contain "rockchip,dwc3"
->> +- clocks:        A list of phandle + clock-specifier pairs for the
->> +                clocks listed in clock-names
->> +- clock-names:    Should contain the following:
->> +  "clk_usb3otg0_ref"    Controller reference clk
->> +  "clk_usb3otg0_suspend"Controller suspend clk, can use 24 MHz or 32 
->> KHz
->> +  "aclk_usb3"        Master/Core clock, have to be >= 62.5 MHz for 
->> SS operation
->> +
->> +
->> +Optional clocks:
->> +  "aclk_usb3otg0"    Aclk for specific usb controller clock.
->> +  "aclk_usb3_rksoc_axi_perf"  USB AXI perf clock.  Not present on 
->> all platforms.
->> +  "aclk_usb3_grf"    USB grf clock.  Not present on all platforms.
->> +
->> +Required child node:
->> +A child node must exist to represent the core DWC3 IP block. The 
->> name of
->> +the node is not important. The content of the node is defined in 
->> dwc3.txt.
->> +
->> +Phy documentation is provided in the following places:
->
->    PHY.
-Actually, our phy driver and document is not ready yet. I just add it 
-here earlier. Add after we upload the phy driver and document, we can 
-fix the PHY here.
-Is that OK?
->
-> [...]
->
-> MBR, Sergei
->
->
->
->
+VGhlcmUgaXMgYSBidWcgaW4gUkszMzk5IFZPUCwgd2hlbiBib290bG9hZGVyL2tlcm5lbCBvbmx5
+IGVuYWJsZQpWT1AgQmlnIG9yIFZPUCBMaXR0bGUgdG8gZGlzcGxheSwgdGhlbiBWT1AgSU9NTVUg
+d291bGQgZmFpbGVkIHRvCnJlc2V0IGF0IHRoZSBpbml0aWFsIHRpbWUgYW5kIFZPUCByZWdpc3Rl
+ciBjb3VsZG4ndCB3cml0ZSByaWdodGx5LgoKQWZ0ZXIgZG8gdGhlIHB1cmUgcmVzZXQgb2YgVk9Q
+IG1vZHVsZSwgdGhlbiB0aGluZ3MgYmFjayB0byByaWdodC4KClNpZ25lZC1vZmYtYnk6IFlha2ly
+IFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTUgKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwg
+MTQgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDFjNGQ1YjUuLjQxNTAzMjMgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTI5Miw3ICsxMjkyLDcg
+QEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiB7CiAJY29uc3Qgc3Ry
+dWN0IHZvcF9kYXRhICp2b3BfZGF0YSA9IHZvcC0+ZGF0YTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3Jl
+Z19kYXRhICppbml0X3RhYmxlID0gdm9wX2RhdGEtPmluaXRfdGFibGU7Ci0Jc3RydWN0IHJlc2V0
+X2NvbnRyb2wgKmFoYl9yc3Q7CisJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3QsICpheGlf
+cnN0OwogCWludCBpLCByZXQ7CiAKIAl2b3AtPmhjbGsgPSBkZXZtX2Nsa19nZXQodm9wLT5kZXYs
+ICJoY2xrX3ZvcCIpOwpAQCAtMTMzMSw2ICsxMzMxLDE5IEBAIHN0YXRpYyBpbnQgdm9wX2luaXRp
+YWwoc3RydWN0IHZvcCAqdm9wKQogCX0KIAogCS8qCisJICogZG8gYWNsa19yZXNldCwgcmVzZXQg
+YWxsIHZvcCByZWdpc3RlcnMuCisJICovCisJYXhpX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9n
+ZXQodm9wLT5kZXYsICJheGkiKTsKKwlpZiAoSVNfRVJSKGF4aV9yc3QpKSB7CisJCWRldl9lcnIo
+dm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGF4aSByZXNldFxuIik7CisJCXJldCA9IFBUUl9FUlIo
+YXhpX3JzdCk7CisJCWdvdG8gZXJyX2Rpc2FibGVfYWNsazsKKwl9CisJcmVzZXRfY29udHJvbF9h
+c3NlcnQoYXhpX3JzdCk7CisJdXNsZWVwX3JhbmdlKDEwLCAyMCk7CisJcmVzZXRfY29udHJvbF9k
+ZWFzc2VydChheGlfcnN0KTsKKworCS8qCiAJICogZG8gaGNsa19yZXNldCwgcmVzZXQgYWxsIHZv
+cCByZWdpc3RlcnMuCiAJICovCiAJYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9w
+LT5kZXYsICJhaGIiKTsKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
