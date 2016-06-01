@@ -1,51 +1,63 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
-Date: Wed,  1 Jun 2016 17:19:12 +0800
-Message-ID: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, tfiga@chromium.org
-Cc: daniel.vetter@ffwll.ch, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Thierry Reding <treding@nvidia.com>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [RFC PATCH 0/4] rk3399 support ddr frequency scaling
+Date: Wed,  1 Jun 2016 17:35:35 +0800
+Message-ID: <1464773739-18152-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlcmUgaXMgYSBidWcgaW4gUkszMzk5IFZPUCwgd2hlbiBib290bG9hZGVyL2tlcm5lbCBvbmx5
-IGVuYWJsZQpWT1AgQmlnIG9yIFZPUCBMaXR0bGUgdG8gZGlzcGxheSwgdGhlbiBWT1AgSU9NTVUg
-d291bGQgZmFpbGVkIHRvCnJlc2V0IGF0IHRoZSBpbml0aWFsIHRpbWUgYW5kIFZPUCByZWdpc3Rl
-ciBjb3VsZG4ndCB3cml0ZSByaWdodGx5LgoKQWZ0ZXIgZG8gdGhlIHB1cmUgcmVzZXQgb2YgVk9Q
-IG1vZHVsZSwgdGhlbiB0aGluZ3MgYmFjayB0byByaWdodC4KClNpZ25lZC1vZmYtYnk6IFlha2ly
-IFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTUgKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwg
-MTQgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDFjNGQ1YjUuLjQxNTAzMjMgMTAwNjQ0Ci0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTI5Miw3ICsxMjkyLDcg
-QEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiB7CiAJY29uc3Qgc3Ry
-dWN0IHZvcF9kYXRhICp2b3BfZGF0YSA9IHZvcC0+ZGF0YTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3Jl
-Z19kYXRhICppbml0X3RhYmxlID0gdm9wX2RhdGEtPmluaXRfdGFibGU7Ci0Jc3RydWN0IHJlc2V0
-X2NvbnRyb2wgKmFoYl9yc3Q7CisJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3QsICpheGlf
-cnN0OwogCWludCBpLCByZXQ7CiAKIAl2b3AtPmhjbGsgPSBkZXZtX2Nsa19nZXQodm9wLT5kZXYs
-ICJoY2xrX3ZvcCIpOwpAQCAtMTMzMSw2ICsxMzMxLDE5IEBAIHN0YXRpYyBpbnQgdm9wX2luaXRp
-YWwoc3RydWN0IHZvcCAqdm9wKQogCX0KIAogCS8qCisJICogZG8gYWNsa19yZXNldCwgcmVzZXQg
-YWxsIHZvcCByZWdpc3RlcnMuCisJICovCisJYXhpX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9n
-ZXQodm9wLT5kZXYsICJheGkiKTsKKwlpZiAoSVNfRVJSKGF4aV9yc3QpKSB7CisJCWRldl9lcnIo
-dm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGF4aSByZXNldFxuIik7CisJCXJldCA9IFBUUl9FUlIo
-YXhpX3JzdCk7CisJCWdvdG8gZXJyX2Rpc2FibGVfYWNsazsKKwl9CisJcmVzZXRfY29udHJvbF9h
-c3NlcnQoYXhpX3JzdCk7CisJdXNsZWVwX3JhbmdlKDEwLCAyMCk7CisJcmVzZXRfY29udHJvbF9k
-ZWFzc2VydChheGlfcnN0KTsKKworCS8qCiAJICogZG8gaGNsa19yZXNldCwgcmVzZXQgYWxsIHZv
-cCByZWdpc3RlcnMuCiAJICovCiAJYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9w
-LT5kZXYsICJhaGIiKTsKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVsCg==
+rk3399 platform have dfi controller can monitor ddr load,
+and dcf controller to handle ddr register so we can get the
+right ddr frequency and make ddr controller happy work(which
+will implement in bl31). So we do ddr frequency scaling with
+following flow:
+
+	     kernel                                bl31
+
+	monitor ddr load
+		|
+		|
+	get_target_rate
+		|
+		|           pass rate to bl31
+	clk_set_rate(ddr) --------------------->run dcf flow
+		|                                   |
+		|                                   |
+	wait dcf interrupt<-------------------trigger dcf interrupt  
+		|
+		|
+	      return
+
+Lin Huang (4):
+  rockchip: rockchip: add new clock-type for the ddrclk
+  clk: rockchip: rk3399: add ddrc clock support
+  PM / devfreq: rockchip: add devfreq driver for rk3399 dmc
+  drm/rockchip: Add dmc notifier in vop driver
+
+ drivers/clk/rockchip/Makefile               |   1 +
+ drivers/clk/rockchip/clk-ddr.c              | 147 ++++++++++
+ drivers/clk/rockchip/clk-rk3399.c           |  16 +
+ drivers/clk/rockchip/clk.c                  |   9 +
+ drivers/clk/rockchip/clk.h                  |  27 ++
+ drivers/devfreq/Kconfig                     |   2 +-
+ drivers/devfreq/Makefile                    |   1 +
+ drivers/devfreq/rockchip/Kconfig            |  14 +
+ drivers/devfreq/rockchip/Makefile           |   2 +
+ drivers/devfreq/rockchip/rk3399_dmc.c       | 438 ++++++++++++++++++++++++++++
+ drivers/devfreq/rockchip/rockchip_dmc.c     | 132 +++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  51 +++-
+ include/dt-bindings/clock/rk3399-cru.h      |   1 +
+ include/soc/rockchip/rockchip_dmc.h         |  44 +++
+ 14 files changed, 882 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/clk/rockchip/clk-ddr.c
+ create mode 100644 drivers/devfreq/rockchip/Kconfig
+ create mode 100644 drivers/devfreq/rockchip/Makefile
+ create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+ create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
+ create mode 100644 include/soc/rockchip/rockchip_dmc.h
+
+-- 
+1.9.1
+
