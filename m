@@ -1,152 +1,234 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Wed,  1 Jun 2016 14:31:22 +0200
-Message-ID: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Hannes Reinecke <hare-l3A5Bk7waGM@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 3/3] pci: mvebu: use bridge config operations
+Date: Wed,  1 Jun 2016 14:31:24 +0200
+Message-ID: <1464784332-3775650-3-git-send-email-arnd@arndb.de>
+References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Jason Cooper <jason@lakedaemon.net>
+Cc: Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Russell King <rmk+kernel@arm.linux.org.uk>, Jisheng Zhang <jszhang@marvell.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-A lot of PCI host bridges require different methods for initiating
-type 0 and type 1 config space accesses, leading to duplication of
-code.
+This converts the pci-mvebu host driver to use the newly added pci_ops
+callbacks for handling the host config space.
 
-This adds support for the two different kinds at the pci_ops
-level, with the newly added map_bridge/read_bridge/write_bridge
-operations for type 1 accesses.
+After support for the emulator root bridge is removed, the normal operations
+can use pci_generic_config_read/pci_generic_config_write and we just need
+to provide a map_bus callback.
 
-When these are not set, we fall back to the regular map_bus/read/write
-operations, so all existing drivers keep working, and bridges that
-have identical operations continue to only require one set.
-
-In most cases, a driver will only have to override either map_bridge
-or read_bridge/write_bridge but not both.
-
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
-This is slightly refined over what I had in the "Add PCIe driver for
-Rockchip Soc" thread earlier, but probably not the final version yet,
-so I'd like to get more feedback on it.
+ drivers/pci/host/pci-mvebu.c | 158 ++++++++++++-------------------------------
+ 1 file changed, 42 insertions(+), 116 deletions(-)
 
-In particular, I think it may be useful to add a third set of
-functions for the config space of devices that are directly attached
-to the host bridge, as those are sometimes (designware, rcar, mvebu)
-yet again different from the host bridge itself and from all other
-devices. On the other hand, that adds further complexity that we
-may want to leave out of the common code, and I honestly can't
-seem to come up for a catchy name form the callbacks.
-
- drivers/pci/access.c | 35 +++++++++++++++++++++++++++--------
- include/linux/pci.h  |  3 +++
- 2 files changed, 30 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index d11cdbb8fba3..263606ece211 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -34,9 +34,12 @@ int pci_bus_read_config_##size \
- 	u32 data = 0;							\
- 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
- 	raw_spin_lock_irqsave(&pci_lock, flags);			\
--	res = bus->ops->read(bus, devfn, pos, len, &data);		\
-+	if (!bus->parent == 0 && bus->ops->read_bridge)			\
-+		res = bus->ops->read_bridge(bus, devfn, pos, len, &data);	\
-+	else								\
-+		res = bus->ops->read(bus, devfn, pos, len, &data);	\
- 	*value = (type)data;						\
--	raw_spin_unlock_irqrestore(&pci_lock, flags);		\
-+	raw_spin_unlock_irqrestore(&pci_lock, flags);			\
- 	return res;							\
- }
- 
-@@ -48,8 +51,11 @@ int pci_bus_write_config_##size \
- 	unsigned long flags;						\
- 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
- 	raw_spin_lock_irqsave(&pci_lock, flags);			\
--	res = bus->ops->write(bus, devfn, pos, len, value);		\
--	raw_spin_unlock_irqrestore(&pci_lock, flags);		\
-+	if (!bus->parent && bus->ops->write_bridge)			\
-+		res = bus->ops->write_bridge(bus, devfn, pos, len, value);\
-+	else								\
-+		res = bus->ops->write(bus, devfn, pos, len, value);	\
-+	raw_spin_unlock_irqrestore(&pci_lock, flags);			\
- 	return res;							\
- }
- 
-@@ -72,7 +78,11 @@ int pci_generic_config_read(struct pci_bus *bus, unsigned int devfn,
- {
- 	void __iomem *addr;
- 
--	addr = bus->ops->map_bus(bus, devfn, where);
-+	if (!bus->parent && bus->ops->map_bridge)
-+		addr = bus->ops->map_bridge(bus, devfn, where);
-+	else
-+		addr = bus->ops->map_bus(bus, devfn, where);
-+
- 	if (!addr) {
- 		*val = ~0;
- 		return PCIBIOS_DEVICE_NOT_FOUND;
-@@ -94,7 +104,10 @@ int pci_generic_config_write(struct pci_bus *bus, unsigned int devfn,
- {
- 	void __iomem *addr;
- 
--	addr = bus->ops->map_bus(bus, devfn, where);
-+	if (!bus->parent && bus->ops->map_bridge)
-+		addr = bus->ops->map_bridge(bus, devfn, where);
-+	else
-+		addr = bus->ops->map_bus(bus, devfn, where);
- 	if (!addr)
- 		return PCIBIOS_DEVICE_NOT_FOUND;
- 
-@@ -114,7 +127,10 @@ int pci_generic_config_read32(struct pci_bus *bus, unsigned int devfn,
- {
- 	void __iomem *addr;
- 
--	addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
-+	if (!bus->parent && bus->ops->map_bridge)
-+		addr = bus->ops->map_bridge(bus, devfn, where);
-+	else
-+		addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
- 	if (!addr) {
- 		*val = ~0;
- 		return PCIBIOS_DEVICE_NOT_FOUND;
-@@ -135,7 +151,10 @@ int pci_generic_config_write32(struct pci_bus *bus, unsigned int devfn,
- 	void __iomem *addr;
- 	u32 mask, tmp;
- 
--	addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
-+	if (!bus->parent && bus->ops->map_bridge)
-+		addr = bus->ops->map_bridge(bus, devfn, where);
-+	else
-+		addr = bus->ops->map_bus(bus, devfn, where & ~0x3);
- 	if (!addr)
- 		return PCIBIOS_DEVICE_NOT_FOUND;
- 
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index df41c4645911..2b1d08771b36 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -580,6 +580,9 @@ struct pci_ops {
- 	void __iomem *(*map_bus)(struct pci_bus *bus, unsigned int devfn, int where);
- 	int (*read)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 *val);
- 	int (*write)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 val);
-+	void __iomem *(*map_bridge)(struct pci_bus *bus, unsigned int devfn, int where);
-+	int (*read_bridge)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 *val);
-+	int (*write_bridge)(struct pci_bus *bus, unsigned int devfn, int where, int size, u32 val);
+diff --git a/drivers/pci/host/pci-mvebu.c b/drivers/pci/host/pci-mvebu.c
+index 6b451df6502c..9dff177e32eb 100644
+--- a/drivers/pci/host/pci-mvebu.c
++++ b/drivers/pci/host/pci-mvebu.c
+@@ -155,6 +155,11 @@ struct mvebu_pcie_port {
+ 	u32 saved_pcie_stat;
  };
  
++static inline struct mvebu_pcie *sys_to_pcie(struct pci_sys_data *sys)
++{
++	return sys->private_data;
++}
++
+ static inline void mvebu_writel(struct mvebu_pcie_port *port, u32 val, u32 reg)
+ {
+ 	writel(val, port->base + reg);
+@@ -273,56 +278,6 @@ static void mvebu_pcie_setup_hw(struct mvebu_pcie_port *port)
+ 	mvebu_writel(port, mask, PCIE_MASK_OFF);
+ }
+ 
+-static int mvebu_pcie_hw_rd_conf(struct mvebu_pcie_port *port,
+-				 struct pci_bus *bus,
+-				 u32 devfn, int where, int size, u32 *val)
+-{
+-	void __iomem *conf_data = port->base + PCIE_CONF_DATA_OFF;
+-
+-	mvebu_writel(port, PCIE_CONF_ADDR(bus->number, devfn, where),
+-		     PCIE_CONF_ADDR_OFF);
+-
+-	switch (size) {
+-	case 1:
+-		*val = readb_relaxed(conf_data + (where & 3));
+-		break;
+-	case 2:
+-		*val = readw_relaxed(conf_data + (where & 2));
+-		break;
+-	case 4:
+-		*val = readl_relaxed(conf_data);
+-		break;
+-	}
+-
+-	return PCIBIOS_SUCCESSFUL;
+-}
+-
+-static int mvebu_pcie_hw_wr_conf(struct mvebu_pcie_port *port,
+-				 struct pci_bus *bus,
+-				 u32 devfn, int where, int size, u32 val)
+-{
+-	void __iomem *conf_data = port->base + PCIE_CONF_DATA_OFF;
+-
+-	mvebu_writel(port, PCIE_CONF_ADDR(bus->number, devfn, where),
+-		     PCIE_CONF_ADDR_OFF);
+-
+-	switch (size) {
+-	case 1:
+-		writeb(val, conf_data + (where & 3));
+-		break;
+-	case 2:
+-		writew(val, conf_data + (where & 2));
+-		break;
+-	case 4:
+-		writel(val, conf_data);
+-		break;
+-	default:
+-		return PCIBIOS_BAD_REGISTER_NUMBER;
+-	}
+-
+-	return PCIBIOS_SUCCESSFUL;
+-}
+-
  /*
+  * Remove windows, starting from the largest ones to the smallest
+  * ones.
+@@ -624,6 +579,19 @@ static int mvebu_sw_pci_bridge_read(struct mvebu_pcie_port *port,
+ 	return PCIBIOS_SUCCESSFUL;
+ }
+ 
++static int mvebu_pcie_rd_bridge_conf(struct pci_bus *bus, u32 devfn, int where,
++				     int size, u32 *val)
++{
++	struct mvebu_pcie *pcie = sys_to_pcie(bus->sysdata);
++	struct mvebu_pcie_port *port;
++
++	for (port = pcie->ports; port < &pcie->ports[pcie->nports]; port++)
++		if (port->devfn == devfn)
++			return mvebu_sw_pci_bridge_read(port, where, size, val);
++
++	return PCIBIOS_DEVICE_NOT_FOUND;
++}
++
+ /* Write to the PCI-to-PCI bridge configuration space */
+ static int mvebu_sw_pci_bridge_write(struct mvebu_pcie_port *port,
+ 				     unsigned int where, int size, u32 value)
+@@ -750,90 +718,48 @@ static int mvebu_sw_pci_bridge_write(struct mvebu_pcie_port *port,
+ 	return PCIBIOS_SUCCESSFUL;
+ }
+ 
+-static inline struct mvebu_pcie *sys_to_pcie(struct pci_sys_data *sys)
+-{
+-	return sys->private_data;
+-}
+-
+-static struct mvebu_pcie_port *mvebu_pcie_find_port(struct mvebu_pcie *pcie,
+-						    struct pci_bus *bus,
+-						    int devfn)
+-{
+-	int i;
+-
+-	for (i = 0; i < pcie->nports; i++) {
+-		struct mvebu_pcie_port *port = &pcie->ports[i];
+-
+-		if (bus->number == 0 && port->devfn == devfn)
+-			return port;
+-		if (bus->number != 0 &&
+-		    bus->number >= port->bridge.secondary_bus &&
+-		    bus->number <= port->bridge.subordinate_bus)
+-			return port;
+-	}
+-
+-	return NULL;
+-}
+-
+-/* PCI configuration space write function */
+-static int mvebu_pcie_wr_conf(struct pci_bus *bus, u32 devfn,
+-			      int where, int size, u32 val)
++static int mvebu_pcie_wr_bridge_conf(struct pci_bus *bus, u32 devfn,
++				     int where, int size, u32 val)
+ {
+ 	struct mvebu_pcie *pcie = sys_to_pcie(bus->sysdata);
+ 	struct mvebu_pcie_port *port;
+-	int ret;
+-
+-	port = mvebu_pcie_find_port(pcie, bus, devfn);
+-	if (!port)
+-		return PCIBIOS_DEVICE_NOT_FOUND;
+-
+-	/* Access the emulated PCI-to-PCI bridge */
+-	if (bus->number == 0)
+-		return mvebu_sw_pci_bridge_write(port, where, size, val);
+-
+-	if (!mvebu_pcie_link_up(port))
+-		return PCIBIOS_DEVICE_NOT_FOUND;
+ 
+-	/* Access the real PCIe interface */
+-	ret = mvebu_pcie_hw_wr_conf(port, bus, devfn,
+-				    where, size, val);
++	for (port = pcie->ports; port < &pcie->ports[pcie->nports]; port++)
++		if (port->devfn == devfn)
++			return mvebu_sw_pci_bridge_write(port, where, size, val);
+ 
+-	return ret;
++	return PCIBIOS_DEVICE_NOT_FOUND;
+ }
+ 
+-/* PCI configuration space read function */
+-static int mvebu_pcie_rd_conf(struct pci_bus *bus, u32 devfn, int where,
+-			      int size, u32 *val)
++/* find normal config registers */
++static void __iomem *mvebu_pcie_map_conf(struct pci_bus *bus, u32 devfn, int where)
+ {
+ 	struct mvebu_pcie *pcie = sys_to_pcie(bus->sysdata);
+ 	struct mvebu_pcie_port *port;
+-	int ret;
++	u32 addr;
+ 
+-	port = mvebu_pcie_find_port(pcie, bus, devfn);
+-	if (!port) {
+-		*val = 0xffffffff;
+-		return PCIBIOS_DEVICE_NOT_FOUND;
+-	}
++	for (port = pcie->ports; port < &pcie->ports[pcie->nports]; port++) {
++		if (bus->number >= port->bridge.secondary_bus &&
++		    bus->number <= port->bridge.subordinate_bus) {
++			if (!mvebu_pcie_link_up(port))
++				return NULL;
+ 
+-	/* Access the emulated PCI-to-PCI bridge */
+-	if (bus->number == 0)
+-		return mvebu_sw_pci_bridge_read(port, where, size, val);
++			addr = PCIE_CONF_ADDR(bus->number, devfn, where);
++			mvebu_writel(port, addr, PCIE_CONF_ADDR_OFF);
+ 
+-	if (!mvebu_pcie_link_up(port)) {
+-		*val = 0xffffffff;
+-		return PCIBIOS_DEVICE_NOT_FOUND;
++			return port->base + PCIE_CONF_DATA_OFF + (where & 3);
++		}
+ 	}
+ 
+-	/* Access the real PCIe interface */
+-	ret = mvebu_pcie_hw_rd_conf(port, bus, devfn,
+-				    where, size, val);
+-
+-	return ret;
++	return NULL;
+ }
+ 
+ static struct pci_ops mvebu_pcie_ops = {
+-	.read = mvebu_pcie_rd_conf,
+-	.write = mvebu_pcie_wr_conf,
++	.read_bridge = mvebu_pcie_rd_bridge_conf,
++	.write_bridge = mvebu_pcie_wr_bridge_conf,
++	.map_bus = mvebu_pcie_map_conf,
++	.read = pci_generic_config_read,
++	.write = pci_generic_config_write,
+ };
+ 
+ static int mvebu_pcie_setup(int nr, struct pci_sys_data *sys)
 -- 
 2.7.0
