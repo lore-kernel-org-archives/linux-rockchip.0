@@ -1,58 +1,82 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Wed, 1 Jun 2016 14:04:30 -0500
-Message-ID: <20160601190430.GA19546@localhost>
-References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
- <20160601150929.GA13882@localhost>
- <4890460.9IGW89muCc@wuerfel>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 1/2] Documentation: bindings: add DT documentation for
+ Rockchip USB2PHY
+Date: Wed, 1 Jun 2016 17:02:35 -0500
+Message-ID: <CAL_JsqLPfKqNg0FqDUJpaQbeTA6g=wKpUh9Q8+zZ4Mo=yL-x_w@mail.gmail.com>
+References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com> <1464676811-7418-2-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4890460.9IGW89muCc@wuerfel>
-Sender: linux-pci-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hannes Reinecke <hare@suse.de>, Alex Williamson <alex.williamson@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1464676811-7418-2-git-send-email-frank.wang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux USB List <linux-usb@vger.kernel.org>, Kever Yang <kever.yang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, william.wu@rock-chips.com, frank.wang@rock-chips.com.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 01, 2016 at 05:41:53PM +0200, Arnd Bergmann wrote:
-> On Wednesday, June 1, 2016 10:09:29 AM CEST Bjorn Helgaas wrote:
-> > Hi Arnd,
-> > 
-> > On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
-> > > A lot of PCI host bridges require different methods for initiating
-> > > type 0 and type 1 config space accesses, leading to duplication of
-> > > code.
-> > > 
-> > > This adds support for the two different kinds at the pci_ops
-> > > level, with the newly added map_bridge/read_bridge/write_bridge
-> > > operations for type 1 accesses.
-> > > 
-> > > When these are not set, we fall back to the regular map_bus/read/write
-> > > operations, so all existing drivers keep working, and bridges that
-> > > have identical operations continue to only require one set.
-> > 
-> > This adds new config accessor functions to struct pci_ops and makes
-> > the callers responsible for figuring out which one to use.  The
-> > benefit is to reduce code duplication in some host bridge drivers
-> > (DesignWare and MVEBU so far).
-> > 
-> > From a design perspective, I'm not comfortable with moving this burden
-> > from the host bridge drivers to the callers of the config accessors.
-> ...
+On Tue, May 31, 2016 at 1:40 AM, Frank Wang <frank.wang@rock-chips.com> wrote:
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 
-> Maybe we can simply change them to use the normal API and come up with
-> a way to make the pci_ops harder to misuse? Would it make you feel better
-> if we also renamed .read/.write into .read_type0/.write_type0 or something
-> like that?
+Please resend to DT list.
 
-I'm trying to get a better feel for the tradeoff here.  It seems like
-an API complication vs. code duplication.
-
-I don't really think the callers should have to figure out which
-accessor to use.  How much of a benefit do we really gain by
-complicating the callers?  We've managed for quite a few years with
-the current scheme, and it seems like only a couple new ARM platforms
-would benefit.
-
-Bjorn
+> ---
+>  .../bindings/phy/phy-rockchip-inno-usb2.txt        |   48 ++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+>
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+> new file mode 100644
+> index 0000000..4e537b2
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+> @@ -0,0 +1,48 @@
+> +ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
+> +
+> +Required properties (phy (parent) node):
+> + - compatible: should contain:
+> +       * "rockchip,rk3366-usb2phy"
+> + - #clock-cells: should be 0.
+> + - clock-names: specify the 480m output clk name.
+> +
+> +Optional properties:
+> + - vbus_host-gpio: pull gpio high/low to control the host vbus power.
+> +
+> +Required nodes: a sub-node is required for each port the phy provides.
+> +               The sub-node name is used to identify host or otg port.
+> +
+> +Required properties (port (child) node):
+> + - #phy-cells: must be 0. See ./phy-bindings.txt for details.
+> + - interrupts: irq number for host/otg port.
+> + - interrupt-names: interrupt name, in line with irq number.
+> +
+> +Example:
+> +
+> +grf: syscon@ff770000 {
+> +       compatible = "rockchip,rk3366-grf", "syscon", "simple-mfd";
+> +       #address-cells = <1>;
+> +       #size-cells = <1>;
+> +
+> +...
+> +
+> +       u2phy: usb2-phy {
+> +               compatible = "rockchip,rk3366-usb2phy";
+> +               #clock-cells = <0>;
+> +               clock-output-names = "sclk_otgphy0_480m";
+> +
+> +               u2phy_otg: otg-port {
+> +                       #phy-cells = <0>;
+> +                       interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
+> +                       interrupt-names = "linestate";
+> +                       status = "okay";
+> +               };
+> +
+> +               u2phy_host: host-port {
+> +                       #phy-cells = <0>;
+> +                       interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+> +                       interrupt-names = "linestate";
+> +                       status = "okay";
+> +               };
+> +       };
+> +};
+> --
+> 1.7.9.5
+>
+>
