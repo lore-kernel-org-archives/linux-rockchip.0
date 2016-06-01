@@ -1,142 +1,62 @@
-From: Lin Huang <hl@rock-chips.com>
-Subject: [RFC PATCH 4/4] drm/rockchip: Add dmc notifier in vop driver
-Date: Wed,  1 Jun 2016 17:35:39 +0800
-Message-ID: <1464773739-18152-5-git-send-email-hl@rock-chips.com>
-References: <1464773739-18152-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464773739-18152-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org, Lin Huang <hl@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
+Date: Wed, 1 Jun 2016 17:49:32 +0800
+Message-ID: <574EAFAC.6010201@rock-chips.com>
+References: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>, Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, tfiga@chromium.org
+Cc: daniel.vetter@ffwll.ch, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Thierry Reding <treding@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-when in ddr frequency scaling process, vop can not do
-enable or disable operate, since dcf will base on vop vblank
-time to do frequency scaling and need to get vop irq if there
-have vop enabled. So need register to dmc notifier, and we can
-get the dmc status.
-
-Signed-off-by: Lin Huang <hl@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 51 +++++++++++++++++++++++++++--
- 1 file changed, 49 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 1c4d5b5..7ee0cd0 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -31,6 +31,8 @@
- #include <linux/reset.h>
- #include <linux/delay.h>
- 
-+#include <soc/rockchip/rockchip_dmc.h>
-+
- #include "rockchip_drm_drv.h"
- #include "rockchip_drm_gem.h"
- #include "rockchip_drm_fb.h"
-@@ -116,6 +118,9 @@ struct vop {
- 
- 	const struct vop_data *data;
- 
-+	struct notifier_block dmc_nb;
-+	int dmc_in_process;
-+
- 	uint32_t *regsbak;
- 	void __iomem *regs;
- 
-@@ -426,14 +431,41 @@ static void vop_dsp_hold_valid_irq_disable(struct vop *vop)
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
- }
- 
-+static int dmc_notify(struct notifier_block *nb, unsigned long event,
-+		      void *data)
-+{
-+	struct vop *vop = container_of(nb, struct vop, dmc_nb);
-+
-+	if (event == DMCFREQ_ADJUST)
-+		vop->dmc_in_process = 1;
-+	else if (event == DMCFREQ_FINISH)
-+		vop->dmc_in_process = 0;
-+
-+	return NOTIFY_OK;
-+}
-+
- static void vop_enable(struct drm_crtc *crtc)
- {
- 	struct vop *vop = to_vop(crtc);
- 	int ret;
-+	int timeout_count = 500;
-+	int timeout_loop = 0;
- 
- 	if (vop->is_enabled)
- 		return;
- 
-+	/*
-+	 * if in dmc scaling frequency process, wait until it finish
-+	 * use 100ms as timeout time.
-+	 */
-+	while (timeout_loop < timeout_count) {
-+		if (vop->dmc_in_process == 0)
-+			break;
-+
-+		timeout_loop++;
-+		usleep_range(150, 200);
-+	}
-+
- 	ret = pm_runtime_get_sync(vop->dev);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-@@ -485,6 +517,7 @@ static void vop_enable(struct drm_crtc *crtc)
- 	enable_irq(vop->irq);
- 
- 	drm_crtc_vblank_on(crtc);
-+	rockchip_dmc_get(&vop->dmc_nb);
- 
- 	return;
- 
-@@ -500,11 +533,25 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
- {
- 	struct vop *vop = to_vop(crtc);
- 	int i;
-+	int timeout_count = 500;
-+	int timeout_loop = 0;
- 
- 	if (!vop->is_enabled)
- 		return;
- 
- 	/*
-+	 * if in dmc scaling frequency process, wait until it finish
-+	 * use 100ms as timeout time.
-+	 */
-+	while (timeout_loop < timeout_count) {
-+		if (vop->dmc_in_process == 0)
-+			break;
-+
-+		timeout_loop++;
-+		usleep_range(150, 200);
-+	}
-+
-+	/*
- 	 * We need to make sure that all windows are disabled before we
- 	 * disable that crtc. Otherwise we might try to scan from a destroyed
- 	 * buffer later.
-@@ -517,7 +564,7 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
- 		VOP_WIN_SET(vop, win, enable, 0);
- 		spin_unlock(&vop->reg_lock);
- 	}
--
-+	rockchip_dmc_put(&vop->dmc_nb);
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
-@@ -1243,7 +1290,7 @@ static int vop_create_crtc(struct vop *vop)
- 		ret = -ENOENT;
- 		goto err_cleanup_crtc;
- 	}
--
-+	vop->dmc_nb.notifier_call = dmc_notify;
- 	init_completion(&vop->dsp_hold_completion);
- 	init_completion(&vop->wait_update_complete);
- 	crtc->port = port;
--- 
-1.9.1
+T24gMjAxNuW5tDA25pyIMDHml6UgMTc6MTksIFlha2lyIFlhbmcgd3JvdGU6Cj4gVGhlcmUgaXMg
+YSBidWcgaW4gUkszMzk5IFZPUCwgd2hlbiBib290bG9hZGVyL2tlcm5lbCBvbmx5IGVuYWJsZQo+
+IFZPUCBCaWcgb3IgVk9QIExpdHRsZSB0byBkaXNwbGF5LCB0aGVuIFZPUCBJT01NVSB3b3VsZCBm
+YWlsZWQgdG8KPiByZXNldCBhdCB0aGUgaW5pdGlhbCB0aW1lIGFuZCBWT1AgcmVnaXN0ZXIgY291
+bGRuJ3Qgd3JpdGUgcmlnaHRseS4KPgo+IEFmdGVyIGRvIHRoZSBwdXJlIHJlc2V0IG9mIFZPUCBt
+b2R1bGUsIHRoZW4gdGhpbmdzIGJhY2sgdG8gcmlnaHQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBZYWtp
+ciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+CkhpIFlha2lyCgpJIHRoaW5rIHlvdSBnZXQgdm9w
+IGlvbW11IHJlc2V0IGZhaWxlZCBzaG91bGQgYmUgSU9NTVUgUGFnZSBmYXVsdCwgdGhlIAp2b3Ag
+aW9tbXUgYWNjZXNzIGEgdW1tYXAgYWRkcmVzcy4KCllvdSBzaG91bGQgZW5zdXJlIGFsbCB2b3Ag
+d2luZG93cyBhY2Nlc3MgcmlnaHQgaW9tbXUgbWFwcGluZyBhZGRyZXNzIApiZWZvcmUgYXR0YWNo
+IGlvbW11LgoKQWN0dWFsbHksIEknbSB3b3JraW5nIG5vIGZsYXNoIGRpc3BsYXkgZnJvbSBib290
+bG9hZGVyIHRvIGtlcm5lbCwgYW5kIApwcmVwYXJlIHJlbW92ZSBhbGwgdGhlIHJlc2V0IG9uIHZv
+cCBpbml0aWFsLCBiZWNhdXNlIGl0IHdvdWxkIGZsYXNoIHRoZSAKZGlzcGxheS4KClRoYW5rcy4K
+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwg
+MTUgKysrKysrKysrKysrKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwg
+MSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jCj4gaW5kZXggMWM0ZDViNS4uNDE1MDMyMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0xMjkyLDcgKzEyOTIsNyBAQCBzdGF0
+aWMgaW50IHZvcF9pbml0aWFsKHN0cnVjdCB2b3AgKnZvcCkKPiAgIHsKPiAgIAljb25zdCBzdHJ1
+Y3Qgdm9wX2RhdGEgKnZvcF9kYXRhID0gdm9wLT5kYXRhOwo+ICAgCWNvbnN0IHN0cnVjdCB2b3Bf
+cmVnX2RhdGEgKmluaXRfdGFibGUgPSB2b3BfZGF0YS0+aW5pdF90YWJsZTsKPiAtCXN0cnVjdCBy
+ZXNldF9jb250cm9sICphaGJfcnN0Owo+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3Qs
+ICpheGlfcnN0Owo+ICAgCWludCBpLCByZXQ7Cj4gICAKPiAgIAl2b3AtPmhjbGsgPSBkZXZtX2Ns
+a19nZXQodm9wLT5kZXYsICJoY2xrX3ZvcCIpOwo+IEBAIC0xMzMxLDYgKzEzMzEsMTkgQEAgc3Rh
+dGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4gICAJfQo+ICAgCj4gICAJLyoK
+PiArCSAqIGRvIGFjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3AgcmVnaXN0ZXJzLgo+ICsJICovCj4g
+KwlheGlfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldCh2b3AtPmRldiwgImF4aSIpOwo+ICsJ
+aWYgKElTX0VSUihheGlfcnN0KSkgewo+ICsJCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8g
+Z2V0IGF4aSByZXNldFxuIik7Cj4gKwkJcmV0ID0gUFRSX0VSUihheGlfcnN0KTsKPiArCQlnb3Rv
+IGVycl9kaXNhYmxlX2FjbGs7Cj4gKwl9Cj4gKwlyZXNldF9jb250cm9sX2Fzc2VydChheGlfcnN0
+KTsKPiArCXVzbGVlcF9yYW5nZSgxMCwgMjApOwo+ICsJcmVzZXRfY29udHJvbF9kZWFzc2VydChh
+eGlfcnN0KTsKPiArCj4gKwkvKgo+ICAgCSAqIGRvIGhjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3Ag
+cmVnaXN0ZXJzLgo+ICAgCSAqLwo+ICAgCWFoYl9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0
+KHZvcC0+ZGV2LCAiYWhiIik7CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
