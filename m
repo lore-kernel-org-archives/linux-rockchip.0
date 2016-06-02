@@ -1,8 +1,7 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 01/45] powerpc: dma-mapping: Don't hard-code the value of
- DMA_ATTR_WEAK_ORDERING
-Date: Thu, 02 Jun 2016 17:39:03 +0200
-Message-ID: <1464881987-13203-2-git-send-email-k.kozlowski__18104.4264733375$1465601904$gmane$org@samsung.com>
+Subject: [RFC v3 07/45] avr32: dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:09 +0200
+Message-ID: <1464881987-13203-8-git-send-email-k.kozlowski__17327.9203045697$1465601912$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,27 +21,53 @@ To: Richard Henderson <rth-hL46jP5Bxq7R7s880joybQ@public.gmane.org>, Ivan Koksha
 Cc: hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hard-coded value of DMA_ATTR_WEAK_ORDERING is then compared with the
-symbol.  This will stop matching if the value of symbol is changed (when
-switching DMA attributes to unsigned long).
+Split out subsystem specific changes for easier reviews. This will be
+squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/powerpc/platforms/cell/iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/avr32/mm/dma-coherent.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/powerpc/platforms/cell/iommu.c b/arch/powerpc/platforms/cell/iommu.c
-index 14a582b21274..0c2794d2b6c0 100644
---- a/arch/powerpc/platforms/cell/iommu.c
-+++ b/arch/powerpc/platforms/cell/iommu.c
-@@ -1162,7 +1162,7 @@ static int __init setup_iommu_fixed(char *str)
- 	pciep = of_find_node_by_type(NULL, "pcie-endpoint");
+diff --git a/arch/avr32/mm/dma-coherent.c b/arch/avr32/mm/dma-coherent.c
+index 92cf1fb2b3e6..fc51f4421933 100644
+--- a/arch/avr32/mm/dma-coherent.c
++++ b/arch/avr32/mm/dma-coherent.c
+@@ -99,7 +99,7 @@ static void __dma_free(struct device *dev, size_t size,
+ }
  
- 	if (strcmp(str, "weak") == 0 || (pciep && strcmp(str, "strong") != 0))
--		iommu_fixed_is_weak = 1;
-+		iommu_fixed_is_weak = DMA_ATTR_WEAK_ORDERING;
+ static void *avr32_dma_alloc(struct device *dev, size_t size,
+-		dma_addr_t *handle, gfp_t gfp, struct dma_attrs *attrs)
++		dma_addr_t *handle, gfp_t gfp, unsigned long attrs)
+ {
+ 	struct page *page;
+ 	dma_addr_t phys;
+@@ -119,7 +119,7 @@ static void *avr32_dma_alloc(struct device *dev, size_t size,
+ }
  
- 	of_node_put(pciep);
+ static void avr32_dma_free(struct device *dev, size_t size,
+-		void *cpu_addr, dma_addr_t handle, struct dma_attrs *attrs)
++		void *cpu_addr, dma_addr_t handle, unsigned long attrs)
+ {
+ 	struct page *page;
  
+@@ -142,7 +142,7 @@ static void avr32_dma_free(struct device *dev, size_t size,
+ 
+ static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
+ 		unsigned long offset, size_t size,
+-		enum dma_data_direction direction, struct dma_attrs *attrs)
++		enum dma_data_direction direction, unsigned long attrs)
+ {
+ 	void *cpu_addr = page_address(page) + offset;
+ 
+@@ -152,7 +152,7 @@ static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
+ 
+ static int avr32_dma_map_sg(struct device *dev, struct scatterlist *sglist,
+ 		int nents, enum dma_data_direction direction,
+-		struct dma_attrs *attrs)
++		unsigned long attrs)
+ {
+ 	int i;
+ 	struct scatterlist *sg;
 -- 
 1.9.1
