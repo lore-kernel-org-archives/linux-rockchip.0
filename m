@@ -1,7 +1,8 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 27/45] hexagon: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:29 +0200
-Message-ID: <1464881987-13203-28-git-send-email-k.kozlowski__18505.9227551848$1465601928$gmane$org@samsung.com>
+Subject: [RFC v3 31/45] microblaze: dma-mapping: Use unsigned long for
+ dma_attrs
+Date: Thu, 02 Jun 2016 17:39:33 +0200
+Message-ID: <1464881987-13203-32-git-send-email-k.kozlowski__794.155200901692$1465601929$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,61 +27,79 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/hexagon/include/asm/dma-mapping.h | 1 -
- arch/hexagon/kernel/dma.c              | 8 ++++----
- 2 files changed, 4 insertions(+), 5 deletions(-)
+ arch/microblaze/include/asm/dma-mapping.h |  1 -
+ arch/microblaze/kernel/dma.c              | 12 ++++++------
+ 2 files changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/arch/hexagon/include/asm/dma-mapping.h b/arch/hexagon/include/asm/dma-mapping.h
-index aa6203464520..7ef58df909fc 100644
---- a/arch/hexagon/include/asm/dma-mapping.h
-+++ b/arch/hexagon/include/asm/dma-mapping.h
-@@ -26,7 +26,6 @@
+diff --git a/arch/microblaze/include/asm/dma-mapping.h b/arch/microblaze/include/asm/dma-mapping.h
+index 1884783d15c0..1768d4bdc8d3 100644
+--- a/arch/microblaze/include/asm/dma-mapping.h
++++ b/arch/microblaze/include/asm/dma-mapping.h
+@@ -25,7 +25,6 @@
  #include <linux/mm.h>
  #include <linux/scatterlist.h>
  #include <linux/dma-debug.h>
 -#include <linux/dma-attrs.h>
  #include <asm/io.h>
+ #include <asm/cacheflush.h>
  
- struct device;
-diff --git a/arch/hexagon/kernel/dma.c b/arch/hexagon/kernel/dma.c
-index 9e3ddf792bd3..b9017785fb71 100644
---- a/arch/hexagon/kernel/dma.c
-+++ b/arch/hexagon/kernel/dma.c
-@@ -51,7 +51,7 @@ static struct gen_pool *coherent_pool;
+diff --git a/arch/microblaze/kernel/dma.c b/arch/microblaze/kernel/dma.c
+index bf4dec229437..ec04dc1e2527 100644
+--- a/arch/microblaze/kernel/dma.c
++++ b/arch/microblaze/kernel/dma.c
+@@ -17,7 +17,7 @@
  
- static void *hexagon_dma_alloc_coherent(struct device *dev, size_t size,
- 				 dma_addr_t *dma_addr, gfp_t flag,
--				 struct dma_attrs *attrs)
-+				 unsigned long attrs)
+ static void *dma_direct_alloc_coherent(struct device *dev, size_t size,
+ 				       dma_addr_t *dma_handle, gfp_t flag,
+-				       struct dma_attrs *attrs)
++				       unsigned long attrs)
  {
- 	void *ret;
+ #ifdef NOT_COHERENT_CACHE
+ 	return consistent_alloc(flag, size, dma_handle);
+@@ -42,7 +42,7 @@ static void *dma_direct_alloc_coherent(struct device *dev, size_t size,
  
-@@ -84,7 +84,7 @@ static void *hexagon_dma_alloc_coherent(struct device *dev, size_t size,
- }
- 
- static void hexagon_free_coherent(struct device *dev, size_t size, void *vaddr,
--				  dma_addr_t dma_addr, struct dma_attrs *attrs)
-+				  dma_addr_t dma_addr, unsigned long attrs)
+ static void dma_direct_free_coherent(struct device *dev, size_t size,
+ 				     void *vaddr, dma_addr_t dma_handle,
+-				     struct dma_attrs *attrs)
++				     unsigned long attrs)
  {
- 	gen_pool_free(coherent_pool, (unsigned long) vaddr, size);
- }
-@@ -105,7 +105,7 @@ static int check_addr(const char *name, struct device *hwdev,
+ #ifdef NOT_COHERENT_CACHE
+ 	consistent_free(size, vaddr);
+@@ -53,7 +53,7 @@ static void dma_direct_free_coherent(struct device *dev, size_t size,
  
- static int hexagon_map_sg(struct device *hwdev, struct scatterlist *sg,
- 			  int nents, enum dma_data_direction dir,
--			  struct dma_attrs *attrs)
-+			  unsigned long attrs)
+ static int dma_direct_map_sg(struct device *dev, struct scatterlist *sgl,
+ 			     int nents, enum dma_data_direction direction,
+-			     struct dma_attrs *attrs)
++			     unsigned long attrs)
  {
- 	struct scatterlist *s;
+ 	struct scatterlist *sg;
  	int i;
-@@ -172,7 +172,7 @@ static inline void dma_sync(void *addr, size_t size,
- static dma_addr_t hexagon_map_page(struct device *dev, struct page *page,
- 				   unsigned long offset, size_t size,
- 				   enum dma_data_direction dir,
--				   struct dma_attrs *attrs)
-+				   unsigned long attrs)
+@@ -78,7 +78,7 @@ static inline dma_addr_t dma_direct_map_page(struct device *dev,
+ 					     unsigned long offset,
+ 					     size_t size,
+ 					     enum dma_data_direction direction,
+-					     struct dma_attrs *attrs)
++					     unsigned long attrs)
  {
- 	dma_addr_t bus = page_to_phys(page) + offset;
- 	WARN_ON(size == 0);
+ 	__dma_sync(page_to_phys(page) + offset, size, direction);
+ 	return page_to_phys(page) + offset;
+@@ -88,7 +88,7 @@ static inline void dma_direct_unmap_page(struct device *dev,
+ 					 dma_addr_t dma_address,
+ 					 size_t size,
+ 					 enum dma_data_direction direction,
+-					 struct dma_attrs *attrs)
++					 unsigned long attrs)
+ {
+ /* There is not necessary to do cache cleanup
+  *
+@@ -157,7 +157,7 @@ dma_direct_sync_sg_for_device(struct device *dev,
+ static
+ int dma_direct_mmap_coherent(struct device *dev, struct vm_area_struct *vma,
+ 			     void *cpu_addr, dma_addr_t handle, size_t size,
+-			     struct dma_attrs *attrs)
++			     unsigned long attrs)
+ {
+ #ifdef CONFIG_MMU
+ 	unsigned long user_count = (vma->vm_end - vma->vm_start) >> PAGE_SHIFT;
 -- 
 1.9.1
