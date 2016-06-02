@@ -1,78 +1,231 @@
-From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 01/13] pwm: Add new helpers to create/manipulate PWM
- states
-Date: Fri, 10 Jun 2016 18:47:46 +0200
-Message-ID: <20160610164746.GB8696@ulmo.ba.sec>
-References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465403688-17098-2-git-send-email-boris.brezillon@free-electrons.com>
- <20160610152109.GQ27142@ulmo.ba.sec>
- <20160610182942.5e7485ff@bbrezillon>
+From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [RFC v3 00/45] dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:02 +0200
+Message-ID: <1464881987-13203-1-git-send-email-k.kozlowski__26290.3834613555$1465601896$gmane$org@samsung.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="dc+cDN39EJAMEtIO"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160610182942.5e7485ff@bbrezillon>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Milo Kim <milo.kim-l0cyMroinI0@public.gmane.org>, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ajit Pal Singh <ajitpal.singh-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Richard Henderson <rth-hL46jP5Bxq7R7s880joybQ@public.gmane.org>, Ivan Kokshaysky <ink-biIs/Y0ymYJMZLIVYojuPNP0rXTJTi09@public.gmane.org>, Matt Turner <mattst88-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vineet Gupta <vgupta-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Stefano Stabellini <sstabellini-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Haavard Skinnemoen <hskinnemoen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans-Christian Egtvedt <egtvedt-BrfabpQBY5qlHtIdYg32fQ@public.gmane.org>, Steven Miao <realmz6-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Salter <msalter-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Aurelien Jacquiot <a-jacquiot-l0cyMroinI0@public.gmane.org>, Mikael Starvik <starvik-VrBV9hrLPhE@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Yoshinori Sato <ysato-Rn4VEauK+AKRv+LV9MX5uooqe+aC9MnS@public.gmane.org>, Richard Kuo <rkuo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Fenghua Yu <fenghua.yu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Konrad Rzeszutek Wilk <konrad.wilk-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, James Hogan <james.hogan-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>Michal Simek <mo>
+Cc: hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---dc+cDN39EJAMEtIO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 10, 2016 at 06:29:42PM +0200, Boris Brezillon wrote:
-> On Fri, 10 Jun 2016 17:21:09 +0200, Thierry Reding <thierry.reding@gmail.=
-com> wrote:
-> > On Wed, Jun 08, 2016 at 06:34:36PM +0200, Boris Brezillon wrote:
-[...]
-> > > + * according to your need before calling pwm_apply_state(). =20
-> >=20
-> > Maybe mention that the ->duty_cycle field is explicitly zeroed. Then
-> > again, do we really need it? If users are going to overwrite it anyway,
-> > do we even need to bother? I suppose it makes some sense because the
-> > current duty cycle is stale when the ->period gets set to the value from
-> > args. I think the documentation should mention this in some way.
->=20
-> Yes, if we keep the current duty_cycle it can exceed the period value.
-> I'm fine dropping the ->duty_cycle =3D 0 assignment and documenting the
-> behavior.
+This is third approach (complete this time) for replacing struct
+dma_attrs with unsigned long.
 
-Actually what I was trying to suggest is that we keep the code as-is but
-document the behaviour (and rationale behind it).
+The main patch (2/45) doing the change is split into many subpatches
+for easier review (3-43).  They should be squashed together when
+applying.
 
-I think it's fine to zero out the value precisely because it could
-become invalid after the function (and there's no other reasonable value
-to set it to). Just wanted to make sure it's all properly documented.
 
-Thierry
+*Important:* Patchset is *only* build tested on allyesconfigs: ARM,
+ARM64, i386, x86_64 and powerpc. Please provide reviewes and tests
+for other platforms.
 
---dc+cDN39EJAMEtIO
-Content-Type: application/pgp-signature; name="signature.asc"
+Rebased on next-20160602.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+For easier testing the patchset is available here:
+repo:   https://github.com/krzk/linux
+branch: for-next/dma-attrs-const-v3
 
-iQIcBAABCAAGBQJXWu8yAAoJEN0jrNd/PrOhZhgQALVk/163hWBe0x7iQpEwsnrc
-3Tfjwfiis9ACiwMsCz18zf0ZHHm3bKPkSm0oFGgJ4CJQRjDyXvv2rGZWKvzXT29p
-deUBwRe8jQ2KgeMlBjPDGEdM8NgCTgd+YB4G985Yb2F1B5xktK6W09c2bE+kCwsn
-X5X2EroaMMqn0L8ErLItNUt+vjkxt5g5S5oagCyZZ11QEklCYnAx+lWTK8aB8xTo
-VM5wcnEucmUZyuIz165QYx2x6oIx3EgdRkULiHuv4Mo4k3aR6yxasSEKBSfznpYv
-o0rMwe4ShZqUHIb/ctnwZ3fhSK9GSy43IIaIW1f6Mq6UHLpMd4p2uZQJzCmNyx/Q
-wp5haH/U6RWeNVUCXsM192O+ml5iwX8tSFGpspZ/oHnR5Y26pmwO2zFVQmO+4cOP
-EdHOgjXSehEq/oNBH0Fx54gQFIdQmbe6SuDrQXi+glzWrb8BSo59rWMovbz+QrXI
-YN8qTtZrzP7gnF0ezNajno+5ekgclfmRXxm0HNJ9nxLxP5zKK39Oit5crKJq0OyQ
-FD1rckyXzMJ71GvrCSpGTu2RWHjT7EppjiLFw4pGrkn5VQuznb2gDOG1odBrWS+p
-9PQg4f5TsLiaNAWWgE1ex5QMv+ApFJ41s3Alkwxo+O/CU4QQJCYFNjgqTfjTu1Er
-D8P2qQNzrRry/fyVMaVj
-=DUCF
------END PGP SIGNATURE-----
 
---dc+cDN39EJAMEtIO--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I didn't CC all the maintainers... the list is too big.
+
+Changes since v2
+================
+1. Follow Christoph Hellwig's comments (don't use BIT add
+   documentation, remove dma_get_attr).
+
+
+Rationale
+=========
+The dma-mapping core and the implementations do not change the
+DMA attributes passed by pointer.  Thus the pointer can point to const
+data.  However the attributes do not have to be a bitfield. Instead
+unsigned long will do fine:
+
+1. This is just simpler.  Both in terms of reading the code and setting
+   attributes.  Instead of initializing local attributes on the stack
+   and passing pointer to it to dma_set_attr(), just set the bits.
+
+2. It brings safeness and checking for const correctness because the
+   attributes are passed by value.
+
+
+Best regards,
+Krzysztof
+
+
+Krzysztof Kozlowski (45):
+  powerpc: dma-mapping: Don't hard-code the value of
+    DMA_ATTR_WEAK_ORDERING
+  dma-mapping: Use unsigned long for dma_attrs
+  alpha: dma-mapping: Use unsigned long for dma_attrs
+  arc: dma-mapping: Use unsigned long for dma_attrs
+  ARM: dma-mapping: Use unsigned long for dma_attrs
+  arm64: dma-mapping: Use unsigned long for dma_attrs
+  avr32: dma-mapping: Use unsigned long for dma_attrs
+  blackfin: dma-mapping: Use unsigned long for dma_attrs
+  c6x: dma-mapping: Use unsigned long for dma_attrs
+  cris: dma-mapping: Use unsigned long for dma_attrs
+  frv: dma-mapping: Use unsigned long for dma_attrs
+  drm/exynos: dma-mapping: Use unsigned long for dma_attrs
+  drm/mediatek: dma-mapping: Use unsigned long for dma_attrs
+  drm/msm: dma-mapping: Use unsigned long for dma_attrs
+  drm/nouveau: dma-mapping: Use unsigned long for dma_attrs
+  drm/rockship: dma-mapping: Use unsigned long for dma_attrs
+  infiniband: dma-mapping: Use unsigned long for dma_attrs
+  iommu: dma-mapping: Use unsigned long for dma_attrs
+  [media] dma-mapping: Use unsigned long for dma_attrs
+  xen: dma-mapping: Use unsigned long for dma_attrs
+  swiotlb: dma-mapping: Use unsigned long for dma_attrs
+  powerpc: dma-mapping: Use unsigned long for dma_attrs
+  video: dma-mapping: Use unsigned long for dma_attrs
+  x86: dma-mapping: Use unsigned long for dma_attrs
+  iommu: intel: dma-mapping: Use unsigned long for dma_attrs
+  h8300: dma-mapping: Use unsigned long for dma_attrs
+  hexagon: dma-mapping: Use unsigned long for dma_attrs
+  ia64: dma-mapping: Use unsigned long for dma_attrs
+  m68k: dma-mapping: Use unsigned long for dma_attrs
+  metag: dma-mapping: Use unsigned long for dma_attrs
+  microblaze: dma-mapping: Use unsigned long for dma_attrs
+  mips: dma-mapping: Use unsigned long for dma_attrs
+  mn10300: dma-mapping: Use unsigned long for dma_attrs
+  nios2: dma-mapping: Use unsigned long for dma_attrs
+  openrisc: dma-mapping: Use unsigned long for dma_attrs
+  parisc: dma-mapping: Use unsigned long for dma_attrs
+  misc: mic: dma-mapping: Use unsigned long for dma_attrs
+  s390: dma-mapping: Use unsigned long for dma_attrs
+  sh: dma-mapping: Use unsigned long for dma_attrs
+  sparc: dma-mapping: Use unsigned long for dma_attrs
+  tile: dma-mapping: Use unsigned long for dma_attrs
+  unicore32: dma-mapping: Use unsigned long for dma_attrs
+  xtensa: dma-mapping: Use unsigned long for dma_attrs
+  dma-mapping: Remove dma_get_attr
+  dma-mapping: Document the DMA attributes right in declaration
+
+ Documentation/DMA-API.txt                          |  33 +++---
+ Documentation/DMA-attributes.txt                   |   2 +-
+ arch/alpha/include/asm/dma-mapping.h               |   2 -
+ arch/alpha/kernel/pci-noop.c                       |   2 +-
+ arch/alpha/kernel/pci_iommu.c                      |  12 +-
+ arch/arc/mm/dma.c                                  |  12 +-
+ arch/arm/common/dmabounce.c                        |   4 +-
+ arch/arm/include/asm/dma-mapping.h                 |  13 +--
+ arch/arm/include/asm/xen/page-coherent.h           |  16 +--
+ arch/arm/mm/dma-mapping.c                          | 117 +++++++++----------
+ arch/arm/xen/mm.c                                  |   8 +-
+ arch/arm64/mm/dma-mapping.c                        |  67 +++++------
+ arch/avr32/mm/dma-coherent.c                       |  12 +-
+ arch/blackfin/kernel/dma-mapping.c                 |   8 +-
+ arch/c6x/include/asm/dma-mapping.h                 |   4 +-
+ arch/c6x/kernel/dma.c                              |   9 +-
+ arch/c6x/mm/dma-coherent.c                         |   4 +-
+ arch/cris/arch-v32/drivers/pci/dma.c               |   9 +-
+ arch/frv/mb93090-mb00/pci-dma-nommu.c              |   8 +-
+ arch/frv/mb93090-mb00/pci-dma.c                    |   9 +-
+ arch/h8300/kernel/dma.c                            |   8 +-
+ arch/hexagon/include/asm/dma-mapping.h             |   1 -
+ arch/hexagon/kernel/dma.c                          |   8 +-
+ arch/ia64/hp/common/sba_iommu.c                    |  22 ++--
+ arch/ia64/include/asm/machvec.h                    |   1 -
+ arch/ia64/kernel/pci-swiotlb.c                     |   4 +-
+ arch/ia64/sn/pci/pci_dma.c                         |  22 ++--
+ arch/m68k/kernel/dma.c                             |  12 +-
+ arch/metag/kernel/dma.c                            |  16 +--
+ arch/microblaze/include/asm/dma-mapping.h          |   1 -
+ arch/microblaze/kernel/dma.c                       |  12 +-
+ arch/mips/cavium-octeon/dma-octeon.c               |   8 +-
+ arch/mips/loongson64/common/dma-swiotlb.c          |  10 +-
+ arch/mips/mm/dma-default.c                         |  20 ++--
+ arch/mips/netlogic/common/nlm-dma.c                |   4 +-
+ arch/mn10300/mm/dma-alloc.c                        |   8 +-
+ arch/nios2/mm/dma-mapping.c                        |  12 +-
+ arch/openrisc/kernel/dma.c                         |  21 ++--
+ arch/parisc/kernel/pci-dma.c                       |  18 +--
+ arch/powerpc/include/asm/dma-mapping.h             |   7 +-
+ arch/powerpc/include/asm/iommu.h                   |  10 +-
+ arch/powerpc/kernel/dma-iommu.c                    |  12 +-
+ arch/powerpc/kernel/dma.c                          |  18 +--
+ arch/powerpc/kernel/ibmebus.c                      |  12 +-
+ arch/powerpc/kernel/iommu.c                        |  12 +-
+ arch/powerpc/kernel/vio.c                          |  12 +-
+ arch/powerpc/platforms/cell/iommu.c                |  26 ++---
+ arch/powerpc/platforms/pasemi/iommu.c              |   2 +-
+ arch/powerpc/platforms/powernv/npu-dma.c           |   8 +-
+ arch/powerpc/platforms/powernv/pci-ioda.c          |   4 +-
+ arch/powerpc/platforms/powernv/pci.c               |   2 +-
+ arch/powerpc/platforms/powernv/pci.h               |   2 +-
+ arch/powerpc/platforms/ps3/system-bus.c            |  18 +--
+ arch/powerpc/platforms/pseries/iommu.c             |   6 +-
+ arch/powerpc/sysdev/dart_iommu.c                   |   2 +-
+ arch/s390/include/asm/dma-mapping.h                |   1 -
+ arch/s390/pci/pci_dma.c                            |  23 ++--
+ arch/sh/include/asm/dma-mapping.h                  |   4 +-
+ arch/sh/kernel/dma-nommu.c                         |   4 +-
+ arch/sh/mm/consistent.c                            |   4 +-
+ arch/sparc/kernel/iommu.c                          |  12 +-
+ arch/sparc/kernel/ioport.c                         |  24 ++--
+ arch/sparc/kernel/pci_sun4v.c                      |  12 +-
+ arch/tile/kernel/pci-dma.c                         |  28 ++---
+ arch/unicore32/mm/dma-swiotlb.c                    |   4 +-
+ arch/x86/include/asm/dma-mapping.h                 |   5 +-
+ arch/x86/include/asm/swiotlb.h                     |   4 +-
+ arch/x86/include/asm/xen/page-coherent.h           |   9 +-
+ arch/x86/kernel/amd_gart_64.c                      |  20 ++--
+ arch/x86/kernel/pci-calgary_64.c                   |  14 +--
+ arch/x86/kernel/pci-dma.c                          |   4 +-
+ arch/x86/kernel/pci-nommu.c                        |   4 +-
+ arch/x86/kernel/pci-swiotlb.c                      |   4 +-
+ arch/x86/pci/sta2x11-fixup.c                       |   2 +-
+ arch/x86/pci/vmd.c                                 |  16 +--
+ arch/xtensa/kernel/pci-dma.c                       |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_fbdev.c          |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_g2d.c            |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_gem.c            |  20 ++--
+ drivers/gpu/drm/exynos/exynos_drm_gem.h            |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c             |  13 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h             |   2 +-
+ drivers/gpu/drm/msm/msm_drv.c                      |  13 +--
+ .../gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c    |  13 +--
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  17 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h        |   2 +-
+ drivers/infiniband/core/umem.c                     |   7 +-
+ drivers/iommu/amd_iommu.c                          |  12 +-
+ drivers/iommu/dma-iommu.c                          |   8 +-
+ drivers/iommu/intel-iommu.c                        |  12 +-
+ drivers/media/platform/sti/bdisp/bdisp-hw.c        |  26 ++---
+ drivers/media/v4l2-core/videobuf2-dma-contig.c     |  30 ++---
+ drivers/media/v4l2-core/videobuf2-dma-sg.c         |  19 +--
+ drivers/misc/mic/host/mic_boot.c                   |  20 ++--
+ drivers/parisc/ccio-dma.c                          |  16 +--
+ drivers/parisc/sba_iommu.c                         |  16 +--
+ drivers/video/fbdev/omap2/omapfb/omapfb-main.c     |  12 +-
+ drivers/video/fbdev/omap2/omapfb/omapfb.h          |   3 +-
+ drivers/xen/swiotlb-xen.c                          |  14 +--
+ include/linux/dma-attrs.h                          |  71 ------------
+ include/linux/dma-iommu.h                          |   6 +-
+ include/linux/dma-mapping.h                        | 128 ++++++++++++++-------
+ include/linux/swiotlb.h                            |  10 +-
+ include/media/videobuf2-dma-contig.h               |   7 +-
+ include/rdma/ib_verbs.h                            |   8 +-
+ include/xen/swiotlb-xen.h                          |  12 +-
+ lib/dma-noop.c                                     |   9 +-
+ lib/swiotlb.c                                      |  13 ++-
+ 108 files changed, 689 insertions(+), 788 deletions(-)
+ delete mode 100644 include/linux/dma-attrs.h
+
+-- 
+1.9.1
