@@ -1,52 +1,106 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: [PATCH 07/20] drm: mediatek: Rely on the default
-	->best_encoder() behavior
-Date: Thu,  2 Jun 2016 16:31:34 +0200
-Message-ID: <1464877907-27723-8-git-send-email-boris.brezillon@free-electrons.com>
-References: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
+Date: Thu, 02 Jun 2016 17:44:51 +0200
+Message-ID: <4288331.jNpl6KXlNO@wuerfel>
+References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
+ <4967020.J4dsRYGugq@wuerfel> <20160602140001.GB8262@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Stefan Agner <stefan@agner.ch>, virtualization@lists.linux-foundation.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kyungmin Park <kyungmin.park@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, linux-tegra@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Inki Dae <inki.dae@samsung.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160602140001.GB8262@localhost>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Hannes Reinecke <hare-l3A5Bk7waGM@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-V2UgaGF2ZSBhIDE6MSByZWxhdGlvbnNoaXAgYmV0d2VlbiBjb25uZWN0b3JzIGFuZCBlbmNvZGVy
-cyBhbmQgdGhlCmRyaXZlciBpcyByZWx5aW5nIG9uIHRoZSBhdG9taWMgaGVscGVyczogd2UgY2Fu
-IGRyb3AgdGhlIGN1c3RvbQotPmJlc3RfZW5jb2RlcigpIGltcGxlbWVudGF0aW9uIGFuZCBsZXQg
-dGhlIGNvcmUgY2FsbApkcm1fYXRvbWljX2hlbHBlcl9iZXN0X2VuY29kZXIoKSBmb3IgdXMuCgpT
-aWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBmcmVlLWVsZWN0
-cm9ucy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDkgLS0t
-LS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgOSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kc2kuYwppbmRleCAyZDgwOGU1Li43MzQzZmZjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHNpLmMKQEAgLTU3NSwxNCArNTc1LDYgQEAgc3RhdGljIGludCBtdGtfZHNpX2Nvbm5lY3Rv
-cl9nZXRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKIAlyZXR1cm4gZHJt
-X3BhbmVsX2dldF9tb2Rlcyhkc2ktPnBhbmVsKTsKIH0KIAotc3RhdGljIHN0cnVjdCBkcm1fZW5j
-b2RlciAqbXRrX2RzaV9jb25uZWN0b3JfYmVzdF9lbmNvZGVyKAotCQlzdHJ1Y3QgZHJtX2Nvbm5l
-Y3RvciAqY29ubmVjdG9yKQotewotCXN0cnVjdCBtdGtfZHNpICpkc2kgPSBjb25uZWN0b3JfdG9f
-ZHNpKGNvbm5lY3Rvcik7Ci0KLQlyZXR1cm4gJmRzaS0+ZW5jb2RlcjsKLX0KLQogc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MgbXRrX2RzaV9lbmNvZGVyX2hlbHBl
-cl9mdW5jcyA9IHsKIAkubW9kZV9maXh1cCA9IG10a19kc2lfZW5jb2Rlcl9tb2RlX2ZpeHVwLAog
-CS5tb2RlX3NldCA9IG10a19kc2lfZW5jb2Rlcl9tb2RlX3NldCwKQEAgLTYwMyw3ICs1OTUsNiBA
-QCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgbXRrX2RzaV9jb25uZWN0
-b3JfZnVuY3MgPSB7CiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfaGVscGVyX2Z1
-bmNzCiAJbXRrX2RzaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzID0gewogCS5nZXRfbW9kZXMgPSBt
-dGtfZHNpX2Nvbm5lY3Rvcl9nZXRfbW9kZXMsCi0JLmJlc3RfZW5jb2RlciA9IG10a19kc2lfY29u
-bmVjdG9yX2Jlc3RfZW5jb2RlciwKIH07CiAKIHN0YXRpYyBpbnQgbXRrX2RybV9hdHRhY2hfYnJp
-ZGdlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCi0tIAoyLjcuNAoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJ
-bnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
+On Thursday, June 2, 2016 9:00:01 AM CEST Bjorn Helgaas wrote:
+> On Wed, Jun 01, 2016 at 10:37:28PM +0200, Arnd Bergmann wrote:
+> > On Wednesday, June 1, 2016 2:04:30 PM CEST Bjorn Helgaas wrote:
+> > > On Wed, Jun 01, 2016 at 05:41:53PM +0200, Arnd Bergmann wrote:
+> > > > On Wednesday, June 1, 2016 10:09:29 AM CEST Bjorn Helgaas wrote:
+> > > > > Hi Arnd,
+> > > > > 
+> > > > > On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
+> > > > > > A lot of PCI host bridges require different methods for initiating
+> > > > > > type 0 and type 1 config space accesses, leading to duplication of
+> > > > > > code.
+> > > > > > 
+> > > > > > This adds support for the two different kinds at the pci_ops
+> > > > > > level, with the newly added map_bridge/read_bridge/write_bridge
+> > > > > > operations for type 1 accesses.
+> > > > > > 
+> > > > > > When these are not set, we fall back to the regular map_bus/read/write
+> > > > > > operations, so all existing drivers keep working, and bridges that
+> > > > > > have identical operations continue to only require one set.
+> > > > > 
+> > > > > This adds new config accessor functions to struct pci_ops and makes
+> > > > > the callers responsible for figuring out which one to use.  The
+> > > > > benefit is to reduce code duplication in some host bridge drivers
+> > > > > (DesignWare and MVEBU so far).
+> > > > > 
+> > > > > From a design perspective, I'm not comfortable with moving this burden
+> > > > > from the host bridge drivers to the callers of the config accessors.
+> > > > ...
+> > > 
+> > > > Maybe we can simply change them to use the normal API and come up with
+> > > > a way to make the pci_ops harder to misuse? Would it make you feel better
+> > > > if we also renamed .read/.write into .read_type0/.write_type0 or something
+> > > > like that?
+> > > 
+> > > I'm trying to get a better feel for the tradeoff here.  It seems like
+> > > an API complication vs. code duplication.
+> > > 
+> > > I don't really think the callers should have to figure out which
+> > > accessor to use.  How much of a benefit do we really gain by
+> > > complicating the callers?  We've managed for quite a few years with
+> > > the current scheme, and it seems like only a couple new ARM platforms
+> > > would benefit.
+> > 
+> > I just did a count of the implementations of pci_ops: I found 107
+> > instances of 'struct pci_ops', and 67 of them treat type0 and type1
+> > access differently in some form.
+> > 
+> > I'd estimate that about half of them, or roughly a third of the total
+> > instances would benefit from my change, if we were to do them again.
+> > Clearly there is no need to change the existing code here when it works,
+> > unless the benefit is very clear and the code is actively maintained.
+> > 
+> > In some cases, the difference is only that the root bus has a limited
+> > set of devices that are allowed to be accessed, so there would
+> > likely be no benefit of this, compared to e.g. yet another callback
+> > that checks the validity.
+> > Some other instances have type0 registers at a different memory location
+> > from type1, some use different layout inside of that space, and some
+> > are completely different.
+> 
+> The type0/type1 distinction still seems out of place to me at the call
+> site.  Is there any other reason a caller would care about the
+> difference between type0 and type1?
+
+Another idea based on my RFC patches to make pci_host_bridge the primary
+structure for probing PCI: we could split out the old 'bus::pci_ops' with
+the traditional read/write interface from a new structure that becomes
+pci_host_bridge::pci_host_bridge_ops, and also contains the other callbacks
+that we recently added to pci_ops, alongside type0/type1 accessors.
+
+We could then have a set of default pci_ops that call
+pci_host_bridge_ops->type0_read/type0_write/type1_read/type1_write,
+and those in turn get a pci_host_bridge as an argument along with the
+bus, device, function and register numbers instead of bus pointer
+and devfn/where.
+
+This way all existing code can keep working, but we can convert host
+drivers (if desired) to provide only pci_host_bridge_ops and no
+pci_ops, while making it easier to define those with a more modern
+interface.
+
+	Arnd
