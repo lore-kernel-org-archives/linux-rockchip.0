@@ -1,67 +1,206 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
-Date: Thu, 2 Jun 2016 11:11:41 +0800
-Message-ID: <574FA3ED.3000107@rock-chips.com>
-References: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
- <20160601151956.GA29316@ulmo.ba.sec>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Thu, 2 Jun 2016 11:19:39 +0800
+Message-ID: <574FA5CB.5020402@rock-chips.com>
+References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com>
+ <1464676811-7418-3-git-send-email-frank.wang@rock-chips.com>
+ <1915363.WKK5oRy4Me@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160601151956.GA29316@ulmo.ba.sec>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <treding@nvidia.com>
-Cc: linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, daniel.vetter@ffwll.ch, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1915363.WKK5oRy4Me@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: dianders@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDA2LzAxLzIwMTYgMTE6MTkgUE0sIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+IE9uIFdlZCwg
-SnVuIDAxLCAyMDE2IGF0IDA1OjE5OjEyUE0gKzA4MDAsIFlha2lyIFlhbmcgd3JvdGU6Cj4+IFRo
-ZXJlIGlzIGEgYnVnIGluIFJLMzM5OSBWT1AsIHdoZW4gYm9vdGxvYWRlci9rZXJuZWwgb25seSBl
-bmFibGUKPj4gVk9QIEJpZyBvciBWT1AgTGl0dGxlIHRvIGRpc3BsYXksIHRoZW4gVk9QIElPTU1V
-IHdvdWxkIGZhaWxlZCB0bwo+PiByZXNldCBhdCB0aGUgaW5pdGlhbCB0aW1lIGFuZCBWT1AgcmVn
-aXN0ZXIgY291bGRuJ3Qgd3JpdGUgcmlnaHRseS4KPj4KPj4gQWZ0ZXIgZG8gdGhlIHB1cmUgcmVz
-ZXQgb2YgVk9QIG1vZHVsZSwgdGhlbiB0aGluZ3MgYmFjayB0byByaWdodC4KPj4KPj4gU2lnbmVk
-LW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTUgKysrKysrKysrKysr
-KystCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkK
-Pj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGlu
-ZGV4IDFjNGQ1YjUuLjQxNTAzMjMgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYwo+PiBAQCAtMTI5Miw3ICsxMjkyLDcgQEAgc3RhdGljIGludCB2
-b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4+ICAgewo+PiAgIAljb25zdCBzdHJ1Y3Qgdm9w
-X2RhdGEgKnZvcF9kYXRhID0gdm9wLT5kYXRhOwo+PiAgIAljb25zdCBzdHJ1Y3Qgdm9wX3JlZ19k
-YXRhICppbml0X3RhYmxlID0gdm9wX2RhdGEtPmluaXRfdGFibGU7Cj4+IC0Jc3RydWN0IHJlc2V0
-X2NvbnRyb2wgKmFoYl9yc3Q7Cj4+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3QsICph
-eGlfcnN0Owo+PiAgIAlpbnQgaSwgcmV0Owo+PiAgIAo+PiAgIAl2b3AtPmhjbGsgPSBkZXZtX2Ns
-a19nZXQodm9wLT5kZXYsICJoY2xrX3ZvcCIpOwo+PiBAQCAtMTMzMSw2ICsxMzMxLDE5IEBAIHN0
-YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+PiAgIAl9Cj4+ICAgCj4+ICAg
-CS8qCj4+ICsJICogZG8gYWNsa19yZXNldCwgcmVzZXQgYWxsIHZvcCByZWdpc3RlcnMuCj4+ICsJ
-ICovCj4+ICsJYXhpX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9wLT5kZXYsICJheGki
-KTsKPiBJIGRvbid0IHRoaW5rIHlvdSB3YW50IHRoZSBtYW5hZ2VkIHZlcnNpb24gaGVyZSBzaW5j
-ZSB5b3Ugb25seSBzdG9yZQo+IHRoaXMgaW4gYSBsb2NhbCB2YXJpYWJsZSBhbmQgaGVuY2UgYXJl
-bid0IGdvaW5nIHRvIG5lZWQgaXQgYWZ0ZXJ3YXJkcy4KPiBKdXN0IHVzZSByZXNldF9jb250cm9s
-X2dldCgpIGFuZCAuLi4KCkdyZWF0LCBidXQgc2VlbXMgTWFyayB3b3VsZCBub3QgYWNjZXB0IHRo
-aXMgZml4IG5vdyA6KApNYXliZSBJIHNob3VsZCBmb3VuZCB0aGUgcm9vdCBjYXVzZSB3aHkgbXkg
-Ym9vdGxvYWRlci9rZXJuZWwgd291bGQgCmJyb2tlbiB0aGUgVk9QLgoKVGhhbmtzLAotIFlha2ly
-Cj4+ICsJaWYgKElTX0VSUihheGlfcnN0KSkgewo+PiArCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFp
-bGVkIHRvIGdldCBheGkgcmVzZXRcbiIpOwo+PiArCQlyZXQgPSBQVFJfRVJSKGF4aV9yc3QpOwo+
-PiArCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4+ICsJfQo+PiArCXJlc2V0X2NvbnRyb2xfYXNz
-ZXJ0KGF4aV9yc3QpOwo+PiArCXVzbGVlcF9yYW5nZSgxMCwgMjApOwo+PiArCXJlc2V0X2NvbnRy
-b2xfZGVhc3NlcnQoYXhpX3JzdCk7Cj4gY2FsbCByZXNldF9jb250cm9sX3B1dCgpIGhlcmUuCj4K
-Pj4gKwo+PiArCS8qCj4+ICAgCSAqIGRvIGhjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3AgcmVnaXN0
-ZXJzLgo+PiAgIAkgKi8KPj4gICAJYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9w
-LT5kZXYsICJhaGIiKTsKPiBUaGlzIHVzZXMgdGhlIHNhbWUgcGF0dGVybiwgc28geW91IG1pZ2h0
-IHdhbnQgdG8gY29uc2lkZXIgcmV3b3JraW5nIHRoaXMKPiBhcyB3ZWxsLCB0aG91Z2ggaXQgc2hv
-dWxkIGJlIGEgc2VwYXJhdGUgcGF0Y2guCj4KPiBUaGllcnJ5CgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Heiko,
+
+On 06/02/2016 07:46 AM, Heiko St=FCbner wrote:
+> Hi Frank,
+>
+> Am Dienstag, 31. Mai 2016, 14:40:11 schrieb Frank Wang:
+>> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
+>> than rk3288 and before, and most of phy-related registers are also
+>> different from the past, so a new phy driver is required necessarily=
+=2E
+>>
+>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+>> ---
+>
+> [...]
+>
+>> +static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
+>> +{
+>> +	struct rockchip_usb2phy *rphy =3D
+>> +		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
+>> +	int index;
+>> +
+>> +	/* make sure all ports in suspended mode */
+>> +	for (index =3D 0; index !=3D rphy->phy_cfg->num_ports; index++)
+>> +		if (!rphy->ports[index].suspended)
+>> +			return;
+>
+> This function can only get called when all clk-references have disabl=
+ed the
+> clock, so you should never reach that point that one phy port is not
+> suspended?
+>
+
+Yeah, you are right, I will clean them up in the next patches.
+
+>> +
+>> +	/* turn off 480m clk output */
+>> +	property_enable(rphy, &rphy->phy_cfg->clkout_ctl, false);
+>> +}
+>> +
+>
+> [...]
+>
+> add something like:
+>
+> static void rockchip_usb2phy_clk480m_unregister(void *data)
+> {
+> 	struct rockchip_usb2phy *rphy =3D data;
+>
+> 	of_clk_del_provider(rphy->dev->of_node);
+> 	clk_unregister(rphy->clk480m);
+> }
+>
+>> +static struct clk *
+>> +rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+>> +{
+>> +	struct device_node *node =3D rphy->dev->of_node;
+>> +	struct clk *clk;
+>> +	struct clk_init_data init;
+> 	int ret;
+>
+>> +
+>> +	init.name =3D "clk_usbphy_480m";
+>> +	init.ops =3D &rockchip_usb2phy_clkout_ops;
+>> +	init.flags =3D CLK_IS_ROOT;
+>> +	init.parent_names =3D NULL;
+>> +	init.num_parents =3D 0;
+>> +	rphy->clk480m_hw.init =3D &init;
+>> +
+>> +	/* optional override of the clockname */
+>> +	of_property_read_string(node, "clock-output-names", &init.name);
+>> +
+>> +	/* register the clock */
+>> +	clk =3D clk_register(rphy->dev, &rphy->clk480m_hw);
+> 	if (IS_ERR(clk))
+> 		return clk:
+>
+> 	ret =3D of_clk_add_provider(node, of_clk_src_simple_get, clk);
+> 	if (ret < 0)
+> 		goto err_clk_provider;
+>
+> 	ret =3D devm_add_action(rphy->dev, rockchip_usb2phy_clk480m_unregist=
+er,
+> rphy);
+> 	if (ret < 0)
+> 		goto err_unreg_action;
+>
+> 	return clk;
+>
+> err_unreg_action:
+> 	of_clk_del_provider(node);
+> err_clk_provider:
+> 	clk_unregister(clk);
+> 	return ERR_PTR(ret);
+>
+>> +}
+>
+
+Good comments! Those codes will be included in the next.
+
+> [...]
+>
+>> +/*
+>> + * The function manage host-phy port state and suspend/resume phy p=
+ort
+>> + * to save power.
+>> + *
+>> + * we rely on utmi_linestate and utmi_hostdisconnect to identify wh=
+ether
+>> + * FS/HS is disconnect or not. Besides, we do not need care it is F=
+S
+>> + * disconnected or HS disconnected, actually, we just only need get=
+ the
+>> + * device is disconnected at last through rearm the delayed work,
+>> + * to suspend the phy port in _PHY_STATE_DISCONNECT_ case.
+>> + *
+>> + * NOTE: It will invoke some clk related APIs, so do not invoke it =
+from
+>> + * interrupt context.
+>
+> This does not seem to match the code, as I don't see any clk_* calls,
+
+Sorry for not describing the comment clearly. In a fact, *_sm_work will=
+=20
+invoke *phy_suspend or *phy_resume which will invoke some *clk APIs.
+
+Anyway, I will correct it to be more clear.
+
+>
+>> + */
+>> +static void rockchip_usb2phy_sm_work(struct work_struct *work)
+>> +{
+ >> +
+>>  [...]
+ >> +
+>> +		/* fall through */
+>> +	case PHY_STATE_HS_CONNECT:
+>> +		if (rport->suspended) {
+>> +			dev_dbg(&rport->phy->dev, "HS/FS connected\n");
+>> +			rockchip_usb2phy_resume(rport->phy);
+>> +			rport->suspended =3D false;
+>> +		}
+>> +		break;
+>> +	case PHY_STATE_DISCONNECT:
+>> +		if (!rport->suspended) {
+>> +			dev_dbg(&rport->phy->dev, "HS/FS disconnected\n");
+>> +			rockchip_usb2phy_suspend(rport->phy);
+>> +			rport->suspended =3D true;
+>> +		}
+>>  [...]
+ >> +
+>> +	}
+>> +
+>> +next_schedule:
+>> +	mutex_unlock(&rport->mutex);
+>> +	schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
+>> +}
+>
+> [...]
+>
+>> +static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>> +{
+ >> +
+ >>  [...]
+ >> +
+>> +
+>> +	provider =3D devm_of_phy_provider_register(dev, of_phy_simple_xlat=
+e);
+>> +	return PTR_ERR_OR_ZERO(provider);
+>> +
+>> +put_child:
+>> +	of_node_put(child_np);
+>
+>> +	of_clk_del_provider(np);
+>> +	clk_unregister(rphy->clk480m);
+>
+> these two can go away, once you have the devm_action described
+> near your clk_register function.
+
+Done
+
+>
+>> +	return ret;
+>> +}
+
+BR.
+=46rank
