@@ -1,63 +1,67 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Thu, 2 Jun 2016 10:53:02 +0800
-Message-ID: <574F9F8E.5000801@rock-chips.com>
-References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com>
- <6548390.RQDBBuPzBf@diego> <574E9845.30501@rock-chips.com>
- <4799985.esYaUoo40j@diego>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: do axi reset in vop initial time
+Date: Thu, 2 Jun 2016 11:11:41 +0800
+Message-ID: <574FA3ED.3000107@rock-chips.com>
+References: <1464772752-9808-1-git-send-email-ykk@rock-chips.com>
+ <20160601151956.GA29316@ulmo.ba.sec>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4799985.esYaUoo40j@diego>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160601151956.GA29316@ulmo.ba.sec>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <treding@nvidia.com>
+Cc: linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, daniel.vetter@ffwll.ch, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 06/02/2016 06:17 AM, Heiko St=FCbner wrote:
-> Hi Frank,
->
-> Am Mittwoch, 1. Juni 2016, 16:09:41 schrieb Frank Wang:
->>> You might want to add the bvalid and id interrupts for the otg phys=
- as
->>> well
->>> already - would make handling legacy devicetree files easier. [=3D =
-if they
->>> get specified later, the driver would always need to also handle
->>> devicetrees where they aren't specified].
->>
->> Hmmm! you mean that I can specify these properties into documentatio=
-n,
->> even if the driver have not handled (implemented) them in current?
->
-> The devicetree bindings are supposed to be a generic hardware-descrip=
-tion.
-> And a driver then simply implements that binding. So if the interrupt=
- is part
-> of the hardware it can be part of the binding, independent of the dri=
-ver.
->
-> I guess it really comes down to, will you need those interrupts later=
- in the
-> driver, then they should definitly be specified now, as later on you =
-cannot
-> require them anymore and always need to also support devicetrees not =
-having
-> them.
->
-
-Got it, I have already added them in the new patches which I will hand=20
-out later.
-
-BR.
-=46rank
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Ck9uIDA2LzAxLzIwMTYgMTE6MTkgUE0sIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+IE9uIFdlZCwg
+SnVuIDAxLCAyMDE2IGF0IDA1OjE5OjEyUE0gKzA4MDAsIFlha2lyIFlhbmcgd3JvdGU6Cj4+IFRo
+ZXJlIGlzIGEgYnVnIGluIFJLMzM5OSBWT1AsIHdoZW4gYm9vdGxvYWRlci9rZXJuZWwgb25seSBl
+bmFibGUKPj4gVk9QIEJpZyBvciBWT1AgTGl0dGxlIHRvIGRpc3BsYXksIHRoZW4gVk9QIElPTU1V
+IHdvdWxkIGZhaWxlZCB0bwo+PiByZXNldCBhdCB0aGUgaW5pdGlhbCB0aW1lIGFuZCBWT1AgcmVn
+aXN0ZXIgY291bGRuJ3Qgd3JpdGUgcmlnaHRseS4KPj4KPj4gQWZ0ZXIgZG8gdGhlIHB1cmUgcmVz
+ZXQgb2YgVk9QIG1vZHVsZSwgdGhlbiB0aGluZ3MgYmFjayB0byByaWdodC4KPj4KPj4gU2lnbmVk
+LW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTUgKysrKysrKysrKysr
+KystCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkK
+Pj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGlu
+ZGV4IDFjNGQ1YjUuLjQxNTAzMjMgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwo+PiBAQCAtMTI5Miw3ICsxMjkyLDcgQEAgc3RhdGljIGludCB2
+b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4+ICAgewo+PiAgIAljb25zdCBzdHJ1Y3Qgdm9w
+X2RhdGEgKnZvcF9kYXRhID0gdm9wLT5kYXRhOwo+PiAgIAljb25zdCBzdHJ1Y3Qgdm9wX3JlZ19k
+YXRhICppbml0X3RhYmxlID0gdm9wX2RhdGEtPmluaXRfdGFibGU7Cj4+IC0Jc3RydWN0IHJlc2V0
+X2NvbnRyb2wgKmFoYl9yc3Q7Cj4+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3QsICph
+eGlfcnN0Owo+PiAgIAlpbnQgaSwgcmV0Owo+PiAgIAo+PiAgIAl2b3AtPmhjbGsgPSBkZXZtX2Ns
+a19nZXQodm9wLT5kZXYsICJoY2xrX3ZvcCIpOwo+PiBAQCAtMTMzMSw2ICsxMzMxLDE5IEBAIHN0
+YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+PiAgIAl9Cj4+ICAgCj4+ICAg
+CS8qCj4+ICsJICogZG8gYWNsa19yZXNldCwgcmVzZXQgYWxsIHZvcCByZWdpc3RlcnMuCj4+ICsJ
+ICovCj4+ICsJYXhpX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9wLT5kZXYsICJheGki
+KTsKPiBJIGRvbid0IHRoaW5rIHlvdSB3YW50IHRoZSBtYW5hZ2VkIHZlcnNpb24gaGVyZSBzaW5j
+ZSB5b3Ugb25seSBzdG9yZQo+IHRoaXMgaW4gYSBsb2NhbCB2YXJpYWJsZSBhbmQgaGVuY2UgYXJl
+bid0IGdvaW5nIHRvIG5lZWQgaXQgYWZ0ZXJ3YXJkcy4KPiBKdXN0IHVzZSByZXNldF9jb250cm9s
+X2dldCgpIGFuZCAuLi4KCkdyZWF0LCBidXQgc2VlbXMgTWFyayB3b3VsZCBub3QgYWNjZXB0IHRo
+aXMgZml4IG5vdyA6KApNYXliZSBJIHNob3VsZCBmb3VuZCB0aGUgcm9vdCBjYXVzZSB3aHkgbXkg
+Ym9vdGxvYWRlci9rZXJuZWwgd291bGQgCmJyb2tlbiB0aGUgVk9QLgoKVGhhbmtzLAotIFlha2ly
+Cj4+ICsJaWYgKElTX0VSUihheGlfcnN0KSkgewo+PiArCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFp
+bGVkIHRvIGdldCBheGkgcmVzZXRcbiIpOwo+PiArCQlyZXQgPSBQVFJfRVJSKGF4aV9yc3QpOwo+
+PiArCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4+ICsJfQo+PiArCXJlc2V0X2NvbnRyb2xfYXNz
+ZXJ0KGF4aV9yc3QpOwo+PiArCXVzbGVlcF9yYW5nZSgxMCwgMjApOwo+PiArCXJlc2V0X2NvbnRy
+b2xfZGVhc3NlcnQoYXhpX3JzdCk7Cj4gY2FsbCByZXNldF9jb250cm9sX3B1dCgpIGhlcmUuCj4K
+Pj4gKwo+PiArCS8qCj4+ICAgCSAqIGRvIGhjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3AgcmVnaXN0
+ZXJzLgo+PiAgIAkgKi8KPj4gICAJYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9w
+LT5kZXYsICJhaGIiKTsKPiBUaGlzIHVzZXMgdGhlIHNhbWUgcGF0dGVybiwgc28geW91IG1pZ2h0
+IHdhbnQgdG8gY29uc2lkZXIgcmV3b3JraW5nIHRoaXMKPiBhcyB3ZWxsLCB0aG91Z2ggaXQgc2hv
+dWxkIGJlIGEgc2VwYXJhdGUgcGF0Y2guCj4KPiBUaGllcnJ5CgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
