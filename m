@@ -1,7 +1,8 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 23/45] video: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:25 +0200
-Message-ID: <1464881987-13203-24-git-send-email-k.kozlowski__23380.5110598498$1465601922$gmane$org@samsung.com>
+Subject: [RFC v3 13/45] drm/mediatek: dma-mapping: Use unsigned long for
+ dma_attrs
+Date: Thu, 02 Jun 2016 17:39:15 +0200
+Message-ID: <1464881987-13203-14-git-send-email-k.kozlowski__44057.6109024279$1465601922$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,80 +27,72 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- drivers/video/fbdev/omap2/omapfb/omapfb-main.c | 12 ++++++------
- drivers/video/fbdev/omap2/omapfb/omapfb.h      |  3 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 13 ++++++-------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h |  2 +-
  2 files changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/video/fbdev/omap2/omapfb/omapfb-main.c b/drivers/video/fbdev/omap2/omapfb/omapfb-main.c
-index d3af01c94a58..59172a2185c0 100644
---- a/drivers/video/fbdev/omap2/omapfb/omapfb-main.c
-+++ b/drivers/video/fbdev/omap2/omapfb/omapfb-main.c
-@@ -1332,7 +1332,7 @@ static void omapfb_free_fbmem(struct fb_info *fbi)
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index fa2ec0cd00e8..7abc550ebc00 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -54,15 +54,14 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
  
- 	dma_free_attrs(fbdev->dev, rg->size, rg->token, rg->dma_handle,
--			&rg->attrs);
-+			rg->attrs);
+ 	obj = &mtk_gem->base;
  
- 	rg->token = NULL;
- 	rg->vaddr = NULL;
-@@ -1370,7 +1370,7 @@ static int omapfb_alloc_fbmem(struct fb_info *fbi, unsigned long size,
- 	struct omapfb2_device *fbdev = ofbi->fbdev;
- 	struct omapfb2_mem_region *rg;
- 	void *token;
--	DEFINE_DMA_ATTRS(attrs);
-+	unsigned long attrs;
- 	dma_addr_t dma_handle;
- 	int r;
+-	init_dma_attrs(&mtk_gem->dma_attrs);
+-	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &mtk_gem->dma_attrs);
++	mtk_gem->dma_attrs = DMA_ATTR_WRITE_COMBINE;
  
-@@ -1386,15 +1386,15 @@ static int omapfb_alloc_fbmem(struct fb_info *fbi, unsigned long size,
+ 	if (!alloc_kmap)
+-		dma_set_attr(DMA_ATTR_NO_KERNEL_MAPPING, &mtk_gem->dma_attrs);
++		mtk_gem->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
  
- 	size = PAGE_ALIGN(size);
+ 	mtk_gem->cookie = dma_alloc_attrs(priv->dma_dev, obj->size,
+ 					  &mtk_gem->dma_addr, GFP_KERNEL,
+-					  &mtk_gem->dma_attrs);
++					  mtk_gem->dma_attrs);
+ 	if (!mtk_gem->cookie) {
+ 		DRM_ERROR("failed to allocate %zx byte dma buffer", obj->size);
+ 		ret = -ENOMEM;
+@@ -93,7 +92,7 @@ void mtk_drm_gem_free_object(struct drm_gem_object *obj)
+ 		drm_prime_gem_destroy(obj, mtk_gem->sg);
+ 	else
+ 		dma_free_attrs(priv->dma_dev, obj->size, mtk_gem->cookie,
+-			       mtk_gem->dma_addr, &mtk_gem->dma_attrs);
++			       mtk_gem->dma_addr, mtk_gem->dma_attrs);
  
--	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &attrs);
-+	attrs = DMA_ATTR_WRITE_COMBINE;
+ 	/* release file pointer to gem object. */
+ 	drm_gem_object_release(obj);
+@@ -173,7 +172,7 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	vma->vm_pgoff = 0;
  
- 	if (ofbi->rotation_type == OMAP_DSS_ROT_VRFB)
--		dma_set_attr(DMA_ATTR_NO_KERNEL_MAPPING, &attrs);
-+		attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
+ 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
+-			     mtk_gem->dma_addr, obj->size, &mtk_gem->dma_attrs);
++			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
+ 	if (ret)
+ 		drm_gem_vm_close(vma);
  
- 	DBG("allocating %lu bytes for fb %d\n", size, ofbi->id);
+@@ -224,7 +223,7 @@ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj)
  
- 	token = dma_alloc_attrs(fbdev->dev, size, &dma_handle,
--			GFP_KERNEL, &attrs);
-+			GFP_KERNEL, attrs);
+ 	ret = dma_get_sgtable_attrs(priv->dma_dev, sgt, mtk_gem->cookie,
+ 				    mtk_gem->dma_addr, obj->size,
+-				    &mtk_gem->dma_attrs);
++				    mtk_gem->dma_attrs);
+ 	if (ret) {
+ 		DRM_ERROR("failed to allocate sgt, %d\n", ret);
+ 		kfree(sgt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+index 3a2a5624a1cb..2752718fa5b2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+@@ -35,7 +35,7 @@ struct mtk_drm_gem_obj {
+ 	void			*cookie;
+ 	void			*kvaddr;
+ 	dma_addr_t		dma_addr;
+-	struct dma_attrs	dma_attrs;
++	unsigned long		dma_attrs;
+ 	struct sg_table		*sg;
+ };
  
- 	if (token == NULL) {
- 		dev_err(fbdev->dev, "failed to allocate framebuffer\n");
-@@ -1408,7 +1408,7 @@ static int omapfb_alloc_fbmem(struct fb_info *fbi, unsigned long size,
- 		r = omap_vrfb_request_ctx(&rg->vrfb);
- 		if (r) {
- 			dma_free_attrs(fbdev->dev, size, token, dma_handle,
--					&attrs);
-+					attrs);
- 			dev_err(fbdev->dev, "vrfb create ctx failed\n");
- 			return r;
- 		}
-diff --git a/drivers/video/fbdev/omap2/omapfb/omapfb.h b/drivers/video/fbdev/omap2/omapfb/omapfb.h
-index 623cd872a367..8aaa2f643820 100644
---- a/drivers/video/fbdev/omap2/omapfb/omapfb.h
-+++ b/drivers/video/fbdev/omap2/omapfb/omapfb.h
-@@ -28,7 +28,6 @@
- #endif
- 
- #include <linux/rwsem.h>
--#include <linux/dma-attrs.h>
- #include <linux/dma-mapping.h>
- 
- #include <video/omapdss.h>
-@@ -51,7 +50,7 @@ extern bool omapfb_debug;
- 
- struct omapfb2_mem_region {
- 	int             id;
--	struct dma_attrs attrs;
-+	unsigned long	attrs;
- 	void		*token;
- 	dma_addr_t	dma_handle;
- 	u32		paddr;
 -- 
 1.9.1
