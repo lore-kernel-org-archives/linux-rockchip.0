@@ -1,7 +1,7 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 34/45] nios2: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:36 +0200
-Message-ID: <1464881987-13203-35-git-send-email-k.kozlowski__45351.7123045914$1465601941$gmane$org@samsung.com>
+Subject: [RFC v3 26/45] h8300: dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:28 +0200
+Message-ID: <1464881987-13203-27-git-send-email-k.kozlowski__46723.4011543498$1465601943$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,65 +26,47 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/nios2/mm/dma-mapping.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ arch/h8300/kernel/dma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/nios2/mm/dma-mapping.c b/arch/nios2/mm/dma-mapping.c
-index 90422c367ed3..d800fad87896 100644
---- a/arch/nios2/mm/dma-mapping.c
-+++ b/arch/nios2/mm/dma-mapping.c
-@@ -59,7 +59,7 @@ static inline void __dma_sync_for_cpu(void *vaddr, size_t size,
- }
+diff --git a/arch/h8300/kernel/dma.c b/arch/h8300/kernel/dma.c
+index eeb13d3f2424..3651da045806 100644
+--- a/arch/h8300/kernel/dma.c
++++ b/arch/h8300/kernel/dma.c
+@@ -12,7 +12,7 @@
  
- static void *nios2_dma_alloc(struct device *dev, size_t size,
--		dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
-+		dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
+ static void *dma_alloc(struct device *dev, size_t size,
+ 		       dma_addr_t *dma_handle, gfp_t gfp,
+-		       struct dma_attrs *attrs)
++		       unsigned long attrs)
  {
  	void *ret;
  
-@@ -84,7 +84,7 @@ static void *nios2_dma_alloc(struct device *dev, size_t size,
+@@ -32,7 +32,7 @@ static void *dma_alloc(struct device *dev, size_t size,
+ 
+ static void dma_free(struct device *dev, size_t size,
+ 		     void *vaddr, dma_addr_t dma_handle,
+-		     struct dma_attrs *attrs)
++		     unsigned long attrs)
+ 
+ {
+ 	free_pages((unsigned long)vaddr, get_order(size));
+@@ -41,14 +41,14 @@ static void dma_free(struct device *dev, size_t size,
+ static dma_addr_t map_page(struct device *dev, struct page *page,
+ 				  unsigned long offset, size_t size,
+ 				  enum dma_data_direction direction,
+-				  struct dma_attrs *attrs)
++				  unsigned long attrs)
+ {
+ 	return page_to_phys(page) + offset;
  }
  
- static void nios2_dma_free(struct device *dev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs)
-+		dma_addr_t dma_handle, unsigned long attrs)
+ static int map_sg(struct device *dev, struct scatterlist *sgl,
+ 		  int nents, enum dma_data_direction direction,
+-		  struct dma_attrs *attrs)
++		  unsigned long attrs)
  {
- 	unsigned long addr = (unsigned long) CAC_ADDR((unsigned long) vaddr);
- 
-@@ -93,7 +93,7 @@ static void nios2_dma_free(struct device *dev, size_t size, void *vaddr,
- 
- static int nios2_dma_map_sg(struct device *dev, struct scatterlist *sg,
- 		int nents, enum dma_data_direction direction,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
- {
- 	int i;
- 
-@@ -113,7 +113,7 @@ static int nios2_dma_map_sg(struct device *dev, struct scatterlist *sg,
- static dma_addr_t nios2_dma_map_page(struct device *dev, struct page *page,
- 			unsigned long offset, size_t size,
- 			enum dma_data_direction direction,
--			struct dma_attrs *attrs)
-+			unsigned long attrs)
- {
- 	void *addr = page_address(page) + offset;
- 
-@@ -123,14 +123,14 @@ static dma_addr_t nios2_dma_map_page(struct device *dev, struct page *page,
- 
- static void nios2_dma_unmap_page(struct device *dev, dma_addr_t dma_address,
- 		size_t size, enum dma_data_direction direction,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
- {
- 	__dma_sync_for_cpu(phys_to_virt(dma_address), size, direction);
- }
- 
- static void nios2_dma_unmap_sg(struct device *dev, struct scatterlist *sg,
- 		int nhwentries, enum dma_data_direction direction,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
- {
- 	void *addr;
+ 	struct scatterlist *sg;
  	int i;
 -- 
 1.9.1
