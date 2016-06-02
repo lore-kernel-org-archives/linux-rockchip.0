@@ -1,106 +1,199 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Thu, 02 Jun 2016 17:44:51 +0200
-Message-ID: <4288331.jNpl6KXlNO@wuerfel>
-References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
- <4967020.J4dsRYGugq@wuerfel> <20160602140001.GB8262@localhost>
+From: Javi Merino <javi.merino@arm.com>
+Subject: Re: [RESEND PATCH v4 1/5] thermal: Add support for hardware-tracked
+ trip points
+Date: Thu, 2 Jun 2016 18:30:13 +0100
+Message-ID: <20160602173012.GB2966@e104805>
+References: <1464338208-8105-1-git-send-email-wxt@rock-chips.com>
+ <1464338208-8105-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160602140001.GB8262@localhost>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Hannes Reinecke <hare-l3A5Bk7waGM@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1464338208-8105-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: edubezval@gmail.com, linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, peter@piie.net, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, Jonathan Corbet <corbet@lwn.net>, Laxman Dewangan <ldewangan@nvidia.com>, Andy Champ <andycham@amazon.com>, Ni Wade <wni@nvidia.com>, Leo Yan <leo.yan@linaro.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday, June 2, 2016 9:00:01 AM CEST Bjorn Helgaas wrote:
-> On Wed, Jun 01, 2016 at 10:37:28PM +0200, Arnd Bergmann wrote:
-> > On Wednesday, June 1, 2016 2:04:30 PM CEST Bjorn Helgaas wrote:
-> > > On Wed, Jun 01, 2016 at 05:41:53PM +0200, Arnd Bergmann wrote:
-> > > > On Wednesday, June 1, 2016 10:09:29 AM CEST Bjorn Helgaas wrote:
-> > > > > Hi Arnd,
-> > > > > 
-> > > > > On Wed, Jun 01, 2016 at 02:31:22PM +0200, Arnd Bergmann wrote:
-> > > > > > A lot of PCI host bridges require different methods for initiating
-> > > > > > type 0 and type 1 config space accesses, leading to duplication of
-> > > > > > code.
-> > > > > > 
-> > > > > > This adds support for the two different kinds at the pci_ops
-> > > > > > level, with the newly added map_bridge/read_bridge/write_bridge
-> > > > > > operations for type 1 accesses.
-> > > > > > 
-> > > > > > When these are not set, we fall back to the regular map_bus/read/write
-> > > > > > operations, so all existing drivers keep working, and bridges that
-> > > > > > have identical operations continue to only require one set.
-> > > > > 
-> > > > > This adds new config accessor functions to struct pci_ops and makes
-> > > > > the callers responsible for figuring out which one to use.  The
-> > > > > benefit is to reduce code duplication in some host bridge drivers
-> > > > > (DesignWare and MVEBU so far).
-> > > > > 
-> > > > > From a design perspective, I'm not comfortable with moving this burden
-> > > > > from the host bridge drivers to the callers of the config accessors.
-> > > > ...
-> > > 
-> > > > Maybe we can simply change them to use the normal API and come up with
-> > > > a way to make the pci_ops harder to misuse? Would it make you feel better
-> > > > if we also renamed .read/.write into .read_type0/.write_type0 or something
-> > > > like that?
-> > > 
-> > > I'm trying to get a better feel for the tradeoff here.  It seems like
-> > > an API complication vs. code duplication.
-> > > 
-> > > I don't really think the callers should have to figure out which
-> > > accessor to use.  How much of a benefit do we really gain by
-> > > complicating the callers?  We've managed for quite a few years with
-> > > the current scheme, and it seems like only a couple new ARM platforms
-> > > would benefit.
-> > 
-> > I just did a count of the implementations of pci_ops: I found 107
-> > instances of 'struct pci_ops', and 67 of them treat type0 and type1
-> > access differently in some form.
-> > 
-> > I'd estimate that about half of them, or roughly a third of the total
-> > instances would benefit from my change, if we were to do them again.
-> > Clearly there is no need to change the existing code here when it works,
-> > unless the benefit is very clear and the code is actively maintained.
-> > 
-> > In some cases, the difference is only that the root bus has a limited
-> > set of devices that are allowed to be accessed, so there would
-> > likely be no benefit of this, compared to e.g. yet another callback
-> > that checks the validity.
-> > Some other instances have type0 registers at a different memory location
-> > from type1, some use different layout inside of that space, and some
-> > are completely different.
+Hi Caesar,
+
+On Fri, May 27, 2016 at 04:36:44PM +0800, Caesar Wang wrote:
+> From: Sascha Hauer <s.hauer@pengutronix.de>
 > 
-> The type0/type1 distinction still seems out of place to me at the call
-> site.  Is there any other reason a caller would care about the
-> difference between type0 and type1?
+> This adds support for hardware-tracked trip points to the device tree
+> thermal sensor framework.
+> 
+> The framework supports an arbitrary number of trip points. Whenever
+> the current temperature is updated, the trip points immediately
+> below and above the current temperature are found. A .set_trips
+> callback is then called with the temperatures. If there is no trip
+> point above or below the current temperature, the passed trip
+> temperature will be -INT_MAX or INT_MAX respectively. In this callback,
+> the driver should program the hardware such that it is notified
+> when either of these trip points are triggered. When a trip point
+> is triggered, the driver should call `thermal_zone_device_update'
+> for the respective thermal zone. This will cause the trip points
+> to be updated again.
+> 
+> If .set_trips is not implemented, the framework behaves as before.
+> 
+> This patch is based on an earlier version from Mikko Perttunen
+> <mikko.perttunen@kapsi.fi>
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Zhang Rui <rui.zhang@intel.com>
+> Cc: Eduardo Valentin <edubezval@gmail.com>
+> Cc: linux-pm@vger.kernel.org
+> 
+> ---
+> 
+> Changes in v4:
+> - Missing the lock added in v3.
+> 
+> Changes in v3:
+> - as Javi comments on https://patchwork.kernel.org/patch/9001281/.
+> - add the lock for preventing the called from multi placce
+> - add the note for pre_low/high_trip.
+> 
+> Changes in v2:
+> - update the sysfs-api.txt for set_trips.
+> 
+>  Documentation/thermal/sysfs-api.txt |  7 +++++
+>  drivers/thermal/thermal_core.c      | 56 +++++++++++++++++++++++++++++++++++++
+>  include/linux/thermal.h             |  7 +++++
+>  3 files changed, 70 insertions(+)
+> 
+> diff --git a/Documentation/thermal/sysfs-api.txt b/Documentation/thermal/sysfs-api.txt
+> index efc3f3d..75d8838 100644
+> --- a/Documentation/thermal/sysfs-api.txt
+> +++ b/Documentation/thermal/sysfs-api.txt
+> @@ -49,6 +49,9 @@ temperature) and throttle appropriate devices.
+>  	.bind: bind the thermal zone device with a thermal cooling device.
+>  	.unbind: unbind the thermal zone device with a thermal cooling device.
+>  	.get_temp: get the current temperature of the thermal zone.
+> +	.set_trips: set the trip points window. Whenever the current temperature
+> +		    is updated, the trip points immediately below and above the
+> +		    current temperature are found.
+>  	.get_mode: get the current mode (enabled/disabled) of the thermal zone.
+>  	    - "enabled" means the kernel thermal management is enabled.
+>  	    - "disabled" will prevent kernel thermal driver action upon trip points
+> @@ -95,6 +98,10 @@ temperature) and throttle appropriate devices.
+>  			get_temp:	a pointer to a function that reads the
+>  					sensor temperature. This is mandatory
+>  					callback provided by sensor driver.
+> +			set_trips:      a pointer to a function that sets a
+> +					temperature window. When this window is
+> +					left the driver must inform the thermal
+> +					core via thermal_zone_device_update.
+>  			get_trend: 	a pointer to a function that reads the
+>  					sensor temperature trend.
+>  			set_emul_temp:	a pointer to a function that sets
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+> index 5133cd1..0591438 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -520,6 +520,55 @@ exit:
+>  }
+>  EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
+>  
+> +static void thermal_zone_set_trips(struct thermal_zone_device *tz)
+> +{
+> +	int low = -INT_MAX;
+> +	int high = INT_MAX;
+> +	int trip_temp, hysteresis;
+> +	int temp = tz->temperature;
+> +	int i, ret;
+> +
+> +	if (!tz->ops->set_trips)
+> +		return;
+> +
+> +	for (i = 0; i < tz->trips; i++) {
+> +		int trip_low;
+> +
+> +		tz->ops->get_trip_temp(tz, i, &trip_temp);
+> +		tz->ops->get_trip_hyst(tz, i, &hysteresis);
+> +
+> +		trip_low = trip_temp - hysteresis;
 
-Another idea based on my RFC patches to make pci_host_bridge the primary
-structure for probing PCI: we could split out the old 'bus::pci_ops' with
-the traditional read/write interface from a new structure that becomes
-pci_host_bridge::pci_host_bridge_ops, and also contains the other callbacks
-that we recently added to pci_ops, alongside type0/type1 accessors.
+You only use the hysteresis for the low trip point and not for the
+high trip point.  Shouldn't you also add:
 
-We could then have a set of default pci_ops that call
-pci_host_bridge_ops->type0_read/type0_write/type1_read/type1_write,
-and those in turn get a pci_host_bridge as an argument along with the
-bus, device, function and register numbers instead of bus pointer
-and devfn/where.
+		trip_high = trip_temp + hysteresis;
 
-This way all existing code can keep working, but we can convert host
-drivers (if desired) to provide only pci_host_bridge_ops and no
-pci_ops, while making it easier to define those with a more modern
-interface.
+...
 
-	Arnd
+> +
+> +		if (trip_low < temp && trip_low > low)
+> +			low = trip_low;
+> +
+> +		if (trip_temp > temp && trip_temp < high)
+> +			high = trip_temp;
+
+... and here:
+
+		if (trip_high > temp && trip_high < high)
+			high = trip_high;
+
+> +	}
+> +
+> +	/* No need to change trip points */
+> +	if (tz->prev_low_trip == low && tz->prev_high_trip == high)
+> +		return;
+> +
+> +	mutex_lock(&tz->lock);
+
+I think you should get the lock for the whole function, including the
+read of tz->temperature .  I know I said that the lock should be
+acquired before the if condition before but thinking about it, I think
+there may be a race condition if userspace updates the hysteresis
+while thermal_zone_device_update() is updating the temperature: you
+could have the cpu that is updating the hysteresis seeing the old
+temperature while the cpu that is updating the temperature would see
+the old hysteresis.  I think it's safer if this whole function is
+protected from the lock, from the read of tz->temperature until the
+end.
+
+Cheers,
+Javi
+
+> +
+> +	tz->prev_low_trip = low;
+> +	tz->prev_high_trip = high;
+> +
+> +	dev_dbg(&tz->device, "new temperature boundaries: %d < x < %d\n",
+> +			low, high);
+> +
+> +	/*
+> +	 * Set a temperature window. When this window is left the driver
+> +	 * must inform the thermal core via thermal_zone_device_update.
+> +	 */
+> +	ret = tz->ops->set_trips(tz, low, high);
+> +	if (ret)
+> +		dev_err(&tz->device, "Failed to set trips: %d\n", ret);
+> +
+> +	mutex_unlock(&tz->lock);
+> +}
+> +
+>  static void update_temperature(struct thermal_zone_device *tz)
+>  {
+>  	int temp, ret;
+> @@ -569,6 +618,8 @@ void thermal_zone_device_update(struct thermal_zone_device *tz)
+>  
+>  	update_temperature(tz);
+>  
+> +	thermal_zone_set_trips(tz);
+> +
+>  	for (count = 0; count < tz->trips; count++)
+>  		handle_thermal_trip(tz, count);
+>  }
+> @@ -754,6 +805,9 @@ trip_point_hyst_store(struct device *dev, struct device_attribute *attr,
+>  	 */
+>  	ret = tz->ops->set_trip_hyst(tz, trip, temperature);
+>  
+> +	if (!ret)
+> +		thermal_zone_set_trips(tz);
+> +
+>  	return ret ? ret : count;
+>  }
+>  
