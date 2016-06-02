@@ -1,102 +1,35 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
- during disable
-Date: Thu, 2 Jun 2016 08:35:09 +0200
-Message-ID: <CAAObsKC-4hFP63AHS_Xw07bWQAXHYkwjNQ0Y_ocGw_-i1jTW2Q@mail.gmail.com>
-References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
- <5707043D.6060706@rock-chips.com>
- <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
- <570AFAC2.8080907@rock-chips.com>
- <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
- <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
- <5742A41B.8030308@rock-chips.com>
- <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
- <5744FA7C.3080802@rock-chips.com> <574500FE.4050708@rock-chips.com>
- <CAAObsKC=kSbWkBgTgcYnkiudSH=xez3N1+OipT33vZ0YkMSPQQ@mail.gmail.com>
- <574FD161.4050503@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <574FD161.4050503@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v2 0/2] Add a new Rockchip usb2 phy driver
+Date: Thu,  2 Jun 2016 14:48:08 +0800
+Message-ID: <1464850090-99371-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, jwerner@chromium.org, xzy.xu@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMiBKdW5lIDIwMTYgYXQgMDg6MjUsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNv
-bT4gd3JvdGU6Cj4gT24gMjAxNuW5tDA25pyIMDLml6UgMTM6NTcsIFRvbWV1IFZpem9zbyB3cm90
-ZToKPj4KPj4gT24gMjUgTWF5IDIwMTYgYXQgMDM6MzMsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2Nr
-LWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pgo+Pj4gT24gMjAxNuW5tDA15pyIMjXml6UgMDk6MDYsIE1h
-cmsgeWFvIHdyb3RlOgo+Pj4KPj4+IE9uIDIwMTblubQwNeaciDI05pelIDE4OjExLCBUb21ldSBW
-aXpvc28gd3JvdGU6Cj4+Pgo+Pj4gSGkgVG9tZXUKPj4+Pgo+Pj4+IFNvcnJ5IGZvciByZXBseSBs
-YXRlLgo+Pj4+IEkgZG9uJ3QgYWdyZWUgdGhlIGNoYW5nZXM6Cj4+Pj4KPj4+PiAtIGlmICghc3Rh
-dGUtPmVuYWJsZSkKPj4+PiAtIHJldHVybiBWT1BfV0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93
-aW4tPmRhdGEsIGVuYWJsZSkgPT0gMDsKPj4+PiArIGlmICghc3RhdGUtPmVuYWJsZSAmJgo+Pj4+
-ICsgICAgVk9QX1dJTl9HRVQodm9wX3dpbi0+dm9wLCB2b3Bfd2luLT5kYXRhLCBlbmFibGUpID09
-IDApCj4+Pj4gKyByZXR1cm4gdHJ1ZTsKPj4+Pgo+Pj4+IFRoaXMgY2hhbmdlcyBhY3R1YWxseSB3
-b3VsZCBsZWFkIGEgYnVnLgo+Pj4+IHdoZW4gd2UgZGlzYWJsZSBhIHBsYW5lLCB0aGUgdm9wX3dp
-bl9wZW5kaW5nX2lzX2NvbXBsZXRlIHdvdWxkIGFsd2F5cwo+Pj4+IHJldHVybgo+Pj4+IHRydWUs
-IFRoYXQgaXMgbm90IGFsbG93ZWQsIHdvdWxkIGNhdXNlIGZiIGZyZWUgdG9vIGVhcmx5Lgo+Pj4K
-Pj4+IE9rLCBtYXliZSBJIG5lZWQgdG8gYXNrIHlvdSBmaXJzdCB3aGF0IHRoZSBvcmlnaW5hbCBi
-bG9jayBvZiBjb2RlCj4+PiBpbnRlbmRlZCB0byBhY2hpZXZlLiBUaGUgVFJNIEkgaGF2ZSBpcyB2
-ZXJ5IHRlcnNlIGFuZCBJIGRvbid0IGZpbmQgYW55Cj4+PiBleHBsYW5hdGlvbiB0aGVyZS4gVGhl
-IGJhdHRlcnkgb2YgdGVzdHMgSSBoYXZlIHBhc3MganVzdCBmaW5lIHdpdGhvdXQKPj4+IGl0Lgo+
-Pj4KPj4+PiBEb2VzIHRoaXMgcGF0Y2ggaXMgbmVlZGVkIGZvciAiW1BBVENIIDIvMl0gZHJtL3Jv
-Y2tjaGlwOiB2b3A6IFdhaXQgZm9yCj4+Pj4gcGVuZGluZyBldmVudHMgd2hlbiBkaXNhYmxpbmcg
-YSBDUlRDIgo+Pj4KPj4+IFllcywgdGhpcyBmdW5jdGlvbiBpcyBjdXJyZW50bHkgcmV0dXJuaW5n
-IGZhbHNlIHdoZW4gdGhlIHBhZ2VmbGlwIGhhcwo+Pj4gYmVlbiBjb21wbGV0ZWQgYnV0IHRoZSBw
-bGFuIGhhcyBiZWVuIGFscmVhZHkgZGlzYWJsZWQuCj4+Pgo+Pj4gSWYgeW91IGhhdmUgYW55IGRp
-ZmZlcmVudCBpZGVhIG9mIGhvdyB0byBmaXggdGhpcyBidWcsIHBsZWFzZSBzaGFyZS4KPj4+Cj4+
-PiBUaGFua3MsCj4+Pgo+Pj4gVG9tZXUKPj4+Cj4+Pgo+Pj4KPj4+IEhpIFRvbWV1Cj4+Pgo+Pj4g
-QEAgLTUwNCw2ICs1MDYsOSBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19kaXNhYmxlKHN0cnVjdCBk
-cm1fY3J0YyAqY3J0YykKPj4+ICAgIGlmICghdm9wLT5pc19lbmFibGVkKQo+Pj4gICAgcmV0dXJu
-Owo+Pj4KPj4+ICsgaWYgKGNydGMtPnN0YXRlLT5ldmVudCB8fCB2b3AtPmV2ZW50KQo+Pj4gKyB2
-b3BfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0Yyk7Cj4+PiArCj4+Pgo+Pj4gSSB0aGluayBhYm92
-ZSBjaGFuZ2UgaGFzIHNvbWUgcHJvYmxlbSwKPj4+Cj4+PiB0aGUgZnVuY3Rpb24gc3RhY2s6Cj4+
-PiAtPmRybSBzd2FwIHN0YXRlCj4+PiAtPnZvcF9jcnRjX2Rpc2FibGUKPj4+IC0+dm9wX2F0b21p
-Y19iZWdpbgo+Pj4gLT52b3BfYXRvbWljX2ZsdXNoCj4+Pgo+Pj4gb24gdm9wX2NydGNfZGlzYWJs
-ZSwgY3J0Yy0+c3RhdGUgaXMgbmV3IHN0YXRlLCB0aGUgY3J0Yy0+c3RhdGUtPmV2ZW50IG5vdAo+
-Pj4geWV0IHVwZGF0ZSB0byB2b3AsIHdhaXQgZm9yICBjcnRjLT5zdGF0ZS0+ZXZlbnQgaGVyZSBp
-cyB3cm9uZy4KPj4+Cj4+PiBTbyBJIHRoaW5rIHRoZSBwYXRjaCBzaG91bGQgYmU6Cj4+PiArIGlm
-ICh2b3AtPmV2ZW50KQo+Pj4gKyB2b3BfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0Yyk7Cj4+PiAr
-Cj4+Pgo+Pj4KPj4+IGNhbGwgdm9wX2NydGNfd2FpdF9mb3JfdXBkYXRlKGNydGMpIGhlcmUgYWxz
-byBpcyB1bnNhZmUsIGl0IHdpbGwgcmVpbml0Cj4+PiB0aGUKPj4+IHZvcC0+d2FpdF91cGRhdGVf
-Y29tcGxldGUuCj4+Pgo+Pj4gSSBkb3VidCB0aGF0LCBzaW5jZSB1c2UgdGhlIHNlcmlhbGl6ZSBv
-dXRzdGFuZGluZyBub25ibG9ja2luZyBjb21taXRzLAo+Pj4gb25seQo+Pj4gb25lIHByb2Nlc3Mg
-Y2FuIHJ1biBpbnRvIHRoZSB1cGRhdGUgc3RhY2ssIG9sZCB2b3AtPmV2ZW50IHNob3VsZCBiZSBm
-cmVlCj4+PiBvbgo+Pj4gbGFzdCB0aW1lLCBpZiB3ZSBnZXQgdm9wLT5ldmVudCBoZXJlLCB0aGF0
-IHNob3VsZCBiZSBhIGJ1Zy4KPj4+Cj4+Pgo+Pj4gVGhlbiB0aGUgcGF0Y2ggImRybS9yb2NrY2hp
-cDogdm9wOiBEbyBjaGVjayBpZiBhbiB1cGRhdGUgaXMgcGVuZGluZwo+Pj4gZHVyaW5nCj4+PiBk
-aXNhYmxlIiBzaG91bGQgYmUgbm8gbmVlZGVkLgo+Pgo+PiBIaSBNYXJrLAo+Pgo+PiB3aXRoIERh
-bmllbCdzIHNlcmllcyBsaW5rZWQgYmVsb3cgdGhpcyBhbmQgdGhlIG90aGVyIGlzc3VlcyBJIGZv
-dW5kIGluCj4+IHRoZSBSb2NrY2hpcCBkcml2ZXIgYXJlIGZpeGVkOgo+Pgo+Pgo+PiBodHRwOi8v
-dGhyZWFkLmdtYW5lLm9yZy9nbWFuZS5jb21wLmZyZWVkZXNrdG9wLnhvcmcuZHJpdmVycy5pbnRl
-bC85MTAyMy9mb2N1cz05MTA1Mwo+Cj4KPiBHb29kIG5ld3MsIEkgYWxzbyBzZWUgdGhlIERhbmll
-bCdzIHNlcmllcyBwYXRjaGVzLCB3b25kZXJmdWwgdXBkYXRlLgo+Cj4gWW91IGNhbiBhZGQgYSBU
-ZXN0ZWQtYnkgZm9yIERhbmllbCdzIHJvY2tjaGlwIHBhdGNoZXMsIGFuZCBJIGFkZCBhIEFja2Vk
-LWJ5Cj4gZm9yIHRob3NlIHJvY2tjaGlwIHBhdGNoZXMuCgpZdXAsIHNob3VsZCBiZSBhbHJlYWR5
-IHRoZXJlLgoKUmVnYXJkcywKClRvbWV1Cgo+IFRoYW5rcwo+Cj4KPj4gVGhhbmtzLAo+Pgo+PiBU
-b21ldQo+Pgo+Pj4gVGhhbmtzLgo+Pj4KPj4+IC0tIO+8rWFyayBZYW8KPj4+Cj4+PiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4gZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdAo+Pj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+Pj4gaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPj4+Cj4+
-Pgo+Pj4KPj4+IC0tCj4+PiDvvK1hcmsgWWFvCj4+Pgo+Pj4KPj4+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-Cj4+PiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+PiBodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+Pj4KPj4KPj4KPgo+Cj4g
-LS0KPiDvvK1hcmsgWWFvCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
+IP block than rk3288 and before, and most of phy-related registers are
+also different from the past, so a new phy driver is required necessarily.
+
+These series patches add phy-rockchip-inno-usb2.c and the corresponding
+documentation.
+
+Changes in v2:
+ - Specified more hardware-description into the devicetree bindings.
+ - Optimized some process of driver.
+
+Frank Wang (2):
+  Documentation: bindings: add DT documentation for Rockchip USB2PHY
+  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   55 ++
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-inno-usb2.c               |  604 ++++++++++++++++++++
+ 4 files changed, 667 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
+
+-- 
+1.7.9.5
