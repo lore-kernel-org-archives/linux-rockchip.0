@@ -1,171 +1,85 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 3/5] usb: dwc3: add phyif_utmi_quirk
-Date: Thu,  2 Jun 2016 20:33:50 +0800
-Message-ID: <1464870832-24714-4-git-send-email-william.wu@rock-chips.com>
-References: <1464870832-24714-1-git-send-email-william.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1464870832-24714-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
+Date: Thu,  2 Jun 2016 20:34:56 +0800
+Message-ID: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, William Wu <william.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a quirk to configure the core to support the
-UTMI+ PHY with an 8- or 16-bit interface. UTMI+ PHY
-interface is hardware property, and it's platform
-dependent. Normall, the PHYIf can be configured
-during coreconsultant. But for some specific usb
-cores(e.g. rk3399 soc dwc3), the default PHYIf
-configuration value is fault, so we need to
-reconfigure it by software.
+This patch adds the devicetree documentation required for Rockchip
+USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
 
-And refer to the dwc3 databook, the GUSB2PHYCFG.USBTRDTIM
-must be set to the corresponding value according to
-the UTMI+ PHY interface.
+It supports DRD mode, and could operate in device mode (SS, HS, FS)
+and host mode (SS, HS, FS, LS).
 
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 ---
 Changes in v4:
-- rebase on top of balbi testing/next, remove pdata (balbi)
+- modify commit log, and add phy documentation location (Sergei)
 
 Changes in v3:
-- None
+- add dwc3 address (balbi)
 
 Changes in v2:
-- add a quirk for phyif_utmi (balbi)
+- add rockchip,dwc3.txt to Documentation/devicetree/bindings/ (balbi, Brian)
 
- Documentation/devicetree/bindings/usb/dwc3.txt |  4 ++++
- drivers/usb/dwc3/core.c                        | 19 +++++++++++++++++++
- drivers/usb/dwc3/core.h                        | 12 ++++++++++++
- 3 files changed, 35 insertions(+)
+ .../devicetree/bindings/usb/rockchip,dwc3.txt      | 46 ++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
 
-diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
-index 1ada121..34d13a5 100644
---- a/Documentation/devicetree/bindings/usb/dwc3.txt
-+++ b/Documentation/devicetree/bindings/usb/dwc3.txt
-@@ -42,6 +42,10 @@ Optional properties:
-  - snps,dis_u2_freeclk_exists_quirk: when set, clear the u2_freeclk_exists
- 			in GUSB2PHYCFG, specify that USB2 PHY doesn't provide
- 			a free-running PHY clock.
-+ - snps,phyif_utmi_quirk: when set core will set phyif UTMI+ interface.
-+ - snps,phyif_utmi: the value to configure the core to support a UTMI+ PHY
-+			with an 8- or 16-bit interface. Value 0 select 8-bit
-+			interface, value 1 select 16-bit interface.
-  - snps,is-utmi-l1-suspend: true when DWC3 asserts output signal
- 			utmi_l1_suspend_n, false when asserts utmi_sleep_n
-  - snps,hird-threshold: HIRD threshold
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index f4b18b2..30fe400 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -408,6 +408,7 @@ static void dwc3_cache_hwparams(struct dwc3 *dwc)
- static int dwc3_phy_setup(struct dwc3 *dwc)
- {
- 	u32 reg;
-+	u32 usbtrdtim;
- 	int ret;
- 
- 	reg = dwc3_readl(dwc->regs, DWC3_GUSB3PIPECTL(0));
-@@ -503,6 +504,15 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
- 	if (dwc->dis_u2_freeclk_exists_quirk)
- 		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
- 
-+	if (dwc->phyif_utmi_quirk) {
-+		reg &= ~(DWC3_GUSB2PHYCFG_PHYIF_MASK |
-+		       DWC3_GUSB2PHYCFG_USBTRDTIM_MASK);
-+		usbtrdtim = dwc->phyif_utmi ? USBTRDTIM_UTMI_16_BIT :
-+			    USBTRDTIM_UTMI_8_BIT;
-+		reg |= DWC3_GUSB2PHYCFG_PHYIF(dwc->phyif_utmi) |
-+		       DWC3_GUSB2PHYCFG_USBTRDTIM(usbtrdtim);
-+	}
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+new file mode 100644
+index 0000000..0edf013
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+@@ -0,0 +1,46 @@
++Rockchip SuperSpeed DWC3 USB SoC controller
 +
- 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
- 
- 	return 0;
-@@ -830,6 +840,7 @@ static int dwc3_probe(struct platform_device *pdev)
- 	struct resource		*res;
- 	struct dwc3		*dwc;
- 	u8			lpm_nyet_threshold;
-+	u8			phyif_utmi;
- 	u8			tx_de_emphasis;
- 	u8			hird_threshold;
- 
-@@ -886,6 +897,9 @@ static int dwc3_probe(struct platform_device *pdev)
- 	/* default to highest possible threshold */
- 	lpm_nyet_threshold = 0xff;
- 
-+	/* default to UTMI+ 8-bit interface */
-+	phyif_utmi = 0;
++Required properties:
++- compatible:	should contain "rockchip,dwc3"
++- clocks:		A list of phandle + clock-specifier pairs for the
++				clocks listed in clock-names
++- clock-names:	Should contain the following:
++  "clk_usb3otg0_ref"	Controller reference clk
++  "clk_usb3otg0_suspend"Controller suspend clk, can use 24 MHz or 32 KHz
++  "aclk_usb3"		Master/Core clock, have to be >= 62.5 MHz for SS operation
 +
- 	/* default to -3.5dB de-emphasis */
- 	tx_de_emphasis = 1;
- 
-@@ -935,6 +949,10 @@ static int dwc3_probe(struct platform_device *pdev)
- 				"snps,dis_rxdet_inp3_quirk");
- 	dwc->dis_u2_freeclk_exists_quirk = device_property_read_bool(dev,
- 				"snps,dis_u2_freeclk_exists_quirk");
-+	dwc->phyif_utmi_quirk = device_property_read_bool(dev,
-+				"snps,phyif_utmi_quirk");
-+	device_property_read_u8(dev, "snps,phyif_utmi",
-+				&phyif_utmi);
- 
- 	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
- 				"snps,tx_de_emphasis_quirk");
-@@ -946,6 +964,7 @@ static int dwc3_probe(struct platform_device *pdev)
- 				 &dwc->fladj);
- 
- 	dwc->lpm_nyet_threshold = lpm_nyet_threshold;
-+	dwc->phyif_utmi = phyif_utmi;
- 	dwc->tx_de_emphasis = tx_de_emphasis;
- 
- 	dwc->hird_threshold = hird_threshold
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index bcd1aa2..510a6f1 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -203,6 +203,12 @@
- #define DWC3_GUSB2PHYCFG_SUSPHY		(1 << 6)
- #define DWC3_GUSB2PHYCFG_ULPI_UTMI	(1 << 4)
- #define DWC3_GUSB2PHYCFG_ENBLSLPM	(1 << 8)
-+#define DWC3_GUSB2PHYCFG_PHYIF(n)	(n << 3)
-+#define DWC3_GUSB2PHYCFG_PHYIF_MASK	DWC3_GUSB2PHYCFG_PHYIF(1)
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM(n)	(n << 10)
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM_MASK	DWC3_GUSB2PHYCFG_USBTRDTIM(0xf)
-+#define USBTRDTIM_UTMI_8_BIT		9
-+#define USBTRDTIM_UTMI_16_BIT		5
- 
- /* Global USB2 PHY Vendor Control Register */
- #define DWC3_GUSB2PHYACC_NEWREGREQ	(1 << 25)
-@@ -802,6 +808,10 @@ struct dwc3_scratchpad_array {
-  * @dis_u2_freeclk_exists_quirk : set if we clear u2_freeclk_exists
-  *			in GUSB2PHYCFG, specify that USB2 PHY doesn't
-  *			provide a free-running PHY clock.
-+ * @phyif_utmi_quirk: set if we enable phyif UTMI+ quirk
-+ * @phyif_utmi: UTMI+ PHY interface value
-+ *	0	- 8 bits
-+ *	1	- 16 bits
-  * @tx_de_emphasis_quirk: set if we enable Tx de-emphasis quirk
-  * @tx_de_emphasis: Tx de-emphasis value
-  * 	0	- -6dB de-emphasis
-@@ -947,6 +957,8 @@ struct dwc3 {
- 	unsigned		dis_rxdet_inp3_quirk:1;
- 	unsigned		dis_u2_freeclk_exists_quirk:1;
- 
-+	unsigned		phyif_utmi_quirk:1;
-+	unsigned		phyif_utmi:1;
- 	unsigned		tx_de_emphasis_quirk:1;
- 	unsigned		tx_de_emphasis:2;
- };
++
++Optional clocks:
++  "aclk_usb3otg0"	Aclk for specific usb controller clock.
++  "aclk_usb3_rksoc_axi_perf"  USB AXI perf clock.  Not present on all platforms.
++  "aclk_usb3_grf"	USB grf clock.  Not present on all platforms.
++
++Required child node:
++A child node must exist to represent the core DWC3 IP block. The name of
++the node is not important. The content of the node is defined in dwc3.txt.
++
++Phy documentation is provided in the following places:
++Documentation/devicetree/bindings/phy/rockchip,dwc3-usb-phy.txt
++
++Example device nodes:
++
++	usbdrd3_0: usb@fe800000 {
++		compatible = "rockchip,dwc3";
++		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
++			 <&cru ACLK_USB3>, <&cru ACLK_USB3OTG0>,
++			 <&cru ACLK_USB3_RKSOC_AXI_PERF>, <&cru ACLK_USB3_GRF>;
++		clock-names = "clk_usb3otg0_ref", "clk_usb3otg0_suspend",
++			      "aclk_usb3", "aclk_usb3otg0",
++			      "aclk_usb3_rksoc_axi_perf", "aclk_usb3_grf";
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		status = "disabled";
++		usbdrd_dwc3_0: dwc3@fe800000 {
++			compatible = "snps,dwc3";
++			reg = <0x0 0xfe800000 0x0 0x100000>;
++			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
++			dr_mode = "otg";
++			status = "disabled";
++		};
++	};
 -- 
 1.9.1
