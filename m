@@ -1,206 +1,850 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH 2/2] phy: rockchip-inno-usb2: add a new driver for
- Rockchip usb2phy
-Date: Thu, 2 Jun 2016 11:19:39 +0800
-Message-ID: <574FA5CB.5020402@rock-chips.com>
-References: <1464676811-7418-1-git-send-email-frank.wang@rock-chips.com>
- <1464676811-7418-3-git-send-email-frank.wang@rock-chips.com>
- <1915363.WKK5oRy4Me@diego>
+From: hl <hl@rock-chips.com>
+Subject: Re: [RFC PATCH 3/4] PM / devfreq: rockchip: add devfreq driver for
+ rk3399 dmc
+Date: Thu, 2 Jun 2016 11:26:17 +0800
+Message-ID: <574FA759.902@rock-chips.com>
+References: <1464773739-18152-1-git-send-email-hl@rock-chips.com>
+ <1464773739-18152-4-git-send-email-hl@rock-chips.com>
+ <CAGTfZH1po=n=J0ZZVKtrst=Bgnpguq++FFm55AjJnJe=0WLLog@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252;
+Content-Type: text/plain; charset=utf-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1915363.WKK5oRy4Me@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: dianders@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAGTfZH1po=n=J0ZZVKtrst=Bgnpguq++FFm55AjJnJe=0WLLog@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: cw00.choi@samsung.com
+Cc: heiko@sntech.de, mark.yao@rock-chips.com, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel <linux-kernel@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Douglas Anderson <dianders@chromium.org>, dbasehore@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Chanwoo Choi,
 
-On 06/02/2016 07:46 AM, Heiko St=FCbner wrote:
-> Hi Frank,
+     I just check the devfreq-event framework code, it is good,
+i will do more dig to see whether it can fit for rk3399 dmc, thank you.
+
+On 2016=E5=B9=B406=E6=9C=8801=E6=97=A5 19:47, Chanwoo Choi wrote:
+> Hi Lin,
 >
-> Am Dienstag, 31. Mai 2016, 14:40:11 schrieb Frank Wang:
->> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
->> than rk3288 and before, and most of phy-related registers are also
->> different from the past, so a new phy driver is required necessarily=
-=2E
+> This patch include the two features as following:
+> - Monitor the ddr load
+> - Control the ddr's clock with ondemand governor based on load
+>
+> The "Monitor the ddr load" has the specific the address in SoC.
+> Namely, it is separate the module.
+> So, I implemented the devfreq-event framework[1] which was merged.
+>
+> It is right method to separate two feature from your device driver.
+> You can refer to patch[2][3]. The patch[2] show how to implement the
+> "monitor the ddr load"
+> by using Devfreq-Event framework and the patch[3] include the method
+> how to implement the rk3399 dmc driver.
+>
+> [1] Devfreq-Event framework
+> - https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/com=
+mit/?id=3Df262f28c147051e7aa6daaf4fb5996833ffadff4
+>
+> [2] Exynos Noc probe driver by using Devfreq-Event framework
+> - https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/com=
+mit/?id=3D0179a913875a8b39eaf5b848c876439a3a4650af
+>
+> [3] Exynos Busfreq driver using the devfreq-evnet framework to get th=
+e
+> monitored data
+> - https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/com=
+mit/?id=3D0722249ac1f3dcc3af9e9d7ed89792a68f066660
+>
+> If you have more information and help, please let me know. I'll help =
+you.
+>
+> Thanks,
+> Chanwoo Choi
+>
+> On Wed, Jun 1, 2016 at 6:35 PM, Lin Huang <hl@rock-chips.com> wrote:
+>> there is dfi controller on rk3399 platform, it can monitor
+>> ddr load, register this controller to devfreq framework, and
+>> default to use simple_ondeamnd policy, and do ddr frequency
+>> scaling base on this result.
 >>
->> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+>> Signed-off-by: Lin Huang <hl@rock-chips.com>
 >> ---
->
-> [...]
->
->> +static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
->> +{
->> +	struct rockchip_usb2phy *rphy =3D
->> +		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
->> +	int index;
+>>   drivers/devfreq/Kconfig                 |   2 +-
+>>   drivers/devfreq/Makefile                |   1 +
+>>   drivers/devfreq/rockchip/Kconfig        |  14 +
+>>   drivers/devfreq/rockchip/Makefile       |   2 +
+>>   drivers/devfreq/rockchip/rk3399_dmc.c   | 438 ++++++++++++++++++++=
+++++++++++++
+>>   drivers/devfreq/rockchip/rockchip_dmc.c | 132 ++++++++++
+>>   include/soc/rockchip/rockchip_dmc.h     |  44 ++++
+>>   7 files changed, 632 insertions(+), 1 deletion(-)
+>>   create mode 100644 drivers/devfreq/rockchip/Kconfig
+>>   create mode 100644 drivers/devfreq/rockchip/Makefile
+>>   create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+>>   create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
+>>   create mode 100644 include/soc/rockchip/rockchip_dmc.h
+>>
+>> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
+>> index 78dac0e..a883744 100644
+>> --- a/drivers/devfreq/Kconfig
+>> +++ b/drivers/devfreq/Kconfig
+>> @@ -101,5 +101,5 @@ config ARM_TEGRA_DEVFREQ
+>>            operating frequencies and voltages with OPP support.
+>>
+>>   source "drivers/devfreq/event/Kconfig"
+>> -
+>> +source "drivers/devfreq/rockchip/Kconfig"
+>>   endif # PM_DEVFREQ
+>> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
+>> index 09f11d9..48e2ae6 100644
+>> --- a/drivers/devfreq/Makefile
+>> +++ b/drivers/devfreq/Makefile
+>> @@ -9,6 +9,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)       +=3D governo=
+r_passive.o
+>>   # DEVFREQ Drivers
+>>   obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)   +=3D exynos-bus.o
+>>   obj-$(CONFIG_ARM_TEGRA_DEVFREQ)                +=3D tegra-devfreq.=
+o
+>> +obj-$(CONFIG_ARCH_ROCKCHIP)            +=3D rockchip/
+>>
+>>   # DEVFREQ Event Drivers
+>>   obj-$(CONFIG_PM_DEVFREQ_EVENT)         +=3D event/
+>> diff --git a/drivers/devfreq/rockchip/Kconfig b/drivers/devfreq/rock=
+chip/Kconfig
+>> new file mode 100644
+>> index 0000000..617b5fe
+>> --- /dev/null
+>> +++ b/drivers/devfreq/rockchip/Kconfig
+>> @@ -0,0 +1,14 @@
+>> +config ARM_ROCKCHIP_DMC_DEVFREQ
+>> +       tristate "ARM ROCKCHIP DMC DEVFREQ Driver"
+>> +       depends on ARCH_ROCKCHIP
+>> +       help
+>> +         This adds the DEVFREQ driver framework for the rockchip dm=
+c.
 >> +
->> +	/* make sure all ports in suspended mode */
->> +	for (index =3D 0; index !=3D rphy->phy_cfg->num_ports; index++)
->> +		if (!rphy->ports[index].suspended)
->> +			return;
->
-> This function can only get called when all clk-references have disabl=
-ed the
-> clock, so you should never reach that point that one phy port is not
-> suspended?
->
-
-Yeah, you are right, I will clean them up in the next patches.
-
->> +
->> +	/* turn off 480m clk output */
->> +	property_enable(rphy, &rphy->phy_cfg->clkout_ctl, false);
->> +}
->> +
->
-> [...]
->
-> add something like:
->
-> static void rockchip_usb2phy_clk480m_unregister(void *data)
-> {
-> 	struct rockchip_usb2phy *rphy =3D data;
->
-> 	of_clk_del_provider(rphy->dev->of_node);
-> 	clk_unregister(rphy->clk480m);
-> }
->
->> +static struct clk *
->> +rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
->> +{
->> +	struct device_node *node =3D rphy->dev->of_node;
->> +	struct clk *clk;
->> +	struct clk_init_data init;
-> 	int ret;
->
->> +
->> +	init.name =3D "clk_usbphy_480m";
->> +	init.ops =3D &rockchip_usb2phy_clkout_ops;
->> +	init.flags =3D CLK_IS_ROOT;
->> +	init.parent_names =3D NULL;
->> +	init.num_parents =3D 0;
->> +	rphy->clk480m_hw.init =3D &init;
->> +
->> +	/* optional override of the clockname */
->> +	of_property_read_string(node, "clock-output-names", &init.name);
->> +
->> +	/* register the clock */
->> +	clk =3D clk_register(rphy->dev, &rphy->clk480m_hw);
-> 	if (IS_ERR(clk))
-> 		return clk:
->
-> 	ret =3D of_clk_add_provider(node, of_clk_src_simple_get, clk);
-> 	if (ret < 0)
-> 		goto err_clk_provider;
->
-> 	ret =3D devm_add_action(rphy->dev, rockchip_usb2phy_clk480m_unregist=
-er,
-> rphy);
-> 	if (ret < 0)
-> 		goto err_unreg_action;
->
-> 	return clk;
->
-> err_unreg_action:
-> 	of_clk_del_provider(node);
-> err_clk_provider:
-> 	clk_unregister(clk);
-> 	return ERR_PTR(ret);
->
->> +}
->
-
-Good comments! Those codes will be included in the next.
-
-> [...]
->
+>> +config ARM_RK3399_DMC_DEVFREQ
+>> +       tristate "ARM RK3399 DMC DEVFREQ Driver"
+>> +       depends on ARM_ROCKCHIP_DMC_DEVFREQ
+>> +       select PM_OPP
+>> +       select DEVFREQ_GOV_SIMPLE_ONDEMAND
+>> +       help
+>> +         This adds the DEVFREQ driver for the RK3399 dmc. It sets t=
+he frequency
+>> +         for the memory controller and reads the usage counts from =
+hardware.
+>> diff --git a/drivers/devfreq/rockchip/Makefile b/drivers/devfreq/roc=
+kchip/Makefile
+>> new file mode 100644
+>> index 0000000..caca525
+>> --- /dev/null
+>> +++ b/drivers/devfreq/rockchip/Makefile
+>> @@ -0,0 +1,2 @@
+>> +obj-$(CONFIG_ARM_ROCKCHIP_DMC_DEVFREQ) +=3D rockchip_dmc.o
+>> +obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)   +=3D rk3399_dmc.o
+>> diff --git a/drivers/devfreq/rockchip/rk3399_dmc.c b/drivers/devfreq=
+/rockchip/rk3399_dmc.c
+>> new file mode 100644
+>> index 0000000..4907d38
+>> --- /dev/null
+>> +++ b/drivers/devfreq/rockchip/rk3399_dmc.c
+>> @@ -0,0 +1,438 @@
 >> +/*
->> + * The function manage host-phy port state and suspend/resume phy p=
-ort
->> + * to save power.
+>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>> + * Author: Lin Huang <hl@rock-chips.com>
 >> + *
->> + * we rely on utmi_linestate and utmi_hostdisconnect to identify wh=
-ether
->> + * FS/HS is disconnect or not. Besides, we do not need care it is F=
-S
->> + * disconnected or HS disconnected, actually, we just only need get=
- the
->> + * device is disconnected at last through rearm the delayed work,
->> + * to suspend the phy port in _PHY_STATE_DISCONNECT_ case.
+>> + * This program is free software; you can redistribute it and/or mo=
+dify it
+>> + * under the terms and conditions of the GNU General Public License=
+,
+>> + * version 2, as published by the Free Software Foundation.
 >> + *
->> + * NOTE: It will invoke some clk related APIs, so do not invoke it =
-from
->> + * interrupt context.
->
-> This does not seem to match the code, as I don't see any clk_* calls,
-
-Sorry for not describing the comment clearly. In a fact, *_sm_work will=
-=20
-invoke *phy_suspend or *phy_resume which will invoke some *clk APIs.
-
-Anyway, I will correct it to be more clear.
-
->
+>> + * This program is distributed in the hope it will be useful, but W=
+ITHOUT
+>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILI=
+TY or
+>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Li=
+cense for
+>> + * more details.
 >> + */
->> +static void rockchip_usb2phy_sm_work(struct work_struct *work)
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/completion.h>
+>> +#include <linux/delay.h>
+>> +#include <linux/devfreq.h>
+>> +#include <linux/interrupt.h>
+>> +#include <linux/io.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/pm_opp.h>
+>> +#include <linux/regmap.h>
+>> +#include <linux/regulator/consumer.h>
+>> +#include <linux/rwsem.h>
+>> +#include <linux/suspend.h>
+>> +#include <linux/syscore_ops.h>
+>> +
+>> +#include <soc/rockchip/rockchip_dmc.h>
+>> +
+>> +#define RK3399_DMC_NUM_CH      2
+>> +
+>> +/* DDRMON_CTRL */
+>> +#define DDRMON_CTRL    0x04
+>> +#define CLR_DDRMON_CTRL        (0x1f0000 << 0)
+>> +#define LPDDR4_EN      (0x10001 << 4)
+>> +#define HARDWARE_EN    (0x10001 << 3)
+>> +#define LPDDR3_EN      (0x10001 << 2)
+>> +#define SOFTWARE_EN    (0x10001 << 1)
+>> +#define TIME_CNT_EN    (0x10001 << 0)
+>> +
+>> +#define DDRMON_CH0_COUNT_NUM           0x28
+>> +#define DDRMON_CH0_DFI_ACCESS_NUM      0x2c
+>> +#define DDRMON_CH1_COUNT_NUM           0x3c
+>> +#define DDRMON_CH1_DFI_ACCESS_NUM      0x40
+>> +
+>> +/* pmu grf */
+>> +#define PMUGRF_OS_REG2 0x308
+>> +#define DDRTYPE_SHIFT  13
+>> +#define DDRTYPE_MASK   7
+>> +
+>> +enum {
+>> +       DDR3 =3D 3,
+>> +       LPDDR3 =3D 6,
+>> +       LPDDR4 =3D 7,
+>> +       UNUSED =3D 0xFF
+>> +};
+>> +
+>> +struct dmc_usage {
+>> +       u32 access;
+>> +       u32 total;
+>> +};
+>> +
+>> +struct rk3399_dmcfreq {
+>> +       struct device *dev;
+>> +       struct devfreq *devfreq;
+>> +       struct devfreq_simple_ondemand_data ondemand_data;
+>> +       struct clk *dmc_clk;
+>> +       struct completion dcf_hold_completion;
+>> +       struct dmc_usage ch_usage[RK3399_DMC_NUM_CH];
+>> +       struct mutex lock;
+>> +       struct notifier_block dmc_nb;
+>> +       int irq;
+>> +       void __iomem *regs;
+>> +       struct regmap *regmap_pmu;
+>> +       struct regulator *vdd_center;
+>> +       unsigned long rate, target_rate;
+>> +       unsigned long volt, target_volt;
+>> +};
+>> +
+>> +static int rk3399_dmcfreq_target(struct device *dev, unsigned long =
+*freq,
+>> +                                u32 flags)
 >> +{
- >> +
->>  [...]
- >> +
->> +		/* fall through */
->> +	case PHY_STATE_HS_CONNECT:
->> +		if (rport->suspended) {
->> +			dev_dbg(&rport->phy->dev, "HS/FS connected\n");
->> +			rockchip_usb2phy_resume(rport->phy);
->> +			rport->suspended =3D false;
->> +		}
->> +		break;
->> +	case PHY_STATE_DISCONNECT:
->> +		if (!rport->suspended) {
->> +			dev_dbg(&rport->phy->dev, "HS/FS disconnected\n");
->> +			rockchip_usb2phy_suspend(rport->phy);
->> +			rport->suspended =3D true;
->> +		}
->>  [...]
- >> +
->> +	}
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +       struct dev_pm_opp *opp;
+>> +       unsigned long old_clk_rate =3D dmcfreq->rate;
+>> +       unsigned long target_volt, target_rate;
+>> +       int err;
 >> +
->> +next_schedule:
->> +	mutex_unlock(&rport->mutex);
->> +	schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
+>> +       rcu_read_lock();
+>> +       opp =3D devfreq_recommended_opp(dev, freq, flags);
+>> +       if (IS_ERR(opp)) {
+>> +               rcu_read_unlock();
+>> +               return PTR_ERR(opp);
+>> +       }
+>> +       target_rate =3D dev_pm_opp_get_freq(opp);
+>> +       target_volt =3D dev_pm_opp_get_voltage(opp);
+>> +
+>> +       opp =3D devfreq_recommended_opp(dev, &dmcfreq->rate, flags);
+>> +       if (IS_ERR(opp)) {
+>> +               rcu_read_unlock();
+>> +               return PTR_ERR(opp);
+>> +       }
+>> +       dmcfreq->volt =3D dev_pm_opp_get_voltage(opp);
+>> +       rcu_read_unlock();
+>> +
+>> +       if (dmcfreq->rate =3D=3D target_rate)
+>> +               return 0;
+>> +
+>> +       mutex_lock(&dmcfreq->lock);
+>> +
+>> +       /*
+>> +        * if frequency scaling from low to high, adjust voltage fir=
+st;
+>> +        * if frequency scaling from high to low, adjuset frequency =
+first;
+>> +        */
+>> +       if (old_clk_rate < target_rate) {
+>> +               err =3D regulator_set_voltage(dmcfreq->vdd_center, t=
+arget_volt,
+>> +                                           target_volt);
+>> +               if (err) {
+>> +                       dev_err(dev, "Unable to set vol %lu\n", targ=
+et_volt);
+>> +                       goto out;
+>> +               }
+>> +       }
+>> +
+>> +       dmc_event(DMCFREQ_ADJUST);
+>> +       err =3D clk_set_rate(dmcfreq->dmc_clk, target_rate);
+>> +       if (err) {
+>> +               dev_err(dev,
+>> +                       "Unable to set freq %lu. Current freq %lu. E=
+rror %d\n",
+>> +                       target_rate, old_clk_rate, err);
+>> +               regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->=
+volt,
+>> +                                     dmcfreq->volt);
+>> +               dmc_event(DMCFREQ_FINISH);
+>> +               goto out;
+>> +       }
+>> +
+>> +       /* wait until bcf irq happen, it means ddr scaling finish in=
+ bl31 */
+>> +       reinit_completion(&dmcfreq->dcf_hold_completion);
+>> +       wait_for_completion(&dmcfreq->dcf_hold_completion);
+>> +       dmc_event(DMCFREQ_FINISH);
+>> +
+>> +       if (old_clk_rate > target_rate)
+>> +               err =3D regulator_set_voltage(dmcfreq->vdd_center, t=
+arget_volt,
+>> +                                           target_volt);
+>> +       if (err)
+>> +               dev_err(dev, "Unable to set vol %lu\n", target_volt)=
+;
+>> +
+>> +       /* check the rate we get whether correct */
+>> +       dmcfreq->rate =3D clk_get_rate(dmcfreq->dmc_clk);
+>> +       if (dmcfreq->rate !=3D target_rate) {
+>> +               dev_err(dev, "get wrong ddr frequency, Request freq =
+%lu,\
+>> +                       Current freq %lu\n", target_rate, dmcfreq->r=
+ate);
+>> +               regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->=
+volt,
+>> +                                     dmcfreq->volt);
+>> +       }
+>> +out:
+>> +       mutex_unlock(&dmcfreq->lock);
+>> +       return err;
 >> +}
->
-> [...]
->
->> +static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>> +
+>> +static void rk3399_dmc_start_hardware_counter(struct device *dev)
 >> +{
- >> +
- >>  [...]
- >> +
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +       void __iomem *dfi_regs =3D dmcfreq->regs;
+>> +       u32 val;
+>> +       u32 ddr_type;
 >> +
->> +	provider =3D devm_of_phy_provider_register(dev, of_phy_simple_xlat=
-e);
->> +	return PTR_ERR_OR_ZERO(provider);
+>> +       /* get ddr type */
+>> +       regmap_read(dmcfreq->regmap_pmu, PMUGRF_OS_REG2, &val);
+>> +       ddr_type =3D (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
 >> +
->> +put_child:
->> +	of_node_put(child_np);
->
->> +	of_clk_del_provider(np);
->> +	clk_unregister(rphy->clk480m);
->
-> these two can go away, once you have the devm_action described
-> near your clk_register function.
-
-Done
-
->
->> +	return ret;
+>> +       /* clear DDRMON_CTRL setting */
+>> +       writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+>> +
+>> +       /* set ddr type to dfi */
+>> +       if (ddr_type =3D=3D LPDDR3)
+>> +               writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+>> +       else if (ddr_type =3D=3D LPDDR4)
+>> +               writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+>> +
+>> +       /* enable count, use software mode */
+>> +       writel_relaxed(SOFTWARE_EN, dfi_regs + DDRMON_CTRL);
 >> +}
+>> +
+>> +static void rk3399_dmc_stop_hardware_counter(struct device *dev)
+>> +{
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +       void __iomem *dfi_regs =3D dmcfreq->regs;
+>> +       u32 val;
+>> +
+>> +       val =3D readl_relaxed(dfi_regs + DDRMON_CTRL);
+>> +       val &=3D ~SOFTWARE_EN;
+>> +       writel_relaxed(val, dfi_regs + DDRMON_CTRL);
+>> +}
+>> +
+>> +static int rk3399_dmc_get_busier_ch(struct device *dev)
+>> +{
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +       u32 tmp, max =3D 0;
+>> +       u32 i, busier_ch =3D 0;
+>> +       void __iomem *dfi_regs =3D dmcfreq->regs;
+>> +
+>> +       rk3399_dmc_stop_hardware_counter(dev);
+>> +
+>> +       /* Find out which channel is busier */
+>> +       for (i =3D 0; i < RK3399_DMC_NUM_CH; i++) {
+>> +               dmcfreq->ch_usage[i].access =3D readl_relaxed(dfi_re=
+gs +
+>> +                               DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+>> +               dmcfreq->ch_usage[i].total =3D readl_relaxed(dfi_reg=
+s +
+>> +                               DDRMON_CH0_COUNT_NUM + i * 20);
+>> +               tmp =3D dmcfreq->ch_usage[i].access;
+>> +               if (tmp > max) {
+>> +                       busier_ch =3D i;
+>> +                       max =3D tmp;
+>> +               }
+>> +       }
+>> +       rk3399_dmc_start_hardware_counter(dev);
+>> +
+>> +       return busier_ch;
+>> +}
+>> +
+>> +static int rk3399_dmcfreq_get_dev_status(struct device *dev,
+>> +                                        struct devfreq_dev_status *=
+stat)
+>> +{
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +       int busier_ch;
+>> +
+>> +       busier_ch =3D rk3399_dmc_get_busier_ch(dev);
+>> +       stat->current_frequency =3D dmcfreq->rate;
+>> +       stat->busy_time =3D dmcfreq->ch_usage[busier_ch].access;
+>> +       stat->total_time =3D dmcfreq->ch_usage[busier_ch].total;
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static int rk3399_dmcfreq_get_cur_freq(struct device *dev, unsigned=
+ long *freq)
+>> +{
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +
+>> +       *freq =3D dmcfreq->rate;
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static void rk3399_dmcfreq_exit(struct device *dev)
+>> +{
+>> +       struct platform_device *pdev =3D container_of(dev, struct pl=
+atform_device,
+>> +                                                   dev);
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +
+>> +       devfreq_unregister_opp_notifier(dev, dmcfreq->devfreq);
+>> +}
+>> +
+>> +static struct devfreq_dev_profile rk3399_devfreq_dmc_profile =3D {
+>> +       .polling_ms     =3D 200,
+>> +       .target         =3D rk3399_dmcfreq_target,
+>> +       .get_dev_status =3D rk3399_dmcfreq_get_dev_status,
+>> +       .get_cur_freq   =3D rk3399_dmcfreq_get_cur_freq,
+>> +       .exit           =3D rk3399_dmcfreq_exit,
+>> +};
+>> +
+>> +static __maybe_unused int rk3399_dmcfreq_suspend(struct device *dev=
+)
+>> +{
+>> +       rockchip_dmc_disable();
+>> +       return 0;
+>> +}
+>> +
+>> +static __maybe_unused int rk3399_dmcfreq_resume(struct device *dev)
+>> +{
+>> +       rockchip_dmc_enable();
+>> +       return 0;
+>> +}
+>> +
+>> +static SIMPLE_DEV_PM_OPS(rk3399_dmcfreq_pm, rk3399_dmcfreq_suspend,
+>> +                        rk3399_dmcfreq_resume);
+>> +
+>> +static int rk3399_dmc_enable_notify(struct notifier_block *nb,
+>> +                                   unsigned long event, void *data)
+>> +{
+>> +       struct rk3399_dmcfreq *dmcfreq =3D
+>> +                             container_of(nb, struct rk3399_dmcfreq=
+, dmc_nb);
+>> +       unsigned long freq =3D ULONG_MAX;
+>> +
+>> +       if (event =3D=3D DMC_ENABLE) {
+>> +               devfreq_resume_device(dmcfreq->devfreq);
+>> +               rk3399_dmc_start_hardware_counter(dmcfreq->dev);
+>> +               return NOTIFY_OK;
+>> +       } else if (event =3D=3D DMC_DISABLE) {
+>> +               devfreq_suspend_device(dmcfreq->devfreq);
+>> +               rk3399_dmc_stop_hardware_counter(dmcfreq->dev);
+>> +
+>> +               /* when disable dmc, set sdram to max frequency */
+>> +               rk3399_dmcfreq_target(dmcfreq->dev, &freq, 0);
+>> +               return NOTIFY_OK;
+>> +       }
+>> +
+>> +       return NOTIFY_DONE;
+>> +}
+>> +
+>> +static irqreturn_t rk3399_dmc_irq(int irq, void *dev_id)
+>> +{
+>> +       struct rk3399_dmcfreq *dmcfreq =3D dev_id;
+>> +
+>> +       complete(&dmcfreq->dcf_hold_completion);
+>> +
+>> +       return IRQ_HANDLED;
+>> +}
+>> +
+>> +static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+>> +{
+>> +       struct device *dev =3D &pdev->dev;
+>> +       struct rk3399_dmcfreq *data;
+>> +       struct resource *res;
+>> +       int ret, irq;
+>> +       struct device_node *np =3D pdev->dev.of_node, *node;
+>> +
+>> +       irq =3D platform_get_irq(pdev, 0);
+>> +       if (irq < 0) {
+>> +               dev_err(&pdev->dev, "no dmc irq resource\n");
+>> +               return -EINVAL;
+>> +       }
+>> +
+>> +       data =3D devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GF=
+P_KERNEL);
+>> +       if (!data)
+>> +               return -ENOMEM;
+>> +
+>> +       mutex_init(&data->lock);
+>> +       res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> +       data->regs =3D devm_ioremap_resource(&pdev->dev, res);
+>> +       if (IS_ERR(data->regs))
+>> +               return PTR_ERR(data->regs);
+>> +
+>> +       data->vdd_center =3D devm_regulator_get(dev, "center");
+>> +       if (IS_ERR(data->vdd_center)) {
+>> +               dev_err(dev, "Cannot get the regulator \"center\"\n"=
+);
+>> +               return PTR_ERR(data->vdd_center);
+>> +       }
+>> +
+>> +       data->dmc_clk =3D devm_clk_get(dev, "dmc_clk");
+>> +       if (IS_ERR(data->dmc_clk)) {
+>> +               dev_err(dev, "Cannot get the clk dmc_clk\n");
+>> +               return PTR_ERR(data->dmc_clk);
+>> +       };
+>> +
+>> +       /*
+>> +        * We add a devfreq driver to our parent since it has a devi=
+ce tree node
+>> +        * with operating points.
+>> +        */
+>> +       if (dev_pm_opp_of_add_table(dev)) {
+>> +               dev_err(dev, "Invalid operating-points in device tre=
+e.\n");
+>> +               return -EINVAL;
+>> +       }
+>> +
+>> +       of_property_read_u32(np, "upthreshold",
+>> +                            &data->ondemand_data.upthreshold);
+>> +
+>> +       of_property_read_u32(np, "downdifferential",
+>> +                            &data->ondemand_data.downdifferential);
+>> +
+>> +       data->devfreq =3D devfreq_add_device(dev,
+>> +                                          &rk3399_devfreq_dmc_profi=
+le,
+>> +                                          "simple_ondemand",
+>> +                                          &data->ondemand_data);
+>> +       if (IS_ERR(data->devfreq))
+>> +               return PTR_ERR(data->devfreq);
+>> +
+>> +       devfreq_register_opp_notifier(dev, data->devfreq);
+>> +
+>> +       data->dmc_nb.notifier_call =3D rk3399_dmc_enable_notify;
+>> +       dmc_register_notifier(&data->dmc_nb);
+>> +
+>> +       data->irq =3D irq;
+>> +       ret =3D devm_request_irq(dev, irq, rk3399_dmc_irq, IRQF_ONES=
+HOT,
+>> +                              dev_name(dev), data);
+>> +       if (ret) {
+>> +               dev_err(dev, "failed to request dmc irq: %d\n", ret)=
+;
+>> +               return ret;
+>> +       }
+>> +
+>> +       init_completion(&data->dcf_hold_completion);
+>> +
+>> +       /* try to find the optional reference to the pmu syscon */
+>> +       node =3D of_parse_phandle(np, "rockchip,pmu", 0);
+>> +       if (node) {
+>> +               data->regmap_pmu =3D syscon_node_to_regmap(node);
+>> +               if (IS_ERR(data->regmap_pmu))
+>> +                       return PTR_ERR(data->regmap_pmu);
+>> +       }
+>> +       data->dev =3D dev;
+>> +       platform_set_drvdata(pdev, data);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static int rk3399_dmcfreq_remove(struct platform_device *pdev)
+>> +{
+>> +       struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev=
+);
+>> +
+>> +       devfreq_remove_device(dmcfreq->devfreq);
+>> +       regulator_put(dmcfreq->vdd_center);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct of_device_id rk3399dmc_devfreq_of_match[] =3D {
+>> +       { .compatible =3D "rockchip,rk3399-dmc" },
+>> +       { },
+>> +};
+>> +
+>> +static struct platform_driver rk3399_dmcfreq_driver =3D {
+>> +       .probe  =3D rk3399_dmcfreq_probe,
+>> +       .remove =3D rk3399_dmcfreq_remove,
+>> +       .driver =3D {
+>> +               .name   =3D "rk3399-dmc-freq",
+>> +               .pm     =3D &rk3399_dmcfreq_pm,
+>> +               .of_match_table =3D rk3399dmc_devfreq_of_match,
+>> +       },
+>> +};
+>> +module_platform_driver(rk3399_dmcfreq_driver);
+>> +
+>> +MODULE_LICENSE("GPL v2");
+>> +MODULE_DESCRIPTION("RK3399 dmcfreq driver with devfreq framework");
+>> diff --git a/drivers/devfreq/rockchip/rockchip_dmc.c b/drivers/devfr=
+eq/rockchip/rockchip_dmc.c
+>> new file mode 100644
+>> index 0000000..ecc6598
+>> --- /dev/null
+>> +++ b/drivers/devfreq/rockchip/rockchip_dmc.c
+>> @@ -0,0 +1,132 @@
+>> +/*
+>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>> + * Author: Lin Huang <hl@rock-chips.com>
+>> + * Base on: https://chromium-review.googlesource.com/#/c/231477/
+>> + *
+>> + * This program is free software; you can redistribute it and/or mo=
+dify it
+>> + * under the terms and conditions of the GNU General Public License=
+,
+>> + * version 2, as published by the Free Software Foundation.
+>> + *
+>> + * This program is distributed in the hope it will be useful, but W=
+ITHOUT
+>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILI=
+TY or
+>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Li=
+cense for
+>> + * more details.
+>> + */
+>> +
+>> +#include <linux/mutex.h>
+>> +#include <soc/rockchip/rockchip_dmc.h>
+>> +
+>> +static int num_wait;
+>> +static int num_disable;
+>> +static BLOCKING_NOTIFIER_HEAD(dmc_notifier_list);
+>> +static DEFINE_MUTEX(dmc_en_lock);
+>> +static DEFINE_MUTEX(dmc_sync_lock);
+>> +
+>> +void dmc_event(int event)
+>> +{
+>> +       mutex_lock(&dmc_sync_lock);
+>> +       blocking_notifier_call_chain(&dmc_notifier_list, event, NULL=
+);
+>> +       mutex_unlock(&dmc_sync_lock);
+>> +}
+>> +EXPORT_SYMBOL_GPL(dmc_event);
+>> +
+>> +/**
+>> + * rockchip_dmc_enabled - Returns true if dmc freq is enabled, fals=
+e otherwise.
+>> + */
+>> +bool rockchip_dmc_enabled(void)
+>> +{
+>> +       return num_disable <=3D 0 && num_wait <=3D 1;
+>> +}
+>> +EXPORT_SYMBOL_GPL(rockchip_dmc_enabled);
+>> +
+>> +/**
+>> + * rockchip_dmc_enable - Enable dmc frequency scaling. Will only en=
+able
+>> + * frequency scaling if there are 1 or fewer notifiers. Call to und=
+o
+>> + * rockchip_dmc_disable.
+>> + */
+>> +void rockchip_dmc_enable(void)
+>> +{
+>> +       mutex_lock(&dmc_en_lock);
+>> +       num_disable--;
+>> +       WARN_ON(num_disable < 0);
+>> +       if (rockchip_dmc_enabled())
+>> +               dmc_event(DMC_ENABLE);
+>> +       mutex_unlock(&dmc_en_lock);
+>> +}
+>> +EXPORT_SYMBOL_GPL(rockchip_dmc_enable);
+>> +
+>> +/**
+>> + * rockchip_dmc_disable - Disable dmc frequency scaling. Call when =
+something
+>> + * cannot coincide with dmc frequency scaling.
+>> + */
+>> +void rockchip_dmc_disable(void)
+>> +{
+>> +       mutex_lock(&dmc_en_lock);
+>> +       if (rockchip_dmc_enabled())
+>> +               dmc_event(DMC_DISABLE);
+>> +       num_disable++;
+>> +       mutex_unlock(&dmc_en_lock);
+>> +}
+>> +EXPORT_SYMBOL_GPL(rockchip_dmc_disable);
+>> +
+>> +int dmc_register_notifier(struct notifier_block *nb)
+>> +{
+>> +       int ret;
+>> +
+>> +       if (!nb)
+>> +               return -EINVAL;
+>> +
+>> +       ret =3D blocking_notifier_chain_register(&dmc_notifier_list,=
+ nb);
+>> +
+>> +       return ret;
+>> +}
+>> +EXPORT_SYMBOL_GPL(dmc_register_notifier);
+>> +
+>> +int dmc_unregister_notifier(struct notifier_block *nb)
+>> +{
+>> +       int ret;
+>> +
+>> +       if (!nb)
+>> +               return -EINVAL;
+>> +
+>> +       ret =3D blocking_notifier_chain_unregister(&dmc_notifier_lis=
+t, nb);
+>> +
+>> +       return ret;
+>> +}
+>> +EXPORT_SYMBOL_GPL(dmc_unregister_notifier);
+>> +
+>> +int rockchip_dmc_get(struct notifier_block *nb)
+>> +{
+>> +       if (!nb)
+>> +               return -EINVAL;
+>> +
+>> +       mutex_lock(&dmc_en_lock);
+>> +
+>> +       /* if use two vop, need to disable dmc */
+>> +       if (num_wait =3D=3D 1 && num_disable <=3D 0)
+>> +               dmc_event(DMC_DISABLE);
+>> +       num_wait++;
+>> +       dmc_register_notifier(nb);
+>> +       mutex_unlock(&dmc_en_lock);
+>> +
+>> +       return 0;
+>> +}
+>> +EXPORT_SYMBOL_GPL(rockchip_dmc_get);
+>> +
+>> +int rockchip_dmc_put(struct notifier_block *nb)
+>> +{
+>> +       if (!nb)
+>> +               return -EINVAL;
+>> +
+>> +       mutex_lock(&dmc_en_lock);
+>> +       num_wait--;
+>> +
+>> +       /* from 2 vop back to 1 vop, need enable dmc */
+>> +       if (num_wait =3D=3D 1 && num_disable <=3D 0)
+>> +               dmc_event(DMC_ENABLE);
+>> +       dmc_unregister_notifier(nb);
+>> +       mutex_unlock(&dmc_en_lock);
+>> +
+>> +       return 0;
+>> +}
+>> +EXPORT_SYMBOL_GPL(rockchip_dmc_put);
+>> diff --git a/include/soc/rockchip/rockchip_dmc.h b/include/soc/rockc=
+hip/rockchip_dmc.h
+>> new file mode 100644
+>> index 0000000..6bb58d6
+>> --- /dev/null
+>> +++ b/include/soc/rockchip/rockchip_dmc.h
+>> @@ -0,0 +1,44 @@
+>> +/*
+>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>> + *
+>> + * This program is free software; you can redistribute it and/or mo=
+dify it
+>> + * under the terms and conditions of the GNU General Public License=
+,
+>> + * version 2, as published by the Free Software Foundation.
+>> + *
+>> + * This program is distributed in the hope it will be useful, but W=
+ITHOUT
+>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILI=
+TY or
+>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Li=
+cense for
+>> + * more details.
+>> + */
+>> +
+>> +#ifndef __SOC_ROCKCHIP_DMC_H
+>> +#define __SOC_ROCKCHIP_DMC_H
+>> +
+>> +#include <linux/notifier.h>
+>> +
+>> +#define DMC_ENABLE     0
+>> +#define DMC_DISABLE    1
+>> +#define DMCFREQ_ADJUST 2
+>> +#define DMCFREQ_FINISH 3
+>> +
+>> +#ifdef CONFIG_ARM_ROCKCHIP_DMC_DEVFREQ
+>> +int rockchip_dmc_get(struct notifier_block *nb);
+>> +int rockchip_dmc_put(struct notifier_block *nb);
+>> +#else
+>> +static inline int rockchip_dmc_get(struct notifier_block *nb)
+>> +{
+>> +       return 0;
+>> +}
+>> +static inline int rockchip_dmc_put(struct notifier_block *nb)
+>> +{
+>> +       return 0;
+>> +}
+>> +#endif
+>> +
+>> +void dmc_event(int event);
+>> +int dmc_register_notifier(struct notifier_block *nb);
+>> +int dmc_unregister_notifier(struct notifier_block *nb);
+>> +void rockchip_dmc_enable(void);
+>> +void rockchip_dmc_disable(void);
+>> +bool rockchip_dmc_enabled(void);
+>> +#endif
+>> --
+>> 1.9.1
+>>
+>
+>
 
-BR.
-=46rank
+--=20
+Lin Huang
+
+
