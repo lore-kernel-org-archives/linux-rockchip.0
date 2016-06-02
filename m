@@ -1,7 +1,7 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 09/45] c6x: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:11 +0200
-Message-ID: <1464881987-13203-10-git-send-email-k.kozlowski__18619.2546658733$1465601924$gmane$org@samsung.com>
+Subject: [RFC v3 20/45] xen: dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:22 +0200
+Message-ID: <1464881987-13203-21-git-send-email-k.kozlowski__35586.6805570715$1465601925$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,86 +26,117 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/c6x/include/asm/dma-mapping.h | 4 ++--
- arch/c6x/kernel/dma.c              | 9 ++++-----
- arch/c6x/mm/dma-coherent.c         | 4 ++--
- 3 files changed, 8 insertions(+), 9 deletions(-)
+ drivers/xen/swiotlb-xen.c | 14 +++++++-------
+ include/xen/swiotlb-xen.h | 12 ++++++------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/arch/c6x/include/asm/dma-mapping.h b/arch/c6x/include/asm/dma-mapping.h
-index 6b5cd7b0cf32..5717b1e52d96 100644
---- a/arch/c6x/include/asm/dma-mapping.h
-+++ b/arch/c6x/include/asm/dma-mapping.h
-@@ -26,8 +26,8 @@ static inline struct dma_map_ops *get_dma_ops(struct device *dev)
- 
- extern void coherent_mem_init(u32 start, u32 size);
- void *c6x_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
--		gfp_t gfp, struct dma_attrs *attrs);
-+		gfp_t gfp, unsigned long attrs);
- void c6x_dma_free(struct device *dev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs);
-+		dma_addr_t dma_handle, unsigned long attrs);
- 
- #endif	/* _ASM_C6X_DMA_MAPPING_H */
-diff --git a/arch/c6x/kernel/dma.c b/arch/c6x/kernel/dma.c
-index 8a80f3a250c0..db4a6a301f5e 100644
---- a/arch/c6x/kernel/dma.c
-+++ b/arch/c6x/kernel/dma.c
-@@ -38,7 +38,7 @@ static void c6x_dma_sync(dma_addr_t handle, size_t size,
- 
- static dma_addr_t c6x_dma_map_page(struct device *dev, struct page *page,
- 		unsigned long offset, size_t size, enum dma_data_direction dir,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
+diff --git a/drivers/xen/swiotlb-xen.c b/drivers/xen/swiotlb-xen.c
+index 7399782c0998..87e6035c9e81 100644
+--- a/drivers/xen/swiotlb-xen.c
++++ b/drivers/xen/swiotlb-xen.c
+@@ -294,7 +294,7 @@ error:
+ void *
+ xen_swiotlb_alloc_coherent(struct device *hwdev, size_t size,
+ 			   dma_addr_t *dma_handle, gfp_t flags,
+-			   struct dma_attrs *attrs)
++			   unsigned long attrs)
  {
- 	dma_addr_t handle = virt_to_phys(page_address(page) + offset);
+ 	void *ret;
+ 	int order = get_order(size);
+@@ -346,7 +346,7 @@ EXPORT_SYMBOL_GPL(xen_swiotlb_alloc_coherent);
  
-@@ -47,13 +47,13 @@ static dma_addr_t c6x_dma_map_page(struct device *dev, struct page *page,
- }
- 
- static void c6x_dma_unmap_page(struct device *dev, dma_addr_t handle,
--		size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
-+		size_t size, enum dma_data_direction dir, unsigned long attrs)
+ void
+ xen_swiotlb_free_coherent(struct device *hwdev, size_t size, void *vaddr,
+-			  dma_addr_t dev_addr, struct dma_attrs *attrs)
++			  dma_addr_t dev_addr, unsigned long attrs)
  {
- 	c6x_dma_sync(handle, size, dir);
- }
+ 	int order = get_order(size);
+ 	phys_addr_t phys;
+@@ -378,7 +378,7 @@ EXPORT_SYMBOL_GPL(xen_swiotlb_free_coherent);
+ dma_addr_t xen_swiotlb_map_page(struct device *dev, struct page *page,
+ 				unsigned long offset, size_t size,
+ 				enum dma_data_direction dir,
+-				struct dma_attrs *attrs)
++				unsigned long attrs)
+ {
+ 	phys_addr_t map, phys = page_to_phys(page) + offset;
+ 	dma_addr_t dev_addr = xen_phys_to_bus(phys);
+@@ -434,7 +434,7 @@ EXPORT_SYMBOL_GPL(xen_swiotlb_map_page);
+  */
+ static void xen_unmap_single(struct device *hwdev, dma_addr_t dev_addr,
+ 			     size_t size, enum dma_data_direction dir,
+-				 struct dma_attrs *attrs)
++			     unsigned long attrs)
+ {
+ 	phys_addr_t paddr = xen_bus_to_phys(dev_addr);
  
- static int c6x_dma_map_sg(struct device *dev, struct scatterlist *sglist,
--		int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
-+		int nents, enum dma_data_direction dir, unsigned long attrs)
+@@ -462,7 +462,7 @@ static void xen_unmap_single(struct device *hwdev, dma_addr_t dev_addr,
+ 
+ void xen_swiotlb_unmap_page(struct device *hwdev, dma_addr_t dev_addr,
+ 			    size_t size, enum dma_data_direction dir,
+-			    struct dma_attrs *attrs)
++			    unsigned long attrs)
+ {
+ 	xen_unmap_single(hwdev, dev_addr, size, dir, attrs);
+ }
+@@ -538,7 +538,7 @@ EXPORT_SYMBOL_GPL(xen_swiotlb_sync_single_for_device);
+ int
+ xen_swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl,
+ 			 int nelems, enum dma_data_direction dir,
+-			 struct dma_attrs *attrs)
++			 unsigned long attrs)
  {
  	struct scatterlist *sg;
  	int i;
-@@ -67,8 +67,7 @@ static int c6x_dma_map_sg(struct device *dev, struct scatterlist *sglist,
- }
- 
- static void c6x_dma_unmap_sg(struct device *dev, struct scatterlist *sglist,
--		  int nents, enum dma_data_direction dir,
--		  struct dma_attrs *attrs)
-+		  int nents, enum dma_data_direction dir, unsigned long attrs)
+@@ -599,7 +599,7 @@ EXPORT_SYMBOL_GPL(xen_swiotlb_map_sg_attrs);
+ void
+ xen_swiotlb_unmap_sg_attrs(struct device *hwdev, struct scatterlist *sgl,
+ 			   int nelems, enum dma_data_direction dir,
+-			   struct dma_attrs *attrs)
++			   unsigned long attrs)
  {
  	struct scatterlist *sg;
  	int i;
-diff --git a/arch/c6x/mm/dma-coherent.c b/arch/c6x/mm/dma-coherent.c
-index f7ee63af2541..95e38ad27c69 100644
---- a/arch/c6x/mm/dma-coherent.c
-+++ b/arch/c6x/mm/dma-coherent.c
-@@ -74,7 +74,7 @@ static void __free_dma_pages(u32 addr, int order)
-  * virtual and DMA address for that space.
-  */
- void *c6x_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
--		gfp_t gfp, struct dma_attrs *attrs)
-+		gfp_t gfp, unsigned long attrs)
- {
- 	u32 paddr;
- 	int order;
-@@ -99,7 +99,7 @@ void *c6x_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
-  * Free DMA coherent memory as defined by the above mapping.
-  */
- void c6x_dma_free(struct device *dev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs)
-+		dma_addr_t dma_handle, unsigned long attrs)
- {
- 	int order;
+diff --git a/include/xen/swiotlb-xen.h b/include/xen/swiotlb-xen.h
+index 8b2eb93ae8ba..7c35e279d1e3 100644
+--- a/include/xen/swiotlb-xen.h
++++ b/include/xen/swiotlb-xen.h
+@@ -9,30 +9,30 @@ extern int xen_swiotlb_init(int verbose, bool early);
+ extern void
+ *xen_swiotlb_alloc_coherent(struct device *hwdev, size_t size,
+ 			    dma_addr_t *dma_handle, gfp_t flags,
+-			    struct dma_attrs *attrs);
++			    unsigned long attrs);
  
+ extern void
+ xen_swiotlb_free_coherent(struct device *hwdev, size_t size,
+ 			  void *vaddr, dma_addr_t dma_handle,
+-			  struct dma_attrs *attrs);
++			  unsigned long attrs);
+ 
+ extern dma_addr_t xen_swiotlb_map_page(struct device *dev, struct page *page,
+ 				       unsigned long offset, size_t size,
+ 				       enum dma_data_direction dir,
+-				       struct dma_attrs *attrs);
++				       unsigned long attrs);
+ 
+ extern void xen_swiotlb_unmap_page(struct device *hwdev, dma_addr_t dev_addr,
+ 				   size_t size, enum dma_data_direction dir,
+-				   struct dma_attrs *attrs);
++				   unsigned long attrs);
+ extern int
+ xen_swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl,
+ 			 int nelems, enum dma_data_direction dir,
+-			 struct dma_attrs *attrs);
++			 unsigned long attrs);
+ 
+ extern void
+ xen_swiotlb_unmap_sg_attrs(struct device *hwdev, struct scatterlist *sgl,
+ 			   int nelems, enum dma_data_direction dir,
+-			   struct dma_attrs *attrs);
++			   unsigned long attrs);
+ 
+ extern void
+ xen_swiotlb_sync_single_for_cpu(struct device *hwdev, dma_addr_t dev_addr,
 -- 
 1.9.1
