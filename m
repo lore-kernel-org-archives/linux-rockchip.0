@@ -1,69 +1,67 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH] drm: convert DT component matching to
- component_match_add_release()
-Date: Fri, 3 Jun 2016 15:15:48 +0100
-Message-ID: <20160603141548.GC1041@n2100.armlinux.org.uk>
-References: <E1b8jze-00046l-K5@rmk-PC.armlinux.org.uk>
- <57516268.3020401@arm.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
+	MAX98357A/RT5514/DA7219
+Date: Fri, 03 Jun 2016 22:16:12 +0800
+Message-ID: <5751912C.6080904@rock-chips.com>
+References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com>
+ <20160601144542.GA3835@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <57516268.3020401@arm.com>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Liviu Dudau <liviu.dudau@arm.com>, David Airlie <airlied@linux.ie>, Rob Clark <robdclark@gmail.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160601144542.GA3835@rob-hp-laptop>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 03, 2016 at 11:56:40AM +0100, Robin Murphy wrote:
-> Hi Russell,
-> 
-> On 03/06/16 08:58, Russell King wrote:
-> >Convert DT component matching to use component_match_add_release().
-> >
-> >Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> >---
-> >  drivers/gpu/drm/arm/hdlcd_drv.c             | 10 ++++++++--
-> >  drivers/gpu/drm/armada/armada_drv.c         |  9 +++++++--
-> >  drivers/gpu/drm/drm_of.c                    | 13 +++++++++----
-> >  drivers/gpu/drm/msm/msm_drv.c               |  8 +++++++-
-> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 13 ++++++++++---
-> >  drivers/gpu/drm/sti/sti_drv.c               |  9 +++++++--
-> >  drivers/gpu/drm/tilcdc/tilcdc_external.c    |  9 +++++++--
-> >  7 files changed, 55 insertions(+), 16 deletions(-)
-> >
-> >diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> >index b987c63ba8d6..bbde48c4f550 100644
-> >--- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> >+++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> >@@ -443,11 +443,16 @@ static const struct component_master_ops hdlcd_master_ops = {
-> >  	.unbind		= hdlcd_drm_unbind,
-> >  };
-> >
-> >-static int compare_dev(struct device *dev, void *data)
-> >+static int compare_of(struct device *dev, void *data)
-> >  {
-> >  	return dev->of_node == data;
-> >  }
-> >
-> >+static void release_of(struct device *dev, void *data)
-> >+{
-> >+	of_node_put(data);
-> >+}
-> 
-> Considering that there's 7 identical copies of this function in this patch
-> alone, perhaps there's some mileage in defining it commonly as a static
-> __maybe_unused default_release_of() in component.h or drm_of.h (and maybe
-> default_compare_of() similarly)?
-> 
-> (Apologies if there's already been some strong argument against that which
-> I've not seen, but it seems like a reasonable thing to do.)
-
-What we could do is extract out the common bits of OF-component matching
-into drivers/of/of_component.c and make the whole thing a tad better.
-I'll send a v2 series threaded to this message.
-
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+SGkgUm9iLAoKT24gMjAxNuW5tDA25pyIMDHml6UgMjI6NDUsIFJvYiBIZXJyaW5nIHdyb3RlOgo+
+IE9uIFRodSwgTWF5IDI2LCAyMDE2IGF0IDA5OjAyOjIyUE0gKzA4MDAsIFhpbmcgWmhlbmcgd3Jv
+dGU6Cj4+IFRoZXJlIGFyZSBtdWx0aSBjb2RlYyBkZXZpY2VzIG9uIHRoZSBSSzMzOTkgcGxhdGZv
+cm0sIHdlIGNhbiB1c2UKPj4gdGhpcyBwYXRjaCBzdXBwb3J0IGFuZCBjb250cm9sIHRoZXNlIGNv
+ZGVjcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWGluZyBaaGVuZzx6aGVuZ3hpbmdAcm9jay1jaGlw
+cy5jb20+Cj4+IC0tLQo+Pgo+PiBDaGFuZ2VzIGluIHYzOgo+PiAtIHJlbmFtZSBET0MgdG8gcm9j
+a2NoaXAscmszMzk5LW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4dAo+PiAtIHJlbmFtZSBjb21w
+YXRpYmxlIHRvIHJvY2tjaGlwLHJrMzM5OS1tYXg5ODM1N2EtcnQ1NTE0LWRhNzIxOQo+PiAtIHJl
+bmFtZSBzb3VyY2UgY29kZSB0byByazMzOTlfbWF4OTgzNTdhX3J0NTUxNF9kYTcyMTkuYwo+Pgo+
+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIHVzZSB0aGUgRlMgMjU2IHRvIHNldCBtY2xrcyBvZiB0aGUg
+bWF4OTgzNTdhIGFuZCBydDU1MTQgZGFuYW1pY2FsbHkKPj4gLSBhZGQgbW9yZSBzYW1wbGUgcmF0
+ZSBmb3IgZGE3MjE5Cj4+Cj4+ICAgLi4uL3JvY2tjaGlwLHJrMzM5OS1tYXg5ODM1N2EtcnQ1NTE0
+LWRhNzIxOS50eHQgICAgfCAgIDE1ICsKPj4gICBzb3VuZC9zb2Mvcm9ja2NoaXAvS2NvbmZpZyAg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMTEgKwo+PiAgIHNvdW5kL3NvYy9yb2NrY2hpcC9N
+YWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgMiArCj4+ICAgLi4uL3NvYy9yb2Nr
+Y2hpcC9yazMzOTlfbWF4OTgzNTdhX3J0NTUxNF9kYTcyMTkuYyAgfCAgMzMzICsrKysrKysrKysr
+KysrKysrKysrCj4+ICAgNCBmaWxlcyBjaGFuZ2VkLCAzNjEgaW5zZXJ0aW9ucygrKQo+PiAgIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc291bmQv
+cm9ja2NoaXAscmszMzk5LW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4dAo+PiAgIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBzb3VuZC9zb2Mvcm9ja2NoaXAvcmszMzk5X21heDk4MzU3YV9ydDU1MTRfZGE3
+MjE5LmMKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9zb3VuZC9yb2NrY2hpcCxyazMzOTktbWF4OTgzNTdhLXJ0NTUxNC1kYTcyMTkudHh0IGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLHJrMzM5OS1tYXg5
+ODM1N2EtcnQ1NTE0LWRhNzIxOS50eHQKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXgg
+MDAwMDAwMC4uM2FlNjAzZQo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcCxyazMzOTktbWF4OTgzNTdhLXJ0NTUx
+NC1kYTcyMTkudHh0Cj4+IEBAIC0wLDAgKzEsMTUgQEAKPj4gK1JPQ0tDSElQIHdpdGggTUFYOTgz
+NTdBL1JUNTUxNC9EQTcyMTkgY29kZWNzCj4+ICsKPj4gK1JlcXVpcmVkIHByb3BlcnRpZXM6Cj4+
+ICstIGNvbXBhdGlibGU6ICJyb2NrY2hpcCxyazMzOTktbWF4OTgzNTdhLXJ0NTUxNC1kYTcyMTki
+Cj4gSSdtIHN0aWxsIG5vdCB2ZXJ5IGNsZWFyIG9uIHRoZSBuYW1pbmcgY29udmVudGlvbiB0aG91
+Z2hvdXQgdGhpcy4gVGhpcwo+IGRvZXNuJ3Qgc2VlbSBsaWtlIGEgcGF0dGVybiB3ZSB3YW50IHRv
+IHJlcGVhdCAoPGNoaXA+LTxjb2RlYz4tPGNvZGVjPikuCj4KVGhhbmsgeW91IGZvciB5b3VyIHJl
+cGx5LiA6LSkKCkkgcmVmZXJlZCB0byBNVEsncyBtdDgxNzMtcnQ1NjUwLXJ0NTUxNC50eHQgb24g
+dXBzdHJlYW0sIHRoYXQgY29tcGF0aWJsZSAKbmFtZSBpcyAibWVkaWF0ZWssbXQ4MTczLXJ0NTY1
+MC1ydDU1MTQiLgpCZWNhdXNlIG91ciBwbGF0Zm9ybSBuZWVkIHRvIHN1cHBvcnQgMyBjb2RlY3Mg
+KG1heDk4MzU3YSAvIGRhNzIxOSAvIApydDU1MTQpLiBQZXJoYXBzLCB5b3UgbWF5YmUgZmVlbCB0
+aGF0IG5hbWUgaXMgdG9vIGxvbmc/IEFuZCwgY291bGQgeW91IApwbGVhc2UgdGVsbCBtZSB3aGF0
+IG5hbWVzIHdvdWxkIGJlIGJldHRlcj8KCkZvciBleGFtcGxlOiAicmszMzk5LWNvbXBvc2l0ZS1j
+b2RlY3MiID8KClRoYW5rcy4KCgotLSAKLSBYaW5nIFpoZW5nCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KQWxzYS1kZXZlbCBtYWlsaW5nIGxpc3QKQWxz
+YS1kZXZlbEBhbHNhLXByb2plY3Qub3JnCmh0dHA6Ly9tYWlsbWFuLmFsc2EtcHJvamVjdC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9hbHNhLWRldmVsCg==
