@@ -1,144 +1,75 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH 09/20] drm: rcar-du: Rely on the default
- ->best_encoder() behavior
-Date: Fri, 3 Jun 2016 09:38:49 +0200
-Message-ID: <20160603093849.136858be@bbrezillon>
-References: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1464877907-27723-10-git-send-email-boris.brezillon@free-electrons.com>
-	<5863270.jtrd0Kruzj@avalon>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] clk: rockchip: remove ROCKCHIP_SOFTRST_HIWORD_MASK
+ for rockchip platform
+Date: Fri, 3 Jun 2016 15:38:57 +0800
+Message-ID: <e6a526b7-63df-17b7-c8d6-98212a33bbf6@rock-chips.com>
+References: <1464915288-10877-1-git-send-email-shawn.lin@rock-chips.com>
+ <5750DC85.4040400@rock-chips.com>
+ <7fdf43a9-58d4-d6a8-d863-a7e265c93a06@kernel-upstream.org>
+ <1853369.vjRjVRadgx@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5863270.jtrd0Kruzj@avalon>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Alison Wang <alison.wang-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vincent
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1853369.vjRjVRadgx@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: shawn.lin@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 02 Jun 2016 23:57:14 +0300
-Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org> wrote:
+=E5=9C=A8 2016/6/3 15:29, Heiko St=C3=BCbner =E5=86=99=E9=81=93:
+> Hi Shawn,
+>
+> Am Freitag, 3. Juni 2016, 11:35:32 schrieb Shawn Lin:
+>> =E5=9C=A8 2016/6/3 9:25, Xing Zheng =E5=86=99=E9=81=93:
+>>> On 2016=E5=B9=B406=E6=9C=8803=E6=97=A5 08:54, Shawn Lin wrote:
+>>>> I check all the Socs including RK2928/3000/3066/3028X/316X/312X/
+>>>> 3190/3188/3228/3368/3399/3036, and find all of them use high 16-bi=
+t
+>>>> as write mask. Obviously we don't need ROCKCHIP_SOFTRST_HIWORD_MAS=
+K
+>>>> any more(actually I don't know why we need it before). This patch
+>>>> removes it to simplify the code and save a little cpu cycle when c=
+alling
+>>>> assert or deassert callback.
+>>>
+>>> In my opinion, this flag can be used for compatibility, we can not
+>>> ensure that our SoCs will not use the 32bit SOFTRST_CONs in future.
+>>>
+>>> Thanks.
+>>
+>> Thanks for sharing your thought.
+>>
+>> I'm not 100% sure, but I'm 99% sure about we won't let
+>> it happened. You have to consider the backward compatibility
+>> rather than the future ones. If you got a chip with 10 bit, or
+>> 8bit for SOFTRST_CONX, so how do you wanna deal with it?
+>> Should we now add  ROCKCHIP_SOFTRST_X_BIT_MASK?  :)
+>
+> older SoCs like the rk2818 (ARM9-based) do actually use 32bit softrst
+> registers. And if I ever get my hands on one of those, I'd actually t=
+ry to
+> support it :-) .
+>
+> So I'd really like to keep the flag.
 
-> Hi Boris,
-> 
-> Thank you for the patch.
-> 
-> On Thursday 02 Jun 2016 16:31:36 Boris Brezillon wrote:
-> > All outputs have a 1:1 relationship between connectors and encoders,
-> > and the driver is relying on the atomic helpers: we can drop the custom  
-> > ->best_encoder() implementations and let the core call  
-> > drm_atomic_helper_best_encoder() for us.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> > ---
-> >  drivers/gpu/drm/rcar-du/rcar_du_encoder.c | 12 ------------
-> >  drivers/gpu/drm/rcar-du/rcar_du_encoder.h |  3 ---
-> >  drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c |  1 -
-> >  drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c |  1 -
-> >  drivers/gpu/drm/rcar-du/rcar_du_vgacon.c  |  1 -
-> >  5 files changed, 18 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-> > b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c index 4e939e4..55149e9 100644
-> > --- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-> > +++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-> > @@ -27,18 +27,6 @@
-> >  #include "rcar_du_vgacon.h"
-> > 
-> >  /*
-> > ---------------------------------------------------------------------------
-> > -- - * Common connector functions
-> > - */
-> > -
-> > -struct drm_encoder *
-> > -rcar_du_connector_best_encoder(struct drm_connector *connector)
-> > -{
-> > -	struct rcar_du_connector *rcon = to_rcar_connector(connector);
-> > -
-> > -	return rcar_encoder_to_drm_encoder(rcon->encoder);
-> > -}
-> > -
-> > -/*
-> > ---------------------------------------------------------------------------
-> > -- * Encoder
-> >   */
-> > 
-> > diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
-> > b/drivers/gpu/drm/rcar-du/rcar_du_encoder.h index 719b6f2a..a8669c3 100644
-> > --- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
-> > +++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
-> > @@ -49,9 +49,6 @@ struct rcar_du_connector {
-> >  #define to_rcar_connector(c) \
-> >  	container_of(c, struct rcar_du_connector, connector)
-> > 
-> > -struct drm_encoder *
-> > -rcar_du_connector_best_encoder(struct drm_connector *connector);
-> > -
-> >  int rcar_du_encoder_init(struct rcar_du_device *rcdu,
-> >  			 enum rcar_du_encoder_type type,
-> >  			 enum rcar_du_output output,
-> > diff --git a/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
-> > b/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c index 6c92714..612b4d5 100644
-> > --- a/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
-> > +++ b/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
-> > @@ -52,7 +52,6 @@ static int rcar_du_hdmi_connector_mode_valid(struct
-> > drm_connector *connector, static const struct drm_connector_helper_funcs
-> > connector_helper_funcs = { .get_modes = rcar_du_hdmi_connector_get_modes,
-> >  	.mode_valid = rcar_du_hdmi_connector_mode_valid,
-> > -	.best_encoder = rcar_du_connector_best_encoder,
-> >  };
-> > 
-> >  static enum drm_connector_status
-> > diff --git a/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
-> > b/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c index e905f5d..6afd0af 100644
-> > --- a/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
-> > +++ b/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
-> > @@ -59,7 +59,6 @@ static int rcar_du_lvds_connector_get_modes(struct
-> > drm_connector *connector)
-> > 
-> >  static const struct drm_connector_helper_funcs connector_helper_funcs = {
-> >  	.get_modes = rcar_du_lvds_connector_get_modes,
-> > -	.best_encoder = rcar_du_connector_best_encoder,
-> >  };
-> > 
-> >  static enum drm_connector_status
-> > diff --git a/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
-> > b/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c index 9d7e5c9..68f7ffa 100644
-> > --- a/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
-> > +++ b/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
-> > @@ -28,7 +28,6 @@ static int rcar_du_vga_connector_get_modes(struct
-> > drm_connector *connector)
-> > 
-> >  static const struct drm_connector_helper_funcs connector_helper_funcs = {
-> >  	.get_modes = rcar_du_vga_connector_get_modes,
-> > -	.best_encoder = rcar_du_connector_best_encoder,
-> >  };
-> > 
-> >  static enum drm_connector_status  
-> 
-> You can also remove
-> 
->         rcon->encoder = renc;
-> 
-> from rcar_du_vga_connector_init(), it's not needed anymore. The same code in 
-> rcar_du_hdmi_connector_init() has to stay for now though, as it's used to 
-> locate the slave encoder in the HDMI support code. That should change when the 
-> driver will be converted to use drm_bridge.
-> 
-> I can also fix this during the conversion to drm_bridge if you don't want to 
-> resubmit. In any case,
+okay, fair engough. I just forgot to check rk281x and rk2808 etc, which
+seems too old for me. Yes, IIRC it did use 32bit softrst...
 
-There will be a v2 anyway, so I'll squash this change in the patch.
+So this flag should be used to keep the backward compatibility
+if someday someone wanna upstream something for rk2818.. :)
 
-> 
-> Reviewed-by: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-> 
+please drop this patch.
 
-Thanks,
+>
+> Heiko
+>
+>
+>
 
-Boris
 
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+--=20
+Best Regards
+Shawn Lin
+
