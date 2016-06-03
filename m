@@ -1,45 +1,51 @@
-From: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
-Subject: Re: [RFC v3 29/45] m68k: dma-mapping: Use unsigned long for dma_attrs
-Date: Fri, 3 Jun 2016 09:18:44 +0200
-Message-ID: <CAMuHMdXpMu6iuSYRJwyqP8mx_A9cAnsgkTh-8nU+JMpD4f2-SA@mail.gmail.com>
-References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
-	<1464881987-13203-30-git-send-email-k.kozlowski@samsung.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] clk: rockchip: remove ROCKCHIP_SOFTRST_HIWORD_MASK for rockchip platform
+Date: Fri, 03 Jun 2016 09:29:03 +0200
+Message-ID: <1853369.vjRjVRadgx@diego>
+References: <1464915288-10877-1-git-send-email-shawn.lin@rock-chips.com> <5750DC85.4040400@rock-chips.com> <7fdf43a9-58d4-d6a8-d863-a7e265c93a06@kernel-upstream.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1464881987-13203-30-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Linux MIPS Mailing List <linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Aurelien Jacquiot <a-jacquiot-l0cyMroinI0@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Linux-sh list <linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "James E.J. Bottomley" <jejb-6jwH94ZQLHl74goWV3ctuw@public.gmane.org>, Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, xen-devel-GuqFBffKawtpuQazS67q72D2FQJk+8+b@public.gmane.org, Matt Turner <mattst88-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, uclinux-h8-devel-5NWGOfrQmneRv+LV9MX5uooqe+aC9MnS@public.gmane.org, James Hogan <james.hogan-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, "adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org" <adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7fdf43a9-58d4-d6a8-d863-a7e265c93a06@kernel-upstream.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@kernel-upstream.org>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 2, 2016 at 5:39 PM, Krzysztof Kozlowski
-<k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org> wrote:
-> Split out subsystem specific changes for easier reviews. This will be
-> squashed with main commit.
->
-> Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Hi Shawn,
 
-Looks good.
+Am Freitag, 3. Juni 2016, 11:35:32 schrieb Shawn Lin:
+> =E5=9C=A8 2016/6/3 9:25, Xing Zheng =E5=86=99=E9=81=93:
+> > On 2016=E5=B9=B406=E6=9C=8803=E6=97=A5 08:54, Shawn Lin wrote:
+> >> I check all the Socs including RK2928/3000/3066/3028X/316X/312X/
+> >> 3190/3188/3228/3368/3399/3036, and find all of them use high 16-bi=
+t
+> >> as write mask. Obviously we don't need ROCKCHIP_SOFTRST_HIWORD_MAS=
+K
+> >> any more(actually I don't know why we need it before). This patch
+> >> removes it to simplify the code and save a little cpu cycle when c=
+alling
+> >> assert or deassert callback.
+> >=20
+> > In my opinion, this flag can be used for compatibility, we can not
+> > ensure that our SoCs will not use the 32bit SOFTRST_CONs in future.
+> >=20
+> > Thanks.
+>=20
+> Thanks for sharing your thought.
+>=20
+> I'm not 100% sure, but I'm 99% sure about we won't let
+> it happened. You have to consider the backward compatibility
+> rather than the future ones. If you got a chip with 10 bit, or
+> 8bit for SOFTRST_CONX, so how do you wanna deal with it?
+> Should we now add  ROCKCHIP_SOFTRST_X_BIT_MASK?  :)
 
-Acked-by: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
+older SoCs like the rk2818 (ARM9-based) do actually use 32bit softrst=20
+registers. And if I ever get my hands on one of those, I'd actually try=
+ to=20
+support it :-) .
 
-Gr{oetje,eeting}s,
+So I'd really like to keep the flag.
 
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Heiko
