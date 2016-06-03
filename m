@@ -1,84 +1,37 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RFC PATCH v1 3/6] clk: rockchip: rk3399: add ddrc clock support
-Date: Fri, 03 Jun 2016 14:56:58 +0200
-Message-ID: <13084747.Amq298iRsd@diego>
-References: <1464947719-6245-1-git-send-email-hl@rock-chips.com> <1464947719-6245-4-git-send-email-hl@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RFC PATCH v1 2/6] clk: rockchip: rk3399: add SCLK_DDRCLK ID for
+ ddrc
+Date: Fri, 3 Jun 2016 06:25:24 -0700
+Message-ID: <CAD=FV=XuJ4mVtEh8qzQwcwO8UqqoX6+r6OTrWc9yUN93kbMe_w@mail.gmail.com>
+References: <1464947719-6245-1-git-send-email-hl@rock-chips.com>
+ <1464947719-6245-3-git-send-email-hl@rock-chips.com>
+ <9d392979-0a20-ca74-9699-2440d07dddd3@rock-chips.com>
+ <20637963.iQzVZfJq9f@diego>
+ <3d6d3147-00de-8ba4-a27a-a8f89854f4f7@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1464947719-6245-4-git-send-email-hl@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: mark.yao@rock-chips.com, myungjoo.ham@samsung.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org, huangtao@rock-chips.com, typ@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <3d6d3147-00de-8ba4-a27a-a8f89854f4f7@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Tao Huang <huangtao@rock-chips.com>, Derek Basehore <dbasehore@chromium.org>, Michael Turquette <mturquette@baylibre.com>, =?UTF-8?B?5bmz5Y+w57uELeaxpOS6keW5sw==?= <typ@rock-chips.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kyungmin Park <kyungmin.park@samsung.com>, myungjoo.ham@samsung.com, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 3. Juni 2016, 17:55:16 schrieb Lin Huang:
-> add ddrc clock setting, so we can do ddr frequency
-> scaling on rk3399 platform in future.
-> 
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
-> ---
-> Changes in v1:
-> - remove ddrc source CLK_IGNORE_UNUSED flag, Suggestion by Doug
-> - move clk_ddrc and clk_ddrc_dpll_src to critical, Suggestion by Doug
-> 
->  drivers/clk/rockchip/clk-rk3399.c | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c
-> b/drivers/clk/rockchip/clk-rk3399.c index f1d8e44..29afb88 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-
-[...]
-
-> @@ -1377,6 +1381,18 @@ static struct rockchip_clk_branch
-> rk3399_clk_branches[] __initdata = { COMPOSITE_NOMUX(0, "clk_test",
-> "clk_test_pre", CLK_IGNORE_UNUSED, RK3368_CLKSEL_CON(58), 0, 5, DFLAGS,
->  			RK3368_CLKGATE_CON(13), 11, GFLAGS),
-> +
-> +	/* ddrc */
-> +	GATE(0, "clk_ddrc_lpll_src", "lpll", 0, RK3399_CLKGATE_CON(3),
-> +	     0, GFLAGS),
-> +	GATE(0, "clk_ddrc_bpll_src", "bpll", 0, RK3399_CLKGATE_CON(3),
-> +	     1, GFLAGS),
-> +	GATE(0, "clk_ddrc_dpll_src", "dpll", 0, RK3399_CLKGATE_CON(3),
-> +	     2, GFLAGS),
-> +	GATE(0, "clk_ddrc_gpll_src", "gpll", 0, RK3399_CLKGATE_CON(3),
-> +	     3, GFLAGS),
-> +	COMPOSITE_DDRC(SCLK_DDRCLK, "clk_ddrc", mux_ddrclk_p, 0,
-> +		       RK3399_CLKSEL_CON(6), 4, 2, MFLAGS, 0, 3, DFLAGS),
->  };
-
-as said in the other patch, just make this a regular COMPOSITE_NOGATE with 
-CLK_DIVIDER_READ_ONLY | CLK_MUX_READ_ONLY until that interface to the ATF 
-exists and is approved.
-
-That way you can still read back the clock rate without anything changing the 
-clock-rate, but we don't need to add duplicate code for it.
-
-
-> 
->  static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
-> @@ -1487,6 +1503,10 @@ static const char *const rk3399_cru_critical_clocks[]
-> __initconst = { "gpll_hclk_perilp1_src",
->  	"gpll_aclk_perilp0_src",
->  	"gpll_aclk_perihp_src",
-> +
-> +	/* ddrc */
-> +	"clk_ddrc_dpll_src",
-
-Why does your clk_ddrc_dpll_src need a separate critical entry. Any code 
-changing the clk_ddrc parent should make sure the new parent is enabled. (The 
-clock-framework of course does this already).
-
-
-> +	"clk_ddrc",
->  };
-> 
->  static const char *const rk3399_pmucru_critical_clocks[] __initconst = {
-
-
-Heiko
-
+SGksCgpPbiBGcmksIEp1biAzLCAyMDE2IGF0IDU6NDcgQU0sIFNoYXduIExpbiA8c2hhd24ubGlu
+QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiBBaCwgSSBtaXNzZWQgdGhlIHByZXZpb3VzIHZlcnNp
+b24gYXMgSSB0aGluayBpdCBzaG91bGQgYmUgZnJvbQo+IG5vbi12ZXJzaW9uIHRvIHYyIHJhdGhl
+ciB0aGFuIGZyb20gbm9uLXZlcnNpb24gdG8gdjEsIHdoaWNoIElJUkMgaXMgZnJvbQo+IERvdWcu
+IDopCgpZdXAsIHBhdGNoLW51bWJlcmluZyBpcyAxLWJhc2VkLCBub3QgMC1iYXNlZCwgc28gdHlw
+aWNhbGx5IHlvdSBoYXZlCm5vLXZlcnNpb24gPT4gdjIgPT4gdjMgPT4gdjk5CgotRG91ZwpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
