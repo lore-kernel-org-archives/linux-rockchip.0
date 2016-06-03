@@ -1,173 +1,69 @@
-From: Liviu Dudau <liviu.dudau@arm.com>
-Subject: Re: [PATCH] drm: convert DT component matching to
- component_match_add_release()
-Date: Fri, 3 Jun 2016 10:40:48 +0100
-Message-ID: <20160603094048.GI23566@e106497-lin.cambridge.arm.com>
-References: <E1b8jze-00046l-K5@rmk-PC.armlinux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <E1b8jze-00046l-K5@rmk-PC.armlinux.org.uk>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King <rmk+kernel@armlinux.org.uk>
-Cc: freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
+From: Lin Huang <hl@rock-chips.com>
+Subject: [RFC PATCH v1 0/6] rk3399 support ddr frequency scaling
+Date: Fri,  3 Jun 2016 17:55:13 +0800
+Message-ID: <1464947719-6245-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org, huangtao@rock-chips.com, typ@rock-chips.com, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdW4gMDMsIDIwMTYgYXQgMDg6NTg6MTBBTSArMDEwMCwgUnVzc2VsbCBLaW5nIHdy
-b3RlOgo+IENvbnZlcnQgRFQgY29tcG9uZW50IG1hdGNoaW5nIHRvIHVzZSBjb21wb25lbnRfbWF0
-Y2hfYWRkX3JlbGVhc2UoKS4KCkhpIFJ1c3NlbGwsCgpBbnkgcmVhc29uIGZvciBub3Qga2VlcGlu
-ZyB0aGUgY29tcG9uZW50X21hdGNoX2FkZCgpIGNhbGxzIGluIHRoZSBkcml2ZXJzPwpQbGFubmlu
-ZyB0byByZW1vdmUgaXQ/Cgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJ1c3NlbGwgS2luZyA8cm1rK2tl
-cm5lbEBhcm1saW51eC5vcmcudWs+CgpMb29rcyBnb29kIHRvIG1lIQoKUmV2aWV3ZWQtYnk6IExp
-dml1IER1ZGF1IDxMaXZpdS5EdWRhdUBhcm0uY29tPgoKRm9yIHRoZSBIRExDRCBwYXJ0OgpBY2tl
-ZC1ieTogTGl2aXUgRHVkYXUgPExpdml1LkR1ZGF1QGFybS5jb20+CgpUaGFua3MsCkxpdml1Cgo+
-IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL2hkbGNkX2Rydi5jICAgICAgICAgICAgIHwgMTAg
-KysrKysrKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYyAgICAgICAg
-IHwgIDkgKysrKysrKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAgICAg
-ICAgICAgfCAxMyArKysrKysrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tc20vbXNtX2Rydi5j
-ICAgICAgICAgICAgICAgfCAgOCArKysrKysrLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5jIHwgMTMgKysrKysrKysrKy0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-c3RpL3N0aV9kcnYuYyAgICAgICAgICAgICAgIHwgIDkgKysrKysrKy0tCj4gIGRyaXZlcnMvZ3B1
-L2RybS90aWxjZGMvdGlsY2RjX2V4dGVybmFsLmMgICAgfCAgOSArKysrKysrLS0KPiAgNyBmaWxl
-cyBjaGFuZ2VkLCA1NSBpbnNlcnRpb25zKCspLCAxNiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9oZGxjZF9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9h
-cm0vaGRsY2RfZHJ2LmMKPiBpbmRleCBiOTg3YzYzYmE4ZDYuLmJiZGU0OGM0ZjU1MCAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYXJtL2hkbGNkX2Rydi5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2FybS9oZGxjZF9kcnYuYwo+IEBAIC00NDMsMTEgKzQ0MywxNiBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIGhkbGNkX21hc3Rlcl9vcHMgPSB7Cj4gIAku
-dW5iaW5kCQk9IGhkbGNkX2RybV91bmJpbmQsCj4gIH07Cj4gIAo+IC1zdGF0aWMgaW50IGNvbXBh
-cmVfZGV2KHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArc3RhdGljIGludCBjb21w
-YXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiAgewo+ICAJcmV0dXJuIGRl
-di0+b2Zfbm9kZSA9PSBkYXRhOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCByZWxlYXNlX29mKHN0
-cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQoZGF0YSk7
-Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgaGRsY2RfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
-ZSAqcGRldikKPiAgewo+ICAJc3RydWN0IGRldmljZV9ub2RlICpwb3J0LCAqZXA7Cj4gQEAgLTQ3
-NCw3ICs0NzksOCBAQCBzdGF0aWMgaW50IGhkbGNkX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FQUdBSU47Cj4gIAl9Cj4gIAo+IC0JY29tcG9uZW50X21h
-dGNoX2FkZCgmcGRldi0+ZGV2LCAmbWF0Y2gsIGNvbXBhcmVfZGV2LCBwb3J0KTsKPiArCWNvbXBv
-bmVudF9tYXRjaF9hZGRfcmVsZWFzZSgmcGRldi0+ZGV2LCAmbWF0Y2gsIHJlbGVhc2Vfb2YsCj4g
-KwkJCQkgICAgY29tcGFyZV9vZiwgcG9ydCk7Cj4gIAo+ICAJcmV0dXJuIGNvbXBvbmVudF9tYXN0
-ZXJfYWRkX3dpdGhfbWF0Y2goJnBkZXYtPmRldiwgJmhkbGNkX21hc3Rlcl9vcHMsCj4gIAkJCQkJ
-ICAgICAgIG1hdGNoKTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1h
-ZGFfZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYwo+IGluZGV4IDQz
-OTgyNGE2MWFhNS4uNmNhMmFhMzY1MTVlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9h
-cm1hZGEvYXJtYWRhX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFf
-ZHJ2LmMKPiBAQCAtMjMyLDYgKzIzMiwxMSBAQCBzdGF0aWMgaW50IGNvbXBhcmVfb2Yoc3RydWN0
-IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ICAJcmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBkYXRh
-Owo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCByZWxlYXNlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwg
-dm9pZCAqZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQoZGF0YSk7Cj4gK30KPiArCj4gIHN0YXRp
-YyBpbnQgY29tcGFyZV9kZXZfbmFtZShzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4g
-IHsKPiAgCWNvbnN0IGNoYXIgKm5hbWUgPSBkYXRhOwo+IEBAIC0yNTUsOCArMjYwLDggQEAgc3Rh
-dGljIHZvaWQgYXJtYWRhX2FkZF9lbmRwb2ludHMoc3RydWN0IGRldmljZSAqZGV2LAo+ICAJCQlj
-b250aW51ZTsKPiAgCQl9Cj4gIAo+IC0JCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwg
-Y29tcGFyZV9vZiwgcmVtb3RlKTsKPiAtCQlvZl9ub2RlX3B1dChyZW1vdGUpOwo+ICsJCWNvbXBv
-bmVudF9tYXRjaF9hZGRfcmVsZWFzZShkZXYsIG1hdGNoLCByZWxlYXNlX29mLAo+ICsJCQkJCSAg
-ICBjb21wYXJlX29mLCByZW1vdGUpOwo+ICAJfQo+ICB9Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vZHJtX29mLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPiBpbmRleCBi
-Yzk4YmI5NDI2NGQuLjVkMTgzNDc5ZDdkNiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-ZHJtX29mLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPiBAQCAtNiw2ICs2LDEx
-IEBACj4gICNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fb2Yu
-aD4KPiAgCj4gK3N0YXRpYyB2b2lkIGRybV9yZWxlYXNlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwg
-dm9pZCAqZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQoZGF0YSk7Cj4gK30KPiArCj4gIC8qKgo+
-ICAgKiBkcm1fY3J0Y19wb3J0X21hc2sgLSBmaW5kIHRoZSBtYXNrIG9mIGEgcmVnaXN0ZXJlZCBD
-UlRDIGJ5IHBvcnQgT0Ygbm9kZQo+ICAgKiBAZGV2OiBEUk0gZGV2aWNlCj4gQEAgLTEwMSw4ICsx
-MDYsOCBAQCBpbnQgZHJtX29mX2NvbXBvbmVudF9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsCj4g
-IAkJCWNvbnRpbnVlOwo+ICAJCX0KPiAgCj4gLQkJY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZt
-YXRjaCwgY29tcGFyZV9vZiwgcG9ydCk7Cj4gLQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4gKwkJY29t
-cG9uZW50X21hdGNoX2FkZF9yZWxlYXNlKGRldiwgJm1hdGNoLCBkcm1fcmVsZWFzZV9vZiwKPiAr
-CQkJCQkgICAgY29tcGFyZV9vZiwgcG9ydCk7Cj4gIAl9Cj4gIAo+ICAJaWYgKGkgPT0gMCkgewo+
-IEBAIC0xNDAsOCArMTQ1LDggQEAgaW50IGRybV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRl
-dmljZSAqZGV2LAo+ICAJCQkJY29udGludWU7Cj4gIAkJCX0KPiAgCj4gLQkJCWNvbXBvbmVudF9t
-YXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsIHJlbW90ZSk7Cj4gLQkJCW9mX25vZGVf
-cHV0KHJlbW90ZSk7Cj4gKwkJCWNvbXBvbmVudF9tYXRjaF9hZGRfcmVsZWFzZShkZXYsICZtYXRj
-aCwgZHJtX3JlbGVhc2Vfb2YsCj4gKwkJCQkJCSAgICBjb21wYXJlX29mLCByZW1vdGUpOwo+ICAJ
-CX0KPiAgCQlvZl9ub2RlX3B1dChwb3J0KTsKPiAgCX0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL21zbS9tc21fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbXNtL21zbV9kcnYuYwo+IGlu
-ZGV4IDljNjU0MDkyZWY3OC4uMWY3ZGU0N2Q4MTdlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9tc20vbXNtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZHJ2LmMK
-PiBAQCAtODA1LDYgKzgwNSwxMSBAQCBzdGF0aWMgaW50IGNvbXBhcmVfb2Yoc3RydWN0IGRldmlj
-ZSAqZGV2LCB2b2lkICpkYXRhKQo+ICAJcmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBkYXRhOwo+ICB9
-Cj4gIAo+ICtzdGF0aWMgdm9pZCByZWxlYXNlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAq
-ZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQoZGF0YSk7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQg
-YWRkX2NvbXBvbmVudHMoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgY29tcG9uZW50X21hdGNo
-ICoqbWF0Y2hwdHIsCj4gIAkJY29uc3QgY2hhciAqbmFtZSkKPiAgewo+IEBAIC04MTgsNyArODIz
-LDggQEAgc3RhdGljIGludCBhZGRfY29tcG9uZW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVj
-dCBjb21wb25lbnRfbWF0Y2ggKiptYXRjaHB0ciwKPiAgCQlpZiAoIW5vZGUpCj4gIAkJCWJyZWFr
-Owo+ICAKPiAtCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgbWF0Y2hwdHIsIGNvbXBhcmVfb2Ys
-IG5vZGUpOwo+ICsJCWNvbXBvbmVudF9tYXRjaF9hZGRfcmVsZWFzZShkZXYsIG1hdGNocHRyLCBy
-ZWxlYXNlX29mLAo+ICsJCQkJCSAgICBjb21wYXJlX29mLCBub2RlKTsKPiAgCX0KPiAgCj4gIAly
-ZXR1cm4gMDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
-PiBpbmRleCBhNDA5ZDFmNzAzY2IuLmY1YTY4ZmMwMzFlZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IEBAIC00MjEsNiArNDIxLDExIEBAIHN0
-YXRpYyBpbnQgY29tcGFyZV9vZihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4gIAly
-ZXR1cm4gZGV2LT5vZl9ub2RlID09IG5wOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCByZWxlYXNl
-X29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQo
-ZGF0YSk7Cj4gK30KPiArCj4gIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2FkZF9lbmRwb2ludHMoc3Ry
-dWN0IGRldmljZSAqZGV2LAo+ICAJCQkJICAgc3RydWN0IGNvbXBvbmVudF9tYXRjaCAqKm1hdGNo
-LAo+ICAJCQkJICAgc3RydWN0IGRldmljZV9ub2RlICpwb3J0KQo+IEBAIC00MzksOCArNDQ0LDgg
-QEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfYWRkX2VuZHBvaW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYs
-Cj4gIAkJCWNvbnRpbnVlOwo+ICAJCX0KPiAgCj4gLQkJY29tcG9uZW50X21hdGNoX2FkZChkZXYs
-IG1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwo+IC0JCW9mX25vZGVfcHV0KHJlbW90ZSk7Cj4g
-KwkJY29tcG9uZW50X21hdGNoX2FkZF9yZWxlYXNlKGRldiwgbWF0Y2gsIHJlbGVhc2Vfb2YsCj4g
-KwkJCQkJICAgIGNvbXBhcmVfb2YsIHJlbW90ZSk7Cj4gIAl9Cj4gIH0KPiAgCj4gQEAgLTUxOCw3
-ICs1MjMsOSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9wcm9iZShzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJCQlpc19zdXBwb3J0X2lvbW11ID0gZmFsc2U7Cj4g
-IAkJfQo+ICAKPiAtCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29m
-LCBwb3J0LT5wYXJlbnQpOwo+ICsJCW9mX25vZGVfZ2V0KHBvcnQtPnBhcmVudCk7Cj4gKwkJY29t
-cG9uZW50X21hdGNoX2FkZF9yZWxlYXNlKGRldiwgJm1hdGNoLCByZWxlYXNlX29mLAo+ICsJCQkJ
-CSAgICBjb21wYXJlX29mLCBwb3J0LT5wYXJlbnQpOwo+ICAJCW9mX25vZGVfcHV0KHBvcnQpOwo+
-ICAJfQo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHJ2LmMgYi9k
-cml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9kcnYuYwo+IGluZGV4IDg3MjQ5NWU3MjI5NC4uNGVlNmZh
-NGYxYmViIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2Rydi5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHJ2LmMKPiBAQCAtMzQ2LDYgKzM0NiwxMSBAQCBz
-dGF0aWMgaW50IGNvbXBhcmVfb2Yoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ICAJ
-cmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBkYXRhOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCByZWxl
-YXNlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9w
-dXQoZGF0YSk7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgc3RpX2JpbmQoc3RydWN0IGRldmljZSAq
-ZGV2KQo+ICB7Cj4gIAlyZXR1cm4gZHJtX3BsYXRmb3JtX2luaXQoJnN0aV9kcml2ZXIsIHRvX3Bs
-YXRmb3JtX2RldmljZShkZXYpKTsKPiBAQCAtMzc1LDggKzM4MCw4IEBAIHN0YXRpYyBpbnQgc3Rp
-X3BsYXRmb3JtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAljaGlsZF9u
-cCA9IG9mX2dldF9uZXh0X2F2YWlsYWJsZV9jaGlsZChub2RlLCBOVUxMKTsKPiAgCj4gIAl3aGls
-ZSAoY2hpbGRfbnApIHsKPiAtCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21w
-YXJlX29mLCBjaGlsZF9ucCk7Cj4gLQkJb2Zfbm9kZV9wdXQoY2hpbGRfbnApOwo+ICsJCWNvbXBv
-bmVudF9tYXRjaF9hZGRfcmVsZWFzZShkZXYsICZtYXRjaCwgcmVsZWFzZV9vZiwKPiArCQkJCQkg
-ICAgY29tcGFyZV9vZiwgY2hpbGRfbnApOwo+ICAJCWNoaWxkX25wID0gb2ZfZ2V0X25leHRfYXZh
-aWxhYmxlX2NoaWxkKG5vZGUsIGNoaWxkX25wKTsKPiAgCX0KPiAgCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX2V4dGVybmFsLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-dGlsY2RjL3RpbGNkY19leHRlcm5hbC5jCj4gaW5kZXggMDNhY2I0Zjk5OTgyLi43ZTExYjVlY2Rk
-NGEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfZXh0ZXJuYWwu
-Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX2V4dGVybmFsLmMKPiBAQCAt
-MTM1LDYgKzEzNSwxMSBAQCBzdGF0aWMgaW50IGRldl9tYXRjaF9vZihzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHZvaWQgKmRhdGEpCj4gIAlyZXR1cm4gZGV2LT5vZl9ub2RlID09IGRhdGE7Cj4gIH0KPiAg
-Cj4gK3N0YXRpYyB2b2lkIGRldl9yZWxlYXNlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAq
-ZGF0YSkKPiArewo+ICsJb2Zfbm9kZV9wdXQoZGF0YSk7Cj4gK30KPiArCj4gIGludCB0aWxjZGNf
-Z2V0X2V4dGVybmFsX2NvbXBvbmVudHMoc3RydWN0IGRldmljZSAqZGV2LAo+ICAJCQkJICAgc3Ry
-dWN0IGNvbXBvbmVudF9tYXRjaCAqKm1hdGNoKQo+ICB7Cj4gQEAgLTE1Miw4ICsxNTcsOCBAQCBp
-bnQgdGlsY2RjX2dldF9leHRlcm5hbF9jb21wb25lbnRzKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAg
-Cj4gIAkJZGV2X2RiZyhkZXYsICJTdWJkZXZpY2Ugbm9kZSAnJXMnIGZvdW5kXG4iLCBub2RlLT5u
-YW1lKTsKPiAgCQlpZiAobWF0Y2gpCj4gLQkJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRj
-aCwgZGV2X21hdGNoX29mLCBub2RlKTsKPiAtCQlvZl9ub2RlX3B1dChub2RlKTsKPiArCQkJY29t
-cG9uZW50X21hdGNoX2FkZF9yZWxlYXNlKGRldiwgbWF0Y2gsIGRldl9yZWxlYXNlX29mLAo+ICsJ
-CQkJCQkgICAgZGV2X21hdGNoX29mLCBub2RlKTsKPiAgCQljb3VudCsrOwo+ICAJfQo+ICAKPiAt
-LSAKPiAyLjEuMAo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKPiBsaW51eC1hcm0ta2Vy
-bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKPiAKCi0tIAo9PT09PT09PT09PT09PT09PT09
-PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdyZSBu
-b3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0tLS0t
-LS0tLQogICAgwq9cXyjjg4QpXy/CrwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+rk3399 platform have dfi controller can monitor ddr load,
+and dcf controller to handle ddr register so we can get the
+right ddr frequency and make ddr controller happy work(which
+will implement in bl31). So we do ddr frequency scaling with
+following flow:
+
+	     kernel                                bl31
+
+	monitor ddr load
+		|
+		|
+	get_target_rate
+		|
+		|           pass rate to bl31
+	clk_set_rate(ddr) --------------------->run dcf flow
+		|                                   |
+		|                                   |
+	wait dcf interrupt<-------------------trigger dcf interrupt  
+		|
+		|
+	      return
+
+Lin Huang (6):
+  rockchip: rockchip: add new clock-type for the ddrclk
+  clk: rockchip: rk3399: add SCLK_DDRCLK ID for ddrc
+  clk: rockchip: rk3399: add ddrc clock support
+  PM / devfreq: event: support rockchip dfi controller
+  PM / devfreq: rockchip: add devfreq driver for rk3399 dmc
+  drm/rockchip: Add dmc notifier in vop driver
+
+ drivers/clk/rockchip/Makefile               |   1 +
+ drivers/clk/rockchip/clk-ddr.c              | 147 ++++++++++++
+ drivers/clk/rockchip/clk-rk3399.c           |  20 ++
+ drivers/clk/rockchip/clk.c                  |   9 +
+ drivers/clk/rockchip/clk.h                  |  27 +++
+ drivers/devfreq/Kconfig                     |   1 +
+ drivers/devfreq/Makefile                    |   1 +
+ drivers/devfreq/event/Kconfig               |   7 +
+ drivers/devfreq/event/Makefile              |   1 +
+ drivers/devfreq/event/rockchip-dfi.c        | 265 ++++++++++++++++++++++
+ drivers/devfreq/rockchip/Kconfig            |  15 ++
+ drivers/devfreq/rockchip/Makefile           |   2 +
+ drivers/devfreq/rockchip/rk3399_dmc.c       | 337 ++++++++++++++++++++++++++++
+ drivers/devfreq/rockchip/rockchip_dmc.c     | 143 ++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  43 +++-
+ include/dt-bindings/clock/rk3399-cru.h      |   1 +
+ include/soc/rockchip/rockchip_dmc.h         |  45 ++++
+ 17 files changed, 1063 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/clk/rockchip/clk-ddr.c
+ create mode 100644 drivers/devfreq/event/rockchip-dfi.c
+ create mode 100644 drivers/devfreq/rockchip/Kconfig
+ create mode 100644 drivers/devfreq/rockchip/Makefile
+ create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+ create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
+ create mode 100644 include/soc/rockchip/rockchip_dmc.h
+
+-- 
+1.9.1
+
