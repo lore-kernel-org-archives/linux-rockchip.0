@@ -1,51 +1,103 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] clk: rockchip: remove ROCKCHIP_SOFTRST_HIWORD_MASK for rockchip platform
-Date: Fri, 03 Jun 2016 09:29:03 +0200
-Message-ID: <1853369.vjRjVRadgx@diego>
-References: <1464915288-10877-1-git-send-email-shawn.lin@rock-chips.com> <5750DC85.4040400@rock-chips.com> <7fdf43a9-58d4-d6a8-d863-a7e265c93a06@kernel-upstream.org>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH 01/20] drm/atomic: Fix remaining places where
+	!funcs->best_encoder is valid
+Date: Fri, 3 Jun 2016 09:36:15 +0200
+Message-ID: <20160603093615.14ba5fb8@bbrezillon>
+References: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1464877907-27723-2-git-send-email-boris.brezillon@free-electrons.com>
+	<8671722.LHaiaBNqfE@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7fdf43a9-58d4-d6a8-d863-a7e265c93a06@kernel-upstream.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@kernel-upstream.org>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <virtualization-bounces@lists.linux-foundation.org>
+In-Reply-To: <8671722.LHaiaBNqfE@avalon>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>,
+	<mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
+List-Post: <mailto:virtualization@lists.linux-foundation.org>
+List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>,
+	<mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
+Sender: virtualization-bounces@lists.linux-foundation.org
+Errors-To: virtualization-bounces@lists.linux-foundation.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org, Eric Anholt <eric@anholt.net>, Thierry Re ding <thierry.reding@gmail.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Daniel Vetter <daniel.vetter@intel.com>, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kyungmin Park <kyungmin.park@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, linux-tegra@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>, Inki Dae <inki.dae@samsung.com>, linux-mediatek@lists
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+On Fri, 03 Jun 2016 00:05:46 +0300
+Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
 
-Am Freitag, 3. Juni 2016, 11:35:32 schrieb Shawn Lin:
-> =E5=9C=A8 2016/6/3 9:25, Xing Zheng =E5=86=99=E9=81=93:
-> > On 2016=E5=B9=B406=E6=9C=8803=E6=97=A5 08:54, Shawn Lin wrote:
-> >> I check all the Socs including RK2928/3000/3066/3028X/316X/312X/
-> >> 3190/3188/3228/3368/3399/3036, and find all of them use high 16-bi=
-t
-> >> as write mask. Obviously we don't need ROCKCHIP_SOFTRST_HIWORD_MAS=
-K
-> >> any more(actually I don't know why we need it before). This patch
-> >> removes it to simplify the code and save a little cpu cycle when c=
-alling
-> >> assert or deassert callback.
-> >=20
-> > In my opinion, this flag can be used for compatibility, we can not
-> > ensure that our SoCs will not use the 32bit SOFTRST_CONs in future.
-> >=20
-> > Thanks.
->=20
-> Thanks for sharing your thought.
->=20
-> I'm not 100% sure, but I'm 99% sure about we won't let
-> it happened. You have to consider the backward compatibility
-> rather than the future ones. If you got a chip with 10 bit, or
-> 8bit for SOFTRST_CONX, so how do you wanna deal with it?
-> Should we now add  ROCKCHIP_SOFTRST_X_BIT_MASK?  :)
+> Hi Boris,
+> 
+> Thank you for the patch.
+> 
+> On Thursday 02 Jun 2016 16:31:28 Boris Brezillon wrote:
+> > Adapt drm_pick_crtcs() and update_connector_routing() to fallback to
+> > drm_atomic_helper_best_encoder() if funcs->best_encoder() is NULL so
+> > that DRM drivers can leave this hook unassigned if they know they want
+> > to use drm_atomic_helper_best_encoder().  
+> 
+> Could you please update include/drm/drm_modeset_helper_vtables.h to document 
+> this new behaviour ?
 
-older SoCs like the rk2818 (ARM9-based) do actually use 32bit softrst=20
-registers. And if I ever get my hands on one of those, I'd actually try=
- to=20
-support it :-) .
+Sure.
 
-So I'd really like to keep the flag.
+> 
+> The only drawback I see in this patch is the additional object lookup 
+> performed by drm_atomic_helper_best_encoder() at runtime. I wonder if we could 
+> somehow cache the information, as the assignment can't change when there's a 
+> 1:1 correspondence between encoders and connectors.
+> 
+> > Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> > ---
+> >  drivers/gpu/drm/drm_atomic_helper.c |  4 +++-
+> >  drivers/gpu/drm/drm_fb_helper.c     | 13 ++++++++++++-
+> >  2 files changed, 15 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/drm_atomic_helper.c
+> > b/drivers/gpu/drm/drm_atomic_helper.c index f6a3350..849d029 100644
+> > --- a/drivers/gpu/drm/drm_atomic_helper.c
+> > +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> > @@ -300,8 +300,10 @@ update_connector_routing(struct drm_atomic_state
+> > *state, if (funcs->atomic_best_encoder)
+> >  		new_encoder = funcs->atomic_best_encoder(connector,
+> >  							 connector_state);
+> > -	else
+> > +	else if (funcs->best_encoder)
+> >  		new_encoder = funcs->best_encoder(connector);
+> > +	else
+> > +		new_encoder = drm_atomic_helper_best_encoder(connector);
+> > 
+> >  	if (!new_encoder) {
+> >  		DRM_DEBUG_ATOMIC("No suitable encoder found for [CONNECTOR:%d:%s]\n",
+> > diff --git a/drivers/gpu/drm/drm_fb_helper.c
+> > b/drivers/gpu/drm/drm_fb_helper.c index 7c2eb75..d44389a 100644
+> > --- a/drivers/gpu/drm/drm_fb_helper.c
+> > +++ b/drivers/gpu/drm/drm_fb_helper.c
+> > @@ -2000,7 +2000,18 @@ static int drm_pick_crtcs(struct drm_fb_helper
+> > *fb_helper, my_score++;
+> > 
+> >  	connector_funcs = connector->helper_private;
+> > -	encoder = connector_funcs->best_encoder(connector);
+> > +
+> > +	/*
+> > +	 * If the DRM device implements atomic hooks and ->best_encoder() is
+> > +	 * NULL we fallback to the default drm_atomic_helper_best_encoder()
+> > +	 * helper.
+> > +	 */
+> > +	if (fb_helper->dev->mode_config.funcs->atomic_commit &&
+> > +	    !connector_funcs->best_encoder)
+> > +		encoder = drm_atomic_helper_best_encoder(connector);
+> > +	else
+> > +		encoder = connector_funcs->best_encoder(connector);
+> > +
+> >  	if (!encoder)
+> >  		goto out;  
+> 
 
-Heiko
+
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
