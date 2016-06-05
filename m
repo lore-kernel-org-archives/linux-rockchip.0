@@ -1,35 +1,38 @@
-From: Shuyu Wei <wsy2220@gmail.com>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Sun, 5 Jun 2016 22:02:59 +0800
-Message-ID: <20160605140259.GA19512@debian-dorm>
-References: <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm>
- <5740E82F.8040903@gmx.de>
- <20160522091742.GA8681@debian-dorm>
- <57419853.9050701@gmx.de>
- <20160522223659.GB5086@electric-eye.fr.zoreil.com>
- <5743A9DD.8010202@gmx.de>
- <5744EA24.7060806@gmx.de>
- <20160528064348.GA19649@debian-dorm>
- <574CB382.7030102@gmx.de>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: add io-domain support for
+ rk3368 and rk3399
+Date: Mon, 06 Jun 2016 00:14:01 +0200
+Message-ID: <488393040.q3pmEmijvh@diego>
+References: <1463865828-14583-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <574CB382.7030102@gmx.de>
-Sender: netdev-owner@vger.kernel.org
-To: Lino Sanfilippo <LinoSanfilippo@gmx.de>
-Cc: Francois Romieu <romieu@fr.zoreil.com>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, al.kochet@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1463865828-14583-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 30, 2016 at 11:41:22PM +0200, Lino Sanfilippo wrote:
+Am Samstag, 21. Mai 2016, 23:23:45 schrieb Heiko Stuebner:
+> This adds the core io-domain nodes for both the rk3368 and rk3399
+> as well as the actual supplies on the rk3368-r88 board.
 > 
-> Did you see the same issues with the patch before (the one that, as you wrote,
-> survived a whole night of stress testing)?
+> This of course needs
+>     PM / AVS: rockchip-io: make io-domains a child of the GRF
+> that went into mainline during the 4.7 merge window.
 > 
-> Lino
+> Heiko Stuebner (3):
+>   arm64: dts: rockchip: add rk3368 io-domain core nodes
+>   arm64: dts: rockchip: add rk3368-r88 iodomains
+>   arm64: dts: rockchip: add rk3399 io-domain core nodes
 
-Hi Lino,
-Sorry for my late reply. I retested the previous patch, it did have
-the same issue. However it seems that the possibility of stuck is lower
-(just my instinct, no evidence).
+I have all 3 in my dts64 branch now.
