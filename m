@@ -1,327 +1,348 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [RFC PATCH v1 1/6] rockchip: rockchip: add new clock-type for the
- ddrclk
-Date: Mon, 6 Jun 2016 10:24:09 +0800
-Message-ID: <5754DEC9.6030800@rock-chips.com>
-References: <1464947719-6245-1-git-send-email-hl@rock-chips.com>
- <1464947719-6245-2-git-send-email-hl@rock-chips.com>
- <67c0c728-389c-668f-4966-39e9966e1b42@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <67c0c728-389c-668f-4966-39e9966e1b42@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
-Cc: huangtao@rock-chips.com, dbasehore@chromium.org, linux-clk@vger.kernel.org, airlied@linux.ie, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, mturquette@baylibre.com, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] mmc: core: add auto bkops support
+Date: Mon,  6 Jun 2016 11:07:19 +0800
+Message-ID: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+JEDEC eMMC v5.1 introduce an autonomously initiated method
+for background operations.
 
-On 2016=E5=B9=B406=E6=9C=8803=E6=97=A5 20:29, Shawn Lin wrote:
-> Hi Lin,
->
-> It looks good with only a few minor comments.
->
-> On 2016/6/3 17:55, Lin Huang wrote:
->> On new rockchip platform(rk3399 etc), there have dcf controller to
->> do ddr frequency scaling, and this controller will implement in
->> arm-trust-firmware. We add a special clock-type to handle that.
->>
->> Signed-off-by: Lin Huang <hl@rock-chips.com>
->> ---
->> Changes in v1:
->> - None
->>
->>  drivers/clk/rockchip/Makefile  |   1 +
->>  drivers/clk/rockchip/clk-ddr.c | 147=20
->> +++++++++++++++++++++++++++++++++++++++++
->>  drivers/clk/rockchip/clk.c     |   9 +++
->>  drivers/clk/rockchip/clk.h     |  27 ++++++++
->>  4 files changed, 184 insertions(+)
->>  create mode 100644 drivers/clk/rockchip/clk-ddr.c
->>
->> diff --git a/drivers/clk/rockchip/Makefile=20
->> b/drivers/clk/rockchip/Makefile
->> index f47a2fa..b5f2c8e 100644
->> --- a/drivers/clk/rockchip/Makefile
->> +++ b/drivers/clk/rockchip/Makefile
->> @@ -8,6 +8,7 @@ obj-y    +=3D clk-pll.o
->>  obj-y    +=3D clk-cpu.o
->>  obj-y    +=3D clk-inverter.o
->>  obj-y    +=3D clk-mmc-phase.o
->> +obj-y    +=3D clk-ddr.o
->>  obj-$(CONFIG_RESET_CONTROLLER)    +=3D softrst.o
->>
->>  obj-y    +=3D clk-rk3036.o
->> diff --git a/drivers/clk/rockchip/clk-ddr.c=20
->> b/drivers/clk/rockchip/clk-ddr.c
->> new file mode 100644
->> index 0000000..5b6630d
->> --- /dev/null
->> +++ b/drivers/clk/rockchip/clk-ddr.c
->> @@ -0,0 +1,147 @@
->> +/*
->> + * Copyright (c) 2016 Rockchip Electronics Co. Ltd.
->> + * Author: Lin Huang <hl@rock-chips.com>
->> + *
->> + * This program is free software; you can redistribute it and/or mo=
-dify
->> + * it under the terms of the GNU General Public License as publishe=
-d by
->> + * the Free Software Foundation; either version 2 of the License, o=
-r
->> + * (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + */
->> +
->> +#include <linux/of.h>
->> +#include <linux/slab.h>
->> +#include <linux/io.h>
->> +#include <linux/clk.h>
->> +#include <linux/clk-provider.h>
->> +#include "clk.h"
->> +
->
-> alphabetical order would be better.
-     Okay, will fix next version, thank you.
->
->> +struct rockchip_ddrclk {
->> +    struct clk_hw    hw;
->> +    void __iomem    *reg_base;
->> +    int        mux_offset;
->> +    int        mux_shift;
->> +    int        mux_width;
->> +    int        mux_flag;
->> +    int        div_shift;
->> +    int        div_width;
->> +    int        div_flag;
->> +    spinlock_t    *lock;
->> +};
->> +
->> +#define to_rockchip_ddrclk_hw(hw) container_of(hw, struct=20
->> rockchip_ddrclk, hw)
->> +#define val_mask(width)    ((1 << (width)) - 1)
->> +
->> +static int rockchip_ddrclk_set_rate(struct clk_hw *hw, unsigned lon=
-g=20
->> drate,
->> +                    unsigned long prate)
->> +{
->> +    struct rockchip_ddrclk *ddrclk =3D to_rockchip_ddrclk_hw(hw);
->> +    unsigned long flags;
->> +
->> +    spin_lock_irqsave(ddrclk->lock, flags);
->> +
->> +    /* TODO: set ddr rate in bl31 */
->> +
->> +    spin_unlock_irqrestore(ddrclk->lock, flags);
->> +
->
-> What do you wanna protect here?
-     I am not sure for now, when i finish this function,
-     if there nothing need protect i will remove it. Thank you.
->
->> +    return 0;
->> +}
->> +
->> +static unsigned long
->> +rockchip_ddrclk_recalc_rate(struct clk_hw *hw,
->> +                unsigned long parent_rate)
->> +{
->> +    struct rockchip_ddrclk *ddrclk =3D to_rockchip_ddrclk_hw(hw);
->> +    int val;
->> +
->> +    val =3D clk_readl(ddrclk->reg_base +
->> +            ddrclk->mux_offset) >> ddrclk->div_shift;
->> +    val &=3D val_mask(ddrclk->div_width);
->> +
->> +    return DIV_ROUND_UP_ULL((u64)parent_rate, val + 1);
->> +}
->> +
->> +static long clk_ddrclk_round_rate(struct clk_hw *hw, unsigned long=20
->> rate,
->> +                  unsigned long *prate)
->> +{
->> +    return rate;
->> +}
->> +
->> +static u8 rockchip_ddrclk_get_parent(struct clk_hw *hw)
->> +{
->> +    struct rockchip_ddrclk *ddrclk =3D to_rockchip_ddrclk_hw(hw);
->> +    int num_parents =3D clk_hw_get_num_parents(hw);
->> +    u32 val;
->> +
->> +    val =3D clk_readl(ddrclk->reg_base +
->> +            ddrclk->mux_offset) >> ddrclk->mux_shift;
->> +    val &=3D val_mask(ddrclk->mux_width);
->> +
->> +    if (val >=3D num_parents)
->> +        return -EINVAL;
->> +
->> +    return val;
->> +}
->> +
->> +static const struct clk_ops rockchip_ddrclk_ops =3D {
->> +    .recalc_rate =3D rockchip_ddrclk_recalc_rate,
->> +    .set_rate =3D rockchip_ddrclk_set_rate,
->> +    .round_rate =3D clk_ddrclk_round_rate,
->> +    .get_parent =3D rockchip_ddrclk_get_parent,
->> +};
->> +
->> +struct clk *rockchip_clk_register_ddrclk(const char *name, int flag=
-s,
->> +                     const char *const *parent_names,
->> +                     u8 num_parents, int mux_offset,
->> +                     int mux_shift, int mux_width,
->> +                     int mux_flag, int div_shift,
->> +                     int div_width, int div_flag,
->> +                     void __iomem *reg_base,
->> +                     spinlock_t *lock)
->> +{
->> +    struct rockchip_ddrclk *ddrclk;
->> +    struct clk_init_data init;
->> +    struct clk *clk;
->> +    int ret;
->> +
->> +    ddrclk =3D kzalloc(sizeof(*ddrclk), GFP_KERNEL);
->> +    if (!ddrclk)
->> +        return ERR_PTR(-ENOMEM);
->> +
->> +    init.name =3D name;
->> +    init.parent_names =3D parent_names;
->> +    init.num_parents =3D num_parents;
->> +    init.ops =3D &rockchip_ddrclk_ops;
->> +
->> +    init.flags =3D flags;
->> +    init.flags |=3D CLK_SET_RATE_NO_REPARENT;
->> +    init.flags |=3D CLK_GET_RATE_NOCACHE;
->
-> can we combine these two?
->
->> +
->> +    ddrclk->reg_base =3D reg_base;
->> +    ddrclk->lock =3D lock;
->> +    ddrclk->hw.init =3D &init;
->> +    ddrclk->mux_offset =3D mux_offset;
->> +    ddrclk->mux_shift =3D mux_shift;
->> +    ddrclk->mux_width =3D mux_width;
->> +    ddrclk->mux_flag =3D mux_flag;
->> +    ddrclk->div_shift =3D div_shift;
->> +    ddrclk->div_width =3D div_width;
->> +    ddrclk->div_flag =3D div_flag;
->> +
->> +    clk =3D clk_register(NULL, &ddrclk->hw);
->> +    if (IS_ERR(clk)) {
->> +        pr_err("%s: could not register ddrclk %s\n", __func__,   =20
->> name);
->> +        ret =3D PTR_ERR(clk);
->
-> Why do you need PTR_ERR and then convert back again.
-     Yes, there is only one error for ret value, so i can return "NULL"=
-=20
-directly, thank you.
->
->> +        goto free_ddrclk;
->> +    }
->> +
->> +    return clk;
->> +
->> +free_ddrclk:
->> +    kfree(ddrclk);
->> +    return ERR_PTR(ret);
->> +}
->> diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
->> index 7ffd134..6ac1aa5 100644
->> --- a/drivers/clk/rockchip/clk.c
->> +++ b/drivers/clk/rockchip/clk.c
->> @@ -484,6 +484,15 @@ void __init rockchip_clk_register_branches(
->>                  list->gate_offset, list->gate_shift,
->>                  list->gate_flags, flags, &ctx->lock);
->>              break;
->> +        case branch_ddrc:
->> +            clk =3D rockchip_clk_register_ddrclk(
->> +                list->name, list->flags,
->> +                list->parent_names, list->num_parents,
->> +                list->muxdiv_offset, list->mux_shift,
->> +                list->mux_width, list->mux_flags,
->> +                list->div_shift, list->div_width,
->> +                list->div_flags, ctx->reg_base, &ctx->lock);
->> +            break;
->>          }
->>
->>          /* none of the cases above matched */
->> diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
->> index 2194ffa..4033fe4 100644
->> --- a/drivers/clk/rockchip/clk.h
->> +++ b/drivers/clk/rockchip/clk.h
->> @@ -281,6 +281,13 @@ struct clk *rockchip_clk_register_mmc(const cha=
-r=20
->> *name,
->>                  const char *const *parent_names, u8 num_parents,
->>                  void __iomem *reg, int shift);
->>
->> +struct clk *rockchip_clk_register_ddrclk(const char *name, int flag=
-s,
->> +            const char *const *parent_names, u8 num_parents,
->> +            int mux_offset, int mux_shift, int mux_width,
->> +            int mux_flag, int div_shift, int div_width,
->> +            int div_flag, void __iomem *reg_base,
->> +            spinlock_t *lock);
->> +
->>  #define ROCKCHIP_INVERTER_HIWORD_MASK    BIT(0)
->>
->>  struct clk *rockchip_clk_register_inverter(const char *name,
->> @@ -299,6 +306,7 @@ enum rockchip_clk_branch_type {
->>      branch_mmc,
->>      branch_inverter,
->>      branch_factor,
->> +    branch_ddrc,
->>  };
->>
->>  struct rockchip_clk_branch {
->> @@ -488,6 +496,25 @@ struct rockchip_clk_branch {
->>          .child        =3D ch,                \
->>      }
->>
->> +#define COMPOSITE_DDRC(_id, cname, pnames, f, mo, ms, mw, mf,    \
->> +             ds, dw, df)                \
->
-> it seems a duplication exept for branch_type.
-     We just need this different branch_type, so we can add case in
-     rockchip_clk_register_branches() and call=20
-rockchip_clk_register_ddrclk().
->
->> +    {                            \
->> +        .id        =3D _id,                \
->> +        .branch_type    =3D branch_ddrc,            \
->> +        .name        =3D cname,            \
->> +        .parent_names    =3D pnames,            \
->> +        .num_parents    =3D ARRAY_SIZE(pnames),        \
->> +        .flags        =3D f,                \
->> +        .muxdiv_offset    =3D mo,                \
->> +        .mux_shift    =3D ms,                \
->> +        .mux_width    =3D mw,                \
->> +        .mux_flags    =3D mf,                \
->> +        .div_shift    =3D ds,                \
->> +        .div_width    =3D dw,                \
->> +        .div_flags    =3D df,                \
->> +        .gate_offset    =3D -1,                \
->> +    }
->> +
->>  #define MUX(_id, cname, pnames, f, o, s, w, mf)            \
->>      {                            \
->>          .id        =3D _id,                \
->>
->
->
+Host that wants to enable the device to perform background
+operations during device idle time, should signal the device
+by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
+this bit is set, the device may start or stop background operations
+whenever it sees fit, without any notification to the host.
 
---=20
-Lin Huang
+When AUTO_EN bit is set, the host should keep the device power
+active. The host may set or clear this bit at any time based on
+its power constraints or other considerations.
+
+Currently the manual bkops is only be used under the async req
+circumstances and it's a bit complicated to be controlled as the
+perfect method is that we should do some idle monitor just as rpm
+and send HPI each time if receiving rd/wr req. But it will impact
+performance significantly, especially for random iops since the
+weight of executing HPI against r/w small piece of LBAs is
+nonnegligible.
+
+So we now prefer to select the auto one unconditionally if supported
+which makes it as simple as possible. It should really good enough
+for devices to manage its internal policy for bkops rather than the
+host, which makes us believe that we could achieve the best
+performance for all the devices implementing auto bkops and the only
+thing we should do is to disable it when cutting off the power.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/mmc/core/core.c  | 127 +++++++++++++++++++++++++++++++++++++----------
+ drivers/mmc/core/mmc.c   |  30 ++++++++++-
+ include/linux/mmc/card.h |   1 +
+ include/linux/mmc/core.h |   4 +-
+ include/linux/mmc/mmc.h  |   1 +
+ 5 files changed, 133 insertions(+), 30 deletions(-)
+
+diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+index e864187..c2e5a66 100644
+--- a/drivers/mmc/core/core.c
++++ b/drivers/mmc/core/core.c
+@@ -297,24 +297,13 @@ static int mmc_start_request(struct mmc_host *host, struct mmc_request *mrq)
+ 	return 0;
+ }
+ 
+-/**
+- *	mmc_start_bkops - start BKOPS for supported cards
+- *	@card: MMC card to start BKOPS
+- *	@form_exception: A flag to indicate if this function was
+- *			 called due to an exception raised by the card
+- *
+- *	Start background operations whenever requested.
+- *	When the urgent BKOPS bit is set in a R1 command response
+- *	then background operations should be started immediately.
+-*/
+-void mmc_start_bkops(struct mmc_card *card, bool from_exception)
++static void  mmc_start_man_bkops(struct mmc_card *card,
++				 bool from_exception)
+ {
+ 	int err;
+ 	int timeout;
+ 	bool use_busy_signal;
+ 
+-	BUG_ON(!card);
+-
+ 	if (!card->ext_csd.man_bkops_en || mmc_card_doing_bkops(card))
+ 		return;
+ 
+@@ -347,7 +336,7 @@ void mmc_start_bkops(struct mmc_card *card, bool from_exception)
+ 			EXT_CSD_BKOPS_START, 1, timeout,
+ 			use_busy_signal, true, false);
+ 	if (err) {
+-		pr_warn("%s: Error %d starting bkops\n",
++		pr_warn("%s: Error %d starting manual bkops\n",
+ 			mmc_hostname(card->host), err);
+ 		mmc_retune_release(card->host);
+ 		goto out;
+@@ -365,6 +354,55 @@ void mmc_start_bkops(struct mmc_card *card, bool from_exception)
+ out:
+ 	mmc_release_host(card->host);
+ }
++
++static void  mmc_start_auto_bkops(struct mmc_card *card)
++{
++	int err;
++
++	/* If it's already enable auto_bkops, nothing to do */
++	if (card->ext_csd.auto_bkops_en)
++		return;
++
++	mmc_claim_host(card->host);
++
++	mmc_retune_hold(card->host);
++
++	err = mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
++			EXT_CSD_BKOPS_EN, 2,
++			card->ext_csd.generic_cmd6_time);
++	if (err)
++		pr_warn("%s: Error %d starting auto bkops\n",
++			mmc_hostname(card->host), err);
++
++	card->ext_csd.auto_bkops_en = true;
++	mmc_card_set_doing_bkops(card);
++	mmc_retune_release(card->host);
++	mmc_release_host(card->host);
++}
++
++
++/**
++ *	mmc_start_bkops - start BKOPS for supported cards
++ *	@card: MMC card to start BKOPS
++ *	@form_exception: A flag to indicate if this function was
++ *			 called due to an exception raised by the card
++ *          @is_auto: A flag to indicate if we should use auto bkops
++ *
++ *	Start background operations whenever requested.
++ *	When the urgent BKOPS bit is set in a R1 command response
++ *	then background operations should be started immediately, which is
++ *	only needed for man_bkops.
++*/
++void mmc_start_bkops(struct mmc_card *card, bool from_exception,
++		     bool is_auto)
++{
++	BUG_ON(!card);
++
++	if (is_auto)
++		return mmc_start_auto_bkops(card);
++	else
++		return mmc_start_man_bkops(card, from_exception);
++}
+ EXPORT_SYMBOL(mmc_start_bkops);
+ 
+ /*
+@@ -610,7 +648,9 @@ struct mmc_async_req *mmc_start_req(struct mmc_host *host,
+ 			if (areq)
+ 				mmc_post_req(host, areq->mrq, -EINVAL);
+ 
+-			mmc_start_bkops(host->card, true);
++			/* Prefer to use auto bkops for eMMC 5.1 or later */
++			mmc_start_bkops(host->card, true,
++					host->card->ext_csd.rev >= 8);
+ 
+ 			/* prepare the request again */
+ 			if (areq)
+@@ -751,20 +791,10 @@ int mmc_wait_for_cmd(struct mmc_host *host, struct mmc_command *cmd, int retries
+ 
+ EXPORT_SYMBOL(mmc_wait_for_cmd);
+ 
+-/**
+- *	mmc_stop_bkops - stop ongoing BKOPS
+- *	@card: MMC card to check BKOPS
+- *
+- *	Send HPI command to stop ongoing background operations to
+- *	allow rapid servicing of foreground operations, e.g. read/
+- *	writes. Wait until the card comes out of the programming state
+- *	to avoid errors in servicing read/write requests.
+- */
+-int mmc_stop_bkops(struct mmc_card *card)
++static int mmc_stop_man_bkops(struct mmc_card *card)
+ {
+ 	int err = 0;
+ 
+-	BUG_ON(!card);
+ 	err = mmc_interrupt_hpi(card);
+ 
+ 	/*
+@@ -779,6 +809,51 @@ int mmc_stop_bkops(struct mmc_card *card)
+ 
+ 	return err;
+ }
++
++static int mmc_stop_auto_bkops(struct mmc_card *card)
++{
++	int err = 0;
++
++	if (!card->ext_csd.auto_bkops_en)
++		return 0;
++
++	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
++			EXT_CSD_BKOPS_EN, 0, MMC_BKOPS_MAX_TIMEOUT,
++			true, true, false);
++	if (err)
++		pr_warn("%s: Error %d stoping auto bkops\n",
++			mmc_hostname(card->host), err);
++
++	card->ext_csd.auto_bkops_en = false;
++	mmc_card_clr_doing_bkops(card);
++	mmc_retune_release(card->host);
++
++	return err;
++}
++
++/**
++ *	mmc_stop_bkops - stop ongoing BKOPS
++ *	@card: MMC card to check BKOPS
++ *	@is_auto: A flag to indicate if we should use auto bkops
++ *
++ *	Send HPI command to stop ongoing background operations to
++ *	allow rapid servicing of foreground operations, e.g. read/
++ *	writes. Wait until the card comes out of the programming state
++ *	to avoid errors in servicing read/write requests.
++ *
++ *	But for auto bkops, we could only disable AUTO_EN instead of
++ *	sending HPI. And the firmware could do it automatically.
++ *
++ */
++int mmc_stop_bkops(struct mmc_card *card, bool is_auto)
++{
++	BUG_ON(!card);
++
++	if (is_auto)
++		return mmc_stop_auto_bkops(card);
++	else
++		return mmc_stop_man_bkops(card);
++}
+ EXPORT_SYMBOL(mmc_stop_bkops);
+ 
+ int mmc_read_bkops_status(struct mmc_card *card)
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index 61d6b34..c65bea7 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -508,6 +508,13 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+ 		/* check whether the eMMC card supports BKOPS */
+ 		if (ext_csd[EXT_CSD_BKOPS_SUPPORT] & 0x1) {
+ 			card->ext_csd.bkops = 1;
++
++			/* for eMMC v5.1 or later, we could use auto_bkops */
++			if (card->ext_csd.rev >= 8)
++				card->ext_csd.auto_bkops_en =
++					(ext_csd[EXT_CSD_BKOPS_EN] &
++						EXT_CSD_AUTO_BKOPS_MASK);
++
+ 			card->ext_csd.man_bkops_en =
+ 					(ext_csd[EXT_CSD_BKOPS_EN] &
+ 						EXT_CSD_MANUAL_BKOPS_MASK);
+@@ -516,6 +523,9 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+ 			if (!card->ext_csd.man_bkops_en)
+ 				pr_debug("%s: MAN_BKOPS_EN bit is not set\n",
+ 					mmc_hostname(card->host));
++			if (!card->ext_csd.auto_bkops_en)
++				pr_debug("%s: AUTO_BKOPS_EN bit is not set\n",
++					mmc_hostname(card->host));
+ 		}
+ 
+ 		/* check whether the eMMC card supports HPI */
+@@ -1241,7 +1251,7 @@ static int mmc_select_hs400es(struct mmc_card *card)
+ 	}
+ 
+ 	err = mmc_select_bus_width(card);
+-	if (IS_ERR_VALUE(err))
++	if (err < 0)
+ 		goto out_err;
+ 
+ 	/* Switch card to HS mode */
+@@ -1676,6 +1686,21 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+ 	mmc_select_powerclass(card);
+ 
+ 	/*
++	 * Enable auto bkops feature which is mandatory for
++	 * eMMC v5.1 or later
++	 */
++	if (card->ext_csd.rev >= 8) {
++		err = mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
++				 EXT_CSD_BKOPS_EN, 2,
++				 card->ext_csd.generic_cmd6_time);
++		if (err)
++			pr_warn("%s: Error %d starting auto bkops\n",
++				mmc_hostname(card->host), err);
++
++		card->ext_csd.auto_bkops_en = true;
++	}
++
++	/*
+ 	 * Enable HPI feature (if supported)
+ 	 */
+ 	if (card->ext_csd.hpi) {
+@@ -1898,7 +1923,8 @@ static int _mmc_suspend(struct mmc_host *host, bool is_suspend)
+ 		goto out;
+ 
+ 	if (mmc_card_doing_bkops(host->card)) {
+-		err = mmc_stop_bkops(host->card);
++		err = mmc_stop_bkops(host->card,
++				     host->card->ext_csd.rev >= 8);
+ 		if (err)
+ 			goto out;
+ 	}
+diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+index 22defc2..f82f9be 100644
+--- a/include/linux/mmc/card.h
++++ b/include/linux/mmc/card.h
+@@ -84,6 +84,7 @@ struct mmc_ext_csd {
+ 	unsigned int		hpi_cmd;		/* cmd used as HPI */
+ 	bool			bkops;		/* background support bit */
+ 	bool			man_bkops_en;	/* manual bkops enable bit */
++	bool			auto_bkops_en;	/* auto bkops enbale bit */
+ 	unsigned int            data_sector_size;       /* 512 bytes or 4KB */
+ 	unsigned int            data_tag_unit_size;     /* DATA TAG UNIT size */
+ 	unsigned int		boot_ro_lock;		/* ro lock support */
+diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
+index b01e77d..45d53ef 100644
+--- a/include/linux/mmc/core.h
++++ b/include/linux/mmc/core.h
+@@ -140,7 +140,7 @@ struct mmc_request {
+ struct mmc_card;
+ struct mmc_async_req;
+ 
+-extern int mmc_stop_bkops(struct mmc_card *);
++extern int mmc_stop_bkops(struct mmc_card *, bool);
+ extern int mmc_read_bkops_status(struct mmc_card *);
+ extern struct mmc_async_req *mmc_start_req(struct mmc_host *,
+ 					   struct mmc_async_req *, int *);
+@@ -150,7 +150,7 @@ extern int mmc_wait_for_cmd(struct mmc_host *, struct mmc_command *, int);
+ extern int mmc_app_cmd(struct mmc_host *, struct mmc_card *);
+ extern int mmc_wait_for_app_cmd(struct mmc_host *, struct mmc_card *,
+ 	struct mmc_command *, int);
+-extern void mmc_start_bkops(struct mmc_card *card, bool from_exception);
++extern void mmc_start_bkops(struct mmc_card *, bool, bool);
+ extern int mmc_switch(struct mmc_card *, u8, u8, u8, unsigned int);
+ extern int mmc_send_tuning(struct mmc_host *host, u32 opcode, int *cmd_error);
+ extern int mmc_get_ext_csd(struct mmc_card *card, u8 **new_ext_csd);
+diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
+index c376209..a1cced9 100644
+--- a/include/linux/mmc/mmc.h
++++ b/include/linux/mmc/mmc.h
+@@ -436,6 +436,7 @@ struct _mmc_csd {
+  * BKOPS modes
+  */
+ #define EXT_CSD_MANUAL_BKOPS_MASK	0x01
++#define EXT_CSD_AUTO_BKOPS_MASK		0x02
+ 
+ /*
+  * MMC_SWITCH access modes
+-- 
+2.3.7
 
 
