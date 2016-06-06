@@ -1,7 +1,7 @@
 From: Lin Huang <hl@rock-chips.com>
-Subject: [RFC PATCH v2 6/6] drm/rockchip: Add dmc notifier in vop driver
-Date: Mon,  6 Jun 2016 18:13:06 +0800
-Message-ID: <1465207986-17888-7-git-send-email-hl@rock-chips.com>
+Subject: [RFC PATCH v2 3/6] clk: rockchip: rk3399: add ddrc clock support
+Date: Mon,  6 Jun 2016 18:13:03 +0800
+Message-ID: <1465207986-17888-4-git-send-email-hl@rock-chips.com>
 References: <1465207986-17888-1-git-send-email-hl@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1465207986-17888-1-git-send-email-hl@rock-chips.com>
@@ -10,133 +10,63 @@ To: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org, cw00.choi@samsung.com, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-when in ddr frequency scaling process, vop can not do
-enable or disable operate, since dcf will base on vop vblank
-time to do frequency scaling and need to get vop irq if there
-have vop enabled. So need register to dmc notifier, and we can
-get the dmc status.
+add ddrc clock setting, so we can do ddr frequency
+scaling on rk3399 platform in future.
 
 Signed-off-by: Lin Huang <hl@rock-chips.com>
 ---
 
 Changes in v2:
-- None
+- remove clk_ddrc_dpll_src from critical clock list
 
 Changes in v1:
-- use wait_event instead usleep
+- remove ddrc source CLK_IGNORE_UNUSED flag
+- move clk_ddrc and clk_ddrc_dpll_src to critical
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 43 +++++++++++++++++++++++++++--
- 1 file changed, 41 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk-rk3399.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 1c4d5b5..8286048 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -31,6 +31,8 @@
- #include <linux/reset.h>
- #include <linux/delay.h>
- 
-+#include <soc/rockchip/rockchip_dmc.h>
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index f1d8e44..3291b97 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -118,6 +118,10 @@ PNAME(mux_armclkb_p)				= { "clk_core_b_lpll_src",
+ 						    "clk_core_b_bpll_src",
+ 						    "clk_core_b_dpll_src",
+ 						    "clk_core_b_gpll_src" };
++PNAME(mux_ddrclk_p)				= { "clk_ddrc_lpll_src",
++						    "clk_ddrc_bpll_src",
++						    "clk_ddrc_dpll_src",
++						    "clk_ddrc_gpll_src" };
+ PNAME(mux_aclk_cci_p)				= { "cpll_aclk_cci_src",
+ 						    "gpll_aclk_cci_src",
+ 						    "npll_aclk_cci_src",
+@@ -1377,6 +1381,18 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_test", "clk_test_pre", CLK_IGNORE_UNUSED,
+ 			RK3368_CLKSEL_CON(58), 0, 5, DFLAGS,
+ 			RK3368_CLKGATE_CON(13), 11, GFLAGS),
 +
- #include "rockchip_drm_drv.h"
- #include "rockchip_drm_gem.h"
- #include "rockchip_drm_fb.h"
-@@ -116,6 +118,10 @@ struct vop {
++	/* ddrc */
++	GATE(0, "clk_ddrc_lpll_src", "lpll", 0, RK3399_CLKGATE_CON(3),
++	     0, GFLAGS),
++	GATE(0, "clk_ddrc_bpll_src", "bpll", 0, RK3399_CLKGATE_CON(3),
++	     1, GFLAGS),
++	GATE(0, "clk_ddrc_dpll_src", "dpll", 0, RK3399_CLKGATE_CON(3),
++	     2, GFLAGS),
++	GATE(0, "clk_ddrc_gpll_src", "gpll", 0, RK3399_CLKGATE_CON(3),
++	     3, GFLAGS),
++	COMPOSITE_DDRC(SCLK_DDRCLK, "clk_ddrc", mux_ddrclk_p, 0,
++		       RK3399_CLKSEL_CON(6), 4, 2, MFLAGS, 0, 3, DFLAGS),
+ };
  
- 	const struct vop_data *data;
+ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+@@ -1487,6 +1503,8 @@ static const char *const rk3399_cru_critical_clocks[] __initconst = {
+ 	"gpll_hclk_perilp1_src",
+ 	"gpll_aclk_perilp0_src",
+ 	"gpll_aclk_perihp_src",
++	"clk_ddrc",
+ };
  
-+	struct notifier_block dmc_nb;
-+	int dmc_in_process;
-+	wait_queue_head_t	wait_dmc_queue;
-+
- 	uint32_t *regsbak;
- 	void __iomem *regs;
- 
-@@ -426,6 +432,21 @@ static void vop_dsp_hold_valid_irq_disable(struct vop *vop)
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
- }
- 
-+static int dmc_notify(struct notifier_block *nb, unsigned long event,
-+		      void *data)
-+{
-+	struct vop *vop = container_of(nb, struct vop, dmc_nb);
-+
-+	if (event == DMCFREQ_ADJUST) {
-+		vop->dmc_in_process = 1;
-+	} else if (event == DMCFREQ_FINISH) {
-+		vop->dmc_in_process = 0;
-+		wake_up(&vop->wait_dmc_queue);
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
- static void vop_enable(struct drm_crtc *crtc)
- {
- 	struct vop *vop = to_vop(crtc);
-@@ -434,6 +455,13 @@ static void vop_enable(struct drm_crtc *crtc)
- 	if (vop->is_enabled)
- 		return;
- 
-+	/*
-+	 * if in dmc scaling frequency process, wait until it finish
-+	 * use 100ms as timeout time.
-+	 */
-+	wait_event_timeout(vop->wait_dmc_queue,
-+			   !vop->dmc_in_process, HZ / 10);
-+
- 	ret = pm_runtime_get_sync(vop->dev);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-@@ -485,6 +513,7 @@ static void vop_enable(struct drm_crtc *crtc)
- 	enable_irq(vop->irq);
- 
- 	drm_crtc_vblank_on(crtc);
-+	rockchip_dmc_get(&vop->dmc_nb);
- 
- 	return;
- 
-@@ -505,6 +534,13 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
- 		return;
- 
- 	/*
-+	 * if in dmc scaling frequency process, wait until it finish
-+	 * use 100ms as timeout time.
-+	 */
-+	wait_event_timeout(vop->wait_dmc_queue,
-+			   !vop->dmc_in_process, HZ / 10);
-+
-+	/*
- 	 * We need to make sure that all windows are disabled before we
- 	 * disable that crtc. Otherwise we might try to scan from a destroyed
- 	 * buffer later.
-@@ -517,7 +553,7 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
- 		VOP_WIN_SET(vop, win, enable, 0);
- 		spin_unlock(&vop->reg_lock);
- 	}
--
-+	rockchip_dmc_put(&vop->dmc_nb);
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
-@@ -1243,7 +1279,7 @@ static int vop_create_crtc(struct vop *vop)
- 		ret = -ENOENT;
- 		goto err_cleanup_crtc;
- 	}
--
-+	vop->dmc_nb.notifier_call = dmc_notify;
- 	init_completion(&vop->dsp_hold_completion);
- 	init_completion(&vop->wait_update_complete);
- 	crtc->port = port;
-@@ -1465,6 +1501,9 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	/* IRQ is initially disabled; it gets enabled in power_on */
- 	disable_irq(vop->irq);
- 
-+	init_waitqueue_head(&vop->wait_dmc_queue);
-+	vop->dmc_in_process = 0;
-+
- 	ret = vop_create_crtc(vop);
- 	if (ret)
- 		return ret;
+ static const char *const rk3399_pmucru_critical_clocks[] __initconst = {
 -- 
 1.9.1
