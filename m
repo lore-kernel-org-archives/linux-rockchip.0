@@ -1,49 +1,41 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH 2/2] drm/rockchip: vop: correct the source size of uv scale
- factor setting
-Date: Mon,  6 Jun 2016 15:58:46 +0800
-Message-ID: <1465199926-20991-1-git-send-email-ykk@rock-chips.com>
-References: <1465199912-20932-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465199912-20932-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v3 0/2] Add a new Rockchip usb2 phy driver
+Date: Mon,  6 Jun 2016 17:20:02 +0800
+Message-ID: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKV2hlbiB0aGUgaW5wdXQg
-Y29sb3IgZm9ybWF0IGlzIFlVViwgd2UgbmVlZCB0byBkbyBzb21lIGV4dGVybmFsIHNjYWxlCmZv
-ciBDQkNSLiBMaWtlLAogKiBJbiBZVVY0MjAgZGF0YSBmb3JtYXQ6CiAgICAgY2Jjcl94c2NhbGUg
-PSBkc3RfdyAvIHNyY193ICogMjsKICAgICBjYmNyX3lzY2FsZSA9IGRzdF9oIC8gc3JjX2ggKiAy
-OwogKiBJbiBZVVY0MjIgZGF0YSBmb3JtYXQ6CiAgICAgY2Jjcl94c2NhbGUgPSBkc3RfdyAvIHNy
-Y193ICogMjsKICAgICBjYmNyX3lzY2FsZSA9IGRzdF9oIC8gc3JjX2g7CiAqIEluIFlVVjQ0NCBk
-YXRhIGZvcm1hdAogICAgIGNiY3JfeHNjYWxlID0gZHN0X3cgLyBzcmNfdzsKICAgICBjYmNyX3lz
-Y2FsZSA9IGRzdF9oIC8gc3JjX2g7CgpTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9j
-ay1jaGlwcy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYyB8IDQgKystLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRl
-eCAxYzRkNWI1Li5iMjhjZGE3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMKQEAgLTMyNCw5ICszMjQsOSBAQCBzdGF0aWMgdm9pZCBzY2xfdm9wX2NhbF9z
-Y2xfZmFjKHN0cnVjdCB2b3AgKnZvcCwgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAqd2luLAog
-CQkJICAgIHNjbF9jYWxfc2NhbGUyKHNyY19oLCBkc3RfaCkpOwogCQlpZiAoaXNfeXV2KSB7CiAJ
-CQlWT1BfU0NMX1NFVCh2b3AsIHdpbiwgc2NhbGVfY2Jjcl94LAotCQkJCSAgICBzY2xfY2FsX3Nj
-YWxlMihzcmNfdywgZHN0X3cpKTsKKwkJCQkgICAgc2NsX2NhbF9zY2FsZTIoY2Jjcl9zcmNfdywg
-ZHN0X3cpKTsKIAkJCVZPUF9TQ0xfU0VUKHZvcCwgd2luLCBzY2FsZV9jYmNyX3ksCi0JCQkJICAg
-IHNjbF9jYWxfc2NhbGUyKHNyY19oLCBkc3RfaCkpOworCQkJCSAgICBzY2xfY2FsX3NjYWxlMihj
-YmNyX3NyY19oLCBkc3RfaCkpOwogCQl9CiAJCXJldHVybjsKIAl9Ci0tIAoxLjkuMQoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
+IP block than rk3288 and before, and most of phy-related registers are
+also different from the past, so a new phy driver is required necessarily.
+
+These series patches add phy-rockchip-inno-usb2.c and the corresponding
+documentation.
+
+Changes in v3:
+ - Supplemented some hardware-description into the devicetree bindings.
+ - Resolved the mapping defect between fixed value in driver and the property
+   in devicetree.
+ - Code cleanup.
+
+Changes in v2:
+ - Specified more hardware-description into the devicetree bindings.
+ - Optimized some process of driver.
+
+Frank Wang (2):
+  Documentation: bindings: add DT documentation for Rockchip USB2PHY
+  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   60 ++
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-inno-usb2.c               |  630 ++++++++++++++++++++
+ 4 files changed, 698 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
+
+-- 
+1.7.9.5
