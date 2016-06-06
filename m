@@ -1,112 +1,105 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [v1 PATCH 3/4] Documentation: bindings: add dt documentation for
- cdn DP controller
-Date: Mon, 6 Jun 2016 09:28:42 -0500
-Message-ID: <20160606142842.GA18768@rob-hp-laptop>
-References: <1464966911-18949-1-git-send-email-zyw@rock-chips.com>
- <1464966911-18949-4-git-send-email-zyw@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH 1/2] drm/rockchip: Use atomic PM helpers
+Date: Mon,  6 Jun 2016 16:53:32 +0200
+Message-ID: <1465224813-7359-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1464966911-18949-4-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 03, 2016 at 11:15:10PM +0800, Chris Zhong wrote:
-> This patch adds a binding that describes the cdn DP controller for
-> rk3399.
-> 
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v1:
-> - add extcon node description
-> - add #sound-dai-cells description
-> 
->  .../bindings/display/rockchip/cdn-dp-rockchip.txt  | 62 ++++++++++++++++++++++
->  1 file changed, 62 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-> new file mode 100644
-> index 0000000..4a66fc3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-> @@ -0,0 +1,62 @@
-> +Rockchip RK3399 specific extensions to the cdn Display Port
-> +================================
-> +
-> +Required properties:
-> +- compatible: must be "rockchip,cdn-dp"
-> +
-> +- reg: physical base address of the controller and length
-> +
-> +- clocks: from common clock binding: handle to dp clock.
-> +
-> +- clock-names: from common clock binding:
-> +	       Required elements: "core_clk" "pclk" "spdif"
-> +
-> +- rockchip,grf: this soc should set GRF regs, so need get grf here.
-> +
-> +- ports: contain a port nodes with endpoint definitions as defined in
-> +	 Documentation/devicetree/bindings/media/video-interfaces.txt.
-> +	 contained 2 endpoints, connecting to the output of vop.
-> +
-> +- phys: from general PHY binding: the phandle for the PHY device.
-> +
-> +- extcon: extcon specifier for the Power Delivery
-> +
-> +- #sound-dai-cells = it must be 1 if your system is using 2 DAIs: I2S, SPDIF
-> +
-> +-------------------------------------------------------------------------------
-> +
-> +Example:
-> +	cdn_dp: dp@fec00000 {
-> +		compatible = "rockchip,cdn-dp";
-> +		reg = <0x0 0xfec00000 0x0 0x100000>;
-> +		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
-> +			 <&cru SCLK_SPDIF_REC_DPTX>;
-> +		clock-names = "core_clk", "pclk", "spdif";
-> +		phys = <&tcphy0>;
-> +		extcon = <&fusb1>;
-> +		rockchip,grf = <&grf>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		#sound-dai-cells = <1>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			reg = <1>;
-> +
-> +			dp_in: port {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				dp_in_vopb: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&vopb_out_dp>;
-> +				};
-> +
-> +				dp_in_vopl: endpoint@1 {
-> +					reg = <1>;
-> +					remote-endpoint = <&vopl_out_dp>;
-> +				};
-> +			};
-> +		};
-> +	};
-> -- 
-> 2.6.3
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+VGhpcyBkcml2ZXIgd2FzIHN0aWxsIHVzaW5nIHRoZSBvbGQgbGVnYWN5IGhlbHBlcnMgYW5kIHRo
+YXQgY2F1c2VkIGEgZmV3Ck5VTEwgZGVyZWZlcmVuY2VzIHdoZW4gdHJ5aW5nIHRvIGNhbGwgZW1w
+dHkgY2FsbGJhY2tzLgoKU2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29A
+Y29sbGFib3JhLmNvbT4KQ2M6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+CkNjOiBE
+b3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+CkNjOiBIZWlrbyBTdHVlYm5l
+ciA8aGVpa29Ac250ZWNoLmRlPgpDYzogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgoK
+LS0tCgpIaSwKCnRoZXNlIHR3byBwYXRjaGVzIGFwcGx5IG9uIHRvcCBvZiBEYW5pZWwgVmV0dGVy
+J3Mgc2VyaWVzIHRoYXQgYWRkIGFzeW5jCnN1cHBvcnQgdG8gdGhlIGF0b21pYyBjb21taXQgaGVs
+cGVycy4KClRoYW5rcywKClRvbWV1Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9kcnYuYyB8IDg0ICsrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgIDEgKwogMiBmaWxlcyBjaGFu
+Z2VkLCAzMiBpbnNlcnRpb25zKCspLCA1MyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwppbmRleCAyMjUxMTIxMzQzZTYuLjM2YzhiNThj
+YTQ1ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
+cnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCkBA
+IC0yNSw2ICsyNSw3IEBACiAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+CiAjaW5jbHVkZSA8bGlu
+dXgvb2ZfZ3JhcGguaD4KICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KKyNpbmNsdWRlIDxs
+aW51eC9jb25zb2xlLmg+CiAKICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiCiAjaW5jbHVk
+ZSAicm9ja2NoaXBfZHJtX2ZiLmgiCkBAIC0zMDgsMjUgKzMwOSwzOCBAQCBzdGF0aWMgc3RydWN0
+IGRybV9kcml2ZXIgcm9ja2NoaXBfZHJtX2RyaXZlciA9IHsKIH07CiAKICNpZmRlZiBDT05GSUdf
+UE1fU0xFRVAKLXN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3N5c19zdXNwZW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldikKK3ZvaWQgcm9ja2NoaXBfZHJtX2ZiX3N1c3BlbmQoc3RydWN0IGRybV9kZXZpY2Ug
+KmRybSkKIHsKLQlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gZGV2X2dldF9kcnZkYXRhKGRldik7
+Ci0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKKwlzdHJ1Y3Qgcm9ja2NoaXBfZHJt
+X3ByaXZhdGUgKnByaXYgPSBkcm0tPmRldl9wcml2YXRlOwogCi0JaWYgKCFkcm0pCi0JCXJldHVy
+biAwOworCWNvbnNvbGVfbG9jaygpOworCWRybV9mYl9oZWxwZXJfc2V0X3N1c3BlbmQoJnByaXYt
+PmZiZGV2X2hlbHBlciwgMSk7CisJY29uc29sZV91bmxvY2soKTsKK30KIAotCWRybV9tb2Rlc2V0
+X2xvY2tfYWxsKGRybSk7Ci0JbGlzdF9mb3JfZWFjaF9lbnRyeShjb25uZWN0b3IsICZkcm0tPm1v
+ZGVfY29uZmlnLmNvbm5lY3Rvcl9saXN0LCBoZWFkKSB7Ci0JCWludCBvbGRfZHBtcyA9IGNvbm5l
+Y3Rvci0+ZHBtczsKK3ZvaWQgcm9ja2NoaXBfZHJtX2ZiX3Jlc3VtZShzdHJ1Y3QgZHJtX2Rldmlj
+ZSAqZHJtKQoreworCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdiA9IGRybS0+ZGV2
+X3ByaXZhdGU7CiAKLQkJaWYgKGNvbm5lY3Rvci0+ZnVuY3MtPmRwbXMpCi0JCQljb25uZWN0b3It
+PmZ1bmNzLT5kcG1zKGNvbm5lY3RvciwgRFJNX01PREVfRFBNU19PRkYpOworCWNvbnNvbGVfbG9j
+aygpOworCWRybV9mYl9oZWxwZXJfc2V0X3N1c3BlbmQoJnByaXYtPmZiZGV2X2hlbHBlciwgMCk7
+CisJY29uc29sZV91bmxvY2soKTsKK30KIAotCQkvKiBTZXQgdGhlIG9sZCBtb2RlIGJhY2sgdG8g
+dGhlIGNvbm5lY3RvciBmb3IgcmVzdW1lICovCi0JCWNvbm5lY3Rvci0+ZHBtcyA9IG9sZF9kcG1z
+Oworc3RhdGljIGludCByb2NrY2hpcF9kcm1fc3lzX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2
+KQoreworCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKKwlz
+dHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXYgPSBkcm0tPmRldl9wcml2YXRlOworCisJ
+ZHJtX2ttc19oZWxwZXJfcG9sbF9kaXNhYmxlKGRybSk7CisJcm9ja2NoaXBfZHJtX2ZiX3N1c3Bl
+bmQoZHJtKTsKKworCXByaXYtPnN0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZChkcm0p
+OworCWlmIChJU19FUlIocHJpdi0+c3RhdGUpKSB7CisJCXJvY2tjaGlwX2RybV9mYl9yZXN1bWUo
+ZHJtKTsKKwkJZHJtX2ttc19oZWxwZXJfcG9sbF9lbmFibGUoZHJtKTsKKwkJcmV0dXJuIFBUUl9F
+UlIocHJpdi0+c3RhdGUpOwogCX0KLQlkcm1fbW9kZXNldF91bmxvY2tfYWxsKGRybSk7CiAKIAly
+ZXR1cm4gMDsKIH0KQEAgLTMzNCw0NyArMzQ4LDExIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJt
+X3N5c19zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJt
+X3N5c19yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQogewogCXN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0gPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKLQlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVj
+dG9yOwotCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMgc3RhdHVzOwotCWJvb2wgY2hhbmdlZCA9
+IGZhbHNlOwotCi0JaWYgKCFkcm0pCi0JCXJldHVybiAwOwotCi0JZHJtX21vZGVzZXRfbG9ja19h
+bGwoZHJtKTsKLQlsaXN0X2Zvcl9lYWNoX2VudHJ5KGNvbm5lY3RvciwgJmRybS0+bW9kZV9jb25m
+aWcuY29ubmVjdG9yX2xpc3QsIGhlYWQpIHsKLQkJaW50IGRlc2lyZWRfbW9kZSA9IGNvbm5lY3Rv
+ci0+ZHBtczsKLQotCQkvKgotCQkgKiBhdCBzdXNwZW5kIHRpbWUsIHdlIHNhdmUgZHBtcyB0byBj
+b25uZWN0b3ItPmRwbXMsCi0JCSAqIHJlc3RvcmUgdGhlIG9sZF9kcG1zLCBhbmQgYXQgY3VycmVu
+dCB0aW1lLCB0aGUgY29ubmVjdG9yCi0JCSAqIGRwbXMgc3RhdHVzIG11c3QgYmUgRFJNX01PREVf
+RFBNU19PRkYuCi0JCSAqLwotCQljb25uZWN0b3ItPmRwbXMgPSBEUk1fTU9ERV9EUE1TX09GRjsK
+LQotCQkvKgotCQkgKiBJZiB0aGUgY29ubmVjdG9yIGhhcyBiZWVuIGRpc2Nvbm5lY3RlZCBkdXJp
+bmcgc3VzcGVuZCwKLQkJICogZGlzY29ubmVjdCBpdCBmcm9tIHRoZSBlbmNvZGVyIGFuZCBsZWF2
+ZSBpdCBvZmYuIFdlJ2xsIG5vdGlmeQotCQkgKiB1c2Vyc3BhY2UgYXQgdGhlIGVuZC4KLQkJICov
+Ci0JCWlmIChkZXNpcmVkX21vZGUgPT0gRFJNX01PREVfRFBNU19PTikgewotCQkJc3RhdHVzID0g
+Y29ubmVjdG9yLT5mdW5jcy0+ZGV0ZWN0KGNvbm5lY3RvciwgdHJ1ZSk7Ci0JCQlpZiAoc3RhdHVz
+ID09IGNvbm5lY3Rvcl9zdGF0dXNfZGlzY29ubmVjdGVkKSB7Ci0JCQkJY29ubmVjdG9yLT5lbmNv
+ZGVyID0gTlVMTDsKLQkJCQljb25uZWN0b3ItPnN0YXR1cyA9IHN0YXR1czsKLQkJCQljaGFuZ2Vk
+ID0gdHJ1ZTsKLQkJCQljb250aW51ZTsKLQkJCX0KLQkJfQotCQlpZiAoY29ubmVjdG9yLT5mdW5j
+cy0+ZHBtcykKLQkJCWNvbm5lY3Rvci0+ZnVuY3MtPmRwbXMoY29ubmVjdG9yLCBkZXNpcmVkX21v
+ZGUpOwotCX0KLQlkcm1fbW9kZXNldF91bmxvY2tfYWxsKGRybSk7Ci0KLQlkcm1faGVscGVyX3Jl
+c3VtZV9mb3JjZV9tb2RlKGRybSk7CisJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2
+ID0gZHJtLT5kZXZfcHJpdmF0ZTsKIAotCWlmIChjaGFuZ2VkKQotCQlkcm1fa21zX2hlbHBlcl9o
+b3RwbHVnX2V2ZW50KGRybSk7CisJZHJtX2F0b21pY19oZWxwZXJfcmVzdW1lKGRybSwgcHJpdi0+
+c3RhdGUpOworCXJvY2tjaGlwX2RybV9mYl9yZXN1bWUoZHJtKTsKKwlkcm1fa21zX2hlbHBlcl9w
+b2xsX2VuYWJsZShkcm0pOwogCiAJcmV0dXJuIDA7CiB9CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuaAppbmRleCAwMDU2MzQ0ODQ0NDEuLmVhMzkzMjk0MDA2MSAx
+MDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAor
+KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCkBAIC02MCw2
+ICs2MCw3IEBAIHN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSB7CiAJc3RydWN0IGRybV9mYl9o
+ZWxwZXIgZmJkZXZfaGVscGVyOwogCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqZmJkZXZfYm87CiAJ
+Y29uc3Qgc3RydWN0IHJvY2tjaGlwX2NydGNfZnVuY3MgKmNydGNfZnVuY3NbUk9DS0NISVBfTUFY
+X0NSVENdOworCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZTsKIH07CiAKIGludCByb2Nr
+Y2hpcF9yZWdpc3Rlcl9jcnRjX2Z1bmNzKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKLS0gCjIuNS41
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
