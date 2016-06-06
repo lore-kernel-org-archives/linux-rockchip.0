@@ -1,54 +1,53 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH 2/2] drm/rockchip: Resume DP early
-Date: Mon,  6 Jun 2016 16:53:33 +0200
-Message-ID: <1465224813-7359-2-git-send-email-tomeu.vizoso@collabora.com>
-References: <1465224813-7359-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
+ MAX98357A/RT5514/DA7219
+Date: Tue, 7 Jun 2016 00:50:26 +0100
+Message-ID: <20160606235026.GP7510@sirena.org.uk>
+References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com>
+ <20160601144542.GA3835@rob-hp-laptop>
+ <5751912C.6080904@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465224813-7359-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="8G1nIWD3RY794FAy"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5751912C.6080904@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org, dianders@chromium.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIERQIG5lZWRzIHRvIGhhdmUgcmVzdW1lZCBvbmNlIHRoZSBEUk0gZHJpdmVyIGNhbGxzCmRy
-bV9hdG9taWNfaGVscGVyX3Jlc3VtZSwgb3RoZXJ3aXNlIHRoZSBEUCBjbG9jayBpcyBzdGlsbCBk
-aXNhYmxlZCB3aGVuCnRoZSBEUk0gY29yZSBlbmFibGVzIHRoZSBEUCBicmlkZ2UuCgpXb3VsZCBi
-ZSBuaWNlIHRvIHVzZSBkZXZpY2VfcG1fd2FpdF9mb3JfZGV2IHRvIHN5bmNocm9uaXplIHRoZXNl
-CmRldmljZXMsIGJ1dCB0aGUgRFJNIGRldmljZSBkb2Vzbid0IGtub3cgd2hhdCBzcGVjaWZpYyBp
-bXBsZW1lbnRhdGlvbgp0aGlzIGJyaWRnZSBoYXMuCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpv
-c28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgpDYzogQ2Flc2FyIFdhbmcgPHd4dEByb2Nr
-LWNoaXBzLmNvbT4KQ2M6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4K
-Q2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBZYWtpciBZYW5nIDx5a2tA
-cm9jay1jaGlwcy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
-LXJvY2tjaGlwLmMgfCAxNSArKystLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2Vy
-dGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKaW5kZXggN2Y2YTU1Y2FlMjdhLi5jMTIwMTcyYWRkNWMg
-MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hp
-cC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5j
-CkBAIC0zNDksMjAgKzM0OSwxMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3JlbW92ZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXJldHVybiAwOwogfQogCitzdGF0aWMgY29uc3Qg
-c3RydWN0IGRldl9wbV9vcHMgcm9ja2NoaXBfZHBfcG1fb3BzID0gewogI2lmZGVmIENPTkZJR19Q
-TV9TTEVFUAotc3RhdGljIGludCByb2NrY2hpcF9kcF9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRl
-dikKLXsKLQlyZXR1cm4gYW5hbG9naXhfZHBfc3VzcGVuZChkZXYpOwotfQotCi1zdGF0aWMgaW50
-IHJvY2tjaGlwX2RwX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCi17Ci0JcmV0dXJuIGFuYWxv
-Z2l4X2RwX3Jlc3VtZShkZXYpOwotfQorCS5zdXNwZW5kID0gYW5hbG9naXhfZHBfc3VzcGVuZCwK
-KwkucmVzdW1lX2Vhcmx5ID0gYW5hbG9naXhfZHBfcmVzdW1lLAogI2VuZGlmCi0KLXN0YXRpYyBj
-b25zdCBzdHJ1Y3QgZGV2X3BtX29wcyByb2NrY2hpcF9kcF9wbV9vcHMgPSB7Ci0JU0VUX1NZU1RF
-TV9TTEVFUF9QTV9PUFMocm9ja2NoaXBfZHBfc3VzcGVuZCwgcm9ja2NoaXBfZHBfcmVzdW1lKQog
-fTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgcm9ja2NoaXBfZHBfZHRfaWRz
-W10gPSB7Ci0tIAoyLjUuNQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+
+--8G1nIWD3RY794FAy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Jun 03, 2016 at 10:16:12PM +0800, Xing Zheng wrote:
+
+> I refered to MTK's mt8173-rt5650-rt5514.txt on upstream, that compatible
+> name is "mediatek,mt8173-rt5650-rt5514".
+> Because our platform need to support 3 codecs (max98357a / da7219 / rt5514).
+> Perhaps, you maybe feel that name is too long? And, could you please tell me
+> what names would be better?
+
+> For example: "rk3399-composite-codecs" ?
+
+It should probably be three compatibles, one per CODEC, if the driver
+needs to handle each separately.
+
+--8G1nIWD3RY794FAy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXVgxBAAoJECTWi3JdVIfQ5igH/jnLX9QnvgwFxKK8BdX/+PAY
+1I5XTG+mUzb1nTvkzdDjlJgveR2i3vvKComkPcWheEJvJlydsEwYu7jm9UHhXxf0
+osExbR9R9nlflVNRVNfFgalNjR2aZ39Xh2SuQrH/uTpVlNWm/FGn55sAwuSkxj3C
+EHTErkoDFWUWlrkxll2q3AN8uax16EUKvwfAnr1tWUzq08zu3OwlRmmX/WUHkt4z
+dxCdAE7XAotvNoIYBJ+8NrZEcMkOVS/EQcctMFBgcgJyvfyI+rOT4Ue2APopDEq3
+FfqYsARth8gr+TN1NjrqL8uroXa34Xj/IRJo65uVw8txvDkxstnjGVwtASrPzoE=
+=Qv6x
+-----END PGP SIGNATURE-----
+
+--8G1nIWD3RY794FAy--
