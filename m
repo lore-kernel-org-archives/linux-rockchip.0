@@ -1,118 +1,157 @@
-From: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Mon, 6 Jun 2016 12:27:54 +0100
-Message-ID: <20160606112754.GE6831@leverpostej>
-References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
- <1465204804-31161-2-git-send-email-frank.wang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1465204804-31161-2-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v5 0/5] Thermal: Support for hardware-tracked trip points
+Date: Mon,  6 Jun 2016 19:44:44 +0800
+Message-ID: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: edubezval@gmail.com, linux-pm@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, javi.merino@arm.com, peter@piie.net, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Keerthy <j-keerthy@ti.com>, linux-doc@vger.kernel.org, Ni Wade <wni@nvidia.com>, Jonathan Corbet <corbet@lwn.net>, linux-kernel@vger.kernel.org, Durgadoss R <durgadoss.r@intel.com>, Andy Champ <andycham@amazon.com>, Leo Yan <leo.yan@linaro.org>, Laxman Dewangan <ldewangan@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, linux-omap@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 06, 2016 at 05:20:03PM +0800, Frank Wang wrote:
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v3:
->  - Added 'clocks' and 'clock-names' optional properties.
->  - Specified 'otg-port' and 'host-port' as the sub-node name.
-> 
-> Changes in v2:
->  - Changed vbus_host optional property from gpio to regulator.
->  - Specified vbus_otg-supply optional property.
->  - Specified otg_id and otg_bvalid property.
-> 
->  .../bindings/phy/phy-rockchip-inno-usb2.txt        |   60 ++++++++++++++++++++
->  1 file changed, 60 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> new file mode 100644
-> index 0000000..0b4bbbb
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> @@ -0,0 +1,60 @@
-> +ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
-> +
-> +Required properties (phy (parent) node):
-> + - compatible : should be one of the listed compatibles:
-> +	* "rockchip,rk3366-usb2phy"
-> +	* "rockchip,rk3399-usb2phy"
-> + - #clock-cells : should be 0.
-> + - clock-output-names : specify the 480m output clock name.
-> +
-> +Optional properties:
-> + - clocks : phandle + phy specifier pair, for the input clock of phy.
-> + - clock-names : input clock name of phy, must be "phyclk".
-> + - vbus_host-supply : phandle to a regulator that supplies host vbus.
-> + - vbus_otg-supply : phandle to a regulator that supplies otg vbus.
+Thank you all for providing inputs and comments on previous versions of
+this patchset.
+Especially thanks to the (Mikko,Sascha,Eduardo,Javi,Steve....).
 
-Nit: s/_/-/ here.
+The history patches come from Mikko and Sascha.
+    http://thread.gmane.org/gmane.linux.power-management.general/59451
 
-Otherwise the rest of this looks generally fine, though I'm confused as
-to how you address the programming interface(s), given none are
-described.
+Now, I pick them up to continue upstream.
+Nevermind!
 
-Thanks,
-Mark.
+This series history patches:
+v4: https://lkml.org/lkml/2016/5/27/122
+v3: https://lkml.org/lkml/2016/5/24/797
+v2: https://lkml.org/lkml/2016/5/3/220
+v1: https://lkml.org/lkml/2016/4/24/227
 
-> +
-> +Required nodes : a sub-node is required for each port the phy provides.
-> +		 The sub-node name is used to identify host or otg port,
-> +		 and shall be the following entries:
-> +	* "otg-port" : the name of otg port.
-> +	* "host-port" : the name of host port.
-> +
-> +Required properties (port (child) node):
-> + - #phy-cells : must be 0. See ./phy-bindings.txt for details.
-> + - interrupts : specify an interrupt for each entry in interrupt-names.
-> + - interrupt-names : a list which shall be the following entries:
-> +	* "otg_id" : for the otg id interrupt.
-> +	* "otg_bvalid" : for the otg vbus interrupt.
-> +	* "linestate" : for the host/otg linestate interrupt.
-> +
-> +Example:
-> +
-> +grf: syscon@ff770000 {
-> +	compatible = "rockchip,rk3366-grf", "syscon", "simple-mfd";
-> +	#address-cells = <1>;
-> +	#size-cells = <1>;
-> +
-> +...
-> +
-> +	u2phy: usb2-phy {
-> +		compatible = "rockchip,rk3366-usb2phy";
-> +		#clock-cells = <0>;
-> +		clock-output-names = "sclk_otgphy0_480m";
-> +
-> +		u2phy_otg: otg-port {
-> +			#phy-cells = <0>;
-> +			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-names = "otg_id", "otg_bvalid", "linestate";
-> +			status = "okay";
-> +		};
-> +
-> +		u2phy_host: host-port {
-> +			#phy-cells = <0>;
-> +			interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-names = "linestate";
-> +			status = "okay";
-> +		};
-> +	};
-> +};
-> -- 
-> 1.7.9.5
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This series adds support for hardware trip points. It picks up earlier
+work from Mikko Perttunen. Mikko implemented hardware trip points as part
+of the device tree support. It was suggested back then to move the
+functionality to the thermal core instead of putting more code into the
+device tree support. This series does exactly that.
+
+This series patches rebase the conflicts with the lastest next kernel.
+Note that the hardware-tracked trip points are very well tested currently.
+
+Verified and tested on https://github.com/Caesar-github/rockchip/tree/wip/fixes-thermal-0606
+That's based on the next kernel (4.7-rc2).
+localhost / # cat /proc/version
+Linux version 4.7.0-rc2-next-20160606-02546-g534926d (wxt@nb)
+---
+There are five pathes in this series.
+thermal: Add support for hardware-tracked trip point
+thermal: of: implement .set_trips for device tree thermal zones
+thermal: streamline get_trend callbacks
+thermal: bang-bang governor: act on lower trip boundary
+thermal: rockchip: add the set_trips function
+
+Note: the hardware-tracked trip points that the similar patches were verified
+on ChromoeOs platform.
+e.g.:
+https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
+https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.18
+https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+---
+
+Anyway, I take the lastest thermal change to test from next kernel,
+
+Tested on RK3399 SoCs on https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+And
+Tested on RK3288 SoCs with chromebook on next kernel.
+localhost / # while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp; sleep .5; done
+/sys/class/thermal/thermal_zone1/temp:45454
+/sys/class/thermal/thermal_zone2/temp:44090
+/sys/class/thermal/thermal_zone1/temp:44545
+/sys/class/thermal/thermal_zone2/temp:44545
+/sys/class/thermal/thermal_zone1/temp:45454
+/sys/class/thermal/thermal_zone2/temp:44545
+/sys/class/thermal/thermal_zone1/temp:45000
+...
+Then add the loading,
+localhost / # md5sum /dev/zero &
+[3] 8354
+..
+The Set trips trigger the hardware-tracked points.
+
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 68461, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 2 - temp: 64166, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70000, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 75000
+rockchip-thermal ff280000.tsadc: sensor 2 - temp: 66153, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69230, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 70000
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 68076, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 2 - temp: 65384, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69615, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70000, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 75000
+rockchip-thermal ff280000.tsadc: sensor 2 - temp: 65384, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69615, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 70000
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69615, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69230, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70833, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 75000
+rockchip-thermal ff280000.tsadc: sensor 2 - temp: 66153, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69230, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 70000
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70416, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 75000
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70000, retval: 0
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 69615, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 70000
+rockchip-thermal ff280000.tsadc: sensor 1 - temp: 70000, retval: 0
+rockchip-thermal ff280000.tsadc: rockchip_thermal_set_trips: sensor 1: low: 68000, high 75000
+..
+---
+Anyway, the series patches are verified on rockchip platform.
+
+Thanks someone are reviewing and testing for it.
+
+-Caesar
+
+
+Changes in v5:
+- add the lock for thermal_zone_set_trips function.
+- change based on next kernel.
+- add the tested by Steve.
+
+Changes in v4:
+- Missing the lock added in v3.
+- as the Javi comments, %s/implemnets/implements.
+
+Changes in v3:
+- as Javi comments on https://patchwork.kernel.org/patch/9001281/.
+- add the lock for preventing the called from multi placce
+- add the note for pre_low/high_trip.
+- as the Javi comments on https://patchwork.kernel.org/patch/9001311/.
+- add the select if they set the option for devicetree.
+- Add the peter's ACK.
+
+Changes in v2:
+- update the sysfs-api.txt for set_trips.
+- add the commit in patch[v2 2/5].
+- Update the commit for patch[v2 4/5].
+
+Caesar Wang (1):
+  thermal: rockchip: add the set_trips function
+
+Sascha Hauer (4):
+  thermal: Add support for hardware-tracked trip points
+  thermal: of: implement .set_trips for device tree thermal zones
+  thermal: streamline get_trend callbacks
+  thermal: bang-bang governor: act on lower trip boundary
+
+ Documentation/thermal/sysfs-api.txt                |  7 +++
+ drivers/thermal/gov_bang_bang.c                    |  2 +-
+ drivers/thermal/of-thermal.c                       | 30 ++++++++----
+ drivers/thermal/rockchip_thermal.c                 | 39 ++++++++++++++++
+ drivers/thermal/thermal_core.c                     | 54 ++++++++++++++++++++++
+ drivers/thermal/thermal_sysfs.c                    |  3 ++
+ drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 ++++------
+ include/linux/thermal.h                            | 16 ++++++-
+ 8 files changed, 147 insertions(+), 29 deletions(-)
+
+-- 
+1.9.1
+
