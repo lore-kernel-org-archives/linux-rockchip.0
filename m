@@ -1,80 +1,40 @@
-From: Hans-Christian Noren Egtvedt <egtvedt@samfundet.no>
-Subject: Re: [RFC v3 07/45] avr32: dma-mapping: Use unsigned long for
- dma_attrs
-Date: Mon, 6 Jun 2016 08:43:57 +0200
-Message-ID: <20160606064357.GA7998@samfundet.no>
-References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
- <1464881987-13203-8-git-send-email-k.kozlowski@samsung.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH 1/2] drm/rockchip: vop: add uv_vir register field for RK3036
+ VOP
+Date: Mon,  6 Jun 2016 15:58:32 +0800
+Message-ID: <1465199912-20932-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mips-bounce@linux-mips.org>
-Content-Disposition: inline
-In-Reply-To: <1464881987-13203-8-git-send-email-k.kozlowski@samsung.com>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Cc: Richard Henderson <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Matt Turner <mattst88@gmail.com>, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Stefano Stabellini <sstabellini@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Haavard Skinnemoen <hskinnemoen@gmail.com>, Steven Miao <realmz6@gmail.com>, Mark Salter <msalter@redhat.com>, Aurelien Jacquiot <a-jacquiot@ti.com>, Mikael Starvik <starvik@axis.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Richard Kuo <rkuo@codeaurora.org>, Tony Luck <tony.luck@intel.com>, Fenghua Yu <fenghua.yu@intel.com>, Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>, Geert
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <yzq@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Around Thu 02 Jun 2016 17:39:09 +0200 or thereabout, Krzysztof Kozlowski wrote:
-> Split out subsystem specific changes for easier reviews. This will be
-> squashed with main commit.
-> 
-> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-
-Acked-by: Hans-Christian Noren Egtvedt <egtvedt@samfundet.no>
-
-> ---
->  arch/avr32/mm/dma-coherent.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/avr32/mm/dma-coherent.c b/arch/avr32/mm/dma-coherent.c
-> index 92cf1fb2b3e6..fc51f4421933 100644
-> --- a/arch/avr32/mm/dma-coherent.c
-> +++ b/arch/avr32/mm/dma-coherent.c
-> @@ -99,7 +99,7 @@ static void __dma_free(struct device *dev, size_t size,
->  }
->  
->  static void *avr32_dma_alloc(struct device *dev, size_t size,
-> -		dma_addr_t *handle, gfp_t gfp, struct dma_attrs *attrs)
-> +		dma_addr_t *handle, gfp_t gfp, unsigned long attrs)
->  {
->  	struct page *page;
->  	dma_addr_t phys;
-> @@ -119,7 +119,7 @@ static void *avr32_dma_alloc(struct device *dev, size_t size,
->  }
->  
->  static void avr32_dma_free(struct device *dev, size_t size,
-> -		void *cpu_addr, dma_addr_t handle, struct dma_attrs *attrs)
-> +		void *cpu_addr, dma_addr_t handle, unsigned long attrs)
->  {
->  	struct page *page;
->  
-> @@ -142,7 +142,7 @@ static void avr32_dma_free(struct device *dev, size_t size,
->  
->  static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
->  		unsigned long offset, size_t size,
-> -		enum dma_data_direction direction, struct dma_attrs *attrs)
-> +		enum dma_data_direction direction, unsigned long attrs)
->  {
->  	void *cpu_addr = page_address(page) + offset;
->  
-> @@ -152,7 +152,7 @@ static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
->  
->  static int avr32_dma_map_sg(struct device *dev, struct scatterlist *sglist,
->  		int nents, enum dma_data_direction direction,
-> -		struct dma_attrs *attrs)
-> +		unsigned long attrs)
->  {
->  	int i;
->  	struct scatterlist *sg;
--- 
-mvh
-Hans-Christian Noren Egtvedt
+VGhlIFdJTjAgb2YgUkszMDM2IFZPUCBjb3VsZCBzdXBwb3J0IFlVViBkYXRhIGZvcm1hdCwgYnV0
+IGRyaXZlcgpmb3JnZXQgdG8gYWRkIHRoZSB1dl92aXIgcmVnaXN0ZXIgZmllbGQgZm9yIGl0LgoK
+U2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAxICsKIDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF92b3BfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+dm9wX3JlZy5jCmluZGV4IDMxNjZiNDYuLjdkYTIzMTEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwpAQCAtMjEwLDYgKzIxMCw3IEBAIHN0YXRpYyBjb25z
+dCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmszMDM2X3dpbjBfZGF0YSA9IHsKIAkueXJnYl9tc3QgPSBW
+T1BfUkVHKFJLMzAzNl9XSU4wX1lSR0JfTVNULCAweGZmZmZmZmZmLCAwKSwKIAkudXZfbXN0ID0g
+Vk9QX1JFRyhSSzMwMzZfV0lOMF9DQlJfTVNULCAweGZmZmZmZmZmLCAwKSwKIAkueXJnYl92aXIg
+PSBWT1BfUkVHKFJLMzAzNl9XSU4wX1ZJUiwgMHhmZmZmLCAwKSwKKwkudXZfdmlyID0gVk9QX1JF
+RyhSSzMwMzZfV0lOMF9WSVIsIDB4MWZmZiwgMTYpLAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVj
+dCB2b3Bfd2luX3BoeSByazMwMzZfd2luMV9kYXRhID0gewotLSAKMS45LjEKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
