@@ -1,83 +1,127 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Tue, 7 Jun 2016 13:15:12 +0530
-Message-ID: <57567B88.7000607@ti.com>
-References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
- <1465204804-31161-2-git-send-email-frank.wang@rock-chips.com>
- <20160606112754.GE6831@leverpostej> <7083100.uVXA4CkAgE@diego>
- <2b3e9b0b-f17e-063b-6eb0-2390bd87901b@rock-chips.com>
- <9a34e448-2b4d-4797-2e6b-c7a36c03b597@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 1/2] Documentation: bindings: add DT documentation for Rockchip USB2PHY
+Date: Tue, 07 Jun 2016 09:59:46 +0200
+Message-ID: <15428827.HfoQlKAJKr@diego>
+References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com> <2b3e9b0b-f17e-063b-6eb0-2390bd87901b@rock-chips.com> <9a34e448-2b4d-4797-2e6b-c7a36c03b597@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <9a34e448-2b4d-4797-2e6b-c7a36c03b597-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <9a34e448-2b4d-4797-2e6b-c7a36c03b597@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUdWVzZGF5IDA3IEp1bmUgMjAxNiAwOTowMSBBTSwgRnJhbmsgV2FuZyB3cm90ZToK
-PiBIaSBIZWlrbywKPiAKPiBPbiAyMDE2LzYvNyAxMDo1OSwgRnJhbmsgV2FuZyB3cm90ZToKPj4g
-SGkgSGVpa28gJiBNYXJrLAo+Pgo+PiBPbiAyMDE2LzYvNiAyMDozMywgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4+PiBBbSBNb250YWcsIDYuIEp1bmkgMjAxNiwgMTI6Mjc6NTQgc2NocmllYiBNYXJr
-IFJ1dGxhbmQ6Cj4+Pj4gT24gTW9uLCBKdW4gMDYsIDIwMTYgYXQgMDU6MjA6MDNQTSArMDgwMCwg
-RnJhbmsgV2FuZyB3cm90ZToKPj4+Pj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV2FuZyA8ZnJhbmsu
-d2FuZ0Byb2NrLWNoaXBzLmNvbT4KPj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgaW4gdjM6
-Cj4+Pj4+ICAgLSBBZGRlZCAnY2xvY2tzJyBhbmQgJ2Nsb2NrLW5hbWVzJyBvcHRpb25hbCBwcm9w
-ZXJ0aWVzLgo+Pj4+PiAgIC0gU3BlY2lmaWVkICdvdGctcG9ydCcgYW5kICdob3N0LXBvcnQnIGFz
-IHRoZSBzdWItbm9kZSBuYW1lLgo+Pj4+Pgo+Pj4+PiBDaGFuZ2VzIGluIHYyOgo+Pj4+PiAgIC0g
-Q2hhbmdlZCB2YnVzX2hvc3Qgb3B0aW9uYWwgcHJvcGVydHkgZnJvbSBncGlvIHRvIHJlZ3VsYXRv
-ci4KPj4+Pj4gICAtIFNwZWNpZmllZCB2YnVzX290Zy1zdXBwbHkgb3B0aW9uYWwgcHJvcGVydHku
-Cj4+Pj4+ICAgLSBTcGVjaWZpZWQgb3RnX2lkIGFuZCBvdGdfYnZhbGlkIHByb3BlcnR5Lgo+Pj4+
-PiAgICAgLi4uL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtaW5uby11c2IyLnR4dCAgICAgICAg
-fCA2MAo+Pj4+PiAgICsrKysrKysrKysrKysrKysrKysrIDEgZmlsZSBjaGFuZ2VkLCA2MCBpbnNl
-cnRpb25zKCspCj4+Pj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0Cj4+Pj4+IERvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi50eHQ+Cj4+Pj4+
-IGRpZmYgLS1naXQKPj4+Pj4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5
-L3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIudHh0Cj4+Pj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtaW5uby11c2IyLnR4dCBuZXcKPj4+Pj4gZmls
-ZSBtb2RlIDEwMDY0NAo+Pj4+PiBpbmRleCAwMDAwMDAwLi4wYjRiYmJiCj4+Pj4+IC0tLSAvZGV2
-L251bGwKPj4+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9w
-aHktcm9ja2NoaXAtaW5uby11c2IyLnR4dAo+Pj4+PiBAQCAtMCwwICsxLDYwIEBACj4+Pj4+ICtS
-T0NLQ0hJUCBVU0IyLjAgUEhZIFdJVEggSU5OTyBJUCBCTE9DSwo+Pj4+PiArCj4+Pj4+ICtSZXF1
-aXJlZCBwcm9wZXJ0aWVzIChwaHkgKHBhcmVudCkgbm9kZSk6Cj4+Pj4+ICsgLSBjb21wYXRpYmxl
-IDogc2hvdWxkIGJlIG9uZSBvZiB0aGUgbGlzdGVkIGNvbXBhdGlibGVzOgo+Pj4+PiArICAgICog
-InJvY2tjaGlwLHJrMzM2Ni11c2IycGh5Igo+Pj4+PiArICAgICogInJvY2tjaGlwLHJrMzM5OS11
-c2IycGh5Igo+Pj4+PiArIC0gI2Nsb2NrLWNlbGxzIDogc2hvdWxkIGJlIDAuCj4+Pj4+ICsgLSBj
-bG9jay1vdXRwdXQtbmFtZXMgOiBzcGVjaWZ5IHRoZSA0ODBtIG91dHB1dCBjbG9jayBuYW1lLgo+
-Pj4+PiArCj4+Pj4+ICtPcHRpb25hbCBwcm9wZXJ0aWVzOgo+Pj4+PiArIC0gY2xvY2tzIDogcGhh
-bmRsZSArIHBoeSBzcGVjaWZpZXIgcGFpciwgZm9yIHRoZSBpbnB1dCBjbG9jayBvZiBwaHkuCj4+
-Pj4+ICsgLSBjbG9jay1uYW1lcyA6IGlucHV0IGNsb2NrIG5hbWUgb2YgcGh5LCBtdXN0IGJlICJw
-aHljbGsiLgo+Pj4+PiArIC0gdmJ1c19ob3N0LXN1cHBseSA6IHBoYW5kbGUgdG8gYSByZWd1bGF0
-b3IgdGhhdCBzdXBwbGllcyBob3N0IHZidXMuCj4+Pj4+ICsgLSB2YnVzX290Zy1zdXBwbHkgOiBw
-aGFuZGxlIHRvIGEgcmVndWxhdG9yIHRoYXQgc3VwcGxpZXMgb3RnIHZidXMuCj4+Pj4gTml0OiBz
-L18vLS8gaGVyZS4KPj4+IFNvbWV0aGluZyBJIG9ubHkgc3R1bWJsZWQgb3ZlciB5ZXN0ZXJkYXkg
-Zm9yIHRoZSBmaXJzdCB0aW1lIG9uIG15IHJrMzI4OC0KPj4+IHBvcG1ldGFsOiBUaGUgcGh5IHN1
-Ym5vZGVzIHNlZW0gdG8gYmUgYWJsZSB0byB1c2UgYSBnZW5lcmljIHBoeS1zdXBwbHkKPj4+IHBy
-b3BlcnR5IGZyb20gaW5zaWRlIHRoZSBwaHktY29yZSBpdHNlbGYsIHNlZToKPj4+Cj4+PiBodHRw
-czovL2dpdGh1Yi5jb20vbW1pbmQvbGludXgtcm9ja2NoaXAvY29tbWl0LzkzNzM5ZjUyMWZjNjVm
-NDQ1MjRiMDBjOWFhZjZkYjQ2YmNhOTRlMDIjZGlmZi1kZGYzZTQ1ZWJiNzUzZDZkZWJmNTcwMjIw
-MDNhMWE1N1I1OTcKPj4+Cj4+Pgo+Pj4gZm9yIG15IFdJUCBjb2RlIGZvciB0aGF0IG90aGVyIGJv
-YXJkLgo+Pj4KPj4KPj4gQWgsIGdvb2QgY29tbWVudHMhIEkgd2lsbCB0cnkgbGF0ZXIsIGlmIGl0
-IGlzIHByYWN0aWNhYmxlLCBJIHNoYWxsIGNvcnJlY3QgaXQKPj4gaW50byB0aGUgbmV4dCBwYXRj
-aGVzIChwYXRjaCB2NCkuCj4+Cj4gCj4gSSBhbSBzb3JyeSB0byB0ZWxsIHlvdSB0aGF0IHNlZW1z
-IHVud29ya2FibGUsIGJlY2F1c2Ugd2UgaGF2ZSB0d28gc3ViLW5vZGVzCj4gKHBoeS1wb3J0cykg
-aW4gb25lIHBhcmVudC1ub2RlIChwaHkpLAo+IHdoYXQgaXMgbW9yZSwgdGhlICdwaHktc3VwcGx5
-JyBwcm9wZXJ0eSBjYW4gb25seSBwdXQgaW50byBwYXJlbnQtbm9kZSwgSQo+IGJlbGlldmUgaXQg
-Y2FuIG5vdCBiZSBkaWZmZXJlbnRpYXRlZCB0eXBlcyBvZiBwb3J0cy4KCidwaHktc3VwcGx5JyBp
-cyBhIHByb3BlcnR5IG9mIHRoZSBwaHkgbm9kZSBhbmQgbm90IHRoZSAncGh5LXByb3ZpZGVyJyBu
-b2RlLiBTbwpJTU8gdGhpcyBzaG91bGQgd29yay4gV2hhdCBwcm9ibGVtIGRvIHlvdSBzZWU/CgpU
-aGFua3MKS2lzaG9uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi Frank,
+
+Am Dienstag, 7. Juni 2016, 11:31:59 schrieb Frank Wang:
+> On 2016/6/7 10:59, Frank Wang wrote:
+> > On 2016/6/6 20:33, Heiko St=FCbner wrote:
+> >> Am Montag, 6. Juni 2016, 12:27:54 schrieb Mark Rutland:
+> >>> On Mon, Jun 06, 2016 at 05:20:03PM +0800, Frank Wang wrote:
+> >>>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> >>>> ---
+> >>>>=20
+> >>>> Changes in v3:
+> >>>>   - Added 'clocks' and 'clock-names' optional properties.
+> >>>>   - Specified 'otg-port' and 'host-port' as the sub-node name.
+> >>>>=20
+> >>>> Changes in v2:
+> >>>>   - Changed vbus_host optional property from gpio to regulator.
+> >>>>   - Specified vbus_otg-supply optional property.
+> >>>>   - Specified otg_id and otg_bvalid property.
+> >>>>  =20
+> >>>>     .../bindings/phy/phy-rockchip-inno-usb2.txt        | 60
+> >>>>  =20
+> >>>>   ++++++++++++++++++++ 1 file changed, 60 insertions(+)
+> >>>>   create mode 100644
+> >>>>=20
+> >>>> Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt=
+>
+> >>>> diff --git
+> >>>> a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.t=
+xt
+> >>>> b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.t=
+xt new
+> >>>> file mode 100644
+> >>>> index 0000000..0b4bbbb
+> >>>> --- /dev/null
+> >>>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-us=
+b2.txt
+> >>>> @@ -0,0 +1,60 @@
+> >>>> +ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
+> >>>> +
+> >>>> +Required properties (phy (parent) node):
+> >>>> + - compatible : should be one of the listed compatibles:
+> >>>> +    * "rockchip,rk3366-usb2phy"
+> >>>> +    * "rockchip,rk3399-usb2phy"
+> >>>> + - #clock-cells : should be 0.
+> >>>> + - clock-output-names : specify the 480m output clock name.
+> >>>> +
+> >>>> +Optional properties:
+> >>>> + - clocks : phandle + phy specifier pair, for the input clock o=
+f phy.
+> >>>> + - clock-names : input clock name of phy, must be "phyclk".
+> >>>> + - vbus_host-supply : phandle to a regulator that supplies host=
+ vbus.
+> >>>> + - vbus_otg-supply : phandle to a regulator that supplies otg v=
+bus.
+> >>>=20
+> >>> Nit: s/_/-/ here.
+> >>=20
+> >> Something I only stumbled over yesterday for the first time on my
+> >> rk3288-
+> >> popmetal: The phy subnodes seem to be able to use a generic phy-su=
+pply
+> >> property from inside the phy-core itself, see:
+> >>=20
+> >> https://github.com/mmind/linux-rockchip/commit/93739f521fc65f44524=
+b00c9aa
+> >> f6db46bca94e02#diff-ddf3e45ebb753d6debf57022003a1a57R597
+> >>=20
+> >>=20
+> >> for my WIP code for that other board.
+> >=20
+> > Ah, good comments! I will try later, if it is practicable, I shall
+> > correct it into the next patches (patch v4).
+>=20
+> I am sorry to tell you that seems unworkable, because we have two
+> sub-nodes (phy-ports) in one parent-node (phy),
+> what is more, the 'phy-supply' property can only put into parent-node=
+, I
+> believe it can not be differentiated types of ports.
+> I mean vbus for host and otg are separately.
+
+I would disagree ;-)
+
+If you look in phy-core.c phy_create(), you can see that the struct phy=
+ that
+gets created, contains its own struct device instance, which then gets =
+the
+phys of_node (the host+otg subnodes in this context) attached to it.
+
+The regulator_get_optional then runs on this struct device, thus making=
+ lookup
+on the subnode. And that works just nicely on my rk3288-popmetal, with =
+its 3
+phy subnodes and debugfs/regulator/regulator_summary prints that nicely=
+:
+
+ vcc_sys                          0   12      0  5000mV     0mA  5000mV=
+  5000mV=20
+    vcc_host_5v                   1    1      0  5000mV     0mA  5000mV=
+  5000mV=20
+       phy-phy.2                                                    0mV=
+     0mV
+    vcc_otg_5v                    1    1      0  5000mV     0mA  5000mV=
+  5000mV=20
+       phy-phy.0                                                    0mV=
+     0mV
+    vcc_sata_5v                   2    1      0  5000mV     0mA  5000mV=
+  5000mV=20
+       phy-phy.1                                                    0mV=
+     0mV
+
+
+Heiko
