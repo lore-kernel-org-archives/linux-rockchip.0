@@ -1,68 +1,70 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
-Date: Mon, 6 Jun 2016 19:28:22 -0500
-Message-ID: <20160607002822.GA1391@localhost>
-References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
- <4967020.J4dsRYGugq@wuerfel>
- <20160602140001.GB8262@localhost>
- <3585926.N1C2xx3GaB@wuerfel>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [v1 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip
+ USB Type-C PHY
+Date: Tue, 7 Jun 2016 08:33:23 +0800
+Message-ID: <57561653.9060404@rock-chips.com>
+References: <1464966911-18949-1-git-send-email-zyw@rock-chips.com>
+ <1464966911-18949-2-git-send-email-zyw@rock-chips.com>
+ <20160606142738.GA12472@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3585926.N1C2xx3GaB@wuerfel>
+In-Reply-To: <20160606142738.GA12472@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hannes Reinecke <hare@suse.de>, Alex Williamson <alex.williamson@redhat.com>
+To: Rob Herring <robh@kernel.org>
+Cc: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, linux-rockchip@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 02, 2016 at 05:06:55PM +0200, Arnd Bergmann wrote:
-> On Thursday, June 2, 2016 9:00:01 AM CEST Bjorn Helgaas wrote:
-> > > I just did a count of the implementations of pci_ops: I found 107
-> > > instances of 'struct pci_ops', and 67 of them treat type0 and type1
-> > > access differently in some form.
-> > > 
-> > > I'd estimate that about half of them, or roughly a third of the total
-> > > instances would benefit from my change, if we were to do them again.
-> > > Clearly there is no need to change the existing code here when it works,
-> > > unless the benefit is very clear and the code is actively maintained.
-> > > 
-> > > In some cases, the difference is only that the root bus has a limited
-> > > set of devices that are allowed to be accessed, so there would
-> > > likely be no benefit of this, compared to e.g. yet another callback
-> > > that checks the validity.
-> > > Some other instances have type0 registers at a different memory location
-> > > from type1, some use different layout inside of that space, and some
-> > > are completely different.
-> > 
-> > The type0/type1 distinction still seems out of place to me at the call
-> > site.  Is there any other reason a caller would care about the
-> > difference between type0 and type1?
-> 
-> The callers really shouldn't care, but they also shouldn't call the
-> pci_ops function pointer (and as we found earlier, there are only
-> three such callers).
-> 
-> The distinction between type0 and type1 in my mind is an implementation
-> detail of the pci_{read,write}_config_{byte,word,dword} functions
-> that call the low-level operations here.
+Hi Rob
 
-The caller is performing one abstract operation: reading or writing
-config space of a PCI device.  In the caller's context, it makes no
-difference whether it's a type0 or type1 access.
+On 06/06/2016 10:27 PM, Rob Herring wrote:
+> On Fri, Jun 03, 2016 at 11:15:08PM +0800, Chris Zhong wrote:
+>> This patch adds a binding that describes the Rockchip USB Type-C PHY
+>> for rk3399
+>>
+>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v1:
+>> - add extcon node description
+>> - move the registers in phy driver
+>> - remove the suffix of reset
+>>
+>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 46 ++++++++++++++++++++++
+>>   1 file changed, 46 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>> new file mode 100644
+>> index 0000000..964e0f7
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>> @@ -0,0 +1,46 @@
+>> +* ROCKCHIP type-c PHY
+>> +---------------------
+>> +
+>> +Required properties:
+>> + - compatible: should be "rockchip,rk3399-typec-phy0" or
+>> +			 "rockchip,rk3399-typec-phy1"
+> What's the difference between 0 and 1? If it is to handle the register
+> offsets you have in the previous version and the phy blocks are
+> identical, then the compatible strings should be the same.
+yes, the registers are different between 0 and 1, and there is a grf 
+register(0x6268) for switch the phy 0 and phy 1
 
-Moving the test from the host bridge driver to pci_read_config_byte()
-does move a little code from the callee to the caller, and there are
-more callees than callers, so in that sense it does remove code
-overall.  If you consider a single driver by itself, I'm not sure it
-makes much difference.
 
-The pcie-designware.c patch is a net removal of 17 lines, but that's
-not all from moving the type0/type1 test: restructuring along the same
-lines but keeping the original type0/type1 test removes about 9 lines.
-
-Anyway, I think I'd rather work first on your RFC patches to make
-pci_host_bridge the primary structure for probing PCI.  I think
-there will be a *lot* of benefit there.
-
-Bjorn
+>
+>> + - reg : Address and length of the usb phy control register set
+>> + - rockchip,grf : phandle to the syscon managing the "general
+>> +   register files"
+>> + - clocks : phandle + clock specifier for the phy clocks
+>> + - clock-names: string, clock name, must be "tcpdcore", "tcpdphy_ref";
+>> + - resets : a list of phandle + reset specifier pairs
+>> + - reset-names : string reset name, must be:
+>> +		 "tcphy", "tcphy_pipe", "uphy_tcphy"
+>> + - #phy-cells: Must be 0.  See ./phy-bindings.txt for details.
+>> + - extcon: extcon specifier for the Power Delivery
+>
+>
