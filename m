@@ -1,162 +1,60 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH v3 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Tue, 7 Jun 2016 11:31:59 +0800
-Message-ID: <9a34e448-2b4d-4797-2e6b-c7a36c03b597@rock-chips.com>
-References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
- <1465204804-31161-2-git-send-email-frank.wang@rock-chips.com>
- <20160606112754.GE6831@leverpostej> <7083100.uVXA4CkAgE@diego>
- <2b3e9b0b-f17e-063b-6eb0-2390bd87901b@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2 0/4] clocksource: rockchip/timer: Support rktimer for rk3399
+Date: Tue,  7 Jun 2016 12:54:29 +0800
+Message-ID: <1465275273-22076-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2b3e9b0b-f17e-063b-6eb0-2390bd87901b@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>
-Cc: dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
+To: daniel.lezcano@linaro.org, Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+This series patches had been tested on rockchip inside kernel.
+In order to support the rk3399 SoC timer and turn off interrupts and IPIs to
+save power in idle.
+Okay, it still works bootup on rk3288/other SoCs, even though many socs hasn't used
+the broadcast timer.
 
-On 2016/6/7 10:59, Frank Wang wrote:
-> Hi Heiko & Mark,
->
-> On 2016/6/6 20:33, Heiko St=C3=BCbner wrote:
->> Am Montag, 6. Juni 2016, 12:27:54 schrieb Mark Rutland:
->>> On Mon, Jun 06, 2016 at 05:20:03PM +0800, Frank Wang wrote:
->>>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->>>> ---
->>>>
->>>> Changes in v3:
->>>>   - Added 'clocks' and 'clock-names' optional properties.
->>>>   - Specified 'otg-port' and 'host-port' as the sub-node name.
->>>>
->>>> Changes in v2:
->>>>   - Changed vbus_host optional property from gpio to regulator.
->>>>   - Specified vbus_otg-supply optional property.
->>>>   - Specified otg_id and otg_bvalid property.
->>>>     .../bindings/phy/phy-rockchip-inno-usb2.txt        | 60
->>>>   ++++++++++++++++++++ 1 file changed, 60 insertions(+)
->>>>   create mode 100644
->>>> Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt>
->>>> diff --git
->>>> a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->>>> b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt=
- new
->>>> file mode 100644
->>>> index 0000000..0b4bbbb
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2=
-=2Etxt
->>>> @@ -0,0 +1,60 @@
->>>> +ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
->>>> +
->>>> +Required properties (phy (parent) node):
->>>> + - compatible : should be one of the listed compatibles:
->>>> +    * "rockchip,rk3366-usb2phy"
->>>> +    * "rockchip,rk3399-usb2phy"
->>>> + - #clock-cells : should be 0.
->>>> + - clock-output-names : specify the 480m output clock name.
->>>> +
->>>> +Optional properties:
->>>> + - clocks : phandle + phy specifier pair, for the input clock of =
-phy.
->>>> + - clock-names : input clock name of phy, must be "phyclk".
->>>> + - vbus_host-supply : phandle to a regulator that supplies host v=
-bus.
->>>> + - vbus_otg-supply : phandle to a regulator that supplies otg vbu=
-s.
->>> Nit: s/_/-/ here.
->> Something I only stumbled over yesterday for the first time on my=20
->> rk3288-
->> popmetal: The phy subnodes seem to be able to use a generic phy-supp=
-ly
->> property from inside the phy-core itself, see:
->>
->> https://github.com/mmind/linux-rockchip/commit/93739f521fc65f44524b0=
-0c9aaf6db46bca94e02#diff-ddf3e45ebb753d6debf57022003a1a57R597=20
->>
->>
->> for my WIP code for that other board.
->>
->
-> Ah, good comments! I will try later, if it is practicable, I shall=20
-> correct it into the next patches (patch v4).
->
+History version:
+v1:
+https://lkml.org/lkml/2016/5/25/186
 
-I am sorry to tell you that seems unworkable, because we have two=20
-sub-nodes (phy-ports) in one parent-node (phy),
-what is more, the 'phy-supply' property can only put into parent-node, =
-I=20
-believe it can not be differentiated types of ports.
-I mean vbus for host and otg are separately.
+Easy to test for my borad.
+localhost / # cat /proc/interrupts
+CPU0       CPU1       CPU2       CPU3       CPU4       CPU5
+1:          0          0          0          0          0          0     GICv3  29 Edge      arch_timer
+...
+5:          0          0          0          0          0          0     GICv3 113 Level     rk_timer
+..
 
->>> Otherwise the rest of this looks generally fine, though I'm confuse=
-d as
->>> to how you address the programming interface(s), given none are
->>> described.
->> I think that comes generally down to phy_power_on and phy_power_off=20
->> from the
->> host driver (ehci / dwc2 / whatever) using the generic phy interface=
-=2E=20
->> The usb2
->> phys on Rockchip SoCs seem always pretty easy to handle, while the n=
-ew
->> additional typeC phy seems to require more work
->>
->
-> Yeah, just like that.
->
->>
->>
->>>> +
->>>> +Required nodes : a sub-node is required for each port the phy=20
->>>> provides.
->>>> +         The sub-node name is used to identify host or otg port,
->>>> +         and shall be the following entries:
->>>> +    * "otg-port" : the name of otg port.
->>>> +    * "host-port" : the name of host port.
->>>> +
->>>> +Required properties (port (child) node):
->>>> + - #phy-cells : must be 0. See ./phy-bindings.txt for details.
->>>> + - interrupts : specify an interrupt for each entry in=20
->>>> interrupt-names.
->>>> + - interrupt-names : a list which shall be the following entries:
->>>> +    * "otg_id" : for the otg id interrupt.
->>>> +    * "otg_bvalid" : for the otg vbus interrupt.
->>>> +    * "linestate" : for the host/otg linestate interrupt.
->>>> +
->>>> +Example:
->>>> +
->>>> +grf: syscon@ff770000 {
->>>> +    compatible =3D "rockchip,rk3366-grf", "syscon", "simple-mfd";
->>>> +    #address-cells =3D <1>;
->>>> +    #size-cells =3D <1>;
->>>> +
->>>> +...
->>>> +
->>>> +    u2phy: usb2-phy {
->>>> +        compatible =3D "rockchip,rk3366-usb2phy";
->>>> +        #clock-cells =3D <0>;
->>>> +        clock-output-names =3D "sclk_otgphy0_480m";
->>>> +
->>>> +        u2phy_otg: otg-port {
->>>> +            #phy-cells =3D <0>;
->>>> +            interrupts =3D <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
->>>> +                     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
->>>> +                     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
->>>> +            interrupt-names =3D "otg_id", "otg_bvalid", "linestat=
-e";
->>>> +            status =3D "okay";
->>>> +        };
->>>> +
->>>> +        u2phy_host: host-port {
->>>> +            #phy-cells =3D <0>;
->>>> +            interrupts =3D <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
->>>> +            interrupt-names =3D "linestate";
->>>> +            status =3D "okay";
->>>> +        };
->>>> +    };
->>>> +};
+localhost / # cat /proc/timer_list | grep event_handler
+get "event_handler:  hrtimer_interrupt"
+event_handler:  tick_handle_oneshot_broadcast
+event_handler:  hrtimer_interrupt
+
+That should work for my board.
+
+
+Changes in v2:
+- Add the Rob' Ack.
+- s/cpu_all_mask/cpu_possible_mask/, As Daniel comments on
+  https://patchwork.kernel.org/patch/9135053/.
+- As the Daniel suggests on https://patchwork.kernel.org/patch/9135061/,
+  That will be better for the rockchip timer driver.
+- %s/ARM64/arm64.
+
+Huang Tao (2):
+  dt-bindings: document rk3399 rk-timer bindings
+  arm64: dts: rockchip: add rktimer device node for rk3399
+
+Huang, Tao (2):
+  clocksource: rockchip: add dynamic irq flag to the timer
+  clocksource: rockchip: add support for rk3399 SoC
+
+ ...chip,rk3288-timer.txt => rockchip,rk-timer.txt} |  6 ++--
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  8 +++++
+ drivers/clocksource/rockchip_timer.c               | 36 +++++++++++++++++-----
+ 3 files changed, 41 insertions(+), 9 deletions(-)
+ rename Documentation/devicetree/bindings/timer/{rockchip,rk3288-timer.txt => rockchip,rk-timer.txt} (75%)
+
+-- 
+1.9.1
