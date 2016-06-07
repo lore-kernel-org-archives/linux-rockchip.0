@@ -1,85 +1,172 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
- MAX98357A/RT5514/DA7219
-Date: Tue, 7 Jun 2016 15:54:34 +0100
-Message-ID: <20160607145434.GZ7510@sirena.org.uk>
-References: <20160601144542.GA3835@rob-hp-laptop>
- <5751912C.6080904@rock-chips.com>
- <20160606235026.GP7510@sirena.org.uk>
- <5756363F.40208@rock-chips.com>
- <20160607104711.GR7510@sirena.org.uk>
- <5756B22F.9000105@rock-chips.com>
- <20160607120647.GV7510@sirena.org.uk>
- <5756C245.7010001@rock-chips.com>
- <20160607133247.GY7510@sirena.org.uk>
- <5756D0BA.7060702@rock-chips.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v14.1 01/17] drm: bridge: analogix/dp: split exynos dp
+ driver to bridge directory
+Date: Tue, 7 Jun 2016 13:06:59 -0400
+Message-ID: <417ed48e-74e1-f747-34b9-0d1031a3d862@osg.samsung.com>
+References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
+ <1455534576-1486-1-git-send-email-ykk@rock-chips.com>
+ <1811552.qvsCm7GUs1@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6900097850499551267=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5756D0BA.7060702-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1811552.qvsCm7GUs1@diego>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.
 List-Id: linux-rockchip.vger.kernel.org
 
+Hello Yakir,
 
---===============6900097850499551267==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="L4xCDQ7GT+ph8Lmk"
-Content-Disposition: inline
+On 03/17/2016 05:47 PM, Heiko St=FCbner wrote:
+> Split the dp core driver from exynos directory to bridge directory,
+> and rename the core driver to analogix_dp_*, rename the platform
+> code to exynos_dp.
+>=20
+> Beside the new analogix_dp driver would export six hooks.
+> "analogix_dp_bind()" and "analogix_dp_unbind()"
+> "analogix_dp_suspned()" and "analogix_dp_resume()"
+> "analogix_dp_detect()" and "analogix_dp_get_modes()"
+>=20
+> The bind/unbind symbols is used for analogix platform driver to conne=
+ct
+> with analogix_dp core driver. And the detect/get_modes is used for an=
+alogix
+> platform driver to init the connector.
+>=20
+> They reason why connector need register in helper driver is rockchip =
+drm
+> haven't implement the atomic API, but Exynos drm have implement it, s=
+o
+> there would need two different connector helper functions, that's why=
+ we
+> leave the connector register in helper driver.
+>=20
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> ---
 
+Marc reported that his Exynos5250 Snow Chromebook fails to boot with v4=
+=2E7-rc.
 
---L4xCDQ7GT+ph8Lmk
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I've done a git bisect and tracked down to this commit. The problem is =
+a NULL
+pointer dereference to connector->dev in drm_mode_create(connector->dev=
+) when
+called from exynos_dp_get_modes(). The error log is at [1].=20
 
-On Tue, Jun 07, 2016 at 09:48:42PM +0800, Xing Zheng wrote:
-> On 2016=E5=B9=B406=E6=9C=8807=E6=97=A5 21:32, Mark Brown wrote:
+I'm trying to figure out the issue but wanted to mention in case you ha=
+ve any
+hints about what could be the cause. AFAICT the problem is related to t=
+he fact
+that drm_connector_init() is called in analogix_dp_bridge_attach() and =
+the
+connector passed as argument is the one in struct analogix_dp_device *d=
+p, but
+later exynos_dp_get_modes() calls drm_mode_create() passing the connect=
+or in
+struct exynos_dp_device *dp, which has not been previously initialized.
 
-> > I imagine they're all variants on a single reference design though?  The
-> > name is unweildy.
+[1]
+[    4.175676] Unable to handle kernel NULL pointer dereference at virt=
+ual address 00000210
+[    4.182793] pgd =3D c0004000
+[    4.185171] [00000210] *pgd=3D00000000
+[    4.188657] Internal error: Oops: 5 [#1] PREEMPT SMP ARM
+[    4.194164] Modules linked in:
+[    4.196964] CPU: 1 PID: 68 Comm: kworker/1:1 Not tainted 4.7.0-rc2-n=
+ext-20160606-00006-g876c3150327a #97
+[    4.206565] Hardware name: SAMSUNG EXYNOS (Flattened Device Tree)
+[    4.212582] Workqueue: events hdmi_hotplug_work_func
+[    4.217383] task: ed758000 ti: ed75c000 task.ti: ed75c000
+[    4.222887] PC is at __mutex_lock_slowpath+0x6c/0x404
+[    4.227913] LR is at preempt_count_add+0xa4/0x140
+[    4.232592] pc : [<c06d21d4>]    lr : [<c0139de4>]    psr: 60000093
+[    4.232592] sp : ed75dd80  ip : 00000000  fp : ee8c1180
+[    4.244193] r10: 00000300  r9 : ed758000  r8 : 00000001
+[    4.249262] r7 : 60000013  r6 : c0b473a8  r5 : 00000210  r4 : 000002=
+0c
+[    4.261955] r3 : 00000000  r2 : 00000001  r1 : ee8c2808  r0 : 000000=
+00
+[    4.273270] Flags: nZCv  IRQs off  FIQs on  Mode SVC_32  ISA ARM  Se=
+gment none
+[    4.285336] Control: 10c5387d  Table: 4000406a  DAC: 00000051
+[    4.295885] Process kworker/1:1 (pid: 68, stack limit =3D 0xed75c210=
+)
+[    4.306979] Stack: (0xed75dd80 to 0xed75e000)
+[    4.316102] dd80: ee8c1180 c03dd21c ee8f0820 00000001 0000020c 00000=
+20c 00000000 00000000
+[    4.329201] dda0: 00000001 dededede 00000300 c06d2578 ee8c2808 c03d0=
+0f4 ee801d80 c0b0261c
+[    4.342362] ddc0: 00000041 ee8c2800 00000000 00000001 ee8f0810 ee8f0=
+b65 c074d2b4 c03d35b0
+[    4.353140] dde0: 00000000 00000300 ee8c1180 c03d81d0 c387cf74 ee8f0=
+820 00000001 c03eaffc
+[    4.361811] de00: 00000000 ee8f0820 00000001 c03f28bc ee8f0b65 c06d4=
+00c ee8c1180 006d40a4
+[    4.370483] de20: 00000000 01820a11 81010300 00000100 00000064 ee8f0=
+85c ee8f0820 c0b1f894
+[    4.379150] de40: c3872800 c0b82fac c074d2b4 c03b7550 c0b13274 c0327=
+974 00000001 eefb8530
+[    4.387805] de60: 00000556 00000000 c38729b0 c3872800 ee8c1180 00000=
+001 ee8c7000 00000000
+[    4.396467] de80: 00000556 00000300 c38729b0 00000002 ee8c1180 c03c1=
+07c ee8c7000 c3872800
+[    4.405121] dea0: ee8c7240 c3872800 c0b82fac c03c3268 c3872ad4 00000=
+001 c3872ae0 c03b7af0
+[    4.413776] dec0: eefb8000 c0139804 00000000 c0136484 ee8a0000 ee8c1=
+180 c3870b4c eefb7b00
+[    4.422415] dee0: eefbb000 00000000 00000000 eefb7b00 ee8c1180 c012f=
+f2c 00000008 eefb7b24
+[    4.431045] df00: eefb7b00 ee8c1198 00000008 eefb7b24 c0b02100 ed75c=
+000 eefb7b00 c0130178
+[    4.439664] df20: ed75c000 ee863040 ee8c1180 00000000 ee863040 ee8c1=
+180 c0130140 00000000
+[    4.448274] df40: 00000000 00000000 00000000 c0135454 00000000 00000=
+000 00000000 ee8c1180
+[    4.456879] df60: 00000000 00000000 dead4ead ffffffff ffffffff ed75d=
+f74 ed75df74 00000000
+[    4.465462] df80: 00000000 dead4ead ffffffff ffffffff ed75df90 ed75d=
+f90 ed75dfac ee863040
+[    4.474028] dfa0: c0135378 00000000 00000000 c0107978 00000000 00000=
+000 00000000 00000000
+[    4.482597] dfc0: 00000000 00000000 00000000 00000000 00000000 00000=
+000 00000000 00000000
+[    4.491133] dfe0: 00000000 00000000 00000000 00000000 00000013 00000=
+000 00000000 00000000
+[    4.499643] [<c06d21d4>] (__mutex_lock_slowpath) from [<c06d2578>] (=
+mutex_lock+0xc/0x24)
+[    4.507102] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[    4.514264] [<c06d2578>] (mutex_lock) from [<c03d00f4>] (drm_mode_ob=
+ject_get_reg+0x28/0x80)
+[    4.522981] [<c03d00f4>] (drm_mode_object_get_reg) from [<c03d35b0>]=
+ (drm_mode_object_get+0x18/0x20)
+[    4.532491] [<c03d35b0>] (drm_mode_object_get) from [<c03d81d0>] (dr=
+m_mode_create+0x3c/0x58)
+[    4.541316] [<c03d81d0>] (drm_mode_create) from [<c03eaffc>] (exynos=
+_dp_get_modes+0x24/0x80)
+[    4.550160] [<c03eaffc>] (exynos_dp_get_modes) from [<c03f28bc>] (an=
+alogix_dp_get_modes+0x198/0x278)
+[    4.559735] [<c03f28bc>] (analogix_dp_get_modes) from [<c03b7550>] (=
+drm_helper_probe_single_connector_modes+0x114/0x554)
+[    4.571078] [<c03b7550>] (drm_helper_probe_single_connector_modes) f=
+rom [<c03c107c>] (drm_fb_helper_probe_connector_modes+0x48/0x68)
+[    4.583513] [<c03c107c>] (drm_fb_helper_probe_connector_modes) from =
+[<c03c3268>] (drm_fb_helper_hotplug_event+0x70/0xdc)
+[    4.594921] [<c03c3268>] (drm_fb_helper_hotplug_event) from [<c03b7a=
+f0>] (drm_helper_hpd_irq_event+0xd4/0x160)
+[    4.605474] [<c03b7af0>] (drm_helper_hpd_irq_event) from [<c012ff2c>=
+] (process_one_work+0x124/0x338)
+[    4.615144] [<c012ff2c>] (process_one_work) from [<c0130178>] (worke=
+r_thread+0x38/0x4d4)
+[    4.623764] [<c0130178>] (worker_thread) from [<c0135454>] (kthread+=
+0xdc/0xf4)
+[    4.631512] [<c0135454>] (kthread) from [<c0107978>] (ret_from_fork+=
+0x14/0x3c)
+[    4.639239] Code: e10f7000 f10c0080 e2845004 f595f000 (e1953f9f)=20
+[    4.645845] ---[ end trace 3bfc770b9638a54b ]---
 
-> Yes, they are based on a single reference design which is called gru, so
-> could I use the name "rk3399-gru-sound"?
-
-That looks reasonable.
-
---L4xCDQ7GT+ph8Lmk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXVuAoAAoJECTWi3JdVIfQ8bEH/0tmGtTbzgqeQvFb/Z7Xiao7
-AiHMBnyZxalYpEr02f2IVbNYHM+mTOs8KlZQ7Ku2uex3KuJtVI22teFK8yVuq5Qz
-y2wM8kmFifk/zJM75vptkn/3yg1iLaonPfdKMvoC8Xfb3Wv3R3Co3X6pgNdQqOX7
-1ZxWOulVZA57WvWe1B6Otxkz0023nfYKt+yLnxv/F7Vq7Ubq82piL9B4YCcEdus7
-lBnsRP/K2B89DAnLhY5mQkvGbXrdPLfL9LkYbgA2b57LZJ868DnoAKZjseRdHWai
-BQAyjkQUHR4YQ0NyLTb2AD2l9UxAwOG1Qx7c9UI0LhkUZ4BBHknxACK5HXGpBZ0=
-=tr2b
------END PGP SIGNATURE-----
-
---L4xCDQ7GT+ph8Lmk--
-
-
---===============6900097850499551267==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6900097850499551267==--
+Best regards,
+--=20
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
