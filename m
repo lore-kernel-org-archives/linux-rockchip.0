@@ -1,53 +1,68 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
- MAX98357A/RT5514/DA7219
-Date: Tue, 7 Jun 2016 00:50:26 +0100
-Message-ID: <20160606235026.GP7510@sirena.org.uk>
-References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com>
- <20160601144542.GA3835@rob-hp-laptop>
- <5751912C.6080904@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/3] pci: introduce read_bridge/write_bridge pci ops
+Date: Mon, 6 Jun 2016 19:28:22 -0500
+Message-ID: <20160607002822.GA1391@localhost>
+References: <1464784332-3775650-1-git-send-email-arnd@arndb.de>
+ <4967020.J4dsRYGugq@wuerfel>
+ <20160602140001.GB8262@localhost>
+ <3585926.N1C2xx3GaB@wuerfel>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8G1nIWD3RY794FAy"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5751912C.6080904@rock-chips.com>
+In-Reply-To: <3585926.N1C2xx3GaB@wuerfel>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org, dianders@chromium.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hannes Reinecke <hare@suse.de>, Alex Williamson <alex.williamson@redhat.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Thu, Jun 02, 2016 at 05:06:55PM +0200, Arnd Bergmann wrote:
+> On Thursday, June 2, 2016 9:00:01 AM CEST Bjorn Helgaas wrote:
+> > > I just did a count of the implementations of pci_ops: I found 107
+> > > instances of 'struct pci_ops', and 67 of them treat type0 and type1
+> > > access differently in some form.
+> > > 
+> > > I'd estimate that about half of them, or roughly a third of the total
+> > > instances would benefit from my change, if we were to do them again.
+> > > Clearly there is no need to change the existing code here when it works,
+> > > unless the benefit is very clear and the code is actively maintained.
+> > > 
+> > > In some cases, the difference is only that the root bus has a limited
+> > > set of devices that are allowed to be accessed, so there would
+> > > likely be no benefit of this, compared to e.g. yet another callback
+> > > that checks the validity.
+> > > Some other instances have type0 registers at a different memory location
+> > > from type1, some use different layout inside of that space, and some
+> > > are completely different.
+> > 
+> > The type0/type1 distinction still seems out of place to me at the call
+> > site.  Is there any other reason a caller would care about the
+> > difference between type0 and type1?
+> 
+> The callers really shouldn't care, but they also shouldn't call the
+> pci_ops function pointer (and as we found earlier, there are only
+> three such callers).
+> 
+> The distinction between type0 and type1 in my mind is an implementation
+> detail of the pci_{read,write}_config_{byte,word,dword} functions
+> that call the low-level operations here.
 
---8G1nIWD3RY794FAy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+The caller is performing one abstract operation: reading or writing
+config space of a PCI device.  In the caller's context, it makes no
+difference whether it's a type0 or type1 access.
 
-On Fri, Jun 03, 2016 at 10:16:12PM +0800, Xing Zheng wrote:
+Moving the test from the host bridge driver to pci_read_config_byte()
+does move a little code from the callee to the caller, and there are
+more callees than callers, so in that sense it does remove code
+overall.  If you consider a single driver by itself, I'm not sure it
+makes much difference.
 
-> I refered to MTK's mt8173-rt5650-rt5514.txt on upstream, that compatible
-> name is "mediatek,mt8173-rt5650-rt5514".
-> Because our platform need to support 3 codecs (max98357a / da7219 / rt5514).
-> Perhaps, you maybe feel that name is too long? And, could you please tell me
-> what names would be better?
+The pcie-designware.c patch is a net removal of 17 lines, but that's
+not all from moving the type0/type1 test: restructuring along the same
+lines but keeping the original type0/type1 test removes about 9 lines.
 
-> For example: "rk3399-composite-codecs" ?
+Anyway, I think I'd rather work first on your RFC patches to make
+pci_host_bridge the primary structure for probing PCI.  I think
+there will be a *lot* of benefit there.
 
-It should probably be three compatibles, one per CODEC, if the driver
-needs to handle each separately.
-
---8G1nIWD3RY794FAy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXVgxBAAoJECTWi3JdVIfQ5igH/jnLX9QnvgwFxKK8BdX/+PAY
-1I5XTG+mUzb1nTvkzdDjlJgveR2i3vvKComkPcWheEJvJlydsEwYu7jm9UHhXxf0
-osExbR9R9nlflVNRVNfFgalNjR2aZ39Xh2SuQrH/uTpVlNWm/FGn55sAwuSkxj3C
-EHTErkoDFWUWlrkxll2q3AN8uax16EUKvwfAnr1tWUzq08zu3OwlRmmX/WUHkt4z
-dxCdAE7XAotvNoIYBJ+8NrZEcMkOVS/EQcctMFBgcgJyvfyI+rOT4Ue2APopDEq3
-FfqYsARth8gr+TN1NjrqL8uroXa34Xj/IRJo65uVw8txvDkxstnjGVwtASrPzoE=
-=Qv6x
------END PGP SIGNATURE-----
-
---8G1nIWD3RY794FAy--
+Bjorn
