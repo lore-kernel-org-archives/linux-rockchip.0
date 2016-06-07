@@ -1,16 +1,21 @@
-From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] phy: rockchip-inno-usb2: add a new driver for
- Rockchip usb2phy
-Date: Tue, 7 Jun 2016 06:19:45 -0700
-Message-ID: <CABXOdTexRR80Omoryr1e-R=tOYE9cq54Z3f2XU_qPCAJFeT8Yg@mail.gmail.com>
-References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
- <1465204804-31161-3-git-send-email-frank.wang@rock-chips.com>
- <3404512.IukckmNc6l@diego>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for
+ MAX98357A/RT5514/DA7219
+Date: Tue, 7 Jun 2016 14:32:47 +0100
+Message-ID: <20160607133247.GY7510@sirena.org.uk>
+References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com>
+ <20160601144542.GA3835@rob-hp-laptop>
+ <5751912C.6080904@rock-chips.com>
+ <20160606235026.GP7510@sirena.org.uk>
+ <5756363F.40208@rock-chips.com>
+ <20160607104711.GR7510@sirena.org.uk>
+ <5756B22F.9000105@rock-chips.com>
+ <20160607120647.GV7510@sirena.org.uk>
+ <5756C245.7010001@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1940332582863428333=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3404512.IukckmNc6l@diego>
+In-Reply-To: <5756C245.7010001-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,115 +25,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gNywgMjAxNiBhdCAyOjU0IEFNLCBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPiBIaSBGcmFuaywKPgo+IEFtIE1vbnRhZywgNi4gSnVuaSAyMDE2LCAx
-NzoyMDowNCBzY2hyaWViIEZyYW5rIFdhbmc6Cj4+IFRoZSBuZXdlciBTb0NzIChyazMzNjYsIHJr
-MzM5OSkgdGFrZSBhIGRpZmZlcmVudCB1c2ItcGh5IElQIGJsb2NrCj4+IHRoYW4gcmszMjg4IGFu
-ZCBiZWZvcmUsIGFuZCBtb3N0IG9mIHBoeS1yZWxhdGVkIHJlZ2lzdGVycyBhcmUgYWxzbwo+PiBk
-aWZmZXJlbnQgZnJvbSB0aGUgcGFzdCwgc28gYSBuZXcgcGh5IGRyaXZlciBpcyByZXF1aXJlZCBu
-ZWNlc3NhcmlseS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV2FuZyA8ZnJhbmsud2FuZ0By
-b2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4KPiBbLi4uXQo+Cj4+ICtzdGF0aWMgaW50IHJvY2tjaGlw
-X3VzYjJwaHlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gK3sKPj4gKyAg
-ICAgc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPj4gKyAgICAgc3RydWN0IGRldmlj
-ZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsKPj4gKyAgICAgc3RydWN0IGRldmljZV9ub2RlICpj
-aGlsZF9ucDsKPj4gKyAgICAgc3RydWN0IHBoeV9wcm92aWRlciAqcHJvdmlkZXI7Cj4+ICsgICAg
-IHN0cnVjdCByb2NrY2hpcF91c2IycGh5ICpycGh5Owo+PiArICAgICBjb25zdCBzdHJ1Y3Qgb2Zf
-ZGV2aWNlX2lkICptYXRjaDsKPj4gKyAgICAgaW50IGluZGV4LCByZXQ7Cj4+ICsKPj4gKyAgICAg
-cnBoeSA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcnBoeSksIEdGUF9LRVJORUwpOwo+PiAr
-ICAgICBpZiAoIXJwaHkpCj4+ICsgICAgICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4+ICsKPj4g
-KyAgICAgbWF0Y2ggPSBvZl9tYXRjaF9kZXZpY2UoZGV2LT5kcml2ZXItPm9mX21hdGNoX3RhYmxl
-LCBkZXYpOwo+PiArICAgICBpZiAoIW1hdGNoIHx8ICFtYXRjaC0+ZGF0YSkgewo+PiArICAgICAg
-ICAgICAgIGRldl9lcnIoZGV2LCAicGh5IGNvbmZpZ3MgYXJlIG5vdCBhc3NpZ25lZCFcbiIpOwo+
-PiArICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+PiArICAgICB9Cj4+ICsKPj4gKyAgICAg
-aWYgKCFkZXYtPnBhcmVudCB8fCAhZGV2LT5wYXJlbnQtPm9mX25vZGUpCj4+ICsgICAgICAgICAg
-ICAgcmV0dXJuIC1FSU5WQUw7Cj4+ICsKPj4gKyAgICAgcnBoeS0+Z3JmID0gc3lzY29uX25vZGVf
-dG9fcmVnbWFwKGRldi0+cGFyZW50LT5vZl9ub2RlKTsKPj4gKyAgICAgaWYgKElTX0VSUihycGh5
-LT5ncmYpKQo+PiArICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKHJwaHktPmdyZik7Cj4+ICsK
-Pj4gKyAgICAgcnBoeS0+ZGV2ID0gZGV2Owo+PiArICAgICBycGh5LT5waHlfY2ZnID0gbWF0Y2gt
-PmRhdGE7Cj4+ICsgICAgIHBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIHJwaHkpOwo+PiArCj4+
-ICsgICAgIHJldCA9IHJvY2tjaGlwX3VzYjJwaHlfY2xrNDgwbV9yZWdpc3RlcihycGh5KTsKPj4g
-KyAgICAgaWYgKHJldCkgewo+PiArICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRv
-IHJlZ2lzdGVyIDQ4MG0gb3V0cHV0IGNsb2NrXG4iKTsKPj4gKyAgICAgICAgICAgICByZXR1cm4g
-cmV0Owo+PiArICAgICB9Cj4+ICsKPj4gKyAgICAgcnBoeS0+dmJ1c19ob3N0ID0gZGV2bV9yZWd1
-bGF0b3JfZ2V0X29wdGlvbmFsKGRldiwgInZidXNfaG9zdCIpOwo+PiArICAgICBpZiAoSVNfRVJS
-KHJwaHktPnZidXNfaG9zdCkpIHsKPj4gKyAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKHJwaHkt
-PnZidXNfaG9zdCk7Cj4+ICsgICAgICAgICAgICAgaWYgKHJldCA9PSAtRVBST0JFX0RFRkVSKQo+
-PiArICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPj4gKwo+PiArICAgICAgICAgICAg
-IGRldl9pbmZvKGRldiwgInZidXNfaG9zdCByZWd1bGF0b3IgaXMgbm90IGFzc2lnbmVkIVxuIik7
-Cj4+ICsgICAgICAgICAgICAgcnBoeS0+dmJ1c19ob3N0ID0gTlVMTDsKPj4gKyAgICAgfSBlbHNl
-IHsKPj4gKyAgICAgICAgICAgICByZXQgPSByZWd1bGF0b3JfZW5hYmxlKHJwaHktPnZidXNfaG9z
-dCk7Cj4+ICsgICAgICAgICAgICAgaWYgKHJldCkKPj4gKyAgICAgICAgICAgICAgICAgICAgIHJl
-dHVybiByZXQ7Cj4+ICsgICAgIH0KPj4gKwo+PiArICAgICBpbmRleCA9IDA7Cj4+ICsgICAgIGZv
-cl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2RlKG5wLCBjaGlsZF9ucCkgewo+PiArICAgICAg
-ICAgICAgIHN0cnVjdCByb2NrY2hpcF91c2IycGh5X3BvcnQgKnJwb3J0ID0gJnJwaHktPnBvcnRz
-W2luZGV4XTsKPj4gKyAgICAgICAgICAgICBzdHJ1Y3QgcGh5ICpwaHk7Cj4+ICsKPj4gKyAgICAg
-ICAgICAgICBwaHkgPSBkZXZtX3BoeV9jcmVhdGUoZGV2LCBjaGlsZF9ucCwgJnJvY2tjaGlwX3Vz
-YjJwaHlfb3BzKTsKPj4gKyAgICAgICAgICAgICBpZiAoSVNfRVJSKHBoeSkpIHsKPj4gKyAgICAg
-ICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIGNyZWF0ZSBwaHlcbiIpOwo+
-PiArICAgICAgICAgICAgICAgICAgICAgcmV0ID0gUFRSX0VSUihwaHkpOwo+PiArICAgICAgICAg
-ICAgICAgICAgICAgZ290byBwdXRfY2hpbGQ7Cj4+ICsgICAgICAgICAgICAgfQo+PiArCj4+ICsg
-ICAgICAgICAgICAgcnBvcnQtPnBoeSA9IHBoeTsKPj4gKwo+PiArICAgICAgICAgICAgIC8qIGlu
-aXRpYWxpemUgb3RnL2hvc3QgcG9ydCBzZXBhcmF0ZWx5ICovCj4+ICsgICAgICAgICAgICAgaWYg
-KCFvZl9ub2RlX2NtcChjaGlsZF9ucC0+bmFtZSwgImhvc3QtcG9ydCIpKSB7Cj4+ICsgICAgICAg
-ICAgICAgICAgICAgICByZXQgPSByb2NrY2hpcF91c2IycGh5X2hvc3RfcG9ydF9pbml0KHJwaHks
-IHJwb3J0LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBjaGlsZF9ucCk7Cj4+ICsgICAgICAgICAgICAgICAgICAgICBpZiAocmV0
-KQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBnb3RvIHB1dF9jaGlsZDsKPj4gKyAg
-ICAgICAgICAgICB9Cj4+ICsKPj4gKyAgICAgICAgICAgICBwaHlfc2V0X2RydmRhdGEocnBvcnQt
-PnBoeSwgcnBvcnQpOwo+PiArCj4+ICsgICAgICAgICAgICAgLyogdG8gcHJldmVudCBvdXQgb2Yg
-Ym91bmRhcnkgKi8KPj4gKyAgICAgICAgICAgICBpZiAoKytpbmRleCA+PSBycGh5LT5waHlfY2Zn
-LT5udW1fcG9ydHMpCj4+ICsgICAgICAgICAgICAgICAgICAgICBicmVhazsKPj4gKyAgICAgfQo+
-PiArCj4+ICsgICAgIHByb3ZpZGVyID0gZGV2bV9vZl9waHlfcHJvdmlkZXJfcmVnaXN0ZXIoZGV2
-LCBvZl9waHlfc2ltcGxlX3hsYXRlKTsKPj4gKyAgICAgcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhw
-cm92aWRlcik7Cj4+ICsKPj4gK3B1dF9jaGlsZDoKPj4gKyAgICAgb2Zfbm9kZV9wdXQoY2hpbGRf
-bnApOwo+PiArICAgICByZXR1cm4gcmV0Owo+PiArfQo+PiArCj4+ICtzdGF0aWMgY29uc3Qgc3Ry
-dWN0IHJvY2tjaGlwX3VzYjJwaHlfY2ZnIHJrMzM2Nl9waHlfY2ZncyA9IHsKPj4gKyAgICAgLm51
-bV9wb3J0cyAgICAgID0gMiwKPj4gKyAgICAgLmNsa291dF9jdGwgICAgID0geyAweDA3MjQsIDE1
-LCAxNSwgMSwgMCB9LAo+PiArICAgICAucG9ydF9jZmdzICAgICAgPSB7Cj4+ICsgICAgICAgICAg
-ICAgW1VTQjJQSFlfUE9SVF9IT1NUXSA9IHsKPj4gKyAgICAgICAgICAgICAgICAgICAgIC5waHlf
-c3VzICAgICAgICA9IHsgMHgwNzI4LCAxNSwgMCwgMCwgMHgxZDEgfSwKPj4gKyAgICAgICAgICAg
-ICAgICAgICAgIC5sc19kZXRfZW4gICAgICA9IHsgMHgwNjgwLCA0LCA0LCAwLCAxIH0sCj4+ICsg
-ICAgICAgICAgICAgICAgICAgICAubHNfZGV0X3N0ICAgICAgPSB7IDB4MDY5MCwgNCwgNCwgMCwg
-MSB9LAo+PiArICAgICAgICAgICAgICAgICAgICAgLmxzX2RldF9jbHIgICAgID0geyAweDA2YTAs
-IDQsIDQsIDAsIDEgfSwKPj4gKyAgICAgICAgICAgICAgICAgICAgIC51dG1pX2xzICAgICAgICA9
-IHsgMHgwNDljLCAxNCwgMTMsIDAsIDEgfSwKPj4gKyAgICAgICAgICAgICAgICAgICAgIC51dG1p
-X2hzdGRldCAgICA9IHsgMHgwNDljLCAxMiwgMTIsIDAsIDEgfQo+PiArICAgICAgICAgICAgIH0K
-Pj4gKyAgICAgfSwKPj4gK307Cj4KPiBJIGFsc28gcmVhbGl6ZWQgdGhhdCB0aGUgcmszMzk5IGhh
-cyB0d28gb2YgdGhvc2UgcGh5LWJsb2Nrcywgc28gSSB0aGluayB3ZSdsbAo+IG5lZWQgdG8gYWRh
-cHQgeW91ciBkYXRhIHN0b3JhZ2UgbWVjaGFuaXNtIGEgdGlueSBiaXQuIE1heWJlIHNvbWV0aGlu
-ZyBsaWtlCj4gdGhlIGZvbGxvd2luZzoKPgo+IEluIHRoZSBkdHM6Cj4KPiBncmY6IHN5c2NvbkBm
-Zjc3MDAwMCB7Cj4gICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMzY2LWdyZiIsICJz
-eXNjb24iLCAic2ltcGxlLW1mZCI7Cj4gICAgICAgICAuLi4KPiAgICAgICAgdTJwaHk6IHVzYjIt
-cGh5QDcwMCB7Cj4gICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzNjYt
-dXNiMnBoeSI7Cj4gICAgICAgICAgICAgICAgIHJlZyA9IDwweDcwMCAweDJjPjsKPiAgICAgICAg
-ICAgICAgICAgLi4uCj4gICAgICAgIH07Cj4gfTsKPgo+IEluIHRoZSBkcml2ZXIKPgo+IHN0YXRp
-YyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfdXNiMnBoeV9jZmcgcmszMzY2X3BoeV9jZmdzW10gPSB7
-Cj4gICAgICAgICB7Cj4gICAgICAgICAgICAgICAgIC5yZWcgPSAweDcwMCwKPiAgICAgICAgICAg
-ICAgICAgLm51bV9wb3J0cyAgICAgID0gMiwKPiAgICAgICAgICAgICAgICAgLmNsa291dF9jdGwg
-ICAgID0geyAweDA3MjQsIDE1LCAxNSwgMSwgMCB9LAo+ICAgICAgICAgICAgICAgICAucG9ydF9j
-ZmdzICAgICAgPSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgW1VTQjJQSFlfUE9SVF9IT1NU
-XSA9IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5waHlfc3VzICAgICAgICA9
-IHsgMHgwNzI4LCAxNSwgMCwgMCwgMHgxZDEgfSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIC4uLgo+ICAgICAgICAgICAgICAgICAgICAgICAgIH0KPiAgICAgICAgICAgICAgICAg
-fSwKPiAgICAgICAgIH0sCj4gfTsKPgo+IGFuZCBpbiBfcHJvYmUgdGhlbiBzaW1wbHkgdXNlIHRo
-ZSBjb3JyZWN0IGFycmF5IGVudHJ5IG1hdGNoaW5nIHRoZSBkdHMgcmVnCj4gcHJvcGVydHkuCj4K
-PiBPbiB0aGUgcmszMzk5IHRoaXMgd291bGQgdGhlbiBwcm9iYWJseSBiZQo+Cj4gICAgICAgIHUy
-cGh5MDogcGh5QGU0NTAgewo+ICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAs
-cmszMzY2LXVzYjJwaHkiOwo+ICAgICAgICAgICAgICAgICByZWcgPSA8MHhlNDUwIDB4MTA+Owo+
-ICAgICAgICAgICAgICAgICAuLi4KPiAgICAgICAgIH07Cj4KPiAgICAgICAgdTJwaHkxOiBwaHlA
-ZTQ2MCB7Cj4gICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzNjYtdXNi
-MnBoeSI7Cj4gICAgICAgICAgICAgICAgIHJlZyA9IDwweGU0NjAgMHgxMD47Cj4gICAgICAgICAg
-ICAgICAgIC4uLgo+ICAgICAgICAgfTsKPgo+Cj4gVGhpcyBpcyBzbGlnaHRseSBzaW1pbGFyIHRv
-IHdoYXQgd2UgZG8gd2l0aCB0aGUgZW1tYy1waHkuIEJ1dCBhbHNvIGFzIHRoZQo+IHVzYnBoeXMg
-ZGlmZmVyIGluIGEgbG90IG9mIHdheSwgdGhpcyBpcyByZWFsbHkgb25seSB1c2VkIHRvIG1hdGNo
-IHRvIHRoZSBkYXRhCj4gYmxvY2suCj4KPiBUaGlzIG9ubHkgYWZmZWN0cyB0aGUgbWF0Y2gtZGF0
-YSBzZWxlY3Rpb24gYW5kIHRoZSByZXN0IG9mIHRoZSBkcml2ZXIgZG9lcyBub3QKPiBuZWVkIHRv
-IGJlIGNoYW5nZWQgZm9yIHRoaXMuCj4KCldvdWxkIHRoaXMgcmVwbGFjZSB0aGUgaG9zdC1wb3J0
-IHByb3BlcnR5ID8KClRoYW5rcywKR3VlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============1940332582863428333==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="I2k41U2G4dq8LTBU"
+Content-Disposition: inline
+
+
+--I2k41U2G4dq8LTBU
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jun 07, 2016 at 08:47:01PM +0800, Xing Zheng wrote:
+> On 2016=E5=B9=B406=E6=9C=8807=E6=97=A5 20:06, Mark Brown wrote:
+
+> > OK, then the original name probably makes some sense though really
+> > that's such an unusual design that just naming it after the specific
+> > board might be better, it's not likely to see any reuse I'd guess.
+
+> There are not only one type of board with this audio connection, so I thi=
+nk
+> we don't need to add specific board name.
+
+I imagine they're all variants on a single reference design though?  The
+name is unweildy.
+
+--I2k41U2G4dq8LTBU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXVsz+AAoJECTWi3JdVIfQvrAH/jCA/w75f3AhXzKepbheH5MQ
+4epbfT4l2k0Zx7NIl5WmnPFhG7C3RFQHpB0G3SDEoY7aNqVspQRw6fQq9feTauiQ
+xWMt33X6tqHOhgN0VSgcM67N9M84nwNaZM5OoOuNopNCZ9AgMNNScjsmGuRSUrxC
+1h7hY25Cfo3ujwWfgBzeBJ2V8LIL6c5K3IwVHVMW7cHWc8lv6JgfozmyiW53xzR8
+sr3YB0VxbCv95YVUIzzZ+iZ6ZCbkq+WI504urBzWfp8eLbrqtZRbF2TonPL++1KY
+sr7y5DscZMpRnizggOXpGJ/cLiXUo39vAkd3BpR5Ok7o5J5FvjeleTGPVmnlRGY=
+=GnOD
+-----END PGP SIGNATURE-----
+
+--I2k41U2G4dq8LTBU--
+
+
+--===============1940332582863428333==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1940332582863428333==--
