@@ -1,14 +1,18 @@
-From: Keerthy <a0393675-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v5 3/5] thermal: streamline get_trend callbacks
-Date: Tue, 7 Jun 2016 11:44:46 +0530
-Message-ID: <57566656.4010002@ti.com>
-References: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
- <1465213489-14898-4-git-send-email-wxt@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] Documentation: bindings: add DT documentation for
+ Rockchip USB2PHY
+Date: Tue, 7 Jun 2016 13:15:12 +0530
+Message-ID: <57567B88.7000607@ti.com>
+References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
+ <1465204804-31161-2-git-send-email-frank.wang@rock-chips.com>
+ <20160606112754.GE6831@leverpostej> <7083100.uVXA4CkAgE@diego>
+ <2b3e9b0b-f17e-063b-6eb0-2390bd87901b@rock-chips.com>
+ <9a34e448-2b4d-4797-2e6b-c7a36c03b597@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465213489-14898-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <9a34e448-2b4d-4797-2e6b-c7a36c03b597-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,153 +22,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, javi.merino-5wv7dgnIgG8@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peter-p08lbbvQ7EI@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Monday 06 June 2016 05:14 PM, Caesar Wang wrote:
-> From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
->
-> The .get_trend callback in struct thermal_zone_device_ops has
-> the prototype:
->          int (*get_trend) (struct thermal_zone_device *, int,
->                            enum thermal_trend *);
-> whereas the .get_trend callback in struct thermal_zone_of_device_ops
-> has:
->          int (*get_trend)(void *, long *);
->
-> Streamline both prototypes and add the trip argument to the OF callback
-> aswell and use enum thermal_trend * instead of an integer pointer.
->
-> While the OF prototype may be the better one, this should be decided at
-> framework level and not on OF level.
-
-Tested this patch on omap5-uevm using emulation feature and saw that
-cooling state was getting updated correctly w.r.t trip point tempereatures.
-
-A minor comment below apart from that.
-
-Reviewed-by: Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>
-
->
-> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> ---
->
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
->
->   drivers/thermal/of-thermal.c                       | 11 +---------
->   drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 +++++++---------------
->   include/linux/thermal.h                            |  2 +-
->   3 files changed, 10 insertions(+), 28 deletions(-)
->
-> diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-thermal.c
-> index 2d2a06f..ba72c35 100644
-> --- a/drivers/thermal/of-thermal.c
-> +++ b/drivers/thermal/of-thermal.c
-> @@ -202,24 +202,15 @@ static int of_thermal_get_trend(struct thermal_zone_device *tz, int trip,
->   				enum thermal_trend *trend)
->   {
->   	struct __thermal_zone *data = tz->devdata;
-> -	long dev_trend;
->   	int r;
-
-	int r = 0;
-
->
->   	if (!data->ops->get_trend)
->   		return -EINVAL;
->
-> -	r = data->ops->get_trend(data->sensor_data, &dev_trend);
-> +	r = data->ops->get_trend(data->sensor_data, trip, trend);
->   	if (r)
->   		return r;
-
-no need of this if check just
-	
-	return r;
-
->
-> -	/* TODO: These intervals might have some thresholds, but in core code */
-> -	if (dev_trend > 0)
-> -		*trend = THERMAL_TREND_RAISING;
-> -	else if (dev_trend < 0)
-> -		*trend = THERMAL_TREND_DROPPING;
-> -	else
-> -		*trend = THERMAL_TREND_STABLE;
-> -
->   	return 0;
->   }
->
-> diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> index 15c0a9a..4a6757c 100644
-> --- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> +++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> @@ -239,7 +239,7 @@ static int ti_thermal_get_trip_temp(struct thermal_zone_device *thermal,
->   	return 0;
->   }
->
-> -static int __ti_thermal_get_trend(void *p, long *trend)
-> +static int __ti_thermal_get_trend(void *p, int trip, enum thermal_trend *trend)
->   {
->   	struct ti_thermal_data *data = p;
->   	struct ti_bandgap *bgp;
-> @@ -252,22 +252,6 @@ static int __ti_thermal_get_trend(void *p, long *trend)
->   	if (ret)
->   		return ret;
->
-> -	*trend = tr;
-> -
-> -	return 0;
-> -}
-> -
-> -/* Get the temperature trend callback functions for thermal zone */
-> -static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
-> -				int trip, enum thermal_trend *trend)
-> -{
-> -	int ret;
-> -	long tr;
-> -
-> -	ret = __ti_thermal_get_trend(thermal->devdata, &tr);
-> -	if (ret)
-> -		return ret;
-> -
->   	if (tr > 0)
->   		*trend = THERMAL_TREND_RAISING;
->   	else if (tr < 0)
-> @@ -278,6 +262,13 @@ static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
->   	return 0;
->   }
->
-> +/* Get the temperature trend callback functions for thermal zone */
-> +static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
-> +				int trip, enum thermal_trend *trend)
-> +{
-> +	return __ti_thermal_get_trend(thermal->devdata, trip, trend);
-> +}
-> +
->   /* Get critical temperature callback functions for thermal zone */
->   static int ti_thermal_get_crit_temp(struct thermal_zone_device *thermal,
->   				    int *temp)
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index 2440b8d..d3ce3a5 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -352,7 +352,7 @@ struct thermal_genl_event {
->    */
->   struct thermal_zone_of_device_ops {
->   	int (*get_temp)(void *, int *);
-> -	int (*get_trend)(void *, long *);
-> +	int (*get_trend)(void *, int, enum thermal_trend *);
->   	int (*set_trips)(void *, int, int);
->   	int (*set_emul_temp)(void *, int);
->   	int (*set_trip_temp)(void *, int, int);
->
+SGksCgpPbiBUdWVzZGF5IDA3IEp1bmUgMjAxNiAwOTowMSBBTSwgRnJhbmsgV2FuZyB3cm90ZToK
+PiBIaSBIZWlrbywKPiAKPiBPbiAyMDE2LzYvNyAxMDo1OSwgRnJhbmsgV2FuZyB3cm90ZToKPj4g
+SGkgSGVpa28gJiBNYXJrLAo+Pgo+PiBPbiAyMDE2LzYvNiAyMDozMywgSGVpa28gU3TDvGJuZXIg
+d3JvdGU6Cj4+PiBBbSBNb250YWcsIDYuIEp1bmkgMjAxNiwgMTI6Mjc6NTQgc2NocmllYiBNYXJr
+IFJ1dGxhbmQ6Cj4+Pj4gT24gTW9uLCBKdW4gMDYsIDIwMTYgYXQgMDU6MjA6MDNQTSArMDgwMCwg
+RnJhbmsgV2FuZyB3cm90ZToKPj4+Pj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV2FuZyA8ZnJhbmsu
+d2FuZ0Byb2NrLWNoaXBzLmNvbT4KPj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgaW4gdjM6
+Cj4+Pj4+ICAgLSBBZGRlZCAnY2xvY2tzJyBhbmQgJ2Nsb2NrLW5hbWVzJyBvcHRpb25hbCBwcm9w
+ZXJ0aWVzLgo+Pj4+PiAgIC0gU3BlY2lmaWVkICdvdGctcG9ydCcgYW5kICdob3N0LXBvcnQnIGFz
+IHRoZSBzdWItbm9kZSBuYW1lLgo+Pj4+Pgo+Pj4+PiBDaGFuZ2VzIGluIHYyOgo+Pj4+PiAgIC0g
+Q2hhbmdlZCB2YnVzX2hvc3Qgb3B0aW9uYWwgcHJvcGVydHkgZnJvbSBncGlvIHRvIHJlZ3VsYXRv
+ci4KPj4+Pj4gICAtIFNwZWNpZmllZCB2YnVzX290Zy1zdXBwbHkgb3B0aW9uYWwgcHJvcGVydHku
+Cj4+Pj4+ICAgLSBTcGVjaWZpZWQgb3RnX2lkIGFuZCBvdGdfYnZhbGlkIHByb3BlcnR5Lgo+Pj4+
+PiAgICAgLi4uL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtaW5uby11c2IyLnR4dCAgICAgICAg
+fCA2MAo+Pj4+PiAgICsrKysrKysrKysrKysrKysrKysrIDEgZmlsZSBjaGFuZ2VkLCA2MCBpbnNl
+cnRpb25zKCspCj4+Pj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0Cj4+Pj4+IERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi50eHQ+Cj4+Pj4+
+IGRpZmYgLS1naXQKPj4+Pj4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5
+L3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIudHh0Cj4+Pj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtaW5uby11c2IyLnR4dCBuZXcKPj4+Pj4gZmls
+ZSBtb2RlIDEwMDY0NAo+Pj4+PiBpbmRleCAwMDAwMDAwLi4wYjRiYmJiCj4+Pj4+IC0tLSAvZGV2
+L251bGwKPj4+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9w
+aHktcm9ja2NoaXAtaW5uby11c2IyLnR4dAo+Pj4+PiBAQCAtMCwwICsxLDYwIEBACj4+Pj4+ICtS
+T0NLQ0hJUCBVU0IyLjAgUEhZIFdJVEggSU5OTyBJUCBCTE9DSwo+Pj4+PiArCj4+Pj4+ICtSZXF1
+aXJlZCBwcm9wZXJ0aWVzIChwaHkgKHBhcmVudCkgbm9kZSk6Cj4+Pj4+ICsgLSBjb21wYXRpYmxl
+IDogc2hvdWxkIGJlIG9uZSBvZiB0aGUgbGlzdGVkIGNvbXBhdGlibGVzOgo+Pj4+PiArICAgICog
+InJvY2tjaGlwLHJrMzM2Ni11c2IycGh5Igo+Pj4+PiArICAgICogInJvY2tjaGlwLHJrMzM5OS11
+c2IycGh5Igo+Pj4+PiArIC0gI2Nsb2NrLWNlbGxzIDogc2hvdWxkIGJlIDAuCj4+Pj4+ICsgLSBj
+bG9jay1vdXRwdXQtbmFtZXMgOiBzcGVjaWZ5IHRoZSA0ODBtIG91dHB1dCBjbG9jayBuYW1lLgo+
+Pj4+PiArCj4+Pj4+ICtPcHRpb25hbCBwcm9wZXJ0aWVzOgo+Pj4+PiArIC0gY2xvY2tzIDogcGhh
+bmRsZSArIHBoeSBzcGVjaWZpZXIgcGFpciwgZm9yIHRoZSBpbnB1dCBjbG9jayBvZiBwaHkuCj4+
+Pj4+ICsgLSBjbG9jay1uYW1lcyA6IGlucHV0IGNsb2NrIG5hbWUgb2YgcGh5LCBtdXN0IGJlICJw
+aHljbGsiLgo+Pj4+PiArIC0gdmJ1c19ob3N0LXN1cHBseSA6IHBoYW5kbGUgdG8gYSByZWd1bGF0
+b3IgdGhhdCBzdXBwbGllcyBob3N0IHZidXMuCj4+Pj4+ICsgLSB2YnVzX290Zy1zdXBwbHkgOiBw
+aGFuZGxlIHRvIGEgcmVndWxhdG9yIHRoYXQgc3VwcGxpZXMgb3RnIHZidXMuCj4+Pj4gTml0OiBz
+L18vLS8gaGVyZS4KPj4+IFNvbWV0aGluZyBJIG9ubHkgc3R1bWJsZWQgb3ZlciB5ZXN0ZXJkYXkg
+Zm9yIHRoZSBmaXJzdCB0aW1lIG9uIG15IHJrMzI4OC0KPj4+IHBvcG1ldGFsOiBUaGUgcGh5IHN1
+Ym5vZGVzIHNlZW0gdG8gYmUgYWJsZSB0byB1c2UgYSBnZW5lcmljIHBoeS1zdXBwbHkKPj4+IHBy
+b3BlcnR5IGZyb20gaW5zaWRlIHRoZSBwaHktY29yZSBpdHNlbGYsIHNlZToKPj4+Cj4+PiBodHRw
+czovL2dpdGh1Yi5jb20vbW1pbmQvbGludXgtcm9ja2NoaXAvY29tbWl0LzkzNzM5ZjUyMWZjNjVm
+NDQ1MjRiMDBjOWFhZjZkYjQ2YmNhOTRlMDIjZGlmZi1kZGYzZTQ1ZWJiNzUzZDZkZWJmNTcwMjIw
+MDNhMWE1N1I1OTcKPj4+Cj4+Pgo+Pj4gZm9yIG15IFdJUCBjb2RlIGZvciB0aGF0IG90aGVyIGJv
+YXJkLgo+Pj4KPj4KPj4gQWgsIGdvb2QgY29tbWVudHMhIEkgd2lsbCB0cnkgbGF0ZXIsIGlmIGl0
+IGlzIHByYWN0aWNhYmxlLCBJIHNoYWxsIGNvcnJlY3QgaXQKPj4gaW50byB0aGUgbmV4dCBwYXRj
+aGVzIChwYXRjaCB2NCkuCj4+Cj4gCj4gSSBhbSBzb3JyeSB0byB0ZWxsIHlvdSB0aGF0IHNlZW1z
+IHVud29ya2FibGUsIGJlY2F1c2Ugd2UgaGF2ZSB0d28gc3ViLW5vZGVzCj4gKHBoeS1wb3J0cykg
+aW4gb25lIHBhcmVudC1ub2RlIChwaHkpLAo+IHdoYXQgaXMgbW9yZSwgdGhlICdwaHktc3VwcGx5
+JyBwcm9wZXJ0eSBjYW4gb25seSBwdXQgaW50byBwYXJlbnQtbm9kZSwgSQo+IGJlbGlldmUgaXQg
+Y2FuIG5vdCBiZSBkaWZmZXJlbnRpYXRlZCB0eXBlcyBvZiBwb3J0cy4KCidwaHktc3VwcGx5JyBp
+cyBhIHByb3BlcnR5IG9mIHRoZSBwaHkgbm9kZSBhbmQgbm90IHRoZSAncGh5LXByb3ZpZGVyJyBu
+b2RlLiBTbwpJTU8gdGhpcyBzaG91bGQgd29yay4gV2hhdCBwcm9ibGVtIGRvIHlvdSBzZWU/CgpU
+aGFua3MKS2lzaG9uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
