@@ -1,70 +1,84 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v3] ASoC: rockchip: Add machine driver for MAX98357A/RT5514/DA7219
-Date: Tue, 07 Jun 2016 19:38:23 +0800
-Message-ID: <5756B22F.9000105@rock-chips.com>
-References: <1464267742-15312-1-git-send-email-zhengxing@rock-chips.com> <20160601144542.GA3835@rob-hp-laptop> <5751912C.6080904@rock-chips.com> <20160606235026.GP7510@sirena.org.uk> <5756363F.40208@rock-chips.com> <20160607104711.GR7510@sirena.org.uk>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: [PATCH v2 01/20] drm/atomic: Fix remaining places where
+	!funcs->best_encoder is valid
+Date: Tue,  7 Jun 2016 13:47:56 +0200
+Message-ID: <1465300095-16971-2-git-send-email-boris.brezillon@free-electrons.com>
+References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160607104711.GR7510@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org, dianders@chromium.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Stefan Agner <stefan@agner.ch>, virtualization@lists.linux-foundation.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kyungmin Park <kyungmin.park@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, linux-tegra@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Inki Dae <inki.dae@samsung.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
-
-On 2016=E5=B9=B406=E6=9C=8807=E6=97=A5 18:47, Mark Brown wrote:
-> On Tue, Jun 07, 2016 at 10:49:35AM +0800, Xing Zheng wrote:
->> On 2016=E5=B9=B406=E6=9C=8807=E6=97=A5 07:50, Mark Brown wrote:
->>> It should probably be three compatibles, one per CODEC, if the driv=
-er
->>> needs to handle each separately.
->> Do you mean like this:
->> --------
->> sound {
->> compatible =3D "rockchip,rk3399-max98357a-rt5514-da7219";
->>
->> dailink-0 {
->> compatible =3D "rockchip,rk3399-max98357a";
->> rockchip,cpu =3D<&i2s0>;
->> rockchip,codec =3D<&max98357a>;
->> };
->>
->> dailink-1 {
->> compatible =3D "rockchip,rk3399-rt5514";
->> rockchip,cpu =3D<&i2s0>;
->> rockchip,codec =3D<&headsetcodec>;
->> };
->>
->> dailink-2 {
->> compatible =3D "rockchip,rk3399-da7219";
->> rockchip,cpu =3D<&i2s0>;
->> rockchip,codec =3D<&codec>;
->> };
->> };
->> --------
->> Above, the machine drvier will handle them. Please correct me if I
->> misunderstand.
-> No, that'd be one card with all three CODECs on the same board which =
-I'm
-> guessing isn't the intention?
-Yes, because on our board, the audio connection by hardware really is s=
-uch:
-                   |-- max98357a
-i2s0 <=3D=3D> |-- rt5514
-                   | -- da7219
-
-We do need to support max98357a / rt5514 / da7219 via i2s0 on the same=20
-board for RK3399.
-
-I remember that it will be failed if we register card with i2s0 more=20
-times. Therefore, I chose this mothod that create 3 dai-links on one=20
-machine driver.
-
-Thanks.
-
---=20
-- Xing Zheng
+QWRhcHQgZHJtX3BpY2tfY3J0Y3MoKSBhbmQgdXBkYXRlX2Nvbm5lY3Rvcl9yb3V0aW5nKCkgdG8g
+ZmFsbGJhY2sgdG8KZHJtX2F0b21pY19oZWxwZXJfYmVzdF9lbmNvZGVyKCkgaWYgZnVuY3MtPmJl
+c3RfZW5jb2RlcigpIGlzIE5VTEwgc28KdGhhdCBEUk0gZHJpdmVycyBjYW4gbGVhdmUgdGhpcyBo
+b29rIHVuYXNzaWduZWQgaWYgdGhleSBrbm93IHRoZXkgd2FudAp0byB1c2UgZHJtX2F0b21pY19o
+ZWxwZXJfYmVzdF9lbmNvZGVyKCkuCgpVcGRhdGUgdGhlIHZ0YWJsZXMgZG9jdW1lbnRhdGlvbiBh
+Y2NvcmRpbmdseS4KClNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemls
+bG9uQGZyZWUtZWxlY3Ryb25zLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19o
+ZWxwZXIuYyAgICAgIHwgIDQgKysrLQogZHJpdmVycy9ncHUvZHJtL2RybV9mYl9oZWxwZXIuYyAg
+ICAgICAgICB8IDEzICsrKysrKysrKysrKy0KIGluY2x1ZGUvZHJtL2RybV9tb2Rlc2V0X2hlbHBl
+cl92dGFibGVzLmggfCAxMCArKysrKysrKy0tCiAzIGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlv
+bnMoKyksIDQgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9h
+dG9taWNfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIuYwppbmRl
+eCBmNmEzMzUwLi44NDlkMDI5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21p
+Y19oZWxwZXIuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIuYwpAQCAt
+MzAwLDggKzMwMCwxMCBAQCB1cGRhdGVfY29ubmVjdG9yX3JvdXRpbmcoc3RydWN0IGRybV9hdG9t
+aWNfc3RhdGUgKnN0YXRlLAogCWlmIChmdW5jcy0+YXRvbWljX2Jlc3RfZW5jb2RlcikKIAkJbmV3
+X2VuY29kZXIgPSBmdW5jcy0+YXRvbWljX2Jlc3RfZW5jb2Rlcihjb25uZWN0b3IsCiAJCQkJCQkJ
+IGNvbm5lY3Rvcl9zdGF0ZSk7Ci0JZWxzZQorCWVsc2UgaWYgKGZ1bmNzLT5iZXN0X2VuY29kZXIp
+CiAJCW5ld19lbmNvZGVyID0gZnVuY3MtPmJlc3RfZW5jb2Rlcihjb25uZWN0b3IpOworCWVsc2UK
+KwkJbmV3X2VuY29kZXIgPSBkcm1fYXRvbWljX2hlbHBlcl9iZXN0X2VuY29kZXIoY29ubmVjdG9y
+KTsKIAogCWlmICghbmV3X2VuY29kZXIpIHsKIAkJRFJNX0RFQlVHX0FUT01JQygiTm8gc3VpdGFi
+bGUgZW5jb2RlciBmb3VuZCBmb3IgW0NPTk5FQ1RPUjolZDolc11cbiIsCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2ZiX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9o
+ZWxwZXIuYwppbmRleCA3YzJlYjc1Li5kNDQzODlhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vZHJtX2ZiX2hlbHBlci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fZmJfaGVscGVyLmMK
+QEAgLTIwMDAsNyArMjAwMCwxOCBAQCBzdGF0aWMgaW50IGRybV9waWNrX2NydGNzKHN0cnVjdCBk
+cm1fZmJfaGVscGVyICpmYl9oZWxwZXIsCiAJCW15X3Njb3JlKys7CiAKIAljb25uZWN0b3JfZnVu
+Y3MgPSBjb25uZWN0b3ItPmhlbHBlcl9wcml2YXRlOwotCWVuY29kZXIgPSBjb25uZWN0b3JfZnVu
+Y3MtPmJlc3RfZW5jb2Rlcihjb25uZWN0b3IpOworCisJLyoKKwkgKiBJZiB0aGUgRFJNIGRldmlj
+ZSBpbXBsZW1lbnRzIGF0b21pYyBob29rcyBhbmQgLT5iZXN0X2VuY29kZXIoKSBpcworCSAqIE5V
+TEwgd2UgZmFsbGJhY2sgdG8gdGhlIGRlZmF1bHQgZHJtX2F0b21pY19oZWxwZXJfYmVzdF9lbmNv
+ZGVyKCkKKwkgKiBoZWxwZXIuCisJICovCisJaWYgKGZiX2hlbHBlci0+ZGV2LT5tb2RlX2NvbmZp
+Zy5mdW5jcy0+YXRvbWljX2NvbW1pdCAmJgorCSAgICAhY29ubmVjdG9yX2Z1bmNzLT5iZXN0X2Vu
+Y29kZXIpCisJCWVuY29kZXIgPSBkcm1fYXRvbWljX2hlbHBlcl9iZXN0X2VuY29kZXIoY29ubmVj
+dG9yKTsKKwllbHNlCisJCWVuY29kZXIgPSBjb25uZWN0b3JfZnVuY3MtPmJlc3RfZW5jb2Rlcihj
+b25uZWN0b3IpOworCiAJaWYgKCFlbmNvZGVyKQogCQlnb3RvIG91dDsKIApkaWZmIC0tZ2l0IGEv
+aW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJsZXMuaCBiL2luY2x1ZGUvZHJtL2Ry
+bV9tb2Rlc2V0X2hlbHBlcl92dGFibGVzLmgKaW5kZXggZDQ2MTlkYy4uNGU3YTUzYiAxMDA2NDQK
+LS0tIGEvaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJsZXMuaAorKysgYi9pbmNs
+dWRlL2RybS9kcm1fbW9kZXNldF9oZWxwZXJfdnRhYmxlcy5oCkBAIC03MzYsNiArNzM2LDExIEBA
+IHN0cnVjdCBkcm1fY29ubmVjdG9yX2hlbHBlcl9mdW5jcyB7CiAJICogaW5zcGVjdCBkeW5hbWlj
+IGNvbmZpZ3VyYXRpb24gc3RhdGUgc2hvdWxkIGluc3RlYWQgdXNlCiAJICogQGF0b21pY19iZXN0
+X2VuY29kZXIuCiAJICoKKwkgKiBZb3UgY2FuIGxlYXZlIHRoaXMgZnVuY3Rpb24gdG8gTlVMTCBp
+ZiB0aGUgY29ubmVjdG9yIGlzIG9ubHkKKwkgKiBhdHRhY2hlZCB0byBhIHNpbmdsZSBlbmNvZGVy
+IGFuZCB5b3UgYXJlIHVzaW5nIHRoZSBhdG9taWMgaGVscGVycy4KKwkgKiBJbiB0aGlzIGNhc2Us
+IHRoZSBjb3JlIHdpbGwgY2FsbCBkcm1fYXRvbWljX2hlbHBlcl9iZXN0X2VuY29kZXIoKQorCSAq
+IGZvciB5b3UuCisJICoKIAkgKiBSRVRVUk5TOgogCSAqCiAJICogRW5jb2RlciB0aGF0IHNob3Vs
+ZCBiZSB1c2VkIGZvciB0aGUgZ2l2ZW4gY29ubmVjdG9yIGFuZCBjb25uZWN0b3IKQEAgLTc1Miw4
+ICs3NTcsOSBAQCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgewogCSAqIG5lZWQg
+dG8gc2VsZWN0IHRoZSBiZXN0IGVuY29kZXIgZGVwZW5kaW5nIHVwb24gdGhlIGRlc2lyZWQKIAkg
+KiBjb25maWd1cmF0aW9uIGFuZCBjYW4ndCBzZWxlY3QgaXQgc3RhdGljYWxseS4KIAkgKgotCSAq
+IFRoaXMgZnVuY3Rpb24gaXMgdXNlZCBieSBkcm1fYXRvbWljX2hlbHBlcl9jaGVja19tb2Rlc2V0
+KCkgYW5kIGVpdGhlcgotCSAqIHRoaXMgb3IgQGJlc3RfZW5jb2RlciBpcyByZXF1aXJlZC4KKwkg
+KiBUaGlzIGZ1bmN0aW9uIGlzIHVzZWQgYnkgZHJtX2F0b21pY19oZWxwZXJfY2hlY2tfbW9kZXNl
+dCgpLgorCSAqIElmIGl0IGlzIG5vdCBpbXBsZW1lbnRlZCwgdGhlIGNvcmUgd2lsbCBmYWxsYmFj
+ayB0byBAYmVzdF9lbmNvZGVyCisJICogKG9yIGRybV9hdG9taWNfaGVscGVyX2Jlc3RfZW5jb2Rl
+cigpIGlmIEBiZXN0X2VuY29kZXIgaXMgTlVMTCkuCiAJICoKIAkgKiBOT1RFOgogCSAqCi0tIAoy
+LjcuNAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
+ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
