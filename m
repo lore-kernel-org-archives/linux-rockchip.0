@@ -1,150 +1,134 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v5.1 3/5] thermal: streamline get_trend callbacks
-Date: Tue,  7 Jun 2016 21:01:39 +0800
-Message-ID: <1465304499-14284-1-git-send-email-wxt@rock-chips.com>
-References: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: edubezval@gmail.com, linux-pm@vger.kernel.org
-Cc: heiko@sntech.de, j-keerthy@ti.com, s.hauer@pengutronix.de, linux-omap@vger.kernel.org, rui.zhang@intel.com, javi.merino@arm.com, peter@piie.net, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, cf@rock-chips.com, linux-rockchip@lists.infradead.org, smbarber@google.com, briannorris@google.com, dianders@chromium.org, Caesar Wang <wxt@rock-chips.com>
+From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Tue, 7 Jun 2016 06:19:45 -0700
+Message-ID: <CABXOdTexRR80Omoryr1e-R=tOYE9cq54Z3f2XU_qPCAJFeT8Yg@mail.gmail.com>
+References: <1465204804-31161-1-git-send-email-frank.wang@rock-chips.com>
+ <1465204804-31161-3-git-send-email-frank.wang@rock-chips.com>
+ <3404512.IukckmNc6l@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3404512.IukckmNc6l@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sascha Hauer <s.hauer@pengutronix.de>
-
-The .get_trend callback in struct thermal_zone_device_ops has
-the prototype:
-        int (*get_trend) (struct thermal_zone_device *, int,
-                          enum thermal_trend *);
-whereas the .get_trend callback in struct thermal_zone_of_device_ops
-has:
-        int (*get_trend)(void *, long *);
-
-Streamline both prototypes and add the trip argument to the OF callback
-aswell and use enum thermal_trend * instead of an integer pointer.
-
-While the OF prototype may be the better one, this should be decided at
-framework level and not on OF level.
-
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Cc: Zhang Rui <rui.zhang@intel.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-pm@vger.kernel.org
-Reviewed-by: Keerthy <j-keerthy@ti.com>
-
----
-
-Changes in v5.1:
-- As the Keerthy comments, change the get_trend for of_thermal.c
-- Add the Kee's Reviewed-by, I can remove it if you object it.
-- I'm assumed that the Eduardo will apply it. I can do it if Eduardo wants
-  me to resend them.
-
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-
- drivers/thermal/of-thermal.c                       | 16 +-------------
- drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 +++++++---------------
- include/linux/thermal.h                            |  2 +-
- 3 files changed, 10 insertions(+), 33 deletions(-)
-
-diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-thermal.c
-index 2d2a06f..20822ab 100644
---- a/drivers/thermal/of-thermal.c
-+++ b/drivers/thermal/of-thermal.c
-@@ -202,25 +202,11 @@ static int of_thermal_get_trend(struct thermal_zone_device *tz, int trip,
- 				enum thermal_trend *trend)
- {
- 	struct __thermal_zone *data = tz->devdata;
--	long dev_trend;
--	int r;
- 
- 	if (!data->ops->get_trend)
- 		return -EINVAL;
- 
--	r = data->ops->get_trend(data->sensor_data, &dev_trend);
--	if (r)
--		return r;
--
--	/* TODO: These intervals might have some thresholds, but in core code */
--	if (dev_trend > 0)
--		*trend = THERMAL_TREND_RAISING;
--	else if (dev_trend < 0)
--		*trend = THERMAL_TREND_DROPPING;
--	else
--		*trend = THERMAL_TREND_STABLE;
--
--	return 0;
-+	return data->ops->get_trend(data->sensor_data, trip, trend);
- }
- 
- static int of_thermal_bind(struct thermal_zone_device *thermal,
-diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-index 15c0a9a..4a6757c 100644
---- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-+++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-@@ -239,7 +239,7 @@ static int ti_thermal_get_trip_temp(struct thermal_zone_device *thermal,
- 	return 0;
- }
- 
--static int __ti_thermal_get_trend(void *p, long *trend)
-+static int __ti_thermal_get_trend(void *p, int trip, enum thermal_trend *trend)
- {
- 	struct ti_thermal_data *data = p;
- 	struct ti_bandgap *bgp;
-@@ -252,22 +252,6 @@ static int __ti_thermal_get_trend(void *p, long *trend)
- 	if (ret)
- 		return ret;
- 
--	*trend = tr;
--
--	return 0;
--}
--
--/* Get the temperature trend callback functions for thermal zone */
--static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
--				int trip, enum thermal_trend *trend)
--{
--	int ret;
--	long tr;
--
--	ret = __ti_thermal_get_trend(thermal->devdata, &tr);
--	if (ret)
--		return ret;
--
- 	if (tr > 0)
- 		*trend = THERMAL_TREND_RAISING;
- 	else if (tr < 0)
-@@ -278,6 +262,13 @@ static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
- 	return 0;
- }
- 
-+/* Get the temperature trend callback functions for thermal zone */
-+static int ti_thermal_get_trend(struct thermal_zone_device *thermal,
-+				int trip, enum thermal_trend *trend)
-+{
-+	return __ti_thermal_get_trend(thermal->devdata, trip, trend);
-+}
-+
- /* Get critical temperature callback functions for thermal zone */
- static int ti_thermal_get_crit_temp(struct thermal_zone_device *thermal,
- 				    int *temp)
-diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-index 2440b8d..d3ce3a5 100644
---- a/include/linux/thermal.h
-+++ b/include/linux/thermal.h
-@@ -352,7 +352,7 @@ struct thermal_genl_event {
-  */
- struct thermal_zone_of_device_ops {
- 	int (*get_temp)(void *, int *);
--	int (*get_trend)(void *, long *);
-+	int (*get_trend)(void *, int, enum thermal_trend *);
- 	int (*set_trips)(void *, int, int);
- 	int (*set_emul_temp)(void *, int);
- 	int (*set_trip_temp)(void *, int, int);
--- 
-1.9.1
-
+T24gVHVlLCBKdW4gNywgMjAxNiBhdCAyOjU0IEFNLCBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPiB3cm90ZToKPiBIaSBGcmFuaywKPgo+IEFtIE1vbnRhZywgNi4gSnVuaSAyMDE2LCAx
+NzoyMDowNCBzY2hyaWViIEZyYW5rIFdhbmc6Cj4+IFRoZSBuZXdlciBTb0NzIChyazMzNjYsIHJr
+MzM5OSkgdGFrZSBhIGRpZmZlcmVudCB1c2ItcGh5IElQIGJsb2NrCj4+IHRoYW4gcmszMjg4IGFu
+ZCBiZWZvcmUsIGFuZCBtb3N0IG9mIHBoeS1yZWxhdGVkIHJlZ2lzdGVycyBhcmUgYWxzbwo+PiBk
+aWZmZXJlbnQgZnJvbSB0aGUgcGFzdCwgc28gYSBuZXcgcGh5IGRyaXZlciBpcyByZXF1aXJlZCBu
+ZWNlc3NhcmlseS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV2FuZyA8ZnJhbmsud2FuZ0By
+b2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4KPiBbLi4uXQo+Cj4+ICtzdGF0aWMgaW50IHJvY2tjaGlw
+X3VzYjJwaHlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gK3sKPj4gKyAg
+ICAgc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPj4gKyAgICAgc3RydWN0IGRldmlj
+ZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsKPj4gKyAgICAgc3RydWN0IGRldmljZV9ub2RlICpj
+aGlsZF9ucDsKPj4gKyAgICAgc3RydWN0IHBoeV9wcm92aWRlciAqcHJvdmlkZXI7Cj4+ICsgICAg
+IHN0cnVjdCByb2NrY2hpcF91c2IycGh5ICpycGh5Owo+PiArICAgICBjb25zdCBzdHJ1Y3Qgb2Zf
+ZGV2aWNlX2lkICptYXRjaDsKPj4gKyAgICAgaW50IGluZGV4LCByZXQ7Cj4+ICsKPj4gKyAgICAg
+cnBoeSA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcnBoeSksIEdGUF9LRVJORUwpOwo+PiAr
+ICAgICBpZiAoIXJwaHkpCj4+ICsgICAgICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4+ICsKPj4g
+KyAgICAgbWF0Y2ggPSBvZl9tYXRjaF9kZXZpY2UoZGV2LT5kcml2ZXItPm9mX21hdGNoX3RhYmxl
+LCBkZXYpOwo+PiArICAgICBpZiAoIW1hdGNoIHx8ICFtYXRjaC0+ZGF0YSkgewo+PiArICAgICAg
+ICAgICAgIGRldl9lcnIoZGV2LCAicGh5IGNvbmZpZ3MgYXJlIG5vdCBhc3NpZ25lZCFcbiIpOwo+
+PiArICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+PiArICAgICB9Cj4+ICsKPj4gKyAgICAg
+aWYgKCFkZXYtPnBhcmVudCB8fCAhZGV2LT5wYXJlbnQtPm9mX25vZGUpCj4+ICsgICAgICAgICAg
+ICAgcmV0dXJuIC1FSU5WQUw7Cj4+ICsKPj4gKyAgICAgcnBoeS0+Z3JmID0gc3lzY29uX25vZGVf
+dG9fcmVnbWFwKGRldi0+cGFyZW50LT5vZl9ub2RlKTsKPj4gKyAgICAgaWYgKElTX0VSUihycGh5
+LT5ncmYpKQo+PiArICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKHJwaHktPmdyZik7Cj4+ICsK
+Pj4gKyAgICAgcnBoeS0+ZGV2ID0gZGV2Owo+PiArICAgICBycGh5LT5waHlfY2ZnID0gbWF0Y2gt
+PmRhdGE7Cj4+ICsgICAgIHBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIHJwaHkpOwo+PiArCj4+
+ICsgICAgIHJldCA9IHJvY2tjaGlwX3VzYjJwaHlfY2xrNDgwbV9yZWdpc3RlcihycGh5KTsKPj4g
+KyAgICAgaWYgKHJldCkgewo+PiArICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRv
+IHJlZ2lzdGVyIDQ4MG0gb3V0cHV0IGNsb2NrXG4iKTsKPj4gKyAgICAgICAgICAgICByZXR1cm4g
+cmV0Owo+PiArICAgICB9Cj4+ICsKPj4gKyAgICAgcnBoeS0+dmJ1c19ob3N0ID0gZGV2bV9yZWd1
+bGF0b3JfZ2V0X29wdGlvbmFsKGRldiwgInZidXNfaG9zdCIpOwo+PiArICAgICBpZiAoSVNfRVJS
+KHJwaHktPnZidXNfaG9zdCkpIHsKPj4gKyAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKHJwaHkt
+PnZidXNfaG9zdCk7Cj4+ICsgICAgICAgICAgICAgaWYgKHJldCA9PSAtRVBST0JFX0RFRkVSKQo+
+PiArICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPj4gKwo+PiArICAgICAgICAgICAg
+IGRldl9pbmZvKGRldiwgInZidXNfaG9zdCByZWd1bGF0b3IgaXMgbm90IGFzc2lnbmVkIVxuIik7
+Cj4+ICsgICAgICAgICAgICAgcnBoeS0+dmJ1c19ob3N0ID0gTlVMTDsKPj4gKyAgICAgfSBlbHNl
+IHsKPj4gKyAgICAgICAgICAgICByZXQgPSByZWd1bGF0b3JfZW5hYmxlKHJwaHktPnZidXNfaG9z
+dCk7Cj4+ICsgICAgICAgICAgICAgaWYgKHJldCkKPj4gKyAgICAgICAgICAgICAgICAgICAgIHJl
+dHVybiByZXQ7Cj4+ICsgICAgIH0KPj4gKwo+PiArICAgICBpbmRleCA9IDA7Cj4+ICsgICAgIGZv
+cl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2RlKG5wLCBjaGlsZF9ucCkgewo+PiArICAgICAg
+ICAgICAgIHN0cnVjdCByb2NrY2hpcF91c2IycGh5X3BvcnQgKnJwb3J0ID0gJnJwaHktPnBvcnRz
+W2luZGV4XTsKPj4gKyAgICAgICAgICAgICBzdHJ1Y3QgcGh5ICpwaHk7Cj4+ICsKPj4gKyAgICAg
+ICAgICAgICBwaHkgPSBkZXZtX3BoeV9jcmVhdGUoZGV2LCBjaGlsZF9ucCwgJnJvY2tjaGlwX3Vz
+YjJwaHlfb3BzKTsKPj4gKyAgICAgICAgICAgICBpZiAoSVNfRVJSKHBoeSkpIHsKPj4gKyAgICAg
+ICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIGNyZWF0ZSBwaHlcbiIpOwo+
+PiArICAgICAgICAgICAgICAgICAgICAgcmV0ID0gUFRSX0VSUihwaHkpOwo+PiArICAgICAgICAg
+ICAgICAgICAgICAgZ290byBwdXRfY2hpbGQ7Cj4+ICsgICAgICAgICAgICAgfQo+PiArCj4+ICsg
+ICAgICAgICAgICAgcnBvcnQtPnBoeSA9IHBoeTsKPj4gKwo+PiArICAgICAgICAgICAgIC8qIGlu
+aXRpYWxpemUgb3RnL2hvc3QgcG9ydCBzZXBhcmF0ZWx5ICovCj4+ICsgICAgICAgICAgICAgaWYg
+KCFvZl9ub2RlX2NtcChjaGlsZF9ucC0+bmFtZSwgImhvc3QtcG9ydCIpKSB7Cj4+ICsgICAgICAg
+ICAgICAgICAgICAgICByZXQgPSByb2NrY2hpcF91c2IycGh5X2hvc3RfcG9ydF9pbml0KHJwaHks
+IHJwb3J0LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBjaGlsZF9ucCk7Cj4+ICsgICAgICAgICAgICAgICAgICAgICBpZiAocmV0
+KQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBnb3RvIHB1dF9jaGlsZDsKPj4gKyAg
+ICAgICAgICAgICB9Cj4+ICsKPj4gKyAgICAgICAgICAgICBwaHlfc2V0X2RydmRhdGEocnBvcnQt
+PnBoeSwgcnBvcnQpOwo+PiArCj4+ICsgICAgICAgICAgICAgLyogdG8gcHJldmVudCBvdXQgb2Yg
+Ym91bmRhcnkgKi8KPj4gKyAgICAgICAgICAgICBpZiAoKytpbmRleCA+PSBycGh5LT5waHlfY2Zn
+LT5udW1fcG9ydHMpCj4+ICsgICAgICAgICAgICAgICAgICAgICBicmVhazsKPj4gKyAgICAgfQo+
+PiArCj4+ICsgICAgIHByb3ZpZGVyID0gZGV2bV9vZl9waHlfcHJvdmlkZXJfcmVnaXN0ZXIoZGV2
+LCBvZl9waHlfc2ltcGxlX3hsYXRlKTsKPj4gKyAgICAgcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhw
+cm92aWRlcik7Cj4+ICsKPj4gK3B1dF9jaGlsZDoKPj4gKyAgICAgb2Zfbm9kZV9wdXQoY2hpbGRf
+bnApOwo+PiArICAgICByZXR1cm4gcmV0Owo+PiArfQo+PiArCj4+ICtzdGF0aWMgY29uc3Qgc3Ry
+dWN0IHJvY2tjaGlwX3VzYjJwaHlfY2ZnIHJrMzM2Nl9waHlfY2ZncyA9IHsKPj4gKyAgICAgLm51
+bV9wb3J0cyAgICAgID0gMiwKPj4gKyAgICAgLmNsa291dF9jdGwgICAgID0geyAweDA3MjQsIDE1
+LCAxNSwgMSwgMCB9LAo+PiArICAgICAucG9ydF9jZmdzICAgICAgPSB7Cj4+ICsgICAgICAgICAg
+ICAgW1VTQjJQSFlfUE9SVF9IT1NUXSA9IHsKPj4gKyAgICAgICAgICAgICAgICAgICAgIC5waHlf
+c3VzICAgICAgICA9IHsgMHgwNzI4LCAxNSwgMCwgMCwgMHgxZDEgfSwKPj4gKyAgICAgICAgICAg
+ICAgICAgICAgIC5sc19kZXRfZW4gICAgICA9IHsgMHgwNjgwLCA0LCA0LCAwLCAxIH0sCj4+ICsg
+ICAgICAgICAgICAgICAgICAgICAubHNfZGV0X3N0ICAgICAgPSB7IDB4MDY5MCwgNCwgNCwgMCwg
+MSB9LAo+PiArICAgICAgICAgICAgICAgICAgICAgLmxzX2RldF9jbHIgICAgID0geyAweDA2YTAs
+IDQsIDQsIDAsIDEgfSwKPj4gKyAgICAgICAgICAgICAgICAgICAgIC51dG1pX2xzICAgICAgICA9
+IHsgMHgwNDljLCAxNCwgMTMsIDAsIDEgfSwKPj4gKyAgICAgICAgICAgICAgICAgICAgIC51dG1p
+X2hzdGRldCAgICA9IHsgMHgwNDljLCAxMiwgMTIsIDAsIDEgfQo+PiArICAgICAgICAgICAgIH0K
+Pj4gKyAgICAgfSwKPj4gK307Cj4KPiBJIGFsc28gcmVhbGl6ZWQgdGhhdCB0aGUgcmszMzk5IGhh
+cyB0d28gb2YgdGhvc2UgcGh5LWJsb2Nrcywgc28gSSB0aGluayB3ZSdsbAo+IG5lZWQgdG8gYWRh
+cHQgeW91ciBkYXRhIHN0b3JhZ2UgbWVjaGFuaXNtIGEgdGlueSBiaXQuIE1heWJlIHNvbWV0aGlu
+ZyBsaWtlCj4gdGhlIGZvbGxvd2luZzoKPgo+IEluIHRoZSBkdHM6Cj4KPiBncmY6IHN5c2NvbkBm
+Zjc3MDAwMCB7Cj4gICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMzY2LWdyZiIsICJz
+eXNjb24iLCAic2ltcGxlLW1mZCI7Cj4gICAgICAgICAuLi4KPiAgICAgICAgdTJwaHk6IHVzYjIt
+cGh5QDcwMCB7Cj4gICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzNjYt
+dXNiMnBoeSI7Cj4gICAgICAgICAgICAgICAgIHJlZyA9IDwweDcwMCAweDJjPjsKPiAgICAgICAg
+ICAgICAgICAgLi4uCj4gICAgICAgIH07Cj4gfTsKPgo+IEluIHRoZSBkcml2ZXIKPgo+IHN0YXRp
+YyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfdXNiMnBoeV9jZmcgcmszMzY2X3BoeV9jZmdzW10gPSB7
+Cj4gICAgICAgICB7Cj4gICAgICAgICAgICAgICAgIC5yZWcgPSAweDcwMCwKPiAgICAgICAgICAg
+ICAgICAgLm51bV9wb3J0cyAgICAgID0gMiwKPiAgICAgICAgICAgICAgICAgLmNsa291dF9jdGwg
+ICAgID0geyAweDA3MjQsIDE1LCAxNSwgMSwgMCB9LAo+ICAgICAgICAgICAgICAgICAucG9ydF9j
+ZmdzICAgICAgPSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgW1VTQjJQSFlfUE9SVF9IT1NU
+XSA9IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5waHlfc3VzICAgICAgICA9
+IHsgMHgwNzI4LCAxNSwgMCwgMCwgMHgxZDEgfSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIC4uLgo+ICAgICAgICAgICAgICAgICAgICAgICAgIH0KPiAgICAgICAgICAgICAgICAg
+fSwKPiAgICAgICAgIH0sCj4gfTsKPgo+IGFuZCBpbiBfcHJvYmUgdGhlbiBzaW1wbHkgdXNlIHRo
+ZSBjb3JyZWN0IGFycmF5IGVudHJ5IG1hdGNoaW5nIHRoZSBkdHMgcmVnCj4gcHJvcGVydHkuCj4K
+PiBPbiB0aGUgcmszMzk5IHRoaXMgd291bGQgdGhlbiBwcm9iYWJseSBiZQo+Cj4gICAgICAgIHUy
+cGh5MDogcGh5QGU0NTAgewo+ICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAs
+cmszMzY2LXVzYjJwaHkiOwo+ICAgICAgICAgICAgICAgICByZWcgPSA8MHhlNDUwIDB4MTA+Owo+
+ICAgICAgICAgICAgICAgICAuLi4KPiAgICAgICAgIH07Cj4KPiAgICAgICAgdTJwaHkxOiBwaHlA
+ZTQ2MCB7Cj4gICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzNjYtdXNi
+MnBoeSI7Cj4gICAgICAgICAgICAgICAgIHJlZyA9IDwweGU0NjAgMHgxMD47Cj4gICAgICAgICAg
+ICAgICAgIC4uLgo+ICAgICAgICAgfTsKPgo+Cj4gVGhpcyBpcyBzbGlnaHRseSBzaW1pbGFyIHRv
+IHdoYXQgd2UgZG8gd2l0aCB0aGUgZW1tYy1waHkuIEJ1dCBhbHNvIGFzIHRoZQo+IHVzYnBoeXMg
+ZGlmZmVyIGluIGEgbG90IG9mIHdheSwgdGhpcyBpcyByZWFsbHkgb25seSB1c2VkIHRvIG1hdGNo
+IHRvIHRoZSBkYXRhCj4gYmxvY2suCj4KPiBUaGlzIG9ubHkgYWZmZWN0cyB0aGUgbWF0Y2gtZGF0
+YSBzZWxlY3Rpb24gYW5kIHRoZSByZXN0IG9mIHRoZSBkcml2ZXIgZG9lcyBub3QKPiBuZWVkIHRv
+IGJlIGNoYW5nZWQgZm9yIHRoaXMuCj4KCldvdWxkIHRoaXMgcmVwbGFjZSB0aGUgaG9zdC1wb3J0
+IHByb3BlcnR5ID8KClRoYW5rcywKR3VlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
