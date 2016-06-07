@@ -1,56 +1,52 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 2/4] clocksource: rockchip: add dynamic irq flag to the timer
-Date: Tue,  7 Jun 2016 12:54:31 +0800
-Message-ID: <1465275273-22076-3-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: add rktimer device node for rk3399
+Date: Tue,  7 Jun 2016 12:54:33 +0800
+Message-ID: <1465275273-22076-5-git-send-email-wxt@rock-chips.com>
 References: <1465275273-22076-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1465275273-22076-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: daniel.lezcano@linaro.org, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jianqun Xu <jay.xu@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: "Huang, Tao" <huangtao@rock-chips.com>
+From: Huang Tao <huangtao@rock-chips.com>
 
-The rockchip timer is broadcast timer. Add CLOCK_EVT_FEAT_DYNIRQ
-flag and set cpumask to all possible cpus to save power by avoid
-unnecessary wakeups and IPIs.
+Select rktimer0 as broadcast timer.
 
 Signed-off-by: Huang Tao <huangtao@rock-chips.com>
 Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: Thomas Gleixner <tglx@linutronix.de>
 Cc: Heiko Stuebner <heiko@sntech.de>
 Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
 Changes in v2:
-- s/cpu_all_mask/cpu_possible_mask/, As Daniel comments on
-  https://patchwork.kernel.org/patch/9135053/.
+- %s/ARM64/arm64.
 
- drivers/clocksource/rockchip_timer.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index b991b28..b510863 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -150,12 +150,13 @@ static void __init rk_timer_init(struct device_node *np)
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index d331e80..f0d1935 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -542,6 +542,14 @@
+ 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
+ 	};
  
- 	ce->name = TIMER_NAME;
--	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT;
-+	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT |
-+		       CLOCK_EVT_FEAT_DYNIRQ;
- 	ce->set_next_event = rk_timer_set_next_event;
- 	ce->set_state_shutdown = rk_timer_shutdown;
- 	ce->set_state_periodic = rk_timer_set_periodic;
- 	ce->irq = irq;
--	ce->cpumask = cpumask_of(0);
-+	ce->cpumask = cpu_possible_mask;
- 	ce->rating = 250;
- 
- 	rk_timer_interrupt_clear(ce);
++	rktimer: rktimer@ff850000 {
++		compatible = "rockchip,rk3399-timer";
++		reg = <0x0 0xff850000 0x0 0x1000>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER00>;
++		clock-names = "pclk", "timer";
++	};
++
+ 	spdif: spdif@ff870000 {
+ 		compatible = "rockchip,rk3399-spdif";
+ 		reg = <0x0 0xff870000 0x0 0x1000>;
 -- 
 1.9.1
