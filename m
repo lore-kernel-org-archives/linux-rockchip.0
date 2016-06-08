@@ -1,146 +1,45 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v14.1 01/17] drm: bridge: analogix/dp: split exynos dp
- driver to bridge directory
-Date: Wed, 8 Jun 2016 08:44:19 +0100
-Message-ID: <20160608084419.602f02d2@arm.com>
-References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
-	<1455534576-1486-1-git-send-email-ykk@rock-chips.com>
-	<1811552.qvsCm7GUs1@diego>
-	<417ed48e-74e1-f747-34b9-0d1031a3d862@osg.samsung.com>
-	<575774C0.4000900@rock-chips.com>
+From: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Wed, 8 Jun 2016 09:54:24 +0200
+Message-ID: <5757CF30.2020603@gmx.de>
+References: <20160520003145.GA22420@electric-eye.fr.zoreil.com>
+ <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
+ <20160522091742.GA8681@debian-dorm> <57419853.9050701@gmx.de>
+ <20160522223659.GB5086@electric-eye.fr.zoreil.com> <5743A9DD.8010202@gmx.de>
+ <5744EA24.7060806@gmx.de> <20160528064348.GA19649@debian-dorm>
+ <574CB382.7030102@gmx.de> <20160605140259.GA19512@debian-dorm>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <575774C0.4000900-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160605140259.GA19512@debian-dorm>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 8 Jun 2016 09:28:32 +0800
-Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
 
-> Hi Javier,
->=20
-> On 06/08/2016 01:06 AM, Javier Martinez Canillas wrote:
-> > Hello Yakir,
-> >
-> > On 03/17/2016 05:47 PM, Heiko St=FCbner wrote: =20
-> >> Split the dp core driver from exynos directory to bridge directory=
-,
-> >> and rename the core driver to analogix_dp_*, rename the platform
-> >> code to exynos_dp.
-> >>
-> >> Beside the new analogix_dp driver would export six hooks.
-> >> "analogix_dp_bind()" and "analogix_dp_unbind()"
-> >> "analogix_dp_suspned()" and "analogix_dp_resume()"
-> >> "analogix_dp_detect()" and "analogix_dp_get_modes()"
-> >>
-> >> The bind/unbind symbols is used for analogix platform driver to co=
-nnect
-> >> with analogix_dp core driver. And the detect/get_modes is used for=
- analogix
-> >> platform driver to init the connector.
-> >>
-> >> They reason why connector need register in helper driver is rockch=
-ip drm
-> >> haven't implement the atomic API, but Exynos drm have implement it=
-, so
-> >> there would need two different connector helper functions, that's =
-why we
-> >> leave the connector register in helper driver.
-> >>
-> >> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> --- =20
-> > Marc reported that his Exynos5250 Snow Chromebook fails to boot wit=
-h v4.7-rc.
-> >
-> > I've done a git bisect and tracked down to this commit. The problem=
- is a NULL
-> > pointer dereference to connector->dev in drm_mode_create(connector-=
->dev) when
-> > called from exynos_dp_get_modes(). The error log is at [1].
-> >
-> > I'm trying to figure out the issue but wanted to mention in case yo=
-u have any
-> > hints about what could be the cause. AFAICT the problem is related =
-to the fact
-> > that drm_connector_init() is called in analogix_dp_bridge_attach() =
-and the
-> > connector passed as argument is the one in struct analogix_dp_devic=
-e *dp, but
-> > later exynos_dp_get_modes() calls drm_mode_create() passing the con=
-nector in
-> > struct exynos_dp_device *dp, which has not been previously initiali=
-zed. =20
->=20
-> Agree, this should be the problem, exynos_dp->connector haven't been
-> initialized, driver should make exynos_dp->dp to a connector point, a=
-nd
-> record the passing connector in exynos_dp_bridge_attach(), that shoul=
-d
-> fix this problem.
->=20
->=20
-> Thanks,
-> - Yakir
->=20
->=20
-> diff --git a/drivers/gpu/drm/exynos/exynos_dp.c=20
-> b/drivers/gpu/drm/exynos/exynos_dp.c
-> index 468498e..4c1fb3f 100644
-> --- a/drivers/gpu/drm/exynos/exynos_dp.c
-> +++ b/drivers/gpu/drm/exynos/exynos_dp.c
-> @@ -34,7 +34,7 @@
->=20
->   struct exynos_dp_device {
->          struct drm_encoder         encoder;
-> -       struct drm_connector       connector;
-> +       struct drm_connector       *connector;
->          struct drm_bridge          *ptn_bridge;
->          struct drm_device          *drm_dev;
->          struct device              *dev;
-> @@ -70,7 +70,7 @@ static int exynos_dp_poweroff(struct=20
-> analogix_dp_plat_data *plat_data)
->   static int exynos_dp_get_modes(struct analogix_dp_plat_data *plat_d=
-ata)
->   {
->          struct exynos_dp_device *dp =3D to_dp(plat_data);
-> -       struct drm_connector *connector =3D &dp->connector;
-> +       struct drm_connector *connector =3D dp->connector;
->          struct drm_display_mode *mode;
->          int num_modes =3D 0;
->=20
-> @@ -103,6 +103,7 @@ static int exynos_dp_bridge_attach(struct=20
-> analogix_dp_plat_data *plat_data,
->          int ret;
->=20
->          drm_connector_register(connector);
-> +       dp->connector =3D connector;
->=20
->          /* Pre-empt DP connector creation if there's a bridge */
->          if (dp->ptn_bridge) {
->=20
+Hi Shuyu,
 
-I've just tested this change, and in combination with Javier's DT patch=
-,
-my Snow is back to its useful state (I'm writing this email from that
-very Chromebook).
+On 05.06.2016 16:02, Shuyu Wei wrote:
+> Hi Lino,
+> Sorry for my late reply. I retested the previous patch, it did have
+> the same issue. However it seems that the possibility of stuck is lower
+> (just my instinct, no evidence).
+> 
 
-Once you make this a proper patch, please add my:
+Thank you for the feedback. It is hard to guess what is still going wrong.
+But if you - as I assume - dont see this issue with the original code (as it is
+in net-next) there is still something wrong with the changes we made. So we
+probably should leave the code as it is for now.
 
-Tested-by: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-
-to it.
-
-Thanks a lot to you and Javier for tracking this down!
-
-	M.
---=20
-Jazz is not dead. It just smells funny.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Regards,
+Lino  
