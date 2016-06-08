@@ -1,15 +1,16 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] Documentation: bindings: add dt doc for Rockchip
- PCIe controller
-Date: Wed, 8 Jun 2016 17:31:25 +0800
-Message-ID: <6c2e795a-710d-081c-baa5-31ecb13b1d56@rock-chips.com>
-References: <1465373117-823-1-git-send-email-shawn.lin@rock-chips.com>
- <5757E430.7020804@arm.com>
+From: Vincent ABRIOU <vincent.abriou-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH v2 11/20] drm: sti: Rely on the default ->best_encoder()
+ behavior
+Date: Wed, 8 Jun 2016 11:35:40 +0200
+Message-ID: <5757E6EC.1050802@st.com>
+References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465300095-16971-12-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5757E430.7020804-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <1465300095-16971-12-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,66 +20,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, "virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TasMV2rI37PzA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyYywKCuWcqCAyMDE2LTYtOCAxNzoyNCwgTWFyYyBaeW5naWVyIOWGmemBkzoKPiBPbiAw
-OC8wNi8xNiAwOTowNSwgU2hhd24gTGluIHdyb3RlOgo+PiBUaGlzIHBhdGNoIGFkZHMgYSBiaW5k
-aW5nIHRoYXQgZGVzY3JpYmVzIHRoZSBSb2NrY2hpcCBQQ0llIGNvbnRyb2xsZXIKPj4gZm91bmQg
-b24gUm9ja2NoaXAgU29DcyBQQ0llIGludGVyZmFjZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2hh
-d24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Cj4+IC0tLQo+Pgo+PiBDaGFuZ2Vz
-IGluIHYyOgo+PiAtIGZpeCBsb3RzIGNsay9yZXNldCBzdHVmZiBzdWdnZXN0ZWQgYnkgSGVpa28K
-Pj4gLSByZW1vdmUgbXNpLXBhcmVudCBhbmQgYWRkIG1zaS1tYXAgc3VnZ2VzdGVkIGJ5IE1hcmMK
-Pj4gLSBkcm9wIHBoeSByZWxhdGVkIHN0dWZmCj4+IC0gc29tZSBvdGhlcnMgbWlub3IgZml4ZXMK
-Pj4KPj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1wY2llLnR4dCAgICAg
-IHwgODYgKysrKysrKysrKysrKysrKysrKysrKwo+PiAgMSBmaWxlIGNoYW5nZWQsIDg2IGluc2Vy
-dGlvbnMoKykKPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvcGNpL3JvY2tjaGlwLXBjaWUudHh0Cj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGNpL3JvY2tjaGlwLXBjaWUudHh0IGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1wY2llLnR4dAo+PiBuZXcg
-ZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAwLi5lYjkyZTI5Cj4+IC0tLSAvZGV2L251
-bGwKPj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hp
-cC1wY2llLnR4dAo+PiBAQCAtMCwwICsxLDg2IEBACj4+ICsqIFJvY2tjaGlwIEFYSSBQQ0llIFJv
-b3QgUG9ydCBCcmlkZ2UgRFQgZGVzY3JpcHRpb24KPj4gKwo+PiArUmVxdWlyZWQgcHJvcGVydGll
-czoKPj4gKy0gI2FkZHJlc3MtY2VsbHM6IEFkZHJlc3MgcmVwcmVzZW50YXRpb24gZm9yIHJvb3Qg
-cG9ydHMsIHNldCB0byA8Mz4KPj4gKy0gI3NpemUtY2VsbHM6IFNpemUgcmVwcmVzZW50YXRpb24g
-Zm9yIHJvb3QgcG9ydHMsIHNldCB0byA8Mj4KPj4gKy0gI2ludGVycnVwdC1jZWxsczogc3BlY2lm
-aWVzIHRoZSBudW1iZXIgb2YgY2VsbHMgbmVlZGVkIHRvIGVuY29kZSBhbgo+PiArCQlpbnRlcnJ1
-cHQgc291cmNlLiBUaGUgdmFsdWUgbXVzdCBiZSAxLgo+PiArLSBjb21wYXRpYmxlOiBTaG91bGQg
-Y29udGFpbiAicm9ja2NoaXAscmszMzk5LXBjaWUiCj4+ICstIHJlZzogVHdvIHJlZ2lzdGVyIHJh
-bmdlcyBhcyBsaXN0ZWQgaW4gdGhlIHJlZy1uYW1lcyBwcm9wZXJ0eQo+PiArLSByZWctbmFtZXM6
-IE11c3QgaW5jbHVkZSB0aGUgZm9sbG93aW5nIG5hbWVzCj4+ICsJLSAiYXhpLWJhc2UiCj4+ICsJ
-LSAiYXBiLWJhc2UiCj4+ICstIGNsb2NrczogTXVzdCBjb250YWluIGFuIGVudHJ5IGZvciBlYWNo
-IGVudHJ5IGluIGNsb2NrLW5hbWVzLgo+PiArCQlTZWUgLi4vY2xvY2tzL2Nsb2NrLWJpbmRpbmdz
-LnR4dCBmb3IgZGV0YWlscy4KPj4gKy0gY2xvY2stbmFtZXM6IE11c3QgaW5jbHVkZSB0aGUgZm9s
-bG93aW5nIGVudHJpZXM6Cj4+ICsJLSAiYWNsayIKPj4gKwktICJhY2xrLXBlcmYiCj4+ICsJLSAi
-aGNsayIKPj4gKwktICJwbSIKPj4gKy0gcGh5czogRnJvbSBQSFkgYmluZGluZ3M6IFBoYW5kbGUg
-Zm9yIHRoZSBHZW5lcmljIFBIWSBmb3IgUENJZS4KPj4gKy0gcGh5LW5hbWVzOiAgTVVTVCBiZSAi
-cGNpZS1waHkiLgo+PiArLSBpbnRlcnJ1cHRzOiBUaHJlZSBpbnRlcnJ1cHQgZW50cmllcyBtdXN0
-IGJlIHNwZWNpZmllZC4KPj4gKy0gaW50ZXJydXB0LW5hbWVzOiBNdXN0IGluY2x1ZGUgdGhlIGZv
-bGxvd2luZyBuYW1lcwo+PiArCS0gInN5cyIKPj4gKwktICJsZWdhY3kiCj4+ICsJLSAiY2xpZW50
-Igo+PiArLSByZXNldHM6IE11c3QgY29udGFpbiBmaXZlIGVudHJpZXMgZm9yIGVhY2ggZW50cnkg
-aW4gcmVzZXQtbmFtZXMuCj4+ICsJICAgU2VlIC4uL3Jlc2V0L3Jlc2V0LnR4dCBmb3IgZGV0YWls
-cy4KPj4gKy0gcmVzZXQtbmFtZXM6IE11c3QgaW5jbHVkZSB0aGUgZm9sbG93aW5nIG5hbWVzCj4+
-ICsJLSAiY29yZSIKPj4gKwktICJtZ210Igo+PiArCS0gIm1nbXQtc3RpY2t5Igo+PiArCS0gInBp
-cGUiCj4+ICstIHBpbmN0cmwtbmFtZXMgOiBUaGUgcGluIGNvbnRyb2wgc3RhdGUgbmFtZXMKPj4g
-Ky0gcGluY3RybC0wOiBUaGUgImRlZmF1bHQiIHBpbmN0cmwgc3RhdGUKPj4gKy0gaW50ZXJydXB0
-LW1hcC1tYXNrIGFuZCBpbnRlcnJ1cHQtbWFwOiBzdGFuZGFyZCBQQ0kgcHJvcGVydGllcwo+PiAr
-LSBpbnRlcnJ1cHQtY29udHJvbGxlcjogaWRlbnRpZmllcyB0aGUgbm9kZSBhcyBhbiBpbnRlcnJ1
-cHQgY29udHJvbGxlcgo+PiArCj4+ICtPcHRpb25hbCBQcm9wZXJ0eToKPj4gKy0gZXAtZ3Bpb3M6
-IGNvbnRhaW4gdGhlIGVudHJ5IGZvciBwcmUtcmVzZXQgZ3Bpbwo+PiArLSBudW0tbGFuZXM6IG51
-bWJlciBvZiBsYW5lcyB0byB1c2UKPj4gKy0gdnBjaWUzdjMtc3VwcGx5OiBUaGUgcGhhbmRsZSB0
-byB0aGUgMy4zdiByZWd1bGF0b3IgdG8gdXNlIGZvciBwY2llLiBJZiB0aGlzCj4+ICsgIGlzIHNw
-ZWNpZmllZCB3ZSdsbCBkZWZlciBwcm9iZSB1bnRpbCB3ZSBjYW4gZmluZCB0aGlzIHJlZ3VsYXRv
-ci4KPj4gKy0gdnBjaWUxdjgtc3VwcGx5OiBUaGUgcGhhbmRsZSB0byB0aGUgMS44diByZWd1bGF0
-b3IgdG8gdXNlIGZvciBwY2llLiBJZiB0aGlzCj4+ICsgIGlzIHNwZWNpZmllZCB3ZSdsbCBkZWZl
-ciBwcm9iZSB1bnRpbCB3ZSBjYW4gZmluZCB0aGlzIHJlZ3VsYXRvci4KPj4gKy0gdnBjaWUwdjkt
-c3VwcGx5OiBUaGUgcGhhbmRsZSB0byB0aGUgMC45diByZWd1bGF0b3IgdG8gdXNlIGZvciBwY2ll
-LiBJZiB0aGlzCj4+ICsgIGlzIHNwZWNpZmllZCB3ZSdsbCBkZWZlciBwcm9iZSB1bnRpbCB3ZSBj
-YW4gZmluZCB0aGlzIHJlZ3VsYXRvci4KPgo+IFBsZWFzZSBkbyBub3QgZGVzY3JpYmUgdGhlIGJl
-aGF2aW91ciBvZiB0aGUgZHJpdmVyIGhlcmUuCgpva2F5LCBJIHdpbGwgZml4IGl0LgoKVGhhbmtz
-LgoKPgo+IFRoYW5rcywKPgo+IAlNLgo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Boris,
+
+Thanks for the patch.
+
+Acked-by: Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>
+
+Vincent
+
+On 06/07/2016 01:48 PM, Boris Brezillon wrote:
+> All outputs have a 1:1 relationship between connectors and encoders
+> and the driver is relying on the atomic helpers: we can drop the custom
+> ->best_encoder() implementations and let the core call
+> drm_atomic_helper_best_encoder() for us.
+>
+> Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> ---
+>   drivers/gpu/drm/sti/sti_dvo.c  | 10 ----------
+>   drivers/gpu/drm/sti/sti_hda.c  | 10 ----------
+>   drivers/gpu/drm/sti/sti_hdmi.c | 10 ----------
+>   3 files changed, 30 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/sti/sti_dvo.c b/drivers/gpu/drm/sti/sti_dvo.c
+> index 25f7663..d5627d1 100644
+> --- a/drivers/gpu/drm/sti/sti_dvo.c
+> +++ b/drivers/gpu/drm/sti/sti_dvo.c
+> @@ -384,20 +384,10 @@ static int sti_dvo_connector_mode_valid(struct drm_connector *connector,
+>   	return MODE_OK;
+>   }
+>
+> -struct drm_encoder *sti_dvo_best_encoder(struct drm_connector *connector)
+> -{
+> -	struct sti_dvo_connector *dvo_connector
+> -		= to_sti_dvo_connector(connector);
+> -
+> -	/* Best encoder is the one associated during connector creation */
+> -	return dvo_connector->encoder;
+> -}
+> -
+>   static const
+>   struct drm_connector_helper_funcs sti_dvo_connector_helper_funcs = {
+>   	.get_modes = sti_dvo_connector_get_modes,
+>   	.mode_valid = sti_dvo_connector_mode_valid,
+> -	.best_encoder = sti_dvo_best_encoder,
+>   };
+>
+>   static enum drm_connector_status
+> diff --git a/drivers/gpu/drm/sti/sti_hda.c b/drivers/gpu/drm/sti/sti_hda.c
+> index f7d3464..c4649f5 100644
+> --- a/drivers/gpu/drm/sti/sti_hda.c
+> +++ b/drivers/gpu/drm/sti/sti_hda.c
+> @@ -676,20 +676,10 @@ static int sti_hda_connector_mode_valid(struct drm_connector *connector,
+>   	return MODE_OK;
+>   }
+>
+> -struct drm_encoder *sti_hda_best_encoder(struct drm_connector *connector)
+> -{
+> -	struct sti_hda_connector *hda_connector
+> -		= to_sti_hda_connector(connector);
+> -
+> -	/* Best encoder is the one associated during connector creation */
+> -	return hda_connector->encoder;
+> -}
+> -
+>   static const
+>   struct drm_connector_helper_funcs sti_hda_connector_helper_funcs = {
+>   	.get_modes = sti_hda_connector_get_modes,
+>   	.mode_valid = sti_hda_connector_mode_valid,
+> -	.best_encoder = sti_hda_best_encoder,
+>   };
+>
+>   static enum drm_connector_status
+> diff --git a/drivers/gpu/drm/sti/sti_hdmi.c b/drivers/gpu/drm/sti/sti_hdmi.c
+> index 6ef0715..dc9ab6e 100644
+> --- a/drivers/gpu/drm/sti/sti_hdmi.c
+> +++ b/drivers/gpu/drm/sti/sti_hdmi.c
+> @@ -897,20 +897,10 @@ static int sti_hdmi_connector_mode_valid(struct drm_connector *connector,
+>   	return MODE_OK;
+>   }
+>
+> -struct drm_encoder *sti_hdmi_best_encoder(struct drm_connector *connector)
+> -{
+> -	struct sti_hdmi_connector *hdmi_connector
+> -		= to_sti_hdmi_connector(connector);
+> -
+> -	/* Best encoder is the one associated during connector creation */
+> -	return hdmi_connector->encoder;
+> -}
+> -
+>   static const
+>   struct drm_connector_helper_funcs sti_hdmi_connector_helper_funcs = {
+>   	.get_modes = sti_hdmi_connector_get_modes,
+>   	.mode_valid = sti_hdmi_connector_mode_valid,
+> -	.best_encoder = sti_hdmi_best_encoder,
+>   };
+>
+>   /* get detection status of display device */
+>
