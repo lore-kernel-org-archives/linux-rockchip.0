@@ -1,67 +1,43 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RESEND PATCH] iommu/rockchip: fix zap cache during device attach
-Date: Wed, 08 Jun 2016 17:32:10 +0200
-Message-ID: <7766050.fLosifENnk@diego>
-References: <20160601154610.22899-1-john@metanate.com>
+Subject: Re: [PATCH v10 0/8] add i2c driver supported for rk3399
+Date: Wed, 08 Jun 2016 17:47:38 +0200
+Message-ID: <2239664.BKqQWGCl8U@diego>
+References: <1463407063-41218-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20160601154610.22899-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1463407063-41218-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: wsa@the-dreams.de
+Cc: David Wu <david.wu@rock-chips.com>, robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Joerg,
+Hi Wolfram,
 
-Am Mittwoch, 1. Juni 2016, 16:46:10 schrieb John Keeping:
-> rk_iommu_command() takes a struct rk_iommu and iterates over the slave
-> MMUs, so this is doubly wrong in that we're passing in the wrong pointer
-> and talking to MMUs that we shouldn't be.
-> 
-> Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi slaves")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: John Keeping <john@metanate.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Am Montag, 16. Mai 2016, 21:57:35 schrieb David Wu:
+> There are three points differert from others:
+>  - new method to caculate i2c timings for rk3399
+>  - pclk and function clk are separated at rk3399
+>  - add fast-plus mode supported for rk3399
 
-this definitly looks like material for 4.7-rc fixes to me. Could you take a look 
-and maybe include it?
+this series looks pretty nice now and it seems most everybody is happy with it 
+by now. Do you still have it in your inbox to look at, or should David resend 
+it again?
 
 
-Thanks
 Heiko
 
-> ---
-> The original was sent just before the merge window [0].  The only
-> changes are to the commit message:
+> David Wu (8):
+>   i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
+>   i2c: rk3x: use struct "rk3x_i2c_calced_timings"
+>   i2c: rk3x: Remove redundant rk3x_i2c_clean_ipd()
+>   i2c: rk3x: Change SoC data to not use array
+>   i2c: rk3x: Move spec timing data to "static const" structs
+>   dt-bindings: i2c: rk3x: add support for rk3399
+>   i2c: rk3x: add i2c support for rk3399 soc
+>   i2c: rk3x: support fast-mode plus for rk3399
 > 
-> * add Cc: stable
-> * add Heiko's {Tested,Reviewed}-by
-> 
-> [0] http://article.gmane.org/gmane.linux.kernel.iommu/13556
-> 
->  drivers/iommu/rockchip-iommu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index c7d6156ff536..25b4627cb57f 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -815,7 +815,7 @@ static int rk_iommu_attach_device(struct iommu_domain
-> *domain, dte_addr = virt_to_phys(rk_domain->dt);
->  	for (i = 0; i < iommu->num_mmu; i++) {
->  		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, dte_addr);
-> -		rk_iommu_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
-> +		rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
->  		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
->  	}
+>  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |  16 +-
+>  drivers/i2c/busses/i2c-rk3x.c                      | 498
+> +++++++++++++++++---- 2 files changed, 434 insertions(+), 80 deletions(-)
