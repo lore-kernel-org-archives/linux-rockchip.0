@@ -1,216 +1,64 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: [PATCH v2 05/13] pwm: rockchip: Add support for atomic update
-Date: Wed,  8 Jun 2016 18:34:40 +0200
-Message-ID: <1465403688-17098-6-git-send-email-boris.brezillon@free-electrons.com>
-References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip clk fixes for 4.7
+Date: Wed, 08 Jun 2016 19:37:59 +0200
+Message-ID: <6554609.UWKLgmyVYi@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465403688-17098-1-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Milo Kim <milo.kim-l0cyMroinI0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ajit Pal Singh <ajitpal.singh-qxv4g6HH51o@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Implement the ->apply() function to add support for atomic update.
+Hi Mike, Stephen,
 
-Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/pwm/pwm-rockchip.c | 84 ++++++++++++++++++++++++----------------------
- 1 file changed, 43 insertions(+), 41 deletions(-)
+please find below some accumulated small-scale fixes that would be nice to have
+in 4.7. So if nothing stands out, please pull
 
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index dd8ca86..ef89df1 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -47,10 +47,12 @@ struct rockchip_pwm_regs {
- struct rockchip_pwm_data {
- 	struct rockchip_pwm_regs regs;
- 	unsigned int prescaler;
-+	bool supports_polarity;
- 	const struct pwm_ops *ops;
- 
- 	void (*set_enable)(struct pwm_chip *chip,
--			   struct pwm_device *pwm, bool enable);
-+			   struct pwm_device *pwm, bool enable,
-+			   enum pwm_polarity polarity);
- 	void (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,
- 			  struct pwm_state *state);
- };
-@@ -61,7 +63,8 @@ static inline struct rockchip_pwm_chip *to_rockchip_pwm_chip(struct pwm_chip *c)
- }
- 
- static void rockchip_pwm_set_enable_v1(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_CTRL_OUTPUT_EN | PWM_CTRL_TIMER_EN;
-@@ -91,14 +94,15 @@ static void rockchip_pwm_get_state_v1(struct pwm_chip *chip,
- }
- 
- static void rockchip_pwm_set_enable_v2(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_OUTPUT_LEFT | PWM_LP_DISABLE | PWM_ENABLE |
- 			  PWM_CONTINUOUS;
- 	u32 val;
- 
--	if (pwm_get_polarity(pwm) == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERSED)
- 		enable_conf |= PWM_DUTY_NEGATIVE | PWM_INACTIVE_POSITIVE;
- 	else
- 		enable_conf |= PWM_DUTY_POSITIVE | PWM_INACTIVE_NEGATIVE;
-@@ -166,7 +170,6 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	unsigned long period, duty;
- 	u64 clk_rate, div;
--	int ret;
- 
- 	clk_rate = clk_get_rate(pc->clk);
- 
-@@ -182,69 +185,66 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	div = clk_rate * duty_ns;
- 	duty = DIV_ROUND_CLOSEST_ULL(div, pc->data->prescaler * NSEC_PER_SEC);
- 
--	ret = clk_enable(pc->clk);
--	if (ret)
--		return ret;
--
- 	writel(period, pc->base + pc->data->regs.period);
- 	writel(duty, pc->base + pc->data->regs.duty);
--	writel(0, pc->base + pc->data->regs.cntr);
--
--	clk_disable(pc->clk);
--
--	return 0;
--}
--
--static int rockchip_pwm_set_polarity(struct pwm_chip *chip,
--				     struct pwm_device *pwm,
--				     enum pwm_polarity polarity)
--{
--	/*
--	 * No action needed here because pwm->polarity will be set by the core
--	 * and the core will only change polarity when the PWM is not enabled.
--	 * We'll handle things in set_enable().
--	 */
- 
- 	return 0;
- }
- 
--static int rockchip_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-+static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+	struct pwm_state curstate;
-+	bool enabled;
- 	int ret;
- 
-+	pwm_get_state(pwm, &curstate);
-+	enabled = curstate.enabled;
-+
- 	ret = clk_enable(pc->clk);
- 	if (ret)
- 		return ret;
- 
--	pc->data->set_enable(chip, pwm, true);
-+	if (state->polarity != curstate.polarity && enabled) {
-+		pc->data->set_enable(chip, pwm, false, state->polarity);
-+		enabled = false;
-+	}
- 
--	return 0;
--}
-+	ret = rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
-+	if (ret) {
-+		if (enabled != curstate.enabled)
-+			pc->data->set_enable(chip, pwm, !enabled,
-+					     state->polarity);
- 
--static void rockchip_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+		goto out;
-+	}
-+
-+	if (state->enabled != enabled)
-+		pc->data->set_enable(chip, pwm, state->enabled,
-+				     state->polarity);
- 
--	pc->data->set_enable(chip, pwm, false);
-+	/*
-+	 * Update the state with the real hardware, which can differ a bit
-+	 * because of period/duty_cycle approximation.
-+	 */
-+	rockchip_pwm_get_state(chip, pwm, state);
- 
-+out:
- 	clk_disable(pc->clk);
-+
-+	return ret;
- }
- 
- static const struct pwm_ops rockchip_pwm_ops_v1 = {
- 	.get_state = rockchip_pwm_get_state,
--	.config = rockchip_pwm_config,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
-+	.apply = rockchip_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
- static const struct pwm_ops rockchip_pwm_ops_v2 = {
- 	.get_state = rockchip_pwm_get_state,
--	.config = rockchip_pwm_config,
--	.set_polarity = rockchip_pwm_set_polarity,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
-+	.apply = rockchip_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
-@@ -269,6 +269,7 @@ static const struct rockchip_pwm_data pwm_data_v2 = {
- 		.ctrl = 0x0c,
- 	},
- 	.prescaler = 1,
-+	.supports_polarity = true,
- 	.ops = &rockchip_pwm_ops_v2,
- 	.set_enable = rockchip_pwm_set_enable_v2,
- 	.get_state = rockchip_pwm_get_state_v2,
-@@ -282,6 +283,7 @@ static const struct rockchip_pwm_data pwm_data_vop = {
- 		.ctrl = 0x00,
- 	},
- 	.prescaler = 1,
-+	.supports_polarity = true,
- 	.ops = &rockchip_pwm_ops_v2,
- 	.set_enable = rockchip_pwm_set_enable_v2,
- 	.get_state = rockchip_pwm_get_state_v2,
-@@ -331,7 +333,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 	pc->chip.base = -1;
- 	pc->chip.npwm = 1;
- 
--	if (pc->data->ops->set_polarity) {
-+	if (pc->data->supports_polarity) {
- 		pc->chip.of_xlate = of_pwm_xlate_with_flags;
- 		pc->chip.of_pwm_n_cells = 3;
- 	}
--- 
-2.7.4
+
+Thanks
+Heiko
+
+The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
+
+  Linux 4.7-rc1 (2016-05-29 09:29:24 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk-fixes1
+
+for you to fetch changes up to 62d0e71df063101e4551327bd9fa9aaa3535c86b:
+
+  clk: rockchip: release io resource when failing to init clk on rk3399 (2016-06-03 15:36:49 +0200)
+
+----------------------------------------------------------------
+A bunch of fixes. Some for the newly added rk3399 clock tree, some
+concerning error handling and initialization and a revert of the
+mmc-phase clock initialization, as this could conflict with the
+bootloader setting of this clock and a real solution to initing
+the phase correctly from dw_mmc went in as fix for 4.7 through
+the mmc tree.
+
+----------------------------------------------------------------
+Brian Norris (1):
+      clk: rockchip: mark rk3399 GIC clocks as critical
+
+Douglas Anderson (1):
+      clk: rockchip: Revert "clk: rockchip: reset init state before mmc card initialization"
+
+Heiko Stuebner (1):
+      clk: rockchip: initialize flags of clk_init_data in mmc-phase clock
+
+Shawn Lin (1):
+      clk: rockchip: release io resource when failing to init clk on rk3399
+
+Xing Zheng (2):
+      clk: rockchip: fix incorrect parent for rk3399's {c,g}pll_aclk_perihp_src
+      clk: rockchip: fix cpuclk registration error handling
+
+ drivers/clk/rockchip/clk-cpu.c       |  4 ++--
+ drivers/clk/rockchip/clk-mmc-phase.c | 12 +-----------
+ drivers/clk/rockchip/clk-rk3399.c    |  8 ++++++--
+ 3 files changed, 9 insertions(+), 15 deletions(-)
+
