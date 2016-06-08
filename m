@@ -1,68 +1,28 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [RESEND PATCH v5 1/5] mfd: RK808: Add RK818 support
-Date: Thu, 9 Jun 2016 12:12:01 +0100
-Message-ID: <20160609111201.GA1388@dell>
-References: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
- <20160608141735.GE14888@dell>
- <5759277D.7090101@phytec.de>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH v2 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
+Date: Wed, 08 Jun 2016 22:06:21 +0200
+Message-ID: <19495840.MdNPOj1Q7K@wuerfel>
+References: <1465373154-882-1-git-send-email-shawn.lin@rock-chips.com> <5757E397.40401@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5759277D.7090101@phytec.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lgirdwood@gmail.com, broonie@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <5757E397.40401@arm.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 09 Jun 2016, Wadim Egorov wrote:
-> On 08.06.2016 16:17, Lee Jones wrote:
-> > On Thu, 02 Jun 2016, Wadim Egorov wrote:
-> >
-> >> The RK818 chip is a power management IC for multimedia and handhel=
-d
-> > "Power Management IC (PMIC)"
-> >
-> >> devices. It contains the following components:
-> >>
-> >> - Regulators
-> >> - RTC
-> >> - Clkout
-> > Clocking
-> >
-> >> - battery support
-> > Battery support
-> >
-> >> Both chips RK808 and RK818 are using a similar register map.
-> > "Both RK808 ad RK818 chips"
-> >
-> >> So we can reuse the RTC and Clkout functionality.
-> > Swap '.' for ','.
-> >
-> >> Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
-> >> ---
-> >>  drivers/mfd/Kconfig       |   4 +-
-> >>  drivers/mfd/rk808.c       | 231 +++++++++++++++++++++++++++++++++=
-+++++--------
-> >>  include/linux/mfd/rk808.h | 162 ++++++++++++++++++++++++++++++--
-> >>  3 files changed, 350 insertions(+), 47 deletions(-)
+On Wednesday, June 8, 2016 10:21:27 AM CEST Marc Zyngier wrote:
+> > +     rockchip_pcie_enable_interrupts(port);
+> > +     if (!IS_ENABLED(CONFIG_PCI_MSI)) {
+> > +             err = rockchip_pcie_init_irq_domain(port);
+> > +             if (err < 0)
+> > +                     goto err_vpcie;
+> 
+> Why are you excluding wired interrupts if you have PCI_MSI configured?
+> MSI allocation can fail, and wired interrupts become handy....
 
-[...]
+Also, a lot of drivers don't do MSI and rely on legacy interrupts.
 
-> >> -struct rk808_reg_data {
-> >> -	int addr;
-> >> -	int mask;
-> >> -	int value;
-> >> -};
-> > Why are you moving this to the header?
->=20
-> It is now part of the rk808 struct.
-
-Why?
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+	Arnd
