@@ -1,62 +1,68 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 06/11] Documentation: mmc: sdhci-of-arasan: Add ability
- to export card clock
-Date: Wed, 8 Jun 2016 15:19:23 -0500
-Message-ID: <20160608201923.GA20683@rob-hp-laptop>
-References: <1465339484-969-1-git-send-email-dianders@chromium.org>
- <1465339484-969-7-git-send-email-dianders@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] Documentation: bindings: add dt documentation for
+ Rockchip PCIe PHY
+Date: Wed, 8 Jun 2016 15:29:00 -0500
+Message-ID: <20160608202900.GA25662@rob-hp-laptop>
+References: <1465370708-23619-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mmc-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1465339484-969-7-git-send-email-dianders@chromium.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: ulf.hansson@linaro.org, kishon@ti.com, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, xzy.xu@rock-chips.com, briannorris@chromium.org, adrian.hunter@intel.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org
+In-Reply-To: <1465370708-23619-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 07, 2016 at 03:44:39PM -0700, Douglas Anderson wrote:
-> Some SD/eMMC PHYs (like the PHY from Arasan that is designed to work
-> with arasan,sdhci-5.1) need to know the card clock in order to function
-> properly.  Let's expose this clock using a standard device tree
-> mechanism so that the PHY can get access to and query the card clock.
-
-Need to know the clock freq or need the clock? The former doesn't need 
-to be in DT.
-
+gOn Wed, Jun 08, 2016 at 03:25:08PM +0800, Shawn Lin wrote:
+> This patch adds a binding that describes the Rockchip PCIe PHY
+> found on Rockchip SoCs PCIe interface.
 > 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 8 ++++++++
->  1 file changed, 8 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> index b67e623ca1ff..074d03e630ec 100644
-> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> @@ -30,6 +30,12 @@ Optional Properties:
->    - arasan,soc-ctl-syscon: A phandle to a syscon device (see ../mfd/syscon.txt)
->      used to access core corecfg registers.  Offsets of registers in this
->      syscon are determined based on the main compatible string for the device.
-> +  - clock-output-names: If specified, this will be the name of the card clock
-> +    which will be exposed by this device.  Required if #clock-cells is
-> +    specified.
-> +  - #clock-cells: If specified this should be the value <0>.  With this property
-> +    in place we will export a clock representing the Card Clock.  This clock
-> +    is expected to be consumed by our PHY.  You must also specify
->  
->  Example:
->  	sdhci@e0100000 {
-> @@ -61,7 +67,9 @@ Example:
->  		arasan,soc-ctl-syscon = <&grf>;
->  		assigned-clocks = <&cru SCLK_EMMC>;
->  		assigned-clock-rates = <200000000>;
-> +		clock-output-names = "emmc_cardclock";
->  		phys = <&emmc_phy>;
->  		phy-names = "phy_arasan";
-> +		#clock-cells = <0>;
->  		status = "disabled";
->  	};
+>  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+> new file mode 100644
+> index 0000000..ba8c406
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+> @@ -0,0 +1,22 @@
+> +Rockchip PCIE PHY
+> +-----------------------
+> +
+> +Required properties:
+> + - compatible: rockchip,rk3399-pcie-phy
+> + - #phy-cells: must be 0
+> +
+> +Example:
+> +
+> +grf: syscon@ff770000 {
+> +	compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+> +	#address-cells = <1>;
+> +	#size-cells = <1>;
+> +
+> +	...
+> +
+> +	pcie_phy: phy@e220 {
+
+unit-address needs a reg property or drop the unit address. I'd do the 
+former if there's a register range you can describe here.
+
+
+> +		compatible = "rockchip,rk3399-pcie-phy";
+> +		#phy-cells = <0>;
+> +	};
+> +};
+> +
 > -- 
-> 2.8.0.rc3.226.g39d4020
+> 2.3.7
 > 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
