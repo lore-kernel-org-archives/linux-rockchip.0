@@ -1,64 +1,81 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip clk fixes for 4.7
-Date: Wed, 08 Jun 2016 19:37:59 +0200
-Message-ID: <6554609.UWKLgmyVYi@diego>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [v1 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip
+ USB Type-C PHY
+Date: Wed, 8 Jun 2016 14:14:06 -0500
+Message-ID: <20160608191406.GA16940@rob-hp-laptop>
+References: <1464966911-18949-1-git-send-email-zyw@rock-chips.com>
+ <1464966911-18949-2-git-send-email-zyw@rock-chips.com>
+ <20160606142738.GA12472@rob-hp-laptop>
+ <57561653.9060404@rock-chips.com>
+ <CAL_Jsq+7fNuL3N24uh+F_VgGU0RBGUn_nwRA3_cFBseaobpqDw@mail.gmail.com>
+ <57577719.9020400@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <57577719.9020400@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Doug Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, =?utf-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+On Wed, Jun 08, 2016 at 09:38:33AM +0800, Chris Zhong wrote:
+> Hi Rob
+> 
+> On 06/07/2016 09:46 PM, Rob Herring wrote:
+> >On Mon, Jun 6, 2016 at 7:33 PM, Chris Zhong <zyw@rock-chips.com> wrote:
+> >>Hi Rob
+> >>
+> >>
+> >>On 06/06/2016 10:27 PM, Rob Herring wrote:
+> >>>On Fri, Jun 03, 2016 at 11:15:08PM +0800, Chris Zhong wrote:
+> >>>>This patch adds a binding that describes the Rockchip USB Type-C PHY
+> >>>>for rk3399
+> >>>>
+> >>>>Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> >>>>
+> >>>>---
+> >>>>
+> >>>>Changes in v1:
+> >>>>- add extcon node description
+> >>>>- move the registers in phy driver
+> >>>>- remove the suffix of reset
+> >>>>
+> >>>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 46
+> >>>>++++++++++++++++++++++
+> >>>>   1 file changed, 46 insertions(+)
+> >>>>   create mode 100644
+> >>>>Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>>>
+> >>>>diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>>>b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>>>new file mode 100644
+> >>>>index 0000000..964e0f7
+> >>>>--- /dev/null
+> >>>>+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>>>@@ -0,0 +1,46 @@
+> >>>>+* ROCKCHIP type-c PHY
+> >>>>+---------------------
+> >>>>+
+> >>>>+Required properties:
+> >>>>+ - compatible: should be "rockchip,rk3399-typec-phy0" or
+> >>>>+                        "rockchip,rk3399-typec-phy1"
+> >>>What's the difference between 0 and 1? If it is to handle the register
+> >>>offsets you have in the previous version and the phy blocks are
+> >>>identical, then the compatible strings should be the same.
+> >>yes, the registers are different between 0 and 1, and there is a grf
+> >>register(0x6268) for switch the phy 0 and phy 1
+> >But GRF is in a separate block and not part of the phy, right?
+> >
+> >Rob
+> The GRF is not a single function block, it contain many registers to control
+> other block.
+> For Type-c phy, the type-c orientation, phy select, and some phy status
+> registers are embedded in GRF
+> So the GRF is registered for a syscon driver, the phy driver call regmap to
+> access the registers.
 
-please find below some accumulated small-scale fixes that would be nice to have
-in 4.7. So if nothing stands out, please pull
+Right, so different compatible strings is wrong here. Keep it more like 
+you had it before.
 
-
-Thanks
-Heiko
-
-The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
-
-  Linux 4.7-rc1 (2016-05-29 09:29:24 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk-fixes1
-
-for you to fetch changes up to 62d0e71df063101e4551327bd9fa9aaa3535c86b:
-
-  clk: rockchip: release io resource when failing to init clk on rk3399 (2016-06-03 15:36:49 +0200)
-
-----------------------------------------------------------------
-A bunch of fixes. Some for the newly added rk3399 clock tree, some
-concerning error handling and initialization and a revert of the
-mmc-phase clock initialization, as this could conflict with the
-bootloader setting of this clock and a real solution to initing
-the phase correctly from dw_mmc went in as fix for 4.7 through
-the mmc tree.
-
-----------------------------------------------------------------
-Brian Norris (1):
-      clk: rockchip: mark rk3399 GIC clocks as critical
-
-Douglas Anderson (1):
-      clk: rockchip: Revert "clk: rockchip: reset init state before mmc card initialization"
-
-Heiko Stuebner (1):
-      clk: rockchip: initialize flags of clk_init_data in mmc-phase clock
-
-Shawn Lin (1):
-      clk: rockchip: release io resource when failing to init clk on rk3399
-
-Xing Zheng (2):
-      clk: rockchip: fix incorrect parent for rk3399's {c,g}pll_aclk_perihp_src
-      clk: rockchip: fix cpuclk registration error handling
-
- drivers/clk/rockchip/clk-cpu.c       |  4 ++--
- drivers/clk/rockchip/clk-mmc-phase.c | 12 +-----------
- drivers/clk/rockchip/clk-rk3399.c    |  8 ++++++--
- 3 files changed, 9 insertions(+), 15 deletions(-)
-
+Rob
