@@ -1,81 +1,38 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [v1 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip
- USB Type-C PHY
-Date: Wed, 8 Jun 2016 14:14:06 -0500
-Message-ID: <20160608191406.GA16940@rob-hp-laptop>
-References: <1464966911-18949-1-git-send-email-zyw@rock-chips.com>
- <1464966911-18949-2-git-send-email-zyw@rock-chips.com>
- <20160606142738.GA12472@rob-hp-laptop>
- <57561653.9060404@rock-chips.com>
- <CAL_Jsq+7fNuL3N24uh+F_VgGU0RBGUn_nwRA3_cFBseaobpqDw@mail.gmail.com>
- <57577719.9020400@rock-chips.com>
+Subject: Re: [PATCH v4 1/2] Documentation: bindings: add DT documentation for
+ Rockchip USB2PHY
+Date: Wed, 8 Jun 2016 15:04:19 -0500
+Message-ID: <20160608200419.GA12468@rob-hp-laptop>
+References: <1465290954-15852-1-git-send-email-frank.wang@rock-chips.com>
+ <1465290954-15852-2-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <57577719.9020400@rock-chips.com>
+In-Reply-To: <1465290954-15852-2-git-send-email-frank.wang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Doug Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, =?utf-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: heiko@sntech.de, dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 08, 2016 at 09:38:33AM +0800, Chris Zhong wrote:
-> Hi Rob
+On Tue, Jun 07, 2016 at 05:15:53PM +0800, Frank Wang wrote:
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
 > 
-> On 06/07/2016 09:46 PM, Rob Herring wrote:
-> >On Mon, Jun 6, 2016 at 7:33 PM, Chris Zhong <zyw@rock-chips.com> wrote:
-> >>Hi Rob
-> >>
-> >>
-> >>On 06/06/2016 10:27 PM, Rob Herring wrote:
-> >>>On Fri, Jun 03, 2016 at 11:15:08PM +0800, Chris Zhong wrote:
-> >>>>This patch adds a binding that describes the Rockchip USB Type-C PHY
-> >>>>for rk3399
-> >>>>
-> >>>>Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> >>>>
-> >>>>---
-> >>>>
-> >>>>Changes in v1:
-> >>>>- add extcon node description
-> >>>>- move the registers in phy driver
-> >>>>- remove the suffix of reset
-> >>>>
-> >>>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 46
-> >>>>++++++++++++++++++++++
-> >>>>   1 file changed, 46 insertions(+)
-> >>>>   create mode 100644
-> >>>>Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>>>
-> >>>>diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>>>b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>>>new file mode 100644
-> >>>>index 0000000..964e0f7
-> >>>>--- /dev/null
-> >>>>+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>>>@@ -0,0 +1,46 @@
-> >>>>+* ROCKCHIP type-c PHY
-> >>>>+---------------------
-> >>>>+
-> >>>>+Required properties:
-> >>>>+ - compatible: should be "rockchip,rk3399-typec-phy0" or
-> >>>>+                        "rockchip,rk3399-typec-phy1"
-> >>>What's the difference between 0 and 1? If it is to handle the register
-> >>>offsets you have in the previous version and the phy blocks are
-> >>>identical, then the compatible strings should be the same.
-> >>yes, the registers are different between 0 and 1, and there is a grf
-> >>register(0x6268) for switch the phy 0 and phy 1
-> >But GRF is in a separate block and not part of the phy, right?
-> >
-> >Rob
-> The GRF is not a single function block, it contain many registers to control
-> other block.
-> For Type-c phy, the type-c orientation, phy select, and some phy status
-> registers are embedded in GRF
-> So the GRF is registered for a syscon driver, the phy driver call regmap to
-> access the registers.
+> Changes in v4:
+>  - Used 'phy-supply' instead of 'vbus_*-supply'.
+> 
+> Changes in v3:
+>  - Added 'clocks' and 'clock-names' optional properties.
+>  - Specified 'otg-port' and 'host-port' as the sub-node name.
+> 
+> Changes in v2:
+>  - Changed vbus_host optional property from gpio to regulator.
+>  - Specified vbus_otg-supply optional property.
+>  - Specified otg_id and otg_bvalid property.
+> 
+>  .../bindings/phy/phy-rockchip-inno-usb2.txt        |   62 ++++++++++++++++++++
+>  1 file changed, 62 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
 
-Right, so different compatible strings is wrong here. Keep it more like 
-you had it before.
-
-Rob
+Acked-by: Rob Herring <robh@kernel.org>
