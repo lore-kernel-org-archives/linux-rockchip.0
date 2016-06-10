@@ -1,232 +1,48 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 01/13] pwm: Add new helpers to create/manipulate PWM
- states
-Date: Fri, 10 Jun 2016 18:29:42 +0200
-Message-ID: <20160610182942.5e7485ff@bbrezillon>
-References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1465403688-17098-2-git-send-email-boris.brezillon@free-electrons.com>
-	<20160610152109.GQ27142@ulmo.ba.sec>
+From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Subject: Re: [PATCH v2 06/20] drm: i915: Rely on the default ->best_encoder()
+ behavior where appropriate
+Date: Fri, 10 Jun 2016 18:41:52 +0200
+Message-ID: <20160610164152.GO3363__44654.6350293376$1465576954$gmane$org@phenom.ffwll.local>
+References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465300095-16971-7-git-send-email-boris.brezillon@free-electrons.com>
+ <20160610152412.GL3363@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20160610152109.GQ27142@ulmo.ba.sec>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Milo Kim <milo.kim@ti.com>, Doug Anderson <dianders@google.com>, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Brian Norris <briannorris@chromium.org>, Ajit Pal Singh <ajitpal.singh@st.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, kernel@stlinux.com, Laxman Dewangan <ldewangan@nvidia.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20160610152412.GL3363-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Alison Wang <alison.wang-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko@snte>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-On Fri, 10 Jun 2016 17:21:09 +0200
-Thierry Reding <thierry.reding@gmail.com> wrote:
-
-> On Wed, Jun 08, 2016 at 06:34:36PM +0200, Boris Brezillon wrote:
-> > The pwm_prepare_new_state() helper prepares a new state object
-> > containing the current PWM state except for the polarity and period
-> > fields which are set to the reference values.
-> > This is particurly useful for PWM users who want to apply a new
-> > duty-cycle expressed relatively to the reference period without
-> > changing the enable state.
+On Fri, Jun 10, 2016 at 05:24:12PM +0200, Daniel Vetter wrote:
+> On Tue, Jun 07, 2016 at 01:48:01PM +0200, Boris Brezillon wrote:
+> > For all outputs except dp_mst, we have a 1:1 relationship between
+> > connectors and encoders and the driver is relying on the atomic helpers:
+> > we can drop the custom ->best_encoder() implementation and let the core
+> > call drm_atomic_helper_best_encoder() for us.
 > > 
-> > The PWM framework expect PWM users to configure the duty cycle in
-> > nanosecond, but most users just want to express this duty cycle
-> > relatively to the period value (i.e. duty_cycle = 33% of the period).
-> > Add pwm_{get,set}_relative_duty_cycle() helpers to ease this kind of
-> > conversion.  
+> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
 > 
-> This looks pretty useful and good, though I think these could be two
-> separate patches. A couple of suggestions on wording and such below.
+> You can also drop the best_encoder from intel_dp_mst, we only need the
+> atomic_best_encoder. The best_encoder there was needed to help out the
+> fbdev emulation. Care to respin?
 
-Sure, I can split those changes.
+Boris pointed out on irc that this won't work for the fbdev stuff since
+that has a WARN_ON if theres more than 1 possible encoder. Applied this
+one here instead.
 
-> 
-> > Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> > ---
-> >  include/linux/pwm.h | 81 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 81 insertions(+)
-> > 
-> > diff --git a/include/linux/pwm.h b/include/linux/pwm.h
-> > index 17018f3..e09babf 100644
-> > --- a/include/linux/pwm.h
-> > +++ b/include/linux/pwm.h
-> > @@ -148,6 +148,87 @@ static inline void pwm_get_args(const struct pwm_device *pwm,
-> >  }
-> >  
-> >  /**
-> > + * pwm_prepare_new_state() - prepare a new state to be applied with
-> > + *			     pwm_apply_state()  
-> 
-> This is weirdly indented.
-
-I'll fix the indentation.
-
-> 
-> > + * @pwm: PWM device
-> > + * @state: state to fill with the prepared PWM state
-> > + *
-> > + * This functions prepares a state that can later be tweaked and applied
-> > + * to the PWM device with pwm_apply_state(). This is a convenient function
-> > + * that first retrieves the current PWM state and the replaces the period
-> > + * and polarity fields with the reference values defined in pwm->args.
-> > + * Once the new state is created you can adjust the ->enable and ->duty_cycle  
-> 
-> "created" has the connotation of allocating. Perhaps: "Once the function
-> returns, you can adjust the ->enabled and ->duty_cycle fields according
-> to your needs before calling pwm_apply_state()."?
-
-Okay.
-
-> 
-> Also note that the field is called ->enabled.
-> 
-> > + * according to your need before calling pwm_apply_state().  
-> 
-> Maybe mention that the ->duty_cycle field is explicitly zeroed. Then
-> again, do we really need it? If users are going to overwrite it anyway,
-> do we even need to bother? I suppose it makes some sense because the
-> current duty cycle is stale when the ->period gets set to the value from
-> args. I think the documentation should mention this in some way.
-
-Yes, if we keep the current duty_cycle it can exceed the period value.
-I'm fine dropping the ->duty_cycle = 0 assignment and documenting the
-behavior.
-
-> 
-> > + */
-> > +static inline void pwm_prepare_new_state(const struct pwm_device *pwm,
-> > +					 struct pwm_state *state)  
-> 
-> Perhaps choose a shorter name, such as: pwm_init_state()?
-
-Sure.
-
-> 
-> > +{
-> > +	struct pwm_args args;
-> > +
-> > +	/* First get the current state. */
-> > +	pwm_get_state(pwm, state);
-> > +
-> > +	/* Then fill it with the reference config */
-> > +	pwm_get_args(pwm, &args);
-> > +
-> > +	state->period = args.period;
-> > +	state->polarity = args.polarity;
-> > +	state->duty_cycle = 0;
-> > +}
-> > +
-> > +/**
-> > + * pwm_get_relative_duty_cycle() - Get a relative duty_cycle value
-> > + * @state: the PWM state to extract period and duty_cycle from
-> > + * @scale: the scale you want to use for you relative duty_cycle value  
-> 
-> Other kerneldoc comments in this file don't prefix the description with
-> "the".
-> 
-> Also, perhaps the following descriptions would be slightly less
-> confusing:
-> 
-> 	@state: PWM state to extract the duty cycle from
-
-Agreed.
-
-> 
-> We don't extract (i.e. return) period from the state, so it's a little
-> confusing to mention it here.
-> 
-> 	@scale: scale in which to return the relative duty cycle
-> 
-> This is slightly more explicit in that it says what the returned duty
-> cycle will be in. Perhaps as an alternative:
-> 
-> 	@scale: target scale of the relative duty cycle
-
-I'll go for this one.
-
-> 
-> > + *
-> > + * This functions converts the absolute duty_cycle stored in @state
-> > + * (expressed in nanosecond) into a relative value.  
-> 
-> Perhaps: "... into a value relative to the period."?
-
-Okay.
-
-> 
-> > + * For example if you want to get the duty_cycle expressed in nanosecond,  
-> 
-> The example below would give you the duty cycle in percent, not
-> nanoseconds, right?
-
-Absolutely. I'll fix that.
-
-> 
-> > + * call:
-> > + *
-> > + * pwm_get_state(pwm, &state);
-> > + * duty = pwm_get_relative_duty_cycle(&state, 100);
-> > + */
-> > +static inline unsigned int
-> > +pwm_get_relative_duty_cycle(const struct pwm_state *state, unsigned int scale)
-> > +{
-> > +	if (!state->period)
-> > +		return 0;
-> > +
-> > +	return DIV_ROUND_CLOSEST_ULL((u64)state->duty_cycle * scale,
-> > +				     state->period);
-> > +}
-> > +
-> > +/**
-> > + * pwm_set_relative_duty_cycle() - Set a relative duty_cycle value
-> > + * @state: the PWM state to fill
-> > + * @val: the relative duty_cycle value
-> > + * @scale: the scale you use for you relative duty_cycle value  
-> 
-> "scale in which @duty_cycle is expressed"?
-
-Yep.
-
-> 
-> > + *
-> > + * This functions converts a relative duty_cycle stored into an absolute
-> > + * one (expressed in nanoseconds), and put the result in state->duty_cycle.
-> > + * For example if you want to change configure a 50% duty_cycle, call:
-> > + *
-> > + * pwm_prepare_new_state(pwm, &state);
-> > + * pwm_set_relative_duty_cycle(&state, 50, 100);
-> > + * pwm_apply_state(pwm, &state);
-> > + */
-> > +static inline void
-> > +pwm_set_relative_duty_cycle(struct pwm_state *state, unsigned int val,  
-> 
-> Any reason why we can't call "val" "duty_cycle"? That's what it is,
-> after all.
-
-Nope, I'll switch to duty_cycle.
-
-> 
-> > +			    unsigned int scale)
-> > +{
-> > +	if (!scale)
-> > +		return;
-> > +
-> > +	/* Make sure we don't have duty_cycle > period */
-> > +	if (val > scale)
-> > +		val = scale;  
-> 
-> Can we return -EINVAL for both of the above checks? I don't like
-> silently clamping the duty cycle that the user passed in.
-
-I'm fine returning -EINVAL in this case.
-
-Thanks for rewording some of my sentences and reviewing the patch.
-
-Regards,
-
-Boris
-
+Thanks, Daniel
 -- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
