@@ -1,216 +1,178 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v2 01/13] pwm: Add new helpers to create/manipulate PWM
- states
-Date: Fri, 10 Jun 2016 17:21:09 +0200
-Message-ID: <20160610152109.GQ27142@ulmo.ba.sec>
-References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465403688-17098-2-git-send-email-boris.brezillon@free-electrons.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v2 06/20] drm: i915: Rely on the default ->best_encoder()
+ behavior where appropriate
+Date: Fri, 10 Jun 2016 17:24:12 +0200
+Message-ID: <20160610152412.GL3363@phenom.ffwll.local>
+References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465300095-16971-7-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="oN4OvwWIcd1E23D1"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1465403688-17098-2-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-kernel-owner@vger.kernel.org
+In-Reply-To: <1465300095-16971-7-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-arm-msm-owner@vger.kernel.org
 To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Milo Kim <milo.kim@ti.com>, Doug Anderson <dianders@google.com>, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Brian Norris <briannorris@chromium.org>, Ajit Pal Singh <ajitpal.singh@st.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, kernel@stlinux.com, Laxman Dewangan <ldewangan@nvidia.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>, Alexey Brodkin <abrodkin@synopsys.com>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@freescale.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin
 List-Id: linux-rockchip.vger.kernel.org
 
-
---oN4OvwWIcd1E23D1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jun 08, 2016 at 06:34:36PM +0200, Boris Brezillon wrote:
-> The pwm_prepare_new_state() helper prepares a new state object
-> containing the current PWM state except for the polarity and period
-> fields which are set to the reference values.
-> This is particurly useful for PWM users who want to apply a new
-> duty-cycle expressed relatively to the reference period without
-> changing the enable state.
->=20
-> The PWM framework expect PWM users to configure the duty cycle in
-> nanosecond, but most users just want to express this duty cycle
-> relatively to the period value (i.e. duty_cycle =3D 33% of the period).
-> Add pwm_{get,set}_relative_duty_cycle() helpers to ease this kind of
-> conversion.
-
-This looks pretty useful and good, though I think these could be two
-separate patches. A couple of suggestions on wording and such below.
-
+On Tue, Jun 07, 2016 at 01:48:01PM +0200, Boris Brezillon wrote:
+> For all outputs except dp_mst, we have a 1:1 relationship between
+> connectors and encoders and the driver is relying on the atomic helpers:
+> we can drop the custom ->best_encoder() implementation and let the core
+> call drm_atomic_helper_best_encoder() for us.
+> 
 > Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+
+You can also drop the best_encoder from intel_dp_mst, we only need the
+atomic_best_encoder. The best_encoder there was needed to help out the
+fbdev emulation. Care to respin?
+-Daniel
+
 > ---
->  include/linux/pwm.h | 81 +++++++++++++++++++++++++++++++++++++++++++++++=
-++++++
->  1 file changed, 81 insertions(+)
->=20
-> diff --git a/include/linux/pwm.h b/include/linux/pwm.h
-> index 17018f3..e09babf 100644
-> --- a/include/linux/pwm.h
-> +++ b/include/linux/pwm.h
-> @@ -148,6 +148,87 @@ static inline void pwm_get_args(const struct pwm_dev=
-ice *pwm,
+>  drivers/gpu/drm/i915/intel_crt.c     | 1 -
+>  drivers/gpu/drm/i915/intel_display.c | 8 --------
+>  drivers/gpu/drm/i915/intel_dp.c      | 1 -
+>  drivers/gpu/drm/i915/intel_drv.h     | 1 -
+>  drivers/gpu/drm/i915/intel_dsi.c     | 1 -
+>  drivers/gpu/drm/i915/intel_dvo.c     | 1 -
+>  drivers/gpu/drm/i915/intel_hdmi.c    | 1 -
+>  drivers/gpu/drm/i915/intel_lvds.c    | 1 -
+>  drivers/gpu/drm/i915/intel_sdvo.c    | 1 -
+>  drivers/gpu/drm/i915/intel_tv.c      | 1 -
+>  10 files changed, 17 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/intel_crt.c b/drivers/gpu/drm/i915/intel_crt.c
+> index 3fbb6fc..bd0cd68 100644
+> --- a/drivers/gpu/drm/i915/intel_crt.c
+> +++ b/drivers/gpu/drm/i915/intel_crt.c
+> @@ -753,7 +753,6 @@ static const struct drm_connector_funcs intel_crt_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_crt_connector_helper_funcs = {
+>  	.mode_valid = intel_crt_mode_valid,
+>  	.get_modes = intel_crt_get_modes,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_encoder_funcs intel_crt_enc_funcs = {
+> diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+> index 2113f40..77026ce 100644
+> --- a/drivers/gpu/drm/i915/intel_display.c
+> +++ b/drivers/gpu/drm/i915/intel_display.c
+> @@ -16113,14 +16113,6 @@ void intel_modeset_cleanup(struct drm_device *dev)
+>  	intel_teardown_gmbus(dev);
 >  }
-> =20
->  /**
-> + * pwm_prepare_new_state() - prepare a new state to be applied with
-> + *			     pwm_apply_state()
+>  
+> -/*
+> - * Return which encoder is currently attached for connector.
+> - */
+> -struct drm_encoder *intel_best_encoder(struct drm_connector *connector)
+> -{
+> -	return &intel_attached_encoder(connector)->base;
+> -}
+> -
+>  void intel_connector_attach_encoder(struct intel_connector *connector,
+>  				    struct intel_encoder *encoder)
+>  {
+> diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
+> index f192f58..21b2833 100644
+> --- a/drivers/gpu/drm/i915/intel_dp.c
+> +++ b/drivers/gpu/drm/i915/intel_dp.c
+> @@ -4935,7 +4935,6 @@ static const struct drm_connector_funcs intel_dp_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_dp_connector_helper_funcs = {
+>  	.get_modes = intel_dp_get_modes,
+>  	.mode_valid = intel_dp_mode_valid,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_encoder_funcs intel_dp_enc_funcs = {
+> diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
+> index a28b4aa..79a4d6b 100644
+> --- a/drivers/gpu/drm/i915/intel_drv.h
+> +++ b/drivers/gpu/drm/i915/intel_drv.h
+> @@ -1128,7 +1128,6 @@ struct intel_connector *intel_connector_alloc(void);
+>  bool intel_connector_get_hw_state(struct intel_connector *connector);
+>  void intel_connector_attach_encoder(struct intel_connector *connector,
+>  				    struct intel_encoder *encoder);
+> -struct drm_encoder *intel_best_encoder(struct drm_connector *connector);
+>  struct drm_display_mode *intel_crtc_mode_get(struct drm_device *dev,
+>  					     struct drm_crtc *crtc);
+>  enum pipe intel_get_pipe_from_connector(struct intel_connector *connector);
+> diff --git a/drivers/gpu/drm/i915/intel_dsi.c b/drivers/gpu/drm/i915/intel_dsi.c
+> index 366ad6c..ec51952 100644
+> --- a/drivers/gpu/drm/i915/intel_dsi.c
+> +++ b/drivers/gpu/drm/i915/intel_dsi.c
+> @@ -1378,7 +1378,6 @@ static const struct drm_encoder_funcs intel_dsi_funcs = {
+>  static const struct drm_connector_helper_funcs intel_dsi_connector_helper_funcs = {
+>  	.get_modes = intel_dsi_get_modes,
+>  	.mode_valid = intel_dsi_mode_valid,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_connector_funcs intel_dsi_connector_funcs = {
+> diff --git a/drivers/gpu/drm/i915/intel_dvo.c b/drivers/gpu/drm/i915/intel_dvo.c
+> index 286baec..34b7e3f 100644
+> --- a/drivers/gpu/drm/i915/intel_dvo.c
+> +++ b/drivers/gpu/drm/i915/intel_dvo.c
+> @@ -351,7 +351,6 @@ static const struct drm_connector_funcs intel_dvo_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_dvo_connector_helper_funcs = {
+>  	.mode_valid = intel_dvo_mode_valid,
+>  	.get_modes = intel_dvo_get_modes,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static void intel_dvo_enc_destroy(struct drm_encoder *encoder)
+> diff --git a/drivers/gpu/drm/i915/intel_hdmi.c b/drivers/gpu/drm/i915/intel_hdmi.c
+> index 2c3bd9c..aef4bc8 100644
+> --- a/drivers/gpu/drm/i915/intel_hdmi.c
+> +++ b/drivers/gpu/drm/i915/intel_hdmi.c
+> @@ -2114,7 +2114,6 @@ static const struct drm_connector_funcs intel_hdmi_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_hdmi_connector_helper_funcs = {
+>  	.get_modes = intel_hdmi_get_modes,
+>  	.mode_valid = intel_hdmi_mode_valid,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_encoder_funcs intel_hdmi_enc_funcs = {
+> diff --git a/drivers/gpu/drm/i915/intel_lvds.c b/drivers/gpu/drm/i915/intel_lvds.c
+> index bc53c0d..d4faa5a 100644
+> --- a/drivers/gpu/drm/i915/intel_lvds.c
+> +++ b/drivers/gpu/drm/i915/intel_lvds.c
+> @@ -547,7 +547,6 @@ static int intel_lvds_set_property(struct drm_connector *connector,
+>  static const struct drm_connector_helper_funcs intel_lvds_connector_helper_funcs = {
+>  	.get_modes = intel_lvds_get_modes,
+>  	.mode_valid = intel_lvds_mode_valid,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_connector_funcs intel_lvds_connector_funcs = {
+> diff --git a/drivers/gpu/drm/i915/intel_sdvo.c b/drivers/gpu/drm/i915/intel_sdvo.c
+> index 2128fae..5cd48ff 100644
+> --- a/drivers/gpu/drm/i915/intel_sdvo.c
+> +++ b/drivers/gpu/drm/i915/intel_sdvo.c
+> @@ -2191,7 +2191,6 @@ static const struct drm_connector_funcs intel_sdvo_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_sdvo_connector_helper_funcs = {
+>  	.get_modes = intel_sdvo_get_modes,
+>  	.mode_valid = intel_sdvo_mode_valid,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static void intel_sdvo_enc_destroy(struct drm_encoder *encoder)
+> diff --git a/drivers/gpu/drm/i915/intel_tv.c b/drivers/gpu/drm/i915/intel_tv.c
+> index 223129d..47fe241 100644
+> --- a/drivers/gpu/drm/i915/intel_tv.c
+> +++ b/drivers/gpu/drm/i915/intel_tv.c
+> @@ -1512,7 +1512,6 @@ static const struct drm_connector_funcs intel_tv_connector_funcs = {
+>  static const struct drm_connector_helper_funcs intel_tv_connector_helper_funcs = {
+>  	.mode_valid = intel_tv_mode_valid,
+>  	.get_modes = intel_tv_get_modes,
+> -	.best_encoder = intel_best_encoder,
+>  };
+>  
+>  static const struct drm_encoder_funcs intel_tv_enc_funcs = {
+> -- 
+> 2.7.4
+> 
 
-This is weirdly indented.
-
-> + * @pwm: PWM device
-> + * @state: state to fill with the prepared PWM state
-> + *
-> + * This functions prepares a state that can later be tweaked and applied
-> + * to the PWM device with pwm_apply_state(). This is a convenient functi=
-on
-> + * that first retrieves the current PWM state and the replaces the period
-> + * and polarity fields with the reference values defined in pwm->args.
-> + * Once the new state is created you can adjust the ->enable and ->duty_=
-cycle
-
-"created" has the connotation of allocating. Perhaps: "Once the function
-returns, you can adjust the ->enabled and ->duty_cycle fields according
-to your needs before calling pwm_apply_state()."?
-
-Also note that the field is called ->enabled.
-
-> + * according to your need before calling pwm_apply_state().
-
-Maybe mention that the ->duty_cycle field is explicitly zeroed. Then
-again, do we really need it? If users are going to overwrite it anyway,
-do we even need to bother? I suppose it makes some sense because the
-current duty cycle is stale when the ->period gets set to the value from
-args. I think the documentation should mention this in some way.
-
-> + */
-> +static inline void pwm_prepare_new_state(const struct pwm_device *pwm,
-> +					 struct pwm_state *state)
-
-Perhaps choose a shorter name, such as: pwm_init_state()?
-
-> +{
-> +	struct pwm_args args;
-> +
-> +	/* First get the current state. */
-> +	pwm_get_state(pwm, state);
-> +
-> +	/* Then fill it with the reference config */
-> +	pwm_get_args(pwm, &args);
-> +
-> +	state->period =3D args.period;
-> +	state->polarity =3D args.polarity;
-> +	state->duty_cycle =3D 0;
-> +}
-> +
-> +/**
-> + * pwm_get_relative_duty_cycle() - Get a relative duty_cycle value
-> + * @state: the PWM state to extract period and duty_cycle from
-> + * @scale: the scale you want to use for you relative duty_cycle value
-
-Other kerneldoc comments in this file don't prefix the description with
-"the".
-
-Also, perhaps the following descriptions would be slightly less
-confusing:
-
-	@state: PWM state to extract the duty cycle from
-
-We don't extract (i.e. return) period from the state, so it's a little
-confusing to mention it here.
-
-	@scale: scale in which to return the relative duty cycle
-
-This is slightly more explicit in that it says what the returned duty
-cycle will be in. Perhaps as an alternative:
-
-	@scale: target scale of the relative duty cycle
-
-> + *
-> + * This functions converts the absolute duty_cycle stored in @state
-> + * (expressed in nanosecond) into a relative value.
-
-Perhaps: "... into a value relative to the period."?
-
-> + * For example if you want to get the duty_cycle expressed in nanosecond,
-
-The example below would give you the duty cycle in percent, not
-nanoseconds, right?
-
-> + * call:
-> + *
-> + * pwm_get_state(pwm, &state);
-> + * duty =3D pwm_get_relative_duty_cycle(&state, 100);
-> + */
-> +static inline unsigned int
-> +pwm_get_relative_duty_cycle(const struct pwm_state *state, unsigned int =
-scale)
-> +{
-> +	if (!state->period)
-> +		return 0;
-> +
-> +	return DIV_ROUND_CLOSEST_ULL((u64)state->duty_cycle * scale,
-> +				     state->period);
-> +}
-> +
-> +/**
-> + * pwm_set_relative_duty_cycle() - Set a relative duty_cycle value
-> + * @state: the PWM state to fill
-> + * @val: the relative duty_cycle value
-> + * @scale: the scale you use for you relative duty_cycle value
-
-"scale in which @duty_cycle is expressed"?
-
-> + *
-> + * This functions converts a relative duty_cycle stored into an absolute
-> + * one (expressed in nanoseconds), and put the result in state->duty_cyc=
-le.
-> + * For example if you want to change configure a 50% duty_cycle, call:
-> + *
-> + * pwm_prepare_new_state(pwm, &state);
-> + * pwm_set_relative_duty_cycle(&state, 50, 100);
-> + * pwm_apply_state(pwm, &state);
-> + */
-> +static inline void
-> +pwm_set_relative_duty_cycle(struct pwm_state *state, unsigned int val,
-
-Any reason why we can't call "val" "duty_cycle"? That's what it is,
-after all.
-
-> +			    unsigned int scale)
-> +{
-> +	if (!scale)
-> +		return;
-> +
-> +	/* Make sure we don't have duty_cycle > period */
-> +	if (val > scale)
-> +		val =3D scale;
-
-Can we return -EINVAL for both of the above checks? I don't like
-silently clamping the duty cycle that the user passed in.
-
-Thierry
-
---oN4OvwWIcd1E23D1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJXWtriAAoJEN0jrNd/PrOhVakQAJ46vixDAco1vy98SBEiX0t8
-YarDZyV3gQyM6muAxwOyErgFO/c71XIMELtQzKKjfoRTYmcGamVX7er5/ykS1l6/
-T1tD1lkL5geObe5RKYsZQ9vc4ifljg49kAhWgtzCaMiOmpa6LOGDNDTTntqATKVP
-C/QhO6dj3E4pASURNzh88dN0YRXf+vcxORf+xfW6PeTDS8gQ6u5w13UoXT71yM4/
-JaSgUBCvZP+/sttrlXMplSOIYLumx6ywf/niB+tKrSgS0MTh2YXmWZ8bNGlo3bAK
-HprkBwWIjWTD0em6JVYn7/iHr58aS1zDyArKbJluLNVsxW9z089K21/27j+zOsqz
-qTp9zM73dsv9kU4v1UODaskd7D78YtXC+oDRQP7DNSl54Bu8ev2OhpLcuWV6aI4+
-bqEnphuvDaHRVJm4mDduumFlpHU9Z/PpPYFeHS4VxZSam85ImGhFsY00hseedAii
-DipBMomujvFU36DzCZv2Zu3Kb077aJlw90xnoRQq/25TNFbHepEt7AcAt2pM2B19
-xtQka5F6NNXTKSjn0xttXEyenofGLfna9AZ8nmTxGE7pP3B3QQnJsVUV6La6FEli
-o+q0jKY6T930dNdOnv0HcEGWXvAhStjc+lHclm8mu9i0UOfDs/8VeERpiuLxbJj4
-U/Q81ioXy8AAAnDNyb1l
-=MVbl
------END PGP SIGNATURE-----
-
---oN4OvwWIcd1E23D1--
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
