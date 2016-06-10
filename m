@@ -1,107 +1,107 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v4 43/44] dma-mapping: Remove dma_get_attr
-Date: Fri, 10 Jun 2016 11:58:53 +0100
-Message-ID: <575A9D6D.9040808@arm.com>
-References: <1465553521-27303-1-git-send-email-k.kozlowski@samsung.com>
-	<1465553521-27303-44-git-send-email-k.kozlowski@samsung.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] drm/rockchip: Drop drm_driver.load/unload callbacks
+Date: Fri, 10 Jun 2016 13:14:13 +0200
+Message-ID: <1465557253-10670-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1465553521-27303-44-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, linux-ia64-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, "James E.J. Bottomley" <jejb-6jwH94ZQLHl74goWV3ctuw@public.gmane.org>, Max Filippov <jcmvbkbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, Jisheng Zhang <jszhang-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Andrea Gelmini <andrea.gelmini-PT7Us6ch6G9eoWH0uzbU5w@public.gmane.org>, Hans-Christian Egtvedt <egtvedt-BrfabpQBY5qlHtIdYg32fQ@public.gmane.org>, Jonas Bonn <jonas-A9uVI2HLR7kOP4wsBPIw7w@public.gmane.org>, Stefano Stabellini <sstabellini-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Osciak <pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org>, linux-snps-arc-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Helge Deller <deller-Mmb7MZpHnFY@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3jQFizaE/u3fw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/06/16 11:12, Krzysztof Kozlowski wrote:
-> After switching DMA attributes to unsigned long it is easier to just
-> compare the bits.
->
-> Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> [for avr32]
-> Acked-by: Hans-Christian Noren Egtvedt <egtvedt-BrfabpQBY5qlHtIdYg32fQ@public.gmane.org>
-> ---
-[...]
->   arch/arm64/mm/dma-mapping.c                    | 10 +++----
-[...]
->   drivers/iommu/dma-iommu.c                      |  2 +-
-[...]
-> diff --git a/arch/arm64/mm/dma-mapping.c b/arch/arm64/mm/dma-mapping.c
-> index a7686028dfeb..06c068ca3541 100644
-> --- a/arch/arm64/mm/dma-mapping.c
-> +++ b/arch/arm64/mm/dma-mapping.c
-> @@ -32,7 +32,7 @@
->   static pgprot_t __get_dma_pgprot(unsigned long attrs, pgprot_t prot,
->   				 bool coherent)
->   {
-> -	if (!coherent || dma_get_attr(DMA_ATTR_WRITE_COMBINE, attrs))
-> +	if (!coherent || (attrs & DMA_ATTR_WRITE_COMBINE))
->   		return pgprot_writecombine(prot);
->   	return prot;
->   }
-> @@ -702,7 +702,7 @@ static dma_addr_t __iommu_map_page(struct device *dev, struct page *page,
->   	dma_addr_t dev_addr = iommu_dma_map_page(dev, page, offset, size, prot);
->
->   	if (!iommu_dma_mapping_error(dev, dev_addr) &&
-> -	    !dma_get_attr(DMA_ATTR_SKIP_CPU_SYNC, attrs))
-> +	    (attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
->   		__iommu_sync_single_for_device(dev, dev_addr, size, dir);
->
->   	return dev_addr;
-> @@ -712,7 +712,7 @@ static void __iommu_unmap_page(struct device *dev, dma_addr_t dev_addr,
->   			       size_t size, enum dma_data_direction dir,
->   			       unsigned long attrs)
->   {
-> -	if (!dma_get_attr(DMA_ATTR_SKIP_CPU_SYNC, attrs))
-> +	if ((attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
->   		__iommu_sync_single_for_cpu(dev, dev_addr, size, dir);
->
->   	iommu_dma_unmap_page(dev, dev_addr, size, dir, attrs);
-> @@ -752,7 +752,7 @@ static int __iommu_map_sg_attrs(struct device *dev, struct scatterlist *sgl,
->   {
->   	bool coherent = is_device_dma_coherent(dev);
->
-> -	if (!dma_get_attr(DMA_ATTR_SKIP_CPU_SYNC, attrs))
-> +	if ((attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
->   		__iommu_sync_sg_for_device(dev, sgl, nelems, dir);
->
->   	return iommu_dma_map_sg(dev, sgl, nelems,
-> @@ -764,7 +764,7 @@ static void __iommu_unmap_sg_attrs(struct device *dev,
->   				   enum dma_data_direction dir,
->   				   unsigned long attrs)
->   {
-> -	if (!dma_get_attr(DMA_ATTR_SKIP_CPU_SYNC, attrs))
-> +	if ((attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
->   		__iommu_sync_sg_for_cpu(dev, sgl, nelems, dir);
->
->   	iommu_dma_unmap_sg(dev, sgl, nelems, dir, attrs);
-[...]
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 6c1bda504fb1..08a1e2f3690f 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -306,7 +306,7 @@ struct page **iommu_dma_alloc(struct device *dev, size_t size, gfp_t gfp,
->   	} else {
->   		size = ALIGN(size, min_size);
->   	}
-> -	if (dma_get_attr(DMA_ATTR_ALLOC_SINGLE_PAGES, attrs))
-> +	if (attrs & DMA_ATTR_ALLOC_SINGLE_PAGES)
->   		alloc_sizes = min_size;
->
->   	count = PAGE_ALIGN(size) >> PAGE_SHIFT;
-[...]
-
-These all look appropriate to me; thanks!
-
-For arm64 and dma-iommu:
-
-Acked-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+VGhleSBhcmUgZGVwcmVjYXRlZCBhbmQgYnkgbW92aW5nIHRoZWlyIGltcGxlbWVudGF0aW9ucyB0
+byBiaW5kL3VuYmluZAp3ZSBjYW4gY2FsbCBkcm1fY29ubmVjdG9yX3JlZ2lzdGVyX2FsbCBpbnN0
+ZWFkIG9mIG9wZW4tY29kaW5nIGl0LgoKU2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21l
+dS52aXpvc29AY29sbGFib3JhLmNvbT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJA
+ZmZ3bGwuY2g+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+YyB8IDg3ICsrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAg
+aW5zZXJ0aW9ucygrKSwgNTcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZHJ2LmMKaW5kZXggZjVhNjhmYzAzMWVkLi44MjAyYzA2MzRlNGMgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMzcsNiAr
+MzcsNyBAQAogI2RlZmluZSBEUklWRVJfTUlOT1IJMAogCiBzdGF0aWMgYm9vbCBpc19zdXBwb3J0
+X2lvbW11ID0gdHJ1ZTsKK3N0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciByb2NrY2hpcF9kcm1fZHJp
+dmVyOwogCiAvKgogICogQXR0YWNoIGEgKGNvbXBvbmVudCkgZGV2aWNlIHRvIHRoZSBzaGFyZWQg
+ZHJtIGRtYSBtYXBwaW5nIGZyb20gbWFzdGVyIGRybQpAQCAtMTMyLDE4ICsxMzMsMjkgQEAgc3Rh
+dGljIHZvaWQgcm9ja2NoaXBfZHJtX2NydGNfZGlzYWJsZV92Ymxhbmsoc3RydWN0IGRybV9kZXZp
+Y2UgKmRldiwKIAkJcHJpdi0+Y3J0Y19mdW5jc1twaXBlXS0+ZGlzYWJsZV92YmxhbmsoY3J0Yyk7
+CiB9CiAKLXN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2xvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRy
+bV9kZXYsIHVuc2lnbmVkIGxvbmcgZmxhZ3MpCitzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5k
+KHN0cnVjdCBkZXZpY2UgKmRldikKIHsKKwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldjsKIAlz
+dHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGU7CiAJc3RydWN0IGRtYV9pb21tdV9t
+YXBwaW5nICptYXBwaW5nID0gTlVMTDsKLQlzdHJ1Y3QgZGV2aWNlICpkZXYgPSBkcm1fZGV2LT5k
+ZXY7Ci0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKIAlpbnQgcmV0OwogCi0JcHJp
+dmF0ZSA9IGRldm1fa3phbGxvYyhkcm1fZGV2LT5kZXYsIHNpemVvZigqcHJpdmF0ZSksIEdGUF9L
+RVJORUwpOwotCWlmICghcHJpdmF0ZSkKKwlkcm1fZGV2ID0gZHJtX2Rldl9hbGxvYygmcm9ja2No
+aXBfZHJtX2RyaXZlciwgZGV2KTsKKwlpZiAoIWRybV9kZXYpCiAJCXJldHVybiAtRU5PTUVNOwog
+CisJcmV0ID0gZHJtX2Rldl9yZWdpc3Rlcihkcm1fZGV2LCAwKTsKKwlpZiAocmV0KQorCQlnb3Rv
+IGVycl9mcmVlOworCisJZGV2X3NldF9kcnZkYXRhKGRldiwgZHJtX2Rldik7CisKKwlwcml2YXRl
+ID0gZGV2bV9remFsbG9jKGRybV9kZXYtPmRldiwgc2l6ZW9mKCpwcml2YXRlKSwgR0ZQX0tFUk5F
+TCk7CisJaWYgKCFwcml2YXRlKSB7CisJCXJldCA9IC1FTk9NRU07CisJCWdvdG8gZXJyX3VucmVn
+aXN0ZXI7CisJfQorCiAJbXV0ZXhfaW5pdCgmcHJpdmF0ZS0+Y29tbWl0LmxvY2spOwogCUlOSVRf
+V09SSygmcHJpdmF0ZS0+Y29tbWl0LndvcmssIHJvY2tjaGlwX2RybV9hdG9taWNfd29yayk7CiAK
+QEAgLTE4NiwyMSArMTk4LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2xvYWQoc3RydWN0
+IGRybV9kZXZpY2UgKmRybV9kZXYsIHVuc2lnbmVkIGxvbmcgZmxhZ3MpCiAJaWYgKHJldCkKIAkJ
+Z290byBlcnJfZGV0YWNoX2RldmljZTsKIAotCS8qCi0JICogQWxsIGNvbXBvbmVudHMgYXJlIG5v
+dyBhZGRlZCwgd2UgY2FuIHB1Ymxpc2ggdGhlIGNvbm5lY3RvciBzeXNmcwotCSAqIGVudHJpZXMg
+dG8gdXNlcnNwYWNlLiAgVGhpcyB3aWxsIGdlbmVyYXRlIGhvdHBsdWcgZXZlbnRzIGFuZCBzbwot
+CSAqIHVzZXJzcGFjZSB3aWxsIGV4cGVjdCB0byBiZSBhYmxlIHRvIGFjY2VzcyBEUk0gYXQgdGhp
+cyBwb2ludC4KLQkgKi8KLQlsaXN0X2Zvcl9lYWNoX2VudHJ5KGNvbm5lY3RvciwgJmRybV9kZXYt
+Pm1vZGVfY29uZmlnLmNvbm5lY3Rvcl9saXN0LAotCQkJaGVhZCkgewotCQlyZXQgPSBkcm1fY29u
+bmVjdG9yX3JlZ2lzdGVyKGNvbm5lY3Rvcik7Ci0JCWlmIChyZXQpIHsKLQkJCWRldl9lcnIoZHJt
+X2Rldi0+ZGV2LAotCQkJCSJbQ09OTkVDVE9SOiVkOiVzXSBkcm1fY29ubmVjdG9yX3JlZ2lzdGVy
+IGZhaWxlZDogJWRcbiIsCi0JCQkJY29ubmVjdG9yLT5iYXNlLmlkLAotCQkJCWNvbm5lY3Rvci0+
+bmFtZSwgcmV0KTsKLQkJCWdvdG8gZXJyX3VuYmluZDsKLQkJfQorCXJldCA9IGRybV9jb25uZWN0
+b3JfcmVnaXN0ZXJfYWxsKGRybV9kZXYpOworCWlmIChyZXQpIHsKKwkJZGV2X2VycihkZXYsICJm
+YWlsZWQgdG8gcmVnaXN0ZXIgY29ubmVjdG9yc1xuIik7CisJCWdvdG8gZXJyX3VuYmluZDsKIAl9
+CiAKIAkvKiBpbml0IGttcyBwb2xsIGZvciBoYW5kbGluZyBocGQgKi8KQEAgLTI0MCwxMiArMjQx
+LDE2IEBAIGVycl9yZWxlYXNlX21hcHBpbmc6CiBlcnJfY29uZmlnX2NsZWFudXA6CiAJZHJtX21v
+ZGVfY29uZmlnX2NsZWFudXAoZHJtX2Rldik7CiAJZHJtX2Rldi0+ZGV2X3ByaXZhdGUgPSBOVUxM
+OworZXJyX3VucmVnaXN0ZXI6CisJZHJtX2Rldl91bnJlZ2lzdGVyKGRybV9kZXYpOworZXJyX2Zy
+ZWU6CisJZHJtX2Rldl91bnJlZihkcm1fZGV2KTsKIAlyZXR1cm4gcmV0OwogfQogCi1zdGF0aWMg
+aW50IHJvY2tjaGlwX2RybV91bmxvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYpCitzdGF0
+aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKIHsKLQlzdHJ1
+Y3QgZGV2aWNlICpkZXYgPSBkcm1fZGV2LT5kZXY7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybV9k
+ZXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKIAogCXJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRy
+bV9kZXYpOwogCWRybV92YmxhbmtfY2xlYW51cChkcm1fZGV2KTsKQEAgLTI1NSw4ICsyNjAsOSBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV91bmxvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRybV9k
+ZXYpCiAJCWFybV9pb21tdV9kZXRhY2hfZGV2aWNlKGRldik7CiAJZHJtX21vZGVfY29uZmlnX2Ns
+ZWFudXAoZHJtX2Rldik7CiAJZHJtX2Rldi0+ZGV2X3ByaXZhdGUgPSBOVUxMOwotCi0JcmV0dXJu
+IDA7CisJZHJtX2Rldl91bnJlZ2lzdGVyKGRybV9kZXYpOworCWRybV9kZXZfdW5yZWYoZHJtX2Rl
+dik7CisJZGV2X3NldF9kcnZkYXRhKGRldiwgTlVMTCk7CiB9CiAKIHN0YXRpYyB2b2lkIHJvY2tj
+aGlwX2RybV9jcnRjX2NhbmNlbF9wZW5kaW5nX3ZibGFuayhzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
+CkBAIC0zMDgsOCArMzE0LDYgQEAgY29uc3Qgc3RydWN0IHZtX29wZXJhdGlvbnNfc3RydWN0IHJv
+Y2tjaGlwX2RybV92bV9vcHMgPSB7CiBzdGF0aWMgc3RydWN0IGRybV9kcml2ZXIgcm9ja2NoaXBf
+ZHJtX2RyaXZlciA9IHsKIAkuZHJpdmVyX2ZlYXR1cmVzCT0gRFJJVkVSX01PREVTRVQgfCBEUklW
+RVJfR0VNIHwKIAkJCQkgIERSSVZFUl9QUklNRSB8IERSSVZFUl9BVE9NSUMsCi0JLmxvYWQJCQk9
+IHJvY2tjaGlwX2RybV9sb2FkLAotCS51bmxvYWQJCQk9IHJvY2tjaGlwX2RybV91bmxvYWQsCiAJ
+LnByZWNsb3NlCQk9IHJvY2tjaGlwX2RybV9wcmVjbG9zZSwKIAkubGFzdGNsb3NlCQk9IHJvY2tj
+aGlwX2RybV9sYXN0Y2xvc2UsCiAJLmdldF92YmxhbmtfY291bnRlcgk9IGRybV92Ymxhbmtfbm9f
+aHdfY291bnRlciwKQEAgLTQ0OSwzNyArNDUzLDYgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfYWRk
+X2VuZHBvaW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCiAJfQogfQogCi1zdGF0aWMgaW50IHJvY2tj
+aGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKLXsKLQlzdHJ1Y3QgZHJtX2RldmljZSAq
+ZHJtOwotCWludCByZXQ7Ci0KLQlkcm0gPSBkcm1fZGV2X2FsbG9jKCZyb2NrY2hpcF9kcm1fZHJp
+dmVyLCBkZXYpOwotCWlmICghZHJtKQotCQlyZXR1cm4gLUVOT01FTTsKLQotCXJldCA9IGRybV9k
+ZXZfcmVnaXN0ZXIoZHJtLCAwKTsKLQlpZiAocmV0KQotCQlnb3RvIGVycl9mcmVlOwotCi0JZGV2
+X3NldF9kcnZkYXRhKGRldiwgZHJtKTsKLQotCXJldHVybiAwOwotCi1lcnJfZnJlZToKLQlkcm1f
+ZGV2X3VucmVmKGRybSk7Ci0JcmV0dXJuIHJldDsKLX0KLQotc3RhdGljIHZvaWQgcm9ja2NoaXBf
+ZHJtX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCi17Ci0Jc3RydWN0IGRybV9kZXZpY2UgKmRy
+bSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwotCi0JZHJtX2Rldl91bnJlZ2lzdGVyKGRybSk7Ci0J
+ZHJtX2Rldl91bnJlZihkcm0pOwotCWRldl9zZXRfZHJ2ZGF0YShkZXYsIE5VTEwpOwotfQotCiBz
+dGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlwX2RybV9vcHMg
+PSB7CiAJLmJpbmQgPSByb2NrY2hpcF9kcm1fYmluZCwKIAkudW5iaW5kID0gcm9ja2NoaXBfZHJt
+X3VuYmluZCwKLS0gCjIuNS41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
