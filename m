@@ -1,27 +1,53 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 13/13] regulator: pwm: Document pwm-dutycycle-unit and
- pwm-dutycycle-range
-Date: Fri, 10 Jun 2016 09:06:20 -0500
-Message-ID: <20160610140620.GA6461@rob-hp-laptop>
-References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465403688-17098-14-git-send-email-boris.brezillon@free-electrons.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] drm/rockchip: fix compile warnings for 64-bit
+Date: Fri, 10 Jun 2016 16:34:20 +0200
+Message-ID: <20160610143420.GE3363@phenom.ffwll.local>
+References: <1465494392-92489-1-git-send-email-briannorris@chromium.org>
+ <CAD=FV=VJ3TWJnP-OJO0LD=gBBra4zt_PowOLyUXLDV3U_RjnUA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1465403688-17098-14-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Milo Kim <milo.kim@ti.com>, Doug Anderson <dianders@google.com>, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Brian Norris <briannorris@chromium.org>, Ajit Pal Singh <ajitpal.singh@st.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, kernel@stlinux.com, Laxman Dewangan <ldewangan@nvidia.com>
+In-Reply-To: <CAD=FV=VJ3TWJnP-OJO0LD=gBBra4zt_PowOLyUXLDV3U_RjnUA@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Brian Norris <computersforpeace@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 08, 2016 at 06:34:48PM +0200, Boris Brezillon wrote:
-> Document the pwm-dutycycle-unit and pwm-dutycycle-range properties.
-> 
-> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> Acked-by: Brian Norris <briannorris@chromium.org>
-> ---
->  .../devicetree/bindings/regulator/pwm-regulator.txt   | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
-
-Acked-by: Rob Herring <robh@kernel.org>
+T24gVGh1LCBKdW4gMDksIDIwMTYgYXQgMDE6NTc6NTRQTSAtMDcwMCwgRG91ZyBBbmRlcnNvbiB3
+cm90ZToKPiBCcmlhbiwKPiAKPiBPbiBUaHUsIEp1biA5LCAyMDE2IGF0IDEwOjQ2IEFNLCBCcmlh
+biBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4gd3JvdGU6Cj4gPiBSb2NrY2hpcCBE
+Uk0gZG9lcyBub3QgeWV0IGJ1aWxkIHByb3Blcmx5IGZvciBBUk02NCwgYnV0IHdlIG1pZ2h0IGFz
+IHdlbGwKPiA+IGdldCB0aGUgcHJpbnRmIGZvcm1hdHRpbmcgY29ycmVjdCBub3csIHRvIGF2b2lk
+IHRoZSBmb2xsb3dpbmcgd2FybmluZ3M6Cj4gPgo+ID4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9mYmRldi5jOiBJbiBmdW5jdGlvbiAncm9ja2NoaXBfZHJtX2ZiZGV2X2Ny
+ZWF0ZSc6Cj4gPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmM6
+MTExOjI6IHdhcm5pbmc6IGZvcm1hdCAnJWQnIGV4cGVjdHMgYXJndW1lbnQgb2YgdHlwZSAnaW50
+JywgYnV0IGFyZ3VtZW50IDggaGFzIHR5cGUgJ3NpemVfdCcgWy1XZm9ybWF0PV0KPiA+ICAgRFJN
+X0RFQlVHX0tNUygiRkIgWyVkeCVkXS0lZCBrdmFkZHI9JXAgb2Zmc2V0PSVsZCBzaXplPSVkXG4i
+LAo+ID4gICBeCj4gPgo+ID4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
+ZW0uYzogSW4gZnVuY3Rpb24gJ3JvY2tjaGlwX2dlbV9hbGxvY19idWYnOgo+ID4gZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYzo0MTozOiB3YXJuaW5nOiBmb3JtYXQg
+JyV4JyBleHBlY3RzIGFyZ3VtZW50IG9mIHR5cGUgJ3Vuc2lnbmVkIGludCcsIGJ1dCBhcmd1bWVu
+dCAyIGhhcyB0eXBlICdzaXplX3QnIFstV2Zvcm1hdD1dCj4gPiAgICBEUk1fRVJST1IoImZhaWxl
+ZCB0byBhbGxvY2F0ZSAlI3ggYnl0ZSBkbWEgYnVmZmVyIiwgb2JqLT5zaXplKTsKPiA+ICAgIF4K
+PiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVt
+Lm9yZz4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+ZmJkZXYuYyB8IDIgKy0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2dlbS5jICAgfCAyICstCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIg
+ZGVsZXRpb25zKC0pCj4gCj4gUmV2aWV3ZWQtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJz
+QGNocm9taXVtLm9yZz4KCkFwcGxpZWQgdG8gZHJtLW1pc2MsIHRoYW5rcy4KLURhbmllbAotLSAK
+RGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDov
+L2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
