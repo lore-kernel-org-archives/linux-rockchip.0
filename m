@@ -1,48 +1,78 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [PATCH v2 06/20] drm: i915: Rely on the default ->best_encoder()
- behavior where appropriate
-Date: Fri, 10 Jun 2016 18:41:52 +0200
-Message-ID: <20160610164152.GO3363__44654.6350293376$1465576954$gmane$org@phenom.ffwll.local>
-References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465300095-16971-7-git-send-email-boris.brezillon@free-electrons.com>
- <20160610152412.GL3363@phenom.ffwll.local>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 01/13] pwm: Add new helpers to create/manipulate PWM
+ states
+Date: Fri, 10 Jun 2016 18:47:46 +0200
+Message-ID: <20160610164746.GB8696@ulmo.ba.sec>
+References: <1465403688-17098-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465403688-17098-2-git-send-email-boris.brezillon@free-electrons.com>
+ <20160610152109.GQ27142@ulmo.ba.sec>
+ <20160610182942.5e7485ff@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dc+cDN39EJAMEtIO"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20160610152412.GL3363-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Alison Wang <alison.wang-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko@snte>
+In-Reply-To: <20160610182942.5e7485ff@bbrezillon>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Milo Kim <milo.kim-l0cyMroinI0@public.gmane.org>, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ajit Pal Singh <ajitpal.singh-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 10, 2016 at 05:24:12PM +0200, Daniel Vetter wrote:
-> On Tue, Jun 07, 2016 at 01:48:01PM +0200, Boris Brezillon wrote:
-> > For all outputs except dp_mst, we have a 1:1 relationship between
-> > connectors and encoders and the driver is relying on the atomic helpers:
-> > we can drop the custom ->best_encoder() implementation and let the core
-> > call drm_atomic_helper_best_encoder() for us.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> 
-> You can also drop the best_encoder from intel_dp_mst, we only need the
-> atomic_best_encoder. The best_encoder there was needed to help out the
-> fbdev emulation. Care to respin?
 
-Boris pointed out on irc that this won't work for the fbdev stuff since
-that has a WARN_ON if theres more than 1 possible encoder. Applied this
-one here instead.
+--dc+cDN39EJAMEtIO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks, Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+On Fri, Jun 10, 2016 at 06:29:42PM +0200, Boris Brezillon wrote:
+> On Fri, 10 Jun 2016 17:21:09 +0200, Thierry Reding <thierry.reding@gmail.=
+com> wrote:
+> > On Wed, Jun 08, 2016 at 06:34:36PM +0200, Boris Brezillon wrote:
+[...]
+> > > + * according to your need before calling pwm_apply_state(). =20
+> >=20
+> > Maybe mention that the ->duty_cycle field is explicitly zeroed. Then
+> > again, do we really need it? If users are going to overwrite it anyway,
+> > do we even need to bother? I suppose it makes some sense because the
+> > current duty cycle is stale when the ->period gets set to the value from
+> > args. I think the documentation should mention this in some way.
+>=20
+> Yes, if we keep the current duty_cycle it can exceed the period value.
+> I'm fine dropping the ->duty_cycle =3D 0 assignment and documenting the
+> behavior.
+
+Actually what I was trying to suggest is that we keep the code as-is but
+document the behaviour (and rationale behind it).
+
+I think it's fine to zero out the value precisely because it could
+become invalid after the function (and there's no other reasonable value
+to set it to). Just wanted to make sure it's all properly documented.
+
+Thierry
+
+--dc+cDN39EJAMEtIO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJXWu8yAAoJEN0jrNd/PrOhZhgQALVk/163hWBe0x7iQpEwsnrc
+3Tfjwfiis9ACiwMsCz18zf0ZHHm3bKPkSm0oFGgJ4CJQRjDyXvv2rGZWKvzXT29p
+deUBwRe8jQ2KgeMlBjPDGEdM8NgCTgd+YB4G985Yb2F1B5xktK6W09c2bE+kCwsn
+X5X2EroaMMqn0L8ErLItNUt+vjkxt5g5S5oagCyZZ11QEklCYnAx+lWTK8aB8xTo
+VM5wcnEucmUZyuIz165QYx2x6oIx3EgdRkULiHuv4Mo4k3aR6yxasSEKBSfznpYv
+o0rMwe4ShZqUHIb/ctnwZ3fhSK9GSy43IIaIW1f6Mq6UHLpMd4p2uZQJzCmNyx/Q
+wp5haH/U6RWeNVUCXsM192O+ml5iwX8tSFGpspZ/oHnR5Y26pmwO2zFVQmO+4cOP
+EdHOgjXSehEq/oNBH0Fx54gQFIdQmbe6SuDrQXi+glzWrb8BSo59rWMovbz+QrXI
+YN8qTtZrzP7gnF0ezNajno+5ekgclfmRXxm0HNJ9nxLxP5zKK39Oit5crKJq0OyQ
+FD1rckyXzMJ71GvrCSpGTu2RWHjT7EppjiLFw4pGrkn5VQuznb2gDOG1odBrWS+p
+9PQg4f5TsLiaNAWWgE1ex5QMv+ApFJ41s3Alkwxo+O/CU4QQJCYFNjgqTfjTu1Er
+D8P2qQNzrRry/fyVMaVj
+=DUCF
+-----END PGP SIGNATURE-----
+
+--dc+cDN39EJAMEtIO--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
