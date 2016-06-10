@@ -1,107 +1,44 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH] drm/rockchip: Drop drm_driver.load/unload callbacks
-Date: Fri, 10 Jun 2016 13:14:13 +0200
-Message-ID: <1465557253-10670-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 06/11] Documentation: mmc: sdhci-of-arasan: Add ability
+ to export card clock
+Date: Fri, 10 Jun 2016 08:10:52 -0500
+Message-ID: <20160610131052.GA9351@rob-hp-laptop>
+References: <1465339484-969-1-git-send-email-dianders@chromium.org>
+ <1465339484-969-7-git-send-email-dianders@chromium.org>
+ <20160608201923.GA20683@rob-hp-laptop>
+ <CAD=FV=WX_bu-dmALkSmPPrWeatfjJND3M59GJoVEr6bv0vLq9Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=WX_bu-dmALkSmPPrWeatfjJND3M59GJoVEr6bv0vLq9Q@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhleSBhcmUgZGVwcmVjYXRlZCBhbmQgYnkgbW92aW5nIHRoZWlyIGltcGxlbWVudGF0aW9ucyB0
-byBiaW5kL3VuYmluZAp3ZSBjYW4gY2FsbCBkcm1fY29ubmVjdG9yX3JlZ2lzdGVyX2FsbCBpbnN0
-ZWFkIG9mIG9wZW4tY29kaW5nIGl0LgoKU2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21l
-dS52aXpvc29AY29sbGFib3JhLmNvbT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJA
-ZmZ3bGwuY2g+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-YyB8IDg3ICsrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAg
-aW5zZXJ0aW9ucygrKSwgNTcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZHJ2LmMKaW5kZXggZjVhNjhmYzAzMWVkLi44MjAyYzA2MzRlNGMgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMzcsNiAr
-MzcsNyBAQAogI2RlZmluZSBEUklWRVJfTUlOT1IJMAogCiBzdGF0aWMgYm9vbCBpc19zdXBwb3J0
-X2lvbW11ID0gdHJ1ZTsKK3N0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciByb2NrY2hpcF9kcm1fZHJp
-dmVyOwogCiAvKgogICogQXR0YWNoIGEgKGNvbXBvbmVudCkgZGV2aWNlIHRvIHRoZSBzaGFyZWQg
-ZHJtIGRtYSBtYXBwaW5nIGZyb20gbWFzdGVyIGRybQpAQCAtMTMyLDE4ICsxMzMsMjkgQEAgc3Rh
-dGljIHZvaWQgcm9ja2NoaXBfZHJtX2NydGNfZGlzYWJsZV92Ymxhbmsoc3RydWN0IGRybV9kZXZp
-Y2UgKmRldiwKIAkJcHJpdi0+Y3J0Y19mdW5jc1twaXBlXS0+ZGlzYWJsZV92YmxhbmsoY3J0Yyk7
-CiB9CiAKLXN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2xvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRy
-bV9kZXYsIHVuc2lnbmVkIGxvbmcgZmxhZ3MpCitzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldikKIHsKKwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldjsKIAlz
-dHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGU7CiAJc3RydWN0IGRtYV9pb21tdV9t
-YXBwaW5nICptYXBwaW5nID0gTlVMTDsKLQlzdHJ1Y3QgZGV2aWNlICpkZXYgPSBkcm1fZGV2LT5k
-ZXY7Ci0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKIAlpbnQgcmV0OwogCi0JcHJp
-dmF0ZSA9IGRldm1fa3phbGxvYyhkcm1fZGV2LT5kZXYsIHNpemVvZigqcHJpdmF0ZSksIEdGUF9L
-RVJORUwpOwotCWlmICghcHJpdmF0ZSkKKwlkcm1fZGV2ID0gZHJtX2Rldl9hbGxvYygmcm9ja2No
-aXBfZHJtX2RyaXZlciwgZGV2KTsKKwlpZiAoIWRybV9kZXYpCiAJCXJldHVybiAtRU5PTUVNOwog
-CisJcmV0ID0gZHJtX2Rldl9yZWdpc3Rlcihkcm1fZGV2LCAwKTsKKwlpZiAocmV0KQorCQlnb3Rv
-IGVycl9mcmVlOworCisJZGV2X3NldF9kcnZkYXRhKGRldiwgZHJtX2Rldik7CisKKwlwcml2YXRl
-ID0gZGV2bV9remFsbG9jKGRybV9kZXYtPmRldiwgc2l6ZW9mKCpwcml2YXRlKSwgR0ZQX0tFUk5F
-TCk7CisJaWYgKCFwcml2YXRlKSB7CisJCXJldCA9IC1FTk9NRU07CisJCWdvdG8gZXJyX3VucmVn
-aXN0ZXI7CisJfQorCiAJbXV0ZXhfaW5pdCgmcHJpdmF0ZS0+Y29tbWl0LmxvY2spOwogCUlOSVRf
-V09SSygmcHJpdmF0ZS0+Y29tbWl0LndvcmssIHJvY2tjaGlwX2RybV9hdG9taWNfd29yayk7CiAK
-QEAgLTE4NiwyMSArMTk4LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2xvYWQoc3RydWN0
-IGRybV9kZXZpY2UgKmRybV9kZXYsIHVuc2lnbmVkIGxvbmcgZmxhZ3MpCiAJaWYgKHJldCkKIAkJ
-Z290byBlcnJfZGV0YWNoX2RldmljZTsKIAotCS8qCi0JICogQWxsIGNvbXBvbmVudHMgYXJlIG5v
-dyBhZGRlZCwgd2UgY2FuIHB1Ymxpc2ggdGhlIGNvbm5lY3RvciBzeXNmcwotCSAqIGVudHJpZXMg
-dG8gdXNlcnNwYWNlLiAgVGhpcyB3aWxsIGdlbmVyYXRlIGhvdHBsdWcgZXZlbnRzIGFuZCBzbwot
-CSAqIHVzZXJzcGFjZSB3aWxsIGV4cGVjdCB0byBiZSBhYmxlIHRvIGFjY2VzcyBEUk0gYXQgdGhp
-cyBwb2ludC4KLQkgKi8KLQlsaXN0X2Zvcl9lYWNoX2VudHJ5KGNvbm5lY3RvciwgJmRybV9kZXYt
-Pm1vZGVfY29uZmlnLmNvbm5lY3Rvcl9saXN0LAotCQkJaGVhZCkgewotCQlyZXQgPSBkcm1fY29u
-bmVjdG9yX3JlZ2lzdGVyKGNvbm5lY3Rvcik7Ci0JCWlmIChyZXQpIHsKLQkJCWRldl9lcnIoZHJt
-X2Rldi0+ZGV2LAotCQkJCSJbQ09OTkVDVE9SOiVkOiVzXSBkcm1fY29ubmVjdG9yX3JlZ2lzdGVy
-IGZhaWxlZDogJWRcbiIsCi0JCQkJY29ubmVjdG9yLT5iYXNlLmlkLAotCQkJCWNvbm5lY3Rvci0+
-bmFtZSwgcmV0KTsKLQkJCWdvdG8gZXJyX3VuYmluZDsKLQkJfQorCXJldCA9IGRybV9jb25uZWN0
-b3JfcmVnaXN0ZXJfYWxsKGRybV9kZXYpOworCWlmIChyZXQpIHsKKwkJZGV2X2VycihkZXYsICJm
-YWlsZWQgdG8gcmVnaXN0ZXIgY29ubmVjdG9yc1xuIik7CisJCWdvdG8gZXJyX3VuYmluZDsKIAl9
-CiAKIAkvKiBpbml0IGttcyBwb2xsIGZvciBoYW5kbGluZyBocGQgKi8KQEAgLTI0MCwxMiArMjQx
-LDE2IEBAIGVycl9yZWxlYXNlX21hcHBpbmc6CiBlcnJfY29uZmlnX2NsZWFudXA6CiAJZHJtX21v
-ZGVfY29uZmlnX2NsZWFudXAoZHJtX2Rldik7CiAJZHJtX2Rldi0+ZGV2X3ByaXZhdGUgPSBOVUxM
-OworZXJyX3VucmVnaXN0ZXI6CisJZHJtX2Rldl91bnJlZ2lzdGVyKGRybV9kZXYpOworZXJyX2Zy
-ZWU6CisJZHJtX2Rldl91bnJlZihkcm1fZGV2KTsKIAlyZXR1cm4gcmV0OwogfQogCi1zdGF0aWMg
-aW50IHJvY2tjaGlwX2RybV91bmxvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYpCitzdGF0
-aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKIHsKLQlzdHJ1
-Y3QgZGV2aWNlICpkZXYgPSBkcm1fZGV2LT5kZXY7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybV9k
-ZXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKIAogCXJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRy
-bV9kZXYpOwogCWRybV92YmxhbmtfY2xlYW51cChkcm1fZGV2KTsKQEAgLTI1NSw4ICsyNjAsOSBA
-QCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV91bmxvYWQoc3RydWN0IGRybV9kZXZpY2UgKmRybV9k
-ZXYpCiAJCWFybV9pb21tdV9kZXRhY2hfZGV2aWNlKGRldik7CiAJZHJtX21vZGVfY29uZmlnX2Ns
-ZWFudXAoZHJtX2Rldik7CiAJZHJtX2Rldi0+ZGV2X3ByaXZhdGUgPSBOVUxMOwotCi0JcmV0dXJu
-IDA7CisJZHJtX2Rldl91bnJlZ2lzdGVyKGRybV9kZXYpOworCWRybV9kZXZfdW5yZWYoZHJtX2Rl
-dik7CisJZGV2X3NldF9kcnZkYXRhKGRldiwgTlVMTCk7CiB9CiAKIHN0YXRpYyB2b2lkIHJvY2tj
-aGlwX2RybV9jcnRjX2NhbmNlbF9wZW5kaW5nX3ZibGFuayhzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
-CkBAIC0zMDgsOCArMzE0LDYgQEAgY29uc3Qgc3RydWN0IHZtX29wZXJhdGlvbnNfc3RydWN0IHJv
-Y2tjaGlwX2RybV92bV9vcHMgPSB7CiBzdGF0aWMgc3RydWN0IGRybV9kcml2ZXIgcm9ja2NoaXBf
-ZHJtX2RyaXZlciA9IHsKIAkuZHJpdmVyX2ZlYXR1cmVzCT0gRFJJVkVSX01PREVTRVQgfCBEUklW
-RVJfR0VNIHwKIAkJCQkgIERSSVZFUl9QUklNRSB8IERSSVZFUl9BVE9NSUMsCi0JLmxvYWQJCQk9
-IHJvY2tjaGlwX2RybV9sb2FkLAotCS51bmxvYWQJCQk9IHJvY2tjaGlwX2RybV91bmxvYWQsCiAJ
-LnByZWNsb3NlCQk9IHJvY2tjaGlwX2RybV9wcmVjbG9zZSwKIAkubGFzdGNsb3NlCQk9IHJvY2tj
-aGlwX2RybV9sYXN0Y2xvc2UsCiAJLmdldF92YmxhbmtfY291bnRlcgk9IGRybV92Ymxhbmtfbm9f
-aHdfY291bnRlciwKQEAgLTQ0OSwzNyArNDUzLDYgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfYWRk
-X2VuZHBvaW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCiAJfQogfQogCi1zdGF0aWMgaW50IHJvY2tj
-aGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKLXsKLQlzdHJ1Y3QgZHJtX2RldmljZSAq
-ZHJtOwotCWludCByZXQ7Ci0KLQlkcm0gPSBkcm1fZGV2X2FsbG9jKCZyb2NrY2hpcF9kcm1fZHJp
-dmVyLCBkZXYpOwotCWlmICghZHJtKQotCQlyZXR1cm4gLUVOT01FTTsKLQotCXJldCA9IGRybV9k
-ZXZfcmVnaXN0ZXIoZHJtLCAwKTsKLQlpZiAocmV0KQotCQlnb3RvIGVycl9mcmVlOwotCi0JZGV2
-X3NldF9kcnZkYXRhKGRldiwgZHJtKTsKLQotCXJldHVybiAwOwotCi1lcnJfZnJlZToKLQlkcm1f
-ZGV2X3VucmVmKGRybSk7Ci0JcmV0dXJuIHJldDsKLX0KLQotc3RhdGljIHZvaWQgcm9ja2NoaXBf
-ZHJtX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCi17Ci0Jc3RydWN0IGRybV9kZXZpY2UgKmRy
-bSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwotCi0JZHJtX2Rldl91bnJlZ2lzdGVyKGRybSk7Ci0J
-ZHJtX2Rldl91bnJlZihkcm0pOwotCWRldl9zZXRfZHJ2ZGF0YShkZXYsIE5VTEwpOwotfQotCiBz
-dGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlwX2RybV9vcHMg
-PSB7CiAJLmJpbmQgPSByb2NrY2hpcF9kcm1fYmluZCwKIAkudW5iaW5kID0gcm9ja2NoaXBfZHJt
-X3VuYmluZCwKLS0gCjIuNS41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+On Wed, Jun 08, 2016 at 01:52:20PM -0700, Doug Anderson wrote:
+> Rob,
+> 
+> On Wed, Jun 8, 2016 at 1:19 PM, Rob Herring <robh@kernel.org> wrote:
+> > On Tue, Jun 07, 2016 at 03:44:39PM -0700, Douglas Anderson wrote:
+> >> Some SD/eMMC PHYs (like the PHY from Arasan that is designed to work
+> >> with arasan,sdhci-5.1) need to know the card clock in order to function
+> >> properly.  Let's expose this clock using a standard device tree
+> >> mechanism so that the PHY can get access to and query the card clock.
+> >
+> > Need to know the clock freq or need the clock? The former doesn't need
+> > to be in DT.
+> 
+> The PHY needs to know the card clock frequency.  This clock clock
+> frequency is known nowhere else in the system except the SDHCI driver
+> since the SDHCI component takes its input clock and applies some
+> dividers to get the card clock.  In silicon, the SDHCI component and
+> the PHY are separate and there is a physical clock signal going from
+> the SDHCI component to the PHY component, so modeling this as a clock
+> in in the device tree seems sane, doesn't it?
+
+Yes, please just re-word it to make it clear there is a connection. With 
+that,
+
+Acked-by: Rob Herring <robh@kernel.org>
