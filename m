@@ -1,119 +1,101 @@
-From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 5/7] drm: rockchip: use common iommu api to attach iommu
-Date: Sun, 12 Jun 2016 11:37:12 +0800
-Message-ID: <575CD8E8.6060502@rock-chips.com>
-References: <1465392392-2003-1-git-send-email-zhengsq@rock-chips.com>
-	<1465392392-2003-6-git-send-email-zhengsq@rock-chips.com>
-	<CAAFQd5AEsMhQiNkjBr-Af6rBg9x6Z9bCOu7GuYXt2h=wao7Cow@mail.gmail.com>
-Reply-To: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] Documentation: bindings: add dt documentation for
+ Rockchip PCIe PHY
+Date: Sun, 12 Jun 2016 15:38:52 +0800
+Message-ID: <d2aa6f82-7b20-8c40-c134-370e9f91281e@rock-chips.com>
+References: <1465370708-23619-1-git-send-email-shawn.lin@rock-chips.com>
+ <20160608202900.GA25662@rob-hp-laptop> <1524911.R4OXTTYFIK@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CAAFQd5AEsMhQiNkjBr-Af6rBg9x6Z9bCOu7GuYXt2h=wao7Cow-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, simon xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1524911.R4OXTTYFIK@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Rob Herring <robh@kernel.org>
+Cc: shawn.lin@rock-chips.com, devicetree@vger.kernel.org, Wenrui Li <wenrui.li@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAyMDE25bm0MDbmnIgxMOaXpSAxNjowMywgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4gSGks
-Cj4KPiBPbiBXZWQsIEp1biA4LCAyMDE2IGF0IDEwOjI2IFBNLCBTaHVucWlhbiBaaGVuZyA8emhl
-bmdzcUByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IFJvY2tjaGlwIERSTSB1c2VkIHRoZSBhcm0g
-c3BlY2lhbCBBUEksIGFybV9pb21tdV8qKCksIHRvIGF0dGFjaAo+PiBpb21tdSBmb3IgQVJNMzIg
-U29Dcy4gVGhpcyBwYXRjaCBjb252ZXJ0IHRvIGNvbW1vbiBpb21tdSBBUEkKPj4gc28gaXQgd291
-bGQgc3VwcG9ydCBBUk02NCBsaWtlIFJLMzM5OS4KPj4KPj4gVGhlIGdlbmVyYWwgaWRlYSBpcyBk
-b21haW5fYWxsb2MoKSwgYXR0YWNoX2RldmljZSgpIGFuZAo+PiBhcmNoX3NldHVwX2RtYV9vcHMo
-KSB0byBzZXQgZG1hX29wcyBtYW51YWxseSBmb3IgRFJNIGF0IHRoZSBsYXN0Lgo+Pgo+PiBTaWdu
-ZWQtb2ZmLWJ5OiBTaHVucWlhbiBaaGVuZyA8emhlbmdzcUByb2NrLWNoaXBzLmNvbT4KPj4gLS0t
-Cj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDEzMCAr
-KysrKysrKysrKysrKysrKysrLS0tLS0tLS0tCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV9kcnYuaCB8ICAgMSArCj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCA4OSBpbnNl
-cnRpb25zKCspLCA0MiBkZWxldGlvbnMoLSkKPj4KPiBQbGVhc2Ugc2VlIG15IGNvbW1lbnRzIGlu
-bGluZS4KPgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
-Pj4gaW5kZXggZjVhNjhmYy4uNzk2NWE2NiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4+IEBAIC0xNCw4ICsxNCw2IEBACj4+ICAgICogR05V
-IEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPj4gICAgKi8KPj4KPj4g
-LSNpbmNsdWRlIDxhc20vZG1hLWlvbW11Lmg+Cj4+IC0KPj4gICAjaW5jbHVkZSA8ZHJtL2RybVAu
-aD4KPj4gICAjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgo+PiAgICNpbmNsdWRlIDxk
-cm0vZHJtX2ZiX2hlbHBlci5oPgo+PiBAQCAtMjQsNiArMjIsOCBAQAo+PiAgICNpbmNsdWRlIDxs
-aW51eC9tb2R1bGUuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvb2ZfZ3JhcGguaD4KPj4gICAjaW5j
-bHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvZG1hLWlvbW11Lmg+
-Cj4+ICsjaW5jbHVkZSA8bGludXgvaW9tbXUuaD4KPj4KPj4gICAjaW5jbHVkZSAicm9ja2NoaXBf
-ZHJtX2Rydi5oIgo+PiAgICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZmIuaCIKPj4gQEAgLTQ2LDcg
-KzQ2LDggQEAgc3RhdGljIGJvb2wgaXNfc3VwcG9ydF9pb21tdSA9IHRydWU7Cj4+ICAgaW50IHJv
-Y2tjaGlwX2RybV9kbWFfYXR0YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwK
-Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGRldmljZSAqZGV2
-KQo+PiAgIHsKPj4gLSAgICAgICBzdHJ1Y3QgZG1hX2lvbW11X21hcHBpbmcgKm1hcHBpbmcgPSBk
-cm1fZGV2LT5kZXYtPmFyY2hkYXRhLm1hcHBpbmc7Cj4+ICsgICAgICAgc3RydWN0IHJvY2tjaGlw
-X2RybV9wcml2YXRlICpwcml2YXRlID0gZHJtX2Rldi0+ZGV2X3ByaXZhdGU7Cj4+ICsgICAgICAg
-c3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluID0gcHJpdmF0ZS0+ZG9tYWluOwo+PiAgICAgICAg
-ICBpbnQgcmV0Owo+Pgo+PiAgICAgICAgICBpZiAoIWlzX3N1cHBvcnRfaW9tbXUpCj4+IEBAIC01
-OCwxNiArNTksMjUgQEAgaW50IHJvY2tjaGlwX2RybV9kbWFfYXR0YWNoX2RldmljZShzdHJ1Y3Qg
-ZHJtX2RldmljZSAqZHJtX2RldiwKPj4KPj4gICAgICAgICAgZG1hX3NldF9tYXhfc2VnX3NpemUo
-ZGV2LCBETUFfQklUX01BU0soMzIpKTsKPj4KPj4gLSAgICAgICByZXR1cm4gYXJtX2lvbW11X2F0
-dGFjaF9kZXZpY2UoZGV2LCBtYXBwaW5nKTsKPj4gKyAgICAgICByZXQgPSBpb21tdV9hdHRhY2hf
-ZGV2aWNlKGRvbWFpbiwgZGV2KTsKPj4gKwo+IG5pdDogVW5uZWNlc3NhcnkgYmxhbmsgbGluZS4K
-V2lsbCBmaXggaXQgaW4gdjMuCj4KPj4gKyAgICAgICBpZiAocmV0KSB7Cj4+ICsgICAgICAgICAg
-ICAgICBkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBhdHRhY2ggaW9tbXUgZGV2aWNlXG4iKTsKPj4g
-KyAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4+ICsgICAgICAgfQo+IG5pdDogT24gdGhlIG90
-aGVyIGhhbmQsIGEgYmxhbmsgbGluZSBoZXJlIHdvdWxkIGltcHJvdmUgcmVhZGFiaWxpdHkuCldp
-bGwgZml4IGl0IGluIHYzLgo+Cj4+ICsgICAgICAgYXJjaF9zZXR1cF9kbWFfb3BzKGRldiwgMHgw
-MDAwMDAwMCwgU1pfMkcsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgIChzdHJ1Y3QgaW9t
-bXVfb3BzICopZGV2LT5idXMtPmlvbW11X29wcywgZmFsc2UpOwo+IFRoaXMgaXMgY2FzdGluZyBh
-IGNvbnN0IHBvaW50ZXIgdG8gYSBub24tY29uc3QgcG9pbnRlci4gd2hpY2ggaXNuJ3QKPiByZWFs
-bHkgYSBnb29kIGlkZWEuIEkgY2FuIHNlZSB0aGF0IGFyY2hfc2V0dXBfZG1hX29wcygpIHJlcXVp
-cmVzIGEKPiB3cml0YWJsZSBwb2ludGVyLCB0aG91Z2guIExvb2tpbmcgYXQgdGhlIGltcGxlbWVu
-dGF0aW9ucyBvZgo+IGFyY2hfc2V0dXBfZG1hX29wcygpIGFyb3VuZCB0aGUgcGxhdGZvcm1zIChu
-YW1lbHkgYXJtIGFuZCBhcm02NC4uLiksCj4gaXQgbWFrZXMgbWUgd29uZGVyIGlmIHRoZSBwcm90
-b3R5cGUgc2hvdWxkbid0IGJlIGNoYW5nZWQgdG8gY29uc3QKPiBpbnN0ZWFkLgpBY3R1YWxseSwg
-a2VybmVsLW5leHQgY2hhbmdlZCBpb21tdV9vcHMgdG8gY29uc3QgYnk6CjUzYzkyZDcgaW9tbXU6
-IG9mOiBlbmZvcmNlIGNvbnN0LW5lc3Mgb2Ygc3RydWN0IGlvbW11X29wcwoKV2lsbCByZW1vdmUg
-Y2FzdGluZyBpbiB0aGUgdjMuCj4KPj4gKyAgICAgICByZXR1cm4gMDsKPj4gICB9Cj4+Cj4+ICAg
-dm9pZCByb2NrY2hpcF9kcm1fZG1hX2RldGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2UgKmRy
-bV9kZXYsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZGV2
-aWNlICpkZXYpCj4+ICAgewo+PiAtICAgICAgIGlmICghaXNfc3VwcG9ydF9pb21tdSkKPj4gLSAg
-ICAgICAgICAgICAgIHJldHVybjsKPj4gKyAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZh
-dGUgKnByaXZhdGUgPSBkcm1fZGV2LT5kZXZfcHJpdmF0ZTsKPj4gKyAgICAgICBzdHJ1Y3QgaW9t
-bXVfZG9tYWluICpkb21haW4gPSBwcml2YXRlLT5kb21haW47Cj4+Cj4+IC0gICAgICAgYXJtX2lv
-bW11X2RldGFjaF9kZXZpY2UoZGV2KTsKPj4gKyAgICAgICBpZiAoaXNfc3VwcG9ydF9pb21tdSkK
-Pj4gKyAgICAgICAgICAgICAgIGlvbW11X2RldGFjaF9kZXZpY2UoZG9tYWluLCBkZXYpOwo+PiAg
-IH0KPj4KPj4gICBpbnQgcm9ja2NoaXBfcmVnaXN0ZXJfY3J0Y19mdW5jcyhzdHJ1Y3QgZHJtX2Ny
-dGMgKmNydGMsCj4+IEBAIC0xMzIsMTAgKzE0Miw3MCBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9k
-cm1fY3J0Y19kaXNhYmxlX3ZibGFuayhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+PiAgICAgICAg
-ICAgICAgICAgIHByaXYtPmNydGNfZnVuY3NbcGlwZV0tPmRpc2FibGVfdmJsYW5rKGNydGMpOwo+
-PiAgIH0KPj4KPj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2luaXRfaW9tbXUoc3RydWN0IGRy
-bV9kZXZpY2UgKmRybV9kZXYpCj4+ICt7Cj4+ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX2RybV9w
-cml2YXRlICpwcml2YXRlID0gZHJtX2Rldi0+ZGV2X3ByaXZhdGU7Cj4+ICsgICAgICAgc3RydWN0
-IGRldmljZSAqZGV2ID0gZHJtX2Rldi0+ZGV2Owo+PiArICAgICAgIGludCByZXQ7Cj4+ICsKPj4g
-KyAgICAgICBkZXYtPmRtYV9wYXJtcyA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqZGV2LT5k
-bWFfcGFybXMpLAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEdGUF9L
-RVJORUwpOwo+PiArICAgICAgIGlmICghZGV2LT5kbWFfcGFybXMpIHsKPj4gKyAgICAgICAgICAg
-ICAgIHJldCA9IC1FTk9NRU07Cj4+ICsgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+IG5pdDog
-cmV0dXJuIC1FTk9NRU07CldpbGwgZml4IGl0IGluIHYzLgo+Cj4+ICsgICAgICAgfQo+PiArCj4+
-ICsgICAgICAgcmV0ID0gZG1hX3NldF9jb2hlcmVudF9tYXNrKGRldiwgRE1BX0JJVF9NQVNLKDMy
-KSk7Cj4+ICsgICAgICAgaWYgKHJldCkgewo+PiArICAgICAgICAgICAgICAgZGV2X2VycihkZXYs
-ICJGYWlsZWQgdG8gc2V0IGNvaGVyZW50IG1hc2tcbiIpOwo+PiArICAgICAgICAgICAgICAgcmV0
-dXJuIHJldDsKPj4gKyAgICAgICB9Cj4+ICsKPj4gKyAgICAgICBkbWFfc2V0X21heF9zZWdfc2l6
-ZShkZXYsIERNQV9CSVRfTUFTSygzMikpOwo+PiArCj4+ICsgICAgICAgcHJpdmF0ZS0+ZG9tYWlu
-ID0gaW9tbXVfZG9tYWluX2FsbG9jKCZwbGF0Zm9ybV9idXNfdHlwZSk7Cj4+ICsgICAgICAgaWYg
-KCFwcml2YXRlLT5kb21haW4pCj4+ICsgICAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPj4g
-Kwo+PiArICAgICAgIHJldCA9IGlvbW11X2dldF9kbWFfY29va2llKHByaXZhdGUtPmRvbWFpbik7
-Cj4+ICsgICAgICAgaWYgKHJldCkgewo+PiArICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJG
-YWlsZWQgdG8gZ2V0IGRtYSBjb29raWVcbiIpOwo+PiArICAgICAgICAgICAgICAgZ290byBlcnJf
-ZnJlZV9kb21haW47Cj4+ICsgICAgICAgfQo+PiArCj4+ICsgICAgICAgcmV0ID0gaW9tbXVfZG1h
-X2luaXRfZG9tYWluKHByaXZhdGUtPmRvbWFpbiwgMHgwMDAwMDAwMCwgU1pfMkcpOwo+IEkgZ3Vl
-c3MgZGprdXJ0eidzIFRPRE8gY29tbWVudCBjb3VsZCBiZSBwcmVzZXJ2ZWQgaGVyZS4KQWdyZWUu
-CgpUaGFuayB5b3UgdmVyeSBtdWNoLgpTaHVucWlhbgo+Cj4gQmVzdCByZWdhcmRzLAo+IFRvbWFz
-ego+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmlvbW11IG1haWxpbmcgbGlzdAppb21tdUBsaXN0cy5saW51eC1mb3VuZGF0aW9uLm9yZwpodHRw
-czovL2xpc3RzLmxpbnV4Zm91bmRhdGlvbi5vcmcvbWFpbG1hbi9saXN0aW5mby9pb21tdQ==
+On 2016/6/9 4:40, Heiko St=FCbner wrote:
+> Am Mittwoch, 8. Juni 2016, 15:29:00 schrieb Rob Herring:
+>> gOn Wed, Jun 08, 2016 at 03:25:08PM +0800, Shawn Lin wrote:
+>>> This patch adds a binding that describes the Rockchip PCIe PHY
+>>> found on Rockchip SoCs PCIe interface.
+>>>
+>>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>> ---
+>>>
+>>>  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 22
+>>>  ++++++++++++++++++++++ 1 file changed, 22 insertions(+)
+>>>  create mode 100644
+>>>  Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt>
+>>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-ph=
+y.txt
+>>> b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt new f=
+ile
+>>> mode 100644
+>>> index 0000000..ba8c406
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+>>> @@ -0,0 +1,22 @@
+>>> +Rockchip PCIE PHY
+>>> +-----------------------
+>>> +
+>>> +Required properties:
+>>> + - compatible: rockchip,rk3399-pcie-phy
+>>> + - #phy-cells: must be 0
+>>> +
+>>> +Example:
+>>> +
+>>> +grf: syscon@ff770000 {
+>>> +	compatible =3D "rockchip,rk3399-grf", "syscon", "simple-mfd";
+>>> +	#address-cells =3D <1>;
+>>> +	#size-cells =3D <1>;
+>>> +
+>>> +	...
+>>> +
+>>> +	pcie_phy: phy@e220 {
+>>
+>> unit-address needs a reg property or drop the unit address. I'd do t=
+he
+>> former if there's a register range you can describe here.
+>
+> Hmm, I think I'd suggest going the other way - call the node pcie-phy=
+ .
+
+pcie phy does not cantain a reg range, so I will drop the unit-address.
+
+>
+> While the General Register Files do contain some specific address ran=
+ges (like
+> for the emmc phy, or some performance monitor things), the register a=
+t 0xe220
+> is a shared register (GRF_SOC_CON8), containing both i2s and pcie set=
+ting
+> bits.
+
+yes, we only need two bits: test_addr(for pcie phy's internal configure
+address) and test_i(corresponding value for the address given) whthin
+GRF_SOC_CON8 to W/R the phy.
+
+>
+> Specifying register ranges suggests some form of exclusivity to me - =
+which is
+> just great for things like the emmc phy that has an actual range, but=
+ for a
+> device being controlled from some shared register.
+>
+>
+> Heiko
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+
+
+--=20
+Best Regards
+Shawn Lin
