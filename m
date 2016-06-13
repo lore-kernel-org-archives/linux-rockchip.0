@@ -1,68 +1,65 @@
-From: Tomasz Figa <tfiga@google.com>
+From: Shunqian Zheng <shunqian.zheng-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v2 6/7] iommu/rockchip: use DMA API to map, to flush cache
-Date: Mon, 13 Jun 2016 19:21:26 +0900
-Message-ID: <CAAFQd5DDCd8VcdEhEASAK7NMBnVJWuUxgGURtsa2KQBKsgsxUQ@mail.gmail.com>
+Date: Mon, 13 Jun 2016 18:31:11 +0800
+Message-ID: <575E8B6F.1040103@gmail.com>
 References: <1465392392-2003-1-git-send-email-zhengsq@rock-chips.com>
- <1465392392-2003-7-git-send-email-zhengsq@rock-chips.com> <CAAFQd5Da+Eg=eiRUgLSS_qPjGbG474KYWDC=GaAMS8A_CuQ3Mg@mail.gmail.com>
- <575E834C.30305@gmail.com>
+	<1465392392-2003-7-git-send-email-zhengsq@rock-chips.com>
+	<CAAFQd5Da+Eg=eiRUgLSS_qPjGbG474KYWDC=GaAMS8A_CuQ3Mg@mail.gmail.com>
+	<575E834C.30305@gmail.com>
+	<CAAFQd5DDCd8VcdEhEASAK7NMBnVJWuUxgGURtsa2KQBKsgsxUQ@mail.gmail.com>
+Reply-To: shunqian.zheng-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <575E834C.30305@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: shunqian.zheng@gmail.com
-Cc: Shunqian Zheng <zhengsq@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Joerg Roedel <joro@8bytes.org>, linux@armlinux.org.uk, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "open list:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Rob Herring
-	<robh+dt@kernel.org>, simon xue <xxm@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org" <mark.yao@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAAFQd5DDCd8VcdEhEASAK7NMBnVJWuUxgGURtsa2KQBKsgsxUQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, simon xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 13, 2016 at 6:56 PM, Shunqian Zheng
-<shunqian.zheng@gmail.com> wrote:
-> Hi
->
-> On 2016=E5=B9=B406=E6=9C=8810=E6=97=A5 17:10, Tomasz Figa wrote:
->>
->> Hi,
->>
->> On Wed, Jun 8, 2016 at 10:26 PM, Shunqian Zheng <zhengsq@rock-chips.=
-com>
->> wrote:
->>>
->>> Use DMA API instead of architecture internal functions like
->>> __cpuc_flush_dcache_area() etc.
->>>
->>> To support the virtual device like DRM the virtual slave iommu
->>> added in the previous patch, attaching to which the DRM can use
->>> it own domain->dev for dma_map_*(), dma_sync_*() even VOP is disabl=
-ed.
->>>
->>> With this patch, this driver is available for ARM64 like RK3399.
->>>
->> Could we instead simply allocate coherent memory for page tables usi=
-ng
->> dma_alloc_coherent() and skip any flushing on CPU side completely? I=
-f
->> I'm looking correctly, the driver only reads back the page directory
->> when checking if there is a need to allocate new page table, so ther=
-e
->> shouldn't be any significant penalty for disabling the cache.
->
-> I try to use dma_alloc_coherent() to replace the dma_map_single(),
-> but it doesn't work for me properly.
-> Because the DRM uses the iommu_dma_ops instead the swiotlb_dma_ops af=
-ter
-> attaching
-> to iommu, so when the iommu domain need to alloc a new page in
-> rk_iommu_map(),
-> it would call:
-> rk_iommu_map()  --> dma_alloc_coherent()  --> ops->alloc()  --> iommu=
-_map()
-> --> rk_iommu_map()
-
-It shouldn't call iommu_map(), because the IOMMU is not behind another
-IOMMU. Are you sure you called dma_alloc_coherent() on behalf of the
-IOMMU struct device and not the DRM device?
-
-Best regards,
-Tomasz
+SEksCgpPbiAyMDE25bm0MDbmnIgxM+aXpSAxODoyMSwgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4gT24g
+TW9uLCBKdW4gMTMsIDIwMTYgYXQgNjo1NiBQTSwgU2h1bnFpYW4gWmhlbmcKPiA8c2h1bnFpYW4u
+emhlbmdAZ21haWwuY29tPiB3cm90ZToKPj4gSGkKPj4KPj4gT24gMjAxNuW5tDA25pyIMTDml6Ug
+MTc6MTAsIFRvbWFzeiBGaWdhIHdyb3RlOgo+Pj4gSGksCj4+Pgo+Pj4gT24gV2VkLCBKdW4gOCwg
+MjAxNiBhdCAxMDoyNiBQTSwgU2h1bnFpYW4gWmhlbmcgPHpoZW5nc3FAcm9jay1jaGlwcy5jb20+
+Cj4+PiB3cm90ZToKPj4+PiBVc2UgRE1BIEFQSSBpbnN0ZWFkIG9mIGFyY2hpdGVjdHVyZSBpbnRl
+cm5hbCBmdW5jdGlvbnMgbGlrZQo+Pj4+IF9fY3B1Y19mbHVzaF9kY2FjaGVfYXJlYSgpIGV0Yy4K
+Pj4+Pgo+Pj4+IFRvIHN1cHBvcnQgdGhlIHZpcnR1YWwgZGV2aWNlIGxpa2UgRFJNIHRoZSB2aXJ0
+dWFsIHNsYXZlIGlvbW11Cj4+Pj4gYWRkZWQgaW4gdGhlIHByZXZpb3VzIHBhdGNoLCBhdHRhY2hp
+bmcgdG8gd2hpY2ggdGhlIERSTSBjYW4gdXNlCj4+Pj4gaXQgb3duIGRvbWFpbi0+ZGV2IGZvciBk
+bWFfbWFwXyooKSwgZG1hX3N5bmNfKigpIGV2ZW4gVk9QIGlzIGRpc2FibGVkLgo+Pj4+Cj4+Pj4g
+V2l0aCB0aGlzIHBhdGNoLCB0aGlzIGRyaXZlciBpcyBhdmFpbGFibGUgZm9yIEFSTTY0IGxpa2Ug
+UkszMzk5Lgo+Pj4+Cj4+PiBDb3VsZCB3ZSBpbnN0ZWFkIHNpbXBseSBhbGxvY2F0ZSBjb2hlcmVu
+dCBtZW1vcnkgZm9yIHBhZ2UgdGFibGVzIHVzaW5nCj4+PiBkbWFfYWxsb2NfY29oZXJlbnQoKSBh
+bmQgc2tpcCBhbnkgZmx1c2hpbmcgb24gQ1BVIHNpZGUgY29tcGxldGVseT8gSWYKPj4+IEknbSBs
+b29raW5nIGNvcnJlY3RseSwgdGhlIGRyaXZlciBvbmx5IHJlYWRzIGJhY2sgdGhlIHBhZ2UgZGly
+ZWN0b3J5Cj4+PiB3aGVuIGNoZWNraW5nIGlmIHRoZXJlIGlzIGEgbmVlZCB0byBhbGxvY2F0ZSBu
+ZXcgcGFnZSB0YWJsZSwgc28gdGhlcmUKPj4+IHNob3VsZG4ndCBiZSBhbnkgc2lnbmlmaWNhbnQg
+cGVuYWx0eSBmb3IgZGlzYWJsaW5nIHRoZSBjYWNoZS4KPj4gSSB0cnkgdG8gdXNlIGRtYV9hbGxv
+Y19jb2hlcmVudCgpIHRvIHJlcGxhY2UgdGhlIGRtYV9tYXBfc2luZ2xlKCksCj4+IGJ1dCBpdCBk
+b2Vzbid0IHdvcmsgZm9yIG1lIHByb3Blcmx5Lgo+PiBCZWNhdXNlIHRoZSBEUk0gdXNlcyB0aGUg
+aW9tbXVfZG1hX29wcyBpbnN0ZWFkIHRoZSBzd2lvdGxiX2RtYV9vcHMgYWZ0ZXIKPj4gYXR0YWNo
+aW5nCj4+IHRvIGlvbW11LCBzbyB3aGVuIHRoZSBpb21tdSBkb21haW4gbmVlZCB0byBhbGxvYyBh
+IG5ldyBwYWdlIGluCj4+IHJrX2lvbW11X21hcCgpLAo+PiBpdCB3b3VsZCBjYWxsOgo+PiBya19p
+b21tdV9tYXAoKSAgLS0+IGRtYV9hbGxvY19jb2hlcmVudCgpICAtLT4gb3BzLT5hbGxvYygpICAt
+LT4gaW9tbXVfbWFwKCkKPj4gLS0+IHJrX2lvbW11X21hcCgpCj4gSXQgc2hvdWxkbid0IGNhbGwg
+aW9tbXVfbWFwKCksIGJlY2F1c2UgdGhlIElPTU1VIGlzIG5vdCBiZWhpbmQgYW5vdGhlcgo+IElP
+TU1VLiBBcmUgeW91IHN1cmUgeW91IGNhbGxlZCBkbWFfYWxsb2NfY29oZXJlbnQoKSBvbiBiZWhh
+bGYgb2YgdGhlCj4gSU9NTVUgc3RydWN0IGRldmljZSBhbmQgbm90IHRoZSBEUk0gZGV2aWNlPwpJ
+IGNhbGxlZCBkbWFfYWxsb2NfY29oZXJlbnQoKSB3aXRoIERSTSBkZXZpY2UgYnV0IG5vdCB0aGUg
+SU9NTVUgZGV2aWNlLApiZWNhdXNlIERSTSBkaWRuJ3QgYXR0YWNoIHRvIGFueSBpb21tdS4gRXZl
+biBhbGxvY2F0aW5nIGFuIHZpcnR1YWwgb25lIAp3aGVuIGF0dGFjaGluZywgdGhlIGlvbW11LT5k
+ZXYKaXMgRFJNIGRldmljZSB0aG91Z2guCkFtIEkgcmlnaHQgaGVyZT8KClRoYW5rIHlvdSB2ZXJ5
+IG11Y2gsClNodW5xaWFuCj4KPiBCZXN0IHJlZ2FyZHMsCj4gVG9tYXN6CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppb21tdSBtYWlsaW5nIGxpc3QKaW9t
+bXVAbGlzdHMubGludXgtZm91bmRhdGlvbi5vcmcKaHR0cHM6Ly9saXN0cy5saW51eGZvdW5kYXRp
+b24ub3JnL21haWxtYW4vbGlzdGluZm8vaW9tbXU=
