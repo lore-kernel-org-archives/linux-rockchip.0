@@ -1,58 +1,108 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 0/2] Add a new Rockchip usb2 phy driver
-Date: Mon, 13 Jun 2016 10:10:08 +0800
-Message-ID: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: add pclk_vio_grf to critical clock on the
+ RK3399
+Date: Mon, 13 Jun 2016 11:10:04 +0800
+Message-ID: <575E240C.9060502@rock-chips.com>
+References: <1465724913-14553-1-git-send-email-zhengxing@rock-chips.com>
+ <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, elaine zhang <elaine.zhang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
-IP block than rk3288 and before, and most of phy-related registers are
-also different from the past, so a new phy driver is required necessarily.
+Hi Doug,
 
-These series patches add phy-rockchip-inno-usb2.c and the corresponding
-documentation.
+On 2016=E5=B9=B406=E6=9C=8813=E6=97=A5 05:32, Doug Anderson wrote:
+> Xing,
+>
+> On Sun, Jun 12, 2016 at 2:48 AM, Xing Zheng<zhengxing@rock-chips.com>=
+  wrote:
+>> The pclk_vio_grf supply power for GRF IOs, if it is disabled, will
+>> cause abnormal operation of the GRF.
+>>
+>> The clock tree of the pclk_vio like this:
+>>               | --> pclk_vio_grf
+>> ... pclk_vio | --> pclk_mipi_dsi1
+>>               | --> pclk_mipi_dsi0
+>>
+>> and the pclk_mipi_dsi0 and pclk_mipi_dsi1 don't have the flag
+>> CLK_IGNORE_UNUSED, and they will be disabled by clk_disable_unused
+>> when startup:
+>> clk_disable_unused
+>>    --> clk_disable_unprepare
+>>      --> clk_disable
+>>        --> clk_core_disable(core->parent)
+>>
+>> then, the pclk_vio_grf also is disabled. Therefore, we need to add
+>> pclk_vio_grf to critical clock and avoid to disable pclk_vio and
+>> pclk_vio_grf.
+>>
+>> Tested-by: Yakir Yang<ykk@rock-chips.com>
+>> Signed-off-by: Yakir Yang<ykk@rock-chips.com>
+>> Signed-off-by: Brian Norris<briannorris@chromium.org>
+>> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
+>> ---
+>>
+>>   drivers/clk/rockchip/clk-rk3399.c |    1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchi=
+p/clk-rk3399.c
+>> index b6742fa..7ecb12c3 100644
+>> --- a/drivers/clk/rockchip/clk-rk3399.c
+>> +++ b/drivers/clk/rockchip/clk-rk3399.c
+>> @@ -1485,6 +1485,7 @@ static const char *const rk3399_cru_critical_c=
+locks[] __initconst =3D {
+>>          "gpll_hclk_perilp1_src",
+>>          "gpll_aclk_perilp0_src",
+>>          "gpll_aclk_perihp_src",
+>> +       "pclk_vio_grf",
+> This clock is only needed when doing video output (like eDP), right?
+> That means it is not really a critical clock.  Critical clocks are
+> supposed to be ones that are needed for the basic functioning of the
+> system and that can never be turned off in any circumstances.  In thi=
+s
+> case, if someone were running a rk3399 device and didn't have any
+> video output they would want this clock off.
+>
+> Can you figure out in exactly which circumstances this clock needs to
+> be on and then add a proper consumer of this clock?  For instance, if
+> this clock is needed whenever the VOP is outputting data, then the VO=
+P
+> should be a client and should turn this clock on and off when video i=
+s
+> being output.  If this clock is needed whenever you access VOP
+> registers, then the VOP should be a client and turn this clock on
+> around register accesses.
+>
+> -Doug
+>
+Yes, the pclk_vio_grf is needed for doing video output.
+andpclk_vio_grf supply for: grf_soc_con9, 20~26, grf_hdcp
 
-Changes in v5:
- - Added 'reg' property both in devicetree bindings and driver to match the different phy-blocks.
+ From our design folks, we have many GRF registers in different power=20
+domains,
+and these GRF gates should be always enabled. In this case, we can avoi=
+d=20
+some
+of the operations GRF registers exception problems, and it is only a=20
+very small
+increase in  power consumption (aboult <=3D1ma).
 
-Changes in v4:
- - Used 'phy-supply' instead of 'vbus_*-supply'.
+I will refer the latest TRM to update a new patch for always enable=20
+these GRFs.
 
-Changes in v3:
- - Supplemented some hardware-description into the devicetree bindings.
- - Resolved the mapping defect between fixed value in driver and the property
-   in devicetree.
- - Code cleanup.
+Please drop this patch.
 
-Changes in v2:
- - Specified more hardware-description into the devicetree bindings.
- - Optimized some process of driver.
+Thanks.
 
-Frank Wang (2):
-  Documentation: bindings: add DT documentation for Rockchip USB2PHY
-  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+--=20
+- Xing Zheng
 
- .../bindings/phy/phy-rockchip-inno-usb2.txt        |   64 ++
- drivers/phy/Kconfig                                |    7 +
- drivers/phy/Makefile                               |    1 +
- drivers/phy/phy-rockchip-inno-usb2.c               |  645 ++++++++++++++++++++
- 4 files changed, 717 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
- create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
 
--- 
-1.7.9.5
