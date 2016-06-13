@@ -1,72 +1,106 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] clk: rockchip: add pclk_vio_grf to critical clock on the RK3399
-Date: Sun, 12 Jun 2016 14:32:39 -0700
-Message-ID: <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
-References: <1465724913-14553-1-git-send-email-zhengxing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1465724913-14553-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, elaine zhang <elaine.zhang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v5 1/2] Documentation: bindings: add DT documentation for Rockchip USB2PHY
+Date: Mon, 13 Jun 2016 10:10:09 +0800
+Message-ID: <1465783810-18756-2-git-send-email-frank.wang@rock-chips.com>
+References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Xing,
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+---
 
-On Sun, Jun 12, 2016 at 2:48 AM, Xing Zheng <zhengxing@rock-chips.com> wrote:
-> The pclk_vio_grf supply power for GRF IOs, if it is disabled, will
-> cause abnormal operation of the GRF.
->
-> The clock tree of the pclk_vio like this:
->              | --> pclk_vio_grf
-> ... pclk_vio | --> pclk_mipi_dsi1
->              | --> pclk_mipi_dsi0
->
-> and the pclk_mipi_dsi0 and pclk_mipi_dsi1 don't have the flag
-> CLK_IGNORE_UNUSED, and they will be disabled by clk_disable_unused
-> when startup:
-> clk_disable_unused
->   --> clk_disable_unprepare
->     --> clk_disable
->       --> clk_core_disable(core->parent)
->
-> then, the pclk_vio_grf also is disabled. Therefore, we need to add
-> pclk_vio_grf to critical clock and avoid to disable pclk_vio and
-> pclk_vio_grf.
->
-> Tested-by: Yakir Yang <ykk@rock-chips.com>
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> ---
->
->  drivers/clk/rockchip/clk-rk3399.c |    1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index b6742fa..7ecb12c3 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -1485,6 +1485,7 @@ static const char *const rk3399_cru_critical_clocks[] __initconst = {
->         "gpll_hclk_perilp1_src",
->         "gpll_aclk_perilp0_src",
->         "gpll_aclk_perihp_src",
-> +       "pclk_vio_grf",
+Changes in v5:
+ - Added 'reg' property to identify the different phy-blocks.
 
-This clock is only needed when doing video output (like eDP), right?
-That means it is not really a critical clock.  Critical clocks are
-supposed to be ones that are needed for the basic functioning of the
-system and that can never be turned off in any circumstances.  In this
-case, if someone were running a rk3399 device and didn't have any
-video output they would want this clock off.
+Changes in v4:
+ - Used 'phy-supply' instead of 'vbus_*-supply'.
 
-Can you figure out in exactly which circumstances this clock needs to
-be on and then add a proper consumer of this clock?  For instance, if
-this clock is needed whenever the VOP is outputting data, then the VOP
-should be a client and should turn this clock on and off when video is
-being output.  If this clock is needed whenever you access VOP
-registers, then the VOP should be a client and turn this clock on
-around register accesses.
+Changes in v3:
+ - Added 'clocks' and 'clock-names' optional properties.
+ - Specified 'otg-port' and 'host-port' as the sub-node name.
 
--Doug
+Changes in v2:
+ - Changed vbus_host optional property from gpio to regulator.
+ - Specified vbus_otg-supply optional property.
+ - Specified otg_id and otg_bvalid property.
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   64 ++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+new file mode 100644
+index 0000000..48bb5de
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+@@ -0,0 +1,64 @@
++ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
++
++Required properties (phy (parent) node):
++ - compatible : should be one of the listed compatibles:
++	* "rockchip,rk3366-usb2phy"
++	* "rockchip,rk3399-usb2phy"
++ - reg : the address offset of grf for usb-phy configuration.
++ - #clock-cells : should be 0.
++ - clock-output-names : specify the 480m output clock name.
++
++Optional properties:
++ - clocks : phandle + phy specifier pair, for the input clock of phy.
++ - clock-names : input clock name of phy, must be "phyclk".
++
++Required nodes : a sub-node is required for each port the phy provides.
++		 The sub-node name is used to identify host or otg port,
++		 and shall be the following entries:
++	* "otg-port" : the name of otg port.
++	* "host-port" : the name of host port.
++
++Required properties (port (child) node):
++ - #phy-cells : must be 0. See ./phy-bindings.txt for details.
++ - interrupts : specify an interrupt for each entry in interrupt-names.
++ - interrupt-names : a list which shall be the following entries:
++	* "otg_id" : for the otg id interrupt.
++	* "otg_bvalid" : for the otg vbus interrupt.
++	* "linestate" : for the host/otg linestate interrupt.
++
++Optional properties:
++ - phy-supply : phandle to a regulator that provides power to VBUS.
++		See ./phy-bindings.txt for details.
++
++Example:
++
++grf: syscon@ff770000 {
++	compatible = "rockchip,rk3366-grf", "syscon", "simple-mfd";
++	#address-cells = <1>;
++	#size-cells = <1>;
++
++...
++
++	u2phy: usb2-phy@700 {
++		compatible = "rockchip,rk3366-usb2phy";
++		reg = <0x700 0x2c>;
++		#clock-cells = <0>;
++		clock-output-names = "sclk_otgphy0_480m";
++
++		u2phy_otg: otg-port {
++			#phy-cells = <0>;
++			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "otg_id", "otg_bvalid", "linestate";
++			status = "okay";
++		};
++
++		u2phy_host: host-port {
++			#phy-cells = <0>;
++			interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "linestate";
++			status = "okay";
++		};
++	};
++};
+-- 
+1.7.9.5
