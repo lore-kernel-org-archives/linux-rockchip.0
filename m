@@ -1,87 +1,47 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: add pclk_vio_grf to critical clock on the
- RK3399
-Date: Mon, 13 Jun 2016 11:30:22 +0800
-Message-ID: <575E28CE.2020808@rock-chips.com>
-References: <1465724913-14553-1-git-send-email-zhengxing@rock-chips.com>
- <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
- <575E240C.9060502@rock-chips.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH] mmc: core: add auto bkops support
+Date: Mon, 13 Jun 2016 09:29:00 +0300
+Message-ID: <575E52AC.6000902@intel.com>
+References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <575E240C.9060502-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, elaine zhang <elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Alex Lemberg <alex.lemberg@sandisk.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91ZywKCk9uIDIwMTblubQwNuaciDEz5pelIDExOjEwLCBYaW5nIFpoZW5nIHdyb3RlOgo+
-IEhpIERvdWcsCj4KPiBPbiAyMDE25bm0MDbmnIgxM+aXpSAwNTozMiwgRG91ZyBBbmRlcnNvbiB3
-cm90ZToKPj4gWGluZywKPj4KPj4gT24gU3VuLCBKdW4gMTIsIDIwMTYgYXQgMjo0OCBBTSwgWGlu
-ZyAKPj4gWmhlbmc8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPiAgd3JvdGU6Cj4+PiBUaGUgcGNs
-a192aW9fZ3JmIHN1cHBseSBwb3dlciBmb3IgR1JGIElPcywgaWYgaXQgaXMgZGlzYWJsZWQsIHdp
-bGwKPj4+IGNhdXNlIGFibm9ybWFsIG9wZXJhdGlvbiBvZiB0aGUgR1JGLgo+Pj4KPj4+IFRoZSBj
-bG9jayB0cmVlIG9mIHRoZSBwY2xrX3ZpbyBsaWtlIHRoaXM6Cj4+PiAgICAgICAgICAgICAgIHwg
-LS0+IHBjbGtfdmlvX2dyZgo+Pj4gLi4uIHBjbGtfdmlvIHwgLS0+IHBjbGtfbWlwaV9kc2kxCj4+
-PiAgICAgICAgICAgICAgIHwgLS0+IHBjbGtfbWlwaV9kc2kwCj4+Pgo+Pj4gYW5kIHRoZSBwY2xr
-X21pcGlfZHNpMCBhbmQgcGNsa19taXBpX2RzaTEgZG9uJ3QgaGF2ZSB0aGUgZmxhZwo+Pj4gQ0xL
-X0lHTk9SRV9VTlVTRUQsIGFuZCB0aGV5IHdpbGwgYmUgZGlzYWJsZWQgYnkgY2xrX2Rpc2FibGVf
-dW51c2VkCj4+PiB3aGVuIHN0YXJ0dXA6Cj4+PiBjbGtfZGlzYWJsZV91bnVzZWQKPj4+ICAgIC0t
-PiBjbGtfZGlzYWJsZV91bnByZXBhcmUKPj4+ICAgICAgLS0+IGNsa19kaXNhYmxlCj4+PiAgICAg
-ICAgLS0+IGNsa19jb3JlX2Rpc2FibGUoY29yZS0+cGFyZW50KQo+Pj4KPj4+IHRoZW4sIHRoZSBw
-Y2xrX3Zpb19ncmYgYWxzbyBpcyBkaXNhYmxlZC4gVGhlcmVmb3JlLCB3ZSBuZWVkIHRvIGFkZAo+
-Pj4gcGNsa192aW9fZ3JmIHRvIGNyaXRpY2FsIGNsb2NrIGFuZCBhdm9pZCB0byBkaXNhYmxlIHBj
-bGtfdmlvIGFuZAo+Pj4gcGNsa192aW9fZ3JmLgo+Pj4KPj4+IFRlc3RlZC1ieTogWWFraXIgWWFu
-Zzx5a2tAcm9jay1jaGlwcy5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nPHlra0By
-b2NrLWNoaXBzLmNvbT4KPj4+IFNpZ25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpczxicmlhbm5vcnJp
-c0BjaHJvbWl1bS5vcmc+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBYaW5nIFpoZW5nPHpoZW5neGluZ0By
-b2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4KPj4+ICAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xr
-LXJrMzM5OS5jIHwgICAgMSArCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgCj4+
-PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4gaW5kZXggYjY3NDJmYS4u
-N2VjYjEyYzMgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5
-LmMKPj4+ICsrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4gQEAgLTE0
-ODUsNiArMTQ4NSw3IEBAIHN0YXRpYyBjb25zdCBjaGFyICpjb25zdCAKPj4+IHJrMzM5OV9jcnVf
-Y3JpdGljYWxfY2xvY2tzW10gX19pbml0Y29uc3QgPSB7Cj4+PiAgICAgICAgICAiZ3BsbF9oY2xr
-X3BlcmlscDFfc3JjIiwKPj4+ICAgICAgICAgICJncGxsX2FjbGtfcGVyaWxwMF9zcmMiLAo+Pj4g
-ICAgICAgICAgImdwbGxfYWNsa19wZXJpaHBfc3JjIiwKPj4+ICsgICAgICAgInBjbGtfdmlvX2dy
-ZiIsCj4+IFRoaXMgY2xvY2sgaXMgb25seSBuZWVkZWQgd2hlbiBkb2luZyB2aWRlbyBvdXRwdXQg
-KGxpa2UgZURQKSwgcmlnaHQ/Cj4+IFRoYXQgbWVhbnMgaXQgaXMgbm90IHJlYWxseSBhIGNyaXRp
-Y2FsIGNsb2NrLiAgQ3JpdGljYWwgY2xvY2tzIGFyZQo+PiBzdXBwb3NlZCB0byBiZSBvbmVzIHRo
-YXQgYXJlIG5lZWRlZCBmb3IgdGhlIGJhc2ljIGZ1bmN0aW9uaW5nIG9mIHRoZQo+PiBzeXN0ZW0g
-YW5kIHRoYXQgY2FuIG5ldmVyIGJlIHR1cm5lZCBvZmYgaW4gYW55IGNpcmN1bXN0YW5jZXMuIElu
-IHRoaXMKPj4gY2FzZSwgaWYgc29tZW9uZSB3ZXJlIHJ1bm5pbmcgYSByazMzOTkgZGV2aWNlIGFu
-ZCBkaWRuJ3QgaGF2ZSBhbnkKPj4gdmlkZW8gb3V0cHV0IHRoZXkgd291bGQgd2FudCB0aGlzIGNs
-b2NrIG9mZi4KPj4KPj4gQ2FuIHlvdSBmaWd1cmUgb3V0IGluIGV4YWN0bHkgd2hpY2ggY2lyY3Vt
-c3RhbmNlcyB0aGlzIGNsb2NrIG5lZWRzIHRvCj4+IGJlIG9uIGFuZCB0aGVuIGFkZCBhIHByb3Bl
-ciBjb25zdW1lciBvZiB0aGlzIGNsb2NrPyAgRm9yIGluc3RhbmNlLCBpZgo+PiB0aGlzIGNsb2Nr
-IGlzIG5lZWRlZCB3aGVuZXZlciB0aGUgVk9QIGlzIG91dHB1dHRpbmcgZGF0YSwgdGhlbiB0aGUg
-Vk9QCj4+IHNob3VsZCBiZSBhIGNsaWVudCBhbmQgc2hvdWxkIHR1cm4gdGhpcyBjbG9jayBvbiBh
-bmQgb2ZmIHdoZW4gdmlkZW8gaXMKPj4gYmVpbmcgb3V0cHV0LiAgSWYgdGhpcyBjbG9jayBpcyBu
-ZWVkZWQgd2hlbmV2ZXIgeW91IGFjY2VzcyBWT1AKPj4gcmVnaXN0ZXJzLCB0aGVuIHRoZSBWT1Ag
-c2hvdWxkIGJlIGEgY2xpZW50IGFuZCB0dXJuIHRoaXMgY2xvY2sgb24KPj4gYXJvdW5kIHJlZ2lz
-dGVyIGFjY2Vzc2VzLgo+Pgo+PgpBZGRpdGlvbmFsLCB3ZSBhcmUgZGlzY3Vzc2luZyB0aGF0IHdl
-IHNob3VsZCB0dXJuIHRoZSAicGNsa192aW8iIG9uIGFuZCAKb2ZmIGluCnZpZGVvIGRyaXZlcnMg
-d2hlbiB0aGUgdmlkZW8gY29uc3VtZXIgbmVlZHMgdG8gdGhpcyBjbG9jay4KClRoYW5rcy4KCj4+
-Cj4gWWVzLCB0aGUgcGNsa192aW9fZ3JmIGlzIG5lZWRlZCBmb3IgZG9pbmcgdmlkZW8gb3V0cHV0
-Lgo+IGFuZHBjbGtfdmlvX2dyZiBzdXBwbHkgZm9yOiBncmZfc29jX2NvbjksIDIwfjI2LCBncmZf
-aGRjcAo+Cj4gRnJvbSBvdXIgZGVzaWduIGZvbGtzLCB3ZSBoYXZlIG1hbnkgR1JGIHJlZ2lzdGVy
-cyBpbiBkaWZmZXJlbnQgcG93ZXIgCj4gZG9tYWlucywKPiBhbmQgdGhlc2UgR1JGIGdhdGVzIHNo
-b3VsZCBiZSBhbHdheXMgZW5hYmxlZC4gSW4gdGhpcyBjYXNlLCB3ZSBjYW4gCj4gYXZvaWQgc29t
-ZQo+IG9mIHRoZSBvcGVyYXRpb25zIEdSRiByZWdpc3RlcnMgZXhjZXB0aW9uIHByb2JsZW1zLCBh
-bmQgaXQgaXMgb25seSBhIAo+IHZlcnkgc21hbGwKPiBpbmNyZWFzZSBpbiAgcG93ZXIgY29uc3Vt
-cHRpb24gKGFib3VsdCA8PTFtYSkuCj4KPiBJIHdpbGwgcmVmZXIgdGhlIGxhdGVzdCBUUk0gdG8g
-dXBkYXRlIGEgbmV3IHBhdGNoIGZvciBhbHdheXMgZW5hYmxlIAo+IHRoZXNlIEdSRnMuCj4KPiBQ
-bGVhc2UgZHJvcCB0aGlzIHBhdGNoLgoKLS0gCi0gWGluZyBaaGVuZwoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 06/06/16 06:07, Shawn Lin wrote:
+> JEDEC eMMC v5.1 introduce an autonomously initiated method
+> for background operations.
+> 
+> Host that wants to enable the device to perform background
+> operations during device idle time, should signal the device
+> by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
+> this bit is set, the device may start or stop background operations
+> whenever it sees fit, without any notification to the host.
+> 
+> When AUTO_EN bit is set, the host should keep the device power
+> active. The host may set or clear this bit at any time based on
+> its power constraints or other considerations.
+> 
+> Currently the manual bkops is only be used under the async req
+> circumstances and it's a bit complicated to be controlled as the
+> perfect method is that we should do some idle monitor just as rpm
+> and send HPI each time if receiving rd/wr req. But it will impact
+> performance significantly, especially for random iops since the
+> weight of executing HPI against r/w small piece of LBAs is
+> nonnegligible.
+> 
+> So we now prefer to select the auto one unconditionally if supported
+> which makes it as simple as possible. It should really good enough
+> for devices to manage its internal policy for bkops rather than the
+> host, which makes us believe that we could achieve the best
+> performance for all the devices implementing auto bkops and the only
+> thing we should do is to disable it when cutting off the power.
+
+Do you know if there is really a requirement to do that? Because then, what
+is the point of power off notification? And why is AUTO_EN persistent across
+power failure?
