@@ -1,11 +1,16 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH 1/2] pinctrl: fix incorrect inline keyword in multiple drivers
-Date: Mon, 13 Jun 2016 17:18:34 +0200
-Message-ID: <1465831250-2689101-1-git-send-email-arnd@arndb.de>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: add flag CLK_SET_RATE_PARENT for
+ dclk_vop0_div on RK3399
+Date: Mon, 13 Jun 2016 11:37:49 -0700
+Message-ID: <20160613183748.GA21936@google.com>
+References: <1465724928-14611-1-git-send-email-zhengxing@rock-chips.com>
+ <575D3D9B.1070501@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <575D3D9B.1070501-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,93 +20,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Adrian Alonso <aalonso-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When building with 'make W=1', we get harmless warnings about
-five drivers in drivers/pinctrl, which all contain a copy of
-the same line:
+Hi,
 
-drivers/pinctrl/freescale/pinctrl-imx1-core.c:160:1: error: 'inline' is not at beginning of declaration [-Werror=old-style-declaration]
+On Sun, Jun 12, 2016 at 06:46:51PM +0800, Yakir Yang wrote:
+> On 06/12/2016 05:48 PM, Xing Zheng wrote:
+> >The functions and features VOP0 more complete than VOP1's, we need to
+> >use it dclk_vop0_div operate VPLLI, and let VOP0 as the default primary
+> >screen.
 
-This replaces the somewhat nonstandard 'static const inline'
-with 'static inline const', which has the same meaning but
-does not cause this warning.
+Personally, I'd like a little better description that talks about the
+rates, not just the differences between VOP0 and VOP1. Presumably the
+clock rates needed by VOP0 are not achievable just by these dividers, so
+we need to adjust the PLL?
 
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
- drivers/pinctrl/freescale/pinctrl-imx.c       | 2 +-
- drivers/pinctrl/freescale/pinctrl-imx1-core.c | 2 +-
- drivers/pinctrl/pinctrl-at91.c                | 2 +-
- drivers/pinctrl/pinctrl-rockchip.c            | 2 +-
- drivers/pinctrl/pinctrl-st.c                  | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+FWIW, I haven't actually found this patch necessary in my own testing (I
+have eDP running fine without this change), but perhaps with better
+justification, this will make more sense.
 
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
-index 309d31d61390..491d2d244f56 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx.c
-@@ -46,7 +46,7 @@ struct imx_pinctrl {
- 	const struct imx_pinctrl_soc_info *info;
- };
- 
--static const inline struct imx_pin_group *imx_pinctrl_find_group_by_name(
-+static inline const struct imx_pin_group *imx_pinctrl_find_group_by_name(
- 				const struct imx_pinctrl_soc_info *info,
- 				const char *name)
- {
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx1-core.c b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-index b4400cb19b61..38d39388d7a4 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-@@ -157,7 +157,7 @@ static int imx1_read_bit(struct imx1_pinctrl *ipctl, unsigned int pin_id,
- 	return !!(readl(reg) & BIT(offset));
- }
- 
--static const inline struct imx1_pin_group *imx1_pinctrl_find_group_by_name(
-+static inline const struct imx1_pin_group *imx1_pinctrl_find_group_by_name(
- 				const struct imx1_pinctrl_soc_info *info,
- 				const char *name)
- {
-diff --git a/drivers/pinctrl/pinctrl-at91.c b/drivers/pinctrl/pinctrl-at91.c
-index b7c0d6f7c046..2ce429cf41e6 100644
---- a/drivers/pinctrl/pinctrl-at91.c
-+++ b/drivers/pinctrl/pinctrl-at91.c
-@@ -189,7 +189,7 @@ struct at91_pinctrl {
- 	struct at91_pinctrl_mux_ops *ops;
- };
- 
--static const inline struct at91_pin_group *at91_pinctrl_find_group_by_name(
-+static inline const struct at91_pin_group *at91_pinctrl_find_group_by_name(
- 				const struct at91_pinctrl *info,
- 				const char *name)
- {
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a91026e8cd7c..a2337b7dfc41 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -360,7 +360,7 @@ static struct regmap_config rockchip_regmap_config = {
- 	.reg_stride = 4,
- };
- 
--static const inline struct rockchip_pin_group *pinctrl_name_to_group(
-+static inline const struct rockchip_pin_group *pinctrl_name_to_group(
- 					const struct rockchip_pinctrl *info,
- 					const char *name)
- {
-diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
-index d0ba968af5bb..0de1c67dfb94 100644
---- a/drivers/pinctrl/pinctrl-st.c
-+++ b/drivers/pinctrl/pinctrl-st.c
-@@ -844,7 +844,7 @@ static int st_pctl_get_group_pins(struct pinctrl_dev *pctldev,
- 	return 0;
- }
- 
--static const inline struct st_pctl_group *st_pctl_find_group_by_name(
-+static inline const struct st_pctl_group *st_pctl_find_group_by_name(
- 	const struct st_pinctrl *info, const char *name)
- {
- 	int i;
--- 
-2.7.0
+> >Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Tested on RK3399 Kevin board, after apply this patch, my eDP panel
+> light up normally. So
+> 
+> Tested-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+For clarification: this patch isn't sufficient for that, right? Of
+course eDP support hasn't fully landed upstream yet, but I presume you
+have other changes to set the correct VOP frequencies?
+
+Brian
+
+> BR,
+> - Yakir
+> 
+> >---
+> >
+> >  drivers/clk/rockchip/clk-rk3399.c |    2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> >diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+> >index 7ecb12c3..6affa75 100644
+> >--- a/drivers/clk/rockchip/clk-rk3399.c
+> >+++ b/drivers/clk/rockchip/clk-rk3399.c
+> >@@ -1157,7 +1157,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+> >  	GATE(HCLK_VOP0_NOC, "hclk_vop0_noc", "hclk_vop0_pre", CLK_IGNORE_UNUSED,
+> >  			RK3399_CLKGATE_CON(28), 0, GFLAGS),
+> >-	COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpll_gpll_p, 0,
+> >+	COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpll_gpll_p, CLK_SET_RATE_PARENT,
+> >  			RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLAGS,
+> >  			RK3399_CLKGATE_CON(10), 12, GFLAGS),
+> 
+> 
