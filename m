@@ -1,108 +1,87 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH] clk: rockchip: add pclk_vio_grf to critical clock on the
  RK3399
-Date: Mon, 13 Jun 2016 11:10:04 +0800
-Message-ID: <575E240C.9060502@rock-chips.com>
+Date: Mon, 13 Jun 2016 11:30:22 +0800
+Message-ID: <575E28CE.2020808@rock-chips.com>
 References: <1465724913-14553-1-git-send-email-zhengxing@rock-chips.com>
  <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
+ <575E240C.9060502@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XSSPMOnMD3mqFyqM3wWLShbRc2cXVdN0PYcUxpaDnsTw@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, elaine zhang <elaine.zhang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <575E240C.9060502-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, elaine zhang <elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-On 2016=E5=B9=B406=E6=9C=8813=E6=97=A5 05:32, Doug Anderson wrote:
-> Xing,
->
-> On Sun, Jun 12, 2016 at 2:48 AM, Xing Zheng<zhengxing@rock-chips.com>=
-  wrote:
->> The pclk_vio_grf supply power for GRF IOs, if it is disabled, will
->> cause abnormal operation of the GRF.
->>
->> The clock tree of the pclk_vio like this:
->>               | --> pclk_vio_grf
->> ... pclk_vio | --> pclk_mipi_dsi1
->>               | --> pclk_mipi_dsi0
->>
->> and the pclk_mipi_dsi0 and pclk_mipi_dsi1 don't have the flag
->> CLK_IGNORE_UNUSED, and they will be disabled by clk_disable_unused
->> when startup:
->> clk_disable_unused
->>    --> clk_disable_unprepare
->>      --> clk_disable
->>        --> clk_core_disable(core->parent)
->>
->> then, the pclk_vio_grf also is disabled. Therefore, we need to add
->> pclk_vio_grf to critical clock and avoid to disable pclk_vio and
->> pclk_vio_grf.
->>
->> Tested-by: Yakir Yang<ykk@rock-chips.com>
->> Signed-off-by: Yakir Yang<ykk@rock-chips.com>
->> Signed-off-by: Brian Norris<briannorris@chromium.org>
->> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
->> ---
->>
->>   drivers/clk/rockchip/clk-rk3399.c |    1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchi=
-p/clk-rk3399.c
->> index b6742fa..7ecb12c3 100644
->> --- a/drivers/clk/rockchip/clk-rk3399.c
->> +++ b/drivers/clk/rockchip/clk-rk3399.c
->> @@ -1485,6 +1485,7 @@ static const char *const rk3399_cru_critical_c=
-locks[] __initconst =3D {
->>          "gpll_hclk_perilp1_src",
->>          "gpll_aclk_perilp0_src",
->>          "gpll_aclk_perihp_src",
->> +       "pclk_vio_grf",
-> This clock is only needed when doing video output (like eDP), right?
-> That means it is not really a critical clock.  Critical clocks are
-> supposed to be ones that are needed for the basic functioning of the
-> system and that can never be turned off in any circumstances.  In thi=
-s
-> case, if someone were running a rk3399 device and didn't have any
-> video output they would want this clock off.
->
-> Can you figure out in exactly which circumstances this clock needs to
-> be on and then add a proper consumer of this clock?  For instance, if
-> this clock is needed whenever the VOP is outputting data, then the VO=
-P
-> should be a client and should turn this clock on and off when video i=
-s
-> being output.  If this clock is needed whenever you access VOP
-> registers, then the VOP should be a client and turn this clock on
-> around register accesses.
->
-> -Doug
->
-Yes, the pclk_vio_grf is needed for doing video output.
-andpclk_vio_grf supply for: grf_soc_con9, 20~26, grf_hdcp
-
- From our design folks, we have many GRF registers in different power=20
-domains,
-and these GRF gates should be always enabled. In this case, we can avoi=
-d=20
-some
-of the operations GRF registers exception problems, and it is only a=20
-very small
-increase in  power consumption (aboult <=3D1ma).
-
-I will refer the latest TRM to update a new patch for always enable=20
-these GRFs.
-
-Please drop this patch.
-
-Thanks.
-
---=20
-- Xing Zheng
-
-
+SGkgRG91ZywKCk9uIDIwMTblubQwNuaciDEz5pelIDExOjEwLCBYaW5nIFpoZW5nIHdyb3RlOgo+
+IEhpIERvdWcsCj4KPiBPbiAyMDE25bm0MDbmnIgxM+aXpSAwNTozMiwgRG91ZyBBbmRlcnNvbiB3
+cm90ZToKPj4gWGluZywKPj4KPj4gT24gU3VuLCBKdW4gMTIsIDIwMTYgYXQgMjo0OCBBTSwgWGlu
+ZyAKPj4gWmhlbmc8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPiAgd3JvdGU6Cj4+PiBUaGUgcGNs
+a192aW9fZ3JmIHN1cHBseSBwb3dlciBmb3IgR1JGIElPcywgaWYgaXQgaXMgZGlzYWJsZWQsIHdp
+bGwKPj4+IGNhdXNlIGFibm9ybWFsIG9wZXJhdGlvbiBvZiB0aGUgR1JGLgo+Pj4KPj4+IFRoZSBj
+bG9jayB0cmVlIG9mIHRoZSBwY2xrX3ZpbyBsaWtlIHRoaXM6Cj4+PiAgICAgICAgICAgICAgIHwg
+LS0+IHBjbGtfdmlvX2dyZgo+Pj4gLi4uIHBjbGtfdmlvIHwgLS0+IHBjbGtfbWlwaV9kc2kxCj4+
+PiAgICAgICAgICAgICAgIHwgLS0+IHBjbGtfbWlwaV9kc2kwCj4+Pgo+Pj4gYW5kIHRoZSBwY2xr
+X21pcGlfZHNpMCBhbmQgcGNsa19taXBpX2RzaTEgZG9uJ3QgaGF2ZSB0aGUgZmxhZwo+Pj4gQ0xL
+X0lHTk9SRV9VTlVTRUQsIGFuZCB0aGV5IHdpbGwgYmUgZGlzYWJsZWQgYnkgY2xrX2Rpc2FibGVf
+dW51c2VkCj4+PiB3aGVuIHN0YXJ0dXA6Cj4+PiBjbGtfZGlzYWJsZV91bnVzZWQKPj4+ICAgIC0t
+PiBjbGtfZGlzYWJsZV91bnByZXBhcmUKPj4+ICAgICAgLS0+IGNsa19kaXNhYmxlCj4+PiAgICAg
+ICAgLS0+IGNsa19jb3JlX2Rpc2FibGUoY29yZS0+cGFyZW50KQo+Pj4KPj4+IHRoZW4sIHRoZSBw
+Y2xrX3Zpb19ncmYgYWxzbyBpcyBkaXNhYmxlZC4gVGhlcmVmb3JlLCB3ZSBuZWVkIHRvIGFkZAo+
+Pj4gcGNsa192aW9fZ3JmIHRvIGNyaXRpY2FsIGNsb2NrIGFuZCBhdm9pZCB0byBkaXNhYmxlIHBj
+bGtfdmlvIGFuZAo+Pj4gcGNsa192aW9fZ3JmLgo+Pj4KPj4+IFRlc3RlZC1ieTogWWFraXIgWWFu
+Zzx5a2tAcm9jay1jaGlwcy5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nPHlra0By
+b2NrLWNoaXBzLmNvbT4KPj4+IFNpZ25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpczxicmlhbm5vcnJp
+c0BjaHJvbWl1bS5vcmc+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBYaW5nIFpoZW5nPHpoZW5neGluZ0By
+b2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4KPj4+ICAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xr
+LXJrMzM5OS5jIHwgICAgMSArCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+
+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgCj4+
+PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4gaW5kZXggYjY3NDJmYS4u
+N2VjYjEyYzMgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5
+LmMKPj4+ICsrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4gQEAgLTE0
+ODUsNiArMTQ4NSw3IEBAIHN0YXRpYyBjb25zdCBjaGFyICpjb25zdCAKPj4+IHJrMzM5OV9jcnVf
+Y3JpdGljYWxfY2xvY2tzW10gX19pbml0Y29uc3QgPSB7Cj4+PiAgICAgICAgICAiZ3BsbF9oY2xr
+X3BlcmlscDFfc3JjIiwKPj4+ICAgICAgICAgICJncGxsX2FjbGtfcGVyaWxwMF9zcmMiLAo+Pj4g
+ICAgICAgICAgImdwbGxfYWNsa19wZXJpaHBfc3JjIiwKPj4+ICsgICAgICAgInBjbGtfdmlvX2dy
+ZiIsCj4+IFRoaXMgY2xvY2sgaXMgb25seSBuZWVkZWQgd2hlbiBkb2luZyB2aWRlbyBvdXRwdXQg
+KGxpa2UgZURQKSwgcmlnaHQ/Cj4+IFRoYXQgbWVhbnMgaXQgaXMgbm90IHJlYWxseSBhIGNyaXRp
+Y2FsIGNsb2NrLiAgQ3JpdGljYWwgY2xvY2tzIGFyZQo+PiBzdXBwb3NlZCB0byBiZSBvbmVzIHRo
+YXQgYXJlIG5lZWRlZCBmb3IgdGhlIGJhc2ljIGZ1bmN0aW9uaW5nIG9mIHRoZQo+PiBzeXN0ZW0g
+YW5kIHRoYXQgY2FuIG5ldmVyIGJlIHR1cm5lZCBvZmYgaW4gYW55IGNpcmN1bXN0YW5jZXMuIElu
+IHRoaXMKPj4gY2FzZSwgaWYgc29tZW9uZSB3ZXJlIHJ1bm5pbmcgYSByazMzOTkgZGV2aWNlIGFu
+ZCBkaWRuJ3QgaGF2ZSBhbnkKPj4gdmlkZW8gb3V0cHV0IHRoZXkgd291bGQgd2FudCB0aGlzIGNs
+b2NrIG9mZi4KPj4KPj4gQ2FuIHlvdSBmaWd1cmUgb3V0IGluIGV4YWN0bHkgd2hpY2ggY2lyY3Vt
+c3RhbmNlcyB0aGlzIGNsb2NrIG5lZWRzIHRvCj4+IGJlIG9uIGFuZCB0aGVuIGFkZCBhIHByb3Bl
+ciBjb25zdW1lciBvZiB0aGlzIGNsb2NrPyAgRm9yIGluc3RhbmNlLCBpZgo+PiB0aGlzIGNsb2Nr
+IGlzIG5lZWRlZCB3aGVuZXZlciB0aGUgVk9QIGlzIG91dHB1dHRpbmcgZGF0YSwgdGhlbiB0aGUg
+Vk9QCj4+IHNob3VsZCBiZSBhIGNsaWVudCBhbmQgc2hvdWxkIHR1cm4gdGhpcyBjbG9jayBvbiBh
+bmQgb2ZmIHdoZW4gdmlkZW8gaXMKPj4gYmVpbmcgb3V0cHV0LiAgSWYgdGhpcyBjbG9jayBpcyBu
+ZWVkZWQgd2hlbmV2ZXIgeW91IGFjY2VzcyBWT1AKPj4gcmVnaXN0ZXJzLCB0aGVuIHRoZSBWT1Ag
+c2hvdWxkIGJlIGEgY2xpZW50IGFuZCB0dXJuIHRoaXMgY2xvY2sgb24KPj4gYXJvdW5kIHJlZ2lz
+dGVyIGFjY2Vzc2VzLgo+Pgo+PgpBZGRpdGlvbmFsLCB3ZSBhcmUgZGlzY3Vzc2luZyB0aGF0IHdl
+IHNob3VsZCB0dXJuIHRoZSAicGNsa192aW8iIG9uIGFuZCAKb2ZmIGluCnZpZGVvIGRyaXZlcnMg
+d2hlbiB0aGUgdmlkZW8gY29uc3VtZXIgbmVlZHMgdG8gdGhpcyBjbG9jay4KClRoYW5rcy4KCj4+
+Cj4gWWVzLCB0aGUgcGNsa192aW9fZ3JmIGlzIG5lZWRlZCBmb3IgZG9pbmcgdmlkZW8gb3V0cHV0
+Lgo+IGFuZHBjbGtfdmlvX2dyZiBzdXBwbHkgZm9yOiBncmZfc29jX2NvbjksIDIwfjI2LCBncmZf
+aGRjcAo+Cj4gRnJvbSBvdXIgZGVzaWduIGZvbGtzLCB3ZSBoYXZlIG1hbnkgR1JGIHJlZ2lzdGVy
+cyBpbiBkaWZmZXJlbnQgcG93ZXIgCj4gZG9tYWlucywKPiBhbmQgdGhlc2UgR1JGIGdhdGVzIHNo
+b3VsZCBiZSBhbHdheXMgZW5hYmxlZC4gSW4gdGhpcyBjYXNlLCB3ZSBjYW4gCj4gYXZvaWQgc29t
+ZQo+IG9mIHRoZSBvcGVyYXRpb25zIEdSRiByZWdpc3RlcnMgZXhjZXB0aW9uIHByb2JsZW1zLCBh
+bmQgaXQgaXMgb25seSBhIAo+IHZlcnkgc21hbGwKPiBpbmNyZWFzZSBpbiAgcG93ZXIgY29uc3Vt
+cHRpb24gKGFib3VsdCA8PTFtYSkuCj4KPiBJIHdpbGwgcmVmZXIgdGhlIGxhdGVzdCBUUk0gdG8g
+dXBkYXRlIGEgbmV3IHBhdGNoIGZvciBhbHdheXMgZW5hYmxlIAo+IHRoZXNlIEdSRnMuCj4KPiBQ
+bGVhc2UgZHJvcCB0aGlzIHBhdGNoLgoKLS0gCi0gWGluZyBaaGVuZwoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
