@@ -1,15 +1,11 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 0/4] clocksource: rockchip/timer: Support rktimer for
- rk3399
-Date: Mon, 13 Jun 2016 15:06:25 +0200
-Message-ID: <20160613130625.GC10634@linaro.org>
-References: <1465275273-22076-1-git-send-email-wxt@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: [PATCH 1/2] pinctrl: fix incorrect inline keyword in multiple drivers
+Date: Mon, 13 Jun 2016 17:18:34 +0200
+Message-ID: <1465831250-2689101-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1465275273-22076-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,46 +15,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Adrian Alonso <aalonso-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 07, 2016 at 12:54:29PM +0800, Caesar Wang wrote:
-> This series patches had been tested on rockchip inside kernel.
-> In order to support the rk3399 SoC timer and turn off interrupts and IPIs to
-> save power in idle.
+When building with 'make W=1', we get harmless warnings about
+five drivers in drivers/pinctrl, which all contain a copy of
+the same line:
 
-For my personnal information, are the arch_timer in the same power domain 
-than the CPU ? IOW, what is the 'always-on' property in the DT ?
+drivers/pinctrl/freescale/pinctrl-imx1-core.c:160:1: error: 'inline' is not at beginning of declaration [-Werror=old-style-declaration]
 
-> Okay, it still works bootup on rk3288/other SoCs, even though many socs 
-> hasn't used
-> the broadcast timer.
+This replaces the somewhat nonstandard 'static const inline'
+with 'static inline const', which has the same meaning but
+does not cause this warning.
 
-Yes, unfortunately the SoC design on rk3288 and the previous ones do not 
-allow to use a cpuidle driver with cpu/cluster power down, so obviously the 
-broadcast timer is pointless on these boards :)
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+---
+ drivers/pinctrl/freescale/pinctrl-imx.c       | 2 +-
+ drivers/pinctrl/freescale/pinctrl-imx1-core.c | 2 +-
+ drivers/pinctrl/pinctrl-at91.c                | 2 +-
+ drivers/pinctrl/pinctrl-rockchip.c            | 2 +-
+ drivers/pinctrl/pinctrl-st.c                  | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-> History version:
-> v1:
-> https://lkml.org/lkml/2016/5/25/186
-> 
-> Easy to test for my borad.
-> localhost / # cat /proc/interrupts
-> CPU0       CPU1       CPU2       CPU3       CPU4       CPU5
-> 1:          0          0          0          0          0          0     GICv3  29 Edge      arch_timer
-> ...
-> 5:          0          0          0          0          0          0     GICv3 113 Level     rk_timer
-> ..
-> 
-> localhost / # cat /proc/timer_list | grep event_handler
-> get "event_handler:  hrtimer_interrupt"
-> event_handler:  tick_handle_oneshot_broadcast
-> event_handler:  hrtimer_interrupt
-
-What are you trying to demonstrate here ? There are no interrupts for both 
-arch_timer and rk_timer.
-
-> That should work for my board.
-
-What do you mean ?
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+index 309d31d61390..491d2d244f56 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+@@ -46,7 +46,7 @@ struct imx_pinctrl {
+ 	const struct imx_pinctrl_soc_info *info;
+ };
+ 
+-static const inline struct imx_pin_group *imx_pinctrl_find_group_by_name(
++static inline const struct imx_pin_group *imx_pinctrl_find_group_by_name(
+ 				const struct imx_pinctrl_soc_info *info,
+ 				const char *name)
+ {
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx1-core.c b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+index b4400cb19b61..38d39388d7a4 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx1-core.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+@@ -157,7 +157,7 @@ static int imx1_read_bit(struct imx1_pinctrl *ipctl, unsigned int pin_id,
+ 	return !!(readl(reg) & BIT(offset));
+ }
+ 
+-static const inline struct imx1_pin_group *imx1_pinctrl_find_group_by_name(
++static inline const struct imx1_pin_group *imx1_pinctrl_find_group_by_name(
+ 				const struct imx1_pinctrl_soc_info *info,
+ 				const char *name)
+ {
+diff --git a/drivers/pinctrl/pinctrl-at91.c b/drivers/pinctrl/pinctrl-at91.c
+index b7c0d6f7c046..2ce429cf41e6 100644
+--- a/drivers/pinctrl/pinctrl-at91.c
++++ b/drivers/pinctrl/pinctrl-at91.c
+@@ -189,7 +189,7 @@ struct at91_pinctrl {
+ 	struct at91_pinctrl_mux_ops *ops;
+ };
+ 
+-static const inline struct at91_pin_group *at91_pinctrl_find_group_by_name(
++static inline const struct at91_pin_group *at91_pinctrl_find_group_by_name(
+ 				const struct at91_pinctrl *info,
+ 				const char *name)
+ {
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index a91026e8cd7c..a2337b7dfc41 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -360,7 +360,7 @@ static struct regmap_config rockchip_regmap_config = {
+ 	.reg_stride = 4,
+ };
+ 
+-static const inline struct rockchip_pin_group *pinctrl_name_to_group(
++static inline const struct rockchip_pin_group *pinctrl_name_to_group(
+ 					const struct rockchip_pinctrl *info,
+ 					const char *name)
+ {
+diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
+index d0ba968af5bb..0de1c67dfb94 100644
+--- a/drivers/pinctrl/pinctrl-st.c
++++ b/drivers/pinctrl/pinctrl-st.c
+@@ -844,7 +844,7 @@ static int st_pctl_get_group_pins(struct pinctrl_dev *pctldev,
+ 	return 0;
+ }
+ 
+-static const inline struct st_pctl_group *st_pctl_find_group_by_name(
++static inline const struct st_pctl_group *st_pctl_find_group_by_name(
+ 	const struct st_pinctrl *info, const char *name)
+ {
+ 	int i;
+-- 
+2.7.0
