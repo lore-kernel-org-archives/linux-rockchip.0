@@ -1,105 +1,44 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v2 PATCH 0/4] Rockchip Type-C and DispplayPort driver
-Date: Mon, 13 Jun 2016 17:39:45 +0800
-Message-ID: <1465810789-22303-1-git-send-email-zyw@rock-chips.com>
+Subject: Re: [v1,4/4] drm/rockchip: cdn-dp: add cdn DP support for rk3399
+Date: Mon, 13 Jun 2016 17:45:18 +0800
+Message-ID: <575E80AE.2050809@rock-chips.com>
+References: <1464966911-18949-5-git-send-email-zyw@rock-chips.com>
+ <20160608221354.GA25675@roeck-us.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160608221354.GA25675@roeck-us.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CkhpIGFsbAoKVGhpcyBzZXJpZXMgcGF0Y2ggaXMgZm9yIHJvY2tjaGlwIFR5cGUtQyBwaHkgYW5k
-IERpc3BsYXlQb3J0IGNvbnRyb2xsZXIKZHJpdmVyLgoKVGhlIFVTQiBUeXBlLUMgUEhZIGlzIGRl
-c2lnbmVkIHRvIHN1cHBvcnQgdGhlIFVTQjMgYW5kIERQIGFwcGxpY2F0aW9ucy4KVGhlIFBIWSBi
-YXNpY2FsbHkgaGFzIHR3byBtYWluIGNvbXBvbmVudHM6IFVTQjMgYW5kIERpc3BseVBvcnQuIFVT
-QjMKb3BlcmF0ZXMgaW4gU3VwZXJTcGVlZCBtb2RlIGFuZCB0aGUgRFAgY2FuIG9wZXJhdGUgYXQg
-UkJSLCBIQlIgYW5kIEhCUjIKZGF0YSByYXRlcy4gVGhlIFR5cGUtQyBjYWJsZSBvcmllbnRhdGlv
-biBkZXRlY3Rpb24gYW5kIFBvd2VyIERlbGl2ZXJ5CihQRCkgaXMgYWNjb21wbGlzaGVkIHVzaW5n
-IGEgUEQgUEhZIG9yIGEgZXhlcm5hbCBQRCBjaGlwLgoKVGhlIERQIGNvbnRyb2xsZXIgaXMgY29t
-cGxpYW50IHdpdGggRGlzcGxheVBvcnQgU3BlY2lmaWNhdGlvbiwKVmVyc2lvbiAxLjMsIFRoaXMg
-SVAgaXMgY29tcGF0aWJsZSB3aXRoIHRoZSByb2NrY2hpcCB0eXBlLWMgUEhZIElQLgpUaGVyZSBp
-cyBhIHVDUFUgaW4gRFAgY29udHJvbGxlciwgaXQgbmVlZCBhIGZpcm13YXJlIHRvIHdvcmssIHBs
-ZWFzZQpwdXQgdGhlIGZpcm13YXJlIGZpbGUgdG8gL2xpYi9maXJtd2FyZS9jZG4vZHB0eC5iaW4u
-IFRoZSB1Q1BVIGluIGNoYXJnZQpvZiBhdXggY29tbXVuaWNhdGlvbiBhbmQgbGluayB0cmFpbmlu
-ZywgdGhlIGhvc3QgdXNlIG1haWxib3ggdG8KY29tbXVuaWNhdGUgd2l0aCB0aGUgdWNwdS4KClRo
-ZSBQSFkgZHJpdmVyIGhhcyByZWdpc3RlciBhIG5vdGlmaWNhdGlvbiB3aXRoIGV4dGNvbiBBUEks
-IHRvIGdldCB0aGUKYWx0IG1vZGUgZnJvbSBQRCwgdGhlIFBEIGRyaXZlciBuZWVkIGNhbGwgdGhl
-IGRldm1fZXh0Y29uX2Rldl9hbGxvY2F0ZQp0byBjcmVhdGUgYSBleHRjb24gZGV2aWNlIGFuZCB1
-c2UgZXh0Y29uX3NldF9zdGF0ZSB0byBub3RpZnkgUEhZIGFuZApEUCBjb250cm9sbGVyLgoKQWJv
-dXQgdGhlIERQIGF1ZGlvLCBjZG4tZHAgcmVnaXN0ZXJlZCAyIERBSXM6IDAgaXMgSTJTLCAxIGlz
-IFNQRElGLgpXZSBjYW4gcmVmZXJlbmNlIHRoZW0gaW4gc2ltcGxlLWNhcmQuCgpUaGlzIHNlcmll
-cyBpcyBiYXNlZCBvbiBNYXJrIFlhbydzIGJyYW5jaDoKaHR0cHM6Ly9naXRodWIuY29tL21hcmt5
-enEva2VybmVsLWRybS1yb2NrY2hpcC90cmVlL2RybS1yb2NrY2hpcC1uZXh0LTIwMTYtMDUtMjMK
-CkkgdGVzdCB0aGlzIHBhdGNoZXMgb24gdGhlIHJrMzM5OS1ldmIgYm9hcmQsIHdpdGggYSBmdXNi
-MzAyIGRyaXZlciwKdGhpcyBicmFuY2ggaGFzIG5vIHJrMzM5OS5kdHNpLCBzbyB0aGUgcGF0Y2gg
-YWJvdXQgZHRzIGlzIG5vdCBpbmNsdWRlZAppbiB0aGlzIHNlcmllcy4KCgpDaGFuZ2VzIGluIHYy
-OgotIGFkZCBzb21lIHJlZ2lzdGVycyBkZXNjcmlwdGlvbgotIHNlbGVjdCBSRVNFVF9DT05UUk9M
-TEVSCi0gYWxwaGFiZXRpYyBvcmRlcgotIG1vZGlmeSBzb21lIHNwZWxsaW5nIG1pc3Rha2VzCi0g
-bWFrZSBtb2RlIGNsZWFuZXIKLSB1c2UgYm9vbCBmb3IgZW5hYmxlL2Rpc2FibGUKLSBjaGVjayBh
-bGwgb2YgdGhlIHJldHVybiB2YWx1ZQotIHJldHVybiBhIGJldHRlciBlcnIgbnVtYmVyCi0gdXNl
-IG1vcmUgcmVhZHhfcG9sbF90aW1lb3V0KCkKLSBjbGtfZGlzYWJsZV91bnByZXBhcmUodGNwaHkt
-PmNsa19yZWYpOwotIHJlbW92ZSB1bnVzZSBmdW5jdGlvbnMsIHJvY2tjaGlwX3R5cGVjX3BoeV9w
-b3dlcl9vbi9vZmYKLSByZW1vdmUgdW5uZWNlc3NhcnkgdHlwZWNhc3QgZnJvbSB2b2lkICoKLSB1
-c2UgZHRzIG5vZGUgdG8gZGlzdGluZ3Vpc2ggYmV0d2VlbiBwaHlzLgotIEFscGhhYmV0aWMgb3Jk
-ZXIKLSByZW1vdmUgZXhjZXNzIGVycm9yIG1lc3NhZ2UKLSB1c2UgZGVmaW5lIGNsa19yYXRlCi0g
-Y2hlY2sgYWxsIHJldHVybiB2YWx1ZQotIHJlbW92ZSBkZXZfc2V0X25hbWUoZHAtPmRldiwgImNk
-bi1kcCIpOwotIHVzZSBzY2hlZHVsZV9kZWxheWVkX3dvcmsKLSByZW1vdmUgbmV2ZXItY2FsbGVk
-IGZ1bmN0aW9ucwotIHJlbW92ZSBzb21lIHVubmVjZXNzYXJ5ICgpCgpDaGFuZ2VzIGluIHYxOgot
-IGFkZCBleHRjb24gbm9kZSBkZXNjcmlwdGlvbgotIG1vdmUgdGhlIHJlZ2lzdGVycyBpbiBwaHkg
-ZHJpdmVyCi0gcmVtb3ZlIHRoZSBzdWZmaXggb2YgcmVzZXQKLSB1cGRhdGUgdGhlIGxpY2VuY2Ug
-bm90ZQotIGluaXQgY29yZSBjbG9jayB0byA1ME1IegotIHVzZSBleHRjb24gQVBJCi0gcmVtb3Zl
-IHVudXNlZCBnbG9iYWwKLSBhZGQgc29tZSBjb21tZW50cyBmb3IgbWFnaWMgbnVtCi0gY2hhbmdl
-IHVzbGVlcF9yYW5nZSgxMDAwLCAyMDAwKSB0b3VzbGVlcF9yYW5nZSgxMDAwLCAxMDUwKQotIHJl
-bW92ZSBfX2Z1bmNfXyBmcm9tIGRldl9lcnIKLSByZXR1cm4gZXJyIG51bWJlciB3aGVuIGdldCBj
-bGsgZmFpbGVkCi0gcmVtb3ZlIEFERFJfQURKIGRlZmluZQotIHVzZSBkZXZtX2Nsa19nZXQoJnBk
-ZXYtPmRldiwgInRjcGRjb3JlIikKLSBhZGQgZXh0Y29uIG5vZGUgZGVzY3JpcHRpb24KLSBhZGQg
-I3NvdW5kLWRhaS1jZWxscyBkZXNjcmlwdGlvbgotIHVzZSBleHRjb24gQVBJCi0gdXNlIGhkbWkt
-Y29kZWMgZm9yIHRoZSBEUCBBc29jCi0gZG8gbm90IGluaXRpYWxpemUgdGhlICJyZXQiCi0gcHJp
-bnRrIGEgZXJyIGxvZyB3aGVuIGRybV9vZl9lbmNvZGVyX2FjdGl2ZV9lbmRwb2ludF9pZAotIG1v
-ZGlmeSB0aGUgZGNsayBwaW5fcG9sIHRvIGEgc2luZ2xlIGxpbmUKCkNocmlzIFpob25nICg0KToK
-ICBEb2N1bWVudGF0aW9uOiBiaW5kaW5nczogYWRkIGR0IGRvYyBmb3IgUm9ja2NoaXAgVVNCIFR5
-cGUtQyBQSFkKICBwaHk6IEFkZCBVU0IgVHlwZS1DIFBIWSBkcml2ZXIgZm9yIHJrMzM5OQogIERv
-Y3VtZW50YXRpb246IGJpbmRpbmdzOiBhZGQgZHQgZG9jdW1lbnRhdGlvbiBmb3IgY2RuIERQIGNv
-bnRyb2xsZXIKICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogYWRkIGNkbiBEUCBzdXBwb3J0IGZvciBy
-azMzOTkKCiAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9jZG4tZHAtcm9ja2NoaXAudHh0
-ICB8ICA2MiArKwogLi4uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2NrY2hpcC10eXBl
-Yy50eHQgfCAgNzcgKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAg
-ICAgICAgICAgIHwgICA5ICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAg
-ICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29y
-ZS5jICAgICAgICAgICAgIHwgNjk0ICsrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2Nkbi1kcC1jb3JlLmggICAgICAgICAgICAgfCAxMDggKysrCiBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jICAgICAgICAgICAgICB8IDcxNyArKysrKysrKysrKysr
-KysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5oICAgICAgICAgICAgICB8
-IDQwNCArKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMgICAgICAgIHwgICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5oICAgICAgICB8ICAgMiArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-dm9wX3JlZy5jICAgICAgICB8ICAgMiArCiBkcml2ZXJzL3BoeS9LY29uZmlnICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB8ICAgOCArCiBkcml2ZXJzL3BoeS9NYWtlZmlsZSAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL3BoeS9waHktcm9ja2NoaXAt
-dHlwZWMuYyAgICAgICAgICAgICAgICAgICB8IDk1MiArKysrKysrKysrKysrKysrKysrKysKIGlu
-Y2x1ZGUvbGludXgvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy5oICAgICAgICAgICAgIHwgIDIwICsK
-IDE1IGZpbGVzIGNoYW5nZWQsIDMwNjIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQogY3Jl
-YXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3JvY2tjaGlwL2Nkbi1kcC1yb2NrY2hpcC50eHQKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy50eHQKIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwog
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5o
-CiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcu
-YwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVn
-LmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYwog
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvbGludXgvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy5o
-CgotLSAKMi42LjMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+Hi Guenter
+
+Thanks for your comments
+
+On 06/09/2016 06:13 AM, Guenter Roeck wrote:
+>> +	if (ret < 0) {
+>> >+		dev_err(dp->dev, "failed to request firmware %d\n", ret);
+>> >+		return ret;
+>> >+	}
+>> >+
+>> >+	hdr = (struct cdn_firmware_header *)fw->data;
+>> >+	if (fw->size != le32_to_cpu(hdr->size_bytes))
+>> >+		return -EINVAL;
+>> >+
+>> >+	ret = cdn_dp_clk_enable(dp);
+>> >+	if (ret < 0) {
+>> >+		dev_err(dp->dev, "cannot enable dp clk %d\n", ret);
+>> >+		return ret;
+>> >+	}
+>> >+
+>> >+	dp_clock_reset_seq(dp);
+>> >+
+>> >+	iram_data = (const u32 *)(fw->data + hdr->header_size);
+>> >+	dram_data = (const u32 *)(fw->data + hdr->header_size + hdr->iram_size);
+> No need for endianness conversion here ?
+>
+The firmware does need for endianness conversio.
+And for the other comments, I have done them, v2 has been posted.
