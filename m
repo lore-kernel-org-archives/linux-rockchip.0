@@ -1,94 +1,78 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
-Date: Tue, 14 Jun 2016 17:20:14 +0200
-Message-ID: <2983992.DFFWV4P4jo@diego>
-References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com> <1465783810-18756-3-git-send-email-frank.wang@rock-chips.com> <57601A1D.9020803@roeck-us.net>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v3 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
+Date: Tue, 14 Jun 2016 08:24:14 -0700
+Message-ID: <CAD=FV=VcFLdxSFp99kFc6nHAOHxcrt49A5Hn6M6LHPEgVhFELw@mail.gmail.com>
+References: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
+ <1465904780-935-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <57601A1D.9020803-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Cc: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1465904780-935-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Tomasz Figa <tomasz.figa@chromium.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. Juni 2016, 07:52:13 schrieb Guenter Roeck:
-> On 06/12/2016 07:10 PM, Frank Wang wrote:
-> > The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
-> > than rk3288 and before, and most of phy-related registers are also
-> > different from the past, so a new phy driver is required necessarily.
-> > 
-> > Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > ---
-> 
-> [ ... ]
-> 
-> > +
-> > +static int rockchip_usb2phy_resume(struct phy *phy)
-> > +{
-> > +	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-> > +	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
-> > +	int ret;
-> > +
-> > +	dev_dbg(&rport->phy->dev, "port resume\n");
-> > +
-> > +	ret = clk_prepare_enable(rphy->clk480m);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret = property_enable(rphy, &rport->port_cfg->phy_sus, false);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	rport->suspended = false;
-> > +	return 0;
-> > +}
-> > +
-> > +static int rockchip_usb2phy_suspend(struct phy *phy)
-> > +{
-> > +	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-> > +	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
-> > +	int ret;
-> > +
-> > +	dev_dbg(&rport->phy->dev, "port suspend\n");
-> > +
-> > +	ret = property_enable(rphy, &rport->port_cfg->phy_sus, true);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	rport->suspended = true;
-> > +	clk_disable_unprepare(rphy->clk480m);
-> > +	return 0;
-> > +}
-> > +
-> 
-> I am still quite confused by the clock handling.
-> 
-> The above will be called for each instantiated phy (user, otg).
-> Each time, clk_disable_unprepare() will be called. Yet, there
-> is no matching clk_prepare_enable() call during initialization.
-> 
-> How does this work ?
-
-the created clock gets the supplying clock as parent, see 
-
-+       rphy->clk = of_clk_get_by_name(node, "phyclk");
-+       if (IS_ERR(rphy->clk)) {
-+               rphy->clk = NULL;
-+               init.parent_names = NULL;
-+               init.num_parents = 0;
-+       } else {
-+               clk_name = __clk_get_name(rphy->clk);
-+               init.parent_names = &clk_name;
-+               init.num_parents = 1;
-+       }
-
-that way when you enable the 480m clock from the phy, its parent will 
-automatically get enabled as well. And of course due to refcounting in the 
-clock framework, the 480m clock (and thus also its parent) will only get 
-disabled once both the host and otg port have disabled it.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+WWFraXIsCgpPbiBUdWUsIEp1biAxNCwgMjAxNiBhdCA0OjQ2IEFNLCBZYWtpciBZYW5nIDx5a2tA
+cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+IFJLMzM5OSBhbmQgUkszMjg4IHNoYXJlZCB0aGUgc2Ft
+ZSBlRFAgSVAgY29udHJvbGxlciwgb25seSBzb21lIGxpZ2h0Cj4gZGlmZmVyZW5jZSB3aXRoIFZP
+UCBjb25maWd1cmUgYW5kIEdSRiBjb25maWd1cmUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZ
+YW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4gQWNrZWQtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0By
+b2NrLWNoaXBzLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIGluIHYzOgo+IC0gR2l2ZSB0aGUgInJrMzM5
+OS1lZHAiIGEgc2VwYXJhdGUgbGluZSBmb3IgY2xhcml0eSBpbiBkb2N1bWVudCAoVG9tYXN6LCBy
+ZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQo+ICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcu
+Z29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2MzE0LzEwL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dEA1XQo+IC0g
+TW92ZSAnb3V0cHV0X3R5cGUnIHNldHRpbmcgYmVmb3JlIHRoZSByZXR1cm4gc3RhdGVtZW50IChU
+b21hc3osIHJldmlld2VkIGF0IEdvb2dsZSBHZXJyaXQpCj4gICAgIFtodHRwczovL2Nocm9taXVt
+LXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTQvMTAvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNAMTU0XQo+IC0gQWRkIHRoZSBhY2tlZCBmbGFn
+IGZyb20gTWFyay4KPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSByZWJhc2Ugd2l0aCBkcm0tbmV4dCwg
+Zml4IHNvbWUgY29uZmxpY3RzCj4KPiAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxv
+Z2l4X2RwLnR4dCAgICAgICAgfCAgMSArCj4gIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4
+X2RwLXJvY2tjaGlwLnR4dCAgICAgIHwgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAzMyArKysrKysrKysrKysrKysrKysrKystCj4g
+IGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgIDEg
+Kwo+ICA0IGZpbGVzIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4K
+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
+YnJpZGdlL2FuYWxvZ2l4X2RwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiBpbmRleCA0ZjJiYThjLi40YTBmNGY3
+IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0Cj4gQEAgLTUsNiArNSw3IEBA
+IFJlcXVpcmVkIHByb3BlcnRpZXMgZm9yIGRwLWNvbnRyb2xsZXI6Cj4gICAgICAgICAgICAgICAg
+IHBsYXRmb3JtIHNwZWNpZmljIHN1Y2ggYXM6Cj4gICAgICAgICAgICAgICAgICAqICJzYW1zdW5n
+LGV4eW5vczUtZHAiCj4gICAgICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMyODgtZHAiCj4g
+KyAgICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMzOTktZWRwIgo+ICAgICAgICAgLXJlZzoK
+PiAgICAgICAgICAgICAgICAgcGh5c2ljYWwgYmFzZSBhZGRyZXNzIG9mIHRoZSBjb250cm9sbGVy
+IGFuZCBsZW5ndGgKPiAgICAgICAgICAgICAgICAgb2YgbWVtb3J5IG1hcHBlZCByZWdpb24uCj4g
+ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dAo+IGlu
+ZGV4IGU4MzJmZjkuLjcyNmM5NDUgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAudHh0Cj4g
+KysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAv
+YW5hbG9naXhfZHAtcm9ja2NoaXAudHh0Cj4gQEAgLTIsNyArMiw4IEBAIFJvY2tjaGlwIFJLMzI4
+OCBzcGVjaWZpYyBleHRlbnNpb25zIHRvIHRoZSBBbmFsb2dpeCBEaXNwbGF5IFBvcnQKPiAgPT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPgo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+
+IC0tIGNvbXBhdGlibGU6ICJyb2NrY2hpcCxyazMyODgtZWRwIjsKPiArLSBjb21wYXRpYmxlOiAi
+cm9ja2NoaXAscmszMjg4LWVkcCIsCj4gKyAgICAgICAgICAgICAicm9ja2NoaXAscmszMzk5LWVk
+cCI7CgpBcyBjb21tZW50ZWQgYnkgVG9tYXN6IG9uIGdlcnJpdCwgdGhlcmUgaXMgYSBwcmUtZXhp
+c3RpbmcgdHlwbyBoZXJlLgpTcGVjaWZpY2FsbHkgInJvY2tjaGlwLHJrMzI4OC1lZHAiIHNob3Vs
+ZCBiZSAicm9ja2NoaXAscmszMjg4LWRwIi4KClRoZSB0eXBvIGlzIHByZS1leGlzdGluZyBzbyBJ
+J20gbm90IHN1cmUgeW91IHdvdWxkIG5lZWQgdG8gc3BpbiB0aGlzCnNlcmllcyB0byBmaXggaXQs
+IGJ1dCBpZiB5b3Ugd2VyZSBzcGlubmluZyBpdCBhbnl3YXkgaXQgd291bGRuJ3QgaHVydAp0byBm
+aXguICBDb3VsZCBhbHNvIGp1c3Qgc2VuZCBvdXQgYSBmb2xsb3dvbiBwYXRjaCB0byBmaXggdGhp
+cyBhZnRlcgp0aGUgc2VyaWVzIGxhbmRzLi4uCgotRG91ZwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
