@@ -1,216 +1,97 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: [PATCH v3 06/14] pwm: rockchip: Add support for atomic update
-Date: Tue, 14 Jun 2016 11:13:14 +0200
-Message-ID: <1465895602-31008-7-git-send-email-boris.brezillon@free-electrons.com>
-References: <1465895602-31008-1-git-send-email-boris.brezillon@free-electrons.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v3 0/10]
+Date: Tue, 14 Jun 2016 19:45:18 +0800
+Message-ID: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465895602-31008-1-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Milo Kim <milo.kim-l0cyMroinI0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ajit Pal Singh <ajitpal.singh-qxv4g6HH51o@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.vetter@ffwll.ch, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Javier Martinez Canillas <javier@osg.samsung.com>, Tomasz Figa <tomasz.figa@chromium.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Implement the ->apply() function to add support for atomic update.
-
-Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/pwm/pwm-rockchip.c | 84 ++++++++++++++++++++++++----------------------
- 1 file changed, 43 insertions(+), 41 deletions(-)
-
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index dd8ca86..ef89df1 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -47,10 +47,12 @@ struct rockchip_pwm_regs {
- struct rockchip_pwm_data {
- 	struct rockchip_pwm_regs regs;
- 	unsigned int prescaler;
-+	bool supports_polarity;
- 	const struct pwm_ops *ops;
- 
- 	void (*set_enable)(struct pwm_chip *chip,
--			   struct pwm_device *pwm, bool enable);
-+			   struct pwm_device *pwm, bool enable,
-+			   enum pwm_polarity polarity);
- 	void (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,
- 			  struct pwm_state *state);
- };
-@@ -61,7 +63,8 @@ static inline struct rockchip_pwm_chip *to_rockchip_pwm_chip(struct pwm_chip *c)
- }
- 
- static void rockchip_pwm_set_enable_v1(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_CTRL_OUTPUT_EN | PWM_CTRL_TIMER_EN;
-@@ -91,14 +94,15 @@ static void rockchip_pwm_get_state_v1(struct pwm_chip *chip,
- }
- 
- static void rockchip_pwm_set_enable_v2(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_OUTPUT_LEFT | PWM_LP_DISABLE | PWM_ENABLE |
- 			  PWM_CONTINUOUS;
- 	u32 val;
- 
--	if (pwm_get_polarity(pwm) == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERSED)
- 		enable_conf |= PWM_DUTY_NEGATIVE | PWM_INACTIVE_POSITIVE;
- 	else
- 		enable_conf |= PWM_DUTY_POSITIVE | PWM_INACTIVE_NEGATIVE;
-@@ -166,7 +170,6 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	unsigned long period, duty;
- 	u64 clk_rate, div;
--	int ret;
- 
- 	clk_rate = clk_get_rate(pc->clk);
- 
-@@ -182,69 +185,66 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	div = clk_rate * duty_ns;
- 	duty = DIV_ROUND_CLOSEST_ULL(div, pc->data->prescaler * NSEC_PER_SEC);
- 
--	ret = clk_enable(pc->clk);
--	if (ret)
--		return ret;
--
- 	writel(period, pc->base + pc->data->regs.period);
- 	writel(duty, pc->base + pc->data->regs.duty);
--	writel(0, pc->base + pc->data->regs.cntr);
--
--	clk_disable(pc->clk);
--
--	return 0;
--}
--
--static int rockchip_pwm_set_polarity(struct pwm_chip *chip,
--				     struct pwm_device *pwm,
--				     enum pwm_polarity polarity)
--{
--	/*
--	 * No action needed here because pwm->polarity will be set by the core
--	 * and the core will only change polarity when the PWM is not enabled.
--	 * We'll handle things in set_enable().
--	 */
- 
- 	return 0;
- }
- 
--static int rockchip_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-+static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+	struct pwm_state curstate;
-+	bool enabled;
- 	int ret;
- 
-+	pwm_get_state(pwm, &curstate);
-+	enabled = curstate.enabled;
-+
- 	ret = clk_enable(pc->clk);
- 	if (ret)
- 		return ret;
- 
--	pc->data->set_enable(chip, pwm, true);
-+	if (state->polarity != curstate.polarity && enabled) {
-+		pc->data->set_enable(chip, pwm, false, state->polarity);
-+		enabled = false;
-+	}
- 
--	return 0;
--}
-+	ret = rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
-+	if (ret) {
-+		if (enabled != curstate.enabled)
-+			pc->data->set_enable(chip, pwm, !enabled,
-+					     state->polarity);
- 
--static void rockchip_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+		goto out;
-+	}
-+
-+	if (state->enabled != enabled)
-+		pc->data->set_enable(chip, pwm, state->enabled,
-+				     state->polarity);
- 
--	pc->data->set_enable(chip, pwm, false);
-+	/*
-+	 * Update the state with the real hardware, which can differ a bit
-+	 * because of period/duty_cycle approximation.
-+	 */
-+	rockchip_pwm_get_state(chip, pwm, state);
- 
-+out:
- 	clk_disable(pc->clk);
-+
-+	return ret;
- }
- 
- static const struct pwm_ops rockchip_pwm_ops_v1 = {
- 	.get_state = rockchip_pwm_get_state,
--	.config = rockchip_pwm_config,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
-+	.apply = rockchip_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
- static const struct pwm_ops rockchip_pwm_ops_v2 = {
- 	.get_state = rockchip_pwm_get_state,
--	.config = rockchip_pwm_config,
--	.set_polarity = rockchip_pwm_set_polarity,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
-+	.apply = rockchip_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
-@@ -269,6 +269,7 @@ static const struct rockchip_pwm_data pwm_data_v2 = {
- 		.ctrl = 0x0c,
- 	},
- 	.prescaler = 1,
-+	.supports_polarity = true,
- 	.ops = &rockchip_pwm_ops_v2,
- 	.set_enable = rockchip_pwm_set_enable_v2,
- 	.get_state = rockchip_pwm_get_state_v2,
-@@ -282,6 +283,7 @@ static const struct rockchip_pwm_data pwm_data_vop = {
- 		.ctrl = 0x00,
- 	},
- 	.prescaler = 1,
-+	.supports_polarity = true,
- 	.ops = &rockchip_pwm_ops_v2,
- 	.set_enable = rockchip_pwm_set_enable_v2,
- 	.get_state = rockchip_pwm_get_state_v2,
-@@ -331,7 +333,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 	pc->chip.base = -1;
- 	pc->chip.npwm = 1;
- 
--	if (pc->data->ops->set_polarity) {
-+	if (pc->data->supports_polarity) {
- 		pc->chip.of_xlate = of_pwm_xlate_with_flags;
- 		pc->chip.of_pwm_n_cells = 3;
- 	}
--- 
-2.7.4
+UkszMzk5IGFuZCBSSzMyODggc2hhcmVkIHRoZSBzYW1lIGVEUCBJUCBjb250cm9sbGVyLCBvbmx5
+IHNvbWUgbGlnaHQKZGlmZmVyZW5jZSB3aXRoIFZPUCBjb25maWd1cmUgYW5kIEdSRiBjb25maWd1
+cmUuCgpBbHNvIHNhbWUgbWlzYyBmaXggdG8gYW5hbG9naXhfZHAgZHJpdmVyOgotIEhvdHBsdWcg
+aW52YWxpZCB3aGljaCByZXBvcnQgYnkgRGFuIENhcnBlbnRlcgotIE1ha2UgcGFuZWwgZGV0ZWN0
+IHRvIGFuIG9wdGlvbmFsIGFjdGlvbgotIGNvcnJlY3QgdGhlIHJlZ2lzdGVyIGJpdCBkZWZpbmUg
+ZXJyb3IgaW4gQU5BTE9HSVhfRFBfUExMX1JFR18xCgoKQ2hhbmdlcyBpbiB2MzoKLSBDb3JyZWN0
+IHRoZSBtaXNzcGVsbCBvZiAibWFyY29zIiBpbiBjb21taXQgbWVzc2FnZSAoRG9taW5paywgcmV2
+aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29n
+bGVzb3VyY2UuY29tLyMvYy8zNDYzMTIvOS8vQ09NTUlUX01TR0A5XQotIEFkZCByZXZpZXdlZCBm
+bGFnIGZyb20gU3TDqXBoYW5lLgogICAgW2h0dHBzOi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNv
+dXJjZS5jb20vIy9jLzM0NjMxMi8xNl0KLSBBZGQgdGVzdGVkIGZsYWcgZnJvbSBKYXZpZXIuCi0g
+V3JpdGUgYSBrZXJuZWxkb2Mtc3R5bGUgY29tbWVudCBleHBsYWluaW5nIHRoZSBjaGlwcyBkYXRh
+IGZpZWxkcyAoVG9tYXN6LCByZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQogICAgW2h0dHBzOi8v
+Y2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxMy8xMC9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuY0AzOV0KLSBEcm9wIHRoZSAnLmxj
+ZGNzZWxfbWFzaycgbnVtYmVyIGluIGNoaXBzIGRhdGEgZmllbGQgKFRvbWFzeiwgcmV2aWV3ZWQg
+YXQgR29vZ2xlIEdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3Vy
+Y2UuY29tLyMvYy8zNDYzMTMvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
+LXJvY2tjaGlwLmNAMzgyXQotIEFkZCBhY2tlZCBmbGFnIGZyb20gTWFyay4KLSBBZGQgcmV2aWV3
+ZWQgZmxhZyBmcm9tIFRvbWFzei4KICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVz
+b3VyY2UuY29tLyMvYy8zNDYzMTUvMTVdCi0gQWRkIHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyCi0g
+TWFrZSB0aGlzIGhhY2sgY29kZSBtb3JlIGNsZWFyIChUb21hc3osIHJldmlld2VkIGF0IEdvb2ds
+ZSBHZXJyaXQpCiAgcmVnID0gfnJlZyAmIFJFRl9DTEtfTUFTSzsgIC0tLT4gIHJlZyBePSBSRUZf
+Q0xLX01BU0s7CiAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8j
+L2MvMzQ2ODUyLzcvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9y
+ZWcuY0A4MF0KLSBBZGQgdGVzdGVkIGZsYWcgZnJvbSBKYXZpZXIKLSBHaXZlIHRoZSAicmszMzk5
+LWVkcCIgYSBzZXBhcmF0ZSBsaW5lIGZvciBjbGFyaXR5IGluIGRvY3VtZW50IChUb21hc3osIHJl
+dmlld2VkIGF0IEdvb2dsZSBHZXJyaXQpCiAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29v
+Z2xlc291cmNlLmNvbS8jL2MvMzQ2MzE0LzEwL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dEA1XQotIE1vdmUg
+J291dHB1dF90eXBlJyBzZXR0aW5nIGJlZm9yZSB0aGUgcmV0dXJuIHN0YXRlbWVudCAoVG9tYXN6
+LCByZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQogICAgW2h0dHBzOi8vY2hyb21pdW0tcmV2aWV3
+Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxNC8xMC9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+YW5hbG9naXhfZHAtcm9ja2NoaXAuY0AxNTRdCi0gQWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFy
+ay4KLSBBZGQgdGhlIGFja2VkIGZsYWcgZnJvbSBNYXJrLgotIEF2b2lkIHRvIGNoYW5nZSBhbnkg
+aW50ZXJuYWwgZHJpdmVyIHN0YXRlIGluIC5tb2RlX3ZhbGlkIGludGVyZmFjZS4gKFRvbWFzeiwg
+cmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5n
+b29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTgvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Fu
+YWxvZ2l4X2RwLXJvY2tjaGlwLmNAMTEzXQotIEhvb2sgdGhlIGNvbm5lY3RvcidzIGNvbG9yX2Zv
+cm1hdHMgaW4gLmdldF9tb2RlcyBkaXJlY3RseS4gKFRvbWFzeiwgcmV2aWV3ZWQgYXQgR29vZ2xl
+IEdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMv
+Yy8zNDYzMTcvMTVdCi0gQWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFyay4KLSBBZGQgdGhlIHJl
+dmlld2VkIGZsYWcgZnJvbSBUb21hc3ouCiAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29v
+Z2xlc291cmNlLmNvbS8jL2MvMzQ2ODUzLzEyXQotIEFkZCB0aGUgYWNrZWQgZmxhZyBmcm9tIE1h
+cmsuCi0gQWRkIHJldmlld2VkIGZsYWcgZnJvbSBTdMOpcGhhbmUuCiAgICBbaHR0cHM6Ly9jaHJv
+bWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2MzE5LzE1XQotIEFkZCB0ZXN0ZWQg
+ZmxhZyBmcm9tIEphdmllcgoKQ2hhbmdlcyBpbiB2MjoKLSBuZXcgcGF0Y2ggaW4gdjIKLSByZWJh
+c2Ugd2l0aCBkcm0tbmV4dCwgZml4IHNvbWUgY29uZmxpY3RzCi0gbmV3IHBhdGNoIGluIHYyCgpZ
+YWtpciBZYW5nICgxMCk6CiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IHJlbmFtZSBSSzMyODhf
+RFAgdG8gUk9DS0NISVBfRFAKICBkcm0vcm9ja2NoaXA6IGFuYWxvZ2l4X2RwOiBzcGxpdCB0aGUg
+bGNkYyBzZWxlY3Qgc2V0dGluZyBpbnRvIGRldmljZQogICAgZGF0YQogIGRybS9icmlkZ2U6IGFu
+YWxvZ2l4X2RwOiBjb3JyZWN0IHRoZSByZWdpc3RlciBiaXQgZGVmaW5lIGVycm9yIGluCiAgICBB
+TkFMT0dJWF9EUF9QTExfUkVHXzEKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogc29tZSByb2Nr
+Y2hpcCBjaGlwcyBuZWVkIHRvIGZsaXAgUkVGX0NMSyBiaXQKICAgIHNldHRpbmcKICBkcm0vcm9j
+a2NoaXA6IGFuYWxvZ2l4X2RwOiBhZGQgcmszMzk5IGVEUCBzdXBwb3J0CiAgZHJtL3JvY2tjaGlw
+OiBhbmFsb2dpeF9kcDogbWFrZSBwYW5lbCBkZXRlY3QgdG8gYW4gb3B0aW9uYWwgYWN0aW9uCiAg
+ZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IHBhc3NpbmcgdGhlIGNvbm5lY3RvciBhcyBhbiBhcmd1
+bWVudCBpbgogICAgLmdldF9tb2RlcygpCiAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogY29y
+cmVjdCB0aGUgY29ubmVjdG9yIGRpc3BsYXkgY29sb3IgZm9ybWF0CiAgICBhbmQgYnBjCiAgZHJt
+L3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogdXBkYXRlIHRoZSBjb21tZW50cyBhYm91dCB3aHkgbmVl
+ZCB0bwogICAgaGFyZGNvZGUgVk9QIG91dHB1dCBtb2RlCiAgZHJtL2JyaWRnZTogYW5hbG9naXhf
+ZHA6IGZpeCBubyBkcm0gaHBkIGV2ZW50IHdoZW4gcGFuZWwgcGx1ZyBpbgoKIC4uLi9iaW5kaW5n
+cy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQgICAgICAgIHwgICAxICsKIC4uLi9kaXNw
+bGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dCAgICAgIHwgICAzICstCiBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8ICAgNiArLQog
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgIDgg
+Ky0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwg
+IDEyICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5o
+ICB8ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAgICAgICAgICAg
+ICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2Nr
+Y2hpcC5jICAgIHwgMTU4ICsrKysrKysrKysrKysrLS0tLS0tLQogaW5jbHVkZS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAgICAgfCAgIDkgKy0KIDkgZmlsZXMgY2hhbmdl
+ZCwgMTQxIGluc2VydGlvbnMoKyksIDY1IGRlbGV0aW9ucygtKQoKLS0gCjEuOS4xCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
