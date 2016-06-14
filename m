@@ -1,16 +1,16 @@
 From: Daniel Vetter <daniel@ffwll.ch>
 Subject: Re: [PATCH v3 07/10] drm/bridge: analogix_dp: passing the connector
  as an argument in .get_modes()
-Date: Tue, 14 Jun 2016 18:26:25 +0200
-Message-ID: <20160614162625.GZ1338@phenom.ffwll.local>
+Date: Tue, 14 Jun 2016 18:26:56 +0200
+Message-ID: <20160614162656.GA1338@phenom.ffwll.local>
 References: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
  <1465904789-1021-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
 In-Reply-To: <1465904789-1021-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Yakir Yang <ykk@rock-chips.com>
 Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, Tomasz Figa <tomasz.figa@chromium.com>, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, Thierry Reding <treding@nvidia.com>, dianders@chromium.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
@@ -20,17 +20,17 @@ On Tue, Jun 14, 2016 at 07:46:29PM +0800, Yakir Yang wrote:
 > callback, just like what the .get_modes() helper function designed.
 > 
 > Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+
+Also please drop the analogix prefix from the subject, this is for all
+drm_bridge drivers.
+-Daniel
+
 > ---
 > Changes in v3:
 > - Avoid to change any internal driver state in .mode_valid interface. (Tomasz, reviewed at Google Gerrit)
 >     [https://chromium-review.googlesource.com/#/c/346318/10/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c@113]
 > 
 > Changes in v2: None
-
-Needs cc: Archit Tajena as drm_bridge maintainer (or at least inofficial
-one), plus ack imo.
--Daniel
-
 > 
 >  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 2 +-
 >  drivers/gpu/drm/exynos/exynos_dp.c                 | 4 ++--
