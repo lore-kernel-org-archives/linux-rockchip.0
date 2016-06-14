@@ -1,50 +1,81 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 1/2] Documentation: bindings: add DT documentation for
- Rockchip USB2PHY
-Date: Tue, 14 Jun 2016 17:26:35 -0500
-Message-ID: <20160614222635.GA3297@rob-hp-laptop>
-References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
- <1465783810-18756-2-git-send-email-frank.wang@rock-chips.com>
+Subject: Re: [PATCH v5] ASoC: rockchip: Add machine driver for RK3399 GRU
+ Boards
+Date: Tue, 14 Jun 2016 17:38:10 -0500
+Message-ID: <20160614223810.GA7925@rob-hp-laptop>
+References: <1465807339-1100-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1465783810-18756-2-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org
+In-Reply-To: <1465807339-1100-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 13, 2016 at 10:10:09AM +0800, Frank Wang wrote:
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Mon, Jun 13, 2016 at 04:42:18PM +0800, Xing Zheng wrote:
+> Because we need to support the multiple codecs (MAX98357A/RT5514/DA7219)
+> on the RK3399 GRU boards, this patch can help us to support these codecs.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
 > 
 > Changes in v5:
->  - Added 'reg' property to identify the different phy-blocks.
+> - fix the build warning for missing I2C/CLKDEV_LOOKUP dependency
 > 
 > Changes in v4:
->  - Used 'phy-supply' instead of 'vbus_*-supply'.
+> - the compatible name needs to be based on a single reference design,
+>   and the name of the board is called "GRU"
+> - use one i2sX card "rockchip,cpu = <&i2s0>" instead of array that is
+>   based on GRU
+> - rename DOC to rockchip,rk3399-gru-sound.txt
+> - rename compatible to rockchip,rk3399-gru-sound
+> - rename source code to rk3399_gru_sound.c
 > 
 > Changes in v3:
->  - Added 'clocks' and 'clock-names' optional properties.
->  - Specified 'otg-port' and 'host-port' as the sub-node name.
+> - rename DOC to rockchip,rk3399-max98357a-rt5514-da7219.txt
+> - rename compatible to rockchip,rk3399-max98357a-rt5514-da7219
+> - rename source code to rk3399_max98357a_rt5514_da7219.c
 > 
 > Changes in v2:
->  - Changed vbus_host optional property from gpio to regulator.
->  - Specified vbus_otg-supply optional property.
->  - Specified otg_id and otg_bvalid property.
+> - use the FS 256 to set mclks of the max98357a and rt5514 danamically
+> - add more sample rate for da7219
 > 
->  .../bindings/phy/phy-rockchip-inno-usb2.txt        |   64 ++++++++++++++++++++
->  1 file changed, 64 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+>  .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   15 +
+>  sound/soc/rockchip/Kconfig                         |   11 +
+>  sound/soc/rockchip/Makefile                        |    2 +
+>  sound/soc/rockchip/rk3399_gru_sound.c              |  339 ++++++++++++++++++++
+>  4 files changed, 367 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+>  create mode 100644 sound/soc/rockchip/rk3399_gru_sound.c
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+> new file mode 100644
+> index 0000000..f19b6c8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+> @@ -0,0 +1,15 @@
+> +ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
+> +
+> +Required properties:
+> +- compatible: "rockchip,rk3399-gru-sound"
+> +- rockchip,cpu: The phandle of the Rockchip I2S controller that's
+> +  connected to the codecs
+> +- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
+> +
+> +Example:
+> +
+> +sound {
+> +	compatible = "rockchip,rk3399-gru-sound";
+> +	rockchip,cpu = <&i2s0>;
+> +	rockchip,codec = <&max98357a &rt5514 &da7219>;
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+These seem fairly standard though a variety of versions in the bindings. 
+Can we use audio-codec and audio-cpu (or cpu or audio-dai) here? Mark?
+
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
