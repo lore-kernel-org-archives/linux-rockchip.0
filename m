@@ -1,78 +1,73 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
-Date: Tue, 14 Jun 2016 08:24:14 -0700
-Message-ID: <CAD=FV=VcFLdxSFp99kFc6nHAOHxcrt49A5Hn6M6LHPEgVhFELw@mail.gmail.com>
-References: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
- <1465904780-935-1-git-send-email-ykk@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: add flag CLK_SET_RATE_PARENT for
+ dclk_vop0_div on RK3399
+Date: Tue, 14 Jun 2016 09:04:43 -0700
+Message-ID: <CAD=FV=Vk9Lb8DD7dWD7eW_xhMFFwh1o=XKx38wObTOmmi94CGw@mail.gmail.com>
+References: <1465724928-14611-1-git-send-email-zhengxing@rock-chips.com> <2376423.L1zs1HaIGm@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465904780-935-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Tomasz Figa <tomasz.figa@chromium.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2376423.L1zs1HaIGm@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, elaine zhang <elaine.zhang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-WWFraXIsCgpPbiBUdWUsIEp1biAxNCwgMjAxNiBhdCA0OjQ2IEFNLCBZYWtpciBZYW5nIDx5a2tA
-cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+IFJLMzM5OSBhbmQgUkszMjg4IHNoYXJlZCB0aGUgc2Ft
-ZSBlRFAgSVAgY29udHJvbGxlciwgb25seSBzb21lIGxpZ2h0Cj4gZGlmZmVyZW5jZSB3aXRoIFZP
-UCBjb25maWd1cmUgYW5kIEdSRiBjb25maWd1cmUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZ
-YW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4gQWNrZWQtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0By
-b2NrLWNoaXBzLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIGluIHYzOgo+IC0gR2l2ZSB0aGUgInJrMzM5
-OS1lZHAiIGEgc2VwYXJhdGUgbGluZSBmb3IgY2xhcml0eSBpbiBkb2N1bWVudCAoVG9tYXN6LCBy
-ZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQo+ICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcu
-Z29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2MzE0LzEwL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dEA1XQo+IC0g
-TW92ZSAnb3V0cHV0X3R5cGUnIHNldHRpbmcgYmVmb3JlIHRoZSByZXR1cm4gc3RhdGVtZW50IChU
-b21hc3osIHJldmlld2VkIGF0IEdvb2dsZSBHZXJyaXQpCj4gICAgIFtodHRwczovL2Nocm9taXVt
-LXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTQvMTAvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNAMTU0XQo+IC0gQWRkIHRoZSBhY2tlZCBmbGFn
-IGZyb20gTWFyay4KPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSByZWJhc2Ugd2l0aCBkcm0tbmV4dCwg
-Zml4IHNvbWUgY29uZmxpY3RzCj4KPiAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxv
-Z2l4X2RwLnR4dCAgICAgICAgfCAgMSArCj4gIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4
-X2RwLXJvY2tjaGlwLnR4dCAgICAgIHwgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAzMyArKysrKysrKysrKysrKysrKysrKystCj4g
-IGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgIDEg
-Kwo+ICA0IGZpbGVzIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4K
-PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
-YnJpZGdlL2FuYWxvZ2l4X2RwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiBpbmRleCA0ZjJiYThjLi40YTBmNGY3
-IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0Cj4gQEAgLTUsNiArNSw3IEBA
-IFJlcXVpcmVkIHByb3BlcnRpZXMgZm9yIGRwLWNvbnRyb2xsZXI6Cj4gICAgICAgICAgICAgICAg
-IHBsYXRmb3JtIHNwZWNpZmljIHN1Y2ggYXM6Cj4gICAgICAgICAgICAgICAgICAqICJzYW1zdW5n
-LGV4eW5vczUtZHAiCj4gICAgICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMyODgtZHAiCj4g
-KyAgICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMzOTktZWRwIgo+ICAgICAgICAgLXJlZzoK
-PiAgICAgICAgICAgICAgICAgcGh5c2ljYWwgYmFzZSBhZGRyZXNzIG9mIHRoZSBjb250cm9sbGVy
-IGFuZCBsZW5ndGgKPiAgICAgICAgICAgICAgICAgb2YgbWVtb3J5IG1hcHBlZCByZWdpb24uCj4g
-ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3Jv
-Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dAo+IGlu
-ZGV4IGU4MzJmZjkuLjcyNmM5NDUgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAudHh0Cj4g
-KysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAv
-YW5hbG9naXhfZHAtcm9ja2NoaXAudHh0Cj4gQEAgLTIsNyArMiw4IEBAIFJvY2tjaGlwIFJLMzI4
-OCBzcGVjaWZpYyBleHRlbnNpb25zIHRvIHRoZSBBbmFsb2dpeCBEaXNwbGF5IFBvcnQKPiAgPT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPgo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+
-IC0tIGNvbXBhdGlibGU6ICJyb2NrY2hpcCxyazMyODgtZWRwIjsKPiArLSBjb21wYXRpYmxlOiAi
-cm9ja2NoaXAscmszMjg4LWVkcCIsCj4gKyAgICAgICAgICAgICAicm9ja2NoaXAscmszMzk5LWVk
-cCI7CgpBcyBjb21tZW50ZWQgYnkgVG9tYXN6IG9uIGdlcnJpdCwgdGhlcmUgaXMgYSBwcmUtZXhp
-c3RpbmcgdHlwbyBoZXJlLgpTcGVjaWZpY2FsbHkgInJvY2tjaGlwLHJrMzI4OC1lZHAiIHNob3Vs
-ZCBiZSAicm9ja2NoaXAscmszMjg4LWRwIi4KClRoZSB0eXBvIGlzIHByZS1leGlzdGluZyBzbyBJ
-J20gbm90IHN1cmUgeW91IHdvdWxkIG5lZWQgdG8gc3BpbiB0aGlzCnNlcmllcyB0byBmaXggaXQs
-IGJ1dCBpZiB5b3Ugd2VyZSBzcGlubmluZyBpdCBhbnl3YXkgaXQgd291bGRuJ3QgaHVydAp0byBm
-aXguICBDb3VsZCBhbHNvIGp1c3Qgc2VuZCBvdXQgYSBmb2xsb3dvbiBwYXRjaCB0byBmaXggdGhp
-cyBhZnRlcgp0aGUgc2VyaWVzIGxhbmRzLi4uCgotRG91ZwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Heiko,
+
+On Mon, Jun 13, 2016 at 3:46 PM, Heiko St=C3=BCbner <heiko@sntech.de> w=
+rote:
+> Am Sonntag, 12. Juni 2016, 17:48:48 schrieb Xing Zheng:
+>> The functions and features VOP0 more complete than VOP1's, we need t=
+o
+>> use it dclk_vop0_div operate VPLLI, and let VOP0 as the default prim=
+ary
+>> screen.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> ---
+>>
+>>  drivers/clk/rockchip/clk-rk3399.c |    2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3399.c
+>> b/drivers/clk/rockchip/clk-rk3399.c index 7ecb12c3..6affa75 100644
+>> --- a/drivers/clk/rockchip/clk-rk3399.c
+>> +++ b/drivers/clk/rockchip/clk-rk3399.c
+>> @@ -1157,7 +1157,7 @@ static struct rockchip_clk_branch
+>> rk3399_clk_branches[] __initdata =3D { GATE(HCLK_VOP0_NOC, "hclk_vop=
+0_noc",
+>> "hclk_vop0_pre", CLK_IGNORE_UNUSED, RK3399_CLKGATE_CON(28), 0, GFLAG=
+S),
+>>
+>> -     COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpl=
+l_gpll_p, 0,
+>> +     COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpl=
+l_gpll_p,
+>> CLK_SET_RATE_PARENT, RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLA=
+GS,
+>>                       RK3399_CLKGATE_CON(10), 12, GFLAGS),
+>
+> The vpll is a possible source for multiple clocks (cci, aclk_vop0, dc=
+lk_vop0,
+> clk_vop0_pwm, aclk_vop1, dclk_vop1, clk_vop1_pwm), so allowing one cl=
+ock to
+> hog the rate setting, might influence the other consumers of the vpll=
+ as well.
+
+Ah, right.  I think this gets back to your series:
+
+  8993791 [RFC,1/3] clk: fix inconsistent use of req_rate
+  8993801 [RFC,2/3] clk: adjust clocks to their requested rate after
+parent changes
+  8993811 [RFC,3/3] clk: rockchip: make rk3399 vop dclks keep their
+rate on parent rate changes
+
+Did you ever have any more ideas about that?  I think the last thing
+in that series was a comment from me on patch #2/3.  If we can't come
+up with a general CCF solution for this problem, perhaps we need to
+register for notifications for all the relevant clocks that might
+change?
+
+-Doug
