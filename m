@@ -1,103 +1,88 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
-Date: Wed, 15 Jun 2016 11:04:20 +0200
-Message-ID: <20086422.3ieDmpZrvB@diego>
-References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com> <7225720.0AClDW7eQ6@diego> <44bb6bf0-cf86-c440-665a-b0d441ce4427@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5] ASoC: rockchip: Add machine driver for RK3399 GRU
+ Boards
+Date: Wed, 15 Jun 2016 10:53:12 +0100
+Message-ID: <20160615095312.GY2282@sirena.org.uk>
+References: <1465807339-1100-1-git-send-email-zhengxing@rock-chips.com>
+ <20160614223810.GA7925@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <44bb6bf0-cf86-c440-665a-b0d441ce4427@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com
+Content-Type: multipart/mixed; boundary="===============7292443063779152486=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160614223810.GA7925@rob-hp-laptop>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
 
-Am Mittwoch, 15. Juni 2016, 11:23:26 schrieb Frank Wang:
-> On 2016/6/14 21:27, Heiko St=FCbner wrote:
-> > Am Montag, 13. Juni 2016, 10:10:10 schrieb Frank Wang:
-> >> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
-> >> than rk3288 and before, and most of phy-related registers are also
-> >> different from the past, so a new phy driver is required necessari=
-ly.
-> >>=20
-> >> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-> >> ---
-> >>=20
-> >> Changes in v5:
-> >>   - Added 'reg' in the data block to match the different phy-block=
-s in
-> >>   dt.
-> >>=20
-> >> Changes in v4:
-> >>   - Removed some processes related to 'vbus_host-supply'.
-> >>=20
-> >> Changes in v3:
-> >>   - Resolved the mapping defect between fixed value in driver and =
-the
-> >>=20
-> >> property in devicetree.
-> >>=20
-> >>   - Optimized 480m output clock register function.
-> >>   - Code cleanup.
-> >>=20
-> >> Changes in v2:
-> >>   - Changed vbus_host operation from gpio to regulator in *_probe.
-> >>   - Improved the fault treatment relate to 480m clock register.
-> >>   - Cleaned up some meaningless codes in *_clk480m_disable.
-> >>   - made more clear the comment of *_sm_work.
-> >>  =20
-> >>   drivers/phy/Kconfig                  |    7 +
-> >>   drivers/phy/Makefile                 |    1 +
-> >>   drivers/phy/phy-rockchip-inno-usb2.c |  645
-> >>=20
-> >> ++++++++++++++++++++++++++++++++++ 3 files changed, 653 insertions=
-(+)
-> >>=20
-> >> [...]
-> >>=20
-> >> +
-> >> +static int rockchip_usb2phy_exit(struct phy *phy)
-> >> +{
-> >> +	struct rockchip_usb2phy_port *rport =3D phy_get_drvdata(phy);
-> >> +
-> >>=20
-> > 	if (!rport->port_cfg)
-> > =09
-> > 		return 0;
-> >>=20
-> >> +	if (rport->port_id =3D=3D USB2PHY_PORT_HOST)
-> >> +		cancel_delayed_work_sync(&rport->sm_work);
-> >> +
-> >=20
-> > you will also need to resume the port here, if it is suspended at t=
-his
-> > point, as phy_power_off gets called after phy_exit and would probab=
-ly
-> > produce clk enable/disable mismatches otherwise.
->=20
-> Hmm, from my personal point of view, when canceling sm_work here, it =
-may
-> not cause the port goes to suspend, isn't it? besides, clk only prepa=
-red
-> in *_usb2phy_resume(), and unprepared in *_usb2phy_suspend(), so if w=
-e
-> resume port here,  the prepare_count of clk will be increased again, =
-I
-> am afraid this is not correct, and am I wrong? would you like to tell=
- me
-> more details?
+--===============7292443063779152486==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dpocmoDDGIWqY+Hu"
+Content-Disposition: inline
 
-usb2phy_resume gets called both initially through phy_power_on as well.
-So it's on but through the first scheduled work call, might get suspend=
-ed when=20
-nothing is connected. (clk_enable and clk_disable will run).
-If nothing is connected on unload phy_power_off will get called while t=
-he=20
-clock actually is still disabled.
 
-So I think it's either resuming on exit, or at least making sure to do =
-nothing=20
-in that case in the phy_power_off callback of the driver.
+--dpocmoDDGIWqY+Hu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jun 14, 2016 at 05:38:10PM -0500, Rob Herring wrote:
+> On Mon, Jun 13, 2016 at 04:42:18PM +0800, Xing Zheng wrote:
+
+> > +sound {
+> > +	compatible =3D "rockchip,rk3399-gru-sound";
+> > +	rockchip,cpu =3D <&i2s0>;
+> > +	rockchip,codec =3D <&max98357a &rt5514 &da7219>;
+
+> These seem fairly standard though a variety of versions in the bindings.=
+=20
+> Can we use audio-codec and audio-cpu (or cpu or audio-dai) here? Mark?
+
+Well, the roles aren't actually that standard (the fact that there's
+multiple CODECs and one CPU DAI here is really odd and definitely needs
+a very system specific interpretation).  If they were standard we
+already have the simple-card binding that things should be using.
+There's no point in standard property names if the interpretation has to
+be non-standard.
+
+The vendor specific prefixes are there because all bindings are supposed
+to add prefixes to property names.
+
+--dpocmoDDGIWqY+Hu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXYSWHAAoJECTWi3JdVIfQ9xsH/0LglZjC+TOp9zRJ5zl5WQHJ
+Mb6skPHTMfidDRflqj9qH/D0JdJGdMsWknkh28OjVC71fTr9yCpKSWzCbgnP3gEY
+IjYmz6I7WXXmmKmOVqP+AlOReH167OA1/QJZfOZ0vuWcO+IlYJNTLECE4peeO6Mn
+rOCbx1H6Hal1Rk7zIDxiZBlFgcEfepXpuKAQ3lEYZqc0yyb4tSFr4dMHc9Wzux24
+jjGz59ZmIUJ+4cbmE7OjYG1VMcj229sxHIy7cxqywh6llh64KhekM1BqX1rL1nv5
+XGtP7g2cjd2f5b3Wh0GVNNlypdq8r8V+PbFsz315Ediv06oVu9Z8snIwirchCEQ=
+=ajK1
+-----END PGP SIGNATURE-----
+
+--dpocmoDDGIWqY+Hu--
+
+
+--===============7292443063779152486==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7292443063779152486==--
