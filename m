@@ -1,99 +1,117 @@
-From: Tomasz Figa via iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] iommu/rockchip: use DMA API to map, to flush cache
-Date: Wed, 15 Jun 2016 23:31:49 +0900
-Message-ID: <CAAFQd5AuHgJ=P3ZWcrOUyB_8Z_xAX23F26a-6+S6aMWF0KpCwQ@mail.gmail.com>
-References: <1465992285-16187-1-git-send-email-zhengsq@rock-chips.com>
-	<1465992285-16187-6-git-send-email-zhengsq@rock-chips.com>
-Reply-To: Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Wed, 15 Jun 2016 08:47:43 -0700
+Message-ID: <CABXOdTdD-DFjzZszvTBoxviwsdu=HZSRy5iTzrkgOjg5qae05Q@mail.gmail.com>
+References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+ <7225720.0AClDW7eQ6@diego> <CABXOdTfzDeg3KOmEkJkeUWs76wFind89D-bSrs=7-jSxmdhSHQ@mail.gmail.com>
+ <4065185.1IWsBDlcMJ@diego> <24acf224-e792-6648-fcdb-8729ded6df84@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1465992285-16187-6-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, simon xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <24acf224-e792-6648-fcdb-8729ded6df84@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Guenter Roeck <linux@roeck-us.net>, Guenter Roeck <groeck@chromium.org>, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, Ziyuan Xu <xzy.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, william.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shunqian,
-
-On Wed, Jun 15, 2016 at 9:04 PM, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Use DMA API instead of architecture internal functions like
-> __cpuc_flush_dcache_area() etc.
+On Tue, Jun 14, 2016 at 6:14 PM, Frank Wang <frank.wang@rock-chips.com>=
+ wrote:
+> Hi Heiko & Guenter,
 >
-> To support the virtual device like DRM the virtual slave iommu
-> added in the previous patch, attaching to which the DRM can use
-> it own domain->dev for dma_map_*(), dma_sync_*() even VOP is disabled.
 >
-> With this patch, this driver is available for ARM64 like RK3399.
+> On 2016/6/14 22:00, Heiko St=C3=BCbner wrote:
+>>
+>> Am Dienstag, 14. Juni 2016, 06:50:31 schrieb Guenter Roeck:
+>>>
+>>> On Tue, Jun 14, 2016 at 6:27 AM, Heiko St=C3=BCbner <heiko@sntech.d=
+e> wrote:
+>>>>
+>>>> Am Montag, 13. Juni 2016, 10:10:10 schrieb Frank Wang:
+>>>>>
+>>>>> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
+>>>>> than rk3288 and before, and most of phy-related registers are als=
+o
+>>>>> different from the past, so a new phy driver is required necessar=
+ily.
+>>>>>
+>>>>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+>>>>> ---
+>>
+>> [...]
+>>
+>>>>> +static int rockchip_usb2phy_init(struct phy *phy)
+>>>>> +{
+>>>>> +     struct rockchip_usb2phy_port *rport =3D phy_get_drvdata(phy=
+);
+>>>>> +     struct rockchip_usb2phy *rphy =3D dev_get_drvdata(phy->dev.=
+parent);
+>>>>> +     int ret;
+>>>>> +
+>>>>>
+>>>>          if (!rport->port_cfg)
+>>>>                           return 0;
+>>>>
+>>>> Otherwise the currently empty otg-port will cause null-pointer
+>>>> dereferences
+>>>> when it gets assigned in the devicetree already.
+>>>
+>>> Not really, at least not here - that port should not have port_id s=
+et
+>>> to USB2PHY_PORT_HOST.
+>>>
+>>> Does it even make sense to instantiate the otg port ? Is it going t=
+o
+>>> do anything without port configuration ?
+>>
+>> Ok, that would be the other option - not creating the phy in the dri=
+ver.
 >
-> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  drivers/iommu/rockchip-iommu.c | 113 +++++++++++++++++++++++++++--------------
->  1 file changed, 76 insertions(+), 37 deletions(-)
-
-In general looks good to me, but still have some concern about
-attaching and detaching. Please see inline.
-
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 82ecc99..b60b29e 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-[snip]
-> @@ -886,6 +901,22 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
->                         return -ENOMEM;
->         }
 >
-> +       /* Set the domain dev to virtual one if exist */
-> +       if (rk_iommu_is_virtual(iommu) || !rk_domain->dev)
-
-Does it matter if the iommu is virtual or not? This condition will
-always evaluate to true on first attach anyway, so there might be
-times when rk_domain->dev points to a real device.
-
-> +               rk_domain->dev = iommu->dev;
-> +
-[snip]
->  static void rk_iommu_detach_device(struct iommu_domain *domain,
-> @@ -987,8 +1023,6 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
->         if (!rk_domain->dt)
->                 goto err_dt;
+> Well, I will put this conditional inside *_host_port_init(), if it is=
+ an
+> empty, the phy-device should not be created.
+> Something like the following:
 >
-> -       rk_table_flush(rk_domain->dt, NUM_DT_ENTRIES);
-> -
->         spin_lock_init(&rk_domain->iommus_lock);
->         spin_lock_init(&rk_domain->dt_lock);
->         INIT_LIST_HEAD(&rk_domain->iommus);
-> @@ -1012,10 +1046,15 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
->                 if (rk_dte_is_pt_valid(dte)) {
->                         phys_addr_t pt_phys = rk_dte_pt_address(dte);
->                         u32 *page_table = phys_to_virt(pt_phys);
-> +                       dma_unmap_single(rk_domain->dev, pt_phys,
-> +                                        SPAGE_SIZE, DMA_TO_DEVICE);
->                         free_page((unsigned long)page_table);
->                 }
->         }
+> --- a/drivers/phy/phy-rockchip-inno-usb2.c
+> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
+> @@ -483,9 +483,13 @@ static int rockchip_usb2phy_host_port_init(struc=
+t
+> rockchip_usb2phy *rphy,
+>  {
+>         int ret;
 >
-> +       if (!rk_domain->dt_dma)
-> +               dma_unmap_single(rk_domain->dev, rk_domain->dt_dma,
-> +                                SPAGE_SIZE, DMA_TO_DEVICE);
->         free_page((unsigned long)rk_domain->dt);
+> -       rport->port_id =3D USB2PHY_PORT_HOST;
+>         rport->port_cfg =3D &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_HO=
+ST];
+> +       if (!rport->port_cfg) {
+> +               dev_err(rphy->dev, "no host port-config provided.\n")=
+;
+> +               return -EINVAL;
+> +       }
+
+This would never be NULL. At issue is that you don't assign port_cfg
+if the port is _not_ a host port.
+
+Guenter
+
 >
->         iommu_put_dma_cookie(&rk_domain->domain);
-
-If we detach here a device whose IOMMU is currently pointed by
-rk_domain->dev, then the pointer will not point to anything valid
-anymore. To be honest, I don't see any good solution for this. Maybe
-we should keep all the IOMMUs in a list and set the ->dev pointer to
-any from the list here?
-
-Best regards,
-Tomasz
+> +       rport->port_id =3D USB2PHY_PORT_HOST;
+>
+>> Or from what I've seen, handling it as similar to the host-port shou=
+ld
+>> work
+>> initially as well most likely, supplying the additional otg-parts la=
+ter
+>> on.
+>
+>
+> @Guenter, just as Heiko said, the otg-parts is not ready now, it will=
+ be
+> supplied later.
+>
+>
+> BR.
+> Frank
+>
