@@ -1,113 +1,101 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [v2 PATCH 3/4] Documentation: bindings: add dt documentation for
- cdn DP controller
-Date: Tue, 14 Jun 2016 18:12:56 -0500
-Message-ID: <20160614231256.GA17242@rob-hp-laptop>
-References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com>
- <1465810789-22303-4-git-send-email-zyw@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Wed, 15 Jun 2016 09:14:44 +0800
+Message-ID: <24acf224-e792-6648-fcdb-8729ded6df84@rock-chips.com>
+References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+ <7225720.0AClDW7eQ6@diego>
+ <CABXOdTfzDeg3KOmEkJkeUWs76wFind89D-bSrs=7-jSxmdhSHQ@mail.gmail.com>
+ <4065185.1IWsBDlcMJ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1465810789-22303-4-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <4065185.1IWsBDlcMJ@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 13, 2016 at 05:39:48PM +0800, Chris Zhong wrote:
-> This patch adds a binding that describes the cdn DP controller for
-> rk3399.
-> 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v2: None
-> Changes in v1:
-> - add extcon node description
-> - add #sound-dai-cells description
-> 
->  .../bindings/display/rockchip/cdn-dp-rockchip.txt  | 62 ++++++++++++++++++++++
->  1 file changed, 62 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-> new file mode 100644
-> index 0000000..4a66fc3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-> @@ -0,0 +1,62 @@
-> +Rockchip RK3399 specific extensions to the cdn Display Port
-> +================================
-> +
-> +Required properties:
-> +- compatible: must be "rockchip,cdn-dp"
+Hi Heiko & Guenter,
 
-SoC specific compatible string please.
+On 2016/6/14 22:00, Heiko St=C3=BCbner wrote:
+> Am Dienstag, 14. Juni 2016, 06:50:31 schrieb Guenter Roeck:
+>> On Tue, Jun 14, 2016 at 6:27 AM, Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org=
+> wrote:
+>>> Am Montag, 13. Juni 2016, 10:10:10 schrieb Frank Wang:
+>>>> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
+>>>> than rk3288 and before, and most of phy-related registers are also
+>>>> different from the past, so a new phy driver is required necessari=
+ly.
+>>>>
+>>>> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>> ---
+> [...]
+>
+>>>> +static int rockchip_usb2phy_init(struct phy *phy)
+>>>> +{
+>>>> +     struct rockchip_usb2phy_port *rport =3D phy_get_drvdata(phy)=
+;
+>>>> +     struct rockchip_usb2phy *rphy =3D dev_get_drvdata(phy->dev.p=
+arent);
+>>>> +     int ret;
+>>>> +
+>>>>
+>>>          if (!rport->port_cfg)
+>>>         =20
+>>>                  return 0;
+>>>
+>>> Otherwise the currently empty otg-port will cause null-pointer
+>>> dereferences
+>>> when it gets assigned in the devicetree already.
+>> Not really, at least not here - that port should not have port_id se=
+t
+>> to USB2PHY_PORT_HOST.
+>>
+>> Does it even make sense to instantiate the otg port ? Is it going to
+>> do anything without port configuration ?
+> Ok, that would be the other option - not creating the phy in the driv=
+er.
 
-> +
-> +- reg: physical base address of the controller and length
-> +
-> +- clocks: from common clock binding: handle to dp clock.
-> +
-> +- clock-names: from common clock binding:
-> +	       Required elements: "core_clk" "pclk" "spdif"
-> +
-> +- rockchip,grf: this soc should set GRF regs, so need get grf here.
-> +
-> +- ports: contain a port nodes with endpoint definitions as defined in
-> +	 Documentation/devicetree/bindings/media/video-interfaces.txt.
-> +	 contained 2 endpoints, connecting to the output of vop.
-> +
-> +- phys: from general PHY binding: the phandle for the PHY device.
-> +
-> +- extcon: extcon specifier for the Power Delivery
-> +
-> +- #sound-dai-cells = it must be 1 if your system is using 2 DAIs: I2S, SPDIF
-> +
-> +-------------------------------------------------------------------------------
-> +
-> +Example:
-> +	cdn_dp: dp@fec00000 {
-> +		compatible = "rockchip,cdn-dp";
-> +		reg = <0x0 0xfec00000 0x0 0x100000>;
-> +		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
-> +			 <&cru SCLK_SPDIF_REC_DPTX>;
-> +		clock-names = "core_clk", "pclk", "spdif";
-> +		phys = <&tcphy0>;
-> +		extcon = <&fusb1>;
-> +		rockchip,grf = <&grf>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		#sound-dai-cells = <1>;
-> +
-> +		ports {
+Well, I will put this conditional inside *_host_port_init(), if it is a=
+n=20
+empty, the phy-device should not be created.
+Something like the following:
 
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			reg = <1>;
+--- a/drivers/phy/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/phy-rockchip-inno-usb2.c
+@@ -483,9 +483,13 @@ static int rockchip_usb2phy_host_port_init(struct=20
+rockchip_usb2phy *rphy,
+  {
+         int ret;
 
-Don't need these with a single port.
+-       rport->port_id =3D USB2PHY_PORT_HOST;
+         rport->port_cfg =3D &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_HOS=
+T];
++       if (!rport->port_cfg) {
++               dev_err(rphy->dev, "no host port-config provided.\n");
++               return -EINVAL;
++       }
 
-> +
-> +			dp_in: port {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				dp_in_vopb: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&vopb_out_dp>;
-> +				};
-> +
-> +				dp_in_vopl: endpoint@1 {
-> +					reg = <1>;
-> +					remote-endpoint = <&vopl_out_dp>;
-> +				};
-> +			};
-> +		};
-> +	};
-> -- 
-> 2.6.3
-> 
-> 
++       rport->port_id =3D USB2PHY_PORT_HOST;
+
+> Or from what I've seen, handling it as similar to the host-port shoul=
+d work
+> initially as well most likely, supplying the additional otg-parts lat=
+er on.
+
+@Guenter, just as Heiko said, the otg-parts is not ready now, it will b=
+e=20
+supplied later.
+
+
+BR.
+=46rank
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
