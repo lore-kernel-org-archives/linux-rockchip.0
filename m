@@ -1,25 +1,36 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/4] phy: rockchip-emmc: reindent the register definitions
-Date: Fri, 17 Jun 2016 01:37:56 +0200
-Message-ID: <66655495.x3bfa8edk2@phil>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org> <1463092986-61777-4-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH v2 0/11] Changes to support 150 MHz eMMC on rk3399
+Date: Fri, 17 Jun 2016 01:39:55 +0200
+Message-ID: <2340840.IUG4rtlpvT@phil>
+References: <1465859076-4868-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463092986-61777-4-git-send-email-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1465859076-4868-1-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: ulf.hansson@linaro.org, kishon@ti.com, robh+dt@kernel.org, shawn.lin@rock-chips.com, xzy.xu@rock-chips.com, briannorris@chromium.org, adrian.hunter@intel.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, zhengxing@rock-chips.com, michal.simek@xilinx.com, linux-arm-kernel@lists.infradead.org, jay.xu@rock-chips.com, wxt@rock-chips.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, soren.brinkmann@xilinx.com, linux-kernel@vger.kernel.org, galak@codeaurora.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 12. Mai 2016, 15:43:06 schrieb Brian Norris:
-> Some of the spacing was wrong (spaces instead of tabs), and due to
-> longer entries added later, the columns weren't aligned. Let's get
-> everything consistent.
+Am Montag, 13. Juni 2016, 16:04:24 schrieb Douglas Anderson:
+> The theme of this series of patches is to try to allow running the eMMC
+> at 150 MHz on the rk3399 SoC, though the changes should still be correct
+> and have merit on their own.  The motivation for running at 150 MHz is
+> that doing so improves signal integrity and (with some eMMC devices)
+> doesn't affect throughput.
 > 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> These patches have been structured to keep things as separate as
+> possible, but nevertheless there are still some dependencies between
+> patches.  It probably makes the most sense for all of the non-device
+> tree patches to go through a single tree.  If others agree, perhaps the
+> most sane would be to get Acks from PHY maintainers and then to land the
+> patches in the MMC tree.  Device tree patches should be able to be
+> landed separately and the worst what would happen is a warning in the
+> kernel log if you have the code without the device tree.
 
-Readability is always nice :-)
+while my evaluation board does not seem to have an enhanced strobe emmc, it 
+nevertheless still runs fine with these patches applied, for the series 
+(including the separate v2.1) on a rk3399-evb:
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
