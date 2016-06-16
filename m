@@ -1,79 +1,111 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/2] Documentation: bindings: add dt documentation for Rockchip PCIe PHY
-Date: Thu, 16 Jun 2016 21:38:46 +0200
-Message-ID: <5940136.iEYIQnlD9F@diego>
-References: <1465865072-25833-1-git-send-email-shawn.lin@rock-chips.com> <CAD=FV=Ubm8goQ4J=T11mWmAZrP+J7YYWdxACGjAhdsONyzPdKQ@mail.gmail.com> <20160616184632.GA1112@rob-hp-laptop>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [PATCH V2 03/63] clocksource/drivers/rockchip_timer: Convert init
+ function to return error
+Date: Thu, 16 Jun 2016 23:26:22 +0200
+Message-ID: <1466112442-31105-4-git-send-email-daniel.lezcano@linaro.org>
+References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160616184632.GA1112@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wenrui Li <wenrui.li@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1466112442-31105-1-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Rockchip SoC..." <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 16. Juni 2016, 13:46:32 schrieb Rob Herring:
-> On Tue, Jun 14, 2016 at 10:27:46AM -0700, Doug Anderson wrote:
-> > Hi,
-> > 
-> > On Mon, Jun 13, 2016 at 5:44 PM, Shawn Lin <shawn.lin@rock-chips.com> 
-wrote:
-> > > This patch adds a binding that describes the Rockchip PCIe PHY
-> > > found on Rockchip SoCs PCIe interface.
-> > > 
-> > > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > > 
-> > > ---
-> > > 
-> > > Changes in v2:
-> > > - add clk and reset description
-> > > - remove unit-address
-> > > 
-> > >  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 32
-> > >  ++++++++++++++++++++++ 1 file changed, 32 insertions(+)
-> > >  create mode 100644
-> > >  Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt> > 
-> > > diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-> > > b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt new file
-> > > mode 100644
-> > > index 0000000..ad55c67
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-> > > @@ -0,0 +1,32 @@
-> > > +Rockchip PCIE PHY
-> > > +-----------------------
-> > > +
-> > > +Required properties:
-> > > + - compatible: rockchip,rk3399-pcie-phy
-> > > + - #phy-cells: must be 0
-> > > + - clocks: Must contain an entry in clock-names.
-> > > +       See ../clocks/clock-bindings.txt for details.
-> > > + - clock-names: Must be "refclk"
-> > > + - resets: Must contain an entry in reset-names.
-> > > +       See ../reset/reset.txt for details.
-> > > + - reset-names: Must be "phy"
-> > > +
-> > > +Example:
-> > > +
-> > > +grf: syscon@ff770000 {
-> > > +       compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
-> > > +       #address-cells = <1>;
-> > > +       #size-cells = <1>;
-> > > +
-> > > +       ...
-> > > +
-> > > +       pcie-phy: phy {
-> > 
-> > Just calling this node "phy" isn't a good idea.  There will be
-> > multiple PHYs under the GRF and they can't all have a subnode named
-> > "phy".
-> 
-> There's no register range that can be associated with the phy?
+The init functions do not return any error. They behave as the following:
 
-The pcie phy control bits are sitting in a general (and shared) soc-control 
-register inside the "General Register Files" (shared for example with some i2s 
-control bits). As written in a previous version of this binding, my feeling is 
-that a register range suggests some sort of exclusivity of the area (like the 
-rk3399 emmc phy occupying a real subset of GRF area), but the pcie phy doesn't
-have this.
+ - panic, thus leading to a kernel crash while another timer may work and
+   make the system boot up correctly
+
+ or
+
+ - print an error and let the caller unaware if the state of the system
+
+Change that by converting the init functions to return an error conforming
+to the CLOCKSOURCE_OF_RET prototype.
+
+Proper error handling (rollback, errno value) will be changed later case
+by case, thus this change just return back an error or success in the init
+function.
+
+Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+---
+ drivers/clocksource/rockchip_timer.c | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index a3f22b0..d10bdee 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -113,17 +113,17 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
++static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ {
+ 	struct clock_event_device *ce = &bc_timer.ce;
+ 	struct clk *timer_clk;
+ 	struct clk *pclk;
+-	int ret, irq;
++	int ret = -EINVAL, irq;
+ 
+ 	bc_timer.base = of_iomap(np, 0);
+ 	if (!bc_timer.base) {
+ 		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
+-		return;
++		return -ENXIO;
+ 	}
+ 	bc_timer.ctrl = bc_timer.base + ctrl_reg;
+ 
+@@ -178,7 +178,7 @@ static void __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ 
+ 	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
+ 
+-	return;
++	return 0;
+ 
+ out_irq:
+ 	clk_disable_unprepare(timer_clk);
+@@ -186,19 +186,21 @@ out_timer_clk:
+ 	clk_disable_unprepare(pclk);
+ out_unmap:
+ 	iounmap(bc_timer.base);
++
++	return ret;
+ }
+ 
+-static void __init rk3288_timer_init(struct device_node *np)
++static int __init rk3288_timer_init(struct device_node *np)
+ {
+-	rk_timer_init(np, TIMER_CONTROL_REG3288);
++	return rk_timer_init(np, TIMER_CONTROL_REG3288);
+ }
+ 
+-static void __init rk3399_timer_init(struct device_node *np)
++static int __init rk3399_timer_init(struct device_node *np)
+ {
+-	rk_timer_init(np, TIMER_CONTROL_REG3399);
++	return rk_timer_init(np, TIMER_CONTROL_REG3399);
+ }
+ 
+-CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
+-		       rk3288_timer_init);
+-CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
+-		       rk3399_timer_init);
++CLOCKSOURCE_OF_DECLARE_RET(rk3288_timer, "rockchip,rk3288-timer",
++			   rk3288_timer_init);
++CLOCKSOURCE_OF_DECLARE_RET(rk3399_timer, "rockchip,rk3399-timer",
++			   rk3399_timer_init);
+-- 
+1.9.1
