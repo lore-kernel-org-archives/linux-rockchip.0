@@ -1,31 +1,110 @@
-From: "Opensource [Adam Thomson]" <Adam.Thomson.Opensource@diasemi.com>
-Subject: RE: [PATCH v5] ASoC: rockchip: Add machine driver for RK3399 GRU
- Boards
-Date: Thu, 16 Jun 2016 08:40:45 +0000
-Message-ID: <2E89032DDAA8B9408CB92943514A0337D4643174@SW-EX-MBX01.diasemi.com>
-References: <1465807339-1100-1-git-send-email-zhengxing@rock-chips.com>
- <CADR9n49m7anZpDbbb3=ZGBaacOuXc4F=Yid0eyMey1LfEJx8Pw@mail.gmail.com>
- <5761FDAA.1070802@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [v2 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+Date: Thu, 16 Jun 2016 10:54:08 +0200
+Message-ID: <6012957.TOtSrmnyF4@diego>
+References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com> <5761F34F.8040202@rock-chips.com> <CAAFQd5BY23zdKCxUnLDz6TT+6ro3qnQPP+bH-uu3KDCzdO50nw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5761FDAA.1070802@rock-chips.com>
-Content-Language: en-US
+In-Reply-To: <CAAFQd5BY23zdKCxUnLDz6TT+6ro3qnQPP+bH-uu3KDCzdO50nw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>, Steve Barber <smbarber@google.com>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Douglas Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Jaroslav Kysela <perex@perex.cz>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, yzq@rock-chips.com, groeck@chromium.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTYgSnVuZSAyMDE2IDAyOjE1LCBYaW5nIFpoZW5nIHdyb3RlOg0KDQo+ID4+ICsgICAgICAg
-LyogRW5hYmxlIEhlYWRzZXQgYW5kIDQgQnV0dG9ucyBKYWNrIGRldGVjdGlvbiAqLw0KPiA+PiAr
-ICAgICAgIHJldCA9IHNuZF9zb2NfY2FyZF9qYWNrX25ldyhydGQtPmNhcmQsICJIZWFkc2V0IEph
-Y2siLA0KPiA+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTTkRfSkFDS19I
-RUFEU0VUIHwNCj4gPiBTaG91bGQgdGhpcyBhbHNvIGluY2x1ZGUgU05EX0pBQ0tfTElORU9VVD8g
-ZGE3MjE5IGRpZmZlcmVudGlhdGVzDQo+ID4gYmV0d2VlbiB0aGUgdHdvIHNvIG5vdCBpbmNsdWRp
-bmcgbGluZW91dCBtZWFucywgZm9yIGV4YW1wbGUsIHdlIGNhbg0KPiA+IG1pc3MgamFjayBpbnNl
-cnRpb24vcmVtb3ZhbCBldmVudHMuDQo+ID4NCj4gSGkgQWRhbSwNCj4gDQo+IENvdWxkIHlvdSBw
-bGVhc2UgY29uZmlybSBTdGV2ZSBzYXlzIHRoYXQgYWJvdXQgU05EX0pBQ0tfTElORU9VVD8NCj4g
-DQo+IFRoYW5rcy4NCg0KSGkgWGluZyBaaGVuZywNCg0KWWVzLCBhcyBTdGV2ZSBtZW50aW9uZWQg
-REE3MjE5IGRvZXMgc3VwcG9ydCBTTkRfSkFDS19MSU5FT1VUIHNvIHdlIHNob3VsZCByZWFsbHkN
-CmluY2x1ZGUgdGhpcyBoZXJlLg0K
+Am Donnerstag, 16. Juni 2016, 16:49:42 schrieb Tomasz Figa:
+> On Thu, Jun 16, 2016 at 9:31 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+> > Hi Heiko
+> > 
+> > On 06/16/2016 06:11 AM, Heiko Stuebner wrote:
+> >> Am Montag, 13. Juni 2016, 17:39:46 schrieb Chris Zhong:
+> >>> This patch adds a binding that describes the Rockchip USB Type-C PHY
+> >>> for rk3399
+> >>> 
+> >>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> >>> 
+> >>> ---
+> >>> 
+> >>> Changes in v2:
+> >>> - add some registers description
+> >>> 
+> >>> Changes in v1:
+> >>> - add extcon node description
+> >>> - move the registers in phy driver
+> >>> - remove the suffix of reset
+> >>> 
+> >>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 77
+> >>> 
+> >>> ++++++++++++++++++++++ 1 file changed, 77 insertions(+)
+> >>> 
+> >>>   create mode 100644
+> >>> 
+> >>> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>> 
+> >>> diff --git
+> >>> a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
+> >>> mode 100644
+> >>> index 0000000..430920c
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> >>> @@ -0,0 +1,77 @@
+> >>> +* ROCKCHIP type-c PHY
+> >>> +---------------------
+> >>> +
+> >>> +Required properties:
+> >>> + - compatible : should be "rockchip,rk3399-typec-phy0" or
+> >>> +                        "rockchip,rk3399-typec-phy1"
+> >>> + - reg: Address and length of the usb phy control register set
+> >>> + - rockchip,grf : phandle to the syscon managing the "general
+> >>> +   register files"
+> >>> + - clocks : phandle + clock specifier for the phy clocks
+> >>> + - clock-names : string, clock name, must be "tcpdcore", "tcpdphy_ref";
+> >>> + - resets : a list of phandle + reset specifier pairs
+> >>> + - reset-names : string reset name, must be:
+> >>> +                "tcphy", "tcphy_pipe", "uphy_tcphy"
+> >>> + - #phy-cells : Must be 0.  See ./phy-bindings.txt for details.
+> >>> + - extcon : extcon specifier for the Power Delivery
+> >>> +
+> >>> +Note, there are 2 type-c phys for RK3399, and they are almost
+> >>> identical,
+> >>> except +these registers(description below), every register node contains
+> >>> 3 sections: +offset, enable bit, write mask bit.
+> >>> + - rockchip,typec_conn_dir : the register of type-c connector
+> >>> direction,
+> >>> +   for type-c phy0, it must be <0xe580 0 16>;
+> >>> +   for type-c phy1, it must be <0xe58c 0 16>;
+> >> 
+> >> I think I said this already, but these register-lists would be much
+> >> happier
+> >> being defined inside the driver - see how Frank managed this on his
+> >> usb2phy
+> >> please.
+> >> 
+> >> Heiko
+> > 
+> > Yes, I move them into driver in v1 patch, but Rob Herring and Guenter
+> > Roeck
+> > recommend to put them back to dts.
+> > These phy0 and phy1 are exactly the same, except these grf registers.
+> 
+> I think having the registers in dts isn't a bad idea. It might be
+> actually even useful to bring up this PHY on new SoCs, if they happen
+> to have the same PHY, just different plumbing.
+> 
+> But I suppose we don't need two separate compatible strings for phy0
+> and phy1 anymore as Rob pointed, just one "rockchip,rk3399-typec-phy".
+
+That is true - so I guess I'm also ok with going that way.
+
+Though with the GRF-based interfaces being as volatile as they are between soc 
+types, I just fear that this might not hold up on future socs.
+For example the usb2phy is used on rk3036, rk3228, rk3366, rk3368, rk3399 and 
+the GRF-side differs a lot - even with some features not even supported.
+
+> After the above is fixed and underscores in property names are
+> replaced with dashes, feel free to add my Reviewed-by.
+
+I guess the clock and reset-names could also use dashes instead of 
+underscores.
