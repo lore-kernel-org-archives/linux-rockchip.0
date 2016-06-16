@@ -1,89 +1,40 @@
-From: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
-Subject: Re: [PATCH v3 1/2] Documentation: bindings: add dt doc for Rockchip
- PCIe controller
-Date: Thu, 16 Jun 2016 11:58:55 +0200
-Message-ID: <20160616115855.3d3961ae@free-electrons.com>
-References: <1466041821-1649-1-git-send-email-shawn.lin@rock-chips.com>
-	<5811436.gqkV56Lax5@wuerfel>
-	<da207bdc-738f-f2b1-7026-e368355936e9@rock-chips.com>
-	<5324957.LqZqpRHMK9@wuerfel>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] drm: rockchip: select DRM_GEM_CMA_HELPER
+Date: Thu, 16 Jun 2016 14:27:57 +0200
+Message-ID: <20160616122800.1174015-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5324957.LqZqpRHMK9@wuerfel>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Wenrui Li <wenrui.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
-
-On Thu, 16 Jun 2016 11:22:02 +0200, Arnd Bergmann wrote:
-
-> > >> +    reset-names = "core", "mgmt", "mgmt-sticky", "pipe";
-> > >> +    phys = <&pcie_phy>;
-> > >> +    phy-names = "pcie-phy";
-> > >> +    pinctrl-names = "default";
-> > >> +    pinctrl-0 = <&pcie_clkreq>;
-> > >> +    #interrupt-cells = <1>;
-> > >> +    interrupt-controller;
-> > >> +    interrupt-map-mask = <0 0 0 7>;
-> > >> +    interrupt-map = <0 0 0 1 &pcie0 1>,
-> > >> +                    <0 0 0 2 &pcie0 2>,
-> > >> +                    <0 0 0 3 &pcie0 3>,
-> > >> +                    <0 0 0 4 &pcie0 4>;
-> > >> +};
-> > >>  
-> > >
-> > > One thing that came up in the review of the new Marvell PCIe driver is that it's
-> > > most likely invalid for a device node to have both "interrupt-controller"
-> > > and "interrupt-map" properties. I originally thought this was a nice way to
-> > > handle embedded irqchips within the PCIe host, but it only really works
-> > > by coincidence with the current kernel, and only as long as the hwirq number
-> > > of the irqchip matches the integer representation of the irq line in the root
-> > > bridge (which it does in the example above).
-> > >
-> > > For that driver we concluded that it would be less of a hack to have the
-> > > irqchip as a child node of the PCIe host after all (just not with
-> > > device_type="pci" of course), and that makes the translation work as
-> > > expected.
-> > >
-> > >       Arnd
-> > >  
-> > 
-> > Original driver have an irqchip as child node. But Marc suggested don't 
-> > need an intermediate node here.
-> > Now the conclusion is to retain the child node?  
-> 
-> That is at least my view of the situation, sorry for the mixed messages
-> you have been getting. Marc, Rob, do you agree with my finding?
-> 
-> If we want to allow having both interrupt-map and interrupt-controller
-> in the same node, we need to rewrite both the irq parsing function and
-> have extend the DT binding for the interrupt-map to explain what we
-> actually expect to happen in that case. At the moment, we walk up the
-> tree until we find either an interrupt-map or an interrupt-controller
-> property, and use that to map the interrupt number. If we find an
-> interrupt-controller, we ignore the interrupt-map.
-
-I can confirm what Arnd said. If you have the following interrupt-map
-property:
-
- +    interrupt-map = <0 0 0 1 &pcie0 0>,
- +                    <0 0 0 2 &pcie0 1>,
- +                    <0 0 0 3 &pcie0 2>,
- +                    <0 0 0 4 &pcie0 3>;
-
-Then the hwirq you get in the ->map() function are [ 1 ; 4 ] instead of
-the expected [ 0 ; 3 ]. I.e the translation to the interrupt number in
-the "target" interrupt controller does not happen.
-
-Now, the question is whether this is a bug *or* whether having
-interrupt-map pointing to its own node is not a valid situation.
-
-Thomas
--- 
-Thomas Petazzoni, CTO, Free Electrons
-Embedded Linux, Kernel and Android engineering
-http://free-electrons.com
+VGhlIHJvY2tjaGlwIGRybSBkcml2ZXIgc3RhcnRlZCB1c2luZyBkcm1fZ2VtX2NtYV92bV9vcHMs
+IGJ1dCB0aGF0IG1pZ2h0Cm5vdCBiZSBwYXJ0IG9mIHRoZSBrZXJuZWwsIGNhdXNpbmcgdGhlIGxp
+bmsgdG8gZmFpbDoKCmRyaXZlcnMvZ3B1L2J1aWx0LWluLm86KC5kYXRhKzB4YjIzNCk6IHVuZGVm
+aW5lZCByZWZlcmVuY2UgdG8gYGRybV9nZW1fY21hX3ZtX29wcycKClRoaXMgYWRkcyBhIEtjb25m
+aWcgJ3NlbGVjdCcgc3RhdGVtZW50IHRvIGVuYWJsZSBpdCBsaWtlIHRoZSBvdGhlcgp1c2VyIGRv
+LgoKU2lnbmVkLW9mZi1ieTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KRml4ZXM6IDgw
+ZjY3Y2Q4MGFkZCAoImRybS9yb2NrY2hpcDogVXNlIGNtYSBnZW0gdm0gb3BzIikKLS0tCiBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyB8IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwppbmRleCBkMzBiZGMzOGE3NjAuLmU0
+ODYxMWU4M2MwMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcK
+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKQEAgLTIsNiArMiw3IEBAIGNv
+bmZpZyBEUk1fUk9DS0NISVAKIAl0cmlzdGF0ZSAiRFJNIFN1cHBvcnQgZm9yIFJvY2tjaGlwIgog
+CWRlcGVuZHMgb24gRFJNICYmIFJPQ0tDSElQX0lPTU1VCiAJZGVwZW5kcyBvbiBSRVNFVF9DT05U
+Uk9MTEVSCisJc2VsZWN0IERSTV9HRU1fQ01BX0hFTFBFUgogCXNlbGVjdCBEUk1fS01TX0hFTFBF
+UgogCXNlbGVjdCBEUk1fS01TX0ZCX0hFTFBFUgogCXNlbGVjdCBEUk1fUEFORUwKLS0gCjIuOS4w
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
