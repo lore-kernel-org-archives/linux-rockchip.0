@@ -1,69 +1,89 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+From: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
 Subject: Re: [PATCH v3 1/2] Documentation: bindings: add dt doc for Rockchip
  PCIe controller
-Date: Thu, 16 Jun 2016 11:22:02 +0200
-Message-ID: <5324957.LqZqpRHMK9@wuerfel>
+Date: Thu, 16 Jun 2016 11:58:55 +0200
+Message-ID: <20160616115855.3d3961ae@free-electrons.com>
 References: <1466041821-1649-1-git-send-email-shawn.lin@rock-chips.com>
- <5811436.gqkV56Lax5@wuerfel>
- <da207bdc-738f-f2b1-7026-e368355936e9@rock-chips.com>
+	<5811436.gqkV56Lax5@wuerfel>
+	<da207bdc-738f-f2b1-7026-e368355936e9@rock-chips.com>
+	<5324957.LqZqpRHMK9@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <da207bdc-738f-f2b1-7026-e368355936e9-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5324957.LqZqpRHMK9@wuerfel>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Wenrui Li <wenrui.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1cnNkYXksIEp1bmUgMTYsIDIwMTYgNDowMToxMiBQTSBDRVNUIFdlbnJ1aSBMaSB3cm90
-ZToKPiDlnKggMjAxNi82LzE2IDE1OjAwLCBBcm5kIEJlcmdtYW5uIOWGmemBkzoKPiA+IE9uIFRo
-dXJzZGF5LCBKdW5lIDE2LCAyMDE2IDk6NTA6MjEgQU0gQ0VTVCBTaGF3biBMaW4gd3JvdGU6Cj4g
-Pgo+ID4+ICsgICAgcmVzZXQtbmFtZXMgPSAiY29yZSIsICJtZ210IiwgIm1nbXQtc3RpY2t5Iiwg
-InBpcGUiOwo+ID4+ICsgICAgcGh5cyA9IDwmcGNpZV9waHk+Owo+ID4+ICsgICAgcGh5LW5hbWVz
-ID0gInBjaWUtcGh5IjsKPiA+PiArICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gPj4g
-KyAgICBwaW5jdHJsLTAgPSA8JnBjaWVfY2xrcmVxPjsKPiA+PiArICAgICNpbnRlcnJ1cHQtY2Vs
-bHMgPSA8MT47Cj4gPj4gKyAgICBpbnRlcnJ1cHQtY29udHJvbGxlcjsKPiA+PiArICAgIGludGVy
-cnVwdC1tYXAtbWFzayA9IDwwIDAgMCA3PjsKPiA+PiArICAgIGludGVycnVwdC1tYXAgPSA8MCAw
-IDAgMSAmcGNpZTAgMT4sCj4gPj4gKyAgICAgICAgICAgICAgICAgICAgPDAgMCAwIDIgJnBjaWUw
-IDI+LAo+ID4+ICsgICAgICAgICAgICAgICAgICAgIDwwIDAgMCAzICZwY2llMCAzPiwKPiA+PiAr
-ICAgICAgICAgICAgICAgICAgICA8MCAwIDAgNCAmcGNpZTAgND47Cj4gPj4gK307Cj4gPj4KPiA+
-Cj4gPiBPbmUgdGhpbmcgdGhhdCBjYW1lIHVwIGluIHRoZSByZXZpZXcgb2YgdGhlIG5ldyBNYXJ2
-ZWxsIFBDSWUgZHJpdmVyIGlzIHRoYXQgaXQncwo+ID4gbW9zdCBsaWtlbHkgaW52YWxpZCBmb3Ig
-YSBkZXZpY2Ugbm9kZSB0byBoYXZlIGJvdGggImludGVycnVwdC1jb250cm9sbGVyIgo+ID4gYW5k
-ICJpbnRlcnJ1cHQtbWFwIiBwcm9wZXJ0aWVzLiBJIG9yaWdpbmFsbHkgdGhvdWdodCB0aGlzIHdh
-cyBhIG5pY2Ugd2F5IHRvCj4gPiBoYW5kbGUgZW1iZWRkZWQgaXJxY2hpcHMgd2l0aGluIHRoZSBQ
-Q0llIGhvc3QsIGJ1dCBpdCBvbmx5IHJlYWxseSB3b3Jrcwo+ID4gYnkgY29pbmNpZGVuY2Ugd2l0
-aCB0aGUgY3VycmVudCBrZXJuZWwsIGFuZCBvbmx5IGFzIGxvbmcgYXMgdGhlIGh3aXJxIG51bWJl
-cgo+ID4gb2YgdGhlIGlycWNoaXAgbWF0Y2hlcyB0aGUgaW50ZWdlciByZXByZXNlbnRhdGlvbiBv
-ZiB0aGUgaXJxIGxpbmUgaW4gdGhlIHJvb3QKPiA+IGJyaWRnZSAod2hpY2ggaXQgZG9lcyBpbiB0
-aGUgZXhhbXBsZSBhYm92ZSkuCj4gPgo+ID4gRm9yIHRoYXQgZHJpdmVyIHdlIGNvbmNsdWRlZCB0
-aGF0IGl0IHdvdWxkIGJlIGxlc3Mgb2YgYSBoYWNrIHRvIGhhdmUgdGhlCj4gPiBpcnFjaGlwIGFz
-IGEgY2hpbGQgbm9kZSBvZiB0aGUgUENJZSBob3N0IGFmdGVyIGFsbCAoanVzdCBub3Qgd2l0aAo+
-ID4gZGV2aWNlX3R5cGU9InBjaSIgb2YgY291cnNlKSwgYW5kIHRoYXQgbWFrZXMgdGhlIHRyYW5z
-bGF0aW9uIHdvcmsgYXMKPiA+IGV4cGVjdGVkLgo+ID4KPiA+ICAgICAgIEFybmQKPiA+Cj4gCj4g
-T3JpZ2luYWwgZHJpdmVyIGhhdmUgYW4gaXJxY2hpcCBhcyBjaGlsZCBub2RlLiBCdXQgTWFyYyBz
-dWdnZXN0ZWQgZG9uJ3QgCj4gbmVlZCBhbiBpbnRlcm1lZGlhdGUgbm9kZSBoZXJlLgo+IE5vdyB0
-aGUgY29uY2x1c2lvbiBpcyB0byByZXRhaW4gdGhlIGNoaWxkIG5vZGU/CgpUaGF0IGlzIGF0IGxl
-YXN0IG15IHZpZXcgb2YgdGhlIHNpdHVhdGlvbiwgc29ycnkgZm9yIHRoZSBtaXhlZCBtZXNzYWdl
-cwp5b3UgaGF2ZSBiZWVuIGdldHRpbmcuIE1hcmMsIFJvYiwgZG8geW91IGFncmVlIHdpdGggbXkg
-ZmluZGluZz8KCklmIHdlIHdhbnQgdG8gYWxsb3cgaGF2aW5nIGJvdGggaW50ZXJydXB0LW1hcCBh
-bmQgaW50ZXJydXB0LWNvbnRyb2xsZXIKaW4gdGhlIHNhbWUgbm9kZSwgd2UgbmVlZCB0byByZXdy
-aXRlIGJvdGggdGhlIGlycSBwYXJzaW5nIGZ1bmN0aW9uIGFuZApoYXZlIGV4dGVuZCB0aGUgRFQg
-YmluZGluZyBmb3IgdGhlIGludGVycnVwdC1tYXAgdG8gZXhwbGFpbiB3aGF0IHdlCmFjdHVhbGx5
-IGV4cGVjdCB0byBoYXBwZW4gaW4gdGhhdCBjYXNlLiBBdCB0aGUgbW9tZW50LCB3ZSB3YWxrIHVw
-IHRoZQp0cmVlIHVudGlsIHdlIGZpbmQgZWl0aGVyIGFuIGludGVycnVwdC1tYXAgb3IgYW4gaW50
-ZXJydXB0LWNvbnRyb2xsZXIKcHJvcGVydHksIGFuZCB1c2UgdGhhdCB0byBtYXAgdGhlIGludGVy
-cnVwdCBudW1iZXIuIElmIHdlIGZpbmQgYW4KaW50ZXJydXB0LWNvbnRyb2xsZXIsIHdlIGlnbm9y
-ZSB0aGUgaW50ZXJydXB0LW1hcC4KCglBcm5kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello,
+
+On Thu, 16 Jun 2016 11:22:02 +0200, Arnd Bergmann wrote:
+
+> > >> +    reset-names = "core", "mgmt", "mgmt-sticky", "pipe";
+> > >> +    phys = <&pcie_phy>;
+> > >> +    phy-names = "pcie-phy";
+> > >> +    pinctrl-names = "default";
+> > >> +    pinctrl-0 = <&pcie_clkreq>;
+> > >> +    #interrupt-cells = <1>;
+> > >> +    interrupt-controller;
+> > >> +    interrupt-map-mask = <0 0 0 7>;
+> > >> +    interrupt-map = <0 0 0 1 &pcie0 1>,
+> > >> +                    <0 0 0 2 &pcie0 2>,
+> > >> +                    <0 0 0 3 &pcie0 3>,
+> > >> +                    <0 0 0 4 &pcie0 4>;
+> > >> +};
+> > >>  
+> > >
+> > > One thing that came up in the review of the new Marvell PCIe driver is that it's
+> > > most likely invalid for a device node to have both "interrupt-controller"
+> > > and "interrupt-map" properties. I originally thought this was a nice way to
+> > > handle embedded irqchips within the PCIe host, but it only really works
+> > > by coincidence with the current kernel, and only as long as the hwirq number
+> > > of the irqchip matches the integer representation of the irq line in the root
+> > > bridge (which it does in the example above).
+> > >
+> > > For that driver we concluded that it would be less of a hack to have the
+> > > irqchip as a child node of the PCIe host after all (just not with
+> > > device_type="pci" of course), and that makes the translation work as
+> > > expected.
+> > >
+> > >       Arnd
+> > >  
+> > 
+> > Original driver have an irqchip as child node. But Marc suggested don't 
+> > need an intermediate node here.
+> > Now the conclusion is to retain the child node?  
+> 
+> That is at least my view of the situation, sorry for the mixed messages
+> you have been getting. Marc, Rob, do you agree with my finding?
+> 
+> If we want to allow having both interrupt-map and interrupt-controller
+> in the same node, we need to rewrite both the irq parsing function and
+> have extend the DT binding for the interrupt-map to explain what we
+> actually expect to happen in that case. At the moment, we walk up the
+> tree until we find either an interrupt-map or an interrupt-controller
+> property, and use that to map the interrupt number. If we find an
+> interrupt-controller, we ignore the interrupt-map.
+
+I can confirm what Arnd said. If you have the following interrupt-map
+property:
+
+ +    interrupt-map = <0 0 0 1 &pcie0 0>,
+ +                    <0 0 0 2 &pcie0 1>,
+ +                    <0 0 0 3 &pcie0 2>,
+ +                    <0 0 0 4 &pcie0 3>;
+
+Then the hwirq you get in the ->map() function are [ 1 ; 4 ] instead of
+the expected [ 0 ; 3 ]. I.e the translation to the interrupt number in
+the "target" interrupt controller does not happen.
+
+Now, the question is whether this is a bug *or* whether having
+interrupt-map pointing to its own node is not a valid situation.
+
+Thomas
+-- 
+Thomas Petazzoni, CTO, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
