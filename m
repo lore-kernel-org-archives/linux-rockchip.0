@@ -1,46 +1,100 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH v3 1/2] Documentation: bindings: add dt doc for Rockchip PCIe controller
-Date: Thu, 16 Jun 2016 09:00:41 +0200
-Message-ID: <5811436.gqkV56Lax5@wuerfel>
-References: <1466041821-1649-1-git-send-email-shawn.lin@rock-chips.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [v2 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip
+ USB Type-C PHY
+Date: Thu, 16 Jun 2016 16:49:42 +0900
+Message-ID: <CAAFQd5BY23zdKCxUnLDz6TT+6ro3qnQPP+bH-uu3KDCzdO50nw@mail.gmail.com>
+References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com>
+ <1465810789-22303-2-git-send-email-zyw@rock-chips.com> <2262175.XUeGlE1YsE@phil>
+ <5761F34F.8040202@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1466041821-1649-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5761F34F.8040202@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, yzq@rock-chips.com, groeck@chromium.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday, June 16, 2016 9:50:21 AM CEST Shawn Lin wrote:
+On Thu, Jun 16, 2016 at 9:31 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+> Hi Heiko
+>
+>
+> On 06/16/2016 06:11 AM, Heiko Stuebner wrote:
+>>
+>> Am Montag, 13. Juni 2016, 17:39:46 schrieb Chris Zhong:
+>>>
+>>> This patch adds a binding that describes the Rockchip USB Type-C PHY
+>>> for rk3399
+>>>
+>>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>>>
+>>> ---
+>>>
+>>> Changes in v2:
+>>> - add some registers description
+>>>
+>>> Changes in v1:
+>>> - add extcon node description
+>>> - move the registers in phy driver
+>>> - remove the suffix of reset
+>>>
+>>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 77
+>>> ++++++++++++++++++++++ 1 file changed, 77 insertions(+)
+>>>   create mode 100644
+>>> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
+>>> mode 100644
+>>> index 0000000..430920c
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>>> @@ -0,0 +1,77 @@
+>>> +* ROCKCHIP type-c PHY
+>>> +---------------------
+>>> +
+>>> +Required properties:
+>>> + - compatible : should be "rockchip,rk3399-typec-phy0" or
+>>> +                        "rockchip,rk3399-typec-phy1"
+>>> + - reg: Address and length of the usb phy control register set
+>>> + - rockchip,grf : phandle to the syscon managing the "general
+>>> +   register files"
+>>> + - clocks : phandle + clock specifier for the phy clocks
+>>> + - clock-names : string, clock name, must be "tcpdcore", "tcpdphy_ref";
+>>> + - resets : a list of phandle + reset specifier pairs
+>>> + - reset-names : string reset name, must be:
+>>> +                "tcphy", "tcphy_pipe", "uphy_tcphy"
+>>> + - #phy-cells : Must be 0.  See ./phy-bindings.txt for details.
+>>> + - extcon : extcon specifier for the Power Delivery
+>>> +
+>>> +Note, there are 2 type-c phys for RK3399, and they are almost identical,
+>>> except +these registers(description below), every register node contains
+>>> 3 sections: +offset, enable bit, write mask bit.
+>>> + - rockchip,typec_conn_dir : the register of type-c connector direction,
+>>> +   for type-c phy0, it must be <0xe580 0 16>;
+>>> +   for type-c phy1, it must be <0xe58c 0 16>;
+>>
+>> I think I said this already, but these register-lists would be much
+>> happier
+>> being defined inside the driver - see how Frank managed this on his
+>> usb2phy
+>> please.
+>>
+>> Heiko
+>>
+> Yes, I move them into driver in v1 patch, but Rob Herring and Guenter Roeck
+> recommend to put them back to dts.
+> These phy0 and phy1 are exactly the same, except these grf registers.
 
-> +	reset-names = "core", "mgmt", "mgmt-sticky", "pipe";
-> +	phys = <&pcie_phy>;
-> +	phy-names = "pcie-phy";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreq>;
-> +	#interrupt-cells = <1>;
-> +	interrupt-controller;
-> +	interrupt-map-mask = <0 0 0 7>;
-> +	interrupt-map = <0 0 0 1 &pcie0 1>,
-> +			<0 0 0 2 &pcie0 2>,
-> +			<0 0 0 3 &pcie0 3>,
-> +			<0 0 0 4 &pcie0 4>;
-> +};
-> 
+I think having the registers in dts isn't a bad idea. It might be
+actually even useful to bring up this PHY on new SoCs, if they happen
+to have the same PHY, just different plumbing.
 
-One thing that came up in the review of the new Marvell PCIe driver is that it's
-most likely invalid for a device node to have both "interrupt-controller"
-and "interrupt-map" properties. I originally thought this was a nice way to
-handle embedded irqchips within the PCIe host, but it only really works
-by coincidence with the current kernel, and only as long as the hwirq number
-of the irqchip matches the integer representation of the irq line in the root
-bridge (which it does in the example above).
+But I suppose we don't need two separate compatible strings for phy0
+and phy1 anymore as Rob pointed, just one "rockchip,rk3399-typec-phy".
 
-For that driver we concluded that it would be less of a hack to have the
-irqchip as a child node of the PCIe host after all (just not with
-device_type="pci" of course), and that makes the translation work as
-expected.
+After the above is fixed and underscores in property names are
+replaced with dashes, feel free to add my Reviewed-by.
 
-	Arnd
+Best regards,
+Tomasz
