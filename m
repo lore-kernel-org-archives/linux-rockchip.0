@@ -1,442 +1,103 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 2/2] phy: add a driver for the Rockchip SoC internal PCIe PHY
-Date: Thu, 16 Jun 2016 09:22:59 +0800
-Message-ID: <1466040179-30973-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Thu, 16 Jun 2016 09:47:54 +0800
+Message-ID: <328485b0-2c5d-5d5e-a21b-6a26e487a923@rock-chips.com>
+References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com>
+ <7225720.0AClDW7eQ6@diego>
+ <CABXOdTfzDeg3KOmEkJkeUWs76wFind89D-bSrs=7-jSxmdhSHQ@mail.gmail.com>
+ <4065185.1IWsBDlcMJ@diego>
+ <24acf224-e792-6648-fcdb-8729ded6df84@rock-chips.com>
+ <CABXOdTdD-DFjzZszvTBoxviwsdu=HZSRy5iTzrkgOjg5qae05Q@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CABXOdTdD-DFjzZszvTBoxviwsdu=HZSRy5iTzrkgOjg5qae05Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch to add a generic PHY driver for rockchip PCIe PHY.
-Access the PHY via registers provided by GRF (general register
-files) module.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
-Changes in v3: None
-Changes in v2: None
-
- drivers/phy/Kconfig             |   7 +
- drivers/phy/Makefile            |   1 +
- drivers/phy/phy-rockchip-pcie.c | 378 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 386 insertions(+)
- create mode 100644 drivers/phy/phy-rockchip-pcie.c
-
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index b869b98..d4fc293 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -361,6 +361,13 @@ config PHY_ROCKCHIP_DP
- 	help
- 	  Enable this to support the Rockchip Display Port PHY.
- 
-+config PHY_ROCKCHIP_PCIE
-+	tristate "Rockchip PCIe PHY Driver"
-+	depends on ARCH_ROCKCHIP && OF
-+	select GENERIC_PHY
-+	help
-+	  Enable this to support the Rockchip PCIe PHY.
-+
- config PHY_ST_SPEAR1310_MIPHY
- 	tristate "ST SPEAR1310-MIPHY driver"
- 	select GENERIC_PHY
-diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-index 9c3e73c..725e55d 100644
---- a/drivers/phy/Makefile
-+++ b/drivers/phy/Makefile
-@@ -39,6 +39,7 @@ obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
- obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
- obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
- obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
-+obj-$(CONFIG_PHY_ROCKCHIP_PCIE) += phy-rockchip-pcie.o
- obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
- obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
- obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
-diff --git a/drivers/phy/phy-rockchip-pcie.c b/drivers/phy/phy-rockchip-pcie.c
-new file mode 100644
-index 0000000..bc6cd17
---- /dev/null
-+++ b/drivers/phy/phy-rockchip-pcie.c
-@@ -0,0 +1,378 @@
-+/*
-+ * Rockchip PCIe PHY driver
-+ *
-+ * Copyright (C) 2016 Shawn Lin <shawn.lin@rock-chips.com>
-+ * Copyright (C) 2016 ROCKCHIP, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/io.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+
-+/*
-+ * The higher 16-bit of this register is used for write protection
-+ * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-+ */
-+#define HIWORD_UPDATE(val, mask, shift) \
-+		((val) << (shift) | (mask) << ((shift) + 16))
-+
-+#define PHY_MAX_LANE_NUM      4
-+#define PHY_CFG_DATA_SHIFT    7
-+#define PHY_CFG_ADDR_SHIFT    1
-+#define PHY_CFG_DATA_MASK     0xf
-+#define PHY_CFG_ADDR_MASK     0x3f
-+#define PHY_CFG_RD_MASK       0x3ff
-+#define PHY_CFG_WR_ENABLE     1
-+#define PHY_CFG_WR_DISABLE    1
-+#define PHY_CFG_WR_SHIFT      0
-+#define PHY_CFG_WR_MASK       1
-+#define PHY_CFG_PLL_LOCK      0x10
-+#define PHY_CFG_CLK_TEST      0x10
-+#define PHY_CFG_CLK_SCC       0x12
-+#define PHY_CFG_SEPE_RATE     BIT(3)
-+#define PHY_CFG_PLL_100M      BIT(3)
-+#define PHY_PLL_LOCKED        BIT(9)
-+#define PHY_PLL_OUTPUT        BIT(10)
-+#define PHY_LANE_A_STATUS     0x30
-+#define PHY_LANE_B_STATUS     0x31
-+#define PHY_LANE_C_STATUS     0x32
-+#define PHY_LANE_D_STATUS     0x33
-+#define PHY_LANE_RX_DET_SHIFT 11
-+#define PHY_LANE_RX_DET_TH    0x1
-+#define PHY_LANE_IDLE_OFF     0x1
-+#define PHY_LANE_IDLE_MASK    0x1
-+#define PHY_LANE_IDLE_A_SHIFT 3
-+#define PHY_LANE_IDLE_B_SHIFT 4
-+#define PHY_LANE_IDLE_C_SHIFT 5
-+#define PHY_LANE_IDLE_D_SHIFT 6
-+
-+struct rockchip_pcie_data {
-+	unsigned int pcie_conf;
-+	unsigned int pcie_status;
-+	unsigned int pcie_laneoff;
-+};
-+
-+struct rockchip_pcie_phy {
-+	struct rockchip_pcie_data *phy_data;
-+	struct regmap *reg_base;
-+	struct reset_control *phy_rst;
-+	struct clk *clk_pciephy_ref;
-+};
-+
-+static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
-+			      u32 addr, u32 data)
-+{
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(data,
-+				   PHY_CFG_DATA_MASK,
-+				   PHY_CFG_DATA_SHIFT) |
-+		     HIWORD_UPDATE(addr,
-+				   PHY_CFG_ADDR_MASK,
-+				   PHY_CFG_ADDR_SHIFT));
-+	udelay(1);
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(PHY_CFG_WR_ENABLE,
-+				   PHY_CFG_WR_MASK,
-+				   PHY_CFG_WR_SHIFT));
-+	udelay(1);
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(PHY_CFG_WR_DISABLE,
-+				   PHY_CFG_WR_MASK,
-+				   PHY_CFG_WR_SHIFT));
-+}
-+
-+static inline u32 phy_rd_cfg(struct rockchip_pcie_phy *rk_phy,
-+			     u32 addr)
-+{
-+	u32 val;
-+
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(addr,
-+				   PHY_CFG_RD_MASK,
-+				   PHY_CFG_ADDR_SHIFT));
-+	regmap_read(rk_phy->reg_base,
-+		    rk_phy->phy_data->pcie_status,
-+		    &val);
-+	return val;
-+}
-+
-+void rockchip_pcie_phy_laneoff(struct phy *phy)
-+{
-+	u32 status;
-+	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-+	int i;
-+
-+	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
-+		status = phy_rd_cfg(rk_phy, PHY_LANE_A_STATUS + i);
-+		if (!((status >> PHY_LANE_RX_DET_SHIFT) &
-+		       PHY_LANE_RX_DET_TH))
-+			pr_debug("lane %d is used\n", i);
-+		else
-+			regmap_write(rk_phy->reg_base,
-+				     rk_phy->phy_data->pcie_laneoff,
-+				     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
-+						   PHY_LANE_IDLE_MASK,
-+						   PHY_LANE_IDLE_A_SHIFT + i));
-+	}
-+}
-+EXPORT_SYMBOL_GPL(rockchip_pcie_phy_laneoff);
-+
-+static int rockchip_pcie_phy_power_off(struct phy *phy)
-+{
-+	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-+	int err = 0;
-+
-+	err = reset_control_assert(rk_phy->phy_rst);
-+	if (err) {
-+		pr_err("assert phy_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_phy_power_on(struct phy *phy)
-+{
-+	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-+	int err = 0;
-+	u32 status;
-+	unsigned long timeout;
-+
-+	err = reset_control_deassert(rk_phy->phy_rst);
-+	if (err) {
-+		pr_err("deassert phy_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
-+				   PHY_CFG_ADDR_MASK,
-+				   PHY_CFG_ADDR_SHIFT));
-+
-+	/*
-+	 * No documented timeout value for phy operation below,
-+	 * so we make it large enough here. And we use loop-break
-+	 * method which should not be harmful.
-+	 */
-+	timeout = jiffies + msecs_to_jiffies(1000);
-+
-+	err = -EINVAL;
-+	while (time_before(jiffies, timeout)) {
-+		regmap_read(rk_phy->reg_base,
-+			    rk_phy->phy_data->pcie_status,
-+			    &status);
-+		if (status & PHY_PLL_LOCKED) {
-+			pr_debug("pll locked!\n");
-+			err = 0;
-+			break;
-+		}
-+		msleep(20);
-+	}
-+
-+	if (err) {
-+		pr_err("pll lock timeout!\n");
-+		goto err_pll_lock;
-+	}
-+
-+	phy_wr_cfg(rk_phy, PHY_CFG_CLK_TEST, PHY_CFG_SEPE_RATE);
-+	phy_wr_cfg(rk_phy, PHY_CFG_CLK_SCC, PHY_CFG_PLL_100M);
-+
-+	err = -ETIMEDOUT;
-+	while (time_before(jiffies, timeout)) {
-+		regmap_read(rk_phy->reg_base,
-+			    rk_phy->phy_data->pcie_status,
-+			    &status);
-+		if (!(status & PHY_PLL_OUTPUT)) {
-+			pr_debug("pll output enable done!\n");
-+			err = 0;
-+			break;
-+		}
-+		msleep(20);
-+	}
-+
-+	if (err) {
-+		pr_err("pll output enable timeout!\n");
-+		goto err_pll_lock;
-+	}
-+
-+	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-+		     HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
-+				   PHY_CFG_ADDR_MASK,
-+				   PHY_CFG_ADDR_SHIFT));
-+	err = -EINVAL;
-+	while (time_before(jiffies, timeout)) {
-+		regmap_read(rk_phy->reg_base,
-+			    rk_phy->phy_data->pcie_status,
-+			    &status);
-+		if (status & PHY_PLL_LOCKED) {
-+			pr_debug("pll relocked!\n");
-+			err = 0;
-+			break;
-+		}
-+		msleep(20);
-+	}
-+
-+	if (err) {
-+		pr_err("pll relock timeout!\n");
-+		goto err_pll_lock;
-+	}
-+
-+	return 0;
-+
-+err_pll_lock:
-+	reset_control_assert(rk_phy->phy_rst);
-+	return err;
-+}
-+
-+static int rockchip_pcie_phy_init(struct phy *phy)
-+{
-+	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-+	int err = 0;
-+
-+	err = clk_prepare_enable(rk_phy->clk_pciephy_ref);
-+	if (err) {
-+		pr_err("Fail to enable pcie ref clock.\n");
-+		goto err_refclk;
-+	}
-+
-+	err = reset_control_assert(rk_phy->phy_rst);
-+	if (err) {
-+		pr_err("assert phy_rst err %d\n", err);
-+		goto err_reset;
-+	}
-+
-+	return err;
-+
-+err_reset:
-+	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
-+err_refclk:
-+	return err;
-+}
-+
-+static int rockchip_pcie_phy_exit(struct phy *phy)
-+{
-+	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-+	int err = 0;
-+
-+	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
-+
-+	err = reset_control_deassert(rk_phy->phy_rst);
-+	if (err) {
-+		pr_err("deassert phy_rst err %d\n", err);
-+		goto err_reset;
-+	}
-+
-+	return err;
-+
-+err_reset:
-+	clk_prepare_enable(rk_phy->clk_pciephy_ref);
-+	return err;
-+}
-+
-+static const struct phy_ops ops = {
-+	.init		= rockchip_pcie_phy_init,
-+	.exit		= rockchip_pcie_phy_exit,
-+	.power_on	= rockchip_pcie_phy_power_on,
-+	.power_off	= rockchip_pcie_phy_power_off,
-+	.owner		= THIS_MODULE,
-+};
-+
-+static const struct rockchip_pcie_data rk3399_pcie_data = {
-+	.pcie_conf = 0xe220,
-+	.pcie_status = 0xe2a4,
-+	.pcie_laneoff = 0xe214,
-+};
-+
-+static const struct of_device_id rockchip_pcie_phy_dt_ids[] = {
-+	{
-+		.compatible = "rockchip,rk3399-pcie-phy",
-+		.data = &rk3399_pcie_data,
-+	},
-+	{}
-+};
-+
-+MODULE_DEVICE_TABLE(of, rockchip_pcie_phy_dt_ids);
-+
-+static int rockchip_pcie_phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_pcie_phy *rk_phy;
-+	struct phy *generic_phy;
-+	struct phy_provider *phy_provider;
-+	struct regmap *grf;
-+	const struct of_device_id *of_id;
-+
-+	grf = syscon_node_to_regmap(dev->parent->of_node);
-+	if (IS_ERR(grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return PTR_ERR(grf);
-+	}
-+
-+	rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
-+	if (!rk_phy)
-+		return -ENOMEM;
-+
-+	of_id = of_match_device(rockchip_pcie_phy_dt_ids, &pdev->dev);
-+	if (!of_id)
-+		return -EINVAL;
-+
-+	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
-+	rk_phy->reg_base = grf;
-+
-+	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
-+	if (IS_ERR(rk_phy->phy_rst)) {
-+		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
-+			dev_err(dev,
-+				"missing phy property for reset controller\n");
-+		return PTR_ERR(rk_phy->phy_rst);
-+	}
-+
-+	rk_phy->clk_pciephy_ref = devm_clk_get(dev, "refclk");
-+	if (IS_ERR(rk_phy->clk_pciephy_ref)) {
-+		dev_err(dev, "refclk not found.\n");
-+		return PTR_ERR(rk_phy->clk_pciephy_ref);
-+	}
-+
-+	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
-+	if (IS_ERR(generic_phy)) {
-+		dev_err(dev, "failed to create PHY\n");
-+		return PTR_ERR(generic_phy);
-+	}
-+
-+	phy_set_drvdata(generic_phy, rk_phy);
-+	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+
-+	return PTR_ERR_OR_ZERO(phy_provider);
-+}
-+
-+static struct platform_driver rockchip_pcie_driver = {
-+	.probe		= rockchip_pcie_phy_probe,
-+	.driver		= {
-+		.name	= "rockchip-pcie-phy",
-+		.of_match_table = rockchip_pcie_phy_dt_ids,
-+	},
-+};
-+
-+module_platform_driver(rockchip_pcie_driver);
-+
-+MODULE_AUTHOR("Shawn Lin <shawn.lin@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip PCIe PHY driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.3.7
+SGkgR3VlbnRlciAmIEhlaWtvLAoKT24gMjAxNi82LzE1IDIzOjQ3LCBHdWVudGVyIFJvZWNrIHdy
+b3RlOgo+IE9uIFR1ZSwgSnVuIDE0LCAyMDE2IGF0IDY6MTQgUE0sIEZyYW5rIFdhbmcgPGZyYW5r
+LndhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiBIaSBIZWlrbyAmIEd1ZW50ZXIsCj4+Cj4+
+Cj4+IE9uIDIwMTYvNi8xNCAyMjowMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+PiBBbSBEaWVu
+c3RhZywgMTQuIEp1bmkgMjAxNiwgMDY6NTA6MzEgc2NocmllYiBHdWVudGVyIFJvZWNrOgo+Pj4+
+IE9uIFR1ZSwgSnVuIDE0LCAyMDE2IGF0IDY6MjcgQU0sIEhlaWtvIFN0w7xibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+IHdyb3RlOgo+Pj4+PiBBbSBNb250YWcsIDEzLiBKdW5pIDIwMTYsIDEwOjEwOjEw
+IHNjaHJpZWIgRnJhbmsgV2FuZzoKPj4+Pj4+IFRoZSBuZXdlciBTb0NzIChyazMzNjYsIHJrMzM5
+OSkgdGFrZSBhIGRpZmZlcmVudCB1c2ItcGh5IElQIGJsb2NrCj4+Pj4+PiB0aGFuIHJrMzI4OCBh
+bmQgYmVmb3JlLCBhbmQgbW9zdCBvZiBwaHktcmVsYXRlZCByZWdpc3RlcnMgYXJlIGFsc28KPj4+
+Pj4+IGRpZmZlcmVudCBmcm9tIHRoZSBwYXN0LCBzbyBhIG5ldyBwaHkgZHJpdmVyIGlzIHJlcXVp
+cmVkIG5lY2Vzc2FyaWx5Lgo+Pj4+Pj4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEZyYW5rIFdhbmcg
+PGZyYW5rLndhbmdAcm9jay1jaGlwcy5jb20+Cj4+Pj4+PiAtLS0KPj4+IFsuLi5dCj4+Pgo+Pj4+
+Pj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfdXNiMnBoeV9pbml0KHN0cnVjdCBwaHkgKnBoeSkKPj4+
+Pj4+ICt7Cj4+Pj4+PiArICAgICBzdHJ1Y3Qgcm9ja2NoaXBfdXNiMnBoeV9wb3J0ICpycG9ydCA9
+IHBoeV9nZXRfZHJ2ZGF0YShwaHkpOwo+Pj4+Pj4gKyAgICAgc3RydWN0IHJvY2tjaGlwX3VzYjJw
+aHkgKnJwaHkgPSBkZXZfZ2V0X2RydmRhdGEocGh5LT5kZXYucGFyZW50KTsKPj4+Pj4+ICsgICAg
+IGludCByZXQ7Cj4+Pj4+PiArCj4+Pj4+Pgo+Pj4+PiAgICAgICAgICAgaWYgKCFycG9ydC0+cG9y
+dF9jZmcpCj4+Pj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiAwOwo+Pj4+Pgo+
+Pj4+PiBPdGhlcndpc2UgdGhlIGN1cnJlbnRseSBlbXB0eSBvdGctcG9ydCB3aWxsIGNhdXNlIG51
+bGwtcG9pbnRlcgo+Pj4+PiBkZXJlZmVyZW5jZXMKPj4+Pj4gd2hlbiBpdCBnZXRzIGFzc2lnbmVk
+IGluIHRoZSBkZXZpY2V0cmVlIGFscmVhZHkuCj4+Pj4gTm90IHJlYWxseSwgYXQgbGVhc3Qgbm90
+IGhlcmUgLSB0aGF0IHBvcnQgc2hvdWxkIG5vdCBoYXZlIHBvcnRfaWQgc2V0Cj4+Pj4gdG8gVVNC
+MlBIWV9QT1JUX0hPU1QuCj4+Pj4KPj4+PiBEb2VzIGl0IGV2ZW4gbWFrZSBzZW5zZSB0byBpbnN0
+YW50aWF0ZSB0aGUgb3RnIHBvcnQgPyBJcyBpdCBnb2luZyB0bwo+Pj4+IGRvIGFueXRoaW5nIHdp
+dGhvdXQgcG9ydCBjb25maWd1cmF0aW9uID8KPj4+IE9rLCB0aGF0IHdvdWxkIGJlIHRoZSBvdGhl
+ciBvcHRpb24gLSBub3QgY3JlYXRpbmcgdGhlIHBoeSBpbiB0aGUgZHJpdmVyLgo+Pgo+PiBXZWxs
+LCBJIHdpbGwgcHV0IHRoaXMgY29uZGl0aW9uYWwgaW5zaWRlICpfaG9zdF9wb3J0X2luaXQoKSwg
+aWYgaXQgaXMgYW4KPj4gZW1wdHksIHRoZSBwaHktZGV2aWNlIHNob3VsZCBub3QgYmUgY3JlYXRl
+ZC4KPj4gU29tZXRoaW5nIGxpa2UgdGhlIGZvbGxvd2luZzoKPj4KPj4gLS0tIGEvZHJpdmVycy9w
+aHkvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi5jCj4+ICsrKyBiL2RyaXZlcnMvcGh5L3BoeS1yb2Nr
+Y2hpcC1pbm5vLXVzYjIuYwo+PiBAQCAtNDgzLDkgKzQ4MywxMyBAQCBzdGF0aWMgaW50IHJvY2tj
+aGlwX3VzYjJwaHlfaG9zdF9wb3J0X2luaXQoc3RydWN0Cj4+IHJvY2tjaGlwX3VzYjJwaHkgKnJw
+aHksCj4+ICAgewo+PiAgICAgICAgICBpbnQgcmV0Owo+Pgo+PiAtICAgICAgIHJwb3J0LT5wb3J0
+X2lkID0gVVNCMlBIWV9QT1JUX0hPU1Q7Cj4+ICAgICAgICAgIHJwb3J0LT5wb3J0X2NmZyA9ICZy
+cGh5LT5waHlfY2ZnLT5wb3J0X2NmZ3NbVVNCMlBIWV9QT1JUX0hPU1RdOwo+PiArICAgICAgIGlm
+ICghcnBvcnQtPnBvcnRfY2ZnKSB7Cj4+ICsgICAgICAgICAgICAgICBkZXZfZXJyKHJwaHktPmRl
+diwgIm5vIGhvc3QgcG9ydC1jb25maWcgcHJvdmlkZWQuXG4iKTsKPj4gKyAgICAgICAgICAgICAg
+IHJldHVybiAtRUlOVkFMOwo+PiArICAgICAgIH0KPiBUaGlzIHdvdWxkIG5ldmVyIGJlIE5VTEwu
+IEF0IGlzc3VlIGlzIHRoYXQgeW91IGRvbid0IGFzc2lnbiBwb3J0X2NmZwo+IGlmIHRoZSBwb3J0
+IGlzIF9ub3RfIGEgaG9zdCBwb3J0LgoKU29ycnksIEkgbWFkZSBhIG1pc3Rha2UuIEhvdyBhYm91
+dCBzb21ldGhpbmcgbGlrZSB0aGUgZm9sbG93aW5nOgoKQEAgLTU3NCw2ICs1NzksMTUgQEAgc3Rh
+dGljIGludCByb2NrY2hpcF91c2IycGh5X3Byb2JlKHN0cnVjdCAKcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQogICAgICAgICAgICAgICAgIHN0cnVjdCByb2NrY2hpcF91c2IycGh5X3BvcnQgKnJwb3J0
+ID0gJnJwaHktPnBvcnRzW2luZGV4XTsKICAgICAgICAgICAgICAgICBzdHJ1Y3QgcGh5ICpwaHk7
+CgorICAgICAgICAgICAgICAgLyoKKyAgICAgICAgICAgICAgICAqIFRoaXMgZHJpdmVyIGFpbSB0
+byBzdXBwb3J0IGJvdGggb3RnLXBvcnQgYW5kIGhvc3QtcG9ydCwKKyAgICAgICAgICAgICAgICAq
+IGJ1dCB1bmZvcnR1bmF0ZWx5LCB0aGUgb3RnIHBhcnQgaXMgbm90IHJlYWR5IGluIGN1cnJlbnQs
+CisgICAgICAgICAgICAgICAgKiBzbyB0aGlzIGNvbW1lbnRzIGFuZCBiZWxvdyBjb2RlcyBhcmUg
+aW50ZXJpbSwgd2hpY2ggCnNob3VsZAorICAgICAgICAgICAgICAgICogYmUgcmVtb3ZlZCBhZnRl
+ciBvdGctcG9ydCBpcyBzdXBwbGllZCBzb29uLgorICAgICAgICAgICAgICAgICovCisgICAgICAg
+ICAgICAgICBpZiAob2Zfbm9kZV9jbXAoY2hpbGRfbnAtPm5hbWUsICJob3N0LXBvcnQiKSkKKyAg
+ICAgICAgICAgICAgICAgICAgICAgZ290byBuZXh0X2NoaWxkOworCiAgICAgICAgICAgICAgICAg
+cGh5ID0gZGV2bV9waHlfY3JlYXRlKGRldiwgY2hpbGRfbnAsIAomcm9ja2NoaXBfdXNiMnBoeV9v
+cHMpOwogICAgICAgICAgICAgICAgIGlmIChJU19FUlIocGh5KSkgewogICAgICAgICAgICAgICAg
+ICAgICAgICAgZGV2X2VycihkZXYsICJmYWlsZWQgdG8gY3JlYXRlIHBoeVxuIik7CkBAIC01ODIs
+MTcgKzU5NiwxMyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3VzYjJwaHlfcHJvYmUoc3RydWN0IApw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAg
+ICBycG9ydC0+cGh5ID0gcGh5OwotCi0gICAgICAgICAgICAgICAvKiBpbml0aWFsaXplIG90Zy9o
+b3N0IHBvcnQgc2VwYXJhdGVseSAqLwotICAgICAgICAgICAgICAgaWYgKCFvZl9ub2RlX2NtcChj
+aGlsZF9ucC0+bmFtZSwgImhvc3QtcG9ydCIpKSB7Ci0gICAgICAgICAgICAgICAgICAgICAgIHJl
+dCA9IHJvY2tjaGlwX3VzYjJwaHlfaG9zdF9wb3J0X2luaXQocnBoeSwgcnBvcnQsCi0gY2hpbGRf
+bnApOwotICAgICAgICAgICAgICAgICAgICAgICBpZiAocmV0KQotICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIGdvdG8gcHV0X2NoaWxkOwotICAgICAgICAgICAgICAgfQotCiAgICAgICAg
+ICAgICAgICAgcGh5X3NldF9kcnZkYXRhKHJwb3J0LT5waHksIHJwb3J0KTsKCisgICAgICAgICAg
+ICAgICByZXQgPSByb2NrY2hpcF91c2IycGh5X2hvc3RfcG9ydF9pbml0KHJwaHksIHJwb3J0LCAK
+Y2hpbGRfbnApOworICAgICAgICAgICAgICAgaWYgKHJldCkKKyAgICAgICAgICAgICAgICAgICAg
+ICAgZ290byBwdXRfY2hpbGQ7CisKK25leHRfY2hpbGQ6CiAgICAgICAgICAgICAgICAgLyogdG8g
+cHJldmVudCBvdXQgb2YgYm91bmRhcnkgKi8KICAgICAgICAgICAgICAgICBpZiAoKytpbmRleCA+
+PSBycGh5LT5waHlfY2ZnLT5udW1fcG9ydHMpCiAgICAgICAgICAgICAgICAgICAgICAgICBicmVh
+azsKCgpCUi4KRnJhbmsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
