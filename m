@@ -1,110 +1,69 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [v2 PATCH 1/4] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-Date: Thu, 16 Jun 2016 10:54:08 +0200
-Message-ID: <6012957.TOtSrmnyF4@diego>
-References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com> <5761F34F.8040202@rock-chips.com> <CAAFQd5BY23zdKCxUnLDz6TT+6ro3qnQPP+bH-uu3KDCzdO50nw@mail.gmail.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] Documentation: bindings: add dt doc for Rockchip
+ PCIe controller
+Date: Thu, 16 Jun 2016 11:22:02 +0200
+Message-ID: <5324957.LqZqpRHMK9@wuerfel>
+References: <1466041821-1649-1-git-send-email-shawn.lin@rock-chips.com>
+ <5811436.gqkV56Lax5@wuerfel>
+ <da207bdc-738f-f2b1-7026-e368355936e9@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5BY23zdKCxUnLDz6TT+6ro3qnQPP+bH-uu3KDCzdO50nw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, yzq@rock-chips.com, groeck@chromium.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <da207bdc-738f-f2b1-7026-e368355936e9-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 16. Juni 2016, 16:49:42 schrieb Tomasz Figa:
-> On Thu, Jun 16, 2016 at 9:31 AM, Chris Zhong <zyw@rock-chips.com> wrote:
-> > Hi Heiko
-> > 
-> > On 06/16/2016 06:11 AM, Heiko Stuebner wrote:
-> >> Am Montag, 13. Juni 2016, 17:39:46 schrieb Chris Zhong:
-> >>> This patch adds a binding that describes the Rockchip USB Type-C PHY
-> >>> for rk3399
-> >>> 
-> >>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> >>> 
-> >>> ---
-> >>> 
-> >>> Changes in v2:
-> >>> - add some registers description
-> >>> 
-> >>> Changes in v1:
-> >>> - add extcon node description
-> >>> - move the registers in phy driver
-> >>> - remove the suffix of reset
-> >>> 
-> >>>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 77
-> >>> 
-> >>> ++++++++++++++++++++++ 1 file changed, 77 insertions(+)
-> >>> 
-> >>>   create mode 100644
-> >>> 
-> >>> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>> 
-> >>> diff --git
-> >>> a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
-> >>> mode 100644
-> >>> index 0000000..430920c
-> >>> --- /dev/null
-> >>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> >>> @@ -0,0 +1,77 @@
-> >>> +* ROCKCHIP type-c PHY
-> >>> +---------------------
-> >>> +
-> >>> +Required properties:
-> >>> + - compatible : should be "rockchip,rk3399-typec-phy0" or
-> >>> +                        "rockchip,rk3399-typec-phy1"
-> >>> + - reg: Address and length of the usb phy control register set
-> >>> + - rockchip,grf : phandle to the syscon managing the "general
-> >>> +   register files"
-> >>> + - clocks : phandle + clock specifier for the phy clocks
-> >>> + - clock-names : string, clock name, must be "tcpdcore", "tcpdphy_ref";
-> >>> + - resets : a list of phandle + reset specifier pairs
-> >>> + - reset-names : string reset name, must be:
-> >>> +                "tcphy", "tcphy_pipe", "uphy_tcphy"
-> >>> + - #phy-cells : Must be 0.  See ./phy-bindings.txt for details.
-> >>> + - extcon : extcon specifier for the Power Delivery
-> >>> +
-> >>> +Note, there are 2 type-c phys for RK3399, and they are almost
-> >>> identical,
-> >>> except +these registers(description below), every register node contains
-> >>> 3 sections: +offset, enable bit, write mask bit.
-> >>> + - rockchip,typec_conn_dir : the register of type-c connector
-> >>> direction,
-> >>> +   for type-c phy0, it must be <0xe580 0 16>;
-> >>> +   for type-c phy1, it must be <0xe58c 0 16>;
-> >> 
-> >> I think I said this already, but these register-lists would be much
-> >> happier
-> >> being defined inside the driver - see how Frank managed this on his
-> >> usb2phy
-> >> please.
-> >> 
-> >> Heiko
-> > 
-> > Yes, I move them into driver in v1 patch, but Rob Herring and Guenter
-> > Roeck
-> > recommend to put them back to dts.
-> > These phy0 and phy1 are exactly the same, except these grf registers.
-> 
-> I think having the registers in dts isn't a bad idea. It might be
-> actually even useful to bring up this PHY on new SoCs, if they happen
-> to have the same PHY, just different plumbing.
-> 
-> But I suppose we don't need two separate compatible strings for phy0
-> and phy1 anymore as Rob pointed, just one "rockchip,rk3399-typec-phy".
-
-That is true - so I guess I'm also ok with going that way.
-
-Though with the GRF-based interfaces being as volatile as they are between soc 
-types, I just fear that this might not hold up on future socs.
-For example the usb2phy is used on rk3036, rk3228, rk3366, rk3368, rk3399 and 
-the GRF-side differs a lot - even with some features not even supported.
-
-> After the above is fixed and underscores in property names are
-> replaced with dashes, feel free to add my Reviewed-by.
-
-I guess the clock and reset-names could also use dashes instead of 
-underscores.
+T24gVGh1cnNkYXksIEp1bmUgMTYsIDIwMTYgNDowMToxMiBQTSBDRVNUIFdlbnJ1aSBMaSB3cm90
+ZToKPiDlnKggMjAxNi82LzE2IDE1OjAwLCBBcm5kIEJlcmdtYW5uIOWGmemBkzoKPiA+IE9uIFRo
+dXJzZGF5LCBKdW5lIDE2LCAyMDE2IDk6NTA6MjEgQU0gQ0VTVCBTaGF3biBMaW4gd3JvdGU6Cj4g
+Pgo+ID4+ICsgICAgcmVzZXQtbmFtZXMgPSAiY29yZSIsICJtZ210IiwgIm1nbXQtc3RpY2t5Iiwg
+InBpcGUiOwo+ID4+ICsgICAgcGh5cyA9IDwmcGNpZV9waHk+Owo+ID4+ICsgICAgcGh5LW5hbWVz
+ID0gInBjaWUtcGh5IjsKPiA+PiArICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gPj4g
+KyAgICBwaW5jdHJsLTAgPSA8JnBjaWVfY2xrcmVxPjsKPiA+PiArICAgICNpbnRlcnJ1cHQtY2Vs
+bHMgPSA8MT47Cj4gPj4gKyAgICBpbnRlcnJ1cHQtY29udHJvbGxlcjsKPiA+PiArICAgIGludGVy
+cnVwdC1tYXAtbWFzayA9IDwwIDAgMCA3PjsKPiA+PiArICAgIGludGVycnVwdC1tYXAgPSA8MCAw
+IDAgMSAmcGNpZTAgMT4sCj4gPj4gKyAgICAgICAgICAgICAgICAgICAgPDAgMCAwIDIgJnBjaWUw
+IDI+LAo+ID4+ICsgICAgICAgICAgICAgICAgICAgIDwwIDAgMCAzICZwY2llMCAzPiwKPiA+PiAr
+ICAgICAgICAgICAgICAgICAgICA8MCAwIDAgNCAmcGNpZTAgND47Cj4gPj4gK307Cj4gPj4KPiA+
+Cj4gPiBPbmUgdGhpbmcgdGhhdCBjYW1lIHVwIGluIHRoZSByZXZpZXcgb2YgdGhlIG5ldyBNYXJ2
+ZWxsIFBDSWUgZHJpdmVyIGlzIHRoYXQgaXQncwo+ID4gbW9zdCBsaWtlbHkgaW52YWxpZCBmb3Ig
+YSBkZXZpY2Ugbm9kZSB0byBoYXZlIGJvdGggImludGVycnVwdC1jb250cm9sbGVyIgo+ID4gYW5k
+ICJpbnRlcnJ1cHQtbWFwIiBwcm9wZXJ0aWVzLiBJIG9yaWdpbmFsbHkgdGhvdWdodCB0aGlzIHdh
+cyBhIG5pY2Ugd2F5IHRvCj4gPiBoYW5kbGUgZW1iZWRkZWQgaXJxY2hpcHMgd2l0aGluIHRoZSBQ
+Q0llIGhvc3QsIGJ1dCBpdCBvbmx5IHJlYWxseSB3b3Jrcwo+ID4gYnkgY29pbmNpZGVuY2Ugd2l0
+aCB0aGUgY3VycmVudCBrZXJuZWwsIGFuZCBvbmx5IGFzIGxvbmcgYXMgdGhlIGh3aXJxIG51bWJl
+cgo+ID4gb2YgdGhlIGlycWNoaXAgbWF0Y2hlcyB0aGUgaW50ZWdlciByZXByZXNlbnRhdGlvbiBv
+ZiB0aGUgaXJxIGxpbmUgaW4gdGhlIHJvb3QKPiA+IGJyaWRnZSAod2hpY2ggaXQgZG9lcyBpbiB0
+aGUgZXhhbXBsZSBhYm92ZSkuCj4gPgo+ID4gRm9yIHRoYXQgZHJpdmVyIHdlIGNvbmNsdWRlZCB0
+aGF0IGl0IHdvdWxkIGJlIGxlc3Mgb2YgYSBoYWNrIHRvIGhhdmUgdGhlCj4gPiBpcnFjaGlwIGFz
+IGEgY2hpbGQgbm9kZSBvZiB0aGUgUENJZSBob3N0IGFmdGVyIGFsbCAoanVzdCBub3Qgd2l0aAo+
+ID4gZGV2aWNlX3R5cGU9InBjaSIgb2YgY291cnNlKSwgYW5kIHRoYXQgbWFrZXMgdGhlIHRyYW5z
+bGF0aW9uIHdvcmsgYXMKPiA+IGV4cGVjdGVkLgo+ID4KPiA+ICAgICAgIEFybmQKPiA+Cj4gCj4g
+T3JpZ2luYWwgZHJpdmVyIGhhdmUgYW4gaXJxY2hpcCBhcyBjaGlsZCBub2RlLiBCdXQgTWFyYyBz
+dWdnZXN0ZWQgZG9uJ3QgCj4gbmVlZCBhbiBpbnRlcm1lZGlhdGUgbm9kZSBoZXJlLgo+IE5vdyB0
+aGUgY29uY2x1c2lvbiBpcyB0byByZXRhaW4gdGhlIGNoaWxkIG5vZGU/CgpUaGF0IGlzIGF0IGxl
+YXN0IG15IHZpZXcgb2YgdGhlIHNpdHVhdGlvbiwgc29ycnkgZm9yIHRoZSBtaXhlZCBtZXNzYWdl
+cwp5b3UgaGF2ZSBiZWVuIGdldHRpbmcuIE1hcmMsIFJvYiwgZG8geW91IGFncmVlIHdpdGggbXkg
+ZmluZGluZz8KCklmIHdlIHdhbnQgdG8gYWxsb3cgaGF2aW5nIGJvdGggaW50ZXJydXB0LW1hcCBh
+bmQgaW50ZXJydXB0LWNvbnRyb2xsZXIKaW4gdGhlIHNhbWUgbm9kZSwgd2UgbmVlZCB0byByZXdy
+aXRlIGJvdGggdGhlIGlycSBwYXJzaW5nIGZ1bmN0aW9uIGFuZApoYXZlIGV4dGVuZCB0aGUgRFQg
+YmluZGluZyBmb3IgdGhlIGludGVycnVwdC1tYXAgdG8gZXhwbGFpbiB3aGF0IHdlCmFjdHVhbGx5
+IGV4cGVjdCB0byBoYXBwZW4gaW4gdGhhdCBjYXNlLiBBdCB0aGUgbW9tZW50LCB3ZSB3YWxrIHVw
+IHRoZQp0cmVlIHVudGlsIHdlIGZpbmQgZWl0aGVyIGFuIGludGVycnVwdC1tYXAgb3IgYW4gaW50
+ZXJydXB0LWNvbnRyb2xsZXIKcHJvcGVydHksIGFuZCB1c2UgdGhhdCB0byBtYXAgdGhlIGludGVy
+cnVwdCBudW1iZXIuIElmIHdlIGZpbmQgYW4KaW50ZXJydXB0LWNvbnRyb2xsZXIsIHdlIGlnbm9y
+ZSB0aGUgaW50ZXJydXB0LW1hcC4KCglBcm5kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
