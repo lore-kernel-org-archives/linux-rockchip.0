@@ -1,74 +1,148 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
-Date: Fri, 17 Jun 2016 10:36:59 +0200
-Message-ID: <5763B6AB.3010201@samsung.com>
-References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
- <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+From: William Wu <william.wu@rock-chips.com>
+Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
+Date: Fri, 17 Jun 2016 17:18:59 +0800
+Message-ID: <5763C083.2030304@rock-chips.com>
+References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com> <12544596.GMXFpFZvx9@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-reply-to: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, tglx@linutronix.de
-Cc: linux-kernel@vger.kernel.org, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukjin Kim <kgene@kernel.org>
+Content-Type: text/plain; charset=ISO-8859-1;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <12544596.GMXFpFZvx9@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>
+Cc: gregkh@linuxfoundation.org, balbi@kernel.org, linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/16/2016 11:27 PM, Daniel Lezcano wrote:
-> All the clocksource drivers's init function are now converted to return
-> an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the
-> clksrc-of table.
-> 
-> Let's convert back the names:
->  - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
->  - clksrc-of-ret              => clksrc-of
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  arch/arc/kernel/time.c                    |  6 +++---
->  arch/arm/kernel/smp_twd.c                 |  6 +++---
->  arch/microblaze/kernel/timer.c            |  2 +-
->  arch/mips/ralink/cevt-rt3352.c            |  2 +-
->  arch/nios2/kernel/time.c                  |  2 +-
->  drivers/clocksource/arm_arch_timer.c      |  6 +++---
->  drivers/clocksource/arm_global_timer.c    |  2 +-
->  drivers/clocksource/armv7m_systick.c      |  2 +-
->  drivers/clocksource/asm9260_timer.c       |  2 +-
->  drivers/clocksource/bcm2835_timer.c       |  2 +-
->  drivers/clocksource/bcm_kona_timer.c      |  4 ++--
->  drivers/clocksource/cadence_ttc_timer.c   |  2 +-
->  drivers/clocksource/clksrc-dbx500-prcmu.c |  2 +-
->  drivers/clocksource/clksrc-probe.c        | 14 --------------
->  drivers/clocksource/clksrc_st_lpc.c       |  2 +-
->  drivers/clocksource/clps711x-timer.c      |  2 +-
->  drivers/clocksource/dw_apb_timer_of.c     |  8 ++++----
->  drivers/clocksource/exynos_mct.c          |  4 ++--
->  drivers/clocksource/fsl_ftm_timer.c       |  2 +-
->  drivers/clocksource/h8300_timer16.c       |  2 +-
->  drivers/clocksource/h8300_timer8.c        |  2 +-
->  drivers/clocksource/h8300_tpu.c           |  2 +-
->  drivers/clocksource/meson6_timer.c        |  2 +-
->  drivers/clocksource/mips-gic-timer.c      |  2 +-
->  drivers/clocksource/moxart_timer.c        |  2 +-
->  drivers/clocksource/mps2-timer.c          |  2 +-
->  drivers/clocksource/mtk_timer.c           |  2 +-
->  drivers/clocksource/mxs_timer.c           |  2 +-
->  drivers/clocksource/nomadik-mtu.c         |  2 +-
->  drivers/clocksource/pxa_timer.c           |  2 +-
->  drivers/clocksource/qcom-timer.c          |  4 ++--
->  drivers/clocksource/rockchip_timer.c      |  8 ++++----
->  drivers/clocksource/samsung_pwm_timer.c   |  8 ++++----
+Dear Heiko,
 
-For exynos_mct and samsung_pwm_timer:
-Acked-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+On 06/17/2016 07:15 AM, Heiko St=FCbner wrote:
+> Hi William,
+>
+> Am Donnerstag, 2. Juni 2016, 20:34:56 schrieb William Wu:
+>> This patch adds the devicetree documentation required for Rockchip
+>> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
+>>
+>> It supports DRD mode, and could operate in device mode (SS, HS, FS)
+>> and host mode (SS, HS, FS, LS).
+>>
+>> Signed-off-by: William Wu <william.wu@rock-chips.com>
+> devicetree binding documentation patches should include the devicetre=
+e
+> maintainers (scripts/get_maintainer.pl)
+I'll add devicetree maintainers in next patch v5.
+>
+>> ---
+>> Changes in v4:
+>> - modify commit log, and add phy documentation location (Sergei)
+>>
+>> Changes in v3:
+>> - add dwc3 address (balbi)
+>>
+>> Changes in v2:
+>> - add rockchip,dwc3.txt to Documentation/devicetree/bindings/ (balbi=
+,
+> Brian)
+>>   .../devicetree/bindings/usb/rockchip,dwc3.txt      | 46
+>> ++++++++++++++++++++++ 1 file changed, 46 insertions(+)
+>>   create mode 100644
+> Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+>> diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+>> b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt new file m=
+ode
+>> 100644
+>> index 0000000..0edf013
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+>> @@ -0,0 +1,46 @@
+>> +Rockchip SuperSpeed DWC3 USB SoC controller
+>> +
+>> +Required properties:
+>> +- compatible:	should contain "rockchip,dwc3"
+> are you sure this will work for all future socs in the same way? I gu=
+ess
+> doing this as rockchip,rk3399-dwc3 might make our lifes easier down t=
+he road
+> :-) [both the xilinx and st dwc3 bindings do already that]
+I'm not sure that whether our future socs dwc3 will work well in the=20
+same way.
+So I think "rockchip,rk3399-dwc3" is more appropriate.
+Thanks very much for your suggestion.
+>
+>> +- clocks:		A list of phandle + clock-specifier pairs for the
+>> +				clocks listed in clock-names
+>> +- clock-names:	Should contain the following:
+>> +  "clk_usb3otg0_ref"	Controller reference clk
+>> +  "clk_usb3otg0_suspend"Controller suspend clk, can use 24 MHz or 3=
+2 KHz
+>> +  "aclk_usb3"		Master/Core clock, have to be >=3D 62.5 MHz for SS
+> operation
+>
+> clock names should always be in the scope of the device block (named =
+after
+> what it supplies). And looking at the dwc3-xilinx.txt binding, I'd su=
+ggest
+> getting inspiration from their clock names (bus_clk, ref_clk, suspend=
+_clk or
+> so)
+I'll fix the clock names next patch v5.
+>
+>> +Optional clocks:
+>> +  "aclk_usb3otg0"	Aclk for specific usb controller clock.
+>> +  "aclk_usb3_rksoc_axi_perf"  USB AXI perf clock.  Not present on a=
+ll
+>> platforms.
+> The clock names looks pretty strange. What are they for? Especially a=
+s
+> nothing seems to use them right now.
 
-Best regards,
-Krzysztof
+"aclk_usb3_rksoc_axi_perf", it's the clk for usb3 performance monitor m=
+odule,
+you can refer to the GRF_USB3_PERF_xxx. And we don't use the usb3 perfo=
+rmance
+monitor control registers right now.
+
+>
+>
+>> +  "aclk_usb3_grf"	USB grf clock.  Not present on all platforms.
+> for my own education, which part of the GRF does this clock supply?
+
+"aclk_usb3_grf", it's the clk for USB3 grf, e.g. GRF_USB3OTGX_CONX
+
+>
+>
+>> +
+>> +Required child node:
+>> +A child node must exist to represent the core DWC3 IP block. The na=
+me of
+>> +the node is not important. The content of the node is defined in dw=
+c3.txt.
+>> +
+>> +Phy documentation is provided in the following places:
+>> +Documentation/devicetree/bindings/phy/rockchip,dwc3-usb-phy.txt
+>> +
+>> +Example device nodes:
+>> +
+>> +	usbdrd3_0: usb@fe800000 {
+>> +		compatible =3D "rockchip,dwc3";
+>> +		clocks =3D <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>=
+,
+>> +			 <&cru ACLK_USB3>, <&cru ACLK_USB3OTG0>,
+>> +			 <&cru ACLK_USB3_RKSOC_AXI_PERF>, <&cru ACLK_USB3_GRF>;
+>> +		clock-names =3D "clk_usb3otg0_ref", "clk_usb3otg0_suspend",
+>> +			      "aclk_usb3", "aclk_usb3otg0",
+>> +			      "aclk_usb3_rksoc_axi_perf", "aclk_usb3_grf";
+>> +		#address-cells =3D <2>;
+>> +		#size-cells =3D <2>;
+>> +		ranges;
+>> +		status =3D "disabled";
+>> +		usbdrd_dwc3_0: dwc3@fe800000 {
+>> +			compatible =3D "snps,dwc3";
+>> +			reg =3D <0x0 0xfe800000 0x0 0x100000>;
+>> +			interrupts =3D <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
+>> +			dr_mode =3D "otg";
+>> +			status =3D "disabled";
+>> +		};
+>> +	};
+>
+>
