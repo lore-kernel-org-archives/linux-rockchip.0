@@ -1,84 +1,58 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v2 0/4] clocksource: rockchip/timer: Support rktimer for
- rk3399
-Date: Fri, 17 Jun 2016 09:08:28 +0800
-Message-ID: <57634D8C.1050501@rock-chips.com>
-References: <1465275273-22076-1-git-send-email-wxt@rock-chips.com> <5762B70E.7090909@linaro.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5762B70E.7090909@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 0/2] Add a new Rockchip usb2 phy driver
+Date: Fri, 17 Jun 2016 10:09:11 +0800
+Message-ID: <1466129353-48063-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
+IP block than rk3288 and before, and most of phy-related registers are
+also different from the past, so a new phy driver is required necessarily.
 
-On 2016=E5=B9=B406=E6=9C=8816=E6=97=A5 22:26, Daniel Lezcano wrote:
-> On 06/07/2016 06:54 AM, Caesar Wang wrote:
->> This series patches had been tested on rockchip inside kernel.
->> In order to support the rk3399 SoC timer and turn off interrupts and=
-=20
->> IPIs to
->> save power in idle.
->> Okay, it still works bootup on rk3288/other SoCs, even though many=20
->> socs hasn't used
->> the broadcast timer.
->>
->> History version:
->> v1:
->> https://lkml.org/lkml/2016/5/25/186
->>
->> Easy to test for my borad.
->> localhost / # cat /proc/interrupts
->> CPU0       CPU1       CPU2       CPU3       CPU4       CPU5
->> 1:          0          0          0          0 0          0    =20
->> GICv3  29 Edge      arch_timer
->> ...
->> 5:          0          0          0          0 0          0     GICv=
-3=20
->> 113 Level     rk_timer
->> ..
->>
->> localhost / # cat /proc/timer_list | grep event_handler
->> get "event_handler:  hrtimer_interrupt"
->> event_handler:  tick_handle_oneshot_broadcast
->> event_handler:  hrtimer_interrupt
->>
->> That should work for my board.
->
-> Hi Caesar,
->
-> I applied the patches on my tree. I humbly reworded the changelog, if=
-=20
-> you disagree with the content, let me know.
+These series patches add phy-rockchip-inno-usb2.c and the corresponding
+documentation.
 
-Have a look at your tree.=20
-(https://git.linaro.org/people/daniel.lezcano/linux.git/shortlog/refs/h=
-eads/clockevents/next)
-That's LGTM.
+Changes in v6:
+ - Changed '_' to '-' for otg-id and otg-bvalid property in devicetree bindings.
+ - Fixed the output clock would be disabled more than once while phy-port was going to suspend.
+ - Improved the driver to avoid the currently empty otg-port would cause null-pointer dereferences.
+
+Changes in v5:
+ - Added 'reg' property both in devicetree bindings and driver to match the different phy-blocks.
+
+Changes in v4:
+ - Used 'phy-supply' instead of 'vbus_*-supply'.
+
+Changes in v3:
+ - Supplemented some hardware-description into the devicetree bindings.
+ - Resolved the mapping defect between fixed value in driver and the property
+   in devicetree.
+ - Code cleanup.
+
+Changes in v2:
+ - Specified more hardware-description into the devicetree bindings.
+ - Optimized some process of driver.
+
+Frank Wang (2):
+  Documentation: bindings: add DT documentation for Rockchip USB2PHY
+  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   64 ++
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-inno-usb2.c               |  655 ++++++++++++++++++++
+ 4 files changed, 727 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
+
+-- 
+1.7.9.5
 
 
->
-> Please, in the future, take care of the following:
->
->  - patch prefix is 'clocksource/driver/<driver_name>: [A-Z].*'
->
->  - the change log is important, it deserves some love.
->
-
-Thanks for pointing out, I will keep in mind it.
-
--
-Caesar
-
-> Thanks.
->
->   -- Daniel
->
->
-
---=20
-caesar wang | software engineer | wxt@rock-chip.com
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
