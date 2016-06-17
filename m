@@ -1,101 +1,54 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v6 2/2] phy: rockchip-inno-usb2: add a new driver for
- Rockchip usb2phy
-Date: Fri, 17 Jun 2016 06:20:45 -0700
-Message-ID: <5763F92D.80102@roeck-us.net>
-References: <1466129353-48063-1-git-send-email-frank.wang@rock-chips.com>
- <1466129353-48063-3-git-send-email-frank.wang@rock-chips.com>
- <576383C6.3050005@roeck-us.net>
- <98bc69af-c597-d1ee-e83d-c7b5918e9ef4@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 0/11] Changes to support 150 MHz eMMC on rk3399
+Date: Fri, 17 Jun 2016 08:37:15 -0700
+Message-ID: <CAD=FV=XK=YTyj=yfZ2bXq-W2OeEFi+h3X0SypXmLqVaEmNf5bQ@mail.gmail.com>
+References: <1465859076-4868-1-git-send-email-dianders@chromium.org> <5763EF68.1040307@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <98bc69af-c597-d1ee-e83d-c7b5918e9ef4@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de
-Cc: dianders@chromium.org, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <5763EF68.1040307@ti.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Xing Zheng <zhengxing@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Xu Jianqun <jay.xu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, soren.brinkmann@xilinx.com, linux-kernel@vg
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
+Kishon,
 
-On 06/16/2016 11:43 PM, Frank Wang wrote:
-> Hi Guenter,
+On Fri, Jun 17, 2016 at 5:39 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+> Hi,
 >
-> On 2016/6/17 12:59, Guenter Roeck wrote:
->> On 06/16/2016 07:09 PM, Frank Wang wrote:
->>> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
->>> than rk3288 and before, and most of phy-related registers are also
->>> different from the past, so a new phy driver is required necessarily.
->>>
->>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->>> Suggested-by: Guenter Roeck <linux@roeck-us.net>
->>> Suggested-by: Doug Anderson <dianders@chromium.org>
->>> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->>> Tested-by: Heiko Stuebner <heiko@sntech.de>
->>> ---
+> On Tuesday 14 June 2016 04:34 AM, Douglas Anderson wrote:
+>> The theme of this series of patches is to try to allow running the eMMC
+>> at 150 MHz on the rk3399 SoC, though the changes should still be correct
+>> and have merit on their own.  The motivation for running at 150 MHz is
+>> that doing so improves signal integrity and (with some eMMC devices)
+>> doesn't affect throughput.
 >>
->> [ ... ]
+>> These patches have been structured to keep things as separate as
+>> possible, but nevertheless there are still some dependencies between
+>> patches.  It probably makes the most sense for all of the non-device
+>> tree patches to go through a single tree.  If others agree, perhaps the
+>> most sane would be to get Acks from PHY maintainers and then to land the
+>> patches in the MMC tree.  Device tree patches should be able to be
+>> landed separately and the worst what would happen is a warning in the
+>> kernel log if you have the code without the device tree.
 >>
->>> +
->>> +static int rockchip_usb2phy_resume(struct phy *phy)
->>> +{
->>> +    struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
->>> +    struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
->>> +    int ret;
->>> +
->>> +    dev_dbg(&rport->phy->dev, "port resume\n");
->>> +
->>> +    ret = clk_prepare_enable(rphy->clk480m);
->>> +    if (ret)
->>> +        return ret;
->>> +
->> If suspend can be called multiple times, resume can be called
->> multiple times as well. Doesn't this cause a clock imbalance
->> if you call clk_prepare_enable() multiple times on resume,
->> but clk_disable_unprepare() only once on suspend ?
->>
+>> The code patches are based on Ulf's mmc-next, then 4 patches that are
+>> outstanding / ready to land.  Specifically:
+>> - https://patchwork.kernel.org/patch/9086501/
+>>   phy: rockchip-emmc: give DLL some extra time to be ready
+>> - https://patchwork.kernel.org/patch/9093681/
+>>   phy: rockchip-emmc: configure frequency range and drive impedance
+>> - https://patchwork.kernel.org/patch/9086511/
+>>   phy: rockchip-emmc: configure default output tap delay
+>> - https://patchwork.kernel.org/patch/9086531/
+>>   phy: rockchip-emmc: reindent the register definitions
 >
-> Well, what you said is reasonable, How does something like below?
->
-> @@ -307,6 +307,9 @@ static int rockchip_usb2phy_resume(struct phy *phy)
->
->          dev_dbg(&rport->phy->dev, "port resume\n");
->
-> +       if (!rport->suspended)
-> +               return 0;
-> +
->          ret = clk_prepare_enable(rphy->clk480m);
->          if (ret)
->                  return ret;
-> @@ -327,12 +330,16 @@ static int rockchip_usb2phy_suspend(struct phy *phy)
->
->          dev_dbg(&rport->phy->dev, "port suspend\n");
->
-> +       if (rport->suspended)
-> +               return 0;
-> +
->          ret = property_enable(rphy, &rport->port_cfg->phy_sus, true);
->          if (ret)
->                  return ret;
->
->          rport->suspended = true;
->          clk_disable_unprepare(rphy->clk480m);
-> +
->          return 0;
->   }
->
-> @@ -485,6 +492,7 @@ static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
->
->          rport->port_id = USB2PHY_PORT_HOST;
->          rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_HOST];
-> +       rport->suspended = true;
->
+> Do you want all these "phy: rockchip-emmc:" along with the patch in this series
+> to go in MMC tree? Or I can take all the phy part in my linux-phy -next branch?
 
-Why does it start in suspended mode ? That seems odd.
+If Ulf is amenable, I was hoping that these could all go through the
+MMC tree with your blessing.  ...then "dts" patches would go through
+Heiko's tree.
 
-Guenter
-
->          mutex_init(&rport->mutex);
->          INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
->
+-Doug
