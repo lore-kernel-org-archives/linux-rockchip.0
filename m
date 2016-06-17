@@ -1,141 +1,74 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH v6 2/2] phy: rockchip-inno-usb2: add a new driver for
- Rockchip usb2phy
-Date: Fri, 17 Jun 2016 14:43:55 +0800
-Message-ID: <98bc69af-c597-d1ee-e83d-c7b5918e9ef4@rock-chips.com>
-References: <1466129353-48063-1-git-send-email-frank.wang@rock-chips.com>
- <1466129353-48063-3-git-send-email-frank.wang@rock-chips.com>
- <576383C6.3050005@roeck-us.net>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: Re: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
+Date: Fri, 17 Jun 2016 10:36:59 +0200
+Message-ID: <5763B6AB.3010201@samsung.com>
+References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
+ <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <576383C6.3050005@roeck-us.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guenter Roeck <linux@roeck-us.net>, heiko@sntech.de
-Cc: dianders@chromium.org, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
+Return-path: <linux-mips-bounce@linux-mips.org>
+In-reply-to: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+Sender: linux-mips-bounce@linux-mips.org
+Errors-to: linux-mips-bounce@linux-mips.org
+List-help: <mailto:ecartis@linux-mips.org?Subject=help>
+List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
+List-software: Ecartis version 1.0.0
+List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
+List-owner: <mailto:ralf@linux-mips.org>
+List-post: <mailto:linux-mips@linux-mips.org>
+List-archive: <http://www.linux-mips.org/archives/linux-mips/>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, tglx@linutronix.de
+Cc: linux-kernel@vger.kernel.org, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukjin Kim <kgene@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Guenter,
+On 06/16/2016 11:27 PM, Daniel Lezcano wrote:
+> All the clocksource drivers's init function are now converted to return
+> an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the
+> clksrc-of table.
+> 
+> Let's convert back the names:
+>  - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
+>  - clksrc-of-ret              => clksrc-of
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  arch/arc/kernel/time.c                    |  6 +++---
+>  arch/arm/kernel/smp_twd.c                 |  6 +++---
+>  arch/microblaze/kernel/timer.c            |  2 +-
+>  arch/mips/ralink/cevt-rt3352.c            |  2 +-
+>  arch/nios2/kernel/time.c                  |  2 +-
+>  drivers/clocksource/arm_arch_timer.c      |  6 +++---
+>  drivers/clocksource/arm_global_timer.c    |  2 +-
+>  drivers/clocksource/armv7m_systick.c      |  2 +-
+>  drivers/clocksource/asm9260_timer.c       |  2 +-
+>  drivers/clocksource/bcm2835_timer.c       |  2 +-
+>  drivers/clocksource/bcm_kona_timer.c      |  4 ++--
+>  drivers/clocksource/cadence_ttc_timer.c   |  2 +-
+>  drivers/clocksource/clksrc-dbx500-prcmu.c |  2 +-
+>  drivers/clocksource/clksrc-probe.c        | 14 --------------
+>  drivers/clocksource/clksrc_st_lpc.c       |  2 +-
+>  drivers/clocksource/clps711x-timer.c      |  2 +-
+>  drivers/clocksource/dw_apb_timer_of.c     |  8 ++++----
+>  drivers/clocksource/exynos_mct.c          |  4 ++--
+>  drivers/clocksource/fsl_ftm_timer.c       |  2 +-
+>  drivers/clocksource/h8300_timer16.c       |  2 +-
+>  drivers/clocksource/h8300_timer8.c        |  2 +-
+>  drivers/clocksource/h8300_tpu.c           |  2 +-
+>  drivers/clocksource/meson6_timer.c        |  2 +-
+>  drivers/clocksource/mips-gic-timer.c      |  2 +-
+>  drivers/clocksource/moxart_timer.c        |  2 +-
+>  drivers/clocksource/mps2-timer.c          |  2 +-
+>  drivers/clocksource/mtk_timer.c           |  2 +-
+>  drivers/clocksource/mxs_timer.c           |  2 +-
+>  drivers/clocksource/nomadik-mtu.c         |  2 +-
+>  drivers/clocksource/pxa_timer.c           |  2 +-
+>  drivers/clocksource/qcom-timer.c          |  4 ++--
+>  drivers/clocksource/rockchip_timer.c      |  8 ++++----
+>  drivers/clocksource/samsung_pwm_timer.c   |  8 ++++----
 
-On 2016/6/17 12:59, Guenter Roeck wrote:
-> On 06/16/2016 07:09 PM, Frank Wang wrote:
->> The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
->> than rk3288 and before, and most of phy-related registers are also
->> different from the past, so a new phy driver is required necessarily.
->>
->> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->> Suggested-by: Guenter Roeck <linux@roeck-us.net>
->> Suggested-by: Doug Anderson <dianders@chromium.org>
->> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->> Tested-by: Heiko Stuebner <heiko@sntech.de>
->> ---
->
-> [ ... ]
->
->> +
->> +static int rockchip_usb2phy_resume(struct phy *phy)
->> +{
->> +    struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
->> +    struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
->> +    int ret;
->> +
->> +    dev_dbg(&rport->phy->dev, "port resume\n");
->> +
->> +    ret = clk_prepare_enable(rphy->clk480m);
->> +    if (ret)
->> +        return ret;
->> +
-> If suspend can be called multiple times, resume can be called
-> multiple times as well. Doesn't this cause a clock imbalance
-> if you call clk_prepare_enable() multiple times on resume,
-> but clk_disable_unprepare() only once on suspend ?
->
+For exynos_mct and samsung_pwm_timer:
+Acked-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
 
-Well, what you said is reasonable, How does something like below?
-
-@@ -307,6 +307,9 @@ static int rockchip_usb2phy_resume(struct phy *phy)
-
-         dev_dbg(&rport->phy->dev, "port resume\n");
-
-+       if (!rport->suspended)
-+               return 0;
-+
-         ret = clk_prepare_enable(rphy->clk480m);
-         if (ret)
-                 return ret;
-@@ -327,12 +330,16 @@ static int rockchip_usb2phy_suspend(struct phy *phy)
-
-         dev_dbg(&rport->phy->dev, "port suspend\n");
-
-+       if (rport->suspended)
-+               return 0;
-+
-         ret = property_enable(rphy, &rport->port_cfg->phy_sus, true);
-         if (ret)
-                 return ret;
-
-         rport->suspended = true;
-         clk_disable_unprepare(rphy->clk480m);
-+
-         return 0;
-  }
-
-@@ -485,6 +492,7 @@ static int rockchip_usb2phy_host_port_init(struct 
-rockchip_usb2phy *rphy,
-
-         rport->port_id = USB2PHY_PORT_HOST;
-         rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_HOST];
-+       rport->suspended = true;
-
-         mutex_init(&rport->mutex);
-         INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
-
-
->> +    ret = property_enable(rphy, &rport->port_cfg->phy_sus, false);
->> +    if (ret)
->> +        return ret;
->> +
->> +    rport->suspended = false;
->> +    return 0;
->> +}
->> +
->> +static int rockchip_usb2phy_suspend(struct phy *phy)
->> +{
->> +    struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
->> +    struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
->> +    int ret;
->> +
->> +    dev_dbg(&rport->phy->dev, "port suspend\n");
->> +
->> +    if (rport->suspended)
->> +        goto exit;
->> +
->
-> I know I am nitpicking, but
->         return 0;
-> would be fine here, be more consistent with the rest of the code,
->
-
-Yeah, please see above changes.
-
-BR.
-Frank
-
->> +    ret = property_enable(rphy, &rport->port_cfg->phy_sus, true);
->> +    if (ret)
->> +        return ret;
->> +
->> +    rport->suspended = true;
->> +    clk_disable_unprepare(rphy->clk480m);
->> +
->> +exit:
->> +    return 0;
->
-> and this label is really unnecessary.
->
->> +}
->> +
->
-> [ ... ]
->
+Best regards,
+Krzysztof
