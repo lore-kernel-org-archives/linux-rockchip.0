@@ -1,109 +1,68 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v5 2/2] phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
-Date: Fri, 17 Jun 2016 18:46:25 +0200
-Message-ID: <1653733.7f4MgdqfFf@diego>
-References: <1465783810-18756-1-git-send-email-frank.wang@rock-chips.com> <1465783810-18756-3-git-send-email-frank.wang@rock-chips.com> <5763E506.1060500@ti.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH V2 03/63] clocksource/drivers/rockchip_timer: Convert init function to return error
+Date: Sat, 18 Jun 2016 12:38:38 +0200
+Message-ID: <2572341.0UcvQ6PvRt@diego>
+References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org> <1466112442-31105-4-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5763E506.1060500-l0cyMroinI0@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1466112442-31105-4-git-send-email-daniel.lezcano@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: tglx@linutronix.de, linux-kernel@vger.kernel.org, "moderated list:ARM/Rockchip SoC..." <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
-
-Am Freitag, 17. Juni 2016, 17:24:46 schrieb Kishon Vijay Abraham I:
-
-> > +	ret = of_clk_add_provider(node, of_clk_src_simple_get, rphy->clk480m);
-> > +	if (ret < 0)
-> > +		goto err_clk_provider;
-> > +
-> > +	ret = devm_add_action(rphy->dev, rockchip_usb2phy_clk480m_unregister,
-> > +			      rphy);
-> > +	if (ret < 0)
-> > +		goto err_unreg_action;
-> > +
-> > +	return 0;
-> > +
-> > +err_unreg_action:
-> > +	of_clk_del_provider(node);
-> > +err_clk_provider:
-> > +	clk_unregister(rphy->clk480m);
-> > +err_register:
-> > +	if (rphy->clk)
-> > +		clk_put(rphy->clk);
-> > +	return ret;
-> > +}
+Am Donnerstag, 16. Juni 2016, 23:26:22 schrieb Daniel Lezcano:
+> The init functions do not return any error. They behave as the following:
 > 
-> I'm seeing lot of similarities specifically w.r.t to clock handling part in
-> drivers/phy/phy-rockchip-usb.c. Why not just re-use that driver?
-
-It's a completely different phy block (Designware vs. Innosilicon) and a lot 
-of stuff also is handled differently.
-
-For one on the old block, each phy was somewhat independent and had for examle 
-its own clock-supply, while on this one there is only one for both ports of 
-the phy. Similarly with the clock getting fed back to the clock-controller 
-(one clock per port on the old block, now one clock for the whole phy).
-
-Then as you can see, the handling for power-up and down is a bit different and 
-I guess one big block might be the still missing special otg handling, Frank 
-wrote about.
-
-
-[...]
-
-> > +		/*
-> > +		 * we don't need to rearm the delayed work when the phy port
-> > +		 * is suspended.
-> > +		 */
-> > +		mutex_unlock(&rport->mutex);
-> > +		return;
-> > +	default:
-> > +		dev_dbg(&rport->phy->dev, "unknown phy state\n");
-> > +		break;
-> > +	}
-> > +
-> > +next_schedule:
-> > +	mutex_unlock(&rport->mutex);
-> > +	schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
+>  - panic, thus leading to a kernel crash while another timer may work and
+>    make the system boot up correctly
 > 
-> Why are you scheduling the work again? Interrupt handlers can invoke this
-> right?
-
-Frank said, that the phy is only able to detect the plug-in event via 
-interrupts, not the removal, so once a plugged device is detected, this gets 
-rescheduled until the device gets removed.
-
-[...]
-
-> > +	/* find out a proper config which can be matched with dt. */
-> > +	index = 0;
-> > +	while (phy_cfgs[index].reg) {
-> > +		if (phy_cfgs[index].reg == reg) {
+>  or
 > 
-> Why not pass these config values from dt? Moreover finding the config using
-> register offset is bound to break.
+>  - print an error and let the caller unaware if the state of the system
+> 
+> Change that by converting the init functions to return an error conforming
+> to the CLOCKSOURCE_OF_RET prototype.
+> 
+> Proper error handling (rollback, errno value) will be changed later case
+> by case, thus this change just return back an error or success in the init
+> function.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  drivers/clocksource/rockchip_timer.c | 26 ++++++++++++++------------
+>  1 file changed, 14 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/clocksource/rockchip_timer.c
+> b/drivers/clocksource/rockchip_timer.c index a3f22b0..d10bdee 100644
+> --- a/drivers/clocksource/rockchip_timer.c
+> +++ b/drivers/clocksource/rockchip_timer.c
+> @@ -113,17 +113,17 @@ static irqreturn_t rk_timer_interrupt(int irq, void
+> *dev_id) return IRQ_HANDLED;
+>  }
+> 
+> -static void __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+> +static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+>  {
+>  	struct clock_event_device *ce = &bc_timer.ce;
+>  	struct clk *timer_clk;
+>  	struct clk *pclk;
+> -	int ret, irq;
+> +	int ret = -EINVAL, irq;
+> 
+>  	bc_timer.base = of_iomap(np, 0);
+>  	if (!bc_timer.base) {
+>  		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
+> -		return;
+> +		return -ENXIO;
+>  	}
+>  	bc_timer.ctrl = bc_timer.base + ctrl_reg;
 
-As you have probably seen, this phy block is no stand-alone (mmio-)device, but 
-gets controlled through special register/bits in the so called "General 
-Register Files" syscon.
+wouldn't it be nicer to also save the error values from all the intermediate
+clock calls (ret = PTR_ERR(pclk) and so on).
+Right now it will be always -EINVAL for all those clk calls and also
+the irq_of_parse_and_map.
 
-The values stored and accessed here, are the location and layout of those 
-control registers. Bits in those phy control registers at times move between 
-phy-versions in different socs (rk3036, rk3228, rk3366, rk3368, rk3399) and 
-some are even missing. So I don't really see a nice way to describe that in dt 
-without describing the register and offset of each of those 22 used bits 
-individually.
-
-
-I'm also not sure where you expect it to break? The reg-offset is the offset 
-of the phy inside the GRF and the Designware-phy also already does something 
-similar to select some appropriate values.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Heiko
