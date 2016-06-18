@@ -1,79 +1,46 @@
-From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [v2 PATCH 2/4] phy: Add USB Type-C PHY driver for rk3399
-Date: Sat, 18 Jun 2016 08:45:48 -0700
-Message-ID: <CABXOdTd+U51KY7P-Gj6TySxoAZpJY=zcXs_4_9MVD1gnmnFH0w@mail.gmail.com>
-References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com>
- <1465810789-22303-3-git-send-email-zyw@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/11] mmc: sdhci-of-arasan: Properly set corecfg_baseclkfreq on rk3399
+Date: Sat, 18 Jun 2016 19:59:47 +0200
+Message-ID: <2413456.oe4vm1F1Mq@phil>
+References: <1465859076-4868-1-git-send-email-dianders@chromium.org> <1465859076-4868-5-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465810789-22303-3-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1465859076-4868-5-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: ulf.hansson@linaro.org, kishon@ti.com, robh+dt@kernel.org, shawn.lin@rock-chips.com, xzy.xu@rock-chips.com, briannorris@chromium.org, adrian.hunter@intel.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, michal.simek@xilinx.com, soren.brinkmann@xilinx.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+Am Montag, 13. Juni 2016, 16:04:28 schrieb Douglas Anderson:
+> In the the earlier change in this series ("Documentation: mmc:
+> sdhci-of-arasan: Add soc-ctl-syscon for corecfg regs") we can see the
+> mechansim for specifying a syscon to properly set corecfg registers in
+> sdhci-of-arasan.  Now let's use this mechanism to properly set
+> corecfg_baseclkfreq on rk3399.
+> 
+> From [1] the corecfg_baseclkfreq is supposed to be set to:
+>   Base Clock Frequency for SD Clock.
+>   This is the frequency of the xin_clk.
+> 
+> This is a relatively easy thing to do.  Note that we assume that xin_clk
+> is not dynamic and we can check the clock at probe time.  If any real
+> devices have a dynamic xin_clk future patches could register for
+> notifiers for the clock.
+> 
+> At the moment, setting corecfg_baseclkfreq is only supported for rk3399
+> since we need a specific map for each implementation.  The code is
+> written in a generic way that should make this easy to extend to other
+> SoCs.  Note that a specific compatible string for rk3399 is already in
+> use and so we add that to the table to match rk3399.
+> 
+> [1]:
+> https://arasan.com/wp-content/media/eMMC-5-1-Total-Solution_Rev-1-3.pdf
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-On Mon, Jun 13, 2016 at 2:39 AM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
-> Type-C PHY is designed to support the USB3 and DP applications. The
-> PHY basically has two main components: USB3 and DisplyPort. USB3
-> operates in SuperSpeed mode and the DP can operate at RBR, HBR and
-> HBR2 data rates.
->
+this looks nice and versatile for other socs hopefully using that in the 
+future.
 
-I started integrating the driver with our code.
-Doing so, I realized a problem in the way you are using extcon.
-
-[ ... ]
-
-> +
-> +static int tcphy_pd_event(struct notifier_block *nb,
-> +                         unsigned long event, void *priv)
-> +{
-> +       struct rockchip_typec_phy *tcphy;
-> +       struct extcon_dev *edev = priv;
-> +       int value = edev->state;
-> +       int mode;
-> +       u8 is_plugged, dfp;
-> +
-> +       tcphy = container_of(nb, struct rockchip_typec_phy, event_nb);
-> +
-> +       is_plugged = GET_PLUGGED(value);
-> +       tcphy->flip = GET_FLIP(value);
-> +       dfp = GET_DFP(value);
-> +       tcphy->map = GET_PIN_MAP(value);
-> +
-
-I don't think it is a good idea to use the extcon 'state' field like
-this. I don't even think it is possible.
-
-The state is supposed to be a bit mask, each bit indicating if a
-specific connector (or functionality) on the cable is attached. The
-extcon notifier code walks through this bit mask and determines based
-on changed bits if the notifier should be called. So the notifier in
-this case would only be called if bit 1 (EXTCON_USB) of 'state' has
-changed, but not if one of the other bits has changed. One would have
-to define 32 "virtual" cables, one for each bit, for this to work, and
-then you would have to register a notifier for each of the bits. That
-would not really make sense.
-
-Of course, that makes using the extcon notifier quite useless for our
-purpose, since we need the callback not only if a cable has been
-attached or deattached, but also if some secondary state changes. I
-don't really know myself how to solve the problem; I'll need to think
-about it some more. Maybe we can add a callback into the type-c
-infrastructure code and somehow tie into that code, but I don't know
-yet if that is feasible either.
-
-Guenter
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
