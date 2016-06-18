@@ -1,56 +1,56 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
-Date: Sat, 18 Jun 2016 15:48:49 +0200
-Message-ID: <4420923.qQJUdaA1rI@diego>
-References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org> <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 03/11] Documentation: mmc: sdhci-of-arasan: Add soc-ctl-syscon for corecfg regs
+Date: Sat, 18 Jun 2016 16:15:01 +0200
+Message-ID: <1933773.0TPXapTvBs@diego>
+References: <1465859076-4868-1-git-send-email-dianders@chromium.org> <1465859076-4868-4-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: tglx@linutronix.de, linux-kernel@vger.kernel.org, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, =?ISO-8859-1?Q?S=F6ren?= Brinkmann <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukj
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465859076-4868-4-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: ulf.hansson@linaro.org, kishon@ti.com, robh+dt@kernel.org, shawn.lin@rock-chips.com, xzy.xu@rock-chips.com, briannorris@chromium.org, adrian.hunter@intel.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 16. Juni 2016, 23:27:22 schrieb Daniel Lezcano:
-> All the clocksource drivers's init function are now converted to return
-> an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the
-> clksrc-of table.
+Am Montag, 13. Juni 2016, 16:04:27 schrieb Douglas Anderson:
+> As can be seen in Arasan's datasheet [1] there are several "corecfg"
+> settings in their SDHCI IP Block that are supposed to be controlled by
+> software.  Although the datasheet referenced is a bit vague about how to
+> access corecfg, in Figure 5 you can see that for Arasan's PHY (a
+> separate component than their SDHCI component) they describe the
+> "phyctrl" registers as being "FROM SOC CTL REG", implying that it's up
+> to the licensee of the Arasan IP block to implement these registers.  It
+> seems sane to assume that the "corecfg" registers in their SDHCI IP
+> block works in a similar way for all licensees of the IP Block.
 > 
-> Let's convert back the names:
->  - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
->  - clksrc-of-ret              => clksrc-of
+> Device tree has a model that allows a device to get a reference to
+> random registers located elsewhere in the SoC: sysctl.  Let's leverage
+> this model and allow adding a sysctl reference to access the control
+> registers for the Arasan SDHCI PHYs.
 > 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  drivers/clocksource/rockchip_timer.c      |  8 ++++----
+> Having a reference to the control registers doesn't do much for us on
+> its own since the Arasan spec doesn't specify how these corecfg values
+> are laid out in memory.  In the SDHCI driver we'll need a map detailing
+> where each corecfg can be found in each implementation.  This map can be
+> found using the primary compatible string of the SDHCI device.  In that
+> spirit, document that existing rk3399 device trees already have a
+> specific compatible string, though up to now they've always been relying
+> on the driver supporting the generic.
+> 
+> Note that since existing devices seem to work fairly well as-is, we'll
+> list the syscon reference as "optional", but it's likely that we'll run
+> into much fewer problems if we can actually set the proper values in the
+> syscon, so it is strongly suggested that any SoCs where we have a map to
+> set the corecfg also include a reference to the syscon.
+> 
+> [1]: https://arasan.com/wp-content/media/eMMC-5-1-Total-Solution_Rev-1-3.pdf
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-> diff --git
-> a/drivers/clocksource/rockchip_timer.c
-> b/drivers/clocksource/rockchip_timer.c index d10bdee..d10e7a5 100644
-> --- a/drivers/clocksource/rockchip_timer.c
-> +++ b/drivers/clocksource/rockchip_timer.c
-> @@ -200,7 +200,7 @@ static int __init rk3399_timer_init(struct device_node
-> *np) return rk_timer_init(np, TIMER_CONTROL_REG3399);
->  }
-> 
-> -CLOCKSOURCE_OF_DECLARE_RET(rk3288_timer, "rockchip,rk3288-timer",
-> -			   rk3288_timer_init);
-> -CLOCKSOURCE_OF_DECLARE_RET(rk3399_timer, "rockchip,rk3399-timer",
-> -			   rk3399_timer_init);
-> +CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
-> +		       rk3288_timer_init);
-> +CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
-> +		       rk3399_timer_init);
+I was trying to find public datasheets of other arasan-5.1 users, but wasn't 
+sucessful. But I guess this solution should be versatile enough to support the 
+implementation on other socs anyway, so
 
-for the Rockchip-part
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
