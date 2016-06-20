@@ -1,90 +1,68 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 08/11] Documentation: phy: Let the rockchip eMMC PHY
- get an exported card clock
-Date: Mon, 20 Jun 2016 18:34:03 +0530
-Message-ID: <5767E9C3.40009@ti.com>
-References: <1465859076-4868-1-git-send-email-dianders@chromium.org>
- <1465859076-4868-9-git-send-email-dianders@chromium.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6] ASoC: rockchip: Add machine driver for
+ RK3399 GRU Boards
+Date: Mon, 20 Jun 2016 08:08:12 -0500
+Message-ID: <20160620130812.GA24614@rob-hp-laptop>
+References: <1466080858-29565-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465859076-4868-9-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <1466080858-29565-1-git-send-email-zhengxing@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, smbarber@google.com, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Tuesday 14 June 2016 04:34 AM, Douglas Anderson wrote:
-> As of an earlier change in this series ("Documentation: mmc:
-> sdhci-of-arasan: Add ability to export card clock") the SDHCI driver
-> used on Rockchip SoCs can now expose its clock.  Let's now specify that
-> the PHY can use it.
+On Thu, Jun 16, 2016 at 08:40:58PM +0800, Xing Zheng wrote:
+> Because we need to support the multiple codecs (MAX98357A/RT5514/DA7219)
+> on the RK3399 GRU boards, this patch can help us to support these codecs.
 > 
-> Letting the PHY get access to this clock means it can adjust
-> phyctrl_frqsel field appropriately.  Although the Rockchip PHY appears
-> slightly different than the reference Arasan one, you can see that the
-> Arasan datasheet [1] had it defined as:
->   Select the frequency range of DLL operation:
->   3b'000 => 200MHz to 170 MHz
->   3b'001 => 170MHz to 140 MHz
->   3b'010 => 140MHz to 110 MHz
->   3b'011 => 110MHz to 80MHz
->   3b'100 => 80MHz to 50 MHz
->   3b'101 => 275Mhz to 250MHz
->   3b'110 => 250MHz to 225MHz
->   3b'111 => 225MHz to 200MHz
-> 
-> On the Rockchip version of the PHY we have less granularity but the idea
-> is the same.
-> 
-> [1]: https://arasan.com/wp-content/media/eMMC-5-1-Total-Solution_Rev-1-3.pdf
-> 
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
-Acked-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 > ---
+> 
+> Changes in v6:
+> - remove enable/disable dapm pins, and to switch codecs via user space
+> - fix "Speaker" dapm route for max98357a
+> - add SND_JACK_LINEOUT flag for da7219 jack detection
+> 
+> Changes in v5:
+> - fix the build warning for missing I2C/CLKDEV_LOOKUP dependency
+> 
+> Changes in v4:
+> - the compatible name needs to be based on a single reference design,
+>   and the name of the board is called "GRU"
+> - use one i2sX card "rockchip,cpu = <&i2s0>" instead of array that is
+>   based on GRU
+> - rename DOC to rockchip,rk3399-gru-sound.txt
+> - rename compatible to rockchip,rk3399-gru-sound
+> - rename source code to rk3399_gru_sound.c
+> 
+> Changes in v3:
+> - rename DOC to rockchip,rk3399-max98357a-rt5514-da7219.txt
+> - rename compatible to rockchip,rk3399-max98357a-rt5514-da7219
+> - rename source code to rk3399_max98357a_rt5514_da7219.c
+> 
 > Changes in v2:
-> - List out clocks and clock names (Rob)
+> - use the FS 256 to set mclks of the max98357a and rt5514 danamically
+> - add more sample rate for da7219
 > 
->  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> index 555cb0f40690..e3ea55763b0a 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> @@ -7,6 +7,13 @@ Required properties:
->   - reg: PHY register address offset and length in "general
->     register files"
->  
-> +Optional clocks using the clock bindings (see ../clock/clock-bindings.txt),
-> +specified by name:
-> + - clock-names: Should contain "emmcclk".  Although this is listed as optional
-> +		(because most boards can get basic functionality without having
-> +		access to it), it is strongly suggested.
-> + - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
-> +
->  Example:
->  
->  
-> @@ -20,6 +27,8 @@ grf: syscon@ff770000 {
->  	emmcphy: phy@f780 {
->  		compatible = "rockchip,rk3399-emmc-phy";
->  		reg = <0xf780 0x20>;
-> +		clocks = <&sdhci>;
-> +		clock-names = "emmcclk";
->  		#phy-cells = <0>;
->  	};
->  };
-> 
+>  .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   15 +
+
+Acked-by: Rob Herring <robh@kernel.org>
+
+>  sound/soc/rockchip/Kconfig                         |   11 +
+>  sound/soc/rockchip/Makefile                        |    2 +
+>  sound/soc/rockchip/rk3399_gru_sound.c              |  322 ++++++++++++++++++++
+>  4 files changed, 350 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+>  create mode 100644 sound/soc/rockchip/rk3399_gru_sound.c
