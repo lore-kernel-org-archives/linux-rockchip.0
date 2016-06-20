@@ -1,97 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings
- documentation
-Date: Mon, 20 Jun 2016 16:44:20 +0200
-Message-ID: <4674233.DVms812T4a@diego>
-References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
- <12544596.GMXFpFZvx9@phil> <5763C083.2030304@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/4] phy: rockchip-emmc: give DLL some extra time to be
+ ready
+Date: Mon, 20 Jun 2016 09:19:09 -0700
+Message-ID: <20160620161908.GA30459@google.com>
+References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
+ <5767EB7E.3040606@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5763C083.2030304-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5767EB7E.3040606@ti.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi William,
++ linux-mmc, Ulf
 
-Am Freitag, 17. Juni 2016, 17:18:59 schrieb William Wu:
-> On 06/17/2016 07:15 AM, Heiko St=FCbner wrote:
-> > Am Donnerstag, 2. Juni 2016, 20:34:56 schrieb William Wu:
-> >> This patch adds the devicetree documentation required for Rockchip
-> >> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
-> >> =
+On Mon, Jun 20, 2016 at 06:41:26PM +0530, Kishon Vijay Abraham I wrote:
+> On Friday 13 May 2016 04:13 AM, Brian Norris wrote:
+> > From: Shawn Lin <shawn.lin@rock-chips.com>
+> > 
+> > According to the databook, 10.2us is the max time for dll to be ready to
+> > work. However in testing, some chips need 20us for dll to be ready. This
+> > patch adds some extra margin for dllrdy to be ready, fixing our
+> > -ETIMEDOUT issues.
+> > 
+> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> 
+> Acked-by: Kishon Vijay Abraham I <kishon@ti.com>
 
-> >> It supports DRD mode, and could operate in device mode (SS, HS, FS)
-> >> and host mode (SS, HS, FS, LS).
-> >> =
+Thanks! I take it that to mean you're agreeing with Doug's suggestion
+here:
 
-> >> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+https://lkml.org/lkml/2016/6/13/1067
 
-[...]
+"Since [the $subject series patches] aren't in 4.7-rc1 presumably they
+would also make sense to take through the MMC tree if others agree."
 
-> >> +Optional clocks:
-> >> +  "aclk_usb3otg0"	Aclk for specific usb controller clock.
+Ulf,
 
-what does this clock do? Also most likely same argument as below.
+I see I didn't CC you or linux-mmc on this patch series. Please let me
+know if I should resend, or if you can pick these up off of LKML -- Doug
+gave nice patchwork links in his linked series. NB: patch 2 has a
+version 2, while the others were left unmodified.
 
-
-> >> +  "aclk_usb3_rksoc_axi_perf"  USB AXI perf clock.  Not present on all
-> >> platforms.
-> > =
-
-> > The clock names looks pretty strange. What are they for? Especially as
-> > nothing seems to use them right now.
-> =
-
-> "aclk_usb3_rksoc_axi_perf", it's the clk for usb3 performance monitor
-> module, you can refer to the GRF_USB3_PERF_xxx. And we don't use the usb3
-> performance monitor control registers right now.
-
-ok, then I'd suggest not defining the clock for now.
-
-For one, there are more perf blocks in the GRF (usb3, pcie, hdcp22, gmac, g=
-pu, =
-
-etc) which all seem to share a somewhat similar design, so they will maybe =
-
-result in a separate driver of some form for the performance monitors.
-
-And secondly, it is somewhat easy to add new optional properties, but you =
-
-cannot remove anything defined previously. So if we later decide to handle =
-all =
-
-the performance monitors differently, you can't remove that clock from the =
-
-binding again. (or at least only with quite a bit of hassle).
-
-So as this clock isn't used at all yet, I guess it should not get included =
-
-now.
-
-
-> >> +  "aclk_usb3_grf"	USB grf clock.  Not present on all platforms.
-> > =
-
-> > for my own education, which part of the GRF does this clock supply?
-> =
-
-> "aclk_usb3_grf", it's the clk for USB3 grf, e.g. GRF_USB3OTGX_CONX
-
-Hmm, this looks more like it belongs to the otg phy? =
-
-Anyway, also seems unused right now, so same argument as above applies here.
-
-
-Heiko
+Regards,
+Brian
