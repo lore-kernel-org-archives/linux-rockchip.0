@@ -1,308 +1,241 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [v2 PATCH 2/4] phy: Add USB Type-C PHY driver for rk3399
-Date: Mon, 20 Jun 2016 08:32:57 +0800
-Message-ID: <576739B9.4070202@rock-chips.com>
-References: <1465810789-22303-1-git-send-email-zyw@rock-chips.com>
- <1465810789-22303-3-git-send-email-zyw@rock-chips.com>
- <5763F2EB.7040100@ti.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] phy: add a driver for the Rockchip SoC internal
+ PCIe PHY
+Date: Mon, 20 Jun 2016 08:58:23 +0800
+Message-ID: <c88eb16f-e976-ad52-02fb-5ec7b6e261b9@rock-chips.com>
+References: <1466040179-30973-1-git-send-email-shawn.lin@rock-chips.com>
+ <5763F665.6070403@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5763F2EB.7040100@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5763F665.6070403-l0cyMroinI0@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon
+Hi Kishon,
 
-On 06/17/2016 08:54 PM, Kishon Vijay Abraham I wrote:
+On 2016/6/17 21:08, Kishon Vijay Abraham I wrote:
+> Hi,
 >
-> On Monday 13 June 2016 03:09 PM, Chris Zhong wrote:
->> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
->> Type-C PHY is designed to support the USB3 and DP applications. The
->> PHY basically has two main components: USB3 and DisplyPort. USB3
->> operates in SuperSpeed mode and the DP can operate at RBR, HBR and
->> HBR2 data rates.
+> On Thursday 16 June 2016 06:52 AM, Shawn Lin wrote:
+>> This patch to add a generic PHY driver for rockchip PCIe PHY.
+>> Access the PHY via registers provided by GRF (general register
+>> files) module.
 >>
->> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
->>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >> ---
 >>
->> Changes in v2:
->> - select RESET_CONTROLLER
->> - alphabetic order
->> - modify some spelling mistakes
->> - make mode cleaner
->> - use bool for enable/disable
->> - check all of the return value
->> - return a better err number
->> - use more readx_poll_timeout()
->> - clk_disable_unprepare(tcphy->clk_ref);
->> - remove unuse functions, rockchip_typec_phy_power_on/off
->> - remove unnecessary typecast from void *
->> - use dts node to distinguish between phys.
+>> Changes in v3: None
+>> Changes in v2: None
 >>
->> Changes in v1:
->> - update the licence note
->> - init core clock to 50MHz
->> - use extcon API
->> - remove unused global
->> - add some comments for magic num
->> - change usleep_range(1000, 2000) tousleep_range(1000, 1050)
->> - remove __func__ from dev_err
->> - return err number when get clk failed
->> - remove ADDR_ADJ define
->> - use devm_clk_get(&pdev->dev, "tcpdcore")
->>
->>   drivers/phy/Kconfig                    |   8 +
->>   drivers/phy/Makefile                   |   1 +
->>   drivers/phy/phy-rockchip-typec.c       | 952 +++++++++++++++++++++++++++++++++
->>   include/linux/phy/phy-rockchip-typec.h |  20 +
->>   4 files changed, 981 insertions(+)
->>   create mode 100644 drivers/phy/phy-rockchip-typec.c
->>   create mode 100644 include/linux/phy/phy-rockchip-typec.h
+>>  drivers/phy/Kconfig             |   7 +
+>>  drivers/phy/Makefile            |   1 +
+>>  drivers/phy/phy-rockchip-pcie.c | 378 ++++++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 386 insertions(+)
+>>  create mode 100644 drivers/phy/phy-rockchip-pcie.c
 >>
 >> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
->> index 26566db..ec87b3a 100644
+>> index b869b98..d4fc293 100644
 >> --- a/drivers/phy/Kconfig
 >> +++ b/drivers/phy/Kconfig
->> @@ -351,6 +351,14 @@ config PHY_ROCKCHIP_DP
->>   	help
->>   	  Enable this to support the Rockchip Display Port PHY.
->>   
->> +config PHY_ROCKCHIP_TYPEC
->> +	tristate "Rockchip TYPEC PHY Driver"
+>> @@ -361,6 +361,13 @@ config PHY_ROCKCHIP_DP
+>>  	help
+>>  	  Enable this to support the Rockchip Display Port PHY.
+>>
+>> +config PHY_ROCKCHIP_PCIE
+>> +	tristate "Rockchip PCIe PHY Driver"
 >> +	depends on ARCH_ROCKCHIP && OF
 >> +	select GENERIC_PHY
->> +	select RESET_CONTROLLER
 >> +	help
->> +	  Enable this to support the Rockchip USB TYPEC PHY.
+>> +	  Enable this to support the Rockchip PCIe PHY.
 >> +
->>   config PHY_ST_SPEAR1310_MIPHY
->>   	tristate "ST SPEAR1310-MIPHY driver"
->>   	select GENERIC_PHY
+>>  config PHY_ST_SPEAR1310_MIPHY
+>>  	tristate "ST SPEAR1310-MIPHY driver"
+>>  	select GENERIC_PHY
 >> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
->> index 24596a9..91fa413 100644
+>> index 9c3e73c..725e55d 100644
 >> --- a/drivers/phy/Makefile
 >> +++ b/drivers/phy/Makefile
->> @@ -39,6 +39,7 @@ obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
->>   obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
->>   obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
->>   obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
->> +obj-$(CONFIG_PHY_ROCKCHIP_TYPEC) += phy-rockchip-typec.o
->>   obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
->>   obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
->>   obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
->> diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+>> @@ -39,6 +39,7 @@ obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
+>>  obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
+>>  obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+>>  obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
+>> +obj-$(CONFIG_PHY_ROCKCHIP_PCIE) += phy-rockchip-pcie.o
+>>  obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
+>>  obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
+>>  obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
+>> diff --git a/drivers/phy/phy-rockchip-pcie.c b/drivers/phy/phy-rockchip-pcie.c
 >> new file mode 100644
->> index 0000000..230e074
+>> index 0000000..bc6cd17
 >> --- /dev/null
->> +++ b/drivers/phy/phy-rockchip-typec.c
-> <snip>
->
->> +static const struct phy_ops rockchip_tcphy_ops = {
->> +	.owner          = THIS_MODULE,
-> no ops?
+>> +++ b/drivers/phy/phy-rockchip-pcie.c
+>> @@ -0,0 +1,378 @@
+>> +/*
+>> + * Rockchip PCIe PHY driver
+>> + *
+>> + * Copyright (C) 2016 Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> + * Copyright (C) 2016 ROCKCHIP, Inc.
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License as published by
+>> + * the Free Software Foundation; either version 2 of the License.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/delay.h>
+>> +#include <linux/io.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/of_platform.h>
+>> +#include <linux/phy/phy.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/regmap.h>
+>> +#include <linux/reset.h>
+>> +
+>> +/*
+>> + * The higher 16-bit of this register is used for write protection
+>> + * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+>> + */
+>> +#define HIWORD_UPDATE(val, mask, shift) \
+>> +		((val) << (shift) | (mask) << ((shift) + 16))
+>> +
+>> +#define PHY_MAX_LANE_NUM      4
+>> +#define PHY_CFG_DATA_SHIFT    7
+>> +#define PHY_CFG_ADDR_SHIFT    1
+>> +#define PHY_CFG_DATA_MASK     0xf
+>> +#define PHY_CFG_ADDR_MASK     0x3f
+>> +#define PHY_CFG_RD_MASK       0x3ff
+>> +#define PHY_CFG_WR_ENABLE     1
+>> +#define PHY_CFG_WR_DISABLE    1
+>> +#define PHY_CFG_WR_SHIFT      0
+>> +#define PHY_CFG_WR_MASK       1
+>> +#define PHY_CFG_PLL_LOCK      0x10
+>> +#define PHY_CFG_CLK_TEST      0x10
+>> +#define PHY_CFG_CLK_SCC       0x12
+>> +#define PHY_CFG_SEPE_RATE     BIT(3)
+>> +#define PHY_CFG_PLL_100M      BIT(3)
+>> +#define PHY_PLL_LOCKED        BIT(9)
+>> +#define PHY_PLL_OUTPUT        BIT(10)
+>> +#define PHY_LANE_A_STATUS     0x30
+>> +#define PHY_LANE_B_STATUS     0x31
+>> +#define PHY_LANE_C_STATUS     0x32
+>> +#define PHY_LANE_D_STATUS     0x33
+>> +#define PHY_LANE_RX_DET_SHIFT 11
+>> +#define PHY_LANE_RX_DET_TH    0x1
+>> +#define PHY_LANE_IDLE_OFF     0x1
+>> +#define PHY_LANE_IDLE_MASK    0x1
+>> +#define PHY_LANE_IDLE_A_SHIFT 3
+>> +#define PHY_LANE_IDLE_B_SHIFT 4
+>> +#define PHY_LANE_IDLE_C_SHIFT 5
+>> +#define PHY_LANE_IDLE_D_SHIFT 6
+>> +
+>> +struct rockchip_pcie_data {
+>> +	unsigned int pcie_conf;
+>> +	unsigned int pcie_status;
+>> +	unsigned int pcie_laneoff;
 >> +};
 >> +
->> +static int tcphy_pd_event(struct notifier_block *nb,
->> +			  unsigned long event, void *priv)
+>> +struct rockchip_pcie_phy {
+>> +	struct rockchip_pcie_data *phy_data;
+>> +	struct regmap *reg_base;
+>> +	struct reset_control *phy_rst;
+>> +	struct clk *clk_pciephy_ref;
+>> +};
+>> +
+>> +static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
+>> +			      u32 addr, u32 data)
 >> +{
->> +	struct rockchip_typec_phy *tcphy;
->> +	struct extcon_dev *edev = priv;
->> +	int value = edev->state;
->> +	int mode;
->> +	u8 is_plugged, dfp;
+>> +	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+>> +		     HIWORD_UPDATE(data,
+>> +				   PHY_CFG_DATA_MASK,
+>> +				   PHY_CFG_DATA_SHIFT) |
+>> +		     HIWORD_UPDATE(addr,
+>> +				   PHY_CFG_ADDR_MASK,
+>> +				   PHY_CFG_ADDR_SHIFT));
+>> +	udelay(1);
+>> +	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+>> +		     HIWORD_UPDATE(PHY_CFG_WR_ENABLE,
+>> +				   PHY_CFG_WR_MASK,
+>> +				   PHY_CFG_WR_SHIFT));
+>> +	udelay(1);
+>> +	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+>> +		     HIWORD_UPDATE(PHY_CFG_WR_DISABLE,
+>> +				   PHY_CFG_WR_MASK,
+>> +				   PHY_CFG_WR_SHIFT));
+>> +}
 >> +
->> +	tcphy = container_of(nb, struct rockchip_typec_phy, event_nb);
+>> +static inline u32 phy_rd_cfg(struct rockchip_pcie_phy *rk_phy,
+>> +			     u32 addr)
+>> +{
+>> +	u32 val;
 >> +
->> +	is_plugged = GET_PLUGGED(value);
->> +	tcphy->flip = GET_FLIP(value);
->> +	dfp = GET_DFP(value);
->> +	tcphy->map = GET_PIN_MAP(value);
+>> +	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+>> +		     HIWORD_UPDATE(addr,
+>> +				   PHY_CFG_RD_MASK,
+>> +				   PHY_CFG_ADDR_SHIFT));
+>> +	regmap_read(rk_phy->reg_base,
+>> +		    rk_phy->phy_data->pcie_status,
+>> +		    &val);
+>> +	return val;
+>> +}
 >> +
->> +	if (is_plugged) {
->> +		if (!dfp)
->> +			mode = MODE_UFP_USB;
->> +		else if (tcphy->map & (PIN_MAP_B | PIN_MAP_D | PIN_MAP_F))
->> +			mode = MODE_DFP_USB | MODE_DFP_DP;
->> +		else if (tcphy->map & (PIN_MAP_A | PIN_MAP_C | PIN_MAP_E))
->> +			mode = MODE_DFP_DP;
+>> +void rockchip_pcie_phy_laneoff(struct phy *phy)
+>> +{
+>> +	u32 status;
+>> +	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	int i;
+>> +
+>> +	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
+>> +		status = phy_rd_cfg(rk_phy, PHY_LANE_A_STATUS + i);
+>> +		if (!((status >> PHY_LANE_RX_DET_SHIFT) &
+>> +		       PHY_LANE_RX_DET_TH))
+>> +			pr_debug("lane %d is used\n", i);
 >> +		else
->> +			mode = MODE_DFP_USB;
->> +	} else {
->> +		mode = MODE_DISCONNECT;
->> +	}
->> +
->> +	if (tcphy->mode != mode) {
->> +		tcphy->mode = mode;
->> +		schedule_delayed_work_on(0, &tcphy->event_wq, 0);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static void tcphy_event_wq(struct work_struct *work)
->> +{
->> +	struct rockchip_typec_phy *tcphy;
->> +	int ret;
->> +
->> +	tcphy = container_of(work, struct rockchip_typec_phy, event_wq.work);
->> +
->> +	if (tcphy->mode == MODE_DISCONNECT) {
->> +		tcphy_phy_deinit(tcphy);
->> +		/* remove hpd sign for DP */
->> +		if (tcphy->hpd_status) {
->> +			regmap_write(tcphy->grf_regs, GRF_SOC_CON26,
->> +				     DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
->> +			tcphy->hpd_status = 0;
->> +		}
->> +	} else {
->> +		ret = tcphy_phy_init(tcphy);
->> +		if (ret)
->> +			return;
->> +
->> +		if (tcphy->mode & (MODE_UFP_USB | MODE_DFP_USB))
->> +			tcphy_usb3_init(tcphy);
->> +
->> +		if (tcphy->mode & MODE_DFP_DP) {
->> +			ret = tcphy_dp_init(tcphy);
->> +
->> +			/* set hpd sign for DP, if DP phy is ready */
->> +			if (!ret) {
->> +				regmap_write(tcphy->grf_regs, GRF_SOC_CON26,
->> +					     DPTX_HPD_SEL_MASK | DPTX_HPD_SEL);
->> +				tcphy->hpd_status = 1;
->> +			}
->> +		}
+>> +			regmap_write(rk_phy->reg_base,
+>> +				     rk_phy->phy_data->pcie_laneoff,
+>> +				     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+>> +						   PHY_LANE_IDLE_MASK,
+>> +						   PHY_LANE_IDLE_A_SHIFT + i));
 >> +	}
 >> +}
->> +
->> +static int tcphy_get_param(struct device *dev,
->> +			   struct usb3phy_reg *reg,
->> +			   const char *name)
->> +{
->> +	int ret, buffer[3];
->> +
->> +	ret = of_property_read_u32_array(dev->of_node, name, buffer, 3);
->> +	if (ret) {
->> +		dev_err(dev, "Can not parse %s\n", name);
->> +		return ret;
->> +	}
->> +
->> +	reg->offset = buffer[0];
->> +	reg->enable_bit = buffer[1];
->> +	reg->write_enable = buffer[2];
->> +	return 0;
->> +}
->> +
->> +static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
->> +			  struct device *dev)
->> +{
->> +	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
->> +	int ret;
->> +
->> +	ret = tcphy_get_param(dev, &cfg->typec_conn_dir,
->> +			      "rockchip,typec_conn_dir");
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = tcphy_get_param(dev, &cfg->usb3tousb2_en,
->> +			      "rockchip,usb3tousb2_en");
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = tcphy_get_param(dev, &cfg->external_psm,
->> +			      "rockchip,external_psm");
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = tcphy_get_param(dev, &cfg->pipe_status,
->> +			      "rockchip,pipe_status");
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = tcphy_get_param(dev, &cfg->uphy_dp_sel,
->> +			      "rockchip,uphy_dp_sel");
->> +	if (ret)
->> +		return ret;
->> +
->> +	tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
->> +							  "rockchip,grf");
->> +	if (IS_ERR(tcphy->grf_regs)) {
->> +		dev_err(dev, "could not find grf dt node\n");
->> +		return PTR_ERR(tcphy->grf_regs);
->> +	}
->> +
->> +	tcphy->clk_core = devm_clk_get(dev, "tcpdcore");
->> +	if (IS_ERR(tcphy->clk_core)) {
->> +		dev_err(dev, "could not get uphy core clock\n");
->> +		return PTR_ERR(tcphy->clk_core);
->> +	}
->> +
->> +	tcphy->clk_ref = devm_clk_get(dev, "tcpdphy_ref");
->> +	if (IS_ERR(tcphy->clk_ref)) {
->> +		dev_err(dev, "could not get uphy ref clock\n");
->> +		return PTR_ERR(tcphy->clk_ref);
->> +	}
->> +
->> +	tcphy->phy_rst = devm_reset_control_get(dev, "tcphy");
->> +	if (IS_ERR(tcphy->phy_rst)) {
->> +		dev_err(dev, "no phy_rst reset control found\n");
->> +		return PTR_ERR(tcphy->phy_rst);
->> +	}
->> +
->> +	tcphy->pipe_rst = devm_reset_control_get(dev, "tcphy_pipe");
->> +	if (IS_ERR(tcphy->pipe_rst)) {
->> +		dev_err(dev, "no pipe_rst reset control found\n");
->> +		return PTR_ERR(tcphy->pipe_rst);
->> +	}
->> +
->> +	tcphy->uphy_rst = devm_reset_control_get(dev, "uphy_tcphy");
->> +	if (IS_ERR(tcphy->uphy_rst)) {
->> +		dev_err(dev, "no uphy_rst reset control found\n");
->> +		return PTR_ERR(tcphy->uphy_rst);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int rockchip_typec_phy_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct rockchip_typec_phy *tcphy;
->> +	struct resource *res;
->> +	struct phy_provider *phy_provider;
->> +	int ret;
->> +
->> +	tcphy = devm_kzalloc(dev, sizeof(*tcphy), GFP_KERNEL);
->> +	if (!tcphy)
->> +		return -ENOMEM;
->> +
->> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> +	tcphy->base = devm_ioremap_resource(dev, res);
->> +	if (IS_ERR(tcphy->base)) {
->> +		dev_err(dev, "failed to remap phy regs\n");
->> +		return PTR_ERR(tcphy->base);
->> +	}
->> +
->> +	tcphy_parse_dt(tcphy, dev);
->> +
->> +	tcphy->dev = dev;
->> +	platform_set_drvdata(pdev, tcphy);
->> +
->> +	tcphy->mode = MODE_DISCONNECT;
->> +
->> +	tcphy->phy = devm_phy_create(dev, NULL, &rockchip_tcphy_ops);
+>> +EXPORT_SYMBOL_GPL(rockchip_pcie_phy_laneoff);
 >
-> your phy_ops doesn't have any ops populated. Is there a reason to use the phy
-> framework?
+> Er.. don't use export symbols from phy driver. I think it would be nice if you
+> can model the driver in such a way that the PCIe driver can control individual
+> phy's.
 >
+
+Yes, I was trying to look for a way not to export symbols from
+phy... But I failed to find it as there at least need three
+interaction between controller and phy which made me believe we
+at least need to export one symbol without adding new API for phy.
+
+And I found lots of phy drivers export symbols the same way as mine.
+Does it sound okay for me to do the same thing here? :)
+
+
 > Thanks
 > Kishon
 >
 >
-Yes, I am thinking about it, remove it would be better.
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
