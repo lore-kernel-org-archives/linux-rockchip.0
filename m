@@ -1,48 +1,35 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH v6 2/4] power: reset: add reboot mode driver
-Date: Tue, 21 Jun 2016 13:39:45 +0200
-Message-ID: <57692781.4070506@samsung.com>
-References: <1458646525-491-1-git-send-email-andy.yan@rock-chips.com>
- <1458646642-591-1-git-send-email-andy.yan@rock-chips.com>
- <CAJKOXPcKzGTAicbsXK-cC9WQT0vBhpSG_q2GCn37+72x2hdhsQ@mail.gmail.com>
- <57691E92.5090205@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH] net: stmmac: dwmac-rk: add rk322x-specific data
+Date: Tue, 21 Jun 2016 20:12:50 +0800
+Message-ID: <57692F42.30709@rock-chips.com>
+References: <1466493235-17789-1-git-send-email-zhengxing@rock-chips.com>
+ <3520853.j0ALyW964u@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-reply-to: <57691E92.5090205@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, olof@lixom.net, alexandre.belloni@free-electrons.com, dbaryshkov@gmail.com, jun.nie@linaro.org, pawel.moll@arm.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, f.fainelli@gmail.com, linux@arm.linux.org.uk, mbrugger@suse.com, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dwmw2@infradead.org, mark.rutland@arm.com
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3520853.j0ALyW964u@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, roger.chen@rock-chips.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/21/2016 01:01 PM, Andy Yan wrote:
+Hi Heiko,
 
-(...)
+On 2016=E5=B9=B406=E6=9C=8821=E6=97=A5 17:43, Heiko St=C3=BCbner wrote:
+> devicetree names are normally expected to be real, aka no "x" as catc=
+hall. So
+> I guess either just add compatibles for both the rk3228 and rk3229 wh=
+ich point
+> to the same structure in the driver. (So driver-side can stay as it i=
+s below,
+> just add a second compatible).
+OK, I try to just use "rockchip,rk3228-gmac" to point to "rk322x_ops"=20
+which is the same structure in MAC driver,
+and both rk3228 and rk3229 use it.
 
->>> +MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com");
->>> +MODULE_DESCRIPTION("System reboot mode driver");
->>> +MODULE_LICENSE("GPL v2");
->>> diff --git a/drivers/power/reset/reboot-mode.h
->>> b/drivers/power/reset/reboot-mode.h
->>> new file mode 100644
->>> index 0000000..44ed34f
->>> --- /dev/null
->>> +++ b/drivers/power/reset/reboot-mode.h
->>> @@ -0,0 +1,6 @@
->>> +#ifndef __REBOOT_MODE_H__
->>> +#define __REBOOT_MODE_H__
->>> +
->>> +int reboot_mode_register(struct device *dev, int (*write)(int));
->> Documentation would be appreciated. Although it is local header but
->> you decoupled them and you are exporting the function.
-> 
->    You want this driver being a module in V9, so you may also want
->  I document this function when a exporting it. Where I should write the
->  documentation, and would you please give me some example?
+Thanks
 
-Follow kernel-doc (kernel-doc-nano-HOWTO.txt). There is an example. Put
-the documentation of functions next to them in source file (not header).
-
-Best regards,
-Krzysztof
+--=20
+- Xing Zheng
