@@ -1,14 +1,15 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v7 2/2] phy: rockchip-inno-usb2: add a new driver for Rockchip
- usb2phy
-Date: Tue, 21 Jun 2016 18:30:05 +0800
-Message-ID: <1466505005-86122-3-git-send-email-frank.wang@rock-chips.com>
-References: <1466505005-86122-1-git-send-email-frank.wang@rock-chips.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v6 2/4] power: reset: add reboot mode driver
+Date: Tue, 21 Jun 2016 19:01:38 +0800
+Message-ID: <57691E92.5090205@rock-chips.com>
+References: <1458646525-491-1-git-send-email-andy.yan@rock-chips.com>
+ <1458646642-591-1-git-send-email-andy.yan@rock-chips.com>
+ <CAJKOXPcKzGTAicbsXK-cC9WQT0vBhpSG_q2GCn37+72x2hdhsQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1466505005-86122-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <CAJKOXPcKzGTAicbsXK-cC9WQT0vBhpSG_q2GCn37+72x2hdhsQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,744 +19,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, mbrugger-IBi9RG/b67k@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The newer SoCs (rk3366, rk3399) take a different usb-phy IP block
-than rk3288 and before, and most of phy-related registers are also
-different from the past, so a new phy driver is required necessarily.
-
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Suggested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Suggested-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Suggested-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-
-Changes in v7:
- - renamed functions *usb2phy_resume/*usb2phy_suspend to *usb2phy_power_on/usb2phy_power_off.
-
-Changes in v6:
- - Fixed the output clock would be disabled more than once while phy-port was going to suspend.
- - Improved the driver to avoid the currently empty otg-port would cause null-pointer dereferences.
-
-Changes in v5:
- - Added 'reg' in the data block to match the different phy-blocks in dt.
-
-Changes in v4:
- - Removed some processes related to 'vbus_host-supply'.
-
-Changes in v3:
- - Resolved the mapping defect between fixed value in driver and the property
-   in devicetree.
- - Optimized 480m output clock register function.
- - Code cleanup.
-
-Changes in v2:
- - Changed vbus_host operation from gpio to regulator in *_probe.
- - Improved the fault treatment relate to 480m clock register.
- - Cleaned up some meaningless codes in *_clk480m_disable.
- - made more clear the comment of *_sm_work.
-
- drivers/phy/Kconfig                  |    7 +
- drivers/phy/Makefile                 |    1 +
- drivers/phy/phy-rockchip-inno-usb2.c |  658 ++++++++++++++++++++++++++++++++++
- 3 files changed, 666 insertions(+)
- create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
-
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index b869b98..29ef15c 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -347,6 +347,13 @@ config PHY_ROCKCHIP_USB
- 	help
- 	  Enable this to support the Rockchip USB 2.0 PHY.
- 
-+config PHY_ROCKCHIP_INNO_USB2
-+	tristate "Rockchip INNO USB2PHY Driver"
-+	depends on ARCH_ROCKCHIP && OF
-+	select GENERIC_PHY
-+	help
-+	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
-+
- config PHY_ROCKCHIP_EMMC
- 	tristate "Rockchip EMMC PHY Driver"
- 	depends on ARCH_ROCKCHIP && OF
-diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-index 9c3e73c..4963fbc 100644
---- a/drivers/phy/Makefile
-+++ b/drivers/phy/Makefile
-@@ -38,6 +38,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
- obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
- obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
- obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
-+obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
- obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
- obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
- obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-new file mode 100644
-index 0000000..299f599
---- /dev/null
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -0,0 +1,658 @@
-+/*
-+ * Rockchip USB2.0 PHY with Innosilicon IP block driver
-+ *
-+ * Copyright (C) 2016 Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/delay.h>
-+#include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/jiffies.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_irq.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/syscon.h>
-+
-+#define BIT_WRITEABLE_SHIFT	16
-+#define SCHEDULE_DELAY	(60 * HZ)
-+
-+enum rockchip_usb2phy_port_id {
-+	USB2PHY_PORT_OTG,
-+	USB2PHY_PORT_HOST,
-+	USB2PHY_NUM_PORTS,
-+};
-+
-+enum rockchip_usb2phy_host_state {
-+	PHY_STATE_HS_ONLINE	= 0,
-+	PHY_STATE_DISCONNECT	= 1,
-+	PHY_STATE_HS_CONNECT	= 2,
-+	PHY_STATE_FS_CONNECT	= 4,
-+};
-+
-+struct usb2phy_reg {
-+	unsigned int	offset;
-+	unsigned int	bitend;
-+	unsigned int	bitstart;
-+	unsigned int	disable;
-+	unsigned int	enable;
-+};
-+
-+/**
-+ * struct rockchip_usb2phy_port_cfg: usb-phy port configuration.
-+ * @phy_sus: phy suspend register.
-+ * @ls_det_en: linestate detection enable register.
-+ * @ls_det_st: linestate detection state register.
-+ * @ls_det_clr: linestate detection clear register.
-+ * @utmi_ls: utmi linestate state register.
-+ * @utmi_hstdet: utmi host disconnect register.
-+ */
-+struct rockchip_usb2phy_port_cfg {
-+	struct usb2phy_reg	phy_sus;
-+	struct usb2phy_reg	ls_det_en;
-+	struct usb2phy_reg	ls_det_st;
-+	struct usb2phy_reg	ls_det_clr;
-+	struct usb2phy_reg	utmi_ls;
-+	struct usb2phy_reg	utmi_hstdet;
-+};
-+
-+/**
-+ * struct rockchip_usb2phy_cfg: usb-phy configuration.
-+ * @reg: the address offset of grf for usb-phy config.
-+ * @num_ports: specify how many ports that the phy has.
-+ * @clkout_ctl: keep on/turn off output clk of phy.
-+ */
-+struct rockchip_usb2phy_cfg {
-+	unsigned int	reg;
-+	unsigned int	num_ports;
-+	struct usb2phy_reg	clkout_ctl;
-+	const struct rockchip_usb2phy_port_cfg	port_cfgs[USB2PHY_NUM_PORTS];
-+};
-+
-+/**
-+ * struct rockchip_usb2phy_port: usb-phy port data.
-+ * @port_id: flag for otg port or host port.
-+ * @suspended: phy suspended flag.
-+ * @ls_irq: IRQ number assigned for linestate detection.
-+ * @mutex: for register updating in sm_work.
-+ * @sm_work: OTG state machine work.
-+ * @phy_cfg: port register configuration, assigned by driver data.
-+ */
-+struct rockchip_usb2phy_port {
-+	struct phy	*phy;
-+	unsigned int	port_id;
-+	bool		suspended;
-+	int		ls_irq;
-+	struct mutex	mutex;
-+	struct		delayed_work sm_work;
-+	const struct	rockchip_usb2phy_port_cfg *port_cfg;
-+};
-+
-+/**
-+ * struct rockchip_usb2phy: usb2.0 phy driver data.
-+ * @grf: General Register Files regmap.
-+ * @clk: clock struct of phy input clk.
-+ * @clk480m: clock struct of phy output clk.
-+ * @clk_hw: clock struct of phy output clk management.
-+ * @phy_cfg: phy register configuration, assigned by driver data.
-+ * @ports: phy port instance.
-+ */
-+struct rockchip_usb2phy {
-+	struct device	*dev;
-+	struct regmap	*grf;
-+	struct clk	*clk;
-+	struct clk	*clk480m;
-+	struct clk_hw	clk480m_hw;
-+	const struct rockchip_usb2phy_cfg	*phy_cfg;
-+	struct rockchip_usb2phy_port	ports[USB2PHY_NUM_PORTS];
-+};
-+
-+static inline int property_enable(struct rockchip_usb2phy *rphy,
-+				  const struct usb2phy_reg *reg, bool en)
-+{
-+	unsigned int val, mask, tmp;
-+
-+	tmp = en ? reg->enable : reg->disable;
-+	mask = GENMASK(reg->bitend, reg->bitstart);
-+	val = (tmp << reg->bitstart) | (mask << BIT_WRITEABLE_SHIFT);
-+
-+	return regmap_write(rphy->grf, reg->offset, val);
-+}
-+
-+static inline bool property_enabled(struct rockchip_usb2phy *rphy,
-+				    const struct usb2phy_reg *reg)
-+{
-+	int ret;
-+	unsigned int tmp, orig;
-+	unsigned int mask = GENMASK(reg->bitend, reg->bitstart);
-+
-+	ret = regmap_read(rphy->grf, reg->offset, &orig);
-+	if (ret)
-+		return false;
-+
-+	tmp = (orig & mask) >> reg->bitstart;
-+	return tmp == reg->enable;
-+}
-+
-+static int rockchip_usb2phy_clk480m_enable(struct clk_hw *hw)
-+{
-+	struct rockchip_usb2phy *rphy =
-+		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+	int ret;
-+
-+	/* turn on 480m clk output if it is off */
-+	if (!property_enabled(rphy, &rphy->phy_cfg->clkout_ctl)) {
-+		ret = property_enable(rphy, &rphy->phy_cfg->clkout_ctl, true);
-+		if (ret)
-+			return ret;
-+
-+		/* waitting for the clk become stable */
-+		mdelay(1);
-+	}
-+
-+	return 0;
-+}
-+
-+static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
-+{
-+	struct rockchip_usb2phy *rphy =
-+		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+
-+	/* turn off 480m clk output */
-+	property_enable(rphy, &rphy->phy_cfg->clkout_ctl, false);
-+}
-+
-+static int rockchip_usb2phy_clk480m_enabled(struct clk_hw *hw)
-+{
-+	struct rockchip_usb2phy *rphy =
-+		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+
-+	return property_enabled(rphy, &rphy->phy_cfg->clkout_ctl);
-+}
-+
-+static unsigned long
-+rockchip_usb2phy_clk480m_recalc_rate(struct clk_hw *hw,
-+				     unsigned long parent_rate)
-+{
-+	return 480000000;
-+}
-+
-+static const struct clk_ops rockchip_usb2phy_clkout_ops = {
-+	.enable = rockchip_usb2phy_clk480m_enable,
-+	.disable = rockchip_usb2phy_clk480m_disable,
-+	.is_enabled = rockchip_usb2phy_clk480m_enabled,
-+	.recalc_rate = rockchip_usb2phy_clk480m_recalc_rate,
-+};
-+
-+static void rockchip_usb2phy_clk480m_unregister(void *data)
-+{
-+	struct rockchip_usb2phy *rphy = data;
-+
-+	of_clk_del_provider(rphy->dev->of_node);
-+	clk_unregister(rphy->clk480m);
-+
-+	if (rphy->clk)
-+		clk_put(rphy->clk);
-+}
-+
-+static int
-+rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
-+{
-+	struct device_node *node = rphy->dev->of_node;
-+	struct clk_init_data init;
-+	const char *clk_name;
-+	int ret;
-+
-+	init.flags = 0;
-+	init.name = "clk_usbphy_480m";
-+	init.ops = &rockchip_usb2phy_clkout_ops;
-+
-+	/* optional override of the clockname */
-+	of_property_read_string(node, "clock-output-names", &init.name);
-+
-+	rphy->clk = of_clk_get_by_name(node, "phyclk");
-+	if (IS_ERR(rphy->clk)) {
-+		rphy->clk = NULL;
-+		init.parent_names = NULL;
-+		init.num_parents = 0;
-+	} else {
-+		clk_name = __clk_get_name(rphy->clk);
-+		init.parent_names = &clk_name;
-+		init.num_parents = 1;
-+	}
-+
-+	rphy->clk480m_hw.init = &init;
-+
-+	/* register the clock */
-+	rphy->clk480m = clk_register(rphy->dev, &rphy->clk480m_hw);
-+	if (IS_ERR(rphy->clk480m)) {
-+		ret = PTR_ERR(rphy->clk480m);
-+		goto err_register;
-+	}
-+
-+	ret = of_clk_add_provider(node, of_clk_src_simple_get, rphy->clk480m);
-+	if (ret < 0)
-+		goto err_clk_provider;
-+
-+	ret = devm_add_action(rphy->dev, rockchip_usb2phy_clk480m_unregister,
-+			      rphy);
-+	if (ret < 0)
-+		goto err_unreg_action;
-+
-+	return 0;
-+
-+err_unreg_action:
-+	of_clk_del_provider(node);
-+err_clk_provider:
-+	clk_unregister(rphy->clk480m);
-+err_register:
-+	if (rphy->clk)
-+		clk_put(rphy->clk);
-+	return ret;
-+}
-+
-+static int rockchip_usb2phy_init(struct phy *phy)
-+{
-+	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-+	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
-+	int ret;
-+
-+	if (rport->port_id == USB2PHY_PORT_HOST) {
-+		/* clear linestate and enable linestate detect irq */
-+		mutex_lock(&rport->mutex);
-+
-+		ret = property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
-+		if (ret) {
-+			mutex_unlock(&rport->mutex);
-+			return ret;
-+		}
-+
-+		ret = property_enable(rphy, &rport->port_cfg->ls_det_en, true);
-+		if (ret) {
-+			mutex_unlock(&rport->mutex);
-+			return ret;
-+		}
-+
-+		mutex_unlock(&rport->mutex);
-+		schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_usb2phy_power_on(struct phy *phy)
-+{
-+	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-+	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
-+	int ret;
-+
-+	dev_dbg(&rport->phy->dev, "port power on\n");
-+
-+	if (!rport->suspended)
-+		return 0;
-+
-+	ret = clk_prepare_enable(rphy->clk480m);
-+	if (ret)
-+		return ret;
-+
-+	ret = property_enable(rphy, &rport->port_cfg->phy_sus, false);
-+	if (ret)
-+		return ret;
-+
-+	rport->suspended = false;
-+	return 0;
-+}
-+
-+static int rockchip_usb2phy_power_off(struct phy *phy)
-+{
-+	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-+	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
-+	int ret;
-+
-+	dev_dbg(&rport->phy->dev, "port power off\n");
-+
-+	if (rport->suspended)
-+		return 0;
-+
-+	ret = property_enable(rphy, &rport->port_cfg->phy_sus, true);
-+	if (ret)
-+		return ret;
-+
-+	rport->suspended = true;
-+	clk_disable_unprepare(rphy->clk480m);
-+
-+	return 0;
-+}
-+
-+static int rockchip_usb2phy_exit(struct phy *phy)
-+{
-+	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
-+
-+	if (rport->port_id == USB2PHY_PORT_HOST)
-+		cancel_delayed_work_sync(&rport->sm_work);
-+
-+	return 0;
-+}
-+
-+static const struct phy_ops rockchip_usb2phy_ops = {
-+	.init		= rockchip_usb2phy_init,
-+	.exit		= rockchip_usb2phy_exit,
-+	.power_on	= rockchip_usb2phy_power_on,
-+	.power_off	= rockchip_usb2phy_power_off,
-+	.owner		= THIS_MODULE,
-+};
-+
-+/*
-+ * The function manage host-phy port state and suspend/resume phy port
-+ * to save power.
-+ *
-+ * we rely on utmi_linestate and utmi_hostdisconnect to identify whether
-+ * FS/HS is disconnect or not. Besides, we do not need care it is FS
-+ * disconnected or HS disconnected, actually, we just only need get the
-+ * device is disconnected at last through rearm the delayed work,
-+ * to suspend the phy port in _PHY_STATE_DISCONNECT_ case.
-+ *
-+ * NOTE: It may invoke *phy_powr_off or *phy_power_on which will invoke
-+ * some clk related APIs, so do not invoke it from interrupt context directly.
-+ */
-+static void rockchip_usb2phy_sm_work(struct work_struct *work)
-+{
-+	struct rockchip_usb2phy_port *rport =
-+		container_of(work, struct rockchip_usb2phy_port, sm_work.work);
-+	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
-+	unsigned int sh = rport->port_cfg->utmi_hstdet.bitend -
-+			  rport->port_cfg->utmi_hstdet.bitstart + 1;
-+	unsigned int ul, uhd, state;
-+	unsigned int ul_mask, uhd_mask;
-+	int ret;
-+
-+	mutex_lock(&rport->mutex);
-+
-+	ret = regmap_read(rphy->grf, rport->port_cfg->utmi_ls.offset, &ul);
-+	if (ret < 0)
-+		goto next_schedule;
-+
-+	ret = regmap_read(rphy->grf, rport->port_cfg->utmi_hstdet.offset,
-+			  &uhd);
-+	if (ret < 0)
-+		goto next_schedule;
-+
-+	uhd_mask = GENMASK(rport->port_cfg->utmi_hstdet.bitend,
-+			   rport->port_cfg->utmi_hstdet.bitstart);
-+	ul_mask = GENMASK(rport->port_cfg->utmi_ls.bitend,
-+			  rport->port_cfg->utmi_ls.bitstart);
-+
-+	/* stitch on utmi_ls and utmi_hstdet as phy state */
-+	state = ((uhd & uhd_mask) >> rport->port_cfg->utmi_hstdet.bitstart) |
-+		(((ul & ul_mask) >> rport->port_cfg->utmi_ls.bitstart) << sh);
-+
-+	switch (state) {
-+	case PHY_STATE_HS_ONLINE:
-+		dev_dbg(&rport->phy->dev, "HS online\n");
-+		break;
-+	case PHY_STATE_FS_CONNECT:
-+		/*
-+		 * For FS device, the online state share with connect state
-+		 * from utmi_ls and utmi_hstdet register, so we distinguish
-+		 * them via suspended flag.
-+		 */
-+		if (!rport->suspended) {
-+			dev_dbg(&rport->phy->dev, "FS online\n");
-+			break;
-+		}
-+		/* fall through */
-+	case PHY_STATE_HS_CONNECT:
-+		if (rport->suspended) {
-+			dev_dbg(&rport->phy->dev, "HS/FS connected\n");
-+			rockchip_usb2phy_power_on(rport->phy);
-+			rport->suspended = false;
-+		}
-+		break;
-+	case PHY_STATE_DISCONNECT:
-+		if (!rport->suspended) {
-+			dev_dbg(&rport->phy->dev, "HS/FS disconnected\n");
-+			rockchip_usb2phy_power_off(rport->phy);
-+			rport->suspended = true;
-+		}
-+
-+		/*
-+		 * activate the linestate detection to get the next device
-+		 * plug-in irq.
-+		 */
-+		property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
-+		property_enable(rphy, &rport->port_cfg->ls_det_en, true);
-+
-+		/*
-+		 * we don't need to rearm the delayed work when the phy port
-+		 * is suspended.
-+		 */
-+		mutex_unlock(&rport->mutex);
-+		return;
-+	default:
-+		dev_dbg(&rport->phy->dev, "unknown phy state\n");
-+		break;
-+	}
-+
-+next_schedule:
-+	mutex_unlock(&rport->mutex);
-+	schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
-+}
-+
-+static irqreturn_t rockchip_usb2phy_linestate_irq(int irq, void *data)
-+{
-+	struct rockchip_usb2phy_port *rport = data;
-+	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
-+
-+	if (!property_enabled(rphy, &rport->port_cfg->ls_det_st))
-+		return IRQ_NONE;
-+
-+	mutex_lock(&rport->mutex);
-+
-+	/* disable linestate detect irq and clear its status */
-+	property_enable(rphy, &rport->port_cfg->ls_det_en, false);
-+	property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
-+
-+	mutex_unlock(&rport->mutex);
-+
-+	/*
-+	 * In this case for host phy port, a new device is plugged in,
-+	 * meanwhile, if the phy port is suspended, we need rearm the work to
-+	 * resume it and mange its states; otherwise, we do nothing about that.
-+	 */
-+	if (rport->suspended && rport->port_id == USB2PHY_PORT_HOST)
-+		rockchip_usb2phy_sm_work(&rport->sm_work.work);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
-+					   struct rockchip_usb2phy_port *rport,
-+					   struct device_node *child_np)
-+{
-+	int ret;
-+
-+	rport->port_id = USB2PHY_PORT_HOST;
-+	rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_HOST];
-+	rport->suspended = true;
-+
-+	mutex_init(&rport->mutex);
-+	INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
-+
-+	rport->ls_irq = of_irq_get_byname(child_np, "linestate");
-+	if (rport->ls_irq < 0) {
-+		dev_err(rphy->dev, "no linestate irq provided\n");
-+		return rport->ls_irq;
-+	}
-+
-+	ret = devm_request_threaded_irq(rphy->dev, rport->ls_irq, NULL,
-+					rockchip_usb2phy_linestate_irq,
-+					IRQF_ONESHOT,
-+					"rockchip_usb2phy", rport);
-+	if (ret) {
-+		dev_err(rphy->dev, "failed to request irq handle\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_usb2phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+	struct device_node *child_np;
-+	struct phy_provider *provider;
-+	struct rockchip_usb2phy *rphy;
-+	const struct rockchip_usb2phy_cfg *phy_cfgs;
-+	const struct of_device_id *match;
-+	unsigned int reg;
-+	int index, ret;
-+
-+	rphy = devm_kzalloc(dev, sizeof(*rphy), GFP_KERNEL);
-+	if (!rphy)
-+		return -ENOMEM;
-+
-+	match = of_match_device(dev->driver->of_match_table, dev);
-+	if (!match || !match->data) {
-+		dev_err(dev, "phy configs are not assigned!\n");
-+		return -EINVAL;
-+	}
-+
-+	if (!dev->parent || !dev->parent->of_node)
-+		return -EINVAL;
-+
-+	rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
-+	if (IS_ERR(rphy->grf))
-+		return PTR_ERR(rphy->grf);
-+
-+	if (of_property_read_u32(np, "reg", &reg)) {
-+		dev_err(dev, "the reg property is not assigned in %s node\n",
-+			np->name);
-+		return -EINVAL;
-+	}
-+
-+	rphy->dev = dev;
-+	phy_cfgs = match->data;
-+	platform_set_drvdata(pdev, rphy);
-+
-+	/* find out a proper config which can be matched with dt. */
-+	index = 0;
-+	while (phy_cfgs[index].reg) {
-+		if (phy_cfgs[index].reg == reg) {
-+			rphy->phy_cfg = &phy_cfgs[index];
-+			break;
-+		}
-+
-+		++index;
-+	}
-+
-+	if (!rphy->phy_cfg) {
-+		dev_err(dev, "no phy-config can be matched with %s node\n",
-+			np->name);
-+		return -EINVAL;
-+	}
-+
-+	ret = rockchip_usb2phy_clk480m_register(rphy);
-+	if (ret) {
-+		dev_err(dev, "failed to register 480m output clock\n");
-+		return ret;
-+	}
-+
-+	index = 0;
-+	for_each_available_child_of_node(np, child_np) {
-+		struct rockchip_usb2phy_port *rport = &rphy->ports[index];
-+		struct phy *phy;
-+
-+		/*
-+		 * This driver aim to support both otg-port and host-port,
-+		 * but unfortunately, the otg part is not ready in current,
-+		 * so this comments and below codes are interim, which should
-+		 * be changed after otg-port is supplied soon.
-+		 */
-+		if (of_node_cmp(child_np->name, "host-port"))
-+			goto next_child;
-+
-+		phy = devm_phy_create(dev, child_np, &rockchip_usb2phy_ops);
-+		if (IS_ERR(phy)) {
-+			dev_err(dev, "failed to create phy\n");
-+			ret = PTR_ERR(phy);
-+			goto put_child;
-+		}
-+
-+		rport->phy = phy;
-+		phy_set_drvdata(rport->phy, rport);
-+
-+		ret = rockchip_usb2phy_host_port_init(rphy, rport, child_np);
-+		if (ret)
-+			goto put_child;
-+
-+next_child:
-+		/* to prevent out of boundary */
-+		if (++index >= rphy->phy_cfg->num_ports)
-+			break;
-+	}
-+
-+	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+	return PTR_ERR_OR_ZERO(provider);
-+
-+put_child:
-+	of_node_put(child_np);
-+	return ret;
-+}
-+
-+static const struct rockchip_usb2phy_cfg rk3366_phy_cfgs[] = {
-+	{
-+		.reg = 0x700,
-+		.num_ports	= 2,
-+		.clkout_ctl	= { 0x0724, 15, 15, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_HOST] = {
-+				.phy_sus	= { 0x0728, 15, 0, 0, 0x1d1 },
-+				.ls_det_en	= { 0x0680, 4, 4, 0, 1 },
-+				.ls_det_st	= { 0x0690, 4, 4, 0, 1 },
-+				.ls_det_clr	= { 0x06a0, 4, 4, 0, 1 },
-+				.utmi_ls	= { 0x049c, 14, 13, 0, 1 },
-+				.utmi_hstdet	= { 0x049c, 12, 12, 0, 1 }
-+			}
-+		},
-+	},
-+	{ /* sentinel */ }
-+};
-+
-+static const struct of_device_id rockchip_usb2phy_dt_match[] = {
-+	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, rockchip_usb2phy_dt_match);
-+
-+static struct platform_driver rockchip_usb2phy_driver = {
-+	.probe		= rockchip_usb2phy_probe,
-+	.driver		= {
-+		.name	= "rockchip-usb2phy",
-+		.of_match_table = rockchip_usb2phy_dt_match,
-+	},
-+};
-+module_platform_driver(rockchip_usb2phy_driver);
-+
-+MODULE_AUTHOR("Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
-+MODULE_DESCRIPTION("Rockchip USB2.0 PHY driver");
-+MODULE_LICENSE("GPL v2");
--- 
-1.7.9.5
+CkhpIEtyenlzenRvZjoKCk9uIDIwMTblubQwM+aciDI05pelIDEwOjUwLCBLcnp5c3p0b2YgS296
+bG93c2tpIHdyb3RlOgo+IENvb2wgd29yayEgRmV3IGNvbW1lbnRzIGJlbG93Lgo+Cj4KPiBPbiBU
+dWUsIE1hciAyMiwgMjAxNiBhdCA4OjM3IFBNLCBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlw
+cy5jb20+IHdyb3RlOgo+PiBUaGlzIGRyaXZlciBwYXJzZSB0aGUgcmVib290IGNvbW1hbmRzIGxp
+a2UgInJlYm9vdCBsb2FkZXIiCj4+IGFuZCAicmVib290IHJlY292ZXJ5IiB0byBnZXQgYSBib290
+IG1vZGUgZGVzY3JpYmVkIGluIHRoZQo+PiBkZXZpY2UgdHJlZSAsIHRoZW4gY2FsbCB0aGUgd3Jp
+dGUgaW50ZXJmYWUgdG8gc3RvcmUgdGhlIGJvb3QKPj4gbW9kZSBpbiBzb21lIHBsYWNlIGxpa2Ug
+c3BlY2lhbCByZWdpc3RlciBvciBzcmFtICwgd2hpY2ggY2FuCj4+IGJlIHJlYWQgYnkgdGhlIGJv
+b3Rsb2FkZXIgYWZ0ZXIgc3lzdGVtIHJlYm9vdCwgdGhlbiB0aGUgYm9vdGxvYWRlcgo+PiBjYW4g
+dGFrZSBkaWZmZXJlbnQgYWN0aW9uIGFjY29yZGluZyB0byB0aGUgbW9kZSBzdG9yZWQuCj4+Cj4+
+IFRoaXMgaXMgY29tbW9ubHkgdXNlZCBvbiBBbmRyb2lkIGJhc2VkIGRldmljZXMsIGluIG9yZGVy
+IHRvCj4+IHJlYm9vdCB0aGUgZGV2aWNlIGludG8gZmFzdGJvb3Qgb3IgcmVjb3ZlcnkgbW9kZS4K
+Pj4KPj4gUmV2aWV3ZWQtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5j
+b20+Cj4+IFJldmlld2VkLWJ5OiBNb3JpdHogRmlzY2hlciA8bW9yaXR6LmZpc2NoZXJAZXR0dXMu
+Y29tPgo+PiBUZXN0ZWQtYnk6IEpvaG4gU3R1bHR6IDxqb2huLnN0dWx0ekBsaW5hcm8ub3JnPgo+
+PiBBY2tlZC1ieTogSm9obiBTdHVsdHogPGpvaG4uc3R1bHR6QGxpbmFyby5vcmc+Cj4+IFNpZ25l
+ZC1vZmYtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4KPj4gLS0tCj4+
+Cj4+IENoYW5nZXMgaW4gdjY6IE5vbmUKPj4gQ2hhbmdlcyBpbiB2NToKPj4gLSB1c2UgdHdvIGJs
+YW5rIHNwYWNlIHVuZGVyIGhlbHAgaW4gS2NvbmZpZwo+PiAtIHVzZSB1bnNpZ25lZCBpbnQgaW5z
+dGVhZCBvZiBpbnQgZm9yIG1lbWJlciBtYWdpYyBpbiBzdHJ1Y3QgbW9kZV9pbmZvCj4+Cj4+IENo
+YW5nZXMgaW4gdjQ6Cj4+IC0gbWFrZSB0aGlzIGRyaXZlciBkZXBlbmRzIG9uIE9GIHRvIGF2b2lk
+IGtidWlsZCB0ZXN0IGVycm9yCj4+Cj4+IENoYW5nZXMgaW4gdjM6Cj4+IC0gc2NhbiBtdWx0aSBw
+cm9wZXJpdGllcwo+PiAtIGFkZCBtYXNrIHZhbHVlIGZvciBzb21lIHBsYXRmb3JtIHdoaWNoIG9u
+bHkgdXNlIHNvbWUgYml0cyBvZiB0aGUgcmVnaXN0ZXIKPj4gICAgdG8gc3RvcmUgYm9vdCBtb2Rl
+IG1hZ2ljIHZhbHVlCj4+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+IC0gbW92ZSB0byBkaXIgZHJpdmVy
+cy9wb3dlci9yZXNldC8KPj4gLSBtYWtlIHN5c2Nvbi1yZWJvb3QtbW9kZSBhIGdlbmVyaWMgZHJp
+dmVyCj4+Cj4+IENoYW5nZXMgaW4gdjE6Cj4+IC0gZml4IHRoZSBlbWJhcnJhc3NlZCBjb21waWxl
+IHdhcm5pbmcKPj4gLSBjb3JyZWN0IHRoZSBtYXNrcm9tIG1hZ2ljIG51bWJlcgo+PiAtIGNoZWNr
+IGZvciB0aGUgbm9ybWFsIHJlYm9vdAo+Pgo+PiAgIGRyaXZlcnMvcG93ZXIvcmVzZXQvS2NvbmZp
+ZyAgICAgICAgICAgICAgfCAgMTMgKysrKwo+PiAgIGRyaXZlcnMvcG93ZXIvcmVzZXQvTWFrZWZp
+bGUgICAgICAgICAgICAgfCAgIDIgKwo+PiAgIGRyaXZlcnMvcG93ZXIvcmVzZXQvcmVib290LW1v
+ZGUuYyAgICAgICAgfCAxMDYgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+PiAgIGRy
+aXZlcnMvcG93ZXIvcmVzZXQvcmVib290LW1vZGUuaCAgICAgICAgfCAgIDYgKysKPj4gICBkcml2
+ZXJzL3Bvd2VyL3Jlc2V0L3N5c2Nvbi1yZWJvb3QtbW9kZS5jIHwgIDY1ICsrKysrKysrKysrKysr
+KysrKysKPj4gICA1IGZpbGVzIGNoYW5nZWQsIDE5MiBpbnNlcnRpb25zKCspCj4+ICAgY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvcG93ZXIvcmVzZXQvcmVib290LW1vZGUuYwo+PiAgIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3Bvd2VyL3Jlc2V0L3JlYm9vdC1tb2RlLmgKPj4gICBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9wb3dlci9yZXNldC9zeXNjb24tcmVib290LW1vZGUuYwo+
+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wb3dlci9yZXNldC9LY29uZmlnIGIvZHJpdmVycy9w
+b3dlci9yZXNldC9LY29uZmlnCj4+IGluZGV4IDExMzFjZjcuLmNmNTA2MzAgMTAwNjQ0Cj4+IC0t
+LSBhL2RyaXZlcnMvcG93ZXIvcmVzZXQvS2NvbmZpZwo+PiArKysgYi9kcml2ZXJzL3Bvd2VyL3Jl
+c2V0L0tjb25maWcKPj4gQEAgLTE3Myw1ICsxNzMsMTggQEAgY29uZmlnIFBPV0VSX1JFU0VUX1pY
+Cj4+ICAgICAgICAgIGhlbHAKPj4gICAgICAgICAgICBSZWJvb3Qgc3VwcG9ydCBmb3IgWlRFIFNv
+Q3MuCj4+Cj4+ICtjb25maWcgUkVCT09UX01PREUKPj4gKyAgICAgICB0cmlzdGF0ZQo+PiArCj4+
+ICtjb25maWcgU1lTQ09OX1JFQk9PVF9NT0RFCj4+ICsgICAgICAgYm9vbCAiR2VuZXJpYyBTWVND
+T04gcmVnbWFwIHJlYm9vdCBtb2RlIGRyaXZlciIKPj4gKyAgICAgICBkZXBlbmRzIG9uIE9GCj4+
+ICsgICAgICAgc2VsZWN0IFJFQk9PVF9NT0RFCj4+ICsgICAgICAgaGVscAo+PiArICAgICAgICAg
+U2F5IHkgaGVyZSB3aWxsIGVuYWJsZSByZWJvb3QgbW9kZSBkcml2ZXIuIFRoaXMgd2lsbAo+PiAr
+ICAgICAgICAgZ2V0IHJlYm9vdCBtb2RlIGFyZ3VtZW50cyBhbmQgc3RvcmUgaXQgaW4gU1lTQ09O
+IG1hcHBlZAo+PiArICAgICAgICAgcmVnaXN0ZXIsIHRoZW4gdGhlIGJvb3Rsb2FkZXIgY2FuIHJl
+YWQgaXQgdG8gdGFrZSBkaWZmZXJlbnQKPj4gKyAgICAgICAgIGFjdGlvbiBhY2NvcmRpbmcgdG8g
+dGhlIG1vZGUuCj4+ICsKPj4gICBlbmRpZgo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wb3dl
+ci9yZXNldC9NYWtlZmlsZSBiL2RyaXZlcnMvcG93ZXIvcmVzZXQvTWFrZWZpbGUKPj4gaW5kZXgg
+MDk2ZmE2Ny4uYTYzODY1YiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9wb3dlci9yZXNldC9NYWtl
+ZmlsZQo+PiArKysgYi9kcml2ZXJzL3Bvd2VyL3Jlc2V0L01ha2VmaWxlCj4+IEBAIC0yMCwzICsy
+MCw1IEBAIG9iai0kKENPTkZJR19QT1dFUl9SRVNFVF9TWVNDT04pICs9IHN5c2Nvbi1yZWJvb3Qu
+bwo+PiAgIG9iai0kKENPTkZJR19QT1dFUl9SRVNFVF9TWVNDT05fUE9XRVJPRkYpICs9IHN5c2Nv
+bi1wb3dlcm9mZi5vCj4+ICAgb2JqLSQoQ09ORklHX1BPV0VSX1JFU0VUX1JNT0JJTEUpICs9IHJt
+b2JpbGUtcmVzZXQubwo+PiAgIG9iai0kKENPTkZJR19QT1dFUl9SRVNFVF9aWCkgKz0gengtcmVi
+b290Lm8KPj4gK29iai0kKENPTkZJR19SRUJPT1RfTU9ERSkgKz0gcmVib290LW1vZGUubwo+PiAr
+b2JqLSQoQ09ORklHX1NZU0NPTl9SRUJPT1RfTU9ERSkgKz0gc3lzY29uLXJlYm9vdC1tb2RlLm8K
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcG93ZXIvcmVzZXQvcmVib290LW1vZGUuYyBiL2RyaXZl
+cnMvcG93ZXIvcmVzZXQvcmVib290LW1vZGUuYwo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBp
+bmRleCAwMDAwMDAwLi45YWE3YjgwCj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvZHJpdmVycy9w
+b3dlci9yZXNldC9yZWJvb3QtbW9kZS5jCj4+IEBAIC0wLDAgKzEsMTA2IEBACj4+ICsvKgo+PiAr
+ICogQ29weXJpZ2h0IChjKSAyMDE2LCBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBM
+dGQKPj4gKyAqCj4+ICsgKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNhbiBy
+ZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeQo+PiArICogaXQgdW5kZXIgdGhlIHRlcm1zIG9m
+IHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJsaXNoZWQgYnkKPj4gKyAqIHRo
+ZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb247IGVpdGhlciB2ZXJzaW9uIDIgb2YgdGhlIExpY2Vu
+c2UsIG9yCj4+ICsgKiAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLgo+PiArICov
+Cj4+ICsKPj4gKyNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9p
+bml0Lmg+Cj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgv
+bW9kdWxlLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9y
+ZWJvb3QuaD4KPj4gKyNpbmNsdWRlICJyZWJvb3QtbW9kZS5oIgo+PiArCj4+ICsjZGVmaW5lIFBS
+RUZJWCAibW9kZS0iCj4+ICsKPj4gK3N0cnVjdCBtb2RlX2luZm8gewo+PiArICAgICAgIGNoYXIg
+bW9kZVszMl07Cj4+ICsgICAgICAgdW5zaWduZWQgaW50IG1hZ2ljOwo+PiArICAgICAgIHN0cnVj
+dCBsaXN0X2hlYWQgbGlzdDsKPj4gK307Cj4+ICsKPj4gK3N0cnVjdCByZWJvb3RfbW9kZV9kcml2
+ZXIgewo+PiArICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgaGVhZDsKPj4gKyAgICAgICBpbnQgKCp3
+cml0ZSkoaW50IG1hZ2ljKTsKPj4gKyAgICAgICBzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgcmVib290
+X25vdGlmaWVyOwo+PiArfTsKPj4gKwo+PiArc3RhdGljIGludCBnZXRfcmVib290X21vZGVfbWFn
+aWMoc3RydWN0IHJlYm9vdF9tb2RlX2RyaXZlciAqcmVib290LAo+PiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBjb25zdCBjaGFyICpjbWQpCj4+ICt7Cj4+ICsgICAgICAgY29uc3Qg
+Y2hhciAqbm9ybWFsID0gIm5vcm1hbCI7Cj4+ICsgICAgICAgaW50IG1hZ2ljID0gMDsKPj4gKyAg
+ICAgICBzdHJ1Y3QgbW9kZV9pbmZvICppbmZvOwo+PiArCj4+ICsgICAgICAgaWYgKCFjbWQpCj4+
+ICsgICAgICAgICAgICAgICBjbWQgPSBub3JtYWw7Cj4+ICsKPj4gKyAgICAgICBsaXN0X2Zvcl9l
+YWNoX2VudHJ5KGluZm8sICZyZWJvb3QtPmhlYWQsIGxpc3QpIHsKPj4gKyAgICAgICAgICAgICAg
+IGlmICghc3RyY21wKGluZm8tPm1vZGUsIGNtZCkpIHsKPj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgbWFnaWMgPSBpbmZvLT5tYWdpYzsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7
+Cj4+ICsgICAgICAgICAgICAgICB9Cj4+ICsgICAgICAgfQo+PiArCj4+ICsgICAgICAgcmV0dXJu
+IG1hZ2ljOwo+IEluIGFic2VuY2Ugb2YgJ25vcm1hbCcgbW9kZSAoaXQgaXMgbm90IGRlc2NyaWJl
+ZCBhcyByZXF1aXJlZCBwcm9wZXJ0eSkKPiB0aGUgbWFnaWMgd2lsbCBiZSAnMCcuIEl0IHdvdWxk
+IGJlIG5pY2UgdG8gZG9jdW1lbnQgdGhhdCBpbiBiaW5kaW5ncy4KPiBJbWFnaW5lIHNvbWVvbmUg
+Zm9yZ2V0cyBhYm91dCB0aGlzIGFuZCB3aWxsIHdvbmRlciB3aHkgMHgwIGlzIHdyaXR0ZW4KPiB0
+byBoaXMgcHJlY2lvdXMgcmVnaXN0ZXIgb24gbm9ybWFsIHJlYm9vdC4uLgo+Cj4gSXQgd291bGQg
+YmUgbmljZSB0byBkb2N1bWVudCB0aGF0ICdtb2RlLW5vcm1hbCcgaGFzIGEgc3BlY2lhbAo+ICho
+YXJkLWNvZGVkKSBtZWFuaW5nLgo+Cj4+ICt9Cj4+ICsKPj4gK3N0YXRpYyBpbnQgcmVib290X21v
+ZGVfbm90aWZ5KHN0cnVjdCBub3RpZmllcl9ibG9jayAqdGhpcywKPj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgdW5zaWduZWQgbG9uZyBtb2RlLCB2b2lkICpjbWQpCj4+ICt7Cj4+ICsg
+ICAgICAgc3RydWN0IHJlYm9vdF9tb2RlX2RyaXZlciAqcmVib290Owo+PiArICAgICAgIGludCBt
+YWdpYzsKPj4gKwo+PiArICAgICAgIHJlYm9vdCA9IGNvbnRhaW5lcl9vZih0aGlzLCBzdHJ1Y3Qg
+cmVib290X21vZGVfZHJpdmVyLCByZWJvb3Rfbm90aWZpZXIpOwo+PiArICAgICAgIG1hZ2ljID0g
+Z2V0X3JlYm9vdF9tb2RlX21hZ2ljKHJlYm9vdCwgY21kKTsKPj4gKyAgICAgICBpZiAobWFnaWMp
+Cj4+ICsgICAgICAgICAgICAgICByZWJvb3QtPndyaXRlKG1hZ2ljKTsKPj4gKwo+PiArICAgICAg
+IHJldHVybiBOT1RJRllfRE9ORTsKPj4gK30KPj4gKwo+PiAraW50IHJlYm9vdF9tb2RlX3JlZ2lz
+dGVyKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50ICgqd3JpdGUpKGludCkpCj4+ICt7Cj4+ICsgICAg
+ICAgc3RydWN0IHJlYm9vdF9tb2RlX2RyaXZlciAqcmVib290Owo+PiArICAgICAgIHN0cnVjdCBt
+b2RlX2luZm8gKmluZm87Cj4+ICsgICAgICAgc3RydWN0IHByb3BlcnR5ICpwcm9wOwo+PiArICAg
+ICAgIHNpemVfdCBsZW4gPSBzdHJsZW4oUFJFRklYKTsKPj4gKyAgICAgICBpbnQgcmV0Owo+PiAr
+Cj4+ICsgICAgICAgcmVib290ID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpyZWJvb3QpLCBH
+RlBfS0VSTkVMKTsKPj4gKyAgICAgICBpZiAoIXJlYm9vdCkKPj4gKyAgICAgICAgICAgICAgIHJl
+dHVybiAtRU5PTUVNOwo+PiArCj4+ICsgICAgICAgcmVib290LT53cml0ZSA9IHdyaXRlOwo+PiAr
+ICAgICAgIElOSVRfTElTVF9IRUFEKCZyZWJvb3QtPmhlYWQpOwo+PiArICAgICAgIGZvcl9lYWNo
+X3Byb3BlcnR5X29mX25vZGUoZGV2LT5vZl9ub2RlLCBwcm9wKSB7Cj4+ICsgICAgICAgICAgICAg
+ICBpZiAobGVuID4gc3RybGVuKHByb3AtPm5hbWUpIHx8IHN0cm5jbXAocHJvcC0+bmFtZSwgUFJF
+RklYLCBsZW4pKQo+PiArICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKPiBOZXcgbGlu
+ZSBwbGVhc2UgZm9yIHJlYWRhYmlsaXR5Lgo+Cj4+ICsgICAgICAgICAgICAgICBpbmZvID0gZGV2
+bV9remFsbG9jKGRldiwgc2l6ZW9mKCppbmZvKSwgR0ZQX0tFUk5FTCk7Cj4+ICsgICAgICAgICAg
+ICAgICBpZiAoIWluZm8pCj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiAtRU5PTUVN
+Owo+IERpdHRvLgo+Cj4+ICsgICAgICAgICAgICAgICBzdHJjcHkoaW5mby0+bW9kZSwgcHJvcC0+
+bmFtZSArIGxlbik7Cj4gRWhtLCBhbmQgaG93IGRvIHlvdSBwcm90ZWN0IHRoYXQgbmFtZSBvZiBt
+b2RlIGlzIHNob3J0ZXIgdGhhbiAzMiBjaGFyYWN0ZXJzPwo+Cj4+ICsgICAgICAgICAgICAgICBp
+ZiAob2ZfcHJvcGVydHlfcmVhZF91MzIoZGV2LT5vZl9ub2RlLCBwcm9wLT5uYW1lLCAmaW5mby0+
+bWFnaWMpKSB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAicmVib290
+IG1vZGUgJXMgd2l0aG91dCBtYWdpYyBudW1iZXJcbiIsCj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgaW5mby0+bW9kZSk7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIGRldm1f
+a2ZyZWUoZGV2LCBpbmZvKTsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4+
+ICsgICAgICAgICAgICAgICB9Cj4+ICsgICAgICAgICAgICAgICBsaXN0X2FkZF90YWlsKCZpbmZv
+LT5saXN0LCAmcmVib290LT5oZWFkKTsKPj4gKyAgICAgICB9Cj4+ICsgICAgICAgcmVib290LT5y
+ZWJvb3Rfbm90aWZpZXIubm90aWZpZXJfY2FsbCA9IHJlYm9vdF9tb2RlX25vdGlmeTsKPj4gKyAg
+ICAgICByZXQgPSByZWdpc3Rlcl9yZWJvb3Rfbm90aWZpZXIoJnJlYm9vdC0+cmVib290X25vdGlm
+aWVyKTsKPj4gKyAgICAgICBpZiAocmV0KQo+PiArICAgICAgICAgICAgICAgZGV2X2VycihkZXYs
+ICJjYW4ndCByZWdpc3RlciByZWJvb3Qgbm90aWZpZXJcbiIpOwo+PiArCj4+ICsgICAgICAgcmV0
+dXJuIHJldDsKPj4gK30KPj4gK0VYUE9SVF9TWU1CT0xfR1BMKHJlYm9vdF9tb2RlX3JlZ2lzdGVy
+KTsKPj4gKwo+PiArTU9EVUxFX0FVVEhPUigiQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMu
+Y29tIik7Cj4+ICtNT0RVTEVfREVTQ1JJUFRJT04oIlN5c3RlbSByZWJvb3QgbW9kZSBkcml2ZXIi
+KTsKPj4gK01PRFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+cG93ZXIvcmVzZXQvcmVib290LW1vZGUuaCBiL2RyaXZlcnMvcG93ZXIvcmVzZXQvcmVib290LW1v
+ZGUuaAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAwLi40NGVkMzRmCj4+
+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvZHJpdmVycy9wb3dlci9yZXNldC9yZWJvb3QtbW9kZS5o
+Cj4+IEBAIC0wLDAgKzEsNiBAQAo+PiArI2lmbmRlZiBfX1JFQk9PVF9NT0RFX0hfXwo+PiArI2Rl
+ZmluZSBfX1JFQk9PVF9NT0RFX0hfXwo+PiArCj4+ICtpbnQgcmVib290X21vZGVfcmVnaXN0ZXIo
+c3RydWN0IGRldmljZSAqZGV2LCBpbnQgKCp3cml0ZSkoaW50KSk7Cj4gRG9jdW1lbnRhdGlvbiB3
+b3VsZCBiZSBhcHByZWNpYXRlZC4gQWx0aG91Z2ggaXQgaXMgbG9jYWwgaGVhZGVyIGJ1dAo+IHlv
+dSBkZWNvdXBsZWQgdGhlbSBhbmQgeW91IGFyZSBleHBvcnRpbmcgdGhlIGZ1bmN0aW9uLgoKICAg
+IFlvdSB3YW50IHRoaXMgZHJpdmVyIGJlaW5nIGEgbW9kdWxlIGluIFY5LCBzbyB5b3UgbWF5IGFs
+c28gd2FudAogIEkgZG9jdW1lbnQgdGhpcyBmdW5jdGlvbiB3aGVuIGEgZXhwb3J0aW5nIGl0LiBX
+aGVyZSBJIHNob3VsZCB3cml0ZSB0aGUKICBkb2N1bWVudGF0aW9uLCBhbmQgd291bGQgeW91IHBs
+ZWFzZSBnaXZlIG1lIHNvbWUgZXhhbXBsZT8KPj4gKwo+PiArI2VuZGlmCj4+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL3Bvd2VyL3Jlc2V0L3N5c2Nvbi1yZWJvb3QtbW9kZS5jIGIvZHJpdmVycy9wb3dl
+ci9yZXNldC9zeXNjb24tcmVib290LW1vZGUuYwo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBp
+bmRleCAwMDAwMDAwLi5kMTUyMWQ4Cj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvZHJpdmVycy9w
+b3dlci9yZXNldC9zeXNjb24tcmVib290LW1vZGUuYwo+PiBAQCAtMCwwICsxLDY1IEBACj4+ICsv
+Kgo+PiArICogQ29weXJpZ2h0IChjKSAyMDE2LCBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3Mg
+Q28uLCBMdGQKPj4gKyAqCj4+ICsgKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91
+IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeQo+PiArICogaXQgdW5kZXIgdGhlIHRl
+cm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJsaXNoZWQgYnkKPj4g
+KyAqIHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb247IGVpdGhlciB2ZXJzaW9uIDIgb2YgdGhl
+IExpY2Vuc2UsIG9yCj4+ICsgKiAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLgo+
+PiArICovCj4+ICsKPj4gKyNpbmNsdWRlIDxsaW51eC9pbml0Lmg+Cj4+ICsjaW5jbHVkZSA8bGlu
+dXgvbW9kdWxlLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+ICsjaW5jbHVkZSA8
+bGludXgvb2YuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4gSSBkb24ndCBz
+ZWUgdGhlIG5lZWQgb2Ygb2ZfYWRkcmVzcyBvciBhbSBJIG1pc3Npbmcgc29tZXRoaW5nPwo+Cj4+
+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgv
+cmVib290Lmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4+ICsjaW5jbHVkZSA8bGlu
+dXgvbWZkL3N5c2Nvbi5oPgo+PiArI2luY2x1ZGUgInJlYm9vdC1tb2RlLmgiCj4+ICsKPj4gK3N0
+YXRpYyBzdHJ1Y3QgcmVnbWFwICptYXA7Cj4+ICtzdGF0aWMgdTMyIG9mZnNldDsKPj4gK3N0YXRp
+YyB1MzIgbWFzayA9IDB4ZmZmZmZmZmY7Cj4gV2h5IHRoaXMgY2Fubm90IGJlIHBhcnQgb2Ygc3Rh
+dGUgY29udGFpbmVyPyBJIHN1cHBvc2UgdXN1YWxseSB0aGVyZQo+IHdpbGwgYmUgb25seSBvbmUg
+cmVib290IG1vZGUgaGFuZGxlciwgYnV0Ogo+IDEuIEl0IGlzIGFsd2F5cyBuaWNlIHRvIG1ha2Ug
+dGhpbmdzIHNlbGYtY29udGFpbmVkLCBzbyBjb2RlIGNvdWxkIGJlCj4gZWFzaWx5IHVzZWQgaW4g
+ZGlmZmVyZW50IGNvbnRleHRzLiBEZXBlbmRpbmcgb24gc3RhdGljIHZhcmlhYmxlcwo+IHByZXZl
+bnRzIHRoYXQuCj4gMi4gSG93IGRvIHlvdSBwcm90ZWN0IGFnYWluc3QgZG91YmxlIGJpbmRpbmcg
+KHR3byByZWJvb3QgbW9kZSBkZXZpY2UKPiBub2RlcyBpbiBEVCk/IFRoZSBzZWNvbmQgYmluZGlu
+ZyAocHV0IGJ5IG1pc3Rha2UuLi4gb3Igd2hhdGV2ZXIKPiByZWFzb24pIHdpbGwgb3ZlcndyaXRl
+IGRhdGEgdXNlZCBieSBwcmV2aW91cyBkZXZpY2UuCj4KPj4gKwo+PiArc3RhdGljIGludCBzeXNj
+b25fcmVib290X21vZGVfd3JpdGUoaW50IG1hZ2ljKQo+PiArewo+PiArICAgICAgIHJlZ21hcF91
+cGRhdGVfYml0cyhtYXAsIG9mZnNldCwgbWFzaywgbWFnaWMpOwo+PiArCj4+ICsgICAgICAgcmV0
+dXJuIDA7Cj4gV2h5IGlnbm9yaW5nIHJldHVybiB2YWx1ZSBvZiByZWdtYXBfdXBkYXRlX2JpdHM/
+Cj4KPj4gK30KPj4gKwo+PiArc3RhdGljIGludCBzeXNjb25fcmVib290X21vZGVfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gK3sKPj4gKyAgICAgICBpbnQgcmV0Owo+PiAr
+Cj4+ICsgICAgICAgbWFwID0gc3lzY29uX25vZGVfdG9fcmVnbWFwKHBkZXYtPmRldi5wYXJlbnQt
+Pm9mX25vZGUpOwo+PiArICAgICAgIGlmIChJU19FUlIobWFwKSkKPj4gKyAgICAgICAgICAgICAg
+IHJldHVybiBQVFJfRVJSKG1hcCk7Cj4gRW1wdHkgbGluZSBmb3IgcmVhZGFiaWxpdHkuCj4KPj4g
+KyAgICAgICBpZiAob2ZfcHJvcGVydHlfcmVhZF91MzIocGRldi0+ZGV2Lm9mX25vZGUsICJvZmZz
+ZXQiLCAmb2Zmc2V0KSkKPj4gKyAgICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+IEVtcHR5
+IGxpbmUgZm9yIHJlYWRhYmlsaXR5Lgo+Cj4gQmVzdCByZWdhcmRzLAo+IEtyenlzenRvZgo+Cj4K
+Pgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
