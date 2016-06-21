@@ -1,57 +1,79 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
-Date: Tue, 21 Jun 2016 11:09:58 +0300
-Message-ID: <87shw7nesp.fsf@linux.intel.com>
-References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] drm/rockchip: Finish initialization before registering
+ DRM device
+Date: Tue, 21 Jun 2016 10:39:02 +0200
+Message-ID: <20160621083901.GT23520@phenom.ffwll.local>
+References: <1466483254-35373-1-git-send-email-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, William Wu <william.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1466483254-35373-1-git-send-email-tfiga@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shunqian Zheng <zhengsq@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-
-Hi,
-
-William Wu <william.wu@rock-chips.com> writes:
-> This patch adds the devicetree documentation required for Rockchip
-> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
->
-> It supports DRD mode, and could operate in device mode (SS, HS, FS)
-> and host mode (SS, HS, FS, LS).
->
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-
-I'm dropping this series until comments are sorted out.
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJXaPZWAAoJEIaOsuA1yqREN8EP/1XYVZRld8KbDUhONsT8YOM1
-JLygTm+FHoPTXqkkGl/e4pEX0W8reZDMnduhJ840YItx6wRKOutiur55ghoD8kEj
-Py+9Wj/6FnI+4jBtQTGBRo1EKnWrZ1Pi9BAuDPqJBPaT3iYngRCbFGvBEtBQgSMf
-oS2WKJeNDvKFlJDMHqg45lVcMyxpllocyQSX16s+RQDw0vnRO8zVXch5r9m+RZm9
-7eiwu/Fj6A+mZc71Z9ThRhTCqTkLW7hNpmAsCSkPvUEXV9hAhUqDoUjzW1ZunkZJ
-+qth6mbd0wmJG3BBrfPJNzC+BHU6xu9ws9XTBKYhalEBxzSdqNo2DSEM2CJDtXtH
-VtADzEmNPLdU3NVQeDLmE8IDEII246dz90hintksuGtwVOy+NumVWLxWmkOt+UWi
-fSJdslKq/tpuvvTN4WkmDcuAEE/vk2KzCElbdpv5B1wuMnIyxlH7+0B/popGfW7L
-RSPEIs6hSzsuYX0uaZkwkBMlsIktD2UuR7KoZ/W2gPNhQqzWo4aSNPeLES/WPIlj
-PtzxCOaU2E6joaRewea6U9Nsn1Iz5olvrMojT/+T15dEu0Uyl1ry75tkUo03PNso
-/NV4UTRYwdBT9SKfKRXY5B8jG4h5a02VUYnDmcm2igKTGHajlou4TetHyqNjiUhu
-klBDAqP7maibyDvaj2cg
-=6Mno
------END PGP SIGNATURE-----
---=-=-=--
+T24gVHVlLCBKdW4gMjEsIDIwMTYgYXQgMDE6Mjc6MzRQTSArMDkwMCwgVG9tYXN6IEZpZ2Egd3Jv
+dGU6Cj4gQ3VycmVudGx5IHRoZSBkcml2ZXIgY2FsbHMgZHJtX2Rldl9yZWdpc3RlcigpIGRpcmVj
+dGx5IGFmdGVyIGFsbG9jYXRpbmcKPiB0aGUgRFJNIGRldmljZSBhbmQgdGhlbiBjb250aW51ZXMg
+d2l0aCBmdXJ0aGVyIGluaXRpYWxpemF0aW9uLiBUaGlzIGlzCj4gaW5jb3JyZWN0LCBiZWNhdXNl
+IGRybV9kZXZfcmVnaXN0ZXIoKSBpcyBzdXBwb3NlZCB0byBiZSBjYWxsZWQgYWZ0ZXIgYWxsCj4g
+aW5pdGlhbGl6YXRpb24gaXMgZG9uZS4gVGhpcyBwcm9ibGVtIHdhcyBtYXNrZWQgYnkgdGhlIGZh
+Y3QgdGhhdAo+IGRybV9kZXZfcmVnaXN0ZXIoKSBkaWQgbm90IHVzZSB0byBkbyBhbnl0aGluZyBz
+cGVjaWFsIGJlZm9yZSwgYnV0Cj4gcmVjZW50bHkgaXQgc3RhcnRlZCB0byBjYWxsIGRybV9jb25u
+ZWN0b3JfcmVnaXN0ZXJfYWxsKCksIHdoaWNoIGxlYWRzIHRvCj4gYSBjcmFzaCBpZiB0aGUgZHJp
+dmVyIGlzIG5vdCBmdWxseSBpbml0aWFsaXplZC4KPiAKPiBUaGlzIHBhdGNoIGZpeGVzIHRoZSBw
+cm9ibGVtIGJ5IG1vdmluZyB0aGUgY2FsbCB0byBkcm1fZGV2X3JlZ2lzdGVyKCkgdG8KPiB0aGUg
+ZW5kIG9mIHRoZSBpbml0aWFsaXphdGlvbiBzZXF1ZW5jZSBhbmQgYWxzbyByZW1vdmluZyB0aGUs
+IG5vdwo+IHVubmVjZXNzYXJ5LCBjYWxsIHRvIGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCkg
+ZnJvbSBkcml2ZXIgY29kZS4KPiAKPiBGaXhlczogZjcwNjk3NGE2OWI2ICgiZHJtL3JvY2tjaGlw
+OiBEcm9wIGRybV9kcml2ZXIubG9hZC91bmxvYWQgY2FsbGJhY2tzIikKPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgoKT29wcywgbW9yZSBmYWxsb3V0
+IGZyb20gdGhlIHJlZ2lzZXRlci91bnJlZ2lzdGVyIGNsZWFudXAuIFNvcnJ5IGFib3V0CnRoYXQs
+IGFwcGxpZWQgdG8gZHJtLW1pc2MuCi1EYW5pZWwKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAxOCArKysrKysrLS0tLS0tLS0tLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggMGQyODQ1NS4u
+ZTJjMzFkMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
+cnYuYwo+IEBAIC0xNDYsMTYgKzE0NiwxMiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5k
+KHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCWlmICghZHJtX2RldikKPiAgCQlyZXR1cm4gLUVOT01F
+TTsKPiAgCj4gLQlyZXQgPSBkcm1fZGV2X3JlZ2lzdGVyKGRybV9kZXYsIDApOwo+IC0JaWYgKHJl
+dCkKPiAtCQlnb3RvIGVycl9mcmVlOwo+IC0KPiAgCWRldl9zZXRfZHJ2ZGF0YShkZXYsIGRybV9k
+ZXYpOwo+ICAKPiAgCXByaXZhdGUgPSBkZXZtX2t6YWxsb2MoZHJtX2Rldi0+ZGV2LCBzaXplb2Yo
+KnByaXZhdGUpLCBHRlBfS0VSTkVMKTsKPiAgCWlmICghcHJpdmF0ZSkgewo+ICAJCXJldCA9IC1F
+Tk9NRU07Cj4gLQkJZ290byBlcnJfdW5yZWdpc3RlcjsKPiArCQlnb3RvIGVycl9mcmVlOwo+ICAJ
+fQo+ICAKPiAgCWRybV9kZXYtPmRldl9wcml2YXRlID0gcHJpdmF0ZTsKPiBAQCAtMTk3LDEyICsx
+OTMsNiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikK
+PiAgCWlmIChyZXQpCj4gIAkJZ290byBlcnJfZGV0YWNoX2RldmljZTsKPiAgCj4gLQlyZXQgPSBk
+cm1fY29ubmVjdG9yX3JlZ2lzdGVyX2FsbChkcm1fZGV2KTsKPiAtCWlmIChyZXQpIHsKPiAtCQlk
+ZXZfZXJyKGRldiwgImZhaWxlZCB0byByZWdpc3RlciBjb25uZWN0b3JzXG4iKTsKPiAtCQlnb3Rv
+IGVycl91bmJpbmQ7Cj4gLQl9Cj4gLQo+ICAJLyogaW5pdCBrbXMgcG9sbCBmb3IgaGFuZGxpbmcg
+aHBkICovCj4gIAlkcm1fa21zX2hlbHBlcl9wb2xsX2luaXQoZHJtX2Rldik7Cj4gIAo+IEBAIC0y
+MjIsOSArMjEyLDE1IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0IGRldmlj
+ZSAqZGV2KQo+ICAJaWYgKHJldCkKPiAgCQlnb3RvIGVycl92YmxhbmtfY2xlYW51cDsKPiAgCj4g
+KwlyZXQgPSBkcm1fZGV2X3JlZ2lzdGVyKGRybV9kZXYsIDApOwo+ICsJaWYgKHJldCkKPiArCQln
+b3RvIGVycl9mYmRldl9maW5pOwo+ICsKPiAgCWlmIChpc19zdXBwb3J0X2lvbW11KQo+ICAJCWFy
+bV9pb21tdV9yZWxlYXNlX21hcHBpbmcobWFwcGluZyk7Cj4gIAlyZXR1cm4gMDsKPiArZXJyX2Zi
+ZGV2X2Zpbmk6Cj4gKwlyb2NrY2hpcF9kcm1fZmJkZXZfZmluaShkcm1fZGV2KTsKPiAgZXJyX3Zi
+bGFua19jbGVhbnVwOgo+ICAJZHJtX3ZibGFua19jbGVhbnVwKGRybV9kZXYpOwo+ICBlcnJfa21z
+X2hlbHBlcl9wb2xsX2Zpbmk6Cj4gLS0gCj4gMi44LjAucmMzLjIyNi5nMzlkNDAyMAo+IAo+IF9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVs
+IG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gCkRh
+bmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9i
+bG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
