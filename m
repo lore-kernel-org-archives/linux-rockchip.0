@@ -1,43 +1,58 @@
-From: Ben Dooks <ben.dooks@codethink.co.uk>
-Subject: [PATCH] pinctrl: rockchip: make rockchip_irq_gc_mask_set_bit static
-Date: Tue, 21 Jun 2016 18:38:21 +0100
-Message-ID: <1466530701-26685-1-git-send-email-ben.dooks@codethink.co.uk>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: linux-kernel@lists.codethink.co.uk
-Cc: Ben Dooks <ben.dooks@codethink.co.uk>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] net: stmmac: dwmac-rk: add rk3228-specific data
+Date: Tue, 21 Jun 2016 16:58:42 -0500
+Message-ID: <20160621215842.GA16151@rob-hp-laptop>
+References: <1466512409-18855-1-git-send-email-zhengxing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1466512409-18855-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockchip_irq_gc_mask_set_bit() function is not exported our used
-outside of ppinctrl-rockchip.c so fix the following sparse error by
-making it static:
+On Tue, Jun 21, 2016 at 08:33:28PM +0800, Xing Zheng wrote:
+> Add constants and callback functions for the dwmac on rk3228/rk3229 socs.
+> As can be seen, the base structure is the same, only registers and the
+> bits in them moved slightly.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v2:
+> - the "rk322x" is not clear to SoC decription, rename it to "rk3228"
+> 
+>  .../devicetree/bindings/net/rockchip-dwmac.txt     |    3 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     |  117 ++++++++++++++++++++
+>  2 files changed, 119 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> index 93eac7c..cccd945 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> @@ -3,7 +3,8 @@ Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
+>  The device node has following properties.
+>  
+>  Required properties:
+> - - compatible: Can be one of "rockchip,rk3288-gmac", "rockchip,rk3368-gmac"
+> + - compatible: Can be one of "rockchip,rk3228-gmac", "rockchip,rk3288-gmac",
+> +                             "rockchip,rk3368-gmac"
 
-drivers/pinctrl/pinctrl-rockchip.c:2010:6: warning: symbol 'rockchip_irq_gc_mask_set_bit' was not declared. Should it be static?
+Not worth reposting just for this, but 1 per line is preferred.
 
-Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
----
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-gpio@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/pinctrl/pinctrl-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a91026e..7d679c2 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2007,7 +2007,7 @@ static void rockchip_irq_gc_mask_clr_bit(struct irq_data *d)
- 	irq_gc_mask_clr_bit(d);
- }
- 
--void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
-+static void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
--- 
-2.8.1
-
+>   - reg: addresses and length of the register sets for the device.
+>   - interrupts: Should contain the GMAC interrupts.
+>   - interrupt-names: Should contain the interrupt names "macirq".
