@@ -1,50 +1,31 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v4 0/8] iommu/rockchip: Fix bugs and enable on ARM64
-Date: Tue, 21 Jun 2016 15:52:02 +0200
-Message-ID: <20160621135202.GK28248@8bytes.org>
-References: <1466483681-36110-1-git-send-email-tfiga@chromium.org>
- <CAAFQd5B8sxbZ6MymwDKL4vZkfQ-ej_bNh7tS1OhRC=X7-eie+Q@mail.gmail.com>
- <20160621125435.GE11432@8bytes.org> <2015742.xhx642kbrC@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] net: stmmac: dwmac-rk: add rk3228-specific data
+Date: Tue, 21 Jun 2016 16:51:51 +0200
+Message-ID: <2585964.YhYKyZXPJu@diego>
+References: <1466512409-18855-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <2015742.xhx642kbrC@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Shunqian Zheng <zhengsq@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1466512409-18855-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMjEsIDIwMTYgYXQgMDM6MTg6NDlQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gQW0gRGllbnN0YWcsIDIxLiBKdW5pIDIwMTYsIDE0OjU0OjM1IHNjaHJpZWIgSm9l
-cmcgUm9lZGVsOgo+ID4gSGkgVG9tYXN6LAo+ID4gCj4gPiBPbiBUdWUsIEp1biAyMSwgMjAxNiBh
-dCAwOTo0MjoxNlBNICswOTAwLCBUb21hc3ogRmlnYSB3cm90ZToKPiA+ID4gSW4gc2ltcGxlIHdv
-cmRzLCBEUk0gcGF0Y2hlcyBkZXBlbmQgb24gSU9NTVUgcGF0Y2hlcy4KPiA+ID4gCj4gPiA+IE1v
-cmUgcHJlY2lzZWx5OiBUaGUgSU9NTVUgcGF0Y2hlcyBhbG9uZSBhcmUgc3VwcG9zZWQgdG8gbm90
-IGJyZWFrCj4gPiA+IGFueXRoaW5nLiBTYW1lIGdvZXMgZm9yIHRoZSBmaXJzdCBEUk0gcGF0Y2gg
-KDcvOCkuIE9ubHkgc2Vjb25kIERSTQo+ID4gPiBwYXRjaCAoOC84KSBkZXBlbmRzIG9uIGNoYW5n
-ZXMgaW50cm9kdWNlZCBieSBpdHMgcHJlZGVjZXNzb3JzLgo+ID4gCj4gPiBUaGUgZmlyc3QgRFJN
-IHBhdGNoIGlzIDYvNywgc28gaXQgaXMgNy84IHdpdGggdGhlIGlvbW11IGRlcGVuZGVuY3ksCj4g
-PiByaWdodD8gQW55d2F5LCBJIHRoaW5rIHRoZSBiZXN0IGlzIEkgdGFrZSB0aGUgaW9tbXUgcGF0
-Y2hlcyB3aGVuIEhlaWtvCj4gPiBpcyBvayB3aXRoIHRoZW0gYW5kIHRoZW4gdGhlIERSTSB0cmVl
-IGNhbiBtZXJnZSB0aGF0IGJyYW5jaCBpbiB0byBhcHBseQo+ID4gdGhlIERSTSBwYXRjaGVzLgo+
-ID4gCj4gPiBCdXQgZmlyc3QgSGVpa28gc2hvdWxkIGhhdmUgYSBsb29rIGF0IHRoZSBwYXRjaGVz
-Lgo+IAo+IEkgdGhpbmsgZnJvbSBhbGwgaGlzIHByZXZpb3VzIHdvcmsgb24gdGhlIHJvY2tjaGlw
-IGlvbW11cyBUb21hc3ogaXMgYSBsb3QgbW9yZSAKPiBxdWFsaWZpZWQgdG8ganVkZ2UgdGhlbSAt
-IHdoaWNoIEkgZ3Vlc3MgaGUgZGlkIHdoZW4gcGlja2luZyB1cCB0aGUgb25lcyBmcm9tIAo+IFJv
-Y2tjaGlwIGRldnMgOi0pIC4KCkluIHRoYXQgY2FzZSB5b3UgZ3V5cyBzaG91bGQgcHJvYmFibHkg
-Y28tbWFpbnRhaW4gdGhhdCBkcml2ZXI/Cj4gCj4gPkZyb20gYSBzdHlsZS1zaWRlLCBwbGVhc2Ug
-ZG9uJ3QgY2FycnkgdGhlIFJldmlld2VkLW9uIGdlcnJpdCB0YWdzIG92ZXIgdG8gCj4gbWFpbmxp
-bmUgcGF0Y2hlcyAocGF0Y2hlcyAxIGFuZCAyKS4KCk9rYXkuCgoKCglKb2VyZwoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Dienstag, 21. Juni 2016, 20:33:28 schrieb Xing Zheng:
+> Add constants and callback functions for the dwmac on rk3228/rk3229 socs.
+> As can be seen, the base structure is the same, only registers and the
+> bits in them moved slightly.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
