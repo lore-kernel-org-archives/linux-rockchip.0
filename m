@@ -1,96 +1,136 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v6 2/2] phy: rockchip-inno-usb2: add a new driver for
- Rockchip usb2phy
-Date: Tue, 21 Jun 2016 11:05:14 +0200
-Message-ID: <2284777.mdEtFaarym@diego>
-References: <1466129353-48063-1-git-send-email-frank.wang@rock-chips.com>
- <CABXOdTcz9zjJ1iN2D9UXeYgd0y-kzh+fV3=+kmB=8j2jYqTQkg@mail.gmail.com>
- <986b53d6-ef65-bc1f-38a8-f981e23a6f02@rock-chips.com>
+From: William Wu <william.wu@rock-chips.com>
+Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
+Date: Tue, 21 Jun 2016 17:11:44 +0800
+Message-ID: <576904D0.6060005@rock-chips.com>
+References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com> <12544596.GMXFpFZvx9@phil> <5763C083.2030304@rock-chips.com> <4674233.DVms812T4a@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <986b53d6-ef65-bc1f-38a8-f981e23a6f02-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, pawel.moll-5wv7dgnIgG8@public.gmane.org, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Content-Type: text/plain; charset=ISO-8859-1;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4674233.DVms812T4a@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>
+Cc: gregkh@linuxfoundation.org, balbi@kernel.org, linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
+Dear Heiko,
 
-Am Dienstag, 21. Juni 2016, 15:52:45 schrieb Frank Wang:
-> On 2016/6/20 12:56, Guenter Roeck wrote:
-> > On Sun, Jun 19, 2016 at 8:32 PM, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> 
-wrote:
-> >>> Turns out my problem was one of terminology. Using "suspend" and
-> >>> "resume" to me suggested the common use of suspend and resume
-> >>> functions. That is not the case here. After mentally replacing
-> >>> "suspend" with "power_off" and "resume" with "power_on", you are
-> >>> right, no problem exists. Sorry for the noise.
-> >>> 
-> >>> Maybe it would be useful to replace "resume" with "power_on" and
-> >>> "suspend" with "power_off" in the function and variable names to
-> >>> reduce confusion and misunderstandings.
-> >>> 
-> >>> Thanks,
-> >>> Guenter
-> >> 
-> >> Well, it does have a bits confusion, however, the phy-port always just
-> >> goes
-> >> to suspend and resume mode (Not power off and power on) in a fact. So
-> >> must
-> >> it be renamed?
-> > 
-> > Other phy drivers name the functions _power_off and _power_on and
-> > avoid the confusion. The callbacks are named .power_off and .power_on,
-> > which gives a clear indication of its intended purpose. Other drivers
-> > implementing suspend/resume (such as the omap usb phy driver) tie
-> > those functions not into the power_off/power_on callbacks, but into
-> > the driver's suspend/resume callbacks. At least the omap driver has
-> > separate power management functions.
-> > 
-> > Do the functions _have_ to be renamed ? Surely not. But, if the
-> > functions are really suspend/resume functions and not
-> > power_off/power_on functions, maybe they should tie to the
-> > suspend/resume functions and not register themselves as
-> > power_off/power_on functions ?
-> 
-> As Guenter mentioned above,  I doped out two solutions, one is that keep
-> current process but renaming *_resume/*_suspend to
-> *_power_on/*_power_off;
+On 06/20/2016 10:44 PM, Heiko St=FCbner wrote:
+> Hi William,
+>
+> Am Freitag, 17. Juni 2016, 17:18:59 schrieb William Wu:
+>> On 06/17/2016 07:15 AM, Heiko St=FCbner wrote:
+>>> Am Donnerstag, 2. Juni 2016, 20:34:56 schrieb William Wu:
+>>>> This patch adds the devicetree documentation required for Rockchip
+>>>> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
+>>>>
+>>>> It supports DRD mode, and could operate in device mode (SS, HS, FS=
+)
+>>>> and host mode (SS, HS, FS, LS).
+>>>>
+>>>> Signed-off-by: William Wu <william.wu@rock-chips.com>
+> [...]
+>
+>>>> +Optional clocks:
+>>>> +  "aclk_usb3otg0"	Aclk for specific usb controller clock.
+> what does this clock do? Also most likely same argument as below.
+Here is partial rk3399 clk tree about usb3:
 
-in a way, naming stuff "power_off", "power_on" actually matches. For one, the 
-phy-block goes from unusable to usable by usb-devices and also will power-on a 
-phy-supply regulator (often named vcc_host* on Rockchip boards) from the phy-
-core.
+aclk_usb3                       7            7   297000000 0 0
+              aclk_usb3_grf                1            1=20
+297000000          0 0
+              aclk_usb3_rksoc_axi_perf     1            1=20
+297000000          0 0
+              aclk_usb3otg1                1            1=20
+297000000          0 0
+              aclk_usb3otg0                1            1=20
+297000000          0 0
+              aclk_usb3_noc                1            1=20
+297000000          0 0
 
-> another is that do not assign power_on/power_off
-> functions for phy_ops at phy creating time, then, shorten
-> _SCHEDULE_DELAY_ delay time less that 10 Seconds, and the phy-port
-> suspend/resume mechanism depend on _sm_work_ completely.
+from the clk tree, and check with our IC designers, we can see that:
+1. aclk_usb3 is the parent clk of aclk_usb3****
+2. aclk_usb3_grf  is used for both otg0 and otg1 grf, and these usb3 gr=
+f=20
+can be set
+to control otg0 and otg1 controller, but not the phy.
+3. aclk_usb3otg1 is otg1 controller clk,  aclk_usb3otg0 is otg0=20
+controller clk.
+4. aclk_usb3_rksoc_axi_perf is the clk for usb3 performance monitor mod=
+ule.
+5. aclk_usb3_noc is the clk for soc bus interconnect.
 
-Which in turn would mean that we would always depend on a fully controllable 
-phy block. Right now it seems, rk3036, rk3228, rk3368 (probably forgot some) 
-have the same type of phy, but with at least the unplug-detection missing.
-In its current form the driver can very well support those (later on) by 
-simply working statically (only acting on phy_power callbacks and not going to 
-suspend on its own).
+>
+>>>> +  "aclk_usb3_rksoc_axi_perf"  USB AXI perf clock.  Not present on=
+ all
+>>>> platforms.
+>>> The clock names looks pretty strange. What are they for? Especially=
+ as
+>>> nothing seems to use them right now.
+>> "aclk_usb3_rksoc_axi_perf", it's the clk for usb3 performance monito=
+r
+>> module, you can refer to the GRF_USB3_PERF_xxx. And we don't use the=
+ usb3
+>> performance monitor control registers right now.
+> ok, then I'd suggest not defining the clock for now.
+>
+> For one, there are more perf blocks in the GRF (usb3, pcie, hdcp22, g=
+mac, gpu,
+> etc) which all seem to share a somewhat similar design, so they will =
+maybe
+> result in a separate driver of some form for the performance monitors=
+=2E
+>
+> And secondly, it is somewhat easy to add new optional properties, but=
+ you
+> cannot remove anything defined previously. So if we later decide to h=
+andle all
+> the performance monitors differently, you can't remove that clock fro=
+m the
+> binding again. (or at least only with quite a bit of hassle).
+>
+> So as this clock isn't used at all yet, I guess it should not get inc=
+luded
+> now.
+Yes, I agree with you. We can remove the aclk_usb3_rksoc_axi_perf right=
+ now.
+>
+>>>> +  "aclk_usb3_grf"	USB grf clock.  Not present on all platforms.
+>>> for my own education, which part of the GRF does this clock supply?
+>> "aclk_usb3_grf", it's the clk for USB3 grf, e.g. GRF_USB3OTGX_CONX
+> Hmm, this looks more like it belongs to the otg phy?
+> Anyway, also seems unused right now, so same argument as above applie=
+s here.
+As I have described above, the "aclk_usb3_grf" is  used for both otg0=20
+and otg1 grf,
+and these usb3 grf can be set to control otg0 and otg1 controller, but=20
+not the phy.
+And we have done a test that remove the grf clk, and the result showed=20
+that usb3
+controller can't work normally. So I think we need the usb3 grf clk.
 
-Also having the work running in 10-second intervall seems wasteful.
+So about the usb3 controller clk management, I think it should contain=20
+the following clk:
+1.  aclk_usb3otg1
+2.  aclk_usb3otg0
+3.  aclk_usb3_grf
+4.  aclk_usb3_noc
+=46or "aclk_usb3_noc", I discuss with our clk manager, the clk is alway=
+s=20
+on before,
+but according to upstream maintainer's suggestion, we need to manage th=
+e=20
+noc clk by each module.
 
-> 
-> So which is the better way from your view? or would you like to give
-> other unique perceptions please?
+and the follow two clk can be removed:
+1. aclk_usb3
+2. aclk_usb3_rksoc_axi_perf
 
-As obvious from the above, I would prefer just renaming the functions :-)
-
-
-Heiko
+Is it ok?
+>
+>
+> Heiko
+>
+>
+>
