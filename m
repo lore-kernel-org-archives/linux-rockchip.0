@@ -1,53 +1,107 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/8] iommu/rockchip: Fix bugs and enable on ARM64
-Date: Tue, 21 Jun 2016 15:18:49 +0200
-Message-ID: <2015742.xhx642kbrC@diego>
-References: <1466483681-36110-1-git-send-email-tfiga@chromium.org>
-	<CAAFQd5B8sxbZ6MymwDKL4vZkfQ-ej_bNh7tS1OhRC=X7-eie+Q@mail.gmail.com>
-	<20160621125435.GE11432@8bytes.org>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v3 0/10]
+Date: Tue, 21 Jun 2016 19:16:35 +0530
+Message-ID: <5769453B.5070208@codeaurora.org>
+References: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20160621125435.GE11432-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>, Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.vetter@ffwll.ch, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Javier Martinez Canillas <javier@osg.samsung.com>, Tomasz Figa <tomasz.figa@chromium.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 21. Juni 2016, 14:54:35 schrieb Joerg Roedel:
-> Hi Tomasz,
-> 
-> On Tue, Jun 21, 2016 at 09:42:16PM +0900, Tomasz Figa wrote:
-> > In simple words, DRM patches depend on IOMMU patches.
-> > 
-> > More precisely: The IOMMU patches alone are supposed to not break
-> > anything. Same goes for the first DRM patch (7/8). Only second DRM
-> > patch (8/8) depends on changes introduced by its predecessors.
-> 
-> The first DRM patch is 6/7, so it is 7/8 with the iommu dependency,
-> right? Anyway, I think the best is I take the iommu patches when Heiko
-> is ok with them and then the DRM tree can merge that branch in to apply
-> the DRM patches.
-> 
-> But first Heiko should have a look at the patches.
-
-I think from all his previous work on the rockchip iommus Tomasz is a lot more 
-qualified to judge them - which I guess he did when picking up the ones from 
-Rockchip devs :-) .
-
-From a style-side, please don't carry the Reviewed-on gerrit tags over to 
-mainline patches (patches 1 and 2).
-
-Other than that, I didn't see anything jump out and it looks all pretty nice.
-
-
-Heiko
+CgpPbiA2LzE0LzIwMTYgNToxNSBQTSwgWWFraXIgWWFuZyB3cm90ZToKPiBSSzMzOTkgYW5kIFJL
+MzI4OCBzaGFyZWQgdGhlIHNhbWUgZURQIElQIGNvbnRyb2xsZXIsIG9ubHkgc29tZSBsaWdodAo+
+IGRpZmZlcmVuY2Ugd2l0aCBWT1AgY29uZmlndXJlIGFuZCBHUkYgY29uZmlndXJlLgo+Cj4gQWxz
+byBzYW1lIG1pc2MgZml4IHRvIGFuYWxvZ2l4X2RwIGRyaXZlcjoKPiAtIEhvdHBsdWcgaW52YWxp
+ZCB3aGljaCByZXBvcnQgYnkgRGFuIENhcnBlbnRlcgo+IC0gTWFrZSBwYW5lbCBkZXRlY3QgdG8g
+YW4gb3B0aW9uYWwgYWN0aW9uCj4gLSBjb3JyZWN0IHRoZSByZWdpc3RlciBiaXQgZGVmaW5lIGVy
+cm9yIGluIEFOQUxPR0lYX0RQX1BMTF9SRUdfMQo+Cj4KPiBDaGFuZ2VzIGluIHYzOgo+IC0gQ29y
+cmVjdCB0aGUgbWlzc3BlbGwgb2YgIm1hcmNvcyIgaW4gY29tbWl0IG1lc3NhZ2UgKERvbWluaWss
+IHJldmlld2VkIGF0IEdvb2dsZSBHZXJyaXQpCj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZp
+ZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2MzEyLzkvL0NPTU1JVF9NU0dAOV0KPiAtIEFkZCBy
+ZXZpZXdlZCBmbGFnIGZyb20gU3TDqXBoYW5lLgo+ICAgICAgW2h0dHBzOi8vY2hyb21pdW0tcmV2
+aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxMi8xNl0KPiAtIEFkZCB0ZXN0ZWQgZmxhZyBm
+cm9tIEphdmllci4KPiAtIFdyaXRlIGEga2VybmVsZG9jLXN0eWxlIGNvbW1lbnQgZXhwbGFpbmlu
+ZyB0aGUgY2hpcHMgZGF0YSBmaWVsZHMgKFRvbWFzeiwgcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJp
+dCkKPiAgICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8z
+NDYzMTMvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNA
+MzldCj4gLSBEcm9wIHRoZSAnLmxjZGNzZWxfbWFzaycgbnVtYmVyIGluIGNoaXBzIGRhdGEgZmll
+bGQgKFRvbWFzeiwgcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPiAgICAgIFtodHRwczovL2No
+cm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTMvMTAvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNAMzgyXQo+IC0gQWRkIGFja2VkIGZs
+YWcgZnJvbSBNYXJrLgo+IC0gQWRkIHJldmlld2VkIGZsYWcgZnJvbSBUb21hc3ouCj4gICAgICBb
+aHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2MzE1LzE1XQo+
+IC0gQWRkIHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyCj4gLSBNYWtlIHRoaXMgaGFjayBjb2RlIG1v
+cmUgY2xlYXIgKFRvbWFzeiwgcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPiAgICByZWcgPSB+
+cmVnICYgUkVGX0NMS19NQVNLOyAgLS0tPiAgcmVnIF49IFJFRl9DTEtfTUFTSzsKPiAgICAgIFto
+dHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDY4NTIvNy9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jQDgwXQo+IC0gQWRk
+IHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyCj4gLSBHaXZlIHRoZSAicmszMzk5LWVkcCIgYSBzZXBh
+cmF0ZSBsaW5lIGZvciBjbGFyaXR5IGluIGRvY3VtZW50IChUb21hc3osIHJldmlld2VkIGF0IEdv
+b2dsZSBHZXJyaXQpCj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNl
+LmNvbS8jL2MvMzQ2MzE0LzEwL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNw
+bGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dEA1XQo+IC0gTW92ZSAnb3V0cHV0
+X3R5cGUnIHNldHRpbmcgYmVmb3JlIHRoZSByZXR1cm4gc3RhdGVtZW50IChUb21hc3osIHJldmll
+d2VkIGF0IEdvb2dsZSBHZXJyaXQpCj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29v
+Z2xlc291cmNlLmNvbS8jL2MvMzQ2MzE0LzEwL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFs
+b2dpeF9kcC1yb2NrY2hpcC5jQDE1NF0KPiAtIEFkZCB0aGUgYWNrZWQgZmxhZyBmcm9tIE1hcmsu
+Cj4gLSBBZGQgdGhlIGFja2VkIGZsYWcgZnJvbSBNYXJrLgo+IC0gQXZvaWQgdG8gY2hhbmdlIGFu
+eSBpbnRlcm5hbCBkcml2ZXIgc3RhdGUgaW4gLm1vZGVfdmFsaWQgaW50ZXJmYWNlLiAoVG9tYXN6
+LCByZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQo+ICAgICAgW2h0dHBzOi8vY2hyb21pdW0tcmV2
+aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxOC8xMC9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuY0AxMTNdCj4gLSBIb29rIHRoZSBjb25uZWN0b3IncyBj
+b2xvcl9mb3JtYXRzIGluIC5nZXRfbW9kZXMgZGlyZWN0bHkuIChUb21hc3osIHJldmlld2VkIGF0
+IEdvb2dsZSBHZXJyaXQpCj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291
+cmNlLmNvbS8jL2MvMzQ2MzE3LzE1XQo+IC0gQWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFyay4K
+PiAtIEFkZCB0aGUgcmV2aWV3ZWQgZmxhZyBmcm9tIFRvbWFzei4KPiAgICAgIFtodHRwczovL2No
+cm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDY4NTMvMTJdCj4gLSBBZGQgdGhl
+IGFja2VkIGZsYWcgZnJvbSBNYXJrLgo+IC0gQWRkIHJldmlld2VkIGZsYWcgZnJvbSBTdMOpcGhh
+bmUuCj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2Mv
+MzQ2MzE5LzE1XQo+IC0gQWRkIHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyCj4KPiBDaGFuZ2VzIGlu
+IHYyOgo+IC0gbmV3IHBhdGNoIGluIHYyCj4gLSByZWJhc2Ugd2l0aCBkcm0tbmV4dCwgZml4IHNv
+bWUgY29uZmxpY3RzCj4gLSBuZXcgcGF0Y2ggaW4gdjIKPgo+IFlha2lyIFlhbmcgKDEwKToKPiAg
+ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogcmVuYW1lIFJLMzI4OF9EUCB0byBST0NLQ0hJUF9E
+UAo+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IHNwbGl0IHRoZSBsY2RjIHNlbGVjdCBz
+ZXR0aW5nIGludG8gZGV2aWNlCj4gICAgICBkYXRhCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhf
+ZHA6IGNvcnJlY3QgdGhlIHJlZ2lzdGVyIGJpdCBkZWZpbmUgZXJyb3IgaW4KPiAgICAgIEFOQUxP
+R0lYX0RQX1BMTF9SRUdfMQo+ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBzb21lIHJvY2tj
+aGlwIGNoaXBzIG5lZWQgdG8gZmxpcCBSRUZfQ0xLIGJpdAo+ICAgICAgc2V0dGluZwo+ICAgIGRy
+bS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IGFkZCByazMzOTkgZURQIHN1cHBvcnQKPiAgICBkcm0v
+cm9ja2NoaXA6IGFuYWxvZ2l4X2RwOiBtYWtlIHBhbmVsIGRldGVjdCB0byBhbiBvcHRpb25hbCBh
+Y3Rpb24KPiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogcGFzc2luZyB0aGUgY29ubmVjdG9y
+IGFzIGFuIGFyZ3VtZW50IGluCj4gICAgICAuZ2V0X21vZGVzKCkKPiAgICBkcm0vcm9ja2NoaXA6
+IGFuYWxvZ2l4X2RwOiBjb3JyZWN0IHRoZSBjb25uZWN0b3IgZGlzcGxheSBjb2xvciBmb3JtYXQK
+PiAgICAgIGFuZCBicGMKPiAgICBkcm0vcm9ja2NoaXA6IGFuYWxvZ2l4X2RwOiB1cGRhdGUgdGhl
+IGNvbW1lbnRzIGFib3V0IHdoeSBuZWVkIHRvCj4gICAgICBoYXJkY29kZSBWT1Agb3V0cHV0IG1v
+ZGUKPiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogZml4IG5vIGRybSBocGQgZXZlbnQgd2hl
+biBwYW5lbCBwbHVnIGluCgpJcyB0aGUgcGxhbiB0byB0YWtlIGFsbCB0aGUgYnJpZGdlK3JvY2tj
+aGlwIHN0dWZmIHZpYSB0aGUgcm9ja2NoaXAgcHVsbApyZXF1ZXN0PwoKVGhhbmtzLApBcmNoaXQK
+Cj4KPiAgIC4uLi9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQgICAgICAg
+IHwgICAxICsKPiAgIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4
+dCAgICAgIHwgICAzICstCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX2NvcmUuYyB8ICAgNiArLQo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
+eC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgIDggKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+YW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgIDEyICstCj4gICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oICB8ICAgNSArLQo+ICAgZHJpdmVycy9n
+cHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAgICAgICAgICAgICAgICAgfCAgIDQgKy0KPiAgIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jICAgIHwgMTU4ICsr
+KysrKysrKysrKysrLS0tLS0tLQo+ICAgaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmgg
+ICAgICAgICAgICAgICAgICAgfCAgIDkgKy0KPiAgIDkgZmlsZXMgY2hhbmdlZCwgMTQxIGluc2Vy
+dGlvbnMoKyksIDY1IGRlbGV0aW9ucygtKQo+CgotLSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50
+ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBBdXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRh
+dGlvbiBDb2xsYWJvcmF0aXZlIFByb2plY3QKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
