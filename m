@@ -1,122 +1,183 @@
-From: Noam Camus <noamca@mellanox.com>
-Subject: RE: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
-Date: Tue, 21 Jun 2016 06:45:58 +0000
-Message-ID: <HE1PR05MB162581196C0157F45749344FAA2B0@HE1PR05MB1625.eurprd05.prod.outlook.com>
-References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
- <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] net: stmmac: dwmac-rk: add rk322x-specific data
+Date: Tue, 21 Jun 2016 15:13:55 +0800
+Message-ID: <1466493235-17789-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
-Content-Language: en-US
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, "tglx@linutronix.de" <tglx@linutronix.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, S?ren Brinkmann <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukjin Kim <kg>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
->From: Daniel Lezcano [mailto:daniel.lezcano@linaro.org] 
->Sent: Friday, June 17, 2016 12:27 AM
+Add constants and callback functions for the dwmac on rk322x socs.
+As can be seen, the base structure is the same, only registers and
+the bits in them moved slightly.
 
->All the clocksource drivers's init function are now converted to return an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the clksrc-of table.
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
->Let's convert back the names:
-> - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
-> - clksrc-of-ret              => clksrc-of
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |    3 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     |  117 ++++++++++++++++++++
+ 2 files changed, 119 insertions(+), 1 deletion(-)
 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
-> arch/arc/kernel/time.c                    |  6 +++---
-> arch/arm/kernel/smp_twd.c                 |  6 +++---
-> arch/microblaze/kernel/timer.c            |  2 +-
-> arch/mips/ralink/cevt-rt3352.c            |  2 +-
-> arch/nios2/kernel/time.c                  |  2 +-
-> drivers/clocksource/arm_arch_timer.c      |  6 +++---
-> drivers/clocksource/arm_global_timer.c    |  2 +-
-> drivers/clocksource/armv7m_systick.c      |  2 +-
-> drivers/clocksource/asm9260_timer.c       |  2 +-
-> drivers/clocksource/bcm2835_timer.c       |  2 +-
-> drivers/clocksource/bcm_kona_timer.c      |  4 ++--
-> drivers/clocksource/cadence_ttc_timer.c   |  2 +-
-> drivers/clocksource/clksrc-dbx500-prcmu.c |  2 +-
-> drivers/clocksource/clksrc-probe.c        | 14 --------------
-> drivers/clocksource/clksrc_st_lpc.c       |  2 +-
-> drivers/clocksource/clps711x-timer.c      |  2 +-
-> drivers/clocksource/dw_apb_timer_of.c     |  8 ++++----
-> drivers/clocksource/exynos_mct.c          |  4 ++--
-> drivers/clocksource/fsl_ftm_timer.c       |  2 +-
-> drivers/clocksource/h8300_timer16.c       |  2 +-
-> drivers/clocksource/h8300_timer8.c        |  2 +-
-> drivers/clocksource/h8300_tpu.c           |  2 +-
-> drivers/clocksource/meson6_timer.c        |  2 +-
-> drivers/clocksource/mips-gic-timer.c      |  2 +-
-> drivers/clocksource/moxart_timer.c        |  2 +-
-> drivers/clocksource/mps2-timer.c          |  2 +-
-> drivers/clocksource/mtk_timer.c           |  2 +-
-> drivers/clocksource/mxs_timer.c           |  2 +-
-> drivers/clocksource/nomadik-mtu.c         |  2 +-
-> drivers/clocksource/pxa_timer.c           |  2 +-
-> drivers/clocksource/qcom-timer.c          |  4 ++--
-> drivers/clocksource/rockchip_timer.c      |  8 ++++----
-> drivers/clocksource/samsung_pwm_timer.c   |  8 ++++----
-> drivers/clocksource/sun4i_timer.c         |  2 +-
-> drivers/clocksource/tango_xtal.c          |  2 +-
-> drivers/clocksource/tegra20_timer.c       |  4 ++--
-> drivers/clocksource/time-armada-370-xp.c  |  6 +++---
-> drivers/clocksource/time-efm32.c          |  4 ++--
-> drivers/clocksource/time-lpc32xx.c        |  2 +-
-> drivers/clocksource/time-orion.c          |  2 +-
-> drivers/clocksource/time-pistachio.c      |  2 +-
-> drivers/clocksource/timer-atlas7.c        |  2 +-
-> drivers/clocksource/timer-atmel-pit.c     |  2 +-
-> drivers/clocksource/timer-atmel-st.c      |  2 +-
-> drivers/clocksource/timer-digicolor.c     |  2 +-
-> drivers/clocksource/timer-imx-gpt.c       | 24 ++++++++++++------------
-> drivers/clocksource/timer-integrator-ap.c |  2 +-
-> drivers/clocksource/timer-keystone.c      |  2 +-
-> drivers/clocksource/timer-nps.c           |  4 ++--
-> drivers/clocksource/timer-oxnas-rps.c     |  4 ++--
-> drivers/clocksource/timer-prima2.c        |  2 +-
-> drivers/clocksource/timer-sp804.c         |  4 ++--
-> drivers/clocksource/timer-stm32.c         |  2 +-
-> drivers/clocksource/timer-sun5i.c         |  4 ++--
-> drivers/clocksource/timer-ti-32k.c        |  2 +-
-> drivers/clocksource/timer-u300.c          |  2 +-
-> drivers/clocksource/versatile.c           |  4 ++--
-> drivers/clocksource/vf_pit_timer.c        |  2 +-
-> drivers/clocksource/vt8500_timer.c        |  2 +-
-> drivers/clocksource/zevio-timer.c         |  2 +-
-> include/asm-generic/vmlinux.lds.h         |  2 --
-> include/linux/clocksource.h               |  5 +----
-> 62 files changed, 98 insertions(+), 117 deletions(-)
-
-[..]
-
-> diff --git a/drivers/clocksource/timer-nps.c b/drivers/clocksource/timer-nps.c index b5c7b2b..70c149a 100644
-> --- a/drivers/clocksource/timer-nps.c
-> +++ b/drivers/clocksource/timer-nps.c
-> @@ -96,5 +96,5 @@ static int __init nps_timer_init(struct device_node *node)
-> 	return nps_setup_clocksource(node, clk);  }
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 93eac7c..5040ed4 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -3,7 +3,8 @@ Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
+ The device node has following properties.
  
-> -CLOCKSOURCE_OF_DECLARE_RET(ezchip_nps400_clksrc, "ezchip,nps400-timer",
-> -			   nps_timer_init);
-> +CLOCKSOURCE_OF_DECLARE(ezchip_nps400_clksrc, "ezchip,nps400-timer",
-> +		       nps_timer_init);
-> diff --git a/drivers/clocksource/timer-oxnas-rps.c b/drivers/clocksource/timer-oxnas-rps.c
-> index 0d99f40..bd887e2 100644
-> --- a/drivers/clocksource/timer-oxnas-rps.c
-> +++ b/drivers/clocksource/timer-oxnas-rps.c
-> @@ -293,5 +293,5 @@ err_alloc:
->  	return ret;
-> }
+ Required properties:
+- - compatible: Can be one of "rockchip,rk3288-gmac", "rockchip,rk3368-gmac"
++ - compatible: Can be one of "rockchip,rk322x-gmac", "rockchip,rk3288-gmac",
++                             "rockchip,rk3368-gmac"
+  - reg: addresses and length of the register sets for the device.
+  - interrupts: Should contain the GMAC interrupts.
+  - interrupt-names: Should contain the interrupt names "macirq".
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 0cd3ecf..7f045db 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -72,6 +72,122 @@ struct rk_priv_data {
+ #define GRF_BIT(nr)	(BIT(nr) | BIT(nr+16))
+ #define GRF_CLR_BIT(nr)	(BIT(nr+16))
  
-
-Acked-by: Noam Camus <noamca@mellanox.com>
++#define RK322X_GRF_MAC_CON0	0x0900
++#define RK322X_GRF_MAC_CON1	0x0904
++
++/* RK322X_GRF_MAC_CON0 */
++#define RK322X_GMAC_CLK_RX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 7)
++#define RK322X_GMAC_CLK_TX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 0)
++
++/* RK322X_GRF_MAC_CON1 */
++#define RK322X_GMAC_PHY_INTF_SEL_RGMII	\
++		(GRF_BIT(4) | GRF_CLR_BIT(5) | GRF_CLR_BIT(6))
++#define RK322X_GMAC_PHY_INTF_SEL_RMII	\
++		(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | GRF_BIT(6))
++#define RK322X_GMAC_FLOW_CTRL		GRF_BIT(3)
++#define RK322X_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
++#define RK322X_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define RK322X_GMAC_SPEED_100M		GRF_BIT(2)
++#define RK322X_GMAC_RMII_CLK_25M	GRF_BIT(7)
++#define RK322X_GMAC_RMII_CLK_2_5M	GRF_CLR_BIT(7)
++#define RK322X_GMAC_CLK_125M		(GRF_CLR_BIT(8) | GRF_CLR_BIT(9))
++#define RK322X_GMAC_CLK_25M		(GRF_BIT(8) | GRF_BIT(9))
++#define RK322X_GMAC_CLK_2_5M		(GRF_CLR_BIT(8) | GRF_BIT(9))
++#define RK322X_GMAC_RMII_MODE		GRF_BIT(10)
++#define RK322X_GMAC_RMII_MODE_CLR	GRF_CLR_BIT(10)
++#define RK322X_GMAC_TXCLK_DLY_ENABLE	GRF_BIT(0)
++#define RK322X_GMAC_TXCLK_DLY_DISABLE	GRF_CLR_BIT(0)
++#define RK322X_GMAC_RXCLK_DLY_ENABLE	GRF_BIT(1)
++#define RK322X_GMAC_RXCLK_DLY_DISABLE	GRF_CLR_BIT(1)
++
++static void rk322x_set_to_rgmii(struct rk_priv_data *bsp_priv,
++				int tx_delay, int rx_delay)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++		     RK322X_GMAC_PHY_INTF_SEL_RGMII |
++		     RK322X_GMAC_RMII_MODE_CLR |
++		     RK322X_GMAC_RXCLK_DLY_ENABLE |
++		     RK322X_GMAC_TXCLK_DLY_ENABLE);
++
++	regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON0,
++		     RK322X_GMAC_CLK_RX_DL_CFG(rx_delay) |
++		     RK322X_GMAC_CLK_TX_DL_CFG(tx_delay));
++}
++
++static void rk322x_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++		     RK322X_GMAC_PHY_INTF_SEL_RMII |
++		     RK322X_GMAC_RMII_MODE);
++
++	/* set MAC to RMII mode */
++	regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1, GRF_BIT(11));
++}
++
++static void rk322x_set_rgmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	if (speed == 10)
++		regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++			     RK322X_GMAC_CLK_2_5M);
++	else if (speed == 100)
++		regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++			     RK322X_GMAC_CLK_25M);
++	else if (speed == 1000)
++		regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++			     RK322X_GMAC_CLK_125M);
++	else
++		dev_err(dev, "unknown speed value for RGMII! speed=%d", speed);
++}
++
++static void rk322x_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	if (speed == 10)
++		regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++			     RK322X_GMAC_RMII_CLK_2_5M |
++			     RK322X_GMAC_SPEED_10M);
++	else if (speed == 100)
++		regmap_write(bsp_priv->grf, RK322X_GRF_MAC_CON1,
++			     RK322X_GMAC_RMII_CLK_25M |
++			     RK322X_GMAC_SPEED_100M);
++	else
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++}
++
++static const struct rk_gmac_ops rk322x_ops = {
++	.set_to_rgmii = rk322x_set_to_rgmii,
++	.set_to_rmii = rk322x_set_to_rmii,
++	.set_rgmii_speed = rk322x_set_rgmii_speed,
++	.set_rmii_speed = rk322x_set_rmii_speed,
++};
++
+ #define RK3288_GRF_SOC_CON1	0x0248
+ #define RK3288_GRF_SOC_CON3	0x0250
+ 
+@@ -604,6 +720,7 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
++	{ .compatible = "rockchip,rk322x-gmac", .data = &rk322x_ops },
+ 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
+ 	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
+ 	{ }
+-- 
+1.7.9.5
