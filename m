@@ -1,79 +1,96 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: Finish initialization before registering
- DRM device
-Date: Tue, 21 Jun 2016 10:39:02 +0200
-Message-ID: <20160621083901.GT23520@phenom.ffwll.local>
-References: <1466483254-35373-1-git-send-email-tfiga@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v6 2/2] phy: rockchip-inno-usb2: add a new driver for
+ Rockchip usb2phy
+Date: Tue, 21 Jun 2016 11:05:14 +0200
+Message-ID: <2284777.mdEtFaarym@diego>
+References: <1466129353-48063-1-git-send-email-frank.wang@rock-chips.com>
+ <CABXOdTcz9zjJ1iN2D9UXeYgd0y-kzh+fV3=+kmB=8j2jYqTQkg@mail.gmail.com>
+ <986b53d6-ef65-bc1f-38a8-f981e23a6f02@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1466483254-35373-1-git-send-email-tfiga@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shunqian Zheng <zhengsq@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <986b53d6-ef65-bc1f-38a8-f981e23a6f02-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, pawel.moll-5wv7dgnIgG8@public.gmane.org, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMjEsIDIwMTYgYXQgMDE6Mjc6MzRQTSArMDkwMCwgVG9tYXN6IEZpZ2Egd3Jv
-dGU6Cj4gQ3VycmVudGx5IHRoZSBkcml2ZXIgY2FsbHMgZHJtX2Rldl9yZWdpc3RlcigpIGRpcmVj
-dGx5IGFmdGVyIGFsbG9jYXRpbmcKPiB0aGUgRFJNIGRldmljZSBhbmQgdGhlbiBjb250aW51ZXMg
-d2l0aCBmdXJ0aGVyIGluaXRpYWxpemF0aW9uLiBUaGlzIGlzCj4gaW5jb3JyZWN0LCBiZWNhdXNl
-IGRybV9kZXZfcmVnaXN0ZXIoKSBpcyBzdXBwb3NlZCB0byBiZSBjYWxsZWQgYWZ0ZXIgYWxsCj4g
-aW5pdGlhbGl6YXRpb24gaXMgZG9uZS4gVGhpcyBwcm9ibGVtIHdhcyBtYXNrZWQgYnkgdGhlIGZh
-Y3QgdGhhdAo+IGRybV9kZXZfcmVnaXN0ZXIoKSBkaWQgbm90IHVzZSB0byBkbyBhbnl0aGluZyBz
-cGVjaWFsIGJlZm9yZSwgYnV0Cj4gcmVjZW50bHkgaXQgc3RhcnRlZCB0byBjYWxsIGRybV9jb25u
-ZWN0b3JfcmVnaXN0ZXJfYWxsKCksIHdoaWNoIGxlYWRzIHRvCj4gYSBjcmFzaCBpZiB0aGUgZHJp
-dmVyIGlzIG5vdCBmdWxseSBpbml0aWFsaXplZC4KPiAKPiBUaGlzIHBhdGNoIGZpeGVzIHRoZSBw
-cm9ibGVtIGJ5IG1vdmluZyB0aGUgY2FsbCB0byBkcm1fZGV2X3JlZ2lzdGVyKCkgdG8KPiB0aGUg
-ZW5kIG9mIHRoZSBpbml0aWFsaXphdGlvbiBzZXF1ZW5jZSBhbmQgYWxzbyByZW1vdmluZyB0aGUs
-IG5vdwo+IHVubmVjZXNzYXJ5LCBjYWxsIHRvIGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCkg
-ZnJvbSBkcml2ZXIgY29kZS4KPiAKPiBGaXhlczogZjcwNjk3NGE2OWI2ICgiZHJtL3JvY2tjaGlw
-OiBEcm9wIGRybV9kcml2ZXIubG9hZC91bmxvYWQgY2FsbGJhY2tzIikKPiAKPiBTaWduZWQtb2Zm
-LWJ5OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgoKT29wcywgbW9yZSBmYWxsb3V0
-IGZyb20gdGhlIHJlZ2lzZXRlci91bnJlZ2lzdGVyIGNsZWFudXAuIFNvcnJ5IGFib3V0CnRoYXQs
-IGFwcGxpZWQgdG8gZHJtLW1pc2MuCi1EYW5pZWwKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAxOCArKysrKysrLS0tLS0tLS0tLS0KPiAgMSBm
-aWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggMGQyODQ1NS4u
-ZTJjMzFkMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
-cnYuYwo+IEBAIC0xNDYsMTYgKzE0NiwxMiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCWlmICghZHJtX2RldikKPiAgCQlyZXR1cm4gLUVOT01F
-TTsKPiAgCj4gLQlyZXQgPSBkcm1fZGV2X3JlZ2lzdGVyKGRybV9kZXYsIDApOwo+IC0JaWYgKHJl
-dCkKPiAtCQlnb3RvIGVycl9mcmVlOwo+IC0KPiAgCWRldl9zZXRfZHJ2ZGF0YShkZXYsIGRybV9k
-ZXYpOwo+ICAKPiAgCXByaXZhdGUgPSBkZXZtX2t6YWxsb2MoZHJtX2Rldi0+ZGV2LCBzaXplb2Yo
-KnByaXZhdGUpLCBHRlBfS0VSTkVMKTsKPiAgCWlmICghcHJpdmF0ZSkgewo+ICAJCXJldCA9IC1F
-Tk9NRU07Cj4gLQkJZ290byBlcnJfdW5yZWdpc3RlcjsKPiArCQlnb3RvIGVycl9mcmVlOwo+ICAJ
-fQo+ICAKPiAgCWRybV9kZXYtPmRldl9wcml2YXRlID0gcHJpdmF0ZTsKPiBAQCAtMTk3LDEyICsx
-OTMsNiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikK
-PiAgCWlmIChyZXQpCj4gIAkJZ290byBlcnJfZGV0YWNoX2RldmljZTsKPiAgCj4gLQlyZXQgPSBk
-cm1fY29ubmVjdG9yX3JlZ2lzdGVyX2FsbChkcm1fZGV2KTsKPiAtCWlmIChyZXQpIHsKPiAtCQlk
-ZXZfZXJyKGRldiwgImZhaWxlZCB0byByZWdpc3RlciBjb25uZWN0b3JzXG4iKTsKPiAtCQlnb3Rv
-IGVycl91bmJpbmQ7Cj4gLQl9Cj4gLQo+ICAJLyogaW5pdCBrbXMgcG9sbCBmb3IgaGFuZGxpbmcg
-aHBkICovCj4gIAlkcm1fa21zX2hlbHBlcl9wb2xsX2luaXQoZHJtX2Rldik7Cj4gIAo+IEBAIC0y
-MjIsOSArMjEyLDE1IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0IGRldmlj
-ZSAqZGV2KQo+ICAJaWYgKHJldCkKPiAgCQlnb3RvIGVycl92YmxhbmtfY2xlYW51cDsKPiAgCj4g
-KwlyZXQgPSBkcm1fZGV2X3JlZ2lzdGVyKGRybV9kZXYsIDApOwo+ICsJaWYgKHJldCkKPiArCQln
-b3RvIGVycl9mYmRldl9maW5pOwo+ICsKPiAgCWlmIChpc19zdXBwb3J0X2lvbW11KQo+ICAJCWFy
-bV9pb21tdV9yZWxlYXNlX21hcHBpbmcobWFwcGluZyk7Cj4gIAlyZXR1cm4gMDsKPiArZXJyX2Zi
-ZGV2X2Zpbmk6Cj4gKwlyb2NrY2hpcF9kcm1fZmJkZXZfZmluaShkcm1fZGV2KTsKPiAgZXJyX3Zi
-bGFua19jbGVhbnVwOgo+ICAJZHJtX3ZibGFua19jbGVhbnVwKGRybV9kZXYpOwo+ICBlcnJfa21z
-X2hlbHBlcl9wb2xsX2Zpbmk6Cj4gLS0gCj4gMi44LjAucmMzLjIyNi5nMzlkNDAyMAo+IAo+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVs
-IG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gCkRh
-bmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9i
-bG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bAo=
+Hi Frank,
+
+Am Dienstag, 21. Juni 2016, 15:52:45 schrieb Frank Wang:
+> On 2016/6/20 12:56, Guenter Roeck wrote:
+> > On Sun, Jun 19, 2016 at 8:32 PM, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> 
+wrote:
+> >>> Turns out my problem was one of terminology. Using "suspend" and
+> >>> "resume" to me suggested the common use of suspend and resume
+> >>> functions. That is not the case here. After mentally replacing
+> >>> "suspend" with "power_off" and "resume" with "power_on", you are
+> >>> right, no problem exists. Sorry for the noise.
+> >>> 
+> >>> Maybe it would be useful to replace "resume" with "power_on" and
+> >>> "suspend" with "power_off" in the function and variable names to
+> >>> reduce confusion and misunderstandings.
+> >>> 
+> >>> Thanks,
+> >>> Guenter
+> >> 
+> >> Well, it does have a bits confusion, however, the phy-port always just
+> >> goes
+> >> to suspend and resume mode (Not power off and power on) in a fact. So
+> >> must
+> >> it be renamed?
+> > 
+> > Other phy drivers name the functions _power_off and _power_on and
+> > avoid the confusion. The callbacks are named .power_off and .power_on,
+> > which gives a clear indication of its intended purpose. Other drivers
+> > implementing suspend/resume (such as the omap usb phy driver) tie
+> > those functions not into the power_off/power_on callbacks, but into
+> > the driver's suspend/resume callbacks. At least the omap driver has
+> > separate power management functions.
+> > 
+> > Do the functions _have_ to be renamed ? Surely not. But, if the
+> > functions are really suspend/resume functions and not
+> > power_off/power_on functions, maybe they should tie to the
+> > suspend/resume functions and not register themselves as
+> > power_off/power_on functions ?
+> 
+> As Guenter mentioned above,  I doped out two solutions, one is that keep
+> current process but renaming *_resume/*_suspend to
+> *_power_on/*_power_off;
+
+in a way, naming stuff "power_off", "power_on" actually matches. For one, the 
+phy-block goes from unusable to usable by usb-devices and also will power-on a 
+phy-supply regulator (often named vcc_host* on Rockchip boards) from the phy-
+core.
+
+> another is that do not assign power_on/power_off
+> functions for phy_ops at phy creating time, then, shorten
+> _SCHEDULE_DELAY_ delay time less that 10 Seconds, and the phy-port
+> suspend/resume mechanism depend on _sm_work_ completely.
+
+Which in turn would mean that we would always depend on a fully controllable 
+phy block. Right now it seems, rk3036, rk3228, rk3368 (probably forgot some) 
+have the same type of phy, but with at least the unplug-detection missing.
+In its current form the driver can very well support those (later on) by 
+simply working statically (only acting on phy_power callbacks and not going to 
+suspend on its own).
+
+Also having the work running in 10-second intervall seems wasteful.
+
+> 
+> So which is the better way from your view? or would you like to give
+> other unique perceptions please?
+
+As obvious from the above, I would prefer just renaming the functions :-)
+
+
+Heiko
