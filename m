@@ -1,52 +1,96 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC PATCH 1/4] Documentation: mmc: add description for new caps
-Date: Wed, 22 Jun 2016 08:06:20 -0700
-Message-ID: <CAD=FV=WNaTEDyVNyteLq3O-BL9KxR49W=44jbXogKXd2dkDWDQ@mail.gmail.com>
-References: <1465373996-2485-1-git-send-email-shawn.lin@rock-chips.com> <1465374021-2526-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 0/15] Changes to support 150 MHz eMMC on rk3399
+Date: Wed, 22 Jun 2016 17:23:44 +0200
+Message-ID: <CAPDyKFpiNu0ASHiDCT1ZXG5Sbb-ei+U3cDins87_PtkvN2g25g@mail.gmail.com>
+References: <1466445414-11974-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1465374021-2526-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1466445414-11974-1-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Kishon <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, groeck@chromium.org, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Stefan Wahren <stefan.wahren@i2se.com>, zhengxing@rock-chips.com, Michal Simek <michal.simek@xilinx.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-arm-kernel@lists.
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Jun 8, 2016 at 1:20 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Let's add some basic description for cap-no-sdio,
-> cap-no-sd and cap-no-mmc.
+On 20 June 2016 at 19:56, Douglas Anderson <dianders@chromium.org> wrote:
+> The theme of this series of patches is to try to allow running the eMMC
+> at 150 MHz on the rk3399 SoC, though the changes should still be correct
+> and have merit on their own.  The motivation for running at 150 MHz is
+> that doing so improves signal integrity and (with some eMMC devices)
+> doesn't affect throughput.
 >
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> These patches have been structured to keep things as separate as
+> possible, but nevertheless there are still some dependencies between
+> patches.  It probably makes the most sense for all of the non-device
+> tree patches to go through a single tree.  PHY patches now have Acks
+> from Kishon so that means things should be clear for all non-DTS patches
+> to go through the MMC tree if Ulf agrees.  Device tree patches should be
+> able to be landed separately and the worst what would happen is a
+> warning in the kernel log if you have the code without the device tree.
 >
-> ---
+> The code patches are based on Ulf's mmc-next.  In v3 of the series I've
+> pulled in the latest version of a previous PHY series posted by Brian
+> Norris.
 >
->  Documentation/devicetree/bindings/mmc/mmc.txt | 3 +++
->  1 file changed, 3 insertions(+)
+> The device tree patches are based on Heiko's v4.8-armsoc/dts64.
 >
-> diff --git a/Documentation/devicetree/bindings/mmc/mmc.txt b/Documentation/devicetree/bindings/mmc/mmc.txt
-> index ecc007a..e16d42b 100644
-> --- a/Documentation/devicetree/bindings/mmc/mmc.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mmc.txt
-> @@ -39,6 +39,9 @@ Optional properties:
->  - cap-power-off-card: powering off the card is safe
->  - cap-mmc-hw-reset: eMMC hardware reset is supported
->  - cap-sdio-irq: enable SDIO IRQ signalling on this interface
-> +- cap-no-sdio: skip sending sdio cmd during initialization
-> +- cap-no-sd: skip sending sd cmd during initialization
-> +- cap-no-mmc: skip sending mmc cmd during initialization
+> Changes in v3:
+> - Add Brian's PHY patches into my series
+> - Add collected tags
+> - Add dependency on COMMON_CLK (actually in v2.1) (Guenter Roeck)
+> - Use phy_init / phy_exit (Heiko)
+> - Add Kishon's Ack
+>
+> Changes in v2:
+> - Drop 170 MHz comment (only applicable to a subtly different Arasan PHY)
+> - Indicate that 5.1 ms is calculated (Shawn).
+> - Clean up description of rk3399 PHY (Shawn)
+> - Add Rob Herring's Ack.
+> - Reorder includes (Shawn)
+> - Adjust commit message wording (Rob)
+> - List out clocks and clock names (Rob)
+> - Move code cleanup before set phyctrl_frqsel based on card clock (Shawn)
+> - Warn if we're more than 15 MHz from ideal rate (Shawn)
+> - Fix typo USB => SDHCI (Shawn)
+>
+> Brian Norris (2):
+>   phy: rockchip-emmc: configure default output tap delay
+>   phy: rockchip-emmc: reindent the register definitions
+>
+> Douglas Anderson (11):
+>   phy: rockchip-emmc: Increase lock time allowance
+>   mmc: sdhci-of-arasan: Always power the PHY off/on when clock changes
+>   Documentation: mmc: sdhci-of-arasan: Add soc-ctl-syscon for corecfg
+>     regs
+>   mmc: sdhci-of-arasan: Properly set corecfg_baseclkfreq on rk3399
+>   arm64: dts: rockchip: Add soc-ctl-syscon to sdhci for rk3399
+>   Documentation: mmc: sdhci-of-arasan: Add ability to export card clock
+>   mmc: sdhci-of-arasan: Add ability to export card clock
+>   Documentation: phy: Let the rockchip eMMC PHY get an exported card
+>     clock
+>   phy: rockchip-emmc: Minor code cleanup in
+>     rockchip_emmc_phy_power_on/off()
+>   phy: rockchip-emmc: Set phyctrl_frqsel based on card clock
+>   arm64: dts: rockchip: Provide emmcclk to PHY for rk3399
+>
+> Shawn Lin (2):
+>   phy: rockchip-emmc: give DLL some extra time to be ready
+>   phy: rockchip-emmc: configure frequency range and drive impedance
+>
+>  .../devicetree/bindings/mmc/arasan,sdhci.txt       |  35 ++-
+>  .../devicetree/bindings/phy/rockchip-emmc-phy.txt  |   9 +
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   5 +
+>  drivers/mmc/host/Kconfig                           |   1 +
+>  drivers/mmc/host/sdhci-of-arasan.c                 | 333 +++++++++++++++++++--
+>  drivers/phy/phy-rockchip-emmc.c                    | 216 ++++++++++---
+>  6 files changed, 525 insertions(+), 74 deletions(-)
+>
+> --
+> 2.8.0.rc3.226.g39d4020
+>
 
-In the past it has been determined that the "cap-" prefix is
-unnecessary.  Some properties still have "cap-" because of backward
-compatibility reasons, but as I understand it new properties shouldn't
-start with "cap-".
+Thanks, applied for next! (Skipped the DTS changes in patch9 and patch
+15, as those will be picked up by Heiko).
 
-See <https://lists.ozlabs.org/pipermail/devicetree-discuss/2013-June/034664.html>
-for reference.
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Kind regards
+Uffe
