@@ -1,164 +1,44 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] clk: rockchip: add flag CLK_SET_RATE_PARENT for
- dclk_vop0_div on RK3399
-Date: Tue, 21 Jun 2016 17:31:16 -0700
-Message-ID: <CAD=FV=V5UvQGtYQ26gZ+U7+TygEWuqRoHhiH8SiQSK7GcvkF5w@mail.gmail.com>
-References: <1465724928-14611-1-git-send-email-zhengxing@rock-chips.com> <2376423.L1zs1HaIGm@diego>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 0/5] Fix and improve clock controller for the RK322x SoCs
+Date: Wed, 22 Jun 2016 09:10:25 +0800
+Message-ID: <5769E581.2040903@rock-chips.com>
+References: <1466484811-26923-1-git-send-email-zhengxing@rock-chips.com>
+ <13345941.K3V3BNYxTY@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <2376423.L1zs1HaIGm@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, elaine zhang <elaine.zhang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <13345941.K3V3BNYxTY@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
-
-On Mon, Jun 13, 2016 at 3:46 PM, Heiko St=C3=BCbner <heiko@sntech.de> w=
-rote:
-> Am Sonntag, 12. Juni 2016, 17:48:48 schrieb Xing Zheng:
->> The functions and features VOP0 more complete than VOP1's, we need t=
-o
->> use it dclk_vop0_div operate VPLLI, and let VOP0 as the default prim=
-ary
->> screen.
->>
->> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->> ---
->>
->>  drivers/clk/rockchip/clk-rk3399.c |    2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3399.c
->> b/drivers/clk/rockchip/clk-rk3399.c index 7ecb12c3..6affa75 100644
->> --- a/drivers/clk/rockchip/clk-rk3399.c
->> +++ b/drivers/clk/rockchip/clk-rk3399.c
->> @@ -1157,7 +1157,7 @@ static struct rockchip_clk_branch
->> rk3399_clk_branches[] __initdata =3D { GATE(HCLK_VOP0_NOC, "hclk_vop=
-0_noc",
->> "hclk_vop0_pre", CLK_IGNORE_UNUSED, RK3399_CLKGATE_CON(28), 0, GFLAG=
-S),
->>
->> -     COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpl=
-l_gpll_p, 0,
->> +     COMPOSITE(DCLK_VOP0_DIV, "dclk_vop0_div", mux_pll_src_vpll_cpl=
-l_gpll_p,
->> CLK_SET_RATE_PARENT, RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLA=
-GS,
->>                       RK3399_CLKGATE_CON(10), 12, GFLAGS),
->
-> The vpll is a possible source for multiple clocks (cci, aclk_vop0, dc=
-lk_vop0,
-> clk_vop0_pwm, aclk_vop1, dclk_vop1, clk_vop1_pwm), so allowing one cl=
-ock to
-> hog the rate setting, might influence the other consumers of the vpll=
- as well.
-
-OK, so let's think this through.
-
-1. If we want to be able to support a wide variety of devices plugged
-into an external display connector, we need _some_ type of PLL that
-can change dynamically when the system is up.  On rk3399 there are new
-fractional clocks available (yay!) but only for low speed pixel clocks
-(boo!).  On rk3288 even those weren't there.
-
-2. There are no PLLs dedicated to be used only for the pixel clock.
-No matter what PLL we choose to use we _might_ end up changing some
-else's rate when we change the pixel clock since someone else could be
-a child.
-
-2a) If we are careful with our clock tree we actually _can_ totally
-avoid changing people's rates.  On rk3288 there's nothing else in the
-system that really _needs_ NPLL and on rk3388 nothing really _needs_
-VPLL.
-
-2b) We could also try to do something dynamic like you proposed in
-<https://patchwork.kernel.org/patch/8993811>, but presumably if a
-child of NPLL/VPLL is really flexible about its rate (and thus could
-handle this new rate), we'd be better off just starting that child off
-parented somewhere else.  This relies on the fact that nothing really
-_needs_ NPLL/VPLL.  Note that in rk3399, all muxings that include vpll
-also include at least cpll and gpll; in rk3288 all muxings that
-include npll also include at least cpll and gpll
-
-2c) So, this means that if we are on a system that needs to support a
-wide range of pixels clocks, we should ahead of time reparent everyone
-else on another PLL and leave NPLL/VPLL as dynamic.
-
----
-
-Let's think about use cases.  As far as I can think of, we have these.
-Note that I'll call VPLL (rk3399) / NPLL (rk3288) the "dynamic" PLL.
-
-
-A) There is some other important non-pixel-clock use of the "dynamic"
-PLL where it's sub-optimal (or impossible) to use another PLL.
-
-B) No important non-pixel-clock use for the "dynamic PLL".  Support
-for arbitrary pixel clocks not important at all.
-
-C) No important non-pixel-clock use for the "dynamic PLL".  Support
-for arbitrary pixel clocks important for one display, not for the
-other.
-
-D) No important non-pixel-clock use for the "dynamic PLL".  Support
-for arbitrary pixel clocks important for two displays.
-
-
-I don't know of anyone in use case A), but if you do then please yell.
-
-=46or B) we might have other things currently parented from the
-"dynamic" PLL, but presumably these clocks are either not used or
-could be reparented elsewhere.
-
-Case C) is a device with a builtin display where the builtin display
-can run fine on a pixel clock derived from CPLL or GPLL.  We might
-need something like
-<https://chromium-review.googlesource.com/#/c/354165/2>
-
-Case D) is a device with two external connectors which might be used
-at the same time.  You either need to pick one connector to get the
-dynamic pixel clock (at boot? first come first served? userspace?) or
-somehow rejigger your PLLs to allow two PLLs to be dynamic (don't
-laugh, potentially GPLL could run at 1188 MHz and then you could
-divide by 3 and get roughly 396 MHz, so you could actually just parent
-everything on GPLL and make CPLL a second dynamic PLL).
-
----
-
-OK, so what do we do?  Personally I can't see us coming up with a
-one-size fits all approach, can you?  That means some type of
-configuration.  ...and, as seen by the assigned-clocks device tree
-binding, _some_ types of configuration is allowed in the device tree
-presuming it is well thought out and describing how the designers of
-the hardware "intended" it to be used.
-
-So maybe:
-
-i) Unless there's a counter example, I see no reason to let any clocks
-other than the VOP display clocks parent on the "dynamic" PLL.  If we
-later find a counter example then presumably we should add a device
-tree property on that board.  We could have code at boot time that
-goes through all clocks parented on "dynamic" PLL and reparents them
-(trying to keep the rate?), they disallows future muxing to the
-"dynamic" PLL.
-
-ii) It seems sane to me to add a device tree property to the board
-that will effectively enable CLK_SET_RATE_PARENT on one of the
-dclk_vop clocks and forcing it to the "dynamic" PLL (no
-auto-remuxing).  Maybe we would add something to the HDMI node, for
-instance, like "rockchip,intended-dclk-pll =3D <&...>".  Then somehow
-this would need to affect whichever VOP was assigned to HDMI.
-
-iii) If later someone can propose how to handle D) above, we can
-handle it then.  Until a solution is proposed those boards would work
-like today.
-
----
-
-OK, what was long.  Thoughts?
-
-
--Doug
+SGkgSGVpa28sCgpPbiAyMDE25bm0MDbmnIgyMuaXpSAwNzowNywgSGVpa28gU3R1ZWJuZXIgd3Jv
+dGU6Cj4gQW0gRGllbnN0YWcsIDIxLiBKdW5pIDIwMTYsIDEyOjUzOjI2IHNjaHJpZWIgWGluZyBa
+aGVuZzoKPj4gSGksCj4+ICAgIFRoZXNlIHBhdGNoc2V0IGZpeCBzb21lIGNsb2NrcyBidWdzLCBh
+bmQgaW1wcm92ZSBjbG9jayBjb25maWd1cmF0aW9uCj4+IGZvciBpMnMvc3BkaWYvTUFDIG9uIFJL
+MzIyeCBTb0NzLgo+IGFwcGxpZWQgdG8gbXkgY2xvY2stYnJhbmNoIHdpdGggdGhlIGZvbGxvd2lu
+ZyBjaGFuZ2VzOgo+Cj4gLSBmaXhlZCB0aGUgZXJyb3IgaW4gcGF0Y2gxIC0gbWlzc2luZyAiKSIg
+aW4KPiAgICAgICAgQ09NUE9TSVRFX0ZSQUMoMCwgImkyczFfZnJhYyIsICJpMnMxX3NyYyIsIENM
+S19TRVRfUkFURV9QQVJFTlQsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgUkszMjg4X0NMS1NF
+TF9DT04oNyksIDAsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgUkszMjg4X0NMS0dBVEVfQ09O
+KDApLCAxMSwgR0ZMQUdTKSwKPiArICAgICAgICAgICAgICAgICAgICAgICBSSzI5MjhfQ0xLU0VM
+X0NPTig3KSwgMCwKPiArICAgICAgICAgICAgICAgICAgICAgICBSSzI5MjhfQ0xLR0FURV9DT04o
+MCksIDExLCBHRkxBR1MsCj4KPiAtIGFkYXB0ZWQgcGF0Y2gyIGFjY29yZGluZ2x5Cj4gLSBzcGxp
+dCBvdXQgY2xvY2sgaWQgYWRkaXRpb24gaW50byBzZXBhcmF0ZSBwYXRjaGVzLCBhcyB0aGV5IG5l
+ZWQgYSBzaGFyZWQKPiBicmFuY2guIFhpbmcgcGxlYXNlIHJlbWVtYmVyIHRvIGFkZCBjbG9jay1p
+ZHMgdG8gdGhlIGhlYWRlciBpbiBzZXBhcmF0ZQo+IHBhdGNoZXMuCj4KPgpTbyBzb3JyeSB0byBt
+aXNzIGl0Li4uCk9LLCBJIHdpbGwgYWRkIGNsb2NrLWlkcyB0byB0aGUgaGVhZGVyIGluIHNlcGFy
+YXRlIHBhdGNoZXMuCgpUaGFua3MuCgotLSAKLSBYaW5nIFpoZW5nCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
