@@ -1,200 +1,116 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH v2 4/4] ARM: dts: rockchip: add support rk3229 evb board
-Date: Wed, 22 Jun 2016 11:16:53 +0800
-Message-ID: <1466565413-31027-5-git-send-email-zhengxing@rock-chips.com>
-References: <1466565413-31027-1-git-send-email-zhengxing@rock-chips.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v3 0/10]
+Date: Wed, 22 Jun 2016 08:53:57 +0530
+Message-ID: <576A04CD.8070800@codeaurora.org>
+References: <1465904718-663-1-git-send-email-ykk@rock-chips.com>
+ <5769453B.5070208@codeaurora.org> <5769F6DF.4050507@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1466565413-31027-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, radek.dostal-6oiIBCxl0MMjD8S081q9vkEOCMrvLtNR@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5769F6DF.4050507@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>, Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.vetter@ffwll.ch, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Javier Martinez Canillas <javier@osg.samsung.com>, Tomasz Figa <tomasz.figa@chromium.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Initial release for rk3229 evb board, and turn the GMAC on.
-
-Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Changes in v2:
-- rename rk3228.dtsi to rk322x.dtsi
-
- arch/arm/boot/dts/Makefile       |    1 +
- arch/arm/boot/dts/rk3229-evb.dts |   90 ++++++++++++++++++++++++++++++++++++++
- arch/arm/boot/dts/rk3229.dtsi    |   45 +++++++++++++++++++
- 3 files changed, 136 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3229-evb.dts
- create mode 100644 arch/arm/boot/dts/rk3229.dtsi
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 06b6c2d..5e0833f 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -602,6 +602,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3066a-rayeager.dtb \
- 	rk3188-radxarock.dtb \
- 	rk3228-evb.dtb \
-+	rk3229-evb.dtb \
- 	rk3288-evb-act8846.dtb \
- 	rk3288-evb-rk808.dtb \
- 	rk3288-firefly-beta.dtb \
-diff --git a/arch/arm/boot/dts/rk3229-evb.dts b/arch/arm/boot/dts/rk3229-evb.dts
-new file mode 100644
-index 0000000..77a46c7
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3229-evb.dts
-@@ -0,0 +1,90 @@
-+/*
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ *  Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+
-+#include "rk3229.dtsi"
-+
-+/ {
-+	model = "Rockchip RK3229 Evaluation board";
-+	compatible = "rockchip,rk3229-evb", "rockchip,rk3229";
-+
-+	memory {
-+		device_type = "memory";
-+		reg = <0x60000000 0x40000000>;
-+	};
-+
-+	ext_gmac: ext_gmac {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "ext_gmac";
-+		#clock-cells = <0>;
-+	};
-+
-+	vcc_phy: vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		regulator-name = "vcc_phy";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&gmac {
-+	phy-supply = <&vcc_phy>;
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+	snps,reset-gpio = <&gpio2 24 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 1000000>;
-+	assigned-clocks = <&cru SCLK_MAC_EXTCLK>, <&cru SCLK_MAC>;
-+	assigned-clock-parents = <&ext_gmac>, <&cru SCLK_MAC_EXTCLK>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins>;
-+	tx_delay = <0x30>;
-+	rx_delay = <0x10>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/rk3229.dtsi b/arch/arm/boot/dts/rk3229.dtsi
-new file mode 100644
-index 0000000..35ca047
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3229.dtsi
-@@ -0,0 +1,45 @@
-+/*
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#include "rk322x.dtsi"
-+
-+/ {
-+	compatible = "rockchip,rk3229";
-+};
--- 
-1.7.9.5
+CgpPbiA2LzIyLzIwMTYgNzo1NCBBTSwgWWFraXIgWWFuZyB3cm90ZToKPiBBcmNoaXQsCj4KPiBP
+biAwNi8yMS8yMDE2IDA5OjQ2IFBNLCBBcmNoaXQgVGFuZWphIHdyb3RlOgo+Pgo+Pgo+PiBPbiA2
+LzE0LzIwMTYgNToxNSBQTSwgWWFraXIgWWFuZyB3cm90ZToKPj4+IFJLMzM5OSBhbmQgUkszMjg4
+IHNoYXJlZCB0aGUgc2FtZSBlRFAgSVAgY29udHJvbGxlciwgb25seSBzb21lIGxpZ2h0Cj4+PiBk
+aWZmZXJlbmNlIHdpdGggVk9QIGNvbmZpZ3VyZSBhbmQgR1JGIGNvbmZpZ3VyZS4KPj4+Cj4+PiBB
+bHNvIHNhbWUgbWlzYyBmaXggdG8gYW5hbG9naXhfZHAgZHJpdmVyOgo+Pj4gLSBIb3RwbHVnIGlu
+dmFsaWQgd2hpY2ggcmVwb3J0IGJ5IERhbiBDYXJwZW50ZXIKPj4+IC0gTWFrZSBwYW5lbCBkZXRl
+Y3QgdG8gYW4gb3B0aW9uYWwgYWN0aW9uCj4+PiAtIGNvcnJlY3QgdGhlIHJlZ2lzdGVyIGJpdCBk
+ZWZpbmUgZXJyb3IgaW4gQU5BTE9HSVhfRFBfUExMX1JFR18xCj4+Pgo+Pj4KPj4+IENoYW5nZXMg
+aW4gdjM6Cj4+PiAtIENvcnJlY3QgdGhlIG1pc3NwZWxsIG9mICJtYXJjb3MiIGluIGNvbW1pdCBt
+ZXNzYWdlIChEb21pbmlrLAo+Pj4gcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPj4+IFtodHRw
+czovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTIvOS8vQ09NTUlU
+X01TR0A5XQo+Pj4gLSBBZGQgcmV2aWV3ZWQgZmxhZyBmcm9tIFN0w6lwaGFuZS4KPj4+ICAgICAg
+W2h0dHBzOi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxMi8xNl0K
+Pj4+IC0gQWRkIHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyLgo+Pj4gLSBXcml0ZSBhIGtlcm5lbGRv
+Yy1zdHlsZSBjb21tZW50IGV4cGxhaW5pbmcgdGhlIGNoaXBzIGRhdGEgZmllbGRzCj4+PiAoVG9t
+YXN6LCByZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQo+Pj4gW2h0dHBzOi8vY2hyb21pdW0tcmV2
+aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxMy8xMC9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuY0AzOV0KPj4+Cj4+PiAtIERyb3AgdGhlICcubGNkY3Nl
+bF9tYXNrJyBudW1iZXIgaW4gY2hpcHMgZGF0YSBmaWVsZCAoVG9tYXN6LAo+Pj4gcmV2aWV3ZWQg
+YXQgR29vZ2xlIEdlcnJpdCkKPj4+IFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3Vy
+Y2UuY29tLyMvYy8zNDYzMTMvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
+LXJvY2tjaGlwLmNAMzgyXQo+Pj4KPj4+IC0gQWRkIGFja2VkIGZsYWcgZnJvbSBNYXJrLgo+Pj4g
+LSBBZGQgcmV2aWV3ZWQgZmxhZyBmcm9tIFRvbWFzei4KPj4+ICAgICAgW2h0dHBzOi8vY2hyb21p
+dW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxNS8xNV0KPj4+IC0gQWRkIHRlc3Rl
+ZCBmbGFnIGZyb20gSmF2aWVyCj4+PiAtIE1ha2UgdGhpcyBoYWNrIGNvZGUgbW9yZSBjbGVhciAo
+VG9tYXN6LCByZXZpZXdlZCBhdCBHb29nbGUgR2Vycml0KQo+Pj4gICAgcmVnID0gfnJlZyAmIFJF
+Rl9DTEtfTUFTSzsgIC0tLT4gIHJlZyBePSBSRUZfQ0xLX01BU0s7Cj4+PiBbaHR0cHM6Ly9jaHJv
+bWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ2ODUyLzcvZHJpdmVycy9ncHUvZHJt
+L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuY0A4MF0KPj4+Cj4+PiAtIEFkZCB0ZXN0
+ZWQgZmxhZyBmcm9tIEphdmllcgo+Pj4gLSBHaXZlIHRoZSAicmszMzk5LWVkcCIgYSBzZXBhcmF0
+ZSBsaW5lIGZvciBjbGFyaXR5IGluIGRvY3VtZW50Cj4+PiAoVG9tYXN6LCByZXZpZXdlZCBhdCBH
+b29nbGUgR2Vycml0KQo+Pj4gW2h0dHBzOi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5j
+b20vIy9jLzM0NjMxNC8xMC9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHRANV0KPj4+Cj4+PiAtIE1vdmUgJ291
+dHB1dF90eXBlJyBzZXR0aW5nIGJlZm9yZSB0aGUgcmV0dXJuIHN0YXRlbWVudCAoVG9tYXN6LAo+
+Pj4gcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPj4+IFtodHRwczovL2Nocm9taXVtLXJldmll
+dy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTQvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNAMTU0XQo+Pj4KPj4+IC0gQWRkIHRoZSBhY2tlZCBmbGFn
+IGZyb20gTWFyay4KPj4+IC0gQWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFyay4KPj4+IC0gQXZv
+aWQgdG8gY2hhbmdlIGFueSBpbnRlcm5hbCBkcml2ZXIgc3RhdGUgaW4gLm1vZGVfdmFsaWQgaW50
+ZXJmYWNlLgo+Pj4gKFRvbWFzeiwgcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPj4+IFtodHRw
+czovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDYzMTgvMTAvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmNAMTEzXQo+Pj4KPj4+IC0g
+SG9vayB0aGUgY29ubmVjdG9yJ3MgY29sb3JfZm9ybWF0cyBpbiAuZ2V0X21vZGVzIGRpcmVjdGx5
+LiAoVG9tYXN6LAo+Pj4gcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKPj4+ICAgICAgW2h0dHBz
+Oi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxNy8xNV0KPj4+IC0g
+QWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFyay4KPj4+IC0gQWRkIHRoZSByZXZpZXdlZCBmbGFn
+IGZyb20gVG9tYXN6Lgo+Pj4gICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291
+cmNlLmNvbS8jL2MvMzQ2ODUzLzEyXQo+Pj4gLSBBZGQgdGhlIGFja2VkIGZsYWcgZnJvbSBNYXJr
+Lgo+Pj4gLSBBZGQgcmV2aWV3ZWQgZmxhZyBmcm9tIFN0w6lwaGFuZS4KPj4+ICAgICAgW2h0dHBz
+Oi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzM0NjMxOS8xNV0KPj4+IC0g
+QWRkIHRlc3RlZCBmbGFnIGZyb20gSmF2aWVyCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2MjoKPj4+IC0g
+bmV3IHBhdGNoIGluIHYyCj4+PiAtIHJlYmFzZSB3aXRoIGRybS1uZXh0LCBmaXggc29tZSBjb25m
+bGljdHMKPj4+IC0gbmV3IHBhdGNoIGluIHYyCj4+Pgo+Pj4gWWFraXIgWWFuZyAoMTApOgo+Pj4g
+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IHJlbmFtZSBSSzMyODhfRFAgdG8gUk9DS0NISVBf
+RFAKPj4+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IHNwbGl0IHRoZSBsY2RjIHNlbGVj
+dCBzZXR0aW5nIGludG8gZGV2aWNlCj4+PiAgICAgIGRhdGEKPj4+ICAgIGRybS9icmlkZ2U6IGFu
+YWxvZ2l4X2RwOiBjb3JyZWN0IHRoZSByZWdpc3RlciBiaXQgZGVmaW5lIGVycm9yIGluCj4+PiAg
+ICAgIEFOQUxPR0lYX0RQX1BMTF9SRUdfMQo+Pj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
+IHNvbWUgcm9ja2NoaXAgY2hpcHMgbmVlZCB0byBmbGlwIFJFRl9DTEsgYml0Cj4+PiAgICAgIHNl
+dHRpbmcKPj4+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IGFkZCByazMzOTkgZURQIHN1
+cHBvcnQKPj4+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IG1ha2UgcGFuZWwgZGV0ZWN0
+IHRvIGFuIG9wdGlvbmFsIGFjdGlvbgo+Pj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IHBh
+c3NpbmcgdGhlIGNvbm5lY3RvciBhcyBhbiBhcmd1bWVudCBpbgo+Pj4gICAgICAuZ2V0X21vZGVz
+KCkKPj4+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IGNvcnJlY3QgdGhlIGNvbm5lY3Rv
+ciBkaXNwbGF5IGNvbG9yIGZvcm1hdAo+Pj4gICAgICBhbmQgYnBjCj4+PiAgICBkcm0vcm9ja2No
+aXA6IGFuYWxvZ2l4X2RwOiB1cGRhdGUgdGhlIGNvbW1lbnRzIGFib3V0IHdoeSBuZWVkIHRvCj4+
+PiAgICAgIGhhcmRjb2RlIFZPUCBvdXRwdXQgbW9kZQo+Pj4gICAgZHJtL2JyaWRnZTogYW5hbG9n
+aXhfZHA6IGZpeCBubyBkcm0gaHBkIGV2ZW50IHdoZW4gcGFuZWwgcGx1ZyBpbgo+Pgo+PiBJcyB0
+aGUgcGxhbiB0byB0YWtlIGFsbCB0aGUgYnJpZGdlK3JvY2tjaGlwIHN0dWZmIHZpYSB0aGUgcm9j
+a2NoaXAgcHVsbAo+PiByZXF1ZXN0Pwo+Pgo+Cj4gWWVwLCBtb3N0IG9mIHRob3NlIHBhdGNoIG5l
+ZWQgdG8gcmVseSBvbiBvdGhlcnMsIHNvIGl0J3MgYmV0dGVyIHRvCj4gY29sbGVjdCBhbGwgb2Yg
+dGhlbSBpbnRvIG9uZSBwdWxsIHJlcXVlc3QgOykKCkNvb2wuIFNvdW5kcyBnb29kLgoKQXJjaGl0
+Cgo+Cj4gVGhhbmtzLAo+IC0gWWFraXIKPgo+PiBUaGFua3MsCj4+IEFyY2hpdAo+Pgo+Pj4KPj4+
+ICAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dCAgICAgICAgfCAg
+IDEgKwo+Pj4gICAuLi4vZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQg
+ICAgICB8ICAgMyArLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX2NvcmUuYyB8ICAgNiArLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
+Z2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCB8ICAgOCArLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jICB8ICAxMiArLQo+Pj4gICBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oICB8ICAgNSArLQo+Pj4gICBk
+cml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAgICAgICAgICAgICB8ICAgNCAr
+LQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAg
+ICB8IDE1OAo+Pj4gKysrKysrKysrKysrKystLS0tLS0tCj4+PiAgIGluY2x1ZGUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgICA5ICstCj4+PiAgIDkgZmlsZXMg
+Y2hhbmdlZCwgMTQxIGluc2VydGlvbnMoKyksIDY1IGRlbGV0aW9ucygtKQo+Pj4KPj4KPgo+Cgot
+LSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBB
+dXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRhdGlvbiBDb2xsYWJvcmF0aXZlIFByb2plY3QKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
