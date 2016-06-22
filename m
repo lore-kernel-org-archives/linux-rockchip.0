@@ -1,215 +1,173 @@
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [RFC PATCH v2 4/6] PM / devfreq: event: support rockchip dfi
- controller
-Date: Wed, 22 Jun 2016 08:18:20 +0200
-Message-ID: <CAAObsKDhp-UBu1ceefHfBy56EERyXkgKRmY4pyosJPfZ_cM_Rw@mail.gmail.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [RFC PATCH v2 6/6] drm/rockchip: Add dmc notifier in vop driver
+Date: Wed, 22 Jun 2016 16:11:52 +0900
+Message-ID: <576A3A38.3000306@samsung.com>
 References: <1465207986-17888-1-git-send-email-hl@rock-chips.com>
- <1465207986-17888-5-git-send-email-hl@rock-chips.com>
+ <CGME20160606101348epcas1p468b2019b1d69887a154b60c3afa2edce@epcas1p4.samsung.com>
+ <1465207986-17888-7-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465207986-17888-5-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: cw00.choi@samsung.com, Michael Turquette <mturquette@baylibre.com>, dbasehore@chromium.org, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-reply-to: <1465207986-17888-7-git-send-email-hl@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Lin Huang <hl@rock-chips.com>, heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, dianders@chromium.org, dbasehore@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gNiBKdW5lIDIwMTYgYXQgMTI6MTMsIExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+IHdy
-b3RlOgo+IG9uIHJrMzM5OSBwbGF0Zm9ybSwgdGhlcmUgaXMgZGZpIGNvbnJvbGxlciBjYW4gbW9u
-aXRvcgo+IGRkciBsb2FkLCBiYXNlIG9uIHRoaXMgcmVzdWx0LCB3ZSBjYW4gZG8gZGRyIGZyZXFl
-bmN5Cj4gc2NhbGluZy4KCkhpIExpbiwKCmlzbid0IHRoZSBERFJNT04gaW4gdGhpcyBTb0MgY2Fw
-YWJsZSBvZiByYWlzaW5nIGludGVycnVwdHMgd2hlbiB0aGUKcHJvZ3JhbW1lZCB1dGlsaXphdGlv
-biB0aHJlc2hvbGRzIGhhdmUgYmVlbiB0cmVzcGFzc2VkPwoKSWYgc28sIHRoZW4gSSB0aGluayBp
-dCB3b3VsZCBiZSBtb3JlIGFwcHJvcHJpYXRlIHRvIGRvIGl0IHNpbWlsYXJseSB0bwp0ZWdyYS1k
-ZXZmcmVxLCBpbnN0ZWFkIG9mIHVzaW5nIGRldmZyZXEtZXZlbnQgYW5kIHBvbGxpbmcgdGhlIGhh
-cmR3YXJlCmF0IGdpdmVuIGludGVydmFscy4KClJlZ2FyZHMsCgpUb21ldQoKPiBTaWduZWQtb2Zm
-LWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+IEFja2VkLWJ5OiBDaGFud29vIENo
-b2kgPGN3MDAuY2hvaUBzYW1zdW5nLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSB1
-c2UgY2xrX2Rpc2FibGVfdW5wcmVwYXJlIGFuZCBjbGtfZW5hYmxlX3ByZXBhcmUKPiAtIHJlbW92
-ZSBjbGtfZW5hYmxlX3ByZXBhcmUgaW4gcHJvYmUKPiAtIHJlbW92ZSByb2NrY2hpcF9kZmlfcmVt
-b3ZlIGZ1bmN0aW9uCj4KPiBDaGFuZ2VzIGluIHYxOgo+IC0gTm9uZQo+Cj4gIGRyaXZlcnMvZGV2
-ZnJlcS9ldmVudC9LY29uZmlnICAgICAgICB8ICAgNyArCj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVu
-dC9NYWtlZmlsZSAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVudC9yb2NrY2hp
-cC1kZmkuYyB8IDI1MyArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAzIGZp
-bGVzIGNoYW5nZWQsIDI2MSBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
-ZXJzL2RldmZyZXEvZXZlbnQvcm9ja2NoaXAtZGZpLmMKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2RldmZyZXEvZXZlbnQvS2NvbmZpZyBiL2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9LY29uZmlnCj4g
-aW5kZXggMWU4YjRmNC4uOTZmMjMzMSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2RldmZyZXEvZXZl
-bnQvS2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9LY29uZmlnCj4gQEAgLTMw
-LDQgKzMwLDExIEBAIGNvbmZpZyBERVZGUkVRX0VWRU5UX0VYWU5PU19QUE1VCj4gICAgICAgICAg
-IChQbGF0Zm9ybSBQZXJmb3JtYW5jZSBNb25pdG9yaW5nIFVuaXQpIGNvdW50ZXJzIHRvIGVzdGlt
-YXRlIHRoZQo+ICAgICAgICAgICB1dGlsaXphdGlvbiBvZiBlYWNoIG1vZHVsZS4KPgo+ICtjb25m
-aWcgREVWRlJFUV9FVkVOVF9ST0NLQ0hJUF9ERkkKPiArICAgICAgIGJvb2wgIlJPQ0tDSElQIERG
-SSBERVZGUkVRIGV2ZW50IERyaXZlciIKPiArICAgICAgIGRlcGVuZHMgb24gQVJDSF9ST0NLQ0hJ
-UAo+ICsgICAgICAgaGVscAo+ICsgICAgICAgICBUaGlzIGFkZCB0aGUgZGV2ZnJlcS1ldmVudCBk
-cml2ZXIgZm9yIFJvY2tjaGlwIFNvQy4gSXQgcHJvdmlkZXMgREZJCj4gKyAgICAgICAgIChERFIg
-TW9uaXRvciBNb2R1bGUpIGRyaXZlciB0byBjb3VudCBkZHIgbG9hZC4KPiArCj4gIGVuZGlmICMg
-UE1fREVWRlJFUV9FVkVOVAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2RldmZyZXEvZXZlbnQvTWFr
-ZWZpbGUgYi9kcml2ZXJzL2RldmZyZXEvZXZlbnQvTWFrZWZpbGUKPiBpbmRleCAzZDZhZmQzLi5k
-ZGE3MDkwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9NYWtlZmlsZQo+ICsr
-KyBiL2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9NYWtlZmlsZQo+IEBAIC0yLDMgKzIsNCBAQAo+Cj4g
-IG9iai0kKENPTkZJR19ERVZGUkVRX0VWRU5UX0VYWU5PU19OT0NQKSArPSBleHlub3Mtbm9jcC5v
-Cj4gIG9iai0kKENPTkZJR19ERVZGUkVRX0VWRU5UX0VYWU5PU19QUE1VKSArPSBleHlub3MtcHBt
-dS5vCj4gK29iai0kKENPTkZJR19ERVZGUkVRX0VWRU5UX1JPQ0tDSElQX0RGSSkgKz0gcm9ja2No
-aXAtZGZpLm8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRm
-aS5jIGIvZHJpdmVycy9kZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS5jCj4gbmV3IGZpbGUgbW9k
-ZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi45NmEwMzA3Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBi
-L2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9yb2NrY2hpcC1kZmkuYwo+IEBAIC0wLDAgKzEsMjUzIEBA
-Cj4gKy8qCj4gKyAqIENvcHlyaWdodCAoYykgMjAxNiwgRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9u
-aWNzIENvLiwgTHRkCj4gKyAqIEF1dGhvcjogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4K
-PiArICoKPiArICogVGhpcyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0
-cmlidXRlIGl0IGFuZC9vciBtb2RpZnkgaXQKPiArICogdW5kZXIgdGhlIHRlcm1zIGFuZCBjb25k
-aXRpb25zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSwKPiArICogdmVyc2lvbiAy
-LCBhcyBwdWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4KPiArICoKPiAr
-ICogVGhpcyBwcm9ncmFtIGlzIGRpc3RyaWJ1dGVkIGluIHRoZSBob3BlIGl0IHdpbGwgYmUgdXNl
-ZnVsLCBidXQgV0lUSE9VVAo+ICsgKiBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1w
-bGllZCB3YXJyYW50eSBvZiBNRVJDSEFOVEFCSUxJVFkgb3IKPiArICogRklUTkVTUyBGT1IgQSBQ
-QVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZv
-cgo+ICsgKiBtb3JlIGRldGFpbHMuCj4gKyAqLwo+ICsKPiArI2luY2x1ZGUgPGxpbnV4L2Nsay5o
-Pgo+ICsjaW5jbHVkZSA8bGludXgvZGV2ZnJlcS1ldmVudC5oPgo+ICsjaW5jbHVkZSA8bGludXgv
-a2VybmVsLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9lcnIuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2lu
-aXQuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2lvLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tZmQvc3lz
-Y29uLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3Bs
-YXRmb3JtX2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gKyNpbmNsdWRl
-IDxsaW51eC9zbGFiLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9saXN0Lmg+Cj4gKyNpbmNsdWRlIDxs
-aW51eC9vZi5oPgo+ICsKPiArI2RlZmluZSBSSzMzOTlfRE1DX05VTV9DSCAgICAgIDIKPiArCj4g
-Ky8qIEREUk1PTl9DVFJMICovCj4gKyNkZWZpbmUgRERSTU9OX0NUUkwgICAgMHgwNAo+ICsjZGVm
-aW5lIENMUl9ERFJNT05fQ1RSTCAgICAgICAgKDB4MWYwMDAwIDw8IDApCj4gKyNkZWZpbmUgTFBE
-RFI0X0VOICAgICAgKDB4MTAwMDEgPDwgNCkKPiArI2RlZmluZSBIQVJEV0FSRV9FTiAgICAoMHgx
-MDAwMSA8PCAzKQo+ICsjZGVmaW5lIExQRERSM19FTiAgICAgICgweDEwMDAxIDw8IDIpCj4gKyNk
-ZWZpbmUgU09GVFdBUkVfRU4gICAgKDB4MTAwMDEgPDwgMSkKPiArI2RlZmluZSBUSU1FX0NOVF9F
-TiAgICAoMHgxMDAwMSA8PCAwKQo+ICsKPiArI2RlZmluZSBERFJNT05fQ0gwX0NPVU5UX05VTSAg
-ICAgICAgICAgMHgyOAo+ICsjZGVmaW5lIEREUk1PTl9DSDBfREZJX0FDQ0VTU19OVU0gICAgICAw
-eDJjCj4gKyNkZWZpbmUgRERSTU9OX0NIMV9DT1VOVF9OVU0gICAgICAgICAgIDB4M2MKPiArI2Rl
-ZmluZSBERFJNT05fQ0gxX0RGSV9BQ0NFU1NfTlVNICAgICAgMHg0MAo+ICsKPiArLyogcG11IGdy
-ZiAqLwo+ICsjZGVmaW5lIFBNVUdSRl9PU19SRUcyIDB4MzA4Cj4gKyNkZWZpbmUgRERSVFlQRV9T
-SElGVCAgMTMKPiArI2RlZmluZSBERFJUWVBFX01BU0sgICA3Cj4gKwo+ICtlbnVtIHsKPiArICAg
-ICAgIEREUjMgPSAzLAo+ICsgICAgICAgTFBERFIzID0gNiwKPiArICAgICAgIExQRERSNCA9IDcs
-Cj4gKyAgICAgICBVTlVTRUQgPSAweEZGCj4gK307Cj4gKwo+ICtzdHJ1Y3QgZG1jX3VzYWdlIHsK
-PiArICAgICAgIHUzMiBhY2Nlc3M7Cj4gKyAgICAgICB1MzIgdG90YWw7Cj4gK307Cj4gKwo+ICtz
-dHJ1Y3Qgcm9ja2NoaXBfZGZpIHsKPiArICAgICAgIHN0cnVjdCBkZXZmcmVxX2V2ZW50X2RldiAq
-ZWRldjsKPiArICAgICAgIHN0cnVjdCBkZXZmcmVxX2V2ZW50X2Rlc2MgKmRlc2M7Cj4gKyAgICAg
-ICBzdHJ1Y3QgZG1jX3VzYWdlIGNoX3VzYWdlW1JLMzM5OV9ETUNfTlVNX0NIXTsKPiArICAgICAg
-IHN0cnVjdCBkZXZpY2UgKmRldjsKPiArICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPiArICAg
-ICAgIHN0cnVjdCByZWdtYXAgKnJlZ21hcF9wbXU7Cj4gKyAgICAgICBzdHJ1Y3QgY2xrICpjbGs7
-Cj4gK307Cj4gKwo+ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9kZmlfc3RhcnRfaGFyZHdhcmVfY291
-bnRlcihzdHJ1Y3QgZGV2ZnJlcV9ldmVudF9kZXYgKmVkZXYpCj4gK3sKPiArICAgICAgIHN0cnVj
-dCByb2NrY2hpcF9kZmkgKmluZm8gPSBkZXZmcmVxX2V2ZW50X2dldF9kcnZkYXRhKGVkZXYpOwo+
-ICsgICAgICAgdm9pZCBfX2lvbWVtICpkZmlfcmVncyA9IGluZm8tPnJlZ3M7Cj4gKyAgICAgICB1
-MzIgdmFsOwo+ICsgICAgICAgdTMyIGRkcl90eXBlOwo+ICsKPiArICAgICAgIC8qIGdldCBkZHIg
-dHlwZSAqLwo+ICsgICAgICAgcmVnbWFwX3JlYWQoaW5mby0+cmVnbWFwX3BtdSwgUE1VR1JGX09T
-X1JFRzIsICZ2YWwpOwo+ICsgICAgICAgZGRyX3R5cGUgPSAodmFsID4+IEREUlRZUEVfU0hJRlQp
-ICYgRERSVFlQRV9NQVNLOwo+ICsKPiArICAgICAgIC8qIGNsZWFyIEREUk1PTl9DVFJMIHNldHRp
-bmcgKi8KPiArICAgICAgIHdyaXRlbF9yZWxheGVkKENMUl9ERFJNT05fQ1RSTCwgZGZpX3JlZ3Mg
-KyBERFJNT05fQ1RSTCk7Cj4gKwo+ICsgICAgICAgLyogc2V0IGRkciB0eXBlIHRvIGRmaSAqLwo+
-ICsgICAgICAgaWYgKGRkcl90eXBlID09IExQRERSMykKPiArICAgICAgICAgICAgICAgd3JpdGVs
-X3JlbGF4ZWQoTFBERFIzX0VOLCBkZmlfcmVncyArIEREUk1PTl9DVFJMKTsKPiArICAgICAgIGVs
-c2UgaWYgKGRkcl90eXBlID09IExQRERSNCkKPiArICAgICAgICAgICAgICAgd3JpdGVsX3JlbGF4
-ZWQoTFBERFI0X0VOLCBkZmlfcmVncyArIEREUk1PTl9DVFJMKTsKPiArCj4gKyAgICAgICAvKiBl
-bmFibGUgY291bnQsIHVzZSBzb2Z0d2FyZSBtb2RlICovCj4gKyAgICAgICB3cml0ZWxfcmVsYXhl
-ZChTT0ZUV0FSRV9FTiwgZGZpX3JlZ3MgKyBERFJNT05fQ1RSTCk7Cj4gK30KPiArCj4gK3N0YXRp
-YyB2b2lkIHJvY2tjaGlwX2RmaV9zdG9wX2hhcmR3YXJlX2NvdW50ZXIoc3RydWN0IGRldmZyZXFf
-ZXZlbnRfZGV2ICplZGV2KQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfZGZpICppbmZv
-ID0gZGV2ZnJlcV9ldmVudF9nZXRfZHJ2ZGF0YShlZGV2KTsKPiArICAgICAgIHZvaWQgX19pb21l
-bSAqZGZpX3JlZ3MgPSBpbmZvLT5yZWdzOwo+ICsgICAgICAgdTMyIHZhbDsKPiArCj4gKyAgICAg
-ICB2YWwgPSByZWFkbF9yZWxheGVkKGRmaV9yZWdzICsgRERSTU9OX0NUUkwpOwo+ICsgICAgICAg
-dmFsICY9IH5TT0ZUV0FSRV9FTjsKPiArICAgICAgIHdyaXRlbF9yZWxheGVkKHZhbCwgZGZpX3Jl
-Z3MgKyBERFJNT05fQ1RSTCk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX2dl
-dF9idXNpZXJfY2goc3RydWN0IGRldmZyZXFfZXZlbnRfZGV2ICplZGV2KQo+ICt7Cj4gKyAgICAg
-ICBzdHJ1Y3Qgcm9ja2NoaXBfZGZpICppbmZvID0gZGV2ZnJlcV9ldmVudF9nZXRfZHJ2ZGF0YShl
-ZGV2KTsKPiArICAgICAgIHUzMiB0bXAsIG1heCA9IDA7Cj4gKyAgICAgICB1MzIgaSwgYnVzaWVy
-X2NoID0gMDsKPiArICAgICAgIHZvaWQgX19pb21lbSAqZGZpX3JlZ3MgPSBpbmZvLT5yZWdzOwo+
-ICsKPiArICAgICAgIHJvY2tjaGlwX2RmaV9zdG9wX2hhcmR3YXJlX2NvdW50ZXIoZWRldik7Cj4g
-Kwo+ICsgICAgICAgLyogRmluZCBvdXQgd2hpY2ggY2hhbm5lbCBpcyBidXNpZXIgKi8KPiArICAg
-ICAgIGZvciAoaSA9IDA7IGkgPCBSSzMzOTlfRE1DX05VTV9DSDsgaSsrKSB7Cj4gKyAgICAgICAg
-ICAgICAgIGluZm8tPmNoX3VzYWdlW2ldLmFjY2VzcyA9IHJlYWRsX3JlbGF4ZWQoZGZpX3JlZ3Mg
-Kwo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRERSTU9OX0NIMF9ERklfQUNDRVNT
-X05VTSArIGkgKiAyMCk7Cj4gKyAgICAgICAgICAgICAgIGluZm8tPmNoX3VzYWdlW2ldLnRvdGFs
-ID0gcmVhZGxfcmVsYXhlZChkZmlfcmVncyArCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBERFJNT05fQ0gwX0NPVU5UX05VTSArIGkgKiAyMCk7Cj4gKyAgICAgICAgICAgICAgIHRt
-cCA9IGluZm8tPmNoX3VzYWdlW2ldLmFjY2VzczsKPiArICAgICAgICAgICAgICAgaWYgKHRtcCA+
-IG1heCkgewo+ICsgICAgICAgICAgICAgICAgICAgICAgIGJ1c2llcl9jaCA9IGk7Cj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgbWF4ID0gdG1wOwo+ICsgICAgICAgICAgICAgICB9Cj4gKyAgICAg
-ICB9Cj4gKyAgICAgICByb2NrY2hpcF9kZmlfc3RhcnRfaGFyZHdhcmVfY291bnRlcihlZGV2KTsK
-PiArCj4gKyAgICAgICByZXR1cm4gYnVzaWVyX2NoOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHJv
-Y2tjaGlwX2RmaV9kaXNhYmxlKHN0cnVjdCBkZXZmcmVxX2V2ZW50X2RldiAqZWRldikKPiArewo+
-ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX2RmaSAqaW5mbyA9IGRldmZyZXFfZXZlbnRfZ2V0X2Ry
-dmRhdGEoZWRldik7Cj4gKwo+ICsgICAgICAgcm9ja2NoaXBfZGZpX3N0b3BfaGFyZHdhcmVfY291
-bnRlcihlZGV2KTsKPiArICAgICAgIGNsa19kaXNhYmxlX3VucHJlcGFyZShpbmZvLT5jbGspOwo+
-ICsKPiArICAgICAgIHJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHJvY2tjaGlwX2Rm
-aV9lbmFibGUoc3RydWN0IGRldmZyZXFfZXZlbnRfZGV2ICplZGV2KQo+ICt7Cj4gKyAgICAgICBz
-dHJ1Y3Qgcm9ja2NoaXBfZGZpICppbmZvID0gZGV2ZnJlcV9ldmVudF9nZXRfZHJ2ZGF0YShlZGV2
-KTsKPiArICAgICAgIGludCByZXQ7Cj4gKwo+ICsgICAgICAgcmV0ID0gY2xrX3ByZXBhcmVfZW5h
-YmxlKGluZm8tPmNsayk7Cj4gKyAgICAgICBpZiAocmV0KSB7Cj4gKyAgICAgICAgICAgICAgIGRl
-dl9lcnIoJmVkZXYtPmRldiwgImZhaWxlZCB0byBlbmFibGUgZGZpIGNsazogJWRcbiIsIHJldCk7
-Cj4gKyAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAg
-cm9ja2NoaXBfZGZpX3N0YXJ0X2hhcmR3YXJlX2NvdW50ZXIoZWRldik7Cj4gKyAgICAgICByZXR1
-cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGludCByb2NrY2hpcF9kZmlfc2V0X2V2ZW50KHN0cnVj
-dCBkZXZmcmVxX2V2ZW50X2RldiAqZWRldikKPiArewo+ICsgICAgICAgcmV0dXJuIDA7Cj4gK30K
-PiArCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX2dldF9ldmVudChzdHJ1Y3QgZGV2ZnJlcV9l
-dmVudF9kZXYgKmVkZXYsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVj
-dCBkZXZmcmVxX2V2ZW50X2RhdGEgKmVkYXRhKQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3Qgcm9ja2No
-aXBfZGZpICppbmZvID0gZGV2ZnJlcV9ldmVudF9nZXRfZHJ2ZGF0YShlZGV2KTsKPiArICAgICAg
-IGludCBidXNpZXJfY2g7Cj4gKwo+ICsgICAgICAgYnVzaWVyX2NoID0gcm9ja2NoaXBfZGZpX2dl
-dF9idXNpZXJfY2goZWRldik7Cj4gKwo+ICsgICAgICAgZWRhdGEtPmxvYWRfY291bnQgPSBpbmZv
-LT5jaF91c2FnZVtidXNpZXJfY2hdLmFjY2VzczsKPiArICAgICAgIGVkYXRhLT50b3RhbF9jb3Vu
-dCA9IGluZm8tPmNoX3VzYWdlW2J1c2llcl9jaF0udG90YWw7Cj4gKwo+ICsgICAgICAgcmV0dXJu
-IDA7Cj4gK30KPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2ZnJlcV9ldmVudF9vcHMgcm9j
-a2NoaXBfZGZpX29wcyA9IHsKPiArICAgICAgIC5kaXNhYmxlID0gcm9ja2NoaXBfZGZpX2Rpc2Fi
-bGUsCj4gKyAgICAgICAuZW5hYmxlID0gcm9ja2NoaXBfZGZpX2VuYWJsZSwKPiArICAgICAgIC5n
-ZXRfZXZlbnQgPSByb2NrY2hpcF9kZmlfZ2V0X2V2ZW50LAo+ICsgICAgICAgLnNldF9ldmVudCA9
-IHJvY2tjaGlwX2RmaV9zZXRfZXZlbnQsCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0
-IG9mX2RldmljZV9pZCByb2NrY2hpcF9kZmlfaWRfbWF0Y2hbXSA9IHsKPiArICAgICAgIHsgLmNv
-bXBhdGlibGUgPSAicm9ja2NoaXAscmszMzk5LWRmaSIgfSwKPiArICAgICAgIHsgfSwKPiArfTsK
-PiArCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4gK3sKPiArICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7
-Cj4gKyAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfZGZpICpkYXRhOwo+ICsgICAgICAgc3RydWN0IHJl
-c291cmNlICpyZXM7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2ZnJlcV9ldmVudF9kZXNjICpkZXNjOwo+
-ICsgICAgICAgc3RydWN0IGRldmljZV9ub2RlICpucCA9IHBkZXYtPmRldi5vZl9ub2RlLCAqbm9k
-ZTsKPiArCj4gKyAgICAgICBkYXRhID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKHN0cnVjdCBy
-b2NrY2hpcF9kZmkpLCBHRlBfS0VSTkVMKTsKPiArICAgICAgIGlmICghZGF0YSkKPiArICAgICAg
-ICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4gKwo+ICsgICAgICAgcmVzID0gcGxhdGZvcm1fZ2V0
-X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsKPiArICAgICAgIGRhdGEtPnJlZ3Mg
-PSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UoJnBkZXYtPmRldiwgcmVzKTsKPiArICAgICAgIGlmIChJ
-U19FUlIoZGF0YS0+cmVncykpCj4gKyAgICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKGRhdGEt
-PnJlZ3MpOwo+ICsKPiArICAgICAgIGRhdGEtPmNsayA9IGRldm1fY2xrX2dldChkZXYsICJwY2xr
-X2Rkcl9tb24iKTsKPiArICAgICAgIGlmIChJU19FUlIoZGF0YS0+Y2xrKSkgewo+ICsgICAgICAg
-ICAgICAgICBkZXZfZXJyKGRldiwgIkNhbm5vdCBnZXQgdGhlIGNsayBkbWNfY2xrXG4iKTsKPiAr
-ICAgICAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIoZGF0YS0+Y2xrKTsKPiArICAgICAgIH07Cj4g
-Kwo+ICsgICAgICAgLyogdHJ5IHRvIGZpbmQgdGhlIG9wdGlvbmFsIHJlZmVyZW5jZSB0byB0aGUg
-cG11IHN5c2NvbiAqLwo+ICsgICAgICAgbm9kZSA9IG9mX3BhcnNlX3BoYW5kbGUobnAsICJyb2Nr
-Y2hpcCxwbXUiLCAwKTsKPiArICAgICAgIGlmIChub2RlKSB7Cj4gKyAgICAgICAgICAgICAgIGRh
-dGEtPnJlZ21hcF9wbXUgPSBzeXNjb25fbm9kZV90b19yZWdtYXAobm9kZSk7Cj4gKyAgICAgICAg
-ICAgICAgIGlmIChJU19FUlIoZGF0YS0+cmVnbWFwX3BtdSkpCj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgcmV0dXJuIFBUUl9FUlIoZGF0YS0+cmVnbWFwX3BtdSk7Cj4gKyAgICAgICB9Cj4gKyAg
-ICAgICBkYXRhLT5kZXYgPSBkZXY7Cj4gKwo+ICsgICAgICAgZGVzYyA9IGRldm1fa3phbGxvYyhk
-ZXYsIHNpemVvZigqZGVzYyksIEdGUF9LRVJORUwpOwo+ICsgICAgICAgaWYgKCFkZXNjKQo+ICsg
-ICAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPiArCj4gKyAgICAgICBkZXNjLT5vcHMgPSAm
-cm9ja2NoaXBfZGZpX29wczsKPiArICAgICAgIGRlc2MtPmRyaXZlcl9kYXRhID0gZGF0YTsKPiAr
-ICAgICAgIGRlc2MtPm5hbWUgPSBucC0+bmFtZTsKPiArICAgICAgIGRhdGEtPmRlc2MgPSBkZXNj
-Owo+ICsKPiArICAgICAgIGRhdGEtPmVkZXYgPSBkZXZtX2RldmZyZXFfZXZlbnRfYWRkX2VkZXYo
-JnBkZXYtPmRldiwgZGVzYyk7Cj4gKyAgICAgICBpZiAoSVNfRVJSKGRhdGEtPmVkZXYpKSB7Cj4g
-KyAgICAgICAgICAgICAgIGRldl9lcnIoJnBkZXYtPmRldiwKPiArICAgICAgICAgICAgICAgICAg
-ICAgICAiZmFpbGVkIHRvIGFkZCBkZXZmcmVxLWV2ZW50IGRldmljZVxuIik7Cj4gKyAgICAgICAg
-ICAgICAgIHJldHVybiBQVFJfRVJSKGRhdGEtPmVkZXYpOwo+ICsgICAgICAgfQo+ICsKPiArICAg
-ICAgIHBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGRhdGEpOwo+ICsKPiArICAgICAgIHJldHVy
-biAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciByb2NrY2hpcF9k
-ZmlfZHJpdmVyID0gewo+ICsgICAgICAgLnByb2JlICA9IHJvY2tjaGlwX2RmaV9wcm9iZSwKPiAr
-ICAgICAgIC5kcml2ZXIgPSB7Cj4gKyAgICAgICAgICAgICAgIC5uYW1lICAgPSAicm9ja2NoaXAt
-ZGZpIiwKPiArICAgICAgICAgICAgICAgLm9mX21hdGNoX3RhYmxlID0gcm9ja2NoaXBfZGZpX2lk
-X21hdGNoLAo+ICsgICAgICAgfSwKPiArfTsKPiArbW9kdWxlX3BsYXRmb3JtX2RyaXZlcihyb2Nr
-Y2hpcF9kZmlfZHJpdmVyKTsKPiArCj4gK01PRFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPiArTU9E
-VUxFX0FVVEhPUigiTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4iKTsKPiArTU9EVUxFX0RF
-U0NSSVBUSU9OKCJSb2NrY2hpcCBkZmkgZHJpdmVyIik7Cj4gLS0KPiAxLjkuMQo+Cl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+On 2016=EB=85=84 06=EC=9B=94 06=EC=9D=BC 19:13, Lin Huang wrote:
+> when in ddr frequency scaling process, vop can not do
+> enable or disable operate, since dcf will base on vop vblank
+> time to do frequency scaling and need to get vop irq if there
+> have vop enabled. So need register to dmc notifier, and we can
+> get the dmc status.
+
+If you want to know when ddr frequency is chanaged,
+you can use the DEVFREQ_TRANSITION_NOTIFIER notifier[1] (merged to v4.7=
+-rc1)
+which includes the following notification:
+- DEVFREQ_PRECHANGE
+- DEVFREQ_POSTCHANGE=09
+
+[1] "PM / devfreq: Add new DEVFREQ_TRANSITION_NOTIFIER notifier"
+- https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commi=
+t/?id=3D0fe3a66410a3ba96679be903f1e287d7a0a264a9
+
+Thanks,
+Chanwoo Choi
+
+>=20
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> ---
+>=20
+> Changes in v2:
+> - None
+>=20
+> Changes in v1:
+> - use wait_event instead usleep
+>=20
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 43 +++++++++++++++++++=
+++++++++--
+>  1 file changed, 41 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gp=
+u/drm/rockchip/rockchip_drm_vop.c
+> index 1c4d5b5..8286048 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -31,6 +31,8 @@
+>  #include <linux/reset.h>
+>  #include <linux/delay.h>
+> =20
+> +#include <soc/rockchip/rockchip_dmc.h>
+> +
+>  #include "rockchip_drm_drv.h"
+>  #include "rockchip_drm_gem.h"
+>  #include "rockchip_drm_fb.h"
+> @@ -116,6 +118,10 @@ struct vop {
+> =20
+>  	const struct vop_data *data;
+> =20
+> +	struct notifier_block dmc_nb;
+> +	int dmc_in_process;
+> +	wait_queue_head_t	wait_dmc_queue;
+> +
+>  	uint32_t *regsbak;
+>  	void __iomem *regs;
+> =20
+> @@ -426,6 +432,21 @@ static void vop_dsp_hold_valid_irq_disable(struc=
+t vop *vop)
+>  	spin_unlock_irqrestore(&vop->irq_lock, flags);
+>  }
+> =20
+> +static int dmc_notify(struct notifier_block *nb, unsigned long event=
+,
+> +		      void *data)
+> +{
+> +	struct vop *vop =3D container_of(nb, struct vop, dmc_nb);
+> +
+> +	if (event =3D=3D DMCFREQ_ADJUST) {
+> +		vop->dmc_in_process =3D 1;
+> +	} else if (event =3D=3D DMCFREQ_FINISH) {
+> +		vop->dmc_in_process =3D 0;
+> +		wake_up(&vop->wait_dmc_queue);
+> +	}
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+>  static void vop_enable(struct drm_crtc *crtc)
+>  {
+>  	struct vop *vop =3D to_vop(crtc);
+> @@ -434,6 +455,13 @@ static void vop_enable(struct drm_crtc *crtc)
+>  	if (vop->is_enabled)
+>  		return;
+> =20
+> +	/*
+> +	 * if in dmc scaling frequency process, wait until it finish
+> +	 * use 100ms as timeout time.
+> +	 */
+> +	wait_event_timeout(vop->wait_dmc_queue,
+> +			   !vop->dmc_in_process, HZ / 10);
+> +
+>  	ret =3D pm_runtime_get_sync(vop->dev);
+>  	if (ret < 0) {
+>  		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
+> @@ -485,6 +513,7 @@ static void vop_enable(struct drm_crtc *crtc)
+>  	enable_irq(vop->irq);
+> =20
+>  	drm_crtc_vblank_on(crtc);
+> +	rockchip_dmc_get(&vop->dmc_nb);
+> =20
+>  	return;
+> =20
+> @@ -505,6 +534,13 @@ static void vop_crtc_disable(struct drm_crtc *cr=
+tc)
+>  		return;
+> =20
+>  	/*
+> +	 * if in dmc scaling frequency process, wait until it finish
+> +	 * use 100ms as timeout time.
+> +	 */
+> +	wait_event_timeout(vop->wait_dmc_queue,
+> +			   !vop->dmc_in_process, HZ / 10);
+> +
+> +	/*
+>  	 * We need to make sure that all windows are disabled before we
+>  	 * disable that crtc. Otherwise we might try to scan from a destroy=
+ed
+>  	 * buffer later.
+> @@ -517,7 +553,7 @@ static void vop_crtc_disable(struct drm_crtc *crt=
+c)
+>  		VOP_WIN_SET(vop, win, enable, 0);
+>  		spin_unlock(&vop->reg_lock);
+>  	}
+> -
+> +	rockchip_dmc_put(&vop->dmc_nb);
+>  	drm_crtc_vblank_off(crtc);
+> =20
+>  	/*
+> @@ -1243,7 +1279,7 @@ static int vop_create_crtc(struct vop *vop)
+>  		ret =3D -ENOENT;
+>  		goto err_cleanup_crtc;
+>  	}
+> -
+> +	vop->dmc_nb.notifier_call =3D dmc_notify;
+>  	init_completion(&vop->dsp_hold_completion);
+>  	init_completion(&vop->wait_update_complete);
+>  	crtc->port =3D port;
+> @@ -1465,6 +1501,9 @@ static int vop_bind(struct device *dev, struct =
+device *master, void *data)
+>  	/* IRQ is initially disabled; it gets enabled in power_on */
+>  	disable_irq(vop->irq);
+> =20
+> +	init_waitqueue_head(&vop->wait_dmc_queue);
+> +	vop->dmc_in_process =3D 0;
+> +
+>  	ret =3D vop_create_crtc(vop);
+>  	if (ret)
+>  		return ret;
+>=20
+
