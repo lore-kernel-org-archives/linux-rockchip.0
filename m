@@ -1,113 +1,104 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/2] thermal: rockchip: fixes the period time for tsadc
-Date: Wed, 22 Jun 2016 18:13:56 +0800
-Message-ID: <1466590437-15912-1-git-send-email-wxt@rock-chips.com>
-References: <1466584925-4829-1-git-send-email-wxt@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: core: add auto bkops support
+Date: Wed, 22 Jun 2016 12:21:51 +0200
+Message-ID: <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
+References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
+ <575E52AC.6000902@intel.com> <8bbb3f13-efb3-e963-e53f-cf2ca796f319@rock-chips.com>
+ <575E6C11.8060709@intel.com> <b22ae70d-5128-639d-eef0-8ac9cdd2b8e4@rock-chips.com>
+ <575EA651.7060606@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1466584925-4829-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <575EA651.7060606@intel.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Adrian Hunter <adrian.hunter@intel.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, Alex Lemberg <alex.lemberg@sandisk.com>
+Cc: linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should increase the period cycles to save power since the rk3399 has
-the high frequency for tsadc clock.
+On 13 June 2016 at 14:25, Adrian Hunter <adrian.hunter@intel.com> wrote=
+:
+> On 13/06/16 11:58, Shawn Lin wrote:
+>> =E5=9C=A8 2016/6/13 16:17, Adrian Hunter =E5=86=99=E9=81=93:
+>>> On 13/06/16 10:48, Shawn Lin wrote:
+>>>> On 2016/6/13 14:29, Adrian Hunter wrote:
+>>>>> On 06/06/16 06:07, Shawn Lin wrote:
+>>>>>> JEDEC eMMC v5.1 introduce an autonomously initiated method
+>>>>>> for background operations.
+>>>>>>
+>>>>>> Host that wants to enable the device to perform background
+>>>>>> operations during device idle time, should signal the device
+>>>>>> by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
+>>>>>> this bit is set, the device may start or stop background operati=
+ons
+>>>>>> whenever it sees fit, without any notification to the host.
+>>>>>>
+>>>>>> When AUTO_EN bit is set, the host should keep the device power
+>>>>>> active. The host may set or clear this bit at any time based on
+>>>>>> its power constraints or other considerations.
+>>>>>>
+>>>>>> Currently the manual bkops is only be used under the async req
+>>>>>> circumstances and it's a bit complicated to be controlled as the
+>>>>>> perfect method is that we should do some idle monitor just as rp=
+m
+>>>>>> and send HPI each time if receiving rd/wr req. But it will impac=
+t
+>>>>>> performance significantly, especially for random iops since the
+>>>>>> weight of executing HPI against r/w small piece of LBAs is
+>>>>>> nonnegligible.
+>>>>>>
+>>>>>> So we now prefer to select the auto one unconditionally if suppo=
+rted
+>>>>>> which makes it as simple as possible. It should really good enou=
+gh
+>>>>>> for devices to manage its internal policy for bkops rather than =
+the
+>>>>>> host, which makes us believe that we could achieve the best
+>>>>>> performance for all the devices implementing auto bkops and the =
+only
+>>>>>> thing we should do is to disable it when cutting off the power.
+>>>>>
+>>>>> Do you know if there is really a requirement to do that?
+>>>>
+>>>> Even without bkops enable, no matter for manual or auto one, FTL s=
+hould
+>>>> always do bkops like GC internally when needed to guarantee the
+>>>> performance and balance the wear leveling. What I thought to do is=
+ to
+>>>> make it more explicitly.
+>>>>
+>>>> Because then, what
+>>>>> is the point of power off notification?
+>>>>
+>>>> When power off notification is sent, bkops will be stopped
+>>>> in _mmc_suspend. So I don't undertand your point here?
+>>>
+>>> I am trying to understand why we need to do anything for auto bkops=
+=2E
+>>> Since AUTO_EN is persistent, we can leave the decision whether to t=
+urn it on
+>>> to whomever provisions the device. Then we just leave it alone.
+>>>
+>>
+>> Hrm..
+>>
+>> one possible way is to control it by mmc-utils on
+>> user space?  So we should add a cmd for mmc-utils
+>> there?
+>
+> That would be consistent with manual bkops.
+>
 
-Fixes commit b0d70338bca22cb14
-("thermal: rockchip: Support the RK3399 SoCs in thermal driver")
+=46rom my first impression I agree, as that is the policy we have been
+sticking to when writing to persistent EXT_CSD registers.
+Although, in this case, I am actually wondering on what is the best app=
+roach.
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Is there really ever a case when we don't want auto BKOPS to be default=
+ enabled?
+I think BKOPS is a fundamental feature of an FTL and I can't see a
+reason to why we need to involve mmc-utils/userspace to enable it. Am
+I wrong?
 
----
-
-Note:
-- depend on the " [v6,5/5] thermal: rockchip: add the set_trips function"
-  at https://patchwork.kernel.org/patch/9192179/, otherwise will cause the merge
-  conflict.
-
- drivers/thermal/rockchip_thermal.c | 34 ++++++++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 8175cdb..2d5ba97 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -211,8 +211,11 @@ struct rockchip_thermal_data {
- 
- #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
--#define TSADCV2_AUTO_PERIOD_TIME		250 /* msec */
--#define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* msec */
-+#define TSADCV2_AUTO_PERIOD_TIME		250 /* 250ms */
-+#define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* 50ms */
-+#define TSADCV3_AUTO_PERIOD_TIME		187500 /* 250ms */
-+#define TSADCV3_AUTO_PERIOD_HT_TIME		37500  /* 50ms */
-+
- #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
- 
- #define GRF_SARADC_TESTBIT			0x0e644
-@@ -547,6 +550,16 @@ static void rk_tsadcv3_initialize(struct regmap *grf, void __iomem *regs,
- 		/* Set interleave value to workround ic time sync issue */
- 		writel_relaxed(TSADCV2_USER_INTER_PD_SOC, regs +
- 			       TSADCV2_USER_CON);
-+
-+		writel_relaxed(TSADCV2_AUTO_PERIOD_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD);
-+		writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
-+		writel_relaxed(TSADCV2_AUTO_PERIOD_HT_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD_HT);
-+		writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
-+
- 	} else {
- 		regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_ON);
- 		mdelay(10);
-@@ -555,6 +568,15 @@ static void rk_tsadcv3_initialize(struct regmap *grf, void __iomem *regs,
- 		regmap_write(grf, GRF_SARADC_TESTBIT, GRF_SARADC_TESTBIT_ON);
- 		regmap_write(grf, GRF_TSADC_TESTBIT_H, GRF_TSADC_TESTBIT_H_ON);
- 		usleep_range(90, 200); /* The spec note says at least 90 us */
-+
-+		writel_relaxed(TSADCV3_AUTO_PERIOD_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD);
-+		writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
-+		writel_relaxed(TSADCV3_AUTO_PERIOD_HT_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD_HT);
-+		writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
- 	}
- 
- 	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-@@ -563,14 +585,6 @@ static void rk_tsadcv3_initialize(struct regmap *grf, void __iomem *regs,
- 	else
- 		writel_relaxed(0U & ~TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
- 			       regs + TSADCV2_AUTO_CON);
--
--	writel_relaxed(TSADCV2_AUTO_PERIOD_TIME, regs + TSADCV2_AUTO_PERIOD);
--	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
--		       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
--	writel_relaxed(TSADCV2_AUTO_PERIOD_HT_TIME,
--		       regs + TSADCV2_AUTO_PERIOD_HT);
--	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
--		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
- }
- 
- static void rk_tsadcv2_irq_ack(void __iomem *regs)
--- 
-1.9.1
+Kind regards
+Uffe
