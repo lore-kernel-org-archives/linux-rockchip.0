@@ -1,104 +1,49 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: core: add auto bkops support
-Date: Wed, 22 Jun 2016 12:21:51 +0200
-Message-ID: <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
-References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
- <575E52AC.6000902@intel.com> <8bbb3f13-efb3-e963-e53f-cf2ca796f319@rock-chips.com>
- <575E6C11.8060709@intel.com> <b22ae70d-5128-639d-eef0-8ac9cdd2b8e4@rock-chips.com>
- <575EA651.7060606@intel.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v5 0/5] Thermal: Support for hardware-tracked trip points
+Date: Wed, 22 Jun 2016 19:19:24 +0800
+Message-ID: <576A743C.7080401@gmail.com>
+References: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
+ <57689B82.3000902@gmail.com> <1466565939.2379.5.camel@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <575EA651.7060606@intel.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Adrian Hunter <adrian.hunter@intel.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, Alex Lemberg <alex.lemberg@sandisk.com>
-Cc: linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1466565939.2379.5.camel-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Durgadoss R <durgadoss.r-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Andy Champ <andycham-vV1OtcyAfmbQT0dZR+AlfA@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, javi.merino-5wv7dgnIgG8@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ni Wade <wni-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peter-p08lbbvQ7EI@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Leo Yan <leo.yan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 13 June 2016 at 14:25, Adrian Hunter <adrian.hunter@intel.com> wrote=
-:
-> On 13/06/16 11:58, Shawn Lin wrote:
->> =E5=9C=A8 2016/6/13 16:17, Adrian Hunter =E5=86=99=E9=81=93:
->>> On 13/06/16 10:48, Shawn Lin wrote:
->>>> On 2016/6/13 14:29, Adrian Hunter wrote:
->>>>> On 06/06/16 06:07, Shawn Lin wrote:
->>>>>> JEDEC eMMC v5.1 introduce an autonomously initiated method
->>>>>> for background operations.
->>>>>>
->>>>>> Host that wants to enable the device to perform background
->>>>>> operations during device idle time, should signal the device
->>>>>> by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
->>>>>> this bit is set, the device may start or stop background operati=
-ons
->>>>>> whenever it sees fit, without any notification to the host.
->>>>>>
->>>>>> When AUTO_EN bit is set, the host should keep the device power
->>>>>> active. The host may set or clear this bit at any time based on
->>>>>> its power constraints or other considerations.
->>>>>>
->>>>>> Currently the manual bkops is only be used under the async req
->>>>>> circumstances and it's a bit complicated to be controlled as the
->>>>>> perfect method is that we should do some idle monitor just as rp=
-m
->>>>>> and send HPI each time if receiving rd/wr req. But it will impac=
-t
->>>>>> performance significantly, especially for random iops since the
->>>>>> weight of executing HPI against r/w small piece of LBAs is
->>>>>> nonnegligible.
->>>>>>
->>>>>> So we now prefer to select the auto one unconditionally if suppo=
-rted
->>>>>> which makes it as simple as possible. It should really good enou=
-gh
->>>>>> for devices to manage its internal policy for bkops rather than =
-the
->>>>>> host, which makes us believe that we could achieve the best
->>>>>> performance for all the devices implementing auto bkops and the =
-only
->>>>>> thing we should do is to disable it when cutting off the power.
->>>>>
->>>>> Do you know if there is really a requirement to do that?
->>>>
->>>> Even without bkops enable, no matter for manual or auto one, FTL s=
-hould
->>>> always do bkops like GC internally when needed to guarantee the
->>>> performance and balance the wear leveling. What I thought to do is=
- to
->>>> make it more explicitly.
->>>>
->>>> Because then, what
->>>>> is the point of power off notification?
->>>>
->>>> When power off notification is sent, bkops will be stopped
->>>> in _mmc_suspend. So I don't undertand your point here?
->>>
->>> I am trying to understand why we need to do anything for auto bkops=
-=2E
->>> Since AUTO_EN is persistent, we can leave the decision whether to t=
-urn it on
->>> to whomever provisions the device. Then we just leave it alone.
->>>
->>
->> Hrm..
->>
->> one possible way is to control it by mmc-utils on
->> user space?  So we should add a cmd for mmc-utils
->> there?
->
-> That would be consistent with manual bkops.
->
-
-=46rom my first impression I agree, as that is the policy we have been
-sticking to when writing to persistent EXT_CSD registers.
-Although, in this case, I am actually wondering on what is the best app=
-roach.
-
-Is there really ever a case when we don't want auto BKOPS to be default=
- enabled?
-I think BKOPS is a fundamental feature of an FTL and I can't see a
-reason to why we need to involve mmc-utils/userspace to enable it. Am
-I wrong?
-
-Kind regards
-Uffe
+Ck9uIDIwMTblubQwNuaciDIy5pelIDExOjI1LCBaaGFuZyBSdWkgd3JvdGU6Cj4gT24g5LqMLCAy
+MDE2LTA2LTIxIGF0IDA5OjQyICswODAwLCBDYWVzYXIgV2FuZyB3cm90ZToKPj4gRG8geW91IGhh
+dmUgb3RoZXIgaWRlYXMgZm9yIHRoZSBmb2xsb3dpbmcgcGF0Y2hlcz8gOi0pCj4+IEV2ZW4gaWYg
+b25seSB0b29rIHR3byB3ZWVrcyBmZWVsIGFmdGVyIGEgbG9uZyB0aW1lLgo+Pgo+PiA5MTU3OTE5
+IE5ldyAgICAgICAgICBbdjUsMS81XSB0aGVybWFsOiBBZGQgc3VwcG9ydCBmb3IgaGFyZHdhcmUt
+Cj4+IHRyYWNrZWQgdHJpcCBwb2ludHMKPj4gOTE1NzkxNyBOZXcgICAgICAgICAgW3Y1LDIvNV0g
+dGhlcm1hbDogb2Y6IGltcGxlbWVudCAuc2V0X3RyaXBzIGZvcgo+PiBkZXZpY2UgdHJlZSB0aGVy
+bWFsIHpvbmVzCj4+IDkxNjExMjkgTmV3ICAgICAgICAgIFt2NS4xLDMvNV0gdGhlcm1hbDogc3Ry
+ZWFtbGluZSBnZXRfdHJlbmQKPj4gY2FsbGJhY2tzCj4+IDkxNTc5MjkgTmV3ICAgICAgICAgIFt2
+NSw0LzVdIHRoZXJtYWw6IGJhbmctYmFuZyBnb3Zlcm5vcjogYWN0IG9uCj4+IGxvd2VyIHRyaXAg
+Ym91bmRhcnkKPj4gOTE1NzkyNSBOZXcgICAgICAgICAgW3Y1LDUvNV0gdGhlcm1hbDogcm9ja2No
+aXA6IGFkZCB0aGUgc2V0X3RyaXBzCj4+IGZ1bmN0aW9uCj4+IC0tLQo+Pgo+IEkgaGF2ZSBubyBv
+YmplY3Rpb25zIHRvIHRoaXMgcGF0Y2ggc2V0LCBleGNlcHQgb25lIGNoYW5nZSBpbiBwYXRjaCAx
+LzUuCj4gQnV0IGFzIHRoaXMgYWxzbyB0b3VjaGVzIG9mX3RoZXJtYWwgYW5kIHJvY2tjaGlwIHRo
+ZXJtYWwgZHJpdmVyLiBJJ2QKPiBsZWF2ZSB0aGlzIHBhdGNoIHNldCBmb3IgRWR1YXJkbyB0byBy
+ZXZpZXcgYW5kIHRha2UuCj4gQlRXLCBFZHVhcmRvIGlzIHRyYXZlbGluZyByZWNlbnRseSwgc28g
+eW91IG1heSBzdGlsbCBuZWVkIHRvIHdhaXQgc29tZQo+IHRpbWUuCgpPa2F5LCB0aGFua3MgZm9y
+IHlvdXIgcmVtaW5kZXIuIGFuZCBzb3JyeSBmb3IgdGhlIG5vaXNlLjotKQoKLQpDYWVzYXIKCj4K
+PiBUaGFua3MsCj4gcnVpCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
