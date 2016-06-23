@@ -1,93 +1,137 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v4.1 1/2] drm/rockchip: analogix_dp: introduce the pclk for grf
-Date: Thu, 23 Jun 2016 09:58:07 +0800
-Message-ID: <1466647087-22207-1-git-send-email-ykk@rock-chips.com>
-References: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] mmc: core: add auto bkops support
+Date: Thu, 23 Jun 2016 10:08:20 +0800
+Message-ID: <64ed1ed2-09ff-659e-01f8-87a1071883d1@rock-chips.com>
+References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
+ <575E52AC.6000902@intel.com>
+ <8bbb3f13-efb3-e963-e53f-cf2ca796f319@rock-chips.com>
+ <575E6C11.8060709@intel.com>
+ <b22ae70d-5128-639d-eef0-8ac9cdd2b8e4@rock-chips.com>
+ <575EA651.7060606@intel.com>
+ <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.vetter@ffwll.ch, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.com>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, Alex Lemberg <alex.lemberg@sandisk.com>
+Cc: shawn.lin@rock-chips.com, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rm9yIFJLMzM5OSdzIEdSRiBtb2R1bGUsIGlmIHdlIHdhbnQgdG8gb3BlcmF0ZSB0aGUgZ3JhcGhp
-YyByZWxhdGVkIGdyZgpyZWdpc3RlcnMsIHdlIG5lZWQgdG8gZW5hYmxlIHRoZSBwY2xrX3Zpb19n
-cmYgd2hpY2ggc3VwcGx5IHBvd2VyIGZvciBWSU8KR1JGIElPcywgc28gaXQncyBiZXR0ZXIgdG8g
-aW50cm9kdWNlIGFuIG9wdGlvbmFsIGdyZiBjbG9jayBpbiBkcml2ZXIuCgpTaWduZWQtb2ZmLWJ5
-OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Ci0tLQpIaSBhbGwsCgpUaGlzIGlzIGFu
-IGV4dGVybmFsIHBhdGNoIGZvciBhbmFsb2dpeF9kcCBtaXNjIGNsZWFudXAgdGhyZWFkIFswXQpb
-MF06IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTE3NTYxMy8KCkJSLAotIFlh
-a2lyCgpDaGFuZ2VzIGluIHY0LjE6Ci0gRml4IGNvbXBpbGVkIGVycm9yLCBzb3JyeS4KICAiZHAt
-PmNnZmNsayIgIC0tPiAgJ2RwLT5ncmZjbGsnCgpDaGFuZ2VzIGluIHY0OgotIENoZWNrIHRoZSB0
-aGUgZXJyb3IgY29kZSBwcm9wZXJseSwgJ0VQUk9CRV9ERUZFUicgc2hvdWxkIGJlIHJldHVybmVk
-LAogICdFTk9FTlQnIHNob3VsZCBhc3NpZ24gYSBOVUxMIHBvaW50IHRvIGdyZmNsaywgb3RoZXIg
-ZXJyb3JzIHNob3VsZCBiZQogIHJlZ2FyZGVkIGFzIGZhaWxlZC4gKFRvbWFzeiwgRG91ZywgcmV2
-aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29n
-bGVzb3VyY2UuY29tLyMvYy8zNTE4MjEvMjAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
-Z2l4X2RwLXJvY2tjaGlwLmNAMjQ5XQotIEFkZCB0aGUgZG9jdW1lbnQgYWJvdXQgb3B0aW9uYWwg
-J2dyZicgY2xvY2sgKFRvbWFzeiwgRG91ZywgcmV2aWV3ZWQgYXQgR29vZ2xlIEdlcnJpdCkKICAg
-IFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNTE4MjEvXQoK
-Q2hhbmdlcyBpbiB2MzoKLSBBZGQgdGhpcyBwYXRjaCBpbiB2MwoKIC4uLi9kaXNwbGF5L3JvY2tj
-aGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dCAgICAgIHwgIDYgKysrKysrCiBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8IDIzICsrKysrKysrKysr
-KysrKysrKystLS0KIDIgZmlsZXMgY2hhbmdlZCwgMjYgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
-bnMoLSkKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
-cGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50
-eHQKaW5kZXggNzI2Yzk0NS4uMGIzOTI1NiAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAudHh0
-CisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
-L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dApAQCAtMjgsNiArMjgsMTIgQEAgUmVxdWlyZWQgcHJv
-cGVydGllczoKICAgICBQb3J0IDA6IGNvbnRhaW5lZCAyIGVuZHBvaW50cywgY29ubmVjdGluZyB0
-byB0aGUgb3V0cHV0IG9mIHZvcC4KICAgICBQb3J0IDE6IGNvbnRhaW5lZCAxIGVuZHBvaW50LCBj
-b25uZWN0aW5nIHRvIHRoZSBpbnB1dCBvZiBwYW5lbC4KIAorT3B0aW9uYWwgcHJvcGVydHkgZm9y
-IGRpZmZlcmVudCBjaGlwczoKKy0gY2xvY2tzOiBmcm9tIGNvbW1vbiBjbG9jayBiaW5kaW5nOiBo
-YW5kbGUgdG8gZ3JmX3ZpbyBjbG9jay4KKworLSBjbG9jay1uYW1lczogZnJvbSBjb21tb24gY2xv
-Y2sgYmluZGluZzoKKwkgICAgICAgUmVxdWlyZWQgZWxlbWVudHM6ICJncmYiCisKIEZvciB0aGUg
-YmVsb3cgcHJvcGVydGllcywgcGxlYXNlIHJlZmVyIHRvIEFuYWxvZ2l4IERQIGJpbmRpbmcgZG9j
-dW1lbnQ6CiAgKiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9h
-bmFsb2dpeF9kcC50eHQKIC0gcGh5cyAocmVxdWlyZWQpCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCmluZGV4IDc4N2RjNTEuLjg2NGVmOTIgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5j
-CisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCkBA
-IC01Niw2ICs1Niw3IEBAIHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgewogCXN0cnVjdCBkcm1f
-ZGlzcGxheV9tb2RlICBtb2RlOwogCiAJc3RydWN0IGNsayAgICAgICAgICAgICAgICpwY2xrOwor
-CXN0cnVjdCBjbGsgICAgICAgICAgICAgICAqZ3JmY2xrOwogCXN0cnVjdCByZWdtYXAgICAgICAg
-ICAgICAqZ3JmOwogCXN0cnVjdCByZXNldF9jb250cm9sICAgICAqcnN0OwogCkBAIC0xNTEsMTEg
-KzE1MiwxNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9lbmFibGUoc3Ry
-dWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogCiAJZGV2X2RiZyhkcC0+ZGV2LCAidm9wICVzIG91
-dHB1dCB0byBkcFxuIiwgKHJldCkgPyAiTElUIiA6ICJCSUciKTsKIAotCXJldCA9IHJlZ21hcF93
-cml0ZShkcC0+Z3JmLCBkcC0+ZGF0YS0+bGNkc2VsX2dyZl9yZWcsIHZhbCk7Ci0JaWYgKHJldCAh
-PSAwKSB7Ci0JCWRldl9lcnIoZHAtPmRldiwgIkNvdWxkIG5vdCB3cml0ZSB0byBHUkY6ICVkXG4i
-LCByZXQpOworCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcC0+Z3JmY2xrKTsKKwlpZiAocmV0
-IDwgMCkgeworCQlkZXZfZXJyKGRwLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIGdyZmNsayAlZFxu
-IiwgcmV0KTsKIAkJcmV0dXJuOwogCX0KKworCXJldCA9IHJlZ21hcF93cml0ZShkcC0+Z3JmLCBk
-cC0+ZGF0YS0+bGNkc2VsX2dyZl9yZWcsIHZhbCk7CisJaWYgKHJldCAhPSAwKQorCQlkZXZfZXJy
-KGRwLT5kZXYsICJDb3VsZCBub3Qgd3JpdGUgdG8gR1JGOiAlZFxuIiwgcmV0KTsKKworCWNsa19k
-aXNhYmxlX3VucHJlcGFyZShkcC0+Z3JmY2xrKTsKIH0KIAogc3RhdGljIHZvaWQgcm9ja2NoaXBf
-ZHBfZHJtX2VuY29kZXJfbm9wKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKQEAgLTIzNSw2
-ICsyNDIsMTYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcF9pbml0KHN0cnVjdCByb2NrY2hpcF9k
-cF9kZXZpY2UgKmRwKQogCQlyZXR1cm4gUFRSX0VSUihkcC0+Z3JmKTsKIAl9CiAKKwlkcC0+Z3Jm
-Y2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImdyZiIpOworCWlmIChQVFJfRVJSKGRwLT5ncmZjbGsp
-ID09IC1FTk9FTlQpIHsKKwkJZHAtPmdyZmNsayA9IE5VTEw7CisJfSBlbHNlIGlmIChQVFJfRVJS
-KGRwLT5ncmZjbGspID09IC1FUFJPQkVfREVGRVIpIHsKKwkJcmV0dXJuIC1FUFJPQkVfREVGRVI7
-CisJfSBlbHNlIGlmIChJU19FUlIoZHAtPmdyZmNsaykpIHsKKwkJZGV2X2VycihkZXYsICJmYWls
-ZWQgdG8gZ2V0IGdyZiBjbG9ja1xuIik7CisJCXJldHVybiBQVFJfRVJSKGRwLT5ncmZjbGspOwor
-CX0KKwogCWRwLT5wY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInBjbGsiKTsKIAlpZiAoSVNfRVJS
-KGRwLT5wY2xrKSkgewogCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBnZXQgcGNsayBwcm9wZXJ0
-eVxuIik7Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+=E5=9C=A8 2016/6/22 18:21, Ulf Hansson =E5=86=99=E9=81=93:
+> On 13 June 2016 at 14:25, Adrian Hunter <adrian.hunter@intel.com> wro=
+te:
+>> On 13/06/16 11:58, Shawn Lin wrote:
+>>> =E5=9C=A8 2016/6/13 16:17, Adrian Hunter =E5=86=99=E9=81=93:
+>>>> On 13/06/16 10:48, Shawn Lin wrote:
+>>>>> On 2016/6/13 14:29, Adrian Hunter wrote:
+>>>>>> On 06/06/16 06:07, Shawn Lin wrote:
+>>>>>>> JEDEC eMMC v5.1 introduce an autonomously initiated method
+>>>>>>> for background operations.
+>>>>>>>
+>>>>>>> Host that wants to enable the device to perform background
+>>>>>>> operations during device idle time, should signal the device
+>>>>>>> by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
+>>>>>>> this bit is set, the device may start or stop background operat=
+ions
+>>>>>>> whenever it sees fit, without any notification to the host.
+>>>>>>>
+>>>>>>> When AUTO_EN bit is set, the host should keep the device power
+>>>>>>> active. The host may set or clear this bit at any time based on
+>>>>>>> its power constraints or other considerations.
+>>>>>>>
+>>>>>>> Currently the manual bkops is only be used under the async req
+>>>>>>> circumstances and it's a bit complicated to be controlled as th=
+e
+>>>>>>> perfect method is that we should do some idle monitor just as r=
+pm
+>>>>>>> and send HPI each time if receiving rd/wr req. But it will impa=
+ct
+>>>>>>> performance significantly, especially for random iops since the
+>>>>>>> weight of executing HPI against r/w small piece of LBAs is
+>>>>>>> nonnegligible.
+>>>>>>>
+>>>>>>> So we now prefer to select the auto one unconditionally if supp=
+orted
+>>>>>>> which makes it as simple as possible. It should really good eno=
+ugh
+>>>>>>> for devices to manage its internal policy for bkops rather than=
+ the
+>>>>>>> host, which makes us believe that we could achieve the best
+>>>>>>> performance for all the devices implementing auto bkops and the=
+ only
+>>>>>>> thing we should do is to disable it when cutting off the power.
+>>>>>>
+>>>>>> Do you know if there is really a requirement to do that?
+>>>>>
+>>>>> Even without bkops enable, no matter for manual or auto one, FTL =
+should
+>>>>> always do bkops like GC internally when needed to guarantee the
+>>>>> performance and balance the wear leveling. What I thought to do i=
+s to
+>>>>> make it more explicitly.
+>>>>>
+>>>>> Because then, what
+>>>>>> is the point of power off notification?
+>>>>>
+>>>>> When power off notification is sent, bkops will be stopped
+>>>>> in _mmc_suspend. So I don't undertand your point here?
+>>>>
+>>>> I am trying to understand why we need to do anything for auto bkop=
+s.
+>>>> Since AUTO_EN is persistent, we can leave the decision whether to =
+turn it on
+>>>> to whomever provisions the device. Then we just leave it alone.
+>>>>
+>>>
+>>> Hrm..
+>>>
+>>> one possible way is to control it by mmc-utils on
+>>> user space?  So we should add a cmd for mmc-utils
+>>> there?
+>>
+>> That would be consistent with manual bkops.
+>>
+>
+>>From my first impression I agree, as that is the policy we have been
+> sticking to when writing to persistent EXT_CSD persistent .
+> Although, in this case, I am actually wondering on what is the best a=
+pproach.
+
+I don't know what is the real meaning of "persistent". :)
+I don't know should we count auto bkops as the persistent
+registers....HS_TIMING and BUS_WIDTH should also be persistent
+registers as them are always used after initialization if not changing
+them?
+
+IHMO the more reasonable way is that:
+IIRC many settings for  EXT_CSD should be OTP, like hw-reset(162),
+reliable write(167) fw-configure(169)..etc, which are marked as R/W.
+These should be controlled by userpace or even by firmware when
+flashing emmc, like reliable write...
+
+
+I'm not sure whether should I updete this $SUBJUCT or migirating it to
+userspace... We need to come to an agreement :)
+
+
+>
+> Is there really ever a case when we don't want auto BKOPS to be defau=
+lt enabled?
+> I think BKOPS is a fundamental feature of an FTL and I can't see a
+> reason to why we need to involve mmc-utils/userspace to enable it. Am
+> I wrong?
+>
+> Kind regards
+> Uffe
+>
+>
+>
+
+
+--=20
+Best Regards
+Shawn Lin
+
