@@ -1,109 +1,110 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RFC PATCH 0/4] Introduce new caps to improve the card's init
- sequence
-Date: Thu, 23 Jun 2016 09:35:33 +0800
-Message-ID: <bded4371-5ebd-b4c3-5dd3-ea6e52a50214@rock-chips.com>
-References: <1465373996-2485-1-git-send-email-shawn.lin@rock-chips.com>
- <CAPDyKFp+ugPtHsxa1O9eeArkJjoM2sL2F7gqAekgus1qoi3UUw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFp+ugPtHsxa1O9eeArkJjoM2sL2F7gqAekgus1qoi3UUw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, Jaehoon Chung <jh80.chung@samsung.com>, Rob Herring <robh+dt@kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v4 1/2] drm/rockchip: analogix_dp: introduce the pclk for grf
+Date: Thu, 23 Jun 2016 09:46:53 +0800
+Message-ID: <1466646413-10530-1-git-send-email-ykk@rock-chips.com>
+References: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.com>, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, Thierry Reding <treding@nvidia.com>, dianders@chromium.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, Yakir Yang <ykk@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/6/22 20:37, Ulf Hansson =E5=86=99=E9=81=93:
-> On 8 June 2016 at 10:19, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->>
->> Hi all,
->>
->> This patchset is gonna improve the card's init sequence
->> by exposing some caps to DT.
->>
->> The basic idea is to skip sending specific init cmd inspired
->> by Carlo Caione's commit[0].
->>
->> To make it possible, I firstly expose Carlo's MMC_CAP2_NO_SDIO
->> to DT and extend two new caps for similar usage of sd and mmc.
->> We probably need it because for most of the boards, each of the
->> slots should have a specific function when designed. It's impossible
->> for one slot which can either to be used as eMMC or a SD card for a
->> given board. The same for SDIO case.
->>
->> We could have two ways to improve it
->> A) Skip sending specific commands if knowing we don't support
->> the specific card type.
->> B) Allow sending specific commands if knowing we do support
->> the specific card type.
->>
->> A) and B) shouldn't have difference, but I take A) as the final
->> one as it looks more consistent with Carlo's way, which does not
->> seem to break anything as possible.
->>
->> The only roadblock for this patchset to be landed should be the
->> improvement we gain from it. Theoretically sdio-card doesn't get
->> improvment as it's already in the first place to be attached.
->> But considering the sd and (e)MMC case, we should gain more benifit
->> from it.
->>
->> From the test, we can save nearly 2ms for attaching emmc against the
->> original 8ms. And we gain more than 30us improvement for sd card for
->> each insert.
->>
->> [0]: http://permalink.gmane.org/gmane.linux.kernel.mmc/34774
->>
->>
->>
->> Shawn Lin (4):
->>   Documentation: mmc: add description for new caps
->>   mmc: core: expose MMC_CAP2_NO_SDIO to dt-binding
->>   mmc: core: add cap-no-sd and cap-no-mmc properties
->>   mmc: core: improve initialization flow
->>
->
-> I would prefer that you restructure this series a bit.
+For RK3399's GRF module, if we want to operate the graphic related grf
+registers, we need to enable the pclk_vio_grf which supply power for VIO
+GRF IOs, so it's better to introduce an optional grf clock in driver.
 
-I will do it and I think Doug was asking we to drop the "cap-"
-prefix which I think need to be clarified before sending
-non-RFC one. :)
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+---
+Hi all,
 
->
-> Start by adding each new MMC_CAP2* separately and without involving
-> the DT parsing.
->
-> Make the DT documentation patch come after the above, and add a new
-> separate patch which exposes the caps to device tree.
->
-> In that way, I can pick up the non DT parts and wait for Rob's
-> ack/nack of the DT bindings.
->
-> Kind regards
-> Uffe
->
->>  Documentation/devicetree/bindings/mmc/mmc.txt |  3 +++
->>  drivers/mmc/core/core.c                       | 10 +++++-----
->>  drivers/mmc/core/host.c                       |  6 ++++++
->>  include/linux/mmc/host.h                      |  2 ++
->>  4 files changed, 16 insertions(+), 5 deletions(-)
->>
->> --
->> 2.3.7
->>
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-mmc"=
- in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
->
->
+This is an external patch for analogix_dp misc cleanup thread [0]
+[0]: https://patchwork.kernel.org/patch/9175613/
 
+BR,
+- Yakir
 
---=20
-Best Regards
-Shawn Lin
+Changes in v4:
+- Check the the error code properly, 'EPROBE_DEFER' should be returned,
+  'ENOENT' should assign a NULL point to grfclk, other errors should be
+  regarded as failed. (Tomasz, Doug, reviewed at Google Gerrit)
+    [https://chromium-review.googlesource.com/#/c/351821/20/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c@249]
+- Add the document about optional 'grf' clock (Tomasz, Doug, reviewed at Google Gerrit)
+    [https://chromium-review.googlesource.com/#/c/351821/]
+
+Changes in v3:
+- Add this patch in v3
+
+ .../display/rockchip/analogix_dp-rockchip.txt      |  6 ++++++
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 23 +++++++++++++++++++---
+ 2 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
+index 726c945..0b39256 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
+@@ -28,6 +28,12 @@ Required properties:
+     Port 0: contained 2 endpoints, connecting to the output of vop.
+     Port 1: contained 1 endpoint, connecting to the input of panel.
+ 
++Optional property for different chips:
++- clocks: from common clock binding: handle to grf_vio clock.
++
++- clock-names: from common clock binding:
++	       Required elements: "grf"
++
+ For the below properties, please refer to Analogix DP binding document:
+  * Documentation/devicetree/bindings/drm/bridge/analogix_dp.txt
+ - phys (required)
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 787dc51..864ef92 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -56,6 +56,7 @@ struct rockchip_dp_device {
+ 	struct drm_display_mode  mode;
+ 
+ 	struct clk               *pclk;
++	struct clk               *grfclk;
+ 	struct regmap            *grf;
+ 	struct reset_control     *rst;
+ 
+@@ -151,11 +152,17 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder)
+ 
+ 	dev_dbg(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
+ 
+-	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
+-	if (ret != 0) {
+-		dev_err(dp->dev, "Could not write to GRF: %d\n", ret);
++	ret = clk_prepare_enable(dp->grfclk);
++	if (ret < 0) {
++		dev_err(dp->dev, "failed to enable grfclk %d\n", ret);
+ 		return;
+ 	}
++
++	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
++	if (ret != 0)
++		dev_err(dp->dev, "Could not write to GRF: %d\n", ret);
++
++	clk_disable_unprepare(dp->grfclk);
+ }
+ 
+ static void rockchip_dp_drm_encoder_nop(struct drm_encoder *encoder)
+@@ -235,6 +242,16 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
+ 		return PTR_ERR(dp->grf);
+ 	}
+ 
++	dp->grfclk = devm_clk_get(dev, "grf");
++	if (PTR_ERR(dp->grfclk) == -ENOENT) {
++		dp->grfclk = NULL;
++	} else if (PTR_ERR(dp->grfclk) == -EPROBE_DEFER) {
++		return -EPROBE_DEFER;
++	} else if (IS_ERR(dp->grfclk)) {
++		dev_err(dev, "failed to get grf clock\n");
++		return PTR_ERR(dp->cfgclk);
++	}
++
+ 	dp->pclk = devm_clk_get(dev, "pclk");
+ 	if (IS_ERR(dp->pclk)) {
+ 		dev_err(dev, "failed to get pclk property\n");
+-- 
+1.9.1
