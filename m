@@ -1,118 +1,87 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v3 PATCH 0/5] Rockchip Type-C and DispplayPort driver
-Date: Thu, 23 Jun 2016 20:50:59 +0800
-Message-ID: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [v3 PATCH 1/5] extcon: Add Type-C and DP support
+Date: Thu, 23 Jun 2016 20:51:00 +0800
+Message-ID: <1466686264-6744-2-git-send-email-zyw@rock-chips.com>
+References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CkhpIGFsbAoKVGhpcyBzZXJpZXMgcGF0Y2ggaXMgZm9yIHJvY2tjaGlwIFR5cGUtQyBwaHkgYW5k
-IERpc3BsYXlQb3J0IGNvbnRyb2xsZXIKZHJpdmVyLgoKVGhlIFVTQiBUeXBlLUMgUEhZIGlzIGRl
-c2lnbmVkIHRvIHN1cHBvcnQgdGhlIFVTQjMgYW5kIERQIGFwcGxpY2F0aW9ucy4KVGhlIFBIWSBi
-YXNpY2FsbHkgaGFzIHR3byBtYWluIGNvbXBvbmVudHM6IFVTQjMgYW5kIERpc3BseVBvcnQuIFVT
-QjMKb3BlcmF0ZXMgaW4gU3VwZXJTcGVlZCBtb2RlIGFuZCB0aGUgRFAgY2FuIG9wZXJhdGUgYXQg
-UkJSLCBIQlIgYW5kIEhCUjIKZGF0YSByYXRlcy4gVGhlIFR5cGUtQyBjYWJsZSBvcmllbnRhdGlv
-biBkZXRlY3Rpb24gYW5kIFBvd2VyIERlbGl2ZXJ5CihQRCkgaXMgYWNjb21wbGlzaGVkIHVzaW5n
-IGEgUEQgUEhZIG9yIGEgZXhlcm5hbCBQRCBjaGlwLgoKVGhlIERQIGNvbnRyb2xsZXIgaXMgY29t
-cGxpYW50IHdpdGggRGlzcGxheVBvcnQgU3BlY2lmaWNhdGlvbiwKVmVyc2lvbiAxLjMsIFRoaXMg
-SVAgaXMgY29tcGF0aWJsZSB3aXRoIHRoZSByb2NrY2hpcCB0eXBlLWMgUEhZIElQLgpUaGVyZSBp
-cyBhIHVDUFUgaW4gRFAgY29udHJvbGxlciwgaXQgbmVlZCBhIGZpcm13YXJlIHRvIHdvcmssIHBs
-ZWFzZQpwdXQgdGhlIGZpcm13YXJlIGZpbGUgdG8gL2xpYi9maXJtd2FyZS9jZG4vZHB0eC5iaW4u
-IFRoZSB1Q1BVIGluIGNoYXJnZQpvZiBhdXggY29tbXVuaWNhdGlvbiBhbmQgbGluayB0cmFpbmlu
-ZywgdGhlIGhvc3QgdXNlIG1haWxib3ggdG8KY29tbXVuaWNhdGUgd2l0aCB0aGUgdWNwdS4KClRo
-ZSBQSFkgZHJpdmVyIGhhcyByZWdpc3RlciBhIG5vdGlmaWNhdGlvbiB3aXRoIGV4dGNvbiBBUEks
-IHRvIGdldCB0aGUKYWx0IG1vZGUgZnJvbSBQRCwgdGhlIFBEIGRyaXZlciBuZWVkIGNhbGwgdGhl
-IGRldm1fZXh0Y29uX2Rldl9hbGxvY2F0ZQp0byBjcmVhdGUgYSBleHRjb24gZGV2aWNlIGFuZCB1
-c2UgZXh0Y29uX3NldF9zdGF0ZSB0byBub3RpZnkgUEhZIGFuZApEUCBjb250cm9sbGVyLgoKQWJv
-dXQgdGhlIERQIGF1ZGlvLCBjZG4tZHAgcmVnaXN0ZXJlZCAyIERBSXM6IDAgaXMgSTJTLCAxIGlz
-IFNQRElGLgpXZSBjYW4gcmVmZXJlbmNlIHRoZW0gaW4gc2ltcGxlLWNhcmQuCgpUaGlzIHNlcmll
-cyBpcyBiYXNlZCBvbiBNYXJrIFlhbydzIGJyYW5jaDoKaHR0cHM6Ly9naXRodWIuY29tL21hcmt5
-enEva2VybmVsLWRybS1yb2NrY2hpcC90cmVlL2RybS1yb2NrY2hpcC1uZXh0LTIwMTYtMDUtMjMK
-CkkgdGVzdCB0aGlzIHBhdGNoZXMgb24gdGhlIHJrMzM5OS1ldmIgYm9hcmQsIHdpdGggYSBmdXNi
-MzAyIGRyaXZlciwKdGhpcyBicmFuY2ggaGFzIG5vIHJrMzM5OS5kdHNpLCBzbyB0aGUgcGF0Y2gg
-YWJvdXQgZHRzIGlzIG5vdCBpbmNsdWRlZAppbiB0aGlzIHNlcmllcy4KCgpDaGFuZ2VzIGluIHYz
-OgotIHVzZSBjb21wYXRpYmxlOiByb2NrY2hpcCxyazMzOTktdHlwZWMtcGh5Ci0gdXNlIGRhc2hl
-cyBpbnN0ZWFkIG9mIHVuZGVyc2NvcmVzLgotIHJlbW92ZSB0aGUgcGh5IGZyYW1ld29yayhLaXNo
-b24gVmlqYXkgQWJyYWhhbSBJKQotIGFkZCBwYXJlbnRoZXNlcyBhcm91bmQgdGhlIG1hY3JvCi0g
-dXNlIGEgc2luZ2xlIHNwYWNlIGJldHdlZW4gdHlwZSBhbmQgbmFtZQotIGFkZCBzcGFjZXMgYWZ0
-ZXIgb3BlbmluZyBhbmQgYmVmb3JlIGNsb3NpbmcgYnJhY2VzLgotIHVzZSB1MTYgZm9yIHJlZ2lz
-dGVyIHZhbHVlCi0gcmVtb3ZlIHR5cGUtYyBwaHkgaGVhZGVyIGZpbGUKLSBDb2RpbmdTdHlsZSBv
-cHRpbWl6YXRpb24KLSB1c2Ugc29tZSBjYWJsZSBleHRjb24gdG8gZ2V0IHR5cGUtYyBwb3J0IGlu
-Zm9ybWF0aW9uCi0gYWRkIGEgZXh0Y29uIHRvIG5vdGlmeSBEaXNwbGF5IFBvcnQKLSBhZGQgU29D
-IHNwZWNpZmljIGNvbXBhdGlibGUgc3RyaW5nCi0gcmVtb3ZlIHJlZyA9IDwxPjsKLSB1c2UgRVhU
-Q09OX0RJU1BfRFAgYW5kIEVYVENPTl9ESVNQX0RQX0FMVCBjYWJsZSB0byBnZXQgZHAgcG9ydCBz
-dGF0ZS4KLSByZXNldCBzcGRpZiBiZWZvcmUgY29uZmlnIGl0Ci0gbW9kaWZ5IHRoZSBmaXJtd2Fy
-ZSBjbGsgdG8gMTAwTWh6Ci0gcmV0cnkgbG9hZCBmaXJtd2FyZSBpZiBmdyBmaWxlIGlzIHJlcXVl
-c3RlZCB0b28gZWFybHkKCkNoYW5nZXMgaW4gdjI6Ci0gYWRkIHNvbWUgcmVnaXN0ZXJzIGRlc2Ny
-aXB0aW9uCi0gc2VsZWN0IFJFU0VUX0NPTlRST0xMRVIKLSBhbHBoYWJldGljIG9yZGVyCi0gbW9k
-aWZ5IHNvbWUgc3BlbGxpbmcgbWlzdGFrZXMKLSBtYWtlIG1vZGUgY2xlYW5lcgotIHVzZSBib29s
-IGZvciBlbmFibGUvZGlzYWJsZQotIGNoZWNrIGFsbCBvZiB0aGUgcmV0dXJuIHZhbHVlCi0gcmV0
-dXJuIGEgYmV0dGVyIGVyciBudW1iZXIKLSB1c2UgbW9yZSByZWFkeF9wb2xsX3RpbWVvdXQoKQot
-IGNsa19kaXNhYmxlX3VucHJlcGFyZSh0Y3BoeS0+Y2xrX3JlZik7Ci0gcmVtb3ZlIHVudXNlIGZ1
-bmN0aW9ucywgcm9ja2NoaXBfdHlwZWNfcGh5X3Bvd2VyX29uL29mZgotIHJlbW92ZSB1bm5lY2Vz
-c2FyeSB0eXBlY2FzdCBmcm9tIHZvaWQgKgotIHVzZSBkdHMgbm9kZSB0byBkaXN0aW5ndWlzaCBi
-ZXR3ZWVuIHBoeXMuCi0gQWxwaGFiZXRpYyBvcmRlcgotIHJlbW92ZSBleGNlc3MgZXJyb3IgbWVz
-c2FnZQotIHVzZSBkZWZpbmUgY2xrX3JhdGUKLSBjaGVjayBhbGwgcmV0dXJuIHZhbHVlCi0gcmVt
-b3ZlIGRldl9zZXRfbmFtZShkcC0+ZGV2LCAiY2RuLWRwIik7Ci0gdXNlIHNjaGVkdWxlX2RlbGF5
-ZWRfd29yawotIHJlbW92ZSBuZXZlci1jYWxsZWQgZnVuY3Rpb25zCi0gcmVtb3ZlIHNvbWUgdW5u
-ZWNlc3NhcnkgKCkKCkNoYW5nZXMgaW4gdjE6Ci0gYWRkIGV4dGNvbiBub2RlIGRlc2NyaXB0aW9u
-Ci0gbW92ZSB0aGUgcmVnaXN0ZXJzIGluIHBoeSBkcml2ZXIKLSByZW1vdmUgdGhlIHN1ZmZpeCBv
-ZiByZXNldAotIHVwZGF0ZSB0aGUgbGljZW5jZSBub3RlCi0gaW5pdCBjb3JlIGNsb2NrIHRvIDUw
-TUh6Ci0gdXNlIGV4dGNvbiBBUEkKLSByZW1vdmUgdW51c2VkIGdsb2JhbAotIGFkZCBzb21lIGNv
-bW1lbnRzIGZvciBtYWdpYyBudW0KLSBjaGFuZ2UgdXNsZWVwX3JhbmdlKDEwMDAsIDIwMDApIHRv
-dXNsZWVwX3JhbmdlKDEwMDAsIDEwNTApCi0gcmVtb3ZlIF9fZnVuY19fIGZyb20gZGV2X2Vycgot
-IHJldHVybiBlcnIgbnVtYmVyIHdoZW4gZ2V0IGNsayBmYWlsZWQKLSByZW1vdmUgQUREUl9BREog
-ZGVmaW5lCi0gdXNlIGRldm1fY2xrX2dldCgmcGRldi0+ZGV2LCAidGNwZGNvcmUiKQotIGFkZCBl
-eHRjb24gbm9kZSBkZXNjcmlwdGlvbgotIGFkZCAjc291bmQtZGFpLWNlbGxzIGRlc2NyaXB0aW9u
-Ci0gdXNlIGV4dGNvbiBBUEkKLSB1c2UgaGRtaS1jb2RlYyBmb3IgdGhlIERQIEFzb2MKLSBkbyBu
-b3QgaW5pdGlhbGl6ZSB0aGUgInJldCIKLSBwcmludGsgYSBlcnIgbG9nIHdoZW4gZHJtX29mX2Vu
-Y29kZXJfYWN0aXZlX2VuZHBvaW50X2lkCi0gbW9kaWZ5IHRoZSBkY2xrIHBpbl9wb2wgdG8gYSBz
-aW5nbGUgbGluZQoKQ2hyaXMgWmhvbmcgKDUpOgogIGV4dGNvbjogQWRkIFR5cGUtQyBhbmQgRFAg
-c3VwcG9ydAogIERvY3VtZW50YXRpb246IGJpbmRpbmdzOiBhZGQgZHQgZG9jIGZvciBSb2NrY2hp
-cCBVU0IgVHlwZS1DIFBIWQogIHBoeTogQWRkIFVTQiBUeXBlLUMgUEhZIGRyaXZlciBmb3Igcmsz
-Mzk5CiAgRG9jdW1lbnRhdGlvbjogYmluZGluZ3M6IGFkZCBkdCBkb2N1bWVudGF0aW9uIGZvciBj
-ZG4gRFAgY29udHJvbGxlcgogIGRybS9yb2NrY2hpcDogY2RuLWRwOiBhZGQgY2RuIERQIHN1cHBv
-cnQgZm9yIHJrMzM5OQoKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2Nkbi1kcC1yb2Nr
-Y2hpcC50eHQgIHwgICA2MSArKwogLi4uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2Nr
-Y2hpcC10eXBlYy50eHQgfCAgIDc0ICsrCiBkcml2ZXJzL2V4dGNvbi9leHRjb24uYyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB8ICAgIDYgKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tj
-b25maWcgICAgICAgICAgICAgICAgICAgfCAgICA5ICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvY2RuLWRwLWNvcmUuYyAgICAgICAgICAgICB8ICA3MjIgKysrKysrKysrKysrKysKIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oICAgICAgICAgICAgIHwgIDEwOCAr
-KwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyAgICAgICAgICAgICAgfCAg
-NzMxICsrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5o
-ICAgICAgICAgICAgICB8ICA0MDQgKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMgICAgICAgIHwgICAgNiArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuaCAgICAgICAgfCAgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgICAgICAgIHwgICAgMiArCiBkcml2ZXJzL3BoeS9L
-Y29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDggKwogZHJpdmVycy9w
-aHkvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAxICsKIGRyaXZl
-cnMvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy5jICAgICAgICAgICAgICAgICAgIHwgMTAyNyArKysr
-KysrKysrKysrKysrKysrKwogaW5jbHVkZS9saW51eC9leHRjb24uaCAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgICA2ICsKIDE2IGZpbGVzIGNoYW5nZWQsIDMxNjcgaW5zZXJ0aW9ucygr
-KSwgMSBkZWxldGlvbigtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2Nkbi1kcC1yb2NrY2hpcC50eHQKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1y
-b2NrY2hpcC10eXBlYy50eHQKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvY2RuLWRwLWNvcmUuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9jZG4tZHAtY29yZS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3BoeS9w
-aHktcm9ja2NoaXAtdHlwZWMuYwoKLS0gCjIuNi4zCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+Add EXTCON_DISP_DP and EXTCON_DISP_DP_ALT for the Display external
+connector. The EXTCON_DISP_DP is for DisplayPort, and the
+EXTCON_DISP_DP_ALT is the DisplayPort as an Alternate Mode for
+the USB Type-C connector (VESA DisplayPort Alt Mode on USB Type-C
+Standard).
+
+And for the Type-C USB, there is some information need to be supplied
+by PowerDelivery or other mode detecter: port orientation and pin
+assignments, so add these 2 virtual cable: EXTCON_TYPEC_POLARITY
+and EXTCON_TYPEC_PIN_ASSIGN. If EXTCON_TYPEC_POLARITY is attached,
+the Type-C get flip orientation. IF EXTCON_TYPEC_PIN_ASSIGN is
+attached, Type-C get Pin_Assignment_C(for DP only mode) or
+Pin_Assignment_D(for DP alt mode), the default Assignment is A or B.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
+
+Changes in v3: None
+Changes in v2: None
+Changes in v1: None
+
+ drivers/extcon/extcon.c | 6 ++++++
+ include/linux/extcon.h  | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
+index 21a123c..0522b4d 100644
+--- a/drivers/extcon/extcon.c
++++ b/drivers/extcon/extcon.c
+@@ -53,6 +53,10 @@ static const char *extcon_name[] =  {
+ 	[EXTCON_CHG_USB_FAST]		= "FAST-CHARGER",
+ 	[EXTCON_CHG_USB_SLOW]		= "SLOW-CHARGER",
+ 
++	/* Type-c connector */
++	[EXTCON_TYPEC_POLARITY]		= "TYPE-C-POLARITY",
++	[EXTCON_TYPEC_PIN_ASSIGN]	= "TYPE-C-PIN-ASSIGN",
++
+ 	/* Jack external connector */
+ 	[EXTCON_JACK_MICROPHONE]	= "MICROPHONE",
+ 	[EXTCON_JACK_HEADPHONE]		= "HEADPHONE",
+@@ -68,6 +72,8 @@ static const char *extcon_name[] =  {
+ 	[EXTCON_DISP_MHL]		= "MHL",
+ 	[EXTCON_DISP_DVI]		= "DVI",
+ 	[EXTCON_DISP_VGA]		= "VGA",
++	[EXTCON_DISP_DP]		= "DP",
++	[EXTCON_DISP_DP_ALT]		= "DP-ALT",
+ 
+ 	/* Miscellaneous external connector */
+ 	[EXTCON_DOCK]			= "DOCK",
+diff --git a/include/linux/extcon.h b/include/linux/extcon.h
+index 7abf674..98039ad 100644
+--- a/include/linux/extcon.h
++++ b/include/linux/extcon.h
+@@ -45,6 +45,10 @@
+ #define EXTCON_CHG_USB_FAST	9
+ #define EXTCON_CHG_USB_SLOW	10
+ 
++/* Type-c connector */
++#define EXTCON_TYPEC_POLARITY	11	/* Typec-C plug orientation */
++#define EXTCON_TYPEC_PIN_ASSIGN	12	/* Typec-C pin Assignment */
++
+ /* Jack external connector */
+ #define EXTCON_JACK_MICROPHONE	20
+ #define EXTCON_JACK_HEADPHONE	21
+@@ -60,6 +64,8 @@
+ #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
+ #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
+ #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
++#define EXTCON_DISP_DP		44	/* Display Port */
++#define EXTCON_DISP_DP_ALT	45	/* Display Port Type-C Alternate Mode */
+ 
+ /* Miscellaneous external connector */
+ #define EXTCON_DOCK		60
+-- 
+2.6.3
