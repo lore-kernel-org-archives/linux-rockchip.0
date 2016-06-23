@@ -1,131 +1,196 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: core: add auto bkops support
-Date: Thu, 23 Jun 2016 10:08:20 +0800
-Message-ID: <64ed1ed2-09ff-659e-01f8-87a1071883d1@rock-chips.com>
-References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
- <575E52AC.6000902@intel.com>
- <8bbb3f13-efb3-e963-e53f-cf2ca796f319@rock-chips.com>
- <575E6C11.8060709@intel.com>
- <b22ae70d-5128-639d-eef0-8ac9cdd2b8e4@rock-chips.com>
- <575EA651.7060606@intel.com>
- <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] PCI: Rockchip: Add Rockchip PCIe controller
+ support
+Date: Thu, 23 Jun 2016 10:15:04 +0800
+Message-ID: <a18b7027-5627-7827-ce28-059cc5819d08@rock-chips.com>
+References: <1466041835-1695-1-git-send-email-shawn.lin@rock-chips.com>
+ <20160623002919.GA21157@google.com>
+ <dcdc3402-22d9-473a-d9ae-b9bd994c24a6@rock-chips.com>
+ <20160623013527.GA46876@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFq7Pr1YiacwpeDq3eAYmApydTj8Kbkyh=Cb6+vJC9BV3Q@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, Alex Lemberg <alex.lemberg@sandisk.com>
-Cc: shawn.lin@rock-chips.com, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160623013527.GA46876-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/6/22 18:21, Ulf Hansson =E5=86=99=E9=81=93:
-> On 13 June 2016 at 14:25, Adrian Hunter <adrian.hunter@intel.com> wro=
-te:
->> On 13/06/16 11:58, Shawn Lin wrote:
->>> =E5=9C=A8 2016/6/13 16:17, Adrian Hunter =E5=86=99=E9=81=93:
->>>> On 13/06/16 10:48, Shawn Lin wrote:
->>>>> On 2016/6/13 14:29, Adrian Hunter wrote:
->>>>>> On 06/06/16 06:07, Shawn Lin wrote:
->>>>>>> JEDEC eMMC v5.1 introduce an autonomously initiated method
->>>>>>> for background operations.
->>>>>>>
->>>>>>> Host that wants to enable the device to perform background
->>>>>>> operations during device idle time, should signal the device
->>>>>>> by setting AUTO_EN in BKOPS_EN field EXT_CSD[163] to 1b. When
->>>>>>> this bit is set, the device may start or stop background operat=
-ions
->>>>>>> whenever it sees fit, without any notification to the host.
->>>>>>>
->>>>>>> When AUTO_EN bit is set, the host should keep the device power
->>>>>>> active. The host may set or clear this bit at any time based on
->>>>>>> its power constraints or other considerations.
->>>>>>>
->>>>>>> Currently the manual bkops is only be used under the async req
->>>>>>> circumstances and it's a bit complicated to be controlled as th=
-e
->>>>>>> perfect method is that we should do some idle monitor just as r=
-pm
->>>>>>> and send HPI each time if receiving rd/wr req. But it will impa=
-ct
->>>>>>> performance significantly, especially for random iops since the
->>>>>>> weight of executing HPI against r/w small piece of LBAs is
->>>>>>> nonnegligible.
->>>>>>>
->>>>>>> So we now prefer to select the auto one unconditionally if supp=
-orted
->>>>>>> which makes it as simple as possible. It should really good eno=
-ugh
->>>>>>> for devices to manage its internal policy for bkops rather than=
- the
->>>>>>> host, which makes us believe that we could achieve the best
->>>>>>> performance for all the devices implementing auto bkops and the=
- only
->>>>>>> thing we should do is to disable it when cutting off the power.
->>>>>>
->>>>>> Do you know if there is really a requirement to do that?
->>>>>
->>>>> Even without bkops enable, no matter for manual or auto one, FTL =
-should
->>>>> always do bkops like GC internally when needed to guarantee the
->>>>> performance and balance the wear leveling. What I thought to do i=
-s to
->>>>> make it more explicitly.
->>>>>
->>>>> Because then, what
->>>>>> is the point of power off notification?
->>>>>
->>>>> When power off notification is sent, bkops will be stopped
->>>>> in _mmc_suspend. So I don't undertand your point here?
->>>>
->>>> I am trying to understand why we need to do anything for auto bkop=
-s.
->>>> Since AUTO_EN is persistent, we can leave the decision whether to =
-turn it on
->>>> to whomever provisions the device. Then we just leave it alone.
->>>>
+=E5=9C=A8 2016/6/23 9:35, Brian Norris =E5=86=99=E9=81=93:
+> Hi,
+>
+> On Thu, Jun 23, 2016 at 09:09:46AM +0800, Shawn Lin wrote:
+>> =E5=9C=A8 2016/6/23 8:29, Brian Norris =E5=86=99=E9=81=93:
+>>> On Thu, Jun 16, 2016 at 09:50:35AM +0800, Shawn Lin wrote:
+>
+> [...]
+>
+>>>> +	/* 500ms timeout value should be enough for gen1/2 taining */
+>>>> +	timeout =3D jiffies + msecs_to_jiffies(500);
+>>>> +
+>>>> +	err =3D -ETIMEDOUT;
+>>>> +	while (time_before(jiffies, timeout)) {
+>>>> +		status =3D pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
+>>>> +		if (((status >> PCIE_CLIENT_LINK_STATUS_SHIFT) &
+>>>> +		      PCIE_CLIENT_LINK_STATUS_MASK) =3D=3D
+>>>> +		      PCIE_CLIENT_LINK_STATUS_UP) {
+>>>> +			dev_dbg(port->dev, "pcie link training gen1 pass!\n");
+>>>> +			err =3D 0;
+>>>> +			break;
+>>>> +		}
+>>>> +		msleep(20);
+>>>> +	}
 >>>
->>> Hrm..
+>>> Technically, the above timeout loop is not quite correct. Possible =
+error
+>>> case: we can fail with a timeout after 500 ms if the training compl=
+etes
+>>> between the 480-500 ms time window. This can happen because you're
+>>> doing:
 >>>
->>> one possible way is to control it by mmc-utils on
->>> user space?  So we should add a cmd for mmc-utils
->>> there?
+>>> (1) read register: if complete, then terminate successfully
+>>> (2) delay
+>>> (3) check for timeout: if time is up, return error
+>>>
+>>> You actually need:
+>>>
+>>> (1) read register: if complete, then terminate successfully
+>>> (2) delay
+>>> (3) check for timeout: if time is up, repeat (1), and then report e=
+rror
+>>>
+>>> You can examine the logic for readx_poll_timeout() in
+>>> include/linux/iopoll.h to see an example of a proper timeout loop. =
+You
+>>> could even try to use one of the helpers there, except that your
+>>> pcie_read() takes 2 args.
 >>
->> That would be consistent with manual bkops.
+>> I see, thanks.
 >>
+>>>
+>>>> +	if (err) {
+>>>> +		dev_err(port->dev, "pcie link training gen1 timeout!\n");
+>>>> +		return err;
+>>>> +	}
+>>>> +
+>>>> +	/*
+>>>> +	 * Enable retrain for gen2. This should be configured only after
+>>>> +	 * gen1 finished.
+>>>> +	 */
+>>>> +	status =3D pcie_read(port,
+>>>> +			   PCIR_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
+>>>> +	status |=3D PCIE_CORE_LCSR_RETAIN_LINK;
+>>>> +	pcie_write(port, status,
+>>>> +		   PCIR_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
+>>>
+>>> I'm not really an expert on this, but how are you actually "retrain=
+ing
+>>> for gen2"? Is that just the behavior of the core, that it retries a=
+t the
+>>> higher rate on the 2nd training attempt? I'm just confused, since y=
+ou
+>>> set PCIE_CLIENT_GEN_SEL_2 above, so you've already allowed either g=
+en1
+>>> or gen2 negotiation AFAICT, and so seemingly you might already have
+>>> negotiated at gen2.
+>>
+>>
+>> Not really. I allow the core to enable gen2, but it needs a extra
+>> setting of retrain after finishing gen1. It's not so strange as it
+>> depends on the vendor's design. So I have to say it fits the
+>> designer's expectation.
 >
->>From my first impression I agree, as that is the policy we have been
-> sticking to when writing to persistent EXT_CSD persistent .
-> Although, in this case, I am actually wondering on what is the best a=
-pproach.
+> OK.
+>
+>>>> +	err =3D -ETIMEDOUT;
+>>>> +
+>>>> +	while (time_before(jiffies, timeout)) {
+>>>
+>>> You never reset 'timeout' when starting this loop. So you only have=
+ a
+>>> cumulative 500 ms to do both the gen1 and gen2 loops. Is that
+>>> intentional? (I feel like this comment was made on an earlier revis=
+ion
+>>> of this driver, though I haven't read everything thoroughly.)
+>>
+>> yes, I don't have any docs to let me know how long should I wait for
+>> gen1/2 to be finished. Maybe someday it will be augmented to a large=
+r
+>> value if finding a device actually need a longer time. But the only
+>> thing I can say is that it's from my test for many pcie devices
+>> currently.
+>>
+>>
+>> Do you agree?
+>
+> I'm not suggesting increasing the timeout, exactly; I'm suggesting th=
+at
+> you should set some minimum timeout for each training loop, instead o=
+f
+> reusing the same deadline. i.e., something like this before the secon=
+d
+> loop:
+>
+> 	/* Reset the deadline for gen2 */
+> 	timeout =3D jiffies + msecs_to_jiffies(500);
 
-I don't know what is the real meaning of "persistent". :)
-I don't know should we count auto bkops as the persistent
-registers....HS_TIMING and BUS_WIDTH should also be persistent
-registers as them are always used after initialization if not changing
-them?
 
-IHMO the more reasonable way is that:
-IIRC many settings for  EXT_CSD should be OTP, like hw-reset(162),
-reliable write(167) fw-configure(169)..etc, which are marked as R/W.
-These should be controlled by userpace or even by firmware when
-flashing emmc, like reliable write...
-
-
-I'm not sure whether should I updete this $SUBJUCT or migirating it to
-userspace... We need to come to an agreement :)
-
+ok, I will update it.
 
 >
-> Is there really ever a case when we don't want auto BKOPS to be defau=
-lt enabled?
-> I think BKOPS is a fundamental feature of an FTL and I can't see a
-> reason to why we need to involve mmc-utils/userspace to enable it. Am
-> I wrong?
+> As it stands, if the first loop takes 490 ms, that leaves you only 10=
+ ms
+> for the second loop. And I think it'd be confusing if we ever see the
+> first loop take a "long" time, and then we time out on the second --
+> we'd be blaming the gen2 training for gen1's slowness.
 >
-> Kind regards
-> Uffe
+>>>> +		status =3D pcie_read(port, PCIE_CORE_CTRL_MGMT_BASE);
+>>>> +		if (((status >> PCIE_CORE_PL_CONF_SPEED_SHIFT) &
+>>>> +		      PCIE_CORE_PL_CONF_SPEED_MASK) =3D=3D
+>>>> +		      PCIE_CORE_PL_CONF_SPEED_50G) {
+>>>> +			dev_dbg(port->dev, "pcie link training gen2 pass!\n");
+>>>> +			err =3D 0;
+>>>> +			break;
+>>>> +		}
+>>>> +		msleep(20);
+>>>> +	}
+>>>
+>>> Similar problem with your timeout loop, as mentioned above. Althoug=
+h I
+>>> confused about what you do in the error case here...
+>>>
+>>>> +	if (err)
+>>>> +		dev_dbg(port->dev, "pcie link training gen2 timeout, force to g=
+en1!\n");
+>>>
+>>> ... how are you forcing gen1? I don't see any code that indicates t=
+his.
+>>> Should you at least be checking that there aren't some kind of trai=
+ning
+>>> errors, and that we settled back on gen1/2.5G?
+>>
+>> yes, when failing gen2,  my pcie controller will fallback to gen1
+>> automatically.
+>
+> OK. Well maybe the text should say something like "falling back" inst=
+ead
+> of "force"?
+>
+
+Sounds good, will fix. Thanks.
+
+>> if we pass the gen1 then fail to train gen2, a dbg msg here is enoug=
+h
+>> here to let we know that we should check the HW signal. Of course we
+>> should make sure that this device supports gen2.
+>
+> OK.
+>
+> [...]
+>
+> Brian
 >
 >
 >
@@ -135,3 +200,8 @@ lt enabled?
 Best Regards
 Shawn Lin
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
