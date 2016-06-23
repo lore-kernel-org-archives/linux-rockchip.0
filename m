@@ -1,44 +1,125 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 2/2] dt-bindings: analogix_dp: rockchip: correct the
- wrong compatible name
-Date: Wed, 22 Jun 2016 22:17:18 -0700
-Message-ID: <CAD=FV=UfbAUbDJfox4zMZSHyQ6uxhG2=n_Z=8WdCKGKvW+ehTQ@mail.gmail.com>
-References: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
- <1466646424-10583-1-git-send-email-ykk@rock-chips.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH] mmc: core: add auto bkops support
+Date: Thu, 23 Jun 2016 08:22:25 +0300
+Message-ID: <576B7211.2030208@intel.com>
+References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
+ <F4A75DD4-FE64-4417-AFD4-FA9ABD8EE915@sandisk.com>
+ <d5c75760-e8b4-1784-a7de-3d78eeca1d0e@rock-chips.com>
+ <7078F2B9-63B6-4170-BFA1-5AC370F0D4DD@sandisk.com>
+ <29966a6f-eb14-0307-08cc-f91a97f50382@rock-chips.com>
+ <B7133967-23A7-46AF-9013-417BD282E005@sandisk.com>
+ <23729258-7a6b-80ac-6c90-b48eed64e0ea@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1466646424-10583-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.com>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <23729258-7a6b-80ac-6c90-b48eed64e0ea@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Alex Lemberg <Alex.Lemberg@sandisk.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBXZWQsIEp1biAyMiwgMjAxNiBhdCA2OjQ3IFBNLCBZYWtpciBZYW5nIDx5a2tAcm9j
-ay1jaGlwcy5jb20+IHdyb3RlOgo+IFRoZSBkb2N1bWVudCBhYm91dCByb2NrY2hpcCBwbGF0Zm9y
-bSBtYWtlIGEgbWlzdGFrZW4gaW4gYXZhaWxhYmxlCj4gY29tcGF0aWJsZSBuYW1lIG9mICJyazMy
-ODgtZWRwIiwgd2Ugc2hvdWxkIGNvcnJlY3QgaXQgdG8gInJrMzI4OC1kcCIKPiB3aGljaCBjb3Jy
-ZXNwb25kIHRvIHRoZSBjb21wYXRpYmxlIG5hbWUgaW4gZHJpdmVyLgo+Cj4gVGhpcyBtaXN0YWtl
-biB3YXMgaW50cm9kdWNlZCBpbiBjb21taXQgYmU5MWMzNjI0NzA4OSAoImR0LWJpbmRpbmdzOgo+
-IGFkZCBkb2N1bWVudCBmb3Igcm9ja2NoaXAgdmFyaWFudCBvZiBhbmFsb2dpeF9kcCIpLgo+Cj4g
-UmVwb3J0ZWQtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5jb20+Cj4gU2lnbmVkLW9m
-Zi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IEhpIGFsbCwKPgo+
-IFRoaXMgaXMgYW4gZXh0ZXJuYWwgcGF0Y2ggZm9yIGFuYWxvZ2l4X2RwIG1pc2MgY2xlYW51cCB0
-aHJlYWQgWzBdCj4gWzBdOiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkxNzU2
-MTMvCj4KPiBCUiwKPiAtIFlha2lyCj4KPiBDaGFuZ2VzIGluIHY0OiBOb25lCj4gQ2hhbmdlcyBp
-biB2MzoKPiAtIEFkZCB0aGlzIHBhdGNoIGluIHYzCj4KPiAgLi4uL2RldmljZXRyZWUvYmluZGlu
-Z3MvZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQgICAgICAgfCAyICst
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKUmV2aWV3
-ZWQtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 23/06/16 04:33, Shawn Lin wrote:
+> =E5=9C=A8 2016/6/22 22:08, Alex Lemberg =E5=86=99=E9=81=93:
+>> HI Shawn,
+>>
+>> On 6/21/16, 4:44 AM, "Shawn Lin" <shawn.lin@rock-chips.com> wrote:
+>>
+>>> On 2016/6/20 21:33, Alex Lemberg wrote:
+>>>> Hi Shawn,
+>>>>
+>>>> [=E2=80=A6]
+>>>>
+>>>>>>> +
+>>>>>>> +static int mmc_stop_auto_bkops(struct mmc_card *card)
+>>>>>>> +{
+>>>>>>> +    int err =3D 0;
+>>>>>>> +
+>>>>>>> +    if (!card->ext_csd.auto_bkops_en)
+>>>>>>> +        return 0;
+>>>>>>> +
+>>>>>>
+>>>>>> Shouldn=E2=80=99t the BKOPS_STATUS be checked prior to disabling=
+ the BKOPS
+>>>>>> activity of the device?
+>>>>>>
+>>>>>
+>>>>> Hrmm.. I read the whole section of spec for it, and I did find th=
+is
+>>>>> requirement for manul bkops but not for the auto one. So what sho=
+uld we
+>>>>> do if using the auto one?
+>>>>>
+>>>>
+>>>> In case of AUTO BKOPS, the eMMC Device should perform internal GC
+>>>> in the same way as in case of MANUAL BKOPS.
+>>>> The only difference is a host awareness.
+>>>
+>>> agree.
+>>>
+>>>> Although there is no requirement in the spec, I think the driver c=
+an
+>>>> give some time to the device to perform/complete its internal GC d=
+uring
+>>>> the idle time.
+>>>> Thus I think we can check the BKOPS_STATUS on Runtime suspend.
+>>>
+>>> We shouldn't diable bkops on *runtime* suspend as it's just the rig=
+ht
+>>> time for firmware to do GC. We could consider to check and wait for
+>>> the status when doing poweroff, although it seems firmware should b=
+e
+>>> able to accept the disable cmd and deal the on-going work perfectly
+>>> when doing bkops without host's awareness, just the same way as sud=
+dent
+>>> power loss cases.
+>>
+>> If I am not wrong, in current implementation of runtime suspend,
+>> the driver stops BKOPS (send HPI) just before sending sleep command,
+>> see _mmc_suspend(), depends on =E2=80=9CMMC_CAP_AGGRESSIVE_PM=E2=80=9D=
+ flag.
+>> In this case, the eMMC device will not have enough time to perform i=
+nternal
+>> BKOPS in both =E2=80=93 Manual and Auto BKOPS configurations.
+>>
+>=20
+> ye, so it seems a pre-exiting issue before introducing auto bkops?
+> I think we can push another patch to improve it but not handling
+> it for this $SUBJECT, does it sound ok to you?
+
+Runtime suspend for eMMC has a default auto-suspend delay of 3 seconds
+(refer mmc_blk_probe()).  Isn't that when auto bkops would happen?
+
+>=20
+>> For the poweroff, it should be OK with a current implementation of
+>> PON (mmc_poweroff_notify())
+>>
+>>>
+>>> Also I don't know whether the firmware will reflect its status on
+>>> BKOPS_STATUS or not when enabling the auto one. I will do more test=
+=2E
+>>>
+>>> Anyway, thanks for sharing your thought.
+>>> Also Adrian point out that currently we trigger manual bkosp from
+>>> userspace via mmc-utils, and I agreed we shouldn't force kernel sta=
+ck
+>>> to enable it defaultly. So I'm prone not to update this $SUBJECT an=
+d
+>>> migrate it to mmc-utils later.
+>>>
+>>>>
+>>>> [=E2=80=A6]
+>>>>
+>>>> Thanks,
+>>>> Alex
+>>>>
+>>>
+>>>
+>>> --=20
+>>> Best Regards
+>>> Shawn Lin
+>>>
+>>
+>=20
+>=20
+
