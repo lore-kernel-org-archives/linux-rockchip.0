@@ -1,7 +1,7 @@
 From: Guenter Roeck <groeck@google.com>
 Subject: Re: [v3 PATCH 3/5] phy: Add USB Type-C PHY driver for rk3399
-Date: Thu, 23 Jun 2016 10:23:49 -0700
-Message-ID: <CABXOdTc11gjrt+_zRs6aJhbgrHXSXnBoG5ZoqwNUKirr_dpX=w@mail.gmail.com>
+Date: Thu, 23 Jun 2016 14:47:18 -0700
+Message-ID: <CABXOdTcZ2O7tK8yNSJH_Unap8RweUa_iW8aT3Hb_NWCZRoyAzQ@mail.gmail.com>
 References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com> <1466686264-6744-4-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -14,34 +14,48 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Chris,
 
+On Thu, Jun 23, 2016 at 5:51 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
+> Type-C PHY is designed to support the USB3 and DP applications. The
+> PHY basically has two main components: USB3 and DisplyPort. USB3
+> operates in SuperSpeed mode and the DP can operate at RBR, HBR and
+> HBR2 data rates.
+>
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>
 [ ... ]
 
-> +       ret = extcon_register_notifier(tcphy->pd_extcon, EXTCON_USB,
-> +                                      &tcphy->event_nb);
-> +       if (ret) {
-> +               dev_err(dev, "regitster EXTCON_USB notifer failed\n");
-> +               return ret;
-> +       }
 > +
-> +       ret = extcon_register_notifier(tcphy->pd_extcon, EXTCON_USB_HOST,
-> +                                      &tcphy->event_nb);
-> +       if (ret) {
-> +               dev_err(dev, "regitster EXTCON_USB_HOST notifer failed\n");
-> +               return ret;
-> +       }
+> +static void tcphy_get_state(struct rockchip_typec_phy *tcphy,
+> +                           struct extcon_dev *edev)
+> +{
+> +       int mode;
+> +       bool plugged, flip, pin_assign, dfp, ufp, dp;
 > +
-> +       ret = extcon_register_notifier(tcphy->pd_extcon, EXTCON_DISP_DP,
-> +                                      &tcphy->event_nb);
-> +       if (ret) {
-> +               dev_err(dev, "regitster EXTCON_DISP_DP notifer failed\n");
-> +               return ret;
-> +       }
+> +       ufp = extcon_get_cable_state_(edev, EXTCON_USB);
+> +       dfp = extcon_get_cable_state_(edev, EXTCON_USB_HOST);
+> +       dp = extcon_get_cable_state_(edev, EXTCON_DISP_DP);
+> +       flip = extcon_get_cable_state_(edev, EXTCON_TYPEC_POLARITY);
+> +       pin_assign = extcon_get_cable_state_(edev, EXTCON_TYPEC_PIN_ASSIGN);
 > +
+> +       plugged = ufp | dfp | dp;
+> +       tcphy->flip = flip;
+> +
+> +       if (plugged) {
+> +               if (ufp) {
+> +                       mode = MODE_UFP_USB;
+> +               } else if (dfp && !dp) {
+> +                       mode = MODE_DFP_USB;
+> +               } else if (dfp && dp) {
+> +                       mode = MODE_DFP_USB | MODE_DFP_DP;
+> +                       tcphy->pin_assign = pin_assign ? PIN_MAP_D : PIN_MAP_B;
+> +               } else {
+> +                       mode = MODE_DFP_DP;
+> +                       tcphy->pin_assign = pin_assign ? PIN_MAP_C : PIN_MAP_A;
 
-I don't think you can register multiple notifiers with the same
-notifier block. It may work by chance, but at least the 'next' object
-in notifier_clock is set in notifier_chain_register(). Best case it
-may work, but worst case it might cause a loop in the list of
-notifiers.
+I am having trouble extracting pin_assign from our code. What
+determines if map A or C should be selected ?
 
+Thanks,
 Guenter
