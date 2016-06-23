@@ -1,117 +1,179 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: core: add auto bkops support
-Date: Thu, 23 Jun 2016 09:33:24 +0800
-Message-ID: <23729258-7a6b-80ac-6c90-b48eed64e0ea@rock-chips.com>
-References: <1465182439-27963-1-git-send-email-shawn.lin@rock-chips.com>
- <F4A75DD4-FE64-4417-AFD4-FA9ABD8EE915@sandisk.com>
- <d5c75760-e8b4-1784-a7de-3d78eeca1d0e@rock-chips.com>
- <7078F2B9-63B6-4170-BFA1-5AC370F0D4DD@sandisk.com>
- <29966a6f-eb14-0307-08cc-f91a97f50382@rock-chips.com>
- <B7133967-23A7-46AF-9013-417BD282E005@sandisk.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v3 2/2] PCI: Rockchip: Add Rockchip PCIe controller
+ support
+Date: Wed, 22 Jun 2016 18:35:27 -0700
+Message-ID: <20160623013527.GA46876@google.com>
+References: <1466041835-1695-1-git-send-email-shawn.lin@rock-chips.com>
+ <20160623002919.GA21157@google.com>
+ <dcdc3402-22d9-473a-d9ae-b9bd994c24a6@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <B7133967-23A7-46AF-9013-417BD282E005@sandisk.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alex Lemberg <Alex.Lemberg@sandisk.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <dcdc3402-22d9-473a-d9ae-b9bd994c24a6@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, Wenrui Li <wenrui.li@rock-chips.com>, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/6/22 22:08, Alex Lemberg =E5=86=99=E9=81=93:
-> HI Shawn,
->
-> On 6/21/16, 4:44 AM, "Shawn Lin" <shawn.lin@rock-chips.com> wrote:
->
->> On 2016/6/20 21:33, Alex Lemberg wrote:
->>> Hi Shawn,
->>>
->>> [=E2=80=A6]
->>>
->>>>>> +
->>>>>> +static int mmc_stop_auto_bkops(struct mmc_card *card)
->>>>>> +{
->>>>>> +	int err =3D 0;
->>>>>> +
->>>>>> +	if (!card->ext_csd.auto_bkops_en)
->>>>>> +		return 0;
->>>>>> +
->>>>>
->>>>> Shouldn=E2=80=99t the BKOPS_STATUS be checked prior to disabling =
-the BKOPS activity of the device?
->>>>>
->>>>
->>>> Hrmm.. I read the whole section of spec for it, and I did find thi=
+Hi,
+
+On Thu, Jun 23, 2016 at 09:09:46AM +0800, Shawn Lin wrote:
+> =E5=9C=A8 2016/6/23 8:29, Brian Norris =E5=86=99=E9=81=93:
+> >On Thu, Jun 16, 2016 at 09:50:35AM +0800, Shawn Lin wrote:
+
+[...]
+
+> >>+	/* 500ms timeout value should be enough for gen1/2 taining */
+> >>+	timeout =3D jiffies + msecs_to_jiffies(500);
+> >>+
+> >>+	err =3D -ETIMEDOUT;
+> >>+	while (time_before(jiffies, timeout)) {
+> >>+		status =3D pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
+> >>+		if (((status >> PCIE_CLIENT_LINK_STATUS_SHIFT) &
+> >>+		      PCIE_CLIENT_LINK_STATUS_MASK) =3D=3D
+> >>+		      PCIE_CLIENT_LINK_STATUS_UP) {
+> >>+			dev_dbg(port->dev, "pcie link training gen1 pass!\n");
+> >>+			err =3D 0;
+> >>+			break;
+> >>+		}
+> >>+		msleep(20);
+> >>+	}
+> >
+> >Technically, the above timeout loop is not quite correct. Possible e=
+rror
+> >case: we can fail with a timeout after 500 ms if the training comple=
+tes
+> >between the 480-500 ms time window. This can happen because you're
+> >doing:
+> >
+> >(1) read register: if complete, then terminate successfully
+> >(2) delay
+> >(3) check for timeout: if time is up, return error
+> >
+> >You actually need:
+> >
+> >(1) read register: if complete, then terminate successfully
+> >(2) delay
+> >(3) check for timeout: if time is up, repeat (1), and then report er=
+ror
+> >
+> >You can examine the logic for readx_poll_timeout() in
+> >include/linux/iopoll.h to see an example of a proper timeout loop. Y=
+ou
+> >could even try to use one of the helpers there, except that your
+> >pcie_read() takes 2 args.
+>=20
+> I see, thanks.
+>=20
+> >
+> >>+	if (err) {
+> >>+		dev_err(port->dev, "pcie link training gen1 timeout!\n");
+> >>+		return err;
+> >>+	}
+> >>+
+> >>+	/*
+> >>+	 * Enable retrain for gen2. This should be configured only after
+> >>+	 * gen1 finished.
+> >>+	 */
+> >>+	status =3D pcie_read(port,
+> >>+			   PCIR_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
+> >>+	status |=3D PCIE_CORE_LCSR_RETAIN_LINK;
+> >>+	pcie_write(port, status,
+> >>+		   PCIR_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
+> >
+> >I'm not really an expert on this, but how are you actually "retraini=
+ng
+> >for gen2"? Is that just the behavior of the core, that it retries at=
+ the
+> >higher rate on the 2nd training attempt? I'm just confused, since yo=
+u
+> >set PCIE_CLIENT_GEN_SEL_2 above, so you've already allowed either ge=
+n1
+> >or gen2 negotiation AFAICT, and so seemingly you might already have
+> >negotiated at gen2.
+>=20
+>=20
+> Not really. I allow the core to enable gen2, but it needs a extra
+> setting of retrain after finishing gen1. It's not so strange as it
+> depends on the vendor's design. So I have to say it fits the
+> designer's expectation.
+
+OK.
+
+> >>+	err =3D -ETIMEDOUT;
+> >>+
+> >>+	while (time_before(jiffies, timeout)) {
+> >
+> >You never reset 'timeout' when starting this loop. So you only have =
+a
+> >cumulative 500 ms to do both the gen1 and gen2 loops. Is that
+> >intentional? (I feel like this comment was made on an earlier revisi=
+on
+> >of this driver, though I haven't read everything thoroughly.)
+>=20
+> yes, I don't have any docs to let me know how long should I wait for
+> gen1/2 to be finished. Maybe someday it will be augmented to a larger
+> value if finding a device actually need a longer time. But the only
+> thing I can say is that it's from my test for many pcie devices
+> currently.
+>=20
+>=20
+> Do you agree?
+
+I'm not suggesting increasing the timeout, exactly; I'm suggesting that
+you should set some minimum timeout for each training loop, instead of
+reusing the same deadline. i.e., something like this before the second
+loop:
+
+	/* Reset the deadline for gen2 */
+	timeout =3D jiffies + msecs_to_jiffies(500);
+
+As it stands, if the first loop takes 490 ms, that leaves you only 10 m=
 s
->>>> requirement for manul bkops but not for the auto one. So what shou=
-ld we
->>>> do if using the auto one?
->>>>
->>>
->>> In case of AUTO BKOPS, the eMMC Device should perform internal GC
->>> in the same way as in case of MANUAL BKOPS.
->>> The only difference is a host awareness.
->>
->> agree.
->>
->>> Although there is no requirement in the spec, I think the driver ca=
-n
->>> give some time to the device to perform/complete its internal GC du=
-ring the idle time.
->>> Thus I think we can check the BKOPS_STATUS on Runtime suspend.
->>
->> We shouldn't diable bkops on *runtime* suspend as it's just the righ=
-t
->> time for firmware to do GC. We could consider to check and wait for
->> the status when doing poweroff, although it seems firmware should be
->> able to accept the disable cmd and deal the on-going work perfectly
->> when doing bkops without host's awareness, just the same way as sudd=
-ent
->> power loss cases.
->
-> If I am not wrong, in current implementation of runtime suspend,
-> the driver stops BKOPS (send HPI) just before sending sleep command,
-> see _mmc_suspend(), depends on =E2=80=9CMMC_CAP_AGGRESSIVE_PM=E2=80=9D=
- flag.
-> In this case, the eMMC device will not have enough time to perform in=
-ternal
-> BKOPS in both =E2=80=93 Manual and Auto BKOPS configurations.
->
+for the second loop. And I think it'd be confusing if we ever see the
+first loop take a "long" time, and then we time out on the second --
+we'd be blaming the gen2 training for gen1's slowness.
 
-ye, so it seems a pre-exiting issue before introducing auto bkops?
-I think we can push another patch to improve it but not handling
-it for this $SUBJECT, does it sound ok to you?
+> >>+		status =3D pcie_read(port, PCIE_CORE_CTRL_MGMT_BASE);
+> >>+		if (((status >> PCIE_CORE_PL_CONF_SPEED_SHIFT) &
+> >>+		      PCIE_CORE_PL_CONF_SPEED_MASK) =3D=3D
+> >>+		      PCIE_CORE_PL_CONF_SPEED_50G) {
+> >>+			dev_dbg(port->dev, "pcie link training gen2 pass!\n");
+> >>+			err =3D 0;
+> >>+			break;
+> >>+		}
+> >>+		msleep(20);
+> >>+	}
+> >
+> >Similar problem with your timeout loop, as mentioned above. Although=
+ I
+> >confused about what you do in the error case here...
+> >
+> >>+	if (err)
+> >>+		dev_dbg(port->dev, "pcie link training gen2 timeout, force to ge=
+n1!\n");
+> >
+> >... how are you forcing gen1? I don't see any code that indicates th=
+is.
+> >Should you at least be checking that there aren't some kind of train=
+ing
+> >errors, and that we settled back on gen1/2.5G?
+>=20
+> yes, when failing gen2,  my pcie controller will fallback to gen1
+> automatically.
 
-> For the poweroff, it should be OK with a current implementation of
-> PON (mmc_poweroff_notify())
->
->>
->> Also I don't know whether the firmware will reflect its status on
->> BKOPS_STATUS or not when enabling the auto one. I will do more test.
->>
->> Anyway, thanks for sharing your thought.
->> Also Adrian point out that currently we trigger manual bkosp from
->> userspace via mmc-utils, and I agreed we shouldn't force kernel stac=
-k
->> to enable it defaultly. So I'm prone not to update this $SUBJECT and
->> migrate it to mmc-utils later.
->>
->>>
->>> [=E2=80=A6]
->>>
->>> Thanks,
->>> Alex
->>>
->>
->>
->> --
->> Best Regards
->> Shawn Lin
->>
->
+OK. Well maybe the text should say something like "falling back" instea=
+d
+of "force"?
 
+> if we pass the gen1 then fail to train gen2, a dbg msg here is enough
+> here to let we know that we should check the HW signal. Of course we
+> should make sure that this device supports gen2.
 
---=20
-Best Regards
-Shawn Lin
+OK.
+
+[...]
+
+Brian
