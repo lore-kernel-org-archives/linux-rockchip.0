@@ -1,87 +1,72 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v3 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Thu, 23 Jun 2016 20:51:00 +0800
-Message-ID: <1466686264-6744-2-git-send-email-zyw@rock-chips.com>
+Subject: [v3 PATCH 4/5] Documentation: bindings: add dt documentation for cdn
+ DP controller
+Date: Thu, 23 Jun 2016 20:51:03 +0800
+Message-ID: <1466686264-6744-5-git-send-email-zyw@rock-chips.com>
 References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add EXTCON_DISP_DP and EXTCON_DISP_DP_ALT for the Display external
-connector. The EXTCON_DISP_DP is for DisplayPort, and the
-EXTCON_DISP_DP_ALT is the DisplayPort as an Alternate Mode for
-the USB Type-C connector (VESA DisplayPort Alt Mode on USB Type-C
-Standard).
-
-And for the Type-C USB, there is some information need to be supplied
-by PowerDelivery or other mode detecter: port orientation and pin
-assignments, so add these 2 virtual cable: EXTCON_TYPEC_POLARITY
-and EXTCON_TYPEC_PIN_ASSIGN. If EXTCON_TYPEC_POLARITY is attached,
-the Type-C get flip orientation. IF EXTCON_TYPEC_PIN_ASSIGN is
-attached, Type-C get Pin_Assignment_C(for DP only mode) or
-Pin_Assignment_D(for DP alt mode), the default Assignment is A or B.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
----
-
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- drivers/extcon/extcon.c | 6 ++++++
- include/linux/extcon.h  | 6 ++++++
- 2 files changed, 12 insertions(+)
-
-diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
-index 21a123c..0522b4d 100644
---- a/drivers/extcon/extcon.c
-+++ b/drivers/extcon/extcon.c
-@@ -53,6 +53,10 @@ static const char *extcon_name[] =  {
- 	[EXTCON_CHG_USB_FAST]		= "FAST-CHARGER",
- 	[EXTCON_CHG_USB_SLOW]		= "SLOW-CHARGER",
- 
-+	/* Type-c connector */
-+	[EXTCON_TYPEC_POLARITY]		= "TYPE-C-POLARITY",
-+	[EXTCON_TYPEC_PIN_ASSIGN]	= "TYPE-C-PIN-ASSIGN",
-+
- 	/* Jack external connector */
- 	[EXTCON_JACK_MICROPHONE]	= "MICROPHONE",
- 	[EXTCON_JACK_HEADPHONE]		= "HEADPHONE",
-@@ -68,6 +72,8 @@ static const char *extcon_name[] =  {
- 	[EXTCON_DISP_MHL]		= "MHL",
- 	[EXTCON_DISP_DVI]		= "DVI",
- 	[EXTCON_DISP_VGA]		= "VGA",
-+	[EXTCON_DISP_DP]		= "DP",
-+	[EXTCON_DISP_DP_ALT]		= "DP-ALT",
- 
- 	/* Miscellaneous external connector */
- 	[EXTCON_DOCK]			= "DOCK",
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index 7abf674..98039ad 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -45,6 +45,10 @@
- #define EXTCON_CHG_USB_FAST	9
- #define EXTCON_CHG_USB_SLOW	10
- 
-+/* Type-c connector */
-+#define EXTCON_TYPEC_POLARITY	11	/* Typec-C plug orientation */
-+#define EXTCON_TYPEC_PIN_ASSIGN	12	/* Typec-C pin Assignment */
-+
- /* Jack external connector */
- #define EXTCON_JACK_MICROPHONE	20
- #define EXTCON_JACK_HEADPHONE	21
-@@ -60,6 +64,8 @@
- #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
- #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
- #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
-+#define EXTCON_DISP_DP		44	/* Display Port */
-+#define EXTCON_DISP_DP_ALT	45	/* Display Port Type-C Alternate Mode */
- 
- /* Miscellaneous external connector */
- #define EXTCON_DOCK		60
--- 
-2.6.3
+VGhpcyBwYXRjaCBhZGRzIGEgYmluZGluZyB0aGF0IGRlc2NyaWJlcyB0aGUgY2RuIERQIGNvbnRy
+b2xsZXIgZm9yCnJrMzM5OS4KClNpZ25lZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1j
+aGlwcy5jb20+CgotLS0KCkNoYW5nZXMgaW4gdjM6Ci0gYWRkIFNvQyBzcGVjaWZpYyBjb21wYXRp
+YmxlIHN0cmluZwotIHJlbW92ZSByZWcgPSA8MT47CgpDaGFuZ2VzIGluIHYyOiBOb25lCkNoYW5n
+ZXMgaW4gdjE6Ci0gYWRkIGV4dGNvbiBub2RlIGRlc2NyaXB0aW9uCi0gYWRkICNzb3VuZC1kYWkt
+Y2VsbHMgZGVzY3JpcHRpb24KCiAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9jZG4tZHAt
+cm9ja2NoaXAudHh0ICB8IDYxICsrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2Vk
+LCA2MSBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvY2RuLWRwLXJvY2tjaGlwLnR4dAoKZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tj
+aGlwL2Nkbi1kcC1yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9yb2NrY2hpcC9jZG4tZHAtcm9ja2NoaXAudHh0Cm5ldyBmaWxlIG1vZGUgMTAw
+NjQ0CmluZGV4IDAwMDAwMDAuLmIxNGIyYjIKLS0tIC9kZXYvbnVsbAorKysgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9jZG4tZHAtcm9ja2NoaXAu
+dHh0CkBAIC0wLDAgKzEsNjEgQEAKK1JvY2tjaGlwIFJLMzM5OSBzcGVjaWZpYyBleHRlbnNpb25z
+IHRvIHRoZSBjZG4gRGlzcGxheSBQb3J0Cis9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PQorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBjb21wYXRpYmxlOiBtdXN0IGJlICJyb2NrY2hp
+cCxyazMzOTktY2RuLWRwIgorCistIHJlZzogcGh5c2ljYWwgYmFzZSBhZGRyZXNzIG9mIHRoZSBj
+b250cm9sbGVyIGFuZCBsZW5ndGgKKworLSBjbG9ja3M6IGZyb20gY29tbW9uIGNsb2NrIGJpbmRp
+bmc6IGhhbmRsZSB0byBkcCBjbG9jay4KKworLSBjbG9jay1uYW1lczogZnJvbSBjb21tb24gY2xv
+Y2sgYmluZGluZzoKKwkgICAgICAgUmVxdWlyZWQgZWxlbWVudHM6ICJjb3JlLWNsayIgInBjbGsi
+ICJzcGRpZiIKKworLSByb2NrY2hpcCxncmY6IHRoaXMgc29jIHNob3VsZCBzZXQgR1JGIHJlZ3Ms
+IHNvIG5lZWQgZ2V0IGdyZiBoZXJlLgorCistIHBvcnRzOiBjb250YWluIGEgcG9ydCBub2RlcyB3
+aXRoIGVuZHBvaW50IGRlZmluaXRpb25zIGFzIGRlZmluZWQgaW4KKwkgRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0LgorCSBjb250YWlu
+ZWQgMiBlbmRwb2ludHMsIGNvbm5lY3RpbmcgdG8gdGhlIG91dHB1dCBvZiB2b3AuCisKKy0gcGh5
+czogZnJvbSBnZW5lcmFsIFBIWSBiaW5kaW5nOiB0aGUgcGhhbmRsZSBmb3IgdGhlIFBIWSBkZXZp
+Y2UuCisKKy0gZXh0Y29uOiBleHRjb24gc3BlY2lmaWVyIGZvciB0aGUgUG93ZXIgRGVsaXZlcnkK
+KworLSAjc291bmQtZGFpLWNlbGxzID0gaXQgbXVzdCBiZSAxIGlmIHlvdXIgc3lzdGVtIGlzIHVz
+aW5nIDIgREFJczogSTJTLCBTUERJRgorCistLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCisKK0V4YW1w
+bGU6CisJY2RuX2RwOiBkcEBmZWMwMDAwMCB7CisJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmsz
+Mzk5LWNkbi1kcCI7CisJCXJlZyA9IDwweDAgMHhmZWMwMDAwMCAweDAgMHgxMDAwMDA+OworCQlp
+bnRlcnJ1cHRzID0gPEdJQ19TUEkgOSBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKKwkJY2xvY2tzID0g
+PCZjcnUgU0NMS19EUF9DT1JFPiwgPCZjcnUgUENMS19EUF9DVFJMPiwKKwkJCSA8JmNydSBTQ0xL
+X1NQRElGX1JFQ19EUFRYPjsKKwkJY2xvY2stbmFtZXMgPSAiY29yZS1jbGsiLCAicGNsayIsICJz
+cGRpZiI7CisJCXBoeXMgPSA8JnRjcGh5MD47CisJCWV4dGNvbiA9IDwmZnVzYjE+OworCQlyb2Nr
+Y2hpcCxncmYgPSA8JmdyZj47CisJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkjc2l6ZS1jZWxs
+cyA9IDwwPjsKKwkJI3NvdW5kLWRhaS1jZWxscyA9IDwxPjsKKworCQlwb3J0cyB7CisJCQkjYWRk
+cmVzcy1jZWxscyA9IDwxPjsKKwkJCSNzaXplLWNlbGxzID0gPDA+OworCisJCQlkcF9pbjogcG9y
+dCB7CisJCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CisJCQkJI3NpemUtY2VsbHMgPSA8MD47CisJ
+CQkJZHBfaW5fdm9wYjogZW5kcG9pbnRAMCB7CisJCQkJCXJlZyA9IDwwPjsKKwkJCQkJcmVtb3Rl
+LWVuZHBvaW50ID0gPCZ2b3BiX291dF9kcD47CisJCQkJfTsKKworCQkJCWRwX2luX3ZvcGw6IGVu
+ZHBvaW50QDEgeworCQkJCQlyZWcgPSA8MT47CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdm9w
+bF9vdXRfZHA+OworCQkJCX07CisJCQl9OworCQl9OworCX07Ci0tIAoyLjYuMwoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
