@@ -1,42 +1,125 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add ap_pwroff and ddrio_pwroff pins for rk3399
-Date: Mon, 27 Jun 2016 01:09:08 +0200
-Message-ID: <3506480.G5PcqxtUXs@phil>
-References: <1465935671-13890-1-git-send-email-dianders@chromium.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [v3 PATCH 3/5] phy: Add USB Type-C PHY driver for rk3399
+Date: Mon, 27 Jun 2016 10:19:04 +0800
+Message-ID: <57708D18.6050001@rock-chips.com>
+References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
+ <1466686264-6744-4-git-send-email-zyw@rock-chips.com>
+ <576BDCD0.5060001@ti.com> <1514992.DV7LTB70sc@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1465935671-13890-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1514992.DV7LTB70sc@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: dianders@chromium.org, tfiga@chromium.org, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. Juni 2016, 13:21:11 schrieb Douglas Anderson:
-> There are two sleep related pins on rk3399: ap_pwroff and ddrio_pwroff.
-> Let's add the definition of these two pins to rk3399's main dtsi file so
-> that boards can use them.
-> 
-> These two pins are similar to the global_pwroff and ddrio_pwroff pins in
-> rk3288 and are expected to be used in the same way: boards will likely
-> want to configure these pinctrl settings in their global pinctrl hog
-> list.
-> 
-> Note that on rk3288 there were two additional pins in the "sleep"
-> section: "ddr0_retention" and "ddr1_retention".  On rk3288 designs these
-> pins appeared to actually route from rk3288 back to rk3288.  Presumably
-> on rk3399 this is simply not needed since the pins don't appear to exist
-> there.
-> 
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Hi Heiko
 
-applied to my dts64 branch for 4.8
+On 06/25/2016 03:39 AM, Heiko Stuebner wrote:
+> Am Donnerstag, 23. Juni 2016, 18:27:52 schrieb Kishon Vijay Abraham I:
+>> Hi,
+>>
+>> On Thursday 23 June 2016 06:21 PM, Chris Zhong wrote:
+>>> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
+>>> Type-C PHY is designed to support the USB3 and DP applications. The
+>>> PHY basically has two main components: USB3 and DisplyPort. USB3
+>>> operates in SuperSpeed mode and the DP can operate at RBR, HBR and
+>>> HBR2 data rates.
+>>>
+>>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>>> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>>>
+>>> ---
+>>>
+>>> Changes in v3:
+>>> - remove the phy framework(Kishon Vijay Abraham I)
+>>> - add parentheses around the macro
+>>> - use a single space between type and name
+>>> - add spaces after opening and before closing braces.
+>>> - use u16 for register value
+>>> - remove type-c phy header file
+>>> - CodingStyle optimization
+>>> - use some cable extcon to get type-c port information
+>>> - add a extcon to notify Display Port
+>>>
+>>> Changes in v2:
+>>> - select RESET_CONTROLLER
+>>> - alphabetic order
+>>> - modify some spelling mistakes
+>>> - make mode cleaner
+>>> - use bool for enable/disable
+>>> - check all of the return value
+>>> - return a better err number
+>>> - use more readx_poll_timeout()
+>>> - clk_disable_unprepare(tcphy->clk_ref);
+>>> - remove unuse functions, rockchip_typec_phy_power_on/off
+>>> - remove unnecessary typecast from void *
+>>> - use dts node to distinguish between phys.
+>>>
+>>> Changes in v1:
+>>> - update the licence note
+>>> - init core clock to 50MHz
+>>> - use extcon API
+>>> - remove unused global
+>>> - add some comments for magic num
+>>> - change usleep_range(1000, 2000) tousleep_range(1000, 1050)
+>>> - remove __func__ from dev_err
+>>> - return err number when get clk failed
+>>> - remove ADDR_ADJ define
+>>> - use devm_clk_get(&pdev->dev, "tcpdcore")
+>>>
+>>>   drivers/phy/Kconfig              |    8 +
+>>>   drivers/phy/Makefile             |    1 +
+>>>   drivers/phy/phy-rockchip-typec.c | 1027
+>>>   ++++++++++++++++++++++++++++++++++++++ 3 files changed, 1036
+>>>   insertions(+)
+>>>   create mode 100644 drivers/phy/phy-rockchip-typec.c
+>>>
+>>> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+>>> index 26566db..ec87b3a 100644
+>>> --- a/drivers/phy/Kconfig
+>>> +++ b/drivers/phy/Kconfig
+>>> @@ -351,6 +351,14 @@ config PHY_ROCKCHIP_DP
+>>>
+>>>   	help
+>>>   	
+>>>   	  Enable this to support the Rockchip Display Port PHY.
+>>>
+>>> +config PHY_ROCKCHIP_TYPEC
+>>> +	tristate "Rockchip TYPEC PHY Driver"
+>>> +	depends on ARCH_ROCKCHIP && OF
+>>> +	select GENERIC_PHY
+>> Why? None of the generic PHY API's are used here. Why do you want select
+>> generic PHY?
+> I'm actually wondering, why there are no phy ops to start and stop the py.
+> Right now the device seems to be on and handling all the extcon notifies all
+> the time even if no-one is using the phy.
+>
+> There are two users of this phy, the dp-controller as well as some usb
+> component. The phy framework is nicely refcounted, so can handle any number
+> of phy users and somehow I'd expect the phy to do nothing (and try to not
+> consume power) if neither the dp-controller nor the usb-part is actually
+> running.
+>
+> It may very well be my ignorance, but Chris could you explain, if there is a
+> reason for this?
+>
+>
+> Thanks
+> Heiko
+>
+>
+It is good idea, The USB3 and DP controller detect the extcon cable 
+state: USB/USB HOST/DP. If a Type-C device plugged, call phy power on, 
+the phy driver get all the state of extcon: dfp, ufp, dp, flip, pin 
+assignment, and then finish the phy init. So the phy driver need not 
+register extcon notification.
+But this mechanism allows phy driver only focus plug/unplug event, if 
+some other things happen, such as data role change, the phy will not be 
+notified. I'm not sure if this situation exists.
+Hi Guenter,
+Do you have any ohter concerns?
 
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
