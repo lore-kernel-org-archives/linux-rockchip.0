@@ -1,64 +1,99 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 0/4] Add support i2s/spdif/gmac features for
- RK322x SoCs
-Date: Tue, 28 Jun 2016 17:53:06 +0800
-Message-ID: <57724902.2060802@rock-chips.com>
-References: <1466565413-31027-1-git-send-email-zhengxing@rock-chips.com>
- <16135166.EFsm9ojsF0@phil>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
+ mode
+Date: Tue, 28 Jun 2016 18:32:24 +0800
+Message-ID: <57725238.9010809@gmail.com>
+References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <16135166.EFsm9ojsF0@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, radek.dostal-6oiIBCxl0MMjD8S081q9vkEOCMrvLtNR@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Mark Brown <broonie@kernel.org>
+Cc: boris.brezillon@free-electrons.com, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, briannorris@chromium.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, lee.jones@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Thanks Heiko. :-)
 
-On 2016=E5=B9=B406=E6=9C=8828=E6=97=A5 03:43, Heiko Stuebner wrote:
-> Am Mittwoch, 22. Juni 2016, 11:16:49 schrieb Xing Zheng:
->> Hi,
->>    We have the brother chipset product that RK3228 and RK3229,
->> They have many common configuration, but there are a number
->> of different features. In order to develop the future when they
->> are easy to distinguish, we need them to be independent.
->>    And, these patchset add i2s/gmac dts nodes for RK322x SoCs,
->> and add the new dts file of the rk3229 evb board.
-> applied to my dts32 branch for 4.8 with the following changes
+On 2016=E5=B9=B406=E6=9C=8828=E6=97=A5 12:53, Douglas Anderson wrote:
+> The original commit adding support for continuous voltage mode didn't
+> handle the regulator ramp delay properly.  It treated the delay as a
+> fixed delay in uS despite the property being defined as uV / uS.  Let=
+'s
+> adjust it.  Luckily there appear to be no users of this ramp delay fo=
+r
+> PWM regulators (as per grepping through device trees in linuxnext).
 >
->> Xing Zheng (4):
->>    ARM: dts: rockchip: rename rk3228.dtsi to rk322x.dtsi
-> we'll refrain from adding empty rk3228.dtsi files until we have actua=
-l things
-> to fill it with.
->
->>    ARM: dts: rockchip: add i2s nodes for RK322x SoCs
-> moved i2s node to correct position according to register map
->
->>    ARM: dts: rockchip: add GMAC nodes for RK322x SoCs
-> dropped phy-mode and pinctrl settings, as rgmii <-> rmii is a per-boa=
-rd
-> thing
->
->>    ARM: dts: rockchip: add support rk3229 evb board
-> again dropped the empty rk3229.dtsi, we can add that once there are
-> additions not shared between rk3228/rk3229.
->
->
-> Heiko
->
->
->
+> Note also that the upper bound of usleep_range probably shouldn't be =
+a
+> full 1 ms longer than the lower bound since I've seen plenty of hardw=
+are
+> with a ramp rate of ~5000 uS / uV and for small jumps the total delay=
+s
+> are in the tens of uS.  1000 is way too much.  We'll try to be dynami=
+c
+> and use 10%
 
---=20
-- Xing Zheng
+I'm agree with the dynamic and use 10%.
+
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+Tested-by: Caesar Wang <wxt@rock-chips.com>
+
+Tested for my rk3399 board. That's still happy work for my board.
+=2E.
+[ 2891.541958] pwm_regulator_set_voltage: delay=3D38, min-v=3D800000,=20
+old-v=3D1024000
+[ 2898.188785] pwm_regulator_set_voltage: delay=3D13, min-v=3D875000,=20
+old-v=3D800000
+[ 2898.211873] pwm_regulator_set_voltage: delay=3D8, min-v=3D925000,=20
+old-v=3D877000
+[ 2898.312026] pwm_regulator_set_voltage: delay=3D21, min-v=3D-800000,=20
+old-v=3D926000
+=2E.
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+> ---
+> Note that this patch is atop Boris's recent PWM regulator fixes.  If
+> desired it wouldn't be too hard to write it atop the old code, though
+> quite honestly anyone using a PWM regulator should probably be using =
+his
+> new code.
+>
+>   drivers/regulator/pwm-regulator.c | 9 +++++++--
+>   1 file changed, 7 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pw=
+m-regulator.c
+> index fa1c74c77bb0..de94d19f6e1f 100644
+> --- a/drivers/regulator/pwm-regulator.c
+> +++ b/drivers/regulator/pwm-regulator.c
+> @@ -188,6 +188,7 @@ static int pwm_regulator_set_voltage(struct regul=
+ator_dev *rdev,
+>   	struct pwm_state pstate;
+>   	unsigned int diff_duty;
+>   	unsigned int dutycycle;
+> +	int old_uV =3D pwm_regulator_get_voltage(rdev);
+>   	int ret;
+>  =20
+>   	pwm_init_state(drvdata->pwm, &pstate);
+> @@ -219,8 +220,12 @@ static int pwm_regulator_set_voltage(struct regu=
+lator_dev *rdev,
+>   		return ret;
+>   	}
+>  =20
+> -	/* Delay required by PWM regulator to settle to the new voltage */
+> -	usleep_range(ramp_delay, ramp_delay + 1000);
+> +	if (ramp_delay =3D=3D 0)
+> +		return 0;
+> +
+> +	/* Ramp delay is in uV/uS. Adjust to uS and delay */
+> +	ramp_delay =3D DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
+> +	usleep_range(ramp_delay, ramp_delay + DIV_ROUND_UP(ramp_delay, 10))=
+;
+>  =20
+>   	return 0;
+>   }
