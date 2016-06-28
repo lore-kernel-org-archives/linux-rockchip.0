@@ -1,94 +1,38 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
- mode
-Date: Tue, 28 Jun 2016 20:53:37 +0100
-Message-ID: <20160628195337.GC17217@sirena.org.uk>
-References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
- <20160628185244.GT17217@sirena.org.uk>
- <CAD=FV=UNMhDYy3r+4a4FF8Ndwt+qNuV7_pOC=kzoaUxLfYYp4Q@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v1 1/5] dt-bindings: Add support for LG LP079QX1-SP0V
+ 1536x2048 panel
+Date: Tue, 28 Jun 2016 15:59:43 -0500
+Message-ID: <20160628205943.GA6556@rob-hp-laptop>
+References: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
+ <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4472963734995732744=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=UNMhDYy3r+4a4FF8Ndwt+qNuV7_pOC=kzoaUxLfYYp4Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============4472963734995732744==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="QFYA38BK7dvhx8Kf"
-Content-Disposition: inline
-
-
---QFYA38BK7dvhx8Kf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Jun 28, 2016 at 12:31:19PM -0700, Doug Anderson wrote:
-
-> In all seriousness, I think the design for usleep_range() is to try to
-> batch up wakeups to allow longer periods of sleeping and to optimize
-> power.  This you want to sleep as long as is allowable and then if you
-> happen to wakeup for some other reason anyway then you process all the
-> things whose minimum has passed.  IIRC it was trying to get back to
-> the good old days of only having jiffies where everyone was
-> synchronized on the tick and you could sleep till the next tick after
-> all the work was done.  When you think of it this way then sleeping to
-> the max makes sense.  ...but it also means that you need to be careful
-> and really not set the max too high.
-
-That's what I *thought* it was doing, but when I looked at the
-implementation down to the hrtimer level it was explicitly saying it was
-actively trying to deliver the maximum delay but might do less.  I'd
-have expected that the implementation would check to see if there was a
-wakeup scheduled in the range, piggybacking on the first one if so, and=20
-if there was nothing it'd go for the minimum (perhaps with a bit of
-rounding).  Oh well.
-
-> Of course, in practice I've found that often usleep_range() 99% of the
-> time sleeps for the max.  That can lead to some very subtle bugs if
-> your min sleep is not long enough (!).
-
-Yup.
-
---QFYA38BK7dvhx8Kf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXctVPAAoJECTWi3JdVIfQZ5QH/0DNgW+1og/9H6hNXjiKoOR5
-zmKLxqLAPpnLxwu2UcuCOM5aQt8Ydf9DwAZK04RRZyi6MXn1XnJsPI0WZsiHSU7t
-SwH43Lj3e4Xt/O2DeciptN/H0pZd2pVd1UZsooVEZ8MzD+5EicSMJ9IEdO1wC1LQ
-Q9KWHrJ/um5yNESgs8mxHx3b/qWkNw+lqs441vk83kV0wmayvU44rN5kB3F1/bGo
-MRE4xJbkTQPimNgp7yfnYH9av2sjgH27jU0wljkmeCPCd2OJkaEP3FO/eq88Xqwt
-blmzJbgycRHFMYr7kz831y5ASKeRPL1M7fulLIlfOcRu4n2KLlPjbdWIqtZ5Ekg=
-=Y1e+
------END PGP SIGNATURE-----
-
---QFYA38BK7dvhx8Kf--
-
-
---===============4472963734995732744==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4472963734995732744==--
+T24gVHVlLCBKdW4gMjgsIDIwMTYgYXQgMTI6NTE6MTJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
+ZToKPiBUaGUgTEcgTFAwNzlRWDEtU1AwViBpcyBhbiA3LjkiIFFYR0EgVEZUIHdpdGggTEVEIEJh
+Y2tsaWdodCB1bml0IGFuZAo+IDMyIHBpbnMgZURQIGludGVyZmFjZS4gVGhpcyBtb2R1bGUgc3Vw
+cG9ydHMgMTUzNngyMDQ4IG1vZGUuCj4gCj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtr
+QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L3BhbmVsL2xnLGxwMDc5cXgxLXNwMHYudHh0ICAgICAgICAgfCA3ICsrKysrKysKPiAgMSBmaWxl
+IGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvbGcsbHAwNzlxeDEtc3Awdi50
+eHQKCkFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
