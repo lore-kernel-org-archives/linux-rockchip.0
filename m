@@ -1,65 +1,88 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] clk: clk-rk3*: set CLK_IS_CRITICAL flag to critical clocks
-Date: Tue, 28 Jun 2016 17:17:05 +0200
-Message-ID: <29356205.Gk5k6xKH6K@phil>
-References: <1467125137-25999-1-git-send-email-andi@etezian.org> <1467125137-25999-2-git-send-email-andi@etezian.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
+ mode
+Date: Tue, 28 Jun 2016 09:07:23 -0700
+Message-ID: <CA+ASDXMvahYEGfzdSAmvjkFK2ytxvaqN1fYdhKT8kTx2tA7MBA@mail.gmail.com>
+References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1467125137-25999-2-git-send-email-andi@etezian.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: andi.shyti@gmail.com
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andi Shyti <andi@etezian.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1467089591-7631-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andi,
+On Mon, Jun 27, 2016 at 9:53 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> The original commit adding support for continuous voltage mode didn't
+> handle the regulator ramp delay properly.  It treated the delay as a
+> fixed delay in uS despite the property being defined as uV / uS.  Let's
+> adjust it.  Luckily there appear to be no users of this ramp delay for
+> PWM regulators (as per grepping through device trees in linuxnext).
 
-Am Dienstag, 28. Juni 2016, 17:45:36 schrieb andi.shyti@gmail.com:
-> From: Andi Shyti <andi@etezian.org>
-> 
-> Patch 32b9b1096 has introduced a generalized concept of critical
-> clock. Clocks are marked with the CLK_IS_CRITICAL, enabled during
-> boot and never gated.
-> 
-> Use the CLK_IS_CRITICAL instead of declaring a local array of
-> critical clock enabled during boot.
-> 
-> CC: Heiko Stuebner <heiko@sntech.de>
-> CC: Jeffy Chen <jeffy.chen@rock-chips.com>
-> CC: Xing Zheng <zhengxing@rock-chips.com>
-> Signed-off-by: Andi Shyti <andi@etezian.org>
+My grepping agrees, though I'm sure I didn't do a very thorough job.
+
+> Note also that the upper bound of usleep_range probably shouldn't be a
+> full 1 ms longer than the lower bound since I've seen plenty of hardware
+> with a ramp rate of ~5000 uS / uV and for small jumps the total delays
+> are in the tens of uS.  1000 is way too much.  We'll try to be dynamic
+> and use 10%
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
->  drivers/clk/rockchip/clk-rk3036.c |  18 ++-----
->  drivers/clk/rockchip/clk-rk3188.c |  25 +++-------
->  drivers/clk/rockchip/clk-rk3228.c |  17 ++-----
->  drivers/clk/rockchip/clk-rk3288.c |  21 +++-----
->  drivers/clk/rockchip/clk-rk3368.c |  22 ++-------
->  drivers/clk/rockchip/clk-rk3399.c | 101
-> ++++++++++++++++---------------------- 6 files changed, 69 insertions(+),
-> 135 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3036.c
-> b/drivers/clk/rockchip/clk-rk3036.c index 924f560..5734f8c 100644
-> --- a/drivers/clk/rockchip/clk-rk3036.c
-> +++ b/drivers/clk/rockchip/clk-rk3036.c
-> @@ -205,7 +205,8 @@ static struct rockchip_clk_branch
-> rk3036_clk_branches[] __initdata = { GATE(0, "gpll_cpu", "gpll", 0,
-> RK2928_CLKGATE_CON(0), 1, GFLAGS), COMPOSITE_NOGATE(0, "aclk_cpu_src",
-> mux_busclk_p, 0,
->  			RK2928_CLKSEL_CON(0), 14, 2, MFLAGS, 8, 5, DFLAGS),
-> -	GATE(ACLK_CPU, "aclk_cpu", "aclk_cpu_src", CLK_IGNORE_UNUSED,
-> +	GATE(ACLK_CPU, "aclk_cpu", "aclk_cpu_src",
-> +			CLK_IS_CRITICAL | CLK_IGNORE_UNUSED,
+> Note that this patch is atop Boris's recent PWM regulator fixes.  If
+> desired it wouldn't be too hard to write it atop the old code, though
+> quite honestly anyone using a PWM regulator should probably be using his
+> new code.
+>
+>  drivers/regulator/pwm-regulator.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pwm-regulator.c
+> index fa1c74c77bb0..de94d19f6e1f 100644
+> --- a/drivers/regulator/pwm-regulator.c
+> +++ b/drivers/regulator/pwm-regulator.c
+> @@ -188,6 +188,7 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
+>         struct pwm_state pstate;
+>         unsigned int diff_duty;
+>         unsigned int dutycycle;
+> +       int old_uV = pwm_regulator_get_voltage(rdev);
+>         int ret;
+>
+>         pwm_init_state(drvdata->pwm, &pstate);
+> @@ -219,8 +220,12 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
+>                 return ret;
+>         }
+>
+> -       /* Delay required by PWM regulator to settle to the new voltage */
+> -       usleep_range(ramp_delay, ramp_delay + 1000);
 
-- you'll never need both critical and ignore_unused
-- please keep the lines intact and do not introduce new line-breaks ... as 
-it makes reading the clock-tree way easier if the blocks share the same 
-format
+I was curious about the side effects of the unconditional
+usleep_range(ramp_delay, ...), even when ramp_delay is 0 (e.g., would
+we ever sleep here for up to 1ms?), but apparently the implementation
+optimizes the '0' case to be an unconditional, immediate wake-up. So
+refactoring this shouldn't have any accidental effects.
 
-Happens in some more cases below, but otherwise looks ok ... as written in 
-the cover-letter I'm just still trying to make up my mind if it's worth 
-waiting for the handoff mechanism.
+> +       if (ramp_delay == 0)
+> +               return 0;
+> +
+> +       /* Ramp delay is in uV/uS. Adjust to uS and delay */
+> +       ramp_delay = DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
+> +       usleep_range(ramp_delay, ramp_delay + DIV_ROUND_UP(ramp_delay, 10));
 
+Math checks out to me.
 
-Heiko
+>
+>         return 0;
+>  }
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
