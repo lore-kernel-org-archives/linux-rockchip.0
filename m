@@ -1,59 +1,61 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v1 3/5] ARM: dts: rockchip: add eDP/panel display device nodes
- for rk3288-evb
-Date: Tue, 28 Jun 2016 12:51:18 +0800
-Message-ID: <1467089478-18670-1-git-send-email-ykk@rock-chips.com>
-References: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous mode
+Date: Mon, 27 Jun 2016 21:53:11 -0700
+Message-ID: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: boris.brezillon@free-electrons.com, lee.jones@linaro.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGRlZmF1bHQgZURQIHBhbmVsIG9uIFJLMzI4OCBFVkIgYm9hcmQgaXMgTEcgTFAwNzlRWDEt
-U1AwViBURlQgTENELAp3ZSBoYXZlbid0IGRlY2xhcmVkIHRoZSBwYW5lbCByZWd1bGF0b3IgaW4g
-dGhlICdwYW5lbC1zaW1wbGUnIGRldmljZQpub2RlIGhlcmUsIHNvIHRoZSBzcGVjaWZpYyBib2Fy
-ZCBsaWtlIEFDVDg4NDYgLyBSSzgwODAgbmVlZCB0byBzdXBwb3J0CnRoZSBwYW5lbCBwb3dlciBz
-dXBwbHkuCgpTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Ci0t
-LQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWV2Yi5kdHNpIHwgNDMgKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwgNDIgaW5zZXJ0aW9ucygr
-KSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1l
-dmIuZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRzaQppbmRleCA5NjMzNjVk
-Li5mMjkzYzQ0IDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZXZiLmR0c2kK
-KysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWV2Yi5kdHNpCkBAIC00OCw3ICs0OCw3IEBA
-CiAJCXJlZyA9IDwweDAgMHg4MDAwMDAwMD47CiAJfTsKIAotCWJhY2tsaWdodCB7CisJYmFja2xp
-Z2h0OiBiYWNrbGlnaHQgewogCQljb21wYXRpYmxlID0gInB3bS1iYWNrbGlnaHQiOwogCQlicmln
-aHRuZXNzLWxldmVscyA9IDwKIAkJCSAgMCAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDcKQEAg
-LTk3LDYgKzk3LDIwIEBACiAJCSNjbG9jay1jZWxscyA9IDwwPjsKIAl9OwogCisJcGFuZWw6IHBh
-bmVsIHsKKwkJY29tcGF0aWJsZSA9ImxnLGxwMDc5cXgxLXNwMHYiLCAic2ltcGxlLXBhbmVsIjsK
-KwkJYmFja2xpZ2h0ID0gPCZiYWNrbGlnaHQ+OworCQllbmFibGUtZ3Bpb3MgPSA8JmdwaW83IDQg
-R1BJT19BQ1RJVkVfSElHSD47CisJCXBpbmN0cmwtMCA9IDwmbGNkX2NzPjsKKwkJcG9ydHMgewor
-CQkJcGFuZWxfaW46IHBvcnQgeworCQkJCXBhbmVsX2luX2VkcDogZW5kcG9pbnQgeworCQkJCQly
-ZW1vdGUtZW5kcG9pbnQgPSA8JmVkcF9vdXRfcGFuZWw+OworCQkJCX07CisJCQl9OworCQl9Owor
-CX07CisKIAlncGlvLWtleXMgewogCQljb21wYXRpYmxlID0gImdwaW8ta2V5cyI7CiAJCWF1dG9y
-ZXBlYXQ7CkBAIC0yMTYsNiArMjMwLDI3IEBACiAJc3RhdHVzID0gIm9rYXkiOwogfTsKIAorJmVk
-cF9waHkgeworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZlZHAgeworCWZvcmNlLWhwZDsKKwlz
-dGF0dXMgPSAib2theSI7CisKKwlwb3J0cyB7CisJCWVkcF9vdXQ6IHBvcnRAMSB7CisJCQlyZWcg
-PSA8MT47CisJCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKKwkJCSNzaXplLWNlbGxzID0gPDA+Owor
-CQkJZWRwX291dF9wYW5lbDogZW5kcG9pbnQgeworCQkJCXJlZyA9IDwwPjsKKwkJCQlyZW1vdGUt
-ZW5kcG9pbnQgPSA8JnBhbmVsX2luX2VkcD47CisJCQl9OworCQl9OworCX07Cit9OworCiAmaTJj
-MCB7CiAJc3RhdHVzID0gIm9rYXkiOwogfTsKQEAgLTMyMiw2ICszNTcsMTIgQEAKIAkJCXJvY2tj
-aGlwLHBpbnMgPSA8MCA2IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwogCQl9OwogCX07
-CisKKwlsY2QgeworCQlsY2RfY3M6IGxjZC1jcyB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDcgNCBS
-S19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OwogfTsKIAogJnVzYnBoeSB7
-Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bAo=
+The original commit adding support for continuous voltage mode didn't
+handle the regulator ramp delay properly.  It treated the delay as a
+fixed delay in uS despite the property being defined as uV / uS.  Let's
+adjust it.  Luckily there appear to be no users of this ramp delay for
+PWM regulators (as per grepping through device trees in linuxnext).
+
+Note also that the upper bound of usleep_range probably shouldn't be a
+full 1 ms longer than the lower bound since I've seen plenty of hardware
+with a ramp rate of ~5000 uS / uV and for small jumps the total delays
+are in the tens of uS.  1000 is way too much.  We'll try to be dynamic
+and use 10%
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+Note that this patch is atop Boris's recent PWM regulator fixes.  If
+desired it wouldn't be too hard to write it atop the old code, though
+quite honestly anyone using a PWM regulator should probably be using his
+new code.
+
+ drivers/regulator/pwm-regulator.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pwm-regulator.c
+index fa1c74c77bb0..de94d19f6e1f 100644
+--- a/drivers/regulator/pwm-regulator.c
++++ b/drivers/regulator/pwm-regulator.c
+@@ -188,6 +188,7 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
+ 	struct pwm_state pstate;
+ 	unsigned int diff_duty;
+ 	unsigned int dutycycle;
++	int old_uV = pwm_regulator_get_voltage(rdev);
+ 	int ret;
+ 
+ 	pwm_init_state(drvdata->pwm, &pstate);
+@@ -219,8 +220,12 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
+ 		return ret;
+ 	}
+ 
+-	/* Delay required by PWM regulator to settle to the new voltage */
+-	usleep_range(ramp_delay, ramp_delay + 1000);
++	if (ramp_delay == 0)
++		return 0;
++
++	/* Ramp delay is in uV/uS. Adjust to uS and delay */
++	ramp_delay = DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
++	usleep_range(ramp_delay, ramp_delay + DIV_ROUND_UP(ramp_delay, 10));
+ 
+ 	return 0;
+ }
+-- 
+2.8.0.rc3.226.g39d4020
