@@ -1,94 +1,53 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings
- documentation
-Date: Tue, 28 Jun 2016 18:41:28 +0200
-Message-ID: <1652918.4YDfA4VDoG@phil>
-References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
- <1518073.zeMq7N85Id@phil> <5771EC6C.3070707@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
+ mode
+Date: Tue, 28 Jun 2016 19:52:44 +0100
+Message-ID: <20160628185244.GT17217@sirena.org.uk>
+References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5771EC6C.3070707-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="GAoked8QSizNecZ5"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: boris.brezillon@free-electrons.com, lee.jones@linaro.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi William,
 
-Am Dienstag, 28. Juni 2016, 11:18:04 schrieb William Wu:
-> >> So about the usb3 controller clk management, I think it should contain
-> >> the following clk:
-> >> 1.  aclk_usb3otg1
-> >> 2.  aclk_usb3otg0
-> >> 3.  aclk_usb3_grf
-> > 
-> > correct, aclk_usb3otgX would then be the busclk for each controller if
-> > I'm not mistaken and the grf clock should also get enabled, like we
-> > also plan on doing for the vio_grf clock in the display area.
-> 
-> OK, so  aclk_usb3_grf should be marked as critical, right?
+--GAoked8QSizNecZ5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-nope ... the consensus for the vio_grf clock was that the driver accessing 
-it should control it. So for the usb3_grf clock this would be your dwc3-
-based driver being responsible for the grf-clock.
+On Mon, Jun 27, 2016 at 09:53:11PM -0700, Douglas Anderson wrote:
 
+> Note also that the upper bound of usleep_range probably shouldn't be a
+> full 1 ms longer than the lower bound since I've seen plenty of hardware
+> with a ramp rate of ~5000 uS / uV and for small jumps the total delays
+> are in the tens of uS.  1000 is way too much.  We'll try to be dynamic
+> and use 10%
 
-> I found that most of the grf clocks haven't been marked as critical,
-> apart from vio_grf. So may I keep the aclk_usb3_grf in usb3 dts, and
-> remove it after clock manager adds it to critical clocks?
+Surely the upper bound here is just an upper bound and we're essentially
+just saying that "anything over minimum is fine" here?  Though now I
+look at the implementation it seems it's doing something entirely
+unehelpful and actually trying to delay for the longest possible time
+which doesn't seem like what we want or what the usleep_range() API
+would suggest :(
 
-you should keep the usb3-grf clock in the dts all the time.
+--GAoked8QSizNecZ5
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-> >> 4.  aclk_usb3_noc
-> >> For "aclk_usb3_noc", I discuss with our clk manager, the clk is always
-> >> on before,
-> >> but according to upstream maintainer's suggestion, we need to manage
-> >> the
-> >> noc clk by each module.
-> > 
-> > can you point me to this discussion? The bus-interconnect is a very
-> > separate component, which we don't model so far and thus we have all
-> > the noc clocks simply marked as critical.
-> > 
-> > As this clock doesn't belong to the actual usb controller block, but
-> > said
-> > separate component, handling it in the controller seems somehow wrong to
-> > me.
-> > 
-> > So my (current) opinion would again be to mark the noc clock as critical
-> > for the time being.
-> 
-> Sorry, it seems that I get the new information about clk management too
-> late.:-)
-> 
-> There's no dedicated discussion about noc clk, but similar to grf clock,
-> please refer to "https://patchwork.kernel.org/patch/9171467/" for add
-> pclk_vio_grf to critical clock on the RK3399, and you have agreed on
-> that mark vio grf clk as critical. So I agree with your opinion, thanks~
+iQEcBAEBCAAGBQJXcsd7AAoJECTWi3JdVIfQDqIIAIFHe+8MYYXOBMAEVR2Zl1ZA
+A41FsjdWrFfZjDLLpagnrxRhmuxqETfX9y3gDv+Qge786KZ4LoCYdQDoWVHKOzI7
+H6knvaXX7TmnN1UmGNzlb5NCPYPkOupgS09ddtZ7cxuUB73hUTUuPumYovIfyvyO
+tVCQeR3tH1C6q0qGzHccy8ISOeFusPLYMr0bb/6pwD+QnM80Geh/kcmZ9RMAZ3En
+2X36OGhAAgiNbnzejaCwGbFjtnwnSmiRb49qzIGIwmjH0gLIT+1iB3jSd/X9zlrv
+g5VmqinPoqA6tMPnGw2NDnZWgsbY/X4ANEaFIN8db4Kp08xqjS9X6G6VvUrQ+As=
+=3ZI4
+-----END PGP SIGNATURE-----
 
-The difference as I see it is, that the GRF parts are _part_ of the usb3 
-controller, while the interconnect really is a separate component, 
-connecting the controller to the rest of the system.
-
-----------	
-|  USB3  |----[Interconnect]----[rest of the system]
-| [+GRF] |	
-----------	
-
-So the controller binding + driver should handle all clocks it needs to 
-operate. We currently don't model and handle the separate interconnect 
-though, so that noc clock should be critical for the time being.
-
-
-Heiko
+--GAoked8QSizNecZ5--
