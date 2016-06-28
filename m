@@ -1,38 +1,112 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 1/5] dt-bindings: Add support for LG LP079QX1-SP0V
- 1536x2048 panel
-Date: Tue, 28 Jun 2016 15:59:43 -0500
-Message-ID: <20160628205943.GA6556@rob-hp-laptop>
-References: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
- <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2] phy: rockchip-usb: should be a child device of the GRF
+Date: Wed, 29 Jun 2016 00:12:58 +0200
+Message-ID: <1467151978-28403-1-git-send-email-heiko@sntech.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMjgsIDIwMTYgYXQgMTI6NTE6MTJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
-ZToKPiBUaGUgTEcgTFAwNzlRWDEtU1AwViBpcyBhbiA3LjkiIFFYR0EgVEZUIHdpdGggTEVEIEJh
-Y2tsaWdodCB1bml0IGFuZAo+IDMyIHBpbnMgZURQIGludGVyZmFjZS4gVGhpcyBtb2R1bGUgc3Vw
-cG9ydHMgMTUzNngyMDQ4IG1vZGUuCj4gCj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtr
-QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3BhbmVsL2xnLGxwMDc5cXgxLXNwMHYudHh0ICAgICAgICAgfCA3ICsrKysrKysKPiAgMSBmaWxl
-IGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvbGcsbHAwNzlxeDEtc3Awdi50
-eHQKCkFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The usb-phy is fully enclosed in the general register files (GRF).
+Therefore as seen from the device-tree it shouldn't be a separate
+platform-device but instead a sub-device of the GRF - using the
+simply-mfd mechanism.
+
+As the usb-phy is part of the kernel for some releases now, we keep
+the old (and now deprecated) binding for compatibility purposes.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+changes in v2:
+- fix two checkpatch warning
+- separate devicetree patches (one applied the
+  second needs to wait for one release round)
+
+ .../devicetree/bindings/phy/rockchip-usb-phy.txt   | 27 ++++++++++++++--------
+ drivers/phy/phy-rockchip-usb.c                     | 14 ++++++++---
+ 2 files changed, 28 insertions(+), 13 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+index 68498d5..cc6be96 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
++++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+@@ -5,11 +5,13 @@ Required properties:
+      "rockchip,rk3066a-usb-phy"
+      "rockchip,rk3188-usb-phy"
+      "rockchip,rk3288-usb-phy"
+- - rockchip,grf : phandle to the syscon managing the "general
+-   register files"
+  - #address-cells: should be 1
+  - #size-cells: should be 0
+ 
++Deprecated properties:
++ - rockchip,grf : phandle to the syscon managing the "general
++   register files" - phy should be a child of the GRF instead
++
+ Sub-nodes:
+ Each PHY should be represented as a sub-node.
+ 
+@@ -28,14 +30,19 @@ Optional Properties:
+ 
+ Example:
+ 
+-usbphy: phy {
+-	compatible = "rockchip,rk3288-usb-phy";
+-	rockchip,grf = <&grf>;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
++grf: syscon@ff770000 {
++	compatible = "rockchip,rk3288-grf", "syscon", "simple-mfd";
++
++...
++
++	usbphy: phy {
++		compatible = "rockchip,rk3288-usb-phy";
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 
+-	usbphy0: usb-phy0 {
+-		#phy-cells = <0>;
+-		reg = <0x320>;
++		usbphy0: usb-phy0 {
++			#phy-cells = <0>;
++			reg = <0x320>;
++		};
+ 	};
+ };
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+index f62d899..23f33db 100644
+--- a/drivers/phy/phy-rockchip-usb.c
++++ b/drivers/phy/phy-rockchip-usb.c
+@@ -397,8 +397,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ 	phy_base->pdata = match->data;
+ 
+ 	phy_base->dev = dev;
+-	phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
+-							     "rockchip,grf");
++	phy_base->reg_base = ERR_PTR(-ENODEV);
++	if (dev->parent && dev->parent->of_node)
++		phy_base->reg_base = syscon_node_to_regmap(
++						dev->parent->of_node);
++	if (IS_ERR(phy_base->reg_base))
++		phy_base->reg_base = syscon_regmap_lookup_by_phandle(
++						dev->of_node, "rockchip,grf");
+ 	if (IS_ERR(phy_base->reg_base)) {
+ 		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
+ 		return PTR_ERR(phy_base->reg_base);
+@@ -463,7 +467,11 @@ static int __init rockchip_init_usb_uart(void)
+ 		return -ENOTSUPP;
+ 	}
+ 
+-	grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
++	grf = ERR_PTR(-ENODEV);
++	if (np->parent)
++		grf = syscon_node_to_regmap(np->parent);
++	if (IS_ERR(grf))
++		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+ 	if (IS_ERR(grf)) {
+ 		pr_err("%s: Missing rockchip,grf property, %lu\n",
+ 		       __func__, PTR_ERR(grf));
+-- 
+2.6.4
