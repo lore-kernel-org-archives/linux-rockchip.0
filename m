@@ -1,86 +1,138 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v4 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Tue, 28 Jun 2016 20:24:37 +0800
-Message-ID: <1467116681-9330-2-git-send-email-zyw@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [v4 PATCH 2/5] Documentation: bindings: add dt doc for Rockchip USB
+ Type-C PHY
+Date: Tue, 28 Jun 2016 20:24:38 +0800
+Message-ID: <1467116681-9330-3-git-send-email-zyw@rock-chips.com>
 References: <1467116681-9330-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467116681-9330-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1467116681-9330-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add EXTCON_DISP_DP for the Display external connector. For Type-C
-connector the DisplayPort can work as an Alternate Mode(VESA
-DisplayPort Alt Mode on USB Type-C Standard). At this mode, there
-is some information need to be supplied by PowerDelivery or other
-mode detecter: port orientation and pin assignments, so add these
-2 virtual cable: EXTCON_TYPEC_POLARITY and EXTCON_TYPEC_PIN_ASSIGN.
-If EXTCON_TYPEC_POLARITY is attached, the Type-C get flip orientation.
-IF EXTCON_TYPEC_PIN_ASSIGN is attached, Type-C get Pin_Assignment_C(for
-DP only mode) or Pin_Assignment_D(for DP + USB3 mode), the default
-Assignment is A(for DP only mode) or B(for DP + USB3 mode).
+This patch adds a binding that describes the Rockchip USB Type-C PHY
+for rk3399
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
 ---
 
 Changes in v4:
-- remove DP alt mode
+- add a #phy-cells node
 
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
+Changes in v3:
+- use compatible: rockchip,rk3399-typec-phy
+- use dashes instead of underscores.
 
- drivers/extcon/extcon.c | 5 +++++
- include/linux/extcon.h  | 5 +++++
- 2 files changed, 10 insertions(+)
+Changes in v2:
+- add some registers description
 
-diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
-index 21a123c..44a575c 100644
---- a/drivers/extcon/extcon.c
-+++ b/drivers/extcon/extcon.c
-@@ -53,6 +53,10 @@ static const char *extcon_name[] =  {
- 	[EXTCON_CHG_USB_FAST]		= "FAST-CHARGER",
- 	[EXTCON_CHG_USB_SLOW]		= "SLOW-CHARGER",
- 
-+	/* Type-c connector */
-+	[EXTCON_TYPEC_POLARITY]		= "TYPE-C-POLARITY",
-+	[EXTCON_TYPEC_PIN_ASSIGN]	= "TYPE-C-PIN-ASSIGN",
+Changes in v1:
+- add extcon node description
+- move the registers in phy driver
+- remove the suffix of reset
+
+ .../devicetree/bindings/phy/phy-rockchip-typec.txt | 77 ++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+new file mode 100644
+index 0000000..b1c6ef3f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+@@ -0,0 +1,77 @@
++* ROCKCHIP type-c PHY
++---------------------
 +
- 	/* Jack external connector */
- 	[EXTCON_JACK_MICROPHONE]	= "MICROPHONE",
- 	[EXTCON_JACK_HEADPHONE]		= "HEADPHONE",
-@@ -68,6 +72,7 @@ static const char *extcon_name[] =  {
- 	[EXTCON_DISP_MHL]		= "MHL",
- 	[EXTCON_DISP_DVI]		= "DVI",
- 	[EXTCON_DISP_VGA]		= "VGA",
-+	[EXTCON_DISP_DP]		= "DP",
- 
- 	/* Miscellaneous external connector */
- 	[EXTCON_DOCK]			= "DOCK",
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index 7abf674..38a5640 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -45,6 +45,10 @@
- #define EXTCON_CHG_USB_FAST	9
- #define EXTCON_CHG_USB_SLOW	10
- 
-+/* Type-c connector */
-+#define EXTCON_TYPEC_POLARITY	11	/* Typec-C plug orientation */
-+#define EXTCON_TYPEC_PIN_ASSIGN	12	/* Typec-C pin Assignment */
++Required properties:
++ - compatible : must be "rockchip,rk3399-typec-phy"
++ - reg: Address and length of the usb phy control register set
++ - rockchip,grf : phandle to the syscon managing the "general
++   register files"
++ - clocks : phandle + clock specifier for the phy clocks
++ - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
++ - resets : a list of phandle + reset specifier pairs
++ - reset-names : string reset name, must be:
++		 "uphy", "uphy-pipe", "uphy-tcphy"
++ - extcon : extcon specifier for the Power Delivery
++ - #phy-cells: must be 0. See ./phy-bindings.txt for details.
 +
- /* Jack external connector */
- #define EXTCON_JACK_MICROPHONE	20
- #define EXTCON_JACK_HEADPHONE	21
-@@ -60,6 +64,7 @@
- #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
- #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
- #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
-+#define EXTCON_DISP_DP		44	/* Display Port */
- 
- /* Miscellaneous external connector */
- #define EXTCON_DOCK		60
++Note, there are 2 type-c phys for RK3399, and they are almost identical, except
++these registers(description below), every register node contains 3 sections:
++offset, enable bit, write mask bit.
++ - rockchip,typec-conn-dir : the register of type-c connector direction,
++   for type-c phy0, it must be <0xe580 0 16>;
++   for type-c phy1, it must be <0xe58c 0 16>;
++ - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
++   control.
++   for type-c phy0, it must be <0xe580 3 19>;
++   for type-c phy1, it must be <0xe58c 3 19>;
++ - rockchip,external-psm : the register of type-c phy external psm clock
++   selection.
++   for type-c phy0, it must be <0xe588 14 30>;
++   for type-c phy1, it must be <0xe594 14 30>;
++ - rockchip,pipe-status : the register of type-c phy pipe status.
++   for type-c phy0, it must be <0xe5c0 0 0>;
++   for type-c phy1, it must be <0xe5c0 16 16>;
++ - rockchip,uphy-dp-sel : the register of type-c phy selection for DP
++   for type-c phy0, it must be <0x6268 19 19>;
++   for type-c phy1, it must be <0x6268 3 19>;
++
++Example:
++	tcphy0: phy@ff7c0000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff7c0000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		extcon = <&fusb0>;
++		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
++			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		resets = <&cru SRST_UPHY0>,
++			 <&cru SRST_UPHY0_PIPE_L00>,
++			 <&cru SRST_P_UPHY0_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe580 0 16>;
++		rockchip,usb3tousb2-en = <0xe580 3 19>;
++		rockchip,external-psm = <0xe588 14 30>;
++		rockchip,pipe-status = <0xe5c0 0 0>;
++		rockchip,uphy-dp-sel = <0x6268 19 19>;
++	};
++
++	tcphy1: phy@ff800000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff800000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		extcon = <&fusb1>;
++		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
++			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		resets = <&cru SRST_UPHY1>,
++		         <&cru SRST_UPHY1_PIPE_L00>,
++			 <&cru SRST_P_UPHY1_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe58c 0 16>;
++		rockchip,usb3tousb2-en = <0xe58c 3 19>;
++		rockchip,external-psm = <0xe594 14 30>;
++		rockchip,pipe-status = <0xe5c0 16 16>;
++		rockchip,uphy-dp-sel = <0x6268 3 19>;
++	};
 -- 
 2.6.3
