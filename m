@@ -1,132 +1,133 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2] phy: rockchip-usb: should be a child device of the GRF
-Date: Wed, 29 Jun 2016 19:21:02 +0530
-Message-ID: <5773D246.40902@ti.com>
-References: <1467151978-28403-1-git-send-email-heiko@sntech.de>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v4 04/11] drm/rockchip: analogix_dp: add rk3399 eDP support
+Date: Wed, 29 Jun 2016 09:52:11 -0400
+Message-ID: <CAOw6vbJexAWHsOD1OHHJU5XFn455yrTLfEfSxs=pgs6W0a_Fhw@mail.gmail.com>
+References: <1467191657-16941-1-git-send-email-ykk@rock-chips.com>
+ <1467191726-17264-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467151978-28403-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1467191726-17264-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, Douglas Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Wednesday 29 June 2016 03:42 AM, Heiko Stuebner wrote:
-> The usb-phy is fully enclosed in the general register files (GRF).
-> Therefore as seen from the device-tree it shouldn't be a separate
-> platform-device but instead a sub-device of the GRF - using the
-> simply-mfd mechanism.
-> 
-> As the usb-phy is part of the kernel for some releases now, we keep
-> the old (and now deprecated) binding for compatibility purposes.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-> changes in v2:
-> - fix two checkpatch warning
-> - separate devicetree patches (one applied the
->   second needs to wait for one release round)
-
-applied, thanks.
-
--Kishon
-
-> 
->  .../devicetree/bindings/phy/rockchip-usb-phy.txt   | 27 ++++++++++++++--------
->  drivers/phy/phy-rockchip-usb.c                     | 14 ++++++++---
->  2 files changed, 28 insertions(+), 13 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> index 68498d5..cc6be96 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> @@ -5,11 +5,13 @@ Required properties:
->       "rockchip,rk3066a-usb-phy"
->       "rockchip,rk3188-usb-phy"
->       "rockchip,rk3288-usb-phy"
-> - - rockchip,grf : phandle to the syscon managing the "general
-> -   register files"
->   - #address-cells: should be 1
->   - #size-cells: should be 0
->  
-> +Deprecated properties:
-> + - rockchip,grf : phandle to the syscon managing the "general
-> +   register files" - phy should be a child of the GRF instead
-> +
->  Sub-nodes:
->  Each PHY should be represented as a sub-node.
->  
-> @@ -28,14 +30,19 @@ Optional Properties:
->  
->  Example:
->  
-> -usbphy: phy {
-> -	compatible = "rockchip,rk3288-usb-phy";
-> -	rockchip,grf = <&grf>;
-> -	#address-cells = <1>;
-> -	#size-cells = <0>;
-> +grf: syscon@ff770000 {
-> +	compatible = "rockchip,rk3288-grf", "syscon", "simple-mfd";
-> +
-> +...
-> +
-> +	usbphy: phy {
-> +		compatible = "rockchip,rk3288-usb-phy";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
->  
-> -	usbphy0: usb-phy0 {
-> -		#phy-cells = <0>;
-> -		reg = <0x320>;
-> +		usbphy0: usb-phy0 {
-> +			#phy-cells = <0>;
-> +			reg = <0x320>;
-> +		};
->  	};
->  };
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> index f62d899..23f33db 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -397,8 +397,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
->  	phy_base->pdata = match->data;
->  
->  	phy_base->dev = dev;
-> -	phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
-> -							     "rockchip,grf");
-> +	phy_base->reg_base = ERR_PTR(-ENODEV);
-> +	if (dev->parent && dev->parent->of_node)
-> +		phy_base->reg_base = syscon_node_to_regmap(
-> +						dev->parent->of_node);
-> +	if (IS_ERR(phy_base->reg_base))
-> +		phy_base->reg_base = syscon_regmap_lookup_by_phandle(
-> +						dev->of_node, "rockchip,grf");
->  	if (IS_ERR(phy_base->reg_base)) {
->  		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
->  		return PTR_ERR(phy_base->reg_base);
-> @@ -463,7 +467,11 @@ static int __init rockchip_init_usb_uart(void)
->  		return -ENOTSUPP;
->  	}
->  
-> -	grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	grf = ERR_PTR(-ENODEV);
-> +	if (np->parent)
-> +		grf = syscon_node_to_regmap(np->parent);
-> +	if (IS_ERR(grf))
-> +		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
->  	if (IS_ERR(grf)) {
->  		pr_err("%s: Missing rockchip,grf property, %lu\n",
->  		       __func__, PTR_ERR(grf));
-> 
+T24gV2VkLCBKdW4gMjksIDIwMTYgYXQgNToxNSBBTSwgWWFraXIgWWFuZyA8eWtrQHJvY2stY2hp
+cHMuY29tPiB3cm90ZToKPiBSSzMzOTkgYW5kIFJLMzI4OCBzaGFyZWQgdGhlIHNhbWUgZURQIElQ
+IGNvbnRyb2xsZXIsIG9ubHkgc29tZSBsaWdodAo+IGRpZmZlcmVuY2Ugd2l0aCBWT1AgY29uZmln
+dXJlIGFuZCBHUkYgY29uZmlndXJlLgo+Cj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtr
+QHJvY2stY2hpcHMuY29tPgo+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
+cy5jb20+Cj4gUmV2aWV3ZWQtYnk6IFRvbWFzeiBGaWdhIDx0b21hc3ouZmlnYUBjaHJvbWl1bS5j
+b20+CgoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKPiAt
+LS0KPiBDaGFuZ2VzIGluIHY0Ogo+IC0gSW1wcm92ZWQgdGhlIG92ZXJseSBjb21wbGljYXRlZCAu
+YXRvbWljX2NoZWNrIGZ1bmN0aW9uLiAoU2VhbikKPiAtIEFkZCByZXZpZXdlZCBmbGFnIGZyb20g
+VG9tYXN6Cj4KPiBDaGFuZ2VzIGluIHYzOgo+IC0gR2l2ZSB0aGUgInJrMzM5OS1lZHAiIGEgc2Vw
+YXJhdGUgbGluZSBmb3IgY2xhcml0eSBpbiBkb2N1bWVudCAoVG9tYXN6LCByZXZpZXdlZCBhdCBH
+b29nbGUgR2Vycml0KQo+ICAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNl
+LmNvbS8jL2MvMzQ2MzE0LzEwL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNw
+bGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4dEA1XQo+IC0gTW92ZSAnb3V0cHV0
+X3R5cGUnIHNldHRpbmcgYmVmb3JlIHRoZSByZXR1cm4gc3RhdGVtZW50IChUb21hc3osIHJldmll
+d2VkIGF0IEdvb2dsZSBHZXJyaXQpCj4gICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29n
+bGVzb3VyY2UuY29tLyMvYy8zNDYzMTQvMTAvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
+Z2l4X2RwLXJvY2tjaGlwLmNAMTU0XQo+IC0gQWRkIHRoZSBhY2tlZCBmbGFnIGZyb20gTWFyay4K
+Pgo+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0ICAgICAgICB8
+ICAxICsKPiAgLi4uL2Rpc3BsYXkvcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAudHh0ICAg
+ICAgfCAgMyArKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tj
+aGlwLmMgICAgfCAyMyArKysrKysrKysrKysrKysrKysrKysrCj4gIGluY2x1ZGUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgIDMgKystCj4gIDQgZmlsZXMgY2hh
+bmdlZCwgMjggaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhf
+ZHAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdl
+L2FuYWxvZ2l4X2RwLnR4dAo+IGluZGV4IDRmMmJhOGMuLjRhMGY0ZjcgMTAwNjQ0Cj4gLS0tIGEv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4
+X2RwLnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiBAQCAtNSw2ICs1LDcgQEAgUmVxdWlyZWQgcHJvcGVy
+dGllcyBmb3IgZHAtY29udHJvbGxlcjoKPiAgICAgICAgICAgICAgICAgcGxhdGZvcm0gc3BlY2lm
+aWMgc3VjaCBhczoKPiAgICAgICAgICAgICAgICAgICogInNhbXN1bmcsZXh5bm9zNS1kcCIKPiAg
+ICAgICAgICAgICAgICAgICogInJvY2tjaGlwLHJrMzI4OC1kcCIKPiArICAgICAgICAgICAgICAg
+ICogInJvY2tjaGlwLHJrMzM5OS1lZHAiCj4gICAgICAgICAtcmVnOgo+ICAgICAgICAgICAgICAg
+ICBwaHlzaWNhbCBiYXNlIGFkZHJlc3Mgb2YgdGhlIGNvbnRyb2xsZXIgYW5kIGxlbmd0aAo+ICAg
+ICAgICAgICAgICAgICBvZiBtZW1vcnkgbWFwcGVkIHJlZ2lvbi4KPiBkaWZmIC0tZ2l0IGEvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvYW5hbG9naXhf
+ZHAtcm9ja2NoaXAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAudHh0Cj4gaW5kZXggZTgzMmZmOS4uNzI2
+Yzk0NSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
+cGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQKPiArKysgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2Nr
+Y2hpcC50eHQKPiBAQCAtMiw3ICsyLDggQEAgUm9ja2NoaXAgUkszMjg4IHNwZWNpZmljIGV4dGVu
+c2lvbnMgdG8gdGhlIEFuYWxvZ2l4IERpc3BsYXkgUG9ydAo+ICA9PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PQo+Cj4gIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4gLS0gY29tcGF0aWJsZTog
+InJvY2tjaGlwLHJrMzI4OC1lZHAiOwo+ICstIGNvbXBhdGlibGU6ICJyb2NrY2hpcCxyazMyODgt
+ZWRwIiwKPiArICAgICAgICAgICAgICJyb2NrY2hpcCxyazMzOTktZWRwIjsKPgo+ICAtIHJlZzog
+cGh5c2ljYWwgYmFzZSBhZGRyZXNzIG9mIHRoZSBjb250cm9sbGVyIGFuZCBsZW5ndGgKPgo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAu
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5k
+ZXggMGEzMDkzMS4uODU1N2EwOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gQEAgLTM2LDYgKzM2LDggQEAKPgo+ICAjZGVmaW5l
+IFJLMzI4OF9HUkZfU09DX0NPTjYgICAgICAgICAgICAweDI1Ywo+ICAjZGVmaW5lIFJLMzI4OF9F
+RFBfTENEQ19TRUwgICAgICAgICAgICBCSVQoNSkKPiArI2RlZmluZSBSSzMzOTlfR1JGX1NPQ19D
+T04yMCAgICAgICAgICAgMHg2MjUwCj4gKyNkZWZpbmUgUkszMzk5X0VEUF9MQ0RDX1NFTCAgICAg
+ICAgICAgIEJJVCg1KQo+Cj4gICNkZWZpbmUgSElXT1JEX1VQREFURSh2YWwsIG1hc2spICAgICAg
+ICh2YWwgfCAobWFzaykgPDwgMTYpCj4KPiBAQCAtMTU5LDYgKzE2MSw4IEBAIHJvY2tjaGlwX2Rw
+X2RybV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4g
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2Nvbm5lY3Rv
+cl9zdGF0ZSAqY29ubl9zdGF0ZSkKPiAgewo+ICAgICAgICAgc3RydWN0IHJvY2tjaGlwX2NydGNf
+c3RhdGUgKnMgPSB0b19yb2NrY2hpcF9jcnRjX3N0YXRlKGNydGNfc3RhdGUpOwo+ICsgICAgICAg
+c3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHAgPSB0b19kcChlbmNvZGVyKTsKPiArICAgICAg
+IGludCByZXQ7Cj4KPiAgICAgICAgIC8qCj4gICAgICAgICAgKiBGSVhNRShZYWtpcik6IGRyaXZl
+ciBzaG91bGQgY29uZmlndXJlIHRoZSBDUlRDIG91dHB1dCB2aWRlbwo+IEBAIC0xNzMsOCArMTc3
+LDE5IEBAIHJvY2tjaGlwX2RwX2RybV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2Vu
+Y29kZXIgKmVuY29kZXIsCj4gICAgICAgICAgKiBCdXQgaWYgSSBjb25maWd1cmUgQ1RSQyB0byBS
+R0JhYWEsIGFuZCBlRFAgZHJpdmVyIHN0aWxsIGtlZXAKPiAgICAgICAgICAqIFJHQjY2NiBpbnB1
+dCB2aWRlbyBtb2RlLCB0aGVuIHNjcmVlbiB3b3VsZCB3b3JrcyBwcmVmZWN0Lgo+ICAgICAgICAg
+ICovCj4gKwo+ICAgICAgICAgcy0+b3V0cHV0X21vZGUgPSBST0NLQ0hJUF9PVVRfTU9ERV9BQUFB
+Owo+ICAgICAgICAgcy0+b3V0cHV0X3R5cGUgPSBEUk1fTU9ERV9DT05ORUNUT1JfZURQOwo+ICsg
+ICAgICAgaWYgKGRwLT5kYXRhLT5jaGlwX3R5cGUgPT0gUkszMzk5X0VEUCkgewo+ICsgICAgICAg
+ICAgICAgICAvKgo+ICsgICAgICAgICAgICAgICAgKiBGb3IgUkszMzk5LCBWT1AgTGl0IG11c3Qg
+Y29kZSB0aGUgb3V0IG1vZGUgdG8gUkdCODg4LAo+ICsgICAgICAgICAgICAgICAgKiBWT1AgQmln
+IG11c3QgY29kZSB0aGUgb3V0IG1vZGUgdG8gUkdCMTAuCj4gKyAgICAgICAgICAgICAgICAqLwo+
+ICsgICAgICAgICAgICAgICByZXQgPSBkcm1fb2ZfZW5jb2Rlcl9hY3RpdmVfZW5kcG9pbnRfaWQo
+ZHAtPmRldi0+b2Zfbm9kZSwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIGVuY29kZXIpOwo+ICsgICAgICAgICAgICAgICBpZiAocmV0ID4g
+MCkKPiArICAgICAgICAgICAgICAgICAgICAgICBzLT5vdXRwdXRfbW9kZSA9IFJPQ0tDSElQX09V
+VF9NT0RFX1A4ODg7Cj4gKyAgICAgICB9Cj4KPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4gQEAg
+LTM3OCw2ICszOTMsMTMgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIHJvY2tjaGlw
+X2RwX3BtX29wcyA9IHsKPiAgI2VuZGlmCj4gIH07Cj4KPiArc3RhdGljIGNvbnN0IHN0cnVjdCBy
+b2NrY2hpcF9kcF9jaGlwX2RhdGEgcmszMzk5X2VkcCA9IHsKPiArICAgICAgIC5sY2RzZWxfZ3Jm
+X3JlZyA9IFJLMzM5OV9HUkZfU09DX0NPTjIwLAo+ICsgICAgICAgLmxjZHNlbF9iaWcgPSBISVdP
+UkRfVVBEQVRFKDAsIFJLMzM5OV9FRFBfTENEQ19TRUwpLAo+ICsgICAgICAgLmxjZHNlbF9saXQg
+PSBISVdPUkRfVVBEQVRFKFJLMzM5OV9FRFBfTENEQ19TRUwsIFJLMzM5OV9FRFBfTENEQ19TRUwp
+LAo+ICsgICAgICAgLmNoaXBfdHlwZSA9IFJLMzM5OV9FRFAsCj4gK307Cj4gKwo+ICBzdGF0aWMg
+Y29uc3Qgc3RydWN0IHJvY2tjaGlwX2RwX2NoaXBfZGF0YSByazMyODhfZHAgPSB7Cj4gICAgICAg
+ICAubGNkc2VsX2dyZl9yZWcgPSBSSzMyODhfR1JGX1NPQ19DT042LAo+ICAgICAgICAgLmxjZHNl
+bF9iaWcgPSBISVdPUkRfVVBEQVRFKDAsIFJLMzI4OF9FRFBfTENEQ19TRUwpLAo+IEBAIC0zODcs
+NiArNDA5LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9kcF9jaGlwX2RhdGEgcmsz
+Mjg4X2RwID0gewo+Cj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHJvY2tjaGlw
+X2RwX2R0X2lkc1tdID0gewo+ICAgICAgICAgey5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzI4
+OC1kcCIsIC5kYXRhID0gJnJrMzI4OF9kcCB9LAo+ICsgICAgICAgey5jb21wYXRpYmxlID0gInJv
+Y2tjaGlwLHJrMzM5OS1lZHAiLCAuZGF0YSA9ICZyazMzOTlfZWRwIH0sCj4gICAgICAgICB7fQo+
+ICB9Owo+ICBNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCByb2NrY2hpcF9kcF9kdF9pZHMpOwo+IGRp
+ZmYgLS1naXQgYS9pbmNsdWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaCBiL2luY2x1ZGUvZHJt
+L2JyaWRnZS9hbmFsb2dpeF9kcC5oCj4gaW5kZXggNzkwYWI1ZC4uZmM0YWVhMyAxMDA2NDQKPiAt
+LS0gYS9pbmNsdWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaAo+ICsrKyBiL2luY2x1ZGUvZHJt
+L2JyaWRnZS9hbmFsb2dpeF9kcC5oCj4gQEAgLTE2LDExICsxNiwxMiBAQAo+ICBlbnVtIGFuYWxv
+Z2l4X2RwX2RldnR5cGUgewo+ICAgICAgICAgRVhZTk9TX0RQLAo+ICAgICAgICAgUkszMjg4X0RQ
+LAo+ICsgICAgICAgUkszMzk5X0VEUCwKPiAgfTsKPgo+ICBzdGF0aWMgaW5saW5lIGJvb2wgaXNf
+cm9ja2NoaXAoZW51bSBhbmFsb2dpeF9kcF9kZXZ0eXBlIHR5cGUpCj4gIHsKPiAtICAgICAgIHJl
+dHVybiB0eXBlID09IFJLMzI4OF9EUDsKPiArICAgICAgIHJldHVybiB0eXBlID09IFJLMzI4OF9E
+UCB8fCB0eXBlID09IFJLMzM5OV9FRFA7Cj4gIH0KPgo+ICBzdHJ1Y3QgYW5hbG9naXhfZHBfcGxh
+dF9kYXRhIHsKPiAtLQo+IDEuOS4xCj4KPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
