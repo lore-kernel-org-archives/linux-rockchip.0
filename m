@@ -1,15 +1,13 @@
 From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 3/3] phy: rockchip-emmc: Wait even longer for the DLL to
- lock
-Date: Wed, 29 Jun 2016 19:20:31 +0530
-Message-ID: <5773D227.6010502@ti.com>
-References: <1467049167-14628-1-git-send-email-dianders@chromium.org>
- <1467049167-14628-4-git-send-email-dianders@chromium.org>
+Subject: Re: [PATCH v2] phy: rockchip-usb: should be a child device of the GRF
+Date: Wed, 29 Jun 2016 19:21:02 +0530
+Message-ID: <5773D246.40902@ti.com>
+References: <1467151978-28403-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467049167-14628-4-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <1467151978-28403-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,47 +17,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On Monday 27 June 2016 11:09 PM, Douglas Anderson wrote:
-> Two times out of 2000 reboots I ran into the error message
-> "rockchip_emmc_phy_power: dllrdy timeout".  Presumably there is some
-> corner case where the DLL just takes a little longer to timeout.  Let's
-> give it even more time to handle these corner cases.
+On Wednesday 29 June 2016 03:42 AM, Heiko Stuebner wrote:
+> The usb-phy is fully enclosed in the general register files (GRF).
+> Therefore as seen from the device-tree it shouldn't be a separate
+> platform-device but instead a sub-device of the GRF - using the
+> simply-mfd mechanism.
 > 
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
-Acked-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+> As the usb-phy is part of the kernel for some releases now, we keep
+> the old (and now deprecated) binding for compatibility purposes.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
->  drivers/phy/phy-rockchip-emmc.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
+> changes in v2:
+> - fix two checkpatch warning
+> - separate devicetree patches (one applied the
+>   second needs to wait for one release round)
+
+applied, thanks.
+
+-Kishon
+
 > 
-> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
-> index a2aa6aca7dec..fd57345ffed2 100644
-> --- a/drivers/phy/phy-rockchip-emmc.c
-> +++ b/drivers/phy/phy-rockchip-emmc.c
-> @@ -206,8 +206,18 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->  	 * per the math: 10.2 us * (50000000 Hz / 100000 Hz) => 5.1 ms
->  	 * Hopefully we won't be running at 100 kHz, but we should still make
->  	 * sure we wait long enough.
-> +	 *
-> +	 * NOTE: There appear to be corner cases where the DLL seems to take
-> +	 * extra long to lock for reasons that aren't understood.  In some
-> +	 * extreme cases we've seen it take up to over 10ms (!).  We'll be
-> +	 * generous and give it 50ms.  We still busy wait here because:
-> +	 * - In most cases it should be super fast.
-> +	 * - This is not called lots during normal operation so it shouldn't
-> +	 *   be a power or performance problem to busy wait.  We expect it
-> +	 *   only at boot / resume.  In both cases, eMMC is probably on the
-> +	 *   critical path so busy waiting a little extra time should be OK.
->  	 */
-> -	timeout = jiffies + msecs_to_jiffies(10);
-> +	timeout = jiffies + msecs_to_jiffies(50);
->  	do {
->  		udelay(1);
+>  .../devicetree/bindings/phy/rockchip-usb-phy.txt   | 27 ++++++++++++++--------
+>  drivers/phy/phy-rockchip-usb.c                     | 14 ++++++++---
+>  2 files changed, 28 insertions(+), 13 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> index 68498d5..cc6be96 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> @@ -5,11 +5,13 @@ Required properties:
+>       "rockchip,rk3066a-usb-phy"
+>       "rockchip,rk3188-usb-phy"
+>       "rockchip,rk3288-usb-phy"
+> - - rockchip,grf : phandle to the syscon managing the "general
+> -   register files"
+>   - #address-cells: should be 1
+>   - #size-cells: should be 0
 >  
+> +Deprecated properties:
+> + - rockchip,grf : phandle to the syscon managing the "general
+> +   register files" - phy should be a child of the GRF instead
+> +
+>  Sub-nodes:
+>  Each PHY should be represented as a sub-node.
+>  
+> @@ -28,14 +30,19 @@ Optional Properties:
+>  
+>  Example:
+>  
+> -usbphy: phy {
+> -	compatible = "rockchip,rk3288-usb-phy";
+> -	rockchip,grf = <&grf>;
+> -	#address-cells = <1>;
+> -	#size-cells = <0>;
+> +grf: syscon@ff770000 {
+> +	compatible = "rockchip,rk3288-grf", "syscon", "simple-mfd";
+> +
+> +...
+> +
+> +	usbphy: phy {
+> +		compatible = "rockchip,rk3288-usb-phy";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+>  
+> -	usbphy0: usb-phy0 {
+> -		#phy-cells = <0>;
+> -		reg = <0x320>;
+> +		usbphy0: usb-phy0 {
+> +			#phy-cells = <0>;
+> +			reg = <0x320>;
+> +		};
+>  	};
+>  };
+> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+> index f62d899..23f33db 100644
+> --- a/drivers/phy/phy-rockchip-usb.c
+> +++ b/drivers/phy/phy-rockchip-usb.c
+> @@ -397,8 +397,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+>  	phy_base->pdata = match->data;
+>  
+>  	phy_base->dev = dev;
+> -	phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
+> -							     "rockchip,grf");
+> +	phy_base->reg_base = ERR_PTR(-ENODEV);
+> +	if (dev->parent && dev->parent->of_node)
+> +		phy_base->reg_base = syscon_node_to_regmap(
+> +						dev->parent->of_node);
+> +	if (IS_ERR(phy_base->reg_base))
+> +		phy_base->reg_base = syscon_regmap_lookup_by_phandle(
+> +						dev->of_node, "rockchip,grf");
+>  	if (IS_ERR(phy_base->reg_base)) {
+>  		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
+>  		return PTR_ERR(phy_base->reg_base);
+> @@ -463,7 +467,11 @@ static int __init rockchip_init_usb_uart(void)
+>  		return -ENOTSUPP;
+>  	}
+>  
+> -	grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +	grf = ERR_PTR(-ENODEV);
+> +	if (np->parent)
+> +		grf = syscon_node_to_regmap(np->parent);
+> +	if (IS_ERR(grf))
+> +		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+>  	if (IS_ERR(grf)) {
+>  		pr_err("%s: Missing rockchip,grf property, %lu\n",
+>  		       __func__, PTR_ERR(grf));
 > 
