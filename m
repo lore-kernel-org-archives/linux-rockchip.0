@@ -1,16 +1,17 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 5/5] usb: dwc3: rockchip: add devicetree bindings
- documentation
-Date: Wed, 29 Jun 2016 09:56:37 +0800
-Message-ID: <57732AD5.7010708@rock-chips.com>
-References: <1464870896-25612-1-git-send-email-william.wu@rock-chips.com>
- <1518073.zeMq7N85Id@phil> <5771EC6C.3070707@rock-chips.com>
- <1652918.4YDfA4VDoG@phil>
+From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [v3 PATCH 1/5] extcon: Add Type-C and DP support
+Date: Tue, 28 Jun 2016 19:08:17 -0700
+Message-ID: <CABXOdTd6+jD0m3WDDYg9NuBq5thUUU2MS7c=MmpLP8uUhcQP9w@mail.gmail.com>
+References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
+ <1466686264-6744-2-git-send-email-zyw@rock-chips.com>
+ <CAGTfZH1aKUQH2VH+biyh9pFfU93pV9HH3h5s9zO0rrvXJYCMdA@mail.gmail.com>
+ <CABXOdTdHhWTSF6H2D5ubaZsu65dnGsof9NWAFNeWjCir=H91Ag@mail.gmail.com>
+ <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1652918.4YDfA4VDoG@phil>
+In-Reply-To: <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,80 +21,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Heiko,
-
-On 06/29/2016 12:41 AM, Heiko Stuebner wrote:
-> Hi William,
->
-> Am Dienstag, 28. Juni 2016, 11:18:04 schrieb William Wu:
->>>> So about the usb3 controller clk management, I think it should contain
->>>> the following clk:
->>>> 1.  aclk_usb3otg1
->>>> 2.  aclk_usb3otg0
->>>> 3.  aclk_usb3_grf
->>> correct, aclk_usb3otgX would then be the busclk for each controller if
->>> I'm not mistaken and the grf clock should also get enabled, like we
->>> also plan on doing for the vio_grf clock in the display area.
->> OK, so  aclk_usb3_grf should be marked as critical, right?
-> nope ... the consensus for the vio_grf clock was that the driver accessing
-> it should control it. So for the usb3_grf clock this would be your dwc3-
-> based driver being responsible for the grf-clock.
-Ah, I misunderstand before. I'll control usb3_grf in dwc3 driver.
->
->
->> I found that most of the grf clocks haven't been marked as critical,
->> apart from vio_grf. So may I keep the aclk_usb3_grf in usb3 dts, and
->> remove it after clock manager adds it to critical clocks?
-> you should keep the usb3-grf clock in the dts all the time.
-OK, I'll keep it in the dts.
->
->
->>>> 4.  aclk_usb3_noc
->>>> For "aclk_usb3_noc", I discuss with our clk manager, the clk is always
->>>> on before,
->>>> but according to upstream maintainer's suggestion, we need to manage
->>>> the
->>>> noc clk by each module.
->>> can you point me to this discussion? The bus-interconnect is a very
->>> separate component, which we don't model so far and thus we have all
->>> the noc clocks simply marked as critical.
->>>
->>> As this clock doesn't belong to the actual usb controller block, but
->>> said
->>> separate component, handling it in the controller seems somehow wrong to
->>> me.
->>>
->>> So my (current) opinion would again be to mark the noc clock as critical
->>> for the time being.
->> Sorry, it seems that I get the new information about clk management too
->> late.:-)
->>
->> There's no dedicated discussion about noc clk, but similar to grf clock,
->> please refer to "https://patchwork.kernel.org/patch/9171467/" for add
->> pclk_vio_grf to critical clock on the RK3399, and you have agreed on
->> that mark vio grf clk as critical. So I agree with your opinion, thanks~
-> The difference as I see it is, that the GRF parts are _part_ of the usb3
-> controller, while the interconnect really is a separate component,
-> connecting the controller to the rest of the system.
->
-> ----------	
-> |  USB3  |----[Interconnect]----[rest of the system]
-> | [+GRF] |	
-> ----------	
->
-> So the controller binding + driver should handle all clocks it needs to
-> operate. We currently don't model and handle the separate interconnect
-> though, so that noc clock should be critical for the time being.
-Thanks for your professional explanation. Now I think I have
-more clearly understood the clocks. And I'll upload a new
-patch later.
->
-> Heiko
->
->
->
->
+T24gVHVlLCBKdW4gMjgsIDIwMTYgYXQgNjo0MCBQTSwgQ2hhbndvbyBDaG9pIDxjd2Nob2kwMEBn
+bWFpbC5jb20+IHdyb3RlOgo+IEhpIEd1ZW50ZXIsCj4KPiAyMDE264WEIDbsm5QgMjnsnbwg7IiY
+7JqU7J28LCBHdWVudGVyIFJvZWNrPGdyb2Vja0Bnb29nbGUuY29tPuuLmOydtCDsnpHshLHtlZwg
+66mU7Iuc7KeAOgo+Pgo+PiBPbiBUdWUsIEp1biAyOCwgMjAxNiBhdCA1OjI2IEFNLCBDaGFud29v
+IENob2kgPGN3Y2hvaTAwQGdtYWlsLmNvbT4gd3JvdGU6Cj4+ID4gSGkgQ2hyaXMsCj4+ID4KPj4g
+PiBJIGFncmVlIHRvIGFkZCB0aGUgbmV3IEVYVENPTl9ESVNQX0RQIGNvbm5lY3Rvci4KPj4gPiBC
+dXQsIG90aGVyIG5ldyBkZWZpbml0aW9uIHNob3VsZCBiZSBkaXNjdXNzZWQuCj4+ID4gLSBFWFRD
+T05fRElTUF9EUF9BTFQKPj4gPiAtIEVYVENPTl9UWVBFQ19QT0xBUklUWQo+PiA+IC0gRVhUQ09O
+X1RZUEVDX1BJTl9BU1NJR04KPj4gPgo+PiA+IEkgdGhpbmsgdGhhdCBUWVBFQ19QT0xBUklUWSBh
+bmQgVFlQRUNfUElOX0FTU0lORyBhcmUgbm90IGFwcHJvcHJpYXRlCj4+ID4gYXMgdGhlIG5ldyBl
+eHRlcm5hbCBjb25uZWN0b3IgZGVmaW5pdGlvbi4gVGhlc2UgYXJlIHRoZSBwcm9wZXJ0eSBvcgo+
+PiA+IGF0dHJpYnV0ZSBvZgo+PiA+IFVTQiBjb25uZWN0b3Igd2l0aCBDLXR5cGUuCj4+ID4KPj4g
+PiBBbHNvLCBFWFRDT05fRElTUF9EUF9BTFQgaXMgbm90IGEgbmV3IHR5cGUgb2YgY29ubmVjdG9y
+Lgo+PiA+IEl0IGlzIGp1c3Qgb25lIG9mIHRoZSBtb2RlIGZvciBEUCBjb25uZWN0b3IuCj4+ID4K
+Pj4gPiBBcyBJIGtuZXcsIERQIGFsdGVybmF0aXZlIG1vZGUgdXNlIHRoZSBVU0IgY29ubmVjdG9y
+IHdpdGggQy10eXBlLgo+PiA+IFNvLCBEUCBhbHRlcm5hdGl2ZSBtb2RlIGNhbiBiZSBleHByZXNz
+ZWQgb24gZm9sbG93aW5nOgo+PiA+ICA9IEVYVENPTl9ESVNQX0RQICsgRVhUQ09OX1VTQiArIHNv
+bWUgcHJvcGVydHkgb2YgVVNCIGMtdHlwZQo+PiA+Cj4+Cj4+IFByb2JsZW0gaXMgdGhhdCBleHRj
+b24gZG9lc24ndCBzdXBwb3J0IGV4Y2hhbmdpbmcgY2FibGUgcHJvcGVydGllcwo+PiBiZXR3ZWVu
+IGNhYmxlIHByb3ZpZGVycyAoZXh0Y29uIGRyaXZlcnMpIGFuZCBjb25zdW1lcnMsIG90aGVyIHRo
+YW4KPj4gY2FibGUgc3RhdGVzLiBJbiBvcmRlciB0byBleGNoYW5nZSBwcm9wZXJ0aWVzIHN1Y2gg
+YXMgcG9sYXJpdHkgYW5kIHBpbgo+PiBhc3NpZ25tZW50cywgd2Ugd291bGQgbmVlZCBhIHNlcGFy
+YXRlIGluZnJhc3RydWN0dXJlLiBCdXQgdGhlbiB0aGUKPj4gcXVlc3Rpb24gd291bGQgYmUgd2h5
+IHRvIHVzZSBleHRjb24gaW4gdGhlIGZpcnN0IHBsYWNlLgo+Pgo+PiBJZiB5b3UgaGF2ZSBhIHNv
+bHV0aW9uIGZvciB0aGF0IHB1enpsZSwgcGxlYXNlIGxldCB1cyBrbm93Lgo+Pgo+Cj4gWW91J3Jl
+IHJpZ2h0Lgo+IEN1cnJlbnQgZXh0Y29uIGRvbid0IHN1cHBvcnQgdGhlIGNhYmxlIHByb3BlcnRp
+ZXMuCj4gVGhlIHJlcXVpcmVtZW50IGFib3V0IGNhYmxlcyBwcm9wZXJ0aWVzIG9jY3VyIHN1Y2gg
+YXMgVVNCIElEIGFuZCBWQlVTIHBpbi4KPiBTbywgSSdsbCBzdXBwb3J0IHRoZSBjYWJsZSBwcm9w
+ZXJ0aWVzIGluIGV4dGNvbiBmcmFtZXdvcmsgYW5kIHNlbmQgdGhlCj4gcGF0Y2hlcyB3aXRoaW4g
+dGhpcyB3ZWVrLgo+Cj4gTWF5YmUsIHRoZSBmdW5jdGlvbiBkZWZpbml0aW9ucyBhcmUgZm9sbG93
+aW5nOgo+IChCdXQsIHRoZXNlIG1heSBiZSBjaGFuZ2VkIG9uIHJlYWwgcGF0Y2hlcykKPiAtIGV4
+dGNvbl9zZXRfY2FibGVfcHJvcGVydHkoc3RydWN0IGV4dGNvbl9kZXYgKmVkZXYsIHVuc2lnbmVk
+IGludCBpZCwgZW51bQo+IGV4dGNvbl9wcm9wZXJ0eSBwcm9wLCB1bnNpZ25lZCBpbiBwcm9wX3Zh
+bCkKPiAtIGV4dGNvbl9nZXRfY2FibGVfcHJvcGVydHkoc3RydWN0IGV4dGNvbl9kZXYgKmVkZXYs
+IHVuc2lnbmVkIGludCBpZCwgZW51bQo+IGV4dGNvbl9wcm9wZXJ0eSBwcm9wKQo+CgpFeGNlbGxl
+bnQgaWRlYS4gQ291cGxlIG9mIHRob3VnaHRzOgoKLSBXZSBtaWdodCBuZWVkIG5vdGlmaWVycyBm
+b3IgcHJvcGVydHkgZXZlbnRzLiBOb3Qgc3VyZSBpZiB0aGUgc3RhdGUKbm90aWZpZXJzIGFyZSBz
+dWZmaWNpZW50IChwcm9wZXJ0aWVzIG1pZ2h0IGNoYW5nZSBpbmRlcGVuZGVudGx5IG9mCnN0YXRl
+KS4gT3IgbWF5YmUgc3RhdGUgZXZlbnRzIGNvdWxkIGJlIHVzZWQgaWYgYSBjYWJsZSBwcm9wZXJ0
+eSAoYnV0Cm5vdCB0aGUgc3RhdGUpIGNoYW5nZXMgPwoKLSBJdCBtaWdodCBwb3NzaWJseSBtYWtl
+IHNlbnNlIHRvIG1ha2UgdGhlIHByb3AgYXJndW1lbnQgb3BhcXVlIChzdWNoCmFzIHUzMikuIFBy
+b3BlcnRpZXMgd291bGQgc3RpbGwgYmUgZGVmaW5lZCBpbiBleHRjb24gKHN1Y2ggYXMKRVhUQ09O
+X1BST1BfVFlQRUNfUE9MQVJJVFkpLCBidXQgdGhpcyB3b3VsZCBsZWF2ZSBtb3JlIHJvb20gZm9y
+IGNhYmxlCnR5cGUgc3BlY2lmaWMgcHJvcGVydGllcy4gQWZ0ZXIgYWxsLCB0aGUgcHJvcGVydGll
+cyB3b3VsZCBiZSBjYWJsZQp0eXBlIHNwZWNpZmljLgoKVGhhbmtzLApHdWVudGVyCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
