@@ -1,169 +1,135 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v4 01/11] drm/rockchip: analogix_dp: split the lcdc select
- setting into device data
-Date: Wed, 29 Jun 2016 09:44:54 -0400
-Message-ID: <CAOw6vb+gkT8v0DrOw77gz7vw9vF_2Tjf+-dx09+OoOiy70ghEw@mail.gmail.com>
-References: <1467191657-16941-1-git-send-email-ykk@rock-chips.com> <1467191701-17134-1-git-send-email-ykk@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH 2/3] phy: rockchip-emmc: Be tolerant to card clock of 0 in
+ power on
+Date: Wed, 29 Jun 2016 19:19:49 +0530
+Message-ID: <5773D1FD.8020601@ti.com>
+References: <1467049167-14628-1-git-send-email-dianders@chromium.org>
+ <1467049167-14628-3-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467191701-17134-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <treding@nvidia.com>, Douglas Anderson <dianders@chromium.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Emil Velikov <emil.l.velikov@gmail.com>, Dan Carpenter <dan.carpenter@oracle.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1467049167-14628-3-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 29, 2016 at 5:15 AM, Yakir Yang <ykk@rock-chips.com> wrote:
-> eDP controller need to declare which vop provide the video source,
-> and it's defined in GRF registers.
->
-> But different chips have different GRF register address, so we need to
-> create a device data to declare the GRF messages for each chips.
->
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> Acked-by: Mark Yao <mark.yao@rock-chips.com>
-> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Hi,
 
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
-
+On Monday 27 June 2016 11:09 PM, Douglas Anderson wrote:
+> It's possible that there are some reasons to turn the PHY on while the
+> clock is 0.  In this case we just won't wait for the DLL to lock.
+> 
+> This is a bit of a stopgap until we figure out exactly when we're
+> supposed to wait for the DLL to lock and when we're supposed to power
+> cycle the PHY.
+> 
+> Note: this patch should help with suspend/resume where the system will
+> try to turn the PHY back on when the clock is 0.
+> 
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
-> Changes in v4:
-> - Assigned the GRF setting magic numbers to a #define that corresponds to
->   a TRM name. (Sean & Heiko)
-> - Pass the chip type to device type directly. (Sean)
-> - Add reviewed flag from Tomasz.
->
-> Changes in v3:
-> - Write a kerneldoc-style comment explaining the chips data fields (Tomasz, reviewed at Google Gerrit)
->     [https://chromium-review.googlesource.com/#/c/346313/10/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c@39]
-> - Drop the '.lcdcsel_mask' number in chips data field (Tomasz, reviewed at Google Gerrit)
->     [https://chromium-review.googlesource.com/#/c/346313/10/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c@382]
-> - Add acked flag from Mark.
->
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 49 ++++++++++++++++++++-----
->  1 file changed, 39 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index c120172..0a30931 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -14,6 +14,7 @@
->
->  #include <linux/component.h>
->  #include <linux/mfd/syscon.h>
-> +#include <linux/of_device.h>
->  #include <linux/of_graph.h>
->  #include <linux/regmap.h>
->  #include <linux/reset.h>
-> @@ -33,13 +34,26 @@
->  #include "rockchip_drm_drv.h"
->  #include "rockchip_drm_vop.h"
->
-> +#define RK3288_GRF_SOC_CON6            0x25c
-> +#define RK3288_EDP_LCDC_SEL            BIT(5)
+>  drivers/phy/phy-rockchip-emmc.c | 59 ++++++++++++++++++++++++++---------------
+>  1 file changed, 37 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+> index 9dce958233a0..a2aa6aca7dec 100644
+> --- a/drivers/phy/phy-rockchip-emmc.c
+> +++ b/drivers/phy/phy-rockchip-emmc.c
+> @@ -88,15 +88,36 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  	unsigned int caldone;
+>  	unsigned int dllrdy;
+>  	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+> +	unsigned long rate;
+>  	unsigned long timeout;
+>  
+> -	if (rk_phy->emmcclk != NULL) {
+> -		unsigned long rate = clk_get_rate(rk_phy->emmcclk);
+> +	/*
+> +	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+> +	 * initialization of CALIO state M/C DFFs
+> +	 */
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> +		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+> +				   PHYCTRL_PDB_MASK,
+> +				   PHYCTRL_PDB_SHIFT));
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> +		     HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+> +				   PHYCTRL_ENDLL_MASK,
+> +				   PHYCTRL_ENDLL_SHIFT));
 > +
-> +#define HIWORD_UPDATE(val, mask)       (val | (mask) << 16)
+> +	/* Already finish power_off above */
+> +	if (on_off == PHYCTRL_PDB_PWR_OFF)
+> +		return 0;
 > +
->  #define to_dp(nm)      container_of(nm, struct rockchip_dp_device, nm)
->
-> -/* dp grf register offset */
-> -#define GRF_SOC_CON6                            0x025c
-> -#define GRF_EDP_LCD_SEL_MASK                    BIT(5)
-> -#define GRF_EDP_SEL_VOP_LIT                     BIT(5)
-> -#define GRF_EDP_SEL_VOP_BIG                     0
-> +/**
-> + * struct rockchip_dp_chip_data - splite the grf setting of kind of chips
-> + * @lcdsel_grf_reg: grf register offset of lcdc select
-> + * @lcdsel_big: reg value of selecting vop big for eDP
-> + * @lcdsel_lit: reg value of selecting vop little for eDP
-> + * @chip_type: specific chip type
-> + */
-> +struct rockchip_dp_chip_data {
-> +       u32     lcdsel_grf_reg;
-> +       u32     lcdsel_big;
-> +       u32     lcdsel_lit;
-> +       u32     chip_type;
-> +};
->
->  struct rockchip_dp_device {
->         struct drm_device        *drm_dev;
-> @@ -51,6 +65,8 @@ struct rockchip_dp_device {
->         struct regmap            *grf;
->         struct reset_control     *rst;
->
-> +       const struct rockchip_dp_chip_data *data;
+> +	rate = clk_get_rate(rk_phy->emmcclk);
 > +
->         struct analogix_dp_plat_data plat_data;
->  };
->
-> @@ -119,13 +135,13 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder)
->                 return;
->
->         if (ret)
-> -               val = GRF_EDP_SEL_VOP_LIT | (GRF_EDP_LCD_SEL_MASK << 16);
-> +               val = dp->data->lcdsel_lit;
->         else
-> -               val = GRF_EDP_SEL_VOP_BIG | (GRF_EDP_LCD_SEL_MASK << 16);
-> +               val = dp->data->lcdsel_big;
->
->         dev_dbg(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
->
-> -       ret = regmap_write(dp->grf, GRF_SOC_CON6, val);
-> +       ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
->         if (ret != 0) {
->                 dev_err(dp->dev, "Could not write to GRF: %d\n", ret);
->                 return;
-> @@ -246,6 +262,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->                             void *data)
->  {
->         struct rockchip_dp_device *dp = dev_get_drvdata(dev);
-> +       const struct rockchip_dp_chip_data *dp_data;
->         struct drm_device *drm_dev = data;
->         int ret;
->
-> @@ -256,10 +273,15 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->          */
->         dev_set_drvdata(dev, NULL);
->
-> +       dp_data = of_device_get_match_data(dev);
-> +       if (!dp_data)
-> +               return -ENODEV;
+> +	if (rate != 0) {
+>  		unsigned long ideal_rate;
+>  		unsigned long diff;
+>  
+>  		switch (rate) {
+> -		case 0 ... 74999999:
+> +		case 1 ... 74999999:
+>  			ideal_rate = 50000000;
+>  			freqsel = PHYCTRL_FREQSEL_50M;
+>  			break;
+> @@ -127,25 +148,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  	}
+>  
+>  	/*
+> -	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+> -	 * initialization of CALIO state M/C DFFs
+> -	 */
+> -	regmap_write(rk_phy->reg_base,
+> -		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> -		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+> -				   PHYCTRL_PDB_MASK,
+> -				   PHYCTRL_PDB_SHIFT));
+> -	regmap_write(rk_phy->reg_base,
+> -		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> -		     HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+> -				   PHYCTRL_ENDLL_MASK,
+> -				   PHYCTRL_ENDLL_SHIFT));
+> -
+> -	/* Already finish power_off above */
+> -	if (on_off == PHYCTRL_PDB_PWR_OFF)
+> -		return 0;
+> -
+> -	/*
+>  	 * According to the user manual, calpad calibration
+>  	 * cycle takes more than 2us without the minimal recommended
+>  	 * value, so we may need a little margin here
+> @@ -183,6 +185,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  		     HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
+>  				   PHYCTRL_ENDLL_MASK,
+>  				   PHYCTRL_ENDLL_SHIFT));
 > +
->         ret = rockchip_dp_init(dp);
->         if (ret < 0)
->                 return ret;
->
-> +       dp->data = dp_data;
->         dp->drm_dev = drm_dev;
->
->         ret = rockchip_dp_drm_create_encoder(dp);
-> @@ -270,7 +292,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->
->         dp->plat_data.encoder = &dp->encoder;
->
-> -       dp->plat_data.dev_type = RK3288_DP;
-> +       dp->plat_data.dev_type = dp->data->chip_type;
->         dp->plat_data.power_on = rockchip_dp_poweron;
->         dp->plat_data.power_off = rockchip_dp_powerdown;
->
-> @@ -356,8 +378,15 @@ static const struct dev_pm_ops rockchip_dp_pm_ops = {
->  #endif
->  };
->
-> +static const struct rockchip_dp_chip_data rk3288_dp = {
-> +       .lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
-> +       .lcdsel_big = HIWORD_UPDATE(0, RK3288_EDP_LCDC_SEL),
-> +       .lcdsel_lit = HIWORD_UPDATE(RK3288_EDP_LCDC_SEL, RK3288_EDP_LCDC_SEL),
-> +       .chip_type = RK3288_DP,
-> +};
-> +
->  static const struct of_device_id rockchip_dp_dt_ids[] = {
-> -       {.compatible = "rockchip,rk3288-dp",},
-> +       {.compatible = "rockchip,rk3288-dp", .data = &rk3288_dp },
->         {}
->  };
->  MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
-> --
-> 1.9.1
->
->
+> +	/*
+> +	 * We turned on the DLL even though the rate was 0 because we the
+> +	 * clock might be turned on later.  ...but we can't wait for the DLL
+> +	 * to lock when the rate is 0 because it will never lock with no
+> +	 * input clock.
+> +	 *
+> +	 * Technically we should be checking the lock later when the clock
+> +	 * is turned on, but for now we won't.
+> +	 */
+> +	if (rate == 0)
+> +		return 0;
+
+Why not return initially from rockchip_emmc_phy_power if the clock rate is '0'.
+Are there other functions to lock the DLL apart from phy_power?
+
+Thanks
+Kishon
