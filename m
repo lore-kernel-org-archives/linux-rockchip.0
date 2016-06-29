@@ -1,75 +1,40 @@
-From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [v3 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Tue, 28 Jun 2016 19:08:17 -0700
-Message-ID: <CABXOdTd6+jD0m3WDDYg9NuBq5thUUU2MS7c=MmpLP8uUhcQP9w@mail.gmail.com>
-References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
- <1466686264-6744-2-git-send-email-zyw@rock-chips.com>
- <CAGTfZH1aKUQH2VH+biyh9pFfU93pV9HH3h5s9zO0rrvXJYCMdA@mail.gmail.com>
- <CABXOdTdHhWTSF6H2D5ubaZsu65dnGsof9NWAFNeWjCir=H91Ag@mail.gmail.com>
- <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw@mail.gmail.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v1 1/5] dt-bindings: Add support for LG LP079QX1-SP0V
+ 1536x2048 panel
+Date: Wed, 29 Jun 2016 11:31:10 +0800
+Message-ID: <577340FE.4060305@rock-chips.com>
+References: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
+ <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
+ <20160628205943.GA6556@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160628205943.GA6556@rob-hp-laptop>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMjgsIDIwMTYgYXQgNjo0MCBQTSwgQ2hhbndvbyBDaG9pIDxjd2Nob2kwMEBn
-bWFpbC5jb20+IHdyb3RlOgo+IEhpIEd1ZW50ZXIsCj4KPiAyMDE264WEIDbsm5QgMjnsnbwg7IiY
-7JqU7J28LCBHdWVudGVyIFJvZWNrPGdyb2Vja0Bnb29nbGUuY29tPuuLmOydtCDsnpHshLHtlZwg
-66mU7Iuc7KeAOgo+Pgo+PiBPbiBUdWUsIEp1biAyOCwgMjAxNiBhdCA1OjI2IEFNLCBDaGFud29v
-IENob2kgPGN3Y2hvaTAwQGdtYWlsLmNvbT4gd3JvdGU6Cj4+ID4gSGkgQ2hyaXMsCj4+ID4KPj4g
-PiBJIGFncmVlIHRvIGFkZCB0aGUgbmV3IEVYVENPTl9ESVNQX0RQIGNvbm5lY3Rvci4KPj4gPiBC
-dXQsIG90aGVyIG5ldyBkZWZpbml0aW9uIHNob3VsZCBiZSBkaXNjdXNzZWQuCj4+ID4gLSBFWFRD
-T05fRElTUF9EUF9BTFQKPj4gPiAtIEVYVENPTl9UWVBFQ19QT0xBUklUWQo+PiA+IC0gRVhUQ09O
-X1RZUEVDX1BJTl9BU1NJR04KPj4gPgo+PiA+IEkgdGhpbmsgdGhhdCBUWVBFQ19QT0xBUklUWSBh
-bmQgVFlQRUNfUElOX0FTU0lORyBhcmUgbm90IGFwcHJvcHJpYXRlCj4+ID4gYXMgdGhlIG5ldyBl
-eHRlcm5hbCBjb25uZWN0b3IgZGVmaW5pdGlvbi4gVGhlc2UgYXJlIHRoZSBwcm9wZXJ0eSBvcgo+
-PiA+IGF0dHJpYnV0ZSBvZgo+PiA+IFVTQiBjb25uZWN0b3Igd2l0aCBDLXR5cGUuCj4+ID4KPj4g
-PiBBbHNvLCBFWFRDT05fRElTUF9EUF9BTFQgaXMgbm90IGEgbmV3IHR5cGUgb2YgY29ubmVjdG9y
-Lgo+PiA+IEl0IGlzIGp1c3Qgb25lIG9mIHRoZSBtb2RlIGZvciBEUCBjb25uZWN0b3IuCj4+ID4K
-Pj4gPiBBcyBJIGtuZXcsIERQIGFsdGVybmF0aXZlIG1vZGUgdXNlIHRoZSBVU0IgY29ubmVjdG9y
-IHdpdGggQy10eXBlLgo+PiA+IFNvLCBEUCBhbHRlcm5hdGl2ZSBtb2RlIGNhbiBiZSBleHByZXNz
-ZWQgb24gZm9sbG93aW5nOgo+PiA+ICA9IEVYVENPTl9ESVNQX0RQICsgRVhUQ09OX1VTQiArIHNv
-bWUgcHJvcGVydHkgb2YgVVNCIGMtdHlwZQo+PiA+Cj4+Cj4+IFByb2JsZW0gaXMgdGhhdCBleHRj
-b24gZG9lc24ndCBzdXBwb3J0IGV4Y2hhbmdpbmcgY2FibGUgcHJvcGVydGllcwo+PiBiZXR3ZWVu
-IGNhYmxlIHByb3ZpZGVycyAoZXh0Y29uIGRyaXZlcnMpIGFuZCBjb25zdW1lcnMsIG90aGVyIHRo
-YW4KPj4gY2FibGUgc3RhdGVzLiBJbiBvcmRlciB0byBleGNoYW5nZSBwcm9wZXJ0aWVzIHN1Y2gg
-YXMgcG9sYXJpdHkgYW5kIHBpbgo+PiBhc3NpZ25tZW50cywgd2Ugd291bGQgbmVlZCBhIHNlcGFy
-YXRlIGluZnJhc3RydWN0dXJlLiBCdXQgdGhlbiB0aGUKPj4gcXVlc3Rpb24gd291bGQgYmUgd2h5
-IHRvIHVzZSBleHRjb24gaW4gdGhlIGZpcnN0IHBsYWNlLgo+Pgo+PiBJZiB5b3UgaGF2ZSBhIHNv
-bHV0aW9uIGZvciB0aGF0IHB1enpsZSwgcGxlYXNlIGxldCB1cyBrbm93Lgo+Pgo+Cj4gWW91J3Jl
-IHJpZ2h0Lgo+IEN1cnJlbnQgZXh0Y29uIGRvbid0IHN1cHBvcnQgdGhlIGNhYmxlIHByb3BlcnRp
-ZXMuCj4gVGhlIHJlcXVpcmVtZW50IGFib3V0IGNhYmxlcyBwcm9wZXJ0aWVzIG9jY3VyIHN1Y2gg
-YXMgVVNCIElEIGFuZCBWQlVTIHBpbi4KPiBTbywgSSdsbCBzdXBwb3J0IHRoZSBjYWJsZSBwcm9w
-ZXJ0aWVzIGluIGV4dGNvbiBmcmFtZXdvcmsgYW5kIHNlbmQgdGhlCj4gcGF0Y2hlcyB3aXRoaW4g
-dGhpcyB3ZWVrLgo+Cj4gTWF5YmUsIHRoZSBmdW5jdGlvbiBkZWZpbml0aW9ucyBhcmUgZm9sbG93
-aW5nOgo+IChCdXQsIHRoZXNlIG1heSBiZSBjaGFuZ2VkIG9uIHJlYWwgcGF0Y2hlcykKPiAtIGV4
-dGNvbl9zZXRfY2FibGVfcHJvcGVydHkoc3RydWN0IGV4dGNvbl9kZXYgKmVkZXYsIHVuc2lnbmVk
-IGludCBpZCwgZW51bQo+IGV4dGNvbl9wcm9wZXJ0eSBwcm9wLCB1bnNpZ25lZCBpbiBwcm9wX3Zh
-bCkKPiAtIGV4dGNvbl9nZXRfY2FibGVfcHJvcGVydHkoc3RydWN0IGV4dGNvbl9kZXYgKmVkZXYs
-IHVuc2lnbmVkIGludCBpZCwgZW51bQo+IGV4dGNvbl9wcm9wZXJ0eSBwcm9wKQo+CgpFeGNlbGxl
-bnQgaWRlYS4gQ291cGxlIG9mIHRob3VnaHRzOgoKLSBXZSBtaWdodCBuZWVkIG5vdGlmaWVycyBm
-b3IgcHJvcGVydHkgZXZlbnRzLiBOb3Qgc3VyZSBpZiB0aGUgc3RhdGUKbm90aWZpZXJzIGFyZSBz
-dWZmaWNpZW50IChwcm9wZXJ0aWVzIG1pZ2h0IGNoYW5nZSBpbmRlcGVuZGVudGx5IG9mCnN0YXRl
-KS4gT3IgbWF5YmUgc3RhdGUgZXZlbnRzIGNvdWxkIGJlIHVzZWQgaWYgYSBjYWJsZSBwcm9wZXJ0
-eSAoYnV0Cm5vdCB0aGUgc3RhdGUpIGNoYW5nZXMgPwoKLSBJdCBtaWdodCBwb3NzaWJseSBtYWtl
-IHNlbnNlIHRvIG1ha2UgdGhlIHByb3AgYXJndW1lbnQgb3BhcXVlIChzdWNoCmFzIHUzMikuIFBy
-b3BlcnRpZXMgd291bGQgc3RpbGwgYmUgZGVmaW5lZCBpbiBleHRjb24gKHN1Y2ggYXMKRVhUQ09O
-X1BST1BfVFlQRUNfUE9MQVJJVFkpLCBidXQgdGhpcyB3b3VsZCBsZWF2ZSBtb3JlIHJvb20gZm9y
-IGNhYmxlCnR5cGUgc3BlY2lmaWMgcHJvcGVydGllcy4gQWZ0ZXIgYWxsLCB0aGUgcHJvcGVydGll
-cyB3b3VsZCBiZSBjYWJsZQp0eXBlIHNwZWNpZmljLgoKVGhhbmtzLApHdWVudGVyCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Um9iLAoKT24gMDYvMjkvMjAxNiAwNDo1OSBBTSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24gVHVl
+LCBKdW4gMjgsIDIwMTYgYXQgMTI6NTE6MTJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90ZToKPj4g
+VGhlIExHIExQMDc5UVgxLVNQMFYgaXMgYW4gNy45IiBRWEdBIFRGVCB3aXRoIExFRCBCYWNrbGln
+aHQgdW5pdCBhbmQKPj4gMzIgcGlucyBlRFAgaW50ZXJmYWNlLiBUaGlzIG1vZHVsZSBzdXBwb3J0
+cyAxNTM2eDIwNDggbW9kZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJv
+Y2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L3BhbmVsL2xnLGxwMDc5cXgxLXNwMHYudHh0ICAgICAgICAgfCA3ICsrKysrKysKPj4gICAxIGZp
+bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL2xnLGxwMDc5cXgxLXNw
+MHYudHh0Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4KVGhhbmtz
+IGZvciB5b3VyIGZhc3QgcmVzcG9uZCA7KQo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
