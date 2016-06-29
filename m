@@ -1,40 +1,52 @@
 From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v1 1/5] dt-bindings: Add support for LG LP079QX1-SP0V
- 1536x2048 panel
-Date: Wed, 29 Jun 2016 11:31:10 +0800
-Message-ID: <577340FE.4060305@rock-chips.com>
-References: <1467089288-18355-1-git-send-email-ykk@rock-chips.com>
- <1467089472-18584-1-git-send-email-ykk@rock-chips.com>
- <20160628205943.GA6556@rob-hp-laptop>
+Subject: Re: [PATCH v4 2/2] dt-bindings: analogix_dp: rockchip: correct the
+ wrong compatible name
+Date: Wed, 29 Jun 2016 11:32:52 +0800
+Message-ID: <57734164.6000908@rock-chips.com>
+References: <1466562678-11094-1-git-send-email-ykk@rock-chips.com>
+ <1466646424-10583-1-git-send-email-ykk@rock-chips.com>
+ <CAD=FV=UfbAUbDJfox4zMZSHyQ6uxhG2=n_Z=8WdCKGKvW+ehTQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160628205943.GA6556@rob-hp-laptop>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UfbAUbDJfox4zMZSHyQ6uxhG2=n_Z=8WdCKGKvW+ehTQ@mail.gmail.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Emil Velikov <emil.l.velikov@gmail.com>, Dan Carpenter <dan.carpenter@oracle.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Um9iLAoKT24gMDYvMjkvMjAxNiAwNDo1OSBBTSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24gVHVl
-LCBKdW4gMjgsIDIwMTYgYXQgMTI6NTE6MTJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90ZToKPj4g
-VGhlIExHIExQMDc5UVgxLVNQMFYgaXMgYW4gNy45IiBRWEdBIFRGVCB3aXRoIExFRCBCYWNrbGln
-aHQgdW5pdCBhbmQKPj4gMzIgcGlucyBlRFAgaW50ZXJmYWNlLiBUaGlzIG1vZHVsZSBzdXBwb3J0
-cyAxNTM2eDIwNDggbW9kZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJv
-Y2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3BhbmVsL2xnLGxwMDc5cXgxLXNwMHYudHh0ICAgICAgICAgfCA3ICsrKysrKysKPj4gICAxIGZp
-bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL2xnLGxwMDc5cXgxLXNw
-MHYudHh0Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4KVGhhbmtz
-IGZvciB5b3VyIGZhc3QgcmVzcG9uZCA7KQo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+Doug,
+
+On 06/23/2016 01:17 PM, Doug Anderson wrote:
+> Hi,
+>
+> On Wed, Jun 22, 2016 at 6:47 PM, Yakir Yang <ykk@rock-chips.com> wrote:
+>> The document about rockchip platform make a mistaken in available
+>> compatible name of "rk3288-edp", we should correct it to "rk3288-dp"
+>> which correspond to the compatible name in driver.
+>>
+>> This mistaken was introduced in commit be91c36247089 ("dt-bindings:
+>> add document for rockchip variant of analogix_dp").
+>>
+>> Reported-by: Tomasz Figa <tfiga@chromium.com>
+>> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>> ---
+>> Hi all,
+>>
+>> This is an external patch for analogix_dp misc cleanup thread [0]
+>> [0]: https://patchwork.kernel.org/patch/9175613/
+>>
+>> BR,
+>> - Yakir
+>>
+>> Changes in v4: None
+>> Changes in v3:
+>> - Add this patch in v3
+>>
+>>   .../devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt       | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Thanks ;)
+>
+>
