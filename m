@@ -1,109 +1,277 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] arm64: dts: rockchip: add VOP and VOP iommu node for rk3399
-Date: Thu, 30 Jun 2016 19:52:55 +0200
-Message-ID: <2805834.mM1g2PPkiI@phil>
-References: <1466564038-18021-1-git-send-email-ykk@rock-chips.com> <1466564069-18220-1-git-send-email-ykk@rock-chips.com> <CAD=FV=URVQTvEKQbUVOXyMnO1a-kGs9inX_AZY3vo_YxXD5-5w@mail.gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add the power domain node for rk3399
+Date: Thu, 30 Jun 2016 14:49:41 -0700
+Message-ID: <CAD=FV=Wg1vuBhcjFRj53t-E0sKoBH577RB7gHZ-rkJV5T7nyZw@mail.gmail.com>
+References: <1467251760-14695-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=URVQTvEKQbUVOXyMnO1a-kGs9inX_AZY3vo_YxXD5-5w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1467251760-14695-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 30. Juni 2016, 10:45:21 schrieb Doug Anderson:
-> Hi
-> 
-> On Tue, Jun 21, 2016 at 7:54 PM, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> > From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > 
-> > Add the core display-subsystem node and the two display controllers
-> > available on the rk3399.
-> > 
-> > Signed-off-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > ---
-> > Changes in v3: None
-> > Changes in v2:
-> > - provide some minimal patch description (Heiko)
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 58
-> >  ++++++++++++++++++++++++++++++++ 1 file changed, 58 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 46f325a..54e5c25
-> > 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > @@ -543,6 +543,64 @@
-> > 
-> >                 status = "disabled";
-> >         
-> >         };
-> > 
-> > +       vopl: vop@ff8f0000 {
-> > +               compatible = "rockchip,rk3399-vop-lit";
-> > +               reg = <0x0 0xff8f0000 0x0 0x3efc>;
-> > +               interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
-> > +               clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru
-> > HCLK_VOP1>; +               clock-names = "aclk_vop", "dclk_vop",
-> > "hclk_vop";
-> Note that if this lands after Elaine / Caesar's patch ("arm64: dts:
-> rockchip: add the power domain node for rk3399")
-> <https://patchwork.kernel.org/patch/9206415/> then you need to respin
-> adding powerdomain references here for correctness.
-> 
-> If this lands before Elaine / Caesar's patch then the other patch
-> needs to be re-spun.  ;)
+Caesar,
 
-so far I haven't seen any activity on the drm-driver patches.
-Mark (Yao), what happened to your rk3399 vop patches back from April?
+On Wed, Jun 29, 2016 at 6:56 PM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> In order to meet low power requirements, a power management unit (PMU) is
+> designed for controlling power resources in RK3399. The RK3399 PMU is
+> dedicated for managing the power of the whole chip.
+>
+> 1. add pd node for RK3399 Soc
+> 2. create power domain tree
+> 3. add qos node for domain
+>
+> From the DT/binds and driver can get more detail information:
+> The driver:
+> drivers/soc/rockchip/pm_domains.c
+> The document:
+> Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+>
+> ---
+>
+> Tested on vop and gpu devices added for next kernel.
+> PD:
+> localhost / # cat sys/kernel/debug/pm_genpd/pm_genpd_summary
 
-Timing-wise I guess we'll do power-domains first, then display. Especially 
-as neither vop nor edp patches have so far appeared in linux-next.
+Nit: can you put a "/" before "sys" here and elsewhere in your patches?
 
 
-Heiko
+> domain                          status          slaves
+> /device                                             runtime status
+> ----------------------------------------------------------------------
+> pd_gpu                          on
+> /devices/platform/ff9a0000.gpu                      active
+> pd_vopl                         off
+> /devices/platform/ff8f0000.vop                      suspended
+> pd_vopb                         off
+> /devices/platform/ff900000.vop                      suspended
+> pd_vo                           off             pd_vopb, pd_vopl
+> pd_hdcp                         off
+> ...
+> pd_iep                          off
+> pd_vcodec                       off
+> pd_vdu                          off
+>
+> QOS:
+> localhost / # cat sys/kernel/debug/pm_qos/
+> cpu_dma_latency     network_latency
+> memory_bandwidth    network_throughput
+
+What is this supposed to be showing exactly?  You can't "cat" a
+directory, so maybe you meant "ls"?
+
+Also, each of these files contains the string "Empty!" and these files
+seem fairly unconnected to your patch.  Those files exist both before
+and after your patch and nothing that I can see in the Rockchip QoS
+stuff hooks up to the generic Linux QoS infrastructure.  The power
+domains just save and restore the QoS--they don't actually allow
+settting it.
 
 
-> 
-> > +               resets = <&cru SRST_A_VOP1>, <&cru SRST_H_VOP1>, <&cru
-> > SRST_D_VOP1>; +               reset-names = "axi", "ahb", "dclk";
-> > +               iommus = <&vopl_mmu>;
-> > +               status = "disabled";
-> > +
-> > +               vopl_out: port {
-> > +                       #address-cells = <1>;
-> > +                       #size-cells = <0>;
-> > +               };
-> > +       };
-> > +
-> > +       vopl_mmu: iommu@ff8f3f00 {
-> > +               compatible = "rockchip,iommu";
-> > +               reg = <0x0 0xff8f3f00 0x0 0x100>;
-> > +               interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
-> > +               interrupt-names = "vopl_mmu";
-> > +               #iommu-cells = <0>;
-> > +               status = "disabled";
-> > +       };
-> > +
-> > +       vopb: vop@ff900000 {
-> > +               compatible = "rockchip,rk3399-vop-big";
-> > +               reg = <0x0 0xff900000 0x0 0x3efc>;
-> > +               interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>;
-> > +               clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru
-> > HCLK_VOP0>; +               clock-names = "aclk_vop", "dclk_vop",
-> > "hclk_vop";
-> Here too, obviously.
-> 
-> 
-> See <http://crosreview.com/356623> for reference.
-> 
-> 
-> -Doug
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 153 +++++++++++++++++++++++++++++++
+>  1 file changed, 153 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index a6dd623..cc4035e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -45,6 +45,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/power/rk3399-power.h>
+>  #include <dt-bindings/thermal/thermal.h>
+>
+>  / {
+> @@ -594,6 +595,158 @@
+>                 status = "disabled";
+>         };
+>
+> +       qos_gpu: qos_gpu@ffae0000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffae0000 0x0 0x20>;
+> +       };
+> +       qos_video_m0: qos_video_m0@ffab8000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffab8000 0x0 0x20>;
+> +       };
+> +       qos_video_m1_r: qos_video_m1_r@ffac0000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffac0000 0x0 0x20>;
+> +       };
+> +       qos_video_m1_w: qos_video_m1_w@ffac0080 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffac0080 0x0 0x20>;
+> +       };
+> +       qos_rga_r: qos_rga_r@ffab0000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffab0000 0x0 0x20>;
+> +       };
+> +       qos_rga_w: qos_rga_w@ffab0080 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffab0080 0x0 0x20>;
+> +       };
+> +       qos_iep: qos_iep@ffa98000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffa98000 0x0 0x20>;
+> +       };
+> +       qos_vop_big_r: qos_vop_big_r@ffac8000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffac8000 0x0 0x20>;
+> +       };
+> +       qos_vop_big_w: qos_vop_big_w@ffac8080 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffac8080 0x0 0x20>;
+> +       };
+> +       qos_vop_little: qos_vop_little@ffad0000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffad0000 0x0 0x20>;
+> +       };
+> +       qos_isp0_m0: qos_isp0_m0@ffaa0000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffaa0000 0x0 0x20>;
+> +       };
+> +       qos_isp0_m1: qos_isp0_m1@ffaa0080 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffaa0080 0x0 0x20>;
+> +       };
+> +       qos_isp1_m0: qos_isp1_m0@ffaa8000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffaa8000 0x0 0x20>;
+> +       };
+> +       qos_isp1_m1: qos_isp1_m1@ffaa8080 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffaa8080 0x0 0x20>;
+> +       };
+> +       qos_hdcp: qos_hdcp@ffa90000 {
+> +               compatible = "syscon";
+> +               reg = <0x0 0xffa90000 0x0 0x20>;
+> +       };
 
+A bit of a nit that your sorting is a bit random here.  I know that
+your sorting order seems to match the TRM, but really we should just
+sort by base address.
+
+Speaking of the TRM, it seems like some entries are missing.  QOS for
+everything above the GPU (like usb host1, for instance) is missing.
+Similarly the 3 entries in the TRM listed after hdcp.  Should we put
+them all in so that we have them later if/when we need them?
+
+
+> +       pmu: power-management@ff310000 {
+> +               compatible = "rockchip,rk3399-pmu", "syscon", "simple-mfd";
+> +               reg = <0x0 0xff310000 0x0 0x1000>;
+> +
+> +               power: power-controller {
+> +                       status = "okay";
+> +                       compatible = "rockchip,rk3399-power-controller";
+> +                       #power-domain-cells = <1>;
+> +                       #address-cells = <1>;
+> +                       #size-cells = <0>;
+> +
+> +                       pd_vdu {
+> +                               reg = <RK3399_PD_VDU>;
+> +                               clocks = <&cru ACLK_VDU>,
+> +                                        <&cru HCLK_VDU>;
+> +                               pm_qos = <&qos_video_m1_r>,
+> +                                        <&qos_video_m1_w>;
+> +                       };
+> +                       pd_vcodec {
+> +                               reg = <RK3399_PD_VCODEC>;
+> +                               clocks = <&cru ACLK_VCODEC>,
+> +                                        <&cru HCLK_VCODEC>;
+> +                               pm_qos = <&qos_video_m0>;
+> +                       };
+> +                       pd_iep {
+> +                               reg = <RK3399_PD_IEP>;
+> +                               clocks = <&cru ACLK_IEP>,
+> +                                        <&cru HCLK_IEP>;
+> +                               pm_qos = <&qos_iep>;
+> +                       };
+> +                       pd_rga {
+> +                               reg = <RK3399_PD_RGA>;
+> +                               clocks = <&cru ACLK_RGA>,
+> +                                        <&cru HCLK_RGA>;
+> +                               pm_qos = <&qos_rga_r>,
+> +                                        <&qos_rga_w>;
+> +                       };
+> +                       pd_vio {
+> +                               reg = <RK3399_PD_VIO>;
+> +                               #address-cells = <1>;
+> +                               #size-cells = <0>;
+> +
+> +                               pd_isp0 {
+> +                                       reg = <RK3399_PD_ISP0>;
+> +                                       clocks = <&cru ACLK_ISP0>,
+> +                                                <&cru HCLK_ISP0>;
+> +                                       pm_qos = <&qos_isp0_m0>,
+> +                                                <&qos_isp0_m1>;
+> +                               };
+> +                               pd_isp1 {
+> +                                       reg = <RK3399_PD_ISP1>;
+> +                                       clocks = <&cru ACLK_ISP1>,
+> +                                                <&cru HCLK_ISP1>;
+> +                                       pm_qos = <&qos_isp1_m0>,
+> +                                                <&qos_isp1_m1>;
+> +                               };
+> +                               pd_hdcp {
+> +                                       reg = <RK3399_PD_HDCP>;
+> +                                       clocks = <&cru ACLK_HDCP>,
+> +                                                <&cru HCLK_HDCP>,
+> +                                                <&cru PCLK_HDCP>;
+> +                                       pm_qos = <&qos_hdcp>;
+> +                               };
+> +                               pd_vo {
+> +                                       reg = <RK3399_PD_VO>;
+> +                                       #address-cells = <1>;
+> +                                       #size-cells = <0>;
+> +
+> +                                       pd_vopb {
+> +                                               reg = <RK3399_PD_VOPB>;
+> +                                               clocks = <&cru ACLK_VOP0>,
+> +                                                        <&cru HCLK_VOP0>;
+> +                                               pm_qos = <&qos_vop_big_r>,
+> +                                                        <&qos_vop_big_w>;
+> +                                       };
+> +                                       pd_vopl {
+> +                                               reg = <RK3399_PD_VOPL>;
+> +                                               clocks = <&cru ACLK_VOP1>,
+> +                                                        <&cru HCLK_VOP1>;
+> +                                               pm_qos = <&qos_vop_little>;
+> +                                       };
+> +                               };
+> +                       };
+> +                       pd_gpu {
+> +                               reg = <RK3399_PD_GPU>;
+> +                               clocks = <&cru ACLK_GPU>;
+> +                               pm_qos = <&qos_gpu>;
+> +                       };
+
+Again a nitty sort order question.  Is there a reason not to make
+things alphabetical?  AKA: pd_gpu, pd_iep, pd_rga, ...
+
+...and inside pd_vio should be alphabetical too?
+
+In the TRM it looks like some of the power domains are grouped
+together (like all the domains under LOGIC or CENTERLOGIC).  If
+keeping that grouping makes sense here then you should add a comment
+at the start of each group and sort the groups sanely (and sort within
+each group).
+
+It looks like there are also more power domains that you haven't
+listed here (like PD_GMAC, for instance, or PD_CORE_L).  Are you
+planning to add those in a followon patch?
+
+
+
+-Doug
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
