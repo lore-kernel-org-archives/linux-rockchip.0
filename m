@@ -1,157 +1,275 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH] drivers/perf: arm-pmu: Handle per-interrupt affinity
- mask
-Date: Fri, 01 Jul 2016 23:00:39 +0800
-Message-ID: <57768597.2070606@rock-chips.com>
-References: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 1/4] drm/rockchip: vop: export line flag function
+Date: Fri, 1 Jul 2016 11:30:37 -0400
+Message-ID: <CAOw6vb+vS3O+Db1_1RSGup7Y2tNjRkxyz7ah817R6nXceSHeFQ@mail.gmail.com>
+References: <1467364685-21390-1-git-send-email-ykk@rock-chips.com>
+ <1467364745-21621-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, David Wu <david.wu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1467364745-21621-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc,
-
-On 2016=E5=B9=B407=E6=9C=8801=E6=97=A5 21:21, Marc Zyngier wrote:
-> On a big-little system, PMUs can be wired to CPUs using per CPU
-> interrups (PPI). In this case, it is important to make sure that
-> the enable/disable do happen on the right set of CPUs.
+On Fri, Jul 1, 2016 at 5:19 AM, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> VOP have integrated a hardware counter which indicate the exact display
+> line that vop is scanning. And if we're interested in a specific line,
+> we can set the line number to vop line_flag register, and then vop would
+> generate a line_flag interrupt for it.
 >
-> So instead of relying on the interrupt-affinity property, we can
-> use the actual percpu affinity that DT exposes as part of the
-> interrupt specifier. The DT binding is also updated to reflect
-> the fact that the interrupt-affinity property shouldn't be used
-> in that case.
+> For example eDP PSR function is interested in the vertical blanking
+> period, then driver could set the line number to zero.
 >
-> Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
-
-Tested-by: Caesar Wang <wxt@rock-chips.com>
-
-I pick this up on my local branch.
-8bc671a FROMLIST: drivers/perf: arm-pmu: Handle per-interrupt affinity =
-mask
-3d723f4 FROMLIST: arm64: dts: rockchip: support the pmu node for rk3399
-1359b92 FIXUP: FROMLIST: arm64: dts: rockchip: change all interrupts=20
-cells for 4 on rk3399 SoCs
-=2E..
-
-Tested on rk3399 board.
-localhost / # perf list
-
-List of pre-defined events (to be used in -e):
-cpu-cycles OR cycles [Hardware event]
-instructions [Hardware event]
-cache-references [Hardware event]
-cache-misses [Hardware event]
-branch-instructions OR branches [Hardware event]
-branch-misses [Hardware event]
-bus-cycles [Hardware event]
-=2E..
-
-perf stat --cpu 0/1/2/3..... to minitor
-e.g. cpu0;
-
-localhost / # perf stat --cpu 0
-^C
-Performance counter stats for 'CPU(s) 0':
-
-3374.917571 task-clock (msec) # 1.001 CPUs utilized [100.00%]
-20 context-switches # 0.006 K/sec [100.00%]
-2 cpu-migrations # 0.001 K/sec [100.00%]
-55 page-faults # 0.016 K/sec
-7151843 cycles # 0.002 GHz [100.00%]
-<not supported> stalled-cycles-frontend
-<not supported> stalled-cycles-backend
-4272536 instructions # 0.60 insns per cycle [100.00%]
-568406 branches # 0.168 M/sec [100.00%]
-65652 branch-misses # 11.55% of all branches
-
-Also, 'perf top' to monitor the PMU interrupts from cpus
----
-
-
-
+> This patch have exported a symbol that allow other driver to listen the
+> line flag event with given timeout limit:
+> -  rockchip_drm_wait_line_flag()
+>
+> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->   Documentation/devicetree/bindings/arm/pmu.txt |  4 +++-
->   drivers/perf/arm_pmu.c                        | 22 ++++++++++++++++=
-+-----
->   2 files changed, 20 insertions(+), 6 deletions(-)
+> Changes in v3:
+> - Export the 'rockchip_drm_wait_line_flag' symbol, and document it.
+> - Add 'line_flag_num_0' for RK3288/RK3036
+> - Remove the notify for waiting line_flag event (Daniel)
 >
-> diff --git a/Documentation/devicetree/bindings/arm/pmu.txt b/Document=
-ation/devicetree/bindings/arm/pmu.txt
-> index 74d5417..61c8b46 100644
-> --- a/Documentation/devicetree/bindings/arm/pmu.txt
-> +++ b/Documentation/devicetree/bindings/arm/pmu.txt
-> @@ -39,7 +39,9 @@ Optional properties:
->                          When using a PPI, specifies a list of phandl=
-es to CPU
->   		       nodes corresponding to the set of CPUs which have
->   		       a PMU of this type signalling the PPI listed in the
-> -		       interrupts property.
-> +		       interrupts property, unless this is already specified
-> +		       by the PPI interrupt specifier itself (in which case
-> +		       the interrupt-affinity property shouldn't be present).
->  =20
->                          This property should be present when there i=
-s more than
->   		       a single SPI.
-> diff --git a/drivers/perf/arm_pmu.c b/drivers/perf/arm_pmu.c
-> index 140436a..065ccec 100644
-> --- a/drivers/perf/arm_pmu.c
-> +++ b/drivers/perf/arm_pmu.c
-> @@ -603,7 +603,8 @@ static void cpu_pmu_free_irq(struct arm_pmu *cpu_=
-pmu)
->  =20
->   	irq =3D platform_get_irq(pmu_device, 0);
->   	if (irq >=3D 0 && irq_is_percpu(irq)) {
-> -		on_each_cpu(cpu_pmu_disable_percpu_irq, &irq, 1);
-> +		on_each_cpu_mask(&cpu_pmu->supported_cpus,
-> +				 cpu_pmu_disable_percpu_irq, &irq, 1);
->   		free_percpu_irq(irq, &hw_events->percpu_pmu);
->   	} else {
->   		for (i =3D 0; i < irqs; ++i) {
-> @@ -645,7 +646,9 @@ static int cpu_pmu_request_irq(struct arm_pmu *cp=
-u_pmu, irq_handler_t handler)
->   				irq);
->   			return err;
->   		}
-> -		on_each_cpu(cpu_pmu_enable_percpu_irq, &irq, 1);
+> Changes in v2:
+> - Introduce in v2, split VOP line flag changes out
+>
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h |   3 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 103 ++++++++++++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   3 +
+>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   4 ++
+>  4 files changed, 113 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> index ea39329..239b830 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> @@ -70,4 +70,7 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
+>                                    struct device *dev);
+>  void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
+>                                     struct device *dev);
+> +int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+> +                               unsigned int mstimeout);
 > +
-> +		on_each_cpu_mask(&cpu_pmu->supported_cpus,
-> +				 cpu_pmu_enable_percpu_irq, &irq, 1);
->   	} else {
->   		for (i =3D 0; i < irqs; ++i) {
->   			int cpu =3D i;
-> @@ -961,9 +964,18 @@ static int of_pmu_irq_cfg(struct arm_pmu *pmu)
->   		i++;
->   	} while (1);
->  =20
-> -	/* If we didn't manage to parse anything, claim to support all CPUs=
- */
-> -	if (cpumask_weight(&pmu->supported_cpus) =3D=3D 0)
-> -		cpumask_setall(&pmu->supported_cpus);
-> +	/* If we didn't manage to parse anything, try the interrupt affinit=
-y */
-> +	if (cpumask_weight(&pmu->supported_cpus) =3D=3D 0) {
-> +		if (!using_spi) {
-> +			/* If using PPIs, check the affinity of the partition */
-> +			int irq =3D platform_get_irq(pdev, 0);
-> +			irq_get_percpu_devid_partition(irq,
-> +						       &pmu->supported_cpus);
-> +		} else {
-> +			/* Otherwise default to all CPUs */
-> +			cpumask_setall(&pmu->supported_cpus);
-> +		}
-> +	}
->  =20
->   	/* If we matched up the IRQ affinities, use them to route the SPIs=
- */
->   	if (using_spi && i =3D=3D pdev->num_resources)
+>  #endif /* _ROCKCHIP_DRM_DRV_H_ */
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index c8a62a8..cd3cac5 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -121,6 +121,8 @@ struct vop {
+>         /* protected by dev->event_lock */
+>         struct drm_pending_vblank_event *event;
+>
+> +       struct completion line_flag_completion;
+> +
+>         const struct vop_data *data;
+>
+>         uint32_t *regsbak;
+> @@ -431,6 +433,59 @@ static void vop_dsp_hold_valid_irq_disable(struct vop *vop)
+>         spin_unlock_irqrestore(&vop->irq_lock, flags);
+>  }
+>
+> +/*
+> + * (1) each frame starts at the start of the Vsync pulse which is signaled by
+> + *     the "FRAME_SYNC" interrupt.
+> + * (2) the active data region of each frame ends at dsp_vact_end
+> + * (3) we should program this same number (dsp_vact_end) into dsp_line_frag_num,
+> + *      to get "LINE_FLAG" interrupt at the end of the active on screen data.
+> + *
+> + * VOP_INTR_CTRL0.dsp_line_frag_num = VOP_DSP_VACT_ST_END.dsp_vact_end
+> + * Interrupts
+> + * LINE_FLAG -------------------------------+
+> + * FRAME_SYNC ----+                         |
+> + *                |                         |
+> + *                v                         v
+> + *                | Vsync | Vbp |  Vactive  | Vfp |
+> + *                        ^     ^           ^     ^
+> + *                        |     |           |     |
+> + *                        |     |           |     |
+> + * dsp_vs_end ------------+     |           |     |   VOP_DSP_VTOTAL_VS_END
+> + * dsp_vact_start --------------+           |     |   VOP_DSP_VACT_ST_END
+> + * dsp_vact_end ----------------------------+     |   VOP_DSP_VACT_ST_END
+> + * dsp_total -------------------------------------+   VOP_DSP_VTOTAL_VS_END
+> + */
+> +
+> +static void vop_line_flag_irq_enable(struct vop *vop, int line_num)
+> +{
+> +       unsigned long flags;
+> +
+> +       if (WARN_ON(!vop->is_enabled))
+> +               return;
+> +
+> +       spin_lock_irqsave(&vop->irq_lock, flags);
+> +
+> +       VOP_CTRL_SET(vop, line_flag_num_0, line_num);
+> +       VOP_INTR_SET_TYPE(vop, enable, LINE_FLAG_INTR, 1);
+> +       vop_cfg_done(vop);
+> +
+> +       spin_unlock_irqrestore(&vop->irq_lock, flags);
+> +}
+> +
+> +static void vop_line_flag_irq_disable(struct vop *vop)
+> +{
+> +       unsigned long flags;
+> +
+> +       if (WARN_ON(!vop->is_enabled))
+> +               return;
+> +
+> +       spin_lock_irqsave(&vop->irq_lock, flags);
+> +
+> +       VOP_INTR_SET_TYPE(vop, enable, LINE_FLAG_INTR, 0);
+> +
+> +       spin_unlock_irqrestore(&vop->irq_lock, flags);
+> +}
+> +
+>  static void vop_enable(struct drm_crtc *crtc)
+>  {
+>         struct vop *vop = to_vop(crtc);
+> @@ -1157,6 +1212,13 @@ static irqreturn_t vop_isr(int irq, void *data)
+>                 ret = IRQ_HANDLED;
+>         }
+>
+> +       if (active_irqs & LINE_FLAG_INTR) {
+> +               if (!completion_done(&vop->line_flag_completion))
+> +                       complete(&vop->line_flag_completion);
 
---=20
-caesar wang | software engineer | wxt@rock-chip.com
+I think there's potential to miss flags here if the timing is just
+right because the completion_done and complete are not atomic wrt the
+wait_line_flag function. I think you need some locking around the
+completion operations to ensure they're properly sequenced.
+
+FWIW, if you're reinitializing the completion every time in
+drm_wait_line_flag, you should be able to just call complete (or
+complete_all) without checking if there are any waiters.
+
+
+> +               active_irqs &= ~LINE_FLAG_INTR;
+> +               ret = IRQ_HANDLED;
+> +       }
+> +
+>         if (active_irqs & FS_INTR) {
+>                 drm_crtc_handle_vblank(crtc);
+>                 vop_handle_vblank(vop);
+> @@ -1255,6 +1317,7 @@ static int vop_create_crtc(struct vop *vop)
+>
+>         init_completion(&vop->dsp_hold_completion);
+>         init_completion(&vop->wait_update_complete);
+> +       init_completion(&vop->line_flag_completion);
+>         crtc->port = port;
+>         rockchip_register_crtc_funcs(crtc, &private_crtc_funcs);
+>
+> @@ -1411,6 +1474,46 @@ static void vop_win_init(struct vop *vop)
+>         }
+>  }
+>
+> +/**
+> + * rockchip_drm_wait_line_flag - acqiure the give line flag event
+> + * @crtc: CRTC to enable line flag
+> + * @line_num: interested line number
+> + * @mstimeout: millisecond for timeout
+> + *
+> + * Driver would hold here until the interested line flag interrupt have
+> + * happened or timeout to wait.
+> + *
+> + * Returns:
+> + * Zero on success, negative errno on failure.
+> + */
+> +int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+> +                               unsigned int mstimeout)
+> +{
+> +       struct vop *vop = to_vop(crtc);
+> +       unsigned long jiffies_left;
+> +
+> +       if (!crtc || !vop->is_enabled)
+> +               return -ENODEV;
+> +
+> +       if (line_num > crtc->mode.vtotal || mstimeout <= 0)
+> +               return -EINVAL;
+> +
+> +       reinit_completion(&vop->line_flag_completion);
+> +       vop_line_flag_irq_enable(vop, line_num);
+> +
+
+This will only work for one waiter per vop. Is it worth enforcing this
+explicitly to avoid weird behavior when there are more than one?
+
+> +       jiffies_left = wait_for_completion_timeout(&vop->line_flag_completion,
+> +                                                  msecs_to_jiffies(mstimeout));
+> +       vop_line_flag_irq_disable(vop);
+> +
+> +       if (jiffies_left == 0) {
+> +               dev_err(vop->dev, "Timeout waiting for IRQ\n");
+> +               return -ETIMEDOUT;
+> +       }
+> +
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL(rockchip_drm_wait_line_flag);
+> +
+>  static int vop_bind(struct device *dev, struct device *master, void *data)
+>  {
+>         struct platform_device *pdev = to_platform_device(dev);
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> index ff4f52e..34fcd03 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> @@ -61,6 +61,9 @@ struct vop_ctrl {
+>         struct vop_reg hpost_st_end;
+>         struct vop_reg vpost_st_end;
+>
+> +       struct vop_reg line_flag_num_0;
+> +       struct vop_reg line_flag_num_1;
+> +
+
+nit: you could make this an array:
+
+struct vop_reg line_flag_num[2];
+
+
+>         struct vop_reg cfg_done;
+>  };
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> index 6f42e56..e9211c9 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> @@ -122,6 +122,7 @@ static const struct vop_ctrl rk3036_ctrl_data = {
+>         .hact_st_end = VOP_REG(RK3036_DSP_HACT_ST_END, 0x1fff1fff, 0),
+>         .vtotal_pw = VOP_REG(RK3036_DSP_VTOTAL_VS_END, 0x1fff1fff, 0),
+>         .vact_st_end = VOP_REG(RK3036_DSP_VACT_ST_END, 0x1fff1fff, 0),
+> +       .line_flag_num_0 = VOP_REG(RK3036_INT_STATUS, 0xfff, 12),
+>         .cfg_done = VOP_REG(RK3036_REG_CFG_DONE, 0x1, 0),
+>  };
+>
+> @@ -221,6 +222,7 @@ static const struct vop_ctrl rk3288_ctrl_data = {
+>         .vact_st_end = VOP_REG(RK3288_DSP_VACT_ST_END, 0x1fff1fff, 0),
+>         .hpost_st_end = VOP_REG(RK3288_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
+>         .vpost_st_end = VOP_REG(RK3288_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
+> +       .line_flag_num_0 = VOP_REG(RK3288_INTR_CTRL0, 0x1fff, 12),
+>         .cfg_done = VOP_REG(RK3288_REG_CFG_DONE, 0x1, 0),
+>  };
+>
+> @@ -299,6 +301,8 @@ static const struct vop_ctrl rk3399_ctrl_data = {
+>         .vact_st_end = VOP_REG(RK3399_DSP_VACT_ST_END, 0x1fff1fff, 0),
+>         .hpost_st_end = VOP_REG(RK3399_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
+>         .vpost_st_end = VOP_REG(RK3399_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
+> +       .line_flag_num_0 = VOP_REG(RK3399_LINE_FLAG, 0xffff, 0),
+> +       .line_flag_num_1 = VOP_REG(RK3399_LINE_FLAG, 0xffff, 16),
+>         .cfg_done = VOP_REG_MASK(RK3399_REG_CFG_DONE, 0x1, 0),
+>  };
+>
+> --
+> 1.9.1
+>
+>
