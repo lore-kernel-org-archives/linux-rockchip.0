@@ -1,28 +1,35 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip clk changes for 4.8
-Date: Fri, 01 Jul 2016 02:14:53 +0200
-Message-ID: <112903792.EQ89smGoay@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL 1/2] Rockchip dts32 changes for 4.8
+Date: Fri, 01 Jul 2016 02:19:25 +0200
+Message-ID: <1666093.aVfPg2VmbT@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Arnd, Kevin, Olof,
 
-please find below clock changes for 4.8.
+please find below arm devicetree changes for 4.8. The biggest part is
+probably the support for audio on veyron devices where the renaming was
+coordinated with the alsa side and the overturned name was never part of
+an actual release.
 
-Apart from some new clock ids there is the addition of a placeholder clock
-for the rk3399 watchdog pclk - as explained in the code, this gate is not
-controlled through the clock controller but through the general register
-files, yet the watchdog is unhappy if can't see the clock. And finally some
-small fixes for clock mistakes that do not affect any currently support
-board ip blocks like spdif-DPTX clock on the rk3399.
+Apart from that Veyron also got a node for its spi flash and we now also
+support the ethernet and i2s controller on the rk3228/rk3229 siblings.
 
-So if this looks ok, please pull
+So if it looks ok, please pull
 
 Thanks
 Heiko
@@ -34,34 +41,53 @@ The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.8-rockchip-clk1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.8-rockchip-dts32-1
 
-for you to fetch changes up to 3770821fa360525e6c726cd562a2438a0aa5d566:
+for you to fetch changes up to 241eff3c198492b2d63e75723b774f2836fee8a3:
 
-  clk: rockchip: fix incorrect rk3399 spdif-DPTX divider bits (2016-07-01 01:50:17 +0200)
-
-----------------------------------------------------------------
-Placeholder for the rk3399 watchdog pclk, some newly exported
-rk3228 clockids and a small fix for the not yet used spdif to
-displayport clock on the rk3399.
+  ARM: dts: rockchip: add support rk3229 evb board (2016-06-27 21:38:50 +0200)
 
 ----------------------------------------------------------------
-Heiko Stuebner (1):
-      Merge branch 'v4.8-shared/clkids' into v4.8-clk/next
+Audio support and spi-flash on rk3288-veyron Chromedevices
+as well as i2s and ethernet support on rk3228/rk3229 devices
+and a dts file for the rk3229 eval board.
 
-Xing Zheng (9):
-      clk: rockchip: add a dummy clock for the watchdog pclk on rk3399
+----------------------------------------------------------------
+Brian Norris (1):
+      ARM: dts: rockchip: add SPI flash node for rk3288-veyron
+
+Enric Balletbo i Serra (2):
+      ARM: dts: rockchip: Add shared file for audio on rk3288-veyron boards
+      ARM: dts: rockchip: Enable analog audio on rk3288-veyron chromebooks
+
+Heiko Stuebner (3):
+      ARM: dts: rockchip: move rk3288 io-domain nodes to the grf
+      ARM: dts: rockchip: rename i2s model for Veyron devices
+      Merge branch 'v4.8-shared/clkids' into v4.8-armsoc/dts32
+
+Xing Zheng (6):
       clk: rockchip: add clock-ids for rk3228 audio clocks
       clk: rockchip: add clock-ids for rk3228 MAC clocks
-      clk: rockchip: fix incorrect rk3228 clock registers
-      clk: rockchip: include rk3228 downstream muxes into fractional dividers
-      clk: rockchip: export rk3228 audio clocks
-      clk: rockchip: rename rk3228 sclk_macphy_50m to sclk_mac_extclk
-      clk: rockchip: export rk3228 MAC clocks
-      clk: rockchip: fix incorrect rk3399 spdif-DPTX divider bits
+      ARM: dts: rockchip: rename rk3228.dtsi to rk322x.dtsi
+      ARM: dts: rockchip: add i2s nodes for RK322x SoCs
+      ARM: dts: rockchip: add GMAC nodes for RK322x SoCs
+      ARM: dts: rockchip: add support rk3229 evb board
 
- drivers/clk/rockchip/clk-rk3228.c      | 125 +++++++++++++++++++--------------
- drivers/clk/rockchip/clk-rk3399.c      |  11 ++-
- include/dt-bindings/clock/rk3228-cru.h |  15 ++++
- 3 files changed, 99 insertions(+), 52 deletions(-)
-
+ Documentation/devicetree/bindings/arm/rockchip.txt |   3 +
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/rk3228-evb.dts                   |   2 +-
+ arch/arm/boot/dts/rk3229-evb.dts                   |  90 ++++++++++++++++
+ arch/arm/boot/dts/{rk3228.dtsi => rk322x.dtsi}     | 118 ++++++++++++++++++++-
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  31 +++---
+ arch/arm/boot/dts/rk3288-miqi.dts                  |  26 ++---
+ arch/arm/boot/dts/rk3288-popmetal.dts              |  31 +++---
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  31 +++---
+ arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi  | 101 ++++++++++++++++++
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi    |   1 +
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  31 +++---
+ arch/arm/boot/dts/rk3288.dtsi                      |   5 +
+ include/dt-bindings/clock/rk3228-cru.h             |  15 +++
+ 14 files changed, 409 insertions(+), 77 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3229-evb.dts
+ rename arch/arm/boot/dts/{rk3228.dtsi => rk322x.dtsi} (80%)
+ create mode 100644 arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
