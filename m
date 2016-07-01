@@ -1,102 +1,75 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support the pmu node for rk3399
-Date: Fri, 1 Jul 2016 11:26:12 +0100
-Message-ID: <20160701102612.GB22953@leverpostej>
-References: <1467358570-24417-1-git-send-email-wxt@rock-chips.com>
- <1467358570-24417-3-git-send-email-wxt@rock-chips.com>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
+Date: Fri, 1 Jul 2016 11:32:51 +0100
+Message-ID: <577646D3.7040207@arm.com>
+References: <1467336290-11282-1-git-send-email-shawn.lin@rock-chips.com>
+ <1467336290-11282-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1467358570-24417-3-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, marc.zyngier@arm.com
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, Will Deacon <will.deacon@arm.com>, briannorris@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, David Wu <david.wu@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1467336290-11282-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 01, 2016 at 03:36:10PM +0800, Caesar Wang wrote:
-> As the Marc posted the patches [0] to support Partitioning per-cpu
-> interrupts. Let's add this patch to match it on rk3399 SoCs.
+On 01/07/16 02:24, Shawn Lin wrote:
+> This patch adds Rockchip PCIe controller support found
+> on RK3399 Soc platform.
 > 
-> [0]:
-> https://lkml.org/lkml/2016/4/11/182
-
-The core IRQ support is merged, but it's worth noting that the perf code
-doesn't use it yet. So we still need a patch adding support to the perf
-code before we can change the dts.
-
-I think Marc had a prototype of that somewhere.
-
-Marc?
-
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Will Deacon <will.deacon@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> CC: linux-arm-kernel@lists.infradead.org
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
 > ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 8f0a069..b260f62 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -165,6 +165,22 @@
->  			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
->  	};
->  
-> +	pmu_a53 {
-> +		compatible = "arm,cortex-a53-pmu";
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &part0>;
-> +		interrupt-affinity = <&cpu_l0>,
-> +				     <&cpu_l1>,
-> +				     <&cpu_l2>,
-> +				     <&cpu_l3>;
-> +	};
 
-I'm not keen on having to redundantly describe the affinity in
-interrupt-affinity and the partition's affinity property. Those will
-almost certainly be out-of-sync in some DTs, and it'll be very painful
-to deal with.
+[...]
 
-I think that for partitioned PPIs the PMU driver should use the affinity
-from the PPI, and not have an interrupt-affinity property. Hopefully
-that's relatively simple to handle.
+> +static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+> +{
+> +	struct irq_chip *chip = irq_desc_get_chip(desc);
+> +	struct rockchip_pcie_port *port;
+> +	u32 reg;
+> +
+> +	chained_irq_enter(chip, desc);
+> +	port = irq_desc_get_handler_data(desc);
+> +
+> +	reg = pcie_read(port, PCIE_CLIENT_INT_STATUS);
+> +	reg = (reg & ROCKCHIP_PCIE_RPIFR1_INTR_MASK) >>
+> +	       ROCKCHIP_PCIE_RPIFR1_INTR_SHIFT;
+> +	if (reg)
+> +		generic_handle_irq(irq_find_mapping(port->irq_domain,
+> +						    ffs(reg)));
+
+Can't you get multiple pending interrupts at the same time? Here, you
+seem to only process one interrupt at a time, which is going to be
+pretty inefficient.
+
+How about something like:
+
+	while (reg) {
+		int hwirq = ffs(reg);
+		int irq;
+		
+		reg &= ~BIT(hwirq);
+		irq = irq_find_mapping(port->irq_domain, hwirq);
+		if (irq)
+			generic_handle_irq(irq);
+	}
+
+> +	chained_irq_exit(chip, desc);
+> +}
+> +
 
 Thanks,
-Mark.
 
-> +
-> +	pmu_a72 {
-> +		compatible = "arm,cortex-a72-pmu";
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &part1>;
-> +		interrupt-affinity = <&cpu_b0>,
-> +				     <&cpu_b1>;
-> +	};
-> +
->  	xin24m: xin24m {
->  		compatible = "fixed-clock";
->  		clock-frequency = <24000000>;
-> @@ -296,6 +312,16 @@
->  			msi-controller;
->  			reg = <0x0 0xfee20000 0x0 0x20000>;
->  		};
-> +
-> +		ppi-partitions {
-> +			part0: interrupt-partition-0 {
-> +				affinity = <&cpu_l0 &cpu_l1 &cpu_l2 &cpu_l3>;
-> +			};
-> +
-> +			part1: interrupt-partition-1 {
-> +				affinity = <&cpu_b0 &cpu_b1>;
-> +			};
-> +		};
->  	};
->  
->  	i2c1: i2c@ff110000 {
-> -- 
-> 1.9.1
-> 
+	M.
+-- 
+Jazz is not dead. It just smells funny...
