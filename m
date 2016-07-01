@@ -1,160 +1,90 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] Documentation: bindings: add dt doc for Rockchip
- PCIe controller
-Date: Fri, 1 Jul 2016 14:01:09 +0100
-Message-ID: <57766995.9070302@arm.com>
-References: <1467336290-11282-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467336290-11282-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: [PATCH] drivers/perf: arm-pmu: Handle per-interrupt affinity mask
+Date: Fri,  1 Jul 2016 14:21:31 +0100
+Message-ID: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/07/16 02:24, Shawn Lin wrote:
-> This patch adds a binding that describes the Rockchip PCIe controller
-> found on Rockchip SoCs PCIe interface.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v4:
-> - fix example of adding intermediate interrupt controller for pcie
->   legacy interrrupt
-> 
-> Changes in v3:
-> - fix example dts code suggested by Rob and Marc
-> - remove driver's behaviour of regulator
-> 
-> Changes in v2:
-> - fix lots clk/reset stuff suggested by Heiko
-> - remove msi-parent and add msi-map suggested by Marc
-> - drop phy related stuff
-> - some others minor fixes
-> 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      | 91 ++++++++++++++++++++++
->  1 file changed, 91 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> new file mode 100644
-> index 0000000..8092fc5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -0,0 +1,91 @@
-> +* Rockchip AXI PCIe Root Port Bridge DT description
-> +
-> +Required properties:
-> +- #address-cells: Address representation for root ports, set to <3>
-> +- #size-cells: Size representation for root ports, set to <2>
-> +- #interrupt-cells: specifies the number of cells needed to encode an
-> +		interrupt source. The value must be 1.
-> +- compatible: Should contain "rockchip,rk3399-pcie"
-> +- reg: Two register ranges as listed in the reg-names property
-> +- reg-names: Must include the following names
-> +	- "axi-base"
-> +	- "apb-base"
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +		See ../clocks/clock-bindings.txt for details.
-> +- clock-names: Must include the following entries:
-> +	- "aclk"
-> +	- "aclk-perf"
-> +	- "hclk"
-> +	- "pm"
-> +- msi-map: Maps a Requester ID to an MSI controller and associated.
-> +		See ./pci-msi.txt
-> +- phys: From PHY bindings: Phandle for the Generic PHY for PCIe.
-> +- phy-names:  MUST be "pcie-phy".
-> +- interrupts: Three interrupt entries must be specified.
-> +- interrupt-names: Must include the following names
-> +	- "sys"
-> +	- "legacy"
-> +	- "client"
-> +- resets: Must contain five entries for each entry in reset-names.
-> +	   See ../reset/reset.txt for details.
-> +- reset-names: Must include the following names
-> +	- "core"
-> +	- "mgmt"
-> +	- "mgmt-sticky"
-> +	- "pipe"
-> +- pinctrl-names : The pin control state names
-> +- pinctrl-0: The "default" pinctrl state
-> +- interrupt-map-mask and interrupt-map: standard PCI properties
-> +- interrupt-controller: identifies the node as an interrupt controller
-> +
-> +Optional Property:
-> +- ep-gpios: contain the entry for pre-reset gpio
-> +- num-lanes: number of lanes to use
-> +- vpcie3v3-supply: The phandle to the 3.3v regulator to use for pcie.
-> +- vpcie1v8-supply: The phandle to the 1.8v regulator to use for pcie.
-> +- vpcie0v9-supply: The phandle to the 0.9v regulator to use for pcie.
-> +
-> +Example:
-> +
-> +pcie0: pcie@f8000000 {
-> +	compatible = "rockchip,rk3399-pcie";
-> +	#address-cells = <3>;
-> +	#size-cells = <2>;
-> +	clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
-> +		 <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
-> +	clock-names = "aclk", "aclk-perf",
-> +		      "hclk", "pm";
-> +	bus-range = <0x0 0x1>;
-> +	interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>,
-> +		     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-> +	interrupt-names = "sys", "legacy", "client";
-> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
-> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
-> +	assigned-clock-rates = <100000000>;
-> +	ep-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
-> +	ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x600000
-> +		  0x81000000 0x0 0xfa600000 0x0 0xfa600000 0x0 0x100000>;
-> +	num-lanes = <4>;
-> +	msi-map = <0x0 &its 0x0 0x1000>;
-> +	reg = < 0x0 0xf8000000 0x0 0x2000000 >, < 0x0 0xfd000000 0x0 0x1000000 >;
-> +	reg-names = "axi-base", "apb-base";
-> +	resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
-> +		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>;
-> +	reset-names = "core", "mgmt", "mgmt-sticky", "pipe";
-> +	phys = <&pcie_phy>;
-> +	phy-names = "pcie-phy";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreq>;
-> +	#interrupt-cells = <1>;
-> +	interrupt-controller;
+On a big-little system, PMUs can be wired to CPUs using per CPU
+interrups (PPI). In this case, it is important to make sure that
+the enable/disable do happen on the right set of CPUs.
 
-So the pcie node itself is an interrupt controller...
+So instead of relying on the interrupt-affinity property, we can
+use the actual percpu affinity that DT exposes as part of the
+interrupt specifier. The DT binding is also updated to reflect
+the fact that the interrupt-affinity property shouldn't be used
+in that case.
 
-> +	interrupt-map-mask = <0 0 0 7>;
-> +	interrupt-map = <0 0 0 1 &pcie0_intc 1>,
-> +			<0 0 0 2 &pcie0_intc 2>,
-> +			<0 0 0 3 &pcie0_intc 3>,
-> +			<0 0 0 4 &pcie0_intc 4>;
-> +	pcie0_intc: interrupt-controller {
-> +		interrupt-controller;
-> +		#address-cells = <0>;
-> +		#interrupt-cells = <1>;
-> +	};
+Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
+---
+ Documentation/devicetree/bindings/arm/pmu.txt |  4 +++-
+ drivers/perf/arm_pmu.c                        | 22 +++++++++++++++++-----
+ 2 files changed, 20 insertions(+), 6 deletions(-)
 
-But there's also another here. I just don't understand how it works.
-
-> +};
-> 
-
-Thanks,
-
-	M.
+diff --git a/Documentation/devicetree/bindings/arm/pmu.txt b/Documentation/devicetree/bindings/arm/pmu.txt
+index 74d5417..61c8b46 100644
+--- a/Documentation/devicetree/bindings/arm/pmu.txt
++++ b/Documentation/devicetree/bindings/arm/pmu.txt
+@@ -39,7 +39,9 @@ Optional properties:
+                        When using a PPI, specifies a list of phandles to CPU
+ 		       nodes corresponding to the set of CPUs which have
+ 		       a PMU of this type signalling the PPI listed in the
+-		       interrupts property.
++		       interrupts property, unless this is already specified
++		       by the PPI interrupt specifier itself (in which case
++		       the interrupt-affinity property shouldn't be present).
+ 
+                        This property should be present when there is more than
+ 		       a single SPI.
+diff --git a/drivers/perf/arm_pmu.c b/drivers/perf/arm_pmu.c
+index 140436a..065ccec 100644
+--- a/drivers/perf/arm_pmu.c
++++ b/drivers/perf/arm_pmu.c
+@@ -603,7 +603,8 @@ static void cpu_pmu_free_irq(struct arm_pmu *cpu_pmu)
+ 
+ 	irq = platform_get_irq(pmu_device, 0);
+ 	if (irq >= 0 && irq_is_percpu(irq)) {
+-		on_each_cpu(cpu_pmu_disable_percpu_irq, &irq, 1);
++		on_each_cpu_mask(&cpu_pmu->supported_cpus,
++				 cpu_pmu_disable_percpu_irq, &irq, 1);
+ 		free_percpu_irq(irq, &hw_events->percpu_pmu);
+ 	} else {
+ 		for (i = 0; i < irqs; ++i) {
+@@ -645,7 +646,9 @@ static int cpu_pmu_request_irq(struct arm_pmu *cpu_pmu, irq_handler_t handler)
+ 				irq);
+ 			return err;
+ 		}
+-		on_each_cpu(cpu_pmu_enable_percpu_irq, &irq, 1);
++
++		on_each_cpu_mask(&cpu_pmu->supported_cpus,
++				 cpu_pmu_enable_percpu_irq, &irq, 1);
+ 	} else {
+ 		for (i = 0; i < irqs; ++i) {
+ 			int cpu = i;
+@@ -961,9 +964,18 @@ static int of_pmu_irq_cfg(struct arm_pmu *pmu)
+ 		i++;
+ 	} while (1);
+ 
+-	/* If we didn't manage to parse anything, claim to support all CPUs */
+-	if (cpumask_weight(&pmu->supported_cpus) == 0)
+-		cpumask_setall(&pmu->supported_cpus);
++	/* If we didn't manage to parse anything, try the interrupt affinity */
++	if (cpumask_weight(&pmu->supported_cpus) == 0) {
++		if (!using_spi) {
++			/* If using PPIs, check the affinity of the partition */
++			int irq = platform_get_irq(pdev, 0);
++			irq_get_percpu_devid_partition(irq,
++						       &pmu->supported_cpus);
++		} else {
++			/* Otherwise default to all CPUs */
++			cpumask_setall(&pmu->supported_cpus);
++		}
++	}
+ 
+ 	/* If we matched up the IRQ affinities, use them to route the SPIs */
+ 	if (using_spi && i == pdev->num_resources)
 -- 
-Jazz is not dead. It just smells funny...
+2.1.4
