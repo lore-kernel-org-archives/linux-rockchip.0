@@ -1,32 +1,72 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: fix the rk3399 spdif incorrect bit for DPTX
-Date: Fri, 01 Jul 2016 10:31:54 +0200
-Message-ID: <2167990.nRjYb2NtK4@phil>
-References: <1467253139-21112-1-git-send-email-zhengxing@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v3 0/4] Add PSR function support for Analogix/Rockchip DP
+Date: Fri,  1 Jul 2016 17:18:04 +0800
+Message-ID: <1467364685-21390-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467253139-21112-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, emil.l.velikov@gmail.com, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 30. Juni 2016, 10:18:59 schrieb Xing Zheng:
-> The CLKSEL_CON32 bit_0 is controlled for spdif_8ch, not spdif_rec_dptx,
-> it should be bit_8, let's fix it.
-> 
-> Reported-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Tested-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-applied to my clk branch for 4.8
+SGkgYWxsLAoKVGhlIGZ1bGwgbmFtZSBvZiBQU1IgaXMgUGFuZWwgU2VsZiBSZWZyZXNoLCBwYW5l
+bCBkZXZpY2UgY291bGQgcmVmcmVzaAppdHNlbGYgd2l0aCB0aGUgaGFyZHdhcmUgZnJhbWVidWZm
+ZXIgaW4gcGFuZWwsIHRoaXMgd291bGQgbWFrZSBhIGxvdHMKb2Ygc2Vuc2UgdG8gc2F2ZSB0aGUg
+cG93ZXIgY29uc3VtcHRpb24uCgpUaGlzIHYzIHZlcnNpb24gaGF2ZSBzcGxpdGVkIGFuIGNvbW1v
+biBQU1IgZHJpdmVyIGZvciBSb2NrY2hpcCwgd2hpY2ggaXMKYmlnZ2VzdCBjaGFuZ2VzIGZyb20g
+djIuCgpUaGlzIHRocmVhZCBpcyBiYXNlZCBvbiBNYXJrJ3MgUkszMzk5IFZPUCB0aHJlYWRbMF0g
+YW5kIG15IFJLMzM5OSBlRFAKdGhyZWFkWzFdLgoKWzBdOiBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3BhdGNoLzg4ODYwNDEvClsxXTogaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9w
+YXRjaC85MjA0NDk3LwoKVGhhbmtzLAotIFlha2lyCgoKQ2hhbmdlcyBpbiB2MzoKLSBSZW1vdmUg
+dGhlIG5vdGlmeSBmb3Igd2FpdGluZyBsaW5lX2ZsYWcgZXZlbnQgKERhbmllbCkKLSBpbXBsZW1l
+bnQgdGhlICdmYi0+ZGlydHknIGNhbGxiYWNrIGZ1bmN0aW9uIChEYW5pZWwpCi0gYXZvaWQgdG8g
+dXNlIG5vdGlmeSB0byBhY3FpdXJlIGZvciB2YWN0IGV2ZW50IChEYW5pZWwpCi0gc3BsaXQgdGhl
+IHBzciBmbG93IGludG8gYW4gY29tbW9uIGFic3RyYWN0ZWQgUFNSIGRyaXZlcgotIEV4cG9ydCB0
+aGUgJ3JvY2tjaGlwX2RybV93YWl0X2xpbmVfZmxhZycgc3ltYm9sLCBhbmQgZG9jdW1lbnQgaXQu
+Ci0gQWRkICdsaW5lX2ZsYWdfbnVtXzAnIGZvciBSSzMyODgvUkszMDM2Ci0gcmVtb3ZlIHBzcl9h
+Y3RpdmUoKSBjYWxsYmFjayB3aGljaCBpbnRyb2R1Y2UgaW4gdjIKLSBzcGxpdCBhbmFsb2dpeF9k
+cF9lbmFibGVfcHNyKCksIG1ha2UgaXQgbW9yZSBjbGVhcmx5CiAgICBhbmFsb2dpeF9kcF9kZXRl
+Y3Rfc2lua19wc3IoKQogICAgYW5hbG9naXhfZHBfZW5hYmxlX3NpbmtfcHNyKCkKLSByZW1vdmUg
+c29tZSBub3NpZSByZWdpc3RlciBzZXR0aW5nIGNvbW1lbnRzCi0gc3BsaXQgdGhlIGNvbW1vbiBw
+c3IgbG9naWMgaW50byBhIHNlcGVyYXRlIGRyaXZlciwgbWFrZSB0aGlzIHRvIGEKICBzaW1wbGUg
+c3ViLXBzciBkZXZpY2UgZHJpdmVyLgoKQ2hhbmdlcyBpbiB2MjoKLSBJbnRyb2R1Y2UgaW4gdjIs
+IHNwbGl0IFZPUCBsaW5lIGZsYWcgY2hhbmdlcyBvdXQKLSBpbnRyb2R1Y2UgaW4gdjIsIHNwbGl0
+ZSB0aGUgY29tbW9uIEFuYWxvZ2l4IERQIGNoYW5nZXMgb3V0Ci0gcmVtb3ZlIHZibGFuayBub3Rp
+Znkgb3V0IChEYW5pZWwpCi0gY3JlYXRlIGEgcHNyX2FjdGl2ZSgpIGNhbGxiYWNrIGluIHZvcCBk
+YXRhIHN0cnVjdC4KCllha2lyIFlhbmcgKDQpOgogIGRybS9yb2NrY2hpcDogdm9wOiBleHBvcnQg
+bGluZSBmbGFnIGZ1bmN0aW9uCiAgZHJtL3JvY2tjaGlwOiBhZGQgYW4gY29tbW9uIGFic3RyYWN0
+ZWQgUFNSIGRyaXZlcgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBhZGQgdGhlIFBTUiBmdW5j
+dGlvbiBzdXBwb3J0CiAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogaW1wbGVtZW50IFBTUiBm
+dW5jdGlvbgoKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
+ZS5jIHwgIDY0ICsrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
+aXhfZHBfY29yZS5oIHwgICA0ICsKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
+bG9naXhfZHBfcmVnLmMgIHwgIDU0ICsrKysrKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9yZWcuaCAgfCAgMjggKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAgNTIgKysrKysrCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgMyArCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgICAgICAgICB8ICAxMiArKwogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyAgICAgICAgfCAyMDAgKysr
+KysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3Bzci5oICAgICAgICB8ICAxMiArKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYyAgICAgICAgfCAxMjcgKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCAgICAgICAgfCAgIDMgKwogZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgICAgfCAgIDQgKwogaW5jbHVkZS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAgICAgfCAgIDMgKwogMTQgZmlsZXMg
+Y2hhbmdlZCwgNTY3IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jCiBjcmVhdGUg
+bW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuaAoK
+LS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
