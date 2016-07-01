@@ -1,141 +1,61 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 4/4] drm/rockchip: analogix_dp: implement PSR function
-Date: Fri, 1 Jul 2016 16:05:52 -0400
-Message-ID: <CAOw6vbL=GsAL+XDive6g4ettZrdrW6BZ-OkVbPp54E5gxn_HsQ@mail.gmail.com>
-References: <1467364685-21390-1-git-send-email-ykk@rock-chips.com> <1467364776-21794-1-git-send-email-ykk@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
+ mode
+Date: Fri, 1 Jul 2016 13:17:48 -0700
+Message-ID: <CAD=FV=WKR_Fq6o34886RCY-T-6AKdRqFz9H1aTiRq7Zu=o8TWA@mail.gmail.com>
+References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+ <20160701080614.GA9196@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467364776-21794-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, David Airlie <airlied@linux.ie>, Emil Velikov <emil.l.velikov@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160701080614.GA9196-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 1, 2016 at 5:19 AM, Yakir Yang <ykk@rock-chips.com> wrote:
-> Alway enable the PSR function for Rockchip analogix_dp driver. If panel
-> don't support PSR, then the core analogix_dp would ignore this setting.
->
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> ---
-> Changes in v3:
-> - split the common psr logic into a seperate driver, make this to a
->   simple sub-psr device driver.
->
-> Changes in v2:
-> - remove vblank notify out (Daniel)
-> - create a psr_active() callback in vop data struct.
->
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 52 +++++++++++++++++++++++++
->  1 file changed, 52 insertions(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index e81e19a..80a60a6 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -32,6 +32,7 @@
->  #include <drm/bridge/analogix_dp.h>
->
->  #include "rockchip_drm_drv.h"
-> +#include "rockchip_drm_psr.h"
->  #include "rockchip_drm_vop.h"
->
->  #define RK3288_GRF_SOC_CON6            0x25c
-> @@ -68,11 +69,53 @@ struct rockchip_dp_device {
->         struct regmap            *grf;
->         struct reset_control     *rst;
->
-> +       struct delayed_work      psr_work;
-> +       unsigned int             psr_state;
-> +
->         const struct rockchip_dp_chip_data *data;
->
->         struct analogix_dp_plat_data plat_data;
->  };
->
-> +static int analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+Mark,
 
-Again, this function doesn't fail, but its return type is int.
-Fortunately you don't check the return in rockchip_drm_psr.c, so this
-also seems like a good void candidate.
+On Fri, Jul 1, 2016 at 1:06 AM, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> On Mon, Jun 27, 2016 at 09:53:11PM -0700, Douglas Anderson wrote:
+>
+>> Note that this patch is atop Boris's recent PWM regulator fixes.  If
+>> desired it wouldn't be too hard to write it atop the old code, though
+>> quite honestly anyone using a PWM regulator should probably be using his
+>> new code.
+>
+> Given that those don't seem likely to go in any time soon and aren't
+> going to go in as a fix can you please respin against current code?
 
-> +{
-> +       struct rockchip_dp_device *dp = to_dp(encoder);
-> +
-> +       dev_dbg(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
-> +
-> +       if (enabled)
-> +               dp->psr_state = EDP_VSC_PSR_STATE_ACTIVE;
-> +       else
-> +               dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
-> +
-> +       schedule_delayed_work(&dp->psr_work, msecs_to_jiffies(10));
+I went to write this patch and it was pretty easy to write.  ...but
+then I realized that I had no real way to test it.  I can compile test
+it, but that's it.  Do you still want it?
 
-Pull 10 out into a #define
+Specifically without Boris's patches then I don't believe the devices
+I have access to are bootable when I tell Linux about the PWM
+regulator, especially when I configure the PWM regulator to use
+continuous mode (which is where the bug is).  As I understand from
+<https://patchwork.kernel.org/patch/9175279/> the current PWM
+regulator assumes that 0% duty cycle is the lowest voltage and 100% is
+the highest voltage.  My system is backwards (0% is highest, 100%
+lowest).  Also: last I tried even the non-continuous mode without
+Boris's patches the regulator would glitch enough at bootup that my
+system would crash (the PWM regulator affects the memory controller).
 
-> +
-> +       return 0;
-> +}
-> +
-> +static void analogix_dp_psr_work(struct work_struct *work)
-> +{
-> +       struct rockchip_dp_device *dp =
-> +                               container_of(work, typeof(*dp), psr_work.work);
-> +       struct drm_crtc *crtc = dp->encoder.crtc;
-> +       int psr_state = dp->psr_state;
-> +       int vact_end;
-> +       int ret;
-> +
-> +       if (!crtc)
-> +               return;
-> +
-> +       vact_end = crtc->mode.vtotal - crtc->mode.vsync_start + crtc->mode.vdisplay;
-> +
-> +       ret = rockchip_drm_wait_line_flag(dp->encoder.crtc, vact_end, 100);
+Anyway, let me know if you want me to post the untested, rebased
+patch...  Personally I'd prefer to wait for Boris's patches and the
+land the tested version.
+
+Boris: any idea for what the next steps on your series are?
 
 
-Pull 100 out into a #define
-
-> +       if (ret == 0) {
-
-if (ret) {
-    dev_err(... "line flag interrupt did not arrive");
-    return;
-}
-
-> +               if (psr_state == EDP_VSC_PSR_STATE_ACTIVE)
-> +                       analogix_dp_active_psr(dp->dev);
-> +               else
-> +                       analogix_dp_inactive_psr(dp->dev);
-> +       }
-> +}
-> +
->  static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
->  {
->         reset_control_assert(dp->rst);
-> @@ -340,12 +383,21 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->         dp->plat_data.power_off = rockchip_dp_powerdown;
->         dp->plat_data.get_modes = rockchip_dp_get_modes;
->
-> +       dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
-> +       INIT_DELAYED_WORK(&dp->psr_work, analogix_dp_psr_work);
-> +
-> +       rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
-> +
->         return analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
->  }
->
->  static void rockchip_dp_unbind(struct device *dev, struct device *master,
->                                void *data)
->  {
-> +       struct rockchip_dp_device *dp = dev_get_drvdata(dev);
-> +
-> +       rockchip_drm_psr_unregister(&dp->encoder);
-> +
->         return analogix_dp_unbind(dev, master, data);
->  }
->
-> --
-> 1.9.1
->
->
+-Doug
