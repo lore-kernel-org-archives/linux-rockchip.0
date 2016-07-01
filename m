@@ -1,13 +1,15 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
-Date: Fri,  1 Jul 2016 09:24:50 +0800
-Message-ID: <1467336290-11282-2-git-send-email-shawn.lin@rock-chips.com>
-References: <1467336290-11282-1-git-send-email-shawn.lin@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add the power domain node for rk3399
+Date: Fri, 01 Jul 2016 10:11:24 +0800
+Message-ID: <5775D14C.5040808@rock-chips.com>
+References: <1467251760-14695-1-git-send-email-wxt@rock-chips.com>
+ <CAD=FV=Wg1vuBhcjFRj53t-E0sKoBH577RB7gHZ-rkJV5T7nyZw@mail.gmail.com>
+ <2709691.LCsUme3dJo@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467336290-11282-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <2709691.LCsUme3dJo@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,1281 +19,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: huangtao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds Rockchip PCIe controller support found
-on RK3399 Soc platform.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Changes in v4:
-- address the comments from Brain
-
-Changes in v3:
-- remove header file
-- remove struct msi_controller and move most of variables
-  of rockchip_pcie_port to become the local ones.
-- allow legacy int even if enabling MSI
-- drop regulator set voltage operation suggested by Doug
-
-Changes in v2:
-- remove phy related stuff and call phy API
-- add new head file and define lots of macro to make
-  the code more readable
-- remove lots msi related code suggested by Marc
-- add IO window address translation
-- init_port and parse_dt reconstruction suggested by Bharat
-- improve wr_own_conf suggested by Arnd
-- make pcie as an interrupt controller and fix wrong int handler
-  suggested by Marc
-- remove PCI_PROBE_ONLY suggested by Lorenzo
-
- drivers/pci/host/Kconfig         |   11 +
- drivers/pci/host/Makefile        |    1 +
- drivers/pci/host/pcie-rockchip.c | 1202 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 1214 insertions(+)
- create mode 100644 drivers/pci/host/pcie-rockchip.c
-
-diff --git a/drivers/pci/host/Kconfig b/drivers/pci/host/Kconfig
-index 5d2374e..fdcb515 100644
---- a/drivers/pci/host/Kconfig
-+++ b/drivers/pci/host/Kconfig
-@@ -245,4 +245,15 @@ config PCIE_ARMADA_8K
- 	  Designware hardware and therefore the driver re-uses the
- 	  Designware core functions to implement the driver.
- 
-+config PCIE_ROCKCHIP
-+	tristate "Rockchip PCIe controller"
-+	depends on ARM64 && ARCH_ROCKCHIP
-+	depends on OF
-+	select MFD_SYSCON
-+	select PCI_MSI_IRQ_DOMAIN if PCI_MSI
-+	help
-+	  Say Y here if you want internal PCI support on Rockchip SoC.
-+	  There is 1 internal PCIe port available to support GEN2 with
-+	  4 slots.
-+
- endmenu
-diff --git a/drivers/pci/host/Makefile b/drivers/pci/host/Makefile
-index 9c8698e..c52985c 100644
---- a/drivers/pci/host/Makefile
-+++ b/drivers/pci/host/Makefile
-@@ -29,3 +29,4 @@ obj-$(CONFIG_PCIE_QCOM) += pcie-qcom.o
- obj-$(CONFIG_PCI_HOST_THUNDER_ECAM) += pci-thunder-ecam.o
- obj-$(CONFIG_PCI_HOST_THUNDER_PEM) += pci-thunder-pem.o
- obj-$(CONFIG_PCIE_ARMADA_8K) += pcie-armada8k.o
-+obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-new file mode 100644
-index 0000000..77f33d2
---- /dev/null
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -0,0 +1,1202 @@
-+/*
-+ * Rockchip AXI PCIe host controller driver
-+ *
-+ * Copyright (c) 2016 Rockchip, Inc.
-+ *
-+ * Author: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+ *         Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+ *
-+ * Bits taken from Synopsys Designware Host controller driver and
-+ * ARM PCI Host generic driver.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/interrupt.h>
-+#include <linux/irq.h>
-+#include <linux/irqchip/chained_irq.h>
-+#include <linux/irqdomain.h>
-+#include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of_address.h>
-+#include <linux/of_device.h>
-+#include <linux/of_pci.h>
-+#include <linux/of_platform.h>
-+#include <linux/of_irq.h>
-+#include <linux/pci.h>
-+#include <linux/pci_ids.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/reset.h>
-+#include <linux/regmap.h>
-+
-+#define PCIE_CLIENT_BASE                0x0
-+#define PCIE_RC_CONFIG_NORMAL_BASE      0x800000
-+#define PCIE_RC_CONFIG_BASE             0xa00000
-+#define PCIE_CORE_LINK_CTRL_STATUS      0x8000d0
-+#define PCIE_CORE_CTRL_MGMT_BASE        0x900000
-+#define PCIE_CORE_AXI_CONF_BASE         0xc00000
-+#define PCIE_CORE_AXI_INBOUND_BASE      0xc00800
-+#define PCIE_CLIENT_BASIC_STATUS0       0x44
-+#define PCIE_CLIENT_BASIC_STATUS1       0x48
-+#define PCIE_CLIENT_INT_MASK            0x4c
-+#define PCIE_CLIENT_INT_STATUS          0x50
-+#define PCIE_RC_CONFIG_RID_CCR          0x8
-+#define PCIE_RC_CONFIG_LCS              0xd0
-+#define PCIE_RC_BAR_CONF                0x300
-+#define PCIE_CORE_OB_REGION_ADDR1       0x4
-+#define PCIE_CORE_OB_REGION_DESC0       0x8
-+#define PCIE_CORE_OB_REGION_DESC1       0xc
-+#define PCIE_RP_IB_ADDR_TRANS           0x4
-+#define PCIE_CORE_INT_MASK              0x900210
-+#define PCIE_CORE_INT_STATUS            0x90020c
-+
-+/* Size of one AXI Region (not Region 0) */
-+#define AXI_REGION_SIZE                 BIT(20)
-+/* Size of Region 0, equal to sum of sizes of other regions */
-+#define AXI_REGION_0_SIZE              (32 * (0x1 << 20))
-+#define OB_REG_SIZE_SHIFT               5
-+#define IB_ROOT_PORT_REG_SIZE_SHIFT     3
-+#define AXI_WRAPPER_IO_WRITE            0x6
-+#define AXI_WRAPPER_MEM_WRITE           0x2
-+#define MAX_AXI_IB_ROOTPORT_REGION_NUM  3
-+#define MIN_AXI_ADDR_BITS_PASSED        8
-+#define ROCKCHIP_VENDOR_ID              0x1d87
-+#define PCIE_ECAM_BUS(x)		(((x) & 0xFF) << 20)
-+#define PCIE_ECAM_DEV(x)		(((x) & 0x1F) << 15)
-+#define PCIE_ECAM_FUNC(x)		(((x) & 0x7) << 12)
-+#define PCIE_ECAM_REG(x)		(((x) & 0xFFF) << 0)
-+#define PCIE_ECAM_ADDR(bus, dev, func, reg) \
-+	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
-+	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
-+
-+/*
-+  * The higher 16-bit of this register is used for write protection
-+  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-+  */
-+#define HIWORD_UPDATE(val, mask, shift) \
-+	((val) << (shift) | (mask) << ((shift) + 16))
-+
-+#define RC_REGION_0_ADDR_TRANS_H        0x00000000
-+#define RC_REGION_0_ADDR_TRANS_L        0x00000000
-+#define RC_REGION_0_PASS_BITS           (25 - 1)
-+#define RC_REGION_1_ADDR_TRANS_H        0x00000000
-+#define RC_REGION_1_ADDR_TRANS_L        0x00400000
-+#define RC_REGION_1_PASS_BITS           (20 - 1)
-+#define MAX_AXI_WRAPPER_REGION_NUM      33
-+#define PCIE_CORE_LCSR_RETRAIN_LINK     BIT(5)
-+#define PCIE_CLIENT_CONF_ENABLE         1
-+#define PCIE_CLIENT_CONF_ENABLE_SHIFT   0
-+#define PCIE_CLIENT_CONF_ENABLE_MASK    0x1
-+#define PCIE_CLIENT_LINK_TRAIN_ENABLE   1
-+#define PCIE_CLIENT_LINK_TRAIN_SHIFT    1
-+#define PCIE_CLIENT_LINK_TRAIN_MASK     0x1
-+#define PCIE_CLIENT_ARI_ENABLE          1
-+#define PCIE_CLIENT_ARI_ENABLE_SHIFT    3
-+#define PCIE_CLIENT_ARI_ENABLE_MASK     0x1
-+#define PCIE_CLIENT_CONF_LANE_NUM(x)    (x / 2)
-+#define PCIE_CLIENT_CONF_LANE_NUM_SHIFT 4
-+#define PCIE_CLIENT_CONF_LANE_NUM_MASK  0x3
-+#define PCIE_CLIENT_MODE_RC             1
-+#define PCIE_CLIENT_MODE_SHIFT          6
-+#define PCIE_CLIENT_MODE_MASK           0x1
-+#define PCIE_CLIENT_GEN_SEL_2           1
-+#define PCIE_CLIENT_GEN_SEL_1           0
-+#define PCIE_CLIENT_GEN_SEL_SHIFT       7
-+#define PCIE_CLIENT_GEN_SEL_MASK        0x1
-+#define PCIE_CLIENT_LINK_STATUS_UP      0x3
-+#define PCIE_CLIENT_LINK_STATUS_SHIFT   20
-+#define PCIE_CLIENT_LINK_STATUS_MASK    0x3
-+#define PCIE_CORE_PL_CONF_SPEED_2_5G     0x0
-+#define PCIE_CORE_PL_CONF_SPEED_5G     0x1
-+#define PCIE_CORE_PL_CONF_SPEED_8G     0x2
-+#define PCIE_CORE_PL_CONF_SPEED_SHIFT   3
-+#define PCIE_CORE_PL_CONF_SPEED_MASK    0x3
-+#define PCIE_CORE_PL_CONF_LANE_SHIFT    1
-+#define PCIE_CORE_PL_CONF_LANE_MASK     0x3
-+#define PCIE_CORE_RC_CONF_SCC_SHIFT     16
-+
-+/* PCIE_CLIENT_INT_STATUS */
-+#define PCIE_CLIENT_INT_LEGACY_DONE     BIT(15)
-+#define PCIE_CLIENT_INT_MSG             BIT(14)
-+#define PCIE_CLIENT_INT_HOT_RST         BIT(13)
-+#define PCIE_CLIENT_INT_DPA             BIT(12)
-+#define PCIE_CLIENT_INT_FATAL_ERR       BIT(11)
-+#define PCIE_CLIENT_INT_NFATAL_ERR      BIT(10)
-+#define PCIE_CLIENT_INT_CORR_ERR        BIT(9)
-+#define PCIE_CLIENT_INT_INTD            BIT(8)
-+#define PCIE_CLIENT_INT_INTC            BIT(7)
-+#define PCIE_CLIENT_INT_INTB            BIT(6)
-+#define PCIE_CLIENT_INT_INTA            BIT(5)
-+#define PCIE_CLIENT_INT_LOCAL           BIT(4)
-+#define PCIE_CLIENT_INT_UDMA            BIT(3)
-+#define PCIE_CLIENT_INT_PHY             BIT(2)
-+#define PCIE_CLIENT_INT_HOT_PLUG        BIT(1)
-+#define PCIE_CLIENT_INT_PWR_STCG        BIT(0)
-+#define PCIE_CORE_INT_PRFPE             BIT(0)
-+#define PCIE_CORE_INT_CRFPE             BIT(1)
-+#define PCIE_CORE_INT_RRPE              BIT(2)
-+#define PCIE_CORE_INT_PRFO              BIT(3)
-+#define PCIE_CORE_INT_CRFO              BIT(4)
-+#define PCIE_CORE_INT_RT                BIT(5)
-+#define PCIE_CORE_INT_RTR               BIT(6)
-+#define PCIE_CORE_INT_PE                BIT(7)
-+#define PCIE_CORE_INT_MTR               BIT(8)
-+#define PCIE_CORE_INT_UCR               BIT(9)
-+#define PCIE_CORE_INT_FCE               BIT(10)
-+#define PCIE_CORE_INT_CT                BIT(11)
-+#define PCIE_CORE_INT_UTC               BIT(18)
-+#define PCIE_CORE_INT_MMVC              BIT(19)
-+
-+#define ROCKCHIP_PCIE_RPIFR1_INTR_MASK  GENMASK(8, 5)
-+#define ROCKCHIP_PCIE_RPIFR1_INTR_SHIFT 5
-+
-+#define PCIE_CORE_INT \
-+		(PCIE_CORE_INT_PRFPE | PCIE_CORE_INT_CRFPE | \
-+		 PCIE_CORE_INT_RRPE | PCIE_CORE_INT_CRFO | \
-+		 PCIE_CORE_INT_RT | PCIE_CORE_INT_RTR | \
-+		 PCIE_CORE_INT_PE | PCIE_CORE_INT_MTR | \
-+		 PCIE_CORE_INT_UCR | PCIE_CORE_INT_FCE | \
-+		 PCIE_CORE_INT_CT | PCIE_CORE_INT_UTC | \
-+		 PCIE_CORE_INT_MMVC)
-+
-+#define PCIE_CLIENT_INT_SUBSYSTEM \
-+	(PCIE_CLIENT_INT_PWR_STCG | PCIE_CLIENT_INT_HOT_PLUG | \
-+	PCIE_CLIENT_INT_PHY | PCIE_CLIENT_INT_UDMA | \
-+	PCIE_CLIENT_INT_LOCAL)
-+
-+#define PCIE_CLIENT_INT_LEGACY \
-+	(PCIE_CLIENT_INT_INTA | PCIE_CLIENT_INT_INTB | \
-+	PCIE_CLIENT_INT_INTC | PCIE_CLIENT_INT_INTD)
-+
-+#define PCIE_CLIENT_INT_CLI \
-+	(PCIE_CLIENT_INT_CORR_ERR | PCIE_CLIENT_INT_NFATAL_ERR | \
-+	PCIE_CLIENT_INT_FATAL_ERR | PCIE_CLIENT_INT_DPA | \
-+	PCIE_CLIENT_INT_HOT_RST | PCIE_CLIENT_INT_MSG | \
-+	PCIE_CLIENT_INT_LEGACY_DONE | PCIE_CLIENT_INT_LEGACY)
-+
-+struct rockchip_pcie_port {
-+	void	__iomem *reg_base;
-+	void	__iomem *apb_base;
-+	struct	phy *phy;
-+	struct	reset_control *core_rst;
-+	struct	reset_control *mgmt_rst;
-+	struct	reset_control *mgmt_sticky_rst;
-+	struct	reset_control *pipe_rst;
-+	struct	clk *aclk_pcie;
-+	struct	clk *aclk_perf_pcie;
-+	struct	clk *hclk_pcie;
-+	struct	clk *clk_pcie_pm;
-+	struct	regulator *vpcie3v3; /* 3.3V power supply */
-+	struct	regulator *vpcie1v8; /* 1.8V power supply */
-+	struct	regulator *vpcie0v9; /* 0.9V power supply */
-+	struct	gpio_desc *ep_gpio;
-+	u32	lanes;
-+	u8	root_bus_nr;
-+	struct	device *dev;
-+	struct	irq_domain *irq_domain;
-+};
-+
-+static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg);
-+static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg);
-+static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc);
-+
-+static inline u32 pcie_read(struct rockchip_pcie_port *port, u32 reg)
-+{
-+	return readl(port->apb_base + reg);
-+}
-+
-+static inline void pcie_write(struct rockchip_pcie_port *port,
-+			      u32 val, u32 reg)
-+{
-+	writel(val, port->apb_base + reg);
-+}
-+
-+static int rockchip_pcie_valid_config(struct rockchip_pcie_port *pp,
-+				      struct pci_bus *bus, int dev)
-+{
-+	/* access only one slot on each root port */
-+	if (bus->number == pp->root_bus_nr && dev > 0)
-+		return 0;
-+
-+	/*
-+	 * do not read more than one device on the bus directly attached
-+	 * to RC's (Virtual Bridge's) DS side.
-+	 */
-+	if (bus->primary == pp->root_bus_nr && dev > 0)
-+		return 0;
-+
-+	return 1;
-+}
-+
-+static int rockchip_pcie_rd_own_conf(struct rockchip_pcie_port *pp,
-+				     int where, int size,
-+				     u32 *val)
-+{
-+	void __iomem *addr = pp->apb_base + PCIE_RC_CONFIG_BASE + where;
-+
-+	if (!IS_ALIGNED((uintptr_t)addr, size)) {
-+		*val = 0;
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+	}
-+
-+	if (size == 4) {
-+		*val = readl(addr);
-+	} else if (size == 2) {
-+		*val = readw(addr);
-+	} else if (size == 1) {
-+		*val = readb(addr);
-+	} else {
-+		*val = 0;
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+	}
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static int rockchip_pcie_wr_own_conf(struct rockchip_pcie_port *pp,
-+				     int where, int size, u32 val)
-+{
-+	u32 mask, tmp, offset;
-+
-+	offset = (where & (~0x3));
-+
-+	if (size == 4) {
-+		writel(val, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
-+		return PCIBIOS_SUCCESSFUL;
-+	}
-+
-+	mask = ~(((1 << (size * 8)) - 1) << ((where & 0x3) * 8));
-+
-+	tmp = readl(pp->apb_base + PCIE_RC_CONFIG_BASE + offset) & mask;
-+	tmp |= val << ((where & 0x3) * 8);
-+	writel(tmp, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
-+
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static int rockchip_pcie_rd_other_conf(struct rockchip_pcie_port *pp,
-+				       struct pci_bus *bus, u32 devfn,
-+				       int where, int size, u32 *val)
-+{
-+	u32 busdev;
-+
-+	busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
-+				PCI_FUNC(devfn), where);
-+
-+	if (!IS_ALIGNED(busdev, size)) {
-+		*val = 0;
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+	}
-+
-+	if (size == 4) {
-+		*val = readl(pp->reg_base + busdev);
-+	} else if (size == 2) {
-+		*val = readw(pp->reg_base + busdev);
-+	} else if (size == 1) {
-+		*val = readb(pp->reg_base + busdev);
-+	} else {
-+		*val = 0;
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+	}
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static int rockchip_pcie_wr_other_conf(struct rockchip_pcie_port *pp,
-+				       struct pci_bus *bus, u32 devfn,
-+				       int where, int size, u32 val)
-+{
-+	u32 busdev;
-+
-+	busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
-+				PCI_FUNC(devfn), where);
-+	if (!IS_ALIGNED(busdev, size))
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+
-+	if (size == 4)
-+		writel(val, pp->reg_base + busdev);
-+	else if (size == 2)
-+		writew(val, pp->reg_base + busdev);
-+	else if (size == 1)
-+		writeb(val, pp->reg_base + busdev);
-+	else
-+		return PCIBIOS_BAD_REGISTER_NUMBER;
-+
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static int rockchip_pcie_rd_conf(struct pci_bus *bus, u32 devfn, int where,
-+				 int size, u32 *val)
-+{
-+	struct rockchip_pcie_port *pp = bus->sysdata;
-+	int ret;
-+
-+	if (rockchip_pcie_valid_config(pp, bus, PCI_SLOT(devfn)) == 0) {
-+		*val = 0xffffffff;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
-+	}
-+
-+	if (bus->number != pp->root_bus_nr)
-+		ret = rockchip_pcie_rd_other_conf(pp, bus, devfn,
-+						  where, size, val);
-+	else
-+		ret = rockchip_pcie_rd_own_conf(pp, where, size, val);
-+
-+	return ret;
-+}
-+
-+static int rockchip_pcie_wr_conf(struct pci_bus *bus, u32 devfn,
-+				 int where, int size, u32 val)
-+{
-+	struct rockchip_pcie_port *pp = bus->sysdata;
-+	int ret;
-+
-+	if (rockchip_pcie_valid_config(pp, bus, PCI_SLOT(devfn)) == 0)
-+		return PCIBIOS_DEVICE_NOT_FOUND;
-+
-+	if (bus->number != pp->root_bus_nr)
-+		ret = rockchip_pcie_wr_other_conf(pp, bus, devfn,
-+						  where, size, val);
-+	else
-+		ret = rockchip_pcie_wr_own_conf(pp, where, size, val);
-+
-+	return ret;
-+}
-+
-+static struct pci_ops rockchip_pcie_ops = {
-+	.read = rockchip_pcie_rd_conf,
-+	.write = rockchip_pcie_wr_conf,
-+};
-+
-+/**
-+ * rockchip_pcie_init_port - Initialize hardware
-+ * @port: PCIe port information
-+ */
-+static int rockchip_pcie_init_port(struct rockchip_pcie_port *port)
-+{
-+	int err;
-+	u32 status;
-+	unsigned long timeout;
-+
-+	gpiod_set_value(port->ep_gpio, 0);
-+
-+	err = phy_init(port->phy);
-+	if (err < 0) {
-+		dev_err(port->dev, "fail to init phy, err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_assert(port->core_rst);
-+	if (err) {
-+		dev_err(port->dev, "assert core_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_assert(port->mgmt_rst);
-+	if (err) {
-+		dev_err(port->dev, "assert mgmt_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_assert(port->mgmt_sticky_rst);
-+	if (err) {
-+		dev_err(port->dev, "assert mgmt_sticky_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_assert(port->pipe_rst);
-+	if (err) {
-+		dev_err(port->dev, "assert pipe_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	pcie_write(port,
-+		   HIWORD_UPDATE(PCIE_CLIENT_CONF_ENABLE,
-+				 PCIE_CLIENT_CONF_ENABLE_MASK,
-+				 PCIE_CLIENT_CONF_ENABLE_SHIFT) |
-+		   HIWORD_UPDATE(PCIE_CLIENT_CONF_LANE_NUM(port->lanes),
-+				 PCIE_CLIENT_CONF_LANE_NUM_MASK,
-+				 PCIE_CLIENT_CONF_LANE_NUM_SHIFT) |
-+		   HIWORD_UPDATE(PCIE_CLIENT_MODE_RC,
-+				 PCIE_CLIENT_MODE_MASK,
-+				 PCIE_CLIENT_MODE_SHIFT) |
-+		   HIWORD_UPDATE(PCIE_CLIENT_ARI_ENABLE,
-+				 PCIE_CLIENT_ARI_ENABLE_MASK,
-+				 PCIE_CLIENT_ARI_ENABLE_SHIFT) |
-+		   HIWORD_UPDATE(PCIE_CLIENT_GEN_SEL_2,
-+				 PCIE_CLIENT_GEN_SEL_MASK,
-+				 PCIE_CLIENT_GEN_SEL_SHIFT),
-+		   PCIE_CLIENT_BASE);
-+
-+	err = phy_power_on(port->phy);
-+	if (err) {
-+		dev_err(port->dev, "fail to power on phy, err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_deassert(port->core_rst);
-+	if (err) {
-+		dev_err(port->dev, "deassert core_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_deassert(port->mgmt_rst);
-+	if (err) {
-+		dev_err(port->dev, "deassert mgmt_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_deassert(port->mgmt_sticky_rst);
-+	if (err) {
-+		dev_err(port->dev, "deassert mgmt_sticky_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_deassert(port->pipe_rst);
-+	if (err) {
-+		dev_err(port->dev, "deassert pipe_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	/* Enable Gen1 training */
-+	pcie_write(port,
-+		   HIWORD_UPDATE(PCIE_CLIENT_LINK_TRAIN_ENABLE,
-+				 PCIE_CLIENT_LINK_TRAIN_MASK,
-+				 PCIE_CLIENT_LINK_TRAIN_SHIFT),
-+		   PCIE_CLIENT_BASE);
-+
-+	gpiod_set_value(port->ep_gpio, 1);
-+
-+	/* 500ms timeout value should be enough for gen1/2 taining */
-+	timeout = jiffies + msecs_to_jiffies(500);
-+
-+	for (;;) {
-+		status = pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
-+		if (((status >> PCIE_CLIENT_LINK_STATUS_SHIFT) &
-+		      PCIE_CLIENT_LINK_STATUS_MASK) ==
-+		      PCIE_CLIENT_LINK_STATUS_UP) {
-+			dev_dbg(port->dev, "pcie link training gen1 pass!\n");
-+			break;
-+		}
-+
-+		msleep(20);
-+
-+		if (!time_before(jiffies, timeout))
-+			break;
-+
-+	}
-+	status = pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
-+	err = (((status >> PCIE_CLIENT_LINK_STATUS_SHIFT) &
-+		 PCIE_CLIENT_LINK_STATUS_MASK) ==
-+		 PCIE_CLIENT_LINK_STATUS_UP) ? 0 : -ETIMEDOUT;
-+	if (err) {
-+		dev_err(port->dev, "pcie link training gen1 timeout!\n");
-+		return err;
-+	}
-+
-+	/*
-+	 * Enable retrain for gen2. This should be configured only after
-+	 * gen1 finished.
-+	 */
-+	status = pcie_read(port,
-+			   PCIE_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
-+	status |= PCIE_CORE_LCSR_RETRAIN_LINK;
-+	pcie_write(port, status,
-+		   PCIE_RC_CONFIG_LCS + PCIE_RC_CONFIG_BASE);
-+
-+	timeout = jiffies + msecs_to_jiffies(500);
-+	for (;;) {
-+		status = pcie_read(port, PCIE_CORE_CTRL_MGMT_BASE);
-+		if (((status >> PCIE_CORE_PL_CONF_SPEED_SHIFT) &
-+		      PCIE_CORE_PL_CONF_SPEED_MASK) ==
-+		      PCIE_CORE_PL_CONF_SPEED_5G) {
-+			dev_dbg(port->dev, "pcie link training gen2 pass!\n");
-+			break;
-+		}
-+
-+		msleep(20);
-+
-+		if (!time_before(jiffies, timeout))
-+			break;
-+	}
-+	status = pcie_read(port, PCIE_CORE_CTRL_MGMT_BASE);
-+	err = (((status >> PCIE_CORE_PL_CONF_SPEED_SHIFT) &
-+		PCIE_CORE_PL_CONF_SPEED_MASK) ==
-+		PCIE_CORE_PL_CONF_SPEED_5G) ? 0 : -ETIMEDOUT;
-+	if (err)
-+		dev_dbg(port->dev, "pcie link training gen2 timeout, fall back to gen1!\n");
-+
-+	/* Check the final link with from negotiated lane counter from MGMT */
-+	status = pcie_read(port, PCIE_CORE_CTRL_MGMT_BASE);
-+	status =  0x1 << ((status >> PCIE_CORE_PL_CONF_LANE_SHIFT) &
-+			   PCIE_CORE_PL_CONF_LANE_MASK);
-+	dev_dbg(port->dev, "current link width is x%d\n", status);
-+
-+	pcie_write(port, ROCKCHIP_VENDOR_ID, PCIE_RC_CONFIG_BASE);
-+	pcie_write(port, PCI_CLASS_BRIDGE_PCI << PCIE_CORE_RC_CONF_SCC_SHIFT,
-+		   PCIE_RC_CONFIG_BASE + PCIE_RC_CONFIG_RID_CCR);
-+	pcie_write(port, 0x0, PCIE_CORE_CTRL_MGMT_BASE + PCIE_RC_BAR_CONF);
-+
-+	pcie_write(port, (RC_REGION_0_ADDR_TRANS_L + RC_REGION_0_PASS_BITS),
-+		   PCIE_CORE_AXI_CONF_BASE);
-+	pcie_write(port, RC_REGION_0_ADDR_TRANS_H,
-+		   PCIE_CORE_AXI_CONF_BASE + PCIE_CORE_OB_REGION_ADDR1);
-+	pcie_write(port, 0x0080000a,
-+		   PCIE_CORE_AXI_CONF_BASE + PCIE_CORE_OB_REGION_DESC0);
-+	pcie_write(port, 0x0,
-+		   PCIE_CORE_AXI_CONF_BASE + PCIE_CORE_OB_REGION_DESC1);
-+
-+	return 0;
-+}
-+
-+/**
-+ * rockchip_pcie_parse_dt - Parse Device tree
-+ * @port: PCIe port information
-+ *
-+ * Return: '0' on success and error value on failure
-+ */
-+static int rockchip_pcie_parse_dt(struct rockchip_pcie_port *port)
-+{
-+	struct device *dev = port->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+	struct device_node *node = dev->of_node;
-+	struct resource *regs;
-+	int irq;
-+	int err = -ENODEV;
-+
-+	regs = platform_get_resource_byname(pdev,
-+					    IORESOURCE_MEM,
-+					    "axi-base");
-+	if (!regs) {
-+		dev_err(dev, "missing axi-base property\n");
-+		return err;
-+	}
-+
-+	port->reg_base = devm_ioremap_resource(dev, regs);
-+	if (IS_ERR(port->reg_base))
-+		return PTR_ERR(port->reg_base);
-+
-+	regs = platform_get_resource_byname(pdev,
-+					    IORESOURCE_MEM,
-+					    "apb-base");
-+	if (!regs) {
-+		dev_err(dev, "missing apb-base property\n");
-+		return err;
-+	}
-+
-+	port->apb_base = devm_ioremap_resource(dev, regs);
-+	if (IS_ERR(port->apb_base))
-+		return PTR_ERR(port->apb_base);
-+
-+	port->phy = devm_phy_get(dev, "pcie-phy");
-+	if (IS_ERR(port->phy)) {
-+		if (PTR_ERR(port->phy) != -EPROBE_DEFER)
-+			dev_err(dev, "Missing phy\n");
-+		return PTR_ERR(port->phy);
-+	}
-+
-+	port->lanes = 1;
-+	err = of_property_read_u32(node, "num-lanes", &port->lanes);
-+	if (!err && ((port->lanes == 0) ||
-+		     (port->lanes == 3) ||
-+		     (port->lanes > 4))) {
-+		dev_warn(dev, "invalid num-lanes, default use one lane\n");
-+		port->lanes = 1;
-+	}
-+
-+	port->core_rst = devm_reset_control_get(dev, "core");
-+	if (IS_ERR(port->core_rst)) {
-+		if (PTR_ERR(port->core_rst) != -EPROBE_DEFER)
-+			dev_err(dev, "missing core rst property in node %s\n",
-+				node->name);
-+		return PTR_ERR(port->core_rst);
-+	}
-+
-+	port->mgmt_rst = devm_reset_control_get(dev, "mgmt");
-+	if (IS_ERR(port->mgmt_rst)) {
-+		if (PTR_ERR(port->mgmt_rst) != -EPROBE_DEFER)
-+			dev_err(dev, "missing mgmt rst property in node %s\n",
-+				node->name);
-+		return PTR_ERR(port->mgmt_rst);
-+	}
-+
-+	port->mgmt_sticky_rst = devm_reset_control_get(dev, "mgmt-sticky");
-+	if (IS_ERR(port->mgmt_sticky_rst)) {
-+		if (PTR_ERR(port->mgmt_sticky_rst) != -EPROBE_DEFER)
-+			dev_err(dev, "missing mgmt-sticky rst property in node %s\n",
-+				node->name);
-+		return PTR_ERR(port->mgmt_sticky_rst);
-+	}
-+
-+	port->pipe_rst = devm_reset_control_get(dev, "pipe");
-+	if (IS_ERR(port->pipe_rst)) {
-+		if (PTR_ERR(port->pipe_rst) != -EPROBE_DEFER)
-+			dev_err(dev, "missing pipe rst property in node %s\n",
-+				node->name);
-+		return PTR_ERR(port->pipe_rst);
-+	}
-+
-+	port->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
-+	if (IS_ERR(port->ep_gpio)) {
-+		dev_err(dev, "missing ep-gpios property in node %s\n",
-+			node->name);
-+		return PTR_ERR(port->ep_gpio);
-+	}
-+
-+	port->aclk_pcie = devm_clk_get(dev, "aclk");
-+	if (IS_ERR(port->aclk_pcie)) {
-+		dev_err(dev, "aclk clock not found.\n");
-+		return PTR_ERR(port->aclk_pcie);
-+	}
-+
-+	port->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
-+	if (IS_ERR(port->aclk_perf_pcie)) {
-+		dev_err(dev, "aclk_perf clock not found.\n");
-+		return PTR_ERR(port->aclk_perf_pcie);
-+	}
-+
-+	port->hclk_pcie = devm_clk_get(dev, "hclk");
-+	if (IS_ERR(port->hclk_pcie)) {
-+		dev_err(dev, "hclk clock not found.\n");
-+		return PTR_ERR(port->hclk_pcie);
-+	}
-+
-+	port->clk_pcie_pm = devm_clk_get(dev, "pm");
-+	if (IS_ERR(port->clk_pcie_pm)) {
-+		dev_err(dev, "pm clock not found.\n");
-+		return PTR_ERR(port->clk_pcie_pm);
-+	}
-+
-+	irq = platform_get_irq_byname(pdev, "sys");
-+	if (irq < 0) {
-+		dev_err(dev, "missing pcie_sys IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
-+			       IRQF_SHARED, "pcie-sys", port);
-+	if (err) {
-+		dev_err(dev, "failed to request pcie subsystem irq\n");
-+		return err;
-+	}
-+
-+	irq = platform_get_irq_byname(pdev, "legacy");
-+	if (irq < 0) {
-+		dev_err(dev, "missing pcie_legacy IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	irq_set_chained_handler_and_data(irq,
-+					 rockchip_pcie_legacy_int_handler,
-+					 port);
-+
-+	irq = platform_get_irq_byname(pdev, "client");
-+	if (irq < 0) {
-+		dev_err(dev, "missing pcie-client IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
-+			       IRQF_SHARED, "pcie-client", port);
-+	if (err) {
-+		dev_err(dev, "failed to request pcie client irq\n");
-+		return err;
-+	}
-+
-+	port->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
-+	if (IS_ERR(port->vpcie3v3)) {
-+		if (PTR_ERR(port->vpcie3v3) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+		dev_info(dev, "No vpcie3v3 regulator found.\n");
-+	}
-+
-+	port->vpcie1v8 = devm_regulator_get_optional(dev, "vpcie1v8");
-+	if (IS_ERR(port->vpcie1v8)) {
-+		if (PTR_ERR(port->vpcie1v8) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+		dev_info(dev, "No vpcie1v8 regulator found.\n");
-+	}
-+
-+	port->vpcie0v9 = devm_regulator_get_optional(dev, "vpcie0v9");
-+	if (IS_ERR(port->vpcie0v9)) {
-+		if (PTR_ERR(port->vpcie0v9) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+		dev_info(dev, "No vpcie0v9 regulator found.\n");
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_set_vpcie(struct rockchip_pcie_port *port)
-+{
-+	int err;
-+
-+	if (!IS_ERR(port->vpcie3v3)) {
-+		err = regulator_enable(port->vpcie3v3);
-+		if (err) {
-+			dev_err(port->dev, "Fail to enable vpcie3v3 regulator.\n");
-+			goto err_out;
-+		}
-+	}
-+
-+	if (!IS_ERR(port->vpcie1v8)) {
-+		err = regulator_enable(port->vpcie1v8);
-+		if (err) {
-+			dev_err(port->dev, "Fail to enable vpcie1v8 regulator.\n");
-+			goto err_disable_3v3;
-+		}
-+	}
-+
-+	if (!IS_ERR(port->vpcie0v9)) {
-+		err = regulator_enable(port->vpcie0v9);
-+		if (err) {
-+			dev_err(port->dev, "Fail to enable vpcie0v9 regulator.\n");
-+			goto err_disable_1v8;
-+		}
-+	}
-+
-+	return 0;
-+
-+err_disable_1v8:
-+	if (!IS_ERR(port->vpcie1v8))
-+		regulator_disable(port->vpcie1v8);
-+err_disable_3v3:
-+	if (!IS_ERR(port->vpcie3v3))
-+		regulator_disable(port->vpcie3v3);
-+err_out:
-+	return err;
-+}
-+
-+static void rockchip_pcie_enable_interrupts(struct rockchip_pcie_port *port)
-+{
-+	pcie_write(port, (PCIE_CLIENT_INT_CLI << 16) &
-+		   (~PCIE_CLIENT_INT_CLI), PCIE_CLIENT_INT_MASK);
-+	pcie_write(port, PCIE_CORE_INT, PCIE_CORE_INT_MASK);
-+}
-+
-+static int rockchip_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
-+				  irq_hw_number_t hwirq)
-+{
-+	irq_set_chip_and_handler(irq, &dummy_irq_chip, handle_simple_irq);
-+	irq_set_chip_data(irq, domain->host_data);
-+
-+	return 0;
-+}
-+
-+static const struct irq_domain_ops intx_domain_ops = {
-+	.map = rockchip_pcie_intx_map,
-+};
-+
-+static int rockchip_pcie_init_irq_domain(struct rockchip_pcie_port *pp)
-+{
-+	struct device *dev = pp->dev;
-+
-+	pp->irq_domain = irq_domain_add_linear(dev->of_node, 4,
-+					       &intx_domain_ops, pp);
-+	if (!pp->irq_domain) {
-+		dev_err(dev, "Failed to get a INTx IRQ domain\n");
-+		return PTR_ERR(pp->irq_domain);
-+	}
-+
-+	return 0;
-+}
-+
-+static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
-+{
-+	struct rockchip_pcie_port *pp = arg;
-+	u32 reg;
-+	u32 sub_reg;
-+
-+	reg = pcie_read(pp, PCIE_CLIENT_INT_STATUS);
-+	if (reg & PCIE_CLIENT_INT_LOCAL) {
-+		dev_dbg(pp->dev, "local interrupt recived\n");
-+		sub_reg = pcie_read(pp, PCIE_CORE_INT_STATUS);
-+		if (sub_reg & PCIE_CORE_INT_PRFPE)
-+			dev_dbg(pp->dev, "Parity error detected while reading from the PNP Receive FIFO RAM\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_CRFPE)
-+			dev_dbg(pp->dev, "Parity error detected while reading from the Completion Receive FIFO RAM\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_RRPE)
-+			dev_dbg(pp->dev, "Parity error detected while reading from Replay Buffer RAM\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_PRFO)
-+			dev_dbg(pp->dev, "Overflow occurred in the PNP Receive FIFO\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_CRFO)
-+			dev_dbg(pp->dev, "Overflow occurred in the Completion Receive FIFO\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_RT)
-+			dev_dbg(pp->dev, "Replay timer timed out\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_RTR)
-+			dev_dbg(pp->dev, "Replay timer rolled over after 4 transmissions of the same TLP\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_PE)
-+			dev_dbg(pp->dev, "Phy error detected on receive side\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_MTR)
-+			dev_dbg(pp->dev, "Malformed TLP received from the link\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_UCR)
-+			dev_dbg(pp->dev, "Malformed TLP received from the link\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_FCE)
-+			dev_dbg(pp->dev, "An error was observed in the flow control advertisements from the other side\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_CT)
-+			dev_dbg(pp->dev, "A request timed out waiting for completion\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_UTC)
-+			dev_dbg(pp->dev, "Unmapped TC error\n");
-+
-+		if (sub_reg & PCIE_CORE_INT_MMVC)
-+			dev_dbg(pp->dev, "MSI mask register changes\n");
-+
-+		pcie_write(pp, sub_reg, PCIE_CORE_INT_STATUS);
-+	}
-+
-+	pcie_write(pp, PCIE_CLIENT_INT_SUBSYSTEM | PCIE_CLIENT_INT_LOCAL,
-+		   PCIE_CLIENT_INT_STATUS);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
-+{
-+	struct rockchip_pcie_port *pp = arg;
-+	u32 reg;
-+
-+	reg = pcie_read(pp, PCIE_CLIENT_INT_STATUS);
-+	if (reg & PCIE_CLIENT_INT_LEGACY_DONE)
-+		dev_dbg(pp->dev, "legacy done interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_MSG)
-+		dev_dbg(pp->dev, "message done interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_HOT_RST)
-+		dev_dbg(pp->dev, "hot reset interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_DPA)
-+		dev_dbg(pp->dev, "dpa interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_FATAL_ERR)
-+		dev_dbg(pp->dev, "fatal error interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_NFATAL_ERR)
-+		dev_dbg(pp->dev, "no fatal error interrupt recived\n");
-+
-+	if (reg & PCIE_CLIENT_INT_CORR_ERR)
-+		dev_dbg(pp->dev, "correctable error interrupt recived\n");
-+
-+	pcie_write(pp, reg, PCIE_CLIENT_INT_STATUS);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-+{
-+	struct irq_chip *chip = irq_desc_get_chip(desc);
-+	struct rockchip_pcie_port *port;
-+	u32 reg;
-+
-+	chained_irq_enter(chip, desc);
-+	port = irq_desc_get_handler_data(desc);
-+
-+	reg = pcie_read(port, PCIE_CLIENT_INT_STATUS);
-+	reg = (reg & ROCKCHIP_PCIE_RPIFR1_INTR_MASK) >>
-+	       ROCKCHIP_PCIE_RPIFR1_INTR_SHIFT;
-+	if (reg)
-+		generic_handle_irq(irq_find_mapping(port->irq_domain,
-+						    ffs(reg)));
-+	chained_irq_exit(chip, desc);
-+}
-+
-+static int rockchip_pcie_prog_ob_atu(struct rockchip_pcie_port *pp,
-+				     int region_no,
-+				     int type, u8 num_pass_bits,
-+				     u32 lower_addr, u32 upper_addr)
-+{
-+	u32 ob_addr_0 = 0;
-+	u32 ob_addr_1 = 0;
-+	u32 ob_desc_0 = 0;
-+	u32 ob_desc_1 = 0;
-+	void __iomem *aw_base;
-+
-+	if (!pp)
-+		return -EINVAL;
-+	if (region_no >= MAX_AXI_WRAPPER_REGION_NUM)
-+		return -EINVAL;
-+	if ((num_pass_bits + 1) < 8)
-+		return -EINVAL;
-+	if (num_pass_bits > 63)
-+		return -EINVAL;
-+	if (region_no == 0) {
-+		if (AXI_REGION_0_SIZE < (2ULL << num_pass_bits))
-+		return -EINVAL;
-+	}
-+	if (region_no != 0) {
-+		if (AXI_REGION_SIZE < (2ULL << num_pass_bits))
-+		return -EINVAL;
-+	}
-+	aw_base = pp->apb_base + PCIE_CORE_AXI_CONF_BASE;
-+	aw_base += (region_no << OB_REG_SIZE_SHIFT);
-+
-+	ob_addr_0 = (ob_addr_0 &
-+		     ~0x0000003fU) | (num_pass_bits &
-+		     0x0000003fU);
-+	ob_addr_0 = (ob_addr_0 &
-+		     ~0xffffff00U) | (lower_addr & 0xffffff00U);
-+	ob_addr_1 = upper_addr;
-+	ob_desc_0 = (1 << 23 | type);
-+
-+	writel(ob_addr_0, aw_base);
-+	writel(ob_addr_1, aw_base + PCIE_CORE_OB_REGION_ADDR1);
-+	writel(ob_desc_0, aw_base + PCIE_CORE_OB_REGION_DESC0);
-+	writel(ob_desc_1, aw_base + PCIE_CORE_OB_REGION_DESC1);
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie_port *pp,
-+				     int region_no,
-+				     u8 num_pass_bits,
-+				     u32 lower_addr,
-+				     u32 upper_addr)
-+{
-+	u32 ib_addr_0 = 0;
-+	u32 ib_addr_1 = 0;
-+	void __iomem *aw_base;
-+
-+	if (!pp)
-+		return -EINVAL;
-+	if (region_no > MAX_AXI_IB_ROOTPORT_REGION_NUM)
-+		return -EINVAL;
-+	if ((num_pass_bits + 1) < MIN_AXI_ADDR_BITS_PASSED)
-+		return -EINVAL;
-+	if (num_pass_bits > 63)
-+		return -EINVAL;
-+	aw_base = pp->apb_base + PCIE_CORE_AXI_INBOUND_BASE;
-+	aw_base += (region_no << IB_ROOT_PORT_REG_SIZE_SHIFT);
-+	ib_addr_0 = (ib_addr_0 &
-+		     ~0x0000003fU) | (num_pass_bits &
-+		     0x0000003fU);
-+
-+	ib_addr_0 = (ib_addr_0 & ~0xffffff00U) |
-+		     ((lower_addr << 8) & 0xffffff00U);
-+	ib_addr_1 = upper_addr;
-+
-+	writel(ib_addr_0, aw_base);
-+	writel(ib_addr_1, aw_base + PCIE_RP_IB_ADDR_TRANS);
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_probe(struct platform_device *pdev)
-+{
-+	struct rockchip_pcie_port *port;
-+	struct device *dev = &pdev->dev;
-+	struct pci_bus *bus, *child;
-+	struct resource_entry *win;
-+	resource_size_t io_base;
-+	struct resource	*busn = NULL;
-+	struct resource	*mem = NULL;
-+	struct resource	*io = NULL;
-+	phys_addr_t io_bus_addr = 0;
-+	u32 io_size = 0;
-+	phys_addr_t mem_bus_addr = 0;
-+	u32 mem_size = 0;
-+	int reg_no = 0;
-+	int err = 0;
-+	int offset = 0;
-+
-+	LIST_HEAD(res);
-+
-+	if (!dev->of_node)
-+		return -ENODEV;
-+
-+	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
-+	if (!port)
-+		return -ENOMEM;
-+
-+	port->dev = dev;
-+
-+	err = rockchip_pcie_parse_dt(port);
-+	if (err)
-+		return err;
-+
-+	err = clk_prepare_enable(port->aclk_pcie);
-+	if (err) {
-+		dev_err(dev, "Unable to enable aclk_pcie clock.\n");
-+		goto err_aclk_pcie;
-+	}
-+
-+	err = clk_prepare_enable(port->aclk_perf_pcie);
-+	if (err) {
-+		dev_err(dev, "Unable to enable aclk_perf_pcie clock.\n");
-+		goto err_aclk_perf_pcie;
-+	}
-+
-+	err = clk_prepare_enable(port->hclk_pcie);
-+	if (err) {
-+		dev_err(dev, "Unable to enable hclk_pcie clock.\n");
-+		goto err_hclk_pcie;
-+	}
-+
-+	err = clk_prepare_enable(port->clk_pcie_pm);
-+	if (err) {
-+		dev_err(dev, "Unable to enable hclk_pcie clock.\n");
-+		goto err_pcie_pm;
-+	}
-+
-+	err = rockchip_pcie_set_vpcie(port);
-+	if (err) {
-+		dev_err(port->dev, "Fail to set vpcie regulator.\n");
-+		goto err_set_vpcie;
-+	}
-+
-+	err = rockchip_pcie_init_port(port);
-+	if (err)
-+		goto err_vpcie;
-+
-+	platform_set_drvdata(pdev, port);
-+
-+	rockchip_pcie_enable_interrupts(port);
-+
-+	err = rockchip_pcie_init_irq_domain(port);
-+	if (err < 0)
-+		goto err_vpcie;
-+
-+	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
-+					       &res, &io_base);
-+	if (err)
-+		goto err_vpcie;
-+
-+	/* Get the I/O and memory ranges from DT */
-+	resource_list_for_each_entry(win, &res) {
-+		switch (resource_type(win->res)) {
-+		case IORESOURCE_IO:
-+			io = win->res;
-+			io->name = "I/O";
-+			io_size = resource_size(io);
-+			io_bus_addr = io->start - win->offset;
-+			err = pci_remap_iospace(io, io_base);
-+			if (err) {
-+				dev_warn(port->dev, "error %d: failed to map resource %pR\n",
-+					 err, io);
-+				continue;
-+			}
-+			break;
-+		case IORESOURCE_MEM:
-+			mem = win->res;
-+			mem->name = "MEM";
-+			mem_size = resource_size(mem);
-+			mem_bus_addr = mem->start - win->offset;
-+			break;
-+		case IORESOURCE_BUS:
-+			busn = win->res;
-+			break;
-+		default:
-+			continue;
-+		}
-+	}
-+
-+	if (mem_size)
-+		for (reg_no = 0; reg_no < (mem_size >> 20); reg_no++) {
-+			err = rockchip_pcie_prog_ob_atu(port, reg_no + 1,
-+							AXI_WRAPPER_MEM_WRITE,
-+							20 - 1,
-+							mem_bus_addr +
-+							(reg_no << 20),
-+							0);
-+			if (err) {
-+				dev_err(dev, "Program RC mem outbound atu failed\n");
-+				goto err_vpcie;
-+			}
-+		}
-+
-+	err = rockchip_pcie_prog_ib_atu(port, 2, 32 - 1, 0x0, 0);
-+	if (err) {
-+		dev_err(dev, "Program RC mem inbound atu failed\n");
-+		goto err_vpcie;
-+	}
-+
-+	offset = mem_size >> 20;
-+
-+	if (io_size)
-+		for (reg_no = 0; reg_no < (io_size >> 20); reg_no++) {
-+			err = rockchip_pcie_prog_ob_atu(port,
-+							reg_no + 1 + offset,
-+							AXI_WRAPPER_IO_WRITE,
-+							20 - 1,
-+							io_bus_addr +
-+							(reg_no << 20),
-+							0);
-+			if (err) {
-+				dev_err(dev, "Program RC io outbound atu failed\n");
-+				goto err_vpcie;
-+			}
-+		}
-+
-+	port->root_bus_nr = busn->start;
-+
-+	bus = pci_scan_root_bus(&pdev->dev, 0,
-+				&rockchip_pcie_ops, port, &res);
-+
-+	if (!bus) {
-+		err = -ENOMEM;
-+		goto err_vpcie;
-+	}
-+
-+	pci_bus_size_bridges(bus);
-+	pci_bus_assign_resources(bus);
-+	list_for_each_entry(child, &bus->children, node)
-+		pcie_bus_configure_settings(child);
-+
-+	pci_bus_add_devices(bus);
-+
-+	return err;
-+
-+err_vpcie:
-+	if (!IS_ERR(port->vpcie3v3))
-+		regulator_disable(port->vpcie3v3);
-+	if (!IS_ERR(port->vpcie1v8))
-+		regulator_disable(port->vpcie1v8);
-+	if (!IS_ERR(port->vpcie0v9))
-+		regulator_disable(port->vpcie0v9);
-+err_set_vpcie:
-+	clk_disable_unprepare(port->clk_pcie_pm);
-+err_pcie_pm:
-+	clk_disable_unprepare(port->hclk_pcie);
-+err_hclk_pcie:
-+	clk_disable_unprepare(port->aclk_perf_pcie);
-+err_aclk_perf_pcie:
-+	clk_disable_unprepare(port->aclk_pcie);
-+err_aclk_pcie:
-+	return err;
-+}
-+
-+static const struct of_device_id rockchip_pcie_of_match[] = {
-+	{ .compatible = "rockchip,rk3399-pcie", },
-+	{}
-+};
-+
-+static struct platform_driver rockchip_pcie_driver = {
-+	.driver = {
-+		.name = "rockchip-pcie",
-+		.of_match_table = rockchip_pcie_of_match,
-+	},
-+	.probe = rockchip_pcie_probe,
-+
-+};
-+module_platform_driver(rockchip_pcie_driver);
-+
-+MODULE_AUTHOR("Rockchip Inc");
-+MODULE_DESCRIPTION("Rockchip AXI PCIe driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.3.7
+VGhhbmtzIHlvdXIgcmV2aWV3aW5nIQoKT24gMjAxNuW5tDA35pyIMDHml6UgMDU6NTcsIEhlaWtv
+IFN0dWVibmVyIHdyb3RlOgo+IEFtIERvbm5lcnN0YWcsIDMwLiBKdW5pIDIwMTYsIDE0OjQ5OjQx
+IHNjaHJpZWIgRG91ZyBBbmRlcnNvbjoKPj4gQ2Flc2FyLAo+Pgo+PiBPbiBXZWQsIEp1biAyOSwg
+MjAxNiBhdCA2OjU2IFBNLCBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPiB3cm90ZToK
+Pj4+IEZyb206IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgo+Pj4KPj4+
+IEluIG9yZGVyIHRvIG1lZXQgbG93IHBvd2VyIHJlcXVpcmVtZW50cywgYSBwb3dlciBtYW5hZ2Vt
+ZW50IHVuaXQgKFBNVSkKPj4+IGlzCj4+PiBkZXNpZ25lZCBmb3IgY29udHJvbGxpbmcgcG93ZXIg
+cmVzb3VyY2VzIGluIFJLMzM5OS4gVGhlIFJLMzM5OSBQTVUgaXMKPj4+IGRlZGljYXRlZCBmb3Ig
+bWFuYWdpbmcgdGhlIHBvd2VyIG9mIHRoZSB3aG9sZSBjaGlwLgo+Pj4KPj4+IDEuIGFkZCBwZCBu
+b2RlIGZvciBSSzMzOTkgU29jCj4+PiAyLiBjcmVhdGUgcG93ZXIgZG9tYWluIHRyZWUKPj4+IDMu
+IGFkZCBxb3Mgbm9kZSBmb3IgZG9tYWluCj4+Pgo+Pj4gIEZyb20gdGhlIERUL2JpbmRzIGFuZCBk
+cml2ZXIgY2FuIGdldCBtb3JlIGRldGFpbCBpbmZvcm1hdGlvbjoKPj4+IFRoZSBkcml2ZXI6Cj4+
+PiBkcml2ZXJzL3NvYy9yb2NrY2hpcC9wbV9kb21haW5zLmMKPj4+IFRoZSBkb2N1bWVudDoKPj4+
+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93ZXJfZG9t
+YWluLnR4dAo+Pj4KPj4+IC0tLQo+Pj4KPj4+IFRlc3RlZCBvbiB2b3AgYW5kIGdwdSBkZXZpY2Vz
+IGFkZGVkIGZvciBuZXh0IGtlcm5lbC4KPj4+IFBEOgo+Pj4gbG9jYWxob3N0IC8gIyBjYXQgc3lz
+L2tlcm5lbC9kZWJ1Zy9wbV9nZW5wZC9wbV9nZW5wZF9zdW1tYXJ5Cj4+IE5pdDogY2FuIHlvdSBw
+dXQgYSAiLyIgYmVmb3JlICJzeXMiIGhlcmUgYW5kIGVsc2V3aGVyZSBpbiB5b3VyIHBhdGNoZXM/
+Cj4+Cj4+PiBkb21haW4gICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXR1cyAgICAgICAgICBz
+bGF2ZXMKPj4+IC9kZXZpY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBydW50aW1lIHN0YXR1cwo+Pj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4gcGRfZ3B1ICAgICAgICAg
+ICAgICAgICAgICAgICAgICBvbgo+Pj4gL2RldmljZXMvcGxhdGZvcm0vZmY5YTAwMDAuZ3B1ICAg
+ICAgICAgICAgICAgICAgICAgIGFjdGl2ZQo+Pj4gcGRfdm9wbCAgICAgICAgICAgICAgICAgICAg
+ICAgICBvZmYKPj4+IC9kZXZpY2VzL3BsYXRmb3JtL2ZmOGYwMDAwLnZvcCAgICAgICAgICAgICAg
+ICAgICAgICBzdXNwZW5kZWQKPj4+IHBkX3ZvcGIgICAgICAgICAgICAgICAgICAgICAgICAgb2Zm
+Cj4+PiAvZGV2aWNlcy9wbGF0Zm9ybS9mZjkwMDAwMC52b3AgICAgICAgICAgICAgICAgICAgICAg
+c3VzcGVuZGVkCj4+PiBwZF92byAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZiAgICAgICAg
+ICAgICBwZF92b3BiLCBwZF92b3BsCj4+PiBwZF9oZGNwICAgICAgICAgICAgICAgICAgICAgICAg
+IG9mZgo+Pj4gLi4uCj4+PiBwZF9pZXAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZgo+Pj4g
+cGRfdmNvZGVjICAgICAgICAgICAgICAgICAgICAgICBvZmYKPj4+IHBkX3ZkdSAgICAgICAgICAg
+ICAgICAgICAgICAgICAgb2ZmCj4+Pgo+Pj4gUU9TOgo+Pj4gbG9jYWxob3N0IC8gIyBjYXQgc3lz
+L2tlcm5lbC9kZWJ1Zy9wbV9xb3MvCj4+PiBjcHVfZG1hX2xhdGVuY3kgICAgIG5ldHdvcmtfbGF0
+ZW5jeQo+Pj4gbWVtb3J5X2JhbmR3aWR0aCAgICBuZXR3b3JrX3Rocm91Z2hwdXQKPj4gV2hhdCBp
+cyB0aGlzIHN1cHBvc2VkIHRvIGJlIHNob3dpbmcgZXhhY3RseT8gIFlvdSBjYW4ndCAiY2F0IiBh
+Cj4+IGRpcmVjdG9yeSwgc28gbWF5YmUgeW91IG1lYW50ICJscyI/Cj4+Cj4+IEFsc28sIGVhY2gg
+b2YgdGhlc2UgZmlsZXMgY29udGFpbnMgdGhlIHN0cmluZyAiRW1wdHkhIiBhbmQgdGhlc2UgZmls
+ZXMKPj4gc2VlbSBmYWlybHkgdW5jb25uZWN0ZWQgdG8geW91ciBwYXRjaC4gIFRob3NlIGZpbGVz
+IGV4aXN0IGJvdGggYmVmb3JlCj4+IGFuZCBhZnRlciB5b3VyIHBhdGNoIGFuZCBub3RoaW5nIHRo
+YXQgSSBjYW4gc2VlIGluIHRoZSBSb2NrY2hpcCBRb1MKPj4gc3R1ZmYgaG9va3MgdXAgdG8gdGhl
+IGdlbmVyaWMgTGludXggUW9TIGluZnJhc3RydWN0dXJlLiAgVGhlIHBvd2VyCj4+IGRvbWFpbnMg
+anVzdCBzYXZlIGFuZCByZXN0b3JlIHRoZSBRb1MtLXRoZXkgZG9uJ3QgYWN0dWFsbHkgYWxsb3cK
+Pj4gc2V0dHRpbmcgaXQuCj4gcGVyc29uYWxseSwgSSB3b3VsZCBqdXN0IGRyb3AgdGhhdCBkZWJ1
+Z2ZzLWR1bXAsIGFzIEkgZG9uJ3Qgc2VlIHdoYXQgd2UgZ2Fpbgo+IGZyb20gaXQgOi0pLgoKQWdy
+ZWVkLCBkcm9wIGl0LgoKPj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5n
+QHJvY2stY2hpcHMuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2Nr
+LWNoaXBzLmNvbT4KPj4+IC0tLQo+IFsuLi5dCj4KPj4+ICsgICAgICAgcG11OiBwb3dlci1tYW5h
+Z2VtZW50QGZmMzEwMDAwIHsKPj4+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInJvY2tj
+aGlwLHJrMzM5OS1wbXUiLCAic3lzY29uIiwKPj4+ICJzaW1wbGUtbWZkIjsgKyAgICAgICAgICAg
+ICAgIHJlZyA9IDwweDAgMHhmZjMxMDAwMCAweDAgMHgxMDAwPjsKPj4+ICsKPj4+ICsgICAgICAg
+ICAgICAgICBwb3dlcjogcG93ZXItY29udHJvbGxlciB7Cj4+PiArICAgICAgICAgICAgICAgICAg
+ICAgICBzdGF0dXMgPSAib2theSI7Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICBjb21wYXRp
+YmxlID0gInJvY2tjaGlwLHJrMzM5OS1wb3dlci1jb250cm9sbGVyIjsKPj4+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICNwb3dlci1kb21haW4tY2VsbHMgPSA8MT47Cj4+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICNzaXplLWNlbGxzID0gPDA+Owo+Pj4gKwo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+cGRfdmR1IHsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5
+OV9QRF9WRFU+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8
+JmNydSBBQ0xLX1ZEVT4sCj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIDwmY3J1IEhDTEtfVkRVPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+cG1fcW9zID0gPCZxb3NfdmlkZW9fbTFfcj4sCj4+PiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIDwmcW9zX3ZpZGVvX20xX3c+Owo+Pj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgfTsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHBkX3Zjb2RlYyB7Cj4+PiArICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVkNPREVDPjsKPj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19WQ09E
+RUM+LAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBI
+Q0xLX1ZDT0RFQz47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9
+IDwmcW9zX3ZpZGVvX20wPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIH07Cj4+PiArICAg
+ICAgICAgICAgICAgICAgICAgICBwZF9pZXAgewo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICByZWcgPSA8UkszMzk5X1BEX0lFUD47Cj4+PiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfSUVQPiwKPj4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19JRVA+Owo+Pj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc19pZXA+Owo+Pj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgfTsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHBkX3JnYSB7Cj4+PiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfUkdBPjsKPj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19SR0E+
+LAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBIQ0xL
+X1JHQT47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9z
+X3JnYV9yPiwKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZx
+b3NfcmdhX3c+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgfTsKPj4+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIHBkX3ZpbyB7Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHJlZyA9IDxSSzMzOTlfUERfVklPPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICNzaXplLWNlbGxzID0gPDA+Owo+Pj4gKwo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBwZF9pc3AwIHsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICByZWcgPSA8UkszMzk5X1BEX0lTUDA+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfSVNQMD4sCj4+PiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19JU1AwPjsK
+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFv
+c19pc3AwX20wPiwKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICA8JnFvc19pc3AwX20xPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgfTsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGRfaXNwMSB7Cj4+PiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9J
+U1AxPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3Mg
+PSA8JmNydSBBQ0xLX0lTUDE+LAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfSVNQMT47Cj4+PiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfaXNwMV9tMD4sCj4+PiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZxb3NfaXNwMV9tMT47
+Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIHBkX2hkY3Agewo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfSERDUD47Cj4+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19IRENQPiwKPj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBI
+Q0xLX0hEQ1A+LAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIDwmY3J1IFBDTEtfSERDUD47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfaGRjcD47Cj4+PiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIH07Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBkX3Zv
+IHsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8Uksz
+Mzk5X1BEX1ZPPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAj
+YWRkcmVzcy1jZWxscyA9IDwxPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAjc2l6ZS1jZWxscyA9IDwwPjsKPj4+ICsKPj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBwZF92b3BiIHsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVk9QQj47Cj4+PiArICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JmNy
+dQo+Pj4gQUNMS19WT1AwPiwgKwo+Pj4gPCZjcnUgSENMS19WT1AwPjsgKwo+Pj4gcG1fcW9zID0g
+PCZxb3Nfdm9wX2JpZ19yPiwgKwo+Pj4gICAgICAgICAgICAgIDwmcW9zX3ZvcF9iaWdfdz47ICsK
+Pj4+IH07Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGRfdm9w
+bCB7Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBy
+ZWcgPSA8UkszMzk5X1BEX1ZPUEw+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUKPj4+IEFDTEtfVk9QMT4sICsKPj4+IDwm
+Y3J1IEhDTEtfVk9QMT47ICsKPj4+IHBtX3FvcyA9IDwmcW9zX3ZvcF9saXR0bGU+OyArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPj4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgfTsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIH07Cj4+PiArICAg
+ICAgICAgICAgICAgICAgICAgICBwZF9ncHUgewo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICByZWcgPSA8UkszMzk5X1BEX0dQVT47Cj4+PiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfR1BVPjsKPj4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfZ3B1PjsKPj4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgIH07Cj4+IEFnYWluIGEgbml0dHkgc29ydCBvcmRlciBxdWVzdGlvbi4gIElzIHRoZXJl
+IGEgcmVhc29uIG5vdCB0byBtYWtlCj4+IHRoaW5ncyBhbHBoYWJldGljYWw/ICBBS0E6IHBkX2dw
+dSwgcGRfaWVwLCBwZF9yZ2EsIC4uLgo+Pgo+PiAuLi5hbmQgaW5zaWRlIHBkX3ZpbyBzaG91bGQg
+YmUgYWxwaGFiZXRpY2FsIHRvbz8KPj4KPj4gSW4gdGhlIFRSTSBpdCBsb29rcyBsaWtlIHNvbWUg
+b2YgdGhlIHBvd2VyIGRvbWFpbnMgYXJlIGdyb3VwZWQKPj4gdG9nZXRoZXIgKGxpa2UgYWxsIHRo
+ZSBkb21haW5zIHVuZGVyIExPR0lDIG9yIENFTlRFUkxPR0lDKS4gIElmCj4+IGtlZXBpbmcgdGhh
+dCBncm91cGluZyBtYWtlcyBzZW5zZSBoZXJlIHRoZW4geW91IHNob3VsZCBhZGQgYSBjb21tZW50
+Cj4+IGF0IHRoZSBzdGFydCBvZiBlYWNoIGdyb3VwIGFuZCBzb3J0IHRoZSBncm91cHMgc2FuZWx5
+IChhbmQgc29ydCB3aXRoaW4KPj4gZWFjaCBncm91cCkuCgpPa2F5LCBsZXQgbWUgc2VlIGl0LgoK
+VGhhbmtzIQoKPj4KPj4gSXQgbG9va3MgbGlrZSB0aGVyZSBhcmUgYWxzbyBtb3JlIHBvd2VyIGRv
+bWFpbnMgdGhhdCB5b3UgaGF2ZW4ndAo+PiBsaXN0ZWQgaGVyZSAobGlrZSBQRF9HTUFDLCBmb3Ig
+aW5zdGFuY2UsIG9yIFBEX0NPUkVfTCkuICBBcmUgeW91Cj4+IHBsYW5uaW5nIHRvIGFkZCB0aG9z
+ZSBpbiBhIGZvbGxvd29uIHBhdGNoPwo+IHRoYXQgcmVtaW5kcyBtZSwgbm9kZXMgd2l0aCBhIHJl
+ZyBwcm9wZXJ0eSBzaG91bGQgaGF2ZSB0aGUgYmFzZSBhZGRyZXNzIGluCj4gdGhlIG5vZGUgbmFt
+ZSBhcyB3ZWxsLiBVc2luZyB0aGUgY29uc3RhbnQgd29ya3MgbmljZWx5LCBhcyBjYW4gYmUgc2Vl
+biBvbgo+IHRoZSByazMyODggd2hlcmUgd2UgaGF2ZSBmb3IgZXhhbXBsZToKPgo+IAlwZF92aW9A
+UkszMjg4X1BEX1ZJTwoKQWdyZWVkLgoKCj4KPgo+IEhlaWtvCj4KPgo+CgotLSAKY2Flc2FyIHdh
+bmcgfCBzb2Z0d2FyZSBlbmdpbmVlciB8IHd4dEByb2NrLWNoaXAuY29tCgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
