@@ -1,79 +1,102 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v3 4/4] drm/rockchip: analogix_dp: implement PSR function
-Date: Fri,  1 Jul 2016 17:19:36 +0800
-Message-ID: <1467364776-21794-1-git-send-email-ykk@rock-chips.com>
-References: <1467364685-21390-1-git-send-email-ykk@rock-chips.com>
+From: Mark Rutland <mark.rutland@arm.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support the pmu node for rk3399
+Date: Fri, 1 Jul 2016 11:26:12 +0100
+Message-ID: <20160701102612.GB22953@leverpostej>
+References: <1467358570-24417-1-git-send-email-wxt@rock-chips.com>
+ <1467358570-24417-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1467364685-21390-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, emil.l.velikov@gmail.com, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1467358570-24417-3-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, marc.zyngier@arm.com
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, Will Deacon <will.deacon@arm.com>, briannorris@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, David Wu <david.wu@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWx3YXkgZW5hYmxlIHRoZSBQU1IgZnVuY3Rpb24gZm9yIFJvY2tjaGlwIGFuYWxvZ2l4X2RwIGRy
-aXZlci4gSWYgcGFuZWwKZG9uJ3Qgc3VwcG9ydCBQU1IsIHRoZW4gdGhlIGNvcmUgYW5hbG9naXhf
-ZHAgd291bGQgaWdub3JlIHRoaXMgc2V0dGluZy4KClNpZ25lZC1vZmYtYnk6IFlha2lyIFlhbmcg
-PHlra0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjM6Ci0gc3BsaXQgdGhlIGNvbW1v
-biBwc3IgbG9naWMgaW50byBhIHNlcGVyYXRlIGRyaXZlciwgbWFrZSB0aGlzIHRvIGEKICBzaW1w
-bGUgc3ViLXBzciBkZXZpY2UgZHJpdmVyLgoKQ2hhbmdlcyBpbiB2MjoKLSByZW1vdmUgdmJsYW5r
-IG5vdGlmeSBvdXQgKERhbmllbCkKLSBjcmVhdGUgYSBwc3JfYWN0aXZlKCkgY2FsbGJhY2sgaW4g
-dm9wIGRhdGEgc3RydWN0LgoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1y
-b2NrY2hpcC5jIHwgNTIgKysrKysrKysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQs
-IDUyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-YW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dp
-eF9kcC1yb2NrY2hpcC5jCmluZGV4IGU4MWUxOWEuLjgwYTYwYTYgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCkBAIC0zMiw2ICszMiw3IEBA
-CiAjaW5jbHVkZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgogCiAjaW5jbHVkZSAicm9ja2No
-aXBfZHJtX2Rydi5oIgorI2luY2x1ZGUgInJvY2tjaGlwX2RybV9wc3IuaCIKICNpbmNsdWRlICJy
-b2NrY2hpcF9kcm1fdm9wLmgiCiAKICNkZWZpbmUgUkszMjg4X0dSRl9TT0NfQ09ONgkJMHgyNWMK
-QEAgLTY4LDExICs2OSw1MyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlIHsKIAlzdHJ1Y3Qg
-cmVnbWFwICAgICAgICAgICAgKmdyZjsKIAlzdHJ1Y3QgcmVzZXRfY29udHJvbCAgICAgKnJzdDsK
-IAorCXN0cnVjdCBkZWxheWVkX3dvcmsJIHBzcl93b3JrOworCXVuc2lnbmVkIGludAkJIHBzcl9z
-dGF0ZTsKKwogCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9kcF9jaGlwX2RhdGEgKmRhdGE7CiAKIAlz
-dHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhIHBsYXRfZGF0YTsKIH07CiAKK3N0YXRpYyBpbnQg
-YW5hbG9naXhfZHBfcHNyX3NldChzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsIGJvb2wgZW5h
-YmxlZCkKK3sKKwlzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCA9IHRvX2RwKGVuY29kZXIp
-OworCisJZGV2X2RiZyhkcC0+ZGV2LCAiJXMgUFNSLi4uXG4iLCBlbmFibGVkID8gIkVudHJ5IiA6
-ICJFeGl0Iik7CisKKwlpZiAoZW5hYmxlZCkKKwkJZHAtPnBzcl9zdGF0ZSA9IEVEUF9WU0NfUFNS
-X1NUQVRFX0FDVElWRTsKKwllbHNlCisJCWRwLT5wc3Jfc3RhdGUgPSB+RURQX1ZTQ19QU1JfU1RB
-VEVfQUNUSVZFOworCisJc2NoZWR1bGVfZGVsYXllZF93b3JrKCZkcC0+cHNyX3dvcmssIG1zZWNz
-X3RvX2ppZmZpZXMoMTApKTsKKworCXJldHVybiAwOworfQorCitzdGF0aWMgdm9pZCBhbmFsb2dp
-eF9kcF9wc3Jfd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCit7CisJc3RydWN0IHJvY2tj
-aGlwX2RwX2RldmljZSAqZHAgPQorCQkJCWNvbnRhaW5lcl9vZih3b3JrLCB0eXBlb2YoKmRwKSwg
-cHNyX3dvcmsud29yayk7CisJc3RydWN0IGRybV9jcnRjICpjcnRjID0gZHAtPmVuY29kZXIuY3J0
-YzsKKwlpbnQgcHNyX3N0YXRlID0gZHAtPnBzcl9zdGF0ZTsKKwlpbnQgdmFjdF9lbmQ7CisJaW50
-IHJldDsKKworCWlmICghY3J0YykKKwkJcmV0dXJuOworCisJdmFjdF9lbmQgPSBjcnRjLT5tb2Rl
-LnZ0b3RhbCAtIGNydGMtPm1vZGUudnN5bmNfc3RhcnQgKyBjcnRjLT5tb2RlLnZkaXNwbGF5Owor
-CisJcmV0ID0gcm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKGRwLT5lbmNvZGVyLmNydGMsIHZh
-Y3RfZW5kLCAxMDApOworCWlmIChyZXQgPT0gMCkgeworCQlpZiAocHNyX3N0YXRlID09IEVEUF9W
-U0NfUFNSX1NUQVRFX0FDVElWRSkKKwkJCWFuYWxvZ2l4X2RwX2FjdGl2ZV9wc3IoZHAtPmRldik7
-CisJCWVsc2UKKwkJCWFuYWxvZ2l4X2RwX2luYWN0aXZlX3BzcihkcC0+ZGV2KTsKKwl9Cit9CisK
-IHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcHJlX2luaXQoc3RydWN0IHJvY2tjaGlwX2RwX2Rldmlj
-ZSAqZHApCiB7CiAJcmVzZXRfY29udHJvbF9hc3NlcnQoZHAtPnJzdCk7CkBAIC0zNDAsMTIgKzM4
-MywyMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBz
-dHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJZHAtPnBsYXRfZGF0YS5wb3dlcl9vZmYgPSByb2NrY2hp
-cF9kcF9wb3dlcmRvd247CiAJZHAtPnBsYXRfZGF0YS5nZXRfbW9kZXMgPSByb2NrY2hpcF9kcF9n
-ZXRfbW9kZXM7CiAKKwlkcC0+cHNyX3N0YXRlID0gfkVEUF9WU0NfUFNSX1NUQVRFX0FDVElWRTsK
-KwlJTklUX0RFTEFZRURfV09SSygmZHAtPnBzcl93b3JrLCBhbmFsb2dpeF9kcF9wc3Jfd29yayk7
-CisKKwlyb2NrY2hpcF9kcm1fcHNyX3JlZ2lzdGVyKCZkcC0+ZW5jb2RlciwgYW5hbG9naXhfZHBf
-cHNyX3NldCk7CisKIAlyZXR1cm4gYW5hbG9naXhfZHBfYmluZChkZXYsIGRwLT5kcm1fZGV2LCAm
-ZHAtPnBsYXRfZGF0YSk7CiB9CiAKIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2RwX3VuYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAkJCSAgICAgICB2b2lkICpk
-YXRhKQogeworCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gZGV2X2dldF9kcnZkYXRh
-KGRldik7CisKKwlyb2NrY2hpcF9kcm1fcHNyX3VucmVnaXN0ZXIoJmRwLT5lbmNvZGVyKTsKKwog
-CXJldHVybiBhbmFsb2dpeF9kcF91bmJpbmQoZGV2LCBtYXN0ZXIsIGRhdGEpOwogfQogCi0tIAox
-LjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Jul 01, 2016 at 03:36:10PM +0800, Caesar Wang wrote:
+> As the Marc posted the patches [0] to support Partitioning per-cpu
+> interrupts. Let's add this patch to match it on rk3399 SoCs.
+> 
+> [0]:
+> https://lkml.org/lkml/2016/4/11/182
+
+The core IRQ support is merged, but it's worth noting that the perf code
+doesn't use it yet. So we still need a patch adding support to the perf
+code before we can change the dts.
+
+I think Marc had a prototype of that somewhere.
+
+Marc?
+
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Will Deacon <will.deacon@arm.com>
+> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> CC: linux-arm-kernel@lists.infradead.org
+> 
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 8f0a069..b260f62 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -165,6 +165,22 @@
+>  			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
+>  	};
+>  
+> +	pmu_a53 {
+> +		compatible = "arm,cortex-a53-pmu";
+> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &part0>;
+> +		interrupt-affinity = <&cpu_l0>,
+> +				     <&cpu_l1>,
+> +				     <&cpu_l2>,
+> +				     <&cpu_l3>;
+> +	};
+
+I'm not keen on having to redundantly describe the affinity in
+interrupt-affinity and the partition's affinity property. Those will
+almost certainly be out-of-sync in some DTs, and it'll be very painful
+to deal with.
+
+I think that for partitioned PPIs the PMU driver should use the affinity
+from the PPI, and not have an interrupt-affinity property. Hopefully
+that's relatively simple to handle.
+
+Thanks,
+Mark.
+
+> +
+> +	pmu_a72 {
+> +		compatible = "arm,cortex-a72-pmu";
+> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &part1>;
+> +		interrupt-affinity = <&cpu_b0>,
+> +				     <&cpu_b1>;
+> +	};
+> +
+>  	xin24m: xin24m {
+>  		compatible = "fixed-clock";
+>  		clock-frequency = <24000000>;
+> @@ -296,6 +312,16 @@
+>  			msi-controller;
+>  			reg = <0x0 0xfee20000 0x0 0x20000>;
+>  		};
+> +
+> +		ppi-partitions {
+> +			part0: interrupt-partition-0 {
+> +				affinity = <&cpu_l0 &cpu_l1 &cpu_l2 &cpu_l3>;
+> +			};
+> +
+> +			part1: interrupt-partition-1 {
+> +				affinity = <&cpu_b0 &cpu_b1>;
+> +			};
+> +		};
+>  	};
+>  
+>  	i2c1: i2c@ff110000 {
+> -- 
+> 1.9.1
+> 
