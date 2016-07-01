@@ -1,51 +1,67 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add the power domain node for rk3399
-Date: Fri, 01 Jul 2016 00:50:06 +0200
-Message-ID: <2164835.qn3FrgoRRc@phil>
-References: <1467251760-14695-1-git-send-email-wxt@rock-chips.com>
- <2709691.LCsUme3dJo@phil>
- <CAD=FV=Uaqp5MyERwBRd1yHLYS3T2mOm-FrMtXUjzjWhCEggG+Q@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip clk changes for 4.8
+Date: Fri, 01 Jul 2016 02:14:53 +0200
+Message-ID: <112903792.EQ89smGoay@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=Uaqp5MyERwBRd1yHLYS3T2mOm-FrMtXUjzjWhCEggG+Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 30. Juni 2016, 15:32:01 schrieb Doug Anderson:
-> Hi,
-> 
-> On Thu, Jun 30, 2016 at 2:57 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> >> It looks like there are also more power domains that you haven't
-> >> listed here (like PD_GMAC, for instance, or PD_CORE_L).  Are you
-> >> planning to add those in a followon patch?
-> > 
-> > that reminds me, nodes with a reg property should have the base address
-> > in the node name as well. Using the constant works nicely, as can be
-> > seen on> 
-> > the rk3288 where we have for example:
-> >         pd_vio@RK3288_PD_VIO
-> 
-> I was wondering about that.  The device tree bindings are similarly
-> missing the reg from the example.
-> 
-> I'm curious: for sorting purposes, are you supposed to know the
-> underlying integer and use that for sorting, or sort by the name of
-> the #define?
+Hi Mike, Stephen,
 
-requiring the underlying integer sounds very cumbersome, especially as the 
-sorting is only a style-thing. So personally I'd take the constants name as 
-sorting criteria, as everything else would be somewhat counter-intuitive.
+please find below clock changes for 4.8.
 
+Apart from some new clock ids there is the addition of a placeholder clock
+for the rk3399 watchdog pclk - as explained in the code, this gate is not
+controlled through the clock controller but through the general register
+files, yet the watchdog is unhappy if can't see the clock. And finally some
+small fixes for clock mistakes that do not affect any currently support
+board ip blocks like spdif-DPTX clock on the rk3399.
+
+So if this looks ok, please pull
+
+Thanks
 Heiko
+
+
+The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
+
+  Linux 4.7-rc1 (2016-05-29 09:29:24 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.8-rockchip-clk1
+
+for you to fetch changes up to 3770821fa360525e6c726cd562a2438a0aa5d566:
+
+  clk: rockchip: fix incorrect rk3399 spdif-DPTX divider bits (2016-07-01 01:50:17 +0200)
+
+----------------------------------------------------------------
+Placeholder for the rk3399 watchdog pclk, some newly exported
+rk3228 clockids and a small fix for the not yet used spdif to
+displayport clock on the rk3399.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      Merge branch 'v4.8-shared/clkids' into v4.8-clk/next
+
+Xing Zheng (9):
+      clk: rockchip: add a dummy clock for the watchdog pclk on rk3399
+      clk: rockchip: add clock-ids for rk3228 audio clocks
+      clk: rockchip: add clock-ids for rk3228 MAC clocks
+      clk: rockchip: fix incorrect rk3228 clock registers
+      clk: rockchip: include rk3228 downstream muxes into fractional dividers
+      clk: rockchip: export rk3228 audio clocks
+      clk: rockchip: rename rk3228 sclk_macphy_50m to sclk_mac_extclk
+      clk: rockchip: export rk3228 MAC clocks
+      clk: rockchip: fix incorrect rk3399 spdif-DPTX divider bits
+
+ drivers/clk/rockchip/clk-rk3228.c      | 125 +++++++++++++++++++--------------
+ drivers/clk/rockchip/clk-rk3399.c      |  11 ++-
+ include/dt-bindings/clock/rk3228-cru.h |  15 ++++
+ 3 files changed, 99 insertions(+), 52 deletions(-)
+
