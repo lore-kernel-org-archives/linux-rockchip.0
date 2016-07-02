@@ -1,236 +1,320 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add the power domain node for
- rk3399
-Date: Sat, 02 Jul 2016 09:34:49 +0800
-Message-ID: <57771A39.8060606@rock-chips.com>
-References: <1467347575-11806-1-git-send-email-wxt@rock-chips.com>
- <CAD=FV=U0FU5P+seYYmJNZmcV1r-N6_UHtMW5LuVGM-NyPER8BQ@mail.gmail.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH v5 1/5] thermal: Add support for hardware-tracked trip
+ points
+Date: Fri, 1 Jul 2016 18:39:21 -0700
+Message-ID: <20160702013920.GA9796@localhost.localdomain>
+References: <1465213489-14898-1-git-send-email-wxt@rock-chips.com>
+ <1465213489-14898-2-git-send-email-wxt@rock-chips.com>
+ <1466565319.2379.0.camel@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=U0FU5P+seYYmJNZmcV1r-N6_UHtMW5LuVGM-NyPER8BQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1466565319.2379.0.camel@intel.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, javi.merino@arm.com, peter@piie.net, Sascha Hauer <s.hauer@pengutronix.de>, Jonathan Corbet <corbet@lwn.net>, Andy Champ <andycham@amazon.com>, Laxman Dewangan <ldewangan@nvidia.com>, Durgadoss R <durgadoss.r@intel.com>, Ni Wade <wni@nvidia.com>, Leo Yan <leo.yan@linaro.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTblubQwN+aciDAy5pelIDAwOjU2LCBEb3VnIEFuZGVyc29uIHdyb3RlOgo+IENhZXNh
-cgo+Cj4gT24gVGh1LCBKdW4gMzAsIDIwMTYgYXQgOTozMiBQTSwgQ2Flc2FyIFdhbmcgPHd4dEBy
-b2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IEZyb206IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJv
-Y2stY2hpcHMuY29tPgo+Pgo+PiBJbiBvcmRlciB0byBtZWV0IGxvdyBwb3dlciByZXF1aXJlbWVu
-dHMsIGEgcG93ZXIgbWFuYWdlbWVudCB1bml0IChQTVUpIGlzCj4+IGRlc2lnbmVkIGZvciBjb250
-cm9sbGluZyBwb3dlciByZXNvdXJjZXMgaW4gUkszMzk5LiBUaGUgUkszMzk5IFBNVSBpcwo+PiBk
-ZWRpY2F0ZWQgZm9yIG1hbmFnaW5nIHRoZSBwb3dlciBvZiB0aGUgd2hvbGUgY2hpcC4KPj4KPj4g
-MS4gYWRkIHBkIG5vZGUgZm9yIFJLMzM5OSBTb2MKPj4gMi4gY3JlYXRlIHBvd2VyIGRvbWFpbiB0
-cmVlCj4+IDMuIGFkZCBxb3Mgbm9kZSBmb3IgZG9tYWluCj4+Cj4+ICBGcm9tIHRoZSBEVC9iaW5k
-cyBhbmQgZHJpdmVyIGNhbiBnZXQgbW9yZSBkZXRhaWwgaW5mb3JtYXRpb246Cj4+IFRoZSBkcml2
-ZXI6Cj4+ICAgICAgICAgIGRyaXZlcnMvc29jL3JvY2tjaGlwL3BtX2RvbWFpbnMuYwo+PiBUaGUg
-ZG9jdW1lbnQ6Cj4+ICAgICAgICAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9z
-b2Mvcm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dAo+PiAtLS0KPj4KPj4gQ2hhbmdlcyBpbiB2MjoK
-Pj4gLSBBcyBEb3VnL0hlaWtvIGNvbW1uZXRzIG9uIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
-cmcvcGF0Y2gvOTIwNjQxNS8uCj4+ICAgIGRyb3AgdGhlIGRlYnVnZnMtZHVtcCBhbmQgQWRkIHRo
-ZSBjb21tZW50cyBmb3IgYWxwaGFiZXRpY2FsIG9yZGVyLgo+Pgo+PiBOb3RlOiBBcyB0aGUgVFJN
-IGxpc3RzIG1hbnkgdm9sdGFnZSBkb21haW5zIGFuZCBwb3dlciBkb21haW5zLCB0aGVuCj4+IGlu
-IGFjdHVhbCB3ZSBqdXN0IG5lZWQgY29udHJvbCBzb21lIGRvbWFpbnMgZm9yIGRyaXZlci4KPj4g
-RHVlIHRvIHNvbWUgZG9tYWlucyAoZS5nLiBlbW1jLCB1c2IsIGNvcmUpLi4uV2UgY2FuJ3QgdHVy
-biBvZmYgaXQgb24KPj4gYm9vdHVwLgo+IEknbSBjdXJpb3VzOiB3aHkgY2FuJ3QgeW91IHR1cm4g
-b2ZmIFVTQiBwb3dlciBkb21haW5zIGlmIGEgYm9hcmQKPiBkb2Vzbid0IHVzYiBVU0I/ICAuLi5v
-ciBHTUFDIG9uIGJvYXJkcyB0aGF0IGRvbid0IHVzZSBFdGhlcm5ldD8gIC4uLm9yCj4gZURQIG9u
-IGJvYXJkcyB0aGF0IGRvbid0IHVzZSBFRFA/Cj4KPiBNYXliZSB0aGUgZHJpdmVyIGZvciB0aGVz
-ZSB0aGluZ3MgaXNuJ3QgcmVhZHkgdG8gaGFuZGxlIHBvd2VyIGRvbWFpbnMKPiB5ZXQgc28gdGhh
-dCdzIHdoeSB0aGV5IGFyZSBsZWZ0IG91dCBmb3Igbm93Pwo+Cj4gSXQgc2VlbXMgbGlrZSBHTUFD
-IGNvdWxkIGF0IGxlYXN0IGJlIGFkZGVkIGJlY2F1c2Ugd2UgZG9uJ3QgZXZlbiBoYXZlCj4gdGhl
-IEdNQUMgbGlzdGVkIGluIHRoZSBjdXJyZW50IGRldmljZSB0cmVlIHNvIHRoZXJlZm9yZSB0aGVy
-ZSBjYW4ndCBiZQo+IGFueSB1c2VycyBvZiBpdC4gIFdoZW4gaXQncyBhZGRlZCB3ZSBjYW4gbWFr
-ZSBzdXJlIHRoYXQgdGhlIHBvd2VyCj4gZG9tYWlucyBhcmUgYWRkZWQuCgpBdCBsZWFzdCwgdGhl
-IGdtYWMgaGFkIGJlZW4gc3VwcG9ydGVkIGluIHJvY2tjaGlwIGluc2lkZS4KVGhhdCdzIHNlZW0g
-dGhlIGdtYWMgZHJpdmVyIGNhbid0IGhhbmRsZSB0aGUgcG93ZXIgZG9tYWluIGVub3VnaC4KLS0K
-CkZyYW5rbHksIEknbSBubyB0ZXN0IHRoZSBHTUFD77yMdGhlbiB0aGlzIHBhdGNoIHNob3VsZCBz
-dXBwb3J0IG1vc3Qgb2YgCmRldmljZXMuCldlIGNhbiBzZW5kIGFub3RoZXIgcGF0Y2ggdG8gc3Vw
-cG9ydCBpdCBpZiBzb21lb25l77yIdXNiL2dtYWMpIGNhbiBoYW5kbGUgCnRoZSBwb3dlciBkb21h
-aW4uCgo+Cj4gSSB0aGluayBpbiB0aGUgY3VycmVudCB1cHN0cmVhbSBkdHNpIGZpbGUgdGhlcmUg
-aXMgYWxzbyBubyB4aGNpIG5vZGUsCj4gc28gZG9lcyB0aGF0IG1lYW4geW91IGNvdWxkIGFkZCB0
-aGUgVVNCMyBwb3dlciBkb21haW4/Cj4KPgoKd2lsbGFtQFJLLCB3aGF0J3MgdGhpbmsgb2YgaXTv
-vJ8KCj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMu
-Y29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+
-PiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IENjOiBsaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29A
-c250ZWNoLmRlPgo+Pgo+PiAtLS0KPj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
-MzM5OS5kdHNpIHwgMTc5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4gICAxIGZp
-bGUgY2hhbmdlZCwgMTc5IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS5kdHNpCj4+IGluZGV4IGE2ZGQ2MjMuLjEwM2UxODUgMTAwNjQ0Cj4+IC0t
-LSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gKysrIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiBAQCAtNDUsNiArNDUsNyBA
-QAo+PiAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9hcm0tZ2lj
-Lmg+Cj4+ICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2ludGVycnVwdC1jb250cm9sbGVyL2lycS5o
-Pgo+PiAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9waW5jdHJsL3JvY2tjaGlwLmg+Cj4+ICsjaW5j
-bHVkZSA8ZHQtYmluZGluZ3MvcG93ZXIvcmszMzk5LXBvd2VyLmg+Cj4+ICAgI2luY2x1ZGUgPGR0
-LWJpbmRpbmdzL3RoZXJtYWwvdGhlcm1hbC5oPgo+Pgo+PiAgIC8gewo+PiBAQCAtNTk0LDYgKzU5
-NSwxODQgQEAKPj4gICAgICAgICAgICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiAgICAg
-ICAgICB9Owo+Pgo+PiArICAgICAgIHFvc19oZGNwOiBxb3NfaGRjcEBmZmE5MDAwMCB7Cj4+ICsg
-ICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInN5c2NvbiI7Cj4+ICsgICAgICAgICAgICAgICBy
-ZWcgPSA8MHgwIDB4ZmZhOTAwMDAgMHgwIDB4MjA+Owo+PiArICAgICAgIH07Cj4+ICsKPj4gKyAg
-ICAgICBxb3NfaWVwOiBxb3NfaWVwQGZmYTk4MDAwIHsKPj4gKyAgICAgICAgICAgICAgIGNvbXBh
-dGlibGUgPSAic3lzY29uIjsKPj4gKyAgICAgICAgICAgICAgIHJlZyA9IDwweDAgMHhmZmE5ODAw
-MCAweDAgMHgyMD47Cj4+ICsgICAgICAgfTsKPj4gKwo+PiArICAgICAgIHFvc19pc3AwX20wOiBx
-b3NfaXNwMF9tMEBmZmFhMDAwMCB7Cj4+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInN5
-c2NvbiI7Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhYTAwMDAgMHgwIDB4MjA+
-Owo+PiArICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBxb3NfaXNwMF9tMTogcW9zX2lzcDBfbTFA
-ZmZhYTAwODAgewo+PiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJzeXNjb24iOwo+PiAr
-ICAgICAgICAgICAgICAgcmVnID0gPDB4MCAweGZmYWEwMDgwIDB4MCAweDIwPjsKPj4gKyAgICAg
-ICB9Owo+PiArCj4+ICsgICAgICAgcW9zX2lzcDFfbTA6IHFvc19pc3AxX20wQGZmYWE4MDAwIHsK
-Pj4gKyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAic3lzY29uIjsKPj4gKyAgICAgICAgICAg
-ICAgIHJlZyA9IDwweDAgMHhmZmFhODAwMCAweDAgMHgyMD47Cj4+ICsgICAgICAgfTsKPj4gKwo+
-PiArICAgICAgIHFvc19pc3AxX20xOiBxb3NfaXNwMV9tMUBmZmFhODA4MCB7Cj4+ICsgICAgICAg
-ICAgICAgICBjb21wYXRpYmxlID0gInN5c2NvbiI7Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8
-MHgwIDB4ZmZhYTgwODAgMHgwIDB4MjA+Owo+PiArICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBx
-b3NfcmdhX3I6IHFvc19yZ2FfckBmZmFiMDAwMCB7Cj4+ICsgICAgICAgICAgICAgICBjb21wYXRp
-YmxlID0gInN5c2NvbiI7Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhYjAwMDAg
-MHgwIDB4MjA+Owo+PiArICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBxb3NfcmdhX3c6IHFvc19y
-Z2Ffd0BmZmFiMDA4MCB7Cj4+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInN5c2NvbiI7
-Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhYjAwODAgMHgwIDB4MjA+Owo+PiAr
-ICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBxb3NfdmlkZW9fbTA6IHFvc192aWRlb19tMEBmZmFi
-ODAwMCB7Cj4+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInN5c2NvbiI7Cj4+ICsgICAg
-ICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhYjgwMDAgMHgwIDB4MjA+Owo+PiArICAgICAgIH07
-Cj4+ICsKPj4gKyAgICAgICBxb3NfdmlkZW9fbTFfcjogcW9zX3ZpZGVvX20xX3JAZmZhYzAwMDAg
-ewo+PiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJzeXNjb24iOwo+PiArICAgICAgICAg
-ICAgICAgcmVnID0gPDB4MCAweGZmYWMwMDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICB9Owo+PiAr
-Cj4+ICsgICAgICAgcW9zX3ZpZGVvX20xX3c6IHFvc192aWRlb19tMV93QGZmYWMwMDgwIHsKPj4g
-KyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAic3lzY29uIjsKPj4gKyAgICAgICAgICAgICAg
-IHJlZyA9IDwweDAgMHhmZmFjMDA4MCAweDAgMHgyMD47Cj4+ICsgICAgICAgfTsKPj4gKwo+PiAr
-ICAgICAgIHFvc192b3BfYmlnX3I6IHFvc192b3BfYmlnX3JAZmZhYzgwMDAgewo+PiArICAgICAg
-ICAgICAgICAgY29tcGF0aWJsZSA9ICJzeXNjb24iOwo+PiArICAgICAgICAgICAgICAgcmVnID0g
-PDB4MCAweGZmYWM4MDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICB9Owo+PiArCj4+ICsgICAgICAg
-cW9zX3ZvcF9iaWdfdzogcW9zX3ZvcF9iaWdfd0BmZmFjODA4MCB7Cj4+ICsgICAgICAgICAgICAg
-ICBjb21wYXRpYmxlID0gInN5c2NvbiI7Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4
-ZmZhYzgwODAgMHgwIDB4MjA+Owo+PiArICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBxb3Nfdm9w
-X2xpdHRsZTogcW9zX3ZvcF9saXR0bGVAZmZhZDAwMDAgewo+PiArICAgICAgICAgICAgICAgY29t
-cGF0aWJsZSA9ICJzeXNjb24iOwo+PiArICAgICAgICAgICAgICAgcmVnID0gPDB4MCAweGZmYWQw
-MDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICB9Owo+PiArCj4+ICsgICAgICAgcW9zX2dwdTogcW9z
-X2dwdUBmZmFlMDAwMCB7Cj4+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInN5c2NvbiI7
-Cj4+ICsgICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhZTAwMDAgMHgwIDB4MjA+Owo+PiAr
-ICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICBwbXU6IHBvd2VyLW1hbmFnZW1lbnRAZmYzMTAwMDAg
-ewo+PiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktcG11Iiwg
-InN5c2NvbiIsICJzaW1wbGUtbWZkIjsKPj4gKyAgICAgICAgICAgICAgIHJlZyA9IDwweDAgMHhm
-ZjMxMDAwMCAweDAgMHgxMDAwPjsKPj4gKwo+PiArICAgICAgICAgICAgICAgLyoKPj4gKyAgICAg
-ICAgICAgICAgICAqIE5vdGU6IFJLMzM5OSBzdXBwb3J0cyA2IHZvbHRhZ2UgZG9tYWlucyBpbmNs
-dWRpbmcgVkRfQ09SRV9MLAo+PiArICAgICAgICAgICAgICAgICogVkRfQ09SRV9CLCBWRF9DRU5U
-RVIsIFZEX0dQVSwgVkRfTE9HSUMgYW5kIFZEX1BNVS4KPj4gKyAgICAgICAgICAgICAgICAqIFNv
-bWUgb2YgdGhlIHBvd2VyIGRvbWFpbnMgYXJlIGdyb3VwZWQgdG9nZXRoZXIgZm9yIGV2ZXJ5Cj4+
-ICsgICAgICAgICAgICAgICAgKiB2b2x0YWdlIGRvbWFpbi4KPj4gKyAgICAgICAgICAgICAgICAq
-IFRoZSBkZXRhaWwgY29udGVudHMgYXMgYmVsb3cuCj4+ICsgICAgICAgICAgICAgICAgKi8KPj4g
-KyAgICAgICAgICAgICAgIHBvd2VyOiBwb3dlci1jb250cm9sbGVyIHsKPj4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+PiArICAgICAgICAgICAgICAgICAgICAgICBj
-b21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1wb3dlci1jb250cm9sbGVyIjsKPj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgI3Bvd2VyLWRvbWFpbi1jZWxscyA9IDwxPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICNzaXplLWNlbGxzID0gPDA+Owo+PiArCj4+ICsgICAgICAgICAgICAgICAgICAgICAg
-IC8qIFRoZXNlIHBvd2VyIGRvbWFpbnMgYXJlIGdyb3VwZWQgYnkgVkRfTE9HSUMgKi8KPj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgcGRfdmlvQFJLMzM5OV9QRF9WSU8gewo+PiArICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVklPPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAjc2l6ZS1jZWxscyA9IDwwPjsKPj4gKwo+PiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHBkX2lzcDBAUkszMzk5X1BEX0lTUDAgewo+PiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9JU1Aw
-PjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwm
-Y3J1IEFDTEtfSVNQMD4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICA8JmNydSBIQ0xLX0lTUDA+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfaXNwMF9tMD4sCj4+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JnFvc19pc3AwX20xPjsKPj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHBkX2lzcDFAUkszMzk5X1BEX0lTUDEgewo+PiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9JU1AxPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfSVNQMT4s
-Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNy
-dSBIQ0xLX0lTUDE+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cG1fcW9zID0gPCZxb3NfaXNwMV9tMD4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICA8JnFvc19pc3AxX20xPjsKPj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBkX3Zv
-QFJLMzM5OV9QRF9WTyB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICByZWcgPSA8UkszMzk5X1BEX1ZPPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICNhZGRyZXNzLWNlbGxzID0gPDE+Owo+PiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MD47Cj4+ICsKPj4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBkX3ZvcGJAUkszMzk5X1BEX1ZPUEIgewo+PiAr
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8Uksz
-Mzk5X1BEX1ZPUEI+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZPUDA+LAo+PiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBIQ0xLX1ZPUDA+Owo+
-PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3Mg
-PSA8JnFvc192b3BfYmlnX3I+LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICA8JnFvc192b3BfYmlnX3c+Owo+PiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHBkX3ZvcGxAUkszMzk5X1BEX1ZPUCB7Cj4+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVk9QTD47
-Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2Nr
-cyA9IDwmY3J1IEFDTEtfVk9QMT4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfVk9QMT47Cj4+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX3ZvcF9s
-aXR0bGU+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHBkX2hkY3BAUkszMzk5X1BEX0hEQ1Agewo+PiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9IRENQPjsKPj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfSERD
-UD4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8
-JmNydSBIQ0xLX0hEQ1A+LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgPCZjcnUgUENMS19IRENQPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX2hkY3A+Owo+PiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIH07Cj4gSERDUCBzb3J0cyBlYXJsaWVyIHRoYW4gSVNQMCwgc28gc2hv
-dWxkIGJlIGFib3ZlIHRoYXQuICBCYXNpY2FsbHk6Cj4gYW55dGhpbmcgaW4gdGhlIHNhbWUgYXJl
-YSBzaG91bGQgYmUgc29ydGVkIGFscGhhYmV0aWNhbGx5LgoKVGhlIHNvcnQgaXMgZm9sbG93IHVw
-IHRoZSBUUk0uICBBdCBsZWFzdCBJJ20gYWNjb3JkaW5nIHRvIGV2ZXJ5IHZvbHRhZ2UgCmRvbWFp
-bi4KCj4KPj4gKyAgICAgICAgICAgICAgICAgICAgICAgfTsKPj4gKwo+PiArICAgICAgICAgICAg
-ICAgICAgICAgICAvKiBUaGVzZSBwb3dlciBkb21haW5zIGFyZSBncm91cGVkIGJ5IFZEX0NFTlRF
-UiAqLwo+PiArICAgICAgICAgICAgICAgICAgICAgICBwZF92Y29kZWNAUkszMzk5X1BEX1ZDT0RF
-QyB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9W
-Q09ERUM+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1
-IEFDTEtfVkNPREVDPiwKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICA8JmNydSBIQ0xLX1ZDT0RFQz47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cG1fcW9zID0gPCZxb3NfdmlkZW9fbTA+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICB9Owo+
-PiArICAgICAgICAgICAgICAgICAgICAgICBwZF92ZHVAUkszMzk5X1BEX1ZEVSB7Cj4+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9WRFU+Owo+PiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfVkRVPiwKPj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBIQ0xLX1ZEVT47
-Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfdmlkZW9f
-bTFfcj4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZxb3Nf
-dmlkZW9fbTFfdz47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIH07Cj4+ICsgICAgICAgICAg
-ICAgICAgICAgICAgIHBkX3JnYUBSSzMzOTlfUERfUkdBIHsKPj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICByZWcgPSA8UkszMzk5X1BEX1JHQT47Cj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19SR0E+LAo+PiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfUkdBPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc19yZ2Ffcj4sCj4+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZxb3NfcmdhX3c+Owo+PiArICAgICAg
-ICAgICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgICAgICAgICBwZF9pZXBAUksz
-Mzk5X1BEX0lFIHsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8Uksz
-Mzk5X1BEX0lFUD47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0g
-PCZjcnUgQUNMS19JRVA+LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDwmY3J1IEhDTEtfSUVQPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBw
-bV9xb3MgPSA8JnFvc19pZXA+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICB9Owo+IElFIHNv
-cnRzIGJlZm9yZSBSR0EuICAuLi5hbmQgYm90aCBjb21lIGJlZm9yZSBWQ09ERUMgLyBWRFUuCgpE
-aXR0bwo+Cj4+ICsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgLyogVGhlc2UgcG93ZXIgZG9t
-YWlucyBhcmUgZ3JvdXBlZCBieSBWRF9HUFUgKi8KPj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-cGRfZ3B1QFJLMzM5OV9QRF9HUFUgewo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHJlZyA9IDxSSzMzOTlfUERfR1BVPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBjbG9ja3MgPSA8JmNydSBBQ0xLX0dQVT47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgcG1fcW9zID0gPCZxb3NfZ3B1PjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgfTsK
-Pj4gKyAgICAgICAgICAgICAgIH07Cj4+ICsgICAgICAgfTsKPj4gKwo+PiAgICAgICAgICBwbXVn
-cmY6IHN5c2NvbkBmZjMyMDAwMCB7Cj4+ICAgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJy
-b2NrY2hpcCxyazMzOTktcG11Z3JmIiwgInN5c2NvbiIsICJzaW1wbGUtbWZkIjsKPj4gICAgICAg
-ICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmYzMjAwMDAgMHgwIDB4MTAwMD47Cj4+IC0tCj4+IDEu
-OS4xCj4+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAoKCi0tIApjYWVzYXIgd2FuZyB8IHNvZnR3YXJlIGVuZ2luZWVyIHwgd3h0
-QHJvY2stY2hpcC5jb20KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+On Wed, Jun 22, 2016 at 11:15:19AM +0800, Zhang Rui wrote:
+> On =E4=B8=80, 2016-06-06 at 19:44 +0800, Caesar Wang wrote:
+> > From: Sascha Hauer <s.hauer@pengutronix.de>
+> >=20
+> > This adds support for hardware-tracked trip points to the device tr=
+ee
+> > thermal sensor framework.
+> >=20
+> > The framework supports an arbitrary number of trip points. Whenever
+> > the current temperature is updated, the trip points immediately
+> > below and above the current temperature are found. A .set_trips
+> > callback is then called with the temperatures. If there is no trip
+> > point above or below the current temperature, the passed trip
+> > temperature will be -INT_MAX or INT_MAX respectively. In this
+> > callback,
+> > the driver should program the hardware such that it is notified
+> > when either of these trip points are triggered. When a trip point
+> > is triggered, the driver should call `thermal_zone_device_update'
+> > for the respective thermal zone. This will cause the trip points
+> > to be updated again.
+> >=20
+> > If .set_trips is not implemented, the framework behaves as before.
+> >=20
+> > This patch is based on an earlier version from Mikko Perttunen
+> > <mikko.perttunen@kapsi.fi>
+> >=20
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> > Cc: Zhang Rui <rui.zhang@intel.com>
+> > Cc: Eduardo Valentin <edubezval@gmail.com>
+> > Cc: linux-pm@vger.kernel.org
+> >=20
+> > ---
+> >=20
+> > Changes in v5:
+> > - add the lock for thermal_zone_set_trips function.
+> > - change based on next kernel.
+> >=20
+> > Changes in v4:
+> > - Missing the lock added in v3.
+> >=20
+> > Changes in v3:
+> > - as Javi comments on https://patchwork.kernel.org/patch/9001281/.
+> > - add the lock for preventing the called from multi placce
+> > - add the note for pre_low/high_trip.
+> >=20
+> > Changes in v2:
+> > - update the sysfs-api.txt for set_trips.
+> >=20
+> > =C2=A0Documentation/thermal/sysfs-api.txt |=C2=A0=C2=A07 +++++
+> > =C2=A0drivers/thermal/thermal_core.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0| 54
+> > +++++++++++++++++++++++++++++++++++++
+> > =C2=A0drivers/thermal/thermal_sysfs.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+|=C2=A0=C2=A03 +++
+> > =C2=A0include/linux/thermal.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0| 10 +++++++
+> > =C2=A04 files changed, 74 insertions(+)
+> >=20
+> > diff --git a/Documentation/thermal/sysfs-api.txt
+> > b/Documentation/thermal/sysfs-api.txt
+> > index efc3f3d..75d8838 100644
+> > --- a/Documentation/thermal/sysfs-api.txt
+> > +++ b/Documentation/thermal/sysfs-api.txt
+> > @@ -49,6 +49,9 @@ temperature) and throttle appropriate devices.
+> > =C2=A0	.bind: bind the thermal zone device with a thermal cooling
+> > device.
+> > =C2=A0	.unbind: unbind the thermal zone device with a thermal
+> > cooling device.
+> > =C2=A0	.get_temp: get the current temperature of the thermal zone.
+> > +	.set_trips: set the trip points window. Whenever the current
+> > temperature
+> > +		=C2=A0=C2=A0=C2=A0=C2=A0is updated, the trip points immediately =
+below
+> > and above the
+> > +		=C2=A0=C2=A0=C2=A0=C2=A0current temperature are found.
+> > =C2=A0	.get_mode: get the current mode (enabled/disabled) of the
+> > thermal zone.
+> > =C2=A0	=C2=A0=C2=A0=C2=A0=C2=A0- "enabled" means the kernel thermal=
+ management is
+> > enabled.
+> > =C2=A0	=C2=A0=C2=A0=C2=A0=C2=A0- "disabled" will prevent kernel the=
+rmal driver action
+> > upon trip points
+> > @@ -95,6 +98,10 @@ temperature) and throttle appropriate devices.
+> > =C2=A0			get_temp:	a pointer to a function
+> > that reads the
+> > =C2=A0					sensor temperature. This is
+> > mandatory
+> > =C2=A0					callback provided by sensor
+> > driver.
+> > +			set_trips:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0a pointer to a fu=
+nction that
+> > sets a
+> > +					temperature window. When
+> > this window is
+> > +					left the driver must inform
+> > the thermal
+> > +					core via
+> > thermal_zone_device_update.
+> > =C2=A0			get_trend:=C2=A0	a pointer to a function
+> > that reads the
+> > =C2=A0					sensor temperature trend.
+> > =C2=A0			set_emul_temp:	a pointer to a
+> > function that sets
+> > diff --git a/drivers/thermal/thermal_core.c
+> > b/drivers/thermal/thermal_core.c
+> > index 792aab7..e69aee2 100644
+> > --- a/drivers/thermal/thermal_core.c
+> > +++ b/drivers/thermal/thermal_core.c
+> > @@ -368,6 +368,56 @@ static void handle_thermal_trip(struct
+> > thermal_zone_device *tz, int trip)
+> > =C2=A0	monitor_thermal_zone(tz);
+> > =C2=A0}
+> > =C2=A0
+> > +void thermal_zone_set_trips(struct thermal_zone_device *tz)
+> > +{
+> > +	int low =3D -INT_MAX;
+> > +	int high =3D INT_MAX;
+> > +	int trip_temp, hysteresis;
+> > +	int i, ret;
+> > +
+> > +	mutex_lock(&tz->lock);
+> > +
+> > +	if (!tz->ops->set_trips)
+> > +		goto exit;
+> > +
+> 	if (!tz->ops->get_trip_hyst)
+> 		goto exit;
+>=20
+> otherwise, the patch looks good to me.
+
+Agreed here, you need to check if get_trip_hyst is present before
+calling it. Not all drivers have it.
+
+Besides, I would prefer you to lock after the checks:
+
+	if (!tz->ops->set_trips)
+		return;
+
+	if (!tz->ops->get_trip_hyst)
+		return;
+
+	mutex_lock(&tz->lock);
+
+>=20
+> thanks,
+> rui
+> > +	for (i =3D 0; i < tz->trips; i++) {
+> > +		int trip_low;
+> > +
+> > +		tz->ops->get_trip_temp(tz, i, &trip_temp);
+> > +		tz->ops->get_trip_hyst(tz, i, &hysteresis);
+> > +
+> > +		trip_low =3D trip_temp - hysteresis;
+> > +
+> > +		if (trip_low < tz->temperature && trip_low > low)
+> > +			low =3D trip_low;
+> > +
+> > +		if (trip_temp > tz->temperature && trip_temp < high)
+> > +			high =3D trip_temp;
+> > +	}
+> > +
+> > +	/* No need to change trip points */
+> > +	if (tz->prev_low_trip =3D=3D low && tz->prev_high_trip =3D=3D hig=
+h)
+> > +		goto exit;
+> > +
+> > +	tz->prev_low_trip =3D low;
+> > +	tz->prev_high_trip =3D high;
+> > +
+> > +	dev_dbg(&tz->device, "new temperature boundaries: %d < x <
+> > %d\n",
+> > +			low, high);
+> > +
+> > +	/*
+> > +	=C2=A0* Set a temperature window. When this window is left the
+> > driver
+> > +	=C2=A0* must inform the thermal core via
+> > thermal_zone_device_update.
+> > +	=C2=A0*/
+> > +	ret =3D tz->ops->set_trips(tz, low, high);
+> > +	if (ret)
+> > +		dev_err(&tz->device, "Failed to set trips: %d\n",
+> > ret);
+> > +
+> > +exit:
+> > +	mutex_unlock(&tz->lock);
+> > +}
+> > +EXPORT_SYMBOL_GPL(thermal_zone_set_trips);
+> > +
+> > =C2=A0static void update_temperature(struct thermal_zone_device *tz=
+)
+> > =C2=A0{
+> > =C2=A0	int temp, ret;
+> > @@ -417,6 +467,8 @@ void thermal_zone_device_update(struct
+> > thermal_zone_device *tz)
+> > =C2=A0
+> > =C2=A0	update_temperature(tz);
+> > =C2=A0
+> > +	thermal_zone_set_trips(tz);
+> > +
+> > =C2=A0	for (count =3D 0; count < tz->trips; count++)
+> > =C2=A0		handle_thermal_trip(tz, count);
+> > =C2=A0}
+> > @@ -1175,6 +1227,8 @@ thermal_zone_device_register(const char *type=
+,
+> > int trips, int mask,
+> > =C2=A0	tz->trips =3D trips;
+> > =C2=A0	tz->passive_delay =3D passive_delay;
+> > =C2=A0	tz->polling_delay =3D polling_delay;
+> > +	tz->prev_low_trip =3D INT_MAX;
+> > +	tz->prev_high_trip =3D -INT_MAX;
+> > =C2=A0
+> > =C2=A0	/* sys I/F */
+> > =C2=A0	/* Add nodes that are always present via .groups */
+> > diff --git a/drivers/thermal/thermal_sysfs.c
+> > b/drivers/thermal/thermal_sysfs.c
+> > index 743df50..33bbe30 100644
+> > --- a/drivers/thermal/thermal_sysfs.c
+> > +++ b/drivers/thermal/thermal_sysfs.c
+> > @@ -219,6 +219,9 @@ trip_point_hyst_store(struct device *dev, struc=
+t
+> > device_attribute *attr,
+> > =C2=A0	ret =3D tz->ops->set_trip_hyst(tz, trip, temperature);
+> > =C2=A0	mutex_unlock(&tz->lock);
+> > =C2=A0
+> > +	if (!ret)
+> > +		thermal_zone_set_trips(tz);
+> > +
+> > =C2=A0	return ret ? ret : count;
+> > =C2=A0}
+> > =C2=A0
+> > diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> > index ea667b6..780e69d 100644
+> > --- a/include/linux/thermal.h
+> > +++ b/include/linux/thermal.h
+> > @@ -99,6 +99,7 @@ struct thermal_zone_device_ops {
+> > =C2=A0	int (*unbind) (struct thermal_zone_device *,
+> > =C2=A0		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct thermal_co=
+oling_device *);
+> > =C2=A0	int (*get_temp) (struct thermal_zone_device *, int *);
+> > +	int (*set_trips) (struct thermal_zone_device *, int, int);
+> > =C2=A0	int (*get_mode) (struct thermal_zone_device *,
+> > =C2=A0			=C2=A0enum thermal_device_mode *);
+> > =C2=A0	int (*set_mode) (struct thermal_zone_device *,
+> > @@ -169,6 +170,10 @@ struct thermal_attr {
+> > =C2=A0 * @last_temperature:	previous temperature read
+> > =C2=A0 * @emul_temperature:	emulated temperature when using
+> > CONFIG_THERMAL_EMULATION
+> > =C2=A0 * @passive:		1 if you've crossed a passive trip
+> > point, 0 otherwise.
+> > + * @prev_low_trip:	the low current temperature if you've
+> > crossed a passive
+> > +			trip point.
+> > + * @prev_high_trip:	the above current temperature if you've
+> > crossed a
+> > +			passive trip point.
+> > =C2=A0 * @forced_passive:	If > 0, temperature at which to switch on
+> > all ACPI
+> > =C2=A0 *			processor cooling devices.=C2=A0=C2=A0Currently only
+> > used by the
+> > =C2=A0 *			step-wise governor.
+> > @@ -201,6 +206,8 @@ struct thermal_zone_device {
+> > =C2=A0	int last_temperature;
+> > =C2=A0	int emul_temperature;
+> > =C2=A0	int passive;
+> > +	int prev_low_trip;
+> > +	int prev_high_trip;
+> > =C2=A0	unsigned int forced_passive;
+> > =C2=A0	atomic_t need_update;
+> > =C2=A0	struct thermal_zone_device_ops *ops;
+> > @@ -428,6 +435,7 @@ int thermal_zone_bind_cooling_device(struct
+> > thermal_zone_device *, int,
+> > =C2=A0int thermal_zone_unbind_cooling_device(struct thermal_zone_de=
+vice *,
+> > int,
+> > =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct thermal_=
+cooling_device
+> > *);
+> > =C2=A0void thermal_zone_device_update(struct thermal_zone_device *)=
+;
+> > +void thermal_zone_set_trips(struct thermal_zone_device *);
+> > =C2=A0
+> > =C2=A0struct thermal_cooling_device *thermal_cooling_device_registe=
+r(char
+> > *, void *,
+> > =C2=A0		const struct thermal_cooling_device_ops *);
+> > @@ -477,6 +485,8 @@ static inline int
+> > thermal_zone_unbind_cooling_device(
+> > =C2=A0{ return -ENODEV; }
+> > =C2=A0static inline void thermal_zone_device_update(struct
+> > thermal_zone_device *tz)
+> > =C2=A0{ }
+> > +static inline void thermal_zone_set_trips(struct thermal_zone_devi=
+ce
+> > *tz)
+> > +{ }
+> > =C2=A0static inline struct thermal_cooling_device *
+> > =C2=A0thermal_cooling_device_register(char *type, void *devdata,
+> > =C2=A0	const struct thermal_cooling_device_ops *ops)
