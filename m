@@ -1,79 +1,49 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
- mode
-Date: Sat, 2 Jul 2016 17:47:52 +0200
-Message-ID: <20160702174752.7e893ac2@bbrezillon>
-References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
- <20160701080614.GA9196@sirena.org.uk>
- <CAD=FV=WKR_Fq6o34886RCY-T-6AKdRqFz9H1aTiRq7Zu=o8TWA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=WKR_Fq6o34886RCY-T-6AKdRqFz9H1aTiRq7Zu=o8TWA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Subject: [PATCH] phy: rockhip-usb: use devm_add_action_or_reset()
+Date: Sun,  3 Jul 2016 22:01:06 +0100
+Message-ID: <1467579666-9179-1-git-send-email-sudipm.mukherjee@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-+Thierry
+If devm_add_action() fails we are explicitly calling the cleanup to free
+the resources allocated.  Lets use the helper devm_add_action_or_reset()
+and return directly in case of error, as we know that the cleanup function
+has been already called by the helper if there was any error.
 
-Hi Doug,
+Signed-off-by: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
+---
+ drivers/phy/phy-rockchip-usb.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-On Fri, 1 Jul 2016 13:17:48 -0700
-Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-
-> Mark,
-> 
-> On Fri, Jul 1, 2016 at 1:06 AM, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > On Mon, Jun 27, 2016 at 09:53:11PM -0700, Douglas Anderson wrote:
-> >  
-> >> Note that this patch is atop Boris's recent PWM regulator fixes.  If
-> >> desired it wouldn't be too hard to write it atop the old code, though
-> >> quite honestly anyone using a PWM regulator should probably be using his
-> >> new code.  
-> >
-> > Given that those don't seem likely to go in any time soon and aren't
-> > going to go in as a fix can you please respin against current code?  
-> 
-> I went to write this patch and it was pretty easy to write.  ...but
-> then I realized that I had no real way to test it.  I can compile test
-> it, but that's it.  Do you still want it?
-> 
-> Specifically without Boris's patches then I don't believe the devices
-> I have access to are bootable when I tell Linux about the PWM
-> regulator, especially when I configure the PWM regulator to use
-> continuous mode (which is where the bug is).  As I understand from
-> <https://patchwork.kernel.org/patch/9175279/> the current PWM
-> regulator assumes that 0% duty cycle is the lowest voltage and 100% is
-> the highest voltage.  My system is backwards (0% is highest, 100%
-> lowest).  Also: last I tried even the non-continuous mode without
-> Boris's patches the regulator would glitch enough at bootup that my
-> system would crash (the PWM regulator affects the memory controller).
-> 
-> Anyway, let me know if you want me to post the untested, rebased
-> patch...  Personally I'd prefer to wait for Boris's patches and the
-> land the tested version.
-> 
-> Boris: any idea for what the next steps on your series are?
-
-I'm waiting for reviews or acks. AFAIR, I addressed all the comments
-Thierry made on my v2, so I guess we're good on the PWM side, but that
-would be good to have a review from Mark now that we agreed on the PWM
-APIs.
-
-That shouldn't prevent you from rebasing this patch on Linus' tree and
-tag it for stable (I'll rebase my series on top of the regulator tree if
-needed). 
-
-Regards,
-
-Boris
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+index d60b149..dd58f23 100644
+--- a/drivers/phy/phy-rockchip-usb.c
++++ b/drivers/phy/phy-rockchip-usb.c
+@@ -236,9 +236,10 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
+ 			goto err_clk_prov;
+ 	}
+ 
+-	err = devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
++	err = devm_add_action_or_reset(base->dev, rockchip_usb_phy_action,
++				       rk_phy);
+ 	if (err)
+-		goto err_devm_action;
++		return err;
+ 
+ 	rk_phy->phy = devm_phy_create(base->dev, child, &ops);
+ 	if (IS_ERR(rk_phy->phy)) {
+@@ -256,9 +257,6 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
+ 	else
+ 		return rockchip_usb_phy_power(rk_phy, 1);
+ 
+-err_devm_action:
+-	if (!rk_phy->uart_enabled)
+-		of_clk_del_provider(child);
+ err_clk_prov:
+ 	if (!rk_phy->uart_enabled)
+ 		clk_unregister(rk_phy->clk480m);
+-- 
+1.9.1
