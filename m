@@ -1,34 +1,46 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] drivers/perf: arm-pmu: Handle per-interrupt affinity mask
-Date: Tue, 5 Jul 2016 09:23:50 -0500
-Message-ID: <20160705142350.GA24441@rob-hp-laptop>
-References: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3 10/14] regulator: pwm: Switch to the atomic PWM API
+Date: Tue, 5 Jul 2016 16:30:40 +0200
+Message-ID: <20160705143040.GX6247@sirena.org.uk>
+References: <1465895602-31008-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465895602-31008-11-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ndWVA4pxvhlNOeHP"
+Return-path: <linux-pwm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Mark Rutland <mark.rutland@arm.com>
+In-Reply-To: <1465895602-31008-11-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Milo Kim <milo.kim@ti.com>, Doug Anderson <dianders@google.com>, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Brian Norris <briannorris@chromium.org>, Ajit Pal Singh <ajitpal.singh@st.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, kernel@stlinux.com, Laxman Dewangan <ldewangan@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 01, 2016 at 02:21:31PM +0100, Marc Zyngier wrote:
-> On a big-little system, PMUs can be wired to CPUs using per CPU
-> interrups (PPI). In this case, it is important to make sure that
-> the enable/disable do happen on the right set of CPUs.
-> 
-> So instead of relying on the interrupt-affinity property, we can
-> use the actual percpu affinity that DT exposes as part of the
-> interrupt specifier. The DT binding is also updated to reflect
-> the fact that the interrupt-affinity property shouldn't be used
-> in that case.
-> 
-> Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
-> ---
->  Documentation/devicetree/bindings/arm/pmu.txt |  4 +++-
 
-Acked-by: Rob Herring <robh@kernel.org>
+--ndWVA4pxvhlNOeHP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->  drivers/perf/arm_pmu.c                        | 22 +++++++++++++++++-----
->  2 files changed, 20 insertions(+), 6 deletions(-)
+On Tue, Jun 14, 2016 at 11:13:18AM +0200, Boris Brezillon wrote:
+
+> Use the atomic API wherever appropriate and get rid of pwm_apply_args()
+> call (the reference period and polarity are now explicitly set when
+> calling pwm_apply_state()).
+
+Acked-by: Mark Brown <broonie@kernel.org>
+
+--ndWVA4pxvhlNOeHP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXe8SDAAoJECTWi3JdVIfQf0AH/iyVwH4udjUoZ5KiwpYLX8UO
+UbdnOJV1X+uL4kXIcxtMV8I/c2pOYwUsHmHFMVTJf/BIHaDASAVn2E5amzgI6jcA
+LiDxoUFKg6IS8WUYWqkNalHPfoW0NB0fd62/z9eKXJGpoMWt2BBIh+lHKU0z9xuw
+8h46D+J13H23U3qu0MWoYw1S7cPyhtv/wenO5fGGN5eytJV5SA7gyPObinIPl4i/
+nxd8iu8IytmD6EdMi68JoTB+xGvby0LHZ8nCQ8xmy41nORUqGqIAoYgFAfz/qOBD
+sxxPu3wZP4YUcXUjdivNDNZiMo9VbiF3v+4LS13zfZWEf9bKSj2+jEFGXw4IpLY=
+=Qdt8
+-----END PGP SIGNATURE-----
+
+--ndWVA4pxvhlNOeHP--
