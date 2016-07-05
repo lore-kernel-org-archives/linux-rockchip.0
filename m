@@ -1,53 +1,100 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: Applied "ASoC: rockchip-max98090: Fix NULL pointer dereference
- while accessing to jack." to the asoc tree
-Date: Mon, 4 Jul 2016 17:13:05 +0200
-Message-ID: <CAFqH_52bVUgUgeHWTo8mcQh16c1W7uPMRqQ-RpgMdGusk=p=Og@mail.gmail.com>
-References: <1462435421-21205-4-git-send-email-enric.balletbo@collabora.com>
- <E1b0CjK-00007p-Fj@debutante> <CAFqH_53jTEG7NvWt+9NBV_BVk28PZFdNSm89_DCqZvDBV+o9ng@mail.gmail.com>
- <20160704084735.GR6247@sirena.org.uk>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3] arm64: dts: rockchip: add the power domain node for rk3399
+Date: Tue, 05 Jul 2016 02:24:42 +0200
+Message-ID: <1904131.irFlfKsH8m@phil>
+References: <1467635644-16798-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160704084735.GR6247@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1467635644-16798-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-2016-07-04 10:47 GMT+02:00 Mark Brown <broonie@kernel.org>:
-> On Mon, Jul 04, 2016 at 09:24:12AM +0200, Enric Balletbo Serra wrote:
->
->> I just saw that these patches and the others in the patch series were
->> not applied yet. As are fixes and were accepted since middle May, I
->
-> No, they are actually applied like the e-mail said - please see my git.
->
->> expected see the patches merged in this release cycle, but we're at
->
-> In general if you think a fix needs to go in urgently it's best to
-> specifically identify this.  If nothing is specifically said and it's
-> not obviously related to something done recently then the tendency will
-> be to assume that the issue was recently introduced and is a fix for a
-> development version.
->
->> rc6 so I suppose I'll need to wait to see them merged for 4.8 merge
->> window. Please can you coordinate with Heiko and make sure that these
->> patches were merged before he merges the patches to enable the audio
->> on Veyron? Otherwise we will break Veyron support for a while. I'd
->> really like have audio working on Veyron.
->
-> As things stand they'll be merged in the next merge window.  They're
-> buried in the middle of a branch with other things so I can't just send
-> the branch as-is.  If these new patches you're talking about are going
-> to get merged in the merge window as well so we're presumably mostly
-> fine?
+Am Montag, 4. Juli 2016, 20:34:04 schrieb Caesar Wang:
+> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> In order to meet low power requirements, a power management unit (PMU) is
+> designed for controlling power resources in RK3399. The RK3399 PMU is
+> dedicated for managing the power of the whole chip.
+> 
+> 1. add pd node for RK3399 Soc
+> 2. create power domain tree
+> 3. add qos node for domain
+> 
+> From the DT/binds and driver can get more detail information:
+> The driver:
+>         drivers/soc/rockchip/pm_domains.c
+> The document:
+>         Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> 
+> Note:
+> As the TRM lists many voltage domains and power domains, then this patch
+> adds some domains for driver. Due to some domains
+> (e.g. emmc, usb, core)...We can't turned off it on
+> bootup, or says some device driver can't handle the power domain enough.
+> Maybe We will add more other domains in the future or later.
 
-Yeah it's fine as long as the patches will be merged in next merge
-window before the rockchip DTS updates.
+I talked with Caesar about that today and for example the gmac domain seems 
+to cause problems right now when only using the generic power-domain 
+handling the kernel provides on probe and remove.
 
-It's only that I expected see them merged, but probably was only
-something that I assumed wrongly.
+So while this gets investigated, I'm probably ok with only using the stable 
+power-domains, but will give the us-people a chance to also respond on 
+wednesday :-) .
 
-Thanks,
- Enric
+
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v3:
+> - As some commnets on https://patchwork.kernel.org/patch/9209205/
+> - according to the alphabetically sort
+> - %s/RK3399_PD_VOP/RK3399_PD_VOPL, %s/RK3399_PD_IE/RK3399_PD_IEP
+> 
+> Changes in v2:
+> - As Doug/Heiko commnets on https://patchwork.kernel.org/patch/9206415/.
+>   drop the debugfs-dump and Add the comments for alphabetical order.
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 179
+> +++++++++++++++++++++++++++++++ 1 file changed, 179 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index a6dd623..4559c04 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -45,6 +45,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/power/rk3399-power.h>
+>  #include <dt-bindings/thermal/thermal.h>
+> 
+>  / {
+> @@ -594,6 +595,184 @@
+>  		status = "disabled";
+>  	};
+> 
+> +	qos_hdcp: qos_hdcp@ffa90000 {
+
+I guess I'll just rename that to qos_hdcp: qos@ffa90000
+(similar for the other nodes), as the block itself is the same for all qos 
+instances. So if that stays the only comment, there is no need to resend, as 
+I can do the change myself.
+
+
+> +		compatible = "syscon";
+> +		reg = <0x0 0xffa90000 0x0 0x20>;
+> +	};
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
