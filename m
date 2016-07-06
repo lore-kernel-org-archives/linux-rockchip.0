@@ -1,153 +1,38 @@
-From: Randy Li <ayaka@soulik.info>
-Subject: [PATCH 3/3] ARM: dts: add rk3288-firefly-reload
-Date: Thu,  7 Jul 2016 01:34:07 +0800
-Message-ID: <1467826447-24159-4-git-send-email-ayaka@soulik.info>
+From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [PATCH 0/3] Re:[PATCH 2/3] ARM: dts: move regulator settings from common to specifics
+Date: Thu,  7 Jul 2016 01:52:41 +0800
+Message-ID: <1467827564-28007-1-git-send-email-ayaka@soulik.info>
 References: <3015470.z4L7UQJKa9@phil>
- <1467826447-24159-1-git-send-email-ayaka@soulik.info>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467826447-24159-1-git-send-email-ayaka@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux@armlinux.org.uk, mark.rutland@arm.com, robh+dt@kernel.org, heiko@sntech.de, ayaka <ayaka@soulik.info>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3015470.z4L7UQJKa9@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: ayaka <ayaka@soulik.info>
+I am very sorry very sorry, the last time I sent are still wrong.
+I forget to reset the author. Please drop the below ones,
+and have a review on this time.
 
-The firefly rk3288 reload is a Rockchip rk3288 based develop board.
+I am sorry to waste your time.
 
-Signed-off-by: Randy Li <ayaka@soulik.info>
----
+Randy Li (3):
+  ARM: dts: add label leds for rk3288-firefly.dtsi
+  ARM: dts: move regulator settings from common to specifics
+  ARM: dts: add rk3288-firefly-reload
+
  arch/arm/boot/dts/Makefile                  |   1 +
+ arch/arm/boot/dts/rk3288-firefly-beta.dts   |  30 ++++++++
  arch/arm/boot/dts/rk3288-firefly-reload.dts | 109 ++++++++++++++++++++++++++++
- 2 files changed, 110 insertions(+)
+ arch/arm/boot/dts/rk3288-firefly.dts        |  30 ++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi       |  16 ++--
+ 5 files changed, 178 insertions(+), 8 deletions(-)
  create mode 100644 arch/arm/boot/dts/rk3288-firefly-reload.dts
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 06b6c2d..19a6049 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -606,6 +606,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-evb-rk808.dtb \
- 	rk3288-firefly-beta.dtb \
- 	rk3288-firefly.dtb \
-+	rk3288-firefly-reload.dtb \
- 	rk3288-miqi.dtb \
- 	rk3288-popmetal.dtb \
- 	rk3288-r89.dtb \
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-new file mode 100644
-index 0000000..9805cf2
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-@@ -0,0 +1,109 @@
-+/*
-+ * Copyright (c) 2016 Randy Li <ayaka@soulik.info>
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+#include "rk3288-firefly.dtsi"
-+
-+/ {
-+	model = "Firefly-RK3288-reload";
-+	compatible = "firefly,firefly-rk3288-reload", "rockchip,rk3288";
-+
-+};
-+
-+&leds {
-+	power {
-+		gpios = <&gpio8 2 GPIO_ACTIVE_LOW>;
-+		label = "firefly:blue:power";
-+		linux,default-trigger = "default-on";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&power_led>;
-+	};
-+};
-+
-+&gmac {
-+	phy-supply = <&vcc_lan>;
-+};
-+
-+&pinctrl {
-+	act8846 {
-+		pmic_vsel: pmic-vsel {
-+			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+	};
-+
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <7 0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+};
-+
-+&pwm1 {
-+	status = "disabled";
-+};
-+
-+&io_domains {
-+		audio-supply = <&vcca_33>;
-+		flash1-supply = <&vcc_lan>;
-+};
-+
-+&regulators {
-+	vcca_33: REG7 {
-+		regulator-name = "vcca_33";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+	};
-+
-+	vcc_lan: REG8 {
-+		regulator-name = "vcc_lan";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+	};
-+
-+	vccio_pmu: REG9 {
-+		regulator-name = "vccio_pmu";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+	};
-+};
 -- 
 2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
