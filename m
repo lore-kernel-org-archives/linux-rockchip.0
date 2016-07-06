@@ -1,160 +1,37 @@
-From: Randy Li <ayaka@soulik.info>
-Subject: [PATCH 2/3] ARM: dts: move regulator settings from common to specifics
-Date: Thu,  7 Jul 2016 02:22:59 +0800
-Message-ID: <1467829380-16242-3-git-send-email-ayaka@soulik.info>
-References: <3015470.z4L7UQJKa9@phil>
- <1467829380-16242-1-git-send-email-ayaka@soulik.info>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous mode
+Date: Wed, 6 Jul 2016 11:30:59 -0700
+Message-ID: <CAD=FV=W2JDP3EAdz9CWUKbcoCz34Mm7oCF2QCD4W45tyBOaP+A@mail.gmail.com>
+References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+ <20160701080614.GA9196@sirena.org.uk> <CAD=FV=WKR_Fq6o34886RCY-T-6AKdRqFz9H1aTiRq7Zu=o8TWA@mail.gmail.com>
+ <20160702075939.GD6247@sirena.org.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467829380-16242-1-git-send-email-ayaka@soulik.info>
+In-Reply-To: <20160702075939.GD6247@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux@armlinux.org.uk, mark.rutland@arm.com, robh+dt@kernel.org, heiko@sntech.de, Randy Li <ayaka@soulik.info>
+To: Mark Brown <broonie@kernel.org>
+Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The regulator settings are the same in the firefly beta and
-firefly release version. But the firefly reload is different.
-I remove the different part from the common header dtsi file,
-but remained those common one to keep references.
+Mark,
 
-Signed-off-by: Randy Li <ayaka@soulik.info>
----
- arch/arm/boot/dts/rk3288-firefly-beta.dts | 30 ++++++++++++++++++++++++++++++
- arch/arm/boot/dts/rk3288-firefly.dts      | 30 ++++++++++++++++++++++++++++++
- arch/arm/boot/dts/rk3288-firefly.dtsi     | 12 +++++-------
- 3 files changed, 65 insertions(+), 7 deletions(-)
+On Sat, Jul 2, 2016 at 12:59 AM, Mark Brown <broonie@kernel.org> wrote:
+> On Fri, Jul 01, 2016 at 01:17:48PM -0700, Doug Anderson wrote:
+>
+>> Anyway, let me know if you want me to post the untested, rebased
+>> patch...  Personally I'd prefer to wait for Boris's patches and the
+>> land the tested version.
+>
+> We've got some boards in kernelci.org using PWM regulators I think, or
+> perhaps someone else can test.  It does seem like a real fix so...
 
-diff --git a/arch/arm/boot/dts/rk3288-firefly-beta.dts b/arch/arm/boot/dts/rk3288-firefly-beta.dts
-index 75d77e3..375c5d8 100644
---- a/arch/arm/boot/dts/rk3288-firefly-beta.dts
-+++ b/arch/arm/boot/dts/rk3288-firefly-beta.dts
-@@ -69,3 +69,33 @@
- &pwm0 {
- 	status = "okay";
- };
-+
-+&gmac {
-+	phy-supply = <&vcc_lan>;
-+};
-+
-+&io_domains {
-+		audio-supply = <&vcca_33>;
-+		flash1-supply = <&vcc_lan>;
-+};
-+
-+&act8846_regs {
-+	vcca_18: REG7  {
-+		regulator-name = "vcca_18";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+	};
-+
-+	vcca_33: REG8 {
-+		regulator-name = "vcca_33";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+	};
-+
-+	vcc_lan: REG9 {
-+		regulator-name = "vcc_lan";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+	};
-+};
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dts b/arch/arm/boot/dts/rk3288-firefly.dts
-index c07fe92..e89e575 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dts
-+++ b/arch/arm/boot/dts/rk3288-firefly.dts
-@@ -69,3 +69,33 @@
- &pwm1 {
- 	status = "okay";
- };
-+
-+&gmac {
-+	phy-supply = <&vcc_lan>;
-+};
-+
-+&io_domains {
-+		audio-supply = <&vcca_33>;
-+		flash1-supply = <&vcc_lan>;
-+};
-+
-+&act8846_regs {
-+	vcca_18: REG7  {
-+		regulator-name = "vcca_18";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+	};
-+
-+	vcca_33: REG8 {
-+		regulator-name = "vcca_33";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+	};
-+
-+	vcc_lan: REG9 {
-+		regulator-name = "vcc_lan";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+	};
-+};
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 1d7f03c..194e05a 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -68,11 +68,9 @@
- 		compatible = "rockchip,rk3288-io-voltage-domain";
- 		rockchip,grf = <&grf>;
- 
--		audio-supply = <&vcca_33>;
- 		bb-supply = <&vcc_io>;
- 		dvp-supply = <&dovdd_1v8>;
- 		flash0-supply = <&vcc_flash>;
--		flash1-supply = <&vcc_lan>;
- 		gpio30-supply = <&vcc_io>;
- 		gpio1830-supply = <&vcc_io>;
- 		lcdc-supply = <&vcc_io>;
-@@ -225,7 +223,6 @@
- 	clock_in_out = "input";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmii_pins>, <&phy_rst>, <&phy_pmeb>, <&phy_int>;
--	phy-supply = <&vcc_lan>;
- 	phy-mode = "rgmii";
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 1000000>;
-@@ -296,7 +293,7 @@
- 		inl2-supply = <&vcc_sys>;
- 		inl3-supply = <&vcc_20>;
- 
--		regulators {
-+		act8846_regs: regulators {
- 			vcc_ddr: REG1 {
- 				regulator-name = "vcc_ddr";
- 				regulator-min-microvolt = <1200000>;
-@@ -339,19 +336,20 @@
- 				regulator-always-on;
- 			};
- 
--			vcca_18: REG7 {
-+			REG7  {
- 				regulator-name = "vcca_18";
- 				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <1800000>;
- 			};
- 
--			vcca_33: REG8 {
-+			REG8 {
- 				regulator-name = "vcca_33";
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
- 			};
- 
--			vcc_lan: REG9 {
-+			REG9 {
- 				regulator-name = "vcc_lan";
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
--- 
-2.7.4
+OK, post coming up then.  Sorry for the delay--I was on holiday the
+last two days.
+
+Note: which boards are you thinking would test this?  My grep showed
+zero boards using regulator-ramp-delay with PWM regulator.  While this
+is an important fix for anyone using the ramp delay, I'm not convinced
+that anyone in mainline is using it.
+
+-Doug
