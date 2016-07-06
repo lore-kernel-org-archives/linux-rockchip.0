@@ -1,70 +1,67 @@
-From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND PATCH v5 4/5] clk: Kconfig: Name RK818 in
- Kconfig for COMMON_CLK_RK808
-Date: Wed, 06 Jul 2016 15:22:46 -0700
-Message-ID: <146784376682.73491.439491426208764255@resonance>
-References: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
- <1464850228-17244-4-git-send-email-w.egorov@phytec.de>
-Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RFC PATCH 2/3] clk: adjust clocks to their requested rate after
+ parent changes
+Date: Wed, 6 Jul 2016 15:41:20 -0700
+Message-ID: <CAD=FV=WQeK35+zLpdaLqn5ShFRrUBx1r2LzqS=_THsWqy6iV6g@mail.gmail.com>
+References: <1462206982-10444-1-git-send-email-heiko@sntech.de>
+ <1462206982-10444-3-git-send-email-heiko@sntech.de> <577B6162.3020609@rock-chips.com>
+ <1601887.i7XxTCUQZu@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <rtc-linux+bncBCYKZMUQ7QBBBOMJ625QKGQE2UEEJGI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-In-Reply-To: <1464850228-17244-4-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/rtc-linux
-List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/rtc-linux/subscribe>
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1601887.i7XxTCUQZu@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Xing Zheng <zhengxing@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Wadim Egorov (2016-06-01 23:50:27)
-> The RK808 and RK818 PMICs are using a similar register map.
-> We can reuse the clk driver for the RK818 PMIC. So let's add
-> the RK818 in the Kconfig description.
-> 
-> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Hi,
 
-Applied.
+On Tue, Jul 5, 2016 at 3:24 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+>> I tests found a problem, about set the freq order.
+>> e.p:
+>> [VPLL]
+>>
+>>      ------ [div] ----- dclk_vop
+>> If I change VPLL freq 148.5M to 594M, dclk_vop freq will changed as:
+>> 148.5M->24M->594M->1485.5M.
+>> But we not hope the dclk_vop have a high freq,it will make the system
+>> crash or make vop not work well.
+>>
+>> So if the VPLL is improve the freq, we need to set dclk_vop div first,
+>> and than set VPLL freq.
+>> If VPLL is reduce the freq, we need to set vpll first,and set dclk_vop
+>> div.
+>>
+>> This is just a example,for all change parent freq, we need follow this
+>> operation.
+>> Do you have a better idea for this problem?
+>
+> In general it seems my simplicistic approach only really works for really
+> simple clock-setups and thus is likely not really usable for general things.
+>
+> For the VPLL on the rk3399 we were discussion a different approach in [0],
+> as VPLL usage (aka which vop gets to control it) is likely to complicated to
+> have this done in the clock-framework-
+>
+> Doug wanted to take a look and add some thoughts and I guess he'll just do
+> that after the 4th of july celebrations.
 
-Regards,
-Mike
+Right.  IMHO you should do something to _really_ make sure that one of
+the VOPs is parented on either GPLL or CPLL and then let the other VOP
+be in control of VPLL.  How we actually do that is up for debate.  I
+still have it on my list of things to do to look at Heiko's response
+to my previous proposal, but given that I'm currently backlogged from
+the two day holiday and that I'm only a few days away from a week long
+vacation (and subsequent backlog), I'm not 100% sure I'll get to it
+soon.  :(  I'll do my best, though...
 
-> ---
->  drivers/clk/Kconfig | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-> index 53ddba2..87b9fd2 100644
-> --- a/drivers/clk/Kconfig
-> +++ b/drivers/clk/Kconfig
-> @@ -49,10 +49,10 @@ config COMMON_CLK_MAX77802
->           This driver supports Maxim 77802 crystal oscillator clock.
->  
->  config COMMON_CLK_RK808
-> -       tristate "Clock driver for RK808"
-> +       tristate "Clock driver for RK808/RK818"
->         depends on MFD_RK808
->         ---help---
-> -         This driver supports RK808 crystal oscillator clock. These
-> +         This driver supports RK808 and RK818 crystal oscillator clock. These
->           multi-function devices have two fixed-rate oscillators,
->           clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
->           by control register.
-> -- 
-> 1.9.1
-> 
+In addition to the link Heiko gave, you could also look at
+<https://chromium-review.googlesource.com/#/c/354165/>.  That's also
+not fully baked but is another way to possibly tackle the problem.
 
--- 
-You received this message because you are subscribed to "rtc-linux".
-Membership options at http://groups.google.com/group/rtc-linux .
-Please read http://groups.google.com/group/rtc-linux/web/checklist
-before submitting a driver.
---- 
-You received this message because you are subscribed to the Google Groups "rtc-linux" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
-For more options, visit https://groups.google.com/d/optout.
+In general if there is only one clock tree under VPLL then you
+shouldn't need to worry too much about things getting out of whack.
+
+
+-Doug
