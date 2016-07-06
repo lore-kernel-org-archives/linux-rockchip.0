@@ -1,67 +1,73 @@
-From: Doug Anderson <dianders@chromium.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [RFC PATCH 2/3] clk: adjust clocks to their requested rate after
  parent changes
-Date: Wed, 6 Jul 2016 15:41:20 -0700
-Message-ID: <CAD=FV=WQeK35+zLpdaLqn5ShFRrUBx1r2LzqS=_THsWqy6iV6g@mail.gmail.com>
+Date: Wed, 6 Jul 2016 16:01:42 -0700
+Message-ID: <CAD=FV=WAZ125yjG0rAEodSL3LLdBAEx24k+uWYbYYqNCpnYByQ@mail.gmail.com>
 References: <1462206982-10444-1-git-send-email-heiko@sntech.de>
- <1462206982-10444-3-git-send-email-heiko@sntech.de> <577B6162.3020609@rock-chips.com>
- <1601887.i7XxTCUQZu@phil>
+ <1462206982-10444-3-git-send-email-heiko@sntech.de>
+ <577B6162.3020609@rock-chips.com>
+ <1601887.i7XxTCUQZu@phil> <577C6152.4010702@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1601887.i7XxTCUQZu@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Xing Zheng <zhengxing@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <577C6152.4010702-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Tue, Jul 5, 2016 at 3:24 PM, Heiko Stuebner <heiko@sntech.de> wrote:
->> I tests found a problem, about set the freq order.
->> e.p:
->> [VPLL]
->>
->>      ------ [div] ----- dclk_vop
->> If I change VPLL freq 148.5M to 594M, dclk_vop freq will changed as:
->> 148.5M->24M->594M->1485.5M.
->> But we not hope the dclk_vop have a high freq,it will make the system
->> crash or make vop not work well.
->>
->> So if the VPLL is improve the freq, we need to set dclk_vop div first,
->> and than set VPLL freq.
->> If VPLL is reduce the freq, we need to set vpll first,and set dclk_vop
->> div.
->>
->> This is just a example,for all change parent freq, we need follow this
->> operation.
->> Do you have a better idea for this problem?
+On Tue, Jul 5, 2016 at 6:39 PM, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> OK, Regardless of the VPLL and vop.
+> The current software of clock, there are some problems.
+> e.p:
+> [GPLL]
+>        ------ [div] ----- aclk_perilp
+> If I set GPLL 1200M use "assigned-clock-rate".My be the default div of
+> aclk_perilp is 2, GPLL default freq is 600M.
+> If I set GPLL first,the aclk_perilp freq will changed as
+> 300M->600M->300M.But aclk_perilp 600M is a unsafety.It will make the system
+> crash.
+> Aclk_perilp is sizeoff at 300M.It not allowed over frequency.
 >
-> In general it seems my simplicistic approach only really works for really
-> simple clock-setups and thus is likely not really usable for general things.
+> So if I init the PLL freq use "assigned-clock-rate", I need to list it's
+> child clk, make sure it's child clk div is enough,make sure the child clk
+> freq is below the  sizeoff freq.
 >
-> For the VPLL on the rk3399 we were discussion a different approach in [0],
-> as VPLL usage (aka which vop gets to control it) is likely to complicated to
-> have this done in the clock-framework-
->
-> Doug wanted to take a look and add some thoughts and I guess he'll just do
-> that after the 4th of july celebrations.
+> Do you have a better idea for this problem?
 
-Right.  IMHO you should do something to _really_ make sure that one of
-the VOPs is parented on either GPLL or CPLL and then let the other VOP
-be in control of VPLL.  How we actually do that is up for debate.  I
-still have it on my list of things to do to look at Heiko's response
-to my previous proposal, but given that I'm currently backlogged from
-the two day holiday and that I'm only a few days away from a week long
-vacation (and subsequent backlog), I'm not 100% sure I'll get to it
-soon.  :(  I'll do my best, though...
+As I understand it, this is a problem that the CCF has had for a long
+time.  I'll probably get shot if our firmware guy ever reads this, but
+I could suggest that one sane way to "solve" this is to say that
+firmware should prepare the clock tree in such a way that the kernel
+doesn't happen to run into this issue.  Honestly I think that's why
+we've never happened to run into this before.  ...but even I think
+that's pretty ugly.
 
-In addition to the link Heiko gave, you could also look at
-<https://chromium-review.googlesource.com/#/c/354165/>.  That's also
-not fully baked but is another way to possibly tackle the problem.
+Another very ugly (and non-landable) way to solve this is to do this
+in device tree:
 
-In general if there is only one clock tree under VPLL then you
-shouldn't need to worry too much about things getting out of whack.
+* Set GPLL to something known slow, like 300M
+* Set aclk_perilp to 300M / 4 = 75M
+* Set GPLL to 1200M
+* Poof, aclk_perilp is now magically the rate you want.
+
+
+Presumably one nice way to "solve" this cleanly is to somehow add the
+max clock rate into the code and adjust the divider (or parent) of a
+clock to always make sure that it was under the max.  I'm not sure if
+you could do this somehow using PRE_RATE_CHANGE notifiers or if you'd
+need to touch the CCF itself.  I suspect the later.
 
 
 -Doug
