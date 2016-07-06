@@ -1,58 +1,70 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add the power domain node for rk3399
-Date: Wed, 6 Jul 2016 14:04:42 -0700
-Message-ID: <CAD=FV=WrSVL=eYn=0rY=yc8pPfuBrZ44kAa-D6AW=2V8CdoR5g@mail.gmail.com>
-References: <1467635644-16798-1-git-send-email-wxt@rock-chips.com> <4362000.pLfftZqEvu@phil>
+From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND PATCH v5 4/5] clk: Kconfig: Name RK818 in
+ Kconfig for COMMON_CLK_RK808
+Date: Wed, 06 Jul 2016 15:22:46 -0700
+Message-ID: <146784376682.73491.439491426208764255@resonance>
+References: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
+ <1464850228-17244-4-git-send-email-w.egorov@phytec.de>
+Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4362000.pLfftZqEvu@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <rtc-linux+bncBCYKZMUQ7QBBBOMJ625QKGQE2UEEJGI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+In-Reply-To: <1464850228-17244-4-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/rtc-linux
+List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/rtc-linux/subscribe>
+To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+Quoting Wadim Egorov (2016-06-01 23:50:27)
+> The RK808 and RK818 PMICs are using a similar register map.
+> We can reuse the clk driver for the RK818 PMIC. So let's add
+> the RK818 in the Kconfig description.
+> 
+> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+> Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 
-On Wed, Jul 6, 2016 at 1:56 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Montag, 4. Juli 2016, 20:34:04 schrieb Caesar Wang:
->> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> In order to meet low power requirements, a power management unit (PMU) is
->> designed for controlling power resources in RK3399. The RK3399 PMU is
->> dedicated for managing the power of the whole chip.
->>
->> 1. add pd node for RK3399 Soc
->> 2. create power domain tree
->> 3. add qos node for domain
->>
->> From the DT/binds and driver can get more detail information:
->> The driver:
->>         drivers/soc/rockchip/pm_domains.c
->> The document:
->>         Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
->>
->> Note:
->> As the TRM lists many voltage domains and power domains, then this patch
->> adds some domains for driver. Due to some domains
->> (e.g. emmc, usb, core)...We can't turned off it on
->> bootup, or says some device driver can't handle the power domain enough.
->> Maybe We will add more other domains in the future or later.
->>
->> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->
-> applied to my dts64 branch after renaming the qos nodes, removing the status
-> property and moving the rga domain up a bit. Please double check:
-> https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=6d3cdbf1c219f9817290903e9d1e8de7462a7b54
+Applied.
 
-This looks like the same as my attempt to do these fixes too.  ;)
+Regards,
+Mike
 
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+>  drivers/clk/Kconfig | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+> index 53ddba2..87b9fd2 100644
+> --- a/drivers/clk/Kconfig
+> +++ b/drivers/clk/Kconfig
+> @@ -49,10 +49,10 @@ config COMMON_CLK_MAX77802
+>           This driver supports Maxim 77802 crystal oscillator clock.
+>  
+>  config COMMON_CLK_RK808
+> -       tristate "Clock driver for RK808"
+> +       tristate "Clock driver for RK808/RK818"
+>         depends on MFD_RK808
+>         ---help---
+> -         This driver supports RK808 crystal oscillator clock. These
+> +         This driver supports RK808 and RK818 crystal oscillator clock. These
+>           multi-function devices have two fixed-rate oscillators,
+>           clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+>           by control register.
+> -- 
+> 1.9.1
+> 
+
+-- 
+You received this message because you are subscribed to "rtc-linux".
+Membership options at http://groups.google.com/group/rtc-linux .
+Please read http://groups.google.com/group/rtc-linux/web/checklist
+before submitting a driver.
+--- 
+You received this message because you are subscribed to the Google Groups "rtc-linux" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
+For more options, visit https://groups.google.com/d/optout.
