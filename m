@@ -1,75 +1,50 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
- mode
-Date: Wed, 6 Jul 2016 14:27:19 +0200
-Message-ID: <20160706142719.73713123@bbrezillon>
-References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH] drivers/perf: arm-pmu: Handle per-interrupt affinity mask
+Date: Wed, 6 Jul 2016 15:11:17 +0100
+Message-ID: <577D1185.4090801@arm.com>
+References: <1467379291-18413-1-git-send-email-marc.zyngier@arm.com>
+ <20160706103951.GC17925@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467089591-7631-1-git-send-email-dianders@chromium.org>
+In-Reply-To: <20160706103951.GC17925@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, lee.jones@linaro.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org
+To: Will Deacon <will.deacon@arm.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, cf@rock-chips.com, huangtao@rock-chips.com, jay.xu@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 27 Jun 2016 21:53:11 -0700
-Douglas Anderson <dianders@chromium.org> wrote:
+On 06/07/16 11:39, Will Deacon wrote:
+> On Fri, Jul 01, 2016 at 02:21:31PM +0100, Marc Zyngier wrote:
+>> On a big-little system, PMUs can be wired to CPUs using per CPU
+>> interrups (PPI). In this case, it is important to make sure that
+>> the enable/disable do happen on the right set of CPUs.
+>>
+>> So instead of relying on the interrupt-affinity property, we can
+>> use the actual percpu affinity that DT exposes as part of the
+>> interrupt specifier. The DT binding is also updated to reflect
+>> the fact that the interrupt-affinity property shouldn't be used
+>> in that case.
+> 
+> [...]
+> 
+>> -	/* If we didn't manage to parse anything, claim to support all CPUs */
+>> -	if (cpumask_weight(&pmu->supported_cpus) == 0)
+>> -		cpumask_setall(&pmu->supported_cpus);
+>> +	/* If we didn't manage to parse anything, try the interrupt affinity */
+>> +	if (cpumask_weight(&pmu->supported_cpus) == 0) {
+>> +		if (!using_spi) {
+>> +			/* If using PPIs, check the affinity of the partition */
+>> +			int irq = platform_get_irq(pdev, 0);
+>> +			irq_get_percpu_devid_partition(irq,
+>> +						       &pmu->supported_cpus);
+> 
+> Should we not at least propagate the failure if this returns -EINVAL?
 
-> The original commit adding support for continuous voltage mode didn't
-> handle the regulator ramp delay properly.  It treated the delay as a
-> fixed delay in uS despite the property being defined as uV / uS.  Let's
-> adjust it.  Luckily there appear to be no users of this ramp delay for
-> PWM regulators (as per grepping through device trees in linuxnext).
-> 
-> Note also that the upper bound of usleep_range probably shouldn't be a
-> full 1 ms longer than the lower bound since I've seen plenty of hardware
-> with a ramp rate of ~5000 uS / uV and for small jumps the total delays
-> are in the tens of uS.  1000 is way too much.  We'll try to be dynamic
-> and use 10%
+Good point. I'll fix that and resend it.
 
-I realize I may have introduced another bug when adding the
-->enable()/disable() methods: we are only waiting for the ramp up delay
-when changing the voltage, but it should probably be applied when
-enabling the PWM, and conditionally applied when changing the voltage
-only if the PWM is enabled.
+Thanks,
 
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Note that this patch is atop Boris's recent PWM regulator fixes.  If
-> desired it wouldn't be too hard to write it atop the old code, though
-> quite honestly anyone using a PWM regulator should probably be using his
-> new code.
-> 
->  drivers/regulator/pwm-regulator.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pwm-regulator.c
-> index fa1c74c77bb0..de94d19f6e1f 100644
-> --- a/drivers/regulator/pwm-regulator.c
-> +++ b/drivers/regulator/pwm-regulator.c
-> @@ -188,6 +188,7 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
->  	struct pwm_state pstate;
->  	unsigned int diff_duty;
->  	unsigned int dutycycle;
-> +	int old_uV = pwm_regulator_get_voltage(rdev);
->  	int ret;
->  
->  	pwm_init_state(drvdata->pwm, &pstate);
-> @@ -219,8 +220,12 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
->  		return ret;
->  	}
->  
-> -	/* Delay required by PWM regulator to settle to the new voltage */
-> -	usleep_range(ramp_delay, ramp_delay + 1000);
-> +	if (ramp_delay == 0)
-> +		return 0;
-> +
-> +	/* Ramp delay is in uV/uS. Adjust to uS and delay */
-> +	ramp_delay = DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
-> +	usleep_range(ramp_delay, ramp_delay + DIV_ROUND_UP(ramp_delay, 10));
->  
->  	return 0;
->  }
+	M.
+-- 
+Jazz is not dead. It just smells funny...
