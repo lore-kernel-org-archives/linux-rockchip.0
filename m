@@ -1,270 +1,62 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add the power domain node for rk3399
-Date: Wed, 6 Jul 2016 13:20:32 -0700
-Message-ID: <CAD=FV=VOzqkxH=XxnHadtYM_g7h1qS140uOwC=KXDwSeSET3gQ@mail.gmail.com>
-References: <1467635644-16798-1-git-send-email-wxt@rock-chips.com>
+From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [v3 PATCH 1/5] extcon: Add Type-C and DP support
+Date: Wed, 6 Jul 2016 13:22:27 -0700
+Message-ID: <CABXOdTc27oW3xyeBZbks2r19qZRNDDAVcdOVJWgMff+59vpBPg@mail.gmail.com>
+References: <1466686264-6744-1-git-send-email-zyw@rock-chips.com>
+ <1466686264-6744-2-git-send-email-zyw@rock-chips.com>
+ <CAGTfZH1aKUQH2VH+biyh9pFfU93pV9HH3h5s9zO0rrvXJYCMdA@mail.gmail.com>
+ <CABXOdTdHhWTSF6H2D5ubaZsu65dnGsof9NWAFNeWjCir=H91Ag@mail.gmail.com>
+ <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1467635644-16798-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAGTfZH1ciu33btOAkwwA+8pUV=5-XDus-Q_wNiv_hwRoLK5dPw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Mon, Jul 4, 2016 at 5:34 AM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> In order to meet low power requirements, a power management unit (PMU) is
-> designed for controlling power resources in RK3399. The RK3399 PMU is
-> dedicated for managing the power of the whole chip.
->
-> 1. add pd node for RK3399 Soc
-> 2. create power domain tree
-> 3. add qos node for domain
->
-> From the DT/binds and driver can get more detail information:
-> The driver:
->         drivers/soc/rockchip/pm_domains.c
-> The document:
->         Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
->
-> Note:
-> As the TRM lists many voltage domains and power domains, then this patch
-> adds some domains for driver. Due to some domains
-> (e.g. emmc, usb, core)...We can't turned off it on
-> bootup, or says some device driver can't handle the power domain enough.
-> Maybe We will add more other domains in the future or later.
->
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->
-> ---
->
-> Changes in v3:
-> - As some commnets on https://patchwork.kernel.org/patch/9209205/
-> - according to the alphabetically sort
-> - %s/RK3399_PD_VOP/RK3399_PD_VOPL, %s/RK3399_PD_IE/RK3399_PD_IEP
->
-> Changes in v2:
-> - As Doug/Heiko commnets on https://patchwork.kernel.org/patch/9206415/.
->   drop the debugfs-dump and Add the comments for alphabetical order.
->
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 179 +++++++++++++++++++++++++++++++
->  1 file changed, 179 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index a6dd623..4559c04 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -45,6 +45,7 @@
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/power/rk3399-power.h>
->  #include <dt-bindings/thermal/thermal.h>
->
->  / {
-> @@ -594,6 +595,184 @@
->                 status = "disabled";
->         };
->
-> +       qos_hdcp: qos_hdcp@ffa90000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffa90000 0x0 0x20>;
-> +       };
-> +
-> +       qos_iep: qos_iep@ffa98000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffa98000 0x0 0x20>;
-> +       };
-> +
-> +       qos_isp0_m0: qos_isp0_m0@ffaa0000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffaa0000 0x0 0x20>;
-> +       };
-> +
-> +       qos_isp0_m1: qos_isp0_m1@ffaa0080 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffaa0080 0x0 0x20>;
-> +       };
-> +
-> +       qos_isp1_m0: qos_isp1_m0@ffaa8000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffaa8000 0x0 0x20>;
-> +       };
-> +
-> +       qos_isp1_m1: qos_isp1_m1@ffaa8080 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffaa8080 0x0 0x20>;
-> +       };
-> +
-> +       qos_rga_r: qos_rga_r@ffab0000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffab0000 0x0 0x20>;
-> +       };
-> +
-> +       qos_rga_w: qos_rga_w@ffab0080 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffab0080 0x0 0x20>;
-> +       };
-> +
-> +       qos_video_m0: qos_video_m0@ffab8000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffab8000 0x0 0x20>;
-> +       };
-> +
-> +       qos_video_m1_r: qos_video_m1_r@ffac0000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffac0000 0x0 0x20>;
-> +       };
-> +
-> +       qos_video_m1_w: qos_video_m1_w@ffac0080 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffac0080 0x0 0x20>;
-> +       };
-> +
-> +       qos_vop_big_r: qos_vop_big_r@ffac8000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffac8000 0x0 0x20>;
-> +       };
-> +
-> +       qos_vop_big_w: qos_vop_big_w@ffac8080 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffac8080 0x0 0x20>;
-> +       };
-> +
-> +       qos_vop_little: qos_vop_little@ffad0000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffad0000 0x0 0x20>;
-> +       };
-> +
-> +       qos_gpu: qos_gpu@ffae0000 {
-> +               compatible = "syscon";
-> +               reg = <0x0 0xffae0000 0x0 0x20>;
-> +       };
-> +
-> +       pmu: power-management@ff310000 {
-> +               compatible = "rockchip,rk3399-pmu", "syscon", "simple-mfd";
-> +               reg = <0x0 0xff310000 0x0 0x1000>;
-> +
-> +               /*
-> +                * Note: RK3399 supports 6 voltage domains including VD_CORE_L,
-> +                * VD_CORE_B, VD_CENTER, VD_GPU, VD_LOGIC and VD_PMU.
-> +                * Some of the power domains are grouped together for every
-> +                * voltage domain.
-> +                * The detail contents as below.
-> +                */
-> +               power: power-controller {
-> +                       status = "okay";
-
-In an offline conversation, Heiko pointed out to me that this 'status
-= "okay";' is not needed...
-
-> +                       compatible = "rockchip,rk3399-power-controller";
-> +                       #power-domain-cells = <1>;
-> +                       #address-cells = <1>;
-> +                       #size-cells = <0>;
-> +
-> +                       /* These power domains are grouped by VD_CENTER */
-> +                       pd_iep@RK3399_PD_IEP {
-> +                               reg = <RK3399_PD_IEP>;
-> +                               clocks = <&cru ACLK_IEP>,
-> +                                        <&cru HCLK_IEP>;
-> +                               pm_qos = <&qos_iep>;
-> +                       };
-> +                       pd_vcodec@RK3399_PD_VCODEC {
-> +                               reg = <RK3399_PD_VCODEC>;
-> +                               clocks = <&cru ACLK_VCODEC>,
-> +                                        <&cru HCLK_VCODEC>;
-> +                               pm_qos = <&qos_video_m0>;
-> +                       };
-> +                       pd_vdu@RK3399_PD_VDU {
-> +                               reg = <RK3399_PD_VDU>;
-> +                               clocks = <&cru ACLK_VDU>,
-> +                                        <&cru HCLK_VDU>;
-> +                               pm_qos = <&qos_video_m1_r>,
-> +                                        <&qos_video_m1_w>;
-> +                       };
-> +                       pd_rga@RK3399_PD_RGA {
-> +                               reg = <RK3399_PD_RGA>;
-> +                               clocks = <&cru ACLK_RGA>,
-> +                                        <&cru HCLK_RGA>;
-> +                               pm_qos = <&qos_rga_r>,
-> +                                        <&qos_rga_w>;
-> +                       };
-
-rga is still sorted incorrectly.
-
-> +
-> +                       /* These power domains are grouped by VD_GPU */
-> +                       pd_gpu@RK3399_PD_GPU {
-> +                               reg = <RK3399_PD_GPU>;
-> +                               clocks = <&cru ACLK_GPU>;
-> +                               pm_qos = <&qos_gpu>;
-> +                       };
-> +
-> +                       /* These power domains are grouped by VD_LOGIC */
-> +                       pd_vio@RK3399_PD_VIO {
-> +                               reg = <RK3399_PD_VIO>;
-> +                               #address-cells = <1>;
-> +                               #size-cells = <0>;
-> +
-> +                               pd_hdcp@RK3399_PD_HDCP {
-> +                                       reg = <RK3399_PD_HDCP>;
-> +                                       clocks = <&cru ACLK_HDCP>,
-> +                                                <&cru HCLK_HDCP>,
-> +                                                <&cru PCLK_HDCP>;
-> +                                       pm_qos = <&qos_hdcp>;
-> +                               };
-> +                               pd_isp0@RK3399_PD_ISP0 {
-> +                                       reg = <RK3399_PD_ISP0>;
-> +                                       clocks = <&cru ACLK_ISP0>,
-> +                                                <&cru HCLK_ISP0>;
-> +                                       pm_qos = <&qos_isp0_m0>,
-> +                                                <&qos_isp0_m1>;
-> +                               };
-> +                               pd_isp1@RK3399_PD_ISP1 {
-> +                                       reg = <RK3399_PD_ISP1>;
-> +                                       clocks = <&cru ACLK_ISP1>,
-> +                                                <&cru HCLK_ISP1>;
-> +                                       pm_qos = <&qos_isp1_m0>,
-> +                                                <&qos_isp1_m1>;
-> +                               };
-> +                               pd_vo@RK3399_PD_VO {
-> +                                       reg = <RK3399_PD_VO>;
-> +                                       #address-cells = <1>;
-> +                                       #size-cells = <0>;
-> +
-> +                                       pd_vopb@RK3399_PD_VOPB {
-> +                                               reg = <RK3399_PD_VOPB>;
-> +                                               clocks = <&cru ACLK_VOP0>,
-> +                                                        <&cru HCLK_VOP0>;
-> +                                               pm_qos = <&qos_vop_big_r>,
-> +                                                        <&qos_vop_big_w>;
-> +                                       };
-> +                                       pd_vopl@RK3399_PD_VOPL {
-> +                                               reg = <RK3399_PD_VOPL>;
-> +                                               clocks = <&cru ACLK_VOP1>,
-> +                                                        <&cru HCLK_VOP1>;
-> +                                               pm_qos = <&qos_vop_little>;
-> +                                       };
-> +                               };
-> +                       };
-> +               };
-> +       };
-> +
-
-I think Heiko said he'll handle the nits when applying.  ...so given that:
-
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGksCgpPbiBUdWUsIEp1biAyOCwgMjAxNiBhdCA2OjQwIFBNLCBDaGFud29vIENob2kgPGN3Y2hv
+aTAwQGdtYWlsLmNvbT4gd3JvdGU6Cj4gSGkgR3VlbnRlciwKPgo+IDIwMTbrhYQgNuyblCAyOeyd
+vCDsiJjsmpTsnbwsIEd1ZW50ZXIgUm9lY2s8Z3JvZWNrQGdvb2dsZS5jb20+64uY7J20IOyekeyE
+se2VnCDrqZTsi5zsp4A6Cj4+Cj4+IE9uIFR1ZSwgSnVuIDI4LCAyMDE2IGF0IDU6MjYgQU0sIENo
+YW53b28gQ2hvaSA8Y3djaG9pMDBAZ21haWwuY29tPiB3cm90ZToKPj4gPiBIaSBDaHJpcywKPj4g
+Pgo+PiA+IEkgYWdyZWUgdG8gYWRkIHRoZSBuZXcgRVhUQ09OX0RJU1BfRFAgY29ubmVjdG9yLgo+
+PiA+IEJ1dCwgb3RoZXIgbmV3IGRlZmluaXRpb24gc2hvdWxkIGJlIGRpc2N1c3NlZC4KPj4gPiAt
+IEVYVENPTl9ESVNQX0RQX0FMVAo+PiA+IC0gRVhUQ09OX1RZUEVDX1BPTEFSSVRZCj4+ID4gLSBF
+WFRDT05fVFlQRUNfUElOX0FTU0lHTgo+PiA+Cj4+ID4gSSB0aGluayB0aGF0IFRZUEVDX1BPTEFS
+SVRZIGFuZCBUWVBFQ19QSU5fQVNTSU5HIGFyZSBub3QgYXBwcm9wcmlhdGUKPj4gPiBhcyB0aGUg
+bmV3IGV4dGVybmFsIGNvbm5lY3RvciBkZWZpbml0aW9uLiBUaGVzZSBhcmUgdGhlIHByb3BlcnR5
+IG9yCj4+ID4gYXR0cmlidXRlIG9mCj4+ID4gVVNCIGNvbm5lY3RvciB3aXRoIEMtdHlwZS4KPj4g
+Pgo+PiA+IEFsc28sIEVYVENPTl9ESVNQX0RQX0FMVCBpcyBub3QgYSBuZXcgdHlwZSBvZiBjb25u
+ZWN0b3IuCj4+ID4gSXQgaXMganVzdCBvbmUgb2YgdGhlIG1vZGUgZm9yIERQIGNvbm5lY3Rvci4K
+Pj4gPgo+PiA+IEFzIEkga25ldywgRFAgYWx0ZXJuYXRpdmUgbW9kZSB1c2UgdGhlIFVTQiBjb25u
+ZWN0b3Igd2l0aCBDLXR5cGUuCj4+ID4gU28sIERQIGFsdGVybmF0aXZlIG1vZGUgY2FuIGJlIGV4
+cHJlc3NlZCBvbiBmb2xsb3dpbmc6Cj4+ID4gID0gRVhUQ09OX0RJU1BfRFAgKyBFWFRDT05fVVNC
+ICsgc29tZSBwcm9wZXJ0eSBvZiBVU0IgYy10eXBlCj4+ID4KPj4KPj4gUHJvYmxlbSBpcyB0aGF0
+IGV4dGNvbiBkb2Vzbid0IHN1cHBvcnQgZXhjaGFuZ2luZyBjYWJsZSBwcm9wZXJ0aWVzCj4+IGJl
+dHdlZW4gY2FibGUgcHJvdmlkZXJzIChleHRjb24gZHJpdmVycykgYW5kIGNvbnN1bWVycywgb3Ro
+ZXIgdGhhbgo+PiBjYWJsZSBzdGF0ZXMuIEluIG9yZGVyIHRvIGV4Y2hhbmdlIHByb3BlcnRpZXMg
+c3VjaCBhcyBwb2xhcml0eSBhbmQgcGluCj4+IGFzc2lnbm1lbnRzLCB3ZSB3b3VsZCBuZWVkIGEg
+c2VwYXJhdGUgaW5mcmFzdHJ1Y3R1cmUuIEJ1dCB0aGVuIHRoZQo+PiBxdWVzdGlvbiB3b3VsZCBi
+ZSB3aHkgdG8gdXNlIGV4dGNvbiBpbiB0aGUgZmlyc3QgcGxhY2UuCj4+Cj4+IElmIHlvdSBoYXZl
+IGEgc29sdXRpb24gZm9yIHRoYXQgcHV6emxlLCBwbGVhc2UgbGV0IHVzIGtub3cuCj4+Cj4KPiBZ
+b3UncmUgcmlnaHQuCj4gQ3VycmVudCBleHRjb24gZG9uJ3Qgc3VwcG9ydCB0aGUgY2FibGUgcHJv
+cGVydGllcy4KPiBUaGUgcmVxdWlyZW1lbnQgYWJvdXQgY2FibGVzIHByb3BlcnRpZXMgb2NjdXIg
+c3VjaCBhcyBVU0IgSUQgYW5kIFZCVVMgcGluLgo+IFNvLCBJJ2xsIHN1cHBvcnQgdGhlIGNhYmxl
+IHByb3BlcnRpZXMgaW4gZXh0Y29uIGZyYW1ld29yayBhbmQgc2VuZCB0aGUKPiBwYXRjaGVzIHdp
+dGhpbiB0aGlzIHdlZWsuCj4KCkRpZCB5b3UgaGF2ZSB0aW1lIHRvIGxvb2sgaW50byB0aGlzID8g
+QW55IGlkZWEgaWYvd2hlbiB5b3Ugd2lsbCBzZW5kCnRoZSBwYXRjaGVzID8KClRoYW5rcywKR3Vl
+bnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
