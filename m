@@ -1,56 +1,55 @@
-From: Aleksandr Frid <afrid@nvidia.com>
-Subject: RE: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
- continuous mode
-Date: Thu, 7 Jul 2016 18:43:33 +0000
-Message-ID: <364098370f214216ad14eda6487687e9@HQMAIL106.nvidia.com>
-References: <1467830521-15300-1-git-send-email-dianders@chromium.org>
- <577E1487.9010000@nvidia.com>
- <CAD=FV=UQw7ttMECtO0aomx56G6xGWZh96NRug6Y4QuPJfXq8Tw@mail.gmail.com>
- <47095a54f7b44f8a98bdfe05cdea7865@HQMAIL106.nvidia.com>
- <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 0/3] ARM: dts: the dts support for rk3288 firefly reload
+Date: Thu, 07 Jul 2016 23:35:38 +0200
+Message-ID: <2686572.mni1Mn7R6t@phil>
+References: <3015470.z4L7UQJKa9@phil> <1467829380-16242-1-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Laxman Dewangan <ldewangan@nvidia.com>, Mark Brown <broonie@kernel.org>, Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1467829380-16242-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Pj4NCkluIHRoZSBjYXNlIHRoYXQgeW91IGRvbid0IG5lZWQgbXVsdGlwbGUgc3RlcHMgdGhlbiBk
-b24ndCBzcGVjaWZ5IGEgcmVndWxhdG9yLXJhbXAtZGVsYXksIGp1c3QgYSBwd20tcmVndWxhdG9y
-LXNldHRsZS11cy4NCj4+DQpBZ3JlZWQNCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZy
-b206IGRpYW5kZXJzQGdvb2dsZS5jb20gW21haWx0bzpkaWFuZGVyc0Bnb29nbGUuY29tXSBPbiBC
-ZWhhbGYgT2YgRG91ZyBBbmRlcnNvbg0KU2VudDogVGh1cnNkYXksIEp1bHkgMDcsIDIwMTYgMTE6
-MzIgQU0NClRvOiBBbGVrc2FuZHIgRnJpZA0KQ2M6IExheG1hbiBEZXdhbmdhbjsgTWFyayBCcm93
-bjsgQm9yaXMgQnJlemlsbG9uOyBMZWUgSm9uZXM7IEJyaWFuIE5vcnJpczsgb3BlbiBsaXN0OkFS
-TS9Sb2NrY2hpcCBTb0MuLi47IEhlaWtvIFN0dWVibmVyOyBUaGllcnJ5IFJlZGluZzsgTGlhbSBH
-aXJkd29vZDsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw0KU3ViamVjdDogUmU6IFtQQVRD
-SCB2Ml0gcmVndWxhdG9yOiBwd206IEZpeCByZWd1bGF0b3IgcmFtcCBkZWxheSBmb3IgY29udGlu
-dW91cyBtb2RlDQoNCkhpLA0KDQpPbiBUaHUsIEp1bCA3LCAyMDE2IGF0IDExOjIzIEFNLCBBbGVr
-c2FuZHIgRnJpZCA8YWZyaWRAbnZpZGlhLmNvbT4gd3JvdGU6DQo+IEhpLA0KPg0KPj4+DQo+IElu
-IHRoYXQgY2FzZSB3ZSBzaG91bGQgcHJvYmFibHkgYWRkIGEgbmV3IFBXTSByZWd1bGF0b3IgcHJv
-cGVydHkgYW5kIG5vdCBhYnVzZSB0aGUgZXhpc3Rpbmcgb25lLiAgTWF5YmUgeW91IHVzZSAicHdt
-LXJlZ3VsYXRvci1zZXR0bGUtdXMiDQo+IG9yIHNvbWV0aGluZz8NCj4+Pg0KPiBMb29rcyByZWFz
-b25hYmxlIHRvIG1lLg0KPg0KPj4+DQo+IGFjdHVhbGx5IHRoZSByaWdodCB0aGluZyBpcyBwcm9i
-YWJseSB0byBpbXBsZW1lbnQgDQo+ICdyZWd1bGF0b3ItcmFtcC1kZWxheScgYXMgZG9pbmcgc2V2
-ZXJhbCBzbWFsbCBzdGVwcyBpbiB0aGF0IGNhc2UNCj4+Pg0KPiBSYW1wIGRlbGF5IHVWL3VzICBp
-cyBub3QgYSAicmVhbCIgbWV0cmljIGZvciBzb21lIFBXTSByZWd1bGF0b3JzIHdpdGggZXhwb25l
-bnRpYWwgdHJhbnNpdGlvbiAtLSBhcyBvcHBvc2l0ZSB0byBmaXhlZCBzbGV3LXJhdGUgbGluZWFy
-IHRyYW5zaXRpb24gb24gb3RoZXIgcmVndWxhdG9ycy4gU28gc3BsaXR0aW5nIHRyYW5zaXRpb24g
-aW50byBtdWx0aXBsZSBzdGVwcyB0byBpbXBsZW1lbnQgYXJ0aWZpY2lhbCAgKGluIHRoaXMgY2Fz
-ZSkgbWV0cmljIHNlZW1zIHF1ZXN0aW9uYWJsZS4NCg0KSW4gdGhlIGNhc2UgdGhhdCB5b3UgZG9u
-J3QgbmVlZCBtdWx0aXBsZSBzdGVwcyB0aGVuIGRvbid0IHNwZWNpZnkgYSByZWd1bGF0b3ItcmFt
-cC1kZWxheSwganVzdCBhIHB3bS1yZWd1bGF0b3Itc2V0dGxlLXVzLg0KDQouLi50aGUgc3VnZ2Vz
-dGlvbiBmb3IgbXVsdGlwbGUgc3RlcHMgaXMgYmVjYXVzZSAoc28gSSdtIHRvbGQpIGl0IGhlbHBz
-IGF2b2lkIG92ZXJzaG9vdCBvciB1bmRlcnNob290IHByb2JsZW1zLiAgSW4gZ2VuZXJhbCB0aGUg
-d2hvbGUgcG9pbnQgb2YgcmFtcGluZyBhIHJlZ3VsYXRvciBzbG93bHkgaXMgdG8gYXZvaWQgb3Zl
-cnNob290IG9yIHVuZGVyc2hvb3QgcHJvYmxlbXMuICBUaGUgInJlZ3VsYXRvci1yYW1wLWRlbGF5
-IiBwcm9wZXJ0eSBpbiBMaW51eCBpcyBhIGxpdHRsZSBvZGQgYmVjYXVzZSBpdCBzb3J0IG9mICJk
-ZXNjcmliZXMiIHRoZSByYW1wIGRlbGF5IGFuZCBzb3J0IG9mICJzZXRzIg0KdGhlIHJhbXAgZGVs
-YXkuICBNYW55IFBNSUNzIGFsbG93IHlvdSB0byBzZXQgaG93IGZhc3QgdGhlIHJlZ3VsYXRvciB3
-aWxsIHJhbXAgYW5kIHRoaXMgcHJvcGVydHkgaXMgdXNlZCB0byBzcGVjaWZ5IGhvdyB0aGUgcmVn
-aXN0ZXIgaW4gdGhlIFBNSUMgc2hvdWxkIGJlIHNldC4gIEhvd2V2ZXIsIGl0IGlzIGFsc28gdXNl
-ZCBhcyB0aGUgYWN0dWFsIGRlbGF5IGluIExpbnV4Lg0KDQoNCi1Eb3VnDQo=
+Hi Randy,
+
+Am Donnerstag, 7. Juli 2016, 02:22:57 schrieb Randy Li:
+> The rk3288 firefly reload  is a Rockchip RK3288 based board be found by
+> core board and main board. The regulators are connected in a different
+> way to the previous version of firefly boards, it is necessary to
+> move some common code to uncommon place.
+> 
+> I only tested the ethernet and confirmed that works.
+> The usb in this board won't caused by the bugs in the driver.
+> 
+> This version follow the suggests from Heiko Stuebner,
+> except the duplicated supply name problem, I don't think
+> it could be fixed in that way.
+
+I've now had a chance to look at that reload board on the firefly site.
+Firefly also is the company name, so a board named that way is not 
+necessarily a "variant" :-) .
+
+And looking at the "reload" board this definitly seems to be a very 
+different product with it being a system-on-module+baseboard design with 
+additional peripherals like that sata bridge, camera interfaces and probably 
+more.
+
+As you might've seen, most Rockchip boards are based on some reference-
+design, so are similar in a big part of their core layout.
+So, looking at the vastly different product the reload is, I'd really like 
+to have a separate dts for the reload, to not run into more confusing 
+differences later on.
+
+Also, when adding a new board, please also add an entry to 
+Documentation/devicetree/bindingd/arm/rockchip.txt
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
