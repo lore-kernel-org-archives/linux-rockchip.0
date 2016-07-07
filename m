@@ -1,127 +1,60 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH 07/93] clocksource/drivers/rockchip: Add support for the
- rk3399 SoC
-Date: Thu,  7 Jul 2016 10:00:40 +0200
-Message-ID: <1467878526-1238-7-git-send-email-daniel.lezcano@linaro.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 08/93] arm64: dts: rockchip: Add rktimer device node for rk3399
+Date: Thu,  7 Jul 2016 10:00:41 +0200
+Message-ID: <1467878526-1238-8-git-send-email-daniel.lezcano@linaro.org>
 References: <577E0BED.3020608@linaro.org>
  <1467878526-1238-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467878526-1238-1-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1467878526-1238-1-git-send-email-daniel.lezcano@linaro.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: tglx@linutronix.de, daniel.lezcano@linaro.org
+Cc: Huang Tao <huangtao@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Huang Tao <huangtao@rock-chips.com>
 
-The only difference between the rk3399 SoC and the other ones is the control
-register offset which is different.
+Add a 'rktimer' node in the device treee for the ARM64 rk3399 SoC.
 
-Add a new field to store the control register address depending on the SoC
-and use it instead of the <base> + <control offset>.
-
-Signed-off-by: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Signed-off-by: Huang Tao <huangtao@rock-chips.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 ---
- drivers/clocksource/rockchip_timer.c | 31 ++++++++++++++++++++++++++-----
- 1 file changed, 26 insertions(+), 5 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index b510863..a3f22b0 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -19,7 +19,8 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 46f325a..f0c0d76 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -492,6 +492,14 @@
+ 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
+ 	};
  
- #define TIMER_LOAD_COUNT0	0x00
- #define TIMER_LOAD_COUNT1	0x04
--#define TIMER_CONTROL_REG	0x10
-+#define TIMER_CONTROL_REG3288	0x10
-+#define TIMER_CONTROL_REG3399	0x1c
- #define TIMER_INT_STATUS	0x18
- 
- #define TIMER_DISABLE		0x0
-@@ -31,6 +32,7 @@
- struct bc_timer {
- 	struct clock_event_device ce;
- 	void __iomem *base;
-+	void __iomem *ctrl;
- 	u32 freq;
- };
- 
-@@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct clock_event_device *ce)
- 	return rk_timer(ce)->base;
- }
- 
-+static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
-+{
-+	return rk_timer(ce)->ctrl;
-+}
++	rktimer: rktimer@ff850000 {
++		compatible = "rockchip,rk3399-timer";
++		reg = <0x0 0xff850000 0x0 0x1000>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER00>;
++		clock-names = "pclk", "timer";
++	};
 +
- static inline void rk_timer_disable(struct clock_event_device *ce)
- {
--	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
-+	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
- }
- 
- static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
- {
- 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
--		       rk_base(ce) + TIMER_CONTROL_REG);
-+		       rk_ctrl(ce));
- }
- 
- static void rk_timer_update_counter(unsigned long cycles,
-@@ -106,7 +113,7 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
--static void __init rk_timer_init(struct device_node *np)
-+static void __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
- {
- 	struct clock_event_device *ce = &bc_timer.ce;
- 	struct clk *timer_clk;
-@@ -118,6 +125,7 @@ static void __init rk_timer_init(struct device_node *np)
- 		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
- 		return;
- 	}
-+	bc_timer.ctrl = bc_timer.base + ctrl_reg;
- 
- 	pclk = of_clk_get_by_name(np, "pclk");
- 	if (IS_ERR(pclk)) {
-@@ -180,4 +188,17 @@ out_unmap:
- 	iounmap(bc_timer.base);
- }
- 
--CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_init);
-+static void __init rk3288_timer_init(struct device_node *np)
-+{
-+	rk_timer_init(np, TIMER_CONTROL_REG3288);
-+}
-+
-+static void __init rk3399_timer_init(struct device_node *np)
-+{
-+	rk_timer_init(np, TIMER_CONTROL_REG3399);
-+}
-+
-+CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
-+		       rk3288_timer_init);
-+CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
-+		       rk3399_timer_init);
+ 	spdif: spdif@ff870000 {
+ 		compatible = "rockchip,rk3399-spdif";
+ 		reg = <0x0 0xff870000 0x0 0x1000>;
 -- 
 1.9.1
