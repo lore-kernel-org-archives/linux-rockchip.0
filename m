@@ -1,81 +1,58 @@
-From: Aleksandr Frid <afrid@nvidia.com>
-Subject: RE: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
  continuous mode
-Date: Thu, 7 Jul 2016 18:23:22 +0000
-Message-ID: <47095a54f7b44f8a98bdfe05cdea7865@HQMAIL106.nvidia.com>
+Date: Thu, 7 Jul 2016 11:31:36 -0700
+Message-ID: <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
 References: <1467830521-15300-1-git-send-email-dianders@chromium.org>
  <577E1487.9010000@nvidia.com>
  <CAD=FV=UQw7ttMECtO0aomx56G6xGWZh96NRug6Y4QuPJfXq8Tw@mail.gmail.com>
+ <47095a54f7b44f8a98bdfe05cdea7865@HQMAIL106.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UQw7ttMECtO0aomx56G6xGWZh96NRug6Y4QuPJfXq8Tw@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Laxman Dewangan <ldewangan@nvidia.com>
-Cc: Mark Brown <broonie@kernel.org>, Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <47095a54f7b44f8a98bdfe05cdea7865-wO81nVYWzR6wc5+RPyqhflaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Aleksandr Frid <afrid-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksDQoNCj4+DQpJbiB0aGF0IGNhc2Ugd2Ugc2hvdWxkIHByb2JhYmx5IGFkZCBhIG5ldyBQV00g
-cmVndWxhdG9yIHByb3BlcnR5IGFuZCBub3QgYWJ1c2UgdGhlIGV4aXN0aW5nIG9uZS4gIE1heWJl
-IHlvdSB1c2UgInB3bS1yZWd1bGF0b3Itc2V0dGxlLXVzIg0Kb3Igc29tZXRoaW5nPyAgDQo+Pg0K
-TG9va3MgcmVhc29uYWJsZSB0byBtZS4NCg0KPj4NCmFjdHVhbGx5IHRoZSByaWdodCB0aGluZyBp
-cyBwcm9iYWJseSB0byBpbXBsZW1lbnQgJ3JlZ3VsYXRvci1yYW1wLWRlbGF5JyBhcyBkb2luZyBz
-ZXZlcmFsIHNtYWxsIHN0ZXBzIGluIHRoYXQgY2FzZQ0KPj4NClJhbXAgZGVsYXkgdVYvdXMgIGlz
-IG5vdCBhICJyZWFsIiBtZXRyaWMgZm9yIHNvbWUgUFdNIHJlZ3VsYXRvcnMgd2l0aCBleHBvbmVu
-dGlhbCB0cmFuc2l0aW9uIC0tIGFzIG9wcG9zaXRlIHRvIGZpeGVkIHNsZXctcmF0ZSBsaW5lYXIg
-dHJhbnNpdGlvbiBvbiBvdGhlciByZWd1bGF0b3JzLiBTbyBzcGxpdHRpbmcgdHJhbnNpdGlvbiBp
-bnRvIG11bHRpcGxlIHN0ZXBzIHRvIGltcGxlbWVudCBhcnRpZmljaWFsICAoaW4gdGhpcyBjYXNl
-KSBtZXRyaWMgc2VlbXMgcXVlc3Rpb25hYmxlLiANCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0t
-LS0NCkZyb206IGRpYW5kZXJzQGdvb2dsZS5jb20gW21haWx0bzpkaWFuZGVyc0Bnb29nbGUuY29t
-XSBPbiBCZWhhbGYgT2YgRG91ZyBBbmRlcnNvbg0KU2VudDogVGh1cnNkYXksIEp1bHkgMDcsIDIw
-MTYgOTozMSBBTQ0KVG86IExheG1hbiBEZXdhbmdhbg0KQ2M6IE1hcmsgQnJvd247IEJvcmlzIEJy
-ZXppbGxvbjsgTGVlIEpvbmVzOyBCcmlhbiBOb3JyaXM7IG9wZW4gbGlzdDpBUk0vUm9ja2NoaXAg
-U29DLi4uOyBIZWlrbyBTdHVlYm5lcjsgVGhpZXJyeSBSZWRpbmc7IExpYW0gR2lyZHdvb2Q7IGxp
-bnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IEFsZWtzYW5kciBGcmlkDQpTdWJqZWN0OiBSZTog
-W1BBVENIIHYyXSByZWd1bGF0b3I6IHB3bTogRml4IHJlZ3VsYXRvciByYW1wIGRlbGF5IGZvciBj
-b250aW51b3VzIG1vZGUNCg0KSGksDQoNCk9uIFRodSwgSnVsIDcsIDIwMTYgYXQgMTozNiBBTSwg
-TGF4bWFuIERld2FuZ2FuIDxsZGV3YW5nYW5AbnZpZGlhLmNvbT4gd3JvdGU6DQo+DQo+IE9uIFRo
-dXJzZGF5IDA3IEp1bHkgMjAxNiAxMjoxMiBBTSwgRG91Z2xhcyBBbmRlcnNvbiB3cm90ZToNCj4+
-DQo+PiBUaGUgb3JpZ2luYWwgY29tbWl0IGFkZGluZyBzdXBwb3J0IGZvciBjb250aW51b3VzIHZv
-bHRhZ2UgbW9kZSBkaWRuJ3QgDQo+PiBoYW5kbGUgdGhlIHJlZ3VsYXRvciByYW1wIGRlbGF5IHBy
-b3Blcmx5LiAgSXQgdHJlYXRlZCB0aGUgZGVsYXkgYXMgYSANCj4+IGZpeGVkIGRlbGF5IGluIHVT
-IGRlc3BpdGUgdGhlIHByb3BlcnR5IGJlaW5nIGRlZmluZWQgYXMgdVYgLyB1Uy4gIA0KPj4gTGV0
-J3MgYWRqdXN0IGl0LiAgTHVja2lseSB0aGVyZSBhcHBlYXIgdG8gYmUgbm8gdXNlcnMgb2YgdGhp
-cyByYW1wIA0KPj4gZGVsYXkgZm9yIFBXTSByZWd1bGF0b3JzIChhcyBwZXIgZ3JlcHBpbmcgdGhy
-b3VnaCBkZXZpY2UgdHJlZXMgaW4gbGludXhuZXh0KS4NCj4+DQo+PiBOb3RlIGFsc28gdGhhdCB0
-aGUgdXBwZXIgYm91bmQgb2YgdXNsZWVwX3JhbmdlIHByb2JhYmx5IHNob3VsZG4ndCBiZSANCj4+
-IGEgZnVsbCAxIG1zIGxvbmdlciB0aGFuIHRoZSBsb3dlciBib3VuZCBzaW5jZSBJJ3ZlIHNlZW4g
-cGxlbnR5IG9mIA0KPj4gaGFyZHdhcmUgd2l0aCBhIHJhbXAgcmF0ZSBvZiB+NTAwMCB1UyAvIHVW
-IGFuZCBmb3Igc21hbGwganVtcHMgdGhlIA0KPj4gdG90YWwgZGVsYXlzIGFyZSBpbiB0aGUgdGVu
-cyBvZiB1Uy4gIDEwMDAgaXMgd2F5IHRvbyBtdWNoLiAgV2UnbGwgdHJ5IA0KPj4gdG8gYmUgZHlu
-YW1pYyBhbmQgdXNlIDEwJS4NCj4+DQo+PiBOT1RFOiBUaGlzIGNvbW1pdCBkb2Vzbid0IGFkZCBz
-dXBwb3J0IGZvciByZWd1bGF0b3ItZW5hYmxlLXJhbXAtZGVsYXkuDQo+PiBUaGF0IGNvdWxkIGJl
-IGRvbmUgaW4gYSBmdXR1cmUgcGF0Y2ggd2hlbiBzb21lb25lIGhhcyBhIHVzZXIgb2YgdGhhdCAN
-Cj4+IGZlYXRyZS4NCj4+DQo+PiBUaG91Z2ggdGhpcyBwYXRjaCBpcyBzaG93cyBhcyAiZml4aW5n
-IiBhIGJ1ZywgdGhlcmUgYXJlIG5vIGFjdHVhbCANCj4+IGtub3duIHVzZXJzIG9mIGNvbnRpbnVv
-dXMgbW9kZSBQV00gcmVndWxhdG9yIHcvIHJhbXAgZGVsYXkgaW4gDQo+PiBtYWlubGluZSBhbmQg
-c28gdGhpcyBsaWtlbHkgd29uJ3QgaGF2ZSBhbnkgZWZmZWN0IG9uIGFueW9uZSB1bmxlc3MgDQo+
-PiB0aGV5IGFyZSB3b3JraW5nIG91dC1vZi10cmVlIHdpdGggcHJpdmF0ZSBwYXRjaGVzLiAgRm9y
-IGFueW9uZSBpbiANCj4+IHRoaXMgc3RhdGUsIGl0IGlzIGhpZ2hseSBlbmNvdXJhZ2VkIHRvIGFs
-c28gcGljayBCb3JpcyBCcmV6aWxsb24ncyANCj4+IFdJUCBwYXRjaGVzIHRvIGdldCB5b3Vyc2Vs
-ZiBhIHJlbGlhYmxlIGFuZCBnbGl0Y2gtZnJlZSByZWd1bGF0b3IuDQo+Pg0KPj4gRml4ZXM6IDQ3
-NzNiZTE4NWEwZiAoInJlZ3VsYXRvcjogcHdtLXJlZ3VsYXRvcjogQWRkIHN1cHBvcnQgZm9yDQo+
-PiBjb250aW51b3VzLXZvbHRhZ2UiKQ0KPj4gU2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNv
-biA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPg0KPg0KPg0KPg0KPiBMb29rcyBmaW5lIGhlcmUuDQo+
-IEFja2VkLWJ5OiBMYXhtYW4gRGV3YW5nYW4gPGxkZXdhbmdhbkBudmlkaWEuY29tPg0KPg0KPiBC
-VFcsIGZvciBzb21lIFBXTSByZWd1bGF0b3IsIHRoZSBzZXR0bGluZyB0aW1lIGZvciB2b2x0YWdl
-IGNoYW5nZSBpcyANCj4gc2FtZSBmb3IgYW55IHN0ZXBzLg0KDQpJbiB0aGF0IGNhc2Ugd2Ugc2hv
-dWxkIHByb2JhYmx5IGFkZCBhIG5ldyBQV00gcmVndWxhdG9yIHByb3BlcnR5IGFuZCBub3QgYWJ1
-c2UgdGhlIGV4aXN0aW5nIG9uZS4gIE1heWJlIHlvdSB1c2UgInB3bS1yZWd1bGF0b3Itc2V0dGxl
-LXVzIg0Kb3Igc29tZXRoaW5nPyAgLi4uYW5kIGFjdHVhbGx5IHRoZSByaWdodCB0aGluZyBpcyBw
-cm9iYWJseSB0byBpbXBsZW1lbnQgJ3JlZ3VsYXRvci1yYW1wLWRlbGF5JyBhcyBkb2luZyBzZXZl
-cmFsIHNtYWxsIHN0ZXBzIGluIHRoYXQgY2FzZS4gIFNvIGlmIHlvdSd2ZSBnb3Q6DQoNCiogc2V0
-dGxlIHRpbWU6IDEwIHVzDQoqIHJhbXAgZGVsYXkgPSA1MDAwIHVWIC8gdXMNCiogdm9sdGFnZSBj
-aGFuZ2Ugb2YgMjAwMDAwIHVWDQoNCkluIHRoYXQgY2FzZSB5b3UnZCBwcm9iYWJseSB3YW50IHRv
-IGJyZWFrIHlvdXIgMjAwIG1WIHZvbHRhZ2UgY2hhbmdlIGludG8gYSBmZXcgc3RlcHM/ICBTbyB5
-b3UgY291bGQgZG8gYnVtcCBieSA1MG1WLCBkZWxheSAxMHVzLCBidW1wIGJ5IDUwbVYsIGRlbGF5
-IDEwdXMsIGJ1bXAgYnkgNTBtViwgZGVsYXkgYnkgMTB1cy4NCg0KVGhlIGZpbmFsIGRlbGF5IHdv
-dWxkIGJlIHRoZSBzYW1lIGFzIHdpdGggbXkgcGF0Y2ggYXBwbGllZCBidXQgeW91J2QgZ2V0IHRo
-ZXJlIG1vcmUgc21vb3RobHkuDQoNCi1Eb3VnDQo=
+Hi,
+
+On Thu, Jul 7, 2016 at 11:23 AM, Aleksandr Frid <afrid-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org> wrote:
+> Hi,
+>
+>>>
+> In that case we should probably add a new PWM regulator property and not abuse the existing one.  Maybe you use "pwm-regulator-settle-us"
+> or something?
+>>>
+> Looks reasonable to me.
+>
+>>>
+> actually the right thing is probably to implement 'regulator-ramp-delay' as doing several small steps in that case
+>>>
+> Ramp delay uV/us  is not a "real" metric for some PWM regulators with exponential transition -- as opposite to fixed slew-rate linear transition on other regulators. So splitting transition into multiple steps to implement artificial  (in this case) metric seems questionable.
+
+In the case that you don't need multiple steps then don't specify a
+regulator-ramp-delay, just a pwm-regulator-settle-us.
+
+...the suggestion for multiple steps is because (so I'm told) it helps
+avoid overshoot or undershoot problems.  In general the whole point of
+ramping a regulator slowly is to avoid overshoot or undershoot
+problems.  The "regulator-ramp-delay" property in Linux is a little
+odd because it sort of "describes" the ramp delay and sort of "sets"
+the ramp delay.  Many PMICs allow you to set how fast the regulator
+will ramp and this property is used to specify how the register in the
+PMIC should be set.  However, it is also used as the actual delay in
+Linux.
+
+
+-Doug
