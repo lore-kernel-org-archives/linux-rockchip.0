@@ -1,82 +1,61 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: support the usb2phy for rk3399 evb
-Date: Thu,  7 Jul 2016 12:46:40 +0800
-Message-ID: <1467866800-24794-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 2/2] Rockchip dts64 changes for 4.8
+Date: Wed, 6 Jul 2016 22:23:42 -0700
+Message-ID: <20160707052342.GK32389@localhost>
+References: <1666093.aVfPg2VmbT@phil>
+ <5006101.OhzRdW27q2@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <5006101.OhzRdW27q2@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Fri, Jul 01, 2016 at 02:22:19AM +0200, Heiko Stuebner wrote:
+> Hi Arnd, Kevin, Olof,
+> 
+> please find below arm64 devicetree changes for 4.8.
+> 
+> Some new things for the rk3399 like emmc support as well some
+> improvements+fixes for the rk3368 as explained in the tag.
+> 
+> So if ok, please pull
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
+> 
+>   Linux 4.7-rc1 (2016-05-29 09:29:24 -0700)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.8-rockchip-dts64-1
+> 
+> for you to fetch changes up to 5d26ad9cfb2ebe2aba75342813e7542d5a68d644:
+> 
+>   arm64: dts: rockchip: add ap_pwroff and ddrio_pwroff pins for rk3399 (2016-06-27 01:07:40 +0200)
+> 
+> ----------------------------------------------------------------
+> The rk3399 gets support for its emmc controller as well as thermal,
+> i2c and core io-domain nodes and some reasonable default rates
+> for core clocks. The rk3368 also gets io-domains for its r88 board
+> as well as a small fix for the gic's memory regions.
 
-This patch adds the usb2phy needed dts node information for rk3399.
+Merged, thanks.
 
-USB2.0 PHY is comprised of one Host port and one OTG port.
-Host Port is for USB2.0 host controller; OTG port is for USB2.0 part of
-USB3.0 OTG controller, and as a part to construct a fully feature TypeC
-subsystem.
 
-The USB2.0 vbus gpio is board specific, it's no same with all rk3399
-boards, so move it into evb voard.
-
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts |  4 ++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi    | 19 +++++++++++++++++++
- 2 files changed, 23 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index d33aa06..9be3715 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -105,6 +105,10 @@
- 	status = "okay";
- };
- 
-+&usb2phy {
-+	vbus_drv-gpio = <&gpio4 25 GPIO_ACTIVE_HIGH>;
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 4c84229..21d147f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -242,6 +242,25 @@
- 		status = "disabled";
- 	};
- 
-+	usb2phy: usb2phy {
-+		compatible = "rockchip,rk3399-usb-phy";
-+		rockchip,grf = <&grf>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usb2phy0: usb2-phy0 {
-+			#phy-cells = <0>;
-+			#clock-cells = <0>;
-+			reg = <0xe458>;
-+		};
-+
-+		usb2phy1: usb2-phy1 {
-+			#phy-cells = <0>;
-+			#clock-cells = <0>;
-+			reg = <0xe468>;
-+		};
-+	};
-+
- 	usb_host0_ehci: usb@fe380000 {
- 		compatible = "generic-ehci";
- 		reg = <0x0 0xfe380000 0x0 0x20000>;
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Olof
