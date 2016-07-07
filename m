@@ -1,58 +1,56 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
+From: Aleksandr Frid <afrid@nvidia.com>
+Subject: RE: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
  continuous mode
-Date: Thu, 7 Jul 2016 11:31:36 -0700
-Message-ID: <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
+Date: Thu, 7 Jul 2016 18:43:33 +0000
+Message-ID: <364098370f214216ad14eda6487687e9@HQMAIL106.nvidia.com>
 References: <1467830521-15300-1-git-send-email-dianders@chromium.org>
  <577E1487.9010000@nvidia.com>
  <CAD=FV=UQw7ttMECtO0aomx56G6xGWZh96NRug6Y4QuPJfXq8Tw@mail.gmail.com>
  <47095a54f7b44f8a98bdfe05cdea7865@HQMAIL106.nvidia.com>
+ <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <47095a54f7b44f8a98bdfe05cdea7865-wO81nVYWzR6wc5+RPyqhflaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Aleksandr Frid <afrid-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Laxman Dewangan <ldewangan@nvidia.com>, Mark Brown <broonie@kernel.org>, Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Jul 7, 2016 at 11:23 AM, Aleksandr Frid <afrid-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org> wrote:
-> Hi,
->
->>>
-> In that case we should probably add a new PWM regulator property and not abuse the existing one.  Maybe you use "pwm-regulator-settle-us"
-> or something?
->>>
-> Looks reasonable to me.
->
->>>
-> actually the right thing is probably to implement 'regulator-ramp-delay' as doing several small steps in that case
->>>
-> Ramp delay uV/us  is not a "real" metric for some PWM regulators with exponential transition -- as opposite to fixed slew-rate linear transition on other regulators. So splitting transition into multiple steps to implement artificial  (in this case) metric seems questionable.
-
-In the case that you don't need multiple steps then don't specify a
-regulator-ramp-delay, just a pwm-regulator-settle-us.
-
-...the suggestion for multiple steps is because (so I'm told) it helps
-avoid overshoot or undershoot problems.  In general the whole point of
-ramping a regulator slowly is to avoid overshoot or undershoot
-problems.  The "regulator-ramp-delay" property in Linux is a little
-odd because it sort of "describes" the ramp delay and sort of "sets"
-the ramp delay.  Many PMICs allow you to set how fast the regulator
-will ramp and this property is used to specify how the register in the
-PMIC should be set.  However, it is also used as the actual delay in
-Linux.
-
-
--Doug
+Pj4NCkluIHRoZSBjYXNlIHRoYXQgeW91IGRvbid0IG5lZWQgbXVsdGlwbGUgc3RlcHMgdGhlbiBk
+b24ndCBzcGVjaWZ5IGEgcmVndWxhdG9yLXJhbXAtZGVsYXksIGp1c3QgYSBwd20tcmVndWxhdG9y
+LXNldHRsZS11cy4NCj4+DQpBZ3JlZWQNCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZy
+b206IGRpYW5kZXJzQGdvb2dsZS5jb20gW21haWx0bzpkaWFuZGVyc0Bnb29nbGUuY29tXSBPbiBC
+ZWhhbGYgT2YgRG91ZyBBbmRlcnNvbg0KU2VudDogVGh1cnNkYXksIEp1bHkgMDcsIDIwMTYgMTE6
+MzIgQU0NClRvOiBBbGVrc2FuZHIgRnJpZA0KQ2M6IExheG1hbiBEZXdhbmdhbjsgTWFyayBCcm93
+bjsgQm9yaXMgQnJlemlsbG9uOyBMZWUgSm9uZXM7IEJyaWFuIE5vcnJpczsgb3BlbiBsaXN0OkFS
+TS9Sb2NrY2hpcCBTb0MuLi47IEhlaWtvIFN0dWVibmVyOyBUaGllcnJ5IFJlZGluZzsgTGlhbSBH
+aXJkd29vZDsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw0KU3ViamVjdDogUmU6IFtQQVRD
+SCB2Ml0gcmVndWxhdG9yOiBwd206IEZpeCByZWd1bGF0b3IgcmFtcCBkZWxheSBmb3IgY29udGlu
+dW91cyBtb2RlDQoNCkhpLA0KDQpPbiBUaHUsIEp1bCA3LCAyMDE2IGF0IDExOjIzIEFNLCBBbGVr
+c2FuZHIgRnJpZCA8YWZyaWRAbnZpZGlhLmNvbT4gd3JvdGU6DQo+IEhpLA0KPg0KPj4+DQo+IElu
+IHRoYXQgY2FzZSB3ZSBzaG91bGQgcHJvYmFibHkgYWRkIGEgbmV3IFBXTSByZWd1bGF0b3IgcHJv
+cGVydHkgYW5kIG5vdCBhYnVzZSB0aGUgZXhpc3Rpbmcgb25lLiAgTWF5YmUgeW91IHVzZSAicHdt
+LXJlZ3VsYXRvci1zZXR0bGUtdXMiDQo+IG9yIHNvbWV0aGluZz8NCj4+Pg0KPiBMb29rcyByZWFz
+b25hYmxlIHRvIG1lLg0KPg0KPj4+DQo+IGFjdHVhbGx5IHRoZSByaWdodCB0aGluZyBpcyBwcm9i
+YWJseSB0byBpbXBsZW1lbnQgDQo+ICdyZWd1bGF0b3ItcmFtcC1kZWxheScgYXMgZG9pbmcgc2V2
+ZXJhbCBzbWFsbCBzdGVwcyBpbiB0aGF0IGNhc2UNCj4+Pg0KPiBSYW1wIGRlbGF5IHVWL3VzICBp
+cyBub3QgYSAicmVhbCIgbWV0cmljIGZvciBzb21lIFBXTSByZWd1bGF0b3JzIHdpdGggZXhwb25l
+bnRpYWwgdHJhbnNpdGlvbiAtLSBhcyBvcHBvc2l0ZSB0byBmaXhlZCBzbGV3LXJhdGUgbGluZWFy
+IHRyYW5zaXRpb24gb24gb3RoZXIgcmVndWxhdG9ycy4gU28gc3BsaXR0aW5nIHRyYW5zaXRpb24g
+aW50byBtdWx0aXBsZSBzdGVwcyB0byBpbXBsZW1lbnQgYXJ0aWZpY2lhbCAgKGluIHRoaXMgY2Fz
+ZSkgbWV0cmljIHNlZW1zIHF1ZXN0aW9uYWJsZS4NCg0KSW4gdGhlIGNhc2UgdGhhdCB5b3UgZG9u
+J3QgbmVlZCBtdWx0aXBsZSBzdGVwcyB0aGVuIGRvbid0IHNwZWNpZnkgYSByZWd1bGF0b3ItcmFt
+cC1kZWxheSwganVzdCBhIHB3bS1yZWd1bGF0b3Itc2V0dGxlLXVzLg0KDQouLi50aGUgc3VnZ2Vz
+dGlvbiBmb3IgbXVsdGlwbGUgc3RlcHMgaXMgYmVjYXVzZSAoc28gSSdtIHRvbGQpIGl0IGhlbHBz
+IGF2b2lkIG92ZXJzaG9vdCBvciB1bmRlcnNob290IHByb2JsZW1zLiAgSW4gZ2VuZXJhbCB0aGUg
+d2hvbGUgcG9pbnQgb2YgcmFtcGluZyBhIHJlZ3VsYXRvciBzbG93bHkgaXMgdG8gYXZvaWQgb3Zl
+cnNob290IG9yIHVuZGVyc2hvb3QgcHJvYmxlbXMuICBUaGUgInJlZ3VsYXRvci1yYW1wLWRlbGF5
+IiBwcm9wZXJ0eSBpbiBMaW51eCBpcyBhIGxpdHRsZSBvZGQgYmVjYXVzZSBpdCBzb3J0IG9mICJk
+ZXNjcmliZXMiIHRoZSByYW1wIGRlbGF5IGFuZCBzb3J0IG9mICJzZXRzIg0KdGhlIHJhbXAgZGVs
+YXkuICBNYW55IFBNSUNzIGFsbG93IHlvdSB0byBzZXQgaG93IGZhc3QgdGhlIHJlZ3VsYXRvciB3
+aWxsIHJhbXAgYW5kIHRoaXMgcHJvcGVydHkgaXMgdXNlZCB0byBzcGVjaWZ5IGhvdyB0aGUgcmVn
+aXN0ZXIgaW4gdGhlIFBNSUMgc2hvdWxkIGJlIHNldC4gIEhvd2V2ZXIsIGl0IGlzIGFsc28gdXNl
+ZCBhcyB0aGUgYWN0dWFsIGRlbGF5IGluIExpbnV4Lg0KDQoNCi1Eb3VnDQo=
