@@ -1,76 +1,54 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
  mode
-Date: Thu, 7 Jul 2016 10:03:56 +0200
-Message-ID: <20160707080356.GF6247@sirena.org.uk>
+Date: Thu, 7 Jul 2016 10:16:40 +0200
+Message-ID: <20160707081640.GG6247@sirena.org.uk>
 References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
  <20160706142719.73713123@bbrezillon>
+ <CAD=FV=W7kjMsXR3aRogCpEZWgvt2UZ7rX0B2Zg9yZOW7oGwepw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7093906397445676541=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160706142719.73713123@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="y52ms2kKCoiSthOi"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=W7kjMsXR3aRogCpEZWgvt2UZ7rX0B2Zg9yZOW7oGwepw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============7093906397445676541==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="02C+GlUcNvfRYA2K"
-Content-Disposition: inline
-
-
---02C+GlUcNvfRYA2K
+--y52ms2kKCoiSthOi
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 06, 2016 at 02:27:19PM +0200, Boris Brezillon wrote:
+On Wed, Jul 06, 2016 at 11:31:45AM -0700, Doug Anderson wrote:
 
-> I realize I may have introduced another bug when adding the
-> ->enable()/disable() methods: we are only waiting for the ramp up delay
-> when changing the voltage, but it should probably be applied when
-> enabling the PWM, and conditionally applied when changing the voltage
-> only if the PWM is enabled.
+> I'll certainly let Mark comment here, but:
 
-Yes, it should be applied on enable. =20
+> * For enabling the PWM, I think you want want "regulator-enable-ramp-dela=
+y".
 
---02C+GlUcNvfRYA2K
+In the absence of that we should just be treating it as a voltage change
+=66rom zero.  Some regulators do have different characteristics on initial
+ramp up but if we don't know about them we ought to just use the regular
+one.  Note that the core does have standard code to apply delays which
+may just be working here.
+
+--y52ms2kKCoiSthOi
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXfgzrAAoJECTWi3JdVIfQegAH/Alb5c7hQiNVMwlKHXtEwhl5
-CVsF/CK3pLnG70tRHqXc+gVPdZeLSs9CxxuWAA8hp5tYIkkMvffoyDNcnshKW/F3
-ol0AoQ+uo25qf5JAjcbJXLZA97hGOhiJLwv24MKjfo9fxPYUNMmUKDMsKuud5cck
-2Gne/W6LjmdhaqBmluXRkMT9d9ef0KvcR7NNqgXx9pPIqoJMBdzvHv7AmJaauE0d
-oXVdHIQtTiy/NaQ+wxGJVcX9REqS9wbnSu2EJqTbokrZnWbbr4d4dKUqu1IYKFM5
-fXqGW8xs5X6/XmfI8iflUyanmJJTufeZMO2LxgycgAGBW9U9QmDfPEPxEliEKPQ=
-=2ZsX
+iQEcBAEBCAAGBQJXfg/lAAoJECTWi3JdVIfQjzIH/2AyBk8KjQXzOVx1L3rKxXxS
+aDKN+AgOTzXubi5osgyOs4yNwFKhgkDXuSEVE446WWF/Pk8RphxKZx53YRZPfBVP
+3KlZbJCjTYZ3vmxq08vcZE2ubZcv9lSWH3nk4jw2E7j9zbXQA4i0gVHfBhSFJKKp
+MpfuSydYr3fg2z88+d0eEaOEp0kzSnvB8y2Yp7DmhcdDVQCg8ZjJJyJJ6GIv5C2E
+DfxBR19+8Fke76JIBQvEUDcaXXQ+mJXxtN9B/nTBE5bBu7iPbqCcPOvv5TukDoC5
+cDOSVJHKZFIUs7kNGVyU455OaGEkvUguqizSx15v1lOv+HtQH+eZDIo75ziM/r4=
+=Uih+
 -----END PGP SIGNATURE-----
 
---02C+GlUcNvfRYA2K--
-
-
---===============7093906397445676541==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7093906397445676541==--
+--y52ms2kKCoiSthOi--
