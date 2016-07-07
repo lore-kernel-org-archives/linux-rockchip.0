@@ -1,7 +1,8 @@
 From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH 05/93] dt-bindings: Document rk3399 rk-timer bindings
-Date: Thu,  7 Jul 2016 10:00:38 +0200
-Message-ID: <1467878526-1238-5-git-send-email-daniel.lezcano@linaro.org>
+Subject: [PATCH 07/93] clocksource/drivers/rockchip: Add support for the
+ rk3399 SoC
+Date: Thu,  7 Jul 2016 10:00:40 +0200
+Message-ID: <1467878526-1238-7-git-send-email-daniel.lezcano@linaro.org>
 References: <577E0BED.3020608@linaro.org>
  <1467878526-1238-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
@@ -19,79 +20,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Add a compatible string for rk3399 SoC because the timer is slightly different
-from the older SoCs. So rename the file name from rockchip,rk3288-timer.txt to
-rockchip,rk-timer.txt and clarify rockchip,rk3288-timer supported SoCs.
+The only difference between the rk3399 SoC and the other ones is the control
+register offset which is different.
+
+Add a new field to store the control register address depending on the SoC
+and use it instead of the <base> + <control offset>.
 
 Signed-off-by: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Cc: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Tested-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 ---
- .../devicetree/bindings/timer/rockchip,rk-timer.txt  | 20 ++++++++++++++++++++
- .../bindings/timer/rockchip,rk3288-timer.txt         | 18 ------------------
- 2 files changed, 20 insertions(+), 18 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
- delete mode 100644 Documentation/devicetree/bindings/timer/rockchip,rk3288-timer.txt
+ drivers/clocksource/rockchip_timer.c | 31 ++++++++++++++++++++++++++-----
+ 1 file changed, 26 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-new file mode 100644
-index 0000000..a41b184
---- /dev/null
-+++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-@@ -0,0 +1,20 @@
-+Rockchip rk timer
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index b510863..a3f22b0 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -19,7 +19,8 @@
+ 
+ #define TIMER_LOAD_COUNT0	0x00
+ #define TIMER_LOAD_COUNT1	0x04
+-#define TIMER_CONTROL_REG	0x10
++#define TIMER_CONTROL_REG3288	0x10
++#define TIMER_CONTROL_REG3399	0x1c
+ #define TIMER_INT_STATUS	0x18
+ 
+ #define TIMER_DISABLE		0x0
+@@ -31,6 +32,7 @@
+ struct bc_timer {
+ 	struct clock_event_device ce;
+ 	void __iomem *base;
++	void __iomem *ctrl;
+ 	u32 freq;
+ };
+ 
+@@ -46,15 +48,20 @@ static inline void __iomem *rk_base(struct clock_event_device *ce)
+ 	return rk_timer(ce)->base;
+ }
+ 
++static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
++{
++	return rk_timer(ce)->ctrl;
++}
 +
-+Required properties:
-+- compatible: shall be one of:
-+  "rockchip,rk3288-timer" - for rk3066, rk3036, rk3188, rk322x, rk3288, rk3368
-+  "rockchip,rk3399-timer" - for rk3399
-+- reg: base address of the timer register starting with TIMERS CONTROL register
-+- interrupts: should contain the interrupts for Timer0
-+- clocks : must contain an entry for each entry in clock-names
-+- clock-names : must include the following entries:
-+  "timer", "pclk"
+ static inline void rk_timer_disable(struct clock_event_device *ce)
+ {
+-	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
++	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
+ }
+ 
+ static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
+ {
+ 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
+-		       rk_base(ce) + TIMER_CONTROL_REG);
++		       rk_ctrl(ce));
+ }
+ 
+ static void rk_timer_update_counter(unsigned long cycles,
+@@ -106,7 +113,7 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void __init rk_timer_init(struct device_node *np)
++static void __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ {
+ 	struct clock_event_device *ce = &bc_timer.ce;
+ 	struct clk *timer_clk;
+@@ -118,6 +125,7 @@ static void __init rk_timer_init(struct device_node *np)
+ 		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
+ 		return;
+ 	}
++	bc_timer.ctrl = bc_timer.base + ctrl_reg;
+ 
+ 	pclk = of_clk_get_by_name(np, "pclk");
+ 	if (IS_ERR(pclk)) {
+@@ -180,4 +188,17 @@ out_unmap:
+ 	iounmap(bc_timer.base);
+ }
+ 
+-CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_init);
++static void __init rk3288_timer_init(struct device_node *np)
++{
++	rk_timer_init(np, TIMER_CONTROL_REG3288);
++}
 +
-+Example:
-+	timer: timer@ff810000 {
-+		compatible = "rockchip,rk3288-timer";
-+		reg = <0xff810000 0x20>;
-+		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&xin24m>, <&cru PCLK_TIMER>;
-+		clock-names = "timer", "pclk";
-+	};
-diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk3288-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk3288-timer.txt
-deleted file mode 100644
-index 87f0b00..0000000
---- a/Documentation/devicetree/bindings/timer/rockchip,rk3288-timer.txt
-+++ /dev/null
-@@ -1,18 +0,0 @@
--Rockchip rk3288 timer
--
--Required properties:
--- compatible: shall be "rockchip,rk3288-timer"
--- reg: base address of the timer register starting with TIMERS CONTROL register
--- interrupts: should contain the interrupts for Timer0
--- clocks : must contain an entry for each entry in clock-names
--- clock-names : must include the following entries:
--  "timer", "pclk"
--
--Example:
--	timer: timer@ff810000 {
--		compatible = "rockchip,rk3288-timer";
--		reg = <0xff810000 0x20>;
--		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
--		clocks = <&xin24m>, <&cru PCLK_TIMER>;
--		clock-names = "timer", "pclk";
--	};
++static void __init rk3399_timer_init(struct device_node *np)
++{
++	rk_timer_init(np, TIMER_CONTROL_REG3399);
++}
++
++CLOCKSOURCE_OF_DECLARE(rk3288_timer, "rockchip,rk3288-timer",
++		       rk3288_timer_init);
++CLOCKSOURCE_OF_DECLARE(rk3399_timer, "rockchip,rk3399-timer",
++		       rk3399_timer_init);
 -- 
 1.9.1
