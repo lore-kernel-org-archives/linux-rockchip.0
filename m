@@ -1,16 +1,13 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v6 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
-Date: Wed, 6 Jul 2016 17:44:06 -0700
-Message-ID: <20160707004404.GA57063@google.com>
-References: <1467789398-13501-1-git-send-email-shawn.lin@rock-chips.com>
- <1467789398-13501-2-git-send-email-shawn.lin@rock-chips.com>
- <20160707001254.GA100467@google.com>
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 2/5] usb: dwc3: add dis_u2_freeclk_exists_quirk
+Date: Thu,  7 Jul 2016 10:54:23 +0800
+Message-ID: <1467860066-15142-3-git-send-email-william.wu@rock-chips.com>
+References: <1467860066-15142-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160707001254.GA100467-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+In-Reply-To: <1467860066-15142-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,72 +17,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi again,
+Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
+which specifies whether the USB2.0 PHY provides a free-running
+PHY clock, which is active when the clock control input is active.
 
-On Wed, Jul 06, 2016 at 05:12:55PM -0700, Brian Norris wrote:
-> On Wed, Jul 06, 2016 at 03:16:38PM +0800, Shawn Lin wrote:
-> > +static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-> > +{
-> > +	struct irq_chip *chip = irq_desc_get_chip(desc);
-> > +	struct rockchip_pcie_port *port;
-> > +	u32 reg;
-> > +	u32 hwirq;
-> > +	u32 virq;
-> > +
-> > +	chained_irq_enter(chip, desc);
-> > +	port = irq_desc_get_handler_data(desc);
-> > +
-> > +	reg = pcie_read(port, PCIE_CLIENT_INT_STATUS);
-> > +	reg = (reg & ROCKCHIP_PCIE_RPIFR1_INTR_MASK) >>
-> > +	       ROCKCHIP_PCIE_RPIFR1_INTR_SHIFT;
-> > +
-> > +	while (reg) {
-> > +		hwirq = ffs(reg);
+Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+Changes in v6:
+- use '-' instead of '_' in dts (Rob Herring)
 
-As I noted on the DT binding patch, the use of 'ffs' here is causing you
-to make the interrupt controller binding implicitly 1-based, where it
-would seemingly make more sense to be 0-based I think.
+Changes in v5:
+- None
 
-> > +		reg &= ~BIT(hwirq);
-> 
-> Per Marc's suggestion, you have created an infinite loop :)
-> 
-> This should be:
-> 
-> 	hwirq = ffs(reg);
-> 	reg &= ~BIT(hwirq - 1);
+Changes in v4:
+- rebase on top of balbi testing/next, remove pdata (balbi)
 
-So, this should actually be:
+Changes in v3:
+- None
 
-		hwirq = ffs(reg) - 1;
-		reg &= ~BIT(hwirq);
+Changes in v2:
+- None
 
-> ...which brings me to this question: are you ever testing non-MSI (i.e.,
-> "legacy") interrupts on this driver? There seems to be quite a bit of
-> discussion about the structuring of the interrupt-map and
-> interrupt-controller handling, but it appears this mostly/only gets
-> actually *used* for the legacy interrupt case, and on my tests, legacy
-> interrupts aren't really working, at least not with the new binding
-> examples that you proposed. But then, you didn't send a rk3399.dtsi
-> update, so perhaps I constructed my DTS wrong...
-> 
-> If you haven't been testing legacy interrupts, I'd recommend booting
-> with "pci=nomsi" and see what happens.
-> 
-> > +
-> > +		virq = irq_find_mapping(port->irq_domain, hwirq);
-> > +		if (virq)
-> > +			generic_handle_irq(virq);
-> > +		else
-> > +			dev_err(port->dev, "unexpected IRQ, INT%d\n", hwirq);
-> > +	}
-> > +
-> > +	chained_irq_exit(chip, desc);
-> > +}
-> > +
+ Documentation/devicetree/bindings/usb/dwc3.txt | 3 +++
+ drivers/usb/dwc3/core.c                        | 5 +++++
+ drivers/usb/dwc3/core.h                        | 5 +++++
+ 3 files changed, 13 insertions(+)
 
-Brian
+diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
+index 7d7ce08..020b0e9 100644
+--- a/Documentation/devicetree/bindings/usb/dwc3.txt
++++ b/Documentation/devicetree/bindings/usb/dwc3.txt
+@@ -39,6 +39,9 @@ Optional properties:
+ 			disabling the suspend signal to the PHY.
+  - snps,dis_rxdet_inp3_quirk: when set core will disable receiver detection
+ 			in PHY P3 power state.
++ - snps,dis-u2-freeclk-exists-quirk: when set, clear the u2_freeclk_exists
++			in GUSB2PHYCFG, specify that USB2 PHY doesn't provide
++			a free-running PHY clock.
+  - snps,is-utmi-l1-suspend: true when DWC3 asserts output signal
+ 			utmi_l1_suspend_n, false when asserts utmi_sleep_n
+  - snps,hird-threshold: HIRD threshold
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 9466431..0b7bfd2 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -500,6 +500,9 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
+ 	if (dwc->dis_enblslpm_quirk)
+ 		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
+ 
++	if (dwc->dis_u2_freeclk_exists_quirk)
++		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
++
+ 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
+ 
+ 	return 0;
+@@ -924,6 +927,8 @@ static int dwc3_probe(struct platform_device *pdev)
+ 				"snps,dis_enblslpm_quirk");
+ 	dwc->dis_rxdet_inp3_quirk = device_property_read_bool(dev,
+ 				"snps,dis_rxdet_inp3_quirk");
++	dwc->dis_u2_freeclk_exists_quirk = device_property_read_bool(dev,
++				"snps,dis-u2-freeclk-exists-quirk");
+ 
+ 	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
+ 				"snps,tx_de_emphasis_quirk");
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index 45d6de5..f321a5c 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -199,6 +199,7 @@
+ 
+ /* Global USB2 PHY Configuration Register */
+ #define DWC3_GUSB2PHYCFG_PHYSOFTRST	(1 << 31)
++#define DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS	(1 << 30)
+ #define DWC3_GUSB2PHYCFG_SUSPHY		(1 << 6)
+ #define DWC3_GUSB2PHYCFG_ULPI_UTMI	(1 << 4)
+ #define DWC3_GUSB2PHYCFG_ENBLSLPM	(1 << 8)
+@@ -799,6 +800,9 @@ struct dwc3_scratchpad_array {
+  * @dis_u2_susphy_quirk: set if we disable usb2 suspend phy
+  * @dis_enblslpm_quirk: set if we clear enblslpm in GUSB2PHYCFG,
+  *                      disabling the suspend signal to the PHY.
++ * @dis_u2_freeclk_exists_quirk : set if we clear u2_freeclk_exists
++ *			in GUSB2PHYCFG, specify that USB2 PHY doesn't
++ *			provide a free-running PHY clock.
+  * @tx_de_emphasis_quirk: set if we enable Tx de-emphasis quirk
+  * @tx_de_emphasis: Tx de-emphasis value
+  * 	0	- -6dB de-emphasis
+@@ -942,6 +946,7 @@ struct dwc3 {
+ 	unsigned		dis_u2_susphy_quirk:1;
+ 	unsigned		dis_enblslpm_quirk:1;
+ 	unsigned		dis_rxdet_inp3_quirk:1;
++	unsigned		dis_u2_freeclk_exists_quirk:1;
+ 
+ 	unsigned		tx_de_emphasis_quirk:1;
+ 	unsigned		tx_de_emphasis:2;
+-- 
+1.9.1
