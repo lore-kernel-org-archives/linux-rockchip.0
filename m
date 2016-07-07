@@ -1,52 +1,50 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] regulator: pwm: Fix regulator ramp delay for continuous
+From: Laxman Dewangan <ldewangan@nvidia.com>
+Subject: Re: [PATCH v2] regulator: pwm: Fix regulator ramp delay for continuous
  mode
-Date: Thu, 7 Jul 2016 10:17:11 +0200
-Message-ID: <20160707081711.GH6247@sirena.org.uk>
-References: <1467089591-7631-1-git-send-email-dianders@chromium.org>
- <20160701080614.GA9196@sirena.org.uk>
- <CAD=FV=WKR_Fq6o34886RCY-T-6AKdRqFz9H1aTiRq7Zu=o8TWA@mail.gmail.com>
- <20160702075939.GD6247@sirena.org.uk>
- <CAD=FV=W2JDP3EAdz9CWUKbcoCz34Mm7oCF2QCD4W45tyBOaP+A@mail.gmail.com>
+Date: Thu, 7 Jul 2016 14:06:23 +0530
+Message-ID: <577E1487.9010000@nvidia.com>
+References: <1467830521-15300-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Fv4aQf9orjE3TOVF"
+Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=W2JDP3EAdz9CWUKbcoCz34Mm7oCF2QCD4W45tyBOaP+A@mail.gmail.com>
+In-Reply-To: <1467830521-15300-1-git-send-email-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Douglas Anderson <dianders@chromium.org>, Mark Brown <broonie@kernel.org>
+Cc: boris.brezillon@free-electrons.com, lee.jones@linaro.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, thierry.reding@gmail.com, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, afrid@nvidia.com
 List-Id: linux-rockchip.vger.kernel.org
 
 
---Fv4aQf9orjE3TOVF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Thursday 07 July 2016 12:12 AM, Douglas Anderson wrote:
+> The original commit adding support for continuous voltage mode didn't
+> handle the regulator ramp delay properly.  It treated the delay as a
+> fixed delay in uS despite the property being defined as uV / uS.  Let's
+> adjust it.  Luckily there appear to be no users of this ramp delay for
+> PWM regulators (as per grepping through device trees in linuxnext).
+>
+> Note also that the upper bound of usleep_range probably shouldn't be a
+> full 1 ms longer than the lower bound since I've seen plenty of hardware
+> with a ramp rate of ~5000 uS / uV and for small jumps the total delays
+> are in the tens of uS.  1000 is way too much.  We'll try to be dynamic
+> and use 10%.
+>
+> NOTE: This commit doesn't add support for regulator-enable-ramp-delay.
+> That could be done in a future patch when someone has a user of that
+> featre.
+>
+> Though this patch is shows as "fixing" a bug, there are no actual known
+> users of continuous mode PWM regulator w/ ramp delay in mainline and so
+> this likely won't have any effect on anyone unless they are working
+> out-of-tree with private patches.  For anyone in this state, it is
+> highly encouraged to also pick Boris Brezillon's WIP patches to get
+> yourself a reliable and glitch-free regulator.
+>
+> Fixes: 4773be185a0f ("regulator: pwm-regulator: Add support for continuous-voltage")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-On Wed, Jul 06, 2016 at 11:30:59AM -0700, Doug Anderson wrote:
 
-> Note: which boards are you thinking would test this?  My grep showed
-> zero boards using regulator-ramp-delay with PWM regulator.  While this
-> is an important fix for anyone using the ramp delay, I'm not convinced
-> that anyone in mainline is using it.
+Looks fine here.
+Acked-by: Laxman Dewangan <ldewangan@nvidia.com>
 
-I just meant there are boards out there using the regulator, not the
-specific feature.
-
---Fv4aQf9orjE3TOVF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXfhAGAAoJECTWi3JdVIfQSUgH/iRm83WyjWjDf2PJQJTaBsYQ
-Wd7U6BQw39vGE4KZRfuCuePxrX27o3A1iphDwkaSKJ8iRtWozj0V+5FlasOi7+SQ
-yQkXdPR0IZfPVpjV4G2ZgmD6pjD0pphrnRur2lrllAXZoDOANHCwQQ7pwif7Hiwd
-gC/wMtJOkOpxrIecy1eTygQVWonxkecEl9ozdgXVHxyBOC2a+EiBiHwJ1tJswCPu
-WDWdYGbBo7o1CBW0gUb+gDwrEsRGx0rV5ciGL+1YuznM2yGWLOARXcHvExh2wa3l
-5lp8GUCWPQEMqfaY92JRv2+VSXDe6oUut7sqMSjyNMMzd1Bgl0kTXFe3LKG4FW0=
-=R6Wr
------END PGP SIGNATURE-----
-
---Fv4aQf9orjE3TOVF--
+BTW, for some PWM regulator, the settling time for voltage change is 
+same for any steps.
