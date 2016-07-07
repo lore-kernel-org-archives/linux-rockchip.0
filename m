@@ -1,78 +1,73 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: support the usb2phy for rk3399 evb
-Date: Thu, 07 Jul 2016 12:11:41 +0200
-Message-ID: <2150255.RfISFviJKP@phil>
-References: <1467866800-24794-1-git-send-email-wxt@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: next-20160707 build: 1 failures 6 warnings (next-20160707)
+Date: Thu, 7 Jul 2016 14:22:19 +0200
+Message-ID: <20160707122219.GO6247@sirena.org.uk>
+References: <E1bL5XI-0004Z9-EP@optimist>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1467866800-24794-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============0116884259=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <E1bL5XI-0004Z9-EP@optimist>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Simon Xue <xxm@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Joerg Roedel <jroedel@suse.de>
+Cc: linaro-kernel@lists.linaro.org, kernel-build-reports@lists.linaro.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-next@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-Am Donnerstag, 7. Juli 2016, 12:46:40 schrieb Caesar Wang:
-> From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This patch adds the usb2phy needed dts node information for rk3399.
-> 
-> USB2.0 PHY is comprised of one Host port and one OTG port.
-> Host Port is for USB2.0 host controller; OTG port is for USB2.0 part of
-> USB3.0 OTG controller, and as a part to construct a fully feature TypeC
-> subsystem.
-> 
-> The USB2.0 vbus gpio is board specific, it's no same with all rk3399
-> boards, so move it into evb voard.
-> 
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3399-evb.dts |  4 ++++
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi    | 19 +++++++++++++++++++
->  2 files changed, 23 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 4c84229..21d147f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -242,6 +242,25 @@
->  		status = "disabled";
->  	};
-> 
-> +	usb2phy: usb2phy {
-> +		compatible = "rockchip,rk3399-usb-phy";
-> +		rockchip,grf = <&grf>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		usb2phy0: usb2-phy0 {
-> +			#phy-cells = <0>;
-> +			#clock-cells = <0>;
-> +			reg = <0xe458>;
-> +		};
-> +
-> +		usb2phy1: usb2-phy1 {
-> +			#phy-cells = <0>;
-> +			#clock-cells = <0>;
-> +			reg = <0xe468>;
-> +		};
-> +	};
-> +
-
-The rk3399 uses the innosilicon usb2 phy and the binding we've come up for 
-it looks a lot different than the above. So I'm not sure where this is 
-coming from, especially as I haven't seen the driver part for the rk3399 at 
-all yet. So far Frank was always working on te rk3366 variant, which seemed 
-to be the most complete.
+--===============0116884259==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ClpMRN7ztK9mBQjN"
+Content-Disposition: inline
 
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--ClpMRN7ztK9mBQjN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Jul 07, 2016 at 10:23:56AM +0100, Build bot for Mark Brown wrote:
+
+Today's -next fails to build an arm64 allmodconfig due to:
+
+> 	arm64-allmodconfig
+> ../drivers/gpu/drm/rockchip/rockchip_drm_drv.c:17:27: fatal error: asm/dma-iommu.h: No such file or directory
+
+triggered by c51f43a9c171ea (iommu/rockchip: Enable Rockchip IOMMU on
+ARM64) which enables the Rockchip IOMMU driver on ARM64 which lacks the
+above header.  Either the use of the header needs to be removed or an
+explicit ARM64 dependency added at the DRM level.
+
+--ClpMRN7ztK9mBQjN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXfkk9AAoJECTWi3JdVIfQNYsH/inRnDZXj2z6JBkqHOhAx3P0
+jkEA11zb/bS1zyUA/SbTvE4Te/MQRgdBXHnbqAiFRttp43ZJ2po+PDdxB94Yyly6
+JUsdaGJaHpwoBE7kq1X8MU2MgbUIaxOUNfYhuDr5KLkVenPCb8+oySWP2xkj4XqG
+TZ3Pvdu4I6VFqCg0/9lZcmSKvmCILCsOf+16mXwidH1L2MDaxcwOJ3REiExGB+uU
+9tK9//6R+DPh3pN0QiRDlqS3fUJqhUEpfBdghWgcNiQ3xCb2YVXP/jJLQNhvPosL
+6XPqSh6N+UuL4C9u92PiO36K9TT/wQTpDoLx9B58qf/Du0ILwpXylvSTXceoB3Y=
+=Ejdu
+-----END PGP SIGNATURE-----
+
+--ClpMRN7ztK9mBQjN--
+
+--===============0116884259==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0116884259==--
