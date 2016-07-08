@@ -1,104 +1,52 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2] regulator: pwm: Fix regulator ramp delay for
- continuous mode
-Date: Fri, 8 Jul 2016 10:53:38 +0200
-Message-ID: <20160708085338.GT6247@sirena.org.uk>
-References: <1467830521-15300-1-git-send-email-dianders@chromium.org>
- <577E1487.9010000@nvidia.com>
- <CAD=FV=UQw7ttMECtO0aomx56G6xGWZh96NRug6Y4QuPJfXq8Tw@mail.gmail.com>
- <47095a54f7b44f8a98bdfe05cdea7865@HQMAIL106.nvidia.com>
- <CAD=FV=UZrpSsOAxsuEWuMeie3NHQUY3RQyaUF0MK9mHDqPhRzQ@mail.gmail.com>
- <364098370f214216ad14eda6487687e9@HQMAIL106.nvidia.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 1/7] dt-bindings: add rk3399 support for dw-mipi-rockchip
+Date: Fri,  8 Jul 2016 17:04:55 +0800
+Message-ID: <1467968701-15620-2-git-send-email-zyw@rock-chips.com>
+References: <1467968701-15620-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="dZoxY5VDSg+7Vbn9"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <364098370f214216ad14eda6487687e9@HQMAIL106.nvidia.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Aleksandr Frid <afrid@nvidia.com>
-Cc: Doug Anderson <dianders@chromium.org>, Laxman Dewangan <ldewangan@nvidia.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1467968701-15620-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---dZoxY5VDSg+7Vbn9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Jul 07, 2016 at 06:43:33PM +0000, Aleksandr Frid wrote:
-
-I'm not entirely sure what's wrong with your mail client here but your
-mails are essentially illegible.  There appears to be some combination
-of top posting, reflowing quoted content to remove line breaks and extra
-levels of quoting.
-
-> >>
-> In the case that you don't need multiple steps then don't specify a regul=
-ator-ramp-delay, just a pwm-regulator-settle-us.
-> >>
-> Agreed
->=20
-> -----Original Message-----
-> From: dianders@google.com [mailto:dianders@google.com] On Behalf Of Doug =
-Anderson
-> Sent: Thursday, July 07, 2016 11:32 AM
-> To: Aleksandr Frid
-> Cc: Laxman Dewangan; Mark Brown; Boris Brezillon; Lee Jones; Brian Norris=
-; open list:ARM/Rockchip SoC...; Heiko Stuebner; Thierry Reding; Liam Girdw=
-ood; linux-kernel@vger.kernel.org
-> Subject: Re: [PATCH v2] regulator: pwm: Fix regulator ramp delay for cont=
-inuous mode
->=20
-> Hi,
->=20
-> On Thu, Jul 7, 2016 at 11:23 AM, Aleksandr Frid <afrid@nvidia.com> wrote:
-> > Hi,
-> >
-> >>>
-> > In that case we should probably add a new PWM regulator property and no=
-t abuse the existing one.  Maybe you use "pwm-regulator-settle-us"
-> > or something?
-> >>>
-> > Looks reasonable to me.
-> >
-> >>>
-> > actually the right thing is probably to implement=20
-> > 'regulator-ramp-delay' as doing several small steps in that case
-> >>>
-> > Ramp delay uV/us  is not a "real" metric for some PWM regulators with e=
-xponential transition -- as opposite to fixed slew-rate linear transition o=
-n other regulators. So splitting transition into multiple steps to implemen=
-t artificial  (in this case) metric seems questionable.
->=20
-> In the case that you don't need multiple steps then don't specify a regul=
-ator-ramp-delay, just a pwm-regulator-settle-us.
->=20
-> ...the suggestion for multiple steps is because (so I'm told) it helps av=
-oid overshoot or undershoot problems.  In general the whole point of rampin=
-g a regulator slowly is to avoid overshoot or undershoot problems.  The "re=
-gulator-ramp-delay" property in Linux is a little odd because it sort of "d=
-escribes" the ramp delay and sort of "sets"
-> the ramp delay.  Many PMICs allow you to set how fast the regulator will =
-ramp and this property is used to specify how the register in the PMIC shou=
-ld be set.  However, it is also used as the actual delay in Linux.
->=20
->=20
-> -Doug
-
---dZoxY5VDSg+7Vbn9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEbBAEBCAAGBQJXf2oQAAoJECTWi3JdVIfQ3x0H+PJTskkBS1BS8NrZc8LwOe0i
-4ezsSuEn3quyXp6htWj+jQCNygyBmAOqj8JVdPc2njER+VS+5gA1es/ZGpDOUbia
-SjVd8WS6OppC+PTFmZSaRkoKPp7FXLxJ03ltXtDqoyuLh1uPJsThDBqPcTGdvySA
-t4pg3jcOSjBlVOVkhAaOaGEnbQu5z1zgZPIt2tEE3c6ydDO2kHUXEDBqRXTXtL9f
-HAGD9RTBFldbJVldjWVZ5lnEzLZUVGqXLDT93a8c0Dp3Ccz42EGy1YsGlsdLw6N9
-dQOakNETXG+zapsxA51SrtWa2EP+Df28jFATc1dJQ0J5nOVHDQPAAHkTFMi/gA==
-=bzBR
------END PGP SIGNATURE-----
-
---dZoxY5VDSg+7Vbn9--
+VGhlIGR3LW1pcGktZHNpIG9mIHJrMzM5OSBpcyBhbG1vc3QgdGhlIHNhbWUgYXMgcmszMjg4LCB0
+aGUgcmszMzk5IGhhcwphZGRpdGlvbmFsIHBoeSBjb25maWcgY2xvY2suCgpTaWduZWQtb2ZmLWJ5
+OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgotLS0KCiAuLi4vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAgICB8IDUg
+KysrKysKIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2Rz
+aV9yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKaW5kZXggMTc1M2YwYy4uNGQ1OWRm
+MyAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
+cm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0CisrKyBiL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4
+dApAQCAtNSw2ICs1LDcgQEAgUmVxdWlyZWQgcHJvcGVydGllczoKIC0gI2FkZHJlc3MtY2VsbHM6
+IFNob3VsZCBiZSA8MT4uCiAtICNzaXplLWNlbGxzOiBTaG91bGQgYmUgPDA+LgogLSBjb21wYXRp
+YmxlOiAicm9ja2NoaXAscmszMjg4LW1pcGktZHNpIiwgInNucHMsZHctbWlwaS1kc2kiLgorCSAg
+ICAgICJyb2NrY2hpcCxyazMzOTktbWlwaS1kc2kiLCAic25wcyxkdy1taXBpLWRzaSIuCiAtIHJl
+ZzogUmVwcmVzZW50IHRoZSBwaHlzaWNhbCBhZGRyZXNzIHJhbmdlIG9mIHRoZSBjb250cm9sbGVy
+LgogLSBpbnRlcnJ1cHRzOiBSZXByZXNlbnQgdGhlIGNvbnRyb2xsZXIncyBpbnRlcnJ1cHQgdG8g
+dGhlIENQVShzKS4KIC0gY2xvY2tzLCBjbG9jay1uYW1lczogUGhhbmRsZXMgdG8gdGhlIGNvbnRy
+b2xsZXIncyBwbGwgcmVmZXJlbmNlCkBAIC0xMyw2ICsxNCwxMCBAQCBSZXF1aXJlZCBwcm9wZXJ0
+aWVzOgogLSBwb3J0czogY29udGFpbiBhIHBvcnQgbm9kZSB3aXRoIGVuZHBvaW50IGRlZmluaXRp
+b25zIGFzIGRlZmluZWQgaW4gWzJdLgogICBGb3Igdm9wYixzZXQgdGhlIHJlZyA9IDwwPiBhbmQg
+c2V0IHRoZSByZWcgPSA8MT4gZm9yIHZvcGwuCiAKK09wdGlvbmFsIHByb3BlcnRpZXM6CistIGNs
+b2NrcywgY2xvY2stbmFtZXM6IHBoYW5kbGUgdG8gdGhlIGR3LW1pcGkgcGh5IGNsb2NrLCBuYW1l
+IHNob3VsZCBiZQorCQkgICAgICAgInBoeV9jZmciLgorCiBbMV0gRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Nsb2NrL2Nsb2NrLWJpbmRpbmdzLnR4dAogWzJdIERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dAogCi0tIAoy
+LjYuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
