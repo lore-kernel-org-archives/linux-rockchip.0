@@ -1,71 +1,47 @@
-From: Rob Herring <robh@kernel.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v6 3/5] usb: dwc3: add phyif_utmi_quirk
-Date: Mon, 11 Jul 2016 09:54:47 -0500
-Message-ID: <20160711145447.GA16636@rob-hp-laptop>
+Date: Mon, 11 Jul 2016 09:58:54 -0500
+Message-ID: <20160711145854.GB16636@rob-hp-laptop>
 References: <1467860066-15142-1-git-send-email-william.wu@rock-chips.com>
  <1467860066-15142-4-git-send-email-william.wu@rock-chips.com>
- <2213342.0Nx5tnEW8p@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <2213342.0Nx5tnEW8p@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: William Wu <william.wu@rock-chips.com>, gregkh@linuxfoundation.org, balbi@kernel.org, linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, mark.rutland@arm.com, devicetree@vger.kernel.org
+In-Reply-To: <1467860066-15142-4-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 08, 2016 at 02:33:09PM +0200, Heiko Stuebner wrote:
-> Hi William,
-> 
-> Am Donnerstag, 7. Juli 2016, 10:54:24 schrieb William Wu:
-> > Add a quirk to configure the core to support the
-> > UTMI+ PHY with an 8- or 16-bit interface. UTMI+ PHY
-> > interface is hardware property, and it's platform
-> > dependent. Normall, the PHYIf can be configured
-> > during coreconsultant. But for some specific usb
-> > cores(e.g. rk3399 soc dwc3), the default PHYIf
-> > configuration value is fault, so we need to
-> > reconfigure it by software.
-> > 
-> > And refer to the dwc3 databook, the GUSB2PHYCFG.USBTRDTIM
-> > must be set to the corresponding value according to
-> > the UTMI+ PHY interface.
-> > 
-> > Signed-off-by: William Wu <william.wu@rock-chips.com>
-> > ---
-> [...]
-> > diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt
-> > b/Documentation/devicetree/bindings/usb/dwc3.txt index 020b0e9..8d7317d
-> > 100644
-> > --- a/Documentation/devicetree/bindings/usb/dwc3.txt
-> > +++ b/Documentation/devicetree/bindings/usb/dwc3.txt
-> > @@ -42,6 +42,10 @@ Optional properties:
-> >   - snps,dis-u2-freeclk-exists-quirk: when set, clear the
-> > u2_freeclk_exists in GUSB2PHYCFG, specify that USB2 PHY doesn't provide
-> >  			a free-running PHY clock.
-> > + - snps,phyif-utmi-quirk: when set core will set phyif UTMI+ interface.
-> > + - snps,phyif-utmi: the value to configure the core to support a UTMI+
-> > PHY +			with an 8- or 16-bit interface. Value 0 select 8-bit
-> > +			interface, value 1 select 16-bit interface.
-> 
-> maybe
-> 	snps,phyif-utmi-width = <8> or <16>;
+On Thu, Jul 07, 2016 at 10:54:24AM +0800, William Wu wrote:
+> Add a quirk to configure the core to support the
+> UTMI+ PHY with an 8- or 16-bit interface. UTMI+ PHY
+> interface is hardware property, and it's platform
+> dependent. Normall, the PHYIf can be configured
 
-Seems like this could be common. Any other bindings have something 
-similar already? If not "utmi-width" is fine.
+s/Normall/Normally/
+s/PHYIf/PHYIF/
 
-> 
-> devicetree is about describing the hardware, not the things that get written 
-> to registers :-) . The conversion from the described width to the register 
-> value can easily be done in the driver.
-> 
-> 
-> Also I don't think you need two properties for this. If the snps,phyif-utmi 
-> property is specified it indicates that you want to manually set the width 
-> and if it is absent you want to use the IC default. All functions reading 
-> property-values indicate if the property is missing.
+> during coreconsultant. But for some specific usb
 
-Agreed.
+s/usb/USB/
+
+> cores(e.g. rk3399 soc dwc3), the default PHYIf
+> configuration value is fault, so we need to
+> reconfigure it by software.
+> 
+> And refer to the dwc3 databook, the GUSB2PHYCFG.USBTRDTIM
+
+s/dwc3/DWC3/
+
+> must be set to the corresponding value according to
+> the UTMI+ PHY interface.
+
+And wrap your lines at 70-74 characters.
 
 Rob
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
