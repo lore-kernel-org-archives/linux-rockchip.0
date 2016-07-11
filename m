@@ -1,66 +1,80 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 5/7] drm/rockchip: dw-mipi: support HPD poll
-Date: Mon, 11 Jul 2016 08:46:53 +0800
-Message-ID: <5782EC7D.3080202@rock-chips.com>
-References: <1467968701-15620-1-git-send-email-zyw@rock-chips.com>
- <1467968701-15620-6-git-send-email-zyw@rock-chips.com>
- <20160708145211.6bf83d8f.john@metanate.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH v6] ASoC: rockchip: Add machine driver for RK3399 GRU
+ Boards
+Date: Mon, 11 Jul 2016 14:20:01 +0800
+Message-ID: <57833A91.7090109@rock-chips.com>
+References: <1466080858-29565-1-git-send-email-zhengxing@rock-chips.com>
+ <20160620130812.GA24614@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160708145211.6bf83d8f.john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>, Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, yzq@rock-chips.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160620130812.GA24614@rob-hp-laptop>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, heiko@sntech.de, smbarber@google.com, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA35pyIMDjml6UgMjE6NTIsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBPbiBGcmks
-ICA4IEp1bCAyMDE2IDE3OjA0OjU5ICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPgo+PiBBdCB0
-aGUgZmlyc3QgdGltZSBvZiBiaW5kLCB0aGVyZSBpcyBubyBhbnkgcGFuZWwgYXR0YWNoIGluIG1p
-cGkuIEFkZCBhCj4+IERSTV9DT05ORUNUT1JfUE9MTF9IUEQgcG9ycGVydHkgdG8gZGV0ZWN0IHRo
-ZSBwYW5lbCBzdGF0dXMsIHdoZW4gcGFuZWwKPj4gcHJvYmUsIHRoZSBkd19taXBpX2RzaV9ob3N0
-X2F0dGFjaCB3b3VsZCBiZSBjYWxsZWQsIHRoZW4gbWlwaS1kc2kgd2lsbAo+PiB0cmlnZ2VyIGEg
-ZXZlbnQgdG8gbm90aWZ5IHRoZSBkcm0gZnJhbWV3b3JrLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBD
-aHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IENhbiB3ZSBkbyBzb21ldGhpbmcgbGlr
-ZSB0aGlzIGluc3RlYWQ/ICBXZSBrbm93IHRoYXQgdGhlIHBhbmVsIG11c3QKPiBhbHdheXMgYmUg
-YXR0YWNoZWQgYW5kIHRoaXMgaGFzIHRoZSBhZHZhbnRhZ2UgdGhhdCB0aGUgZGlzcGxheSBzaXpl
-IHdpbGwKPiBiZSBrbm93biB3aGVuIHRoZSBmcmFtZWJ1ZmZlciBjb25zb2xlIGxvYWRzLgo+Cj4g
-LS0gPjggLS0KPiBTdWJqZWN0OiBbUEFUQ0hdIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGRl
-ZmVyIHByb2JlIGlmIHBhbmVsIGlzIG5vdCBsb2FkZWQKPgo+IFRoaXMgZW5zdXJlcyB0aGF0IHRo
-ZSBvdXRwdXQgcmVzb2x1dGlvbiBpcyBrbm93biBiZWZvcmUgZmJjb24gbG9hZHMuCj4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+IC0tLQo+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAxMSArKysrKysrKystLQo+ICAg
-MSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggNmVmNWYzYmU4NDY4Li5jMDQ5
-OTI2NmQxMTYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IEBA
-IC0xMTU0LDEwICsxMTU0LDE3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAgIAo+ICAgCWRzaS0+ZHNpX2hv
-c3Qub3BzID0gJmR3X21pcGlfZHNpX2hvc3Rfb3BzOwo+ICAgCWRzaS0+ZHNpX2hvc3QuZGV2ID0g
-ZGV2Owo+IC0JcmV0dXJuIG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+
-ICsJcmV0ID0gbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Cj4gKwlpZiAo
-IXJldCAmJiAhZHNpLT5wYW5lbCkgewo+ICsJCW1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigmZHNp
-LT5kc2lfaG9zdCk7Cj4gKwkJZHJtX2VuY29kZXJfY2xlYW51cCgmZHNpLT5lbmNvZGVyKTsKPiAr
-CQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVjdG9yKTsKPiArCQlyZXQgPSAtRVBS
-T0JFX0RFRkVSOwoKSGkgSm9obgoKRG8geW91IHZlcmlmeSB0aGlzIHBhdGNoPyBJIGRvIHRoZSBz
-aW1pbGFyIGNoYW5nZSBiZWZvcmUsIGJ1dCBmb3VuZCAKcGFuZWwgY2FuJ3QgcHJvYmUuCgptaXBp
-X2RzaV9ob3N0X3JlZ2lzdGVyIHdpbGwgY2FsbCBkZXZpY2VfYWRkLCBJIHRoaW5rIHRoZSBwYW5l
-bCBwcm9iZSAKbmVlZCB0aGlzLgoKU2VlbXMgdGhhdCBtaXBpIHBhbmVsIHByb2JlIHJlcXVlc3Qg
-bWlwaV9kc2lfaG9zdF9yZWdpc3RlciwgCm1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIgcmVxdWVzdCBw
-YW5lbCBvbiB5b3VyIHBhdGNoLCBlbmRsZXNzIGxvb3AuCgpUaGFua3MuCgo+ICsJfQo+ICAgCj4g
-ICBlcnJfcGxscmVmOgo+IC0JY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7
-Cj4gKwlpZiAocmV0KQo+ICsJCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGsp
-Owo+ICAgCXJldHVybiByZXQ7Cj4gICB9Cj4gICAKPgo+Cj4KCgotLSAK77ytYXJrIFlhbwoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Mark,
+     In your opinion, is there anything needs to be optimized in this p=
+atch?
+
+Thanks.
+
+On 2016=E5=B9=B406=E6=9C=8820=E6=97=A5 21:08, Rob Herring wrote:
+> On Thu, Jun 16, 2016 at 08:40:58PM +0800, Xing Zheng wrote:
+>> Because we need to support the multiple codecs (MAX98357A/RT5514/DA7=
+219)
+>> on the RK3399 GRU boards, this patch can help us to support these co=
+decs.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> ---
+>>
+>> Changes in v6:
+>> - remove enable/disable dapm pins, and to switch codecs via user spa=
+ce
+>> - fix "Speaker" dapm route for max98357a
+>> - add SND_JACK_LINEOUT flag for da7219 jack detection
+>>
+>> Changes in v5:
+>> - fix the build warning for missing I2C/CLKDEV_LOOKUP dependency
+>>
+>> Changes in v4:
+>> - the compatible name needs to be based on a single reference design=
+,
+>>    and the name of the board is called "GRU"
+>> - use one i2sX card "rockchip,cpu =3D <&i2s0>" instead of array that=
+ is
+>>    based on GRU
+>> - rename DOC to rockchip,rk3399-gru-sound.txt
+>> - rename compatible to rockchip,rk3399-gru-sound
+>> - rename source code to rk3399_gru_sound.c
+>>
+>> Changes in v3:
+>> - rename DOC to rockchip,rk3399-max98357a-rt5514-da7219.txt
+>> - rename compatible to rockchip,rk3399-max98357a-rt5514-da7219
+>> - rename source code to rk3399_max98357a_rt5514_da7219.c
+>>
+>> Changes in v2:
+>> - use the FS 256 to set mclks of the max98357a and rt5514 danamicall=
+y
+>> - add more sample rate for da7219
+>>
+>>   .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   15 +
+> Acked-by: Rob Herring <robh@kernel.org>
+>
+>>   sound/soc/rockchip/Kconfig                         |   11 +
+>>   sound/soc/rockchip/Makefile                        |    2 +
+>>   sound/soc/rockchip/rk3399_gru_sound.c              |  322 ++++++++=
+++++++++++++
+>>   4 files changed, 350 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/sound/rockchi=
+p,rk3399-gru-sound.txt
+>>   create mode 100644 sound/soc/rockchip/rk3399_gru_sound.c
+>
+>
+
+--=20
+- Xing Zheng
