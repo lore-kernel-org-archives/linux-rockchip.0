@@ -1,50 +1,83 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 5/5] usb: dwc3: rockchip: add devicetree bindings
- documentation
-Date: Mon, 11 Jul 2016 10:13:32 -0500
-Message-ID: <20160711151332.GA28672@rob-hp-laptop>
-References: <1467860066-15142-1-git-send-email-william.wu@rock-chips.com>
- <1467860324-15341-1-git-send-email-william.wu@rock-chips.com>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [PATCH v3 12/14] regulator: pwm: Retrieve correct voltage
+Date: Mon, 11 Jul 2016 09:53:12 -0700
+Message-ID: <CAD=FV=WoUi4kNHW1h6XCezJyYUXbWLXj3yPYg+W-qhMAjpPn4A@mail.gmail.com>
+References: <1465895602-31008-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465895602-31008-13-git-send-email-boris.brezillon@free-electrons.com>
+ <20160708154302.GC1151@ulmo.ba.sec> <20160709094718.GB6247@sirena.org.uk> <20160711070251.GA5823@ulmo.ba.sec>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1467860324-15341-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160711070251.GA5823@ulmo.ba.sec>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>, Boris Brezillon <boris.brezillon@free-electrons.com>, linux-pwm <linux-pwm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Milo Kim <milo.kim@ti.com>, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Brian Norris <briannorris@chromium.org>, Ajit Pal Singh <ajitpal.singh@st.com>, Srinivas Kandagatla <srinivas.kandagatla@>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 07, 2016 at 10:58:44AM +0800, William Wu wrote:
-> This patch adds the devicetree documentation required for Rockchip
-> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
-> 
-> It supports DRD mode, and could operate in device mode (SS, HS, FS)
-> and host mode (SS, HS, FS, LS).
-> 
-> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> Changes in v6:
-> - rename bus_clk, and add usbdrd3_1 node as an example (Heiko)
-> 
-> Changes in v5:
-> - rename clock-names, and remove unnecessary clocks (Heiko)
-> 
-> Changes in v4:
-> - modify commit log, and add phy documentation location (Sergei)
-> 
-> Changes in v3:
-> - add dwc3 address (balbi)
-> 
-> Changes in v2:
-> - add rockchip,dwc3.txt to Documentation/devicetree/bindings/ (balbi, Brian)
-> 
->  .../devicetree/bindings/usb/rockchip,dwc3.txt      | 59 ++++++++++++++++++++++
->  1 file changed, 59 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+Hi,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Mon, Jul 11, 2016 at 12:02 AM, Thierry Reding
+<thierry.reding@gmail.com> wrote:
+> On Sat, Jul 09, 2016 at 11:47:18AM +0200, Mark Brown wrote:
+>> On Fri, Jul 08, 2016 at 05:43:02PM +0200, Thierry Reding wrote:
+>>
+>> > Mark, do you want me to provide a stable branch with the PWM regulator
+>> > patches and resolve that conflict in your tree? Or would you rather take
+>> > the whole set based on a stable branch from the PWM tree? Or maybe yet
+>> > another possibility would be to base the PWM tree on a stable branch
+>> > from the regulator tree containing the above commit.
+>>
+>> Probably easiest to use this signed tag and resolve it in your tree:
+>>
+>> The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
+>>
+>>   Linux 4.7-rc1 (2016-05-29 09:29:24 -0700)
+>>
+>> are available in the git repository at:
+>>
+>>   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git tags/pwm-modernization
+>>
+>> for you to fetch changes up to c2588393e6315ab68207323d37d2a73713d6bc81:
+>>
+>>   regulator: pwm: Fix regulator ramp delay for continuous mode (2016-07-07 11:45:06 +0200)
+>>
+>> ----------------------------------------------------------------
+>> regulator: Provide a branch for moderninzation of the PWM code
+>>
+>> There's a new, improved PWM API which allows a lot of improvements in
+>> the PWM regulator driver.  Since the bulk of the changes are in the PWM
+>> API this is being managed in the PWM tree, merge pending regulator API
+>> changes to allow this to be resolved more easily.
+>>
+>> ----------------------------------------------------------------
+>> Alexandre Courbot (1):
+>>       regulator: pwm: Support for enable GPIO
+>>
+>> Boris Brezillon (1):
+>>       regulator: pwm: Drop unneeded pwm_enable() call
+>>
+>> Douglas Anderson (1):
+>>       regulator: pwm: Fix regulator ramp delay for continuous mode
+>>
+>>  .../bindings/regulator/pwm-regulator.txt           |  7 +++-
+>>  drivers/regulator/pwm-regulator.c                  | 40 ++++++++++++++++++----
+>>  2 files changed, 39 insertions(+), 8 deletions(-)
+>
+> Merged into for-4.8/regulator of the PWM tree and rebased Boris'
+> pwm-regulator patches on top.
+>
+> Boris, everything looks right to me, but can you take a quick look to
+> see if it all matches up with what you expect?
+
+As I mentioned in the other thread about the linuxnext conflict,
+pwm_regulator_set_voltage() is wrong.
+
+You have:
+
+  ramp_delay = DIV_ROUND_UP(abs(min_uV - old_uV), ramp_delay);
+
+You should have:
+
+  ramp_delay = DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
+
+-Doug
