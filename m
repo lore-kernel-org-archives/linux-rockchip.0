@@ -1,84 +1,84 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: support the usb2phy for rk3399 evb
-Date: Mon, 11 Jul 2016 15:43:03 +0800
-Message-ID: <cd9056c1-6fff-d02c-3fc0-3d48d9850504@rock-chips.com>
-References: <1467866800-24794-1-git-send-email-wxt@rock-chips.com>
- <2150255.RfISFviJKP@phil>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH 5/7] drm/rockchip: dw-mipi: support HPD poll
+Date: Mon, 11 Jul 2016 10:20:53 +0100
+Message-ID: <20160711102053.12b32be1.john@metanate.com>
+References: <1467968701-15620-1-git-send-email-zyw@rock-chips.com>
+ <1467968701-15620-6-git-send-email-zyw@rock-chips.com>
+ <20160708145211.6bf83d8f.john@metanate.com>
+ <5782EC7D.3080202@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2150255.RfISFviJKP@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, dianders@chromium.org, william.wu@rock-chips.com, huangtao@rock-chips.com, eddie.cai@rock-chips.comwilliam.wu@rock-chips.com, frank.wang@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5782EC7D.3080202@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 2016/7/7 18:11, Heiko Stuebner wrote:
-> Hi,
->
-> Am Donnerstag, 7. Juli 2016, 12:46:40 schrieb Caesar Wang:
->> From: Frank Wang <frank.wang@rock-chips.com>
->>
->> This patch adds the usb2phy needed dts node information for rk3399.
->>
->> USB2.0 PHY is comprised of one Host port and one OTG port.
->> Host Port is for USB2.0 host controller; OTG port is for USB2.0 part of
->> USB3.0 OTG controller, and as a part to construct a fully feature TypeC
->> subsystem.
->>
->> The USB2.0 vbus gpio is board specific, it's no same with all rk3399
->> boards, so move it into evb voard.
->>
->> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> ---
->>
->>   arch/arm64/boot/dts/rockchip/rk3399-evb.dts |  4 ++++
->>   arch/arm64/boot/dts/rockchip/rk3399.dtsi    | 19 +++++++++++++++++++
->>   2 files changed, 23 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 4c84229..21d147f 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> @@ -242,6 +242,25 @@
->>   		status = "disabled";
->>   	};
->>
->> +	usb2phy: usb2phy {
->> +		compatible = "rockchip,rk3399-usb-phy";
->> +		rockchip,grf = <&grf>;
->> +		#address-cells = <1>;
->> +		#size-cells = <0>;
->> +
->> +		usb2phy0: usb2-phy0 {
->> +			#phy-cells = <0>;
->> +			#clock-cells = <0>;
->> +			reg = <0xe458>;
->> +		};
->> +
->> +		usb2phy1: usb2-phy1 {
->> +			#phy-cells = <0>;
->> +			#clock-cells = <0>;
->> +			reg = <0xe468>;
->> +		};
->> +	};
->> +
-> The rk3399 uses the innosilicon usb2 phy and the binding we've come up for
-> it looks a lot different than the above. So I'm not sure where this is
-> coming from, especially as I haven't seen the driver part for the rk3399 at
-> all yet. So far Frank was always working on te rk3366 variant, which seemed
-> to be the most complete.
-
-Yeah, rk3399 is ready for using the new driver and the binding which I 
-have handed out earlier, but it seems that they have not applied yet, so 
-shall we send out the new patches for rk3399 until they will be applied?
-
-BR.
-Frank
-
-> Heiko
->
+T24gTW9uLCAxMSBKdWwgMjAxNiAwODo0Njo1MyArMDgwMCwgTWFyayB5YW8gd3JvdGU6Cgo+IE9u
+IDIwMTblubQwN+aciDA45pelIDIxOjUyLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gPiBPbiBGcmks
+ICA4IEp1bCAyMDE2IDE3OjA0OjU5ICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPiA+ICAKPiA+
+PiBBdCB0aGUgZmlyc3QgdGltZSBvZiBiaW5kLCB0aGVyZSBpcyBubyBhbnkgcGFuZWwgYXR0YWNo
+IGluIG1pcGkuIEFkZCBhCj4gPj4gRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRCBwb3JwZXJ0eSB0byBk
+ZXRlY3QgdGhlIHBhbmVsIHN0YXR1cywgd2hlbiBwYW5lbAo+ID4+IHByb2JlLCB0aGUgZHdfbWlw
+aV9kc2lfaG9zdF9hdHRhY2ggd291bGQgYmUgY2FsbGVkLCB0aGVuIG1pcGktZHNpIHdpbGwKPiA+
+PiB0cmlnZ2VyIGEgZXZlbnQgdG8gbm90aWZ5IHRoZSBkcm0gZnJhbWV3b3JrLgo+ID4+Cj4gPj4g
+U2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4gIAo+ID4gQ2Fu
+IHdlIGRvIHNvbWV0aGluZyBsaWtlIHRoaXMgaW5zdGVhZD8gIFdlIGtub3cgdGhhdCB0aGUgcGFu
+ZWwgbXVzdAo+ID4gYWx3YXlzIGJlIGF0dGFjaGVkIGFuZCB0aGlzIGhhcyB0aGUgYWR2YW50YWdl
+IHRoYXQgdGhlIGRpc3BsYXkgc2l6ZSB3aWxsCj4gPiBiZSBrbm93biB3aGVuIHRoZSBmcmFtZWJ1
+ZmZlciBjb25zb2xlIGxvYWRzLgo+ID4gIAo+ID4gLS0gPjggLS0gIAo+ID4gU3ViamVjdDogW1BB
+VENIXSBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBkZWZlciBwcm9iZSBpZiBwYW5lbCBpcyBu
+b3QgbG9hZGVkCj4gPgo+ID4gVGhpcyBlbnN1cmVzIHRoYXQgdGhlIG91dHB1dCByZXNvbHV0aW9u
+IGlzIGtub3duIGJlZm9yZSBmYmNvbiBsb2Fkcy4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKb2hu
+IEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gLS0tCj4gPiAgIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMTEgKysrKysrKysrLS0KPiA+ICAgMSBmaWxlIGNo
+YW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gaW5kZXggNmVmNWYzYmU4NDY4Li5jMDQ5OTI2
+NmQxMTYgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+
+IEBAIC0xMTU0LDEwICsxMTU0LDE3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiA+ICAgCj4gPiAgIAlkc2kt
+PmRzaV9ob3N0Lm9wcyA9ICZkd19taXBpX2RzaV9ob3N0X29wczsKPiA+ICAgCWRzaS0+ZHNpX2hv
+c3QuZGV2ID0gZGV2Owo+ID4gLQlyZXR1cm4gbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5k
+c2lfaG9zdCk7Cj4gPiArCXJldCA9IG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hv
+c3QpOwo+ID4gKwlpZiAoIXJldCAmJiAhZHNpLT5wYW5lbCkgewo+ID4gKwkJbWlwaV9kc2lfaG9z
+dF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPiA+ICsJCWRybV9lbmNvZGVyX2NsZWFudXAo
+JmRzaS0+ZW5jb2Rlcik7Cj4gPiArCQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVj
+dG9yKTsKPiA+ICsJCXJldCA9IC1FUFJPQkVfREVGRVI7ICAKPiAKPiBEbyB5b3UgdmVyaWZ5IHRo
+aXMgcGF0Y2g/IEkgZG8gdGhlIHNpbWlsYXIgY2hhbmdlIGJlZm9yZSwgYnV0IGZvdW5kIAo+IHBh
+bmVsIGNhbid0IHByb2JlLgo+IAo+IG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIgd2lsbCBjYWxsIGRl
+dmljZV9hZGQsIEkgdGhpbmsgdGhlIHBhbmVsIHByb2JlIAo+IG5lZWQgdGhpcy4KPiAKPiBTZWVt
+cyB0aGF0IG1pcGkgcGFuZWwgcHJvYmUgcmVxdWVzdCBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyLCAK
+PiBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyIHJlcXVlc3QgcGFuZWwgb24geW91ciBwYXRjaCwgZW5k
+bGVzcyBsb29wLgoKWWVzLCBJJ3ZlIGJlZW4gcnVubmluZyB0aGlzIHBhdGNoIGZvciBtb250aHMu
+ICBJdCdzIHBvc3NpYmxlIHRoYXQgSSBoYXZlCmFub3RoZXIgcGF0Y2ggdGhhdCBpcyBuZWVkZWQg
+dG8gZ2V0IHRoaXMgdG8gd29yayBjb3JyZWN0bHkgKEkgaGF2ZSBhCndob2xlIHNldCBvZiBSb2Nr
+Y2hpcCBNSVBJIHBhdGNoZXMgdGhhdCBJIG5lZWQgdG8gZmluZCB0aW1lIHRvIHN1Ym1pdCwKZm9y
+IG5vdyBJJ3ZlIHB1c2hlZCBhIGJyYW5jaCB0byBHaXRodWIgWzFdKS4KCkkgZG9uJ3Qga25vdyB3
+aGF0IHlvdSBtZWFuIGFib3V0IHRoZSBwYW5lbCBwcm9iZSByZXF1ZXN0aW5nCm1pcGlfZHNpX2hv
+c3RfcmVnaXN0ZXIsIHRoZSBwYW5lbCBwcm9iZSBjYWxscyBtaXBpX2RzaV9hdHRhY2goKSBhbmQg
+aXMKaXRzZWxmIGNhbGxlZCBmcm9tIG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoKS4gIE15IHBhdGNo
+IGRvZXNuJ3QgY2hhbmdlCnRoaXMgYXQgYWxsLCB0aGUgb25seSBjaGFuZ2UgaXMgdGhhdCBpZiB0
+aGUgcGFuZWwgZHJpdmVyIGlzIG5vdAphdmFpbGFibGUsIHRoZW4gdGhlIHByb2JlIGZhaWxzLiAg
+TGF0ZXIsIG9uY2UgdGhlIHBhbmVsIGRyaXZlciBoYXMgYmVlbgpyZWdpc3RlcmVkIHRoZSBwcm9i
+ZSB3aWxsIHN1Y2NlZWQuICBUaGlzIGlzIG5vIGRpZmZlcmVudCBmcm9tIHRoZQpjdXJyZW50IGJl
+aGF2aW91ciBpZiB0aGUgb3JkZXIgb2YgcHJvYmluZyBkcml2ZXJzIGhhcHBlbnMgdG8gbG9hZCB0
+aGUKcGFuZWwgYmVmb3JlIGR3LW1pcGktZHNpLgoKWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9qb2hu
+a2VlcGluZy9saW51eC9jb21taXRzL3RvcGljL3JvY2tjaGlwLW1pcGkKCj4gPiArCX0KPiA+ICAg
+Cj4gPiAgIGVycl9wbGxyZWY6Cj4gPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJl
+Zl9jbGspOwo+ID4gKwlpZiAocmV0KQo+ID4gKwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+
+cGxscmVmX2Nsayk7Cj4gPiAgIAlyZXR1cm4gcmV0Owo+ID4gICB9Cj4gPiAgIAo+ID4KPiA+Cj4g
+PiAgCj4gCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
