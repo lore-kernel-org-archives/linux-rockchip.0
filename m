@@ -1,84 +1,42 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH 5/7] drm/rockchip: dw-mipi: support HPD poll
-Date: Mon, 11 Jul 2016 10:20:53 +0100
-Message-ID: <20160711102053.12b32be1.john@metanate.com>
-References: <1467968701-15620-1-git-send-email-zyw@rock-chips.com>
- <1467968701-15620-6-git-send-email-zyw@rock-chips.com>
- <20160708145211.6bf83d8f.john@metanate.com>
- <5782EC7D.3080202@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v1 0/6] Add RK3399 HDMI Support
+Date: Mon, 11 Jul 2016 19:04:39 +0800
+Message-ID: <1468235079-29152-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5782EC7D.3080202@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Kumar Gala <galak@codeaurora.org>, Zheng Yang <zhengyang@rock-chips.com>, xhc@rock-chips.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAxMSBKdWwgMjAxNiAwODo0Njo1MyArMDgwMCwgTWFyayB5YW8gd3JvdGU6Cgo+IE9u
-IDIwMTblubQwN+aciDA45pelIDIxOjUyLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gPiBPbiBGcmks
-ICA4IEp1bCAyMDE2IDE3OjA0OjU5ICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPiA+ICAKPiA+
-PiBBdCB0aGUgZmlyc3QgdGltZSBvZiBiaW5kLCB0aGVyZSBpcyBubyBhbnkgcGFuZWwgYXR0YWNo
-IGluIG1pcGkuIEFkZCBhCj4gPj4gRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRCBwb3JwZXJ0eSB0byBk
-ZXRlY3QgdGhlIHBhbmVsIHN0YXR1cywgd2hlbiBwYW5lbAo+ID4+IHByb2JlLCB0aGUgZHdfbWlw
-aV9kc2lfaG9zdF9hdHRhY2ggd291bGQgYmUgY2FsbGVkLCB0aGVuIG1pcGktZHNpIHdpbGwKPiA+
-PiB0cmlnZ2VyIGEgZXZlbnQgdG8gbm90aWZ5IHRoZSBkcm0gZnJhbWV3b3JrLgo+ID4+Cj4gPj4g
-U2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4gIAo+ID4gQ2Fu
-IHdlIGRvIHNvbWV0aGluZyBsaWtlIHRoaXMgaW5zdGVhZD8gIFdlIGtub3cgdGhhdCB0aGUgcGFu
-ZWwgbXVzdAo+ID4gYWx3YXlzIGJlIGF0dGFjaGVkIGFuZCB0aGlzIGhhcyB0aGUgYWR2YW50YWdl
-IHRoYXQgdGhlIGRpc3BsYXkgc2l6ZSB3aWxsCj4gPiBiZSBrbm93biB3aGVuIHRoZSBmcmFtZWJ1
-ZmZlciBjb25zb2xlIGxvYWRzLgo+ID4gIAo+ID4gLS0gPjggLS0gIAo+ID4gU3ViamVjdDogW1BB
-VENIXSBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBkZWZlciBwcm9iZSBpZiBwYW5lbCBpcyBu
-b3QgbG9hZGVkCj4gPgo+ID4gVGhpcyBlbnN1cmVzIHRoYXQgdGhlIG91dHB1dCByZXNvbHV0aW9u
-IGlzIGtub3duIGJlZm9yZSBmYmNvbiBsb2Fkcy4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKb2hu
-IEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gLS0tCj4gPiAgIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMTEgKysrKysrKysrLS0KPiA+ICAgMSBmaWxlIGNo
-YW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gaW5kZXggNmVmNWYzYmU4NDY4Li5jMDQ5OTI2
-NmQxMTYgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
-c2kuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+
-IEBAIC0xMTU0LDEwICsxMTU0LDE3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiA+ICAgCj4gPiAgIAlkc2kt
-PmRzaV9ob3N0Lm9wcyA9ICZkd19taXBpX2RzaV9ob3N0X29wczsKPiA+ICAgCWRzaS0+ZHNpX2hv
-c3QuZGV2ID0gZGV2Owo+ID4gLQlyZXR1cm4gbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5k
-c2lfaG9zdCk7Cj4gPiArCXJldCA9IG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hv
-c3QpOwo+ID4gKwlpZiAoIXJldCAmJiAhZHNpLT5wYW5lbCkgewo+ID4gKwkJbWlwaV9kc2lfaG9z
-dF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPiA+ICsJCWRybV9lbmNvZGVyX2NsZWFudXAo
-JmRzaS0+ZW5jb2Rlcik7Cj4gPiArCQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVj
-dG9yKTsKPiA+ICsJCXJldCA9IC1FUFJPQkVfREVGRVI7ICAKPiAKPiBEbyB5b3UgdmVyaWZ5IHRo
-aXMgcGF0Y2g/IEkgZG8gdGhlIHNpbWlsYXIgY2hhbmdlIGJlZm9yZSwgYnV0IGZvdW5kIAo+IHBh
-bmVsIGNhbid0IHByb2JlLgo+IAo+IG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIgd2lsbCBjYWxsIGRl
-dmljZV9hZGQsIEkgdGhpbmsgdGhlIHBhbmVsIHByb2JlIAo+IG5lZWQgdGhpcy4KPiAKPiBTZWVt
-cyB0aGF0IG1pcGkgcGFuZWwgcHJvYmUgcmVxdWVzdCBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyLCAK
-PiBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyIHJlcXVlc3QgcGFuZWwgb24geW91ciBwYXRjaCwgZW5k
-bGVzcyBsb29wLgoKWWVzLCBJJ3ZlIGJlZW4gcnVubmluZyB0aGlzIHBhdGNoIGZvciBtb250aHMu
-ICBJdCdzIHBvc3NpYmxlIHRoYXQgSSBoYXZlCmFub3RoZXIgcGF0Y2ggdGhhdCBpcyBuZWVkZWQg
-dG8gZ2V0IHRoaXMgdG8gd29yayBjb3JyZWN0bHkgKEkgaGF2ZSBhCndob2xlIHNldCBvZiBSb2Nr
-Y2hpcCBNSVBJIHBhdGNoZXMgdGhhdCBJIG5lZWQgdG8gZmluZCB0aW1lIHRvIHN1Ym1pdCwKZm9y
-IG5vdyBJJ3ZlIHB1c2hlZCBhIGJyYW5jaCB0byBHaXRodWIgWzFdKS4KCkkgZG9uJ3Qga25vdyB3
-aGF0IHlvdSBtZWFuIGFib3V0IHRoZSBwYW5lbCBwcm9iZSByZXF1ZXN0aW5nCm1pcGlfZHNpX2hv
-c3RfcmVnaXN0ZXIsIHRoZSBwYW5lbCBwcm9iZSBjYWxscyBtaXBpX2RzaV9hdHRhY2goKSBhbmQg
-aXMKaXRzZWxmIGNhbGxlZCBmcm9tIG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoKS4gIE15IHBhdGNo
-IGRvZXNuJ3QgY2hhbmdlCnRoaXMgYXQgYWxsLCB0aGUgb25seSBjaGFuZ2UgaXMgdGhhdCBpZiB0
-aGUgcGFuZWwgZHJpdmVyIGlzIG5vdAphdmFpbGFibGUsIHRoZW4gdGhlIHByb2JlIGZhaWxzLiAg
-TGF0ZXIsIG9uY2UgdGhlIHBhbmVsIGRyaXZlciBoYXMgYmVlbgpyZWdpc3RlcmVkIHRoZSBwcm9i
-ZSB3aWxsIHN1Y2NlZWQuICBUaGlzIGlzIG5vIGRpZmZlcmVudCBmcm9tIHRoZQpjdXJyZW50IGJl
-aGF2aW91ciBpZiB0aGUgb3JkZXIgb2YgcHJvYmluZyBkcml2ZXJzIGhhcHBlbnMgdG8gbG9hZCB0
-aGUKcGFuZWwgYmVmb3JlIGR3LW1pcGktZHNpLgoKWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9qb2hu
-a2VlcGluZy9saW51eC9jb21taXRzL3RvcGljL3JvY2tjaGlwLW1pcGkKCj4gPiArCX0KPiA+ICAg
-Cj4gPiAgIGVycl9wbGxyZWY6Cj4gPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJl
-Zl9jbGspOwo+ID4gKwlpZiAocmV0KQo+ID4gKwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+
-cGxscmVmX2Nsayk7Cj4gPiAgIAlyZXR1cm4gcmV0Owo+ID4gICB9Cj4gPiAgIAo+ID4KPiA+Cj4g
-PiAgCj4gCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Mark,
+
+RK3399 and RK3288 shared the same HDMI IP controller, only some
+light difference with GRF configure, and an external VPLL clock
+need to configure.
+
+Thanks,
+- Yakir
+
+
+Douglas Anderson (2):
+  drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
+  drm/rockchip: dw_hdmi: Use auto-generated tables
+
+Yakir Yang (4):
+  drm/rockchip: dw_hdmi: adjust cklvl & txlvl for RF/EMI
+  drm/rockchip: dw_hdmi: add RK3399 HDMI support
+  drm/rockchip: dw_hdmi: introduce the VPLL clock setting
+  drm/rockchip: dw_hdmi: introduce the pclk for grf
+
+ .../devicetree/bindings/display/bridge/dw_hdmi.txt |   1 +
+ .../bindings/display/rockchip/dw_hdmi-rockchip.txt |   7 +-
+ drivers/gpu/drm/bridge/dw-hdmi.c                   |   2 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 238 +++++++++++++--------
+ include/drm/bridge/dw_hdmi.h                       |   6 +
+ 5 files changed, 167 insertions(+), 87 deletions(-)
+
+-- 
+1.9.1
