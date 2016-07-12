@@ -1,79 +1,70 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3 2/4] drm/rockchip: add an common abstracted PSR driver
-Date: Tue, 12 Jul 2016 18:10:26 +0200
-Message-ID: <20160712161026.GV23520@phenom.ffwll.local>
-References: <1467364685-21390-1-git-send-email-ykk@rock-chips.com>
- <1467364754-21674-1-git-send-email-ykk@rock-chips.com>
- <CAOw6vbKMWEEDEqw0_ba_FGO-2mOBg3uanQzk5nbnCtowWdLu9w@mail.gmail.com>
- <20160712123826.GU23520@phenom.ffwll.local>
- <CAAFQd5CrT_bM+VLpzqZqu7p=32YYkTrNZw75FkPwx-LteUCBGw@mail.gmail.com>
+From: Kyle McMartin <kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Subject: Re: [PATCH] Add dptx firmware for rockchip rk3399
+Date: Tue, 12 Jul 2016 15:48:23 -0400
+Message-ID: <20160712194823.GJ8680@merlin.infradead.org>
+References: <1468335519-28245-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <CAAFQd5CrT_bM+VLpzqZqu7p=32YYkTrNZw75FkPwx-LteUCBGw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>
+In-Reply-To: <1468335519-28245-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBKdWwgMTMsIDIwMTYgYXQgMTI6MTA6MTNBTSArMDkwMCwgVG9tYXN6IEZpZ2Egd3Jv
-dGU6Cj4gT24gVHVlLCBKdWwgMTIsIDIwMTYgYXQgOTozOCBQTSwgRGFuaWVsIFZldHRlciA8ZGFu
-aWVsQGZmd2xsLmNoPiB3cm90ZToKPiA+IE9uIEZyaSwgSnVsIDAxLCAyMDE2IGF0IDAyOjAwOjAw
-UE0gLTA0MDAsIFNlYW4gUGF1bCB3cm90ZToKPiA+PiBPbiBGcmksIEp1bCAxLCAyMDE2IGF0IDU6
-MTkgQU0sIFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPj4gPiBUaGUg
-UFNSIGRyaXZlciBoYXZlIGV4cG9ydGVkIGZvdXIgc3ltYm9scyBmb3Igc3BlY2lmaWMgZGV2aWNl
-IGRyaXZlcjoKPiA+PiA+IC0gcm9ja2NoaXBfZHJtX3Bzcl9yZWdpc3RlcigpCj4gPj4gPiAtIHJv
-Y2tjaGlwX2RybV9wc3JfdW5yZWdpc3RlcigpCj4gPj4gPiAtIHJvY2tjaGlwX2RybV9wc3JfZW5h
-YmxlKCkKPiA+PiA+IC0gcm9ja2NoaXBfZHJtX3Bzcl9kaXNhYmxlKCkKPiA+PiA+IC0gcm9ja2No
-aXBfZHJtX3Bzcl9mbHVzaCgpCj4gPj4gPgo+ID4+ID4gRW5jb2RlciBkcml2ZXIgc2hvdWxkIGNh
-bGwgdGhlIHJlZ2lzdGVyL3VucmVnaXN0ZXIgaW50ZXJmYWNlcyB0byBob29rCj4gPj4gPiBpdHNl
-bGYgaW50byBjb21tb24gUFNSIGRyaXZlciwgZW5jb2RlciBoYXZlIGltcGxlbWVudCB0aGUgJ3Bz
-cl9zZXQnCj4gPj4gPiBjYWxsYmFjayB3aGljaCB1c2UgdGhlIHNldCBQU1Igc3RhdGUgaW4gaGFy
-ZHdhcmUgc2lkZS4KPiA+PiA+Cj4gPj4gPiBDcnRjIGRyaXZlciB3b3VsZCBjYWxsIHRoZSBlbmFi
-bGUvZGlzYWJsZSBpbnRlcmZhY2VzIHdoZW4gdmJsYW5rIGlzCj4gPj4gPiBlbmFibGUvZGlzYWJs
-ZSwgYWZ0ZXIgdGhhdCB0aGUgY29tbW9uIFBTUiBkcml2ZXIgd291bGQgY2FsbCB0aGUgZW5jb2Rl
-cgo+ID4+ID4gcmVnaXN0ZXJlZCBjYWxsYmFjayB0byBzZXQgdGhlIFBTUiBzdGF0ZS4KPiA+PiA+
-Cj4gPj4KPiA+PiBUaGlzIGZlZWxzIG92ZXJseSBjb21wbGljYXRlZC4gSXQgc2VlbXMgbGlrZSB5
-b3UgY291bGQgY3V0IG91dCBhIGJ1bmNoCj4gPj4gb2YgY29kZSBieSBqdXN0IGNvZGluZyB0aGUg
-cHNyIGZ1bmN0aW9ucyBpbnRvIHZvcCBhbmQKPiA+PiBhbmFsb2dpeF9kcC1yb2NrY2hpcC4gSSBz
-dXBwb3NlIHRoZSBvbmx5IHJlYXNvbiB0byBrZWVwIGl0IGFic3RyYWN0ZWQKPiA+PiB3b3VsZCBi
-ZSBpZiB5b3UgcGxhbiBvbiBzdXBwb3J0aW5nIHBzciBpbiBhIGRpZmZlcmVudCBlbmNvZGVyIG9y
-IGNydGMKPiA+PiBpbiByb2NrY2hpcCwgb3IgaWYgeW91J3JlIHBsYW5uaW5nIG9uIG1vdmluZyB0
-aGlzIGludG8gZHJtIGNvcmUuCj4gPgo+ID4gQWdyZWVkIG9uIHRoZSBsYXllcnMgb2YgaW5kaXJl
-Y3Rpb24uIEFsc28sIHlvdSBlbmQgdXAgd2l0aCAzIGRlbGF5ZWQKPiA+IHRpbWVycyBpbiB0b3Rh
-bDoKPiA+IC0gZGVmaW8gdGltZXIgZnJvbSBmYmRldiBlbXVsYXRpb24KPiA+IC0gdGltZXIgaW4g
-dGhpcyBhYnN0cmFjdGlvbgo+ID4gLSBkZWxheWVkIHdvcmsgaW4gdGhlIHBzciBiYWNrZW5kIGRy
-aXZlcgo+IAo+IE1heWJlIEknbSBtaXNzaW5nIHNvbWV0aGluZyBvYnZpb3VzIChkb24ndCBrbm93
-IGhvdyB0aGUgUFNSIGlzCj4gaW1wbGVtZW50ZWQgaW4gaGFyZHdhcmUgb3IgaW4gb3RoZXIgZHJp
-dmVycyksIGJ1dCB3aHkgZG8gd2UgbmVlZCBhbGwKPiB0aGVzZSB0aW1lcnM/IENvdWxkbid0IHdl
-IGp1c3QgdHJpZ2dlciBhIGZha2UgcGFnZSBmbGlwIG9uIGZiIGRpcnR5Cj4gY2FsbD8KClBhZ2Ug
-ZmxpcHMgYXJlIHJhdGVsaW1pdGVkIHRvIHZyZWZyZXNoLCBhbmQgbm90IGFsbCBkcml2ZXJzIHN1
-cHBvcnQgaXQuClRoZSBvdGhlciBpc3N1ZSBpcyB0aGF0IGRpcnR5IGlvY3RsIHN1cHBvcnRzIGRp
-cnR5IHJlY3RhbmdsZXMsIGJ1dCBwYWdlCmZsaXAgaXMgc3RpbGwgYSBmdWxsLXNjcmVlbiB1cGxv
-YWQuIFdlIGRpc2N1c3NlZCBhZGRpbmcgYSBkaXJ0eSByZWN0YW5nbGUKdG8gdGhlIGttcyBwcm9w
-ZXJ0aWVzIHRvIGZpeCB0aGlzIGdhcCwgYnV0IHVudGlsIHRoYXQncyBkb25lIEkgZG9uJ3QgdGhp
-bmsKaXQgbWFrZXMgbXVjaCBzZW5zZSB0byByZW1hcCBkaXJ0eSB0byBhbiAoYXRvbWljKSBwYWdl
-IGZsaXAuIE9uZSBzbWFsbAp0ZWNobmljYWxpdHkgaXMgdGhhdCBkaXJ0eSB3b3JrcyBvbiBmcmFt
-ZWJ1ZmZlcnMsIGJ1dCBwYWdlIGZsaXBzCihlc3BlY2lhbGx5IGF0b21pYyBvbmVzKSB3b3JrIG9u
-IGNydGNzLiBUaGF0IG1ha2VzIHRoZSByZW1hcHBpbmcgYSBub3RjaAptb3JlIHRyaWNreS4KCkJ1
-dCBpbiBwcmluY2lwbGUsIGZ1bGx5IGFncmVlZC4gQW5kIG9uY2Ugd2UgaGF2ZSBhdG9taWMgZGly
-dHkgcmVjdGFuZ2xlcwp3ZSBjb3VsZCB0eXBlIHVwIGEgc21hbGwgaGVscGVyIHRoYXQgZHJpdmVy
-cyBjYW4gcGx1ZyBpbnRvIHRoZSBkaXJ0eQppb2N0bC4gU2luY2UgbmV3IHByb3BlcnRpZXMgcmVx
-dWlyZXMgbmV3IHVzZXJzcGFjZSB3ZSBjb3VsZCBqdXN0IHRyYWNrIHRoZQpkaXJ0eSByZWN0YW5n
-bGUgaW50ZXJuYWxseSB0byBnZXQgdGhpcyBoZWxwZXIgbGFuZGVkLCBpZiB0aGVyZSdzCmludGVy
-ZXN0ZWQgZm9yIHRoYXQuIEknbGwgY2VydGFpbmx5IGJlIGhhcHB5IHRvIHJldmlldyBwYXRjaGVz
-LgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jw
-b3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Jul 12, 2016 at 10:58:38PM +0800, Chris Zhong wrote:
+> This dptx firmware is required by rk3399 Type-C DisplayPort controller.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+
+Applied, thanks Chris.
+
+regards, --Kyle
+
+> ---
+> 
+>  WHENCE            |  18 ++++++++++++++++++
+>  rockchip/dptx.bin | Bin 0 -> 98320 bytes
+>  2 files changed, 18 insertions(+)
+>  create mode 100644 rockchip/dptx.bin
+> 
+> diff --git a/WHENCE b/WHENCE
+> index d8b1eaa..f463e26 100644
+> --- a/WHENCE
+> +++ b/WHENCE
+> @@ -3294,3 +3294,21 @@ General Public License.
+>  These firmware files are distributed in the hope that they will be useful, but
+>  are provided WITHOUT ANY WARRANTY, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTY
+>  OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+> +
+> +--------------------------------------------------------------------------
+> +
+> +Driver: rk3399-dptx - ROCKCHIP rk3399 dptx firmware
+> +
+> +File: rockchip/dptx.bin
+> +
+> +Licence: Redistributable.
+> +
+> +Rockchip Inc. grants permission to use and redistribute aforementioned firmware
+> +files for the use with devices containing Rockchip chipsets, but not as part of
+> +the Linux kernel or in any other form which would require these files themselves
+> +to be covered by the terms of the GNU General Public License or the GNU Lesser
+> +General Public License.
+> +
+> +These firmware files are distributed in the hope that they will be useful, but
+> +are provided WITHOUT ANY WARRANTY, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTY
+> +OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+> diff --git a/rockchip/dptx.bin b/rockchip/dptx.bin
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..042ec48d748a4a1e9b8174fa0d3fcc64bf2c562f
