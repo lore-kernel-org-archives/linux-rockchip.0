@@ -1,64 +1,35 @@
-From: "William.wu" <William.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v6 5/5] usb: dwc3: rockchip: add devicetree bindings
- documentation
-Date: Wed, 13 Jul 2016 12:05:45 +0800
-Message-ID: <c2c2ee38-d420-6ddb-fa31-59cc00e58fcc@rock-chips.com>
-References: <1467860066-15142-1-git-send-email-william.wu@rock-chips.com>
- <1467860324-15341-1-git-send-email-william.wu@rock-chips.com>
- <20160711151332.GA28672@rob-hp-laptop>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v1 4/6] drm/rockchip: dw_hdmi: add RK3399 HDMI support
+Date: Wed, 13 Jul 2016 15:30:17 +0800
+Message-ID: <5785EE09.3070406@rock-chips.com>
+References: <1468235079-29152-1-git-send-email-ykk@rock-chips.com>
+ <1468235146-29575-1-git-send-email-ykk@rock-chips.com>
+ <1468237912.3048.26.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160711151332.GA28672@rob-hp-laptop>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1468237912.3048.26.camel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: devicetree@vger.kernel.org, xhc@rock-chips.com, Daniel Vetter <daniel.vetter@ffwll.ch>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Zheng Yang <zhengyang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Rob,
-
-
-On 2016/7/11 23:13, Rob Herring wrote:
-> On Thu, Jul 07, 2016 at 10:58:44AM +0800, William Wu wrote:
->> This patch adds the devicetree documentation required for Rockchip
->> USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
->>
->> It supports DRD mode, and could operate in device mode (SS, HS, FS)
->> and host mode (SS, HS, FS, LS).
->>
->> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->> Changes in v6:
->> - rename bus_clk, and add usbdrd3_1 node as an example (Heiko)
->>
->> Changes in v5:
->> - rename clock-names, and remove unnecessary clocks (Heiko)
->>
->> Changes in v4:
->> - modify commit log, and add phy documentation location (Sergei)
->>
->> Changes in v3:
->> - add dwc3 address (balbi)
->>
->> Changes in v2:
->> - add rockchip,dwc3.txt to Documentation/devicetree/bindings/ (balbi, Brian)
->>
->>   .../devicetree/bindings/usb/rockchip,dwc3.txt      | 59 ++++++++++++++++++++++
->>   1 file changed, 59 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-Thanks a lot. I'll add Acked-by next patch.
-
->
->
->
+UGhpbGlwcCwKCk9uIDA3LzExLzIwMTYgMDc6NTEgUE0sIFBoaWxpcHAgWmFiZWwgd3JvdGU6Cj4g
+QW0gTW9udGFnLCBkZW4gMTEuMDcuMjAxNiwgMTk6MDUgKzA4MDAgc2NocmllYiBZYWtpciBZYW5n
+Ogo+PiBSSzMzOTkgYW5kIFJLMzI4OCBzaGFyZWQgdGhlIHNhbWUgSERNSSBJUCBjb250cm9sbGVy
+LCBvbmx5IHNvbWUgbGlnaHQKPj4gZGlmZmVyZW5jZSB3aXRoIEdSRiBjb25maWd1cmUuCj4+Cj4+
+IFNpZ25lZC1vZmYtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPiBSZXZpZXdl
+ZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KClRoYW5rcyBmb3Ig
+eW91ciBmYXN0IHJlc3BvbmQgOi1ECi0gWWFraXIKCj4gcmVnYXJkcwo+IFBoaWxpcHAKPgo+Cj4K
+PgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
