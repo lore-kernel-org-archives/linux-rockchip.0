@@ -1,150 +1,130 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [v5 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Wed, 13 Jul 2016 11:05:39 +0900
-Message-ID: <5785A1F3.1020703@samsung.com>
+Date: Wed, 13 Jul 2016 10:54:25 +0800
+Message-ID: <5785AD61.3070307@rock-chips.com>
 References: <1468336188-565-1-git-send-email-zyw@rock-chips.com>
  <CGME20160712151003epcas1p3d60b6754866b984f943b7bea4be6d33f@epcas1p3.samsung.com>
  <1468336188-565-2-git-send-email-zyw@rock-chips.com>
  <57859532.1010002@samsung.com> <57859BDA.7080309@rock-chips.com>
+ <5785A1F3.1020703@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <57859BDA.7080309@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5785A1F3.1020703-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
-
-On 2016=EB=85=84 07=EC=9B=94 13=EC=9D=BC 10:39, Chris Zhong wrote:
-> Hi Chanwoo Choi
->=20
->=20
-> On 07/13/2016 09:11 AM, Chanwoo Choi wrote:
->> Hi Chris,
->>
->> I'm now developing the extcon property on extcon-test branch.
->> But, it has not been completed.
->>
->> On next version, I'll remove the notification about extcon property
->> and only support the following two functions.
->> - extcon_set_cable_property()
->> - extcon_get_cable_property()
->>
->> Because the number of properties would be risen and the all properti=
-es
->> depend on the specific external connector(e.g., EXTCON_PROP_USB_VBUS
->> depend on the EXTCON_TYPE_USB type). When the specific external conn=
-ector
->> is detached, extcon framework should make the property state as defa=
-ult state.
->=20
-> Yes, I think getting the notification from cable state is enough, act=
-ually I am using it like you said.
-
-OK.=20
-
->=20
->>
->> It may send the too many notification for extcon property.
->> For example, Assume that EXTCON_TYPE_USB has the over 20 properties,
->> when EXTCON_USB or EXTCON_USB_HOST is detached, extcon should send
->> the notification for the over 20 properties and one more notificaito=
-n
->> for state of external connector.
->>
->> So, I'll send the RFC patchset without the notification of proerty.
->>
->> Lastly,
->> I have a comment on below.
->>
->> Thanks,
->> Chanwoo Choi
->>
->> On 2016=EB=85=84 07=EC=9B=94 13=EC=9D=BC 00:09, Chris Zhong wrote:
->>> Add EXTCON_DISP_DP for the Display external connector. For Type-C
->>> connector the DisplayPort can work as an Alternate Mode(VESA Displa=
-yPort
->>> Alt Mode on USB Type-C Standard). The Type-C support both normal an=
-d
->>> flipped orientation, so add a property to extcon.
->>>
->>> Signe-off-by: Chris Zhong <zyw@rock-chips.com>
->>>
->>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->>> ---
->>>
->>> Changes in v5:
->>> - support get property
->>>
->>> Changes in v4: None
->>> Changes in v3: None
->>> Changes in v2: None
->>> Changes in v1: None
->>>
->>>   drivers/extcon/extcon.c | 28 ++++++++++++++++++++++++++++
->>>   include/linux/extcon.h  | 13 +++++++++++++
->>>   2 files changed, 41 insertions(+)
->>>
->>> diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
->>> index a1117db..2591b28 100644
->>> --- a/drivers/extcon/extcon.c
->>> +++ b/drivers/extcon/extcon.c
->>> @@ -157,6 +157,11 @@ struct __extcon_info {
->>>           .id =3D EXTCON_DISP_VGA,
->>>           .name =3D "VGA",
->>>       },
->>> +    [EXTCON_DISP_DP] =3D {
->>> +        .type =3D EXTCON_TYPE_DISP,
->>> +        .id =3D EXTCON_DISP_DP,
->>> +        .name =3D "DP",
->>> +    },
->>>         /* Miscellaneous external connector */
->>>       [EXTCON_DOCK] =3D {
->>> @@ -270,6 +275,7 @@ static bool is_extcon_property_supported(unsign=
-ed int id,
->>>           switch (prop) {
->>>           case EXTCON_PROP_USB_ID:
->>>           case EXTCON_PROP_USB_VBUS:
->>> +        case EXTCON_PROP_TYPEC_POLARITY:
->>>               return true;
->>>           default:
->>>               break;
->>> @@ -286,6 +292,8 @@ static bool is_extcon_property_supported(unsign=
-ed int id,
->>>           }
->>>       case EXTCON_TYPE_DISP:
->>>           switch (prop) {
->>> +        case EXTCON_PROP_TYPEC_POLARITY:
->> Should EXTCON_PROP_TYPEC_POLARITY property add to both EXTCON_TYPE_U=
-SB and EXTCON_TYP_DISP?
->> EXTCON_PROP_TYPEC_POLARITY is the property of USB C-type?
->=20
-> it is for USB Type-C, But at Display Port alt mode, both EXTCON_USB a=
-nd EXTCON_USB_HOST may be detached. Does it support set the property to=
- a detached cable, if so, I think move this case to EXTCON_USB is fine.
-
-One external connector can set the state of one more external connector
-if the one connector support the various functions.
-=46or example, EXTCON_USB and EXTCON_CHG_USB_SDP
-The existing extcon driver[1](e.g., max14577/max77693 etc.) set the sta=
-te of both EXTCON_USB and EXTCON_CHG_USB_SDP connector at the same time
-when usb cable is attached. Because in this case, the usb connector use=
-s as both power supply(EXTCON_CHG_USB_SDP) and data transfer(EXTCON_USB=
-).
-[1] https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/com=
-mit/?h=3Dextcon-next&id=3D8b45b6a0741678902810d7be95e635c210fbb198
-
-So, DP Alt mode uses the USB Type-C. So, When USB C-type connector is a=
-ttached for DP Alt mode,
-Maybe, you can set the following two state of connector and one propert=
-y:
-- extcon_set_cable_state(edev, [EXTCON_USB or EXTCON_USB_HOST], 1);
-- extcon_set_cable_state(edev, EXTCON_DISP_DP, 1);
-- extcon_set_cable_state(edev, [EXTCON_USB or EXTCON_USB_HOST], EXTCON_=
-PROP_TYPEC_POLARITY, 0 or 1);
-
-Thanks,
-Chanwoo Choi
+SGkgQ2hhbndvbyBDaG9pCgpPbiAwNy8xMy8yMDE2IDEwOjA1IEFNLCBDaGFud29vIENob2kgd3Jv
+dGU6Cj4gSGkgQ2hyaXMsCj4KPiBPbiAyMDE264WEIDA37JuUIDEz7J28IDEwOjM5LCBDaHJpcyBa
+aG9uZyB3cm90ZToKPj4gSGkgQ2hhbndvbyBDaG9pCj4+Cj4+Cj4+IE9uIDA3LzEzLzIwMTYgMDk6
+MTEgQU0sIENoYW53b28gQ2hvaSB3cm90ZToKPj4+IEhpIENocmlzLAo+Pj4KPj4+IEknbSBub3cg
+ZGV2ZWxvcGluZyB0aGUgZXh0Y29uIHByb3BlcnR5IG9uIGV4dGNvbi10ZXN0IGJyYW5jaC4KPj4+
+IEJ1dCwgaXQgaGFzIG5vdCBiZWVuIGNvbXBsZXRlZC4KPj4+Cj4+PiBPbiBuZXh0IHZlcnNpb24s
+IEknbGwgcmVtb3ZlIHRoZSBub3RpZmljYXRpb24gYWJvdXQgZXh0Y29uIHByb3BlcnR5Cj4+PiBh
+bmQgb25seSBzdXBwb3J0IHRoZSBmb2xsb3dpbmcgdHdvIGZ1bmN0aW9ucy4KPj4+IC0gZXh0Y29u
+X3NldF9jYWJsZV9wcm9wZXJ0eSgpCj4+PiAtIGV4dGNvbl9nZXRfY2FibGVfcHJvcGVydHkoKQo+
+Pj4KPj4+IEJlY2F1c2UgdGhlIG51bWJlciBvZiBwcm9wZXJ0aWVzIHdvdWxkIGJlIHJpc2VuIGFu
+ZCB0aGUgYWxsIHByb3BlcnRpZXMKPj4+IGRlcGVuZCBvbiB0aGUgc3BlY2lmaWMgZXh0ZXJuYWwg
+Y29ubmVjdG9yKGUuZy4sIEVYVENPTl9QUk9QX1VTQl9WQlVTCj4+PiBkZXBlbmQgb24gdGhlIEVY
+VENPTl9UWVBFX1VTQiB0eXBlKS4gV2hlbiB0aGUgc3BlY2lmaWMgZXh0ZXJuYWwgY29ubmVjdG9y
+Cj4+PiBpcyBkZXRhY2hlZCwgZXh0Y29uIGZyYW1ld29yayBzaG91bGQgbWFrZSB0aGUgcHJvcGVy
+dHkgc3RhdGUgYXMgZGVmYXVsdCBzdGF0ZS4KPj4gWWVzLCBJIHRoaW5rIGdldHRpbmcgdGhlIG5v
+dGlmaWNhdGlvbiBmcm9tIGNhYmxlIHN0YXRlIGlzIGVub3VnaCwgYWN0dWFsbHkgSSBhbSB1c2lu
+ZyBpdCBsaWtlIHlvdSBzYWlkLgo+IE9LLgo+Cj4+PiBJdCBtYXkgc2VuZCB0aGUgdG9vIG1hbnkg
+bm90aWZpY2F0aW9uIGZvciBleHRjb24gcHJvcGVydHkuCj4+PiBGb3IgZXhhbXBsZSwgQXNzdW1l
+IHRoYXQgRVhUQ09OX1RZUEVfVVNCIGhhcyB0aGUgb3ZlciAyMCBwcm9wZXJ0aWVzLAo+Pj4gd2hl
+biBFWFRDT05fVVNCIG9yIEVYVENPTl9VU0JfSE9TVCBpcyBkZXRhY2hlZCwgZXh0Y29uIHNob3Vs
+ZCBzZW5kCj4+PiB0aGUgbm90aWZpY2F0aW9uIGZvciB0aGUgb3ZlciAyMCBwcm9wZXJ0aWVzIGFu
+ZCBvbmUgbW9yZSBub3RpZmljYWl0b24KPj4+IGZvciBzdGF0ZSBvZiBleHRlcm5hbCBjb25uZWN0
+b3IuCj4+Pgo+Pj4gU28sIEknbGwgc2VuZCB0aGUgUkZDIHBhdGNoc2V0IHdpdGhvdXQgdGhlIG5v
+dGlmaWNhdGlvbiBvZiBwcm9lcnR5Lgo+Pj4KPj4+IExhc3RseSwKPj4+IEkgaGF2ZSBhIGNvbW1l
+bnQgb24gYmVsb3cuCj4+Pgo+Pj4gVGhhbmtzLAo+Pj4gQ2hhbndvbyBDaG9pCj4+Pgo+Pj4gT24g
+MjAxNuuFhCAwN+yblCAxM+ydvCAwMDowOSwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4+Pj4gQWRkIEVY
+VENPTl9ESVNQX0RQIGZvciB0aGUgRGlzcGxheSBleHRlcm5hbCBjb25uZWN0b3IuIEZvciBUeXBl
+LUMKPj4+PiBjb25uZWN0b3IgdGhlIERpc3BsYXlQb3J0IGNhbiB3b3JrIGFzIGFuIEFsdGVybmF0
+ZSBNb2RlKFZFU0EgRGlzcGxheVBvcnQKPj4+PiBBbHQgTW9kZSBvbiBVU0IgVHlwZS1DIFN0YW5k
+YXJkKS4gVGhlIFR5cGUtQyBzdXBwb3J0IGJvdGggbm9ybWFsIGFuZAo+Pj4+IGZsaXBwZWQgb3Jp
+ZW50YXRpb24sIHNvIGFkZCBhIHByb3BlcnR5IHRvIGV4dGNvbi4KPj4+Pgo+Pj4+IFNpZ25lLW9m
+Zi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPj4+Pgo+Pj4+IFNpZ25lZC1v
+ZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4+Pj4gLS0tCj4+Pj4KPj4+
+PiBDaGFuZ2VzIGluIHY1Ogo+Pj4+IC0gc3VwcG9ydCBnZXQgcHJvcGVydHkKPj4+Pgo+Pj4+IENo
+YW5nZXMgaW4gdjQ6IE5vbmUKPj4+PiBDaGFuZ2VzIGluIHYzOiBOb25lCj4+Pj4gQ2hhbmdlcyBp
+biB2MjogTm9uZQo+Pj4+IENoYW5nZXMgaW4gdjE6IE5vbmUKPj4+Pgo+Pj4+ICAgIGRyaXZlcnMv
+ZXh0Y29uL2V4dGNvbi5jIHwgMjggKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4+ICAg
+IGluY2x1ZGUvbGludXgvZXh0Y29uLmggIHwgMTMgKysrKysrKysrKysrKwo+Pj4+ICAgIDIgZmls
+ZXMgY2hhbmdlZCwgNDEgaW5zZXJ0aW9ucygrKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZXh0Y29uL2V4dGNvbi5jIGIvZHJpdmVycy9leHRjb24vZXh0Y29uLmMKPj4+PiBpbmRleCBh
+MTExN2RiLi4yNTkxYjI4IDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvZXh0Y29uL2V4dGNvbi5j
+Cj4+Pj4gKysrIGIvZHJpdmVycy9leHRjb24vZXh0Y29uLmMKPj4+PiBAQCAtMTU3LDYgKzE1Nywx
+MSBAQCBzdHJ1Y3QgX19leHRjb25faW5mbyB7Cj4+Pj4gICAgICAgICAgICAuaWQgPSBFWFRDT05f
+RElTUF9WR0EsCj4+Pj4gICAgICAgICAgICAubmFtZSA9ICJWR0EiLAo+Pj4+ICAgICAgICB9LAo+
+Pj4+ICsgICAgW0VYVENPTl9ESVNQX0RQXSA9IHsKPj4+PiArICAgICAgICAudHlwZSA9IEVYVENP
+Tl9UWVBFX0RJU1AsCj4+Pj4gKyAgICAgICAgLmlkID0gRVhUQ09OX0RJU1BfRFAsCj4+Pj4gKyAg
+ICAgICAgLm5hbWUgPSAiRFAiLAo+Pj4+ICsgICAgfSwKPj4+PiAgICAgICAgICAvKiBNaXNjZWxs
+YW5lb3VzIGV4dGVybmFsIGNvbm5lY3RvciAqLwo+Pj4+ICAgICAgICBbRVhUQ09OX0RPQ0tdID0g
+ewo+Pj4+IEBAIC0yNzAsNiArMjc1LDcgQEAgc3RhdGljIGJvb2wgaXNfZXh0Y29uX3Byb3BlcnR5
+X3N1cHBvcnRlZCh1bnNpZ25lZCBpbnQgaWQsCj4+Pj4gICAgICAgICAgICBzd2l0Y2ggKHByb3Ap
+IHsKPj4+PiAgICAgICAgICAgIGNhc2UgRVhUQ09OX1BST1BfVVNCX0lEOgo+Pj4+ICAgICAgICAg
+ICAgY2FzZSBFWFRDT05fUFJPUF9VU0JfVkJVUzoKPj4+PiArICAgICAgICBjYXNlIEVYVENPTl9Q
+Uk9QX1RZUEVDX1BPTEFSSVRZOgo+Pj4+ICAgICAgICAgICAgICAgIHJldHVybiB0cnVlOwo+Pj4+
+ICAgICAgICAgICAgZGVmYXVsdDoKPj4+PiAgICAgICAgICAgICAgICBicmVhazsKPj4+PiBAQCAt
+Mjg2LDYgKzI5Miw4IEBAIHN0YXRpYyBib29sIGlzX2V4dGNvbl9wcm9wZXJ0eV9zdXBwb3J0ZWQo
+dW5zaWduZWQgaW50IGlkLAo+Pj4+ICAgICAgICAgICAgfQo+Pj4+ICAgICAgICBjYXNlIEVYVENP
+Tl9UWVBFX0RJU1A6Cj4+Pj4gICAgICAgICAgICBzd2l0Y2ggKHByb3ApIHsKPj4+PiArICAgICAg
+ICBjYXNlIEVYVENPTl9QUk9QX1RZUEVDX1BPTEFSSVRZOgo+Pj4gU2hvdWxkIEVYVENPTl9QUk9Q
+X1RZUEVDX1BPTEFSSVRZIHByb3BlcnR5IGFkZCB0byBib3RoIEVYVENPTl9UWVBFX1VTQiBhbmQg
+RVhUQ09OX1RZUF9ESVNQPwo+Pj4gRVhUQ09OX1BST1BfVFlQRUNfUE9MQVJJVFkgaXMgdGhlIHBy
+b3BlcnR5IG9mIFVTQiBDLXR5cGU/Cj4+IGl0IGlzIGZvciBVU0IgVHlwZS1DLCBCdXQgYXQgRGlz
+cGxheSBQb3J0IGFsdCBtb2RlLCBib3RoIEVYVENPTl9VU0IgYW5kIEVYVENPTl9VU0JfSE9TVCBt
+YXkgYmUgZGV0YWNoZWQuIERvZXMgaXQgc3VwcG9ydCBzZXQgdGhlIHByb3BlcnR5IHRvIGEgZGV0
+YWNoZWQgY2FibGUsIGlmIHNvLCBJIHRoaW5rIG1vdmUgdGhpcyBjYXNlIHRvIEVYVENPTl9VU0Ig
+aXMgZmluZS4KPiBPbmUgZXh0ZXJuYWwgY29ubmVjdG9yIGNhbiBzZXQgdGhlIHN0YXRlIG9mIG9u
+ZSBtb3JlIGV4dGVybmFsIGNvbm5lY3Rvcgo+IGlmIHRoZSBvbmUgY29ubmVjdG9yIHN1cHBvcnQg
+dGhlIHZhcmlvdXMgZnVuY3Rpb25zLgo+IEZvciBleGFtcGxlLCBFWFRDT05fVVNCIGFuZCBFWFRD
+T05fQ0hHX1VTQl9TRFAKPiBUaGUgZXhpc3RpbmcgZXh0Y29uIGRyaXZlclsxXShlLmcuLCBtYXgx
+NDU3Ny9tYXg3NzY5MyBldGMuKSBzZXQgdGhlIHN0YXRlIG9mIGJvdGggRVhUQ09OX1VTQiBhbmQg
+RVhUQ09OX0NIR19VU0JfU0RQIGNvbm5lY3RvciBhdCB0aGUgc2FtZSB0aW1lCj4gd2hlbiB1c2Ig
+Y2FibGUgaXMgYXR0YWNoZWQuIEJlY2F1c2UgaW4gdGhpcyBjYXNlLCB0aGUgdXNiIGNvbm5lY3Rv
+ciB1c2VzIGFzIGJvdGggcG93ZXIgc3VwcGx5KEVYVENPTl9DSEdfVVNCX1NEUCkgYW5kIGRhdGEg
+dHJhbnNmZXIoRVhUQ09OX1VTQikuCj4gWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9s
+aW51eC9rZXJuZWwvZ2l0L2NoYW53b28vZXh0Y29uLmdpdC9jb21taXQvP2g9ZXh0Y29uLW5leHQm
+aWQ9OGI0NWI2YTA3NDE2Nzg5MDI4MTBkN2JlOTVlNjM1YzIxMGZiYjE5OAo+Cj4gU28sIERQIEFs
+dCBtb2RlIHVzZXMgdGhlIFVTQiBUeXBlLUMuIFNvLCBXaGVuIFVTQiBDLXR5cGUgY29ubmVjdG9y
+IGlzIGF0dGFjaGVkIGZvciBEUCBBbHQgbW9kZSwKPiBNYXliZSwgeW91IGNhbiBzZXQgdGhlIGZv
+bGxvd2luZyB0d28gc3RhdGUgb2YgY29ubmVjdG9yIGFuZCBvbmUgcHJvcGVydHk6Cj4gLSBleHRj
+b25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIFtFWFRDT05fVVNCIG9yIEVYVENPTl9VU0JfSE9TVF0s
+IDEpOwo+IC0gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fRElTUF9EUCwgMSk7
+Cj4gLSBleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIFtFWFRDT05fVVNCIG9yIEVYVENPTl9V
+U0JfSE9TVF0sIEVYVENPTl9QUk9QX1RZUEVDX1BPTEFSSVRZLCAwIG9yIDEpOwo+Cj4gVGhhbmtz
+LAo+IENoYW53b28gQ2hvaQoKVGhlcmUgYXJlIDQgbW9kZXMgZm9yIFR5cGUtQyBEUCBhbHQgbW9k
+ZToKMSkgVVNCIGhvc3Qgb25seSAgOgoKZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRD
+T05fVVNCX0hPU1QsIDEpOwpleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9VU0Is
+IDApOwpleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQX0RQLCAwKTsKCjIp
+IFVTQiBkZXZpY2Ugb25seQoKZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNC
+X0hPU1QsIDApOwpleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9VU0IsIDEpOwpl
+eHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQX0RQLCAwKTsKCjMpIERQIG9u
+bHkKCmV4dGNvbl9zZXRfY2FibGVfc3RhdGUoZWRldiwgRVhUQ09OX1VTQl9IT1NULCAwKTsKZXh0
+Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCLCAwKTsKZXh0Y29uX3NldF9jYWJs
+ZV9zdGF0ZShlZGV2LCBFWFRDT05fRElTUF9EUCwgMSk7Cgo0KSBVU0IgKyBEUAoKZXh0Y29uX3Nl
+dF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCX0hPU1QsIDEpOwpleHRjb25fc2V0X2NhYmxl
+X3N0YXRlKGVkZXYsIEVYVENPTl9VU0IsIDApOwpleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYs
+IEVYVENPTl9ESVNQX0RQLCAxKTsKCgpmb3IgM3JkIG1vZGU6IERQIG9ubHksIHRoZXJlIGlzIG9u
+bHkgRVhUQ09OX0RJU1BfRFAgaXMgYXR0YWNoZWQsIHRoZSAKRVhUQ09OX1VTQl9IT1NUCmFuZCBF
+WFRDT05fVVNCIGFyZSBkZXRhY2hlZCwgQ2FuIEkgc2V0IHRoZSBwcm9wZXJ0eSBpbnRvIHRoZXNl
+IDIgCmRldGFjaGVkIGNhYmxlPwpvciBqdXN0IGNhbGwgZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShl
+ZGV2LCBFWFRDT05fRElTUF9EUCwgCkVYVENPTl9QUk9QX1RZUEVDX1BPTEFSSVRZLCAwIG9yIDEp
+OwoKPgo+Cj4KPgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
