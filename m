@@ -1,121 +1,251 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v1 5/6] drm/rockchip: dw_hdmi: introduce the VPLL clock
- setting
-Date: Wed, 13 Jul 2016 15:45:06 +0800
-Message-ID: <5785F182.5070901@rock-chips.com>
-References: <1468235079-29152-1-git-send-email-ykk@rock-chips.com>
- <1468235149-29625-1-git-send-email-ykk@rock-chips.com>
- <3636683.EuFECY2EQB@diego>
+From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH v6 00/46] dma-mapping: Use unsigned long for dma_attrs
+Date: Wed, 13 Jul 2016 10:39:27 +0200
+Message-ID: <1468399167-28083-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <3636683.EuFECY2EQB@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, xhc@rock-chips.com, Daniel Vetter <daniel.vetter@ffwll.ch>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Zheng Yang <zhengyang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
+Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-ia64-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, sparclinux-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-c6x-dev-jPsnJVOj+W6hPH1hqNUYSQ@public.gmane.org, linux-rdma-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-hexagon-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawtpuQazS67q72D2FQJk+8+b@public.gmane.org, linux-snps-arc-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-xtensa-PjhNF2WwrV/0Sa2dR60CXw@public.gmane.org, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-m68k-cunTk1MwBs8S/qaLPR03pWD2FQJk+8+b@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-metag-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XWGXanvQGlWp@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgpPbiAwNy8xMi8yMDE2IDEwOjI3IFBNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBI
-aSBZYWtpciwKPgo+IEFtIE1vbnRhZywgMTEuIEp1bGkgMjAxNiwgMTk6MDU6NDkgc2NocmllYiBZ
-YWtpciBZYW5nOgo+PiBGb3IgUkszMzk5IEhETUksIHRoZXJlIGlzIGFuIGV4dGVybmFsIGNsb2Nr
-IG5lZWQgZm9yIEhETUkgUEhZLAo+PiBhbmQgaXQgc2hvdWxkIGtlZXAgdGhlIHNhbWUgY2xvY2sg
-cmF0ZSB3aXRoIFZPUCBEQ0xLLgo+Pgo+PiBWUExMIGhhdmUgc3VwcG9ydGVkIHRoZSBjbG9jayBm
-b3IgSERNSSBQSFksIGJ1dCB0aGVyZSBpcyBubwo+PiBjbG9jayBkaXZpZGVyIGJld3RlZW4gVlBM
-TCBhbmQgSERNSSBQSFkuIFNvIHdlIG5lZWQgdG8gc2V0IHRoZQo+PiBWUExMIHJhdGUgbWFudWFs
-bHkgaW4gSERNSSBkcml2ZXIuCj4gSSBkb24ndCB0aGluayByZXNlcnZpbmcgdGhlIHZwbGwgZm9y
-IHRoZSBoZG1pIGF0IGFsbCB0aW1lcyBpcyB0aGUgcmlnaHQgd2F5IHRvCj4gZ28uCj4KPiBXaGls
-ZSBJIGRvIGFncmVlIHRoYXQgcmVzZXJ2aW5nIHRoZSBWUExMIChhbmQgTlBMTCBvbiB0aGUgcmsz
-Mjg4KSBmb3IgZ3JhcGhpY3MKPiB1c2UgbG9va3MgbGlrZSB0aGUgcmlnaHQgd2F5LCBJIHRoaW5r
-IHRoZSBjb3JlIFJvY2tjaGlwIGRybSBkcml2ZXIgc2hvdWxkIGJlCj4gcmVzcG9uc2libGUgZm9y
-IG1hbmFnaW5nIGl0IGFuZCBhbHNvIGZvciBkZWNpZGluZyB3aGljaCBvdXRwdXQgZW5jb2RlciBn
-ZXRzIHRvCj4gdXNlIGl0Lgo+IFdoaWxlIHRydWUgdGhhdCBvbiB0aGUgQ2hyb21lYm9vayBkZXZp
-Y2UtdHlwZXMgdGhlIGVkcCBpcyBzdGF0aWMgYW5kIGhkbWkKPiBuZWVkcyB0aGUgYnJvYWQgcmFu
-Z2Ugb2YgZHluYW1pYyBmcmVxdWVuY2llcywgdGhpcyBpcyBub3QgbmVjZXNzYXJpbHkgdGhlIGNh
-c2UKPiBmb3IgYWxsIGZ1dHVyZSBkZXZpY2UgdHlwZXMgYW5kL29yIHNvY3MuCj4KPiBJbiB0aGUg
-b3RoZXIgdGhyZWFkIHdlIGRpc2N1c3NlZCBhZGRpbmcgdGhhdCBhcyByb2NrY2hpcCxkY2xrLXBs
-bCA9IDwmLi4uPjsgdG8KPiB0aGUgYmFzZSBkaXNwbGF5LXN1YnN5c3RlbSBub2RlLCBEb3VnIGRp
-ZG4ndCBtYW5hZ2UgdG8gZmluZCB0aW1lIHRvIHJlc3BvbmQgeWV0Cj4gdGhvdWdoIC0gYW5kIGlz
-IG9uIHZhY2F0aW9uIHJpZ2h0IG5vdy4KCkdyZWF0IGlkZWEuIExldCBhIHNlcGFyYXRlIGRybS1w
-bGwgZHJpdmVyIHRvIG1haW50YWluIGFsbCBjb25uZWN0b3IncyAKY2xvY2sgcmVxdWlyZW1lbnQu
-Cgo+IEkgc3RpbGwgYmVsaWV2ZSB0aGF0IHdvdWxkIGJlIHRoZSBiZXN0IHNvbHV0aW9uIDotKSAu
-Cj4KPgo+IFRoYXQgcHJvcGVydHkgY291bGQgbGlzdCAxIG9yIGV2ZW4gMiBwbGxzLCBkZXBlbmRp
-bmcgb24gdGhlIHNvYyBvciBib2FyZAo+IGxheW91dCAtIG1heWJlIHNvbWVvbmUgZnJlZXMgdXAg
-dGhlIGNwbGwgaW4gc29tZSBzcGVjaWFsIGxheW91dCBvciBzb21ldGhpbmcuCj4gSWYgbm9uZSBh
-cmUgbGlzdGVkLCB0aGVuIHRoZSBkcm0gZHJpdmVyIHdvdWxkIG5lZWQgdG8gY29wZSB3aXRoIGl0
-cyBhdmFpbGFibGUKPiBjbG9ja3MuCj4KPiBJbXBsZW1lbnRhdGlvbi13aXNlIHlvdSBjb3VsZCBl
-dmVuIHN0aWxsIGtlZXAgeW91ciBzaG9ydGN1dCB1bnRpbCB3ZSBlbmNvdW50ZXIKPiBhIGRldmlj
-ZSB3aXRoIGRpZmZlcmVudCAsIGxldCB0aGUgZHJtIHVzZSB0aGUgcGxsIGZvciBoZG1pIG9ubHkg
-dW50aWwgc29tZW9uZQo+IGNvbWVzIHVwIHdpdGggYSBiZXR0ZXIgY29uY2VwdCwgYnV0IHN0aWxs
-IHRoZSBiaW5kaW5nIHNob3VsZCBiZSBjb3JyZWN0IGFuZAo+IHZlcnNhdGlsZSBmcm9tIHRoZSBz
-dGFydC4KClNvbWVvbmUgc2hvdWxkIHN0YXJ0IHRvIHByZXBhcmUgdGhlIGRybSBjb3JlIHBsbCBk
-cml2ZXIsIGl0J3MgZ3JlYXQgaWRlYS4KCkJSLAotIFlha2lyCgo+Cj4gSGVpa28KPgo+PiAtLS0K
-Pj4gICAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLnR4dCB8
-ICAzICsrLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMg
-ICAgICAgIHwgMjUKPj4gKysrKysrKysrKysrKysrKysrKysrLSAyIGZpbGVzIGNoYW5nZWQsIDI2
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQKPj4gYS9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19oZG1pLXJv
-Y2tjaGlwLnR4dAo+PiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0Cj4+IGluZGV4IDRlNTczZDIuLjRlMjNjYTQg
-MTAwNjQ0Cj4+IC0tLQo+PiBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNw
-bGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0Cj4+ICsrKwo+PiBiL0RvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAu
-dHh0Cj4+IEBAIC0xNyw3ICsxNyw4IEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+Cj4+ICAgT3B0
-aW9uYWwgcHJvcGVydGllcwo+PiAgIC0gZGRjLWkyYy1idXM6IHBoYW5kbGUgb2YgYW4gSTJDIGNv
-bnRyb2xsZXIgdXNlZCBmb3IgRERDIEVESUQgcHJvYmluZwo+PiAtLSBjbG9ja3MsIGNsb2NrLW5h
-bWVzOiBwaGFuZGxlIHRvIHRoZSBIRE1JIENFQyBjbG9jaywgbmFtZSBzaG91bGQgYmUgImNlYyIK
-Pj4gKy0gY2xvY2tzLCBjbG9jay1uYW1lczogcGhhbmRsZSB0byB0aGUgSERNSSBDRUMgY2xvY2ss
-IG5hbWUgc2hvdWxkIGJlICJjZWMiLAo+PiArCQkgICAgICAgcGhhbmRsZSB0byB0aGUgVlBMTCBj
-bG9jaywgbmFtZSBzaG91bGQgYmUgInZwbGwiLgo+Pgo+PiAgIEV4YW1wbGU6Cj4+ICAgaGRtaTog
-aGRtaUBmZjk4MDAwMCB7Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-ZHdfaGRtaS1yb2NrY2hpcC5jCj4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWkt
-cm9ja2NoaXAuYyBpbmRleCAzMjkwOTliLi43MDFiYjczIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPj4gQEAgLTcsMTAgKzcsMTIgQEAKPj4g
-ICAgKiAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLgo+PiAgICAqLwo+Pgo+PiAr
-I2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+PiArI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4K
-Pj4gICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4+ICAgI2luY2x1ZGUgPGxpbnV4L3BsYXRm
-b3JtX2RldmljZS5oPgo+PiAtI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KPj4gICAjaW5j
-bHVkZSA8bGludXgvcmVnbWFwLmg+Cj4+ICsKPj4gICAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+
-PiAgICNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+PiAgICNpbmNsdWRlIDxkcm0vZHJtX2NydGNfaGVs
-cGVyLmg+Cj4+IEBAIC0zMyw2ICszNSw3IEBAIHN0cnVjdCByb2NrY2hpcF9oZG1pIHsKPj4gICAJ
-c3RydWN0IHJlZ21hcCAqcmVnbWFwOwo+PiAgIAlzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsK
-Pj4gICAJZW51bSBkd19oZG1pX2RldnR5cGUgZGV2X3R5cGU7Cj4+ICsJc3RydWN0IGNsayAqdnBs
-bF9jbGs7Cj4+ICAgfTsKPj4KPj4gICAjZGVmaW5lIHRvX3JvY2tjaGlwX2hkbWkoeCkJY29udGFp
-bmVyX29mKHgsIHN0cnVjdCByb2NrY2hpcF9oZG1pLCB4KQo+PiBAQCAtMTQ1LDYgKzE0OCw3IEBA
-IHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHdfaGRtaV9waHlfY29uZmlnCj4+IHJvY2tjaGlwX3BoeV9j
-b25maWdbXSA9IHsgc3RhdGljIGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVjdAo+PiBy
-b2NrY2hpcF9oZG1pICpoZG1pKQo+PiAgIHsKPj4gICAJc3RydWN0IGRldmljZV9ub2RlICpucCA9
-IGhkbWktPmRldi0+b2Zfbm9kZTsKPj4gKwlpbnQgcmV0Owo+Pgo+PiAgIAloZG1pLT5yZWdtYXAg
-PSBzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAicm9ja2NoaXAsZ3JmIik7Cj4+
-ICAgCWlmIChJU19FUlIoaGRtaS0+cmVnbWFwKSkgewo+PiBAQCAtMTUyLDYgKzE1NiwyMiBAQCBz
-dGF0aWMgaW50IHJvY2tjaGlwX2hkbWlfcGFyc2VfZHQoc3RydWN0IHJvY2tjaGlwX2hkbWkKPj4g
-KmhkbWkpIHJldHVybiBQVFJfRVJSKGhkbWktPnJlZ21hcCk7Cj4+ICAgCX0KPj4KPj4gKwloZG1p
-LT52cGxsX2NsayA9IGRldm1fY2xrX2dldChoZG1pLT5kZXYsICJ2cGxsIik7Cj4+ICsJaWYgKFBU
-Ul9FUlIoaGRtaS0+dnBsbF9jbGspID09IC1FTk9FTlQpIHsKPj4gKwkJaGRtaS0+dnBsbF9jbGsg
-PSBOVUxMOwo+PiArCX0gZWxzZSBpZiAoUFRSX0VSUihoZG1pLT52cGxsX2NsaykgPT0gLUVQUk9C
-RV9ERUZFUikgewo+PiArCQlyZXR1cm4gLUVQUk9CRV9ERUZFUjsKPj4gKwl9IGVsc2UgaWYgKElT
-X0VSUihoZG1pLT52cGxsX2NsaykpIHsKPj4gKwkJZGV2X2VycihoZG1pLT5kZXYsICJmYWlsZWQg
-dG8gZ2V0IGdyZiBjbG9ja1xuIik7Cj4+ICsJCXJldHVybiBQVFJfRVJSKGhkbWktPnZwbGxfY2xr
-KTsKPj4gKwl9Cj4+ICsKPj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoaGRtaS0+dnBsbF9j
-bGspOwo+PiArCWlmIChyZXQpIHsKPj4gKwkJZGV2X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8g
-ZW5hYmxlIEhETUkgdnBsbDogJWRcbiIsIHJldCk7Cj4+ICsJCXJldHVybiByZXQ7Cj4+ICsJfQo+
-PiArCj4+ICAgCXJldHVybiAwOwo+PiAgIH0KPj4KPj4gQEAgLTE5NCw2ICsyMTQsOSBAQCBzdGF0
-aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0Cj4+IGRybV9l
-bmNvZGVyICplbmNvZGVyLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPj4gICAJCQkJ
-CSAgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGpfbW9kZSkKPj4gICB7Cj4+ICsJc3Ry
-dWN0IHJvY2tjaGlwX2hkbWkgKmhkbWkgPSB0b19yb2NrY2hpcF9oZG1pKGVuY29kZXIpOwo+PiAr
-Cj4+ICsJY2xrX3NldF9yYXRlKGhkbWktPnZwbGxfY2xrLCBhZGpfbW9kZS0+Y2xvY2sgKiAxMDAw
-KTsKPj4gICB9Cj4+Cj4+ICAgc3RhdGljIHZvaWQgZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVyX2Vu
-YWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4KPgo+CgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+The fifth version of this patchset was merged by Andrew Morton
+few days ago.  It was rebased on v4.7-rc5 so it missed some ongoing
+changes.
+
+This is just rebase on next-20160713.
+
+
+For easier testing the patchset is available here:
+repo:   https://github.com/krzk/linux
+branch: for-next/dma-attrs-const-v6
+
+
+Changes since v5
+================
+1. New patches:
+   1/46:  [media] mtk-vcodec: Remove unused dma_attrs
+   44/46: remoteproc: qcom: Use unsigned long for dma_attrs
+2. 19/46: rebased on next, some more changes inside
+3. Added accumulated acks: Marek Szyprowski, Richard Kuo,
+   Konrad Rzeszutek Wilk, Daniel Vetter and Joerg Roedel.
+
+
+Changes since v4
+================
+1. Collect some acks. Still need more.
+2. Minor fixes pointed by Robin Murphy.
+3. Applied changes from Bart Van Assche's comment.
+4. More tests and builds (using https://www.kernel.org/pub/tools/crosstool/).
+
+
+Changes since v3
+================
+1. Collect some acks.
+2. Drop wrong patch 1/45 ("powerpc: dma-mapping: Don't hard-code
+   the value of DMA_ATTR_WEAK_ORDERING").
+3. Minor fix pointed out by Michael Ellerman.
+
+
+Changes since v2
+================
+1. Follow Christoph Hellwig's comments (don't use BIT add
+   documentation, remove dma_get_attr).
+
+
+Rationale
+=========
+The dma-mapping core and the implementations do not change the
+DMA attributes passed by pointer.  Thus the pointer can point to const
+data.  However the attributes do not have to be a bitfield. Instead
+unsigned long will do fine:
+
+1. This is just simpler.  Both in terms of reading the code and setting
+   attributes.  Instead of initializing local attributes on the stack
+   and passing pointer to it to dma_set_attr(), just set the bits.
+
+2. It brings safeness and checking for const correctness because the
+   attributes are passed by value.
+
+
+Best regards,
+Krzysztof
+
+
+Krzysztof Kozlowski (46):
+  [media] mtk-vcodec: Remove unused dma_attrs
+  dma-mapping: Use unsigned long for dma_attrs
+  alpha: dma-mapping: Use unsigned long for dma_attrs
+  arc: dma-mapping: Use unsigned long for dma_attrs
+  ARM: dma-mapping: Use unsigned long for dma_attrs
+  arm64: dma-mapping: Use unsigned long for dma_attrs
+  avr32: dma-mapping: Use unsigned long for dma_attrs
+  blackfin: dma-mapping: Use unsigned long for dma_attrs
+  c6x: dma-mapping: Use unsigned long for dma_attrs
+  cris: dma-mapping: Use unsigned long for dma_attrs
+  frv: dma-mapping: Use unsigned long for dma_attrs
+  drm/exynos: dma-mapping: Use unsigned long for dma_attrs
+  drm/mediatek: dma-mapping: Use unsigned long for dma_attrs
+  drm/msm: dma-mapping: Use unsigned long for dma_attrs
+  drm/nouveau: dma-mapping: Use unsigned long for dma_attrs
+  drm/rockship: dma-mapping: Use unsigned long for dma_attrs
+  infiniband: dma-mapping: Use unsigned long for dma_attrs
+  iommu: dma-mapping: Use unsigned long for dma_attrs
+  [media] dma-mapping: Use unsigned long for dma_attrs
+  xen: dma-mapping: Use unsigned long for dma_attrs
+  swiotlb: dma-mapping: Use unsigned long for dma_attrs
+  powerpc: dma-mapping: Use unsigned long for dma_attrs
+  video: dma-mapping: Use unsigned long for dma_attrs
+  x86: dma-mapping: Use unsigned long for dma_attrs
+  iommu: intel: dma-mapping: Use unsigned long for dma_attrs
+  h8300: dma-mapping: Use unsigned long for dma_attrs
+  hexagon: dma-mapping: Use unsigned long for dma_attrs
+  ia64: dma-mapping: Use unsigned long for dma_attrs
+  m68k: dma-mapping: Use unsigned long for dma_attrs
+  metag: dma-mapping: Use unsigned long for dma_attrs
+  microblaze: dma-mapping: Use unsigned long for dma_attrs
+  mips: dma-mapping: Use unsigned long for dma_attrs
+  mn10300: dma-mapping: Use unsigned long for dma_attrs
+  nios2: dma-mapping: Use unsigned long for dma_attrs
+  openrisc: dma-mapping: Use unsigned long for dma_attrs
+  parisc: dma-mapping: Use unsigned long for dma_attrs
+  misc: mic: dma-mapping: Use unsigned long for dma_attrs
+  s390: dma-mapping: Use unsigned long for dma_attrs
+  sh: dma-mapping: Use unsigned long for dma_attrs
+  sparc: dma-mapping: Use unsigned long for dma_attrs
+  tile: dma-mapping: Use unsigned long for dma_attrs
+  unicore32: dma-mapping: Use unsigned long for dma_attrs
+  xtensa: dma-mapping: Use unsigned long for dma_attrs
+  remoteproc: qcom: Use unsigned long for dma_attrs
+  dma-mapping: Remove dma_get_attr
+  dma-mapping: Document the DMA attributes next to the declaration
+
+ Documentation/DMA-API.txt                          |  33 +++---
+ Documentation/DMA-attributes.txt                   |   2 +-
+ arch/alpha/include/asm/dma-mapping.h               |   2 -
+ arch/alpha/kernel/pci-noop.c                       |   2 +-
+ arch/alpha/kernel/pci_iommu.c                      |  12 +-
+ arch/arc/mm/dma.c                                  |  12 +-
+ arch/arm/common/dmabounce.c                        |   4 +-
+ arch/arm/include/asm/dma-mapping.h                 |  13 +--
+ arch/arm/include/asm/xen/page-coherent.h           |  16 +--
+ arch/arm/mm/dma-mapping.c                          | 117 +++++++++----------
+ arch/arm/xen/mm.c                                  |   8 +-
+ arch/arm64/mm/dma-mapping.c                        |  66 +++++------
+ arch/avr32/mm/dma-coherent.c                       |  12 +-
+ arch/blackfin/kernel/dma-mapping.c                 |   8 +-
+ arch/c6x/include/asm/dma-mapping.h                 |   4 +-
+ arch/c6x/kernel/dma.c                              |   9 +-
+ arch/c6x/mm/dma-coherent.c                         |   4 +-
+ arch/cris/arch-v32/drivers/pci/dma.c               |   9 +-
+ arch/frv/mb93090-mb00/pci-dma-nommu.c              |   8 +-
+ arch/frv/mb93090-mb00/pci-dma.c                    |   9 +-
+ arch/h8300/kernel/dma.c                            |   8 +-
+ arch/hexagon/include/asm/dma-mapping.h             |   1 -
+ arch/hexagon/kernel/dma.c                          |   8 +-
+ arch/ia64/hp/common/sba_iommu.c                    |  22 ++--
+ arch/ia64/include/asm/machvec.h                    |   1 -
+ arch/ia64/kernel/pci-swiotlb.c                     |   4 +-
+ arch/ia64/sn/pci/pci_dma.c                         |  22 ++--
+ arch/m68k/kernel/dma.c                             |  12 +-
+ arch/metag/kernel/dma.c                            |  16 +--
+ arch/microblaze/include/asm/dma-mapping.h          |   1 -
+ arch/microblaze/kernel/dma.c                       |  12 +-
+ arch/mips/cavium-octeon/dma-octeon.c               |   8 +-
+ arch/mips/loongson64/common/dma-swiotlb.c          |  10 +-
+ arch/mips/mm/dma-default.c                         |  20 ++--
+ arch/mips/netlogic/common/nlm-dma.c                |   4 +-
+ arch/mn10300/mm/dma-alloc.c                        |   8 +-
+ arch/nios2/mm/dma-mapping.c                        |  12 +-
+ arch/openrisc/kernel/dma.c                         |  21 ++--
+ arch/parisc/kernel/pci-dma.c                       |  18 +--
+ arch/powerpc/include/asm/dma-mapping.h             |   7 +-
+ arch/powerpc/include/asm/iommu.h                   |  10 +-
+ arch/powerpc/kernel/dma-iommu.c                    |  12 +-
+ arch/powerpc/kernel/dma.c                          |  18 +--
+ arch/powerpc/kernel/ibmebus.c                      |  12 +-
+ arch/powerpc/kernel/iommu.c                        |  12 +-
+ arch/powerpc/kernel/vio.c                          |  12 +-
+ arch/powerpc/platforms/cell/iommu.c                |  28 ++---
+ arch/powerpc/platforms/pasemi/iommu.c              |   2 +-
+ arch/powerpc/platforms/powernv/npu-dma.c           |   8 +-
+ arch/powerpc/platforms/powernv/pci-ioda.c          |   4 +-
+ arch/powerpc/platforms/powernv/pci.c               |   2 +-
+ arch/powerpc/platforms/powernv/pci.h               |   2 +-
+ arch/powerpc/platforms/ps3/system-bus.c            |  18 +--
+ arch/powerpc/platforms/pseries/iommu.c             |   6 +-
+ arch/powerpc/sysdev/dart_iommu.c                   |   2 +-
+ arch/s390/include/asm/dma-mapping.h                |   1 -
+ arch/s390/pci/pci_dma.c                            |  23 ++--
+ arch/sh/include/asm/dma-mapping.h                  |   4 +-
+ arch/sh/kernel/dma-nommu.c                         |   4 +-
+ arch/sh/mm/consistent.c                            |   4 +-
+ arch/sparc/kernel/iommu.c                          |  12 +-
+ arch/sparc/kernel/ioport.c                         |  24 ++--
+ arch/sparc/kernel/pci_sun4v.c                      |  12 +-
+ arch/tile/kernel/pci-dma.c                         |  28 ++---
+ arch/unicore32/mm/dma-swiotlb.c                    |   4 +-
+ arch/x86/include/asm/dma-mapping.h                 |   5 +-
+ arch/x86/include/asm/swiotlb.h                     |   4 +-
+ arch/x86/include/asm/xen/page-coherent.h           |   9 +-
+ arch/x86/kernel/amd_gart_64.c                      |  20 ++--
+ arch/x86/kernel/pci-calgary_64.c                   |  14 +--
+ arch/x86/kernel/pci-dma.c                          |   4 +-
+ arch/x86/kernel/pci-nommu.c                        |   4 +-
+ arch/x86/kernel/pci-swiotlb.c                      |   4 +-
+ arch/x86/pci/sta2x11-fixup.c                       |   2 +-
+ arch/x86/pci/vmd.c                                 |  16 +--
+ arch/xtensa/kernel/pci-dma.c                       |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_fbdev.c          |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_g2d.c            |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_gem.c            |  20 ++--
+ drivers/gpu/drm/exynos/exynos_drm_gem.h            |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c             |  13 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h             |   2 +-
+ drivers/gpu/drm/msm/msm_drv.c                      |  13 +--
+ .../gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c    |  13 +--
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  17 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h        |   2 +-
+ drivers/infiniband/core/umem.c                     |   7 +-
+ drivers/iommu/amd_iommu.c                          |  12 +-
+ drivers/iommu/dma-iommu.c                          |   8 +-
+ drivers/iommu/intel-iommu.c                        |  12 +-
+ .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c |   4 -
+ drivers/media/platform/sti/bdisp/bdisp-hw.c        |  26 ++---
+ drivers/media/v4l2-core/videobuf2-dma-contig.c     |  28 ++---
+ drivers/media/v4l2-core/videobuf2-dma-sg.c         |  21 +---
+ drivers/media/v4l2-core/videobuf2-vmalloc.c        |   2 +-
+ drivers/misc/mic/host/mic_boot.c                   |  20 ++--
+ drivers/parisc/ccio-dma.c                          |  16 +--
+ drivers/parisc/sba_iommu.c                         |  16 +--
+ drivers/remoteproc/qcom_q6v5_pil.c                 |   7 +-
+ drivers/video/fbdev/omap2/omapfb/omapfb-main.c     |  12 +-
+ drivers/video/fbdev/omap2/omapfb/omapfb.h          |   3 +-
+ drivers/xen/swiotlb-xen.c                          |  14 +--
+ include/linux/dma-attrs.h                          |  71 ------------
+ include/linux/dma-iommu.h                          |   6 +-
+ include/linux/dma-mapping.h                        | 128 ++++++++++++++-------
+ include/linux/swiotlb.h                            |  10 +-
+ include/media/videobuf2-core.h                     |   6 +-
+ include/media/videobuf2-dma-contig.h               |   2 -
+ include/rdma/ib_verbs.h                            |   8 +-
+ include/xen/swiotlb-xen.h                          |  12 +-
+ lib/dma-noop.c                                     |   9 +-
+ lib/swiotlb.c                                      |  13 ++-
+ 112 files changed, 694 insertions(+), 798 deletions(-)
+ delete mode 100644 include/linux/dma-attrs.h
+
+-- 
+1.9.1
