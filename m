@@ -1,93 +1,37 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v4 4/4] drm/rockchip: analogix_dp: implement PSR function
-Date: Thu, 14 Jul 2016 12:15:58 +0800
-Message-ID: <1468469758-12722-1-git-send-email-ykk@rock-chips.com>
-References: <1468469704-12440-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1468469704-12440-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.vetter@ffwll.ch, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v7 0/5] support rockchip dwc3 driver
+Date: Thu, 14 Jul 2016 16:59:17 +0800
+Message-ID: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWx3YXkgZW5hYmxlIHRoZSBQU1IgZnVuY3Rpb24gZm9yIFJvY2tjaGlwIGFuYWxvZ2l4X2RwIGRy
-aXZlci4gSWYgcGFuZWwKZG9uJ3Qgc3VwcG9ydCBQU1IsIHRoZW4gdGhlIGNvcmUgYW5hbG9naXhf
-ZHAgd291bGQgaWdub3JlIHRoaXMgc2V0dGluZy4KClNpZ25lZC1vZmYtYnk6IFlha2lyIFlhbmcg
-PHlra0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjQ6Ci0gUmV0dXJuICd2b2lkJyBp
-bnN0ZWFkIG9mICdpbnQnIGluIGFuYWxvZ2l4X2RwX3Bzcl9zZXQoKS4gKFNlYW4pCi0gUHVsbCB0
-aGUgMTBtcyBkZWxheSB0aW1lIG91dCBpbnRvIGEgI2RlZmluZS4gKFNlYW4pCi0gSW1wcm92ZWQg
-dGhlIGNvZGUgb2YgYW5hbG9naXhfZHBfcHNyX3dvcmsoKS4gKFNlYW4pCi0gSW5kZW50ZWQgd2l0
-aCBzcGFjZXMgZm9yIG5ldyBudW1iZXJzIGluIHJvY2tjaGlwX2RwX2RldmljZSBzdHJ1Y3QuIChT
-dMOpcGhhbmUsIHJldmlld2VkIGF0IEdvb2dsZSBnZXJyaXQpCiAgICBbaHR0cHM6Ly9jaHJvbWl1
-bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ5MDg1LzMzL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jQDgzXQoKQ2hhbmdlcyBpbiB2MzoKLSBzcGxp
-dCB0aGUgY29tbW9uIHBzciBsb2dpYyBpbnRvIGEgc2VwZXJhdGUgZHJpdmVyLCBtYWtlIHRoaXMg
-dG8gYQogIHNpbXBsZSBzdWItcHNyIGRldmljZSBkcml2ZXIuCgpDaGFuZ2VzIGluIHYyOgotIHJl
-bW92ZSB2Ymxhbmsgbm90aWZ5IG91dCAoRGFuaWVsKQotIGNyZWF0ZSBhIHBzcl9hY3RpdmUoKSBj
-YWxsYmFjayBpbiB2b3AgZGF0YSBzdHJ1Y3QuCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Fu
-YWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCA1NyArKysrKysrKysrKysrKysrKysrKysrKysrCiAxIGZp
-bGUgY2hhbmdlZCwgNTcgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKaW5kZXggZTgxZTE5YS4uYWE5MTZmNCAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKQEAgLTMy
-LDYgKzMyLDcgQEAKICNpbmNsdWRlIDxkcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmg+CiAKICNpbmNs
-dWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiCisjaW5jbHVkZSAicm9ja2NoaXBfZHJtX3Bzci5oIgog
-I2luY2x1ZGUgInJvY2tjaGlwX2RybV92b3AuaCIKIAogI2RlZmluZSBSSzMyODhfR1JGX1NPQ19D
-T042CQkweDI1YwpAQCAtNDEsNiArNDIsOSBAQAogCiAjZGVmaW5lIEhJV09SRF9VUERBVEUodmFs
-LCBtYXNrKQkodmFsIHwgKG1hc2spIDw8IDE2KQogCisjZGVmaW5lIFBTUl9TRVRfREVMQVlfVElN
-RQkJbXNlY3NfdG9famlmZmllcygxMCkKKyNkZWZpbmUgUFNSX1dBSVRfTElORV9GTEFHX1RJTUVP
-VVRfTVMJMTAwCisKICNkZWZpbmUgdG9fZHAobm0pCWNvbnRhaW5lcl9vZihubSwgc3RydWN0IHJv
-Y2tjaGlwX2RwX2RldmljZSwgbm0pCiAKIC8qKgpAQCAtNjgsMTEgKzcyLDU1IEBAIHN0cnVjdCBy
-b2NrY2hpcF9kcF9kZXZpY2UgewogCXN0cnVjdCByZWdtYXAgICAgICAgICAgICAqZ3JmOwogCXN0
-cnVjdCByZXNldF9jb250cm9sICAgICAqcnN0OwogCisJc3RydWN0IGRlbGF5ZWRfd29yayAgICAg
-IHBzcl93b3JrOworCXVuc2lnbmVkIGludCAgICAgICAgICAgICBwc3Jfc3RhdGU7CisKIAljb25z
-dCBzdHJ1Y3Qgcm9ja2NoaXBfZHBfY2hpcF9kYXRhICpkYXRhOwogCiAJc3RydWN0IGFuYWxvZ2l4
-X2RwX3BsYXRfZGF0YSBwbGF0X2RhdGE7CiB9OwogCitzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9w
-c3Jfc2V0KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwgYm9vbCBlbmFibGVkKQoreworCXN0
-cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gdG9fZHAoZW5jb2Rlcik7CisKKwlkZXZfZGJn
-KGRwLT5kZXYsICIlcyBQU1IuLi5cbiIsIGVuYWJsZWQgPyAiRW50cnkiIDogIkV4aXQiKTsKKwor
-CWlmIChlbmFibGVkKQorCQlkcC0+cHNyX3N0YXRlID0gRURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZF
-OworCWVsc2UKKwkJZHAtPnBzcl9zdGF0ZSA9IH5FRFBfVlNDX1BTUl9TVEFURV9BQ1RJVkU7CisK
-KwlzY2hlZHVsZV9kZWxheWVkX3dvcmsoJmRwLT5wc3Jfd29yaywgUFNSX1NFVF9ERUxBWV9USU1F
-KTsKK30KKworc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmsoc3RydWN0IHdvcmtfc3Ry
-dWN0ICp3b3JrKQoreworCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0KKwkJCQljb250
-YWluZXJfb2Yod29yaywgdHlwZW9mKCpkcCksIHBzcl93b3JrLndvcmspOworCXN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YyA9IGRwLT5lbmNvZGVyLmNydGM7CisJaW50IHBzcl9zdGF0ZSA9IGRwLT5wc3Jf
-c3RhdGU7CisJaW50IHZhY3RfZW5kOworCWludCByZXQ7CisKKwlpZiAoIWNydGMpCisJCXJldHVy
-bjsKKworCXZhY3RfZW5kID0gY3J0Yy0+bW9kZS52dG90YWwgLSBjcnRjLT5tb2RlLnZzeW5jX3N0
-YXJ0ICsgY3J0Yy0+bW9kZS52ZGlzcGxheTsKKworCXJldCA9IHJvY2tjaGlwX2RybV93YWl0X2xp
-bmVfZmxhZyhkcC0+ZW5jb2Rlci5jcnRjLCB2YWN0X2VuZCwKKwkJCQkJICBQU1JfV0FJVF9MSU5F
-X0ZMQUdfVElNRU9VVF9NUyk7CisJaWYgKHJldCkgeworCQlkZXZfZXJyKGRwLT5kZXYsICJsaW5l
-IGZsYWcgaW50ZXJydXB0IGRpZCBub3QgYXJyaXZlXG4iKTsKKwkJcmV0dXJuOworCX0KKworCWlm
-IChwc3Jfc3RhdGUgPT0gRURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZFKQorCQlhbmFsb2dpeF9kcF9l
-bmFibGVfcHNyKGRwLT5kZXYpOworCWVsc2UKKwkJYW5hbG9naXhfZHBfZGlzYWJsZV9wc3IoZHAt
-PmRldik7Cit9CisKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcHJlX2luaXQoc3RydWN0IHJvY2tj
-aGlwX2RwX2RldmljZSAqZHApCiB7CiAJcmVzZXRfY29udHJvbF9hc3NlcnQoZHAtPnJzdCk7CkBA
-IC0zNDAsMTIgKzM4OCwyMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX2JpbmQoc3RydWN0IGRl
-dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJZHAtPnBsYXRfZGF0YS5wb3dlcl9v
-ZmYgPSByb2NrY2hpcF9kcF9wb3dlcmRvd247CiAJZHAtPnBsYXRfZGF0YS5nZXRfbW9kZXMgPSBy
-b2NrY2hpcF9kcF9nZXRfbW9kZXM7CiAKKwlkcC0+cHNyX3N0YXRlID0gfkVEUF9WU0NfUFNSX1NU
-QVRFX0FDVElWRTsKKwlJTklUX0RFTEFZRURfV09SSygmZHAtPnBzcl93b3JrLCBhbmFsb2dpeF9k
-cF9wc3Jfd29yayk7CisKKwlyb2NrY2hpcF9kcm1fcHNyX3JlZ2lzdGVyKCZkcC0+ZW5jb2Rlciwg
-YW5hbG9naXhfZHBfcHNyX3NldCk7CisKIAlyZXR1cm4gYW5hbG9naXhfZHBfYmluZChkZXYsIGRw
-LT5kcm1fZGV2LCAmZHAtPnBsYXRfZGF0YSk7CiB9CiAKIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2Rw
-X3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAkJCSAg
-ICAgICB2b2lkICpkYXRhKQogeworCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gZGV2
-X2dldF9kcnZkYXRhKGRldik7CisKKwlyb2NrY2hpcF9kcm1fcHNyX3VucmVnaXN0ZXIoJmRwLT5l
-bmNvZGVyKTsKKwogCXJldHVybiBhbmFsb2dpeF9kcF91bmJpbmQoZGV2LCBtYXN0ZXIsIGRhdGEp
-OwogfQogCi0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+This series add support for rockchip dwc3 driver,
+and add additional optional properties for specific
+platforms (e.g., rockchip rk3399 platform).
+
+William Wu (5):
+  usb: dwc3: of-simple: add compatible for rockchip rk3399
+  usb: dwc3: add dis_u2_freeclk_exists_quirk
+  usb: dwc3: make usb2 phy utmi interface configurable in DT
+  usb: dwc3: add dis_del_phy_power_chg_quirk
+  usb: dwc3: rockchip: add devicetree bindings documentation
+
+ Documentation/devicetree/bindings/usb/dwc3.txt     |  8 +++
+ .../devicetree/bindings/usb/rockchip,dwc3.txt      | 59 ++++++++++++++++++++++
+ drivers/usb/dwc3/core.c                            | 35 +++++++++++++
+ drivers/usb/dwc3/core.h                            | 18 +++++++
+ drivers/usb/dwc3/dwc3-of-simple.c                  |  1 +
+ 5 files changed, 121 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
