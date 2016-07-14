@@ -1,110 +1,94 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH v7 5/5] usb: dwc3: rockchip: add devicetree bindings documentation
-Date: Thu, 14 Jul 2016 17:02:06 +0800
-Message-ID: <1468486926-22037-1-git-send-email-william.wu@rock-chips.com>
-References: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
+From: Wadim Egorov <w.egorov@phytec.de>
+Subject: [PATCH] mfd: RK808: Fetch PMIC variant from chip id register
+Date: Thu, 14 Jul 2016 13:42:37 +0200
+Message-ID: <1468496557-26309-1-git-send-email-w.egorov@phytec.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, William Wu <william.wu@rock-chips.com>
+To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: lee.jones@linaro.org, andy.yan@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the devicetree documentation required for Rockchip
-USB3.0 core wrapper consisting of USB3.0 IP from Synopsys.
+Add and use the chip id registers to determine the PMIC variant.
 
-It supports DRD mode, and could operate in device mode (SS, HS, FS)
-and host mode (SS, HS, FS, LS).
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
 ---
-Changes in v7:
-- add Acked-by (Rob Herring)
 
-Changes in v6:
-- rename bus_clk, and add usbdrd3_1 node as an example (Heiko)
+This patch is based on top of
 
-Changes in v5:
-- rename clock-names, and remove unnecessary clocks (Heiko)
+[v6,1/5] mfd: RK808: Add RK818 support
+(https://patchwork.kernel.org/patch/9172223/)
 
-Changes in v4:
-- modify commit log, and add phy documentation location (Sergei)
+---
+ drivers/mfd/rk808.c       | 17 +++++++++--------
+ include/linux/mfd/rk808.h |  6 ++++--
+ 2 files changed, 13 insertions(+), 10 deletions(-)
 
-Changes in v3:
-- add dwc3 address (balbi)
-
-Changes in v2:
-- add rockchip,dwc3.txt to Documentation/devicetree/bindings/ (balbi, Brian)
-
- .../devicetree/bindings/usb/rockchip,dwc3.txt      | 59 ++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-
-diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-new file mode 100644
-index 0000000..0536a93
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-@@ -0,0 +1,59 @@
-+Rockchip SuperSpeed DWC3 USB SoC controller
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 66f7b08..fbec1d8 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -291,8 +291,8 @@ static void rk808_device_shutdown(void)
+ }
+ 
+ static const struct of_device_id rk808_of_match[] = {
+-	{ .compatible = "rockchip,rk808", .data = (void *) RK808_ID },
+-	{ .compatible = "rockchip,rk818", .data = (void *) RK818_ID },
++	{ .compatible = "rockchip,rk808" },
++	{ .compatible = "rockchip,rk818" },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, rk808_of_match);
+@@ -302,7 +302,6 @@ static int rk808_probe(struct i2c_client *client,
+ {
+ 	struct device_node *np = client->dev.of_node;
+ 	struct rk808 *rk808;
+-	const struct of_device_id *match;
+ 	const struct rk808_reg_data *pre_init_reg;
+ 	const struct mfd_cell *cells;
+ 	int nr_pre_init_regs;
+@@ -315,12 +314,14 @@ static int rk808_probe(struct i2c_client *client,
+ 	if (!rk808)
+ 		return -ENOMEM;
+ 
+-	match = of_match_device(rk808_of_match, &client->dev);
+-	if (!match) {
+-		dev_err(&client->dev, "Unable to match OF ID\n");
+-		return -ENODEV;
++	rk808->variant = i2c_smbus_read_word_data(client, RK808_ID_MSB);
++	if (rk808->variant < 0) {
++		dev_err(&client->dev, "Failed to read the chip id at 0x%02x\n",
++			RK808_ID_MSB);
++		return rk808->variant;
+ 	}
+-	rk808->variant = (long)match->data;
 +
-+Required properties:
-+- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
-+- clocks:	A list of phandle + clock-specifier pairs for the
-+		clocks listed in clock-names
-+- clock-names:	Should contain the following:
-+  "ref_clk"	Controller reference clk, have to be 24 MHz
-+  "suspend_clk"	Controller suspend clk, have to be 24 MHz or 32 KHz
-+  "bus_clk"	Master/Core clock, have to be >= 62.5 MHz for SS
-+		operation and >= 30MHz for HS operation
-+  "grf_clk"	Controller grf clk
-+
-+Required child node:
-+A child node must exist to represent the core DWC3 IP block. The name of
-+the node is not important. The content of the node is defined in dwc3.txt.
-+
-+Phy documentation is provided in the following places:
-+Documentation/devicetree/bindings/phy/rockchip,dwc3-usb-phy.txt
-+
-+Example device nodes:
-+
-+	usbdrd3_0: usb@fe800000 {
-+		compatible = "rockchip,rk3399-dwc3";
-+		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
-+			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_GRF>;
-+		clock-names = "ref_clk", "suspend_clk",
-+			      "bus_clk", "grf_clk";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "disabled";
-+		usbdrd_dwc3_0: dwc3@fe800000 {
-+			compatible = "snps,dwc3";
-+			reg = <0x0 0xfe800000 0x0 0x100000>;
-+			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
-+			dr_mode = "otg";
-+			status = "disabled";
-+		};
-+	};
-+
-+	usbdrd3_1: usb@fe900000 {
-+		compatible = "rockchip,rk3399-dwc3";
-+		clocks = <&cru SCLK_USB3OTG1_REF>, <&cru SCLK_USB3OTG1_SUSPEND>,
-+			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_GRF>;
-+		clock-names = "ref_clk", "suspend_clk",
-+			      "bus_clk", "grf_clk";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "disabled";
-+		usbdrd_dwc3_1: dwc3@fe900000 {
-+			compatible = "snps,dwc3";
-+			reg = <0x0 0xfe900000 0x0 0x100000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-+			dr_mode = "otg";
-+			status = "disabled";
-+		};
-+	};
++	dev_dbg(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
+ 
+ 	switch (rk808->variant) {
+ 	case RK808_ID:
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index e5ae21d..fc5db6f 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -69,6 +69,8 @@ enum rk808_reg {
+ #define RK808_RTC_INT_REG	0x12
+ #define RK808_RTC_COMP_LSB_REG	0x13
+ #define RK808_RTC_COMP_MSB_REG	0x14
++#define RK808_ID_MSB		0x17
++#define RK808_ID_LSB		0x18
+ #define RK808_CLK32OUT_REG	0x20
+ #define RK808_VB_MON_REG	0x21
+ #define RK808_THERMAL_REG	0x22
+@@ -318,8 +320,8 @@ enum {
+ };
+ 
+ enum {
+-	RK808_ID,
+-	RK818_ID,
++	RK808_ID = 0x0000,
++	RK818_ID = 0x8181,
+ };
+ 
+ struct rk808 {
 -- 
 1.9.1
