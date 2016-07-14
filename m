@@ -1,96 +1,125 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [v5 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Thu, 14 Jul 2016 10:15:01 +0900
-Message-ID: <5786E795.6040504@samsung.com>
-References: <1468336188-565-1-git-send-email-zyw@rock-chips.com>
- <CGME20160712151003epcas1p3d60b6754866b984f943b7bea4be6d33f@epcas1p3.samsung.com>
- <1468336188-565-2-git-send-email-zyw@rock-chips.com>
- <57859532.1010002@samsung.com> <57859BDA.7080309@rock-chips.com>
- <5785A1F3.1020703@samsung.com> <5785AD61.3070307@rock-chips.com>
- <5786E1B6.2000805@samsung.com> <5786E4E7.30505@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: Support PMU for rk3399 SoCs
+Date: Thu, 14 Jul 2016 09:14:57 +0800
+Message-ID: <5786E791.1010906@gmail.com>
+References: <1467792357-9749-1-git-send-email-wxt@rock-chips.com> <20160706112444.GB14657@leverpostej>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <5786E4E7.30505@rock-chips.com>
+In-Reply-To: <20160706112444.GB14657@leverpostej>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Caesar Wang <wxt@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, huangtao@rock-chips.com, devicetree@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, cf@rock-chips.com, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+Hi,
 
-[snip]
+On 2016=E5=B9=B407=E6=9C=8806=E6=97=A5 19:24, Mark Rutland wrote:
+> On Wed, Jul 06, 2016 at 04:05:55PM +0800, Caesar Wang wrote:
+>> Hello Heiko, Marc & ARM guys
+> Hi,
+>
+> These patches themselves look fine, so FWIW:
+>
+> Acked-by: Mark Rutland <mark.rutland@arm.com>
 
->>>> Thanks,
->>>> Chanwoo Choi
->>> There are 4 modes for Type-C DP alt mode:
->>> 1) USB host only  :
->>>
->>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 1);
->>> extcon_set_cable_state(edev, EXTCON_USB, 0);
->>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 0);
->>>
->>> 2) USB device only
->>>
->>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 0);
->>> extcon_set_cable_state(edev, EXTCON_USB, 1);
->>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 0);
->>>
->>> 3) DP only
->>>
->>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 0);
->>> extcon_set_cable_state(edev, EXTCON_USB, 0);
->>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 1);
->>>
->>> 4) USB + DP
->>>
->>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 1);
->>> extcon_set_cable_state(edev, EXTCON_USB, 0);
->>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 1);
->>>
->>>
->>> for 3rd mode: DP only, there is only EXTCON_DISP_DP is attached, the EXTCON_USB_HOST
->>> and EXTCON_USB are detached, Can I set the property into these 2 detached cable?
->>> or just call extcon_set_cable_state(edev, EXTCON_DISP_DP, EXTCON_PROP_TYPEC_POLARITY, 0 or 1);
->> I'm thinking to solve this issue. In result, we can add one more type to specific connector.
->> For EXTCON_DISP_DP, we can add the two type as following. And EXTCON_PROP_TYPEC_POLARITY property
->> should be added to EXTCON_TYPE_USB.
->>
->> +    [EXTCON_DISP_DP] = {
->> +        .type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
->> +        .id = EXTCON_DISP_DP,
->> +        .name = "DP",
->> +    },
->>
->> So, as you mentioned, EXTCON_DISP_DP can set the EXTCON_PROP_TYPEC_POLARITY property as following:
->> - extcon_set_cable_state(edev, EXTCON_DISP_DP, EXTCON_PROP_TYPEC_POLARITY, 0 or 1);
->>
->> I'll again developing the extcon property.
->>
->> Thanks,
->> Chanwoo Choi
->>
-> Nice idea, But I am thinking about is it compatible with real DisplayPort without Type-C.
-> Maybe we should add a new cable: EXTCON_DISP_DP_ALT
-> 
-> +    [EXTCON_DISP_DP] = {
-> +        .type = EXTCON_TYPE_DISP,
-> +        .id = EXTCON_DISP_DP,
-> +        .name = "DP",
-> +    },
-> 
-> +    [EXTCON_DISP_DP_ALT] = {
-> +        .type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
-> +        .id = EXTCON_DISP_DP,
-> +        .name = "DP ALT",
-> +    },
+Thanks your ack.
 
-EXTCON_DISP_DP_ALT means EXTCON_DISP_DP connector with EXTCON_PROP_TYPEC_POLARITY property.
-So, we can explain the DP alternative mode without EXTCON_DISP_DP_ALT.
+>
+> The prerequisite patch from Marc [1] also largely looks fine, but the=
+re
+> are some minor details to sort out [2], so at this point in time I'm
+> guesssing this is all v4.9 material.
+>
+> Thanks,
+> Mark.
+>
+> [1] http://lists.infradead.org/pipermail/linux-arm-kernel/2016-July/4=
+40647.html
+> [2] http://lists.infradead.org/pipermail/linux-arm-kernel/2016-July/4=
+41495.html
 
-I'm wondering to add the new EXTCON_DISP_DP_ALT connector
-because alternative mode was defined as mode instead of new h/w connector type.
+Okay, I saw the Marc's patch had been merged on next kernel.:-)
 
-Thanks,
-Chanwoo Choi
+
+-Caesar
+>
+>> When Jay first submitted the rk3399.dtsi upstream
+>> <https://patchwork.kernel.org/patch/8885821/> he had the PMU node in=
+ there,
+>> but then took it out because the upstream binding wasn't done yet.
+>> It looks as if the upstream stuff has landed, since in linux/master =
+I see:
+>> 287e9357abcc DT/arm,gic-v3: Documment PPI partition support
+>> e3825ba1af3a irqchip/gic-v3: Add support for partitioned PPIs
+>> 9e2c986cb460 irqchip: Add per-cpu interrupt partitioning library
+>> 222df54fd8b7 genirq: Allow the affinity of a percpu interrupt to be =
+set/retrieved
+>> 651e8b54abde irqdomain: Allow domain matching on irq_fwspec
+>>
+>> This series patches add to support the rk3399 SoCs PMU.
+>> I pick up the https://patchwork.kernel.org/patch/9209369/.
+>>
+>> As do some tests with ChromeOs for my rk3399 board.
+>> Tested with linus master 4.7-rc6 kernel on rk3399 board.
+>> https://github.com/Caesar-github/rockchip/tree/rk3399/pmu-upstream
+>>
+>> localhost / # perf list
+>>
+>> List of pre-defined events (to be used in -e):
+>> cpu-cycles OR cycles [Hardware event]
+>> instructions [Hardware event]
+>> cache-references [Hardware event]
+>> cache-misses [Hardware event]
+>> branch-instructions OR branches [Hardware event]
+>> branch-misses [Hardware event]
+>> bus-cycles [Hardware event]
+>> ...
+>>
+>> perf stat --cpu 0/1/2/3..... to minitor
+>> e.g. cpu0;
+>>
+>> localhost / # perf stat --cpu 0
+>>
+>> Performance counter stats for 'CPU(s) 0':
+>>
+>> 3374.917571 task-clock (msec) # 1.001 CPUs utilized [100.00%]
+>> 20 context-switches # 0.006 K/sec [100.00%]
+>> 2 cpu-migrations # 0.001 K/sec [100.00%]
+>> 55 page-faults # 0.016 K/sec
+>> 7151843 cycles # 0.002 GHz [100.00%]
+>> <not supported> stalled-cycles-frontend
+>> <not supported> stalled-cycles-backend
+>> 4272536 instructions # 0.60 insns per cycle [100.00%]
+>> 568406 branches # 0.168 M/sec [100.00%]
+>> 65652 branch-misses # 11.55% of all branches
+>>
+>> Also, 'perf top' to monitor the PMU interrupts from cpus
+>>
+>> -Caesar
+>>
+>>
+>> Changes in v2:
+>> - AS Mark comments on https://patchwork.kernel.org/patch/9209369/
+>>    remove the interrupt-affinity property, we need depend on Marc' p=
+erf
+>>    code on https://patchwork.kernel.org/patch/9209369/.
+>>
+>> Caesar Wang (2):
+>>    arm64: dts: rockchip: change all interrupts cells for 4 on rk3399=
+ SoCs
+>>    arm64: dts: rockchip: support the pmu node for rk3399
+>>
+>>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 118 ++++++++++++++++++-=
+------------
+>>   1 file changed, 69 insertions(+), 49 deletions(-)
+>>
+>> --=20
+>> 1.9.1
+>>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
