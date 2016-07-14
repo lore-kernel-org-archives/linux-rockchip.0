@@ -1,156 +1,96 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Chanwoo Choi <cw00.choi@samsung.com>
 Subject: Re: [v5 PATCH 1/5] extcon: Add Type-C and DP support
-Date: Thu, 14 Jul 2016 09:03:35 +0800
-Message-ID: <5786E4E7.30505@rock-chips.com>
+Date: Thu, 14 Jul 2016 10:15:01 +0900
+Message-ID: <5786E795.6040504@samsung.com>
 References: <1468336188-565-1-git-send-email-zyw@rock-chips.com>
  <CGME20160712151003epcas1p3d60b6754866b984f943b7bea4be6d33f@epcas1p3.samsung.com>
  <1468336188-565-2-git-send-email-zyw@rock-chips.com>
  <57859532.1010002@samsung.com> <57859BDA.7080309@rock-chips.com>
  <5785A1F3.1020703@samsung.com> <5785AD61.3070307@rock-chips.com>
- <5786E1B6.2000805@samsung.com>
+ <5786E1B6.2000805@samsung.com> <5786E4E7.30505@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5786E1B6.2000805-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <5786E4E7.30505@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hhbndvbyBDaG9pCgpPbiAwNy8xNC8yMDE2IDA4OjQ5IEFNLCBDaGFud29vIENob2kgd3Jv
-dGU6Cj4gSGkgQ2hyaXMsCj4KPiBPbiAyMDE264WEIDA37JuUIDEz7J28IDExOjU0LCBDaHJpcyBa
-aG9uZyB3cm90ZToKPj4gSGkgQ2hhbndvbyBDaG9pCj4+Cj4+IE9uIDA3LzEzLzIwMTYgMTA6MDUg
-QU0sIENoYW53b28gQ2hvaSB3cm90ZToKPj4+IEhpIENocmlzLAo+Pj4KPj4+IE9uIDIwMTbrhYQg
-MDfsm5QgMTPsnbwgMTA6MzksIENocmlzIFpob25nIHdyb3RlOgo+Pj4+IEhpIENoYW53b28gQ2hv
-aQo+Pj4+Cj4+Pj4KPj4+PiBPbiAwNy8xMy8yMDE2IDA5OjExIEFNLCBDaGFud29vIENob2kgd3Jv
-dGU6Cj4+Pj4+IEhpIENocmlzLAo+Pj4+Pgo+Pj4+PiBJJ20gbm93IGRldmVsb3BpbmcgdGhlIGV4
-dGNvbiBwcm9wZXJ0eSBvbiBleHRjb24tdGVzdCBicmFuY2guCj4+Pj4+IEJ1dCwgaXQgaGFzIG5v
-dCBiZWVuIGNvbXBsZXRlZC4KPj4+Pj4KPj4+Pj4gT24gbmV4dCB2ZXJzaW9uLCBJJ2xsIHJlbW92
-ZSB0aGUgbm90aWZpY2F0aW9uIGFib3V0IGV4dGNvbiBwcm9wZXJ0eQo+Pj4+PiBhbmQgb25seSBz
-dXBwb3J0IHRoZSBmb2xsb3dpbmcgdHdvIGZ1bmN0aW9ucy4KPj4+Pj4gLSBleHRjb25fc2V0X2Nh
-YmxlX3Byb3BlcnR5KCkKPj4+Pj4gLSBleHRjb25fZ2V0X2NhYmxlX3Byb3BlcnR5KCkKPj4+Pj4K
-Pj4+Pj4gQmVjYXVzZSB0aGUgbnVtYmVyIG9mIHByb3BlcnRpZXMgd291bGQgYmUgcmlzZW4gYW5k
-IHRoZSBhbGwgcHJvcGVydGllcwo+Pj4+PiBkZXBlbmQgb24gdGhlIHNwZWNpZmljIGV4dGVybmFs
-IGNvbm5lY3RvcihlLmcuLCBFWFRDT05fUFJPUF9VU0JfVkJVUwo+Pj4+PiBkZXBlbmQgb24gdGhl
-IEVYVENPTl9UWVBFX1VTQiB0eXBlKS4gV2hlbiB0aGUgc3BlY2lmaWMgZXh0ZXJuYWwgY29ubmVj
-dG9yCj4+Pj4+IGlzIGRldGFjaGVkLCBleHRjb24gZnJhbWV3b3JrIHNob3VsZCBtYWtlIHRoZSBw
-cm9wZXJ0eSBzdGF0ZSBhcyBkZWZhdWx0IHN0YXRlLgo+Pj4+IFllcywgSSB0aGluayBnZXR0aW5n
-IHRoZSBub3RpZmljYXRpb24gZnJvbSBjYWJsZSBzdGF0ZSBpcyBlbm91Z2gsIGFjdHVhbGx5IEkg
-YW0gdXNpbmcgaXQgbGlrZSB5b3Ugc2FpZC4KPj4+IE9LLgo+Pj4KPj4+Pj4gSXQgbWF5IHNlbmQg
-dGhlIHRvbyBtYW55IG5vdGlmaWNhdGlvbiBmb3IgZXh0Y29uIHByb3BlcnR5Lgo+Pj4+PiBGb3Ig
-ZXhhbXBsZSwgQXNzdW1lIHRoYXQgRVhUQ09OX1RZUEVfVVNCIGhhcyB0aGUgb3ZlciAyMCBwcm9w
-ZXJ0aWVzLAo+Pj4+PiB3aGVuIEVYVENPTl9VU0Igb3IgRVhUQ09OX1VTQl9IT1NUIGlzIGRldGFj
-aGVkLCBleHRjb24gc2hvdWxkIHNlbmQKPj4+Pj4gdGhlIG5vdGlmaWNhdGlvbiBmb3IgdGhlIG92
-ZXIgMjAgcHJvcGVydGllcyBhbmQgb25lIG1vcmUgbm90aWZpY2FpdG9uCj4+Pj4+IGZvciBzdGF0
-ZSBvZiBleHRlcm5hbCBjb25uZWN0b3IuCj4+Pj4+Cj4+Pj4+IFNvLCBJJ2xsIHNlbmQgdGhlIFJG
-QyBwYXRjaHNldCB3aXRob3V0IHRoZSBub3RpZmljYXRpb24gb2YgcHJvZXJ0eS4KPj4+Pj4KPj4+
-Pj4gTGFzdGx5LAo+Pj4+PiBJIGhhdmUgYSBjb21tZW50IG9uIGJlbG93Lgo+Pj4+Pgo+Pj4+PiBU
-aGFua3MsCj4+Pj4+IENoYW53b28gQ2hvaQo+Pj4+Pgo+Pj4+PiBPbiAyMDE264WEIDA37JuUIDEz
-7J28IDAwOjA5LCBDaHJpcyBaaG9uZyB3cm90ZToKPj4+Pj4+IEFkZCBFWFRDT05fRElTUF9EUCBm
-b3IgdGhlIERpc3BsYXkgZXh0ZXJuYWwgY29ubmVjdG9yLiBGb3IgVHlwZS1DCj4+Pj4+PiBjb25u
-ZWN0b3IgdGhlIERpc3BsYXlQb3J0IGNhbiB3b3JrIGFzIGFuIEFsdGVybmF0ZSBNb2RlKFZFU0Eg
-RGlzcGxheVBvcnQKPj4+Pj4+IEFsdCBNb2RlIG9uIFVTQiBUeXBlLUMgU3RhbmRhcmQpLiBUaGUg
-VHlwZS1DIHN1cHBvcnQgYm90aCBub3JtYWwgYW5kCj4+Pj4+PiBmbGlwcGVkIG9yaWVudGF0aW9u
-LCBzbyBhZGQgYSBwcm9wZXJ0eSB0byBleHRjb24uCj4+Pj4+Pgo+Pj4+Pj4gU2lnbmUtb2ZmLWJ5
-OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+Pj4+Pj4KPj4+Pj4+IFNpZ25lZC1v
-ZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4+Pj4+PiAtLS0KPj4+Pj4+
-Cj4+Pj4+PiBDaGFuZ2VzIGluIHY1Ogo+Pj4+Pj4gLSBzdXBwb3J0IGdldCBwcm9wZXJ0eQo+Pj4+
-Pj4KPj4+Pj4+IENoYW5nZXMgaW4gdjQ6IE5vbmUKPj4+Pj4+IENoYW5nZXMgaW4gdjM6IE5vbmUK
-Pj4+Pj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4+Pj4+IENoYW5nZXMgaW4gdjE6IE5vbmUKPj4+
-Pj4+Cj4+Pj4+PiAgICAgZHJpdmVycy9leHRjb24vZXh0Y29uLmMgfCAyOCArKysrKysrKysrKysr
-KysrKysrKysrKysrKysrCj4+Pj4+PiAgICAgaW5jbHVkZS9saW51eC9leHRjb24uaCAgfCAxMyAr
-KysrKysrKysrKysrCj4+Pj4+PiAgICAgMiBmaWxlcyBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCsp
-Cj4+Pj4+Pgo+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZXh0Y29uL2V4dGNvbi5jIGIvZHJp
-dmVycy9leHRjb24vZXh0Y29uLmMKPj4+Pj4+IGluZGV4IGExMTE3ZGIuLjI1OTFiMjggMTAwNjQ0
-Cj4+Pj4+PiAtLS0gYS9kcml2ZXJzL2V4dGNvbi9leHRjb24uYwo+Pj4+Pj4gKysrIGIvZHJpdmVy
-cy9leHRjb24vZXh0Y29uLmMKPj4+Pj4+IEBAIC0xNTcsNiArMTU3LDExIEBAIHN0cnVjdCBfX2V4
-dGNvbl9pbmZvIHsKPj4+Pj4+ICAgICAgICAgICAgIC5pZCA9IEVYVENPTl9ESVNQX1ZHQSwKPj4+
-Pj4+ICAgICAgICAgICAgIC5uYW1lID0gIlZHQSIsCj4+Pj4+PiAgICAgICAgIH0sCj4+Pj4+PiAr
-ICAgIFtFWFRDT05fRElTUF9EUF0gPSB7Cj4+Pj4+PiArICAgICAgICAudHlwZSA9IEVYVENPTl9U
-WVBFX0RJU1AsCj4+Pj4+PiArICAgICAgICAuaWQgPSBFWFRDT05fRElTUF9EUCwKPj4+Pj4+ICsg
-ICAgICAgIC5uYW1lID0gIkRQIiwKPj4+Pj4+ICsgICAgfSwKPj4+Pj4+ICAgICAgICAgICAvKiBN
-aXNjZWxsYW5lb3VzIGV4dGVybmFsIGNvbm5lY3RvciAqLwo+Pj4+Pj4gICAgICAgICBbRVhUQ09O
-X0RPQ0tdID0gewo+Pj4+Pj4gQEAgLTI3MCw2ICsyNzUsNyBAQCBzdGF0aWMgYm9vbCBpc19leHRj
-b25fcHJvcGVydHlfc3VwcG9ydGVkKHVuc2lnbmVkIGludCBpZCwKPj4+Pj4+ICAgICAgICAgICAg
-IHN3aXRjaCAocHJvcCkgewo+Pj4+Pj4gICAgICAgICAgICAgY2FzZSBFWFRDT05fUFJPUF9VU0Jf
-SUQ6Cj4+Pj4+PiAgICAgICAgICAgICBjYXNlIEVYVENPTl9QUk9QX1VTQl9WQlVTOgo+Pj4+Pj4g
-KyAgICAgICAgY2FzZSBFWFRDT05fUFJPUF9UWVBFQ19QT0xBUklUWToKPj4+Pj4+ICAgICAgICAg
-ICAgICAgICByZXR1cm4gdHJ1ZTsKPj4+Pj4+ICAgICAgICAgICAgIGRlZmF1bHQ6Cj4+Pj4+PiAg
-ICAgICAgICAgICAgICAgYnJlYWs7Cj4+Pj4+PiBAQCAtMjg2LDYgKzI5Miw4IEBAIHN0YXRpYyBi
-b29sIGlzX2V4dGNvbl9wcm9wZXJ0eV9zdXBwb3J0ZWQodW5zaWduZWQgaW50IGlkLAo+Pj4+Pj4g
-ICAgICAgICAgICAgfQo+Pj4+Pj4gICAgICAgICBjYXNlIEVYVENPTl9UWVBFX0RJU1A6Cj4+Pj4+
-PiAgICAgICAgICAgICBzd2l0Y2ggKHByb3ApIHsKPj4+Pj4+ICsgICAgICAgIGNhc2UgRVhUQ09O
-X1BST1BfVFlQRUNfUE9MQVJJVFk6Cj4+Pj4+IFNob3VsZCBFWFRDT05fUFJPUF9UWVBFQ19QT0xB
-UklUWSBwcm9wZXJ0eSBhZGQgdG8gYm90aCBFWFRDT05fVFlQRV9VU0IgYW5kIEVYVENPTl9UWVBf
-RElTUD8KPj4+Pj4gRVhUQ09OX1BST1BfVFlQRUNfUE9MQVJJVFkgaXMgdGhlIHByb3BlcnR5IG9m
-IFVTQiBDLXR5cGU/Cj4+Pj4gaXQgaXMgZm9yIFVTQiBUeXBlLUMsIEJ1dCBhdCBEaXNwbGF5IFBv
-cnQgYWx0IG1vZGUsIGJvdGggRVhUQ09OX1VTQiBhbmQgRVhUQ09OX1VTQl9IT1NUIG1heSBiZSBk
-ZXRhY2hlZC4gRG9lcyBpdCBzdXBwb3J0IHNldCB0aGUgcHJvcGVydHkgdG8gYSBkZXRhY2hlZCBj
-YWJsZSwgaWYgc28sIEkgdGhpbmsgbW92ZSB0aGlzIGNhc2UgdG8gRVhUQ09OX1VTQiBpcyBmaW5l
-Lgo+Pj4gT25lIGV4dGVybmFsIGNvbm5lY3RvciBjYW4gc2V0IHRoZSBzdGF0ZSBvZiBvbmUgbW9y
-ZSBleHRlcm5hbCBjb25uZWN0b3IKPj4+IGlmIHRoZSBvbmUgY29ubmVjdG9yIHN1cHBvcnQgdGhl
-IHZhcmlvdXMgZnVuY3Rpb25zLgo+Pj4gRm9yIGV4YW1wbGUsIEVYVENPTl9VU0IgYW5kIEVYVENP
-Tl9DSEdfVVNCX1NEUAo+Pj4gVGhlIGV4aXN0aW5nIGV4dGNvbiBkcml2ZXJbMV0oZS5nLiwgbWF4
-MTQ1NzcvbWF4Nzc2OTMgZXRjLikgc2V0IHRoZSBzdGF0ZSBvZiBib3RoIEVYVENPTl9VU0IgYW5k
-IEVYVENPTl9DSEdfVVNCX1NEUCBjb25uZWN0b3IgYXQgdGhlIHNhbWUgdGltZQo+Pj4gd2hlbiB1
-c2IgY2FibGUgaXMgYXR0YWNoZWQuIEJlY2F1c2UgaW4gdGhpcyBjYXNlLCB0aGUgdXNiIGNvbm5l
-Y3RvciB1c2VzIGFzIGJvdGggcG93ZXIgc3VwcGx5KEVYVENPTl9DSEdfVVNCX1NEUCkgYW5kIGRh
-dGEgdHJhbnNmZXIoRVhUQ09OX1VTQikuCj4+PiBbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9j
-Z2l0L2xpbnV4L2tlcm5lbC9naXQvY2hhbndvby9leHRjb24uZ2l0L2NvbW1pdC8/aD1leHRjb24t
-bmV4dCZpZD04YjQ1YjZhMDc0MTY3ODkwMjgxMGQ3YmU5NWU2MzVjMjEwZmJiMTk4Cj4+Pgo+Pj4g
-U28sIERQIEFsdCBtb2RlIHVzZXMgdGhlIFVTQiBUeXBlLUMuIFNvLCBXaGVuIFVTQiBDLXR5cGUg
-Y29ubmVjdG9yIGlzIGF0dGFjaGVkIGZvciBEUCBBbHQgbW9kZSwKPj4+IE1heWJlLCB5b3UgY2Fu
-IHNldCB0aGUgZm9sbG93aW5nIHR3byBzdGF0ZSBvZiBjb25uZWN0b3IgYW5kIG9uZSBwcm9wZXJ0
-eToKPj4+IC0gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBbRVhUQ09OX1VTQiBvciBFWFRD
-T05fVVNCX0hPU1RdLCAxKTsKPj4+IC0gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRD
-T05fRElTUF9EUCwgMSk7Cj4+PiAtIGV4dGNvbl9zZXRfY2FibGVfc3RhdGUoZWRldiwgW0VYVENP
-Tl9VU0Igb3IgRVhUQ09OX1VTQl9IT1NUXSwgRVhUQ09OX1BST1BfVFlQRUNfUE9MQVJJVFksIDAg
-b3IgMSk7Cj4+Pgo+Pj4gVGhhbmtzLAo+Pj4gQ2hhbndvbyBDaG9pCj4+IFRoZXJlIGFyZSA0IG1v
-ZGVzIGZvciBUeXBlLUMgRFAgYWx0IG1vZGU6Cj4+IDEpIFVTQiBob3N0IG9ubHkgIDoKPj4KPj4g
-ZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCX0hPU1QsIDEpOwo+PiBleHRj
-b25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9VU0IsIDApOwo+PiBleHRjb25fc2V0X2Nh
-YmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQX0RQLCAwKTsKPj4KPj4gMikgVVNCIGRldmljZSBv
-bmx5Cj4+Cj4+IGV4dGNvbl9zZXRfY2FibGVfc3RhdGUoZWRldiwgRVhUQ09OX1VTQl9IT1NULCAw
-KTsKPj4gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCLCAxKTsKPj4gZXh0
-Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fRElTUF9EUCwgMCk7Cj4+Cj4+IDMpIERQ
-IG9ubHkKPj4KPj4gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCX0hPU1Qs
-IDApOwo+PiBleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9VU0IsIDApOwo+PiBl
-eHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQX0RQLCAxKTsKPj4KPj4gNCkg
-VVNCICsgRFAKPj4KPj4gZXh0Y29uX3NldF9jYWJsZV9zdGF0ZShlZGV2LCBFWFRDT05fVVNCX0hP
-U1QsIDEpOwo+PiBleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9VU0IsIDApOwo+
-PiBleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQX0RQLCAxKTsKPj4KPj4K
-Pj4gZm9yIDNyZCBtb2RlOiBEUCBvbmx5LCB0aGVyZSBpcyBvbmx5IEVYVENPTl9ESVNQX0RQIGlz
-IGF0dGFjaGVkLCB0aGUgRVhUQ09OX1VTQl9IT1NUCj4+IGFuZCBFWFRDT05fVVNCIGFyZSBkZXRh
-Y2hlZCwgQ2FuIEkgc2V0IHRoZSBwcm9wZXJ0eSBpbnRvIHRoZXNlIDIgZGV0YWNoZWQgY2FibGU/
-Cj4+IG9yIGp1c3QgY2FsbCBleHRjb25fc2V0X2NhYmxlX3N0YXRlKGVkZXYsIEVYVENPTl9ESVNQ
-X0RQLCBFWFRDT05fUFJPUF9UWVBFQ19QT0xBUklUWSwgMCBvciAxKTsKPiBJJ20gdGhpbmtpbmcg
-dG8gc29sdmUgdGhpcyBpc3N1ZS4gSW4gcmVzdWx0LCB3ZSBjYW4gYWRkIG9uZSBtb3JlIHR5cGUg
-dG8gc3BlY2lmaWMgY29ubmVjdG9yLgo+IEZvciBFWFRDT05fRElTUF9EUCwgd2UgY2FuIGFkZCB0
-aGUgdHdvIHR5cGUgYXMgZm9sbG93aW5nLiBBbmQgRVhUQ09OX1BST1BfVFlQRUNfUE9MQVJJVFkg
-cHJvcGVydHkKPiBzaG91bGQgYmUgYWRkZWQgdG8gRVhUQ09OX1RZUEVfVVNCLgo+Cj4gKwlbRVhU
-Q09OX0RJU1BfRFBdID0gewo+ICsJCS50eXBlID0gRVhUQ09OX1RZUEVfRElTUCB8IEVYVENPTl9U
-WVBFX1VTQiwKPiArCQkuaWQgPSBFWFRDT05fRElTUF9EUCwKPiArCQkubmFtZSA9ICJEUCIsCj4g
-Kwl9LAo+Cj4gU28sIGFzIHlvdSBtZW50aW9uZWQsIEVYVENPTl9ESVNQX0RQIGNhbiBzZXQgdGhl
-IEVYVENPTl9QUk9QX1RZUEVDX1BPTEFSSVRZIHByb3BlcnR5IGFzIGZvbGxvd2luZzoKPiAtIGV4
-dGNvbl9zZXRfY2FibGVfc3RhdGUoZWRldiwgRVhUQ09OX0RJU1BfRFAsIEVYVENPTl9QUk9QX1RZ
-UEVDX1BPTEFSSVRZLCAwIG9yIDEpOwo+Cj4gSSdsbCBhZ2FpbiBkZXZlbG9waW5nIHRoZSBleHRj
-b24gcHJvcGVydHkuCj4KPiBUaGFua3MsCj4gQ2hhbndvbyBDaG9pCj4KTmljZSBpZGVhLCBCdXQg
-SSBhbSB0aGlua2luZyBhYm91dCBpcyBpdCBjb21wYXRpYmxlIHdpdGggcmVhbCAKRGlzcGxheVBv
-cnQgd2l0aG91dCBUeXBlLUMuCk1heWJlIHdlIHNob3VsZCBhZGQgYSBuZXcgY2FibGU6IEVYVENP
-Tl9ESVNQX0RQX0FMVAoKKwlbRVhUQ09OX0RJU1BfRFBdID0geworCQkudHlwZSA9IEVYVENPTl9U
-WVBFX0RJU1AsCisJCS5pZCA9IEVYVENPTl9ESVNQX0RQLAorCQkubmFtZSA9ICJEUCIsCisJfSwK
-CisJW0VYVENPTl9ESVNQX0RQX0FMVF0gPSB7CisJCS50eXBlID0gRVhUQ09OX1RZUEVfRElTUCB8
-IEVYVENPTl9UWVBFX1VTQiwKKwkJLmlkID0gRVhUQ09OX0RJU1BfRFAsCisJCS5uYW1lID0gIkRQ
-IEFMVCIsCisJfSwKCgoKPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Chris,
+
+[snip]
+
+>>>> Thanks,
+>>>> Chanwoo Choi
+>>> There are 4 modes for Type-C DP alt mode:
+>>> 1) USB host only  :
+>>>
+>>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 1);
+>>> extcon_set_cable_state(edev, EXTCON_USB, 0);
+>>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 0);
+>>>
+>>> 2) USB device only
+>>>
+>>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 0);
+>>> extcon_set_cable_state(edev, EXTCON_USB, 1);
+>>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 0);
+>>>
+>>> 3) DP only
+>>>
+>>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 0);
+>>> extcon_set_cable_state(edev, EXTCON_USB, 0);
+>>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 1);
+>>>
+>>> 4) USB + DP
+>>>
+>>> extcon_set_cable_state(edev, EXTCON_USB_HOST, 1);
+>>> extcon_set_cable_state(edev, EXTCON_USB, 0);
+>>> extcon_set_cable_state(edev, EXTCON_DISP_DP, 1);
+>>>
+>>>
+>>> for 3rd mode: DP only, there is only EXTCON_DISP_DP is attached, the EXTCON_USB_HOST
+>>> and EXTCON_USB are detached, Can I set the property into these 2 detached cable?
+>>> or just call extcon_set_cable_state(edev, EXTCON_DISP_DP, EXTCON_PROP_TYPEC_POLARITY, 0 or 1);
+>> I'm thinking to solve this issue. In result, we can add one more type to specific connector.
+>> For EXTCON_DISP_DP, we can add the two type as following. And EXTCON_PROP_TYPEC_POLARITY property
+>> should be added to EXTCON_TYPE_USB.
+>>
+>> +    [EXTCON_DISP_DP] = {
+>> +        .type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
+>> +        .id = EXTCON_DISP_DP,
+>> +        .name = "DP",
+>> +    },
+>>
+>> So, as you mentioned, EXTCON_DISP_DP can set the EXTCON_PROP_TYPEC_POLARITY property as following:
+>> - extcon_set_cable_state(edev, EXTCON_DISP_DP, EXTCON_PROP_TYPEC_POLARITY, 0 or 1);
+>>
+>> I'll again developing the extcon property.
+>>
+>> Thanks,
+>> Chanwoo Choi
+>>
+> Nice idea, But I am thinking about is it compatible with real DisplayPort without Type-C.
+> Maybe we should add a new cable: EXTCON_DISP_DP_ALT
+> 
+> +    [EXTCON_DISP_DP] = {
+> +        .type = EXTCON_TYPE_DISP,
+> +        .id = EXTCON_DISP_DP,
+> +        .name = "DP",
+> +    },
+> 
+> +    [EXTCON_DISP_DP_ALT] = {
+> +        .type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
+> +        .id = EXTCON_DISP_DP,
+> +        .name = "DP ALT",
+> +    },
+
+EXTCON_DISP_DP_ALT means EXTCON_DISP_DP connector with EXTCON_PROP_TYPEC_POLARITY property.
+So, we can explain the DP alternative mode without EXTCON_DISP_DP_ALT.
+
+I'm wondering to add the new EXTCON_DISP_DP_ALT connector
+because alternative mode was defined as mode instead of new h/w connector type.
+
+Thanks,
+Chanwoo Choi
