@@ -1,139 +1,58 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] spi: rockchip: limit transfers to (64K - 1) bytes
-Date: Fri, 15 Jul 2016 10:42:55 +0800
-Message-ID: <b855036c-86b3-3515-86ae-24de820564ff@rock-chips.com>
-References: <1468546259-136659-1-git-send-email-briannorris@chromium.org>
- <131afa39-4287-0fb8-61f4-146283dc7cf0@rock-chips.com>
- <20160715023152.GA145248@google.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: allocate correct crtc state structure on
+ reset
+Date: Fri, 15 Jul 2016 10:46:38 +0800
+Message-ID: <57884E8E.3000504@rock-chips.com>
+References: <20160714152915.31235-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160715023152.GA145248@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, Eddie Cai <eddie.cai@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, hhb@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160714152915.31235-1-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/7/15 10:31, Brian Norris =E5=86=99=E9=81=93:
-> Hi Shawn,
->
-> On Fri, Jul 15, 2016 at 09:56:59AM +0800, Shawn Lin wrote:
->> =E5=9C=A8 2016/7/15 9:30, Brian Norris =E5=86=99=E9=81=93:
->>> The Rockchip SPI controller's length register only supports 16-bits=
-,
->>> yielding a maximum length of 64KiB (the CTRLR1 register holds "leng=
-th -
->>> 1"). Trying to transfer more than that (e.g., with a large SPI flas=
-h
->>> read) will cause the driver to hang.
->>
->> Brian, are you using dma or pio?
->
-> I forgot to mention, I'm using PIO. (The rk3399.dts in linux-next
-> doesn't even have the 'dma{s,-names}' properties listed for spi[0-5].=
-)
-
-okay.
-
->
->> From huibing's feedback for rk3399, you can see...
->>
->> root@rk3399:/ # echo read 0 1 0x10001 > /sys/slt/SPI.0/SPI.0
->
-> I don't know what that file is, but presumably it's some kind of bare
-> SPI test interface you have in your private tree?
-
-yes.
-
->
->> [148360.004332] f0041200:       DMAMOV CCR 0x804200
->> [148360.004772] f0041206:       DMAMOV SAR 0xff1d0800
->> [148360.005161] f004120c:       DMAMOV DAR 0xc9f60000
->> [148360.005549] f0041212:       DMALP_0 255
->> [148360.005866] f0041214:       DMALP_1 255
->> [148360.006178] f0041216:       DMAWFPB 13
->> [148360.006483] f0041218:       DMALDPB 13
->> [148360.006788] f004121a:       DMASTA
->> [148360.007061] f004121b:       DMAFLUSHP 13
->> [148360.007380] f004121d:       DMALPENDA_1 bjmpto_7
->> [148360.007763] f004121f:       DMALPENDA_0 bjmpto_b
->> [148360.008144] f0041221:       DMAWFPB 13
->> [148360.008448] f0041223:       DMALDPB 13
->> [148360.008752] f0041225:       DMASTA
->> [148360.009026] f0041226:       DMAFLUSHP 13
->> [148360.009344] f0041228:       DMASEV 1
->> [148360.009633] f004122a:       DMAEND
->> [148360.147993] slt_spi_test spi32766.0: SPI transfer timed out
->> [148360.148653] spi read 65537*1 cost 144493us speed:453KB/S
->
-> And this means a 64KiB + 1 transfer using DMA timed out?
-
-Right.
-
->
->> root@rk3399:/ #
->> root@rk3399:/ # echo read 0 1 0x10000 > /sys/slt/SPI.0/SPI.0
->>
->> [148365.172429] f0041200:       DMAMOV CCR 0x804200
->> [148365.172863] f0041206:       DMAMOV SAR 0xff1d0800
->> [148365.173252] f004120c:       DMAMOV DAR 0xc9f90000
->> [148365.173641] f0041212:       DMALP_0 255
->> [148365.173958] f0041214:       DMALP_1 255
->> [148365.174270] f0041216:       DMAWFPB 13
->> [148365.174574] f0041218:       DMALDPB 13
->> [148365.174878] f004121a:       DMASTA
->> [148365.175152] f004121b:       DMAFLUSHP 13
->> [148365.175471] f004121d:       DMALPENDA_1 bjmpto_7
->> [148365.175852] f004121f:       DMALPENDA_0 bjmpto_b
->> [148365.176234] f0041221:       DMASEV 1
->> [148365.176522] f0041223:       DMAEND
->> [148365.207421] spi read 65536*1 cost 35144us speed:1864KB/S
->
-> And a 64KiB transfer using DMA completed successfully?
-
-yup.
-
->
-> So maybe there's a driver bug in the PIO path that gives us an
-> off-by-one error. I poked around a bit and couldn't figure out anythi=
-ng,
-> so I sent this. Technically, this patch is still valid (even if not
-> optimal) for the DMA case too...
-
-Huibing is using pio to test this case, and we still achieve it
-successfully? That means there may be some minor diff for the pio
-path between your chromium repo and my local branch.
-
->
-> If you can't figure out what the difference is, and you really don't
-> want to unnecessarily limit the DMA case, then a last resort hack cou=
-ld
-> be to say:
->
-
-Could you get spi-rockchip.c of rockchip local kernel 4.4 from Caesar
-to see if you could transfer 64KB with the one we're using?
-
-
-> static size_t rockchip_spi_max_transfer_size(struct spi_device *devic=
-e)
-> {
-> 	if (using dma) // this is obviously pseudocode
-> 		return SZ_64K;
-> 	else
-> 		return SZ_64K - 1;
-> }
->
-> or something like that.
->
-> Brian
->
->
->
-
-
---=20
-Best Regards
-Shawn Lin
+T24gMjAxNuW5tDA35pyIMTTml6UgMjM6MjksIEpvaG4gS2VlcGluZyB3cm90ZToKPiBCZWNhdXNl
+IHdlIGFyZSB1c2luZyBhIGN1c3RvbSBjcnRjX3N0YXRlIHN0cnVjdHVyZSwgd2UgbXVzdCBvdmVy
+cmlkZSB0aGUKPiByZXNldCBoZWxwZXIgdG8gYWxsb2NhdGUgdGhlIGNvcnJlY3QgYW1vdW50IG9m
+IG1lbW9yeS4KPgo+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4gRml4ZXM6IDRlMjU3ZDll
+ZWUyMyAoImRybS9yb2NrY2hpcDogZ2V0IHJpZCBvZiByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2Nv
+bmZpZyIpCj4gU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4K
+PiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAx
+MyArKysrKysrKysrKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMSBk
+ZWxldGlvbigtKQpUaGFua3MgZm9yIHRoZSBmaXhlcywgQXBwbGllZCB0byBteSBkcm0tZml4ZXMK
+Cgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4
+IDFjNGQ1YjVhNzBhMi4uMjFlMTI0NzA5OGJlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTEwNDgsNiArMTA0OCwxNyBAQCBzdGF0aWMg
+dm9pZCB2b3BfY3J0Y19kZXN0cm95KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgIAlkcm1fY3J0
+Y19jbGVhbnVwKGNydGMpOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyB2b2lkIHZvcF9jcnRjX3Jlc2V0
+KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiArewo+ICsJaWYgKGNydGMtPnN0YXRlKQo+ICsJCV9f
+ZHJtX2F0b21pY19oZWxwZXJfY3J0Y19kZXN0cm95X3N0YXRlKGNydGMsIGNydGMtPnN0YXRlKTsK
+PiArCWtmcmVlKGNydGMtPnN0YXRlKTsKPiArCj4gKwljcnRjLT5zdGF0ZSA9IGt6YWxsb2Moc2l6
+ZW9mKHN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlKSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoY3J0
+Yy0+c3RhdGUpCj4gKwkJY3J0Yy0+c3RhdGUtPmNydGMgPSBjcnRjOwo+ICt9Cj4gKwo+ICAgc3Rh
+dGljIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqdm9wX2NydGNfZHVwbGljYXRlX3N0YXRlKHN0cnVj
+dCBkcm1fY3J0YyAqY3J0YykKPiAgIHsKPiAgIAlzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSAq
+cm9ja2NoaXBfc3RhdGU7Cj4gQEAgLTEwNzMsNyArMTA4NCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1
+Y3QgZHJtX2NydGNfZnVuY3Mgdm9wX2NydGNfZnVuY3MgPSB7Cj4gICAJLnNldF9jb25maWcgPSBk
+cm1fYXRvbWljX2hlbHBlcl9zZXRfY29uZmlnLAo+ICAgCS5wYWdlX2ZsaXAgPSBkcm1fYXRvbWlj
+X2hlbHBlcl9wYWdlX2ZsaXAsCj4gICAJLmRlc3Ryb3kgPSB2b3BfY3J0Y19kZXN0cm95LAo+IC0J
+LnJlc2V0ID0gZHJtX2F0b21pY19oZWxwZXJfY3J0Y19yZXNldCwKPiArCS5yZXNldCA9IHZvcF9j
+cnRjX3Jlc2V0LAo+ICAgCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gdm9wX2NydGNfZHVwbGlj
+YXRlX3N0YXRlLAo+ICAgCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IHZvcF9jcnRjX2Rlc3Ryb3lf
+c3RhdGUsCj4gICB9OwoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
