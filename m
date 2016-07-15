@@ -1,35 +1,54 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: remove broken-cd from sdio0
-Date: Fri, 15 Jul 2016 09:10:05 +0800
-Message-ID: <1468545005-21382-1-git-send-email-shawn.lin@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: [PATCH] arm64: dts: rockchip: add spiX aliases for rk3399
+Date: Thu, 14 Jul 2016 18:24:33 -0700
+Message-ID: <1468545873-134339-1-git-send-email-briannorris@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Brian Norris <computersforpeace@gmail.com>, Caesar Wang <wxt@rock-chips.com>, Brian Norris <briannorris@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-commit 1ade61c141e2 ("arm64: dts: rockchip: remove broken-cd
-from emmc and sdio") was intended to remove the abuse of
-broken-cd property from mmc. But somehow it forgot to remove
-this property from sdio0 node. Let's remove it now.
+It's nicer to see this:
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+    # ls -l /sys/bus/spi/devices/
+    total 0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi0.0 -> ../../../devices/platform/ff1c0000.spi/spi_master/spi0/spi0.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi1.0 -> ../../../devices/platform/ff1d0000.spi/spi_master/spi1/spi1.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi2.0 -> ../../../devices/platform/ff1e0000.spi/spi_master/spi2/spi2.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi5.0 -> ../../../devices/platform/ff200000.spi/spi_master/spi5/spi5.0
+
+than this:
+
+    # ls -l /sys/bus/spi/devices/
+    total 0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32763.0 -> ../../../devices/platform/ff200000.spi/spi_master/spi32763/spi32763.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32764.0 -> ../../../devices/platform/ff1e0000.spi/spi_master/spi32764/spi32764.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32765.0 -> ../../../devices/platform/ff1d0000.spi/spi_master/spi32765/spi32765.0
+    lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32766.0 -> ../../../devices/platform/ff1c0000.spi/spi_master/spi32766/spi32766.0
+
+With the latter, it's much clearer which bus devices are on.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index 82a32e5..eed1ef6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -248,7 +248,6 @@
- &sdio0 {
- 	assigned-clocks = <&cru SCLK_SDIO0>;
- 	assigned-clock-parents = <&cru PLL_CPLL>;
--	broken-cd;
- 	bus-width = <4>;
- 	cap-sd-highspeed;
- 	cap-sdio-irq;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 4c84229789ef..b04abbfd4898 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -70,6 +70,12 @@
+ 		serial2 = &uart2;
+ 		serial3 = &uart3;
+ 		serial4 = &uart4;
++		spi0 = &spi0;
++		spi1 = &spi1;
++		spi2 = &spi2;
++		spi3 = &spi3;
++		spi4 = &spi4;
++		spi5 = &spi5;
+ 	};
+ 
+ 	cpus {
 -- 
-2.3.7
+2.8.0.rc3.226.g39d4020
