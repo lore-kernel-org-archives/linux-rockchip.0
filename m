@@ -1,58 +1,61 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: allocate correct crtc state structure on
- reset
-Date: Fri, 15 Jul 2016 10:46:38 +0800
-Message-ID: <57884E8E.3000504@rock-chips.com>
-References: <20160714152915.31235-1-john@metanate.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] spi: rockchip: limit transfers to (64K - 1) bytes
+Date: Thu, 14 Jul 2016 20:09:00 -0700
+Message-ID: <20160715030859.GA3360@google.com>
+References: <1468546259-136659-1-git-send-email-briannorris@chromium.org>
+ <131afa39-4287-0fb8-61f4-146283dc7cf0@rock-chips.com>
+ <20160715023152.GA145248@google.com>
+ <b855036c-86b3-3515-86ae-24de820564ff@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160714152915.31235-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <b855036c-86b3-3515-86ae-24de820564ff-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, hhb-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA35pyIMTTml6UgMjM6MjksIEpvaG4gS2VlcGluZyB3cm90ZToKPiBCZWNhdXNl
-IHdlIGFyZSB1c2luZyBhIGN1c3RvbSBjcnRjX3N0YXRlIHN0cnVjdHVyZSwgd2UgbXVzdCBvdmVy
-cmlkZSB0aGUKPiByZXNldCBoZWxwZXIgdG8gYWxsb2NhdGUgdGhlIGNvcnJlY3QgYW1vdW50IG9m
-IG1lbW9yeS4KPgo+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4gRml4ZXM6IDRlMjU3ZDll
-ZWUyMyAoImRybS9yb2NrY2hpcDogZ2V0IHJpZCBvZiByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2Nv
-bmZpZyIpCj4gU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4K
-PiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAx
-MyArKysrKysrKysrKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMSBk
-ZWxldGlvbigtKQpUaGFua3MgZm9yIHRoZSBmaXhlcywgQXBwbGllZCB0byBteSBkcm0tZml4ZXMK
-Cgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4
-IDFjNGQ1YjVhNzBhMi4uMjFlMTI0NzA5OGJlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTEwNDgsNiArMTA0OCwxNyBAQCBzdGF0aWMg
-dm9pZCB2b3BfY3J0Y19kZXN0cm95KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgIAlkcm1fY3J0
-Y19jbGVhbnVwKGNydGMpOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyB2b2lkIHZvcF9jcnRjX3Jlc2V0
-KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiArewo+ICsJaWYgKGNydGMtPnN0YXRlKQo+ICsJCV9f
-ZHJtX2F0b21pY19oZWxwZXJfY3J0Y19kZXN0cm95X3N0YXRlKGNydGMsIGNydGMtPnN0YXRlKTsK
-PiArCWtmcmVlKGNydGMtPnN0YXRlKTsKPiArCj4gKwljcnRjLT5zdGF0ZSA9IGt6YWxsb2Moc2l6
-ZW9mKHN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlKSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoY3J0
-Yy0+c3RhdGUpCj4gKwkJY3J0Yy0+c3RhdGUtPmNydGMgPSBjcnRjOwo+ICt9Cj4gKwo+ICAgc3Rh
-dGljIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqdm9wX2NydGNfZHVwbGljYXRlX3N0YXRlKHN0cnVj
-dCBkcm1fY3J0YyAqY3J0YykKPiAgIHsKPiAgIAlzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSAq
-cm9ja2NoaXBfc3RhdGU7Cj4gQEAgLTEwNzMsNyArMTA4NCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgZHJtX2NydGNfZnVuY3Mgdm9wX2NydGNfZnVuY3MgPSB7Cj4gICAJLnNldF9jb25maWcgPSBk
-cm1fYXRvbWljX2hlbHBlcl9zZXRfY29uZmlnLAo+ICAgCS5wYWdlX2ZsaXAgPSBkcm1fYXRvbWlj
-X2hlbHBlcl9wYWdlX2ZsaXAsCj4gICAJLmRlc3Ryb3kgPSB2b3BfY3J0Y19kZXN0cm95LAo+IC0J
-LnJlc2V0ID0gZHJtX2F0b21pY19oZWxwZXJfY3J0Y19yZXNldCwKPiArCS5yZXNldCA9IHZvcF9j
-cnRjX3Jlc2V0LAo+ICAgCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gdm9wX2NydGNfZHVwbGlj
-YXRlX3N0YXRlLAo+ICAgCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IHZvcF9jcnRjX2Rlc3Ryb3lf
-c3RhdGUsCj4gICB9OwoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Fri, Jul 15, 2016 at 10:42:55AM +0800, Shawn Lin wrote:
+> =E5=9C=A8 2016/7/15 10:31, Brian Norris =E5=86=99=E9=81=93:
+> >So maybe there's a driver bug in the PIO path that gives us an
+> >off-by-one error. I poked around a bit and couldn't figure out anyth=
+ing,
+> >so I sent this. Technically, this patch is still valid (even if not
+> >optimal) for the DMA case too...
+>=20
+> Huibing is using pio to test this case, and we still achieve it
+> successfully?
+
+Are you saying Huibing has tested PIO with 64KB transfers, or is that a
+question? If the former, it'd be great if he can publish the difference=
+s
+between his kernel and upstream to produce this.
+
+> That means there may be some minor diff for the pio
+> path between your chromium repo and my local branch.
+
+This is an upstream kernel mailing list. I'd expect we can agree to tes=
+t
+on an upstream kernel...
+
+> >want to unnecessarily limit the DMA case, then a last resort hack co=
+uld
+> >be to say:
+> >
+>=20
+> Could you get spi-rockchip.c of rockchip local kernel 4.4 from Caesar
+> to see if you could transfer 64KB with the one we're using?
+
+I just compared with some (possibly old) copy of your vendor-kernel
+driver, and there are a few moderate differences. I didn't test it yet.
+I'd think the onus is on you to publish your changes though, if you
+think you've fixed things in your own private tree...but I'm willing to
+test any changes you recommend.
+
+Brian
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
