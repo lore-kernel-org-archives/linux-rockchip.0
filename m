@@ -1,35 +1,47 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v1 4/6] drm/rockchip: dw_hdmi: add RK3399 HDMI support
-Date: Sat, 16 Jul 2016 08:47:18 -0500
-Message-ID: <20160716134718.GA3267@rob-hp-laptop>
-References: <1468235079-29152-1-git-send-email-ykk@rock-chips.com>
- <1468235146-29575-1-git-send-email-ykk@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v7 2/5] usb: dwc3: add dis_u2_freeclk_exists_quirk
+Date: Sat, 16 Jul 2016 17:51:08 -0500
+Message-ID: <20160716225107.GA27074@rob-hp-laptop>
+References: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
+ <1468486762-21960-3-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1468235146-29575-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, xhc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1468486762-21960-3-git-send-email-william.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: William Wu <william.wu@rock-chips.com>
+Cc: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, mark.rutland@arm.com, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 11, 2016 at 07:05:46PM +0800, Yakir Yang wrote:
-> RK3399 and RK3288 shared the same HDMI IP controller, only some light
-> difference with GRF configure.
+On Thu, Jul 14, 2016 at 04:59:19PM +0800, William Wu wrote:
+> Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
+> which specifies whether the USB2.0 PHY provides a free-running
+> PHY clock, which is active when the clock control input is active.
 > 
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: William Wu <william.wu@rock-chips.com>
 > ---
->  .../devicetree/bindings/display/bridge/dw_hdmi.txt |  1 +
->  .../bindings/display/rockchip/dw_hdmi-rockchip.txt |  3 +-
+> Changes in v7:
+> - None
+> 
+> Changes in v6:
+> - use '-' instead of '_' in dts (Rob Herring)
+> 
+> Changes in v5:
+> - None
+> 
+> Changes in v4:
+> - rebase on top of balbi testing/next, remove pdata (balbi)
+> 
+> Changes in v3:
+> - None
+> 
+> Changes in v2:
+> - None
+> 
+>  Documentation/devicetree/bindings/usb/dwc3.txt | 3 +++
+>  drivers/usb/dwc3/core.c                        | 5 +++++
+>  drivers/usb/dwc3/core.h                        | 5 +++++
+>  3 files changed, 13 insertions(+)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
->  drivers/gpu/drm/bridge/dw-hdmi.c                   |  2 +-
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 45 ++++++++++++++++++----
->  include/drm/bridge/dw_hdmi.h                       |  6 +++
->  5 files changed, 48 insertions(+), 9 deletions(-)
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh@kernel.org>
