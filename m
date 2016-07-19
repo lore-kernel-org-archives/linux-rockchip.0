@@ -1,54 +1,94 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: some fixes
-Date: Tue, 19 Jul 2016 10:32:21 +0800
-Message-ID: <578D9135.3060401@rock-chips.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add spiX aliases for rk3399
+Date: Tue, 19 Jul 2016 08:39:55 +0200
+Message-ID: <20160719063955.GE5368@pengutronix.de>
+References: <1468545873-134339-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1468545873-134339-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZQogICAgIEhlcmUgYXJlIHNvbWUgbGl0dGxlIGZpeGVzIGZvciByb2NrY2hpcCBkcm0s
-IGxvb2tzIGdvb2QgZm9yIG1lLCBhbmQgCnRoZXJlIGlzIG5vIGRvdWJ0IG9uIHRoZW0sIFNvIEkn
-ZCBsaWtlIHlvdSBjYW4gbGFuZCB0aGVtLgoKVGhhbmtzLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2Vz
-IHNpbmNlIGNvbW1pdCAyZDYzNWZkZWQyMmI3MTM4MWIwMWUxOTRhNTk1NDRmMmU4ZDcxZWYwOgoK
-ICAgTWVyZ2UgdGFnICdkcm0tdmM0LW5leHQtMjAxNi0wNy0xNScgb2YgCmh0dHBzOi8vZ2l0aHVi
-LmNvbS9hbmhvbHQvbGludXggaW50byBkcm0tbmV4dCAoMjAxNi0wNy0xNiAxMToyNToxMSArMTAw
-MCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKICAgaHR0cHM6Ly9n
-aXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1yb2NrY2hpcC5naXQgCmRybS1yb2NrY2hpcC1u
-ZXh0LWZpeGVzLTIwMTYtMDctMTkKCmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAwMDg2
-NzcyYjJmODk3ODNkN2I0OTJmZTBiMjFhNmUwZDlhMDNjMGEzOgoKICAgZHJtL3JvY2tjaGlwOiBh
-bGxvY2F0ZSBjb3JyZWN0IGNydGMgc3RhdGUgc3RydWN0dXJlIG9uIHJlc2V0IAooMjAxNi0wNy0x
-OSAxMDowMzozOCArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KRGFuIENhcnBlbnRlciAoMSk6CiAgICAgICBkcm0v
-cm9ja2NoaXA6IGZpeCBhIGNvdXBsZSBvZmYgYnkgb25lIGJ1Z3MKCkpvaG4gS2VlcGluZyAoNCk6
-CiAgICAgICBkcm0vcm9ja2NoaXA6IGR3X2hkbWk6IHJlbW92ZSB1bnVzZWQgI2luY2x1ZGUKICAg
-ICAgIGRybS9yb2NrY2hpcDogZmI6IGFkZCBtaXNzaW5nIGhlYWRlcgogICAgICAgZHJtL3JvY2tj
-aGlwOiBmaXggInNob3VsZCBpdCBiZSBzdGF0aWM/IiB3YXJuaW5ncwogICAgICAgZHJtL3JvY2tj
-aGlwOiBhbGxvY2F0ZSBjb3JyZWN0IGNydGMgc3RhdGUgc3RydWN0dXJlIG9uIHJlc2V0CgpNYXJr
-IFlhbyAoMik6CiAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDogY29ycmVjdCB0aGUgc291cmNlIHNp
-emUgb2YgdXYgc2NhbGUgZmFjdG9yIHNldHRpbmcKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBj
-b3JyZWN0IHJrMzAzNiByZWdpc3RlciBkZWZpbmUKCk1hcmt1cyBFbGZyaW5nICgxKToKICAgICAg
-IGRybS9yb2NrY2hpcDogRGVsZXRlIGFuIHVubmVjZXNzYXJ5IGNoZWNrIGJlZm9yZSAKZHJtX2dl
-bV9vYmplY3RfdW5yZWZlcmVuY2VfdW5sb2NrZWQoKQoKWWFraXIgWWFuZyAoMSk6CiAgICAgICBk
-cm0vcm9ja2NoaXA6IHZvcDogYWRkIHV2X3ZpciByZWdpc3RlciBmaWVsZCBmb3IgUkszMDM2IFZP
-UAoKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgIDEgLQog
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgNiArKystLS0K
-ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgIHwgMTEgKysrKy0t
-LS0tLS0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMjEg
-KysrKysrKysrKysrKysrKy0tLS0tCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X3ZvcF9yZWcuYyB8ICA3ICsrKystLS0KICA1IGZpbGVzIGNoYW5nZWQsIDI3IGluc2VydGlvbnMo
-KyksIDE5IGRlbGV0aW9ucygtKQoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hello,
+
+On Thu, Jul 14, 2016 at 06:24:33PM -0700, Brian Norris wrote:
+> It's nicer to see this:
+> =
+
+>     # ls -l /sys/bus/spi/devices/
+>     total 0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi0.0 -> ../../../devices/plat=
+form/ff1c0000.spi/spi_master/spi0/spi0.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi1.0 -> ../../../devices/plat=
+form/ff1d0000.spi/spi_master/spi1/spi1.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi2.0 -> ../../../devices/plat=
+form/ff1e0000.spi/spi_master/spi2/spi2.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi5.0 -> ../../../devices/plat=
+form/ff200000.spi/spi_master/spi5/spi5.0
+> =
+
+> than this:
+> =
+
+>     # ls -l /sys/bus/spi/devices/
+>     total 0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32763.0 -> ../../../devices/=
+platform/ff200000.spi/spi_master/spi32763/spi32763.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32764.0 -> ../../../devices/=
+platform/ff1e0000.spi/spi_master/spi32764/spi32764.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32765.0 -> ../../../devices/=
+platform/ff1d0000.spi/spi_master/spi32765/spi32765.0
+>     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32766.0 -> ../../../devices/=
+platform/ff1c0000.spi/spi_master/spi32766/spi32766.0
+> =
+
+> With the latter, it's much clearer which bus devices are on.
+> =
+
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> =
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3399.dtsi
+> index 4c84229789ef..b04abbfd4898 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -70,6 +70,12 @@
+>  		serial2 =3D &uart2;
+>  		serial3 =3D &uart3;
+>  		serial4 =3D &uart4;
+> +		spi0 =3D &spi0;
+> +		spi1 =3D &spi1;
+> +		spi2 =3D &spi2;
+> +		spi3 =3D &spi3;
+> +		spi4 =3D &spi4;
+> +		spi5 =3D &spi5;
+
+Note that Rob Herring (with his dt-maintainer hat on) doesn't like these
+aliases.
+See for example:
+	http://mid.gmane.org/20160705140546.GA10601@rob-hp-laptop
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
