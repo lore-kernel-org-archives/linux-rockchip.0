@@ -1,118 +1,157 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 1/2] drm/panel: add of display timing support
-Date: Wed, 20 Jul 2016 11:18:49 +0800
-Message-ID: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add spiX aliases for rk3399
+Date: Wed, 20 Jul 2016 10:11:11 +0200
+Message-ID: <3484113.eKHnDqRbfE@diego>
+References: <1468545873-134339-1-git-send-email-briannorris@chromium.org> <20160719192912.GA142821@google.com> <1841177.NDa9D09EGz@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1841177.NDa9D09EGz@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-V2Ugd2FudCBhZGQgZGlzcGxheSBzdXBwb3J0IG9uIGxvYWRlciwgc2hhcmUgdGhlIHNhbWUgdGlt
-aW5nCndpdGgga2VybmVsIHNpZGUsIGJ1dCB0aGUgdGltaW5nIGlzIGhpZGUgaW50byBrZXJuZWwg
-Y29kZSwKY2FuJ3QgYmUgc2hhcmUsIGF2b2lkIGNvbmZpZyB0d2ljZSBkaXNwbGF5IHRpbWluZywg
-YWRkIGRldmljZS10cmVlCmRpc3BsYXkgdGltaW5nIHN1cHBvcnQgd291bGQgYmUgZ29vZCBpZGVh
-LgoKV2l0aCB0aGlzIHBhdGNoLCBsb2FkZXIgYW5kIGtlcm5lbCBjYW4gc2hhcmUgc2FtZSB0aW1p
-bmcgZnJvbQpkZXZpY2Ugbm9kZS4KCkNjOiBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdA
-Z21haWwuY29tPgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
-Y29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyB8IDczICsrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDY1IGluc2Vy
-dGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Bh
-bmVsL3BhbmVsLXNpbXBsZS5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5j
-CmluZGV4IDg1MTQzZDEuLjA0Y2Q3OTcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9wYW5l
-bC9wYW5lbC1zaW1wbGUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxl
-LmMKQEAgLTM0LDYgKzM0LDcgQEAKICNpbmNsdWRlIDxkcm0vZHJtX3BhbmVsLmg+CiAKICNpbmNs
-dWRlIDx2aWRlby9kaXNwbGF5X3RpbWluZy5oPgorI2luY2x1ZGUgPHZpZGVvL29mX2Rpc3BsYXlf
-dGltaW5nLmg+CiAjaW5jbHVkZSA8dmlkZW8vdmlkZW9tb2RlLmg+CiAKIHN0cnVjdCBwYW5lbF9k
-ZXNjIHsKQEAgLTgwLDYgKzgxLDcgQEAgc3RydWN0IHBhbmVsX3NpbXBsZSB7CiAJYm9vbCBwcmVw
-YXJlZDsKIAlib29sIGVuYWJsZWQ7CiAKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAJY29uc3Qgc3Ry
-dWN0IHBhbmVsX2Rlc2MgKmRlc2M7CiAKIAlzdHJ1Y3QgYmFja2xpZ2h0X2RldmljZSAqYmFja2xp
-Z2h0OwpAQCAtMTU5LDYgKzE2MSwzMiBAQCBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9nZXRfZml4
-ZWRfbW9kZXMoc3RydWN0IHBhbmVsX3NpbXBsZSAqcGFuZWwpCiAJcmV0dXJuIG51bTsKIH0KIAor
-c3RhdGljIGludCBwYW5lbF9zaW1wbGVfb2ZfZ2V0X25hdGl2ZV9tb2RlKHN0cnVjdCBwYW5lbF9z
-aW1wbGUgKnBhbmVsKQoreworCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSBwYW5l
-bC0+YmFzZS5jb25uZWN0b3I7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHBhbmVsLT5iYXNl
-LmRybTsKKwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZTsKKwlpbnQgcmV0OworCisJbW9k
-ZSA9IGRybV9tb2RlX2NyZWF0ZShkcm0pOworCWlmICghbW9kZSkKKwkJcmV0dXJuIDA7CisKKwly
-ZXQgPSBvZl9nZXRfZHJtX2Rpc3BsYXlfbW9kZShwYW5lbC0+ZGV2LT5vZl9ub2RlLCBtb2RlLAor
-CQkJCSAgICAgIE9GX1VTRV9OQVRJVkVfTU9ERSk7CisJaWYgKHJldCkgeworCQlkZXZfZGJnKHBh
-bmVsLT5kZXYsICJmYWlsZWQgdG8gZmluZCBkdHMgZGlzcGxheSB0aW1pbmdzXG4iKTsKKwkJZHJt
-X21vZGVfZGVzdHJveShkcm0sIG1vZGUpOworCQlyZXR1cm4gMDsKKwl9CisKKwlkcm1fbW9kZV9z
-ZXRfbmFtZShtb2RlKTsKKwltb2RlLT50eXBlIHw9IERSTV9NT0RFX1RZUEVfUFJFRkVSUkVEOwor
-CWRybV9tb2RlX3Byb2JlZF9hZGQoY29ubmVjdG9yLCBtb2RlKTsKKworCXJldHVybiAxOworfQor
-CiBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9kaXNhYmxlKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVs
-KQogewogCXN0cnVjdCBwYW5lbF9zaW1wbGUgKnAgPSB0b19wYW5lbF9zaW1wbGUocGFuZWwpOwpA
-QCAtMTcyLDcgKzIwMCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2Rpc2FibGUoc3RydWN0
-IGRybV9wYW5lbCAqcGFuZWwpCiAJCWJhY2tsaWdodF91cGRhdGVfc3RhdHVzKHAtPmJhY2tsaWdo
-dCk7CiAJfQogCi0JaWYgKHAtPmRlc2MtPmRlbGF5LmRpc2FibGUpCisJaWYgKHAtPmRlc2MgJiYg
-cC0+ZGVzYy0+ZGVsYXkuZGlzYWJsZSkKIAkJbXNsZWVwKHAtPmRlc2MtPmRlbGF5LmRpc2FibGUp
-OwogCiAJcC0+ZW5hYmxlZCA9IGZhbHNlOwpAQCAtMTkyLDcgKzIyMCw3IEBAIHN0YXRpYyBpbnQg
-cGFuZWxfc2ltcGxlX3VucHJlcGFyZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKIAogCXJlZ3Vs
-YXRvcl9kaXNhYmxlKHAtPnN1cHBseSk7CiAKLQlpZiAocC0+ZGVzYy0+ZGVsYXkudW5wcmVwYXJl
-KQorCWlmIChwLT5kZXNjICYmIHAtPmRlc2MtPmRlbGF5LnVucHJlcGFyZSkKIAkJbXNsZWVwKHAt
-PmRlc2MtPmRlbGF5LnVucHJlcGFyZSk7CiAKIAlwLT5wcmVwYXJlZCA9IGZhbHNlOwpAQCAtMjE3
-LDcgKzI0NSw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX3ByZXBhcmUoc3RydWN0IGRybV9w
-YW5lbCAqcGFuZWwpCiAJaWYgKHAtPmVuYWJsZV9ncGlvKQogCQlncGlvZF9zZXRfdmFsdWVfY2Fu
-c2xlZXAocC0+ZW5hYmxlX2dwaW8sIDEpOwogCi0JaWYgKHAtPmRlc2MtPmRlbGF5LnByZXBhcmUp
-CisJaWYgKHAtPmRlc2MgJiYgcC0+ZGVzYy0+ZGVsYXkucHJlcGFyZSkKIAkJbXNsZWVwKHAtPmRl
-c2MtPmRlbGF5LnByZXBhcmUpOwogCiAJcC0+cHJlcGFyZWQgPSB0cnVlOwpAQCAtMjMyLDcgKzI2
-MCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2VuYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpw
-YW5lbCkKIAlpZiAocC0+ZW5hYmxlZCkKIAkJcmV0dXJuIDA7CiAKLQlpZiAocC0+ZGVzYy0+ZGVs
-YXkuZW5hYmxlKQorCWlmIChwLT5kZXNjICYmIHAtPmRlc2MtPmRlbGF5LmVuYWJsZSkKIAkJbXNs
-ZWVwKHAtPmRlc2MtPmRlbGF5LmVuYWJsZSk7CiAKIAlpZiAocC0+YmFja2xpZ2h0KSB7CkBAIC0y
-NjQsNiArMjkyLDkgQEAgc3RhdGljIGludCBwYW5lbF9zaW1wbGVfZ2V0X21vZGVzKHN0cnVjdCBk
-cm1fcGFuZWwgKnBhbmVsKQogCS8qIGFkZCBoYXJkLWNvZGVkIHBhbmVsIG1vZGVzICovCiAJbnVt
-ICs9IHBhbmVsX3NpbXBsZV9nZXRfZml4ZWRfbW9kZXMocCk7CiAKKwkvKiBhZGQgZGV2aWNlIG5v
-ZGUgcGxhbmUgbW9kZXMgKi8KKwludW0gKz0gcGFuZWxfc2ltcGxlX29mX2dldF9uYXRpdmVfbW9k
-ZShwKTsKKwogCXJldHVybiBudW07CiB9CiAKQEAgLTI3NCw2ICszMDUsOSBAQCBzdGF0aWMgaW50
-IHBhbmVsX3NpbXBsZV9nZXRfdGltaW5ncyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCwKIAlzdHJ1
-Y3QgcGFuZWxfc2ltcGxlICpwID0gdG9fcGFuZWxfc2ltcGxlKHBhbmVsKTsKIAl1bnNpZ25lZCBp
-bnQgaTsKIAorCWlmICghcC0+ZGVzYykKKwkJcmV0dXJuIDA7CisKIAlpZiAocC0+ZGVzYy0+bnVt
-X3RpbWluZ3MgPCBudW1fdGltaW5ncykKIAkJbnVtX3RpbWluZ3MgPSBwLT5kZXNjLT5udW1fdGlt
-aW5nczsKIApAQCAtMzA2LDYgKzM0MCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX3Byb2Jl
-KHN0cnVjdCBkZXZpY2UgKmRldiwgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgKmRlc2MpCiAJcGFu
-ZWwtPmVuYWJsZWQgPSBmYWxzZTsKIAlwYW5lbC0+cHJlcGFyZWQgPSBmYWxzZTsKIAlwYW5lbC0+
-ZGVzYyA9IGRlc2M7CisJcGFuZWwtPmRldiA9IGRldjsKIAogCXBhbmVsLT5zdXBwbHkgPSBkZXZt
-X3JlZ3VsYXRvcl9nZXQoZGV2LCAicG93ZXIiKTsKIAlpZiAoSVNfRVJSKHBhbmVsLT5zdXBwbHkp
-KQpAQCAtMTUxNSw2ICsxNTUwLDkgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIHVy
-dF91bXNoXzg1OTZtZF9wYXJhbGxlbCA9IHsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZp
-Y2VfaWQgcGxhdGZvcm1fb2ZfbWF0Y2hbXSA9IHsKIAl7CisJCS5jb21wYXRpYmxlID0gInNpbXBs
-ZS1wYW5lbCIsCisJCS5kYXRhID0gTlVMTCwKKwl9LCB7CiAJCS5jb21wYXRpYmxlID0gImFtcGly
-ZSxhbTgwMDQ4MHIzdG1xd2ExaCIsCiAJCS5kYXRhID0gJmFtcGlyZV9hbTgwMDQ4MHIzdG1xd2Ex
-aCwKIAl9LCB7CkBAIC0xODYwLDYgKzE4OTgsOSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVs
-X2Rlc2NfZHNpIHBhbmFzb25pY192dngxMGYwMDRiMDAgPSB7CiAKIHN0YXRpYyBjb25zdCBzdHJ1
-Y3Qgb2ZfZGV2aWNlX2lkIGRzaV9vZl9tYXRjaFtdID0gewogCXsKKwkJLmNvbXBhdGlibGUgPSAi
-c2ltcGxlLXBhbmVsLWRzaSIsCisJCS5kYXRhID0gTlVMTAorCX0sIHsKIAkJLmNvbXBhdGlibGUg
-PSAiYXVvLGIwODB1YW4wMSIsCiAJCS5kYXRhID0gJmF1b19iMDgwdWFuMDEKIAl9LCB7CkBAIC0x
-ODg0LDYgKzE5MjUsOCBAQCBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9kc2lfcHJvYmUoc3RydWN0
-IG1pcGlfZHNpX2RldmljZSAqZHNpKQogewogCWNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjX2RzaSAq
-ZGVzYzsKIAljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICppZDsKKwljb25zdCBzdHJ1Y3QgcGFu
-ZWxfZGVzYyAqcGRlc2M7CisJdTMyIHZhbDsKIAlpbnQgZXJyOwogCiAJaWQgPSBvZl9tYXRjaF9u
-b2RlKGRzaV9vZl9tYXRjaCwgZHNpLT5kZXYub2Zfbm9kZSk7CkBAIC0xODkyLDEzICsxOTM1LDI3
-IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2RzaV9wcm9iZShzdHJ1Y3QgbWlwaV9kc2lfZGV2
-aWNlICpkc2kpCiAKIAlkZXNjID0gaWQtPmRhdGE7CiAKLQllcnIgPSBwYW5lbF9zaW1wbGVfcHJv
-YmUoJmRzaS0+ZGV2LCAmZGVzYy0+ZGVzYyk7CisJaWYgKGRlc2MpIHsKKwkJZHNpLT5tb2RlX2Zs
-YWdzID0gZGVzYy0+ZmxhZ3M7CisJCWRzaS0+Zm9ybWF0ID0gZGVzYy0+Zm9ybWF0OworCQlkc2kt
-PmxhbmVzID0gZGVzYy0+bGFuZXM7CisJCXBkZXNjID0gJmRlc2MtPmRlc2M7CisJfSBlbHNlIHsK
-KwkJcGRlc2MgPSBOVUxMOworCX0KKworCWVyciA9IHBhbmVsX3NpbXBsZV9wcm9iZSgmZHNpLT5k
-ZXYsIHBkZXNjKTsKIAlpZiAoZXJyIDwgMCkKIAkJcmV0dXJuIGVycjsKIAotCWRzaS0+bW9kZV9m
-bGFncyA9IGRlc2MtPmZsYWdzOwotCWRzaS0+Zm9ybWF0ID0gZGVzYy0+Zm9ybWF0OwotCWRzaS0+
-bGFuZXMgPSBkZXNjLT5sYW5lczsKKwlpZiAoIW9mX3Byb3BlcnR5X3JlYWRfdTMyKGRzaS0+ZGV2
-Lm9mX25vZGUsICJkc2ksZmxhZ3MiLCAmdmFsKSkKKwkJZHNpLT5tb2RlX2ZsYWdzID0gdmFsOwor
-CisJaWYgKCFvZl9wcm9wZXJ0eV9yZWFkX3UzMihkc2ktPmRldi5vZl9ub2RlLCAiZHNpLGZvcm1h
-dCIsICZ2YWwpKQorCQlkc2ktPmZvcm1hdCA9IHZhbDsKKworCWlmICghb2ZfcHJvcGVydHlfcmVh
-ZF91MzIoZHNpLT5kZXYub2Zfbm9kZSwgImRzaSxsYW5lcyIsICZ2YWwpKQorCQlkc2ktPmxhbmVz
-ID0gdmFsOwogCiAJcmV0dXJuIG1pcGlfZHNpX2F0dGFjaChkc2kpOwogfQotLSAKMS45LjEKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Mittwoch, 20. Juli 2016, 00:18:40 schrieb Heiko St=FCbner:
+> Am Dienstag, 19. Juli 2016, 12:29:14 schrieb Brian Norris:
+> > On Tue, Jul 19, 2016 at 12:27:54PM -0700, Brian Norris wrote:
+> > > + Rob
+> >=20
+> > + Rob for real
+> >=20
+> > > Hi,
+> > >=20
+> > > On Tue, Jul 19, 2016 at 08:56:47PM +0200, Heiko Stuebner wrote:
+> > > > Am Dienstag, 19. Juli 2016, 08:39:55 schrieb Uwe Kleine-K=F6nig=
+:
+> > > > > On Thu, Jul 14, 2016 at 06:24:33PM -0700, Brian Norris wrote:
+> > > > > > It's nicer to see this:
+> > > > > >     # ls -l /sys/bus/spi/devices/
+> > > > > >     total 0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi0.0 ->
+> > > > > >     ../../../devices/platform/ff1c0000.spi/spi_master/spi0/=
+spi0.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi1.0 ->
+> > > > > >     ../../../devices/platform/ff1d0000.spi/spi_master/spi1/=
+spi1.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi2.0 ->
+> > > > > >     ../../../devices/platform/ff1e0000.spi/spi_master/spi2/=
+spi2.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi5.0 ->
+> > > > > >     ../../../devices/platform/ff200000.spi/spi_master/spi5/=
+spi5.0>
+> > > > > >=20
+> > > > > > than this:
+> > > > > >     # ls -l /sys/bus/spi/devices/
+> > > > > >     total 0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32763.0 ->
+> > > > > >     ../../../devices/platform/ff200000.spi/spi_master/spi32=
+763/spi
+> > > > > >     32
+> > > > > >     763.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32764.0 ->
+> > > > > >     ../../../devices/platform/ff1e0000.spi/spi_master/spi32=
+764/spi
+> > > > > >     32
+> > > > > >     764.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32765.0 ->
+> > > > > >     ../../../devices/platform/ff1d0000.spi/spi_master/spi32=
+765/spi
+> > > > > >     32
+> > > > > >     765.0
+> > > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32766.0 ->
+> > > > > >     ../../../devices/platform/ff1c0000.spi/spi_master/spi32=
+766/spi
+> > > > > >     32
+> > > > > >     766.0>
+> > > > > >=20
+> > > > > > With the latter, it's much clearer which bus devices are on=
+=2E
+> > > > > >=20
+> > > > > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > > > > ---
+> > > > > >=20
+> > > > > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
+> > > > > >  1 file changed, 6 insertions(+)
+> > > > > >=20
+> > > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > > > > b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index
+> > > > > > 4c84229789ef..b04abbfd4898 100644
+> > > > > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > > > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > > > > @@ -70,6 +70,12 @@
+> > > > > >=20
+> > > > > >  		serial2 =3D &uart2;
+> > > > > >  		serial3 =3D &uart3;
+> > > > > >  		serial4 =3D &uart4;
+> > > > > >=20
+> > > > > > +		spi0 =3D &spi0;
+> > > > > > +		spi1 =3D &spi1;
+> > > > > > +		spi2 =3D &spi2;
+> > > > > > +		spi3 =3D &spi3;
+> > > > > > +		spi4 =3D &spi4;
+> > > > > > +		spi5 =3D &spi5;
+> > > > >=20
+> > > > > Note that Rob Herring (with his dt-maintainer hat on) doesn't=
+ like
+> > > > > these
+> > > > > aliases.
+> > > > >=20
+> > > > > See for example:
+> > > > > 	http://mid.gmane.org/20160705140546.GA10601@rob-hp-laptop
+> > >=20
+> > > But why? I believe half the arguments in the linked thread were
+> > > Catch-22's -- there were no "mainline" users (which is a false ta=
+rget
+> > > IMO anyway, as Christer Weinigel mentioned somewhere in the threa=
+d Rob
+> > > linked), and so we couldn't accept more documentation (or users) =
+for the
+> > > feature. FWIW, my quick grep now shows there are currently 43 mai=
+nline
+> > > users.
+> > >=20
+> > > This feature is very useful. Some of the thread Rob pointed to ar=
+gued
+> > > that the indexing isn't HW documentation; in this case, it most
+> > > certainly is. The RK3399 TRM explicitly has these SPI buses named=
+ SPI0,
+> > > SPI1, SPI2, SPI3, SPI4, and SPI5, and schematics that I've seen u=
+se the
+> > > same terminology. It is therefore *much* nicer to have my device =
+show up
+> > > as 'spi2.0' (reflecting their correct HW name) rather than spi327=
+64.0.
+> > > Sometimes I can't even get as far as mounting sysfs to check what=
+ this
+> > > maps to, but having spi2.0 in the kernel log can clearly tell me =
+what
+> > > device is causing problems.
+> > >=20
+> > > If Rob can support a better alternative solution, I'd be happy to
+> > > switch. But I don't understand why we can't use a useful (not jus=
+t to
+> > > me, but presumably to at least 43 other independent users, and ma=
+ny
+> > > more out of tree), existing, and long-supported feature here.
+>=20
+> Personally, I don't have any real opinion on this but the argument so=
+unds
+> plausible to me (aka they are named with numbers in every manual,
+> schematics) so it might be helpful to have that around - similar to i=
+2c
+> that is in the dtsi already.
+>=20
+> I think I remember Doug having a similar discussion around mmc-aliase=
+s some
+> time ago - that met opposition as well [0] - although I guess the num=
+bering
+> was a bit more arbitary there.
+>=20
+> I guess we'll just see what Rob says.
+
+Uwe pointed me to a very similar discussion and response from Rob about=
+ spi=20
+aliases at:
+https://lkml.org/lkml/2016/5/25/566
