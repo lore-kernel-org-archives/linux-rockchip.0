@@ -1,93 +1,118 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 2/2] dt-bindings: add simple-panel-dsi and simple-panel
-Date: Wed, 20 Jul 2016 11:18:50 +0800
-Message-ID: <1468984730-23186-2-git-send-email-mark.yao@rock-chips.com>
-References: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH 1/2] drm/panel: add of display timing support
+Date: Wed, 20 Jul 2016 11:18:49 +0800
+Message-ID: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Allow user add display timing on device tree with simple-panel-dsi
-or simple-panel.
-
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>
-
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
----
- .../bindings/display/panel/simple-panel.txt        | 48 ++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-index 1341bbf..bc66970 100644
---- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-+++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-@@ -4,10 +4,22 @@ Required properties:
- - power-supply: regulator to provide the supply voltage
- 
- Optional properties:
-+- compatible: value maybe one of the following
-+		"simple-panel";
-+		"simple-panel-dsi";
-+
- - ddc-i2c-bus: phandle of an I2C controller used for DDC EDID probing
- - enable-gpios: GPIO pin to enable or disable the panel
- - backlight: phandle of the backlight device attached to the panel
- 
-+Required properties when compatible is "simple-panel" or "simple-panel-dsi":
-+- display-timings: see display-timing.txt for information
-+
-+Optional properties when compatible is a dsi devices:
-+- dsi,flags: dsi operation mode related flags
-+- dsi,format: pixel format for video mode
-+- dsi,lanes: number of active data lanes
-+
- Example:
- 
- 	panel: panel {
-@@ -19,3 +31,39 @@ Example:
- 
- 		backlight = <&backlight>;
- 	};
-+
-+Or:
-+	panel: panel {
-+		compatible = "simple-panel-dsi";
-+		ddc-i2c-bus = <&panelddc>;
-+
-+		power-supply = <&vdd_pnl_reg>;
-+		enable-gpios = <&gpio 90 0>;
-+
-+		backlight = <&backlight>;
-+
-+		dsi,flags = <MIPI_DSI_MODE_VIDEO |
-+			     MIPI_DSI_MODE_VIDEO_BURST |
-+			     MIPI_DSI_MODE_VIDEO_SYNC_PULSE>;
-+		dsi,format = <MIPI_DSI_FMT_RGB888>;
-+		dsi,lanes = <4>;
-+
-+		display-timings {
-+			native-mode = <&timing0>;
-+			timing0: timing0 {
-+				clock-frequency = <160000000>;
-+				hactive = <1200>;
-+				vactive = <1920>;
-+				hback-porch = <21>;
-+				hfront-porch = <120>;
-+				vback-porch = <18>;
-+				vfront-porch = <21>;
-+				hsync-len = <20>;
-+				vsync-len = <3>;
-+				hsync-active = <0>;
-+				vsync-active = <0>;
-+				de-active = <0>;
-+				pixelclk-active = <0>;
-+			};
-+		};
-+	};
--- 
-1.9.1
+V2Ugd2FudCBhZGQgZGlzcGxheSBzdXBwb3J0IG9uIGxvYWRlciwgc2hhcmUgdGhlIHNhbWUgdGlt
+aW5nCndpdGgga2VybmVsIHNpZGUsIGJ1dCB0aGUgdGltaW5nIGlzIGhpZGUgaW50byBrZXJuZWwg
+Y29kZSwKY2FuJ3QgYmUgc2hhcmUsIGF2b2lkIGNvbmZpZyB0d2ljZSBkaXNwbGF5IHRpbWluZywg
+YWRkIGRldmljZS10cmVlCmRpc3BsYXkgdGltaW5nIHN1cHBvcnQgd291bGQgYmUgZ29vZCBpZGVh
+LgoKV2l0aCB0aGlzIHBhdGNoLCBsb2FkZXIgYW5kIGtlcm5lbCBjYW4gc2hhcmUgc2FtZSB0aW1p
+bmcgZnJvbQpkZXZpY2Ugbm9kZS4KCkNjOiBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdA
+Z21haWwuY29tPgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
+Y29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyB8IDczICsrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDY1IGluc2Vy
+dGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Bh
+bmVsL3BhbmVsLXNpbXBsZS5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5j
+CmluZGV4IDg1MTQzZDEuLjA0Y2Q3OTcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9wYW5l
+bC9wYW5lbC1zaW1wbGUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxl
+LmMKQEAgLTM0LDYgKzM0LDcgQEAKICNpbmNsdWRlIDxkcm0vZHJtX3BhbmVsLmg+CiAKICNpbmNs
+dWRlIDx2aWRlby9kaXNwbGF5X3RpbWluZy5oPgorI2luY2x1ZGUgPHZpZGVvL29mX2Rpc3BsYXlf
+dGltaW5nLmg+CiAjaW5jbHVkZSA8dmlkZW8vdmlkZW9tb2RlLmg+CiAKIHN0cnVjdCBwYW5lbF9k
+ZXNjIHsKQEAgLTgwLDYgKzgxLDcgQEAgc3RydWN0IHBhbmVsX3NpbXBsZSB7CiAJYm9vbCBwcmVw
+YXJlZDsKIAlib29sIGVuYWJsZWQ7CiAKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAJY29uc3Qgc3Ry
+dWN0IHBhbmVsX2Rlc2MgKmRlc2M7CiAKIAlzdHJ1Y3QgYmFja2xpZ2h0X2RldmljZSAqYmFja2xp
+Z2h0OwpAQCAtMTU5LDYgKzE2MSwzMiBAQCBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9nZXRfZml4
+ZWRfbW9kZXMoc3RydWN0IHBhbmVsX3NpbXBsZSAqcGFuZWwpCiAJcmV0dXJuIG51bTsKIH0KIAor
+c3RhdGljIGludCBwYW5lbF9zaW1wbGVfb2ZfZ2V0X25hdGl2ZV9tb2RlKHN0cnVjdCBwYW5lbF9z
+aW1wbGUgKnBhbmVsKQoreworCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSBwYW5l
+bC0+YmFzZS5jb25uZWN0b3I7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHBhbmVsLT5iYXNl
+LmRybTsKKwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZTsKKwlpbnQgcmV0OworCisJbW9k
+ZSA9IGRybV9tb2RlX2NyZWF0ZShkcm0pOworCWlmICghbW9kZSkKKwkJcmV0dXJuIDA7CisKKwly
+ZXQgPSBvZl9nZXRfZHJtX2Rpc3BsYXlfbW9kZShwYW5lbC0+ZGV2LT5vZl9ub2RlLCBtb2RlLAor
+CQkJCSAgICAgIE9GX1VTRV9OQVRJVkVfTU9ERSk7CisJaWYgKHJldCkgeworCQlkZXZfZGJnKHBh
+bmVsLT5kZXYsICJmYWlsZWQgdG8gZmluZCBkdHMgZGlzcGxheSB0aW1pbmdzXG4iKTsKKwkJZHJt
+X21vZGVfZGVzdHJveShkcm0sIG1vZGUpOworCQlyZXR1cm4gMDsKKwl9CisKKwlkcm1fbW9kZV9z
+ZXRfbmFtZShtb2RlKTsKKwltb2RlLT50eXBlIHw9IERSTV9NT0RFX1RZUEVfUFJFRkVSUkVEOwor
+CWRybV9tb2RlX3Byb2JlZF9hZGQoY29ubmVjdG9yLCBtb2RlKTsKKworCXJldHVybiAxOworfQor
+CiBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9kaXNhYmxlKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVs
+KQogewogCXN0cnVjdCBwYW5lbF9zaW1wbGUgKnAgPSB0b19wYW5lbF9zaW1wbGUocGFuZWwpOwpA
+QCAtMTcyLDcgKzIwMCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2Rpc2FibGUoc3RydWN0
+IGRybV9wYW5lbCAqcGFuZWwpCiAJCWJhY2tsaWdodF91cGRhdGVfc3RhdHVzKHAtPmJhY2tsaWdo
+dCk7CiAJfQogCi0JaWYgKHAtPmRlc2MtPmRlbGF5LmRpc2FibGUpCisJaWYgKHAtPmRlc2MgJiYg
+cC0+ZGVzYy0+ZGVsYXkuZGlzYWJsZSkKIAkJbXNsZWVwKHAtPmRlc2MtPmRlbGF5LmRpc2FibGUp
+OwogCiAJcC0+ZW5hYmxlZCA9IGZhbHNlOwpAQCAtMTkyLDcgKzIyMCw3IEBAIHN0YXRpYyBpbnQg
+cGFuZWxfc2ltcGxlX3VucHJlcGFyZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKIAogCXJlZ3Vs
+YXRvcl9kaXNhYmxlKHAtPnN1cHBseSk7CiAKLQlpZiAocC0+ZGVzYy0+ZGVsYXkudW5wcmVwYXJl
+KQorCWlmIChwLT5kZXNjICYmIHAtPmRlc2MtPmRlbGF5LnVucHJlcGFyZSkKIAkJbXNsZWVwKHAt
+PmRlc2MtPmRlbGF5LnVucHJlcGFyZSk7CiAKIAlwLT5wcmVwYXJlZCA9IGZhbHNlOwpAQCAtMjE3
+LDcgKzI0NSw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX3ByZXBhcmUoc3RydWN0IGRybV9w
+YW5lbCAqcGFuZWwpCiAJaWYgKHAtPmVuYWJsZV9ncGlvKQogCQlncGlvZF9zZXRfdmFsdWVfY2Fu
+c2xlZXAocC0+ZW5hYmxlX2dwaW8sIDEpOwogCi0JaWYgKHAtPmRlc2MtPmRlbGF5LnByZXBhcmUp
+CisJaWYgKHAtPmRlc2MgJiYgcC0+ZGVzYy0+ZGVsYXkucHJlcGFyZSkKIAkJbXNsZWVwKHAtPmRl
+c2MtPmRlbGF5LnByZXBhcmUpOwogCiAJcC0+cHJlcGFyZWQgPSB0cnVlOwpAQCAtMjMyLDcgKzI2
+MCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2VuYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpw
+YW5lbCkKIAlpZiAocC0+ZW5hYmxlZCkKIAkJcmV0dXJuIDA7CiAKLQlpZiAocC0+ZGVzYy0+ZGVs
+YXkuZW5hYmxlKQorCWlmIChwLT5kZXNjICYmIHAtPmRlc2MtPmRlbGF5LmVuYWJsZSkKIAkJbXNs
+ZWVwKHAtPmRlc2MtPmRlbGF5LmVuYWJsZSk7CiAKIAlpZiAocC0+YmFja2xpZ2h0KSB7CkBAIC0y
+NjQsNiArMjkyLDkgQEAgc3RhdGljIGludCBwYW5lbF9zaW1wbGVfZ2V0X21vZGVzKHN0cnVjdCBk
+cm1fcGFuZWwgKnBhbmVsKQogCS8qIGFkZCBoYXJkLWNvZGVkIHBhbmVsIG1vZGVzICovCiAJbnVt
+ICs9IHBhbmVsX3NpbXBsZV9nZXRfZml4ZWRfbW9kZXMocCk7CiAKKwkvKiBhZGQgZGV2aWNlIG5v
+ZGUgcGxhbmUgbW9kZXMgKi8KKwludW0gKz0gcGFuZWxfc2ltcGxlX29mX2dldF9uYXRpdmVfbW9k
+ZShwKTsKKwogCXJldHVybiBudW07CiB9CiAKQEAgLTI3NCw2ICszMDUsOSBAQCBzdGF0aWMgaW50
+IHBhbmVsX3NpbXBsZV9nZXRfdGltaW5ncyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCwKIAlzdHJ1
+Y3QgcGFuZWxfc2ltcGxlICpwID0gdG9fcGFuZWxfc2ltcGxlKHBhbmVsKTsKIAl1bnNpZ25lZCBp
+bnQgaTsKIAorCWlmICghcC0+ZGVzYykKKwkJcmV0dXJuIDA7CisKIAlpZiAocC0+ZGVzYy0+bnVt
+X3RpbWluZ3MgPCBudW1fdGltaW5ncykKIAkJbnVtX3RpbWluZ3MgPSBwLT5kZXNjLT5udW1fdGlt
+aW5nczsKIApAQCAtMzA2LDYgKzM0MCw3IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX3Byb2Jl
+KHN0cnVjdCBkZXZpY2UgKmRldiwgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgKmRlc2MpCiAJcGFu
+ZWwtPmVuYWJsZWQgPSBmYWxzZTsKIAlwYW5lbC0+cHJlcGFyZWQgPSBmYWxzZTsKIAlwYW5lbC0+
+ZGVzYyA9IGRlc2M7CisJcGFuZWwtPmRldiA9IGRldjsKIAogCXBhbmVsLT5zdXBwbHkgPSBkZXZt
+X3JlZ3VsYXRvcl9nZXQoZGV2LCAicG93ZXIiKTsKIAlpZiAoSVNfRVJSKHBhbmVsLT5zdXBwbHkp
+KQpAQCAtMTUxNSw2ICsxNTUwLDkgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIHVy
+dF91bXNoXzg1OTZtZF9wYXJhbGxlbCA9IHsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZp
+Y2VfaWQgcGxhdGZvcm1fb2ZfbWF0Y2hbXSA9IHsKIAl7CisJCS5jb21wYXRpYmxlID0gInNpbXBs
+ZS1wYW5lbCIsCisJCS5kYXRhID0gTlVMTCwKKwl9LCB7CiAJCS5jb21wYXRpYmxlID0gImFtcGly
+ZSxhbTgwMDQ4MHIzdG1xd2ExaCIsCiAJCS5kYXRhID0gJmFtcGlyZV9hbTgwMDQ4MHIzdG1xd2Ex
+aCwKIAl9LCB7CkBAIC0xODYwLDYgKzE4OTgsOSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVs
+X2Rlc2NfZHNpIHBhbmFzb25pY192dngxMGYwMDRiMDAgPSB7CiAKIHN0YXRpYyBjb25zdCBzdHJ1
+Y3Qgb2ZfZGV2aWNlX2lkIGRzaV9vZl9tYXRjaFtdID0gewogCXsKKwkJLmNvbXBhdGlibGUgPSAi
+c2ltcGxlLXBhbmVsLWRzaSIsCisJCS5kYXRhID0gTlVMTAorCX0sIHsKIAkJLmNvbXBhdGlibGUg
+PSAiYXVvLGIwODB1YW4wMSIsCiAJCS5kYXRhID0gJmF1b19iMDgwdWFuMDEKIAl9LCB7CkBAIC0x
+ODg0LDYgKzE5MjUsOCBAQCBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9kc2lfcHJvYmUoc3RydWN0
+IG1pcGlfZHNpX2RldmljZSAqZHNpKQogewogCWNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjX2RzaSAq
+ZGVzYzsKIAljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICppZDsKKwljb25zdCBzdHJ1Y3QgcGFu
+ZWxfZGVzYyAqcGRlc2M7CisJdTMyIHZhbDsKIAlpbnQgZXJyOwogCiAJaWQgPSBvZl9tYXRjaF9u
+b2RlKGRzaV9vZl9tYXRjaCwgZHNpLT5kZXYub2Zfbm9kZSk7CkBAIC0xODkyLDEzICsxOTM1LDI3
+IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2RzaV9wcm9iZShzdHJ1Y3QgbWlwaV9kc2lfZGV2
+aWNlICpkc2kpCiAKIAlkZXNjID0gaWQtPmRhdGE7CiAKLQllcnIgPSBwYW5lbF9zaW1wbGVfcHJv
+YmUoJmRzaS0+ZGV2LCAmZGVzYy0+ZGVzYyk7CisJaWYgKGRlc2MpIHsKKwkJZHNpLT5tb2RlX2Zs
+YWdzID0gZGVzYy0+ZmxhZ3M7CisJCWRzaS0+Zm9ybWF0ID0gZGVzYy0+Zm9ybWF0OworCQlkc2kt
+PmxhbmVzID0gZGVzYy0+bGFuZXM7CisJCXBkZXNjID0gJmRlc2MtPmRlc2M7CisJfSBlbHNlIHsK
+KwkJcGRlc2MgPSBOVUxMOworCX0KKworCWVyciA9IHBhbmVsX3NpbXBsZV9wcm9iZSgmZHNpLT5k
+ZXYsIHBkZXNjKTsKIAlpZiAoZXJyIDwgMCkKIAkJcmV0dXJuIGVycjsKIAotCWRzaS0+bW9kZV9m
+bGFncyA9IGRlc2MtPmZsYWdzOwotCWRzaS0+Zm9ybWF0ID0gZGVzYy0+Zm9ybWF0OwotCWRzaS0+
+bGFuZXMgPSBkZXNjLT5sYW5lczsKKwlpZiAoIW9mX3Byb3BlcnR5X3JlYWRfdTMyKGRzaS0+ZGV2
+Lm9mX25vZGUsICJkc2ksZmxhZ3MiLCAmdmFsKSkKKwkJZHNpLT5tb2RlX2ZsYWdzID0gdmFsOwor
+CisJaWYgKCFvZl9wcm9wZXJ0eV9yZWFkX3UzMihkc2ktPmRldi5vZl9ub2RlLCAiZHNpLGZvcm1h
+dCIsICZ2YWwpKQorCQlkc2ktPmZvcm1hdCA9IHZhbDsKKworCWlmICghb2ZfcHJvcGVydHlfcmVh
+ZF91MzIoZHNpLT5kZXYub2Zfbm9kZSwgImRzaSxsYW5lcyIsICZ2YWwpKQorCQlkc2ktPmxhbmVz
+ID0gdmFsOwogCiAJcmV0dXJuIG1pcGlfZHNpX2F0dGFjaChkc2kpOwogfQotLSAKMS45LjEKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
