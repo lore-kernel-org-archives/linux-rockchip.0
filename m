@@ -1,150 +1,131 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: add spiX aliases for rk3399
-Date: Wed, 20 Jul 2016 00:18:40 +0200
-Message-ID: <1841177.NDa9D09EGz@diego>
-References: <1468545873-134339-1-git-send-email-briannorris@chromium.org> <20160719192754.GA140860@google.com> <20160719192912.GA142821@google.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] mmc: core: fall back host->f_init if failing to init
+ mmc card after resume
+Date: Wed, 20 Jul 2016 09:33:10 +0800
+Message-ID: <dda44de1-6467-802f-4b4d-9de8f604357c@rock-chips.com>
+References: <1468918715-24914-1-git-send-email-shawn.lin@rock-chips.com>
+ <1468918715-24914-2-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFq9ZogJjGyR6gB3QxnJeP_5XH-GXKY6+-HXsOBDDTAMqQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160719192912.GA142821@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFq9ZogJjGyR6gB3QxnJeP_5XH-GXKY6+-HXsOBDDTAMqQ@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 19. Juli 2016, 12:29:14 schrieb Brian Norris:
-> On Tue, Jul 19, 2016 at 12:27:54PM -0700, Brian Norris wrote:
-> > + Rob
->=20
-> + Rob for real
->=20
-> > Hi,
-> >=20
-> > On Tue, Jul 19, 2016 at 08:56:47PM +0200, Heiko Stuebner wrote:
-> > > Am Dienstag, 19. Juli 2016, 08:39:55 schrieb Uwe Kleine-K=F6nig:
-> > > > On Thu, Jul 14, 2016 at 06:24:33PM -0700, Brian Norris wrote:
-> > > > > It's nicer to see this:
-> > > > >     # ls -l /sys/bus/spi/devices/
-> > > > >     total 0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi0.0 ->
-> > > > >     ../../../devices/platform/ff1c0000.spi/spi_master/spi0/sp=
-i0.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi1.0 ->
-> > > > >     ../../../devices/platform/ff1d0000.spi/spi_master/spi1/sp=
-i1.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi2.0 ->
-> > > > >     ../../../devices/platform/ff1e0000.spi/spi_master/spi2/sp=
-i2.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi5.0 ->
-> > > > >     ../../../devices/platform/ff200000.spi/spi_master/spi5/sp=
-i5.0>
-> > > > >=20
-> > > > > than this:
-> > > > >     # ls -l /sys/bus/spi/devices/
-> > > > >     total 0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32763.0 ->
-> > > > >     ../../../devices/platform/ff200000.spi/spi_master/spi3276=
-3/spi32
-> > > > >     763.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32764.0 ->
-> > > > >     ../../../devices/platform/ff1e0000.spi/spi_master/spi3276=
-4/spi32
-> > > > >     764.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32765.0 ->
-> > > > >     ../../../devices/platform/ff1d0000.spi/spi_master/spi3276=
-5/spi32
-> > > > >     765.0
-> > > > >     lrwxrwxrwx 1 root root 0 Dec 31  1969 spi32766.0 ->
-> > > > >     ../../../devices/platform/ff1c0000.spi/spi_master/spi3276=
-6/spi32
-> > > > >     766.0>
-> > > > >=20
-> > > > > With the latter, it's much clearer which bus devices are on.
-> > > > >=20
-> > > > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > > > > ---
-> > > > >=20
-> > > > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
-> > > > >  1 file changed, 6 insertions(+)
-> > > > >=20
-> > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > > > b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index
-> > > > > 4c84229789ef..b04abbfd4898 100644
-> > > > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > > > @@ -70,6 +70,12 @@
-> > > > >=20
-> > > > >  		serial2 =3D &uart2;
-> > > > >  		serial3 =3D &uart3;
-> > > > >  		serial4 =3D &uart4;
-> > > > >=20
-> > > > > +		spi0 =3D &spi0;
-> > > > > +		spi1 =3D &spi1;
-> > > > > +		spi2 =3D &spi2;
-> > > > > +		spi3 =3D &spi3;
-> > > > > +		spi4 =3D &spi4;
-> > > > > +		spi5 =3D &spi5;
-> > > >=20
-> > > > Note that Rob Herring (with his dt-maintainer hat on) doesn't l=
-ike
-> > > > these
-> > > > aliases.
-> > > >=20
-> > > > See for example:
-> > > > 	http://mid.gmane.org/20160705140546.GA10601@rob-hp-laptop
-> >=20
-> > But why? I believe half the arguments in the linked thread were
-> > Catch-22's -- there were no "mainline" users (which is a false targ=
-et
-> > IMO anyway, as Christer Weinigel mentioned somewhere in the thread =
-Rob
-> > linked), and so we couldn't accept more documentation (or users) fo=
-r the
-> > feature. FWIW, my quick grep now shows there are currently 43 mainl=
-ine
-> > users.
-> >=20
-> > This feature is very useful. Some of the thread Rob pointed to argu=
-ed
-> > that the indexing isn't HW documentation; in this case, it most
-> > certainly is. The RK3399 TRM explicitly has these SPI buses named S=
-PI0,
-> > SPI1, SPI2, SPI3, SPI4, and SPI5, and schematics that I've seen use=
- the
-> > same terminology. It is therefore *much* nicer to have my device sh=
-ow up
-> > as 'spi2.0' (reflecting their correct HW name) rather than spi32764=
-=2E0.
-> > Sometimes I can't even get as far as mounting sysfs to check what t=
-his
-> > maps to, but having spi2.0 in the kernel log can clearly tell me wh=
-at
-> > device is causing problems.
-> >=20
-> > If Rob can support a better alternative solution, I'd be happy to
-> > switch. But I don't understand why we can't use a useful (not just =
-to
-> > me, but presumably to at least 43 other independent users, and many
-> > more out of tree), existing, and long-supported feature here.
+=E5=9C=A8 2016/7/19 18:31, Ulf Hansson =E5=86=99=E9=81=93:
+> On 19 July 2016 at 10:58, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>> We observed the failure of initializing card after resume
+>> accidentally. It's hard to reproduce but we did get report from
+>> the suspend/resume test of our RK3399 mp test farm . Unfortunately,
+>> we still fail to figure out what was going wrong at that time.
+>> Also we can't achieve it by retrying the host->f_init without fallin=
+g
+>> back it. But this patch will solve the problem as we could add some =
+log
+>> there and see that we resume the mmc card successfully after falling
+>> back the host->f_init. There is no obvious side effect found, so it =
+seems
+>> this patch will improve the stability.
+>
+> What f_init did the original rescan work find out being successful?
 
-Personally, I don't have any real opinion on this but the argument soun=
-ds=20
-plausible to me (aka they are named with numbers in every manual, schem=
-atics)=20
-so it might be helpful to have that around - similar to i2c that is in =
-the=20
-dtsi already.
+The original f_init was 400k when booting up the system.
 
-I think I remember Doug having a similar discussion around mmc-aliases =
-some=20
-time ago - that met opposition as well [0] - although I guess the numbe=
-ring=20
-was a bit more arbitary there.
+>
+> Did you then verify that it was *another* frequency that made the
+> initialization to work in the resume?
 
-I guess we'll just see what Rob says.
+yes, I added some log and saw 100k made the initialization to work in
+the resume finally with the patch applied.
+
+Also I mentioned in the commit msg that if I just retried 400K, it
+cannot made the initialization successful.
+
+>
+>>
+>> [   93.405085] mmc1: unexpected status 0x800900 after switch
+>> [   93.408474] mmc1: switch to bus width 1 failed
+>> [   93.408482] mmc1: mmc_select_hs200 failed, error -110
+>> [   93.408492] mmc1: error -110 during resume (card was removed?)
+>> [   93.408705] PM: resume of devices complete after 213.453 msecs
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>>  drivers/mmc/core/mmc.c | 22 ++++++++++++++++++++--
+>>  1 file changed, 20 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+>> index 403b97b..bef40c8 100644
+>> --- a/drivers/mmc/core/mmc.c
+>> +++ b/drivers/mmc/core/mmc.c
+>> @@ -1945,6 +1945,7 @@ static int mmc_suspend(struct mmc_host *host)
+>>  static int _mmc_resume(struct mmc_host *host)
+>>  {
+>>         int err =3D 0;
+>> +       int i;
+>>
+>>         BUG_ON(!host);
+>>         BUG_ON(!host->card);
+>> @@ -1954,8 +1955,25 @@ static int _mmc_resume(struct mmc_host *host)
+>>         if (!mmc_card_suspended(host->card))
+>>                 goto out;
+>>
+>> -       mmc_power_up(host, host->card->ocr);
+>> -       err =3D mmc_init_card(host, host->card->ocr, host->card);
+>> +       /*
+>> +        * Let's try to fallback the host->f_init
+>> +        * if failing to init card after resume.
+>> +        */
+>> +
+>> +       for (i =3D 0; i < ARRAY_SIZE(freqs); i++) {
+>> +               if (host->f_init < freqs[i])
+>> +                       continue;
+>> +               else
+>> +                       host->f_init =3D freqs[i];
+>
+> This loop is wrong, as you don't consider that host->f_min may not
+> exactly match the frequencies in the freqs array.
+
+Ah, seems I should use 'max(freqs[i], host->f_min)'.. :)
+
+>
+>> +
+>> +               mmc_power_up(host, host->card->ocr);
+>> +               err =3D mmc_init_card(host, host->card->ocr, host->c=
+ard);
+>> +               if (!err)
+>> +                       break;
+>> +
+>> +               mmc_power_off(host);
+>
+> The mmc core expects the host/card to be powered up after a resume, a=
+s
+> it may send commands to it without first invoking mmc_power_up().
+> Even if those commands may fail (or timeout), at least those doesn't
+> hang which may be the case if the host/card isn't powered up first.
+>
+
+I got it, thanks.
+
+> So, you must *not* leave the host/card in "mmc_power_off()" state in
+> _mmc_resume().
+>
+> [...]
+>
+> Kind regards
+> Uffe
+>
+>
+>
 
 
-Heiko
+--=20
+Best Regards
+Shawn Lin
 
-[0] https://lkml.org/lkml/2016/4/29/610
