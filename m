@@ -1,111 +1,94 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH] mfd: RK808: Fetch PMIC variant from chip id register
-Date: Wed, 20 Jul 2016 21:06:58 +0800
-Message-ID: <c9d91f26-f8d2-7450-eb2d-4750742c35af@rock-chips.com>
-References: <1468496557-26309-1-git-send-email-w.egorov@phytec.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: correct the spdif clk" to the asoc tree
+Date: Wed, 20 Jul 2016 17:43:40 +0100
+Message-ID: <E1bPuay-0002iL-Ap@debutante>
+References: <1468852474-15735-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468496557-26309-1-git-send-email-w.egorov@phytec.de>
+In-Reply-To: <1468852474-15735-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: lee.jones@linaro.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Mark Brown <broonie@kernel.org>, heiko@sntech.de, dianders@chromium.org, sugar.zhang@rock-chips.com, alsa-devel@alsa-project.org, zhengxing@rock-chips.com, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Wadim:
+The patch
 
-   Hi.
+   ASoC: rockchip: correct the spdif clk
 
-   I have tested this patch both on RK818/RK808 based boards, it works =
-well.
+has been applied to the asoc tree at
 
-  So Test-by: Andy Yan <andy.yan@rock-chips.com>
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-On 2016=E5=B9=B407=E6=9C=8814=E6=97=A5 19:42, Wadim Egorov wrote:
-> Add and use the chip id registers to determine the PMIC variant.
->
-> Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
-> ---
->
-> This patch is based on top of
->
-> [v6,1/5] mfd: RK808: Add RK818 support
-> (https://patchwork.kernel.org/patch/9172223/)
->
-> ---
->   drivers/mfd/rk808.c       | 17 +++++++++--------
->   include/linux/mfd/rk808.h |  6 ++++--
->   2 files changed, 13 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-> index 66f7b08..fbec1d8 100644
-> --- a/drivers/mfd/rk808.c
-> +++ b/drivers/mfd/rk808.c
-> @@ -291,8 +291,8 @@ static void rk808_device_shutdown(void)
->   }
->  =20
->   static const struct of_device_id rk808_of_match[] =3D {
-> -	{ .compatible =3D "rockchip,rk808", .data =3D (void *) RK808_ID },
-> -	{ .compatible =3D "rockchip,rk818", .data =3D (void *) RK818_ID },
-> +	{ .compatible =3D "rockchip,rk808" },
-> +	{ .compatible =3D "rockchip,rk818" },
->   	{ },
->   };
->   MODULE_DEVICE_TABLE(of, rk808_of_match);
-> @@ -302,7 +302,6 @@ static int rk808_probe(struct i2c_client *client,
->   {
->   	struct device_node *np =3D client->dev.of_node;
->   	struct rk808 *rk808;
-> -	const struct of_device_id *match;
->   	const struct rk808_reg_data *pre_init_reg;
->   	const struct mfd_cell *cells;
->   	int nr_pre_init_regs;
-> @@ -315,12 +314,14 @@ static int rk808_probe(struct i2c_client *clien=
-t,
->   	if (!rk808)
->   		return -ENOMEM;
->  =20
-> -	match =3D of_match_device(rk808_of_match, &client->dev);
-> -	if (!match) {
-> -		dev_err(&client->dev, "Unable to match OF ID\n");
-> -		return -ENODEV;
-> +	rk808->variant =3D i2c_smbus_read_word_data(client, RK808_ID_MSB);
-> +	if (rk808->variant < 0) {
-> +		dev_err(&client->dev, "Failed to read the chip id at 0x%02x\n",
-> +			RK808_ID_MSB);
-> +		return rk808->variant;
->   	}
-> -	rk808->variant =3D (long)match->data;
-> +
-> +	dev_dbg(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->varia=
-nt);
->  =20
->   	switch (rk808->variant) {
->   	case RK808_ID:
-> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-> index e5ae21d..fc5db6f 100644
-> --- a/include/linux/mfd/rk808.h
-> +++ b/include/linux/mfd/rk808.h
-> @@ -69,6 +69,8 @@ enum rk808_reg {
->   #define RK808_RTC_INT_REG	0x12
->   #define RK808_RTC_COMP_LSB_REG	0x13
->   #define RK808_RTC_COMP_MSB_REG	0x14
-> +#define RK808_ID_MSB		0x17
-> +#define RK808_ID_LSB		0x18
->   #define RK808_CLK32OUT_REG	0x20
->   #define RK808_VB_MON_REG	0x21
->   #define RK808_THERMAL_REG	0x22
-> @@ -318,8 +320,8 @@ enum {
->   };
->  =20
->   enum {
-> -	RK808_ID,
-> -	RK818_ID,
-> +	RK808_ID =3D 0x0000,
-> +	RK818_ID =3D 0x8181,
->   };
->  =20
->   struct rk808 {
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 46dd2e28a90e48fbf1b7e253933fa3b7242e9b1b Mon Sep 17 00:00:00 2001
+From: Chris Zhong <zyw@rock-chips.com>
+Date: Mon, 18 Jul 2016 22:34:34 +0800
+Subject: [PATCH] ASoC: rockchip: correct the spdif clk
+
+The spdif mclk should be 128 times of sample rate, and there is a
+internal divider, the real rate of spdif mclk is mclk / (div + 1).
+Hence, the original driver always get the good frequency for
+48000/96000/44100/192000. But for 32000, the mclk is incorrect,
+it should be 32000*128, but get 48000*128. Do not use the internal
+divider here, just set all mclk to 128 * sample rate directly.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rockchip_spdif.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index 100781e37848..4ca265737eda 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -101,21 +101,7 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
+ 	int ret;
+ 
+ 	srate = params_rate(params);
+-	switch (srate) {
+-	case 32000:
+-	case 48000:
+-	case 96000:
+-		mclk = 96000 * 128; /* 12288000 hz */
+-		break;
+-	case 44100:
+-		mclk = 44100 * 256; /* 11289600 hz */
+-		break;
+-	case 192000:
+-		mclk = 192000 * 128; /* 24576000 hz */
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
++	mclk = srate * 128;
+ 
+ 	switch (params_format(params)) {
+ 	case SNDRV_PCM_FORMAT_S16_LE:
+@@ -139,7 +125,6 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
+ 		return ret;
+ 	}
+ 
+-	val |= SPDIF_CFGR_CLK_DIV(mclk/(srate * 256));
+ 	ret = regmap_update_bits(spdif->regmap, SPDIF_CFGR,
+ 		SPDIF_CFGR_CLK_DIV_MASK | SPDIF_CFGR_HALFWORD_ENABLE |
+ 		SDPIF_CFGR_VDW_MASK,
+-- 
+2.8.1
