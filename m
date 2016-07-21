@@ -1,131 +1,124 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v6 PATCH 1/6] extcon: Add Type-C and DP support
-Date: Thu, 21 Jul 2016 21:13:23 +0800
-Message-ID: <1469106808-28297-2-git-send-email-zyw@rock-chips.com>
+Subject: [v6 PATCH 5/6] Documentation: bindings: add dt documentation for cdn DP controller
+Date: Thu, 21 Jul 2016 21:13:27 +0800
+Message-ID: <1469106808-28297-6-git-send-email-zyw@rock-chips.com>
 References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add EXTCON_DISP_DP for the Display external connector. For Type-C
-connector the DisplayPort can work as an Alternate Mode(VESA DisplayPort
-Alt Mode on USB Type-C Standard). The Type-C support both normal and
-flipped orientation, so add a property to extcon.
-
-Signe-off-by: Chris Zhong <zyw@rock-chips.com>
+This patch adds a binding that describes the cdn DP controller for
+rk3399.
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+
 ---
 
 Changes in v6:
-- move the EXTCON_PROP_TYPEC_POLARITY to EXTCON_TYPE_USB in _supported
-Series-changes: 5
-- support get property
+- add assigned-clocks and assigned-clock-rates
+- add power-domains
 
 Changes in v5: None
-Changes in v4: None
-Changes in v3: None
+Changes in v4:
+- add a reset node
+- support 2 phys
+
+Changes in v3:
+- add SoC specific compatible string
+- remove reg = <1>;
+
 Changes in v2: None
-Changes in v1: None
+Changes in v1:
+- add extcon node description
+- add #sound-dai-cells description
 
- drivers/extcon/extcon.c | 26 ++++++++++++++++++++++++++
- include/linux/extcon.h  | 13 +++++++++++++
- 2 files changed, 39 insertions(+)
+ .../bindings/display/rockchip/cdn-dp-rockchip.txt  | 74 ++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
 
-diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
-index a1117db..f79b510 100644
---- a/drivers/extcon/extcon.c
-+++ b/drivers/extcon/extcon.c
-@@ -157,6 +157,11 @@ struct __extcon_info {
- 		.id = EXTCON_DISP_VGA,
- 		.name = "VGA",
- 	},
-+	[EXTCON_DISP_DP] = {
-+		.type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
-+		.id = EXTCON_DISP_DP,
-+		.name = "DP",
-+	},
- 
- 	/* Miscellaneous external connector */
- 	[EXTCON_DOCK] = {
-@@ -270,6 +275,7 @@ static bool is_extcon_property_supported(unsigned int id,
- 		switch (prop) {
- 		case EXTCON_PROP_USB_ID:
- 		case EXTCON_PROP_USB_VBUS:
-+		case EXTCON_PROP_TYPEC_POLARITY:
- 			return true;
- 		default:
- 			break;
-@@ -547,6 +553,26 @@ int extcon_get_cable_property(struct extcon_dev *edev, unsigned int id,
- 				enum extcon_property prop,
- 				union extcon_property_value *val)
- {
-+	struct extcon_cable *cable;
-+	int index;
+diff --git a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
+new file mode 100644
+index 0000000..af87dcc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
+@@ -0,0 +1,74 @@
++Rockchip RK3399 specific extensions to the cdn Display Port
++================================
 +
-+	if (!edev)
-+		return -EINVAL;
++Required properties:
++- compatible: must be "rockchip,rk3399-cdn-dp"
 +
-+	/* Check the property whether is supported or not */
-+	if (!is_extcon_property_supported(id, prop))
-+		return -EINVAL;
++- reg: physical base address of the controller and length
 +
-+	/* Find the cable index of external connector by using id */
-+	index = find_cable_index_by_id(edev, id);
-+	if (index < 0)
-+		return index;
++- clocks: from common clock binding: handle to dp clock.
 +
-+	/* Store the property value */
-+	cable = &edev->cables[index];
++- clock-names: from common clock binding:
++	       Required elements: "core-clk" "pclk" "spdif"
 +
-+	val->intval = cable->propval[prop].intval;
++- resets : a list of phandle + reset specifier pairs
++- reset-names : string reset name, must be:
++		"spdif"
++- power-domains : power-domain property defined with a phandle
++		  to respective power domain.
++- assigned-clocks: main clock, should be <&cru SCLK_DP_CORE>
++- assigned-clock-rates : the DP core clk frequency, shall be: 100000000
 +
- 	return 0;
- }
- 
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index f6f0a8d..50ef87f 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -77,6 +77,7 @@ enum extcon_type {
- #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
- #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
- #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
-+#define EXTCON_DISP_DP		44	/* DisplayPort */
- 
- /* Miscellaneous external connector */
- #define EXTCON_DOCK		60
-@@ -108,9 +109,13 @@ enum extcon_property {
- 	 * - EXTCON_PROP_USB_USB
- 	 * @type:	integer (int value)
- 	 * @value:	0 (low) or 1 (high)
-+	 * - EXTCON_PROP_TYPEC_POLARITY,
-+	 * @type:	integer (int value)
-+	 * @value:	0 (normal) or 1 (flip)
- 	 */
- 	EXTCON_PROP_USB_ID = 0,
- 	EXTCON_PROP_USB_VBUS,
-+	EXTCON_PROP_TYPEC_POLARITY,
- 
- 	/* Properties of EXTCON_TYPE_CHG. */
- 	/* Properties of EXTCON_TYPE_JACK. */
-@@ -225,6 +230,14 @@ extern int extcon_get_cable_state_(struct extcon_dev *edev, unsigned int id);
- extern int extcon_set_cable_state_(struct extcon_dev *edev, unsigned int id,
- 				   bool cable_state);
- 
-+extern int extcon_get_cable_property(struct extcon_dev *edev, unsigned int id,
-+				     enum extcon_property prop,
-+				     union extcon_property_value *val);
++- rockchip,grf: this soc should set GRF regs, so need get grf here.
 +
-+extern int extcon_set_cable_property(struct extcon_dev *edev, unsigned int id,
-+				     enum extcon_property prop,
-+				     union extcon_property_value val);
++- ports: contain a port nodes with endpoint definitions as defined in
++	 Documentation/devicetree/bindings/media/video-interfaces.txt.
++	 contained 2 endpoints, connecting to the output of vop.
 +
- /*
-  * Following APIs are to monitor every action of a notifier.
-  * Registrar gets notified for every external port of a connection device.
++- phys: from general PHY binding: the phandle for the PHY device.
++
++- extcon: extcon specifier for the Power Delivery
++
++- #sound-dai-cells = it must be 1 if your system is using 2 DAIs: I2S, SPDIF
++
++-------------------------------------------------------------------------------
++
++Example:
++	cdn_dp: dp@fec00000 {
++		compatible = "rockchip,rk3399-cdn-dp";
++		reg = <0x0 0xfec00000 0x0 0x100000>;
++		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
++			 <&cru SCLK_SPDIF_REC_DPTX>;
++		clock-names = "core-clk", "pclk", "spdif";
++		assigned-clocks = <&cru SCLK_DP_CORE>;
++		assigned-clock-rates = <100000000>;
++		power-domains = <&power RK3399_PD_HDCP>;
++		phys = <&tcphy0>, <&tcphy1>;
++		resets = <&cru SRST_DPTX_SPDIF_REC>;
++		reset-names = "spdif";
++		extcon = <&fusb0>, <&fusb1>;
++		rockchip,grf = <&grf>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		#sound-dai-cells = <1>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			dp_in: port {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				dp_in_vopb: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&vopb_out_dp>;
++				};
++
++				dp_in_vopl: endpoint@1 {
++					reg = <1>;
++					remote-endpoint = <&vopl_out_dp>;
++				};
++			};
++		};
++	};
 -- 
 2.6.3
