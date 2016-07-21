@@ -1,192 +1,131 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v6 PATCH 0/6] Rockchip Type-C and DisplayPort driver
-Date: Thu, 21 Jul 2016 21:13:22 +0800
-Message-ID: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
+Subject: [v6 PATCH 1/6] extcon: Add Type-C and DP support
+Date: Thu, 21 Jul 2016 21:13:23 +0800
+Message-ID: <1469106808-28297-2-git-send-email-zyw@rock-chips.com>
+References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, Will Deacon <will.deacon@arm.com>, dri-devel@lists.freedesktop.org, Kever Yang <kever.yang@rock-chips.com>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, David Airlie <airlied@linux.ie>
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Add EXTCON_DISP_DP for the Display external connector. For Type-C
+connector the DisplayPort can work as an Alternate Mode(VESA DisplayPort
+Alt Mode on USB Type-C Standard). The Type-C support both normal and
+flipped orientation, so add a property to extcon.
 
-Hi all
+Signe-off-by: Chris Zhong <zyw@rock-chips.com>
 
-This series patch is for rockchip Type-C phy and DisplayPort controller
-driver.
-
-The USB Type-C PHY is designed to support the USB3 and DP applications.
-The PHY basically has two main components: USB3 and DisplyPort. USB3
-operates in SuperSpeed mode and the DP can operate at RBR, HBR and HBR2
-data rates. The Type-C cable orientation detection and Power Delivery
-(PD) is accomplished using a PD PHY or a exernal PD chip.
-
-The DP controller is compliant with DisplayPort Specification,
-Version 1.3, This IP is compatible with the rockchip type-c PHY IP.
-There is a uCPU in DP controller, it need a firmware to work, please
-put the firmware file[0] to /lib/firmware/cdn/dptx.bin. The uCPU in charge
-of aux communication and link training, the host use mailbox to
-communicate with the ucpu.
-
-The DP contoller has register a notification with extcon API, to get the
-alt mode from PD, the PD driver need call the devm_extcon_dev_allocate
-to create a extcon device and use extcon_set_state to notify DP
-controller. And call extcon_set_cable_property to set orientation.
-
-About the DP audio, cdn-dp registered 2 DAIs: 0 is I2S, 1 is SPDIF.
-We can reference them in simple-card.
-
-This series is based on Mark Yao's branch[1] and Chanwoo Choi's
-extcon-test branch[2]. The extcon patch is base on a test branch, so
-please do not review the "1/6 extcon: Add Type-C and DP support".
-
-I test this patches on the rk3399-evb board, with a fusb302 driver,
-this branch has no rk3399.dtsi, so the patch about dts is not included
-in this series.
-
-[0]
-https://patchwork.kernel.org/patch/9225567/
-[1]
-https://github.com/markyzq/kernel-drm-rockchip/tree/drm-rockchip-next-2016-05-23
-[2]
-https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/log/?h=extcon-test
-- usb: dwc3: omap: Support the changed method to get the state of connector
-- usb: chipdata: Support the changed method to get the state of connector
-- extcon: Add the support for extcon property according to type of connector
-- extcon: Add the extcon_type to group each connector into five category
-
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
 
 Changes in v6:
 - move the EXTCON_PROP_TYPEC_POLARITY to EXTCON_TYPE_USB in _supported
 Series-changes: 5
 - support get property
-- add assigned-clocks and assigned-clock-rates
-- delete the support of PIN_ASSIGN_A/B
-- set the default mode to MODE_DFP_USB
-- disable DP PLL at USB3 only mode
-- add assigned-clocks and assigned-clock-rates
-- add power-domains
-- add a port struct
-- select SND_SOC_HDMI_CODEC
-- force reset the phy when hpd detected
 
-Changes in v5:
-- support get property from extcon
-- remove PIN ASSIGN A/B support
-- alphabetical order
-- do not use long, use u32 or u64
-- return MODE_CLOCK_HIGH when requested > actual
-- Optimized Coding Style
-- add a formula to get better tu size and symbol value.
-- modify according to Sean Paul's comments
-- fixed the fw_wait always 0
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+Changes in v1: None
 
-Changes in v4:
-- add a #phy-cells node
-- select EXTCON
-- use phy framework to control the USB3 and DP function
-- rename PIN_MAP_ to PIN_ASSIGN_
-- add a reset node
-- support 2 phys
-- use phy framework to control DP phy
-- support 2 phys
+ drivers/extcon/extcon.c | 26 ++++++++++++++++++++++++++
+ include/linux/extcon.h  | 13 +++++++++++++
+ 2 files changed, 39 insertions(+)
 
-Changes in v3:
-- use compatible: rockchip,rk3399-typec-phy
-- use dashes instead of underscores.
-- remove the phy framework(Kishon Vijay Abraham I)
-- add parentheses around the macro
-- use a single space between type and name
-- add spaces after opening and before closing braces.
-- use u16 for register value
-- remove type-c phy header file
-- CodingStyle optimization
-- use some cable extcon to get type-c port information
-- add a extcon to notify Display Port
-- add SoC specific compatible string
-- remove reg = <1>;
-- use EXTCON_DISP_DP and EXTCON_DISP_DP_ALT cable to get dp port state.
-- reset spdif before config it
-- modify the firmware clk to 100Mhz
-- retry load firmware if fw file is requested too early
-
-Changes in v2:
-- add some registers description
-- select RESET_CONTROLLER
-- alphabetic order
-- modify some spelling mistakes
-- make mode cleaner
-- use bool for enable/disable
-- check all of the return value
-- return a better err number
-- use more readx_poll_timeout()
-- clk_disable_unprepare(tcphy->clk_ref);
-- remove unuse functions, rockchip_typec_phy_power_on/off
-- remove unnecessary typecast from void *
-- use dts node to distinguish between phys.
-- Alphabetic order
-- remove excess error message
-- use define clk_rate
-- check all return value
-- remove dev_set_name(dp->dev, "cdn-dp");
-- use schedule_delayed_work
-- remove never-called functions
-- remove some unnecessary ()
-
-Changes in v1:
-- add extcon node description
-- move the registers in phy driver
-- remove the suffix of reset
-- update the licence note
-- init core clock to 50MHz
-- use extcon API
-- remove unused global
-- add some comments for magic num
-- change usleep_range(1000, 2000) tousleep_range(1000, 1050)
-- remove __func__ from dev_err
-- return err number when get clk failed
-- remove ADDR_ADJ define
-- use devm_clk_get(&pdev->dev, "tcpdcore")
-- add extcon node description
-- add #sound-dai-cells description
-- use extcon API
-- use hdmi-codec for the DP Asoc
-- do not initialize the "ret"
-- printk a err log when drm_of_encoder_active_endpoint_id
-- modify the dclk pin_pol to a single line
-
-Chris Zhong (6):
-  extcon: Add Type-C and DP support
-  Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-  phy: Add USB Type-C PHY driver for rk3399
-  arm64: dts: rockchip: add Type-C phy for RK3399
-  Documentation: bindings: add dt documentation for cdn DP controller
-  drm/rockchip: cdn-dp: add cdn DP support for rk3399
-
- .../bindings/display/rockchip/cdn-dp-rockchip.txt  |  74 ++
- .../devicetree/bindings/phy/phy-rockchip-typec.txt |  84 ++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  44 +
- drivers/extcon/extcon.c                            |  26 +
- drivers/gpu/drm/rockchip/Kconfig                   |  10 +
- drivers/gpu/drm/rockchip/Makefile                  |   1 +
- drivers/gpu/drm/rockchip/cdn-dp-core.c             | 868 +++++++++++++++++++
- drivers/gpu/drm/rockchip/cdn-dp-core.h             | 102 +++
- drivers/gpu/drm/rockchip/cdn-dp-reg.c              | 904 +++++++++++++++++++
- drivers/gpu/drm/rockchip/cdn-dp-reg.h              | 479 ++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |  13 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |   9 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c        |   2 +
- drivers/phy/Kconfig                                |   9 +
- drivers/phy/Makefile                               |   1 +
- drivers/phy/phy-rockchip-typec.c                   | 960 +++++++++++++++++++++
- include/linux/extcon.h                             |  13 +
- 17 files changed, 3596 insertions(+), 3 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.c
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.h
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.h
- create mode 100644 drivers/phy/phy-rockchip-typec.c
-
+diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
+index a1117db..f79b510 100644
+--- a/drivers/extcon/extcon.c
++++ b/drivers/extcon/extcon.c
+@@ -157,6 +157,11 @@ struct __extcon_info {
+ 		.id = EXTCON_DISP_VGA,
+ 		.name = "VGA",
+ 	},
++	[EXTCON_DISP_DP] = {
++		.type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
++		.id = EXTCON_DISP_DP,
++		.name = "DP",
++	},
+ 
+ 	/* Miscellaneous external connector */
+ 	[EXTCON_DOCK] = {
+@@ -270,6 +275,7 @@ static bool is_extcon_property_supported(unsigned int id,
+ 		switch (prop) {
+ 		case EXTCON_PROP_USB_ID:
+ 		case EXTCON_PROP_USB_VBUS:
++		case EXTCON_PROP_TYPEC_POLARITY:
+ 			return true;
+ 		default:
+ 			break;
+@@ -547,6 +553,26 @@ int extcon_get_cable_property(struct extcon_dev *edev, unsigned int id,
+ 				enum extcon_property prop,
+ 				union extcon_property_value *val)
+ {
++	struct extcon_cable *cable;
++	int index;
++
++	if (!edev)
++		return -EINVAL;
++
++	/* Check the property whether is supported or not */
++	if (!is_extcon_property_supported(id, prop))
++		return -EINVAL;
++
++	/* Find the cable index of external connector by using id */
++	index = find_cable_index_by_id(edev, id);
++	if (index < 0)
++		return index;
++
++	/* Store the property value */
++	cable = &edev->cables[index];
++
++	val->intval = cable->propval[prop].intval;
++
+ 	return 0;
+ }
+ 
+diff --git a/include/linux/extcon.h b/include/linux/extcon.h
+index f6f0a8d..50ef87f 100644
+--- a/include/linux/extcon.h
++++ b/include/linux/extcon.h
+@@ -77,6 +77,7 @@ enum extcon_type {
+ #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
+ #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
+ #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
++#define EXTCON_DISP_DP		44	/* DisplayPort */
+ 
+ /* Miscellaneous external connector */
+ #define EXTCON_DOCK		60
+@@ -108,9 +109,13 @@ enum extcon_property {
+ 	 * - EXTCON_PROP_USB_USB
+ 	 * @type:	integer (int value)
+ 	 * @value:	0 (low) or 1 (high)
++	 * - EXTCON_PROP_TYPEC_POLARITY,
++	 * @type:	integer (int value)
++	 * @value:	0 (normal) or 1 (flip)
+ 	 */
+ 	EXTCON_PROP_USB_ID = 0,
+ 	EXTCON_PROP_USB_VBUS,
++	EXTCON_PROP_TYPEC_POLARITY,
+ 
+ 	/* Properties of EXTCON_TYPE_CHG. */
+ 	/* Properties of EXTCON_TYPE_JACK. */
+@@ -225,6 +230,14 @@ extern int extcon_get_cable_state_(struct extcon_dev *edev, unsigned int id);
+ extern int extcon_set_cable_state_(struct extcon_dev *edev, unsigned int id,
+ 				   bool cable_state);
+ 
++extern int extcon_get_cable_property(struct extcon_dev *edev, unsigned int id,
++				     enum extcon_property prop,
++				     union extcon_property_value *val);
++
++extern int extcon_set_cable_property(struct extcon_dev *edev, unsigned int id,
++				     enum extcon_property prop,
++				     union extcon_property_value val);
++
+ /*
+  * Following APIs are to monitor every action of a notifier.
+  * Registrar gets notified for every external port of a connection device.
 -- 
 2.6.3
