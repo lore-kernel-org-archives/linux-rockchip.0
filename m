@@ -1,137 +1,70 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v6 PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-Date: Thu, 21 Jul 2016 21:13:24 +0800
-Message-ID: <1469106808-28297-3-git-send-email-zyw@rock-chips.com>
-References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v1 2/2] drm/bridge: analogix_dp: turn off the panel when eDP need to disable
+Date: Thu, 21 Jul 2016 21:14:46 +0800
+Message-ID: <1469106886-4979-1-git-send-email-ykk@rock-chips.com>
+References: <1469106874-4912-1-git-send-email-ykk@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
+In-Reply-To: <1469106874-4912-1-git-send-email-ykk@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <treding@nvidia.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Sean Paul <seanpaul@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, Krzysztof Kozlowski <k.kozlowski@samsung.com>, emil.l.velikov@gmail.com, Yakir Yang <ykk@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds a binding that describes the Rockchip USB Type-C PHY
-for rk3399
+Some panels (like Sharp LQ123P1JX31) need to be turn off when eDP
+controller stop to send valid video signal, otherwhise panel would
+go burn in, and keep flicker and flicker.
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-Acked-by: Rob Herring <robh@kernel.org>
+So it's better to turn off the panel when eDP need to disable, and
+we need to turn on the panel in connector->detect() callback, so
+that driver would detect panel status rightly.
 
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 ---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-Changes in v6:
-- add assigned-clocks and assigned-clock-rates
-
-Changes in v5: None
-Changes in v4:
-- add a #phy-cells node
-
-Changes in v3:
-- use compatible: rockchip,rk3399-typec-phy
-- use dashes instead of underscores.
-
-Changes in v2:
-- add some registers description
-
-Changes in v1:
-- add extcon node description
-- move the registers in phy driver
-- remove the suffix of reset
-
- .../devicetree/bindings/phy/phy-rockchip-typec.txt | 84 ++++++++++++++++++++++
- 1 file changed, 84 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-new file mode 100644
-index 0000000..e384056
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-@@ -0,0 +1,84 @@
-+* ROCKCHIP type-c PHY
-+---------------------
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 32715da..ea059b3 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -961,6 +961,14 @@ analogix_dp_detect(struct drm_connector *connector, bool force)
+ {
+ 	struct analogix_dp_device *dp = to_dp(connector);
+ 
++	/*
++	 * Panle would prepare for several times here, but don't worry it
++	 * would only enable the hardware at the first prepare time.
++	 */
++	if (dp->plat_data->panel)
++		if (drm_panel_prepare(dp->plat_data->panel))
++			DRM_ERROR("failed to setup the panel\n");
 +
-+Required properties:
-+ - compatible : must be "rockchip,rk3399-typec-phy"
-+ - reg: Address and length of the usb phy control register set
-+ - rockchip,grf : phandle to the syscon managing the "general
-+   register files"
-+ - clocks : phandle + clock specifier for the phy clocks
-+ - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
-+ - assigned-clocks: main clock, should be <&cru SCLK_UPHY0_TCPDCORE> or
-+		    <&cru SCLK_UPHY1_TCPDCORE>;
-+ - assigned-clock-rates : the phy core clk frequency, shall be: 50000000
-+ - resets : a list of phandle + reset specifier pairs
-+ - reset-names : string reset name, must be:
-+		 "uphy", "uphy-pipe", "uphy-tcphy"
-+ - extcon : extcon specifier for the Power Delivery
-+ - #phy-cells: must be 0. See ./phy-bindings.txt for details.
-+
-+Note, there are 2 type-c phys for RK3399, and they are almost identical, except
-+these registers(description below), every register node contains 3 sections:
-+offset, enable bit, write mask bit.
-+ - rockchip,typec-conn-dir : the register of type-c connector direction,
-+   for type-c phy0, it must be <0xe580 0 16>;
-+   for type-c phy1, it must be <0xe58c 0 16>;
-+ - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
-+   control.
-+   for type-c phy0, it must be <0xe580 3 19>;
-+   for type-c phy1, it must be <0xe58c 3 19>;
-+ - rockchip,external-psm : the register of type-c phy external psm clock
-+   selection.
-+   for type-c phy0, it must be <0xe588 14 30>;
-+   for type-c phy1, it must be <0xe594 14 30>;
-+ - rockchip,pipe-status : the register of type-c phy pipe status.
-+   for type-c phy0, it must be <0xe5c0 0 0>;
-+   for type-c phy1, it must be <0xe5c0 16 16>;
-+ - rockchip,uphy-dp-sel : the register of type-c phy selection for DP
-+   for type-c phy0, it must be <0x6268 19 19>;
-+   for type-c phy1, it must be <0x6268 3 19>;
-+
-+Example:
-+	tcphy0: phy@ff7c0000 {
-+		compatible = "rockchip,rk3399-typec-phy";
-+		reg = <0x0 0xff7c0000 0x0 0x40000>;
-+		rockchip,grf = <&grf>;
-+		#phy-cells = <0>;
-+		extcon = <&fusb0>;
-+		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-+			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-+		clock-names = "tcpdcore", "tcpdphy-ref";
-+		assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
-+		assigned-clock-rates = <50000000>;
-+		resets = <&cru SRST_UPHY0>,
-+			 <&cru SRST_UPHY0_PIPE_L00>,
-+			 <&cru SRST_P_UPHY0_TCPHY>;
-+		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-+		rockchip,typec-conn-dir = <0xe580 0 16>;
-+		rockchip,usb3tousb2-en = <0xe580 3 19>;
-+		rockchip,external-psm = <0xe588 14 30>;
-+		rockchip,pipe-status = <0xe5c0 0 0>;
-+		rockchip,uphy-dp-sel = <0x6268 19 19>;
-+	};
-+
-+	tcphy1: phy@ff800000 {
-+		compatible = "rockchip,rk3399-typec-phy";
-+		reg = <0x0 0xff800000 0x0 0x40000>;
-+		rockchip,grf = <&grf>;
-+		#phy-cells = <0>;
-+		extcon = <&fusb1>;
-+		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-+			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-+		clock-names = "tcpdcore", "tcpdphy-ref";
-+		assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
-+		assigned-clock-rates = <50000000>;
-+		resets = <&cru SRST_UPHY1>,
-+		         <&cru SRST_UPHY1_PIPE_L00>,
-+			 <&cru SRST_P_UPHY1_TCPHY>;
-+		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-+		rockchip,typec-conn-dir = <0xe58c 0 16>;
-+		rockchip,usb3tousb2-en = <0xe58c 3 19>;
-+		rockchip,external-psm = <0xe594 14 30>;
-+		rockchip,pipe-status = <0xe5c0 16 16>;
-+		rockchip,uphy-dp-sel = <0x6268 3 19>;
-+	};
+ 	if (analogix_dp_detect_hpd(dp))
+ 		return connector_status_disconnected;
+ 
+@@ -1063,7 +1071,8 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+ 		return;
+ 
+ 	if (dp->plat_data->panel) {
+-		if (drm_panel_disable(dp->plat_data->panel)) {
++		if (drm_panel_disable(dp->plat_data->panel) ||
++		    drm_panel_unprepare(dp->plat_data->panel)) {
+ 			DRM_ERROR("failed to disable the panel\n");
+ 			return;
+ 		}
+@@ -1333,13 +1342,6 @@ int analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+ 
+ 	phy_power_on(dp->phy);
+ 
+-	if (dp->plat_data->panel) {
+-		if (drm_panel_prepare(dp->plat_data->panel)) {
+-			DRM_ERROR("failed to setup the panel\n");
+-			return -EBUSY;
+-		}
+-	}
+-
+ 	analogix_dp_init_dp(dp);
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
 -- 
-2.6.3
+1.9.1
