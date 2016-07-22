@@ -1,197 +1,79 @@
-From: Guenter Roeck <groeck@google.com>
-Subject: Re: [v6 PATCH 1/6] extcon: Add Type-C and DP support
-Date: Fri, 22 Jul 2016 14:40:59 -0700
-Message-ID: <CABXOdTfcxQ0W8wqyNstoYUf3XS6ehZRnESX418aUymTx_6cEbw@mail.gmail.com>
-References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
- <CGME20160721131520epcas1p402684ff2569a23d7e5e011da9fb07667@epcas1p4.samsung.com>
- <1469106808-28297-2-git-send-email-zyw@rock-chips.com> <5791E769.9060403@samsung.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v7 2/2] PCI: Rockchip: Add Rockchip PCIe controller
+ support
+Date: Fri, 22 Jul 2016 15:29:03 -0700
+Message-ID: <20160722222902.GB58807@google.com>
+References: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
+ <1468802533-17699-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5791E769.9060403@samsung.com>
+Content-Disposition: inline
+In-Reply-To: <1468802533-17699-2-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, myungjoo.ham@samsung.com, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 22, 2016 at 2:29 AM, Chanwoo Choi <cw00.choi@samsung.com> w=
-rote:
-> Hi Chris,
->
-> I'm sorry for late reply. I finished the first draft to support the e=
-xtcon property.
-> You can check the patches[1]. But, I need more time to test it. After=
- tested it,
-> I'll send the patches.
->
-> [1] https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/l=
-og/?h=3Dextcon-test
->
-> Chanwoo Choi (4):
->   extcon: Add the extcon_type to group each connector into five categ=
-ory
->   extcon: Add the support for extcon property according to type of co=
-nnector
->   extcon: Rename the extcon_set/get_state() to maintain the function =
-naming pattern
->   extcon: Add the sync APIs to support the  notification for extcon p=
-roperty
->
+Hi Shawn,
 
-Some additional feedback:
+On Mon, Jul 18, 2016 at 08:42:13AM +0800, Shawn Lin wrote:
+> This patch adds Rockchip PCIe controller support found
+> on RK3399 Soc platform.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v7:
+> - make it as a build-in driver
+> - improve gen1/2 training timeout checking
+> - only clear known interrupt
+> - fix INTx for 0-base index
 
-- IS_PROPERTY(), is_extcon_property_supported():
-   The logic should probably be
-        if (EXTCON_TYPE_##name & type) {
-   and
-        if (!(extcon_info[id].type & type)) {
+Also:
+  - Fix infinite loop in legacy interrupt handler
 
-  (logical & instead of logical | )
+(not that the changelog is that critical to get exactly right)
 
-- extcon_get_property():
-  - ret is not initialized.
-  - case EXTCON_PROP_DISP_MIN ... EXTCON_PROP_DISP_MAX:
-    misses a break statement
+> 
+> Changes in v6:
+> - use "depends on PCI_MSI_IRQ_DOMAIN" suggested by Arnd
+> 
+> Changes in v5:
+> - handle multiple pending INTx at the same time
+>   suggested by Marc
+> 
+> Changes in v4:
+> - address the comments from Brain
+> 
+> Changes in v3:
+> - remove header file
+> - remove struct msi_controller and move most of variables
+>   of rockchip_pcie_port to become the local ones.
+> - allow legacy int even if enabling MSI
+> - drop regulator set voltage operation suggested by Doug
+> 
+> Changes in v2:
+> - remove phy related stuff and call phy API
+> - add new head file and define lots of macro to make
+>   the code more readable
+> - remove lots msi related code suggested by Marc
+> - add IO window address translation
+> - init_port and parse_dt reconstruction suggested by Bharat
+> - improve wr_own_conf suggested by Arnd
+> - make pcie as an interrupt controller and fix wrong int handler
+>   suggested by Marc
+> - remove PCI_PROBE_ONLY suggested by Lorenzo
+> 
+>  drivers/pci/host/Kconfig         |   11 +
+>  drivers/pci/host/Makefile        |    1 +
+>  drivers/pci/host/pcie-rockchip.c | 1233 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 1245 insertions(+)
+>  create mode 100644 drivers/pci/host/pcie-rockchip.c
+> 
+[...]
 
-Guenter
+Looks better to me:
 
-> Chris Zhong (1):
->   extcon: Add EXTCON_DISP_DP and the property for USB Type-C
->
-> Regards,
-> Chanwoo Choi
->
-> On 2016=EB=85=84 07=EC=9B=94 21=EC=9D=BC 22:13, Chris Zhong wrote:
->> Add EXTCON_DISP_DP for the Display external connector. For Type-C
->> connector the DisplayPort can work as an Alternate Mode(VESA Display=
-Port
->> Alt Mode on USB Type-C Standard). The Type-C support both normal and
->> flipped orientation, so add a property to extcon.
->>
->> Signe-off-by: Chris Zhong <zyw@rock-chips.com>
->>
->> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->> ---
->>
->> Changes in v6:
->> - move the EXTCON_PROP_TYPEC_POLARITY to EXTCON_TYPE_USB in _support=
-ed
->> Series-changes: 5
->> - support get property
->>
->> Changes in v5: None
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->> Changes in v1: None
->>
->>  drivers/extcon/extcon.c | 26 ++++++++++++++++++++++++++
->>  include/linux/extcon.h  | 13 +++++++++++++
->>  2 files changed, 39 insertions(+)
->>
->> diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
->> index a1117db..f79b510 100644
->> --- a/drivers/extcon/extcon.c
->> +++ b/drivers/extcon/extcon.c
->> @@ -157,6 +157,11 @@ struct __extcon_info {
->>               .id =3D EXTCON_DISP_VGA,
->>               .name =3D "VGA",
->>       },
->> +     [EXTCON_DISP_DP] =3D {
->> +             .type =3D EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
->> +             .id =3D EXTCON_DISP_DP,
->> +             .name =3D "DP",
->> +     },
->>
->>       /* Miscellaneous external connector */
->>       [EXTCON_DOCK] =3D {
->> @@ -270,6 +275,7 @@ static bool is_extcon_property_supported(unsigne=
-d int id,
->>               switch (prop) {
->>               case EXTCON_PROP_USB_ID:
->>               case EXTCON_PROP_USB_VBUS:
->> +             case EXTCON_PROP_TYPEC_POLARITY:
->>                       return true;
->>               default:
->>                       break;
->> @@ -547,6 +553,26 @@ int extcon_get_cable_property(struct extcon_dev=
- *edev, unsigned int id,
->>                               enum extcon_property prop,
->>                               union extcon_property_value *val)
->>  {
->> +     struct extcon_cable *cable;
->> +     int index;
->> +
->> +     if (!edev)
->> +             return -EINVAL;
->> +
->> +     /* Check the property whether is supported or not */
->> +     if (!is_extcon_property_supported(id, prop))
->> +             return -EINVAL;
->> +
->> +     /* Find the cable index of external connector by using id */
->> +     index =3D find_cable_index_by_id(edev, id);
->> +     if (index < 0)
->> +             return index;
->> +
->> +     /* Store the property value */
->> +     cable =3D &edev->cables[index];
->> +
->> +     val->intval =3D cable->propval[prop].intval;
->> +
->>       return 0;
->>  }
->>
->> diff --git a/include/linux/extcon.h b/include/linux/extcon.h
->> index f6f0a8d..50ef87f 100644
->> --- a/include/linux/extcon.h
->> +++ b/include/linux/extcon.h
->> @@ -77,6 +77,7 @@ enum extcon_type {
->>  #define EXTCON_DISP_MHL              41      /* Mobile High-Definit=
-ion Link */
->>  #define EXTCON_DISP_DVI              42      /* Digital Visual Inte=
-rface */
->>  #define EXTCON_DISP_VGA              43      /* Video Graphics Arra=
-y */
->> +#define EXTCON_DISP_DP               44      /* DisplayPort */
->>
->>  /* Miscellaneous external connector */
->>  #define EXTCON_DOCK          60
->> @@ -108,9 +109,13 @@ enum extcon_property {
->>        * - EXTCON_PROP_USB_USB
->>        * @type:       integer (int value)
->>        * @value:      0 (low) or 1 (high)
->> +      * - EXTCON_PROP_TYPEC_POLARITY,
->> +      * @type:       integer (int value)
->> +      * @value:      0 (normal) or 1 (flip)
->>        */
->>       EXTCON_PROP_USB_ID =3D 0,
->>       EXTCON_PROP_USB_VBUS,
->> +     EXTCON_PROP_TYPEC_POLARITY,
->>
->>       /* Properties of EXTCON_TYPE_CHG. */
->>       /* Properties of EXTCON_TYPE_JACK. */
->> @@ -225,6 +230,14 @@ extern int extcon_get_cable_state_(struct extco=
-n_dev *edev, unsigned int id);
->>  extern int extcon_set_cable_state_(struct extcon_dev *edev, unsigne=
-d int id,
->>                                  bool cable_state);
->>
->> +extern int extcon_get_cable_property(struct extcon_dev *edev, unsig=
-ned int id,
->> +                                  enum extcon_property prop,
->> +                                  union extcon_property_value *val)=
-;
->> +
->> +extern int extcon_set_cable_property(struct extcon_dev *edev, unsig=
-ned int id,
->> +                                  enum extcon_property prop,
->> +                                  union extcon_property_value val);
->> +
->>  /*
->>   * Following APIs are to monitor every action of a notifier.
->>   * Registrar gets notified for every external port of a connection =
-device.
->>
->
+Reviewed-by: Brian Norris <briannorris@chromium.org>
