@@ -1,25 +1,103 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v7 1/2] Documentation: bindings: add dt doc for Rockchip
- PCIe controller
-Date: Fri, 22 Jul 2016 13:39:42 -0700
-Message-ID: <20160722203941.GA58807@google.com>
-References: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 1/7] firmware: rockchip: sip: Add rockchip SIP runtime service
+Date: Fri, 22 Jul 2016 22:50:51 +0200
+Message-ID: <1497407.KruMAzy5tb@diego>
+References: <1469178440-4668-1-git-send-email-hl@rock-chips.com> <1469178440-4668-2-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1469178440-4668-2-git-send-email-hl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lin Huang <hl@rock-chips.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: mark.yao@rock-chips.com, myungjoo.ham@samsung.com, cw00.choi@samsung.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, linux-arm-kernel@lists.infradead.org, tixy@linaro.org, xsf@rock-chips.com, typ@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 18, 2016 at 08:42:12AM +0800, Shawn Lin wrote:
-> This patch adds a binding that describes the Rockchip PCIe controller
-> found on Rockchip SoCs PCIe interface.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
+Hi again,
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+one bigger thing I noticed only now.
+
+Am Freitag, 22. Juli 2016, 17:07:14 schrieben Sie:
+> diff --git a/drivers/firmware/rockchip_sip.c
+> b/drivers/firmware/rockchip_sip.c new file mode 100644
+> index 0000000..7756af9
+> --- /dev/null
+> +++ b/drivers/firmware/rockchip_sip.c
+> @@ -0,0 +1,64 @@
+> +/*
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * Copyright (C) 2016 ARM Limited
+> + */
+> +#include <linux/errno.h>
+> +#include <linux/linkage.h>
+> +#include <linux/of.h>
+> +#include <linux/pm.h>
+> +#include <linux/printk.h>
+> +#include "rockchip_sip.h"
+> +
+> +typedef unsigned long (psci_fn)(unsigned long, unsigned long,
+> +				unsigned long, unsigned long);
+> +asmlinkage psci_fn __invoke_psci_fn_smc;
+> +
+> +#define CONFIG_DRAM_INIT	0x00
+> +#define CONFIG_DRAM_SET_RATE	0x01
+> +#define CONFIG_DRAM_ROUND_RATE	0x02
+> +#define CONFIG_DRAM_SET_AT_SR	0x03
+> +#define CONFIG_DRAM_GET_BW	0x04
+> +#define CONFIG_DRAM_GET_RATE	0x05
+> +#define CONFIG_DRAM_CLR_IRQ	0x06
+> +#define CONFIG_DRAM_SET_PARAM   0x07
+> +
+> +uint64_t sip_smc_ddr_init(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0,
+> +				    0, CONFIG_DRAM_INIT);
+
+I don't think that is legal to use. For one this function itself is declared 
+static in the psci code - most likely for a specific reason.
+
+And also if anything invoke_psci_fn would hold the correct pointer depending 
+on the calling method.
+
+But as said above, accessing psci static stuff is most likely wrong. Maybe the 
+two psci people I've included can tell us how this is to be accessed.
+
+
+Heiko
+
+> +}
+> +
+> +uint64_t sip_smc_set_ddr_param(uint64_t param)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, param,
+> +				    0, CONFIG_DRAM_SET_PARAM);
+> +}
+> +
+> +uint64_t sip_smc_set_ddr_rate(uint64_t rate)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, rate, 0,
+> +				    CONFIG_DRAM_SET_RATE);
+> +}
+> +
+> +uint64_t sip_smc_get_ddr_rate(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_GET_RATE);
+> +}
+> +
+> +uint64_t sip_smc_clr_ddr_irq(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_CLR_IRQ);
+> +}
+> +
+> +uint64_t sip_smc_get_call_count(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_SVC_CALL_COUNT, 0, 0, 0);
+> +}
