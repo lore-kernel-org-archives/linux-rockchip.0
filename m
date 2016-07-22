@@ -1,56 +1,105 @@
-From: Guenter Roeck <groeck@google.com>
-Subject: Re: [v6 PATCH 1/6] extcon: Add Type-C and DP support
-Date: Fri, 22 Jul 2016 11:21:41 -0700
-Message-ID: <CABXOdTe-xtfjBKOPE_EuqBai835V6NiMzUUoJZJZUEuP415xqQ@mail.gmail.com>
-References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
- <CGME20160721131520epcas1p402684ff2569a23d7e5e011da9fb07667@epcas1p4.samsung.com>
- <1469106808-28297-2-git-send-email-zyw@rock-chips.com> <5791E769.9060403@samsung.com>
+From: Paul Gortmaker <paul.gortmaker@windriver.com>
+Subject: Re: [PATCH v3 6/7] PM / devfreq: rockchip: add devfreq driver for
+ rk3399 dmc
+Date: Fri, 22 Jul 2016 16:24:08 -0400
+Message-ID: <CAP=VYLpBBXhMLdNyuYvtJ6XWn-yTof_-oEL7saB87KGY-84c9A@mail.gmail.com>
+References: <1469178440-4668-1-git-send-email-hl@rock-chips.com> <1469178440-4668-7-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5791E769.9060403@samsung.com>
+In-Reply-To: <1469178440-4668-7-git-send-email-hl@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, myungjoo.ham@samsung.com, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
+To: Lin Huang <hl@rock-chips.com>
+Cc: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com, Chanwoo Choi <cw00.choi@samsung.com>, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, LKML <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, tixy@linaro.org, xsf@rock-chips.com, typ@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Fri, Jul 22, 2016 at 2:29 AM, Chanwoo Choi <cw00.choi@samsung.com> wrote:
-> Hi Chris,
+On Fri, Jul 22, 2016 at 5:07 AM, Lin Huang <hl@rock-chips.com> wrote:
+> base on dfi result, we do ddr frequency scaling, register
+> dmc driver to devfreq framework, and use simple-ondemand
+> policy.
 >
-> I'm sorry for late reply. I finished the first draft to support the extcon property.
-> You can check the patches[1]. But, I need more time to test it. After tested it,
-> I'll send the patches.
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> ---
+> Changes in v3:
+> - operate dram setting through sip call
+> - imporve set rate flow
 >
-> [1] https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/log/?h=extcon-test
+> Changes in v2:
+> - None
 >
-> Chanwoo Choi (4):
->   extcon: Add the extcon_type to group each connector into five category
->   extcon: Add the support for extcon property according to type of connector
->   extcon: Rename the extcon_set/get_state() to maintain the function naming pattern
->   extcon: Add the sync APIs to support the  notification for extcon property
+> Changes in v1:
+> - move dfi controller to event
+> - fix set voltage sequence when set rate fail
+> - change Kconfig type from tristate to bool
+> - move unuse EXPORT_SYMBOL_GPL()
 >
-> Chris Zhong (1):
->   extcon: Add EXTCON_DISP_DP and the property for USB Type-C
+>  drivers/devfreq/Kconfig                 |   1 +
+>  drivers/devfreq/Makefile                |   1 +
+>  drivers/devfreq/rockchip/Kconfig        |  15 +
+>  drivers/devfreq/rockchip/Makefile       |   2 +
+>  drivers/devfreq/rockchip/rk3399_dmc.c   | 482 ++++++++++++++++++++++++++++++++
+>  drivers/devfreq/rockchip/rockchip_dmc.c | 143 ++++++++++
+>  include/soc/rockchip/rockchip_dmc.h     |  45 +++
+>  7 files changed, 689 insertions(+)
+>  create mode 100644 drivers/devfreq/rockchip/Kconfig
+>  create mode 100644 drivers/devfreq/rockchip/Makefile
+>  create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+>  create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
+>  create mode 100644 include/soc/rockchip/rockchip_dmc.h
 >
+> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
+> index a5be56e..cb67246 100644
+> --- a/drivers/devfreq/Kconfig
+> +++ b/drivers/devfreq/Kconfig
+> @@ -101,5 +101,6 @@ config ARM_TEGRA_DEVFREQ
+>           operating frequencies and voltages with OPP support.
+>
+>  source "drivers/devfreq/event/Kconfig"
+> +source "drivers/devfreq/rockchip/Kconfig"
+>
+>  endif # PM_DEVFREQ
+> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
+> index 09f11d9..48e2ae6 100644
+> --- a/drivers/devfreq/Makefile
+> +++ b/drivers/devfreq/Makefile
+> @@ -9,6 +9,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)       += governor_passive.o
+>  # DEVFREQ Drivers
+>  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)   += exynos-bus.o
+>  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)                += tegra-devfreq.o
+> +obj-$(CONFIG_ARCH_ROCKCHIP)            += rockchip/
+>
+>  # DEVFREQ Event Drivers
+>  obj-$(CONFIG_PM_DEVFREQ_EVENT)         += event/
+> diff --git a/drivers/devfreq/rockchip/Kconfig b/drivers/devfreq/rockchip/Kconfig
+> new file mode 100644
+> index 0000000..7fb1cff
+> --- /dev/null
+> +++ b/drivers/devfreq/rockchip/Kconfig
+> @@ -0,0 +1,15 @@
+> +config ARM_ROCKCHIP_DMC_DEVFREQ
+> +       bool "ARM ROCKCHIP DMC DEVFREQ Driver"
+> +       depends on ARCH_ROCKCHIP
+> +       help
+> +         This adds the DEVFREQ driver framework for the rockchip dmc.
+> +
+> +config ARM_RK3399_DMC_DEVFREQ
+> +       bool "ARM RK3399 DMC DEVFREQ Driver"
 
-Couple of comments:
+Since you are using bool Kconfigs for your driver, please do not use
+module.h or MODULE_<xyz> tags in your driver, and use the builtin
+register function.
 
-- In extcon.c, line 560: 'state' is unused.
+Alternatively if there really is  a use case for it to be a modular driver
+then use a tristate Kconfig.
 
-- extcon_set_property(edev, EXTCON_USB, EXTCON_USB_VBUS, 0);
-  does not work. As written, it has to be something like:
+THanks,
+Paul.
+--
 
-  union extcon_property_value prop;
-  ...
-  prop.intval = vbus_state;
-  extcon_set_property(edev, EXTCON_USB, EXTCON_USB_VBUS, prop);
-
-- For USB, the state of EXTCON_USB, EXTCON_USB_HOST, and
-EXTCON_DISP_DP tend to change at the same time, together with the
-associated properties.
-  It might be desirable to have an equivalent of extcon_sync_all(edev);
-
-Thanks,
-Guenter
+> +       depends on ARM_ROCKCHIP_DMC_DEVFREQ
+> +       select PM_OPP
+> +       select DEVFREQ_GOV_SIMPLE_ONDEMAND
+> +       help
+> +          This adds the DEVFREQ driver for the RK3399 dmc. It sets the frequency
+> +          for the memory controller and reads the usage counts from hardware.
+> +
