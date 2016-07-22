@@ -1,83 +1,75 @@
-From: Lin Huang <hl@rock-chips.com>
-Subject: [PATCH] clk: rockchip: add clock flag parameter when register pll
-Date: Fri, 22 Jul 2016 14:37:45 +0800
-Message-ID: <1469169465-5892-1-git-send-email-hl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=y
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang <hl@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v9 0/4] Add a new Rockchip usb2 phy driver
+Date: Fri, 22 Jul 2016 15:00:42 +0800
+Message-ID: <1469170846-15617-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=46rom: Heiko St=C3=BCbner <heiko@sntech.de>
+The newer SoCs (rk3366, rk3399) of Rock-chip take a different usb-phy
+IP block than rk3288 and before, and most of phy-related registers are
+also different from the past, so a new phy driver is required necessarily.
 
-add clock flag parameter so we can pass specific clock flag
-(like CLK_GET_RATE_NOCACHE etc..)to pll driver.
+These series patch add phy-rockchip-inno-usb2.c and the corresponding
+dt-bindings.
 
-Change-Id: I1e076b3efa6b5da082b6e68e2e2a4c9dfd93e3d4
-Signed-off-by: Heiko St=C3=BCbner <heiko@sntech.de>
-Signed-off-by: Lin Huang <hl@rock-chips.com>
----
- drivers/clk/rockchip/clk-pll.c | 4 ++--
- drivers/clk/rockchip/clk.c     | 2 +-
- drivers/clk/rockchip/clk.h     | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+Changes in v9:
+ - Move the usb gpio config from dtsi to dts.
+ - Add vin-supply (vcc5v0_sys) for vcc5v0_host.
+ - Change some properties' name.
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-=
-pll.c
-index db81e45..9c1373e 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -837,7 +837,7 @@ struct clk *rockchip_clk_register_pll(struct rockch=
-ip_clk_provider *ctx,
- 		u8 num_parents, int con_offset, int grf_lock_offset,
- 		int lock_shift, int mode_offset, int mode_shift,
- 		struct rockchip_pll_rate_table *rate_table,
--		u8 clk_pll_flags)
-+		unsigned long flags, u8 clk_pll_flags)
- {
- 	const char *pll_parents[3];
- 	struct clk_init_data init;
-@@ -892,7 +892,7 @@ struct clk *rockchip_clk_register_pll(struct rockch=
-ip_clk_provider *ctx,
- 	init.name =3D pll_name;
-=20
- 	/* keep all plls untouched for now */
--	init.flags =3D CLK_IGNORE_UNUSED;
-+	init.flags =3D flags | CLK_IGNORE_UNUSED;
-=20
- 	init.parent_names =3D &parent_names[0];
- 	init.num_parents =3D 1;
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 7ffd134..1f1c74f 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -385,7 +385,7 @@ void __init rockchip_clk_register_plls(struct rockc=
-hip_clk_provider *ctx,
- 				list->con_offset, grf_lock_offset,
- 				list->lock_shift, list->mode_offset,
- 				list->mode_shift, list->rate_table,
--				list->pll_flags);
-+				list->flags, list->pll_flags);
- 		if (IS_ERR(clk)) {
- 			pr_err("%s: failed to register clock %s\n", __func__,
- 				list->name);
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index 2194ffa..3747de5 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -238,7 +238,7 @@ struct clk *rockchip_clk_register_pll(struct rockch=
-ip_clk_provider *ctx,
- 		u8 num_parents, int con_offset, int grf_lock_offset,
- 		int lock_shift, int mode_offset, int mode_shift,
- 		struct rockchip_pll_rate_table *rate_table,
--		u8 clk_pll_flags);
-+		unsigned long flags, u8 clk_pll_flags);
-=20
- struct rockchip_cpuclk_clksel {
- 	int reg;
---=20
-2.6.6
+Changes in v8:
+ - Added support for rk3399 SoC.
+ - Prepare input clock of phy at probe time.
+ - Improved sm_work function to handle phy-port state more clearly.
 
+Changes in v7:
+ - Renamed functions *usb2phy_resume/*usb2phy_suspend to *usb2phy_power_on/usb2phy_power_off.
+
+Changes in v6:
+ - Changed '_' to '-' for otg-id and otg-bvalid property in devicetree bindings.
+ - Fixed the output clock would be disabled more than once while phy-port was going to suspend.
+ - Improved the driver to avoid the currently empty otg-port would cause null-pointer dereferences.
+
+Changes in v5:
+ - Added 'reg' property both in devicetree bindings and driver to match the different phy-blocks.
+
+Changes in v4:
+ - Used 'phy-supply' instead of 'vbus_*-supply'.
+
+Changes in v3:
+ - Supplemented some hardware-description into the devicetree bindings.
+ - Resolved the mapping defect between fixed value in driver and the property
+   in devicetree.
+ - Code cleanup.
+
+Changes in v2:
+ - Specified more hardware-description into the devicetree bindings.
+ - Optimized some process of driver.
+
+Frank Wang (4):
+  Documentation: bindings: add DT documentation for Rockchip USB2PHY
+  phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+  arm64: dts: rockchip: add usb2-phy support for rk3399
+  arm64: dts: rockchip: configure usb2-phy support for rk3399-evb
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |   64 ++
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |   44 ++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   42 +-
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-inno-usb2.c               |  707 ++++++++++++++++++++
+ 6 files changed, 864 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 drivers/phy/phy-rockchip-inno-usb2.c
+
+-- 
+1.7.9.5
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
