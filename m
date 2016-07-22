@@ -1,88 +1,77 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v9 4/4] arm64: dts: rockchip: configure usb2-phy support for rk3399-evb
-Date: Fri, 22 Jul 2016 15:00:46 +0800
-Message-ID: <1469170846-15617-5-git-send-email-frank.wang@rock-chips.com>
-References: <1469170846-15617-1-git-send-email-frank.wang@rock-chips.com>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH v3 0/7] rk3399 support ddr frequency scaling
+Date: Fri, 22 Jul 2016 17:07:13 +0800
+Message-ID: <1469178440-4668-1-git-send-email-hl@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469170846-15617-1-git-send-email-frank.wang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, dianders@chromium.org, linux@roeck-us.net, groeck@chromium.org, jwerner@chromium.org, kishon@ti.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, xzy.xu@rock-chips.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, frank.wang@rock-chips.com
+To: heiko@sntech.de
+Cc: mark.yao@rock-chips.com, myungjoo.ham@samsung.com, cw00.choi@samsung.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, linux-arm-kernel@lists.infradead.org, tixy@linaro.org, xsf@rock-chips.com, typ@rock-chips.com, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add vcc5v0_host regulator for usb2-phy and enable host-port support.
+rk3399 platform have dfi controller can monitor ddr load,
+and dcf controller to handle ddr register so we can get the
+right ddr frequency and make ddr controller happy work(which
+will implement in bl31). So we do ddr frequency scaling with
+following flow:
 
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts |   44 +++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+	     kernel                                bl31
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 1a3eb14..56aeedb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -69,6 +69,25 @@
- 		regulator-max-microvolt = <3300000>;
- 	};
- 
-+	vcc5v0_sys: vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vcc5v0_host: vcc5v0-host-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio4 25 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&host_vbus_drv>;
-+		regulator-name = "vcc5v0_host";
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc_phy: vcc-phy-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_phy";
-@@ -89,6 +108,24 @@
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+
-+	u2phy0_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+
-+	u2phy1_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
- &uart2 {
- 	status = "okay";
- };
-@@ -121,4 +158,11 @@
- 				<1 18 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
-+
-+	usb2 {
-+		host_vbus_drv: host-vbus-drv {
-+			rockchip,pins =
-+				<4 25 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
+	monitor ddr load
+		|
+		|
+	get_target_rate
+		|
+		|           pass rate to bl31
+	clk_set_rate(ddr) --------------------->run dcf flow
+		|                                   |
+		|                                   |
+	wait dcf interrupt<-------------------trigger dcf interrupt  
+		|
+		|
+	      return
+
+Lin Huang (6):
+  clk: rockchip: add new clock-type for the ddrclk
+  clk: rockchip: rk3399: add SCLK_DDRCLK ID for ddrc
+  clk: rockchip: rk3399: add ddrc clock support
+  PM / devfreq: event: support rockchip dfi controller
+  PM / devfreq: rockchip: add devfreq driver for rk3399 dmc
+  drm/rockchip: Add dmc notifier in vop driver
+
+Shengfei xu (1):
+  firmware: rockchip: sip: Add rockchip SIP runtime service
+
+ drivers/clk/rockchip/Makefile               |   1 +
+ drivers/clk/rockchip/clk-ddr.c              | 139 ++++++++
+ drivers/clk/rockchip/clk-rk3399.c           |  19 ++
+ drivers/clk/rockchip/clk.c                  |   9 +
+ drivers/clk/rockchip/clk.h                  |  27 ++
+ drivers/devfreq/Kconfig                     |   1 +
+ drivers/devfreq/Makefile                    |   1 +
+ drivers/devfreq/event/Kconfig               |   7 +
+ drivers/devfreq/event/Makefile              |   1 +
+ drivers/devfreq/event/rockchip-dfi.c        | 253 +++++++++++++++
+ drivers/devfreq/rockchip/Kconfig            |  15 +
+ drivers/devfreq/rockchip/Makefile           |   2 +
+ drivers/devfreq/rockchip/rk3399_dmc.c       | 482 ++++++++++++++++++++++++++++
+ drivers/devfreq/rockchip/rockchip_dmc.c     | 143 +++++++++
+ drivers/firmware/Kconfig                    |   7 +
+ drivers/firmware/Makefile                   |   1 +
+ drivers/firmware/rockchip_sip.c             |  64 ++++
+ drivers/firmware/rockchip_sip.h             |  59 ++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  75 ++++-
+ include/dt-bindings/clock/rk3399-cru.h      |   1 +
+ include/soc/rockchip/rockchip_dmc.h         |  45 +++
+ 21 files changed, 1346 insertions(+), 6 deletions(-)
+ create mode 100644 drivers/clk/rockchip/clk-ddr.c
+ create mode 100644 drivers/devfreq/event/rockchip-dfi.c
+ create mode 100644 drivers/devfreq/rockchip/Kconfig
+ create mode 100644 drivers/devfreq/rockchip/Makefile
+ create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+ create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
+ create mode 100644 drivers/firmware/rockchip_sip.c
+ create mode 100644 drivers/firmware/rockchip_sip.h
+ create mode 100644 include/soc/rockchip/rockchip_dmc.h
+
 -- 
-1.7.9.5
+2.6.6
