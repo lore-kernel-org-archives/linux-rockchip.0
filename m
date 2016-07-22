@@ -1,98 +1,25 @@
-From: Paul Gortmaker <paul.gortmaker@windriver.com>
-Subject: Re: [PATCH v3 5/7] PM / devfreq: event: support rockchip dfi controller
-Date: Fri, 22 Jul 2016 16:28:53 -0400
-Message-ID: <CAP=VYLo6ZH+Vc+3N0Ed6XyLdy-rc9tKnjiACDnovcqv2CnE0Sg@mail.gmail.com>
-References: <1469178440-4668-1-git-send-email-hl@rock-chips.com> <1469178440-4668-6-git-send-email-hl@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v7 1/2] Documentation: bindings: add dt doc for Rockchip
+ PCIe controller
+Date: Fri, 22 Jul 2016 13:39:42 -0700
+Message-ID: <20160722203941.GA58807@google.com>
+References: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469178440-4668-6-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: heiko@sntech.de, mark.yao@rock-chips.com, myungjoo.ham@samsung.com, Chanwoo Choi <cw00.choi@samsung.com>, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, LKML <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, tixy@linaro.org, xsf@rock-chips.com, typ@rock-chips.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 22, 2016 at 5:07 AM, Lin Huang <hl@rock-chips.com> wrote:
-> on rk3399 platform, there is dfi conroller can monitor
-> ddr load, base on this result, we can do ddr freqency
-> scaling.
->
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
-> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
-> ---
-> Changes in v3:
-> - None
->
-> Changes in v2:
-> - use clk_disable_unprepare and clk_enable_prepare
-> - remove clk_enable_prepare in probe
-> - remove rockchip_dfi_remove function
->
-> Changes in v1:
-> - None
->
->  drivers/devfreq/event/Kconfig        |   7 +
->  drivers/devfreq/event/Makefile       |   1 +
->  drivers/devfreq/event/rockchip-dfi.c | 253 +++++++++++++++++++++++++++++++++++
->  3 files changed, 261 insertions(+)
->  create mode 100644 drivers/devfreq/event/rockchip-dfi.c
->
-> diff --git a/drivers/devfreq/event/Kconfig b/drivers/devfreq/event/Kconfig
-> index eb6f74a..0d32d68 100644
-> --- a/drivers/devfreq/event/Kconfig
-> +++ b/drivers/devfreq/event/Kconfig
-> @@ -30,4 +30,11 @@ config DEVFREQ_EVENT_EXYNOS_PPMU
->           (Platform Performance Monitoring Unit) counters to estimate the
->           utilization of each module.
->
-> +config DEVFREQ_EVENT_ROCKCHIP_DFI
-> +       bool "ROCKCHIP DFI DEVFREQ event Driver"
-> +       depends on ARCH_ROCKCHIP
-> +       help
-> +         This add the devfreq-event driver for Rockchip SoC. It provides DFI
-> +         (DDR Monitor Module) driver to count ddr load.
-> +
->  endif # PM_DEVFREQ_EVENT
-> diff --git a/drivers/devfreq/event/Makefile b/drivers/devfreq/event/Makefile
-> index 3d6afd3..dda7090 100644
-> --- a/drivers/devfreq/event/Makefile
-> +++ b/drivers/devfreq/event/Makefile
-> @@ -2,3 +2,4 @@
->
->  obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_NOCP) += exynos-nocp.o
->  obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_PPMU) += exynos-ppmu.o
-> +obj-$(CONFIG_DEVFREQ_EVENT_ROCKCHIP_DFI) += rockchip-dfi.o
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> new file mode 100644
-> index 0000000..96a0307
-> --- /dev/null
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -0,0 +1,253 @@
-> +/*
-> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
-> + * Author: Lin Huang <hl@rock-chips.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-> + * more details.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/devfreq-event.h>
-> +#include <linux/kernel.h>
-> +#include <linux/err.h>
-> +#include <linux/init.h>
-> +#include <linux/io.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
+On Mon, Jul 18, 2016 at 08:42:12AM +0800, Shawn Lin wrote:
+> This patch adds a binding that describes the Rockchip PCIe controller
+> found on Rockchip SoCs PCIe interface.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> Acked-by: Rob Herring <robh@kernel.org>
 
-Same comment applies here.   Also might want to check any instances
-of "IS_ENABLED" being used on bool items, as that is overkill too.
-
-Thanks,
-Paul.
+Reviewed-by: Brian Norris <briannorris@chromium.org>
