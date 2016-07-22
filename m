@@ -1,186 +1,186 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [v6 PATCH 1/6] extcon: Add Type-C and DP support
-Date: Fri, 22 Jul 2016 17:40:13 +0800
-Message-ID: <5791E9FD.10407@rock-chips.com>
-References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
- <CGME20160721131520epcas1p402684ff2569a23d7e5e011da9fb07667@epcas1p4.samsung.com>
- <1469106808-28297-2-git-send-email-zyw@rock-chips.com>
- <5791E769.9060403@samsung.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 1/7] firmware: rockchip: sip: Add rockchip SIP runtime service
+Date: Fri, 22 Jul 2016 12:00:24 +0200
+Message-ID: <1742973.lJ4EpAnn7j@diego>
+References: <1469178440-4668-1-git-send-email-hl@rock-chips.com> <1469178440-4668-2-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5791E769.9060403@samsung.com>
+In-Reply-To: <1469178440-4668-2-git-send-email-hl@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Lin Huang <hl@rock-chips.com>
+Cc: mark.yao@rock-chips.com, myungjoo.ham@samsung.com, cw00.choi@samsung.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, linux-arm-kernel@lists.infradead.org, tixy@linaro.org, xsf@rock-chips.com, typ@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chanwoo Choi
+Hi,
 
-Thanks for your help, I am going to post V7 next week base on these=20
-latest extcon patch.
+Am Freitag, 22. Juli 2016, 17:07:14 schrieb Lin Huang:
+> From: Shengfei xu <xsf@rock-chips.com>
+> 
+> This patch adds support for the SiP interface, we can pass dram
+> paramtert to bl31, and control ddr frequency scaling in bl31.
+> 
+> Signed-off-by: Shengfei xu <xsf@rock-chips.com>
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
 
-Regards
-Chris Zhong
+[...]
 
-On 07/22/2016 05:29 PM, Chanwoo Choi wrote:
-> Hi Chris,
->
-> I'm sorry for late reply. I finished the first draft to support the e=
-xtcon property.
-> You can check the patches[1]. But, I need more time to test it. After=
- tested it,
-> I'll send the patches.
->
-> [1] https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/l=
-og/?h=3Dextcon-test
->
-> Chanwoo Choi (4):
->    extcon: Add the extcon_type to group each connector into five cate=
-gory
->    extcon: Add the support for extcon property according to type of c=
-onnector
->    extcon: Rename the extcon_set/get_state() to maintain the function=
- naming pattern
->    extcon: Add the sync APIs to support the  notification for extcon =
-property
->
-> Chris Zhong (1):
->    extcon: Add EXTCON_DISP_DP and the property for USB Type-C
->
-> Regards,
-> Chanwoo Choi
->
-> On 2016=EB=85=84 07=EC=9B=94 21=EC=9D=BC 22:13, Chris Zhong wrote:
->> Add EXTCON_DISP_DP for the Display external connector. For Type-C
->> connector the DisplayPort can work as an Alternate Mode(VESA Display=
-Port
->> Alt Mode on USB Type-C Standard). The Type-C support both normal and
->> flipped orientation, so add a property to extcon.
->>
->> Signe-off-by: Chris Zhong <zyw@rock-chips.com>
->>
->> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->> ---
->>
->> Changes in v6:
->> - move the EXTCON_PROP_TYPEC_POLARITY to EXTCON_TYPE_USB in _support=
-ed
->> Series-changes: 5
->> - support get property
->>
->> Changes in v5: None
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->> Changes in v1: None
->>
->>   drivers/extcon/extcon.c | 26 ++++++++++++++++++++++++++
->>   include/linux/extcon.h  | 13 +++++++++++++
->>   2 files changed, 39 insertions(+)
->>
->> diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
->> index a1117db..f79b510 100644
->> --- a/drivers/extcon/extcon.c
->> +++ b/drivers/extcon/extcon.c
->> @@ -157,6 +157,11 @@ struct __extcon_info {
->>   		.id =3D EXTCON_DISP_VGA,
->>   		.name =3D "VGA",
->>   	},
->> +	[EXTCON_DISP_DP] =3D {
->> +		.type =3D EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
->> +		.id =3D EXTCON_DISP_DP,
->> +		.name =3D "DP",
->> +	},
->>  =20
->>   	/* Miscellaneous external connector */
->>   	[EXTCON_DOCK] =3D {
->> @@ -270,6 +275,7 @@ static bool is_extcon_property_supported(unsigne=
-d int id,
->>   		switch (prop) {
->>   		case EXTCON_PROP_USB_ID:
->>   		case EXTCON_PROP_USB_VBUS:
->> +		case EXTCON_PROP_TYPEC_POLARITY:
->>   			return true;
->>   		default:
->>   			break;
->> @@ -547,6 +553,26 @@ int extcon_get_cable_property(struct extcon_dev=
- *edev, unsigned int id,
->>   				enum extcon_property prop,
->>   				union extcon_property_value *val)
->>   {
->> +	struct extcon_cable *cable;
->> +	int index;
->> +
->> +	if (!edev)
->> +		return -EINVAL;
->> +
->> +	/* Check the property whether is supported or not */
->> +	if (!is_extcon_property_supported(id, prop))
->> +		return -EINVAL;
->> +
->> +	/* Find the cable index of external connector by using id */
->> +	index =3D find_cable_index_by_id(edev, id);
->> +	if (index < 0)
->> +		return index;
->> +
->> +	/* Store the property value */
->> +	cable =3D &edev->cables[index];
->> +
->> +	val->intval =3D cable->propval[prop].intval;
->> +
->>   	return 0;
->>   }
->>  =20
->> diff --git a/include/linux/extcon.h b/include/linux/extcon.h
->> index f6f0a8d..50ef87f 100644
->> --- a/include/linux/extcon.h
->> +++ b/include/linux/extcon.h
->> @@ -77,6 +77,7 @@ enum extcon_type {
->>   #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
->>   #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
->>   #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
->> +#define EXTCON_DISP_DP		44	/* DisplayPort */
->>  =20
->>   /* Miscellaneous external connector */
->>   #define EXTCON_DOCK		60
->> @@ -108,9 +109,13 @@ enum extcon_property {
->>   	 * - EXTCON_PROP_USB_USB
->>   	 * @type:	integer (int value)
->>   	 * @value:	0 (low) or 1 (high)
->> +	 * - EXTCON_PROP_TYPEC_POLARITY,
->> +	 * @type:	integer (int value)
->> +	 * @value:	0 (normal) or 1 (flip)
->>   	 */
->>   	EXTCON_PROP_USB_ID =3D 0,
->>   	EXTCON_PROP_USB_VBUS,
->> +	EXTCON_PROP_TYPEC_POLARITY,
->>  =20
->>   	/* Properties of EXTCON_TYPE_CHG. */
->>   	/* Properties of EXTCON_TYPE_JACK. */
->> @@ -225,6 +230,14 @@ extern int extcon_get_cable_state_(struct extco=
-n_dev *edev, unsigned int id);
->>   extern int extcon_set_cable_state_(struct extcon_dev *edev, unsign=
-ed int id,
->>   				   bool cable_state);
->>  =20
->> +extern int extcon_get_cable_property(struct extcon_dev *edev, unsig=
-ned int id,
->> +				     enum extcon_property prop,
->> +				     union extcon_property_value *val);
->> +
->> +extern int extcon_set_cable_property(struct extcon_dev *edev, unsig=
-ned int id,
->> +				     enum extcon_property prop,
->> +				     union extcon_property_value val);
->> +
->>   /*
->>    * Following APIs are to monitor every action of a notifier.
->>    * Registrar gets notified for every external port of a connection=
- device.
->>
->
->
->
+> +++ b/drivers/firmware/rockchip_sip.c
+> @@ -0,0 +1,64 @@
+> +/*
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * Copyright (C) 2016 ARM Limited
+> + */
+> +#include <linux/errno.h>
+> +#include <linux/linkage.h>
+> +#include <linux/of.h>
+> +#include <linux/pm.h>
+> +#include <linux/printk.h>
+> +#include "rockchip_sip.h"
+> +
+> +typedef unsigned long (psci_fn)(unsigned long, unsigned long,
+> +				unsigned long, unsigned long);
+> +asmlinkage psci_fn __invoke_psci_fn_smc;
+> +
+> +#define CONFIG_DRAM_INIT	0x00
+> +#define CONFIG_DRAM_SET_RATE	0x01
+> +#define CONFIG_DRAM_ROUND_RATE	0x02
+> +#define CONFIG_DRAM_SET_AT_SR	0x03
+> +#define CONFIG_DRAM_GET_BW	0x04
+> +#define CONFIG_DRAM_GET_RATE	0x05
+> +#define CONFIG_DRAM_CLR_IRQ	0x06
+> +#define CONFIG_DRAM_SET_PARAM   0x07
+> +
+> +uint64_t sip_smc_ddr_init(void)
+
+if I'm reading the ATF writers guide [0] correctly, the SiP calls are soc-
+specific things:
+"For example, two SoC providers can use the same Function ID within the SiP
+Service calls OEN range to mean different things - as these calls should be
+specific to the SoC. "
+
+So I guess the function calls, as well as the constants should have a prefix.
+ROCKCHIP_SIP_DDR_FREQ, rockchip_sip_smc_set_ddr_param(), etc.
+
+Looking at Zynq in the ATF [1] seems to strengthen that theory with the 
+similar constants having the ZYNQMP_ prefix.
+
+I guess it doesn't matter to much on the ATF side, as you build a soc-specific 
+image, but on the kernel-side I think it should unambiguos, especially as 
+functions and constants are part of a public header.
+
+I think the code itself looks fine though :-)
+
+
+Heiko
+
+[0] https://github.com/ARM-software/arm-trusted-firmware/blob/master/docs/rt-svc-writers-guide.md
+[1] https://github.com/ARM-software/arm-trusted-firmware/blob/master/plat/xilinx/zynqmp/sip_svc_setup.c
+
+
+
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0,
+> +				    0, CONFIG_DRAM_INIT);
+> +}
+> +
+> +uint64_t sip_smc_set_ddr_param(uint64_t param)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, param,
+> +				    0, CONFIG_DRAM_SET_PARAM);
+> +}
+> +
+> +uint64_t sip_smc_set_ddr_rate(uint64_t rate)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, rate, 0,
+> +				    CONFIG_DRAM_SET_RATE);
+> +}
+> +
+> +uint64_t sip_smc_get_ddr_rate(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_GET_RATE);
+> +}
+> +
+> +uint64_t sip_smc_clr_ddr_irq(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_CLR_IRQ);
+> +}
+> +
+> +uint64_t sip_smc_get_call_count(void)
+> +{
+> +	return __invoke_psci_fn_smc(SIP_SVC_CALL_COUNT, 0, 0, 0);
+> +}
+> diff --git a/drivers/firmware/rockchip_sip.h
+> b/drivers/firmware/rockchip_sip.h new file mode 100644
+> index 0000000..6487734
+> --- /dev/null
+> +++ b/drivers/firmware/rockchip_sip.h
+> @@ -0,0 +1,59 @@
+> +/* Copyright (c) 2010-2015, The Linux Foundation. All rights reserved.
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 and
+> + * only version 2 as published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#ifndef __SIP_INT_H
+> +#define __SIP_INT_H
+> +
+> +/* SMC function IDs for SiP Service queries */
+> +#define SIP_SVC_CALL_COUNT		0x8200ff00
+> +#define SIP_SVC_UID			0x8200ff01
+> +#define SIP_SVC_VERSION			0x8200ff03
+> +#define SIP_DDR_FREQ			0xC2000008
+> +
+> +#if IS_ENABLED(CONFIG_ROCKCHIP_SIP)
+> +uint64_t sip_smc_set_ddr_rate(uint64_t rate);
+> +uint64_t sip_smc_get_ddr_rate(void);
+> +uint64_t sip_smc_clr_ddr_irq(void);
+> +uint64_t sip_smc_get_call_count(void);
+> +uint64_t sip_smc_ddr_init(void);
+> +uint64_t sip_smc_set_ddr_param(uint64_t param);
+> +#else
+> +static inline uint64_t sip_smc_set_ddr_rate(uint64_t rate)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline uint64_t sip_smc_get_ddr_rate(void)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline uint64_t sip_smc_clr_ddr_irq(void)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline uint64_t sip_smc_get_call_count(void)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline uint64_t sip_smc_ddr_init(void)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline uint64_t sip_smc_set_ddr_param(uint64_t param)
+> +{
+> +	return 0;
+> +}
+> +#endif
+> +#endif
