@@ -1,79 +1,83 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v7 2/2] PCI: Rockchip: Add Rockchip PCIe controller
- support
-Date: Fri, 22 Jul 2016 15:29:03 -0700
-Message-ID: <20160722222902.GB58807@google.com>
-References: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
- <1468802533-17699-2-git-send-email-shawn.lin@rock-chips.com>
+From: Chanwoo Choi <cwchoi00@gmail.com>
+Subject: Re: [v6 PATCH 1/6] extcon: Add Type-C and DP support
+Date: Sat, 23 Jul 2016 11:19:21 +0900
+Message-ID: <CAGTfZH1FvSYfjDijOGY9DCWD6-_OP1mA+-q2n17EWHXRY2Pgeg@mail.gmail.com>
+References: <1469106808-28297-1-git-send-email-zyw@rock-chips.com>
+ <CGME20160721131520epcas1p402684ff2569a23d7e5e011da9fb07667@epcas1p4.samsung.com>
+ <1469106808-28297-2-git-send-email-zyw@rock-chips.com> <5791E769.9060403@samsung.com>
+ <CABXOdTe-xtfjBKOPE_EuqBai835V6NiMzUUoJZJZUEuP415xqQ@mail.gmail.com>
+Reply-To: chanwoo@kernel.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1468802533-17699-2-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <CABXOdTe-xtfjBKOPE_EuqBai835V6NiMzUUoJZJZUEuP415xqQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Marc Zyngier <marc.zyngier@arm.com>, linux-pci@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
+To: Guenter Roeck <groeck@google.com>
+Cc: Chanwoo Choi <cw00.choi@samsung.com>, Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+Hi,
 
-On Mon, Jul 18, 2016 at 08:42:13AM +0800, Shawn Lin wrote:
-> This patch adds Rockchip PCIe controller support found
-> on RK3399 Soc platform.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v7:
-> - make it as a build-in driver
-> - improve gen1/2 training timeout checking
-> - only clear known interrupt
-> - fix INTx for 0-base index
+2016-07-23 3:21 GMT+09:00 Guenter Roeck <groeck@google.com>:
+> Hi,
+>
+> On Fri, Jul 22, 2016 at 2:29 AM, Chanwoo Choi <cw00.choi@samsung.com> wrote:
+>> Hi Chris,
+>>
+>> I'm sorry for late reply. I finished the first draft to support the extcon property.
+>> You can check the patches[1]. But, I need more time to test it. After tested it,
+>> I'll send the patches.
+>>
+>> [1] https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/log/?h=extcon-test
+>>
+>> Chanwoo Choi (4):
+>>   extcon: Add the extcon_type to group each connector into five category
+>>   extcon: Add the support for extcon property according to type of connector
+>>   extcon: Rename the extcon_set/get_state() to maintain the function naming pattern
+>>   extcon: Add the sync APIs to support the  notification for extcon property
+>>
+>> Chris Zhong (1):
+>>   extcon: Add EXTCON_DISP_DP and the property for USB Type-C
+>>
+>
+> Couple of comments:
+>
+> - In extcon.c, line 560: 'state' is unused.
+>
+> - extcon_set_property(edev, EXTCON_USB, EXTCON_USB_VBUS, 0);
+>   does not work. As written, it has to be something like:
 
-Also:
-  - Fix infinite loop in legacy interrupt handler
+you shoud use the 'union extcon_property_valu' as below.
 
-(not that the changelog is that critical to get exactly right)
+>
+>   union extcon_property_value prop;
+>   ...
+>   prop.intval = vbus_state;
+>   extcon_set_property(edev, EXTCON_USB, EXTCON_USB_VBUS, prop);
+>
+> - For USB, the state of EXTCON_USB, EXTCON_USB_HOST, and
+> EXTCON_DISP_DP tend to change at the same time, together with the
+> associated properties.
+>   It might be desirable to have an equivalent of extcon_sync_all(edev);
 
-> 
-> Changes in v6:
-> - use "depends on PCI_MSI_IRQ_DOMAIN" suggested by Arnd
-> 
-> Changes in v5:
-> - handle multiple pending INTx at the same time
->   suggested by Marc
-> 
-> Changes in v4:
-> - address the comments from Brain
-> 
-> Changes in v3:
-> - remove header file
-> - remove struct msi_controller and move most of variables
->   of rockchip_pcie_port to become the local ones.
-> - allow legacy int even if enabling MSI
-> - drop regulator set voltage operation suggested by Doug
-> 
-> Changes in v2:
-> - remove phy related stuff and call phy API
-> - add new head file and define lots of macro to make
->   the code more readable
-> - remove lots msi related code suggested by Marc
-> - add IO window address translation
-> - init_port and parse_dt reconstruction suggested by Bharat
-> - improve wr_own_conf suggested by Arnd
-> - make pcie as an interrupt controller and fix wrong int handler
->   suggested by Marc
-> - remove PCI_PROBE_ONLY suggested by Lorenzo
-> 
->  drivers/pci/host/Kconfig         |   11 +
->  drivers/pci/host/Makefile        |    1 +
->  drivers/pci/host/pcie-rockchip.c | 1233 ++++++++++++++++++++++++++++++++++++++
->  3 files changed, 1245 insertions(+)
->  create mode 100644 drivers/pci/host/pcie-rockchip.c
-> 
-[...]
+Each external connector has the separate notifier independently.
+All of operation in extcon should be done by each external connector unit.
 
-Looks better to me:
+I think that extcon_sync_all() is not appropriate. If the some extcon device
+support the many connectors, maybe extcon send the un-needed notifications
+for all connectors.
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+Also, extcon_sync_all(edev) is same operation with follwoing three
+function calls:
+extcon_sync(edev, EXTCON_USB);
+extcon_sync(edev, EXTCON_USB_HOST);
+extcon_sync(edev, EXTCON_DISP_DP);
+
+Also,
+EXTCON_DISP_DP has the both EXTCON_TYPE_USB and EXTCON_TYPE_DISP.
+So, the extcon client driver is able to set the vbus property with
+EXTCON_DISP_DP as following:
+- extcon_set_property(edev, EXTCON_DISP_DP, EXTCON_USB_VBUS, prop)
+
+Thanks,
+Chanwoo Choi
