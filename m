@@ -1,59 +1,171 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 2/4] drm/rockchip: add an common abstracted PSR driver
-Date: Fri, 22 Jul 2016 21:04:41 -0700
-Message-ID: <CAD=FV=U-9WoyZTyj0weDxVkZjQ7ESc+pwJXX=19JuGrOCrsKcQ@mail.gmail.com>
-References: <1468469704-12440-1-git-send-email-ykk@rock-chips.com> <1468469749-12636-1-git-send-email-ykk@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 2/3] phy: rockchip-emmc: Be tolerant to card clock of 0 in
+ power on
+Date: Sat, 23 Jul 2016 11:39:06 +0200
+Message-ID: <CAPDyKFqPHB2O=-hDxVda-h04WS9xYpJ3MyzH8bk5Fc4ogTfB5A@mail.gmail.com>
+References: <1467049167-14628-1-git-send-email-dianders@chromium.org>
+ <1467049167-14628-3-git-send-email-dianders@chromium.org> <5773D1FD.8020601@ti.com>
+ <CAD=FV=U_-8HJRjWa8ktT=7tmM5RB4OVnDce-Bv2teDibYfbCeA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1468469749-12636-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Sean Paul <seanpaul@chromium.org>, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Emil Velikov <emil.l.velikov@gmail.com>, Dan Carpenter <dan.carpenter@oracle.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=U_-8HJRjWa8ktT=7tmM5RB4OVnDce-Bv2teDibYfbCeA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Yakir,
+On 29 June 2016 at 17:18, Doug Anderson <dianders@chromium.org> wrote:
+> Kishon,
+>
+> On Wed, Jun 29, 2016 at 6:49 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>> Hi,
+>>
+>> On Monday 27 June 2016 11:09 PM, Douglas Anderson wrote:
+>>> It's possible that there are some reasons to turn the PHY on while the
+>>> clock is 0.  In this case we just won't wait for the DLL to lock.
+>>>
+>>> This is a bit of a stopgap until we figure out exactly when we're
+>>> supposed to wait for the DLL to lock and when we're supposed to power
+>>> cycle the PHY.
+>>>
+>>> Note: this patch should help with suspend/resume where the system will
+>>> try to turn the PHY back on when the clock is 0.
+>>>
+>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>> ---
+>>>  drivers/phy/phy-rockchip-emmc.c | 59 ++++++++++++++++++++++++++---------------
+>>>  1 file changed, 37 insertions(+), 22 deletions(-)
+>>>
+>>> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+>>> index 9dce958233a0..a2aa6aca7dec 100644
+>>> --- a/drivers/phy/phy-rockchip-emmc.c
+>>> +++ b/drivers/phy/phy-rockchip-emmc.c
+>>> @@ -88,15 +88,36 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>       unsigned int caldone;
+>>>       unsigned int dllrdy;
+>>>       unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+>>> +     unsigned long rate;
+>>>       unsigned long timeout;
+>>>
+>>> -     if (rk_phy->emmcclk != NULL) {
+>>> -             unsigned long rate = clk_get_rate(rk_phy->emmcclk);
+>>> +     /*
+>>> +      * Keep phyctrl_pdb and phyctrl_endll low to allow
+>>> +      * initialization of CALIO state M/C DFFs
+>>> +      */
+>>> +     regmap_write(rk_phy->reg_base,
+>>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>> +                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+>>> +                                PHYCTRL_PDB_MASK,
+>>> +                                PHYCTRL_PDB_SHIFT));
+>>> +     regmap_write(rk_phy->reg_base,
+>>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>> +                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+>>> +                                PHYCTRL_ENDLL_MASK,
+>>> +                                PHYCTRL_ENDLL_SHIFT));
+>>> +
+>>> +     /* Already finish power_off above */
+>>> +     if (on_off == PHYCTRL_PDB_PWR_OFF)
+>>> +             return 0;
+>>> +
+>>> +     rate = clk_get_rate(rk_phy->emmcclk);
+>>> +
+>>> +     if (rate != 0) {
+>>>               unsigned long ideal_rate;
+>>>               unsigned long diff;
+>>>
+>>>               switch (rate) {
+>>> -             case 0 ... 74999999:
+>>> +             case 1 ... 74999999:
+>>>                       ideal_rate = 50000000;
+>>>                       freqsel = PHYCTRL_FREQSEL_50M;
+>>>                       break;
+>>> @@ -127,25 +148,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>       }
+>>>
+>>>       /*
+>>> -      * Keep phyctrl_pdb and phyctrl_endll low to allow
+>>> -      * initialization of CALIO state M/C DFFs
+>>> -      */
+>>> -     regmap_write(rk_phy->reg_base,
+>>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>> -                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+>>> -                                PHYCTRL_PDB_MASK,
+>>> -                                PHYCTRL_PDB_SHIFT));
+>>> -     regmap_write(rk_phy->reg_base,
+>>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>> -                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+>>> -                                PHYCTRL_ENDLL_MASK,
+>>> -                                PHYCTRL_ENDLL_SHIFT));
+>>> -
+>>> -     /* Already finish power_off above */
+>>> -     if (on_off == PHYCTRL_PDB_PWR_OFF)
+>>> -             return 0;
+>>> -
+>>> -     /*
+>>>        * According to the user manual, calpad calibration
+>>>        * cycle takes more than 2us without the minimal recommended
+>>>        * value, so we may need a little margin here
+>>> @@ -183,6 +185,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>                    HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
+>>>                                  PHYCTRL_ENDLL_MASK,
+>>>                                  PHYCTRL_ENDLL_SHIFT));
+>>> +
+>>> +     /*
+>>> +      * We turned on the DLL even though the rate was 0 because we the
+>>> +      * clock might be turned on later.  ...but we can't wait for the DLL
+>>> +      * to lock when the rate is 0 because it will never lock with no
+>>> +      * input clock.
+>>> +      *
+>>> +      * Technically we should be checking the lock later when the clock
+>>> +      * is turned on, but for now we won't.
+>>> +      */
+>>> +     if (rate == 0)
+>>> +             return 0;
+>>
+>> Why not return initially from rockchip_emmc_phy_power if the clock rate is '0'.
+>> Are there other functions to lock the DLL apart from phy_power?
+>
+> Yeah, it's a big ugly right now.  This ugliness is really needed
+> because of <https://patchwork.kernel.org/patch/9201035/> because:
+>
+> 1. We power on the PHY at probe time and the card clock is in an
+> unknown state at that time.  It will be reported as 0 right now, but
+> it may or may not actually be 0.
+>
+> 2. We don't have an easy way to call back into the PHY when we
+> actually set the clock to a low rate (like 400kHz) for ID mode.
+> Before this series I tried to power the PHY off and on for every clock
+> change, but apparently that was causing problems.
+>
+>
+> As talked about in <https://patchwork.kernel.org/patch/9201035/>, I
+> think the right answer is to figure out how to get the common clock
+> framework notifications to happen for the card clock and then remove
+> the wholesale PHY power off / power on for every clock change.  The
+> PHY itself can register for the clock change notifications and figure
+> out how much or how little to do on every clock change.
+>
+> Unfortunately, as also discussed in the other patch, it's not trivial
+> to do this because I think it requires surgery on the main SDHCI
+> driver to change the way it deals with the card clock.  I'm not sure I
+> have time for this delicate surgery right now and I'm hoping that
+> perhaps Shawn will be able to help figure something out (maybe?) or I
+> can try coming back to it later.
+>
+>
+> In any case, I think a wholesale revert of my previous 150 MHz series
+> probably puts us in a worse state than we started with, so I was just
+> proposing reverting the one patch.  Once we do that, this PHY patch
+> helps keep us in a sane state (keeps suspend/resume working).
+>
+>
+> -Doug
 
-On Wed, Jul 13, 2016 at 9:15 PM, Yakir Yang <ykk@rock-chips.com> wrote:
-> +static void psr_set_state(struct psr_drv *psr, enum psr_state state)
-> +{
-> +       mutex_lock(&psr->state_mutex);
-> +
-> +       if (psr->state == state) {
-> +               mutex_unlock(&psr->state_mutex);
-> +               return;
-> +       }
-> +
-> +       psr->state = state;
-> +       switch (state) {
-> +       case PSR_ENABLE:
-> +               psr->set(psr->encoder, true);
-> +               break;
-> +
-> +       case PSR_DISABLE:
-> +       case PSR_FLUSH:
-> +               psr->set(psr->encoder, false);
-> +               break;
-> +       };
-> +
-> +       mutex_unlock(&psr->state_mutex);
-> +}
-> +
-> +static void psr_flush_handler(unsigned long data)
-> +{
-> +       struct psr_drv *psr = (struct psr_drv *)data;
-> +
-> +       if (!psr || psr->state != PSR_FLUSH)
-> +               return;
-> +
-> +       psr_set_state(psr, PSR_ENABLE);
+Doug, Kishon,
 
-As mentioned in a separate thread, this is probably not OK.
-psr_set_state() grabs a mutex and that might sleep.  ...but
-psr_flush_handler() is a timer.  I'm nearly certain that timers can't
-sleep.
+Did you agree on how to move forward with this change?
 
-I believe this is the source of "sleeping function called from invalid
-context" that I've seen at times.
-
--Doug
+Kind regards
+Uffe
