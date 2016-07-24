@@ -1,171 +1,119 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 2/3] phy: rockchip-emmc: Be tolerant to card clock of 0 in
- power on
-Date: Sat, 23 Jul 2016 11:39:06 +0200
-Message-ID: <CAPDyKFqPHB2O=-hDxVda-h04WS9xYpJ3MyzH8bk5Fc4ogTfB5A@mail.gmail.com>
-References: <1467049167-14628-1-git-send-email-dianders@chromium.org>
- <1467049167-14628-3-git-send-email-dianders@chromium.org> <5773D1FD.8020601@ti.com>
- <CAD=FV=U_-8HJRjWa8ktT=7tmM5RB4OVnDce-Bv2teDibYfbCeA@mail.gmail.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v5 0/4] Add PSR function support for Analogix/Rockchip DP
+Date: Sun, 24 Jul 2016 14:57:17 +0800
+Message-ID: <1469343437-27443-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=U_-8HJRjWa8ktT=7tmM5RB4OVnDce-Bv2teDibYfbCeA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <treding@nvidia.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, daniel.vetter@ffwll.ch, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 29 June 2016 at 17:18, Doug Anderson <dianders@chromium.org> wrote:
-> Kishon,
->
-> On Wed, Jun 29, 2016 at 6:49 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
->> Hi,
->>
->> On Monday 27 June 2016 11:09 PM, Douglas Anderson wrote:
->>> It's possible that there are some reasons to turn the PHY on while the
->>> clock is 0.  In this case we just won't wait for the DLL to lock.
->>>
->>> This is a bit of a stopgap until we figure out exactly when we're
->>> supposed to wait for the DLL to lock and when we're supposed to power
->>> cycle the PHY.
->>>
->>> Note: this patch should help with suspend/resume where the system will
->>> try to turn the PHY back on when the clock is 0.
->>>
->>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>> ---
->>>  drivers/phy/phy-rockchip-emmc.c | 59 ++++++++++++++++++++++++++---------------
->>>  1 file changed, 37 insertions(+), 22 deletions(-)
->>>
->>> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
->>> index 9dce958233a0..a2aa6aca7dec 100644
->>> --- a/drivers/phy/phy-rockchip-emmc.c
->>> +++ b/drivers/phy/phy-rockchip-emmc.c
->>> @@ -88,15 +88,36 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->>>       unsigned int caldone;
->>>       unsigned int dllrdy;
->>>       unsigned int freqsel = PHYCTRL_FREQSEL_200M;
->>> +     unsigned long rate;
->>>       unsigned long timeout;
->>>
->>> -     if (rk_phy->emmcclk != NULL) {
->>> -             unsigned long rate = clk_get_rate(rk_phy->emmcclk);
->>> +     /*
->>> +      * Keep phyctrl_pdb and phyctrl_endll low to allow
->>> +      * initialization of CALIO state M/C DFFs
->>> +      */
->>> +     regmap_write(rk_phy->reg_base,
->>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->>> +                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
->>> +                                PHYCTRL_PDB_MASK,
->>> +                                PHYCTRL_PDB_SHIFT));
->>> +     regmap_write(rk_phy->reg_base,
->>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->>> +                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
->>> +                                PHYCTRL_ENDLL_MASK,
->>> +                                PHYCTRL_ENDLL_SHIFT));
->>> +
->>> +     /* Already finish power_off above */
->>> +     if (on_off == PHYCTRL_PDB_PWR_OFF)
->>> +             return 0;
->>> +
->>> +     rate = clk_get_rate(rk_phy->emmcclk);
->>> +
->>> +     if (rate != 0) {
->>>               unsigned long ideal_rate;
->>>               unsigned long diff;
->>>
->>>               switch (rate) {
->>> -             case 0 ... 74999999:
->>> +             case 1 ... 74999999:
->>>                       ideal_rate = 50000000;
->>>                       freqsel = PHYCTRL_FREQSEL_50M;
->>>                       break;
->>> @@ -127,25 +148,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->>>       }
->>>
->>>       /*
->>> -      * Keep phyctrl_pdb and phyctrl_endll low to allow
->>> -      * initialization of CALIO state M/C DFFs
->>> -      */
->>> -     regmap_write(rk_phy->reg_base,
->>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->>> -                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
->>> -                                PHYCTRL_PDB_MASK,
->>> -                                PHYCTRL_PDB_SHIFT));
->>> -     regmap_write(rk_phy->reg_base,
->>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->>> -                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
->>> -                                PHYCTRL_ENDLL_MASK,
->>> -                                PHYCTRL_ENDLL_SHIFT));
->>> -
->>> -     /* Already finish power_off above */
->>> -     if (on_off == PHYCTRL_PDB_PWR_OFF)
->>> -             return 0;
->>> -
->>> -     /*
->>>        * According to the user manual, calpad calibration
->>>        * cycle takes more than 2us without the minimal recommended
->>>        * value, so we may need a little margin here
->>> @@ -183,6 +185,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->>>                    HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
->>>                                  PHYCTRL_ENDLL_MASK,
->>>                                  PHYCTRL_ENDLL_SHIFT));
->>> +
->>> +     /*
->>> +      * We turned on the DLL even though the rate was 0 because we the
->>> +      * clock might be turned on later.  ...but we can't wait for the DLL
->>> +      * to lock when the rate is 0 because it will never lock with no
->>> +      * input clock.
->>> +      *
->>> +      * Technically we should be checking the lock later when the clock
->>> +      * is turned on, but for now we won't.
->>> +      */
->>> +     if (rate == 0)
->>> +             return 0;
->>
->> Why not return initially from rockchip_emmc_phy_power if the clock rate is '0'.
->> Are there other functions to lock the DLL apart from phy_power?
->
-> Yeah, it's a big ugly right now.  This ugliness is really needed
-> because of <https://patchwork.kernel.org/patch/9201035/> because:
->
-> 1. We power on the PHY at probe time and the card clock is in an
-> unknown state at that time.  It will be reported as 0 right now, but
-> it may or may not actually be 0.
->
-> 2. We don't have an easy way to call back into the PHY when we
-> actually set the clock to a low rate (like 400kHz) for ID mode.
-> Before this series I tried to power the PHY off and on for every clock
-> change, but apparently that was causing problems.
->
->
-> As talked about in <https://patchwork.kernel.org/patch/9201035/>, I
-> think the right answer is to figure out how to get the common clock
-> framework notifications to happen for the card clock and then remove
-> the wholesale PHY power off / power on for every clock change.  The
-> PHY itself can register for the clock change notifications and figure
-> out how much or how little to do on every clock change.
->
-> Unfortunately, as also discussed in the other patch, it's not trivial
-> to do this because I think it requires surgery on the main SDHCI
-> driver to change the way it deals with the card clock.  I'm not sure I
-> have time for this delicate surgery right now and I'm hoping that
-> perhaps Shawn will be able to help figure something out (maybe?) or I
-> can try coming back to it later.
->
->
-> In any case, I think a wholesale revert of my previous 150 MHz series
-> probably puts us in a worse state than we started with, so I was just
-> proposing reverting the one patch.  Once we do that, this PHY patch
-> helps keep us in a sane state (keeps suspend/resume working).
->
->
-> -Doug
-
-Doug, Kishon,
-
-Did you agree on how to move forward with this change?
-
-Kind regards
-Uffe
+ClRoZSBmdWxsIG5hbWUgb2YgUFNSIGlzIFBhbmVsIFNlbGYgUmVmcmVzaCwgcGFuZWwgZGV2aWNl
+IGNvdWxkIHJlZnJlc2gKaXRzZWxmIHdpdGggdGhlIGhhcmR3YXJlIGZyYW1lYnVmZmVyIGluIHBh
+bmVsLCB0aGlzIHdvdWxkIG1ha2UgYSBsb3RzCm9mIHNlbnNlIHRvIHNhdmUgdGhlIHBvd2VyIGNv
+bnN1bXB0aW9uLgoKVGhlIHY1IHZlcnNpb24gaGF2ZSBtYWRlIHRoZSBwc3Jfc2V0X3N0YXRlKCkg
+dG8gYSBkZWxheSB3b3JrLCB3aGljaCBpcwp0aGUgYmlnZ2VzdCBjaGFuZ2VzIGZyb20gdjQuCgpU
+aGUgdjMgdmVyc2lvbiBoYXZlIHNwbGl0ZWQgYW4gY29tbW9uIFBTUiBkcml2ZXIgZm9yIFJvY2tj
+aGlwLCB3aGljaCBpcwpiaWdnZXN0IGNoYW5nZXMgZnJvbSB2Mi4KClRoaXMgdGhyZWFkIGlzIGJh
+c2VkIG9uIE1hcmsncyBSSzMzOTkgVk9QIHRocmVhZFswXS4KClswXTogaHR0cHM6Ly9wYXRjaHdv
+cmsua2VybmVsLm9yZy9wYXRjaC84ODg2MDQxLwoKCkNoYW5nZXMgaW4gdjU6Ci0gQWRkIHJldmll
+d2VkIGZsYWcgZnJvbSBTZWFuLgotIE9ubHkga2VlcCAncHNyX2xpc3RfbXV0ZXgnIGF0IHJlZ2lz
+dGVyL3VucmVnaXN0ZXIgdGltZS4KLSBSZW1vdmUgdW51c2VkIGdsb2JhbCB2YXJpYWJsZXMuCi0g
+TWFrZSBsaXN0IHRyYXZlcnNhbCBzYWZlbHkgYXQgcm9ja2NoaXBfZHJtX3Bzcl91bnJlZ2lzdGVy
+KCkuCi0gTWFrZSBwc3Jfc2V0X3N0YXRlKCkgdG8gYSBkZWxheSB3b3JrLCBzYWZlIHRvIGNhbGwg
+ZXhwb3J0ZWQgc3ltYm9scyBhdAogIGludGVycnVwdCBjb250ZXh0LgotIFJlbW92ZSB0aGUgcmVw
+ZWF0ZWQgcHNyIGRlbGF5IHdvcmsgaW4gdm9wIGRyaXZlci4KLSBBZGQgcmV2aWV3ZWQgZmxhZyBm
+cm9tIFNlYW4uCi0gQWRkIHJldmlld2VkIGZsYWcgZnJvbSBTZWFuLgoKQ2hhbmdlcyBpbiB2NC4x
+OgotIFJlbW92ZSB0aGUgY29tcGxldGlvbl9kb25lKCkgY2hlY2sgaW4gaXJxIGhhbmRsZXIgKFNl
+YW4pCi0gVGFrZSB1c2Ugb2YgZXhpc3RpbmcgZWRwX3Bzcl92c2Mgc3RydWN0IHRvIHN3YXAgSEJ4
+IGFuZCBEQnggc2V0dGluZy4gKFNlYW4pCi0gUmVtb3ZlIFBTUl9WSURfQ1JDX0ZMVVNIIHNldHRp
+bmcgYW5hbG9naXhfZHBfZW5hYmxlX3Bzcl9jcmMoKS4KLSBBZGQgY29tbWVudCBhYm91dCBQQngg
+bWFnaWMgbnVtYmVycy4gKFNlYW4pCgpDaGFuZ2VzIGluIHY0OgotIEF2b2lkIHRoZSB3ZWlyZCBi
+ZWhhdmlvciBpbiByb2NrY2hpcF9kcm1fd2FpdF9saW5lX2ZsYWcoKS4gKFNlYW4pCi0gTWFrZSBs
+aW5lX2ZsYWdfbnVtX3ggdG8gYW4gYXJyYXkuIChTZWFuKQotIFJlbW92ZSB0aGUgdW51c2VkIHZv
+cF9jZmdfZG9uZSgpIGluIHZvcF9saW5lX2ZsYWdfaXJxX2VuYWJsZSgpLiAoU3RlcGhhbmUsIHJl
+dmlld2VkIGluIEdvb2dsZSBnZXJyaXQpCiAgICBbaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29v
+Z2xlc291cmNlLmNvbS8jL2MvMzQ5MDg0LzMzL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmNANDY2XQotIFR1Y2sgdGhlIGdsb2JhbCAicHNyX2xpc3QiICYgInBzcl9s
+aXN0X211dGV4IiBpbiBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUuIChTZWFuKQotIE1vdmUg
+dGhlIGFjY2VzcyBvZiAicHNyLT5zdGF0ZSIgdW5kZXIgInBzci0+c3RhdGVfbXV0ZXgiJ3MgcHJv
+dGVjdC4gKFNlYW4pCi0gTGV0ICJwc3ItPnN0YXRlID0gUFNSX0ZMVVNIIiB1bmRlciAicHNyLT5z
+dGF0ZV9tdXRleCIncyBwcm90ZWN0LiAoU2VhbikKLSBDb2xsZWN0IHBzcl9lbmFibGUoKSBhbmQg
+cHNyX2Rpc2FibGUoKSBpbnRvIHBzcl9zZXRfc3RhdGUoKQotIHMvNVwgc2Vjb25kL1BTUl9GTFVT
+SF9USU1FT1VULyAoU2VhbikKLSBGbHVzaCB0aGUgcHNyIGNhbGxiYWNrIGluIHZvcF9jcnRjX2Rp
+c2FibGUoKS4gKFN0w6lwaGFuZSwgcmV2aWV3ZWQgaW4gR29vZ2xlIGdlcnJpdCkKICAgIFtodHRw
+czovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8zNDkwODQvNi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jQDQ3NV0KLSBBZGQgdGhlIG1pc3Np
+bmcgZmlsZSBoZWFkIHdpdGggbGljZW5zZS4gKFN0w6lwaGFuZSwgcmV2aWV3ZWQgaW4gR29vZ2xl
+IGdlcnJpdCkKICAgIFtodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMv
+Yy8zNTc1NjMvMS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5oQDNd
+Ci0gRG93bmdyYWRlIHRoZSBQU1IgdmVyc2lvbiBwcmludCBtZXNzYWdlIHRvIGRlYnVnIGxldmVs
+LiAoU2VhbikKLSBSZXR1cm4gJ3ZvaWQnIGluc3RlYWQgb2YgJ2ludCcgaW4gYW5hbG9naXhfZHBf
+ZW5hYmxlX3NpbmtfcHNyKCkuIChTZWFuKQotIERlbGV0ZSB0aGUgdW51c2VkIHJlYWQgZHBjZCBv
+cGVyYXRpb25zIGluIGFuYWxvZ2l4X2RwX2VuYWJsZV9zaW5rX3BzcigpLiAoU2VhbikKLSBEZWxl
+dGUgdGhlIGFyYml0cmFyeSB1c2xlZXBfcmFuZ2UgaW4gYW5hbG9naXhfZHBfZW5hYmxlX3Bzcl9j
+cmMuIChTZWFuKS4KLSBDbGVhbiB1cCB0aGUgaGFyZGNvZGVkIHZhbHVlcyBpbiBhbmFsb2dpeF9k
+cF9zZW5kX3Bzcl9zcGQoKS4gKFNlYW4pCi0gUmVuYW1lICJhY3RpdmUvaW5hY3RpdmUiIHRvICJl
+bmFibGUvZGlzYWJsZSIuIChTZWFuLCBEb21pbmlrKQotIEtlZXAgc2V0IHRoZSBQU1JfVklEX0NS
+Q19GTFVTSCBnYXRlIGluIGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3JfY3JjKCkuCi0gUmV0dXJuICd2
+b2lkJyBpbnN0ZWFkIG9mICdpbnQnIGluIGFuYWxvZ2l4X2RwX3Bzcl9zZXQoKS4gKFNlYW4pCi0g
+UHVsbCB0aGUgMTBtcyBkZWxheSB0aW1lIG91dCBpbnRvIGEgI2RlZmluZS4gKFNlYW4pCi0gSW1w
+cm92ZWQgdGhlIGNvZGUgb2YgYW5hbG9naXhfZHBfcHNyX3dvcmsoKS4gKFNlYW4pCi0gSW5kZW50
+ZWQgd2l0aCBzcGFjZXMgZm9yIG5ldyBudW1iZXJzIGluIHJvY2tjaGlwX2RwX2RldmljZSBzdHJ1
+Y3QuIChTdMOpcGhhbmUsIHJldmlld2VkIGF0IEdvb2dsZSBnZXJyaXQpCiAgICBbaHR0cHM6Ly9j
+aHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvMzQ5MDg1LzMzL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jQDgzXQoKQ2hhbmdlcyBpbiB2MzoK
+LSBFeHBvcnQgdGhlICdyb2NrY2hpcF9kcm1fd2FpdF9saW5lX2ZsYWcnIHN5bWJvbCwgYW5kIGRv
+Y3VtZW50IGl0LgotIEFkZCAnbGluZV9mbGFnX251bV8wJyBmb3IgUkszMjg4L1JLMzAzNgotIFJl
+bW92ZSB0aGUgbm90aWZ5IGZvciB3YWl0aW5nIGxpbmVfZmxhZyBldmVudCAoRGFuaWVsKQotIHNw
+bGl0IHRoZSBwc3IgZmxvdyBpbnRvIGFuIGNvbW1vbiBhYnN0cmFjdGVkIFBTUiBkcml2ZXIKLSBp
+bXBsZW1lbnQgdGhlICdmYi0+ZGlydHknIGNhbGxiYWNrIGZ1bmN0aW9uIChEYW5pZWwpCi0gYXZv
+aWQgdG8gdXNlIG5vdGlmeSB0byBhY3FpdXJlIGZvciB2YWN0IGV2ZW50IChEYW5pZWwpCi0gcmVt
+b3ZlIHBzcl9hY3RpdmUoKSBjYWxsYmFjayB3aGljaCBpbnRyb2R1Y2UgaW4gdjIKLSBzcGxpdCBh
+bmFsb2dpeF9kcF9lbmFibGVfcHNyKCksIG1ha2UgaXQgbW9yZSBjbGVhcmx5CiAgICBhbmFsb2dp
+eF9kcF9kZXRlY3Rfc2lua19wc3IoKQogICAgYW5hbG9naXhfZHBfZW5hYmxlX3NpbmtfcHNyKCkK
+LSByZW1vdmUgc29tZSBub3NpZSByZWdpc3RlciBzZXR0aW5nIGNvbW1lbnRzCi0gc3BsaXQgdGhl
+IGNvbW1vbiBwc3IgbG9naWMgaW50byBhIHNlcGVyYXRlIGRyaXZlciwgbWFrZSB0aGlzIHRvIGEK
+ICBzaW1wbGUgc3ViLXBzciBkZXZpY2UgZHJpdmVyLgoKQ2hhbmdlcyBpbiB2MjoKLSBJbnRyb2R1
+Y2UgaW4gdjIsIHNwbGl0IFZPUCBsaW5lIGZsYWcgY2hhbmdlcyBvdXQKLSBpbnRyb2R1Y2UgaW4g
+djIsIHNwbGl0ZSB0aGUgY29tbW9uIEFuYWxvZ2l4IERQIGNoYW5nZXMgb3V0Ci0gcmVtb3ZlIHZi
+bGFuayBub3RpZnkgb3V0IChEYW5pZWwpCi0gY3JlYXRlIGEgcHNyX2FjdGl2ZSgpIGNhbGxiYWNr
+IGluIHZvcCBkYXRhIHN0cnVjdC4KCllha2lyIFlhbmcgKDQpOgogIGRybS9yb2NrY2hpcDogdm9w
+OiBleHBvcnQgbGluZSBmbGFnIGZ1bmN0aW9uCiAgZHJtL3JvY2tjaGlwOiBhZGQgYW4gY29tbW9u
+IGFic3RyYWN0ZWQgUFNSIGRyaXZlcgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBhZGQgdGhl
+IFBTUiBmdW5jdGlvbiBzdXBwb3J0CiAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogaW1wbGVt
+ZW50IFBTUiBmdW5jdGlvbgoKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
+aXhfZHBfY29yZS5jIHwgIDgxICsrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
+aXgvYW5hbG9naXhfZHBfY29yZS5oIHwgICA1ICsKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgIDUxICsrKysrCiBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oICB8ICAzNCArKysKIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8ICA1NyArKysrKwogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgICAgICAgfCAgIDMgKwog
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCAgICAgICAgfCAgIDYg
+KwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICAgICAgICAgfCAg
+MTIgKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyAgICAgICAg
+fCAyNDkgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3Bzci5oICAgICAgICB8ICAyNiArKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgICAgICAgIHwgMTI2ICsrKysrKysrKysrCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oICAgICAgICB8ICAgMiArCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgICAgICB8ICAgNCArCiBpbmNs
+dWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaCAgICAgICAgICAgICAgICAgICB8ICAgMyArCiAx
+NSBmaWxlcyBjaGFuZ2VkLCA2NjAgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQogY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3Bzci5oCgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
