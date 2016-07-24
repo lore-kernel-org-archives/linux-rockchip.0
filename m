@@ -1,128 +1,49 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v3 1/7] firmware: rockchip: sip: Add rockchip SIP runtime
- service
-Date: Sun, 24 Jul 2016 16:00:35 +0800
-Message-ID: <579475A3.2040506@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 2/7] clk: rockchip: add new clock-type for the ddrclk
+Date: Sun, 24 Jul 2016 11:09:02 +0200
+Message-ID: <1619904.zXvqDRdkgD@diego>
 References: <1469178440-4668-1-git-send-email-hl@rock-chips.com>
- <1469178440-4668-2-git-send-email-hl@rock-chips.com>
- <1497407.KruMAzy5tb@diego>
+ <1469178440-4668-3-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1497407.KruMAzy5tb@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: tixy@linaro.org, typ@rock-chips.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, xsf@rock-chips.com, cw00.choi@samsung.com, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469178440-4668-3-git-send-email-hl@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lin Huang <hl@rock-chips.com>
+Cc: tixy@linaro.org, typ@rock-chips.com, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, xsf@rock-chips.com, cw00.choi@samsung.com, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 2016=E5=B9=B407=E6=9C=8823=E6=97=A5 04:50, Heiko St=C3=BCbner wrote:
-> Hi again,
->
-> one bigger thing I noticed only now.
->
-> Am Freitag, 22. Juli 2016, 17:07:14 schrieben Sie:
->> diff --git a/drivers/firmware/rockchip_sip.c
->> b/drivers/firmware/rockchip_sip.c new file mode 100644
->> index 0000000..7756af9
->> --- /dev/null
->> +++ b/drivers/firmware/rockchip_sip.c
->> @@ -0,0 +1,64 @@
->> +/*
->> + * This program is free software; you can redistribute it and/or mo=
-dify
->> + * it under the terms of the GNU General Public License version 2 a=
-s
->> + * published by the Free Software Foundation.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + *
->> + * Copyright (C) 2016 ARM Limited
->> + */
->> +#include <linux/errno.h>
->> +#include <linux/linkage.h>
->> +#include <linux/of.h>
->> +#include <linux/pm.h>
->> +#include <linux/printk.h>
->> +#include "rockchip_sip.h"
->> +
->> +typedef unsigned long (psci_fn)(unsigned long, unsigned long,
->> +				unsigned long, unsigned long);
->> +asmlinkage psci_fn __invoke_psci_fn_smc;
->> +
->> +#define CONFIG_DRAM_INIT	0x00
->> +#define CONFIG_DRAM_SET_RATE	0x01
->> +#define CONFIG_DRAM_ROUND_RATE	0x02
->> +#define CONFIG_DRAM_SET_AT_SR	0x03
->> +#define CONFIG_DRAM_GET_BW	0x04
->> +#define CONFIG_DRAM_GET_RATE	0x05
->> +#define CONFIG_DRAM_CLR_IRQ	0x06
->> +#define CONFIG_DRAM_SET_PARAM   0x07
->> +
->> +uint64_t sip_smc_ddr_init(void)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0,
->> +				    0, CONFIG_DRAM_INIT);
-> I don't think that is legal to use. For one this function itself is d=
-eclared
-> static in the psci code - most likely for a specific reason.
->
-> And also if anything invoke_psci_fn would hold the correct pointer de=
-pending
-> on the calling method.
->
-> But as said above, accessing psci static stuff is most likely wrong. =
-Maybe the
-> two psci people I've included can tell us how this is to be accessed.
->
-   Thanks Heiko. Hope Sudeep Holla and Lorenzo Pieralisi can give me ad=
-vice.
-> Heiko
->
->> +}
->> +
->> +uint64_t sip_smc_set_ddr_param(uint64_t param)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, param,
->> +				    0, CONFIG_DRAM_SET_PARAM);
->> +}
->> +
->> +uint64_t sip_smc_set_ddr_rate(uint64_t rate)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, rate, 0,
->> +				    CONFIG_DRAM_SET_RATE);
->> +}
->> +
->> +uint64_t sip_smc_get_ddr_rate(void)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_GET_RA=
-TE);
->> +}
->> +
->> +uint64_t sip_smc_clr_ddr_irq(void)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_DDR_FREQ, 0, 0, CONFIG_DRAM_CLR_IR=
-Q);
->> +}
->> +
->> +uint64_t sip_smc_get_call_count(void)
->> +{
->> +	return __invoke_psci_fn_smc(SIP_SVC_CALL_COUNT, 0, 0, 0);
->> +}
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
-
---=20
-Lin Huang
+QW0gRnJlaXRhZywgMjIuIEp1bGkgMjAxNiwgMTc6MDc6MTUgc2NocmllYiBMaW4gSHVhbmc6Cj4g
+QEAgLTQ4OCw2ICs0OTYsMjUgQEAgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2ggewo+ICAJCS5j
+aGlsZAkJPSBjaCwJCQkJXAo+ICAJfQo+IAo+ICsjZGVmaW5lIENPTVBPU0lURV9ERFJDKF9pZCwg
+Y25hbWUsIHBuYW1lcywgZiwgbW8sIG1zLCBtdywgbWYsCVwKPiArCQkJIGRzLCBkdywgZGYpCQkJ
+CVwKPiArCXsJCQkJCQkJXAo+ICsJCS5pZAkJPSBfaWQsCQkJCVwKPiArCQkuYnJhbmNoX3R5cGUJ
+PSBicmFuY2hfZGRyYywJCQlcCj4gKwkJLm5hbWUJCT0gY25hbWUsCQkJXAo+ICsJCS5wYXJlbnRf
+bmFtZXMJPSBwbmFtZXMsCQkJXAo+ICsJCS5udW1fcGFyZW50cwk9IEFSUkFZX1NJWkUocG5hbWVz
+KSwJCVwKPiArCQkuZmxhZ3MJCT0gZiwJCQkJXAo+ICsJCS5tdXhkaXZfb2Zmc2V0CT0gbW8sCQkJ
+CVwKPiArCQkubXV4X3NoaWZ0CT0gbXMsCQkJCVwKPiArCQkubXV4X3dpZHRoCT0gbXcsCQkJCVwK
+PiArCQkubXV4X2ZsYWdzCT0gbWYsCQkJCVwKPiArCQkuZGl2X3NoaWZ0CT0gZHMsCQkJCVwKPiAr
+CQkuZGl2X3dpZHRoCT0gZHcsCQkJCVwKPiArCQkuZGl2X2ZsYWdzCT0gZGYsCQkJCVwKPiArCQku
+Z2F0ZV9vZmZzZXQJPSAtMSwJCQkJXAo+ICsJfQo+ICsKCnRoZSBtdXggYW5kIGRpdi1mbGFncyBh
+cmUgbm90IHVzZWQgaW4geW91ciBjbG9jayB0eXBlLiBJbnN0ZWFkIEkgdGhpbmsgd2UgY291bGQg
+CmdvIGEgc2ltaWxhciB3YXkgYXMgdGhlIGludmVydGVyLXR5cGUsIGhhdmluZyBvbmUgZmxhZyB0
+eXBlLCB3aGljaCBjb3VsZCBmb3IgCmV4YW1wbGUgZW5jb2RlIHRoZSBpbnRlcmZhY2UgdHlwZSBS
+T0NLQ0hJUF9ERFJDTEtfU0lQLCBldGMuCgpCZWNhdXNlIHJpZ2h0IG5vdyB0aGVyZSBleGlzdCAz
+IHR5cGVzIG9uIGhvdyB0byBzZXQgdGhlIGRkciBjbGssIFNJUCwgYW4gU0NQSS0KdmFyaWFudCBh
+bmQgdGhyb3VnaCBjb2RlIGluIFNSQU0gKHJrMzI4OCksIHdoaWxlIHRoZSBjb3JlIGNsb2NrIHR5
+cGUgb24gdGhlIApzaWRlIG9mIHRoZSBDUlUgaXMgcHJldHR5IG11Y2ggdGhlIHNhbWUuCgpBbmQg
+d2hpbGUgaXQgaXMgZGVmaW5pdGx5IG5vdCBuZWNlc3NhcnkgdG8gZG8gdGhhdCBub3csIEkgdGhp
+bmsgdGhlIGRkcmNsay10eXBlIApjYW4gaG9sZCB0aGUgb3RoZXIgaW50ZXJmYWNlcyBhcyB3ZWxs
+IGluIHRoZSBmdXR1cmUuCgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
