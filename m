@@ -1,116 +1,95 @@
 From: "William.wu" <William.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH v7 3/5] usb: dwc3: make usb2 phy utmi interface
  configurable in DT
-Date: Mon, 25 Jul 2016 00:05:15 +0800
-Message-ID: <f9a11ec3-8a69-83d6-39c3-7c50439298d6@rock-chips.com>
+Date: Mon, 25 Jul 2016 00:24:26 +0800
+Message-ID: <f3e38a34-3d7b-8187-0262-d41b23a3c4a9@rock-chips.com>
 References: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
  <1468486762-21960-4-git-send-email-william.wu@rock-chips.com>
- <20160716225715.GA27724@rob-hp-laptop>
+ <20160716225715.GA27724@rob-hp-laptop> <1738306.cydkc9Pb90@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160716225715.GA27724@rob-hp-laptop>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1738306.cydkc9Pb90@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Rob,
-
-
-On 2016/7/17 6:57, Rob Herring wrote:
-> On Thu, Jul 14, 2016 at 04:59:20PM +0800, William Wu wrote:
->> Add snps,phyif-utmi-width devicetree property to configure
->> the UTMI+ PHY with an 8- or 16-bit interface. UTMI+ PHY
->> interface is a hardware property, and it's platform dependent.
->> Normally,the PHYIF can be configured during coreconsultant.
->             ^
-> space
-I'll fix it next patch, thanks:-)
->
->> But for some specific USB cores(e.g. rk3399 SoC DWC3), the
->> default PHYIF configuration value is fault, so we need to
->> reconfigure it by software.
->>
->> And refer to the DWC3 databook, the GUSB2PHYCFG.USBTRDTIM
->> must be set to the corresponding value according to the
->> UTMI+ PHY interface.
->>
->> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->> Changes in v7:
->> - remove quirk and use only one property to configure utmi (Heiko, R=
-ob Herring)
->>
->> Changes in v6:
->> - use '-' instead of '_' in dts (Rob Herring)
->>
->> Changes in v5:
->> - None
->>
->> Changes in v4:
->> - rebase on top of balbi testing/next, remove pdata (balbi)
->>
->> Changes in v3:
->> - None
->>
->> Changes in v2:
->> - add a quirk for phyif_utmi (balbi)
->>
->>   Documentation/devicetree/bindings/usb/dwc3.txt |  3 +++
->>   drivers/usb/dwc3/core.c                        | 25 ++++++++++++++=
-+++++++++++
->>   drivers/usb/dwc3/core.h                        | 10 ++++++++++
->>   3 files changed, 38 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Docume=
-ntation/devicetree/bindings/usb/dwc3.txt
->> index 020b0e9..00cc541 100644
->> --- a/Documentation/devicetree/bindings/usb/dwc3.txt
->> +++ b/Documentation/devicetree/bindings/usb/dwc3.txt
->> @@ -47,6 +47,9 @@ Optional properties:
->>    - snps,hird-threshold: HIRD threshold
->>    - snps,hsphy_interface: High-Speed PHY interface selection betwee=
-n "utmi" for
->>      UTMI+ and "ulpi" for ULPI when the DWC_USB3_HSPHY_INTERFACE has=
- value 3.
->> + - snps,phyif-utmi-width: the value to configure the core to suppor=
-t a UTMI+ PHY
->> +			with an 8- or 16-bit interface. Value 8 select 8-bit
->> +			interface, value 16 select 16-bit interface.
-> Is 'phy_type =3D "utmi_wide"' not the same as 16-bit width?
->
-> Again, I think this should be common.
-Yes=EF=BC=8C I agree with you. =E2=80=98phy_type =3D "utmi_wide" really=
- means 16-bit UTMI=20
-width.
-Thanks very much for your rigorous check.
-
-And according to Heiko's helpful suggestion=EF=BC=8CI double check the =
-kernel=20
-code and
-look over UTMI/UTMI+ spec=EF=BC=8CI confirm that there is already gener=
-ic code in
-drivers/usb/phy/of.c about utmi interface, 'phy_type =3D "utmi"' means=20
-8-bit interface,
-and 'phy_type =3D "utmi_wide"' means 16-bit interface.
-
-So I think I don't need to add a new dts property=20
-'snps,phyif-utmi-width' here=EF=BC=8C
-but just use the=E2=80=98phy_type=E2=80=99 property to confirm UTMI+ in=
-terface for dwc3.
-
->
-> Rob
->
->
->
-
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+RGVhciBIZWlrbywKCgpPbiAyMDE2LzcvMTcgMTg6MjgsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+
+IEFtIFNhbXN0YWcsIDE2LiBKdWxpIDIwMTYsIDE3OjU3OjE1IHNjaHJpZWIgUm9iIEhlcnJpbmc6
+Cj4+IE9uIFRodSwgSnVsIDE0LCAyMDE2IGF0IDA0OjU5OjIwUE0gKzA4MDAsIFdpbGxpYW0gV3Ug
+d3JvdGU6Cj4+PiBBZGQgc25wcyxwaHlpZi11dG1pLXdpZHRoIGRldmljZXRyZWUgcHJvcGVydHkg
+dG8gY29uZmlndXJlCj4+PiB0aGUgVVRNSSsgUEhZIHdpdGggYW4gOC0gb3IgMTYtYml0IGludGVy
+ZmFjZS4gVVRNSSsgUEhZCj4+PiBpbnRlcmZhY2UgaXMgYSBoYXJkd2FyZSBwcm9wZXJ0eSwgYW5k
+IGl0J3MgcGxhdGZvcm0gZGVwZW5kZW50Lgo+Pj4gTm9ybWFsbHksdGhlIFBIWUlGIGNhbiBiZSBj
+b25maWd1cmVkIGR1cmluZyBjb3JlY29uc3VsdGFudC4KPj4gICAgICAgICAgICAgXgo+PiBzcGFj
+ZQo+Pgo+Pj4gQnV0IGZvciBzb21lIHNwZWNpZmljIFVTQiBjb3JlcyhlLmcuIHJrMzM5OSBTb0Mg
+RFdDMyksIHRoZQo+Pj4gZGVmYXVsdCBQSFlJRiBjb25maWd1cmF0aW9uIHZhbHVlIGlzIGZhdWx0
+LCBzbyB3ZSBuZWVkIHRvCj4+PiByZWNvbmZpZ3VyZSBpdCBieSBzb2Z0d2FyZS4KPj4+Cj4+PiBB
+bmQgcmVmZXIgdG8gdGhlIERXQzMgZGF0YWJvb2ssIHRoZSBHVVNCMlBIWUNGRy5VU0JUUkRUSU0K
+Pj4+IG11c3QgYmUgc2V0IHRvIHRoZSBjb3JyZXNwb25kaW5nIHZhbHVlIGFjY29yZGluZyB0byB0
+aGUKPj4+IFVUTUkrIFBIWSBpbnRlcmZhY2UuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogV2lsbGlh
+bSBXdSA8d2lsbGlhbS53dUByb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4gQ2hhbmdlcyBpbiB2
+NzoKPj4+IC0gcmVtb3ZlIHF1aXJrIGFuZCB1c2Ugb25seSBvbmUgcHJvcGVydHkgdG8gY29uZmln
+dXJlIHV0bWkgKEhlaWtvLCBSb2IKPj4+IEhlcnJpbmcpCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2NjoK
+Pj4+IC0gdXNlICctJyBpbnN0ZWFkIG9mICdfJyBpbiBkdHMgKFJvYiBIZXJyaW5nKQo+Pj4KPj4+
+IENoYW5nZXMgaW4gdjU6Cj4+PiAtIE5vbmUKPj4+Cj4+PiBDaGFuZ2VzIGluIHY0Ogo+Pj4gLSBy
+ZWJhc2Ugb24gdG9wIG9mIGJhbGJpIHRlc3RpbmcvbmV4dCwgcmVtb3ZlIHBkYXRhIChiYWxiaSkK
+Pj4+Cj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSBOb25lCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2MjoK
+Pj4+IC0gYWRkIGEgcXVpcmsgZm9yIHBoeWlmX3V0bWkgKGJhbGJpKQo+Pj4KPj4+ICAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9kd2MzLnR4dCB8ICAzICsrKwo+Pj4gICBk
+cml2ZXJzL3VzYi9kd2MzL2NvcmUuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgMjUKPj4+ICAg
+KysrKysrKysrKysrKysrKysrKysrKysrKyBkcml2ZXJzL3VzYi9kd2MzL2NvcmUuaAo+Pj4gICB8
+IDEwICsrKysrKysrKysKPj4+ICAgMyBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNlcnRpb25zKCspCj4+
+Pgo+Pj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2Iv
+ZHdjMy50eHQKPj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9kd2Mz
+LnR4dCBpbmRleCAwMjBiMGU5Li4wMGNjNTQxCj4+PiAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZHdjMy50eHQKPj4+ICsrKyBiL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZHdjMy50eHQKPj4+Cj4+PiBAQCAtNDcsNiAr
+NDcsOSBAQCBPcHRpb25hbCBwcm9wZXJ0aWVzOgo+Pj4gICAgLSBzbnBzLGhpcmQtdGhyZXNob2xk
+OiBISVJEIHRocmVzaG9sZAo+Pj4gICAgLSBzbnBzLGhzcGh5X2ludGVyZmFjZTogSGlnaC1TcGVl
+ZCBQSFkgaW50ZXJmYWNlIHNlbGVjdGlvbiBiZXR3ZWVuCj4+PiAgICAidXRtaSIgZm9yPgo+Pj4g
+ICAgICBVVE1JKyBhbmQgInVscGkiIGZvciBVTFBJIHdoZW4gdGhlIERXQ19VU0IzX0hTUEhZX0lO
+VEVSRkFDRSBoYXMgdmFsdWUKPj4+ICAgICAgMy4KPj4+Cj4+PiArIC0gc25wcyxwaHlpZi11dG1p
+LXdpZHRoOiB0aGUgdmFsdWUgdG8gY29uZmlndXJlIHRoZSBjb3JlIHRvIHN1cHBvcnQgYQo+Pj4g
+VVRNSSsgUEhZICsJCQl3aXRoIGFuIDgtIG9yIDE2LWJpdCBpbnRlcmZhY2UuIFZhbHVlIDggc2Vs
+ZWN0IDgtYml0Cj4+PiArCQkJaW50ZXJmYWNlLCB2YWx1ZSAxNiBzZWxlY3QgMTYtYml0IGludGVy
+ZmFjZS4KPj4gSXMgJ3BoeV90eXBlID0gInV0bWlfd2lkZSInIG5vdCB0aGUgc2FtZSBhcyAxNi1i
+aXQgd2lkdGg/Cj4+Cj4+IEFnYWluLCBJIHRoaW5rIHRoaXMgc2hvdWxkIGJlIGNvbW1vbi4KPiBh
+ZnRlciBrbm93aW5nIHRoYXQgSSBuZWVkIHRvIGxvb2sgZm9yIHRoYXQgInV0bWlfd2lkZSIsIEkg
+dGhpbmsgSSdkIGFncmVlLgo+Cj4gSSBmb3VuZCBtZW50aW9uIG9mIHRoYXQgaW4gdXNiL2NpLWhk
+cmMtdXNiMi50eHQgYW5kIHVzYi9mc2wtdXNiLnR4dCBhbmQgZnJvbQo+IHRoZSBjb3Jlc3BvbmRp
+bmcgY29kZSwgSSBjYW4gc2VlIHRoYXQgdGhleSByZWFsbHkgbWVhbiB0aGUgMTZiaXQgaW50ZXJm
+YWNlLAo+IHRoZSBSb2NrY2hpcCBUUk0gYXMgd2VsbCBhcyB0aGUgc3BlYyBbMF0gc2VlbXMgdG8g
+Y2FsbCBpdCBVVE1JKyBidXQgcmVhbGx5Cj4gbG9va3MgdGhlIHNhbWUgYXMgdXRtaV93aWRlLgo+
+Cj4gSW50ZXJlc3RpbmdseSwgdGhlcmUgaXMgYWxyZWFkeSBnZW5lcmljIGNvZGUgaW4gZHJpdmVy
+cy91c2IvcGh5L29mLmMgc28gdGhhdAo+IHByb3BlcnR5IHNob3VsZCBwcm9iYWJseSBtb3ZlIHRv
+IGRldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMudHh0Cj4gYXMgd2VsbC4KPgo+Cj4gSGVp
+a28KPgo+IFswXSBodHRwOi8vY2FjaGUubnhwLmNvbS9maWxlcy9jb3Jwb3JhdGUvZG9jL3N1cHBv
+cnRfaW5mby9VVE1JLVBMVVMtU1BFQ0lGSUNBVElPTi5wZGYKClRoYW5rIHlvdSB2ZXJ5IG11Y2gg
+Zm9yIHlvdXIga2luZGx5IGhlbHAgYW5kIGhlbHBmdWwgc3VnZ2VzdGlvbi46LUQKSSBxdWl0ZSBh
+Z3JlZSB3aXRoIHlvdSBhYm91dCB1c2Ug4oCYcGh5X3R5cGXigJkgdG8gY29uZmlnIFVUTUkrIGlu
+dGVyZmFjZSAKZm9yIERXQzMgY29udHJvbGxlciwgYW5kIGFkZCB0aGUg4oCYcGh5X3R5cGXigJkg
+cHJvcGVydHkgdG8gCmRldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMudHh0LgoKU28gSSBz
+aG91bGRuJ3QgYWRkIGEgbmV3IGR0cyBwcm9wZXJ0eSDigJhzbnBzLHBoeWlmLXV0bWktd2lkdGji
+gJkgaGVyZe+8jCBhbmQgCmp1c3QgdXNlIOKAmHBoeV90eXBl4oCZaXMgZW5vdWdoLgoKQlRXLCBJ
+IHRoaW5rIHJrMzM5OSBVVE1JKyBpc24ndCB0aGUgc2FtZSBhcyDigJh1dG1pX3dpZGXigJkuIEJl
+Y2F1c2UgVVRNSSsgCnN1cHBvcnQgYm90aCA4LWJpdCBkYXRhIGludGVyZmFjZSBhbmQgMTYtYml0
+IGRhdGEgaW50ZXJmYWNlLCBidXQgcmVmZXIgCnRvIGNvZGUgaW4gZHJpdmVycy91c2IvcGh5L29m
+LmMgYW5kIHJlbGF0ZWQgZHJpdmVy77yM4oCYcGh5X3R5cGUgPSAKInV0bWlfd2lkZSLigJltZWFu
+cyAxNi1iaXRzLCAncGh5X3R5cGUgPSB1dG1pJyBtZWFucyA4LWJpdHMuCgpEZWFyIEZlbGlwZe+8
+jCBob3cgYWJvdXQgeW91ciBvcGluaW9uIGFib3V0IGFkZCDigJhwaHlfdHlwZeKAmSB0byBjb25m
+aWcgVVRNSSsgCmludGVyZmFjZT8KCkJlc3QgUmVnYXJkcwogICAgICAgIFdpbGxpYW0gd3UKPgo+
+Cj4KPgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
