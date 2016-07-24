@@ -1,49 +1,116 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 2/7] clk: rockchip: add new clock-type for the ddrclk
-Date: Sun, 24 Jul 2016 11:09:02 +0200
-Message-ID: <1619904.zXvqDRdkgD@diego>
-References: <1469178440-4668-1-git-send-email-hl@rock-chips.com>
- <1469178440-4668-3-git-send-email-hl@rock-chips.com>
+From: "William.wu" <William.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v7 3/5] usb: dwc3: make usb2 phy utmi interface
+ configurable in DT
+Date: Mon, 25 Jul 2016 00:05:15 +0800
+Message-ID: <f9a11ec3-8a69-83d6-39c3-7c50439298d6@rock-chips.com>
+References: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
+ <1468486762-21960-4-git-send-email-william.wu@rock-chips.com>
+ <20160716225715.GA27724@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469178440-4668-3-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: tixy@linaro.org, typ@rock-chips.com, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, xsf@rock-chips.com, cw00.choi@samsung.com, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160716225715.GA27724@rob-hp-laptop>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgMjIuIEp1bGkgMjAxNiwgMTc6MDc6MTUgc2NocmllYiBMaW4gSHVhbmc6Cj4g
-QEAgLTQ4OCw2ICs0OTYsMjUgQEAgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2ggewo+ICAJCS5j
-aGlsZAkJPSBjaCwJCQkJXAo+ICAJfQo+IAo+ICsjZGVmaW5lIENPTVBPU0lURV9ERFJDKF9pZCwg
-Y25hbWUsIHBuYW1lcywgZiwgbW8sIG1zLCBtdywgbWYsCVwKPiArCQkJIGRzLCBkdywgZGYpCQkJ
-CVwKPiArCXsJCQkJCQkJXAo+ICsJCS5pZAkJPSBfaWQsCQkJCVwKPiArCQkuYnJhbmNoX3R5cGUJ
-PSBicmFuY2hfZGRyYywJCQlcCj4gKwkJLm5hbWUJCT0gY25hbWUsCQkJXAo+ICsJCS5wYXJlbnRf
-bmFtZXMJPSBwbmFtZXMsCQkJXAo+ICsJCS5udW1fcGFyZW50cwk9IEFSUkFZX1NJWkUocG5hbWVz
-KSwJCVwKPiArCQkuZmxhZ3MJCT0gZiwJCQkJXAo+ICsJCS5tdXhkaXZfb2Zmc2V0CT0gbW8sCQkJ
-CVwKPiArCQkubXV4X3NoaWZ0CT0gbXMsCQkJCVwKPiArCQkubXV4X3dpZHRoCT0gbXcsCQkJCVwK
-PiArCQkubXV4X2ZsYWdzCT0gbWYsCQkJCVwKPiArCQkuZGl2X3NoaWZ0CT0gZHMsCQkJCVwKPiAr
-CQkuZGl2X3dpZHRoCT0gZHcsCQkJCVwKPiArCQkuZGl2X2ZsYWdzCT0gZGYsCQkJCVwKPiArCQku
-Z2F0ZV9vZmZzZXQJPSAtMSwJCQkJXAo+ICsJfQo+ICsKCnRoZSBtdXggYW5kIGRpdi1mbGFncyBh
-cmUgbm90IHVzZWQgaW4geW91ciBjbG9jayB0eXBlLiBJbnN0ZWFkIEkgdGhpbmsgd2UgY291bGQg
-CmdvIGEgc2ltaWxhciB3YXkgYXMgdGhlIGludmVydGVyLXR5cGUsIGhhdmluZyBvbmUgZmxhZyB0
-eXBlLCB3aGljaCBjb3VsZCBmb3IgCmV4YW1wbGUgZW5jb2RlIHRoZSBpbnRlcmZhY2UgdHlwZSBS
-T0NLQ0hJUF9ERFJDTEtfU0lQLCBldGMuCgpCZWNhdXNlIHJpZ2h0IG5vdyB0aGVyZSBleGlzdCAz
-IHR5cGVzIG9uIGhvdyB0byBzZXQgdGhlIGRkciBjbGssIFNJUCwgYW4gU0NQSS0KdmFyaWFudCBh
-bmQgdGhyb3VnaCBjb2RlIGluIFNSQU0gKHJrMzI4OCksIHdoaWxlIHRoZSBjb3JlIGNsb2NrIHR5
-cGUgb24gdGhlIApzaWRlIG9mIHRoZSBDUlUgaXMgcHJldHR5IG11Y2ggdGhlIHNhbWUuCgpBbmQg
-d2hpbGUgaXQgaXMgZGVmaW5pdGx5IG5vdCBuZWNlc3NhcnkgdG8gZG8gdGhhdCBub3csIEkgdGhp
-bmsgdGhlIGRkcmNsay10eXBlIApjYW4gaG9sZCB0aGUgb3RoZXIgaW50ZXJmYWNlcyBhcyB3ZWxs
-IGluIHRoZSBmdXR1cmUuCgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+Dear Rob,
+
+
+On 2016/7/17 6:57, Rob Herring wrote:
+> On Thu, Jul 14, 2016 at 04:59:20PM +0800, William Wu wrote:
+>> Add snps,phyif-utmi-width devicetree property to configure
+>> the UTMI+ PHY with an 8- or 16-bit interface. UTMI+ PHY
+>> interface is a hardware property, and it's platform dependent.
+>> Normally,the PHYIF can be configured during coreconsultant.
+>             ^
+> space
+I'll fix it next patch, thanks:-)
+>
+>> But for some specific USB cores(e.g. rk3399 SoC DWC3), the
+>> default PHYIF configuration value is fault, so we need to
+>> reconfigure it by software.
+>>
+>> And refer to the DWC3 databook, the GUSB2PHYCFG.USBTRDTIM
+>> must be set to the corresponding value according to the
+>> UTMI+ PHY interface.
+>>
+>> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>> Changes in v7:
+>> - remove quirk and use only one property to configure utmi (Heiko, R=
+ob Herring)
+>>
+>> Changes in v6:
+>> - use '-' instead of '_' in dts (Rob Herring)
+>>
+>> Changes in v5:
+>> - None
+>>
+>> Changes in v4:
+>> - rebase on top of balbi testing/next, remove pdata (balbi)
+>>
+>> Changes in v3:
+>> - None
+>>
+>> Changes in v2:
+>> - add a quirk for phyif_utmi (balbi)
+>>
+>>   Documentation/devicetree/bindings/usb/dwc3.txt |  3 +++
+>>   drivers/usb/dwc3/core.c                        | 25 ++++++++++++++=
++++++++++++
+>>   drivers/usb/dwc3/core.h                        | 10 ++++++++++
+>>   3 files changed, 38 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Docume=
+ntation/devicetree/bindings/usb/dwc3.txt
+>> index 020b0e9..00cc541 100644
+>> --- a/Documentation/devicetree/bindings/usb/dwc3.txt
+>> +++ b/Documentation/devicetree/bindings/usb/dwc3.txt
+>> @@ -47,6 +47,9 @@ Optional properties:
+>>    - snps,hird-threshold: HIRD threshold
+>>    - snps,hsphy_interface: High-Speed PHY interface selection betwee=
+n "utmi" for
+>>      UTMI+ and "ulpi" for ULPI when the DWC_USB3_HSPHY_INTERFACE has=
+ value 3.
+>> + - snps,phyif-utmi-width: the value to configure the core to suppor=
+t a UTMI+ PHY
+>> +			with an 8- or 16-bit interface. Value 8 select 8-bit
+>> +			interface, value 16 select 16-bit interface.
+> Is 'phy_type =3D "utmi_wide"' not the same as 16-bit width?
+>
+> Again, I think this should be common.
+Yes=EF=BC=8C I agree with you. =E2=80=98phy_type =3D "utmi_wide" really=
+ means 16-bit UTMI=20
+width.
+Thanks very much for your rigorous check.
+
+And according to Heiko's helpful suggestion=EF=BC=8CI double check the =
+kernel=20
+code and
+look over UTMI/UTMI+ spec=EF=BC=8CI confirm that there is already gener=
+ic code in
+drivers/usb/phy/of.c about utmi interface, 'phy_type =3D "utmi"' means=20
+8-bit interface,
+and 'phy_type =3D "utmi_wide"' means 16-bit interface.
+
+So I think I don't need to add a new dts property=20
+'snps,phyif-utmi-width' here=EF=BC=8C
+but just use the=E2=80=98phy_type=E2=80=99 property to confirm UTMI+ in=
+terface for dwc3.
+
+>
+> Rob
+>
+>
+>
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
