@@ -1,95 +1,186 @@
-From: "William.wu" <William.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v7 3/5] usb: dwc3: make usb2 phy utmi interface
- configurable in DT
-Date: Mon, 25 Jul 2016 00:24:26 +0800
-Message-ID: <f3e38a34-3d7b-8187-0262-d41b23a3c4a9@rock-chips.com>
-References: <1468486762-21960-1-git-send-email-william.wu@rock-chips.com>
- <1468486762-21960-4-git-send-email-william.wu@rock-chips.com>
- <20160716225715.GA27724@rob-hp-laptop> <1738306.cydkc9Pb90@diego>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH 2/3] phy: rockchip-emmc: Be tolerant to card clock of 0 in
+ power on
+Date: Mon, 25 Jul 2016 11:27:21 +0530
+Message-ID: <5795AA41.7070604@ti.com>
+References: <1467049167-14628-1-git-send-email-dianders@chromium.org>
+ <1467049167-14628-3-git-send-email-dianders@chromium.org>
+ <5773D1FD.8020601@ti.com>
+ <CAD=FV=U_-8HJRjWa8ktT=7tmM5RB4OVnDce-Bv2teDibYfbCeA@mail.gmail.com>
+ <CAPDyKFqPHB2O=-hDxVda-h04WS9xYpJ3MyzH8bk5Fc4ogTfB5A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1738306.cydkc9Pb90@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFqPHB2O=-hDxVda-h04WS9xYpJ3MyzH8bk5Fc4ogTfB5A@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RGVhciBIZWlrbywKCgpPbiAyMDE2LzcvMTcgMTg6MjgsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+
-IEFtIFNhbXN0YWcsIDE2LiBKdWxpIDIwMTYsIDE3OjU3OjE1IHNjaHJpZWIgUm9iIEhlcnJpbmc6
-Cj4+IE9uIFRodSwgSnVsIDE0LCAyMDE2IGF0IDA0OjU5OjIwUE0gKzA4MDAsIFdpbGxpYW0gV3Ug
-d3JvdGU6Cj4+PiBBZGQgc25wcyxwaHlpZi11dG1pLXdpZHRoIGRldmljZXRyZWUgcHJvcGVydHkg
-dG8gY29uZmlndXJlCj4+PiB0aGUgVVRNSSsgUEhZIHdpdGggYW4gOC0gb3IgMTYtYml0IGludGVy
-ZmFjZS4gVVRNSSsgUEhZCj4+PiBpbnRlcmZhY2UgaXMgYSBoYXJkd2FyZSBwcm9wZXJ0eSwgYW5k
-IGl0J3MgcGxhdGZvcm0gZGVwZW5kZW50Lgo+Pj4gTm9ybWFsbHksdGhlIFBIWUlGIGNhbiBiZSBj
-b25maWd1cmVkIGR1cmluZyBjb3JlY29uc3VsdGFudC4KPj4gICAgICAgICAgICAgXgo+PiBzcGFj
-ZQo+Pgo+Pj4gQnV0IGZvciBzb21lIHNwZWNpZmljIFVTQiBjb3JlcyhlLmcuIHJrMzM5OSBTb0Mg
-RFdDMyksIHRoZQo+Pj4gZGVmYXVsdCBQSFlJRiBjb25maWd1cmF0aW9uIHZhbHVlIGlzIGZhdWx0
-LCBzbyB3ZSBuZWVkIHRvCj4+PiByZWNvbmZpZ3VyZSBpdCBieSBzb2Z0d2FyZS4KPj4+Cj4+PiBB
-bmQgcmVmZXIgdG8gdGhlIERXQzMgZGF0YWJvb2ssIHRoZSBHVVNCMlBIWUNGRy5VU0JUUkRUSU0K
-Pj4+IG11c3QgYmUgc2V0IHRvIHRoZSBjb3JyZXNwb25kaW5nIHZhbHVlIGFjY29yZGluZyB0byB0
-aGUKPj4+IFVUTUkrIFBIWSBpbnRlcmZhY2UuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogV2lsbGlh
-bSBXdSA8d2lsbGlhbS53dUByb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4gQ2hhbmdlcyBpbiB2
-NzoKPj4+IC0gcmVtb3ZlIHF1aXJrIGFuZCB1c2Ugb25seSBvbmUgcHJvcGVydHkgdG8gY29uZmln
-dXJlIHV0bWkgKEhlaWtvLCBSb2IKPj4+IEhlcnJpbmcpCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2NjoK
-Pj4+IC0gdXNlICctJyBpbnN0ZWFkIG9mICdfJyBpbiBkdHMgKFJvYiBIZXJyaW5nKQo+Pj4KPj4+
-IENoYW5nZXMgaW4gdjU6Cj4+PiAtIE5vbmUKPj4+Cj4+PiBDaGFuZ2VzIGluIHY0Ogo+Pj4gLSBy
-ZWJhc2Ugb24gdG9wIG9mIGJhbGJpIHRlc3RpbmcvbmV4dCwgcmVtb3ZlIHBkYXRhIChiYWxiaSkK
-Pj4+Cj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSBOb25lCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2MjoK
-Pj4+IC0gYWRkIGEgcXVpcmsgZm9yIHBoeWlmX3V0bWkgKGJhbGJpKQo+Pj4KPj4+ICAgRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9kd2MzLnR4dCB8ICAzICsrKwo+Pj4gICBk
-cml2ZXJzL3VzYi9kd2MzL2NvcmUuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgMjUKPj4+ICAg
-KysrKysrKysrKysrKysrKysrKysrKysrKyBkcml2ZXJzL3VzYi9kd2MzL2NvcmUuaAo+Pj4gICB8
-IDEwICsrKysrKysrKysKPj4+ICAgMyBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNlcnRpb25zKCspCj4+
-Pgo+Pj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2Iv
-ZHdjMy50eHQKPj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9kd2Mz
-LnR4dCBpbmRleCAwMjBiMGU5Li4wMGNjNTQxCj4+PiAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZHdjMy50eHQKPj4+ICsrKyBiL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZHdjMy50eHQKPj4+Cj4+PiBAQCAtNDcsNiAr
-NDcsOSBAQCBPcHRpb25hbCBwcm9wZXJ0aWVzOgo+Pj4gICAgLSBzbnBzLGhpcmQtdGhyZXNob2xk
-OiBISVJEIHRocmVzaG9sZAo+Pj4gICAgLSBzbnBzLGhzcGh5X2ludGVyZmFjZTogSGlnaC1TcGVl
-ZCBQSFkgaW50ZXJmYWNlIHNlbGVjdGlvbiBiZXR3ZWVuCj4+PiAgICAidXRtaSIgZm9yPgo+Pj4g
-ICAgICBVVE1JKyBhbmQgInVscGkiIGZvciBVTFBJIHdoZW4gdGhlIERXQ19VU0IzX0hTUEhZX0lO
-VEVSRkFDRSBoYXMgdmFsdWUKPj4+ICAgICAgMy4KPj4+Cj4+PiArIC0gc25wcyxwaHlpZi11dG1p
-LXdpZHRoOiB0aGUgdmFsdWUgdG8gY29uZmlndXJlIHRoZSBjb3JlIHRvIHN1cHBvcnQgYQo+Pj4g
-VVRNSSsgUEhZICsJCQl3aXRoIGFuIDgtIG9yIDE2LWJpdCBpbnRlcmZhY2UuIFZhbHVlIDggc2Vs
-ZWN0IDgtYml0Cj4+PiArCQkJaW50ZXJmYWNlLCB2YWx1ZSAxNiBzZWxlY3QgMTYtYml0IGludGVy
-ZmFjZS4KPj4gSXMgJ3BoeV90eXBlID0gInV0bWlfd2lkZSInIG5vdCB0aGUgc2FtZSBhcyAxNi1i
-aXQgd2lkdGg/Cj4+Cj4+IEFnYWluLCBJIHRoaW5rIHRoaXMgc2hvdWxkIGJlIGNvbW1vbi4KPiBh
-ZnRlciBrbm93aW5nIHRoYXQgSSBuZWVkIHRvIGxvb2sgZm9yIHRoYXQgInV0bWlfd2lkZSIsIEkg
-dGhpbmsgSSdkIGFncmVlLgo+Cj4gSSBmb3VuZCBtZW50aW9uIG9mIHRoYXQgaW4gdXNiL2NpLWhk
-cmMtdXNiMi50eHQgYW5kIHVzYi9mc2wtdXNiLnR4dCBhbmQgZnJvbQo+IHRoZSBjb3Jlc3BvbmRp
-bmcgY29kZSwgSSBjYW4gc2VlIHRoYXQgdGhleSByZWFsbHkgbWVhbiB0aGUgMTZiaXQgaW50ZXJm
-YWNlLAo+IHRoZSBSb2NrY2hpcCBUUk0gYXMgd2VsbCBhcyB0aGUgc3BlYyBbMF0gc2VlbXMgdG8g
-Y2FsbCBpdCBVVE1JKyBidXQgcmVhbGx5Cj4gbG9va3MgdGhlIHNhbWUgYXMgdXRtaV93aWRlLgo+
-Cj4gSW50ZXJlc3RpbmdseSwgdGhlcmUgaXMgYWxyZWFkeSBnZW5lcmljIGNvZGUgaW4gZHJpdmVy
-cy91c2IvcGh5L29mLmMgc28gdGhhdAo+IHByb3BlcnR5IHNob3VsZCBwcm9iYWJseSBtb3ZlIHRv
-IGRldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMudHh0Cj4gYXMgd2VsbC4KPgo+Cj4gSGVp
-a28KPgo+IFswXSBodHRwOi8vY2FjaGUubnhwLmNvbS9maWxlcy9jb3Jwb3JhdGUvZG9jL3N1cHBv
-cnRfaW5mby9VVE1JLVBMVVMtU1BFQ0lGSUNBVElPTi5wZGYKClRoYW5rIHlvdSB2ZXJ5IG11Y2gg
-Zm9yIHlvdXIga2luZGx5IGhlbHAgYW5kIGhlbHBmdWwgc3VnZ2VzdGlvbi46LUQKSSBxdWl0ZSBh
-Z3JlZSB3aXRoIHlvdSBhYm91dCB1c2Ug4oCYcGh5X3R5cGXigJkgdG8gY29uZmlnIFVUTUkrIGlu
-dGVyZmFjZSAKZm9yIERXQzMgY29udHJvbGxlciwgYW5kIGFkZCB0aGUg4oCYcGh5X3R5cGXigJkg
-cHJvcGVydHkgdG8gCmRldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMudHh0LgoKU28gSSBz
-aG91bGRuJ3QgYWRkIGEgbmV3IGR0cyBwcm9wZXJ0eSDigJhzbnBzLHBoeWlmLXV0bWktd2lkdGji
-gJkgaGVyZe+8jCBhbmQgCmp1c3QgdXNlIOKAmHBoeV90eXBl4oCZaXMgZW5vdWdoLgoKQlRXLCBJ
-IHRoaW5rIHJrMzM5OSBVVE1JKyBpc24ndCB0aGUgc2FtZSBhcyDigJh1dG1pX3dpZGXigJkuIEJl
-Y2F1c2UgVVRNSSsgCnN1cHBvcnQgYm90aCA4LWJpdCBkYXRhIGludGVyZmFjZSBhbmQgMTYtYml0
-IGRhdGEgaW50ZXJmYWNlLCBidXQgcmVmZXIgCnRvIGNvZGUgaW4gZHJpdmVycy91c2IvcGh5L29m
-LmMgYW5kIHJlbGF0ZWQgZHJpdmVy77yM4oCYcGh5X3R5cGUgPSAKInV0bWlfd2lkZSLigJltZWFu
-cyAxNi1iaXRzLCAncGh5X3R5cGUgPSB1dG1pJyBtZWFucyA4LWJpdHMuCgpEZWFyIEZlbGlwZe+8
-jCBob3cgYWJvdXQgeW91ciBvcGluaW9uIGFib3V0IGFkZCDigJhwaHlfdHlwZeKAmSB0byBjb25m
-aWcgVVRNSSsgCmludGVyZmFjZT8KCkJlc3QgUmVnYXJkcwogICAgICAgIFdpbGxpYW0gd3UKPgo+
-Cj4KPgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Ulf,
+
+On Saturday 23 July 2016 03:09 PM, Ulf Hansson wrote:
+> On 29 June 2016 at 17:18, Doug Anderson <dianders@chromium.org> wrote:
+>> Kishon,
+>>
+>> On Wed, Jun 29, 2016 at 6:49 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>>> Hi,
+>>>
+>>> On Monday 27 June 2016 11:09 PM, Douglas Anderson wrote:
+>>>> It's possible that there are some reasons to turn the PHY on while the
+>>>> clock is 0.  In this case we just won't wait for the DLL to lock.
+>>>>
+>>>> This is a bit of a stopgap until we figure out exactly when we're
+>>>> supposed to wait for the DLL to lock and when we're supposed to power
+>>>> cycle the PHY.
+>>>>
+>>>> Note: this patch should help with suspend/resume where the system will
+>>>> try to turn the PHY back on when the clock is 0.
+>>>>
+>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>>> ---
+>>>>  drivers/phy/phy-rockchip-emmc.c | 59 ++++++++++++++++++++++++++---------------
+>>>>  1 file changed, 37 insertions(+), 22 deletions(-)
+>>>>
+>>>> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+>>>> index 9dce958233a0..a2aa6aca7dec 100644
+>>>> --- a/drivers/phy/phy-rockchip-emmc.c
+>>>> +++ b/drivers/phy/phy-rockchip-emmc.c
+>>>> @@ -88,15 +88,36 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>>       unsigned int caldone;
+>>>>       unsigned int dllrdy;
+>>>>       unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+>>>> +     unsigned long rate;
+>>>>       unsigned long timeout;
+>>>>
+>>>> -     if (rk_phy->emmcclk != NULL) {
+>>>> -             unsigned long rate = clk_get_rate(rk_phy->emmcclk);
+>>>> +     /*
+>>>> +      * Keep phyctrl_pdb and phyctrl_endll low to allow
+>>>> +      * initialization of CALIO state M/C DFFs
+>>>> +      */
+>>>> +     regmap_write(rk_phy->reg_base,
+>>>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>>> +                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+>>>> +                                PHYCTRL_PDB_MASK,
+>>>> +                                PHYCTRL_PDB_SHIFT));
+>>>> +     regmap_write(rk_phy->reg_base,
+>>>> +                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>>> +                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+>>>> +                                PHYCTRL_ENDLL_MASK,
+>>>> +                                PHYCTRL_ENDLL_SHIFT));
+>>>> +
+>>>> +     /* Already finish power_off above */
+>>>> +     if (on_off == PHYCTRL_PDB_PWR_OFF)
+>>>> +             return 0;
+>>>> +
+>>>> +     rate = clk_get_rate(rk_phy->emmcclk);
+>>>> +
+>>>> +     if (rate != 0) {
+>>>>               unsigned long ideal_rate;
+>>>>               unsigned long diff;
+>>>>
+>>>>               switch (rate) {
+>>>> -             case 0 ... 74999999:
+>>>> +             case 1 ... 74999999:
+>>>>                       ideal_rate = 50000000;
+>>>>                       freqsel = PHYCTRL_FREQSEL_50M;
+>>>>                       break;
+>>>> @@ -127,25 +148,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>>       }
+>>>>
+>>>>       /*
+>>>> -      * Keep phyctrl_pdb and phyctrl_endll low to allow
+>>>> -      * initialization of CALIO state M/C DFFs
+>>>> -      */
+>>>> -     regmap_write(rk_phy->reg_base,
+>>>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>>> -                  HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+>>>> -                                PHYCTRL_PDB_MASK,
+>>>> -                                PHYCTRL_PDB_SHIFT));
+>>>> -     regmap_write(rk_phy->reg_base,
+>>>> -                  rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>>> -                  HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+>>>> -                                PHYCTRL_ENDLL_MASK,
+>>>> -                                PHYCTRL_ENDLL_SHIFT));
+>>>> -
+>>>> -     /* Already finish power_off above */
+>>>> -     if (on_off == PHYCTRL_PDB_PWR_OFF)
+>>>> -             return 0;
+>>>> -
+>>>> -     /*
+>>>>        * According to the user manual, calpad calibration
+>>>>        * cycle takes more than 2us without the minimal recommended
+>>>>        * value, so we may need a little margin here
+>>>> @@ -183,6 +185,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>>>                    HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
+>>>>                                  PHYCTRL_ENDLL_MASK,
+>>>>                                  PHYCTRL_ENDLL_SHIFT));
+>>>> +
+>>>> +     /*
+>>>> +      * We turned on the DLL even though the rate was 0 because we the
+>>>> +      * clock might be turned on later.  ...but we can't wait for the DLL
+>>>> +      * to lock when the rate is 0 because it will never lock with no
+>>>> +      * input clock.
+>>>> +      *
+>>>> +      * Technically we should be checking the lock later when the clock
+>>>> +      * is turned on, but for now we won't.
+>>>> +      */
+>>>> +     if (rate == 0)
+>>>> +             return 0;
+>>>
+>>> Why not return initially from rockchip_emmc_phy_power if the clock rate is '0'.
+>>> Are there other functions to lock the DLL apart from phy_power?
+>>
+>> Yeah, it's a big ugly right now.  This ugliness is really needed
+>> because of <https://patchwork.kernel.org/patch/9201035/> because:
+>>
+>> 1. We power on the PHY at probe time and the card clock is in an
+>> unknown state at that time.  It will be reported as 0 right now, but
+>> it may or may not actually be 0.
+>>
+>> 2. We don't have an easy way to call back into the PHY when we
+>> actually set the clock to a low rate (like 400kHz) for ID mode.
+>> Before this series I tried to power the PHY off and on for every clock
+>> change, but apparently that was causing problems.
+>>
+>>
+>> As talked about in <https://patchwork.kernel.org/patch/9201035/>, I
+>> think the right answer is to figure out how to get the common clock
+>> framework notifications to happen for the card clock and then remove
+>> the wholesale PHY power off / power on for every clock change.  The
+>> PHY itself can register for the clock change notifications and figure
+>> out how much or how little to do on every clock change.
+>>
+>> Unfortunately, as also discussed in the other patch, it's not trivial
+>> to do this because I think it requires surgery on the main SDHCI
+>> driver to change the way it deals with the card clock.  I'm not sure I
+>> have time for this delicate surgery right now and I'm hoping that
+>> perhaps Shawn will be able to help figure something out (maybe?) or I
+>> can try coming back to it later.
+>>
+>>
+>> In any case, I think a wholesale revert of my previous 150 MHz series
+>> probably puts us in a worse state than we started with, so I was just
+>> proposing reverting the one patch.  Once we do that, this PHY patch
+>> helps keep us in a sane state (keeps suspend/resume working).
+>>
+>>
+>> -Doug
+> 
+> Doug, Kishon,
+> 
+> Did you agree on how to move forward with this change?
+
+I think still few things are not very clear especially on what should be
+handled in PHY when the clock rate changes or if any new PHY APIs are required
+to handle any clock changes etc..
+But since this actually gets MMC working in rockchip, I'd be okay to merge this
+now. Though I'd expect this to be refined in the future release cycles.
+
+FWIW:
+Reviewed-by: Kishon Vijay Abraham I <kishon@ti.com>
+
+Thanks
+Kishon
