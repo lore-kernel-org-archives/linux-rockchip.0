@@ -1,960 +1,137 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v3 6/7] PM / devfreq: rockchip: add devfreq driver for
- rk3399 dmc
-Date: Tue, 26 Jul 2016 09:15:10 +0800
-Message-ID: <5796B99E.7010406@rock-chips.com>
-References: <1469178440-4668-1-git-send-email-hl@rock-chips.com>
- <CGME20160722090916epcas1p28b9a4db33945627f5e4c1157cd6786b7@epcas1p2.samsung.com>
- <1469178440-4668-7-git-send-email-hl@rock-chips.com>
- <5795AB4E.4010600@samsung.com> <5795D216.7010003@rock-chips.com>
- <5795DFD0.7010901@samsung.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 2/2] dt-bindings: add simple-panel-dsi and simple-panel
+Date: Tue, 26 Jul 2016 10:01:32 +0800
+Message-ID: <5796C47C.5040208@rock-chips.com>
+References: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
+ <1468984730-23186-2-git-send-email-mark.yao@rock-chips.com>
+ <20160725152125.GS21170@ulmo.ba.sec>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5795DFD0.7010901@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>, heiko@sntech.de
-Cc: tixy@linaro.org, typ@rock-chips.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, xsf@rock-chips.com, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: multipart/mixed; boundary="===============0134529363=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160725152125.GS21170@ulmo.ba.sec>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, =?UTF-8?B?5bqE5paH6b6Z?= <zwl@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chanwoo Choi,
+--===============0134529363==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-On 2016=E5=B9=B407=E6=9C=8825=E6=97=A5 17:45, Chanwoo Choi wrote:
-> Hi Lin,
->
-> On 2016=EB=85=84 07=EC=9B=94 25=EC=9D=BC 17:47, hl wrote:
->> Hi Chanwoo Choi,
->>
->> On 2016=E5=B9=B407=E6=9C=8825=E6=97=A5 14:01, Chanwoo Choi wrote:
->>> Hi Lin,
->>>
->>> I'm glad to support the for dmc ddr clock scaling with devfreq/devf=
-req-event.
->>>
->>> But, I think that you have to use the standard interface.
->>> As I already mentioned[1] on previous mail, devfreq fwk support
->>> the standard DEVFREQ_TRANSITION_NOTIFIER notifier which has the two=
- notifications.
->>> - DEVFREQ_PRECHANGE
->>> - DEVFREQ_POSTCHANGE
->>> [1] https://patchwork.kernel.org/patch/9194305/
->>>
->>> You can use the DEVFREQ_PRECHANGE instead of DMCFREQ_ADJUST
->>> and use the DEVFREQ_POSTCHANGE instead of DMCFREQ_FINISH.
->>>
->>> On 2016=EB=85=84 07=EC=9B=94 22=EC=9D=BC 18:07, Lin Huang wrote:
->>>> base on dfi result, we do ddr frequency scaling, register
->>>> dmc driver to devfreq framework, and use simple-ondemand
->>>> policy.
->>>>
->>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>>> ---
->>>> Changes in v3:
->>>> - operate dram setting through sip call
->>>> - imporve set rate flow
->>>>
->>>> Changes in v2:
->>>> - None
->>>>    Changes in v1:
->>>> - move dfi controller to event
->>>> - fix set voltage sequence when set rate fail
->>>> - change Kconfig type from tristate to bool
->>>> - move unuse EXPORT_SYMBOL_GPL()
->>>>
->>>>    drivers/devfreq/Kconfig                 |   1 +
->>>>    drivers/devfreq/Makefile                |   1 +
->>>>    drivers/devfreq/rockchip/Kconfig        |  15 +
->>>>    drivers/devfreq/rockchip/Makefile       |   2 +
->>>>    drivers/devfreq/rockchip/rk3399_dmc.c   | 482 +++++++++++++++++=
-+++++++++++++++
->>>>    drivers/devfreq/rockchip/rockchip_dmc.c | 143 ++++++++++
->>>>    include/soc/rockchip/rockchip_dmc.h     |  45 +++
->>>>    7 files changed, 689 insertions(+)
->>>>    create mode 100644 drivers/devfreq/rockchip/Kconfig
->>>>    create mode 100644 drivers/devfreq/rockchip/Makefile
->>>>    create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
->>>>    create mode 100644 drivers/devfreq/rockchip/rockchip_dmc.c
->>>>    create mode 100644 include/soc/rockchip/rockchip_dmc.h
->>>>
->>>> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
->>>> index a5be56e..cb67246 100644
->>>> --- a/drivers/devfreq/Kconfig
->>>> +++ b/drivers/devfreq/Kconfig
->>>> @@ -101,5 +101,6 @@ config ARM_TEGRA_DEVFREQ
->>>>             operating frequencies and voltages with OPP support.
->>>>      source "drivers/devfreq/event/Kconfig"
->>>> +source "drivers/devfreq/rockchip/Kconfig"
->>>>      endif # PM_DEVFREQ
->>>> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
->>>> index 09f11d9..48e2ae6 100644
->>>> --- a/drivers/devfreq/Makefile
->>>> +++ b/drivers/devfreq/Makefile
->>>> @@ -9,6 +9,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)    +=3D governor=
-_passive.o
->>>>    # DEVFREQ Drivers
->>>>    obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)    +=3D exynos-bus.o
->>>>    obj-$(CONFIG_ARM_TEGRA_DEVFREQ)        +=3D tegra-devfreq.o
->>>> +obj-$(CONFIG_ARCH_ROCKCHIP)        +=3D rockchip/
->>>>      # DEVFREQ Event Drivers
->>>>    obj-$(CONFIG_PM_DEVFREQ_EVENT)        +=3D event/
->>>> diff --git a/drivers/devfreq/rockchip/Kconfig b/drivers/devfreq/ro=
-ckchip/Kconfig
->>>> new file mode 100644
->>>> index 0000000..7fb1cff
->>>> --- /dev/null
->>>> +++ b/drivers/devfreq/rockchip/Kconfig
->>>> @@ -0,0 +1,15 @@
->>>> +config ARM_ROCKCHIP_DMC_DEVFREQ
->>>> +    bool "ARM ROCKCHIP DMC DEVFREQ Driver"
->>>> +    depends on ARCH_ROCKCHIP
->>>> +    help
->>>> +      This adds the DEVFREQ driver framework for the rockchip dmc=
-=2E
->>>> +
->>>> +config ARM_RK3399_DMC_DEVFREQ
->>>> +    bool "ARM RK3399 DMC DEVFREQ Driver"
->>>> +    depends on ARM_ROCKCHIP_DMC_DEVFREQ
->>>> +    select PM_OPP
->>>> +    select DEVFREQ_GOV_SIMPLE_ONDEMAND
->>>> +    help
->>>> +          This adds the DEVFREQ driver for the RK3399 dmc. It set=
-s the frequency
->>>> +          for the memory controller and reads the usage counts fr=
-om hardware.
->>>> +
->>>> diff --git a/drivers/devfreq/rockchip/Makefile b/drivers/devfreq/r=
-ockchip/Makefile
->>>> new file mode 100644
->>>> index 0000000..caca525
->>>> --- /dev/null
->>>> +++ b/drivers/devfreq/rockchip/Makefile
->>>> @@ -0,0 +1,2 @@
->>>> +obj-$(CONFIG_ARM_ROCKCHIP_DMC_DEVFREQ)    +=3D rockchip_dmc.o
->>>> +obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)    +=3D rk3399_dmc.o
->>>> diff --git a/drivers/devfreq/rockchip/rk3399_dmc.c b/drivers/devfr=
-eq/rockchip/rk3399_dmc.c
->>>> new file mode 100644
->>>> index 0000000..f1d6120
->>>> --- /dev/null
->>>> +++ b/drivers/devfreq/rockchip/rk3399_dmc.c
->>>> @@ -0,0 +1,482 @@
->>>> +/*
->>>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
->>>> + * Author: Lin Huang <hl@rock-chips.com>
->>>> + *
->>>> + * This program is free software; you can redistribute it and/or =
-modify it
->>>> + * under the terms and conditions of the GNU General Public Licen=
-se,
->>>> + * version 2, as published by the Free Software Foundation.
->>>> + *
->>>> + * This program is distributed in the hope it will be useful, but=
- WITHOUT
->>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABI=
-LITY or
->>>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public =
-License for
->>>> + * more details.
->>>> + */
->>>> +
->>>> +#include <linux/clk.h>
->>>> +#include <linux/completion.h>
->>>> +#include <linux/delay.h>
->>>> +#include <linux/devfreq.h>
->>>> +#include <linux/devfreq-event.h>
->>>> +#include <linux/interrupt.h>
->>>> +#include <linux/module.h>
->>>> +#include <linux/of.h>
->>>> +#include <linux/platform_device.h>
->>>> +#include <linux/pm_opp.h>
->>>> +#include <linux/regulator/consumer.h>
->>>> +#include <linux/rwsem.h>
->>>> +#include <linux/suspend.h>
->>>> +#include <linux/syscore_ops.h>
->>>> +
->>>> +#include <soc/rockchip/rockchip_dmc.h>
->>>> +#include "../../firmware/rockchip_sip.h"
->>>> +
->>>> +struct dram_timing {
->>>> +    unsigned int ddr3_speed_bin;
->>>> +    unsigned int pd_idle;
->>>> +    unsigned int sr_idle;
->>>> +    unsigned int sr_mc_gate_idle;
->>>> +    unsigned int srpd_lite_idle;
->>>> +    unsigned int standby_idle;
->>>> +    unsigned int dram_dll_dis_freq;
->>>> +    unsigned int phy_dll_dis_freq;
->>>> +    unsigned int ddr3_odt_dis_freq;
->>>> +    unsigned int ddr3_drv;
->>>> +    unsigned int ddr3_odt;
->>>> +    unsigned int phy_ddr3_ca_drv;
->>>> +    unsigned int phy_ddr3_dq_drv;
->>>> +    unsigned int phy_ddr3_odt;
->>>> +    unsigned int lpddr3_odt_dis_freq;
->>>> +    unsigned int lpddr3_drv;
->>>> +    unsigned int lpddr3_odt;
->>>> +    unsigned int phy_lpddr3_ca_drv;
->>>> +    unsigned int phy_lpddr3_dq_drv;
->>>> +    unsigned int phy_lpddr3_odt;
->>>> +    unsigned int lpddr4_odt_dis_freq;
->>>> +    unsigned int lpddr4_drv;
->>>> +    unsigned int lpddr4_dq_odt;
->>>> +    unsigned int lpddr4_ca_odt;
->>>> +    unsigned int phy_lpddr4_ca_drv;
->>>> +    unsigned int phy_lpddr4_ck_cs_drv;
->>>> +    unsigned int phy_lpddr4_dq_drv;
->>>> +    unsigned int phy_lpddr4_odt;
->>>> +};
->>>> +
->>>> +struct rk3399_dmcfreq {
->>>> +    struct device *dev;
->>>> +    struct devfreq *devfreq;
->>>> +    struct devfreq_simple_ondemand_data ondemand_data;
->>>> +    struct clk *dmc_clk;
->>>> +    struct devfreq_event_dev *edev;
->>>> +    struct mutex lock;
->>>> +    struct notifier_block dmc_nb;
->>>> +    struct dram_timing *timing;
->>>> +    wait_queue_head_t    wait_dcf_queue;
->>>> +    int irq;
->>>> +    int wait_dcf_flag;
->>>> +    struct regulator *vdd_center;
->>>> +    unsigned long rate, target_rate;
->>>> +    unsigned long volt, target_volt;
->>>> +};
->>>> +
->>>> +static int rk3399_dmcfreq_target(struct device *dev, unsigned lon=
-g *freq,
->>>> +                 u32 flags)
->>>> +{
->>>> +    struct platform_device *pdev =3D container_of(dev, struct pla=
-tform_device,
->>>> +                            dev);
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev)=
-;
->>>> +    struct dev_pm_opp *opp;
->>>> +    unsigned long old_clk_rate =3D dmcfreq->rate;
->>>> +    unsigned long target_volt, target_rate;
->>>> +    int err;
->>>> +
->>>> +    rcu_read_lock();
->>>> +    opp =3D devfreq_recommended_opp(dev, freq, flags);
->>>> +    if (IS_ERR(opp)) {
->>>> +        rcu_read_unlock();
->>>> +        return PTR_ERR(opp);
->>>> +    }
->>>> +    target_rate =3D dev_pm_opp_get_freq(opp);
->>>> +    target_volt =3D dev_pm_opp_get_voltage(opp);
->>>> +    opp =3D devfreq_recommended_opp(dev, &dmcfreq->rate, flags);
->>>> +    if (IS_ERR(opp)) {
->>>> +        rcu_read_unlock();
->>>> +        return PTR_ERR(opp);
->>>> +    }
->>>> +    dmcfreq->volt =3D dev_pm_opp_get_voltage(opp);
->>>> +    rcu_read_unlock();
->>>> +
->>>> +    if (dmcfreq->rate =3D=3D target_rate)
->>>> +        return 0;
->>>> +
->>>> +    mutex_lock(&dmcfreq->lock);
->>>> +    /*
->>>> +     * if frequency scaling from low to high, adjust voltage firs=
-t;
->>>> +     * if frequency scaling from high to low, adjuset frequency f=
-irst;
->>>> +     */
->>>> +    if (old_clk_rate < target_rate) {
->>>> +        err =3D regulator_set_voltage(dmcfreq->vdd_center, target=
-_volt,
->>>> +                        target_volt);
->>>> +        if (err) {
->>>> +            dev_err(dev, "Unable to set vol %lu\n", target_volt);
->>>> +            goto out;
->>>> +        }
->>>> +    }
->>>> +
->>>> +    dmc_event(DMCFREQ_ADJUST);
->>> You don't need to send the notification in target function.
->>> When you use the DEVFREQ_TRANSITION_NOTIFIER notifier,
->>> devfreq send the notification before calling the target() and after=
- calling the target().
->> I checked DEVFREQ_TRANSISTION_NOTIFIER notifier before, but i have s=
-ome question:
->> Now i want to use
->>      DEVFREQ_PRECHANGE and DEVFREQ_POSTCHANGE in vop driver, but it =
-hard to get the *devfreq
->> in vop driver, or i can register a DEVFREQ_TRANSITION_NOTIFIER notif=
-ier in rk3399_dmc.c and
->> when get message, post DEVFREQ_PRECHANGE or DEVFREQ_POSTCHANGE to vo=
-p driver through dmc_event(),
->> do you have a better way to do it?
-> Firstly,
-> The devfreq has the devfreq_get_devfreq_by_phandle() function
-> to get the devfreq pointer in device tree. The vop_bind()
-> get the IORESOURCE_MEM and interrupt. So, I think that you
-> would get the devfreq pointer in the vop_bind() function.
-> So, DEVFREQ_TRANSITION_NOTIFIER can alter the following two notificat=
-ions:
-> - dmc_event(DMCFREQ_ADJUST);
-> - dmc_event(DMCFREQ_FINISH);
->
->
-> Also,
-> devfreq-event fwk provide the devfreq_event_get_edev_by_phandle() fun=
-tcion
-> to get the devfreq-event pointer in the device tree.
->
-> You could call the devfreq_event_[enable/disable[_edev()
-> and devfreq_[resume/suspend]_device in the drivers/gpu/drm/rockchip/r=
-ockchip_drm_vop.c
-> instead of dmc_event(DMC_ENABLE) / dmc_event(DMC_DISABLE).
->
-> dmc_event(DMC_ENABLE);
-> 	devfreq_event_enable_edev(dmcfreq->edev);
-> 	devfreq_resume_device(dmcfreq->devfreq);
->
-> dmc_event(DMC_DISABLE);
-> 	devfreq_event_disable_edev(dmcfreq->edev);
-> 	devfreq_suspend_device(dmcfreq->devfreq);
->
-> I think that we have to use the standard interfaces and
-> functions providing by framework. It is not appropriate way
-> to define the specific functions for only one device driver
-> between other framework.
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div class=3D"moz-cite-prefix">On 2016=E5=B9=B407=E6=9C=8825=E6=97=A5=
+ 23:21, Thierry Reding
+      wrote:<br>
+    </div>
+    <blockquote cite=3D"mid:20160725152125.GS21170@ulmo.ba.sec"
+      type=3D"cite">
+      <pre wrap=3D"">On Wed, Jul 20, 2016 at 11:18:50AM +0800, Mark Yao w=
+rote:
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">Allow user add display timing on device tree with =
+simple-panel-dsi
+or simple-panel.
 
-Thanks for you suggestion, this may be a huge update, i will try to=20
-implement it.
->
-> Regards,
-> Chanwoo Choi
->
->>>> +    dmcfreq->wait_dcf_flag =3D 1;
->>>> +
->>>> +    err =3D clk_set_rate(dmcfreq->dmc_clk, target_rate);
->>>> +    if (err) {
->>>> +        dev_err(dev,
->>>> +            "Unable to set freq %lu. Current freq %lu. Error %d\n=
-",
->>>> +            target_rate, old_clk_rate, err);
->>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
->>>> +                      dmcfreq->volt);
->>>> +        dmc_event(DMCFREQ_FINISH);
->>> ditto.
->>>
->>>> +        goto out;
->>>> +    }
->>>> +
->>>> +    /*
->>>> +     * wait until bcf irq happen, it means freq scaling finish in=
- bl31,
->>>> +     * use 100ms as timeout time
->>>> +     */
->>>> +    wait_event_timeout(dmcfreq->wait_dcf_queue,
->>>> +               !dmcfreq->wait_dcf_flag, HZ / 10);
->>>> +
->>>> +    dmc_event(DMCFREQ_FINISH);
->>> ditto.
->>>
->>>> +
->>>> +    /*
->>>> +     * check the dpll rate
->>>> +     * there only two result we will get,
->>>> +     * 1. ddr frequency scaling fail, we still get the old rate
->>>> +     * 2, ddr frequency scaling sucessful, we get the rate we set
->>>> +     */
->>>> +    dmcfreq->rate =3D clk_get_rate(dmcfreq->dmc_clk);
->>>> +
->>>> +    /* if get the incorrect rate, set voltage to old value */
->>>> +    if (dmcfreq->rate !=3D target_rate) {
->>>> +        dev_err(dev, "get wrong ddr frequency, Request freq %lu,\
->>>> +            Current freq %lu\n", target_rate, dmcfreq->rate);
->>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
->>>> +                      dmcfreq->volt);
->>>> +    } else if (old_clk_rate > target_rate)
->>>> +        err =3D regulator_set_voltage(dmcfreq->vdd_center, target=
-_volt,
->>>> +                        target_volt);
->>>> +    if (err)
->>>> +        dev_err(dev, "Unable to set vol %lu\n", target_volt);
->>>> +
->>>> +out:
->>>> +    mutex_unlock(&dmcfreq->lock);
->>>> +    return err;
->>>> +}
->>>> +
->>>> +static int rk3399_dmcfreq_get_dev_status(struct device *dev,
->>>> +                     struct devfreq_dev_status *stat)
->>>> +{
->>>> +    struct platform_device *pdev =3D container_of(dev, struct pla=
-tform_device,
->>>> +                            dev);
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev)=
-;
->>>> +    struct devfreq_event_data edata;
->>>> +
->>>> +    devfreq_event_get_event(dmcfreq->edev, &edata);
->>>> +
->>>> +    stat->current_frequency =3D dmcfreq->rate;
->>>> +    stat->busy_time =3D edata.load_count;
->>>> +    stat->total_time =3D edata.total_count;
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static int rk3399_dmcfreq_get_cur_freq(struct device *dev, unsign=
-ed long *freq)
->>>> +{
->>>> +    struct platform_device *pdev =3D container_of(dev, struct pla=
-tform_device,
->>>> +                            dev);
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev)=
-;
->>>> +
->>>> +    *freq =3D dmcfreq->rate;
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static void rk3399_dmcfreq_exit(struct device *dev)
->>>> +{
->>>> +    struct platform_device *pdev =3D container_of(dev, struct pla=
-tform_device,
->>>> +                            dev);
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev)=
-;
->>>> +
->>>> +    devfreq_unregister_opp_notifier(dev, dmcfreq->devfreq);
->>>> +}
->>>> +
->>>> +static struct devfreq_dev_profile rk3399_devfreq_dmc_profile =3D =
-{
->>>> +    .polling_ms    =3D 200,
->>>> +    .target        =3D rk3399_dmcfreq_target,
->>>> +    .get_dev_status    =3D rk3399_dmcfreq_get_dev_status,
->>>> +    .get_cur_freq    =3D rk3399_dmcfreq_get_cur_freq,
->>>> +    .exit        =3D rk3399_dmcfreq_exit,
->>>> +};
->>>> +
->>>> +static __maybe_unused int rk3399_dmcfreq_suspend(struct device *d=
-ev)
->>>> +{
->>>> +    rockchip_dmc_disable();
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static __maybe_unused int rk3399_dmcfreq_resume(struct device *de=
-v)
->>>> +{
->>>> +    rockchip_dmc_enable();
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static SIMPLE_DEV_PM_OPS(rk3399_dmcfreq_pm, rk3399_dmcfreq_suspen=
-d,
->>>> +             rk3399_dmcfreq_resume);
->>>> +
->>>> +static int rk3399_dmc_enable_notify(struct notifier_block *nb,
->>>> +                    unsigned long event, void *data)
->>>> +{
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D
->>>> +                  container_of(nb, struct rk3399_dmcfreq, dmc_nb)=
-;
->>>> +    unsigned long freq =3D ULONG_MAX;
->>>> +
->>>> +    if (event =3D=3D DMC_ENABLE) {
->>>> +        devfreq_event_enable_edev(dmcfreq->edev);
->>>> +        devfreq_resume_device(dmcfreq->devfreq);
->>>> +        return NOTIFY_OK;
->>>> +    } else if (event =3D=3D DMC_DISABLE) {
->>>> +        devfreq_event_disable_edev(dmcfreq->edev);
->>>> +        devfreq_suspend_device(dmcfreq->devfreq);
->>>> +
->>>> +        /* when disable dmc, set sdram to max frequency */
->>>> +        rk3399_dmcfreq_target(dmcfreq->dev, &freq, 0);
->>>> +        return NOTIFY_OK;
->>>> +    }
->>>> +
->>>> +    return NOTIFY_DONE;
->>>> +}
->>>> +
->>>> +static irqreturn_t rk3399_dmc_irq(int irq, void *dev_id)
->>>> +{
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D dev_id;
->>>> +
->>>> +    dmcfreq->wait_dcf_flag =3D 0;
->>>> +    wake_up(&dmcfreq->wait_dcf_queue);
->>>> +
->>>> +    /* clr dcf irq */
->>>> +    sip_smc_clr_ddr_irq();
->>>> +
->>>> +    return IRQ_HANDLED;
->>>> +}
->>>> +
->>>> +static int of_do_get_timing(struct device_node *np,
->>>> +        struct dram_timing *timing)
->>>> +{
->>>> +    int ret;
->>>> +
->>>> +    ret =3D of_property_read_u32(np, "ddr3_speed_bin",
->>>> +                   &timing->ddr3_speed_bin);
->>>> +    ret |=3D of_property_read_u32(np, "pd_idle", &timing->pd_idle=
-);
->>>> +    ret |=3D of_property_read_u32(np, "sr_idle", &timing->sr_idle=
-);
->>>> +    ret |=3D of_property_read_u32(np, "sr_mc_gate_idle",
->>>> +                    &timing->sr_mc_gate_idle);
->>>> +    ret |=3D of_property_read_u32(np, "srpd_lite_idle",
->>>> +                    &timing->srpd_lite_idle);
->>>> +    ret |=3D of_property_read_u32(np, "standby_idle", &timing->st=
-andby_idle);
->>>> +    ret |=3D of_property_read_u32(np, "dram_dll_dis_freq",
->>>> +                    &timing->dram_dll_dis_freq);
->>>> +    ret |=3D of_property_read_u32(np, "phy_dll_dis_freq",
->>>> +                    &timing->phy_dll_dis_freq);
->>>> +    ret |=3D of_property_read_u32(np, "ddr3_odt_dis_freq",
->>>> +                    &timing->ddr3_odt_dis_freq);
->>>> +    ret |=3D of_property_read_u32(np, "ddr3_drv", &timing->ddr3_d=
-rv);
->>>> +    ret |=3D of_property_read_u32(np, "ddr3_odt", &timing->ddr3_o=
-dt);
->>>> +    ret |=3D of_property_read_u32(np, "phy_ddr3_ca_drv",
->>>> +                    &timing->phy_ddr3_ca_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_ddr3_dq_drv",
->>>> +                    &timing->phy_ddr3_dq_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_ddr3_odt", &timing->ph=
-y_ddr3_odt);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr3_odt_dis_freq",
->>>> +                    &timing->lpddr3_odt_dis_freq);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr3_drv", &timing->lpdd=
-r3_drv);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr3_odt", &timing->lpdd=
-r3_odt);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr3_ca_drv",
->>>> +                    &timing->phy_lpddr3_ca_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr3_dq_drv",
->>>> +                    &timing->phy_lpddr3_dq_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr3_odt",
->>>> +                    &timing->phy_lpddr3_odt);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr4_odt_dis_freq",
->>>> +                    &timing->lpddr4_odt_dis_freq);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr4_drv",
->>>> +                    &timing->lpddr4_drv);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr4_dq_odt",
->>>> +                    &timing->lpddr4_dq_odt);
->>>> +    ret |=3D of_property_read_u32(np, "lpddr4_ca_odt",
->>>> +                    &timing->lpddr4_ca_odt);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr4_ca_drv",
->>>> +                    &timing->phy_lpddr4_ca_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr4_ck_cs_drv",
->>>> +                    &timing->phy_lpddr4_ck_cs_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr4_dq_drv",
->>>> +                    &timing->phy_lpddr4_dq_drv);
->>>> +    ret |=3D of_property_read_u32(np, "phy_lpddr4_odt",
->>>> +                    &timing->phy_lpddr4_odt);
->>>> +
->>>> +    return ret;
->>>> +}
->>>> +
->>>> +static struct dram_timing *of_get_ddr_timings(struct device *dev,
->>>> +                          struct device_node *np)
->>>> +{
->>>> +    struct dram_timing    *timing =3D NULL;
->>>> +    struct device_node    *np_tim;
->>>> +
->>>> +    np_tim =3D of_parse_phandle(np, "ddr_timing", 0);
->>>> +    if (np_tim) {
->>>> +        timing =3D devm_kzalloc(dev, sizeof(*timing), GFP_KERNEL)=
-;
->>>> +        if (!timing)
->>>> +            goto err;
->>>> +        if (of_do_get_timing(np_tim, timing)) {
->>>> +            devm_kfree(dev, timing);
->>>> +            goto err;
->>>> +        }
->>>> +        return timing;
->>>> +    }
->>>> +
->>>> +err:
->>>> +    if (timing) {
->>>> +        devm_kfree(dev, timing);
->>>> +        timing =3D NULL;
->>>> +    }
->>>> +
->>>> +    return timing;
->>>> +}
->>>> +
->>>> +static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->>>> +{
->>>> +    struct device *dev =3D &pdev->dev;
->>>> +    struct rk3399_dmcfreq *data;
->>>> +    int ret, irq, index;
->>>> +    uint64_t param =3D 0;
->>>> +    uint32_t *timing;
->>>> +    struct device_node *np =3D pdev->dev.of_node;
->>>> +
->>>> +    irq =3D platform_get_irq(pdev, 0);
->>>> +    if (irq < 0) {
->>>> +        dev_err(&pdev->dev, "no dmc irq resource\n");
->>>> +        return -EINVAL;
->>>> +    }
->>>> +
->>>> +    data =3D devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP=
-_KERNEL);
->>>> +    if (!data)
->>>> +        return -ENOMEM;
->>>> +
->>>> +    mutex_init(&data->lock);
->>>> +
->>>> +    data->vdd_center =3D devm_regulator_get(dev, "center");
->>>> +    if (IS_ERR(data->vdd_center)) {
->>>> +        dev_err(dev, "Cannot get the regulator \"center\"\n");
->>>> +        return PTR_ERR(data->vdd_center);
->>>> +    }
->>>> +
->>>> +    data->dmc_clk =3D devm_clk_get(dev, "dmc_clk");
->>>> +    if (IS_ERR(data->dmc_clk)) {
->>>> +        dev_err(dev, "Cannot get the clk dmc_clk\n");
->>>> +        return PTR_ERR(data->dmc_clk);
->>>> +    };
->>>> +
->>>> +    data->edev =3D devfreq_event_get_edev_by_phandle(dev, 0);
->>>> +    if (IS_ERR(data->edev))
->>>> +        return -EPROBE_DEFER;
->>>> +
->>>> +    ret =3D devfreq_event_enable_edev(data->edev);
->>>> +    if (ret < 0) {
->>>> +        dev_err(dev, "failed to enable devfreq-event devices\n");
->>>> +        return ret;
->>>> +    }
->>>> +
->>>> +    /*
->>>> +     * We add a devfreq driver to our parent since it has a devic=
-e tree node
->>>> +     * with operating points.
->>>> +     */
->>>> +    if (dev_pm_opp_of_add_table(dev)) {
->>>> +        dev_err(dev, "Invalid operating-points in device tree.\n"=
-);
->>>> +        return -EINVAL;
->>>> +    }
->>>> +
->>>> +    of_property_read_u32(np, "upthreshold",
->>>> +                 &data->ondemand_data.upthreshold);
->>>> +
->>>> +    of_property_read_u32(np, "downdifferential",
->>>> +                 &data->ondemand_data.downdifferential);
->>>> +
->>>> +    data->rate =3D clk_get_rate(data->dmc_clk);
->>>> +    rk3399_devfreq_dmc_profile.initial_freq =3D data->rate;
->>>> +    data->devfreq =3D devfreq_add_device(dev,
->>>> +                       &rk3399_devfreq_dmc_profile,
->>>> +                       "simple_ondemand",
->>>> +                       &data->ondemand_data);
->>>> +    if (IS_ERR(data->devfreq))
->>>> +        return PTR_ERR(data->devfreq);
->>>> +
->>>> +    devfreq_register_opp_notifier(dev, data->devfreq);
->>>> +
->>>> +    data->dmc_nb.notifier_call =3D rk3399_dmc_enable_notify;
->>>> +    dmc_register_notifier(&data->dmc_nb);
->>>> +    data->irq =3D irq;
->>>> +    ret =3D devm_request_irq(dev, irq, rk3399_dmc_irq, 0,
->>>> +                   dev_name(dev), data);
->>>> +    if (ret) {
->>>> +        dev_err(dev, "failed to request dmc irq: %d\n", ret);
->>>> +        return ret;
->>>> +    }
->>>> +
->>>> +    /* get dram timing and pass it to bl31 */
->>>> +    data->timing =3D of_get_ddr_timings(dev, np);
->>>> +    if (data->timing) {
->>>> +        timing =3D (uint32_t *)data->timing;
->>>> +        for (index =3D 0; index < (sizeof(struct dram_timing) / 4=
-);
->>>> +             index++) {
->>>> +            param =3D index;
->>>> +            param =3D param << 32 | *timing++;
->>>> +            sip_smc_set_ddr_param(param);
->>>> +            param =3D 0;
->>>> +        }
->>>> +    }
->>>> +    sip_smc_ddr_init();
->>>> +
->>>> +    init_waitqueue_head(&data->wait_dcf_queue);
->>>> +    data->wait_dcf_flag =3D 0;
->>>> +
->>>> +    data->dev =3D dev;
->>>> +    platform_set_drvdata(pdev, data);
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static int rk3399_dmcfreq_remove(struct platform_device *pdev)
->>>> +{
->>>> +    struct rk3399_dmcfreq *dmcfreq =3D platform_get_drvdata(pdev)=
-;
->>>> +
->>>> +    devfreq_remove_device(dmcfreq->devfreq);
->>>> +    regulator_put(dmcfreq->vdd_center);
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static const struct of_device_id rk3399dmc_devfreq_of_match[] =3D=
- {
->>>> +    { .compatible =3D "rockchip,rk3399-dmc" },
->>>> +    { },
->>>> +};
->>>> +
->>>> +static struct platform_driver rk3399_dmcfreq_driver =3D {
->>>> +    .probe    =3D rk3399_dmcfreq_probe,
->>>> +    .remove    =3D rk3399_dmcfreq_remove,
->>>> +    .driver =3D {
->>>> +        .name    =3D "rk3399-dmc-freq",
->>>> +        .pm    =3D &rk3399_dmcfreq_pm,
->>>> +        .of_match_table =3D rk3399dmc_devfreq_of_match,
->>>> +    },
->>>> +};
->>>> +module_platform_driver(rk3399_dmcfreq_driver);
->>>> +
->>>> +MODULE_LICENSE("GPL v2");
->>>> +MODULE_DESCRIPTION("RK3399 dmcfreq driver with devfreq framework"=
-);
->>>> diff --git a/drivers/devfreq/rockchip/rockchip_dmc.c b/drivers/dev=
-freq/rockchip/rockchip_dmc.c
->>>> new file mode 100644
->>>> index 0000000..78baee5
->>>> --- /dev/null
->>>> +++ b/drivers/devfreq/rockchip/rockchip_dmc.c
->>>> @@ -0,0 +1,143 @@
->>>> +/*
->>>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
->>>> + * Author: Lin Huang <hl@rock-chips.com>
->>>> + * Base on: https://chromium-review.googlesource.com/#/c/231477/
->>>> + *
->>>> + * This program is free software; you can redistribute it and/or =
-modify it
->>>> + * under the terms and conditions of the GNU General Public Licen=
-se,
->>>> + * version 2, as published by the Free Software Foundation.
->>>> + *
->>>> + * This program is distributed in the hope it will be useful, but=
- WITHOUT
->>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABI=
-LITY or
->>>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public =
-License for
->>>> + * more details.
->>>> + */
->>>> +
->>>> +#include <linux/mutex.h>
->>>> +#include <soc/rockchip/rockchip_dmc.h>
->>>> +
->>>> +static int num_wait;
->>>> +static int num_disable;
->>>> +static BLOCKING_NOTIFIER_HEAD(dmc_notifier_list);
->>>> +static DEFINE_MUTEX(dmc_en_lock);
->>>> +static DEFINE_MUTEX(dmc_sync_lock);
->>>> +
->>>> +/**
->>>> + * rockchip_dmc_enabled - Returns true if dmc freq is enabled, fa=
-lse otherwise.
->>>> + */
->>>> +bool rockchip_dmc_enabled(void)
->>>> +{
->>>> +    return num_disable <=3D 0 && num_wait <=3D 1;
->>>> +}
->>>> +
->>>> +/**
->>>> + * rockchip_dmc_enable - Enable dmc frequency scaling. Will only =
-enable
->>>> + * frequency scaling if there are 1 or fewer notifiers. Call to u=
-ndo
->>>> + * rockchip_dmc_disable.
->>>> + */
->>>> +void rockchip_dmc_enable(void)
->>>> +{
->>>> +    mutex_lock(&dmc_en_lock);
->>>> +    num_disable--;
->>>> +    WARN_ON(num_disable < 0);
->>>> +    if (rockchip_dmc_enabled())
->>>> +        dmc_event(DMC_ENABLE);
->>>> +    mutex_unlock(&dmc_en_lock);
->>>> +}
->>>> +
->>>> +/**
->>>> + * rockchip_dmc_disable - Disable dmc frequency scaling. Call whe=
-n something
->>>> + * cannot coincide with dmc frequency scaling.
->>>> + */
->>>> +void rockchip_dmc_disable(void)
->>>> +{
->>>> +    mutex_lock(&dmc_en_lock);
->>>> +    if (rockchip_dmc_enabled())
->>>> +        dmc_event(DMC_DISABLE);
->>>> +    num_disable++;
->>>> +    mutex_unlock(&dmc_en_lock);
->>>> +}
->>>> +
->>>> +void dmc_event(int event)
->>>> +{
->>>> +    mutex_lock(&dmc_sync_lock);
->>>> +    blocking_notifier_call_chain(&dmc_notifier_list, event, NULL)=
-;
->>>> +    mutex_unlock(&dmc_sync_lock);
->>>> +}
->>>> +
->>>> +/**
->>>> + * dmc_register_notifier - register a driver to dmc chain
->>>> + * @nb: notifier function to register
->>>> + */
->>>> +int dmc_register_notifier(struct notifier_block *nb)
->>>> +{
->>>> +    int ret;
->>>> +
->>>> +    if (!nb)
->>>> +        return -EINVAL;
->>>> +
->>>> +    ret =3D blocking_notifier_chain_register(&dmc_notifier_list, =
-nb);
->>>> +
->>>> +    return ret;
->>>> +}
->>>> +
->>>> +/**
->>>> + * dmc_unregister_notifier - unregister a driver from dmc chain
->>>> + * @nb: remove notifier function
->>>> + */
->>>> +int dmc_unregister_notifier(struct notifier_block *nb)
->>>> +{
->>>> +    int ret;
->>>> +
->>>> +    if (!nb)
->>>> +        return -EINVAL;
->>>> +
->>>> +    ret =3D blocking_notifier_chain_unregister(&dmc_notifier_list=
-, nb);
->>>> +
->>>> +    return ret;
->>>> +}
->>>> +
->>>> +/**
->>>> + * rockchip_dmc_get - Register the notifier block for the dmc cha=
-in.
->>>> + * @nb The dmc notifier block to register
->>>> + */
->>>> +int rockchip_dmc_get(struct notifier_block *nb)
->>>> +{
->>>> +    if (!nb)
->>>> +        return -EINVAL;
->>>> +
->>>> +    mutex_lock(&dmc_en_lock);
->>>> +
->>>> +    /*
->>>> +     * if have two notifier(enable two vop etc),
->>>> +     * need to disable dmc
->>>> +     */
->>>> +    if (num_wait =3D=3D 1 && num_disable <=3D 0)
->>>> +        dmc_event(DMC_DISABLE);
->>>> +    num_wait++;
->>>> +    dmc_register_notifier(nb);
->>>> +    mutex_unlock(&dmc_en_lock);
->>>> +
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +/**
->>>> + * rockchip_dmc_put - Remove the notifier block from the dmc chai=
-n.
->>>> + * @nb The dmc notifier block to unregister
->>>> + */
->>>> +int rockchip_dmc_put(struct notifier_block *nb)
->>>> +{
->>>> +    if (!nb)
->>>> +        return -EINVAL;
->>>> +
->>>> +    mutex_lock(&dmc_en_lock);
->>>> +    num_wait--;
->>>> +
->>>> +    /* if notifier from 2 back to 1, enable dmc again */
->>>> +    if (num_wait =3D=3D 1 && num_disable <=3D 0)
->>>> +        dmc_event(DMC_ENABLE);
->>>> +    dmc_unregister_notifier(nb);
->>>> +    mutex_unlock(&dmc_en_lock);
->>>> +
->>>> +    return 0;
->>>> +}
->>>> diff --git a/include/soc/rockchip/rockchip_dmc.h b/include/soc/roc=
-kchip/rockchip_dmc.h
->>>> new file mode 100644
->>>> index 0000000..3f69cbf
->>>> --- /dev/null
->>>> +++ b/include/soc/rockchip/rockchip_dmc.h
->>>> @@ -0,0 +1,45 @@
->>>> +/*
->>>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
->>>> + *
->>>> + * This program is free software; you can redistribute it and/or =
-modify it
->>>> + * under the terms and conditions of the GNU General Public Licen=
-se,
->>>> + * version 2, as published by the Free Software Foundation.
->>>> + *
->>>> + * This program is distributed in the hope it will be useful, but=
- WITHOUT
->>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABI=
-LITY or
->>>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public =
-License for
->>>> + * more details.
->>>> + */
->>>> +
->>>> +#ifndef __SOC_ROCKCHIP_DMC_H
->>>> +#define __SOC_ROCKCHIP_DMC_H
->>>> +
->>>> +#include <linux/notifier.h>
->>>> +
->>>> +#define DMC_ENABLE    0
->>>> +#define DMC_DISABLE    1
->>>> +#define DMCFREQ_ADJUST    2
->>>> +#define DMCFREQ_FINISH    3
->>>> +
->>>> +#if IS_ENABLED(CONFIG_ARM_ROCKCHIP_DMC_DEVFREQ)
->>>> +int rockchip_dmc_get(struct notifier_block *nb);
->>>> +int rockchip_dmc_put(struct notifier_block *nb);
->>>> +#else
->>>> +static inline int rockchip_dmc_get(struct notifier_block *nb)
->>>> +{
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static inline int rockchip_dmc_put(struct notifier_block *nb)
->>>> +{
->>>> +    return 0;
->>>> +}
->>>> +#endif
->>>> +
->>>> +void dmc_event(int event);
->>>> +int dmc_register_notifier(struct notifier_block *nb);
->>>> +int dmc_unregister_notifier(struct notifier_block *nb);
->>>> +void rockchip_dmc_enable(void);
->>>> +void rockchip_dmc_disable(void);
->>>> +bool rockchip_dmc_enabled(void);
->>>> +#endif
->>>>
->>> Regards,
->>> Chanwoo Choi
->>>
->>>
->>> _______________________________________________
->>> Linux-rockchip mailing list
->>> Linux-rockchip@lists.infradead.org
->>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
+Cc: Thierry Reding <a class=3D"moz-txt-link-rfc2396E" href=3D"mailto:thie=
+rry.reding@gmail.com">&lt;thierry.reding@gmail.com&gt;</a>
+Cc: Rob Herring <a class=3D"moz-txt-link-rfc2396E" href=3D"mailto:robh+dt=
+@kernel.org">&lt;robh+dt@kernel.org&gt;</a>
+Cc: Mark Rutland <a class=3D"moz-txt-link-rfc2396E" href=3D"mailto:mark.r=
+utland@arm.com">&lt;mark.rutland@arm.com&gt;</a>
 
---=20
-Lin Huang
+Signed-off-by: Mark Yao <a class=3D"moz-txt-link-rfc2396E" href=3D"mailto=
+:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>
+---
+ .../bindings/display/panel/simple-panel.txt        | 48 ++++++++++++++++=
+++++++
+ 1 file changed, 48 insertions(+)
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+Sorry, not going to happen. Read this for an explanation of why not:
+
+	<a class=3D"moz-txt-link-freetext" href=3D"https://sietch-tagr.blogspot.=
+de/2016/04/display-panels-are-not-special.html">https://sietch-tagr.blogs=
+pot.de/2016/04/display-panels-are-not-special.html</a>
+
+Thierry
+</pre>
+    </blockquote>
+    <br>
+    Hi Thierry<br>
+    <br>
+    The blog actually not persuade me why can't use display timing on
+    device tree.<br>
+    <br>
+    1, Binding panel as a simple string on device tree seems simple on
+    device tree, but it's complex on kernel code, and kernel code would
+    became bigger and bigger.<br>
+    <br>
+    2, Our customer always ask me, where is the display timing? They
+    only find a simple panel string on device tree,=C2=A0 need search the
+    kernel code to find the actually timing. They are used to find all
+    device info on device tree, but panel timing info is not,
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    this would confuse them. They don't want to know how code work, just
+    want a easier interface.<br>
+    <br>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    3, I think device tree not only can use for kernel, other module
+    also can use it. on our project, we use uboot + kernel, the uboot
+    support fdt, that function can parsing device tree. So if describe
+    the display timing on device tree, both uboot and kernel can share
+    same display timing, not need to describe twice, it would save work
+    and not easy to make mistake.<br>
+    <br>
+    4, For differentiation product, we face many different panel, every
+    once in a while, need to add a new panel, we can't convert all the
+    panel
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    , code the panel on kernel seems too bad, and the kernel image
+    became bigger and bigger.
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    <br>
+    =C2=A0<br>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    Generally, Our customer don't want to do any modify on kernel, they
+    just modify device tree to bring up their device. Describe the panel
+    timing on device tree, would make customer easy to use and reuse it.
+    <br>
+    <br>
+    Thanks.<br>
+    <pre class=3D"moz-signature" cols=3D"72">--=20
+=EF=BC=ADark Yao</pre>
+  </body>
+</html>
+
+
+--===============0134529363==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0134529363==--
