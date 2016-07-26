@@ -1,47 +1,90 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/4] iio: adc: rockchip_saradc: reset saradc controller before programming it
-Date: Tue, 26 Jul 2016 11:17:34 +0200
-Message-ID: <12149198.2BnIdx96cc@diego>
-References: <1469513510-1516-1-git-send-email-wxt@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/3] drm: introduce share plane
+Date: Tue, 26 Jul 2016 17:51:46 +0800
+Message-ID: <579732B2.80600@rock-chips.com>
+References: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
+ <20160726082635.GA31475@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469513510-1516-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: jic23@kernel.org, robh+dt@kernel.org, linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux@roeck-us.net, dianders@chromium.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160726082635.GA31475@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 26. Juli 2016, 14:11:47 schrieb Caesar Wang:
-> SARADC controller needs to be reset before programming it, otherwise
-> it will not function properly.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Jonathan Cameron <jic23@kernel.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: linux-iio@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> ---
-> 
->  .../bindings/iio/adc/rockchip-saradc.txt           |  5 +++++
->  drivers/iio/adc/Kconfig                            |  1 +
->  drivers/iio/adc/rockchip_saradc.c                  | 22
-> ++++++++++++++++++++++ 3 files changed, 28 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt index
-> bf99e2f..d2258be 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> @@ -13,6 +13,9 @@ Required properties:
->  - clocks: Must contain an entry for each entry in clock-names.
->  - clock-names: Shall be "saradc" for the converter-clock, and "apb_pclk"
-> for the peripheral clock.
-> +- resets: Must contain an entry for each entry in reset-names.
-> +	  See ../reset/reset.txt for details.
-> +- reset-names: Must include the name "saradc-apb".
-
-as pointed out by John, this should be an optional property, as it should work 
-with old devicetrees as well.
+T24gMjAxNuW5tDA35pyIMjbml6UgMTY6MjYsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gVHVl
+LCBKdWwgMjYsIDIwMTYgYXQgMDM6NDY6MzJQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4+ID5X
+aGF0IGlzIHNoYXJlIHBsYW5lOgo+PiA+UGxhbmUgaGFyZHdhcmUgb25seSBiZSB1c2VkIHdoZW4g
+dGhlIGRpc3BsYXkgc2Nhbm91dCBydW4gaW50byBwbGFuZSBhY3RpdmUKPj4gPnNjYW5vdXQsIHRo
+YXQgbWVhbnMgd2UgY2FuIHJldXNlIHRoZSBwbGFuZSBoYXJkd2FyZSByZXNvdXJjZXMgb24gcGxh
+bmUKPj4gPm5vbi1hY3RpdmUgc2Nhbm91dC4KPj4gPgo+PiA+ICAgICAgLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4gPiAgICAgfCAgc2Nhbm91dCAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKPj4gPiAgICAgfCAgICAgICAg
+IC0tLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAgICAgICAgICAgIHwKPj4gPiAgICAgfCAgICAg
+ICAgIHwgcGFyZW50IHBsYW5lICAgfCAgICAgICAgICAgICAgICAgICAgIHwKPj4gPiAgICAgfCAg
+ICAgICAgIHwgYWN0aXZlIHNjYW5vdXQgfCAgICAgICAgICAgICAgICAgICAgIHwKPj4gPiAgICAg
+fCAgICAgICAgIHwgICAgICAgICAgICAgICAgfCAgIC0tLS0tLS0tLS0tLS0tLS0tIHwKPj4gPiAg
+ICAgfCAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLSAgIHwgc2hhcmUgcGxhbmUgMSB8IHwKPj4g
+PiAgICAgfCAgLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgIHxhY3RpdmUgc2Nhbm91dCB8IHwK
+Pj4gPiAgICAgfCAgfCBzaGFyZSBwbGFuZSAwIHwgICAgICAgICAgIHwgICAgICAgICAgICAgICB8
+IHwKPj4gPiAgICAgfCAgfGFjdGl2ZSBzY2Fub3V0IHwgICAgICAgICAgIC0tLS0tLS0tLS0tLS0t
+LS0tIHwKPj4gPiAgICAgfCAgfCAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIHwKPj4gPiAgICAgfCAgLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwKPj4gPiAgICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0KPj4gPk9uZSBwbGFuZSBoYXJkd2FyZSBjYW4gYmUgcmV1c2UgZm9yIG11
+bHRpLXBsYW5lcywgd2UgYXNzdW1lIHRoZSBmaXJzdAo+PiA+cGxhbmUgaXMgcGFyZW50IHBsYW5l
+LCBvdGhlciBwbGFuZXMgc2hhcmUgdGhlIHJlc291cmNlIHdpdGggZmlyc3Qgb25lLgo+PiA+ICAg
+ICBwYXJlbnQgcGxhbmUKPj4gPiAgICAgICAgIHwtLS1zaGFyZSBwbGFuZSAwCj4+ID4gICAgICAg
+ICB8LS0tc2hhcmUgcGxhbmUgMQo+PiA+ICAgICAgICAgLi4uCj4+ID4KPj4gPkJlY2F1c2UgcmVz
+b3VyY2Ugc2hhcmUsIFRoZXJlIGFyZSBzb21lIGxpbWl0IG9uIHNoYXJlIHBsYW5lOiBvbmUgZ3Jv
+dXAKPj4gPm9mIHNoYXJlIHBsYW5lcyBuZWVkIHVzZSBzYW1lIHpwb3MsIGNhbiBub3Qgb3Zlcmxh
+cCwgZXRjLgo+PiA+Cj4+ID5XZSBhc3N1bWUgc2hhcmUgcGxhbmUgaXMgYSB1bml2ZXJzYWwgcGxh
+bmUgd2l0aCBzb21lIGxpbWl0IGZsYWdzLgo+PiA+cGVvcGxlIHdobyB1c2UgdGhlIHNoYXJlIHBs
+YW5lIG5lZWQga25vdyB0aGUgbGltaXQsIHNob3VsZCBjYWxsIHRoZSBpb2N0bAo+PiA+RFJNX0NM
+SUVOVF9DQVBfU0hBUkVfUExBTkVTLCBhbmQganVkZ2UgdGhlIHBsYW5lcyBsaW1pdCBiZWZvcmUg
+dXNlIGl0Lgo+PiA+Cj4+ID5BIGdyb3VwIG9mIHNoYXJlIHBsYW5lcyB3b3VsZCBoYXMgc2FtZSBz
+aGFyZCBpZCwgc28gdXNlcnNwYWNlIGNhbgo+PiA+Z3JvdXAgdGhlbSwganVkZ2Ugc2hhcmUgcGxh
+bmUncyBsaW1pdC4KPj4gPgo+PiA+U2lnbmVkLW9mZi1ieTogTWFyayBZYW88bWFyay55YW9Acm9j
+ay1jaGlwcy5jb20+Cj4gVGhpcyBzZWVtcyBleHRyZW1lbHkgaHcgc3BlY2lmaWMsIHdoeSBleGFj
+dGx5IGRvIHdlIG5lZWQgdG8gYWRkIGEgbmV3Cj4gcmVsYXRpb25zaGlwIG9uIHBsYW5lcz8gV2hh
+dCBkb2VzIHRoaXMgYnV5IG9uX290aGVyXyAgZHJpdmVycz8KWWVzLCBub3cgaXQncyBwbGFuZSBo
+YXJkd2FyZSBzcGVjaWZpYywgbWF5YmUgb3RoZXJzIGhhdmUgc2FtZSBkZXNpZ24sIApiZWNhdXNl
+IHRoaXMgZGVzaWduCndvdWxkIHNhdmUgaGFyZHdhcmUgcmVzb3VyY2UgdG8gc3VwcG9ydCBtdWx0
+aS1wbGFuZXMuCgo+IEltbyB0aGlzIHNob3VsZCBiZSBzb2x2ZWQgYnkgdmlydHVhbGl6aW5nIHBs
+YW5lcyBpbiB0aGUgZHJpdmVyLiBTdGFydCBvdXQKPiBieSBhc3NpZ25pbmcgcGxhbmVzLCBhbmQg
+aWYgeW91IGNhbiByZXVzZSBvbmUgZm9yIHNoYXJpbmcgdGhlbiBkbyB0aGF0LAo+IG90aGVyd2lz
+ZSBhbGxvY2F0ZSBhIG5ldyBvbmUuIElmIHRoZXJlJ3Mgbm90IGVub3VnaCByZWFsIHBsYW5lcywg
+ZmFpbCB0aGUKPiBhdG9taWNfY2hlY2suCkkgdGhpbmsgdGhhdCBpcyB0b28gY29tcGxleCwgdHJ5
+aW5nIHdpdGggYXRvbWljX2NoZWNrIEkgdGhpbmsgaXQncyBub3QgYSAKZ29vZCBpZGVhLCB1c2Vy
+c3BhY2UgdHJ5IHBsYW5lcyBldmVyeSBjb21taXQgd291bGQgYmUgYSBoZWF2eSB3b3JrLgoKVXNl
+cnNwYWNlIG5lZWQgIGtub3cgYWxsIHBsYW5lcyByZWxhdGlvbnNoaXAsIGdyb3VwIHRoZW0sIHNv
+bWUgZGlzcGxheSAKd2luZG93cyBjYW4gcHV0IHRvZ2V0aGVyLCBzb21lIGNhbid0LAp0b28gbWFu
+eSBwZXJtdXRhdGlvbiBhbmQgY29tYmluYXRpb24sIEkgdGhpbmsgY2FuJ3QganVzdCBjb21taXQg
+d2l0aCB0cnkuCgpleGFtcGxlOgp1c2Vyc3BhY2U6CndpbmRvd3MgMTogcG9zKDAsIDApICBzaXpl
+KDEwMjQsIDEwMCkKd2luZG93cyAyOiBwb3MoMCwgNTApIHNpemUoNDAwLCA1MDApCndpbmRvd3Mg
+MzogcG9zKDAsIDIwMCkgc2l6ZSg4MDAsIDMwMCkKCmRybSBwbGFuZSByZXNvdXJjZXM6CnBsYW5l
+IDAgYW5kIHBsYW5lIDEgaXMgYSBncm91cCBvZiBzaGFyZSBwbGFuZXMKcGxhbmUgMiBpcyBjb21t
+b24gcGxhbmUuCgppZiB1c2Vyc3BhY2Uga25vdyB0aGUgcmVsYXRpb25zaGlwLCB0aGVuIHRoZXkg
+Y2FuIGFzc2lnbiB3aW5kb3dzIDEgYW5kIAp3aW5kb3cgMyB0byBwbGFuZTAgYW5kIHBsYW5lIDEu
+IHRoYXQgd291bGQgYmUgc3VjY2Vzcy4KYnV0IGlmIHRoZXkgZG9uJ3Qga25vdywgYXNzaWduIHdp
+bmRvdyAxLzIgdG8gcGxhbmUgMC8xLCBmYWlsZWQsIGFzc2lnbiAKd2luZG93IDIvMyB0byBwbGFu
+ZSAwLzEsIGZhaWxlZC4gbW9zdGx5IHdvdWxkIGdldCBmYWlsZWQuCgo+Cj4gVGhpcyBzZWVtcyB3
+YXkgdG8gaHcgc3BlY2lmaWMgdG8gYmUgdXNlZnVsIGFzIGEgZ2VuZXJpYyBjb25jZXB0LgoKV2Ug
+d2FudCB0byBjaGFuZ2UgdGhlIGRybV9tb2RlX2dldHBsYW5lX3JlcyBiZWhhdmlvciwgaWYgdXNl
+cnNwYWNlIGNhbGwgCkRSTV9DTElFTlRfQ0FQX1NIQVJFX1BMQU5FUywgdGhhdCBtZWFucyB1c2Vy
+c3BhY2Uga25vdyBoYXJkd2FyZSBsaW1pdCwKdGhlbiB3ZSByZXR1cm4gZnVsbCBwbGFuZXMgc3Vw
+cG9ydCB0byB1c2Vyc3BhY2UsIGlmIGRvbid0LCBqdXN0IG1ha2UgYSAKZ3JvdXAgb2Ygc2hhcmUg
+cGxhbmVzIGFzIG9uZSBwbGFuZS4KdGhpcyB3b3JrIGlzIG9uIGdlbmVyaWMgcGxhY2UuCgo+IC1E
+YW5pZWwKPgo+CgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
