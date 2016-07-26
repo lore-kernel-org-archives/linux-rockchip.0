@@ -1,203 +1,438 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 1/3] drm: introduce share plane
-Date: Tue, 26 Jul 2016 15:46:32 +0800
-Message-ID: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [PATCH 2/3] drm/rockchip: vop: support multi area plane
+Date: Tue, 26 Jul 2016 15:46:33 +0800
+Message-ID: <1469519194-23133-2-git-send-email-mark.yao@rock-chips.com>
+References: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-V2hhdCBpcyBzaGFyZSBwbGFuZToKUGxhbmUgaGFyZHdhcmUgb25seSBiZSB1c2VkIHdoZW4gdGhl
-IGRpc3BsYXkgc2Nhbm91dCBydW4gaW50byBwbGFuZSBhY3RpdmUKc2Nhbm91dCwgdGhhdCBtZWFu
-cyB3ZSBjYW4gcmV1c2UgdGhlIHBsYW5lIGhhcmR3YXJlIHJlc291cmNlcyBvbiBwbGFuZQpub24t
-YWN0aXZlIHNjYW5vdXQuCgogICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tCiAgICB8ICBzY2Fub3V0ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfAogICAgfCAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAg
-ICAgICAgICAgIHwKICAgIHwgICAgICAgICB8IHBhcmVudCBwbGFuZSAgIHwgICAgICAgICAgICAg
-ICAgICAgICB8CiAgICB8ICAgICAgICAgfCBhY3RpdmUgc2Nhbm91dCB8ICAgICAgICAgICAgICAg
-ICAgICAgfAogICAgfCAgICAgICAgIHwgICAgICAgICAgICAgICAgfCAgIC0tLS0tLS0tLS0tLS0t
-LS0tIHwKICAgIHwgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0gICB8IHNoYXJlIHBsYW5lIDEg
-fCB8CiAgICB8ICAtLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAgfGFjdGl2ZSBzY2Fub3V0IHwg
-fAogICAgfCAgfCBzaGFyZSBwbGFuZSAwIHwgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IHwK
-ICAgIHwgIHxhY3RpdmUgc2Nhbm91dCB8ICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLSB8CiAg
-ICB8ICB8ICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAogICAg
-fCAgLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKICAgIC0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCk9uZSBwbGFu
-ZSBoYXJkd2FyZSBjYW4gYmUgcmV1c2UgZm9yIG11bHRpLXBsYW5lcywgd2UgYXNzdW1lIHRoZSBm
-aXJzdApwbGFuZSBpcyBwYXJlbnQgcGxhbmUsIG90aGVyIHBsYW5lcyBzaGFyZSB0aGUgcmVzb3Vy
-Y2Ugd2l0aCBmaXJzdCBvbmUuCiAgICBwYXJlbnQgcGxhbmUKICAgICAgICB8LS0tc2hhcmUgcGxh
-bmUgMAogICAgICAgIHwtLS1zaGFyZSBwbGFuZSAxCiAgICAgICAgLi4uCgpCZWNhdXNlIHJlc291
-cmNlIHNoYXJlLCBUaGVyZSBhcmUgc29tZSBsaW1pdCBvbiBzaGFyZSBwbGFuZTogb25lIGdyb3Vw
-Cm9mIHNoYXJlIHBsYW5lcyBuZWVkIHVzZSBzYW1lIHpwb3MsIGNhbiBub3Qgb3ZlcmxhcCwgZXRj
-LgoKV2UgYXNzdW1lIHNoYXJlIHBsYW5lIGlzIGEgdW5pdmVyc2FsIHBsYW5lIHdpdGggc29tZSBs
-aW1pdCBmbGFncy4KcGVvcGxlIHdobyB1c2UgdGhlIHNoYXJlIHBsYW5lIG5lZWQga25vdyB0aGUg
-bGltaXQsIHNob3VsZCBjYWxsIHRoZSBpb2N0bApEUk1fQ0xJRU5UX0NBUF9TSEFSRV9QTEFORVMs
-IGFuZCBqdWRnZSB0aGUgcGxhbmVzIGxpbWl0IGJlZm9yZSB1c2UgaXQuCgpBIGdyb3VwIG9mIHNo
-YXJlIHBsYW5lcyB3b3VsZCBoYXMgc2FtZSBzaGFyZCBpZCwgc28gdXNlcnNwYWNlIGNhbgpncm91
-cCB0aGVtLCBqdWRnZSBzaGFyZSBwbGFuZSdzIGxpbWl0LgoKU2lnbmVkLW9mZi1ieTogTWFyayBZ
-YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fY3J0
-Yy5jICB8IDExMCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwog
-ZHJpdmVycy9ncHUvZHJtL2RybV9pb2N0bC5jIHwgICA1ICsrCiBpbmNsdWRlL2RybS9kcm1QLmgg
-ICAgICAgICAgfCAgIDUgKysKIGluY2x1ZGUvZHJtL2RybV9jcnRjLmggICAgICB8ICAxNCArKysr
-KysKIGluY2x1ZGUvdWFwaS9kcm0vZHJtLmggICAgICB8ICAgNyArKysKIDUgZmlsZXMgY2hhbmdl
-ZCwgMTQxIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2Ny
-dGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fY3J0Yy5jCmluZGV4IDlkM2Y4MGUuLjNhODI1N2Ug
-MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fY3J0Yy5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9kcm1fY3J0Yy5jCkBAIC0xNDI2LDYgKzE0MjYsOTYgQEAgaW50IGRybV9wbGFuZV9pbml0
-KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogRVhQT1JU
-X1NZTUJPTChkcm1fcGxhbmVfaW5pdCk7CiAKIC8qKgorICogZHJtX3NoYXJlX3BsYW5lX2luaXQg
-LSBJbml0aWFsaXplIGEgc2hhcmUgcGxhbmUKKyAqIEBkZXY6IERSTSBkZXZpY2UKKyAqIEBwbGFu
-ZTogcGxhbmUgb2JqZWN0IHRvIGluaXQKKyAqIEBwYXJlbnQ6IHRoaXMgcGxhbmUgc2hhcmUgc29t
-ZSByZXNvdXJjZXMgd2l0aCBwYXJlbnQgcGxhbmUuCisgKiBAcG9zc2libGVfY3J0Y3M6IGJpdG1h
-c2sgb2YgcG9zc2libGUgQ1JUQ3MKKyAqIEBmdW5jczogY2FsbGJhY2tzIGZvciB0aGUgbmV3IHBs
-YW5lCisgKiBAZm9ybWF0czogYXJyYXkgb2Ygc3VwcG9ydGVkIGZvcm1hdHMgKCVEUk1fRk9STUFU
-XyopCisgKiBAZm9ybWF0X2NvdW50OiBudW1iZXIgb2YgZWxlbWVudHMgaW4gQGZvcm1hdHMKKyAq
-IEB0eXBlOiB0eXBlIG9mIHBsYW5lIChvdmVybGF5LCBwcmltYXJ5LCBjdXJzb3IpCisgKgorICog
-V2l0aCB0aGlzIEFQSSwgdGhlIHBsYW5lIGNhbiBzaGFyZSBoYXJkd2FyZSByZXNvdXJjZXMgd2l0
-aCBvdGhlciBwbGFuZXMuCisgKgorICogICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQorICogICB8ICBzY2Fub3V0ICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICB8ICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICB8ICAgICAgICAgfCAgcGFyZW50IHBsYW5lICB8ICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICB8ICAgICAgICAgfCBhY3RpdmUgc2Nhbm91dCB8ICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICB8ICAgICAgICAgfCAgICAgICAgICAgICAgICB8ICAg
-LS0tLS0tLS0tLS0tLS0tLS0gfAorICogICB8ICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tICAg
-fCBzaGFyZSBwbGFuZSAxIHwgfAorICogICB8ICAtLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAg
-fGFjdGl2ZSBzY2Fub3V0IHwgfAorICogICB8ICB8IHNoYXJlIHBsYW5lIDAgfCAgICAgICAgICAg
-fCAgICAgICAgICAgICAgIHwgfAorICogICB8ICB8YWN0aXZlIHNjYW5vdXQgfCAgICAgICAgICAg
-LS0tLS0tLS0tLS0tLS0tLS0gfAorICogICB8ICB8ICAgICAgICAgICAgICAgfCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICB8ICAtLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfAorICogICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQorICoKKyAqICAgIHBhcmVudCBwbGFuZQorICogICAgICAgIHwt
-LS1zaGFyZSBwbGFuZSAwCisgKiAgICAgICAgfC0tLXNoYXJlIHBsYW5lIDEKKyAqICAgICAgICAu
-Li4KKyAqCisgKiBUaGUgcGxhbmUgaGFyZHdhcmUgaXMgdXNlZCB3aGVuIHRoZSBkaXNwbGF5IHNj
-YW5vdXQgcnVuIGludG8gcGxhbmUgYWN0aXZlCisgKiBzY2Fub3V0LCB0aGF0IG1lYW5zIHdlIGNh
-biByZXVzZSB0aGUgcGxhbmUgaGFyZHdhcmUgcmVzb3VyY2VzIG9uIHBsYW5lCisgKiBub24tYWN0
-aXZlIHNjYW5vdXQuCisgKgorICogQmVjYXVzZSByZXNvdXJjZSBzaGFyZSwgVGhlcmUgYXJlIHNv
-bWUgbGltaXQgb24gc2hhcmUgcGxhbmU6IG9uZSBncm91cAorICogb2Ygc2hhcmUgcGxhbmVzIG5l
-ZWQgdXNlIHNhbWUgenBvcywgY2FuJ3Qgbm90IG92ZXJsYXAsIGV0Yy4KKyAqCisgKiBIZXJlIGFz
-c3VtZSBzaGFyZSBwbGFuZSBpcyBhIHVuaXZlcnNhbCBwbGFuZSB3aXRoIHNvbWUgbGltaXQgZmxh
-Z3MuCisgKiBwZW9wbGUgd2hvIHVzZSB0aGUgc2hhcmUgcGxhbmUgbmVlZCBrbm93IHRoZSBsaW1p
-dCwgc2hvdWxkIGNhbGwgdGhlIGlvY3RsCisgKiBEUk1fQ0xJRU5UX0NBUF9TSEFSRV9QTEFORVMs
-IGFuZCBqdWRnZSB0aGUgcGxhbmVzIGxpbWl0IGJlZm9yZSB1c2UgaXQuCisgKgorICogUmV0dXJu
-czoKKyAqIFplcm8gb24gc3VjY2VzcywgZXJyb3IgY29kZSBvbiBmYWlsdXJlLgorICovCisKK2lu
-dCBkcm1fc2hhcmVfcGxhbmVfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBzdHJ1Y3QgZHJt
-X3BsYW5lICpwbGFuZSwKKwkJCSBzdHJ1Y3QgZHJtX3BsYW5lICpwYXJlbnQsCisJCQkgdW5zaWdu
-ZWQgbG9uZyBwb3NzaWJsZV9jcnRjcywKKwkJCSBjb25zdCBzdHJ1Y3QgZHJtX3BsYW5lX2Z1bmNz
-ICpmdW5jcywKKwkJCSBjb25zdCB1aW50MzJfdCAqZm9ybWF0cywgdW5zaWduZWQgaW50IGZvcm1h
-dF9jb3VudCwKKwkJCSBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUpCit7CisJc3RydWN0IGRybV9t
-b2RlX2NvbmZpZyAqY29uZmlnID0gJmRldi0+bW9kZV9jb25maWc7CisJaW50IHJldDsKKwlpbnQg
-c2hhcmVfaWQ7CisKKwkvKgorCSAqIFRPRE86IG9ubHkgdmVyaWZpZWQgb24gQVRPTUlDIGRybSBk
-cml2ZXIuCisJICovCisJaWYgKCFkcm1fY29yZV9jaGVja19mZWF0dXJlKGRldiwgRFJJVkVSX0FU
-T01JQykpCisJCXJldHVybiAtRUlOVkFMOworCisJcmV0ID0gZHJtX3VuaXZlcnNhbF9wbGFuZV9p
-bml0KGRldiwgcGxhbmUsIHBvc3NpYmxlX2NydGNzLCBmdW5jcywKKwkJCQkgICAgICAgZm9ybWF0
-cywgZm9ybWF0X2NvdW50LCB0eXBlLCBOVUxMKTsKKwlpZiAocmV0KQorCQlyZXR1cm4gcmV0Owor
-CisJaWYgKHBhcmVudCkgeworCQkvKgorCQkgKiBDYW4ndCBzdXBwb3J0IG1vcmUgdGhhbiB0d28g
-bGV2ZWwgcGxhbmUgc2hhcmUuCisJCSAqLworCQlXQVJOX09OKHBhcmVudC0+cGFyZW50KTsKKwkJ
-c2hhcmVfaWQgPSBwYXJlbnQtPmJhc2UuaWQ7CisJCXBsYW5lLT5wYXJlbnQgPSBwYXJlbnQ7CisK
-KwkJY29uZmlnLT5udW1fc2hhcmVfcGxhbmUrKzsKKwkJaWYgKHBsYW5lLT50eXBlID09IERSTV9Q
-TEFORV9UWVBFX09WRVJMQVkpCisJCQljb25maWctPm51bV9zaGFyZV9vdmVybGF5X3BsYW5lKys7
-CisJfSBlbHNlIHsKKwkJc2hhcmVfaWQgPSBwbGFuZS0+YmFzZS5pZDsKKwl9CisKKwlkcm1fb2Jq
-ZWN0X2F0dGFjaF9wcm9wZXJ0eSgmcGxhbmUtPmJhc2UsCisJCQkJICAgY29uZmlnLT5wcm9wX3No
-YXJlX2lkLCBzaGFyZV9pZCk7CisJcmV0dXJuIDA7Cit9CitFWFBPUlRfU1lNQk9MKGRybV9zaGFy
-ZV9wbGFuZV9pbml0KTsKKworLyoqCiAgKiBkcm1fcGxhbmVfY2xlYW51cCAtIENsZWFuIHVwIHRo
-ZSBjb3JlIHBsYW5lIHVzYWdlCiAgKiBAcGxhbmU6IHBsYW5lIHRvIGNsZWFudXAKICAqCkBAIC0x
-NDUyLDYgKzE1NDIsMTEgQEAgdm9pZCBkcm1fcGxhbmVfY2xlYW51cChzdHJ1Y3QgZHJtX3BsYW5l
-ICpwbGFuZSkKIAlkZXYtPm1vZGVfY29uZmlnLm51bV90b3RhbF9wbGFuZS0tOwogCWlmIChwbGFu
-ZS0+dHlwZSA9PSBEUk1fUExBTkVfVFlQRV9PVkVSTEFZKQogCQlkZXYtPm1vZGVfY29uZmlnLm51
-bV9vdmVybGF5X3BsYW5lLS07CisJaWYgKHBsYW5lLT5wYXJlbnQpIHsKKwkJZGV2LT5tb2RlX2Nv
-bmZpZy5udW1fc2hhcmVfcGxhbmUtLTsKKwkJaWYgKHBsYW5lLT50eXBlID09IERSTV9QTEFORV9U
-WVBFX09WRVJMQVkpCisJCQlkZXYtPm1vZGVfY29uZmlnLm51bV9zaGFyZV9vdmVybGF5X3BsYW5l
-LS07CisJfQogCWRybV9tb2Rlc2V0X3VubG9ja19hbGwoZGV2KTsKIAogCVdBUk5fT04ocGxhbmUt
-PnN0YXRlICYmICFwbGFuZS0+ZnVuY3MtPmF0b21pY19kZXN0cm95X3N0YXRlKTsKQEAgLTE2MDAs
-NiArMTY5NSwxMyBAQCBzdGF0aWMgaW50IGRybV9tb2RlX2NyZWF0ZV9zdGFuZGFyZF9wcm9wZXJ0
-aWVzKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCiAJCXJldHVybiAtRU5PTUVNOwogCWRldi0+bW9k
-ZV9jb25maWcucGxhbmVfdHlwZV9wcm9wZXJ0eSA9IHByb3A7CiAKKwlwcm9wID0gZHJtX3Byb3Bl
-cnR5X2NyZWF0ZV9yYW5nZShkZXYsIERSTV9NT0RFX1BST1BfSU1NVVRBQkxFLAorCQkJCQkgIlNI
-QVJFX0lEIiwgMCwgVUlOVF9NQVgpOworCWlmICghcHJvcCkKKwkJcmV0dXJuIC1FTk9NRU07CisK
-KwlkZXYtPm1vZGVfY29uZmlnLnByb3Bfc2hhcmVfaWQgPSBwcm9wOworCiAJcHJvcCA9IGRybV9w
-cm9wZXJ0eV9jcmVhdGVfcmFuZ2UoZGV2LCBEUk1fTU9ERV9QUk9QX0FUT01JQywKIAkJCSJTUkNf
-WCIsIDAsIFVJTlRfTUFYKTsKIAlpZiAoIXByb3ApCkBAIC0yNDMxLDYgKzI1MzMsMTIgQEAgaW50
-IGRybV9tb2RlX2dldHBsYW5lX3JlcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB2b2lkICpkYXRh
-LAogCQludW1fcGxhbmVzID0gY29uZmlnLT5udW1fdG90YWxfcGxhbmU7CiAJZWxzZQogCQludW1f
-cGxhbmVzID0gY29uZmlnLT5udW1fb3ZlcmxheV9wbGFuZTsKKwlpZiAoIWZpbGVfcHJpdi0+c2hh
-cmVfcGxhbmVzKSB7CisJCWlmIChmaWxlX3ByaXYtPnVuaXZlcnNhbF9wbGFuZXMpCisJCQludW1f
-cGxhbmVzIC09IGNvbmZpZy0+bnVtX3NoYXJlX3BsYW5lOworCQllbHNlCisJCQludW1fcGxhbmVz
-IC09IGNvbmZpZy0+bnVtX3NoYXJlX292ZXJsYXlfcGxhbmU7CisJfQogCiAJLyoKIAkgKiBUaGlz
-IGlvY3RsIGlzIGNhbGxlZCB0d2ljZSwgb25jZSB0byBkZXRlcm1pbmUgaG93IG11Y2ggc3BhY2Ug
-aXMKQEAgLTI0NDksNiArMjU1Nyw4IEBAIGludCBkcm1fbW9kZV9nZXRwbGFuZV9yZXMoc3RydWN0
-IGRybV9kZXZpY2UgKmRldiwgdm9pZCAqZGF0YSwKIAkJCWlmIChwbGFuZS0+dHlwZSAhPSBEUk1f
-UExBTkVfVFlQRV9PVkVSTEFZICYmCiAJCQkgICAgIWZpbGVfcHJpdi0+dW5pdmVyc2FsX3BsYW5l
-cykKIAkJCQljb250aW51ZTsKKwkJCWlmIChwbGFuZS0+cGFyZW50ICYmICFmaWxlX3ByaXYtPnNo
-YXJlX3BsYW5lcykKKwkJCQljb250aW51ZTsKIAogCQkJaWYgKHB1dF91c2VyKHBsYW5lLT5iYXNl
-LmlkLCBwbGFuZV9wdHIgKyBjb3BpZWQpKQogCQkJCXJldHVybiAtRUZBVUxUOwpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL2RybV9pb2N0bC5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9pb2N0
-bC5jCmluZGV4IDMzYWY0YTUuLjhiMDEyMGQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9k
-cm1faW9jdGwuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2lvY3RsLmMKQEAgLTI5NCw2ICsy
-OTQsMTEgQEAgZHJtX3NldGNsaWVudGNhcChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB2b2lkICpk
-YXRhLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdikKIAkJCXJldHVybiAtRUlOVkFMOwogCQlm
-aWxlX3ByaXYtPnVuaXZlcnNhbF9wbGFuZXMgPSByZXEtPnZhbHVlOwogCQlicmVhazsKKwljYXNl
-IERSTV9DTElFTlRfQ0FQX1NIQVJFX1BMQU5FUzoKKwkJaWYgKHJlcS0+dmFsdWUgPiAxKQorCQkJ
-cmV0dXJuIC1FSU5WQUw7CisJCWZpbGVfcHJpdi0+c2hhcmVfcGxhbmVzID0gcmVxLT52YWx1ZTsK
-KwkJYnJlYWs7CiAJY2FzZSBEUk1fQ0xJRU5UX0NBUF9BVE9NSUM6CiAJCWlmICghZHJtX2NvcmVf
-Y2hlY2tfZmVhdHVyZShkZXYsIERSSVZFUl9BVE9NSUMpKQogCQkJcmV0dXJuIC1FSU5WQUw7CmRp
-ZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1QLmggYi9pbmNsdWRlL2RybS9kcm1QLmgKaW5kZXgg
-YzJmZTJjZi4uMjg1ZDE3NyAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0vZHJtUC5oCisrKyBiL2lu
-Y2x1ZGUvZHJtL2RybVAuaApAQCAtMzE0LDYgKzMxNCwxMSBAQCBzdHJ1Y3QgZHJtX2ZpbGUgewog
-CS8qIHRydWUgaWYgY2xpZW50IHVuZGVyc3RhbmRzIGF0b21pYyBwcm9wZXJ0aWVzICovCiAJdW5z
-aWduZWQgYXRvbWljOjE7CiAJLyoKKwkgKiB0cnVlIGlmIGNsaWVudCB1bmRlcnN0YW5kcyBzaGFy
-ZSBwbGFuZXMgYW5kCisJICogaGFyZHdhcmUgc3VwcG9ydCBzaGFyZSBwbGFuZXMuCisJICovCisJ
-dW5zaWduZWQgc2hhcmVfcGxhbmVzOjE7CisJLyoKIAkgKiBUaGlzIGNsaWVudCBpcyB0aGUgY3Jl
-YXRvciBvZiBAbWFzdGVyLgogCSAqIFByb3RlY3RlZCBieSBzdHJ1Y3QgZHJtX2RldmljZTo6bWFz
-dGVyX211dGV4LgogCSAqLwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2NydGMuaCBiL2lu
-Y2x1ZGUvZHJtL2RybV9jcnRjLmgKaW5kZXggOWU2YWI0YS4uYTNmZTliMCAxMDA2NDQKLS0tIGEv
-aW5jbHVkZS9kcm0vZHJtX2NydGMuaAorKysgYi9pbmNsdWRlL2RybS9kcm1fY3J0Yy5oCkBAIC0x
-NjYwLDYgKzE2NjAsNyBAQCBlbnVtIGRybV9wbGFuZV90eXBlIHsKIC8qKgogICogc3RydWN0IGRy
-bV9wbGFuZSAtIGNlbnRyYWwgRFJNIHBsYW5lIGNvbnRyb2wgc3RydWN0dXJlCiAgKiBAZGV2OiBE
-Uk0gZGV2aWNlIHRoaXMgcGxhbmUgYmVsb25ncyB0bworICogQHBhcmVudDogdGhpcyBwbGFuZSBz
-aGFyZSBzb21lIHJlc291cmNlcyB3aXRoIHBhcmVudCBwbGFuZS4KICAqIEBoZWFkOiBmb3IgbGlz
-dCBtYW5hZ2VtZW50CiAgKiBAbmFtZTogaHVtYW4gcmVhZGFibGUgbmFtZSwgY2FuIGJlIG92ZXJ3
-cml0dGVuIGJ5IHRoZSBkcml2ZXIKICAqIEBiYXNlOiBiYXNlIG1vZGUgb2JqZWN0CkBAIC0xNjc5
-LDYgKzE2ODAsNyBAQCBlbnVtIGRybV9wbGFuZV90eXBlIHsKICAqLwogc3RydWN0IGRybV9wbGFu
-ZSB7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRldjsKKwlzdHJ1Y3QgZHJtX3BsYW5lICpwYXJlbnQ7
-CiAJc3RydWN0IGxpc3RfaGVhZCBoZWFkOwogCiAJY2hhciAqbmFtZTsKQEAgLTI0MDgsNiArMjQx
-MCw4IEBAIHN0cnVjdCBkcm1fbW9kZV9jb25maWcgewogCSAqLwogCWludCBudW1fb3ZlcmxheV9w
-bGFuZTsKIAlpbnQgbnVtX3RvdGFsX3BsYW5lOworCWludCBudW1fc2hhcmVfcGxhbmU7CisJaW50
-IG51bV9zaGFyZV9vdmVybGF5X3BsYW5lOwogCXN0cnVjdCBsaXN0X2hlYWQgcGxhbmVfbGlzdDsK
-IAogCWludCBudW1fY3J0YzsKQEAgLTI0MjgsNiArMjQzMiw5IEBAIHN0cnVjdCBkcm1fbW9kZV9j
-b25maWcgewogCiAJc3RydWN0IG11dGV4IGJsb2JfbG9jazsKIAorCS8qIHBvaW50ZXJzIHRvIHNo
-YXJlIHByb3BlcnRpZXMgKi8KKwlzdHJ1Y3QgZHJtX3Byb3BlcnR5ICpwcm9wX3NoYXJlX2lkOwor
-CiAJLyogcG9pbnRlcnMgdG8gc3RhbmRhcmQgcHJvcGVydGllcyAqLwogCXN0cnVjdCBsaXN0X2hl
-YWQgcHJvcGVydHlfYmxvYl9saXN0OwogCXN0cnVjdCBkcm1fcHJvcGVydHkgKmVkaWRfcHJvcGVy
-dHk7CkBAIC0yNjM2LDYgKzI2NDMsMTMgQEAgZXh0ZXJuIGludCBkcm1fcGxhbmVfaW5pdChzdHJ1
-Y3QgZHJtX2RldmljZSAqZGV2LAogCQkJICBjb25zdCBzdHJ1Y3QgZHJtX3BsYW5lX2Z1bmNzICpm
-dW5jcywKIAkJCSAgY29uc3QgdWludDMyX3QgKmZvcm1hdHMsIHVuc2lnbmVkIGludCBmb3JtYXRf
-Y291bnQsCiAJCQkgIGJvb2wgaXNfcHJpbWFyeSk7CitleHRlcm4gaW50IGRybV9zaGFyZV9wbGFu
-ZV9pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAor
-CQkJCXN0cnVjdCBkcm1fcGxhbmUgKnBhcmVudCwKKwkJCQl1bnNpZ25lZCBsb25nIHBvc3NpYmxl
-X2NydGNzLAorCQkJCWNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfZnVuY3MgKmZ1bmNzLAorCQkJCWNv
-bnN0IHVpbnQzMl90ICpmb3JtYXRzLAorCQkJCXVuc2lnbmVkIGludCBmb3JtYXRfY291bnQsCisJ
-CQkJZW51bSBkcm1fcGxhbmVfdHlwZSB0eXBlKTsKIGV4dGVybiB2b2lkIGRybV9wbGFuZV9jbGVh
-bnVwKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKTsKIAogLyoqCmRpZmYgLS1naXQgYS9pbmNsdWRl
-L3VhcGkvZHJtL2RybS5oIGIvaW5jbHVkZS91YXBpL2RybS9kcm0uaAppbmRleCA0NTI2NzVmLi4w
-MTk3OWE0IDEwMDY0NAotLS0gYS9pbmNsdWRlL3VhcGkvZHJtL2RybS5oCisrKyBiL2luY2x1ZGUv
-dWFwaS9kcm0vZHJtLmgKQEAgLTY3Nyw2ICs2NzcsMTMgQEAgc3RydWN0IGRybV9nZXRfY2FwIHsK
-ICAqLwogI2RlZmluZSBEUk1fQ0xJRU5UX0NBUF9BVE9NSUMJMwogCisvKioKKyAqIERSTV9DTElF
-TlRfQ0FQX1NIQVJFX1BMQU5FUworICoKKyAqIElmIHNldCB0byAxLCB0aGUgRFJNIGNvcmUgd2ls
-bCBleHBvc2Ugc2hhcmUgcGxhbmVzIHRvIHVzZXJzcGFjZS4KKyAqLworI2RlZmluZSBEUk1fQ0xJ
-RU5UX0NBUF9TSEFSRV9QTEFORVMJNAorCiAvKiogRFJNX0lPQ1RMX1NFVF9DTElFTlRfQ0FQIGlv
-Y3RsIGFyZ3VtZW50IHR5cGUgKi8KIHN0cnVjdCBkcm1fc2V0X2NsaWVudF9jYXAgewogCV9fdTY0
-IGNhcGFiaWxpdHk7Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+The series vop of VOP_FULL framework support area plane, such as
+RK3288 and RK3399, one group of area planes share same hardware,
+reuse the hardware on different scanout time, this design is
+useful to support mulit planes with low hardware consume.
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 191 +++++++++++++++++-----------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   4 +-
+ 2 files changed, 123 insertions(+), 72 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 91305eb..bd084c0 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -41,17 +41,19 @@
+ #define __REG_SET_NORMAL(x, off, mask, shift, v) \
+ 		vop_mask_write(x, off, (mask) << shift, (v) << shift)
+ 
+-#define REG_SET(x, base, reg, v, mode) \
+-		__REG_SET_##mode(x, base + reg.offset, reg.mask, reg.shift, v)
+-#define REG_SET_MASK(x, base, reg, mask, v, mode) \
+-		__REG_SET_##mode(x, base + reg.offset, mask, reg.shift, v)
++#define REG_SET(x, off, reg, v, mode) \
++		__REG_SET_##mode(x, off + reg.offset, \
++				 reg.mask, reg.shift, v)
++#define REG_SET_MASK(x, off, reg, mask, v, mode) \
++		__REG_SET_##mode(x, off + reg.offset, mask, reg.shift, v)
+ 
+ #define VOP_WIN_SET(x, win, name, v) \
+-		REG_SET(x, win->base, win->phy->name, v, RELAXED)
++		REG_SET(x, win->offset, VOP_WIN_NAME(win, name), v, RELAXED)
+ #define VOP_SCL_SET(x, win, name, v) \
+-		REG_SET(x, win->base, win->phy->scl->name, v, RELAXED)
++		REG_SET(x, win->offset, win->phy->scl->name, v, RELAXED)
+ #define VOP_SCL_SET_EXT(x, win, name, v) \
+-		REG_SET(x, win->base, win->phy->scl->ext->name, v, RELAXED)
++		REG_SET(x, win->offset, win->phy->scl->ext->name, v, RELAXED)
++
+ #define VOP_CTRL_SET(x, name, v) \
+ 		REG_SET(x, 0, (x)->data->ctrl->name, v, NORMAL)
+ 
+@@ -75,10 +77,13 @@
+ 		vop_get_intr_type(vop, &vop->data->intr->name, type)
+ 
+ #define VOP_WIN_GET(x, win, name) \
+-		vop_read_reg(x, win->base, &win->phy->name)
++		vop_read_reg(x, win->offset, &VOP_WIN_NAME(win, name))
++
++#define VOP_WIN_NAME(win, name) \
++		(vop_get_win_phy(win, &win->phy->name)->name)
+ 
+ #define VOP_WIN_GET_YRGBADDR(vop, win) \
+-		vop_readl(vop, win->base + win->phy->yrgb_mst.offset)
++		vop_readl(vop, win->offset + VOP_WIN_NAME(win, yrgb_mst).offset)
+ 
+ #define to_vop(x) container_of(x, struct vop, crtc)
+ #define to_vop_win(x) container_of(x, struct vop_win, base)
+@@ -94,8 +99,14 @@ struct vop_plane_state {
+ };
+ 
+ struct vop_win {
++	struct vop_win *parent;
+ 	struct drm_plane base;
+-	const struct vop_win_data *data;
++
++	uint32_t offset;
++	enum drm_plane_type type;
++	const struct vop_win_phy *phy;
++	const uint32_t *data_formats;
++	uint32_t nformats;
+ 	struct vop *vop;
+ 
+ 	/* protected by dev->event_lock */
+@@ -119,6 +130,7 @@ struct vop {
+ 	struct drm_pending_vblank_event *event;
+ 
+ 	const struct vop_data *data;
++	int num_wins;
+ 
+ 	uint32_t *regsbak;
+ 	void __iomem *regs;
+@@ -187,6 +199,15 @@ static inline void vop_mask_write_relaxed(struct vop *vop, uint32_t offset,
+ 	}
+ }
+ 
++static inline const struct vop_win_phy *
++vop_get_win_phy(struct vop_win *win, const struct vop_reg *reg)
++{
++	if (!reg->mask && win->parent)
++		return win->parent->phy;
++
++	return win->phy;
++}
++
+ static inline uint32_t vop_get_intr_type(struct vop *vop,
+ 					 const struct vop_reg *reg, int type)
+ {
+@@ -299,9 +320,9 @@ static uint16_t scl_vop_cal_scale(enum scale_mode mode, uint32_t src,
+ 	return val;
+ }
+ 
+-static void scl_vop_cal_scl_fac(struct vop *vop, const struct vop_win_data *win,
+-			     uint32_t src_w, uint32_t src_h, uint32_t dst_w,
+-			     uint32_t dst_h, uint32_t pixel_format)
++static void scl_vop_cal_scl_fac(struct vop *vop, struct vop_win *win,
++				uint32_t src_w, uint32_t src_h, uint32_t dst_w,
++				uint32_t dst_h, uint32_t pixel_format)
+ {
+ 	uint16_t yrgb_hor_scl_mode, yrgb_ver_scl_mode;
+ 	uint16_t cbcr_hor_scl_mode = SCALE_NONE;
+@@ -316,6 +337,9 @@ static void scl_vop_cal_scl_fac(struct vop *vop, const struct vop_win_data *win,
+ 	uint32_t val;
+ 	int vskiplines = 0;
+ 
++	if (!win->phy->scl)
++		return;
++
+ 	if (dst_w > 3840) {
+ 		DRM_ERROR("Maximum destination width (3840) exceeded\n");
+ 		return;
+@@ -509,9 +533,8 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
+ 	 * disable that crtc. Otherwise we might try to scan from a destroyed
+ 	 * buffer later.
+ 	 */
+-	for (i = 0; i < vop->data->win_size; i++) {
+-		struct vop_win *vop_win = &vop->win[i];
+-		const struct vop_win_data *win = vop_win->data;
++	for (i = 0; i < vop->num_wins; i++) {
++		struct vop_win *win = &vop->win[i];
+ 
+ 		spin_lock(&vop->reg_lock);
+ 		VOP_WIN_SET(vop, win, enable, 0);
+@@ -590,9 +613,8 @@ static int vop_plane_atomic_check(struct drm_plane *plane,
+ 	struct drm_crtc *crtc = state->crtc;
+ 	struct drm_crtc_state *crtc_state;
+ 	struct drm_framebuffer *fb = state->fb;
+-	struct vop_win *vop_win = to_vop_win(plane);
++	struct vop_win *win = to_vop_win(plane);
+ 	struct vop_plane_state *vop_plane_state = to_vop_plane_state(state);
+-	const struct vop_win_data *win = vop_win->data;
+ 	bool visible;
+ 	int ret;
+ 	struct drm_rect *dest = &vop_plane_state->dest;
+@@ -660,16 +682,15 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
+ 				     struct drm_plane_state *old_state)
+ {
+ 	struct vop_plane_state *vop_plane_state = to_vop_plane_state(old_state);
+-	struct vop_win *vop_win = to_vop_win(plane);
+-	const struct vop_win_data *win = vop_win->data;
++	struct vop_win *win = to_vop_win(plane);
+ 	struct vop *vop = to_vop(old_state->crtc);
+ 
+ 	if (!old_state->crtc)
+ 		return;
+ 
+ 	spin_lock_irq(&plane->dev->event_lock);
+-	vop_win->enable = false;
+-	vop_win->yrgb_mst = 0;
++	win->enable = false;
++	win->yrgb_mst = 0;
+ 	spin_unlock_irq(&plane->dev->event_lock);
+ 
+ 	spin_lock(&vop->reg_lock);
+@@ -686,9 +707,8 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ {
+ 	struct drm_plane_state *state = plane->state;
+ 	struct drm_crtc *crtc = state->crtc;
+-	struct vop_win *vop_win = to_vop_win(plane);
++	struct vop_win *win = to_vop_win(plane);
+ 	struct vop_plane_state *vop_plane_state = to_vop_plane_state(state);
+-	const struct vop_win_data *win = vop_win->data;
+ 	struct vop *vop = to_vop(state->crtc);
+ 	struct drm_framebuffer *fb = state->fb;
+ 	unsigned int actual_w, actual_h;
+@@ -736,8 +756,8 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	vop_plane_state->yrgb_mst = rk_obj->dma_addr + offset + fb->offsets[0];
+ 
+ 	spin_lock_irq(&plane->dev->event_lock);
+-	vop_win->enable = true;
+-	vop_win->yrgb_mst = vop_plane_state->yrgb_mst;
++	win->enable = true;
++	win->yrgb_mst = vop_plane_state->yrgb_mst;
+ 	spin_unlock_irq(&plane->dev->event_lock);
+ 
+ 	spin_lock(&vop->reg_lock);
+@@ -761,10 +781,9 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 		VOP_WIN_SET(vop, win, uv_mst, dma_addr);
+ 	}
+ 
+-	if (win->phy->scl)
+-		scl_vop_cal_scl_fac(vop, win, actual_w, actual_h,
+-				    drm_rect_width(dest), drm_rect_height(dest),
+-				    fb->pixel_format);
++	scl_vop_cal_scl_fac(vop, win, actual_w, actual_h,
++			    drm_rect_width(dest), drm_rect_height(dest),
++			    fb->pixel_format);
+ 
+ 	VOP_WIN_SET(vop, win, act_info, act_info);
+ 	VOP_WIN_SET(vop, win, dsp_info, dsp_info);
+@@ -1098,9 +1117,9 @@ static bool vop_win_pending_is_complete(struct vop_win *vop_win)
+ 	dma_addr_t yrgb_mst;
+ 
+ 	if (!vop_win->enable)
+-		return VOP_WIN_GET(vop_win->vop, vop_win->data, enable) == 0;
++		return VOP_WIN_GET(vop_win->vop, vop_win, enable) == 0;
+ 
+-	yrgb_mst = VOP_WIN_GET_YRGBADDR(vop_win->vop, vop_win->data);
++	yrgb_mst = VOP_WIN_GET_YRGBADDR(vop_win->vop, vop_win);
+ 
+ 	return yrgb_mst == vop_win->yrgb_mst;
+ }
+@@ -1112,7 +1131,7 @@ static void vop_handle_vblank(struct vop *vop)
+ 	unsigned long flags;
+ 	int i;
+ 
+-	for (i = 0; i < vop->data->win_size; i++) {
++	for (i = 0; i < vop->num_wins; i++) {
+ 		if (!vop_win_pending_is_complete(&vop->win[i]))
+ 			return;
+ 	}
+@@ -1176,15 +1195,35 @@ static irqreturn_t vop_isr(int irq, void *data)
+ 	return ret;
+ }
+ 
++static int vop_plane_init(struct vop *vop, struct vop_win *win,
++			  unsigned long possible_crtcs)
++{
++	struct drm_plane *share = NULL;
++	int ret;
++
++	if (win->parent)
++		share = &win->parent->base;
++
++	ret = drm_share_plane_init(vop->drm_dev, &win->base, share,
++				   possible_crtcs, &vop_plane_funcs,
++				   win->data_formats, win->nformats, win->type);
++	if (ret) {
++		DRM_ERROR("failed to initialize plane\n");
++		return ret;
++	}
++	drm_plane_helper_add(&win->base, &plane_helper_funcs);
++
++	return 0;
++}
++
+ static int vop_create_crtc(struct vop *vop)
+ {
+-	const struct vop_data *vop_data = vop->data;
+ 	struct device *dev = vop->dev;
+ 	struct drm_device *drm_dev = vop->drm_dev;
+ 	struct drm_plane *primary = NULL, *cursor = NULL, *plane, *tmp;
+ 	struct drm_crtc *crtc = &vop->crtc;
+ 	struct device_node *port;
+-	int ret;
++	int ret = 0;
+ 	int i;
+ 
+ 	/*
+@@ -1192,30 +1231,22 @@ static int vop_create_crtc(struct vop *vop)
+ 	 * to pass them to drm_crtc_init_with_planes, which sets the
+ 	 * "possible_crtcs" to the newly initialized crtc.
+ 	 */
+-	for (i = 0; i < vop_data->win_size; i++) {
+-		struct vop_win *vop_win = &vop->win[i];
+-		const struct vop_win_data *win_data = vop_win->data;
++	for (i = 0; i < vop->num_wins; i++) {
++		struct vop_win *win = &vop->win[i];
+ 
+-		if (win_data->type != DRM_PLANE_TYPE_PRIMARY &&
+-		    win_data->type != DRM_PLANE_TYPE_CURSOR)
++		if (win->type != DRM_PLANE_TYPE_PRIMARY &&
++		    win->type != DRM_PLANE_TYPE_CURSOR)
+ 			continue;
+ 
+-		ret = drm_universal_plane_init(vop->drm_dev, &vop_win->base,
+-					       0, &vop_plane_funcs,
+-					       win_data->phy->data_formats,
+-					       win_data->phy->nformats,
+-					       win_data->type, NULL);
+-		if (ret) {
+-			DRM_ERROR("failed to initialize plane\n");
++		if (vop_plane_init(vop, win, 0))
+ 			goto err_cleanup_planes;
+-		}
+ 
+-		plane = &vop_win->base;
+-		drm_plane_helper_add(plane, &plane_helper_funcs);
++		plane = &win->base;
+ 		if (plane->type == DRM_PLANE_TYPE_PRIMARY)
+ 			primary = plane;
+ 		else if (plane->type == DRM_PLANE_TYPE_CURSOR)
+ 			cursor = plane;
++
+ 	}
+ 
+ 	ret = drm_crtc_init_with_planes(drm_dev, crtc, primary, cursor,
+@@ -1229,25 +1260,15 @@ static int vop_create_crtc(struct vop *vop)
+ 	 * Create drm_planes for overlay windows with possible_crtcs restricted
+ 	 * to the newly created crtc.
+ 	 */
+-	for (i = 0; i < vop_data->win_size; i++) {
+-		struct vop_win *vop_win = &vop->win[i];
+-		const struct vop_win_data *win_data = vop_win->data;
++	for (i = 0; i < vop->num_wins; i++) {
++		struct vop_win *win = &vop->win[i];
+ 		unsigned long possible_crtcs = 1 << drm_crtc_index(crtc);
+ 
+-		if (win_data->type != DRM_PLANE_TYPE_OVERLAY)
++		if (win->type != DRM_PLANE_TYPE_OVERLAY)
+ 			continue;
+ 
+-		ret = drm_universal_plane_init(vop->drm_dev, &vop_win->base,
+-					       possible_crtcs,
+-					       &vop_plane_funcs,
+-					       win_data->phy->data_formats,
+-					       win_data->phy->nformats,
+-					       win_data->type, NULL);
+-		if (ret) {
+-			DRM_ERROR("failed to initialize overlay plane\n");
++		if (vop_plane_init(vop, win, possible_crtcs))
+ 			goto err_cleanup_crtc;
+-		}
+-		drm_plane_helper_add(&vop_win->base, &plane_helper_funcs);
+ 	}
+ 
+ 	port = of_get_child_by_name(dev->of_node, "port");
+@@ -1362,8 +1383,8 @@ static int vop_initial(struct vop *vop)
+ 	for (i = 0; i < vop_data->table_size; i++)
+ 		vop_writel(vop, init_table[i].offset, init_table[i].value);
+ 
+-	for (i = 0; i < vop_data->win_size; i++) {
+-		const struct vop_win_data *win = &vop_data->win[i];
++	for (i = 0; i < vop->num_wins; i++) {
++		struct vop_win *win = &vop->win[i];
+ 
+ 		VOP_WIN_SET(vop, win, enable, 0);
+ 	}
+@@ -1405,14 +1426,34 @@ err_unprepare_dclk:
+ static void vop_win_init(struct vop *vop)
+ {
+ 	const struct vop_data *vop_data = vop->data;
+-	unsigned int i;
++	unsigned int i, j;
++	unsigned int num_wins = 0;
+ 
+ 	for (i = 0; i < vop_data->win_size; i++) {
+-		struct vop_win *vop_win = &vop->win[i];
++		struct vop_win *vop_win = &vop->win[num_wins];
+ 		const struct vop_win_data *win_data = &vop_data->win[i];
+ 
+-		vop_win->data = win_data;
++		vop_win->phy = win_data->phy;
++		vop_win->offset = win_data->base;
++		vop_win->type = win_data->type;
++		vop_win->data_formats = win_data->phy->data_formats;
++		vop_win->nformats = win_data->phy->nformats;
+ 		vop_win->vop = vop;
++		num_wins++;
++
++		for (j = 0; j < win_data->area_size; j++) {
++			struct vop_win *vop_area = &vop->win[num_wins];
++			const struct vop_win_phy *area = win_data->area[j];
++
++			vop_area->parent = vop_win;
++			vop_area->offset = vop_win->offset;
++			vop_area->phy = area;
++			vop_area->type = DRM_PLANE_TYPE_OVERLAY;
++			vop_area->data_formats = vop_win->data_formats;
++			vop_area->nformats = vop_win->nformats;
++			vop_area->vop = vop;
++			num_wins++;
++		}
+ 	}
+ }
+ 
+@@ -1424,14 +1465,21 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	struct vop *vop;
+ 	struct resource *res;
+ 	size_t alloc_size;
+-	int ret, irq;
++	int ret, irq, i;
++	int num_wins = 0;
+ 
+ 	vop_data = of_device_get_match_data(dev);
+ 	if (!vop_data)
+ 		return -ENODEV;
+ 
++	for (i = 0; i < vop_data->win_size; i++) {
++		const struct vop_win_data *win_data = &vop_data->win[i];
++
++		num_wins += win_data->area_size + 1;
++	}
++
+ 	/* Allocate vop struct and its vop_win array */
+-	alloc_size = sizeof(*vop) + sizeof(*vop->win) * vop_data->win_size;
++	alloc_size = sizeof(*vop) + sizeof(*vop->win) * num_wins;
+ 	vop = devm_kzalloc(dev, alloc_size, GFP_KERNEL);
+ 	if (!vop)
+ 		return -ENOMEM;
+@@ -1439,6 +1487,7 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	vop->dev = dev;
+ 	vop->data = vop_data;
+ 	vop->drm_dev = drm_dev;
++	vop->num_wins = num_wins;
+ 	dev_set_drvdata(dev, vop);
+ 
+ 	vop_win_init(vop);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 071ff0b..def5afa 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -122,8 +122,10 @@ struct vop_win_phy {
+ 
+ struct vop_win_data {
+ 	uint32_t base;
+-	const struct vop_win_phy *phy;
+ 	enum drm_plane_type type;
++	const struct vop_win_phy *phy;
++	const struct vop_win_phy **area;
++	unsigned int area_size;
+ };
+ 
+ struct vop_data {
+-- 
+1.9.1
