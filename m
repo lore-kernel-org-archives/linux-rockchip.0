@@ -1,109 +1,74 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] iio: adc: rockchip_saradc: reset saradc controller
- before programming it
-Date: Tue, 26 Jul 2016 22:47:16 +0800
-Message-ID: <579777F4.2090002@rock-chips.com>
-References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com> <57976814.3040605@roeck-us.net>
+From: ville.syrjala@linux.intel.com
+Subject: [PATCH 7/9] drm/rockchip: Use
+	drm_plane_helper_check_state()
+Date: Tue, 26 Jul 2016 19:07:02 +0300
+Message-ID: <1469549224-1860-8-git-send-email-ville.syrjala@linux.intel.com>
+References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <57976814.3040605-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org, Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2016=E5=B9=B407=E6=9C=8826=E6=97=A5 21:39, Guenter Roeck wrote:
->
->> static int rockchip_saradc_probe(struct platform_device *pdev)
->> {
->> struct rockchip_saradc *info =3D NULL;
->> @@ -218,6 +231,21 @@ static int rockchip_saradc_probe(struct=20
->> platform_device *pdev)
->> if (IS_ERR(info->regs))
->> return PTR_ERR(info->regs);
->>
->> + /*
->> + * The reset should be an optional property, as it should work
->> + * with old devicetrees as well
->> + */
->> + info->reset =3D devm_reset_control_get_optional(&pdev->dev,
->> + "saradc-apb");
->
-> Does anyone know what the _optional API is for ? It seems to be=20
-> exactly the same
-> as devm_reset_control_get().
-
-=E2=80=9C
-As far as I see, the difference is WARN_ON(1)
-when CONFIG_RESET_CONTROLLER is not defined.
-
-
-The _optional functions were introduced by the following commit:
-
------------------>8-----------------
-commit b424080a9e086e683ad5fdc624a7cf3c024e0c0f
-Author: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
-Date: Fri Mar 7 15:18:47 2014 +0100
-
-reset: Add optional resets and stubs
-
-This patch adds device_reset_optional and (devm_)reset_control_get_opti=
-onal
-variants that drivers can use to indicate they can function without con=
-trol
-over the reset line. For those functions, stubs are added so the driver=
-s=20
-can
-be compiled with CONFIG_RESET_CONTROLLER disabled.
-Also, device_reset is annotated with __must_check. Drivers
-ignoring the return
-value should use device_reset_optional instead.
-
-Signed-off-by: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
-------------------8<-----------------------------
-=E2=80=9D
-
-for more information on=20
-http://www.spinics.net/lists/kernel/msg2306677.html :-)
-
->
-> Guenter
->
->> + if (IS_ERR(info->reset)) {
->> + ret =3D PTR_ERR(info->reset);
->> + if (ret !=3D -ENOENT)
->> + return ret;
->> +
->> + dev_dbg(&pdev->dev, "no reset control found\n");
->> + info->reset =3D NULL;
->> + }
->> +
->> init_completion(&info->completion);
->>
->> irq =3D platform_get_irq(pdev, 0);
->> @@ -252,6 +280,9 @@ static int rockchip_saradc_probe(struct=20
->> platform_device *pdev)
->> return PTR_ERR(info->vref);
->> }
->>
->> + if (info->reset)
->> + rockchip_saradc_reset_controller(info->reset);
->> +
->> /*
->> * Use a default value for the converter clock.
->> * This may become user-configurable in the future.
->>
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
---=20
-caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
+RnJvbTogVmlsbGUgU3lyasOkbMOkIDx2aWxsZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KClJl
+cGxhY2UgdGhlIHVzZSBvZiBkcm1fcGxhbmVfaGVscGVyX2NoZWNrX3VwZGF0ZSgpIHdpdGgKZHJt
+X3BsYW5lX2hlbHBlcl9jaGVja19zdGF0ZSgpIHNpbmNlIHdlIGhhdmUgYSBwbGFuZSBzdGF0ZS4K
+ClJvY2tjaGlwIGxvb2tzIHRvIGhhbmRsaW5nIHBsYW5lIGNsaXBwaW5nIHJhdGhlciB3ZWxsIGFs
+cmVhZHkKKHVubGlramUgbW9zdCBhcm0gZHJtIGRyaXZlcnMpIHNvIHRoZXJlIGFyZSBubyBmdW5j
+dGlvbiBjaGFuZ2VzCmhlcmUuCgpDYzogWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KQ2M6
+IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKU2lnbmVkLW9mZi1ieTogVmlsbGUg
+U3lyasOkbMOkIDx2aWxsZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KLS0tCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMjUgKysrKystLS0tLS0tLS0tLS0t
+LS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMjAgZGVsZXRpb25zKC0p
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggYzU2
+NmM3NDBhYjQ5Li4zMTc0NGZlOTliMzggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuYwpAQCAtNTkxLDEwICs1OTEsNyBAQCBzdGF0aWMgaW50IHZvcF9wbGFu
+ZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJc3RydWN0IHZvcF93aW4g
+KnZvcF93aW4gPSB0b192b3Bfd2luKHBsYW5lKTsKIAlzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICp2
+b3BfcGxhbmVfc3RhdGUgPSB0b192b3BfcGxhbmVfc3RhdGUoc3RhdGUpOwogCWNvbnN0IHN0cnVj
+dCB2b3Bfd2luX2RhdGEgKndpbiA9IHZvcF93aW4tPmRhdGE7Ci0JYm9vbCB2aXNpYmxlOwogCWlu
+dCByZXQ7Ci0Jc3RydWN0IGRybV9yZWN0ICpkZXN0ID0gJnN0YXRlLT5kc3Q7Ci0Jc3RydWN0IGRy
+bV9yZWN0ICpzcmMgPSAmc3RhdGUtPnNyYzsKIAlzdHJ1Y3QgZHJtX3JlY3QgY2xpcDsKIAlpbnQg
+bWluX3NjYWxlID0gd2luLT5waHktPnNjbCA/IEZSQUNfMTZfMTYoMSwgOCkgOgogCQkJCQlEUk1f
+UExBTkVfSEVMUEVSX05PX1NDQUxJTkc7CkBAIC02MDgsMzAgKzYwNSwxOCBAQCBzdGF0aWMgaW50
+IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJaWYgKFdB
+Uk5fT04oIWNydGNfc3RhdGUpKQogCQlyZXR1cm4gLUVJTlZBTDsKIAotCXNyYy0+eDEgPSBzdGF0
+ZS0+c3JjX3g7Ci0Jc3JjLT55MSA9IHN0YXRlLT5zcmNfeTsKLQlzcmMtPngyID0gc3RhdGUtPnNy
+Y194ICsgc3RhdGUtPnNyY193OwotCXNyYy0+eTIgPSBzdGF0ZS0+c3JjX3kgKyBzdGF0ZS0+c3Jj
+X2g7Ci0JZGVzdC0+eDEgPSBzdGF0ZS0+Y3J0Y194OwotCWRlc3QtPnkxID0gc3RhdGUtPmNydGNf
+eTsKLQlkZXN0LT54MiA9IHN0YXRlLT5jcnRjX3ggKyBzdGF0ZS0+Y3J0Y193OwotCWRlc3QtPnky
+ID0gc3RhdGUtPmNydGNfeSArIHN0YXRlLT5jcnRjX2g7Ci0KIAljbGlwLngxID0gMDsKIAljbGlw
+LnkxID0gMDsKIAljbGlwLngyID0gY3J0Y19zdGF0ZS0+YWRqdXN0ZWRfbW9kZS5oZGlzcGxheTsK
+IAljbGlwLnkyID0gY3J0Y19zdGF0ZS0+YWRqdXN0ZWRfbW9kZS52ZGlzcGxheTsKIAotCXJldCA9
+IGRybV9wbGFuZV9oZWxwZXJfY2hlY2tfdXBkYXRlKHBsYW5lLCBjcnRjLCBzdGF0ZS0+ZmIsCi0J
+CQkJCSAgICBzcmMsIGRlc3QsICZjbGlwLAotCQkJCQkgICAgc3RhdGUtPnJvdGF0aW9uLAotCQkJ
+CQkgICAgbWluX3NjYWxlLAotCQkJCQkgICAgbWF4X3NjYWxlLAotCQkJCQkgICAgdHJ1ZSwgdHJ1
+ZSwgJnZpc2libGUpOworCXJldCA9IGRybV9wbGFuZV9oZWxwZXJfY2hlY2tfc3RhdGUoc3RhdGUs
+ICZjbGlwLAorCQkJCQkgICBtaW5fc2NhbGUsIG1heF9zY2FsZSwKKwkJCQkJICAgdHJ1ZSwgdHJ1
+ZSk7CiAJaWYgKHJldCkKIAkJcmV0dXJuIHJldDsKIAotCWlmICghdmlzaWJsZSkKKwlpZiAoIXN0
+YXRlLT52aXNpYmxlKQogCQlnb3RvIG91dF9kaXNhYmxlOwogCiAJdm9wX3BsYW5lX3N0YXRlLT5m
+b3JtYXQgPSB2b3BfY29udmVydF9mb3JtYXQoZmItPnBpeGVsX2Zvcm1hdCk7CkBAIC02NDIsNyAr
+NjI3LDcgQEAgc3RhdGljIGludCB2b3BfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lLAogCSAqIFNyYy54MSBjYW4gYmUgb2RkIHdoZW4gZG8gY2xpcCwgYnV0IHl1diBw
+bGFuZSBzdGFydCBwb2ludAogCSAqIG5lZWQgYWxpZ24gd2l0aCAyIHBpeGVsLgogCSAqLwotCWlm
+IChpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KSAmJiAoKHNyYy0+eDEgPj4gMTYpICUg
+MikpCisJaWYgKGlzX3l1dl9zdXBwb3J0KGZiLT5waXhlbF9mb3JtYXQpICYmICgoc3RhdGUtPnNy
+Yy54MSA+PiAxNikgJSAyKSkKIAkJcmV0dXJuIC1FSU5WQUw7CiAKIAl2b3BfcGxhbmVfc3RhdGUt
+PmVuYWJsZSA9IHRydWU7Ci0tIAoyLjcuNAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vaW50ZWwtZ2Z4Cg==
