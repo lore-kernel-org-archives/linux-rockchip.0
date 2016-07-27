@@ -1,127 +1,62 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] iio: adc: rockchip_saradc: reset saradc controller
- before programming it
-Date: Wed, 27 Jul 2016 08:42:10 +0800
-Message-ID: <57980362.3000406@rock-chips.com>
-References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com> <57976814.3040605@roeck-us.net> <579777F4.2090002@rock-chips.com> <20160726170023.GA6590@roeck-us.net>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 6/9] drm/rockchip: Use drm_plane_state.{src,dst}
+Date: Wed, 27 Jul 2016 09:08:49 +0800
+Message-ID: <579809A1.1040002@rock-chips.com>
+References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
+ <1469549224-1860-7-git-send-email-ville.syrjala@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160726170023.GA6590-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469549224-1860-7-git-send-email-ville.syrjala@linux.intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: ville.syrjala@linux.intel.com, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2016=E5=B9=B407=E6=9C=8827=E6=97=A5 01:00, Guenter Roeck wrote:
-> On Tue, Jul 26, 2016 at 10:47:16PM +0800, Caesar Wang wrote:
->> On 2016=E5=B9=B407=E6=9C=8826=E6=97=A5 21:39, Guenter Roeck wrote:
->>>> static int rockchip_saradc_probe(struct platform_device *pdev)
->>>> {
->>>> struct rockchip_saradc *info =3D NULL;
->>>> @@ -218,6 +231,21 @@ static int rockchip_saradc_probe(struct
->>>> platform_device *pdev)
->>>> if (IS_ERR(info->regs))
->>>> return PTR_ERR(info->regs);
->>>>
->>>> + /*
->>>> + * The reset should be an optional property, as it should work
->>>> + * with old devicetrees as well
->>>> + */
->>>> + info->reset =3D devm_reset_control_get_optional(&pdev->dev,
->>>> + "saradc-apb");
->>> Does anyone know what the _optional API is for ? It seems to be exa=
-ctly
->>> the same
->>> as devm_reset_control_get().
->> =E2=80=9C
->> As far as I see, the difference is WARN_ON(1)
->> when CONFIG_RESET_CONTROLLER is not defined.
->>
->>
->> The _optional functions were introduced by the following commit:
->>
->> ----------------->8-----------------
->> commit b424080a9e086e683ad5fdc624a7cf3c024e0c0f
->> Author: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
->> Date: Fri Mar 7 15:18:47 2014 +0100
->>
->> reset: Add optional resets and stubs
->>
->> This patch adds device_reset_optional and (devm_)reset_control_get_o=
-ptional
->> variants that drivers can use to indicate they can function without =
-control
->> over the reset line. For those functions, stubs are added so the dri=
-vers can
->> be compiled with CONFIG_RESET_CONTROLLER disabled.
->> Also, device_reset is annotated with __must_check. Drivers
->> ignoring the return
->> value should use device_reset_optional instead.
->>
-> Is that really what we are looking for here ? CONFIG_RESET_CONTROLLER
-> is required for other functions of rk3399, isn't it ?
-
-Right, as the DRM and thermal are depend on the CONFIG_RESET_CONTROLLER=
-=20
-=2E....
-
-
->
-> Guenter
->
->> Signed-off-by: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
->> ------------------8<-----------------------------
->> =E2=80=9D
->>
->> for more information on http://www.spinics.net/lists/kernel/msg23066=
-77.html
->> :-)
->>
->>> Guenter
->>>
->>>> + if (IS_ERR(info->reset)) {
->>>> + ret =3D PTR_ERR(info->reset);
->>>> + if (ret !=3D -ENOENT)
->>>> + return ret;
->>>> +
->>>> + dev_dbg(&pdev->dev, "no reset control found\n");
->>>> + info->reset =3D NULL;
->>>> + }
->>>> +
->>>> init_completion(&info->completion);
->>>>
->>>> irq =3D platform_get_irq(pdev, 0);
->>>> @@ -252,6 +280,9 @@ static int rockchip_saradc_probe(struct
->>>> platform_device *pdev)
->>>> return PTR_ERR(info->vref);
->>>> }
->>>>
->>>> + if (info->reset)
->>>> + rockchip_saradc_reset_controller(info->reset);
->>>> +
->>>> /*
->>>> * Use a default value for the converter clock.
->>>> * This may become user-configurable in the future.
->>>>
->>>
->>> _______________________________________________
->>> Linux-rockchip mailing list
->>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>
->> --=20
->> caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
->>
->>
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
---=20
-caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
+T24gMjAxNuW5tDA35pyIMjfml6UgMDA6MDcsIHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29t
+IHdyb3RlOgo+IEZyb206IFZpbGxlIFN5cmrDpGzDpCA8dmlsbGUuc3lyamFsYUBsaW51eC5pbnRl
+bC5jb20+Cj4KPiBSZXBsYWNlIHRoZSBwcml2YXRlIGRybV9yZWN0cyBpbiB2b3BfcGxhbmVfc3Rh
+dGUgd2l0aAo+IHRoZSBvbmVzIG5vdyBsaXZpbmcgaW4gZHJtX3BsYW5lX3N0YXRlLgo+Cj4gQ2M6
+IFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBWaWxsZSBTeXJqw6Rsw6QgPHZpbGxlLnN5
+cmphbGFAbGludXguaW50ZWwuY29tPgpHb29kIGNsZWFudXAsCgpBY2tlZC1ieTogTWFyayBZYW8g
+PG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxMCArKysrLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdl
+ZCwgNCBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggOTEzMDVlYjdkMzEyLi5jNTY2Yzc0
+MGFiNDkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmMKPiBAQCAtODcsOCArODcsNiBAQAo+ICAgc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSB7Cj4gICAJ
+c3RydWN0IGRybV9wbGFuZV9zdGF0ZSBiYXNlOwo+ICAgCWludCBmb3JtYXQ7Cj4gLQlzdHJ1Y3Qg
+ZHJtX3JlY3Qgc3JjOwo+IC0Jc3RydWN0IGRybV9yZWN0IGRlc3Q7Cj4gICAJZG1hX2FkZHJfdCB5
+cmdiX21zdDsKPiAgIAlib29sIGVuYWJsZTsKPiAgIH07Cj4gQEAgLTU5NSw4ICs1OTMsOCBAQCBz
+dGF0aWMgaW50IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUs
+Cj4gICAJY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsKPiAg
+IAlib29sIHZpc2libGU7Cj4gICAJaW50IHJldDsKPiAtCXN0cnVjdCBkcm1fcmVjdCAqZGVzdCA9
+ICZ2b3BfcGxhbmVfc3RhdGUtPmRlc3Q7Cj4gLQlzdHJ1Y3QgZHJtX3JlY3QgKnNyYyA9ICZ2b3Bf
+cGxhbmVfc3RhdGUtPnNyYzsKPiArCXN0cnVjdCBkcm1fcmVjdCAqZGVzdCA9ICZzdGF0ZS0+ZHN0
+Owo+ICsJc3RydWN0IGRybV9yZWN0ICpzcmMgPSAmc3RhdGUtPnNyYzsKPiAgIAlzdHJ1Y3QgZHJt
+X3JlY3QgY2xpcDsKPiAgIAlpbnQgbWluX3NjYWxlID0gd2luLT5waHktPnNjbCA/IEZSQUNfMTZf
+MTYoMSwgOCkgOgo+ICAgCQkJCQlEUk1fUExBTkVfSEVMUEVSX05PX1NDQUxJTkc7Cj4gQEAgLTY5
+NCw4ICs2OTIsOCBAQCBzdGF0aWMgdm9pZCB2b3BfcGxhbmVfYXRvbWljX3VwZGF0ZShzdHJ1Y3Qg
+ZHJtX3BsYW5lICpwbGFuZSwKPiAgIAl1bnNpZ25lZCBpbnQgYWN0dWFsX3csIGFjdHVhbF9oOwo+
+ICAgCXVuc2lnbmVkIGludCBkc3Bfc3R4LCBkc3Bfc3R5Owo+ICAgCXVpbnQzMl90IGFjdF9pbmZv
+LCBkc3BfaW5mbywgZHNwX3N0Owo+IC0Jc3RydWN0IGRybV9yZWN0ICpzcmMgPSAmdm9wX3BsYW5l
+X3N0YXRlLT5zcmM7Cj4gLQlzdHJ1Y3QgZHJtX3JlY3QgKmRlc3QgPSAmdm9wX3BsYW5lX3N0YXRl
+LT5kZXN0Owo+ICsJc3RydWN0IGRybV9yZWN0ICpzcmMgPSAmc3RhdGUtPnNyYzsKPiArCXN0cnVj
+dCBkcm1fcmVjdCAqZGVzdCA9ICZzdGF0ZS0+ZHN0Owo+ICAgCXN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqb2JqLCAqdXZfb2JqOwo+ICAgCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmos
+ICpya191dl9vYmo7Cj4gICAJdW5zaWduZWQgbG9uZyBvZmZzZXQ7CgoKLS0gCu+8rWFyayBZYW8K
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
