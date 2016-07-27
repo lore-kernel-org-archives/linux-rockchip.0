@@ -1,151 +1,127 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] iio: adc: rockchip_saradc: reset saradc
- controller before programming it
-Date: Tue, 26 Jul 2016 15:41:15 -0700
-Message-ID: <20160726224115.GA25307@roeck-us.net>
-References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] iio: adc: rockchip_saradc: reset saradc controller
+ before programming it
+Date: Wed, 27 Jul 2016 08:42:10 +0800
+Message-ID: <57980362.3000406@rock-chips.com>
+References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com> <57976814.3040605@roeck-us.net> <579777F4.2090002@rock-chips.com> <20160726170023.GA6590@roeck-us.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1469535195-5227-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20160726170023.GA6590-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jul 26, 2016 at 08:13:12PM +0800, Caesar Wang wrote:
-> SARADC controller needs to be reset before programming it, otherwise
-> it will not function properly.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Cc: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 
-Tested-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+On 2016=E5=B9=B407=E6=9C=8827=E6=97=A5 01:00, Guenter Roeck wrote:
+> On Tue, Jul 26, 2016 at 10:47:16PM +0800, Caesar Wang wrote:
+>> On 2016=E5=B9=B407=E6=9C=8826=E6=97=A5 21:39, Guenter Roeck wrote:
+>>>> static int rockchip_saradc_probe(struct platform_device *pdev)
+>>>> {
+>>>> struct rockchip_saradc *info =3D NULL;
+>>>> @@ -218,6 +231,21 @@ static int rockchip_saradc_probe(struct
+>>>> platform_device *pdev)
+>>>> if (IS_ERR(info->regs))
+>>>> return PTR_ERR(info->regs);
+>>>>
+>>>> + /*
+>>>> + * The reset should be an optional property, as it should work
+>>>> + * with old devicetrees as well
+>>>> + */
+>>>> + info->reset =3D devm_reset_control_get_optional(&pdev->dev,
+>>>> + "saradc-apb");
+>>> Does anyone know what the _optional API is for ? It seems to be exa=
+ctly
+>>> the same
+>>> as devm_reset_control_get().
+>> =E2=80=9C
+>> As far as I see, the difference is WARN_ON(1)
+>> when CONFIG_RESET_CONTROLLER is not defined.
+>>
+>>
+>> The _optional functions were introduced by the following commit:
+>>
+>> ----------------->8-----------------
+>> commit b424080a9e086e683ad5fdc624a7cf3c024e0c0f
+>> Author: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
+>> Date: Fri Mar 7 15:18:47 2014 +0100
+>>
+>> reset: Add optional resets and stubs
+>>
+>> This patch adds device_reset_optional and (devm_)reset_control_get_o=
+ptional
+>> variants that drivers can use to indicate they can function without =
+control
+>> over the reset line. For those functions, stubs are added so the dri=
+vers can
+>> be compiled with CONFIG_RESET_CONTROLLER disabled.
+>> Also, device_reset is annotated with __must_check. Drivers
+>> ignoring the return
+>> value should use device_reset_optional instead.
+>>
+> Is that really what we are looking for here ? CONFIG_RESET_CONTROLLER
+> is required for other functions of rk3399, isn't it ?
 
-> 
-> ---
-> 
-> Changes in v2:
-> - Make the reset as an optional property, since it should work
-> with old devicetrees as well.
-> 
->  .../bindings/iio/adc/rockchip-saradc.txt           |  7 +++++
->  drivers/iio/adc/Kconfig                            |  1 +
->  drivers/iio/adc/rockchip_saradc.c                  | 31 ++++++++++++++++++++++
->  3 files changed, 39 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> index bf99e2f..205593f 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> @@ -16,6 +16,11 @@ Required properties:
->  - vref-supply: The regulator supply ADC reference voltage.
->  - #io-channel-cells: Should be 1, see ../iio-bindings.txt
->  
-> +Optional properties:
-> +- resets: Must contain an entry for each entry in reset-names if need support
-> +	  this option. See ../reset/reset.txt for details.
-> +- reset-names: Must include the name "saradc-apb".
-> +
->  Example:
->  	saradc: saradc@2006c000 {
->  		compatible = "rockchip,saradc";
-> @@ -23,6 +28,8 @@ Example:
->  		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
->  		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
->  		clock-names = "saradc", "apb_pclk";
-> +		resets = <&cru SRST_SARADC>;
-> +		reset-names = "saradc-apb";
->  		#io-channel-cells = <1>;
->  		vref-supply = <&vcc18>;
->  	};
-> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> index 1de31bd..7675772 100644
-> --- a/drivers/iio/adc/Kconfig
-> +++ b/drivers/iio/adc/Kconfig
-> @@ -389,6 +389,7 @@ config QCOM_SPMI_VADC
->  config ROCKCHIP_SARADC
->  	tristate "Rockchip SARADC driver"
->  	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
-> +	depends on RESET_CONTROLLER
->  	help
->  	  Say yes here to build support for the SARADC found in SoCs from
->  	  Rockchip.
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index f9ad6c2..dc1379f 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -21,6 +21,8 @@
->  #include <linux/of_device.h>
->  #include <linux/clk.h>
->  #include <linux/completion.h>
-> +#include <linux/delay.h>
-> +#include <linux/reset.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/iio/iio.h>
->  
-> @@ -53,6 +55,7 @@ struct rockchip_saradc {
->  	struct clk		*clk;
->  	struct completion	completion;
->  	struct regulator	*vref;
-> +	struct reset_control	*reset;
->  	const struct rockchip_saradc_data *data;
->  	u16			last_val;
->  };
-> @@ -190,6 +193,16 @@ static const struct of_device_id rockchip_saradc_match[] = {
->  };
->  MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
->  
-> +/**
-> + * Reset SARADC Controller.
-> + */
-> +static void rockchip_saradc_reset_controller(struct reset_control *reset)
-> +{
-> +	reset_control_assert(reset);
-> +	usleep_range(10, 20);
-> +	reset_control_deassert(reset);
-> +}
-> +
->  static int rockchip_saradc_probe(struct platform_device *pdev)
->  {
->  	struct rockchip_saradc *info = NULL;
-> @@ -218,6 +231,21 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
->  	if (IS_ERR(info->regs))
->  		return PTR_ERR(info->regs);
->  
-> +	/*
-> +	 * The reset should be an optional property, as it should work
-> +	 * with old devicetrees as well
-> +	 */
-> +	info->reset = devm_reset_control_get_optional(&pdev->dev,
-> +			"saradc-apb");
-> +	if (IS_ERR(info->reset)) {
-> +		ret = PTR_ERR(info->reset);
-> +		if (ret != -ENOENT)
-> +			return ret;
-> +
-> +		dev_dbg(&pdev->dev, "no reset control found\n");
-> +		info->reset = NULL;
-> +	}
-> +
->  	init_completion(&info->completion);
->  
->  	irq = platform_get_irq(pdev, 0);
-> @@ -252,6 +280,9 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
->  		return PTR_ERR(info->vref);
->  	}
->  
-> +	if (info->reset)
-> +		rockchip_saradc_reset_controller(info->reset);
-> +
->  	/*
->  	 * Use a default value for the converter clock.
->  	 * This may become user-configurable in the future.
-> -- 
-> 1.9.1
-> 
+Right, as the DRM and thermal are depend on the CONFIG_RESET_CONTROLLER=
+=20
+=2E....
+
+
+>
+> Guenter
+>
+>> Signed-off-by: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
+>> ------------------8<-----------------------------
+>> =E2=80=9D
+>>
+>> for more information on http://www.spinics.net/lists/kernel/msg23066=
+77.html
+>> :-)
+>>
+>>> Guenter
+>>>
+>>>> + if (IS_ERR(info->reset)) {
+>>>> + ret =3D PTR_ERR(info->reset);
+>>>> + if (ret !=3D -ENOENT)
+>>>> + return ret;
+>>>> +
+>>>> + dev_dbg(&pdev->dev, "no reset control found\n");
+>>>> + info->reset =3D NULL;
+>>>> + }
+>>>> +
+>>>> init_completion(&info->completion);
+>>>>
+>>>> irq =3D platform_get_irq(pdev, 0);
+>>>> @@ -252,6 +280,9 @@ static int rockchip_saradc_probe(struct
+>>>> platform_device *pdev)
+>>>> return PTR_ERR(info->vref);
+>>>> }
+>>>>
+>>>> + if (info->reset)
+>>>> + rockchip_saradc_reset_controller(info->reset);
+>>>> +
+>>>> /*
+>>>> * Use a default value for the converter clock.
+>>>> * This may become user-configurable in the future.
+>>>>
+>>>
+>>> _______________________________________________
+>>> Linux-rockchip mailing list
+>>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>
+>> --=20
+>> caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
+>>
+>>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+--=20
+caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
