@@ -1,38 +1,80 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 7/9] drm/rockchip: Use drm_plane_helper_check_state()
-Date: Wed, 27 Jul 2016 09:09:18 +0800
-Message-ID: <579809BE.8080808@rock-chips.com>
-References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
- <1469549224-1860-8-git-send-email-ville.syrjala@linux.intel.com>
+From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] iio: adc: rockchip_saradc: reset saradc controller
+ before programming it
+Date: Tue, 26 Jul 2016 19:00:18 -0700
+Message-ID: <579815B2.5010205@roeck-us.net>
+References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com>
+ <57976814.3040605@roeck-us.net> <579777F4.2090002@rock-chips.com>
+ <20160726170023.GA6590@roeck-us.net> <57980362.3000406@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469549224-1860-8-git-send-email-ville.syrjala@linux.intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: ville.syrjala@linux.intel.com, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <57980362.3000406-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA35pyIMjfml6UgMDA6MDcsIHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29t
-IHdyb3RlOgo+IEZyb206IFZpbGxlIFN5cmrDpGzDpDx2aWxsZS5zeXJqYWxhQGxpbnV4LmludGVs
-LmNvbT4KPgo+IFJlcGxhY2UgdGhlIHVzZSBvZiBkcm1fcGxhbmVfaGVscGVyX2NoZWNrX3VwZGF0
-ZSgpIHdpdGgKPiBkcm1fcGxhbmVfaGVscGVyX2NoZWNrX3N0YXRlKCkgc2luY2Ugd2UgaGF2ZSBh
-IHBsYW5lIHN0YXRlLgo+Cj4gUm9ja2NoaXAgbG9va3MgdG8gaGFuZGxpbmcgcGxhbmUgY2xpcHBp
-bmcgcmF0aGVyIHdlbGwgYWxyZWFkeQo+ICh1bmxpa2plIG1vc3QgYXJtIGRybSBkcml2ZXJzKSBz
-byB0aGVyZSBhcmUgbm8gZnVuY3Rpb24gY2hhbmdlcwo+IGhlcmUuCj4KPiBDYzogWWFvPG1hcmsu
-eWFvQHJvY2stY2hpcHMuY29tPgo+IENjOmxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKPiBTaWduZWQtb2ZmLWJ5OiBWaWxsZSBTeXJqw6Rsw6Q8dmlsbGUuc3lyamFsYUBsaW51eC5p
-bnRlbC5jb20+CkFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+CgpU
-aGFua3MuCgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+On 07/26/2016 05:42 PM, Caesar Wang wrote:
+>
+> On 2016=E5=B9=B407=E6=9C=8827=E6=97=A5 01:00, Guenter Roeck wrote:
+>> On Tue, Jul 26, 2016 at 10:47:16PM +0800, Caesar Wang wrote:
+>>> On 2016=E5=B9=B407=E6=9C=8826=E6=97=A5 21:39, Guenter Roeck wrote:
+>>>>> static int rockchip_saradc_probe(struct platform_device *pdev)
+>>>>> {
+>>>>> struct rockchip_saradc *info =3D NULL;
+>>>>> @@ -218,6 +231,21 @@ static int rockchip_saradc_probe(struct
+>>>>> platform_device *pdev)
+>>>>> if (IS_ERR(info->regs))
+>>>>> return PTR_ERR(info->regs);
+>>>>>
+>>>>> + /*
+>>>>> + * The reset should be an optional property, as it should work
+>>>>> + * with old devicetrees as well
+>>>>> + */
+>>>>> + info->reset =3D devm_reset_control_get_optional(&pdev->dev,
+>>>>> + "saradc-apb");
+>>>> Does anyone know what the _optional API is for ? It seems to be ex=
+actly
+>>>> the same
+>>>> as devm_reset_control_get().
+>>> =E2=80=9C
+>>> As far as I see, the difference is WARN_ON(1)
+>>> when CONFIG_RESET_CONTROLLER is not defined.
+>>>
+>>>
+>>> The _optional functions were introduced by the following commit:
+>>>
+>>> ----------------->8-----------------
+>>> commit b424080a9e086e683ad5fdc624a7cf3c024e0c0f
+>>> Author: Philipp Zabel <p.zabel@xxxxxxxxxxxxxx>
+>>> Date: Fri Mar 7 15:18:47 2014 +0100
+>>>
+>>> reset: Add optional resets and stubs
+>>>
+>>> This patch adds device_reset_optional and (devm_)reset_control_get_=
+optional
+>>> variants that drivers can use to indicate they can function without=
+ control
+>>> over the reset line. For those functions, stubs are added so the dr=
+ivers can
+>>> be compiled with CONFIG_RESET_CONTROLLER disabled.
+>>> Also, device_reset is annotated with __must_check. Drivers
+>>> ignoring the return
+>>> value should use device_reset_optional instead.
+>>>
+>> Is that really what we are looking for here ? CONFIG_RESET_CONTROLLE=
+R
+>> is required for other functions of rk3399, isn't it ?
+>
+> Right, as the DRM and thermal are depend on the CONFIG_RESET_CONTROLL=
+ER .....
+>
+
+Since "optional" doesn't really mean "the reset property is optional"
+but "CONFIG_RESET_CONTROLLER is optional", I would suggest to use
+devm_reset_control_get().
+
+Guenter
