@@ -1,22 +1,21 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v7 PATCH 1/6] extcon: Add EXTCON_DISP_DP and the property for USB Type-C
-Date: Wed, 27 Jul 2016 21:07:11 +0800
-Message-ID: <1469624836-22792-2-git-send-email-zyw@rock-chips.com>
+Subject: [v7 PATCH 4/6] arm64: dts: rockchip: add Type-C phy for RK3399
+Date: Wed, 27 Jul 2016 21:07:14 +0800
+Message-ID: <1469624836-22792-5-git-send-email-zyw@rock-chips.com>
 References: <1469624836-22792-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1469624836-22792-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add EXTCON_DISP_DP for the Display external connector. For Type-C
-connector the DisplayPort can work as an Alternate Mode(VESA DisplayPort
-Alt Mode on USB Type-C Standard). The Type-C support both normal
-and flipped orientation, so add a property to extcon.
+There are 2 Type-C phy on RK3399, they are almost same, except the
+address of register. They support USB3.0 Type-C and DisplayPort1.3
+Alt Mode on USB Type-C. Register a phy, supply it to USB3 controller
+and DP controller.
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 ---
 
 Changes in v7: None
@@ -27,56 +26,63 @@ Changes in v3: None
 Changes in v2: None
 Changes in v1: None
 
- drivers/extcon/extcon.c | 5 +++++
- include/linux/extcon.h  | 8 +++++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 44 ++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
-index 68890bb..6c7488a 100644
---- a/drivers/extcon/extcon.c
-+++ b/drivers/extcon/extcon.c
-@@ -157,6 +157,11 @@ struct __extcon_info {
- 		.id = EXTCON_DISP_VGA,
- 		.name = "VGA",
- 	},
-+	[EXTCON_DISP_DP] = {
-+		.type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
-+		.id = EXTCON_DISP_DP,
-+		.name = "DP",
-+	},
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 0af03a3..7095ddf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -952,6 +952,50 @@
+ 		};
+ 	};
  
- 	/* Miscellaneous external connector */
- 	[EXTCON_DOCK] = {
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index f686204..9670d3f 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -69,6 +69,7 @@
- #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
- #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
- #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
-+#define EXTCON_DISP_DP		44	/* Display Port */
- 
- /* Miscellaneous external connector */
- #define EXTCON_DOCK		60
-@@ -106,12 +107,17 @@
-  * @type:	integer (intval)
-  * @value:	0 (low) or 1 (high)
-  * @default:	0 (low)
-+ * - EXTCON_PROP_USB_TYPEC_POLARITY
-+ * @type:	integer (intval)
-+ * @value:	0 (normal) or 1 (flip)
-+ * @default:	0 (normal)
-  */
- #define EXTCON_PROP_USB_ID		0
- #define EXTCON_PROP_USB_VBUS		1
-+#define EXTCON_PROP_USB_TYPEC_POLARITY	2
- 
- #define EXTCON_PROP_USB_MIN		0
--#define EXTCON_PROP_USB_MAX		1
-+#define EXTCON_PROP_USB_MAX		2
- #define EXTCON_PROP_USB_CNT	(EXTCON_PROP_USB_MAX - EXTCON_PROP_USB_MIN + 1)
- 
- /* Properties of EXTCON_TYPE_CHG. */
++	tcphy0: phy@ff7c0000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff7c0000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
++			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
++		assigned-clock-rates = <50000000>;
++		resets = <&cru SRST_UPHY0>,
++			 <&cru SRST_UPHY0_PIPE_L00>,
++			 <&cru SRST_P_UPHY0_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe580 0 16>;
++		rockchip,usb3tousb2-en = <0xe580 3 19>;
++		rockchip,external-psm = <0xe588 14 30>;
++		rockchip,pipe-status = <0xe5c0 0 0>;
++		rockchip,uphy-dp-sel = <0x6268 19 19>;
++		status = "disabled";
++	};
++
++	tcphy1: phy@ff800000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff800000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
++			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
++		assigned-clock-rates = <50000000>;
++		resets = <&cru SRST_UPHY1>,
++			 <&cru SRST_UPHY1_PIPE_L00>,
++			 <&cru SRST_P_UPHY1_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe58c 0 16>;
++		rockchip,usb3tousb2-en = <0xe58c 3 19>;
++		rockchip,external-psm = <0xe594 14 30>;
++		rockchip,pipe-status = <0xe5c0 16 16>;
++		rockchip,uphy-dp-sel = <0x6268 3 19>;
++		status = "disabled";
++	};
++
+ 	watchdog@ff840000 {
+ 		compatible = "snps,dw-wdt";
+ 		reg = <0x0 0xff840000 0x0 0x100>;
 -- 
 2.6.3
