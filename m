@@ -1,134 +1,56 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 2/2] dt-bindings: add simple-panel-dsi and simple-panel
-Date: Wed, 27 Jul 2016 11:03:05 +0800
-Message-ID: <57982469.6030201@rock-chips.com>
-References: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
- <1468984730-23186-2-git-send-email-mark.yao@rock-chips.com>
- <20160725152125.GS21170@ulmo.ba.sec> <5796C47C.5040208@rock-chips.com>
- <20160726090226.GB2433@ulmo.ba.sec>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: add the saradc for rk3399
+Date: Tue, 26 Jul 2016 21:07:59 -0700
+Message-ID: <CAD=FV=W=rNP2h_8Z1TGK0A_KEhL19TKtWz-u0-_ZGH8jF5Zn9Q@mail.gmail.com>
+References: <1469535195-5227-1-git-send-email-wxt@rock-chips.com> <1469535195-5227-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160726090226.GB2433@ulmo.ba.sec>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, =?UTF-8?B?5bqE5paH6b6Z?= <zwl@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1469535195-5227-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-iio <linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA35pyIMjbml6UgMTc6MDIsIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+IE9uIFR1
-ZSwgSnVsIDI2LCAyMDE2IGF0IDEwOjAxOjMyQU0gKzA4MDAsIE1hcmsgeWFvIHdyb3RlOgo+PiBP
-biAyMDE25bm0MDfmnIgyNeaXpSAyMzoyMSwgVGhpZXJyeSBSZWRpbmcgd3JvdGU6Cj4+Cj4+ICAg
-ICAgT24gV2VkLCBKdWwgMjAsIDIwMTYgYXQgMTE6MTg6NTBBTSArMDgwMCwgTWFyayBZYW8gd3Jv
-dGU6Cj4+Cj4+ICAgICAgICAgIEFsbG93IHVzZXIgYWRkIGRpc3BsYXkgdGltaW5nIG9uIGRldmlj
-ZSB0cmVlIHdpdGggc2ltcGxlLXBhbmVsLWRzaQo+PiAgICAgICAgICBvciBzaW1wbGUtcGFuZWwu
-Cj4+Cj4+ICAgICAgICAgIENjOiBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdAZ21haWwu
-Y29tPgo+PiAgICAgICAgICBDYzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPj4g
-ICAgICAgICAgQ2M6IE1hcmsgUnV0bGFuZCA8bWFyay5ydXRsYW5kQGFybS5jb20+Cj4+Cj4+ICAg
-ICAgICAgIFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4K
-Pj4gICAgICAgICAgLS0tCj4+ICAgICAgICAgICAuLi4vYmluZGluZ3MvZGlzcGxheS9wYW5lbC9z
-aW1wbGUtcGFuZWwudHh0ICAgICAgICB8IDQ4ICsrKysrKysrKysrKysrKysrKysrKysKPj4gICAg
-ICAgICAgIDEgZmlsZSBjaGFuZ2VkLCA0OCBpbnNlcnRpb25zKCspCj4+Cj4+ICAgICAgU29ycnks
-IG5vdCBnb2luZyB0byBoYXBwZW4uIFJlYWQgdGhpcyBmb3IgYW4gZXhwbGFuYXRpb24gb2Ygd2h5
-IG5vdDoKPj4KPj4gICAgICAgICAgICAgIGh0dHBzOi8vc2lldGNoLXRhZ3IuYmxvZ3Nwb3QuZGUv
-MjAxNi8wNC9kaXNwbGF5LXBhbmVscy1hcmUtbm90LXNwZWNpYWwuaHRtbAo+Pgo+PiAgICAgIFRo
-aWVycnkKPj4KPj4KPj4gSGkgVGhpZXJyeQo+Pgo+PiBUaGUgYmxvZyBhY3R1YWxseSBub3QgcGVy
-c3VhZGUgbWUgd2h5IGNhbid0IHVzZSBkaXNwbGF5IHRpbWluZyBvbgo+PiBkZXZpY2UgdHJlZS4K
-PiBPa2F5LCBwZXJoYXBzIHJlYWQgaXQgYWdhaW4sIGl0IGFkZHJlc3NlcyBtb3N0IG9mIHlvdXIg
-cG9pbnRzIGJlbG93Lgo+Cj4+IDEsIEJpbmRpbmcgcGFuZWwgYXMgYSBzaW1wbGUgc3RyaW5nIG9u
-IGRldmljZSB0cmVlIHNlZW1zIHNpbXBsZSBvbiBkZXZpY2UgdHJlZSwKPj4gYnV0IGl0J3MgY29t
-cGxleCBvbiBrZXJuZWwgY29kZSwgYW5kIGtlcm5lbCBjb2RlIHdvdWxkIGJlY2FtZSBiaWdnZXIg
-YW5kCj4+IGJpZ2dlci4KPiBJIGRvbid0IHRoaW5rIHRoZSB2aWRlbyB0aW1pbmdzIGluIHRoZSBz
-aW1wbGUtcGFuZWwgZHJpdmVyIGFyZSB2ZXJ5Cj4gY29tcGxleC4gVGhleSBhbHNvIGRvbid0IHVz
-ZSB2ZXJ5IG11Y2ggc3BhY2UuIEFuZCBpZiB5b3UncmUgcmVhbGx5Cj4gY29uY2VybmVkIGFib3V0
-IHNwYWNlIHlvdSBjYW4gYWx3YXlzIHVzZSBjb25kaXRpb25hbCBjb21waWxhdGlvbiBhbmQKPiBL
-Y29uZmlnIHN5bWJvbHMgdG8gcmVtb3ZlIHRpbWluZ3MgZm9yIHBhbmVscyB0aGF0IHlvdSBkb24n
-dCB1c2UuCj4KPiBBbHNvLCBwYW5lbHMgYXJlIGNoYXJhY3Rlcml6ZWQgYnkgbXVjaCBtb3JlIHRo
-YW4ganVzdCB2aWRlbyB0aW1pbmdzLgo+IFRoZXJlIHdlcmUgYXR0ZW1wdHMsIHdheSBiYWNrLCB0
-byBmdWxseSBkZXNjcmliZSBwYW5lbHMgaW4gZGV2aWNlIHRyZWUKPiBhbmQgdGhhdCBmYWlsZWQu
-IFdoYXQgeW91IHByb3Bvc2UgaGVyZSBpcyBhIHBhcnRpYWwgc29sdXRpb24gdG8gYSBtdWNoCj4g
-bW9yZSBjb21wbGV4IHByb2JsZW0uCj4KPiBUaGlzIGlzIGFsbCBleHBsYWluZWQgaW4gdGhlIGJs
-b2cgcG9zdC4KPgo+PiAyLCBPdXIgY3VzdG9tZXIgYWx3YXlzIGFzayBtZSwgd2hlcmUgaXMgdGhl
-IGRpc3BsYXkgdGltaW5nPyBUaGV5IG9ubHkgZmluZCBhCj4+IHNpbXBsZSBwYW5lbCBzdHJpbmcg
-b24gZGV2aWNlIHRyZWUsICBuZWVkIHNlYXJjaCB0aGUga2VybmVsIGNvZGUgdG8gZmluZCB0aGUK
-Pj4gYWN0dWFsbHkgdGltaW5nLiBUaGV5IGFyZSB1c2VkIHRvIGZpbmQgYWxsIGRldmljZSBpbmZv
-IG9uIGRldmljZSB0cmVlLCBidXQKPj4gcGFuZWwgdGltaW5nIGluZm8gaXMgbm90LCB0aGlzIHdv
-dWxkIGNvbmZ1c2UgdGhlbS4gVGhleSBkb24ndCB3YW50IHRvIGtub3cgaG93Cj4+IGNvZGUgd29y
-aywganVzdCB3YW50IGEgZWFzaWVyIGludGVyZmFjZS4KPiBUaGF0J3Mgbm90IGEgdmVyeSBnb29k
-IGFyZ3VtZW50LiBUaGVyZSdzIHBsZW50eSBvZiBkYXRhIHRoYXQncyBub3QgaW4KPiBkZXZpY2Ug
-dHJlZSBmb3Igb3RoZXIgZGV2aWNlcywgd2h5IHNob3VsZCBwYW5lbHMgYmUgZGlmZmVyZW50PyBB
-bHNvLCBJCj4gd291bGQgaG9wZSB0aGF0IGFueSBjdXN0b21lciBvZiB5b3VycyBrbm93cyB0aGVp
-ciB3YXkgYXJvdW5kIGtlcm5lbAo+IGNvZGUgYW5kIGNhbiB0aGVyZWZvcmUgZWFzaWx5IGFkZCB2
-aWRlbyB0aW1pbmdzIGZvciBuZXcgcGFuZWxzLiBJdCdzCj4gcXVpdGUgdHJpdmlhbCB0byBkbywg
-YW5kIHRoZXJlIGFyZSBtYW55IGV4YW1wbGVzIG9uIGhvdyB0byBkbyBpdC4KPgo+PiAzLCBJIHRo
-aW5rIGRldmljZSB0cmVlIG5vdCBvbmx5IGNhbiB1c2UgZm9yIGtlcm5lbCwgb3RoZXIgbW9kdWxl
-IGFsc28gY2FuIHVzZQo+PiBpdC4gb24gb3VyIHByb2plY3QsIHdlIHVzZSB1Ym9vdCArIGtlcm5l
-bCwgdGhlIHVib290IHN1cHBvcnQgZmR0LCB0aGF0IGZ1bmN0aW9uCj4+IGNhbiBwYXJzaW5nIGRl
-dmljZSB0cmVlLiBTbyBpZiBkZXNjcmliZSB0aGUgZGlzcGxheSB0aW1pbmcgb24gZGV2aWNlIHRy
-ZWUsIGJvdGgKPj4gdWJvb3QgYW5kIGtlcm5lbCBjYW4gc2hhcmUgc2FtZSBkaXNwbGF5IHRpbWlu
-Zywgbm90IG5lZWQgdG8gZGVzY3JpYmUgdHdpY2UsIGl0Cj4+IHdvdWxkIHNhdmUgd29yayBhbmQg
-bm90IGVhc3kgdG8gbWFrZSBtaXN0YWtlLgo+IFRoYXQncyBhIGJpdCBvZiBhIHN0cmV0Y2guIFZp
-ZGVvIHRpbWluZ3MgaXMgZmFpcmx5IHN0cmFpZ2h0Zm9yd2FyZCBkYXRhCj4gYW5kIGNhbiBiZSBl
-YXNpbHkgYWRkZWQgdG8gYW55IG90aGVyIHBpZWNlIG9mIGNvZGUgdGhhdCB5b3Ugd2FudCB0byBy
-dW4uCj4gWWVzIHlvdSB3aWxsIGhhdmUgdG8gZHVwbGljYXRlIHRoZSBkYXRhLCBidXQgaG93IGlz
-IHRoYXQgZGlmZmVyZW50IGZyb20KPiBkdXBsaWNhdGluZyBhbGwgdGhlIGRyaXZlciBjb2RlPwo+
-Cj4+IDQsIEZvciBkaWZmZXJlbnRpYXRpb24gcHJvZHVjdCwgd2UgZmFjZSBtYW55IGRpZmZlcmVu
-dCBwYW5lbCwgZXZlcnkgb25jZSBpbiBhCj4+IHdoaWxlLCBuZWVkIHRvIGFkZCBhIG5ldyBwYW5l
-bCwgd2UgY2FuJ3QgY29udmVydCBhbGwgdGhlIHBhbmVsICwgY29kZSB0aGUgcGFuZWwKPj4gb24g
-a2VybmVsIHNlZW1zIHRvbyBiYWQsIGFuZCB0aGUga2VybmVsIGltYWdlIGJlY2FtZSBiaWdnZXIg
-YW5kIGJpZ2dlci4KPiBXaHkgY2FuJ3QgeW91IGNvbnZlcnQgYWxsIHRoZSBwYW5lbHM/IFdlIGFs
-cmVhZHkgc3VwcG9ydCBhIGJ1bmNoIG9mIHRoZW0KPiBhbmQgaGF2ZW4ndCB5ZXQgcnVuIGludG8g
-YW55IHByb2JsZW1zLiBJZiB5b3UgZG8gZW5jb3VudGVyIGFueSBpc3N1ZXMKPiB0cnlpbmcgdG8g
-cG9ydCBwYW5lbHMgdG8gdGhlIERSTSBwYW5lbCBpbmZyYXN0cnVjdHVyZSwgcGxlYXNlIGxldCBt
-ZQo+IGtub3cgYW5kIEkgY2FuIGhlbHAgc29ydCB0aGVtIG91dC4KPgo+IFRoZSBrZXJuZWwgaW1h
-Z2Ugc2l6ZSBpc24ndCBhIHByb2JsZW0gZWl0aGVyLiBJbiBhbnkgbW9kZXJuIGtlcm5lbCB0aGUK
-PiB2aWRlbyB0aW1pbmcgZGF0YSBpbiB0aGUgcGFuZWwgZHJpdmVyIGlzIHRpbnkgY29tcGFyZWQg
-dG8gdGhlIHJlc3QuCj4KPj4gR2VuZXJhbGx5LCBPdXIgY3VzdG9tZXIgZG9uJ3Qgd2FudCB0byBk
-byBhbnkgbW9kaWZ5IG9uIGtlcm5lbCwgdGhleSBqdXN0IG1vZGlmeQo+PiBkZXZpY2UgdHJlZSB0
-byBicmluZyB1cCB0aGVpciBkZXZpY2UuIERlc2NyaWJlIHRoZSBwYW5lbCB0aW1pbmcgb24gZGV2
-aWNlIHRyZWUsCj4+IHdvdWxkIG1ha2UgY3VzdG9tZXIgZWFzeSB0byB1c2UgYW5kIHJldXNlIGl0
-Lgo+IFllcywgdGhhdCB3b3VsZCBwZXJoYXBzIG1ha2UgaXQgZWFzaWVyIGZvciB0aGVtIHRvIGJy
-aW5nIHVwIHRoZSBkZXZpY2UuCj4gQnV0IHNvb24gYWZ0ZXIgdGhleSdsbCBub3RpY2UgdGhhdCB0
-aGVyZSBhcmUgZ2xpdGNoZXMgd2hlbiB0dXJuaW5nIHRoZQo+IHBhbmVsIG9uIGFuZCBvZmYsIGFu
-ZCB0aGVuIHRoZXknbGwgcmVhbGl6ZSB0aGF0IHRoZXkgY2FuJ3QgZml4IHRoYXQKPiB1c2luZyB0
-aGVpciBzaW1wbGUgZGV2aWNlIHRyZWUuCkFib3V0IHRoZSBwYW5lbCBvbiBhbmQgb2ZmLCBJIGRv
-bid0IHRoaW5rIHRoZSBwYW5lbC1zaW1wbGUgZG8gdGhlIGdvb2QgCmVub3VnaC4KCnBhbmVsLXNp
-bXBsZSBvbmx5IGhhdmUgb25lIGdwaW8gYW5kIG9uZSByZWd1bGF0b3IsIGFuZCB0aGVpciBzZXF1
-ZW5jZSBpcyAKaGFyZCBjb2RlLCBXaHkgbm90IGEgcGFuZWwgaGF2ZSB0d28gZ3BpbyBvciB0d28g
-cmVndWxhdG9yPyBPbiBvdXIgCnByb2plY3QsIHdlIGZpbmQgbWFueSBjdXN0b21lciBkb24ndCB1
-c2UgdGhlIFJDIHRvIGRvIHBhbmVsIHJlc2V0LCB0aGV5IApkaXJlY3RseSB1c2UgZ3BpbyByZXNl
-dCwgc28gdGhleSBuZWVkIGEgZ3BpbyB0byBkbyBwYW5lbCByZXNldC4KCnRoZSBkZXZpY2UgdHJl
-ZSBwYW5lbCdzIG9uIGFuZCBvZmYgZnVuY3Rpb24gaXMgd2hhdCB0aGUgbmV4dCBzdGVwIEkgd2Fu
-dCAKdG8gdXBzdHJlYW0sIG9uIG91ciBkb3duc3RyZWFtIGtlcm5lbCwgd2UgZG8gbGlrZSB0aGF0
-OgoKcGFuZWwgewogICAgIHBvd2VyX2N0cmwgewogICAgICAgICAgIHBvd2VyMCB7CiAgICAgICAg
-ICAgICAgICAgICBncGlvcyA9IDx4eHg+OwogICAgICAgICAgICAgICAgICAgZGVsYXksbXMgPSA8
-Mz47CiAgICAgICAgICAgfQogICAgICAgICAgIHBvd2VyMSB7CiAgICAgICAgICAgICAgICAgICBy
-ZWd1bGF0b3IgPSA8eHh4PjsKICAgICAgICAgICAgICAgICAgIGRlbGF5LG1zID0gPDM+OwogICAg
-ICAgICAgIH0KICAgICAgICAgICBwb3dlcjIgewogICAgICAgICAgICAgICAgICAgYmFja2xpZ2h0
-ID0gPHh4eD47CiAgICAgICAgICAgICAgICAgICBkZWxheSxtcyA9IDwzPjsKICAgICAgICAgICB9
-CiAgICAgfQp9CmFuZCBvbiBkcml2ZXIsIHBvd2VyIG9uIHNlcXVlbmNlIHdpdGggcG93ZXIwLT5w
-b3dlcjEtPnBvd2VyMiwgcG93ZXIgZG93biAKd2l0aCBwb3dlcjItPnBvd2VyMS0+cG93ZXIwLgpp
-ZiB1c2VyIHdhbnQgdG8gc3dhcCB0aGUgcG93ZXIsIGNhbiBlYXN5IGRvIHRoYXQgYnkgIGFkanVz
-dCBkdHMgcG93ZXIgCnNlcXVlbmNlLgoKdGhpcyBtZXRob2QgY2FuIGVhc3kgb3JkZXIgdGhlIGdw
-aW8sIHJlZ3VsYXRvciwgYmFja2xpZ2h0IHNlcXVlbmNlLCAKanVkZ2UgdGhlIGRlbGF5IHRpbWUg
-YW5kIGFkZCBuZXcgcmVndWxhdG9yIG9yIGdwaW8uCkkgdGhpbmsgdGhpcyBwYW5lbCBwb3dlciBv
-biBhbmQgb2ZmIG1ldGhvZCBpcyBiZXR0ZXIgdGhhbiBwYW5lbC1zaW1wbGUgCmRyaXZlciBjdXJy
-ZW50bHkgdXNpbmcuCgo+IEFsbCBvZiB0aGF0IHNhaWQsIGlmIHlvdSBkbyB0aGluayB0aGlzIGlz
-IHZhbHVhYmxlIHRvIHlvdXIgY3VzdG9tZXJzLAo+IHBsZWFzZSBmZWVsIGZyZWUgdG8gc2hpcCB0
-aGVzZSBwYXRjaGVzIGluIHlvdXIgZG93bnN0cmVhbSB0cmVlLgo+Cj4gQWxzbywgdGhvdWdoIHRo
-aXMgaXMgYSBiaXQgb2ZmIHRvcGljLCBJJ20gc3VyZSB0aGF0IHlvdXIgY3VzdG9tZXJzJwo+IGN1
-c3RvbWVycyB3b3VsZCBiZSB2ZXJ5IGhhcHB5IHRvIGdldCBhbGwgdGhlIHNlY3VyaXR5IGFuZCBi
-dWcgZml4ZXMgdGhhdAo+IHdvdWxkIGF1dG9tYXRpY2FsbHkgYmUgZGVsaXZlcmVkIHdpdGggdGhl
-IGZyZXF1ZW50IGtlcm5lbCB1cGRhdGVzIHRoYXQKPiBicmluZyBpbiBzdXBwb3J0IGZvciBuZXcg
-cGFuZWxzLgo+Cj4gVGhpZXJyeQoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+
+On Tue, Jul 26, 2016 at 5:13 AM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> This patch adds saradc needed information on rk3399 SoCs.
+>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+> Changes in v2: None
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 4c84229..b81f84b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -299,6 +299,18 @@
+>                 };
+>         };
+>
+> +       saradc: saradc@ff100000 {
+> +               compatible = "rockchip,rk3399-saradc";
+> +               reg = <0x0 0xff100000 0x0 0x100>;
+> +               interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
+> +               #io-channel-cells = <1>;
+> +               clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+> +               clock-names = "saradc", "apb_pclk";
+> +               resets = <&cru SRST_P_SARADC>;
+> +               reset-names = "saradc-apb";
+> +               status = "disabled";
+> +       };
+> +
+
+Seems reasonable to me.  I'll let Heiko comment if he cares about the
+sort ordering.  I can never quite figure out what it should be so I've
+sorta given up on it...  ;)
+
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+-Doug
