@@ -1,95 +1,103 @@
-From: Guenter Roeck <groeck@google.com>
-Subject: Re: [v7 PATCH 4/6] arm64: dts: rockchip: add Type-C phy for RK3399
-Date: Wed, 27 Jul 2016 14:50:31 -0700
-Message-ID: <CABXOdTcr70v9QxnAh_Btvhwo4h0ZPq18T1bSAakhT5Nco-1S7Q@mail.gmail.com>
-References: <1469624836-22792-1-git-send-email-zyw@rock-chips.com> <1469624836-22792-5-git-send-email-zyw@rock-chips.com>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: Re: [PATCH v7 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
+Date: Wed, 27 Jul 2016 17:57:39 -0400
+Message-ID: <20160727215739.GV11410@windriver.com>
+References: <1468802533-17699-1-git-send-email-shawn.lin@rock-chips.com>
+ <1468802533-17699-2-git-send-email-shawn.lin@rock-chips.com>
+ <20160727182233.GB8901@localhost>
+ <CAP=VYLqPj=81Q_8kV1wi=FHP-CB6arrXFAC0ktJrLqR-1TSCjw@mail.gmail.com>
+ <20160727200443.GA30281@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469624836-22792-5-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, myungjoo.ham@samsung.com, Chanwoo Choi <cw00.choi@samsung.com>, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20160727200443.GA30281-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 27, 2016 at 6:07 AM, Chris Zhong <zyw@rock-chips.com> wrote:
-> There are 2 Type-C phy on RK3399, they are almost same, except the
-> address of register. They support USB3.0 Type-C and DisplayPort1.3
-> Alt Mode on USB Type-C. Register a phy, supply it to USB3 controller
-> and DP controller.
->
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+[Re: [PATCH v7 2/2] PCI: Rockchip: Add Rockchip PCIe controller support] On 27/07/2016 (Wed 13:04) Brian Norris wrote:
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> + Guenter
+> 
+> Hi,
+> 
+> On Wed, Jul 27, 2016 at 03:56:36PM -0400, Paul Gortmaker wrote:
+> > On Wed, Jul 27, 2016 at 2:22 PM, Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> > > On Mon, Jul 18, 2016 at 08:42:13AM +0800, Shawn Lin wrote:
+> > >> This patch adds Rockchip PCIe controller support found
+> > >> on RK3399 Soc platform.
+> > >>
+> > >> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > >>
+> > >> ---
+> > >>
+> > >> Changes in v7:
+> > >> - make it as a build-in driver
+> > 
+> > [...]
+> > 
+> 
+> ...
+> 
+> > [...]
+> > 
+> > >> +static struct platform_driver rockchip_pcie_driver = {
+> > >> +     .driver = {
+> > >> +             .name = "rockchip-pcie",
+> > >> +             .of_match_table = rockchip_pcie_of_match,
+> > >> +     },
+> > >> +     .probe = rockchip_pcie_probe,
+> > >> +
+> > >> +};
+> > >> +module_platform_driver(rockchip_pcie_driver);
+> > >> +
+> > >> +MODULE_AUTHOR("Rockchip Inc");
+> > >> +MODULE_DESCRIPTION("Rockchip AXI PCIe driver");
+> > >> +MODULE_LICENSE("GPL v2");
+> > >
+> > > Per your Kconfig, this driver cannot be a module, so remove these MODULE_*
+> > > annotations.  This is to follow Paul Gortmaker's recent "Make explicitly
+> > > non-modular" work.  Also change the include of <linux/module.h> to
+> > > <linux/init.h>.
+> > 
+> > Thanks!  You beat me to it.    I didn't see any EXPORT_SYMBOL so it doesn't
+> > look like we need export.h  added here.   Also, at the risk of stating
+> > the obvious,
+> > the module_platform_driver becomes builtin_platform_driver.
+> 
+> Just for reference (not to necessarily disagree here): we've kinda
+> ping-ponged on this one. I suggested it could be built as a module, so
+> Shawn added it, but apparently we're missing an export:
+> 
+> https://lkml.org/lkml/2016/7/8/704
+> 
+> so he reverted back. It's probably best to just leave this built-in and
+> resolve the comments Paul and Bjorn made, to avoid too much more
+> flip-flopping. If we still want to patch up the __weak
+> pci_remap_iospace(), then we can make this a module at a later time.
 
-> ---
->
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> Changes in v1: None
->
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 44 ++++++++++++++++++++++++++++++++
->  1 file changed, 44 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 0af03a3..7095ddf 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -952,6 +952,50 @@
->                 };
->         };
->
-> +       tcphy0: phy@ff7c0000 {
-> +               compatible = "rockchip,rk3399-typec-phy";
-> +               reg = <0x0 0xff7c0000 0x0 0x40000>;
-> +               rockchip,grf = <&grf>;
-> +               #phy-cells = <0>;
-> +               clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-> +                        <&cru SCLK_UPHY0_TCPDPHY_REF>;
-> +               clock-names = "tcpdcore", "tcpdphy-ref";
-> +               assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
-> +               assigned-clock-rates = <50000000>;
-> +               resets = <&cru SRST_UPHY0>,
-> +                        <&cru SRST_UPHY0_PIPE_L00>,
-> +                        <&cru SRST_P_UPHY0_TCPHY>;
-> +               reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-> +               rockchip,typec-conn-dir = <0xe580 0 16>;
-> +               rockchip,usb3tousb2-en = <0xe580 3 19>;
-> +               rockchip,external-psm = <0xe588 14 30>;
-> +               rockchip,pipe-status = <0xe5c0 0 0>;
-> +               rockchip,uphy-dp-sel = <0x6268 19 19>;
-> +               status = "disabled";
-> +       };
-> +
-> +       tcphy1: phy@ff800000 {
-> +               compatible = "rockchip,rk3399-typec-phy";
-> +               reg = <0x0 0xff800000 0x0 0x40000>;
-> +               rockchip,grf = <&grf>;
-> +               #phy-cells = <0>;
-> +               clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-> +                        <&cru SCLK_UPHY1_TCPDPHY_REF>;
-> +               clock-names = "tcpdcore", "tcpdphy-ref";
-> +               assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
-> +               assigned-clock-rates = <50000000>;
-> +               resets = <&cru SRST_UPHY1>,
-> +                        <&cru SRST_UPHY1_PIPE_L00>,
-> +                        <&cru SRST_P_UPHY1_TCPHY>;
-> +               reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-> +               rockchip,typec-conn-dir = <0xe58c 0 16>;
-> +               rockchip,usb3tousb2-en = <0xe58c 3 19>;
-> +               rockchip,external-psm = <0xe594 14 30>;
-> +               rockchip,pipe-status = <0xe5c0 16 16>;
-> +               rockchip,uphy-dp-sel = <0x6268 3 19>;
-> +               status = "disabled";
-> +       };
-> +
->         watchdog@ff840000 {
->                 compatible = "snps,dw-wdt";
->                 reg = <0x0 0xff840000 0x0 0x100>;
-> --
-> 2.6.3
->
+Agreed, and this was the general consensus we came to for other PCI code
+as well.   It might be different if we were deleting hundreds of lines
+of code, but we are just making a few simple changes to make it clear
+that things aren't modular, and that ensures others don't continue to
+copy the same inconsistency into their new driver(s).  It doesn't in any
+way prevent a future conversion to tristate if that use case makes sense.
+
+THanks,
+Paul.
+--
+
+> 
+> Regards,
+> Brian
