@@ -1,19 +1,17 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v1 2/2] drm/bridge: analogix_dp: turn off the panel when
- eDP need to disable
-Date: Thu, 28 Jul 2016 10:06:15 -0400
-Message-ID: <CAOw6vbKbLzm4mPtp2LsG=7=KJkS_4Oe7rA4Of0uT5vM_Xoiphw@mail.gmail.com>
-References: <1469106874-4912-1-git-send-email-ykk@rock-chips.com>
- <1469106886-4979-1-git-send-email-ykk@rock-chips.com>
- <CAOw6vbK7CnFwH_Tyrq6ab4DBxVLa8-JCYEM-Tu+mOYsKmNULtg@mail.gmail.com>
- <57917011.6000108@rock-chips.com>
- <CAOw6vbLXDuEW1egN3N8XxXdW8hdrY8W9T-v_d6hWDnRcRqZe_A@mail.gmail.com>
- <57997BED.4050600@rock-chips.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 2/2] dt-bindings: add simple-panel-dsi and simple-panel
+Date: Thu, 28 Jul 2016 16:13:25 +0200
+Message-ID: <20160728141325.GB28342@ulmo.ba.sec>
+References: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
+ <1468984730-23186-2-git-send-email-mark.yao@rock-chips.com>
+ <20160725152125.GS21170@ulmo.ba.sec>
+ <5796C47C.5040208@rock-chips.com>
+ <20160726090226.GB2433@ulmo.ba.sec>
+ <57982469.6030201@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1572525734=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <57997BED.4050600@rock-chips.com>
+In-Reply-To: <57982469.6030201@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -23,103 +21,210 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org, Mark Yao <yzq@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, Douglas Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, =?utf-8?B?6buE5rab?= <huangtao@rock-chips.com>, =?utf-8?B?5bqE5paH6b6Z?= <zwl@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBKdWwgMjcsIDIwMTYgYXQgMTE6MjggUE0sIFlha2lyIFlhbmcgPHlra0Byb2NrLWNo
-aXBzLmNvbT4gd3JvdGU6Cj4gU2VhbiwKPgo+IE9vcHMsIHNvcnJ5IGFib3V0IG1pc3MgeW91ciBz
-dWdnZXN0IDooCj4KPgo+IE9uIDA3LzIyLzIwMTYgMTE6MDMgUE0sIFNlYW4gUGF1bCB3cm90ZToK
-Pj4KPj4gT24gVGh1LCBKdWwgMjEsIDIwMTYgYXQgOTowMCBQTSwgWWFraXIgWWFuZyA8eWtrQHJv
-Y2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+PiBTZWFuLAo+Pj4KPj4+IFRoYW5rcyBmb3IgeW91
-ciBmYXN0IHJlc3BvbmQgOi0pCj4+Pgo+Pj4gQnV0IHRoaXMgcGF0Y2ggaXMgbm90IHRoZSBsYXRl
-c3Qgb25lLCBJIGhhdmUgdXBncmFkZWQgdGhpcyB0byAidjEuMSIKPj4+IHZlcnNpb24KPj4+IHRv
-IGZpeCB0aGUgZURQIGNhbid0IGJlIGRpc2FibGVkIHByb2JsZW06Cj4+PiAgICAgIFtQQVRDSCB2
-MS4xIDIvMl0gZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IHR1cm4gb2ZmIHRoZSBwYW5lbCB3aGVu
-Cj4+PiBlRFAKPj4+IG5lZWQgdG8gZGlzYWJsZQo+Pj4gICAgICAgICAgQ2hhbmdlcyBpbiB2MS4x
-OiAtIHVucHJlcGFyZSB0aGUgcGFuZWwgYXQgdGhlIGVuZCBvZgo+Pj4gYnJpZGdlLT5kaXNhYmxl
-KCkgZnVuY3Rpb24KPj4+Cj4+PiBJbiBzcGl0ZSBvZiB0aGlzLCBJIHdvdWxkIHRha2UgeW91ciBj
-b21tZW50cyB3aXRoIG15ICJ2MS4xIiBwYXRjaC4KPj4+Cj4+PiBPbiAwNy8yMS8yMDE2IDEwOjI4
-IFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4+Pgo+Pj4gT24gVGh1LCBKdWwgMjEsIDIwMTYgYXQgOTox
-NCBBTSwgWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+PiBTb21l
-IHBhbmVscyAobGlrZSBTaGFycCBMUTEyM1AxSlgzMSkgbmVlZCB0byBiZSB0dXJuIG9mZiB3aGVu
-IGVEUAo+Pj4gY29udHJvbGxlciBzdG9wIHRvIHNlbmQgdmFsaWQgdmlkZW8gc2lnbmFsLCBvdGhl
-cndoaXNlIHBhbmVsIHdvdWxkCj4+PiBnbyBidXJuIGluLCBhbmQga2VlcCBmbGlja2VyIGFuZCBm
-bGlja2VyLgo+Pj4KPj4+IFNvIGl0J3MgYmV0dGVyIHRvIHR1cm4gb2ZmIHRoZSBwYW5lbCB3aGVu
-IGVEUCBuZWVkIHRvIGRpc2FibGUsIGFuZAo+Pj4gd2UgbmVlZCB0byB0dXJuIG9uIHRoZSBwYW5l
-bCBpbiBjb25uZWN0b3ItPmRldGVjdCgpIGNhbGxiYWNrLCBzbwo+Pj4gdGhhdCBkcml2ZXIgd291
-bGQgZGV0ZWN0IHBhbmVsIHN0YXR1cyByaWdodGx5Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IFlh
-a2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4gICBkcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDE4Cj4+PiArKysrKysrKysr
-LS0tLS0tLS0KPj4+ICAgMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDggZGVsZXRp
-b25zKC0pCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBpbmRleCAzMjcxNWRhLi5lYTA1OWIzIDEwMDY0NAo+
-Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5jCj4+PiBAQCAtOTYxLDYgKzk2MSwxNCBAQCBhbmFsb2dpeF9kcF9kZXRlY3Qoc3RydWN0
-IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKPj4+IGJvb2wgZm9yY2UpCj4+PiAgIHsKPj4+ICAg
-ICAgICAgIHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwID0gdG9fZHAoY29ubmVjdG9yKTsK
-Pj4+Cj4+PiArICAgICAgIC8qCj4+PiArICAgICAgICAqIFBhbmxlIHdvdWxkIHByZXBhcmUgZm9y
-IHNldmVyYWwgdGltZXMgaGVyZSwgYnV0IGRvbid0IHdvcnJ5IGl0Cj4+Pgo+Pj4gcy9QYW5sZS9Q
-YW5lbC8KPj4+Cj4+Pgo+Pj4gRG9uZQo+Pj4KPj4+ICsgICAgICAgICogd291bGQgb25seSBlbmFi
-bGUgdGhlIGhhcmR3YXJlIGF0IHRoZSBmaXJzdCBwcmVwYXJlIHRpbWUuCj4+Pgo+Pj4gRXJyciwg
-dGhpcyBzaG91bGRuJ3QgZ28gaW4gZGV0ZWN0LiBIb3cgYWJvdXQgcHV0dGluZyB0aGlzIGluCj4+
-PiBicmlkZ2VfZW5hYmxlIGluc3RlYWQ/Cj4+Pgo+Pj4KPj4+IE5vcGUsIGlmIHdlIHB1dCB0aGlz
-IGluIGJyaWRnZV9lbmFibGUsIHRoZW4gZURQIHdvdWxkIG5ldmVyIGJlIGVuYWJsZWQuCj4+PiBI
-ZXJlJ3JlIHRoZSBjYWxsaW5nIGZsb3cuCj4+Pgo+Pj4gLS0+IGFuYWxvZ2l4X2RwX3Byb2JlCj4+
-PiAgICAtLT4gYW5hbG9naXhfZHBfYmluZCAgIyB3ZSBzdGlsbCBoYXZlbid0IHByZXBhcmVkIHRo
-ZSBwYW5lbCBoZXJlLCB0aGF0Cj4+PiBtZWFucyBwYW5lbCBoYXZlIGJlZW4gcG93ZXJlZCB1cAo+
-Pj4gICAgICAtLT4gYW5hbG9naXhfZHBfZGV0ZWN0ICAjIE9vcHMsIGxvc2luZyBwYW5lbCB2YWxp
-ZCBob3RwbHVnIHNpZ25hbCwKPj4+IGNhdXNlCj4+PiBwYW5lbCBoYXZlIGJlZW4gcG93ZXJlZCB1
-cAo+Pj4gICAgICAtLT4gKiogS2VlcCBkZXRlY3RpbmcgKioKPj4KPj4KPj4gWWVhaCwgYWZ0ZXIg
-cGxheWluZyBhcm91bmQgd2l0aCB0aGUgcGF0Y2ggeWVzdGVyZGF5IEkgZGlzY292ZXJlZCB0aGlz
-Cj4+IGZvciBteXNlbGYuIEkgc3RpbGwgZG9uJ3QgdGhpbmsgZGV0ZWN0KCkgc2hvdWxkIGJlIGNo
-YW5naW5nIGhhcmR3YXJlCj4+IHN0YXRlLiBQZXJoYXBzIHlvdSBjb3VsZCBhZGQgYSBtYXRjaGlu
-ZyB1bnByZXBhcmUoKSBhZnRlciB5b3UgYXR0ZW1wdAo+PiB0byBkZXRlY3QgdGhlIHBhbmVsPwo+
-Cj4KPiBIbW0sIEkgZG9uJ3QgdW5kZXJzdGFuZCB0aGUgbWVhbmluZyBvZiAiYWRkIGEgbWF0Y2hp
-bmcgdW5wcmVwYXJlKCkiLgo+Cj4gSSBkaWRuJ3Qgc2VlIHRoZXJlIGlzIGFuIHVucHJlcGFyZSgp
-IGNhbGxiYWNrIGluIGRybV9jcnRjX2hlbHBlci5oLCB3b3VsZAo+IHlvdSBsaWtlIHRvIHNoYXJl
-IHNvbWUgc2ltcGxlIGNvZGUgOi1ECj4KCkluIG90aGVyIHdvcmRzLCBtYWtlIHN1cmUgdGhlIGhh
-cmR3YXJlIGlzIGluIHRoZSBzYW1lIHN0YXRlIGF0IHRoZQpiZWdpbm5pbmcgYW5kIGVuZCBvZiBk
-ZXRlY3QoKS4gWW91IHNob3VsZG4ndCBoYXZlIHRoZSBwYW5lbCBpbiBhCmRpZmZlcmVudCBzdGF0
-ZSB3aGVuIHlvdSBleGl0IGRldGVjdCgpLgoKU2VhbgoKCgo+IFRoYW5rcywKPiAtIFlha2lyCj4K
-Pgo+PiBTZWFuCj4+Cj4+PiArICAgICAgICAqLwo+Pj4gKyAgICAgICBpZiAoZHAtPnBsYXRfZGF0
-YS0+cGFuZWwpCj4+PiArICAgICAgICAgICAgICAgaWYgKGRybV9wYW5lbF9wcmVwYXJlKGRwLT5w
-bGF0X2RhdGEtPnBhbmVsKSkKPj4+Cj4+PiBQZXJzb25hbGx5LCBJIGRvbid0IGxpa2UgZG9pbmcg
-d29yayBpbiBhIGNvbmRpdGlvbmFsIHNpbmNlIHlvdSdyZQo+Pj4gdGhyb3dpbmcgdGhlIHJldHVy
-biBjb2RlIGF3YXkuIENvdWxkIHlvdSBicmVhayB0aGlzIG91dCBpbnRvOgo+Pj4KPj4+IHJldCA9
-IGRybV9wYW5lbF9wcmVwYXJlKGRwLT5wbGF0X2RhdGEtPnBhbmVsKTsKPj4+IGlmIChyZXQpCj4+
-PiAgICBEUk1fRVJST1IoImZhaWxlZCB0byBzZXR1cCB0aGUgcGFuZWwgcmV0PSVkXG4iLCByZXQp
-Owo+Pj4KPj4+Cj4+PiBPa2F5Cj4+Pgo+Pj4KPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIERS
-TV9FUlJPUigiZmFpbGVkIHRvIHNldHVwIHRoZSBwYW5lbFxuIik7Cj4+PiArCj4+PiAgICAgICAg
-ICBpZiAoYW5hbG9naXhfZHBfZGV0ZWN0X2hwZChkcCkpCj4+PiAgICAgICAgICAgICAgICAgIHJl
-dHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKPj4+Cj4+PiBAQCAtMTA2Myw3ICsx
-MDcxLDggQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfYnJpZGdlX2Rpc2FibGUoc3RydWN0Cj4+
-PiBkcm1fYnJpZGdlICpicmlkZ2UpCj4+PiAgICAgICAgICAgICAgICAgIHJldHVybjsKPj4+Cj4+
-PiAgICAgICAgICBpZiAoZHAtPnBsYXRfZGF0YS0+cGFuZWwpIHsKPj4+IC0gICAgICAgICAgICAg
-ICBpZiAoZHJtX3BhbmVsX2Rpc2FibGUoZHAtPnBsYXRfZGF0YS0+cGFuZWwpKSB7Cj4+PiArICAg
-ICAgICAgICAgICAgaWYgKGRybV9wYW5lbF9kaXNhYmxlKGRwLT5wbGF0X2RhdGEtPnBhbmVsKSB8
-fAo+Pj4gKyAgICAgICAgICAgICAgICAgICBkcm1fcGFuZWxfdW5wcmVwYXJlKGRwLT5wbGF0X2Rh
-dGEtPnBhbmVsKSkgewo+Pj4KPj4+IFNhbWUgY29tbWVudCBoZXJlLCBwbGVhc2UgYnJlYWsgdGhp
-cyBvdXQgaW50byBzZXBhcmF0ZSBzdGF0ZW1lbnRzIGZvcgo+Pj4gYmV0dGVyIHJlYWRhYmlsaXR5
-L2xvZ2dpbmcuCj4+Pgo+Pj4KPj4+IE9rYXksCj4+Pgo+Pj4KPj4+IFRoYW5rcywKPj4+IC0gWWFr
-aXIKPj4+Cj4+Pgo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9FUlJPUigiZmFpbGVk
-IHRvIGRpc2FibGUgdGhlIHBhbmVsXG4iKTsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBy
-ZXR1cm47Cj4+PiAgICAgICAgICAgICAgICAgIH0KPj4+IEBAIC0xMzMzLDEzICsxMzQyLDYgQEAg
-aW50IGFuYWxvZ2l4X2RwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QKPj4+IGRybV9k
-ZXZpY2UgKmRybV9kZXYsCj4+Pgo+Pj4gICAgICAgICAgcGh5X3Bvd2VyX29uKGRwLT5waHkpOwo+
-Pj4KPj4+IC0gICAgICAgaWYgKGRwLT5wbGF0X2RhdGEtPnBhbmVsKSB7Cj4+PiAtICAgICAgICAg
-ICAgICAgaWYgKGRybV9wYW5lbF9wcmVwYXJlKGRwLT5wbGF0X2RhdGEtPnBhbmVsKSkgewo+Pj4g
-LSAgICAgICAgICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJmYWlsZWQgdG8gc2V0dXAgdGhlIHBh
-bmVsXG4iKTsKPj4+IC0gICAgICAgICAgICAgICAgICAgICAgIHJldHVybiAtRUJVU1k7Cj4+PiAt
-ICAgICAgICAgICAgICAgfQo+Pj4gLSAgICAgICB9Cj4+PiAtCj4+PiAgICAgICAgICBhbmFsb2dp
-eF9kcF9pbml0X2RwKGRwKTsKPj4+Cj4+PiAgICAgICAgICByZXQgPSBkZXZtX3JlcXVlc3RfdGhy
-ZWFkZWRfaXJxKCZwZGV2LT5kZXYsIGRwLT5pcnEsCj4+PiAtLQo+Pj4gMS45LjEKPj4+Cj4+Pgo+
-Pj4KPj4+Cj4+Pgo+Pgo+Pgo+Cj4KPiAtLQo+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0
-OiBzZW5kIHRoZSBsaW5lICJ1bnN1YnNjcmliZSBsaW51eC1zYW1zdW5nLXNvYyIKPiBpbgo+IHRo
-ZSBib2R5IG9mIGEgbWVzc2FnZSB0byBtYWpvcmRvbW9Admdlci5rZXJuZWwub3JnCj4gTW9yZSBt
-YWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3ZnZXIua2VybmVsLm9yZy9tYWpvcmRvbW8taW5mby5o
-dG1sCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+--===============1572525734==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="tjCHc7DPkfUGtrlw"
+Content-Disposition: inline
+
+
+--tjCHc7DPkfUGtrlw
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Jul 27, 2016 at 11:03:05AM +0800, Mark yao wrote:
+> On 2016=E5=B9=B407=E6=9C=8826=E6=97=A5 17:02, Thierry Reding wrote:
+> > On Tue, Jul 26, 2016 at 10:01:32AM +0800, Mark yao wrote:
+> > > On 2016=E5=B9=B407=E6=9C=8825=E6=97=A5 23:21, Thierry Reding wrote:
+> > >=20
+> > >      On Wed, Jul 20, 2016 at 11:18:50AM +0800, Mark Yao wrote:
+> > >=20
+> > >          Allow user add display timing on device tree with simple-pan=
+el-dsi
+> > >          or simple-panel.
+> > >=20
+> > >          Cc: Thierry Reding <thierry.reding@gmail.com>
+> > >          Cc: Rob Herring <robh+dt@kernel.org>
+> > >          Cc: Mark Rutland <mark.rutland@arm.com>
+> > >=20
+> > >          Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+> > >          ---
+> > >           .../bindings/display/panel/simple-panel.txt        | 48 +++=
++++++++++++++++++++
+> > >           1 file changed, 48 insertions(+)
+> > >=20
+> > >      Sorry, not going to happen. Read this for an explanation of why =
+not:
+> > >=20
+> > >              https://sietch-tagr.blogspot.de/2016/04/display-panels-a=
+re-not-special.html
+> > >=20
+> > >      Thierry
+> > >=20
+> > >=20
+> > > Hi Thierry
+> > >=20
+> > > The blog actually not persuade me why can't use display timing on
+> > > device tree.
+> > Okay, perhaps read it again, it addresses most of your points below.
+> >=20
+> > > 1, Binding panel as a simple string on device tree seems simple on de=
+vice tree,
+> > > but it's complex on kernel code, and kernel code would became bigger =
+and
+> > > bigger.
+> > I don't think the video timings in the simple-panel driver are very
+> > complex. They also don't use very much space. And if you're really
+> > concerned about space you can always use conditional compilation and
+> > Kconfig symbols to remove timings for panels that you don't use.
+> >=20
+> > Also, panels are characterized by much more than just video timings.
+> > There were attempts, way back, to fully describe panels in device tree
+> > and that failed. What you propose here is a partial solution to a much
+> > more complex problem.
+> >=20
+> > This is all explained in the blog post.
+> >=20
+> > > 2, Our customer always ask me, where is the display timing? They only=
+ find a
+> > > simple panel string on device tree,  need search the kernel code to f=
+ind the
+> > > actually timing. They are used to find all device info on device tree=
+, but
+> > > panel timing info is not, this would confuse them. They don't want to=
+ know how
+> > > code work, just want a easier interface.
+> > That's not a very good argument. There's plenty of data that's not in
+> > device tree for other devices, why should panels be different? Also, I
+> > would hope that any customer of yours knows their way around kernel
+> > code and can therefore easily add video timings for new panels. It's
+> > quite trivial to do, and there are many examples on how to do it.
+> >=20
+> > > 3, I think device tree not only can use for kernel, other module also=
+ can use
+> > > it. on our project, we use uboot + kernel, the uboot support fdt, tha=
+t function
+> > > can parsing device tree. So if describe the display timing on device =
+tree, both
+> > > uboot and kernel can share same display timing, not need to describe =
+twice, it
+> > > would save work and not easy to make mistake.
+> > That's a bit of a stretch. Video timings is fairly straightforward data
+> > and can be easily added to any other piece of code that you want to run.
+> > Yes you will have to duplicate the data, but how is that different from
+> > duplicating all the driver code?
+> >=20
+> > > 4, For differentiation product, we face many different panel, every o=
+nce in a
+> > > while, need to add a new panel, we can't convert all the panel , code=
+ the panel
+> > > on kernel seems too bad, and the kernel image became bigger and bigge=
+r.
+> > Why can't you convert all the panels? We already support a bunch of them
+> > and haven't yet run into any problems. If you do encounter any issues
+> > trying to port panels to the DRM panel infrastructure, please let me
+> > know and I can help sort them out.
+> >=20
+> > The kernel image size isn't a problem either. In any modern kernel the
+> > video timing data in the panel driver is tiny compared to the rest.
+> >=20
+> > > Generally, Our customer don't want to do any modify on kernel, they j=
+ust modify
+> > > device tree to bring up their device. Describe the panel timing on de=
+vice tree,
+> > > would make customer easy to use and reuse it.
+> > Yes, that would perhaps make it easier for them to bring up the device.
+> > But soon after they'll notice that there are glitches when turning the
+> > panel on and off, and then they'll realize that they can't fix that
+> > using their simple device tree.
+> About the panel on and off, I don't think the panel-simple do the good
+> enough.
+>=20
+> panel-simple only have one gpio and one regulator, and their sequence is
+> hard code, Why not a panel have two gpio or two regulator? On our project,
+> we find many customer don't use the RC to do panel reset, they directly u=
+se
+> gpio reset, so they need a gpio to do panel reset.
+
+The driver is called panel-simple for a reason. It's not meant to cover
+all possible use-cases, only the simple ones.
+
+> the device tree panel's on and off function is what the next step I want =
+to
+> upstream, on our downstream kernel, we do like that:
+>=20
+> panel {
+>     power_ctrl {
+>           power0 {
+>                   gpios =3D <xxx>;
+>                   delay,ms =3D <3>;
+>           }
+>           power1 {
+>                   regulator =3D <xxx>;
+>                   delay,ms =3D <3>;
+>           }
+>           power2 {
+>                   backlight =3D <xxx>;
+>                   delay,ms =3D <3>;
+>           }
+>     }
+> }
+> and on driver, power on sequence with power0->power1->power2, power down
+> with power2->power1->power0.
+> if user want to swap the power, can easy do that by  adjust dts power
+> sequence.
+>=20
+> this method can easy order the gpio, regulator, backlight sequence, judge
+> the delay time and add new regulator or gpio.
+> I think this panel power on and off method is better than panel-simple
+> driver currently using.
+
+That's almost exactly like the power sequences that Alex Courbot had
+proposed about three years ago. The concept of such a thing was rejected
+by device tree binding maintainers, which is why we ended up with what
+we have now. I'm sure you can find a link to the discussion if you want
+the details about why it got rejected.
+
+All of that's described in the blog, by the way.
+
+Thierry
+
+--tjCHc7DPkfUGtrlw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJXmhMFAAoJEN0jrNd/PrOhNPwP/1lMS+khm9jfD/lBPGlAfdH3
+LjOLCT6EacNxct9S291mXEdJG9FEkMp3TbKKrzKGKDrJ6GNnIHm1HjVOu1s/7TsQ
+Sz9SFEme/uWmsTnbUc0vE8lcNFPyNxNgC+Il5VDC5iDyyvhrN7antWEM29aa5sNS
+K4RF+KogPxj9d7+wtuFFfnSMWMBlF60o0BkmxHvv//FsQtJABCNJSUA+UdHxzsH0
+e4Hira8s0WAe0r042leOrpup5qVKdrBlhZMmFz+mV0arHwKzCuvYfOWTEMPpI1fM
+b+xOmcaO/UaaiDE3mJH7pAojkXpKQLUv3AuNGudCYVvgoh6gkpPA96mkqTK50ZK7
+NSMciZmzHJx0zAUoG5tFNWNLYVaTsKsd5sMJZ8b4HJtmOfS0jyM1e7GmIuBTJhqX
+CMBnMnbWvMww6lQxB4MejB9TBT+4sJJjGIOLiMbKi5zQu+HeolzBl2eoZWHo9qEH
+lYUcW3/idzIbTdz2ZYKlt+AY21MT96Mx5ulZdBoED4Nvw4V+hCmYCkOJ9Zhbmccd
+1z67dDdDxgwcGQr4ihqQKiLKmVnz+/f3epdb+JNrq/TDDIWI2uGYMSLIznIoePGB
+ARseQS9tGF97jwmcf4XzI+8JESTxAvN9JZ+2PXagEBQ0kNAbckwKa5mnJDGiBMnE
+7telt1zfoTLqUtcm6ZS5
+=SJ1R
+-----END PGP SIGNATURE-----
+
+--tjCHc7DPkfUGtrlw--
+
+--===============1572525734==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1572525734==--
