@@ -1,172 +1,127 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v1 2/2] drm/bridge: analogix_dp: turn off the panel when
- eDP need to disable
-Date: Thu, 28 Jul 2016 11:28:45 +0800
-Message-ID: <57997BED.4050600@rock-chips.com>
-References: <1469106874-4912-1-git-send-email-ykk@rock-chips.com>
- <1469106886-4979-1-git-send-email-ykk@rock-chips.com>
- <CAOw6vbK7CnFwH_Tyrq6ab4DBxVLa8-JCYEM-Tu+mOYsKmNULtg@mail.gmail.com>
- <57917011.6000108@rock-chips.com>
- <CAOw6vbLXDuEW1egN3N8XxXdW8hdrY8W9T-v_d6hWDnRcRqZe_A@mail.gmail.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/3] drm: introduce share plane
+Date: Thu, 28 Jul 2016 10:03:02 +0200
+Message-ID: <20160728080302.GG31475@phenom.ffwll.local>
+References: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
+ <20160726082635.GA31475@phenom.ffwll.local>
+ <579732B2.80600@rock-chips.com> <57997570.5070806@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAOw6vbLXDuEW1egN3N8XxXdW8hdrY8W9T-v_d6hWDnRcRqZe_A@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Yao <yzq@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <treding@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Emil Velikov <emil.l.velikov@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <57997570.5070806@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Sean,
-
-Oops, sorry about miss your suggest :(
-
-On 07/22/2016 11:03 PM, Sean Paul wrote:
-> On Thu, Jul 21, 2016 at 9:00 PM, Yakir Yang <ykk@rock-chips.com> wrote:
->> Sean,
->>
->> Thanks for your fast respond :-)
->>
->> But this patch is not the latest one, I have upgraded this to "v1.1" version
->> to fix the eDP can't be disabled problem:
->>      [PATCH v1.1 2/2] drm/bridge: analogix_dp: turn off the panel when eDP
->> need to disable
->>          Changes in v1.1: - unprepare the panel at the end of
->> bridge->disable() function
->>
->> In spite of this, I would take your comments with my "v1.1" patch.
->>
->> On 07/21/2016 10:28 PM, Sean Paul wrote:
->>
->> On Thu, Jul 21, 2016 at 9:14 AM, Yakir Yang <ykk@rock-chips.com> wrote:
->>
->> Some panels (like Sharp LQ123P1JX31) need to be turn off when eDP
->> controller stop to send valid video signal, otherwhise panel would
->> go burn in, and keep flicker and flicker.
->>
->> So it's better to turn off the panel when eDP need to disable, and
->> we need to turn on the panel in connector->detect() callback, so
->> that driver would detect panel status rightly.
->>
->> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
->> ---
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 18 ++++++++++--------
->>   1 file changed, 10 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 32715da..ea059b3 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -961,6 +961,14 @@ analogix_dp_detect(struct drm_connector *connector,
->> bool force)
->>   {
->>          struct analogix_dp_device *dp = to_dp(connector);
->>
->> +       /*
->> +        * Panle would prepare for several times here, but don't worry it
->>
->> s/Panle/Panel/
->>
->>
->> Done
->>
->> +        * would only enable the hardware at the first prepare time.
->>
->> Errr, this shouldn't go in detect. How about putting this in
->> bridge_enable instead?
->>
->>
->> Nope, if we put this in bridge_enable, then eDP would never be enabled.
->> Here're the calling flow.
->>
->> --> analogix_dp_probe
->>    --> analogix_dp_bind  # we still haven't prepared the panel here, that
->> means panel have been powered up
->>      --> analogix_dp_detect  # Oops, losing panel valid hotplug signal, cause
->> panel have been powered up
->>      --> ** Keep detecting **
->
-> Yeah, after playing around with the patch yesterday I discovered this
-> for myself. I still don't think detect() should be changing hardware
-> state. Perhaps you could add a matching unprepare() after you attempt
-> to detect the panel?
-
-Hmm, I don't understand the meaning of "add a matching unprepare()".
-
-I didn't see there is an unprepare() callback in drm_crtc_helper.h, would
-you like to share some simple code :-D
-
-Thanks,
-- Yakir
-
-> Sean
->
->> +        */
->> +       if (dp->plat_data->panel)
->> +               if (drm_panel_prepare(dp->plat_data->panel))
->>
->> Personally, I don't like doing work in a conditional since you're
->> throwing the return code away. Could you break this out into:
->>
->> ret = drm_panel_prepare(dp->plat_data->panel);
->> if (ret)
->>    DRM_ERROR("failed to setup the panel ret=%d\n", ret);
->>
->>
->> Okay
->>
->>
->> +                       DRM_ERROR("failed to setup the panel\n");
->> +
->>          if (analogix_dp_detect_hpd(dp))
->>                  return connector_status_disconnected;
->>
->> @@ -1063,7 +1071,8 @@ static void analogix_dp_bridge_disable(struct
->> drm_bridge *bridge)
->>                  return;
->>
->>          if (dp->plat_data->panel) {
->> -               if (drm_panel_disable(dp->plat_data->panel)) {
->> +               if (drm_panel_disable(dp->plat_data->panel) ||
->> +                   drm_panel_unprepare(dp->plat_data->panel)) {
->>
->> Same comment here, please break this out into separate statements for
->> better readability/logging.
->>
->>
->> Okay,
->>
->>
->> Thanks,
->> - Yakir
->>
->>
->>                          DRM_ERROR("failed to disable the panel\n");
->>                          return;
->>                  }
->> @@ -1333,13 +1342,6 @@ int analogix_dp_bind(struct device *dev, struct
->> drm_device *drm_dev,
->>
->>          phy_power_on(dp->phy);
->>
->> -       if (dp->plat_data->panel) {
->> -               if (drm_panel_prepare(dp->plat_data->panel)) {
->> -                       DRM_ERROR("failed to setup the panel\n");
->> -                       return -EBUSY;
->> -               }
->> -       }
->> -
->>          analogix_dp_init_dp(dp);
->>
->>          ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
->> --
->> 1.9.1
->>
->>
->>
->>
->>
->
->
+T24gVGh1LCBKdWwgMjgsIDIwMTYgYXQgMTE6MDE6MDRBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gQW55IGlkZWFzIGZvciB0aGUgc2hhcmUgcGxhbmVzPwo+IAo+IFRoaXMgZnVuY3Rpb24gaXMg
+aW1wb3J0YW50IGZvciBvdXIgc2VyaWVzIG9mIHZvcCBmdWxsIGRlc2lnbi4KPiAgICAgVGhlIHNl
+cmllcyBvZiB2b3AgaXM6Cj4gICAgIElQIHZlcnNpb24gICAgY2hpcG5hbWUKPiAgICAgMy4xICAg
+ICAgICAgICByazMyODgKPiAgICAgMy4yICAgICAgICAgICByazMzNjgKPiAgICAgMy40ICAgICAg
+ICAgICByazMzNjYKPiAgICAgMy41ICAgICAgICAgICByazMzOTkgYmlnCj4gICAgIDMuNiAgICAg
+ICAgICAgcmszMzk5IGxpdAo+ICAgICAzLjcgICAgICAgICAgIHJrMzIyeAo+IAo+IGV4YW1wbGUg
+b24gcmszMjg4OiAgaWYgbm90IHN1cHBvcnQgc2hhcmUgcGxhbmUsIGVhY2ggdm9wIG9ubHkgc3Vw
+cG9ydCBmb3VyCj4gcGxhbmVzLCBidXQgaWYgc3VwcG9ydCB0aGlzIGZ1bmN0aW9uLCBlYWNoIHZv
+cCBjYW4gc3VwcG9ydCB0ZW4gcGxhbmVzLgoKTGlrZSBJIHNhaWQsIHJlZ2lzdGVyIDEwIHBsYW5l
+cyBpbiB0aGUga2VybmVsIGRyaXZlciwgZmlndXJlIG91dCBhIGdvb2QKd2F5IHRvIGFjdHVhbGx5
+IGFsbG9jYXRlIHRoZW0gdG8gaHcgcmVzb3VyY2VzLiBXZSBoYXZlIGEgc2ltaWxhciBpc3N1ZSBv
+bgpza2wvYnh0IGluIHRoZSBpOTE1IGRyaXZlciB3aGVyZSB0aGVyZSdzIG9ubHkgYSBsaW1pdGVk
+IGFtb3VudCBvZgpzY2FsZXJzLCBhbmQgd2UgbmVlZCB0byBkeW5hbWljYWxseSBhbGxvY2F0ZSB0
+aGVtIHRvIGRybV9wbGFuZS4gSGVyZSB5b3UKaGF2ZSBmYW5jeSBhbW91bnQgb2Ygc2Nhbm91dCBl
+bmdpbmVzIHdoaWNoIHlvdSBuZWVkIHRvIGR5bmFtaWNhbGx5CmFsbG9jYXRlLgoKPiBPbiAyMDE2
+5bm0MDfmnIgyNuaXpSAxNzo1MSwgTWFyayB5YW8gd3JvdGU6Cj4gPiBPbiAyMDE25bm0MDfmnIgy
+NuaXpSAxNjoyNiwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+ID4gT24gVHVlLCBKdWwgMjYsIDIw
+MTYgYXQgMDM6NDY6MzJQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4gPiA+ID4gPldoYXQgaXMg
+c2hhcmUgcGxhbmU6Cj4gPiA+ID4gPlBsYW5lIGhhcmR3YXJlIG9ubHkgYmUgdXNlZCB3aGVuIHRo
+ZSBkaXNwbGF5IHNjYW5vdXQgcnVuIGludG8KPiA+ID4gPiBwbGFuZSBhY3RpdmUKPiA+ID4gPiA+
+c2Nhbm91dCwgdGhhdCBtZWFucyB3ZSBjYW4gcmV1c2UgdGhlIHBsYW5lIGhhcmR3YXJlIHJlc291
+cmNlcyBvbiBwbGFuZQo+ID4gPiA+ID5ub24tYWN0aXZlIHNjYW5vdXQuCj4gPiA+ID4gPgo+ID4g
+PiA+ID4gICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLQo+ID4gPiA+ID4gICAgIHwgIHNjYW5vdXQgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8Cj4gPiA+ID4gPiAgICAgfCAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLSAg
+ICAgICAgICAgICAgICAgICAgIHwKPiA+ID4gPiA+ICAgICB8ICAgICAgICAgfCBwYXJlbnQgcGxh
+bmUgICB8ICAgICAgICAgICAgICAgICAgICAgfAo+ID4gPiA+ID4gICAgIHwgICAgICAgICB8IGFj
+dGl2ZSBzY2Fub3V0IHwgICAgICAgICAgICAgICAgICAgICB8Cj4gPiA+ID4gPiAgICAgfCAgICAg
+ICAgIHwgICAgICAgICAgICAgICAgfCAgIC0tLS0tLS0tLS0tLS0tLS0tIHwKPiA+ID4gPiA+ICAg
+ICB8ICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tICAgfCBzaGFyZSBwbGFuZSAxIHwgfAo+ID4g
+PiA+ID4gICAgIHwgIC0tLS0tLS0tLS0tLS0tLS0tICAgICAgICAgICB8YWN0aXZlIHNjYW5vdXQg
+fCB8Cj4gPiA+ID4gPiAgICAgfCAgfCBzaGFyZSBwbGFuZSAwIHwgICAgICAgICAgIHwgICAgICAg
+ICAgICAgICB8IHwKPiA+ID4gPiA+ICAgICB8ICB8YWN0aXZlIHNjYW5vdXQgfCAgICAgICAgICAg
+LS0tLS0tLS0tLS0tLS0tLS0gfAo+ID4gPiA+ID4gICAgIHwgIHwgICAgICAgICAgICAgICB8ICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4gPiA+ID4gPiAgICAgfCAgLS0tLS0tLS0tLS0t
+LS0tLS0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKPiA+ID4gPiA+ICAgICAtLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gPiA+ID5PbmUg
+cGxhbmUgaGFyZHdhcmUgY2FuIGJlIHJldXNlIGZvciBtdWx0aS1wbGFuZXMsIHdlIGFzc3VtZSB0
+aGUgZmlyc3QKPiA+ID4gPiA+cGxhbmUgaXMgcGFyZW50IHBsYW5lLCBvdGhlciBwbGFuZXMgc2hh
+cmUgdGhlIHJlc291cmNlIHdpdGggZmlyc3Qgb25lLgo+ID4gPiA+ID4gICAgIHBhcmVudCBwbGFu
+ZQo+ID4gPiA+ID4gICAgICAgICB8LS0tc2hhcmUgcGxhbmUgMAo+ID4gPiA+ID4gICAgICAgICB8
+LS0tc2hhcmUgcGxhbmUgMQo+ID4gPiA+ID4gICAgICAgICAuLi4KPiA+ID4gPiA+Cj4gPiA+ID4g
+PkJlY2F1c2UgcmVzb3VyY2Ugc2hhcmUsIFRoZXJlIGFyZSBzb21lIGxpbWl0IG9uIHNoYXJlIHBs
+YW5lOiBvbmUgZ3JvdXAKPiA+ID4gPiA+b2Ygc2hhcmUgcGxhbmVzIG5lZWQgdXNlIHNhbWUgenBv
+cywgY2FuIG5vdCBvdmVybGFwLCBldGMuCj4gPiA+ID4gPgo+ID4gPiA+ID5XZSBhc3N1bWUgc2hh
+cmUgcGxhbmUgaXMgYSB1bml2ZXJzYWwgcGxhbmUgd2l0aCBzb21lIGxpbWl0IGZsYWdzLgo+ID4g
+PiA+ID5wZW9wbGUgd2hvIHVzZSB0aGUgc2hhcmUgcGxhbmUgbmVlZCBrbm93IHRoZSBsaW1pdCwg
+c2hvdWxkIGNhbGwKPiA+ID4gPiB0aGUgaW9jdGwKPiA+ID4gPiA+RFJNX0NMSUVOVF9DQVBfU0hB
+UkVfUExBTkVTLCBhbmQganVkZ2UgdGhlIHBsYW5lcyBsaW1pdCBiZWZvcmUgdXNlIGl0Lgo+ID4g
+PiA+ID4KPiA+ID4gPiA+QSBncm91cCBvZiBzaGFyZSBwbGFuZXMgd291bGQgaGFzIHNhbWUgc2hh
+cmQgaWQsIHNvIHVzZXJzcGFjZSBjYW4KPiA+ID4gPiA+Z3JvdXAgdGhlbSwganVkZ2Ugc2hhcmUg
+cGxhbmUncyBsaW1pdC4KPiA+ID4gPiA+Cj4gPiA+ID4gPlNpZ25lZC1vZmYtYnk6IE1hcmsgWWFv
+PG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+ID4gPiBUaGlzIHNlZW1zIGV4dHJlbWVseSBodyBz
+cGVjaWZpYywgd2h5IGV4YWN0bHkgZG8gd2UgbmVlZCB0byBhZGQgYSBuZXcKPiA+ID4gcmVsYXRp
+b25zaGlwIG9uIHBsYW5lcz8gV2hhdCBkb2VzIHRoaXMgYnV5IG9uX290aGVyXyAgZHJpdmVycz8K
+PiA+IFllcywgbm93IGl0J3MgcGxhbmUgaGFyZHdhcmUgc3BlY2lmaWMsIG1heWJlIG90aGVycyBo
+YXZlIHNhbWUgZGVzaWduLAo+ID4gYmVjYXVzZSB0aGlzIGRlc2lnbgo+ID4gd291bGQgc2F2ZSBo
+YXJkd2FyZSByZXNvdXJjZSB0byBzdXBwb3J0IG11bHRpLXBsYW5lcy4KPiA+IAo+ID4gPiBJbW8g
+dGhpcyBzaG91bGQgYmUgc29sdmVkIGJ5IHZpcnR1YWxpemluZyBwbGFuZXMgaW4gdGhlIGRyaXZl
+ci4KPiA+ID4gU3RhcnQgb3V0Cj4gPiA+IGJ5IGFzc2lnbmluZyBwbGFuZXMsIGFuZCBpZiB5b3Ug
+Y2FuIHJldXNlIG9uZSBmb3Igc2hhcmluZyB0aGVuIGRvIHRoYXQsCj4gPiA+IG90aGVyd2lzZSBh
+bGxvY2F0ZSBhIG5ldyBvbmUuIElmIHRoZXJlJ3Mgbm90IGVub3VnaCByZWFsIHBsYW5lcywKPiA+
+ID4gZmFpbCB0aGUKPiA+ID4gYXRvbWljX2NoZWNrLgo+ID4gSSB0aGluayB0aGF0IGlzIHRvbyBj
+b21wbGV4LCB0cnlpbmcgd2l0aCBhdG9taWNfY2hlY2sgSSB0aGluayBpdCdzIG5vdCBhCj4gPiBn
+b29kIGlkZWEsIHVzZXJzcGFjZSB0cnkgcGxhbmVzIGV2ZXJ5IGNvbW1pdCB3b3VsZCBiZSBhIGhl
+YXZ5IHdvcmsuCj4gPiAKPiA+IFVzZXJzcGFjZSBuZWVkICBrbm93IGFsbCBwbGFuZXMgcmVsYXRp
+b25zaGlwLCBncm91cCB0aGVtLCBzb21lIGRpc3BsYXkKPiA+IHdpbmRvd3MgY2FuIHB1dCB0b2dl
+dGhlciwgc29tZSBjYW4ndCwKPiA+IHRvbyBtYW55IHBlcm11dGF0aW9uIGFuZCBjb21iaW5hdGlv
+biwgSSB0aGluayBjYW4ndCBqdXN0IGNvbW1pdCB3aXRoIHRyeS4KPiA+IAo+ID4gZXhhbXBsZToK
+PiA+IHVzZXJzcGFjZToKPiA+IHdpbmRvd3MgMTogcG9zKDAsIDApICBzaXplKDEwMjQsIDEwMCkK
+PiA+IHdpbmRvd3MgMjogcG9zKDAsIDUwKSBzaXplKDQwMCwgNTAwKQo+ID4gd2luZG93cyAzOiBw
+b3MoMCwgMjAwKSBzaXplKDgwMCwgMzAwKQo+ID4gCj4gPiBkcm0gcGxhbmUgcmVzb3VyY2VzOgo+
+ID4gcGxhbmUgMCBhbmQgcGxhbmUgMSBpcyBhIGdyb3VwIG9mIHNoYXJlIHBsYW5lcwo+ID4gcGxh
+bmUgMiBpcyBjb21tb24gcGxhbmUuCj4gPiAKPiA+IGlmIHVzZXJzcGFjZSBrbm93IHRoZSByZWxh
+dGlvbnNoaXAsIHRoZW4gdGhleSBjYW4gYXNzaWduIHdpbmRvd3MgMSBhbmQKPiA+IHdpbmRvdyAz
+IHRvIHBsYW5lMCBhbmQgcGxhbmUgMS4gdGhhdCB3b3VsZCBiZSBzdWNjZXNzLgo+ID4gYnV0IGlm
+IHRoZXkgZG9uJ3Qga25vdywgYXNzaWduIHdpbmRvdyAxLzIgdG8gcGxhbmUgMC8xLCBmYWlsZWQs
+IGFzc2lnbgo+ID4gd2luZG93IDIvMyB0byBwbGFuZSAwLzEsIGZhaWxlZC4gbW9zdGx5IHdvdWxk
+IGdldCBmYWlsZWQuCgpZb3UgY2FuIHN0aWxsIGRvIHRoaXMgd2l0aCB0aGUgZGVzaWduIEkgZGVz
+Y3JpYmUuIFRoZSBvbmx5IGRpZmZlcmVuY2UgaXMKdGhhdCB5b3UgYWxsb3cgZ2VuZXJpYyB1c2Vy
+c3BhY2UgdG8gbWFrZSBvcHRpbWFsIHVzZSBvZiB5b3VyIHBsYW5lcywgdG9vLgoKPiA+ID4gVGhp
+cyBzZWVtcyB3YXkgdG8gaHcgc3BlY2lmaWMgdG8gYmUgdXNlZnVsIGFzIGEgZ2VuZXJpYyBjb25j
+ZXB0Lgo+ID4gCj4gPiBXZSB3YW50IHRvIGNoYW5nZSB0aGUgZHJtX21vZGVfZ2V0cGxhbmVfcmVz
+IGJlaGF2aW9yLCBpZiB1c2Vyc3BhY2UgY2FsbAo+ID4gRFJNX0NMSUVOVF9DQVBfU0hBUkVfUExB
+TkVTLCB0aGF0IG1lYW5zIHVzZXJzcGFjZSBrbm93IGhhcmR3YXJlIGxpbWl0LAo+ID4gdGhlbiB3
+ZSByZXR1cm4gZnVsbCBwbGFuZXMgc3VwcG9ydCB0byB1c2Vyc3BhY2UsIGlmIGRvbid0LCBqdXN0
+IG1ha2UgYQo+ID4gZ3JvdXAgb2Ygc2hhcmUgcGxhbmVzIGFzIG9uZSBwbGFuZS4KPiA+IHRoaXMg
+d29yayBpcyBvbiBnZW5lcmljIHBsYWNlLgoKU28gLi4uIGRvIHlvdSBoYXZlIHBhdGNoZXMgZm9y
+IGFsbCB0aGUgZ2VuZXJpYyBrbXMgdXNlcnNwYWNlIHRoYXQncyBvdXQKdGhlcmU/IEFyZSB0aG9z
+ZSByZXZpZXdlZCBhbmQgcmVhZHkgZm9yIG1lcmdpbmc/CgpBZGRpbmcgbmV3IHVzZXJzcGFjZSBh
+YmkgaXMgbXVjaCwgbXVjaCwgbXVjaCBoYXJkZXIgdGhhbiBzb3ZsaW5nIHRoaXMgaW4KdGhlIHZv
+cCBkcml2ZXIuIEknbSB3b3JraW5nIG9uIHNvbWUgZG9jdW1lbnRhdGlvbiB0byBtYWtlIHRoaXMg
+YWxsIGNsZWFyCihzaW5jZSBtYW55IGFybSBmb2xrcyBzZWVtIHVuYXdhcmUgb2YgdGhlIHVhcGkg
+cnVsZXMgd2UgaGF2ZSBpbiB0aGUgZHJtCnN1YnN5c3RlbSkuIEJ1dCByZWFsbHksIHlvdSdyZSB0
+cnlpbmcgdGhlIG11Y2ggaGFyZGVyIHJvdXRlIHdpdGggdGhpcwpwYXRjaC4KLURhbmllbAotLSAK
+RGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDov
+L2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
