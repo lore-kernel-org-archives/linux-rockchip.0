@@ -1,33 +1,101 @@
-From: Kyle McMartin <kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: rockchip: update dptx firmware to v2.6
-Date: Wed, 27 Jul 2016 19:41:34 -0400
-Message-ID: <20160727234134.GM8680@merlin.infradead.org>
-References: <1469618694-10413-1-git-send-email-zyw@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/3] drm: introduce share plane
+Date: Thu, 28 Jul 2016 11:01:04 +0800
+Message-ID: <57997570.5070806@rock-chips.com>
+References: <1469519194-23133-1-git-send-email-mark.yao@rock-chips.com>
+ <20160726082635.GA31475@phenom.ffwll.local> <579732B2.80600@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1469618694-10413-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <579732B2.80600@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 27, 2016 at 07:24:54PM +0800, Chris Zhong wrote:
-> Update firmware to v2.6, it support standby, controlled by mailbox
-> commend. And update the licence.
-> 
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-applied, thanks Chris.
-
-regards, --Kyle
+QW55IGlkZWFzIGZvciB0aGUgc2hhcmUgcGxhbmVzPwoKVGhpcyBmdW5jdGlvbiBpcyBpbXBvcnRh
+bnQgZm9yIG91ciBzZXJpZXMgb2Ygdm9wIGZ1bGwgZGVzaWduLgogICAgIFRoZSBzZXJpZXMgb2Yg
+dm9wIGlzOgogICAgIElQIHZlcnNpb24gICAgY2hpcG5hbWUKICAgICAzLjEgICAgICAgICAgIHJr
+MzI4OAogICAgIDMuMiAgICAgICAgICAgcmszMzY4CiAgICAgMy40ICAgICAgICAgICByazMzNjYK
+ICAgICAzLjUgICAgICAgICAgIHJrMzM5OSBiaWcKICAgICAzLjYgICAgICAgICAgIHJrMzM5OSBs
+aXQKICAgICAzLjcgICAgICAgICAgIHJrMzIyeAoKZXhhbXBsZSBvbiByazMyODg6ICBpZiBub3Qg
+c3VwcG9ydCBzaGFyZSBwbGFuZSwgZWFjaCB2b3Agb25seSBzdXBwb3J0IApmb3VyIHBsYW5lcywg
+YnV0IGlmIHN1cHBvcnQgdGhpcyBmdW5jdGlvbiwgZWFjaCB2b3AgY2FuIHN1cHBvcnQgdGVuIHBs
+YW5lcy4KCk9uIDIwMTblubQwN+aciDI25pelIDE3OjUxLCBNYXJrIHlhbyB3cm90ZToKPiBPbiAy
+MDE25bm0MDfmnIgyNuaXpSAxNjoyNiwgRGFuaWVsIFZldHRlciB3cm90ZToKPj4gT24gVHVlLCBK
+dWwgMjYsIDIwMTYgYXQgMDM6NDY6MzJQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4+PiA+V2hh
+dCBpcyBzaGFyZSBwbGFuZToKPj4+ID5QbGFuZSBoYXJkd2FyZSBvbmx5IGJlIHVzZWQgd2hlbiB0
+aGUgZGlzcGxheSBzY2Fub3V0IHJ1biBpbnRvIHBsYW5lIAo+Pj4gYWN0aXZlCj4+PiA+c2Nhbm91
+dCwgdGhhdCBtZWFucyB3ZSBjYW4gcmV1c2UgdGhlIHBsYW5lIGhhcmR3YXJlIHJlc291cmNlcyBv
+biBwbGFuZQo+Pj4gPm5vbi1hY3RpdmUgc2Nhbm91dC4KPj4+ID4KPj4+ID4gICAgICAtLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4gPiAgICAgfCAg
+c2Nhbm91dCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKPj4+ID4gICAg
+IHwgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgICAgICAgICB8Cj4+PiA+
+ICAgICB8ICAgICAgICAgfCBwYXJlbnQgcGxhbmUgICB8ICAgICAgICAgICAgICAgICAgICAgfAo+
+Pj4gPiAgICAgfCAgICAgICAgIHwgYWN0aXZlIHNjYW5vdXQgfCAgICAgICAgICAgICAgICAgICAg
+IHwKPj4+ID4gICAgIHwgICAgICAgICB8ICAgICAgICAgICAgICAgIHwgICAtLS0tLS0tLS0tLS0t
+LS0tLSB8Cj4+PiA+ICAgICB8ICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tICAgfCBzaGFyZSBw
+bGFuZSAxIHwgfAo+Pj4gPiAgICAgfCAgLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgIHxhY3Rp
+dmUgc2Nhbm91dCB8IHwKPj4+ID4gICAgIHwgIHwgc2hhcmUgcGxhbmUgMCB8ICAgICAgICAgICB8
+ICAgICAgICAgICAgICAgfCB8Cj4+PiA+ICAgICB8ICB8YWN0aXZlIHNjYW5vdXQgfCAgICAgICAg
+ICAgLS0tLS0tLS0tLS0tLS0tLS0gfAo+Pj4gPiAgICAgfCAgfCAgICAgICAgICAgICAgIHwgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwKPj4+ID4gICAgIHwgIC0tLS0tLS0tLS0tLS0tLS0t
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4+PiA+ICAgICAtLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4gPk9uZSBwbGFuZSBoYXJkd2Fy
+ZSBjYW4gYmUgcmV1c2UgZm9yIG11bHRpLXBsYW5lcywgd2UgYXNzdW1lIHRoZSBmaXJzdAo+Pj4g
+PnBsYW5lIGlzIHBhcmVudCBwbGFuZSwgb3RoZXIgcGxhbmVzIHNoYXJlIHRoZSByZXNvdXJjZSB3
+aXRoIGZpcnN0IG9uZS4KPj4+ID4gICAgIHBhcmVudCBwbGFuZQo+Pj4gPiAgICAgICAgIHwtLS1z
+aGFyZSBwbGFuZSAwCj4+PiA+ICAgICAgICAgfC0tLXNoYXJlIHBsYW5lIDEKPj4+ID4gICAgICAg
+ICAuLi4KPj4+ID4KPj4+ID5CZWNhdXNlIHJlc291cmNlIHNoYXJlLCBUaGVyZSBhcmUgc29tZSBs
+aW1pdCBvbiBzaGFyZSBwbGFuZTogb25lIGdyb3VwCj4+PiA+b2Ygc2hhcmUgcGxhbmVzIG5lZWQg
+dXNlIHNhbWUgenBvcywgY2FuIG5vdCBvdmVybGFwLCBldGMuCj4+PiA+Cj4+PiA+V2UgYXNzdW1l
+IHNoYXJlIHBsYW5lIGlzIGEgdW5pdmVyc2FsIHBsYW5lIHdpdGggc29tZSBsaW1pdCBmbGFncy4K
+Pj4+ID5wZW9wbGUgd2hvIHVzZSB0aGUgc2hhcmUgcGxhbmUgbmVlZCBrbm93IHRoZSBsaW1pdCwg
+c2hvdWxkIGNhbGwgdGhlIAo+Pj4gaW9jdGwKPj4+ID5EUk1fQ0xJRU5UX0NBUF9TSEFSRV9QTEFO
+RVMsIGFuZCBqdWRnZSB0aGUgcGxhbmVzIGxpbWl0IGJlZm9yZSB1c2UgaXQuCj4+PiA+Cj4+PiA+
+QSBncm91cCBvZiBzaGFyZSBwbGFuZXMgd291bGQgaGFzIHNhbWUgc2hhcmQgaWQsIHNvIHVzZXJz
+cGFjZSBjYW4KPj4+ID5ncm91cCB0aGVtLCBqdWRnZSBzaGFyZSBwbGFuZSdzIGxpbWl0Lgo+Pj4g
+Pgo+Pj4gPlNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+
+PiBUaGlzIHNlZW1zIGV4dHJlbWVseSBodyBzcGVjaWZpYywgd2h5IGV4YWN0bHkgZG8gd2UgbmVl
+ZCB0byBhZGQgYSBuZXcKPj4gcmVsYXRpb25zaGlwIG9uIHBsYW5lcz8gV2hhdCBkb2VzIHRoaXMg
+YnV5IG9uX290aGVyXyAgZHJpdmVycz8KPiBZZXMsIG5vdyBpdCdzIHBsYW5lIGhhcmR3YXJlIHNw
+ZWNpZmljLCBtYXliZSBvdGhlcnMgaGF2ZSBzYW1lIGRlc2lnbiwgCj4gYmVjYXVzZSB0aGlzIGRl
+c2lnbgo+IHdvdWxkIHNhdmUgaGFyZHdhcmUgcmVzb3VyY2UgdG8gc3VwcG9ydCBtdWx0aS1wbGFu
+ZXMuCj4KPj4gSW1vIHRoaXMgc2hvdWxkIGJlIHNvbHZlZCBieSB2aXJ0dWFsaXppbmcgcGxhbmVz
+IGluIHRoZSBkcml2ZXIuIFN0YXJ0IAo+PiBvdXQKPj4gYnkgYXNzaWduaW5nIHBsYW5lcywgYW5k
+IGlmIHlvdSBjYW4gcmV1c2Ugb25lIGZvciBzaGFyaW5nIHRoZW4gZG8gdGhhdCwKPj4gb3RoZXJ3
+aXNlIGFsbG9jYXRlIGEgbmV3IG9uZS4gSWYgdGhlcmUncyBub3QgZW5vdWdoIHJlYWwgcGxhbmVz
+LCBmYWlsIAo+PiB0aGUKPj4gYXRvbWljX2NoZWNrLgo+IEkgdGhpbmsgdGhhdCBpcyB0b28gY29t
+cGxleCwgdHJ5aW5nIHdpdGggYXRvbWljX2NoZWNrIEkgdGhpbmsgaXQncyBub3QgCj4gYSBnb29k
+IGlkZWEsIHVzZXJzcGFjZSB0cnkgcGxhbmVzIGV2ZXJ5IGNvbW1pdCB3b3VsZCBiZSBhIGhlYXZ5
+IHdvcmsuCj4KPiBVc2Vyc3BhY2UgbmVlZCAga25vdyBhbGwgcGxhbmVzIHJlbGF0aW9uc2hpcCwg
+Z3JvdXAgdGhlbSwgc29tZSBkaXNwbGF5IAo+IHdpbmRvd3MgY2FuIHB1dCB0b2dldGhlciwgc29t
+ZSBjYW4ndCwKPiB0b28gbWFueSBwZXJtdXRhdGlvbiBhbmQgY29tYmluYXRpb24sIEkgdGhpbmsg
+Y2FuJ3QganVzdCBjb21taXQgd2l0aCB0cnkuCj4KPiBleGFtcGxlOgo+IHVzZXJzcGFjZToKPiB3
+aW5kb3dzIDE6IHBvcygwLCAwKSAgc2l6ZSgxMDI0LCAxMDApCj4gd2luZG93cyAyOiBwb3MoMCwg
+NTApIHNpemUoNDAwLCA1MDApCj4gd2luZG93cyAzOiBwb3MoMCwgMjAwKSBzaXplKDgwMCwgMzAw
+KQo+Cj4gZHJtIHBsYW5lIHJlc291cmNlczoKPiBwbGFuZSAwIGFuZCBwbGFuZSAxIGlzIGEgZ3Jv
+dXAgb2Ygc2hhcmUgcGxhbmVzCj4gcGxhbmUgMiBpcyBjb21tb24gcGxhbmUuCj4KPiBpZiB1c2Vy
+c3BhY2Uga25vdyB0aGUgcmVsYXRpb25zaGlwLCB0aGVuIHRoZXkgY2FuIGFzc2lnbiB3aW5kb3dz
+IDEgYW5kIAo+IHdpbmRvdyAzIHRvIHBsYW5lMCBhbmQgcGxhbmUgMS4gdGhhdCB3b3VsZCBiZSBz
+dWNjZXNzLgo+IGJ1dCBpZiB0aGV5IGRvbid0IGtub3csIGFzc2lnbiB3aW5kb3cgMS8yIHRvIHBs
+YW5lIDAvMSwgZmFpbGVkLCBhc3NpZ24gCj4gd2luZG93IDIvMyB0byBwbGFuZSAwLzEsIGZhaWxl
+ZC4gbW9zdGx5IHdvdWxkIGdldCBmYWlsZWQuCj4KPj4KPj4gVGhpcyBzZWVtcyB3YXkgdG8gaHcg
+c3BlY2lmaWMgdG8gYmUgdXNlZnVsIGFzIGEgZ2VuZXJpYyBjb25jZXB0Lgo+Cj4gV2Ugd2FudCB0
+byBjaGFuZ2UgdGhlIGRybV9tb2RlX2dldHBsYW5lX3JlcyBiZWhhdmlvciwgaWYgdXNlcnNwYWNl
+IAo+IGNhbGwgRFJNX0NMSUVOVF9DQVBfU0hBUkVfUExBTkVTLCB0aGF0IG1lYW5zIHVzZXJzcGFj
+ZSBrbm93IGhhcmR3YXJlIAo+IGxpbWl0LAo+IHRoZW4gd2UgcmV0dXJuIGZ1bGwgcGxhbmVzIHN1
+cHBvcnQgdG8gdXNlcnNwYWNlLCBpZiBkb24ndCwganVzdCBtYWtlIGEgCj4gZ3JvdXAgb2Ygc2hh
+cmUgcGxhbmVzIGFzIG9uZSBwbGFuZS4KPiB0aGlzIHdvcmsgaXMgb24gZ2VuZXJpYyBwbGFjZS4K
+Pgo+PiAtRGFuaWVsCj4+Cj4+Cj4KCgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
