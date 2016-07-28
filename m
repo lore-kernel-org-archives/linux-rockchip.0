@@ -1,76 +1,73 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH 2/2] dt-bindings: add simple-panel-dsi and simple-panel
-Date: Thu, 28 Jul 2016 14:00:21 -0500
-Message-ID: <CAL_JsqL8D3OK_JQcY+dLTcqcvmgB2Vuc0Tknf1zsR=8Pa3F4jw@mail.gmail.com>
-References: <1468984730-23186-1-git-send-email-mark.yao@rock-chips.com>
- <1468984730-23186-2-git-send-email-mark.yao@rock-chips.com>
- <20160725152125.GS21170@ulmo.ba.sec> <5796C47C.5040208@rock-chips.com>
- <20160726090226.GB2433@ulmo.ba.sec>
+From: Stephen Barber <smbarber@chromium.org>
+Subject: Re: [PATCH 1/2] thermal: rockchip: enhance the tsadc's bandgap
+ feature for rk3399
+Date: Thu, 28 Jul 2016 14:53:02 -0700
+Message-ID: <CADR9n49WW9e+YLVmpjBtMU_r7Y+zDpuz48J_RtGBpdnuYNvDXg@mail.gmail.com>
+References: <1469628643-29661-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160726090226.GB2433@ulmo.ba.sec>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, =?UTF-8?B?5bqE5paH6b6Z?= <zwl@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1469628643-29661-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Rocky Hao <rocky.hao@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMjYsIDIwMTYgYXQgNDowMiBBTSwgVGhpZXJyeSBSZWRpbmcKPHRoaWVycnku
-cmVkaW5nQGdtYWlsLmNvbT4gd3JvdGU6Cj4gT24gVHVlLCBKdWwgMjYsIDIwMTYgYXQgMTA6MDE6
-MzJBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6Cj4+IE9uIDIwMTblubQwN+aciDI15pelIDIzOjIx
-LCBUaGllcnJ5IFJlZGluZyB3cm90ZToKPj4KPj4gICAgIE9uIFdlZCwgSnVsIDIwLCAyMDE2IGF0
-IDExOjE4OjUwQU0gKzA4MDAsIE1hcmsgWWFvIHdyb3RlOgo+Pgo+PiAgICAgICAgIEFsbG93IHVz
-ZXIgYWRkIGRpc3BsYXkgdGltaW5nIG9uIGRldmljZSB0cmVlIHdpdGggc2ltcGxlLXBhbmVsLWRz
-aQo+PiAgICAgICAgIG9yIHNpbXBsZS1wYW5lbC4KPj4KPj4gICAgICAgICBDYzogVGhpZXJyeSBS
-ZWRpbmcgPHRoaWVycnkucmVkaW5nQGdtYWlsLmNvbT4KPj4gICAgICAgICBDYzogUm9iIEhlcnJp
-bmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPj4gICAgICAgICBDYzogTWFyayBSdXRsYW5kIDxtYXJr
-LnJ1dGxhbmRAYXJtLmNvbT4KPj4KPj4gICAgICAgICBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8
-bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4+ICAgICAgICAgLS0tCj4+ICAgICAgICAgIC4uLi9i
-aW5kaW5ncy9kaXNwbGF5L3BhbmVsL3NpbXBsZS1wYW5lbC50eHQgICAgICAgIHwgNDggKysrKysr
-KysrKysrKysrKysrKysrKwo+PiAgICAgICAgICAxIGZpbGUgY2hhbmdlZCwgNDggaW5zZXJ0aW9u
-cygrKQo+Pgo+PiAgICAgU29ycnksIG5vdCBnb2luZyB0byBoYXBwZW4uIFJlYWQgdGhpcyBmb3Ig
-YW4gZXhwbGFuYXRpb24gb2Ygd2h5IG5vdDoKPj4KPj4gICAgICAgICAgICAgaHR0cHM6Ly9zaWV0
-Y2gtdGFnci5ibG9nc3BvdC5kZS8yMDE2LzA0L2Rpc3BsYXktcGFuZWxzLWFyZS1ub3Qtc3BlY2lh
-bC5odG1sCj4+Cj4+ICAgICBUaGllcnJ5Cj4+Cj4+Cj4+IEhpIFRoaWVycnkKPj4KPj4gVGhlIGJs
-b2cgYWN0dWFsbHkgbm90IHBlcnN1YWRlIG1lIHdoeSBjYW4ndCB1c2UgZGlzcGxheSB0aW1pbmcg
-b24KPj4gZGV2aWNlIHRyZWUuCj4KPiBPa2F5LCBwZXJoYXBzIHJlYWQgaXQgYWdhaW4sIGl0IGFk
-ZHJlc3NlcyBtb3N0IG9mIHlvdXIgcG9pbnRzIGJlbG93Lgo+Cj4+IDEsIEJpbmRpbmcgcGFuZWwg
-YXMgYSBzaW1wbGUgc3RyaW5nIG9uIGRldmljZSB0cmVlIHNlZW1zIHNpbXBsZSBvbiBkZXZpY2Ug
-dHJlZSwKPj4gYnV0IGl0J3MgY29tcGxleCBvbiBrZXJuZWwgY29kZSwgYW5kIGtlcm5lbCBjb2Rl
-IHdvdWxkIGJlY2FtZSBiaWdnZXIgYW5kCj4+IGJpZ2dlci4KPgo+IEkgZG9uJ3QgdGhpbmsgdGhl
-IHZpZGVvIHRpbWluZ3MgaW4gdGhlIHNpbXBsZS1wYW5lbCBkcml2ZXIgYXJlIHZlcnkKPiBjb21w
-bGV4LiBUaGV5IGFsc28gZG9uJ3QgdXNlIHZlcnkgbXVjaCBzcGFjZS4gQW5kIGlmIHlvdSdyZSBy
-ZWFsbHkKPiBjb25jZXJuZWQgYWJvdXQgc3BhY2UgeW91IGNhbiBhbHdheXMgdXNlIGNvbmRpdGlv
-bmFsIGNvbXBpbGF0aW9uIGFuZAo+IEtjb25maWcgc3ltYm9scyB0byByZW1vdmUgdGltaW5ncyBm
-b3IgcGFuZWxzIHRoYXQgeW91IGRvbid0IHVzZS4KPgo+IEFsc28sIHBhbmVscyBhcmUgY2hhcmFj
-dGVyaXplZCBieSBtdWNoIG1vcmUgdGhhbiBqdXN0IHZpZGVvIHRpbWluZ3MuCj4gVGhlcmUgd2Vy
-ZSBhdHRlbXB0cywgd2F5IGJhY2ssIHRvIGZ1bGx5IGRlc2NyaWJlIHBhbmVscyBpbiBkZXZpY2Ug
-dHJlZQo+IGFuZCB0aGF0IGZhaWxlZC4gV2hhdCB5b3UgcHJvcG9zZSBoZXJlIGlzIGEgcGFydGlh
-bCBzb2x1dGlvbiB0byBhIG11Y2gKPiBtb3JlIGNvbXBsZXggcHJvYmxlbS4KPgo+IFRoaXMgaXMg
-YWxsIGV4cGxhaW5lZCBpbiB0aGUgYmxvZyBwb3N0LgoKV2hpbGUgSSBhZ3JlZSB3aXRoIGV2ZXJ5
-dGhpbmcgVGhpZXJyeSBoYXMgc2FpZCBpbiB0aGlzIHRocmVhZCwgdGhlcmUKaXMgYW4gYXJndW1l
-bnQgdG8gYmUgbWFkZSBmb3IgdGltaW5nIGluZm9ybWF0aW9uIGluIERULgoKTWF5YmUgbW9zdCB2
-ZW5kb3JzIGhhdmUgbm93IGxlYXJuZWQgdGhhdCBmbGV4aWJsZSBjbG9jayBmcmVxdWVuY2llcwph
-cmUgbmVlZGVkIHRvIGdlbmVyYXRlIHRoZSBjb3JyZWN0IHRpbWluZ3MsIGJ1dCBJIGhhdmUgd29y
-a2VkIG9uIHBhcnRzCndpdGhvdXQgZmluZSByZXNvbHV0aW9uIChpLmUuIGEgZGVkaWNhdGVkIHBs
-bCkuIEV2ZW4gSGlLZXkgd2l0aCBIRE1JCnN1ZmZlcnMgZnJvbSB0aGlzLiBJbiB0aGF0IGNhc2Ug
-eW91IGNhbiBiZSB0dW5pbmcgdGhlIHRpbWluZ3MKKGluY3JlYXNpbmcgdGhlIGggYW5kL29yIHYg
-YmxhbmtzKSB0byBnZXQgdGhlIGRlc2lyZWQgcmVmcmVzaCByYXRlcy4KU28gaW4gdGhhdCBjYXNl
-LCB0aGUgcGFuZWwgY29tcGF0aWJsZSB3b3VsZCBub3QgZGV0ZXJtaW5lIHRoZSBkaXNwbGF5CnRp
-bWluZ3MgYW5kIHlvdSBjb3VsZCBoYXZlIHRoZSBzYW1lIHBhbmVsIHdpdGggZGlmZmVyZW50IHRp
-bWluZ3Mgb24KZGlmZmVyZW50IGJvYXJkcy4gVGhhdCdzIG1heWJlIHJhcmUgZW5vdWdoIHRoYXQg
-cHV0dGluZyB0aW1pbmcgaW5mbyBpbgpEVCBzdGlsbCB3b3VsZG4ndCBtYWtlIHNlbnNlLgoKQnV0
-IHRoYXQgaXMgbm90IHRoZSBwcm9ibGVtIGhlcmUsIGFuZCBldmVyeXRoaW5nIGVsc2UgYWJvdXQg
-dGhpcyBpcyB3cm9uZy4KClJvYgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+On Wed, Jul 27, 2016 at 7:10 AM, Caesar Wang <wxt@rock-chips.com> wrote:
+> From: Rocky Hao <rocky.hao@rock-chips.com>
+>
+> Due to the voltage ripple, the sensing data of the tsadc is not accurate.
+> And in this patch, the bandgap feature is enhanced to remove the voltage
+> ripple, and then the tsadc can sense the temperature more precisely.
+>
+> Obsolete codes are removed as well.
+>
+> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Eduardo Valentin <edubezval@gmail.com>
+> Cc: Zhang Rui <rui.zhang@intel.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-pm@vger.kernel.org
+> ---
+>
+>  drivers/thermal/rockchip_thermal.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index db5ecc5..a90423d 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -222,10 +222,10 @@ struct rockchip_thermal_data {
+>  #define GRF_TSADC_TESTBIT_L                    0x0e648
+>  #define GRF_TSADC_TESTBIT_H                    0x0e64c
+>
+> -#define GRF_TSADC_TSEN_PD_ON                   (0x30003 << 0)
+> -#define GRF_TSADC_TSEN_PD_OFF                  (0x30000 << 0)
+>  #define GRF_SARADC_TESTBIT_ON                  (0x10001 << 2)
+>  #define GRF_TSADC_TESTBIT_H_ON                 (0x10001 << 2)
+> +#define GRF_TSADC_VCM_EN_L                     (0x10001 << 7)
+> +#define GRF_TSADC_VCM_EN_H                     (0x10001 << 7)
+>
+>  /**
+>   * struct tsadc_table - code to temperature conversion table
+> @@ -567,9 +567,10 @@ static void rk_tsadcv3_initialize(struct regmap *grf, void __iomem *regs,
+>                                regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
+>
+>         } else {
+> -               regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_ON);
+> -               mdelay(10);
+> -               regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_OFF);
+> +               /* Enable the voltage common mode feature */
+> +               regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_VCM_EN_L);
+> +               regmap_write(grf, GRF_TSADC_TESTBIT_H, GRF_TSADC_VCM_EN_H);
+> +
+>                 usleep_range(15, 100); /* The spec note says at least 15 us */
+>                 regmap_write(grf, GRF_SARADC_TESTBIT, GRF_SARADC_TESTBIT_ON);
+>                 regmap_write(grf, GRF_TSADC_TESTBIT_H, GRF_TSADC_TESTBIT_H_ON);
+> --
+> 1.9.1
+>
+
+Tested-by: Stephen Barber <smbarber@chromium.org>
+
+Steve
