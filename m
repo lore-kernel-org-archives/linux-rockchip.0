@@ -1,84 +1,139 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v8 PATCH 1/6] extcon: Add EXTCON_DISP_DP and the property for USB Type-C
-Date: Fri, 29 Jul 2016 15:48:18 +0800
-Message-ID: <1469778503-29193-2-git-send-email-zyw@rock-chips.com>
+Subject: [v8 PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+Date: Fri, 29 Jul 2016 15:48:19 +0800
+Message-ID: <1469778503-29193-3-git-send-email-zyw@rock-chips.com>
 References: <1469778503-29193-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1469778503-29193-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add EXTCON_DISP_DP for the Display external connector. For Type-C
-connector the DisplayPort can work as an Alternate Mode(VESA DisplayPort
-Alt Mode on USB Type-C Standard). The Type-C support both normal
-and flipped orientation, so add a property to extcon.
+This patch adds a binding that describes the Rockchip USB Type-C PHY
+for rk3399
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
-Reviewed-by: Guenter Roeck <groeck@chromium.org>
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+
 ---
 
 Changes in v8: None
 Changes in v7: None
-Changes in v6: None
+Changes in v6:
+- add assigned-clocks and assigned-clock-rates
+
 Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
+Changes in v4:
+- add a #phy-cells node
 
- drivers/extcon/extcon.c | 5 +++++
- include/linux/extcon.h  | 8 +++++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+Changes in v3:
+- use compatible: rockchip,rk3399-typec-phy
+- use dashes instead of underscores.
 
-diff --git a/drivers/extcon/extcon.c b/drivers/extcon/extcon.c
-index 68890bb..6c7488a 100644
---- a/drivers/extcon/extcon.c
-+++ b/drivers/extcon/extcon.c
-@@ -157,6 +157,11 @@ struct __extcon_info {
- 		.id = EXTCON_DISP_VGA,
- 		.name = "VGA",
- 	},
-+	[EXTCON_DISP_DP] = {
-+		.type = EXTCON_TYPE_DISP | EXTCON_TYPE_USB,
-+		.id = EXTCON_DISP_DP,
-+		.name = "DP",
-+	},
- 
- 	/* Miscellaneous external connector */
- 	[EXTCON_DOCK] = {
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index f686204..9670d3f 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -69,6 +69,7 @@
- #define EXTCON_DISP_MHL		41	/* Mobile High-Definition Link */
- #define EXTCON_DISP_DVI		42	/* Digital Visual Interface */
- #define EXTCON_DISP_VGA		43	/* Video Graphics Array */
-+#define EXTCON_DISP_DP		44	/* Display Port */
- 
- /* Miscellaneous external connector */
- #define EXTCON_DOCK		60
-@@ -106,12 +107,17 @@
-  * @type:	integer (intval)
-  * @value:	0 (low) or 1 (high)
-  * @default:	0 (low)
-+ * - EXTCON_PROP_USB_TYPEC_POLARITY
-+ * @type:	integer (intval)
-+ * @value:	0 (normal) or 1 (flip)
-+ * @default:	0 (normal)
-  */
- #define EXTCON_PROP_USB_ID		0
- #define EXTCON_PROP_USB_VBUS		1
-+#define EXTCON_PROP_USB_TYPEC_POLARITY	2
- 
- #define EXTCON_PROP_USB_MIN		0
--#define EXTCON_PROP_USB_MAX		1
-+#define EXTCON_PROP_USB_MAX		2
- #define EXTCON_PROP_USB_CNT	(EXTCON_PROP_USB_MAX - EXTCON_PROP_USB_MIN + 1)
- 
- /* Properties of EXTCON_TYPE_CHG. */
+Changes in v2:
+- add some registers description
+
+Changes in v1:
+- add extcon node description
+- move the registers in phy driver
+- remove the suffix of reset
+
+ .../devicetree/bindings/phy/phy-rockchip-typec.txt | 84 ++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+new file mode 100644
+index 0000000..e384056
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+@@ -0,0 +1,84 @@
++* ROCKCHIP type-c PHY
++---------------------
++
++Required properties:
++ - compatible : must be "rockchip,rk3399-typec-phy"
++ - reg: Address and length of the usb phy control register set
++ - rockchip,grf : phandle to the syscon managing the "general
++   register files"
++ - clocks : phandle + clock specifier for the phy clocks
++ - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
++ - assigned-clocks: main clock, should be <&cru SCLK_UPHY0_TCPDCORE> or
++		    <&cru SCLK_UPHY1_TCPDCORE>;
++ - assigned-clock-rates : the phy core clk frequency, shall be: 50000000
++ - resets : a list of phandle + reset specifier pairs
++ - reset-names : string reset name, must be:
++		 "uphy", "uphy-pipe", "uphy-tcphy"
++ - extcon : extcon specifier for the Power Delivery
++ - #phy-cells: must be 0. See ./phy-bindings.txt for details.
++
++Note, there are 2 type-c phys for RK3399, and they are almost identical, except
++these registers(description below), every register node contains 3 sections:
++offset, enable bit, write mask bit.
++ - rockchip,typec-conn-dir : the register of type-c connector direction,
++   for type-c phy0, it must be <0xe580 0 16>;
++   for type-c phy1, it must be <0xe58c 0 16>;
++ - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
++   control.
++   for type-c phy0, it must be <0xe580 3 19>;
++   for type-c phy1, it must be <0xe58c 3 19>;
++ - rockchip,external-psm : the register of type-c phy external psm clock
++   selection.
++   for type-c phy0, it must be <0xe588 14 30>;
++   for type-c phy1, it must be <0xe594 14 30>;
++ - rockchip,pipe-status : the register of type-c phy pipe status.
++   for type-c phy0, it must be <0xe5c0 0 0>;
++   for type-c phy1, it must be <0xe5c0 16 16>;
++ - rockchip,uphy-dp-sel : the register of type-c phy selection for DP
++   for type-c phy0, it must be <0x6268 19 19>;
++   for type-c phy1, it must be <0x6268 3 19>;
++
++Example:
++	tcphy0: phy@ff7c0000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff7c0000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		extcon = <&fusb0>;
++		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
++			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
++		assigned-clock-rates = <50000000>;
++		resets = <&cru SRST_UPHY0>,
++			 <&cru SRST_UPHY0_PIPE_L00>,
++			 <&cru SRST_P_UPHY0_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe580 0 16>;
++		rockchip,usb3tousb2-en = <0xe580 3 19>;
++		rockchip,external-psm = <0xe588 14 30>;
++		rockchip,pipe-status = <0xe5c0 0 0>;
++		rockchip,uphy-dp-sel = <0x6268 19 19>;
++	};
++
++	tcphy1: phy@ff800000 {
++		compatible = "rockchip,rk3399-typec-phy";
++		reg = <0x0 0xff800000 0x0 0x40000>;
++		rockchip,grf = <&grf>;
++		#phy-cells = <0>;
++		extcon = <&fusb1>;
++		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
++			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
++		clock-names = "tcpdcore", "tcpdphy-ref";
++		assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
++		assigned-clock-rates = <50000000>;
++		resets = <&cru SRST_UPHY1>,
++		         <&cru SRST_UPHY1_PIPE_L00>,
++			 <&cru SRST_P_UPHY1_TCPHY>;
++		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++		rockchip,typec-conn-dir = <0xe58c 0 16>;
++		rockchip,usb3tousb2-en = <0xe58c 3 19>;
++		rockchip,external-psm = <0xe594 14 30>;
++		rockchip,pipe-status = <0xe5c0 16 16>;
++		rockchip,uphy-dp-sel = <0x6268 3 19>;
++	};
 -- 
 2.6.3
