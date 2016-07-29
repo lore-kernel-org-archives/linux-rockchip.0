@@ -1,133 +1,46 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH] drm/analogix_dp: Ensure the panel is properly prepared/unprepared
-Date: Fri, 29 Jul 2016 15:16:31 -0400
-Message-ID: <1469819791-31860-1-git-send-email-seanpaul@chromium.org>
-References: <CAOw6vbKbLzm4mPtp2LsG=7=KJkS_4Oe7rA4Of0uT5vM_Xoiphw@mail.gmail.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAOw6vbKbLzm4mPtp2LsG=7=KJkS_4Oe7rA4Of0uT5vM_Xoiphw@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: ykk@rock-chips.com
-Cc: yzq@rock-chips.com, inki.dae@samsung.com, treding@nvidia.com, heiko@sntech.de, jingoohan1@gmail.com, javier@osg.samsung.com, marcheu@chromium.org, tfiga@chromium.org, dianders@chromium.org, airlied@linux.ie, daniel.vetter@ffwll.ch, k.kozlowski@samsung.com, emil.l.velikov@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 1/4] iio: adc: rockchip_saradc: reset saradc
+ controller before programming it
+Date: Fri, 29 Jul 2016 16:28:33 -0500
+Message-ID: <20160729212833.GA12688@rob-hp-laptop>
+References: <1469629447-544-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1469629447-544-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Instead of just preparing the panel on bind, actually prepare/unprepare
-during modeset/disable. The panel must be prepared in order to read hpd
-status, so we need to refcount the prepares in order to ensure we don't
-accidentally turn the panel off at the wrong time.
+On Wed, Jul 27, 2016 at 10:24:04PM +0800, Caesar Wang wrote:
+> SARADC controller needs to be reset before programming it, otherwise
+> it will not function properly.
+> 
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Tested-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v3:
+> - %s/devm_reset_control_get_optional()/devm_reset_control_get()
+> - add Guente's test tag.
+> 
+> Changes in v2:
+> - Make the reset as an optional property, since it should work
+> with old devicetrees as well.
+> 
+>  .../bindings/iio/adc/rockchip-saradc.txt           |  7 +++++
+>  drivers/iio/adc/Kconfig                            |  1 +
+>  drivers/iio/adc/rockchip_saradc.c                  | 30 ++++++++++++++++++++++
+>  3 files changed, 38 insertions(+)
 
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
----
+Please add acks when posting new versions.
 
-
-Hi Yakir,
-This is what I was talking about upthread. I've tested it and it seems to be working.
-
-What do you think?
-
-Sean
-
-
-
-drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 48 +++++++++++++++++-----
- 1 file changed, 37 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 32715da..7b764a4 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -960,11 +960,27 @@ enum drm_connector_status
- analogix_dp_detect(struct drm_connector *connector, bool force)
- {
- 	struct analogix_dp_device *dp = to_dp(connector);
-+	enum drm_connector_status status = connector_status_disconnected;
-+	int ret;
- 
--	if (analogix_dp_detect_hpd(dp))
--		return connector_status_disconnected;
-+	if (dp->plat_data->panel && dp->dpms_mode != DRM_MODE_DPMS_ON) {
-+		ret = drm_panel_prepare(dp->plat_data->panel);
-+		if (ret) {
-+			DRM_ERROR("failed to setup panel (%d)\n", ret);
-+			return connector_status_disconnected;
-+		}
-+	}
-+
-+	if (!analogix_dp_detect_hpd(dp))
-+		status = connector_status_connected;
-+
-+	if (dp->plat_data->panel && dp->dpms_mode != DRM_MODE_DPMS_ON) {
-+		ret = drm_panel_unprepare(dp->plat_data->panel);
-+		if (ret)
-+			DRM_ERROR("failed to setup the panel ret = %d\n", ret);
-+	}
- 
--	return connector_status_connected;
-+	return status;
- }
- 
- static void analogix_dp_connector_destroy(struct drm_connector *connector)
-@@ -1035,6 +1051,18 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge)
- 	return 0;
- }
- 
-+static void analogix_dp_bridge_pre_enable(struct drm_bridge *bridge)
-+{
-+	struct analogix_dp_device *dp = bridge->driver_private;
-+	int ret;
-+
-+	if (dp->plat_data->panel) {
-+		ret = drm_panel_prepare(dp->plat_data->panel);
-+		if (ret)
-+			DRM_ERROR("failed to setup the panel ret = %d\n", ret);
-+	}
-+}
-+
- static void analogix_dp_bridge_enable(struct drm_bridge *bridge)
- {
- 	struct analogix_dp_device *dp = bridge->driver_private;
-@@ -1058,6 +1086,7 @@ static void analogix_dp_bridge_enable(struct drm_bridge *bridge)
- static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- {
- 	struct analogix_dp_device *dp = bridge->driver_private;
-+	int ret;
- 
- 	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
- 		return;
-@@ -1077,6 +1106,10 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 
- 	pm_runtime_put_sync(dp->dev);
- 
-+	ret = drm_panel_unprepare(dp->plat_data->panel);
-+	if (ret)
-+		DRM_ERROR("failed to setup the panel ret = %d\n", ret);
-+
- 	dp->dpms_mode = DRM_MODE_DPMS_OFF;
- }
- 
-@@ -1165,9 +1198,9 @@ static void analogix_dp_bridge_nop(struct drm_bridge *bridge)
- }
- 
- static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
-+	.pre_enable = analogix_dp_bridge_pre_enable,
- 	.enable = analogix_dp_bridge_enable,
- 	.disable = analogix_dp_bridge_disable,
--	.pre_enable = analogix_dp_bridge_nop,
- 	.post_disable = analogix_dp_bridge_nop,
- 	.mode_set = analogix_dp_bridge_mode_set,
- 	.attach = analogix_dp_bridge_attach,
-@@ -1333,13 +1366,6 @@ int analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
- 
- 	phy_power_on(dp->phy);
- 
--	if (dp->plat_data->panel) {
--		if (drm_panel_prepare(dp->plat_data->panel)) {
--			DRM_ERROR("failed to setup the panel\n");
--			return -EBUSY;
--		}
--	}
--
- 	analogix_dp_init_dp(dp);
- 
- 	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
--- 
-2.8.0.rc3.226.g39d4020
+Rob
