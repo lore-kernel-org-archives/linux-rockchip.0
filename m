@@ -1,68 +1,206 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 5/5] mmc: sdhci-of-arasan: add power domain support
-Date: Fri, 29 Jul 2016 12:16:45 +0800
-Message-ID: <1469765805-31049-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1469765703-30999-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1469765703-30999-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Feng Xiao <xf@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [v8 PATCH 0/6] Rockchip Type-C and DisplayPort driver
+Date: Fri, 29 Jul 2016 15:48:17 +0800
+Message-ID: <1469778503-29193-1-git-send-email-zyw@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should enable power domain once provided. Otherwise
-we take risk of bus err as it's maybe in off state before
-probing.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+Hi all
 
- drivers/mmc/host/sdhci-of-arasan.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+This series patch is for rockchip Type-C phy and DisplayPort controller
+driver.
 
-diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
-index e0f193f..e507e94 100644
---- a/drivers/mmc/host/sdhci-of-arasan.c
-+++ b/drivers/mmc/host/sdhci-of-arasan.c
-@@ -25,6 +25,8 @@
- #include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/regmap.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/pm_opp.h>
- #include "sdhci-pltfm.h"
- 
- #define SDHCI_ARASAN_CLK_CTRL_OFFSET	0x2c
-@@ -515,6 +517,9 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
- 		goto clk_dis_ahb;
- 	}
- 
-+	pm_runtime_enable(host->dev);
-+	pm_runtime_get_sync(host->dev);
-+
- 	sdhci_get_of_property(pdev);
- 	pltfm_host->clk = clk_xin;
- 
-@@ -577,6 +582,8 @@ clk_dis_ahb:
- 	clk_disable_unprepare(sdhci_arasan->clk_ahb);
- err_pltfm_free:
- 	sdhci_pltfm_free(pdev);
-+	pm_runtime_put(host->dev);
-+	pm_runtime_disable(host->dev);
- 	return ret;
- }
- 
-@@ -599,6 +606,9 @@ static int sdhci_arasan_remove(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(clk_ahb);
- 
-+	pm_runtime_put(host->dev);
-+	pm_runtime_disable(host->dev);
-+
- 	return ret;
- }
- 
+The USB Type-C PHY is designed to support the USB3 and DP applications.
+The PHY basically has two main components: USB3 and DisplyPort. USB3
+operates in SuperSpeed mode and the DP can operate at RBR, HBR and HBR2
+data rates. The Type-C cable orientation detection and Power Delivery
+(PD) is accomplished using a PD PHY or a exernal PD chip.
+
+The DP controller is compliant with DisplayPort Specification,
+Version 1.3, This IP is compatible with the rockchip type-c PHY IP.
+There is a uCPU in DP controller, it need a firmware to work, please
+put the firmware file[0] to /lib/firmware/rockchip/dptx.bin. The uCPU
+in charge of aux communication and link training, the host use mailbox
+to communicate with the ucpu.
+
+The DP contoller has register a notification with extcon API, to get the
+alt mode from PD, the PD driver need call the devm_extcon_dev_allocate
+to create a extcon device and use extcon_set_state to notify DP
+controller. And call extcon_set_cable_property to set orientation.
+
+About the DP audio, cdn-dp registered 2 DAIs: 0 is I2S, 1 is SPDIF.
+We can reference them in simple-card.
+
+This series is based on Mark Yao's branch[1] and Chanwoo Choi's
+extcon-test branch[2]. The extcon patch is base on a test branch, so
+please do not review the "1/6 extcon: Add Type-C and DP support".
+
+I test this patches on the rk3399-evb board, with a fusb302 driver,
+this branch has no rk3399.dtsi, so the patch about dts is not included
+in this series.
+
+[0]
+https://patchwork.kernel.org/patch/9249693/
+[1]
+https://github.com/markyzq/kernel-drm-rockchip/tree/drm-rockchip-next-2016-05-23
+[2]
+https://git.kernel.org/cgit/linux/kernel/git/chanwoo/extcon.git/log/?h=extcon-test
+- extcon: Add the extcon_type to gather each connector into five category
+- extcon: Add the support for extcon property according to extcon type
+- extcon: Add the support for the capability of each property
+- extcon: Rename the extcon_set/get_state() to maintain the function naming
+pattern
+- extcon: Add the synchronization extcon APIs to support the notification
+
+
+Changes in v8:
+- set the default cable id to EXTCON_USB_HOST
+- optimization Error log
+- optimization the err log
+
+Changes in v7:
+- support new API of extcon
+- support firmware standby when no dptx connection
+- optimization the calculation of tu size and valid symbol
+
+Changes in v6:
+- add assigned-clocks and assigned-clock-rates
+- delete the support of PIN_ASSIGN_A/B
+- set the default mode to MODE_DFP_USB
+- disable DP PLL at USB3 only mode
+- add assigned-clocks and assigned-clock-rates
+- add power-domains
+- add a port struct
+- select SND_SOC_HDMI_CODEC
+- force reset the phy when hpd detected
+
+Changes in v5:
+- support get property from extcon
+- remove PIN ASSIGN A/B support
+- alphabetical order
+- do not use long, use u32 or u64
+- return MODE_CLOCK_HIGH when requested > actual
+- Optimized Coding Style
+- add a formula to get better tu size and symbol value.
+- modify according to Sean Paul's comments
+- fixed the fw_wait always 0
+
+Changes in v4:
+- add a #phy-cells node
+- select EXTCON
+- use phy framework to control the USB3 and DP function
+- rename PIN_MAP_ to PIN_ASSIGN_
+- add a reset node
+- support 2 phys
+- use phy framework to control DP phy
+- support 2 phys
+
+Changes in v3:
+- use compatible: rockchip,rk3399-typec-phy
+- use dashes instead of underscores.
+- remove the phy framework(Kishon Vijay Abraham I)
+- add parentheses around the macro
+- use a single space between type and name
+- add spaces after opening and before closing braces.
+- use u16 for register value
+- remove type-c phy header file
+- CodingStyle optimization
+- use some cable extcon to get type-c port information
+- add a extcon to notify Display Port
+- add SoC specific compatible string
+- remove reg = <1>;
+- use EXTCON_DISP_DP and EXTCON_DISP_DP_ALT cable to get dp port state.
+- reset spdif before config it
+- modify the firmware clk to 100Mhz
+- retry load firmware if fw file is requested too early
+
+Changes in v2:
+- add some registers description
+- select RESET_CONTROLLER
+- alphabetic order
+- modify some spelling mistakes
+- make mode cleaner
+- use bool for enable/disable
+- check all of the return value
+- return a better err number
+- use more readx_poll_timeout()
+- clk_disable_unprepare(tcphy->clk_ref);
+- remove unuse functions, rockchip_typec_phy_power_on/off
+- remove unnecessary typecast from void *
+- use dts node to distinguish between phys.
+- Alphabetic order
+- remove excess error message
+- use define clk_rate
+- check all return value
+- remove dev_set_name(dp->dev, "cdn-dp");
+- use schedule_delayed_work
+- remove never-called functions
+- remove some unnecessary ()
+
+Changes in v1:
+- add extcon node description
+- move the registers in phy driver
+- remove the suffix of reset
+- update the licence note
+- init core clock to 50MHz
+- use extcon API
+- remove unused global
+- add some comments for magic num
+- change usleep_range(1000, 2000) tousleep_range(1000, 1050)
+- remove __func__ from dev_err
+- return err number when get clk failed
+- remove ADDR_ADJ define
+- use devm_clk_get(&pdev->dev, "tcpdcore")
+- add extcon node description
+- add #sound-dai-cells description
+- use extcon API
+- use hdmi-codec for the DP Asoc
+- do not initialize the "ret"
+- printk a err log when drm_of_encoder_active_endpoint_id
+- modify the dclk pin_pol to a single line
+
+Chris Zhong (6):
+  extcon: Add EXTCON_DISP_DP and the property for USB Type-C
+  Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+  phy: Add USB Type-C PHY driver for rk3399
+  arm64: dts: rockchip: add Type-C phy for RK3399
+  Documentation: bindings: add dt documentation for cdn DP controller
+  drm/rockchip: cdn-dp: add cdn DP support for rk3399
+
+ .../bindings/display/rockchip/cdn-dp-rockchip.txt  |  74 ++
+ .../devicetree/bindings/phy/phy-rockchip-typec.txt |  84 ++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  44 +
+ drivers/extcon/extcon.c                            |   5 +
+ drivers/gpu/drm/rockchip/Kconfig                   |  10 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 867 +++++++++++++++++++
+ drivers/gpu/drm/rockchip/cdn-dp-core.h             | 103 +++
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c              | 961 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/cdn-dp-reg.h              | 482 +++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |  13 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |   9 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c        |   2 +
+ drivers/phy/Kconfig                                |   9 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-rockchip-typec.c                   | 951 ++++++++++++++++++++
+ include/linux/extcon.h                             |   8 +-
+ 17 files changed, 3620 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.c
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.h
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.h
+ create mode 100644 drivers/phy/phy-rockchip-typec.c
+
 -- 
-2.3.7
+2.6.3
 
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
