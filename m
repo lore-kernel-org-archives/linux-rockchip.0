@@ -1,46 +1,43 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] iio: adc: rockchip_saradc: reset saradc
- controller before programming it
-Date: Fri, 29 Jul 2016 16:28:33 -0500
-Message-ID: <20160729212833.GA12688@rob-hp-laptop>
-References: <1469629447-544-1-git-send-email-wxt@rock-chips.com>
+Subject: Re: [PATCH v4 1/2] Documentation: bindings: add dt documentation for
+ Rockchip PCIe PHY
+Date: Fri, 29 Jul 2016 16:34:35 -0500
+Message-ID: <20160729213435.GA15549@rob-hp-laptop>
+References: <1469755326-10263-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1469629447-544-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1469755326-10263-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 27, 2016 at 10:24:04PM +0800, Caesar Wang wrote:
-> SARADC controller needs to be reset before programming it, otherwise
-> it will not function properly.
+On Fri, Jul 29, 2016 at 09:22:05AM +0800, Shawn Lin wrote:
+> This patch adds a binding that describes the Rockchip PCIe PHY
+> found on Rockchip SoCs PCIe interface.
 > 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Cc: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Tested-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
 > ---
 > 
+> Changes in v4: None
 > Changes in v3:
-> - %s/devm_reset_control_get_optional()/devm_reset_control_get()
-> - add Guente's test tag.
+> - rename the node to pcie_phy: pcie-phy suggested by Doug
 > 
 > Changes in v2:
-> - Make the reset as an optional property, since it should work
-> with old devicetrees as well.
+> - add clk and reset description
+> - remove unit-address
 > 
->  .../bindings/iio/adc/rockchip-saradc.txt           |  7 +++++
->  drivers/iio/adc/Kconfig                            |  1 +
->  drivers/iio/adc/rockchip_saradc.c                  | 30 ++++++++++++++++++++++
->  3 files changed, 38 insertions(+)
+>  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 32 ++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
 
 Please add acks when posting new versions.
 
 Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
