@@ -1,58 +1,69 @@
-From: Stephen Barber <smbarber@chromium.org>
-Subject: Re: [PATCH 2/2] thermal: rockchip: optimize sensor auto accessing period
-Date: Thu, 28 Jul 2016 14:53:28 -0700
-Message-ID: <CADR9n4__hcQosSOM5w0PMw8ck_gPi4Sc5ixbN6CiKKGia2gd7A@mail.gmail.com>
-References: <1469628643-29661-1-git-send-email-wxt@rock-chips.com> <1469628643-29661-2-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1469628643-29661-2-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Rocky Hao <rocky.hao@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v4 1/2] Documentation: bindings: add dt documentation for Rockchip PCIe PHY
+Date: Fri, 29 Jul 2016 09:22:05 +0800
+Message-ID: <1469755326-10263-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 27, 2016 at 7:10 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> From: Rocky Hao <rocky.hao@rock-chips.com>
->
-> In less than 10 ms, the temperature of soc will arise 10 degree. 250 ms
-> is too big for soc tempeture control. Setting 2.5 ms will speed up
-> temperature accessing speed but introduce no more cpu's computing overhead.
-> We set AUTO_PERIOD_TIME and TSADCV3_AUTO_PERIOD_HT_TIME the same value,
-> because normal temperature update speed is also our consern in IPA.
->
-> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-pm@vger.kernel.org
->
-> ---
->
->  drivers/thermal/rockchip_thermal.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index a90423d..1f165c9 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -213,8 +213,8 @@ struct rockchip_thermal_data {
->  #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT     4
->  #define TSADCV2_AUTO_PERIOD_TIME               250 /* 250ms */
->  #define TSADCV2_AUTO_PERIOD_HT_TIME            50  /* 50ms */
-> -#define TSADCV3_AUTO_PERIOD_TIME               187500 /* 250ms */
-> -#define TSADCV3_AUTO_PERIOD_HT_TIME            37500  /* 50ms */
-> +#define TSADCV3_AUTO_PERIOD_TIME               1875 /* 2.5ms */
-> +#define TSADCV3_AUTO_PERIOD_HT_TIME            1875 /* 2.5ms */
->
->  #define TSADCV2_USER_INTER_PD_SOC              0x340 /* 13 clocks */
->
-> --
-> 1.9.1
->
+This patch adds a binding that describes the Rockchip PCIe PHY
+found on Rockchip SoCs PCIe interface.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Tested-by: Stephen Barber <smbarber@chromium.org>
+---
 
-Steve
+Changes in v4: None
+Changes in v3:
+- rename the node to pcie_phy: pcie-phy suggested by Doug
+
+Changes in v2:
+- add clk and reset description
+- remove unit-address
+
+ .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 32 ++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+new file mode 100644
+index 0000000..aedca29
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+@@ -0,0 +1,32 @@
++Rockchip PCIE PHY
++-----------------------
++
++Required properties:
++ - compatible: rockchip,rk3399-pcie-phy
++ - #phy-cells: must be 0
++ - clocks: Must contain an entry in clock-names.
++	See ../clocks/clock-bindings.txt for details.
++ - clock-names: Must be "refclk"
++ - resets: Must contain an entry in reset-names.
++	See ../reset/reset.txt for details.
++ - reset-names: Must be "phy"
++
++Example:
++
++grf: syscon@ff770000 {
++	compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
++	#address-cells = <1>;
++	#size-cells = <1>;
++
++	...
++
++	pcie_phy: pcie-phy {
++		compatible = "rockchip,rk3399-pcie-phy";
++		#phy-cells = <0>;
++		clocks = <&cru SCLK_PCIEPHY_REF>;
++		clock-names = "refclk";
++		resets = <&cru SRST_PCIEPHY>;
++		reset-names = "phy";
++	};
++};
++
+-- 
+2.3.7
