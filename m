@@ -1,50 +1,41 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2 3/7] clk: rockchip: rk3399: fix incorrect parent for rk3399's {c, g}pll_aclk_perihp_src
-Date: Mon,  1 Aug 2016 17:33:32 +0800
-Message-ID: <1470044016-29764-4-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH v2 5/7] clk: rockchip: rk3399: add 65MHz and 106.5MHz clocks for HDMI
+Date: Mon,  1 Aug 2016 17:36:59 +0800
+Message-ID: <1470044219-29856-1-git-send-email-zhengxing@rock-chips.com>
 References: <1470044016-29764-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1470044016-29764-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-There was a typo, swapping 'c' <--> 'g'.
-
-And sorry to refer incorrect clock diagram, we double check it that
-the bits configuration of the Xpll_aclk_perihp_src need to be fixed:
-bit 1 - shows aclk_perihp_cpll_src_en
-bit 0 - shows aclk_perihp_gpll_src_en
+We need to add more clocks for supporting more display resolution
+for HDMI.
 
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
 ---
 
 Changes in v2: None
 
- drivers/clk/rockchip/clk-rk3399.c |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/rockchip/clk-rk3399.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index f55f967f..8bf0d19 100644
+index 44e673e..580abf1 100644
 --- a/drivers/clk/rockchip/clk-rk3399.c
 +++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -832,10 +832,10 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKGATE_CON(13), 1, GFLAGS),
- 
- 	/* perihp */
--	GATE(0, "cpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
--			RK3399_CLKGATE_CON(5), 0, GFLAGS),
--	GATE(0, "gpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
-+	GATE(0, "cpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(5), 1, GFLAGS),
-+	GATE(0, "gpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
-+			RK3399_CLKGATE_CON(5), 0, GFLAGS),
- 	COMPOSITE(ACLK_PERIHP, "aclk_perihp", mux_aclk_perihp_p, CLK_IGNORE_UNUSED,
- 			RK3399_CLKSEL_CON(14), 7, 1, MFLAGS, 0, 5, DFLAGS,
- 			RK3399_CLKGATE_CON(5), 2, GFLAGS),
+@@ -100,8 +100,10 @@ static struct rockchip_pll_rate_table rk3399_pll_rates[] = {
+ 	RK3036_PLL_RATE( 297000000, 1, 99, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE( 216000000, 1, 72, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE( 148500000, 1, 99, 4, 4, 1, 0),
++	RK3036_PLL_RATE( 106500000, 1, 71, 4, 4, 1, 0),
+ 	RK3036_PLL_RATE(  96000000, 1, 64, 4, 4, 1, 0),
+ 	RK3036_PLL_RATE(  74250000, 2, 99, 4, 4, 1, 0),
++	RK3036_PLL_RATE(  65000000, 1, 65, 6, 4, 1, 0),
+ 	RK3036_PLL_RATE(  54000000, 1, 54, 6, 4, 1, 0),
+ 	RK3036_PLL_RATE(  27000000, 1, 27, 6, 4, 1, 0),
+ 	{ /* sentinel */ },
 -- 
 1.7.9.5
 
