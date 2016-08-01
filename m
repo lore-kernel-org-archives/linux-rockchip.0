@@ -1,64 +1,82 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RESEND PATCH 6/6] clk: rockchip: rk3399: Add support frac mode frequencies
-Date: Mon,  1 Aug 2016 12:25:01 +0800
-Message-ID: <1470025501-4259-1-git-send-email-zhengxing@rock-chips.com>
-References: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
+From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v4 0/7] rk3399 support ddr frequency scaling
+Date: Mon, 01 Aug 2016 16:39:42 +0900
+Message-ID: <579EFCBE.4080600@samsung.com>
+References: <CGME20160729075805epcas1p2fa2fab53fc8cdfdf42f53e99a0a72e6a@epcas1p2.samsung.com>
+ <1469779021-10426-1-git-send-email-hl@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-reply-to: <1469779021-10426-1-git-send-email-hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: tixy-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, typ-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We need to support various display resolutions for external
-display devices like HDMI/DP, the frac mode can help us to
-acquire almost any frequencies, and need higher VCOs to reduce
-clock jitters.
-
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
-
- drivers/clk/rockchip/clk-rk3399.c |   21 ++++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 4a15ce5b..3daa164 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -109,6 +109,25 @@ static struct rockchip_pll_rate_table rk3399_pll_rates[] = {
- 	{ /* sentinel */ },
- };
- 
-+static struct rockchip_pll_rate_table rk3399_pll_frates[] = {
-+	/* _mhz, _refdiv, _fbdiv, _postdiv1, _postdiv2, _dsmpd, _frac */
-+	RK3036_PLL_RATE( 594000000, 1, 123, 5, 1, 0, 12582912),  /* vco = 2970000000 */
-+	RK3036_PLL_RATE( 593406593, 1, 123, 5, 1, 0, 10508804),  /* vco = 2967032965 */
-+	RK3036_PLL_RATE( 297000000, 1, 123, 5, 2, 0, 12582912),  /* vco = 2970000000 */
-+	RK3036_PLL_RATE( 296703297, 1, 123, 5, 2, 0, 10508807),  /* vco = 2967032970 */
-+	RK3036_PLL_RATE( 148500000, 1, 129, 7, 3, 0, 15728640),  /* vco = 3118500000 */
-+	RK3036_PLL_RATE( 148351648, 1, 123, 5, 4, 0, 10508800),  /* vco = 2967032960 */
-+	RK3036_PLL_RATE( 106500000, 1, 124, 7, 4, 0,  4194304),  /* vco = 2982000000 */
-+	RK3036_PLL_RATE(  74250000, 1, 129, 7, 6, 0, 15728640),  /* vco = 3118500000 */
-+	RK3036_PLL_RATE(  74175824, 1, 129, 7, 6, 0, 13550823),  /* vco = 3115384608 */
-+	RK3036_PLL_RATE(  65000000, 1, 113, 7, 6, 0, 12582912),  /* vco = 2730000000 */
-+	RK3036_PLL_RATE(  59340659, 1, 121, 7, 7, 0,  2581098),  /* vco = 2907692291 */
-+	RK3036_PLL_RATE(  54000000, 1, 110, 7, 7, 0,  4194304),  /* vco = 2646000000 */
-+	RK3036_PLL_RATE(  27000000, 1,  55, 7, 7, 0,  2097152),  /* vco = 1323000000 */
-+	RK3036_PLL_RATE(  26973027, 1,  55, 7, 7, 0,  1173232),  /* vco = 1321678323 */
-+	{ /* sentinel */ },
-+};
-+
- /* CRU parents */
- PNAME(mux_pll_p)				= { "xin24m", "xin32k" };
- 
-@@ -229,7 +248,7 @@ static struct rockchip_pll_clock rk3399_pll_clks[] __initdata = {
- 	[npll] = PLL(pll_rk3399, PLL_NPLL, "npll",  mux_pll_p, 0, RK3399_PLL_CON(40),
- 		     RK3399_PLL_CON(43), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_rates),
- 	[vpll] = PLL(pll_rk3399, PLL_VPLL, "vpll",  mux_pll_p, 0, RK3399_PLL_CON(48),
--		     RK3399_PLL_CON(51), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_rates),
-+		     RK3399_PLL_CON(51), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_frates),
- };
- 
- static struct rockchip_pll_clock rk3399_pmu_pll_clks[] __initdata = {
--- 
-1.7.9.5
+SGkgTGluLAoKT24gMjAxNuuFhCAwN+yblCAyOeydvCAxNjo1NiwgTGluIEh1YW5nIHdyb3RlOgo+
+IHJrMzM5OSBwbGF0Zm9ybSBoYXZlIGRmaSBjb250cm9sbGVyIGNhbiBtb25pdG9yIGRkciBsb2Fk
+LAo+IGFuZCBkY2YgY29udHJvbGxlciB0byBoYW5kbGUgZGRyIHJlZ2lzdGVyIHNvIHdlIGNhbiBn
+ZXQgdGhlCj4gcmlnaHQgZGRyIGZyZXF1ZW5jeSBhbmQgbWFrZSBkZHIgY29udHJvbGxlciBoYXBw
+eSB3b3JrKHdoaWNoCj4gd2lsbCBpbXBsZW1lbnQgaW4gYmwzMSkuIFNvIHdlIGRvIGRkciBmcmVx
+dWVuY3kgc2NhbGluZyB3aXRoCj4gZm9sbG93aW5nIGZsb3c6Cj4gCj4gCSAgICAga2VybmVsICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBibDMxCj4gCj4gCW1vbml0b3IgZGRyIGxvYWQK
+PiAJCXwKPiAJCXwKPiAJZ2V0X3RhcmdldF9yYXRlCj4gCQl8Cj4gCQl8ICAgICAgICAgICBwYXNz
+IHJhdGUgdG8gYmwzMQo+IAljbGtfc2V0X3JhdGUoZGRyKSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0+
+cnVuIGRjZiBmbG93Cj4gCQl8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4g
+CQl8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4gCXdhaXQgZGNmIGludGVy
+cnVwdDwtLS0tLS0tLS0tLS0tLS0tLS0tdHJpZ2dlciBkY2YgaW50ZXJydXB0ICAKPiAJCXwKPiAJ
+CXwKPiAJICAgICAgcmV0dXJuCj4gCj4gTGluIEh1YW5nICg2KToKPiAgIGNsazogcm9ja2NoaXA6
+IGFkZCBuZXcgY2xvY2stdHlwZSBmb3IgdGhlIGRkcmNsawo+ICAgY2xrOiByb2NrY2hpcDogcmsz
+Mzk5OiBhZGQgU0NMS19ERFJDTEsgSUQgZm9yIGRkcmMKPiAgIGNsazogcm9ja2NoaXA6IHJrMzM5
+OTogYWRkIGRkcmMgY2xvY2sgc3VwcG9ydAo+ICAgUE0gLyBkZXZmcmVxOiBldmVudDogc3VwcG9y
+dCByb2NrY2hpcCBkZmkgY29udHJvbGxlcgo+ICAgUE0gLyBkZXZmcmVxOiByb2NrY2hpcDogYWRk
+IGRldmZyZXEgZHJpdmVyIGZvciByazMzOTkgZG1jCj4gICBkcm0vcm9ja2NoaXA6IEFkZCBkbWMg
+bm90aWZpZXIgaW4gdm9wIGRyaXZlcgo+IAo+IAo+IEhlaWtvIFN0w7xibmVyICgxKToKPiAgIGNs
+azogcm9ja2NoaXA6IGFkZCBjbG9jayBmbGFnIHBhcmFtZXRlciB3aGVuIHJlZ2lzdGVyIHBsbAo+
+IAo+IExpbiBIdWFuZyAoNik6Cj4gICBjbGs6IHJvY2tjaGlwOiBhZGQgbmV3IGNsb2NrLXR5cGUg
+Zm9yIHRoZSBkZHJjbGsKPiAgIGNsazogcm9ja2NoaXA6IHJrMzM5OTogYWRkIFNDTEtfRERSQ0xL
+IElEIGZvciBkZHJjCj4gICBjbGs6IHJvY2tjaGlwOiByazMzOTk6IGFkZCBkZHJjIGNsb2NrIHN1
+cHBvcnQKPiAgIFBNIC8gZGV2ZnJlcTogZXZlbnQ6IHN1cHBvcnQgcm9ja2NoaXAgZGZpIGNvbnRy
+b2xsZXIKPiAgIFBNIC8gZGV2ZnJlcTogcm9ja2NoaXA6IGFkZCBkZXZmcmVxIGRyaXZlciBmb3Ig
+cmszMzk5IGRtYwo+ICAgZHJtL3JvY2tjaGlwOiBBZGQgZG1jIG5vdGlmaWVyIGluIHZvcCBkcml2
+ZXIKClRoZSBjb3Zlci1sZXR0ZXIgaW5jbHVkZXMgdGhlIGR1cGxpY2F0ZSBsaXN0IG9mIHBhdGNo
+ZXMuCgpBbHNvLCBJIHdhbnQgdG8gdGVzdCB0aGUgYnVpbGQgdGVzdC4gYnV0LCBXaGVuIEkgYXBw
+bHkgdGhlc2UgcGF0Y2hlcywKbWVyZ2UgY29uZmxpY3QgaGFwcGVuLiBDb3VsZCB5b3UgZ2l2ZSB0
+aGUgaW5mb3JtYXRpb24gYWJvdXQgYmFzZSBnaXQgcmVwb3NpdG9yeT8KClJlZ2FyZHMsCkNoYW53
+b28gQ2hvaQoKCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAg
+fCAgIDEgKwo+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstZGRyLmMgICAgICAgICAgICAgIHwg
+MTQ2ICsrKysrKysrKwo+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcGxsLmMgICAgICAgICAg
+ICAgIHwgICA0ICstCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYyAgICAgICAg
+ICAgfCAgMTkgKysKPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMgICAgICAgICAgICAgICAg
+ICB8ICAxMSArLQo+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGsuaCAgICAgICAgICAgICAgICAg
+IHwgIDI5ICstCj4gIGRyaXZlcnMvZGV2ZnJlcS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAg
+fCAgIDEgKwo+ICBkcml2ZXJzL2RldmZyZXEvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgIHwg
+ICAxICsKPiAgZHJpdmVycy9kZXZmcmVxL2V2ZW50L0tjb25maWcgICAgICAgICAgICAgICB8ICAg
+NyArCj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVudC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgIDEg
+Kwo+ICBkcml2ZXJzL2RldmZyZXEvZXZlbnQvcm9ja2NoaXAtZGZpLmMgICAgICAgIHwgMjUzICsr
+KysrKysrKysrKysrKwo+ICBkcml2ZXJzL2RldmZyZXEvcm9ja2NoaXAvS2NvbmZpZyAgICAgICAg
+ICAgIHwgICA4ICsKPiAgZHJpdmVycy9kZXZmcmVxL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAg
+ICB8ICAgMSArCj4gIGRyaXZlcnMvZGV2ZnJlcS9yb2NrY2hpcC9yazMzOTlfZG1jLmMgICAgICAg
+fCA0NzMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTI0ICsrKysrKystCj4gIGluY2x1ZGUvZHQtYmlu
+ZGluZ3MvY2xvY2svcmszMzk5LWNydS5oICAgICAgfCAgIDEgKwo+ICBpbmNsdWRlL3NvYy9yb2Nr
+Y2hpcC9yb2NrY2hpcF9zaXAuaCAgICAgICAgIHwgIDI3ICsrCj4gIDE3IGZpbGVzIGNoYW5nZWQs
+IDEwOTggaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1kZHIuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9kZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2RldmZyZXEvcm9ja2NoaXAvS2NvbmZpZwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9kZXZmcmVxL3JvY2tjaGlwL01ha2VmaWxlCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2RldmZyZXEvcm9ja2NoaXAvcmszMzk5X2RtYy5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBp
+bmNsdWRlL3NvYy9yb2NrY2hpcC9yb2NrY2hpcF9zaXAuaAo+IAoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
