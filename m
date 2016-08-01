@@ -1,40 +1,48 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RESEND PATCH 4/6] clk: rockchip: rk3399: add 65MHz and 106.5MHz clocks for HDMI
-Date: Mon,  1 Aug 2016 12:23:07 +0800
-Message-ID: <1470025389-4094-5-git-send-email-zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESEND PATCH 1/6] clk: rockchip: rk3399: export USBPHYx_480M_SRC
+ clock IDs
+Date: Mon,  1 Aug 2016 12:23:04 +0800
+Message-ID: <1470025389-4094-2-git-send-email-zhengxing@rock-chips.com>
 References: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470025389-4094-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We need to add more clocks for supporting more display resolution
-for HDMI.
+We export some clock IDs for the usb phy 480m source clocks.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
- drivers/clk/rockchip/clk-rk3399.c |    2 ++
+ include/dt-bindings/clock/rk3399-cru.h |    2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index ad3860a..74afec0 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -100,8 +100,10 @@ static struct rockchip_pll_rate_table rk3399_pll_rates[] = {
- 	RK3036_PLL_RATE( 297000000, 1, 99, 4, 2, 1, 0),
- 	RK3036_PLL_RATE( 216000000, 1, 72, 4, 2, 1, 0),
- 	RK3036_PLL_RATE( 148500000, 1, 99, 4, 4, 1, 0),
-+	RK3036_PLL_RATE( 106500000, 1, 71, 4, 4, 1, 0),
- 	RK3036_PLL_RATE(  96000000, 1, 64, 4, 4, 1, 0),
- 	RK3036_PLL_RATE(  74250000, 2, 99, 4, 4, 1, 0),
-+	RK3036_PLL_RATE(  65000000, 1, 65, 6, 4, 1, 0),
- 	RK3036_PLL_RATE(  54000000, 1, 54, 6, 4, 1, 0),
- 	RK3036_PLL_RATE(  27000000, 1, 27, 6, 4, 1, 0),
- 	{ /* sentinel */ },
+diff --git a/include/dt-bindings/clock/rk3399-cru.h b/include/dt-bindings/clock/rk3399-cru.h
+index 50a44cf..c4d8311 100644
+--- a/include/dt-bindings/clock/rk3399-cru.h
++++ b/include/dt-bindings/clock/rk3399-cru.h
+@@ -131,6 +131,8 @@
+ #define SCLK_DPHY_RX0_CFG		165
+ #define SCLK_RMII_SRC			166
+ #define SCLK_PCIEPHY_REF100M		167
++#define SCLK_USBPHY0_480M_SRC		168
++#define SCLK_USBPHY1_480M_SRC		169
+ 
+ #define DCLK_VOP0			180
+ #define DCLK_VOP1			181
 -- 
 1.7.9.5
-
-
