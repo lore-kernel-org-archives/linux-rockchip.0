@@ -1,206 +1,367 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+From: hl <hl@rock-chips.com>
 Subject: Re: [PATCH v4 5/7] PM / devfreq: event: support rockchip dfi
  controller
-Date: Mon, 01 Aug 2016 17:08:39 +0900
-Message-ID: <579F0387.5070303@samsung.com>
+Date: Mon, 1 Aug 2016 16:27:05 +0800
+Message-ID: <579F07D9.1050106@rock-chips.com>
 References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
  <CGME20160729075807epcas1p23ff4e931fe4f4cef2bcf59540394bf28@epcas1p2.samsung.com>
  <1469779021-10426-6-git-send-email-hl@rock-chips.com>
- <579EFD28.5070404@samsung.com>
+ <579EFD28.5070404@samsung.com> <579F0387.5070303@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <579EFD28.5070404-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: tixy-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, typ-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <579F0387.5070303@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chanwoo Choi <cw00.choi@samsung.com>, heiko@sntech.de
+Cc: tixy@linaro.org, typ@rock-chips.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTGluLAoKSSBhZGQgdGhlIG9uZSBtaW5vciBjb21tZW50IGZvciBmdWxsIG5hbWUgb2YgJ0RS
-SScuCgpPbiAyMDE264WEIDA47JuUIDAx7J28IDE2OjQxLCBDaGFud29vIENob2kgd3JvdGU6Cj4g
-SGkgTGluLAo+IAo+IEJlY2F1c2UgeW91IHJlbW92ZSB0aGUgJ1JGQycgcHJlZml4IG9uIHBhdGNo
-IHRpdGxlLAo+IEkgdGhpbmsgdGhhdCB5b3UgYmV0dGVyIHRvIG1ha2UgdGhlIGRvY3VtZW50YXRp
-b24gYXMgZm9sbG93aW5nOiAKPiAtIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9k
-ZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS50eHQKPiAKPiBSZWdhcmRzLAo+IENoYW53b28gQ2hv
-aQo+IAo+IE9uIDIwMTbrhYQgMDfsm5QgMjnsnbwgMTY6NTYsIExpbiBIdWFuZyB3cm90ZToKPj4g
-b24gcmszMzk5IHBsYXRmb3JtLCB0aGVyZSBpcyBkZmkgY29ucm9sbGVyIGNhbiBtb25pdG9yCj4+
-IGRkciBsb2FkLCBiYXNlIG9uIHRoaXMgcmVzdWx0LCB3ZSBjYW4gZG8gZGRyIGZyZXFlbmN5Cj4+
-IHNjYWxpbmcuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5j
-b20+Cj4+IEFja2VkLWJ5OiBDaGFud29vIENob2kgPGN3MDAuY2hvaUBzYW1zdW5nLmNvbT4KPj4g
-LS0tCj4+IENoYW5nZXMgaW4gdjQ6Cj4+IC0gTm9uZQo+Pgo+PiBDaGFuZ2VzIGluIHYzOgo+PiAt
-IE5vbmUKPj4KPj4gQ2hhbmdlcyBpbiB2MjoKPj4gLSB1c2UgY2xrX2Rpc2FibGVfdW5wcmVwYXJl
-IGFuZCBjbGtfZW5hYmxlX3ByZXBhcmUKPj4gLSByZW1vdmUgY2xrX2VuYWJsZV9wcmVwYXJlIGlu
-IHByb2JlCj4+IC0gcmVtb3ZlIHJvY2tjaGlwX2RmaV9yZW1vdmUgZnVuY3Rpb24KPj4KPj4gQ2hh
-bmdlcyBpbiB2MToKPj4gLSBOb25lCj4+Cj4+ICBkcml2ZXJzL2RldmZyZXEvZXZlbnQvS2NvbmZp
-ZyAgICAgICAgfCAgIDcgKwo+PiAgZHJpdmVycy9kZXZmcmVxL2V2ZW50L01ha2VmaWxlICAgICAg
-IHwgICAxICsKPj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVudC9yb2NrY2hpcC1kZmkuYyB8IDI1MyAr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+PiAgMyBmaWxlcyBjaGFuZ2VkLCAy
-NjEgaW5zZXJ0aW9ucygrKQo+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZGV2ZnJlcS9l
-dmVudC9yb2NrY2hpcC1kZmkuYwo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL2V2
-ZW50L0tjb25maWcgYi9kcml2ZXJzL2RldmZyZXEvZXZlbnQvS2NvbmZpZwo+PiBpbmRleCBhMTE3
-MjBhLi5mZjkyNzlmIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2RldmZyZXEvZXZlbnQvS2NvbmZp
-Zwo+PiArKysgYi9kcml2ZXJzL2RldmZyZXEvZXZlbnQvS2NvbmZpZwo+PiBAQCAtMjIsNCArMjIs
-MTEgQEAgY29uZmlnIERFVkZSRVFfRVZFTlRfRVhZTk9TX1BQTVUKPj4gIAkgIChQbGF0Zm9ybSBQ
-ZXJmb3JtYW5jZSBNb25pdG9yaW5nIFVuaXQpIGNvdW50ZXJzIHRvIGVzdGltYXRlIHRoZQo+PiAg
-CSAgdXRpbGl6YXRpb24gb2YgZWFjaCBtb2R1bGUuCj4+ICAKPj4gK2NvbmZpZyBERVZGUkVRX0VW
-RU5UX1JPQ0tDSElQX0RGSQo+PiArCXRyaXN0YXRlICJST0NLQ0hJUCBERkkgREVWRlJFUSBldmVu
-dCBEcml2ZXIiCj4+ICsJZGVwZW5kcyBvbiBBUkNIX1JPQ0tDSElQCj4+ICsJaGVscAo+PiArCSAg
-VGhpcyBhZGQgdGhlIGRldmZyZXEtZXZlbnQgZHJpdmVyIGZvciBSb2NrY2hpcCBTb0MuIEl0IHBy
-b3ZpZGVzIERGSQo+PiArCSAgKEREUiBNb25pdG9yIE1vZHVsZSkgZHJpdmVyIHRvIGNvdW50IGRk
-ciBsb2FkLgoKVGhlIERGSSBpcyAiRERSIE1vbml0b3IgTW9kdWxlIiBmdWxsIG5hbWU/IEkgbmVl
-ZCB0aGUgY29ycmVjdCBhYmJyZXZpYXRpb24gCmFuZCBmdWxsIG5hbWUuCgo+PiArCj4+ICBlbmRp
-ZiAjIFBNX0RFVkZSRVFfRVZFTlQKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZGV2ZnJlcS9ldmVu
-dC9NYWtlZmlsZSBiL2RyaXZlcnMvZGV2ZnJlcS9ldmVudC9NYWtlZmlsZQo+PiBpbmRleCBiZTE0
-NmVhLi5lM2Y4OGZjIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2RldmZyZXEvZXZlbnQvTWFrZWZp
-bGUKPj4gKysrIGIvZHJpdmVycy9kZXZmcmVxL2V2ZW50L01ha2VmaWxlCj4+IEBAIC0xLDIgKzEs
-MyBAQAo+PiAgIyBFeHlub3MgREVWRlJFUSBFdmVudCBEcml2ZXJzCj4+ICBvYmotJChDT05GSUdf
-REVWRlJFUV9FVkVOVF9FWFlOT1NfUFBNVSkgKz0gZXh5bm9zLXBwbXUubwo+PiArb2JqLSQoQ09O
-RklHX0RFVkZSRVFfRVZFTlRfUk9DS0NISVBfREZJKSArPSByb2NrY2hpcC1kZmkubwo+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS5jIGIvZHJpdmVycy9k
-ZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS5jCj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4+IGlu
-ZGV4IDAwMDAwMDAuLjk2YTAzMDcKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9kcml2ZXJzL2Rl
-dmZyZXEvZXZlbnQvcm9ja2NoaXAtZGZpLmMKPj4gQEAgLTAsMCArMSwyNTMgQEAKPj4gKy8qCj4+
-ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTYsIEZ1emhvdSBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4s
-IEx0ZAo+PiArICogQXV0aG9yOiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+PiArICoK
-Pj4gKyAqIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0
-ZSBpdCBhbmQvb3IgbW9kaWZ5IGl0Cj4+ICsgKiB1bmRlciB0aGUgdGVybXMgYW5kIGNvbmRpdGlv
-bnMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlLAo+PiArICogdmVyc2lvbiAyLCBh
-cyBwdWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4KPj4gKyAqCj4+ICsg
-KiBUaGlzIHByb2dyYW0gaXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhvcGUgaXQgd2lsbCBiZSB1c2Vm
-dWwsIGJ1dCBXSVRIT1VUCj4+ICsgKiBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1w
-bGllZCB3YXJyYW50eSBvZiBNRVJDSEFOVEFCSUxJVFkgb3IKPj4gKyAqIEZJVE5FU1MgRk9SIEEg
-UEFSVElDVUxBUiBQVVJQT1NFLiAgU2VlIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBm
-b3IKPj4gKyAqIG1vcmUgZGV0YWlscy4KPj4gKyAqLwo+PiArCj4+ICsjaW5jbHVkZSA8bGludXgv
-Y2xrLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvZGV2ZnJlcS1ldmVudC5oPgo+PiArI2luY2x1ZGUg
-PGxpbnV4L2tlcm5lbC5oPgo+PiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+PiArI2luY2x1ZGUg
-PGxpbnV4L2luaXQuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9pby5oPgo+PiArI2luY2x1ZGUgPGxp
-bnV4L21mZC9zeXNjb24uaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPj4gKyNpbmNs
-dWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAu
-aD4KPj4gKyNpbmNsdWRlIDxsaW51eC9zbGFiLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvbGlzdC5o
-Pgo+PiArI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4+ICsKPj4gKyNkZWZpbmUgUkszMzk5X0RNQ19O
-VU1fQ0gJMgo+PiArCj4+ICsvKiBERFJNT05fQ1RSTCAqLwo+PiArI2RlZmluZSBERFJNT05fQ1RS
-TAkweDA0Cj4+ICsjZGVmaW5lIENMUl9ERFJNT05fQ1RSTAkoMHgxZjAwMDAgPDwgMCkKPj4gKyNk
-ZWZpbmUgTFBERFI0X0VOCSgweDEwMDAxIDw8IDQpCj4+ICsjZGVmaW5lIEhBUkRXQVJFX0VOCSgw
-eDEwMDAxIDw8IDMpCj4+ICsjZGVmaW5lIExQRERSM19FTgkoMHgxMDAwMSA8PCAyKQo+PiArI2Rl
-ZmluZSBTT0ZUV0FSRV9FTgkoMHgxMDAwMSA8PCAxKQo+PiArI2RlZmluZSBUSU1FX0NOVF9FTgko
-MHgxMDAwMSA8PCAwKQo+PiArCj4+ICsjZGVmaW5lIEREUk1PTl9DSDBfQ09VTlRfTlVNCQkweDI4
-Cj4+ICsjZGVmaW5lIEREUk1PTl9DSDBfREZJX0FDQ0VTU19OVU0JMHgyYwo+PiArI2RlZmluZSBE
-RFJNT05fQ0gxX0NPVU5UX05VTQkJMHgzYwo+PiArI2RlZmluZSBERFJNT05fQ0gxX0RGSV9BQ0NF
-U1NfTlVNCTB4NDAKPj4gKwo+PiArLyogcG11IGdyZiAqLwo+PiArI2RlZmluZSBQTVVHUkZfT1Nf
-UkVHMgkweDMwOAo+PiArI2RlZmluZSBERFJUWVBFX1NISUZUCTEzCj4+ICsjZGVmaW5lIEREUlRZ
-UEVfTUFTSwk3Cj4+ICsKPj4gK2VudW0gewo+PiArCUREUjMgPSAzLAo+PiArCUxQRERSMyA9IDYs
-Cj4+ICsJTFBERFI0ID0gNywKPj4gKwlVTlVTRUQgPSAweEZGCj4+ICt9Owo+PiArCj4+ICtzdHJ1
-Y3QgZG1jX3VzYWdlIHsKPj4gKwl1MzIgYWNjZXNzOwo+PiArCXUzMiB0b3RhbDsKPj4gK307Cj4+
-ICsKPj4gK3N0cnVjdCByb2NrY2hpcF9kZmkgewo+PiArCXN0cnVjdCBkZXZmcmVxX2V2ZW50X2Rl
-diAqZWRldjsKPj4gKwlzdHJ1Y3QgZGV2ZnJlcV9ldmVudF9kZXNjICpkZXNjOwo+PiArCXN0cnVj
-dCBkbWNfdXNhZ2UgY2hfdXNhZ2VbUkszMzk5X0RNQ19OVU1fQ0hdOwo+PiArCXN0cnVjdCBkZXZp
-Y2UgKmRldjsKPj4gKwl2b2lkIF9faW9tZW0gKnJlZ3M7Cj4+ICsJc3RydWN0IHJlZ21hcCAqcmVn
-bWFwX3BtdTsKPj4gKwlzdHJ1Y3QgY2xrICpjbGs7Cj4+ICt9Owo+PiArCj4+ICtzdGF0aWMgdm9p
-ZCByb2NrY2hpcF9kZmlfc3RhcnRfaGFyZHdhcmVfY291bnRlcihzdHJ1Y3QgZGV2ZnJlcV9ldmVu
-dF9kZXYgKmVkZXYpCj4+ICt7Cj4+ICsJc3RydWN0IHJvY2tjaGlwX2RmaSAqaW5mbyA9IGRldmZy
-ZXFfZXZlbnRfZ2V0X2RydmRhdGEoZWRldik7Cj4+ICsJdm9pZCBfX2lvbWVtICpkZmlfcmVncyA9
-IGluZm8tPnJlZ3M7Cj4+ICsJdTMyIHZhbDsKPj4gKwl1MzIgZGRyX3R5cGU7Cj4+ICsKPj4gKwkv
-KiBnZXQgZGRyIHR5cGUgKi8KPj4gKwlyZWdtYXBfcmVhZChpbmZvLT5yZWdtYXBfcG11LCBQTVVH
-UkZfT1NfUkVHMiwgJnZhbCk7Cj4+ICsJZGRyX3R5cGUgPSAodmFsID4+IEREUlRZUEVfU0hJRlQp
-ICYgRERSVFlQRV9NQVNLOwo+PiArCj4+ICsJLyogY2xlYXIgRERSTU9OX0NUUkwgc2V0dGluZyAq
-Lwo+PiArCXdyaXRlbF9yZWxheGVkKENMUl9ERFJNT05fQ1RSTCwgZGZpX3JlZ3MgKyBERFJNT05f
-Q1RSTCk7Cj4+ICsKPj4gKwkvKiBzZXQgZGRyIHR5cGUgdG8gZGZpICovCj4+ICsJaWYgKGRkcl90
-eXBlID09IExQRERSMykKPj4gKwkJd3JpdGVsX3JlbGF4ZWQoTFBERFIzX0VOLCBkZmlfcmVncyAr
-IEREUk1PTl9DVFJMKTsKPj4gKwllbHNlIGlmIChkZHJfdHlwZSA9PSBMUEREUjQpCj4+ICsJCXdy
-aXRlbF9yZWxheGVkKExQRERSNF9FTiwgZGZpX3JlZ3MgKyBERFJNT05fQ1RSTCk7Cj4+ICsKPj4g
-KwkvKiBlbmFibGUgY291bnQsIHVzZSBzb2Z0d2FyZSBtb2RlICovCj4+ICsJd3JpdGVsX3JlbGF4
-ZWQoU09GVFdBUkVfRU4sIGRmaV9yZWdzICsgRERSTU9OX0NUUkwpOwo+PiArfQo+PiArCj4+ICtz
-dGF0aWMgdm9pZCByb2NrY2hpcF9kZmlfc3RvcF9oYXJkd2FyZV9jb3VudGVyKHN0cnVjdCBkZXZm
-cmVxX2V2ZW50X2RldiAqZWRldikKPj4gK3sKPj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfZGZpICppbmZv
-ID0gZGV2ZnJlcV9ldmVudF9nZXRfZHJ2ZGF0YShlZGV2KTsKPj4gKwl2b2lkIF9faW9tZW0gKmRm
-aV9yZWdzID0gaW5mby0+cmVnczsKPj4gKwl1MzIgdmFsOwo+PiArCj4+ICsJdmFsID0gcmVhZGxf
-cmVsYXhlZChkZmlfcmVncyArIEREUk1PTl9DVFJMKTsKPj4gKwl2YWwgJj0gflNPRlRXQVJFX0VO
-Owo+PiArCXdyaXRlbF9yZWxheGVkKHZhbCwgZGZpX3JlZ3MgKyBERFJNT05fQ1RSTCk7Cj4+ICt9
-Cj4+ICsKPj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX2dldF9idXNpZXJfY2goc3RydWN0IGRl
-dmZyZXFfZXZlbnRfZGV2ICplZGV2KQo+PiArewo+PiArCXN0cnVjdCByb2NrY2hpcF9kZmkgKmlu
-Zm8gPSBkZXZmcmVxX2V2ZW50X2dldF9kcnZkYXRhKGVkZXYpOwo+PiArCXUzMiB0bXAsIG1heCA9
-IDA7Cj4+ICsJdTMyIGksIGJ1c2llcl9jaCA9IDA7Cj4+ICsJdm9pZCBfX2lvbWVtICpkZmlfcmVn
-cyA9IGluZm8tPnJlZ3M7Cj4+ICsKPj4gKwlyb2NrY2hpcF9kZmlfc3RvcF9oYXJkd2FyZV9jb3Vu
-dGVyKGVkZXYpOwo+PiArCj4+ICsJLyogRmluZCBvdXQgd2hpY2ggY2hhbm5lbCBpcyBidXNpZXIg
-Ki8KPj4gKwlmb3IgKGkgPSAwOyBpIDwgUkszMzk5X0RNQ19OVU1fQ0g7IGkrKykgewo+PiArCQlp
-bmZvLT5jaF91c2FnZVtpXS5hY2Nlc3MgPSByZWFkbF9yZWxheGVkKGRmaV9yZWdzICsKPj4gKwkJ
-CQlERFJNT05fQ0gwX0RGSV9BQ0NFU1NfTlVNICsgaSAqIDIwKTsKPj4gKwkJaW5mby0+Y2hfdXNh
-Z2VbaV0udG90YWwgPSByZWFkbF9yZWxheGVkKGRmaV9yZWdzICsKPj4gKwkJCQlERFJNT05fQ0gw
-X0NPVU5UX05VTSArIGkgKiAyMCk7Cj4+ICsJCXRtcCA9IGluZm8tPmNoX3VzYWdlW2ldLmFjY2Vz
-czsKPj4gKwkJaWYgKHRtcCA+IG1heCkgewo+PiArCQkJYnVzaWVyX2NoID0gaTsKPj4gKwkJCW1h
-eCA9IHRtcDsKPj4gKwkJfQo+PiArCX0KPj4gKwlyb2NrY2hpcF9kZmlfc3RhcnRfaGFyZHdhcmVf
-Y291bnRlcihlZGV2KTsKPj4gKwo+PiArCXJldHVybiBidXNpZXJfY2g7Cj4+ICt9Cj4+ICsKPj4g
-K3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX2Rpc2FibGUoc3RydWN0IGRldmZyZXFfZXZlbnRfZGV2
-ICplZGV2KQo+PiArewo+PiArCXN0cnVjdCByb2NrY2hpcF9kZmkgKmluZm8gPSBkZXZmcmVxX2V2
-ZW50X2dldF9kcnZkYXRhKGVkZXYpOwo+PiArCj4+ICsJcm9ja2NoaXBfZGZpX3N0b3BfaGFyZHdh
-cmVfY291bnRlcihlZGV2KTsKPj4gKwljbGtfZGlzYWJsZV91bnByZXBhcmUoaW5mby0+Y2xrKTsK
-Pj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+PiArCj4+ICtzdGF0aWMgaW50IHJvY2tjaGlwX2Rm
-aV9lbmFibGUoc3RydWN0IGRldmZyZXFfZXZlbnRfZGV2ICplZGV2KQo+PiArewo+PiArCXN0cnVj
-dCByb2NrY2hpcF9kZmkgKmluZm8gPSBkZXZmcmVxX2V2ZW50X2dldF9kcnZkYXRhKGVkZXYpOwo+
-PiArCWludCByZXQ7Cj4+ICsKPj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoaW5mby0+Y2xr
-KTsKPj4gKwlpZiAocmV0KSB7Cj4+ICsJCWRldl9lcnIoJmVkZXYtPmRldiwgImZhaWxlZCB0byBl
-bmFibGUgZGZpIGNsazogJWRcbiIsIHJldCk7Cj4+ICsJCXJldHVybiByZXQ7Cj4+ICsJfQo+PiAr
-Cj4+ICsJcm9ja2NoaXBfZGZpX3N0YXJ0X2hhcmR3YXJlX2NvdW50ZXIoZWRldik7Cj4+ICsJcmV0
-dXJuIDA7Cj4+ICt9Cj4+ICsKPj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX3NldF9ldmVudChz
-dHJ1Y3QgZGV2ZnJlcV9ldmVudF9kZXYgKmVkZXYpCj4+ICt7Cj4+ICsJcmV0dXJuIDA7Cj4+ICt9
-Cj4+ICsKPj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZGZpX2dldF9ldmVudChzdHJ1Y3QgZGV2ZnJl
-cV9ldmVudF9kZXYgKmVkZXYsCj4+ICsJCQkJICBzdHJ1Y3QgZGV2ZnJlcV9ldmVudF9kYXRhICpl
-ZGF0YSkKPj4gK3sKPj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfZGZpICppbmZvID0gZGV2ZnJlcV9ldmVu
-dF9nZXRfZHJ2ZGF0YShlZGV2KTsKPj4gKwlpbnQgYnVzaWVyX2NoOwo+PiArCj4+ICsJYnVzaWVy
-X2NoID0gcm9ja2NoaXBfZGZpX2dldF9idXNpZXJfY2goZWRldik7Cj4+ICsKPj4gKwllZGF0YS0+
-bG9hZF9jb3VudCA9IGluZm8tPmNoX3VzYWdlW2J1c2llcl9jaF0uYWNjZXNzOwo+PiArCWVkYXRh
-LT50b3RhbF9jb3VudCA9IGluZm8tPmNoX3VzYWdlW2J1c2llcl9jaF0udG90YWw7Cj4+ICsKPj4g
-KwlyZXR1cm4gMDsKPj4gK30KPj4gKwo+PiArc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZmcmVxX2V2
-ZW50X29wcyByb2NrY2hpcF9kZmlfb3BzID0gewo+PiArCS5kaXNhYmxlID0gcm9ja2NoaXBfZGZp
-X2Rpc2FibGUsCj4+ICsJLmVuYWJsZSA9IHJvY2tjaGlwX2RmaV9lbmFibGUsCj4+ICsJLmdldF9l
-dmVudCA9IHJvY2tjaGlwX2RmaV9nZXRfZXZlbnQsCj4+ICsJLnNldF9ldmVudCA9IHJvY2tjaGlw
-X2RmaV9zZXRfZXZlbnQsCj4+ICt9Owo+PiArCj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
-dmljZV9pZCByb2NrY2hpcF9kZmlfaWRfbWF0Y2hbXSA9IHsKPj4gKwl7IC5jb21wYXRpYmxlID0g
-InJvY2tjaGlwLHJrMzM5OS1kZmkiIH0sCj4+ICsJeyB9LAo+PiArfTsKPj4gKwo+PiArc3RhdGlj
-IGludCByb2NrY2hpcF9kZmlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4g
-K3sKPj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+PiArCXN0cnVjdCByb2Nr
-Y2hpcF9kZmkgKmRhdGE7Cj4+ICsJc3RydWN0IHJlc291cmNlICpyZXM7Cj4+ICsJc3RydWN0IGRl
-dmZyZXFfZXZlbnRfZGVzYyAqZGVzYzsKPj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gcGRl
-di0+ZGV2Lm9mX25vZGUsICpub2RlOwo+PiArCj4+ICsJZGF0YSA9IGRldm1fa3phbGxvYyhkZXYs
-IHNpemVvZihzdHJ1Y3Qgcm9ja2NoaXBfZGZpKSwgR0ZQX0tFUk5FTCk7Cj4+ICsJaWYgKCFkYXRh
-KQo+PiArCQlyZXR1cm4gLUVOT01FTTsKPj4gKwo+PiArCXJlcyA9IHBsYXRmb3JtX2dldF9yZXNv
-dXJjZShwZGV2LCBJT1JFU09VUkNFX01FTSwgMCk7Cj4+ICsJZGF0YS0+cmVncyA9IGRldm1faW9y
-ZW1hcF9yZXNvdXJjZSgmcGRldi0+ZGV2LCByZXMpOwo+PiArCWlmIChJU19FUlIoZGF0YS0+cmVn
-cykpCj4+ICsJCXJldHVybiBQVFJfRVJSKGRhdGEtPnJlZ3MpOwo+PiArCj4+ICsJZGF0YS0+Y2xr
-ID0gZGV2bV9jbGtfZ2V0KGRldiwgInBjbGtfZGRyX21vbiIpOwo+PiArCWlmIChJU19FUlIoZGF0
-YS0+Y2xrKSkgewo+PiArCQlkZXZfZXJyKGRldiwgIkNhbm5vdCBnZXQgdGhlIGNsayBkbWNfY2xr
-XG4iKTsKPj4gKwkJcmV0dXJuIFBUUl9FUlIoZGF0YS0+Y2xrKTsKPj4gKwl9Owo+PiArCj4+ICsJ
-LyogdHJ5IHRvIGZpbmQgdGhlIG9wdGlvbmFsIHJlZmVyZW5jZSB0byB0aGUgcG11IHN5c2NvbiAq
-Lwo+PiArCW5vZGUgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicm9ja2NoaXAscG11IiwgMCk7Cj4+
-ICsJaWYgKG5vZGUpIHsKPj4gKwkJZGF0YS0+cmVnbWFwX3BtdSA9IHN5c2Nvbl9ub2RlX3RvX3Jl
-Z21hcChub2RlKTsKPj4gKwkJaWYgKElTX0VSUihkYXRhLT5yZWdtYXBfcG11KSkKPj4gKwkJCXJl
-dHVybiBQVFJfRVJSKGRhdGEtPnJlZ21hcF9wbXUpOwo+PiArCX0KPj4gKwlkYXRhLT5kZXYgPSBk
-ZXY7Cj4+ICsKPj4gKwlkZXNjID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpkZXNjKSwgR0ZQ
-X0tFUk5FTCk7Cj4+ICsJaWYgKCFkZXNjKQo+PiArCQlyZXR1cm4gLUVOT01FTTsKPj4gKwo+PiAr
-CWRlc2MtPm9wcyA9ICZyb2NrY2hpcF9kZmlfb3BzOwo+PiArCWRlc2MtPmRyaXZlcl9kYXRhID0g
-ZGF0YTsKPj4gKwlkZXNjLT5uYW1lID0gbnAtPm5hbWU7Cj4+ICsJZGF0YS0+ZGVzYyA9IGRlc2M7
-Cj4+ICsKPj4gKwlkYXRhLT5lZGV2ID0gZGV2bV9kZXZmcmVxX2V2ZW50X2FkZF9lZGV2KCZwZGV2
-LT5kZXYsIGRlc2MpOwo+PiArCWlmIChJU19FUlIoZGF0YS0+ZWRldikpIHsKPj4gKwkJZGV2X2Vy
-cigmcGRldi0+ZGV2LAo+PiArCQkJImZhaWxlZCB0byBhZGQgZGV2ZnJlcS1ldmVudCBkZXZpY2Vc
-biIpOwo+PiArCQlyZXR1cm4gUFRSX0VSUihkYXRhLT5lZGV2KTsKPj4gKwl9Cj4+ICsKPj4gKwlw
-bGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBkYXRhKTsKPj4gKwo+PiArCXJldHVybiAwOwo+PiAr
-fQo+PiArCj4+ICtzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciByb2NrY2hpcF9kZmlfZHJp
-dmVyID0gewo+PiArCS5wcm9iZQk9IHJvY2tjaGlwX2RmaV9wcm9iZSwKPj4gKwkuZHJpdmVyID0g
-ewo+PiArCQkubmFtZQk9ICJyb2NrY2hpcC1kZmkiLAo+PiArCQkub2ZfbWF0Y2hfdGFibGUgPSBy
-b2NrY2hpcF9kZmlfaWRfbWF0Y2gsCj4+ICsJfSwKPj4gK307Cj4+ICttb2R1bGVfcGxhdGZvcm1f
-ZHJpdmVyKHJvY2tjaGlwX2RmaV9kcml2ZXIpOwo+PiArCj4+ICtNT0RVTEVfTElDRU5TRSgiR1BM
-IHYyIik7Cj4+ICtNT0RVTEVfQVVUSE9SKCJMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPiIp
-Owo+PiArTU9EVUxFX0RFU0NSSVBUSU9OKCJSb2NrY2hpcCBkZmkgZHJpdmVyIik7CgpzL2RmaSAt
-PiBERkkKClJlZ2FyZHMsCkNoYW53b28gQ2hvaQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Chanwoo Choi,
+
+On 2016年08月01日 16:08, Chanwoo Choi wrote:
+> Hi Lin,
+>
+> I add the one minor comment for full name of 'DRI'.
+>
+> On 2016년 08월 01일 16:41, Chanwoo Choi wrote:
+>> Hi Lin,
+>>
+>> Because you remove the 'RFC' prefix on patch title,
+>> I think that you better to make the documentation as following:
+>> - Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+>>
+>> Regards,
+>> Chanwoo Choi
+>>
+>> On 2016년 07월 29일 16:56, Lin Huang wrote:
+>>> on rk3399 platform, there is dfi conroller can monitor
+>>> ddr load, base on this result, we can do ddr freqency
+>>> scaling.
+>>>
+>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
+>>> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+>>> ---
+>>> Changes in v4:
+>>> - None
+>>>
+>>> Changes in v3:
+>>> - None
+>>>
+>>> Changes in v2:
+>>> - use clk_disable_unprepare and clk_enable_prepare
+>>> - remove clk_enable_prepare in probe
+>>> - remove rockchip_dfi_remove function
+>>>
+>>> Changes in v1:
+>>> - None
+>>>
+>>>   drivers/devfreq/event/Kconfig        |   7 +
+>>>   drivers/devfreq/event/Makefile       |   1 +
+>>>   drivers/devfreq/event/rockchip-dfi.c | 253 +++++++++++++++++++++++++++++++++++
+>>>   3 files changed, 261 insertions(+)
+>>>   create mode 100644 drivers/devfreq/event/rockchip-dfi.c
+>>>
+>>> diff --git a/drivers/devfreq/event/Kconfig b/drivers/devfreq/event/Kconfig
+>>> index a11720a..ff9279f 100644
+>>> --- a/drivers/devfreq/event/Kconfig
+>>> +++ b/drivers/devfreq/event/Kconfig
+>>> @@ -22,4 +22,11 @@ config DEVFREQ_EVENT_EXYNOS_PPMU
+>>>   	  (Platform Performance Monitoring Unit) counters to estimate the
+>>>   	  utilization of each module.
+>>>   
+>>> +config DEVFREQ_EVENT_ROCKCHIP_DFI
+>>> +	tristate "ROCKCHIP DFI DEVFREQ event Driver"
+>>> +	depends on ARCH_ROCKCHIP
+>>> +	help
+>>> +	  This add the devfreq-event driver for Rockchip SoC. It provides DFI
+>>> +	  (DDR Monitor Module) driver to count ddr load.
+> The DFI is "DDR Monitor Module" full name? I need the correct abbreviation
+> and full name.
+We just call this module DFI in datasheet, and this module function is 
+ddr monitor module,
+yes, it is do not fit the full name, but i think it is better follow the 
+datasheet name.
+>
+>>> +
+>>>   endif # PM_DEVFREQ_EVENT
+>>> diff --git a/drivers/devfreq/event/Makefile b/drivers/devfreq/event/Makefile
+>>> index be146ea..e3f88fc 100644
+>>> --- a/drivers/devfreq/event/Makefile
+>>> +++ b/drivers/devfreq/event/Makefile
+>>> @@ -1,2 +1,3 @@
+>>>   # Exynos DEVFREQ Event Drivers
+>>>   obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_PPMU) += exynos-ppmu.o
+>>> +obj-$(CONFIG_DEVFREQ_EVENT_ROCKCHIP_DFI) += rockchip-dfi.o
+>>> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+>>> new file mode 100644
+>>> index 0000000..96a0307
+>>> --- /dev/null
+>>> +++ b/drivers/devfreq/event/rockchip-dfi.c
+>>> @@ -0,0 +1,253 @@
+>>> +/*
+>>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>>> + * Author: Lin Huang <hl@rock-chips.com>
+>>> + *
+>>> + * This program is free software; you can redistribute it and/or modify it
+>>> + * under the terms and conditions of the GNU General Public License,
+>>> + * version 2, as published by the Free Software Foundation.
+>>> + *
+>>> + * This program is distributed in the hope it will be useful, but WITHOUT
+>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+>>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+>>> + * more details.
+>>> + */
+>>> +
+>>> +#include <linux/clk.h>
+>>> +#include <linux/devfreq-event.h>
+>>> +#include <linux/kernel.h>
+>>> +#include <linux/err.h>
+>>> +#include <linux/init.h>
+>>> +#include <linux/io.h>
+>>> +#include <linux/mfd/syscon.h>
+>>> +#include <linux/module.h>
+>>> +#include <linux/platform_device.h>
+>>> +#include <linux/regmap.h>
+>>> +#include <linux/slab.h>
+>>> +#include <linux/list.h>
+>>> +#include <linux/of.h>
+>>> +
+>>> +#define RK3399_DMC_NUM_CH	2
+>>> +
+>>> +/* DDRMON_CTRL */
+>>> +#define DDRMON_CTRL	0x04
+>>> +#define CLR_DDRMON_CTRL	(0x1f0000 << 0)
+>>> +#define LPDDR4_EN	(0x10001 << 4)
+>>> +#define HARDWARE_EN	(0x10001 << 3)
+>>> +#define LPDDR3_EN	(0x10001 << 2)
+>>> +#define SOFTWARE_EN	(0x10001 << 1)
+>>> +#define TIME_CNT_EN	(0x10001 << 0)
+>>> +
+>>> +#define DDRMON_CH0_COUNT_NUM		0x28
+>>> +#define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
+>>> +#define DDRMON_CH1_COUNT_NUM		0x3c
+>>> +#define DDRMON_CH1_DFI_ACCESS_NUM	0x40
+>>> +
+>>> +/* pmu grf */
+>>> +#define PMUGRF_OS_REG2	0x308
+>>> +#define DDRTYPE_SHIFT	13
+>>> +#define DDRTYPE_MASK	7
+>>> +
+>>> +enum {
+>>> +	DDR3 = 3,
+>>> +	LPDDR3 = 6,
+>>> +	LPDDR4 = 7,
+>>> +	UNUSED = 0xFF
+>>> +};
+>>> +
+>>> +struct dmc_usage {
+>>> +	u32 access;
+>>> +	u32 total;
+>>> +};
+>>> +
+>>> +struct rockchip_dfi {
+>>> +	struct devfreq_event_dev *edev;
+>>> +	struct devfreq_event_desc *desc;
+>>> +	struct dmc_usage ch_usage[RK3399_DMC_NUM_CH];
+>>> +	struct device *dev;
+>>> +	void __iomem *regs;
+>>> +	struct regmap *regmap_pmu;
+>>> +	struct clk *clk;
+>>> +};
+>>> +
+>>> +static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +	void __iomem *dfi_regs = info->regs;
+>>> +	u32 val;
+>>> +	u32 ddr_type;
+>>> +
+>>> +	/* get ddr type */
+>>> +	regmap_read(info->regmap_pmu, PMUGRF_OS_REG2, &val);
+>>> +	ddr_type = (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
+>>> +
+>>> +	/* clear DDRMON_CTRL setting */
+>>> +	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+>>> +
+>>> +	/* set ddr type to dfi */
+>>> +	if (ddr_type == LPDDR3)
+>>> +		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+>>> +	else if (ddr_type == LPDDR4)
+>>> +		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+>>> +
+>>> +	/* enable count, use software mode */
+>>> +	writel_relaxed(SOFTWARE_EN, dfi_regs + DDRMON_CTRL);
+>>> +}
+>>> +
+>>> +static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +	void __iomem *dfi_regs = info->regs;
+>>> +	u32 val;
+>>> +
+>>> +	val = readl_relaxed(dfi_regs + DDRMON_CTRL);
+>>> +	val &= ~SOFTWARE_EN;
+>>> +	writel_relaxed(val, dfi_regs + DDRMON_CTRL);
+>>> +}
+>>> +
+>>> +static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +	u32 tmp, max = 0;
+>>> +	u32 i, busier_ch = 0;
+>>> +	void __iomem *dfi_regs = info->regs;
+>>> +
+>>> +	rockchip_dfi_stop_hardware_counter(edev);
+>>> +
+>>> +	/* Find out which channel is busier */
+>>> +	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
+>>> +		info->ch_usage[i].access = readl_relaxed(dfi_regs +
+>>> +				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+>>> +		info->ch_usage[i].total = readl_relaxed(dfi_regs +
+>>> +				DDRMON_CH0_COUNT_NUM + i * 20);
+>>> +		tmp = info->ch_usage[i].access;
+>>> +		if (tmp > max) {
+>>> +			busier_ch = i;
+>>> +			max = tmp;
+>>> +		}
+>>> +	}
+>>> +	rockchip_dfi_start_hardware_counter(edev);
+>>> +
+>>> +	return busier_ch;
+>>> +}
+>>> +
+>>> +static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +
+>>> +	rockchip_dfi_stop_hardware_counter(edev);
+>>> +	clk_disable_unprepare(info->clk);
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +	int ret;
+>>> +
+>>> +	ret = clk_prepare_enable(info->clk);
+>>> +	if (ret) {
+>>> +		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
+>>> +		return ret;
+>>> +	}
+>>> +
+>>> +	rockchip_dfi_start_hardware_counter(edev);
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static int rockchip_dfi_set_event(struct devfreq_event_dev *edev)
+>>> +{
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+>>> +				  struct devfreq_event_data *edata)
+>>> +{
+>>> +	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
+>>> +	int busier_ch;
+>>> +
+>>> +	busier_ch = rockchip_dfi_get_busier_ch(edev);
+>>> +
+>>> +	edata->load_count = info->ch_usage[busier_ch].access;
+>>> +	edata->total_count = info->ch_usage[busier_ch].total;
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static const struct devfreq_event_ops rockchip_dfi_ops = {
+>>> +	.disable = rockchip_dfi_disable,
+>>> +	.enable = rockchip_dfi_enable,
+>>> +	.get_event = rockchip_dfi_get_event,
+>>> +	.set_event = rockchip_dfi_set_event,
+>>> +};
+>>> +
+>>> +static const struct of_device_id rockchip_dfi_id_match[] = {
+>>> +	{ .compatible = "rockchip,rk3399-dfi" },
+>>> +	{ },
+>>> +};
+>>> +
+>>> +static int rockchip_dfi_probe(struct platform_device *pdev)
+>>> +{
+>>> +	struct device *dev = &pdev->dev;
+>>> +	struct rockchip_dfi *data;
+>>> +	struct resource *res;
+>>> +	struct devfreq_event_desc *desc;
+>>> +	struct device_node *np = pdev->dev.of_node, *node;
+>>> +
+>>> +	data = devm_kzalloc(dev, sizeof(struct rockchip_dfi), GFP_KERNEL);
+>>> +	if (!data)
+>>> +		return -ENOMEM;
+>>> +
+>>> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>> +	data->regs = devm_ioremap_resource(&pdev->dev, res);
+>>> +	if (IS_ERR(data->regs))
+>>> +		return PTR_ERR(data->regs);
+>>> +
+>>> +	data->clk = devm_clk_get(dev, "pclk_ddr_mon");
+>>> +	if (IS_ERR(data->clk)) {
+>>> +		dev_err(dev, "Cannot get the clk dmc_clk\n");
+>>> +		return PTR_ERR(data->clk);
+>>> +	};
+>>> +
+>>> +	/* try to find the optional reference to the pmu syscon */
+>>> +	node = of_parse_phandle(np, "rockchip,pmu", 0);
+>>> +	if (node) {
+>>> +		data->regmap_pmu = syscon_node_to_regmap(node);
+>>> +		if (IS_ERR(data->regmap_pmu))
+>>> +			return PTR_ERR(data->regmap_pmu);
+>>> +	}
+>>> +	data->dev = dev;
+>>> +
+>>> +	desc = devm_kzalloc(dev, sizeof(*desc), GFP_KERNEL);
+>>> +	if (!desc)
+>>> +		return -ENOMEM;
+>>> +
+>>> +	desc->ops = &rockchip_dfi_ops;
+>>> +	desc->driver_data = data;
+>>> +	desc->name = np->name;
+>>> +	data->desc = desc;
+>>> +
+>>> +	data->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
+>>> +	if (IS_ERR(data->edev)) {
+>>> +		dev_err(&pdev->dev,
+>>> +			"failed to add devfreq-event device\n");
+>>> +		return PTR_ERR(data->edev);
+>>> +	}
+>>> +
+>>> +	platform_set_drvdata(pdev, data);
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static struct platform_driver rockchip_dfi_driver = {
+>>> +	.probe	= rockchip_dfi_probe,
+>>> +	.driver = {
+>>> +		.name	= "rockchip-dfi",
+>>> +		.of_match_table = rockchip_dfi_id_match,
+>>> +	},
+>>> +};
+>>> +module_platform_driver(rockchip_dfi_driver);
+>>> +
+>>> +MODULE_LICENSE("GPL v2");
+>>> +MODULE_AUTHOR("Lin Huang <hl@rock-chips.com>");
+>>> +MODULE_DESCRIPTION("Rockchip dfi driver");
+> s/dfi -> DFI
+>
+> Regards,
+> Chanwoo Choi
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+-- 
+Lin Huang
