@@ -1,161 +1,69 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH v4 5/7] PM / devfreq: event: support rockchip dfi controller
-Date: Mon, 01 Aug 2016 19:31:20 +0900
-Message-ID: <579F24F8.8060002@samsung.com>
-References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
- <CGME20160729075807epcas1p23ff4e931fe4f4cef2bcf59540394bf28@epcas1p2.samsung.com>
- <1469779021-10426-6-git-send-email-hl@rock-chips.com>
- <579EFD28.5070404@samsung.com> <579F0387.5070303@samsung.com>
- <579F07D9.1050106@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [Intel-gfx] [PATCH 6/9] drm/rockchip: Use drm_plane_state.{src,
+ dst}
+Date: Mon, 1 Aug 2016 11:10:34 -0400
+Message-ID: <CAOw6vb+tGyw8ej5xpoiJORLc8URwJPMT4rK8ZZ6QeOJnXxnicQ@mail.gmail.com>
+References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
+ <1469549224-1860-7-git-send-email-ville.syrjala@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <579F07D9.1050106@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: hl <hl@rock-chips.com>, heiko@sntech.de
-Cc: tixy@linaro.org, typ@rock-chips.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469549224-1860-7-git-send-email-ville.syrjala@linux.intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: linux-rockchip@lists.infradead.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lin,
-
-On 2016년 08월 01일 17:27, hl wrote:
-> Hi Chanwoo Choi,
-> 
-> On 2016年08月01日 16:08, Chanwoo Choi wrote:
->> Hi Lin,
->>
->> I add the one minor comment for full name of 'DRI'.
->>
->> On 2016년 08월 01일 16:41, Chanwoo Choi wrote:
->>> Hi Lin,
->>>
->>> Because you remove the 'RFC' prefix on patch title,
->>> I think that you better to make the documentation as following:
->>> - Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
->>>
->>> Regards,
->>> Chanwoo Choi
->>>
->>> On 2016년 07월 29일 16:56, Lin Huang wrote:
->>>> on rk3399 platform, there is dfi conroller can monitor
->>>> ddr load, base on this result, we can do ddr freqency
->>>> scaling.
->>>>
->>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>>> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
->>>> ---
->>>> Changes in v4:
->>>> - None
->>>>
->>>> Changes in v3:
->>>> - None
->>>>
->>>> Changes in v2:
->>>> - use clk_disable_unprepare and clk_enable_prepare
->>>> - remove clk_enable_prepare in probe
->>>> - remove rockchip_dfi_remove function
->>>>
->>>> Changes in v1:
->>>> - None
->>>>
->>>>   drivers/devfreq/event/Kconfig        |   7 +
->>>>   drivers/devfreq/event/Makefile       |   1 +
->>>>   drivers/devfreq/event/rockchip-dfi.c | 253 +++++++++++++++++++++++++++++++++++
->>>>   3 files changed, 261 insertions(+)
->>>>   create mode 100644 drivers/devfreq/event/rockchip-dfi.c
->>>>
->>>> diff --git a/drivers/devfreq/event/Kconfig b/drivers/devfreq/event/Kconfig
->>>> index a11720a..ff9279f 100644
->>>> --- a/drivers/devfreq/event/Kconfig
->>>> +++ b/drivers/devfreq/event/Kconfig
->>>> @@ -22,4 +22,11 @@ config DEVFREQ_EVENT_EXYNOS_PPMU
->>>>         (Platform Performance Monitoring Unit) counters to estimate the
->>>>         utilization of each module.
->>>>   +config DEVFREQ_EVENT_ROCKCHIP_DFI
->>>> +    tristate "ROCKCHIP DFI DEVFREQ event Driver"
->>>> +    depends on ARCH_ROCKCHIP
->>>> +    help
->>>> +      This add the devfreq-event driver for Rockchip SoC. It provides DFI
->>>> +      (DDR Monitor Module) driver to count ddr load.
->> The DFI is "DDR Monitor Module" full name? I need the correct abbreviation
->> and full name.
-> We just call this module DFI in datasheet, and this module function is ddr monitor module,
-> yes, it is do not fit the full name, but i think it is better follow the datasheet name.
-
-Are there any full name of DFI? If the people who don't know the detailed history about
-this workd (DFI), it causes the confusion and they don't understand it.
-
-I think that if you want to use the DFI work, you need to add the more detailed description
-why DFI word is used.
-
->>
->>>> +
->>>>   endif # PM_DEVFREQ_EVENT
->>>> diff --git a/drivers/devfreq/event/Makefile b/drivers/devfreq/event/Makefile
->>>> index be146ea..e3f88fc 100644
->>>> --- a/drivers/devfreq/event/Makefile
->>>> +++ b/drivers/devfreq/event/Makefile
->>>> @@ -1,2 +1,3 @@
->>>>   # Exynos DEVFREQ Event Drivers
->>>>   obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_PPMU) += exynos-ppmu.o
->>>> +obj-$(CONFIG_DEVFREQ_EVENT_ROCKCHIP_DFI) += rockchip-dfi.o
->>>> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
->>>> new file mode 100644
->>>> index 0000000..96a0307
->>>> --- /dev/null
->>>> +++ b/drivers/devfreq/event/rockchip-dfi.c
->>>> @@ -0,0 +1,253 @@
->>>> +/*
->>>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
->>>> + * Author: Lin Huang <hl@rock-chips.com>
->>>> + *
->>>> + * This program is free software; you can redistribute it and/or modify it
->>>> + * under the terms and conditions of the GNU General Public License,
->>>> + * version 2, as published by the Free Software Foundation.
->>>> + *
->>>> + * This program is distributed in the hope it will be useful, but WITHOUT
->>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
->>>> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
->>>> + * more details.
->>>> + */
->>>> +
->>>> +#include <linux/clk.h>
->>>> +#include <linux/devfreq-event.h>
->>>> +#include <linux/kernel.h>
->>>> +#include <linux/err.h>
->>>> +#include <linux/init.h>
->>>> +#include <linux/io.h>
->>>> +#include <linux/mfd/syscon.h>
->>>> +#include <linux/module.h>
->>>> +#include <linux/platform_device.h>
->>>> +#include <linux/regmap.h>
->>>> +#include <linux/slab.h>
->>>> +#include <linux/list.h>
->>>> +#include <linux/of.h>
->>>> +
->>>> +#define RK3399_DMC_NUM_CH    2
->>>> +
->>>> +/* DDRMON_CTRL */
->>>> +#define DDRMON_CTRL    0x04
->>>> +#define CLR_DDRMON_CTRL    (0x1f0000 << 0)
->>>> +#define LPDDR4_EN    (0x10001 << 4)
->>>> +#define HARDWARE_EN    (0x10001 << 3)
->>>> +#define LPDDR3_EN    (0x10001 << 2)
->>>> +#define SOFTWARE_EN    (0x10001 << 1)
->>>> +#define TIME_CNT_EN    (0x10001 << 0)
-
-[snip]
-
->>>> +};
->>>> +module_platform_driver(rockchip_dfi_driver);
->>>> +
->>>> +MODULE_LICENSE("GPL v2");
->>>> +MODULE_AUTHOR("Lin Huang <hl@rock-chips.com>");
->>>> +MODULE_DESCRIPTION("Rockchip dfi driver");
->> s/dfi -> DFI
-
-You should use the capital letter.
-
-Regards,
-Chanwoo Choi
+T24gVHVlLCBKdWwgMjYsIDIwMTYgYXQgMTI6MDcgUE0sICA8dmlsbGUuc3lyamFsYUBsaW51eC5p
+bnRlbC5jb20+IHdyb3RlOgo+IEZyb206IFZpbGxlIFN5cmrDpGzDpCA8dmlsbGUuc3lyamFsYUBs
+aW51eC5pbnRlbC5jb20+Cj4KPiBSZXBsYWNlIHRoZSBwcml2YXRlIGRybV9yZWN0cyBpbiB2b3Bf
+cGxhbmVfc3RhdGUgd2l0aAo+IHRoZSBvbmVzIG5vdyBsaXZpbmcgaW4gZHJtX3BsYW5lX3N0YXRl
+Lgo+Cj4gQ2M6IFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IGxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBWaWxsZSBTeXJqw6Rsw6Qg
+PHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29tPgoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8
+c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYyB8IDEwICsrKystLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDQg
+aW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IDkxMzA1ZWI3ZDMxMi4uYzU2NmM3NDBhYjQ5
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
+QEAgLTg3LDggKzg3LDYgQEAKPiAgc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSB7Cj4gICAgICAgICBz
+dHJ1Y3QgZHJtX3BsYW5lX3N0YXRlIGJhc2U7Cj4gICAgICAgICBpbnQgZm9ybWF0Owo+IC0gICAg
+ICAgc3RydWN0IGRybV9yZWN0IHNyYzsKPiAtICAgICAgIHN0cnVjdCBkcm1fcmVjdCBkZXN0Owo+
+ICAgICAgICAgZG1hX2FkZHJfdCB5cmdiX21zdDsKPiAgICAgICAgIGJvb2wgZW5hYmxlOwo+ICB9
+Owo+IEBAIC01OTUsOCArNTkzLDggQEAgc3RhdGljIGludCB2b3BfcGxhbmVfYXRvbWljX2NoZWNr
+KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAo+ICAgICAgICAgY29uc3Qgc3RydWN0IHZvcF93aW5f
+ZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsKPiAgICAgICAgIGJvb2wgdmlzaWJsZTsKPiAgICAg
+ICAgIGludCByZXQ7Cj4gLSAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgKmRlc3QgPSAmdm9wX3BsYW5l
+X3N0YXRlLT5kZXN0Owo+IC0gICAgICAgc3RydWN0IGRybV9yZWN0ICpzcmMgPSAmdm9wX3BsYW5l
+X3N0YXRlLT5zcmM7Cj4gKyAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgKmRlc3QgPSAmc3RhdGUtPmRz
+dDsKPiArICAgICAgIHN0cnVjdCBkcm1fcmVjdCAqc3JjID0gJnN0YXRlLT5zcmM7Cj4gICAgICAg
+ICBzdHJ1Y3QgZHJtX3JlY3QgY2xpcDsKPiAgICAgICAgIGludCBtaW5fc2NhbGUgPSB3aW4tPnBo
+eS0+c2NsID8gRlJBQ18xNl8xNigxLCA4KSA6Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIERSTV9QTEFORV9IRUxQRVJfTk9fU0NBTElORzsKPiBAQCAtNjk0LDggKzY5
+Miw4IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lLAo+ICAgICAgICAgdW5zaWduZWQgaW50IGFjdHVhbF93LCBhY3R1YWxfaDsKPiAg
+ICAgICAgIHVuc2lnbmVkIGludCBkc3Bfc3R4LCBkc3Bfc3R5Owo+ICAgICAgICAgdWludDMyX3Qg
+YWN0X2luZm8sIGRzcF9pbmZvLCBkc3Bfc3Q7Cj4gLSAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgKnNy
+YyA9ICZ2b3BfcGxhbmVfc3RhdGUtPnNyYzsKPiAtICAgICAgIHN0cnVjdCBkcm1fcmVjdCAqZGVz
+dCA9ICZ2b3BfcGxhbmVfc3RhdGUtPmRlc3Q7Cj4gKyAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgKnNy
+YyA9ICZzdGF0ZS0+c3JjOwo+ICsgICAgICAgc3RydWN0IGRybV9yZWN0ICpkZXN0ID0gJnN0YXRl
+LT5kc3Q7Cj4gICAgICAgICBzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgKnV2X29iajsKPiAg
+ICAgICAgIHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmosICpya191dl9vYmo7Cj4g
+ICAgICAgICB1bnNpZ25lZCBsb25nIG9mZnNldDsKPiAtLQo+IDIuNy40Cj4KPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IEludGVsLWdmeCBtYWlsaW5n
+IGxpc3QKPiBJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZngKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
