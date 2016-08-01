@@ -1,59 +1,80 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] Documentation: bindings: add dt documentation for
- Rockchip PCIe PHY
-Date: Mon, 1 Aug 2016 11:03:09 +0800
-Message-ID: <56d82103-1561-9410-d058-3b7a3534490f@rock-chips.com>
-References: <1469755326-10263-1-git-send-email-shawn.lin@rock-chips.com>
- <20160729213435.GA15549@rob-hp-laptop>
+Subject: Re: [PATCH 0/5] Add power domain support for dw_mmc/sdhci-of-arasan
+Date: Mon, 1 Aug 2016 11:10:57 +0800
+Message-ID: <81c11db1-f3cf-3eb1-57b0-ede932acd5f7@rock-chips.com>
+References: <1469765703-30999-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFq6itpANwnLqgOqKHT0fJH4SvZi2FWrafa=HSBfiZE52w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160729213435.GA15549@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPDyKFq6itpANwnLqgOqKHT0fJH4SvZi2FWrafa=HSBfiZE52w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Feng Xiao <xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2016/7/30 5:34, Rob Herring 写道:
-> On Fri, Jul 29, 2016 at 09:22:05AM +0800, Shawn Lin wrote:
->> This patch adds a binding that describes the Rockchip PCIe PHY
->> found on Rockchip SoCs PCIe interface.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> ---
->>
->> Changes in v4: None
->> Changes in v3:
->> - rename the node to pcie_phy: pcie-phy suggested by Doug
->>
->> Changes in v2:
->> - add clk and reset description
->> - remove unit-address
->>
->>  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  | 32 ++++++++++++++++++++++
->>  1 file changed, 32 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
->
-> Please add acks when posting new versions.
-
-yup, but I didn't see your ack for my previous version.
-Anyway, I will add it if needing to respin one, or Kishon could add
-it if all others look good to him when applying these? :)
-
->
-> Rob
->
->
->
-
-
--- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+5ZyoIDIwMTYvNy8yOSAxNzoyMSwgVWxmIEhhbnNzb24g5YaZ6YGTOgo+IE9uIDI5IEp1bHkgMjAx
+NiBhdCAwNjoxNCwgU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+
+Pgo+PiBXZSBuZWVkIHRvIGVuYWJsZSB0aGUgcG93ZXIgZG9tYWluIG1hbnVhbGx5IHdoaWxlIHBy
+b2JpbmcgYXMgdGhlCj4+IHBvd2VyIHBvbGljeSB3aWxsIHR1cm4gb2ZmIHRoZSBwZCB3aGljaCBp
+cyBub3QgcmVmZXJlbmNlZC4gT3RoZXJ3aXNlCj4KPiBJIGFzc3VtZSB5b3UgYXJlIGdvaW5nIHRv
+IHVzZSB0aGUgZ2VuZXJpYyBQTSBkb21haW4gKGdlbnBkKT8KCnllcy4KCj4gSWYgc28sIHRoaXMg
+c3RhdGVtZW50IGlzbid0IGVudGlyZWx5IGNvcnJlY3QuCj4KPiBBcyBhIG1hdHRlciBvZiBmYWN0
+LCB0aGUgUE0gZG9tYWluIHdpbGwgYmUgInBvd2VyZWQgb24iIG9uY2UgeW91IGhhdmUKPiByZWdp
+c3RlcmVkIHlvdXIgUE0gZG9tYWluIHdpdGggZ2VucGQgYW5kIHdoZW4gdGhlIGRldmljZSAoZHdf
+bW1jIGV0YykKPiBnZXRzIGF0dGFjaGVkIHRvIHRoZSBkb21haW4uIFRoZSBhdHRhY2ggb2NjdXJz
+IHdoZW4gdGhlIHBsYXRmb3JtIGJ1cycKPiAtPnByb2JlKCkgZnVuY3Rpb24gZ2V0IGludm9rZWQg
+Zm9yIHRoZSBkZXZpY2UuCj4KPiBHZW5wZCBtb25pdG9ycyBlYWNoIGRldmljZSB3aXRoaW4gdGhl
+IGRvbWFpbi4gVG8gYWxsb3cgaXQgdG8gInBvd2VyCj4gb2ZmIiwgYWxsIGRldmljZXMgaW4gc2Ft
+ZSBkb21haW4gbmVlZHMgdG8gYmUgcnVudGltZSBQTSBlbmFibGVkIGFuZAo+IHJ1bnRpbWUgUE0g
+c3VzcGVuZGVkLgoKSSB3aWxsIGNoZWNrIHRoaXMgd2l0aCBteSBQTSBndXlzIGFzIEkgaGF2ZSBs
+aW1pdGVkIGtub3dsZWRnZSBhYm91dApQTSBzdHVmZi4gVGhhbmtzIGZvciB0aGVzZSBncmVhdCBp
+bmZvLgoKClNvLCBpZiBteSByZWFsIGludGVudGlvbiBpcyB0byBqdXN0IGVuYWJsZSBnZW5wZCB0
+byBtYWtlIHN1cmUgaXQgd2lsbApiZSBpbiAicG93ZXIgb24gIiBzdGF0LCBJIGp1c3QgbmVlZCB0
+byB1cGRhdGUgbXkgRFRTL0RUQi4gVGhhdCB3b3VsZCBiZQpncmVhdC46KQoKPgo+IER1ZSB0byB0
+aGlzLCB5b3Ugc2hvdWxkIGJlIGFibGUgdG8gZGVwbG95IGdlbnBkIHN1cHBvcnQrYW4gdXBkYXRl
+ZAo+IERUQiwgd2l0aG91dCBmaXJzdCBoYXZpbmcgdG8gZGVwbG95aW5nIHJ1bnRpbWUgUE0gc3Vw
+cG9ydCBpbiB0aGUKPiByZWxhdGVkIGRyaXZlcnMuIEluIG90aGVyIHdvcmRzLCB5b3Ugc2hvdWxk
+IGJlIGFibGUgdG8gd29yayBvbiB0aGVzZQo+IHRoaW5ncyBhbG1vc3QgaW5kZXBlbmRlbnRseSBv
+ZiBlYWNoIG90aGVyLgoKc3VyZS4KCj4KPj4gd2UgbWF5IHRha2UgcmlzayBvZiBicmVha2luZyBr
+ZXJuZWwgb25jZSBGZW5nIFhpYW8gbGFuZCB0aGUgcm9ja2NoaXAgcGQKPj4gcmVsYXRlIHN0dWZm
+LiBTbywgbGV0J3MgZG8gaXQgaW4gYWR2YW5jZS4KPj4KPj4gVGhpcyBwYWNoc2V0IGlzIGJhc2Vk
+IG9uIHRoZSBsYXRlc3QgbGludXgtbmV4dFsxXSB3aGljaCBzaG91bGQgY29udGFpbgo+PiB0aGUg
+bmV4dCBicmFuY2ggb2YgbGludXgtbW1jIGFuZCBkdCBzdHVmZi4gSXQncyBpZGVhbCB0byBwYWNr
+IHRoZXNlIGFsbAo+PiBpbnRvIFVsZicgdHJlZSB3aXRoIEhlaWtvJ3MgYWNrIGZvciBkdHMsIFJv
+YidzIGFjayBmb3IgRG9jIGFuZCBKYWVob29uJ3MKPj4gYWNrIGZvciBkd19tbWMuIEJ1dCBpdCdz
+IG9rYXkgdG8gYmUgbWVyZ2VkIHNlcGVyYXRlbHkuCj4+Cj4+IFsxXSBnaXQ6Ly9naXQua2VybmVs
+Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdAo+Pgo+PiBU
+aGFua3MuCj4+Cj4+Cj4+Cj4+IFNoYXduIExpbiAoNSk6Cj4+ICAgRG9jdW1lbnRhdGlvbjogbW1j
+OiBzeW5vcHN5cy1kdy1tc2hjOiBhZGQgcG93ZXIgZG9tYWluIGRlc2NyaXB0aW9uCj4+ICAgRG9j
+dW1lbnRhdGlvbjogbW1jOiBzZGhjaS1vZi1hcmFzYW46IGFkZCBwb3dlciBkb21haW4gZGVzY3Jp
+cHRpb24KPgo+IFRvIG1lIHRoaXMgaXNuJ3QgbmVjZXNzYXJ5IHRvIGRlc2NyaWJlIGZvciBlYWNo
+IGRldmljZS4gSSB0aGluawo+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dl
+ci9wb3dlcl9kb21haW4udHh0IGRlc2NyaWJlcyBhbGwKPiB0aGF0IGlzIG5lZWRlZC4KPgo+PiAg
+IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBQcm92aWRlIHBvd2VyLWRvbWFpbnMgZm9yIHNkL3NkaW8v
+ZW1tYwo+PiAgICAgY29udHJvbGxlcnMKPj4gICBtbWM6IGR3X21tYzogYWRkIHBvd2VyIGRvbWFp
+biBzdXBwb3J0Cj4+ICAgbW1jOiBzZGhjaS1vZi1hcmFzYW46IGFkZCBwb3dlciBkb21haW4gc3Vw
+cG9ydAo+Cj4gSSB3b3VsZCByZXBocmFzZSB0aGVzZSBjb21taXQgbWVzc2FnZSBoZWFkZXJzLCB0
+byBzb21ldGhpbmcgbGlrZQo+ICJEZXBsb3kgcnVudGltZSBQTSBzdXBwb3J0IiwgYXMgdGhhdCBp
+cyBhY3R1YWxseSB3aGF0IHlvdSBpbnRlbmQgdG8KPiBkby4KPgo+Pgo+PiAgRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2kudHh0ICAgICB8ICAxICsKPj4g
+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tbWMvc3lub3BzeXMtZHctbXNoYy50
+eHQgfCAgMiArKwo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSAg
+ICAgICAgICAgICAgICAgICB8ICAzICsrKwo+PiAgZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDExICsrKysrKysrKysrCj4+ICBkcml2
+ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWFyYXNhbi5jICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+MTAgKysrKysrKysrKwo+PiAgNSBmaWxlcyBjaGFuZ2VkLCAyNyBpbnNlcnRpb25zKCspCj4+Cj4+
+IC0tCj4+IDIuMy43Cj4+Cj4+Cj4KPiBLaW5kIHJlZ2FyZHMKPiBVZmZlCj4KPgo+CgoKLS0gCkJl
+c3QgUmVnYXJkcwpTaGF3biBMaW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
