@@ -1,80 +1,92 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RESEND PATCH v2 8/8] clk: rockchip: rk3399: Add support frac mode
- frequencies
-Date: Mon,  1 Aug 2016 17:58:23 +0800
-Message-ID: <1470045503-32062-1-git-send-email-zhengxing@rock-chips.com>
-References: <1470045224-31854-1-git-send-email-zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 2/2] clk: rockchip: fix incorrect parent for rk3399's
+ {c,g}pll_aclk_perihp_src
+Date: Mon, 1 Aug 2016 18:08:10 +0800
+Message-ID: <579F1F8A.8030704@rock-chips.com>
+References: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
+ <1463164937-91089-2-git-send-email-briannorris@chromium.org>
+ <CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
+ <57369D2E.3030002@rock-chips.com>
+ <CAD=FV=Wda=kXYf4MnjXsW6g8sPAAEv7JO1ZoGXOnJW=aL0yv-w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1470045224-31854-1-git-send-email-zhengxing@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: huangtao@rock-chips.com, zhangqing@rock-chips.com, zhengxing@rock-chips.com, mturquette@baylibre.com, briannorris@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=Wda=kXYf4MnjXsW6g8sPAAEv7JO1ZoGXOnJW=aL0yv-w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We need to support various display resolutions for external
-display devices like HDMI/DP, the frac mode can help us to
-acquire almost any frequencies, and need higher VCOs to reduce
-clock jitters.
-
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
-
-Changes in v2:
-- add the patch "fix incorrect parent for rk3399's {c,g}pll_aclk_perihp_src"
-- add the patch "fix incorrect GATE bits for {c, g}pll_aclk_perihp_src"
-
- drivers/clk/rockchip/clk-rk3399.c |   21 ++++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 071eb96..db8394b 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -109,6 +109,25 @@ static struct rockchip_pll_rate_table rk3399_pll_rates[] = {
- 	{ /* sentinel */ },
- };
- 
-+static struct rockchip_pll_rate_table rk3399_pll_frates[] = {
-+	/* _mhz, _refdiv, _fbdiv, _postdiv1, _postdiv2, _dsmpd, _frac */
-+	RK3036_PLL_RATE( 594000000, 1, 123, 5, 1, 0, 12582912),  /* vco = 2970000000 */
-+	RK3036_PLL_RATE( 593406593, 1, 123, 5, 1, 0, 10508804),  /* vco = 2967032965 */
-+	RK3036_PLL_RATE( 297000000, 1, 123, 5, 2, 0, 12582912),  /* vco = 2970000000 */
-+	RK3036_PLL_RATE( 296703297, 1, 123, 5, 2, 0, 10508807),  /* vco = 2967032970 */
-+	RK3036_PLL_RATE( 148500000, 1, 129, 7, 3, 0, 15728640),  /* vco = 3118500000 */
-+	RK3036_PLL_RATE( 148351648, 1, 123, 5, 4, 0, 10508800),  /* vco = 2967032960 */
-+	RK3036_PLL_RATE( 106500000, 1, 124, 7, 4, 0,  4194304),  /* vco = 2982000000 */
-+	RK3036_PLL_RATE(  74250000, 1, 129, 7, 6, 0, 15728640),  /* vco = 3118500000 */
-+	RK3036_PLL_RATE(  74175824, 1, 129, 7, 6, 0, 13550823),  /* vco = 3115384608 */
-+	RK3036_PLL_RATE(  65000000, 1, 113, 7, 6, 0, 12582912),  /* vco = 2730000000 */
-+	RK3036_PLL_RATE(  59340659, 1, 121, 7, 7, 0,  2581098),  /* vco = 2907692291 */
-+	RK3036_PLL_RATE(  54000000, 1, 110, 7, 7, 0,  4194304),  /* vco = 2646000000 */
-+	RK3036_PLL_RATE(  27000000, 1,  55, 7, 7, 0,  2097152),  /* vco = 1323000000 */
-+	RK3036_PLL_RATE(  26973027, 1,  55, 7, 7, 0,  1173232),  /* vco = 1321678323 */
-+	{ /* sentinel */ },
-+};
-+
- /* CRU parents */
- PNAME(mux_pll_p)				= { "xin24m", "xin32k" };
- 
-@@ -229,7 +248,7 @@ static struct rockchip_pll_clock rk3399_pll_clks[] __initdata = {
- 	[npll] = PLL(pll_rk3399, PLL_NPLL, "npll",  mux_pll_p, 0, RK3399_PLL_CON(40),
- 		     RK3399_PLL_CON(43), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_rates),
- 	[vpll] = PLL(pll_rk3399, PLL_VPLL, "vpll",  mux_pll_p, 0, RK3399_PLL_CON(48),
--		     RK3399_PLL_CON(51), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_rates),
-+		     RK3399_PLL_CON(51), 8, 31, ROCKCHIP_PLL_SYNC_RATE, rk3399_pll_frates),
- };
- 
- static struct rockchip_pll_clock rk3399_pmu_pll_clks[] __initdata = {
--- 
-1.7.9.5
+SGkgRG91ZywKICAgICBJdCBpcyBzbyBzb3JyeSB0aGF0IG91ciBJQyBmb2xrcyByZS1jb3JyZWN0
+IHRoZXNlIGJpdHMsIHRoZXkgbmVlZCAKdG8gYmUgcmVjb3ZlcmVkIGxpa2UgdGhlc2U6Ci0tLS0K
+SW4gdGhlIGRlZmluaXRpb24gb2YgQ1JVX0NMS0dBVEVfQ09ONToKICAgICBiaXQgMSAtIHNob3dz
+IGFjbGtfcGVyaWhwX2NwbGxfc3JjX2VuCiAgICAgYml0IDAgLSBzaG93cyBhY2xrX3BlcmlocF9n
+cGxsX3NyY19lbgotLS0tCiAgICAgQW5kIHRoZSBuZXcgVFJNIHdpbGwgYmUgdXBkYXRlZC4KCiAg
+ICAgRllJLgoKVGhhbmtzLgoKT24gMjAxNuW5tDA15pyIMTbml6UgMjM6NDksIERvdWcgQW5kZXJz
+b24gd3JvdGU6Cj4gSGksCj4KPiBPbiBGcmksIE1heSAxMywgMjAxNiBhdCA4OjM2IFBNLCBYaW5n
+IFpoZW5nIDx6aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiBIaSBEb3VnLAo+Pgo+
+Pgo+PiBPbiAyMDE25bm0MDXmnIgxNOaXpSAwNDoxMCwgRG91ZyBBbmRlcnNvbiB3cm90ZToKPj4+
+IEhpLAo+Pj4KPj4+IE9uIEZyaSwgTWF5IDEzLCAyMDE2IGF0IDExOjQyIEFNLCBCcmlhbiBOb3Jy
+aXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KPj4+IHdyb3RlOgo+Pj4+IEZyb206IFhpbmcg
+WmhlbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KPj4+Pgo+Pj4+IFRoZXJlIHdhcyBhIHR5
+cG8sIHN3YXBwaW5nICdjJyA8LS0+ICdnJy4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IFhpbmcg
+WmhlbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBCcmlh
+biBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KPj4+PiAtLS0KPj4+PiAgICBkcml2
+ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgfCA0ICsrLS0KPj4+PiAgICAxIGZpbGUgY2hh
+bmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4+IGIvZHJpdmVycy9jbGsv
+cm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4+Pj4gaW5kZXggMTQ1NzU2YzRmM2M4Li45Zjg2YmZlZjcw
+ZjcgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4+
+Pj4gKysrIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4+Pj4gQEAgLTgzMiw5
+ICs4MzIsOSBAQCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2gKPj4+PiByazMzOTlf
+Y2xrX2JyYW5jaGVzW10gX19pbml0ZGF0YSA9IHsKPj4+PiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIFJLMzM5OV9DTEtHQVRFX0NPTigxMyksIDEsIEdGTEFHUyksCj4+Pj4KPj4+PiAgICAgICAg
+ICAgLyogcGVyaWhwICovCj4+Pj4gLSAgICAgICBHQVRFKDAsICJjcGxsX2FjbGtfcGVyaWhwX3Ny
+YyIsICJncGxsIiwgQ0xLX0lHTk9SRV9VTlVTRUQsCj4+Pj4gKyAgICAgICBHQVRFKDAsICJjcGxs
+X2FjbGtfcGVyaWhwX3NyYyIsICJjcGxsIiwgQ0xLX0lHTk9SRV9VTlVTRUQsCj4+Pj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgICBSSzMzOTlfQ0xLR0FURV9DT04oNSksIDAsIEdGTEFHUyksCj4+
+Pj4gLSAgICAgICBHQVRFKDAsICJncGxsX2FjbGtfcGVyaWhwX3NyYyIsICJjcGxsIiwgQ0xLX0lH
+Tk9SRV9VTlVTRUQsCj4+Pj4gKyAgICAgICBHQVRFKDAsICJncGxsX2FjbGtfcGVyaWhwX3NyYyIs
+ICJncGxsIiwgQ0xLX0lHTk9SRV9VTlVTRUQsCj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAg
+ICBSSzMzOTlfQ0xLR0FURV9DT04oNSksIDEsIEdGTEFHUyksCj4+Pj4gICAgICAgICAgIENPTVBP
+U0lURShBQ0xLX1BFUklIUCwgImFjbGtfcGVyaWhwIiwgbXV4X2FjbGtfcGVyaWhwX3AsCj4+Pj4g
+Q0xLX0lHTk9SRV9VTlVTRUQsCj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzOTlf
+Q0xLU0VMX0NPTigxNCksIDcsIDEsIE1GTEFHUywgMCwgNSwKPj4+PiBERkxBR1MsCj4+PiBEZWZp
+bml0ZWx5IHRoZXJlIHdhcyBhIGJ1ZyBzaW5jZSB0aGlzIHRhYmxlIGl0c2VsZiB3YXMgaW5jb25z
+aXN0ZW50Lgo+Pj4gLi4uYW5kIEkgX3RoaW5rXyB0aGlzIGZpeCBpcyBjb3JyZWN0LCBidXQgSSds
+bCBub3RlIHRoYXQgdGhlIFRSTSBoYXMKPj4+IG1vcmUgaW5jb25zaXN0ZW5jeSBoZXJlLgo+Pj4K
+Pj4+IEluIHRoZSBiaWcgY2xvY2sgdGFibGUgJ0NSVSBDbG9jayBBcmNoaXRlY3R1cmUgRGlhZ3Jh
+bScsIEkgc2VlOgo+Pj4gICAgIENMSyA0IGlzIENQTEwKPj4+ICAgICBDTEsgNSBpcyBHUExMCj4+
+PiAgICAgQ0xLIDEyNSBpcyBhY2xrX3BlcmlocF9jcGxsX3NyYyBhbmQgaGFzIDQgKENQTEwpIGFz
+IHNvdXJjZSwgd2l0aAo+Pj4gZzVbMF0gYXMgdGhlIGJpdAo+Pj4gICAgIENMSyAxMjYgaXMgYWNs
+a19wZXJpaHBfZ3BsbF9zcmMgYW5kIGhhcyA1IChHUExMKSBhcyBzb3VyY2UsIHdpdGgKPj4+IGc1
+WzFdIGFzIHRoZSBiaXQKPj4+Cj4+PiBJbiB0aGUgZGVmaW5pdGlvbiBvZiBDUlVfQ0xLR0FURV9D
+T041Ogo+Pj4gICAgIGJpdCAwIHNob3dzIGFjbGtfcGVyaWhwX2dwbGxfc3JjX2VuCj4+PiAgICAg
+Yml0IDEgc2hvd3MgYWNsa19wZXJpaHBfY3BsbF9zcmNfZW4KPj4+Cj4+Pgo+Pj4gVGh1cyB0aGUg
+dGFibGUgc2hvd3MgQ1BMTCBhcyBnYXRlNVswXSBhbmQgR1BMTCBhcyBnYXRlNVsxXS4gIFRoZQo+
+Pj4gcmVnaXN0ZXIgZGVmaW5pdGlvbiBzaG93cyB0aGUgb3Bwb3NpdGUuICBJJ2xsIHRlbmQgdG8g
+YmVsaWV2ZSB0aGUKPj4+IHRhYmxlIG92ZXIgdGhlIHJlZ2lzdGVyIGRlZmluaXRpb24sIGJ1dCBJ
+IGZpZ3VyZWQgSSdkIGJyaW5nIGl0IHVwCj4+PiBhbnl3YXkuCj4+Pgo+Pj4KPj4+IFhpbmcgWmhl
+bmc6IGNhbiB5b3UgY29uZmlybSB0aGF0IHRoZSB0YWJsZSBpcyBjb3JyZWN0IGFuZCBhc2sKPj4+
+IGRvY3VtZW50YXRpb24gZm9sa3MgdG8gZml4IHRoZSByZWdpc3RlciBkZWZpbml0aW9uIGZvcgo+
+Pj4gQ1JVX0NMS0dBVEVfQ09ONT8KPj4gWWVzLCBwcmV2aW91c2x5LCBvdXIgSUMgJiBET0MgcGFy
+dG5lciBjb25maXJtZWQgdGhhdCB0aGUgZGVmaW5pdGlvbiBvZgo+PiBDUlVfQ0xLR0FURV9DT041
+IHNob3VsZCBiZToKPj4gICAgYml0IDAgc2hvd3MgYWNsa19wZXJpaHBfY3BsbF9zcmNfZW4KPj4g
+ICAgYml0IDEgc2hvd3MgYWNsa19wZXJpaHBfZ3BsbF9zcmNfZW4KPj4KPj4gU29ycnkgdG8gdGhl
+IGluY29ycmVjdCByZWdpc3RlciBkZWZpbml0aW9uLCB3ZSB3aWxsIGZpeCB0aGVtIGFuZCByZXZp
+ZXcgdGhlCj4+IFRSTSBhZ2Fpbi4KPiBHcmVhdCEKPgo+IFNpbmNlIHdlIG5vdyBoYXZlIGV4dHJh
+IGNvbmZpcm1hdGlvbiB0aGF0IEJyaWFuJ3MgcGF0Y2ggaXMgaW5kZWVkIGNvcnJlY3Q6Cj4KPiBS
+ZXZpZXdlZC1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+Cj4K
+PgoKLS0gCi0gWGluZyBaaGVuZwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
