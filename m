@@ -1,92 +1,66 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [Intel-gfx] [PATCH 7/9] drm/rockchip: Use
- drm_plane_helper_check_state()
-Date: Mon, 1 Aug 2016 11:10:38 -0400
-Message-ID: <CAOw6vb+_Twy3Hb0XXpgcRFHUSGN4t8jfvwtMi87igRJesoao7w@mail.gmail.com>
-References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
- <1469549224-1860-8-git-send-email-ville.syrjala@linux.intel.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 3/8] clk: rockchip: rk3399: fix incorrect
+ parent for rk3399's {c, g}pll_aclk_perihp_src
+Date: Mon, 1 Aug 2016 13:13:50 -0700
+Message-ID: <20160801201349.GA129313@google.com>
+References: <1470045224-31854-1-git-send-email-zhengxing@rock-chips.com>
+ <1470045224-31854-4-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469549224-1860-8-git-send-email-ville.syrjala@linux.intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
-Cc: linux-rockchip@lists.infradead.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1470045224-31854-4-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMjYsIDIwMTYgYXQgMTI6MDcgUE0sICA8dmlsbGUuc3lyamFsYUBsaW51eC5p
-bnRlbC5jb20+IHdyb3RlOgo+IEZyb206IFZpbGxlIFN5cmrDpGzDpCA8dmlsbGUuc3lyamFsYUBs
-aW51eC5pbnRlbC5jb20+Cj4KPiBSZXBsYWNlIHRoZSB1c2Ugb2YgZHJtX3BsYW5lX2hlbHBlcl9j
-aGVja191cGRhdGUoKSB3aXRoCj4gZHJtX3BsYW5lX2hlbHBlcl9jaGVja19zdGF0ZSgpIHNpbmNl
-IHdlIGhhdmUgYSBwbGFuZSBzdGF0ZS4KPgo+IFJvY2tjaGlwIGxvb2tzIHRvIGhhbmRsaW5nIHBs
-YW5lIGNsaXBwaW5nIHJhdGhlciB3ZWxsIGFscmVhZHkKPiAodW5saWtqZSBtb3N0IGFybSBkcm0g
-ZHJpdmVycykgc28gdGhlcmUgYXJlIG5vIGZ1bmN0aW9uIGNoYW5nZXMKPiBoZXJlLgo+Cj4gQ2M6
-IFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBWaWxsZSBTeXJqw6Rsw6QgPHZpbGxlLnN5
-cmphbGFAbGludXguaW50ZWwuY29tPgoKClJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVs
-QGNocm9taXVtLm9yZz4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMgfCAyNSArKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFu
-Z2VkLCA1IGluc2VydGlvbnMoKyksIDIwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggYzU2NmM3NDBhYjQ5Li4zMTc0
-NGZlOTliMzggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMKPiBAQCAtNTkxLDEwICs1OTEsNyBAQCBzdGF0aWMgaW50IHZvcF9wbGFuZV9hdG9taWNf
-Y2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gICAgICAgICBzdHJ1Y3Qgdm9wX3dpbiAq
-dm9wX3dpbiA9IHRvX3ZvcF93aW4ocGxhbmUpOwo+ICAgICAgICAgc3RydWN0IHZvcF9wbGFuZV9z
-dGF0ZSAqdm9wX3BsYW5lX3N0YXRlID0gdG9fdm9wX3BsYW5lX3N0YXRlKHN0YXRlKTsKPiAgICAg
-ICAgIGNvbnN0IHN0cnVjdCB2b3Bfd2luX2RhdGEgKndpbiA9IHZvcF93aW4tPmRhdGE7Cj4gLSAg
-ICAgICBib29sIHZpc2libGU7Cj4gICAgICAgICBpbnQgcmV0Owo+IC0gICAgICAgc3RydWN0IGRy
-bV9yZWN0ICpkZXN0ID0gJnN0YXRlLT5kc3Q7Cj4gLSAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgKnNy
-YyA9ICZzdGF0ZS0+c3JjOwo+ICAgICAgICAgc3RydWN0IGRybV9yZWN0IGNsaXA7Cj4gICAgICAg
-ICBpbnQgbWluX3NjYWxlID0gd2luLT5waHktPnNjbCA/IEZSQUNfMTZfMTYoMSwgOCkgOgo+ICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBEUk1fUExBTkVfSEVMUEVSX05P
-X1NDQUxJTkc7Cj4gQEAgLTYwOCwzMCArNjA1LDE4IEBAIHN0YXRpYyBpbnQgdm9wX3BsYW5lX2F0
-b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgICAgICAgIGlmIChXQVJOX09O
-KCFjcnRjX3N0YXRlKSkKPiAgICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4KPiAtICAg
-ICAgIHNyYy0+eDEgPSBzdGF0ZS0+c3JjX3g7Cj4gLSAgICAgICBzcmMtPnkxID0gc3RhdGUtPnNy
-Y195Owo+IC0gICAgICAgc3JjLT54MiA9IHN0YXRlLT5zcmNfeCArIHN0YXRlLT5zcmNfdzsKPiAt
-ICAgICAgIHNyYy0+eTIgPSBzdGF0ZS0+c3JjX3kgKyBzdGF0ZS0+c3JjX2g7Cj4gLSAgICAgICBk
-ZXN0LT54MSA9IHN0YXRlLT5jcnRjX3g7Cj4gLSAgICAgICBkZXN0LT55MSA9IHN0YXRlLT5jcnRj
-X3k7Cj4gLSAgICAgICBkZXN0LT54MiA9IHN0YXRlLT5jcnRjX3ggKyBzdGF0ZS0+Y3J0Y193Owo+
-IC0gICAgICAgZGVzdC0+eTIgPSBzdGF0ZS0+Y3J0Y195ICsgc3RhdGUtPmNydGNfaDsKPiAtCj4g
-ICAgICAgICBjbGlwLngxID0gMDsKPiAgICAgICAgIGNsaXAueTEgPSAwOwo+ICAgICAgICAgY2xp
-cC54MiA9IGNydGNfc3RhdGUtPmFkanVzdGVkX21vZGUuaGRpc3BsYXk7Cj4gICAgICAgICBjbGlw
-LnkyID0gY3J0Y19zdGF0ZS0+YWRqdXN0ZWRfbW9kZS52ZGlzcGxheTsKPgo+IC0gICAgICAgcmV0
-ID0gZHJtX3BsYW5lX2hlbHBlcl9jaGVja191cGRhdGUocGxhbmUsIGNydGMsIHN0YXRlLT5mYiwK
-PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNyYywgZGVzdCwg
-JmNsaXAsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdGF0
-ZS0+cm90YXRpb24sCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBtaW5fc2NhbGUsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBtYXhfc2NhbGUsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB0cnVlLCB0cnVlLCAmdmlzaWJsZSk7Cj4gKyAgICAgICByZXQgPSBkcm1fcGxhbmVfaGVscGVy
-X2NoZWNrX3N0YXRlKHN0YXRlLCAmY2xpcCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgbWluX3NjYWxlLCBtYXhfc2NhbGUsCj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHRydWUsIHRydWUpOwo+ICAgICAgICAgaWYgKHJldCkK
-PiAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPgo+IC0gICAgICAgaWYgKCF2aXNpYmxlKQo+
-ICsgICAgICAgaWYgKCFzdGF0ZS0+dmlzaWJsZSkKPiAgICAgICAgICAgICAgICAgZ290byBvdXRf
-ZGlzYWJsZTsKPgo+ICAgICAgICAgdm9wX3BsYW5lX3N0YXRlLT5mb3JtYXQgPSB2b3BfY29udmVy
-dF9mb3JtYXQoZmItPnBpeGVsX2Zvcm1hdCk7Cj4gQEAgLTY0Miw3ICs2MjcsNyBAQCBzdGF0aWMg
-aW50IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gICAg
-ICAgICAgKiBTcmMueDEgY2FuIGJlIG9kZCB3aGVuIGRvIGNsaXAsIGJ1dCB5dXYgcGxhbmUgc3Rh
-cnQgcG9pbnQKPiAgICAgICAgICAqIG5lZWQgYWxpZ24gd2l0aCAyIHBpeGVsLgo+ICAgICAgICAg
-ICovCj4gLSAgICAgICBpZiAoaXNfeXV2X3N1cHBvcnQoZmItPnBpeGVsX2Zvcm1hdCkgJiYgKChz
-cmMtPngxID4+IDE2KSAlIDIpKQo+ICsgICAgICAgaWYgKGlzX3l1dl9zdXBwb3J0KGZiLT5waXhl
-bF9mb3JtYXQpICYmICgoc3RhdGUtPnNyYy54MSA+PiAxNikgJSAyKSkKPiAgICAgICAgICAgICAg
-ICAgcmV0dXJuIC1FSU5WQUw7Cj4KPiAgICAgICAgIHZvcF9wbGFuZV9zdGF0ZS0+ZW5hYmxlID0g
-dHJ1ZTsKPiAtLQo+IDIuNy40Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwo+IEludGVsLWdmeCBtYWlsaW5nIGxpc3QKPiBJbnRlbC1nZnhAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9pbnRlbC1nZngKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+On Mon, Aug 01, 2016 at 05:53:38PM +0800, Xing Zheng wrote:
+> There was a typo, swapping 'c' <--> 'g'.
+> (This patch is updated and am from https://patchwork.kernel.org/patch/9254067/)
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> 
+> Changes in v2: None
+
+I believe this patch was already applied upstream; otherwise, it
+wouldn't make sense to have both this patch and patch 4 -- we would
+probably squash them together.
+
+Brian
+
+>  drivers/clk/rockchip/clk-rk3399.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+> index f55f967f..2182391 100644
+> --- a/drivers/clk/rockchip/clk-rk3399.c
+> +++ b/drivers/clk/rockchip/clk-rk3399.c
+> @@ -832,9 +832,9 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+>  			RK3399_CLKGATE_CON(13), 1, GFLAGS),
+>  
+>  	/* perihp */
+> -	GATE(0, "cpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+> +	GATE(0, "cpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+>  			RK3399_CLKGATE_CON(5), 0, GFLAGS),
+> -	GATE(0, "gpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+> +	GATE(0, "gpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+>  			RK3399_CLKGATE_CON(5), 1, GFLAGS),
+>  	COMPOSITE(ACLK_PERIHP, "aclk_perihp", mux_aclk_perihp_p, CLK_IGNORE_UNUSED,
+>  			RK3399_CLKSEL_CON(14), 7, 1, MFLAGS, 0, 5, DFLAGS,
+> -- 
+> 1.7.9.5
+> 
+> 
