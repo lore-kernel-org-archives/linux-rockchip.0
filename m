@@ -1,17 +1,20 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RESEND PATCH 2/6] clk: rockchip: rk3399: export 480M_SRC clock id for usbphy0/usbphy1
-Date: Mon,  1 Aug 2016 12:23:05 +0800
-Message-ID: <1470025389-4094-3-git-send-email-zhengxing@rock-chips.com>
+Subject: [RESEND PATCH 5/6] clk: rockchip: rk3399: delete the CLK_IGNORE_UNUSED for aclk_pcie
+Date: Mon,  1 Aug 2016 12:24:45 +0800
+Message-ID: <1470025485-4218-1-git-send-email-zhengxing@rock-chips.com>
 References: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1470025389-4094-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, frank.wang@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, shawn.lin@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Export these source clocks for usbphy.
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
+allow aclk_pcie and aclk_perf_pcie disabled when unused.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 
 ---
@@ -20,22 +23,20 @@ Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 78e51cb..f55f967f 100644
+index 74afec0..4a15ce5b 100644
 --- a/drivers/clk/rockchip/clk-rk3399.c
 +++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -403,9 +403,9 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 	GATE(SCLK_USB2PHY1_REF, "clk_usb2phy1_ref", "xin24m", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(6), 6, GFLAGS),
+@@ -848,9 +848,9 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(14), 12, 2, DFLAGS,
+ 			RK3399_CLKGATE_CON(5), 4, GFLAGS),
  
--	GATE(0, "clk_usbphy0_480m_src", "clk_usbphy0_480m", CLK_IGNORE_UNUSED,
-+	GATE(SCLK_USBPHY0_480M_SRC, "clk_usbphy0_480m_src", "clk_usbphy0_480m", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(13), 12, GFLAGS),
--	GATE(0, "clk_usbphy1_480m_src", "clk_usbphy1_480m", CLK_IGNORE_UNUSED,
-+	GATE(SCLK_USBPHY1_480M_SRC, "clk_usbphy1_480m_src", "clk_usbphy1_480m", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(13), 12, GFLAGS),
- 	MUX(0, "clk_usbphy_480m", mux_usbphy_480m_p, CLK_IGNORE_UNUSED,
- 			RK3399_CLKSEL_CON(14), 6, 1, MFLAGS),
+-	GATE(ACLK_PERF_PCIE, "aclk_perf_pcie", "aclk_perihp", CLK_IGNORE_UNUSED,
++	GATE(ACLK_PERF_PCIE, "aclk_perf_pcie", "aclk_perihp", 0,
+ 			RK3399_CLKGATE_CON(20), 2, GFLAGS),
+-	GATE(ACLK_PCIE, "aclk_pcie", "aclk_perihp", CLK_IGNORE_UNUSED,
++	GATE(ACLK_PCIE, "aclk_pcie", "aclk_perihp", 0,
+ 			RK3399_CLKGATE_CON(20), 10, GFLAGS),
+ 	GATE(0, "aclk_perihp_noc", "aclk_perihp", CLK_IGNORE_UNUSED,
+ 			RK3399_CLKGATE_CON(20), 12, GFLAGS),
 -- 
 1.7.9.5
-
-
