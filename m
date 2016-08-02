@@ -1,47 +1,69 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v3 6/7] clk: rockchip: rk3399: delete the CLK_IGNORE_UNUSED for aclk_pcie
-Date: Tue,  2 Aug 2016 15:22:49 +0800
-Message-ID: <1470122569-32049-1-git-send-email-zhengxing@rock-chips.com>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, shawn.lin@rock-chips.com
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] mmc: core: fall back host->f_init if failing to
+ init mmc card after resume
+Date: Tue, 2 Aug 2016 17:07:45 +0800
+Message-ID: <98cd6af4-3296-9020-aeae-802f797f0631@rock-chips.com>
+References: <1468979860-28712-1-git-send-email-shawn.lin@rock-chips.com>
+ <1468979860-28712-2-git-send-email-shawn.lin@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1468979860-28712-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
-
-allow aclk_pcie and aclk_perf_pcie disabled when unused.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-
----
-
-Changes in v3: None
-Changes in v2: None
-
- drivers/clk/rockchip/clk-rk3399.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 8032eba..2792404 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -848,9 +848,9 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKSEL_CON(14), 12, 2, DFLAGS,
- 			RK3399_CLKGATE_CON(5), 4, GFLAGS),
- 
--	GATE(ACLK_PERF_PCIE, "aclk_perf_pcie", "aclk_perihp", CLK_IGNORE_UNUSED,
-+	GATE(ACLK_PERF_PCIE, "aclk_perf_pcie", "aclk_perihp", 0,
- 			RK3399_CLKGATE_CON(20), 2, GFLAGS),
--	GATE(ACLK_PCIE, "aclk_pcie", "aclk_perihp", CLK_IGNORE_UNUSED,
-+	GATE(ACLK_PCIE, "aclk_pcie", "aclk_perihp", 0,
- 			RK3399_CLKGATE_CON(20), 10, GFLAGS),
- 	GATE(0, "aclk_perihp_noc", "aclk_perihp", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(20), 12, GFLAGS),
--- 
-1.7.9.5
-
-
+SGkgVWxmLAoK1NogMjAxNi83LzIwIDk6NTcsIFNoYXduIExpbiDQtLXAOgo+IFdlIG9ic2VydmVk
+IHRoZSBmYWlsdXJlIG9mIGluaXRpYWxpemluZyBjYXJkIGFmdGVyIHJlc3VtZQo+IGFjY2lkZW50
+YWxseS4gSXQncyBoYXJkIHRvIHJlcHJvZHVjZSBidXQgd2UgZGlkIGdldCByZXBvcnQgZnJvbQo+
+IHRoZSBzdXNwZW5kL3Jlc3VtZSB0ZXN0IG9mIG91ciBSSzMzOTkgbXAgdGVzdCBmYXJtIC4gVW5m
+b3J0dW5hdGVseSwKPiB3ZSBzdGlsbCBmYWlsIHRvIGZpZ3VyZSBvdXQgd2hhdCB3YXMgZ29pbmcg
+d3JvbmcgYXQgdGhhdCB0aW1lLgo+IEFsc28gd2UgY2FuJ3QgYWNoaWV2ZSBpdCBieSByZXRyeWlu
+ZyB0aGUgaG9zdC0+Zl9pbml0IHdpdGhvdXQgZmFsbGluZwo+IGJhY2sgaXQuIEJ1dCB0aGlzIHBh
+dGNoIHdpbGwgc29sdmUgdGhlIHByb2JsZW0gYXMgd2UgY291bGQgYWRkIHNvbWUgbG9nCj4gdGhl
+cmUgYW5kIHNlZSB0aGF0IHdlIHJlc3VtZSB0aGUgbW1jIGNhcmQgc3VjY2Vzc2Z1bGx5IGFmdGVy
+IGZhbGxpbmcKPiBiYWNrIHRoZSBob3N0LT5mX2luaXQuIFRoZXJlIGlzIG5vIG9idmlvdXMgc2lk
+ZSBlZmZlY3QgZm91bmQsIHNvIGl0IHNlZW1zCj4gdGhpcyBwYXRjaCB3aWxsIGltcHJvdmUgdGhl
+IHN0YWJpbGl0eS4KPgo+IFsgICA5My40MDUwODVdIG1tYzE6IHVuZXhwZWN0ZWQgc3RhdHVzIDB4
+ODAwOTAwIGFmdGVyIHN3aXRjaAo+IFsgICA5My40MDg0NzRdIG1tYzE6IHN3aXRjaCB0byBidXMg
+d2lkdGggMSBmYWlsZWQKPiBbICAgOTMuNDA4NDgyXSBtbWMxOiBtbWNfc2VsZWN0X2hzMjAwIGZh
+aWxlZCwgZXJyb3IgLTExMAo+IFsgICA5My40MDg0OTJdIG1tYzE6IGVycm9yIC0xMTAgZHVyaW5n
+IHJlc3VtZSAoY2FyZCB3YXMgcmVtb3ZlZD8pCj4gWyAgIDkzLjQwODcwNV0gUE06IHJlc3VtZSBv
+ZiBkZXZpY2VzIGNvbXBsZXRlIGFmdGVyIDIxMy40NTMgbXNlY3MKPgoKQW55IGNvbW1lbnRzIGZv
+ciB0aGlzIHBhdGNoPyA6KQoKPiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkBy
+b2NrLWNoaXBzLmNvbT4KPgo+IC0tLQo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHJlbW92ZSBtbWNf
+cG93ZXJfb2ZmCj4gLSB0YWtlIGZfbWluIGludG8gY29uc2lkZXJhdGlvbgo+Cj4gIGRyaXZlcnMv
+bW1jL2NvcmUvbW1jLmMgfCAxOSArKysrKysrKysrKysrKysrKy0tCj4gIDEgZmlsZSBjaGFuZ2Vk
+LCAxNyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvbW1jL2NvcmUvbW1jLmMgYi9kcml2ZXJzL21tYy9jb3JlL21tYy5jCj4gaW5kZXggNDAzYjk3
+Yi4uYTI4OTFjMSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21tYy9jb3JlL21tYy5jCj4gKysrIGIv
+ZHJpdmVycy9tbWMvY29yZS9tbWMuYwo+IEBAIC0xOTQ1LDYgKzE5NDUsNyBAQCBzdGF0aWMgaW50
+IG1tY19zdXNwZW5kKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPiAgc3RhdGljIGludCBfbW1jX3Jl
+c3VtZShzdHJ1Y3QgbW1jX2hvc3QgKmhvc3QpCj4gIHsKPiAgCWludCBlcnIgPSAwOwo+ICsJaW50
+IGk7Cj4KPiAgCUJVR19PTighaG9zdCk7Cj4gIAlCVUdfT04oIWhvc3QtPmNhcmQpOwo+IEBAIC0x
+OTU0LDggKzE5NTUsMjIgQEAgc3RhdGljIGludCBfbW1jX3Jlc3VtZShzdHJ1Y3QgbW1jX2hvc3Qg
+Kmhvc3QpCj4gIAlpZiAoIW1tY19jYXJkX3N1c3BlbmRlZChob3N0LT5jYXJkKSkKPiAgCQlnb3Rv
+IG91dDsKPgo+IC0JbW1jX3Bvd2VyX3VwKGhvc3QsIGhvc3QtPmNhcmQtPm9jcik7Cj4gLQllcnIg
+PSBtbWNfaW5pdF9jYXJkKGhvc3QsIGhvc3QtPmNhcmQtPm9jciwgaG9zdC0+Y2FyZCk7Cj4gKwkv
+Kgo+ICsJICogTGV0J3MgdHJ5IHRvIGZhbGxiYWNrIHRoZSBob3N0LT5mX2luaXQKPiArCSAqIGlm
+IGZhaWxpbmcgdG8gaW5pdCBtbWMgY2FyZCBhZnRlciByZXN1bWUuCj4gKwkgKi8KPiArCWZvciAo
+aSA9IDA7IGkgPCBBUlJBWV9TSVpFKGZyZXFzKTsgaSsrKSB7Cj4gKwkJaWYgKGhvc3QtPmZfaW5p
+dCA8IG1heChmcmVxc1tpXSwgaG9zdC0+Zl9taW4pKQo+ICsJCQljb250aW51ZTsKPiArCQllbHNl
+Cj4gKwkJCWhvc3QtPmZfaW5pdCA9IG1heChmcmVxc1tpXSwgaG9zdC0+Zl9taW4pOwo+ICsKPiAr
+CQltbWNfcG93ZXJfdXAoaG9zdCwgaG9zdC0+Y2FyZC0+b2NyKTsKPiArCQllcnIgPSBtbWNfaW5p
+dF9jYXJkKGhvc3QsIGhvc3QtPmNhcmQtPm9jciwgaG9zdC0+Y2FyZCk7Cj4gKwkJaWYgKCFlcnIp
+Cj4gKwkJCWJyZWFrOwo+ICsJfQo+ICsKPiAgCW1tY19jYXJkX2Nscl9zdXNwZW5kZWQoaG9zdC0+
+Y2FyZCk7Cj4KPiAgb3V0Ogo+CgoKLS0gCkJlc3QgUmVnYXJkcwpTaGF3biBMaW4KCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
