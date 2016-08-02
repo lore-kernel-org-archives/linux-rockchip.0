@@ -1,188 +1,236 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH 1/3] drm/rockchip: inno_hdmi: add audio support
-Date: Tue, 2 Aug 2016 10:16:04 +0800
-Message-ID: <57A00264.2050603@rock-chips.com>
-References: <1465997312-17777-1-git-send-email-ykk@rock-chips.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [PATCH v4 6/7] PM / devfreq: rockchip: add devfreq driver for
+ rk3399 dmc
+Date: Tue, 02 Aug 2016 13:21:38 +0900
+Message-ID: <57A01FD2.2060806@samsung.com>
+References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
+ <CGME20160729075807epcas1p2432f667d41dadcaae7b813e151f2ab0b@epcas1p2.samsung.com>
+ <1469779021-10426-7-git-send-email-hl@rock-chips.com>
+ <579F2445.1020200@samsung.com> <579FF164.2000907@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465997312-17777-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Zheng Yang <zhengyang@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ken Mixte <kmixter@google.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Ben Chan <benchan@google.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <579FF164.2000907@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: hl <hl@rock-chips.com>, heiko@sntech.de
+Cc: tixy@linaro.org, dbasehore@chromium.org, airlied@linux.ie, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyayAmIEhlaWtvLAoKUGluZy4uLi4uLgoKVGhhbmtzLAotIFlha2lyCgpPbiAwNi8xNS8y
-MDE2IDA5OjI4IFBNLCBZYWtpciBZYW5nIHdyb3RlOgo+IFVzaW5nIHRoZSBjb21tb24gaGRtaS1j
-b2RlYyBkcml2ZXIgdG8gc3VwcG9ydCBoZG1pIGF1ZGlvIGZ1bmN0aW9uLgo+Cj4gU2lnbmVkLW9m
-Zi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jIHwgMjM3ICsrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKystCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmggfCAg
-IDIgKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyMzcgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMo
-LSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKPiBpbmRleCBmOGI0ZmViLi5j
-MzFkYzA3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWku
-Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+IEBAIC0yOSw2
-ICsyOSw4IEBACj4gICAjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgo+ICAgI2luY2x1
-ZGUgPGRybS9kcm1fZWRpZC5oPgo+ICAgCj4gKyNpbmNsdWRlIDxzb3VuZC9oZG1pLWNvZGVjLmg+
-Cj4gKwo+ICAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9kcnYuaCIKPiAgICNpbmNsdWRlICJyb2Nr
-Y2hpcF9kcm1fdm9wLmgiCj4gICAKPiBAQCAtMzYsNiArMzgsMTIgQEAKPiAgIAo+ICAgI2RlZmlu
-ZSB0b19pbm5vX2hkbWkoeCkJY29udGFpbmVyX29mKHgsIHN0cnVjdCBpbm5vX2hkbWksIHgpCj4g
-ICAKPiArc3RydWN0IGF1ZGlvX2luZm8gewo+ICsJaW50IHNhbXBsZV9yYXRlOwo+ICsJaW50IGNo
-YW5uZWxzOwo+ICsJaW50IHNhbXBsZV93aWR0aDsKPiArfTsKPiArCj4gICBzdHJ1Y3QgaGRtaV9k
-YXRhX2luZm8gewo+ICAgCWludCB2aWM7Cj4gICAJYm9vbCBzaW5rX2lzX2hkbWk7Cj4gQEAgLTcx
-LDYgKzc5LDkgQEAgc3RydWN0IGlubm9faGRtaSB7Cj4gICAKPiAgIAl1bnNpZ25lZCBpbnQgdG1k
-c19yYXRlOwo+ICAgCj4gKwlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICphdWRpb19wZGV2Owo+ICsJ
-Ym9vbCBhdWRpb19lbmFibGU7Cj4gKwo+ICAgCXN0cnVjdCBoZG1pX2RhdGFfaW5mbwloZG1pX2Rh
-dGE7Cj4gICAJc3RydWN0IGRybV9kaXNwbGF5X21vZGUgcHJldmlvdXNfbW9kZTsKPiAgIH07Cj4g
-QEAgLTMwNiw2ICszMTcsNTcgQEAgc3RhdGljIGludCBpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2F2
-aShzdHJ1Y3QgaW5ub19oZG1pICpoZG1pLAo+ICAgCXJldHVybiBpbm5vX2hkbWlfdXBsb2FkX2Zy
-YW1lKGhkbWksIHJjLCAmZnJhbWUsIElORk9GUkFNRV9BVkksIDAsIDAsIDApOwo+ICAgfQo+ICAg
-Cj4gK3N0YXRpYyBpbnQgaW5ub19oZG1pX2NvbmZpZ19hdWRpb19hYWkoc3RydWN0IGlubm9faGRt
-aSAqaGRtaSwKPiArCQkJCSAgICAgIHN0cnVjdCBhdWRpb19pbmZvICphdWRpbykKPiArewo+ICsJ
-c3RydWN0IGhkbWlfYXVkaW9faW5mb2ZyYW1lICpmYXVkaW87Cj4gKwl1bmlvbiBoZG1pX2luZm9m
-cmFtZSBmcmFtZTsKPiArCWludCByYzsKPiArCj4gKwlyYyA9IGhkbWlfYXVkaW9faW5mb2ZyYW1l
-X2luaXQoJmZyYW1lLmF1ZGlvKTsKPiArCWZhdWRpbyA9IChzdHJ1Y3QgaGRtaV9hdWRpb19pbmZv
-ZnJhbWUgKikmZnJhbWU7Cj4gKwo+ICsJZmF1ZGlvLT5jaGFubmVscyA9IGF1ZGlvLT5jaGFubmVs
-czsKPiArCj4gKwlzd2l0Y2ggKGF1ZGlvLT5zYW1wbGVfd2lkdGgpIHsKPiArCWNhc2UgMTY6Cj4g
-KwkJZmF1ZGlvLT5zYW1wbGVfc2l6ZSA9IEhETUlfQVVESU9fU0FNUExFX1NJWkVfMTY7Cj4gKwkJ
-YnJlYWs7Cj4gKwljYXNlIDIwOgo+ICsJCWZhdWRpby0+c2FtcGxlX3NpemUgPSBIRE1JX0FVRElP
-X1NBTVBMRV9TSVpFXzIwOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSAyNDoKPiArCQlmYXVkaW8tPnNh
-bXBsZV9zaXplID0gSERNSV9BVURJT19TQU1QTEVfU0laRV8yNDsKPiArCQlicmVhazsKPiArCX0K
-PiArCj4gKwlzd2l0Y2ggKGF1ZGlvLT5zYW1wbGVfcmF0ZSkgewo+ICsJY2FzZSAzMjAwMDoKPiAr
-CQlmYXVkaW8tPnNhbXBsZV9mcmVxdWVuY3kgPSBIRE1JX0FVRElPX1NBTVBMRV9GUkVRVUVOQ1lf
-MzIwMDA7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDQ0MTAwOgo+ICsJCWZhdWRpby0+c2FtcGxlX2Zy
-ZXF1ZW5jeSA9IEhETUlfQVVESU9fU0FNUExFX0ZSRVFVRU5DWV80NDEwMDsKPiArCQlicmVhazsK
-PiArCWNhc2UgNDgwMDA6Cj4gKwkJZmF1ZGlvLT5zYW1wbGVfZnJlcXVlbmN5ID0gSERNSV9BVURJ
-T19TQU1QTEVfRlJFUVVFTkNZXzQ4MDAwOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSA4ODIwMDoKPiAr
-CQlmYXVkaW8tPnNhbXBsZV9mcmVxdWVuY3kgPSBIRE1JX0FVRElPX1NBTVBMRV9GUkVRVUVOQ1lf
-ODgyMDA7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDk2MDAwOgo+ICsJCWZhdWRpby0+c2FtcGxlX2Zy
-ZXF1ZW5jeSA9IEhETUlfQVVESU9fU0FNUExFX0ZSRVFVRU5DWV85NjAwMDsKPiArCQlicmVhazsK
-PiArCWNhc2UgMTc2NDAwOgo+ICsJCWZhdWRpby0+c2FtcGxlX2ZyZXF1ZW5jeSA9IEhETUlfQVVE
-SU9fU0FNUExFX0ZSRVFVRU5DWV8xNzY0MDA7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDE5MjAwMDoK
-PiArCQlmYXVkaW8tPnNhbXBsZV9mcmVxdWVuY3kgPSBIRE1JX0FVRElPX1NBTVBMRV9GUkVRVUVO
-Q1lfMTkyMDAwOwo+ICsJCWJyZWFrOwo+ICsJfQo+ICsKPiArCXJldHVybiBpbm5vX2hkbWlfdXBs
-b2FkX2ZyYW1lKGhkbWksIHJjLCAmZnJhbWUsIElORk9GUkFNRV9BQUksIDAsIDAsIDApOwo+ICt9
-Cj4gKwo+ICAgc3RhdGljIGludCBpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2NzYyhzdHJ1Y3QgaW5u
-b19oZG1pICpoZG1pKQo+ICAgewo+ICAgCXN0cnVjdCBoZG1pX2RhdGFfaW5mbyAqZGF0YSA9ICZo
-ZG1pLT5oZG1pX2RhdGE7Cj4gQEAgLTQ3OCw4ICs1NDAsOSBAQCBzdGF0aWMgaW50IGlubm9faGRt
-aV9zZXR1cChzdHJ1Y3QgaW5ub19oZG1pICpoZG1pLAo+ICAgCWlubm9faGRtaV9pMmNfaW5pdCho
-ZG1pKTsKPiAgIAo+ICAgCS8qIFVubXV0ZSB2aWRlbyBhbmQgYXVkaW8gb3V0cHV0ICovCj4gLQlo
-ZG1pX21vZGIoaGRtaSwgSERNSV9BVl9NVVRFLCBtX0FVRElPX01VVEUgfCBtX1ZJREVPX0JMQUNL
-LAo+IC0JCSAgdl9BVURJT19NVVRFKDApIHwgdl9WSURFT19NVVRFKDApKTsKPiArCWhkbWlfbW9k
-YihoZG1pLCBIRE1JX0FWX01VVEUsIG1fVklERU9fQkxBQ0ssIHZfVklERU9fTVVURSgwKSk7Cj4g
-KwlpZiAoaGRtaS0+YXVkaW9fZW5hYmxlKQo+ICsJCWhkbWlfbW9kYihoZG1pLCBIRE1JX0FWX01V
-VEUsIG1fQVVESU9fTVVURSwgdl9BVURJT19NVVRFKDApKTsKPiAgIAo+ICAgCXJldHVybiAwOwo+
-ICAgfQo+IEBAIC02MTYsNiArNjc5LDE3NCBAQCBzdGF0aWMgc3RydWN0IGRybV9jb25uZWN0b3Jf
-aGVscGVyX2Z1bmNzIGlubm9faGRtaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzID0gewo+ICAgCS5i
-ZXN0X2VuY29kZXIgPSBpbm5vX2hkbWlfY29ubmVjdG9yX2Jlc3RfZW5jb2RlciwKPiAgIH07Cj4g
-ICAKPiAraW50IGlubm9faGRtaV9hdWRpb19jb25maWdfc2V0KHN0cnVjdCBpbm5vX2hkbWkgKmhk
-bWksIHN0cnVjdCBhdWRpb19pbmZvICphdWRpbykKPiArewo+ICsJaW50IHJhdGUsIE4sIGNoYW5u
-ZWw7Cj4gKwo+ICsJaWYgKGF1ZGlvLT5jaGFubmVscyA8IDMpCj4gKwkJY2hhbm5lbCA9IEkyU19D
-SEFOTkVMXzFfMjsKPiArCWVsc2UgaWYgKGF1ZGlvLT5jaGFubmVscyA8IDUpCj4gKwkJY2hhbm5l
-bCA9IEkyU19DSEFOTkVMXzNfNDsKPiArCWVsc2UgaWYgKGF1ZGlvLT5jaGFubmVscyA8IDcpCj4g
-KwkJY2hhbm5lbCA9IEkyU19DSEFOTkVMXzVfNjsKPiArCWVsc2UKPiArCQljaGFubmVsID0gSTJT
-X0NIQU5ORUxfN184Owo+ICsKPiArCXN3aXRjaCAoYXVkaW8tPnNhbXBsZV9yYXRlKSB7Cj4gKwlj
-YXNlIDMyMDAwOgo+ICsJCXJhdGUgPSBBVURJT18zMks7Cj4gKwkJTiA9IE5fMzJLOwo+ICsJCWJy
-ZWFrOwo+ICsJY2FzZSA0NDEwMDoKPiArCQlyYXRlID0gQVVESU9fNDQxSzsKPiArCQlOID0gTl80
-NDFLOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSA0ODAwMDoKPiArCQlyYXRlID0gQVVESU9fNDhLOwo+
-ICsJCU4gPSBOXzQ4SzsKPiArCQlicmVhazsKPiArCWNhc2UgODgyMDA6Cj4gKwkJcmF0ZSA9IEFV
-RElPXzg4Mks7Cj4gKwkJTiA9IE5fODgySzsKPiArCQlicmVhazsKPiArCWNhc2UgOTYwMDA6Cj4g
-KwkJcmF0ZSA9IEFVRElPXzk2SzsKPiArCQlOID0gTl85Nks7Cj4gKwkJYnJlYWs7Cj4gKwljYXNl
-IDE3NjQwMDoKPiArCQlyYXRlID0gQVVESU9fMTc2NEs7Cj4gKwkJTiA9IE5fMTc2NEs7Cj4gKwkJ
-YnJlYWs7Cj4gKwljYXNlIDE5MjAwMDoKPiArCQlyYXRlID0gQVVESU9fMTkySzsKPiArCQlOID0g
-Tl8xOTJLOwo+ICsJCWJyZWFrOwo+ICsJZGVmYXVsdDoKPiArCQlkZXZfZXJyKGhkbWktPmRldiwg
-Ilslc10gbm90IHN1cHBvcnQgc3VjaCBzYW1wbGUgcmF0ZSAlZFxuIiwKPiArCQkJX19mdW5jX18s
-IGF1ZGlvLT5zYW1wbGVfcmF0ZSk7Cj4gKwkJcmV0dXJuIC1FTk9FTlQ7Cj4gKwl9Cj4gKwo+ICsJ
-Lyogc2V0X2F1ZGlvIHNvdXJjZSBJMlMgKi8KPiArCWhkbWlfd3JpdGViKGhkbWksIEhETUlfQVVE
-SU9fQ1RSTDEsIDB4MDEpOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgQVVESU9fU0FNUExFX1JBVEUs
-IHJhdGUpOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgQVVESU9fSTJTX01PREUsIHZfSTJTX01PREUo
-STJTX1NUQU5EQVJEKSB8Cj4gKwkJICAgIHZfSTJTX0NIQU5ORUwoY2hhbm5lbCkpOwo+ICsKPiAr
-CWhkbWlfd3JpdGViKGhkbWksIEFVRElPX0kyU19NQVAsIDB4MDApOwo+ICsJaGRtaV93cml0ZWIo
-aGRtaSwgQVVESU9fSTJTX1NXQVBTX1NQRElGLCAwKTsKPiArCj4gKwkvKiBTZXQgTiB2YWx1ZSAq
-Lwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgQVVESU9fTl9ILCAoTiA+PiAxNikgJiAweDBGKTsKPiAr
-CWhkbWlfd3JpdGViKGhkbWksIEFVRElPX05fTSwgKE4gPj4gOCkgJiAweEZGKTsKPiArCWhkbWlf
-d3JpdGViKGhkbWksIEFVRElPX05fTCwgTiAmIDB4RkYpOwo+ICsKPiArCS8qU2V0IGhkbWkgbmxw
-Y20gbW9kZSB0byBzdXBwb3J0IGhkbWkgYml0c3RyZWFtKi8KPiArCWhkbWlfd3JpdGViKGhkbWks
-IEhETUlfQVVESU9fQ0hBTk5FTF9TVEFUVVMsIHZfQVVESU9fU1RBVFVTX05MUENNKDApKTsKPiAr
-Cj4gKwlyZXR1cm4gaW5ub19oZG1pX2NvbmZpZ19hdWRpb19hYWkoaGRtaSwgYXVkaW8pOwo+ICt9
-Cj4gKwo+ICtzdGF0aWMgaW50IGlubm9faGRtaV9hdWRpb19od19wYXJhbXMoc3RydWN0IGRldmlj
-ZSAqZGV2LAo+ICsJCQkJICAgICBzdHJ1Y3QgaGRtaV9jb2RlY19kYWlmbXQgKmRhaWZtdCwKPiAr
-CQkJCSAgICAgc3RydWN0IGhkbWlfY29kZWNfcGFyYW1zICpwYXJhbXMpCj4gK3sKPiArCXN0cnVj
-dCBpbm5vX2hkbWkgKmhkbWkgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCXN0cnVjdCBhdWRp
-b19pbmZvIGF1ZGlvID0gewo+ICsJCS5zYW1wbGVfd2lkdGggPSBwYXJhbXMtPnNhbXBsZV93aWR0
-aCwKPiArCQkuc2FtcGxlX3JhdGUgPSBwYXJhbXMtPnNhbXBsZV9yYXRlLAo+ICsJCS5jaGFubmVs
-cyA9IHBhcmFtcy0+Y2hhbm5lbHMsCj4gKwl9Owo+ICsKPiArCWlmICghaGRtaS0+aGRtaV9kYXRh
-LnNpbmtfaGFzX2F1ZGlvKSB7Cj4gKwkJZGV2X2VycihoZG1pLT5kZXYsICJTaW5rIGRvIG5vdCBz
-dXBwb3J0IGF1ZGlvIVxuIik7Cj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gKwl9Cj4gKwo+ICsJaWYg
-KCFoZG1pLT5lbmNvZGVyLmNydGMpCj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gKwo+ICsJc3dpdGNo
-IChkYWlmbXQtPmZtdCkgewo+ICsJY2FzZSBIRE1JX0kyUzoKPiArCQlicmVhazsKPiArCWRlZmF1
-bHQ6Cj4gKwkJZGV2X2VycihkZXYsICIlczogSW52YWxpZCBmb3JtYXQgJWRcbiIsIF9fZnVuY19f
-LCBkYWlmbXQtPmZtdCk7Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJu
-IGlubm9faGRtaV9hdWRpb19jb25maWdfc2V0KGhkbWksICZhdWRpbyk7Cj4gK30KPiArCj4gK3N0
-YXRpYyB2b2lkIGlubm9faGRtaV9hdWRpb19zaHV0ZG93bihzdHJ1Y3QgZGV2aWNlICpkZXYpCj4g
-K3sKPiArCS8qIGRvIG5vdGhpbmcgKi8KPiArfQo+ICsKPiArc3RhdGljIGludCBpbm5vX2hkbWlf
-YXVkaW9fZGlnaXRhbF9tdXRlKHN0cnVjdCBkZXZpY2UgKmRldiwgYm9vbCBtdXRlKQo+ICt7Cj4g
-KwlzdHJ1Y3QgaW5ub19oZG1pICpoZG1pID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gKwo+ICsJ
-aWYgKCFoZG1pLT5oZG1pX2RhdGEuc2lua19oYXNfYXVkaW8pIHsKPiArCQlkZXZfZXJyKGhkbWkt
-PmRldiwgIlNpbmsgZG8gbm90IHN1cHBvcnQgYXVkaW8hXG4iKTsKPiArCQlyZXR1cm4gLUVOT0RF
-VjsKPiArCX0KPiArCj4gKwloZG1pLT5hdWRpb19lbmFibGUgPSAhbXV0ZTsKPiArCj4gKwlpZiAo
-bXV0ZSkKPiArCQloZG1pX21vZGIoaGRtaSwgSERNSV9BVl9NVVRFLCBtX0FVRElPX01VVEUgfCBt
-X0FVRElPX1BELAo+ICsJCQkgIHZfQVVESU9fTVVURSgxKSB8IHZfQVVESU9fUEQoMSkpOwo+ICsJ
-ZWxzZQo+ICsJCWhkbWlfbW9kYihoZG1pLCBIRE1JX0FWX01VVEUsIG1fQVVESU9fTVVURSB8IG1f
-QVVESU9fUEQsCj4gKwkJCSAgdl9BVURJT19NVVRFKDApIHwgdl9BVURJT19QRCgwKSk7Cj4gKwo+
-ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaW5ub19oZG1pX2F1ZGlvX2dldF9l
-bGQoc3RydWN0IGRldmljZSAqZGV2LCB1aW50OF90ICpidWYsIHNpemVfdCBsZW4pCj4gK3sKPiAr
-CXN0cnVjdCBpbm5vX2hkbWkgKmhkbWkgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCXN0cnVj
-dCBkcm1fbW9kZV9jb25maWcgKmNvbmZpZyA9ICZoZG1pLT5lbmNvZGVyLmRldi0+bW9kZV9jb25m
-aWc7Cj4gKwlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOwo+ICsJaW50IHJldCA9IC1F
-Tk9ERVY7Cj4gKwo+ICsJbXV0ZXhfbG9jaygmY29uZmlnLT5tdXRleCk7Cj4gKwlsaXN0X2Zvcl9l
-YWNoX2VudHJ5KGNvbm5lY3RvciwgJmNvbmZpZy0+Y29ubmVjdG9yX2xpc3QsIGhlYWQpIHsKPiAr
-CQlpZiAoJmhkbWktPmVuY29kZXIgPT0gY29ubmVjdG9yLT5lbmNvZGVyKSB7Cj4gKwkJCW1lbWNw
-eShidWYsIGNvbm5lY3Rvci0+ZWxkLAo+ICsJCQkgICAgICAgbWluKHNpemVvZihjb25uZWN0b3It
-PmVsZCksIGxlbikpOwo+ICsJCQlyZXQgPSAwOwo+ICsJCX0KPiArCX0KPiArCW11dGV4X3VubG9j
-aygmY29uZmlnLT5tdXRleCk7Cj4gKwo+ICsJcmV0dXJuIHJldDsKPiArfQo+ICsKPiArc3RhdGlj
-IGNvbnN0IHN0cnVjdCBoZG1pX2NvZGVjX29wcyBhdWRpb19jb2RlY19vcHMgPSB7Cj4gKwkuaHdf
-cGFyYW1zID0gaW5ub19oZG1pX2F1ZGlvX2h3X3BhcmFtcywKPiArCS5hdWRpb19zaHV0ZG93biA9
-IGlubm9faGRtaV9hdWRpb19zaHV0ZG93biwKPiArCS5kaWdpdGFsX211dGUgPSBpbm5vX2hkbWlf
-YXVkaW9fZGlnaXRhbF9tdXRlLAo+ICsJLmdldF9lbGQgPSBpbm5vX2hkbWlfYXVkaW9fZ2V0X2Vs
-ZCwKPiArfTsKPiArCj4gK3N0YXRpYyBpbnQgaW5ub19oZG1pX2F1ZGlvX2NvZGVjX2luaXQoc3Ry
-dWN0IGlubm9faGRtaSAqaGRtaSwKPiArCQkJCSAgICAgIHN0cnVjdCBkZXZpY2UgKmRldikKPiAr
-ewo+ICsJc3RydWN0IGhkbWlfY29kZWNfcGRhdGEgY29kZWNfZGF0YSA9IHsKPiArCQkuaTJzID0g
-MSwKPiArCQkub3BzID0gJmF1ZGlvX2NvZGVjX29wcywKPiArCQkubWF4X2kyc19jaGFubmVscyA9
-IDgsCj4gKwl9Owo+ICsKPiArCWhkbWktPmF1ZGlvX2VuYWJsZSA9IGZhbHNlOwo+ICsJaGRtaS0+
-YXVkaW9fcGRldiA9IHBsYXRmb3JtX2RldmljZV9yZWdpc3Rlcl9kYXRhKAo+ICsJCQkJZGV2LCBI
-RE1JX0NPREVDX0RSVl9OQU1FLCBQTEFURk9STV9ERVZJRF9OT05FLAo+ICsJCQkJJmNvZGVjX2Rh
-dGEsIHNpemVvZihjb2RlY19kYXRhKSk7Cj4gKwo+ICsJcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyho
-ZG1pLT5hdWRpb19wZGV2KTsKPiArfQo+ICsKPiAgIHN0YXRpYyBpbnQgaW5ub19oZG1pX3JlZ2lz
-dGVyKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHN0cnVjdCBpbm5vX2hkbWkgKmhkbWkpCj4gICB7
-Cj4gICAJc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyID0gJmhkbWktPmVuY29kZXI7Cj4gQEAg
-LTY0NSw2ICs4NzYsOCBAQCBzdGF0aWMgaW50IGlubm9faGRtaV9yZWdpc3RlcihzdHJ1Y3QgZHJt
-X2RldmljZSAqZHJtLCBzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICAgCj4gICAJZHJtX21vZGVf
-Y29ubmVjdG9yX2F0dGFjaF9lbmNvZGVyKCZoZG1pLT5jb25uZWN0b3IsIGVuY29kZXIpOwo+ICAg
-Cj4gKwlpbm5vX2hkbWlfYXVkaW9fY29kZWNfaW5pdChoZG1pLCBkZXYpOwo+ICsKPiAgIAlyZXR1
-cm4gMDsKPiAgIH0KPiAgIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-aW5ub19oZG1pLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmgKPiBpbmRl
-eCBhYTdjNDE1Li44YjIzMDM3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9pbm5vX2hkbWkuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWku
-aAo+IEBAIC0xMDQsMTEgKzEwNCwxMyBAQCBlbnVtIHsKPiAgICNkZWZpbmUgSERNSV9BVl9NVVRF
-CQkJMHgwNQo+ICAgI2RlZmluZSBtX0FWTVVURV9DTEVBUgkJCSgxIDw8IDcpCj4gICAjZGVmaW5l
-IG1fQVZNVVRFX0VOQUJMRQkJCSgxIDw8IDYpCj4gKyNkZWZpbmUgbV9BVURJT19QRAkJCSgxIDw8
-IDIpCj4gICAjZGVmaW5lIG1fQVVESU9fTVVURQkJCSgxIDw8IDEpCj4gICAjZGVmaW5lIG1fVklE
-RU9fQkxBQ0sJCQkoMSA8PCAwKQo+ICAgI2RlZmluZSB2X0FWTVVURV9DTEVBUihuKQkJKG4gPDwg
-NykKPiAgICNkZWZpbmUgdl9BVk1VVEVfRU5BQkxFKG4pCQkobiA8PCA2KQo+ICAgI2RlZmluZSB2
-X0FVRElPX01VVEUobikJCQkobiA8PCAxKQo+ICsjZGVmaW5lIHZfQVVESU9fUEQobikJCQkobiA8
-PCAyKQo+ICAgI2RlZmluZSB2X1ZJREVPX01VVEUobikJCQkobiA8PCAwKQo+ICAgCj4gICAjZGVm
-aW5lIEhETUlfVklERU9fVElNSU5HX0NUTAkJMHgwOAoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Lin,
+
+On the next version, I'd like you to add the 'linux-pm@vger.kernel.org'
+because devfreq is a subsystem of power management.
+
+On 2016년 08월 02일 10:03, hl wrote:
+> Hi Chanwoo Choi,
+> 
+>     Thanks for reviewing so carefully. And i have some question:
+> 
+> On 2016年08月01日 18:28, Chanwoo Choi wrote:
+>> Hi Lin,
+>>
+>> As I mentioned on patch5, you better to make the documentation as following:
+>> - Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+>> And, I add the comments.
+>>
+>>
+>> On 2016년 07월 29일 16:57, Lin Huang wrote:
+>>> base on dfi result, we do ddr frequency scaling, register
+>>> dmc driver to devfreq framework, and use simple-ondemand
+>>> policy.
+>>>
+>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
+>>> ---
+>>> Changes in v4:
+>>> - use arm_smccc_smc() function talk to bl31
+>>> - delete rockchip_dmc.c file and config
+>>> - delete dmc_notify
+>>> - adjust probe order
+>>>   Changes in v3:
+>>> - operate dram setting through sip call
+>>> - imporve set rate flow
+>>>
+>>> Changes in v2:
+>>> - None
+>>>   Changes in v1:
+>>> - move dfi controller to event
+>>> - fix set voltage sequence when set rate fail
+>>> - change Kconfig type from tristate to bool
+>>> - move unuse EXPORT_SYMBOL_GPL()
+>>>
+>>>   drivers/devfreq/Kconfig               |   1 +
+>>>   drivers/devfreq/Makefile              |   1 +
+>>>   drivers/devfreq/rockchip/Kconfig      |   8 +
+>>>   drivers/devfreq/rockchip/Makefile     |   1 +
+>>>   drivers/devfreq/rockchip/rk3399_dmc.c | 473 ++++++++++++++++++++++++++++++++++
+>>>   5 files changed, 484 insertions(+)
+>>>   create mode 100644 drivers/devfreq/rockchip/Kconfig
+>>>   create mode 100644 drivers/devfreq/rockchip/Makefile
+>>>   create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+>>>
+
+[snip]
+
+>>> +
+>>> +static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+>>> +                 u32 flags)
+>>> +{
+>>> +    struct platform_device *pdev = container_of(dev, struct platform_device,
+>>> +                            dev);
+>>> +    struct rk3399_dmcfreq *dmcfreq = platform_get_drvdata(pdev);
+>> You can use the 'dev_get_drvdata()' to simplify it instead of 'platform_get_drvdata()'.
+>>
+>>     struct rk3399_dmcfreq *dmcfreq = dev_get_drvdata(dev);
+>>
+>>> +    struct dev_pm_opp *opp;
+>>> +    unsigned long old_clk_rate = dmcfreq->rate;
+>>> +    unsigned long target_volt, target_rate;
+>>> +    int err;
+>>> +
+>>> +    rcu_read_lock();
+>>> +    opp = devfreq_recommended_opp(dev, freq, flags);
+>>> +    if (IS_ERR(opp)) {
+>>> +        rcu_read_unlock();
+>>> +        return PTR_ERR(opp);
+>>> +    }
+>>> +
+>>> +    target_rate = dev_pm_opp_get_freq(opp);
+>>> +    target_volt = dev_pm_opp_get_voltage(opp);
+>>> +    opp = devfreq_recommended_opp(dev, &dmcfreq->rate, flags);
+>>> +    if (IS_ERR(opp)) {
+>>> +        rcu_read_unlock();
+>>> +        return PTR_ERR(opp);
+>>> +    }
+>>> +    dmcfreq->volt = dev_pm_opp_get_voltage(opp);
+>> If you add the 'curr_opp' variable to struct rk3399_dmcfreq,
+>> you can remove the calling of devfreq_recommended_opp().
+>>     dmcfreq->rate = dev_pm_opp_get_freq(dmcfreq->curr_opp);
+>>     dmcfreq->volt = dev_pm_opp_get_freq(dmcfreq->curr_opp);
+>>
+>> Because the current rate and voltage is already decided on previous polling cycle,
+>> So we don't need to get the opp with devfreq_recommended_opp().
+
+> I prefer the way now use, since we get the dmcfreq->rate use clk_get_rate() after,
+> Base on that,  i do not care the set_rate success or fail. use curr_opp i need to
+> care about set_rate status, when fail, i must set some rate, when success i must
+> set other rate.
+
+I think that it is not good to get the alrady decided opp
+by devfreq_recommended_opp(). Usually, devfreq_recommended_opp() is used
+to get the proper opp which get the close frequency (dmcfreq->rate).
+
+Also, When finishing the rk3399_dmcfreq_target(), the rk3399_dmc.c
+have to know the current opp or rate without any finding sequence.
+The additional finding procedure is un-needed.
+
+>>> +    rcu_read_unlock();
+>>> +
+>>> +    if (dmcfreq->rate == target_rate)
+>>> +        return 0;
+>>> +
+>>> +    mutex_lock(&dmcfreq->lock);
+>>> +
+>>> +    /*
+>>> +     * if frequency scaling from low to high, adjust voltage first;
+>>> +     * if frequency scaling from high to low, adjuset frequency first;
+>>> +     */
+>> s/adjuset/adjust
+>>
+>> I recommend that you use a captital letter for first character and use the '.'
+>> instead of ';'.
+>>
+>>> +    if (old_clk_rate < target_rate) {
+>>> +        err = regulator_set_voltage(dmcfreq->vdd_center, target_volt,
+>>> +                        target_volt);
+>>> +        if (err) {
+>>> +            dev_err(dev, "Unable to set vol %lu\n", target_volt);
+>> To readability, you better to use the corrent word to pass the precise the log message.
+>> - s/vol/voltage
+>>
+>> And, this patch uses the 'Unable to' or 'Cannot' to show the error log.
+>> I recommend that you use the consistent expression if there is not any specific reason.
+>>
+>>     dev_err(dev, "Cannot set the voltage %lu uV\n", target_volt);
+>>
+>>> +            goto out;
+>>> +        }
+>>> +    }
+>>> +    dmcfreq->wait_dcf_flag = 1;
+>>> +    err = clk_set_rate(dmcfreq->dmc_clk, target_rate);
+>>> +    if (err) {
+>>> +        dev_err(dev,
+>>> +            "Unable to set freq %lu. Current freq %lu. Error %d\n",
+>>> +            target_rate, old_clk_rate, err);
+>>     dev_err(dev, "Cannot set the frequency %lu (%d)\n", target_rate, err);
+>>
+>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
+>>> +                      dmcfreq->volt);
+>>> +        goto out;
+>>> +    }
+>>> +
+>>> +    /*
+>>> +     * wait until bcf irq happen, it means freq scaling finish in bl31,
+>> ditto.
+>>
+>>> +     * use 100ms as timeout time
+>> s/time/time.
+>>
+>>> +     */
+>>> +    if (!wait_event_timeout(dmcfreq->wait_dcf_queue,
+>>> +                !dmcfreq->wait_dcf_flag, HZ / 10))
+>>> +        dev_warn(dev, "Timeout waiting for dcf irq\n");
+>> If the timeout happen, are there any problem?
+
+> When timeout happen , may be we miss interrupt, but it do not affect this
+> process, since we will check the rate whether success later.
+
+OK. But I'd like you to modify the warning message.
+
+One more thing, is the dcf interrupt related to the change of clock rate?
+When the clock rate is changed, the dcf interrupt happen?
+
+>> After setting the frequency and voltage, store the current opp entry on .curr_opp.
+>>     dmcfreq->curr_opp = opp;
+>>
+>>> +    /*
+>>> +     * check the dpll rate
+>>> +     * there only two result we will get,
+>>> +     * 1. ddr frequency scaling fail, we still get the old rate
+>>> +     * 2, ddr frequency scaling sucessful, we get the rate we set
+>>> +     */
+>>> +    dmcfreq->rate = clk_get_rate(dmcfreq->dmc_clk);
+>>> +
+>>> +    /* if get the incorrect rate, set voltage to old value */
+>>> +    if (dmcfreq->rate != target_rate) {
+>>> +        dev_err(dev, "get wrong ddr frequency, Request freq %lu,\
+>>> +            Current freq %lu\n", target_rate, dmcfreq->rate);
+>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
+>>> +                      dmcfreq->volt);
+>> [Without force, it is just my opion about this code:]
+>> I think that this checking code it is un-needed.
+>> If this case occur, the rk3399_dmc.c never set the specific frequency
+>> because the rk3399 clock don't support the specific frequency for rk3399 dmc.
+>>
+>> If you want to set the correct frequency,
+>> When verifying the rk3399 dmc driver, you should check the rk3399 clock driver.
+>>
+>> Basically, if the the clock driver don't support the correct same frequency ,
+>> CCF(Common Clock Framework) set the close frequency. It is not a bad thing.
+
+> May be i should remove the regulator_set_voltage() here, but still need to
+> check whether we get the right frequency, since if we do not get the right frequency,
+
+When calling clk_set_rate(), the final frequency only depend on the rk3399 clock driver.
+But, if you want to check the new rate, I think that you should move this code
+right after clk_set_rate() when there is any dependency of dcf interrupt.
+
+> we should send a warn message, to remind that maybe you pass a frequency which
+> do not support in bl31.
+
+Also, I'd like you to explain the 'bl31' and add the description on next version.
+
+[snip]
+
+Regards,
+Chanwoo Choi
