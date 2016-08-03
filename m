@@ -1,244 +1,140 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v4 6/7] PM / devfreq: rockchip: add devfreq driver for
- rk3399 dmc
-Date: Wed, 3 Aug 2016 15:38:08 +0800
-Message-ID: <57A19F60.7090700@rock-chips.com>
-References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
- <CGME20160729075807epcas1p2432f667d41dadcaae7b813e151f2ab0b@epcas1p2.samsung.com>
- <1469779021-10426-7-git-send-email-hl@rock-chips.com>
- <579F2445.1020200@samsung.com> <579FF164.2000907@rock-chips.com>
- <57A01FD2.2060806@samsung.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] mmc: core: fall back host->f_init if failing to
+ init mmc card after resume
+Date: Wed, 3 Aug 2016 15:44:14 +0800
+Message-ID: <599ba6fb-69c8-9e33-13d9-65e3eab0aeb4@rock-chips.com>
+References: <1468979860-28712-1-git-send-email-shawn.lin@rock-chips.com>
+ <1468979860-28712-2-git-send-email-shawn.lin@rock-chips.com>
+ <CGME20160802093847epcas1p2c8cb3881913a608122bb77dd9d973e63@epcas1p2.samsung.com>
+ <98cd6af4-3296-9020-aeae-802f797f0631@rock-chips.com>
+ <57A07A44.9000400@samsung.com>
+ <73b58bd5-a5a2-a436-58a9-30fa8db3225f@rock-chips.com>
+ <1e664e27-09c9-dc14-b978-2483c1fa1da4@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <57A01FD2.2060806@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>, hl <hl@rock-chips.com>, heiko@sntech.de
-Cc: tixy@linaro.org, typ@rock-chips.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1e664e27-09c9-dc14-b978-2483c1fa1da4-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Hi Chanwoo Choi,
-On 2016年08月02日 12:21, Chanwoo Choi wrote:
-> Hi Lin,
->
-> On the next version, I'd like you to add the 'linux-pm@vger.kernel.org'
-> because devfreq is a subsystem of power management.
-Sure, will do it next version.
-> On 2016년 08월 02일 10:03, hl wrote:
->> Hi Chanwoo Choi,
->>
->>      Thanks for reviewing so carefully. And i have some question:
->>
->> On 2016年08月01日 18:28, Chanwoo Choi wrote:
->>> Hi Lin,
->>>
->>> As I mentioned on patch5, you better to make the documentation as following:
->>> - Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
->>> And, I add the comments.
->>>
->>>
->>> On 2016년 07월 29일 16:57, Lin Huang wrote:
->>>> base on dfi result, we do ddr frequency scaling, register
->>>> dmc driver to devfreq framework, and use simple-ondemand
->>>> policy.
->>>>
->>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>>> ---
->>>> Changes in v4:
->>>> - use arm_smccc_smc() function talk to bl31
->>>> - delete rockchip_dmc.c file and config
->>>> - delete dmc_notify
->>>> - adjust probe order
->>>>    Changes in v3:
->>>> - operate dram setting through sip call
->>>> - imporve set rate flow
->>>>
->>>> Changes in v2:
->>>> - None
->>>>    Changes in v1:
->>>> - move dfi controller to event
->>>> - fix set voltage sequence when set rate fail
->>>> - change Kconfig type from tristate to bool
->>>> - move unuse EXPORT_SYMBOL_GPL()
->>>>
->>>>    drivers/devfreq/Kconfig               |   1 +
->>>>    drivers/devfreq/Makefile              |   1 +
->>>>    drivers/devfreq/rockchip/Kconfig      |   8 +
->>>>    drivers/devfreq/rockchip/Makefile     |   1 +
->>>>    drivers/devfreq/rockchip/rk3399_dmc.c | 473 ++++++++++++++++++++++++++++++++++
->>>>    5 files changed, 484 insertions(+)
->>>>    create mode 100644 drivers/devfreq/rockchip/Kconfig
->>>>    create mode 100644 drivers/devfreq/rockchip/Makefile
->>>>    create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
->>>>
-> [snip]
->
->>>> +
->>>> +static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->>>> +                 u32 flags)
->>>> +{
->>>> +    struct platform_device *pdev = container_of(dev, struct platform_device,
->>>> +                            dev);
->>>> +    struct rk3399_dmcfreq *dmcfreq = platform_get_drvdata(pdev);
->>> You can use the 'dev_get_drvdata()' to simplify it instead of 'platform_get_drvdata()'.
->>>
->>>      struct rk3399_dmcfreq *dmcfreq = dev_get_drvdata(dev);
->>>
->>>> +    struct dev_pm_opp *opp;
->>>> +    unsigned long old_clk_rate = dmcfreq->rate;
->>>> +    unsigned long target_volt, target_rate;
->>>> +    int err;
->>>> +
->>>> +    rcu_read_lock();
->>>> +    opp = devfreq_recommended_opp(dev, freq, flags);
->>>> +    if (IS_ERR(opp)) {
->>>> +        rcu_read_unlock();
->>>> +        return PTR_ERR(opp);
->>>> +    }
->>>> +
->>>> +    target_rate = dev_pm_opp_get_freq(opp);
->>>> +    target_volt = dev_pm_opp_get_voltage(opp);
->>>> +    opp = devfreq_recommended_opp(dev, &dmcfreq->rate, flags);
->>>> +    if (IS_ERR(opp)) {
->>>> +        rcu_read_unlock();
->>>> +        return PTR_ERR(opp);
->>>> +    }
->>>> +    dmcfreq->volt = dev_pm_opp_get_voltage(opp);
->>> If you add the 'curr_opp' variable to struct rk3399_dmcfreq,
->>> you can remove the calling of devfreq_recommended_opp().
->>>      dmcfreq->rate = dev_pm_opp_get_freq(dmcfreq->curr_opp);
->>>      dmcfreq->volt = dev_pm_opp_get_freq(dmcfreq->curr_opp);
->>>
->>> Because the current rate and voltage is already decided on previous polling cycle,
->>> So we don't need to get the opp with devfreq_recommended_opp().
->> I prefer the way now use, since we get the dmcfreq->rate use clk_get_rate() after,
->> Base on that,  i do not care the set_rate success or fail. use curr_opp i need to
->> care about set_rate status, when fail, i must set some rate, when success i must
->> set other rate.
-> I think that it is not good to get the alrady decided opp
-> by devfreq_recommended_opp(). Usually, devfreq_recommended_opp() is used
-> to get the proper opp which get the close frequency (dmcfreq->rate).
->
-> Also, When finishing the rk3399_dmcfreq_target(), the rk3399_dmc.c
-> have to know the current opp or rate without any finding sequence.
-> The additional finding procedure is un-needed.
->
->>>> +    rcu_read_unlock();
->>>> +
->>>> +    if (dmcfreq->rate == target_rate)
->>>> +        return 0;
->>>> +
->>>> +    mutex_lock(&dmcfreq->lock);
->>>> +
->>>> +    /*
->>>> +     * if frequency scaling from low to high, adjust voltage first;
->>>> +     * if frequency scaling from high to low, adjuset frequency first;
->>>> +     */
->>> s/adjuset/adjust
->>>
->>> I recommend that you use a captital letter for first character and use the '.'
->>> instead of ';'.
->>>
->>>> +    if (old_clk_rate < target_rate) {
->>>> +        err = regulator_set_voltage(dmcfreq->vdd_center, target_volt,
->>>> +                        target_volt);
->>>> +        if (err) {
->>>> +            dev_err(dev, "Unable to set vol %lu\n", target_volt);
->>> To readability, you better to use the corrent word to pass the precise the log message.
->>> - s/vol/voltage
->>>
->>> And, this patch uses the 'Unable to' or 'Cannot' to show the error log.
->>> I recommend that you use the consistent expression if there is not any specific reason.
->>>
->>>      dev_err(dev, "Cannot set the voltage %lu uV\n", target_volt);
->>>
->>>> +            goto out;
->>>> +        }
->>>> +    }
->>>> +    dmcfreq->wait_dcf_flag = 1;
->>>> +    err = clk_set_rate(dmcfreq->dmc_clk, target_rate);
->>>> +    if (err) {
->>>> +        dev_err(dev,
->>>> +            "Unable to set freq %lu. Current freq %lu. Error %d\n",
->>>> +            target_rate, old_clk_rate, err);
->>>      dev_err(dev, "Cannot set the frequency %lu (%d)\n", target_rate, err);
->>>
->>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
->>>> +                      dmcfreq->volt);
->>>> +        goto out;
->>>> +    }
->>>> +
->>>> +    /*
->>>> +     * wait until bcf irq happen, it means freq scaling finish in bl31,
->>> ditto.
->>>
->>>> +     * use 100ms as timeout time
->>> s/time/time.
->>>
->>>> +     */
->>>> +    if (!wait_event_timeout(dmcfreq->wait_dcf_queue,
->>>> +                !dmcfreq->wait_dcf_flag, HZ / 10))
->>>> +        dev_warn(dev, "Timeout waiting for dcf irq\n");
->>> If the timeout happen, are there any problem?
->> When timeout happen , may be we miss interrupt, but it do not affect this
->> process, since we will check the rate whether success later.
-> OK. But I'd like you to modify the warning message.
->
-> One more thing, is the dcf interrupt related to the change of clock rate?
-> When the clock rate is changed, the dcf interrupt happen?
-Yes, when clock rate changed sucessful, it will trigger a irq in bl31.
->
->>> After setting the frequency and voltage, store the current opp entry on .curr_opp.
->>>      dmcfreq->curr_opp = opp;
->>>
->>>> +    /*
->>>> +     * check the dpll rate
->>>> +     * there only two result we will get,
->>>> +     * 1. ddr frequency scaling fail, we still get the old rate
->>>> +     * 2, ddr frequency scaling sucessful, we get the rate we set
->>>> +     */
->>>> +    dmcfreq->rate = clk_get_rate(dmcfreq->dmc_clk);
->>>> +
->>>> +    /* if get the incorrect rate, set voltage to old value */
->>>> +    if (dmcfreq->rate != target_rate) {
->>>> +        dev_err(dev, "get wrong ddr frequency, Request freq %lu,\
->>>> +            Current freq %lu\n", target_rate, dmcfreq->rate);
->>>> +        regulator_set_voltage(dmcfreq->vdd_center, dmcfreq->volt,
->>>> +                      dmcfreq->volt);
->>> [Without force, it is just my opion about this code:]
->>> I think that this checking code it is un-needed.
->>> If this case occur, the rk3399_dmc.c never set the specific frequency
->>> because the rk3399 clock don't support the specific frequency for rk3399 dmc.
->>>
->>> If you want to set the correct frequency,
->>> When verifying the rk3399 dmc driver, you should check the rk3399 clock driver.
->>>
->>> Basically, if the the clock driver don't support the correct same frequency ,
->>> CCF(Common Clock Framework) set the close frequency. It is not a bad thing.
->> May be i should remove the regulator_set_voltage() here, but still need to
->> check whether we get the right frequency, since if we do not get the right frequency,
-> When calling clk_set_rate(), the final frequency only depend on the rk3399 clock driver.
-> But, if you want to check the new rate, I think that you should move this code
-> right after clk_set_rate() when there is any dependency of dcf interrupt.
-it should be after the wait_event, since it indicate the clk_set_rate 
-finish,
->
->> we should send a warn message, to remind that maybe you pass a frequency which
->> do not support in bl31.
-> Also, I'd like you to explain the 'bl31' and add the description on next version.
->
-> [snip]
->
-> Regards,
-> Chanwoo Choi
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
--- 
-Lin Huang
+SGkgSmFlaG9vbiwKCtTaIDIwMTYvOC8zIDE0OjU0LCBKYWVob29uIENodW5nINC0tcA6Cj4gSGkg
+U2hhd24sCj4KPiBPbiAwOC8wMy8yMDE2IDEwOjM1IEFNLCBTaGF3biBMaW4gd3JvdGU6Cj4+IEhp
+IEphZWhvb24sCj4+Cj4+INTaIDIwMTYvOC8yIDE4OjQ3LCBKYWVob29uIENodW5nINC0tcA6Cj4+
+PiBIaSBTaGF3biwKPj4+Cj4+PiBPbiAwOC8wMi8yMDE2IDA2OjA3IFBNLCBTaGF3biBMaW4gd3Jv
+dGU6Cj4+Pj4gSGkgVWxmLAo+Pj4+Cj4+Pj4g1NogMjAxNi83LzIwIDk6NTcsIFNoYXduIExpbiDQ
+tLXAOgo+Pj4+PiBXZSBvYnNlcnZlZCB0aGUgZmFpbHVyZSBvZiBpbml0aWFsaXppbmcgY2FyZCBh
+ZnRlciByZXN1bWUKPj4+Pj4gYWNjaWRlbnRhbGx5LiBJdCdzIGhhcmQgdG8gcmVwcm9kdWNlIGJ1
+dCB3ZSBkaWQgZ2V0IHJlcG9ydCBmcm9tCj4+Pj4+IHRoZSBzdXNwZW5kL3Jlc3VtZSB0ZXN0IG9m
+IG91ciBSSzMzOTkgbXAgdGVzdCBmYXJtIC4gVW5mb3J0dW5hdGVseSwKPj4+Pj4gd2Ugc3RpbGwg
+ZmFpbCB0byBmaWd1cmUgb3V0IHdoYXQgd2FzIGdvaW5nIHdyb25nIGF0IHRoYXQgdGltZS4KPj4+
+Pj4gQWxzbyB3ZSBjYW4ndCBhY2hpZXZlIGl0IGJ5IHJldHJ5aW5nIHRoZSBob3N0LT5mX2luaXQg
+d2l0aG91dCBmYWxsaW5nCj4+Pj4+IGJhY2sgaXQuIEJ1dCB0aGlzIHBhdGNoIHdpbGwgc29sdmUg
+dGhlIHByb2JsZW0gYXMgd2UgY291bGQgYWRkIHNvbWUgbG9nCj4+Pj4+IHRoZXJlIGFuZCBzZWUg
+dGhhdCB3ZSByZXN1bWUgdGhlIG1tYyBjYXJkIHN1Y2Nlc3NmdWxseSBhZnRlciBmYWxsaW5nCj4+
+Pj4+IGJhY2sgdGhlIGhvc3QtPmZfaW5pdC4gVGhlcmUgaXMgbm8gb2J2aW91cyBzaWRlIGVmZmVj
+dCBmb3VuZCwgc28gaXQgc2VlbXMKPj4+Pj4gdGhpcyBwYXRjaCB3aWxsIGltcHJvdmUgdGhlIHN0
+YWJpbGl0eS4KPj4+Pj4KPj4+Pj4gWyAgIDkzLjQwNTA4NV0gbW1jMTogdW5leHBlY3RlZCBzdGF0
+dXMgMHg4MDA5MDAgYWZ0ZXIgc3dpdGNoCj4+Pj4+IFsgICA5My40MDg0NzRdIG1tYzE6IHN3aXRj
+aCB0byBidXMgd2lkdGggMSBmYWlsZWQKPj4+Pj4gWyAgIDkzLjQwODQ4Ml0gbW1jMTogbW1jX3Nl
+bGVjdF9oczIwMCBmYWlsZWQsIGVycm9yIC0xMTAKPj4+Pj4gWyAgIDkzLjQwODQ5Ml0gbW1jMTog
+ZXJyb3IgLTExMCBkdXJpbmcgcmVzdW1lIChjYXJkIHdhcyByZW1vdmVkPykKPj4+Pj4gWyAgIDkz
+LjQwODcwNV0gUE06IHJlc3VtZSBvZiBkZXZpY2VzIGNvbXBsZXRlIGFmdGVyIDIxMy40NTMgbXNl
+Y3MKPj4+Pj4KPj4+Cj4+PiBTdGF0dXMgMHg4MDA5MDAgaXMgQ09NX0NSQ19FUlJPUi4uaXQgc2Vl
+bXMgdGhhdCBDUkMgY2hlY2sgZmFpbHMuCj4+PiBCdXQgaSBkb24ndCBrbm93IHdoYXQgaXMgcmVs
+YXRlZCB3aXRoICJmYWxsIGJhY2sgaG9zdC0+Zl9pbml0Ii4KPj4KPj4gWXVwLCBhY3R1YWxseSBp
+dCBhbHNvIGxvb2tzIHN0cmFuZ2UgdG8gbWUgdGhhdCB3ZSBzaG91bGQgZG93bmdyYWRlCj4+IHRo
+ZSBob3N0LT5mX2luaXQgd2hlbiByZXN1bWluZy4gQ1JDIGVycm9yIHNob3VsZG4ndCBvY2NvdXIg
+YXMgNDAwSwo+PiBjb3VsZCB3b3JrIGF0IGJvb3RpbmcgdGltZSwgYWxzbyB3ZSBjb3VsZCBzZWUg
+dGhlIEhTNDAwIHdvcmsgbm9ybWFsbHkKPj4gbGF0ZXIgd2hpY2ggbWFrZSBtZSBiZWxpZXZlIHRo
+YXQgaXQgc2hvdWxkbid0IGJlbG9uZyB0byBzaWduYWwgcHJvYmxlbSwKPj4gYnV0IHdlIG5lZWQg
+dG8gZmlndXJlIG91dCB3aHkgdGhlIGNvbnRyb2xsZXIgdGhpbmsgaXQgc2hvdWxkIGJlIGEgQ1JD
+Cj4+IGVycm9yLgo+Pgo+PiBUaGUgYmVzdCB3YXkgaXMgdG8gbWFrZSBpdCBlYXN5IHRvIGJlIHJl
+cHJvZHVjZWQgdGhhdCB3ZSBjb3VsZCBjaGVjayB0aGUKPj4gcGNiIHNpZ25hbCB0aGVyZSwgYW5k
+IEkgc3RpbGwgdHJ5IGl0IHRoZW4uIE9yIHRoZXJlIGlzIGEgSFcvQ2hpcAo+PiBjb25kaXRpb24g
+dGhhdCBtYWtlIG15IGVtbWMgUEhZIHdvcmsgaW1wcm9wZXJseSBhY2NpZGVudGFsbHkuIEFueXdh
+eQo+PiBtb3JlIHByb29mIHNob3VsZCBiZSBwcm92aWRlZCBiZWZvcmUgSSdhbSBhYmxlIHRvIGxh
+bmQgcGF0Y2ggdG8KPj4gZml4L2F2b2lkIHRoZSByb290IGNhdXNlLiBJJ20gZG9pbmcgaXQuLgo+
+Pgo+Pj4KPj4+IEkgZG9uJ3QgaGF2ZSBhIGtub3dsZWRnZSBvZiByb2NrY2hpcC4uLgo+Pj4gYnV0
+IGluIG15IGV4cGVyaWVuY2UsIHRoZXJlIGFyZSBzb21lIGNhc2VzLCBub3QgbW1jIGNvcmUgcHJv
+YmxlbS4uCj4+Pgo+Pj4gMS4gRXh5bm9zIGlzIHVzaW5nIHRoZSBncGlvIGFzIGNsay9jbWQvZGF0
+YSBsaW5lLi5hbmQgZ3BpbyBoYXMgdGhlIGRyaXZlciBzdHJlbmd0aCB2YWx1ZS4KPj4+IElmIGRy
+aXZlciBzdHJlbmd0aCBpcyBjaGFuZ2VkIGFmdGVyIHJlc3VtaW5nLCBpdCdzIHBvc3NpYmxlIHRv
+IG9jY3VyIHRoZSBlcnJvci4KPj4KPj4gWWVzLCB0aGUgcmVsYXRlZCBzZXR0aW5ncyBvciBjb25m
+aWd1cmF0aW9uIGZvciBQSFkgZGlkbid0IGNoYW5nZS4KPj4KPj4+Cj4+PiAyLiBBbmQgZ2xpdGNo
+IGZvciBJL08gbGluZS4udGhpcyBsb29wIGhhcyB0aGUgZGVsYXkuLkp1c3QgZGVsYXk/Cj4+Cj4+
+IFdlIGhhdmUgcmV0cnlpZWQgNDAwSyBpZiBmYWlsaW5nIHRvIHJlc3VtZSBhbmQgd2lsbCBub3Qg
+YnJlYWsgb3V0IGlmCj4+IHN0aWxsIGZpbmRpbmcgZmFpbHVyZSwgYnV0IGl0IGRvZXNuJ3QgaGVs
+cC4KPj4KPj4KPj4+Cj4+PiBTbyB5b3UgY2FuIGNoZWNrIHRoZSBvdGhlciBwcm9ibGVtLi4uIDop
+Cj4+Pgo+Pj4gQXQgQm9vdGluZyB0aW1lLCBmX2luaXQgY2FuIHVzZSA0MDBLLi5idXQgYWZ0ZXIg
+cmVzdW1pbmcuLmZfaW5pdCBuZWVkIHRvIHVzZSAxMDBLLi5obW0uLnN0cmFuZ2UuLgo+Pj4KPj4K
+Pj4gQWdyZWVkLi4KPj4KPj4gU28gbGV0J3MgY29tZSBiYWNrIHRvIHRoZSB0b3BpYyAtLSBTaG91
+bGQgd2Ugc3VwcG9ydCBkb3duZ3JhZGluZyBmX2luaXQKPj4gYWZ0ZXIgZmFpbGluZyB0byByZXN1
+bWUganVzdCBhcyB3aGF0IHdlIGRvIGF0IHRoZSBib290aW5nIHRpbWU/IEl0J3MKPj4gcG9zc2li
+bGUgdGhhdCB0aGUgZW52aXJvbWVudCBjaGFuZ2VzIGxpa2Uobm9pc2UsIHRlbXBlcmF0dXJlLCBz
+dGF0aWMpCj4+IHdpbGwgbGVhZCB0byB0aGUgZmFpbHVyZSBhZnRlciByZXN1bWluZy4gU2hvdWxk
+bid0IHRoZSBtZWNoYW5pc20gYmUgbW9yZQo+PiByb2J1c3QgdG8gZGVhbCB3aXRoIHRoZXNlIHVu
+ZXhwZWN0ZWQgY2FzZXM/ICA6KQo+Cj4gSSB0aGluayB5b3UgYWxzbyBmZWx0ICB0aGF0IHRoaXMg
+cGF0Y2ggaXMgd29ya2Fyb3VuZC4KCk1vcmUgb3IgbGVzcyA6KQoKPiBCZWNhdXNlIGl0J3Mgbm90
+IGNsZWFybHkgd2h5IG9jY3VycmVkIHRoZSBDUkMgZXJyb3IgYW5kIHJlc3VtaW5nIGZhaWxzLgoK
+eXVwLCB0aGF0IHN0b3AgbWUgZnJvbSBsYW5kaW5nICJyZWFsIiBwYXRjaCB0byBmaXggaXQuIEJ1
+dCB0aGluayB0d2ljZSwKdGhlcmUgYXJlIG1hbnkgdW5leHBlY3RlZCBjYXNlcyBjYW4gbWFrZSB0
+aGUgcmVzdW1yZSBmYWlsZWQuIFdlIG1heSBzZWUKZGlmZmVyZW50IGZfaW5pdCB3aGVuIGRvaW5n
+IHJlYm9vdCB0ZXN0IGZvciBhIGNlcnRhaW4KYm9hcmQgYXQgYm9vdGluZyB0aW1lKGFjdHVhbGx5
+IEkgZGlkIHNlZSBpdCBtYW55IG1hbnkgdGltZXMpLiBUaGF0IGlzCndoeSBJJ20gc3VyZSBpdCdz
+IHRoZSBzYW1lIGZvciByZXN1bWUgY2FzZS4KCj4gKENSQyBlcnJvciBzaG91bGQgYmUgZGlzYXBw
+ZWFyZWQgd2hlbiBjbG9jayBpcyB1c2VkIHRvIHRoZSBsb3dlciB2YWx1ZS4uKQo+Cj4gQW5kIEkn
+bSBub3Qgc3VyZSB0aGF0IDEwMEsgaXMgZW5vdWdoLi5JZiAxMDBrIGFsc28gZGlkbid0IHdvcmsg
+ZmluZSBhdCByZXN1bWluZyB0aW1lLCBob3cgd2UgZG8/Cj4gVGhpcyBpc3N1ZSBpcyBpbnRlcmVz
+dGluZy4uYmVjYXVzZSBpdCdzIHBvc3NpYmxlIHRvIG9jY3VyIGluIHJlYWwgY2FzZS4uLkkgaGF2
+ZSBhbHNvIHNlZW4gdGhlIHNpbWlsYXIgaXNzdWUuCj4gQnV0IG15IHNvbHV0aW9uIGFsc28gd2Fz
+IHdvcmthcm91bmQuICA6KAoKTmljZSB0byBoZWFyIHlvdSBoYXZlIHN1ZmZlcmVkIGZyb20gdGhl
+IHNpbWlsYXIgaXNzdWUsIG5vdCBqdXN0IG1lLgpDb3VsZCB5b3Ugc2hhcmUgeW91ciBXUiBzb2x1
+dGlvbj8gOikKCj4KPiBJZiBpdCdzIG1vcmUgY2xlYXJseSB0aGFuIG5vdywgaSBjYW4gYWdyZWUg
+eW91ciBwYXRjaC4uYnV0IG5vdy4uaSBkb24ndCBrbm93IHdoYXQgaXMgY29ycmVjdC4KPiBJIHdp
+bGwgbGlzdGVuIFVsZiBhbmQgb3RoZXIgZ3V5cydzIG9waW5pb25zLi5hbHNvIHlvdXJzLgo+Cj4g
+QmVzdCBSZWdhcmRzLAo+IEphZWhvb24gQ2h1bmcKPgo+Pgo+Pgo+Pj4gQmVzdCBSZWdhcmRzLAo+
+Pj4gSmFlaG9vbiBDaHVuZwo+Pj4KPj4+Pgo+Pj4+IEFueSBjb21tZW50cyBmb3IgdGhpcyBwYXRj
+aD8gOikKPj4+Pgo+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2Nr
+LWNoaXBzLmNvbT4KPj4+Pj4KPj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgaW4gdjI6Cj4+
+Pj4+IC0gcmVtb3ZlIG1tY19wb3dlcl9vZmYKPj4+Pj4gLSB0YWtlIGZfbWluIGludG8gY29uc2lk
+ZXJhdGlvbgo+Pj4+Pgo+Pj4+PiAgZHJpdmVycy9tbWMvY29yZS9tbWMuYyB8IDE5ICsrKysrKysr
+KysrKysrKysrLS0KPj4+Pj4gIDEgZmlsZSBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAyIGRl
+bGV0aW9ucygtKQo+Pj4+Pgo+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvY29yZS9tbWMu
+YyBiL2RyaXZlcnMvbW1jL2NvcmUvbW1jLmMKPj4+Pj4gaW5kZXggNDAzYjk3Yi4uYTI4OTFjMSAx
+MDA2NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9tbWMvY29yZS9tbWMuYwo+Pj4+PiArKysgYi9kcml2
+ZXJzL21tYy9jb3JlL21tYy5jCj4+Pj4+IEBAIC0xOTQ1LDYgKzE5NDUsNyBAQCBzdGF0aWMgaW50
+IG1tY19zdXNwZW5kKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+Pj4gIHN0YXRpYyBpbnQgX21t
+Y19yZXN1bWUoc3RydWN0IG1tY19ob3N0ICpob3N0KQo+Pj4+PiAgewo+Pj4+PiAgICAgIGludCBl
+cnIgPSAwOwo+Pj4+PiArICAgIGludCBpOwo+Pj4+Pgo+Pj4+PiAgICAgIEJVR19PTighaG9zdCk7
+Cj4+Pj4+ICAgICAgQlVHX09OKCFob3N0LT5jYXJkKTsKPj4+Pj4gQEAgLTE5NTQsOCArMTk1NSwy
+MiBAQCBzdGF0aWMgaW50IF9tbWNfcmVzdW1lKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+Pj4g
+ICAgICBpZiAoIW1tY19jYXJkX3N1c3BlbmRlZChob3N0LT5jYXJkKSkKPj4+Pj4gICAgICAgICAg
+Z290byBvdXQ7Cj4+Pj4+Cj4+Pj4+IC0gICAgbW1jX3Bvd2VyX3VwKGhvc3QsIGhvc3QtPmNhcmQt
+Pm9jcik7Cj4+Pj4+IC0gICAgZXJyID0gbW1jX2luaXRfY2FyZChob3N0LCBob3N0LT5jYXJkLT5v
+Y3IsIGhvc3QtPmNhcmQpOwo+Pj4+PiArICAgIC8qCj4+Pj4+ICsgICAgICogTGV0J3MgdHJ5IHRv
+IGZhbGxiYWNrIHRoZSBob3N0LT5mX2luaXQKPj4+Pj4gKyAgICAgKiBpZiBmYWlsaW5nIHRvIGlu
+aXQgbW1jIGNhcmQgYWZ0ZXIgcmVzdW1lLgo+Pj4+PiArICAgICAqLwo+Pj4+PiArICAgIGZvciAo
+aSA9IDA7IGkgPCBBUlJBWV9TSVpFKGZyZXFzKTsgaSsrKSB7Cj4+Pj4+ICsgICAgICAgIGlmICho
+b3N0LT5mX2luaXQgPCBtYXgoZnJlcXNbaV0sIGhvc3QtPmZfbWluKSkKPj4+Pj4gKyAgICAgICAg
+ICAgIGNvbnRpbnVlOwo+Pj4+PiArICAgICAgICBlbHNlCj4+Pj4+ICsgICAgICAgICAgICBob3N0
+LT5mX2luaXQgPSBtYXgoZnJlcXNbaV0sIGhvc3QtPmZfbWluKTsKPj4+Pj4gKwo+Pj4+PiArICAg
+ICAgICBtbWNfcG93ZXJfdXAoaG9zdCwgaG9zdC0+Y2FyZC0+b2NyKTsKPj4+Pj4gKyAgICAgICAg
+ZXJyID0gbW1jX2luaXRfY2FyZChob3N0LCBob3N0LT5jYXJkLT5vY3IsIGhvc3QtPmNhcmQpOwo+
+Pj4+PiArICAgICAgICBpZiAoIWVycikKPj4+Pj4gKyAgICAgICAgICAgIGJyZWFrOwo+Pj4+PiAr
+ICAgIH0KPj4+Pj4gKwo+Pj4+PiAgICAgIG1tY19jYXJkX2Nscl9zdXNwZW5kZWQoaG9zdC0+Y2Fy
+ZCk7Cj4+Pj4+Cj4+Pj4+ICBvdXQ6Cj4+Pj4+Cj4+Pj4KPj4+Pgo+Pj4KPj4+Cj4+Pgo+Pj4KPj4K
+Pj4KPgo+Cj4KPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
