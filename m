@@ -1,112 +1,1150 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] mmc: core: fall back host->f_init if failing to
- init mmc card after resume
-Date: Wed, 3 Aug 2016 09:35:55 +0800
-Message-ID: <73b58bd5-a5a2-a436-58a9-30fa8db3225f@rock-chips.com>
-References: <1468979860-28712-1-git-send-email-shawn.lin@rock-chips.com>
- <1468979860-28712-2-git-send-email-shawn.lin@rock-chips.com>
- <CGME20160802093847epcas1p2c8cb3881913a608122bb77dd9d973e63@epcas1p2.samsung.com>
- <98cd6af4-3296-9020-aeae-802f797f0631@rock-chips.com>
- <57A07A44.9000400@samsung.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [v9 PATCH 3/6] phy: Add USB Type-C PHY driver for rk3399
+Date: Wed, 3 Aug 2016 09:52:02 +0800
+Message-ID: <57A14E42.6050906@rock-chips.com>
+References: <1470141913-1082-1-git-send-email-zyw@rock-chips.com>
+ <1470141913-1082-4-git-send-email-zyw@rock-chips.com>
+ <CABXOdTf9sTZ1AedwAYwROyz0KvwpA8ak-3_O3XbwCdh+Qwn2Vw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <57A07A44.9000400-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CABXOdTf9sTZ1AedwAYwROyz0KvwpA8ak-3_O3XbwCdh+Qwn2Vw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guenter Roeck <groeck@google.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, myungjoo.ham@samsung.com, Chanwoo Choi <cw00.choi@samsung.com>, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kever Yang <kever.yang@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmFlaG9vbiwKCtTaIDIwMTYvOC8yIDE4OjQ3LCBKYWVob29uIENodW5nINC0tcA6Cj4gSGkg
-U2hhd24sCj4KPiBPbiAwOC8wMi8yMDE2IDA2OjA3IFBNLCBTaGF3biBMaW4gd3JvdGU6Cj4+IEhp
-IFVsZiwKPj4KPj4g1NogMjAxNi83LzIwIDk6NTcsIFNoYXduIExpbiDQtLXAOgo+Pj4gV2Ugb2Jz
-ZXJ2ZWQgdGhlIGZhaWx1cmUgb2YgaW5pdGlhbGl6aW5nIGNhcmQgYWZ0ZXIgcmVzdW1lCj4+PiBh
-Y2NpZGVudGFsbHkuIEl0J3MgaGFyZCB0byByZXByb2R1Y2UgYnV0IHdlIGRpZCBnZXQgcmVwb3J0
-IGZyb20KPj4+IHRoZSBzdXNwZW5kL3Jlc3VtZSB0ZXN0IG9mIG91ciBSSzMzOTkgbXAgdGVzdCBm
-YXJtIC4gVW5mb3J0dW5hdGVseSwKPj4+IHdlIHN0aWxsIGZhaWwgdG8gZmlndXJlIG91dCB3aGF0
-IHdhcyBnb2luZyB3cm9uZyBhdCB0aGF0IHRpbWUuCj4+PiBBbHNvIHdlIGNhbid0IGFjaGlldmUg
-aXQgYnkgcmV0cnlpbmcgdGhlIGhvc3QtPmZfaW5pdCB3aXRob3V0IGZhbGxpbmcKPj4+IGJhY2sg
-aXQuIEJ1dCB0aGlzIHBhdGNoIHdpbGwgc29sdmUgdGhlIHByb2JsZW0gYXMgd2UgY291bGQgYWRk
-IHNvbWUgbG9nCj4+PiB0aGVyZSBhbmQgc2VlIHRoYXQgd2UgcmVzdW1lIHRoZSBtbWMgY2FyZCBz
-dWNjZXNzZnVsbHkgYWZ0ZXIgZmFsbGluZwo+Pj4gYmFjayB0aGUgaG9zdC0+Zl9pbml0LiBUaGVy
-ZSBpcyBubyBvYnZpb3VzIHNpZGUgZWZmZWN0IGZvdW5kLCBzbyBpdCBzZWVtcwo+Pj4gdGhpcyBw
-YXRjaCB3aWxsIGltcHJvdmUgdGhlIHN0YWJpbGl0eS4KPj4+Cj4+PiBbICAgOTMuNDA1MDg1XSBt
-bWMxOiB1bmV4cGVjdGVkIHN0YXR1cyAweDgwMDkwMCBhZnRlciBzd2l0Y2gKPj4+IFsgICA5My40
-MDg0NzRdIG1tYzE6IHN3aXRjaCB0byBidXMgd2lkdGggMSBmYWlsZWQKPj4+IFsgICA5My40MDg0
-ODJdIG1tYzE6IG1tY19zZWxlY3RfaHMyMDAgZmFpbGVkLCBlcnJvciAtMTEwCj4+PiBbICAgOTMu
-NDA4NDkyXSBtbWMxOiBlcnJvciAtMTEwIGR1cmluZyByZXN1bWUgKGNhcmQgd2FzIHJlbW92ZWQ/
-KQo+Pj4gWyAgIDkzLjQwODcwNV0gUE06IHJlc3VtZSBvZiBkZXZpY2VzIGNvbXBsZXRlIGFmdGVy
-IDIxMy40NTMgbXNlY3MKPj4+Cj4KPiBTdGF0dXMgMHg4MDA5MDAgaXMgQ09NX0NSQ19FUlJPUi4u
-aXQgc2VlbXMgdGhhdCBDUkMgY2hlY2sgZmFpbHMuCj4gQnV0IGkgZG9uJ3Qga25vdyB3aGF0IGlz
-IHJlbGF0ZWQgd2l0aCAiZmFsbCBiYWNrIGhvc3QtPmZfaW5pdCIuCgpZdXAsIGFjdHVhbGx5IGl0
-IGFsc28gbG9va3Mgc3RyYW5nZSB0byBtZSB0aGF0IHdlIHNob3VsZCBkb3duZ3JhZGUKdGhlIGhv
-c3QtPmZfaW5pdCB3aGVuIHJlc3VtaW5nLiBDUkMgZXJyb3Igc2hvdWxkbid0IG9jY291ciBhcyA0
-MDBLCmNvdWxkIHdvcmsgYXQgYm9vdGluZyB0aW1lLCBhbHNvIHdlIGNvdWxkIHNlZSB0aGUgSFM0
-MDAgd29yayBub3JtYWxseQpsYXRlciB3aGljaCBtYWtlIG1lIGJlbGlldmUgdGhhdCBpdCBzaG91
-bGRuJ3QgYmVsb25nIHRvIHNpZ25hbCBwcm9ibGVtLApidXQgd2UgbmVlZCB0byBmaWd1cmUgb3V0
-IHdoeSB0aGUgY29udHJvbGxlciB0aGluayBpdCBzaG91bGQgYmUgYSBDUkMKZXJyb3IuCgpUaGUg
-YmVzdCB3YXkgaXMgdG8gbWFrZSBpdCBlYXN5IHRvIGJlIHJlcHJvZHVjZWQgdGhhdCB3ZSBjb3Vs
-ZCBjaGVjayB0aGUKcGNiIHNpZ25hbCB0aGVyZSwgYW5kIEkgc3RpbGwgdHJ5IGl0IHRoZW4uIE9y
-IHRoZXJlIGlzIGEgSFcvQ2hpcApjb25kaXRpb24gdGhhdCBtYWtlIG15IGVtbWMgUEhZIHdvcmsg
-aW1wcm9wZXJseSBhY2NpZGVudGFsbHkuIEFueXdheQptb3JlIHByb29mIHNob3VsZCBiZSBwcm92
-aWRlZCBiZWZvcmUgSSdhbSBhYmxlIHRvIGxhbmQgcGF0Y2ggdG8KZml4L2F2b2lkIHRoZSByb290
-IGNhdXNlLiBJJ20gZG9pbmcgaXQuLgoKPgo+IEkgZG9uJ3QgaGF2ZSBhIGtub3dsZWRnZSBvZiBy
-b2NrY2hpcC4uLgo+IGJ1dCBpbiBteSBleHBlcmllbmNlLCB0aGVyZSBhcmUgc29tZSBjYXNlcywg
-bm90IG1tYyBjb3JlIHByb2JsZW0uLgo+Cj4gMS4gRXh5bm9zIGlzIHVzaW5nIHRoZSBncGlvIGFz
-IGNsay9jbWQvZGF0YSBsaW5lLi5hbmQgZ3BpbyBoYXMgdGhlIGRyaXZlciBzdHJlbmd0aCB2YWx1
-ZS4KPiBJZiBkcml2ZXIgc3RyZW5ndGggaXMgY2hhbmdlZCBhZnRlciByZXN1bWluZywgaXQncyBw
-b3NzaWJsZSB0byBvY2N1ciB0aGUgZXJyb3IuCgpZZXMsIHRoZSByZWxhdGVkIHNldHRpbmdzIG9y
-IGNvbmZpZ3VyYXRpb24gZm9yIFBIWSBkaWRuJ3QgY2hhbmdlLgoKPgo+IDIuIEFuZCBnbGl0Y2gg
-Zm9yIEkvTyBsaW5lLi50aGlzIGxvb3AgaGFzIHRoZSBkZWxheS4uSnVzdCBkZWxheT8KCldlIGhh
-dmUgcmV0cnlpZWQgNDAwSyBpZiBmYWlsaW5nIHRvIHJlc3VtZSBhbmQgd2lsbCBub3QgYnJlYWsg
-b3V0IGlmCnN0aWxsIGZpbmRpbmcgZmFpbHVyZSwgYnV0IGl0IGRvZXNuJ3QgaGVscC4KCgo+Cj4g
-U28geW91IGNhbiBjaGVjayB0aGUgb3RoZXIgcHJvYmxlbS4uLiA6KQo+Cj4gQXQgQm9vdGluZyB0
-aW1lLCBmX2luaXQgY2FuIHVzZSA0MDBLLi5idXQgYWZ0ZXIgcmVzdW1pbmcuLmZfaW5pdCBuZWVk
-IHRvIHVzZSAxMDBLLi5obW0uLnN0cmFuZ2UuLgo+CgpBZ3JlZWQuLgoKU28gbGV0J3MgY29tZSBi
-YWNrIHRvIHRoZSB0b3BpYyAtLSBTaG91bGQgd2Ugc3VwcG9ydCBkb3duZ3JhZGluZyBmX2luaXQK
-YWZ0ZXIgZmFpbGluZyB0byByZXN1bWUganVzdCBhcyB3aGF0IHdlIGRvIGF0IHRoZSBib290aW5n
-IHRpbWU/IEl0J3MKcG9zc2libGUgdGhhdCB0aGUgZW52aXJvbWVudCBjaGFuZ2VzIGxpa2Uobm9p
-c2UsIHRlbXBlcmF0dXJlLCBzdGF0aWMpCndpbGwgbGVhZCB0byB0aGUgZmFpbHVyZSBhZnRlciBy
-ZXN1bWluZy4gU2hvdWxkbid0IHRoZSBtZWNoYW5pc20gYmUgbW9yZQpyb2J1c3QgdG8gZGVhbCB3
-aXRoIHRoZXNlIHVuZXhwZWN0ZWQgY2FzZXM/ICA6KQoKCj4gQmVzdCBSZWdhcmRzLAo+IEphZWhv
-b24gQ2h1bmcKPgo+Pgo+PiBBbnkgY29tbWVudHMgZm9yIHRoaXMgcGF0Y2g/IDopCj4+Cj4+PiBT
-aWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4+Cj4+
-PiAtLS0KPj4+Cj4+PiBDaGFuZ2VzIGluIHYyOgo+Pj4gLSByZW1vdmUgbW1jX3Bvd2VyX29mZgo+
-Pj4gLSB0YWtlIGZfbWluIGludG8gY29uc2lkZXJhdGlvbgo+Pj4KPj4+ICBkcml2ZXJzL21tYy9j
-b3JlL21tYy5jIHwgMTkgKysrKysrKysrKysrKysrKystLQo+Pj4gIDEgZmlsZSBjaGFuZ2VkLCAx
-NyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL21tYy9jb3JlL21tYy5jIGIvZHJpdmVycy9tbWMvY29yZS9tbWMuYwo+Pj4gaW5kZXggNDAz
-Yjk3Yi4uYTI4OTFjMSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvbW1jL2NvcmUvbW1jLmMKPj4+
-ICsrKyBiL2RyaXZlcnMvbW1jL2NvcmUvbW1jLmMKPj4+IEBAIC0xOTQ1LDYgKzE5NDUsNyBAQCBz
-dGF0aWMgaW50IG1tY19zdXNwZW5kKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+ICBzdGF0aWMg
-aW50IF9tbWNfcmVzdW1lKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+ICB7Cj4+PiAgICAgIGlu
-dCBlcnIgPSAwOwo+Pj4gKyAgICBpbnQgaTsKPj4+Cj4+PiAgICAgIEJVR19PTighaG9zdCk7Cj4+
-PiAgICAgIEJVR19PTighaG9zdC0+Y2FyZCk7Cj4+PiBAQCAtMTk1NCw4ICsxOTU1LDIyIEBAIHN0
-YXRpYyBpbnQgX21tY19yZXN1bWUoc3RydWN0IG1tY19ob3N0ICpob3N0KQo+Pj4gICAgICBpZiAo
-IW1tY19jYXJkX3N1c3BlbmRlZChob3N0LT5jYXJkKSkKPj4+ICAgICAgICAgIGdvdG8gb3V0Owo+
-Pj4KPj4+IC0gICAgbW1jX3Bvd2VyX3VwKGhvc3QsIGhvc3QtPmNhcmQtPm9jcik7Cj4+PiAtICAg
-IGVyciA9IG1tY19pbml0X2NhcmQoaG9zdCwgaG9zdC0+Y2FyZC0+b2NyLCBob3N0LT5jYXJkKTsK
-Pj4+ICsgICAgLyoKPj4+ICsgICAgICogTGV0J3MgdHJ5IHRvIGZhbGxiYWNrIHRoZSBob3N0LT5m
-X2luaXQKPj4+ICsgICAgICogaWYgZmFpbGluZyB0byBpbml0IG1tYyBjYXJkIGFmdGVyIHJlc3Vt
-ZS4KPj4+ICsgICAgICovCj4+PiArICAgIGZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKGZyZXFz
-KTsgaSsrKSB7Cj4+PiArICAgICAgICBpZiAoaG9zdC0+Zl9pbml0IDwgbWF4KGZyZXFzW2ldLCBo
-b3N0LT5mX21pbikpCj4+PiArICAgICAgICAgICAgY29udGludWU7Cj4+PiArICAgICAgICBlbHNl
-Cj4+PiArICAgICAgICAgICAgaG9zdC0+Zl9pbml0ID0gbWF4KGZyZXFzW2ldLCBob3N0LT5mX21p
-bik7Cj4+PiArCj4+PiArICAgICAgICBtbWNfcG93ZXJfdXAoaG9zdCwgaG9zdC0+Y2FyZC0+b2Ny
-KTsKPj4+ICsgICAgICAgIGVyciA9IG1tY19pbml0X2NhcmQoaG9zdCwgaG9zdC0+Y2FyZC0+b2Ny
-LCBob3N0LT5jYXJkKTsKPj4+ICsgICAgICAgIGlmICghZXJyKQo+Pj4gKyAgICAgICAgICAgIGJy
-ZWFrOwo+Pj4gKyAgICB9Cj4+PiArCj4+PiAgICAgIG1tY19jYXJkX2Nscl9zdXNwZW5kZWQoaG9z
-dC0+Y2FyZCk7Cj4+Pgo+Pj4gIG91dDoKPj4+Cj4+Cj4+Cj4KPgo+Cj4KCgotLSAKQmVzdCBSZWdh
-cmRzClNoYXduIExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+Hi Guenter
+
+On 08/03/2016 04:22 AM, Guenter Roeck wrote:
+> On Tue, Aug 2, 2016 at 5:45 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+>> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
+>> Type-C PHY is designed to support the USB3 and DP applications. The
+>> PHY basically has two main components: USB3 and DisplyPort. USB3
+>> operates in SuperSpeed mode and the DP can operate at RBR, HBR and
+>> HBR2 data rates. Hence, create 2 PHY deivces, the phy[0] for DP,
+>> and phy[1] for USB3.
+>>
+>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v9:
+>> - split the Type-C PHY into two PHYs: USB3 and DP
+>>
+>> Changes in v8:
+>> - set the default cable id to EXTCON_USB_HOST
+>> - optimization Error log
+>>
+>> Changes in v7:
+>> - support new API of extcon
+>>
+>> Changes in v6:
+>> - delete the support of PIN_ASSIGN_A/B
+>> - set the default mode to MODE_DFP_USB
+>> - disable DP PLL at USB3 only mode
+>>
+>> Changes in v5:
+>> - support get property from extcon
+>> - remove PIN ASSIGN A/B support
+>>
+>> Changes in v4:
+>> - select EXTCON
+>> - use phy framework to control the USB3 and DP function
+>> - rename PIN_MAP_ to PIN_ASSIGN_
+>>
+>> Changes in v3:
+>> - remove the phy framework(Kishon Vijay Abraham I)
+>> - add parentheses around the macro
+>> - use a single space between type and name
+>> - add spaces after opening and before closing braces.
+>> - use u16 for register value
+>> - remove type-c phy header file
+>> - CodingStyle optimization
+>> - use some cable extcon to get type-c port information
+>> - add a extcon to notify Display Port
+>>
+>> Changes in v2:
+>> - select RESET_CONTROLLER
+>> - alphabetic order
+>> - modify some spelling mistakes
+>> - make mode cleaner
+>> - use bool for enable/disable
+>> - check all of the return value
+>> - return a better err number
+>> - use more readx_poll_timeout()
+>> - clk_disable_unprepare(tcphy->clk_ref);
+>> - remove unuse functions, rockchip_typec_phy_power_on/off
+>> - remove unnecessary typecast from void *
+>> - use dts node to distinguish between phys.
+>>
+>> Changes in v1:
+>> - update the licence note
+>> - init core clock to 50MHz
+>> - use extcon API
+>> - remove unused global
+>> - add some comments for magic num
+>> - change usleep_range(1000, 2000) tousleep_range(1000, 1050)
+>> - remove __func__ from dev_err
+>> - return err number when get clk failed
+>> - remove ADDR_ADJ define
+>> - use devm_clk_get(&pdev->dev, "tcpdcore")
+>>
+>>   drivers/phy/Kconfig              |   9 +
+>>   drivers/phy/Makefile             |   1 +
+>>   drivers/phy/phy-rockchip-typec.c | 984 +++++++++++++++++++++++++++++++++++++++
+>>   3 files changed, 994 insertions(+)
+>>   create mode 100644 drivers/phy/phy-rockchip-typec.c
+>>
+>> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+>> index 26566db..83706a5 100644
+>> --- a/drivers/phy/Kconfig
+>> +++ b/drivers/phy/Kconfig
+>> @@ -351,6 +351,15 @@ config PHY_ROCKCHIP_DP
+>>          help
+>>            Enable this to support the Rockchip Display Port PHY.
+>>
+>> +config PHY_ROCKCHIP_TYPEC
+>> +       tristate "Rockchip TYPEC PHY Driver"
+>> +       depends on ARCH_ROCKCHIP && OF
+>> +       select EXTCON
+>> +       select GENERIC_PHY
+>> +       select RESET_CONTROLLER
+>> +       help
+>> +         Enable this to support the Rockchip USB TYPEC PHY.
+>> +
+>>   config PHY_ST_SPEAR1310_MIPHY
+>>          tristate "ST SPEAR1310-MIPHY driver"
+>>          select GENERIC_PHY
+>> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+>> index 24596a9..91fa413 100644
+>> --- a/drivers/phy/Makefile
+>> +++ b/drivers/phy/Makefile
+>> @@ -39,6 +39,7 @@ obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)   += phy-qcom-apq8064-sata.o
+>>   obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+>>   obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
+>>   obj-$(CONFIG_PHY_ROCKCHIP_DP)          += phy-rockchip-dp.o
+>> +obj-$(CONFIG_PHY_ROCKCHIP_TYPEC) += phy-rockchip-typec.o
+>>   obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)    += phy-qcom-ipq806x-sata.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)   += phy-spear1310-miphy.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)   += phy-spear1340-miphy.o
+>> diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+>> new file mode 100644
+>> index 0000000..96140f8
+>> --- /dev/null
+>> +++ b/drivers/phy/phy-rockchip-typec.c
+>> @@ -0,0 +1,984 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>> + * Author: Chris Zhong <zyw@rock-chips.com>
+>> + *         Kever Yang <kever.yang@rock-chips.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/clk-provider.h>
+>> +#include <linux/delay.h>
+>> +#include <linux/extcon.h>
+>> +#include <linux/io.h>
+>> +#include <linux/iopoll.h>
+>> +#include <linux/kernel.h>
+>> +#include <linux/module.h>
+>> +#include <linux/mutex.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/of_platform.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/regmap.h>
+>> +#include <linux/reset.h>
+>> +
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/phy/phy.h>
+>> +
+>> +#define CMN_SSM_BANDGAP                        (0x21 << 2)
+>> +#define CMN_SSM_BIAS                   (0x22 << 2)
+>> +#define CMN_PLLSM0_PLLEN               (0x29 << 2)
+>> +#define CMN_PLLSM0_PLLPRE              (0x2a << 2)
+>> +#define CMN_PLLSM0_PLLVREF             (0x2b << 2)
+>> +#define CMN_PLLSM0_PLLLOCK             (0x2c << 2)
+>> +#define CMN_PLLSM1_PLLEN               (0x31 << 2)
+>> +#define CMN_PLLSM1_PLLPRE              (0x32 << 2)
+>> +#define CMN_PLLSM1_PLLVREF             (0x33 << 2)
+>> +#define CMN_PLLSM1_PLLLOCK             (0x34 << 2)
+>> +#define CMN_PLLSM1_USER_DEF_CTRL       (0x37 << 2)
+>> +#define CMN_ICAL_OVRD                  (0xc1 << 2)
+>> +#define CMN_PLL0_VCOCAL_OVRD           (0x83 << 2)
+>> +#define CMN_PLL0_VCOCAL_INIT           (0x84 << 2)
+>> +#define CMN_PLL0_VCOCAL_ITER           (0x85 << 2)
+>> +#define CMN_PLL0_LOCK_REFCNT_START     (0x90 << 2)
+>> +#define CMN_PLL0_LOCK_PLLCNT_START     (0x92 << 2)
+>> +#define CMN_PLL0_LOCK_PLLCNT_THR       (0x93 << 2)
+>> +#define CMN_PLL0_INTDIV                        (0x94 << 2)
+>> +#define CMN_PLL0_FRACDIV               (0x95 << 2)
+>> +#define CMN_PLL0_HIGH_THR              (0x96 << 2)
+>> +#define CMN_PLL0_DSM_DIAG              (0x97 << 2)
+>> +#define CMN_PLL0_SS_CTRL1              (0x98 << 2)
+>> +#define CMN_PLL0_SS_CTRL2              (0x99 << 2)
+>> +#define CMN_PLL1_VCOCAL_START          (0xa1 << 2)
+>> +#define CMN_PLL1_VCOCAL_OVRD           (0xa3 << 2)
+>> +#define CMN_PLL1_VCOCAL_INIT           (0xa4 << 2)
+>> +#define CMN_PLL1_VCOCAL_ITER           (0xa5 << 2)
+>> +#define CMN_PLL1_LOCK_REFCNT_START     (0xb0 << 2)
+>> +#define CMN_PLL1_LOCK_PLLCNT_START     (0xb2 << 2)
+>> +#define CMN_PLL1_LOCK_PLLCNT_THR       (0xb3 << 2)
+>> +#define CMN_PLL1_INTDIV                        (0xb4 << 2)
+>> +#define CMN_PLL1_FRACDIV               (0xb5 << 2)
+>> +#define CMN_PLL1_HIGH_THR              (0xb6 << 2)
+>> +#define CMN_PLL1_DSM_DIAG              (0xb7 << 2)
+>> +#define CMN_PLL1_SS_CTRL1              (0xb8 << 2)
+>> +#define CMN_PLL1_SS_CTRL2              (0xb9 << 2)
+>> +#define CMN_RXCAL_OVRD                 (0xd1 << 2)
+>> +#define CMN_TXPUCAL_CTRL               (0xe0 << 2)
+>> +#define CMN_TXPUCAL_OVRD               (0xe1 << 2)
+>> +#define CMN_TXPDCAL_OVRD               (0xf1 << 2)
+>> +#define CMN_DIAG_PLL0_FBH_OVRD         (0x1c0 << 2)
+>> +#define CMN_DIAG_PLL0_FBL_OVRD         (0x1c1 << 2)
+>> +#define CMN_DIAG_PLL0_OVRD             (0x1c2 << 2)
+>> +#define CMN_DIAG_PLL0_V2I_TUNE         (0x1c5 << 2)
+>> +#define CMN_DIAG_PLL0_CP_TUNE          (0x1c6 << 2)
+>> +#define CMN_DIAG_PLL0_LF_PROG          (0x1c7 << 2)
+>> +#define CMN_DIAG_PLL1_FBH_OVRD         (0x1d0 << 2)
+>> +#define CMN_DIAG_PLL1_FBL_OVRD         (0x1d1 << 2)
+>> +#define CMN_DIAG_PLL1_OVRD             (0x1d2 << 2)
+>> +#define CMN_DIAG_PLL1_V2I_TUNE         (0x1d5 << 2)
+>> +#define CMN_DIAG_PLL1_CP_TUNE          (0x1d6 << 2)
+>> +#define CMN_DIAG_PLL1_LF_PROG          (0x1d7 << 2)
+>> +#define CMN_DIAG_PLL1_PTATIS_TUNE1     (0x1d8 << 2)
+>> +#define CMN_DIAG_PLL1_PTATIS_TUNE2     (0x1d9 << 2)
+>> +#define CMN_DIAG_PLL1_INCLK_CTRL       (0x1da << 2)
+>> +#define CMN_DIAG_HSCLK_SEL             (0x1e0 << 2)
+>> +
+>> +#define XCVR_PSM_RCTRL(n)              ((0x4001 | ((n) << 9)) << 2)
+>> +#define XCVR_PSM_CAL_TMR(n)            ((0x4002 | ((n) << 9)) << 2)
+>> +#define XCVR_PSM_A0IN_TMR(n)           ((0x4003 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_CAL_SCLR_MULT(n)       ((0x4047 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_CPOST_MULT_00(n)       ((0x404c | ((n) << 9)) << 2)
+>> +#define TX_TXCC_CPOST_MULT_01(n)       ((0x404d | ((n) << 9)) << 2)
+>> +#define TX_TXCC_CPOST_MULT_10(n)       ((0x404e | ((n) << 9)) << 2)
+>> +#define TX_TXCC_CPOST_MULT_11(n)       ((0x404f | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_000(n)      ((0x4050 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_001(n)      ((0x4051 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_010(n)      ((0x4052 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_011(n)      ((0x4053 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_100(n)      ((0x4054 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_101(n)      ((0x4055 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_110(n)      ((0x4056 | ((n) << 9)) << 2)
+>> +#define TX_TXCC_MGNFS_MULT_111(n)      ((0x4057 | ((n) << 9)) << 2)
+>> +#define XCVR_DIAG_PLLDRC_CTRL(n)       ((0x40e0 | ((n) << 9)) << 2)
+>> +#define XCVR_DIAG_BIDI_CTRL(n)         ((0x40e8 | ((n) << 9)) << 2)
+>> +#define XCVR_DIAG_LANE_FCM_EN_MGN(n)   ((0x40f2 | ((n) << 9)) << 2)
+>> +#define TX_PSC_A0(n)                   ((0x4100 | ((n) << 9)) << 2)
+>> +#define TX_PSC_A1(n)                   ((0x4101 | ((n) << 9)) << 2)
+>> +#define TX_PSC_A2(n)                   ((0x4102 | ((n) << 9)) << 2)
+>> +#define TX_PSC_A3(n)                   ((0x4103 | ((n) << 9)) << 2)
+>> +#define TX_RCVDET_CTRL(n)              ((0x4120 | ((n) << 9)) << 2)
+>> +#define TX_RCVDET_EN_TMR(n)            ((0x4122 | ((n) << 9)) << 2)
+>> +#define TX_RCVDET_ST_TMR(n)            ((0x4123 | ((n) << 9)) << 2)
+>> +#define TX_DIAG_TX_DRV(n)              ((0x41e1 | ((n) << 9)) << 2)
+>> +#define TX_DIAG_BGREF_PREDRV_DELAY     (0x41e7 << 2)
+>> +#define TX_ANA_CTRL_REG_1              (0x5020 << 2)
+>> +#define TX_ANA_CTRL_REG_2              (0x5021 << 2)
+>> +#define TXDA_COEFF_CALC_CTRL           (0x5022 << 2)
+>> +#define TX_DIG_CTRL_REG_2              (0x5024 << 2)
+>> +#define TXDA_CYA_AUXDA_CYA             (0x5025 << 2)
+>> +#define TX_ANA_CTRL_REG_3              (0x5026 << 2)
+>> +#define TX_ANA_CTRL_REG_4              (0x5027 << 2)
+>> +#define TX_ANA_CTRL_REG_5              (0x5029 << 2)
+>> +
+>> +#define RX_PSC_A0(n)                   ((0x8000 | ((n) << 9)) << 2)
+>> +#define RX_PSC_A1(n)                   ((0x8001 | ((n) << 9)) << 2)
+>> +#define RX_PSC_A2(n)                   ((0x8002 | ((n) << 9)) << 2)
+>> +#define RX_PSC_A3(n)                   ((0x8003 | ((n) << 9)) << 2)
+>> +#define RX_PSC_CAL(n)                  ((0x8006 | ((n) << 9)) << 2)
+>> +#define RX_PSC_RDY(n)                  ((0x8007 | ((n) << 9)) << 2)
+>> +#define RX_IQPI_ILL_CAL_OVRD           (0x8023 << 2)
+>> +#define RX_EPI_ILL_CAL_OVRD            (0x8033 << 2)
+>> +#define RX_SDCAL0_OVRD                 (0x8041 << 2)
+>> +#define RX_SDCAL1_OVRD                 (0x8049 << 2)
+>> +#define RX_SLC_INIT                    (0x806d << 2)
+>> +#define RX_SLC_RUN                     (0x806e << 2)
+>> +#define RX_CDRLF_CNFG2                 (0x8081 << 2)
+>> +#define RX_SIGDET_HL_FILT_TMR(n)       ((0x8090 | ((n) << 9)) << 2)
+>> +#define RX_SLC_IOP0_OVRD               (0x8101 << 2)
+>> +#define RX_SLC_IOP1_OVRD               (0x8105 << 2)
+>> +#define RX_SLC_QOP0_OVRD               (0x8109 << 2)
+>> +#define RX_SLC_QOP1_OVRD               (0x810d << 2)
+>> +#define RX_SLC_EOP0_OVRD               (0x8111 << 2)
+>> +#define RX_SLC_EOP1_OVRD               (0x8115 << 2)
+>> +#define RX_SLC_ION0_OVRD               (0x8119 << 2)
+>> +#define RX_SLC_ION1_OVRD               (0x811d << 2)
+>> +#define RX_SLC_QON0_OVRD               (0x8121 << 2)
+>> +#define RX_SLC_QON1_OVRD               (0x8125 << 2)
+>> +#define RX_SLC_EON0_OVRD               (0x8129 << 2)
+>> +#define RX_SLC_EON1_OVRD               (0x812d << 2)
+>> +#define RX_SLC_IEP0_OVRD               (0x8131 << 2)
+>> +#define RX_SLC_IEP1_OVRD               (0x8135 << 2)
+>> +#define RX_SLC_QEP0_OVRD               (0x8139 << 2)
+>> +#define RX_SLC_QEP1_OVRD               (0x813d << 2)
+>> +#define RX_SLC_EEP0_OVRD               (0x8141 << 2)
+>> +#define RX_SLC_EEP1_OVRD               (0x8145 << 2)
+>> +#define RX_SLC_IEN0_OVRD               (0x8149 << 2)
+>> +#define RX_SLC_IEN1_OVRD               (0x814d << 2)
+>> +#define RX_SLC_QEN0_OVRD               (0x8151 << 2)
+>> +#define RX_SLC_QEN1_OVRD               (0x8155 << 2)
+>> +#define RX_SLC_EEN0_OVRD               (0x8159 << 2)
+>> +#define RX_SLC_EEN1_OVRD               (0x815d << 2)
+>> +#define RX_DIAG_SIGDET_TUNE(n)         ((0x81dc | ((n) << 9)) << 2)
+>> +#define RX_DIAG_SC2C_DELAY             (0x81e1 << 2)
+>> +
+>> +#define PMA_LANE_CFG                   (0xc000 << 2)
+>> +#define PIPE_CMN_CTRL1                 (0xc001 << 2)
+>> +#define PIPE_CMN_CTRL2                 (0xc002 << 2)
+>> +#define PIPE_COM_LOCK_CFG1             (0xc003 << 2)
+>> +#define PIPE_COM_LOCK_CFG2             (0xc004 << 2)
+>> +#define PIPE_RCV_DET_INH               (0xc005 << 2)
+>> +#define DP_MODE_CTL                    (0xc008 << 2)
+>> +#define DP_CLK_CTL                     (0xc009 << 2)
+>> +#define STS                            (0xc00F << 2)
+>> +#define PHY_ISO_CMN_CTRL               (0xc010 << 2)
+>> +#define PHY_DP_TX_CTL                  (0xc408 << 2)
+>> +#define PMA_CMN_CTRL1                  (0xc800 << 2)
+>> +#define PHY_PMA_ISO_CMN_CTRL           (0xc810 << 2)
+>> +#define PHY_ISOLATION_CTRL             (0xc81f << 2)
+>> +#define PHY_PMA_ISO_XCVR_CTRL(n)       ((0xcc11 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_LINK_MODE(n)       ((0xcc12 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_PWRST_CTRL(n)      ((0xcc13 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_TX_DATA_LO(n)      ((0xcc14 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_TX_DATA_HI(n)      ((0xcc15 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_RX_DATA_LO(n)      ((0xcc16 | ((n) << 6)) << 2)
+>> +#define PHY_PMA_ISO_RX_DATA_HI(n)      ((0xcc17 | ((n) << 6)) << 2)
+>> +#define TX_BIST_CTRL(n)                        ((0x4140 | ((n) << 9)) << 2)
+>> +#define TX_BIST_UDDWR(n)               ((0x4141 | ((n) << 9)) << 2)
+>> +
+>> +/*
+>> + * Selects which PLL clock will be driven on the analog high speed
+>> + * clock 0: PLL 0 div 1
+>> + * clock 1: PLL 1 div 2
+>> + */
+>> +#define CLK_PLL_CONFIG                 0X30
+>> +#define CLK_PLL_MASK                   0x33
+>> +
+>> +#define CMN_READY                      BIT(0)
+>> +
+>> +#define DP_PLL_CLOCK_ENABLE            BIT(2)
+>> +#define DP_PLL_ENABLE                  BIT(0)
+>> +#define DP_PLL_DATA_RATE_RBR           ((2 << 12) | (4 << 8))
+>> +#define DP_PLL_DATA_RATE_HBR           ((2 << 12) | (4 << 8))
+>> +#define DP_PLL_DATA_RATE_HBR2          ((1 << 12) | (2 << 8))
+>> +
+>> +#define GRF_SOC_CON26                  0x6268
+>> +#define UPHY_DP_SEL                    BIT(3)
+>> +#define UPHY_DP_SEL_MASK               BIT(19)
+>> +#define DPTX_HPD_SEL                   (3 << 12)
+>> +#define DPTX_HPD_DEL                   (2 << 12)
+>> +#define DPTX_HPD_SEL_MASK              (3 << 28)
+>> +
+>> +#define DP_MODE_A0                     BIT(4)
+>> +#define DP_MODE_A2                     BIT(6)
+>> +#define DP_MODE_ENTER_A0               0xc101
+>> +#define DP_MODE_ENTER_A2               0xc104
+>> +
+>> +#define PHY_MODE_SET_TIMEOUT           100000
+>> +
+>> +#define PIN_ASSIGN_C_E                 0x51d9
+>> +#define PIN_ASSIGN_D_F                 0x5100
+>> +
+>> +#define MODE_DISCONNECT                        0
+>> +#define MODE_UFP_USB                   BIT(0)
+>> +#define MODE_DFP_USB                   BIT(1)
+> MODE_DFP_USB is now only set as default, or cleared, but never tested.
+> In other words, either something is wrong, or the bit is no longer
+> needed.
+Ah, yes, I missing a MODE_DFP_USB setting. modify in next version
+>
+>> +#define MODE_DFP_DP                    BIT(2)
+>> +
+>> +struct usb3phy_reg {
+>> +       u32 offset;
+>> +       u32 enable_bit;
+>> +       u32 write_enable;
+>> +};
+>> +
+>> +struct rockchip_usb3phy_port_cfg {
+>> +       struct usb3phy_reg typec_conn_dir;
+>> +       struct usb3phy_reg usb3tousb2_en;
+>> +       struct usb3phy_reg external_psm;
+>> +       struct usb3phy_reg pipe_status;
+>> +       struct usb3phy_reg uphy_dp_sel;
+>> +};
+>> +
+>> +struct rockchip_typec_phy {
+>> +       struct device *dev;
+>> +       void __iomem *base;
+>> +       struct extcon_dev *extcon;
+>> +       struct phy *phy[2];
+>> +       struct regmap *grf_regs;
+>> +       struct clk *clk_core;
+>> +       struct clk *clk_ref;
+>> +       struct reset_control *uphy_rst;
+>> +       struct reset_control *pipe_rst;
+>> +       struct reset_control *tcphy_rst;
+>> +       struct rockchip_usb3phy_port_cfg port_cfgs;
+>> +       /* mutex to protect access to individual PHYs */
+>> +       struct mutex lock;
+>> +
+>> +       bool flip;
+>> +       u8 mode;
+>> +};
+>> +
+>> +struct phy_reg {
+>> +       u16 value;
+>> +       u32 addr;
+>> +};
+>> +
+>> +struct phy_reg usb_pll_cfg[] = {
+>> +       { 0xf0,         CMN_PLL0_VCOCAL_INIT },
+>> +       { 0x18,         CMN_PLL0_VCOCAL_ITER },
+>> +       { 0xd0,         CMN_PLL0_INTDIV },
+>> +       { 0x4a4a,       CMN_PLL0_FRACDIV },
+>> +       { 0x34,         CMN_PLL0_HIGH_THR },
+>> +       { 0x1ee,        CMN_PLL0_SS_CTRL1 },
+>> +       { 0x7f03,       CMN_PLL0_SS_CTRL2 },
+>> +       { 0x20,         CMN_PLL0_DSM_DIAG },
+>> +       { 0,            CMN_DIAG_PLL0_OVRD },
+>> +       { 0,            CMN_DIAG_PLL0_FBH_OVRD },
+>> +       { 0,            CMN_DIAG_PLL0_FBL_OVRD },
+>> +       { 0x7,          CMN_DIAG_PLL0_V2I_TUNE },
+>> +       { 0x45,         CMN_DIAG_PLL0_CP_TUNE },
+>> +       { 0x8,          CMN_DIAG_PLL0_LF_PROG },
+>> +};
+>> +
+>> +struct phy_reg dp_pll_cfg[] = {
+>> +       { 0xf0,         CMN_PLL1_VCOCAL_INIT },
+>> +       { 0x18,         CMN_PLL1_VCOCAL_ITER },
+>> +       { 0x30b9,       CMN_PLL1_VCOCAL_START },
+>> +       { 0x21c,        CMN_PLL1_INTDIV },
+>> +       { 0,            CMN_PLL1_FRACDIV },
+>> +       { 0x5,          CMN_PLL1_HIGH_THR },
+>> +       { 0x35,         CMN_PLL1_SS_CTRL1 },
+>> +       { 0x7f1e,       CMN_PLL1_SS_CTRL2 },
+>> +       { 0x20,         CMN_PLL1_DSM_DIAG },
+>> +       { 0,            CMN_PLLSM1_USER_DEF_CTRL },
+>> +       { 0,            CMN_DIAG_PLL1_OVRD },
+>> +       { 0,            CMN_DIAG_PLL1_FBH_OVRD },
+>> +       { 0,            CMN_DIAG_PLL1_FBL_OVRD },
+>> +       { 0x6,          CMN_DIAG_PLL1_V2I_TUNE },
+>> +       { 0x45,         CMN_DIAG_PLL1_CP_TUNE },
+>> +       { 0x8,          CMN_DIAG_PLL1_LF_PROG },
+>> +       { 0x100,        CMN_DIAG_PLL1_PTATIS_TUNE1 },
+>> +       { 0x7,          CMN_DIAG_PLL1_PTATIS_TUNE2 },
+>> +       { 0x4,          CMN_DIAG_PLL1_INCLK_CTRL },
+>> +};
+>> +
+>> +static void tcphy_cfg_24m(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       u32 i, rdata;
+>> +
+>> +       /*
+>> +        * cmn_ref_clk_sel = 3, select the 24Mhz for clk parent
+>> +        * cmn_psm_clk_dig_div = 2, set the clk division to 2
+>> +        */
+>> +       writel(0x830, tcphy->base + PMA_CMN_CTRL1);
+>> +       for (i = 0; i < 4; i++) {
+>> +               /*
+>> +                * The following PHY configuration assumes a 24 MHz reference
+>> +                * clock.
+>> +                */
+>> +               writel(0x90, tcphy->base + XCVR_DIAG_LANE_FCM_EN_MGN(i));
+>> +               writel(0x960, tcphy->base + TX_RCVDET_EN_TMR(i));
+>> +               writel(0x30, tcphy->base + TX_RCVDET_ST_TMR(i));
+>> +       }
+>> +
+>> +       rdata = readl(tcphy->base + CMN_DIAG_HSCLK_SEL);
+>> +       rdata &= ~CLK_PLL_MASK;
+>> +       rdata |= CLK_PLL_CONFIG;
+>> +       writel(rdata, tcphy->base + CMN_DIAG_HSCLK_SEL);
+>> +}
+>> +
+>> +static void tcphy_cfg_usb_pll(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       u32 i;
+>> +
+>> +       /* load the configuration of PLL0 */
+>> +       for (i = 0; i < ARRAY_SIZE(usb_pll_cfg); i++)
+>> +               writel(usb_pll_cfg[i].value, tcphy->base + usb_pll_cfg[i].addr);
+>> +}
+>> +
+>> +static void tcphy_cfg_dp_pll(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       u32 i;
+>> +
+>> +       /* set the default mode to RBR */
+>> +       writel(DP_PLL_CLOCK_ENABLE | DP_PLL_ENABLE | DP_PLL_DATA_RATE_RBR,
+>> +              tcphy->base + DP_CLK_CTL);
+>> +
+>> +       /* load the configuration of PLL1 */
+>> +       for (i = 0; i < ARRAY_SIZE(dp_pll_cfg); i++)
+>> +               writel(dp_pll_cfg[i].value, tcphy->base + dp_pll_cfg[i].addr);
+>> +}
+>> +
+>> +static void tcphy_tx_usb_cfg_lane(struct rockchip_typec_phy *tcphy, u32 lane)
+>> +{
+>> +       writel(0x7799, tcphy->base + TX_PSC_A0(lane));
+>> +       writel(0x7798, tcphy->base + TX_PSC_A1(lane));
+>> +       writel(0x5098, tcphy->base + TX_PSC_A2(lane));
+>> +       writel(0x5098, tcphy->base + TX_PSC_A3(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_000(lane));
+>> +       writel(0xbf, tcphy->base + XCVR_DIAG_BIDI_CTRL(lane));
+>> +}
+>> +
+>> +static void tcphy_rx_usb_cfg_lane(struct rockchip_typec_phy *tcphy, u32 lane)
+>> +{
+>> +       writel(0xa6fd, tcphy->base + RX_PSC_A0(lane));
+>> +       writel(0xa6fd, tcphy->base + RX_PSC_A1(lane));
+>> +       writel(0xa410, tcphy->base + RX_PSC_A2(lane));
+>> +       writel(0x2410, tcphy->base + RX_PSC_A3(lane));
+>> +       writel(0x23ff, tcphy->base + RX_PSC_CAL(lane));
+>> +       writel(0x13, tcphy->base + RX_SIGDET_HL_FILT_TMR(lane));
+>> +       writel(0x1004, tcphy->base + RX_DIAG_SIGDET_TUNE(lane));
+>> +       writel(0x2010, tcphy->base + RX_PSC_RDY(lane));
+>> +       writel(0xfb, tcphy->base + XCVR_DIAG_BIDI_CTRL(lane));
+>> +}
+>> +
+>> +static void tcphy_dp_cfg_lane(struct rockchip_typec_phy *tcphy, u32 lane)
+>> +{
+>> +       u16 rdata;
+>> +
+>> +       writel(0xbefc, tcphy->base + XCVR_PSM_RCTRL(lane));
+>> +       writel(0x6799, tcphy->base + TX_PSC_A0(lane));
+>> +       writel(0x6798, tcphy->base + TX_PSC_A1(lane));
+>> +       writel(0x98, tcphy->base + TX_PSC_A2(lane));
+>> +       writel(0x98, tcphy->base + TX_PSC_A3(lane));
+>> +
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_000(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_001(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_010(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_011(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_100(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_101(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_110(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_MGNFS_MULT_111(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_CPOST_MULT_10(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_CPOST_MULT_01(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_CPOST_MULT_00(lane));
+>> +       writel(0, tcphy->base + TX_TXCC_CPOST_MULT_11(lane));
+>> +
+>> +       writel(0x128, tcphy->base + TX_TXCC_CAL_SCLR_MULT(lane));
+>> +       writel(0x400, tcphy->base + TX_DIAG_TX_DRV(lane));
+>> +
+>> +       rdata = readl(tcphy->base + XCVR_DIAG_PLLDRC_CTRL(lane));
+>> +       rdata = (rdata & 0x8fff) | 0x6000;
+>> +       writel(rdata, tcphy->base + XCVR_DIAG_PLLDRC_CTRL(lane));
+>> +}
+>> +
+>> +static inline int property_enable(struct rockchip_typec_phy *tcphy,
+>> +                                 const struct usb3phy_reg *reg, bool en)
+>> +{
+>> +       u32 mask = 1 << reg->write_enable;
+>> +       u32 val = en << reg->enable_bit;
+>> +
+>> +       return regmap_write(tcphy->grf_regs, reg->offset, val | mask);
+>> +}
+>> +
+>> +static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       u16 rdata, rdata2, val;
+>> +
+>> +       /* disable txda_cal_latch_en for rewrite the calibration values */
+>> +       rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+>> +       val = rdata & 0xdfff;
+>> +       writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +
+>> +       /*
+>> +        * read a resistor calibration code from CMN_TXPUCAL_CTRL[6:0] and
+>> +        * write it to TX_DIG_CTRL_REG_2[6:0], and delay 1ms to make sure it
+>> +        * works.
+>> +        */
+>> +       rdata = readl(tcphy->base + TX_DIG_CTRL_REG_2);
+>> +       rdata = rdata & 0xffc0;
+>> +
+>> +       rdata2 = readl(tcphy->base + CMN_TXPUCAL_CTRL);
+>> +       rdata2 = rdata2 & 0x3f;
+>> +
+>> +       val = rdata | rdata2;
+>> +       writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
+>> +       usleep_range(1000, 1050);
+>> +
+>> +       /*
+>> +        * Enable signal for latch that sample and holds calibration values.
+>> +        * Activate this signal for 1 clock cycle to sample new calibration
+>> +        * values.
+>> +        */
+>> +       rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+>> +       val = rdata | 0x2000;
+>> +       writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +       usleep_range(150, 200);
+>> +
+>> +       /* set TX Voltage Level and TX Deemphasis to 0 */
+>> +       writel(0, tcphy->base + PHY_DP_TX_CTL);
+>> +       /* re-enable decap */
+>> +       writel(0x100, tcphy->base + TX_ANA_CTRL_REG_2);
+>> +       writel(0x300, tcphy->base + TX_ANA_CTRL_REG_2);
+>> +       writel(0x2008, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +       writel(0x2018, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +
+>> +       writel(0, tcphy->base + TX_ANA_CTRL_REG_5);
+>> +
+>> +       /*
+>> +        * Programs txda_drv_ldo_prog[15:0], Sets driver LDO
+>> +        * voltage 16'h1001 for DP-AUX-TX and RX
+>> +        */
+>> +       writel(0x1001, tcphy->base + TX_ANA_CTRL_REG_4);
+>> +
+>> +       /* re-enables Bandgap reference for LDO */
+>> +       writel(0x2098, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +       writel(0x2198, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +
+>> +       /*
+>> +        * re-enables the transmitter pre-driver, driver data selection MUX,
+>> +        * and receiver detect circuits.
+>> +        */
+>> +       writel(0x301, tcphy->base + TX_ANA_CTRL_REG_2);
+>> +       writel(0x303, tcphy->base + TX_ANA_CTRL_REG_2);
+>> +
+>> +       /*
+>> +        * BIT 12: Controls auxda_polarity, which selects the polarity of the
+>> +        * xcvr:
+>> +        * 1, Reverses the polarity (If TYPEC, Pulls ups aux_p and pull
+>> +        * down aux_m)
+>> +        * 0, Normal polarity (if TYPE_C, pulls up aux_m and pulls down
+>> +        * aux_p)
+>> +        */
+>> +       val = 0xa078;
+>> +       if (!tcphy->flip)
+>> +               val |= BIT(12);
+>> +       writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
+>> +
+>> +       writel(0, tcphy->base + TX_ANA_CTRL_REG_3);
+>> +       writel(0, tcphy->base + TX_ANA_CTRL_REG_4);
+>> +       writel(0, tcphy->base + TX_ANA_CTRL_REG_5);
+>> +
+>> +       /*
+>> +        * Controls low_power_swing_en, set the voltage swing of the driver
+>> +        * to 400mv. The values below are peak to peak (differential) values.
+>> +        */
+>> +       writel(4, tcphy->base + TXDA_COEFF_CALC_CTRL);
+>> +       writel(0, tcphy->base + TXDA_CYA_AUXDA_CYA);
+>> +
+>> +       /* Controls tx_high_z_tm_en */
+>> +       val = readl(tcphy->base + TX_DIG_CTRL_REG_2);
+>> +       val |= BIT(15);
+>> +       writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
+>> +}
+>> +
+>> +static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+>> +{
+>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>> +       int ret, i;
+>> +       u32 val;
+>> +
+>> +       ret = clk_prepare_enable(tcphy->clk_core);
+>> +       if (ret) {
+>> +               dev_err(tcphy->dev, "Failed to prepare_enable core clock\n");
+>> +               return ret;
+>> +       }
+>> +
+>> +       ret = clk_prepare_enable(tcphy->clk_ref);
+>> +       if (ret) {
+>> +               dev_err(tcphy->dev, "Failed to prepare_enable ref clock\n");
+>> +               goto err_clk_core;
+>> +       }
+>> +
+>> +       reset_control_deassert(tcphy->tcphy_rst);
+>> +
+>> +       property_enable(tcphy, &cfg->typec_conn_dir, tcphy->flip);
+>> +
+>> +       tcphy_cfg_24m(tcphy);
+>> +
+>> +       if (mode == MODE_DFP_DP) {
+>> +               tcphy_cfg_dp_pll(tcphy);
+>> +               for (i = 0; i < 4; i++)
+>> +                       tcphy_dp_cfg_lane(tcphy, i);
+>> +
+>> +               writel(PIN_ASSIGN_C_E, tcphy->base + PMA_LANE_CFG);
+>> +       } else {
+>> +               tcphy_cfg_usb_pll(tcphy);
+>> +               tcphy_cfg_dp_pll(tcphy);
+>> +               if (tcphy->flip) {
+>> +                       tcphy_tx_usb_cfg_lane(tcphy, 3);
+>> +                       tcphy_rx_usb_cfg_lane(tcphy, 2);
+>> +                       tcphy_dp_cfg_lane(tcphy, 0);
+>> +                       tcphy_dp_cfg_lane(tcphy, 1);
+>> +               } else {
+>> +                       tcphy_tx_usb_cfg_lane(tcphy, 0);
+>> +                       tcphy_rx_usb_cfg_lane(tcphy, 1);
+>> +                       tcphy_dp_cfg_lane(tcphy, 2);
+>> +                       tcphy_dp_cfg_lane(tcphy, 3);
+>> +               }
+>> +
+>> +               writel(PIN_ASSIGN_D_F, tcphy->base + PMA_LANE_CFG);
+>> +       }
+>> +
+>> +       writel(DP_MODE_ENTER_A2, tcphy->base + DP_MODE_CTL);
+>> +
+>> +       reset_control_deassert(tcphy->uphy_rst);
+>> +
+>> +       ret = readx_poll_timeout(readl, tcphy->base + PMA_CMN_CTRL1,
+>> +                                val, val & CMN_READY, 10,
+>> +                                PHY_MODE_SET_TIMEOUT);
+>> +       if (ret < 0) {
+>> +               dev_err(tcphy->dev, "wait pma ready timeout\n");
+>> +               ret = -ETIMEDOUT;
+>> +               goto err_wait_pma;
+>> +       }
+>> +
+>> +       reset_control_deassert(tcphy->pipe_rst);
+>> +
+>> +       return 0;
+>> +
+>> +err_wait_pma:
+>> +       reset_control_assert(tcphy->uphy_rst);
+>> +       reset_control_assert(tcphy->tcphy_rst);
+>> +       clk_disable_unprepare(tcphy->clk_ref);
+>> +err_clk_core:
+>> +       clk_disable_unprepare(tcphy->clk_core);
+>> +       return ret;
+>> +}
+>> +
+>> +static void tcphy_phy_deinit(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       reset_control_assert(tcphy->tcphy_rst);
+>> +       reset_control_assert(tcphy->uphy_rst);
+>> +       reset_control_assert(tcphy->pipe_rst);
+>> +       clk_disable_unprepare(tcphy->clk_core);
+>> +       clk_disable_unprepare(tcphy->clk_ref);
+>> +}
+>> +
+>> +static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       struct extcon_dev *edev = tcphy->extcon;
+>> +       union extcon_property_value property;
+>> +       unsigned int id;
+>> +       bool dfp, ufp, dp;
+>> +       u8 mode;
+>> +       int ret;
+>> +
+>> +       ufp = extcon_get_state(edev, EXTCON_USB);
+>> +       dfp = extcon_get_state(edev, EXTCON_USB_HOST);
+>> +       dp = extcon_get_state(edev, EXTCON_DISP_DP);
+>> +
+>> +       mode = MODE_DFP_USB;
+>> +       id = EXTCON_USB_HOST;
+>> +
+>> +       if (ufp) {
+>> +               mode = MODE_UFP_USB;
+>> +               id = EXTCON_USB;
+>> +       } else if (dfp && dp) {
+>> +               mode = MODE_DFP_USB | MODE_DFP_DP;
+>> +       } else if (dp) {
+>> +               mode = MODE_DFP_DP;
+>> +               id = EXTCON_DISP_DP;
+>> +       }
+>> +
+>> +       ret = extcon_get_property(edev, id, EXTCON_PROP_USB_TYPEC_POLARITY,
+>> +                                 &property);
+>> +       if (ret) {
+>> +               dev_err(tcphy->dev, "get property failed\n");
+>> +               return ret;
+>> +       }
+>> +
+>> +       tcphy->flip = property.intval ? 1 : 0;
+>> +
+> tcphy->flip is set outside any locking. Is that a potential problem ?
+I think the whole tcphy_get_mode can be under active lock
+>
+>> +       return mode;
+>> +}
+>> +
+>> +static int rockchip_usb3_phy_power_on(struct phy *phy)
+>> +{
+>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>> +       const struct usb3phy_reg *reg = &cfg->pipe_status;
+>> +       int timeout;
+>> +       u32 val;
+>> +       u8 new_mode;
+>> +
+>> +       new_mode = tcphy_get_mode(tcphy);
+>> +       if (new_mode < 0)
+>> +               return new_mode;
+>> +
+>> +       if (tcphy->mode == new_mode)
+>> +               return 0;
+> This check should probably be done with the lock active.
+done
+>
+>> +
+>> +       mutex_lock(&tcphy->lock);
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               tcphy_phy_init(tcphy, new_mode);
+>> +
+>> +       /* wait TCPHY for pipe ready */
+>> +       for (timeout = 0; timeout < 100; timeout++) {
+>> +               regmap_read(tcphy->grf_regs, reg->offset, &val);
+>> +               if (!(val & BIT(reg->enable_bit))) {
+>> +                       tcphy->mode |= MODE_UFP_USB;
+>> +                       mutex_unlock(&tcphy->lock);
+>> +                       return 0;
+>> +               }
+>> +               usleep_range(10, 20);
+>> +       }
+>> +
+>> +       mutex_unlock(&tcphy->lock);
+>> +       return -ETIMEDOUT;
+>> +}
+>> +
+>> +static int rockchip_usb3_phy_power_off(struct phy *phy)
+>> +{
+>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+>> +
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               return 0;
+>> +
+> Check inside mutex ?
+done
+>
+>> +       mutex_lock(&tcphy->lock);
+>> +
+>> +       tcphy->mode &= ~(MODE_UFP_USB | MODE_DFP_USB);
+> MODE_DFP_USB is never set in tcphy->mode.
+it should be set in power_on
+>
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               tcphy_phy_deinit(tcphy);
+>> +
+>> +       mutex_unlock(&tcphy->lock);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct phy_ops rockchip_usb3_phy_ops = {
+>> +       .power_on       = rockchip_usb3_phy_power_on,
+>> +       .power_off      = rockchip_usb3_phy_power_off,
+>> +       .owner          = THIS_MODULE,
+>> +};
+>> +
+>> +static int rockchip_dp_phy_power_on(struct phy *phy)
+>> +{
+>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>> +       u32 val;
+>> +       u8 new_mode;
+>> +       int ret;
+>> +
+>> +       new_mode = tcphy_get_mode(tcphy);
+>> +       if (new_mode < 0)
+>> +               return new_mode;
+>> +
+>> +       if (tcphy->mode == new_mode)
+>> +               return 0;
+>> +
+> Test inside mutex?
+done
+>
+>> +       mutex_lock(&tcphy->lock);
+>> +
+>> +       /*
+>> +        * If the PHY has been power on, but the mode is not DP only mode,
+>> +        * re-init the PHY for setting all of 4 lanes to DP.
+>> +        */
+>> +       if (new_mode == MODE_DFP_DP && tcphy->mode != MODE_DISCONNECT) {
+>> +               tcphy_phy_deinit(tcphy);
+>> +               tcphy_phy_init(tcphy, new_mode);
+>> +       } else if (tcphy->mode == MODE_DISCONNECT) {
+>> +               tcphy_phy_init(tcphy, new_mode);
+>> +       }
+>> +
+>> +       property_enable(tcphy, &cfg->uphy_dp_sel, 1);
+>> +
+>> +       ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
+>> +                                val, val & DP_MODE_A2, 1000,
+>> +                                PHY_MODE_SET_TIMEOUT);
+>> +       if (ret < 0) {
+>> +               dev_err(tcphy->dev, "failed to wait TCPHY enter A2\n");
+>> +               goto power_on_finish;
+>> +       }
+>> +
+>> +       tcphy_dp_aux_calibration(tcphy);
+>> +
+>> +       writel(DP_MODE_ENTER_A0, tcphy->base + DP_MODE_CTL);
+>> +
+>> +       ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
+>> +                                val, val & DP_MODE_A0, 1000,
+>> +                                PHY_MODE_SET_TIMEOUT);
+>> +       if (ret < 0) {
+>> +               writel(DP_MODE_ENTER_A2, tcphy->base + DP_MODE_CTL);
+>> +               dev_err(tcphy->dev, "failed to wait TCPHY enter A0\n");
+>> +               goto power_on_finish;
+>> +       }
+>> +
+>> +       regmap_write(tcphy->grf_regs, GRF_SOC_CON26,
+>> +                    DPTX_HPD_SEL_MASK | DPTX_HPD_SEL);
+>> +
+>> +       tcphy->mode |= MODE_DFP_DP;
+>> +
+>> +power_on_finish:
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               tcphy_phy_deinit(tcphy);
+>> +
+>> +       mutex_unlock(&tcphy->lock);
+>> +       return ret;
+>> +}
+>> +
+>> +static int rockchip_dp_phy_power_off(struct phy *phy)
+>> +{
+>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+>> +
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               return 0;
+>> +
+> Test inside mutex ?
+done
+>
+>> +       mutex_lock(&tcphy->lock);
+>> +
+>> +       tcphy->mode &= ~MODE_DFP_DP;
+>> +       regmap_write(tcphy->grf_regs, GRF_SOC_CON26,
+>> +                    DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
+>> +
+>> +       writel(DP_MODE_ENTER_A2, tcphy->base + DP_MODE_CTL);
+>> +
+>> +       if (tcphy->mode == MODE_DISCONNECT)
+>> +               tcphy_phy_deinit(tcphy);
+>> +
+>> +       mutex_unlock(&tcphy->lock);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct phy_ops rockchip_dp_phy_ops = {
+>> +       .power_on       = rockchip_dp_phy_power_on,
+>> +       .power_off      = rockchip_dp_phy_power_off,
+>> +       .owner          = THIS_MODULE,
+>> +};
+>> +
+>> +static int tcphy_get_param(struct device *dev,
+>> +                          struct usb3phy_reg *reg,
+>> +                          const char *name)
+>> +{
+>> +       u32 buffer[3];
+>> +       int ret;
+>> +
+>> +       ret = of_property_read_u32_array(dev->of_node, name, buffer, 3);
+>> +       if (ret) {
+>> +               dev_err(dev, "Can not parse %s\n", name);
+>> +               return ret;
+>> +       }
+>> +
+>> +       reg->offset = buffer[0];
+>> +       reg->enable_bit = buffer[1];
+>> +       reg->write_enable = buffer[2];
+>> +       return 0;
+>> +}
+>> +
+>> +static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
+>> +                         struct device *dev)
+>> +{
+>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>> +       int ret;
+>> +
+>> +       ret = tcphy_get_param(dev, &cfg->typec_conn_dir,
+>> +                             "rockchip,typec-conn-dir");
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       ret = tcphy_get_param(dev, &cfg->usb3tousb2_en,
+>> +                             "rockchip,usb3tousb2-en");
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       ret = tcphy_get_param(dev, &cfg->external_psm,
+>> +                             "rockchip,external-psm");
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       ret = tcphy_get_param(dev, &cfg->pipe_status,
+>> +                             "rockchip,pipe-status");
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       ret = tcphy_get_param(dev, &cfg->uphy_dp_sel,
+>> +                             "rockchip,uphy-dp-sel");
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
+>> +                                                         "rockchip,grf");
+>> +       if (IS_ERR(tcphy->grf_regs)) {
+>> +               dev_err(dev, "could not find grf dt node\n");
+>> +               return PTR_ERR(tcphy->grf_regs);
+>> +       }
+>> +
+>> +       tcphy->clk_core = devm_clk_get(dev, "tcpdcore");
+>> +       if (IS_ERR(tcphy->clk_core)) {
+>> +               dev_err(dev, "could not get uphy core clock\n");
+>> +               return PTR_ERR(tcphy->clk_core);
+>> +       }
+>> +
+>> +       tcphy->clk_ref = devm_clk_get(dev, "tcpdphy-ref");
+>> +       if (IS_ERR(tcphy->clk_ref)) {
+>> +               dev_err(dev, "could not get uphy ref clock\n");
+>> +               return PTR_ERR(tcphy->clk_ref);
+>> +       }
+>> +
+>> +       tcphy->uphy_rst = devm_reset_control_get(dev, "uphy");
+>> +       if (IS_ERR(tcphy->uphy_rst)) {
+>> +               dev_err(dev, "no uphy_rst reset control found\n");
+>> +               return PTR_ERR(tcphy->uphy_rst);
+>> +       }
+>> +
+>> +       tcphy->pipe_rst = devm_reset_control_get(dev, "uphy-pipe");
+>> +       if (IS_ERR(tcphy->pipe_rst)) {
+>> +               dev_err(dev, "no pipe_rst reset control found\n");
+>> +               return PTR_ERR(tcphy->pipe_rst);
+>> +       }
+>> +
+>> +       tcphy->tcphy_rst = devm_reset_control_get(dev, "uphy-tcphy");
+>> +       if (IS_ERR(tcphy->tcphy_rst)) {
+>> +               dev_err(dev, "no tcphy_rst reset control found\n");
+>> +               return PTR_ERR(tcphy->tcphy_rst);
+>> +       }
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static void typec_phy_pre_init(struct rockchip_typec_phy *tcphy)
+>> +{
+>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>> +
+>> +       reset_control_assert(tcphy->tcphy_rst);
+>> +       reset_control_assert(tcphy->uphy_rst);
+>> +       reset_control_assert(tcphy->pipe_rst);
+>> +
+>> +       /* select external psm clock */
+>> +       property_enable(tcphy, &cfg->external_psm, 1);
+>> +       property_enable(tcphy, &cfg->usb3tousb2_en, 0);
+>> +
+>> +       tcphy->mode = MODE_DISCONNECT;
+>> +}
+>> +
+>> +static struct phy *tcphy_phy_xlate(struct device *dev,
+>> +                                  struct of_phandle_args *args)
+>> +{
+>> +       struct rockchip_typec_phy *tcphy = dev_get_drvdata(dev);
+>> +       int i;
+>> +
+>> +       if (WARN_ON(args->args[0] >= 2))
+>> +               return ERR_PTR(-ENODEV);
+>> +
+>> +       for (i = 0; i < 2; i++) {
+>> +               if (i == args->args[0])
+>> +                       return tcphy->phy[i];
+>> +       }
+>> +
+>> +       return ERR_PTR(-ENODEV);
+>> +}
+>> +
+>> +static int rockchip_typec_phy_probe(struct platform_device *pdev)
+>> +{
+>> +       struct device *dev = &pdev->dev;
+>> +       struct rockchip_typec_phy *tcphy;
+>> +       struct phy_provider *phy_provider;
+>> +       struct resource *res;
+>> +       int ret;
+>> +
+>> +       tcphy = devm_kzalloc(dev, sizeof(*tcphy), GFP_KERNEL);
+>> +       if (!tcphy)
+>> +               return -ENOMEM;
+>> +
+>> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> +       tcphy->base = devm_ioremap_resource(dev, res);
+>> +       if (IS_ERR(tcphy->base))
+>> +               return PTR_ERR(tcphy->base);
+>> +
+>> +       ret = tcphy_parse_dt(tcphy, dev);
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       tcphy->dev = dev;
+>> +       platform_set_drvdata(pdev, tcphy);
+>> +       mutex_init(&tcphy->lock);
+>> +
+>> +       typec_phy_pre_init(tcphy);
+>> +
+>> +       tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
+>> +       if (IS_ERR(tcphy->extcon)) {
+>> +               if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+>> +                       dev_err(dev, "Invalid or missing extcon\n");
+>> +               return PTR_ERR(tcphy->extcon);
+>> +       }
+>> +
+>> +       tcphy->phy[0] = devm_phy_create(dev, NULL, &rockchip_dp_phy_ops);
+>> +       if (IS_ERR(tcphy->phy[0])) {
+>> +               dev_err(dev, "failed to create DP phy\n");
+>> +               return PTR_ERR(tcphy->phy[0]);
+>> +       }
+>> +
+>> +       tcphy->phy[1] = devm_phy_create(dev, NULL, &rockchip_usb3_phy_ops);
+>> +       if (IS_ERR(tcphy->phy[1])) {
+>> +               dev_err(dev, "failed to create USB3 phy\n");
+>> +               return PTR_ERR(tcphy->phy[1]);
+>> +       }
+>> +
+>> +       phy_set_drvdata(tcphy->phy[0], tcphy);
+>> +       phy_set_drvdata(tcphy->phy[1], tcphy);
+>> +
+>> +       phy_provider = devm_of_phy_provider_register(dev, tcphy_phy_xlate);
+>> +       if (IS_ERR(phy_provider)) {
+>> +               dev_err(dev, "Failed to register phy provider\n");
+>> +               return PTR_ERR(phy_provider);
+>> +       }
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct of_device_id rockchip_typec_phy_dt_ids[] = {
+>> +       { .compatible = "rockchip,rk3399-typec-phy" },
+>> +       {}
+>> +};
+>> +
+>> +MODULE_DEVICE_TABLE(of, rockchip_typec_phy_dt_ids);
+>> +
+>> +static struct platform_driver rockchip_typec_phy_driver = {
+>> +       .probe          = rockchip_typec_phy_probe,
+>> +       .driver         = {
+>> +               .name   = "rockchip-typec-phy",
+>> +               .of_match_table = rockchip_typec_phy_dt_ids,
+>> +       },
+>> +};
+>> +
+>> +module_platform_driver(rockchip_typec_phy_driver);
+>> +
+>> +MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
+>> +MODULE_AUTHOR("Kever Yang <kever.yang@rock-chips.com>");
+>> +MODULE_DESCRIPTION("Rockchip USB TYPE-C PHY driver");
+>> +MODULE_LICENSE("GPL v2");
+>> --
+>> 2.6.3
+>>
+>
+>
