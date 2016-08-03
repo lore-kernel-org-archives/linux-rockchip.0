@@ -1,140 +1,465 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] mmc: core: fall back host->f_init if failing to
- init mmc card after resume
-Date: Wed, 3 Aug 2016 15:44:14 +0800
-Message-ID: <599ba6fb-69c8-9e33-13d9-65e3eab0aeb4@rock-chips.com>
-References: <1468979860-28712-1-git-send-email-shawn.lin@rock-chips.com>
- <1468979860-28712-2-git-send-email-shawn.lin@rock-chips.com>
- <CGME20160802093847epcas1p2c8cb3881913a608122bb77dd9d973e63@epcas1p2.samsung.com>
- <98cd6af4-3296-9020-aeae-802f797f0631@rock-chips.com>
- <57A07A44.9000400@samsung.com>
- <73b58bd5-a5a2-a436-58a9-30fa8db3225f@rock-chips.com>
- <1e664e27-09c9-dc14-b978-2483c1fa1da4@samsung.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v7] ASoC: rockchip: Add machine driver for
+	RK3399 GRU Boards
+Date: Wed,  3 Aug 2016 16:10:00 +0800
+Message-ID: <1470211800-16717-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1e664e27-09c9-dc14-b978-2483c1fa1da4-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Xing Zheng <zhengxing@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, smbarber@google.com, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, heiko@sntech.de
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmFlaG9vbiwKCtTaIDIwMTYvOC8zIDE0OjU0LCBKYWVob29uIENodW5nINC0tcA6Cj4gSGkg
-U2hhd24sCj4KPiBPbiAwOC8wMy8yMDE2IDEwOjM1IEFNLCBTaGF3biBMaW4gd3JvdGU6Cj4+IEhp
-IEphZWhvb24sCj4+Cj4+INTaIDIwMTYvOC8yIDE4OjQ3LCBKYWVob29uIENodW5nINC0tcA6Cj4+
-PiBIaSBTaGF3biwKPj4+Cj4+PiBPbiAwOC8wMi8yMDE2IDA2OjA3IFBNLCBTaGF3biBMaW4gd3Jv
-dGU6Cj4+Pj4gSGkgVWxmLAo+Pj4+Cj4+Pj4g1NogMjAxNi83LzIwIDk6NTcsIFNoYXduIExpbiDQ
-tLXAOgo+Pj4+PiBXZSBvYnNlcnZlZCB0aGUgZmFpbHVyZSBvZiBpbml0aWFsaXppbmcgY2FyZCBh
-ZnRlciByZXN1bWUKPj4+Pj4gYWNjaWRlbnRhbGx5LiBJdCdzIGhhcmQgdG8gcmVwcm9kdWNlIGJ1
-dCB3ZSBkaWQgZ2V0IHJlcG9ydCBmcm9tCj4+Pj4+IHRoZSBzdXNwZW5kL3Jlc3VtZSB0ZXN0IG9m
-IG91ciBSSzMzOTkgbXAgdGVzdCBmYXJtIC4gVW5mb3J0dW5hdGVseSwKPj4+Pj4gd2Ugc3RpbGwg
-ZmFpbCB0byBmaWd1cmUgb3V0IHdoYXQgd2FzIGdvaW5nIHdyb25nIGF0IHRoYXQgdGltZS4KPj4+
-Pj4gQWxzbyB3ZSBjYW4ndCBhY2hpZXZlIGl0IGJ5IHJldHJ5aW5nIHRoZSBob3N0LT5mX2luaXQg
-d2l0aG91dCBmYWxsaW5nCj4+Pj4+IGJhY2sgaXQuIEJ1dCB0aGlzIHBhdGNoIHdpbGwgc29sdmUg
-dGhlIHByb2JsZW0gYXMgd2UgY291bGQgYWRkIHNvbWUgbG9nCj4+Pj4+IHRoZXJlIGFuZCBzZWUg
-dGhhdCB3ZSByZXN1bWUgdGhlIG1tYyBjYXJkIHN1Y2Nlc3NmdWxseSBhZnRlciBmYWxsaW5nCj4+
-Pj4+IGJhY2sgdGhlIGhvc3QtPmZfaW5pdC4gVGhlcmUgaXMgbm8gb2J2aW91cyBzaWRlIGVmZmVj
-dCBmb3VuZCwgc28gaXQgc2VlbXMKPj4+Pj4gdGhpcyBwYXRjaCB3aWxsIGltcHJvdmUgdGhlIHN0
-YWJpbGl0eS4KPj4+Pj4KPj4+Pj4gWyAgIDkzLjQwNTA4NV0gbW1jMTogdW5leHBlY3RlZCBzdGF0
-dXMgMHg4MDA5MDAgYWZ0ZXIgc3dpdGNoCj4+Pj4+IFsgICA5My40MDg0NzRdIG1tYzE6IHN3aXRj
-aCB0byBidXMgd2lkdGggMSBmYWlsZWQKPj4+Pj4gWyAgIDkzLjQwODQ4Ml0gbW1jMTogbW1jX3Nl
-bGVjdF9oczIwMCBmYWlsZWQsIGVycm9yIC0xMTAKPj4+Pj4gWyAgIDkzLjQwODQ5Ml0gbW1jMTog
-ZXJyb3IgLTExMCBkdXJpbmcgcmVzdW1lIChjYXJkIHdhcyByZW1vdmVkPykKPj4+Pj4gWyAgIDkz
-LjQwODcwNV0gUE06IHJlc3VtZSBvZiBkZXZpY2VzIGNvbXBsZXRlIGFmdGVyIDIxMy40NTMgbXNl
-Y3MKPj4+Pj4KPj4+Cj4+PiBTdGF0dXMgMHg4MDA5MDAgaXMgQ09NX0NSQ19FUlJPUi4uaXQgc2Vl
-bXMgdGhhdCBDUkMgY2hlY2sgZmFpbHMuCj4+PiBCdXQgaSBkb24ndCBrbm93IHdoYXQgaXMgcmVs
-YXRlZCB3aXRoICJmYWxsIGJhY2sgaG9zdC0+Zl9pbml0Ii4KPj4KPj4gWXVwLCBhY3R1YWxseSBp
-dCBhbHNvIGxvb2tzIHN0cmFuZ2UgdG8gbWUgdGhhdCB3ZSBzaG91bGQgZG93bmdyYWRlCj4+IHRo
-ZSBob3N0LT5mX2luaXQgd2hlbiByZXN1bWluZy4gQ1JDIGVycm9yIHNob3VsZG4ndCBvY2NvdXIg
-YXMgNDAwSwo+PiBjb3VsZCB3b3JrIGF0IGJvb3RpbmcgdGltZSwgYWxzbyB3ZSBjb3VsZCBzZWUg
-dGhlIEhTNDAwIHdvcmsgbm9ybWFsbHkKPj4gbGF0ZXIgd2hpY2ggbWFrZSBtZSBiZWxpZXZlIHRo
-YXQgaXQgc2hvdWxkbid0IGJlbG9uZyB0byBzaWduYWwgcHJvYmxlbSwKPj4gYnV0IHdlIG5lZWQg
-dG8gZmlndXJlIG91dCB3aHkgdGhlIGNvbnRyb2xsZXIgdGhpbmsgaXQgc2hvdWxkIGJlIGEgQ1JD
-Cj4+IGVycm9yLgo+Pgo+PiBUaGUgYmVzdCB3YXkgaXMgdG8gbWFrZSBpdCBlYXN5IHRvIGJlIHJl
-cHJvZHVjZWQgdGhhdCB3ZSBjb3VsZCBjaGVjayB0aGUKPj4gcGNiIHNpZ25hbCB0aGVyZSwgYW5k
-IEkgc3RpbGwgdHJ5IGl0IHRoZW4uIE9yIHRoZXJlIGlzIGEgSFcvQ2hpcAo+PiBjb25kaXRpb24g
-dGhhdCBtYWtlIG15IGVtbWMgUEhZIHdvcmsgaW1wcm9wZXJseSBhY2NpZGVudGFsbHkuIEFueXdh
-eQo+PiBtb3JlIHByb29mIHNob3VsZCBiZSBwcm92aWRlZCBiZWZvcmUgSSdhbSBhYmxlIHRvIGxh
-bmQgcGF0Y2ggdG8KPj4gZml4L2F2b2lkIHRoZSByb290IGNhdXNlLiBJJ20gZG9pbmcgaXQuLgo+
-Pgo+Pj4KPj4+IEkgZG9uJ3QgaGF2ZSBhIGtub3dsZWRnZSBvZiByb2NrY2hpcC4uLgo+Pj4gYnV0
-IGluIG15IGV4cGVyaWVuY2UsIHRoZXJlIGFyZSBzb21lIGNhc2VzLCBub3QgbW1jIGNvcmUgcHJv
-YmxlbS4uCj4+Pgo+Pj4gMS4gRXh5bm9zIGlzIHVzaW5nIHRoZSBncGlvIGFzIGNsay9jbWQvZGF0
-YSBsaW5lLi5hbmQgZ3BpbyBoYXMgdGhlIGRyaXZlciBzdHJlbmd0aCB2YWx1ZS4KPj4+IElmIGRy
-aXZlciBzdHJlbmd0aCBpcyBjaGFuZ2VkIGFmdGVyIHJlc3VtaW5nLCBpdCdzIHBvc3NpYmxlIHRv
-IG9jY3VyIHRoZSBlcnJvci4KPj4KPj4gWWVzLCB0aGUgcmVsYXRlZCBzZXR0aW5ncyBvciBjb25m
-aWd1cmF0aW9uIGZvciBQSFkgZGlkbid0IGNoYW5nZS4KPj4KPj4+Cj4+PiAyLiBBbmQgZ2xpdGNo
-IGZvciBJL08gbGluZS4udGhpcyBsb29wIGhhcyB0aGUgZGVsYXkuLkp1c3QgZGVsYXk/Cj4+Cj4+
-IFdlIGhhdmUgcmV0cnlpZWQgNDAwSyBpZiBmYWlsaW5nIHRvIHJlc3VtZSBhbmQgd2lsbCBub3Qg
-YnJlYWsgb3V0IGlmCj4+IHN0aWxsIGZpbmRpbmcgZmFpbHVyZSwgYnV0IGl0IGRvZXNuJ3QgaGVs
-cC4KPj4KPj4KPj4+Cj4+PiBTbyB5b3UgY2FuIGNoZWNrIHRoZSBvdGhlciBwcm9ibGVtLi4uIDop
-Cj4+Pgo+Pj4gQXQgQm9vdGluZyB0aW1lLCBmX2luaXQgY2FuIHVzZSA0MDBLLi5idXQgYWZ0ZXIg
-cmVzdW1pbmcuLmZfaW5pdCBuZWVkIHRvIHVzZSAxMDBLLi5obW0uLnN0cmFuZ2UuLgo+Pj4KPj4K
-Pj4gQWdyZWVkLi4KPj4KPj4gU28gbGV0J3MgY29tZSBiYWNrIHRvIHRoZSB0b3BpYyAtLSBTaG91
-bGQgd2Ugc3VwcG9ydCBkb3duZ3JhZGluZyBmX2luaXQKPj4gYWZ0ZXIgZmFpbGluZyB0byByZXN1
-bWUganVzdCBhcyB3aGF0IHdlIGRvIGF0IHRoZSBib290aW5nIHRpbWU/IEl0J3MKPj4gcG9zc2li
-bGUgdGhhdCB0aGUgZW52aXJvbWVudCBjaGFuZ2VzIGxpa2Uobm9pc2UsIHRlbXBlcmF0dXJlLCBz
-dGF0aWMpCj4+IHdpbGwgbGVhZCB0byB0aGUgZmFpbHVyZSBhZnRlciByZXN1bWluZy4gU2hvdWxk
-bid0IHRoZSBtZWNoYW5pc20gYmUgbW9yZQo+PiByb2J1c3QgdG8gZGVhbCB3aXRoIHRoZXNlIHVu
-ZXhwZWN0ZWQgY2FzZXM/ICA6KQo+Cj4gSSB0aGluayB5b3UgYWxzbyBmZWx0ICB0aGF0IHRoaXMg
-cGF0Y2ggaXMgd29ya2Fyb3VuZC4KCk1vcmUgb3IgbGVzcyA6KQoKPiBCZWNhdXNlIGl0J3Mgbm90
-IGNsZWFybHkgd2h5IG9jY3VycmVkIHRoZSBDUkMgZXJyb3IgYW5kIHJlc3VtaW5nIGZhaWxzLgoK
-eXVwLCB0aGF0IHN0b3AgbWUgZnJvbSBsYW5kaW5nICJyZWFsIiBwYXRjaCB0byBmaXggaXQuIEJ1
-dCB0aGluayB0d2ljZSwKdGhlcmUgYXJlIG1hbnkgdW5leHBlY3RlZCBjYXNlcyBjYW4gbWFrZSB0
-aGUgcmVzdW1yZSBmYWlsZWQuIFdlIG1heSBzZWUKZGlmZmVyZW50IGZfaW5pdCB3aGVuIGRvaW5n
-IHJlYm9vdCB0ZXN0IGZvciBhIGNlcnRhaW4KYm9hcmQgYXQgYm9vdGluZyB0aW1lKGFjdHVhbGx5
-IEkgZGlkIHNlZSBpdCBtYW55IG1hbnkgdGltZXMpLiBUaGF0IGlzCndoeSBJJ20gc3VyZSBpdCdz
-IHRoZSBzYW1lIGZvciByZXN1bWUgY2FzZS4KCj4gKENSQyBlcnJvciBzaG91bGQgYmUgZGlzYXBw
-ZWFyZWQgd2hlbiBjbG9jayBpcyB1c2VkIHRvIHRoZSBsb3dlciB2YWx1ZS4uKQo+Cj4gQW5kIEkn
-bSBub3Qgc3VyZSB0aGF0IDEwMEsgaXMgZW5vdWdoLi5JZiAxMDBrIGFsc28gZGlkbid0IHdvcmsg
-ZmluZSBhdCByZXN1bWluZyB0aW1lLCBob3cgd2UgZG8/Cj4gVGhpcyBpc3N1ZSBpcyBpbnRlcmVz
-dGluZy4uYmVjYXVzZSBpdCdzIHBvc3NpYmxlIHRvIG9jY3VyIGluIHJlYWwgY2FzZS4uLkkgaGF2
-ZSBhbHNvIHNlZW4gdGhlIHNpbWlsYXIgaXNzdWUuCj4gQnV0IG15IHNvbHV0aW9uIGFsc28gd2Fz
-IHdvcmthcm91bmQuICA6KAoKTmljZSB0byBoZWFyIHlvdSBoYXZlIHN1ZmZlcmVkIGZyb20gdGhl
-IHNpbWlsYXIgaXNzdWUsIG5vdCBqdXN0IG1lLgpDb3VsZCB5b3Ugc2hhcmUgeW91ciBXUiBzb2x1
-dGlvbj8gOikKCj4KPiBJZiBpdCdzIG1vcmUgY2xlYXJseSB0aGFuIG5vdywgaSBjYW4gYWdyZWUg
-eW91ciBwYXRjaC4uYnV0IG5vdy4uaSBkb24ndCBrbm93IHdoYXQgaXMgY29ycmVjdC4KPiBJIHdp
-bGwgbGlzdGVuIFVsZiBhbmQgb3RoZXIgZ3V5cydzIG9waW5pb25zLi5hbHNvIHlvdXJzLgo+Cj4g
-QmVzdCBSZWdhcmRzLAo+IEphZWhvb24gQ2h1bmcKPgo+Pgo+Pgo+Pj4gQmVzdCBSZWdhcmRzLAo+
-Pj4gSmFlaG9vbiBDaHVuZwo+Pj4KPj4+Pgo+Pj4+IEFueSBjb21tZW50cyBmb3IgdGhpcyBwYXRj
-aD8gOikKPj4+Pgo+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2Nr
-LWNoaXBzLmNvbT4KPj4+Pj4KPj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgaW4gdjI6Cj4+
-Pj4+IC0gcmVtb3ZlIG1tY19wb3dlcl9vZmYKPj4+Pj4gLSB0YWtlIGZfbWluIGludG8gY29uc2lk
-ZXJhdGlvbgo+Pj4+Pgo+Pj4+PiAgZHJpdmVycy9tbWMvY29yZS9tbWMuYyB8IDE5ICsrKysrKysr
-KysrKysrKysrLS0KPj4+Pj4gIDEgZmlsZSBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAyIGRl
-bGV0aW9ucygtKQo+Pj4+Pgo+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvY29yZS9tbWMu
-YyBiL2RyaXZlcnMvbW1jL2NvcmUvbW1jLmMKPj4+Pj4gaW5kZXggNDAzYjk3Yi4uYTI4OTFjMSAx
-MDA2NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9tbWMvY29yZS9tbWMuYwo+Pj4+PiArKysgYi9kcml2
-ZXJzL21tYy9jb3JlL21tYy5jCj4+Pj4+IEBAIC0xOTQ1LDYgKzE5NDUsNyBAQCBzdGF0aWMgaW50
-IG1tY19zdXNwZW5kKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+Pj4gIHN0YXRpYyBpbnQgX21t
-Y19yZXN1bWUoc3RydWN0IG1tY19ob3N0ICpob3N0KQo+Pj4+PiAgewo+Pj4+PiAgICAgIGludCBl
-cnIgPSAwOwo+Pj4+PiArICAgIGludCBpOwo+Pj4+Pgo+Pj4+PiAgICAgIEJVR19PTighaG9zdCk7
-Cj4+Pj4+ICAgICAgQlVHX09OKCFob3N0LT5jYXJkKTsKPj4+Pj4gQEAgLTE5NTQsOCArMTk1NSwy
-MiBAQCBzdGF0aWMgaW50IF9tbWNfcmVzdW1lKHN0cnVjdCBtbWNfaG9zdCAqaG9zdCkKPj4+Pj4g
-ICAgICBpZiAoIW1tY19jYXJkX3N1c3BlbmRlZChob3N0LT5jYXJkKSkKPj4+Pj4gICAgICAgICAg
-Z290byBvdXQ7Cj4+Pj4+Cj4+Pj4+IC0gICAgbW1jX3Bvd2VyX3VwKGhvc3QsIGhvc3QtPmNhcmQt
-Pm9jcik7Cj4+Pj4+IC0gICAgZXJyID0gbW1jX2luaXRfY2FyZChob3N0LCBob3N0LT5jYXJkLT5v
-Y3IsIGhvc3QtPmNhcmQpOwo+Pj4+PiArICAgIC8qCj4+Pj4+ICsgICAgICogTGV0J3MgdHJ5IHRv
-IGZhbGxiYWNrIHRoZSBob3N0LT5mX2luaXQKPj4+Pj4gKyAgICAgKiBpZiBmYWlsaW5nIHRvIGlu
-aXQgbW1jIGNhcmQgYWZ0ZXIgcmVzdW1lLgo+Pj4+PiArICAgICAqLwo+Pj4+PiArICAgIGZvciAo
-aSA9IDA7IGkgPCBBUlJBWV9TSVpFKGZyZXFzKTsgaSsrKSB7Cj4+Pj4+ICsgICAgICAgIGlmICho
-b3N0LT5mX2luaXQgPCBtYXgoZnJlcXNbaV0sIGhvc3QtPmZfbWluKSkKPj4+Pj4gKyAgICAgICAg
-ICAgIGNvbnRpbnVlOwo+Pj4+PiArICAgICAgICBlbHNlCj4+Pj4+ICsgICAgICAgICAgICBob3N0
-LT5mX2luaXQgPSBtYXgoZnJlcXNbaV0sIGhvc3QtPmZfbWluKTsKPj4+Pj4gKwo+Pj4+PiArICAg
-ICAgICBtbWNfcG93ZXJfdXAoaG9zdCwgaG9zdC0+Y2FyZC0+b2NyKTsKPj4+Pj4gKyAgICAgICAg
-ZXJyID0gbW1jX2luaXRfY2FyZChob3N0LCBob3N0LT5jYXJkLT5vY3IsIGhvc3QtPmNhcmQpOwo+
-Pj4+PiArICAgICAgICBpZiAoIWVycikKPj4+Pj4gKyAgICAgICAgICAgIGJyZWFrOwo+Pj4+PiAr
-ICAgIH0KPj4+Pj4gKwo+Pj4+PiAgICAgIG1tY19jYXJkX2Nscl9zdXNwZW5kZWQoaG9zdC0+Y2Fy
-ZCk7Cj4+Pj4+Cj4+Pj4+ICBvdXQ6Cj4+Pj4+Cj4+Pj4KPj4+Pgo+Pj4KPj4+Cj4+Pgo+Pj4KPj4K
-Pj4KPgo+Cj4KPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Because we need to support the multiple codecs (MAX98357A/RT5514/DA7219)
+on the RK3399 GRU boards, this patch can help us to support these codecs.
+
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+
+Changes in v7:
+- add default MCLK and PLL settings for the da7219_init() so that the
+  accessory detection works as expected
+
+Changes in v6:
+- remove enable/disable dapm pins, and to switch codecs via user space
+- fix "Speaker" dapm route for max98357a
+- add SND_JACK_LINEOUT flag for da7219 jack detection
+
+Changes in v5:
+- fix the build warning for missing I2C/CLKDEV_LOOKUP dependency
+
+Changes in v4:
+- the compatible name needs to be based on a single reference design,
+  and the name of the board is called "GRU"
+- use one i2sX card "rockchip,cpu = <&i2s0>" instead of array that is
+  based on GRU
+- rename DOC to rockchip,rk3399-gru-sound.txt
+- rename compatible to rockchip,rk3399-gru-sound
+- rename source code to rk3399_gru_sound.c
+
+Changes in v3:
+- rename DOC to rockchip,rk3399-max98357a-rt5514-da7219.txt
+- rename compatible to rockchip,rk3399-max98357a-rt5514-da7219
+- rename source code to rk3399_max98357a_rt5514_da7219.c
+
+Changes in v2:
+- use the FS 256 to set mclks of the max98357a and rt5514 danamically
+- add more sample rate for da7219
+
+ .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   15 +
+ sound/soc/rockchip/Kconfig                         |   11 +
+ sound/soc/rockchip/Makefile                        |    2 +
+ sound/soc/rockchip/rk3399_gru_sound.c              |  337 ++++++++++++++++++++
+ 4 files changed, 365 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+ create mode 100644 sound/soc/rockchip/rk3399_gru_sound.c
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+new file mode 100644
+index 0000000..f19b6c8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+@@ -0,0 +1,15 @@
++ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
++
++Required properties:
++- compatible: "rockchip,rk3399-gru-sound"
++- rockchip,cpu: The phandle of the Rockchip I2S controller that's
++  connected to the codecs
++- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
++
++Example:
++
++sound {
++	compatible = "rockchip,rk3399-gru-sound";
++	rockchip,cpu = <&i2s0>;
++	rockchip,codec = <&max98357a &rt5514 &da7219>;
++};
+diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
+index f1e0c70..6d39032 100644
+--- a/sound/soc/rockchip/Kconfig
++++ b/sound/soc/rockchip/Kconfig
+@@ -41,3 +41,14 @@ config SND_SOC_ROCKCHIP_RT5645
+ 	help
+ 	  Say Y or M here if you want to add support for SoC audio on Rockchip
+ 	  boards using the RT5645/RT5650 codec, such as Veyron.
++
++config SND_SOC_RK3399_GRU_SOUND
++	tristate "ASoC support multiple codecs for Rockchip RK3399 GRU boards"
++	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB && CLKDEV_LOOKUP
++	select SND_SOC_ROCKCHIP_I2S
++	select SND_SOC_MAX98357A
++	select SND_SOC_RT5514
++	select SND_SOC_DA7219
++	help
++	  Say Y or M here if you want to add support multiple codecs for SoC
++	  audio on Rockchip RK3399 GRU boards.
+diff --git a/sound/soc/rockchip/Makefile b/sound/soc/rockchip/Makefile
+index c0bf560..84e5c7c 100644
+--- a/sound/soc/rockchip/Makefile
++++ b/sound/soc/rockchip/Makefile
+@@ -7,6 +7,8 @@ obj-$(CONFIG_SND_SOC_ROCKCHIP_SPDIF) += snd-soc-rockchip-spdif.o
+ 
+ snd-soc-rockchip-max98090-objs := rockchip_max98090.o
+ snd-soc-rockchip-rt5645-objs := rockchip_rt5645.o
++snd-soc-rk3399-gru-sound-objs := rk3399_gru_sound.o
+ 
+ obj-$(CONFIG_SND_SOC_ROCKCHIP_MAX98090) += snd-soc-rockchip-max98090.o
+ obj-$(CONFIG_SND_SOC_ROCKCHIP_RT5645) += snd-soc-rockchip-rt5645.o
++obj-$(CONFIG_SND_SOC_RK3399_GRU_SOUND) += snd-soc-rk3399-gru-sound.o
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+new file mode 100644
+index 0000000..9933703
+--- /dev/null
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -0,0 +1,337 @@
++/*
++ * Rockchip machine ASoC driver for boards using MAX98357A/RT5514/DA7219
++ *
++ * Copyright (c) 2016, ROCKCHIP CORPORATION.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/slab.h>
++#include <linux/gpio.h>
++#include <linux/of_gpio.h>
++#include <linux/delay.h>
++#include <linux/spi/spi.h>
++#include <sound/core.h>
++#include <sound/jack.h>
++#include <sound/pcm.h>
++#include <sound/pcm_params.h>
++#include <sound/soc.h>
++#include "rockchip_i2s.h"
++#include "../codecs/da7219.h"
++#include "../codecs/da7219-aad.h"
++#include "../codecs/rt5514.h"
++
++#define DRV_NAME "rk3399-gru-sound"
++
++#define SOUND_FS	256
++
++static struct snd_soc_jack rockchip_sound_jack;
++
++static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
++	SND_SOC_DAPM_HP("Headphones", NULL),
++	SND_SOC_DAPM_SPK("Speakers", NULL),
++	SND_SOC_DAPM_MIC("Headset Mic", NULL),
++	SND_SOC_DAPM_MIC("Int Mic", NULL),
++};
++
++static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
++	/* Input Lines */
++	{"MIC", NULL, "Headset Mic"},
++	{"DMIC1L", NULL, "Int Mic"},
++	{"DMIC1R", NULL, "Int Mic"},
++
++	/* Output Lines */
++	{"Headphones", NULL, "HPL"},
++	{"Headphones", NULL, "HPR"},
++	{"Speakers", NULL, "Speaker"},
++};
++
++static const struct snd_kcontrol_new rockchip_controls[] = {
++	SOC_DAPM_PIN_SWITCH("Headphones"),
++	SOC_DAPM_PIN_SWITCH("Speakers"),
++	SOC_DAPM_PIN_SWITCH("Headset Mic"),
++	SOC_DAPM_PIN_SWITCH("Int Mic"),
++};
++
++static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
++			     struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	unsigned int mclk;
++	int ret;
++
++	/* max98357a supports these sample rates */
++	switch (params_rate(params)) {
++	case 8000:
++	case 16000:
++	case 48000:
++	case 96000:
++		mclk = params_rate(params) * SOUND_FS;
++		break;
++	default:
++		dev_err(rtd->card->dev, "%s() doesn't support this sample rate: %d\n",
++				__func__, params_rate(params));
++		return -EINVAL;
++	}
++
++	ret = snd_soc_dai_set_sysclk(rtd->cpu_dai, 0, mclk, 0);
++	if (ret) {
++		dev_err(rtd->card->dev, "%s() error setting sysclk to %u: %d\n",
++				__func__, mclk, ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
++			     struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
++	struct snd_soc_dai *codec_dai = rtd->codec_dai;
++	unsigned int mclk;
++	int ret;
++
++	mclk = params_rate(params) * SOUND_FS;
++
++	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
++				     SND_SOC_CLOCK_OUT);
++	if (ret < 0) {
++		dev_err(rtd->card->dev, "Can't set cpu clock out %d\n", ret);
++		return ret;
++	}
++
++	ret = snd_soc_dai_set_sysclk(codec_dai, RT5514_SCLK_S_MCLK,
++				     mclk, SND_SOC_CLOCK_IN);
++	if (ret) {
++		dev_err(rtd->card->dev, "%s() error setting sysclk to %u: %d\n",
++				__func__, params_rate(params) * 512, ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int rockchip_sound_da7219_hw_params(struct snd_pcm_substream *substream,
++			     struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
++	struct snd_soc_dai *codec_dai = rtd->codec_dai;
++	int mclk, ret;
++
++	/* in bypass mode, the mclk has to be one of the frequencies below */
++	switch (params_rate(params)) {
++	case 8000:
++	case 16000:
++	case 24000:
++	case 32000:
++	case 48000:
++	case 64000:
++	case 96000:
++		mclk = 12288000;
++		break;
++	case 11025:
++	case 22050:
++	case 44100:
++	case 88200:
++		mclk = 11289600;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
++				     SND_SOC_CLOCK_OUT);
++	if (ret < 0) {
++		dev_err(codec_dai->dev, "Can't set cpu clock out %d\n", ret);
++		return ret;
++	}
++
++	ret = snd_soc_dai_set_sysclk(codec_dai, 0, mclk,
++				     SND_SOC_CLOCK_IN);
++	if (ret < 0) {
++		dev_err(codec_dai->dev, "Can't set codec clock in %d\n", ret);
++		return ret;
++	}
++
++	ret = snd_soc_dai_set_pll(codec_dai, 0, DA7219_SYSCLK_MCLK, 0, 0);
++	if (ret < 0) {
++		dev_err(codec_dai->dev, "Can't set pll sysclk mclk %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
++{
++	struct snd_soc_codec *codec = rtd->codec_dais[0]->codec;
++	struct snd_soc_dai *codec_dai = rtd->codec_dai;
++	int ret;
++
++	/* We need default MCLK and PLL settings for the accessory detection */
++	ret = snd_soc_dai_set_sysclk(codec_dai, 0, 12288000,
++				     SND_SOC_CLOCK_IN);
++	if (ret < 0) {
++		dev_err(codec_dai->dev, "Init can't set codec clock in %d\n", ret);
++		return ret;
++	}
++
++	ret = snd_soc_dai_set_pll(codec_dai, 0, DA7219_SYSCLK_MCLK, 0, 0);
++	if (ret < 0) {
++		dev_err(codec_dai->dev, "Init can't set pll sysclk mclk %d\n", ret);
++		return ret;
++	}
++
++	/* Enable Headset and 4 Buttons Jack detection */
++	ret = snd_soc_card_jack_new(rtd->card, "Headset Jack",
++				    SND_JACK_HEADSET | SND_JACK_LINEOUT |
++				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
++				    &rockchip_sound_jack, NULL, 0);
++
++	if (ret) {
++		dev_err(rtd->card->dev, "New Headset Jack failed! (%d)\n", ret);
++		return ret;
++	}
++
++	da7219_aad_jack_det(codec, &rockchip_sound_jack);
++
++	return 0;
++}
++
++static struct snd_soc_ops rockchip_sound_max98357a_ops = {
++	.hw_params = rockchip_sound_max98357a_hw_params,
++};
++
++static struct snd_soc_ops rockchip_sound_rt5514_ops = {
++	.hw_params = rockchip_sound_rt5514_hw_params,
++};
++
++static struct snd_soc_ops rockchip_sound_da7219_ops = {
++	.hw_params = rockchip_sound_da7219_hw_params,
++};
++
++enum {
++	DAILINK_MAX98357A,
++	DAILINK_RT5514,
++	DAILINK_DA7219,
++};
++
++static struct snd_soc_dai_link rockchip_dailinks[] = {
++	[DAILINK_MAX98357A] = {
++		.name = "MAX98357A",
++		.stream_name = "MAX98357A PCM",
++		.codec_dai_name = "HiFi",
++		.ops = &rockchip_sound_max98357a_ops,
++		/* set max98357a as slave */
++		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBS_CFS,
++	},
++	[DAILINK_RT5514] = {
++		.name = "RT5514",
++		.stream_name = "RT5514 PCM",
++		.codec_dai_name = "rt5514-aif1",
++		.ops = &rockchip_sound_rt5514_ops,
++		/* set rt5514 as slave */
++		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBS_CFS,
++	},
++	[DAILINK_DA7219] = {
++		.name = "DA7219",
++		.stream_name = "DA7219 PCM",
++		.codec_dai_name = "da7219-hifi",
++		.init = rockchip_sound_da7219_init,
++		.ops = &rockchip_sound_da7219_ops,
++		/* set da7219 as slave */
++		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBS_CFS,
++	},
++};
++
++static struct snd_soc_card rockchip_sound_card = {
++	.name = "rk3399-gru-sound",
++	.owner = THIS_MODULE,
++	.dai_link = rockchip_dailinks,
++	.num_links =  ARRAY_SIZE(rockchip_dailinks),
++	.dapm_widgets = rockchip_dapm_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(rockchip_dapm_widgets),
++	.dapm_routes = rockchip_dapm_routes,
++	.num_dapm_routes = ARRAY_SIZE(rockchip_dapm_routes),
++	.controls = rockchip_controls,
++	.num_controls = ARRAY_SIZE(rockchip_controls),
++};
++
++static int rockchip_sound_probe(struct platform_device *pdev)
++{
++	struct snd_soc_card *card = &rockchip_sound_card;
++	struct device_node *cpu_node;
++	int i, ret;
++
++	cpu_node = of_parse_phandle(pdev->dev.of_node, "rockchip,cpu", 0);
++	if (!cpu_node) {
++		dev_err(&pdev->dev, "Property 'rockchip,cpu' missing or invalid\n");
++		return -EINVAL;
++	}
++
++	for (i = 0; i < card->num_links; i++) {
++		rockchip_dailinks[i].platform_of_node = cpu_node;
++		rockchip_dailinks[i].cpu_of_node = cpu_node;
++
++		rockchip_dailinks[i].codec_of_node =
++			of_parse_phandle(pdev->dev.of_node, "rockchip,codec", i);
++		if (!rockchip_dailinks[i].codec_of_node) {
++			dev_err(&pdev->dev,
++				"Property[%d] 'rockchip,codec' missing or invalid\n", i);
++			return -EINVAL;
++		}
++	}
++
++	card->dev = &pdev->dev;
++	platform_set_drvdata(pdev, card);
++
++	ret = devm_snd_soc_register_card(&pdev->dev, card);
++	if (ret)
++		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
++			__func__, ret);
++
++	return ret;
++}
++
++static const struct of_device_id rockchip_sound_of_match[] = {
++	{ .compatible = "rockchip,rk3399-gru-sound", },
++	{},
++};
++
++static struct platform_driver rockchip_sound_driver = {
++	.probe = rockchip_sound_probe,
++	.driver = {
++		.name = DRV_NAME,
++		.of_match_table = rockchip_sound_of_match,
++#ifdef CONFIG_PM
++		.pm = &snd_soc_pm_ops,
++#endif
++	},
++};
++
++module_platform_driver(rockchip_sound_driver);
++
++MODULE_AUTHOR("Xing Zheng <zhengxing@rock-chips.com>");
++MODULE_DESCRIPTION("Rockchip ASoC Machine Driver");
++MODULE_LICENSE("GPL v2");
++MODULE_ALIAS("platform:" DRV_NAME);
++MODULE_DEVICE_TABLE(of, rockchip_sound_of_match);
+-- 
+1.7.9.5
