@@ -1,35 +1,37 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id for usbphy0/usbphy1
-Date: Thu, 04 Aug 2016 21:10:47 +0200
-Message-ID: <1918977.W0kRfKbZsD@diego>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1470122401-31934-3-git-send-email-zhengxing@rock-chips.com>
+Subject: Re: [PATCH v3 7/7] clk: rockchip: rk3399: Add support frac mode frequencies
+Date: Thu, 04 Aug 2016 21:19:08 +0200
+Message-ID: <12790025.3tRiQgk9GG@diego>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1470122579-32083-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1470122401-31934-3-git-send-email-zhengxing@rock-chips.com>
+In-Reply-To: <1470122579-32083-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, frank.wang@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Xing,
 
-Am Dienstag, 2. August 2016, 15:19:56 schrieb Xing Zheng:
-> Export these source clocks for usbphy.
+Am Dienstag, 2. August 2016, 15:22:59 schrieb Xing Zheng:
+> We need to support various display resolutions for external
+> display devices like HDMI/DP, the frac mode can help us to
+> acquire almost any frequencies, and need higher VCOs to reduce
+> clock jitters.
 > 
 > Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 
-can you please provide a rationale why you need manual control over that 
-intermediate clock?
+why does this need to be a separate rate array and cannot live in the general 
+pll rate array?
 
-The two usbphys seem to use the  clk_usb2phyX_ref clocks, generate the 480m 
-clocks, but do not seem to need the clk_usbphyX_480m_src gates.
+The plls are general purpose, so we shouldn't limit them arbitarily.
 
-The clk_usbphyX_480m_src clocks on the other hand only lead to the 
-clk_usbphy_480m mux, so I'd like some explanation on what you want to achieve 
-here :-)
+I currently only see some frequencies (594MHz, 297MHz, 54MHz) that are present 
+in both arrays but have different settings. As your patch description says 
+that these settings reduce clock jitter, wouldn't the general frequencies also 
+profit from merging these new values into the general rate array?
 
 
-Thanks
 Heiko
