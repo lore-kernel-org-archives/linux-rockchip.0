@@ -1,142 +1,63 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v1] drm/rockchip: fix fbdev crash when not use
- DRM_FBDEV_EMULATION
-Date: Thu, 4 Aug 2016 10:08:54 +0200
-Message-ID: <20160804080854.GQ6232@phenom.ffwll.local>
-References: <1470212025-30336-1-git-send-email-mark.yao@rock-chips.com>
- <1470277318-9204-1-git-send-email-mark.yao@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] mmc: core: need retune if error value is -EIO
+Date: Thu,  4 Aug 2016 16:30:59 +0800
+Message-ID: <1470299459-8478-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1470277318-9204-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBBdWcgMDQsIDIwMTYgYXQgMTA6MjE6NThBTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-Cj4gWyAgICAxLjE2MjU3MV0gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRl
-cmVmZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAwMDIwMAo+IFsgICAgMS4xNjU2NTZdIE1v
-ZHVsZXMgbGlua2VkIGluOgo+IFsgICAgMS4xNjU5NDFdIENQVTogNSBQSUQ6IDE0MyBDb21tOiBr
-d29ya2VyLzU6MiBOb3QgdGFpbnRlZCA0LjQuMTUgIzIzNwo+IFsgICAgMS4xNjY1MDZdIEhhcmR3
-YXJlIG5hbWU6IFJvY2tjaGlwIFJLMzM5OSBFdmFsdWF0aW9uIEJvYXJkIHYxIChBbmRyb2lkKSAo
-RFQpCj4gWyAgICAxLjE2NzE1M10gV29ya3F1ZXVlOiBldmVudHMgb3V0cHV0X3BvbGxfZXhlY3V0
-ZQo+IFsgICAgMS4xNjgyMzFdIFBDIGlzIGF0IG11dGV4X2xvY2srMHgxNC8weDQ0Cj4gWyAgICAx
-LjE2ODU4Nl0gTFIgaXMgYXQgZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50KzB4MjgvMHhjYwo+
-IFsgICAgMS4xNzIxOTJdIFs8ZmZmZmZmODAwODk4MjExMD5dIG11dGV4X2xvY2srMHgxNC8weDQ0
-Cj4gWyAgICAxLjE3MjE5Nl0gWzxmZmZmZmY4MDA4NDAyNWE0Pl0gZHJtX2ZiX2hlbHBlcl9ob3Rw
-bHVnX2V2ZW50KzB4MjgvMHhjYwo+IFsgICAgMS4xNzIyMDFdIFs8ZmZmZmZmODAwODQyN2FlND5d
-IHJvY2tjaGlwX2RybV9vdXRwdXRfcG9sbF9jaGFuZ2VkKzB4MTQvMHgxYwo+IFsgICAgMS4xNzIy
-MDRdIFs8ZmZmZmZmODAwODNmN2M0Yz5dIGRybV9rbXNfaGVscGVyX2hvdHBsdWdfZXZlbnQrMHgy
-OC8weDM0Cj4gWyAgICAxLjE3MjIwN10gWzxmZmZmZmY4MDA4M2Y3ZGRjPl0gb3V0cHV0X3BvbGxf
-ZXhlY3V0ZSsweDE1MC8weDE5OAo+IFsgICAgMS4xNzIyMTJdIFs8ZmZmZmZmODAwODBiMGVhOD5d
-IHByb2Nlc3Nfb25lX3dvcmsrMHgyMTgvMHgzZGMKPiBbICAgIDEuMTcyMjE1XSBbPGZmZmZmZjgw
-MDgwYjE1Nzg+XSB3b3JrZXJfdGhyZWFkKzB4MjRjLzB4Mzc0Cj4gWyAgICAxLjE3MjIxN10gWzxm
-ZmZmZmY4MDA4MGI1YmNjPl0ga3RocmVhZCsweGRjLzB4ZTQKPiBbICAgIDEuMTcyMjIyXSBbPGZm
-ZmZmZjgwMDgwODRjZDA+XSByZXRfZnJvbV9mb3JrKzB4MTAvMHg0MAo+IAo+IFNpZ25lZC1vZmYt
-Ynk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiBDaGFuZ2UgaW4g
-djE6Cj4gQWR2aXNlZCBieSBEYW5pZWwgVmV0dGVyCj4gICBvbmx5IGRvIHRoZSBzdHJ1Y3QtPnBv
-aW50ZXIgY29udmVyc2lvbiBhbG9uZQoKWWVhaCwgdGhhdCBsb29rcyBtdWNoIG1vcmUgaW4gbGlu
-ZSB3aXRoIGhvdyB0aGUgb3B0aW9uYWwgZmJkZXYgc3VwcG9ydCBpcwpzdXBwb3NlZCB0byBiZSB1
-c2VkLgotRGFuaWVsCgo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2Rydi5jICAgfCAgNiArKystLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuaCAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9mYi5jICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9mYmRldi5jIHwgMTcgKysrKysrKysrKy0tLS0tLS0KPiAgNCBmaWxlcyBjaGFuZ2VkLCAx
-NSBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBpbmRleCBhODIyZDQ5Li5mZTIyZjc2IDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAgLTI2
-MSw3ICsyNjEsNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fbGFzdGNsb3NlKHN0cnVjdCBk
-cm1fZGV2aWNlICpkZXYpCj4gIHsKPiAgCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJp
-diA9IGRldi0+ZGV2X3ByaXZhdGU7Cj4gIAo+IC0JZHJtX2ZiX2hlbHBlcl9yZXN0b3JlX2ZiZGV2
-X21vZGVfdW5sb2NrZWQoJnByaXYtPmZiZGV2X2hlbHBlcik7Cj4gKwlkcm1fZmJfaGVscGVyX3Jl
-c3RvcmVfZmJkZXZfbW9kZV91bmxvY2tlZChwcml2LT5mYmRldl9oZWxwZXIpOwo+ICB9Cj4gIAo+
-ICBzdGF0aWMgY29uc3Qgc3RydWN0IGZpbGVfb3BlcmF0aW9ucyByb2NrY2hpcF9kcm1fZHJpdmVy
-X2ZvcHMgPSB7Cj4gQEAgLTMxMSw3ICszMTEsNyBAQCB2b2lkIHJvY2tjaGlwX2RybV9mYl9zdXNw
-ZW5kKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0pCj4gIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZh
-dGUgKnByaXYgPSBkcm0tPmRldl9wcml2YXRlOwo+ICAKPiAgCWNvbnNvbGVfbG9jaygpOwo+IC0J
-ZHJtX2ZiX2hlbHBlcl9zZXRfc3VzcGVuZCgmcHJpdi0+ZmJkZXZfaGVscGVyLCAxKTsKPiArCWRy
-bV9mYl9oZWxwZXJfc2V0X3N1c3BlbmQocHJpdi0+ZmJkZXZfaGVscGVyLCAxKTsKPiAgCWNvbnNv
-bGVfdW5sb2NrKCk7Cj4gIH0KPiAgCj4gQEAgLTMyMCw3ICszMjAsNyBAQCB2b2lkIHJvY2tjaGlw
-X2RybV9mYl9yZXN1bWUoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKPiAgCXN0cnVjdCByb2NrY2hp
-cF9kcm1fcHJpdmF0ZSAqcHJpdiA9IGRybS0+ZGV2X3ByaXZhdGU7Cj4gIAo+ICAJY29uc29sZV9s
-b2NrKCk7Cj4gLQlkcm1fZmJfaGVscGVyX3NldF9zdXNwZW5kKCZwcml2LT5mYmRldl9oZWxwZXIs
-IDApOwo+ICsJZHJtX2ZiX2hlbHBlcl9zZXRfc3VzcGVuZChwcml2LT5mYmRldl9oZWxwZXIsIDAp
-Owo+ICAJY29uc29sZV91bmxvY2soKTsKPiAgfQo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBpbmRleCBlYTM5MzI5Li5mMDA1ZjNmIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCj4gQEAgLTU3LDcg
-KzU3LDcgQEAgc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgewo+ICAgKiBAbnVtX3BpcGU6IG51
-bWJlciBvZiBwaXBlcyBmb3IgdGhpcyBkZXZpY2UuCj4gICAqLwo+ICBzdHJ1Y3Qgcm9ja2NoaXBf
-ZHJtX3ByaXZhdGUgewo+IC0Jc3RydWN0IGRybV9mYl9oZWxwZXIgZmJkZXZfaGVscGVyOwo+ICsJ
-c3RydWN0IGRybV9mYl9oZWxwZXIgKmZiZGV2X2hlbHBlcjsKPiAgCXN0cnVjdCBkcm1fZ2VtX29i
-amVjdCAqZmJkZXZfYm87Cj4gIAljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19mdW5jcyAqY3J0
-Y19mdW5jc1tST0NLQ0hJUF9NQVhfQ1JUQ107Cj4gIAlzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAq
-c3RhdGU7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IGlu
-ZGV4IDU1YzUyNzMuLmRjMDM0ZWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9mYi5jCj4gQEAgLTE1Niw3ICsxNTYsNyBAQCBlcnJfZ2VtX29iamVjdF91bnJl
-ZmVyZW5jZToKPiAgc3RhdGljIHZvaWQgcm9ja2NoaXBfZHJtX291dHB1dF9wb2xsX2NoYW5nZWQo
-c3RydWN0IGRybV9kZXZpY2UgKmRldikKPiAgewo+ICAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2
-YXRlICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPiAtCXN0cnVjdCBkcm1fZmJfaGVscGVy
-ICpmYl9oZWxwZXIgPSAmcHJpdmF0ZS0+ZmJkZXZfaGVscGVyOwo+ICsJc3RydWN0IGRybV9mYl9o
-ZWxwZXIgKmZiX2hlbHBlciA9IHByaXZhdGUtPmZiZGV2X2hlbHBlcjsKPiAgCj4gIAlpZiAoZmJf
-aGVscGVyKQo+ICAJCWRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudChmYl9oZWxwZXIpOwo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKPiBpbmRleCAy
-MDdlMDFkLi42YjUwZGZhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZmJkZXYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZmJkZXYuYwo+IEBAIC0yMiwxNCArMjIsMTIgQEAKPiAgI2luY2x1ZGUgInJvY2tj
-aGlwX2RybV9mYi5oIgo+ICAKPiAgI2RlZmluZSBQUkVGRVJSRURfQlBQCQkzMgo+IC0jZGVmaW5l
-IHRvX2RybV9wcml2YXRlKHgpIFwKPiAtCQljb250YWluZXJfb2YoeCwgc3RydWN0IHJvY2tjaGlw
-X2RybV9wcml2YXRlLCBmYmRldl9oZWxwZXIpCj4gIAo+ICBzdGF0aWMgaW50IHJvY2tjaGlwX2Zi
-ZGV2X21tYXAoc3RydWN0IGZiX2luZm8gKmluZm8sCj4gIAkJCSAgICAgICBzdHJ1Y3Qgdm1fYXJl
-YV9zdHJ1Y3QgKnZtYSkKPiAgewo+ICAJc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciA9IGlu
-Zm8tPnBhcjsKPiAtCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IHRvX2Ry
-bV9wcml2YXRlKGhlbHBlcik7Cj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZh
-dGUgPSBoZWxwZXItPmRldi0+ZGV2X3ByaXZhdGU7Cj4gIAo+ICAJcmV0dXJuIHJvY2tjaGlwX2dl
-bV9tbWFwX2J1Zihwcml2YXRlLT5mYmRldl9ibywgdm1hKTsKPiAgfQo+IEBAIC01MCw3ICs0OCw3
-IEBAIHN0YXRpYyBzdHJ1Y3QgZmJfb3BzIHJvY2tjaGlwX2RybV9mYmRldl9vcHMgPSB7Cj4gIHN0
-YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2NyZWF0ZShzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAq
-aGVscGVyLAo+ICAJCQkJICAgICBzdHJ1Y3QgZHJtX2ZiX2hlbHBlcl9zdXJmYWNlX3NpemUgKnNp
-emVzKQo+ICB7Cj4gLQlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSB0b19k
-cm1fcHJpdmF0ZShoZWxwZXIpOwo+ICsJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2
-YXRlID0gaGVscGVyLT5kZXYtPmRldl9wcml2YXRlOwo+ICAJc3RydWN0IGRybV9tb2RlX2ZiX2Nt
-ZDIgbW9kZV9jbWQgPSB7IDAgfTsKPiAgCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYgPSBoZWxwZXIt
-PmRldjsKPiAgCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmo7Cj4gQEAgLTEzOSw3
-ICsxMzcsMTEgQEAgaW50IHJvY2tjaGlwX2RybV9mYmRldl9pbml0KHN0cnVjdCBkcm1fZGV2aWNl
-ICpkZXYpCj4gIAo+ICAJbnVtX2NydGMgPSBkZXYtPm1vZGVfY29uZmlnLm51bV9jcnRjOwo+ICAK
-PiAtCWhlbHBlciA9ICZwcml2YXRlLT5mYmRldl9oZWxwZXI7Cj4gKwloZWxwZXIgPSBkZXZtX2t6
-YWxsb2MoZGV2LT5kZXYsIHNpemVvZigqaGVscGVyKSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoIWhl
-bHBlcikKPiArCQlyZXR1cm4gLUVOT01FTTsKPiArCj4gKwlwcml2YXRlLT5mYmRldl9oZWxwZXIg
-PSBoZWxwZXI7Cj4gIAo+ICAJZHJtX2ZiX2hlbHBlcl9wcmVwYXJlKGRldiwgaGVscGVyLCAmcm9j
-a2NoaXBfZHJtX2ZiX2hlbHBlcl9mdW5jcyk7Cj4gIAo+IEBAIC0xNzMsOSArMTc1LDEwIEBAIGVy
-cl9kcm1fZmJfaGVscGVyX2Zpbmk6Cj4gIHZvaWQgcm9ja2NoaXBfZHJtX2ZiZGV2X2Zpbmkoc3Ry
-dWN0IGRybV9kZXZpY2UgKmRldikKPiAgewo+ICAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRl
-ICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPiAtCXN0cnVjdCBkcm1fZmJfaGVscGVyICpo
-ZWxwZXI7Cj4gKwlzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAqaGVscGVyID0gcHJpdmF0ZS0+ZmJkZXZf
-aGVscGVyOwo+ICAKPiAtCWhlbHBlciA9ICZwcml2YXRlLT5mYmRldl9oZWxwZXI7Cj4gKwlpZiAo
-IWhlbHBlcikKPiArCQlyZXR1cm47Cj4gIAo+ICAJZHJtX2ZiX2hlbHBlcl91bnJlZ2lzdGVyX2Zi
-aShoZWxwZXIpOwo+ICAJZHJtX2ZiX2hlbHBlcl9yZWxlYXNlX2ZiaShoZWxwZXIpOwo+IC0tIAo+
-IDEuOS4xCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29y
-cG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+We need to do retune if receiving -EIO, otherwise we
+could see debug dump like:
+
+[ 89.057226] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
+[ 89.058811] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
+[ 89.059415] bcmsdh_sdmmc: Failed to Read byte F1:@0x1000e=ff, Err: -84
+[ 89.254248] dwmmc_rockchip fe310000.dwmmc: Successfully tuned phase to 199
+[ 89.273912] dhd_set_suspend: Remove extra suspend setting
+[ 89.274478] dhd_enable_packet_filter: enter, value = 0
+64 bytes from 112.90.83.112: icmp_seq=24 ttl=53 time=1321 ms
+64 bytes from 112.90.83.112: icmp_seq=25 ttl=53 time=319 ms
+64 bytes from 112.90.83.112: icmp_seq=26 ttl=53 time=69.8 ms
+64 bytes from 112.90.83.112: icmp_seq=27 ttl=53 time=37.5 ms
+...
+
+In this case we see dw_mmc finally enter retune process, but
+if this patch is applied, we could save more time to make it
+work. Also many host drivers will generate -EIO, so this patch
+can also prevent them from failing to enter retune process.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ drivers/mmc/core/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+index e55cde6..18d0af5 100644
+--- a/drivers/mmc/core/core.c
++++ b/drivers/mmc/core/core.c
+@@ -133,7 +133,8 @@ void mmc_request_done(struct mmc_host *host, struct mmc_request *mrq)
+ 	/* Flag re-tuning needed on CRC errors */
+ 	if ((cmd->opcode != MMC_SEND_TUNING_BLOCK &&
+ 	    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200) &&
+-	    (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
++	    (err == -EILSEQ || err == -EIO ||
++	    (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
+ 	    (mrq->data && mrq->data->error == -EILSEQ) ||
+ 	    (mrq->stop && mrq->stop->error == -EILSEQ)))
+ 		mmc_retune_needed(host);
+-- 
+2.3.7
