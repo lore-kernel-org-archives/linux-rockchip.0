@@ -1,102 +1,115 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 2/7] clk: rockchip: add new clock-type for the ddrclk
-Date: Fri, 05 Aug 2016 00:42:08 +0200
-Message-ID: <9078133.mu38cJQ6PH@phil>
-References: <1469779021-10426-1-git-send-email-hl@rock-chips.com> <1469779021-10426-3-git-send-email-hl@rock-chips.com> <2163567.7aYA2GN16A@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Boundary between pinctrl and peripheral settings
+Date: Fri, 05 Aug 2016 01:36:06 +0200
+Message-ID: <1719598.F3JUalFtig@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2163567.7aYA2GN16A@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: cw00.choi@samsung.com, tixy@linaro.org, dbasehore@chromium.org, airlied@linux.ie, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 4. August 2016, 22:23:05 schrieb Heiko Stübner:
-> Hi Lin,
-> 
-> Am Freitag, 29. Juli 2016, 15:56:56 schrieb Lin Huang:
-> > On new rockchip platform(rk3399 etc), there have dcf controller to
-> > do ddr frequency scaling, and this controller will implement in
-> > arm-trust-firmware. We add a special clock-type to handle that.
-> > 
-> > Signed-off-by: Lin Huang <hl@rock-chips.com>
-> 
-> please also include the ARM people from last time in your list.
-> The arm_smccc_smc calls look correct on first glance, but there is only
-> one other example in the kernel [0] outside psci that is using it, so I'd
-> like some confirmation that we're doing the right thing :-)
-> 
-> 
-> [0]
-> http://lxr.free-electrons.com/source/arch/arm/mach-artpec/board-artpec6.c
-> #L55
-> > diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-> > index bac775d..2e3bccf 100644
-> > --- a/drivers/clk/rockchip/clk.h
-> > +++ b/drivers/clk/rockchip/clk.h
-> > @@ -281,6 +281,13 @@ struct clk *rockchip_clk_register_mmc(const char
-> > *name, const char *const *parent_names, u8 num_parents,
-> > 
-> >  				void __iomem *reg, int shift);
-> > 
-> > +struct clk *rockchip_clk_register_ddrclk(const char *name, int flags,
-> > +			const char *const *parent_names, u8 num_parents,
-> > +			int mux_offset, int mux_shift, int mux_width,
-> > +			int mux_flag, int div_shift, int div_width,
-> > +			int div_flag, void __iomem *reg_base,
-> > +			spinlock_t *lock);
-> > +
-> > 
-> >  #define ROCKCHIP_INVERTER_HIWORD_MASK	BIT(0)
-> >  
-> >  struct clk *rockchip_clk_register_inverter(const char *name,
-> > 
-> > @@ -299,6 +306,7 @@ enum rockchip_clk_branch_type {
-> > 
-> >  	branch_mmc,
-> >  	branch_inverter,
-> >  	branch_factor,
-> > 
-> > +	branch_ddrc,
-> > 
-> >  };
-> >  
-> >  struct rockchip_clk_branch {
-> > 
-> > @@ -488,6 +496,25 @@ struct rockchip_clk_branch {
-> > 
-> >  		.child		= ch,				\
-> >  	
-> >  	}
-> > 
-> > +#define COMPOSITE_DDRC(_id, cname, pnames, f, mo, ms, mw, mf,	\
-> > +			 ds, dw, df)				\
-> > +	{							\
-> > +		.id		= _id,				\
-> > +		.branch_type	= branch_ddrc,			\
-> > +		.name		= cname,			\
-> > +		.parent_names	= pnames,			\
-> > +		.num_parents	= ARRAY_SIZE(pnames),		\
-> > +		.flags		= f,				\
-> > +		.muxdiv_offset	= mo,				\
-> > +		.mux_shift	= ms,				\
-> > +		.mux_width	= mw,				\
-> > +		.mux_flags	= mf,				\
-> > +		.div_shift	= ds,				\
-> > +		.div_width	= dw,				\
-> > +		.div_flags	= df,				\
-> 
-> you don't need (nor use) div and mux flags here, please use one flag
-> param like the inverter type does and maybe directly add a flag like
-> 	ROCKCHIP_DDRCLK_SIP
-> for this type.
-> 
-> Background being, that the ddr clock mechanism is essentially the same
-> on all socs and only the method to change the rate varies
-> (sip on rk3399, scpi on rk3368, something sram-based on rk3288 and before)
-> so in the future, this driver should hopefully be able to carry all those
-> different methods.
+Hi Linus,
 
-and maybe name it COMPOSITE_DDRCLK(...)
+
+on the rk3399 we found an interesting new feature and would like to get some 
+input from the pinctrl expert :-) , as Doug and me currently are of 
+differing opinions on where specific control elements belong.
+
+
+In a nutshell on the rk3399 some things like one specific uart can use 
+multiple pins to output data, but control of that seems to be split. The 
+actual pin config is identical for all pins - each needs to be configured to 
+function 2, pulls set etc. Then somewhere between the pin io-cells and the 
+uart it seems to have some sort of switch to decide to which pin to actually 
+route the data.
+
+
++-------+    +--------+  /- GPIO4_B1 (pinmux 2)
+| uart2 | -- | switch | --- GPIO4_C1 (pinmux 2)
++-------+    +--------+  \- GPIO4_C4 (pinmux 2)
+(switch selects one of the 3 pins to actually output data to)
+
+
+So the question now is, should the pinctrl driver also flip that switch to 
+the correct position itself when pin-function 2 of say gpio4_bq gets 
+selected or is that routing outside of pinctrl's scope?
+
+-----
+
+I hope to have presented the core issue above somewhat neutrally, below are 
+my personal worries about doing that in pinctrl :-) .
+
+
+Apart from it feeling "bolted-on" to me, I have two main worries with that 
+approach:
+(1) Right now the unused pins are really unused on the same iomux, so when 
+flipping the switch it essentially does
+
+ uart-sout    unused 
+  |(iomux2)    |(iomux2)
+  |            |
++----------+ +----------+
+| gpio4_b0 | | gpio4_c0 |
++----------+ +----------+
+
+going to
+
+ unused       uart-sout
+  |(iomux2)    |(iomux2)
+  |            |
++----------+ +----------+
+| gpio4_b0 | | gpio4_c0 |
++----------+ +----------+
+
+but nothing keeps designers from doing
+
+ uart-sout    special1 
+  |(iomux2)    |(iomux2)
+  |            |
++----------+ +----------+
+| gpio4_b0 | | gpio4_c0 |
++----------+ +----------+
+
+going to
+
+ special2     uart-sout
+  |(iomux2)    |(iomux2)
+  |            |
++----------+ +----------+
+| gpio4_b0 | | gpio4_c0 |
++----------+ +----------+
+
+somewhere down the road, so relying on following the selected iomux feels 
+not future proof.
+
+(2) Looking at [0] we already have a similar case, where we configure the 
+pins for rgmii but still tell the gmac controller that it is supposed to do 
+rgmii instead of rmii.
+
+Here the pinmux is the same for all pins, rmii just uses less pins when 
+compared to rgmii, so binding that to the pinmux isn't even possible.
+
+And doing it one way here and another way for the switch feels very strange.
+
+
+I hope this overly long mail was not to confusing and hope for some words of 
+wisdom ;-)
+
+
+Big thanks
+Heiko
+
+
+[0] 
+https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/rk3288-miqi.dts#n139
