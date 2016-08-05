@@ -1,48 +1,71 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 1/7] clk: rockchip: add clock flag parameter when
- register pll
-Date: Fri, 05 Aug 2016 10:55:44 +0200
-Message-ID: <1618511.YfjKKMY3nc@diego>
-References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
- <4870605.nd4Eof6Gm1@phil> <57A45369.7020804@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: mark rk3399 hdcp_noc and pclk_vio_grf as
+ critical
+Date: Fri, 05 Aug 2016 13:02:48 +0200
+Message-ID: <4055149.Zs66lEhv2I@diego>
+References: <1470209784-2665-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <57A45369.7020804@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hl <huanglin821201@gmail.com>
-Cc: tixy@linaro.org, typ@rock-chips.com, Lin Huang <hl@rock-chips.com>, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, cw00.choi@samsung.com, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470209784-2665-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTGluLAoKQW0gRnJlaXRhZywgNS4gQXVndXN0IDIwMTYsIDE2OjUwOjQ5IHNjaHJpZWIgaGw6
-Cj4gT24gMjAxNuW5tDA45pyIMDXml6UgMDY6MzcsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4g
-QW0gRnJlaXRhZywgMjkuIEp1bGkgMjAxNiwgMTU6NTY6NTUgc2NocmllYiBMaW4gSHVhbmc6Cj4g
-Pj4gRnJvbTogSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+PiAKPiA+PiBhZGQg
-Y2xvY2sgZmxhZyBwYXJhbWV0ZXIgc28gd2UgY2FuIHBhc3Mgc3BlY2lmaWMgY2xvY2sgZmxhZwo+
-ID4+IChsaWtlIENMS19HRVRfUkFURV9OT0NBQ0hFIGV0Yy4uKXRvIHBsbCBkcml2ZXIuCj4gPj4g
-Cj4gPj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+
-PiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+ID4gCj4gPiBh
-cHBsaWVkIHRvIG15IGNsb2NrIGJyYW5jaCBmb3IgNC45IGFmdGVyIHNvbWUgbWlub3IgZWRpdHMg
-b24gdGhlIGNvbW1pdAo+ID4gbWVzc2FnZS4KPiAKPiAgIEkgY2FuIG5vdCBmb3VuZCB5b3VyIGNs
-b2NrIGJyYW5jaCBmb3IgNC45LCBjYW4geW91IHNoYXJlIG1lIHRoZSBwYXRjaAo+IElELCBpIHdh
-bnQKPiBjaGVycnktcGljayBpdCB0byBteSBkb3duc3RyZWFtIGJyYW5jaC4KCnNvcnJ5IGZvcmdv
-dCB0byBwdXNoIHllc3RlcmRheSBldmVuaW5nLiBUaGUgcGF0Y2ggaXMgYXQgWzBdLgoKUGxlYXNl
-IGtlZXAgaW4gbWluZCwgdGhhdCBJJ2xsIHJlYmFzZSB0aGF0IGJyYW5jaCBvbnRvIDQuOC1yYzEg
-b25jZSBpdCAKZ2V0cyByZWxlYXNlZCBvbiBzdW5kYXkuIFNvIHRoZSBjb21taXQgaWQgaXMgdm9s
-YXRpbGUgdGlsbCB0aGVuLgpbU2FtZSBpcyB0cnVlIGZvciBhbGwgbXkgNC45IGJyYW5jaCBvZiBj
-b3Vyc2UsIEkganVzdCBwaWNrIHBhdGNoZXMgYWxyZWFkeQp0byByZWR1Y2UgdGhlIG51bWJlciBv
-ZiBwYXRjaGVzIGluIG15IGluYm94IDotKSBdCgoKSGVpa28KClswXSBodHRwczovL2dpdC5rZXJu
-ZWwub3JnL2NnaXQvbGludXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2NrY2hpcC5naXQvY29t
-bWl0Lz9oPXY0LjktY2xrL25leHQmaWQ9MjRiZGQxYTVhMmNjNzA2YjhjNDgyMGExOTc2ZGQ0ZWVk
-NTY3MTZlNAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Chris,
+
+Am Mittwoch, 3. August 2016, 15:36:24 schrieb Chris Zhong:
+> The Type-C DP need these clocks: aclk_hdcp_noc, hclk_hdcp_noc,
+> pclk_hdcp_noc, pclk_vio_grf. Mark them as critical to avoid someone
+> close them.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+>  drivers/clk/rockchip/clk-rk3399.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3399.c
+> b/drivers/clk/rockchip/clk-rk3399.c index 78e51cb..6c8ed25 100644
+> --- a/drivers/clk/rockchip/clk-rk3399.c
+> +++ b/drivers/clk/rockchip/clk-rk3399.c
+> @@ -1466,6 +1466,9 @@ static struct rockchip_clk_branch
+> rk3399_clk_pmu_branches[] __initdata = {
+> 
+>  static const char *const rk3399_cru_critical_clocks[] __initconst = {
+>  	"aclk_cci_pre",
+> +	"aclk_hdcp_noc",
+> +	"hclk_hdcp_noc",
+> +	"pclk_hdcp_noc",
+>  	"pclk_perilp0",
+>  	"pclk_perilp0",
+>  	"hclk_perilp0",
+
+ok, we have marked all other noc (interconnect) clocks as critical, so this 
+looks good.
+
+> @@ -1485,6 +1488,7 @@ static const char *const rk3399_cru_critical_clocks[]
+> __initconst = { "gpll_hclk_perilp1_src",
+>  	"gpll_aclk_perilp0_src",
+>  	"gpll_aclk_perihp_src",
+> +	"pclk_vio_grf",
+
+I don't necessarily agree with this one. It seems for the analogix-dp the 
+preferred way is to have the driver handle its needed clock, see
+	"[PATCH v1 6/6] drm/rockchip: dw_hdmi: introduce the pclk for grf" [0]
+
+
+Heiko
+
+[0] https://patchwork.kernel.org/patch/9223331/
