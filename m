@@ -1,35 +1,83 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [RESEND PATCH v5 1/5] mfd: RK808: Add RK818 support
-Date: Fri, 5 Aug 2016 13:22:01 +0100
-Message-ID: <20160805122201.GW5243@dell>
-References: <1464850228-17244-1-git-send-email-w.egorov@phytec.de>
- <20160608141735.GE14888@dell>
- <5759277D.7090101@phytec.de>
- <577C77DF.9060706@rock-chips.com>
- <577CBB62.8080806@phytec.de>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 7/7] clk: rockchip: rk3399: Add support frac mode
+ frequencies
+Date: Fri, 05 Aug 2016 21:23:14 +0800
+Message-ID: <57A49342.3020309@rock-chips.com>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
+ <12790025.3tRiQgk9GG@diego> <57A3F971.6000009@rock-chips.com>
+ <1786762.HqNHoLusdi@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <577CBB62.8080806@phytec.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: Andy Yan <andy.yan@rock-chips.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, a.zummo@towertech.it, pawel.moll@arm.com, rtc-linux@googlegroups.com, ijc+devicetree@hellion.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, alexandre.belloni@free-electrons.com, broonie@kernel.org, dianders@chromium.org, galak@codeaurora.org, zyw@rock-chips.com, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1786762.HqNHoLusdi@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-[...]
-
-> Lee, you have already applied this series. But I can't find the patches
-> in your kernel tree.
-> I would like to read the device ID from the register in the probe function.
-> Do you want me to base my changes on top of this series or send a new
-> version?
-
-Please rebase and resend the series.
-
--- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+SGkgSGVpa28sCgpPbiAyMDE25bm0MDjmnIgwNeaXpSAxNjo0OCwgSGVpa28gU3TDvGJuZXIgd3Jv
+dGU6Cj4gSGkgWGluZywKPgo+IEFtIEZyZWl0YWcsIDUuIEF1Z3VzdCAyMDE2LCAxMDoyNjo1NyBz
+Y2hyaWViIFhpbmcgWmhlbmc6Cj4+IE9uIDIwMTblubQwOOaciDA15pelIDAzOjE5LCBIZWlrbyBT
+dMO8Ym5lciB3cm90ZToKPj4+IEFtIERpZW5zdGFnLCAyLiBBdWd1c3QgMjAxNiwgMTU6MjI6NTkg
+c2NocmllYiBYaW5nIFpoZW5nOgo+Pj4+IFdlIG5lZWQgdG8gc3VwcG9ydCB2YXJpb3VzIGRpc3Bs
+YXkgcmVzb2x1dGlvbnMgZm9yIGV4dGVybmFsCj4+Pj4gZGlzcGxheSBkZXZpY2VzIGxpa2UgSERN
+SS9EUCwgdGhlIGZyYWMgbW9kZSBjYW4gaGVscCB1cyB0bwo+Pj4+IGFjcXVpcmUgYWxtb3N0IGFu
+eSBmcmVxdWVuY2llcywgYW5kIG5lZWQgaGlnaGVyIFZDT3MgdG8gcmVkdWNlCj4+Pj4gY2xvY2sg
+aml0dGVycy4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IFhpbmcgWmhlbmc8emhlbmd4aW5nQHJv
+Y2stY2hpcHMuY29tPgo+Pj4gd2h5IGRvZXMgdGhpcyBuZWVkIHRvIGJlIGEgc2VwYXJhdGUgcmF0
+ZSBhcnJheSBhbmQgY2Fubm90IGxpdmUgaW4gdGhlCj4+PiBnZW5lcmFsIHBsbCByYXRlIGFycmF5
+Pwo+Pj4KPj4+IFRoZSBwbGxzIGFyZSBnZW5lcmFsIHB1cnBvc2UsIHNvIHdlIHNob3VsZG4ndCBs
+aW1pdCB0aGVtIGFyYml0YXJpbHkuCj4+IFllcywgSSB1bmRlcnN0YW5kIHlvdXIgbWVhbi4gOi0p
+Cj4+Cj4+PiBJIGN1cnJlbnRseSBvbmx5IHNlZSBzb21lIGZyZXF1ZW5jaWVzICg1OTRNSHosIDI5
+N01IeiwgNTRNSHopIHRoYXQgYXJlCj4+PiBwcmVzZW50IGluIGJvdGggYXJyYXlzIGJ1dCBoYXZl
+IGRpZmZlcmVudCBzZXR0aW5ncy4gQXMgeW91ciBwYXRjaAo+Pj4gZGVzY3JpcHRpb24gc2F5cyB0
+aGF0IHRoZXNlIHNldHRpbmdzIHJlZHVjZSBjbG9jayBqaXR0ZXIsIHdvdWxkbid0IHRoZQo+Pj4g
+Z2VuZXJhbCBmcmVxdWVuY2llcyBhbHNvIHByb2ZpdCBmcm9tIG1lcmdpbmcgdGhlc2UgbmV3IHZh
+bHVlcyBpbnRvIHRoZQo+Pj4gZ2VuZXJhbCByYXRlIGFycmF5Pwo+PiBhbmQgaGVyZSBhcmUgc29t
+ZSBvZiBvdXIgaWRlYXM6Cj4+Cj4+ICJXSXRoIHRoZSBmcmFjIG1vZGUgYW5kIGhpZ2hlciBWQ08g
+dG8gcmVkdWNlIGNsb2NrIGppdHRlcnMiIHRoYXQKPj4gc3VnZ2VzdGlvbiBpcyBmcm9tIElDIGRl
+c2lnbmVyLgo+PiBUaGVyZSBhcmUgbWFueSBhbmQgdmFyaW91cyBraW5kcyByZXNvbHV0aW9uIGFu
+ZCBuZWVkZWQgZnJlcXVlbmNpZXMgZm9yCj4+IGV4dGVybmFsIGRpc2FwbGF5IGRldmljZXMuIEZv
+ciBleGFtcGxlLCB0aGUgRFAgbmVlZHM6Cj4+IDM4NDB4MjE2MCA1MzMyNTBLSHoKPj4gMzg0MHgy
+MTYwIDI5NzAwMEtIego+PiAzODQweDIxNjAgMjk2NzAzS0h6Cj4+IDI1NjB4MTQ0MCAyNDE1MDBL
+SHoKPj4gMTkyMHgxMDgwIDE0ODUwMEtIego+PiAxOTIweDEwODAgMTQ4MzUyS0h6Cj4+IDE2ODB4
+MTA1MCAxNDYyNTBLSHoKPj4gMTYwMHg5MDAgMTA4MDAwS0h6Cj4+IDEyODB4MTAyNCAxMzUwMDBL
+SHoKPj4gMTI4MHgxMDI0IDEwODAwMEtIego+PiAuLi4gYW5kIHNvIG9uCj4+Cj4+IFRoZXJlIHNv
+bWUgZnJlcXVlbmNpZXMgbXVzdCBiZSBhbGxvY2F0ZWQgd2l0aCBmcmFjIG1vZGUuIFdlIHNlcGFy
+YXRlCj4+IHRoZXNlIGZyZXF1ZW5jaWVzIHRoYXQgYXJlIG9ubHkgdXNlZCBmb3IgZGlzcGxheSAo
+VlBMTCkgZnJvbSB0aGUgZ2VuZXJhbAo+PiByYXRlIHRhYmxlLCBhbmQgcHV0IHRoZW0gdG8gYmUg
+Y2xhc3NpZmllZCBpbnRvIGEgZnJhYyBtb2RlIHRhYmxlLCB3ZSBjYW4KPj4gcmVkdWNlIHRoZSBm
+cmVxdWVuY3kgb2YgdGhlIHF1ZXJ5IHRpbWUsIHRoZSB0d28gcmF0ZSB0YWJsZXMgd2lsbCBub3QK
+Pj4gaW50ZXJmZXJlIHdpdGggZWFjaCBvdGhlci4gQmVjYXVzZSBvdGhlciBQTExzIGRvbid0IG5l
+ZWQgdG8gYXNzZ2luIHRoZXNlCj4+IHZhcmlvdXMgZnJlcXVlbmNpZXMgd2l0aCBmcmFjIG1vZGUu
+Cj4gSG1tLCB5b3UncmUgYWRkaW5nIDE0IGZyZXF1ZW5jaWVzIHRvIHRoYXQgbmV3IHRhYmxlICg0
+IG9yIHNvIG9mIHRoZW0KPiBkdXBsaWNhdGluZyBleGlzdGluZyBmcmVxdWVuY2llcykuIFNvIGV2
+ZW4gaWYgdGhlIGVmZmVjdGl2ZSBudW1iZXIgb2YgbmV3Cj4gZnJlcXVlbmNpZXMgZ29lcyBmcm9t
+IG5vdyAxMCB0byAyMCwgSSBkb24ndCB0aGluayB3YWxraW5nIHRoYXQgdGFibGUgd2lsbCB0YWtl
+Cj4gYW4gZXhjZXNzaXZlIHRpbWUgbG9uZ2VyIHRoYW4gbm93Lgo+Cj4gQWZ0ZXIgdGhlIHBhdGNo
+IGludHJvZHVjaW5nIHRoZSBhdXRvbWF0aWMgcmF0ZSBjYWxjdWxhdGlvbiwgdGhlIHJhdGUgdGFi
+bGUgd2UKPiBuZWVkIHRvIHdhbGssIHdpbGwgZXZlbiBnZXQgc21hbGxlci4KPgo+IE90aGVyIGNv
+bXBvbmVudHMgbWlnaHQgYWxzbyBwcm9maXQgZnJvbSB0aGUgdXBkYXRlZCBzdGFuZGFyZCBmcmVx
+dWVuY2llcyB3aXRoCj4gbGVzcyBqaXR0ZXIgeW91J3JlIGludHJvZHVjaW5nIGhlcmUuCj4KPiBB
+bmQgb2YgY291cnNlIHRoZXJlIGlzIGFsc28gdGhlIHBvc3NpYmlsaXR5IHNvbWVib2R5IG1pZ2h0
+IHdhbnQgdG8gYnVpbGQgc29tZQo+IHJrMzM5OSBkZXZpY2Ugd2l0aG91dCBhbnkgZ3JhcGhpY3Mg
+b3V0cHV0IGF0IGFsbCBbYXJtLXNlcnZlciBzZWVtIHRvIGJlIHRoZQo+IG5ldyBoeXBlIDotKSBd
+LCBzbyBtYXkgd2FudCB0byB1c2UgdGhlIHZwbGwgZm9yIHNvbWV0aGluZyBlbHNlIGNvbXBsZXRl
+bHkuCj4KPiBTbyBJIHN0aWxsIGRvbid0IHNlZSBhbiBhcmd1bWVudCB3aHkgaXQgbmVlZHMgdG8g
+YmUgYSBzZXBhcmF0ZSB0YWJsZSwgYXMgSQo+IGN1cnJlbnRseSBkb24ndCBzZWUgYSBjYXNlIHdl
+cmUgaXQgd2lsbCByZWFsbHkgaHVydCB0aGUgb3RoZXIgUExMcy4KPgo+Cj4gSGVpa28KPgpZZXMs
+IHNvcnJ5IHRvIHRoaXMgaWRlYSBpcyBub3QgY29tcHJlaGVuc2l2ZS4gSSB3aWxsIHRyeSB0byBm
+aW5kIGEgCmJldHRlciB3YXkuCgpUaGFua3MgZm9yIHlvdXIgY29tbWVudHMuIDotKQoKLS0gCi0g
+WGluZyBaaGVuZwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
