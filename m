@@ -1,115 +1,70 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Boundary between pinctrl and peripheral settings
-Date: Fri, 05 Aug 2016 01:36:06 +0200
-Message-ID: <1719598.F3JUalFtig@phil>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH v3 7/7] clk: rockchip: rk3399: Add support frac mode frequencies
+Date: Fri, 05 Aug 2016 10:26:57 +0800
+Message-ID: <57A3F971.6000009@rock-chips.com>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1470122579-32083-1-git-send-email-zhengxing@rock-chips.com> <12790025.3tRiQgk9GG@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <12790025.3tRiQgk9GG@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Linus,
+Hi Heiko,
+
+On 2016年08月05日 03:19, Heiko Stübner wrote:
+> Hi Xing,
+>
+> Am Dienstag, 2. August 2016, 15:22:59 schrieb Xing Zheng:
+>> We need to support various display resolutions for external
+>> display devices like HDMI/DP, the frac mode can help us to
+>> acquire almost any frequencies, and need higher VCOs to reduce
+>> clock jitters.
+>>
+>> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
+> why does this need to be a separate rate array and cannot live in the general
+> pll rate array?
+>
+> The plls are general purpose, so we shouldn't limit them arbitarily.
+Yes, I understand your mean. :-)
+>
+> I currently only see some frequencies (594MHz, 297MHz, 54MHz) that are present
+> in both arrays but have different settings. As your patch description says
+> that these settings reduce clock jitter, wouldn't the general frequencies also
+> profit from merging these new values into the general rate array?
+>
+>
+and here are some of our ideas:
+
+"WIth the frac mode and higher VCO to reduce clock jitters" that 
+suggestion is from IC designer.
+There are many and various kinds resolution and needed frequencies for 
+external disaplay devices. For example, the DP needs:
+3840x2160 533250KHz
+3840x2160 297000KHz
+3840x2160 296703KHz
+2560x1440 241500KHz
+1920x1080 148500KHz
+1920x1080 148352KHz
+1680x1050 146250KHz
+1600x900 108000KHz
+1280x1024 135000KHz
+1280x1024 108000KHz
+... and so on
+
+There some frequencies must be allocated with frac mode. We separate 
+these frequencies that are only used for display (VPLL) from the general 
+rate table, and put them to be classified into a frac mode table, we can 
+reduce the frequency of the query time, the two rate tables will not 
+interfere with each other. Because other PLLs don't need to assgin these 
+various frequencies with frac mode.
+
+Thanks
+
+-- 
+- Xing Zheng
 
 
-on the rk3399 we found an interesting new feature and would like to get some 
-input from the pinctrl expert :-) , as Doug and me currently are of 
-differing opinions on where specific control elements belong.
-
-
-In a nutshell on the rk3399 some things like one specific uart can use 
-multiple pins to output data, but control of that seems to be split. The 
-actual pin config is identical for all pins - each needs to be configured to 
-function 2, pulls set etc. Then somewhere between the pin io-cells and the 
-uart it seems to have some sort of switch to decide to which pin to actually 
-route the data.
-
-
-+-------+    +--------+  /- GPIO4_B1 (pinmux 2)
-| uart2 | -- | switch | --- GPIO4_C1 (pinmux 2)
-+-------+    +--------+  \- GPIO4_C4 (pinmux 2)
-(switch selects one of the 3 pins to actually output data to)
-
-
-So the question now is, should the pinctrl driver also flip that switch to 
-the correct position itself when pin-function 2 of say gpio4_bq gets 
-selected or is that routing outside of pinctrl's scope?
-
------
-
-I hope to have presented the core issue above somewhat neutrally, below are 
-my personal worries about doing that in pinctrl :-) .
-
-
-Apart from it feeling "bolted-on" to me, I have two main worries with that 
-approach:
-(1) Right now the unused pins are really unused on the same iomux, so when 
-flipping the switch it essentially does
-
- uart-sout    unused 
-  |(iomux2)    |(iomux2)
-  |            |
-+----------+ +----------+
-| gpio4_b0 | | gpio4_c0 |
-+----------+ +----------+
-
-going to
-
- unused       uart-sout
-  |(iomux2)    |(iomux2)
-  |            |
-+----------+ +----------+
-| gpio4_b0 | | gpio4_c0 |
-+----------+ +----------+
-
-but nothing keeps designers from doing
-
- uart-sout    special1 
-  |(iomux2)    |(iomux2)
-  |            |
-+----------+ +----------+
-| gpio4_b0 | | gpio4_c0 |
-+----------+ +----------+
-
-going to
-
- special2     uart-sout
-  |(iomux2)    |(iomux2)
-  |            |
-+----------+ +----------+
-| gpio4_b0 | | gpio4_c0 |
-+----------+ +----------+
-
-somewhere down the road, so relying on following the selected iomux feels 
-not future proof.
-
-(2) Looking at [0] we already have a similar case, where we configure the 
-pins for rgmii but still tell the gmac controller that it is supposed to do 
-rgmii instead of rmii.
-
-Here the pinmux is the same for all pins, rmii just uses less pins when 
-compared to rgmii, so binding that to the pinmux isn't even possible.
-
-And doing it one way here and another way for the switch feels very strange.
-
-
-I hope this overly long mail was not to confusing and hope for some words of 
-wisdom ;-)
-
-
-Big thanks
-Heiko
-
-
-[0] 
-https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/rk3288-miqi.dts#n139
