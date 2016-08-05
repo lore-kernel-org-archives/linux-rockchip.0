@@ -1,63 +1,85 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id
- for usbphy0/usbphy1
-Date: Fri, 5 Aug 2016 16:34:42 +0800
-Message-ID: <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
- <1470122401-31934-3-git-send-email-zhengxing@rock-chips.com>
- <1918977.W0kRfKbZsD@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 7/7] clk: rockchip: rk3399: Add support frac mode frequencies
+Date: Fri, 05 Aug 2016 10:48:38 +0200
+Message-ID: <1786762.HqNHoLusdi@diego>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <12790025.3tRiQgk9GG@diego> <57A3F971.6000009@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1918977.W0kRfKbZsD@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <57A3F971.6000009@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiAyMDE2LzgvNSAzOjEwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBIaSBY
-aW5nLAo+Cj4gQW0gRGllbnN0YWcsIDIuIEF1Z3VzdCAyMDE2LCAxNToxOTo1NiBzY2hyaWViIFhp
-bmcgWmhlbmc6Cj4+IEV4cG9ydCB0aGVzZSBzb3VyY2UgY2xvY2tzIGZvciB1c2JwaHkuCj4+Cj4+
-IFNpZ25lZC1vZmYtYnk6IFhpbmcgWmhlbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KPiBj
-YW4geW91IHBsZWFzZSBwcm92aWRlIGEgcmF0aW9uYWxlIHdoeSB5b3UgbmVlZCBtYW51YWwgY29u
-dHJvbCBvdmVyIHRoYXQKPiBpbnRlcm1lZGlhdGUgY2xvY2s/CgpXZWxsLCBGcm9tIGJlbG93IGdy
-YXBoLCB5b3UgY2FuIHNlZSB0aGF0ICdjbGtfdXNicGh5WF80ODBtJyBpcyBnZW5lcmF0ZWQgCmZy
-b20gdXNiMnBoeSwgYW5kICdjbGtfdXNicGh5XzQ4MG0nIHdoaWNoIHNlbGVjdCBmcm9tIApjbGtf
-dXNicGh5WF80ODBtX3NyYyB2aWEgYSBnYXRlIChHMTNbMTJdKSAgcHJvdmlkZWQgNDgwTSBjbG9j
-ayB0byBvdGhlciAKbW9kdWxlcy4KCiAgIHhpbjI0bQogICAgICAgfF9fIGNsa191c2IycGh5MF9y
-ZWYKICAgICAgIHwgICAgICAgICAgICAgICAgIHxfXyBjbGtfdXNicGh5MF80ODBtCiAgICAgICB8
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8X19jbGtfdXNicGh5MF80ODBtX3Ny
-YwogICAgICAgfCB8X19jbGtfdXNicGh5XzQ4MG0KICAgICAgIHwgICAgICAgICB8X18gLi4uIC4u
-LgogICAgICAgfF9fIGNsa191c2IycGh5MV9yZWYKICAgICAgICAgICAgICAgICAgICAgICAgICB8
-X18gY2xrX3VzYnBoeTFfNDgwbQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICB8X19jbGtfdXNicGh5MV80ODBtX3NyYwoKPiBUaGUgdHdvIHVzYnBoeXMgc2VlbSB0byB1
-c2UgdGhlICBjbGtfdXNiMnBoeVhfcmVmIGNsb2NrcywgZ2VuZXJhdGUgdGhlIDQ4MG0KPiBjbG9j
-a3MsIGJ1dCBkbyBub3Qgc2VlbSB0byBuZWVkIHRoZSBjbGtfdXNicGh5WF80ODBtX3NyYyBnYXRl
-cy4KClllYWgsIHRoZXkgdXNlZCB0byBiZS4gSG93ZXZlciwgdGhlIHN0b3J5IHdlbnQgc29tZXRo
-aW5nIGxpa2UgdGhpcywKClNvbWUgUE0gc3VzcGVuZCBwcm9jZXNzIHJlbGF0ZWQgZWhjaS9vaGNp
-IGNvbnRyb2xsZXIgYXJlIGJhc2Ugb24gNDgwbSAKY2xvY2tzLCB1bmZvcnR1bmF0ZWx5LCB1c2Iy
-LXBoeSBzdXNwZW5kZWQgZWFybGllciB0aGFuIGVoY2kvb2hjaSAKKHVzYjItcGh5IHdpbGwgYmUg
-YXV0byBzdXNwZW5kZWQgaWYgbm8gZGV2aWNlcyBwbHVnLWluKSwgYW5kIHRoZSAKY2xrLTQ4MG0g
-cHJvdmlkZWQgYnkgaXQgd2FzIGRpc2FibGVkIGlmIG5vIG1vZHVsZSB1c2VkLiBBcyBhIHJlc3Vs
-dCwgdGhlIApQTSBzdXNwZW5kIHByb2Nlc3Mgd2FzIGJsb2NrZWQgd2hlbiBpdCBydW4gaW50byBl
-aGNpL29oY2kgbW9kdWxlLgoKSGVuY2UsIHdlIGFyZSBwbGFuaW5nIHRvIHJlZmVyIGNsa191c2Jw
-aHlYXzQ4MG1fc3JjIGludG8gZWFjaCBlaGNpL29oY2kgCmRyaXZlci4gTWF5YmUgeW91IHdpbGwg
-Y2hhbGxlbmdlIHdoeSBub3QgcmVmZXIgY2xrX3VzYnBoeV80ODBtIGRpcmVjdGx5PyAKYmVjYXVz
-ZSB0aGVyZSBhcmUgdHdvIGVoY2kvb2hjaSBjb25uZWN0ZWQgaW4gdGhlIGRpZmZlcmVudCB1c2Iy
-cGh5LCBhbmQgCm9ubHkgb25lIGNsa191c2JwaHlfNDgwbSBjbG9jayB3YXMgc2VsZWN0ZWQgaW4g
-Y2xvY2sgdHJlZS4KCkJSLgpGcmFuawoKPiBUaGUgY2xrX3VzYnBoeVhfNDgwbV9zcmMgY2xvY2tz
-IG9uIHRoZSBvdGhlciBoYW5kIG9ubHkgbGVhZCB0byB0aGUKPiBjbGtfdXNicGh5XzQ4MG0gbXV4
-LCBzbyBJJ2QgbGlrZSBzb21lIGV4cGxhbmF0aW9uIG9uIHdoYXQgeW91IHdhbnQgdG8gYWNoaWV2
-ZQo+IGhlcmUgOi0pCj4KPgo+IFRoYW5rcwo+IEhlaWtvCj4KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Xing,
+
+Am Freitag, 5. August 2016, 10:26:57 schrieb Xing Zheng:
+> On 2016年08月05日 03:19, Heiko Stübner wrote:
+> > Am Dienstag, 2. August 2016, 15:22:59 schrieb Xing Zheng:
+> >> We need to support various display resolutions for external
+> >> display devices like HDMI/DP, the frac mode can help us to
+> >> acquire almost any frequencies, and need higher VCOs to reduce
+> >> clock jitters.
+> >> 
+> >> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
+> > 
+> > why does this need to be a separate rate array and cannot live in the
+> > general pll rate array?
+> > 
+> > The plls are general purpose, so we shouldn't limit them arbitarily.
+> 
+> Yes, I understand your mean. :-)
+> 
+> > I currently only see some frequencies (594MHz, 297MHz, 54MHz) that are
+> > present in both arrays but have different settings. As your patch
+> > description says that these settings reduce clock jitter, wouldn't the
+> > general frequencies also profit from merging these new values into the
+> > general rate array?
+> 
+> and here are some of our ideas:
+> 
+> "WIth the frac mode and higher VCO to reduce clock jitters" that
+> suggestion is from IC designer.
+> There are many and various kinds resolution and needed frequencies for
+> external disaplay devices. For example, the DP needs:
+> 3840x2160 533250KHz
+> 3840x2160 297000KHz
+> 3840x2160 296703KHz
+> 2560x1440 241500KHz
+> 1920x1080 148500KHz
+> 1920x1080 148352KHz
+> 1680x1050 146250KHz
+> 1600x900 108000KHz
+> 1280x1024 135000KHz
+> 1280x1024 108000KHz
+> ... and so on
+> 
+> There some frequencies must be allocated with frac mode. We separate
+> these frequencies that are only used for display (VPLL) from the general
+> rate table, and put them to be classified into a frac mode table, we can
+> reduce the frequency of the query time, the two rate tables will not
+> interfere with each other. Because other PLLs don't need to assgin these
+> various frequencies with frac mode.
+
+Hmm, you're adding 14 frequencies to that new table (4 or so of them 
+duplicating existing frequencies). So even if the effective number of new 
+frequencies goes from now 10 to 20, I don't think walking that table will take 
+an excessive time longer than now.
+
+After the patch introducing the automatic rate calculation, the rate table we 
+need to walk, will even get smaller.
+
+Other components might also profit from the updated standard frequencies with 
+less jitter you're introducing here.
+
+And of course there is also the possibility somebody might want to build some 
+rk3399 device without any graphics output at all [arm-server seem to be the 
+new hype :-) ], so may want to use the vpll for something else completely.
+
+So I still don't see an argument why it needs to be a separate table, as I 
+currently don't see a case were it will really hurt the other PLLs.
+
+
+Heiko
