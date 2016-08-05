@@ -1,85 +1,93 @@
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v4 0/7] rk3399 support ddr frequency scaling
-Date: Fri, 5 Aug 2016 15:48:19 +0200
-Message-ID: <CAAObsKBpWUP0rd2TgGE7y-foQFwHq0+2jEZzkS_Ks3SSTJiazg@mail.gmail.com>
-References: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id for usbphy0/usbphy1
+Date: Fri, 05 Aug 2016 18:05:51 +0200
+Message-ID: <1570410.dThJclhmJd@diego>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1918977.W0kRfKbZsD@diego> <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469779021-10426-1-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: tixy@linaro.org, typ@rock-chips.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, dbasehore@chromium.org, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, cw00.choi@samsung.com, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.meng@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjkgSnVseSAyMDE2IGF0IDA5OjU2LCBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPiB3
-cm90ZToKPiByazMzOTkgcGxhdGZvcm0gaGF2ZSBkZmkgY29udHJvbGxlciBjYW4gbW9uaXRvciBk
-ZHIgbG9hZCwKPiBhbmQgZGNmIGNvbnRyb2xsZXIgdG8gaGFuZGxlIGRkciByZWdpc3RlciBzbyB3
-ZSBjYW4gZ2V0IHRoZQo+IHJpZ2h0IGRkciBmcmVxdWVuY3kgYW5kIG1ha2UgZGRyIGNvbnRyb2xs
-ZXIgaGFwcHkgd29yayh3aGljaAo+IHdpbGwgaW1wbGVtZW50IGluIGJsMzEpLiBTbyB3ZSBkbyBk
-ZHIgZnJlcXVlbmN5IHNjYWxpbmcgd2l0aAo+IGZvbGxvd2luZyBmbG93Ogo+Cj4gICAgICAgICAg
-ICAgIGtlcm5lbCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYmwzMQo+Cj4gICAgICAg
-ICBtb25pdG9yIGRkciBsb2FkCj4gICAgICAgICAgICAgICAgIHwKPiAgICAgICAgICAgICAgICAg
-fAo+ICAgICAgICAgZ2V0X3RhcmdldF9yYXRlCj4gICAgICAgICAgICAgICAgIHwKPiAgICAgICAg
-ICAgICAgICAgfCAgICAgICAgICAgcGFzcyByYXRlIHRvIGJsMzEKPiAgICAgICAgIGNsa19zZXRf
-cmF0ZShkZHIpIC0tLS0tLS0tLS0tLS0tLS0tLS0tLT5ydW4gZGNmIGZsb3cKPiAgICAgICAgICAg
-ICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAo+ICAgICAgICAgICAg
-ICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4gICAgICAgICB3YWl0
-IGRjZiBpbnRlcnJ1cHQ8LS0tLS0tLS0tLS0tLS0tLS0tLXRyaWdnZXIgZGNmIGludGVycnVwdAo+
-ICAgICAgICAgICAgICAgICB8Cj4gICAgICAgICAgICAgICAgIHwKPiAgICAgICAgICAgICAgIHJl
-dHVybgoKSGkgTGluLAoKY2FuIHlvdSBjb25maXJtIHRoYXQgdGhlIGhhcmR3YXJlIGlzbid0IGNh
-cGFibGUgb2YgcmFpc2luZyBpbnRlcnJ1cHRzCndoZW4gcHJvZ3JhbW1hYmxlIGxvYWQgdGhyZXNo
-b2xkcyBhcmUgdHJlc3Bhc3NlZD8gRnJvbSByZWFkaW5nIHRoZQpUUk0sIGxvb2tzIGxpa2UgaXQg
-c2hvdWxkIGJlIHBvc3NpYmxlLgoKT3IgaXMgdGhlcmUgYW55IHJlYXNvbiB0byBtZXJnZSBub3cg
-YSBkcml2ZXIgdGhhdCBwb2xscyBmb3IgbG9hZCBzdGF0cz8KClRoYW5rcywKClRvbWV1Cgo+IExp
-biBIdWFuZyAoNik6Cj4gICBjbGs6IHJvY2tjaGlwOiBhZGQgbmV3IGNsb2NrLXR5cGUgZm9yIHRo
-ZSBkZHJjbGsKPiAgIGNsazogcm9ja2NoaXA6IHJrMzM5OTogYWRkIFNDTEtfRERSQ0xLIElEIGZv
-ciBkZHJjCj4gICBjbGs6IHJvY2tjaGlwOiByazMzOTk6IGFkZCBkZHJjIGNsb2NrIHN1cHBvcnQK
-PiAgIFBNIC8gZGV2ZnJlcTogZXZlbnQ6IHN1cHBvcnQgcm9ja2NoaXAgZGZpIGNvbnRyb2xsZXIK
-PiAgIFBNIC8gZGV2ZnJlcTogcm9ja2NoaXA6IGFkZCBkZXZmcmVxIGRyaXZlciBmb3IgcmszMzk5
-IGRtYwo+ICAgZHJtL3JvY2tjaGlwOiBBZGQgZG1jIG5vdGlmaWVyIGluIHZvcCBkcml2ZXIKPgo+
-Cj4gSGVpa28gU3TDvGJuZXIgKDEpOgo+ICAgY2xrOiByb2NrY2hpcDogYWRkIGNsb2NrIGZsYWcg
-cGFyYW1ldGVyIHdoZW4gcmVnaXN0ZXIgcGxsCj4KPiBMaW4gSHVhbmcgKDYpOgo+ICAgY2xrOiBy
-b2NrY2hpcDogYWRkIG5ldyBjbG9jay10eXBlIGZvciB0aGUgZGRyY2xrCj4gICBjbGs6IHJvY2tj
-aGlwOiByazMzOTk6IGFkZCBTQ0xLX0REUkNMSyBJRCBmb3IgZGRyYwo+ICAgY2xrOiByb2NrY2hp
-cDogcmszMzk5OiBhZGQgZGRyYyBjbG9jayBzdXBwb3J0Cj4gICBQTSAvIGRldmZyZXE6IGV2ZW50
-OiBzdXBwb3J0IHJvY2tjaGlwIGRmaSBjb250cm9sbGVyCj4gICBQTSAvIGRldmZyZXE6IHJvY2tj
-aGlwOiBhZGQgZGV2ZnJlcSBkcml2ZXIgZm9yIHJrMzM5OSBkbWMKPiAgIGRybS9yb2NrY2hpcDog
-QWRkIGRtYyBub3RpZmllciBpbiB2b3AgZHJpdmVyCj4KPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAv
-TWFrZWZpbGUgICAgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Ns
-ay1kZHIuYyAgICAgICAgICAgICAgfCAxNDYgKysrKysrKysrCj4gIGRyaXZlcnMvY2xrL3JvY2tj
-aGlwL2Nsay1wbGwuYyAgICAgICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9jbGsvcm9ja2No
-aXAvY2xrLXJrMzM5OS5jICAgICAgICAgICB8ICAxOSArKwo+ICBkcml2ZXJzL2Nsay9yb2NrY2hp
-cC9jbGsuYyAgICAgICAgICAgICAgICAgIHwgIDExICstCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlw
-L2Nsay5oICAgICAgICAgICAgICAgICAgfCAgMjkgKy0KPiAgZHJpdmVycy9kZXZmcmVxL0tjb25m
-aWcgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvZGV2ZnJlcS9NYWtlZmls
-ZSAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICBkcml2ZXJzL2RldmZyZXEvZXZlbnQvS2Nv
-bmZpZyAgICAgICAgICAgICAgIHwgICA3ICsKPiAgZHJpdmVycy9kZXZmcmVxL2V2ZW50L01ha2Vm
-aWxlICAgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVudC9yb2NrY2hp
-cC1kZmkuYyAgICAgICAgfCAyNTMgKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZGV2ZnJlcS9y
-b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgIDggKwo+ICBkcml2ZXJzL2RldmZyZXEvcm9j
-a2NoaXAvTWFrZWZpbGUgICAgICAgICAgIHwgICAxICsKPiAgZHJpdmVycy9kZXZmcmVxL3JvY2tj
-aGlwL3JrMzM5OV9kbWMuYyAgICAgICB8IDQ3MyArKysrKysrKysrKysrKysrKysrKysrKysrKysr
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxMjQgKysr
-KysrKy0KPiAgaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzOTktY3J1LmggICAgICB8ICAg
-MSArCj4gIGluY2x1ZGUvc29jL3JvY2tjaGlwL3JvY2tjaGlwX3NpcC5oICAgICAgICAgfCAgMjcg
-KysKPiAgMTcgZmlsZXMgY2hhbmdlZCwgMTA5OCBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygt
-KQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLWRkci5jCj4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2RldmZyZXEvZXZlbnQvcm9ja2NoaXAtZGZpLmMK
-PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZGV2ZnJlcS9yb2NrY2hpcC9LY29uZmlnCj4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2RldmZyZXEvcm9ja2NoaXAvTWFrZWZpbGUKPiAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZGV2ZnJlcS9yb2NrY2hpcC9yazMzOTlfZG1jLmMK
-PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvc29jL3JvY2tjaGlwL3JvY2tjaGlwX3NpcC5o
-Cj4KPiAtLQo+IDEuOS4xCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Hi Frank,
+
+Am Freitag, 5. August 2016, 16:34:42 schrieb Frank Wang:
+> On 2016/8/5 3:10, Heiko Stübner wrote:
+> > Am Dienstag, 2. August 2016, 15:19:56 schrieb Xing Zheng:
+> >> Export these source clocks for usbphy.
+> >> 
+> >> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> > 
+> > can you please provide a rationale why you need manual control over that
+> > intermediate clock?
+> 
+> Well, From below graph, you can see that 'clk_usbphyX_480m' is generated
+> from usb2phy, and 'clk_usbphy_480m' which select from
+> clk_usbphyX_480m_src via a gate (G13[12])  provided 480M clock to other
+> modules.
+> 
+>    xin24m
+> 
+>        |__ clk_usb2phy0_ref
+>        |
+>        |                 |__ clk_usbphy0_480m
+>        |                 |
+>        |                                   |__clk_usbphy0_480m_src
+>        | |
+>        | |__clk_usbphy_480m
+>        | |
+>        |         |__ ... ...
+>        |
+>        |__ clk_usb2phy1_ref
+>        |
+>                           |__ clk_usbphy1_480m
+>                           |
+>                                           |__clk_usbphy1_480m_src
+> > 
+> > The two usbphys seem to use the  clk_usb2phyX_ref clocks, generate the
+> > 480m
+> > clocks, but do not seem to need the clk_usbphyX_480m_src gates.
+> 
+> Yeah, they used to be. However, the story went something like this,
+> 
+> Some PM suspend process related ehci/ohci controller are base on 480m
+> clocks, unfortunately, usb2-phy suspended earlier than ehci/ohci
+> (usb2-phy will be auto suspended if no devices plug-in), and the
+> clk-480m provided by it was disabled if no module used. As a result, the
+> PM suspend process was blocked when it run into ehci/ohci module.
+
+ah, so the ehci controller needs that 480m clock as well? Do you happen to 
+have example patches for the ehci/ohci side already? I'd like to peak at what 
+you mean with "some PM suspend process related" things.
+
+Depending on what is actually needed, you could also pull the usbphy out of 
+autosuspend in a pm-prepare callback of the phy driver itself ... see 
+http://lxr.free-electrons.com/source/include/linux/pm.h#L86
+
+Like 
+- in the .prepare callback make sure to unsuspend the phy
+  and deactivate the autosuspend
+- ehci/ohci will poweroff the phy in it s suspend callback (already does that)
+- suspend -> resume
+- ehci/ohci will poweron the phy
+- in the phy's .complete callback you can reactivate the autosuspend timer
+
+Because it looks more like you actually need the phy and not the clock alone.
+So it would be nicer to use mechanisms already in place instead of creating 
+new dependencies.
+
+
+> Hence, we are planing to refer clk_usbphyX_480m_src into each ehci/ohci
+> driver. Maybe you will challenge why not refer clk_usbphy_480m directly?
+> because there are two ehci/ohci connected in the different usb2phy, and
+> only one clk_usbphy_480m clock was selected in clock tree.
+
+Nope, no argument from me as I fully understand that each phy provides its own 
+480m clock :-) .
+
+
+Heiko
