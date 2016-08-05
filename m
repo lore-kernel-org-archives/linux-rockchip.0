@@ -1,70 +1,123 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v3 7/7] clk: rockchip: rk3399: Add support frac mode frequencies
-Date: Fri, 05 Aug 2016 10:26:57 +0800
-Message-ID: <57A3F971.6000009@rock-chips.com>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1470122579-32083-1-git-send-email-zhengxing@rock-chips.com> <12790025.3tRiQgk9GG@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <12790025.3tRiQgk9GG@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/3] dmaengine: pl330: enable burst mode by parsing dt
+Date: Fri,  5 Aug 2016 10:53:21 +0800
+Message-ID: <1470365602-32586-3-git-send-email-shawn.lin@rock-chips.com>
+References: <1470365602-32586-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1470365602-32586-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Currently pl330 use single mode defaultly. But burst
+mode can improve efficiency of memory accessing. We
+couldn't enable it by defalut in case of breaking any
+Socs which don't support it.
 
-On 2016年08月05日 03:19, Heiko Stübner wrote:
-> Hi Xing,
->
-> Am Dienstag, 2. August 2016, 15:22:59 schrieb Xing Zheng:
->> We need to support various display resolutions for external
->> display devices like HDMI/DP, the frac mode can help us to
->> acquire almost any frequencies, and need higher VCOs to reduce
->> clock jitters.
->>
->> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
-> why does this need to be a separate rate array and cannot live in the general
-> pll rate array?
->
-> The plls are general purpose, so we shouldn't limit them arbitarily.
-Yes, I understand your mean. :-)
->
-> I currently only see some frequencies (594MHz, 297MHz, 54MHz) that are present
-> in both arrays but have different settings. As your patch description says
-> that these settings reduce clock jitter, wouldn't the general frequencies also
-> profit from merging these new values into the general rate array?
->
->
-and here are some of our ideas:
+With burst mode supported, we could see the improvement
+significantly when tesing SPI transfer etc.
 
-"WIth the frac mode and higher VCO to reduce clock jitters" that 
-suggestion is from IC designer.
-There are many and various kinds resolution and needed frequencies for 
-external disaplay devices. For example, the DP needs:
-3840x2160 533250KHz
-3840x2160 297000KHz
-3840x2160 296703KHz
-2560x1440 241500KHz
-1920x1080 148500KHz
-1920x1080 148352KHz
-1680x1050 146250KHz
-1600x900 108000KHz
-1280x1024 135000KHz
-1280x1024 108000KHz
-... and so on
+default single mode
+[   88.292550] spi write 65536*1 cost 32402us speed:2022KB/S
 
-There some frequencies must be allocated with frac mode. We separate 
-these frequencies that are only used for display (VPLL) from the general 
-rate table, and put them to be classified into a frac mode table, we can 
-reduce the frequency of the query time, the two rate tables will not 
-interfere with each other. Because other PLLs don't need to assgin these 
-various frequencies with frac mode.
+After applied with burst mode(len 16)
+[   17.625296] spi write 65536*1 cost 17830us speed:3675KB/S
 
-Thanks
+Cc: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
+ drivers/dma/pl330.c | 35 +++++++++++++++++++++--------------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 4fc3ffb..a09bf22 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -491,6 +491,8 @@ struct pl330_dmac {
+ 	/* Peripheral channels connected to this DMAC */
+ 	unsigned int num_peripherals;
+ 	struct dma_pl330_chan *peripherals; /* keep at end */
++	/* set peripherals request type according to soc config */
++	enum pl330_cond peripherals_req_type;
+ 	int quirks;
+ };
+ 
+@@ -1156,12 +1158,7 @@ static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+ 				 int cyc)
+ {
+ 	int off = 0;
+-	enum pl330_cond cond;
+-
+-	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+-		cond = BURST;
+-	else
+-		cond = SINGLE;
++	enum pl330_cond cond = pl330->peripherals_req_type;
+ 
+ 	while (cyc--) {
+ 		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+@@ -1181,12 +1178,7 @@ static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+ 				 const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
+-	enum pl330_cond cond;
+-
+-	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+-		cond = BURST;
+-	else
+-		cond = SINGLE;
++	enum pl330_cond cond = pl330->peripherals_req_type;
+ 
+ 	while (cyc--) {
+ 		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+@@ -2597,7 +2589,12 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
+ 
+ 		desc->rqtype = direction;
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = 1;
++
++		if (pl330->peripherals_req_type == BURST)
++			desc->rqcfg.brst_len = pch->burst_len;
++		else
++			desc->rqcfg.brst_len = 1;
++
+ 		desc->bytes_requested = period_len;
+ 		fill_px(&desc->px, dst, src, period_len);
+ 
+@@ -2742,7 +2739,12 @@ pl330_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
+ 		}
+ 
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = 1;
++
++		if (pch->dmac->peripherals_req_type == BURST)
++			desc->rqcfg.brst_len = pch->burst_len;
++		else
++			desc->rqcfg.brst_len = 1;
++
+ 		desc->rqtype = direction;
+ 		desc->bytes_requested = sg_dma_len(sg);
+ 	}
+@@ -2836,6 +2838,11 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
+ 
+ 	pl330->mcbufsz = pdat ? pdat->mcbuf_sz : 0;
+ 
++	if (of_find_property(np, "arm,pl330-periph-burst", NULL))
++		pl330->peripherals_req_type = BURST;
++	else
++		pl330->peripherals_req_type = SINGLE;
++
+ 	/* get quirk */
+ 	for (i = 0; i < ARRAY_SIZE(of_quirks); i++)
+ 		if (of_property_read_bool(np, of_quirks[i].quirk))
 -- 
-- Xing Zheng
+2.3.7
 
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
