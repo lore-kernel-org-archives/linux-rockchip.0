@@ -1,49 +1,63 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/3] dt/bindings: arm-pl330: add description of
- arm,pl330-periph-burst
-Date: Fri, 5 Aug 2016 15:25:47 +0800
-Message-ID: <ea3572fa-4bff-87db-d5ad-f406809f8296@rock-chips.com>
-References: <1470365602-32586-1-git-send-email-shawn.lin@rock-chips.com>
- <1470365602-32586-2-git-send-email-shawn.lin@rock-chips.com>
- <20160805033410.GJ9681@localhost>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id
+ for usbphy0/usbphy1
+Date: Fri, 5 Aug 2016 16:34:42 +0800
+Message-ID: <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
+ <1470122401-31934-3-git-send-email-zhengxing@rock-chips.com>
+ <1918977.W0kRfKbZsD@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160805033410.GJ9681@localhost>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vinod.koul@intel.com>
-Cc: shawn.lin@rock-chips.com, Rob Herring <robh+dt@kernel.org>, Huibin Hong <huibin.hong@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, Caesar Wang <wxt@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1918977.W0kRfKbZsD@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vinod,
-
-在 2016/8/5 11:34, Vinod Koul 写道:
-> On Fri, Aug 05, 2016 at 10:53:20AM +0800, Shawn Lin wrote:
->> This patch adds the "arm,pl330-periph-burst" for arm-pl330 to
->> support busrt mode.
->
-> why should this be DT property. Only reason I can think of if some hw
-> versions support this and some won't.
-
-yes, if we want to support burst mode, both of the master(pl330) and
-client(several peripherals) should implement it, otherwise it will
-be broken when enabling.
-
-So I mentioned it on my cover letter as the reason to introduce this
-optional property. If people add this property and find it's ok for
-their platform, they could land new dt-patch to add it. But we could
-*not* presume that we could get all users involved in testing this
-patchet. I don't wanna to break any other platforms, so it's needed.
-
-
-Thanks.
-
->
-> If all are supporting, please enable it everywhere for obvious reasons.
->
-
-
--- 
-Best Regards
-Shawn Lin
+SGkgSGVpa28sCgpPbiAyMDE2LzgvNSAzOjEwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBIaSBY
+aW5nLAo+Cj4gQW0gRGllbnN0YWcsIDIuIEF1Z3VzdCAyMDE2LCAxNToxOTo1NiBzY2hyaWViIFhp
+bmcgWmhlbmc6Cj4+IEV4cG9ydCB0aGVzZSBzb3VyY2UgY2xvY2tzIGZvciB1c2JwaHkuCj4+Cj4+
+IFNpZ25lZC1vZmYtYnk6IFhpbmcgWmhlbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KPiBj
+YW4geW91IHBsZWFzZSBwcm92aWRlIGEgcmF0aW9uYWxlIHdoeSB5b3UgbmVlZCBtYW51YWwgY29u
+dHJvbCBvdmVyIHRoYXQKPiBpbnRlcm1lZGlhdGUgY2xvY2s/CgpXZWxsLCBGcm9tIGJlbG93IGdy
+YXBoLCB5b3UgY2FuIHNlZSB0aGF0ICdjbGtfdXNicGh5WF80ODBtJyBpcyBnZW5lcmF0ZWQgCmZy
+b20gdXNiMnBoeSwgYW5kICdjbGtfdXNicGh5XzQ4MG0nIHdoaWNoIHNlbGVjdCBmcm9tIApjbGtf
+dXNicGh5WF80ODBtX3NyYyB2aWEgYSBnYXRlIChHMTNbMTJdKSAgcHJvdmlkZWQgNDgwTSBjbG9j
+ayB0byBvdGhlciAKbW9kdWxlcy4KCiAgIHhpbjI0bQogICAgICAgfF9fIGNsa191c2IycGh5MF9y
+ZWYKICAgICAgIHwgICAgICAgICAgICAgICAgIHxfXyBjbGtfdXNicGh5MF80ODBtCiAgICAgICB8
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8X19jbGtfdXNicGh5MF80ODBtX3Ny
+YwogICAgICAgfCB8X19jbGtfdXNicGh5XzQ4MG0KICAgICAgIHwgICAgICAgICB8X18gLi4uIC4u
+LgogICAgICAgfF9fIGNsa191c2IycGh5MV9yZWYKICAgICAgICAgICAgICAgICAgICAgICAgICB8
+X18gY2xrX3VzYnBoeTFfNDgwbQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICB8X19jbGtfdXNicGh5MV80ODBtX3NyYwoKPiBUaGUgdHdvIHVzYnBoeXMgc2VlbSB0byB1
+c2UgdGhlICBjbGtfdXNiMnBoeVhfcmVmIGNsb2NrcywgZ2VuZXJhdGUgdGhlIDQ4MG0KPiBjbG9j
+a3MsIGJ1dCBkbyBub3Qgc2VlbSB0byBuZWVkIHRoZSBjbGtfdXNicGh5WF80ODBtX3NyYyBnYXRl
+cy4KClllYWgsIHRoZXkgdXNlZCB0byBiZS4gSG93ZXZlciwgdGhlIHN0b3J5IHdlbnQgc29tZXRo
+aW5nIGxpa2UgdGhpcywKClNvbWUgUE0gc3VzcGVuZCBwcm9jZXNzIHJlbGF0ZWQgZWhjaS9vaGNp
+IGNvbnRyb2xsZXIgYXJlIGJhc2Ugb24gNDgwbSAKY2xvY2tzLCB1bmZvcnR1bmF0ZWx5LCB1c2Iy
+LXBoeSBzdXNwZW5kZWQgZWFybGllciB0aGFuIGVoY2kvb2hjaSAKKHVzYjItcGh5IHdpbGwgYmUg
+YXV0byBzdXNwZW5kZWQgaWYgbm8gZGV2aWNlcyBwbHVnLWluKSwgYW5kIHRoZSAKY2xrLTQ4MG0g
+cHJvdmlkZWQgYnkgaXQgd2FzIGRpc2FibGVkIGlmIG5vIG1vZHVsZSB1c2VkLiBBcyBhIHJlc3Vs
+dCwgdGhlIApQTSBzdXNwZW5kIHByb2Nlc3Mgd2FzIGJsb2NrZWQgd2hlbiBpdCBydW4gaW50byBl
+aGNpL29oY2kgbW9kdWxlLgoKSGVuY2UsIHdlIGFyZSBwbGFuaW5nIHRvIHJlZmVyIGNsa191c2Jw
+aHlYXzQ4MG1fc3JjIGludG8gZWFjaCBlaGNpL29oY2kgCmRyaXZlci4gTWF5YmUgeW91IHdpbGwg
+Y2hhbGxlbmdlIHdoeSBub3QgcmVmZXIgY2xrX3VzYnBoeV80ODBtIGRpcmVjdGx5PyAKYmVjYXVz
+ZSB0aGVyZSBhcmUgdHdvIGVoY2kvb2hjaSBjb25uZWN0ZWQgaW4gdGhlIGRpZmZlcmVudCB1c2Iy
+cGh5LCBhbmQgCm9ubHkgb25lIGNsa191c2JwaHlfNDgwbSBjbG9jayB3YXMgc2VsZWN0ZWQgaW4g
+Y2xvY2sgdHJlZS4KCkJSLgpGcmFuawoKPiBUaGUgY2xrX3VzYnBoeVhfNDgwbV9zcmMgY2xvY2tz
+IG9uIHRoZSBvdGhlciBoYW5kIG9ubHkgbGVhZCB0byB0aGUKPiBjbGtfdXNicGh5XzQ4MG0gbXV4
+LCBzbyBJJ2QgbGlrZSBzb21lIGV4cGxhbmF0aW9uIG9uIHdoYXQgeW91IHdhbnQgdG8gYWNoaWV2
+ZQo+IGhlcmUgOi0pCj4KPgo+IFRoYW5rcwo+IEhlaWtvCj4KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
