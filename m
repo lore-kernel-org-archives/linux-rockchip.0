@@ -1,93 +1,54 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id for usbphy0/usbphy1
-Date: Fri, 05 Aug 2016 18:05:51 +0200
-Message-ID: <1570410.dThJclhmJd@diego>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1918977.W0kRfKbZsD@diego> <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/6] dt-bindings: rockchip-dw-mshc: add description of
+ rockchip, power-invert
+Date: Sat,  6 Aug 2016 13:36:19 +0800
+Message-ID: <1470461784-3955-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1470461784-3955-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.meng@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470461784-3955-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
+rockchip,power-invert is used for rockchip to introduce the flag
+DW_MMC_CARD_PWR_INVERT from DT which should make the power control
+of dw_mmc more flexible according to different hw design.
 
-Am Freitag, 5. August 2016, 16:34:42 schrieb Frank Wang:
-> On 2016/8/5 3:10, Heiko Stübner wrote:
-> > Am Dienstag, 2. August 2016, 15:19:56 schrieb Xing Zheng:
-> >> Export these source clocks for usbphy.
-> >> 
-> >> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> > 
-> > can you please provide a rationale why you need manual control over that
-> > intermediate clock?
-> 
-> Well, From below graph, you can see that 'clk_usbphyX_480m' is generated
-> from usb2phy, and 'clk_usbphy_480m' which select from
-> clk_usbphyX_480m_src via a gate (G13[12])  provided 480M clock to other
-> modules.
-> 
->    xin24m
-> 
->        |__ clk_usb2phy0_ref
->        |
->        |                 |__ clk_usbphy0_480m
->        |                 |
->        |                                   |__clk_usbphy0_480m_src
->        | |
->        | |__clk_usbphy_480m
->        | |
->        |         |__ ... ...
->        |
->        |__ clk_usb2phy1_ref
->        |
->                           |__ clk_usbphy1_480m
->                           |
->                                           |__clk_usbphy1_480m_src
-> > 
-> > The two usbphys seem to use the  clk_usb2phyX_ref clocks, generate the
-> > 480m
-> > clocks, but do not seem to need the clk_usbphyX_480m_src gates.
-> 
-> Yeah, they used to be. However, the story went something like this,
-> 
-> Some PM suspend process related ehci/ohci controller are base on 480m
-> clocks, unfortunately, usb2-phy suspended earlier than ehci/ohci
-> (usb2-phy will be auto suspended if no devices plug-in), and the
-> clk-480m provided by it was disabled if no module used. As a result, the
-> PM suspend process was blocked when it run into ehci/ohci module.
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-ah, so the ehci controller needs that 480m clock as well? Do you happen to 
-have example patches for the ehci/ohci side already? I'd like to peak at what 
-you mean with "some PM suspend process related" things.
+---
 
-Depending on what is actually needed, you could also pull the usbphy out of 
-autosuspend in a pm-prepare callback of the phy driver itself ... see 
-http://lxr.free-electrons.com/source/include/linux/pm.h#L86
+ Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Like 
-- in the .prepare callback make sure to unsuspend the phy
-  and deactivate the autosuspend
-- ehci/ohci will poweroff the phy in it s suspend callback (already does that)
-- suspend -> resume
-- ehci/ohci will poweron the phy
-- in the phy's .complete callback you can reactivate the autosuspend timer
-
-Because it looks more like you actually need the phy and not the clock alone.
-So it would be nicer to use mechanisms already in place instead of creating 
-new dependencies.
-
-
-> Hence, we are planing to refer clk_usbphyX_480m_src into each ehci/ohci
-> driver. Maybe you will challenge why not refer clk_usbphy_480m directly?
-> because there are two ehci/ohci connected in the different usb2phy, and
-> only one clk_usbphy_480m clock was selected in clock tree.
-
-Nope, no argument from me as I fully understand that each phy provides its own 
-480m clock :-) .
-
-
-Heiko
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+index 07184e8..5640659 100644
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
++++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+@@ -30,6 +30,12 @@ Optional Properties:
+   probing, low speeds or in case where all phases work at tuning time.
+   If not specified 0 deg will be used.
+ 
++* rockchip,power-invert: Invert the power control of PWREN register. If adding
++  it, the card should be in power-on state when the power io outputs high level
++  voltage, and it should be in power-off state when outputing low level voltage.
++  otherwise the behaviour of power control should be the opposite way which is
++  the default policy of dw mshc.
++
+ Example:
+ 
+ 	rkdwmmc0@12200000 {
+-- 
+2.3.7
