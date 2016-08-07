@@ -1,62 +1,59 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/3] dmaengine: pl330: support transfer unaligned with
- (burst len * burst size)
-Date: Sun, 7 Aug 2016 17:21:31 +0800
-Message-ID: <57A6FD9B.7000203@rock-chips.com>
-References: <1470365602-32586-1-git-send-email-shawn.lin@rock-chips.com>
- <1470365602-32586-4-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: add rk3288-firefly-reload
+Date: Sun, 07 Aug 2016 16:44:58 +0200
+Message-ID: <1815189.oGy6GHMbyM@phil>
+References: <1549971.ctkvOGm2xW@diego> <2868781.4x2gJCRbLH@diego> <413ebccd-e8d6-1401-3065-f9a63b4d66e6@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1470365602-32586-4-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <413ebccd-e8d6-1401-3065-f9a63b4d66e6-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn
+Hi Shawn,
 
-On 2016年08月05日 10:53, Shawn Lin wrote:
-> Currently pl330 doesn't support transfer which doesn't
-> align with burst len * burst size. This should be only
-> for single mode. Let's allow it for busrt mode if available.
->
-> e.g. transfers 0x10002 bytes:
-> First loop 256*16*16=0x10000, burst size is 1, burst length is 16.
-> Then the second loop 2 bytes, burst size is 1, burst length is 1.
->
-> f0041000:        DMAMOV CCR 0xbc02f1
-> f0041006:        DMAMOV SAR 0xdd6c0000
-> f004100c:        DMAMOV DAR 0xff1d0400
-> f0041012:        DMALP_0 15
-> f0041014:        DMALP_1 255
-> f0041016:        DMAWFPB 12
-> f0041018:        DMALDA
-> f0041019:        DMASTPB 12
-> f004101b:        DMAFLUSHP 12
-> f004101d:        DMALPENDA_1 bjmpto_7
-> f004101f:        DMALPENDA_0 bjmpto_b
-> f0041021:        DMAMOV CCR 0x800201
-> f0041027:        DMALP_1 1
-> f0041029:        DMAWFPB 12
-> f004102b:        DMALDA
-> f004102c:        DMASTPB 12
-> f004102e:        DMAFLUSHP 12
-> f0041030:        DMALPENDA_1 bjmpto_7
-> f0041032:        DMASEV 0
-> f0041034:        DMAEND
->
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-Tested-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Am Sonntag, 7. August 2016, 11:40:21 schrieb Shawn Lin:
+> On 2016/7/19 3:46, Heiko St�bner wrote:
+> > Am Montag, 18. Juli 2016, 23:32:32 schrieb Randy Li:
+> >> The Firefly RK3288 Reload is a combination Firefly rk3288 core board
+> >> with the Reload baseboard. Add a dtsi for the Firefly rk3288 core
+> >> which can be included into the dts for the various baseboards
+> >> in the future and dts for Reload base board.
+> >> 
+> >> Currently supported are serial console, wired networking, eMMC and
+> >> SD storage, SPFIF, IR receiver, LEDs, SDIO wifi and USB. But only
+> >> the OTG could work on the host mode now, the other USB host can't
+> >> work now, additional patches are required.
+> >> 
+> >> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+> >> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > 
+> > applied [0], after some minor reordering - please double check.
+> > 
+> > Also, while the branch is named 4.8 this will only go into 4.9, as the
+> > merge- window supposedly opens on the weekend.
+> 
+> Sorry for the noise here:), but I find there is some mmc stuff
+> which confuse me. Maybe Randy could elaborate more?
+> 
+> Your sdmmc claims to support UHS-I mode like sd-uhs-sdr104, etc, which
+> will ask dw_mmc to switch vqmmc from 3V3 to 1V8 after sending CMD11.
+> 
+> But the vqmmc is vccio_sd which is fixed as 3V3? :)
 
-Thanks.
+so far we have only been able to achieve UHS speeds on devices based on the 
+rk808 pmic (I had sucess on veyron and popmetal). The act8846-based boards 
+seem to have some issue when trying to do the switch to 1.8V, resulting in 
+mmc errors and the mmc-core switching back to 3.3V.
 
--- 
-- Xing Zheng
+I think this might be caused by a bug in the act8846 driver or some dts 
+mistake. But so far nobody had the time and enthusiasm to investigate :-)
 
 
+Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
