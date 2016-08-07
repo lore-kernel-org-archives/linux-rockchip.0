@@ -1,63 +1,69 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 6/6] mmc: dw_mmc-rockchip: add parsing of power control from DT
-Date: Sun,  7 Aug 2016 09:35:02 +0800
-Message-ID: <1470533702-16567-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1470533618-16312-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1470533618-16312-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: add rk3288-firefly-reload
+Date: Sun, 7 Aug 2016 11:40:21 +0800
+Message-ID: <413ebccd-e8d6-1401-3065-f9a63b4d66e6@rock-chips.com>
+References: <1549971.ctkvOGm2xW@diego>
+ <1468855952-2006-1-git-send-email-ayaka@soulik.info>
+ <1468855952-2006-2-git-send-email-ayaka@soulik.info>
+ <2868781.4x2gJCRbLH@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2868781.4x2gJCRbLH@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-By default, the power io of dw_mmc is fixed which means we could
-only output high level voltage to indicate the power-on state.
-But that is not always correct as the usage of power io should
-be board specific. Let's expose it to dt for supporting this
-kind of specific design.
+On 2016/7/19 3:46, Heiko Stübner wrote:
+> Am Montag, 18. Juli 2016, 23:32:32 schrieb Randy Li:
+>> The Firefly RK3288 Reload is a combination Firefly rk3288 core board
+>> with the Reload baseboard. Add a dtsi for the Firefly rk3288 core
+>> which can be included into the dts for the various baseboards
+>> in the future and dts for Reload base board.
+>>
+>> Currently supported are serial console, wired networking, eMMC and
+>> SD storage, SPFIF, IR receiver, LEDs, SDIO wifi and USB. But only
+>> the OTG could work on the host mode now, the other USB host can't
+>> work now, additional patches are required.
+>>
+>> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>
+> applied [0], after some minor reordering - please double check.
+>
+> Also, while the branch is named 4.8 this will only go into 4.9, as the merge-
+> window supposedly opens on the weekend.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Sorry for the noise here:), but I find there is some mmc stuff
+which confuse me. Maybe Randy could elaborate more?
 
----
+Your sdmmc claims to support UHS-I mode like sd-uhs-sdr104, etc, which
+will ask dw_mmc to switch vqmmc from 3V3 to 1V8 after sending CMD11.
 
-Changes in v2:
-- fix copy-paste err and typo
+But the vqmmc is vccio_sd which is fixed as 3V3? :)
 
- drivers/mmc/host/dw_mmc-rockchip.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 25eae35..2e51202 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -24,6 +24,7 @@ struct dw_mci_rockchip_priv_data {
- 	struct clk		*drv_clk;
- 	struct clk		*sample_clk;
- 	int			default_sample_phase;
-+	bool			power_invert;
- };
- 
- static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-@@ -67,6 +68,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
- 	if (!IS_ERR(priv->sample_clk))
- 		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
- 
-+	/* Make sure we need to invert the output of PWREN */
-+	if (priv->power_invert)
-+		set_bit(DW_MMC_CARD_PWR_INVERT, &host->cur_slot->flags);
-+
- 	/*
- 	 * Set the drive phase offset based on speed mode to achieve hold times.
- 	 *
-@@ -267,6 +272,9 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
- 					&priv->default_sample_phase))
- 		priv->default_sample_phase = 0;
- 
-+	if (of_property_read_bool(np, "rockchip,power-invert"))
-+		priv->power_invert = true;
-+
- 	priv->drv_clk = devm_clk_get(host->dev, "ciu-drive");
- 	if (IS_ERR(priv->drv_clk))
- 		dev_dbg(host->dev, "ciu_drv not available\n");
+>
+>
+> Heiko
+>
+> [0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=e00fdd4931ea4c47f53cba59b7a3800677546bea
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+
+
 -- 
-2.3.7
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
