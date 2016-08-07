@@ -1,69 +1,44 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: add rk3288-firefly-reload
-Date: Sun, 7 Aug 2016 11:40:21 +0800
-Message-ID: <413ebccd-e8d6-1401-3065-f9a63b4d66e6@rock-chips.com>
-References: <1549971.ctkvOGm2xW@diego>
- <1468855952-2006-1-git-send-email-ayaka@soulik.info>
- <1468855952-2006-2-git-send-email-ayaka@soulik.info>
- <2868781.4x2gJCRbLH@diego>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH 2/3] dmaengine: pl330: enable burst mode by parsing dt
+Date: Sun, 7 Aug 2016 17:20:33 +0800
+Message-ID: <57A6FD61.6080003@rock-chips.com>
+References: <1470365602-32586-1-git-send-email-shawn.lin@rock-chips.com>
+ <1470365602-32586-3-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2868781.4x2gJCRbLH@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1470365602-32586-3-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Vinod Koul <vinod.koul@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Huibin Hong <huibin.hong@rock-chips.com>, devicetree@vger.kernel.org, dianders@chromium.org, briannorris@chromium.org, Caesar Wang <wxt@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/7/19 3:46, Heiko St�bner wrote:
-> Am Montag, 18. Juli 2016, 23:32:32 schrieb Randy Li:
->> The Firefly RK3288 Reload is a combination Firefly rk3288 core board
->> with the Reload baseboard. Add a dtsi for the Firefly rk3288 core
->> which can be included into the dts for the various baseboards
->> in the future and dts for Reload base board.
->>
->> Currently supported are serial console, wired networking, eMMC and
->> SD storage, SPFIF, IR receiver, LEDs, SDIO wifi and USB. But only
->> the OTG could work on the host mode now, the other USB host can't
->> work now, additional patches are required.
->>
->> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
->> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->
-> applied [0], after some minor reordering - please double check.
->
-> Also, while the branch is named 4.8 this will only go into 4.9, as the merge-
-> window supposedly opens on the weekend.
+Hi Shawn,
 
-Sorry for the noise here:), but I find there is some mmc stuff
-which confuse me. Maybe Randy could elaborate more?
+On 2016年08月05日 10:53, Shawn Lin wrote:
+> Currently pl330 use single mode defaultly. But burst
+> mode can improve efficiency of memory accessing. We
+> couldn't enable it by defalut in case of breaking any
+> Socs which don't support it.
+>
+> With burst mode supported, we could see the improvement
+> significantly when tesing SPI transfer etc.
+>
+> default single mode
+> [   88.292550] spi write 65536*1 cost 32402us speed:2022KB/S
+>
+> After applied with burst mode(len 16)
+> [   17.625296] spi write 65536*1 cost 17830us speed:3675KB/S
+>
+> Cc: Huibin Hong <huibin.hong@rock-chips.com>
+> Cc: Xing Zheng <zhengxing@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>
+Tested-by: Xing Zheng <zhengxing@rock-chips.com>
 
-Your sdmmc claims to support UHS-I mode like sd-uhs-sdr104, etc, which
-will ask dw_mmc to switch vqmmc from 3V3 to 1V8 after sending CMD11.
-
-But the vqmmc is vccio_sd which is fixed as 3V3? :)
-
-
->
->
-> Heiko
->
-> [0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=e00fdd4931ea4c47f53cba59b7a3800677546bea
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
-
+Thanks
 
 -- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+- Xing Zheng
