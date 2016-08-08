@@ -1,46 +1,27 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH] drm/rockchip: Properly adjust to a true clock in adjusted_mode
-Date: Mon,  8 Aug 2016 15:29:31 -0400
-Message-ID: <1470684571-37955-1-git-send-email-seanpaul@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: add clock flag parameter when register pll
+Date: Mon, 08 Aug 2016 22:31:02 +0200
+Message-ID: <1629452.yetpgSEng2@diego>
+References: <1469169465-5892-1-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dianders@chromium.org, mark.yao@rock-chips.com, ykk@rock-chips.com, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1469169465-5892-1-git-send-email-hl@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Lin Huang <hl@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgoKV2hlbiBmaXhp
-bmcgdXAgdGhlIGNsb2NrIGluIHZvcF9jcnRjX21vZGVfZml4dXAoKSB3ZSdyZSBub3QgZG9pbmcg
-aXQKcXVpdGUgY29ycmVjdGx5LiAgU3BlY2lmaWNhbGx5IGlmIHdlJ3ZlIGdvdCB0aGUgdHJ1ZSBj
-bG9jayAyNjY2NjY2NjcgSHosCndlJ2xsIHBlcmZvcm0gdGhpcyBjYWxjdWxhdGlvbjoKICAgMjY2
-NjY2NjY3IC8gMTAwMCA9PiAyNjY2NjYKCkxhdGVyIHdoZW4gd2UgdHJ5IHRvIHNldCB0aGUgY2xv
-Y2sgd2UnbGwgZG8gY2xrX3NldF9yYXRlKDI2NjY2NiAqCjEwMDApLiAgVGhlIGNvbW1vbiBjbG9j
-ayBmcmFtZXdvcmsgd29uJ3QgYWN0dWFsbHkgcGljayB0aGUgcHJvcGVyIGNsb2NrCmluIHRoaXMg
-Y2FzZSBzaW5jZSBpdCBhbHdheXMgd2FudHMgY2xvY2tzIDw9IHRoZSBzcGVjaWZpZWQgb25lLgoK
-TGV0J3Mgc29sdmUgdGhpcyBieSB1c2luZyBESVZfUk9VTkRfVVAuCgpTaWduZWQtb2ZmLWJ5OiBE
-b3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFNl
-YW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzICsrLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0
-aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jCmluZGV4IDMxNzQ0ZmUuLjFiYmZmYWYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtODkxLDcgKzg5MSw4IEBAIHN0YXRpYyBi
-b29sIHZvcF9jcnRjX21vZGVfZml4dXAoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCXN0cnVjdCB2
-b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKIAogCWFkanVzdGVkX21vZGUtPmNsb2NrID0KLQkJY2xr
-X3JvdW5kX3JhdGUodm9wLT5kY2xrLCBtb2RlLT5jbG9jayAqIDEwMDApIC8gMTAwMDsKKwkJRElW
-X1JPVU5EX1VQKGNsa19yb3VuZF9yYXRlKHZvcC0+ZGNsaywgbW9kZS0+Y2xvY2sgKiAxMDAwKSwK
-KwkJCSAgICAgMTAwMCk7CiAKIAlyZXR1cm4gdHJ1ZTsKIH0KLS0gCjIuOC4wLnJjMy4yMjYuZzM5
-ZDQwMjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Freitag, 22. Juli 2016, 14:37:45 schrieb Lin Huang:
+> From: Heiko Stübner <heiko@sntech.de>
+> 
+> add clock flag parameter so we can pass specific clock flag
+> (like CLK_GET_RATE_NOCACHE etc..)to pll driver.
+> 
+> Change-Id: I1e076b3efa6b5da082b6e68e2e2a4c9dfd93e3d4
+> Signed-off-by: Heiko Stübner <heiko@sntech.de>
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+
+just so it doesn't get overlooked, this patch was also part of the later ddr-
+clock series and I picked it from there,
