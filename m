@@ -1,70 +1,44 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v1 5/5] drm/rockchip: Implement CRC debugfs API
-Date: Tue,  9 Aug 2016 12:51:36 +0200
-Message-ID: <1470739896-11088-6-git-send-email-tomeu.vizoso@collabora.com>
-References: <1470739896-11088-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: add rk3288-firefly-reload
+Date: Tue, 09 Aug 2016 12:58:49 +0200
+Message-ID: <13761657.UM4fvlJBBq@diego>
+References: <1549971.ctkvOGm2xW@diego> <CAFLEztTROearSEcgzV3EVHFcRcMQpLhAQ6BXP-dDyRDAWybaxg@mail.gmail.com> <C2BE77CA-A59B-4128-8802-E3E36FACDABA@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1470739896-11088-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, Emil Velikov <emil.velikov@collabora.com>
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <C2BE77CA-A59B-4128-8802-E3E36FACDABA-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: =?utf-8?B?6ZmI6LGq?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW1wbGVtZW50IHRoZSAuc2V0X2NyY19zb3VyY2UoKSBjYWxsYmFjayBhbmQgY2FsbCB0aGUgRFAg
-aGVscGVycwphY2NvcmRpbmdseSB0byBzdGFydCBhbmQgc3RvcCBDUkMgY2FwdHVyZS4KClRoaXMg
-aXMgb25seSBkb25lIGlmIHRoaXMgQ1JUQyBpcyBjdXJyZW50bHkgdXNpbmcgdGhlIGVEUCBjb25u
-ZWN0b3IuCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJv
-cmEuY29tPgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
-IHwgNDggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA0OCBp
-bnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMKaW5kZXggOTEzMDVlYjdkMzEyLi4yNWYyZTdiNzI5ODIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTgsNiArMTgsNyBAQAogI2luY2x1ZGUg
-PGRybS9kcm1fY3J0Yy5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNs
-dWRlIDxkcm0vZHJtX3BsYW5lX2hlbHBlci5oPgorI2luY2x1ZGUgPGRybS9icmlkZ2UvYW5hbG9n
-aXhfZHAuaD4KIAogI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgogI2luY2x1ZGUgPGxpbnV4L21v
-ZHVsZS5oPgpAQCAtMTA4NCw2ICsxMDg1LDUyIEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2Rlc3Ry
-b3lfc3RhdGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCWtmcmVlKHMpOwogfQogCitzdGF0aWMg
-c3RydWN0IGRybV9jb25uZWN0b3IgKnZvcF9nZXRfZWRwX2Nvbm5lY3RvcihzdHJ1Y3Qgdm9wICp2
-b3ApCit7CisJc3RydWN0IGRybV9jcnRjICpjcnRjID0gJnZvcC0+Y3J0YzsKKwlzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmVjdG9yOworCisJbXV0ZXhfbG9jaygmY3J0Yy0+ZGV2LT5tb2RlX2Nv
-bmZpZy5tdXRleCk7CisJZHJtX2Zvcl9lYWNoX2Nvbm5lY3Rvcihjb25uZWN0b3IsIGNydGMtPmRl
-dikKKwkJaWYgKGNvbm5lY3Rvci0+Y29ubmVjdG9yX3R5cGUgPT0gRFJNX01PREVfQ09OTkVDVE9S
-X2VEUCkgeworCQkJbXV0ZXhfdW5sb2NrKCZjcnRjLT5kZXYtPm1vZGVfY29uZmlnLm11dGV4KTsK
-KwkJCXJldHVybiBjb25uZWN0b3I7CisJCX0KKwltdXRleF91bmxvY2soJmNydGMtPmRldi0+bW9k
-ZV9jb25maWcubXV0ZXgpOworCisJcmV0dXJuIE5VTEw7Cit9CisKK3N0YXRpYyBpbnQgdm9wX2Ny
-dGNfc2V0X2NyY19zb3VyY2Uoc3RydWN0IGRybV9jcnRjICpjcnRjLAorCQkJCSAgIGNvbnN0IGNo
-YXIgKnNvdXJjZV9uYW1lLCBzaXplX3QgKnZhbHVlc19jbnQpCit7CisJc3RydWN0IHZvcCAqdm9w
-ID0gdG9fdm9wKGNydGMpOworCXN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlICpzID0gdG9fcm9j
-a2NoaXBfY3J0Y19zdGF0ZShjcnRjLT5zdGF0ZSk7CisJc3RydWN0IGRybV9jb25uZWN0b3IgKmNv
-bm5lY3RvcjsKKwlpbnQgcmV0OworCisJY29ubmVjdG9yID0gdm9wX2dldF9lZHBfY29ubmVjdG9y
-KHZvcCk7CisJaWYgKCFjb25uZWN0b3IpCisJCXJldHVybiAtRUlOVkFMOworCisJKnZhbHVlc19j
-bnQgPSAzOworCisJaWYgKHNvdXJjZV9uYW1lICYmCisJICAgIHN0cmNtcChzb3VyY2VfbmFtZSwg
-ImF1dG8iKSA9PSAwKSB7CisKKwkJaWYgKHMtPm91dHB1dF90eXBlICE9IERSTV9NT0RFX0NPTk5F
-Q1RPUl9lRFApCisJCQlyZXR1cm4gLUVJTlZBTDsKKworCQlyZXQgPSBhbmFsb2dpeF9kcF9zdGFy
-dF9jcmMoY29ubmVjdG9yKTsKKwl9IGVsc2UgaWYgKCFzb3VyY2VfbmFtZSkKKworCQlyZXQgPSBh
-bmFsb2dpeF9kcF9zdG9wX2NyYyhjb25uZWN0b3IpOworCWVsc2UKKwkJcmV0ID0gLUVJTlZBTDsK
-KworCXJldHVybiByZXQ7Cit9CisKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2NydGNfZnVuY3Mg
-dm9wX2NydGNfZnVuY3MgPSB7CiAJLnNldF9jb25maWcgPSBkcm1fYXRvbWljX2hlbHBlcl9zZXRf
-Y29uZmlnLAogCS5wYWdlX2ZsaXAgPSBkcm1fYXRvbWljX2hlbHBlcl9wYWdlX2ZsaXAsCkBAIC0x
-MDkxLDYgKzExMzgsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9j
-cnRjX2Z1bmNzID0gewogCS5yZXNldCA9IHZvcF9jcnRjX3Jlc2V0LAogCS5hdG9taWNfZHVwbGlj
-YXRlX3N0YXRlID0gdm9wX2NydGNfZHVwbGljYXRlX3N0YXRlLAogCS5hdG9taWNfZGVzdHJveV9z
-dGF0ZSA9IHZvcF9jcnRjX2Rlc3Ryb3lfc3RhdGUsCisJLnNldF9jcmNfc291cmNlID0gdm9wX2Ny
-dGNfc2V0X2NyY19zb3VyY2UsCiB9OwogCiBzdGF0aWMgYm9vbCB2b3Bfd2luX3BlbmRpbmdfaXNf
-Y29tcGxldGUoc3RydWN0IHZvcF93aW4gKnZvcF93aW4pCi0tIAoyLjcuNAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Dienstag, 9. August 2016, 18:06:33 schrieb Randy Li:
+> 從我的 iPad 傳送
+> 
+> > 陈豪 <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> 於 2016年8月9日 下午6:02 寫道：
+> > 
+> > well，it has already been added....
+> > 
+> > The root cause is not act8846. Firefly have a bug with sdmmc and it
+> > seems they didn't fix it in firefly-reload.
+> > 
+> > http://bbs.t-firefly.com/forum.php?mod=viewthread&tid=256
+
+Thanks Jacob for pointing out this issue - I was always wondering why it 
+wasn't working :-) .
+
+
+> Yes, Jacob is right. Those high speed options need the voltage down to 1.8v.
+> They should be removed.
+
+Randy, can you provide a follow-up patch that removes these excess properties 
+please?
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
