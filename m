@@ -1,114 +1,159 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2 0/6] Add support of inverting power control and some
- minor cleanup
-Date: Tue, 9 Aug 2016 10:12:15 +0800
-Message-ID: <8da29b3d-20f1-6529-c985-c462dbdd7fb1@rock-chips.com>
-References: <CGME20160807013720epcas1p235628058a90efa6f0062b03a4b2e4284@epcas1p2.samsung.com>
- <1470533618-16312-1-git-send-email-shawn.lin@rock-chips.com>
- <ee997311-3964-8623-a431-c9a5add7f991@samsung.com>
- <cc785e09-6b33-d451-3d11-728bee3668a5@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Ensure the panel is properly
+ prepared/unprepared
+Date: Tue, 9 Aug 2016 10:35:57 +0800
+Message-ID: <977b849f-17c9-22c5-7534-6cb1b43ee3d2@rock-chips.com>
+References: <1469819791-31860-1-git-send-email-seanpaul@chromium.org>
+ <1470682398-18982-1-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <cc785e09-6b33-d451-3d11-728bee3668a5@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1470682398-18982-1-git-send-email-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, yzq@rock-chips.com, jingoohan1@gmail.com, emil.l.velikov@gmail.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, javier@osg.samsung.com, daniel.vetter@ffwll.ch, marcheu@chromium.org, treding@nvidia.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/8/9 9:49, Shawn Lin wrote:
-> Hi,
->
-> On 2016/8/8 18:24, Jaehoon Chung wrote:
->> Hi Shawn,
->>
->> On 08/07/2016 10:33 AM, Shawn Lin wrote:
->>> By default, dw_mmc outputs high level voltage to indicate powering
->>> up the card and outputs low level vcltage to indicate powering
->>> off the card. But that is not always correct. The power io should
->>> be able to control different kind of hw components to supply or
->>> cutoff power to the card. We have boards that need this patchset
->>> to make the power control correct. Meanwhile let's expose it to
->>> DT for board-specific usage.
->>
->> I have a question for this patch-set. Does DWMMC IP support to invert
->> ON/OFF at Power Enable register?
->
-> No.
->
->> Hmm..Well, if use the DW_MMC_CARD_PWR_INVERT, it should also be the
->> similar behavior with Quirks.
->
-> yup, it makes the power control more complicated than before. :(
->
->>
->> Other flags are related with dwmmc IP. But this flag
->> (DW_MMC_CARD_PWR_INVERT) is not related with IP side.
->> I understood why you needs to add this flag..Is rockchip designed to
->> invert the power controlling?
->
-> We don't invert the power controlling but our customers do.
-> The HW componet looks like some discrete LDOs which enable the related
-> power supply when outputing low voltage from pwren..
->
->>
->> But it's not general case. We can discuss about this.
->
-> I have a solution which is to add gpio power control for slot-gpio of
-> mmc core. once finished, we could add pwr_cap_invert just like what we
-> did for cd/wp invert control..
->
-> Then we could remove PWREN from the default state of
-> pinctrl inside the sdmmc dt node, and let dwmmc request gpio power
-> control stuff after paring the property for pwr_cap_invert..
->
-> More over, it well fit for all mmc host's requirement of gpio
-> power control and inverted control if they want it. :)
->
->
-> That should be legit for us?
-> If it sounds ok to you and Ulf, I will come up with a RFC one for
-> community to comment it.:)
-
-one more, maybe pwrseq is also a choice for us.
-But I'm not sure if it deserves a pwerseq_sd.c ?
-
->
->>
->> Best Regards,
->> Jaehoon Chung
->>
->>>
->>>
->>> Changes in v2:
->>> - fix copy-paste err and typo
->>>
->>> Shawn Lin (6):
->>>   dt-bindings: rockchip-dw-mshc: add description of
->>>     rockchip,power-invert
->>>   mmc: dw_mmc: cleanup power setting of set_ios callback
->>>   mmc: dw_mmc: split out dw_mci_set_power
->>>   mmc: dw_mmc: split out dw_mci_set_power_reg
->>>   mmc: dw_mmc: support inverted power control
->>>   mmc: dw_mmc-rockchip: add parsing of power control from DT
->>>
->>>  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   6 +
->>>  drivers/mmc/host/dw_mmc-rockchip.c                 |   8 ++
->>>  drivers/mmc/host/dw_mmc.c                          | 134
->>> ++++++++++++---------
->>>  drivers/mmc/host/dw_mmc.h                          |   1 +
->>>  4 files changed, 90 insertions(+), 59 deletions(-)
->>>
->>
->>
->>
->>
->
->
-
-
--- 
-Best Regards
-Shawn Lin
-
+KyBBcmNoaXQKCgpPbiAwOC8wOS8yMDE2IDAyOjUzIEFNLCBTZWFuIFBhdWwgd3JvdGU6Cj4gSW5z
+dGVhZCBvZiBqdXN0IHByZXBhcmluZyB0aGUgcGFuZWwgb24gYmluZCwgYWN0dWFsbHkgcHJlcGFy
+ZS91bnByZXBhcmUKPiBkdXJpbmcgbW9kZXNldC9kaXNhYmxlLiBUaGUgcGFuZWwgbXVzdCBiZSBw
+cmVwYXJlZCBpbiBvcmRlciB0byByZWFkIGhwZAo+IHN0YXR1cyBhbmQgZWRpZCwgc28gd2UgbmVl
+ZCB0byBrZWVwIHN0YXRlIGFyb3VuZCB0aGUgcHJlcGFyZXMgaW4gb3JkZXIKPiB0byBlbnN1cmUg
+d2UgZG9uJ3QgYWNjaWRlbnRhbGx5IHR1cm4gdGhlIHBhbmVsIG9mZiBhdCB0aGUgd3JvbmcgdGlt
+ZS4KPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoK
+UmV2aWV3ZWQtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KCkFuZCBJIGFsc28g
+dGVzdGVkIHRoaXMgcGF0Y2ggb24gUkszMzk5IEtldmluIGJvYXJkLCBwYW5lbCB3b3JrcyByaWdo
+dGx5LCBzbzoKVGVzdGVkLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+CgpBbHNv
+IGFkZCBBcmNoaXQgaW50byBDQyBsaXN0LCBndWVzcyB0aGlzIHBhdGNoIHNob3VsZCBnbyB0aHJv
+dWdoIGhpcyAKZHJtX2JyaWRnZSdzIHRyZWUuCgpUaGFua3MsCi0gWWFraXIKCj4gLS0tCj4KPiBD
+aGFuZ2VzIGluIHYyOgo+ICAgLSBBZGRlZCBwYW5lbF9pc19tb2Rlc2V0IHN0YXRlL2xvY2sgdG8g
+YXZvaWQgcmFjaW5nIGRldGVjdCB3aXRoIG1vZGVzZXQgKG1hcmNoZXUpCj4gICAtIEFkZGVkIHBy
+ZXBhcmUvdW5wcmVwYXJlIGluIC5nZXRfbW9kZXMgKHlha2lyKQo+Cj4gICBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDEwMSArKysrKysrKysrKysr
+KysrKystLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
+Y29yZS5oIHwgICAzICsKPiAgIDIgZmlsZXMgY2hhbmdlZCwgOTMgaW5zZXJ0aW9ucygrKSwgMTEg
+ZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
+L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IGluZGV4IDMyNzE1ZGEuLjQ3YzQ0OWEgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+
+IEBAIC05MjMsMTEgKzkyMyw2MyBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9jb21taXQoc3Ry
+dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4gICAJYW5hbG9naXhfZHBfc3RhcnRfdmlkZW8o
+ZHApOwo+ICAgfQo+ICAgCj4gKy8qCj4gKyAqIFRoaXMgZnVuY3Rpb24gaXMgYSBiaXQgb2YgYSBj
+YXRjaC1hbGwgZm9yIHBhbmVsIHByZXBhcmF0aW9uLCBob3BlZnVsbHkKPiArICogc2ltcGxpZnlp
+bmcgdGhlIGxvZ2ljIG9mIGZ1bmN0aW9ucyB0aGF0IG5lZWQgdG8gcHJlcGFyZS91bnByZXBhcmUg
+dGhlIHBhbmVsCj4gKyAqIGJlbG93Lgo+ICsgKgo+ICsgKiBJZiBAcHJlcGFyZSBpcyB0cnVlLCB0
+aGlzIGZ1bmN0aW9uIHdpbGwgcHJlcGFyZSB0aGUgcGFuZWwuIENvbnZlcnNlbHksIGlmIGl0Cj4g
+KyAqIGlzIGZhbHNlLCB0aGUgcGFuZWwgd2lsbCBiZSB1bnByZXBhcmVkLgo+ICsgKgo+ICsgKiBJ
+ZiBAaXNfbW9kZXNldF9wcmVwYXJlIGlzIHRydWUsIHRoZSBmdW5jdGlvbiB3aWxsIGRpc3JlZ2Fy
+ZCB0aGUgY3VycmVudCBzdGF0ZQo+ICsgKiBvZiB0aGUgcGFuZWwgYW5kIGVpdGhlciBwcmVwYXJl
+L3VucHJlcGFyZSB0aGUgcGFuZWwgYmFzZWQgb24gQHByZXBhcmUuIE9uY2UKPiArICogaXQgZmlu
+aXNoZXMsIGl0IHdpbGwgdXBkYXRlIGRwLT5wYW5lbF9pc19tb2Rlc2V0IHRvIHJlZmxlY3QgdGhl
+IGN1cnJlbnQgc3RhdGUKPiArICogb2YgdGhlIHBhbmVsLgo+ICsgKi8KPiArc3RhdGljIGludCBh
+bmFsb2dpeF9kcF9wcmVwYXJlX3BhbmVsKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAo+
+ICsJCQkJICAgICBib29sIHByZXBhcmUsIGJvb2wgaXNfbW9kZXNldF9wcmVwYXJlKQo+ICt7Cj4g
+KwlpbnQgcmV0ID0gMDsKPiArCj4gKwlpZiAoIWRwLT5wbGF0X2RhdGEtPnBhbmVsKQo+ICsJCXJl
+dHVybiAwOwo+ICsKPiArCW11dGV4X2xvY2soJmRwLT5wYW5lbF9sb2NrKTsKPiArCj4gKwkvKgo+
+ICsJICogRXhpdCBlYXJseSBpZiB0aGlzIGlzIGEgdGVtcG9yYXJ5IHByZXBhcmUvdW5wcmVwYXJl
+IGFuZCB3ZSdyZSBhbHJlYWR5Cj4gKwkgKiBtb2Rlc2V0IChzaW5jZSB3ZSBuZWl0aGVyIHdhbnQg
+dG8gcHJlcGFyZSB0d2ljZSBvciB1bnByZXBhcmUgZWFybHkpLgo+ICsJICovCj4gKwlpZiAoZHAt
+PnBhbmVsX2lzX21vZGVzZXQgJiYgIWlzX21vZGVzZXRfcHJlcGFyZSkKPiArCQlnb3RvIG91dDsK
+PiArCj4gKwlpZiAocHJlcGFyZSkKPiArCQlyZXQgPSBkcm1fcGFuZWxfcHJlcGFyZShkcC0+cGxh
+dF9kYXRhLT5wYW5lbCk7Cj4gKwllbHNlCj4gKwkJcmV0ID0gZHJtX3BhbmVsX3VucHJlcGFyZShk
+cC0+cGxhdF9kYXRhLT5wYW5lbCk7Cj4gKwo+ICsJaWYgKHJldCkKPiArCQlnb3RvIG91dDsKPiAr
+Cj4gKwlpZiAoaXNfbW9kZXNldF9wcmVwYXJlKQo+ICsJCWRwLT5wYW5lbF9pc19tb2Rlc2V0ID0g
+cHJlcGFyZTsKPiArCj4gK291dDoKPiArCW11dGV4X3VubG9jaygmZHAtPnBhbmVsX2xvY2spOwo+
+ICsJcmV0dXJuIHJldDsKPiArfQo+ICsKPiAgIGludCBhbmFsb2dpeF9kcF9nZXRfbW9kZXMoc3Ry
+dWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiAgIHsKPiAgIAlzdHJ1Y3QgYW5hbG9naXhf
+ZHBfZGV2aWNlICpkcCA9IHRvX2RwKGNvbm5lY3Rvcik7Cj4gICAJc3RydWN0IGVkaWQgKmVkaWQg
+PSAoc3RydWN0IGVkaWQgKilkcC0+ZWRpZDsKPiAtCWludCBudW1fbW9kZXMgPSAwOwo+ICsJaW50
+IHJldCwgbnVtX21vZGVzID0gMDsKPiArCj4gKwlyZXQgPSBhbmFsb2dpeF9kcF9wcmVwYXJlX3Bh
+bmVsKGRwLCB0cnVlLCBmYWxzZSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJRFJNX0VSUk9SKCJGYWls
+ZWQgdG8gcHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+ICsJCXJldHVybiAwOwo+ICsJfQo+
+ICAgCj4gICAJaWYgKGFuYWxvZ2l4X2RwX2hhbmRsZV9lZGlkKGRwKSA9PSAwKSB7Cj4gICAJCWRy
+bV9tb2RlX2Nvbm5lY3Rvcl91cGRhdGVfZWRpZF9wcm9wZXJ0eSgmZHAtPmNvbm5lY3RvciwgZWRp
+ZCk7Cj4gQEAgLTk0MCw2ICs5OTIsMTAgQEAgaW50IGFuYWxvZ2l4X2RwX2dldF9tb2RlcyhzdHJ1
+Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ICAgCWlmIChkcC0+cGxhdF9kYXRhLT5nZXRf
+bW9kZXMpCj4gICAJCW51bV9tb2RlcyArPSBkcC0+cGxhdF9kYXRhLT5nZXRfbW9kZXMoZHAtPnBs
+YXRfZGF0YSwgY29ubmVjdG9yKTsKPiAgIAo+ICsJcmV0ID0gYW5hbG9naXhfZHBfcHJlcGFyZV9w
+YW5lbChkcCwgZmFsc2UsIGZhbHNlKTsKPiArCWlmIChyZXQpCj4gKwkJRFJNX0VSUk9SKCJGYWls
+ZWQgdG8gdW5wcmVwYXJlIHBhbmVsICglZClcbiIsIHJldCk7Cj4gKwo+ICAgCXJldHVybiBudW1f
+bW9kZXM7Cj4gICB9Cj4gICAKPiBAQCAtOTYwLDExICsxMDE2LDIzIEBAIGVudW0gZHJtX2Nvbm5l
+Y3Rvcl9zdGF0dXMKPiAgIGFuYWxvZ2l4X2RwX2RldGVjdChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAq
+Y29ubmVjdG9yLCBib29sIGZvcmNlKQo+ICAgewo+ICAgCXN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
+Y2UgKmRwID0gdG9fZHAoY29ubmVjdG9yKTsKPiArCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMg
+c3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQ7Cj4gKwlpbnQgcmV0Owo+ICAg
+Cj4gLQlpZiAoYW5hbG9naXhfZHBfZGV0ZWN0X2hwZChkcCkpCj4gKwlyZXQgPSBhbmFsb2dpeF9k
+cF9wcmVwYXJlX3BhbmVsKGRwLCB0cnVlLCBmYWxzZSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJRFJN
+X0VSUk9SKCJGYWlsZWQgdG8gcHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+ICAgCQlyZXR1
+cm4gY29ubmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQ7Cj4gKwl9Cj4gKwo+ICsJaWYgKCFhbmFs
+b2dpeF9kcF9kZXRlY3RfaHBkKGRwKSkKPiArCQlzdGF0dXMgPSBjb25uZWN0b3Jfc3RhdHVzX2Nv
+bm5lY3RlZDsKPiAgIAo+IC0JcmV0dXJuIGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkOwo+ICsJ
+cmV0ID0gYW5hbG9naXhfZHBfcHJlcGFyZV9wYW5lbChkcCwgZmFsc2UsIGZhbHNlKTsKPiArCWlm
+IChyZXQpCj4gKwkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gdW5wcmVwYXJlIHBhbmVsICglZClcbiIs
+IHJldCk7Cj4gKwo+ICsJcmV0dXJuIHN0YXR1czsKPiAgIH0KPiAgIAo+ICAgc3RhdGljIHZvaWQg
+YW5hbG9naXhfZHBfY29ubmVjdG9yX2Rlc3Ryb3koc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5l
+Y3RvcikKPiBAQCAtMTAzNSw2ICsxMTAzLDE2IEBAIHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfYnJp
+ZGdlX2F0dGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICAgCXJldHVybiAwOwo+ICAg
+fQo+ICAgCj4gK3N0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9wcmVfZW5hYmxlKHN0cnVj
+dCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gK3sKPiArCXN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ug
+KmRwID0gYnJpZGdlLT5kcml2ZXJfcHJpdmF0ZTsKPiArCWludCByZXQ7Cj4gKwo+ICsJcmV0ID0g
+YW5hbG9naXhfZHBfcHJlcGFyZV9wYW5lbChkcCwgdHJ1ZSwgdHJ1ZSk7Cj4gKwlpZiAocmV0KQo+
+ICsJCURSTV9FUlJPUigiZmFpbGVkIHRvIHNldHVwIHRoZSBwYW5lbCByZXQgPSAlZFxuIiwgcmV0
+KTsKPiArfQo+ICsKPiAgIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9lbmFibGUoc3Ry
+dWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPiAgIHsKPiAgIAlzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2
+aWNlICpkcCA9IGJyaWRnZS0+ZHJpdmVyX3ByaXZhdGU7Cj4gQEAgLTEwNTgsNiArMTEzNiw3IEBA
+IHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9lbmFibGUoc3RydWN0IGRybV9icmlkZ2Ug
+KmJyaWRnZSkKPiAgIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9kaXNhYmxlKHN0cnVj
+dCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gICB7Cj4gICAJc3RydWN0IGFuYWxvZ2l4X2RwX2Rldmlj
+ZSAqZHAgPSBicmlkZ2UtPmRyaXZlcl9wcml2YXRlOwo+ICsJaW50IHJldDsKPiAgIAo+ICAgCWlm
+IChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNfT04pCj4gICAJCXJldHVybjsKPiBAQCAt
+MTA3Nyw2ICsxMTU2LDEwIEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9kaXNhYmxl
+KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gICAKPiAgIAlwbV9ydW50aW1lX3B1dF9zeW5j
+KGRwLT5kZXYpOwo+ICAgCj4gKwlyZXQgPSBhbmFsb2dpeF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBm
+YWxzZSwgdHJ1ZSk7Cj4gKwlpZiAocmV0KQo+ICsJCURSTV9FUlJPUigiZmFpbGVkIHRvIHNldHVw
+IHRoZSBwYW5lbCByZXQgPSAlZFxuIiwgcmV0KTsKPiArCj4gICAJZHAtPmRwbXNfbW9kZSA9IERS
+TV9NT0RFX0RQTVNfT0ZGOwo+ICAgfQo+ICAgCj4gQEAgLTExNjUsOSArMTI0OCw5IEBAIHN0YXRp
+YyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9ub3Aoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkK
+PiAgIH0KPiAgIAo+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGFuYWxv
+Z2l4X2RwX2JyaWRnZV9mdW5jcyA9IHsKPiArCS5wcmVfZW5hYmxlID0gYW5hbG9naXhfZHBfYnJp
+ZGdlX3ByZV9lbmFibGUsCj4gICAJLmVuYWJsZSA9IGFuYWxvZ2l4X2RwX2JyaWRnZV9lbmFibGUs
+Cj4gICAJLmRpc2FibGUgPSBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJsZSwKPiAtCS5wcmVfZW5h
+YmxlID0gYW5hbG9naXhfZHBfYnJpZGdlX25vcCwKPiAgIAkucG9zdF9kaXNhYmxlID0gYW5hbG9n
+aXhfZHBfYnJpZGdlX25vcCwKPiAgIAkubW9kZV9zZXQgPSBhbmFsb2dpeF9kcF9icmlkZ2VfbW9k
+ZV9zZXQsCj4gICAJLmF0dGFjaCA9IGFuYWxvZ2l4X2RwX2JyaWRnZV9hdHRhY2gsCj4gQEAgLTEy
+NTQsNiArMTMzNyw5IEBAIGludCBhbmFsb2dpeF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwg
+c3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gICAJZHAtPmRldiA9ICZwZGV2LT5kZXY7Cj4g
+ICAJZHAtPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT0ZGOwo+ICAgCj4gKwltdXRleF9pbml0
+KCZkcC0+cGFuZWxfbG9jayk7Cj4gKwlkcC0+cGFuZWxfaXNfbW9kZXNldCA9IGZhbHNlOwo+ICsK
+PiAgIAkvKgo+ICAgCSAqIHBsYXRmb3JtIGRwIGRyaXZlciBuZWVkIGNvbnRhaW5vcl9vZiB0aGUg
+cGxhdF9kYXRhIHRvIGdldAo+ICAgCSAqIHRoZSBkcml2ZXIgcHJpdmF0ZSBkYXRhLCBzbyB3ZSBu
+ZWVkIHRvIHN0b3JlIHRoZSBwb2ludCBvZgo+IEBAIC0xMzMzLDEzICsxNDE5LDYgQEAgaW50IGFu
+YWxvZ2l4X2RwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
+X2RldiwKPiAgIAo+ICAgCXBoeV9wb3dlcl9vbihkcC0+cGh5KTsKPiAgIAo+IC0JaWYgKGRwLT5w
+bGF0X2RhdGEtPnBhbmVsKSB7Cj4gLQkJaWYgKGRybV9wYW5lbF9wcmVwYXJlKGRwLT5wbGF0X2Rh
+dGEtPnBhbmVsKSkgewo+IC0JCQlEUk1fRVJST1IoImZhaWxlZCB0byBzZXR1cCB0aGUgcGFuZWxc
+biIpOwo+IC0JCQlyZXR1cm4gLUVCVVNZOwo+IC0JCX0KPiAtCX0KPiAtCj4gICAJYW5hbG9naXhf
+ZHBfaW5pdF9kcChkcCk7Cj4gICAKPiAgIAlyZXQgPSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJx
+KCZwZGV2LT5kZXYsIGRwLT5pcnEsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
+bmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPiBpbmRleCBiNDU2MzgwLi40MzEwOGQ3IDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
+ZS5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9j
+b3JlLmgKPiBAQCAtMTc4LDYgKzE3OCw5IEBAIHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ugewo+
+ICAgCWJvb2wgICAgICAgICAgICAgICAgICAgIGZvcmNlX2hwZDsKPiAgIAl1bnNpZ25lZCBjaGFy
+ICAgICAgICAgICBlZGlkW0VESURfQkxPQ0tfTEVOR1RIICogMl07Cj4gICAKPiArCXN0cnVjdCBt
+dXRleAkJcGFuZWxfbG9jazsKPiArCWJvb2wJCQlwYW5lbF9pc19tb2Rlc2V0Owo+ICsKPiAgIAlz
+dHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGE7Cj4gICB9Owo+ICAgCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
