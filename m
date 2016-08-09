@@ -1,55 +1,101 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] net: stmmac: dwmac-rk: add rk3366 & rk3399-specific data
-Date: Mon, 08 Aug 2016 22:35:29 +0200
-Message-ID: <3635712.eAtD6Fn9AW@diego>
-References: <1467802291-6487-1-git-send-email-roger.chen@rock-chips.com> <1467802291-6487-2-git-send-email-roger.chen@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 0/6] Add support of inverting power control and some
+ minor cleanup
+Date: Tue, 9 Aug 2016 09:49:31 +0800
+Message-ID: <cc785e09-6b33-d451-3d11-728bee3668a5@rock-chips.com>
+References: <CGME20160807013720epcas1p235628058a90efa6f0062b03a4b2e4284@epcas1p2.samsung.com>
+ <1470533618-16312-1-git-send-email-shawn.lin@rock-chips.com>
+ <ee997311-3964-8623-a431-c9a5add7f991@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1467802291-6487-2-git-send-email-roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <ee997311-3964-8623-a431-c9a5add7f991@samsung.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Roger,
+Hi,
 
-Am Mittwoch, 6. Juli 2016, 18:51:29 schrieb Roger Chen:
-> Add constants and callback functions for the dwmac on rk3368 socs.
-> As can be seen, the base structure is the same, only registers and
-> the bits in them moved slightly.
-> 
-> Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  .../devicetree/bindings/net/rockchip-dwmac.txt     |   3 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 226
-> +++++++++++++++++++++ 2 files changed, 228 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt index
-> 93eac7c..8c066e6 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> @@ -3,7 +3,8 @@ Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
->  The device node has following properties.
-> 
->  Required properties:
-> - - compatible: Can be one of "rockchip,rk3288-gmac", "rockchip,rk3368-gmac"
-> + - compatible: Can be one of "rockchip,rk3288-gmac",
-> "rockchip,rk3366-gmac", +                            
-> "rockchip,rk3368-gmac", "rockchip,rk3399-gmac" - reg: addresses and length
-> of the register sets for the device. - interrupts: Should contain the GMAC
-> interrupts.
->   - interrupt-names: Should contain the interrupt names "macirq".
+On 2016/8/8 18:24, Jaehoon Chung wrote:
+> Hi Shawn,
+>
+> On 08/07/2016 10:33 AM, Shawn Lin wrote:
+>> By default, dw_mmc outputs high level voltage to indicate powering
+>> up the card and outputs low level vcltage to indicate powering
+>> off the card. But that is not always correct. The power io should
+>> be able to control different kind of hw components to supply or
+>> cutoff power to the card. We have boards that need this patchset
+>> to make the power control correct. Meanwhile let's expose it to
+>> DT for board-specific usage.
+>
+> I have a question for this patch-set. Does DWMMC IP support to invert ON/OFF at Power Enable register?
 
-this doesn't apply against 4.8-rc1 anymore, can you please rebase and resend 
-the series?
+No.
+
+> Hmm..Well, if use the DW_MMC_CARD_PWR_INVERT, it should also be the similar behavior with Quirks.
+
+yup, it makes the power control more complicated than before. :(
+
+>
+> Other flags are related with dwmmc IP. But this flag (DW_MMC_CARD_PWR_INVERT) is not related with IP side.
+> I understood why you needs to add this flag..Is rockchip designed to invert the power controlling?
+
+We don't invert the power controlling but our customers do.
+The HW componet looks like some discrete LDOs which enable the related
+power supply when outputing low voltage from pwren..
+
+>
+> But it's not general case. We can discuss about this.
+
+I have a solution which is to add gpio power control for slot-gpio of
+mmc core. once finished, we could add pwr_cap_invert just like what we
+did for cd/wp invert control..
+
+Then we could remove PWREN from the default state of
+pinctrl inside the sdmmc dt node, and let dwmmc request gpio power
+control stuff after paring the property for pwr_cap_invert..
+
+More over, it well fit for all mmc host's requirement of gpio
+power control and inverted control if they want it. :)
 
 
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+That should be legit for us?
+If it sounds ok to you and Ulf, I will come up with a RFC one for
+community to comment it.:)
+
+>
+> Best Regards,
+> Jaehoon Chung
+>
+>>
+>>
+>> Changes in v2:
+>> - fix copy-paste err and typo
+>>
+>> Shawn Lin (6):
+>>   dt-bindings: rockchip-dw-mshc: add description of
+>>     rockchip,power-invert
+>>   mmc: dw_mmc: cleanup power setting of set_ios callback
+>>   mmc: dw_mmc: split out dw_mci_set_power
+>>   mmc: dw_mmc: split out dw_mci_set_power_reg
+>>   mmc: dw_mmc: support inverted power control
+>>   mmc: dw_mmc-rockchip: add parsing of power control from DT
+>>
+>>  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   6 +
+>>  drivers/mmc/host/dw_mmc-rockchip.c                 |   8 ++
+>>  drivers/mmc/host/dw_mmc.c                          | 134 ++++++++++++---------
+>>  drivers/mmc/host/dw_mmc.h                          |   1 +
+>>  4 files changed, 90 insertions(+), 59 deletions(-)
+>>
+>
+>
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
