@@ -1,34 +1,44 @@
-From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: add rk3288-firefly-reload
-Date: Tue, 9 Aug 2016 18:06:33 +0800
-Message-ID: <C2BE77CA-A59B-4128-8802-E3E36FACDABA@rock-chips.com>
-References: <1549971.ctkvOGm2xW@diego> <2868781.4x2gJCRbLH@diego> <413ebccd-e8d6-1401-3065-f9a63b4d66e6@rock-chips.com> <1815189.oGy6GHMbyM@phil> <CAFLEztQ1pa-CCbC8c8+VJ_kg8RyPOb-UHZiKBZffKEw9zyx9Zg@mail.gmail.com> <CAFLEztTROearSEcgzV3EVHFcRcMQpLhAQ6BXP-dDyRDAWybaxg@mail.gmail.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain;
-	charset=cp936
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAFLEztTROearSEcgzV3EVHFcRcMQpLhAQ6BXP-dDyRDAWybaxg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?GB2312?B?s8K6wA==?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH v1 0/5] drm/rockchip: Implement CRC debugfs API
+Date: Tue,  9 Aug 2016 12:51:31 +0200
+Message-ID: <1470739896-11088-1-git-send-email-tomeu.vizoso@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, Emil Velikov <emil.velikov@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-從我的 iPad 傳送
-
-> 陈豪 <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> 於 2016年8月9日 下午6:02 寫道：
-> 
-> well，it has already been added....
-> 
-> The root cause is not act8846. Firefly have a bug with sdmmc and it
-> seems they didn't fix it in firefly-reload.
-> 
-> http://bbs.t-firefly.com/forum.php?mod=viewthread&tid=256
-Yes, Jacob is right. Those high speed options need the voltage down to 1.8v. They should be removed.
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGksCgp0aGlzIHNlcmllcyBidWlsZHMgdXAgb24gdGhlIEFQSSBmb3IgZXhwb3NpbmcgY2FwdHVy
+ZWQgQ1JDcyB0aHJvdWdoCmRlYnVnZnMgYW5kIGFsc28gb24gdGhlIHJlZmFjdG9yaW5nIHRvIHRo
+ZSBhbmFsb2dpeF9kcCBkcml2ZXIgZm9yIHVzaW5nCnRoZSBEUCBoZWxwZXJzIChzbyBpdCBkZXBl
+bmRzIG9uIHRob3NlIG5vdC15ZXQgbWVyZ2VkIHNlcmllcykuCgpJdCBhZGRzIG5ldyBEUCBoZWxw
+ZXJzIGZvciBzdGFydGluZyBhbmQgc3RvcHBpbmcgQ1JDIGNhcHR1cmUgYW5kIGdldHMKdGhlIFJv
+Y2tjaGlwIGRyaXZlciB0byB1c2UgaXQuCgpBbHNvIGhhZCB0byBhZGQgYSBjb25uZWN0b3IgYmFj
+a3BvaW50ZXIgdG8gdGhlIEFVWCBzdHJ1Y3Qgc28gd2UgY291bGQKd2FpdCBmb3IgdGhlIHJpZ2h0
+IHZibGFuayBhbmQgc3RvcmUgdGhlIENSQ3MgYWZ0ZXJ3YXJkcy4KClRoYW5rcywKClRvbWV1CgoK
+VG9tZXUgVml6b3NvICg1KToKICBkcm0vZHA6IGFkZCBjb25uZWN0b3IgYmFja3BvaW50ZXIgdG8g
+ZHJtX2RwX2F1eAogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBzZXQgY29ubmVjdG9yIHRvIGRy
+bV9kcF9hdXgKICBkcm0vZHA6IGFkZCBoZWxwZXJzIGZvciBjYXB0dXJlIG9mIGZyYW1lIENSQ3MK
+ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogYWRkIGhlbHBlcnMgZm9yIGNhcHR1cmUgb2YgZnJh
+bWUgQ1JDcwogIGRybS9yb2NrY2hpcDogSW1wbGVtZW50IENSQyBkZWJ1Z2ZzIEFQSQoKIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDM0ICsrKyst
+LQogZHJpdmVycy9ncHUvZHJtL2RybV9kcF9oZWxwZXIuYyAgICAgICAgICAgICAgICAgICAgfCAx
+MzMgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jICAgICAgICB8ICA0OCArKysrKysrKwogaW5jbHVkZS9kcm0vYnJpZGdlL2Fu
+YWxvZ2l4X2RwLmggICAgICAgICAgICAgICAgICAgfCAgIDMgKwogaW5jbHVkZS9kcm0vZHJtX2Rw
+X2hlbHBlci5oICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDkgKysKIDUgZmlsZXMgY2hhbmdl
+ZCwgMjE5IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgotLSAKMi43LjQKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
