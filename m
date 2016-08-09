@@ -1,35 +1,56 @@
-From: Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] i2c: don't print error when adding adapter fails
-Date: Tue, 9 Aug 2016 18:45:54 +0200
-Message-ID: <CAGhQ9VwJk1WZ2cB6Ag3HXfWEwe1GC-G9L2TWem+Lf5moLDx9uQ@mail.gmail.com>
-References: <1470742581-12971-1-git-send-email-wsa-dev@sang-engineering.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1470742581-12971-1-git-send-email-wsa-dev-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wolfram Sang <wsa-dev-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>
-Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-omap <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [v2 PATCH] clk: rockchip: mark rk3399 hdcp_noc and vio_noc as critical
+Date: Tue,  9 Aug 2016 11:02:33 -0700
+Message-ID: <1470765753-11619-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, zhengxing@rock-chips.com
+Cc: yzq@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, groeck@chromium.org, marcheu@chromium.org, wulf@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 9 August 2016 at 13:36, Wolfram Sang <wsa-dev-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org> wrote:
-> Since v4.8-rc1, the I2C core will print detailed information when adding an I2C
-> adapter fails. So, drivers can skip this now.
->
-> I am still undecided if I apply this as a single patch or break it out. But for
-> reviewing, avoiding the patch bomb is probably a good thing.
->
-> Should go via subsystem tree, I'd think.
->
-> Wolfram Sang (1):
->   i2c: don't print error when adding adapter fails
+Fix incorrect rk3399 aclk_vio gating bit, it should be 0, not 10. With
+this modification, the aclk_vio_noc should be put into critical list,
+since it is required by VOP.
+And the Type-C DP need these clocks: aclk_hdcp_noc, hclk_hdcp_noc,
+pclk_hdcp_noc. Mark them as critical to avoid someone close them.
 
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
 
-For
->  drivers/i2c/busses/i2c-lpc2k.c          | 4 +---
+ drivers/clk/rockchip/clk-rk3399.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-Acked-by: Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index b173711a..676b017 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1073,7 +1073,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	/* vio */
+ 	COMPOSITE(ACLK_VIO, "aclk_vio", mux_pll_src_cpll_gpll_ppll_p, CLK_IGNORE_UNUSED,
+ 			RK3399_CLKSEL_CON(42), 6, 2, MFLAGS, 0, 5, DFLAGS,
+-			RK3399_CLKGATE_CON(11), 10, GFLAGS),
++			RK3399_CLKGATE_CON(11), 0, GFLAGS),
+ 	COMPOSITE_NOMUX(PCLK_VIO, "pclk_vio", "aclk_vio", 0,
+ 			RK3399_CLKSEL_CON(43), 0, 5, DFLAGS,
+ 			RK3399_CLKGATE_CON(11), 1, GFLAGS),
+@@ -1470,6 +1470,9 @@ static const char *const rk3399_cru_critical_clocks[] __initconst = {
+ 	"aclk_cci_pre",
+ 	"aclk_gic",
+ 	"aclk_gic_noc",
++	"aclk_hdcp_noc",
++	"hclk_hdcp_noc",
++	"pclk_hdcp_noc",
+ 	"pclk_perilp0",
+ 	"pclk_perilp0",
+ 	"hclk_perilp0",
+@@ -1489,6 +1492,7 @@ static const char *const rk3399_cru_critical_clocks[] __initconst = {
+ 	"gpll_hclk_perilp1_src",
+ 	"gpll_aclk_perilp0_src",
+ 	"gpll_aclk_perihp_src",
++	"aclk_vio_noc",
+ };
+ 
+ static const char *const rk3399_pmucru_critical_clocks[] __initconst = {
+-- 
+1.9.1
 
-
-regards,
-Joachim Eastwood
