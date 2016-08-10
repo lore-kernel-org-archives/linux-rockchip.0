@@ -1,240 +1,73 @@
-From: Finlye Xiao <finley.xiao@rock-chips.com>
-Subject: [PATCH v1 4/4] nvmem: rockchip-efuse: add rk3399-efuse support
-Date: Wed, 10 Aug 2016 14:50:43 +0800
-Message-ID: <1470811843-42668-5-git-send-email-finley.xiao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 1/4] nvmem: rockchip-efuse: update compatible strings
+ for Rockchip efuse
+Date: Wed, 10 Aug 2016 10:21:46 +0200
+Message-ID: <18634361.lkZvz8cT7b@diego>
 References: <1470811843-42668-1-git-send-email-finley.xiao@rock-chips.com>
+ <1470811843-42668-2-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1470811843-42668-1-git-send-email-finley.xiao@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux@armlinux.org.uk, catalin.marinas@arm.com, will.deacon@arm.com, dianders@chromium.org, wbriannorris@chromium.org
-Cc: huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tony.xie@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>, linux-arm-kernel@lists.infradead.org, jay.xu@rock-chips.com, cl@rock-chips.com, wxt@rock-chips.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470811843-42668-2-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wbriannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+Hi Finley,
 
-1) the efuse timing of rk3399 is different from earlier SoCs.
-2) rk3399-efuse is organized as 32bits by 32 one-time programmable
-electrical fuses, the efuse of earlier SoCs is organized as 32bits
-by 8 one-time programmable electrical fuses with random access interface.
+Am Mittwoch, 10. August 2016, 14:50:40 schrieb Finlye Xiao:
+> From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Rk3399-efuse is organized as 32bits by 32 one-time programmable
+> electrical fuses. The efuse of earlier SoCs are organized as
+> 32bits by 8 one-time programmable electrical fuses with random
+> access interface.
+> 
+> Add different device tree compatible string for different SoCs
+> to be able to differentiate between the two.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+> b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt index
+> 8f86ab3..8ec1b80 100644
+> --- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+> +++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+> @@ -1,7 +1,11 @@
+>  = Rockchip eFuse device tree bindings =
+> 
+>  Required properties:
+> -- compatible: Should be "rockchip,rockchip-efuse"
+> +- compatible: Should be one of the following.
+> +	"rockchip,rk3066a-efuse" - for RK3066a SoCs.
+> +	"rockchip,rk3188-efuse" - for RK3188 SoCs.
+> +	"rockchip,rk3288-efuse" - for RK3288 SoCs.
+> +	"rockchip,rk3399-efuse" - for RK3399 SoCs.
+>  - reg: Should contain the registers location and exact eFuse size
+>  - clocks: Should be the clock id of eFuse
+>  - clock-names: Should be "pclk_efuse"
 
-This patch adds a new read function for rk3399-efuse.
+you cannot drop the old compatible that way. Please add a new section
 
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
----
- drivers/nvmem/rockchip-efuse.c | 132 ++++++++++++++++++++++++++++++++++-------
- 1 file changed, 112 insertions(+), 20 deletions(-)
+Deprecated properties:
+- compatible: "rockchip,rockchip-efuse"
+  Old efuse compatible value compatible to rk3066a, rk3188 and rk3288 efuses
 
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 4d3f391..58fee00b 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -22,17 +22,28 @@
- #include <linux/nvmem-provider.h>
- #include <linux/slab.h>
- #include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- 
--#define EFUSE_A_SHIFT			6
--#define EFUSE_A_MASK			0x3ff
--#define EFUSE_PGENB			BIT(3)
--#define EFUSE_LOAD			BIT(2)
--#define EFUSE_STROBE			BIT(1)
--#define EFUSE_CSB			BIT(0)
--
--#define REG_EFUSE_CTRL			0x0000
--#define REG_EFUSE_DOUT			0x0004
-+#define RK3288_A_SHIFT		6
-+#define RK3288_A_MASK		0x3ff
-+#define RK3288_PGENB		BIT(3)
-+#define RK3288_LOAD			BIT(2)
-+#define RK3288_STROBE		BIT(1)
-+#define RK3288_CSB			BIT(0)
-+
-+#define RK3399_A_SHIFT		16
-+#define RK3399_A_MASK		0x3ff
-+#define RK3399_NBYTES		4
-+#define RK3399_STROBSFTSEL	BIT(9)
-+#define RK3399_PD			BIT(5)
-+#define RK3399_PGENB		BIT(3)
-+#define RK3399_LOAD			BIT(2)
-+#define RK3399_STROBE		BIT(1)
-+#define RK3399_CSB			BIT(0)
-+
-+#define REG_EFUSE_CTRL		0x0000
-+#define REG_EFUSE_DOUT		0x0004
- 
- struct rockchip_efuse_chip {
- 	struct device *dev;
-@@ -40,8 +51,8 @@ struct rockchip_efuse_chip {
- 	struct clk *clk;
- };
- 
--static int rockchip_efuse_read(void *context, unsigned int offset,
--			       void *val, size_t bytes)
-+static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
-+				      void *val, size_t bytes)
- {
- 	struct rockchip_efuse_chip *efuse = context;
- 	u8 *buf = val;
-@@ -53,27 +64,78 @@ static int rockchip_efuse_read(void *context, unsigned int offset,
- 		return ret;
- 	}
- 
--	writel(EFUSE_LOAD | EFUSE_PGENB, efuse->base + REG_EFUSE_CTRL);
-+	writel(RK3288_LOAD | RK3288_PGENB, efuse->base + REG_EFUSE_CTRL);
- 	udelay(1);
- 	while (bytes--) {
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) &
--			     (~(EFUSE_A_MASK << EFUSE_A_SHIFT)),
-+			     (~(RK3288_A_MASK << RK3288_A_SHIFT)),
- 			     efuse->base + REG_EFUSE_CTRL);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) |
--			     ((offset++ & EFUSE_A_MASK) << EFUSE_A_SHIFT),
-+			     ((offset++ & RK3288_A_MASK) << RK3288_A_SHIFT),
- 			     efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) |
--			     EFUSE_STROBE, efuse->base + REG_EFUSE_CTRL);
-+			     RK3288_STROBE, efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 		*buf++ = readb(efuse->base + REG_EFUSE_DOUT);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) &
--		     (~EFUSE_STROBE), efuse->base + REG_EFUSE_CTRL);
-+		     (~RK3288_STROBE), efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 	}
- 
- 	/* Switch to standby mode */
--	writel(EFUSE_PGENB | EFUSE_CSB, efuse->base + REG_EFUSE_CTRL);
-+	writel(RK3288_PGENB | RK3288_CSB, efuse->base + REG_EFUSE_CTRL);
-+
-+	clk_disable_unprepare(efuse->clk);
-+
-+	return 0;
-+}
-+
-+static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
-+				      void *val, size_t bytes)
-+{
-+	struct rockchip_efuse_chip *efuse = context;
-+	unsigned int addr_start, addr_end, addr_offset, addr_len;
-+	unsigned int out_value;
-+	unsigned char *buf;
-+	int ret, i = 0;
-+
-+	ret = clk_prepare_enable(efuse->clk);
-+	if (ret < 0) {
-+		dev_err(efuse->dev, "failed to prepare/enable efuse clk\n");
-+		return ret;
-+	}
-+
-+	addr_start = rounddown(offset, RK3399_NBYTES) / RK3399_NBYTES;
-+	addr_end = roundup(offset + bytes, RK3399_NBYTES) / RK3399_NBYTES;
-+	addr_offset = offset % RK3399_NBYTES;
-+	addr_len = addr_end - addr_start;
-+
-+	buf = kzalloc(sizeof(*buf) * addr_len * RK3399_NBYTES, GFP_KERNEL);
-+
-+	writel(RK3399_LOAD | RK3399_PGENB | RK3399_STROBSFTSEL,
-+	       efuse->base + REG_EFUSE_CTRL);
-+	udelay(1);
-+	while (addr_len--) {
-+		writel(readl(efuse->base + REG_EFUSE_CTRL) | RK3399_STROBE |
-+			((addr_start++ & RK3399_A_MASK) << RK3399_A_SHIFT),
-+			efuse->base + REG_EFUSE_CTRL);
-+		udelay(1);
-+		out_value = readl(efuse->base + REG_EFUSE_DOUT);
-+		writel(readl(efuse->base + REG_EFUSE_CTRL) & (~RK3399_STROBE),
-+		       efuse->base + REG_EFUSE_CTRL);
-+		udelay(1);
-+
-+		memcpy(&buf[i], &out_value, RK3399_NBYTES);
-+		i += RK3399_NBYTES;
-+	}
-+
-+	/* Switch to standby mode */
-+	writel(RK3399_PD | RK3399_CSB, efuse->base + REG_EFUSE_CTRL);
-+
-+	memcpy(val, buf + addr_offset, bytes);
-+
-+	kfree(buf);
- 
- 	clk_disable_unprepare(efuse->clk);
- 
-@@ -89,7 +151,22 @@ static struct nvmem_config econfig = {
- };
- 
- static const struct of_device_id rockchip_efuse_match[] = {
--	{ .compatible = "rockchip,rockchip-efuse", },
-+	{
-+		.compatible = "rockchip,rk3066a-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3188-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3288-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3399-efuse",
-+		.data = (void *)&rockchip_rk3399_efuse_read,
-+	},
- 	{ /* sentinel */},
- };
- MODULE_DEVICE_TABLE(of, rockchip_efuse_match);
-@@ -99,6 +176,14 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	struct nvmem_device *nvmem;
- 	struct rockchip_efuse_chip *efuse;
-+	const struct of_device_id *match;
-+	struct device *dev = &pdev->dev;
-+
-+	match = of_match_device(dev->driver->of_match_table, dev);
-+	if (!match || !match->data) {
-+		dev_err(dev, "failed to get match data\n");
-+		return -EINVAL;
-+	}
- 
- 	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
- 			     GFP_KERNEL);
-@@ -116,7 +201,7 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 
- 	efuse->dev = &pdev->dev;
- 	econfig.size = resource_size(res);
--	econfig.reg_read = rockchip_efuse_read;
-+	econfig.reg_read = match->data;
- 	econfig.priv = efuse;
- 	econfig.dev = efuse->dev;
- 	nvmem = nvmem_register(&econfig);
-@@ -144,6 +229,13 @@ static struct platform_driver rockchip_efuse_driver = {
- 	},
- };
- 
--module_platform_driver(rockchip_efuse_driver);
-+static int __init rockchip_efuse_module_init(void)
-+{
-+	return platform_driver_probe(&rockchip_efuse_driver,
-+				     rockchip_efuse_probe);
-+}
-+
-+subsys_initcall(rockchip_efuse_module_init);
-+
- MODULE_DESCRIPTION("rockchip_efuse driver");
- MODULE_LICENSE("GPL v2");
--- 
-1.9.1
+and move the old compatible there.
+
+
+Thanks
+Heiko
