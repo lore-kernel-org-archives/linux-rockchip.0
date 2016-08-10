@@ -1,41 +1,46 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/6] dt-bindings: rockchip-dw-mshc: add description of
- rockchip,power-invert
-Date: Wed, 10 Aug 2016 13:46:30 -0500
-Message-ID: <20160810184630.GA17244@rob-hp-laptop>
-References: <1470533618-16312-1-git-send-email-shawn.lin@rock-chips.com>
- <1470533644-16357-1-git-send-email-shawn.lin@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH 0/5] drm/rockchip: Some patches to up the PSR series
+Date: Wed, 10 Aug 2016 17:24:13 -0400
+Message-ID: <1470864258-22680-1-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1470533644-16357-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: mark.yao@rock-chips.com, dri-devel@lists.freedesktop.org, ykk@rock-chips.com
+Cc: marcheu@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Aug 07, 2016 at 09:34:04AM +0800, Shawn Lin wrote:
-> rockchip,power-invert is used for rockchip to introduce the flag
-> DW_MMC_CARD_PWR_INVERT from DT which should make the power control
-> of dw_mmc more flexible according to different hw design.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v2: None
-> 
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 6 ++++++
->  1 file changed, 6 insertions(+)
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+ClRoaXMgaXMgYSBmb2xsb3ctb24gc2V0IHRvIFlha2lyJ3Mgb3JpZ2luYWwgUFNSIHNldCBoZXJl
+OgoJaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTYvNy8yNC8zNAoKVGhlcmUgYXJlIGEgZmV3IGlz
+c3VlcyB3aXRoIHRoZSBjb2RlIHRoYXQgbmVlZGVkIHRvIGJlCnNob3JlZCB1cC4gCgogKDEpIFRo
+ZSB1c2Ugb2YgbXV0ZXhlcyBpbnN0ZWFkIG9mIHNwaW5sb2NrcyBjYXVzZWQgaXNzdWVzIGNhbGxp
+bmcgdGhlCiAgICAgcHNyIGZ1bmN0aW9ucyBmcm9tIHZibGFua19lbmFibGUvZGlzYWJsZS4KCiAo
+MikgVGhlIHByb2xpZmVyYXRpb24gb2Ygd29ya2VycyBkdWUgdG8gKDEpCgogKDMpIHZibGFuayBp
+cyBub3QgZW5hYmxlZCB1bmxlc3MgYW4gZXZlbnQgaXMgcmVxdWVzdGVkLCB0aGlzIGJyZWFrcwog
+ICAgIGEgbG90IG9mIHRoaW5ncywgYnV0IG1vc3Qgbm90aWNlYWJsZSB3YXMgY3Vyc29yLgoKLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLQoKU2VhbiBQYXVsICg1KToKICBkcm0vcm9ja2NoaXA6IENoYW5nZSBwc3IgbGlz
+dCBtdXRleCB0byBzcGlubG9jawogIGRybS9yb2NrY2hpcDogQ2hhbmdlIHN0YXRlX211dGV4IHRv
+IHNwaW5sb2NrCiAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgZGVsYXllZCB3b3JrIHRvIGVuYWJsZS9k
+aXNhYmxlIHBzcgogIGRybS9yb2NrY2hpcDogSW1wcm92ZSBhbmFsb2dpeC1kcCBwc3IgaGFuZGxp
+bmcKICBkcm0vcm9ja2NoaXA6IEVuYWJsZSB2Ymxhbmsgd2l0aG91dCBldmVudAoKIGRyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDEgLQogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAyNCArKysrLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgICAgICB8ICAy
+ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8
+ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jICAgICAg
+ICB8IDg0ICsrKysrKysrKysrKysrLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgICAgICAgIHwgNDMgKysrKystLS0tLS0KIDYgZmlsZXMgY2hhbmdl
+ZCwgOTAgaW5zZXJ0aW9ucygrKSwgNjYgZGVsZXRpb25zKC0pCgotLSAKMi44LjAucmMzLjIyNi5n
+MzlkNDAyMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
