@@ -1,61 +1,151 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 5/6] drm/rockchip: Enable vblank without event
-Date: Wed, 10 Aug 2016 17:24:18 -0400
-Message-ID: <1470864258-22680-6-git-send-email-seanpaul@chromium.org>
-References: <1470864258-22680-1-git-send-email-seanpaul@chromium.org>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [v10 PATCH 1/5] Documentation: bindings: add dt doc for Rockchip
+ USB Type-C PHY
+Date: Wed, 10 Aug 2016 15:10:12 -0700
+Message-ID: <CABXOdTcgLHkxhk+LbBxe9wfmMBHVxt0NgStvG4MCcZKi_J2zLw@mail.gmail.com>
+References: <1470785557-21974-1-git-send-email-zyw@rock-chips.com> <1470785557-21974-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1470864258-22680-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: mark.yao@rock-chips.com, dri-devel@lists.freedesktop.org, ykk@rock-chips.com
-Cc: marcheu@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1470785557-21974-2-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, myungjoo.ham@samsung.com, Chanwoo Choi <cw00.choi@samsung.com>, wulf <wulf@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-dmJsYW5rIHNob3VsZCBiZSBlbmFibGVkIHJlZ2FyZGxlc3Mgb2Ygd2hldGhlciBhbiBldmVudApp
-cyBleHBlY3RlZCBiYWNrLiBUaGlzIGlzIGVzcGVjaWFsbHkgaW1wb3J0YW50IGZvciBhIGN1cnNv
-cgpwbGFuZS4KClNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3Jn
-PgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxNSAr
-KysrKysrKysrKystLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAzIGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmlu
-ZGV4IDg2ZDYwZmYuLmMwZmJlMGEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwpAQCAtMTExLDYgKzExMSw3IEBAIHN0cnVjdCB2b3AgewogCXN0cnVjdCBk
-ZXZpY2UgKmRldjsKIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldjsKIAlib29sIGlzX2VuYWJs
-ZWQ7CisJYm9vbCB2YmxhbmtfYWN0aXZlOwogCiAJLyogbXV0ZXggdnN5bmNfIHdvcmsgKi8KIAlz
-dHJ1Y3QgbXV0ZXggdnN5bmNfbXV0ZXg7CkBAIC05NjEsNiArOTYyLDcgQEAgc3RhdGljIHZvaWQg
-dm9wX2NydGNfY2FuY2VsX3BlbmRpbmdfdmJsYW5rKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAl1
-bnNpZ25lZCBsb25nIGZsYWdzOwogCiAJc3Bpbl9sb2NrX2lycXNhdmUoJmRybS0+ZXZlbnRfbG9j
-aywgZmxhZ3MpOworCiAJZSA9IHZvcC0+ZXZlbnQ7CiAJaWYgKGUgJiYgZS0+YmFzZS5maWxlX3By
-aXYgPT0gZmlsZV9wcml2KSB7CiAJCXZvcC0+ZXZlbnQgPSBOVUxMOwpAQCAtMTEwOCw5ICsxMTEw
-LDEwIEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19iZWdpbihzdHJ1Y3QgZHJtX2NydGMg
-KmNydGMsCiB7CiAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOwogCi0JaWYgKGNydGMt
-PnN0YXRlLT5ldmVudCkgewotCQlXQVJOX09OKGRybV9jcnRjX3ZibGFua19nZXQoY3J0YykgIT0g
-MCk7CisJV0FSTl9PTihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOworCXZvcC0+dmJs
-YW5rX2FjdGl2ZSA9IHRydWU7CiAKKwlpZiAoY3J0Yy0+c3RhdGUtPmV2ZW50KSB7CiAJCXZvcC0+
-ZXZlbnQgPSBjcnRjLT5zdGF0ZS0+ZXZlbnQ7CiAJCWNydGMtPnN0YXRlLT5ldmVudCA9IE5VTEw7
-CiAJfQpAQCAtMTIwMCwxMSArMTIwMywxNiBAQCBzdGF0aWMgdm9pZCB2b3BfaGFuZGxlX3ZibGFu
-ayhzdHJ1Y3Qgdm9wICp2b3ApCiAJCXNwaW5fbG9ja19pcnFzYXZlKCZkcm0tPmV2ZW50X2xvY2ss
-IGZsYWdzKTsKIAogCQlkcm1fY3J0Y19zZW5kX3ZibGFua19ldmVudChjcnRjLCB2b3AtPmV2ZW50
-KTsKLQkJZHJtX2NydGNfdmJsYW5rX3B1dChjcnRjKTsKIAkJdm9wLT5ldmVudCA9IE5VTEw7CiAK
-IAkJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmZHJtLT5ldmVudF9sb2NrLCBmbGFncyk7CiAJfQor
-CisJaWYgKHZvcC0+dmJsYW5rX2FjdGl2ZSkgeworCQl2b3AtPnZibGFua19hY3RpdmUgPSBmYWxz
-ZTsKKwkJZHJtX2NydGNfdmJsYW5rX3B1dChjcnRjKTsKKwl9CisKIAlpZiAoIWNvbXBsZXRpb25f
-ZG9uZSgmdm9wLT53YWl0X3VwZGF0ZV9jb21wbGV0ZSkpCiAJCWNvbXBsZXRlKCZ2b3AtPndhaXRf
-dXBkYXRlX2NvbXBsZXRlKTsKIH0KQEAgLTE0ODUsNiArMTQ5Myw3IEBAIHN0YXRpYyBpbnQgdm9w
-X2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCWNsa19kaXNhYmxlKHZvcC0+YWNsayk7CiAKIAl2
-b3AtPmlzX2VuYWJsZWQgPSBmYWxzZTsKKwl2b3AtPnZibGFua19hY3RpdmUgPSBmYWxzZTsKIAog
-CXJldHVybiAwOwogCi0tIAoyLjguMC5yYzMuMjI2LmczOWQ0MDIwCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Aug 9, 2016 at 4:32 PM, Chris Zhong <zyw@rock-chips.com> wrote:
+> This patch adds a binding that describes the Rockchip USB Type-C PHY
+> for rk3399
+>
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+
+>
+> ---
+>
+> Changes in v10:
+> - remove rockchip,uphy-dp-sel property
+>
+> Changes in v9:
+> - change #phy-cells to 1
+>
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6:
+> - add assigned-clocks and assigned-clock-rates
+>
+> Changes in v5: None
+> Changes in v4:
+> - add a #phy-cells node
+>
+> Changes in v3:
+> - use compatible: rockchip,rk3399-typec-phy
+> - use dashes instead of underscores.
+>
+> Changes in v2:
+> - add some registers description
+>
+> Changes in v1:
+> - add extcon node description
+> - move the registers in phy driver
+> - remove the suffix of reset
+>
+>  .../devicetree/bindings/phy/phy-rockchip-typec.txt | 82 ++++++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+>
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> new file mode 100644
+> index 0000000..bf372e6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> @@ -0,0 +1,82 @@
+> +* ROCKCHIP type-c PHY
+> +---------------------
+> +
+> +Required properties:
+> + - compatible : must be "rockchip,rk3399-typec-phy"
+> + - reg: Address and length of the usb phy control register set
+> + - rockchip,grf : phandle to the syscon managing the "general
+> +   register files"
+> + - clocks : phandle + clock specifier for the phy clocks
+> + - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
+> + - assigned-clocks: main clock, should be <&cru SCLK_UPHY0_TCPDCORE> or
+> +                   <&cru SCLK_UPHY1_TCPDCORE>;
+> + - assigned-clock-rates : the phy core clk frequency, shall be: 50000000
+> + - resets : a list of phandle + reset specifier pairs
+> + - reset-names : string reset name, must be:
+> +                "uphy", "uphy-pipe", "uphy-tcphy"
+> + - extcon : extcon specifier for the Power Delivery
+> + - #phy-cells: must be 1. create 2 PHY node:
+> +               <&tcphy0 0> and <&tcphy1 0> for DP PHY.
+> +               <&tcphy0 1> and <&tcphy1 1> for USB3 PHY.
+> +   See ./phy-bindings.txt for details.
+> +
+> +Note, there are 2 type-c phys for RK3399, and they are almost identical, except
+> +these registers(description below), every register node contains 3 sections:
+> +offset, enable bit, write mask bit.
+> + - rockchip,typec-conn-dir : the register of type-c connector direction,
+> +   for type-c phy0, it must be <0xe580 0 16>;
+> +   for type-c phy1, it must be <0xe58c 0 16>;
+> + - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
+> +   control.
+> +   for type-c phy0, it must be <0xe580 3 19>;
+> +   for type-c phy1, it must be <0xe58c 3 19>;
+> + - rockchip,external-psm : the register of type-c phy external psm clock
+> +   selection.
+> +   for type-c phy0, it must be <0xe588 14 30>;
+> +   for type-c phy1, it must be <0xe594 14 30>;
+> + - rockchip,pipe-status : the register of type-c phy pipe status.
+> +   for type-c phy0, it must be <0xe5c0 0 0>;
+> +   for type-c phy1, it must be <0xe5c0 16 16>;
+> +
+> +Example:
+> +       tcphy0: phy@ff7c0000 {
+> +               compatible = "rockchip,rk3399-typec-phy";
+> +               reg = <0x0 0xff7c0000 0x0 0x40000>;
+> +               rockchip,grf = <&grf>;
+> +               #phy-cells = <1>;
+> +               extcon = <&fusb0>;
+> +               clocks = <&cru SCLK_UPHY0_TCPDCORE>,
+> +                        <&cru SCLK_UPHY0_TCPDPHY_REF>;
+> +               clock-names = "tcpdcore", "tcpdphy-ref";
+> +               assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
+> +               assigned-clock-rates = <50000000>;
+> +               resets = <&cru SRST_UPHY0>,
+> +                        <&cru SRST_UPHY0_PIPE_L00>,
+> +                        <&cru SRST_P_UPHY0_TCPHY>;
+> +               reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
+> +               rockchip,typec-conn-dir = <0xe580 0 16>;
+> +               rockchip,usb3tousb2-en = <0xe580 3 19>;
+> +               rockchip,external-psm = <0xe588 14 30>;
+> +               rockchip,pipe-status = <0xe5c0 0 0>;
+> +       };
+> +
+> +       tcphy1: phy@ff800000 {
+> +               compatible = "rockchip,rk3399-typec-phy";
+> +               reg = <0x0 0xff800000 0x0 0x40000>;
+> +               rockchip,grf = <&grf>;
+> +               #phy-cells = <1>;
+> +               extcon = <&fusb1>;
+> +               clocks = <&cru SCLK_UPHY1_TCPDCORE>,
+> +                        <&cru SCLK_UPHY1_TCPDPHY_REF>;
+> +               clock-names = "tcpdcore", "tcpdphy-ref";
+> +               assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
+> +               assigned-clock-rates = <50000000>;
+> +               resets = <&cru SRST_UPHY1>,
+> +                        <&cru SRST_UPHY1_PIPE_L00>,
+> +                        <&cru SRST_P_UPHY1_TCPHY>;
+> +               reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
+> +               rockchip,typec-conn-dir = <0xe58c 0 16>;
+> +               rockchip,usb3tousb2-en = <0xe58c 3 19>;
+> +               rockchip,external-psm = <0xe594 14 30>;
+> +               rockchip,pipe-status = <0xe5c0 16 16>;
+> +       };
+> --
+> 1.9.1
+>
