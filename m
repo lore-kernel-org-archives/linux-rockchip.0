@@ -1,53 +1,39 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] net: stmmac: dwmac-rk: add rk3366 & rk3399 specific data
-Date: Thu, 11 Aug 2016 10:12:44 +0200
-Message-ID: <1799606.7CVTQCi7m5@diego>
-References: <1470900288-10109-1-git-send-email-roger.chen@rock-chips.com> <1470900288-10109-2-git-send-email-roger.chen@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/4] nvmem: rockchip-efuse: update compatible strings
+ for Rockchip efuse
+Date: Thu, 11 Aug 2016 10:14:03 +0200
+Message-ID: <21647624.nrv841C5QK@diego>
+References: <1470878029-11878-1-git-send-email-finley.xiao@rock-chips.com>
+ <1470878029-11878-2-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1470900288-10109-2-git-send-email-roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1470878029-11878-2-git-send-email-finley.xiao@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Finlye Xiao <finley.xiao@rock-chips.com>
+Cc: mark.rutland@arm.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, catalin.marinas@arm.com, will.deacon@arm.com, linux@armlinux.org.uk, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, srinivas.kandagatla@linaro.org, linux-arm-kernel@lists.infradead.org, maxime.ripard@free-electrons.com, jay.xu@rock-chips.com, cl@rock-chips.com, wxt@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Roger,
-
-Am Donnerstag, 11. August 2016, 15:24:46 schrieb Roger Chen:
-> Add constants and callback functions for the dwmac on rk3228/rk3229 socs.
-> As can be seen, the base structure is the same, only registers and the
-> bits in them moved slightly.
+Am Donnerstag, 11. August 2016, 09:13:46 schrieb Finlye Xiao:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
 > 
-> Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  .../devicetree/bindings/net/rockchip-dwmac.txt     |   4 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 226
-> +++++++++++++++++++++ 2 files changed, 228 insertions(+), 2 deletions(-)
+> Rk3399-efuse is organized as 32bits by 32 one-time programmable electrical
+> fuses. The efuse of earlier SoCs are organized as 32bits by 8 one-time
+> programmable electrical fuses with random access interface.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt index
-> cccd945..8c066e6 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> @@ -3,8 +3,8 @@ Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
->  The device node has following properties.
+> Add different device tree compatible string for different SoCs to be able
+> to differentiate between the two. The old binding is of course preserved,
+> though deprecated.
 > 
->  Required properties:
-> - - compatible: Can be one of "rockchip,rk3228-gmac",
-> "rockchip,rk3288-gmac", -                            
-> "rockchip,rk3368-gmac"
-> + - compatible: Can be one of "rockchip,rk3288-gmac",
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 
-you're dropping the rk3228 here.
-
-Otherwise looks fine, so with the compatible list fixed you can add my
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
