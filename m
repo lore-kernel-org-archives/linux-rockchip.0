@@ -1,13 +1,15 @@
-From: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 4/4] nvmem: rockchip-efuse: add rk3399-efuse support
-Date: Thu, 11 Aug 2016 09:13:49 +0800
-Message-ID: <1470878029-11878-5-git-send-email-finley.xiao@rock-chips.com>
-References: <1470878029-11878-1-git-send-email-finley.xiao@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [v2 PATCH] clk: rockchip: mark rk3399 hdcp_noc and vio_noc as
+ critical
+Date: Thu, 11 Aug 2016 10:31:05 +0800
+Message-ID: <57ABE369.6070800@rock-chips.com>
+References: <1470765753-11619-1-git-send-email-zyw@rock-chips.com>
+ <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470878029-11878-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,216 +19,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-1) the efuse timing of rk3399 is different from earlier SoCs.
-2) rk3399-efuse is organized as 32bits by 32 one-time programmable
-electrical fuses, the efuse of earlier SoCs is organized as 32bits
-by 8 one-time programmable electrical fuses with random access interface.
-
-This patch adds a new read function for rk3399-efuse.
-
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/nvmem/rockchip-efuse.c | 130 +++++++++++++++++++++++++++++++++++------
- 1 file changed, 111 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 4d3f391..b453441 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -22,17 +22,28 @@
- #include <linux/nvmem-provider.h>
- #include <linux/slab.h>
- #include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- 
--#define EFUSE_A_SHIFT			6
--#define EFUSE_A_MASK			0x3ff
--#define EFUSE_PGENB			BIT(3)
--#define EFUSE_LOAD			BIT(2)
--#define EFUSE_STROBE			BIT(1)
--#define EFUSE_CSB			BIT(0)
--
--#define REG_EFUSE_CTRL			0x0000
--#define REG_EFUSE_DOUT			0x0004
-+#define RK3288_A_SHIFT		6
-+#define RK3288_A_MASK		0x3ff
-+#define RK3288_PGENB		BIT(3)
-+#define RK3288_LOAD			BIT(2)
-+#define RK3288_STROBE		BIT(1)
-+#define RK3288_CSB			BIT(0)
-+
-+#define RK3399_A_SHIFT		16
-+#define RK3399_A_MASK		0x3ff
-+#define RK3399_NBYTES		4
-+#define RK3399_STROBSFTSEL	BIT(9)
-+#define RK3399_PD			BIT(5)
-+#define RK3399_PGENB		BIT(3)
-+#define RK3399_LOAD			BIT(2)
-+#define RK3399_STROBE		BIT(1)
-+#define RK3399_CSB			BIT(0)
-+
-+#define REG_EFUSE_CTRL		0x0000
-+#define REG_EFUSE_DOUT		0x0004
- 
- struct rockchip_efuse_chip {
- 	struct device *dev;
-@@ -40,8 +51,8 @@ struct rockchip_efuse_chip {
- 	struct clk *clk;
- };
- 
--static int rockchip_efuse_read(void *context, unsigned int offset,
--			       void *val, size_t bytes)
-+static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
-+				      void *val, size_t bytes)
- {
- 	struct rockchip_efuse_chip *efuse = context;
- 	u8 *buf = val;
-@@ -53,27 +64,80 @@ static int rockchip_efuse_read(void *context, unsigned int offset,
- 		return ret;
- 	}
- 
--	writel(EFUSE_LOAD | EFUSE_PGENB, efuse->base + REG_EFUSE_CTRL);
-+	writel(RK3288_LOAD | RK3288_PGENB, efuse->base + REG_EFUSE_CTRL);
- 	udelay(1);
- 	while (bytes--) {
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) &
--			     (~(EFUSE_A_MASK << EFUSE_A_SHIFT)),
-+			     (~(RK3288_A_MASK << RK3288_A_SHIFT)),
- 			     efuse->base + REG_EFUSE_CTRL);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) |
--			     ((offset++ & EFUSE_A_MASK) << EFUSE_A_SHIFT),
-+			     ((offset++ & RK3288_A_MASK) << RK3288_A_SHIFT),
- 			     efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) |
--			     EFUSE_STROBE, efuse->base + REG_EFUSE_CTRL);
-+			     RK3288_STROBE, efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 		*buf++ = readb(efuse->base + REG_EFUSE_DOUT);
- 		writel(readl(efuse->base + REG_EFUSE_CTRL) &
--		     (~EFUSE_STROBE), efuse->base + REG_EFUSE_CTRL);
-+		     (~RK3288_STROBE), efuse->base + REG_EFUSE_CTRL);
- 		udelay(1);
- 	}
- 
- 	/* Switch to standby mode */
--	writel(EFUSE_PGENB | EFUSE_CSB, efuse->base + REG_EFUSE_CTRL);
-+	writel(RK3288_PGENB | RK3288_CSB, efuse->base + REG_EFUSE_CTRL);
-+
-+	clk_disable_unprepare(efuse->clk);
-+
-+	return 0;
-+}
-+
-+static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
-+				      void *val, size_t bytes)
-+{
-+	struct rockchip_efuse_chip *efuse = context;
-+	unsigned int addr_start, addr_end, addr_offset, addr_len;
-+	unsigned int out_value;
-+	unsigned char *buf;
-+	int ret, i = 0;
-+
-+	ret = clk_prepare_enable(efuse->clk);
-+	if (ret < 0) {
-+		dev_err(efuse->dev, "failed to prepare/enable efuse clk\n");
-+		return ret;
-+	}
-+
-+	addr_start = rounddown(offset, RK3399_NBYTES) / RK3399_NBYTES;
-+	addr_end = roundup(offset + bytes, RK3399_NBYTES) / RK3399_NBYTES;
-+	addr_offset = offset % RK3399_NBYTES;
-+	addr_len = addr_end - addr_start;
-+
-+	buf = kzalloc(sizeof(*buf) * addr_len * RK3399_NBYTES, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	writel(RK3399_LOAD | RK3399_PGENB | RK3399_STROBSFTSEL,
-+	       efuse->base + REG_EFUSE_CTRL);
-+	udelay(1);
-+	while (addr_len--) {
-+		writel(readl(efuse->base + REG_EFUSE_CTRL) | RK3399_STROBE |
-+			((addr_start++ & RK3399_A_MASK) << RK3399_A_SHIFT),
-+			efuse->base + REG_EFUSE_CTRL);
-+		udelay(1);
-+		out_value = readl(efuse->base + REG_EFUSE_DOUT);
-+		writel(readl(efuse->base + REG_EFUSE_CTRL) & (~RK3399_STROBE),
-+		       efuse->base + REG_EFUSE_CTRL);
-+		udelay(1);
-+
-+		memcpy(&buf[i], &out_value, RK3399_NBYTES);
-+		i += RK3399_NBYTES;
-+	}
-+
-+	/* Switch to standby mode */
-+	writel(RK3399_PD | RK3399_CSB, efuse->base + REG_EFUSE_CTRL);
-+
-+	memcpy(val, buf + addr_offset, bytes);
-+
-+	kfree(buf);
- 
- 	clk_disable_unprepare(efuse->clk);
- 
-@@ -89,7 +153,27 @@ static struct nvmem_config econfig = {
- };
- 
- static const struct of_device_id rockchip_efuse_match[] = {
--	{ .compatible = "rockchip,rockchip-efuse", },
-+	/* deprecated but kept around for dts binding compatibility */
-+	{
-+		.compatible = "rockchip,rockchip-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3066a-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3188-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3288-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
-+		.compatible = "rockchip,rk3399-efuse",
-+		.data = (void *)&rockchip_rk3399_efuse_read,
-+	},
- 	{ /* sentinel */},
- };
- MODULE_DEVICE_TABLE(of, rockchip_efuse_match);
-@@ -99,6 +183,14 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	struct nvmem_device *nvmem;
- 	struct rockchip_efuse_chip *efuse;
-+	const struct of_device_id *match;
-+	struct device *dev = &pdev->dev;
-+
-+	match = of_match_device(dev->driver->of_match_table, dev);
-+	if (!match || !match->data) {
-+		dev_err(dev, "failed to get match data\n");
-+		return -EINVAL;
-+	}
- 
- 	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
- 			     GFP_KERNEL);
-@@ -116,7 +208,7 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 
- 	efuse->dev = &pdev->dev;
- 	econfig.size = resource_size(res);
--	econfig.reg_read = rockchip_efuse_read;
-+	econfig.reg_read = match->data;
- 	econfig.priv = efuse;
- 	econfig.dev = efuse->dev;
- 	nvmem = nvmem_register(&econfig);
--- 
-1.9.1
+Q2hyaXMsCgpPbiAyMDE25bm0MDjmnIgxMeaXpSAwNjoxNCwgR3VlbnRlciBSb2VjayB3cm90ZToK
+PiBPbiBUdWUsIEF1ZyA5LCAyMDE2IGF0IDExOjAyIEFNLCBDaHJpcyBaaG9uZyA8enl3QHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPj4gRml4IGluY29ycmVjdCByazMzOTkgYWNsa192aW8gZ2F0aW5n
+IGJpdCwgaXQgc2hvdWxkIGJlIDAsIG5vdCAxMC4gV2l0aAo+PiB0aGlzIG1vZGlmaWNhdGlvbiwg
+dGhlIGFjbGtfdmlvX25vYyBzaG91bGQgYmUgcHV0IGludG8gY3JpdGljYWwgbGlzdCwKPj4gc2lu
+Y2UgaXQgaXMgcmVxdWlyZWQgYnkgVk9QLgo+PiBBbmQgdGhlIFR5cGUtQyBEUCBuZWVkIHRoZXNl
+IGNsb2NrczogYWNsa19oZGNwX25vYywgaGNsa19oZGNwX25vYywKPj4gcGNsa19oZGNwX25vYy4g
+TWFyayB0aGVtIGFzIGNyaXRpY2FsIHRvIGF2b2lkIHNvbWVvbmUgY2xvc2UgdGhlbS4KPj4KPj4g
+U2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+
+Cj4+ICAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jIHwgNiArKysrKy0KPj4gICAx
+IGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgYi9kcml2ZXJzL2Nsay9y
+b2NrY2hpcC9jbGstcmszMzk5LmMKPj4gaW5kZXggYjE3MzcxMWEuLjY3NmIwMTcgMTAwNjQ0Cj4+
+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+PiArKysgYi9kcml2ZXJz
+L2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMKPj4gQEAgLTEwNzMsNyArMTA3Myw3IEBAIHN0YXRp
+YyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX2JyYW5jaCByazMzOTlfY2xrX2JyYW5jaGVzW10gX19pbml0
+ZGF0YSA9IHsKPj4gICAgICAgICAgLyogdmlvICovCj4+ICAgICAgICAgIENPTVBPU0lURShBQ0xL
+X1ZJTywgImFjbGtfdmlvIiwgbXV4X3BsbF9zcmNfY3BsbF9ncGxsX3BwbGxfcCwgQ0xLX0lHTk9S
+RV9VTlVTRUQsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzOTlfQ0xLU0VMX0NPTig0
+MiksIDYsIDIsIE1GTEFHUywgMCwgNSwgREZMQUdTLAo+PiAtICAgICAgICAgICAgICAgICAgICAg
+ICBSSzMzOTlfQ0xLR0FURV9DT04oMTEpLCAxMCwgR0ZMQUdTKSwKPj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgUkszMzk5X0NMS0dBVEVfQ09OKDExKSwgMCwgR0ZMQUdTKSwKU29ycnkgdG8gYnJv
+a2VuIGNvcHkmcGFzdGUsIHRoYW5rcyB0byBmaXggdGhlIGluY29ycmVjdCBiaXQuCgpSZXZpZXdl
+ZC1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLgo+PiAg
+ICAgICAgICBDT01QT1NJVEVfTk9NVVgoUENMS19WSU8sICJwY2xrX3ZpbyIsICJhY2xrX3ZpbyIs
+IDAsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzOTlfQ0xLU0VMX0NPTig0MyksIDAs
+IDUsIERGTEFHUywKPj4gICAgICAgICAgICAgICAgICAgICAgICAgIFJLMzM5OV9DTEtHQVRFX0NP
+TigxMSksIDEsIEdGTEFHUyksCj4+IEBAIC0xNDcwLDYgKzE0NzAsOSBAQCBzdGF0aWMgY29uc3Qg
+Y2hhciAqY29uc3QgcmszMzk5X2NydV9jcml0aWNhbF9jbG9ja3NbXSBfX2luaXRjb25zdCA9IHsK
+Pj4gICAgICAgICAgImFjbGtfY2NpX3ByZSIsCj4+ICAgICAgICAgICJhY2xrX2dpYyIsCj4+ICAg
+ICAgICAgICJhY2xrX2dpY19ub2MiLAo+PiArICAgICAgICJhY2xrX2hkY3Bfbm9jIiwKPj4gKyAg
+ICAgICAiaGNsa19oZGNwX25vYyIsCj4+ICsgICAgICAgInBjbGtfaGRjcF9ub2MiLAo+PiAgICAg
+ICAgICAicGNsa19wZXJpbHAwIiwKPj4gICAgICAgICAgInBjbGtfcGVyaWxwMCIsCj4+ICAgICAg
+ICAgICJoY2xrX3BlcmlscDAiLAo+PiBAQCAtMTQ4OSw2ICsxNDkyLDcgQEAgc3RhdGljIGNvbnN0
+IGNoYXIgKmNvbnN0IHJrMzM5OV9jcnVfY3JpdGljYWxfY2xvY2tzW10gX19pbml0Y29uc3QgPSB7
+Cj4+ICAgICAgICAgICJncGxsX2hjbGtfcGVyaWxwMV9zcmMiLAo+PiAgICAgICAgICAiZ3BsbF9h
+Y2xrX3BlcmlscDBfc3JjIiwKPj4gICAgICAgICAgImdwbGxfYWNsa19wZXJpaHBfc3JjIiwKPj4g
+KyAgICAgICAiYWNsa192aW9fbm9jIiwKPiBJIHRoaW5rIHRoZXJlIHdhcyBhIHByZXZpb3VzIGNv
+bW1lbnQgc3VnZ2VzdGluZyB0aGF0IHRoaXMgY2xvY2sgc2hvdWxkCj4gYmUgaGFuZGxlZCBkaWZm
+ZXJlbnRseS4gSGFzIHRoaXMgYmVlbiByZXNvbHZlZCA/Cj4KPiBPdGhlcndpc2UKPgo+IFJldmll
+d2VkLWJ5OiBHdWVudGVyIFJvZWNrIDxncm9lY2tAY2hyb21pdW0ub3JnPgo+Cj4+ICAgfTsKPj4K
+Pj4gICBzdGF0aWMgY29uc3QgY2hhciAqY29uc3QgcmszMzk5X3BtdWNydV9jcml0aWNhbF9jbG9j
+a3NbXSBfX2luaXRjb25zdCA9IHsKPj4gLS0KPj4gMS45LjEKPj4KPgo+CgotLSAKLSBYaW5nIFpo
+ZW5nCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
