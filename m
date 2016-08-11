@@ -1,42 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] nvmem: rockchip-efuse: add rk3399-efuse support
-Date: Thu, 11 Aug 2016 10:21:56 +0200
-Message-ID: <2505532.cfPLbvGbN0@diego>
-References: <1470878029-11878-1-git-send-email-finley.xiao@rock-chips.com>
- <1470878029-11878-5-git-send-email-finley.xiao@rock-chips.com>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
+Subject: Re: [PATCH] drm/bridge: dw-hdmi: fix hdmi display lost
+Date: Thu, 11 Aug 2016 09:32:20 +0100
+Message-ID: <20160811083220.GS1041@n2100.armlinux.org.uk>
+References: <1470902043-23384-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470878029-11878-5-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1470902043-23384-1-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Fabio Estevam <fabio.estevam@freescale.com>, Liu Ying <gnuiyl@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 11. August 2016, 09:13:49 schrieb Finlye Xiao:
-> From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Thu, Aug 11, 2016 at 03:54:03PM +0800, Mark Yao wrote:
+> hdmi->disabled maybe not match to the real hardware status.
 > 
-> 1) the efuse timing of rk3399 is different from earlier SoCs.
-> 2) rk3399-efuse is organized as 32bits by 32 one-time programmable
-> electrical fuses, the efuse of earlier SoCs is organized as 32bits
-> by 8 one-time programmable electrical fuses with random access interface.
+> ->dw_hdmi_bridge_enable()
+>   hdmi->disabled = false;
+> -->dw_hdmi_update_power()
+>    if (hdmi->rxsense)
+>        force = DRM_FORCE_ON;
+>    else
+>        force = DRM_FORCE_OFF;
 > 
-> This patch adds a new read function for rk3399-efuse.
-> 
-> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> hdmi->rxsense maybe false on bridge enable path, then hdmi->disabled
+> is false, but actually hardware is power off, they are not match.
 
-looks good now to me
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+... which is correct.  If rxsense is false, it means there is nothing
+plugged in, so we don't power the hardware up until something _is_
+plugged in.
 
+When something is plugged in, we get the HPD and RXSENSE events, which
+will cause dw_hdmi_update_power() to be called.
 
-Thanks for fixing
-Heiko
+hdmi->disabled is merely a bit mask of things that would cause us to
+want to avoid powering the hardware up when rxsense becomes true.
+
+-- 
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
