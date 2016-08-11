@@ -1,49 +1,53 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH] drm/bridge: dw-hdmi: fix hdmi display lost
-Date: Thu, 11 Aug 2016 15:54:03 +0800
-Message-ID: <1470902043-23384-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/3] net: stmmac: dwmac-rk: add rk3366 & rk3399 specific data
+Date: Thu, 11 Aug 2016 10:12:44 +0200
+Message-ID: <1799606.7CVTQCi7m5@diego>
+References: <1470900288-10109-1-git-send-email-roger.chen@rock-chips.com> <1470900288-10109-2-git-send-email-roger.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Russell King <rmk+kernel@arm.linux.org.uk>, Fabio Estevam <fabio.estevam@freescale.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1470900288-10109-2-git-send-email-roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-aGRtaS0+ZGlzYWJsZWQgbWF5YmUgbm90IG1hdGNoIHRvIHRoZSByZWFsIGhhcmR3YXJlIHN0YXR1
-cy4KCi0+ZHdfaGRtaV9icmlkZ2VfZW5hYmxlKCkKICBoZG1pLT5kaXNhYmxlZCA9IGZhbHNlOwot
-LT5kd19oZG1pX3VwZGF0ZV9wb3dlcigpCiAgIGlmIChoZG1pLT5yeHNlbnNlKQogICAgICAgZm9y
-Y2UgPSBEUk1fRk9SQ0VfT047CiAgIGVsc2UKICAgICAgIGZvcmNlID0gRFJNX0ZPUkNFX09GRjsK
-CmhkbWktPnJ4c2Vuc2UgbWF5YmUgZmFsc2Ugb24gYnJpZGdlIGVuYWJsZSBwYXRoLCB0aGVuIGhk
-bWktPmRpc2FibGVkCmlzIGZhbHNlLCBidXQgYWN0dWFsbHkgaGFyZHdhcmUgaXMgcG93ZXIgb2Zm
-LCB0aGV5IGFyZSBub3QgbWF0Y2guCgpTbyBvbiBkd19oZG1pX2lycSwganVkZ2UgdGhlIGhhcmR3
-YXJlIHN0YXR1cyB3aXRoIGhkbWktPmRpc2FibGVkIGlzIHdyb25nLgpUaGlzIGJ1ZyB3b3VsZCBj
-YXVzZSBkaXNwbGF5IGxvc3QsIHVucGx1Zy9wbHVnIGNhbid0IHJlY292ZXJ5IGRpc3BsYXkuCgpD
-YzogUnVzc2VsbCBLaW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcudWs+CkNjOiBEYW5pZWwg
-VmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgpDYzogRmFiaW8gRXN0ZXZhbSA8ZmFiaW8u
-ZXN0ZXZhbUBmcmVlc2NhbGUuY29tPgpDYzogTGl1IFlpbmcgPGdudWl5bEBnbWFpbC5jb20+CgpT
-aWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Ci0tLQogZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCmluZGV4
-IDc3YWI0NzMuLmE0ZmNiNDcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHct
-aGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCkBAIC0xNTYzLDcg
-KzE1NjMsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgZHdfaGRtaV9pcnEoaW50IGlycSwgdm9pZCAq
-ZGV2X2lkKQogCWlmIChpbnRyX3N0YXQgJgogCSAgICAoSERNSV9JSF9QSFlfU1RBVDBfUlhfU0VO
-U0UgfCBIRE1JX0lIX1BIWV9TVEFUMF9IUEQpKSB7CiAJCW11dGV4X2xvY2soJmhkbWktPm11dGV4
-KTsKLQkJaWYgKCFoZG1pLT5kaXNhYmxlZCAmJiAhaGRtaS0+Zm9yY2UpIHsKKwkJaWYgKCFoZG1p
-LT5icmlkZ2VfaXNfb24gJiYgIWhkbWktPmZvcmNlKSB7CiAJCQkvKgogCQkJICogSWYgdGhlIFJY
-IHNlbnNlIHN0YXR1cyBpbmRpY2F0ZXMgd2UncmUgZGlzY29ubmVjdGVkLAogCQkJICogY2xlYXIg
-dGhlIHNvZnR3YXJlIHJ4c2Vuc2Ugc3RhdHVzLgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Roger,
+
+Am Donnerstag, 11. August 2016, 15:24:46 schrieb Roger Chen:
+> Add constants and callback functions for the dwmac on rk3228/rk3229 socs.
+> As can be seen, the base structure is the same, only registers and the
+> bits in them moved slightly.
+> 
+> Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  .../devicetree/bindings/net/rockchip-dwmac.txt     |   4 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 226
+> +++++++++++++++++++++ 2 files changed, 228 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt index
+> cccd945..8c066e6 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> @@ -3,8 +3,8 @@ Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
+>  The device node has following properties.
+> 
+>  Required properties:
+> - - compatible: Can be one of "rockchip,rk3228-gmac",
+> "rockchip,rk3288-gmac", -                            
+> "rockchip,rk3368-gmac"
+> + - compatible: Can be one of "rockchip,rk3288-gmac",
+
+you're dropping the rk3228 here.
+
+Otherwise looks fine, so with the compatible list fixed you can add my
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
