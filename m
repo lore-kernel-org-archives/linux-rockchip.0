@@ -1,39 +1,35 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/4] nvmem: rockchip-efuse: update compatible strings
- for Rockchip efuse
-Date: Thu, 11 Aug 2016 10:14:03 +0200
-Message-ID: <21647624.nrv841C5QK@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] ARM: dts: rockchip: update compatible strings for
+ Rockchip efuse
+Date: Thu, 11 Aug 2016 10:18 +0200
+Message-ID: <4317581.3Ap4cvVWdH@diego>
 References: <1470878029-11878-1-git-send-email-finley.xiao@rock-chips.com>
- <1470878029-11878-2-git-send-email-finley.xiao@rock-chips.com>
+ <1470878029-11878-3-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1470878029-11878-2-git-send-email-finley.xiao@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Finlye Xiao <finley.xiao@rock-chips.com>
-Cc: mark.rutland@arm.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, catalin.marinas@arm.com, will.deacon@arm.com, linux@armlinux.org.uk, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, srinivas.kandagatla@linaro.org, linux-arm-kernel@lists.infradead.org, maxime.ripard@free-electrons.com, jay.xu@rock-chips.com, cl@rock-chips.com, wxt@rock-chips.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470878029-11878-3-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 11. August 2016, 09:13:46 schrieb Finlye Xiao:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
+Am Donnerstag, 11. August 2016, 09:13:47 schrieb Finlye Xiao:
+> From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> Rk3399-efuse is organized as 32bits by 32 one-time programmable electrical
-> fuses. The efuse of earlier SoCs are organized as 32bits by 8 one-time
-> programmable electrical fuses with random access interface.
-> 
-> Add different device tree compatible string for different SoCs to be able
-> to differentiate between the two. The old binding is of course preserved,
-> though deprecated.
-> 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+due to the renaming of the compatibles and to not introduce regressions, this 
+patch should probably go through the nvmem-tree as well (instead of my 
+rockchip-tree), so
+
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
