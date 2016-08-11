@@ -1,72 +1,82 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [v2 PATCH] clk: rockchip: mark rk3399 hdcp_noc and vio_noc as
- critical
-Date: Thu, 11 Aug 2016 10:31:05 +0800
-Message-ID: <57ABE369.6070800@rock-chips.com>
-References: <1470765753-11619-1-git-send-email-zyw@rock-chips.com>
- <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [v2 PATCH] clk: rockchip: mark rk3399 hdcp_noc and vio_noc as critical
+Date: Thu, 11 Aug 2016 09:07 +0200
+Message-ID: <1993709.ojDB6MdHog@diego>
+References: <1470765753-11619-1-git-send-email-zyw@rock-chips.com> <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CABXOdTeDYzOpNxkyScf3WvvFynyTZbKrVdVFzMobMaPAp=f5jw@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Guenter Roeck <groeck@google.com>
+Cc: Chris Zhong <zyw@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, =?utf-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Douglas Anderson <dianders@chromium.org>, Guenter Roeck <groeck@chromium.org>, =?ISO-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, wulf <wulf@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Q2hyaXMsCgpPbiAyMDE25bm0MDjmnIgxMeaXpSAwNjoxNCwgR3VlbnRlciBSb2VjayB3cm90ZToK
-PiBPbiBUdWUsIEF1ZyA5LCAyMDE2IGF0IDExOjAyIEFNLCBDaHJpcyBaaG9uZyA8enl3QHJvY2st
-Y2hpcHMuY29tPiB3cm90ZToKPj4gRml4IGluY29ycmVjdCByazMzOTkgYWNsa192aW8gZ2F0aW5n
-IGJpdCwgaXQgc2hvdWxkIGJlIDAsIG5vdCAxMC4gV2l0aAo+PiB0aGlzIG1vZGlmaWNhdGlvbiwg
-dGhlIGFjbGtfdmlvX25vYyBzaG91bGQgYmUgcHV0IGludG8gY3JpdGljYWwgbGlzdCwKPj4gc2lu
-Y2UgaXQgaXMgcmVxdWlyZWQgYnkgVk9QLgo+PiBBbmQgdGhlIFR5cGUtQyBEUCBuZWVkIHRoZXNl
-IGNsb2NrczogYWNsa19oZGNwX25vYywgaGNsa19oZGNwX25vYywKPj4gcGNsa19oZGNwX25vYy4g
-TWFyayB0aGVtIGFzIGNyaXRpY2FsIHRvIGF2b2lkIHNvbWVvbmUgY2xvc2UgdGhlbS4KPj4KPj4g
-U2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+
-Cj4+ICAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jIHwgNiArKysrKy0KPj4gICAx
-IGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgYi9kcml2ZXJzL2Nsay9y
-b2NrY2hpcC9jbGstcmszMzk5LmMKPj4gaW5kZXggYjE3MzcxMWEuLjY3NmIwMTcgMTAwNjQ0Cj4+
-IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+PiArKysgYi9kcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMKPj4gQEAgLTEwNzMsNyArMTA3Myw3IEBAIHN0YXRp
-YyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX2JyYW5jaCByazMzOTlfY2xrX2JyYW5jaGVzW10gX19pbml0
-ZGF0YSA9IHsKPj4gICAgICAgICAgLyogdmlvICovCj4+ICAgICAgICAgIENPTVBPU0lURShBQ0xL
-X1ZJTywgImFjbGtfdmlvIiwgbXV4X3BsbF9zcmNfY3BsbF9ncGxsX3BwbGxfcCwgQ0xLX0lHTk9S
-RV9VTlVTRUQsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzOTlfQ0xLU0VMX0NPTig0
-MiksIDYsIDIsIE1GTEFHUywgMCwgNSwgREZMQUdTLAo+PiAtICAgICAgICAgICAgICAgICAgICAg
-ICBSSzMzOTlfQ0xLR0FURV9DT04oMTEpLCAxMCwgR0ZMQUdTKSwKPj4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgUkszMzk5X0NMS0dBVEVfQ09OKDExKSwgMCwgR0ZMQUdTKSwKU29ycnkgdG8gYnJv
-a2VuIGNvcHkmcGFzdGUsIHRoYW5rcyB0byBmaXggdGhlIGluY29ycmVjdCBiaXQuCgpSZXZpZXdl
-ZC1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLgo+PiAg
-ICAgICAgICBDT01QT1NJVEVfTk9NVVgoUENMS19WSU8sICJwY2xrX3ZpbyIsICJhY2xrX3ZpbyIs
-IDAsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzOTlfQ0xLU0VMX0NPTig0MyksIDAs
-IDUsIERGTEFHUywKPj4gICAgICAgICAgICAgICAgICAgICAgICAgIFJLMzM5OV9DTEtHQVRFX0NP
-TigxMSksIDEsIEdGTEFHUyksCj4+IEBAIC0xNDcwLDYgKzE0NzAsOSBAQCBzdGF0aWMgY29uc3Qg
-Y2hhciAqY29uc3QgcmszMzk5X2NydV9jcml0aWNhbF9jbG9ja3NbXSBfX2luaXRjb25zdCA9IHsK
-Pj4gICAgICAgICAgImFjbGtfY2NpX3ByZSIsCj4+ICAgICAgICAgICJhY2xrX2dpYyIsCj4+ICAg
-ICAgICAgICJhY2xrX2dpY19ub2MiLAo+PiArICAgICAgICJhY2xrX2hkY3Bfbm9jIiwKPj4gKyAg
-ICAgICAiaGNsa19oZGNwX25vYyIsCj4+ICsgICAgICAgInBjbGtfaGRjcF9ub2MiLAo+PiAgICAg
-ICAgICAicGNsa19wZXJpbHAwIiwKPj4gICAgICAgICAgInBjbGtfcGVyaWxwMCIsCj4+ICAgICAg
-ICAgICJoY2xrX3BlcmlscDAiLAo+PiBAQCAtMTQ4OSw2ICsxNDkyLDcgQEAgc3RhdGljIGNvbnN0
-IGNoYXIgKmNvbnN0IHJrMzM5OV9jcnVfY3JpdGljYWxfY2xvY2tzW10gX19pbml0Y29uc3QgPSB7
-Cj4+ICAgICAgICAgICJncGxsX2hjbGtfcGVyaWxwMV9zcmMiLAo+PiAgICAgICAgICAiZ3BsbF9h
-Y2xrX3BlcmlscDBfc3JjIiwKPj4gICAgICAgICAgImdwbGxfYWNsa19wZXJpaHBfc3JjIiwKPj4g
-KyAgICAgICAiYWNsa192aW9fbm9jIiwKPiBJIHRoaW5rIHRoZXJlIHdhcyBhIHByZXZpb3VzIGNv
-bW1lbnQgc3VnZ2VzdGluZyB0aGF0IHRoaXMgY2xvY2sgc2hvdWxkCj4gYmUgaGFuZGxlZCBkaWZm
-ZXJlbnRseS4gSGFzIHRoaXMgYmVlbiByZXNvbHZlZCA/Cj4KPiBPdGhlcndpc2UKPgo+IFJldmll
-d2VkLWJ5OiBHdWVudGVyIFJvZWNrIDxncm9lY2tAY2hyb21pdW0ub3JnPgo+Cj4+ICAgfTsKPj4K
-Pj4gICBzdGF0aWMgY29uc3QgY2hhciAqY29uc3QgcmszMzk5X3BtdWNydV9jcml0aWNhbF9jbG9j
-a3NbXSBfX2luaXRjb25zdCA9IHsKPj4gLS0KPj4gMS45LjEKPj4KPgo+CgotLSAKLSBYaW5nIFpo
-ZW5nCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Am Mittwoch, 10. August 2016, 15:14:06 schrieb Guenter Roeck:
+> On Tue, Aug 9, 2016 at 11:02 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+> > Fix incorrect rk3399 aclk_vio gating bit, it should be 0, not 10. With
+> > this modification, the aclk_vio_noc should be put into critical list,
+> > since it is required by VOP.
+> > And the Type-C DP need these clocks: aclk_hdcp_noc, hclk_hdcp_noc,
+> > pclk_hdcp_noc. Mark them as critical to avoid someone close them.
+> > 
+> > Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> > ---
+> > 
+> >  drivers/clk/rockchip/clk-rk3399.c | 6 +++++-
+> >  1 file changed, 5 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/clk/rockchip/clk-rk3399.c
+> > b/drivers/clk/rockchip/clk-rk3399.c index b173711a..676b017 100644
+> > --- a/drivers/clk/rockchip/clk-rk3399.c
+> > +++ b/drivers/clk/rockchip/clk-rk3399.c
+> > @@ -1073,7 +1073,7 @@ static struct rockchip_clk_branch
+> > rk3399_clk_branches[] __initdata = {> 
+> >         /* vio */
+> >         COMPOSITE(ACLK_VIO, "aclk_vio", mux_pll_src_cpll_gpll_ppll_p,
+> >         CLK_IGNORE_UNUSED,>         
+> >                         RK3399_CLKSEL_CON(42), 6, 2, MFLAGS, 0, 5, DFLAGS,
+> > 
+> > -                       RK3399_CLKGATE_CON(11), 10, GFLAGS),
+> > +                       RK3399_CLKGATE_CON(11), 0, GFLAGS),
+> > 
+> >         COMPOSITE_NOMUX(PCLK_VIO, "pclk_vio", "aclk_vio", 0,
+> >         
+> >                         RK3399_CLKSEL_CON(43), 0, 5, DFLAGS,
+> >                         RK3399_CLKGATE_CON(11), 1, GFLAGS),
+> > 
+> > @@ -1470,6 +1470,9 @@ static const char *const
+> > rk3399_cru_critical_clocks[] __initconst = {> 
+> >         "aclk_cci_pre",
+> >         "aclk_gic",
+> >         "aclk_gic_noc",
+> > 
+> > +       "aclk_hdcp_noc",
+> > +       "hclk_hdcp_noc",
+> > +       "pclk_hdcp_noc",
+> > 
+> >         "pclk_perilp0",
+> >         "pclk_perilp0",
+> >         "hclk_perilp0",
+> > 
+> > @@ -1489,6 +1492,7 @@ static const char *const
+> > rk3399_cru_critical_clocks[] __initconst = {> 
+> >         "gpll_hclk_perilp1_src",
+> >         "gpll_aclk_perilp0_src",
+> >         "gpll_aclk_perihp_src",
+> > 
+> > +       "aclk_vio_noc",
+> 
+> I think there was a previous comment suggesting that this clock should
+> be handled differently. Has this been resolved ?
+
+The clock getting handled differently was pclk_grf_vio - aka the GRF part 
+needed. This one is the interconnect clock of the vio port (as far as I 
+understand that), which we currently don't model at all.
+But if we did it would probably handled in some new part but not in the 
+graphics drivers.
+
+So all looks well like it is here :-)
+
+Heiko
