@@ -1,83 +1,49 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 2/2] drm/rockchip: Use DRM_DEV_ERROR in vop
-Date: Fri, 12 Aug 2016 13:00:54 -0400
-Message-ID: <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
+From: Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>
+Subject: Re: [PATCH 1/2] drm: Introduce DRM_DEV_* log messages
+Date: Fri, 12 Aug 2016 18:13:44 +0100
+Message-ID: <20160812171344.GF15011@nuc-i3427.alporthouse.com>
 References: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
+ <1471021254-2563-2-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1471021254-2563-2-git-send-email-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2luY2Ugd2UgY2FuIGhhdmUgbXVsdGlwbGUgdm9wcywgdXNlIERSTV9ERVZfRVJST1IgdG8KbWFr
-ZSBsb2dzIGVhc2llciB0byBwcm9jZXNzLgoKU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFu
-cGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYyB8IDI0ICsrKysrKysrKysrKysrLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQs
-IDE0IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDMxNzQ0ZmUuLmVjOGFkMDAgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMjM4LDcgKzIzOCw3
-IEBAIHN0YXRpYyBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB2b3BfY29udmVydF9mb3JtYXQodWludDMy
-X3QgZm9ybWF0KQogCWNhc2UgRFJNX0ZPUk1BVF9OVjI0OgogCQlyZXR1cm4gVk9QX0ZNVF9ZVVY0
-NDRTUDsKIAlkZWZhdWx0OgotCQlEUk1fRVJST1IoInVuc3VwcG9ydCBmb3JtYXRbJTA4eF1cbiIs
-IGZvcm1hdCk7CisJCURSTV9FUlJPUigidW5zdXBwb3J0ZWQgZm9ybWF0WyUwOHhdXG4iLCBmb3Jt
-YXQpOwogCQlyZXR1cm4gLUVJTlZBTDsKIAl9CiB9CkBAIC0zMTUsNyArMzE1LDcgQEAgc3RhdGlj
-IHZvaWQgc2NsX3ZvcF9jYWxfc2NsX2ZhYyhzdHJ1Y3Qgdm9wICp2b3AsIGNvbnN0IHN0cnVjdCB2
-b3Bfd2luX2RhdGEgKndpbiwKIAlpbnQgdnNraXBsaW5lcyA9IDA7CiAKIAlpZiAoZHN0X3cgPiAz
-ODQwKSB7Ci0JCURSTV9FUlJPUigiTWF4aW11bSBkZXN0aW5hdGlvbiB3aWR0aCAoMzg0MCkgZXhj
-ZWVkZWRcbiIpOworCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiTWF4aW11bSBkc3Qgd2lkdGgg
-KDM4NDApIGV4Y2VlZGVkXG4iKTsKIAkJcmV0dXJuOwogCX0KIApAQCAtMzUzLDExICszNTMsMTEg
-QEAgc3RhdGljIHZvaWQgc2NsX3ZvcF9jYWxfc2NsX2ZhYyhzdHJ1Y3Qgdm9wICp2b3AsIGNvbnN0
-IHN0cnVjdCB2b3Bfd2luX2RhdGEgKndpbiwKIAlWT1BfU0NMX1NFVF9FWFQodm9wLCB3aW4sIGxi
-X21vZGUsIGxiX21vZGUpOwogCWlmIChsYl9tb2RlID09IExCX1JHQl8zODQwWDIpIHsKIAkJaWYg
-KHlyZ2JfdmVyX3NjbF9tb2RlICE9IFNDQUxFX05PTkUpIHsKLQkJCURSTV9FUlJPUigiRVJST1Ig
-OiBub3QgYWxsb3cgeXJnYiB2ZXIgc2NhbGVcbiIpOworCQkJRFJNX0RFVl9FUlJPUih2b3AtPmRl
-diwgIm5vdCBhbGxvdyB5cmdiIHZlciBzY2FsZVxuIik7CiAJCQlyZXR1cm47CiAJCX0KIAkJaWYg
-KGNiY3JfdmVyX3NjbF9tb2RlICE9IFNDQUxFX05PTkUpIHsKLQkJCURSTV9FUlJPUigiRVJST1Ig
-OiBub3QgYWxsb3cgY2JjciB2ZXIgc2NhbGVcbiIpOworCQkJRFJNX0RFVl9FUlJPUih2b3AtPmRl
-diwgIm5vdCBhbGxvdyBjYmNyIHZlciBzY2FsZVxuIik7CiAJCQlyZXR1cm47CiAJCX0KIAkJdnN1
-X21vZGUgPSBTQ0FMRV9VUF9CSUw7CkBAIC05NzAsNyArOTcwLDggQEAgc3RhdGljIHZvaWQgdm9w
-X2NydGNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAkJVk9QX0NUUkxfU0VUKHZvcCwg
-bWlwaV9lbiwgMSk7CiAJCWJyZWFrOwogCWRlZmF1bHQ6Ci0JCURSTV9FUlJPUigidW5zdXBwb3J0
-IGNvbm5lY3Rvcl90eXBlWyVkXVxuIiwgcy0+b3V0cHV0X3R5cGUpOworCQlEUk1fREVWX0VSUk9S
-KHZvcC0+ZGV2LCAidW5zdXBwb3J0ZWQgY29ubmVjdG9yX3R5cGUgWyVkXVxuIiwKKwkJCSAgICAg
-IHMtPm91dHB1dF90eXBlKTsKIAl9CiAJVk9QX0NUUkxfU0VUKHZvcCwgb3V0X21vZGUsIHMtPm91
-dHB1dF9tb2RlKTsKIApAQCAtMTE1NCw3ICsxMTU1LDggQEAgc3RhdGljIGlycXJldHVybl90IHZv
-cF9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKIAogCS8qIFVuaGFuZGxlZCBpcnFzIGFyZSBzcHVy
-aW91cy4gKi8KIAlpZiAoYWN0aXZlX2lycXMpCi0JCURSTV9FUlJPUigiVW5rbm93biBWT1AgSVJR
-czogJSMwMnhcbiIsIGFjdGl2ZV9pcnFzKTsKKwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIlVu
-a25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLAorCQkJICAgICAgYWN0aXZlX2lycXMpOwogCiAJcmV0
-dXJuIHJldDsKIH0KQEAgLTExODksNyArMTE5MSw4IEBAIHN0YXRpYyBpbnQgdm9wX2NyZWF0ZV9j
-cnRjKHN0cnVjdCB2b3AgKnZvcCkKIAkJCQkJICAgICAgIHdpbl9kYXRhLT5waHktPm5mb3JtYXRz
-LAogCQkJCQkgICAgICAgd2luX2RhdGEtPnR5cGUsIE5VTEwpOwogCQlpZiAocmV0KSB7Ci0JCQlE
-Uk1fRVJST1IoImZhaWxlZCB0byBpbml0aWFsaXplIHBsYW5lXG4iKTsKKwkJCURSTV9ERVZfRVJS
-T1Iodm9wLT5kZXYsICJmYWlsZWQgdG8gaW5pdCBwbGFuZSAlZFxuIiwKKwkJCQkgICAgICByZXQp
-OwogCQkJZ290byBlcnJfY2xlYW51cF9wbGFuZXM7CiAJCX0KIApAQCAtMTIyNyw3ICsxMjMwLDgg
-QEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3RydWN0IHZvcCAqdm9wKQogCQkJCQkgICAg
-ICAgd2luX2RhdGEtPnBoeS0+bmZvcm1hdHMsCiAJCQkJCSAgICAgICB3aW5fZGF0YS0+dHlwZSwg
-TlVMTCk7CiAJCWlmIChyZXQpIHsKLQkJCURSTV9FUlJPUigiZmFpbGVkIHRvIGluaXRpYWxpemUg
-b3ZlcmxheSBwbGFuZVxuIik7CisJCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiZmFpbGVkIHRv
-IGluaXQgb3ZlcmxheSAlZFxuIiwKKwkJCQkgICAgICByZXQpOwogCQkJZ290byBlcnJfY2xlYW51
-cF9jcnRjOwogCQl9CiAJCWRybV9wbGFuZV9oZWxwZXJfYWRkKCZ2b3Bfd2luLT5iYXNlLCAmcGxh
-bmVfaGVscGVyX2Z1bmNzKTsKQEAgLTEyMzUsOCArMTIzOSw4IEBAIHN0YXRpYyBpbnQgdm9wX2Ny
-ZWF0ZV9jcnRjKHN0cnVjdCB2b3AgKnZvcCkKIAogCXBvcnQgPSBvZl9nZXRfY2hpbGRfYnlfbmFt
-ZShkZXYtPm9mX25vZGUsICJwb3J0Iik7CiAJaWYgKCFwb3J0KSB7Ci0JCURSTV9FUlJPUigibm8g
-cG9ydCBub2RlIGZvdW5kIGluICVzXG4iLAotCQkJICBkZXYtPm9mX25vZGUtPmZ1bGxfbmFtZSk7
-CisJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJubyBwb3J0IG5vZGUgZm91bmQgaW4gJXNcbiIs
-CisJCQkgICAgICBkZXYtPm9mX25vZGUtPmZ1bGxfbmFtZSk7CiAJCXJldCA9IC1FTk9FTlQ7CiAJ
-CWdvdG8gZXJyX2NsZWFudXBfY3J0YzsKIAl9Ci0tIAoyLjguMC5yYzMuMjI2LmczOWQ0MDIwCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Fri, Aug 12, 2016 at 01:00:53PM -0400, Sean Paul wrote:
+> This patch consolodates all the various log functions/macros into
+> one uber function, drm_log. It also introduces some new DRM_DEV_*
+> variants that print the device name to delineate multiple devices
+> of the same type.
+
+> +void drm_log(const struct device *dev, const char *level, unsigned int category,
+> +	     const char *function_name, const char *prefix,
+> +	     const char *format, ...)
+>  {
+> +	if (dev)
+> +		printk("%s%s [" DRM_NAME ":%s]%s %pV", level,
+> +		       dev_name(dev), function_name, prefix, &vaf);
+> +	else
+> +		printk("%s[" DRM_NAME ":%s]%s %pV", level, function_name,
+> +		       prefix, &vaf);
+
+My hope was that we would migrate towards dev_printk so that our log
+messages would have better conformity, especially between our messages
+and those printed by subsystems on our behalf (using our struct device).
+-Chris
+
+-- 
+Chris Wilson, Intel Open Source Technology Centre
