@@ -1,111 +1,82 @@
-From: Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>
+From: Sean Paul <seanpaul@chromium.org>
 Subject: Re: [PATCH v2 1/2] drm: Introduce DRM_DEV_* log messages
-Date: Fri, 12 Aug 2016 19:39:38 +0100
-Message-ID: <20160812183938.GH15011@nuc-i3427.alporthouse.com>
+Date: Fri, 12 Aug 2016 15:04:37 -0400
+Message-ID: <CAOw6vb+J-XaKGkEVokhzch7Qi=ZHKbKOoaVn_WKW1j9O7KAGwA@mail.gmail.com>
 References: <CAOw6vbJ+CO8uV34jzejycnAvWj7VCZ0hgDPMU4RFRp6xrCcMPg@mail.gmail.com>
  <1471023000-3820-1-git-send-email-seanpaul@chromium.org>
+ <20160812183938.GH15011@nuc-i3427.alporthouse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1471023000-3820-1-git-send-email-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160812183938.GH15011@nuc-i3427.alporthouse.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Wilson <chris@chris-wilson.co.uk>, Sean Paul <seanpaul@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Aug 12, 2016 at 01:30:00PM -0400, Sean Paul wrote:
-> This patch consolidates all the various log functions/macros into
-> one uber function, drm_log. It also introduces some new DRM_DEV_*
-> variants that print the device name to delineate multiple devices
-> of the same type.
-> 
-> Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> 
-> Changes in v2:
-> 	- Use dev_printk for the dev variant (Chris Wilson)
-> 
-> 
->  drivers/gpu/drm/drm_drv.c |  31 +++++------
->  include/drm/drmP.h        | 133 ++++++++++++++++++++++++----------------------
->  2 files changed, 82 insertions(+), 82 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
-> index 57ce973..edd3291 100644
-> --- a/drivers/gpu/drm/drm_drv.c
-> +++ b/drivers/gpu/drm/drm_drv.c
-> @@ -63,37 +63,30 @@ static struct idr drm_minors_idr;
->  
->  static struct dentry *drm_debugfs_root;
->  
-> -void drm_err(const char *format, ...)
-> +void drm_log(const struct device *dev, const char *level, unsigned int category,
-
-I would have called this drm_printk() to match the function it wraps.
-
-> +	     const char *function_name, const char *prefix,
-> +	     const char *format, ...)
->  {
->  	struct va_format vaf;
->  	va_list args;
->  
-> -	va_start(args, format);
-> -
-> -	vaf.fmt = format;
-> -	vaf.va = &args;
-> -
-> -	printk(KERN_ERR "[" DRM_NAME ":%ps] *ERROR* %pV",
-> -	       __builtin_return_address(0), &vaf);
-> -
-> -	va_end(args);
-> -}
-> -EXPORT_SYMBOL(drm_err);
-> -
-> -void drm_ut_debug_printk(const char *function_name, const char *format, ...)
-> -{
-> -	struct va_format vaf;
-> -	va_list args;
-> +	if (category != DRM_UT_NONE && !(drm_debug & category))
-> +		return;
->  
->  	va_start(args, format);
->  	vaf.fmt = format;
->  	vaf.va = &args;
->  
-> -	printk(KERN_DEBUG "[" DRM_NAME ":%s] %pV", function_name, &vaf);
-> +	if (dev)
-> +		dev_printk(level, dev, "[" DRM_NAME ":%s]%s %pV", function_name,
-> +			   prefix, &vaf);
-> +	else
-> +		printk("%s[" DRM_NAME ":%s]%s %pV", level, function_name,
-> +		       prefix, &vaf);
-
-lgtm.
-
-> -#define DRM_ERROR(fmt, ...)				\
-> -	drm_err(fmt, ##__VA_ARGS__)
-> +#define DRM_DEV_ERROR(dev, fmt, ...)					\
-> +	drm_log(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*", fmt,	\
-> +		##__VA_ARGS__)
-> +#define DRM_ERROR(fmt, ...) DRM_DEV_ERROR(NULL, fmt, ##__VA_ARGS__)
-
-And these look like a reasonable solution given the constraints.
-
-Out of curiosity, how much did the kernel build grow by adding a NULL
-parameter everywhere?
-
-Reviewed-by: Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>
--Chris
-
--- 
-Chris Wilson, Intel Open Source Technology Centre
+T24gRnJpLCBBdWcgMTIsIDIwMTYgYXQgMjozOSBQTSwgQ2hyaXMgV2lsc29uIDxjaHJpc0BjaHJp
+cy13aWxzb24uY28udWs+IHdyb3RlOgo+IE9uIEZyaSwgQXVnIDEyLCAyMDE2IGF0IDAxOjMwOjAw
+UE0gLTA0MDAsIFNlYW4gUGF1bCB3cm90ZToKPj4gVGhpcyBwYXRjaCBjb25zb2xpZGF0ZXMgYWxs
+IHRoZSB2YXJpb3VzIGxvZyBmdW5jdGlvbnMvbWFjcm9zIGludG8KPj4gb25lIHViZXIgZnVuY3Rp
+b24sIGRybV9sb2cuIEl0IGFsc28gaW50cm9kdWNlcyBzb21lIG5ldyBEUk1fREVWXyoKPj4gdmFy
+aWFudHMgdGhhdCBwcmludCB0aGUgZGV2aWNlIG5hbWUgdG8gZGVsaW5lYXRlIG11bHRpcGxlIGRl
+dmljZXMKPj4gb2YgdGhlIHNhbWUgdHlwZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVs
+IDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4+IC0tLQo+Pgo+PiBDaGFuZ2VzIGluIHYyOgo+PiAg
+ICAgICAtIFVzZSBkZXZfcHJpbnRrIGZvciB0aGUgZGV2IHZhcmlhbnQgKENocmlzIFdpbHNvbikK
+Pj4KPj4KPj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fZHJ2LmMgfCAgMzEgKysrKystLS0tLS0KPj4g
+IGluY2x1ZGUvZHJtL2RybVAuaCAgICAgICAgfCAxMzMgKysrKysrKysrKysrKysrKysrKysrKysr
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+PiAgMiBmaWxlcyBjaGFuZ2VkLCA4MiBpbnNlcnRpb25z
+KCspLCA4MiBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9k
+cm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2Rydi5jCj4+IGluZGV4IDU3Y2U5NzMuLmVk
+ZDMyOTEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZHJ2LmMKPj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL2RybV9kcnYuYwo+PiBAQCAtNjMsMzcgKzYzLDMwIEBAIHN0YXRpYyBz
+dHJ1Y3QgaWRyIGRybV9taW5vcnNfaWRyOwo+Pgo+PiAgc3RhdGljIHN0cnVjdCBkZW50cnkgKmRy
+bV9kZWJ1Z2ZzX3Jvb3Q7Cj4+Cj4+IC12b2lkIGRybV9lcnIoY29uc3QgY2hhciAqZm9ybWF0LCAu
+Li4pCj4+ICt2b2lkIGRybV9sb2coY29uc3Qgc3RydWN0IGRldmljZSAqZGV2LCBjb25zdCBjaGFy
+ICpsZXZlbCwgdW5zaWduZWQgaW50IGNhdGVnb3J5LAo+Cj4gSSB3b3VsZCBoYXZlIGNhbGxlZCB0
+aGlzIGRybV9wcmludGsoKSB0byBtYXRjaCB0aGUgZnVuY3Rpb24gaXQgd3JhcHMuCj4KPj4gKyAg
+ICAgICAgICBjb25zdCBjaGFyICpmdW5jdGlvbl9uYW1lLCBjb25zdCBjaGFyICpwcmVmaXgsCj4+
+ICsgICAgICAgICAgY29uc3QgY2hhciAqZm9ybWF0LCAuLi4pCj4+ICB7Cj4+ICAgICAgIHN0cnVj
+dCB2YV9mb3JtYXQgdmFmOwo+PiAgICAgICB2YV9saXN0IGFyZ3M7Cj4+Cj4+IC0gICAgIHZhX3N0
+YXJ0KGFyZ3MsIGZvcm1hdCk7Cj4+IC0KPj4gLSAgICAgdmFmLmZtdCA9IGZvcm1hdDsKPj4gLSAg
+ICAgdmFmLnZhID0gJmFyZ3M7Cj4+IC0KPj4gLSAgICAgcHJpbnRrKEtFUk5fRVJSICJbIiBEUk1f
+TkFNRSAiOiVwc10gKkVSUk9SKiAlcFYiLAo+PiAtICAgICAgICAgICAgX19idWlsdGluX3JldHVy
+bl9hZGRyZXNzKDApLCAmdmFmKTsKPj4gLQo+PiAtICAgICB2YV9lbmQoYXJncyk7Cj4+IC19Cj4+
+IC1FWFBPUlRfU1lNQk9MKGRybV9lcnIpOwo+PiAtCj4+IC12b2lkIGRybV91dF9kZWJ1Z19wcmlu
+dGsoY29uc3QgY2hhciAqZnVuY3Rpb25fbmFtZSwgY29uc3QgY2hhciAqZm9ybWF0LCAuLi4pCj4+
+IC17Cj4+IC0gICAgIHN0cnVjdCB2YV9mb3JtYXQgdmFmOwo+PiAtICAgICB2YV9saXN0IGFyZ3M7
+Cj4+ICsgICAgIGlmIChjYXRlZ29yeSAhPSBEUk1fVVRfTk9ORSAmJiAhKGRybV9kZWJ1ZyAmIGNh
+dGVnb3J5KSkKPj4gKyAgICAgICAgICAgICByZXR1cm47Cj4+Cj4+ICAgICAgIHZhX3N0YXJ0KGFy
+Z3MsIGZvcm1hdCk7Cj4+ICAgICAgIHZhZi5mbXQgPSBmb3JtYXQ7Cj4+ICAgICAgIHZhZi52YSA9
+ICZhcmdzOwo+Pgo+PiAtICAgICBwcmludGsoS0VSTl9ERUJVRyAiWyIgRFJNX05BTUUgIjolc10g
+JXBWIiwgZnVuY3Rpb25fbmFtZSwgJnZhZik7Cj4+ICsgICAgIGlmIChkZXYpCj4+ICsgICAgICAg
+ICAgICAgZGV2X3ByaW50ayhsZXZlbCwgZGV2LCAiWyIgRFJNX05BTUUgIjolc10lcyAlcFYiLCBm
+dW5jdGlvbl9uYW1lLAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgcHJlZml4LCAmdmFmKTsK
+Pj4gKyAgICAgZWxzZQo+PiArICAgICAgICAgICAgIHByaW50aygiJXNbIiBEUk1fTkFNRSAiOiVz
+XSVzICVwViIsIGxldmVsLCBmdW5jdGlvbl9uYW1lLAo+PiArICAgICAgICAgICAgICAgICAgICBw
+cmVmaXgsICZ2YWYpOwo+Cj4gbGd0bS4KPgo+PiAtI2RlZmluZSBEUk1fRVJST1IoZm10LCAuLi4p
+ICAgICAgICAgICAgICAgICAgICAgICAgICBcCj4+IC0gICAgIGRybV9lcnIoZm10LCAjI19fVkFf
+QVJHU19fKQo+PiArI2RlZmluZSBEUk1fREVWX0VSUk9SKGRldiwgZm10LCAuLi4pICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgXAo+PiArICAgICBkcm1fbG9nKGRldiwgS0VSTl9FUlIs
+IERSTV9VVF9OT05FLCBfX2Z1bmNfXywgIiAqRVJST1IqIiwgZm10LCAgXAo+PiArICAgICAgICAg
+ICAgICMjX19WQV9BUkdTX18pCj4+ICsjZGVmaW5lIERSTV9FUlJPUihmbXQsIC4uLikgRFJNX0RF
+Vl9FUlJPUihOVUxMLCBmbXQsICMjX19WQV9BUkdTX18pCj4KPiBBbmQgdGhlc2UgbG9vayBsaWtl
+IGEgcmVhc29uYWJsZSBzb2x1dGlvbiBnaXZlbiB0aGUgY29uc3RyYWludHMuCj4KPiBPdXQgb2Yg
+Y3VyaW9zaXR5LCBob3cgbXVjaCBkaWQgdGhlIGtlcm5lbCBidWlsZCBncm93IGJ5IGFkZGluZyBh
+IE5VTEwKPiBwYXJhbWV0ZXIgZXZlcnl3aGVyZT8KCgp1bmNvbXByZXNzZWQgdm1saW51eCBpcyA4
+Mjg2IGJ5dGVzIGxhcmdlciBvbiBteSBpOTE1IGJ1aWxkLCAzNDgzMiBvbiBleHlub3MKCmJ6SW1h
+Z2Ugb24gaTkxNSBidWlsZCBpcyAyOTEyIGJ5dGVzIGxhcmdlciBhbmQgekltYWdlIG9uIGV4eW5v
+cyBpcwo2NzUyIGJ5dGVzIGxhcmdlcgoKU2VhbgoKPgo+IFJldmlld2VkLWJ5OiBDaHJpcyBXaWxz
+b24gPGNocmlzQGNocmlzLXdpbHNvbi5jby51az4KPiAtQ2hyaXMKPgo+IC0tCj4gQ2hyaXMgV2ls
+c29uLCBJbnRlbCBPcGVuIFNvdXJjZSBUZWNobm9sb2d5IENlbnRyZQpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
