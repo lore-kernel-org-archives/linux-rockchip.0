@@ -1,77 +1,39 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 3/7] clk: rockchip: rk3399: fix incorrect GATE bits for {c, g}pll_aclk_perihp_src
-Date: Fri, 12 Aug 2016 18:30:16 +0200
-Message-ID: <1511923.bnfOuYbtIQ@diego>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com> <1470122401-31934-4-git-send-email-zhengxing@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH 0/2] Introduce DRM_DEV_* logging
+Date: Fri, 12 Aug 2016 13:00:52 -0400
+Message-ID: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1470122401-31934-4-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 2. August 2016, 15:19:57 schrieb Xing Zheng:
-> Sorry to refer incorrect clock diagram, we double check it that the bits
-> configuration of the Xpll_aclk_perihp_src need to be fixed:
-> bit 1 - shows aclk_perihp_cpll_src_en
-> bit 0 - shows aclk_perihp_gpll_src_en
-> 
-> Through the testing that plug/unplug the USB ethernet cable on the RK3399
-> kevin board.
-> 
-> 1. the hclk_host0 and hclk_host1 are endpoint clocks:
-> cpll --> G5[1] --> aclk_perihp_cpll_src --\              |--> hclk_host0
-> 
->                                           | --> ... ---> |
-> 
-> gpll --> G5[0] --> aclk_perihp_gpll_src --/              |--> hclk_host1
-> 
-> 2. there is no clock below the cpll_aclk_perihp_src,
->    and the hclk_hostX are below the gpll_aclk_perihp_src:
->     pll_cpll                              1            1   800000000        
->  0 0 cpll                               7           19   800000000         
-> 0 0 cpll_aclk_perihp_src            0            0   800000000          0 0
-> ...
->     pll_gpll                              1            1   594000000        
->  0 0 gpll                              10           10   594000000         
-> 0 0 gpll_aclk_perihp_src            2            2   594000000          0 0
-> hclk_perihp               5            5    74250000          0 0
-> hclk_host1_arb         2            2    74250000          0 0 hclk_host1  
->           2            2    74250000          0 0 hclk_host0_arb         2 
->           2    74250000          0 0 hclk_host0             2            2 
->   74250000          0 0
-> 
-> 3. by default, G5[0] and G5[1] are enabled:
-> localhost ~ # mem r 0xff760314
-> 0x000003e0
-> 
-> 4. close the G5[1] (aclk_perihp_cpll_src), and plug/unplug USB ethernet
-> cable, the DUT still works well:
-> localhost ~ # mem w 0xff760314 0xffff03e2
-> localhost ~ # mem r 0xff760314
-> 0x000003e2
-> plug/unplug, the work statue is ok
-> 
-> 5. close the G5[0] (aclk_perihp_gpll_src), , and plug/unplug USB ethernet
-> cable, the DUT will be crashed:
-> localhost ~ # mem w 0xff760314 0xffff03e1
-> localhost ~ # mem r 0xff760314
-> 0x000003e1
-> plug/unplug, the DUT is crashed
-> 
-> Summary:
-> bit 1 - shows aclk_perihp_cpll_src_en
-> bit 0 - shows aclk_perihp_gpll_src_en
-> 
-> Fixes: 3bd14ae9da91 ("clk: rockchip: fix incorrect parent for rk3399's
-> {c,g}pll_aclk_perihp_src") Signed-off-by: Xing Zheng
-> <zhengxing@rock-chips.com>
-
-applied to my clk-fixes branch for 4.8
-
-
-Thanks
-Heiko
+VGhpcyBwYXRjaCBzZXQgcmVmYWN0b3JzIHNvbWUgb2YgdGhlIGxvZ2dpbmcgZnVuY3Rpb25zIGFu
+ZCBpbnRyb2R1Y2VzCmEgbmV3IGNsYXNzIG9mIERSTV9ERVZfKiBtZXNzYWdlcyB3aGljaCBwcmlu
+dCB0aGUgZGV2aWNlIG5hbWUgYWxvbmcKd2l0aCB0aGUgb3RoZXIgZHJtIGdvb2RuZXNzLgoKTm90
+ZSB0aGF0IHRoZSBFUlJPUiBtZXNzYWdlIGZvcm1hdCByZW1haW5zIHRoZSBzYW1lICh3aXRoIHRo
+ZSAqRVJST1IqCnByZWZpeCksIGhvd2V2ZXIgSU5GTyBtZXNzYWdlcyBub3cgaW5jbHVkZSB0aGUg
+ZnVuY3Rpb24gbmFtZSwgZS5nLgppbnN0ZWFkIG9mICJbZHJtXSBNeSBpbmZvIG1lc3NhZ2UiLCBp
+dCBpcyBub3cgIltkcm06bXlfZnVuY3Rpb25dIE15IAppbmZvIG1lc3NhZ2UiLgoKVGhlIHNlY29u
+ZCBwYXRjaCB1cGRhdGVzIHJvY2tjaGlwIHZvcCB0byB1c2UgdGhlIG5ldyBsb2cgbWVzc2FnZXMu
+CgpUaGlzIGlzIHRlc3RlZCBvbiByb2NrY2hpcCBhbmQgY29tcGlsZWQgb24gaTkxNS9tdWx0aS12
+Ny90ZWdyYS9leHlub3MvZHJtLW1pc2MKClNlYW4gUGF1bCAoMik6CiAgZHJtOiBJbnRyb2R1Y2Ug
+RFJNX0RFVl8qIGxvZyBtZXNzYWdlcwogIGRybS9yb2NrY2hpcDogVXNlIERSTV9ERVZfRVJST1Ig
+aW4gdm9wCgogZHJpdmVycy9ncHUvZHJtL2RybV9kcnYuYyAgICAgICAgICAgICAgICAgICB8ICAz
+MSArKystLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwg
+IDI0ICsrLS0tCiBpbmNsdWRlL2RybS9kcm1QLmggICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+MTMzICsrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgOTYgaW5z
+ZXJ0aW9ucygrKSwgOTIgZGVsZXRpb25zKC0pCgotLSAKMi44LjAucmMzLjIyNi5nMzlkNDAyMAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
