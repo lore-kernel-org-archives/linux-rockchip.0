@@ -1,66 +1,62 @@
-From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: remove excess sd properties for
- firefly reload
-Date: Sun, 14 Aug 2016 20:38:59 +0800
-Message-ID: <af99cf05-dfc7-1ae6-8d23-f33298b5f683@soulik.info>
-References: <522097f6-8b5c-ee6d-c1b1-a63840228a0e@rock-chips.com>
- <1471174044-26003-1-git-send-email-ayaka@soulik.info>
- <1471174044-26003-2-git-send-email-ayaka@soulik.info>
- <35898684.O6p1GdTFI2@phil>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: don't print error when adding adapter fails
+Date: Mon, 15 Aug 2016 00:17:20 +0200
+Message-ID: <20160814221719.GA10501@katana>
+References: <1470742581-12971-1-git-send-email-wsa-dev@sang-engineering.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <35898684.O6p1GdTFI2@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="VbJkn9YxBvnuCH5J"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1470742581-12971-1-git-send-email-wsa-dev@sang-engineering.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa-dev@sang-engineering.com>
+Cc: linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, adi-buildroot-devel@lists.sourceforge.net, kernel@stlinux.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
+--VbJkn9YxBvnuCH5J
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 08/14/2016 08:30 PM, Heiko Stuebner wrote:
-> Am Sonntag, 14. August 2016, 19:27:23 CEST schrieb Randy Li:
->> Because of a bug in hardware design, the sdcard at firefly
->> rk3288 reload board can't switch the io voltage level to 1.8v.
->>
->> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
->> ---
->>   arch/arm/boot/dts/rk3288-firefly-reload.dts | 7 +------
->>   1 file changed, 1 insertion(+), 6 deletions(-)
->>
->> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts
->> b/arch/arm/boot/dts/rk3288-firefly-reload.dts index 43145d1..a2b1f14 100644
->> --- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
->> +++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
->> @@ -202,18 +202,13 @@
->>   	bus-width = <4>;
->>   	cap-mmc-highspeed;
->>   	cap-sd-highspeed;
->> -	sd-uhs-sdr12;
->> -	sd-uhs-sdr25;
->> -	sd-uhs-sdr50;
->> -	sd-uhs-sdr104;
->> -	sd-uhs-ddr50;
->>   	card-detect-delay = <200>;
->>   	disable-wp;
->>   	num-slots = <1>;
->>   	pinctrl-names = "default";
->>   	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
->>   	vmmc-supply = <&vcc_sd>;
->> -	vqmmc-supply = <&vccio_sd>;
->> +	vqmmc-supply = <&vcc_sd>;
-> that looks wrong. vccio_sd is still the vqmmc supply in the schematics even
-> though we don't want to switch to 1.8V . But that regulator should still be
-I think the vccio_sd is just the one connected to the io_domains, but 
-the voltage source for the
-pull up register is not vccio_sd but vcc_io.
-> controllable without needing a regulator-always-on in the future.
->
->
-> Heiko
+On Tue, Aug 09, 2016 at 01:36:16PM +0200, Wolfram Sang wrote:
+> Since v4.8-rc1, the I2C core will print detailed information when adding =
+an I2C
+> adapter fails. So, drivers can skip this now.
+>=20
+> I am still undecided if I apply this as a single patch or break it out. B=
+ut for
+> reviewing, avoiding the patch bomb is probably a good thing.
+>=20
+> Should go via subsystem tree, I'd think.
+>=20
+> Wolfram Sang (1):
+>   i2c: don't print error when adding adapter fails
+>=20
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Applied to for-next, thanks!
+
+
+--VbJkn9YxBvnuCH5J
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXsO3vAAoJEBQN5MwUoCm2w3IP/jptxJ55zOpqqrP4YiIo9d1P
+ldYqyfLqKHVN00p64U+1H3ryKADkcH4kyXCMj8NNrFmD1Sjp4t+IpSJrfbyjhjxD
+iYkgvfZCKtLXECOE3AnrtBvlwv0wdBIP4Riztq2WgAfwXJvebU8K3dld3fx0f3k0
+KUpk5uQ24K5RbYcSPS+PqqDi7LRvu1iRfsOyqA3j8n7nQ4uKVLLYbcst5NyFpG7x
+168XGity4IdRjQM4PeEEQkXWgN9UdbS/5Ah7vG52Ug3iEfzXgMSyjrUM5NfuxGv8
+oku57fUtN2y+uH2Od5gL0S27m49mGDxNPnhPK4CPItekcz2wxwaFlnb+3eOpRT57
+sADpkE1bpl70FdaWJdSeI9F689dUCvWVsRpg7dglHI8yxzk+oQOE8KfWMXSX0CCn
+JUBsKsSBR1FUDpFAaACjGvMSf4E/2gosQC6pxF2jSo3Y/i2JH+HgzhtQcxRJ2v5f
+zG711NoBMbzZMRteYN5NHidiDrzZeo9fGoGxWLmKuayR2oifMB8O1IVAwx8HeVJh
+hPGCi0ZSGsCYYZ/SZ6QmzYZAfrKnt/EDFjyywJ/egf6yvDB1xkIkbFGkK+V1OhGp
+C61jKV4qHvvDxkOf2l7W77AWxJOswfJW3JZzkMC+1eniXU1yULAsJ09I9Jhol3AZ
+GpCRWj5TN9jg1a0kP26G
+=vwEG
+-----END PGP SIGNATURE-----
+
+--VbJkn9YxBvnuCH5J--
