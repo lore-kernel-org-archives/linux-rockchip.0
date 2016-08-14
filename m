@@ -1,80 +1,37 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: Don't continue trying to enable crtc on
- failure
-Date: Sun, 14 Aug 2016 11:42:01 +0200
-Message-ID: <20160814094200.GW6232@phenom.ffwll.local>
-References: <1471036181-14777-1-git-send-email-seanpaul@chromium.org>
+From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [PATCH 0/2] ARM: dts: rockchip: correct the regulators in firefly
+ reload
+Date: Sun, 14 Aug 2016 19:27:22 +0800
+Message-ID: <1471174044-26003-1-git-send-email-ayaka@soulik.info>
+References: <522097f6-8b5c-ee6d-c1b1-a63840228a0e@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1471036181-14777-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <522097f6-8b5c-ee6d-c1b1-a63840228a0e-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBdWcgMTIsIDIwMTYgYXQgMDU6MDk6NDFQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
-Ogo+IElmIHZvcF9lbmFibGUgZmFpbHMsIGRvbid0IGNvbnRpbnVlIG9uLCBpdCBjYXVzZXMgc3lz
-dGVtIGhhbmdzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
-dW0ub3JnPgoKSG0sIEkgdGhvdWdodCB0aGVyZSdzIGNsa19wcmVwYXJlIHdoaWNoIHRoZW4gbWFr
-ZXMgc3VyZSB0aGF0IGNsa19lbmFibGUKYWN0dWFsbHkgd29ya3M/IEluIHRoYXQgY2FzZSBJJ2Qg
-Z28gd2l0aCBhIFdBUk5fT04gb3Igc2ltaWxhciBiYWQgbGV2ZWxzCm9mIG5vaXNlLgoKSWYgdGhp
-cyBjYW4gaW5kZWVkIGhhcHBlbiB0aGVuIHVnaCwgc29tZW9uZSBuZWVkcyB0byBtYWtlIHRoZSBj
-bGsKZnJhbWV3b3JrIG1vcmUgYXRvbWljIDstKQotRGFuaWVsCgo+IC0tLQo+IAo+IFRoaXMgcGF0
-Y2ggdXNlcyB0aGUgbmV3IERSTV9ERVZfRVJST1IgbG9nZ2luZywgc28gaXQgc2hvdWxkIGJlIGFw
-cGxpZWQgb24KPiB0b3Agb2YgIltQQVRDSCAyLzJdIGRybS9yb2NrY2hpcDogVXNlIERSTV9ERVZf
-RVJST1IgaW4gdm9wIi4KPiAKPiBTZWFuCj4gCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxOSArKysrKysrKysrKysrKy0tLS0tCj4gIDEgZmlsZSBj
-aGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IGVjOGFkMDAuLmQwZmZl
-NTkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
-PiBAQCAtNDI4LDcgKzQyOCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9kc3BfaG9sZF92YWxpZF9pcnFf
-ZGlzYWJsZShzdHJ1Y3Qgdm9wICp2b3ApCj4gIAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZ2b3At
-PmlycV9sb2NrLCBmbGFncyk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3Ry
-dWN0IGRybV9jcnRjICpjcnRjKQo+ICtzdGF0aWMgaW50IHZvcF9lbmFibGUoc3RydWN0IGRybV9j
-cnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7Cj4gIAlp
-bnQgcmV0Owo+IEBAIC00MzYsMTMgKzQzNiwxMyBAQCBzdGF0aWMgdm9pZCB2b3BfZW5hYmxlKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgCXJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmModm9wLT5k
-ZXYpOwo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRv
-IGdldCBwbSBydW50aW1lOiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm47Cj4gKwkJZ290byBlcnJf
-cHV0X3BtX3J1bnRpbWU7Cj4gIAl9Cj4gIAo+ICAJcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGsp
-Owo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGVu
-YWJsZSBoY2xrIC0gJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuOwo+ICsJCWdvdG8gZXJyX3B1dF9w
-bV9ydW50aW1lOwo+ICAJfQo+ICAKPiAgCXJldCA9IGNsa19lbmFibGUodm9wLT5kY2xrKTsKPiBA
-QCAtNDg1LDcgKzQ4NSw3IEBAIHN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRj
-ICpjcnRjKQo+ICAKPiAgCWRybV9jcnRjX3ZibGFua19vbihjcnRjKTsKPiAgCj4gLQlyZXR1cm47
-Cj4gKwlyZXR1cm4gMDsKPiAgCj4gIGVycl9kaXNhYmxlX2FjbGs6Cj4gIAljbGtfZGlzYWJsZSh2
-b3AtPmFjbGspOwo+IEBAIC00OTMsNiArNDkzLDkgQEAgZXJyX2Rpc2FibGVfZGNsazoKPiAgCWNs
-a19kaXNhYmxlKHZvcC0+ZGNsayk7Cj4gIGVycl9kaXNhYmxlX2hjbGs6Cj4gIAljbGtfZGlzYWJs
-ZSh2b3AtPmhjbGspOwo+ICtlcnJfcHV0X3BtX3J1bnRpbWU6Cj4gKwlwbV9ydW50aW1lX3B1dF9z
-eW5jKHZvcC0+ZGV2KTsKPiArCXJldHVybiByZXQ7Cj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIHZv
-cF9jcnRjX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+IEBAIC05MTIsMTAgKzkxNSwx
-NiBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+
-ICAJdTE2IHZhY3Rfc3QgPSBhZGp1c3RlZF9tb2RlLT52dG90YWwgLSBhZGp1c3RlZF9tb2RlLT52
-c3luY19zdGFydDsKPiAgCXUxNiB2YWN0X2VuZCA9IHZhY3Rfc3QgKyB2ZGlzcGxheTsKPiAgCXVp
-bnQzMl90IHZhbDsKPiArCWludCByZXQ7Cj4gIAo+ICAJV0FSTl9PTih2b3AtPmV2ZW50KTsKPiAg
-Cj4gLQl2b3BfZW5hYmxlKGNydGMpOwo+ICsJcmV0ID0gdm9wX2VuYWJsZShjcnRjKTsKPiArCWlm
-IChyZXQpIHsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSB2
-b3AgKCVkKVxuIiwgcmV0KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICAJLyoKPiAgCSAqIElm
-IGRjbGsgcmF0ZSBpcyB6ZXJvLCBtZWFuIHRoYXQgc2Nhbm91dCBpcyBzdG9wLAo+ICAJICogd2Ug
-ZG9uJ3QgbmVlZCB3YWl0IGFueSBtb3JlLgo+IC0tIAo+IDIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAK
-PiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-Ci0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpo
-dHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+I double check the regulators settings in dts after the sdcard issue,
+I found I didn't make them match the hardware of firefly reload board.
+
+Randy Li (2):
+  ARM: dts: rockchip: remove excess sd properties for firefly reload
+  ARM: dts: rockchip: add missing regulators for firefly reload board
+
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 29 +--------
+ arch/arm/boot/dts/rk3288-firefly-reload.dts       | 71 +++++++++++++++++++----
+ 2 files changed, 60 insertions(+), 40 deletions(-)
+
+-- 
+2.7.4
