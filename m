@@ -1,47 +1,80 @@
-From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [v.1] clk:clk-rockchip:-of_iomap failed to remap then abort clock initialization.
-Date: Sat, 13 Aug 2016 20:56:18 +0530
-Message-ID: <1471101978-1881-1-git-send-email-arvind.yadav.cs@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Arvind Yadav <arvind.yadav.cs@gmail.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] drm/rockchip: Don't continue trying to enable crtc on
+ failure
+Date: Sun, 14 Aug 2016 11:42:01 +0200
+Message-ID: <20160814094200.GW6232@phenom.ffwll.local>
+References: <1471036181-14777-1-git-send-email-seanpaul@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1471036181-14777-1-git-send-email-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
--check return of 'of_iomap'.if It's falied to remap then abort.
-
--Unmap a region obtained by remap. iounmap frees the mapping when failed
-to allocate the memory.
-
-Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
----
- drivers/clk/rockchip/clk-rockchip.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/clk/rockchip/clk-rockchip.c b/drivers/clk/rockchip/clk-rockchip.c
-index 4cf838d5..2c9bb81 100644
---- a/drivers/clk/rockchip/clk-rockchip.c
-+++ b/drivers/clk/rockchip/clk-rockchip.c
-@@ -49,14 +49,19 @@ static void __init rk2928_gate_clk_init(struct device_node *node)
- 	}
- 
- 	reg = of_iomap(node, 0);
-+	if (!reg)
-+		return;
- 
- 	clk_data = kzalloc(sizeof(struct clk_onecell_data), GFP_KERNEL);
--	if (!clk_data)
-+	if (!clk_data) {
-+		iounmap(reg);
- 		return;
-+	}
- 
- 	clk_data->clks = kzalloc(qty * sizeof(struct clk *), GFP_KERNEL);
- 	if (!clk_data->clks) {
- 		kfree(clk_data);
-+		iounmap(reg);
- 		return;
- 	}
- 
--- 
-2.7.4
+T24gRnJpLCBBdWcgMTIsIDIwMTYgYXQgMDU6MDk6NDFQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
+Ogo+IElmIHZvcF9lbmFibGUgZmFpbHMsIGRvbid0IGNvbnRpbnVlIG9uLCBpdCBjYXVzZXMgc3lz
+dGVtIGhhbmdzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
+dW0ub3JnPgoKSG0sIEkgdGhvdWdodCB0aGVyZSdzIGNsa19wcmVwYXJlIHdoaWNoIHRoZW4gbWFr
+ZXMgc3VyZSB0aGF0IGNsa19lbmFibGUKYWN0dWFsbHkgd29ya3M/IEluIHRoYXQgY2FzZSBJJ2Qg
+Z28gd2l0aCBhIFdBUk5fT04gb3Igc2ltaWxhciBiYWQgbGV2ZWxzCm9mIG5vaXNlLgoKSWYgdGhp
+cyBjYW4gaW5kZWVkIGhhcHBlbiB0aGVuIHVnaCwgc29tZW9uZSBuZWVkcyB0byBtYWtlIHRoZSBj
+bGsKZnJhbWV3b3JrIG1vcmUgYXRvbWljIDstKQotRGFuaWVsCgo+IC0tLQo+IAo+IFRoaXMgcGF0
+Y2ggdXNlcyB0aGUgbmV3IERSTV9ERVZfRVJST1IgbG9nZ2luZywgc28gaXQgc2hvdWxkIGJlIGFw
+cGxpZWQgb24KPiB0b3Agb2YgIltQQVRDSCAyLzJdIGRybS9yb2NrY2hpcDogVXNlIERSTV9ERVZf
+RVJST1IgaW4gdm9wIi4KPiAKPiBTZWFuCj4gCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxOSArKysrKysrKysrKysrKy0tLS0tCj4gIDEgZmlsZSBj
+aGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IGVjOGFkMDAuLmQwZmZl
+NTkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
+PiBAQCAtNDI4LDcgKzQyOCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9kc3BfaG9sZF92YWxpZF9pcnFf
+ZGlzYWJsZShzdHJ1Y3Qgdm9wICp2b3ApCj4gIAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZ2b3At
+PmlycV9sb2NrLCBmbGFncyk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3Ry
+dWN0IGRybV9jcnRjICpjcnRjKQo+ICtzdGF0aWMgaW50IHZvcF9lbmFibGUoc3RydWN0IGRybV9j
+cnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7Cj4gIAlp
+bnQgcmV0Owo+IEBAIC00MzYsMTMgKzQzNiwxMyBAQCBzdGF0aWMgdm9pZCB2b3BfZW5hYmxlKHN0
+cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgCXJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmModm9wLT5k
+ZXYpOwo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRv
+IGdldCBwbSBydW50aW1lOiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm47Cj4gKwkJZ290byBlcnJf
+cHV0X3BtX3J1bnRpbWU7Cj4gIAl9Cj4gIAo+ICAJcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGsp
+Owo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGVu
+YWJsZSBoY2xrIC0gJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuOwo+ICsJCWdvdG8gZXJyX3B1dF9w
+bV9ydW50aW1lOwo+ICAJfQo+ICAKPiAgCXJldCA9IGNsa19lbmFibGUodm9wLT5kY2xrKTsKPiBA
+QCAtNDg1LDcgKzQ4NSw3IEBAIHN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRj
+ICpjcnRjKQo+ICAKPiAgCWRybV9jcnRjX3ZibGFua19vbihjcnRjKTsKPiAgCj4gLQlyZXR1cm47
+Cj4gKwlyZXR1cm4gMDsKPiAgCj4gIGVycl9kaXNhYmxlX2FjbGs6Cj4gIAljbGtfZGlzYWJsZSh2
+b3AtPmFjbGspOwo+IEBAIC00OTMsNiArNDkzLDkgQEAgZXJyX2Rpc2FibGVfZGNsazoKPiAgCWNs
+a19kaXNhYmxlKHZvcC0+ZGNsayk7Cj4gIGVycl9kaXNhYmxlX2hjbGs6Cj4gIAljbGtfZGlzYWJs
+ZSh2b3AtPmhjbGspOwo+ICtlcnJfcHV0X3BtX3J1bnRpbWU6Cj4gKwlwbV9ydW50aW1lX3B1dF9z
+eW5jKHZvcC0+ZGV2KTsKPiArCXJldHVybiByZXQ7Cj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIHZv
+cF9jcnRjX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+IEBAIC05MTIsMTAgKzkxNSwx
+NiBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+
+ICAJdTE2IHZhY3Rfc3QgPSBhZGp1c3RlZF9tb2RlLT52dG90YWwgLSBhZGp1c3RlZF9tb2RlLT52
+c3luY19zdGFydDsKPiAgCXUxNiB2YWN0X2VuZCA9IHZhY3Rfc3QgKyB2ZGlzcGxheTsKPiAgCXVp
+bnQzMl90IHZhbDsKPiArCWludCByZXQ7Cj4gIAo+ICAJV0FSTl9PTih2b3AtPmV2ZW50KTsKPiAg
+Cj4gLQl2b3BfZW5hYmxlKGNydGMpOwo+ICsJcmV0ID0gdm9wX2VuYWJsZShjcnRjKTsKPiArCWlm
+IChyZXQpIHsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSB2
+b3AgKCVkKVxuIiwgcmV0KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICAJLyoKPiAgCSAqIElm
+IGRjbGsgcmF0ZSBpcyB6ZXJvLCBtZWFuIHRoYXQgc2Nhbm91dCBpcyBzdG9wLAo+ICAJICogd2Ug
+ZG9uJ3QgbmVlZCB3YWl0IGFueSBtb3JlLgo+IC0tIAo+IDIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAK
+PiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Ci0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpo
+dHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
