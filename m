@@ -1,26 +1,74 @@
-From: Randy Li <ayaka@soulik.info>
-Subject: [PATCH] Try to support analog audio codec at firefly reload
-Date: Tue, 16 Aug 2016 04:42:06 +0800
-Message-ID: <1471293727-26258-1-git-send-email-ayaka@soulik.info>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk, mark.rutland@arm.com, heiko@sntech.de, alsa-devel@alsa-project.org, Randy Li <ayaka@soulik.info>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH v2] drm/rockchip: Don't continue trying to enable crtc on
+ failure
+Date: Mon, 15 Aug 2016 16:12:29 -0700
+Message-ID: <1471302749-2811-1-git-send-email-seanpaul@chromium.org>
+References: <20160814094200.GW6232@phenom.ffwll.local>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160814094200.GW6232@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, daniel@ffwll.ch
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello:
-  This patch could enabled the es8328 codec at firefly reload board,
-but it doesn't not really work. I disable the mute of channel 
-Left mix and Right mix in alsamixer, I could hear the noise from
-my headphone, but it never be a music. 
-  I just send this patch here to see whether somebody could figure
-out what is wrong, I am really not familiar with sound.
-
-Randy Li (1):
-  ARM: dts: rockchip: add analog audio support for firefly reload
-
- arch/arm/boot/dts/rk3288-firefly-reload.dts | 36 +++++++++++++++++++++++++----
- 1 file changed, 31 insertions(+), 5 deletions(-)
-
--- 
-2.7.4
+SWYgdm9wX2VuYWJsZSBmYWlscywgZG9uJ3QgY29udGludWUgb24sIGl0IGNhdXNlcyBzeXN0ZW0g
+aGFuZ3MuCgpTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4K
+LS0tCgpUaGlzIHBhdGNoIHVzZXMgdGhlIG5ldyBEUk1fREVWX0VSUk9SIGxvZ2dpbmcsIHNvIGl0
+IHNob3VsZCBiZSBhcHBsaWVkIG9uCnRvcCBvZiAiW1BBVENIIDIvMl0gZHJtL3JvY2tjaGlwOiBV
+c2UgRFJNX0RFVl9FUlJPUiBpbiB2b3AiLgoKQ2hhbmdlcyBpbiB2MjoKCS0gRXNjYWxhdGUgZGV2
+X2VyciB0byBXQVJOX09OIGZvciBjbGtfZW5hYmxlIGZhaWx1cmVzIChEYW5pZWwgVmV0dGVyKQoK
+U2VhbgoKCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMzEg
+KysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxNyBpbnNlcnRp
+b25zKCspLCAxNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYwppbmRleCBlYzhhZDAwLi5hMTc2ZDAzIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTQyOCw3ICs0MjgsNyBAQCBzdGF0aWMg
+dm9pZCB2b3BfZHNwX2hvbGRfdmFsaWRfaXJxX2Rpc2FibGUoc3RydWN0IHZvcCAqdm9wKQogCXNw
+aW5fdW5sb2NrX2lycXJlc3RvcmUoJnZvcC0+aXJxX2xvY2ssIGZsYWdzKTsKIH0KIAotc3RhdGlj
+IHZvaWQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCitzdGF0aWMgaW50IHZvcF9l
+bmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQogewogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3Zv
+cChjcnRjKTsKIAlpbnQgcmV0OwpAQCAtNDM2LDI2ICs0MzYsMjAgQEAgc3RhdGljIHZvaWQgdm9w
+X2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJcmV0ID0gcG1fcnVudGltZV9nZXRfc3lu
+Yyh2b3AtPmRldik7CiAJaWYgKHJldCA8IDApIHsKIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxl
+ZCB0byBnZXQgcG0gcnVudGltZTogJWRcbiIsIHJldCk7Ci0JCXJldHVybjsKKwkJZ290byBlcnJf
+cHV0X3BtX3J1bnRpbWU7CiAJfQogCiAJcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGspOwotCWlm
+IChyZXQgPCAwKSB7Ci0JCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIGhjbGsg
+LSAlZFxuIiwgcmV0KTsKLQkJcmV0dXJuOwotCX0KKwlpZiAoV0FSTl9PTihyZXQgPCAwKSkKKwkJ
+Z290byBlcnJfcHV0X3BtX3J1bnRpbWU7CiAKIAlyZXQgPSBjbGtfZW5hYmxlKHZvcC0+ZGNsayk7
+Ci0JaWYgKHJldCA8IDApIHsKLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBlbmFibGUg
+ZGNsayAtICVkXG4iLCByZXQpOworCWlmIChXQVJOX09OKHJldCA8IDApKQogCQlnb3RvIGVycl9k
+aXNhYmxlX2hjbGs7Ci0JfQogCiAJcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmFjbGspOwotCWlmIChy
+ZXQgPCAwKSB7Ci0JCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIGFjbGsgLSAl
+ZFxuIiwgcmV0KTsKKwlpZiAoV0FSTl9PTihyZXQgPCAwKSkKIAkJZ290byBlcnJfZGlzYWJsZV9k
+Y2xrOwotCX0KIAogCS8qCiAJICogU2xhdmUgaW9tbXUgc2hhcmVzIHBvd2VyLCBpcnEgYW5kIGNs
+b2NrIHdpdGggdm9wLiAgSXQgd2FzIGFzc29jaWF0ZWQKQEAgLTQ4NSw3ICs0NzksNyBAQCBzdGF0
+aWMgdm9pZCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAogCWRybV9jcnRjX3Zi
+bGFua19vbihjcnRjKTsKIAotCXJldHVybjsKKwlyZXR1cm4gMDsKIAogZXJyX2Rpc2FibGVfYWNs
+azoKIAljbGtfZGlzYWJsZSh2b3AtPmFjbGspOwpAQCAtNDkzLDYgKzQ4Nyw5IEBAIGVycl9kaXNh
+YmxlX2RjbGs6CiAJY2xrX2Rpc2FibGUodm9wLT5kY2xrKTsKIGVycl9kaXNhYmxlX2hjbGs6CiAJ
+Y2xrX2Rpc2FibGUodm9wLT5oY2xrKTsKK2Vycl9wdXRfcG1fcnVudGltZToKKwlwbV9ydW50aW1l
+X3B1dF9zeW5jKHZvcC0+ZGV2KTsKKwlyZXR1cm4gcmV0OwogfQogCiBzdGF0aWMgdm9pZCB2b3Bf
+Y3J0Y19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKQEAgLTkxMiwxMCArOTA5LDE2IEBA
+IHN0YXRpYyB2b2lkIHZvcF9jcnRjX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJdTE2
+IHZhY3Rfc3QgPSBhZGp1c3RlZF9tb2RlLT52dG90YWwgLSBhZGp1c3RlZF9tb2RlLT52c3luY19z
+dGFydDsKIAl1MTYgdmFjdF9lbmQgPSB2YWN0X3N0ICsgdmRpc3BsYXk7CiAJdWludDMyX3QgdmFs
+OworCWludCByZXQ7CiAKIAlXQVJOX09OKHZvcC0+ZXZlbnQpOwogCi0Jdm9wX2VuYWJsZShjcnRj
+KTsKKwlyZXQgPSB2b3BfZW5hYmxlKGNydGMpOworCWlmIChyZXQpIHsKKwkJRFJNX0RFVl9FUlJP
+Uih2b3AtPmRldiwgIkZhaWxlZCB0byBlbmFibGUgdm9wICglZClcbiIsIHJldCk7CisJCXJldHVy
+bjsKKwl9CisKIAkvKgogCSAqIElmIGRjbGsgcmF0ZSBpcyB6ZXJvLCBtZWFuIHRoYXQgc2Nhbm91
+dCBpcyBzdG9wLAogCSAqIHdlIGRvbid0IG5lZWQgd2FpdCBhbnkgbW9yZS4KLS0gCjIuOC4wLnJj
+My4yMjYuZzM5ZDQwMjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
