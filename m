@@ -1,48 +1,37 @@
-From: Eric Engestrom <eric.engestrom@imgtec.com>
-Subject: Re: [PATCH v3 1/2] drm: Introduce DRM_DEV_* log messages
-Date: Mon, 15 Aug 2016 13:54:52 +0100
-Message-ID: <20160815125452.GB10429@imgtec.com>
-References: <20160812194438.GI15011@nuc-i3427.alporthouse.com>
- <1471033777-9922-1-git-send-email-seanpaul@chromium.org>
+From: Kyle McMartin <kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Subject: Re: [PATCH] linux-firmware: rockchip: update dptx firmware to v2.9
+Date: Mon, 15 Aug 2016 10:49:00 -0400
+Message-ID: <20160815144900.GD2817@merlin.infradead.org>
+References: <1471215919-15697-1-git-send-email-zyw@rock-chips.com>
+ <57B0FD1C.9000006@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1471033777-9922-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+In-Reply-To: <57B0FD1C.9000006-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBdWcgMTIsIDIwMTYgYXQgMDQ6Mjk6MzdQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
-Ogo+IFRoaXMgcGF0Y2ggY29uc29saWRhdGVzIGFsbCB0aGUgdmFyaW91cyBsb2cgZnVuY3Rpb25z
-L21hY3JvcyBpbnRvCj4gb25lIHViZXIgZnVuY3Rpb24sIGRybV9wcmludGsuIEl0IGFsc28gaW50
-cm9kdWNlcyBzb21lIG5ldyBEUk1fREVWXyoKPiB2YXJpYW50cyB0aGF0IHVzZSBkZXZfcHJpbnRr
-IHRvIHByaW50IHRoZSBkZXZpY2UgbmFtZSwgd2hpY2ggaGVscHMKPiBkZWxpbmVhdGUgbXVsdGlw
-bGUgZGV2aWNlcyBvZiB0aGUgc2FtZSB0eXBlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1
-bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjI6Cj4gICAg
-ICAgICAtIFVzZSBkZXZfcHJpbnRrIGZvciB0aGUgZGV2IHZhcmlhbnQgKENocmlzIFdpbHNvbikK
-PiAKPiBDaGFuZ2VzIGluIHYzOgo+IAktIFJlbmFtZSBkcm1fbG9nIHRvIGRybV9kZXZfcHJpbnRr
-IChDaHJpcyBXaWxzb24pCj4gCS0gQnJlYWsgb3V0IGRybV9wcmludGsgZnJvbSBkcm1fZGV2X3By
-aW50ayB0byByZWR1Y2UKPiAJICBpbWFnZSBncm93dGggZHVlIHRvIHBhc3NpbmcgTlVMTCBhcm91
-bmQgKENocmlzIFdpbHNvbikKPiAKPiAgZHJpdmVycy9ncHUvZHJtL2RybV9kcnYuYyB8ICAyNSAr
-KysrKystLS0KPiAgaW5jbHVkZS9kcm0vZHJtUC5oICAgICAgICB8IDE0MCArKysrKysrKysrKysr
-KysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTAx
-IGluc2VydGlvbnMoKyksIDY0IGRlbGV0aW9ucygtKQo+IAoKW3NuaXBdCgo+ICsJZGV2X3ByaW50
-ayhsZXZlbCwgZGV2LCAiWyIgRFJNX05BTUUgIjolc10lcyAlcFYiLCBmdW5jdGlvbl9uYW1lLCBw
-cmVmaXgsCj4gKwkJICAgJnZhZik7CgpbLi4uXQoKPiArCXByaW50aygiJXNbIiBEUk1fTkFNRSAi
-OiVzXSVzICVwViIsIGxldmVsLCBmdW5jdGlvbl9uYW1lLCBwcmVmaXgsICZ2YWYpOwoKV2hhdCBk
-byB5b3UgdGhpbmsgb2YgI2RlZmluZSdpbmcgdGhlbSB0byBtYWtlIHN1cmUgdGhlc2UgdHdvIGZv
-cm1hdCBzdHJpbmdzCmRvbid0IGVuZCB1cCBkaXZlcmdpbmcgYXQgc29tZSBwb2ludD8KCkNoZWVy
-cywKICBFcmljCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Mon, Aug 15, 2016 at 07:22:04AM +0800, Chris Zhong wrote:
+> Hi Kyle
+> 
+> Sorry to update this firmwre so frequently, and I don't think this one is
+> the final version, I post it to upstream because someone probably require
+> it.
+> If this patch can not land in linux-firmare, I will not feel sad.
+> 
+
+it's not a problem, please post changes whenever you have them. :-)
+
+--kyle
