@@ -1,43 +1,41 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: rockchip: update dptx firmware to v2.9
-Date: Sun, 14 Aug 2016 21:20:58 -0700
-Message-ID: <CAD=FV=UQWW=hxHv1_zpiE19Jt0NcCgwxnKmYSs2ZoC-ACJ6xVA@mail.gmail.com>
-References: <1471215919-15697-1-git-send-email-zyw@rock-chips.com>
- <57B0FD1C.9000006@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <57B0FD1C.9000006-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, kyle-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v9 0/5] support rockchip dwc3 driver
+Date: Mon, 15 Aug 2016 14:59:54 +0800
+Message-ID: <1471244399-1356-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, zhengsq@rock-chips.com, zyw@rock-chips.com, William Wu <william.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Chris,
+This series add support for rockchip DWC3 driver,
+and add additional optional properties for specific
+platforms (e.g., rockchip rk3399 platform).
 
-On Sun, Aug 14, 2016 at 4:22 PM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Hi Kyle
->
-> Sorry to update this firmwre so frequently, and I don't think this one is
-> the final version, I post it to upstream because someone probably require
-> it.
-> If this patch can not land in linux-firmare, I will not feel sad.
+And because rockchip DWC3 need additional handling of
+cable events and mode switch to support DRD mode, so
+we add a new dwc3-rockchip driver, but not use the
+generic of glue layer which merely enable some clocks
+and populate its children.
 
-Please yell at me for this if someone needs yelling at.  IMHO there is
-no harm posting the patch, so I requested that Chris post it.
+William Wu (5):
+  usb: dwc3: add dis_u2_freeclk_exists_quirk
+  usb: dwc3: make usb2 phy utmi interface configurable
+  usb: dwc3: add dis_del_phy_power_chg_quirk
+  usb: dwc3: rockchip: add devicetree bindings documentation
+  usb: dwc3: add rockchip specific glue layer
 
-If you want to land it, please do.  If not then if a few months go by
-and no new version has posted, you can always land it then.
+ Documentation/devicetree/bindings/usb/dwc3.txt     |   5 +
+ Documentation/devicetree/bindings/usb/generic.txt  |   6 +
+ .../devicetree/bindings/usb/rockchip,dwc3.txt      |  71 ++++
+ drivers/usb/dwc3/Kconfig                           |   9 +
+ drivers/usb/dwc3/Makefile                          |   1 +
+ drivers/usb/dwc3/core.c                            |  30 +-
+ drivers/usb/dwc3/core.h                            |  21 +
+ drivers/usb/dwc3/dwc3-rockchip.c                   | 441 +++++++++++++++++++++
+ 8 files changed, 583 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+ create mode 100644 drivers/usb/dwc3/dwc3-rockchip.c
 
-Thanks much!
-
--Doug
+-- 
+1.9.1
