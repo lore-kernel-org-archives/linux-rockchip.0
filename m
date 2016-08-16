@@ -1,52 +1,151 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH 1/1] phy: rockchip-inno-usb2: add COMMON_CLK dependency
-Date: Tue, 16 Aug 2016 14:13:42 +0800
-Message-ID: <1471328022-93048-2-git-send-email-frank.wang@rock-chips.com>
-References: <1471328022-93048-1-git-send-email-frank.wang@rock-chips.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1471328022-93048-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id
+ for usbphy0/usbphy1
+Date: Tue, 16 Aug 2016 14:34:58 +0800
+Message-ID: <f725344c-fffa-fa40-5d75-524bc2f02a8b@rock-chips.com>
+References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
+ <1918977.W0kRfKbZsD@diego>
+ <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
+ <1570410.dThJclhmJd@diego>
+ <f9312de8-7f7c-b6e1-0eec-ac78813cc2b0@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <f9312de8-7f7c-b6e1-0eec-ac78813cc2b0@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.meng@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On kernel builds without COMMON_CLK, the newly added rockchip-inno-usb2
-driver fails to build:
+Hi Heiko,
 
-drivers/phy/phy-rockchip-inno-usb2.c:124:16: error: field 'clk480m_hw'
-has incomplete type
-   struct clk_hw clk480m_hw;
+On 2016/8/8 17:55, Frank Wang wrote:
+> Hi Heiko,
+>
+> On 2016/8/6 0:05, Heiko Stübner wrote:
+>> Hi Frank,
+>>
+>> Am Freitag, 5. August 2016, 16:34:42 schrieb Frank Wang:
+>>> On 2016/8/5 3:10, Heiko Stübner wrote:
+>>>> Am Dienstag, 2. August 2016, 15:19:56 schrieb Xing Zheng:
+>>>>> Export these source clocks for usbphy.
+>>>>>
+>>>>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>>>> can you please provide a rationale why you need manual control over 
+>>>> that
+>>>> intermediate clock?
+>>> Well, From below graph, you can see that 'clk_usbphyX_480m' is 
+>>> generated
+>>> from usb2phy, and 'clk_usbphy_480m' which select from
+>>> clk_usbphyX_480m_src via a gate (G13[12])  provided 480M clock to other
+>>> modules.
+>>>
+>>>     xin24m
+>>>       |__ clk_usb2phy0_ref
+>>>       |     |
+>>>       |     |__ clk_usbphy0_480m
+>>>       |           |
+>>>       |           |__clk_usbphy0_480m_src
+>>>       |                |
+>>>       |                |__clk_usbphy_480m
+>>>       |                     |__ ... ...
+>>>       |
+>>>       |__ clk_usb2phy1_ref
+>>>             |
+>>>             |__ clk_usbphy1_480m
+>>>                   |
+>>>                   |__clk_usbphy1_480m_src
+>>>> The two usbphys seem to use the clk_usb2phyX_ref clocks, generate the
+>>>> 480m
+>>>> clocks, but do not seem to need the clk_usbphyX_480m_src gates.
+>>> Yeah, they used to be. However, the story went something like this,
+>>>
+>>> Some PM suspend process related ehci/ohci controller are base on 480m
+>>> clocks, unfortunately, usb2-phy suspended earlier than ehci/ohci
+>>> (usb2-phy will be auto suspended if no devices plug-in), and the
+>>> clk-480m provided by it was disabled if no module used. As a result, 
+>>> the
+>>> PM suspend process was blocked when it run into ehci/ohci module.
+>> ah, so the ehci controller needs that 480m clock as well? Do you 
+>> happen to
+>> have example patches for the ehci/ohci side already? I'd like to peak 
+>> at what
+>> you mean with "some PM suspend process related" things.
+>
+> Actually, no patches for it, I just make below steps manually :-).
+> 1. set two usb2-phy into suspend mode.
+> 2. disable 480m clock on each usb2-phy (assume only usb2-phy used it).
+> 3. press power button let system into PM suspend.
+>
+> Then, the kernel will be blocked and you can see the following log 
+> from console.
+> ... ....
+> [  123.763848] calling  usb6+ @ 166, parent: xhci-hcd.0.auto
+> [  123.764503] call usb6+ returned 0 after 163 usecs
+> [  123.765106] calling  usb5+ @ 166, parent: xhci-hcd.0.auto
+> [  123.765719] call usb5+ returned 0 after 121 usecs
+> [  123.766294] calling  usb4+ @ 166, parent: fe3e0000.usb
+> [  123.766917] calling  usb3+ @ 55, parent: fe3a0000.usb
+>
 
-In file included from include/linux/clk.h:16:0
-                 from drivers/phy/phy-rockchip-inno-usb2.c:17:
-include/linux/kernel.h:831:48: error: initialization from incompatible
-pointer type [-Werror=incompatible-pointer-types]
-   const typeof( ((type *)0)->member ) *__mptr = (ptr); \
+May I know have you tried reproducing on your board or not?
 
-  ... ...
+>>
+>> Depending on what is actually needed, you could also pull the usbphy 
+>> out of
+>> autosuspend in a pm-prepare callback of the phy driver itself ... see
+>> http://lxr.free-electrons.com/source/include/linux/pm.h#L86
+>>
+>> Like
+>> - in the .prepare callback make sure to unsuspend the phy
+>>    and deactivate the autosuspend
+>> - ehci/ohci will poweroff the phy in it s suspend callback (already 
+>> does that)
+>
+> Hmm, do you remember that we have previously discussed there are some 
+> oddities in ehci/ohci driver? phy_power_on() gets called twice at 
+> ehci/ohci driver probe time, one is at pdata->power_on(); another is 
+> at usb_add_hcd(), then the power_count of phy increases to 2,  but 
+> phy_power_off() is just invoked one time when ehci/ohci goes to PM 
+> suspend, so phy->ops->power_off is never be invoked.
+>
+> In this way,  the usb-phy maybe never go to suspend.
+>
+>> - suspend -> resume
+>> - ehci/ohci will poweron the phy
+>> - in the phy's .complete callback you can reactivate the autosuspend 
+>> timer
+>>
+>> Because it looks more like you actually need the phy and not the 
+>> clock alone.
+>> So it would be nicer to use mechanisms already in place instead of 
+>> creating
+>> new dependencies.
+>>
+>
+> Theoretically, phy_init() will be invoked when ehci/ohci power on, and 
+> the sm_work will be reactivated (have already implemented) in 
+> phy->ops->init, but unfortunately, the same issue as phy_power_on() 
+> mentioned above, it never run there too .
+>
 
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/phy/Kconfig |    1 +
- 1 file changed, 1 insertion(+)
+Would you like to give some comments on above two oddities please?
 
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index f9bf981..c6d57e5 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -370,6 +370,7 @@ config PHY_ROCKCHIP_USB
- config PHY_ROCKCHIP_INNO_USB2
- 	tristate "Rockchip INNO USB2PHY Driver"
- 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-+	depends on COMMON_CLK
- 	select GENERIC_PHY
- 	help
- 	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
--- 
-1.7.9.5
+BR.
+Frank
 
+>>> Hence, we are planing to refer clk_usbphyX_480m_src into each ehci/ohci
+>>> driver. Maybe you will challenge why not refer clk_usbphy_480m 
+>>> directly?
+>>> because there are two ehci/ohci connected in the different usb2phy, and
+>>> only one clk_usbphy_480m clock was selected in clock tree.
+>> Nope, no argument from me as I fully understand that each phy 
+>> provides its own
+>> 480m clock :-) .
+>>
+>>
+>> Heiko
+>>
+>>
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
