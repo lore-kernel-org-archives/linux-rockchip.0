@@ -1,151 +1,234 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH v3 2/7] clk: rockchip: rk3399: export 480M_SRC clock id
- for usbphy0/usbphy1
-Date: Tue, 16 Aug 2016 14:34:58 +0800
-Message-ID: <f725344c-fffa-fa40-5d75-524bc2f02a8b@rock-chips.com>
-References: <1470122401-31934-1-git-send-email-zhengxing@rock-chips.com>
- <1918977.W0kRfKbZsD@diego>
- <cba79ba6-7f41-5398-389c-7fd3fe5e0089@rock-chips.com>
- <1570410.dThJclhmJd@diego>
- <f9312de8-7f7c-b6e1-0eec-ac78813cc2b0@rock-chips.com>
+From: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v10 5/5] usb: dwc3: add rockchip specific glue layer
+Date: Tue, 16 Aug 2016 10:19:20 +0300
+Message-ID: <87y43x89l3.fsf@linux.intel.com>
+References: <1471251031-17084-1-git-send-email-william.wu@rock-chips.com> <1471251284-1804-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <f9312de8-7f7c-b6e1-0eec-ac78813cc2b0@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, wulf@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.meng@rock-chips.com, frank.wang@rock-chips.com
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1471251284-1804-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-On 2016/8/8 17:55, Frank Wang wrote:
-> Hi Heiko,
->
-> On 2016/8/6 0:05, Heiko Stübner wrote:
->> Hi Frank,
->>
->> Am Freitag, 5. August 2016, 16:34:42 schrieb Frank Wang:
->>> On 2016/8/5 3:10, Heiko Stübner wrote:
->>>> Am Dienstag, 2. August 2016, 15:19:56 schrieb Xing Zheng:
->>>>> Export these source clocks for usbphy.
->>>>>
->>>>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->>>> can you please provide a rationale why you need manual control over 
->>>> that
->>>> intermediate clock?
->>> Well, From below graph, you can see that 'clk_usbphyX_480m' is 
->>> generated
->>> from usb2phy, and 'clk_usbphy_480m' which select from
->>> clk_usbphyX_480m_src via a gate (G13[12])  provided 480M clock to other
->>> modules.
->>>
->>>     xin24m
->>>       |__ clk_usb2phy0_ref
->>>       |     |
->>>       |     |__ clk_usbphy0_480m
->>>       |           |
->>>       |           |__clk_usbphy0_480m_src
->>>       |                |
->>>       |                |__clk_usbphy_480m
->>>       |                     |__ ... ...
->>>       |
->>>       |__ clk_usb2phy1_ref
->>>             |
->>>             |__ clk_usbphy1_480m
->>>                   |
->>>                   |__clk_usbphy1_480m_src
->>>> The two usbphys seem to use the clk_usb2phyX_ref clocks, generate the
->>>> 480m
->>>> clocks, but do not seem to need the clk_usbphyX_480m_src gates.
->>> Yeah, they used to be. However, the story went something like this,
->>>
->>> Some PM suspend process related ehci/ohci controller are base on 480m
->>> clocks, unfortunately, usb2-phy suspended earlier than ehci/ohci
->>> (usb2-phy will be auto suspended if no devices plug-in), and the
->>> clk-480m provided by it was disabled if no module used. As a result, 
->>> the
->>> PM suspend process was blocked when it run into ehci/ohci module.
->> ah, so the ehci controller needs that 480m clock as well? Do you 
->> happen to
->> have example patches for the ehci/ohci side already? I'd like to peak 
->> at what
->> you mean with "some PM suspend process related" things.
->
-> Actually, no patches for it, I just make below steps manually :-).
-> 1. set two usb2-phy into suspend mode.
-> 2. disable 480m clock on each usb2-phy (assume only usb2-phy used it).
-> 3. press power button let system into PM suspend.
->
-> Then, the kernel will be blocked and you can see the following log 
-> from console.
-> ... ....
-> [  123.763848] calling  usb6+ @ 166, parent: xhci-hcd.0.auto
-> [  123.764503] call usb6+ returned 0 after 163 usecs
-> [  123.765106] calling  usb5+ @ 166, parent: xhci-hcd.0.auto
-> [  123.765719] call usb5+ returned 0 after 121 usecs
-> [  123.766294] calling  usb4+ @ 166, parent: fe3e0000.usb
-> [  123.766917] calling  usb3+ @ 55, parent: fe3a0000.usb
->
 
-May I know have you tried reproducing on your board or not?
+Hi,
 
->>
->> Depending on what is actually needed, you could also pull the usbphy 
->> out of
->> autosuspend in a pm-prepare callback of the phy driver itself ... see
->> http://lxr.free-electrons.com/source/include/linux/pm.h#L86
->>
->> Like
->> - in the .prepare callback make sure to unsuspend the phy
->>    and deactivate the autosuspend
->> - ehci/ohci will poweroff the phy in it s suspend callback (already 
->> does that)
+William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
+> Add rockchip specific glue layer to support USB3 Peripheral mode
+> and Host mode on rockchip platforms (e.g. rk3399).
 >
-> Hmm, do you remember that we have previously discussed there are some 
-> oddities in ehci/ohci driver? phy_power_on() gets called twice at 
-> ehci/ohci driver probe time, one is at pdata->power_on(); another is 
-> at usb_add_hcd(), then the power_count of phy increases to 2,  but 
-> phy_power_off() is just invoked one time when ehci/ohci goes to PM 
-> suspend, so phy->ops->power_off is never be invoked.
+> The DesignWare USB3 integrated in rockchip SoCs is a configurable
+> IP Core which can be instantiated as Dual-Role Device (DRD), Host
+> Only (XHCI) and Peripheral Only configurations.
 >
-> In this way,  the usb-phy maybe never go to suspend.
+> We use extcon notifier to manage usb cable detection and mode switch.
+> Enable DWC3 PM runtime auto suspend to allow core enter runtime_suspend
+> if USB cable is dettached. For host mode, it requires to keep whole
+> DWC3 controller in reset state to hold pipe power state in P2 before
+> initializing PHY. And it need to reconfigure USB PHY interface of DWC3
+> core after deassert DWC3 controller reset.
 >
->> - suspend -> resume
->> - ehci/ohci will poweron the phy
->> - in the phy's .complete callback you can reactivate the autosuspend 
->> timer
->>
->> Because it looks more like you actually need the phy and not the 
->> clock alone.
->> So it would be nicer to use mechanisms already in place instead of 
->> creating
->> new dependencies.
->>
+> The current driver supports Host only and Peripheral Only well, for
+> now, we will add support for OTG after we have it all stabilized.
 >
-> Theoretically, phy_init() will be invoked when ehci/ohci power on, and 
-> the sm_work will be reactivated (have already implemented) in 
-> phy->ops->init, but unfortunately, the same issue as phy_power_on() 
-> mentioned above, it never run there too .
+> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> Changes in v10:
+> - fix building error
 >
+> Changes in v9:
+> - Add a new dwc3-rockchip.c driver for rk3399, rather than use dwc3-of-si=
+mple.c
+>
+>  drivers/usb/dwc3/Kconfig         |   9 +
+>  drivers/usb/dwc3/Makefile        |   1 +
+>  drivers/usb/dwc3/core.c          |   2 +-
+>  drivers/usb/dwc3/core.h          |   1 +
+>  drivers/usb/dwc3/dwc3-rockchip.c | 441 +++++++++++++++++++++++++++++++++=
+++++++
 
-Would you like to give some comments on above two oddities please?
+William, if you need to touch core dwc3 to introduce a glue layer,
+you're doing it wrong.
 
-BR.
-Frank
+> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+> index e887b38..3da6215 100644
+> --- a/drivers/usb/dwc3/core.c
+> +++ b/drivers/usb/dwc3/core.c
+> @@ -405,7 +405,7 @@ static void dwc3_cache_hwparams(struct dwc3 *dwc)
+>   * initialized. The PHY interfaces and the PHYs get initialized together=
+ with
+>   * the core in dwc3_core_init.
+>   */
+> -static int dwc3_phy_setup(struct dwc3 *dwc)
+> +int dwc3_phy_setup(struct dwc3 *dwc)
 
->>> Hence, we are planing to refer clk_usbphyX_480m_src into each ehci/ohci
->>> driver. Maybe you will challenge why not refer clk_usbphy_480m 
->>> directly?
->>> because there are two ehci/ohci connected in the different usb2phy, and
->>> only one clk_usbphy_480m clock was selected in clock tree.
->> Nope, no argument from me as I fully understand that each phy 
->> provides its own
->> 480m clock :-) .
->>
->>
->> Heiko
->>
->>
+there's no way I'll let this slip through the cracks :-)
 
+> diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-roc=
+kchip.c
+> new file mode 100644
+> index 0000000..eeae1a9
+> --- /dev/null
+> +++ b/drivers/usb/dwc3/dwc3-rockchip.c
+> @@ -0,0 +1,441 @@
+
+[...]
+
+> +static int dwc3_rockchip_probe(struct platform_device *pdev)
+> +{
+> +	struct dwc3_rockchip	*rockchip;
+> +	struct device		*dev =3D &pdev->dev;
+> +	struct device_node	*np =3D dev->of_node, *child;
+> +	struct platform_device	*child_pdev;
+> +
+> +	unsigned int		count;
+> +	int			ret;
+> +	int			i;
+> +
+> +	rockchip =3D devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
+> +
+> +	if (!rockchip)
+> +		return -ENOMEM;
+> +
+> +	count =3D of_clk_get_parent_count(np);
+> +	if (!count)
+> +		return -ENOENT;
+> +
+> +	rockchip->num_clocks =3D count;
+> +
+> +	rockchip->clks =3D devm_kcalloc(dev, rockchip->num_clocks,
+> +				      sizeof(struct clk *), GFP_KERNEL);
+> +	if (!rockchip->clks)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, rockchip);
+> +
+> +	rockchip->dev =3D dev;
+> +	rockchip->edev =3D NULL;
+> +
+> +	pm_runtime_set_active(dev);
+> +	pm_runtime_enable(dev);
+> +	ret =3D pm_runtime_get_sync(dev);
+> +	if (ret < 0) {
+> +		dev_err(dev, "get_sync failed with err %d\n", ret);
+> +		goto err1;
+> +	}
+> +
+> +	for (i =3D 0; i < rockchip->num_clocks; i++) {
+> +		struct clk	*clk;
+> +
+> +		clk =3D of_clk_get(np, i);
+> +		if (IS_ERR(clk)) {
+> +			while (--i >=3D 0)
+> +				clk_put(rockchip->clks[i]);
+> +			ret =3D PTR_ERR(clk);
+> +
+> +			goto err1;
+> +		}
+> +
+> +		ret =3D clk_prepare_enable(clk);
+> +		if (ret < 0) {
+> +			while (--i >=3D 0) {
+> +				clk_disable_unprepare(rockchip->clks[i]);
+> +				clk_put(rockchip->clks[i]);
+> +			}
+> +			clk_put(clk);
+> +
+> +			goto err1;
+> +		}
+> +
+> +		rockchip->clks[i] =3D clk;
+> +	}
+> +
+> +	rockchip->otg_rst =3D devm_reset_control_get(dev, "usb3-otg");
+> +	if (IS_ERR(rockchip->otg_rst)) {
+> +		dev_err(dev, "could not get reset controller\n");
+> +		ret =3D PTR_ERR(rockchip->otg_rst);
+> +		goto err2;
+> +	}
+> +
+> +	ret =3D dwc3_rockchip_extcon_register(rockchip);
+> +	if (ret < 0)
+> +		goto err2;
+> +
+> +	child =3D of_get_child_by_name(np, "dwc3");
+> +	if (!child) {
+> +		dev_err(dev, "failed to find dwc3 core node\n");
+> +		ret =3D -ENODEV;
+> +		goto err3;
+> +	}
+> +
+> +	/* Allocate and initialize the core */
+> +	ret =3D of_platform_populate(np, NULL, NULL, dev);
+> +	if (ret) {
+> +		dev_err(dev, "failed to create dwc3 core\n");
+> +		goto err3;
+> +	}
+> +
+> +	child_pdev =3D of_find_device_by_node(child);
+> +	if (!child_pdev) {
+> +		dev_err(dev, "failed to find dwc3 core device\n");
+> +		ret =3D -ENODEV;
+> +		goto err4;
+> +	}
+> +
+> +	rockchip->dwc =3D platform_get_drvdata(child_pdev);
+
+No! You will *NOT* the core struct device. Don't even try to come up
+with tricks like this.
+
+Let's do this: introduce a glue layer that gets peripheral-only
+working. Remove PM for now, too. Start with something simple, get the
+bare minimum working upstream and add more stuff as you go.
+
+Trying to do everything in one patch just makes it much more likely for
+your patch to be NAKed. What you're doing here is bypassing all the
+layering we've built. That won't work very well. The only thing you'll
+get is for your patches to continue to be NAKed.
+
+Avoid the tricks and abuses. Just because you _can_ do it somehow, it
+doesn't mean you _should_ do it :-)
+
+Your best option right now, is to remove PM and dual-role support and a
+minimal glue layer supported.
+
+In fact, all you *really* need is to add a compatible to
+dwc3-of-simple.c. That should be enough to get your dwc3 working. Don't
+do anything more than that. For dual-role and PM, we can add it
+generically to dwc3-of-simple.c when all pieces fall into place.
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJXsr54AAoJEIaOsuA1yqREN0QQAKlPytsAUbZyb/y1MxLgHkpG
+/4a2RRBRzMZGl+sIX68xC172MBeICaG2oC0WtWevidcEn+iJMWb9JfQcYN+GBrqu
+kls/cgdY04FLn0hjoIuP5NYviX515SjoxzZNtB+vef3SGWu+5WVTKYr/DlqRM7wb
+jFxF2jESQ7dED0zP2R77kdaXj3ykZ21zV72uYuI1zanx2KB12wzPW+HLKsPKHbYO
+lAp81Xw5E4pwGPc1TghwrJ0hPlvok4WZ+ApiKD3VNLcbwPGxa0FQFXcL08Gi+Bqt
+jzEk0O64J+4mHAU/srtcBddLzMaqYHgNlrm/RSvsW4CQ7CDjq8vVh3lcp9VR/6c8
+e3NZJF5MQtCm6bnvJ2sOYSaKtkLKneR6On34z69yo3tJuxG4WsBCRZJVuBBJ5PhS
+UqW1DQenDWe4jys5LUPoKHiWAErP2CKDDxqAsIZe1xxl55LsilCSpAIqFgdU7u1O
+tXx2NJHrZKHTSfUW/7fq8pGwOF4C1uRiE9L6cD1s8U5S/To9j9C/c3LZWCgFrq56
+2CGwj+O7gl+KD1ZC75hbT2Ah3I5LifLBuEs7s6jyrRZUl46IKFEn7c7s94g2PxcT
+wNMQjMvSzIpe0yho8VbLJ/DF9hd7ESzx9uQoVYgSFsD1elw/9syZlY/dCAZOWg2D
+ykD7CVp4NPfTCKUPBJer
+=W/u7
+-----END PGP SIGNATURE-----
+--=-=-=--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
