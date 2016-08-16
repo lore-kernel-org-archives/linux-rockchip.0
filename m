@@ -1,100 +1,86 @@
-From: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 2/3] of: Add support for reading a s32 from a multi-value
- property.
-Date: Tue, 16 Aug 2016 10:38:58 +0800
-Message-ID: <1471315139-28285-3-git-send-email-finley.xiao@rock-chips.com>
-References: <1471315139-28285-1-git-send-email-finley.xiao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1471315139-28285-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RFC PATCH] mmc: dw_mmc: avoid race condition of cpu and IDMAC
+Date: Tue, 16 Aug 2016 11:23:47 +0800
+Message-ID: <1471317827-6049-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+We could see an obvious race condition by test that
+the former write operation by IDMAC aiming to clear
+OWN bit reach right after the later configuration of
+the same desc, which makes the IDMAC be in SUSPEND
+state as the OWN bit was cleared by the asynchronous
+write operation of IDMAC. The bug can be very easy
+reproduced on RK3288 or similar when lowering the
+bandwidth of bus and aggravating the Qos to make the
+large numbers of IP fight for the priority. One possible
+replaceable solution may be alloc dual buff for the
+desc to avoid it but could still race each other
+theoretically.
 
-This patch adds an of_property_read_s32_index() function to allow
-reading a single indexed s32 value from a property containing multiple
-s32 values.
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/of/base.c  | 23 +++++++++++++++++++++++
- include/linux/of.h | 10 ++++++++++
- 2 files changed, 33 insertions(+)
 
-diff --git a/drivers/of/base.c b/drivers/of/base.c
-index 7792266..346457d 100644
---- a/drivers/of/base.c
-+++ b/drivers/of/base.c
-@@ -1200,6 +1200,29 @@ int of_property_read_u32_index(const struct device_node *np,
- EXPORT_SYMBOL_GPL(of_property_read_u32_index);
+ drivers/mmc/host/dw_mmc.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 32380d5..7b01fab 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -490,6 +490,23 @@ static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+ 				length -= desc_len;
  
- /**
-+ * of_property_read_s32_index - Find and read a s32 from a multi-value property.
-+ *
-+ * @np:		device node from which the property value is to be read.
-+ * @propname:	name of the property to be searched.
-+ * @index:	index of the u32 in the list of values
-+ * @out_value:	pointer to return value, modified only if no error.
-+ *
-+ * Search for a property in a device node and read nth 32-bit value from
-+ * it. Returns 0 on success, -EINVAL if the property does not exist,
-+ * -ENODATA if property does not have a value, and -EOVERFLOW if the
-+ * property data isn't large enough.
-+ *
-+ * The out_value is modified only if a valid s32 value can be decoded.
-+ */
-+int of_property_read_s32_index(const struct device_node *np,
-+			       const char *propname, u32 index, s32 *out_value)
-+{
-+	return of_property_read_u32_index(np, propname, index,
-+		(u32 *)out_value);
-+}
-+EXPORT_SYMBOL_GPL(of_property_read_s32_index);
+ 				/*
++				 * OWN bit should be clear by IDMAC after
++				 * finishing transfer. Let's wait for the
++				 * asynchronous operation of IDMAC and cpu
++				 * to make sure that we do not rely on the
++				 * order of Qos of bus and architecture.
++				 * Otherwise we could see a race condition
++				 * here that the former write operation of
++				 * IDMAC(to clear the OWN bit) reach right
++				 * after the later new configuration of desc
++				 * which makes value of desc been covered
++				 * leading to DMA_SUSPEND state as IDMAC fecth
++				 * the wrong desc then.
++				 */
++				while ((readl(&desc->des0) & IDMAC_DES0_OWN))
++					;
 +
-+/**
-  * of_property_read_u8_array - Find and read an array of u8 from a property.
-  *
-  * @np:		device node from which the property value is to be read.
-diff --git a/include/linux/of.h b/include/linux/of.h
-index 3d9ff8e..cb9a627 100644
---- a/include/linux/of.h
-+++ b/include/linux/of.h
-@@ -291,6 +291,9 @@ extern int of_property_count_elems_of_size(const struct device_node *np,
- extern int of_property_read_u32_index(const struct device_node *np,
- 				       const char *propname,
- 				       u32 index, u32 *out_value);
-+extern int of_property_read_s32_index(const struct device_node *np,
-+				      const char *propname,
-+				      u32 index, s32 *out_value);
- extern int of_property_read_u8_array(const struct device_node *np,
- 			const char *propname, u8 *out_values, size_t sz);
- extern int of_property_read_u16_array(const struct device_node *np,
-@@ -536,6 +539,13 @@ static inline int of_property_read_u32_index(const struct device_node *np,
- 	return -ENOSYS;
- }
++				/*
+ 				 * Set the OWN bit and disable interrupts
+ 				 * for this descriptor
+ 				 */
+@@ -535,6 +552,23 @@ static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+ 				length -= desc_len;
  
-+static inline int of_property_read_s32_index(const struct device_node *np,
-+					     const char *propname,
-+					     u32 index, s32 *out_value)
-+{
-+	return -ENOSYS;
-+}
+ 				/*
++				 * OWN bit should be clear by IDMAC after
++				 * finishing transfer. Let's wait for the
++				 * asynchronous operation of IDMAC and cpu
++				 * to make sure that we do not rely on the
++				 * order of Qos of bus and architecture.
++				 * Otherwise we could see a race condition
++				 * here that the former write operation of
++				 * IDMAC(to clear the OWN bit) reach right
++				 * after the later new configuration of desc
++				 * which makes value of desc been covered
++				 * leading to DMA_SUSPEND state as IDMAC fecth
++				 * the wrong desc then.
++				 */
++				while ((readl(&desc->des0) & IDMAC_DES0_OWN))
++					;
 +
- static inline int of_property_read_u8_array(const struct device_node *np,
- 			const char *propname, u8 *out_values, size_t sz)
- {
++				/*
+ 				 * Set the OWN bit and disable interrupts
+ 				 * for this descriptor
+ 				 */
 -- 
-1.9.1
+2.3.7
+
+
