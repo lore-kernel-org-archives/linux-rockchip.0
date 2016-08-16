@@ -1,51 +1,41 @@
-From: SF Markus Elfring <elfring@users.sourceforge.net>
-Subject: [PATCH] drm/rockchip: Delete unnecessary assignment for the field
- "owner"
-Date: Tue, 16 Aug 2016 14:43:12 +0200
-Message-ID: <41e48fd3-f713-7225-1df2-3b1f4758f949@users.sourceforge.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v11 0/5] support rockchip dwc3 driver
+Date: Tue, 16 Aug 2016 22:44:35 +0800
+Message-ID: <1471358680-30857-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, sergei.shtylyov@cogentembedded.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, zhengsq@rock-chips.com, zyw@rock-chips.com, William Wu <william.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTWFya3VzIEVsZnJpbmcgPGVsZnJpbmdAdXNlcnMuc291cmNlZm9yZ2UubmV0PgpEYXRl
-OiBUdWUsIDE2IEF1ZyAyMDE2IDE0OjI1OjM1ICswMjAwCgpUaGUgZmllbGQgIm93bmVyIiBpcyBz
-ZXQgYnkgdGhlIGNvcmUuClRodXMgZGVsZXRlIGFuIHVubmVlZGVkIGluaXRpYWxpc2F0aW9uLgoK
-R2VuZXJhdGVkIGJ5OiBzY3JpcHRzL2NvY2NpbmVsbGUvYXBpL3BsYXRmb3JtX25vX2Rydl9vd25l
-ci5jb2NjaQpTaWduZWQtb2ZmLWJ5OiBNYXJrdXMgRWxmcmluZyA8ZWxmcmluZ0B1c2Vycy5zb3Vy
-Y2Vmb3JnZS5uZXQ+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
-Y2tjaGlwLmMgfCAxIC0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVn
-LmMgICAgIHwgMSAtCiAyIGZpbGVzIGNoYW5nZWQsIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRleCA4OWFhZGJm
-Li4wZTYzZWUyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhf
-ZHAtcm9ja2NoaXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAt
-cm9ja2NoaXAuYwpAQCAtNDQ1LDcgKzQ0NSw2IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJp
-dmVyIHJvY2tjaGlwX2RwX2RyaXZlciA9IHsKIAkucmVtb3ZlID0gcm9ja2NoaXBfZHBfcmVtb3Zl
-LAogCS5kcml2ZXIgPSB7CiAJCSAgIC5uYW1lID0gInJvY2tjaGlwLWRwIiwKLQkJICAgLm93bmVy
-ID0gVEhJU19NT0RVTEUsCiAJCSAgIC5wbSA9ICZyb2NrY2hpcF9kcF9wbV9vcHMsCiAJCSAgIC5v
-Zl9tYXRjaF90YWJsZSA9IG9mX21hdGNoX3B0cihyb2NrY2hpcF9kcF9kdF9pZHMpLAogCX0sCmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwppbmRleCA5MTk5OTJj
-Li5iN2Y1OWM0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-dm9wX3JlZy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVn
-LmMKQEAgLTMwNSw3ICszMDUsNiBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciB2b3Bf
-cGxhdGZvcm1fZHJpdmVyID0gewogCS5yZW1vdmUgPSB2b3BfcmVtb3ZlLAogCS5kcml2ZXIgPSB7
-CiAJCS5uYW1lID0gInJvY2tjaGlwLXZvcCIsCi0JCS5vd25lciA9IFRISVNfTU9EVUxFLAogCQku
-b2ZfbWF0Y2hfdGFibGUgPSBvZl9tYXRjaF9wdHIodm9wX2RyaXZlcl9kdF9tYXRjaCksCiAJfSwK
-IH07Ci0tIAoyLjkuMgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+This series add support for rockchip DWC3 driver,
+and add additional optional properties for specific
+platforms (e.g., rockchip rk3399 platform).
+
+The DesignWare USB3 integrated in rockchip SoCs is
+a configurable IP Core which can be instantiated as
+Dual-Role Device (DRD), Host Only (XHCI) and Peripheral
+Only configurations.
+
+The current driver supports Host only and Peripheral Only,
+for now, and we can add support for DRD after dwc3 driver
+adds generic handling of DRD.
+
+William Wu (5):
+  usb: dwc3: of-simple: add compatible for rockchip rk3399
+  usb: dwc3: add dis_u2_freeclk_exists_quirk
+  usb: dwc3: make usb2 phy utmi interface configurable
+  usb: dwc3: add dis_del_phy_power_chg_quirk
+  usb: dwc3: rockchip: add devicetree bindings documentation
+
+ Documentation/devicetree/bindings/usb/dwc3.txt     |  5 ++
+ Documentation/devicetree/bindings/usb/generic.txt  |  6 +++
+ .../devicetree/bindings/usb/rockchip,dwc3.txt      | 59 ++++++++++++++++++++++
+ drivers/usb/dwc3/core.c                            | 28 ++++++++++
+ drivers/usb/dwc3/core.h                            | 20 ++++++++
+ drivers/usb/dwc3/dwc3-of-simple.c                  |  1 +
+ 6 files changed, 119 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+
+-- 
+1.9.1
