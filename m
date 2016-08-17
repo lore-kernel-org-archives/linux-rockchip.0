@@ -1,14 +1,14 @@
 From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v2 0/6] drm/rockchip: Some patches to update the PSR series
-Date: Wed, 17 Aug 2016 11:20:50 +0800
-Message-ID: <578d252a-f2fe-0ef7-b7d2-1b0592077827@rock-chips.com>
+Subject: Re: [PATCH v2 6/6] drm/rockchip: Enable vblank without event
+Date: Wed, 17 Aug 2016 11:27:31 +0800
+Message-ID: <206a9c94-bc45-561c-866e-1438dbab58dc@rock-chips.com>
 References: <1471396276-8222-1-git-send-email-seanpaul@chromium.org>
- <cd6e7ccb-0e53-5e82-81f4-5f7bd2fb2ea9@rock-chips.com>
- <CAOw6vbLd4fNC1Og4435NUGzFPBGjLYsGmjKLWOZMin-WJCgtng@mail.gmail.com>
+ <1471396276-8222-7-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1104359274=="
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbLd4fNC1Og4435NUGzFPBGjLYsGmjKLWOZMin-WJCgtng@mail.gmail.com>
+In-Reply-To: <1471396276-8222-7-git-send-email-seanpaul@chromium.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -18,217 +18,53 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Doug Anderson <dianders@chromium.org>, marcheu@chromium.org
+To: Sean Paul <seanpaul@chromium.org>, mark.yao@rock-chips.com, dri-devel@lists.freedesktop.org
+Cc: marcheu@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============1104359274==
-Content-Type: multipart/alternative;
- boundary="------------FF2C65BEADA33CB710434F8B"
-
-This is a multi-part message in MIME format.
---------------FF2C65BEADA33CB710434F8B
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-
-Sean,
-
-
-On 08/17/2016 10:45 AM, Sean Paul wrote:
->
-> On Aug 16, 2016 7:41 PM, "Yakir Yang" <ykk@rock-chips.com 
-> <mailto:ykk@rock-chips.com>> wrote:
-> >
-> > Sean,
-> >
-> > Thanks a lot for your good fixes. I have reviewed most of them, and 
-> all looks good to me.
-> >
-> > But I got a question for merging things. My PSR patch set still 
-> under reviewing, haven't been picked up Mark or other maintainers.
->
-> I've picked them up in my tree. I'll send a pull request to Dave once 
-> all of the dependencies have been reviewed (marked NEEDS REVIEW).
->
-
-Got it, thanks.
-
-- Yakir
-
-> Sean
->
-> > Feel a little bit embarrassed, how could we handle this situation ?
-> >
-> > - Yakir
-> >
-> >
-> > On 08/17/2016 09:11 AM, Sean Paul wrote:
-> >>
-> >> This is a follow-on set to Yakir's original PSR set here:
-> >> https://lkml.org/lkml/2016/7/24/34
-> >> and applies to the for-next branch at:
-> >> https://cgit.freedesktop.org/~seanpaul/dogwood 
-> <https://cgit.freedesktop.org/%7Eseanpaul/dogwood>
-> >>
-> >> There are a few issues with the code that needed to be
-> >> shored up.
-> >>   (1) The use of mutexes instead of spinlocks caused issues calling the
-> >>       psr functions from vblank_enable/disable.
-> >>   (2) The proliferation of workers due to (1)
-> >>   (3) A bunch of races due to (2)
-> >>   (4) vblank is not enabled unless an event is requested, this breaks
-> >>       a lot of things, but most noticeable was cursor.
-> >>
-> >> Changes in v2:
-> >>         - Rebased on https://cgit.freedesktop.org/~seanpaul/dogwood 
-> <https://cgit.freedesktop.org/%7Eseanpaul/dogwood>
-> >>           instead of random on-list patches (some of which had drifted)
-> >>         - Added the "small fixes" patch to catch some nits
-> >>
-> >>
-> >> Sean Paul (6):
-> >>    drm/rockchip: Convert psr_list_mutex to spinlock and use it
-> >>    drm/rockchip: Don't use a delayed worker for psr state changes
-> >>    drm/rockchip: Use a spinlock to protect psr state
-> >>    drm/rockchip: A couple small fixes to psr
-> >>    drm/rockchip: Improve analogix-dp psr handling
-> >>    drm/rockchip: Enable vblank without event
-> >>
-> >>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 19 ++++--
-> >>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  2 +-
-> >>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |  2 +-
-> >>   drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 90 
-> ++++++++++++-------------
-> >>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 15 +++--
-> >>   5 files changed, 69 insertions(+), 59 deletions(-)
-> >>
-> >
-> >
->
-
-
---------------FF2C65BEADA33CB710434F8B
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000">
-    <p>Sean,<br>
-    </p>
-    <br>
-    <div class="moz-cite-prefix">On 08/17/2016 10:45 AM, Sean Paul
-      wrote:<br>
-    </div>
-    <blockquote
-cite="mid:CAOw6vbLd4fNC1Og4435NUGzFPBGjLYsGmjKLWOZMin-WJCgtng@mail.gmail.com"
-      type="cite">
-      <p dir="ltr">On Aug 16, 2016 7:41 PM, "Yakir Yang" &lt;<a
-          moz-do-not-send="true" href="mailto:ykk@rock-chips.com">ykk@rock-chips.com</a>&gt;
-        wrote:<br>
-        &gt;<br>
-        &gt; Sean,<br>
-        &gt;<br>
-        &gt; Thanks a lot for your good fixes. I have reviewed most of
-        them, and all looks good to me.<br>
-        &gt;<br>
-        &gt; But I got a question for merging things. My PSR patch set
-        still under reviewing, haven't been picked up Mark or other
-        maintainers. </p>
-      <p dir="ltr">I've picked them up in my tree. I'll send a pull
-        request to Dave once all of the dependencies have been reviewed
-        (marked NEEDS REVIEW).</p>
-    </blockquote>
-    <br>
-    Got it, thanks.<br>
-    <br>
-    - Yakir<br>
-    <br>
-    <blockquote
-cite="mid:CAOw6vbLd4fNC1Og4435NUGzFPBGjLYsGmjKLWOZMin-WJCgtng@mail.gmail.com"
-      type="cite">
-      <p dir="ltr">Sean<br>
-        <br>
-      </p>
-      <p dir="ltr">&gt; Feel a little bit embarrassed, how could we
-        handle this situation ?<br>
-        &gt;<br>
-        &gt; - Yakir<br>
-        &gt;<br>
-        &gt;<br>
-        &gt; On 08/17/2016 09:11 AM, Sean Paul wrote:<br>
-        &gt;&gt;<br>
-        &gt;&gt; This is a follow-on set to Yakir's original PSR set
-        here:<br>
-        &gt;&gt;          <a moz-do-not-send="true"
-          href="https://lkml.org/lkml/2016/7/24/34">https://lkml.org/lkml/2016/7/24/34</a><br>
-        &gt;&gt; and applies to the for-next branch at:<br>
-        &gt;&gt;         <a moz-do-not-send="true"
-          href="https://cgit.freedesktop.org/%7Eseanpaul/dogwood">https://cgit.freedesktop.org/~seanpaul/dogwood</a><br>
-        &gt;&gt;<br>
-        &gt;&gt; There are a few issues with the code that needed to be<br>
-        &gt;&gt; shored up.<br>
-        &gt;&gt;   (1) The use of mutexes instead of spinlocks caused
-        issues calling the<br>
-        &gt;&gt;       psr functions from vblank_enable/disable.<br>
-        &gt;&gt;   (2) The proliferation of workers due to (1)<br>
-        &gt;&gt;   (3) A bunch of races due to (2)<br>
-        &gt;&gt;   (4) vblank is not enabled unless an event is
-        requested, this breaks<br>
-        &gt;&gt;       a lot of things, but most noticeable was cursor.<br>
-        &gt;&gt;<br>
-        &gt;&gt; Changes in v2:<br>
-        &gt;&gt;         - Rebased on <a moz-do-not-send="true"
-          href="https://cgit.freedesktop.org/%7Eseanpaul/dogwood">https://cgit.freedesktop.org/~seanpaul/dogwood</a><br>
-        &gt;&gt;           instead of random on-list patches (some of
-        which had drifted)<br>
-        &gt;&gt;         - Added the "small fixes" patch to catch some
-        nits<br>
-        &gt;&gt;<br>
-        &gt;&gt;<br>
-        &gt;&gt; Sean Paul (6):<br>
-        &gt;&gt;    drm/rockchip: Convert psr_list_mutex to spinlock and
-        use it<br>
-        &gt;&gt;    drm/rockchip: Don't use a delayed worker for psr
-        state changes<br>
-        &gt;&gt;    drm/rockchip: Use a spinlock to protect psr state<br>
-        &gt;&gt;    drm/rockchip: A couple small fixes to psr<br>
-        &gt;&gt;    drm/rockchip: Improve analogix-dp psr handling<br>
-        &gt;&gt;    drm/rockchip: Enable vblank without event<br>
-        &gt;&gt;<br>
-        &gt;&gt;   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 19
-        ++++--<br>
-        &gt;&gt;   drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  2
-        +-<br>
-        &gt;&gt;   drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |  2
-        +-<br>
-        &gt;&gt;   drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 90
-        ++++++++++++-------------<br>
-        &gt;&gt;   drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 15
-        +++--<br>
-        &gt;&gt;   5 files changed, 69 insertions(+), 59 deletions(-)<br>
-        &gt;&gt;<br>
-        &gt;<br>
-        &gt;</p>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
---------------FF2C65BEADA33CB710434F8B--
-
-
---===============1104359274==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============1104359274==--
+U2VhbiwKCk9uIDA4LzE3LzIwMTYgMDk6MTEgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiB2Ymxhbmsg
+c2hvdWxkIGJlIGVuYWJsZWQgcmVnYXJkbGVzcyBvZiB3aGV0aGVyIGFuIGV2ZW50Cj4gaXMgZXhw
+ZWN0ZWQgYmFjay4gVGhpcyBpcyBlc3BlY2lhbGx5IGltcG9ydGFudCBmb3IgYSBjdXJzb3IKPiBw
+bGFuZS4KWWVwLCBJIGFsc28gZm91bmQgdGhhdCBzb21ldGltZXMgdmJsYW5rIGhhdmVuJ3QgYmVl
+biBlbmFibGVkIHdoZW4gSSBtb3ZlIAp0aGUgbW91c2UgbGlnaHRseSwgdGhhdCB3b3VsZCBjYXVz
+ZSBlRFAgcGFuZWwgd291bmQndCBleGl0IGZyb20gUFNSIAphY3RpdmUgc3RhdGUsIGFuZCB0aGVu
+IG5vdGhpbmcgd291bGQgYmUgdXBkYXRlZCBvbiBwYW5lbC4gQWZ0ZXIgYXBwbHkgCnRoaXMgcGF0
+Y2gsIHRoaW5ncyB3b3JrIHJpZ2h0bHkgbm93LCB0aGFua3MgZm9yIGZpeGluZy4KClJldmlld2Vk
+LWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+ClRlc3RlZC1ieTogWWFraXIgWWFu
+ZyA8eWtrQHJvY2stY2hpcC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1
+bEBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4KPiBDaGFuZ2VzIGluIHYyOgo+IAktIFJlYmFzZWQgb24g
+aHR0cHM6Ly9jZ2l0LmZyZWVkZXNrdG9wLm9yZy9+c2VhbnBhdWwvZG9nd29vZC9sb2cvP2g9Zm9y
+LW5leHQKPgo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8
+IDE1ICsrKysrKysrKystLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyks
+IDUgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMKPiBpbmRleCBkMWUwZTA2Li4xNzg3MDg0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTExMiw2ICsxMTIsNyBAQCBzdHJ1
+Y3Qgdm9wIHsKPiAgIAlzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gICAJc3RydWN0IGRybV9kZXZpY2Ug
+KmRybV9kZXY7Cj4gICAJYm9vbCBpc19lbmFibGVkOwo+ICsJYm9vbCB2YmxhbmtfYWN0aXZlOwo+
+ICAgCj4gICAJLyogbXV0ZXggdnN5bmNfIHdvcmsgKi8KPiAgIAlzdHJ1Y3QgbXV0ZXggdnN5bmNf
+bXV0ZXg7Cj4gQEAgLTExMDcsMTAgKzExMDgsMTEgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRv
+bWljX2JlZ2luKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAlzdHJ1Y3Qgdm9wICp2b3AgPSB0
+b192b3AoY3J0Yyk7Cj4gICAKPiAgIAlzcGluX2xvY2tfaXJxKCZjcnRjLT5kZXYtPmV2ZW50X2xv
+Y2spOwo+IC0JaWYgKGNydGMtPnN0YXRlLT5ldmVudCkgewo+IC0JCVdBUk5fT04oZHJtX2NydGNf
+dmJsYW5rX2dldChjcnRjKSAhPSAwKTsKPiAtCQlXQVJOX09OKHZvcC0+ZXZlbnQpOwo+ICsJdm9w
+LT52YmxhbmtfYWN0aXZlID0gdHJ1ZTsKPiArCVdBUk5fT04oZHJtX2NydGNfdmJsYW5rX2dldChj
+cnRjKSAhPSAwKTsKPiArCVdBUk5fT04odm9wLT5ldmVudCk7Cj4gICAKPiArCWlmIChjcnRjLT5z
+dGF0ZS0+ZXZlbnQpIHsKPiAgIAkJdm9wLT5ldmVudCA9IGNydGMtPnN0YXRlLT5ldmVudDsKPiAg
+IAkJY3J0Yy0+c3RhdGUtPmV2ZW50ID0gTlVMTDsKPiAgIAl9Cj4gQEAgLTExOTcsMTIgKzExOTks
+MTQgQEAgc3RhdGljIHZvaWQgdm9wX2hhbmRsZV92Ymxhbmsoc3RydWN0IHZvcCAqdm9wKQo+ICAg
+Cj4gICAJc3Bpbl9sb2NrX2lycXNhdmUoJmRybS0+ZXZlbnRfbG9jaywgZmxhZ3MpOwo+ICAgCWlm
+ICh2b3AtPmV2ZW50KSB7Cj4gLQo+ICAgCQlkcm1fY3J0Y19zZW5kX3ZibGFua19ldmVudChjcnRj
+LCB2b3AtPmV2ZW50KTsKPiAtCQlkcm1fY3J0Y192YmxhbmtfcHV0KGNydGMpOwo+ICAgCQl2b3At
+PmV2ZW50ID0gTlVMTDsKPiAgIAo+ICAgCX0KPiArCWlmICh2b3AtPnZibGFua19hY3RpdmUpIHsK
+PiArCQl2b3AtPnZibGFua19hY3RpdmUgPSBmYWxzZTsKPiArCQlkcm1fY3J0Y192YmxhbmtfcHV0
+KGNydGMpOwo+ICsJfQo+ICAgCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmRybS0+ZXZlbnRfbG9j
+aywgZmxhZ3MpOwo+ICAgCj4gICAJaWYgKCFjb21wbGV0aW9uX2RvbmUoJnZvcC0+d2FpdF91cGRh
+dGVfY29tcGxldGUpKQo+IEBAIC0xNDcyLDYgKzE0NzYsNyBAQCBzdGF0aWMgaW50IHZvcF9pbml0
+aWFsKHN0cnVjdCB2b3AgKnZvcCkKPiAgIAljbGtfZGlzYWJsZSh2b3AtPmFjbGspOwo+ICAgCj4g
+ICAJdm9wLT5pc19lbmFibGVkID0gZmFsc2U7Cj4gKwl2b3AtPnZibGFua19hY3RpdmUgPSBmYWxz
+ZTsKPiAgIAo+ICAgCXJldHVybiAwOwo+ICAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
