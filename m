@@ -1,252 +1,48 @@
-From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH 2/2] ARM: dts: rockchip: add missing regulators for firefly reload board
-Date: Thu, 18 Aug 2016 01:03:11 +0800
-Message-ID: <1471453391-10267-3-git-send-email-ayaka@soulik.info>
-References: <19126716.OZv44ZHtAK@diego>
- <1471453391-10267-1-git-send-email-ayaka@soulik.info>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1471453391-10267-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH v3 2/5] dt-bindings: sort Rockchip vop compatible by chip's
+ number
+Date: Wed, 17 Aug 2016 10:11:40 -0700
+Message-ID: <1471453900-1349-1-git-send-email-seanpaul@chromium.org>
+References: <loom.20160602T085439-162@post.gmane.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <loom.20160602T085439-162@post.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: tfiga@chromium.org, dri-devel@lists.freedesktop.org, mark.yao@rock-chips.com, robh@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are many regulators are missed in previous commit, this
-commit complete most of them. It also fix some mistakes in the
-regulator properties. The VDD_10(REG10) and VCC_18(REG11) had better
-to keep in always-on state, as it is used as the USB PHY supply,
-corretly we have no way to assign power supply to a USB PHY.
-The VCCA_33(REG8) should be enabled or the GMAC won't work.
-
-It also fix the wrong properties for audio in io-domains, the supply
-connected to APIO4_VDD is different to firefly release version.
-
-Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 49 ++++-------------
- arch/arm/boot/dts/rk3288-firefly-reload.dts       | 64 ++++++++++++++++++++---
- 2 files changed, 68 insertions(+), 45 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-index 5e5a348..de315e8 100644
---- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-@@ -50,14 +50,6 @@
- 		reg = <0 0x80000000>;
- 	};
- 
--	dovdd_1v8: dovdd-1v8-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "dovdd_1v8";
--		regulator-min-microvolt = <1800000>;
--		regulator-max-microvolt = <1800000>;
--		vin-supply = <&vcc28_dvp>;
--	};
--
- 	ext_gmac: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
-@@ -65,14 +57,6 @@
- 		clock-output-names = "ext_gmac";
- 	};
- 
--	vbat_wl: vcc_sys: vsys-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc_sys";
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		regulator-always-on;
--		regulator-boot-on;
--	};
- 
- 	vcc_flash: flash-regulator {
- 		compatible = "regulator-fixed";
-@@ -81,17 +65,6 @@
- 		regulator-max-microvolt = <1800000>;
- 		vin-supply = <&vcc_io>;
- 	};
--
--	vcc_5v: usb-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc_5v";
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		regulator-always-on;
--		regulator-boot-on;
--		vin-supply = <&vcc_sys>;
--	};
--
- };
- 
- &cpu0 {
-@@ -206,34 +179,34 @@
- 				regulator-name = "vccio_sd";
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
--				regulator-always-on;
- 			};
- 
- 			vdd10_lcd: REG6 {
- 				regulator-name = "vdd10_lcd";
- 				regulator-min-microvolt = <1000000>;
- 				regulator-max-microvolt = <1000000>;
-+			};
-+
-+			vcca_18: REG7  {
-+				regulator-name = "vcca_18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
- 				regulator-always-on;
- 			};
- 
--			vcca_33: REG7  {
-+			vcca_33: REG8 {
- 				regulator-name = "vcca_33";
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
- 			};
- 
--			vcc_lan: REG8 {
-+			vcc_lan: REG9 {
- 				regulator-name = "vcca_lan";
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
- 			};
- 
--			vccio_pmu: REG9 {
--				regulator-name = "vccio_pmu";
--				regulator-min-microvolt = <3300000>;
--				regulator-max-microvolt = <3300000>;
--			};
--
- 			vdd_10: REG10 {
- 				regulator-name = "vdd_10";
- 				regulator-min-microvolt = <1000000>;
-@@ -245,14 +218,12 @@
- 				regulator-name = "vcc_18";
- 				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <1800000>;
--				regulator-always-on;
- 			};
- 
- 			vcc18_lcd: REG12 {
- 				regulator-name = "vcc18_lcd";
- 				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <1800000>;
--				regulator-always-on;
- 			};
- 		};
- 	};
-@@ -326,7 +297,7 @@
- &io_domains {
- 	status = "okay";
- 
--	audio-supply = <&vcca_33>;
-+	audio-supply = <&vccio_wl>;
- 	bb-supply = <&vcc_io>;
- 	dvp-supply = <&dovdd_1v8>;
- 	flash0-supply = <&vcc_flash>;
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-index b86419b..7b710ea 100644
---- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-@@ -67,7 +67,16 @@
- 			pinctrl-0 = <&work_led>;
- 		};
- 	};
--	
-+
-+	vcc_5v: vcc_sys: vsys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_5v";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
- 	vcc_sd: sdmmc-regulator {
- 		compatible = "regulator-fixed";
- 		gpio = <&gpio7 11 GPIO_ACTIVE_LOW>;
-@@ -115,10 +124,18 @@
- 		vin-supply = <&vcc_5v>;
- 	};
- 
--	/*
--	 * A TT8142 creates both dovdd_1v8 and vcc28_dvp, controlled
--	 * by the dvp_pwr pin.
--	 */
-+	dovdd_1v8: dovdd-1v8-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 11 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&dvp_pwr>;
-+		regulator-name = "dovdd_1v8";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
- 	vcc28_dvp: vcc28-dvp-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -128,7 +145,38 @@
- 		regulator-name = "vcc28_dvp";
- 		regulator-min-microvolt = <2800000>;
- 		regulator-max-microvolt = <2800000>;
--		regulator-always-on;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	af_28: af_28-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 11 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&dvp_pwr>;
-+		regulator-name = "af_28";
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	dvdd_1v2: af_28-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio7 12 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cif_pwr>;
-+		regulator-name = "dvdd_1v2";
-+		regulator-min-microvolt = <1200000>;
-+		regulator-max-microvolt = <1200000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	vbat_wl: wifi-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vbat_wl";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc_io>;
- 	};
- 
-@@ -278,6 +326,10 @@
- 		dvp_pwr: dvp-pwr {
- 			rockchip,pins = <0 11 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+
-+		cif_pwr: cif-pwr {
-+			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	hym8563 {
--- 
-2.7.4
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+RnJvbTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKUmVvcmRlciB0aGUgY29t
+cGF0aWJsZSB2b3AgZGV2aWNlcyB0byBiZSBzb3J0ZWQgYnkgY2hpcCBudW1iZXIKaW4gYXNjZW5k
+aW5nIG9yZGVyLgoKUmV2aWV3ZWQtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+
+ClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KW3NlYW5w
+YXVsIGFkZGVkIGNvbW1pdCBkZXNjcmlwdGlvbiBwZXIgdGZpZ2EncyByZXZpZXddClNpZ25lZC1v
+ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KCkNoYW5nZXMgaW4g
+djM6CgktIFVwZGF0ZWQgY29tbWl0IG1lc3NhZ2UgKFRvbWFzeiBGaWdhKQoKIERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcC50eHQg
+fCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRp
+ZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2Nr
+Y2hpcC9yb2NrY2hpcC12b3AudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dAppbmRleCA1NDg5YjU5Li4xOTYxMjFm
+IDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9y
+b2NrY2hpcC9yb2NrY2hpcC12b3AudHh0CisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcC50eHQKQEAgLTYsOCArNiw4IEBA
+IGJ1ZmZlciB0byBhbiBleHRlcm5hbCBMQ0QgaW50ZXJmYWNlLgogCiBSZXF1aXJlZCBwcm9wZXJ0
+aWVzOgogLSBjb21wYXRpYmxlOiB2YWx1ZSBzaG91bGQgYmUgb25lIG9mIHRoZSBmb2xsb3dpbmcK
+LQkJInJvY2tjaGlwLHJrMzI4OC12b3AiOwogCQkicm9ja2NoaXAscmszMDM2LXZvcCI7CisJCSJy
+b2NrY2hpcCxyazMyODgtdm9wIjsKIAogLSBpbnRlcnJ1cHRzOiBzaG91bGQgY29udGFpbiBhIGxp
+c3Qgb2YgYWxsIFZPUCBJUCBibG9jayBpbnRlcnJ1cHRzIGluIHRoZQogCQkgb3JkZXI6IFZTWU5D
+LCBMQ0RfU1lTVEVNLiBUaGUgaW50ZXJydXB0IHNwZWNpZmllcgotLSAKMi44LjAucmMzLjIyNi5n
+MzlkNDAyMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
