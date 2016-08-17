@@ -1,44 +1,54 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] drm/rockchip: analogix_dp: drop unnecessary probe deferral "error" print
-Date: Wed, 17 Aug 2016 14:10:09 -0700
-Message-ID: <1471468209-31192-1-git-send-email-briannorris@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Brian Norris <briannorris@chromium.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: analogix_dp: drop unnecessary probe
+ deferral "error" print
+Date: Wed, 17 Aug 2016 14:21:28 -0700
+Message-ID: <CAOw6vbLi+T+-JHgKR78GAhck=P+1fT90AKW0C9OBJ+tX5Sm5mQ@mail.gmail.com>
+References: <1471468209-31192-1-git-send-email-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1471468209-31192-1-git-send-email-briannorris@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver is the only user of of_drm_find_panel() which prints an
-error before doing probe deferral, yielding messages like this on boot,
-before eventually succeeding:
-
-[    2.234271] [drm:rockchip_dp_probe] *ERROR* failed to find panel
-...
-[    4.797539] [drm:rockchip_dp_probe] *ERROR* failed to find panel
-...
-
-Let's just drop the message.
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 89aadbf465f8..045fcc46827c 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -381,10 +381,8 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 
- 		panel = of_drm_find_panel(panel_node);
- 		of_node_put(panel_node);
--		if (!panel) {
--			DRM_ERROR("failed to find panel\n");
-+		if (!panel)
- 			return -EPROBE_DEFER;
--		}
- 	}
- 
- 	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
--- 
-2.8.0.rc3.226.g39d4020
+T24gV2VkLCBBdWcgMTcsIDIwMTYgYXQgMjoxMCBQTSwgQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJp
+c0BjaHJvbWl1bS5vcmc+IHdyb3RlOgo+IFRoaXMgZHJpdmVyIGlzIHRoZSBvbmx5IHVzZXIgb2Yg
+b2ZfZHJtX2ZpbmRfcGFuZWwoKSB3aGljaCBwcmludHMgYW4KPiBlcnJvciBiZWZvcmUgZG9pbmcg
+cHJvYmUgZGVmZXJyYWwsIHlpZWxkaW5nIG1lc3NhZ2VzIGxpa2UgdGhpcyBvbiBib290LAo+IGJl
+Zm9yZSBldmVudHVhbGx5IHN1Y2NlZWRpbmc6Cj4KPiBbICAgIDIuMjM0MjcxXSBbZHJtOnJvY2tj
+aGlwX2RwX3Byb2JlXSAqRVJST1IqIGZhaWxlZCB0byBmaW5kIHBhbmVsCj4gLi4uCj4gWyAgICA0
+Ljc5NzUzOV0gW2RybTpyb2NrY2hpcF9kcF9wcm9iZV0gKkVSUk9SKiBmYWlsZWQgdG8gZmluZCBw
+YW5lbAo+IC4uLgo+Cj4gTGV0J3MganVzdCBkcm9wIHRoZSBtZXNzYWdlLgo+Cj4gU2lnbmVkLW9m
+Zi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+CgoKTG9va3MgZ29v
+ZC4gSSdsbCBhZGQgdGhpcyB0byB0aGUgcmVzdCBvZiB0aGUgcm9ja2NoaXAgcGF0Y2hlcyBJIGhh
+dmUKcXVldWVkIGZvciAtbmV4dC4KClJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNo
+cm9taXVtLm9yZz4KCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhf
+ZHAtcm9ja2NoaXAuYyB8IDQgKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyks
+IDMgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9n
+aXhfZHAtcm9ja2NoaXAuYwo+IGluZGV4IDg5YWFkYmY0NjVmOC4uMDQ1ZmNjNDY4MjdjIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5j
+Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMK
+PiBAQCAtMzgxLDEwICszODEsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3Byb2JlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4KPiAgICAgICAgICAgICAgICAgcGFuZWwgPSBvZl9k
+cm1fZmluZF9wYW5lbChwYW5lbF9ub2RlKTsKPiAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQo
+cGFuZWxfbm9kZSk7Cj4gLSAgICAgICAgICAgICAgIGlmICghcGFuZWwpIHsKPiAtICAgICAgICAg
+ICAgICAgICAgICAgICBEUk1fRVJST1IoImZhaWxlZCB0byBmaW5kIHBhbmVsXG4iKTsKPiArICAg
+ICAgICAgICAgICAgaWYgKCFwYW5lbCkKPiAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4g
+LUVQUk9CRV9ERUZFUjsKPiAtICAgICAgICAgICAgICAgfQo+ICAgICAgICAgfQo+Cj4gICAgICAg
+ICBkcCA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqZHApLCBHRlBfS0VSTkVMKTsKPiAtLQo+
+IDIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
