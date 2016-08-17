@@ -1,87 +1,90 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v2] drm/rockchip: Don't continue trying to enable crtc on
- failure
-Date: Wed, 17 Aug 2016 15:28:37 +0800
-Message-ID: <f7942956-42bc-3dd8-563e-1971779d7229@rock-chips.com>
-References: <20160814094200.GW6232@phenom.ffwll.local>
- <1471302749-2811-1-git-send-email-seanpaul@chromium.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt/bindings: arm-pl330: add description of
+ arm,pl330-periph-burst
+Date: Wed, 17 Aug 2016 16:11:03 +0800
+Message-ID: <55e596a0-4176-4277-40cc-1d26763a8be0@rock-chips.com>
+References: <1470365602-32586-1-git-send-email-shawn.lin@rock-chips.com>
+ <1470365602-32586-2-git-send-email-shawn.lin@rock-chips.com>
+ <20160805033410.GJ9681@localhost>
+ <ea3572fa-4bff-87db-d5ad-f406809f8296@rock-chips.com>
+ <0df0ab4f-0032-6487-2c30-b1ccd7d9ae62@metafoo.de>
+ <1d42542f-c43c-5c4b-01b7-ba0ca085004a@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471302749-2811-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1d42542f-c43c-5c4b-01b7-ba0ca085004a-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2VhbiwKCk9uIDA4LzE2LzIwMTYgMDc6MTIgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiBJZiB2b3Bf
-ZW5hYmxlIGZhaWxzLCBkb24ndCBjb250aW51ZSBvbiwgaXQgY2F1c2VzIHN5c3RlbSBoYW5ncy4K
-Pgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKQWxz
-byBtZWV0IHRoaXMgcHJvYmxlbSBvbiBteSBSazMzOTkgS2V2aW4gYm9hcmQuIFZPUCBqdXN0IGZh
-aWxlZCB0byBnZXQgCnRoZSBwbV9ydW50aW1lIGF0IHJlc3VtZSB0aW1lLCBidXQg772E772S772J
-772WZXIgc3RpbGwganVzdCBjb250aW51ZSB3aXRob3V0IAphbnl0aGluZyBlbmFibGUgcmlnaHRs
-eSwgb29wcywgYW5kIHRoZW4gc3lzdGVtIGNyYXNoZWQgOigKClNvIHRoaXMgcGF0Y2ggbG9va3Mg
-Z29vZCB0byBtZSwgYW5kIGFsc28gZml4IG15IHByb2JsZW0sIHRoYW5rczoKCu+8su+9hXZpZXdl
-ZC1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgpUZXN0ZWQtYnk6IFlha2lyIFlh
-bmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBZYWtpcgo+IC0tLQo+Cj4gVGhpcyBw
-YXRjaCB1c2VzIHRoZSBuZXcgRFJNX0RFVl9FUlJPUiBsb2dnaW5nLCBzbyBpdCBzaG91bGQgYmUg
-YXBwbGllZCBvbgo+IHRvcCBvZiAiW1BBVENIIDIvMl0gZHJtL3JvY2tjaGlwOiBVc2UgRFJNX0RF
-Vl9FUlJPUiBpbiB2b3AiLgo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAJLSBFc2NhbGF0ZSBkZXZfZXJy
-IHRvIFdBUk5fT04gZm9yIGNsa19lbmFibGUgZmFpbHVyZXMgKERhbmllbCBWZXR0ZXIpCj4KPiBT
-ZWFuCj4KPgo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8
-IDMxICsrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMTcg
-aW5zZXJ0aW9ucygrKSwgMTQgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCBlYzhhZDAwLi5hMTc2ZDAzIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTQyOCw3
-ICs0MjgsNyBAQCBzdGF0aWMgdm9pZCB2b3BfZHNwX2hvbGRfdmFsaWRfaXJxX2Rpc2FibGUoc3Ry
-dWN0IHZvcCAqdm9wKQo+ICAgCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnZvcC0+aXJxX2xvY2ss
-IGZsYWdzKTsKPiAgIH0KPiAgIAo+IC1zdGF0aWMgdm9pZCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YykKPiArc3RhdGljIGludCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0
-YykKPiAgIHsKPiAgIAlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7Cj4gICAJaW50IHJl
-dDsKPiBAQCAtNDM2LDI2ICs0MzYsMjAgQEAgc3RhdGljIHZvaWQgdm9wX2VuYWJsZShzdHJ1Y3Qg
-ZHJtX2NydGMgKmNydGMpCj4gICAJcmV0ID0gcG1fcnVudGltZV9nZXRfc3luYyh2b3AtPmRldik7
-Cj4gICAJaWYgKHJldCA8IDApIHsKPiAgIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBn
-ZXQgcG0gcnVudGltZTogJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuOwo+ICsJCWdvdG8gZXJyX3B1
-dF9wbV9ydW50aW1lOwo+ICAgCX0KPiAgIAo+ICAgCXJldCA9IGNsa19lbmFibGUodm9wLT5oY2xr
-KTsKPiAtCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBl
-bmFibGUgaGNsayAtICVkXG4iLCByZXQpOwo+IC0JCXJldHVybjsKPiAtCX0KPiArCWlmIChXQVJO
-X09OKHJldCA8IDApKQo+ICsJCWdvdG8gZXJyX3B1dF9wbV9ydW50aW1lOwo+ICAgCj4gICAJcmV0
-ID0gY2xrX2VuYWJsZSh2b3AtPmRjbGspOwo+IC0JaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJy
-KHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJsZSBkY2xrIC0gJWRcbiIsIHJldCk7Cj4gKwlpZiAo
-V0FSTl9PTihyZXQgPCAwKSkKPiAgIAkJZ290byBlcnJfZGlzYWJsZV9oY2xrOwo+IC0JfQo+ICAg
-Cj4gICAJcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmFjbGspOwo+IC0JaWYgKHJldCA8IDApIHsKPiAt
-CQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJsZSBhY2xrIC0gJWRcbiIsIHJldCk7
-Cj4gKwlpZiAoV0FSTl9PTihyZXQgPCAwKSkKPiAgIAkJZ290byBlcnJfZGlzYWJsZV9kY2xrOwo+
-IC0JfQo+ICAgCj4gICAJLyoKPiAgIAkgKiBTbGF2ZSBpb21tdSBzaGFyZXMgcG93ZXIsIGlycSBh
-bmQgY2xvY2sgd2l0aCB2b3AuICBJdCB3YXMgYXNzb2NpYXRlZAo+IEBAIC00ODUsNyArNDc5LDcg
-QEAgc3RhdGljIHZvaWQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gICAKPiAg
-IAlkcm1fY3J0Y192Ymxhbmtfb24oY3J0Yyk7Cj4gICAKPiAtCXJldHVybjsKPiArCXJldHVybiAw
-Owo+ICAgCj4gICBlcnJfZGlzYWJsZV9hY2xrOgo+ICAgCWNsa19kaXNhYmxlKHZvcC0+YWNsayk7
-Cj4gQEAgLTQ5Myw2ICs0ODcsOSBAQCBlcnJfZGlzYWJsZV9kY2xrOgo+ICAgCWNsa19kaXNhYmxl
-KHZvcC0+ZGNsayk7Cj4gICBlcnJfZGlzYWJsZV9oY2xrOgo+ICAgCWNsa19kaXNhYmxlKHZvcC0+
-aGNsayk7Cj4gK2Vycl9wdXRfcG1fcnVudGltZToKPiArCXBtX3J1bnRpbWVfcHV0X3N5bmModm9w
-LT5kZXYpOwo+ICsJcmV0dXJuIHJldDsKPiAgIH0KPiAgIAo+ICAgc3RhdGljIHZvaWQgdm9wX2Ny
-dGNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gQEAgLTkxMiwxMCArOTA5LDE2IEBA
-IHN0YXRpYyB2b2lkIHZvcF9jcnRjX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gICAJ
-dTE2IHZhY3Rfc3QgPSBhZGp1c3RlZF9tb2RlLT52dG90YWwgLSBhZGp1c3RlZF9tb2RlLT52c3lu
-Y19zdGFydDsKPiAgIAl1MTYgdmFjdF9lbmQgPSB2YWN0X3N0ICsgdmRpc3BsYXk7Cj4gICAJdWlu
-dDMyX3QgdmFsOwo+ICsJaW50IHJldDsKPiAgIAo+ICAgCVdBUk5fT04odm9wLT5ldmVudCk7Cj4g
-ICAKPiAtCXZvcF9lbmFibGUoY3J0Yyk7Cj4gKwlyZXQgPSB2b3BfZW5hYmxlKGNydGMpOwo+ICsJ
-aWYgKHJldCkgewo+ICsJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxl
-IHZvcCAoJWQpXG4iLCByZXQpOwo+ICsJCXJldHVybjsKPiArCX0KPiArCj4gICAJLyoKPiAgIAkg
-KiBJZiBkY2xrIHJhdGUgaXMgemVybywgbWVhbiB0aGF0IHNjYW5vdXQgaXMgc3RvcCwKPiAgIAkg
-KiB3ZSBkb24ndCBuZWVkIHdhaXQgYW55IG1vcmUuCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi, Vinod and Lars-Peter
+
+Ping.. Any better idea to share :)
+
+On 2016/8/9 17:12, Shawn Lin wrote:
+> Hi Lars-Peter,
+>
+> 在 2016/8/9 16:39, Lars-Peter Clausen 写道:
+>> On 08/05/2016 09:25 AM, Shawn Lin wrote:
+>>> Hi Vinod,
+>>>
+>>> 在 2016/8/5 11:34, Vinod Koul 写道:
+>>>> On Fri, Aug 05, 2016 at 10:53:20AM +0800, Shawn Lin wrote:
+>>>>> This patch adds the "arm,pl330-periph-burst" for arm-pl330 to
+>>>>> support busrt mode.
+>>>>
+>>>> why should this be DT property. Only reason I can think of if some hw
+>>>> versions support this and some won't.
+>>>
+>>> yes, if we want to support burst mode, both of the master(pl330) and
+>>> client(several peripherals) should implement it, otherwise it will
+>>> be broken when enabling.
+>>
+>> As you said, it is up to the consumer peripheral whether it supports
+>> BURST,
+>> SINGLE or both. So this is a per client property, but you specify this
+>> as a
+>> a global property on the producer side.
+>
+> Thanks for comment.
+>
+> yup, but what is the proper way to add it ? :)
+>
+>
+> a) If pl330 support BURST as well as all the peripherals, we could
+> enable it.
+>
+> b) If pl300 support BURST, but all the peripherals don't support it,
+> we could not enable it.
+>
+> c) If pl300 support BURST, but not all the peripherals support it,
+> we also could not enable it.
+>
+> the burst feature of peripheral IP may be vendor-specific, but the
+> common driver for this peripheral are used for many many vendors which
+> means we could not check all of this info. It's very likely to break
+> them... I couldn't figure out how many upstreamed peripheral drivers
+> who are using pl300 either.
+>
+> So this check should be done by all this vendors but we could make
+> sure we don't break them before they check a), b), c), right?
+>
+>
+>>
+>>
+>>
+>>
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
