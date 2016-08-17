@@ -1,72 +1,26 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: remove excess sd properties for firefly reload
-Date: Wed, 17 Aug 2016 16:10:09 +0200
-Message-ID: <19126716.OZv44ZHtAK@diego>
-References: <522097f6-8b5c-ee6d-c1b1-a63840228a0e@rock-chips.com> <35898684.O6p1GdTFI2@phil> <af99cf05-dfc7-1ae6-8d23-f33298b5f683@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Randy Li <ayaka@soulik.info>
+Subject: [PATCH 0/2 v2] ARM: dts: rockchip: correct the regulators in firefly reload
+Date: Thu, 18 Aug 2016 01:03:09 +0800
+Message-ID: <1471453391-10267-1-git-send-email-ayaka@soulik.info>
+References: <19126716.OZv44ZHtAK@diego>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <af99cf05-dfc7-1ae6-8d23-f33298b5f683@soulik.info>
+In-Reply-To: <19126716.OZv44ZHtAK@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: ayaka <ayaka@soulik.info>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk, mark.rutland@arm.com
+To: devicetree@vger.kernel.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk, mark.rutland@arm.com, Randy Li <ayaka@soulik.info>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 14. August 2016, 20:38:59 schrieb ayaka:
-> On 08/14/2016 08:30 PM, Heiko Stuebner wrote:
-> > Am Sonntag, 14. August 2016, 19:27:23 CEST schrieb Randy Li:
-> >> Because of a bug in hardware design, the sdcard at firefly
-> >> rk3288 reload board can't switch the io voltage level to 1.8v.
-> >> 
-> >> Signed-off-by: Randy Li <ayaka@soulik.info>
-> >> ---
-> >> 
-> >>   arch/arm/boot/dts/rk3288-firefly-reload.dts | 7 +------
-> >>   1 file changed, 1 insertion(+), 6 deletions(-)
-> >> 
-> >> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> >> b/arch/arm/boot/dts/rk3288-firefly-reload.dts index 43145d1..a2b1f14
-> >> 100644
-> >> --- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> >> +++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> >> @@ -202,18 +202,13 @@
-> >> 
-> >>   	bus-width = <4>;
-> >>   	cap-mmc-highspeed;
-> >>   	cap-sd-highspeed;
-> >> 
-> >> -	sd-uhs-sdr12;
-> >> -	sd-uhs-sdr25;
-> >> -	sd-uhs-sdr50;
-> >> -	sd-uhs-sdr104;
-> >> -	sd-uhs-ddr50;
-> >> 
-> >>   	card-detect-delay = <200>;
-> >>   	disable-wp;
-> >>   	num-slots = <1>;
-> >>   	pinctrl-names = "default";
-> >>   	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
-> >>   	vmmc-supply = <&vcc_sd>;
-> >> 
-> >> -	vqmmc-supply = <&vccio_sd>;
-> >> +	vqmmc-supply = <&vcc_sd>;
-> > 
-> > that looks wrong. vccio_sd is still the vqmmc supply in the schematics
-> > even
-> > though we don't want to switch to 1.8V . But that regulator should still
-> > be
-> 
-> I think the vccio_sd is just the one connected to the io_domains, but
-> the voltage source for the
-> pull up register is not vccio_sd but vcc_io.
+The last version forget to check the regulators in PMU. This
+verison would fix them. I have remove regualtor-always-on as much
+as possible.
 
-vqmmc-supply is the so called io-voltage according to the code and also the 
-jedec spec (VCCQ). And the sdmmc0_vdd that vccio_sd is connected to is exactly 
-that ... according to the rk3288 datasheet the "SDMMC0 Digital IO Power 
-Supply", so that connection is not only meaningful for the iodomains, but _is_ 
-an actual supply and if you turn off vccio_sd, you probably won't get any 
-sdmmc transfers at all ;-) .
+Randy Li (2):
+  ARM: dts: rockchip: remove excess sd properties for firefly reload
+  ARM: dts: rockchip: add missing regulators for firefly reload board
 
-So yes, due to the resistor misheap vccio_sd should stay limited to 3.3V, but 
-its connection as vqmmc should stay.
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 49 ++++------------
+ arch/arm/boot/dts/rk3288-firefly-reload.dts       | 69 +++++++++++++++++++----
+ 2 files changed, 68 insertions(+), 50 deletions(-)
+
+-- 
+2.7.4
