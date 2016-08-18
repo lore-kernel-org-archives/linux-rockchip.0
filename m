@@ -1,90 +1,44 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 2/2] drm/rockchip: Use DRM_DEV_ERROR in vop
-Date: Thu, 18 Aug 2016 16:53:02 +0800
-Message-ID: <57B5776E.2040902@rock-chips.com>
-References: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
- <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+From: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/4] PM / AVS: add Rockchip cpu avs
+Date: Thu, 18 Aug 2016 16:52:17 +0800
+Message-ID: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA45pyIMTPml6UgMDE6MDAsIFNlYW4gUGF1bCB3cm90ZToKPiBTaW5jZSB3ZSBj
-YW4gaGF2ZSBtdWx0aXBsZSB2b3BzLCB1c2UgRFJNX0RFVl9FUlJPUiB0bwo+IG1ha2UgbG9ncyBl
-YXNpZXIgdG8gcHJvY2Vzcy4KPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
-Y2hyb21pdW0ub3JnPgoKbG9va3MgZ29vZCBmb3IgbWUKCkFja2VkLWJ5OiBNYXJrIFlhbyA8bWFy
-ay55YW9Acm9ja2NoaXAuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYyB8IDI0ICsrKysrKysrKysrKysrLS0tLS0tLS0tLQo+ICAgMSBmaWxl
-IGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggMzE3NDRmZS4uZWM4
-YWQwMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-Ywo+IEBAIC0yMzgsNyArMjM4LDcgQEAgc3RhdGljIGVudW0gdm9wX2RhdGFfZm9ybWF0IHZvcF9j
-b252ZXJ0X2Zvcm1hdCh1aW50MzJfdCBmb3JtYXQpCj4gICAJY2FzZSBEUk1fRk9STUFUX05WMjQ6
-Cj4gICAJCXJldHVybiBWT1BfRk1UX1lVVjQ0NFNQOwo+ICAgCWRlZmF1bHQ6Cj4gLQkJRFJNX0VS
-Uk9SKCJ1bnN1cHBvcnQgZm9ybWF0WyUwOHhdXG4iLCBmb3JtYXQpOwo+ICsJCURSTV9FUlJPUigi
-dW5zdXBwb3J0ZWQgZm9ybWF0WyUwOHhdXG4iLCBmb3JtYXQpOwo+ICAgCQlyZXR1cm4gLUVJTlZB
-TDsKPiAgIAl9Cj4gICB9Cj4gQEAgLTMxNSw3ICszMTUsNyBAQCBzdGF0aWMgdm9pZCBzY2xfdm9w
-X2NhbF9zY2xfZmFjKHN0cnVjdCB2b3AgKnZvcCwgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAq
-d2luLAo+ICAgCWludCB2c2tpcGxpbmVzID0gMDsKPiAgIAo+ICAgCWlmIChkc3RfdyA+IDM4NDAp
-IHsKPiAtCQlEUk1fRVJST1IoIk1heGltdW0gZGVzdGluYXRpb24gd2lkdGggKDM4NDApIGV4Y2Vl
-ZGVkXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiTWF4aW11bSBkc3Qgd2lkdGgg
-KDM4NDApIGV4Y2VlZGVkXG4iKTsKPiAgIAkJcmV0dXJuOwo+ICAgCX0KPiAgIAo+IEBAIC0zNTMs
-MTEgKzM1MywxMSBAQCBzdGF0aWMgdm9pZCBzY2xfdm9wX2NhbF9zY2xfZmFjKHN0cnVjdCB2b3Ag
-KnZvcCwgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAqd2luLAo+ICAgCVZPUF9TQ0xfU0VUX0VY
-VCh2b3AsIHdpbiwgbGJfbW9kZSwgbGJfbW9kZSk7Cj4gICAJaWYgKGxiX21vZGUgPT0gTEJfUkdC
-XzM4NDBYMikgewo+ICAgCQlpZiAoeXJnYl92ZXJfc2NsX21vZGUgIT0gU0NBTEVfTk9ORSkgewo+
-IC0JCQlEUk1fRVJST1IoIkVSUk9SIDogbm90IGFsbG93IHlyZ2IgdmVyIHNjYWxlXG4iKTsKPiAr
-CQkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIm5vdCBhbGxvdyB5cmdiIHZlciBzY2FsZVxuIik7
-Cj4gICAJCQlyZXR1cm47Cj4gICAJCX0KPiAgIAkJaWYgKGNiY3JfdmVyX3NjbF9tb2RlICE9IFND
-QUxFX05PTkUpIHsKPiAtCQkJRFJNX0VSUk9SKCJFUlJPUiA6IG5vdCBhbGxvdyBjYmNyIHZlciBz
-Y2FsZVxuIik7Cj4gKwkJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJub3QgYWxsb3cgY2JjciB2
-ZXIgc2NhbGVcbiIpOwo+ICAgCQkJcmV0dXJuOwo+ICAgCQl9Cj4gICAJCXZzdV9tb2RlID0gU0NB
-TEVfVVBfQklMOwo+IEBAIC05NzAsNyArOTcwLDggQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZW5h
-YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgIAkJVk9QX0NUUkxfU0VUKHZvcCwgbWlwaV9l
-biwgMSk7Cj4gICAJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gLQkJRFJNX0VSUk9SKCJ1bnN1cHBv
-cnQgY29ubmVjdG9yX3R5cGVbJWRdXG4iLCBzLT5vdXRwdXRfdHlwZSk7Cj4gKwkJRFJNX0RFVl9F
-UlJPUih2b3AtPmRldiwgInVuc3VwcG9ydGVkIGNvbm5lY3Rvcl90eXBlIFslZF1cbiIsCj4gKwkJ
-CSAgICAgIHMtPm91dHB1dF90eXBlKTsKPiAgIAl9Cj4gICAJVk9QX0NUUkxfU0VUKHZvcCwgb3V0
-X21vZGUsIHMtPm91dHB1dF9tb2RlKTsKPiAgIAo+IEBAIC0xMTU0LDcgKzExNTUsOCBAQCBzdGF0
-aWMgaXJxcmV0dXJuX3Qgdm9wX2lzcihpbnQgaXJxLCB2b2lkICpkYXRhKQo+ICAgCj4gICAJLyog
-VW5oYW5kbGVkIGlycXMgYXJlIHNwdXJpb3VzLiAqLwo+ICAgCWlmIChhY3RpdmVfaXJxcykKPiAt
-CQlEUk1fRVJST1IoIlVua25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLCBhY3RpdmVfaXJxcyk7Cj4g
-KwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIlVua25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLAo+
-ICsJCQkgICAgICBhY3RpdmVfaXJxcyk7Cj4gICAKPiAgIAlyZXR1cm4gcmV0Owo+ICAgfQo+IEBA
-IC0xMTg5LDcgKzExOTEsOCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9w
-ICp2b3ApCj4gICAJCQkJCSAgICAgICB3aW5fZGF0YS0+cGh5LT5uZm9ybWF0cywKPiAgIAkJCQkJ
-ICAgICAgIHdpbl9kYXRhLT50eXBlLCBOVUxMKTsKPiAgIAkJaWYgKHJldCkgewo+IC0JCQlEUk1f
-RVJST1IoImZhaWxlZCB0byBpbml0aWFsaXplIHBsYW5lXG4iKTsKPiArCQkJRFJNX0RFVl9FUlJP
-Uih2b3AtPmRldiwgImZhaWxlZCB0byBpbml0IHBsYW5lICVkXG4iLAo+ICsJCQkJICAgICAgcmV0
-KTsKPiAgIAkJCWdvdG8gZXJyX2NsZWFudXBfcGxhbmVzOwo+ICAgCQl9Cj4gICAKPiBAQCAtMTIy
-Nyw3ICsxMjMwLDggQEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3RydWN0IHZvcCAqdm9w
-KQo+ICAgCQkJCQkgICAgICAgd2luX2RhdGEtPnBoeS0+bmZvcm1hdHMsCj4gICAJCQkJCSAgICAg
-ICB3aW5fZGF0YS0+dHlwZSwgTlVMTCk7Cj4gICAJCWlmIChyZXQpIHsKPiAtCQkJRFJNX0VSUk9S
-KCJmYWlsZWQgdG8gaW5pdGlhbGl6ZSBvdmVybGF5IHBsYW5lXG4iKTsKPiArCQkJRFJNX0RFVl9F
-UlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBpbml0IG92ZXJsYXkgJWRcbiIsCj4gKwkJCQkgICAg
-ICByZXQpOwo+ICAgCQkJZ290byBlcnJfY2xlYW51cF9jcnRjOwo+ICAgCQl9Cj4gICAJCWRybV9w
-bGFuZV9oZWxwZXJfYWRkKCZ2b3Bfd2luLT5iYXNlLCAmcGxhbmVfaGVscGVyX2Z1bmNzKTsKPiBA
-QCAtMTIzNSw4ICsxMjM5LDggQEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3RydWN0IHZv
-cCAqdm9wKQo+ICAgCj4gICAJcG9ydCA9IG9mX2dldF9jaGlsZF9ieV9uYW1lKGRldi0+b2Zfbm9k
-ZSwgInBvcnQiKTsKPiAgIAlpZiAoIXBvcnQpIHsKPiAtCQlEUk1fRVJST1IoIm5vIHBvcnQgbm9k
-ZSBmb3VuZCBpbiAlc1xuIiwKPiAtCQkJICBkZXYtPm9mX25vZGUtPmZ1bGxfbmFtZSk7Cj4gKwkJ
-RFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIm5vIHBvcnQgbm9kZSBmb3VuZCBpbiAlc1xuIiwKPiAr
-CQkJICAgICAgZGV2LT5vZl9ub2RlLT5mdWxsX25hbWUpOwo+ICAgCQlyZXQgPSAtRU5PRU5UOwo+
-ICAgCQlnb3RvIGVycl9jbGVhbnVwX2NydGM7Cj4gICAJfQoKCi0tIArvvK1hcmsgWWFvCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Under the same frequency, the operating voltage tends to decrease with
+increasing leakage. so it is necessary to adjust opp's voltage according
+to leakage for power.
+
+V1->V2:
+- 2/3 just add a static inline functiong in the of.h.
+- 3/3 is separated into two patches.
+
+Finley Xiao (4):
+  nvmem: rockchip-efuse: Change initcall to subsys
+  of: introduce of_property_read_s32_index
+  dt-bindings: add binding document for Rockchip cpu avs
+  PM / AVS: rockchip-cpu-avs: add driver handling Rockchip cpu avs
+
+ .../devicetree/bindings/power/rockchip-cpu-avs.txt |  37 +++
+ drivers/nvmem/rockchip-efuse.c                     |   9 +-
+ drivers/power/avs/Kconfig                          |   9 +
+ drivers/power/avs/Makefile                         |   1 +
+ drivers/power/avs/rockchip-cpu-avs.c               | 331 +++++++++++++++++++++
+ include/linux/of.h                                 |   8 +
+ 6 files changed, 394 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
+ create mode 100644 drivers/power/avs/rockchip-cpu-avs.c
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
