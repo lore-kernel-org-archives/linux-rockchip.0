@@ -1,49 +1,51 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH v3 2/5] dt-bindings: sort Rockchip vop compatible by chip's
- number
-Date: Thu, 18 Aug 2016 14:15:18 -0700
-Message-ID: <1471554918-22353-1-git-send-email-seanpaul@chromium.org>
-References: <loom.20160602T085439-162@post.gmane.org>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v9 2/2] PCI: Rockchip: Add Rockchip PCIe controller support
+Date: Thu, 18 Aug 2016 16:24:44 -0500
+Message-ID: <20160818212444.GQ27353@localhost>
+References: <1470297128-6213-1-git-send-email-shawn.lin@rock-chips.com>
+ <1470297128-6213-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <loom.20160602T085439-162@post.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: tfiga@chromium.org, dri-devel@lists.freedesktop.org, mark.yao@rock-chips.com, robh@kernel.org, devicetree@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1470297128-6213-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKUmVvcmRlciB0aGUgY29t
-cGF0aWJsZSB2b3AgZGV2aWNlcyB0byBiZSBzb3J0ZWQgYnkgY2hpcCBudW1iZXIKaW4gYXNjZW5k
-aW5nIG9yZGVyLgoKUmV2aWV3ZWQtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+
-ClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KW3NlYW5w
-YXVsIGFkZGVkIGNvbW1pdCBkZXNjcmlwdGlvbiBwZXIgdGZpZ2EncyByZXZpZXddClNpZ25lZC1v
-ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KClJlc2VuZGluZyB0
-byBhZGQgZGV2aWNldHJlZSBsaXN0CgpDaGFuZ2VzIGluIHYzOgoJLSBVcGRhdGVkIGNvbW1pdCBt
-ZXNzYWdlIChUb21hc3ogRmlnYSkKCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-ZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AudHh0IHwgMiArLQogMSBmaWxlIGNoYW5nZWQs
-IDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dCBi
-L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tj
-aGlwLXZvcC50eHQKaW5kZXggNTQ4OWI1OS4uMTk2MTIxZiAxMDA2NDQKLS0tIGEvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4
-dAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hp
-cC9yb2NrY2hpcC12b3AudHh0CkBAIC02LDggKzYsOCBAQCBidWZmZXIgdG8gYW4gZXh0ZXJuYWwg
-TENEIGludGVyZmFjZS4KIAogUmVxdWlyZWQgcHJvcGVydGllczoKIC0gY29tcGF0aWJsZTogdmFs
-dWUgc2hvdWxkIGJlIG9uZSBvZiB0aGUgZm9sbG93aW5nCi0JCSJyb2NrY2hpcCxyazMyODgtdm9w
-IjsKIAkJInJvY2tjaGlwLHJrMzAzNi12b3AiOworCQkicm9ja2NoaXAscmszMjg4LXZvcCI7CiAK
-IC0gaW50ZXJydXB0czogc2hvdWxkIGNvbnRhaW4gYSBsaXN0IG9mIGFsbCBWT1AgSVAgYmxvY2sg
-aW50ZXJydXB0cyBpbiB0aGUKIAkJIG9yZGVyOiBWU1lOQywgTENEX1NZU1RFTS4gVGhlIGludGVy
-cnVwdCBzcGVjaWZpZXIKLS0gCjIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Shawn,
+
+On Thu, Aug 04, 2016 at 03:52:08PM +0800, Shawn Lin wrote:
+> This patch adds Rockchip PCIe controller support found
+> on RK3399 Soc platform.
+
+> --- a/drivers/pci/host/Kconfig
+> +++ b/drivers/pci/host/Kconfig
+> @@ -264,4 +264,15 @@ config PCIE_ARTPEC6
+>  	  Say Y here to enable PCIe controller support on Axis ARTPEC-6
+>  	  SoCs.  This PCIe controller uses the DesignWare core.
+>  
+> +config PCIE_ROCKCHIP
+> +	bool "Rockchip PCIe controller"
+> +	depends on ARM64 && ARCH_ROCKCHIP
+
+I don't see any actual ARM64 dependencies in the code (which is a very
+good thing!).  Can we remove the "depends on ARM64" part?
+
+> +	depends on OF
+> +	depends on PCI_MSI_IRQ_DOMAIN
+> +	select MFD_SYSCON
+> +	help
+> +	  Say Y here if you want internal PCI support on Rockchip SoC.
+> +	  There is 1 internal PCIe port available to support GEN2 with
+> +	  4 slots.
