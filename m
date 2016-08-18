@@ -1,400 +1,174 @@
-From: Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
- Rockchip cpu avs
-Date: Thu, 18 Aug 2016 16:52:21 +0800
-Message-ID: <1471510341-63926-5-git-send-email-finley.xiao@rock-chips.com>
-References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v3 1/5] drm/rockchip: sort registers define by chip's
+ number
+Date: Thu, 18 Aug 2016 17:08:14 +0800
+Message-ID: <57B57AFE.2030706@rock-chips.com>
+References: <loom.20160602T084340-509@post.gmane.org>
+ <1471454452-2151-1-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1471510341-63926-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1471454452-2151-1-git-send-email-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, tfiga@chromium.org, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-This patch supports adjusting opp's voltage according to leakage
-
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/power/avs/Kconfig            |   9 +
- drivers/power/avs/Makefile           |   1 +
- drivers/power/avs/rockchip-cpu-avs.c | 331 +++++++++++++++++++++++++++++++++++
- 3 files changed, 341 insertions(+)
- create mode 100644 drivers/power/avs/rockchip-cpu-avs.c
-
-diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
-index a67eeac..dea13801 100644
---- a/drivers/power/avs/Kconfig
-+++ b/drivers/power/avs/Kconfig
-@@ -18,3 +18,12 @@ config ROCKCHIP_IODOMAIN
-           Say y here to enable support io domains on Rockchip SoCs. It is
-           necessary for the io domain setting of the SoC to match the
-           voltage supplied by the regulators.
-+
-+config ROCKCHIP_CPU_AVS
-+        bool "Rockchip CPU AVS support"
-+        depends on POWER_AVS && ARCH_ROCKCHIP && OF && CPU_FREQ
-+        depends on (ARM_CPU_TOPOLOGY || ARM64) && ROCKCHIP_EFUSE
-+        help
-+          Say y here to enable support CPU AVS on Rockchip SoCs.
-+          The cpu's operating voltage is adapted depending on leakage
-+          or pvtm.
-diff --git a/drivers/power/avs/Makefile b/drivers/power/avs/Makefile
-index ba4c7bc..11ce242 100644
---- a/drivers/power/avs/Makefile
-+++ b/drivers/power/avs/Makefile
-@@ -1,2 +1,3 @@
- obj-$(CONFIG_POWER_AVS_OMAP)		+= smartreflex.o
- obj-$(CONFIG_ROCKCHIP_IODOMAIN)		+= rockchip-io-domain.o
-+obj-$(CONFIG_ROCKCHIP_CPU_AVS)		+= rockchip-cpu-avs.o
-diff --git a/drivers/power/avs/rockchip-cpu-avs.c b/drivers/power/avs/rockchip-cpu-avs.c
-new file mode 100644
-index 0000000..7b42b46
---- /dev/null
-+++ b/drivers/power/avs/rockchip-cpu-avs.c
-@@ -0,0 +1,331 @@
-+/*
-+  * Rockchip CPU AVS support.
-+  *
-+  * Copyright (c) 2016 Rockchip Electronics Co. Ltd.
-+  * Author: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+  *
-+  * This program is free software; you can redistribute it and/or modify it
-+  * under the terms of version 2 of the GNU General Public License as
-+  * published by the Free Software Foundation.
-+  *
-+  * This program is distributed in the hope that it will be useful, but WITHOUT
-+  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-+  * more details.
-+  */
-+
-+#include <linux/cpu.h>
-+#include <linux/cpufreq.h>
-+#include <linux/cpumask.h>
-+#include <linux/err.h>
-+#include <linux/init.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_opp.h>
-+#include <linux/slab.h>
-+#include <linux/types.h>
-+#include "../../base/power/opp/opp.h"
-+
-+#define MAX_NAME_LEN		22
-+#define LEAKAGE_TABLE_END	~1
-+#define INVALID_VALUE		0xff
-+
-+struct leakage_volt_table {
-+	int min;
-+	int max;
-+	int volt;
-+};
-+
-+struct cluster_info {
-+	int adjust_volt;
-+	unsigned char leakage;
-+	struct leakage_volt_table *table;
-+};
-+
-+struct rockchip_cpu_avs {
-+	struct device *dev;
-+	struct cluster_info *cluster;
-+	struct notifier_block cpufreq_notify;
-+};
-+
-+#define notifier_to_avs(_n) container_of(_n, struct rockchip_cpu_avs, \
-+	cpufreq_notify)
-+
-+static int rockchip_get_leakage(struct device *cpu_dev, unsigned char *leakage)
-+{
-+	struct nvmem_cell *cell;
-+	unsigned char *buf;
-+	size_t len;
-+
-+	cell = nvmem_cell_get(cpu_dev, "cpu_leakage");
-+	if (IS_ERR(cell)) {
-+		dev_err(cpu_dev, "avs failed to get cpu_leakage cell\n");
-+		return PTR_ERR(cell);
-+	}
-+
-+	buf = (unsigned char *)nvmem_cell_read(cell, &len);
-+
-+	nvmem_cell_put(cell);
-+
-+	if (IS_ERR(buf))
-+		return PTR_ERR(buf);
-+
-+	if (buf[0] == INVALID_VALUE)
-+		return -EINVAL;
-+
-+	*leakage = buf[0];
-+	kfree(buf);
-+
-+	return 0;
-+}
-+
-+static int rockchip_get_offset_volt(unsigned char leakage,
-+				    struct leakage_volt_table *table, int *volt)
-+{
-+	unsigned int i, j;
-+
-+	if (!table)
-+		return -EINVAL;
-+
-+	for (i = 0; table[i].volt != LEAKAGE_TABLE_END; i++) {
-+		if (leakage >= table[i].min)
-+			j = i;
-+	}
-+
-+	*volt = table[j].volt;
-+
-+	return 0;
-+}
-+
-+static int rockchip_adjust_opp_table(struct device *cpu_dev,
-+				     struct cpufreq_frequency_table *table,
-+				     int volt)
-+{
-+	struct opp_table *opp_table;
-+	struct cpufreq_frequency_table *pos;
-+	struct dev_pm_opp *opp;
-+
-+	if (!volt)
-+		return 0;
-+
-+	rcu_read_lock();
-+
-+	opp_table = _find_opp_table(cpu_dev);
-+	if (IS_ERR(opp_table)) {
-+		rcu_read_unlock();
-+		return PTR_ERR(opp_table);
-+	}
-+
-+	cpufreq_for_each_valid_entry(pos, table) {
-+		opp = dev_pm_opp_find_freq_exact(cpu_dev, pos->frequency * 1000,
-+						 true);
-+		if (IS_ERR(opp))
-+			continue;
-+
-+		opp->u_volt += volt;
-+		opp->u_volt_min += volt;
-+		opp->u_volt_max += volt;
-+	}
-+
-+	rcu_read_unlock();
-+
-+	return 0;
-+}
-+
-+static void rockchip_adjust_volt_by_leakage(struct device *cpu_dev,
-+					    struct cpufreq_policy *policy,
-+					    struct rockchip_cpu_avs *avs,
-+					    int id)
-+{
-+	struct cluster_info *cluster = &avs->cluster[id];
-+	int ret;
-+
-+	if (cluster->leakage)
-+		goto next;
-+
-+	ret = rockchip_get_leakage(cpu_dev, &cluster->leakage);
-+	if (ret) {
-+		dev_err(avs->dev, "cpu%d leakage invalid\n", policy->cpu);
-+		return;
-+	}
-+
-+	ret = rockchip_get_offset_volt(cluster->leakage, cluster->table,
-+				       &cluster->adjust_volt);
-+	if (ret) {
-+		dev_err(avs->dev, "cpu%d leakage volt table err\n",
-+			policy->cpu);
-+		return;
-+	}
-+
-+next:
-+	ret = rockchip_adjust_opp_table(cpu_dev, policy->freq_table,
-+					cluster->adjust_volt);
-+	if (ret)
-+		dev_err(avs->dev, "cpu%d failed to adjust volt\n", policy->cpu);
-+
-+	dev_dbg(avs->dev, "cpu%d, leakage=%d, adjust_volt=%d\n", policy->cpu,
-+		cluster->leakage, cluster->adjust_volt);
-+}
-+
-+static int rockchip_cpu_avs_notifier(struct notifier_block *nb,
-+				     unsigned long event, void *data)
-+{
-+	struct rockchip_cpu_avs *avs = notifier_to_avs(nb);
-+	struct cpufreq_policy *policy = data;
-+	struct device *cpu_dev;
-+	int cluster_id;
-+
-+	if (event != CPUFREQ_START)
-+		goto out;
-+
-+	cluster_id = topology_physical_package_id(policy->cpu);
-+	if (cluster_id < 0) {
-+		dev_err(avs->dev, "cpu%d invalid cluster id\n", policy->cpu);
-+		goto out;
-+	}
-+
-+	if (!policy->freq_table) {
-+		dev_err(avs->dev, "cpu%d freq table not found\n", policy->cpu);
-+		goto out;
-+	}
-+
-+	cpu_dev = get_cpu_device(policy->cpu);
-+	if (!cpu_dev) {
-+		dev_err(avs->dev, "cpu%d failed to get device\n", policy->cpu);
-+		goto out;
-+	}
-+
-+	rockchip_adjust_volt_by_leakage(cpu_dev, policy, avs, cluster_id);
-+
-+out:
-+
-+	return NOTIFY_OK;
-+}
-+
-+static int rockchip_get_leakage_volt_table(struct device *dev,
-+					   struct leakage_volt_table **table,
-+					   const char *name)
-+{
-+	struct device_node *np = dev->of_node;
-+	struct leakage_volt_table *volt_table;
-+	const struct property *prop;
-+	int count, i;
-+
-+	prop = of_find_property(np, name, NULL);
-+	if (!prop) {
-+		dev_err(dev, "failed to find prop %s\n", name);
-+		return -EINVAL;
-+	}
-+	if (!prop->value) {
-+		dev_err(dev, "%s value is NULL\n", name);
-+		return -ENODATA;
-+	}
-+
-+	count = of_property_count_u32_elems(np, name);
-+	if (count < 0) {
-+		dev_err(dev, "Invalid %s property (%d)\n", name, count);
-+		return -EINVAL;
-+	}
-+	if (count % 3) {
-+		dev_err(dev, "Invalid number of elements in %s property (%d)\n",
-+			name, count);
-+		return -EINVAL;
-+	}
-+
-+	volt_table = kzalloc(sizeof(*table) * (count / 3 + 1), GFP_KERNEL);
-+	if (!volt_table)
-+		return -ENOMEM;
-+
-+	if (volt_table) {
-+		for (i = 0; i < count / 3; i++) {
-+			of_property_read_s32_index(np, name, 3 * i,
-+						   &volt_table[i].min);
-+			of_property_read_s32_index(np, name, 3 * i + 1,
-+						   &volt_table[i].max);
-+			of_property_read_s32_index(np, name, 3 * i + 2,
-+						   &volt_table[i].volt);
-+		}
-+		volt_table[i].min = 0;
-+		volt_table[i].max = 0;
-+		volt_table[i].volt = LEAKAGE_TABLE_END;
-+	}
-+
-+	*table = volt_table;
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id rockchip_cpu_avs_match[] = {
-+	{
-+		.compatible = "rockchip,rk3399-cpu-avs",
-+	},
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, rockchip_cpu_avs_match);
-+
-+static int rockchip_cpu_avs_probe(struct platform_device *pdev)
-+{
-+	struct rockchip_cpu_avs *avs;
-+	char name[MAX_NAME_LEN];
-+	int i, ret, cpu, id;
-+	int last_id = -1;
-+	int cluster_num = 0;
-+
-+	for_each_online_cpu(cpu) {
-+		id = topology_physical_package_id(cpu);
-+		if (id < 0)
-+			return -EINVAL;
-+		if (id != last_id) {
-+			last_id = id;
-+			cluster_num++;
-+		}
-+	}
-+
-+	avs = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_cpu_avs),
-+			   GFP_KERNEL);
-+	if (!avs)
-+		return -ENOMEM;
-+
-+	avs->dev = &pdev->dev;
-+	avs->cpufreq_notify.notifier_call = rockchip_cpu_avs_notifier;
-+	avs->cluster = devm_kzalloc(&pdev->dev,
-+		sizeof(struct cluster_info) * cluster_num, GFP_KERNEL);
-+	if (!avs->cluster)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < cluster_num; i++) {
-+		snprintf(name, MAX_NAME_LEN, "leakage-volt-cluster%d", i);
-+		ret = rockchip_get_leakage_volt_table(&pdev->dev,
-+						      &avs->cluster[i].table,
-+						      name);
-+		if (ret)
-+			continue;
-+	}
-+
-+	return cpufreq_register_notifier(&avs->cpufreq_notify,
-+		CPUFREQ_POLICY_NOTIFIER);
-+}
-+
-+static struct platform_driver rockchip_cpu_avs_driver = {
-+	.probe   = rockchip_cpu_avs_probe,
-+	.driver  = {
-+		.name  = "rockchip-cpu-avs",
-+		.of_match_table = rockchip_cpu_avs_match,
-+		.suppress_bind_attrs = true,
-+	},
-+};
-+
-+static int __init rockchip_cpu_avs_module_init(void)
-+{
-+	return platform_driver_probe(&rockchip_cpu_avs_driver,
-+				     rockchip_cpu_avs_probe);
-+}
-+
-+subsys_initcall(rockchip_cpu_avs_module_init);
-+
-+MODULE_DESCRIPTION("Rockchip CPU AVS driver");
-+MODULE_AUTHOR("Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
-+MODULE_LICENSE("GPL v2");
--- 
-1.9.1
+SGkgU2VhbgoKVGhhbmtzIGZvciBzZW5kIHYzIHBhdGNoIGZvciByazMzOTkgdm9wIHN1cHBvcnQu
+CgpCdXQgc29ycnkgZm9yIHRoYXQsIEkgaGFkIGNoYW5nZWQgbXkgbWluZCwgdGhvc2UgcGF0Y2hl
+cyBhcmUgZGVwcmVjYXRlZCwKSSBoYXZlIG5ldyByazMzOTkgcGF0Y2ggb24gbXkgZG93bnN0cmVh
+bSBrZXJuZWwsIEkgd2lsbCB1cHN0cmVhbSBzb29uLgoKVGhhbmtzLgoKT24gMjAxNuW5tDA45pyI
+MTjml6UgMDE6MjAsIFNlYW4gUGF1bCB3cm90ZToKPiBGcm9tOiBNYXJrIFlhbyA8bWFyay55YW9A
+cm9jay1jaGlwcy5jb20+Cj4KPiBObyBmdW5jdGlvbmFsIGNoYW5nZXMsIHNvcnQgdGhlIHZvcCBy
+ZWdpc3RlcnMgdG8gbWFrZQo+IGNvZGUgbW9yZSByZWFkYWJsZS4KPgo+IFNpZ25lZC1vZmYtYnk6
+IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiBbc2VhbnBhdWwgcmVzb2x2ZWQg
+Y29uZmxpY3Qgd2l0aCBuYW1lIGNoYW5nZSBmcm9tIF8zMDY2IHRvIF8zMDM2XQo+IFNpZ25lZC1v
+ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IC0tLQo+Cj4gQ2hhbmdl
+cyBpbiB2MzoKPiAJLSBGaXggdHlwbyBmcm9tIF8zMDY2IF8zMDM2IChUb21hc3ogRmlnYSkKPgo+
+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDE2OCArKysr
+KysrKysrKysrKy0tLS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgODQgaW5zZXJ0aW9u
+cygrKSwgODQgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF92b3BfcmVnLmMKPiBpbmRleCA5MTk5OTJjLi40NGNhZjE0IDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTUwLDYgKzUwLDg4IEBA
+IHN0YXRpYyBjb25zdCB1aW50MzJfdCBmb3JtYXRzX3dpbl9saXRlW10gPSB7Cj4gICAJRFJNX0ZP
+Uk1BVF9CR1I1NjUsCj4gICB9Owo+ICAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3NjbF9y
+ZWdzIHJrMzAzNl93aW5fc2NsID0gewo+ICsJLnNjYWxlX3lyZ2JfeCA9IFZPUF9SRUcoUkszMDM2
+X1dJTjBfU0NMX0ZBQ1RPUl9ZUkdCLCAweGZmZmYsIDB4MCksCj4gKwkuc2NhbGVfeXJnYl95ID0g
+Vk9QX1JFRyhSSzMwMzZfV0lOMF9TQ0xfRkFDVE9SX1lSR0IsIDB4ZmZmZiwgMTYpLAo+ICsJLnNj
+YWxlX2NiY3JfeCA9IFZPUF9SRUcoUkszMDM2X1dJTjBfU0NMX0ZBQ1RPUl9DQlIsIDB4ZmZmZiwg
+MHgwKSwKPiArCS5zY2FsZV9jYmNyX3kgPSBWT1BfUkVHKFJLMzAzNl9XSU4wX1NDTF9GQUNUT1Jf
+Q0JSLCAweGZmZmYsIDE2KSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dp
+bl9waHkgcmszMDM2X3dpbjBfZGF0YSA9IHsKPiArCS5zY2wgPSAmcmszMDM2X3dpbl9zY2wsCj4g
+KwkuZGF0YV9mb3JtYXRzID0gZm9ybWF0c193aW5fZnVsbCwKPiArCS5uZm9ybWF0cyA9IEFSUkFZ
+X1NJWkUoZm9ybWF0c193aW5fZnVsbCksCj4gKwkuZW5hYmxlID0gVk9QX1JFRyhSSzMwMzZfU1lT
+X0NUUkwsIDB4MSwgMCksCj4gKwkuZm9ybWF0ID0gVk9QX1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4
+NywgMyksCj4gKwkucmJfc3dhcCA9IFZPUF9SRUcoUkszMDM2X1NZU19DVFJMLCAweDEsIDE1KSwK
+PiArCS5hY3RfaW5mbyA9IFZPUF9SRUcoUkszMDM2X1dJTjBfQUNUX0lORk8sIDB4MWZmZjFmZmYs
+IDApLAo+ICsJLmRzcF9pbmZvID0gVk9QX1JFRyhSSzMwMzZfV0lOMF9EU1BfSU5GTywgMHgwZmZm
+MGZmZiwgMCksCj4gKwkuZHNwX3N0ID0gVk9QX1JFRyhSSzMwMzZfV0lOMF9EU1BfU1QsIDB4MWZm
+ZjFmZmYsIDApLAo+ICsJLnlyZ2JfbXN0ID0gVk9QX1JFRyhSSzMwMzZfV0lOMF9ZUkdCX01TVCwg
+MHhmZmZmZmZmZiwgMCksCj4gKwkudXZfbXN0ID0gVk9QX1JFRyhSSzMwMzZfV0lOMF9DQlJfTVNU
+LCAweGZmZmZmZmZmLCAwKSwKPiArCS55cmdiX3ZpciA9IFZPUF9SRUcoUkszMDM2X1dJTjBfVklS
+LCAweGZmZmYsIDApLAo+ICsJLnV2X3ZpciA9IFZPUF9SRUcoUkszMDM2X1dJTjBfVklSLCAweDFm
+ZmYsIDE2KSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmsz
+MDM2X3dpbjFfZGF0YSA9IHsKPiArCS5kYXRhX2Zvcm1hdHMgPSBmb3JtYXRzX3dpbl9saXRlLAo+
+ICsJLm5mb3JtYXRzID0gQVJSQVlfU0laRShmb3JtYXRzX3dpbl9saXRlKSwKPiArCS5lbmFibGUg
+PSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHgxLCAxKSwKPiArCS5mb3JtYXQgPSBWT1BfUkVH
+KFJLMzAzNl9TWVNfQ1RSTCwgMHg3LCA2KSwKPiArCS5yYl9zd2FwID0gVk9QX1JFRyhSSzMwMzZf
+U1lTX0NUUkwsIDB4MSwgMTkpLAo+ICsJLmFjdF9pbmZvID0gVk9QX1JFRyhSSzMwMzZfV0lOMV9B
+Q1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCj4gKwkuZHNwX2luZm8gPSBWT1BfUkVHKFJLMzAzNl9X
+SU4xX0RTUF9JTkZPLCAweDBmZmYwZmZmLCAwKSwKPiArCS5kc3Bfc3QgPSBWT1BfUkVHKFJLMzAz
+Nl9XSU4xX0RTUF9TVCwgMHgxZmZmMWZmZiwgMCksCj4gKwkueXJnYl9tc3QgPSBWT1BfUkVHKFJL
+MzAzNl9XSU4xX01TVCwgMHhmZmZmZmZmZiwgMCksCj4gKwkueXJnYl92aXIgPSBWT1BfUkVHKFJL
+MzAzNl9XSU4xX1ZJUiwgMHhmZmZmLCAwKSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1
+Y3Qgdm9wX3dpbl9kYXRhIHJrMzAzNl92b3Bfd2luX2RhdGFbXSA9IHsKPiArCXsgLmJhc2UgPSAw
+eDAwLCAucGh5ID0gJnJrMzAzNl93aW4wX2RhdGEsCj4gKwkgIC50eXBlID0gRFJNX1BMQU5FX1RZ
+UEVfUFJJTUFSWSB9LAo+ICsJeyAuYmFzZSA9IDB4MDAsIC5waHkgPSAmcmszMDM2X3dpbjFfZGF0
+YSwKPiArCSAgLnR5cGUgPSBEUk1fUExBTkVfVFlQRV9DVVJTT1IgfSwKPiArfTsKPiArCj4gK3N0
+YXRpYyBjb25zdCBpbnQgcmszMDM2X3ZvcF9pbnRyc1tdID0gewo+ICsJRFNQX0hPTERfVkFMSURf
+SU5UUiwKPiArCUZTX0lOVFIsCj4gKwlMSU5FX0ZMQUdfSU5UUiwKPiArCUJVU19FUlJPUl9JTlRS
+LAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciByazMwMzZfaW50ciA9
+IHsKPiArCS5pbnRycyA9IHJrMzAzNl92b3BfaW50cnMsCj4gKwkubmludHJzID0gQVJSQVlfU0la
+RShyazMwMzZfdm9wX2ludHJzKSwKPiArCS5zdGF0dXMgPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RB
+VFVTLCAweGYsIDApLAo+ICsJLmVuYWJsZSA9IFZPUF9SRUcoUkszMDM2X0lOVF9TVEFUVVMsIDB4
+ZiwgNCksCj4gKwkuY2xlYXIgPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVTLCAweGYsIDgpLAo+
+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfY3RybCByazMwMzZfY3RybF9kYXRh
+ID0gewo+ICsJLnN0YW5kYnkgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHgxLCAzMCksCj4g
+Kwkub3V0X21vZGUgPSBWT1BfUkVHKFJLMzAzNl9EU1BfQ1RSTDAsIDB4ZiwgMCksCj4gKwkucGlu
+X3BvbCA9IFZPUF9SRUcoUkszMDM2X0RTUF9DVFJMMCwgMHhmLCA0KSwKPiArCS5odG90YWxfcHcg
+PSBWT1BfUkVHKFJLMzAzNl9EU1BfSFRPVEFMX0hTX0VORCwgMHgxZmZmMWZmZiwgMCksCj4gKwku
+aGFjdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzAzNl9EU1BfSEFDVF9TVF9FTkQsIDB4MWZmZjFmZmYs
+IDApLAo+ICsJLnZ0b3RhbF9wdyA9IFZPUF9SRUcoUkszMDM2X0RTUF9WVE9UQUxfVlNfRU5ELCAw
+eDFmZmYxZmZmLCAwKSwKPiArCS52YWN0X3N0X2VuZCA9IFZPUF9SRUcoUkszMDM2X0RTUF9WQUNU
+X1NUX0VORCwgMHgxZmZmMWZmZiwgMCksCj4gKwkuY2ZnX2RvbmUgPSBWT1BfUkVHKFJLMzAzNl9S
+RUdfQ0ZHX0RPTkUsIDB4MSwgMCksCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHZv
+cF9yZWdfZGF0YSByazMwMzZfdm9wX2luaXRfcmVnX3RhYmxlW10gPSB7Cj4gKwl7UkszMDM2X0RT
+UF9DVFJMMSwgMHgwMDAwMDAwMH0sCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHZv
+cF9kYXRhIHJrMzAzNl92b3AgPSB7Cj4gKwkuaW5pdF90YWJsZSA9IHJrMzAzNl92b3BfaW5pdF9y
+ZWdfdGFibGUsCj4gKwkudGFibGVfc2l6ZSA9IEFSUkFZX1NJWkUocmszMDM2X3ZvcF9pbml0X3Jl
+Z190YWJsZSksCj4gKwkuY3RybCA9ICZyazMwMzZfY3RybF9kYXRhLAo+ICsJLmludHIgPSAmcmsz
+MDM2X2ludHIsCj4gKwkud2luID0gcmszMDM2X3ZvcF93aW5fZGF0YSwKPiArCS53aW5fc2l6ZSA9
+IEFSUkFZX1NJWkUocmszMDM2X3ZvcF93aW5fZGF0YSksCj4gK307Cj4gKwo+ICAgc3RhdGljIGNv
+bnN0IHN0cnVjdCB2b3Bfc2NsX2V4dGVuc2lvbiByazMyODhfd2luX2Z1bGxfc2NsX2V4dCA9IHsK
+PiAgIAkuY2Jjcl92c2RfbW9kZSA9IFZPUF9SRUcoUkszMjg4X1dJTjBfQ1RSTDEsIDB4MSwgMzEp
+LAo+ICAgCS5jYmNyX3ZzdV9tb2RlID0gVk9QX1JFRyhSSzMyODhfV0lOMF9DVFJMMSwgMHgxLCAz
+MCksCj4gQEAgLTE5MCw5MyArMjcyLDExIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2RhdGEg
+cmszMjg4X3ZvcCA9IHsKPiAgIAkud2luX3NpemUgPSBBUlJBWV9TSVpFKHJrMzI4OF92b3Bfd2lu
+X2RhdGEpLAo+ICAgfTsKPiAgIAo+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9zY2xfcmVncyBy
+azMwMzZfd2luX3NjbCA9IHsKPiAtCS5zY2FsZV95cmdiX3ggPSBWT1BfUkVHKFJLMzAzNl9XSU4w
+X1NDTF9GQUNUT1JfWVJHQiwgMHhmZmZmLCAweDApLAo+IC0JLnNjYWxlX3lyZ2JfeSA9IFZPUF9S
+RUcoUkszMDM2X1dJTjBfU0NMX0ZBQ1RPUl9ZUkdCLCAweGZmZmYsIDE2KSwKPiAtCS5zY2FsZV9j
+YmNyX3ggPSBWT1BfUkVHKFJLMzAzNl9XSU4wX1NDTF9GQUNUT1JfQ0JSLCAweGZmZmYsIDB4MCks
+Cj4gLQkuc2NhbGVfY2Jjcl95ID0gVk9QX1JFRyhSSzMwMzZfV0lOMF9TQ0xfRkFDVE9SX0NCUiwg
+MHhmZmZmLCAxNiksCj4gLX07Cj4gLQo+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fcGh5
+IHJrMzAzNl93aW4wX2RhdGEgPSB7Cj4gLQkuc2NsID0gJnJrMzAzNl93aW5fc2NsLAo+IC0JLmRh
+dGFfZm9ybWF0cyA9IGZvcm1hdHNfd2luX2Z1bGwsCj4gLQkubmZvcm1hdHMgPSBBUlJBWV9TSVpF
+KGZvcm1hdHNfd2luX2Z1bGwpLAo+IC0JLmVuYWJsZSA9IFZPUF9SRUcoUkszMDM2X1NZU19DVFJM
+LCAweDEsIDApLAo+IC0JLmZvcm1hdCA9IFZPUF9SRUcoUkszMDM2X1NZU19DVFJMLCAweDcsIDMp
+LAo+IC0JLnJiX3N3YXAgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHgxLCAxNSksCj4gLQku
+YWN0X2luZm8gPSBWT1BfUkVHKFJLMzAzNl9XSU4wX0FDVF9JTkZPLCAweDFmZmYxZmZmLCAwKSwK
+PiAtCS5kc3BfaW5mbyA9IFZPUF9SRUcoUkszMDM2X1dJTjBfRFNQX0lORk8sIDB4MGZmZjBmZmYs
+IDApLAo+IC0JLmRzcF9zdCA9IFZPUF9SRUcoUkszMDM2X1dJTjBfRFNQX1NULCAweDFmZmYxZmZm
+LCAwKSwKPiAtCS55cmdiX21zdCA9IFZPUF9SRUcoUkszMDM2X1dJTjBfWVJHQl9NU1QsIDB4ZmZm
+ZmZmZmYsIDApLAo+IC0JLnV2X21zdCA9IFZPUF9SRUcoUkszMDM2X1dJTjBfQ0JSX01TVCwgMHhm
+ZmZmZmZmZiwgMCksCj4gLQkueXJnYl92aXIgPSBWT1BfUkVHKFJLMzAzNl9XSU4wX1ZJUiwgMHhm
+ZmZmLCAwKSwKPiAtCS51dl92aXIgPSBWT1BfUkVHKFJLMzAzNl9XSU4wX1ZJUiwgMHgxZmZmLCAx
+NiksCj4gLX07Cj4gLQo+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fcGh5IHJrMzAzNl93
+aW4xX2RhdGEgPSB7Cj4gLQkuZGF0YV9mb3JtYXRzID0gZm9ybWF0c193aW5fbGl0ZSwKPiAtCS5u
+Zm9ybWF0cyA9IEFSUkFZX1NJWkUoZm9ybWF0c193aW5fbGl0ZSksCj4gLQkuZW5hYmxlID0gVk9Q
+X1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4MSwgMSksCj4gLQkuZm9ybWF0ID0gVk9QX1JFRyhSSzMw
+MzZfU1lTX0NUUkwsIDB4NywgNiksCj4gLQkucmJfc3dhcCA9IFZPUF9SRUcoUkszMDM2X1NZU19D
+VFJMLCAweDEsIDE5KSwKPiAtCS5hY3RfaW5mbyA9IFZPUF9SRUcoUkszMDM2X1dJTjFfQUNUX0lO
+Rk8sIDB4MWZmZjFmZmYsIDApLAo+IC0JLmRzcF9pbmZvID0gVk9QX1JFRyhSSzMwMzZfV0lOMV9E
+U1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCj4gLQkuZHNwX3N0ID0gVk9QX1JFRyhSSzMwMzZfV0lO
+MV9EU1BfU1QsIDB4MWZmZjFmZmYsIDApLAo+IC0JLnlyZ2JfbXN0ID0gVk9QX1JFRyhSSzMwMzZf
+V0lOMV9NU1QsIDB4ZmZmZmZmZmYsIDApLAo+IC0JLnlyZ2JfdmlyID0gVk9QX1JFRyhSSzMwMzZf
+V0lOMV9WSVIsIDB4ZmZmZiwgMCksCj4gLX07Cj4gLQo+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHZv
+cF93aW5fZGF0YSByazMwMzZfdm9wX3dpbl9kYXRhW10gPSB7Cj4gLQl7IC5iYXNlID0gMHgwMCwg
+LnBoeSA9ICZyazMwMzZfd2luMF9kYXRhLAo+IC0JICAudHlwZSA9IERSTV9QTEFORV9UWVBFX1BS
+SU1BUlkgfSwKPiAtCXsgLmJhc2UgPSAweDAwLCAucGh5ID0gJnJrMzAzNl93aW4xX2RhdGEsCj4g
+LQkgIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfQ1VSU09SIH0sCj4gLX07Cj4gLQo+IC1zdGF0aWMg
+Y29uc3QgaW50IHJrMzAzNl92b3BfaW50cnNbXSA9IHsKPiAtCURTUF9IT0xEX1ZBTElEX0lOVFIs
+Cj4gLQlGU19JTlRSLAo+IC0JTElORV9GTEFHX0lOVFIsCj4gLQlCVVNfRVJST1JfSU5UUiwKPiAt
+fTsKPiAtCj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2ludHIgcmszMDM2X2ludHIgPSB7Cj4g
+LQkuaW50cnMgPSByazMwMzZfdm9wX2ludHJzLAo+IC0JLm5pbnRycyA9IEFSUkFZX1NJWkUocmsz
+MDM2X3ZvcF9pbnRycyksCj4gLQkuc3RhdHVzID0gVk9QX1JFRyhSSzMwMzZfSU5UX1NUQVRVUywg
+MHhmLCAwKSwKPiAtCS5lbmFibGUgPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVTLCAweGYsIDQp
+LAo+IC0JLmNsZWFyID0gVk9QX1JFRyhSSzMwMzZfSU5UX1NUQVRVUywgMHhmLCA4KSwKPiAtfTsK
+PiAtCj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2N0cmwgcmszMDM2X2N0cmxfZGF0YSA9IHsK
+PiAtCS5zdGFuZGJ5ID0gVk9QX1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4MSwgMzApLAo+IC0JLm91
+dF9tb2RlID0gVk9QX1JFRyhSSzMwMzZfRFNQX0NUUkwwLCAweGYsIDApLAo+IC0JLnBpbl9wb2wg
+PSBWT1BfUkVHKFJLMzAzNl9EU1BfQ1RSTDAsIDB4ZiwgNCksCj4gLQkuaHRvdGFsX3B3ID0gVk9Q
+X1JFRyhSSzMwMzZfRFNQX0hUT1RBTF9IU19FTkQsIDB4MWZmZjFmZmYsIDApLAo+IC0JLmhhY3Rf
+c3RfZW5kID0gVk9QX1JFRyhSSzMwMzZfRFNQX0hBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwK
+PiAtCS52dG90YWxfcHcgPSBWT1BfUkVHKFJLMzAzNl9EU1BfVlRPVEFMX1ZTX0VORCwgMHgxZmZm
+MWZmZiwgMCksCj4gLQkudmFjdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzAzNl9EU1BfVkFDVF9TVF9F
+TkQsIDB4MWZmZjFmZmYsIDApLAo+IC0JLmNmZ19kb25lID0gVk9QX1JFRyhSSzMwMzZfUkVHX0NG
+R19ET05FLCAweDEsIDApLAo+IC19Owo+IC0KPiAtc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfcmVn
+X2RhdGEgcmszMDM2X3ZvcF9pbml0X3JlZ190YWJsZVtdID0gewo+IC0Je1JLMzAzNl9EU1BfQ1RS
+TDEsIDB4MDAwMDAwMDB9LAo+IC19Owo+IC0KPiAtc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0
+YSByazMwMzZfdm9wID0gewo+IC0JLmluaXRfdGFibGUgPSByazMwMzZfdm9wX2luaXRfcmVnX3Rh
+YmxlLAo+IC0JLnRhYmxlX3NpemUgPSBBUlJBWV9TSVpFKHJrMzAzNl92b3BfaW5pdF9yZWdfdGFi
+bGUpLAo+IC0JLmN0cmwgPSAmcmszMDM2X2N0cmxfZGF0YSwKPiAtCS5pbnRyID0gJnJrMzAzNl9p
+bnRyLAo+IC0JLndpbiA9IHJrMzAzNl92b3Bfd2luX2RhdGEsCj4gLQkud2luX3NpemUgPSBBUlJB
+WV9TSVpFKHJrMzAzNl92b3Bfd2luX2RhdGEpLAo+IC19Owo+IC0KPiAgIHN0YXRpYyBjb25zdCBz
+dHJ1Y3Qgb2ZfZGV2aWNlX2lkIHZvcF9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKPiAtCXsgLmNvbXBh
+dGlibGUgPSAicm9ja2NoaXAscmszMjg4LXZvcCIsCj4gLQkgIC5kYXRhID0gJnJrMzI4OF92b3Ag
+fSwKPiAgIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi12b3AiLAo+ICAgCSAgLmRh
+dGEgPSAmcmszMDM2X3ZvcCB9LAo+ICsJeyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMyODgt
+dm9wIiwKPiArCSAgLmRhdGEgPSAmcmszMjg4X3ZvcCB9LAo+ICAgCXt9LAo+ICAgfTsKPiAgIE1P
+RFVMRV9ERVZJQ0VfVEFCTEUob2YsIHZvcF9kcml2ZXJfZHRfbWF0Y2gpOwoKCi0tIArvvK1hcmsg
+WWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
