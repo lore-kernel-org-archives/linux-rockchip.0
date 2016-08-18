@@ -1,149 +1,112 @@
-From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 1/4] mfd: RK808: Add RK818 support
-Date: Thu, 18 Aug 2016 15:34:40 +0100
-Message-ID: <20160818143440.GG4254@dell>
-References: <1470819907-11237-1-git-send-email-w.egorov@phytec.de>
- <1470819907-11237-2-git-send-email-w.egorov@phytec.de>
-Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 2/2] drm/rockchip: Use DRM_DEV_ERROR in vop
+Date: Thu, 18 Aug 2016 09:38:51 -0700
+Message-ID: <CAOw6vbJFsNBgDZjpGJ62KK56Qm896gPgR0DAsOof-BLzG+YbCg@mail.gmail.com>
+References: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
+ <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
+ <57B5776E.2040902@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <rtc-linux+bncBDA7X7F2WUEBBJUO266QKGQE5RSGNQI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-Content-Disposition: inline
-In-Reply-To: <1470819907-11237-2-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/rtc-linux
-List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/rtc-linux/subscribe>
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <57B5776E.2040902@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 10 Aug 2016, Wadim Egorov wrote:
-
-> The RK818 chip is a Power Management IC (PMIC) for multimedia and handhel=
-d
-> devices. It contains the following components:
->=20
-> - Regulators
-> - RTC
-> - Clocking
-> - Battery support
->=20
-> Both RK808 and RK818 chips are using a similar register map,
-> so we can reuse the RTC and Clocking functionality.
->=20
-> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> Tested-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> Changes since v6:
-> - Squashed in the patch
->   mfd: RK808: Fetch PMIC variant from chip id register
->=20
-> ---
->  drivers/mfd/Kconfig       |   4 +-
->  drivers/mfd/rk808.c       | 226 +++++++++++++++++++++++++++++++++++++++-=
-------
->  include/linux/mfd/rk808.h | 154 +++++++++++++++++++++++++++++--
->  3 files changed, 342 insertions(+), 42 deletions(-)
->=20
-> diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-> index 2d1fb64..a55be95 100644
-> --- a/drivers/mfd/Kconfig
-> +++ b/drivers/mfd/Kconfig
-> @@ -852,13 +852,13 @@ config MFD_RC5T583
->  	  different functionality of the device.
-> =20
->  config MFD_RK808
-> -	tristate "Rockchip RK808 Power Management chip"
-> +	tristate "Rockchip RK808/RK818 Power Management Chip"
->  	depends on I2C && OF
->  	select MFD_CORE
->  	select REGMAP_I2C
->  	select REGMAP_IRQ
->  	help
-> -	  If you say yes here you get support for the RK808
-> +	  If you say yes here you get support for the RK808 and RK818
->  	  Power Management chips.
->  	  This driver provides common support for accessing the device
->  	  through I2C interface. The device supports multiple sub-devices
-> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-> index 49d7f62..fbec1d8 100644
-> --- a/drivers/mfd/rk808.c
-> +++ b/drivers/mfd/rk808.c
-> @@ -1,11 +1,15 @@
->  /*
-> - * MFD core driver for Rockchip RK808
-> + * MFD core driver for Rockchip RK808/RK818
->   *
->   * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
->   *
->   * Author: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->   * Author: Zhang Qing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->   *
-> + * Copyright (C) 2016 PHYTEC Messtechnik GmbH
-> + *
-> + * Author: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> + *
->   * This program is free software; you can redistribute it and/or modify =
-it
->   * under the terms and conditions of the GNU General Public License,
->   * version 2, as published by the Free Software Foundation.
-> @@ -22,6 +26,7 @@
->  #include <linux/mfd/core.h>
->  #include <linux/module.h>
->  #include <linux/regmap.h>
-> +#include <linux/of_device.h>
-
-Alphabetical.
-
->  struct rk808_reg_data {
->  	int addr;
-> @@ -57,6 +62,14 @@ static bool rk808_is_volatile_reg(struct device *dev, =
-unsigned int reg)
->  	return false;
->  }
-> =20
-> +static const struct regmap_config rk818_regmap_config =3D {
-> +	.reg_bits =3D 8,
-> +	.val_bits =3D 8,
-> +	.max_register =3D RK818_USB_CTRL_REG,
-> +	.cache_type =3D REGCACHE_RBTREE,
-> +	.volatile_reg =3D rk808_is_volatile_reg,
-> +};
-> +
->  static const struct regmap_config rk808_regmap_config =3D {
->  	.reg_bits =3D 8,
->  	.val_bits =3D 8,
-> @@ -79,11 +92,21 @@ static const struct mfd_cell rk808s[] =3D {
->  	{
->  		.name =3D "rk808-rtc",
->  		.num_resources =3D ARRAY_SIZE(rtc_resources),
-> -		.resources =3D &rtc_resources[0],
-> +		.resources =3D rtc_resources,
-
-?
-
->  	},
->  };
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
-
---=20
-You received this message because you are subscribed to "rtc-linux".
-Membership options at http://groups.google.com/group/rtc-linux .
-Please read http://groups.google.com/group/rtc-linux/web/checklist
-before submitting a driver.
----=20
-You received this message because you are subscribed to the Google Groups "=
-rtc-linux" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
-For more options, visit https://groups.google.com/d/optout.
+T24gVGh1LCBBdWcgMTgsIDIwMTYgYXQgMTo1MyBBTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPiBPbiAyMDE25bm0MDjmnIgxM+aXpSAwMTowMCwgU2VhbiBQYXVs
+IHdyb3RlOgo+Pgo+PiBTaW5jZSB3ZSBjYW4gaGF2ZSBtdWx0aXBsZSB2b3BzLCB1c2UgRFJNX0RF
+Vl9FUlJPUiB0bwo+PiBtYWtlIGxvZ3MgZWFzaWVyIHRvIHByb2Nlc3MuCj4+Cj4+IFNpZ25lZC1v
+ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+Cj4KPiBsb29rcyBnb29k
+IGZvciBtZQo+Cj4gQWNrZWQtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrY2hpcC5jb20+Cj4K
+CkFwcGxpZWQgdG8gZHJtLW1pc2MKCj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAyNAo+PiArKysrKysrKysrKysrKy0tLS0tLS0tLS0KPj4g
+ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMTAgZGVsZXRpb25zKC0pCj4+Cj4+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
+Cj4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiBpbmRl
+eCAzMTc0NGZlLi5lYzhhZDAwIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMKPj4gQEAgLTIzOCw3ICsyMzgsNyBAQCBzdGF0aWMgZW51bSB2b3Bf
+ZGF0YV9mb3JtYXQKPj4gdm9wX2NvbnZlcnRfZm9ybWF0KHVpbnQzMl90IGZvcm1hdCkKPj4gICAg
+ICAgICBjYXNlIERSTV9GT1JNQVRfTlYyNDoKPj4gICAgICAgICAgICAgICAgIHJldHVybiBWT1Bf
+Rk1UX1lVVjQ0NFNQOwo+PiAgICAgICAgIGRlZmF1bHQ6Cj4+IC0gICAgICAgICAgICAgICBEUk1f
+RVJST1IoInVuc3VwcG9ydCBmb3JtYXRbJTA4eF1cbiIsIGZvcm1hdCk7Cj4+ICsgICAgICAgICAg
+ICAgICBEUk1fRVJST1IoInVuc3VwcG9ydGVkIGZvcm1hdFslMDh4XVxuIiwgZm9ybWF0KTsKPj4g
+ICAgICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+PiAgICAgICAgIH0KPj4gICB9Cj4+IEBA
+IC0zMTUsNyArMzE1LDcgQEAgc3RhdGljIHZvaWQgc2NsX3ZvcF9jYWxfc2NsX2ZhYyhzdHJ1Y3Qg
+dm9wICp2b3AsIGNvbnN0Cj4+IHN0cnVjdCB2b3Bfd2luX2RhdGEgKndpbiwKPj4gICAgICAgICBp
+bnQgdnNraXBsaW5lcyA9IDA7Cj4+ICAgICAgICAgaWYgKGRzdF93ID4gMzg0MCkgewo+PiAtICAg
+ICAgICAgICAgICAgRFJNX0VSUk9SKCJNYXhpbXVtIGRlc3RpbmF0aW9uIHdpZHRoICgzODQwKSBl
+eGNlZWRlZFxuIik7Cj4+ICsgICAgICAgICAgICAgICBEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAi
+TWF4aW11bSBkc3Qgd2lkdGggKDM4NDApCj4+IGV4Y2VlZGVkXG4iKTsKPj4gICAgICAgICAgICAg
+ICAgIHJldHVybjsKPj4gICAgICAgICB9Cj4+ICAgQEAgLTM1MywxMSArMzUzLDExIEBAIHN0YXRp
+YyB2b2lkIHNjbF92b3BfY2FsX3NjbF9mYWMoc3RydWN0IHZvcCAqdm9wLAo+PiBjb25zdCBzdHJ1
+Y3Qgdm9wX3dpbl9kYXRhICp3aW4sCj4+ICAgICAgICAgVk9QX1NDTF9TRVRfRVhUKHZvcCwgd2lu
+LCBsYl9tb2RlLCBsYl9tb2RlKTsKPj4gICAgICAgICBpZiAobGJfbW9kZSA9PSBMQl9SR0JfMzg0
+MFgyKSB7Cj4+ICAgICAgICAgICAgICAgICBpZiAoeXJnYl92ZXJfc2NsX21vZGUgIT0gU0NBTEVf
+Tk9ORSkgewo+PiAtICAgICAgICAgICAgICAgICAgICAgICBEUk1fRVJST1IoIkVSUk9SIDogbm90
+IGFsbG93IHlyZ2IgdmVyIHNjYWxlXG4iKTsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgRFJN
+X0RFVl9FUlJPUih2b3AtPmRldiwgIm5vdCBhbGxvdyB5cmdiIHZlcgo+PiBzY2FsZVxuIik7Cj4+
+ICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybjsKPj4gICAgICAgICAgICAgICAgIH0KPj4g
+ICAgICAgICAgICAgICAgIGlmIChjYmNyX3Zlcl9zY2xfbW9kZSAhPSBTQ0FMRV9OT05FKSB7Cj4+
+IC0gICAgICAgICAgICAgICAgICAgICAgIERSTV9FUlJPUigiRVJST1IgOiBub3QgYWxsb3cgY2Jj
+ciB2ZXIgc2NhbGVcbiIpOwo+PiArICAgICAgICAgICAgICAgICAgICAgICBEUk1fREVWX0VSUk9S
+KHZvcC0+ZGV2LCAibm90IGFsbG93IGNiY3IgdmVyCj4+IHNjYWxlXG4iKTsKPj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgcmV0dXJuOwo+PiAgICAgICAgICAgICAgICAgfQo+PiAgICAgICAgICAg
+ICAgICAgdnN1X21vZGUgPSBTQ0FMRV9VUF9CSUw7Cj4+IEBAIC05NzAsNyArOTcwLDggQEAgc3Rh
+dGljIHZvaWQgdm9wX2NydGNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPj4gICAgICAg
+ICAgICAgICAgIFZPUF9DVFJMX1NFVCh2b3AsIG1pcGlfZW4sIDEpOwo+PiAgICAgICAgICAgICAg
+ICAgYnJlYWs7Cj4+ICAgICAgICAgZGVmYXVsdDoKPj4gLSAgICAgICAgICAgICAgIERSTV9FUlJP
+UigidW5zdXBwb3J0IGNvbm5lY3Rvcl90eXBlWyVkXVxuIiwKPj4gcy0+b3V0cHV0X3R5cGUpOwo+
+PiArICAgICAgICAgICAgICAgRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgInVuc3VwcG9ydGVkIGNv
+bm5lY3Rvcl90eXBlCj4+IFslZF1cbiIsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHMtPm91dHB1dF90eXBlKTsKPj4gICAgICAgICB9Cj4+ICAgICAgICAgVk9QX0NUUkxfU0VUKHZv
+cCwgb3V0X21vZGUsIHMtPm91dHB1dF9tb2RlKTsKPj4gICBAQCAtMTE1NCw3ICsxMTU1LDggQEAg
+c3RhdGljIGlycXJldHVybl90IHZvcF9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKPj4gICAgICAg
+ICAvKiBVbmhhbmRsZWQgaXJxcyBhcmUgc3B1cmlvdXMuICovCj4+ICAgICAgICAgaWYgKGFjdGl2
+ZV9pcnFzKQo+PiAtICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJVbmtub3duIFZPUCBJUlFzOiAl
+IzAyeFxuIiwgYWN0aXZlX2lycXMpOwo+PiArICAgICAgICAgICAgICAgRFJNX0RFVl9FUlJPUih2
+b3AtPmRldiwgIlVua25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLAo+PiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBhY3RpdmVfaXJxcyk7Cj4+ICAgICAgICAgcmV0dXJuIHJldDsKPj4gICB9
+Cj4+IEBAIC0xMTg5LDcgKzExOTEsOCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1
+Y3Qgdm9wICp2b3ApCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgd2luX2RhdGEtPnBoeS0+bmZvcm1hdHMsCj4+ICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgd2luX2RhdGEtPnR5cGUsIE5VTEwpOwo+PiAgICAgICAg
+ICAgICAgICAgaWYgKHJldCkgewo+PiAtICAgICAgICAgICAgICAgICAgICAgICBEUk1fRVJST1Io
+ImZhaWxlZCB0byBpbml0aWFsaXplIHBsYW5lXG4iKTsKPj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBpbml0IHBsYW5lCj4+ICVkXG4i
+LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldCk7Cj4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXBfcGxhbmVzOwo+PiAgICAgICAgICAg
+ICAgICAgfQo+PiAgIEBAIC0xMjI3LDcgKzEyMzAsOCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVf
+Y3J0YyhzdHJ1Y3Qgdm9wICp2b3ApCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgd2luX2RhdGEtPnBoeS0+bmZvcm1hdHMsCj4+ICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgd2luX2RhdGEtPnR5cGUsIE5VTEwpOwo+
+PiAgICAgICAgICAgICAgICAgaWYgKHJldCkgewo+PiAtICAgICAgICAgICAgICAgICAgICAgICBE
+Uk1fRVJST1IoImZhaWxlZCB0byBpbml0aWFsaXplIG92ZXJsYXkgcGxhbmVcbiIpOwo+PiArICAg
+ICAgICAgICAgICAgICAgICAgICBEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGlu
+aXQgb3ZlcmxheQo+PiAlZFxuIiwKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICByZXQpOwo+PiAgICAgICAgICAgICAgICAgICAgICAgICBnb3RvIGVycl9jbGVhbnVwX2Ny
+dGM7Cj4+ICAgICAgICAgICAgICAgICB9Cj4+ICAgICAgICAgICAgICAgICBkcm1fcGxhbmVfaGVs
+cGVyX2FkZCgmdm9wX3dpbi0+YmFzZSwgJnBsYW5lX2hlbHBlcl9mdW5jcyk7Cj4+IEBAIC0xMjM1
+LDggKzEyMzksOCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9wICp2b3Ap
+Cj4+ICAgICAgICAgcG9ydCA9IG9mX2dldF9jaGlsZF9ieV9uYW1lKGRldi0+b2Zfbm9kZSwgInBv
+cnQiKTsKPj4gICAgICAgICBpZiAoIXBvcnQpIHsKPj4gLSAgICAgICAgICAgICAgIERSTV9FUlJP
+Uigibm8gcG9ydCBub2RlIGZvdW5kIGluICVzXG4iLAo+PiAtICAgICAgICAgICAgICAgICAgICAg
+ICAgIGRldi0+b2Zfbm9kZS0+ZnVsbF9uYW1lKTsKPj4gKyAgICAgICAgICAgICAgIERSTV9ERVZf
+RVJST1Iodm9wLT5kZXYsICJubyBwb3J0IG5vZGUgZm91bmQgaW4gJXNcbiIsCj4+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIGRldi0+b2Zfbm9kZS0+ZnVsbF9uYW1lKTsKPj4gICAgICAg
+ICAgICAgICAgIHJldCA9IC1FTk9FTlQ7Cj4+ICAgICAgICAgICAgICAgICBnb3RvIGVycl9jbGVh
+bnVwX2NydGM7Cj4+ICAgICAgICAgfQo+Cj4KPgo+IC0tCj4g77ytYXJrIFlhbwo+Cj4KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
