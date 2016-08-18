@@ -1,96 +1,90 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH] mmc: core: need retune if error value is -EIO
-Date: Thu, 18 Aug 2016 11:42:46 +0300
-Message-ID: <70e55374-0e7a-3f4a-9d53-9d5357dd4117@intel.com>
-References: <1470299459-8478-1-git-send-email-shawn.lin@rock-chips.com>
- <a9e28ac9-9db6-18d0-d4a6-9a283ec4dc80@intel.com>
- <ee12053c-d849-7845-bbc1-78869e4daa28@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 2/2] drm/rockchip: Use DRM_DEV_ERROR in vop
+Date: Thu, 18 Aug 2016 16:53:02 +0800
+Message-ID: <57B5776E.2040902@rock-chips.com>
+References: <1471021254-2563-1-git-send-email-seanpaul@chromium.org>
+ <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ee12053c-d849-7845-bbc1-78869e4daa28@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1471021254-2563-3-git-send-email-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 18/08/16 11:10, Shawn Lin wrote:
-> On 2016/8/18 15:19, Adrian Hunter wrote:
->> On 04/08/16 11:30, Shawn Lin wrote:
->>> We need to do retune if receiving -EIO, otherwise we
->>> could see debug dump like:
->>>
->>> [ 89.057226] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
->>> [ 89.058811] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
->>> [ 89.059415] bcmsdh_sdmmc: Failed to Read byte F1:@0x1000e=ff, Err: -84
->>> [ 89.254248] dwmmc_rockchip fe310000.dwmmc: Successfully tuned phase to 199
->>> [ 89.273912] dhd_set_suspend: Remove extra suspend setting
->>> [ 89.274478] dhd_enable_packet_filter: enter, value = 0
->>> 64 bytes from 112.90.83.112: icmp_seq=24 ttl=53 time=1321 ms
->>> 64 bytes from 112.90.83.112: icmp_seq=25 ttl=53 time=319 ms
->>> 64 bytes from 112.90.83.112: icmp_seq=26 ttl=53 time=69.8 ms
->>> 64 bytes from 112.90.83.112: icmp_seq=27 ttl=53 time=37.5 ms
->>> ...
->>>
->>> In this case we see dw_mmc finally enter retune process, but
->>> if this patch is applied, we could save more time to make it
->>> work. Also many host drivers will generate -EIO, so this patch
->>> can also prevent them from failing to enter retune process.
->>
->> The current logic is re-tune on CRC errors.  -EIO isn't informative
->> and drivers can use it for cases that clearly are not related to tuning.
->>
-> 
-> It actually relates to tuning. If failing to sample data or cmd-resp,
-> the controller generate timeout interrupt in principle rather than
-> explicit CRC ones.
-
-So that is driver-specific.  So that driver needs to use mmc_retune_needed()
-in that case.
-
-> explicit CRC ones. So it makes sense for them to return -EIO instead of
-> -EILSEQ as it's hard for the driver to understand what was happening,
-> crc? device is broken? ...
-> 
->> A driver can call mmc_retune_needed() itself in other cases.
-> 
-> It's no so clear to this retune design as if the driver already knows
-> it's a CRC, it will generate -EILSEQ and let core do tuning again, so
-> it means they don't need to call mmc_return_needed in their drivers.
-> Unless let drivers return CRC in any cases of CRC or timeout, but that
-> may make core do tuning more frequently even if not relating to tuning
-> which seems a little painful.
-> 
-> So it looks quite vague to me.:)
-> 
->>
->>>
->>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>> ---
->>>
->>>  drivers/mmc/core/core.c | 3 ++-
->>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
->>> index e55cde6..18d0af5 100644
->>> --- a/drivers/mmc/core/core.c
->>> +++ b/drivers/mmc/core/core.c
->>> @@ -133,7 +133,8 @@ void mmc_request_done(struct mmc_host *host, struct
->>> mmc_request *mrq)
->>>      /* Flag re-tuning needed on CRC errors */
->>>      if ((cmd->opcode != MMC_SEND_TUNING_BLOCK &&
->>>          cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200) &&
->>> -        (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
->>> +        (err == -EILSEQ || err == -EIO ||
->>> +        (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
->>>          (mrq->data && mrq->data->error == -EILSEQ) ||
->>>          (mrq->stop && mrq->stop->error == -EILSEQ)))
->>>          mmc_retune_needed(host);
->>>
->>
->>
->>
->>
-> 
-> 
+T24gMjAxNuW5tDA45pyIMTPml6UgMDE6MDAsIFNlYW4gUGF1bCB3cm90ZToKPiBTaW5jZSB3ZSBj
+YW4gaGF2ZSBtdWx0aXBsZSB2b3BzLCB1c2UgRFJNX0RFVl9FUlJPUiB0bwo+IG1ha2UgbG9ncyBl
+YXNpZXIgdG8gcHJvY2Vzcy4KPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
+Y2hyb21pdW0ub3JnPgoKbG9va3MgZ29vZCBmb3IgbWUKCkFja2VkLWJ5OiBNYXJrIFlhbyA8bWFy
+ay55YW9Acm9ja2NoaXAuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuYyB8IDI0ICsrKysrKysrKysrKysrLS0tLS0tLS0tLQo+ICAgMSBmaWxl
+IGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggMzE3NDRmZS4uZWM4
+YWQwMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+Ywo+IEBAIC0yMzgsNyArMjM4LDcgQEAgc3RhdGljIGVudW0gdm9wX2RhdGFfZm9ybWF0IHZvcF9j
+b252ZXJ0X2Zvcm1hdCh1aW50MzJfdCBmb3JtYXQpCj4gICAJY2FzZSBEUk1fRk9STUFUX05WMjQ6
+Cj4gICAJCXJldHVybiBWT1BfRk1UX1lVVjQ0NFNQOwo+ICAgCWRlZmF1bHQ6Cj4gLQkJRFJNX0VS
+Uk9SKCJ1bnN1cHBvcnQgZm9ybWF0WyUwOHhdXG4iLCBmb3JtYXQpOwo+ICsJCURSTV9FUlJPUigi
+dW5zdXBwb3J0ZWQgZm9ybWF0WyUwOHhdXG4iLCBmb3JtYXQpOwo+ICAgCQlyZXR1cm4gLUVJTlZB
+TDsKPiAgIAl9Cj4gICB9Cj4gQEAgLTMxNSw3ICszMTUsNyBAQCBzdGF0aWMgdm9pZCBzY2xfdm9w
+X2NhbF9zY2xfZmFjKHN0cnVjdCB2b3AgKnZvcCwgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAq
+d2luLAo+ICAgCWludCB2c2tpcGxpbmVzID0gMDsKPiAgIAo+ICAgCWlmIChkc3RfdyA+IDM4NDAp
+IHsKPiAtCQlEUk1fRVJST1IoIk1heGltdW0gZGVzdGluYXRpb24gd2lkdGggKDM4NDApIGV4Y2Vl
+ZGVkXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiTWF4aW11bSBkc3Qgd2lkdGgg
+KDM4NDApIGV4Y2VlZGVkXG4iKTsKPiAgIAkJcmV0dXJuOwo+ICAgCX0KPiAgIAo+IEBAIC0zNTMs
+MTEgKzM1MywxMSBAQCBzdGF0aWMgdm9pZCBzY2xfdm9wX2NhbF9zY2xfZmFjKHN0cnVjdCB2b3Ag
+KnZvcCwgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAqd2luLAo+ICAgCVZPUF9TQ0xfU0VUX0VY
+VCh2b3AsIHdpbiwgbGJfbW9kZSwgbGJfbW9kZSk7Cj4gICAJaWYgKGxiX21vZGUgPT0gTEJfUkdC
+XzM4NDBYMikgewo+ICAgCQlpZiAoeXJnYl92ZXJfc2NsX21vZGUgIT0gU0NBTEVfTk9ORSkgewo+
+IC0JCQlEUk1fRVJST1IoIkVSUk9SIDogbm90IGFsbG93IHlyZ2IgdmVyIHNjYWxlXG4iKTsKPiAr
+CQkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIm5vdCBhbGxvdyB5cmdiIHZlciBzY2FsZVxuIik7
+Cj4gICAJCQlyZXR1cm47Cj4gICAJCX0KPiAgIAkJaWYgKGNiY3JfdmVyX3NjbF9tb2RlICE9IFND
+QUxFX05PTkUpIHsKPiAtCQkJRFJNX0VSUk9SKCJFUlJPUiA6IG5vdCBhbGxvdyBjYmNyIHZlciBz
+Y2FsZVxuIik7Cj4gKwkJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJub3QgYWxsb3cgY2JjciB2
+ZXIgc2NhbGVcbiIpOwo+ICAgCQkJcmV0dXJuOwo+ICAgCQl9Cj4gICAJCXZzdV9tb2RlID0gU0NB
+TEVfVVBfQklMOwo+IEBAIC05NzAsNyArOTcwLDggQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZW5h
+YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgIAkJVk9QX0NUUkxfU0VUKHZvcCwgbWlwaV9l
+biwgMSk7Cj4gICAJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gLQkJRFJNX0VSUk9SKCJ1bnN1cHBv
+cnQgY29ubmVjdG9yX3R5cGVbJWRdXG4iLCBzLT5vdXRwdXRfdHlwZSk7Cj4gKwkJRFJNX0RFVl9F
+UlJPUih2b3AtPmRldiwgInVuc3VwcG9ydGVkIGNvbm5lY3Rvcl90eXBlIFslZF1cbiIsCj4gKwkJ
+CSAgICAgIHMtPm91dHB1dF90eXBlKTsKPiAgIAl9Cj4gICAJVk9QX0NUUkxfU0VUKHZvcCwgb3V0
+X21vZGUsIHMtPm91dHB1dF9tb2RlKTsKPiAgIAo+IEBAIC0xMTU0LDcgKzExNTUsOCBAQCBzdGF0
+aWMgaXJxcmV0dXJuX3Qgdm9wX2lzcihpbnQgaXJxLCB2b2lkICpkYXRhKQo+ICAgCj4gICAJLyog
+VW5oYW5kbGVkIGlycXMgYXJlIHNwdXJpb3VzLiAqLwo+ICAgCWlmIChhY3RpdmVfaXJxcykKPiAt
+CQlEUk1fRVJST1IoIlVua25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLCBhY3RpdmVfaXJxcyk7Cj4g
+KwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIlVua25vd24gVk9QIElSUXM6ICUjMDJ4XG4iLAo+
+ICsJCQkgICAgICBhY3RpdmVfaXJxcyk7Cj4gICAKPiAgIAlyZXR1cm4gcmV0Owo+ICAgfQo+IEBA
+IC0xMTg5LDcgKzExOTEsOCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9w
+ICp2b3ApCj4gICAJCQkJCSAgICAgICB3aW5fZGF0YS0+cGh5LT5uZm9ybWF0cywKPiAgIAkJCQkJ
+ICAgICAgIHdpbl9kYXRhLT50eXBlLCBOVUxMKTsKPiAgIAkJaWYgKHJldCkgewo+IC0JCQlEUk1f
+RVJST1IoImZhaWxlZCB0byBpbml0aWFsaXplIHBsYW5lXG4iKTsKPiArCQkJRFJNX0RFVl9FUlJP
+Uih2b3AtPmRldiwgImZhaWxlZCB0byBpbml0IHBsYW5lICVkXG4iLAo+ICsJCQkJICAgICAgcmV0
+KTsKPiAgIAkJCWdvdG8gZXJyX2NsZWFudXBfcGxhbmVzOwo+ICAgCQl9Cj4gICAKPiBAQCAtMTIy
+Nyw3ICsxMjMwLDggQEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3RydWN0IHZvcCAqdm9w
+KQo+ICAgCQkJCQkgICAgICAgd2luX2RhdGEtPnBoeS0+bmZvcm1hdHMsCj4gICAJCQkJCSAgICAg
+ICB3aW5fZGF0YS0+dHlwZSwgTlVMTCk7Cj4gICAJCWlmIChyZXQpIHsKPiAtCQkJRFJNX0VSUk9S
+KCJmYWlsZWQgdG8gaW5pdGlhbGl6ZSBvdmVybGF5IHBsYW5lXG4iKTsKPiArCQkJRFJNX0RFVl9F
+UlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBpbml0IG92ZXJsYXkgJWRcbiIsCj4gKwkJCQkgICAg
+ICByZXQpOwo+ICAgCQkJZ290byBlcnJfY2xlYW51cF9jcnRjOwo+ICAgCQl9Cj4gICAJCWRybV9w
+bGFuZV9oZWxwZXJfYWRkKCZ2b3Bfd2luLT5iYXNlLCAmcGxhbmVfaGVscGVyX2Z1bmNzKTsKPiBA
+QCAtMTIzNSw4ICsxMjM5LDggQEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3RydWN0IHZv
+cCAqdm9wKQo+ICAgCj4gICAJcG9ydCA9IG9mX2dldF9jaGlsZF9ieV9uYW1lKGRldi0+b2Zfbm9k
+ZSwgInBvcnQiKTsKPiAgIAlpZiAoIXBvcnQpIHsKPiAtCQlEUk1fRVJST1IoIm5vIHBvcnQgbm9k
+ZSBmb3VuZCBpbiAlc1xuIiwKPiAtCQkJICBkZXYtPm9mX25vZGUtPmZ1bGxfbmFtZSk7Cj4gKwkJ
+RFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIm5vIHBvcnQgbm9kZSBmb3VuZCBpbiAlc1xuIiwKPiAr
+CQkJICAgICAgZGV2LT5vZl9ub2RlLT5mdWxsX25hbWUpOwo+ICAgCQlyZXQgPSAtRU5PRU5UOwo+
+ICAgCQlnb3RvIGVycl9jbGVhbnVwX2NydGM7Cj4gICAJfQoKCi0tIArvvK1hcmsgWWFvCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
