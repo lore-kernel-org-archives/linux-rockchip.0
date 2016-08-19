@@ -1,110 +1,109 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RFC PATCH] mmc: dw_mmc: avoid race condition of cpu and IDMAC
-Date: Fri, 19 Aug 2016 15:58:45 +0800
-Message-ID: <5ffddf5f-b12e-8140-24a5-aa7138f5c288@rock-chips.com>
-References: <CGME20160816032803epcas1p4e04d5cf42e25d1dd6480961cc0c96475@epcas1p4.samsung.com>
- <1471317827-6049-1-git-send-email-shawn.lin@rock-chips.com>
- <2562aa02-f83c-9d04-9cd9-c2de2a34d629@samsung.com>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 1/4] mfd: RK808: Add RK818 support
+Date: Fri, 19 Aug 2016 09:33:36 +0100
+Message-ID: <20160819083336.GI4254@dell>
+References: <1470819907-11237-1-git-send-email-w.egorov@phytec.de>
+ <1470819907-11237-2-git-send-email-w.egorov@phytec.de>
+ <20160818143440.GG4254@dell>
+ <57B6A4D1.20108@phytec.de>
+Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2562aa02-f83c-9d04-9cd9-c2de2a34d629-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <rtc-linux+bncBDA7X7F2WUEBBB4I3O6QKGQEPYKRJAI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+Content-Disposition: inline
+In-Reply-To: <57B6A4D1.20108-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/rtc-linux
+List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/rtc-linux/subscribe>
+To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTYvOC8xNyAxNzo1MiwgSmFlaG9vbiBDaHVuZyDlhpnpgZM6Cj4gSGkgU2hhd24sCj4K
-PiBPbiAwOC8xNi8yMDE2IDEyOjIzIFBNLCBTaGF3biBMaW4gd3JvdGU6Cj4+IFdlIGNvdWxkIHNl
-ZSBhbiBvYnZpb3VzIHJhY2UgY29uZGl0aW9uIGJ5IHRlc3QgdGhhdAo+PiB0aGUgZm9ybWVyIHdy
-aXRlIG9wZXJhdGlvbiBieSBJRE1BQyBhaW1pbmcgdG8gY2xlYXIKPj4gT1dOIGJpdCByZWFjaCBy
-aWdodCBhZnRlciB0aGUgbGF0ZXIgY29uZmlndXJhdGlvbiBvZgo+PiB0aGUgc2FtZSBkZXNjLCB3
-aGljaCBtYWtlcyB0aGUgSURNQUMgYmUgaW4gU1VTUEVORAo+PiBzdGF0ZSBhcyB0aGUgT1dOIGJp
-dCB3YXMgY2xlYXJlZCBieSB0aGUgYXN5bmNocm9ub3VzCj4+IHdyaXRlIG9wZXJhdGlvbiBvZiBJ
-RE1BQy4gVGhlIGJ1ZyBjYW4gYmUgdmVyeSBlYXN5Cj4+IHJlcHJvZHVjZWQgb24gUkszMjg4IG9y
-IHNpbWlsYXIgd2hlbiBsb3dlcmluZyB0aGUKPj4gYmFuZHdpZHRoIG9mIGJ1cyBhbmQgYWdncmF2
-YXRpbmcgdGhlIFFvcyB0byBtYWtlIHRoZQo+PiBsYXJnZSBudW1iZXJzIG9mIElQIGZpZ2h0IGZv
-ciB0aGUgcHJpb3JpdHkuIE9uZSBwb3NzaWJsZQo+PiByZXBsYWNlYWJsZSBzb2x1dGlvbiBtYXkg
-YmUgYWxsb2MgZHVhbCBidWZmIGZvciB0aGUKPj4gZGVzYyB0byBhdm9pZCBpdCBidXQgY291bGQg
-c3RpbGwgcmFjZSBlYWNoIG90aGVyCj4+IHRoZW9yZXRpY2FsbHkuCj4KPiBJdCBtYWtlcyBzZW5z
-ZS4KPiBCdXQgU29ycnkuLmkgZGlkbid0IHVuZGVyc3RhbmQgd2hhdCAid2hlbiBsb3dlcmluZyB0
-aGUgYmFuZHdpZHRoIG9mIGJ1cy4uIiBtZWFucy4uCgpJIHdpbGwgYW1lbmQgaXQuIFdoYXQgSSBh
-Y3R1YWxseSBtZWFuIGlzIHRvIHJlZHVjZSB0aGUgcnVubmluZyByYXRlIG9mCnN5c3RlbSBidXMg
-d2l0aG91dCB0b3VjaGluZyB0aGUgcmF0ZSBvZiBDUFUuIFRoaXMgbWFrZXMgdGhlIENQVSBydW4K
-bW9yZSBmYXRlciB0aGFuIG90aGVyIG1hc3RlcnMgbGlrZSBJRE1BQy4KCj4KPiBBY2NvcmRpbmcg
-dG8gVFJNLCB3ZSBuZWVkIHRvIGNoZWNrIHdoZXRoZXIgT1dOIGJpdCBpcyBzZXQgb3Igbm90Lgo+
-IEJ1dCBpdCBzZWVtcyB0aGF0IGl0J3MgcmVsYXRlZCB3aXRoIGNvbnRyb2xsaW5nIFBMRE1ORCBy
-ZWdpc3Rlci4KPiBJIG5lZWQgdG8gY2hlY2sgYW5kIHJlYWQgVFJNIGluIG1vcmUgZGV0YWlsLgoK
-UGVyIHRoZSBUUk0sCgoiVGhlIElETUFDIGVuZ2luZSBmZXRjaGVzIHRoZSBkZXNjcmlwdG9yIGFu
-ZCBjaGVja3MgdGhlIE9XTiBiaXQuIElmIHRoZQpPV04gYml0IGlzIG5vdCBzZXQsIGl0IG1lYW5z
-IHRoYXQgdGhlIGhvc3Qgb3ducyB0aGUgZGVzY3JpcHRvci4gSW4gdGhpcwpjYXNlIHRoZSBETUEg
-ZW50ZXJzIHN1c3BlbmQgc3RhdGUgYW5kIGFzc2VydHMgdGhlIERlc2NyaXB0b3IgVW5hYmxlCmlu
-dGVycnVwdCBpbiB0aGUgSURTVFMgcmVnaXN0ZXIgKElEU1RTNjQgcmVnaXN0ZXIsIGluIGNhc2Ug
-b2YgNjQtYml0CmFkZHJlc3MgY29uZmlndXJhdGlvbikuIEluIHN1Y2ggYSBjYXNlLCB0aGUgaG9z
-dCBuZWVkcyB0byByZWxlYXNlIHRoZQpJRE1BQyBieSB3cml0aW5nIGFueSB2YWx1ZSB0byB0aGUg
-cG9sbCBkZW1hbmQgcmVnaXN0ZXIuICIKClNvIGluIHRoaXMgY2FzZSwgaXQgc2hvdWxkIGdlbmVy
-YXRlIGEgSU5UIGZvciBJRFNUUyg2NCkgYW5kIHJlbGVhc2UgdGhlCklETUFDIGJ5IHdyaXRpbmcg
-dG8gUExETU5ELCB0aGVuIHdlIHJldHJ5IGl0IHVudGlsIElETUFDIG93bnMgdGhlCmRlc2NyaXB0
-b3IuIEl0J3MgcXVpdGUgYSB2ZXJib3NlIGJlaGF2aW91ciBhbmQgd2Ugc2hvdWxkIGRvIG1vcmUg
-YSBsb3QKZm9yIHRoZSB0YXNrbGV0IHRvIG92ZXJjb21lIHRoaXMgcGFpbi4uLgoKSXQncyBzYW5l
-IHRvIGp1c3QgdmVyaWZ5IHRoZSBvd24gYml0IGZyb20gbWVtb3J5IHdoZW4gcHJlcGFyaW5nIGRl
-c2MsCmFuZCBpdCBkb2Vzbid0IGNvc3QgcGVyZm9ybWFuY2UgZnJvbSB0aGUgdGVzdCBhcyBpdCBp
-cyByZWFsbHkgZmV3IHRvCm1lZXQgdGhpcyBjYXNlLgoKPgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBT
-aGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4KPj4gLS0tCj4+Cj4+ICBkcml2
-ZXJzL21tYy9ob3N0L2R3X21tYy5jIHwgMzQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKwo+PiAgMSBmaWxlIGNoYW5nZWQsIDM0IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvbW1jL2hvc3QvZHdfbW1jLmMgYi9kcml2ZXJzL21tYy9ob3N0L2R3X21tYy5j
-Cj4+IGluZGV4IDMyMzgwZDUuLjdiMDFmYWIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbW1jL2hv
-c3QvZHdfbW1jLmMKPj4gKysrIGIvZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYwo+PiBAQCAtNDkw
-LDYgKzQ5MCwyMyBAQCBzdGF0aWMgdm9pZCBkd19tY2lfdHJhbnNsYXRlX3NnbGlzdChzdHJ1Y3Qg
-ZHdfbWNpICpob3N0LCBzdHJ1Y3QgbW1jX2RhdGEgKmRhdGEsCj4+ICAJCQkJbGVuZ3RoIC09IGRl
-c2NfbGVuOwo+Pgo+PiAgCQkJCS8qCj4+ICsJCQkJICogT1dOIGJpdCBzaG91bGQgYmUgY2xlYXIg
-YnkgSURNQUMgYWZ0ZXIKPj4gKwkJCQkgKiBmaW5pc2hpbmcgdHJhbnNmZXIuIExldCdzIHdhaXQg
-Zm9yIHRoZQo+PiArCQkJCSAqIGFzeW5jaHJvbm91cyBvcGVyYXRpb24gb2YgSURNQUMgYW5kIGNw
-dQo+PiArCQkJCSAqIHRvIG1ha2Ugc3VyZSB0aGF0IHdlIGRvIG5vdCByZWx5IG9uIHRoZQo+PiAr
-CQkJCSAqIG9yZGVyIG9mIFFvcyBvZiBidXMgYW5kIGFyY2hpdGVjdHVyZS4KPj4gKwkJCQkgKiBP
-dGhlcndpc2Ugd2UgY291bGQgc2VlIGEgcmFjZSBjb25kaXRpb24KPj4gKwkJCQkgKiBoZXJlIHRo
-YXQgdGhlIGZvcm1lciB3cml0ZSBvcGVyYXRpb24gb2YKPj4gKwkJCQkgKiBJRE1BQyh0byBjbGVh
-ciB0aGUgT1dOIGJpdCkgcmVhY2ggcmlnaHQKPj4gKwkJCQkgKiBhZnRlciB0aGUgbGF0ZXIgbmV3
-IGNvbmZpZ3VyYXRpb24gb2YgZGVzYwo+PiArCQkJCSAqIHdoaWNoIG1ha2VzIHZhbHVlIG9mIGRl
-c2MgYmVlbiBjb3ZlcmVkCj4+ICsJCQkJICogbGVhZGluZyB0byBETUFfU1VTUEVORCBzdGF0ZSBh
-cyBJRE1BQyBmZWN0aAo+PiArCQkJCSAqIHRoZSB3cm9uZyBkZXNjIHRoZW4uCj4+ICsJCQkJICov
-Cj4+ICsJCQkJd2hpbGUgKChyZWFkbCgmZGVzYy0+ZGVzMCkgJiBJRE1BQ19ERVMwX09XTikpCj4+
-ICsJCQkJCTsKPgo+IFdlbGwsIEkgZG9uJ3QgbGlrZSB0aGlzIHN0eWxlLi5iZWNhdXNlIGl0IGhh
-cyB0aGUgcG90ZW50aWFsIHJpc2sgZm9yIGluZmluaXRlIGxvb3AuCj4gQW5kIENvdWxkIHlvdSBt
-YWtlIHRoZSBjb21tZW50IG1vcmUgc2ltcGxlciB0aGFuIG5vdz8KCnllcywgSSB3aWxsIHJlbW92
-ZSB0aGUgUkZDIHByZWZpeCBhbmQgZml4IHRoZXNlLgoKCj4KPj4gKwo+PiArCQkJCS8qCj4+ICAJ
-CQkJICogU2V0IHRoZSBPV04gYml0IGFuZCBkaXNhYmxlIGludGVycnVwdHMKPj4gIAkJCQkgKiBm
-b3IgdGhpcyBkZXNjcmlwdG9yCj4+ICAJCQkJICovCj4+IEBAIC01MzUsNiArNTUyLDIzIEBAIHN0
-YXRpYyB2b2lkIGR3X21jaV90cmFuc2xhdGVfc2dsaXN0KHN0cnVjdCBkd19tY2kgKmhvc3QsIHN0
-cnVjdCBtbWNfZGF0YSAqZGF0YSwKPj4gIAkJCQlsZW5ndGggLT0gZGVzY19sZW47Cj4+Cj4+ICAJ
-CQkJLyoKPj4gKwkJCQkgKiBPV04gYml0IHNob3VsZCBiZSBjbGVhciBieSBJRE1BQyBhZnRlcgo+
-PiArCQkJCSAqIGZpbmlzaGluZyB0cmFuc2Zlci4gTGV0J3Mgd2FpdCBmb3IgdGhlCj4+ICsJCQkJ
-ICogYXN5bmNocm9ub3VzIG9wZXJhdGlvbiBvZiBJRE1BQyBhbmQgY3B1Cj4+ICsJCQkJICogdG8g
-bWFrZSBzdXJlIHRoYXQgd2UgZG8gbm90IHJlbHkgb24gdGhlCj4+ICsJCQkJICogb3JkZXIgb2Yg
-UW9zIG9mIGJ1cyBhbmQgYXJjaGl0ZWN0dXJlLgo+PiArCQkJCSAqIE90aGVyd2lzZSB3ZSBjb3Vs
-ZCBzZWUgYSByYWNlIGNvbmRpdGlvbgo+PiArCQkJCSAqIGhlcmUgdGhhdCB0aGUgZm9ybWVyIHdy
-aXRlIG9wZXJhdGlvbiBvZgo+PiArCQkJCSAqIElETUFDKHRvIGNsZWFyIHRoZSBPV04gYml0KSBy
-ZWFjaCByaWdodAo+PiArCQkJCSAqIGFmdGVyIHRoZSBsYXRlciBuZXcgY29uZmlndXJhdGlvbiBv
-ZiBkZXNjCj4+ICsJCQkJICogd2hpY2ggbWFrZXMgdmFsdWUgb2YgZGVzYyBiZWVuIGNvdmVyZWQK
-Pj4gKwkJCQkgKiBsZWFkaW5nIHRvIERNQV9TVVNQRU5EIHN0YXRlIGFzIElETUFDIGZlY3RoCj4+
-ICsJCQkJICogdGhlIHdyb25nIGRlc2MgdGhlbi4KPj4gKwkJCQkgKi8KPj4gKwkJCQl3aGlsZSAo
-KHJlYWRsKCZkZXNjLT5kZXMwKSAmIElETUFDX0RFUzBfT1dOKSkKPj4gKwkJCQkJOwo+Cj4gRGl0
-dG8uCj4KPj4gKwo+PiArCQkJCS8qCj4+ICAJCQkJICogU2V0IHRoZSBPV04gYml0IGFuZCBkaXNh
-YmxlIGludGVycnVwdHMKPj4gIAkJCQkgKiBmb3IgdGhpcyBkZXNjcmlwdG9yCj4+ICAJCQkJICov
-Cj4+Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Cj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAKPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, 19 Aug 2016, Wadim Egorov wrote:
+> On 18.08.2016 16:34, Lee Jones wrote:
+> > On Wed, 10 Aug 2016, Wadim Egorov wrote:
+> >
+> >> The RK818 chip is a Power Management IC (PMIC) for multimedia and hand=
+held
+> >> devices. It contains the following components:
+> >>
+> >> - Regulators
+> >> - RTC
+> >> - Clocking
+> >> - Battery support
+> >>
+> >> Both RK808 and RK818 chips are using a similar register map,
+> >> so we can reuse the RTC and Clocking functionality.
+> >>
+> >> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+> >> Tested-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> ---
+> >> Changes since v6:
+> >> - Squashed in the patch
+> >>   mfd: RK808: Fetch PMIC variant from chip id register
+> >>
+> >> ---
+> >>  drivers/mfd/Kconfig       |   4 +-
+> >>  drivers/mfd/rk808.c       | 226 +++++++++++++++++++++++++++++++++++++=
+++-------
+> >>  include/linux/mfd/rk808.h | 154 +++++++++++++++++++++++++++++--
+> >>  3 files changed, 342 insertions(+), 42 deletions(-)
+
+[...]
+
+> >>  struct rk808_reg_data {
+> >>  	int addr;
+> >> @@ -57,6 +62,14 @@ static bool rk808_is_volatile_reg(struct device *de=
+v, unsigned int reg)
+> >>  	return false;
+> >>  }
+> >> =20
+> >> +static const struct regmap_config rk818_regmap_config =3D {
+> >> +	.reg_bits =3D 8,
+> >> +	.val_bits =3D 8,
+> >> +	.max_register =3D RK818_USB_CTRL_REG,
+> >> +	.cache_type =3D REGCACHE_RBTREE,
+> >> +	.volatile_reg =3D rk808_is_volatile_reg,
+> >> +};
+> >> +
+> >>  static const struct regmap_config rk808_regmap_config =3D {
+> >>  	.reg_bits =3D 8,
+> >>  	.val_bits =3D 8,
+> >> @@ -79,11 +92,21 @@ static const struct mfd_cell rk808s[] =3D {
+> >>  	{
+> >>  		.name =3D "rk808-rtc",
+> >>  		.num_resources =3D ARRAY_SIZE(rtc_resources),
+> >> -		.resources =3D &rtc_resources[0],
+> >> +		.resources =3D rtc_resources,
+> > ?
+>=20
+> you told me to change this
+
+It's an unrelated change that has nothing to do with this patch, which
+is why I am confused.
+
+But it's okay, I'll let it sneak in on this occasion, rather than
+asking you to send a separate patch.
+
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
+
+--=20
+You received this message because you are subscribed to "rtc-linux".
+Membership options at http://groups.google.com/group/rtc-linux .
+Please read http://groups.google.com/group/rtc-linux/web/checklist
+before submitting a driver.
+---=20
+You received this message because you are subscribed to the Google Groups "=
+rtc-linux" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
+For more options, visit https://groups.google.com/d/optout.
