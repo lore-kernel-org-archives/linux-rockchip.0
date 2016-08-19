@@ -1,64 +1,83 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 3/8] clk: rockchip: rk3399: add ddrc clock support
-Date: Fri, 19 Aug 2016 14:26:34 +0200
-Message-ID: <3094872.dpWUHq2nPG@phil>
-References: <1471386989-9541-1-git-send-email-hl@rock-chips.com>
- <1471386989-9541-4-git-send-email-hl@rock-chips.com>
+From: Zhang Rui <rui.zhang@intel.com>
+Subject: Re: [PATCH 1/2] thermal: rockchip: enhance the tsadc's bandgap
+ feature for rk3399
+Date: Fri, 19 Aug 2016 21:09:24 +0800
+Message-ID: <1471612164.2691.73.camel@intel.com>
+References: <1469628643-29661-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471386989-9541-4-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: tixy@linaro.org, mark.rutland@arm.com, dbasehore@chromium.org, cw00.choi@samsung.com, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, sudeep.holla@arm.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1469628643-29661-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: smbarber@chromium.org, dianders@chromium.org, briannorris@chromium.org, Rocky Hao <rocky.hao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDE3LiBBdWd1c3QgMjAxNiwgMDY6MzY6MjQgQ0VTVCBzY2hyaWViIExpbiBI
-dWFuZzoKPiBhZGQgZGRyYyBjbG9jayBzZXR0aW5nLCBzbyB3ZSBjYW4gZG8gZGRyIGZyZXF1ZW5j
-eQo+IHNjYWxpbmcgb24gcmszMzk5IHBsYXRmb3JtIGluIGZ1dHVyZS4KPiAKPiBTaWduZWQtb2Zm
-LWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IENoYW5nZXMgaW4gdjY6
-Cj4gLSBOb25lCj4gCj4gQ2hhbmdlcyBpbiB2NToKPiAtIGZpdCBmb3IgdGhlIGRkciB0eXBlCj4g
-Cj4gQ2hhbmdlcyBpbiB2NDoKPiAtIE5vbmUKPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gTm9uZQo+
-IAo+IENoYW5nZXMgaW4gdjI6Cj4gLSByZW1vdmUgY2xrX2RkcmNfZHBsbF9zcmMgZnJvbSBjcml0
-aWNhbCBjbG9jayBsaXN0Cj4gCj4gQ2hhbmdlcyBpbiB2MToKPiAtIHJlbW92ZSBkZHJjIHNvdXJj
-ZSBDTEtfSUdOT1JFX1VOVVNFRCBmbGFnCj4gLSBtb3ZlIGNsa19kZHJjIGFuZCBjbGtfZGRyY19k
-cGxsX3NyYyB0byBjcml0aWNhbAo+IAo+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5
-LmMgfCAxOSArKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRp
-b25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTku
-Ywo+IGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jIGluZGV4IGU0NDVjZDYuLjAx
-ZDQ5NDUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4g
-KysrIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4gQEAgLTEyMCw2ICsxMjAs
-MTAgQEAgUE5BTUUobXV4X2FybWNsa2JfcCkJCQkJPSB7IAoiY2xrX2NvcmVfYl9scGxsX3NyYyIs
-Cj4gIAkJCQkJCSAgICAiY2xrX2NvcmVfYl9icGxsX3NyYyIsCj4gIAkJCQkJCSAgICAiY2xrX2Nv
-cmVfYl9kcGxsX3NyYyIsCj4gIAkJCQkJCSAgICAiY2xrX2NvcmVfYl9ncGxsX3NyYyIgfTsKPiAr
-UE5BTUUobXV4X2RkcmNsa19wKQkJCQk9IHsgImNsa19kZHJjX2xwbGxfc3JjIiwKPiArCQkJCQkJ
-ICAgICJjbGtfZGRyY19icGxsX3NyYyIsCj4gKwkJCQkJCSAgICAiY2xrX2RkcmNfZHBsbF9zcmMi
-LAo+ICsJCQkJCQkgICAgImNsa19kZHJjX2dwbGxfc3JjIiB9Owo+ICBQTkFNRShtdXhfYWNsa19j
-Y2lfcCkJCQkJPSB7ICJjcGxsX2FjbGtfY2NpX3NyYyIsCj4gIAkJCQkJCSAgICAiZ3BsbF9hY2xr
-X2NjaV9zcmMiLAo+ICAJCQkJCQkgICAgIm5wbGxfYWNsa19jY2lfc3JjIiwKPiBAQCAtMTM3OSw2
-ICsxMzgzLDE4IEBAIHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX2JyYW5jaAo+IHJrMzM5OV9j
-bGtfYnJhbmNoZXNbXSBfX2luaXRkYXRhID0geyBDT01QT1NJVEVfTk9NVVgoMCwgImNsa190ZXN0
-IiwKPiAiY2xrX3Rlc3RfcHJlIiwgQ0xLX0lHTk9SRV9VTlVTRUQsIFJLMzM2OF9DTEtTRUxfQ09O
-KDU4KSwgMCwgNSwgREZMQUdTLAo+ICAJCQlSSzMzNjhfQ0xLR0FURV9DT04oMTMpLCAxMSwgR0ZM
-QUdTKSwKPiArCj4gKwkvKiBkZHJjICovCj4gKwlHQVRFKDAsICJjbGtfZGRyY19scGxsX3NyYyIs
-ICJscGxsIiwgMCwgUkszMzk5X0NMS0dBVEVfQ09OKDMpLAo+ICsJICAgICAwLCBHRkxBR1MpLAo+
-ICsJR0FURSgwLCAiY2xrX2RkcmNfYnBsbF9zcmMiLCAiYnBsbCIsIDAsIFJLMzM5OV9DTEtHQVRF
-X0NPTigzKSwKPiArCSAgICAgMSwgR0ZMQUdTKSwKPiArCUdBVEUoMCwgImNsa19kZHJjX2RwbGxf
-c3JjIiwgImRwbGwiLCAwLCBSSzMzOTlfQ0xLR0FURV9DT04oMyksCj4gKwkgICAgIDIsIEdGTEFH
-UyksCj4gKwlHQVRFKDAsICJjbGtfZGRyY19ncGxsX3NyYyIsICJncGxsIiwgMCwgUkszMzk5X0NM
-S0dBVEVfQ09OKDMpLAo+ICsJICAgICAzLCBHRkxBR1MpLAo+ICsJQ09NUE9TSVRFX0REUkNMSyhT
-Q0xLX0REUkMsICJjbGtfZGRyYyIsIG11eF9kZHJjbGtfcCwgMCwKCkkgdGhpbmsgSSdkIGxpa2Ug
-dG8gaGF2ZSB0aGUgY2xvY2sgYWxzbyBuYW1lZCBzY2xrX2RkcmMgOi0pCgpPdGhlcndpc2UgdGhh
-dCBsb29rcyBmaW5lCgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCg==
+On 三, 2016-07-27 at 22:10 +0800, Caesar Wang wrote:
+> From: Rocky Hao <rocky.hao@rock-chips.com>
+> 
+> Due to the voltage ripple, the sensing data of the tsadc is not
+> accurate.
+> And in this patch, the bandgap feature is enhanced to remove the
+> voltage
+> ripple, and then the tsadc can sense the temperature more precisely.
+> 
+> Obsolete codes are removed as well.
+> 
+> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Eduardo Valentin <edubezval@gmail.com>
+> Cc: Zhang Rui <rui.zhang@intel.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-pm@vger.kernel.org
+
+Both patches applied and queued for 4.9.
+
+thanks,
+rui
+> ---
+> 
+>  drivers/thermal/rockchip_thermal.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c
+> b/drivers/thermal/rockchip_thermal.c
+> index db5ecc5..a90423d 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -222,10 +222,10 @@ struct rockchip_thermal_data {
+>  #define GRF_TSADC_TESTBIT_L			0x0e648
+>  #define GRF_TSADC_TESTBIT_H			0x0e64c
+>  
+> -#define GRF_TSADC_TSEN_PD_ON			(0x30003 << 0)
+> -#define GRF_TSADC_TSEN_PD_OFF			(0x30000 << 0)
+>  #define GRF_SARADC_TESTBIT_ON			(0x10001 << 2)
+>  #define GRF_TSADC_TESTBIT_H_ON			(0x10001 << 2)
+> +#define GRF_TSADC_VCM_EN_L			(0x10001 << 7)
+> +#define GRF_TSADC_VCM_EN_H			(0x10001 << 7)
+>  
+>  /**
+>   * struct tsadc_table - code to temperature conversion table
+> @@ -567,9 +567,10 @@ static void rk_tsadcv3_initialize(struct regmap
+> *grf, void __iomem *regs,
+>  			       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
+>  
+>  	} else {
+> -		regmap_write(grf, GRF_TSADC_TESTBIT_L,
+> GRF_TSADC_TSEN_PD_ON);
+> -		mdelay(10);
+> -		regmap_write(grf, GRF_TSADC_TESTBIT_L,
+> GRF_TSADC_TSEN_PD_OFF);
+> +		/* Enable the voltage common mode feature */
+> +		regmap_write(grf, GRF_TSADC_TESTBIT_L,
+> GRF_TSADC_VCM_EN_L);
+> +		regmap_write(grf, GRF_TSADC_TESTBIT_H,
+> GRF_TSADC_VCM_EN_H);
+> +
+>  		usleep_range(15, 100); /* The spec note says at
+> least 15 us */
+>  		regmap_write(grf, GRF_SARADC_TESTBIT,
+> GRF_SARADC_TESTBIT_ON);
+>  		regmap_write(grf, GRF_TSADC_TESTBIT_H,
+> GRF_TSADC_TESTBIT_H_ON);
