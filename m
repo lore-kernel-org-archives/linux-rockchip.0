@@ -1,109 +1,223 @@
-From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 1/4] mfd: RK808: Add RK818 support
-Date: Fri, 19 Aug 2016 09:33:36 +0100
-Message-ID: <20160819083336.GI4254@dell>
-References: <1470819907-11237-1-git-send-email-w.egorov@phytec.de>
- <1470819907-11237-2-git-send-email-w.egorov@phytec.de>
- <20160818143440.GG4254@dell>
- <57B6A4D1.20108@phytec.de>
-Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/2] mmc: dw_mmc: split out preparation of desc for IDMAC32
+ and IDMAC64
+Date: Fri, 19 Aug 2016 17:40:14 +0800
+Message-ID: <1471599615-6249-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <rtc-linux+bncBDA7X7F2WUEBBB4I3O6QKGQEPYKRJAI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-Content-Disposition: inline
-In-Reply-To: <57B6A4D1.20108-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/rtc-linux
-List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/rtc-linux/subscribe>
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 19 Aug 2016, Wadim Egorov wrote:
-> On 18.08.2016 16:34, Lee Jones wrote:
-> > On Wed, 10 Aug 2016, Wadim Egorov wrote:
-> >
-> >> The RK818 chip is a Power Management IC (PMIC) for multimedia and hand=
-held
-> >> devices. It contains the following components:
-> >>
-> >> - Regulators
-> >> - RTC
-> >> - Clocking
-> >> - Battery support
-> >>
-> >> Both RK808 and RK818 chips are using a similar register map,
-> >> so we can reuse the RTC and Clocking functionality.
-> >>
-> >> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> >> Tested-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> ---
-> >> Changes since v6:
-> >> - Squashed in the patch
-> >>   mfd: RK808: Fetch PMIC variant from chip id register
-> >>
-> >> ---
-> >>  drivers/mfd/Kconfig       |   4 +-
-> >>  drivers/mfd/rk808.c       | 226 +++++++++++++++++++++++++++++++++++++=
-++-------
-> >>  include/linux/mfd/rk808.h | 154 +++++++++++++++++++++++++++++--
-> >>  3 files changed, 342 insertions(+), 42 deletions(-)
+We intend to add more check for descriptors when
+preparing desc. Let's spilt out the separate body
+to make the dw_mci_translate_sglist not so lengthy.
 
-[...]
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-> >>  struct rk808_reg_data {
-> >>  	int addr;
-> >> @@ -57,6 +62,14 @@ static bool rk808_is_volatile_reg(struct device *de=
-v, unsigned int reg)
-> >>  	return false;
-> >>  }
-> >> =20
-> >> +static const struct regmap_config rk818_regmap_config =3D {
-> >> +	.reg_bits =3D 8,
-> >> +	.val_bits =3D 8,
-> >> +	.max_register =3D RK818_USB_CTRL_REG,
-> >> +	.cache_type =3D REGCACHE_RBTREE,
-> >> +	.volatile_reg =3D rk808_is_volatile_reg,
-> >> +};
-> >> +
-> >>  static const struct regmap_config rk808_regmap_config =3D {
-> >>  	.reg_bits =3D 8,
-> >>  	.val_bits =3D 8,
-> >> @@ -79,11 +92,21 @@ static const struct mfd_cell rk808s[] =3D {
-> >>  	{
-> >>  		.name =3D "rk808-rtc",
-> >>  		.num_resources =3D ARRAY_SIZE(rtc_resources),
-> >> -		.resources =3D &rtc_resources[0],
-> >> +		.resources =3D rtc_resources,
-> > ?
->=20
-> you told me to change this
+ drivers/mmc/host/dw_mmc.c | 148 +++++++++++++++++++++++++---------------------
+ 1 file changed, 81 insertions(+), 67 deletions(-)
 
-It's an unrelated change that has nothing to do with this patch, which
-is why I am confused.
-
-But it's okay, I'll let it sneak in on this occasion, rather than
-asking you to send a separate patch.
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
-
---=20
-You received this message because you are subscribed to "rtc-linux".
-Membership options at http://groups.google.com/group/rtc-linux .
-Please read http://groups.google.com/group/rtc-linux/web/checklist
-before submitting a driver.
----=20
-You received this message because you are subscribed to the Google Groups "=
-rtc-linux" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
-For more options, visit https://groups.google.com/d/optout.
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 32380d5..0a5a49f 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -467,103 +467,117 @@ static void dw_mci_dmac_complete_dma(void *arg)
+ 	}
+ }
+ 
+-static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+-				    unsigned int sg_len)
++static inline void dw_mci_prepare_desc64(struct dw_mci *host,
++					 struct mmc_data *data,
++					 unsigned int sg_len)
+ {
+ 	unsigned int desc_len;
++	struct idmac_desc_64addr *desc_first, *desc_last, *desc;
+ 	int i;
+ 
+-	if (host->dma_64bit_address == 1) {
+-		struct idmac_desc_64addr *desc_first, *desc_last, *desc;
+-
+-		desc_first = desc_last = desc = host->sg_cpu;
++	desc_first = desc_last = desc = host->sg_cpu;
+ 
+-		for (i = 0; i < sg_len; i++) {
+-			unsigned int length = sg_dma_len(&data->sg[i]);
++	for (i = 0; i < sg_len; i++) {
++		unsigned int length = sg_dma_len(&data->sg[i]);
+ 
+-			u64 mem_addr = sg_dma_address(&data->sg[i]);
++		u64 mem_addr = sg_dma_address(&data->sg[i]);
+ 
+-			for ( ; length ; desc++) {
+-				desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+-					   length : DW_MCI_DESC_DATA_LENGTH;
++		for ( ; length ; desc++) {
++			desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
++				   length : DW_MCI_DESC_DATA_LENGTH;
+ 
+-				length -= desc_len;
++			length -= desc_len;
+ 
+-				/*
+-				 * Set the OWN bit and disable interrupts
+-				 * for this descriptor
+-				 */
+-				desc->des0 = IDMAC_DES0_OWN | IDMAC_DES0_DIC |
+-							IDMAC_DES0_CH;
++			/*
++			 * Set the OWN bit and disable interrupts
++			 * for this descriptor
++			 */
++			desc->des0 = IDMAC_DES0_OWN | IDMAC_DES0_DIC |
++						IDMAC_DES0_CH;
+ 
+-				/* Buffer length */
+-				IDMAC_64ADDR_SET_BUFFER1_SIZE(desc, desc_len);
++			/* Buffer length */
++			IDMAC_64ADDR_SET_BUFFER1_SIZE(desc, desc_len);
+ 
+-				/* Physical address to DMA to/from */
+-				desc->des4 = mem_addr & 0xffffffff;
+-				desc->des5 = mem_addr >> 32;
++			/* Physical address to DMA to/from */
++			desc->des4 = mem_addr & 0xffffffff;
++			desc->des5 = mem_addr >> 32;
+ 
+-				/* Update physical address for the next desc */
+-				mem_addr += desc_len;
++			/* Update physical address for the next desc */
++			mem_addr += desc_len;
+ 
+-				/* Save pointer to the last descriptor */
+-				desc_last = desc;
+-			}
++			/* Save pointer to the last descriptor */
++			desc_last = desc;
+ 		}
++	}
+ 
+-		/* Set first descriptor */
+-		desc_first->des0 |= IDMAC_DES0_FD;
++	/* Set first descriptor */
++	desc_first->des0 |= IDMAC_DES0_FD;
+ 
+-		/* Set last descriptor */
+-		desc_last->des0 &= ~(IDMAC_DES0_CH | IDMAC_DES0_DIC);
+-		desc_last->des0 |= IDMAC_DES0_LD;
++	/* Set last descriptor */
++	desc_last->des0 &= ~(IDMAC_DES0_CH | IDMAC_DES0_DIC);
++	desc_last->des0 |= IDMAC_DES0_LD;
++}
+ 
+-	} else {
+-		struct idmac_desc *desc_first, *desc_last, *desc;
+ 
+-		desc_first = desc_last = desc = host->sg_cpu;
++static inline void dw_mci_prepare_desc32(struct dw_mci *host,
++					 struct mmc_data *data,
++					 unsigned int sg_len)
++{
++	unsigned int desc_len;
++	struct idmac_desc *desc_first, *desc_last, *desc;
++	int i;
+ 
+-		for (i = 0; i < sg_len; i++) {
+-			unsigned int length = sg_dma_len(&data->sg[i]);
++	desc_first = desc_last = desc = host->sg_cpu;
+ 
+-			u32 mem_addr = sg_dma_address(&data->sg[i]);
++	for (i = 0; i < sg_len; i++) {
++		unsigned int length = sg_dma_len(&data->sg[i]);
+ 
+-			for ( ; length ; desc++) {
+-				desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+-					   length : DW_MCI_DESC_DATA_LENGTH;
++		u32 mem_addr = sg_dma_address(&data->sg[i]);
+ 
+-				length -= desc_len;
++		for ( ; length ; desc++) {
++			desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
++				   length : DW_MCI_DESC_DATA_LENGTH;
+ 
+-				/*
+-				 * Set the OWN bit and disable interrupts
+-				 * for this descriptor
+-				 */
+-				desc->des0 = cpu_to_le32(IDMAC_DES0_OWN |
+-							 IDMAC_DES0_DIC |
+-							 IDMAC_DES0_CH);
++			length -= desc_len;
+ 
+-				/* Buffer length */
+-				IDMAC_SET_BUFFER1_SIZE(desc, desc_len);
++			/*
++			 * Set the OWN bit and disable interrupts
++			 * for this descriptor
++			 */
++			desc->des0 = cpu_to_le32(IDMAC_DES0_OWN |
++						 IDMAC_DES0_DIC |
++						 IDMAC_DES0_CH);
+ 
+-				/* Physical address to DMA to/from */
+-				desc->des2 = cpu_to_le32(mem_addr);
++			/* Buffer length */
++			IDMAC_SET_BUFFER1_SIZE(desc, desc_len);
+ 
+-				/* Update physical address for the next desc */
+-				mem_addr += desc_len;
++			/* Physical address to DMA to/from */
++			desc->des2 = cpu_to_le32(mem_addr);
+ 
+-				/* Save pointer to the last descriptor */
+-				desc_last = desc;
+-			}
++			/* Update physical address for the next desc */
++			mem_addr += desc_len;
++
++			/* Save pointer to the last descriptor */
++			desc_last = desc;
+ 		}
++	}
+ 
+-		/* Set first descriptor */
+-		desc_first->des0 |= cpu_to_le32(IDMAC_DES0_FD);
++	/* Set first descriptor */
++	desc_first->des0 |= cpu_to_le32(IDMAC_DES0_FD);
+ 
+-		/* Set last descriptor */
+-		desc_last->des0 &= cpu_to_le32(~(IDMAC_DES0_CH |
+-					       IDMAC_DES0_DIC));
+-		desc_last->des0 |= cpu_to_le32(IDMAC_DES0_LD);
+-	}
++	/* Set last descriptor */
++	desc_last->des0 &= cpu_to_le32(~(IDMAC_DES0_CH |
++				       IDMAC_DES0_DIC));
++	desc_last->des0 |= cpu_to_le32(IDMAC_DES0_LD);
++}
++
++static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
++				    unsigned int sg_len)
++{
++	if (host->dma_64bit_address == 1)
++		dw_mci_prepare_desc64(host, data, sg_len);
++	else
++		dw_mci_prepare_desc32(host, data, sg_len);
+ 
+ 	wmb(); /* drain writebuffer */
+ }
+-- 
+2.3.7
