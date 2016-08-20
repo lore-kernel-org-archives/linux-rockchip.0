@@ -1,80 +1,39 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] mmc: dw_mmc: return -EILSEQ for EBE and SBE error
-Date: Sat, 20 Aug 2016 11:38:55 +0800
-Message-ID: <1471664335-9650-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] Try to support analog audio codec at firefly reload
+Date: Sat, 20 Aug 2016 19:33:38 +0100
+Message-ID: <20160820183338.33pcyfbtmwjulogk@john.keeping.me.uk>
+References: <1471293727-26258-1-git-send-email-ayaka@soulik.info>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1471293727-26258-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following log we found indicate the fact that dw_mmc
-didn't treat EBE or SBE as a similar problem as CRC error.
--EIO is quite not informative as it may indicate that the device
-is broken rather than that of tuning stuff.
+On Tue, Aug 16, 2016 at 04:42:06AM +0800, Randy Li wrote:
+>   This patch could enabled the es8328 codec at firefly reload board,
+> but it doesn't not really work. I disable the mute of channel 
+> Left mix and Right mix in alsamixer, I could hear the noise from
+> my headphone, but it never be a music. 
+>   I just send this patch here to see whether somebody could figure
+> out what is wrong, I am really not familiar with sound.
 
-...
-[ 89.057226] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-[ 89.058811] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-[ 89.059415] bcmsdh_sdmmc: Failed to Read byte F1:@0x1000e=ff, Err: -84
-[ 89.254248] dwmmc_rockchip fe310000.dwmmc: Successfully tuned phase to 199
-[ 89.273912] dhd_set_suspend: Remove extra suspend setting
-[ 89.274478] dhd_enable_packet_filter: enter, value = 0
-64 bytes from 112.90.83.112: icmp_seq=24 ttl=53 time=1321 ms
-64 bytes from 112.90.83.112: icmp_seq=25 ttl=53 time=319 ms
-64 bytes from 112.90.83.112: icmp_seq=26 ttl=53 time=69.8 ms
-64 bytes from 112.90.83.112: icmp_seq=27 ttl=53 time=37.5 ms
-...
+Have you tried adding an mclk-fs setting to the simple-audio-card?  You
+probably want to set it to 256, which will allow 44.1kHz, 48kHz, 88.2kHz
+and 96kHz at the codec.  This will give more functionality than pinning
+the clock to a specific rate.
 
-For the host, when failing to sample cmd's response due to
-tuning stuff, we still return -EIO as it's quite vague to figure
-out whether it related to signal or just the broken devices, especially
-for the card type detection when booting kernel as all things go well
-but the cmd set used.
+For the Rock2 Square, I write a machine driver for the sound because the
+headphone GPIO setup cannot be made to work with simple-audio-card; I
+found the Firefly Reload schematic and it looks like the configuration
+hardware is very similar.  It's a bit of a mess but you can find it on
+Github [1] if you want to take a look.
 
-But for the data phase, if receiving the cmd's response which
-carrys data transfer, we should have more confidence that it
-is very probably related to the tuning stuff.
-
-Just as the log shown above, we sometimes suffer too much
-this kind of pain as the dw_mmc return -EIO for the case, so
-mmc-core will not do retune and caller drivers like bcm's wifi
-driver, still retry the failure more and more untile dw_mmc
-finally generate CRC.
-
-Adrian suggested that drivers who care the specific cases should
-call mmc_retune_needed rather than doing it in mmc core. It makes
-sense but I'm considering that -EILSEQ actually means illegal sequence
-, so we use it for CRC cases. Meanwhile, SBE/EBE indicate the illegal
-sequence of start bit or end bit for data0~7. So I realize that we should
-use -EILSEQ for them both as well CRC cases.
-
-Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/mmc/host/dw_mmc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 32380d5..b36a4f5 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1691,11 +1691,11 @@ static int dw_mci_data_complete(struct dw_mci *host, struct mmc_data *data)
- 				data->error = -ETIMEDOUT;
- 			} else if (host->dir_status ==
- 					DW_MCI_RECV_STATUS) {
--				data->error = -EIO;
-+				data->error = -EILSEQ;
- 			}
- 		} else {
- 			/* SDMMC_INT_SBE is included */
--			data->error = -EIO;
-+			data->error = -EILSEQ;
- 		}
- 
- 		dev_dbg(host->dev, "data error, status 0x%08x\n", status);
--- 
-2.3.7
-
-
+[1] https://github.com/johnkeeping/linux/tree/topic/audio
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
