@@ -1,61 +1,58 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Mark Rutland <mark.rutland@arm.com>
 Subject: Re: [PATCH v1 2/3] of: Add support for reading a s32 from a
  multi-value property.
-Date: Mon, 22 Aug 2016 22:07:40 +0800
-Message-ID: <5e7a7b9f-44c2-82c2-eb17-ee54efd15503@rock-chips.com>
+Date: Mon, 22 Aug 2016 15:51:57 +0100
+Message-ID: <20160822145157.GD30850@leverpostej>
 References: <1471315139-28285-1-git-send-email-finley.xiao@rock-chips.com>
  <1471315139-28285-3-git-send-email-finley.xiao@rock-chips.com>
- <1471616119.61594.465.camel@infradead.org> <4975010.IL95Y3Sj1J@phil>
+ <1471616119.61594.465.camel@infradead.org>
+ <4975010.IL95Y3Sj1J@phil>
  <1471639654.4611.2.camel@infradead.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1471639654.4611.2.camel-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1471639654.4611.2.camel@infradead.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Woodhouse <dwmw2@infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Finlye Xiao <finley.xiao@rock-chips.com>, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, robh+dt@kernel.org, frowand.list@gmail.com, sre@kernel.org, dbaryshkov@gmail.com, khilman@kernel.org, nm@ti.com, rjw@rjwysocki.net, viresh.kumar@linaro.org, sboyd@codeaurora.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, jay.xu@rock-chips.com, rocky.hao@rock-chips.com, tim.chen@rock-chips.com, tony.xie@rock-chips.com, ulysses.huang@rock-chips.com, lin.huang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNi84LzIwIDQ6NDcsIERhdmlkIFdvb2Rob3VzZSDlhpnpgZM6Cj4gT24gRnJpLCAy
-MDE2LTA4LTE5IGF0IDIyOjQxICswMjAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+IFNvIG5v
-LCBkb24ndCAqYWRkKiBhbnkgbW9yZSBvZiB0aGVzZSBmdW5jdGlvbnMuIE9ubHkgYWRkIHRoZSBn
-ZW5lcmljCj4+PiB2ZXJzaW9uLiBBbmQgaWYgeW91ciBkcml2ZXIgaXNuJ3QgdXNpbmcgdGhlIGdl
-bmVyaWMgcHJvcGVydHkKPj4+IGZ1bmN0aW9ucy4uLiBmaXggaXQuCj4+IEFzIGZhciBhcyBJIGNh
-biBzZWUsIGFsbCB0aGUgZGV2aWNlX3Byb3BlcnR5XyogZnVuY3Rpb25zIGFyZSBncm91bmRlZCBv
-biB0aGVpcgo+PiBvZl9wcm9wZXJ0eV8qLCBhY3BpX3Byb3BlcnR5XyogZXRjIGNvdW50ZXJwYXJ0
-cyBhbmQgZnVuY3Rpb25zIHJlYWRpbmcgc3BlY2lmaWMKPj4gZWxlbWVudHMgKHRoZSBfaW5kZXgg
-dmFyaWFudHMpIGFyZSBjdXJyZW50bHkgbm90IGF2YWlsYWJsZSBhdCBhbGwuCj4+Cj4+IGRyaXZl
-cnMvYmFzZS9wcm9wZXJ0eS5jOgo+PiAjZGVmaW5lIE9GX0RFVl9QUk9QX1JFQURfQVJSQVkobm9k
-ZSwgcHJvcG5hbWUsIHR5cGUsIHZhbCwgbnZhbCkgICAgICAgICAgICAgICAgICAgICAgICAgXAo+
-PiAgICAgICAgICAodmFsKSA/IG9mX3Byb3BlcnR5X3JlYWRfIyN0eXBlIyNfYXJyYXkoKG5vZGUp
-LCAocHJvcG5hbWUpLCAodmFsKSwgKG52YWwpKSAgICAgIFwKPj4gICAgICAgICAgICAgICAgOiBv
-Zl9wcm9wZXJ0eV9jb3VudF9lbGVtc19vZl9zaXplKChub2RlKSwgKHByb3BuYW1lKSwgc2l6ZW9m
-KHR5cGUpKQo+Pgo+PiBTbyBldmVuIGlmIHlvdSdyZSB1c2luZyB0aGUgZGV2aWNlX3Byb3BlcnR5
-XyogZnVuY3Rpb25zIHlvdSdkIHN0aWxsIG5lZWQKPj4gYSBtYXRjaCBpbiB0aGUgdW5kZXJseWlu
-ZyBmdW5jdGlvbnMgb3IgYW0gSSBtaXNzaW5nIHNvbWV0aGluZz8KPiBZZXMsIGJ1dCB0aGUgdW5k
-ZXJseWluZyBmdW5jdGlvbiBzaG91bGQgbmV2ZXIgYmUgdXNlZCBkaXJlY3RseSBieQo+IGRyaXZl
-cnMuIEFuZCBzaG91bGQgcHJvYmFibHkgYmUgcHJlZml4ZWQgd2l0aCBfXyBvciBtYXJrZWQgZGVw
-cmVjYXRlZAo+ICh3aXRoIGFuIG92ZXJyaWRlIGluIGl0cyBvbmUgZ2VudWluZSBjYWxsIHNpdGUp
-Lgo+CgpTbyBjYW4gSSBhZGQgYSBkZXZpY2VfcHJvcGVydHlfcmVhZF9zMzJfYXJyYXkgZnVuY3Rp
-b24gaW4gcHJvcGVydHkuaD8KCi0tLSBhL2luY2x1ZGUvbGludXgvcHJvcGVydHkuaAorKysgYi9p
-bmNsdWRlL2xpbnV4L3Byb3BlcnR5LmgKQEAgLTEwOCw2ICsxMDgsMTMgQEAgc3RhdGljIGlubGlu
-ZSBpbnQgZGV2aWNlX3Byb3BlcnR5X3JlYWRfdTMyKHN0cnVjdCAKZGV2aWNlICpkZXYsCiAgICAg
-ICAgIHJldHVybiBkZXZpY2VfcHJvcGVydHlfcmVhZF91MzJfYXJyYXkoZGV2LCBwcm9wbmFtZSwg
-dmFsLCAxKTsKICB9Cgorc3RhdGljIGlubGluZSBpbnQgZGV2aWNlX3Byb3BlcnR5X3JlYWRfczMy
-X2FycmF5KHN0cnVjdCBkZXZpY2UgKmRldiwgCmNvbnN0IGNoYXIgKnByb3BuYW1lLAorICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHMzMiAqdmFsLCBzaXplX3QgbnZhbCkKK3sKKyAg
-ICAgICByZXR1cm4gZGV2aWNlX3Byb3BlcnR5X3JlYWRfdTMyX2FycmF5KHN0cnVjdCBkZXZpY2Ug
-KmRldiwgY29uc3QgCmNoYXIgKnByb3BuYW1lLAorICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICh1MzIgKil2YWwsIHNpemVfdCBudmFsKTsKK30KCi0tIApGaW5sZXkKCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Aug 19, 2016 at 09:47:34PM +0100, David Woodhouse wrote:
+> On Fri, 2016-08-19 at 22:41 +0200, Heiko Stuebner wrote:
+> > 
+> > > So no, don't *add* any more of these functions. Only add the generic
+> > > version. And if your driver isn't using the generic property
+> > > functions... fix it.
+> > 
+> > As far as I can see, all the device_property_* functions are grounded on their
+> > of_property_*, acpi_property_* etc counterparts and functions reading specific
+> > elements (the _index variants) are currently not available at all.
+> > 
+> > drivers/base/property.c:
+> > #define OF_DEV_PROP_READ_ARRAY(node, propname, type, val, nval)                         \
+> >         (val) ? of_property_read_##type##_array((node), (propname), (val), (nval))      \
+> >               : of_property_count_elems_of_size((node), (propname), sizeof(type))
+> > 
+> > So even if you're using the device_property_* functions you'd still need
+> > a match in the underlying functions or am I missing something?
+> 
+> Yes, but the underlying function should never be used directly by
+> drivers. 
+
+There are properties which never make sense with ACPI, and there are
+drivers which shouldn't exist in the case of ACPI (due to clashes with
+core ACPI functionality). So using of_property_* for those, and not
+matching any ACPI tables is perfectly fine.
+
+IMO, an of_property_read_s32_index() function is perfectly fine (as is
+an ACPI-specific variant, or a unified helper, if that's useful to some
+driver).
+
+There is no need to force drivers to superficially appear to support
+ACPI when they have not been designed with ACPI in mind, and are
+unlikely to function in an ACPI environment.
+
+Thanks,
+Mark.
