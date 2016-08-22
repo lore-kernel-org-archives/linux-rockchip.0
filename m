@@ -1,59 +1,59 @@
-From: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH 4/4] ARM: dts: rockchip: Point rk3288 dwc2 usb at the full
- PHY reset
-Date: Mon, 22 Aug 2016 13:30:01 +0300
-Message-ID: <3fcb28bd-eab1-3460-45ef-487435e64ccc@cogentembedded.com>
-References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com>
- <1471766205-12940-1-git-send-email-ayaka@soulik.info>
- <1471766205-12940-5-git-send-email-ayaka@soulik.info>
- <95d6e178-b9c5-ed40-2adc-5ffd1d78db07@cogentembedded.com>
- <b60bcef2-31d7-5a15-a09a-b71006c99c92@soulik.info>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [v13 PATCH 2/5] phy: Add USB Type-C PHY driver for rk3399
+Date: Mon, 22 Aug 2016 05:07:00 -0700
+Message-ID: <CABXOdTetf_rYLO0ObC=ChL7n6uJiQ43UYN3Lu_s4BX4E=kkzdg@mail.gmail.com>
+References: <1471839798-14729-1-git-send-email-zyw@rock-chips.com>
+ <1471839798-14729-3-git-send-email-zyw@rock-chips.com> <CABXOdTcsOQH068bGthwQMmESf0DbNDz0i3UvPfDjjuHPj8mRUQ@mail.gmail.com>
+ <57BA84F4.2000506@126.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <b60bcef2-31d7-5a15-a09a-b71006c99c92-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <57BA84F4.2000506@126.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris <zywang33@126.com>
+Cc: Chris Zhong <zyw@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, linux-kernel <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Guenter Roeck <groeck@chromium.org>, wulf <wulf@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello.
+Hi Chris,
 
-On 8/21/2016 3:19 PM, ayaka wrote:
+On Sun, Aug 21, 2016 at 9:52 PM, Chris <zywang33@126.com> wrote:
+> Hi Guenter
+>
+[ ... ]
 
->>> The "host1" port (AKA the dwc2 port that isn't the OTG port) on rk3288
->>> has a hardware errata that causes everything to get confused when we get
->>> a remote wakeup.  We'll use the reset that's in the CRU to reset the
->>> port when it's in a bad state.
->>>
->>> Note that we add the reset to both dwc2 controllers even though only one
->>> has the errata in case we find some other use for this reset that's
->>> unrelated to the current hardware errata.  Only the host port gets the
->>> quirk property, though.
->>>
->>> This patch came from Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> originally.
+>>> +static int rockchip_usb3_phy_power_on(struct phy *phy)
+>>> +{
+>>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+>>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+>>> +       const struct usb3phy_reg *reg = &cfg->pipe_status;
+>>> +       int timeout, new_mode, ret = 0;
+>>> +       u32 val;
+>>> +
+>>> +       mutex_lock(&tcphy->lock);
+>>> +
+>>> +       new_mode = tcphy_get_mode(tcphy);
+>>> +       if (new_mode < 0) {
+>>> +               ret = new_mode;
+>>> +               goto unlock_ret;
+>>> +       }
+>>> +
+>>> +       /* DP-only mode; fall back to USB2 */
+>>> +       if (!(new_mode & (MODE_DFP_USB | MODE_UFP_USB)))
+>>> +               goto unlock_ret;
+>>> +
 >>
->>    Was it signed off by him? Don't you need to keep his authorship via th
->> "From:" tag?
+>> The rest of the code (calling tcphy_phy_init(), waiting for pipe
+>> ready) is not needed in this case ?
+>
+>
+> If there is only DP, the tcphy_phy_init will be called by DP controller, and
+> the pipe is for USB3, so do not need do anything, just return a "fake"
+> success here.
+> And the usb phy power off do nothing. Just make USB  controller happier.
+>
 
-> I would rather the idea comes from him, but the implementation is different. I
+Yes, you are right. It is a bit confusing (and I had overlooked) that
+MODE_DFP_USB is set for both USB2 and USB3 if DP isn't active, but if
+DP is active it is only set for USB3.
 
-    Then write exactly that. Because now it sounds like the patch itself was 
-originated from him.
-
-> don't which tag would be
-> better? If the "From:" would be the best choice. I would resend the last two
-> patches.
-
-    There's also "Suggested-by:" tag which might fit here.
-
->>> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-[...]
-
-MBR, Sergei
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Guenter
