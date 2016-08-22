@@ -1,84 +1,68 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] mmc: dw_mmc: return -EILSEQ for EBE and SBE error
-Date: Mon, 22 Aug 2016 10:57:16 +0800
-Message-ID: <1471834636-21057-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH v7 0/8] rk3399 support ddr frequency scaling
+Date: Mon, 22 Aug 2016 11:36:16 +0800
+Message-ID: <1471836984-6316-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, myungjoo.ham@samsung.com
+Cc: tixy@linaro.org, mark.rutland@arm.com, typ@rock-chips.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, cw00.choi@samsung.com, kyungmin.park@samsung.com, sudeep.holla@arm.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following log we found indicate the fact that dw_mmc
-didn't treat EBE or SBE as a similar problem as CRC error.
--EIO is quite not informative as it may indicate that the device
-is broken rather than that of tuning stuff.
+rk3399 platform have dfi controller can monitor ddr load,
+and dcf controller to handle ddr register so we can get the
+right ddr frequency and make ddr controller happy work(which
+will implement in bl31). So we do ddr frequency scaling with
+following flow:
 
-...
-[ 89.057226] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-[ 89.058811] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-[ 89.059415] bcmsdh_sdmmc: Failed to Read byte F1:@0x1000e=ff, Err: -84
-[ 89.254248] dwmmc_rockchip fe310000.dwmmc: Successfully tuned phase to 199
-[ 89.273912] dhd_set_suspend: Remove extra suspend setting
-[ 89.274478] dhd_enable_packet_filter: enter, value = 0
-64 bytes from 112.90.83.112: icmp_seq=24 ttl=53 time=1321 ms
-64 bytes from 112.90.83.112: icmp_seq=25 ttl=53 time=319 ms
-64 bytes from 112.90.83.112: icmp_seq=26 ttl=53 time=69.8 ms
-64 bytes from 112.90.83.112: icmp_seq=27 ttl=53 time=37.5 ms
-...
+             kernel                                bl31
 
-For the host, when failing to sample cmd's response due to
-tuning stuff, we still return -EIO as it's quite vague to figure
-out whether it related to signal or just the broken devices, especially
-for the card type detection when booting kernel as all things go well
-but the cmd set used.
+        monitor ddr load
+                |
+                |
+        get_target_rate
+                |
+                |           pass rate to bl31
+        clk_set_rate(ddr) --------------------->run dcf flow
+                |                                   |
+                |                                   |
+        wait dcf interrupt<-------------------trigger dcf interrupt
+                |
+                |
+              return
 
-But for the data phase, if receiving the cmd's response which
-carriess data transfer, we should have more confidence that it
-is very probably related to the tuning stuff.
+Lin Huang (8):
+  clk: rockchip: add new clock-type for the ddrclk
+  clk: rockchip: rk3399: add SCLK_DDRCLK ID for ddrc
+  clk: rockchip: rk3399: add ddrc clock support
+  Documentation: bindings: add dt documentation for dfi controller
+  PM / devfreq: event: support rockchip dfi controller
+  Documentation: bindings: add dt documentation for rk3399 dmc
+  PM / devfreq: rockchip: add devfreq driver for rk3399 dmc
+  drm/rockchip: Add dmc notifier in vop driver
 
-Just as the log shown above, we sometimes suffer too much
-this kind of pain as the dw_mmc return -EIO for the case, so
-mmc-core will not do retune and caller drivers like bcm's wifi
-driver, still retry the failure more and more until dw_mmc
-finally generate CRC.
+ .../bindings/devfreq/event/rockchip-dfi.txt        |  20 +
+ .../devicetree/bindings/devfreq/rk3399_dmc.txt     |  85 ++++
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-ddr.c                     | 157 +++++++
+ drivers/clk/rockchip/clk-rk3399.c                  |  19 +
+ drivers/clk/rockchip/clk.c                         |   9 +
+ drivers/clk/rockchip/clk.h                         |  35 ++
+ drivers/devfreq/Kconfig                            |  11 +
+ drivers/devfreq/Makefile                           |   1 +
+ drivers/devfreq/event/Kconfig                      |   7 +
+ drivers/devfreq/event/Makefile                     |   1 +
+ drivers/devfreq/event/rockchip-dfi.c               | 256 +++++++++++
+ drivers/devfreq/rk3399_dmc.c                       | 499 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 127 +++++-
+ include/dt-bindings/clock/rk3399-cru.h             |   1 +
+ include/soc/rockchip/rockchip_sip.h                |  27 ++
+ 16 files changed, 1251 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+ create mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+ create mode 100644 drivers/clk/rockchip/clk-ddr.c
+ create mode 100644 drivers/devfreq/event/rockchip-dfi.c
+ create mode 100644 drivers/devfreq/rk3399_dmc.c
+ create mode 100644 include/soc/rockchip/rockchip_sip.h
 
-Adrian suggested that drivers who care the specific cases should
-call mmc_retune_needed rather than doing it in mmc core. It makes
-sense but I'm considering that -EILSEQ actually means illegal sequence
-, so we use it for CRC cases. Meanwhile, SBE/EBE indicate the illegal
-sequence of start bit or end bit for data0~7. So I realize that we should
-use -EILSEQ for them both as well CRC cases.
-
-Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
----
-
-Changes in v2:
-- fix some typos found by Jaehoon
-
- drivers/mmc/host/dw_mmc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 32380d5..b36a4f5 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1691,11 +1691,11 @@ static int dw_mci_data_complete(struct dw_mci *host, struct mmc_data *data)
- 				data->error = -ETIMEDOUT;
- 			} else if (host->dir_status ==
- 					DW_MCI_RECV_STATUS) {
--				data->error = -EIO;
-+				data->error = -EILSEQ;
- 			}
- 		} else {
- 			/* SDMMC_INT_SBE is included */
--			data->error = -EIO;
-+			data->error = -EILSEQ;
- 		}
- 
- 		dev_dbg(host->dev, "data error, status 0x%08x\n", status);
 -- 
-2.3.7
-
-
+2.6.6
