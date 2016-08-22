@@ -1,59 +1,54 @@
-From: Guenter Roeck <groeck@google.com>
-Subject: Re: [v13 PATCH 2/5] phy: Add USB Type-C PHY driver for rk3399
-Date: Mon, 22 Aug 2016 05:07:00 -0700
-Message-ID: <CABXOdTetf_rYLO0ObC=ChL7n6uJiQ43UYN3Lu_s4BX4E=kkzdg@mail.gmail.com>
-References: <1471839798-14729-1-git-send-email-zyw@rock-chips.com>
- <1471839798-14729-3-git-send-email-zyw@rock-chips.com> <CABXOdTcsOQH068bGthwQMmESf0DbNDz0i3UvPfDjjuHPj8mRUQ@mail.gmail.com>
- <57BA84F4.2000506@126.com>
+From: Peter Korsgaard <peter-+2lRwdCCLRT2eFz/2MeuCQ@public.gmane.org>
+Subject: Re: [PATCH] mmc: android-goldfish: fix potential panic due to null
+ pointer
+Date: Mon, 22 Aug 2016 14:33:01 +0200
+Message-ID: <87bn0lrnk2.fsf@dell.be.48ers.dk>
+References: <1471750476-335-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <57BA84F4.2000506@126.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris <zywang33@126.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, linux-kernel <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Guenter Roeck <groeck@chromium.org>, wulf <wulf@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1471750476-335-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> (Shawn
+ Lin's message of "Sun, 21 Aug 2016 11:34:36 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+>>>>> "Shawn" == Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
 
-On Sun, Aug 21, 2016 at 9:52 PM, Chris <zywang33@126.com> wrote:
-> Hi Guenter
->
-[ ... ]
+ > We should never compare virt_base with zero to indicate whether
+ > we get the right buffer or not from dma_alloc_coherent. It's quite
+ > architecture related. If failing to get the address from CMA or swoitlb
+ > cases, the sub architecture code should decide the return value for it.
+ > So we should never presume that zero always means the failure.
 
->>> +static int rockchip_usb3_phy_power_on(struct phy *phy)
->>> +{
->>> +       struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
->>> +       struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
->>> +       const struct usb3phy_reg *reg = &cfg->pipe_status;
->>> +       int timeout, new_mode, ret = 0;
->>> +       u32 val;
->>> +
->>> +       mutex_lock(&tcphy->lock);
->>> +
->>> +       new_mode = tcphy_get_mode(tcphy);
->>> +       if (new_mode < 0) {
->>> +               ret = new_mode;
->>> +               goto unlock_ret;
->>> +       }
->>> +
->>> +       /* DP-only mode; fall back to USB2 */
->>> +       if (!(new_mode & (MODE_DFP_USB | MODE_UFP_USB)))
->>> +               goto unlock_ret;
->>> +
->>
->> The rest of the code (calling tcphy_phy_init(), waiting for pipe
->> ready) is not needed in this case ?
->
->
-> If there is only DP, the tcphy_phy_init will be called by DP controller, and
-> the pipe is for USB3, so do not need do anything, just return a "fake"
-> success here.
-> And the usb phy power off do nothing. Just make USB  controller happier.
->
+ > Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+ > ---
 
-Yes, you are right. It is a bit confusing (and I had overlooked) that
-MODE_DFP_USB is set for both USB2 and USB3 if DP isn't active, but if
-DP is active it is only set for USB3.
+ >  drivers/mmc/host/android-goldfish.c | 2 +-
+ >  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Guenter
+ > diff --git a/drivers/mmc/host/android-goldfish.c b/drivers/mmc/host/android-goldfish.c
+ > index dca5518..6d8bd03 100644
+ > --- a/drivers/mmc/host/android-goldfish.c
+ > +++ b/drivers/mmc/host/android-goldfish.c
+ > @@ -484,7 +484,7 @@ static int goldfish_mmc_probe(struct platform_device *pdev)
+ host-> virt_base = dma_alloc_coherent(&pdev->dev, BUFFER_SIZE,
+ >  					     &buf_addr, GFP_KERNEL);
+ 
+ > -	if (host->virt_base == 0) {
+ > +	if (!host->virt_base) {
+
+Huh, these are equivalent?
+
+-- 
+Bye, Peter Korsgaard
