@@ -1,39 +1,38 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [v.1] clk:clk-rockchip:-of_iomap failed to remap then abort clock initialization.
-Date: Tue, 23 Aug 2016 18:15:15 +0200
-Message-ID: <1528160.BtdbmuP27T@diego>
-References: <1471101978-1881-1-git-send-email-arvind.yadav.cs@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/4] phy: rockchip-usb: use rockchip_usb_phy_reset to
+ reset phy during wakeup
+Date: Tue, 23 Aug 2016 12:53:01 -0500
+Message-ID: <20160823175301.GA27676@rob-hp-laptop>
+References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com>
+ <1471766205-12940-1-git-send-email-ayaka@soulik.info>
+ <1471766205-12940-3-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1471101978-1881-1-git-send-email-arvind.yadav.cs@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1471766205-12940-3-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arvind,
-
-Am Samstag, 13. August 2016, 20:56:18 schrieb Arvind Yadav:
-> -check return of 'of_iomap'.if It's falied to remap then abort.
+On Sun, Aug 21, 2016 at 03:56:43PM +0800, Randy Li wrote:
+> It is a hardware bug in RK3288, the only way to solve it is to
+> reset the phy.
 > 
-> -Unmap a region obtained by remap. iounmap frees the mapping when failed
-> to allocate the memory.
-> 
-> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 > ---
->  drivers/clk/rockchip/clk-rockchip.c | 7 ++++++-
+>  .../devicetree/bindings/phy/rockchip-usb-phy.txt     |  3 +++
+>  drivers/phy/phy-rockchip-usb.c                       | 20 ++++++++++++++++++++
+>  2 files changed, 23 insertions(+)
 
-I've applied the patch, after rewording both patch subject and message [0].
-
-That driver is deprecated for quite some time, see
-Documenation/devicetree/bindings/clock/rockchip.txt - so I'm hoping this is
-more of a random find and you're not actually using it?
-
-
-Thanks
-Heiko
-
-[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=023a8280b8355a0aebe094299afec8d8b7b264cd
-
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
