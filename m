@@ -1,98 +1,39 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2] drm/rockchip: Don't continue trying to enable crtc on
- failure
-Date: Tue, 23 Aug 2016 11:36:54 -0400
-Message-ID: <CAOw6vb+AZCSiwFMicmqyUhUBsVn2HdtvY0F3H--LMgu9vsBGoA@mail.gmail.com>
-References: <20160814094200.GW6232@phenom.ffwll.local>
- <1471302749-2811-1-git-send-email-seanpaul@chromium.org>
- <f7942956-42bc-3dd8-563e-1971779d7229@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [v.1] clk:clk-rockchip:-of_iomap failed to remap then abort clock initialization.
+Date: Tue, 23 Aug 2016 18:15:15 +0200
+Message-ID: <1528160.BtdbmuP27T@diego>
+References: <1471101978-1881-1-git-send-email-arvind.yadav.cs@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <f7942956-42bc-3dd8-563e-1971779d7229@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1471101978-1881-1-git-send-email-arvind.yadav.cs@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBBdWcgMTcsIDIwMTYgYXQgMzoyOCBBTSwgWWFraXIgWWFuZyA8eWtrQHJvY2stY2hp
-cHMuY29tPiB3cm90ZToKPiBTZWFuLAo+Cj4gT24gMDgvMTYvMjAxNiAwNzoxMiBBTSwgU2VhbiBQ
-YXVsIHdyb3RlOgo+Pgo+PiBJZiB2b3BfZW5hYmxlIGZhaWxzLCBkb24ndCBjb250aW51ZSBvbiwg
-aXQgY2F1c2VzIHN5c3RlbSBoYW5ncy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxz
-ZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4KPgo+IEFsc28gbWVldCB0aGlzIHByb2JsZW0gb24gbXkg
-UmszMzk5IEtldmluIGJvYXJkLiBWT1AganVzdCBmYWlsZWQgdG8gZ2V0IHRoZQo+IHBtX3J1bnRp
-bWUgYXQgcmVzdW1lIHRpbWUsIGJ1dCDvvYTvvZLvvYnvvZZlciBzdGlsbCBqdXN0IGNvbnRpbnVl
-IHdpdGhvdXQgYW55dGhpbmcKPiBlbmFibGUgcmlnaHRseSwgb29wcywgYW5kIHRoZW4gc3lzdGVt
-IGNyYXNoZWQgOigKPgo+IFNvIHRoaXMgcGF0Y2ggbG9va3MgZ29vZCB0byBtZSwgYW5kIGFsc28g
-Zml4IG15IHByb2JsZW0sIHRoYW5rczoKPgo+IO+8su+9hXZpZXdlZC1ieTogWWFraXIgWWFuZyA8
-eWtrQHJvY2stY2hpcHMuY29tPgo+IFRlc3RlZC1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hp
-cHMuY29tPgo+CgpBcHBsaWVkIHRvIC1taXNjCgpTZWFuCgo+IFRoYW5rcywKPiAtIFlha2lyCj4K
-Pj4gLS0tCj4+Cj4+IFRoaXMgcGF0Y2ggdXNlcyB0aGUgbmV3IERSTV9ERVZfRVJST1IgbG9nZ2lu
-Zywgc28gaXQgc2hvdWxkIGJlIGFwcGxpZWQgb24KPj4gdG9wIG9mICJbUEFUQ0ggMi8yXSBkcm0v
-cm9ja2NoaXA6IFVzZSBEUk1fREVWX0VSUk9SIGluIHZvcCIuCj4+Cj4+IENoYW5nZXMgaW4gdjI6
-Cj4+ICAgICAgICAgLSBFc2NhbGF0ZSBkZXZfZXJyIHRvIFdBUk5fT04gZm9yIGNsa19lbmFibGUg
-ZmFpbHVyZXMgKERhbmllbAo+PiBWZXR0ZXIpCj4+Cj4+IFNlYW4KPj4KPj4KPj4gICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMzEKPj4gKysrKysrKysrKysr
-KysrKy0tLS0tLS0tLS0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKSwg
-MTQgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwo+PiBpbmRleCBlYzhhZDAwLi5hMTc2ZDAzIDEwMDY0NAo+PiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gQEAgLTQyOCw3ICs0Mjgs
-NyBAQCBzdGF0aWMgdm9pZCB2b3BfZHNwX2hvbGRfdmFsaWRfaXJxX2Rpc2FibGUoc3RydWN0IHZv
-cAo+PiAqdm9wKQo+PiAgICAgICAgIHNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnZvcC0+aXJxX2xv
-Y2ssIGZsYWdzKTsKPj4gICB9Cj4+ICAgLXN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3RydWN0IGRy
-bV9jcnRjICpjcnRjKQo+PiArc3RhdGljIGludCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAq
-Y3J0YykKPj4gICB7Cj4+ICAgICAgICAgc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOwo+
-PiAgICAgICAgIGludCByZXQ7Cj4+IEBAIC00MzYsMjYgKzQzNiwyMCBAQCBzdGF0aWMgdm9pZCB2
-b3BfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPj4gICAgICAgICByZXQgPSBwbV9ydW50
-aW1lX2dldF9zeW5jKHZvcC0+ZGV2KTsKPj4gICAgICAgICBpZiAocmV0IDwgMCkgewo+PiAgICAg
-ICAgICAgICAgICAgZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgcG0gcnVudGltZTog
-JWRcbiIsIHJldCk7Cj4+IC0gICAgICAgICAgICAgICByZXR1cm47Cj4+ICsgICAgICAgICAgICAg
-ICBnb3RvIGVycl9wdXRfcG1fcnVudGltZTsKPj4gICAgICAgICB9Cj4+ICAgICAgICAgcmV0ID0g
-Y2xrX2VuYWJsZSh2b3AtPmhjbGspOwo+PiAtICAgICAgIGlmIChyZXQgPCAwKSB7Cj4+IC0gICAg
-ICAgICAgICAgICBkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJsZSBoY2xrIC0gJWRc
-biIsIHJldCk7Cj4+IC0gICAgICAgICAgICAgICByZXR1cm47Cj4+IC0gICAgICAgfQo+PiArICAg
-ICAgIGlmIChXQVJOX09OKHJldCA8IDApKQo+PiArICAgICAgICAgICAgICAgZ290byBlcnJfcHV0
-X3BtX3J1bnRpbWU7Cj4+ICAgICAgICAgcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmRjbGspOwo+PiAt
-ICAgICAgIGlmIChyZXQgPCAwKSB7Cj4+IC0gICAgICAgICAgICAgICBkZXZfZXJyKHZvcC0+ZGV2
-LCAiZmFpbGVkIHRvIGVuYWJsZSBkY2xrIC0gJWRcbiIsIHJldCk7Cj4+ICsgICAgICAgaWYgKFdB
-Uk5fT04ocmV0IDwgMCkpCj4+ICAgICAgICAgICAgICAgICBnb3RvIGVycl9kaXNhYmxlX2hjbGs7
-Cj4+IC0gICAgICAgfQo+PiAgICAgICAgIHJldCA9IGNsa19lbmFibGUodm9wLT5hY2xrKTsKPj4g
-LSAgICAgICBpZiAocmV0IDwgMCkgewo+PiAtICAgICAgICAgICAgICAgZGV2X2Vycih2b3AtPmRl
-diwgImZhaWxlZCB0byBlbmFibGUgYWNsayAtICVkXG4iLCByZXQpOwo+PiArICAgICAgIGlmIChX
-QVJOX09OKHJldCA8IDApKQo+PiAgICAgICAgICAgICAgICAgZ290byBlcnJfZGlzYWJsZV9kY2xr
-Owo+PiAtICAgICAgIH0KPj4gICAgICAgICAvKgo+PiAgICAgICAgICAqIFNsYXZlIGlvbW11IHNo
-YXJlcyBwb3dlciwgaXJxIGFuZCBjbG9jayB3aXRoIHZvcC4gIEl0IHdhcwo+PiBhc3NvY2lhdGVk
-Cj4+IEBAIC00ODUsNyArNDc5LDcgQEAgc3RhdGljIHZvaWQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMpCj4+ICAgICAgICAgZHJtX2NydGNfdmJsYW5rX29uKGNydGMpOwo+PiAgIC0g
-ICAgIHJldHVybjsKPj4gKyAgICAgICByZXR1cm4gMDsKPj4gICAgIGVycl9kaXNhYmxlX2FjbGs6
-Cj4+ICAgICAgICAgY2xrX2Rpc2FibGUodm9wLT5hY2xrKTsKPj4gQEAgLTQ5Myw2ICs0ODcsOSBA
-QCBlcnJfZGlzYWJsZV9kY2xrOgo+PiAgICAgICAgIGNsa19kaXNhYmxlKHZvcC0+ZGNsayk7Cj4+
-ICAgZXJyX2Rpc2FibGVfaGNsazoKPj4gICAgICAgICBjbGtfZGlzYWJsZSh2b3AtPmhjbGspOwo+
-PiArZXJyX3B1dF9wbV9ydW50aW1lOgo+PiArICAgICAgIHBtX3J1bnRpbWVfcHV0X3N5bmModm9w
-LT5kZXYpOwo+PiArICAgICAgIHJldHVybiByZXQ7Cj4+ICAgfQo+PiAgICAgc3RhdGljIHZvaWQg
-dm9wX2NydGNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4+IEBAIC05MTIsMTAgKzkw
-OSwxNiBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRj
-KQo+PiAgICAgICAgIHUxNiB2YWN0X3N0ID0gYWRqdXN0ZWRfbW9kZS0+dnRvdGFsIC0gYWRqdXN0
-ZWRfbW9kZS0+dnN5bmNfc3RhcnQ7Cj4+ICAgICAgICAgdTE2IHZhY3RfZW5kID0gdmFjdF9zdCAr
-IHZkaXNwbGF5Owo+PiAgICAgICAgIHVpbnQzMl90IHZhbDsKPj4gKyAgICAgICBpbnQgcmV0Owo+
-PiAgICAgICAgIFdBUk5fT04odm9wLT5ldmVudCk7Cj4+ICAgLSAgICAgdm9wX2VuYWJsZShjcnRj
-KTsKPj4gKyAgICAgICByZXQgPSB2b3BfZW5hYmxlKGNydGMpOwo+PiArICAgICAgIGlmIChyZXQp
-IHsKPj4gKyAgICAgICAgICAgICAgIERSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJGYWlsZWQgdG8g
-ZW5hYmxlIHZvcCAoJWQpXG4iLAo+PiByZXQpOwo+PiArICAgICAgICAgICAgICAgcmV0dXJuOwo+
-PiArICAgICAgIH0KPj4gKwo+PiAgICAgICAgIC8qCj4+ICAgICAgICAgICogSWYgZGNsayByYXRl
-IGlzIHplcm8sIG1lYW4gdGhhdCBzY2Fub3V0IGlzIHN0b3AsCj4+ICAgICAgICAgICogd2UgZG9u
-J3QgbmVlZCB3YWl0IGFueSBtb3JlLgo+Cj4KPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Hi Arvind,
+
+Am Samstag, 13. August 2016, 20:56:18 schrieb Arvind Yadav:
+> -check return of 'of_iomap'.if It's falied to remap then abort.
+> 
+> -Unmap a region obtained by remap. iounmap frees the mapping when failed
+> to allocate the memory.
+> 
+> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+> ---
+>  drivers/clk/rockchip/clk-rockchip.c | 7 ++++++-
+
+I've applied the patch, after rewording both patch subject and message [0].
+
+That driver is deprecated for quite some time, see
+Documenation/devicetree/bindings/clock/rockchip.txt - so I'm hoping this is
+more of a random find and you're not actually using it?
+
+
+Thanks
+Heiko
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=023a8280b8355a0aebe094299afec8d8b7b264cd
+
