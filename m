@@ -1,138 +1,232 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v1 3/3] PM / AVS: rockchip-cpu-avs: add driver handling
- Rockchip cpu avs
-Date: Tue, 23 Aug 2016 12:10:27 +0800
-Message-ID: <c853c8fd-285a-603d-b294-750cdbf7f200@rock-chips.com>
-References: <1471315139-28285-1-git-send-email-finley.xiao@rock-chips.com>
- <1471315139-28285-4-git-send-email-finley.xiao@rock-chips.com>
- <20160819133636.GA26913@rob-hp-laptop>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [PATCH v6 6/8] Documentation: bindings: add dt documentation for
+ rk3399 dmc
+Date: Tue, 23 Aug 2016 14:05:43 +0900
+Message-ID: <57BBD9A7.7090603@samsung.com>
+References: <1471386989-9541-1-git-send-email-hl@rock-chips.com>
+ <CGME20160816223730epcas1p32cabad067157428ffee1a2f9c62d9798@epcas1p3.samsung.com>
+ <1471386989-9541-7-git-send-email-hl@rock-chips.com>
+ <57B3ED11.20003@samsung.com> <57BA2834.6090409@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160819133636.GA26913@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-reply-to: <57BA2834.6090409@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: hl <hl@rock-chips.com>, heiko@sntech.de, myungjoo.ham@samsung.com
+Cc: tixy@linaro.org, mark.rutland@arm.com, dbasehore@chromium.org, linux-pm@vger.kernel.org, airlied@linux.ie, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, sudeep.holla@arm.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Lin,
 
-
-在 2016/8/19 21:36, Rob Herring 写道:
-> On Tue, Aug 16, 2016 at 10:38:59AM +0800, Finlye Xiao wrote:
->> From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On 2016년 08월 22일 07:16, hl wrote:
+> Hi Chanwoo Choi,
+> 
+> On 2016年08月17日 12:50, Chanwoo Choi wrote:
+>> Hi Lin,
 >>
->> This patch supports adjusting opp's voltage according to leakage
+>> On 2016년 08월 17일 07:36, Lin Huang wrote:
+>>> This patch adds the documentation for rockchip rk3399 dmc driver.
+>>>
+>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
+>>> ---
+>>> Changes in v6:
+>>> -Add more detail in Documentation
+>>>
+>>> Changes in v5:
+>>> -None
+>>>
+>>> Changes in v4:
+>>> -None
+>>>
+>>> Changes in v3:
+>>> -None
+>>>
+>>> Changes in v2:
+>>> -None
+>>>
+>>> Changes in v1:
+>>> -None
+>>>   .../devicetree/bindings/devfreq/rk3399_dmc.txt     | 84 ++++++++++++++++++++++
+>>>   1 file changed, 84 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+>>> new file mode 100644
+>>> index 0000000..e73067c
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+>>> @@ -0,0 +1,84 @@
+>>> +* Rockchip rk3399 DMC(Dynamic Memory Controller) device
+>>> +
+>>> +Required properties:
+>>> +- compatible: Must be "rockchip,rk3399-dmc".
+>>> +- devfreq-events: Node to get ddr loading, Refer to
+>>> +          Documentation/devicetree/bindings/devfreq/rockchip-dif.txt
+>>> +- interrupts: The interrupt number to the cpu. The interrupt specifier format
+>>> +          depends on the interrupt controller. it should be dcf interrupts,
+>>> +          when ddr dvfs finish, it will happen.
+>> If possible, you better to keep the indentation with other properties.
+>> s/it->It, dcf->DCF, ddr->DDR
 >>
->> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>   .../devicetree/bindings/power/rockchip-cpu-avs.txt |  37 +++
->>   drivers/power/avs/Kconfig                          |   8 +
->>   drivers/power/avs/Makefile                         |   1 +
->>   drivers/power/avs/rockchip-cpu-avs.c               | 314 +++++++++++++++++++++
->>   4 files changed, 360 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
->>   create mode 100644 drivers/power/avs/rockchip-cpu-avs.c
 >>
->> diff --git a/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt b/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
->> new file mode 100644
->> index 0000000..90f6b08
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
->> @@ -0,0 +1,37 @@
->> +Rockchip cpu avs device tree bindings
->> +-------------------------------------
->> +
->> +Under the same frequency, the operating voltage tends to decrease with
->> +increasing leakage. so it is necessary to adjust opp's voltage according
->> +to leakage for power.
->> +
->> +
->> +Required properties:
->> +- compatible: Should be one of the following.
->> +  - "rockchip,rk3399-cpu-avs" - for RK3399 SoCs.
->> +- leakage-volt-<name>: Named leakage-volt property. At runtime, the
->> +  platform can find a cpu's cluster_id according to it's cpu_id and match
->> +  leakage-volt-<name> property. The property is an array of 3-tuples
->> +  items, and each item consists of leakage and voltage like
->> +  <min-leakage-mA max-leakage-mA vol-uV>.
->> +	min-leakage: minimum leakage in mA.
->> +	max-leakage: maximum leakage in mA.
->> +	vol: voltage in microvolt.
-> How do you determine these values? When do they vary?
+>>> +- clocks: Phandles for clock specified in "clock-names" property
+>>> +- clock-names : The name of clock used by the DFI, must be "pclk_ddr_mon";
+>>> +- operating-points-v2: Refer to Documentation/devicetree/bindings/power/opp.txt
+>>> +               for details.
+>> ditto.
+>>
+>>> +- center-supply: Dmc supply node.
+>> s/Dmc/DMC becaue DMC an abbreviation.
+>>
+>>> +- status: Marks the node enabled/disabled.
+>>> +
+>>> +Optional properties:
+>>> +- ddr_timing: ddr timing need to pass to arm trust firmware
+>>> +- upthreshold: the upthreshold to simpleondeamnd policy
+>>> +- downdifferential: The downdifferential to simpleondeamnd policy
+>>> +
+>>> +Example:
+>>> +    ddr_timing: ddr_timing {
+>>> +        compatible = "rockchip,ddr-timing";
+>> I can't find the 'rockchip,ddr-timing' driver on linux-next git repo (20160816).
+>> If ddr_timing includes the only properties for ddr_timing,
+>> I recommend you make the separate a .dtsi file including
+>> the ddr timing configuration. I add the reference and an example on below.
+>>
+>>> +        ddr3_speed_bin = <21>;
+>>> +        pd_idle = <0>;
+>>> +        sr_idle = <0>;
+>>> +        sr_mc_gate_idle = <0>;
+>>> +        srpd_lite_idle    = <0>;
+>>> +        standby_idle = <0>;
+>>> +        dram_dll_dis_freq = <300>;
+>>> +        phy_dll_dis_freq = <125>;
+>>> +
+>>> +        ddr3_odt_dis_freq = <333>;
+>>> +        ddr3_drv = <DDR3_DS_40ohm>;
+>>> +        ddr3_odt = <DDR3_ODT_120ohm>;
+>>> +        phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
+>>> +        phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
+>>> +        phy_ddr3_odt = <PHY_DRV_ODT_240>;
+>>> +
+>>> +        lpddr3_odt_dis_freq = <333>;
+>>> +        lpddr3_drv = <LP3_DS_34ohm>;
+>>> +        lpddr3_odt = <LP3_ODT_240ohm>;
+>>> +        phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
+>>> +        phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
+>>> +        phy_lpddr3_odt = <PHY_DRV_ODT_240>;
+>>> +
+>>> +        lpddr4_odt_dis_freq = <333>;
+>>> +        lpddr4_drv = <LP4_PDDS_60ohm>;
+>>> +        lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
+>>> +        lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
+>>> +        phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
+>>> +        phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
+>>> +        phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
+>>> +        phy_lpddr4_odt = <PHY_DRV_ODT_60>;
+>>> +    };
+>>> +
+>>> +    dmc_opp_table: dmc_opp_table {
+>>> +        compatible = "operating-points-v2";
+>>> +
+>>> +        opp00 {
+>>> +            opp-hz = /bits/ 64 <300000000>;
+>>> +            opp-microvolt = <900000>;
+>>> +        };
+>>> +        opp01 {
+>>> +            opp-hz = /bits/ 64 <666000000>;
+>>> +            opp-microvolt = <900000>;
+>>> +        };
+>>> +    };
+>>> +
+>>> +    dmc: dmc {
+>>> +        compatible = "rockchip,rk3399-dmc";
+>>> +        devfreq-events = <&dfi>;
+>>> +        interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+>>> +        clocks = <&cru SCLK_DDRCLK>;
+>>> +        clock-names = "dmc_clk";
+>>> +        ddr_timing = <&ddr_timing>;
+>> You can use the following '#include' instead of 'ddr_timing'
+>> because the ddr_timing is not a device driver. Instead,
+>> the rk3399-dmc must need the ddr timing configuration.
+>>
+>>         #include "rk3399-dmc-timing-conf.dtsi"
+>>
+>> You can refer the similar usage case[1].
+>> The *.conf.dtsi is used on exynos3250 tmu dt node[2].
+>>
+>> [1] arch/arm/boot/dts/exynos4412-tmu-sensor-conf.dtsi
+>> [2] arch/arm/boot/dts/exynos3250.dtsi, 224 line.
+>>
+>>> +        operating-points-v2 = <&dmc_opp_table>;
+>>> +        center-supply = <&ppvar_centerlogic>;
+>>> +        upthreshold = <15>;
+>>> +        downdifferential = <10>;
+>>> +        status = "disabled";
+>>> +    };
+>>> +
+>>>
+>> For example,
+>> I think that you can add the following timing .dtsi file.
+>> - arch/arm/boot/dts/rk3399-dmc-timing-conf.dtsi
+>>
+>> /*
+>>   * Device tree sources for RK3399 DDR timing configuration
+>>   *
+>>   * Copyright (c) 2016 Lin Huang <hl@rock-chips.com>
+>>   *
+>>   * This program is free software; you can redistribute it and/or modify
+>>   * it under the terms of the GNU General Public License version 2 as
+>>   * published by the Free Software Foundation.
+>>   */
+>>
+>> rockchip,ddr3_speed_bin = <21>;
+>> rockchip,pd_idle = <0>;
+>> rockchip,sr_idle = <0>;
+>> rockchip,sr_mc_gate_idle = <0>;
+>> rockchip,srpd_lite_idle    = <0>;
+>> rockchip,standby_idle = <0>;
+>> rockchip,dram_dll_dis_freq = <300>;
+>> rockchip,phy_dll_dis_freq = <125>;
+>>
+>> rockchip,ddr3_odt_dis_freq = <333>;
+>> rockchip,ddr3_drv = <DDR3_DS_40ohm>;
+>> rockchip,ddr3_odt = <DDR3_ODT_120ohm>;
+>> rockchip,phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
+>> rockchip,phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
+>> rockchip,phy_ddr3_odt = <PHY_DRV_ODT_240>;
+>>
+>> rockchip,lpddr3_odt_dis_freq = <333>;
+>> rockchip,lpddr3_drv = <LP3_DS_34ohm>;
+>> rockchip,lpddr3_odt = <LP3_ODT_240ohm>;
+>> rockchip,phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
+>> rockchip,phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
+>> rockchip,phy_lpddr3_odt = <PHY_DRV_ODT_240>;
+>>
+>> rockchip,lpddr4_odt_dis_freq = <333>;
+>> rockchip,lpddr4_drv = <LP4_PDDS_60ohm>;
+>> rockchip,lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
+>> rockchip,lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
+>> rockchip,phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
+>> rockchip,phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
+>> rockchip,phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
+>> rockchip,phy_lpddr4_odt = <PHY_DRV_ODT_60>;
+> Actually, i am doing like it on my downstream dtsi, but how to explain it in rk3399_dmc Documentation?
+> Creat a new ddr_timing Documentation? But it is not a driver, just a dtsi, that why i put it on rk3399_dmc.txt
+> now, do you have a better idea?
 
-How do you determine these values?
+I think that you don't need to add the new ddr_timing document.
 
-run antutu-benchmark
-leakage     freq 	min_volt
-30mA 	    1608MHz 	1025mV
-40mA 	    1608MHz 	1000mV
-50mA 	    1608MHz 	975mV
+The ddr_timing value are only used in the rk3399_dmc.c driver.
+So, the description of ddr_timing information should be
+included in rk3399_dmc.txt.
 
- From the table, we see the min_volt decrease with increasing leakage.
-So we can set the default opp-microvolt 1025mV for 1608MHz,
-and add an leakage_volt_cluster0 property as follows.
-leakage_volt_cluster0 = <
-		/*  min(mA)   max(mA)    volt(uV)*/
-		    0         40        0
-		    41        50        (-25000)
-		    51        254       (-50000)
->;
-If the leakage is between 41mA and 50mA，the opp-microvolt will subtract 25mV。
-If the leakage is between 41mA and 50mA，the opp-microvolt will subtract 50mV。
-  
-When do they vary?
+As I already mentioned, please refer the the similiar case[1][2].
+The exynos-thermal.txt[2] include the description of propertis[1].
 
- From the code,
-cpufreq_online
---cpufreq_driver->init(policy);  /* add new opp table */
---blocking_notifier_call_chain(&cpufreq_policy_notifier_list,
-CPUFREQ_START, policy);
---cpufreq_init_policy
-----cpufreq_set_policy
---------__cpufreq_governor(policy, CPUFREQ_GOV_START);
-
-The cpu's opp table is added in the init function(cpufreq_init)，and I will
-register a cpufreq notifier, once the first cpu of cluster is onlined,
-my notifer will be called, and if the event is CPUFREQ_START，it will modify
-the opp-microvolt according to leakage_volt_cluster0.
-
->> +
->> +Example:
->> +
->> +	cpu_avs: cpu-avs {
->> +		compatible = "rockchip,rk3399-cpu-avs";
-> This isn't really a hardware block. For the same reasons we don't have
-> cpufreq nodes. So I don't think this belongs in DT.
-
-if I delete the compatible property like the thermal-zones node, is it allowed?
-cpu_avs: cpu-avs {
-	leakage_volt_cluster0 = <
-		/*  min(mA)   max(mA)    volt(uV)*/
-		    0         40        0
-		    41        50        (-25000)
-		    51        254       (-50000)
-	>;
-	leakage_volt_cluster1 = <
-		/*  min(mA)   max(mA)    volt(uV)*/
-		    0         40        0
-		    41        50        (-25000)
-		    51        254       (-50000)
-	>;
-}
-
-
->
-> Rob
->
->
->
-
+[1] arch/arm/boot/dts/exynos4412-tmu-sensor-conf.dtsi
+[2] Documentation/devicetree/bindings/tmu/exynos-thermal.txt
 -- 
-Finley
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Best Regards,
+Chanwoo Choi
