@@ -1,239 +1,101 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v6 6/8] Documentation: bindings: add dt documentation for
- rk3399 dmc
-Date: Wed, 24 Aug 2016 02:53:53 +0800
-Message-ID: <57BC9BC1.2040100@rock-chips.com>
-References: <1471386989-9541-1-git-send-email-hl@rock-chips.com>
- <CGME20160816223730epcas1p32cabad067157428ffee1a2f9c62d9798@epcas1p3.samsung.com>
- <1471386989-9541-7-git-send-email-hl@rock-chips.com>
- <57B3ED11.20003@samsung.com> <57BA2834.6090409@rock-chips.com>
- <57BBD9A7.7090603@samsung.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND PATCH 3/4] usb: dwc2: assert phy reset when waking up in
+ rk3288 platform
+Date: Tue, 23 Aug 2016 13:46:14 -0700
+Message-ID: <49d2baf7-5f81-fc20-a805-f7a378d67a5e@synopsys.com>
+References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com>
+ <1471807905-11323-1-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <57BBD9A7.7090603@samsung.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>, heiko@sntech.de, myungjoo.ham@samsung.com
-Cc: tixy@linaro.org, mark.rutland@arm.com, dbasehore@chromium.org, linux-pm@vger.kernel.org, airlied@linux.ie, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, sudeep.holla@arm.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1471807905-11323-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chanwoo Choi,
+On 8/21/2016 12:32 PM, Randy Li wrote:
+> On the rk3288 USB host-only port (the one that's not the OTG-enabled
+> port) the PHY can get into a bad state when a wakeup is asserted (not
+> just a wakeup from full system suspend but also a wakeup from
+> autosuspend).
+> 
+> We can get the PHY out of its bad state by asserting its "port reset",
+> but unfortunately that seems to assert a reset onto the USB bus so it
+> could confuse things if we don't actually deenumerate / reenumerate the
+> device.
+> 
+> We can also get the PHY out of its bad state by fully resetting it using
+> the reset from the CRU (clock reset unit) in chip, which does a more full
+> reset.  The CRU-based reset appears to actually cause devices on the bus
+> to be removed and reinserted, which fixes the problem (albeit in a hacky
+> way).
+> 
+> It's unfortunate that we need to do a full re-enumeration of devices at
+> wakeup time, but this is better than alternative of letting the bus get
+> wedged.
+> 
+> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+> ---
+>  drivers/usb/dwc2/core_intr.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+> index d85c5c9..f57c48a 100644
+> --- a/drivers/usb/dwc2/core_intr.c
+> +++ b/drivers/usb/dwc2/core_intr.c
+> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
+>  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>  {
+>  	int ret;
+> +	struct device_node *np = hsotg->dev->of_node;
+>  
+>  	/* Clear interrupt */
+>  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
+> @@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>  			/* Restart the Phy Clock */
+>  			pcgcctl &= ~PCGCTL_STOPPCLK;
+>  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
+> +
+> +			/* 
+> +			 * It is a quirk in Rockchip RK3288, causing by
+> +			 * a hardware bug. This will propagate out and
+> +			 * eventually we'll re-enumerate the device. 
+> +			 * Not great but the best we can do 
 
+Remove the trailing whitespaces in this comment.
 
-On 2016年08月23日 13:05, Chanwoo Choi wrote:
-> Hi Lin,
->
-> On 2016년 08월 22일 07:16, hl wrote:
->> Hi Chanwoo Choi,
->>
->> On 2016年08月17日 12:50, Chanwoo Choi wrote:
->>> Hi Lin,
->>>
->>> On 2016년 08월 17일 07:36, Lin Huang wrote:
->>>> This patch adds the documentation for rockchip rk3399 dmc driver.
->>>>
->>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>>> ---
->>>> Changes in v6:
->>>> -Add more detail in Documentation
->>>>
->>>> Changes in v5:
->>>> -None
->>>>
->>>> Changes in v4:
->>>> -None
->>>>
->>>> Changes in v3:
->>>> -None
->>>>
->>>> Changes in v2:
->>>> -None
->>>>
->>>> Changes in v1:
->>>> -None
->>>>    .../devicetree/bindings/devfreq/rk3399_dmc.txt     | 84 ++++++++++++++++++++++
->>>>    1 file changed, 84 insertions(+)
->>>>    create mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
->>>> new file mode 100644
->>>> index 0000000..e73067c
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
->>>> @@ -0,0 +1,84 @@
->>>> +* Rockchip rk3399 DMC(Dynamic Memory Controller) device
->>>> +
->>>> +Required properties:
->>>> +- compatible: Must be "rockchip,rk3399-dmc".
->>>> +- devfreq-events: Node to get ddr loading, Refer to
->>>> +          Documentation/devicetree/bindings/devfreq/rockchip-dif.txt
->>>> +- interrupts: The interrupt number to the cpu. The interrupt specifier format
->>>> +          depends on the interrupt controller. it should be dcf interrupts,
->>>> +          when ddr dvfs finish, it will happen.
->>> If possible, you better to keep the indentation with other properties.
->>> s/it->It, dcf->DCF, ddr->DDR
->>>
->>>
->>>> +- clocks: Phandles for clock specified in "clock-names" property
->>>> +- clock-names : The name of clock used by the DFI, must be "pclk_ddr_mon";
->>>> +- operating-points-v2: Refer to Documentation/devicetree/bindings/power/opp.txt
->>>> +               for details.
->>> ditto.
->>>
->>>> +- center-supply: Dmc supply node.
->>> s/Dmc/DMC becaue DMC an abbreviation.
->>>
->>>> +- status: Marks the node enabled/disabled.
->>>> +
->>>> +Optional properties:
->>>> +- ddr_timing: ddr timing need to pass to arm trust firmware
->>>> +- upthreshold: the upthreshold to simpleondeamnd policy
->>>> +- downdifferential: The downdifferential to simpleondeamnd policy
->>>> +
->>>> +Example:
->>>> +    ddr_timing: ddr_timing {
->>>> +        compatible = "rockchip,ddr-timing";
->>> I can't find the 'rockchip,ddr-timing' driver on linux-next git repo (20160816).
->>> If ddr_timing includes the only properties for ddr_timing,
->>> I recommend you make the separate a .dtsi file including
->>> the ddr timing configuration. I add the reference and an example on below.
->>>
->>>> +        ddr3_speed_bin = <21>;
->>>> +        pd_idle = <0>;
->>>> +        sr_idle = <0>;
->>>> +        sr_mc_gate_idle = <0>;
->>>> +        srpd_lite_idle    = <0>;
->>>> +        standby_idle = <0>;
->>>> +        dram_dll_dis_freq = <300>;
->>>> +        phy_dll_dis_freq = <125>;
->>>> +
->>>> +        ddr3_odt_dis_freq = <333>;
->>>> +        ddr3_drv = <DDR3_DS_40ohm>;
->>>> +        ddr3_odt = <DDR3_ODT_120ohm>;
->>>> +        phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
->>>> +        phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
->>>> +        phy_ddr3_odt = <PHY_DRV_ODT_240>;
->>>> +
->>>> +        lpddr3_odt_dis_freq = <333>;
->>>> +        lpddr3_drv = <LP3_DS_34ohm>;
->>>> +        lpddr3_odt = <LP3_ODT_240ohm>;
->>>> +        phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
->>>> +        phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
->>>> +        phy_lpddr3_odt = <PHY_DRV_ODT_240>;
->>>> +
->>>> +        lpddr4_odt_dis_freq = <333>;
->>>> +        lpddr4_drv = <LP4_PDDS_60ohm>;
->>>> +        lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
->>>> +        lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
->>>> +        phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
->>>> +        phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
->>>> +        phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
->>>> +        phy_lpddr4_odt = <PHY_DRV_ODT_60>;
->>>> +    };
->>>> +
->>>> +    dmc_opp_table: dmc_opp_table {
->>>> +        compatible = "operating-points-v2";
->>>> +
->>>> +        opp00 {
->>>> +            opp-hz = /bits/ 64 <300000000>;
->>>> +            opp-microvolt = <900000>;
->>>> +        };
->>>> +        opp01 {
->>>> +            opp-hz = /bits/ 64 <666000000>;
->>>> +            opp-microvolt = <900000>;
->>>> +        };
->>>> +    };
->>>> +
->>>> +    dmc: dmc {
->>>> +        compatible = "rockchip,rk3399-dmc";
->>>> +        devfreq-events = <&dfi>;
->>>> +        interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
->>>> +        clocks = <&cru SCLK_DDRCLK>;
->>>> +        clock-names = "dmc_clk";
->>>> +        ddr_timing = <&ddr_timing>;
->>> You can use the following '#include' instead of 'ddr_timing'
->>> because the ddr_timing is not a device driver. Instead,
->>> the rk3399-dmc must need the ddr timing configuration.
->>>
->>>          #include "rk3399-dmc-timing-conf.dtsi"
->>>
->>> You can refer the similar usage case[1].
->>> The *.conf.dtsi is used on exynos3250 tmu dt node[2].
->>>
->>> [1] arch/arm/boot/dts/exynos4412-tmu-sensor-conf.dtsi
->>> [2] arch/arm/boot/dts/exynos3250.dtsi, 224 line.
->>>
->>>> +        operating-points-v2 = <&dmc_opp_table>;
->>>> +        center-supply = <&ppvar_centerlogic>;
->>>> +        upthreshold = <15>;
->>>> +        downdifferential = <10>;
->>>> +        status = "disabled";
->>>> +    };
->>>> +
->>>>
->>> For example,
->>> I think that you can add the following timing .dtsi file.
->>> - arch/arm/boot/dts/rk3399-dmc-timing-conf.dtsi
->>>
->>> /*
->>>    * Device tree sources for RK3399 DDR timing configuration
->>>    *
->>>    * Copyright (c) 2016 Lin Huang <hl@rock-chips.com>
->>>    *
->>>    * This program is free software; you can redistribute it and/or modify
->>>    * it under the terms of the GNU General Public License version 2 as
->>>    * published by the Free Software Foundation.
->>>    */
->>>
->>> rockchip,ddr3_speed_bin = <21>;
->>> rockchip,pd_idle = <0>;
->>> rockchip,sr_idle = <0>;
->>> rockchip,sr_mc_gate_idle = <0>;
->>> rockchip,srpd_lite_idle    = <0>;
->>> rockchip,standby_idle = <0>;
->>> rockchip,dram_dll_dis_freq = <300>;
->>> rockchip,phy_dll_dis_freq = <125>;
->>>
->>> rockchip,ddr3_odt_dis_freq = <333>;
->>> rockchip,ddr3_drv = <DDR3_DS_40ohm>;
->>> rockchip,ddr3_odt = <DDR3_ODT_120ohm>;
->>> rockchip,phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
->>> rockchip,phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
->>> rockchip,phy_ddr3_odt = <PHY_DRV_ODT_240>;
->>>
->>> rockchip,lpddr3_odt_dis_freq = <333>;
->>> rockchip,lpddr3_drv = <LP3_DS_34ohm>;
->>> rockchip,lpddr3_odt = <LP3_ODT_240ohm>;
->>> rockchip,phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
->>> rockchip,phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
->>> rockchip,phy_lpddr3_odt = <PHY_DRV_ODT_240>;
->>>
->>> rockchip,lpddr4_odt_dis_freq = <333>;
->>> rockchip,lpddr4_drv = <LP4_PDDS_60ohm>;
->>> rockchip,lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
->>> rockchip,lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
->>> rockchip,phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
->>> rockchip,phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
->>> rockchip,phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
->>> rockchip,phy_lpddr4_odt = <PHY_DRV_ODT_60>;
->> Actually, i am doing like it on my downstream dtsi, but how to explain it in rk3399_dmc Documentation?
->> Creat a new ddr_timing Documentation? But it is not a driver, just a dtsi, that why i put it on rk3399_dmc.txt
->> now, do you have a better idea?
-> I think that you don't need to add the new ddr_timing document.
->
-> The ddr_timing value are only used in the rk3399_dmc.c driver.
-> So, the description of ddr_timing information should be
-> included in rk3399_dmc.txt.
->
-> As I already mentioned, please refer the the similiar case[1][2].
-> The exynos-thermal.txt[2] include the description of propertis[1].
->
-> [1] arch/arm/boot/dts/exynos4412-tmu-sensor-conf.dtsi
-> [2] Documentation/devicetree/bindings/tmu/exynos-thermal.txt
-Got it, will reference it next version, thanks.
+Run scripts/checkpatch.pl to catch these.
 
--- 
-Lin Huang
+> +			 */
+> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
+> +				hsotg->phy->ops->reset(hsotg->phy);
+> +
 
+You should probably check for NULL before calling the reset()
+callback.
 
+Also, I'd rather see a generic quirk property that you set for your
+platform.
+
+Something like "phy_reset_on_wakeup_quirk".
+
+Also, try to preserve the version tag in your subject for all the
+patches so that we can easily identify the latest version of the
+series, like:
+
+[PATCH v5 3/4] ...
+
+And, typically "RESEND" means there are no code change.
+
+Regards,
+John
