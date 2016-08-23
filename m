@@ -1,105 +1,138 @@
-From: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2] mmc: dw_mmc: return -EILSEQ for EBE and SBE error
-Date: Tue, 23 Aug 2016 11:57:11 +0900
-Message-ID: <cd21bedc-60d7-0cb0-4c95-a5519cd5a91b@samsung.com>
-References: <CGME20160822030158epcas1p3ada75129d383a13a460838cc1c5abecf@epcas1p3.samsung.com>
- <1471834636-21057-1-git-send-email-shawn.lin@rock-chips.com>
+From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v1 3/3] PM / AVS: rockchip-cpu-avs: add driver handling
+ Rockchip cpu avs
+Date: Tue, 23 Aug 2016 12:10:27 +0800
+Message-ID: <c853c8fd-285a-603d-b294-750cdbf7f200@rock-chips.com>
+References: <1471315139-28285-1-git-send-email-finley.xiao@rock-chips.com>
+ <1471315139-28285-4-git-send-email-finley.xiao@rock-chips.com>
+ <20160819133636.GA26913@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <1471834636-21057-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160819133636.GA26913@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
 
-On 08/22/2016 11:57 AM, Shawn Lin wrote:
-> The following log we found indicate the fact that dw_mmc
-> didn't treat EBE or SBE as a similar problem as CRC error.
-> -EIO is quite not informative as it may indicate that the device
-> is broken rather than that of tuning stuff.
-> 
-> ...
-> [ 89.057226] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-> [ 89.058811] bcmsdh_sdmmc: Failed to Read byte F1:@0x1001f=ff, Err: -5
-> [ 89.059415] bcmsdh_sdmmc: Failed to Read byte F1:@0x1000e=ff, Err: -84
-> [ 89.254248] dwmmc_rockchip fe310000.dwmmc: Successfully tuned phase to 199
-> [ 89.273912] dhd_set_suspend: Remove extra suspend setting
-> [ 89.274478] dhd_enable_packet_filter: enter, value = 0
-> 64 bytes from 112.90.83.112: icmp_seq=24 ttl=53 time=1321 ms
-> 64 bytes from 112.90.83.112: icmp_seq=25 ttl=53 time=319 ms
-> 64 bytes from 112.90.83.112: icmp_seq=26 ttl=53 time=69.8 ms
-> 64 bytes from 112.90.83.112: icmp_seq=27 ttl=53 time=37.5 ms
-> ...
-> 
-> For the host, when failing to sample cmd's response due to
-> tuning stuff, we still return -EIO as it's quite vague to figure
-> out whether it related to signal or just the broken devices, especially
-> for the card type detection when booting kernel as all things go well
-> but the cmd set used.
-> 
-> But for the data phase, if receiving the cmd's response which
-> carriess data transfer, we should have more confidence that it
-> is very probably related to the tuning stuff.
-> 
-> Just as the log shown above, we sometimes suffer too much
-> this kind of pain as the dw_mmc return -EIO for the case, so
-> mmc-core will not do retune and caller drivers like bcm's wifi
-> driver, still retry the failure more and more until dw_mmc
-> finally generate CRC.
-> 
-> Adrian suggested that drivers who care the specific cases should
-> call mmc_retune_needed rather than doing it in mmc core. It makes
-> sense but I'm considering that -EILSEQ actually means illegal sequence
-> , so we use it for CRC cases. Meanwhile, SBE/EBE indicate the illegal
-> sequence of start bit or end bit for data0~7. So I realize that we should
-> use -EILSEQ for them both as well CRC cases.
 
-Applied on my repository.
-Thanks!
+在 2016/8/19 21:36, Rob Herring 写道:
+> On Tue, Aug 16, 2016 at 10:38:59AM +0800, Finlye Xiao wrote:
+>> From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> This patch supports adjusting opp's voltage according to leakage
+>>
+>> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>   .../devicetree/bindings/power/rockchip-cpu-avs.txt |  37 +++
+>>   drivers/power/avs/Kconfig                          |   8 +
+>>   drivers/power/avs/Makefile                         |   1 +
+>>   drivers/power/avs/rockchip-cpu-avs.c               | 314 +++++++++++++++++++++
+>>   4 files changed, 360 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
+>>   create mode 100644 drivers/power/avs/rockchip-cpu-avs.c
+>>
+>> diff --git a/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt b/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
+>> new file mode 100644
+>> index 0000000..90f6b08
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/power/rockchip-cpu-avs.txt
+>> @@ -0,0 +1,37 @@
+>> +Rockchip cpu avs device tree bindings
+>> +-------------------------------------
+>> +
+>> +Under the same frequency, the operating voltage tends to decrease with
+>> +increasing leakage. so it is necessary to adjust opp's voltage according
+>> +to leakage for power.
+>> +
+>> +
+>> +Required properties:
+>> +- compatible: Should be one of the following.
+>> +  - "rockchip,rk3399-cpu-avs" - for RK3399 SoCs.
+>> +- leakage-volt-<name>: Named leakage-volt property. At runtime, the
+>> +  platform can find a cpu's cluster_id according to it's cpu_id and match
+>> +  leakage-volt-<name> property. The property is an array of 3-tuples
+>> +  items, and each item consists of leakage and voltage like
+>> +  <min-leakage-mA max-leakage-mA vol-uV>.
+>> +	min-leakage: minimum leakage in mA.
+>> +	max-leakage: maximum leakage in mA.
+>> +	vol: voltage in microvolt.
+> How do you determine these values? When do they vary?
 
-Best Regards,
-Jaehoon Chung
+How do you determine these values?
 
-> 
-> Suggested-by: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v2:
-> - fix some typos found by Jaehoon
-> 
->  drivers/mmc/host/dw_mmc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 32380d5..b36a4f5 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -1691,11 +1691,11 @@ static int dw_mci_data_complete(struct dw_mci *host, struct mmc_data *data)
->  				data->error = -ETIMEDOUT;
->  			} else if (host->dir_status ==
->  					DW_MCI_RECV_STATUS) {
-> -				data->error = -EIO;
-> +				data->error = -EILSEQ;
->  			}
->  		} else {
->  			/* SDMMC_INT_SBE is included */
-> -			data->error = -EIO;
-> +			data->error = -EILSEQ;
->  		}
->  
->  		dev_dbg(host->dev, "data error, status 0x%08x\n", status);
-> 
+run antutu-benchmark
+leakage     freq 	min_volt
+30mA 	    1608MHz 	1025mV
+40mA 	    1608MHz 	1000mV
+50mA 	    1608MHz 	975mV
+
+ From the table, we see the min_volt decrease with increasing leakage.
+So we can set the default opp-microvolt 1025mV for 1608MHz,
+and add an leakage_volt_cluster0 property as follows.
+leakage_volt_cluster0 = <
+		/*  min(mA)   max(mA)    volt(uV)*/
+		    0         40        0
+		    41        50        (-25000)
+		    51        254       (-50000)
+>;
+If the leakage is between 41mA and 50mA，the opp-microvolt will subtract 25mV。
+If the leakage is between 41mA and 50mA，the opp-microvolt will subtract 50mV。
+  
+When do they vary?
+
+ From the code,
+cpufreq_online
+--cpufreq_driver->init(policy);  /* add new opp table */
+--blocking_notifier_call_chain(&cpufreq_policy_notifier_list,
+CPUFREQ_START, policy);
+--cpufreq_init_policy
+----cpufreq_set_policy
+--------__cpufreq_governor(policy, CPUFREQ_GOV_START);
+
+The cpu's opp table is added in the init function(cpufreq_init)，and I will
+register a cpufreq notifier, once the first cpu of cluster is onlined,
+my notifer will be called, and if the event is CPUFREQ_START，it will modify
+the opp-microvolt according to leakage_volt_cluster0.
+
+>> +
+>> +Example:
+>> +
+>> +	cpu_avs: cpu-avs {
+>> +		compatible = "rockchip,rk3399-cpu-avs";
+> This isn't really a hardware block. For the same reasons we don't have
+> cpufreq nodes. So I don't think this belongs in DT.
+
+if I delete the compatible property like the thermal-zones node, is it allowed?
+cpu_avs: cpu-avs {
+	leakage_volt_cluster0 = <
+		/*  min(mA)   max(mA)    volt(uV)*/
+		    0         40        0
+		    41        50        (-25000)
+		    51        254       (-50000)
+	>;
+	leakage_volt_cluster1 = <
+		/*  min(mA)   max(mA)    volt(uV)*/
+		    0         40        0
+		    41        50        (-25000)
+		    51        254       (-50000)
+	>;
+}
+
+
+>
+> Rob
+>
+>
+>
+
+-- 
+Finley
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
