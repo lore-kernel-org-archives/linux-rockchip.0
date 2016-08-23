@@ -1,33 +1,61 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] crypto: rockchip - use devm_add_action_or_reset()
-Date: Tue, 23 Aug 2016 17:34:43 +0200
-Message-ID: <1832912.bMZSrNDq9I@diego>
-References: <1471964334-27060-1-git-send-email-sudipm.mukherjee@gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: Delete unnecessary assignment for the field
+ "owner"
+Date: Tue, 23 Aug 2016 11:36:44 -0400
+Message-ID: <CAOw6vbJJyd0HwSZffvD0wzLs+5z63fHq9hnrQSv4_YwjXPn7eA@mail.gmail.com>
+References: <41e48fd3-f713-7225-1df2-3b1f4758f949@users.sourceforge.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1471964334-27060-1-git-send-email-sudipm.mukherjee@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <41e48fd3-f713-7225-1df2-3b1f4758f949@users.sourceforge.net>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: SF Markus Elfring <elfring@users.sourceforge.net>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. August 2016, 20:28:54 schrieb Sudip Mukherjee:
-> If devm_add_action() fails we are explicitly calling the cleanup to free
-> the resources allocated.  Lets use the helper devm_add_action_or_reset()
-> and return directly in case of error, as we know that the cleanup function
-> has been already called by the helper if there was any error.
-> 
-> Signed-off-by: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
-
-nice little cleanup
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+T24gVHVlLCBBdWcgMTYsIDIwMTYgYXQgODo0MyBBTSwgU0YgTWFya3VzIEVsZnJpbmcKPGVsZnJp
+bmdAdXNlcnMuc291cmNlZm9yZ2UubmV0PiB3cm90ZToKPiBGcm9tOiBNYXJrdXMgRWxmcmluZyA8
+ZWxmcmluZ0B1c2Vycy5zb3VyY2Vmb3JnZS5uZXQ+Cj4gRGF0ZTogVHVlLCAxNiBBdWcgMjAxNiAx
+NDoyNTozNSArMDIwMAo+Cj4gVGhlIGZpZWxkICJvd25lciIgaXMgc2V0IGJ5IHRoZSBjb3JlLgo+
+IFRodXMgZGVsZXRlIGFuIHVubmVlZGVkIGluaXRpYWxpc2F0aW9uLgo+Cj4gR2VuZXJhdGVkIGJ5
+OiBzY3JpcHRzL2NvY2NpbmVsbGUvYXBpL3BsYXRmb3JtX25vX2Rydl9vd25lci5jb2NjaQo+IFNp
+Z25lZC1vZmYtYnk6IE1hcmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJjZWZvcmdlLm5l
+dD4KCgpBcHBsaWVkIHRvIC1taXNjCgpTZWFuCgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgfCAxIC0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAy
+IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9h
+bmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4
+X2RwLXJvY2tjaGlwLmMKPiBpbmRleCA4OWFhZGJmLi4wZTYzZWUyIDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBAQCAtNDQ1LDcg
+KzQ0NSw2IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlwX2RwX2RyaXZl
+ciA9IHsKPiAgICAgICAgIC5yZW1vdmUgPSByb2NrY2hpcF9kcF9yZW1vdmUsCj4gICAgICAgICAu
+ZHJpdmVyID0gewo+ICAgICAgICAgICAgICAgICAgICAubmFtZSA9ICJyb2NrY2hpcC1kcCIsCj4g
+LSAgICAgICAgICAgICAgICAgIC5vd25lciA9IFRISVNfTU9EVUxFLAo+ICAgICAgICAgICAgICAg
+ICAgICAucG0gPSAmcm9ja2NoaXBfZHBfcG1fb3BzLAo+ICAgICAgICAgICAgICAgICAgICAub2Zf
+bWF0Y2hfdGFibGUgPSBvZl9tYXRjaF9wdHIocm9ja2NoaXBfZHBfZHRfaWRzKSwKPiAgICAgICAg
+IH0sCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3Bf
+cmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gaW5k
+ZXggOTE5OTkyYy4uYjdmNTljNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX3ZvcF9yZWcuYwo+IEBAIC0zMDUsNyArMzA1LDYgQEAgc3RhdGljIHN0cnVjdCBwbGF0
+Zm9ybV9kcml2ZXIgdm9wX3BsYXRmb3JtX2RyaXZlciA9IHsKPiAgICAgICAgIC5yZW1vdmUgPSB2
+b3BfcmVtb3ZlLAo+ICAgICAgICAgLmRyaXZlciA9IHsKPiAgICAgICAgICAgICAgICAgLm5hbWUg
+PSAicm9ja2NoaXAtdm9wIiwKPiAtICAgICAgICAgICAgICAgLm93bmVyID0gVEhJU19NT0RVTEUs
+Cj4gICAgICAgICAgICAgICAgIC5vZl9tYXRjaF90YWJsZSA9IG9mX21hdGNoX3B0cih2b3BfZHJp
+dmVyX2R0X21hdGNoKSwKPiAgICAgICAgIH0sCj4gIH07Cj4gLS0KPiAyLjkuMgo+Cj4gX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
