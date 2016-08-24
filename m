@@ -1,142 +1,124 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v14 PATCH 4/5] Documentation: bindings: add dt documentation for cdn DP controller
-Date: Tue, 23 Aug 2016 22:17:04 -0700
-Message-ID: <1472015825-11365-5-git-send-email-zyw@rock-chips.com>
-References: <1472015825-11365-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472015825-11365-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org, briannorris@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RESEND PATCH 3/4] usb: dwc2: assert phy reset when waking up in
+ rk3288 platform
+Date: Wed, 24 Aug 2016 16:54:16 +0800
+Message-ID: <76f0ffdb-a3c6-f1e6-8177-b254ff5badaa@rock-chips.com>
+References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com>
+ <1471807905-11323-1-git-send-email-ayaka@soulik.info>
+ <49d2baf7-5f81-fc20-a805-f7a378d67a5e@synopsys.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <49d2baf7-5f81-fc20-a805-f7a378d67a5e-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds a binding that describes the cdn DP controller for
-rk3399.
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
----
+On 08/24/2016 04:46 AM, John Youn wrote:
+> On 8/21/2016 12:32 PM, Randy Li wrote:
+>> On the rk3288 USB host-only port (the one that's not the OTG-enabled
+>> port) the PHY can get into a bad state when a wakeup is asserted (not
+>> just a wakeup from full system suspend but also a wakeup from
+>> autosuspend).
+>>
+>> We can get the PHY out of its bad state by asserting its "port reset",
+>> but unfortunately that seems to assert a reset onto the USB bus so it
+>> could confuse things if we don't actually deenumerate / reenumerate the
+>> device.
+>>
+>> We can also get the PHY out of its bad state by fully resetting it using
+>> the reset from the CRU (clock reset unit) in chip, which does a more full
+>> reset.  The CRU-based reset appears to actually cause devices on the bus
+>> to be removed and reinserted, which fixes the problem (albeit in a hacky
+>> way).
+>>
+>> It's unfortunate that we need to do a full re-enumeration of devices at
+>> wakeup time, but this is better than alternative of letting the bus get
+>> wedged.
+>>
+>> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+>> ---
+>>  drivers/usb/dwc2/core_intr.c | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+>> index d85c5c9..f57c48a 100644
+>> --- a/drivers/usb/dwc2/core_intr.c
+>> +++ b/drivers/usb/dwc2/core_intr.c
+>> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
+>>  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>  {
+>>  	int ret;
+>> +	struct device_node *np = hsotg->dev->of_node;
+>>
+>>  	/* Clear interrupt */
+>>  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
+>> @@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>  			/* Restart the Phy Clock */
+>>  			pcgcctl &= ~PCGCTL_STOPPCLK;
+>>  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
+>> +
+>> +			/*
+>> +			 * It is a quirk in Rockchip RK3288, causing by
+>> +			 * a hardware bug. This will propagate out and
+>> +			 * eventually we'll re-enumerate the device.
+>> +			 * Not great but the best we can do
+>
+> Remove the trailing whitespaces in this comment.
+>
+> Run scripts/checkpatch.pl to catch these.
+I see.
+>
+>> +			 */
+>> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
+>> +				hsotg->phy->ops->reset(hsotg->phy);
+>> +
+>
+> You should probably check for NULL before calling the reset()
+> callback.
+Sure.
+>
+> Also, I'd rather see a generic quirk property that you set for your
+> platform.
+>
+> Something like "phy_reset_on_wakeup_quirk".
+But Rob Herring want me to implied by the SoC specific compatible 
+string. I agree with him. It is certainly bug in RK3288 platform.
+It is no found no the other platform.
+>
+> Also, try to preserve the version tag in your subject for all the
+> patches so that we can easily identify the latest version of the
+> series, like:
+>
+> [PATCH v5 3/4] ...
+>
+> And, typically "RESEND" means there are no code change.
+I see, I just make up my mind whether code style is new version
+before. I won't again.
 
-Changes in v14: None
-Changes in v13:
-- add dptx and apb reset
+Thank you very much.
+>
+> Regards,
+> John
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
 
-Changes in v12: None
-Changes in v11:
-- refer dp phy
-
-Changes in v10:
-- add pclk_vio_grf clock
-
-Changes in v9:
-- modify the reference phy = <&tcphy0 0>, <&tcphy1 0>;
-
-Changes in v8: None
-Changes in v7: None
-Changes in v6:
-- add assigned-clocks and assigned-clock-rates
-- add power-domains
-
-Changes in v5: None
-Changes in v4:
-- add a reset node
-- support 2 phys
-
-Changes in v3:
-- add SoC specific compatible string
-- remove reg = <1>;
-
-Changes in v2: None
-Changes in v1:
-- add extcon node description
-- add #sound-dai-cells description
-
- .../bindings/display/rockchip/cdn-dp-rockchip.txt  | 75 ++++++++++++++++++++++
- 1 file changed, 75 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-new file mode 100644
-index 0000000..9bd2c13
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-@@ -0,0 +1,75 @@
-+Rockchip RK3399 specific extensions to the cdn Display Port
-+================================
-+
-+Required properties:
-+- compatible: must be "rockchip,rk3399-cdn-dp"
-+
-+- reg: physical base address of the controller and length
-+
-+- clocks: from common clock binding: handle to dp clock.
-+
-+- clock-names: from common clock binding:
-+	       Required elements: "core-clk" "pclk" "spdif" "grf"
-+
-+- resets : a list of phandle + reset specifier pairs
-+- reset-names : string reset name, must be:
-+		"spdif", "dptx", "apb".
-+- power-domains : power-domain property defined with a phandle
-+		  to respective power domain.
-+- assigned-clocks: main clock, should be <&cru SCLK_DP_CORE>
-+- assigned-clock-rates : the DP core clk frequency, shall be: 100000000
-+
-+- rockchip,grf: this soc should set GRF regs, so need get grf here.
-+
-+- ports: contain a port nodes with endpoint definitions as defined in
-+	 Documentation/devicetree/bindings/media/video-interfaces.txt.
-+	 contained 2 endpoints, connecting to the output of vop.
-+
-+- phys: from general PHY binding: the phandle for the PHY device.
-+
-+- extcon: extcon specifier for the Power Delivery
-+
-+- #sound-dai-cells = it must be 1 if your system is using 2 DAIs: I2S, SPDIF
-+
-+-------------------------------------------------------------------------------
-+
-+Example:
-+	cdn_dp: dp@fec00000 {
-+		compatible = "rockchip,rk3399-cdn-dp";
-+		reg = <0x0 0xfec00000 0x0 0x100000>;
-+		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
-+			 <&cru SCLK_SPDIF_REC_DPTX>, <&cru PCLK_VIO_GRF>;
-+		clock-names = "core-clk", "pclk", "spdif", "grf";
-+		assigned-clocks = <&cru SCLK_DP_CORE>;
-+		assigned-clock-rates = <100000000>;
-+		power-domains = <&power RK3399_PD_HDCP>;
-+		phys = <&tcphy0_dp>, <&tcphy1_dp>;
-+		resets = <&cru SRST_DPTX_SPDIF_REC>, <&cru SRST_P_UPHY0_DPTX>,
-+			 <&cru SRST_P_UPHY0_APB>;
-+		reset-names = "spdif", "dptx", "apb";
-+		extcon = <&fusb0>, <&fusb1>;
-+		rockchip,grf = <&grf>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		#sound-dai-cells = <1>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			dp_in: port {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				dp_in_vopb: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_dp>;
-+				};
-+
-+				dp_in_vopl: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_dp>;
-+				};
-+			};
-+		};
-+	};
 -- 
-1.9.1
+Randy Li
+The third produce department
