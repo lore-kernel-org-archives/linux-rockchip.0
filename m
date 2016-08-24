@@ -1,42 +1,35 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] clk: rockchip: mark aclk_emmc_noc as a critical clock on rk3399
-Date: Wed, 24 Aug 2016 11:29:39 -0700
-Message-ID: <1472063379-717-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, Douglas Anderson <dianders@chromium.org>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: mark aclk_emmc_noc as a critical clock on rk3399
+Date: Thu, 25 Aug 2016 00:25:03 +0200
+Message-ID: <1770264.XeNEc6mIDD@diego>
+References: <1472063379-717-1-git-send-email-dianders@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1472063379-717-1-git-send-email-dianders@chromium.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xing Zheng <zhengxing@rock-chips.com>
+Am Mittwoch, 24. August 2016, 11:29:39 schrieb Douglas Anderson:
+> From: Xing Zheng <zhengxing@rock-chips.com>
+> 
+> We don't have code to handle any of the noc clocks in rk3399 and they're
+> all just listed as critical clocks.  Let's do the same for
+> aclk_emmc_noc.
+> 
+> Without this clock being marked as critical we have problems around
+> suspend/resume after commit 20c389e656a8 ("clk: rockchip: fix incorrect
+> aclk_emmc source gate bits on rk3399").  Before that change we were
+> presumably not actually gating any of these clocks because we were
+> setting the wrong gate.
+> 
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-We don't have code to handle any of the noc clocks in rk3399 and they're
-all just listed as critical clocks.  Let's do the same for
-aclk_emmc_noc.
+applied to my clk-fixes branch
 
-Without this clock being marked as critical we have problems around
-suspend/resume after commit 20c389e656a8 ("clk: rockchip: fix incorrect
-aclk_emmc source gate bits on rk3399").  Before that change we were
-presumably not actually gating any of these clocks because we were
-setting the wrong gate.
-
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
- drivers/clk/rockchip/clk-rk3399.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index e445cd64952a..ede6c475b537 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1489,6 +1489,7 @@ static const char *const rk3399_cru_critical_clocks[] __initconst = {
- 	"hclk_perilp1",
- 	"hclk_perilp1_noc",
- 	"aclk_dmac0_perilp",
-+	"aclk_emmc_noc",
- 	"gpll_hclk_perilp1_src",
- 	"gpll_aclk_perilp0_src",
- 	"gpll_aclk_perihp_src",
--- 
-2.8.0.rc3.226.g39d4020
+Thanks
+Heiko
