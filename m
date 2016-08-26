@@ -1,118 +1,106 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH] mmc: sdhci-of-arasan: Properly set corecfg_clockmultipler
  on rk3399
-Date: Fri, 26 Aug 2016 15:50:57 +0800
-Message-ID: <d6c3b728-af01-e724-3278-1bc0801f8fb4@rock-chips.com>
+Date: Fri, 26 Aug 2016 10:31:30 +0200
+Message-ID: <7490888.x1BxhdeR20@diego>
 References: <1472181736-17848-1-git-send-email-shawn.lin@rock-chips.com>
  <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
+ <d6c3b728-af01-e724-3278-1bc0801f8fb4@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ziyuan Xu <xzy.xu@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>, Douglas Anderson <dianders@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <d6c3b728-af01-e724-3278-1bc0801f8fb4-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Heiko
-
-在 2016/8/26 14:38, Ziyuan Xu 写道:
-> Hi Shawn,
->
->
-> On 2016年08月26日 11:22, Shawn Lin wrote:
->> corecfg_clockmultipler indicates clock multiplier value of
->> programmable clock generator which should be the same value
->> of SDHCI_CAPABILITIES_1. The default value of the register,
->> corecfg_clockmultipler, is 0x10. But actually it is a mistake
-> corecfg_clockmultipler==>corecfg_clockmultiplier
->> by designer as our intention was to set it to be zero which
->> means we don't support programmable clock generator. So we have
->> to made it to be zero on bootloader which seems work fine until
-> made==>make
->> now. But now we find a issue that when deploying genpd support
-> a issue==>an issue
->> for it, the remove callback will trigger the genpd to poweroff the
->> power domain for sdhci-of-arasan which magage the controller, phy
-> magage==>manage
->> and corecfg_* stuff.
->>
->> So when we do bind/unbind the driver, we have already reinit
-> do==>doing
->> the controller and phy, but without doing that for corecfg_*.
->> Regarding to only the corecfg_clockmultipler is wrong, let's
->> fix it by explicitly marking it to be zero when probing. With
->> this change, we could do bind/unbind successfully.
->>
->> Reported-by: Ziyuan Xu <xzy.xu@rock-chips.com>
->> Cc: Douglas Anderson <dianders@chromium.org>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> ---
->>
->>   drivers/mmc/host/sdhci-of-arasan.c | 9 +++++++++
->>   1 file changed, 9 insertions(+)
->>
->> diff --git a/drivers/mmc/host/sdhci-of-arasan.c
->> b/drivers/mmc/host/sdhci-of-arasan.c
->> index 0b3a9cf..c1eb263 100644
->> --- a/drivers/mmc/host/sdhci-of-arasan.c
->> +++ b/drivers/mmc/host/sdhci-of-arasan.c
->> @@ -67,10 +67,12 @@ struct sdhci_arasan_soc_ctl_field {
->>    * accessible via the syscon API.
->>    *
->>    * @baseclkfreq:    Where to find corecfg_baseclkfreq
->> + * @clockmultiplier:    Where to find corecfg_clockmultiplier
->>    * @hiword_update:    If true, use HIWORD_UPDATE to access the syscon
->>    */
->>   struct sdhci_arasan_soc_ctl_map {
->>       struct sdhci_arasan_soc_ctl_field    baseclkfreq;
->> +    struct sdhci_arasan_soc_ctl_field    clockmultiplier;
->>       bool                    hiword_update;
->>   };
->>   @@ -100,6 +102,7 @@ struct sdhci_arasan_data {
->>     static const struct sdhci_arasan_soc_ctl_map rk3399_soc_ctl_map = {
->>       .baseclkfreq = { .reg = 0xf000, .width = 8, .shift = 8 },
->> +    .clockmultiplier = { .reg = 0xf02c, .width = 8, .shit = 0},
->>       .hiword_update = true,
->>   };
->>   @@ -528,6 +531,12 @@ static int sdhci_arasan_probe(struct
->> platform_device *pdev)
->>                       ret);
->>               goto err_pltfm_free;
->>           }
->> +
->> +        if (of_device_is_compatible(pdev->dev.of_node,
->> +                        "rockchip,rk3399-sdhci-5.1"))
->> +            sdhci_arasan_syscon_write(host,
->> +                          &soc_ctl_map->clockmultiplier,
->> +                          0);
-> Variable soc_ctl_map is undefined in sdhci_arasan_probe(), please fix it.
-
-Woops, I change the code a bit after generating patch, I will fix it.
-
-> Moreover, we can not access grf_emmccore/grf_emmcphy prior to enable
-> clk_ahb, so do it after clock enable.
-
-Hrmm, we configure the grf vai CPU and the clock for accessing
-grf is aclk_emmc_grf( I saw aclk_emmc_noc is critical and it seems we
-should treat aclk_emmc_* the same way). I could move this after
-enabling aclk_emmc, but that is a bogus critical for aclk_emmc_* to me 
-since it's off when disabling aclk_emmc, no?
-
-
->>       }
->>         sdhci_arasan->clk_ahb = devm_clk_get(&pdev->dev, "clk_ahb");
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
--- 
-Best Regards
-Shawn Lin
-
+QW0gRnJlaXRhZywgMjYuIEF1Z3VzdCAyMDE2LCAxNTo1MDo1NyBzY2hyaWViIFNoYXduIExpbjoK
+PiArIEhlaWtvCj4gCj4g5ZyoIDIwMTYvOC8yNiAxNDozOCwgWml5dWFuIFh1IOWGmemBkzoKPiA+
+IEhpIFNoYXduLAo+ID4gCj4gPiBPbiAyMDE25bm0MDjmnIgyNuaXpSAxMToyMiwgU2hhd24gTGlu
+IHdyb3RlOgo+ID4+IGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIgaW5kaWNhdGVzIGNsb2NrIG11bHRp
+cGxpZXIgdmFsdWUgb2YKPiA+PiBwcm9ncmFtbWFibGUgY2xvY2sgZ2VuZXJhdG9yIHdoaWNoIHNo
+b3VsZCBiZSB0aGUgc2FtZSB2YWx1ZQo+ID4+IG9mIFNESENJX0NBUEFCSUxJVElFU18xLiBUaGUg
+ZGVmYXVsdCB2YWx1ZSBvZiB0aGUgcmVnaXN0ZXIsCj4gPj4gY29yZWNmZ19jbG9ja211bHRpcGxl
+ciwgaXMgMHgxMC4gQnV0IGFjdHVhbGx5IGl0IGlzIGEgbWlzdGFrZQo+ID4gCj4gPiBjb3JlY2Zn
+X2Nsb2NrbXVsdGlwbGVyPT0+Y29yZWNmZ19jbG9ja211bHRpcGxpZXIKPiA+IAo+ID4+IGJ5IGRl
+c2lnbmVyIGFzIG91ciBpbnRlbnRpb24gd2FzIHRvIHNldCBpdCB0byBiZSB6ZXJvIHdoaWNoCj4g
+Pj4gbWVhbnMgd2UgZG9uJ3Qgc3VwcG9ydCBwcm9ncmFtbWFibGUgY2xvY2sgZ2VuZXJhdG9yLiBT
+byB3ZSBoYXZlCj4gPj4gdG8gbWFkZSBpdCB0byBiZSB6ZXJvIG9uIGJvb3Rsb2FkZXIgd2hpY2gg
+c2VlbXMgd29yayBmaW5lIHVudGlsCj4gPiAKPiA+IG1hZGU9PT5tYWtlCj4gPiAKPiA+PiBub3cu
+IEJ1dCBub3cgd2UgZmluZCBhIGlzc3VlIHRoYXQgd2hlbiBkZXBsb3lpbmcgZ2VucGQgc3VwcG9y
+dAo+ID4gCj4gPiBhIGlzc3VlPT0+YW4gaXNzdWUKPiA+IAo+ID4+IGZvciBpdCwgdGhlIHJlbW92
+ZSBjYWxsYmFjayB3aWxsIHRyaWdnZXIgdGhlIGdlbnBkIHRvIHBvd2Vyb2ZmIHRoZQo+ID4+IHBv
+d2VyIGRvbWFpbiBmb3Igc2RoY2ktb2YtYXJhc2FuIHdoaWNoIG1hZ2FnZSB0aGUgY29udHJvbGxl
+ciwgcGh5Cj4gPiAKPiA+IG1hZ2FnZT09Pm1hbmFnZQo+ID4gCj4gPj4gYW5kIGNvcmVjZmdfKiBz
+dHVmZi4KPiA+PiAKPiA+PiBTbyB3aGVuIHdlIGRvIGJpbmQvdW5iaW5kIHRoZSBkcml2ZXIsIHdl
+IGhhdmUgYWxyZWFkeSByZWluaXQKPiA+IAo+ID4gZG89PT5kb2luZwo+ID4gCj4gPj4gdGhlIGNv
+bnRyb2xsZXIgYW5kIHBoeSwgYnV0IHdpdGhvdXQgZG9pbmcgdGhhdCBmb3IgY29yZWNmZ18qLgo+
+ID4+IFJlZ2FyZGluZyB0byBvbmx5IHRoZSBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGVyIGlzIHdyb25n
+LCBsZXQncwo+ID4+IGZpeCBpdCBieSBleHBsaWNpdGx5IG1hcmtpbmcgaXQgdG8gYmUgemVybyB3
+aGVuIHByb2JpbmcuIFdpdGgKPiA+PiB0aGlzIGNoYW5nZSwgd2UgY291bGQgZG8gYmluZC91bmJp
+bmQgc3VjY2Vzc2Z1bGx5Lgo+ID4+IAo+ID4+IFJlcG9ydGVkLWJ5OiBaaXl1YW4gWHUgPHh6eS54
+dUByb2NrLWNoaXBzLmNvbT4KPiA+PiBDYzogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hy
+b21pdW0ub3JnPgo+ID4+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2st
+Y2hpcHMuY29tPgo+ID4+IC0tLQo+ID4+IAo+ID4+ICAgZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1v
+Zi1hcmFzYW4uYyB8IDkgKysrKysrKysrCj4gPj4gICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRp
+b25zKCspCj4gPj4gCj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2Yt
+YXJhc2FuLmMKPiA+PiBiL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPiA+PiBp
+bmRleCAwYjNhOWNmLi5jMWViMjYzIDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3Qv
+c2RoY2ktb2YtYXJhc2FuLmMKPiA+PiArKysgYi9kcml2ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWFy
+YXNhbi5jCj4gPj4gQEAgLTY3LDEwICs2NywxMiBAQCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19j
+dGxfZmllbGQgewo+ID4+IAo+ID4+ICAgICogYWNjZXNzaWJsZSB2aWEgdGhlIHN5c2NvbiBBUEku
+Cj4gPj4gICAgKgo+ID4+ICAgICogQGJhc2VjbGtmcmVxOiAgICBXaGVyZSB0byBmaW5kIGNvcmVj
+ZmdfYmFzZWNsa2ZyZXEKPiA+PiAKPiA+PiArICogQGNsb2NrbXVsdGlwbGllcjogICAgV2hlcmUg
+dG8gZmluZCBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGllcgo+ID4+IAo+ID4+ICAgICogQGhpd29yZF91
+cGRhdGU6ICAgIElmIHRydWUsIHVzZSBISVdPUkRfVVBEQVRFIHRvIGFjY2VzcyB0aGUgc3lzY29u
+Cj4gPj4gICAgKi8KPiA+PiAgIAo+ID4+ICAgc3RydWN0IHNkaGNpX2FyYXNhbl9zb2NfY3RsX21h
+cCB7Cj4gPj4gICAKPiA+PiAgICAgICBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19jdGxfZmllbGQg
+ICAgYmFzZWNsa2ZyZXE7Cj4gPj4gCj4gPj4gKyAgICBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19j
+dGxfZmllbGQgICAgY2xvY2ttdWx0aXBsaWVyOwo+ID4+IAo+ID4+ICAgICAgIGJvb2wgICAgICAg
+ICAgICAgICAgICAgIGhpd29yZF91cGRhdGU7Cj4gPj4gICAKPiA+PiAgIH07Cj4gPj4gICBAQCAt
+MTAwLDYgKzEwMiw3IEBAIHN0cnVjdCBzZGhjaV9hcmFzYW5fZGF0YSB7Cj4gPj4gICAKPiA+PiAg
+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9tYXAgcmszMzk5X3Nv
+Y19jdGxfbWFwID0gewo+ID4+ICAgICAKPiA+PiAgICAgICAuYmFzZWNsa2ZyZXEgPSB7IC5yZWcg
+PSAweGYwMDAsIC53aWR0aCA9IDgsIC5zaGlmdCA9IDggfSwKPiA+PiAKPiA+PiArICAgIC5jbG9j
+a211bHRpcGxpZXIgPSB7IC5yZWcgPSAweGYwMmMsIC53aWR0aCA9IDgsIC5zaGl0ID0gMH0sCj4g
+Pj4gCj4gPj4gICAgICAgLmhpd29yZF91cGRhdGUgPSB0cnVlLAo+ID4+ICAgCj4gPj4gICB9Owo+
+ID4+ICAgQEAgLTUyOCw2ICs1MzEsMTIgQEAgc3RhdGljIGludCBzZGhjaV9hcmFzYW5fcHJvYmUo
+c3RydWN0Cj4gPj4gCj4gPj4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+IAo+ID4+ICAgICAg
+ICAgICAgICAgICAgICAgICByZXQpOwo+ID4+ICAgICAgICAgICAgICAgCj4gPj4gICAgICAgICAg
+ICAgICBnb3RvIGVycl9wbHRmbV9mcmVlOwo+ID4+ICAgICAgICAgICAKPiA+PiAgICAgICAgICAg
+fQo+ID4+IAo+ID4+ICsKPiA+PiArICAgICAgICBpZiAob2ZfZGV2aWNlX2lzX2NvbXBhdGlibGUo
+cGRldi0+ZGV2Lm9mX25vZGUsCj4gPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICJyb2NrY2hp
+cCxyazMzOTktc2RoY2ktNS4xIikpCj4gPj4gKyAgICAgICAgICAgIHNkaGNpX2FyYXNhbl9zeXNj
+b25fd3JpdGUoaG9zdCwKPiA+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAmc29jX2N0bF9t
+YXAtPmNsb2NrbXVsdGlwbGllciwKPiA+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAwKTsK
+PiA+IAo+ID4gVmFyaWFibGUgc29jX2N0bF9tYXAgaXMgdW5kZWZpbmVkIGluIHNkaGNpX2FyYXNh
+bl9wcm9iZSgpLCBwbGVhc2UgZml4IGl0Lgo+IAo+IFdvb3BzLCBJIGNoYW5nZSB0aGUgY29kZSBh
+IGJpdCBhZnRlciBnZW5lcmF0aW5nIHBhdGNoLCBJIHdpbGwgZml4IGl0Lgo+IAo+ID4gTW9yZW92
+ZXIsIHdlIGNhbiBub3QgYWNjZXNzIGdyZl9lbW1jY29yZS9ncmZfZW1tY3BoeSBwcmlvciB0byBl
+bmFibGUKPiA+IGNsa19haGIsIHNvIGRvIGl0IGFmdGVyIGNsb2NrIGVuYWJsZS4KPiAKPiBIcm1t
+LCB3ZSBjb25maWd1cmUgdGhlIGdyZiB2YWkgQ1BVIGFuZCB0aGUgY2xvY2sgZm9yIGFjY2Vzc2lu
+Zwo+IGdyZiBpcyBhY2xrX2VtbWNfZ3JmKCBJIHNhdyBhY2xrX2VtbWNfbm9jIGlzIGNyaXRpY2Fs
+IGFuZCBpdCBzZWVtcyB3ZQo+IHNob3VsZCB0cmVhdCBhY2xrX2VtbWNfKiB0aGUgc2FtZSB3YXkp
+LgoKTm8gOi0pCgpUaGUgYWNsa19lbW1jX2dyZiBpcyAoc2ltaWxhciB0byBhY2xrX3Zpb19ncmYg
+ZXRjKSBwYXJ0IG9mIHRoZSBlbW1jIGJsb2NrLgoKVGhlIG5vYyBjbG9ja3MgKGFzIGZhciBhcyBJ
+IHVuZGVyc3RhbmQpIGFyZSB0aGUgaW50ZXJjb25uZWN0IGNsb2NrcyB0aGF0IApzdXBwbHkgdGhl
+IGxpbmsgYmV0d2VlbiBpbnRlcmNvbm5lY3QgYW5kIHBlcmlwaGVyYWwsIHNvIGFyZSBwYXJ0IG9m
+IHRoZSAKaW50ZXJjb25uZWN0IGJsb2NrLgoKV2UgZG9uJ3QgbW9kZWwgdGhlIGludGVyY29ubmVj
+dCBvbiBhbnkgcm9ja2NoaXAgc29jIHJpZ2h0IG5vdywgc28gdGhlIG5vYyAKY2xvY2tzIGFyZSBy
+aWdodGZ1bGx5IG1hcmtlZCBjcml0aWNhbCwgYnV0IHdlIG9mIGNvdXJzZSBkbyBtb2RlbCB0aGUg
+ZW1tYyAKYmxvY2ssIHNvIGl0IHNob3VsZCBoYW5kbGUgaXRzIGdyZiBjbG9jaywgc2ltaWxhciB0
+byBob3cgdGhlIGRybSBkcml2ZXIgaXMgCihwbGFubmluZyB0bykgZG9pbmcgaXQgcmlnaHQgbm93
+LgoKCkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
