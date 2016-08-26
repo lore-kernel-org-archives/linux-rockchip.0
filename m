@@ -1,40 +1,128 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix the address map for WDT0 and WDT1
-Date: Fri, 26 Aug 2016 13:14:01 +0200
-Message-ID: <17136512.4k6A6uo3GV@diego>
-References: <1472208482-30862-1-git-send-email-zhengxing@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] mmc: sdhci-of-arasan: Properly set corecfg_clockmultiplier
+ on rk3399
+Date: Fri, 26 Aug 2016 08:40:58 -0700
+Message-ID: <CAD=FV=VO57j+cUe3YLRW+oziar2dVvpS9_KBgJeT2gbHfYjOkQ@mail.gmail.com>
+References: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1472208482-30862-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 26. August 2016, 18:48:01 schrieb Xing Zheng:
-> To rename "watchdog" to "watchdog0" explicitly for looking up.
-> Dues to incorrect description in the TRM, the WDTs base address
-> should be fixed and swap them like this:
-> WDT0 - 0xff848000
-> WDT1 - 0xff840000
-> 
-> And, it is right that only WDT0 can generate global software reset.
-> We will update the TRM to fix it.
-> 
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi,
 
-I had applied v1 already, so I have now just amended it with the watchdog0
-change [0]. In any case the fix is in my dts64 branch for 4.9 now.
+On Fri, Aug 26, 2016 at 1:51 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> corecfg_clockmultiplier indicates clock multiplier value of
+> programmable clock generator which should be the same value
+> of SDHCI_CAPABILITIES_1. The default value of the register,
+> corecfg_clockmultiplier, is 0x10. But actually it is a mistake
+> by designer as our intention was to set it to be zero which
+> means we don't support programmable clock generator. So we have
+> to make it to be zero on bootloader which seems work fine until
+> now. But now we find an issue that when deploying genpd support
+> for it, the remove callback will trigger the genpd to poweroff the
+> power domain for sdhci-of-arasan which manage the controller, phy
+> and corecfg_* stuff.
+>
+> So when we do bind/unbind the driver, we have already reinit
+> the controller and phy, but without doing that for corecfg_*.
+> Regarding to only the corecfg_clockmultipler is wrong, let's
+> fix it by explicitly marking it to be zero when probing. With
+> this change, we could do bind/unbind successfully.
+>
+> Reported-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+> Cc: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v2:
+> - fix some typos and build
+> - move the configuration of corecfg_clockmultiplier after
+>   enabling aclk_emmc to avoid the off state of aclk_emmc_grf.
+>   I add a new function to make it more common for other coming
+>   users who have the same requirment for setting diff clkmul.
+>
+>  drivers/mmc/host/sdhci-of-arasan.c | 46 ++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 46 insertions(+)
+>
+> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+> index 0b3a9cf..33601a8 100644
+> --- a/drivers/mmc/host/sdhci-of-arasan.c
+> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+> @@ -67,10 +67,12 @@ struct sdhci_arasan_soc_ctl_field {
+>   * accessible via the syscon API.
+>   *
+>   * @baseclkfreq:       Where to find corecfg_baseclkfreq
+> + * @clockmultiplier:   Where to find corecfg_clockmultiplier
+>   * @hiword_update:     If true, use HIWORD_UPDATE to access the syscon
+>   */
+>  struct sdhci_arasan_soc_ctl_map {
+>         struct sdhci_arasan_soc_ctl_field       baseclkfreq;
+> +       struct sdhci_arasan_soc_ctl_field       clockmultiplier;
+>         bool                                    hiword_update;
+>  };
+>
+> @@ -100,6 +102,7 @@ struct sdhci_arasan_data {
+>
+>  static const struct sdhci_arasan_soc_ctl_map rk3399_soc_ctl_map = {
+>         .baseclkfreq = { .reg = 0xf000, .width = 8, .shift = 8 },
+> +       .clockmultiplier = { .reg = 0xf02c, .width = 8, .shift = 0},
+>         .hiword_update = true,
+>  };
+>
+> @@ -379,6 +382,45 @@ static const struct clk_ops arasan_sdcardclk_ops = {
+>  };
+>
+>  /**
+> + * sdhci_arasan_update_clockmultiplier - Set corecfg_clockmultiplier
+> + *
+> + * The corecfg_clockmultiplier is supposed to contain clock multiplier
+> + * value of programmable clock generator.
+> + *
+> + * NOTES:
+> + * - Many existing devices don't seem to do this and work fine.  To keep
+> + *   compatibility for old hardware where the device tree doesn't provide a
+> + *   register map, this function is a noop if a soc_ctl_map hasn't been provided
+> + *   for this platform.
+> + * - The value of corecfg_clockmultiplier should sync with that of corresponding
+> + *   value reading from sdhci_capability_register. So this function is called
+> + *   once at probe time and never called again.
+> + *
+> + * @host:              The sdhci_host
+> + */
+> +static void sdhci_arasan_update_clockmultiplier(struct sdhci_host *host,
+> +                                               u32 value)
+> +{
+> +       struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+> +       struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
+> +       const struct sdhci_arasan_soc_ctl_map *soc_ctl_map =
+> +               sdhci_arasan->soc_ctl_map;
+> +
+> +       /* Having a map is optional */
+> +       if (!soc_ctl_map)
+> +               return;
+> +
+> +       /* If we have a map, we expect to have a syscon */
+> +       if (!sdhci_arasan->soc_ctl_base) {
+> +               pr_warn("%s: Have regmap, but no soc-ctl-syscon\n",
+> +                       mmc_hostname(host->mmc));
+> +               return;
+> +       }
+> +
+> +       sdhci_arasan_syscon_write(host, &soc_ctl_map->clockmultiplier, value);
+> +}
 
+It would be nice if all the "Having a map is optional" and "If we have
+a map, we expect to have a syscon" were shared between
+"sdhci_arasan_update_clockmultiplier" and
+"sdhci_arasan_update_baseclkfreq".  You could add a
+"sdhci_arasan_syscon_write_opt" helper or something?
 
-Heiko
+...but IMHO that could be done once the third copy is added, so:
 
-
-[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=8859d81a562e484f06712fadb8886d78ed0be851
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
