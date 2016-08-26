@@ -1,79 +1,30 @@
-From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] mmc: sdhci-of-arasan: Properly set corecfg_clockmultipler
- on rk3399
-Date: Fri, 26 Aug 2016 14:38:10 +0800
-Message-ID: <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
-References: <1472181736-17848-1-git-send-email-shawn.lin@rock-chips.com>
+From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
+Subject: =?UTF-8?B?UkU6IFtQQVRDSCB2NyA3LzhdIFBNIC8gZGV2ZnJlcTogcm9j?=
+ =?UTF-8?B?a2NoaXA6IGFkZCBkZXZmcmVxIGRyaXZlciBmb3IgcmszMzk5?=
+ =?UTF-8?B?IGRtYw==?=
+Date: Fri, 26 Aug 2016 07:20:38 +0000
+Message-ID: <231650248.101111.1472196038139.JavaMail.weblogic@ep2ml101a>
+References: <1471836984-6316-1-git-send-email-hl@rock-chips.com>
+ <CGME20160822033650epcas1p38e945746186fb0b2a64d1da3ee50b3e3@epcas1p3.samsung.com>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472181736-17848-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: multipart/related;
+ boundary="----=_Part_101110_146186288.1472196038139"
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: =?UTF-8?B?TGluIEh1YW5n?= <hl@rock-chips.com>, =?UTF-8?B?aGVpa29Ac250ZWNoLmRl?= <heiko@sntech.de>
+Cc: =?UTF-8?B?dGl4eUBsaW5hcm8ub3Jn?= <tixy@linaro.org>, =?UTF-8?B?bWFyay5ydXRsYW5kQGFybS5jb20=?= <mark.rutland@arm.com>, =?UTF-8?B?dHlwQHJvY2stY2hpcHMuY29t?= <typ@rock-chips.com>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?YWlybGllZEBsaW51eC5pZQ==?= <airlied@linux.ie>, =?UTF-8?B?bXR1cnF1ZXR0ZUBiYXlsaWJyZS5jb20=?= <mturquette@baylibre.com>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?c2JveWRAY29kZWF1cm9yYS5vcmc=?= <sboyd@codeaurora.org>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>, =?UTF-8?B?ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZw==?= <dri-devel@lists.freedesktop.org>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chr>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2hhd24sCgoKT24gMjAxNuW5tDA45pyIMjbml6UgMTE6MjIsIFNoYXduIExpbiB3cm90ZToK
-PiBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGVyIGluZGljYXRlcyBjbG9jayBtdWx0aXBsaWVyIHZhbHVl
-IG9mCj4gcHJvZ3JhbW1hYmxlIGNsb2NrIGdlbmVyYXRvciB3aGljaCBzaG91bGQgYmUgdGhlIHNh
-bWUgdmFsdWUKPiBvZiBTREhDSV9DQVBBQklMSVRJRVNfMS4gVGhlIGRlZmF1bHQgdmFsdWUgb2Yg
-dGhlIHJlZ2lzdGVyLAo+IGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIsIGlzIDB4MTAuIEJ1dCBhY3R1
-YWxseSBpdCBpcyBhIG1pc3Rha2UKY29yZWNmZ19jbG9ja211bHRpcGxlcj09PmNvcmVjZmdfY2xv
-Y2ttdWx0aXBsaWVyCj4gYnkgZGVzaWduZXIgYXMgb3VyIGludGVudGlvbiB3YXMgdG8gc2V0IGl0
-IHRvIGJlIHplcm8gd2hpY2gKPiBtZWFucyB3ZSBkb24ndCBzdXBwb3J0IHByb2dyYW1tYWJsZSBj
-bG9jayBnZW5lcmF0b3IuIFNvIHdlIGhhdmUKPiB0byBtYWRlIGl0IHRvIGJlIHplcm8gb24gYm9v
-dGxvYWRlciB3aGljaCBzZWVtcyB3b3JrIGZpbmUgdW50aWwKbWFkZT09Pm1ha2UKPiBub3cuIEJ1
-dCBub3cgd2UgZmluZCBhIGlzc3VlIHRoYXQgd2hlbiBkZXBsb3lpbmcgZ2VucGQgc3VwcG9ydAph
-IGlzc3VlPT0+YW4gaXNzdWUKPiBmb3IgaXQsIHRoZSByZW1vdmUgY2FsbGJhY2sgd2lsbCB0cmln
-Z2VyIHRoZSBnZW5wZCB0byBwb3dlcm9mZiB0aGUKPiBwb3dlciBkb21haW4gZm9yIHNkaGNpLW9m
-LWFyYXNhbiB3aGljaCBtYWdhZ2UgdGhlIGNvbnRyb2xsZXIsIHBoeQptYWdhZ2U9PT5tYW5hZ2UK
-PiBhbmQgY29yZWNmZ18qIHN0dWZmLgo+Cj4gU28gd2hlbiB3ZSBkbyBiaW5kL3VuYmluZCB0aGUg
-ZHJpdmVyLCB3ZSBoYXZlIGFscmVhZHkgcmVpbml0CmRvPT0+ZG9pbmcKPiB0aGUgY29udHJvbGxl
-ciBhbmQgcGh5LCBidXQgd2l0aG91dCBkb2luZyB0aGF0IGZvciBjb3JlY2ZnXyouCj4gUmVnYXJk
-aW5nIHRvIG9ubHkgdGhlIGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIgaXMgd3JvbmcsIGxldCdzCj4g
-Zml4IGl0IGJ5IGV4cGxpY2l0bHkgbWFya2luZyBpdCB0byBiZSB6ZXJvIHdoZW4gcHJvYmluZy4g
-V2l0aAo+IHRoaXMgY2hhbmdlLCB3ZSBjb3VsZCBkbyBiaW5kL3VuYmluZCBzdWNjZXNzZnVsbHku
-Cj4KPiBSZXBvcnRlZC1ieTogWml5dWFuIFh1IDx4enkueHVAcm9jay1jaGlwcy5jb20+Cj4gQ2M6
-IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5
-OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPiAtLS0KPgo+ICAgZHJpdmVy
-cy9tbWMvaG9zdC9zZGhjaS1vZi1hcmFzYW4uYyB8IDkgKysrKysrKysrCj4gICAxIGZpbGUgY2hh
-bmdlZCwgOSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvaG9zdC9z
-ZGhjaS1vZi1hcmFzYW4uYyBiL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPiBp
-bmRleCAwYjNhOWNmLi5jMWViMjYzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3Qvc2Ro
-Y2ktb2YtYXJhc2FuLmMKPiArKysgYi9kcml2ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWFyYXNhbi5j
-Cj4gQEAgLTY3LDEwICs2NywxMiBAQCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19jdGxfZmllbGQg
-ewo+ICAgICogYWNjZXNzaWJsZSB2aWEgdGhlIHN5c2NvbiBBUEkuCj4gICAgKgo+ICAgICogQGJh
-c2VjbGtmcmVxOglXaGVyZSB0byBmaW5kIGNvcmVjZmdfYmFzZWNsa2ZyZXEKPiArICogQGNsb2Nr
-bXVsdGlwbGllcjoJV2hlcmUgdG8gZmluZCBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGllcgo+ICAgICog
-QGhpd29yZF91cGRhdGU6CUlmIHRydWUsIHVzZSBISVdPUkRfVVBEQVRFIHRvIGFjY2VzcyB0aGUg
-c3lzY29uCj4gICAgKi8KPiAgIHN0cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9tYXAgewo+ICAg
-CXN0cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9maWVsZAliYXNlY2xrZnJlcTsKPiArCXN0cnVj
-dCBzZGhjaV9hcmFzYW5fc29jX2N0bF9maWVsZAljbG9ja211bHRpcGxpZXI7Cj4gICAJYm9vbAkJ
-CQkJaGl3b3JkX3VwZGF0ZTsKPiAgIH07Cj4gICAKPiBAQCAtMTAwLDYgKzEwMiw3IEBAIHN0cnVj
-dCBzZGhjaV9hcmFzYW5fZGF0YSB7Cj4gICAKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc2RoY2lf
-YXJhc2FuX3NvY19jdGxfbWFwIHJrMzM5OV9zb2NfY3RsX21hcCA9IHsKPiAgIAkuYmFzZWNsa2Zy
-ZXEgPSB7IC5yZWcgPSAweGYwMDAsIC53aWR0aCA9IDgsIC5zaGlmdCA9IDggfSwKPiArCS5jbG9j
-a211bHRpcGxpZXIgPSB7IC5yZWcgPSAweGYwMmMsIC53aWR0aCA9IDgsIC5zaGl0ID0gMH0sCj4g
-ICAJLmhpd29yZF91cGRhdGUgPSB0cnVlLAo+ICAgfTsKPiAgIAo+IEBAIC01MjgsNiArNTMxLDEy
-IEBAIHN0YXRpYyBpbnQgc2RoY2lfYXJhc2FuX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCj4gICAJCQkJCXJldCk7Cj4gICAJCQlnb3RvIGVycl9wbHRmbV9mcmVlOwo+ICAgCQl9
-Cj4gKwo+ICsJCWlmIChvZl9kZXZpY2VfaXNfY29tcGF0aWJsZShwZGV2LT5kZXYub2Zfbm9kZSwK
-PiArCQkJCQkgICAgInJvY2tjaGlwLHJrMzM5OS1zZGhjaS01LjEiKSkKPiArCQkJc2RoY2lfYXJh
-c2FuX3N5c2Nvbl93cml0ZShob3N0LAo+ICsJCQkJCQkgICZzb2NfY3RsX21hcC0+Y2xvY2ttdWx0
-aXBsaWVyLAo+ICsJCQkJCQkgIDApOwpWYXJpYWJsZSBzb2NfY3RsX21hcCBpcyB1bmRlZmluZWQg
-aW4gc2RoY2lfYXJhc2FuX3Byb2JlKCksIHBsZWFzZSBmaXggaXQuCk1vcmVvdmVyLCB3ZSBjYW4g
-bm90IGFjY2VzcyBncmZfZW1tY2NvcmUvZ3JmX2VtbWNwaHkgcHJpb3IgdG8gZW5hYmxlIApjbGtf
-YWhiLCBzbyBkbyBpdCBhZnRlciBjbG9jayBlbmFibGUuCj4gICAJfQo+ICAgCj4gICAJc2RoY2lf
-YXJhc2FuLT5jbGtfYWhiID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYsICJjbGtfYWhiIik7CgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+------=_Part_101110_146186288.1472196038139
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"
+
+PiBiYXNlIG9uIGRmaSByZXN1bHQsIHdlIGRvIGRkciBmcmVxdWVuY3kgc2NhbGluZywgcmVnaXN0
+ZXINCj4gZG1jIGRyaXZlciB0byBkZXZmcmVxIGZyYW1ld29yaywgYW5kIHVzZSBzaW1wbGUtb25k
+ZW1hbmQNCj4gcG9saWN5Lg0KPg0KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2st
+Y2hpcHMuY29tPg0KPiBSZXZpZXdlZC1ieTogQ2hhbndvbyBDaG9pIDxjdzAwLmNob2lAc2Ftc3Vu
+Zy5jb20+DQo+IC0tLQ0KDQpUaGFua3MuIExHVE0uDQoNCg0KU2lnbmVkLW9mZi1ieTogTXl1bmdK
+b28gSGFtIDxteXVuZ2pvby5oYW1Ac2Ftc3VuZy5jb20+DQoNCkNoZWVycywNCk15dW5nSm9vLg==
+
+------=_Part_101110_146186288.1472196038139--
