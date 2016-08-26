@@ -1,30 +1,44 @@
-From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
-Subject: =?UTF-8?B?UkU6IFtQQVRDSCB2NyA3LzhdIFBNIC8gZGV2ZnJlcTogcm9j?=
- =?UTF-8?B?a2NoaXA6IGFkZCBkZXZmcmVxIGRyaXZlciBmb3IgcmszMzk5?=
- =?UTF-8?B?IGRtYw==?=
-Date: Fri, 26 Aug 2016 07:20:38 +0000
-Message-ID: <231650248.101111.1472196038139.JavaMail.weblogic@ep2ml101a>
-References: <1471836984-6316-1-git-send-email-hl@rock-chips.com>
- <CGME20160822033650epcas1p38e945746186fb0b2a64d1da3ee50b3e3@epcas1p3.samsung.com>
-Reply-To: myungjoo.ham@samsung.com
+From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/3] nvmem: rockchip-efuse: support more rockchip SoCs
+Date: Fri, 26 Aug 2016 00:36:28 -0700
+Message-ID: <1472196991-8529-1-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/related;
- boundary="----=_Part_101110_146186288.1472196038139"
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: =?UTF-8?B?TGluIEh1YW5n?= <hl@rock-chips.com>, =?UTF-8?B?aGVpa29Ac250ZWNoLmRl?= <heiko@sntech.de>
-Cc: =?UTF-8?B?dGl4eUBsaW5hcm8ub3Jn?= <tixy@linaro.org>, =?UTF-8?B?bWFyay5ydXRsYW5kQGFybS5jb20=?= <mark.rutland@arm.com>, =?UTF-8?B?dHlwQHJvY2stY2hpcHMuY29t?= <typ@rock-chips.com>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?YWlybGllZEBsaW51eC5pZQ==?= <airlied@linux.ie>, =?UTF-8?B?bXR1cnF1ZXR0ZUBiYXlsaWJyZS5jb20=?= <mturquette@baylibre.com>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?c2JveWRAY29kZWF1cm9yYS5vcmc=?= <sboyd@codeaurora.org>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>, =?UTF-8?B?ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZw==?= <dri-devel@lists.freedesktop.org>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chr>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-------=_Part_101110_146186288.1472196038139
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"
+As the timing and organization of efuse may be different
+between rockchip SoCs, so their read function may be different.
+We add different device tree compatible string for rockchip SoCs
+to match their own read function.
+ 
+V2->V3:
+- delete patch 3/4 in v2, don't add efuse0 device node
+- 3/3 fix read data error sometimes by disable efuse redundancy
 
-PiBiYXNlIG9uIGRmaSByZXN1bHQsIHdlIGRvIGRkciBmcmVxdWVuY3kgc2NhbGluZywgcmVnaXN0
-ZXINCj4gZG1jIGRyaXZlciB0byBkZXZmcmVxIGZyYW1ld29yaywgYW5kIHVzZSBzaW1wbGUtb25k
-ZW1hbmQNCj4gcG9saWN5Lg0KPg0KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2st
-Y2hpcHMuY29tPg0KPiBSZXZpZXdlZC1ieTogQ2hhbndvbyBDaG9pIDxjdzAwLmNob2lAc2Ftc3Vu
-Zy5jb20+DQo+IC0tLQ0KDQpUaGFua3MuIExHVE0uDQoNCg0KU2lnbmVkLW9mZi1ieTogTXl1bmdK
-b28gSGFtIDxteXVuZ2pvby5oYW1Ac2Ftc3VuZy5jb20+DQoNCkNoZWVycywNCk15dW5nSm9vLg==
+Finley Xiao (3):
+  nvmem: rockchip-efuse: update compatible strings for Rockchip efuse
+  ARM: dts: rockchip: update compatible strings for Rockchip efuse
+  nvmem: rockchip-efuse: add rk3399-efuse support
 
-------=_Part_101110_146186288.1472196038139--
+ .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  13 +-
+ arch/arm/boot/dts/rk3066a.dtsi                     |   2 +-
+ arch/arm/boot/dts/rk3188.dtsi                      |   2 +-
+ arch/arm/boot/dts/rk3288.dtsi                      |   2 +-
+ drivers/nvmem/rockchip-efuse.c                     | 131 ++++++++++++++++++---
+ 5 files changed, 126 insertions(+), 24 deletions(-)
+
+-- 
+1.9.1
