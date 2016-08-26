@@ -1,109 +1,130 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] mmc: sdhci-of-arasan: Properly set corecfg_clockmultipler
- on rk3399
-Date: Fri, 26 Aug 2016 16:36:14 +0800
-Message-ID: <93770cb4-2ede-9f71-f346-16c82be78f6d@rock-chips.com>
-References: <1472181736-17848-1-git-send-email-shawn.lin@rock-chips.com>
- <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
- <d6c3b728-af01-e724-3278-1bc0801f8fb4@rock-chips.com>
- <7490888.x1BxhdeR20@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7490888.x1BxhdeR20@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2] mmc: sdhci-of-arasan: Properly set corecfg_clockmultiplier on rk3399
+Date: Fri, 26 Aug 2016 16:51:15 +0800
+Message-ID: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, linux-mmc@vger.kernel.org, xzy.xu@rock-chips.com, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTYvOC8yNiAxNjozMSwgSGVpa28gU3TDvGJuZXIg5YaZ6YGTOgo+IEFtIEZyZWl0YWcs
-IDI2LiBBdWd1c3QgMjAxNiwgMTU6NTA6NTcgc2NocmllYiBTaGF3biBMaW46Cj4+ICsgSGVpa28K
-Pj4KPj4g5ZyoIDIwMTYvOC8yNiAxNDozOCwgWml5dWFuIFh1IOWGmemBkzoKPj4+IEhpIFNoYXdu
-LAo+Pj4KPj4+IE9uIDIwMTblubQwOOaciDI25pelIDExOjIyLCBTaGF3biBMaW4gd3JvdGU6Cj4+
-Pj4gY29yZWNmZ19jbG9ja211bHRpcGxlciBpbmRpY2F0ZXMgY2xvY2sgbXVsdGlwbGllciB2YWx1
-ZSBvZgo+Pj4+IHByb2dyYW1tYWJsZSBjbG9jayBnZW5lcmF0b3Igd2hpY2ggc2hvdWxkIGJlIHRo
-ZSBzYW1lIHZhbHVlCj4+Pj4gb2YgU0RIQ0lfQ0FQQUJJTElUSUVTXzEuIFRoZSBkZWZhdWx0IHZh
-bHVlIG9mIHRoZSByZWdpc3RlciwKPj4+PiBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGVyLCBpcyAweDEw
-LiBCdXQgYWN0dWFsbHkgaXQgaXMgYSBtaXN0YWtlCj4+Pgo+Pj4gY29yZWNmZ19jbG9ja211bHRp
-cGxlcj09PmNvcmVjZmdfY2xvY2ttdWx0aXBsaWVyCj4+Pgo+Pj4+IGJ5IGRlc2lnbmVyIGFzIG91
-ciBpbnRlbnRpb24gd2FzIHRvIHNldCBpdCB0byBiZSB6ZXJvIHdoaWNoCj4+Pj4gbWVhbnMgd2Ug
-ZG9uJ3Qgc3VwcG9ydCBwcm9ncmFtbWFibGUgY2xvY2sgZ2VuZXJhdG9yLiBTbyB3ZSBoYXZlCj4+
-Pj4gdG8gbWFkZSBpdCB0byBiZSB6ZXJvIG9uIGJvb3Rsb2FkZXIgd2hpY2ggc2VlbXMgd29yayBm
-aW5lIHVudGlsCj4+Pgo+Pj4gbWFkZT09Pm1ha2UKPj4+Cj4+Pj4gbm93LiBCdXQgbm93IHdlIGZp
-bmQgYSBpc3N1ZSB0aGF0IHdoZW4gZGVwbG95aW5nIGdlbnBkIHN1cHBvcnQKPj4+Cj4+PiBhIGlz
-c3VlPT0+YW4gaXNzdWUKPj4+Cj4+Pj4gZm9yIGl0LCB0aGUgcmVtb3ZlIGNhbGxiYWNrIHdpbGwg
-dHJpZ2dlciB0aGUgZ2VucGQgdG8gcG93ZXJvZmYgdGhlCj4+Pj4gcG93ZXIgZG9tYWluIGZvciBz
-ZGhjaS1vZi1hcmFzYW4gd2hpY2ggbWFnYWdlIHRoZSBjb250cm9sbGVyLCBwaHkKPj4+Cj4+PiBt
-YWdhZ2U9PT5tYW5hZ2UKPj4+Cj4+Pj4gYW5kIGNvcmVjZmdfKiBzdHVmZi4KPj4+Pgo+Pj4+IFNv
-IHdoZW4gd2UgZG8gYmluZC91bmJpbmQgdGhlIGRyaXZlciwgd2UgaGF2ZSBhbHJlYWR5IHJlaW5p
-dAo+Pj4KPj4+IGRvPT0+ZG9pbmcKPj4+Cj4+Pj4gdGhlIGNvbnRyb2xsZXIgYW5kIHBoeSwgYnV0
-IHdpdGhvdXQgZG9pbmcgdGhhdCBmb3IgY29yZWNmZ18qLgo+Pj4+IFJlZ2FyZGluZyB0byBvbmx5
-IHRoZSBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGVyIGlzIHdyb25nLCBsZXQncwo+Pj4+IGZpeCBpdCBi
-eSBleHBsaWNpdGx5IG1hcmtpbmcgaXQgdG8gYmUgemVybyB3aGVuIHByb2JpbmcuIFdpdGgKPj4+
-PiB0aGlzIGNoYW5nZSwgd2UgY291bGQgZG8gYmluZC91bmJpbmQgc3VjY2Vzc2Z1bGx5Lgo+Pj4+
-Cj4+Pj4gUmVwb3J0ZWQtYnk6IFppeXVhbiBYdSA8eHp5Lnh1QHJvY2stY2hpcHMuY29tPgo+Pj4+
-IENjOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+Pj4gU2lnbmVk
-LW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Pj4gLS0tCj4+
-Pj4KPj4+PiAgIGRyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMgfCA5ICsrKysrKysr
-Kwo+Pj4+ICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKQo+Pj4+Cj4+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPj4+PiBiL2RyaXZlcnMv
-bW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPj4+PiBpbmRleCAwYjNhOWNmLi5jMWViMjYzIDEw
-MDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPj4+PiAr
-KysgYi9kcml2ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWFyYXNhbi5jCj4+Pj4gQEAgLTY3LDEwICs2
-NywxMiBAQCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19jdGxfZmllbGQgewo+Pj4+Cj4+Pj4gICAg
-KiBhY2Nlc3NpYmxlIHZpYSB0aGUgc3lzY29uIEFQSS4KPj4+PiAgICAqCj4+Pj4gICAgKiBAYmFz
-ZWNsa2ZyZXE6ICAgIFdoZXJlIHRvIGZpbmQgY29yZWNmZ19iYXNlY2xrZnJlcQo+Pj4+Cj4+Pj4g
-KyAqIEBjbG9ja211bHRpcGxpZXI6ICAgIFdoZXJlIHRvIGZpbmQgY29yZWNmZ19jbG9ja211bHRp
-cGxpZXIKPj4+Pgo+Pj4+ICAgICogQGhpd29yZF91cGRhdGU6ICAgIElmIHRydWUsIHVzZSBISVdP
-UkRfVVBEQVRFIHRvIGFjY2VzcyB0aGUgc3lzY29uCj4+Pj4gICAgKi8KPj4+Pgo+Pj4+ICAgc3Ry
-dWN0IHNkaGNpX2FyYXNhbl9zb2NfY3RsX21hcCB7Cj4+Pj4KPj4+PiAgICAgICBzdHJ1Y3Qgc2Ro
-Y2lfYXJhc2FuX3NvY19jdGxfZmllbGQgICAgYmFzZWNsa2ZyZXE7Cj4+Pj4KPj4+PiArICAgIHN0
-cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9maWVsZCAgICBjbG9ja211bHRpcGxpZXI7Cj4+Pj4K
-Pj4+PiAgICAgICBib29sICAgICAgICAgICAgICAgICAgICBoaXdvcmRfdXBkYXRlOwo+Pj4+Cj4+
-Pj4gICB9Owo+Pj4+ICAgQEAgLTEwMCw2ICsxMDIsNyBAQCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX2Rh
-dGEgewo+Pj4+Cj4+Pj4gICAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19j
-dGxfbWFwIHJrMzM5OV9zb2NfY3RsX21hcCA9IHsKPj4+Pgo+Pj4+ICAgICAgIC5iYXNlY2xrZnJl
-cSA9IHsgLnJlZyA9IDB4ZjAwMCwgLndpZHRoID0gOCwgLnNoaWZ0ID0gOCB9LAo+Pj4+Cj4+Pj4g
-KyAgICAuY2xvY2ttdWx0aXBsaWVyID0geyAucmVnID0gMHhmMDJjLCAud2lkdGggPSA4LCAuc2hp
-dCA9IDB9LAo+Pj4+Cj4+Pj4gICAgICAgLmhpd29yZF91cGRhdGUgPSB0cnVlLAo+Pj4+Cj4+Pj4g
-ICB9Owo+Pj4+ICAgQEAgLTUyOCw2ICs1MzEsMTIgQEAgc3RhdGljIGludCBzZGhjaV9hcmFzYW5f
-cHJvYmUoc3RydWN0Cj4+Pj4KPj4+PiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+Pj4KPj4+PiAg
-ICAgICAgICAgICAgICAgICAgICAgcmV0KTsKPj4+Pgo+Pj4+ICAgICAgICAgICAgICAgZ290byBl
-cnJfcGx0Zm1fZnJlZTsKPj4+Pgo+Pj4+ICAgICAgICAgICB9Cj4+Pj4KPj4+PiArCj4+Pj4gKyAg
-ICAgICAgaWYgKG9mX2RldmljZV9pc19jb21wYXRpYmxlKHBkZXYtPmRldi5vZl9ub2RlLAo+Pj4+
-ICsgICAgICAgICAgICAgICAgICAgICAgICAicm9ja2NoaXAscmszMzk5LXNkaGNpLTUuMSIpKQo+
-Pj4+ICsgICAgICAgICAgICBzZGhjaV9hcmFzYW5fc3lzY29uX3dyaXRlKGhvc3QsCj4+Pj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgJnNvY19jdGxfbWFwLT5jbG9ja211bHRpcGxpZXIsCj4+
-Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgMCk7Cj4+Pgo+Pj4gVmFyaWFibGUgc29jX2N0
-bF9tYXAgaXMgdW5kZWZpbmVkIGluIHNkaGNpX2FyYXNhbl9wcm9iZSgpLCBwbGVhc2UgZml4IGl0
-Lgo+Pgo+PiBXb29wcywgSSBjaGFuZ2UgdGhlIGNvZGUgYSBiaXQgYWZ0ZXIgZ2VuZXJhdGluZyBw
-YXRjaCwgSSB3aWxsIGZpeCBpdC4KPj4KPj4+IE1vcmVvdmVyLCB3ZSBjYW4gbm90IGFjY2VzcyBn
-cmZfZW1tY2NvcmUvZ3JmX2VtbWNwaHkgcHJpb3IgdG8gZW5hYmxlCj4+PiBjbGtfYWhiLCBzbyBk
-byBpdCBhZnRlciBjbG9jayBlbmFibGUuCj4+Cj4+IEhybW0sIHdlIGNvbmZpZ3VyZSB0aGUgZ3Jm
-IHZhaSBDUFUgYW5kIHRoZSBjbG9jayBmb3IgYWNjZXNzaW5nCj4+IGdyZiBpcyBhY2xrX2VtbWNf
-Z3JmKCBJIHNhdyBhY2xrX2VtbWNfbm9jIGlzIGNyaXRpY2FsIGFuZCBpdCBzZWVtcyB3ZQo+PiBz
-aG91bGQgdHJlYXQgYWNsa19lbW1jXyogdGhlIHNhbWUgd2F5KS4KPgo+IE5vIDotKQo+Cj4gVGhl
-IGFjbGtfZW1tY19ncmYgaXMgKHNpbWlsYXIgdG8gYWNsa192aW9fZ3JmIGV0YykgcGFydCBvZiB0
-aGUgZW1tYyBibG9jay4KPgo+IFRoZSBub2MgY2xvY2tzIChhcyBmYXIgYXMgSSB1bmRlcnN0YW5k
-KSBhcmUgdGhlIGludGVyY29ubmVjdCBjbG9ja3MgdGhhdAo+IHN1cHBseSB0aGUgbGluayBiZXR3
-ZWVuIGludGVyY29ubmVjdCBhbmQgcGVyaXBoZXJhbCwgc28gYXJlIHBhcnQgb2YgdGhlCj4gaW50
-ZXJjb25uZWN0IGJsb2NrLgo+Cj4gV2UgZG9uJ3QgbW9kZWwgdGhlIGludGVyY29ubmVjdCBvbiBh
-bnkgcm9ja2NoaXAgc29jIHJpZ2h0IG5vdywgc28gdGhlIG5vYwo+IGNsb2NrcyBhcmUgcmlnaHRm
-dWxseSBtYXJrZWQgY3JpdGljYWwsIGJ1dCB3ZSBvZiBjb3Vyc2UgZG8gbW9kZWwgdGhlIGVtbWMK
-PiBibG9jaywgc28gaXQgc2hvdWxkIGhhbmRsZSBpdHMgZ3JmIGNsb2NrLCBzaW1pbGFyIHRvIGhv
-dyB0aGUgZHJtIGRyaXZlciBpcwo+IChwbGFubmluZyB0bykgZG9pbmcgaXQgcmlnaHQgbm93LgoK
-VGhhbmtzIGZvciB0aGVzZSBkZXRhaWxzLiBTZWVtcyB3ZSBzaG91bGQgcGxhbiB0byBoYW5kbGUg
-dGhpcyBpbnNpZGUgdGhlCnNkaGNpLW9mLWFyYXNhbiBmb3Igcm9ja2NoaXAgc29jLgoKPgo+Cj4g
-SGVpa28KPgo+Cj4KCgotLSAKQmVzdCBSZWdhcmRzClNoYXduIExpbgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+corecfg_clockmultiplier indicates clock multiplier value of
+programmable clock generator which should be the same value
+of SDHCI_CAPABILITIES_1. The default value of the register,
+corecfg_clockmultiplier, is 0x10. But actually it is a mistake
+by designer as our intention was to set it to be zero which
+means we don't support programmable clock generator. So we have
+to make it to be zero on bootloader which seems work fine until
+now. But now we find an issue that when deploying genpd support
+for it, the remove callback will trigger the genpd to poweroff the
+power domain for sdhci-of-arasan which manage the controller, phy
+and corecfg_* stuff.
+
+So when we do bind/unbind the driver, we have already reinit
+the controller and phy, but without doing that for corecfg_*.
+Regarding to only the corecfg_clockmultipler is wrong, let's
+fix it by explicitly marking it to be zero when probing. With
+this change, we could do bind/unbind successfully.
+
+Reported-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+Cc: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+Changes in v2:
+- fix some typos and build
+- move the configuration of corecfg_clockmultiplier after
+  enabling aclk_emmc to avoid the off state of aclk_emmc_grf.
+  I add a new function to make it more common for other coming
+  users who have the same requirment for setting diff clkmul.
+
+ drivers/mmc/host/sdhci-of-arasan.c | 46 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index 0b3a9cf..33601a8 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -67,10 +67,12 @@ struct sdhci_arasan_soc_ctl_field {
+  * accessible via the syscon API.
+  *
+  * @baseclkfreq:	Where to find corecfg_baseclkfreq
++ * @clockmultiplier:	Where to find corecfg_clockmultiplier
+  * @hiword_update:	If true, use HIWORD_UPDATE to access the syscon
+  */
+ struct sdhci_arasan_soc_ctl_map {
+ 	struct sdhci_arasan_soc_ctl_field	baseclkfreq;
++	struct sdhci_arasan_soc_ctl_field	clockmultiplier;
+ 	bool					hiword_update;
+ };
+ 
+@@ -100,6 +102,7 @@ struct sdhci_arasan_data {
+ 
+ static const struct sdhci_arasan_soc_ctl_map rk3399_soc_ctl_map = {
+ 	.baseclkfreq = { .reg = 0xf000, .width = 8, .shift = 8 },
++	.clockmultiplier = { .reg = 0xf02c, .width = 8, .shift = 0},
+ 	.hiword_update = true,
+ };
+ 
+@@ -379,6 +382,45 @@ static const struct clk_ops arasan_sdcardclk_ops = {
+ };
+ 
+ /**
++ * sdhci_arasan_update_clockmultiplier - Set corecfg_clockmultiplier
++ *
++ * The corecfg_clockmultiplier is supposed to contain clock multiplier
++ * value of programmable clock generator.
++ *
++ * NOTES:
++ * - Many existing devices don't seem to do this and work fine.  To keep
++ *   compatibility for old hardware where the device tree doesn't provide a
++ *   register map, this function is a noop if a soc_ctl_map hasn't been provided
++ *   for this platform.
++ * - The value of corecfg_clockmultiplier should sync with that of corresponding
++ *   value reading from sdhci_capability_register. So this function is called
++ *   once at probe time and never called again.
++ *
++ * @host:		The sdhci_host
++ */
++static void sdhci_arasan_update_clockmultiplier(struct sdhci_host *host,
++						u32 value)
++{
++	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
++	struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
++	const struct sdhci_arasan_soc_ctl_map *soc_ctl_map =
++		sdhci_arasan->soc_ctl_map;
++
++	/* Having a map is optional */
++	if (!soc_ctl_map)
++		return;
++
++	/* If we have a map, we expect to have a syscon */
++	if (!sdhci_arasan->soc_ctl_base) {
++		pr_warn("%s: Have regmap, but no soc-ctl-syscon\n",
++			mmc_hostname(host->mmc));
++		return;
++	}
++
++	sdhci_arasan_syscon_write(host, &soc_ctl_map->clockmultiplier, value);
++}
++
++/**
+  * sdhci_arasan_update_baseclkfreq - Set corecfg_baseclkfreq
+  *
+  * The corecfg_baseclkfreq is supposed to contain the MHz of clk_xin.  This
+@@ -559,6 +601,10 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ 	sdhci_get_of_property(pdev);
+ 	pltfm_host->clk = clk_xin;
+ 
++	if (of_device_is_compatible(pdev->dev.of_node,
++				    "rockchip,rk3399-sdhci-5.1"))
++		sdhci_arasan_update_clockmultiplier(host, 0x0);
++
+ 	sdhci_arasan_update_baseclkfreq(host);
+ 
+ 	ret = sdhci_arasan_register_sdclk(sdhci_arasan, clk_xin, &pdev->dev);
+-- 
+2.3.7
+
+
