@@ -1,56 +1,62 @@
-From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2] mmc: sdhci-of-arasan: Properly set
- corecfg_clockmultiplier on rk3399
-Date: Fri, 26 Aug 2016 17:03:06 +0800
-Message-ID: <4b1f59a7-0498-1580-a47d-4f639704cdb2@rock-chips.com>
-References: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix the address map for WDT0 and
+ WDT1
+Date: Fri, 26 Aug 2016 17:41:28 +0800
+Message-ID: <607537bf-1c49-d7e0-ead9-8c1e6164e44e@rock-chips.com>
+References: <1472192551-16754-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472201475-7970-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1472192551-16754-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAyMDE25bm0MDjmnIgyNuaXpSAxNjo1MSwgU2hhd24gTGluIHdyb3RlOgo+IGNvcmVjZmdf
-Y2xvY2ttdWx0aXBsaWVyIGluZGljYXRlcyBjbG9jayBtdWx0aXBsaWVyIHZhbHVlIG9mCj4gcHJv
-Z3JhbW1hYmxlIGNsb2NrIGdlbmVyYXRvciB3aGljaCBzaG91bGQgYmUgdGhlIHNhbWUgdmFsdWUK
-PiBvZiBTREhDSV9DQVBBQklMSVRJRVNfMS4gVGhlIGRlZmF1bHQgdmFsdWUgb2YgdGhlIHJlZ2lz
-dGVyLAo+IGNvcmVjZmdfY2xvY2ttdWx0aXBsaWVyLCBpcyAweDEwLiBCdXQgYWN0dWFsbHkgaXQg
-aXMgYSBtaXN0YWtlCj4gYnkgZGVzaWduZXIgYXMgb3VyIGludGVudGlvbiB3YXMgdG8gc2V0IGl0
-IHRvIGJlIHplcm8gd2hpY2gKPiBtZWFucyB3ZSBkb24ndCBzdXBwb3J0IHByb2dyYW1tYWJsZSBj
-bG9jayBnZW5lcmF0b3IuIFNvIHdlIGhhdmUKPiB0byBtYWtlIGl0IHRvIGJlIHplcm8gb24gYm9v
-dGxvYWRlciB3aGljaCBzZWVtcyB3b3JrIGZpbmUgdW50aWwKPiBub3cuIEJ1dCBub3cgd2UgZmlu
-ZCBhbiBpc3N1ZSB0aGF0IHdoZW4gZGVwbG95aW5nIGdlbnBkIHN1cHBvcnQKPiBmb3IgaXQsIHRo
-ZSByZW1vdmUgY2FsbGJhY2sgd2lsbCB0cmlnZ2VyIHRoZSBnZW5wZCB0byBwb3dlcm9mZiB0aGUK
-PiBwb3dlciBkb21haW4gZm9yIHNkaGNpLW9mLWFyYXNhbiB3aGljaCBtYW5hZ2UgdGhlIGNvbnRy
-b2xsZXIsIHBoeQo+IGFuZCBjb3JlY2ZnXyogc3R1ZmYuCj4KPiBTbyB3aGVuIHdlIGRvIGJpbmQv
-dW5iaW5kIHRoZSBkcml2ZXIsIHdlIGhhdmUgYWxyZWFkeSByZWluaXQKPiB0aGUgY29udHJvbGxl
-ciBhbmQgcGh5LCBidXQgd2l0aG91dCBkb2luZyB0aGF0IGZvciBjb3JlY2ZnXyouCj4gUmVnYXJk
-aW5nIHRvIG9ubHkgdGhlIGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIgaXMgd3JvbmcsIGxldCdzCj4g
-Zml4IGl0IGJ5IGV4cGxpY2l0bHkgbWFya2luZyBpdCB0byBiZSB6ZXJvIHdoZW4gcHJvYmluZy4g
-V2l0aAo+IHRoaXMgY2hhbmdlLCB3ZSBjb3VsZCBkbyBiaW5kL3VuYmluZCBzdWNjZXNzZnVsbHku
-Cj4KPiBSZXBvcnRlZC1ieTogWml5dWFuIFh1IDx4enkueHVAcm9jay1jaGlwcy5jb20+Cj4gQ2M6
-IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5
-OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KT2theSwgaXQgbG9va3MgZ29v
-ZCB0byBtZS4KUmV2aWV3ZWQtYnk6IFppeXVhbiBYdSA8eHp5Lnh1QHJvY2stY2hpcHMuY29tPgpU
-ZXN0ZWQtYnk6IFppeXVhbiBYdSA8eHp5Lnh1QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+Cj4gQ2hh
-bmdlcyBpbiB2MjoKPiAtIGZpeCBzb21lIHR5cG9zIGFuZCBidWlsZAo+IC0gbW92ZSB0aGUgY29u
-ZmlndXJhdGlvbiBvZiBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGllciBhZnRlcgo+ICAgIGVuYWJsaW5n
-IGFjbGtfZW1tYyB0byBhdm9pZCB0aGUgb2ZmIHN0YXRlIG9mIGFjbGtfZW1tY19ncmYuCj4gICAg
-SSBhZGQgYSBuZXcgZnVuY3Rpb24gdG8gbWFrZSBpdCBtb3JlIGNvbW1vbiBmb3Igb3RoZXIgY29t
-aW5nCj4gICAgdXNlcnMgd2hvIGhhdmUgdGhlIHNhbWUgcmVxdWlybWVudCBmb3Igc2V0dGluZyBk
-aWZmIGNsa211bC4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On 2016/8/26 14:22, Xing Zheng wrote:
+> Dues to incorrect description in the TRM, the WDTs base address
+> should be fixed and swap them like this:
+> WDT0 - 0xff848000
+> WDT1 - 0xff840000
+>
+> And, it is right that only WDT0 can generate global software reset.
+> We will update the TRM to fix it.
+>
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index bc86e8c..f0f52c1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1002,9 +1002,9 @@
+>  		};
+>  	};
+>
+> -	watchdog@ff840000 {
+> +	watchdog@ff848000 {
+
+Just a nit, should we mark this explicitly as "watchdog0" ?
+I still need to look up for which wdt you are using.:)
+
+>  		compatible = "snps,dw-wdt";
+> -		reg = <0x0 0xff840000 0x0 0x100>;
+> +		reg = <0x0 0xff848000 0x0 0x100>;
+>  		clocks = <&cru PCLK_WDT>;
+>  		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
+>  	};
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
