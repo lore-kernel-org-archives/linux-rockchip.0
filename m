@@ -1,104 +1,52 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH] drm/bridge: analogix_dp: detect Sink PSR state after configuring the PSR
-Date: Fri, 26 Aug 2016 18:19:12 +0800
-Message-ID: <1472206752-19967-1-git-send-email-ykk@rock-chips.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>, daniel.vetter@ffwll.ch, Inki Dae <inki.dae@samsung.com>
-Cc: =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>, Javier Martinez Canillas <javier@osg.samsung.com>, Yakir Yang <ykk@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: fix the address map for WDT0 and WDT1
+Date: Fri, 26 Aug 2016 18:48:01 +0800
+Message-ID: <1472208482-30862-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Make sure the request PSR state could effect in analogix_dp_send_psr_spd()
-function, or printing the error Sink PSR state if we failed to effect
-the request PSR setting.
+To rename "watchdog" to "watchdog0" explicitly for looking up.
+Dues to incorrect description in the TRM, the WDTs base address
+should be fixed and swap them like this:
+WDT0 - 0xff848000
+WDT1 - 0xff840000
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+And, it is right that only WDT0 can generate global software reset.
+We will update the TRM to fix it.
+
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 ++---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  4 ++--
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 26 ++++++++++++++++++++--
- 3 files changed, 28 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index efac8ab..5a37de8 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -115,8 +115,7 @@ int analogix_dp_enable_psr(struct device *dev)
- 	psr_vsc.DB0 = 0;
- 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+Changes in v2:
+- rename node name "watchdog" to "watchdog0" explicitly
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index bc86e8c..1e714a9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1002,9 +1002,9 @@
+ 		};
+ 	};
  
--	analogix_dp_send_psr_spd(dp, &psr_vsc);
--	return 0;
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc);
- }
- EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
- 
-@@ -138,8 +137,7 @@ int analogix_dp_disable_psr(struct device *dev)
- 	psr_vsc.DB0 = 0;
- 	psr_vsc.DB1 = 0;
- 
--	analogix_dp_send_psr_spd(dp, &psr_vsc);
--	return 0;
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc);
- }
- EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index 473b980..f617a9d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -283,7 +283,7 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp);
- void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
- void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
- void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
--void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
--			      struct edp_vsc_psr *vsc);
-+int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-+			     struct edp_vsc_psr *vsc);
- 
- #endif /* _ANALOGIX_DP_CORE_H */
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 52c1b6b..505e9d8 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -1328,9 +1328,11 @@ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp)
- 	writel(PSR_VID_CRC_ENABLE, dp->reg_base + ANALOGIX_DP_CRC_CON);
- }
- 
--void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
--			      struct edp_vsc_psr *vsc)
-+int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-+			     struct edp_vsc_psr *vsc)
- {
-+	unsigned long timeout;
-+	unsigned char sink;
- 	unsigned int val;
- 
- 	/* don't send info frame */
-@@ -1372,4 +1374,24 @@ void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
- 	val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
- 	val |= IF_EN;
- 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
-+
-+	timeout = jiffies + msecs_to_jiffies(100);
-+	while (1) {
-+		analogix_dp_read_byte_from_dpcd(dp, DP_PSR_STATUS, &sink);
-+
-+		if (vsc->DB1 && sink == DP_PSR_SINK_ACTIVE_RFB)
-+			break;
-+
-+		if (!vsc->DB1 && sink == DP_PSR_SINK_INACTIVE)
-+			break;
-+
-+		if (time_after(jiffies, timeout)) {
-+			dev_warn(dp->dev, "Failed to effect PSR: %x", sink);
-+			return -EBUSY;
-+		}
-+
-+		usleep_range(1000, 1500);
-+	}
-+
-+	return 0;
- }
+-	watchdog@ff840000 {
++	watchdog0@ff848000 {
+ 		compatible = "snps,dw-wdt";
+-		reg = <0x0 0xff840000 0x0 0x100>;
++		reg = <0x0 0xff848000 0x0 0x100>;
+ 		clocks = <&cru PCLK_WDT>;
+ 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
+ 	};
 -- 
-1.9.1
+1.7.9.5
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
