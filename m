@@ -1,11 +1,14 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix the address map for WDT0 and WDT1
-Date: Fri, 26 Aug 2016 14:22:30 +0800
-Message-ID: <1472192551-16754-1-git-send-email-zhengxing@rock-chips.com>
+From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] mmc: sdhci-of-arasan: Properly set corecfg_clockmultipler
+ on rk3399
+Date: Fri, 26 Aug 2016 14:38:10 +0800
+Message-ID: <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
+References: <1472181736-17848-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472181736-17848-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,39 +18,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dues to incorrect description in the TRM, the WDTs base address
-should be fixed and swap them like this:
-WDT0 - 0xff848000
-WDT1 - 0xff840000
-
-And, it is right that only WDT0 can generate global software reset.
-We will update the TRM to fix it.
-
-Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index bc86e8c..f0f52c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1002,9 +1002,9 @@
- 		};
- 	};
- 
--	watchdog@ff840000 {
-+	watchdog@ff848000 {
- 		compatible = "snps,dw-wdt";
--		reg = <0x0 0xff840000 0x0 0x100>;
-+		reg = <0x0 0xff848000 0x0 0x100>;
- 		clocks = <&cru PCLK_WDT>;
- 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
- 	};
--- 
-1.9.1
+SGkgU2hhd24sCgoKT24gMjAxNuW5tDA45pyIMjbml6UgMTE6MjIsIFNoYXduIExpbiB3cm90ZToK
+PiBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGVyIGluZGljYXRlcyBjbG9jayBtdWx0aXBsaWVyIHZhbHVl
+IG9mCj4gcHJvZ3JhbW1hYmxlIGNsb2NrIGdlbmVyYXRvciB3aGljaCBzaG91bGQgYmUgdGhlIHNh
+bWUgdmFsdWUKPiBvZiBTREhDSV9DQVBBQklMSVRJRVNfMS4gVGhlIGRlZmF1bHQgdmFsdWUgb2Yg
+dGhlIHJlZ2lzdGVyLAo+IGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIsIGlzIDB4MTAuIEJ1dCBhY3R1
+YWxseSBpdCBpcyBhIG1pc3Rha2UKY29yZWNmZ19jbG9ja211bHRpcGxlcj09PmNvcmVjZmdfY2xv
+Y2ttdWx0aXBsaWVyCj4gYnkgZGVzaWduZXIgYXMgb3VyIGludGVudGlvbiB3YXMgdG8gc2V0IGl0
+IHRvIGJlIHplcm8gd2hpY2gKPiBtZWFucyB3ZSBkb24ndCBzdXBwb3J0IHByb2dyYW1tYWJsZSBj
+bG9jayBnZW5lcmF0b3IuIFNvIHdlIGhhdmUKPiB0byBtYWRlIGl0IHRvIGJlIHplcm8gb24gYm9v
+dGxvYWRlciB3aGljaCBzZWVtcyB3b3JrIGZpbmUgdW50aWwKbWFkZT09Pm1ha2UKPiBub3cuIEJ1
+dCBub3cgd2UgZmluZCBhIGlzc3VlIHRoYXQgd2hlbiBkZXBsb3lpbmcgZ2VucGQgc3VwcG9ydAph
+IGlzc3VlPT0+YW4gaXNzdWUKPiBmb3IgaXQsIHRoZSByZW1vdmUgY2FsbGJhY2sgd2lsbCB0cmln
+Z2VyIHRoZSBnZW5wZCB0byBwb3dlcm9mZiB0aGUKPiBwb3dlciBkb21haW4gZm9yIHNkaGNpLW9m
+LWFyYXNhbiB3aGljaCBtYWdhZ2UgdGhlIGNvbnRyb2xsZXIsIHBoeQptYWdhZ2U9PT5tYW5hZ2UK
+PiBhbmQgY29yZWNmZ18qIHN0dWZmLgo+Cj4gU28gd2hlbiB3ZSBkbyBiaW5kL3VuYmluZCB0aGUg
+ZHJpdmVyLCB3ZSBoYXZlIGFscmVhZHkgcmVpbml0CmRvPT0+ZG9pbmcKPiB0aGUgY29udHJvbGxl
+ciBhbmQgcGh5LCBidXQgd2l0aG91dCBkb2luZyB0aGF0IGZvciBjb3JlY2ZnXyouCj4gUmVnYXJk
+aW5nIHRvIG9ubHkgdGhlIGNvcmVjZmdfY2xvY2ttdWx0aXBsZXIgaXMgd3JvbmcsIGxldCdzCj4g
+Zml4IGl0IGJ5IGV4cGxpY2l0bHkgbWFya2luZyBpdCB0byBiZSB6ZXJvIHdoZW4gcHJvYmluZy4g
+V2l0aAo+IHRoaXMgY2hhbmdlLCB3ZSBjb3VsZCBkbyBiaW5kL3VuYmluZCBzdWNjZXNzZnVsbHku
+Cj4KPiBSZXBvcnRlZC1ieTogWml5dWFuIFh1IDx4enkueHVAcm9jay1jaGlwcy5jb20+Cj4gQ2M6
+IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5
+OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPiAtLS0KPgo+ICAgZHJpdmVy
+cy9tbWMvaG9zdC9zZGhjaS1vZi1hcmFzYW4uYyB8IDkgKysrKysrKysrCj4gICAxIGZpbGUgY2hh
+bmdlZCwgOSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvaG9zdC9z
+ZGhjaS1vZi1hcmFzYW4uYyBiL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtYXJhc2FuLmMKPiBp
+bmRleCAwYjNhOWNmLi5jMWViMjYzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3Qvc2Ro
+Y2ktb2YtYXJhc2FuLmMKPiArKysgYi9kcml2ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWFyYXNhbi5j
+Cj4gQEAgLTY3LDEwICs2NywxMiBAQCBzdHJ1Y3Qgc2RoY2lfYXJhc2FuX3NvY19jdGxfZmllbGQg
+ewo+ICAgICogYWNjZXNzaWJsZSB2aWEgdGhlIHN5c2NvbiBBUEkuCj4gICAgKgo+ICAgICogQGJh
+c2VjbGtmcmVxOglXaGVyZSB0byBmaW5kIGNvcmVjZmdfYmFzZWNsa2ZyZXEKPiArICogQGNsb2Nr
+bXVsdGlwbGllcjoJV2hlcmUgdG8gZmluZCBjb3JlY2ZnX2Nsb2NrbXVsdGlwbGllcgo+ICAgICog
+QGhpd29yZF91cGRhdGU6CUlmIHRydWUsIHVzZSBISVdPUkRfVVBEQVRFIHRvIGFjY2VzcyB0aGUg
+c3lzY29uCj4gICAgKi8KPiAgIHN0cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9tYXAgewo+ICAg
+CXN0cnVjdCBzZGhjaV9hcmFzYW5fc29jX2N0bF9maWVsZAliYXNlY2xrZnJlcTsKPiArCXN0cnVj
+dCBzZGhjaV9hcmFzYW5fc29jX2N0bF9maWVsZAljbG9ja211bHRpcGxpZXI7Cj4gICAJYm9vbAkJ
+CQkJaGl3b3JkX3VwZGF0ZTsKPiAgIH07Cj4gICAKPiBAQCAtMTAwLDYgKzEwMiw3IEBAIHN0cnVj
+dCBzZGhjaV9hcmFzYW5fZGF0YSB7Cj4gICAKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc2RoY2lf
+YXJhc2FuX3NvY19jdGxfbWFwIHJrMzM5OV9zb2NfY3RsX21hcCA9IHsKPiAgIAkuYmFzZWNsa2Zy
+ZXEgPSB7IC5yZWcgPSAweGYwMDAsIC53aWR0aCA9IDgsIC5zaGlmdCA9IDggfSwKPiArCS5jbG9j
+a211bHRpcGxpZXIgPSB7IC5yZWcgPSAweGYwMmMsIC53aWR0aCA9IDgsIC5zaGl0ID0gMH0sCj4g
+ICAJLmhpd29yZF91cGRhdGUgPSB0cnVlLAo+ICAgfTsKPiAgIAo+IEBAIC01MjgsNiArNTMxLDEy
+IEBAIHN0YXRpYyBpbnQgc2RoY2lfYXJhc2FuX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
+KnBkZXYpCj4gICAJCQkJCXJldCk7Cj4gICAJCQlnb3RvIGVycl9wbHRmbV9mcmVlOwo+ICAgCQl9
+Cj4gKwo+ICsJCWlmIChvZl9kZXZpY2VfaXNfY29tcGF0aWJsZShwZGV2LT5kZXYub2Zfbm9kZSwK
+PiArCQkJCQkgICAgInJvY2tjaGlwLHJrMzM5OS1zZGhjaS01LjEiKSkKPiArCQkJc2RoY2lfYXJh
+c2FuX3N5c2Nvbl93cml0ZShob3N0LAo+ICsJCQkJCQkgICZzb2NfY3RsX21hcC0+Y2xvY2ttdWx0
+aXBsaWVyLAo+ICsJCQkJCQkgIDApOwpWYXJpYWJsZSBzb2NfY3RsX21hcCBpcyB1bmRlZmluZWQg
+aW4gc2RoY2lfYXJhc2FuX3Byb2JlKCksIHBsZWFzZSBmaXggaXQuCk1vcmVvdmVyLCB3ZSBjYW4g
+bm90IGFjY2VzcyBncmZfZW1tY2NvcmUvZ3JmX2VtbWNwaHkgcHJpb3IgdG8gZW5hYmxlIApjbGtf
+YWhiLCBzbyBkbyBpdCBhZnRlciBjbG9jayBlbmFibGUuCj4gICAJfQo+ICAgCj4gICAJc2RoY2lf
+YXJhc2FuLT5jbGtfYWhiID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYsICJjbGtfYWhiIik7CgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
