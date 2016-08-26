@@ -1,75 +1,118 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 1/3] nvmem: rockchip-efuse: update compatible strings for
- Rockchip efuse
-Date: Fri, 26 Aug 2016 00:36:29 -0700
-Message-ID: <1472196991-8529-2-git-send-email-finley.xiao@rock-chips.com>
-References: <1472196991-8529-1-git-send-email-finley.xiao@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] mmc: sdhci-of-arasan: Properly set corecfg_clockmultipler
+ on rk3399
+Date: Fri, 26 Aug 2016 15:50:57 +0800
+Message-ID: <d6c3b728-af01-e724-3278-1bc0801f8fb4@rock-chips.com>
+References: <1472181736-17848-1-git-send-email-shawn.lin@rock-chips.com>
+ <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472196991-8529-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1dc7898d-ee35-4166-6313-64e9c50f8db8@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ziyuan Xu <xzy.xu@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>, Douglas Anderson <dianders@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rk3399-efuse is organized as 32bits by 32 one-time programmable electrical
-fuses. The efuse of earlier SoCs are organized as 32bits by 8 one-time
-programmable electrical fuses with random access interface.
++ Heiko
 
-Add different device tree compatible string for different SoCs to be able
-to differentiate between the two. The old binding is of course preserved,
-though deprecated.
+在 2016/8/26 14:38, Ziyuan Xu 写道:
+> Hi Shawn,
+>
+>
+> On 2016年08月26日 11:22, Shawn Lin wrote:
+>> corecfg_clockmultipler indicates clock multiplier value of
+>> programmable clock generator which should be the same value
+>> of SDHCI_CAPABILITIES_1. The default value of the register,
+>> corecfg_clockmultipler, is 0x10. But actually it is a mistake
+> corecfg_clockmultipler==>corecfg_clockmultiplier
+>> by designer as our intention was to set it to be zero which
+>> means we don't support programmable clock generator. So we have
+>> to made it to be zero on bootloader which seems work fine until
+> made==>make
+>> now. But now we find a issue that when deploying genpd support
+> a issue==>an issue
+>> for it, the remove callback will trigger the genpd to poweroff the
+>> power domain for sdhci-of-arasan which magage the controller, phy
+> magage==>manage
+>> and corecfg_* stuff.
+>>
+>> So when we do bind/unbind the driver, we have already reinit
+> do==>doing
+>> the controller and phy, but without doing that for corecfg_*.
+>> Regarding to only the corecfg_clockmultipler is wrong, let's
+>> fix it by explicitly marking it to be zero when probing. With
+>> this change, we could do bind/unbind successfully.
+>>
+>> Reported-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+>> Cc: Douglas Anderson <dianders@chromium.org>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>>   drivers/mmc/host/sdhci-of-arasan.c | 9 +++++++++
+>>   1 file changed, 9 insertions(+)
+>>
+>> diff --git a/drivers/mmc/host/sdhci-of-arasan.c
+>> b/drivers/mmc/host/sdhci-of-arasan.c
+>> index 0b3a9cf..c1eb263 100644
+>> --- a/drivers/mmc/host/sdhci-of-arasan.c
+>> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+>> @@ -67,10 +67,12 @@ struct sdhci_arasan_soc_ctl_field {
+>>    * accessible via the syscon API.
+>>    *
+>>    * @baseclkfreq:    Where to find corecfg_baseclkfreq
+>> + * @clockmultiplier:    Where to find corecfg_clockmultiplier
+>>    * @hiword_update:    If true, use HIWORD_UPDATE to access the syscon
+>>    */
+>>   struct sdhci_arasan_soc_ctl_map {
+>>       struct sdhci_arasan_soc_ctl_field    baseclkfreq;
+>> +    struct sdhci_arasan_soc_ctl_field    clockmultiplier;
+>>       bool                    hiword_update;
+>>   };
+>>   @@ -100,6 +102,7 @@ struct sdhci_arasan_data {
+>>     static const struct sdhci_arasan_soc_ctl_map rk3399_soc_ctl_map = {
+>>       .baseclkfreq = { .reg = 0xf000, .width = 8, .shift = 8 },
+>> +    .clockmultiplier = { .reg = 0xf02c, .width = 8, .shit = 0},
+>>       .hiword_update = true,
+>>   };
+>>   @@ -528,6 +531,12 @@ static int sdhci_arasan_probe(struct
+>> platform_device *pdev)
+>>                       ret);
+>>               goto err_pltfm_free;
+>>           }
+>> +
+>> +        if (of_device_is_compatible(pdev->dev.of_node,
+>> +                        "rockchip,rk3399-sdhci-5.1"))
+>> +            sdhci_arasan_syscon_write(host,
+>> +                          &soc_ctl_map->clockmultiplier,
+>> +                          0);
+> Variable soc_ctl_map is undefined in sdhci_arasan_probe(), please fix it.
 
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+Woops, I change the code a bit after generating patch, I will fix it.
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-index 8f86ab3..94aeeea 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-@@ -1,11 +1,20 @@
- = Rockchip eFuse device tree bindings =
- 
- Required properties:
--- compatible: Should be "rockchip,rockchip-efuse"
-+- compatible: Should be one of the following.
-+  - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
-+  - "rockchip,rk3188-efuse" - for RK3188 SoCs.
-+  - "rockchip,rk3288-efuse" - for RK3288 SoCs.
-+  - "rockchip,rk3399-efuse" - for RK3399 SoCs.
- - reg: Should contain the registers location and exact eFuse size
- - clocks: Should be the clock id of eFuse
- - clock-names: Should be "pclk_efuse"
- 
-+Deprecated properties:
-+- compatible: "rockchip,rockchip-efuse"
-+  Old efuse compatible value compatible to rk3066a, rk3188 and rk3288
-+  efuses
-+
- = Data cells =
- Are child nodes of eFuse, bindings of which as described in
- bindings/nvmem/nvmem.txt
-@@ -13,7 +22,7 @@ bindings/nvmem/nvmem.txt
- Example:
- 
- 	efuse: efuse@ffb40000 {
--		compatible = "rockchip,rockchip-efuse";
-+		compatible = "rockchip,rk3288-efuse";
- 		reg = <0xffb40000 0x20>;
- 		#address-cells = <1>;
- 		#size-cells = <1>;
+> Moreover, we can not access grf_emmccore/grf_emmcphy prior to enable
+> clk_ahb, so do it after clock enable.
+
+Hrmm, we configure the grf vai CPU and the clock for accessing
+grf is aclk_emmc_grf( I saw aclk_emmc_noc is critical and it seems we
+should treat aclk_emmc_* the same way). I could move this after
+enabling aclk_emmc, but that is a bogus critical for aclk_emmc_* to me 
+since it's off when disabling aclk_emmc, no?
+
+
+>>       }
+>>         sdhci_arasan->clk_ahb = devm_clk_get(&pdev->dev, "clk_ahb");
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
 -- 
-1.9.1
+Best Regards
+Shawn Lin
+
