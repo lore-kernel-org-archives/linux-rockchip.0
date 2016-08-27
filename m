@@ -1,60 +1,60 @@
-From: Ziyuan Xu <xzy.xu@rock-chips.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support for rk3399
-Date: Sat, 27 Aug 2016 21:41:03 +0800
-Message-ID: <20160827134103.28160-3-xzy.xu@rock-chips.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH] ASoC: rockchip: use SPI dependency for rt5514
+Date: Sat, 27 Aug 2016 21:45:23 +0800
+Message-ID: <57C19973.1050906@rock-chips.com>
+References: <20160826155120.1162512-1-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160827134103.28160-1-xzy.xu@rock-chips.com>
+In-Reply-To: <20160826155120.1162512-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: ulf.hansson@linaro.org, robh+dt@kernel.org, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, Ziyuan Xu <xzy.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Frank Wang <frank.wang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Shunqian Zheng <zhengsq@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Will Deacon <will.deacon@arm.com>, Jianqun Xu <jay.xu@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Control power domain for eMMC via genpd to reduce power consumption.
+Hi Arnd,
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+On 2016年08月26日 23:50, Arnd Bergmann wrote:
+> The rk3399 scans the spi_bus_type to find the rt5514 driver, but does not
+> actually have a Kconfig dependency on SPI, so we can end up with a link
+> failure:
+>
+> sound/soc/codecs/snd-soc-rt5514-spi.o: In function `rt5514_spi_driver_init':
+> rt5514-spi.c:(.init.text+0x14): undefined reference to `__spi_register_driver'
+> sound/soc/codecs/snd-soc-rt5514-spi.o: In function `rt5514_spi_burst_read':
+> rt5514-spi.c:(.text.rt5514_spi_burst_read+0x18c): undefined reference to `spi_sync'
+> sound/soc/codecs/snd-soc-rt5514-spi.o: In function `rt5514_spi_burst_write':
+> rt5514-spi.c:(.text.rt5514_spi_burst_write+0x1b4): undefined reference to `spi_sync'
+> sound/soc/rockchip/snd-soc-rk3399-gru-sound.o: In function `rockchip_sound_probe':
+> rk3399_gru_sound.c:(.text.rockchip_sound_probe+0x128): undefined reference to `spi_bus_type'
+>
+> This adds the missing dependency.
+>
+> Signed-off-by: Arnd Bergmann<arnd@arndb.de>
+> Fixes: c6eac8a36a84 ("ASoC: rockchip: Add machine driver for RK3399 GRU Boards")
+> ---
+>   sound/soc/rockchip/Kconfig | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
+> index d82d763d4854..c783f9a22595 100644
+> --- a/sound/soc/rockchip/Kconfig
+> +++ b/sound/soc/rockchip/Kconfig
+> @@ -44,7 +44,7 @@ config SND_SOC_ROCKCHIP_RT5645
+>
+>   config SND_SOC_RK3399_GRU_SOUND
+>   	tristate "ASoC support multiple codecs for Rockchip RK3399 GRU boards"
+> -	depends on SND_SOC_ROCKCHIP&&  I2C&&  GPIOLIB&&  CLKDEV_LOOKUP
+> +	depends on SND_SOC_ROCKCHIP&&  I2C&&  GPIOLIB&&  CLKDEV_LOOKUP&&  SPI
+>   	select SND_SOC_ROCKCHIP_I2S
+>   	select SND_SOC_MAX98357A
+>   	select SND_SOC_RT5514
+So sorry to miss it... Thanks to help us to fix it. :-)
 
----
+Tested-by: Xing Zheng <zhengxing@rock-chips.com>
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Thanks.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 32aebc8..71733d4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -239,6 +239,7 @@
- 		#clock-cells = <0>;
- 		phys = <&emmc_phy>;
- 		phy-names = "phy_arasan";
-+		power-domains = <&power RK3399_PD_EMMC>;
- 		status = "disabled";
- 	};
- 
-@@ -611,6 +612,11 @@
- 		status = "disabled";
- 	};
- 
-+	qos_emmc: qos@ffa58000 {
-+		compatible = "syscon";
-+		reg = <0x0 0xffa58000 0x0 0x20>;
-+	};
-+
- 	qos_hdcp: qos@ffa90000 {
- 		compatible = "syscon";
- 		reg = <0x0 0xffa90000 0x0 0x20>;
-@@ -739,6 +745,11 @@
- 			};
- 
- 			/* These power domains are grouped by VD_LOGIC */
-+			pd_emmc@RK3399_PD_EMMC {
-+				reg = <RK3399_PD_EMMC>;
-+				clocks = <&cru ACLK_EMMC>;
-+				pm_qos = <&qos_emmc>;
-+			};
- 			pd_vio@RK3399_PD_VIO {
- 				reg = <RK3399_PD_VIO>;
- 				#address-cells = <1>;
 -- 
-2.9.2
+- Xing Zheng
