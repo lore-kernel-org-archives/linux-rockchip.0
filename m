@@ -1,45 +1,42 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop: make vop register setting take effect
-Date: Fri, 26 Aug 2016 20:39:38 -0700
-Message-ID: <1472269178-16593-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: yzq@rock-chips.com, tfiga@chromium.org, heiko@sntech.de, airlied@linux.ie
-Cc: dianders@chromium.org, marcheu@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, seanpaul@chromium.org, briannorris@chromium.org, Chris Zhong <zyw@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 4/6] pinctrl: rockchip: make it explicitly non-modular
+Date: Sat, 27 Aug 2016 13:14:51 +0200
+Message-ID: <CACRpkdbtY1vEnzNamCSdo_VLBGDAr-beavadaLWYO0LuUTwhdw@mail.gmail.com>
+References: <20160823211944.18554-1-paul.gortmaker@windriver.com> <20160823211944.18554-5-paul.gortmaker@windriver.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20160823211944.18554-5-paul.gortmaker@windriver.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Paul Gortmaker <paul.gortmaker@windriver.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The setting of vop registers need a reg_done writing to take effect.
-In vop_enable the vop return to work by by restoring registers, but the
-registers do not take effect immediately, it should a vop_cfg_done
-after it. The same thing is needed by windows_disabled in
-vop_crtc_disable.
+On Tue, Aug 23, 2016 at 11:19 PM, Paul Gortmaker
+<paul.gortmaker@windriver.com> wrote:
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> The Kconfig currently controlling compilation of this code is:
+>
+> drivers/pinctrl/Kconfig:config PINCTRL_ROCKCHIP
+> drivers/pinctrl/Kconfig:        bool
+>
+> ...meaning that it currently is not being built as a module by anyone.
+>
+> Lets remove the couple traces of modular infrastructure use, so that
+> when reading the driver there is no doubt it is builtin-only.
+>
+> Note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
+>
+> We also delete the MODULE_LICENSE tag etc. since all that information
+> is already contained at the top of the file in the comments.
+>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index efbc41a..a0bfcff 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -464,6 +464,8 @@ static int vop_enable(struct drm_crtc *crtc)
- 	}
- 
- 	memcpy(vop->regs, vop->regsbak, vop->len);
-+	vop_cfg_done(vop);
-+
- 	/*
- 	 * At here, vop clock & iommu is enable, R/W vop regs would be safe.
- 	 */
-@@ -513,6 +515,8 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
- 		spin_unlock(&vop->reg_lock);
- 	}
- 
-+	vop_cfg_done(vop);
-+
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
--- 
-1.9.1
+Patch applied.
+
+Yours,
+Linus Walleij
