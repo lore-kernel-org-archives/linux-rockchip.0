@@ -1,65 +1,84 @@
-From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
- Rockchip cpu avs
-Date: Mon, 29 Aug 2016 11:38:01 +0530
-Message-ID: <20160829060801.GB5094@vireshk-i7>
-References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
- <1471510341-63926-5-git-send-email-finley.xiao@rock-chips.com>
+From: Felipe Balbi <felipe.balbi@linux.intel.com>
+Subject: Re: [RESEND PATCH 3/4] usb: dwc2: assert phy reset when waking up in rk3288 platform
+Date: Mon, 29 Aug 2016 10:51:15 +0300
+Message-ID: <87fupodnd8.fsf@linux.intel.com>
+References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com> <1471807905-11323-1-git-send-email-ayaka@soulik.info> <49d2baf7-5f81-fc20-a805-f7a378d67a5e@synopsys.com> <76f0ffdb-a3c6-f1e6-8177-b254ff5badaa@rock-chips.com> <f6bbd88b-5d80-c30d-36c1-5b95763ae4bb@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1471510341-63926-5-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha256; protocol="application/pgp-signature"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f6bbd88b-5d80-c30d-36c1-5b95763ae4bb@synopsys.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, Randy Li <randy.li@rock-chips.com>John Youn <John.Youn@synopsys.com>, Randy Li <ayaka@soulik.info>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "eddie.cai@rock-chips.com" <eddie.cai@rock-chips.com>, "kishon@ti.com" <kishon@ti.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 18-08-16, 16:52, Finlye Xiao wrote:
-> +static int rockchip_adjust_opp_table(struct device *cpu_dev,
-> +				     struct cpufreq_frequency_table *table,
-> +				     int volt)
-> +{
-> +	struct opp_table *opp_table;
-> +	struct cpufreq_frequency_table *pos;
-> +	struct dev_pm_opp *opp;
-> +
-> +	if (!volt)
-> +		return 0;
-> +
-> +	rcu_read_lock();
-> +
-> +	opp_table = _find_opp_table(cpu_dev);
-> +	if (IS_ERR(opp_table)) {
-> +		rcu_read_unlock();
-> +		return PTR_ERR(opp_table);
-> +	}
-> +
-> +	cpufreq_for_each_valid_entry(pos, table) {
-> +		opp = dev_pm_opp_find_freq_exact(cpu_dev, pos->frequency * 1000,
-> +						 true);
-> +		if (IS_ERR(opp))
-> +			continue;
-> +
-> +		opp->u_volt += volt;
-> +		opp->u_volt_min += volt;
-> +		opp->u_volt_max += volt;
-> +	}
-> +
-> +	rcu_read_unlock();
-> +
-> +	return 0;
-> +}
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-I wouldn't prefer altering the opp tables from individual drivers at all. At the
-least, it should be done via some helpers exposed by the core.
 
-But before that I would like to hear from Stephen a bit as I recall he was also
-working on something similar.
+Hi,
 
--- 
-viresh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+John Youn <John.Youn@synopsys.com> writes:
+
+[...]
+
+>>>> +			 */
+>>>> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
+>>>> +				hsotg->phy->ops->reset(hsotg->phy);
+>>>> +
+>>>
+>>> You should probably check for NULL before calling the reset()
+>>> callback.
+>> Sure.
+>>>
+>>> Also, I'd rather see a generic quirk property that you set for your
+>>> platform.
+>>>
+>>> Something like "phy_reset_on_wakeup_quirk".
+>> But Rob Herring want me to implied by the SoC specific compatible=20
+>> string. I agree with him. It is certainly bug in RK3288 platform.
+>> It is no found no the other platform.
+>
+> Ok, I missed that before.
+>
+> Based on the drivers I'm familiar with (like dwc3), you would
+> typically add a "quirk" anyways.
+>
+> Felipe,
+>
+> Do you have some policy or preference on this?
+
+if it's not a dwc2-generic feature, then let's do it via compatible
+flag, sure. What we don't want is for things like:
+
+if (is_compatible('synopsys') || is_compatible('rockchip') ||
+	is_compatible('foobar') ... )
+
+For that, we'd be better of adding a generic quirk flag which several
+can use.
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAEBCAAGBQJXw+lzAAoJEIaOsuA1yqRE4SUP/A3MJ1Yw79yme/0ZA7j6z8Qg
+qD6RTfAH8MWzWs1WLEEQcrrJxsJqqORE11umYRnUyXryuwD3M+s0cDE/+OF3h/D8
+PfgIJHY5eVF69NpPp9XM954ZeKHCvrFVknKcaBDyAO6obFxTRPj+oJ++his1NZml
+bkzGJBoyjp4Pb9QeuSC8zM1NnPbQ0JZs5aI97QEGPhHySDOhWe/L+J+DY7m1gsU3
+ELvLBChwDhCs0azU5hiQ+lHCuZcCiOtygaWr0kKtDxxMWQ4PU2R8gguBRrtYUTEm
+lGAypkq8okLlsVZRqNa9uyeakh7rua1tM0EhZN+OQcRHUpfWGdvXqhjk4IDkWH4X
+5ku06bwjX5AQ13JFF1Rv9uwz9H8clBIR/hbity++2jjGATwZpAwzQnAzpklrw+Ys
+e4eXgpBMox5AC5+8SaWm/mkXJWq7f7ZTZMKVxcSUXzewaEgZMUVlcwbpS7caMc9s
+OAN18VqFbggGHZYYRmaekUZGe8TAQcPEne2jFdGKzua9Oq9SpWWkd2TEKWnlF5uc
+FLY6cQ74LSJeTb5UWXTbaH3Ttr3pg2ZaDfq/w82VDbIBQJBCispTQsZpK6C1er2t
+Dj57RYgdJe7Z0fkSTvErtwuo6pIqchg2NP5leC2GnT1Uj6QqusaH+mmmlRss6dM4
+E4wiVX7oQf2KAArNjjsX
+=RJOM
+-----END PGP SIGNATURE-----
+--=-=-=--
