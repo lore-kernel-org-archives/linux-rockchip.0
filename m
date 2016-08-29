@@ -1,84 +1,306 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: [RESEND PATCH 3/4] usb: dwc2: assert phy reset when waking up in rk3288 platform
-Date: Mon, 29 Aug 2016 10:51:15 +0300
-Message-ID: <87fupodnd8.fsf@linux.intel.com>
-References: <4c931176-a09a-546c-d2b6-ea74028c78a2@cogentembedded.com> <1471807905-11323-1-git-send-email-ayaka@soulik.info> <49d2baf7-5f81-fc20-a805-f7a378d67a5e@synopsys.com> <76f0ffdb-a3c6-f1e6-8177-b254ff5badaa@rock-chips.com> <f6bbd88b-5d80-c30d-36c1-5b95763ae4bb@synopsys.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RFC PATCH] clk: rockchip: rk3399: support pll setting
+ automatically
+Date: Mon, 29 Aug 2016 10:02:20 +0200
+Message-ID: <1773036.BloUU6hcoj@phil>
+References: <1470144852-20708-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f6bbd88b-5d80-c30d-36c1-5b95763ae4bb@synopsys.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>, Randy Li <randy.li@rock-chips.com>John Youn <John.Youn@synopsys.com>, Randy Li <ayaka@soulik.info>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "eddie.cai@rock-chips.com" <eddie.cai@rock-chips.com>, "kishon@ti.com" <kishon@ti.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1470144852-20708-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi Xing, Elaine,
 
+Am Dienstag, 2. August 2016, 21:34:12 schrieb Xing Zheng:
+> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> The goal is that we can configure the most suitable pll params
+> automatically.
+> 
+> If setting freq is not supported in rockchip_pll_rate_table
+> rk3399_pll_rates[], we can set pll params automatically.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Hi,
+first off, I really like that idea of calculating the generic pll frequencies 
+instead of duplicating these entries in every soc clock driver.
 
-John Youn <John.Youn@synopsys.com> writes:
+Please also provide a follow up patch, removing the then unneeded frequencies 
+from the rate tables.
 
-[...]
+I still have some comments inline below:
 
->>>> +			 */
->>>> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
->>>> +				hsotg->phy->ops->reset(hsotg->phy);
->>>> +
->>>
->>> You should probably check for NULL before calling the reset()
->>> callback.
->> Sure.
->>>
->>> Also, I'd rather see a generic quirk property that you set for your
->>> platform.
->>>
->>> Something like "phy_reset_on_wakeup_quirk".
->> But Rob Herring want me to implied by the SoC specific compatible=20
->> string. I agree with him. It is certainly bug in RK3288 platform.
->> It is no found no the other platform.
->
-> Ok, I missed that before.
->
-> Based on the drivers I'm familiar with (like dwc3), you would
-> typically add a "quirk" anyways.
->
-> Felipe,
->
-> Do you have some policy or preference on this?
+> ---
+> 
+>  drivers/clk/rockchip/clk-pll.c |  213
+> +++++++++++++++++++++++++++++++++++++--- 1 file changed, 200 insertions(+),
+> 13 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+> index 35994e8..08979f9 100644
+> --- a/drivers/clk/rockchip/clk-pll.c
+> +++ b/drivers/clk/rockchip/clk-pll.c
+> @@ -23,6 +23,7 @@
+>  #include <linux/clk-provider.h>
+>  #include <linux/regmap.h>
+>  #include <linux/clk.h>
+> +#include <linux/gcd.h>
+>  #include "clk.h"
+> 
+>  #define PLL_MODE_MASK		0x3
+> @@ -54,6 +55,200 @@ struct rockchip_clk_pll {
+>  #define to_rockchip_clk_pll_nb(nb) \
+>  			container_of(nb, struct rockchip_clk_pll, clk_nb)
+> 
+> +#define MHZ			(1000UL * 1000UL)
+> +#define KHZ			(1000UL)
+> +
+> +/* CLK_PLL_TYPE_RK3066_AUTO type ops */
 
-if it's not a dwc2-generic feature, then let's do it via compatible
-flag, sure. What we don't want is for things like:
+wouldn't that better be 
+/* rk3066 pll frequency ranges */
 
-if (is_compatible('synopsys') || is_compatible('rockchip') ||
-	is_compatible('foobar') ... )
+> +#define PLL_FREF_MIN		(269 * KHZ)
+> +#define PLL_FREF_MAX		(2200 * MHZ)
+> +
+> +#define PLL_FVCO_MIN		(440 * MHZ)
+> +#define PLL_FVCO_MAX		(2200 * MHZ)
+> +
+> +#define PLL_FOUT_MIN		(27500 * KHZ)
+> +#define PLL_FOUT_MAX		(2200 * MHZ)
+> +
+> +#define PLL_NF_MAX		(4096)
+> +#define PLL_NR_MAX		(64)
+> +#define PLL_NO_MAX		(16)
 
-For that, we'd be better of adding a generic quirk flag which several
-can use.
+instead of using a comment, please prefix these constants accordingly, like
+	RK3066_PLL_FVCO_MIN
+etc, especially as some of those contstraints actually _are different_ between 
+implementations. See rk3188 vs. rk3288 for example. With the current static 
+rate table we just have matching values already, so never had to care about 
+that.
 
-=2D-=20
-balbi
+Another idea might be to have the constraints as table in the soc clock-
+drivers, similar to how we transfer we handle the rate tables right now.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+> +
+> +/* CLK_PLL_TYPE_RK3036/3366/3399_AUTO type ops */
+> +#define MIN_FOUTVCO_FREQ	(800 * MHZ)
+> +#define MAX_FOUTVCO_FREQ	(2000 * MHZ)
 
------BEGIN PGP SIGNATURE-----
+same here, RK3036_PLL_FOUTVCO_MIN etc.
 
-iQIcBAEBCAAGBQJXw+lzAAoJEIaOsuA1yqRE4SUP/A3MJ1Yw79yme/0ZA7j6z8Qg
-qD6RTfAH8MWzWs1WLEEQcrrJxsJqqORE11umYRnUyXryuwD3M+s0cDE/+OF3h/D8
-PfgIJHY5eVF69NpPp9XM954ZeKHCvrFVknKcaBDyAO6obFxTRPj+oJ++his1NZml
-bkzGJBoyjp4Pb9QeuSC8zM1NnPbQ0JZs5aI97QEGPhHySDOhWe/L+J+DY7m1gsU3
-ELvLBChwDhCs0azU5hiQ+lHCuZcCiOtygaWr0kKtDxxMWQ4PU2R8gguBRrtYUTEm
-lGAypkq8okLlsVZRqNa9uyeakh7rua1tM0EhZN+OQcRHUpfWGdvXqhjk4IDkWH4X
-5ku06bwjX5AQ13JFF1Rv9uwz9H8clBIR/hbity++2jjGATwZpAwzQnAzpklrw+Ys
-e4eXgpBMox5AC5+8SaWm/mkXJWq7f7ZTZMKVxcSUXzewaEgZMUVlcwbpS7caMc9s
-OAN18VqFbggGHZYYRmaekUZGe8TAQcPEne2jFdGKzua9Oq9SpWWkd2TEKWnlF5uc
-FLY6cQ74LSJeTb5UWXTbaH3Ttr3pg2ZaDfq/w82VDbIBQJBCispTQsZpK6C1er2t
-Dj57RYgdJe7Z0fkSTvErtwuo6pIqchg2NP5leC2GnT1Uj6QqusaH+mmmlRss6dM4
-E4wiVX7oQf2KAArNjjsX
-=RJOM
------END PGP SIGNATURE-----
---=-=-=--
+> +
+> +static struct rockchip_pll_rate_table auto_table;
+> +
+> +static struct rockchip_pll_rate_table *rk_pll_rate_table_get(void)
+> +{
+> +	return &auto_table;
+> +}
+> +
+> +static int rockchip_pll_clk_set_postdiv(unsigned long fout_hz,
+
+the rk3036, rk3366, rk3399 pll type won't be the last one Rockchip will use, 
+so please add a prefix. Same for everything else below :-) .
+
+> +					u32 *postdiv1,
+> +					u32 *postdiv2,
+> +					u32 *foutvco)
+> +{
+> +	unsigned long freq;
+> +
+> +	if (fout_hz < MIN_FOUTVCO_FREQ) {
+> +		for (*postdiv1 = 1; *postdiv1 <= 7; (*postdiv1)++) {
+> +			for (*postdiv2 = 1; *postdiv2 <= 7; (*postdiv2)++) {
+> +				freq = fout_hz * (*postdiv1) * (*postdiv2);
+> +				if (freq >= MIN_FOUTVCO_FREQ &&
+> +				    freq <= MAX_FOUTVCO_FREQ) {
+> +					*foutvco = freq;
+> +					return 0;
+> +				}
+> +			}
+> +			pr_err("CANNOT FIND postdiv1/2 to make fout in range from 800M to
+> 2000M,fout = %lu\n", +			       fout_hz);
+> +		}
+> +	} else {
+> +		*postdiv1 = 1;
+> +		*postdiv2 = 1;
+> +	}
+> +	return 0;
+> +}
+> +
+> +static struct rockchip_pll_rate_table *
+> +rockchip_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
+> +			     unsigned long fin_hz,
+> +			     unsigned long fout_hz)
+> +{
+> +	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
+> +	/* FIXME set postdiv1/2 always 1*/
+> +	u32 foutvco = fout_hz;
+> +	u64 fin_64, frac_64;
+> +	u32 f_frac, postdiv1, postdiv2;
+> +	unsigned long clk_gcd = 0;
+> +
+> +	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
+> +		return NULL;
+> +
+> +	rockchip_pll_clk_set_postdiv(fout_hz, &postdiv1, &postdiv2, &foutvco);
+> +	rate_table->postdiv1 = postdiv1;
+> +	rate_table->postdiv2 = postdiv2;
+> +	rate_table->dsmpd = 1;
+> +
+> +	if (fin_hz / MHZ * MHZ == fin_hz && fout_hz / MHZ * MHZ == fout_hz) {
+> +		fin_hz /= MHZ;
+> +		foutvco /= MHZ;
+> +		clk_gcd = gcd(fin_hz, foutvco);
+> +		rate_table->refdiv = fin_hz / clk_gcd;
+> +		rate_table->fbdiv = foutvco / clk_gcd;
+> +
+> +		rate_table->frac = 0;
+> +
+> +		pr_debug("fin = %lu, fout = %lu, clk_gcd = %lu, refdiv = %u, fbdiv = 
+%u,
+> postdiv1 = %u, postdiv2 = %u, frac = %u\n", +			 fin_hz, fout_hz, 
+clk_gcd,
+> rate_table->refdiv,
+> +			 rate_table->fbdiv, rate_table->postdiv1,
+> +			 rate_table->postdiv2, rate_table->frac);
+> +	} else {
+> +		pr_debug("frac div running, fin_hz = %lu, fout_hz = %lu, fin_INT_mhz =
+> %lu, fout_INT_mhz = %lu\n", +			 fin_hz, fout_hz,
+> +			 fin_hz / MHZ * MHZ,
+> +			 fout_hz / MHZ * MHZ);
+> +		pr_debug("frac get postdiv1 = %u,  postdiv2 = %u, foutvco = %u\n",
+> +			 rate_table->postdiv1, rate_table->postdiv2, foutvco);
+> +		clk_gcd = gcd(fin_hz / MHZ, foutvco / MHZ);
+> +		rate_table->refdiv = fin_hz / MHZ / clk_gcd;
+> +		rate_table->fbdiv = foutvco / MHZ / clk_gcd;
+> +		pr_debug("frac get refdiv = %u,  fbdiv = %u\n",
+> +			 rate_table->refdiv, rate_table->fbdiv);
+> +
+> +		rate_table->frac = 0;
+> +
+> +		f_frac = (foutvco % MHZ);
+> +		fin_64 = fin_hz;
+> +		do_div(fin_64, (u64)rate_table->refdiv);
+> +		frac_64 = (u64)f_frac << 24;
+> +		do_div(frac_64, fin_64);
+> +		rate_table->frac = (u32)frac_64;
+> +		if (rate_table->frac > 0)
+> +			rate_table->dsmpd = 0;
+> +		pr_debug("frac = %x\n", rate_table->frac);
+> +	}
+> +	return rate_table;
+> +}
+> +
+> +static struct rockchip_pll_rate_table *
+> +rockchip_rk3066_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
+> +				    unsigned long fin_hz,
+> +				    unsigned long fout_hz)
+> +{
+> +	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
+> +	u32 nr, nf, no, nonr;
+> +	u32 nr_out, nf_out, no_out;
+> +	u32 n;
+> +	u32 numerator, denominator;
+> +	u64 fref, fvco, fout;
+> +	unsigned long clk_gcd = 0;
+> +
+> +	nr_out = PLL_NR_MAX + 1;
+> +	nf_out = 0;
+> +	no_out = 0;
+> +
+> +	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
+> +		return NULL;
+> +
+> +	clk_gcd = gcd(fin_hz, fout_hz);
+> +
+> +	numerator = fout_hz / clk_gcd;
+> +	denominator = fin_hz / clk_gcd;
+> +
+> +	for (n = 1;; n++) {
+> +		nf = numerator * n;
+> +		nonr = denominator * n;
+> +		if (nf > PLL_NF_MAX || nonr > (PLL_NO_MAX * PLL_NR_MAX))
+> +			break;
+> +
+> +		for (no = 1; no <= PLL_NO_MAX; no++) {
+> +			if (!(no == 1 || !(no % 2)))
+> +				continue;
+> +
+> +			if (nonr % no)
+> +				continue;
+> +			nr = nonr / no;
+> +
+> +			if (nr > PLL_NR_MAX)
+> +				continue;
+> +
+> +			fref = fin_hz / nr;
+> +			if (fref < PLL_FREF_MIN || fref > PLL_FREF_MAX)
+> +				continue;
+> +
+> +			fvco = fref * nf;
+> +			if (fvco < PLL_FVCO_MIN || fvco > PLL_FVCO_MAX)
+> +				continue;
+> +
+> +			fout = fvco / no;
+> +			if (fout < PLL_FOUT_MIN || fout > PLL_FOUT_MAX)
+> +				continue;
+> +
+> +			/* select the best from all available PLL settings */
+> +			if ((no > no_out) ||
+> +			    ((no == no_out) && (nr < nr_out))) {
+> +				nr_out = nr;
+> +				nf_out = nf;
+> +				no_out = no;
+> +			}
+> +		}
+> +	}
+> +
+> +	/* output the best PLL setting */
+> +	if ((nr_out <= PLL_NR_MAX) && (no_out > 0)) {
+> +		if (rate_table->nr && rate_table->nf && rate_table->no) {
+> +			rate_table->nr = nr_out;
+> +			rate_table->nf = nf_out;
+> +			rate_table->no = no_out;
+> +		}
+> +	} else {
+> +		return NULL;
+> +	}
+> +
+> +	return rate_table;
+> +}
+> +
+>  static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
+>  			    struct rockchip_clk_pll *pll, unsigned long rate)
+>  {
+> @@ -65,24 +260,16 @@ static const struct rockchip_pll_rate_table
+> *rockchip_get_pll_settings( return &rate_table[i];
+>  	}
+> 
+> -	return NULL;
+> +	if (pll->type == pll_rk3066)
+
+this should be a switch as well, to prepare for other pll types.
+
+> +		return rockchip_rk3066_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
+> +	else
+> +		return rockchip_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
+>  }
+> 
+
+Heiko
