@@ -1,70 +1,70 @@
-From: Vagrant Cascadian <vagrantc@aikidev.net>
-Subject: [PATCH] ARM: dts: rockchip: temporarily remove emmc hs200 speed from
-        rk3288-veyron-speedy.
-Date: Mon, 29 Aug 2016 08:18:13 -0700
-Message-ID: <87inujbo3u.fsf@aikidev.net>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RFC PATCH] clk: rockchip: rk3399: support pll setting automatically
+Date: Mon, 29 Aug 2016 10:35:44 -0700
+Message-ID: <CAD=FV=VMqHrKHThSNoz_i=SCwgw=OeOfaww3Ote1id66LXO8JQ@mail.gmail.com>
+References: <1470144852-20708-1-git-send-email-zhengxing@rock-chips.com> <4830789.1bI8OsvZy1@phil>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4830789.1bI8OsvZy1@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-This essentially mimics what was done with rk3288-veyron-minnie in
-commit 984926781122f034d5bc9962815d135b6c4a8e1d.
+On Sun, Aug 28, 2016 at 8:21 AM, Heiko St=C3=BCbner <heiko@sntech.de> wrote=
+:
+> Hi Xing, Elaine,
+>
+> Am Dienstag, 2. August 2016, 21:34:12 schrieb Xing Zheng:
+>> From: Elaine Zhang <zhangqing@rock-chips.com>
+>>
+>> The goal is that we can configure the most suitable pll params
+>> automatically.
+>>
+>> If setting freq is not supported in rockchip_pll_rate_table
+>> rk3399_pll_rates[], we can set pll params automatically.
+>>
+>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>
+> first off, I really like that idea of calculating the generic pll frequen=
+cies
+> instead of duplicating these entries in every soc clock driver.
 
-The eMMC of the speedy Chromebook also appears to need the same tuning
-workaround, as it frequently fails to recognize the eMMC without it.
+I probably won't have time to look at this any time soon, but when I
+saw this patch fly by I was a little hesitant because:
 
-=2D--
- arch/arm/boot/dts/rk3288-veyron-speedy.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+* Not all PLL settings produce the same jitter.  On rk3288 I spent
+loads of time searching for PLL settings that would be low jitter
+enough to make a pixel clock that was happy with lots of different TVs
+/ monitors.  It's true that there were certain heuristics that could
+be followed but certainly my predictions didn't always match what
+happened.
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts=
-/rk3288-veyron-speedy.dts
-index a0d033f..500fd18 100644
-=2D-- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-@@ -124,6 +124,11 @@
- 			&sdmmc_bus4>;
- };
-=20
-+
-+&emmc {
-+       /delete-property/mmc-hs200-1_8v;
-+};
-+
- &vcc_5v {
- 	enable-active-high;
- 	gpio =3D <&gpio7 21 GPIO_ACTIVE_HIGH>;
-=2D-=20
-2.9.3
+* Depending on what's using the PLL, you might want very different
+settings.  One can optimize for lock time, power usage, jitter,
+accuracy, etc.  For instance for a CPU clock that you change a lot you
+probably don't care about hitting an exact frequency and you probably
+don't care overly much about jitter, but you want low lock times.  For
+HDMI you don't care about lock times and and probably don't care about
+power usage, but you care about meeting an exact clock and really
+really care about jitter.
+
+* I know that in the past the way I found to make some of the best
+rates for HDMI was to have the PLL make a rate that was several times
+what I wanted and then activate a divider later in the clock tree.
+That gave me the best jitter / clock accuracy.  I have no idea how to
+do that automatically, but in the past I relied on the PLL only having
+a fixed set of rates it could make so it would fail to make the lower
+clock rate (higher jitter) and eventually end up with the better one.
 
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+Anyway, I don't know how to solve all of the above, but I just wanted
+to bring it up as a concern.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
 
-iQIcBAEBCgAGBQJXxFI/AAoJELeLgtSBS5G2YzEP/i11ETInXlVaKFkdBkPRIQZI
-VrdjxlJIyv6QB7EYYpsP0euj0bHGEGyW1zKMAT6VhtgJgf9/+lZT+ILIoBcWite/
-Z/9mUsngASUnmuEhObfjpSdEZm8N8nyRdTtOeVI9l1wMIG8VvzNWEGdYXqrgUTDH
-UNn/GssDe+1PdbB3oUMTWeHUAyw1uXpAZSMWIQDnCUA9LCH7/mh9oSURyRQn7zHc
-YsCylmU2FC3uWeSI8R6Gd5tqsm5EGYtHiV9f+9SGH4gQsiRRP/mzthiwtlA+VcSf
-3QTGB6KqOC3zmvVk8T5wDgXbzU6cu/xFqPtxgOFV3H3r45gp//LW3ucCo3Kzhdto
-6xCUAjp9woe1e9Gf6LcNA4AujrGxLi3Igazk9pDaABWtgPS2CsoDkuQFssq+rNTs
-Oki51snxsNuR8Xyg4CpO691YAbcNJfbdbTwwZtMNS5kRmGXsRrM8x435BDF1ZAMP
-8UD4StYFFnX48qbrVntxGnow/5l6OXrqo/mhTTgWa9IDURFJg0Mwb8VpKC9xeV2I
-MDSgdQH4QD0oY/GUP/wCNgrz9BGg57pq11YEyH9Pv2vNXIs/uTdYL5WFIMTuds5a
-noeUE7q73EfvtG5nsoo0idNvThYz6x8ppXfIDRj3UIHLNg84zWEgk1h0agayvGj9
-3PoywFFrH0xSdAUWlFpC
-=RALr
------END PGP SIGNATURE-----
---=-=-=--
+-Doug
