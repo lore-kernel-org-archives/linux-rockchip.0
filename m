@@ -1,123 +1,65 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
- for rk3399
-Date: Mon, 29 Aug 2016 11:25:19 +0800
-Message-ID: <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com>
- <20160827134103.28160-3-xzy.xu@rock-chips.com>
- <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com>
- <57C3A30B.5080707@rock-chips.com>
+From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
+ Rockchip cpu avs
+Date: Mon, 29 Aug 2016 11:38:01 +0530
+Message-ID: <20160829060801.GB5094@vireshk-i7>
+References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
+ <1471510341-63926-5-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <57C3A30B.5080707@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org, heiko@sntech.de
-Cc: Ziyuan Xu <xzy.xu@rock-chips.com>, ulf.hansson@linaro.org, shawn.lin@rock-chips.com, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>, Xing Zheng <zhengxing@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Frank Wang <frank.wang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Jianqun Xu <jay.xu@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1471510341-63926-5-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Finlye Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/8/29 10:50, Elaine Zhang wrote:
->
->
-> On 08/27/2016 11:05 PM, Shawn Lin wrote:
->> On 2016/8/27 21:41, Ziyuan Xu wrote:
->>> Control power domain for eMMC via genpd to reduce power consumption.
->>>
->>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->>> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
->>>
->>
->> It looks nice to me. But this should be merged after applying that[0]
->> as your patch will break bind/unbind test for sdhci-of-arasan on rk3399
->> without it[0]. Moreover, Elaine should make sure that upstreamed
->> rockchip power domain stuff would not off pd for emmc, *otherwise*, I
->> should update my patch to make sure we update clkmul every time when
->> doing suspend 2 resume..
->>
->>
-> Forgot to say:
-> If use pd, Although there is no call to power odd the pd_emmc,
-> it will be power off when the system doing suspend 2 resume.
-> (Because the system call
-> __device_suspend_noirq->pm_genpd_suspend_noirq->rockchip_pd_power_off)
+On 18-08-16, 16:52, Finlye Xiao wrote:
+> +static int rockchip_adjust_opp_table(struct device *cpu_dev,
+> +				     struct cpufreq_frequency_table *table,
+> +				     int volt)
+> +{
+> +	struct opp_table *opp_table;
+> +	struct cpufreq_frequency_table *pos;
+> +	struct dev_pm_opp *opp;
+> +
+> +	if (!volt)
+> +		return 0;
+> +
+> +	rcu_read_lock();
+> +
+> +	opp_table = _find_opp_table(cpu_dev);
+> +	if (IS_ERR(opp_table)) {
+> +		rcu_read_unlock();
+> +		return PTR_ERR(opp_table);
+> +	}
+> +
+> +	cpufreq_for_each_valid_entry(pos, table) {
+> +		opp = dev_pm_opp_find_freq_exact(cpu_dev, pos->frequency * 1000,
+> +						 true);
+> +		if (IS_ERR(opp))
+> +			continue;
+> +
+> +		opp->u_volt += volt;
+> +		opp->u_volt_min += volt;
+> +		opp->u_volt_max += volt;
+> +	}
+> +
+> +	rcu_read_unlock();
+> +
+> +	return 0;
+> +}
 
-Thanks for explaining this. I checked the code a bit and actually I
-don't need to updata clkmul since it was recorded, although it is still
-reset to 0x10 reading from syscon. So for that, we can now pick it
-up without waiting for my sdhci-of-arasan's update.
+I wouldn't prefer altering the opp tables from individual drivers at all. At the
+least, it should be done via some helpers exposed by the core.
 
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-
-
->
-> And it's important to note:
-> If the pd has been power off, some grf regs will be back to the default
-> value.(which grf regs in this pd)
-> So if the pd support power off , this grf regs need to save and restore
-> or reinit.
-> For example:
-> pd_emmc
->     aclk_emmc_grf
->
-> If the pd is always on,and this pd have wakeup func.
-> The device need to add device_init_wakeup() to make the pd always on
-> when the system doing suspend 2 resume.
->
->>
->> [0]: https://patchwork.kernel.org/patch/9300971/
->>
->>> ---
->>>
->>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
->>>  1 file changed, 11 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> index 32aebc8..71733d4 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> @@ -239,6 +239,7 @@
->>>          #clock-cells = <0>;
->>>          phys = <&emmc_phy>;
->>>          phy-names = "phy_arasan";
->>> +        power-domains = <&power RK3399_PD_EMMC>;
->>>          status = "disabled";
->>>      };
->>>
->>> @@ -611,6 +612,11 @@
->>>          status = "disabled";
->>>      };
->>>
->>> +    qos_emmc: qos@ffa58000 {
->>> +        compatible = "syscon";
->>> +        reg = <0x0 0xffa58000 0x0 0x20>;
->>> +    };
->>> +
->>>      qos_hdcp: qos@ffa90000 {
->>>          compatible = "syscon";
->>>          reg = <0x0 0xffa90000 0x0 0x20>;
->>> @@ -739,6 +745,11 @@
->>>              };
->>>
->>>              /* These power domains are grouped by VD_LOGIC */
->>> +            pd_emmc@RK3399_PD_EMMC {
->>> +                reg = <RK3399_PD_EMMC>;
->>> +                clocks = <&cru ACLK_EMMC>;
->>> +                pm_qos = <&qos_emmc>;
->>> +            };
->>>              pd_vio@RK3399_PD_VIO {
->>>                  reg = <RK3399_PD_VIO>;
->>>                  #address-cells = <1>;
->>>
->>
->>
->
->
->
-
+But before that I would like to hear from Stephen a bit as I recall he was also
+working on something similar.
 
 -- 
-Best Regards
-Shawn Lin
+viresh
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
