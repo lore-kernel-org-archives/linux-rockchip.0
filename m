@@ -1,16 +1,16 @@
-From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: mmc: sdhci-of-arasan: add description
- of power domain
-Date: Mon, 29 Aug 2016 08:36:37 +0800
-Message-ID: <080c7a5c-7ff6-175b-e7d9-a9c7efec3afe@rock-chips.com>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
+ for rk3399
+Date: Mon, 29 Aug 2016 09:58:42 +0800
+Message-ID: <57C396D2.4090607@rock-chips.com>
 References: <20160827134103.28160-1-xzy.xu@rock-chips.com>
- <20160827134103.28160-2-xzy.xu@rock-chips.com>
- <40f46bd6-22d2-f008-602a-47200340f733@rock-chips.com>
+ <20160827134103.28160-3-xzy.xu@rock-chips.com>
+ <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <40f46bd6-22d2-f008-602a-47200340f733-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,48 +20,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAyMDE25bm0MDjmnIgyN+aXpSAyMjo1MCwgU2hhd24gTGluIHdyb3RlOgo+IE9uIDIwMTYv
-OC8yNyAyMTo0MSwgWml5dWFuIFh1IHdyb3RlOgo+PiBBZGQgcG93ZXIgZG9tYWluIGFzIGEgb3B0
-aW9uYWwgcHJvcGVydHkgZm9yIHNkaGNpLW9mLWFyYXNhbiwgd2hpY2ggY2FuCj4+IGJlIHRydW5l
-ZCBvZmYgaW4gdGhlIHNvLWNhbGxlZCB1bnVzZWQgY29uZGl0aW9uLCBzdWNoIGFzIHN1c3BlbmQg
-YW5kCj4+IHJlbW92ZS4gQWltIHRvIGxvd2VyIHBvd2VyIHJlcXVpcmVtZW50cy4KPj4KPj4gU2ln
-bmVkLW9mZi1ieTogWml5dWFuIFh1IDx4enkueHVAcm9jay1jaGlwcy5jb20+Cj4+Cj4+IC0tLQo+
-Pgo+PiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2ku
-dHh0IHwgNiArKysrKy0KPj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDEgZGVs
-ZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9tbWMvYXJhc2FuLHNkaGNpLnR4dCAKPj4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvbW1jL2FyYXNhbixzZGhjaS50eHQKPj4gaW5kZXggMzQwNGFmYS4uM2Y1MTg5YyAx
-MDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFz
-YW4sc2RoY2kudHh0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
-bWMvYXJhc2FuLHNkaGNpLnR4dAo+PiBAQCAtMSwxMiArMSwxNCBAQAo+PiAgRGV2aWNlIFRyZWUg
-QmluZGluZ3MgZm9yIHRoZSBBcmFzYW4gU0RIQ0kgQ29udHJvbGxlcgo+Pgo+PiAtICBUaGUgYmlu
-ZGluZ3MgZm9sbG93IHRoZSBtbWNbMV0sIGNsb2NrWzJdLCBpbnRlcnJ1cHRbM10gYW5kIHBoeVs0
-XSAKPj4gYmluZGluZ3MuCj4+ICsgIFRoZSBiaW5kaW5ncyBmb2xsb3cgdGhlIG1tY1sxXSwgY2xv
-Y2tbMl0sIGludGVycnVwdFszXSwgcGh5WzRdIGFuZCAKPj4gcG93ZXIKPj4gKyAgZG9tYWluWzVd
-IGJpbmRpbmdzLgo+PiAgICBPbmx5IGRldmlhdGlvbnMgYXJlIGRvY3VtZW50ZWQgaGVyZS4KPj4K
-Pj4gICAgWzFdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tbWMvbW1jLnR4dAo+
-PiAgICBbMl0gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL2Nsb2NrLWJp
-bmRpbmdzLnR4dAo+PiAgICBbM10gCj4+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9pbnRlcnJ1cHQtY29udHJvbGxlci9pbnRlcnJ1cHRzLnR4dAo+PiAgICBbNF0gRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHktYmluZGluZ3MudHh0Cj4+ICsgIFs1XSBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvcG93ZXJfZG9tYWluLnR4dAo+
-Pgo+PiAgUmVxdWlyZWQgUHJvcGVydGllczoKPj4gICAgLSBjb21wYXRpYmxlOiBDb21wYXRpYmls
-aXR5IHN0cmluZy4gIE9uZSBvZjoKPj4gQEAgLTM2LDYgKzM4LDggQEAgT3B0aW9uYWwgUHJvcGVy
-dGllczoKPj4gICAgLSAjY2xvY2stY2VsbHM6IElmIHNwZWNpZmllZCB0aGlzIHNob3VsZCBiZSB0
-aGUgdmFsdWUgPDA+LiAgV2l0aCAKPj4gdGhpcyBwcm9wZXJ0eQo+PiAgICAgIGluIHBsYWNlIHdl
-IHdpbGwgZXhwb3J0IGEgY2xvY2sgcmVwcmVzZW50aW5nIHRoZSBDYXJkIENsb2NrLiAgCj4+IFRo
-aXMgY2xvY2sKPj4gICAgICBpcyBleHBlY3RlZCB0byBiZSBjb25zdW1lZCBieSBvdXIgUEhZLiAg
-WW91IG11c3QgYWxzbyBzcGVjaWZ5Cj4+ICsgIC0gcG93ZXItZG9tYWluczogQSBwaGFuZGxlIG9m
-IGFuZCBQTSBkb21haW4gYXMgc3BlY2lmaWVyIGRlZmluZWQgCj4+IGJ5IGJpbmRpbmdzCj4KPiAg
-ICAgQSBwaGFuZGxlIG9mIHdoYXQ/CgpUaGF0J3MgYSB0eXBvLgoKPgo+PiArICAgIG9mIHRoZSBw
-b3dlciBjb250cm9sbGVyIHNwZWNpZmllZCBieSBwaGFuZGxlLgo+Pgo+PiAgRXhhbXBsZToKPj4g
-ICAgICBzZGhjaUBlMDEwMDAwMCB7Cj4KPiBJdCB3b3VsZCBiZSBuaWNlIHRvIGFkZCB0aGUgZXhh
-bXBsZSBjb2RlLgoKT2theSwgSSB3aWxsIHNob3cgYSBzYW1wbGUgY29kZSBpbiBWMi4KClRoYW5r
-cywgc2hhd24uCgo+Cj4+Cj4KPgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+
+On 08/27/2016 11:05 PM, Shawn Lin wrote:
+> On 2016/8/27 21:41, Ziyuan Xu wrote:
+>> Control power domain for eMMC via genpd to reduce power consumption.
+>>
+>> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>
+> It looks nice to me. But this should be merged after applying that[0]
+> as your patch will break bind/unbind test for sdhci-of-arasan on rk3399
+> without it[0]. Moreover, Elaine should make sure that upstreamed
+> rockchip power domain stuff would not off pd for emmc, *otherwise*, I
+> should update my patch to make sure we update clkmul every time when
+> doing suspend 2 resume..
+>
+It looks nice to me. I was going on to submit with other Pds.
+
+>
+>
+> [0]: https://patchwork.kernel.org/patch/9300971/
+>
+>> ---
+>>
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index 32aebc8..71733d4 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -239,6 +239,7 @@
+>>          #clock-cells = <0>;
+>>          phys = <&emmc_phy>;
+>>          phy-names = "phy_arasan";
+>> +        power-domains = <&power RK3399_PD_EMMC>;
+>>          status = "disabled";
+>>      };
+>>
+>> @@ -611,6 +612,11 @@
+>>          status = "disabled";
+>>      };
+>>
+>> +    qos_emmc: qos@ffa58000 {
+>> +        compatible = "syscon";
+>> +        reg = <0x0 0xffa58000 0x0 0x20>;
+>> +    };
+>> +
+>>      qos_hdcp: qos@ffa90000 {
+>>          compatible = "syscon";
+>>          reg = <0x0 0xffa90000 0x0 0x20>;
+>> @@ -739,6 +745,11 @@
+>>              };
+>>
+>>              /* These power domains are grouped by VD_LOGIC */
+>> +            pd_emmc@RK3399_PD_EMMC {
+>> +                reg = <RK3399_PD_EMMC>;
+>> +                clocks = <&cru ACLK_EMMC>;
+>> +                pm_qos = <&qos_emmc>;
+>> +            };
+>>              pd_vio@RK3399_PD_VIO {
+>>                  reg = <RK3399_PD_VIO>;
+>>                  #address-cells = <1>;
+>>
+>
+>
