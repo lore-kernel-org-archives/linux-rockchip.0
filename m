@@ -1,75 +1,60 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] i2c: rk3x: Restore clock settings at resume time
-Date: Mon, 29 Aug 2016 14:22:36 -0700
-Message-ID: <1472505756-8302-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Sender: linux-i2c-owner@vger.kernel.org
-To: wsa@the-dreams.de, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, david.wu@rock-chips.com, wxt@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] Rockchip clk fixes for 4.8
+Date: Tue, 30 Aug 2016 00:23:56 +0200
+Message-ID: <5043281.GVRln4Xh5N@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Depending on a number of factors including:
-- Which exact Rockchip SoC we're working with
-- How deep we suspend
-- Which i2c port we're on
+Hi Mike, Stephen,
 
-We might lose the state of the i2c registers at suspend time.
-Specifically we've found that on rk3399 the i2c ports that are not in
-the PMU power domain lose their state with the current suspend depth
-configured by ARM Tursted Firmware.
+please find below some fixes for rk3399 clocks.
+Really only wrong register bits where the manual contained (now fixed)
+mistakes and one needed critical clock.
 
-Note that there are very few actual i2c registers that aren't configured
-per transfer anyway so all we actually need to re-configure are the
-clock config registers.  We'll just add a call to rk3x_i2c_adapt_div()
-at resume time and be done with it.
+So if nothing stands out please pull
 
-NOTE: On rk3399 on ports whose power was lost, I put printouts in at
-resume time.  I saw things like:
-  before: con=0x00010300, div=0x00060006
-  after:  con=0x00010200, div=0x00180025
+Thanks
+Heiko
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-Tested on chromeos-4.4 kernel with backports.
 
-drivers/i2c/busses/i2c-rk3x.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+The following changes since commit 29b4817d4018df78086157ea3a55c1d9424a7cfc:
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 3b87afe82f63..0df5ad6bfa31 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -1111,6 +1111,15 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
- 	return ret < 0 ? ret : num;
- }
- 
-+static __maybe_unused int rk3x_i2c_resume(struct device *dev)
-+{
-+	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
-+
-+	rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
-+
-+	return 0;
-+}
-+
- static u32 rk3x_i2c_func(struct i2c_adapter *adap)
- {
- 	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL | I2C_FUNC_PROTOCOL_MANGLING;
-@@ -1332,12 +1341,15 @@ static int rk3x_i2c_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static const SIMPLE_DEV_PM_OPS(rk3x_i2c_pm_ops, NULL, rk3x_i2c_resume);
-+
- static struct platform_driver rk3x_i2c_driver = {
- 	.probe   = rk3x_i2c_probe,
- 	.remove  = rk3x_i2c_remove,
- 	.driver  = {
- 		.name  = "rk3x-i2c",
- 		.of_match_table = rk3x_i2c_match,
-+		.pm = &rk3x_i2c_pm_ops,
- 	},
- };
- 
--- 
-2.8.0.rc3.226.g39d4020
+  Linux 4.8-rc1 (2016-08-07 18:18:00 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.8-rockchip-clk-fixes1
+
+for you to fetch changes up to a45f9d41c9dd2c28e38b9b88f69c39bc63807de9:
+
+  clk: rockchip: mark aclk_emmc_noc as a critical clock on rk3399 (2016-08-24 23:44:49 +0200)
+
+----------------------------------------------------------------
+Some fixes for rk3399 register errors that revealed themself
+during actual use.
+
+----------------------------------------------------------------
+Chris Zhong (1):
+      clk: rockchip: fix rk3399 aclk_vio gate bit
+
+Xing Zheng (3):
+      clk: rockchip: fix incorrect aclk_emmc source gate bits on rk3399
+      clk: rockchip: fix incorrect GATE bits for {c, g}pll_aclk_perihp_src on rk3399
+      clk: rockchip: mark aclk_emmc_noc as a critical clock on rk3399
+
+ drivers/clk/rockchip/clk-rk3399.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
