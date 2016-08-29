@@ -1,55 +1,106 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: make vop register setting take effect
-Date: Mon, 29 Aug 2016 10:51:45 +0800
-Message-ID: <57C3A341.9030302@rock-chips.com>
-References: <1472269178-16593-1-git-send-email-zyw@rock-chips.com>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
+ for rk3399
+Date: Mon, 29 Aug 2016 10:50:51 +0800
+Message-ID: <57C3A30B.5080707@rock-chips.com>
+References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com> <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472269178-16593-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>, yzq@rock-chips.com, tfiga@chromium.org, heiko@sntech.de, airlied@linux.ie
-Cc: dianders@chromium.org, marcheu@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, seanpaul@chromium.org, briannorris@chromium.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016年08月27日 11:39, Chris Zhong wrote:
-> The setting of vop registers need a reg_done writing to take effect.
-> In vop_enable the vop return to work by by restoring registers, but the
-> registers do not take effect immediately, it should a vop_cfg_done
-> after it. The same thing is needed by windows_disabled in
-> vop_crtc_disable.
+
+
+On 08/27/2016 11:05 PM, Shawn Lin wrote:
+> On 2016/8/27 21:41, Ziyuan Xu wrote:
+>> Control power domain for eMMC via genpd to reduce power consumption.
+>>
+>> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
 >
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++++
->   1 file changed, 4 insertions(+)
-Thanks for your fix.
+> It looks nice to me. But this should be merged after applying that[0]
+> as your patch will break bind/unbind test for sdhci-of-arasan on rk3399
+> without it[0]. Moreover, Elaine should make sure that upstreamed
+> rockchip power domain stuff would not off pd for emmc, *otherwise*, I
+> should update my patch to make sure we update clkmul every time when
+> doing suspend 2 resume..
+>
+>
+Forgot to say:
+If use pd, Although there is no call to power odd the pd_emmc,
+it will be power off when the system doing suspend 2 resume.
+(Because the system call 
+__device_suspend_noirq->pm_genpd_suspend_noirq->rockchip_pd_power_off)
 
-applied to my drm-fixes.
+And it's important to note:
+If the pd has been power off, some grf regs will be back to the default 
+value.(which grf regs in this pd)
+So if the pd support power off , this grf regs need to save and restore 
+or reinit.
+For example:
+pd_emmc
+	aclk_emmc_grf
 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index efbc41a..a0bfcff 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -464,6 +464,8 @@ static int vop_enable(struct drm_crtc *crtc)
->   	}
->   
->   	memcpy(vop->regs, vop->regsbak, vop->len);
-> +	vop_cfg_done(vop);
-> +
->   	/*
->   	 * At here, vop clock & iommu is enable, R/W vop regs would be safe.
->   	 */
-> @@ -513,6 +515,8 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
->   		spin_unlock(&vop->reg_lock);
->   	}
->   
-> +	vop_cfg_done(vop);
-> +
->   	drm_crtc_vblank_off(crtc);
->   
->   	/*
+If the pd is always on,and this pd have wakeup func.
+The device need to add device_init_wakeup() to make the pd always on 
+when the system doing suspend 2 resume.
 
--- 
-Ｍark Yao
+>
+> [0]: https://patchwork.kernel.org/patch/9300971/
+>
+>> ---
+>>
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index 32aebc8..71733d4 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -239,6 +239,7 @@
+>>          #clock-cells = <0>;
+>>          phys = <&emmc_phy>;
+>>          phy-names = "phy_arasan";
+>> +        power-domains = <&power RK3399_PD_EMMC>;
+>>          status = "disabled";
+>>      };
+>>
+>> @@ -611,6 +612,11 @@
+>>          status = "disabled";
+>>      };
+>>
+>> +    qos_emmc: qos@ffa58000 {
+>> +        compatible = "syscon";
+>> +        reg = <0x0 0xffa58000 0x0 0x20>;
+>> +    };
+>> +
+>>      qos_hdcp: qos@ffa90000 {
+>>          compatible = "syscon";
+>>          reg = <0x0 0xffa90000 0x0 0x20>;
+>> @@ -739,6 +745,11 @@
+>>              };
+>>
+>>              /* These power domains are grouped by VD_LOGIC */
+>> +            pd_emmc@RK3399_PD_EMMC {
+>> +                reg = <RK3399_PD_EMMC>;
+>> +                clocks = <&cru ACLK_EMMC>;
+>> +                pm_qos = <&qos_emmc>;
+>> +            };
+>>              pd_vio@RK3399_PD_VIO {
+>>                  reg = <RK3399_PD_VIO>;
+>>                  #address-cells = <1>;
+>>
+>
+>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
