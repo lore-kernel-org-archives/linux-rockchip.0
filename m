@@ -1,306 +1,40 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RFC PATCH] clk: rockchip: rk3399: support pll setting
- automatically
-Date: Mon, 29 Aug 2016 10:02:20 +0200
-Message-ID: <1773036.BloUU6hcoj@phil>
-References: <1470144852-20708-1-git-send-email-zhengxing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470144852-20708-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/4] Control clock for accessing syscon provided arasan IP
+Date: Mon, 29 Aug 2016 16:02:55 +0800
+Message-ID: <1472457779-7194-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Xing, Elaine,
 
-Am Dienstag, 2. August 2016, 21:34:12 schrieb Xing Zheng:
-> From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> The goal is that we can configure the most suitable pll params
-> automatically.
-> 
-> If setting freq is not supported in rockchip_pll_rate_table
-> rk3399_pll_rates[], we can set pll params automatically.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+This patchset is gonna take over the ownership of aclk_emmc_grf
+by sdhci-of-arasan which is used to access corecfg_* stuff provided
+by arasan. This clock is optional for sdhci-of-arasan which means we
+would not break the driver  without adding this. But we strongly
+recommend the upcoming users whose platforms have the similar
+cases to add this rather than to add any flags for their specific
+clock drivers to make this clock always on.
 
-first off, I really like that idea of calculating the generic pll frequencies 
-instead of duplicating these entries in every soc clock driver.
+This patchset is based on linux-next. And patch 4 should *not* be
+landed before others, so it would be nice to pack these four patches
+via Ulf's tree tree Heiko's ack for rockchip part, or vice versa. :)
 
-Please also provide a follow up patch, removing the then unneeded frequencies 
-from the rate tables.
 
-I still have some comments inline below:
 
-> ---
-> 
->  drivers/clk/rockchip/clk-pll.c |  213
-> +++++++++++++++++++++++++++++++++++++--- 1 file changed, 200 insertions(+),
-> 13 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-> index 35994e8..08979f9 100644
-> --- a/drivers/clk/rockchip/clk-pll.c
-> +++ b/drivers/clk/rockchip/clk-pll.c
-> @@ -23,6 +23,7 @@
->  #include <linux/clk-provider.h>
->  #include <linux/regmap.h>
->  #include <linux/clk.h>
-> +#include <linux/gcd.h>
->  #include "clk.h"
-> 
->  #define PLL_MODE_MASK		0x3
-> @@ -54,6 +55,200 @@ struct rockchip_clk_pll {
->  #define to_rockchip_clk_pll_nb(nb) \
->  			container_of(nb, struct rockchip_clk_pll, clk_nb)
-> 
-> +#define MHZ			(1000UL * 1000UL)
-> +#define KHZ			(1000UL)
-> +
-> +/* CLK_PLL_TYPE_RK3066_AUTO type ops */
+Shawn Lin (4):
+  Documentation: mmc: sdhci-of-arasan: Add clk_syscon as an optional one
+  mmc: sdhci-of-arasan: Control clock for accessing syscon
+  arm64: dts: rockchip: add clk_syscon for sdhci on rk3399
+  clk: rockchip: remove CLK_IGNORE_UNUSED flag for aclk_emmc_grf on
+    rk3399
 
-wouldn't that better be 
-/* rk3066 pll frequency ranges */
+ .../devicetree/bindings/mmc/arasan,sdhci.txt       |  7 ++++--
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  5 +++--
+ drivers/clk/rockchip/clk-rk3399.c                  |  2 +-
+ drivers/mmc/host/sdhci-of-arasan.c                 | 25 +++++++++++++++++++---
+ 4 files changed, 31 insertions(+), 8 deletions(-)
 
-> +#define PLL_FREF_MIN		(269 * KHZ)
-> +#define PLL_FREF_MAX		(2200 * MHZ)
-> +
-> +#define PLL_FVCO_MIN		(440 * MHZ)
-> +#define PLL_FVCO_MAX		(2200 * MHZ)
-> +
-> +#define PLL_FOUT_MIN		(27500 * KHZ)
-> +#define PLL_FOUT_MAX		(2200 * MHZ)
-> +
-> +#define PLL_NF_MAX		(4096)
-> +#define PLL_NR_MAX		(64)
-> +#define PLL_NO_MAX		(16)
-
-instead of using a comment, please prefix these constants accordingly, like
-	RK3066_PLL_FVCO_MIN
-etc, especially as some of those contstraints actually _are different_ between 
-implementations. See rk3188 vs. rk3288 for example. With the current static 
-rate table we just have matching values already, so never had to care about 
-that.
-
-Another idea might be to have the constraints as table in the soc clock-
-drivers, similar to how we transfer we handle the rate tables right now.
-
-> +
-> +/* CLK_PLL_TYPE_RK3036/3366/3399_AUTO type ops */
-> +#define MIN_FOUTVCO_FREQ	(800 * MHZ)
-> +#define MAX_FOUTVCO_FREQ	(2000 * MHZ)
-
-same here, RK3036_PLL_FOUTVCO_MIN etc.
-
-> +
-> +static struct rockchip_pll_rate_table auto_table;
-> +
-> +static struct rockchip_pll_rate_table *rk_pll_rate_table_get(void)
-> +{
-> +	return &auto_table;
-> +}
-> +
-> +static int rockchip_pll_clk_set_postdiv(unsigned long fout_hz,
-
-the rk3036, rk3366, rk3399 pll type won't be the last one Rockchip will use, 
-so please add a prefix. Same for everything else below :-) .
-
-> +					u32 *postdiv1,
-> +					u32 *postdiv2,
-> +					u32 *foutvco)
-> +{
-> +	unsigned long freq;
-> +
-> +	if (fout_hz < MIN_FOUTVCO_FREQ) {
-> +		for (*postdiv1 = 1; *postdiv1 <= 7; (*postdiv1)++) {
-> +			for (*postdiv2 = 1; *postdiv2 <= 7; (*postdiv2)++) {
-> +				freq = fout_hz * (*postdiv1) * (*postdiv2);
-> +				if (freq >= MIN_FOUTVCO_FREQ &&
-> +				    freq <= MAX_FOUTVCO_FREQ) {
-> +					*foutvco = freq;
-> +					return 0;
-> +				}
-> +			}
-> +			pr_err("CANNOT FIND postdiv1/2 to make fout in range from 800M to
-> 2000M,fout = %lu\n", +			       fout_hz);
-> +		}
-> +	} else {
-> +		*postdiv1 = 1;
-> +		*postdiv2 = 1;
-> +	}
-> +	return 0;
-> +}
-> +
-> +static struct rockchip_pll_rate_table *
-> +rockchip_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
-> +			     unsigned long fin_hz,
-> +			     unsigned long fout_hz)
-> +{
-> +	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
-> +	/* FIXME set postdiv1/2 always 1*/
-> +	u32 foutvco = fout_hz;
-> +	u64 fin_64, frac_64;
-> +	u32 f_frac, postdiv1, postdiv2;
-> +	unsigned long clk_gcd = 0;
-> +
-> +	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
-> +		return NULL;
-> +
-> +	rockchip_pll_clk_set_postdiv(fout_hz, &postdiv1, &postdiv2, &foutvco);
-> +	rate_table->postdiv1 = postdiv1;
-> +	rate_table->postdiv2 = postdiv2;
-> +	rate_table->dsmpd = 1;
-> +
-> +	if (fin_hz / MHZ * MHZ == fin_hz && fout_hz / MHZ * MHZ == fout_hz) {
-> +		fin_hz /= MHZ;
-> +		foutvco /= MHZ;
-> +		clk_gcd = gcd(fin_hz, foutvco);
-> +		rate_table->refdiv = fin_hz / clk_gcd;
-> +		rate_table->fbdiv = foutvco / clk_gcd;
-> +
-> +		rate_table->frac = 0;
-> +
-> +		pr_debug("fin = %lu, fout = %lu, clk_gcd = %lu, refdiv = %u, fbdiv = 
-%u,
-> postdiv1 = %u, postdiv2 = %u, frac = %u\n", +			 fin_hz, fout_hz, 
-clk_gcd,
-> rate_table->refdiv,
-> +			 rate_table->fbdiv, rate_table->postdiv1,
-> +			 rate_table->postdiv2, rate_table->frac);
-> +	} else {
-> +		pr_debug("frac div running, fin_hz = %lu, fout_hz = %lu, fin_INT_mhz =
-> %lu, fout_INT_mhz = %lu\n", +			 fin_hz, fout_hz,
-> +			 fin_hz / MHZ * MHZ,
-> +			 fout_hz / MHZ * MHZ);
-> +		pr_debug("frac get postdiv1 = %u,  postdiv2 = %u, foutvco = %u\n",
-> +			 rate_table->postdiv1, rate_table->postdiv2, foutvco);
-> +		clk_gcd = gcd(fin_hz / MHZ, foutvco / MHZ);
-> +		rate_table->refdiv = fin_hz / MHZ / clk_gcd;
-> +		rate_table->fbdiv = foutvco / MHZ / clk_gcd;
-> +		pr_debug("frac get refdiv = %u,  fbdiv = %u\n",
-> +			 rate_table->refdiv, rate_table->fbdiv);
-> +
-> +		rate_table->frac = 0;
-> +
-> +		f_frac = (foutvco % MHZ);
-> +		fin_64 = fin_hz;
-> +		do_div(fin_64, (u64)rate_table->refdiv);
-> +		frac_64 = (u64)f_frac << 24;
-> +		do_div(frac_64, fin_64);
-> +		rate_table->frac = (u32)frac_64;
-> +		if (rate_table->frac > 0)
-> +			rate_table->dsmpd = 0;
-> +		pr_debug("frac = %x\n", rate_table->frac);
-> +	}
-> +	return rate_table;
-> +}
-> +
-> +static struct rockchip_pll_rate_table *
-> +rockchip_rk3066_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
-> +				    unsigned long fin_hz,
-> +				    unsigned long fout_hz)
-> +{
-> +	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
-> +	u32 nr, nf, no, nonr;
-> +	u32 nr_out, nf_out, no_out;
-> +	u32 n;
-> +	u32 numerator, denominator;
-> +	u64 fref, fvco, fout;
-> +	unsigned long clk_gcd = 0;
-> +
-> +	nr_out = PLL_NR_MAX + 1;
-> +	nf_out = 0;
-> +	no_out = 0;
-> +
-> +	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
-> +		return NULL;
-> +
-> +	clk_gcd = gcd(fin_hz, fout_hz);
-> +
-> +	numerator = fout_hz / clk_gcd;
-> +	denominator = fin_hz / clk_gcd;
-> +
-> +	for (n = 1;; n++) {
-> +		nf = numerator * n;
-> +		nonr = denominator * n;
-> +		if (nf > PLL_NF_MAX || nonr > (PLL_NO_MAX * PLL_NR_MAX))
-> +			break;
-> +
-> +		for (no = 1; no <= PLL_NO_MAX; no++) {
-> +			if (!(no == 1 || !(no % 2)))
-> +				continue;
-> +
-> +			if (nonr % no)
-> +				continue;
-> +			nr = nonr / no;
-> +
-> +			if (nr > PLL_NR_MAX)
-> +				continue;
-> +
-> +			fref = fin_hz / nr;
-> +			if (fref < PLL_FREF_MIN || fref > PLL_FREF_MAX)
-> +				continue;
-> +
-> +			fvco = fref * nf;
-> +			if (fvco < PLL_FVCO_MIN || fvco > PLL_FVCO_MAX)
-> +				continue;
-> +
-> +			fout = fvco / no;
-> +			if (fout < PLL_FOUT_MIN || fout > PLL_FOUT_MAX)
-> +				continue;
-> +
-> +			/* select the best from all available PLL settings */
-> +			if ((no > no_out) ||
-> +			    ((no == no_out) && (nr < nr_out))) {
-> +				nr_out = nr;
-> +				nf_out = nf;
-> +				no_out = no;
-> +			}
-> +		}
-> +	}
-> +
-> +	/* output the best PLL setting */
-> +	if ((nr_out <= PLL_NR_MAX) && (no_out > 0)) {
-> +		if (rate_table->nr && rate_table->nf && rate_table->no) {
-> +			rate_table->nr = nr_out;
-> +			rate_table->nf = nf_out;
-> +			rate_table->no = no_out;
-> +		}
-> +	} else {
-> +		return NULL;
-> +	}
-> +
-> +	return rate_table;
-> +}
-> +
->  static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
->  			    struct rockchip_clk_pll *pll, unsigned long rate)
->  {
-> @@ -65,24 +260,16 @@ static const struct rockchip_pll_rate_table
-> *rockchip_get_pll_settings( return &rate_table[i];
->  	}
-> 
-> -	return NULL;
-> +	if (pll->type == pll_rk3066)
-
-this should be a switch as well, to prepare for other pll types.
-
-> +		return rockchip_rk3066_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
-> +	else
-> +		return rockchip_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
->  }
-> 
-
-Heiko
+-- 
+2.3.7
