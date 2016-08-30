@@ -1,94 +1,84 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [RFC PATCH] clk: rockchip: rk3399: support pll setting automatically
-Date: Tue, 30 Aug 2016 09:30:55 +0800
-Message-ID: <57C4E1CF.2060502@rock-chips.com>
-References: <1470144852-20708-1-git-send-email-zhengxing@rock-chips.com> <4830789.1bI8OsvZy1@phil> <CAD=FV=VMqHrKHThSNoz_i=SCwgw=OeOfaww3Ote1id66LXO8JQ@mail.gmail.com> <13164913.BHiQzGsdBU@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Explicitly set pclk_pmu_src on rk3399
+Date: Tue, 30 Aug 2016 09:05:06 +0200
+Message-ID: <4298293.ZqJ4n19bHK@diego>
+References: <1472494284-11315-1-git-send-email-dianders@chromium.org> <20160829181841.GA8682@localhost> <57C4DA73.5000505@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <13164913.BHiQzGsdBU@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <57C4DA73.5000505-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Elaine,
+
+Am Dienstag, 30. August 2016, 08:59:31 schrieb Elaine Zhang:
+> On 08/30/2016 02:18 AM, Brian Norris wrote:
+> > On Mon, Aug 29, 2016 at 11:11:24AM -0700, Doug Anderson wrote:
+> >> On rk3399 we explicitly set ppll in the device tree to 676000000.  The
+> >> ppll has one major child, pclk_pmu_src, that is the parent of lots of
+> >> other clocks.  Right now nobody is setting that clock rate and we're
+> >> relying on the divider to just happen to be something sane.  Let's be
+> >> explicit in our request so we're not relying on the firmware.
+> >> 
+> >> With the current firmware I tested with this patch has no expected
+> >> impact but it's probably good to do anyway.
+> >> 
+> >> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> >> ---
+> >> 
+> >>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+> >>   1 file changed, 2 insertions(+), 2 deletions(-)
+> >> 
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index
+> >> 62d450935a57..ffb3faa8c176 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> @@ -908,8 +908,8 @@
+> >> 
+> >>   		reg = <0x0 0xff750000 0x0 0x1000>;
+> >>   		#clock-cells = <1>;
+> >>   		#reset-cells = <1>;
+> >> 
+> >> -		assigned-clocks = <&pmucru PLL_PPLL>;
+> >> -		assigned-clock-rates = <676000000>;
+> >> +		assigned-clocks = <&pmucru PLL_PPLL>, <&pmucru PCLK_SRC_PMU>;
+> >> +		assigned-clock-rates = <676000000>, <112666667>;
+> > 
+> > I think this makes sense and is a good idea. One alternative would be to
+> > have the various children actually set a rate that they expect, but
+> > several of them don't have a separate driver at all, and that would be
+> > of dubious value anyway I think.
+> 
+> I agree with you. This clk default div is set in the uboot or coreboot.
+> And if is need to set in kernel ,I hope the freq is 50M(<48285714>).
+> This freq can meet the performance,and the power consumption is not too
+> much.
+
+can you maybe also provide a tag like the one Brian did below. Your sentence 
+above indicates that you reviewed and approve, but it's helpful to also state 
+that explicitly :-)
 
 
-On 08/30/2016 01:54 AM, Heiko Stübner wrote:
-> Am Montag, 29. August 2016, 10:35:44 schrieb Doug Anderson:
->> Hi,
->>
->> On Sun, Aug 28, 2016 at 8:21 AM, Heiko Stübner <heiko@sntech.de> wrote:
->>> Hi Xing, Elaine,
->>>
->>> Am Dienstag, 2. August 2016, 21:34:12 schrieb Xing Zheng:
->>>> From: Elaine Zhang <zhangqing@rock-chips.com>
->>>>
->>>> The goal is that we can configure the most suitable pll params
->>>> automatically.
->>>>
->>>> If setting freq is not supported in rockchip_pll_rate_table
->>>> rk3399_pll_rates[], we can set pll params automatically.
->>>>
->>>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->>>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->>>
->>> first off, I really like that idea of calculating the generic pll
->>> frequencies instead of duplicating these entries in every soc clock
->>> driver.
->>
->> I probably won't have time to look at this any time soon, but when I
->> saw this patch fly by I was a little hesitant because:
->>
->> * Not all PLL settings produce the same jitter.  On rk3288 I spent
->> loads of time searching for PLL settings that would be low jitter
->> enough to make a pixel clock that was happy with lots of different TVs
->> / monitors.  It's true that there were certain heuristics that could
->> be followed but certainly my predictions didn't always match what
->> happened.
->>
->> * Depending on what's using the PLL, you might want very different
->> settings.  One can optimize for lock time, power usage, jitter,
->> accuracy, etc.  For instance for a CPU clock that you change a lot you
->> probably don't care about hitting an exact frequency and you probably
->> don't care overly much about jitter, but you want low lock times.  For
->> HDMI you don't care about lock times and and probably don't care about
->> power usage, but you care about meeting an exact clock and really
->> really care about jitter.
->>
->> * I know that in the past the way I found to make some of the best
->> rates for HDMI was to have the PLL make a rate that was several times
->> what I wanted and then activate a divider later in the clock tree.
->> That gave me the best jitter / clock accuracy.  I have no idea how to
->> do that automatically, but in the past I relied on the PLL only having
->> a fixed set of rates it could make so it would fail to make the lower
->> clock rate (higher jitter) and eventually end up with the better one.
->>
->>
->> Anyway, I don't know how to solve all of the above, but I just wanted
->> to bring it up as a concern.
->
-> after talking with Doug on irc, I realized that this really can become a
-> problem, as right now we have a list with known-good rates, can adjust those
-> as needed and have the clock framework select the best for a certain target
-> rate.
->
-> But with the automatic calculation it would open up nearly unlimited different
-> rates with possible negative effects and no way to eliminate or even test most
-> of them.
->
-> So it may very well be best to stay with static rates, in a component as core
-> as the PLLs are?
+> > Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-I also thought of this question, and really cant't solve all of the above.
-According to before product experience,if the clk test jitter is not 
-accept,we can add this freq to the static freq table.
-And others use the pll setting automatically.
+Thanks
+Heiko
 
->
->
-> Heiko
->
->
->
+
+> > 
+> >>   	};
+> >>   	
+> >>   	cru: clock-controller@ff760000 {
+> >> 
+> >> --
+> >> 2.8.0.rc3.226.g39d4020
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
