@@ -1,82 +1,48 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: rockchip: Correct the register value for clearing
- client interrupts
-Date: Wed, 31 Aug 2016 08:58:43 +0800
-Message-ID: <1a689435-c336-ff81-a231-4c17e19fa2f5@rock-chips.com>
-References: <1472505251-122204-1-git-send-email-briannorris@chromium.org>
- <20160829235742.GB14177@localhost>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20160829235742.GB14177@localhost>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>, Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/4] Control clock for accessing syscon provided by arasan IP
+Date: Wed, 31 Aug 2016 09:37:24 +0800
+Message-ID: <1472607448-4462-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/8/30 7:57, Bjorn Helgaas wrote:
-> On Mon, Aug 29, 2016 at 02:14:11PM -0700, Brian Norris wrote:
->> I'm pretty sure the bitwise 'or' was meant for the value parameter, not
->> the register parameter.
->>
->> This resolves an interrupt storm, where if we receive any client IRQs
->> (e.g., correctable errors), we fail to ever clear them properly, so they
->> reoccur indefinitely.
->>
->> Fixes: 199410f6270e ("PCI: rockchip: Add Rockchip PCIe controller support")
->> Signed-off-by: Brian Norris <briannorris@chromium.org>
->> Cc: Shawn Lin <shawn.lin@rock-chips.com>
->
-> Shawn, please confirm.  If this patch is correct, I'll fold it into
-> the initial commit that adds the driver.
 
-yes, Brian's patch is correct. I probably didn't notice this as
-the client interrput on EVB-rev1 board which I was using is broken, so
-my SSD didn't actually yelled at this irqstorm.
+This patchset is gonna take over the ownership of aclk_emmc_grf
+by sdhci-of-arasan which is used to access corecfg_* stuff provided
+by arasan. This clock is optional for sdhci-of-arasan which means we
+would not break the driver  without adding this. But we strongly
+recommend the upcoming users whose platforms have the similar
+cases to add this rather than to add any flags for their specific
+clock drivers to make this clock always on.
+
+This patchset is based on linux-next. And patch 4 should *not* be
+landed before others, so it would be nice to pack these four patches
+via Ulf's tree with Heiko's ack for rockchip part, or vice versa. :)
 
 
-Brain, thanks for fixing this.
+Changes in v2:
+- assign NULL to clk_syscon if it's not deferral error.
 
->
->> ---
->> Patched against git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git pci/host-rockchip
->>
->>  drivers/pci/host/pcie-rockchip.c | 7 ++++---
->>  1 file changed, 4 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
->> index 8fb47ee9eaee..e77aec3cc869 100644
->> --- a/drivers/pci/host/pcie-rockchip.c
->> +++ b/drivers/pci/host/pcie-rockchip.c
->> @@ -689,9 +689,10 @@ static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
->>  			      PCIE_CLIENT_INT_MSG | PCIE_CLIENT_INT_HOT_RST |
->>  			      PCIE_CLIENT_INT_DPA | PCIE_CLIENT_INT_FATAL_ERR |
->>  			      PCIE_CLIENT_INT_NFATAL_ERR |
->> -			      PCIE_CLIENT_INT_CORR_ERR),
->> -			      PCIE_CLIENT_INT_STATUS |
->> -			      PCIE_CLIENT_INT_PHY);
->> +			      PCIE_CLIENT_INT_CORR_ERR |
->> +			      PCIE_CLIENT_INT_PHY),
->> +		   PCIE_CLIENT_INT_STATUS);
->> +
->>  	return IRQ_HANDLED;
->>  }
->>
->> --
->> 2.8.0.rc3.226.g39d4020
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
+Shawn Lin (4):
+  Documentation: mmc: sdhci-of-arasan: Add clk_syscon as an optional one
+  mmc: sdhci-of-arasan: Control clock for accessing syscon
+  arm64: dts: rockchip: add clk_syscon for sdhci on rk3399
+  clk: rockchip: remove CLK_IGNORE_UNUSED flag for aclk_emmc_grf on
+    rk3399
 
+ .../devicetree/bindings/mmc/arasan,sdhci.txt       |  7 +++--
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  5 ++--
+ drivers/clk/rockchip/clk-rk3399.c                  |  2 +-
+ drivers/mmc/host/sdhci-of-arasan.c                 | 33 ++++++++++++++++++++--
+ 4 files changed, 39 insertions(+), 8 deletions(-)
 
 -- 
-Best Regards
-Shawn Lin
+2.3.7
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
