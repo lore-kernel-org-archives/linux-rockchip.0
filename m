@@ -1,67 +1,82 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: support gmac for rk3399
-Date: Wed, 31 Aug 2016 00:07:51 +0200
-Message-ID: <1912883.KWCSTxJEHB@diego>
-References: <1472589008-7713-1-git-send-email-wxt@rock-chips.com> <1472589008-7713-4-git-send-email-wxt@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: rockchip: Correct the register value for clearing
+ client interrupts
+Date: Wed, 31 Aug 2016 08:58:43 +0800
+Message-ID: <1a689435-c336-ff81-a231-4c17e19fa2f5@rock-chips.com>
+References: <1472505251-122204-1-git-send-email-briannorris@chromium.org>
+ <20160829235742.GB14177@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1472589008-7713-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20160829235742.GB14177@localhost>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>, Brian Norris <briannorris@chromium.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 31. August 2016, 04:30:06 schrieb Caesar Wang:
-> This patch adds needed gamc information for rk3399,
-> also support the gmac pd.
-> 
-> Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 90
-> ++++++++++++++++++++++++++++++++ 1 file changed, 90 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 32aebc8..53ac651 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -200,6 +200,26 @@
->  		};
->  	};
-> 
-> +	gmac: eth@fe300000 {
-> +		compatible = "rockchip,rk3399-gmac";
-> +		reg = <0x0 0xfe300000 0x0 0x10000>;
-> +		rockchip,grf = <&grf>;
+On 2016/8/30 7:57, Bjorn Helgaas wrote:
+> On Mon, Aug 29, 2016 at 02:14:11PM -0700, Brian Norris wrote:
+>> I'm pretty sure the bitwise 'or' was meant for the value parameter, not
+>> the register parameter.
+>>
+>> This resolves an interrupt storm, where if we receive any client IRQs
+>> (e.g., correctable errors), we fail to ever clear them properly, so they
+>> reoccur indefinitely.
+>>
+>> Fixes: 199410f6270e ("PCI: rockchip: Add Rockchip PCIe controller support")
+>> Signed-off-by: Brian Norris <briannorris@chromium.org>
+>> Cc: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> Shawn, please confirm.  If this patch is correct, I'll fold it into
+> the initial commit that adds the driver.
 
-should move below the reset-names .
-
-> +		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "macirq";
-> +		clocks = <&cru SCLK_MAC>, <&cru SCLK_MAC_RX>,
-> +			 <&cru SCLK_MAC_TX>, <&cru SCLK_MACREF>,
-> +			 <&cru SCLK_MACREF_OUT>, <&cru ACLK_GMAC>,
-> +			 <&cru PCLK_GMAC>;
-> +		clock-names = "stmmaceth", "mac_clk_rx",
-> +			      "mac_clk_tx", "clk_mac_ref",
-> +			      "clk_mac_refout", "aclk_mac",
-> +			      "pclk_mac";
-> +		resets = <&cru SRST_A_GMAC>;
-> +		reset-names = "stmmaceth";
-> +		power-domains = <&power RK3399_PD_GMAC>;
-
-The driver core should handle regular power-domain handling on device creation 
-already, right? So I should be able to apply patches 3 and 4 even without the 
-dwmac patches, right?
-
-Also if resending please move power-domains above resets
+yes, Brian's patch is correct. I probably didn't notice this as
+the client interrput on EVB-rev1 board which I was using is broken, so
+my SSD didn't actually yelled at this irqstorm.
 
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Brain, thanks for fixing this.
+
+>
+>> ---
+>> Patched against git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git pci/host-rockchip
+>>
+>>  drivers/pci/host/pcie-rockchip.c | 7 ++++---
+>>  1 file changed, 4 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+>> index 8fb47ee9eaee..e77aec3cc869 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -689,9 +689,10 @@ static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
+>>  			      PCIE_CLIENT_INT_MSG | PCIE_CLIENT_INT_HOT_RST |
+>>  			      PCIE_CLIENT_INT_DPA | PCIE_CLIENT_INT_FATAL_ERR |
+>>  			      PCIE_CLIENT_INT_NFATAL_ERR |
+>> -			      PCIE_CLIENT_INT_CORR_ERR),
+>> -			      PCIE_CLIENT_INT_STATUS |
+>> -			      PCIE_CLIENT_INT_PHY);
+>> +			      PCIE_CLIENT_INT_CORR_ERR |
+>> +			      PCIE_CLIENT_INT_PHY),
+>> +		   PCIE_CLIENT_INT_STATUS);
+>> +
+>>  	return IRQ_HANDLED;
+>>  }
+>>
+>> --
+>> 2.8.0.rc3.226.g39d4020
+>>
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+
+
+-- 
+Best Regards
+Shawn Lin
