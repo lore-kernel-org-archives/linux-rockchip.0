@@ -1,130 +1,62 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [RESEND PATCH 3/4] arm64: dts: rockchip: support gmac for rk3399
-Date: Wed, 31 Aug 2016 23:29:37 +0200
-Message-ID: <2498365.kqzATN1cjf@diego>
-References: <1472624028-7082-1-git-send-email-wxt@rock-chips.com> <1472624028-7082-4-git-send-email-wxt@rock-chips.com> <CAD=FV=XQX__rFqGLY2U5mPT8WR4P4aW5tbCqFmA+3rZunbzUZQ@mail.gmail.com>
+Date: Wed, 31 Aug 2016 14:45:40 -0700
+Message-ID: <CAD=FV=UkK2QqbCJrg72nvYYfg8-z5p0ye3mkASnxLKQfSR+wTw@mail.gmail.com>
+References: <1472624028-7082-1-git-send-email-wxt@rock-chips.com>
+ <1472624028-7082-4-git-send-email-wxt@rock-chips.com> <CAD=FV=XQX__rFqGLY2U5mPT8WR4P4aW5tbCqFmA+3rZunbzUZQ@mail.gmail.com>
+ <2498365.kqzATN1cjf@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=XQX__rFqGLY2U5mPT8WR4P4aW5tbCqFmA+3rZunbzUZQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel@li>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <2498365.kqzATN1cjf@diego>
+Sender: netdev-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Caesar Wang <wxt@rock-chips.com>, netdev@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Derek Basehore <dbasehore@chromium.org>, Roger Chen <roger.chen@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Xing Zheng <zhengxing@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jianqun Xu <jay.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@li>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 31. August 2016, 13:42:17 schrieb Doug Anderson:
-> Caesar,
-> 
-> On Tue, Aug 30, 2016 at 11:13 PM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> > This patch adds needed gamc information for rk3399,
-> > also support the gmac pd.
-> > 
-> > Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > ---
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 90
-> >  ++++++++++++++++++++++++++++++++ 1 file changed, 90 insertions(+)
-> 
-> I noticed that your subject for this patch contains "RESEND" and not
-> "v2" event though there are changes between this version and the last
-> one.  That's really confusing.  This should have been "v2" and the
-> next version should be "v3".
-> 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 32aebc8..abf27a4 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > @@ -200,6 +200,26 @@
-> > 
-> >                 };
-> >         
-> >         };
-> > 
-> > +       gmac: eth@fe300000 {
-> 
-> nit: on rk3288 the node was "ethernet@" instead of "eth@".  Presumably
-> "ethernet" is more correct?
-> 
-> > +               compatible = "rockchip,rk3399-gmac";
-> > +               reg = <0x0 0xfe300000 0x0 0x10000>;
-> > +               interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
-> > +               interrupt-names = "macirq";
-> > +               clocks = <&cru SCLK_MAC>, <&cru SCLK_MAC_RX>,
-> > +                        <&cru SCLK_MAC_TX>, <&cru SCLK_MACREF>,
-> > +                        <&cru SCLK_MACREF_OUT>, <&cru ACLK_GMAC>,
-> > +                        <&cru PCLK_GMAC>;
-> > +               clock-names = "stmmaceth", "mac_clk_rx",
-> > +                             "mac_clk_tx", "clk_mac_ref",
-> > +                             "clk_mac_refout", "aclk_mac",
-> > +                             "pclk_mac";
-> > +               power-domains = <&power RK3399_PD_GMAC>;
-> > +               resets = <&cru SRST_A_GMAC>;
-> > +               reset-names = "stmmaceth";
-> > +               rockchip,grf = <&grf>;
-> > +               status = "disabled";
-> > +       };
-> > +
-> > 
-> >         sdio0: dwmmc@fe310000 {
-> >         
-> >                 compatible = "rockchip,rk3399-dw-mshc",
-> >                 
-> >                              "rockchip,rk3288-dw-mshc";
-> > 
-> > @@ -611,6 +631,11 @@
-> > 
-> >                 status = "disabled";
-> >         
-> >         };
-> > 
-> > +       qos_gmac: qos@ffa5c000 {
-> > +               compatible = "syscon";
-> > +               reg = <0x0 0xffa5c000 0x0 0x20>;
-> > +       };
-> > +
-> > 
-> >         qos_hdcp: qos@ffa90000 {
-> >         
-> >                 compatible = "syscon";
-> >                 reg = <0x0 0xffa90000 0x0 0x20>;
-> > 
-> > @@ -704,6 +729,11 @@
-> > 
-> >                         #size-cells = <0>;
-> >                         
-> >                         /* These power domains are grouped by VD_CENTER */
-> > 
-> > +                       pd_gmac@RK3399_PD_GMAC {
-> 
-> RK3399_PD_GMAC is not in VD_CENTER but in VD_LOGIC, right?  ...so this
-> should move.
-> 
-> > +                               reg = <RK3399_PD_GMAC>;
-> > +                               clocks = <&cru ACLK_GMAC>;
-> > +                               pm_qos = <&qos_gmac>;
-> > +                       };
-> 
-> IMHO it would be nice if this were broken into two patches.
-> 
-> 1. First patch would be the power domain patch and that could land any
-> time.  You wouldn't actually be able to use the gmac but at least
-> you'd be able to turn off its power.  This would be a handy patch to
-> be able to backport if you happened to not need Ethernet support but
-> wanted to save power.
-> 
-> 2. Second patch would actually add the gmac.
+Hi,
 
-according to my talk with Caesar in the real v1, the gmac even with power-
-domains should work just nicely even without the dts patches, as the driver 
-core takes care of powering up the pd before probe.
+On Wed, Aug 31, 2016 at 2:29 PM, Heiko St=C3=BCbner <heiko@sntech.de> wrote=
+:
+>> IMHO it would be nice if this were broken into two patches.
+>>
+>> 1. First patch would be the power domain patch and that could land any
+>> time.  You wouldn't actually be able to use the gmac but at least
+>> you'd be able to turn off its power.  This would be a handy patch to
+>> be able to backport if you happened to not need Ethernet support but
+>> wanted to save power.
+>>
+>> 2. Second patch would actually add the gmac.
+>
+> according to my talk with Caesar in the real v1, the gmac even with power=
+-
+> domains should work just nicely even without the dts patches, as the driv=
+er
+> core takes care of powering up the pd before probe.
+>
+> But I may miss some peculiarity of the dwmac?
 
-But I may miss some peculiarity of the dwmac?
+Nothing that I'm terribly aware of.  I was just being selfish because:
+
+1. I'm on a board where I don't need Ethernet.
+
+2. I'm running a semi old kernel (4.4)
+
+3. I don't want to pick back the various fixes that might be needed to
+make gmac work on rk3399 to that old kernel.
+
+4. I want it very obvious that gmac isn't really supported on this old
+kernel on rk3399 (and having stmmac not in the device tree would make
+it very obvious)
+
+5. I do want the power savings of turning the power domains off for the gma=
+c.
 
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+If this patch is broken in two then I can pick back just the power
+domain patch.  :-P
+
+
+
+-Doug
