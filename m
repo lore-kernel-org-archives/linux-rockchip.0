@@ -1,62 +1,68 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH 3/4] arm64: dts: rockchip: support gmac for rk3399
-Date: Wed, 31 Aug 2016 14:45:40 -0700
-Message-ID: <CAD=FV=UkK2QqbCJrg72nvYYfg8-z5p0ye3mkASnxLKQfSR+wTw@mail.gmail.com>
-References: <1472624028-7082-1-git-send-email-wxt@rock-chips.com>
- <1472624028-7082-4-git-send-email-wxt@rock-chips.com> <CAD=FV=XQX__rFqGLY2U5mPT8WR4P4aW5tbCqFmA+3rZunbzUZQ@mail.gmail.com>
- <2498365.kqzATN1cjf@diego>
+Subject: Re: [PATCH] ASoC: rockchip: implement system suspend/resume for i2s
+Date: Wed, 31 Aug 2016 15:24:36 -0700
+Message-ID: <CAD=FV=VF7NJ0+tbuWsKOxFnFS+hBqhbXmMhs5w_+DJ3EdBW9bw@mail.gmail.com>
+References: <1467686711-52347-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <2498365.kqzATN1cjf@diego>
-Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, netdev@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Derek Basehore <dbasehore@chromium.org>, Roger Chen <roger.chen@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Xing Zheng <zhengxing@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jianqun Xu <jay.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@li>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1467686711-52347-1-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "broonie@kernel.org" <broonie@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Caesar Wang <wxt@rock-chips.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Wed, Aug 31, 2016 at 2:29 PM, Heiko St=C3=BCbner <heiko@sntech.de> wrote=
-:
->> IMHO it would be nice if this were broken into two patches.
->>
->> 1. First patch would be the power domain patch and that could land any
->> time.  You wouldn't actually be able to use the gmac but at least
->> you'd be able to turn off its power.  This would be a handy patch to
->> be able to backport if you happened to not need Ethernet support but
->> wanted to save power.
->>
->> 2. Second patch would actually add the gmac.
+On Mon, Jul 4, 2016 at 7:45 PM, Sugar Zhang <sugar.zhang@rock-chips.com> wrote:
+> restore hw registers after power loss during a suspend/resume cycle.
 >
-> according to my talk with Caesar in the real v1, the gmac even with power=
--
-> domains should work just nicely even without the dts patches, as the driv=
-er
-> core takes care of powering up the pd before probe.
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> ---
 >
-> But I may miss some peculiarity of the dwmac?
+>  sound/soc/rockchip/rockchip_i2s.c | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+> index 574c6af..53970ac 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+> @@ -614,9 +614,35 @@ static const struct of_device_id rockchip_i2s_match[] = {
+>         {},
+>  };
+>
+> +#ifdef CONFIG_PM_SLEEP
+> +static int rockchip_i2s_suspend(struct device *dev)
 
-Nothing that I'm terribly aware of.  I was just being selfish because:
+Rather than #ifdef, I think that the currently suggested way to do
+this is to use __maybe_unused, like:
+  static __maybe_unused int rockchip_i2s_suspend(struct device *dev)
 
-1. I'm on a board where I don't need Ethernet.
+> +{
+> +       struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
+> +
+> +       regcache_mark_dirty(i2s->regmap);
+> +
+> +       return 0;
+> +}
 
-2. I'm running a semi old kernel (4.4)
+I do wonder a little bit if we should be doing this work in pm_runtime
+instead of actually adding suspend/resume hooks.
 
-3. I don't want to pick back the various fixes that might be needed to
-make gmac work on rk3399 to that old kernel.
+I think that technically you end up losing state when your power
+domain dies, right?  Looking at rk3399, I see that i2s is in
+"pd_sdioaudio" along with "sdio, spi, i2s, spdif".  That means (I
+think) that if all of those peripherals happen to runtime suspend at
+the same time (or they are totally unused) then you'll lose state when
+you are runtime suspended.  Then when you runtime resume you need to
+restore.
 
-4. I want it very obvious that gmac isn't really supported on this old
-kernel on rk3399 (and having stmmac not in the device tree would make
-it very obvious)
+Maybe in your case you never actually get into the situation where the
+power domain turns off except during suspend/resume, but it seems
+possible it could happen.
 
-5. I do want the power savings of turning the power domains off for the gma=
-c.
-
-
-If this patch is broken in two then I can pick back just the power
-domain patch.  :-P
-
+Am I understanding this all properly?  Maybe someone can correct me.
+I'm still a bit of a PM Runtime noob.
 
 
 -Doug
