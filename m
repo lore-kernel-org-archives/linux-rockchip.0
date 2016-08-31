@@ -1,87 +1,232 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH 4/4] arm64: dts: rockchip: enable the gmac for rk3399
- evb board
-Date: Wed, 31 Aug 2016 14:13:48 +0800
-Message-ID: <1472624028-7082-5-git-send-email-wxt@rock-chips.com>
-References: <1472624028-7082-1-git-send-email-wxt@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH 1/2] mmc: dw_mmc: split out preparation of desc for IDMAC32
+ and IDMAC64
+Date: Wed, 31 Aug 2016 15:55:15 +0900
+Message-ID: <6e8fbd6b-c3ce-c360-663d-70aeaf87f641@samsung.com>
+References: <CGME20160819095620epcas1p28ffdabf62af8d6e3c01941fde8c8b96b@epcas1p2.samsung.com>
+ <1471599615-6249-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472624028-7082-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1471599615-6249-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We add the required and optional properties for evb board.
-See the [0] to get the detail information.
+Hi Shawn,
 
-[0]:
-Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+On 08/19/2016 06:40 PM, Shawn Lin wrote:
+> We intend to add more check for descriptors when
+> preparing desc. Let's spilt out the separate body
+> to make the dw_mci_translate_sglist not so lengthy.
 
-Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Sorry for reviewing late.
 
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 31 +++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/mmc/host/dw_mmc.c | 148 +++++++++++++++++++++++++---------------------
+>  1 file changed, 81 insertions(+), 67 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 32380d5..0a5a49f 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -467,103 +467,117 @@ static void dw_mci_dmac_complete_dma(void *arg)
+>  	}
+>  }
+>  
+> -static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+> -				    unsigned int sg_len)
+> +static inline void dw_mci_prepare_desc64(struct dw_mci *host,
+> +					 struct mmc_data *data,
+> +					 unsigned int sg_len)
+>  {
+>  	unsigned int desc_len;
+> +	struct idmac_desc_64addr *desc_first, *desc_last, *desc;
+>  	int i;
+>  
+> -	if (host->dma_64bit_address == 1) {
+> -		struct idmac_desc_64addr *desc_first, *desc_last, *desc;
+> -
+> -		desc_first = desc_last = desc = host->sg_cpu;
+> +	desc_first = desc_last = desc = host->sg_cpu;
+>  
+> -		for (i = 0; i < sg_len; i++) {
+> -			unsigned int length = sg_dma_len(&data->sg[i]);
+> +	for (i = 0; i < sg_len; i++) {
+> +		unsigned int length = sg_dma_len(&data->sg[i]);
+>  
+> -			u64 mem_addr = sg_dma_address(&data->sg[i]);
+> +		u64 mem_addr = sg_dma_address(&data->sg[i]);
+>  
+> -			for ( ; length ; desc++) {
+> -				desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+> -					   length : DW_MCI_DESC_DATA_LENGTH;
+> +		for ( ; length ; desc++) {
+> +			desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+> +				   length : DW_MCI_DESC_DATA_LENGTH;
+>  
+> -				length -= desc_len;
+> +			length -= desc_len;
+>  
+> -				/*
+> -				 * Set the OWN bit and disable interrupts
+> -				 * for this descriptor
+> -				 */
+> -				desc->des0 = IDMAC_DES0_OWN | IDMAC_DES0_DIC |
+> -							IDMAC_DES0_CH;
+> +			/*
+> +			 * Set the OWN bit and disable interrupts
+> +			 * for this descriptor
+> +			 */
+> +			desc->des0 = IDMAC_DES0_OWN | IDMAC_DES0_DIC |
+> +						IDMAC_DES0_CH;
+>  
+> -				/* Buffer length */
+> -				IDMAC_64ADDR_SET_BUFFER1_SIZE(desc, desc_len);
+> +			/* Buffer length */
+> +			IDMAC_64ADDR_SET_BUFFER1_SIZE(desc, desc_len);
+>  
+> -				/* Physical address to DMA to/from */
+> -				desc->des4 = mem_addr & 0xffffffff;
+> -				desc->des5 = mem_addr >> 32;
+> +			/* Physical address to DMA to/from */
+> +			desc->des4 = mem_addr & 0xffffffff;
+> +			desc->des5 = mem_addr >> 32;
+>  
+> -				/* Update physical address for the next desc */
+> -				mem_addr += desc_len;
+> +			/* Update physical address for the next desc */
+> +			mem_addr += desc_len;
+>  
+> -				/* Save pointer to the last descriptor */
+> -				desc_last = desc;
+> -			}
+> +			/* Save pointer to the last descriptor */
+> +			desc_last = desc;
+>  		}
+> +	}
+>  
+> -		/* Set first descriptor */
+> -		desc_first->des0 |= IDMAC_DES0_FD;
+> +	/* Set first descriptor */
+> +	desc_first->des0 |= IDMAC_DES0_FD;
+>  
+> -		/* Set last descriptor */
+> -		desc_last->des0 &= ~(IDMAC_DES0_CH | IDMAC_DES0_DIC);
+> -		desc_last->des0 |= IDMAC_DES0_LD;
+> +	/* Set last descriptor */
+> +	desc_last->des0 &= ~(IDMAC_DES0_CH | IDMAC_DES0_DIC);
+> +	desc_last->des0 |= IDMAC_DES0_LD;
+> +}
+>  
+> -	} else {
+> -		struct idmac_desc *desc_first, *desc_last, *desc;
+>  
+> -		desc_first = desc_last = desc = host->sg_cpu;
+> +static inline void dw_mci_prepare_desc32(struct dw_mci *host,
+> +					 struct mmc_data *data,
+> +					 unsigned int sg_len)
+> +{
+> +	unsigned int desc_len;
+> +	struct idmac_desc *desc_first, *desc_last, *desc;
+> +	int i;
+>  
+> -		for (i = 0; i < sg_len; i++) {
+> -			unsigned int length = sg_dma_len(&data->sg[i]);
+> +	desc_first = desc_last = desc = host->sg_cpu;
+>  
+> -			u32 mem_addr = sg_dma_address(&data->sg[i]);
+> +	for (i = 0; i < sg_len; i++) {
+> +		unsigned int length = sg_dma_len(&data->sg[i]);
+>  
+> -			for ( ; length ; desc++) {
+> -				desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+> -					   length : DW_MCI_DESC_DATA_LENGTH;
+> +		u32 mem_addr = sg_dma_address(&data->sg[i]);
+>  
+> -				length -= desc_len;
+> +		for ( ; length ; desc++) {
+> +			desc_len = (length <= DW_MCI_DESC_DATA_LENGTH) ?
+> +				   length : DW_MCI_DESC_DATA_LENGTH;
+>  
+> -				/*
+> -				 * Set the OWN bit and disable interrupts
+> -				 * for this descriptor
+> -				 */
+> -				desc->des0 = cpu_to_le32(IDMAC_DES0_OWN |
+> -							 IDMAC_DES0_DIC |
+> -							 IDMAC_DES0_CH);
+> +			length -= desc_len;
+>  
+> -				/* Buffer length */
+> -				IDMAC_SET_BUFFER1_SIZE(desc, desc_len);
+> +			/*
+> +			 * Set the OWN bit and disable interrupts
+> +			 * for this descriptor
+> +			 */
+> +			desc->des0 = cpu_to_le32(IDMAC_DES0_OWN |
+> +						 IDMAC_DES0_DIC |
+> +						 IDMAC_DES0_CH);
+>  
+> -				/* Physical address to DMA to/from */
+> -				desc->des2 = cpu_to_le32(mem_addr);
+> +			/* Buffer length */
+> +			IDMAC_SET_BUFFER1_SIZE(desc, desc_len);
+>  
+> -				/* Update physical address for the next desc */
+> -				mem_addr += desc_len;
+> +			/* Physical address to DMA to/from */
+> +			desc->des2 = cpu_to_le32(mem_addr);
+>  
+> -				/* Save pointer to the last descriptor */
+> -				desc_last = desc;
+> -			}
+> +			/* Update physical address for the next desc */
+> +			mem_addr += desc_len;
+> +
+> +			/* Save pointer to the last descriptor */
+> +			desc_last = desc;
+>  		}
+> +	}
+>  
+> -		/* Set first descriptor */
+> -		desc_first->des0 |= cpu_to_le32(IDMAC_DES0_FD);
+> +	/* Set first descriptor */
+> +	desc_first->des0 |= cpu_to_le32(IDMAC_DES0_FD);
+>  
+> -		/* Set last descriptor */
+> -		desc_last->des0 &= cpu_to_le32(~(IDMAC_DES0_CH |
+> -					       IDMAC_DES0_DIC));
+> -		desc_last->des0 |= cpu_to_le32(IDMAC_DES0_LD);
+> -	}
+> +	/* Set last descriptor */
+> +	desc_last->des0 &= cpu_to_le32(~(IDMAC_DES0_CH |
+> +				       IDMAC_DES0_DIC));
+> +	desc_last->des0 |= cpu_to_le32(IDMAC_DES0_LD);
+> +}
+> +
+> +static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+> +				    unsigned int sg_len)
+> +{
+> +	if (host->dma_64bit_address == 1)
+> +		dw_mci_prepare_desc64(host, data, sg_len);
+> +	else
+> +		dw_mci_prepare_desc32(host, data, sg_len);
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index d47b4e9..ed6f2e8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -94,12 +94,43 @@
- 		regulator-always-on;
- 		regulator-boot-on;
- 	};
-+
-+	clkin_gmac: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clkin_gmac";
-+		#clock-cells = <0>;
-+	};
-+
-+	vcc_phy: vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_phy";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
- };
- 
- &emmc_phy {
- 	status = "okay";
- };
- 
-+&gmac {
-+	phy-supply = <&vcc_phy>;
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+	snps,reset-gpio = <&gpio3 15 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 50000>;
-+	assigned-clocks = <&cru SCLK_RMII_SRC>;
-+	assigned-clock-parents = <&clkin_gmac>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins>;
-+	tx_delay = <0x28>;
-+	rx_delay = <0x11>;
-+	status = "okay";
-+};
-+
- &pwm0 {
- 	status = "okay";
- };
--- 
-1.9.1
+I think dw_mci_translate_sglist can be removed.
+Instead, these functions should be called in dw_mci_idamc_start_dma().
+How about? 
+
+Best Regards,
+Jaehoon Chung
+
+>  
+>  	wmb(); /* drain writebuffer */
+>  }
+> 
+
