@@ -1,33 +1,80 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: [PATCH] clk: rockchip: add 2016M to big cpu clk rate table
-Date: Thu,  1 Sep 2016 07:06:22 +0800
-Message-ID: <1472684782-17940-1-git-send-email-zhengsq@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: zhengxing@rock-chips.com, heiko@sntech.de, sboyd@codeaurora.org, mturquette@baylibre.com, dianders@chromium.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, Shunqian Zheng <zhengsq@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 1/5] net: stmmac: dwmac-rk: fixes the gmac resume after PD
+ on/off
+Date: Thu,  1 Sep 2016 07:28:48 +0800
+Message-ID: <1472686132-27827-2-git-send-email-wxt@rock-chips.com>
+References: <1472686132-27827-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472686132-27827-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We would prefer the 2016M as 2.0G than 1992M which seems odd, adding
-it to big cpu clk rate table then we can set 2016M in dts.
+From: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+GMAC Power Domain(PD) will be disabled during suspend.
+That will causes GRF registers reset.
+So corresponding GRF registers for GMAC must be setup again.
+
+Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3399.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index ede6c47..a6a15c6 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -375,6 +375,7 @@ static struct rockchip_cpuclk_rate_table rk3399_cpuclkb_rates[] __initdata = {
- 	RK3399_CPUCLKB_RATE(2184000000, 1, 11, 11),
- 	RK3399_CPUCLKB_RATE(2088000000, 1, 10, 10),
- 	RK3399_CPUCLKB_RATE(2040000000, 1, 10, 10),
-+	RK3399_CPUCLKB_RATE(2016000000, 1, 9, 9),
- 	RK3399_CPUCLKB_RATE(1992000000, 1, 9, 9),
- 	RK3399_CPUCLKB_RATE(1896000000, 1, 9, 9),
- 	RK3399_CPUCLKB_RATE(1800000000, 1, 8, 8),
+Changes in v3: None
+Changes in v2:
+- rk_gmac_powerup instead of the rk_gmac_init.
+
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 9210591..289e7a6 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -629,6 +629,16 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+ 							"rockchip,grf");
+ 	bsp_priv->pdev = pdev;
+ 
++	gmac_clk_init(bsp_priv);
++
++	return bsp_priv;
++}
++
++static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
++{
++	int ret;
++	struct device *dev = &bsp_priv->pdev->dev;
++
+ 	/*rmii or rgmii*/
+ 	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII) {
+ 		dev_info(dev, "init for RGMII\n");
+@@ -641,15 +651,6 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+ 		dev_err(dev, "NO interface defined!\n");
+ 	}
+ 
+-	gmac_clk_init(bsp_priv);
+-
+-	return bsp_priv;
+-}
+-
+-static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+-{
+-	int ret;
+-
+ 	ret = phy_power_on(bsp_priv, true);
+ 	if (ret)
+ 		return ret;
 -- 
 1.9.1
-
