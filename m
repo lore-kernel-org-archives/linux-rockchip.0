@@ -1,199 +1,43 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 2/2] regulator: pwm: Prevent falling too fast
-Date: Tue, 30 Aug 2016 21:21:16 -0700
-Message-ID: <1472617277-30814-2-git-send-email-dianders@chromium.org>
-References: <1472617277-30814-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472617277-30814-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, lgirdwood@gmail.com
-Cc: mka@chromium.org, briannorris@chromium.org, javier@dowhile0.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, robh+dt@kernel.org, mark.rutland@arm.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESEND PATCH 0/4] Support the rk3399 gmac pd function
+Date: Wed, 31 Aug 2016 14:13:44 +0800
+Message-ID: <1472624028-7082-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On some boards it's possible that transitioning the PWM regulator
-downwards too fast will trigger the over voltage protection (OVP) on the
-regulator.  This is because until the voltage actually falls there is a
-time when the requested voltage is much lower than the actual voltage.
+This patch add to handle the gmac pd issue, and support
+the rk3399 gmac for devicetree.
 
-We'll fix this OVP problem by allowing users to specify the maximum
-voltage that we can safely fall.  Apparently this maximum safe voltage
-should be specified as a percentage of the current voltage.  The PWM
-regulator will then break things into separate steps with a delay in
-between.
 
-In order to figure out what the delay should be we need to figure out
-how slowly the voltage rail might fall in the worst (slowest) case.
-We'll assume this worst case is present and delay so we know for sure
-that we've finished each step.
 
-In this patch we actually block returning from the set_voltage() call
-until we've finished delaying.  A future patch atop this one might
-choose to return more immediately and let the voltages fall in the
-background.  That would possibly to allow us to cancel a slow downward
-decay if there was a request to go back up.
+Caesar Wang (2):
+  arm64: dts: rockchip: support gmac for rk3399
+  arm64: dts: rockchip: enable the gmac for rk3399 evb board
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-Changes in v3:
-- Prevent falling too fast new for v3.
+David Wu (1):
+  net: stmmac: dwmac-rk: add pd_gmac support for rk3399
 
- .../bindings/regulator/pwm-regulator.txt           |  7 ++
- drivers/regulator/pwm-regulator.c                  | 79 +++++++++++++++++++---
- 2 files changed, 78 insertions(+), 8 deletions(-)
+Roger Chen (1):
+  net: stmmac: dwmac-rk: fixes the gmac resume after PD on/off
 
-diff --git a/Documentation/devicetree/bindings/regulator/pwm-regulator.txt b/Documentation/devicetree/bindings/regulator/pwm-regulator.txt
-index 9dc15d18e787..99fa09c42aac 100644
---- a/Documentation/devicetree/bindings/regulator/pwm-regulator.txt
-+++ b/Documentation/devicetree/bindings/regulator/pwm-regulator.txt
-@@ -39,6 +39,13 @@ Optional properties:
- - settle-time-up-us:	Time to settle down after a voltage increase
- 			(unit: us). For regulators with a ramp delay
- 			the two values are added.
-+- safe-fall-percent:	If specified, it's not safe to transition the regulator
-+			down faster than this amount and bigger jumps need to
-+			be broken into more than one step.
-+- slowest-decay-rate:	Describes how slowly the regulator voltage will
-+			decay down in the worst case (lightest expected load).
-+			Specified in uV / us (like main regulator ramp rate).
-+			This is required when safe-fall-percent is specified.
- 
- Optional properties for Continuous mode:
- - pwm-dutycycle-unit:	Integer value encoding the duty cycle unit. If not
-diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pwm-regulator.c
-index 94f1ca3b793d..47675632c0c6 100644
---- a/drivers/regulator/pwm-regulator.c
-+++ b/drivers/regulator/pwm-regulator.c
-@@ -50,6 +50,8 @@ struct pwm_regulator_data {
- 	struct gpio_desc *enb_gpio;
- 
- 	u32 settle_time_up_us;
-+	u32 slowest_decay_rate;
-+	u32 safe_fall_percent;
- };
- 
- struct pwm_voltages {
-@@ -188,9 +190,8 @@ static int pwm_regulator_get_voltage(struct regulator_dev *rdev)
- 	return voltage + min_uV;
- }
- 
--static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
--				     int req_min_uV, int req_max_uV,
--				     unsigned int *selector)
-+static int _pwm_regulator_set_voltage(struct regulator_dev *rdev,
-+				      int old_uV, int req_uV)
- {
- 	struct pwm_regulator_data *drvdata = rdev_get_drvdata(rdev);
- 	unsigned int min_uV_duty = drvdata->continuous.min_uV_dutycycle;
-@@ -202,7 +203,6 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
- 	int max_uV = rdev->constraints->max_uV;
- 	int diff_uV = max_uV - min_uV;
- 	struct pwm_state pstate;
--	int old_uV = pwm_regulator_get_voltage(rdev);
- 	unsigned int diff_duty;
- 	unsigned int dutycycle;
- 	int ret;
-@@ -219,8 +219,7 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
- 	else
- 		diff_duty = max_uV_duty - min_uV_duty;
- 
--	dutycycle = DIV_ROUND_CLOSEST_ULL((u64)(req_min_uV - min_uV) *
--					  diff_duty,
-+	dutycycle = DIV_ROUND_CLOSEST_ULL((u64)(req_uV - min_uV) * diff_duty,
- 					  diff_uV);
- 
- 	if (max_uV_duty < min_uV_duty)
-@@ -236,12 +235,12 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
- 		return ret;
- 	}
- 
--	if (req_min_uV > old_uV)
-+	if (req_uV > old_uV)
- 		delay = drvdata->settle_time_up_us;
- 
- 	if (ramp_delay != 0)
- 		/* Adjust ramp delay to uS and add to settle time. */
--		delay += DIV_ROUND_UP(abs(req_min_uV - old_uV), ramp_delay);
-+		delay += DIV_ROUND_UP(abs(req_uV - old_uV), ramp_delay);
- 
- 	if ((delay == 0) || !pwm_regulator_is_enabled(rdev))
- 		return 0;
-@@ -251,6 +250,47 @@ static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
- 	return 0;
- }
- 
-+static int pwm_regulator_set_voltage(struct regulator_dev *rdev,
-+				     int req_min_uV, int req_max_uV,
-+				     unsigned int *selector)
-+{
-+	struct pwm_regulator_data *drvdata = rdev_get_drvdata(rdev);
-+	int safe_fall_percent = drvdata->safe_fall_percent;
-+	int slowest_decay_rate = drvdata->slowest_decay_rate;
-+	int orig_uV = pwm_regulator_get_voltage(rdev);
-+	int uV = orig_uV;
-+	int ret;
-+
-+	/* If we're rising or we're falling but don't need to slow; easy */
-+	if (req_min_uV >= uV || !safe_fall_percent)
-+		return _pwm_regulator_set_voltage(rdev, uV, req_min_uV);
-+
-+	while (uV > req_min_uV) {
-+		int max_drop_uV = (uV * safe_fall_percent) / 100;
-+		int next_uV;
-+		int delay;
-+
-+		/* Make sure no infinite loop even in crazy cases */
-+		if (max_drop_uV == 0)
-+			max_drop_uV = 1;
-+
-+		next_uV = max_t(int, req_min_uV, uV - max_drop_uV);
-+		delay = DIV_ROUND_UP(uV - next_uV, slowest_decay_rate);
-+
-+		ret = _pwm_regulator_set_voltage(rdev, uV, next_uV);
-+		if (ret) {
-+			/* Try to go back to original */
-+			_pwm_regulator_set_voltage(rdev, uV, orig_uV);
-+			return ret;
-+		}
-+
-+		usleep_range(delay, delay + DIV_ROUND_UP(delay, 10));
-+		uV = next_uV;
-+	}
-+
-+	return 0;
-+}
-+
- static struct regulator_ops pwm_regulator_voltage_table_ops = {
- 	.set_voltage_sel = pwm_regulator_set_voltage_sel,
- 	.get_voltage_sel = pwm_regulator_get_voltage_sel,
-@@ -378,6 +418,29 @@ static int pwm_regulator_probe(struct platform_device *pdev)
- 
- 	of_property_read_u32(np, "settle-time-up-us",
- 			&drvdata->settle_time_up_us);
-+	of_property_read_u32(np, "slowest-decay-rate",
-+			&drvdata->slowest_decay_rate);
-+	of_property_read_u32(np, "safe-fall-percent",
-+			&drvdata->safe_fall_percent);
-+
-+	/* We treat as int above; sanity check */
-+	if (drvdata->slowest_decay_rate > INT_MAX) {
-+		dev_err(&pdev->dev, "slowest-decay-rate (%u) too big\n",
-+			(unsigned int)drvdata->slowest_decay_rate);
-+		return -EINVAL;
-+	}
-+
-+	if (drvdata->safe_fall_percent > 100) {
-+		dev_err(&pdev->dev, "safe-fall-percent (%u) > 100\n",
-+			(unsigned int)drvdata->safe_fall_percent);
-+		return -EINVAL;
-+	}
-+
-+	if (drvdata->safe_fall_percent && !drvdata->slowest_decay_rate) {
-+		dev_err(&pdev->dev,
-+			"slowest-decay-rate required safe-fall-percent\n");
-+		return -EINVAL;
-+	}
- 
- 	config.of_node = np;
- 	config.dev = &pdev->dev;
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts    | 31 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi       | 90 ++++++++++++++++++++++++++
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 28 +++++---
+ 3 files changed, 140 insertions(+), 9 deletions(-)
+
 -- 
-2.8.0.rc3.226.g39d4020
+1.9.1
