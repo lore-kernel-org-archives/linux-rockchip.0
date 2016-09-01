@@ -1,13 +1,24 @@
 From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 2/3] clk: rockchip: add dclk_vop_frac ids for vop
-Date: Thu,  1 Sep 2016 15:53:27 -0700
-Message-ID: <1472770408-32278-2-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH 3/3] clk: rockchip: use the dclk_vop_frac clock ids
+Date: Thu,  1 Sep 2016 15:53:28 -0700
+Message-ID: <1472770408-32278-3-git-send-email-zyw@rock-chips.com>
 References: <1472770408-32278-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <1472770408-32278-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
@@ -21,26 +32,30 @@ Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- include/dt-bindings/clock/rk3399-cru.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rk3399-cru.h b/include/dt-bindings/clock/rk3399-cru.h
-index ce5f3e9..220a60f 100644
---- a/include/dt-bindings/clock/rk3399-cru.h
-+++ b/include/dt-bindings/clock/rk3399-cru.h
-@@ -138,6 +138,8 @@
- #define DCLK_VOP0_DIV			182
- #define DCLK_VOP1_DIV			183
- #define DCLK_M0_PERILP			184
-+#define DCLK_VOP0_FRAC			185
-+#define DCLK_VOP1_FRAC			186
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 4c59f2b..2c7cba7 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1168,7 +1168,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLAGS,
+ 			RK3399_CLKGATE_CON(10), 12, GFLAGS),
  
- #define FCLK_CM0S			190
+-	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop0_frac", "dclk_vop0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(DCLK_VOP0_FRAC, "dclk_vop0_frac", "dclk_vop0_div", 0,
+ 			RK3399_CLKSEL_CON(106), 0,
+ 			&rk3399_dclk_vop0_fracmux),
+ 
+@@ -1198,7 +1198,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 8, DFLAGS,
+ 			RK3399_CLKGATE_CON(10), 13, GFLAGS),
+ 
+-	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop1_frac", "dclk_vop1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(DCLK_VOP1_FRAC, "dclk_vop1_frac", "dclk_vop1_div", 0,
+ 			RK3399_CLKSEL_CON(107), 0,
+ 			&rk3399_dclk_vop1_fracmux),
  
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
