@@ -1,33 +1,108 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 0/9] PCI: rockchip: Cleanups against v10
-Date: Thu, 01 Sep 2016 22:52:49 +0200
-Message-ID: <6064818.1vCMXWIdYQ@wuerfel>
-References: <20160901163758.14195.15725.stgit@bhelgaas-glaptop2.roam.corp.google.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
+ for rk3399
+Date: Thu, 1 Sep 2016 14:29:20 -0700
+Message-ID: <CAD=FV=Wrw=THuokXyOXSyihF4fDB4z2L0vCgkiR9XJ6aEzsNzg@mail.gmail.com>
+References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
+ <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
+ <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
+ <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <CAD=FV=WmoyoZmV_uj281S37ZpWqg8Dr2U8ntkD2Sr58qbcB0wg@mail.gmail.com>
+ <411dfc7b-1089-61a8-7a7e-6f378c0a6074@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160901163758.14195.15725.stgit-1RhO1Y9PlrlHTL0Zs8A6p/gx64E7kk8eUsxypvmhUTTZJqsBc5GL+g@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <411dfc7b-1089-61a8-7a7e-6f378c0a6074@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ziyuan Xu <xzy.xu@rock-chips.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Jianqun Xu <j>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday, September 1, 2016 11:43:52 AM CEST Bjorn Helgaas wrote:
-> These are cleanups against 2098142ae87d, the current pci/host-rockchip
-> head in my tree.  This is basically the v10 driver posting (it's not
-> identical because I had already tweaked a few things and squashed in
-> Brian's bug fix).
+Hi,
 
-I looked over the series and everything looks good, I particularly
-like the way that 	patches 7 and 8 make the code so much more readable.
+On Wed, Aug 31, 2016 at 11:56 PM, Ziyuan Xu <xzy.xu@rock-chips.com> wrote:
+> Hi
+>
+>
+> On 2016=E5=B9=B409=E6=9C=8801=E6=97=A5 12:20, Doug Anderson wrote:
+>>
+>> Hi,
+>>
+>> On Wed, Aug 31, 2016 at 7:29 PM, Ziyuan Xu <xzy.xu@rock-chips.com> wrote=
+:
+>>>>
+>>>> This is fine to pick up _only_ if you don't care about suspend/resume.
+>>>> If you care about suspend/resume then someone needs to first write a
+>>>> patch that will re-init all "corecfg" values after power is turned on.
+>>>
+>>>
+>>> Do you mean corecfg_clockmultiplier and corecfg_baseclkfreq, if yes, we
+>>> don't need to strore/re-init it after resume.
+>>> corecfg_clockmultiplier is only used to fetch host->clk_mul, and
+>>> host->clk_mul has been a fixed value at run-time, unless driver unbind.
+>>> The same as corecfg_clockmultiplier, corecfg_baseclkfreq is used to che=
+ck
+>>> the xin_clk at probe time, we don't reference it at run-time.
+>>> BTW, I have tested suspend/resume on rk3399 prior to this sumbit, eMMC
+>>> works
+>>> fine.
+>>
+>> I guess I don't actually know how the corecfg_clockmultiplier and
+>> corecfg_baseclkfreq fields are actually used, but I presume that they
+>> actually do something useful and aren't used to just communicate back
+>> to software?
+>
+>
+> Take corecfg_clockmultiplier as example.
+> 1. sdhci driver fetch host->clk_mul from corecfg_clockmultiplier
+> 2. mmc->f_min and mmc->f_max are calculated via host->clk_mul, they're us=
+ed
+> for further initialization.
+> 3. if the corecfg_clockmultiplier is incorrect, sdhci will use improper
+> frequency to play.
+>
+> I think we don't need to store it due to it's a fixed value at run-time,
+> even if it is reset after a power cycle, the above will not be changed vi=
+a
+> software, except for dirver unbind .
+>
+>>
+>> I know that:
+>>
+>> 1. If I don't pick this patch and I suspend/resume,
+>> corecfg_clockmultiplier and corecfg_baseclkfreq are still fine after
+>> suspend / resume.
+>>
+>> 2. If I do pick this patch and I suspend/resume,
+>> corecfg_clockmultiplier and corecfg_baseclkfreq are wrong after
+>> suspend/resume (tested by reading /dev/mem directly from userspace
+>> after suspend/resume).
+>>
+>>
+>> Are you saying that it is unimportant that corecfg_clockmultiplier and
+>> corecfg_baseclkfreq are wrong?
+>
+>
+> Yup, corecfg_* stuff will be reset after a power cycle.
+> I mean that we need only to guarantee they're correct at probe time.
 
-	Arnd
+So are you saying that the entire purpose of "corecfg_clockmultiplier"
+is that causes the "ClockMultiplier" field of the "EMMCCORE_CAP"
+register to get a certain value?
+...and that the entire purpose of "corecfg_baseclkfreq" is that it
+causes the "BaseClockFreqSDClock" field of the "EMMCCORE_CAP" register
+to get a certain value?
+
+That would have been nice to know before.  I had assumed that those
+"corecfg" settings did something else more useful.
+
+If it is indeed true that these corecfg values are as silly as it
+seems, then I guess it's not terribly important to re-set them after
+suspend/resume.  Eventually it would be nice/clean to actually do so
+(in case the SDHCI driver eventually changes), but I guess we wouldn't
+need to block. this patch from landing.
+
+Can you please confirm my understanding above?
+
+
+-Doug
