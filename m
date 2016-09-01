@@ -1,339 +1,145 @@
-From: Lin Huang <hl@rock-chips.com>
-Subject: [PATCH 2/5] PM / devfreq: event: support rockchip dfi controller
-Date: Fri,  2 Sep 2016 06:31:22 +0800
-Message-ID: <1472769085-20715-3-git-send-email-hl@rock-chips.com>
-References: <1472769085-20715-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472769085-20715-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: myungjoo.ham@samsung.com, mark.yao@rock-chips.com, cw00.choi@samsung.com, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, linux-arm-kernel@lists.infradead.org, tixy@linaro.org, typ@rock-chips.com, sudeep.holla@arm.com, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, Lin Huang <hl@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/3] clk: rockchip: Fractional dividers can't set parent rates
+Date: Thu,  1 Sep 2016 15:53:26 -0700
+Message-ID: <1472770408-32278-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-on rk3399 platform, there is dfi conroller can monitor
-ddr load, base on this result, we can do ddr freqency
-scaling.
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Signed-off-by: Lin Huang <hl@rock-chips.com>
-Signed-off-by: MyungJoo Ham <myungjoo.ham@samsung.com>
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+Currently the fractional divider clock time can't handle the
+CLK_SET_RATE_PARENT flag. This is because, unlike normal dividers,
+there is no clk_divider_bestdiv() function to try speeding up the parent
+to see if it helps things.
+
+Eventually someone could try to figure out how to make fractional
+dividers able to use CLK_SET_RATE_PARENT, but until they do let's not
+confuse the common clock framework (and anyone using it) by setting the
+flag.
+
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
-Changes in v8:
--None
 
-Changes in v7:
--access need to *4 to get right DDR loading
+ drivers/clk/rockchip/clk-rk3399.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-Changes in v6:
--None
-
-Changes in v5:
--None
-
-Changes in v4:
--None
-
-Changes in v3:
--None
-
-Changes in v2:
--None 
-
-Changes in v1:
--None
-
- drivers/devfreq/event/Kconfig        |   7 +
- drivers/devfreq/event/Makefile       |   1 +
- drivers/devfreq/event/rockchip-dfi.c | 256 +++++++++++++++++++++++++++++++++++
- 3 files changed, 264 insertions(+)
- create mode 100644 drivers/devfreq/event/rockchip-dfi.c
-
-diff --git a/drivers/devfreq/event/Kconfig b/drivers/devfreq/event/Kconfig
-index eb6f74a..20d82c2 100644
---- a/drivers/devfreq/event/Kconfig
-+++ b/drivers/devfreq/event/Kconfig
-@@ -30,4 +30,11 @@ config DEVFREQ_EVENT_EXYNOS_PPMU
- 	  (Platform Performance Monitoring Unit) counters to estimate the
- 	  utilization of each module.
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index ea32b7e..4c59f2b 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -585,7 +585,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_spdif_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(32), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 13, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_spdif_frac", "clk_spdif_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_spdif_frac", "clk_spdif_div", 0,
+ 			RK3399_CLKSEL_CON(99), 0,
+ 			RK3399_CLKGATE_CON(8), 14, GFLAGS,
+ 			&rk3399_spdif_fracmux),
+@@ -599,7 +599,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s0_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(28), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 3, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s0_frac", "clk_i2s0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s0_frac", "clk_i2s0_div", 0,
+ 			RK3399_CLKSEL_CON(96), 0,
+ 			RK3399_CLKGATE_CON(8), 4, GFLAGS,
+ 			&rk3399_i2s0_fracmux),
+@@ -609,7 +609,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s1_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(29), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 6, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s1_frac", "clk_i2s1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s1_frac", "clk_i2s1_div", 0,
+ 			RK3399_CLKSEL_CON(97), 0,
+ 			RK3399_CLKGATE_CON(8), 7, GFLAGS,
+ 			&rk3399_i2s1_fracmux),
+@@ -619,7 +619,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s2_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(30), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 9, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s2_frac", "clk_i2s2_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s2_frac", "clk_i2s2_div", 0,
+ 			RK3399_CLKSEL_CON(98), 0,
+ 			RK3399_CLKGATE_CON(8), 10, GFLAGS,
+ 			&rk3399_i2s2_fracmux),
+@@ -638,7 +638,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart0_div", "clk_uart0_src", 0,
+ 			RK3399_CLKSEL_CON(33), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 0, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart0_frac", "clk_uart0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart0_frac", "clk_uart0_div", 0,
+ 			RK3399_CLKSEL_CON(100), 0,
+ 			RK3399_CLKGATE_CON(9), 1, GFLAGS,
+ 			&rk3399_uart0_fracmux),
+@@ -648,7 +648,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart1_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(34), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 2, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart1_frac", "clk_uart1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart1_frac", "clk_uart1_div", 0,
+ 			RK3399_CLKSEL_CON(101), 0,
+ 			RK3399_CLKGATE_CON(9), 3, GFLAGS,
+ 			&rk3399_uart1_fracmux),
+@@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart2_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(35), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 4, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart2_frac", "clk_uart2_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart2_frac", "clk_uart2_div", 0,
+ 			RK3399_CLKSEL_CON(102), 0,
+ 			RK3399_CLKGATE_CON(9), 5, GFLAGS,
+ 			&rk3399_uart2_fracmux),
+@@ -664,7 +664,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart3_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(36), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 6, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart3_frac", "clk_uart3_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart3_frac", "clk_uart3_div", 0,
+ 			RK3399_CLKSEL_CON(103), 0,
+ 			RK3399_CLKGATE_CON(9), 7, GFLAGS,
+ 			&rk3399_uart3_fracmux),
+@@ -1312,7 +1312,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	/* testout */
+ 	MUX(0, "clk_test_pre", mux_pll_src_cpll_gpll_p, CLK_SET_RATE_PARENT,
+ 			RK3399_CLKSEL_CON(58), 7, 1, MFLAGS),
+-	COMPOSITE_FRAC(0, "clk_test_frac", "clk_test_pre", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRAC(0, "clk_test_frac", "clk_test_pre", 0,
+ 			RK3399_CLKSEL_CON(105), 0,
+ 			RK3399_CLKGATE_CON(13), 9, GFLAGS),
  
-+config DEVFREQ_EVENT_ROCKCHIP_DFI
-+	tristate "ROCKCHIP DFI DEVFREQ event Driver"
-+	depends on ARCH_ROCKCHIP
-+	help
-+	  This add the devfreq-event driver for Rockchip SoC. It provides DFI
-+	  (DDR Monitor Module) driver to count ddr load.
-+
- endif # PM_DEVFREQ_EVENT
-diff --git a/drivers/devfreq/event/Makefile b/drivers/devfreq/event/Makefile
-index 3d6afd3..dda7090 100644
---- a/drivers/devfreq/event/Makefile
-+++ b/drivers/devfreq/event/Makefile
-@@ -2,3 +2,4 @@
+@@ -1417,7 +1417,7 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 			RK3399_PMU_CLKSEL_CON(1), 13, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_PMU_CLKGATE_CON(0), 8, GFLAGS),
  
- obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_NOCP) += exynos-nocp.o
- obj-$(CONFIG_DEVFREQ_EVENT_EXYNOS_PPMU) += exynos-ppmu.o
-+obj-$(CONFIG_DEVFREQ_EVENT_ROCKCHIP_DFI) += rockchip-dfi.o
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-new file mode 100644
-index 0000000..43fcc5a
---- /dev/null
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -0,0 +1,256 @@
-+/*
-+ * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
-+ * Author: Lin Huang <hl@rock-chips.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/devfreq-event.h>
-+#include <linux/kernel.h>
-+#include <linux/err.h>
-+#include <linux/init.h>
-+#include <linux/io.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/slab.h>
-+#include <linux/list.h>
-+#include <linux/of.h>
-+
-+#define RK3399_DMC_NUM_CH	2
-+
-+/* DDRMON_CTRL */
-+#define DDRMON_CTRL	0x04
-+#define CLR_DDRMON_CTRL	(0x1f0000 << 0)
-+#define LPDDR4_EN	(0x10001 << 4)
-+#define HARDWARE_EN	(0x10001 << 3)
-+#define LPDDR3_EN	(0x10001 << 2)
-+#define SOFTWARE_EN	(0x10001 << 1)
-+#define SOFTWARE_DIS	(0x10000 << 1)
-+#define TIME_CNT_EN	(0x10001 << 0)
-+
-+#define DDRMON_CH0_COUNT_NUM		0x28
-+#define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
-+#define DDRMON_CH1_COUNT_NUM		0x3c
-+#define DDRMON_CH1_DFI_ACCESS_NUM	0x40
-+
-+/* pmu grf */
-+#define PMUGRF_OS_REG2	0x308
-+#define DDRTYPE_SHIFT	13
-+#define DDRTYPE_MASK	7
-+
-+enum {
-+	DDR3 = 3,
-+	LPDDR3 = 6,
-+	LPDDR4 = 7,
-+	UNUSED = 0xFF
-+};
-+
-+struct dmc_usage {
-+	u32 access;
-+	u32 total;
-+};
-+
-+/*
-+ * The dfi controller can monitor DDR load. It has an upper and lower threshold
-+ * for the operating points. Whenever the usage leaves these bounds an event is
-+ * generated to indicate the DDR frequency should be changed.
-+ */
-+struct rockchip_dfi {
-+	struct devfreq_event_dev *edev;
-+	struct devfreq_event_desc *desc;
-+	struct dmc_usage ch_usage[RK3399_DMC_NUM_CH];
-+	struct device *dev;
-+	void __iomem *regs;
-+	struct regmap *regmap_pmu;
-+	struct clk *clk;
-+};
-+
-+static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+	void __iomem *dfi_regs = info->regs;
-+	u32 val;
-+	u32 ddr_type;
-+
-+	/* get ddr type */
-+	regmap_read(info->regmap_pmu, PMUGRF_OS_REG2, &val);
-+	ddr_type = (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
-+
-+	/* clear DDRMON_CTRL setting */
-+	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
-+
-+	/* set ddr type to dfi */
-+	if (ddr_type == LPDDR3)
-+		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
-+	else if (ddr_type == LPDDR4)
-+		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
-+
-+	/* enable count, use software mode */
-+	writel_relaxed(SOFTWARE_EN, dfi_regs + DDRMON_CTRL);
-+}
-+
-+static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+	void __iomem *dfi_regs = info->regs;
-+
-+	writel_relaxed(SOFTWARE_DIS, dfi_regs + DDRMON_CTRL);
-+}
-+
-+static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+	u32 tmp, max = 0;
-+	u32 i, busier_ch = 0;
-+	void __iomem *dfi_regs = info->regs;
-+
-+	rockchip_dfi_stop_hardware_counter(edev);
-+
-+	/* Find out which channel is busier */
-+	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
-+		info->ch_usage[i].access = readl_relaxed(dfi_regs +
-+				DDRMON_CH0_DFI_ACCESS_NUM + i * 20) * 4;
-+		info->ch_usage[i].total = readl_relaxed(dfi_regs +
-+				DDRMON_CH0_COUNT_NUM + i * 20);
-+		tmp = info->ch_usage[i].access;
-+		if (tmp > max) {
-+			busier_ch = i;
-+			max = tmp;
-+		}
-+	}
-+	rockchip_dfi_start_hardware_counter(edev);
-+
-+	return busier_ch;
-+}
-+
-+static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+
-+	rockchip_dfi_stop_hardware_counter(edev);
-+	clk_disable_unprepare(info->clk);
-+
-+	return 0;
-+}
-+
-+static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+	int ret;
-+
-+	ret = clk_prepare_enable(info->clk);
-+	if (ret) {
-+		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
-+		return ret;
-+	}
-+
-+	rockchip_dfi_start_hardware_counter(edev);
-+	return 0;
-+}
-+
-+static int rockchip_dfi_set_event(struct devfreq_event_dev *edev)
-+{
-+	return 0;
-+}
-+
-+static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
-+				  struct devfreq_event_data *edata)
-+{
-+	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-+	int busier_ch;
-+
-+	busier_ch = rockchip_dfi_get_busier_ch(edev);
-+
-+	edata->load_count = info->ch_usage[busier_ch].access;
-+	edata->total_count = info->ch_usage[busier_ch].total;
-+
-+	return 0;
-+}
-+
-+static const struct devfreq_event_ops rockchip_dfi_ops = {
-+	.disable = rockchip_dfi_disable,
-+	.enable = rockchip_dfi_enable,
-+	.get_event = rockchip_dfi_get_event,
-+	.set_event = rockchip_dfi_set_event,
-+};
-+
-+static const struct of_device_id rockchip_dfi_id_match[] = {
-+	{ .compatible = "rockchip,rk3399-dfi" },
-+	{ },
-+};
-+
-+static int rockchip_dfi_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_dfi *data;
-+	struct resource *res;
-+	struct devfreq_event_desc *desc;
-+	struct device_node *np = pdev->dev.of_node, *node;
-+
-+	data = devm_kzalloc(dev, sizeof(struct rockchip_dfi), GFP_KERNEL);
-+	if (!data)
-+		return -ENOMEM;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	data->regs = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(data->regs))
-+		return PTR_ERR(data->regs);
-+
-+	data->clk = devm_clk_get(dev, "pclk_ddr_mon");
-+	if (IS_ERR(data->clk)) {
-+		dev_err(dev, "Cannot get the clk dmc_clk\n");
-+		return PTR_ERR(data->clk);
-+	};
-+
-+	/* try to find the optional reference to the pmu syscon */
-+	node = of_parse_phandle(np, "rockchip,pmu", 0);
-+	if (node) {
-+		data->regmap_pmu = syscon_node_to_regmap(node);
-+		if (IS_ERR(data->regmap_pmu))
-+			return PTR_ERR(data->regmap_pmu);
-+	}
-+	data->dev = dev;
-+
-+	desc = devm_kzalloc(dev, sizeof(*desc), GFP_KERNEL);
-+	if (!desc)
-+		return -ENOMEM;
-+
-+	desc->ops = &rockchip_dfi_ops;
-+	desc->driver_data = data;
-+	desc->name = np->name;
-+	data->desc = desc;
-+
-+	data->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
-+	if (IS_ERR(data->edev)) {
-+		dev_err(&pdev->dev,
-+			"failed to add devfreq-event device\n");
-+		return PTR_ERR(data->edev);
-+	}
-+
-+	platform_set_drvdata(pdev, data);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver rockchip_dfi_driver = {
-+	.probe	= rockchip_dfi_probe,
-+	.driver = {
-+		.name	= "rockchip-dfi",
-+		.of_match_table = rockchip_dfi_id_match,
-+	},
-+};
-+module_platform_driver(rockchip_dfi_driver);
-+
-+MODULE_LICENSE("GPL v2");
-+MODULE_AUTHOR("Lin Huang <hl@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip DFI driver");
+-	COMPOSITE_FRACMUX_NOGATE(0, "clk_wifi_frac", "clk_wifi_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(0, "clk_wifi_frac", "clk_wifi_div", 0,
+ 			RK3399_PMU_CLKSEL_CON(7), 0,
+ 			&rk3399_pmuclk_wifi_fracmux),
+ 
+@@ -1445,7 +1445,7 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 			RK3399_PMU_CLKSEL_CON(5), 10, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_PMU_CLKGATE_CON(0), 5, GFLAGS),
+ 
+-	COMPOSITE_FRACMUX(0, "clk_uart4_frac", "clk_uart4_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart4_frac", "clk_uart4_div", 0,
+ 			RK3399_PMU_CLKSEL_CON(6), 0,
+ 			RK3399_PMU_CLKGATE_CON(0), 6, GFLAGS,
+ 			&rk3399_uart4_pmu_fracmux),
 -- 
-2.6.6
+1.9.1
