@@ -1,68 +1,52 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: rockchip: use SPI dependency for
-	rt5514
-Date: Thu, 1 Sep 2016 21:00:57 +0100
-Message-ID: <20160901200057.GO5967@sirena.org.uk>
-References: <20160826155120.1162512-1-arnd@arndb.de>
+From: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 0/3] nvmem: rockchip-efuse: support more rockchip SoCs
+Date: Thu, 1 Sep 2016 21:02:23 +0100
+Message-ID: <f9c6e53e-ae5f-d67a-3464-e10a3dee808c@linaro.org>
+References: <1472464210-30252-1-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8753745510214397603=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160826155120.1162512-1-arnd@arndb.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472464210-30252-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============8753745510214397603==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="2/+Vq7w28QOSGzSM"
-Content-Disposition: inline
+Hi Finley,
 
 
---2/+Vq7w28QOSGzSM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On 29/08/16 10:50, Finley Xiao wrote:
+> As the timing and organization of efuse may be different
+> between rockchip SoCs, so their read function may be different.
+> We add different device tree compatible string for rockchip SoCs
+> to match their own read function.
+>
+> V3->V4:
+> - 3/3 change the type of out_value into u32 and buf into u8, their values
+>   come from register, use u32 and u8 may be more readable.
+>
+> Finley Xiao (3):
+>   nvmem: rockchip-efuse: update compatible strings for Rockchip efuse
+>   ARM: dts: rockchip: update compatible strings for Rockchip efuse
+>   nvmem: rockchip-efuse: add rk3399-efuse support
+>
+I can take patch 1 and 3, but dts has to go via arm soc tree.
 
-On Fri, Aug 26, 2016 at 05:50:55PM +0200, Arnd Bergmann wrote:
-
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> Fixes: c6eac8a36a84 ("ASoC: rockchip: Add machine driver for RK3399 GRU Boards")
-
-The Fixes is usually sorted before everything else, looks a bit odd like
-that especially as more signoffs get added.  It's also a bit redundant
-to use both () and "" not that it makes a huge difference.
-
---2/+Vq7w28QOSGzSM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXyIj4AAoJECTWi3JdVIfQHRYIAIUo69FR1hodOUeGxzZV4cjU
-ZUjlAEeNyM8W83QiVYplgWTXrtumO2k+YI0NZep6GMh5iYT3ukX8E4UgvCsQWD8m
-EBL1uOPR/qp1v7em6kYGq8SYv23yanFUhoo1SlLbmIFyXfbjQ2XmIGUPmzWjTGcz
-woif4+SMbuYzFOsjswtv2jBy88QnCAfCaB3gUXwL5KjTzig6K1eeoIiQdLTyGQKQ
-E5m+wyCnJUQAgJUiaoS5zfPB8hgiX9brKzhIjjflFsMHMJ/T28rMP+tm1KkMPSvx
-wHst1cozyD5lAuxBhCjw0VuO23uQN9Nf/CcU7+N+v9D/EQEptemv5TAqsxw1u5M=
-=WhfM
------END PGP SIGNATURE-----
-
---2/+Vq7w28QOSGzSM--
-
---===============8753745510214397603==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============8753745510214397603==--
+thanks,
+srini
+>  .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  13 +-
+>  arch/arm/boot/dts/rk3066a.dtsi                     |   2 +-
+>  arch/arm/boot/dts/rk3188.dtsi                      |   2 +-
+>  arch/arm/boot/dts/rk3288.dtsi                      |   2 +-
+>  drivers/nvmem/rockchip-efuse.c                     | 131 ++++++++++++++++++---
+>  5 files changed, 126 insertions(+), 24 deletions(-)
+>
