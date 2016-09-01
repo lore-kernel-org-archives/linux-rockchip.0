@@ -1,58 +1,43 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
- for rk3399
-Date: Thu, 1 Sep 2016 14:50:56 -0700
-Message-ID: <CAD=FV=VQ7Gf33fH8=FM_Lj-r9uovoEHxusMrFQrDwf2rxeiecg@mail.gmail.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
- <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
- <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
- <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <12451b81-321e-b661-8f1c-25c91bffba54@rock-chips.com>
- <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add the gmac power domain on rk3399
+Date: Thu, 1 Sep 2016 14:57:58 -0700
+Message-ID: <CAD=FV=Ww2eGyCbKAxFWNaMEzwwHEZJKvyeYpSGaX_2YqcLUM_w@mail.gmail.com>
+References: <1472752204-8924-1-git-send-email-wxt@rock-chips.com> <1472752204-8924-5-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Jianqun Xu <jay.>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1472752204-8924-5-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel@list
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Thu, Sep 1, 2016 at 6:45 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> I was reading the discussion regarding this change and browsing the DT
-> documentation around this... Can you guys explain what really goes on
-> here, please.
+On Thu, Sep 1, 2016 at 10:50 AM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> This patch supports the gmac pd to save power consumption.
+> Even though some boards not need Ethernet support, the driver
+> core can also take care of powering up the pd before probe.
 >
-> To me, it seems like you are managing one device's resources in one
-> separate genpd. One genpd per device. Is that correct?
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
 >
-> Perhaps each device actually has its own PM domain and thus it makes
-> sense to assign one genpd per device?
+> Changes in v4:
+> - remove the Roger signed-off for domain patch.
+>
+> Changes in v3:
+> - leave into two patches based on patchv2, and fix nits and commit, as
+>   comment on https://patchwork.kernel.org/patch/9306339/
+>
+> Changes in v2:
+> - Fixes the order, ss Heiko commnets on
+>   https://patchwork.kernel.org/patch/9305991/
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-I'm not as familiar with genpd as I should be, so hopefully this makes sense.
-
-...in hardware there is a "pd_emmc" that is the power domain for just
-eMMC.  That will be referenced hooked up via device tree, like:
-
-power-domains = <&power RK3399_PD_EMMC>;
-
-I believe that means that power will automatically be removed whenever
-the device is runtime suspended or suspended.
-
-If w're not supporting "autosuspend" and nobody is tweaking anything
-manually, then it's possible (I think) that runtime suspend happens at
-exactly the same time as suspend.  ...but my point was that it was
-cleaner to actually do it any restoring in the "runtime resume" hooks
-to match what genpd does.  This matches what you say: use runtime PM.
-
-...but it also sounds like it might not be terribly important to
-restore these values since they're a bit silly to begin with.  If
-that's true then I guess we don't need to do anything special here.
-
-
-Did that all make sense (it's entirely possible it didn't since
-somehow my brain still hasn't absorbed all runtime PM and genpd
-concepts)
-
--Doug
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
