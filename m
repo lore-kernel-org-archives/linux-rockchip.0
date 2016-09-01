@@ -1,14 +1,13 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v4 3/3] nvmem: rockchip-efuse: add rk3399-efuse support
-Date: Thu, 1 Sep 2016 10:58:07 -0700
-Message-ID: <CAD=FV=X7p9ikQeuMQ4OKiVJMtPpwnPe4Md_68seWmaZSdhFD_A@mail.gmail.com>
-References: <1472464210-30252-1-git-send-email-finley.xiao@rock-chips.com>
- <1472464210-30252-4-git-send-email-finley.xiao@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] regulator: pwm: Add support for a fixed delay
+ after duty cycle changes
+Date: Thu, 1 Sep 2016 20:24:19 +0100
+Message-ID: <20160901192419.GL5967@sirena.org.uk>
+References: <1472617277-30814-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2284081235463652093=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472464210-30252-4-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1472617277-30814-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,228 +17,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On Mon, Aug 29, 2016 at 2:50 AM, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> 1) the efuse timing of rk3399 is different from earlier SoCs.
-> 2) rk3399-efuse is organized as 32bits by 32 one-time programmable
-> electrical fuses, the efuse of earlier SoCs is organized as 32bits
-> by 8 one-time programmable electrical fuses with random access interface.
->
-> This patch adds a new read function for rk3399-efuse.
->
-> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->  drivers/nvmem/rockchip-efuse.c | 131 +++++++++++++++++++++++++++++++++++------
->  1 file changed, 112 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-> index 4d3f391..1825fd3 100644
-> --- a/drivers/nvmem/rockchip-efuse.c
-> +++ b/drivers/nvmem/rockchip-efuse.c
-> @@ -22,17 +22,29 @@
->  #include <linux/nvmem-provider.h>
->  #include <linux/slab.h>
->  #include <linux/of.h>
-> +#include <linux/of_platform.h>
->  #include <linux/platform_device.h>
->
-> -#define EFUSE_A_SHIFT                  6
-> -#define EFUSE_A_MASK                   0x3ff
-> -#define EFUSE_PGENB                    BIT(3)
-> -#define EFUSE_LOAD                     BIT(2)
-> -#define EFUSE_STROBE                   BIT(1)
-> -#define EFUSE_CSB                      BIT(0)
-> -
-> -#define REG_EFUSE_CTRL                 0x0000
-> -#define REG_EFUSE_DOUT                 0x0004
-> +#define RK3288_A_SHIFT         6
-> +#define RK3288_A_MASK          0x3ff
-> +#define RK3288_PGENB           BIT(3)
-> +#define RK3288_LOAD                    BIT(2)
-> +#define RK3288_STROBE          BIT(1)
-> +#define RK3288_CSB                     BIT(0)
-> +
-> +#define RK3399_A_SHIFT         16
-> +#define RK3399_A_MASK          0x3ff
-> +#define RK3399_NBYTES          4
-> +#define RK3399_STROBSFTSEL     BIT(9)
-> +#define RK3399_RSB                     BIT(7)
-> +#define RK3399_PD                      BIT(5)
-> +#define RK3399_PGENB           BIT(3)
-> +#define RK3399_LOAD                    BIT(2)
-> +#define RK3399_STROBE          BIT(1)
-> +#define RK3399_CSB                     BIT(0)
-> +
-> +#define REG_EFUSE_CTRL         0x0000
-> +#define REG_EFUSE_DOUT         0x0004
+--===============2284081235463652093==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="HBg0C3yr6HVa1ZCc"
+Content-Disposition: inline
 
-For me the alignment of the above is all off after your patch.  Are
-you sure you have your editor set to 8 spaces per tab?
 
->
->  struct rockchip_efuse_chip {
->         struct device *dev;
-> @@ -40,8 +52,8 @@ struct rockchip_efuse_chip {
->         struct clk *clk;
->  };
->
-> -static int rockchip_efuse_read(void *context, unsigned int offset,
-> -                              void *val, size_t bytes)
-> +static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
-> +                                     void *val, size_t bytes)
->  {
->         struct rockchip_efuse_chip *efuse = context;
->         u8 *buf = val;
-> @@ -53,27 +65,80 @@ static int rockchip_efuse_read(void *context, unsigned int offset,
->                 return ret;
->         }
->
-> -       writel(EFUSE_LOAD | EFUSE_PGENB, efuse->base + REG_EFUSE_CTRL);
-> +       writel(RK3288_LOAD | RK3288_PGENB, efuse->base + REG_EFUSE_CTRL);
->         udelay(1);
->         while (bytes--) {
->                 writel(readl(efuse->base + REG_EFUSE_CTRL) &
-> -                            (~(EFUSE_A_MASK << EFUSE_A_SHIFT)),
-> +                            (~(RK3288_A_MASK << RK3288_A_SHIFT)),
->                              efuse->base + REG_EFUSE_CTRL);
->                 writel(readl(efuse->base + REG_EFUSE_CTRL) |
-> -                            ((offset++ & EFUSE_A_MASK) << EFUSE_A_SHIFT),
-> +                            ((offset++ & RK3288_A_MASK) << RK3288_A_SHIFT),
->                              efuse->base + REG_EFUSE_CTRL);
->                 udelay(1);
->                 writel(readl(efuse->base + REG_EFUSE_CTRL) |
-> -                            EFUSE_STROBE, efuse->base + REG_EFUSE_CTRL);
-> +                            RK3288_STROBE, efuse->base + REG_EFUSE_CTRL);
->                 udelay(1);
->                 *buf++ = readb(efuse->base + REG_EFUSE_DOUT);
->                 writel(readl(efuse->base + REG_EFUSE_CTRL) &
-> -                    (~EFUSE_STROBE), efuse->base + REG_EFUSE_CTRL);
-> +                    (~RK3288_STROBE), efuse->base + REG_EFUSE_CTRL);
->                 udelay(1);
->         }
->
->         /* Switch to standby mode */
-> -       writel(EFUSE_PGENB | EFUSE_CSB, efuse->base + REG_EFUSE_CTRL);
-> +       writel(RK3288_PGENB | RK3288_CSB, efuse->base + REG_EFUSE_CTRL);
-> +
-> +       clk_disable_unprepare(efuse->clk);
-> +
-> +       return 0;
-> +}
-> +
-> +static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
-> +                                     void *val, size_t bytes)
-> +{
-> +       struct rockchip_efuse_chip *efuse = context;
-> +       unsigned int addr_start, addr_end, addr_offset, addr_len;
-> +       u32 out_value;
-> +       u8 *buf;
-> +       int ret, i = 0;
-> +
-> +       ret = clk_prepare_enable(efuse->clk);
-> +       if (ret < 0) {
-> +               dev_err(efuse->dev, "failed to prepare/enable efuse clk\n");
-> +               return ret;
-> +       }
-> +
-> +       addr_start = rounddown(offset, RK3399_NBYTES) / RK3399_NBYTES;
-> +       addr_end = roundup(offset + bytes, RK3399_NBYTES) / RK3399_NBYTES;
-> +       addr_offset = offset % RK3399_NBYTES;
-> +       addr_len = addr_end - addr_start;
-> +
-> +       buf = kzalloc(sizeof(*buf) * addr_len * RK3399_NBYTES, GFP_KERNEL);
-> +       if (!buf)
-> +               return -ENOMEM;
+--HBg0C3yr6HVa1ZCc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-you forget to clk_disable_unprepare() here.
+On Tue, Aug 30, 2016 at 09:21:15PM -0700, Douglas Anderson wrote:
 
-> +
-> +       writel(RK3399_LOAD | RK3399_PGENB | RK3399_STROBSFTSEL | RK3399_RSB,
-> +              efuse->base + REG_EFUSE_CTRL);
-> +       udelay(1);
-> +       while (addr_len--) {
-> +               writel(readl(efuse->base + REG_EFUSE_CTRL) | RK3399_STROBE |
-> +                       ((addr_start++ & RK3399_A_MASK) << RK3399_A_SHIFT),
-> +                       efuse->base + REG_EFUSE_CTRL);
-> +               udelay(1);
-> +               out_value = readl(efuse->base + REG_EFUSE_DOUT);
-> +               writel(readl(efuse->base + REG_EFUSE_CTRL) & (~RK3399_STROBE),
-> +                      efuse->base + REG_EFUSE_CTRL);
-> +               udelay(1);
-> +
-> +               memcpy(&buf[i], &out_value, RK3399_NBYTES);
-> +               i += RK3399_NBYTES;
-> +       }
-> +
-> +       /* Switch to standby mode */
-> +       writel(RK3399_PD | RK3399_CSB, efuse->base + REG_EFUSE_CTRL);
-> +
-> +       memcpy(val, buf + addr_offset, bytes);
-> +
-> +       kfree(buf);
->
->         clk_disable_unprepare(efuse->clk);
->
-> @@ -89,7 +154,27 @@ static struct nvmem_config econfig = {
->  };
->
->  static const struct of_device_id rockchip_efuse_match[] = {
-> -       { .compatible = "rockchip,rockchip-efuse", },
-> +       /* deprecated but kept around for dts binding compatibility */
-> +       {
-> +               .compatible = "rockchip,rockchip-efuse",
-> +               .data = (void *)&rockchip_rk3288_efuse_read,
-> +       },
-> +       {
-> +               .compatible = "rockchip,rk3066a-efuse",
-> +               .data = (void *)&rockchip_rk3288_efuse_read,
-> +       },
-> +       {
-> +               .compatible = "rockchip,rk3188-efuse",
-> +               .data = (void *)&rockchip_rk3288_efuse_read,
-> +       },
-> +       {
-> +               .compatible = "rockchip,rk3288-efuse",
-> +               .data = (void *)&rockchip_rk3288_efuse_read,
-> +       },
-> +       {
-> +               .compatible = "rockchip,rk3399-efuse",
-> +               .data = (void *)&rockchip_rk3399_efuse_read,
-> +       },
->         { /* sentinel */},
->  };
->  MODULE_DEVICE_TABLE(of, rockchip_efuse_match);
-> @@ -99,6 +184,14 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
->         struct resource *res;
->         struct nvmem_device *nvmem;
->         struct rockchip_efuse_chip *efuse;
-> +       const struct of_device_id *match;
-> +       struct device *dev = &pdev->dev;
-> +
-> +       match = of_match_device(dev->driver->of_match_table, dev);
-> +       if (!match || !match->data) {
-> +               dev_err(dev, "failed to get match data\n");
-> +               return -EINVAL;
-> +       }
->
->         efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
->                              GFP_KERNEL);
-> @@ -116,7 +209,7 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
->
->         efuse->dev = &pdev->dev;
->         econfig.size = resource_size(res);
-> -       econfig.reg_read = rockchip_efuse_read;
-> +       econfig.reg_read = match->data;
->         econfig.priv = efuse;
->         econfig.dev = efuse->dev;
->         nvmem = nvmem_register(&econfig);
-> --
-> 1.9.1
->
->
+> A change of the duty cycle doesn't necessarily cause an immediate switch
+> to the target voltage.  On many PWM regulators there is a fixed "settle
+> time" (irrespective of the jump size) that we need to wait after an
+> upward jump.  This change introduces the device tree property
+> "settle-time-up-us" which allows us to specify a fixed delay after a
+> voltage increase.
+
+Why is this specific to regulators implemented with PWM controllers?
+Most DCDCs have a PWM element and the concept of a hard time limit for
+transition rather than a ramp rate doesn't seem like it'd be unique.
+
+--HBg0C3yr6HVa1ZCc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXyIBiAAoJECTWi3JdVIfQOD8H/0qFr0dDOkmyN+xoLzbttad0
+A8vebSkbaWa2XxU5XCCFbm0r06OqEOWoEOsGlw8tvDAouFDOJjhQcyp6X46PQ0Bq
+dcR7BNXyKUDjeiUcMs+WeKSJ9j5eIUkaeoquV5q1IJag0q3p8Z0ZAp5bJofS41DA
+dxLdvOwNuPthl0Feo614a7wSV8wyjyItcEDgit58Q49bTnRxFHWVWobXTQNghlAh
+FuvAfFLMJWL9YZF42IwwDqeN+cAhkJNreCLMNP+gHoSk94Mxllsjs3/NKnwUJ8Un
+SlZjKP0fBXhDjk7AMBe2A4TtxWEorYAJ2SLTg1YaMnue+PB/RNDoEGiElT4ada0=
+=mzHm
+-----END PGP SIGNATURE-----
+
+--HBg0C3yr6HVa1ZCc--
+
+
+--===============2284081235463652093==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2284081235463652093==--
