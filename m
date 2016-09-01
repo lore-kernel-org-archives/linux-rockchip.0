@@ -1,25 +1,25 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v7 3/8] clk: rockchip: rk3399: add ddrc clock support
-Date: Thu, 01 Sep 2016 13:30:13 +0200
-Message-ID: <2558296.5j72F4Vx74@diego>
-References: <1471836984-6316-1-git-send-email-hl@rock-chips.com> <1471836984-6316-4-git-send-email-hl@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: add 2016M to big cpu clk rate table
+Date: Thu, 01 Sep 2016 13:35:39 +0200
+Message-ID: <3055664.L65Mg6EVGJ@diego>
+References: <1472684782-17940-1-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1471836984-6316-4-git-send-email-hl@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: myungjoo.ham@samsung.com, tixy@linaro.org, mark.rutland@arm.com, typ@rock-chips.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, cw00.choi@samsung.com, kyungmin.park@samsung.com, sudeep.holla@arm.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1472684782-17940-1-git-send-email-zhengsq@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: zhengxing@rock-chips.com, sboyd@codeaurora.org, mturquette@baylibre.com, dianders@chromium.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 22. August 2016, 11:36:19 schrieb Lin Huang:
-> add ddrc clock setting, so we can do ddr frequency
-> scaling on rk3399 platform in future.
+Am Donnerstag, 1. September 2016, 07:06:22 schrieb Shunqian Zheng:
+> We would prefer the 2016M as 2.0G than 1992M which seems odd, adding
+> it to big cpu clk rate table then we can set 2016M in dts.
 > 
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
 
-applied to my clk-branch for 4.9
+applied to my clk-branch for 4.9 with Xing's review-tag
 
 
 Thanks
