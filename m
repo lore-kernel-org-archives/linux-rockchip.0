@@ -1,73 +1,26 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v7 7/8] PM / devfreq: rockchip: add devfreq driver for
- rk3399 dmc
-Date: Thu, 01 Sep 2016 11:41:36 +0200
-Message-ID: <30074677.9Zzyj4RHs6@diego>
-References: <1471836984-6316-1-git-send-email-hl@rock-chips.com>
- <1471836984-6316-8-git-send-email-hl@rock-chips.com>
+Subject: Re: [PATCH v7 3/8] clk: rockchip: rk3399: add ddrc clock support
+Date: Thu, 01 Sep 2016 13:30:13 +0200
+Message-ID: <2558296.5j72F4Vx74@diego>
+References: <1471836984-6316-1-git-send-email-hl@rock-chips.com> <1471836984-6316-4-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471836984-6316-8-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1471836984-6316-4-git-send-email-hl@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
 To: Lin Huang <hl@rock-chips.com>
-Cc: tixy@linaro.org, mark.rutland@arm.com, dbasehore@chromium.org, cw00.choi@samsung.com, mturquette@baylibre.com, typ@rock-chips.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, sudeep.holla@arm.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: myungjoo.ham@samsung.com, tixy@linaro.org, mark.rutland@arm.com, typ@rock-chips.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dbasehore@chromium.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, cw00.choi@samsung.com, kyungmin.park@samsung.com, sudeep.holla@arm.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpBbSBNb250YWcsIDIyLiBBdWd1c3QgMjAxNiwgMTE6MzY6MjMgc2NocmllYiBMaW4gSHVh
-bmc6Cj4gYmFzZSBvbiBkZmkgcmVzdWx0LCB3ZSBkbyBkZHIgZnJlcXVlbmN5IHNjYWxpbmcsIHJl
-Z2lzdGVyCj4gZG1jIGRyaXZlciB0byBkZXZmcmVxIGZyYW1ld29yaywgYW5kIHVzZSBzaW1wbGUt
-b25kZW1hbmQKPiBwb2xpY3kuCj4gCj4gU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2Nr
-LWNoaXBzLmNvbT4KPiBSZXZpZXdlZC1ieTogQ2hhbndvbyBDaG9pIDxjdzAwLmNob2lAc2Ftc3Vu
-Zy5jb20+Cj4gLS0tCgpbLi4uXQoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL3JrMzM5
-OV9kbWMuYyBiL2RyaXZlcnMvZGV2ZnJlcS9yazMzOTlfZG1jLmMKPiBuZXcgZmlsZSBtb2RlIDEw
-MDY0NAo+IGluZGV4IDAwMDAwMDAuLmI3M2E3M2MKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvZHJp
-dmVycy9kZXZmcmVxL3JrMzM5OV9kbWMuYwo+IEBAIC0wLDAgKzEsNDk5IEBACj4gKy8qCj4gKyAq
-IENvcHlyaWdodCAoYykgMjAxNiwgRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRk
-Lgo+ICsgKiBBdXRob3I6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gKyAqCj4gKyAq
-IFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBh
-bmQvb3IgbW9kaWZ5IGl0Cj4gKyAqIHVuZGVyIHRoZSB0ZXJtcyBhbmQgY29uZGl0aW9ucyBvZiB0
-aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UsCj4gKyAqIHZlcnNpb24gMiwgYXMgcHVibGlz
-aGVkIGJ5IHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24uCj4gKyAqCj4gKyAqIFRoaXMgcHJv
-Z3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSBpdCB3aWxsIGJlIHVzZWZ1bCwgYnV0IFdJ
-VEhPVVQKPiArICogQU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFu
-dHkgb2YgTUVSQ0hBTlRBQklMSVRZIG9yCj4gKyAqIEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQ
-VVJQT1NFLiAgU2VlIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZQo+IGZvciArICogbW9y
-ZSBkZXRhaWxzLgo+ICsgKi8KPiArCj4gKyNpbmNsdWRlIDxsaW51eC9hcm0tc21jY2MuaD4KPiAr
-I2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICsjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiArI2lu
-Y2x1ZGUgPGxpbnV4L2RldmZyZXEuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2RldmZyZXEtZXZlbnQu
-aD4KPiArI2luY2x1ZGUgPGxpbnV4L2ludGVycnVwdC5oPgo+ICsjaW5jbHVkZSA8bGludXgvbW9k
-dWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZv
-cm1fZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbV9vcHAuaD4KPiArI2luY2x1ZGUgPGxp
-bnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPgo+ICsjaW5jbHVkZSA8bGludXgvcndzZW0uaD4KPiAr
-I2luY2x1ZGUgPGxpbnV4L3N1c3BlbmQuaD4KPiArCj4gKyNpbmNsdWRlIDxzb2Mvcm9ja2NoaXAv
-cm9ja2NoaXBfc2lwLmg+CgpJJ3ZlIHNwbGl0IG91dCB0aGUgbmVlZGVkIHNpcCBpbnRlcmZhY2Ut
-aGVhZGVyIGZyb20gcGF0Y2gxIGFuZCBwcm92aWRlCmEgc3RhYmxlIHNpZ25lZCB0YWcgeW91IGNh
-biBwdWxsIGludG8gdGhlIGRldmZyZXEgdHJlZS4KCgpIZWlrbwoKClRoZSBmb2xsb3dpbmcgY2hh
-bmdlcyBzaW5jZSBjb21taXQgMjliNDgxN2Q0MDE4ZGY3ODA4NjE1N2VhM2E1NWMxZDk0MjRhN2Nm
-YzoKCiAgTGludXggNC44LXJjMSAoMjAxNi0wOC0wNyAxODoxODowMCAtMDcwMCkKCmFyZSBhdmFp
-bGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKICBnaXQ6Ly9naXQua2VybmVsLm9yZy9w
-dWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0IHRhZ3Mvcm9j
-a2NoaXAtZGRyLXNpcAoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDk3ZGQ4MjY4MmYx
-YTYxNzQ2OThmYmVhMTQ5YTA0YjRjYWJjNThjNGY6CgogIHNvYzogcm9ja2NoaXA6IGFkZCBoZWFk
-ZXIgZm9yIGRkciByYXRlIFNJUCBpbnRlcmZhY2UgKDIwMTYtMDgtMzEgMTg6NTM6MjQgKzAyMDAp
-CgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tCkhlYWRlciBmaWxlIGRlZmluaW5nIHRoZSBTSVAtaW50ZXJmYWNlIHRvIHRoZSBB
-VEYgZm9yIEREUiBmcmVxdWVuY3kgY2hhbmdlcwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpMaW4gSHVhbmcgKDEpOgogICAg
-ICBzb2M6IHJvY2tjaGlwOiBhZGQgaGVhZGVyIGZvciBkZHIgcmF0ZSBTSVAgaW50ZXJmYWNlCgog
-aW5jbHVkZS9zb2Mvcm9ja2NoaXAvcm9ja2NoaXBfc2lwLmggfCAyNyArKysrKysrKysrKysrKysr
-KysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyNyBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9k
-ZSAxMDA2NDQgaW5jbHVkZS9zb2Mvcm9ja2NoaXAvcm9ja2NoaXBfc2lwLmgKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Montag, 22. August 2016, 11:36:19 schrieb Lin Huang:
+> add ddrc clock setting, so we can do ddr frequency
+> scaling on rk3399 platform in future.
+> 
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+
+applied to my clk-branch for 4.9
+
+
+Thanks
+Heiko
