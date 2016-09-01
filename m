@@ -1,51 +1,40 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 4/5] arm64: dts: rockchip: add the gmac needed node for
- rk3399
-Date: Thu, 01 Sep 2016 13:43:42 +0200
-Message-ID: <4350667.JBNzRWMVzQ@diego>
-References: <1472686132-27827-1-git-send-email-wxt@rock-chips.com>
- <1472686132-27827-5-git-send-email-wxt@rock-chips.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH v2] mmc: sdhci-of-arasan: Properly set
+ corecfg_clockmultiplier on rk3399
+Date: Thu, 1 Sep 2016 15:50:13 +0300
+Message-ID: <c09e2195-bd67-97fc-6494-d71f4b5e0f97@intel.com>
+References: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472686132-27827-5-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, xzy.xu@rock-chips.com, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-Am Donnerstag, 1. September 2016, 07:28:51 schrieb Caesar Wang:
-> The RK3399 GMAC Ethernet Controller provides a complete Ethernet interface
-> from processor to a Reduced Media Independent Interface (RMII) and Reduced
-> Gigabit Media Independent Interface (RGMII) compliant Ethernet PHY.
+On 26/08/16 11:51, Shawn Lin wrote:
+> corecfg_clockmultiplier indicates clock multiplier value of
+> programmable clock generator which should be the same value
+> of SDHCI_CAPABILITIES_1. The default value of the register,
+> corecfg_clockmultiplier, is 0x10. But actually it is a mistake
+> by designer as our intention was to set it to be zero which
+> means we don't support programmable clock generator. So we have
+> to make it to be zero on bootloader which seems work fine until
+> now. But now we find an issue that when deploying genpd support
+> for it, the remove callback will trigger the genpd to poweroff the
+> power domain for sdhci-of-arasan which manage the controller, phy
+> and corecfg_* stuff.
 > 
-> This patch adds the related needed device information.
-> e.g.: interrupts, grf, clocks, pinctrl and so on.
+> So when we do bind/unbind the driver, we have already reinit
+> the controller and phy, but without doing that for corecfg_*.
+> Regarding to only the corecfg_clockmultipler is wrong, let's
+> fix it by explicitly marking it to be zero when probing. With
+> this change, we could do bind/unbind successfully.
 > 
-> The full details are in [0].
-> 
-> [0]:
-> Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reported-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+> Cc: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-the core rk3399 gmac support is still stuck and needs a respin. This patch is 
-part of that other series as well which needs a respin itself.
-
-Maybe you could just fold both series into one so that we don't have to track 
-two.
-
-
-Thanks
-Heiko
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
