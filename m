@@ -1,78 +1,68 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] regulator: pwm: Prevent falling too fast
-Date: Thu, 1 Sep 2016 20:51:06 +0100
-Message-ID: <20160901195106.GM5967@sirena.org.uk>
-References: <1472617277-30814-1-git-send-email-dianders@chromium.org>
- <1472617277-30814-2-git-send-email-dianders@chromium.org>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: use SPI dependency for
+	rt5514
+Date: Thu, 1 Sep 2016 21:00:57 +0100
+Message-ID: <20160901200057.GO5967@sirena.org.uk>
+References: <20160826155120.1162512-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============5401415086689464727=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472617277-30814-2-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============8753745510214397603=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160826155120.1162512-1-arnd@arndb.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============5401415086689464727==
+--===============8753745510214397603==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="WuedheRyq6FDfQ9j"
+	protocol="application/pgp-signature"; boundary="2/+Vq7w28QOSGzSM"
 Content-Disposition: inline
 
 
---WuedheRyq6FDfQ9j
+--2/+Vq7w28QOSGzSM
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Tue, Aug 30, 2016 at 09:21:16PM -0700, Douglas Anderson wrote:
+On Fri, Aug 26, 2016 at 05:50:55PM +0200, Arnd Bergmann wrote:
 
-> In this patch we actually block returning from the set_voltage() call
-> until we've finished delaying.  A future patch atop this one might
-> choose to return more immediately and let the voltages fall in the
-> background.  That would possibly to allow us to cancel a slow downward
-> decay if there was a request to go back up.
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Fixes: c6eac8a36a84 ("ASoC: rockchip: Add machine driver for RK3399 GRU Boards")
 
-We already have mechanisms in the core for drivers to tell the core how
-long a ramp they need for a given voltage transition - you should extend
-them (probably needs a set_voltage_time() operation adding) so that
-anything like this can be done in the core rather than open coded in
-drivers.
+The Fixes is usually sorted before everything else, looks a bit odd like
+that especially as more signoffs get added.  It's also a bit redundant
+to use both () and "" not that it makes a huge difference.
 
---WuedheRyq6FDfQ9j
+--2/+Vq7w28QOSGzSM
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXyIapAAoJECTWi3JdVIfQH/sH/019NSsj2ZkhigUIIiffZnKR
-ZuP/Oi0cmEQcG87Pyn7ENVPDdvbiKzq2kx72tVNKjNBSFnNKHL1e8ZVWO0hGi7xp
-YUxL+KhFFC5pKSHppjvsfY3UxawTaC3IBRX9eVBHfysLtaQmPhouk6pKyXuiqL99
-nbB/ktvjR4EVGNh8PFCINlzvJPUvfj7/mVz+v/dx1MYql0lwU0+1e0AO27lkCjCi
-FbOtt5GSWp1EyIkbD+jCmeeqwhVgHp9IRCG/oe92GFJ8zlJu2dRLCd6e04pPcocf
-66/kdGXqC5VTkdnDYA8JqjU/zm1hPmXkS39g1IZssqbjnx2QxP7IyKyT26R7LNc=
-=Xidr
+iQEcBAEBCAAGBQJXyIj4AAoJECTWi3JdVIfQHRYIAIUo69FR1hodOUeGxzZV4cjU
+ZUjlAEeNyM8W83QiVYplgWTXrtumO2k+YI0NZep6GMh5iYT3ukX8E4UgvCsQWD8m
+EBL1uOPR/qp1v7em6kYGq8SYv23yanFUhoo1SlLbmIFyXfbjQ2XmIGUPmzWjTGcz
+woif4+SMbuYzFOsjswtv2jBy88QnCAfCaB3gUXwL5KjTzig6K1eeoIiQdLTyGQKQ
+E5m+wyCnJUQAgJUiaoS5zfPB8hgiX9brKzhIjjflFsMHMJ/T28rMP+tm1KkMPSvx
+wHst1cozyD5lAuxBhCjw0VuO23uQN9Nf/CcU7+N+v9D/EQEptemv5TAqsxw1u5M=
+=WhfM
 -----END PGP SIGNATURE-----
 
---WuedheRyq6FDfQ9j--
+--2/+Vq7w28QOSGzSM--
 
-
---===============5401415086689464727==
+--===============8753745510214397603==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5401415086689464727==--
+--===============8753745510214397603==--
