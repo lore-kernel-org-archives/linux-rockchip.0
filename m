@@ -1,108 +1,58 @@
 From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
  for rk3399
-Date: Thu, 1 Sep 2016 14:29:20 -0700
-Message-ID: <CAD=FV=Wrw=THuokXyOXSyihF4fDB4z2L0vCgkiR9XJ6aEzsNzg@mail.gmail.com>
+Date: Thu, 1 Sep 2016 14:50:56 -0700
+Message-ID: <CAD=FV=VQ7Gf33fH8=FM_Lj-r9uovoEHxusMrFQrDwf2rxeiecg@mail.gmail.com>
 References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
  <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
  <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
- <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <CAD=FV=WmoyoZmV_uj281S37ZpWqg8Dr2U8ntkD2Sr58qbcB0wg@mail.gmail.com>
- <411dfc7b-1089-61a8-7a7e-6f378c0a6074@rock-chips.com>
+ <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <12451b81-321e-b661-8f1c-25c91bffba54@rock-chips.com>
+ <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <411dfc7b-1089-61a8-7a7e-6f378c0a6074@rock-chips.com>
+In-Reply-To: <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ziyuan Xu <xzy.xu@rock-chips.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Jianqun Xu <j>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Jianqun Xu <jay.>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Wed, Aug 31, 2016 at 11:56 PM, Ziyuan Xu <xzy.xu@rock-chips.com> wrote:
-> Hi
+On Thu, Sep 1, 2016 at 6:45 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> I was reading the discussion regarding this change and browsing the DT
+> documentation around this... Can you guys explain what really goes on
+> here, please.
 >
+> To me, it seems like you are managing one device's resources in one
+> separate genpd. One genpd per device. Is that correct?
 >
-> On 2016=E5=B9=B409=E6=9C=8801=E6=97=A5 12:20, Doug Anderson wrote:
->>
->> Hi,
->>
->> On Wed, Aug 31, 2016 at 7:29 PM, Ziyuan Xu <xzy.xu@rock-chips.com> wrote=
-:
->>>>
->>>> This is fine to pick up _only_ if you don't care about suspend/resume.
->>>> If you care about suspend/resume then someone needs to first write a
->>>> patch that will re-init all "corecfg" values after power is turned on.
->>>
->>>
->>> Do you mean corecfg_clockmultiplier and corecfg_baseclkfreq, if yes, we
->>> don't need to strore/re-init it after resume.
->>> corecfg_clockmultiplier is only used to fetch host->clk_mul, and
->>> host->clk_mul has been a fixed value at run-time, unless driver unbind.
->>> The same as corecfg_clockmultiplier, corecfg_baseclkfreq is used to che=
-ck
->>> the xin_clk at probe time, we don't reference it at run-time.
->>> BTW, I have tested suspend/resume on rk3399 prior to this sumbit, eMMC
->>> works
->>> fine.
->>
->> I guess I don't actually know how the corecfg_clockmultiplier and
->> corecfg_baseclkfreq fields are actually used, but I presume that they
->> actually do something useful and aren't used to just communicate back
->> to software?
->
->
-> Take corecfg_clockmultiplier as example.
-> 1. sdhci driver fetch host->clk_mul from corecfg_clockmultiplier
-> 2. mmc->f_min and mmc->f_max are calculated via host->clk_mul, they're us=
-ed
-> for further initialization.
-> 3. if the corecfg_clockmultiplier is incorrect, sdhci will use improper
-> frequency to play.
->
-> I think we don't need to store it due to it's a fixed value at run-time,
-> even if it is reset after a power cycle, the above will not be changed vi=
-a
-> software, except for dirver unbind .
->
->>
->> I know that:
->>
->> 1. If I don't pick this patch and I suspend/resume,
->> corecfg_clockmultiplier and corecfg_baseclkfreq are still fine after
->> suspend / resume.
->>
->> 2. If I do pick this patch and I suspend/resume,
->> corecfg_clockmultiplier and corecfg_baseclkfreq are wrong after
->> suspend/resume (tested by reading /dev/mem directly from userspace
->> after suspend/resume).
->>
->>
->> Are you saying that it is unimportant that corecfg_clockmultiplier and
->> corecfg_baseclkfreq are wrong?
->
->
-> Yup, corecfg_* stuff will be reset after a power cycle.
-> I mean that we need only to guarantee they're correct at probe time.
+> Perhaps each device actually has its own PM domain and thus it makes
+> sense to assign one genpd per device?
 
-So are you saying that the entire purpose of "corecfg_clockmultiplier"
-is that causes the "ClockMultiplier" field of the "EMMCCORE_CAP"
-register to get a certain value?
-...and that the entire purpose of "corecfg_baseclkfreq" is that it
-causes the "BaseClockFreqSDClock" field of the "EMMCCORE_CAP" register
-to get a certain value?
+I'm not as familiar with genpd as I should be, so hopefully this makes sense.
 
-That would have been nice to know before.  I had assumed that those
-"corecfg" settings did something else more useful.
+...in hardware there is a "pd_emmc" that is the power domain for just
+eMMC.  That will be referenced hooked up via device tree, like:
 
-If it is indeed true that these corecfg values are as silly as it
-seems, then I guess it's not terribly important to re-set them after
-suspend/resume.  Eventually it would be nice/clean to actually do so
-(in case the SDHCI driver eventually changes), but I guess we wouldn't
-need to block. this patch from landing.
+power-domains = <&power RK3399_PD_EMMC>;
 
-Can you please confirm my understanding above?
+I believe that means that power will automatically be removed whenever
+the device is runtime suspended or suspended.
 
+If w're not supporting "autosuspend" and nobody is tweaking anything
+manually, then it's possible (I think) that runtime suspend happens at
+exactly the same time as suspend.  ...but my point was that it was
+cleaner to actually do it any restoring in the "runtime resume" hooks
+to match what genpd does.  This matches what you say: use runtime PM.
+
+...but it also sounds like it might not be terribly important to
+restore these values since they're a bit silly to begin with.  If
+that's true then I guess we don't need to do anything special here.
+
+
+Did that all make sense (it's entirely possible it didn't since
+somehow my brain still hasn't absorbed all runtime PM and genpd
+concepts)
 
 -Doug
