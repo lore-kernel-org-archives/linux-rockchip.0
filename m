@@ -1,7 +1,7 @@
 From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [v10,2/2] PCI: Rockchip: Add Rockchip PCIe controller support
-Date: Thu, 1 Sep 2016 09:57:58 -0700
-Message-ID: <20160901165757.GA3253@localhost>
+Date: Thu, 1 Sep 2016 10:14:01 -0700
+Message-ID: <20160901171400.GA4093@localhost>
 References: <1471570498-3284-1-git-send-email-shawn.lin@rock-chips.com>
  <20160831181754.GA7460@roeck-us.net>
  <9075a2c1-c787-986f-31b4-4d5b7c92b771@rock-chips.com>
@@ -26,55 +26,60 @@ Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4m
 List-Id: linux-rockchip.vger.kernel.org
 
 On Thu, Sep 01, 2016 at 11:34:55AM -0500, Bjorn Helgaas wrote:
-> I can't conveniently build it, so I'm sure I've broken things.  I
+> In the interest of making progress, I made most of the changes Guenter
+> suggested (thanks very much, Guenter!) and made some more of my own on
+> top of those.
 
-Indeed, you have :)
+I'm not sure, but was this change your idea Bjorn?
 
-> pushed the current work-in-progress branch to pci/host-rockchip-wip.
-> After we fix build errors and other thinkos, I'll rename it and put it
-> in -next.
+commit 88cb3f59d73e261a3cd1957ff392f98c9916a5d1
+Author: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Date:   Thu Sep 1 10:27:44 2016 -0500
 
-I'll append a patch that gets things building and working for me. With
-that:
+    Simplify the confusing HIWORD_UPDATE scheme.
 
-Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+[Which I'll summarize here; you're replacing the macro:
 
-I haven't examined all the changes in detail, but they mostly seem
-reasonable.
+-/*
+-  * The higher 16-bit of this register is used for write protection
+-  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+-  */
+-#define HIWORD_UPDATE(val, mask, shift) \
+-       ((val) << (shift) | (mask) << ((shift) + 16))
 
-> I'll also post the broken-out patches for the changes I made on top of
-> the previous v10 (2098142ae87d).  I'll eventually squash them all into
-> the original commit so we don't have the clutter in the logs.
+with its expansions:
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 6623598679f2..ac846bab7396 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -128,9 +128,9 @@
- #define PCIE_CLIENT_CONF_ENABLE		(0x00010000 | 0x0001)
- #define PCIE_CLIENT_LINK_TRAIN_ENABLE	(0x00020000 | 0x0002)
- #define PCIE_CLIENT_ARI_ENABLE		(0x00080000 | 0x0008)
--#define PCIE_CLIENT_CONF_LANE_NUM(x)	(0x00300000 | (((x >> 1) & 3) << 4)
-+#define PCIE_CLIENT_CONF_LANE_NUM(x)	(0x00300000 | (((x >> 1) & 3) << 4))
- #define PCIE_CLIENT_MODE_RC		(0x00400000 | 0x0040)
--#define PCIE_CLIENT_GEN_SEL(x)		(0x00800000 | ((x & 1) << 7)
-+#define PCIE_CLIENT_GEN_SEL(x)		(0x00800000 | ((x & 1) << 7))
- #define  PCIE_CLIENT_GEN_SEL_0		0
- #define  PCIE_CLIENT_GEN_SEL_2		1
- 
-@@ -643,14 +643,13 @@ static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
- static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
- {
- 	struct irq_chip *chip = irq_desc_get_chip(desc);
--	struct rockchip_pcie *rockchip;
-+	struct rockchip_pcie *rockchip = irq_desc_get_handler_data(desc);
- 	struct device *dev = rockchip->dev;
- 	u32 reg;
- 	u32 hwirq;
- 	u32 virq;
- 
- 	chained_irq_enter(chip, desc);
--	rockchip = irq_desc_get_handler_data(desc);
- 
- 	reg = rockchip_pcie_read(rockchip, PCIE_CLIENT_INT_STATUS);
- 	reg = (reg & ROCKCHIP_PCIE_RPIFR1_INTR_MASK) >>
++
++/*
++ * The higher 16-bit of this register is used for write protection
++ * only if BIT(x + 16) set to 1 the BIT(x) can be written.
++ */
++#define PCIE_CLIENT_CONF_ENABLE                (0x00010000 | 0x0001)
++#define PCIE_CLIENT_LINK_TRAIN_ENABLE  (0x00020000 | 0x0002)
++#define PCIE_CLIENT_ARI_ENABLE         (0x00080000 | 0x0008)
++#define PCIE_CLIENT_CONF_LANE_NUM(x)   (0x00300000 | (((x >> 1) & 3) << 4)
++#define PCIE_CLIENT_MODE_RC            (0x00400000 | 0x0040)
++#define PCIE_CLIENT_GEN_SEL(x)         (0x00800000 | ((x & 1) << 7)
++#define  PCIE_CLIENT_GEN_SEL_0                 0
++#define  PCIE_CLIENT_GEN_SEL_2                 1
+
+Full change can be had by:
+git fetch git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git pci/host-rockchip-wip
+]
+
+
+The use of HIWORD_UPDATE can indeed be a bit confusing, IMO, but this is
+really a common Rockchip-ism that, once you read several of their
+drivers, can make a little more sense. If you grep around, it's in at
+least their clock, ethernet, SDHCI, PHY, and DP/DRM drivers. I might
+defer to Heiko (upstream maintainer of Rockchip code) for a decision.
+Maybe there's some intermediate ground where we keep the HIWORK_UPDATE()
+logic (it does make sure we get the 16-bit shift right, I think) while
+still refactoring a few other bits (like PCIE_CLIENT_CONF_LANE_NUM() and
+PCIE_CLIENT_GEN_SEL() for wrapping HIWORK_UPDATE()?).
+
+Anyway, just a thought. If it really is most understandable to write it
+this way, then maybe it's fine to be different than the other 16
+rockchip files that have this pattern.
+
+Brian
