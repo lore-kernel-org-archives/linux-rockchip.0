@@ -1,14 +1,16 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2] mmc: sdhci-of-arasan: Properly set
- corecfg_clockmultiplier on rk3399
-Date: Thu, 1 Sep 2016 16:18:15 +0200
-Message-ID: <CAPDyKFrwGhFzVOsxYeN_H+GdkNfEQJc=1p50D-6E7HH6LUV-pA@mail.gmail.com>
-References: <1472201475-7970-1-git-send-email-shawn.lin@rock-chips.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [v10,2/2] PCI: Rockchip: Add Rockchip PCIe controller support
+Date: Thu, 1 Sep 2016 11:34:55 -0500
+Message-ID: <20160901163455.GA9471@localhost>
+References: <1471570498-3284-1-git-send-email-shawn.lin@rock-chips.com>
+ <20160831181754.GA7460@roeck-us.net>
+ <9075a2c1-c787-986f-31b4-4d5b7c92b771@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472201475-7970-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <9075a2c1-c787-986f-31b4-4d5b7c92b771-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,137 +21,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26 August 2016 at 10:51, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> corecfg_clockmultiplier indicates clock multiplier value of
-> programmable clock generator which should be the same value
-> of SDHCI_CAPABILITIES_1. The default value of the register,
-> corecfg_clockmultiplier, is 0x10. But actually it is a mistake
-> by designer as our intention was to set it to be zero which
-> means we don't support programmable clock generator. So we have
-> to make it to be zero on bootloader which seems work fine until
-> now. But now we find an issue that when deploying genpd support
-> for it, the remove callback will trigger the genpd to poweroff the
-> power domain for sdhci-of-arasan which manage the controller, phy
-> and corecfg_* stuff.
->
-> So when we do bind/unbind the driver, we have already reinit
-> the controller and phy, but without doing that for corecfg_*.
-> Regarding to only the corecfg_clockmultipler is wrong, let's
-> fix it by explicitly marking it to be zero when probing. With
-> this change, we could do bind/unbind successfully.
->
-> Reported-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
+On Thu, Sep 01, 2016 at 11:39:41AM +0800, Shawn Lin wrote:
+> Hi Guenter,
+> 
+> Thanks for your review, and I think it still not too late
+> for nitpicking as it isn't merged to next branch. :)
+> 
+> We have amend the code a bit, so probably we fixed some of
+> the minor issues against V10. But some of them are really
+> personal taste, if you still insist on that, I will be ok
+> to modify them.
+> 
+> I will push patch to fix them after your feedback. :)
 
-Thanks, applied for next!
+In the interest of making progress, I made most of the changes Guenter
+suggested (thanks very much, Guenter!) and made some more of my own on
+top of those.
 
-Kind regards
-Uffe
+I can't conveniently build it, so I'm sure I've broken things.  I
+pushed the current work-in-progress branch to pci/host-rockchip-wip.
+After we fix build errors and other thinkos, I'll rename it and put it
+in -next.
 
-> ---
->
-> Changes in v2:
-> - fix some typos and build
-> - move the configuration of corecfg_clockmultiplier after
->   enabling aclk_emmc to avoid the off state of aclk_emmc_grf.
->   I add a new function to make it more common for other coming
->   users who have the same requirment for setting diff clkmul.
->
->  drivers/mmc/host/sdhci-of-arasan.c | 46 ++++++++++++++++++++++++++++++++++++++
->  1 file changed, 46 insertions(+)
->
-> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
-> index 0b3a9cf..33601a8 100644
-> --- a/drivers/mmc/host/sdhci-of-arasan.c
-> +++ b/drivers/mmc/host/sdhci-of-arasan.c
-> @@ -67,10 +67,12 @@ struct sdhci_arasan_soc_ctl_field {
->   * accessible via the syscon API.
->   *
->   * @baseclkfreq:       Where to find corecfg_baseclkfreq
-> + * @clockmultiplier:   Where to find corecfg_clockmultiplier
->   * @hiword_update:     If true, use HIWORD_UPDATE to access the syscon
->   */
->  struct sdhci_arasan_soc_ctl_map {
->         struct sdhci_arasan_soc_ctl_field       baseclkfreq;
-> +       struct sdhci_arasan_soc_ctl_field       clockmultiplier;
->         bool                                    hiword_update;
->  };
->
-> @@ -100,6 +102,7 @@ struct sdhci_arasan_data {
->
->  static const struct sdhci_arasan_soc_ctl_map rk3399_soc_ctl_map = {
->         .baseclkfreq = { .reg = 0xf000, .width = 8, .shift = 8 },
-> +       .clockmultiplier = { .reg = 0xf02c, .width = 8, .shift = 0},
->         .hiword_update = true,
->  };
->
-> @@ -379,6 +382,45 @@ static const struct clk_ops arasan_sdcardclk_ops = {
->  };
->
->  /**
-> + * sdhci_arasan_update_clockmultiplier - Set corecfg_clockmultiplier
-> + *
-> + * The corecfg_clockmultiplier is supposed to contain clock multiplier
-> + * value of programmable clock generator.
-> + *
-> + * NOTES:
-> + * - Many existing devices don't seem to do this and work fine.  To keep
-> + *   compatibility for old hardware where the device tree doesn't provide a
-> + *   register map, this function is a noop if a soc_ctl_map hasn't been provided
-> + *   for this platform.
-> + * - The value of corecfg_clockmultiplier should sync with that of corresponding
-> + *   value reading from sdhci_capability_register. So this function is called
-> + *   once at probe time and never called again.
-> + *
-> + * @host:              The sdhci_host
-> + */
-> +static void sdhci_arasan_update_clockmultiplier(struct sdhci_host *host,
-> +                                               u32 value)
-> +{
-> +       struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +       struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
-> +       const struct sdhci_arasan_soc_ctl_map *soc_ctl_map =
-> +               sdhci_arasan->soc_ctl_map;
-> +
-> +       /* Having a map is optional */
-> +       if (!soc_ctl_map)
-> +               return;
-> +
-> +       /* If we have a map, we expect to have a syscon */
-> +       if (!sdhci_arasan->soc_ctl_base) {
-> +               pr_warn("%s: Have regmap, but no soc-ctl-syscon\n",
-> +                       mmc_hostname(host->mmc));
-> +               return;
-> +       }
-> +
-> +       sdhci_arasan_syscon_write(host, &soc_ctl_map->clockmultiplier, value);
-> +}
-> +
-> +/**
->   * sdhci_arasan_update_baseclkfreq - Set corecfg_baseclkfreq
->   *
->   * The corecfg_baseclkfreq is supposed to contain the MHz of clk_xin.  This
-> @@ -559,6 +601,10 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
->         sdhci_get_of_property(pdev);
->         pltfm_host->clk = clk_xin;
->
-> +       if (of_device_is_compatible(pdev->dev.of_node,
-> +                                   "rockchip,rk3399-sdhci-5.1"))
-> +               sdhci_arasan_update_clockmultiplier(host, 0x0);
-> +
->         sdhci_arasan_update_baseclkfreq(host);
->
->         ret = sdhci_arasan_register_sdclk(sdhci_arasan, clk_xin, &pdev->dev);
-> --
-> 2.3.7
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I'll also post the broken-out patches for the changes I made on top of
+the previous v10 (2098142ae87d).  I'll eventually squash them all into
+the original commit so we don't have the clutter in the logs.
+
+> On 2016/9/1 2:17, Guenter Roeck wrote:
+> >On Fri, Aug 19, 2016 at 09:34:58AM +0800, Shawn Lin wrote:
+> 
+> [...]
+> 
+> >>+	rockchip_pcie_enable_interrupts(port);
+> >>+
+> >
+> >There is no matching disable_interrupts call in error handling after this.
+> >Is that ok ?
+> >
+> 
+> From test, probably ok since the genpd will be off and all of them
+> wil be cleared.
+> 
+> >Also, is it ok to enable interrupts this early (before the rest of the
+> >initialization is complete) ?
+> >
+> 
+> The training starts, so we some client irq should be handled now, and we
+> already register isr.
+> 
+> >>+	err = rockchip_pcie_init_irq_domain(port);
+> >>+	if (err < 0)
+> >>+		goto err_vpcie;
+> >>+
+> >>+	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
+> >>+					       &res, &io_base);
+> >>+	if (err)
+> >>+		goto err_vpcie;
+> >>+
+> >>+	err = devm_request_pci_bus_resources(dev, &res);
+> >>+	if (err)
+> >>+		goto err_vpcie;
+> >>+
+> >>+	/* Get the I/O and memory ranges from DT */
+> >>+	resource_list_for_each_entry(win, &res) {
+> >>+		switch (resource_type(win->res)) {
+> >>+		case IORESOURCE_IO:
+> >>+			io = win->res;
+> >>+			io->name = "I/O";
+> >>+			io_size = resource_size(io);
+> >>+			io_bus_addr = io->start - win->offset;
+> >>+			err = pci_remap_iospace(io, io_base);
+> >>+			if (err) {
+> >>+				dev_warn(port->dev, "error %d: failed to map resource %pR\n",
+> >>+					 err, io);
+> >>+				continue;
+> >>+			}
+> >>+			break;
+> >>+		case IORESOURCE_MEM:
+> >>+			mem = win->res;
+> >>+			mem->name = "MEM";
+> >>+			mem_size = resource_size(mem);
+> >>+			mem_bus_addr = mem->start - win->offset;
+> >>+			break;
+> >>+		case IORESOURCE_BUS:
+> >>+			busn = win->res;
+> >>+			break;
+> >>+		default:
+> >>+			continue;
+> >>+		}
+> >>+	}
+> >>+
+> >>+	if (mem_size)
+> >
+> >While strictly speaking not needed, I would recommend { }
+> >here to improve readability.
+> >
+> >>+		for (reg_no = 0; reg_no < (mem_size >> 20); reg_no++) {
+> >
+> >This doesn't support mem sizes smaller than 1 << 20 (and clips the size
+> >if it is not aligned to 1M). Is this intentional ?
+> 
+> yes, we don't support.
+> 
+> >
+> >>+			err = rockchip_pcie_prog_ob_atu(port, reg_no + 1,
+> >>+							AXI_WRAPPER_MEM_WRITE,
+> >>+							20 - 1,
+> >>+							mem_bus_addr +
+> >>+							(reg_no << 20),
+> >>+							0);
+> >>+			if (err) {
+> >>+				dev_err(dev, "program RC mem outbound ATU failed\n");
+> >>+				goto err_vpcie;
+> >>+			}
+> >>+		}
+> 
+> >
+> >>+			err = rockchip_pcie_prog_ob_atu(port,
+> >>+							reg_no + 1 + offset,
+> >>+							AXI_WRAPPER_IO_WRITE,
+> >>+							20 - 1,
+> >>+							io_bus_addr +
+> >>+							(reg_no << 20),
+> >>+							0);
+> >>+			if (err) {
+> >>+				dev_err(dev, "program RC io outbound ATU failed\n");
+> >>+				goto err_vpcie;
+> >>+			}
+> >>+		}
+> 
+> >>+
+> >>+	pci_bus_add_devices(bus);
+> >>+
+> >>+	dev_warn(dev, "only 32-bit config accesses supported; smaller writes may corrupt adjacent RW1C fields\n");
+> >>+
+> >
+> >A warning which is always displayed seems to be a bit useless. If this is a
+> >concern, maybe the driver should provide its own config space access functions
+> >and map smaller accesses into 32 bit accesses. But isn't that already done ?
+> >
+> 
+> No, that is just for normal code path. When users comfigure it via some
+> user-space tool, it is sane to make them know this limitation. So we
+> was suggested to do this.
+> 
+> >>+	return err;
+> >>+
+> >>+err_vpcie:
+> >>+	if (!IS_ERR(port->vpcie3v3))
+> >>+		regulator_disable(port->vpcie3v3);
+> >>+	if (!IS_ERR(port->vpcie1v8))
+> >>+		regulator_disable(port->vpcie1v8);
+> >>+	if (!IS_ERR(port->vpcie0v9))
+> >>+		regulator_disable(port->vpcie0v9);
+> >>+err_set_vpcie:
+> >>+	clk_disable_unprepare(port->clk_pcie_pm);
+> >>+err_pcie_pm:
+> >>+	clk_disable_unprepare(port->hclk_pcie);
+> >>+err_hclk_pcie:
+> >>+	clk_disable_unprepare(port->aclk_perf_pcie);
+> >>+err_aclk_perf_pcie:
+> >>+	clk_disable_unprepare(port->aclk_pcie);
+> >>+err_aclk_pcie:
+> >>+	return err;
+> >>+}
+> >>+
+> >>+static const struct of_device_id rockchip_pcie_of_match[] = {
+> >>+	{ .compatible = "rockchip,rk3399-pcie", },
+> >>+	{}
+> >>+};
+> >>+
+> >>+static struct platform_driver rockchip_pcie_driver = {
+> >>+	.driver = {
+> >>+		.name = "rockchip-pcie",
+> >>+		.of_match_table = rockchip_pcie_of_match,
+> >>+	},
+> >>+	.probe = rockchip_pcie_probe,
+> >>+
+> >>+};
+> >>+builtin_platform_driver(rockchip_pcie_driver);
+> >--
+> >To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+> >the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> >More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >
+> 
+> 
+> -- 
+> Best Regards
+> Shawn Lin
+> 
