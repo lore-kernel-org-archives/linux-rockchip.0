@@ -1,75 +1,121 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
- for rk3399
-Date: Wed, 31 Aug 2016 21:20:16 -0700
-Message-ID: <CAD=FV=WmoyoZmV_uj281S37ZpWqg8Dr2U8ntkD2Sr58qbcB0wg@mail.gmail.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
- <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
- <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
- <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v5 2/2] phy: add a driver for the Rockchip SoC internal
+ PCIe PHY
+Date: Thu, 1 Sep 2016 10:35:16 +0530
+Message-ID: <57C7B70C.3020101@ti.com>
+References: <1471661617-26432-1-git-send-email-shawn.lin@rock-chips.com>
+ <1471661617-26432-2-git-send-email-shawn.lin@rock-chips.com>
+ <6005500.MI6i4QbaFN@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <77f5cff1-80a2-76b3-40e9-f77caced2257-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>Jianqun Xu <j>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <6005500.MI6i4QbaFN@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Aug 31, 2016 at 7:29 PM, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> This is fine to pick up _only_ if you don't care about suspend/resume.
->> If you care about suspend/resume then someone needs to first write a
->> patch that will re-init all "corecfg" values after power is turned on.
->
->
-> Do you mean corecfg_clockmultiplier and corecfg_baseclkfreq, if yes, we
-> don't need to strore/re-init it after resume.
-> corecfg_clockmultiplier is only used to fetch host->clk_mul, and
-> host->clk_mul has been a fixed value at run-time, unless driver unbind.
-> The same as corecfg_clockmultiplier, corecfg_baseclkfreq is used to check
-> the xin_clk at probe time, we don't reference it at run-time.
-> BTW, I have tested suspend/resume on rk3399 prior to this sumbit, eMMC works
-> fine.
-
-I guess I don't actually know how the corecfg_clockmultiplier and
-corecfg_baseclkfreq fields are actually used, but I presume that they
-actually do something useful and aren't used to just communicate back
-to software?
-
-I know that:
-
-1. If I don't pick this patch and I suspend/resume,
-corecfg_clockmultiplier and corecfg_baseclkfreq are still fine after
-suspend / resume.
-
-2. If I do pick this patch and I suspend/resume,
-corecfg_clockmultiplier and corecfg_baseclkfreq are wrong after
-suspend/resume (tested by reading /dev/mem directly from userspace
-after suspend/resume).
 
 
-Are you saying that it is unimportant that corecfg_clockmultiplier and
-corecfg_baseclkfreq are wrong?
+On Wednesday 31 August 2016 07:38 PM, Heiko St=FCbner wrote:
+> Hi,
+> =
 
->> Technically I think this should probably use "pm runtime" and not
->> normal suspend/resume hooks.  Any time we end up pm runtime suspended
->> then I think our power will go off (because of genpd?) and we need to
->> restore values.
->
->
-> I understand your consideration. BUT genpd is in charge of on/off pd if the
-> corresponding device node has "power-domains" property. RPM is unnecessary
-> for this situation, we will not use autosuspend, right?
->
-> @shawn, what's your opinion?
+> Am Samstag, 20. August 2016, 10:53:37 schrieb Shawn Lin:
+>> This patch to add a generic PHY driver for rockchip PCIe PHY.
+>> Access the PHY via registers provided by GRF (general register
+>> files) module.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> =
 
-I haven't dug.  If Runtime PM isn't enabled for sdhci-of-arasan then I
-guess we can just worry about suspend/resume, though.
+> seems I'm late to the party, but when looking if I can apply the pcie-
+> devicetree patches, I found that the phy is still pending.
+> =
 
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Apart from some error-message nitpicks below, this looks ok to me. I don'=
+t =
+
+> know enough about the actual pci phy part though.
+> =
+
+> Kishon, is this on your radar?
+
+yes.. can the nipicks be fixed and posted asap?
+
+Thanks
+Kishon
+
+> =
+
+> [...]
+> =
+
+>> +static int rockchip_pcie_phy_power_off(struct phy *phy)
+>> +{
+>> +	struct rockchip_pcie_phy *rk_phy =3D phy_get_drvdata(phy);
+>> +	int err =3D 0;
+>> +
+>> +	err =3D reset_control_assert(rk_phy->phy_rst);
+>> +	if (err) {
+>> +		pr_err("assert phy_rst err %d\n", err);
+> =
+
+> 	dev_err(phy->dev, ...)
+> =
+
+> probably the same for all other pr_err invocations
+> =
+
+> =
+
+>> +		return err;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+> =
+
+> [...]
+> =
+
+>> +static const struct of_device_id rockchip_pcie_phy_dt_ids[] =3D {
+>> +	{
+>> +		.compatible =3D "rockchip,rk3399-pcie-phy",
+>> +		.data =3D &rk3399_pcie_data,
+>> +	},
+>> +	{}
+>> +};
+>> +
+>> +MODULE_DEVICE_TABLE(of, rockchip_pcie_phy_dt_ids);
+>> +
+>> +static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>> +{
+>> +	struct device *dev =3D &pdev->dev;
+>> +	struct rockchip_pcie_phy *rk_phy;
+>> +	struct phy *generic_phy;
+>> +	struct phy_provider *phy_provider;
+>> +	struct regmap *grf;
+>> +	const struct of_device_id *of_id;
+>> +
+>> +	grf =3D syscon_node_to_regmap(dev->parent->of_node);
+>> +	if (IS_ERR(grf)) {
+>> +		dev_err(dev, "Missing rockchip,grf property\n");
+> =
+
+> 		dev_err(dev, "Cannot find GRF syscon\n");
+> =
+
+> =
+
+> Heiko
+> =
