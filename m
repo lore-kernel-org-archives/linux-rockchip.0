@@ -1,73 +1,93 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 3/5] arm64: dts: rockchip: add the gmac power domain on
- rk3399
-Date: Thu,  1 Sep 2016 07:28:50 +0800
-Message-ID: <1472686132-27827-4-git-send-email-wxt@rock-chips.com>
-References: <1472686132-27827-1-git-send-email-wxt@rock-chips.com>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH] i2c: rk3x: Restore clock settings at resume time
+Date: Thu, 1 Sep 2016 10:10:08 +0800
+Message-ID: <19e4d0bf-28c9-0f10-fac9-c05d1e69d510@rock-chips.com>
+References: <1472505756-8302-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472686132-27827-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1472505756-8302-1-git-send-email-dianders@chromium.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, wsa@the-dreams.de, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch supports the gmac pd to save power consumption.
-Even though some boards not need Ethernet support, the driver
-core can also take care of powering up the pd before probe.
+Hi Doug,
 
-Signed-off-by: Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Last replied email HTML HEAD error, resend it.
 
-Changes in v3:
-- leave into two patches based on patchv2, and fix nits and commit, as
-  comment on https://patchwork.kernel.org/patch/9306339/
+ÔÚ 2016/8/30 5:22, Douglas Anderson Ð´µÀ:
+> Depending on a number of factors including:
+> - Which exact Rockchip SoC we're working with
+> - How deep we suspend
+> - Which i2c port we're on
+>
+> We might lose the state of the i2c registers at suspend time.
+> Specifically we've found that on rk3399 the i2c ports that are not in
+> the PMU power domain lose their state with the current suspend depth
+> configured by ARM Tursted Firmware.
+>
+> Note that there are very few actual i2c registers that aren't configured
+> per transfer anyway so all we actually need to re-configure are the
+> clock config registers.  We'll just add a call to rk3x_i2c_adapt_div()
+> at resume time and be done with it.
+>
+> NOTE: On rk3399 on ports whose power was lost, I put printouts in at
+> resume time.  I saw things like:
+>   before: con=0x00010300, div=0x00060006
+>   after:  con=0x00010200, div=0x00180025
+>
 
-Changes in v2:
-- Fixes the order, ss Heiko commnets on
-  https://patchwork.kernel.org/patch/9305991/
+I do the suspend/resume stress test on my rk3399 & rk3288 board more 
+than 24 hours,
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+the patch works well, it looks nice to me.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 32aebc8..2ab233f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -611,6 +611,11 @@
- 		status = "disabled";
- 	};
- 
-+	qos_gmac: qos@ffa5c000 {
-+		compatible = "syscon";
-+		reg = <0x0 0xffa5c000 0x0 0x20>;
-+	};
-+
- 	qos_hdcp: qos@ffa90000 {
- 		compatible = "syscon";
- 		reg = <0x0 0xffa90000 0x0 0x20>;
-@@ -739,6 +744,11 @@
- 			};
- 
- 			/* These power domains are grouped by VD_LOGIC */
-+			pd_gmac@RK3399_PD_GMAC {
-+				reg = <RK3399_PD_GMAC>;
-+				clocks = <&cru ACLK_GMAC>;
-+				pm_qos = <&qos_gmac>;
-+			};
- 			pd_vio@RK3399_PD_VIO {
- 				reg = <RK3399_PD_VIO>;
- 				#address-cells = <1>;
--- 
-1.9.1
+Reviewed-by: David Wu <david.wu@rock-chips.com>
+Tested-by: David Wu <david.wu@rock-chips.com>
+
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Tested on chromeos-4.4 kernel with backports.
+>
+> drivers/i2c/busses/i2c-rk3x.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> index 3b87afe82f63..0df5ad6bfa31 100644
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
+> @@ -1111,6 +1111,15 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+>  	return ret < 0 ? ret : num;
+>  }
+>
+> +static __maybe_unused int rk3x_i2c_resume(struct device *dev)
+> +{
+> +	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
+> +
+> +	rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
+> +
+> +	return 0;
+> +}
+> +
+>  static u32 rk3x_i2c_func(struct i2c_adapter *adap)
+>  {
+>  	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL | I2C_FUNC_PROTOCOL_MANGLING;
+> @@ -1332,12 +1341,15 @@ static int rk3x_i2c_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>
+> +static const SIMPLE_DEV_PM_OPS(rk3x_i2c_pm_ops, NULL, rk3x_i2c_resume);
+> +
+>  static struct platform_driver rk3x_i2c_driver = {
+>  	.probe   = rk3x_i2c_probe,
+>  	.remove  = rk3x_i2c_remove,
+>  	.driver  = {
+>  		.name  = "rk3x-i2c",
+>  		.of_match_table = rk3x_i2c_match,
+> +		.pm = &rk3x_i2c_pm_ops,
+>  	},
+>  };
+>
+>
