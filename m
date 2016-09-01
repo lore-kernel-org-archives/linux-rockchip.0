@@ -1,13 +1,13 @@
 From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] regulator: pwm: Add support for a fixed delay
- after duty cycle changes
-Date: Thu, 1 Sep 2016 20:24:19 +0100
-Message-ID: <20160901192419.GL5967@sirena.org.uk>
+Subject: Re: [PATCH v3 2/2] regulator: pwm: Prevent falling too fast
+Date: Thu, 1 Sep 2016 20:51:06 +0100
+Message-ID: <20160901195106.GM5967@sirena.org.uk>
 References: <1472617277-30814-1-git-send-email-dianders@chromium.org>
+ <1472617277-30814-2-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2284081235463652093=="
+Content-Type: multipart/mixed; boundary="===============5401415086689464727=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472617277-30814-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <1472617277-30814-2-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,48 +22,49 @@ Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============2284081235463652093==
+--===============5401415086689464727==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HBg0C3yr6HVa1ZCc"
+	protocol="application/pgp-signature"; boundary="WuedheRyq6FDfQ9j"
 Content-Disposition: inline
 
 
---HBg0C3yr6HVa1ZCc
+--WuedheRyq6FDfQ9j
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Tue, Aug 30, 2016 at 09:21:15PM -0700, Douglas Anderson wrote:
+On Tue, Aug 30, 2016 at 09:21:16PM -0700, Douglas Anderson wrote:
 
-> A change of the duty cycle doesn't necessarily cause an immediate switch
-> to the target voltage.  On many PWM regulators there is a fixed "settle
-> time" (irrespective of the jump size) that we need to wait after an
-> upward jump.  This change introduces the device tree property
-> "settle-time-up-us" which allows us to specify a fixed delay after a
-> voltage increase.
+> In this patch we actually block returning from the set_voltage() call
+> until we've finished delaying.  A future patch atop this one might
+> choose to return more immediately and let the voltages fall in the
+> background.  That would possibly to allow us to cancel a slow downward
+> decay if there was a request to go back up.
 
-Why is this specific to regulators implemented with PWM controllers?
-Most DCDCs have a PWM element and the concept of a hard time limit for
-transition rather than a ramp rate doesn't seem like it'd be unique.
+We already have mechanisms in the core for drivers to tell the core how
+long a ramp they need for a given voltage transition - you should extend
+them (probably needs a set_voltage_time() operation adding) so that
+anything like this can be done in the core rather than open coded in
+drivers.
 
---HBg0C3yr6HVa1ZCc
+--WuedheRyq6FDfQ9j
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXyIBiAAoJECTWi3JdVIfQOD8H/0qFr0dDOkmyN+xoLzbttad0
-A8vebSkbaWa2XxU5XCCFbm0r06OqEOWoEOsGlw8tvDAouFDOJjhQcyp6X46PQ0Bq
-dcR7BNXyKUDjeiUcMs+WeKSJ9j5eIUkaeoquV5q1IJag0q3p8Z0ZAp5bJofS41DA
-dxLdvOwNuPthl0Feo614a7wSV8wyjyItcEDgit58Q49bTnRxFHWVWobXTQNghlAh
-FuvAfFLMJWL9YZF42IwwDqeN+cAhkJNreCLMNP+gHoSk94Mxllsjs3/NKnwUJ8Un
-SlZjKP0fBXhDjk7AMBe2A4TtxWEorYAJ2SLTg1YaMnue+PB/RNDoEGiElT4ada0=
-=mzHm
+iQEcBAEBCAAGBQJXyIapAAoJECTWi3JdVIfQH/sH/019NSsj2ZkhigUIIiffZnKR
+ZuP/Oi0cmEQcG87Pyn7ENVPDdvbiKzq2kx72tVNKjNBSFnNKHL1e8ZVWO0hGi7xp
+YUxL+KhFFC5pKSHppjvsfY3UxawTaC3IBRX9eVBHfysLtaQmPhouk6pKyXuiqL99
+nbB/ktvjR4EVGNh8PFCINlzvJPUvfj7/mVz+v/dx1MYql0lwU0+1e0AO27lkCjCi
+FbOtt5GSWp1EyIkbD+jCmeeqwhVgHp9IRCG/oe92GFJ8zlJu2dRLCd6e04pPcocf
+66/kdGXqC5VTkdnDYA8JqjU/zm1hPmXkS39g1IZssqbjnx2QxP7IyKyT26R7LNc=
+=Xidr
 -----END PGP SIGNATURE-----
 
---HBg0C3yr6HVa1ZCc--
+--WuedheRyq6FDfQ9j--
 
 
---===============2284081235463652093==
+--===============5401415086689464727==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -74,4 +75,4 @@ Linux-rockchip mailing list
 Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2284081235463652093==--
+--===============5401415086689464727==--
