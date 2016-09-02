@@ -1,69 +1,153 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 1/4] nvmem: rockchip-efuse: update compatible strings for Rockchip efuse
-Date: Thu,  1 Sep 2016 20:16:54 -0700
-Message-ID: <1472786217-52214-2-git-send-email-finley.xiao@rock-chips.com>
-References: <1472786217-52214-1-git-send-email-finley.xiao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1472786217-52214-1-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [v2 PATCH 1/3] clk: rockchip: Fractional dividers can't set parent rates
+Date: Thu,  1 Sep 2016 20:26:23 -0700
+Message-ID: <1472786785-2393-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org
+Cc: linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, ykk@rock-chips.com, Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rk3399-efuse is organized as 32bits by 32 one-time programmable electrical
-fuses. The efuse of earlier SoCs are organized as 32bits by 8 one-time
-programmable electrical fuses with random access interface.
+From: Douglas Anderson <dianders@chromium.org>
 
-Add different device tree compatible string for different SoCs to be able
-to differentiate between the two. The old binding is of course preserved,
-though deprecated.
+Currently the fractional divider clock time can't handle the
+CLK_SET_RATE_PARENT flag. This is because, unlike normal dividers,
+there is no clk_divider_bestdiv() function to try speeding up the parent
+to see if it helps things.
 
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Eventually someone could try to figure out how to make fractional
+dividers able to use CLK_SET_RATE_PARENT, but until they do let's not
+confuse the common clock framework (and anyone using it) by setting the
+flag.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-index 8f86ab3..94aeeea 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-@@ -1,11 +1,20 @@
- = Rockchip eFuse device tree bindings =
+ drivers/clk/rockchip/clk-rk3399.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index ea32b7e..59417c5 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -585,7 +585,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_spdif_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(32), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 13, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_spdif_frac", "clk_spdif_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_spdif_frac", "clk_spdif_div", 0,
+ 			RK3399_CLKSEL_CON(99), 0,
+ 			RK3399_CLKGATE_CON(8), 14, GFLAGS,
+ 			&rk3399_spdif_fracmux),
+@@ -599,7 +599,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s0_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(28), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 3, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s0_frac", "clk_i2s0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s0_frac", "clk_i2s0_div", 0,
+ 			RK3399_CLKSEL_CON(96), 0,
+ 			RK3399_CLKGATE_CON(8), 4, GFLAGS,
+ 			&rk3399_i2s0_fracmux),
+@@ -609,7 +609,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s1_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(29), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 6, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s1_frac", "clk_i2s1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s1_frac", "clk_i2s1_div", 0,
+ 			RK3399_CLKSEL_CON(97), 0,
+ 			RK3399_CLKGATE_CON(8), 7, GFLAGS,
+ 			&rk3399_i2s1_fracmux),
+@@ -619,7 +619,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "clk_i2s2_div", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(30), 7, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(8), 9, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_i2s2_frac", "clk_i2s2_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_i2s2_frac", "clk_i2s2_div", 0,
+ 			RK3399_CLKSEL_CON(98), 0,
+ 			RK3399_CLKGATE_CON(8), 10, GFLAGS,
+ 			&rk3399_i2s2_fracmux),
+@@ -638,7 +638,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart0_div", "clk_uart0_src", 0,
+ 			RK3399_CLKSEL_CON(33), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 0, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart0_frac", "clk_uart0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart0_frac", "clk_uart0_div", 0,
+ 			RK3399_CLKSEL_CON(100), 0,
+ 			RK3399_CLKGATE_CON(9), 1, GFLAGS,
+ 			&rk3399_uart0_fracmux),
+@@ -648,7 +648,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart1_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(34), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 2, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart1_frac", "clk_uart1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart1_frac", "clk_uart1_div", 0,
+ 			RK3399_CLKSEL_CON(101), 0,
+ 			RK3399_CLKGATE_CON(9), 3, GFLAGS,
+ 			&rk3399_uart1_fracmux),
+@@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart2_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(35), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 4, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart2_frac", "clk_uart2_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart2_frac", "clk_uart2_div", 0,
+ 			RK3399_CLKSEL_CON(102), 0,
+ 			RK3399_CLKGATE_CON(9), 5, GFLAGS,
+ 			&rk3399_uart2_fracmux),
+@@ -664,7 +664,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "clk_uart3_div", "clk_uart_src", 0,
+ 			RK3399_CLKSEL_CON(36), 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(9), 6, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "clk_uart3_frac", "clk_uart3_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart3_frac", "clk_uart3_div", 0,
+ 			RK3399_CLKSEL_CON(103), 0,
+ 			RK3399_CLKGATE_CON(9), 7, GFLAGS,
+ 			&rk3399_uart3_fracmux),
+@@ -1168,7 +1168,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLAGS,
+ 			RK3399_CLKGATE_CON(10), 12, GFLAGS),
  
- Required properties:
--- compatible: Should be "rockchip,rockchip-efuse"
-+- compatible: Should be one of the following.
-+  - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
-+  - "rockchip,rk3188-efuse" - for RK3188 SoCs.
-+  - "rockchip,rk3288-efuse" - for RK3288 SoCs.
-+  - "rockchip,rk3399-efuse" - for RK3399 SoCs.
- - reg: Should contain the registers location and exact eFuse size
- - clocks: Should be the clock id of eFuse
- - clock-names: Should be "pclk_efuse"
+-	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop0_frac", "dclk_vop0_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop0_frac", "dclk_vop0_div", 0,
+ 			RK3399_CLKSEL_CON(106), 0,
+ 			&rk3399_dclk_vop0_fracmux),
  
-+Deprecated properties:
-+- compatible: "rockchip,rockchip-efuse"
-+  Old efuse compatible value compatible to rk3066a, rk3188 and rk3288
-+  efuses
-+
- = Data cells =
- Are child nodes of eFuse, bindings of which as described in
- bindings/nvmem/nvmem.txt
-@@ -13,7 +22,7 @@ bindings/nvmem/nvmem.txt
- Example:
+@@ -1198,7 +1198,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 8, DFLAGS,
+ 			RK3399_CLKGATE_CON(10), 13, GFLAGS),
  
- 	efuse: efuse@ffb40000 {
--		compatible = "rockchip,rockchip-efuse";
-+		compatible = "rockchip,rk3288-efuse";
- 		reg = <0xffb40000 0x20>;
- 		#address-cells = <1>;
- 		#size-cells = <1>;
+-	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop1_frac", "dclk_vop1_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop1_frac", "dclk_vop1_div", 0,
+ 			RK3399_CLKSEL_CON(107), 0,
+ 			&rk3399_dclk_vop1_fracmux),
+ 
+@@ -1312,7 +1312,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	/* testout */
+ 	MUX(0, "clk_test_pre", mux_pll_src_cpll_gpll_p, CLK_SET_RATE_PARENT,
+ 			RK3399_CLKSEL_CON(58), 7, 1, MFLAGS),
+-	COMPOSITE_FRAC(0, "clk_test_frac", "clk_test_pre", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRAC(0, "clk_test_frac", "clk_test_pre", 0,
+ 			RK3399_CLKSEL_CON(105), 0,
+ 			RK3399_CLKGATE_CON(13), 9, GFLAGS),
+ 
+@@ -1417,7 +1417,7 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 			RK3399_PMU_CLKSEL_CON(1), 13, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_PMU_CLKGATE_CON(0), 8, GFLAGS),
+ 
+-	COMPOSITE_FRACMUX_NOGATE(0, "clk_wifi_frac", "clk_wifi_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX_NOGATE(0, "clk_wifi_frac", "clk_wifi_div", 0,
+ 			RK3399_PMU_CLKSEL_CON(7), 0,
+ 			&rk3399_pmuclk_wifi_fracmux),
+ 
+@@ -1445,7 +1445,7 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 			RK3399_PMU_CLKSEL_CON(5), 10, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_PMU_CLKGATE_CON(0), 5, GFLAGS),
+ 
+-	COMPOSITE_FRACMUX(0, "clk_uart4_frac", "clk_uart4_div", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "clk_uart4_frac", "clk_uart4_div", 0,
+ 			RK3399_PMU_CLKSEL_CON(6), 0,
+ 			RK3399_PMU_CLKGATE_CON(0), 6, GFLAGS,
+ 			&rk3399_uart4_pmu_fracmux),
 -- 
-2.7.4
+1.9.1
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
