@@ -1,13 +1,13 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [v2 PATCH 3/3] clk: rockchip: use the dclk_vop_frac clock ids
-Date: Thu,  1 Sep 2016 20:26:25 -0700
-Message-ID: <1472786785-2393-3-git-send-email-zyw@rock-chips.com>
+Subject: [v2 PATCH 2/3] clk: rockchip: add dclk_vop_frac ids for vop
+Date: Thu,  1 Sep 2016 20:26:24 -0700
+Message-ID: <1472786785-2393-2-git-send-email-zyw@rock-chips.com>
 References: <1472786785-2393-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1472786785-2393-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, dianders@chromium.org
-Cc: linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, ykk@rock-chips.com, Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, ykk@rock-chips.com, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Yakir Yang <ykk@rock-chips.com>
@@ -21,31 +21,21 @@ Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3399.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/dt-bindings/clock/rk3399-cru.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 59417c5..2c7cba7 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1168,7 +1168,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKSEL_CON(49), 8, 2, MFLAGS, 0, 8, DFLAGS,
- 			RK3399_CLKGATE_CON(10), 12, GFLAGS),
+diff --git a/include/dt-bindings/clock/rk3399-cru.h b/include/dt-bindings/clock/rk3399-cru.h
+index ce5f3e9..220a60f 100644
+--- a/include/dt-bindings/clock/rk3399-cru.h
++++ b/include/dt-bindings/clock/rk3399-cru.h
+@@ -138,6 +138,8 @@
+ #define DCLK_VOP0_DIV			182
+ #define DCLK_VOP1_DIV			183
+ #define DCLK_M0_PERILP			184
++#define DCLK_VOP0_FRAC			185
++#define DCLK_VOP1_FRAC			186
  
--	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop0_frac", "dclk_vop0_div", 0,
-+	COMPOSITE_FRACMUX_NOGATE(DCLK_VOP0_FRAC, "dclk_vop0_frac", "dclk_vop0_div", 0,
- 			RK3399_CLKSEL_CON(106), 0,
- 			&rk3399_dclk_vop0_fracmux),
- 
-@@ -1198,7 +1198,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 8, DFLAGS,
- 			RK3399_CLKGATE_CON(10), 13, GFLAGS),
- 
--	COMPOSITE_FRACMUX_NOGATE(0, "dclk_vop1_frac", "dclk_vop1_div", 0,
-+	COMPOSITE_FRACMUX_NOGATE(DCLK_VOP1_FRAC, "dclk_vop1_frac", "dclk_vop1_div", 0,
- 			RK3399_CLKSEL_CON(107), 0,
- 			&rk3399_dclk_vop1_fracmux),
+ #define FCLK_CM0S			190
  
 -- 
 1.9.1
-
