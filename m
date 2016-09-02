@@ -1,86 +1,74 @@
-From: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 15/15] Move msleeps to address Guenter's comments.
-Date: Fri, 02 Sep 2016 10:56:02 -0500
-Message-ID: <20160902155602.8650.82778.stgit@bhelgaas-glaptop2.roam.corp.google.com>
-References: <20160902154501.8650.99790.stgit@bhelgaas-glaptop2.roam.corp.google.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 1/4] Documentation: mmc: sdhci-of-arasan: Add clk_syscon
+ as an optional one
+Date: Fri, 2 Sep 2016 09:12:43 -0700
+Message-ID: <CAD=FV=ViB8Fc579URi755ns+cKwuHC2orCqUSwh-fTpCi4TzqA@mail.gmail.com>
+References: <1472457779-7194-1-git-send-email-shawn.lin@rock-chips.com>
+ <1472457779-7194-2-git-send-email-shawn.lin@rock-chips.com> <20160902141508.GA20303@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160902154501.8650.99790.stgit-1RhO1Y9PlrlHTL0Zs8A6p/gx64E7kk8eUsxypvmhUTTZJqsBc5GL+g@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160902141508.GA20303@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Rob,
 
----
- drivers/pci/host/pcie-rockchip.c |   35 +++++++----------------------------
- 1 file changed, 7 insertions(+), 28 deletions(-)
+On Fri, Sep 2, 2016 at 7:15 AM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> On Mon, Aug 29, 2016 at 04:02:56PM +0800, Shawn Lin wrote:
+>> We introduced soc-ctl-syscon to do several things, for instance, update
+>> baseclk or update clkmul, etc. In odrder to access this physical block,
+>> we need to explicitly enable its clock. Currently we don't control this
+>> clock as we always add a CLK_IGNORE_UNUSED flag for it to indicate that
+>> we will not gate it even if not referenced. This is not a correct way since
+>> it is a clock parenting from clk_ahb which is used by sdhci-of-arasan now.
+>> Without enabling clk_ahb, the flag don't guarantee we could access
+>> soc-ctl-syscon. Moreover, we can't find a reason not to gate clk_syscon
+>> once we remove/power-down emmc controller. So let's add clk_syscon and
+>> enable/disable it explicitly when needed.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> ---
+>>
+>>  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 +++++--
+>>  1 file changed, 5 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> index 3404afa..b04eb02 100644
+>> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> @@ -33,6 +33,9 @@ Optional Properties:
+>>    - clock-output-names: If specified, this will be the name of the card clock
+>>      which will be exposed by this device.  Required if #clock-cells is
+>>      specified.
+>> +  - clock-names: From clock bindings: Although we treat clock-names as required
+>> +    property, there is still one, "clk_syscon", should be optional as it depends
+>> +    on whether we need to control soc-ctl-syscon or not.
+>
+> No. This doesn't look right to me. The syscon is a separate block
+> and the clock for it belongs in the syscon node itself. Probably there
+> needs to be some sort of ref counting in the syscon so it can do
+> runtime-pm.
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index e33d2f7..d293a62 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -481,24 +481,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 			break;
- 		}
- 
--		msleep(20);
--
--		if (!time_before(jiffies, timeout)) {
--			err = -ETIMEDOUT;
--			break;
--		}
--	}
--
--	/* Double check gen1 training */
--	if (err) {
--		status = rockchip_pcie_read(rockchip,
--					    PCIE_CLIENT_BASIC_STATUS1);
--		err = ((status & PCIE_CLIENT_LINK_STATUS_MASK) ==
--		       PCIE_CLIENT_LINK_STATUS_UP) ? 0 : -ETIMEDOUT;
--		if (err) {
-+		if (time_after(jiffies, timeout)) {
- 			dev_err(dev, "PCIe link training gen1 timeout!\n");
--			return err;
-+			return -ETIMEDOUT;
- 		}
-+
-+		msleep(20);
- 	}
- 
- 	/*
-@@ -518,21 +506,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 			break;
- 		}
- 
--		msleep(20);
--
--		if (!time_before(jiffies, timeout)) {
--			err = -ETIMEDOUT;
-+		if (time_after(jiffies, timeout)) {
-+			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
- 			break;
- 		}
--	}
- 
--	/* Double check gen2 training */
--	if (err) {
--		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
--		err = ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
--		       PCIE_CORE_PL_CONF_SPEED_5G) ? 0 : -ETIMEDOUT;
--		if (err)
--			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
-+		msleep(20);
- 	}
- 
- 	/* Check the final link width from negotiated lane counter from MGMT */
+I'm not an expert, but one thing to note is that this is actually a
+separate clock just for this small part of the GRF (general register
+files).  Yeah, it's bizarre.
+
+Said another way, the GRF is a sorta hodgepodge location for all sorts
+of stuff.  ...included in there are the "corecfg" registers that are
+used by the SDHCI IP block.  Within the GRF register space these
+registers are 0x0f000 - 0x0f050 (last register is at 0x0f04c).  I
+believe that only registers in that special range need this clock.
+
+Maybe the right answer is that we should actually have had a sub-node
+of the GRF for these registers and then SDHCI should have referenced
+that as its syscon?
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
