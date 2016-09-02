@@ -1,95 +1,32 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
- for rk3399
-Date: Fri, 2 Sep 2016 12:24:31 +0200
-Message-ID: <CAPDyKFra7L5iUJegHH43mF4Dw=wYo0PmH2g_96fNL_=oRnGgug@mail.gmail.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
- <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
- <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
- <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <12451b81-321e-b661-8f1c-25c91bffba54@rock-chips.com>
- <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com> <CAD=FV=VQ7Gf33fH8=FM_Lj-r9uovoEHxusMrFQrDwf2rxeiecg@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add pinctrl entry for 32k clock on rk3399
+Date: Fri, 02 Sep 2016 12:53:04 +0200
+Message-ID: <3854560.94E0h0U25i@diego>
+References: <1472774002-25986-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VQ7Gf33fH8=FM_Lj-r9uovoEHxusMrFQrDwf2rxeiecg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Rob Herring <robh+dt@kernel.org>, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Jianqun Xu <jay.>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1472774002-25986-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tonie.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 1 September 2016 at 23:50, Doug Anderson <dianders@chromium.org> wrote:
-> Hi,
->
-> On Thu, Sep 1, 2016 at 6:45 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
->> I was reading the discussion regarding this change and browsing the DT
->> documentation around this... Can you guys explain what really goes on
->> here, please.
->>
->> To me, it seems like you are managing one device's resources in one
->> separate genpd. One genpd per device. Is that correct?
->>
->> Perhaps each device actually has its own PM domain and thus it makes
->> sense to assign one genpd per device?
->
-> I'm not as familiar with genpd as I should be, so hopefully this makes sense.
->
-> ...in hardware there is a "pd_emmc" that is the power domain for just
-> eMMC.  That will be referenced hooked up via device tree, like:
->
-> power-domains = <&power RK3399_PD_EMMC>;
+Am Donnerstag, 1. September 2016, 16:53:22 schrieb Douglas Anderson:
+> On some rk3399 boards GPIO0_A0 is hooked up to a 32 kHz clock.  This can
+> be used as the source for various clocks in the system.
+> 
+> Add a pinmux so boards can get this pin properly configured.
+> 
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Yes, I noticed that and this is what puzzles me a bit.
+applied to my dts64 branch for 4.9
 
->
-> I believe that means that power will automatically be removed whenever
-> the device is runtime suspended or suspended.
 
-Well, it depends if the genpd has a subdomain or other devices in it
-being runtime resumed.
-The genpd will not power off unless all devices within it are runtime
-enabled+suspended and that its subdomains are also powered off.
-
-So, in case you only have one device and no subdomains, then your
-statement is correct.
-
->
-> If w're not supporting "autosuspend" and nobody is tweaking anything
-
-I guess you mean runtime PM autosuspend? Then why don't you support this?
-
-Wouldn't that allow you to avoid wasting power in runtime when the
-device is idle?
-
-> manually, then it's possible (I think) that runtime suspend happens at
-> exactly the same time as suspend.  ...but my point was that it was
-
-I am not sure I follow you here. You must not rely on that the device
-always becomes runtime suspended during system suspend, as there are
-no guarantees for this.
-
-Instead that is something you need to take care of in the
-subsystem/driver for the device, of course.
-
-> cleaner to actually do it any restoring in the "runtime resume" hooks
-> to match what genpd does.  This matches what you say: use runtime PM.
-
-Yes!
-
-Using genpd without deploying runtime PM for the devices doesn't make
-much sense, at least to me.
-
->
-> ...but it also sounds like it might not be terribly important to
-> restore these values since they're a bit silly to begin with.  If
-> that's true then I guess we don't need to do anything special here.
->
->
-> Did that all make sense (it's entirely possible it didn't since
-> somehow my brain still hasn't absorbed all runtime PM and genpd
-> concepts)
-
-No worries. I understand this might be a bit tricky, that's why I also
-tries to help review related changes.
-
-Kind regards
-Uffe
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
