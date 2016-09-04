@@ -1,65 +1,36 @@
-From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH RFC 0/2] add the generic H.264 decoder settings controls
-Date: Mon,  5 Sep 2016 04:18:34 +0800
-Message-ID: <1473020316-7325-1-git-send-email-ayaka@soulik.info>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [v2 PATCH 1/3] clk: rockchip: Fractional dividers can't set parent rates
+Date: Sun, 04 Sep 2016 23:50:21 +0200
+Message-ID: <3040422.nFj5Be1ODN@phil>
+References: <1472786785-2393-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1472786785-2393-1-git-send-email-zyw@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, ykk@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is not done yet. The rockchip VA-API driver[1] still need a third part
-library to pre-parse the nalu data. Maybe after the third part library
-free version[2] had done, it would be clear that we else filed we may need.
+Am Donnerstag, 1. September 2016, 20:26:23 CEST schrieb Chris Zhong:
+> From: Douglas Anderson <dianders@chromium.org>
+> 
+> Currently the fractional divider clock time can't handle the
+> CLK_SET_RATE_PARENT flag. This is because, unlike normal dividers,
+> there is no clk_divider_bestdiv() function to try speeding up the parent
+> to see if it helps things.
+> 
+> Eventually someone could try to figure out how to make fractional
+> dividers able to use CLK_SET_RATE_PARENT, but until they do let's not
+> confuse the common clock framework (and anyone using it) by setting the
+> flag.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 
-Those structures comes from VA-API SPCE. But still not enough to driver
-a stateless video processor. For the Rockchip VPU, it won't process
-some part of data, like pic_order_cnt. Then you could configure a length
-of that part in register in order to let the video processor skip it.
-You may look at extra fields in struct v4l2_mpeg_video_h264_picture_param.
+applied to my clk-branch for 4.9, after changing the subject to
+    clk: rockchip: drop CLK_SET_RATE_PARENT from rk3399 fractional dividers
 
-Also there is some problem with the mechiansm of VA-API. A VA-API Surface
-looks like a wrapper of the buffer in output side(CAPTURE in V4L2), but for 
-the V4L2, which buffer is dequeue from the CAPTURE is unknown. So it is
-a little hard to link the surface to the vpu driver internal buffer. The
-CREATE_BUFS ioctl may solve the allocation problem but not the dequeue.
-But as most stateless video processor could only process one frame in
-one time, I don't know the reference frame is need to keep for future
-parse(not by video processor but by the upper layer software), allowing
-only a buffer may solve this problem
 
-Some patches also reqired to make the VA-API client(like Gstreamer) 
-to support those extra data need by the video processor. It would be done
-in a short time. Need someone is very familiar with the codec standard.
-
-Currently, I am doing JPEG encoder for RK3288 now, I won't be avaiable
-in short time and I am lack of the knowledge of codec standard. But I
-am scheduling the plan of the new driver for both kernel[3] and VA-API,
-I could do it on my free time.
-
-[1] https://github.com/rockchip-linux/rockchip-va-driver v4l2-libvpu
-[2] https://github.com/rockchip-linux/rockchip-va-driver rk_v4l2
-[3] https://github.com/hizukiayaka/linux-kernel rk3288-media
-
-Randy Li (2):
-  [media] v4l2-ctrls: add H.264 decoder settings controls
-  v4l2-ctrls: add generic H.264 decoder codec settings structure
-
- drivers/media/v4l2-core/v4l2-ctrls.c |   2 +
- include/uapi/linux/v4l2-controls.h   |   2 +
- include/uapi/linux/videodev2.h       | 103 +++++++++++++++++++++++++++++++++++
- 3 files changed, 107 insertions(+)
-
--- 
-2.7.4
+Heiko
