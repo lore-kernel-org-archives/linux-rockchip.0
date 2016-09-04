@@ -1,14 +1,11 @@
 From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH 2/2] v4l2-ctrls: add generic H.264 decoder codec settings
- structure
-Date: Mon,  5 Sep 2016 04:18:36 +0800
-Message-ID: <1473020316-7325-3-git-send-email-ayaka@soulik.info>
-References: <1473020316-7325-1-git-send-email-ayaka@soulik.info>
+Subject: [PATCH RFC 0/2] add the generic H.264 decoder settings controls
+Date: Mon,  5 Sep 2016 04:18:34 +0800
+Message-ID: <1473020316-7325-1-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473020316-7325-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,127 +19,47 @@ To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The generic decoder settings for H.264. It is modified from
-the VA-API. Adding the extra data required by the Rockchip.
+This is not done yet. The rockchip VA-API driver[1] still need a third part
+library to pre-parse the nalu data. Maybe after the third part library
+free version[2] had done, it would be clear that we else filed we may need.
 
-Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
----
- include/uapi/linux/videodev2.h | 103 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 103 insertions(+)
+Those structures comes from VA-API SPCE. But still not enough to driver
+a stateless video processor. For the Rockchip VPU, it won't process
+some part of data, like pic_order_cnt. Then you could configure a length
+of that part in register in order to let the video processor skip it.
+You may look at extra fields in struct v4l2_mpeg_video_h264_picture_param.
 
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 904c44c..3dacccc 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -2214,6 +2214,109 @@ struct v4l2_request_cmd {
- 		} raw;
- 	};
- };
-+
-+/* H.264 Codec settings */
-+struct v4l2_mpeg_video_h264_picture {
-+	__u32 frame_idx;
-+	__u32 flags;
-+	__s32 top_field_order_cnt;
-+	__s32 bottom_field_order_cnt;
-+};
-+
-+struct v4l2_mpeg_video_h264_picture_param {
-+	struct v4l2_mpeg_video_h264_picture curr_pic;
-+	struct v4l2_mpeg_video_h264_picture reference_frames[16];
-+	__u16 picture_width_in_mbs_minus1;
-+	__u16 picture_height_in_mbs_minus1;
-+	__u8 bit_depth_luma_minus8;
-+	__u8 bit_depth_chroma_minus8;
-+	__u8 num_ref_frames;
-+	union {
-+		struct {
-+			__u32 chroma_format_idc:2;
-+			__u32 residual_colour_transform_flag:1;
-+			__u32 gaps_in_frame_num_value_allowed_flag:1;
-+			__u32 frame_mbs_only_flag:1;
-+			__u32 mb_adaptive_frame_field_flag:1;
-+			__u32 direct_8x8_inference_flag:1;
-+			__u32 min_luma_bi_pred_size8x8:1;
-+			__u32 log2_max_frame_num_minus4:4;
-+			__u32 pic_order_cnt_type:2;
-+			__u32 log2_max_pic_order_cnt_lsb_minus4:4;
-+			__u32 delta_pic_order_always_zero_flag:1;
-+		} bits;
-+		__u32 value;	
-+	} seq_fields;
-+	__u8 num_slice_groups_minus1;
-+	__u8 slice_group_map_type;
-+	__u16 slice_group_change_rate_minus1;
-+	__s8 pic_init_qp_minus26;
-+	__s8 pic_init_qs_minus26;
-+	__s8 chroma_qp_index_offset;
-+	__s8 second_chroma_qp_index_offset;
-+	union {
-+		struct {
-+			__u32 entropy_coding_mode_flag:1;
-+			__u32 weighted_pred_flag:1
-+			__u32 weighted_bipred_idc:2;
-+			__u32 transform_8x8_mode_flag:1;
-+			__u32 field_pic_flag:1;
-+			__u32 constrained_intra_pred_flag:1;
-+			__u32 pic_order_present_flag:1;
-+			__u32 deblocking_filter_control_present_flag:1;
-+			__u32 redundant_pic_cnt_present_flag:1;
-+			__u32 reference_pic_flag:1;
-+		} bits;
-+		__u32 value;	
-+	} pic_fields;
-+	__u16 frame_num;
-+	/* 
-+	 * Some extra data required by Rockchip, the decoder in RK serial
-+	 * chip would omit some part of data
-+	 */
-+	struct {
-+		__u8 profile;
-+		__u8 constraint_set_flags;
-+		__u32 pic_order_cnt_bit_size;
-+		__u32 dec_ref_pic_marking_bit_size;
-+		__u16 idr_pic_id;
-+	} extra;
-+};
-+
-+struct v4l2_mpeg_video_h264_slice_param {
-+{
-+	__u32 slice_data_size;
-+	__u32 slice_data_offset;
-+	__u32 slice_data_flag;
-+	__u16 slice_data_bit_offset;
-+	__u16 first_mb_in_slice;
-+	__u8 slice_type;
-+	__u8 direct_spatial_mv_pred_flag;
-+	__u8 num_ref_idx_l0_active_minus1;
-+	__u8 num_ref_idx_l1_active_minus1;
-+	__u8 cabac_init_idc;
-+	__s8 slice_qp_delta;
-+	__u8 disable_deblocking_filter_idc;
-+	__s8 slice_alpha_c0_offset_div2;
-+	__s8 slice_beta_offset_div2;
-+	struct v4l2_mpeg_video_h264_picture ref_pic_list0[32];
-+	struct v4l2_mpeg_video_h264_picture ref_pic_list1[32];
-+	__u8 luma_log2_weight_denom;
-+	__u8 chroma_log2_weight_denom;
-+	__u8 luma_weight_l0_flag;
-+	__s16 luma_weight_l0 [32];
-+	__s16 luma_offset_l0 [32];
-+	__u8 chroma_weight_l0_flag;
-+	__s16 chroma_weight_l0 [32][2];
-+	__s16 chroma_offset_l0 [32][2];
-+	__u8 luma_weight_l1_flag;
-+	__s16 luma_weight_l1 [32];
-+	__s16 luma_offset_l1 [32];
-+	__u8 chroma_weight_l1_flag;
-+	__s16 chroma_weight_l1 [32][2];
-+	__s16 chroma_offset_l1 [32][2];
-+};
-+
- /*
-  *	I O C T L   C O D E S   F O R   V I D E O   D E V I C E S
-  *
+Also there is some problem with the mechiansm of VA-API. A VA-API Surface
+looks like a wrapper of the buffer in output side(CAPTURE in V4L2), but for 
+the V4L2, which buffer is dequeue from the CAPTURE is unknown. So it is
+a little hard to link the surface to the vpu driver internal buffer. The
+CREATE_BUFS ioctl may solve the allocation problem but not the dequeue.
+But as most stateless video processor could only process one frame in
+one time, I don't know the reference frame is need to keep for future
+parse(not by video processor but by the upper layer software), allowing
+only a buffer may solve this problem
+
+Some patches also reqired to make the VA-API client(like Gstreamer) 
+to support those extra data need by the video processor. It would be done
+in a short time. Need someone is very familiar with the codec standard.
+
+Currently, I am doing JPEG encoder for RK3288 now, I won't be avaiable
+in short time and I am lack of the knowledge of codec standard. But I
+am scheduling the plan of the new driver for both kernel[3] and VA-API,
+I could do it on my free time.
+
+[1] https://github.com/rockchip-linux/rockchip-va-driver v4l2-libvpu
+[2] https://github.com/rockchip-linux/rockchip-va-driver rk_v4l2
+[3] https://github.com/hizukiayaka/linux-kernel rk3288-media
+
+Randy Li (2):
+  [media] v4l2-ctrls: add H.264 decoder settings controls
+  v4l2-ctrls: add generic H.264 decoder codec settings structure
+
+ drivers/media/v4l2-core/v4l2-ctrls.c |   2 +
+ include/uapi/linux/v4l2-controls.h   |   2 +
+ include/uapi/linux/videodev2.h       | 103 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 107 insertions(+)
+
 -- 
 2.7.4
