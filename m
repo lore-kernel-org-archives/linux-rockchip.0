@@ -1,130 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index definition for rockchip pinctrl
-Date: Tue, 06 Sep 2016 00:10:58 +0200
-Message-ID: <5785582.C1XOtVbxro@phil>
-References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com> <3544284.90s5nXbktR@phil> <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: change all interrupts cells for 4 on rk3399 SoCs
+Date: Tue, 06 Sep 2016 00:20:58 +0200
+Message-ID: <3069982.xePB5pcLZB@phil>
+References: <1473099435-28198-1-git-send-email-wxt@rock-chips.com> <1473099435-28198-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1473099435-28198-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 5. September 2016, 18:22:46 CEST schrieb Andy Yan:
-> Hi Heiko:
+Am Dienstag, 6. September 2016, 02:17:14 CEST schrieb Caesar Wang:
+> Add the interrupts cells value for 4, and the 4th cell is zero.
 > 
-> On 2016年09月05日 17:33, Heiko Stuebner wrote:
-> > Hi Andy,
-> > 
-> > Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
-> >> There are 8 gpio banks on RK3288, so add the missing
-> >> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
-> >> to make it easier to description GPIO in dts.
-> >> 
-> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> > 
-> > I tend to disagree here.
-> > 
-> > I consider the bank defines RK_GPIOx to be deprecated and highly
-> > discourage
-> > them being used in new boards. They only encode the same number again (2
-> > ->
-> > RK_GPIO2 etc) and therefore don't bring any useful addition over using the
-> > bank number directly.
-> > 
-> > Slightly similar argument for the per-pin defines. While the external pins
-> > are described in the A/B/C/Dx notation for pinmux purposes, the gpio
-> > controllers on top use a regular 0-31 numbering. Also you cannot name
-> > constants generic GPIO_x, simply because that may conflict with other
-> > overly generic constant names.
-> > 
-> > So I'm not yet convinced that these improve readability, but they would
-> > definitly need a RK_* prefix to make them specific.
-> > 
-> > 
-> > Heiko
+> Due to the doc[0] said:" the system requires describing PPI affinity,
+> then the value must be at least 4"
+> The 4th cell is a phandle to a node describing a set of CPUs this
+> interrupt is affine to. The interrupt must be a PPI, and the node
+> pointed must be a subnode of the "ppi-partitions" subnode. For
+> interrupt types other than PPI or PPIs that are not partitionned,
+> this cell must be zero. See the "ppi-partitions" node description
+> below.
 > 
->          I consider for a people who doesn't familiar with rockchip
-> pinctrl, He
->   may don't know what does these number 2/4/17....stands for in the dts
-> like
->   rockchip,pins = <2 17 RK_FUNC_GPIO &pcfg_pull_up>.
+> [0]:
+> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+> 
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Acked-by: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+> CC: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 
-That person shouldn't work on devicetrees anyway :-) ... or simply read the 
-dt-binding for the pinctrl at first ... which should normally really be the 
-first step, otherwise we wouldn't need the binding documentation.
+applied to my dts64 branch for 4.9
 
->          But if we use meaningful macro here like : rockchip,pins =
-> <RK_GPIO2 RK_GPIO_C0 RK_FUNC_GPIO &pcfg_pull_up>, I think it easier to
-> tell people this GPIO is GPIO_C0 of BNAK2.
-
-I definitly don't agree for the gpio-bank number, see above .
-
-> Especially all the GPIOs in rockchip based schematic are described as
-> GPIOn_A/B/C/Dx. And it is also easier for people to directly use a macro
-> stands for 0~32 than translating A/B/C/Dx from the schematic to 0~32.
-
-But the pins might in fact really be helpful, but definitly need a prefix and 
-maybe even distinguish between pin and gpio, aka RK_PIN_A0 etc?
-
-
+Thanks
 Heiko
-
-> 
-> >> ---
-> >> 
-> >>   include/dt-bindings/pinctrl/rockchip.h | 35
-> >> 
-> >> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
-> >> 
-> >> diff --git a/include/dt-bindings/pinctrl/rockchip.h
-> >> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
-> >> --- a/include/dt-bindings/pinctrl/rockchip.h
-> >> +++ b/include/dt-bindings/pinctrl/rockchip.h
-> >> @@ -24,6 +24,41 @@
-> >> 
-> >>   #define RK_GPIO3	3
-> >>   #define RK_GPIO4	4
-> >>   #define RK_GPIO6	6
-> >> 
-> >> +#define RK_GPIO7	7
-> >> +#define RK_GPIO8	8
-> >> +
-> >> +#define GPIO_A0		0
-> >> +#define GPIO_A1		1
-> >> +#define GPIO_A2		2
-> >> +#define GPIO_A3		3
-> >> +#define GPIO_A4		4
-> >> +#define GPIO_A5		5
-> >> +#define GPIO_A6		6
-> >> +#define GPIO_A7		7
-> >> +#define GPIO_B0		8
-> >> +#define GPIO_B1		9
-> >> +#define GPIO_B2		10
-> >> +#define GPIO_B3		11
-> >> +#define GPIO_B4		12
-> >> +#define GPIO_B5		13
-> >> +#define GPIO_B6		14
-> >> +#define GPIO_B7		15
-> >> +#define GPIO_C0		16
-> >> +#define GPIO_C1		17
-> >> +#define GPIO_C2		18
-> >> +#define GPIO_C3		19
-> >> +#define GPIO_C4		20
-> >> +#define GPIO_C5		21
-> >> +#define GPIO_C6		22
-> >> +#define GPIO_C7		23
-> >> +#define GPIO_D0		24
-> >> +#define GPIO_D1		25
-> >> +#define GPIO_D2		26
-> >> +#define GPIO_D3		27
-> >> +#define GPIO_D4		28
-> >> +#define GPIO_D5		29
-> >> +#define GPIO_D6		30
-> >> +#define GPIO_D7		31
-> >> 
-> >>   #define RK_FUNC_GPIO	0
-> >>   #define RK_FUNC_1	1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
