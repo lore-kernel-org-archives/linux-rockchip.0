@@ -1,67 +1,190 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH 4/5] PM / devfreq: rockchip: add devfreq driver for rk3399
- dmc
-Date: Mon, 05 Sep 2016 09:49:19 +0900
-Message-ID: <57CCC10F.30704@samsung.com>
-References: <CGME20160902012350epcas1p2045d076c7645d3880e95633d66aba0ae@epcas1p2.samsung.com>
- <201609020953.NltUDqVg%fengguang.wu@intel.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [v14 PATCH 2/5] phy: Add USB Type-C PHY driver for rk3399
+Date: Mon, 05 Sep 2016 10:28:54 +0900
+Message-ID: <57CCCA56.5000702@samsung.com>
+References: <1472015825-11365-1-git-send-email-zyw@rock-chips.com>
+ <CGME20160824051805epcas1p2e63c7c5a8cb28e34b7a96cef0bf20e01@epcas1p2.samsung.com>
+ <1472015825-11365-3-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <201609020953.NltUDqVg%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: tixy-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, typ-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kbuild-all-JC7UmRfGjtg@public.gmane.org, sudeep.holla-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1472015825-11365-3-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org, briannorris@chromium.org
+Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RGVhciBhbGwsCgpUaGlzIHBhdGNoIHJlbHkgb24gYm90aCByb2NrY2hpcC5naXQgYW5kIGRldmZy
-ZXEuZ2l0LgpBbHJlYWR5LCBSb2NrY2hpcCBTb0MgTWFpbnRhaW5lciAoSGVpa28gU3R1ZWJuZXIp
-IGNyZWF0ZWQKdGhlIGltbXV0YWJsZSBicmFuY2hbMV0uIFdoZW4gYXBwbHlpbmcgdGhlc2UgcGF0
-Y2hlcwpvbiBkZXZmcmVxLmdpdCB3aXRoIHB1bGxpbmcgdGhlIGltbXV0YWJsZSBicmFuY2hbMV0s
-Ckl0IGxvb2tzIGxpa2UgdGhhdCBzaG91bGQgbm90IGJlIGEgcHJvYmxlbS4KClsxXSBodHRwOi8v
-d3d3LnNwaW5pY3MubmV0L2xpc3RzL2FybS1rZXJuZWwvbXNnNTI4Mjk4Lmh0bWwKCkJlc3QgUmVn
-YXJkcywKQ2hhbndvbyBDaG9pCgpPbiAyMDE264WEIDA57JuUIDAy7J28IDEwOjIzLCBrYnVpbGQg
-dGVzdCByb2JvdCB3cm90ZToKPiBIaSBMaW4sCj4gCj4gW2F1dG8gYnVpbGQgdGVzdCBFUlJPUiBv
-biBuZXh0LTIwMTYwODI1XQo+IFthbHNvIGJ1aWxkIHRlc3QgRVJST1Igb24gdjQuOC1yYzRdCj4g
-W2Nhbm5vdCBhcHBseSB0byByb2NrY2hpcC9mb3ItbmV4dCBkZXZmcmVxL2Zvci1yYWZhZWwgbGlu
-dXMvbWFzdGVyIHY0LjgtcmM0IHY0LjgtcmMzIHY0LjgtcmMyXQo+IFtpZiB5b3VyIHBhdGNoIGlz
-IGFwcGxpZWQgdG8gdGhlIHdyb25nIGdpdCB0cmVlLCBwbGVhc2UgZHJvcCB1cyBhIG5vdGUgdG8g
-aGVscCBpbXByb3ZlIHRoZSBzeXN0ZW1dCj4gW1N1Z2dlc3QgdG8gdXNlIGdpdCg+PTIuOS4wKSBm
-b3JtYXQtcGF0Y2ggLS1iYXNlPTxjb21taXQ+IChvciAtLWJhc2U9YXV0byBmb3IgY29udmVuaWVu
-Y2UpIHRvIHJlY29yZCB3aGF0IChwdWJsaWMsIHdlbGwta25vd24pIGNvbW1pdCB5b3VyIHBhdGNo
-IHNlcmllcyB3YXMgYnVpbHQgb25dCj4gW0NoZWNrIGh0dHBzOi8vZ2l0LXNjbS5jb20vZG9jcy9n
-aXQtZm9ybWF0LXBhdGNoIGZvciBtb3JlIGluZm9ybWF0aW9uXQo+IAo+IHVybDogICAgaHR0cHM6
-Ly9naXRodWIuY29tLzBkYXktY2kvbGludXgvY29tbWl0cy9MaW4tSHVhbmcvcmszMzk5LXN1cHBv
-cnQtZGRyLWZyZXF1ZW5jeS1zY2FsaW5nLzIwMTYwOTAyLTA2MzcwMQo+IGNvbmZpZzogYXJtLWFs
-bG1vZGNvbmZpZyAoYXR0YWNoZWQgYXMgLmNvbmZpZykKPiBjb21waWxlcjogYXJtLWxpbnV4LWdu
-dWVhYmktZ2NjIChEZWJpYW4gNS40LjAtNikgNS40LjAgMjAxNjA2MDkKPiByZXByb2R1Y2U6Cj4g
-ICAgICAgICB3Z2V0IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwvZ2l0
-L3dmZy9sa3AtdGVzdHMuZ2l0L3BsYWluL3NiaW4vbWFrZS5jcm9zcyAtTyB+L2Jpbi9tYWtlLmNy
-b3NzCj4gICAgICAgICBjaG1vZCAreCB+L2Jpbi9tYWtlLmNyb3NzCj4gICAgICAgICAjIHNhdmUg
-dGhlIGF0dGFjaGVkIC5jb25maWcgdG8gbGludXggYnVpbGQgdHJlZQo+ICAgICAgICAgbWFrZS5j
-cm9zcyBBUkNIPWFybSAKPiAKPiBBbGwgZXJyb3JzIChuZXcgb25lcyBwcmVmaXhlZCBieSA+Pik6
-Cj4gCj4+PiBkcml2ZXJzL2RldmZyZXEvcmszMzk5X2RtYy5jOjI5OjM5OiBmYXRhbCBlcnJvcjog
-c29jL3JvY2tjaGlwL3JvY2tjaGlwX3NpcC5oOiBObyBzdWNoIGZpbGUgb3IgZGlyZWN0b3J5Cj4g
-ICAgY29tcGlsYXRpb24gdGVybWluYXRlZC4KPiAKPiB2aW0gKzI5IGRyaXZlcnMvZGV2ZnJlcS9y
-azMzOTlfZG1jLmMKPiAKPiAgICAgMjMJI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5o
-Pgo+ICAgICAyNAkjaW5jbHVkZSA8bGludXgvcG1fb3BwLmg+Cj4gICAgIDI1CSNpbmNsdWRlIDxs
-aW51eC9yZWd1bGF0b3IvY29uc3VtZXIuaD4KPiAgICAgMjYJI2luY2x1ZGUgPGxpbnV4L3J3c2Vt
-Lmg+Cj4gICAgIDI3CSNpbmNsdWRlIDxsaW51eC9zdXNwZW5kLmg+Cj4gICAgIDI4CQo+ICAgPiAy
-OQkjaW5jbHVkZSA8c29jL3JvY2tjaGlwL3JvY2tjaGlwX3NpcC5oPgo+ICAgICAzMAkKPiAgICAg
-MzEJc3RydWN0IGRyYW1fdGltaW5nIHsKPiAgICAgMzIJCXVuc2lnbmVkIGludCBkZHIzX3NwZWVk
-X2JpbjsKPiAKPiAtLS0KPiAwLURBWSBrZXJuZWwgdGVzdCBpbmZyYXN0cnVjdHVyZSAgICAgICAg
-ICAgICAgICBPcGVuIFNvdXJjZSBUZWNobm9sb2d5IENlbnRlcgo+IGh0dHBzOi8vbGlzdHMuMDEu
-b3JnL3BpcGVybWFpbC9rYnVpbGQtYWxsICAgICAgICAgICAgICAgICAgIEludGVsIENvcnBvcmF0
-aW9uCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Dear all,
+
+On 2016년 08월 24일 14:17, Chris Zhong wrote:
+> Add a PHY provider driver for the rk3399 SoC Type-c PHY. The USB
+> Type-C PHY is designed to support the USB3 and DP applications.
+> The USB3 operates in SuperSpeed mode and the DP can operate at RBR,
+> HBR and HBR2 data rates. This driver create 2 PHY devices separately
+> for USB3 and DisplyPort, and registers them under the child node.
+> 
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Reviewed-by: Guenter Roeck <groeck@chromium.org>
+> Tested-by: Guenter Roeck <groeck@chromium.org>
+> 
+> ---
+> 
+> Changes in v14:
+> - change the name of property from super speed to EXTCON_PROP_USB_SS
+> 
+> Changes in v13:
+> - add some description in front of driver
+> - change name of usb to usb3
+> - add a USB3 RX register configuration
+> - do not return err if nothing connected with Type-C, when usb phy power on,
+>   since the USB core driver will call phy power without USB3 device connected.
+> 
+> Changes in v12:
+> - enable DP+USB3 mode, only when EXTCON_PROP_USB_SUPERSPEED equal 1
+>   and DP is attached
+> 
+> Changes in v11:
+> - make a clearer demarcation between usb phy and dp phy.
+> 
+> Changes in v10:
+> - do not control dp select and hpd config in phy driver
+> 
+> Changes in v9:
+> - the new_mode should be int not u8
+> - move mutex_lock(&tcphy->lock); to earlier place. in
+>   rockchip_usb3_phy_power_off
+> - better mutex lock for phy mode and flip
+> - split the Type-C PHY into two PHYs: USB3 and DP
+> 
+> Changes in v8:
+> - set the default cable id to EXTCON_USB_HOST
+> - optimization Error log
+> 
+> Changes in v7:
+> - support new API of extcon
+> 
+> Changes in v6:
+> - delete the support of PIN_ASSIGN_A/B
+> - set the default mode to MODE_DFP_USB
+> - disable DP PLL at USB3 only mode
+> 
+> Changes in v5:
+> - support get property from extcon
+> - remove PIN ASSIGN A/B support
+> 
+> Changes in v4:
+> - select EXTCON
+> - use phy framework to control the USB3 and DP function
+> - rename PIN_MAP_ to PIN_ASSIGN_
+> 
+> Changes in v3:
+> - remove the phy framework(Kishon Vijay Abraham I)
+> - add parentheses around the macro
+> - use a single space between type and name
+> - add spaces after opening and before closing braces.
+> - use u16 for register value
+> - remove type-c phy header file
+> - CodingStyle optimization
+> - use some cable extcon to get type-c port information
+> - add a extcon to notify Display Port
+> 
+> Changes in v2:
+> - select RESET_CONTROLLER
+> - alphabetic order
+> - modify some spelling mistakes
+> - make mode cleaner
+> - use bool for enable/disable
+> - check all of the return value
+> - return a better err number
+> - use more readx_poll_timeout()
+> - clk_disable_unprepare(tcphy->clk_ref);
+> - remove unuse functions, rockchip_typec_phy_power_on/off
+> - remove unnecessary typecast from void *
+> - use dts node to distinguish between phys.
+> 
+> Changes in v1:
+> - update the licence note
+> - init core clock to 50MHz
+> - use extcon API
+> - remove unused global
+> - add some comments for magic num
+> - change usleep_range(1000, 2000) tousleep_range(1000, 1050)
+> - remove __func__ from dev_err
+> - return err number when get clk failed
+> - remove ADDR_ADJ define
+> - use devm_clk_get(&pdev->dev, "tcpdcore")
+> 
+>  drivers/phy/Kconfig              |    9 +
+>  drivers/phy/Makefile             |    1 +
+>  drivers/phy/phy-rockchip-typec.c | 1013 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 1023 insertions(+)
+>  create mode 100644 drivers/phy/phy-rockchip-typec.c
+> 
+
+[snip]
+
+This patch rely on the extcon git repository to support the extcon property
+and USB 3.0 property. I created the immutable branch(ib-extcon-phy-4.9).
+I send this pull request to prevent the build error.
+
+(The patches of extcon property for USB 3.0 depend on the other extcon patches
+which are already merged. So, it is diffcult to separate the only patches
+of extcon property.)
+
+Best Regards,
+Chanwoo Choi
+
+The following changes since commit 29b4817d4018df78086157ea3a55c1d9424a7cfc:
+
+  Linux 4.8-rc1 (2016-08-07 18:18:00 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/extcon.git ib-extcon-phy-4.9
+
+for you to fetch changes up to 8457a1b49a2af0a0e71f80afed9f7c80de361610:
+
+  extcon: Introduce EXTCON_PROP_USB_SS property for SuperSpeed mode (2016-08-18 10:23:36 +0900)
+
+----------------------------------------------------------------
+Chanwoo Choi (12):
+      extcon: arizona: Remove the usage of extcon_update_state()
+      extcon: adc-jack: Remove the usage of extcon_set_state()
+      extcon: gpio: Remove the usage of extcon_set_state()
+      extcon: Remove the state_store() to prevent the wrong access
+      extcon: Block the bit masking operation for cable state except for extcon core
+      extcon: Add the extcon_type to gather each connector into five category
+      extcon: Add the support for extcon property according to extcon type
+      extcon: Add the support for the capability of each property
+      extcon: Rename the extcon_set/get_state() to maintain the function naming pattern
+      extcon: Add the synchronization extcon APIs to support the notification
+      extcon: Add new EXTCON_DISP_HMD for Head-mounted Display device
+      extcon: Add new EXTCON_CHG_WPT for Wireless Power Transfer device
+
+Charles Keepax (1):
+      extcon: arizona: Remove unneeded semi-colon
+
+Chris Zhong (1):
+      extcon: Add EXTCON_DISP_DP and the property for USB Type-C
+
+Guenter Roeck (1):
+      extcon: Introduce EXTCON_PROP_USB_SS property for SuperSpeed mode
+
+Maninder Singh (1):
+      extcon: Fix compile time warning
+
+Stephen Boyd (1):
+      extcon: Move extcon_get_edev_by_phandle() errors to dbg level
+
+Venkat Reddy Talla (1):
+      extcon: adc-jack: update cable state during boot
+
+ drivers/extcon/extcon-adc-jack.c       |  27 +-
+ drivers/extcon/extcon-arizona.c        |  13 +-
+ drivers/extcon/extcon-gpio.c           |   2 +-
+ drivers/extcon/extcon.c                | 774 ++++++++++++++++++++++++++-------
+ include/linux/extcon.h                 | 181 +++++++-
+ include/linux/extcon/extcon-adc-jack.h |   4 +-
+ 6 files changed, 809 insertions(+), 192 deletions(-)
