@@ -1,42 +1,89 @@
-From: David Laight <David.Laight-ZS65k/vG3HxXrIkS9f7CXA@public.gmane.org>
-Subject: RE: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in
- rk3288 platform
-Date: Mon, 5 Sep 2016 13:35:56 +0000
-Message-ID: <063D6719AE5E284EB5DD2968C1650D6DB00F483E@AcuExch.aculab.com>
-References: <1472939729-15187-1-git-send-email-ayaka@soulik.info>
- <1472939729-15187-4-git-send-email-ayaka@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472939729-15187-4-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: 'Randy Li' <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: Support PMU for rk3399 SoCs
+Date: Tue,  6 Sep 2016 02:17:13 +0800
+Message-ID: <1473099435-28198-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Randy Li
-> Sent: 03 September 2016 22:55
+Hello Heiko, ARM guys
+
+When Jay first submitted the rk3399.dtsi upstream
+<https://patchwork.kernel.org/patch/8885821/> he had the PMU node in there,
+but then took it out because the upstream binding wasn't done yet.
+It looks as if the upstream stuff has landed, since in linux/master I see:
+287e9357abcc DT/arm,gic-v3: Documment PPI partition support
+e3825ba1af3a irqchip/gic-v3: Add support for partitioned PPIs
+9e2c986cb460 irqchip: Add per-cpu interrupt partitioning library
+222df54fd8b7 genirq: Allow the affinity of a percpu interrupt to be set/retrieved
+651e8b54abde irqdomain: Allow domain matching on irq_fwspec
+
+This series patches add to support the rk3399 SoCs PMU.
+I pick up the https://patchwork.kernel.org/patch/9209369/.
+
+As do some tests with ChromeOs for my rk3399 board.
+Tested with next-20160905 kernel on rk3399 board.
+https://github.com/Caesar-github/rockchip/tree/rk3399/pmu-upstream
+
+localhost / # perf list
+
+List of pre-defined events (to be used in -e):
+cpu-cycles OR cycles [Hardware event]
+instructions [Hardware event]
+cache-references [Hardware event]
+cache-misses [Hardware event]
+branch-instructions OR branches [Hardware event]
+branch-misses [Hardware event]
+bus-cycles [Hardware event]
 ...
-> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb")
-> +					&& (NULL != hsotg->phy->ops->reset))
-> +				hsotg->phy->ops->reset(hsotg->phy);
-> +
 
-Is this the only place ops->reset() is called?
-Probably much better to check it first.
+perf stat --cpu 0/1/2/3..... to minitor
+e.g. cpu0;
 
-			if (hsotg->phy->ops->reset
-					&& of_device_is_compatible(np, "rockchip,rk3288-usb")
-				hsotg->phy->ops->reset(hsotg->phy);
+localhost / # perf stat --cpu 0
 
-	David
+Performance counter stats for 'CPU(s) 0':
+
+3374.917571 task-clock (msec) # 1.001 CPUs utilized [100.00%]
+20 context-switches # 0.006 K/sec [100.00%]
+2 cpu-migrations # 0.001 K/sec [100.00%]
+55 page-faults # 0.016 K/sec
+7151843 cycles # 0.002 GHz [100.00%]
+<not supported> stalled-cycles-frontend
+<not supported> stalled-cycles-backend
+4272536 instructions # 0.60 insns per cycle [100.00%]
+568406 branches # 0.168 M/sec [100.00%]
+65652 branch-misses # 11.55% of all branches
+
+Also, 'perf top' to monitor the PMU interrupts from cpus
+
+-Caesar
+
+
+Changes in v3:
+- update with the lastest next kernel(20160905).
+- add Mark's ACK for PATCH[1/2].
+- updated on next kernel(20160905).
+- add the Mark's ACK for PATCH[2/2].
+
+Changes in v2:
+- AS Mark comments on https://patchwork.kernel.org/patch/9209369/
+  remove the interrupt-affinity property, we need depend on Marc' perf
+  code on https://patchwork.kernel.org/patch/9209369/.
+
+Caesar Wang (2):
+  arm64: dts: rockchip: change all interrupts cells for 4 on rk3399 SoCs
+  arm64: dts: rockchip: support the pmu node for rk3399
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 122 ++++++++++++++++++-------------
+ 1 file changed, 71 insertions(+), 51 deletions(-)
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
