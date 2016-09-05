@@ -1,472 +1,130 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: change all interrupts cells for 4 on rk3399 SoCs
-Date: Tue,  6 Sep 2016 02:17:14 +0800
-Message-ID: <1473099435-28198-2-git-send-email-wxt@rock-chips.com>
-References: <1473099435-28198-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index definition for rockchip pinctrl
+Date: Tue, 06 Sep 2016 00:10:58 +0200
+Message-ID: <5785582.C1XOtVbxro@phil>
+References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com> <3544284.90s5nXbktR@phil> <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473099435-28198-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, sonnyrao@chromium.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Huang Tao <huangtao@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the interrupts cells value for 4, and the 4th cell is zero.
+Am Montag, 5. September 2016, 18:22:46 CEST schrieb Andy Yan:
+> Hi Heiko:
+> 
+> On 2016年09月05日 17:33, Heiko Stuebner wrote:
+> > Hi Andy,
+> > 
+> > Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
+> >> There are 8 gpio banks on RK3288, so add the missing
+> >> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
+> >> to make it easier to description GPIO in dts.
+> >> 
+> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > I tend to disagree here.
+> > 
+> > I consider the bank defines RK_GPIOx to be deprecated and highly
+> > discourage
+> > them being used in new boards. They only encode the same number again (2
+> > ->
+> > RK_GPIO2 etc) and therefore don't bring any useful addition over using the
+> > bank number directly.
+> > 
+> > Slightly similar argument for the per-pin defines. While the external pins
+> > are described in the A/B/C/Dx notation for pinmux purposes, the gpio
+> > controllers on top use a regular 0-31 numbering. Also you cannot name
+> > constants generic GPIO_x, simply because that may conflict with other
+> > overly generic constant names.
+> > 
+> > So I'm not yet convinced that these improve readability, but they would
+> > definitly need a RK_* prefix to make them specific.
+> > 
+> > 
+> > Heiko
+> 
+>          I consider for a people who doesn't familiar with rockchip
+> pinctrl, He
+>   may don't know what does these number 2/4/17....stands for in the dts
+> like
+>   rockchip,pins = <2 17 RK_FUNC_GPIO &pcfg_pull_up>.
 
-Due to the doc[0] said:" the system requires describing PPI affinity,
-then the value must be at least 4"
-The 4th cell is a phandle to a node describing a set of CPUs this
-interrupt is affine to. The interrupt must be a PPI, and the node
-pointed must be a subnode of the "ppi-partitions" subnode. For
-interrupt types other than PPI or PPIs that are not partitionned,
-this cell must be zero. See the "ppi-partitions" node description
-below.
+That person shouldn't work on devicetrees anyway :-) ... or simply read the 
+dt-binding for the pinctrl at first ... which should normally really be the 
+first step, otherwise we wouldn't need the binding documentation.
 
-[0]:
-Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+>          But if we use meaningful macro here like : rockchip,pins =
+> <RK_GPIO2 RK_GPIO_C0 RK_FUNC_GPIO &pcfg_pull_up>, I think it easier to
+> tell people this GPIO is GPIO_C0 of BNAK2.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Acked-by: Mark Rutland <mark.rutland@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Will Deacon <will.deacon@arm.com>
-Cc: Marc Zyngier <marc.zyngier@arm.com>
-CC: linux-arm-kernel@lists.infradead.org
+I definitly don't agree for the gpio-bank number, see above .
 
----
+> Especially all the GPIOs in rockchip based schematic are described as
+> GPIOn_A/B/C/Dx. And it is also easier for people to directly use a macro
+> stands for 0~32 than translating A/B/C/Dx from the schematic to 0~32.
 
-Changes in v3:
-- update with the lastest next kernel(20160905).
-- add Mark's ACK for PATCH[1/2].
+But the pins might in fact really be helpful, but definitly need a prefix and 
+maybe even distinguish between pin and gpio, aka RK_PIN_A0 etc?
 
-Changes in v2: None
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 102 +++++++++++++++----------------
- 1 file changed, 51 insertions(+), 51 deletions(-)
+Heiko
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 6c89d77..e9e22fe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -160,10 +160,10 @@
- 
- 	timer {
- 		compatible = "arm,armv8-timer";
--		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW 0>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW 0>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW 0>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
- 	};
- 
- 	xin24m: xin24m {
-@@ -182,8 +182,8 @@
- 		dmac_bus: dma-controller@ff6d0000 {
- 			compatible = "arm,pl330", "arm,primecell";
- 			reg = <0x0 0xff6d0000 0x0 0x4000>;
--			interrupts = <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH 0>;
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMAC0_PERILP>;
- 			clock-names = "apb_pclk";
-@@ -192,8 +192,8 @@
- 		dmac_peri: dma-controller@ff6e0000 {
- 			compatible = "arm,pl330", "arm,primecell";
- 			reg = <0x0 0xff6e0000 0x0 0x4000>;
--			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH 0>;
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMAC1_PERILP>;
- 			clock-names = "apb_pclk";
-@@ -204,7 +204,7 @@
- 		compatible = "rockchip,rk3399-dw-mshc",
- 			     "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe310000 0x0 0x4000>;
--		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clock-freq-min-max = <400000 150000000>;
- 		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
- 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-@@ -217,7 +217,7 @@
- 		compatible = "rockchip,rk3399-dw-mshc",
- 			     "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe320000 0x0 0x4000>;
--		interrupts = <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clock-freq-min-max = <400000 150000000>;
- 		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
- 			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-@@ -229,7 +229,7 @@
- 	sdhci: sdhci@fe330000 {
- 		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
- 		reg = <0x0 0xfe330000 0x0 0x10000>;
--		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH 0>;
- 		arasan,soc-ctl-syscon = <&grf>;
- 		assigned-clocks = <&cru SCLK_EMMC>;
- 		assigned-clock-rates = <200000000>;
-@@ -284,7 +284,7 @@
- 	usb_host0_ehci: usb@fe380000 {
- 		compatible = "generic-ehci";
- 		reg = <0x0 0xfe380000 0x0 0x20000>;
--		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>;
- 		clock-names = "hclk_host0", "hclk_host0_arb";
- 		phys = <&u2phy0_host>;
-@@ -295,7 +295,7 @@
- 	usb_host0_ohci: usb@fe3a0000 {
- 		compatible = "generic-ohci";
- 		reg = <0x0 0xfe3a0000 0x0 0x20000>;
--		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>;
- 		clock-names = "hclk_host0", "hclk_host0_arb";
- 		status = "disabled";
-@@ -304,7 +304,7 @@
- 	usb_host1_ehci: usb@fe3c0000 {
- 		compatible = "generic-ehci";
- 		reg = <0x0 0xfe3c0000 0x0 0x20000>;
--		interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru HCLK_HOST1>, <&cru HCLK_HOST1_ARB>;
- 		clock-names = "hclk_host1", "hclk_host1_arb";
- 		phys = <&u2phy1_host>;
-@@ -315,7 +315,7 @@
- 	usb_host1_ohci: usb@fe3e0000 {
- 		compatible = "generic-ohci";
- 		reg = <0x0 0xfe3e0000 0x0 0x20000>;
--		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru HCLK_HOST1>, <&cru HCLK_HOST1_ARB>;
- 		clock-names = "hclk_host1", "hclk_host1_arb";
- 		status = "disabled";
-@@ -334,7 +334,7 @@
- 		      <0x0 0xfff00000 0 0x10000>, /* GICC */
- 		      <0x0 0xfff10000 0 0x10000>, /* GICH */
- 		      <0x0 0xfff20000 0 0x10000>; /* GICV */
--		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
- 		its: interrupt-controller@fee20000 {
- 			compatible = "arm,gic-v3-its";
- 			msi-controller;
-@@ -345,7 +345,7 @@
- 	saradc: saradc@ff100000 {
- 		compatible = "rockchip,rk3399-saradc";
- 		reg = <0x0 0xff100000 0x0 0x100>;
--		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH 0>;
- 		#io-channel-cells = <1>;
- 		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
- 		clock-names = "saradc", "apb_pclk";
-@@ -361,7 +361,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C1>, <&cru PCLK_I2C1>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c1_xfer>;
- 		#address-cells = <1>;
-@@ -376,7 +376,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C2>, <&cru PCLK_I2C2>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c2_xfer>;
- 		#address-cells = <1>;
-@@ -391,7 +391,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C3>, <&cru PCLK_I2C3>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c3_xfer>;
- 		#address-cells = <1>;
-@@ -406,7 +406,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C5>, <&cru PCLK_I2C5>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c5_xfer>;
- 		#address-cells = <1>;
-@@ -421,7 +421,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C6>, <&cru PCLK_I2C6>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c6_xfer>;
- 		#address-cells = <1>;
-@@ -436,7 +436,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&cru SCLK_I2C7>, <&cru PCLK_I2C7>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c7_xfer>;
- 		#address-cells = <1>;
-@@ -449,7 +449,7 @@
- 		reg = <0x0 0xff180000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
--		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -462,7 +462,7 @@
- 		reg = <0x0 0xff190000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
--		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -475,7 +475,7 @@
- 		reg = <0x0 0xff1a0000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
--		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -488,7 +488,7 @@
- 		reg = <0x0 0xff1b0000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
--		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -501,7 +501,7 @@
- 		reg = <0x0 0xff1c0000 0x0 0x1000>;
- 		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0>;
- 		#address-cells = <1>;
-@@ -514,7 +514,7 @@
- 		reg = <0x0 0xff1d0000 0x0 0x1000>;
- 		clocks = <&cru SCLK_SPI1>, <&cru PCLK_SPI1>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi1_clk &spi1_tx &spi1_rx &spi1_cs0>;
- 		#address-cells = <1>;
-@@ -527,7 +527,7 @@
- 		reg = <0x0 0xff1e0000 0x0 0x1000>;
- 		clocks = <&cru SCLK_SPI2>, <&cru PCLK_SPI2>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi2_clk &spi2_tx &spi2_rx &spi2_cs0>;
- 		#address-cells = <1>;
-@@ -540,7 +540,7 @@
- 		reg = <0x0 0xff1f0000 0x0 0x1000>;
- 		clocks = <&cru SCLK_SPI4>, <&cru PCLK_SPI4>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi4_clk &spi4_tx &spi4_rx &spi4_cs0>;
- 		#address-cells = <1>;
-@@ -553,7 +553,7 @@
- 		reg = <0x0 0xff200000 0x0 0x1000>;
- 		clocks = <&cru SCLK_SPI5>, <&cru PCLK_SPI5>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi5_clk &spi5_tx &spi5_rx &spi5_cs0>;
- 		#address-cells = <1>;
-@@ -633,7 +633,7 @@
- 	tsadc: tsadc@ff260000 {
- 		compatible = "rockchip,rk3399-tsadc";
- 		reg = <0x0 0xff260000 0x0 0x100>;
--		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
- 		assigned-clocks = <&cru SCLK_TSADC>;
- 		assigned-clock-rates = <750000>;
- 		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
-@@ -864,7 +864,7 @@
- 		reg = <0x0 0xff350000 0x0 0x1000>;
- 		clocks = <&pmucru SCLK_SPI3_PMU>, <&pmucru PCLK_SPI3_PMU>;
- 		clock-names = "spiclk", "apb_pclk";
--		interrupts = <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spi3_clk &spi3_tx &spi3_rx &spi3_cs0>;
- 		#address-cells = <1>;
-@@ -877,7 +877,7 @@
- 		reg = <0x0 0xff370000 0x0 0x100>;
- 		clocks = <&pmucru SCLK_UART4_PMU>, <&pmucru PCLK_UART4_PMU>;
- 		clock-names = "baudclk", "apb_pclk";
--		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -892,7 +892,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&pmucru SCLK_I2C0_PMU>, <&pmucru PCLK_I2C0_PMU>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c0_xfer>;
- 		#address-cells = <1>;
-@@ -907,7 +907,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&pmucru SCLK_I2C4_PMU>, <&pmucru PCLK_I2C4_PMU>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c4_xfer>;
- 		#address-cells = <1>;
-@@ -922,7 +922,7 @@
- 		assigned-clock-rates = <200000000>;
- 		clocks = <&pmucru SCLK_I2C8_PMU>, <&pmucru PCLK_I2C8_PMU>;
- 		clock-names = "i2c", "pclk";
--		interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2c8_xfer>;
- 		#address-cells = <1>;
-@@ -1057,7 +1057,7 @@
- 
- 			u2phy0_host: host-port {
- 				#phy-cells = <0>;
--				interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH 0>;
- 				interrupt-names = "linestate";
- 				status = "disabled";
- 			};
-@@ -1074,7 +1074,7 @@
- 
- 			u2phy1_host: host-port {
- 				#phy-cells = <0>;
--				interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH 0>;
- 				interrupt-names = "linestate";
- 				status = "disabled";
- 			};
-@@ -1104,13 +1104,13 @@
- 		compatible = "snps,dw-wdt";
- 		reg = <0x0 0xff848000 0x0 0x100>;
- 		clocks = <&cru PCLK_WDT>;
--		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH 0>;
- 	};
- 
- 	rktimer: rktimer@ff850000 {
- 		compatible = "rockchip,rk3399-timer";
- 		reg = <0x0 0xff850000 0x0 0x1000>;
--		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER00>;
- 		clock-names = "pclk", "timer";
- 	};
-@@ -1118,7 +1118,7 @@
- 	spdif: spdif@ff870000 {
- 		compatible = "rockchip,rk3399-spdif";
- 		reg = <0x0 0xff870000 0x0 0x1000>;
--		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH 0>;
- 		dmas = <&dmac_bus 7>;
- 		dma-names = "tx";
- 		clock-names = "mclk", "hclk";
-@@ -1132,7 +1132,7 @@
- 		compatible = "rockchip,rk3399-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff880000 0x0 0x1000>;
- 		rockchip,grf = <&grf>;
--		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH 0>;
- 		dmas = <&dmac_bus 0>, <&dmac_bus 1>;
- 		dma-names = "tx", "rx";
- 		clock-names = "i2s_clk", "i2s_hclk";
-@@ -1145,7 +1145,7 @@
- 	i2s1: i2s@ff890000 {
- 		compatible = "rockchip,rk3399-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff890000 0x0 0x1000>;
--		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH 0>;
- 		dmas = <&dmac_bus 2>, <&dmac_bus 3>;
- 		dma-names = "tx", "rx";
- 		clock-names = "i2s_clk", "i2s_hclk";
-@@ -1158,7 +1158,7 @@
- 	i2s2: i2s@ff8a0000 {
- 		compatible = "rockchip,rk3399-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff8a0000 0x0 0x1000>;
--		interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH 0>;
- 		dmas = <&dmac_bus 4>, <&dmac_bus 5>;
- 		dma-names = "tx", "rx";
- 		clock-names = "i2s_clk", "i2s_hclk";
-@@ -1178,7 +1178,7 @@
- 			compatible = "rockchip,gpio-bank";
- 			reg = <0x0 0xff720000 0x0 0x100>;
- 			clocks = <&pmucru PCLK_GPIO0_PMU>;
--			interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH 0>;
- 
- 			gpio-controller;
- 			#gpio-cells = <0x2>;
-@@ -1191,7 +1191,7 @@
- 			compatible = "rockchip,gpio-bank";
- 			reg = <0x0 0xff730000 0x0 0x100>;
- 			clocks = <&pmucru PCLK_GPIO1_PMU>;
--			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH 0>;
- 
- 			gpio-controller;
- 			#gpio-cells = <0x2>;
-@@ -1204,7 +1204,7 @@
- 			compatible = "rockchip,gpio-bank";
- 			reg = <0x0 0xff780000 0x0 0x100>;
- 			clocks = <&cru PCLK_GPIO2>;
--			interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH 0>;
- 
- 			gpio-controller;
- 			#gpio-cells = <0x2>;
-@@ -1217,7 +1217,7 @@
- 			compatible = "rockchip,gpio-bank";
- 			reg = <0x0 0xff788000 0x0 0x100>;
- 			clocks = <&cru PCLK_GPIO3>;
--			interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
- 
- 			gpio-controller;
- 			#gpio-cells = <0x2>;
-@@ -1230,7 +1230,7 @@
- 			compatible = "rockchip,gpio-bank";
- 			reg = <0x0 0xff790000 0x0 0x100>;
- 			clocks = <&cru PCLK_GPIO4>;
--			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
- 
- 			gpio-controller;
- 			#gpio-cells = <0x2>;
--- 
-1.9.1
+> 
+> >> ---
+> >> 
+> >>   include/dt-bindings/pinctrl/rockchip.h | 35
+> >> 
+> >> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
+> >> 
+> >> diff --git a/include/dt-bindings/pinctrl/rockchip.h
+> >> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
+> >> --- a/include/dt-bindings/pinctrl/rockchip.h
+> >> +++ b/include/dt-bindings/pinctrl/rockchip.h
+> >> @@ -24,6 +24,41 @@
+> >> 
+> >>   #define RK_GPIO3	3
+> >>   #define RK_GPIO4	4
+> >>   #define RK_GPIO6	6
+> >> 
+> >> +#define RK_GPIO7	7
+> >> +#define RK_GPIO8	8
+> >> +
+> >> +#define GPIO_A0		0
+> >> +#define GPIO_A1		1
+> >> +#define GPIO_A2		2
+> >> +#define GPIO_A3		3
+> >> +#define GPIO_A4		4
+> >> +#define GPIO_A5		5
+> >> +#define GPIO_A6		6
+> >> +#define GPIO_A7		7
+> >> +#define GPIO_B0		8
+> >> +#define GPIO_B1		9
+> >> +#define GPIO_B2		10
+> >> +#define GPIO_B3		11
+> >> +#define GPIO_B4		12
+> >> +#define GPIO_B5		13
+> >> +#define GPIO_B6		14
+> >> +#define GPIO_B7		15
+> >> +#define GPIO_C0		16
+> >> +#define GPIO_C1		17
+> >> +#define GPIO_C2		18
+> >> +#define GPIO_C3		19
+> >> +#define GPIO_C4		20
+> >> +#define GPIO_C5		21
+> >> +#define GPIO_C6		22
+> >> +#define GPIO_C7		23
+> >> +#define GPIO_D0		24
+> >> +#define GPIO_D1		25
+> >> +#define GPIO_D2		26
+> >> +#define GPIO_D3		27
+> >> +#define GPIO_D4		28
+> >> +#define GPIO_D5		29
+> >> +#define GPIO_D6		30
+> >> +#define GPIO_D7		31
+> >> 
+> >>   #define RK_FUNC_GPIO	0
+> >>   #define RK_FUNC_1	1
