@@ -1,121 +1,42 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index
- definition for rockchip pinctrl
-Date: Mon, 5 Sep 2016 18:22:46 +0800
-Message-ID: <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
-References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com>
- <1472978130-919-1-git-send-email-andy.yan@rock-chips.com>
- <3544284.90s5nXbktR@phil>
+From: David Laight <David.Laight-ZS65k/vG3HxXrIkS9f7CXA@public.gmane.org>
+Subject: RE: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in
+ rk3288 platform
+Date: Mon, 5 Sep 2016 13:35:56 +0000
+Message-ID: <063D6719AE5E284EB5DD2968C1650D6DB00F483E@AcuExch.aculab.com>
+References: <1472939729-15187-1-git-send-email-ayaka@soulik.info>
+ <1472939729-15187-4-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3544284.90s5nXbktR@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472939729-15187-4-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: 'Randy Li' <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko:
+From: Randy Li
+> Sent: 03 September 2016 22:55
+...
+> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb")
+> +					&& (NULL != hsotg->phy->ops->reset))
+> +				hsotg->phy->ops->reset(hsotg->phy);
+> +
 
+Is this the only place ops->reset() is called?
+Probably much better to check it first.
 
-On 2016年09月05日 17:33, Heiko Stuebner wrote:
-> Hi Andy,
->
-> Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
->> There are 8 gpio banks on RK3288, so add the missing
->> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
->> to make it easier to description GPIO in dts.
->>
->> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> I tend to disagree here.
->
-> I consider the bank defines RK_GPIOx to be deprecated and highly discourage
-> them being used in new boards. They only encode the same number again (2 ->
-> RK_GPIO2 etc) and therefore don't bring any useful addition over using the
-> bank number directly.
->
-> Slightly similar argument for the per-pin defines. While the external pins are
-> described in the A/B/C/Dx notation for pinmux purposes, the gpio controllers
-> on top use a regular 0-31 numbering. Also you cannot name constants generic
-> GPIO_x, simply because that may conflict with other overly generic constant
-> names.
->
-> So I'm not yet convinced that these improve readability, but they would
-> definitly need a RK_* prefix to make them specific.
->
->
-> Heiko
+			if (hsotg->phy->ops->reset
+					&& of_device_is_compatible(np, "rockchip,rk3288-usb")
+				hsotg->phy->ops->reset(hsotg->phy);
 
-         I consider for a people who doesn't familiar with rockchip 
-pinctrl, He
-  may don't know what does these number 2/4/17....stands for in the dts  
-like
-  rockchip,pins = <2 17 RK_FUNC_GPIO &pcfg_pull_up>.
-         But if we use meaningful macro here like : rockchip,pins = 
-<RK_GPIO2 RK_GPIO_C0 RK_FUNC_GPIO &pcfg_pull_up>, I think it easier to 
-tell people this GPIO is GPIO_C0 of BNAK2.
-Especially all the GPIOs in rockchip based schematic are described as 
-GPIOn_A/B/C/Dx. And it is also easier for people to directly use a macro 
-stands for 0~32 than translating A/B/C/Dx from the schematic to 0~32.
->> ---
->>
->>   include/dt-bindings/pinctrl/rockchip.h | 35
->> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
->>
->> diff --git a/include/dt-bindings/pinctrl/rockchip.h
->> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
->> --- a/include/dt-bindings/pinctrl/rockchip.h
->> +++ b/include/dt-bindings/pinctrl/rockchip.h
->> @@ -24,6 +24,41 @@
->>   #define RK_GPIO3	3
->>   #define RK_GPIO4	4
->>   #define RK_GPIO6	6
->> +#define RK_GPIO7	7
->> +#define RK_GPIO8	8
->> +
->> +#define GPIO_A0		0
->> +#define GPIO_A1		1
->> +#define GPIO_A2		2
->> +#define GPIO_A3		3
->> +#define GPIO_A4		4
->> +#define GPIO_A5		5
->> +#define GPIO_A6		6
->> +#define GPIO_A7		7
->> +#define GPIO_B0		8
->> +#define GPIO_B1		9
->> +#define GPIO_B2		10
->> +#define GPIO_B3		11
->> +#define GPIO_B4		12
->> +#define GPIO_B5		13
->> +#define GPIO_B6		14
->> +#define GPIO_B7		15
->> +#define GPIO_C0		16
->> +#define GPIO_C1		17
->> +#define GPIO_C2		18
->> +#define GPIO_C3		19
->> +#define GPIO_C4		20
->> +#define GPIO_C5		21
->> +#define GPIO_C6		22
->> +#define GPIO_C7		23
->> +#define GPIO_D0		24
->> +#define GPIO_D1		25
->> +#define GPIO_D2		26
->> +#define GPIO_D3		27
->> +#define GPIO_D4		28
->> +#define GPIO_D5		29
->> +#define GPIO_D6		30
->> +#define GPIO_D7		31
->>
->>   #define RK_FUNC_GPIO	0
->>   #define RK_FUNC_1	1
->
->
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	David
