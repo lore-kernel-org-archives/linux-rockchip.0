@@ -1,49 +1,94 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/4] ARM: dts: rockchip: fix i2c address L3G4200D on
- PopMetal-RK3288 board
-Date: Mon, 5 Sep 2016 17:26:18 +0800
-Message-ID: <29cd817f-bcef-2cba-643c-ac86e9bf28a4@rock-chips.com>
-References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com>
- <1472978067-868-1-git-send-email-andy.yan@rock-chips.com>
- <2908713.CWeP2vUbBj@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index definition for rockchip pinctrl
+Date: Mon, 05 Sep 2016 11:33:18 +0200
+Message-ID: <3544284.90s5nXbktR@phil>
+References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com> <1472978130-919-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2908713.CWeP2vUbBj@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1472978130-919-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko:
+Hi Andy,
+
+Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
+> There are 8 gpio banks on RK3288, so add the missing
+> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
+> to make it easier to description GPIO in dts.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
+I tend to disagree here.
+
+I consider the bank defines RK_GPIOx to be deprecated and highly discourage 
+them being used in new boards. They only encode the same number again (2 -> 
+RK_GPIO2 etc) and therefore don't bring any useful addition over using the 
+bank number directly.
+
+Slightly similar argument for the per-pin defines. While the external pins are 
+described in the A/B/C/Dx notation for pinmux purposes, the gpio controllers 
+on top use a regular 0-31 numbering. Also you cannot name constants generic 
+GPIO_x, simply because that may conflict with other overly generic constant 
+names.
+
+So I'm not yet convinced that these improve readability, but they would 
+definitly need a RK_* prefix to make them specific.
 
 
+Heiko
 
-On 2016年09月05日 17:12, Heiko Stuebner wrote:
-> Am Sonntag, 4. September 2016, 16:34:27 CEST schrieb Andy Yan:
->> The i2c address of the three-axis digital gyroscope L3G4200D should be
->> 0x69 according to hardware design.
->> Also add power supply reference for L3G3200D and the 3-axis Electronic
->> Compass AK8963.
->>
->> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> I've split this into two patches:
-> ARM: dts: rockchip: fix L3G4200D i2c address on PopMetal-RK3288 board
-> ARM: dts: rockchip: Add sensor-supplies on PopMetal-RK3288 board
-> and applied them to my dts32 branch for 4.9
->
-> Please don't mix multiple changes into one patch in the future :-)
->
-     Thanks, I'll keep this in mind.
-> Thanks
-> Heiko
->
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+> 
+>  include/dt-bindings/pinctrl/rockchip.h | 35
+> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
+> 
+> diff --git a/include/dt-bindings/pinctrl/rockchip.h
+> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
+> --- a/include/dt-bindings/pinctrl/rockchip.h
+> +++ b/include/dt-bindings/pinctrl/rockchip.h
+> @@ -24,6 +24,41 @@
+>  #define RK_GPIO3	3
+>  #define RK_GPIO4	4
+>  #define RK_GPIO6	6
+> +#define RK_GPIO7	7
+> +#define RK_GPIO8	8
+> +
+> +#define GPIO_A0		0
+> +#define GPIO_A1		1
+> +#define GPIO_A2		2
+> +#define GPIO_A3		3
+> +#define GPIO_A4		4
+> +#define GPIO_A5		5
+> +#define GPIO_A6		6
+> +#define GPIO_A7		7
+> +#define GPIO_B0		8
+> +#define GPIO_B1		9
+> +#define GPIO_B2		10
+> +#define GPIO_B3		11
+> +#define GPIO_B4		12
+> +#define GPIO_B5		13
+> +#define GPIO_B6		14
+> +#define GPIO_B7		15
+> +#define GPIO_C0		16
+> +#define GPIO_C1		17
+> +#define GPIO_C2		18
+> +#define GPIO_C3		19
+> +#define GPIO_C4		20
+> +#define GPIO_C5		21
+> +#define GPIO_C6		22
+> +#define GPIO_C7		23
+> +#define GPIO_D0		24
+> +#define GPIO_D1		25
+> +#define GPIO_D2		26
+> +#define GPIO_D3		27
+> +#define GPIO_D4		28
+> +#define GPIO_D5		29
+> +#define GPIO_D6		30
+> +#define GPIO_D7		31
+> 
+>  #define RK_FUNC_GPIO	0
+>  #define RK_FUNC_1	1
