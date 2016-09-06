@@ -1,174 +1,138 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND v14 PATCH 1/5] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
-Date: Tue,  6 Sep 2016 10:00:20 -0700
-Message-ID: <1473181220-15123-1-git-send-email-zyw@rock-chips.com>
-References: <1472015825-11365-2-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1472015825-11365-2-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: kishon-l0cyMroinI0@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [v2 PATCH 2/2] ASoC: rockchip: Add DP dai-links to the rk3399-gru machine driver
+Date: Tue,  6 Sep 2016 10:09:52 -0700
+Message-ID: <1473181792-15398-1-git-send-email-zyw@rock-chips.com>
+References: <1473137335-14541-3-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473137335-14541-3-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dianders@chromium.org, heiko@sntech.de, zhengxing@rock-chips.com, cychiang@chromium.org
+Cc: linux-rockchip@lists.infradead.org, zyw@rock-chips.com, perex@perex.cz, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, lgirdwood@gmail.com, broonie@kernel.org, linux-kernel@vger.kernel.org, tiwai@suse.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds a binding that describes the Rockchip USB Type-C PHY
-for rk3399
+This patch adds DP audio output support to the rk3399-gru machine
+driver.
 
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
-Changes in v14: None
-Changes in v13: None
-Changes in v12: None
-Changes in v11:
-- make a clearer emarcation between usb phy and dp phy
-
-Changes in v10:
-- remove rockchip,uphy-dp-sel property
-
-Changes in v9:
-- change #phy-cells to 1
-
-Changes in v8: None
-Changes in v7: None
-Changes in v6:
-- add assigned-clocks and assigned-clock-rates
-
-Changes in v5: None
-Changes in v4:
-- add a #phy-cells node
-
-Changes in v3:
-- use compatible: rockchip,rk3399-typec-phy
-- use dashes instead of underscores.
-
 Changes in v2:
-- add some registers description
+- correct the commit message
 
-Changes in v1:
-- add extcon node description
-- move the registers in phy driver
-- remove the suffix of reset
+ .../bindings/sound/rockchip,rk3399-gru-sound.txt   | 13 +++---
+ sound/soc/rockchip/rk3399_gru_sound.c              | 48 ++++++++++++++++++++++
+ 2 files changed, 55 insertions(+), 6 deletions(-)
 
- .../devicetree/bindings/phy/phy-rockchip-typec.txt | 101 +++++++++++++++++++++
- 1 file changed, 101 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-new file mode 100644
-index 0000000..6ea867e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-@@ -0,0 +1,101 @@
-+* ROCKCHIP type-c PHY
-+---------------------
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+index f19b6c8..222124b 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+@@ -1,15 +1,16 @@
+-ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
++ROCKCHIP with MAX98357A/RT5514/DA7219 codecs and DP via spdif on GRU boards
+ 
+ Required properties:
+ - compatible: "rockchip,rk3399-gru-sound"
+-- rockchip,cpu: The phandle of the Rockchip I2S controller that's
+-  connected to the codecs
+-- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
++- rockchip,cpu: The phandle of the Rockchip I2S controller controller that's
++  connected to the codecs, and the SPDIF controller that's connected to DP
++- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs and of the
++  DP encoder node
+ 
+ Example:
+ 
+ sound {
+ 	compatible = "rockchip,rk3399-gru-sound";
+-	rockchip,cpu = <&i2s0>;
+-	rockchip,codec = <&max98357a &rt5514 &da7219>;
++	rockchip,cpu = <&i2s0 &spdif>;
++	rockchip,codec = <&max98357a &rt5514 &da7219 &cdn_dp 1>;
+ };
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 164b6da..50e5d9a 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -25,6 +25,7 @@
+ #include <linux/spi/spi.h>
+ #include <sound/core.h>
+ #include <sound/jack.h>
++#include <sound/hdmi-codec.h>
+ #include <sound/pcm.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -226,10 +227,30 @@ static struct snd_soc_ops rockchip_sound_da7219_ops = {
+ 	.hw_params = rockchip_sound_da7219_hw_params,
+ };
+ 
++static struct snd_soc_jack cdn_dp_card_jack;
 +
-+Required properties:
-+ - compatible : must be "rockchip,rk3399-typec-phy"
-+ - reg: Address and length of the usb phy control register set
-+ - rockchip,grf : phandle to the syscon managing the "general
-+   register files"
-+ - clocks : phandle + clock specifier for the phy clocks
-+ - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
-+ - assigned-clocks: main clock, should be <&cru SCLK_UPHY0_TCPDCORE> or
-+		    <&cru SCLK_UPHY1_TCPDCORE>;
-+ - assigned-clock-rates : the phy core clk frequency, shall be: 50000000
-+ - resets : a list of phandle + reset specifier pairs
-+ - reset-names : string reset name, must be:
-+		 "uphy", "uphy-pipe", "uphy-tcphy"
-+ - extcon : extcon specifier for the Power Delivery
++static int cdn_dp_init(struct snd_soc_pcm_runtime *runtime)
++{
++	struct snd_soc_card *card = runtime->card;
++	struct snd_soc_codec *codec = runtime->codec;
++	int ret;
 +
-+Note, there are 2 type-c phys for RK3399, and they are almost identical, except
-+these registers(description below), every register node contains 3 sections:
-+offset, enable bit, write mask bit.
-+ - rockchip,typec-conn-dir : the register of type-c connector direction,
-+   for type-c phy0, it must be <0xe580 0 16>;
-+   for type-c phy1, it must be <0xe58c 0 16>;
-+ - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
-+   control.
-+   for type-c phy0, it must be <0xe580 3 19>;
-+   for type-c phy1, it must be <0xe58c 3 19>;
-+ - rockchip,external-psm : the register of type-c phy external psm clock
-+   selection.
-+   for type-c phy0, it must be <0xe588 14 30>;
-+   for type-c phy1, it must be <0xe594 14 30>;
-+ - rockchip,pipe-status : the register of type-c phy pipe status.
-+   for type-c phy0, it must be <0xe5c0 0 0>;
-+   for type-c phy1, it must be <0xe5c0 16 16>;
++	/* enable jack detection */
++	ret = snd_soc_card_jack_new(card, "DP Jack", SND_JACK_LINEOUT,
++				    &cdn_dp_card_jack, NULL, 0);
++	if (ret) {
++		dev_err(card->dev, "Can't new DP Jack %d\n", ret);
++		return ret;
++	}
 +
-+Required nodes : a sub-node is required for each port the phy provides.
-+		 The sub-node name is used to identify dp or usb3 port,
-+		 and shall be the following entries:
-+	* "dp-port" : the name of DP port.
-+	* "usb3-port" : the name of USB3 port.
++	return hdmi_codec_set_jack_detect(codec, &cdn_dp_card_jack);
++}
 +
-+Required properties (port (child) node):
-+- #phy-cells : must be 0, See ./phy-bindings.txt for details.
+ enum {
+ 	DAILINK_MAX98357A,
+ 	DAILINK_RT5514,
+ 	DAILINK_DA7219,
++	DAILINK_CDNDP,
+ 	DAILINK_RT5514_DSP,
+ };
+ 
+@@ -264,6 +285,14 @@ static struct snd_soc_dai_link rockchip_dailinks[] = {
+ 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+ 			SND_SOC_DAIFMT_CBS_CFS,
+ 	},
++	[DAILINK_CDNDP] = {
++		.name = "DP",
++		.stream_name = "DP PCM",
++		.codec_dai_name = "spdif-hifi",
++		.init = cdn_dp_init,
++		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBS_CFS,
++	},
+ 	/* RT5514 DSP for voice wakeup via spi bus */
+ 	[DAILINK_RT5514_DSP] = {
+ 		.name = "RT5514 DSP",
+@@ -334,6 +363,25 @@ static int rockchip_sound_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	cpu_node = of_parse_phandle(pdev->dev.of_node, "rockchip,cpu", 1);
++	if (!cpu_node) {
++		dev_err(&pdev->dev, "Property 'rockchip,cpu 1' missing or invalid\n");
++		return -EINVAL;
++	}
 +
-+Example:
-+	tcphy0: phy@ff7c0000 {
-+		compatible = "rockchip,rk3399-typec-phy";
-+		reg = <0x0 0xff7c0000 0x0 0x40000>;
-+		rockchip,grf = <&grf>;
-+		extcon = <&fusb0>;
-+		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-+			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-+		clock-names = "tcpdcore", "tcpdphy-ref";
-+		assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
-+		assigned-clock-rates = <50000000>;
-+		resets = <&cru SRST_UPHY0>,
-+			 <&cru SRST_UPHY0_PIPE_L00>,
-+			 <&cru SRST_P_UPHY0_TCPHY>;
-+		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-+		rockchip,typec-conn-dir = <0xe580 0 16>;
-+		rockchip,usb3tousb2-en = <0xe580 3 19>;
-+		rockchip,external-psm = <0xe588 14 30>;
-+		rockchip,pipe-status = <0xe5c0 0 0>;
++	rockchip_dailinks[DAILINK_CDNDP].platform_of_node = cpu_node;
++	rockchip_dailinks[DAILINK_CDNDP].cpu_of_node = cpu_node;
 +
-+		tcphy0_dp: dp-port {
-+			#phy-cells = <0>;
-+		};
++	rockchip_dailinks[DAILINK_CDNDP].codec_of_node =
++		of_parse_phandle(pdev->dev.of_node, "rockchip,codec",
++				 DAILINK_CDNDP);
++	if (!rockchip_dailinks[DAILINK_CDNDP].codec_of_node) {
++		dev_err(&pdev->dev,
++			"Property[%d] 'rockchip,codec' missing or invalid\n",
++			DAILINK_CDNDP);
++		return -EINVAL;
++	}
 +
-+		tcphy0_usb3: usb3-port {
-+			#phy-cells = <0>;
-+		};
-+	};
-+
-+	tcphy1: phy@ff800000 {
-+		compatible = "rockchip,rk3399-typec-phy";
-+		reg = <0x0 0xff800000 0x0 0x40000>;
-+		rockchip,grf = <&grf>;
-+		extcon = <&fusb1>;
-+		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-+			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-+		clock-names = "tcpdcore", "tcpdphy-ref";
-+		assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
-+		assigned-clock-rates = <50000000>;
-+		resets = <&cru SRST_UPHY1>,
-+			 <&cru SRST_UPHY1_PIPE_L00>,
-+			 <&cru SRST_P_UPHY1_TCPHY>;
-+		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
-+		rockchip,typec-conn-dir = <0xe58c 0 16>;
-+		rockchip,usb3tousb2-en = <0xe58c 3 19>;
-+		rockchip,external-psm = <0xe594 14 30>;
-+		rockchip,pipe-status = <0xe5c0 16 16>;
-+
-+		tcphy1_dp: dp-port {
-+			#phy-cells = <0>;
-+		};
-+
-+		tcphy1_usb3: usb3-port {
-+			#phy-cells = <0>;
-+		};
-+	};
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
