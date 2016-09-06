@@ -1,146 +1,45 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index
- definition for rockchip pinctrl
-Date: Tue, 6 Sep 2016 17:33:53 +0800
-Message-ID: <b8fd0df8-5f5b-b699-e4c9-fea7387b8277@rock-chips.com>
-References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com>
- <3544284.90s5nXbktR@phil>
- <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
- <5785582.C1XOtVbxro@phil>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2] ASoC: rockchip: spdif: restore register during
+ runtime_suspend/resume cycle
+Date: Tue, 6 Sep 2016 11:30:16 +0100
+Message-ID: <20160906103016.GI3950@sirena.org.uk>
+References: <1473125035-74895-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="G4uQRTjNk52FNqRv"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5785582.C1XOtVbxro@phil>
+Content-Disposition: inline
+In-Reply-To: <1473125035-74895-1-git-send-email-sugar.zhang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko:
 
+--G4uQRTjNk52FNqRv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 2016年09月06日 06:10, Heiko Stuebner wrote:
-> Am Montag, 5. September 2016, 18:22:46 CEST schrieb Andy Yan:
->> Hi Heiko:
->>
->> On 2016年09月05日 17:33, Heiko Stuebner wrote:
->>> Hi Andy,
->>>
->>> Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
->>>> There are 8 gpio banks on RK3288, so add the missing
->>>> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
->>>> to make it easier to description GPIO in dts.
->>>>
->>>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->>> I tend to disagree here.
->>>
->>> I consider the bank defines RK_GPIOx to be deprecated and highly
->>> discourage
->>> them being used in new boards. They only encode the same number again (2
->>> ->
->>> RK_GPIO2 etc) and therefore don't bring any useful addition over using the
->>> bank number directly.
->>>
->>> Slightly similar argument for the per-pin defines. While the external pins
->>> are described in the A/B/C/Dx notation for pinmux purposes, the gpio
->>> controllers on top use a regular 0-31 numbering. Also you cannot name
->>> constants generic GPIO_x, simply because that may conflict with other
->>> overly generic constant names.
->>>
->>> So I'm not yet convinced that these improve readability, but they would
->>> definitly need a RK_* prefix to make them specific.
->>>
->>>
->>> Heiko
->>           I consider for a people who doesn't familiar with rockchip
->> pinctrl, He
->>    may don't know what does these number 2/4/17....stands for in the dts
->> like
->>    rockchip,pins = <2 17 RK_FUNC_GPIO &pcfg_pull_up>.
-> That person shouldn't work on devicetrees anyway :-) ... or simply read the
-> dt-binding for the pinctrl at first ... which should normally really be the
-> first step, otherwise we wouldn't need the binding documentation.
+On Tue, Sep 06, 2016 at 09:23:55AM +0800, Sugar Zhang wrote:
 
-     It's true that people who wants to develop in the kernel should 
-know the technical detail  as much as possible.
-But I still thinks it's a good thing if we can write code more clearly 
-to  let people know what it stands for at first sight.
->>           But if we use meaningful macro here like : rockchip,pins =
->> <RK_GPIO2 RK_GPIO_C0 RK_FUNC_GPIO &pcfg_pull_up>, I think it easier to
->> tell people this GPIO is GPIO_C0 of BNAK2.
-> I definitly don't agree for the gpio-bank number, see above .
->
->> Especially all the GPIOs in rockchip based schematic are described as
->> GPIOn_A/B/C/Dx. And it is also easier for people to directly use a macro
->> stands for 0~32 than translating A/B/C/Dx from the schematic to 0~32.
-> But the pins might in fact really be helpful, but definitly need a prefix and
-> maybe even distinguish between pin and gpio, aka RK_PIN_A0 etc?
->
+>  	struct rk_spdif_dev *spdif = dev_get_drvdata(dev);
+> -	int ret;
+> +	int ret = 0;
 
-     Anyway, very glad to see you think the pin definition is helpful, 
-so let's move on.
-I'll send a new version with the prefix as your suggested  like 
-RK_PA/B/C/Dx.
+Same here.
 
-     Thanks.
-> Heiko
->
->>>> ---
->>>>
->>>>    include/dt-bindings/pinctrl/rockchip.h | 35
->>>>
->>>> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
->>>>
->>>> diff --git a/include/dt-bindings/pinctrl/rockchip.h
->>>> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
->>>> --- a/include/dt-bindings/pinctrl/rockchip.h
->>>> +++ b/include/dt-bindings/pinctrl/rockchip.h
->>>> @@ -24,6 +24,41 @@
->>>>
->>>>    #define RK_GPIO3	3
->>>>    #define RK_GPIO4	4
->>>>    #define RK_GPIO6	6
->>>>
->>>> +#define RK_GPIO7	7
->>>> +#define RK_GPIO8	8
->>>> +
->>>> +#define GPIO_A0		0
->>>> +#define GPIO_A1		1
->>>> +#define GPIO_A2		2
->>>> +#define GPIO_A3		3
->>>> +#define GPIO_A4		4
->>>> +#define GPIO_A5		5
->>>> +#define GPIO_A6		6
->>>> +#define GPIO_A7		7
->>>> +#define GPIO_B0		8
->>>> +#define GPIO_B1		9
->>>> +#define GPIO_B2		10
->>>> +#define GPIO_B3		11
->>>> +#define GPIO_B4		12
->>>> +#define GPIO_B5		13
->>>> +#define GPIO_B6		14
->>>> +#define GPIO_B7		15
->>>> +#define GPIO_C0		16
->>>> +#define GPIO_C1		17
->>>> +#define GPIO_C2		18
->>>> +#define GPIO_C3		19
->>>> +#define GPIO_C4		20
->>>> +#define GPIO_C5		21
->>>> +#define GPIO_C6		22
->>>> +#define GPIO_C7		23
->>>> +#define GPIO_D0		24
->>>> +#define GPIO_D1		25
->>>> +#define GPIO_D2		26
->>>> +#define GPIO_D3		27
->>>> +#define GPIO_D4		28
->>>> +#define GPIO_D5		29
->>>> +#define GPIO_D6		30
->>>> +#define GPIO_D7		31
->>>>
->>>>    #define RK_FUNC_GPIO	0
->>>>    #define RK_FUNC_1	1
->
->
->
->
+--G4uQRTjNk52FNqRv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBCAAGBQJXzpq3AAoJECTWi3JdVIfQ3swH/133Um5yZ0xntQdHGV+Igplp
+EDr2KNfP5x7ZtSr2568zUDNJyFQknwFOmSIzSLqlUHPtIeyVKlINl5b1gYY7qmep
+VWLudttlrKZbBLQr8ckGhQCg5CJ8fHytgY6DdDlbixeBS7ZKWOcuU6ao94Tce936
+JKdrSJIsc0ruAr1nNc6qrVZpn5jGRGFpliBil5uRaEmIYsDALUlom3HiL9cCPlHa
+QTUCAICCLJbTy3V2eFvQg1HDhwUkGU8E4hfu3qXpw/lH3FmYm49CcLA6iftbRABu
+WQLCw/bnEKDFV5eUHotkgk8SJe/MsiLaLEvcSs1EO6ChJTd0pZBge7/p2Xc2v14=
+=haJh
+-----END PGP SIGNATURE-----
+
+--G4uQRTjNk52FNqRv--
