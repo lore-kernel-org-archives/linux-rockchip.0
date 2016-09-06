@@ -1,85 +1,146 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in
- rk3288 platform
-Date: Tue, 6 Sep 2016 10:44:10 +0530
-Message-ID: <57CE50A2.7080502@ti.com>
-References: <1472939729-15187-1-git-send-email-ayaka@soulik.info>
- <1472939729-15187-4-git-send-email-ayaka@soulik.info>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH 3/4] include: dt-bindings: Add more GPIO bank and index
+ definition for rockchip pinctrl
+Date: Tue, 6 Sep 2016 17:33:53 +0800
+Message-ID: <b8fd0df8-5f5b-b699-e4c9-fea7387b8277@rock-chips.com>
+References: <1472977937-758-1-git-send-email-andy.yan@rock-chips.com>
+ <3544284.90s5nXbktR@phil>
+ <0dbac4cd-7f67-5052-16e6-463896bf5929@rock-chips.com>
+ <5785582.C1XOtVbxro@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472939729-15187-4-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5785582.C1XOtVbxro@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Heiko:
 
-On Sunday 04 September 2016 03:25 AM, Randy Li wrote:
-> On the rk3288 USB host-only port (the one that's not the OTG-enabled
-> port) the PHY can get into a bad state when a wakeup is asserted (not
-> just a wakeup from full system suspend but also a wakeup from
-> autosuspend).
-> 
-> We can get the PHY out of its bad state by asserting its "port reset",
-> but unfortunately that seems to assert a reset onto the USB bus so it
-> could confuse things if we don't actually deenumerate / reenumerate the
-> device.
-> 
-> We can also get the PHY out of its bad state by fully resetting it using
-> the reset from the CRU (clock reset unit) in chip, which does a more full
-> reset.  The CRU-based reset appears to actually cause devices on the bus
-> to be removed and reinserted, which fixes the problem (albeit in a hacky
-> way).
-> 
-> It's unfortunate that we need to do a full re-enumeration of devices at
-> wakeup time, but this is better than alternative of letting the bus get
-> wedged.
-> 
-> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-> ---
->  drivers/usb/dwc2/core_intr.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-> index d85c5c9..08485b7 100644
-> --- a/drivers/usb/dwc2/core_intr.c
-> +++ b/drivers/usb/dwc2/core_intr.c
-> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
->  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
->  {
->  	int ret;
-> +	struct device_node *np = hsotg->dev->of_node;
->  
->  	/* Clear interrupt */
->  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-> @@ -379,6 +380,17 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
->  			/* Restart the Phy Clock */
->  			pcgcctl &= ~PCGCTL_STOPPCLK;
->  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
-> +
-> +			/*
-> +			 * It is a quirk in Rockchip RK3288, causing by
-> +			 * a hardware bug. This will propagate out and
-> +			 * eventually we'll re-enumerate the device. 
-> +			 * Not great but the best we can do 
-> +			 */
-> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb")
-> +					&& (NULL != hsotg->phy->ops->reset))
-> +				hsotg->phy->ops->reset(hsotg->phy);
 
-never call the phy ops directly from the controller driver. It has to be
-protected as well.
+On 2016年09月06日 06:10, Heiko Stuebner wrote:
+> Am Montag, 5. September 2016, 18:22:46 CEST schrieb Andy Yan:
+>> Hi Heiko:
+>>
+>> On 2016年09月05日 17:33, Heiko Stuebner wrote:
+>>> Hi Andy,
+>>>
+>>> Am Sonntag, 4. September 2016, 16:35:30 CEST schrieb Andy Yan:
+>>>> There are 8 gpio banks on RK3288, so add the missing
+>>>> RK_GPIO7 and RK_GPIO8. Also add gpio index definition
+>>>> to make it easier to description GPIO in dts.
+>>>>
+>>>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>>> I tend to disagree here.
+>>>
+>>> I consider the bank defines RK_GPIOx to be deprecated and highly
+>>> discourage
+>>> them being used in new boards. They only encode the same number again (2
+>>> ->
+>>> RK_GPIO2 etc) and therefore don't bring any useful addition over using the
+>>> bank number directly.
+>>>
+>>> Slightly similar argument for the per-pin defines. While the external pins
+>>> are described in the A/B/C/Dx notation for pinmux purposes, the gpio
+>>> controllers on top use a regular 0-31 numbering. Also you cannot name
+>>> constants generic GPIO_x, simply because that may conflict with other
+>>> overly generic constant names.
+>>>
+>>> So I'm not yet convinced that these improve readability, but they would
+>>> definitly need a RK_* prefix to make them specific.
+>>>
+>>>
+>>> Heiko
+>>           I consider for a people who doesn't familiar with rockchip
+>> pinctrl, He
+>>    may don't know what does these number 2/4/17....stands for in the dts
+>> like
+>>    rockchip,pins = <2 17 RK_FUNC_GPIO &pcfg_pull_up>.
+> That person shouldn't work on devicetrees anyway :-) ... or simply read the
+> dt-binding for the pinctrl at first ... which should normally really be the
+> first step, otherwise we wouldn't need the binding documentation.
 
-Thanks
-Kishon
+     It's true that people who wants to develop in the kernel should 
+know the technical detail  as much as possible.
+But I still thinks it's a good thing if we can write code more clearly 
+to  let people know what it stands for at first sight.
+>>           But if we use meaningful macro here like : rockchip,pins =
+>> <RK_GPIO2 RK_GPIO_C0 RK_FUNC_GPIO &pcfg_pull_up>, I think it easier to
+>> tell people this GPIO is GPIO_C0 of BNAK2.
+> I definitly don't agree for the gpio-bank number, see above .
+>
+>> Especially all the GPIOs in rockchip based schematic are described as
+>> GPIOn_A/B/C/Dx. And it is also easier for people to directly use a macro
+>> stands for 0~32 than translating A/B/C/Dx from the schematic to 0~32.
+> But the pins might in fact really be helpful, but definitly need a prefix and
+> maybe even distinguish between pin and gpio, aka RK_PIN_A0 etc?
+>
+
+     Anyway, very glad to see you think the pin definition is helpful, 
+so let's move on.
+I'll send a new version with the prefix as your suggested  like 
+RK_PA/B/C/Dx.
+
+     Thanks.
+> Heiko
+>
+>>>> ---
+>>>>
+>>>>    include/dt-bindings/pinctrl/rockchip.h | 35
+>>>>
+>>>> ++++++++++++++++++++++++++++++++++ 1 file changed, 35 insertions(+)
+>>>>
+>>>> diff --git a/include/dt-bindings/pinctrl/rockchip.h
+>>>> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..fd35350 100644
+>>>> --- a/include/dt-bindings/pinctrl/rockchip.h
+>>>> +++ b/include/dt-bindings/pinctrl/rockchip.h
+>>>> @@ -24,6 +24,41 @@
+>>>>
+>>>>    #define RK_GPIO3	3
+>>>>    #define RK_GPIO4	4
+>>>>    #define RK_GPIO6	6
+>>>>
+>>>> +#define RK_GPIO7	7
+>>>> +#define RK_GPIO8	8
+>>>> +
+>>>> +#define GPIO_A0		0
+>>>> +#define GPIO_A1		1
+>>>> +#define GPIO_A2		2
+>>>> +#define GPIO_A3		3
+>>>> +#define GPIO_A4		4
+>>>> +#define GPIO_A5		5
+>>>> +#define GPIO_A6		6
+>>>> +#define GPIO_A7		7
+>>>> +#define GPIO_B0		8
+>>>> +#define GPIO_B1		9
+>>>> +#define GPIO_B2		10
+>>>> +#define GPIO_B3		11
+>>>> +#define GPIO_B4		12
+>>>> +#define GPIO_B5		13
+>>>> +#define GPIO_B6		14
+>>>> +#define GPIO_B7		15
+>>>> +#define GPIO_C0		16
+>>>> +#define GPIO_C1		17
+>>>> +#define GPIO_C2		18
+>>>> +#define GPIO_C3		19
+>>>> +#define GPIO_C4		20
+>>>> +#define GPIO_C5		21
+>>>> +#define GPIO_C6		22
+>>>> +#define GPIO_C7		23
+>>>> +#define GPIO_D0		24
+>>>> +#define GPIO_D1		25
+>>>> +#define GPIO_D2		26
+>>>> +#define GPIO_D3		27
+>>>> +#define GPIO_D4		28
+>>>> +#define GPIO_D5		29
+>>>> +#define GPIO_D6		30
+>>>> +#define GPIO_D7		31
+>>>>
+>>>>    #define RK_FUNC_GPIO	0
+>>>>    #define RK_FUNC_1	1
+>
+>
+>
+>
