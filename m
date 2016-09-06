@@ -1,46 +1,63 @@
-From: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in rk3288 platform
-Date: Tue, 6 Sep 2016 07:38:34 +0800
-Message-ID: <B43AE00F-5B70-4522-B5B7-DB02A5D02E8B@soulik.info>
-References: <1472939729-15187-1-git-send-email-ayaka@soulik.info> <1472939729-15187-4-git-send-email-ayaka@soulik.info> <063D6719AE5E284EB5DD2968C1650D6DB00F483E@AcuExch.aculab.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain;
-        charset=big5
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <063D6719AE5E284EB5DD2968C1650D6DB00F483E-VkEWCZq2GCInGFn1LkZF6NBPR1lH4CV8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Laight <David.Laight-ZS65k/vG3HxXrIkS9f7CXA@public.gmane.org>
-Cc: "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH v2] ASoC: rockchip: i2s: restore register during runtime_suspend/resume cycle
+Date: Tue,  6 Sep 2016 09:19:53 +0800
+Message-ID: <1473124793-74625-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dianders@chromium.org, broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+when step into runtime_suspend, i2s pd will be disabled and loss state.
+so need to restore register when runtime_resume.
 
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-從我的 iPad 傳送
+---
 
-> David Laight <David.Laight-ZS65k/vG3HxXrIkS9f7CXA@public.gmane.org> 於 2016年9月5日 下午9:35 寫道：
-> 
-> From: Randy Li
->> Sent: 03 September 2016 22:55
-> ...
->> +            if (of_device_is_compatible(np, "rockchip,rk3288-usb")
->> +                    && (NULL != hsotg->phy->ops->reset))
->> +                hsotg->phy->ops->reset(hsotg->phy);
->> +
-> 
-> Is this the only place ops->reset() is called?
-Yes.
-> Probably much better to check it first.
-Sure.
-> 
->            if (hsotg->phy->ops->reset
->                    && of_device_is_compatible(np, "rockchip,rk3288-usb")
->                hsotg->phy->ops->reset(hsotg->phy);
-I see, if there is no the other review request for this version, I would submit a new version to fix this problem tonight.
-> 
->    David
+Changes in v2:
+- remove system suspend/resume and restore register
+  in runtime_suspend/resume per Doug Anderson's suggestion
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ sound/soc/rockchip/rockchip_i2s.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 652e8c5..98b6822 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -57,6 +57,7 @@ static int i2s_runtime_suspend(struct device *dev)
+ {
+ 	struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
+ 
++	regcache_cache_only(i2s->regmap, true);
+ 	clk_disable_unprepare(i2s->mclk);
+ 
+ 	return 0;
+@@ -65,7 +66,7 @@ static int i2s_runtime_suspend(struct device *dev)
+ static int i2s_runtime_resume(struct device *dev)
+ {
+ 	struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
+-	int ret;
++	int ret = 0;
+ 
+ 	ret = clk_prepare_enable(i2s->mclk);
+ 	if (ret) {
+@@ -73,7 +74,14 @@ static int i2s_runtime_resume(struct device *dev)
+ 		return ret;
+ 	}
+ 
+-	return 0;
++	regcache_cache_only(i2s->regmap, false);
++	regcache_mark_dirty(i2s->regmap);
++
++	ret = regcache_sync(i2s->regmap);
++	if (ret)
++		clk_disable_unprepare(i2s->mclk);
++
++	return ret;
+ }
+ 
+ static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
+-- 
+1.9.1
