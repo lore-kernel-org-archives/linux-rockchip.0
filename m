@@ -1,43 +1,52 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 0/2] Add DP dai-links to the rk3399-gru machine driver
-Date: Mon,  5 Sep 2016 21:48:53 -0700
-Message-ID: <1473137335-14541-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 1/2] drm/rockchip: cdn-dp: support audio hot-plug
+Date: Mon,  5 Sep 2016 21:48:54 -0700
+Message-ID: <1473137335-14541-2-git-send-email-zyw@rock-chips.com>
+References: <1473137335-14541-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473137335-14541-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dianders@chromium.org, heiko@sntech.de, zhengxing@rock-chips.com, cychiang@chromium.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Hi
-
-This series patch is for the machine driver supporting for DP.
-
-It base on the DP drvier patches[0] and hdmi-notify patches[1], they are both
-in reviewing.
-
-[0]
-https://patchwork.kernel.org/patch/9315557/
-https://patchwork.kernel.org/patch/9278077/
-
-[1]
-https://patchwork.kernel.org/patch/8887261/
-https://patchwork.kernel.org/patch/8887251/
-
-
-Chris Zhong (2):
-  drm/rockchip: cdn-dp: support audio hot-plug
-  ASoC: rockchip: Add DP dai-links to the rk3399-gru machine driver
-
- .../bindings/sound/rockchip,rk3399-gru-sound.txt   | 13 +++---
- drivers/gpu/drm/rockchip/cdn-dp-core.c             |  4 ++
- sound/soc/rockchip/rk3399_gru_sound.c              | 48 ++++++++++++++++++++++
- 3 files changed, 59 insertions(+), 6 deletions(-)
-
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SXNzdWUgaG90LXBsdWcgZGV0ZWN0aW9uLCBFRElEIHVwZGF0ZSwgYW5kIEVMRCB1cGRhdGUgbm90
+aWZpY2F0aW9ucwpmcm9tIERQIGRyaXZlcnMuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8
+enl3QHJvY2stY2hpcHMuY29tPgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRw
+LWNvcmUuYyB8IDQgKysrKwogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQoKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKaW5kZXggNTMwYjdiYS4uZTAwNTVhOSAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKQEAgLTIzLDYgKzIzLDcgQEAKICNp
+bmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KICNpbmNsdWRlIDxsaW51eC9leHRjb24uaD4KICNp
+bmNsdWRlIDxsaW51eC9maXJtd2FyZS5oPgorI2luY2x1ZGUgPGxpbnV4L2hkbWktbm90aWZpZXIu
+aD4KICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KICNpbmNsdWRlIDxsaW51eC9yZXNldC5oPgog
+I2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KQEAgLTE4NSw2ICsxODYsNyBAQCBzdGF0aWMg
+aW50IGNkbl9kcF9jb25uZWN0b3JfZ2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25u
+ZWN0b3IpCiAJCQlkcm1fbW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoY29ubmVj
+dG9yLAogCQkJCQkJCQllZGlkKTsKIAkJCWRybV9lZGlkX3RvX2VsZChjb25uZWN0b3IsIGVkaWQp
+OworCQkJaGRtaV9ldmVudF9uZXdfZWxkKGRwLT5kZXYsIGNvbm5lY3Rvci0+ZWxkKTsKIAkJfQog
+CQlrZnJlZShlZGlkKTsKIAl9CkBAIC0zNDUsNiArMzQ3LDcgQEAgc3RhdGljIHZvaWQgY2RuX2Rw
+X2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIAogCWlmIChkcC0+
+ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNfT04pCiAJCWNkbl9kcF9jb21taXQoZW5jb2Rlcik7
+CisJaGRtaV9ldmVudF9jb25uZWN0KGRwLT5kZXYpOwogfQogCiBzdGF0aWMgdm9pZCBjZG5fZHBf
+ZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKQEAgLTM1Miw2ICsz
+NTUsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5j
+b2RlciAqZW5jb2RlcikKIAlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBlbmNvZGVyX3RvX2Rw
+KGVuY29kZXIpOwogCiAJZHAtPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT0ZGOworCWhkbWlf
+ZXZlbnRfZGlzY29ubmVjdChkcC0+ZGV2KTsKIH0KIAogc3RhdGljIGludCBjZG5fZHBfZW5jb2Rl
+cl9hdG9taWNfY2hlY2soc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAotLSAKMS45LjEKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
