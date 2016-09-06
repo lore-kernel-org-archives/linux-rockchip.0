@@ -1,127 +1,115 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add eMMC's power domain support
- for rk3399
-Date: Tue, 6 Sep 2016 14:34:53 +0200
-Message-ID: <CAPDyKFrAJW9D49wEgQXiuPFrgbVq6HjtQbTwj8FL6c_mx8o-wg@mail.gmail.com>
-References: <20160827134103.28160-1-xzy.xu@rock-chips.com> <20160827134103.28160-3-xzy.xu@rock-chips.com>
- <2ab8ab94-fa4d-2cd6-5805-a92ac5f9697e@rock-chips.com> <57C3A30B.5080707@rock-chips.com>
- <ceba6a89-6945-58c5-62e4-7d842cfa2312@rock-chips.com> <CAD=FV=W=LkVAm187hxp0Kbjxi5kSThwKnCMX+tr8SXQ-v_xQTQ@mail.gmail.com>
- <77f5cff1-80a2-76b3-40e9-f77caced2257@rock-chips.com> <12451b81-321e-b661-8f1c-25c91bffba54@rock-chips.com>
- <CAPDyKFqwqdu=9PSzD32aOYAeBVRMQ0s8oKA29JGBsMsRMsDz4w@mail.gmail.com>
- <CAD=FV=VQ7Gf33fH8=FM_Lj-r9uovoEHxusMrFQrDwf2rxeiecg@mail.gmail.com>
- <CAPDyKFra7L5iUJegHH43mF4Dw=wYo0PmH2g_96fNL_=oRnGgug@mail.gmail.com> <10dfff58-88b2-a397-ef2e-9cd451253c40@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] rockchip clock changes for 4.9 part 1
+Date: Tue, 06 Sep 2016 17:28:28 +0200
+Message-ID: <2115968.yvb8ppzjmL@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <10dfff58-88b2-a397-ef2e-9cd451253c40-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2 September 2016 at 16:23, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Hi Ulf,
->
->
-> On 2016=E5=B9=B409=E6=9C=8802=E6=97=A5 18:24, Ulf Hansson wrote:
->>
->> On 1 September 2016 at 23:50, Doug Anderson<dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>  wrot=
-e:
->>>
->>> >Hi,
->>> >
->>> >On Thu, Sep 1, 2016 at 6:45 AM, Ulf Hansson<ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>> > wrote:
->>>>
->>>> >>I was reading the discussion regarding this change and browsing the =
-DT
->>>> >>documentation around this... Can you guys explain what really goes o=
-n
->>>> >>here, please.
->>>> >>
->>>> >>To me, it seems like you are managing one device's resources in one
->>>> >>separate genpd. One genpd per device. Is that correct?
->>>> >>
->>>> >>Perhaps each device actually has its own PM domain and thus it makes
->>>> >>sense to assign one genpd per device?
->>>
->>> >
->>> >I'm not as familiar with genpd as I should be, so hopefully this makes
->>> > sense.
->>> >
->>> >...in hardware there is a "pd_emmc" that is the power domain for just
->>> >eMMC.  That will be referenced hooked up via device tree, like:
->>> >
->>> >power-domains =3D <&power RK3399_PD_EMMC>;
->>
->> Yes, I noticed that and this is what puzzles me a bit.
->>
->>> >
->>> >I believe that means that power will automatically be removed whenever
->>> >the device is runtime suspended or suspended.
->>
->> Well, it depends if the genpd has a subdomain or other devices in it
->> being runtime resumed.
->> The genpd will not power off unless all devices within it are runtime
->> enabled+suspended and that its subdomains are also powered off.
->>
->> So, in case you only have one device and no subdomains, then your
->> statement is correct.
->
->
-> Yup, pd_emmc is a individual power domain which is only deployed to eMMC =
-on
-> rk3399. It has no subdomains.
->
->>
->>> >
->>> >If w're not supporting "autosuspend" and nobody is tweaking anything
->>
->> I guess you mean runtime PM autosuspend? Then why don't you support this=
-?
->>
->> Wouldn't that allow you to avoid wasting power in runtime when the
->> device is idle?
->
->
-> pd_emmc manages the sdhci controller, phy and corecfg_* stuff, if we supp=
-ort
+Hi Mike, Stephen,
 
-Ohh, there are already mmc drivers dealing with phys. We can add this
-for you driver as well.
+please find below the pull request with main Rockchip-releated clock
+changes for 4.9.
 
-Regarding corecfg_*, unless that also can be managed via a generic
-interface (perhaps through syscon), then you need to manage that via
-genpd. Is that the case?
+The signed tag should hopefully explain the contents sufficiently,
+so if nothing stands out please pull.
 
-> autosuspend in driver, we have to re-init context. I didn't test the
+On the matter of critical clocks, I'm still hoping for the handover type
+to materialize soonish and am hoping of doing the conversion in one go,
+instead of making everything critical now and then having to go through
+the list yet again.
 
-Yes, that's a common scenario, many device drivers do this - as to
-avoid wasting power.
+Thanks
+Heiko
 
-> latency, if it's acceptable, we will apply it.:-)
 
-Latency constraints may be controlled via the genpd governor.
+The following changes since commit 29b4817d4018df78086157ea3a55c1d9424a7cfc:
 
-Moreover we also have the runtime PM autosuspend feature, which is
-useful when you don't wont to runtime suspend the device between each
-and every request. Thus avoiding latencies when there are a "burst" of
-requests.
+  Linux 4.8-rc1 (2016-08-07 18:18:00 -0700)
 
-> But it's not a blocker, right?
->
+are available in the git repository at:
 
-Hmm, I just want to make sure we do the right things. Else it might
-just bite us in the other end.
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.9-rockchip-clk1
 
-Again, my recommendation is to start with runtime PM then continue
-with system PM. I can imagine you will get system PM "free" if using
-the runtime PM centric approach.
+for you to fetch changes up to 7b0f9e357ac838f640b10fb3db1ac35d9a5fa8de:
 
-Kind regards
-Uffe
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+  clk: rockchip: use the dclk_vop_frac clock ids on rk3399 (2016-09-04 23:48:19 +0200)
+
+----------------------------------------------------------------
+The biggest addition is probably the special clock-type for ddr clock
+control. While reading that clock is done the normal way from the
+registers, setting it always requires some sort of special handling
+to let the system survive this addition.
+
+As the commit message explains, there are currently 3 handling-types
+known. General SRAM-based code on rk3288 and before (which is waiting
+essentially for the PIE support that is currently being worked on),
+SCPI-based clk setting on the rk3368 through a coprocessor, which we
+might support once the support for legacy scpi-variants has matured
+and now on the rk3399 (and probably later) using a dcf controller that
+is controlled from the arm-trusted-firmware and gets accessed through
+firmware calls from the kernel. This is the variant we currently
+support, but the clock type is made to support the other variants in
+the future as well.
+
+Apart from that slightly bigger chunk, we have a mix of PLL rates,
+clock-ids and flags mainly for the rk3399.
+
+And interestingly an iomap fix for the legacy gate driver, where I
+hopefully could deter the submitter from actually using that in any
+new works.
+
+----------------------------------------------------------------
+Arvind Yadav (1):
+      clk: rockchip: handle of_iomap failures in legacy clock driver
+
+Chris Zhong (1):
+      clk: rockchip: mark rk3399 hdcp_noc and vio_noc as critical
+
+Douglas Anderson (1):
+      clk: rockchip: drop CLK_SET_RATE_PARENT from rk3399 fractional dividers
+
+Elaine Zhang (1):
+      clk: rockchip: delete the CLK_IGNORE_UNUSED from aclk_pcie on rk3399
+
+Heiko Stuebner (2):
+      Merge branch 'v4.9-shared/sip-hdr' into v4.9-clk/next
+      Merge branch 'v4.9-shared/clkids' into v4.9-clk/next
+
+Heiko Stübner (1):
+      clk: rockchip: use general clock flag when registering pll
+
+Lin Huang (4):
+      clk: rockchip: add SCLK_DDRC id for rk3399 ddrc
+      soc: rockchip: add header for ddr rate SIP interface
+      clk: rockchip: add new clock-type for the ddrclk
+      clk: rockchip: add rk3399 ddr clock support
+
+Shunqian Zheng (1):
+      clk: rockchip: add 2016M to big cpu clk rate table on rk3399
+
+Xing Zheng (1):
+      clk: rockchip: add 65MHz and 106.5MHz rates to rk3399 plls used for HDMI
+
+Yakir Yang (2):
+      clk: rockchip: add dclk_vop_frac ids for rk3399 vop
+      clk: rockchip: use the dclk_vop_frac clock ids on rk3399
+
+ drivers/clk/rockchip/Makefile          |   1 +
+ drivers/clk/rockchip/clk-ddr.c         | 154 +++++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk-pll.c         |   4 +-
+ drivers/clk/rockchip/clk-rk3399.c      |  56 ++++++++----
+ drivers/clk/rockchip/clk-rockchip.c    |   7 +-
+ drivers/clk/rockchip/clk.c             |  11 ++-
+ drivers/clk/rockchip/clk.h             |  35 +++++++-
+ include/dt-bindings/clock/rk3399-cru.h |   3 +
+ include/soc/rockchip/rockchip_sip.h    |  27 ++++++
+ 9 files changed, 278 insertions(+), 20 deletions(-)
+ create mode 100644 drivers/clk/rockchip/clk-ddr.c
+ create mode 100644 include/soc/rockchip/rockchip_sip.h
+
