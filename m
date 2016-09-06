@@ -1,295 +1,91 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v10 5/5] drm/rockchip: Add dmc notifier in vop driver
-Date: Wed, 7 Sep 2016 02:15:32 +0800
-Message-ID: <57CF07C4.30508@rock-chips.com>
-References: <1473051971-5500-1-git-send-email-hl@rock-chips.com>
- <1473051971-5500-6-git-send-email-hl@rock-chips.com>
- <CAOw6vb+N4ASTAu49VBPyOAUH=S4rrUBOgZOEP-RTvijEgeN7HA@mail.gmail.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in
+ rk3288 platform
+Date: Tue, 6 Sep 2016 11:54:16 -0700
+Message-ID: <ba3e8239-6909-9de1-9cc5-f7ae80825f58@synopsys.com>
+References: <1472939729-15187-1-git-send-email-ayaka@soulik.info>
+ <1472939729-15187-4-git-send-email-ayaka@soulik.info>
+ <57CE50A2.7080502@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAOw6vb+N4ASTAu49VBPyOAUH=S4rrUBOgZOEP-RTvijEgeN7HA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@google.com>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, ??? <myungjoo.ham@samsung.com>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, cw00.choi@samsung.com, Dave Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, dbasehore@chromium.org, Stephen Boyd <sboyd@codeaurora.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, Jon Medhurst <tixy@linaro.org>, typ@rock-chips.com, sudeep.holla@arm.com, Mark Rutland <mark.rutland@arm.com>, linux-pm@vger.kernel.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <57CE50A2.7080502-l0cyMroinI0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On 2016年09月07日 01:18, Sean Paul wrote:
-> On Mon, Sep 5, 2016 at 1:06 AM, Lin Huang <hl@rock-chips.com> wrote:
->> when in ddr frequency scaling process, vop can not do enable or
->> disable operation, since in dcf we check vop clock to see whether
->> vop work. If vop work, dcf do ddr frequency scaling when vop
->> in vblank status, and we need to read vop register to check whether
->> vop go into vblank status. If vop not work, dcf can do ddr frequency
->> any time. So when do ddr frequency scaling, you disabled or enable
->> vop, there may two bad thing happen: 1, the panel flicker(when vop from
->> disable status change to enable). 2, kernel hang (when vop from enable
->> status change to disable, dcf need to read vblank status, but if you disable
->> vop clock, it can not get the status, it will lead soc dead) So we need
->> register to devfreq notifier, and we can get the dmc status. Also, when
->> there have two vop enabled, we need to disable dmc, since dcf only base
->> on one vop vblank time, so the other panel will flicker when do ddr
->> frequency scaling.
+On 9/5/2016 10:15 PM, Kishon Vijay Abraham I wrote:
+> Hi,
+> 
+> On Sunday 04 September 2016 03:25 AM, Randy Li wrote:
+>> On the rk3288 USB host-only port (the one that's not the OTG-enabled
+>> port) the PHY can get into a bad state when a wakeup is asserted (not
+>> just a wakeup from full system suspend but also a wakeup from
+>> autosuspend).
 >>
->> Signed-off-by: Lin Huang <hl@rock-chips.com>
->> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
+>> We can get the PHY out of its bad state by asserting its "port reset",
+>> but unfortunately that seems to assert a reset onto the USB bus so it
+>> could confuse things if we don't actually deenumerate / reenumerate the
+>> device.
+>>
+>> We can also get the PHY out of its bad state by fully resetting it using
+>> the reset from the CRU (clock reset unit) in chip, which does a more full
+>> reset.  The CRU-based reset appears to actually cause devices on the bus
+>> to be removed and reinserted, which fixes the problem (albeit in a hacky
+>> way).
+>>
+>> It's unfortunate that we need to do a full re-enumeration of devices at
+>> wakeup time, but this is better than alternative of letting the bus get
+>> wedged.
+>>
+>> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 >> ---
->> Changes in v10:
->> - None
+>>  drivers/usb/dwc2/core_intr.c | 12 ++++++++++++
+>>  1 file changed, 12 insertions(+)
 >>
->> Changes in v9:
->> - None
->>
->> Changes in v8:
->> - None
->>
->> Changes in v7:
->> - None
->>
->> Changes in v6:
->> - fix a build error
->>
->> Changes in v5:
->> - improve some nits
->>
->> Changes in v4:
->> - register notifier to devfreq_register_notifier
->> - use DEVFREQ_PRECHANGE and DEVFREQ_POSTCHANGE to get dmc status
->> - when two vop enable, disable dmc
->> - when two vop back to one vop, enable dmc
->>
->> Changes in v3:
->> - when do vop eanble/disable, dmc will wait until it finish
->>
->> Changes in v2:
->> - None
->>
->> Changes in v1:
->> - use wait_event instead usleep
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 116 ++++++++++++++++++++++++++++
->>   1 file changed, 116 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> index efbc41a..a73f3aa 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> @@ -19,6 +19,8 @@
->>   #include <drm/drm_crtc_helper.h>
->>   #include <drm/drm_plane_helper.h>
->>
->> +#include <linux/devfreq.h>
->> +#include <linux/devfreq-event.h>
->>   #include <linux/kernel.h>
->>   #include <linux/module.h>
->>   #include <linux/platform_device.h>
->> @@ -118,6 +120,13 @@ struct vop {
->>
->>          const struct vop_data *data;
->>
->> +       struct devfreq *devfreq;
->> +       struct devfreq_event_dev *devfreq_event_dev;
->> +       struct notifier_block dmc_nb;
->> +       int dmc_in_process;
->> +       int vop_switch_status;
->> +       wait_queue_head_t wait_dmc_queue;
->> +       wait_queue_head_t wait_vop_switch_queue;
->>          uint32_t *regsbak;
->>          void __iomem *regs;
->>
->> @@ -428,11 +437,47 @@ static void vop_dsp_hold_valid_irq_disable(struct vop *vop)
->>          spin_unlock_irqrestore(&vop->irq_lock, flags);
->>   }
->>
->> +static int dmc_notify(struct notifier_block *nb, unsigned long event,
->> +                     void *data)
->> +{
->> +       struct vop *vop = container_of(nb, struct vop, dmc_nb);
+>> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+>> index d85c5c9..08485b7 100644
+>> --- a/drivers/usb/dwc2/core_intr.c
+>> +++ b/drivers/usb/dwc2/core_intr.c
+>> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
+>>  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>  {
+>>  	int ret;
+>> +	struct device_node *np = hsotg->dev->of_node;
+>>  
+>>  	/* Clear interrupt */
+>>  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
+>> @@ -379,6 +380,17 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>  			/* Restart the Phy Clock */
+>>  			pcgcctl &= ~PCGCTL_STOPPCLK;
+>>  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
 >> +
->> +       if (event == DEVFREQ_PRECHANGE) {
->> +               /*
->> +                * check if vop in enable or disable process,
->> +                * if yes, wait until it finishes, use 200ms as
->> +                * timeout.
->> +                */
->> +               if (!wait_event_timeout(vop->wait_vop_switch_queue,
->> +                                       !vop->vop_switch_status, HZ / 5))
->> +                       dev_warn(vop->dev,
->> +                                "Timeout waiting for vop swtich status\n");
->> +               vop->dmc_in_process = 1;
->> +       } else if (event == DEVFREQ_POSTCHANGE) {
->> +               vop->dmc_in_process = 0;
->> +               wake_up(&vop->wait_dmc_queue);
->> +       }
->> +
->> +       return NOTIFY_OK;
->> +}
->> +
->>   static int vop_enable(struct drm_crtc *crtc)
->>   {
->>          struct vop *vop = to_vop(crtc);
->> +       int num_enabled_crtc = 0;
->>          int ret;
->>
->> +       /*
->> +        * if in dmc scaling frequency process, wait until it finishes
->> +        * use 200ms as timeout time.
->> +        */
->> +       if (!wait_event_timeout(vop->wait_dmc_queue,
->> +                               !vop->dmc_in_process, HZ / 5))
->> +               dev_warn(vop->dev,
->> +                        "Timeout waiting for dmc when vop enable\n");
->> +
->
-> This wait_event_timeout code is terribly racey (same goes above and below).
-   No i use the vop_switch_status and dmc_in_progress to handle the vop 
-and dmc racey,
-    I assume this can fix the racey now. I do not better a idea now.
->
->
->> +       vop->vop_switch_status = 1;
->> +
->>          ret = pm_runtime_get_sync(vop->dev);
->>          if (ret < 0) {
->>                  dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
->> @@ -479,6 +524,21 @@ static int vop_enable(struct drm_crtc *crtc)
->>
->>          drm_crtc_vblank_on(crtc);
->>
->> +       vop->vop_switch_status = 0;
->> +       wake_up(&vop->wait_vop_switch_queue);
->> +
->> +       /* check how many VOPs in use now */
->> +       drm_for_each_crtc(crtc, vop->drm_dev) {
->> +               if (crtc->state->enable)
-> I think you really want to check active, instead of enable.
-Okay, i will check it, thanks.
->
->> +                       num_enabled_crtc++;
->> +       }
->> +
->> +       /* if enable two vop, need to disable dmc */
->> +       if ((num_enabled_crtc > 1) && vop->devfreq) {
->> +               if (vop->devfreq_event_dev)
->> +                       devfreq_event_disable_edev(vop->devfreq_event_dev);
->> +               devfreq_suspend_device(vop->devfreq);
->> +       }
-> This really feels like something that should be handled somewhere
-> else. I don't fully understand how this works, but it seems like this
-> dependency should be handled where it actually matters, rather than
-> building in a seemingly arbitrary restriction in the vop driver.
->
-> Even if this is the best place for it, this needs to be refactored to
-> eliminate the races that exist now.
->
-> Sean
->
->>          return 0;
->>
->>   err_disable_aclk:
->> @@ -489,17 +549,31 @@ err_disable_hclk:
->>          clk_disable(vop->hclk);
->>   err_put_pm_runtime:
->>          pm_runtime_put_sync(vop->dev);
->> +       vop->vop_switch_status = 0;
->> +       wake_up(&vop->wait_vop_switch_queue);
->>          return ret;
->>   }
->>
->>   static void vop_crtc_disable(struct drm_crtc *crtc)
->>   {
->>          struct vop *vop = to_vop(crtc);
->> +       int num_enabled_crtc = 0;
->>          int i;
->>
->>          WARN_ON(vop->event);
->>
->>          /*
->> +        * if in dmc scaling frequency process, wait until it finish
->> +        * use 200ms as timeout time.
->> +        */
->> +       if (!wait_event_timeout(vop->wait_dmc_queue,
->> +                               !vop->dmc_in_process, HZ / 5))
->> +               dev_warn(vop->dev,
->> +                        "Timeout waiting for dmc when vop disable\n");
->> +
->> +       vop->vop_switch_status = 1;
->> +
->> +       /*
->>           * We need to make sure that all windows are disabled before we
->>           * disable that crtc. Otherwise we might try to scan from a destroyed
->>           * buffer later.
->> @@ -555,6 +629,24 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
->>                  spin_unlock_irq(&crtc->dev->event_lock);
->>
->>                  crtc->state->event = NULL;
->> +
->> +       vop->vop_switch_status = 0;
->> +       wake_up(&vop->wait_vop_switch_queue);
->> +
->> +       /* check how many VOPs in use now */
->> +       drm_for_each_crtc(crtc, vop->drm_dev) {
->> +               if (crtc->state->enable)
->> +                       num_enabled_crtc++;
->> +       }
->> +
->> +       /*
->> +        * if num_enabled_crtc = 1 now, it means 2 vop enabled
->> +        * change to 1 vop enabled  need to enable dmc again.
->> +        */
->> +       if ((num_enabled_crtc == 1) && vop->devfreq) {
->> +               if (vop->devfreq_event_dev)
->> +                       devfreq_event_enable_edev(vop->devfreq_event_dev);
->> +               devfreq_resume_device(vop->devfreq);
->>          }
->>   }
->>
->> @@ -1413,6 +1505,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
->>          struct drm_device *drm_dev = data;
->>          struct vop *vop;
->>          struct resource *res;
->> +       struct devfreq *devfreq;
->> +       struct devfreq_event_dev *event_dev;
->>          size_t alloc_size;
->>          int ret, irq;
->>
->> @@ -1474,6 +1568,28 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
->>                  return ret;
->>
->>          pm_runtime_enable(&pdev->dev);
->> +
->> +       init_waitqueue_head(&vop->wait_vop_switch_queue);
->> +       vop->vop_switch_status = 0;
->> +       init_waitqueue_head(&vop->wait_dmc_queue);
->> +       vop->dmc_in_process = 0;
->> +
->> +       devfreq = devfreq_get_devfreq_by_phandle(dev, 0);
->> +       if (IS_ERR(devfreq))
->> +               goto out;
->> +
->> +       vop->devfreq = devfreq;
->> +       vop->dmc_nb.notifier_call = dmc_notify;
->> +       devfreq_register_notifier(vop->devfreq, &vop->dmc_nb,
->> +                                 DEVFREQ_TRANSITION_NOTIFIER);
->> +
->> +       event_dev = devfreq_event_get_edev_by_phandle(vop->devfreq->dev.parent,
->> +                                                     0);
->> +       if (IS_ERR(event_dev))
->> +               goto out;
->> +
->> +       vop->devfreq_event_dev = event_dev;
->> +out:
->>          return 0;
->>   }
->>
->> --
->> 2.6.6
->>
->
->
+>> +			/*
+>> +			 * It is a quirk in Rockchip RK3288, causing by
+>> +			 * a hardware bug. This will propagate out and
+>> +			 * eventually we'll re-enumerate the device. 
+>> +			 * Not great but the best we can do 
+>> +			 */
+>> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb")
+>> +					&& (NULL != hsotg->phy->ops->reset))
+>> +				hsotg->phy->ops->reset(hsotg->phy);
+> 
+> never call the phy ops directly from the controller driver. It has to be
+> protected as well.
 
--- 
-Lin Huang
+It looks like we should be calling an API function instead, correct?
+
+Similar to the wrappers for the other ops.
+
+Regards,
+John
