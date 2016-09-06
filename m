@@ -1,52 +1,136 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH 1/2] drm/rockchip: cdn-dp: support audio hot-plug
-Date: Mon,  5 Sep 2016 21:48:54 -0700
-Message-ID: <1473137335-14541-2-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH 2/2] ASoC: rockchip: Add DP dai-links to the rk3399-gru machine driver
+Date: Mon,  5 Sep 2016 21:48:55 -0700
+Message-ID: <1473137335-14541-3-git-send-email-zyw@rock-chips.com>
 References: <1473137335-14541-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1473137335-14541-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dianders@chromium.org, heiko@sntech.de, zhengxing@rock-chips.com, cychiang@chromium.org
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SXNzdWUgaG90LXBsdWcgZGV0ZWN0aW9uLCBFRElEIHVwZGF0ZSwgYW5kIEVMRCB1cGRhdGUgbm90
-aWZpY2F0aW9ucwpmcm9tIERQIGRyaXZlcnMuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8
-enl3QHJvY2stY2hpcHMuY29tPgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRw
-LWNvcmUuYyB8IDQgKysrKwogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKaW5kZXggNTMwYjdiYS4uZTAwNTVhOSAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKQEAgLTIzLDYgKzIzLDcgQEAKICNp
-bmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KICNpbmNsdWRlIDxsaW51eC9leHRjb24uaD4KICNp
-bmNsdWRlIDxsaW51eC9maXJtd2FyZS5oPgorI2luY2x1ZGUgPGxpbnV4L2hkbWktbm90aWZpZXIu
-aD4KICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KICNpbmNsdWRlIDxsaW51eC9yZXNldC5oPgog
-I2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KQEAgLTE4NSw2ICsxODYsNyBAQCBzdGF0aWMg
-aW50IGNkbl9kcF9jb25uZWN0b3JfZ2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25u
-ZWN0b3IpCiAJCQlkcm1fbW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoY29ubmVj
-dG9yLAogCQkJCQkJCQllZGlkKTsKIAkJCWRybV9lZGlkX3RvX2VsZChjb25uZWN0b3IsIGVkaWQp
-OworCQkJaGRtaV9ldmVudF9uZXdfZWxkKGRwLT5kZXYsIGNvbm5lY3Rvci0+ZWxkKTsKIAkJfQog
-CQlrZnJlZShlZGlkKTsKIAl9CkBAIC0zNDUsNiArMzQ3LDcgQEAgc3RhdGljIHZvaWQgY2RuX2Rw
-X2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIAogCWlmIChkcC0+
-ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNfT04pCiAJCWNkbl9kcF9jb21taXQoZW5jb2Rlcik7
-CisJaGRtaV9ldmVudF9jb25uZWN0KGRwLT5kZXYpOwogfQogCiBzdGF0aWMgdm9pZCBjZG5fZHBf
-ZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKQEAgLTM1Miw2ICsz
-NTUsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5j
-b2RlciAqZW5jb2RlcikKIAlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBlbmNvZGVyX3RvX2Rw
-KGVuY29kZXIpOwogCiAJZHAtPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT0ZGOworCWhkbWlf
-ZXZlbnRfZGlzY29ubmVjdChkcC0+ZGV2KTsKIH0KIAogc3RhdGljIGludCBjZG5fZHBfZW5jb2Rl
-cl9hdG9taWNfY2hlY2soc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAotLSAKMS45LjEKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This patch adds DP audio output support to the rk3300-gru machine
+driver.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+hychao@chromium.org, broonie@kernel.org
+---
+
+ .../bindings/sound/rockchip,rk3399-gru-sound.txt   | 13 +++---
+ sound/soc/rockchip/rk3399_gru_sound.c              | 48 ++++++++++++++++++++++
+ 2 files changed, 55 insertions(+), 6 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+index f19b6c8..222124b 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+@@ -1,15 +1,16 @@
+-ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
++ROCKCHIP with MAX98357A/RT5514/DA7219 codecs and DP via spdif on GRU boards
+ 
+ Required properties:
+ - compatible: "rockchip,rk3399-gru-sound"
+-- rockchip,cpu: The phandle of the Rockchip I2S controller that's
+-  connected to the codecs
+-- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
++- rockchip,cpu: The phandle of the Rockchip I2S controller controller that's
++  connected to the codecs, and the SPDIF controller that's connected to DP
++- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs and of the
++  DP encoder node
+ 
+ Example:
+ 
+ sound {
+ 	compatible = "rockchip,rk3399-gru-sound";
+-	rockchip,cpu = <&i2s0>;
+-	rockchip,codec = <&max98357a &rt5514 &da7219>;
++	rockchip,cpu = <&i2s0 &spdif>;
++	rockchip,codec = <&max98357a &rt5514 &da7219 &cdn_dp 1>;
+ };
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 164b6da..50e5d9a 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -25,6 +25,7 @@
+ #include <linux/spi/spi.h>
+ #include <sound/core.h>
+ #include <sound/jack.h>
++#include <sound/hdmi-codec.h>
+ #include <sound/pcm.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -226,10 +227,30 @@ static struct snd_soc_ops rockchip_sound_da7219_ops = {
+ 	.hw_params = rockchip_sound_da7219_hw_params,
+ };
+ 
++static struct snd_soc_jack cdn_dp_card_jack;
++
++static int cdn_dp_init(struct snd_soc_pcm_runtime *runtime)
++{
++	struct snd_soc_card *card = runtime->card;
++	struct snd_soc_codec *codec = runtime->codec;
++	int ret;
++
++	/* enable jack detection */
++	ret = snd_soc_card_jack_new(card, "DP Jack", SND_JACK_LINEOUT,
++				    &cdn_dp_card_jack, NULL, 0);
++	if (ret) {
++		dev_err(card->dev, "Can't new DP Jack %d\n", ret);
++		return ret;
++	}
++
++	return hdmi_codec_set_jack_detect(codec, &cdn_dp_card_jack);
++}
++
+ enum {
+ 	DAILINK_MAX98357A,
+ 	DAILINK_RT5514,
+ 	DAILINK_DA7219,
++	DAILINK_CDNDP,
+ 	DAILINK_RT5514_DSP,
+ };
+ 
+@@ -264,6 +285,14 @@ static struct snd_soc_dai_link rockchip_dailinks[] = {
+ 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+ 			SND_SOC_DAIFMT_CBS_CFS,
+ 	},
++	[DAILINK_CDNDP] = {
++		.name = "DP",
++		.stream_name = "DP PCM",
++		.codec_dai_name = "spdif-hifi",
++		.init = cdn_dp_init,
++		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBS_CFS,
++	},
+ 	/* RT5514 DSP for voice wakeup via spi bus */
+ 	[DAILINK_RT5514_DSP] = {
+ 		.name = "RT5514 DSP",
+@@ -334,6 +363,25 @@ static int rockchip_sound_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	cpu_node = of_parse_phandle(pdev->dev.of_node, "rockchip,cpu", 1);
++	if (!cpu_node) {
++		dev_err(&pdev->dev, "Property 'rockchip,cpu 1' missing or invalid\n");
++		return -EINVAL;
++	}
++
++	rockchip_dailinks[DAILINK_CDNDP].platform_of_node = cpu_node;
++	rockchip_dailinks[DAILINK_CDNDP].cpu_of_node = cpu_node;
++
++	rockchip_dailinks[DAILINK_CDNDP].codec_of_node =
++		of_parse_phandle(pdev->dev.of_node, "rockchip,codec",
++				 DAILINK_CDNDP);
++	if (!rockchip_dailinks[DAILINK_CDNDP].codec_of_node) {
++		dev_err(&pdev->dev,
++			"Property[%d] 'rockchip,codec' missing or invalid\n",
++			DAILINK_CDNDP);
++		return -EINVAL;
++	}
++
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+-- 
+1.9.1
