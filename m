@@ -1,34 +1,78 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 6/6] arm64: dts: rockchip: enable the gmac for rk3399 evb board
-Date: Wed, 07 Sep 2016 20:16:47 +0200
-Message-ID: <1587027.EOPyfRoxyJ@phil>
-References: <1472752204-8924-1-git-send-email-wxt@rock-chips.com> <1472752204-8924-7-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH] phy: rockchip-typec: add pm runtime support
+Date: Wed,  7 Sep 2016 11:17:25 -0700
+Message-ID: <1473272245-28841-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472752204-8924-7-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dbasehore@chromium.org, Roger Chen <roger.chen@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Frank Wang <frank.wang@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: kishon@ti.com, groeck@chromium.org, wulf@rock-chips.com, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, kever.yang@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 2. September 2016, 01:50:04 CEST schrieb Caesar Wang:
-> From: Roger Chen <roger.chen@rock-chips.com>
-> 
-> We add the required and optional properties for evb board.
-> See the [0] to get the detail information.
-> 
-> [0]:
-> Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> 
-> Signed-off-by: Roger Chen <roger.chen@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Adds pm_runtime support for rockchip Type-C, so that power domain is
+enabled only when there is a transaction going on to help save power.
 
-applied to my dts64 branch,
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
 
-after moving clkin_gmac and sorting the gmac properties according to their 
-alphabetical position.
+ drivers/phy/phy-rockchip-typec.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-
-Heiko
+diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+index fb58a27..e1a07aa 100644
+--- a/drivers/phy/phy-rockchip-typec.c
++++ b/drivers/phy/phy-rockchip-typec.c
+@@ -552,6 +552,12 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+ 		goto err_clk_core;
+ 	}
+ 
++	ret = pm_runtime_get_sync(tcphy->dev);
++	if (ret < 0) {
++		dev_err(tcphy->dev, "cannot get pm runtime %d\n", ret);
++		goto err_clk_ref;
++	}
++
+ 	reset_control_deassert(tcphy->tcphy_rst);
+ 
+ 	property_enable(tcphy, &cfg->typec_conn_dir, tcphy->flip);
+@@ -602,6 +608,7 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+ err_wait_pma:
+ 	reset_control_assert(tcphy->uphy_rst);
+ 	reset_control_assert(tcphy->tcphy_rst);
++err_clk_ref:
+ 	clk_disable_unprepare(tcphy->clk_ref);
+ err_clk_core:
+ 	clk_disable_unprepare(tcphy->clk_core);
+@@ -610,6 +617,7 @@ err_clk_core:
+ 
+ static void tcphy_phy_deinit(struct rockchip_typec_phy *tcphy)
+ {
++	pm_runtime_put_sync(tcphy->dev);
+ 	reset_control_assert(tcphy->tcphy_rst);
+ 	reset_control_assert(tcphy->uphy_rst);
+ 	reset_control_assert(tcphy->pipe_rst);
+@@ -987,6 +995,15 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+ 		return PTR_ERR(phy_provider);
+ 	}
+ 
++	pm_runtime_enable(dev);
++
++	return 0;
++}
++
++static int rockchip_typec_phy_remove(struct platform_device *pdev)
++{
++	pm_runtime_disable(&pdev->dev);
++
+ 	return 0;
+ }
+ 
+@@ -999,6 +1016,7 @@ MODULE_DEVICE_TABLE(of, rockchip_typec_phy_dt_ids);
+ 
+ static struct platform_driver rockchip_typec_phy_driver = {
+ 	.probe		= rockchip_typec_phy_probe,
++	.remove		= rockchip_typec_phy_remove,
+ 	.driver		= {
+ 		.name	= "rockchip-typec-phy",
+ 		.of_match_table = rockchip_typec_phy_dt_ids,
+-- 
+1.9.1
