@@ -1,47 +1,47 @@
-From: Baoyou Xie <baoyou.xie@linaro.org>
-Subject: [PATCH] drm/rockchip: mark symbols static where possible
-Date: Wed,  7 Sep 2016 19:01:28 +0800
-Message-ID: <1473246088-780-1-git-send-email-baoyou.xie@linaro.org>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH 2/2] clk: rockchip: use identifiers for rk3288 I2S clocks
+Date: Wed,  7 Sep 2016 17:53:30 +0100
+Message-ID: <20160907165330.14607-2-john@metanate.com>
+References: <20160907165330.14607-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160907165330.14607-1-john@metanate.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn
+To: linux-kernel@vger.kernel.org
+Cc: John Keeping <john@metanate.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We get 2 warnings when building kernel with W=1:
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:309:6: warning: no previous prototype for 'rockchip_drm_fb_suspend' [-Wmissing-prototypes]
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:318:6: warning: no previous prototype for 'rockchip_drm_fb_resume' [-Wmissing-prototypes]
+Export these so that the rates can be set via the device tree.
 
-In fact, these functions are only used in the file in which they are
-declared and don't need a declaration, but can be made static.
-So this patch marks these functions with 'static'.
-
-Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
+Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk-rk3288.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index a822d49..3723683 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -306,7 +306,7 @@ static struct drm_driver rockchip_drm_driver = {
- };
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 39af05a589b3..8817a5b3bd0f 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -229,7 +229,7 @@ static struct clk_div_table div_hclk_cpu_t[] = {
+ #define IFLAGS ROCKCHIP_INVERTER_HIWORD_MASK
  
- #ifdef CONFIG_PM_SLEEP
--void rockchip_drm_fb_suspend(struct drm_device *drm)
-+static void rockchip_drm_fb_suspend(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
+ static struct rockchip_clk_branch rk3288_i2s_fracmux __initdata =
+-	MUX(0, "i2s_pre", mux_i2s_pre_p, CLK_SET_RATE_PARENT,
++	MUX(SCLK_I2S_PRE, "i2s_pre", mux_i2s_pre_p, CLK_SET_RATE_PARENT,
+ 			RK3288_CLKSEL_CON(4), 8, 2, MFLAGS);
  
-@@ -315,7 +315,7 @@ void rockchip_drm_fb_suspend(struct drm_device *drm)
- 	console_unlock();
- }
+ static struct rockchip_clk_branch rk3288_spdif_fracmux __initdata =
+@@ -338,10 +338,10 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
  
--void rockchip_drm_fb_resume(struct drm_device *drm)
-+static void rockchip_drm_fb_resume(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
+ 	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
  
+-	COMPOSITE(0, "i2s_src", mux_pll_src_cpll_gpll_p, 0,
++	COMPOSITE(SCLK_I2S_SRC, "i2s_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3288_CLKSEL_CON(4), 15, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3288_CLKGATE_CON(4), 1, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(SCLK_I2S_FRAC, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
+ 			RK3288_CLKSEL_CON(8), 0,
+ 			RK3288_CLKGATE_CON(4), 2, GFLAGS,
+ 			&rk3288_i2s_fracmux),
 -- 
-2.7.4
+2.9.3.728.g30b24b4.dirty
