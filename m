@@ -1,80 +1,105 @@
-From: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v7 3/4] usb: dwc2: assert phy reset when waking up in
  rk3288 platform
-Date: Wed, 7 Sep 2016 09:19:07 +0800
-Message-ID: <31806DDB-EBF1-4839-81E1-5F7A1D236538@soulik.info>
+Date: Tue, 6 Sep 2016 19:02:20 -0700
+Message-ID: <1ac13d9d-39c4-c110-d5ab-2dee30c0b4aa@synopsys.com>
 References: <1472939729-15187-1-git-send-email-ayaka@soulik.info>
  <1472939729-15187-4-git-send-email-ayaka@soulik.info>
  <57CE50A2.7080502@ti.com> <ba3e8239-6909-9de1-9cc5-f7ae80825f58@synopsys.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ba3e8239-6909-9de1-9cc5-f7ae80825f58-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+ <31806DDB-EBF1-4839-81E1-5F7A1D236538@soulik.info>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <31806DDB-EBF1-4839-81E1-5F7A1D236538-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgqxcafaqrogaVBhZCC2x7BlCgo+IEpvaG4gWW91biA8Sm9obi5Zb3VuQHN5bm9wc3lzLmNvbT4g
-qfMgMjAxNqZ+OaTrN6TpIKRXpMgyOjU0ILxnuUShRwo+IAo+PiBPbiA5LzUvMjAxNiAxMDoxNSBQ
-TSwgS2lzaG9uIFZpamF5IEFicmFoYW0gSSB3cm90ZToKPj4gSGksCj4+IAo+Pj4gT24gU3VuZGF5
-IDA0IFNlcHRlbWJlciAyMDE2IDAzOjI1IEFNLCBSYW5keSBMaSB3cm90ZToKPj4+IE9uIHRoZSBy
-azMyODggVVNCIGhvc3Qtb25seSBwb3J0ICh0aGUgb25lIHRoYXQncyBub3QgdGhlIE9URy1lbmFi
-bGVkCj4+PiBwb3J0KSB0aGUgUEhZIGNhbiBnZXQgaW50byBhIGJhZCBzdGF0ZSB3aGVuIGEgd2Fr
-ZXVwIGlzIGFzc2VydGVkIChub3QKPj4+IGp1c3QgYSB3YWtldXAgZnJvbSBmdWxsIHN5c3RlbSBz
-dXNwZW5kIGJ1dCBhbHNvIGEgd2FrZXVwIGZyb20KPj4+IGF1dG9zdXNwZW5kKS4KPj4+IAo+Pj4g
-V2UgY2FuIGdldCB0aGUgUEhZIG91dCBvZiBpdHMgYmFkIHN0YXRlIGJ5IGFzc2VydGluZyBpdHMg
-InBvcnQgcmVzZXQiLAo+Pj4gYnV0IHVuZm9ydHVuYXRlbHkgdGhhdCBzZWVtcyB0byBhc3NlcnQg
-YSByZXNldCBvbnRvIHRoZSBVU0IgYnVzIHNvIGl0Cj4+PiBjb3VsZCBjb25mdXNlIHRoaW5ncyBp
-ZiB3ZSBkb24ndCBhY3R1YWxseSBkZWVudW1lcmF0ZSAvIHJlZW51bWVyYXRlIHRoZQo+Pj4gZGV2
-aWNlLgo+Pj4gCj4+PiBXZSBjYW4gYWxzbyBnZXQgdGhlIFBIWSBvdXQgb2YgaXRzIGJhZCBzdGF0
-ZSBieSBmdWxseSByZXNldHRpbmcgaXQgdXNpbmcKPj4+IHRoZSByZXNldCBmcm9tIHRoZSBDUlUg
-KGNsb2NrIHJlc2V0IHVuaXQpIGluIGNoaXAsIHdoaWNoIGRvZXMgYSBtb3JlIGZ1bGwKPj4+IHJl
-c2V0LiAgVGhlIENSVS1iYXNlZCByZXNldCBhcHBlYXJzIHRvIGFjdHVhbGx5IGNhdXNlIGRldmlj
-ZXMgb24gdGhlIGJ1cwo+Pj4gdG8gYmUgcmVtb3ZlZCBhbmQgcmVpbnNlcnRlZCwgd2hpY2ggZml4
-ZXMgdGhlIHByb2JsZW0gKGFsYmVpdCBpbiBhIGhhY2t5Cj4+PiB3YXkpLgo+Pj4gCj4+PiBJdCdz
-IHVuZm9ydHVuYXRlIHRoYXQgd2UgbmVlZCB0byBkbyBhIGZ1bGwgcmUtZW51bWVyYXRpb24gb2Yg
-ZGV2aWNlcyBhdAo+Pj4gd2FrZXVwIHRpbWUsIGJ1dCB0aGlzIGlzIGJldHRlciB0aGFuIGFsdGVy
-bmF0aXZlIG9mIGxldHRpbmcgdGhlIGJ1cyBnZXQKPj4+IHdlZGdlZC4KPj4+IAo+Pj4gU2lnbmVk
-LW9mZi1ieTogUmFuZHkgTGkgPGF5YWthQHNvdWxpay5pbmZvPgo+Pj4gLS0tCj4+PiBkcml2ZXJz
-L3VzYi9kd2MyL2NvcmVfaW50ci5jIHwgMTIgKysrKysrKysrKysrCj4+PiAxIGZpbGUgY2hhbmdl
-ZCwgMTIgaW5zZXJ0aW9ucygrKQo+Pj4gCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvZHdj
-Mi9jb3JlX2ludHIuYyBiL2RyaXZlcnMvdXNiL2R3YzIvY29yZV9pbnRyLmMKPj4+IGluZGV4IGQ4
-NWM1YzkuLjA4NDg1YjcgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3VzYi9kd2MyL2NvcmVfaW50
-ci5jCj4+PiArKysgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmVfaW50ci5jCj4+PiBAQCAtMzQ1LDYg
-KzM0NSw3IEBAIHN0YXRpYyB2b2lkIGR3YzJfaGFuZGxlX3Nlc3Npb25fcmVxX2ludHIoc3RydWN0
-IGR3YzJfaHNvdGcgKmhzb3RnKQo+Pj4gc3RhdGljIHZvaWQgZHdjMl9oYW5kbGVfd2FrZXVwX2Rl
-dGVjdGVkX2ludHIoc3RydWN0IGR3YzJfaHNvdGcgKmhzb3RnKQo+Pj4gewo+Pj4gICAgaW50IHJl
-dDsKPj4+ICsgICAgc3RydWN0IGRldmljZV9ub2RlICpucCA9IGhzb3RnLT5kZXYtPm9mX25vZGU7
-Cj4+PiAKPj4+ICAgIC8qIENsZWFyIGludGVycnVwdCAqLwo+Pj4gICAgZHdjMl93cml0ZWwoR0lO
-VFNUU19XS1VQSU5ULCBoc290Zy0+cmVncyArIEdJTlRTVFMpOwo+Pj4gQEAgLTM3OSw2ICszODAs
-MTcgQEAgc3RhdGljIHZvaWQgZHdjMl9oYW5kbGVfd2FrZXVwX2RldGVjdGVkX2ludHIoc3RydWN0
-IGR3YzJfaHNvdGcgKmhzb3RnKQo+Pj4gICAgICAgICAgICAvKiBSZXN0YXJ0IHRoZSBQaHkgQ2xv
-Y2sgKi8KPj4+ICAgICAgICAgICAgcGNnY2N0bCAmPSB+UENHQ1RMX1NUT1BQQ0xLOwo+Pj4gICAg
-ICAgICAgICBkd2MyX3dyaXRlbChwY2djY3RsLCBoc290Zy0+cmVncyArIFBDR0NUTCk7Cj4+PiAr
-Cj4+PiArICAgICAgICAgICAgLyoKPj4+ICsgICAgICAgICAgICAgKiBJdCBpcyBhIHF1aXJrIGlu
-IFJvY2tjaGlwIFJLMzI4OCwgY2F1c2luZyBieQo+Pj4gKyAgICAgICAgICAgICAqIGEgaGFyZHdh
-cmUgYnVnLiBUaGlzIHdpbGwgcHJvcGFnYXRlIG91dCBhbmQKPj4+ICsgICAgICAgICAgICAgKiBl
-dmVudHVhbGx5IHdlJ2xsIHJlLWVudW1lcmF0ZSB0aGUgZGV2aWNlLiAKPj4+ICsgICAgICAgICAg
-ICAgKiBOb3QgZ3JlYXQgYnV0IHRoZSBiZXN0IHdlIGNhbiBkbyAKPj4+ICsgICAgICAgICAgICAg
-Ki8KPj4+ICsgICAgICAgICAgICBpZiAob2ZfZGV2aWNlX2lzX2NvbXBhdGlibGUobnAsICJyb2Nr
-Y2hpcCxyazMyODgtdXNiIikKPj4+ICsgICAgICAgICAgICAgICAgICAgICYmIChOVUxMICE9IGhz
-b3RnLT5waHktPm9wcy0+cmVzZXQpKQo+Pj4gKyAgICAgICAgICAgICAgICBoc290Zy0+cGh5LT5v
-cHMtPnJlc2V0KGhzb3RnLT5waHkpOwo+PiAKPj4gbmV2ZXIgY2FsbCB0aGUgcGh5IG9wcyBkaXJl
-Y3RseSBmcm9tIHRoZSBjb250cm9sbGVyIGRyaXZlci4gSXQgaGFzIHRvIGJlCj4+IHByb3RlY3Rl
-ZCBhcyB3ZWxsLgo+IAo+IEl0IGxvb2tzIGxpa2Ugd2Ugc2hvdWxkIGJlIGNhbGxpbmcgYW4gQVBJ
-IGZ1bmN0aW9uIGluc3RlYWQsIGNvcnJlY3Q/Cj4gCkNvdWxkIHlvdSBnaXZlIG1lIGEgZXhhbXBs
-ZSBmb3IgdGhlIHdyYXBwZXIgb2YgcGh5IG9wcz8KPiBTaW1pbGFyIHRvIHRoZSB3cmFwcGVycyBm
-b3IgdGhlIG90aGVyIG9wcy4KPiAKPiBSZWdhcmRzLAo+IEpvaG4KCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 9/6/2016 6:19 PM, Ayaka wrote:
+> 
+> 
+> 從我的 iPad 傳送
+> 
+>> John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> 於 2016年9月7日 上午2:54 寫道：
+>>
+>>> On 9/5/2016 10:15 PM, Kishon Vijay Abraham I wrote:
+>>> Hi,
+>>>
+>>>> On Sunday 04 September 2016 03:25 AM, Randy Li wrote:
+>>>> On the rk3288 USB host-only port (the one that's not the OTG-enabled
+>>>> port) the PHY can get into a bad state when a wakeup is asserted (not
+>>>> just a wakeup from full system suspend but also a wakeup from
+>>>> autosuspend).
+>>>>
+>>>> We can get the PHY out of its bad state by asserting its "port reset",
+>>>> but unfortunately that seems to assert a reset onto the USB bus so it
+>>>> could confuse things if we don't actually deenumerate / reenumerate the
+>>>> device.
+>>>>
+>>>> We can also get the PHY out of its bad state by fully resetting it using
+>>>> the reset from the CRU (clock reset unit) in chip, which does a more full
+>>>> reset.  The CRU-based reset appears to actually cause devices on the bus
+>>>> to be removed and reinserted, which fixes the problem (albeit in a hacky
+>>>> way).
+>>>>
+>>>> It's unfortunate that we need to do a full re-enumeration of devices at
+>>>> wakeup time, but this is better than alternative of letting the bus get
+>>>> wedged.
+>>>>
+>>>> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+>>>> ---
+>>>> drivers/usb/dwc2/core_intr.c | 12 ++++++++++++
+>>>> 1 file changed, 12 insertions(+)
+>>>>
+>>>> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+>>>> index d85c5c9..08485b7 100644
+>>>> --- a/drivers/usb/dwc2/core_intr.c
+>>>> +++ b/drivers/usb/dwc2/core_intr.c
+>>>> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
+>>>> static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>>> {
+>>>>    int ret;
+>>>> +    struct device_node *np = hsotg->dev->of_node;
+>>>>
+>>>>    /* Clear interrupt */
+>>>>    dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
+>>>> @@ -379,6 +380,17 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>>>>            /* Restart the Phy Clock */
+>>>>            pcgcctl &= ~PCGCTL_STOPPCLK;
+>>>>            dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
+>>>> +
+>>>> +            /*
+>>>> +             * It is a quirk in Rockchip RK3288, causing by
+>>>> +             * a hardware bug. This will propagate out and
+>>>> +             * eventually we'll re-enumerate the device. 
+>>>> +             * Not great but the best we can do 
+>>>> +             */
+>>>> +            if (of_device_is_compatible(np, "rockchip,rk3288-usb")
+>>>> +                    && (NULL != hsotg->phy->ops->reset))
+>>>> +                hsotg->phy->ops->reset(hsotg->phy);
+>>>
+>>> never call the phy ops directly from the controller driver. It has to be
+>>> protected as well.
+>>
+>> It looks like we should be calling an API function instead, correct?
+>>
+> Could you give me a example for the wrapper of phy ops?
+
+Check these files:
+* include/linux/phy/phy.h
+* drivers/phy/phy-core.c
+
+Search for "phy_set_mode".
+
+I'm thinking there should be a "phy_reset" API function which calls
+the phy->ops->reset in a similar manner. With the same runtime checks
+and stub function if CONFIG_GENERIC_PHY is not enabled.
+
+Regards,
+John
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
