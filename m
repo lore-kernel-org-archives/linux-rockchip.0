@@ -1,42 +1,24 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH] phy: rockchip-typec: add pm_runtime_disable in err case
-Date: Thu,  8 Sep 2016 10:38:11 -0700
-Message-ID: <1473356291-19247-1-git-send-email-zyw@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] phy: rockchip-typec: add pm_runtime_disable in err case
+Date: Thu, 8 Sep 2016 11:05:34 -0700
+Message-ID: <20160908180533.GA29048@localhost>
+References: <1473356291-19247-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1473356291-19247-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, groeck@chromium.org, wulf@rock-chips.com, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, kever.yang@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: kishon@ti.com, groeck@chromium.org, wulf@rock-chips.com, heiko@sntech.de, dianders@chromium.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add pm_runtime_disable in err case to make the pm_runtime_enable/disable
-is invoked balanced.
+On Thu, Sep 08, 2016 at 10:38:11AM -0700, Chris Zhong wrote:
+> Add pm_runtime_disable in err case to make the pm_runtime_enable/disable
+> is invoked balanced.
+> 
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Makes sense.
 
----
-
- drivers/phy/phy-rockchip-typec.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
-index 7cfb0f8..dd257c7 100644
---- a/drivers/phy/phy-rockchip-typec.c
-+++ b/drivers/phy/phy-rockchip-typec.c
-@@ -977,6 +977,7 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
- 		if (IS_ERR(phy)) {
- 			dev_err(dev, "failed to create phy: %s\n",
- 				child_np->name);
-+			pm_runtime_disable(dev);
- 			return PTR_ERR(phy);
- 		}
- 
-@@ -986,6 +987,7 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
- 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
- 	if (IS_ERR(phy_provider)) {
- 		dev_err(dev, "Failed to register phy provider\n");
-+		pm_runtime_disable(dev);
- 		return PTR_ERR(phy_provider);
- 	}
- 
--- 
-1.9.1
+Reviewed-by: Brian Norris <briannorris@chromium.org>
