@@ -1,94 +1,86 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v2 2/2] drm/bridge: analogix_dp: detect Sink PSR state after
- configuring the PSR
-Date: Thu,  8 Sep 2016 11:48:46 +0800
-Message-ID: <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
-References: <1473306506-4283-1-git-send-email-ykk@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] phy: rockchip-typec: add pm runtime support
+Date: Thu, 8 Sep 2016 10:54:34 +0530
+Message-ID: <57D0F612.10702@ti.com>
+References: <1473289577-14101-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473306506-4283-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1473289577-14101-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TWFrZSBzdXJlIHRoZSByZXF1ZXN0IFBTUiBzdGF0ZSBjb3VsZCBlZmZlY3QgaW4gYW5hbG9naXhf
-ZHBfc2VuZF9wc3Jfc3BkKCkKZnVuY3Rpb24sIG9yIHByaW50aW5nIHRoZSBlcnJvciBTaW5rIFBT
-UiBzdGF0ZSBpZiB3ZSBmYWlsZWQgdG8gZWZmZWN0CnRoZSByZXF1ZXN0IFBTUiBzZXR0aW5nLgoK
-U2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgotLS0KQ2hhbmdl
-cyBpbiB2MjoKLSBBIGJ1bmNoIG9mIGdvb2QgZml4ZXMgZnJvbSBTZWFuCgogZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAgNiArKy0tLS0KIGRyaXZl
-cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIHwgIDQgKystLQog
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyAgfCAyNSAr
-KysrKysrKysrKysrKysrKysrKy0tCiAzIGZpbGVzIGNoYW5nZWQsIDI3IGluc2VydGlvbnMoKyks
-IDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
-L2FuYWxvZ2l4X2RwX2NvcmUuYwppbmRleCA1ZmUzOTgyLi5jMGNlMTZhIDEwMDY0NAotLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYworKysgYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwpAQCAtMTE2
-LDggKzExNiw3IEBAIGludCBhbmFsb2dpeF9kcF9lbmFibGVfcHNyKHN0cnVjdCBkZXZpY2UgKmRl
-dikKIAlwc3JfdnNjLkRCMCA9IDA7CiAJcHNyX3ZzYy5EQjEgPSBFRFBfVlNDX1BTUl9TVEFURV9B
-Q1RJVkUgfCBFRFBfVlNDX1BTUl9DUkNfVkFMVUVTX1ZBTElEOwogCi0JYW5hbG9naXhfZHBfc2Vu
-ZF9wc3Jfc3BkKGRwLCAmcHNyX3ZzYyk7Ci0JcmV0dXJuIDA7CisJcmV0dXJuIGFuYWxvZ2l4X2Rw
-X3NlbmRfcHNyX3NwZChkcCwgJnBzcl92c2MpOwogfQogRVhQT1JUX1NZTUJPTF9HUEwoYW5hbG9n
-aXhfZHBfZW5hYmxlX3Bzcik7CiAKQEAgLTEzOSw4ICsxMzgsNyBAQCBpbnQgYW5hbG9naXhfZHBf
-ZGlzYWJsZV9wc3Ioc3RydWN0IGRldmljZSAqZGV2KQogCXBzcl92c2MuREIwID0gMDsKIAlwc3Jf
-dnNjLkRCMSA9IDA7CiAKLQlhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoZHAsICZwc3JfdnNjKTsK
-LQlyZXR1cm4gMDsKKwlyZXR1cm4gYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKGRwLCAmcHNyX3Zz
-Yyk7CiB9CiBFWFBPUlRfU1lNQk9MX0dQTChhbmFsb2dpeF9kcF9kaXNhYmxlX3Bzcik7CiAKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
-ZS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgK
-aW5kZXggYTE1ZjA3Ni4uNmMwN2E1MCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKQEAgLTI0Nyw4ICsyNDcsOCBAQCB2b2lkIGFu
-YWxvZ2l4X2RwX2NvbmZpZ192aWRlb19zbGF2ZV9tb2RlKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
-Y2UgKmRwKTsKIHZvaWQgYW5hbG9naXhfZHBfZW5hYmxlX3NjcmFtYmxpbmcoc3RydWN0IGFuYWxv
-Z2l4X2RwX2RldmljZSAqZHApOwogdm9pZCBhbmFsb2dpeF9kcF9kaXNhYmxlX3NjcmFtYmxpbmco
-c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApOwogdm9pZCBhbmFsb2dpeF9kcF9lbmFibGVf
-cHNyX2NyYyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCk7Ci12b2lkIGFuYWxvZ2l4X2Rw
-X3NlbmRfcHNyX3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKLQkJCSAgICAgIHN0
-cnVjdCBlZHBfdnNjX3BzciAqdnNjKTsKK2ludCBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoc3Ry
-dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCisJCQkgICAgIHN0cnVjdCBlZHBfdnNjX3BzciAq
-dnNjKTsKIHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
-dmljZSAqZHAsCiAJCQkgICAgIHN0cnVjdCBkcm1fZHBfYXV4X21zZyAqbXNnKTsKICNlbmRpZiAv
-KiBfQU5BTE9HSVhfRFBfQ09SRV9IICovCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
-bmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwppbmRleCBhNGQxN2I4Li4wOWQ3MDNiIDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKQEAg
-LTEwMDQsMTAgKzEwMDQsMTIgQEAgdm9pZCBhbmFsb2dpeF9kcF9lbmFibGVfcHNyX2NyYyhzdHJ1
-Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAl3cml0ZWwoUFNSX1ZJRF9DUkNfRU5BQkxFLCBk
-cC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9DUkNfQ09OKTsKIH0KIAotdm9pZCBhbmFsb2dpeF9k
-cF9zZW5kX3Bzcl9zcGQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCi0JCQkgICAgICBz
-dHJ1Y3QgZWRwX3ZzY19wc3IgKnZzYykKK2ludCBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoc3Ry
-dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCisJCQkgICAgIHN0cnVjdCBlZHBfdnNjX3BzciAq
-dnNjKQogeworCXVuc2lnbmVkIGxvbmcgdGltZW91dDsKIAl1bnNpZ25lZCBpbnQgdmFsOworCXU4
-IHNpbms7CiAKIAkvKiBkb24ndCBzZW5kIGluZm8gZnJhbWUgKi8KIAl2YWwgPSByZWFkbChkcC0+
-cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9QS1RfU0VORF9DVEwpOwpAQCAtMTA0OCw2ICsxMDUwLDI1
-IEBAIHZvaWQgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
-Y2UgKmRwLAogCXZhbCA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX1BLVF9TRU5E
-X0NUTCk7CiAJdmFsIHw9IElGX0VOOwogCXdyaXRlbCh2YWwsIGRwLT5yZWdfYmFzZSArIEFOQUxP
-R0lYX0RQX1BLVF9TRU5EX0NUTCk7CisKKwl0aW1lb3V0ID0gamlmZmllcyArIG1zZWNzX3RvX2pp
-ZmZpZXMoRFBfVElNRU9VVF9MT09QX0NPVU5UKTsKKwl3aGlsZSAodGltZV9iZWZvcmUoamlmZmll
-cywgdGltZW91dCkpIHsKKwkJdmFsID0gZHJtX2RwX2RwY2RfcmVhZGIoJmRwLT5hdXgsIERQX1BT
-Ul9TVEFUVVMsICZzaW5rKTsKKwkJaWYgKHZhbCAhPSAxKSB7CisJCQlkZXZfZXJyKGRwLT5kZXYs
-ICJQU1JfU1RBVFVTIHJlYWQgZmFpbGVkIHJldD0lZCIsIHZhbCk7CisJCQlyZXR1cm4gdmFsOwor
-CQl9CisKKwkJaWYgKHZzYy0+REIxICYmIHNpbmsgPT0gRFBfUFNSX1NJTktfQUNUSVZFX1JGQiB8
-fAorCQkgICAgIXZzYy0+REIxICYmIHNpbmsgPT0gRFBfUFNSX1NJTktfSU5BQ1RJVkUpCisJCQli
-cmVhazsKKworCQl1c2xlZXBfcmFuZ2UoMTAwMCwgMTUwMCk7CisJfQorCisJZGV2X3dhcm4oZHAt
-PmRldiwgIkZhaWxlZCB0byBlZmZlY3QgUFNSOiAleCIsIHNpbmspOworCisJcmV0dXJuIC1FVElN
-RURPVVQ7CiB9CiAKIHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4
-X2RwX2RldmljZSAqZHAsCi0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+On Thursday 08 September 2016 04:36 AM, Chris Zhong wrote:
+> Adds pm_runtime support for rockchip Type-C, so that power domain is
+> enabled only when there is a transaction going on to help save power.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v2:
+> -- add pm_runtime_put_sync in err case
+> 
+>  drivers/phy/phy-rockchip-typec.c | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+> 
+> diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+> index fb58a27..0b2f528 100644
+> --- a/drivers/phy/phy-rockchip-typec.c
+> +++ b/drivers/phy/phy-rockchip-typec.c
+> @@ -552,6 +552,12 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+>  		goto err_clk_core;
+>  	}
+>  
+> +	ret = pm_runtime_get_sync(tcphy->dev);
+> +	if (ret < 0) {
+> +		dev_err(tcphy->dev, "cannot get pm runtime %d\n", ret);
+> +		goto err_clk_ref;
+> +	}
+
+phy_core will do get_sync for you if.. <see below>
+> +
+>  	reset_control_deassert(tcphy->tcphy_rst);
+>  
+>  	property_enable(tcphy, &cfg->typec_conn_dir, tcphy->flip);
+> @@ -600,8 +606,10 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+>  	return 0;
+>  
+>  err_wait_pma:
+> +	pm_runtime_put_sync(tcphy->dev);
+>  	reset_control_assert(tcphy->uphy_rst);
+>  	reset_control_assert(tcphy->tcphy_rst);
+> +err_clk_ref:
+>  	clk_disable_unprepare(tcphy->clk_ref);
+>  err_clk_core:
+>  	clk_disable_unprepare(tcphy->clk_core);
+> @@ -610,6 +618,7 @@ err_clk_core:
+>  
+>  static void tcphy_phy_deinit(struct rockchip_typec_phy *tcphy)
+>  {
+> +	pm_runtime_put_sync(tcphy->dev);
+>  	reset_control_assert(tcphy->tcphy_rst);
+>  	reset_control_assert(tcphy->uphy_rst);
+>  	reset_control_assert(tcphy->pipe_rst);
+> @@ -987,6 +996,15 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+>  		return PTR_ERR(phy_provider);
+>  	}
+>  
+> +	pm_runtime_enable(dev);
+
+... pm_runtime_enable is invoked before phy_create.
+
+Thanks
+Kishon
