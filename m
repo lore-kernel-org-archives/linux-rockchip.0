@@ -1,68 +1,73 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/4] phy: Add reset callback
-Date: Thu, 08 Sep 2016 17:30:31 +0200
-Message-ID: <5873862.22XnObgB2W@phil>
-References: <1473344836-26707-1-git-send-email-ayaka@soulik.info> <1473344836-26707-2-git-send-email-ayaka@soulik.info>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [RESEND PATCH v3 1/2] phy: rockchip-typec: add pm runtime support
+Date: Thu, 8 Sep 2016 08:31:32 -0700
+Message-ID: <CABXOdTdNgm_3BfyQx+EVULpEN+22uBcB+PTuniQXfivJGHgxNQ@mail.gmail.com>
+References: <57D0F612.10702@ti.com> <1473314253-2646-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473344836-26707-2-git-send-email-ayaka@soulik.info>
+In-Reply-To: <1473314253-2646-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Randy Li <ayaka@soulik.info>
-Cc: linux-usb@vger.kernel.org, John.Youn@synopsys.com, kishon@ti.com, felipe.balbi@linux.intel.com, mark.rutland@arm.com, devicetree@vger.kernel.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, randy.li@rock-chips.com
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Guenter Roeck <groeck@chromium.org>, wulf <wulf@rock-chips.com>, Brian Norris <briannorris@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 8. September 2016, 22:27:13 CEST schrieb Randy Li:
-> The only use for this is for solving a hardware design problem in
-> usb of Rockchip RK3288.
-> 
-> Signed-off-by: Randy Li <ayaka@soulik.info>
-
-to me this looks good.
-
-Although Kishon suggested earlier to have the init callback do the reset and 
-simply call it again in the reset-case, the whole refcounting done in phy_init 
-and phy_exit (phy->init_count) really shows that init and exit should be 
-called pairwise, so that extra reset callback seems justified, so from my phy-
-noob-pov
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-with one minor style nitpick below
-
+On Wed, Sep 7, 2016 at 10:57 PM, Chris Zhong <zyw@rock-chips.com> wrote:
+> Adds pm_runtime support for rockchip Type-C, so that power domain is
+> enabled only when there is a transaction going on to help save power.
+>
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 > ---
->  drivers/phy/phy-core.c  | 14 ++++++++++++++
->  include/linux/phy/phy.h |  3 +++
->  2 files changed, 17 insertions(+)
-> 
-> diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-> index 8eca906..32e838d 100644
-> --- a/drivers/phy/phy-core.c
-> +++ b/drivers/phy/phy-core.c
-> @@ -357,6 +357,20 @@ int phy_set_mode(struct phy *phy, enum phy_mode mode)
+>
+> Changes in v3:
+> - use phy_core pm_runtime
+>
+> Changes in v2:
+> - add pm_runtime_put_sync in err case
+>
+>  drivers/phy/phy-rockchip-typec.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>
+> diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+> index fb58a27..7cfb0f8 100644
+> --- a/drivers/phy/phy-rockchip-typec.c
+> +++ b/drivers/phy/phy-rockchip-typec.c
+> @@ -960,6 +960,8 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+>                 return PTR_ERR(tcphy->extcon);
+>         }
+>
+> +       pm_runtime_enable(dev);
+> +
+
+Does this now need a matching pm_runtime_disable() in error cases ?
+
+Guenter
+
+>         for_each_available_child_of_node(np, child_np) {
+>                 struct phy *phy;
+>
+> @@ -990,6 +992,13 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+>         return 0;
 >  }
->  EXPORT_SYMBOL_GPL(phy_set_mode);
-> 
-> +int phy_reset(struct phy *phy)
+>
+> +static int rockchip_typec_phy_remove(struct platform_device *pdev)
 > +{
-> +	int ret;
-
-I think a blank line between declarations and code is customary.
-
-> +	if (!phy || !phy->ops->reset)
-> +		return 0;
+> +       pm_runtime_disable(&pdev->dev);
 > +
-> +	mutex_lock(&phy->mutex);
-> +	ret = phy->ops->reset(phy);
-> +	mutex_unlock(&phy->mutex);
-> +
-> +	return ret;
+> +       return 0;
 > +}
-> +EXPORT_SYMBOL_GPL(phy_reset);
 > +
->  /**
->   * _of_phy_get() - lookup and obtain a reference to a phy by phandle
->   * @np: device_node for which to get the phy
-
-Heiko
+>  static const struct of_device_id rockchip_typec_phy_dt_ids[] = {
+>         { .compatible = "rockchip,rk3399-typec-phy" },
+>         {}
+> @@ -999,6 +1008,7 @@ MODULE_DEVICE_TABLE(of, rockchip_typec_phy_dt_ids);
+>
+>  static struct platform_driver rockchip_typec_phy_driver = {
+>         .probe          = rockchip_typec_phy_probe,
+> +       .remove         = rockchip_typec_phy_remove,
+>         .driver         = {
+>                 .name   = "rockchip-typec-phy",
+>                 .of_match_table = rockchip_typec_phy_dt_ids,
+> --
+> 1.9.1
+>
