@@ -1,152 +1,91 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 2/2] drm/bridge: analogix_dp: detect Sink PSR state
- after configuring the PSR
-Date: Thu, 8 Sep 2016 10:12:11 -0400
-Message-ID: <CAOw6vb+apDfnqLtr3TDNxEzKe_kREeabevh4B6Z9wRquLRn6ag@mail.gmail.com>
-References: <1473306506-4283-1-git-send-email-ykk@rock-chips.com> <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL 2/3] Rockchip dts32 changes for 4.9
+Date: Thu, 08 Sep 2016 16:10:35 +0200
+Message-ID: <1481725.D51jRkC1a3@phil>
+References: <1770547.rOXegfrGOH@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1770547.rOXegfrGOH@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 7, 2016 at 11:48 PM, Yakir Yang <ykk@rock-chips.com> wrote:
-> Make sure the request PSR state could effect in analogix_dp_send_psr_spd()
-> function, or printing the error Sink PSR state if we failed to effect
-> the request PSR setting.
->
+Hi Arnd, Kevin, Olof,
+
+below you can find a pull request for 32bit devicetree changes which
+the tag will hopefully explain sufficiently.
 
 
-Let's change to:
+Heiko
 
-Make sure the request PSR state takes effect in analogix_dp_send_psr_spd()
-function, or print the sink PSR error state if we failed to apply the
-requested PSR
-setting.
+The following changes since commit 29b4817d4018df78086157ea3a55c1d9424a7cfc:
 
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> ---
-> Changes in v2:
-> - A bunch of good fixes from Sean
->
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 ++----
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  4 ++--
->  drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 25 ++++++++++++++++++++--
->  3 files changed, 27 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 5fe3982..c0ce16a 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -116,8 +116,7 @@ int analogix_dp_enable_psr(struct device *dev)
->         psr_vsc.DB0 = 0;
->         psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
->
-> -       analogix_dp_send_psr_spd(dp, &psr_vsc);
-> -       return 0;
-> +       return analogix_dp_send_psr_spd(dp, &psr_vsc);
->  }
->  EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
->
-> @@ -139,8 +138,7 @@ int analogix_dp_disable_psr(struct device *dev)
->         psr_vsc.DB0 = 0;
->         psr_vsc.DB1 = 0;
->
-> -       analogix_dp_send_psr_spd(dp, &psr_vsc);
-> -       return 0;
-> +       return analogix_dp_send_psr_spd(dp, &psr_vsc);
->  }
->  EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-> index a15f076..6c07a50 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-> @@ -247,8 +247,8 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp);
->  void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
->  void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
->  void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
-> -void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-> -                             struct edp_vsc_psr *vsc);
-> +int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-> +                            struct edp_vsc_psr *vsc);
->  ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
->                              struct drm_dp_aux_msg *msg);
->  #endif /* _ANALOGIX_DP_CORE_H */
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> index a4d17b8..09d703b 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> @@ -1004,10 +1004,12 @@ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp)
->         writel(PSR_VID_CRC_ENABLE, dp->reg_base + ANALOGIX_DP_CRC_CON);
->  }
->
-> -void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-> -                             struct edp_vsc_psr *vsc)
-> +int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
-> +                            struct edp_vsc_psr *vsc)
->  {
-> +       unsigned long timeout;
->         unsigned int val;
-> +       u8 sink;
->
->         /* don't send info frame */
->         val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
-> @@ -1048,6 +1050,25 @@ void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->         val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
->         val |= IF_EN;
->         writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
-> +
-> +       timeout = jiffies + msecs_to_jiffies(DP_TIMEOUT_LOOP_COUNT);
+  Linux 4.8-rc1 (2016-08-07 18:18:00 -0700)
 
-Mismatched units here. DP_TIMEOUT_LOOP_COUNT is defined as number of
-retries, whereas you're using it as number of ms. Fortunately, the
-retry number is so high that this works out :)
+are available in the git repository at:
 
-In a separate patch preceding this one, can you change
-DP_TIMEOUT_LOOP_COUNT to DP_TIMEOUT_LOOP_MS and alter the other
-timeout loops to use time_before() like this one instead of blindly
-looping 100 times? After that, you can use DP_TIMEOUT_LOOP_MS here.
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.9-rockchip-dts32-1
 
-> +       while (time_before(jiffies, timeout)) {
-> +               val = drm_dp_dpcd_readb(&dp->aux, DP_PSR_STATUS, &sink);
-> +               if (val != 1) {
-> +                       dev_err(dp->dev, "PSR_STATUS read failed ret=%d", val);
-> +                       return val;
+for you to fetch changes up to 4314f4b6720d96b0504da30112b6d42d13c3e50f:
 
-Ok, since this is my snippet this comment is my fault, and I apologize
-for that :). However, this could return 0. If drm_dp_dpcd_readb
-returns 0, you probably want to retry (same as -EBUSY).
+  ARM: dts: rockchip: Add sensor-supplies on PopMetal-RK3288 board (2016-09-05 11:09:41 +0200)
 
-> +               }
-> +
-> +               if (vsc->DB1 && sink == DP_PSR_SINK_ACTIVE_RFB ||
-> +                   !vsc->DB1 && sink == DP_PSR_SINK_INACTIVE)
-> +                       break;
-> +
-> +               usleep_range(1000, 1500);
-> +       }
-> +
-> +       dev_warn(dp->dev, "Failed to effect PSR: %x", sink);
+----------------------------------------------------------------
+32bit Rockchip devicetree changes containing two new rk3288 boards (Fennec
+and Firefly-reload), display support for the rk3288-evb, support for the
+recently added firmware reboot-flag support and some housekeeping cleanups.
 
-Nit: I think you want to say "PSR failed to take effect" or "Failed to
-apply PSR"
+----------------------------------------------------------------
+Andy Yan (5):
+      soc: rockchip: add reboot-mode header
+      ARM: dts: rockchip: add syscon-reboot-mode DT node
+      ARM: dts: rockchip: enable usbotg for Popemtal-rk3288 board
+      ARM: dts: rockchip: fix L3G4200D i2c address on PopMetal-RK3288 board
+      ARM: dts: rockchip: Add sensor-supplies on PopMetal-RK3288 board
 
-Sean
+Heiko Stuebner (2):
+      ARM: dts: rockchip: move rk3288 usbphy under the GRF node
+      Merge branch 'v4.9-shared/soc-hdr' into v4.9-armsoc/dts32
 
-> +
-> +       return -ETIMEDOUT;
->  }
->
->  ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
-> --
-> 1.9.1
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-samsung-soc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Randy Li (3):
+      ARM: dts: rockchip: add rk3288-firefly-reload
+      ARM: dts: rockchip: remove excess sd properties from firefly reload
+      ARM: dts: rockchip: add missing regulators for firefly reload board
+
+Xing Zheng (1):
+      ARM: dts: rockchip: add dts for RK3288-Fennec boards
+
+Yakir Yang (3):
+      ARM: dts: rockchip: add eDP/panel display device nodes for rk3288-evb
+      ARM: dts: rockchip: add the panel power supply for rk3288-evb board with act8846 pmu
+      ARM: dts: rockchip: add the panel power supply for rk3288-evb board with rk808 pmu
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   8 +
+ arch/arm/boot/dts/Makefile                         |   2 +
+ arch/arm/boot/dts/rk3036.dtsi                      |  12 +-
+ arch/arm/boot/dts/rk3288-evb-act8846.dts           |   4 +
+ arch/arm/boot/dts/rk3288-evb-rk808.dts             |   4 +
+ arch/arm/boot/dts/rk3288-evb.dtsi                  |  45 ++-
+ arch/arm/boot/dts/rk3288-fennec.dts                | 382 +++++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi  | 310 ++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly-reload.dts        | 403 +++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-popmetal.dts              |  12 +-
+ arch/arm/boot/dts/rk3288.dtsi                      |  73 ++--
+ arch/arm/boot/dts/rk3xxx.dtsi                      |  12 +-
+ include/dt-bindings/soc/rockchip,boot-mode.h       |  15 +
+ 13 files changed, 1245 insertions(+), 37 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-fennec.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+ create mode 100644 arch/arm/boot/dts/rk3288-firefly-reload.dts
+ create mode 100644 include/dt-bindings/soc/rockchip,boot-mode.h
