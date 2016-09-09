@@ -1,68 +1,149 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH] ASoC: da7219: make sure the valid event when startup
-Date: Fri,  9 Sep 2016 22:01:35 +0800
-Message-ID: <1473429695-12604-1-git-send-email-zhengxing@rock-chips.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: [PATCH 7/8] ARM: dts: rockchip: Add missing unit name to memory nodes in rk3288 boards
+Date: Fri,  9 Sep 2016 10:01:08 -0400
+Message-ID: <1473429669-6185-8-git-send-email-javier@osg.samsung.com>
+References: <1473429669-6185-1-git-send-email-javier@osg.samsung.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473429669-6185-1-git-send-email-javier@osg.samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org, Adam.Thomson.Opensource@diasemi.com
-Cc: cychiang@google.com, heiko@sntech.de, smbarber@google.com, hychao@google.com, Xing Zheng <zhengxing@rock-chips.com>, Support Opensource <support.opensource@diasemi.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We need to ensure the master bias and jack detection to be enabled
-before reporting event at the da7219_aad_irq_thread. Otherwise, we
-may acquire the incorrect the unplug event when the DUT startup
-with a plugged headphone.
+This patch fixes the following DTC warnings:
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+"Node /memory has a reg or ranges property, but no unit name"
+
+Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
 ---
 
- sound/soc/codecs/da7219-aad.c | 7 +++++++
- sound/soc/codecs/da7219-aad.h | 1 +
- 2 files changed, 8 insertions(+)
+ arch/arm/boot/dts/rk3288-evb.dtsi                 | 2 +-
+ arch/arm/boot/dts/rk3288-fennec.dts               | 2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi             | 2 +-
+ arch/arm/boot/dts/rk3288-miqi.dts                 | 2 +-
+ arch/arm/boot/dts/rk3288-popmetal.dts             | 2 +-
+ arch/arm/boot/dts/rk3288-r89.dts                  | 2 +-
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi           | 2 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi              | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/sound/soc/codecs/da7219-aad.c b/sound/soc/codecs/da7219-aad.c
-index 4e369a1..cef17c0d 100644
---- a/sound/soc/codecs/da7219-aad.c
-+++ b/sound/soc/codecs/da7219-aad.c
-@@ -38,6 +38,7 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index d59208b5eb6c..bf7ccfad3260 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -43,7 +43,7 @@
+ #include "rk3288.dtsi"
  
- 	da7219->aad->jack = jack;
- 	da7219->aad->jack_inserted = false;
-+	da7219->aad->accdet_en = false;
+ / {
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-fennec.dts b/arch/arm/boot/dts/rk3288-fennec.dts
+index 2e3c34135ed8..805c0d26770b 100644
+--- a/arch/arm/boot/dts/rk3288-fennec.dts
++++ b/arch/arm/boot/dts/rk3288-fennec.dts
+@@ -46,7 +46,7 @@
+ 	model = "Rockchip RK3288 Fennec Board";
+ 	compatible = "rockchip,rk3288-fennec", "rockchip,rk3288";
  
- 	/* Send an initial empty report */
- 	snd_soc_jack_report(jack, 0, DA7219_AAD_REPORT_ALL_MASK);
-@@ -46,6 +47,8 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
- 	snd_soc_update_bits(codec, DA7219_ACCDET_CONFIG_1,
- 			    DA7219_ACCDET_EN_MASK,
- 			    (jack ? DA7219_ACCDET_EN_MASK : 0));
-+
-+	da7219->aad->accdet_en = true;
- }
- EXPORT_SYMBOL_GPL(da7219_aad_jack_det);
+-	memory {
++	memory@0 {
+ 		reg = <0x0 0x80000000>;
+ 		device_type = "memory";
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+index ec418c99de95..d242588bae0d 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+@@ -45,7 +45,7 @@
+ #include "rk3288.dtsi"
  
-@@ -293,6 +296,10 @@ static irqreturn_t da7219_aad_irq_thread(int irq, void *data)
- 	u8 statusa;
- 	int i, report = 0, mask = 0;
+ / {
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index 114c90fb65e2..44935af1fb0e 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -44,7 +44,7 @@
+ #include "rk3288.dtsi"
  
-+	/* Ensure the master bias to be enabled */
-+	if (!da7219_aad->accdet_en)
-+		return IRQ_NONE;
-+
- 	/* Read current IRQ events */
- 	regmap_bulk_read(da7219->regmap, DA7219_ACCDET_IRQ_EVENT_A,
- 			 events, DA7219_AAD_IRQ_REG_MAX);
-diff --git a/sound/soc/codecs/da7219-aad.h b/sound/soc/codecs/da7219-aad.h
-index 4fccf67..5641965 100644
---- a/sound/soc/codecs/da7219-aad.h
-+++ b/sound/soc/codecs/da7219-aad.h
-@@ -200,6 +200,7 @@ struct da7219_aad_priv {
+ / {
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index 24488421f0f0..441d450fd151 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -52,7 +52,7 @@
+ 		stdout-path = "serial2:115200n8";
+ 	};
  
- 	struct snd_soc_jack *jack;
- 	bool jack_inserted;
-+	bool accdet_en;
- };
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+index 56dd377d5658..23003a221234 100644
+--- a/arch/arm/boot/dts/rk3288-popmetal.dts
++++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+@@ -48,7 +48,7 @@
+ 	model = "PopMetal-RK3288";
+ 	compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
  
- /* AAD control */
+-	memory{
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
+index 4b8a8adb243c..04faa72dbd95 100644
+--- a/arch/arm/boot/dts/rk3288-r89.dts
++++ b/arch/arm/boot/dts/rk3288-r89.dts
+@@ -48,7 +48,7 @@
+ / {
+ 	compatible = "netxeon,r89", "rockchip,rk3288";
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x80000000>;
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
+index bb1f01e037ba..b25ba806d5ee 100644
+--- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
++++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
+@@ -42,7 +42,7 @@
+ #include "rk3288.dtsi"
+ 
+ / {
+-	memory {
++	memory@0 {
+ 		reg = <0x0 0x80000000>;
+ 		device_type = "memory";
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 3dd2cca48c11..2251d28e9d2a 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -47,7 +47,7 @@
+ #include "rk3288.dtsi"
+ 
+ / {
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x80000000>;
+ 	};
 -- 
-1.9.1
+2.7.4
