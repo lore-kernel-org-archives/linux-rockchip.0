@@ -1,97 +1,60 @@
-From: Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>
-Subject: RE: [PATCH] ASoC: da7219: make sure the valid event when startup
-Date: Fri, 9 Sep 2016 14:17:47 +0000
-Message-ID: <2E89032DDAA8B9408CB92943514A03370142A25083@SW-EX-MBX01.diasemi.com>
-References: <1473429695-12604-1-git-send-email-zhengxing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473429695-12604-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>
-Cc: "alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org" <alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org>, "hychao-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org" <hychao-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Support Opensource <Support.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org" <smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "cychiang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org" <cychiang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [RESEND PATCH v7 0/4] the fix for the USB HOST1 at rk3288 platform
+Date: Sat, 10 Sep 2016 02:59:36 +0800
+Message-ID: <1473447580-10369-1-git-send-email-ayaka@soulik.info>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09 September 2016 15:02, Xing Zheng wrote:
+  At this stage it is the only "full features" and well verified 
+USB EHCI controller in this platform. More review is always necessary.
 
-> We need to ensure the master bias and jack detection to be enabled
-> before reporting event at the da7219_aad_irq_thread. Otherwise, we
-> may acquire the incorrect the unplug event when the DUT startup
-> with a plugged headphone.
+Changelog:
+ - v7:
+    adding a wrapper for the reset operation for phy
+    using that wrapper
+ - v6:
+    move pwms pinctrl to pwms node
+    fix the order of the dtb file in Makefile
+ - v5:
+   - correct the mail format
+ - v4:
+   - re-order some nodes in alphabetical order
+   - fix some minor bugs
+   - add a entry in vendor list
+ - v3:
+   - fixing the rtc clock, using clock source from PMIC
+   - enable the tmu
+   - enable the fimc for elite board
+   - suuport the audio codec at elite board
+   - fixing minor bugs in the last commit
+ - v2:
+   - removing rtc node
+     the clock source driver is not done yet.
+   - adding exynos-bus
+   - fixing the MFC
 
-For this device, the master bias is enabled by default at power on and should
-also be enabled in the move to bias_level STANDBY. This I believe should all
-happen before the machine code calls the 'da7219_aad_jack_det()' function, and
-you should certainly not see any IRQs until after you've made that call and
-enabled accessory detection in the device.
+Randy Li (4):
+  phy: Add reset callback
+  phy: rockchip-usb: use rockchip_usb_phy_reset to reset phy during
+    wakeup
+  usb: dwc2: assert phy reset when waking up in rk3288 platform
+  ARM: dts: rockchip: Point rk3288 dwc2 usb at the full PHY reset
 
-I'm not really sure how this fixes anything.
+ .../devicetree/bindings/phy/rockchip-usb-phy.txt     |  3 +++
+ arch/arm/boot/dts/rk3288.dtsi                        |  4 ++++
+ drivers/phy/phy-core.c                               | 14 ++++++++++++++
+ drivers/phy/phy-rockchip-usb.c                       | 20 ++++++++++++++++++++
+ drivers/usb/dwc2/core_intr.c                         | 11 +++++++++++
+ include/linux/phy/phy.h                              |  3 +++
+ 6 files changed, 55 insertions(+)
 
-> 
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  sound/soc/codecs/da7219-aad.c | 7 +++++++
->  sound/soc/codecs/da7219-aad.h | 1 +
->  2 files changed, 8 insertions(+)
-> 
-> diff --git a/sound/soc/codecs/da7219-aad.c b/sound/soc/codecs/da7219-aad.c
-> index 4e369a1..cef17c0d 100644
-> --- a/sound/soc/codecs/da7219-aad.c
-> +++ b/sound/soc/codecs/da7219-aad.c
-> @@ -38,6 +38,7 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec,
-> struct snd_soc_jack *jack)
-> 
->  	da7219->aad->jack = jack;
->  	da7219->aad->jack_inserted = false;
-> +	da7219->aad->accdet_en = false;
-> 
->  	/* Send an initial empty report */
->  	snd_soc_jack_report(jack, 0, DA7219_AAD_REPORT_ALL_MASK);
-> @@ -46,6 +47,8 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec,
-> struct snd_soc_jack *jack)
->  	snd_soc_update_bits(codec, DA7219_ACCDET_CONFIG_1,
->  			    DA7219_ACCDET_EN_MASK,
->  			    (jack ? DA7219_ACCDET_EN_MASK : 0));
-> +
-> +	da7219->aad->accdet_en = true;
->  }
->  EXPORT_SYMBOL_GPL(da7219_aad_jack_det);
-> 
-> @@ -293,6 +296,10 @@ static irqreturn_t da7219_aad_irq_thread(int irq, void
-> *data)
->  	u8 statusa;
->  	int i, report = 0, mask = 0;
-> 
-> +	/* Ensure the master bias to be enabled */
-> +	if (!da7219_aad->accdet_en)
-> +		return IRQ_NONE;
-> +
->  	/* Read current IRQ events */
->  	regmap_bulk_read(da7219->regmap, DA7219_ACCDET_IRQ_EVENT_A,
->  			 events, DA7219_AAD_IRQ_REG_MAX);
-> diff --git a/sound/soc/codecs/da7219-aad.h b/sound/soc/codecs/da7219-aad.h
-> index 4fccf67..5641965 100644
-> --- a/sound/soc/codecs/da7219-aad.h
-> +++ b/sound/soc/codecs/da7219-aad.h
-> @@ -200,6 +200,7 @@ struct da7219_aad_priv {
-> 
->  	struct snd_soc_jack *jack;
->  	bool jack_inserted;
-> +	bool accdet_en;
->  };
-> 
->  /* AAD control */
-> --
-> 1.9.1
->
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
