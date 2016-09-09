@@ -1,73 +1,67 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] ASoC: rockchip: Add DP dai-links to the
- rk3399-gru machine driver
-Date: Fri, 9 Sep 2016 11:29:11 +0100
-Message-ID: <20160909102911.GE27946@sirena.org.uk>
-References: <1473181792-15398-1-git-send-email-zyw@rock-chips.com>
- <1473396235-11769-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1709932923094484918=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473396235-11769-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tiwai-IBi9RG/b67k@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hychao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Subject: [PATCH 0/8] ARM: dts: rockchip: Remove skeleton.dtsi usage and fix memory node DTC warnings
+Date: Fri,  9 Sep 2016 10:01:01 -0400
+Message-ID: <1473429669-6185-1-git-send-email-javier@osg.samsung.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hello Heiko,
 
---===============1709932923094484918==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="G6nVm6DDWH/FONJq"
-Content-Disposition: inline
+This series removes the inclusion of the skeleton.dtsi in all the Rockchip
+dts, which allows to get rid of the DTC warnings about a mismatch between
+the memory nodes' unit names and reg properties.
 
+Patches are pretty trivial and shouldn't cause functional changes AFAIK,
+but were only built tested and dtbs compared with scripts/dtc/dtx_diff.
 
---G6nVm6DDWH/FONJq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Sep 08, 2016 at 09:43:55PM -0700, Chris Zhong wrote:
-> This patch adds DP audio output support to the rk3399-gru machine
-> driver.
-
-Please don't resend or update single patches in the middle of a patch
-series, it makes things very confusing.  Please send the entire patch
-series at once.
-
---G6nVm6DDWH/FONJq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJX0o72AAoJECTWi3JdVIfQW84H/iYk/sSOPrXPbtVbPXq9laSI
-SHbzC8GEG/JF0tp5CyBDyn6GnxmnfK5LCZL5wE/tmuA9WBRu9vYVKU9aQJLb7oO+
-JXDepY1ULEj9IXLvZZTNi4/h9KtP3lzeaHuDJJru5XU8+WY8jOApqOfvs6bfo6Pi
-NGprDEjaO0Nq0t+wRJ97vycm6w0bSbeClAuGEuIsUrRykAmf4vLhWswvZ31yCgq3
-Mgmv6S08pNIJm9bKcTQNVybc0ulGV459jNnvBmkF1KfSLQrezL0SMi63DZFUxT47
-3ujJA337UF7T2+GRrsEVX+rT0RCD+pQJ8d5FbSKwTfIi9nLlI5hsvhZHlDCr7eg=
-=MHwV
------END PGP SIGNATURE-----
-
---G6nVm6DDWH/FONJq--
+Best regards,
+Javier
 
 
---===============1709932923094484918==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Javier Martinez Canillas (8):
+  ARM: dts: rockchip: Remove skeleton.dtsi inclusion in rk3036.dtsi
+  ARM: dts: rockchip: Remove skeleton.dtsi inclusion in rk322x.dtsi
+  ARM: dts: rockchip: Remove skeleton.dtsi inclusion in rk3288.dtsi
+  ARM: dts: rockchip: Remove skeleton.dtsi inclusion in rk3xxx.dtsi
+  ARM: dts: rockchip: Add missing unit name to memory nodes in rk3036
+    boards
+  ARM: dts: rockchip: Add missing unit name to memory nodes in rk322x
+    boards
+  ARM: dts: rockchip: Add missing unit name to memory nodes in rk3288
+    boards
+  ARM: dts: rockchip: Add missing unit name to memory nodes in rk3xxx
+    boards
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+ arch/arm/boot/dts/rk3036-evb.dts                  | 2 +-
+ arch/arm/boot/dts/rk3036-kylin.dts                | 2 +-
+ arch/arm/boot/dts/rk3036.dtsi                     | 4 +++-
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts            | 2 +-
+ arch/arm/boot/dts/rk3066a-marsboard.dts           | 2 +-
+ arch/arm/boot/dts/rk3066a-rayeager.dts            | 2 +-
+ arch/arm/boot/dts/rk3188-radxarock.dts            | 2 +-
+ arch/arm/boot/dts/rk3228-evb.dts                  | 2 +-
+ arch/arm/boot/dts/rk3229-evb.dts                  | 2 +-
+ arch/arm/boot/dts/rk322x.dtsi                     | 4 +++-
+ arch/arm/boot/dts/rk3288-evb.dtsi                 | 2 +-
+ arch/arm/boot/dts/rk3288-fennec.dts               | 2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi             | 2 +-
+ arch/arm/boot/dts/rk3288-miqi.dts                 | 2 +-
+ arch/arm/boot/dts/rk3288-popmetal.dts             | 2 +-
+ arch/arm/boot/dts/rk3288-r89.dts                  | 2 +-
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi           | 2 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi              | 2 +-
+ arch/arm/boot/dts/rk3288.dtsi                     | 4 +++-
+ arch/arm/boot/dts/rk3xxx.dtsi                     | 4 +++-
+ 21 files changed, 29 insertions(+), 21 deletions(-)
 
---===============1709932923094484918==--
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
