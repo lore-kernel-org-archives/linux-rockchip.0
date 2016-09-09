@@ -1,48 +1,68 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: [PATCH 4/8] ARM: dts: rockchip: Remove skeleton.dtsi inclusion in rk3xxx.dtsi
-Date: Fri,  9 Sep 2016 10:01:05 -0400
-Message-ID: <1473429669-6185-5-git-send-email-javier@osg.samsung.com>
-References: <1473429669-6185-1-git-send-email-javier@osg.samsung.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH] ASoC: da7219: make sure the valid event when startup
+Date: Fri,  9 Sep 2016 22:01:35 +0800
+Message-ID: <1473429695-12604-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473429669-6185-1-git-send-email-javier@osg.samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>
+To: linux-rockchip@lists.infradead.org, Adam.Thomson.Opensource@diasemi.com
+Cc: cychiang@google.com, heiko@sntech.de, smbarber@google.com, hychao@google.com, Xing Zheng <zhengxing@rock-chips.com>, Support Opensource <support.opensource@diasemi.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The skeleton.dtsi file was removed in ARM64 for different reasons as
-explained in commit ("3ebee5a2e141 arm64: dts: kill skeleton.dtsi").
+We need to ensure the master bias and jack detection to be enabled
+before reporting event at the da7219_aad_irq_thread. Otherwise, we
+may acquire the incorrect the unplug event when the DUT startup
+with a plugged headphone.
 
-These also applies to ARM and it will also allow to get rid of the
-following DTC warnings in the future:
-
-"Node /memory has a reg or ranges property, but no unit name"
-
-The disassembled DTB are almost the same, besides empty chosen nodes
-being removed. So the change should not have a functional impact.
-
-Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 
- arch/arm/boot/dts/rk3xxx.dtsi | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ sound/soc/codecs/da7219-aad.c | 7 +++++++
+ sound/soc/codecs/da7219-aad.h | 1 +
+ 2 files changed, 8 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index e15beb3c671e..0394312f392d 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -44,9 +44,11 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/soc/rockchip,boot-mode.h>
--#include "skeleton.dtsi"
+diff --git a/sound/soc/codecs/da7219-aad.c b/sound/soc/codecs/da7219-aad.c
+index 4e369a1..cef17c0d 100644
+--- a/sound/soc/codecs/da7219-aad.c
++++ b/sound/soc/codecs/da7219-aad.c
+@@ -38,6 +38,7 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
  
- / {
-+	#address-cells = <1>;
-+	#size-cells = <1>;
+ 	da7219->aad->jack = jack;
+ 	da7219->aad->jack_inserted = false;
++	da7219->aad->accdet_en = false;
+ 
+ 	/* Send an initial empty report */
+ 	snd_soc_jack_report(jack, 0, DA7219_AAD_REPORT_ALL_MASK);
+@@ -46,6 +47,8 @@ void da7219_aad_jack_det(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+ 	snd_soc_update_bits(codec, DA7219_ACCDET_CONFIG_1,
+ 			    DA7219_ACCDET_EN_MASK,
+ 			    (jack ? DA7219_ACCDET_EN_MASK : 0));
 +
- 	interrupt-parent = <&gic>;
++	da7219->aad->accdet_en = true;
+ }
+ EXPORT_SYMBOL_GPL(da7219_aad_jack_det);
  
- 	aliases {
+@@ -293,6 +296,10 @@ static irqreturn_t da7219_aad_irq_thread(int irq, void *data)
+ 	u8 statusa;
+ 	int i, report = 0, mask = 0;
+ 
++	/* Ensure the master bias to be enabled */
++	if (!da7219_aad->accdet_en)
++		return IRQ_NONE;
++
+ 	/* Read current IRQ events */
+ 	regmap_bulk_read(da7219->regmap, DA7219_ACCDET_IRQ_EVENT_A,
+ 			 events, DA7219_AAD_IRQ_REG_MAX);
+diff --git a/sound/soc/codecs/da7219-aad.h b/sound/soc/codecs/da7219-aad.h
+index 4fccf67..5641965 100644
+--- a/sound/soc/codecs/da7219-aad.h
++++ b/sound/soc/codecs/da7219-aad.h
+@@ -200,6 +200,7 @@ struct da7219_aad_priv {
+ 
+ 	struct snd_soc_jack *jack;
+ 	bool jack_inserted;
++	bool accdet_en;
+ };
+ 
+ /* AAD control */
 -- 
-2.7.4
+1.9.1
