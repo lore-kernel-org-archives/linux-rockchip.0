@@ -1,100 +1,73 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v3 3/3] drm/bridge: analogix_dp: detect Sink PSR state after
- configuring the PSR
-Date: Fri,  9 Sep 2016 17:45:02 +0800
-Message-ID: <1473414302-390-1-git-send-email-ykk@rock-chips.com>
-References: <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] ASoC: rockchip: Add DP dai-links to the
+ rk3399-gru machine driver
+Date: Fri, 9 Sep 2016 11:29:11 +0100
+Message-ID: <20160909102911.GE27946@sirena.org.uk>
+References: <1473181792-15398-1-git-send-email-zyw@rock-chips.com>
+ <1473396235-11769-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1709932923094484918=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1473396235-11769-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tiwai-IBi9RG/b67k@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hychao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TWFrZSBzdXJlIHRoZSByZXF1ZXN0IFBTUiBzdGF0ZSB0YWtlcyBlZmZlY3QgaW4gYW5hbG9naXhf
-ZHBfc2VuZF9wc3Jfc3BkKCkKZnVuY3Rpb24sIG9yIHByaW50IHRoZSBzaW5rIFBTUiBlcnJvciBz
-dGF0ZSBpZiB3ZSBmYWlsZWQgdG8gYXBwbHkgdGhlCnJlcXVlc3RlZCBQU1Igc2V0dGluZy4KClNp
-Z25lZC1vZmYtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMg
-aW4gdjM6Ci0gVXBkYXRlIGNvbW1pdCBtZXNzYWdlCi0gQWRkIERQX1RJTUVPVVRfUFNSX0xPT1Bf
-TVMgbWFyY29zCi0gQ29ycmVjdCB0aGUgcmV0dXJuIHZhbHVlcyBvZiBhbmFsb2dpeF9kcF9zZW5k
-X3Bzcl9zcGQoKQoKQ2hhbmdlcyBpbiB2MjoKLSBBIGJ1bmNoIG9mIGdvb2QgZml4ZXMgZnJvbSBT
-ZWFuCgogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMg
-fCAgNiArKy0tLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5oIHwgIDUgKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfcmVnLmMgIHwgMjUgKysrKysrKysrKysrKysrKysrKystLQogMyBmaWxlcyBjaGFuZ2Vk
-LCAyOCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggNWZlMzk4Mi4uYzBj
-ZTE2YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKQEAgLTExNiw4ICsxMTYsNyBAQCBpbnQgYW5hbG9naXhfZHBfZW5hYmxlX3Bz
-cihzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJcHNyX3ZzYy5EQjAgPSAwOwogCXBzcl92c2MuREIxID0g
-RURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZFIHwgRURQX1ZTQ19QU1JfQ1JDX1ZBTFVFU19WQUxJRDsK
-IAotCWFuYWxvZ2l4X2RwX3NlbmRfcHNyX3NwZChkcCwgJnBzcl92c2MpOwotCXJldHVybiAwOwor
-CXJldHVybiBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoZHAsICZwc3JfdnNjKTsKIH0KIEVYUE9S
-VF9TWU1CT0xfR1BMKGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3IpOwogCkBAIC0xMzksOCArMTM4LDcg
-QEAgaW50IGFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKHN0cnVjdCBkZXZpY2UgKmRldikKIAlwc3Jf
-dnNjLkRCMCA9IDA7CiAJcHNyX3ZzYy5EQjEgPSAwOwogCi0JYW5hbG9naXhfZHBfc2VuZF9wc3Jf
-c3BkKGRwLCAmcHNyX3ZzYyk7Ci0JcmV0dXJuIDA7CisJcmV0dXJuIGFuYWxvZ2l4X2RwX3NlbmRf
-cHNyX3NwZChkcCwgJnBzcl92c2MpOwogfQogRVhQT1JUX1NZTUJPTF9HUEwoYW5hbG9naXhfZHBf
-ZGlzYWJsZV9wc3IpOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
-Z2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
-YW5hbG9naXhfZHBfY29yZS5oCmluZGV4IGQ1NjRlOTAuLmEyN2YxZTMgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCkBAIC0yMCw2
-ICsyMCw3IEBACiAjZGVmaW5lIE1BWF9FUV9MT09QIDUKIAogI2RlZmluZSBEUF9USU1FT1VUX0xP
-T1BfTVMJCQltc2Vjc190b19qaWZmaWVzKDEpCisjZGVmaW5lIERQX1RJTUVPVVRfUFNSX0xPT1Bf
-TVMJCQltc2Vjc190b19qaWZmaWVzKDMwMCkKIAogLyogRFBfTUFYX0xBTkVfQ09VTlQgKi8KICNk
-ZWZpbmUgRFBDRF9FTkhBTkNFRF9GUkFNRV9DQVAoeCkJCSgoKHgpID4+IDcpICYgMHgxKQpAQCAt
-MjQ4LDggKzI0OSw4IEBAIHZvaWQgYW5hbG9naXhfZHBfY29uZmlnX3ZpZGVvX3NsYXZlX21vZGUo
-c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApOwogdm9pZCBhbmFsb2dpeF9kcF9lbmFibGVf
-c2NyYW1ibGluZyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCk7CiB2b2lkIGFuYWxvZ2l4
-X2RwX2Rpc2FibGVfc2NyYW1ibGluZyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCk7CiB2
-b2lkIGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3JfY3JjKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ug
-KmRwKTsKLXZvaWQgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKHN0cnVjdCBhbmFsb2dpeF9kcF9k
-ZXZpY2UgKmRwLAotCQkJICAgICAgc3RydWN0IGVkcF92c2NfcHNyICp2c2MpOworaW50IGFuYWxv
-Z2l4X2RwX3NlbmRfcHNyX3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKKwkJCSAg
-ICAgc3RydWN0IGVkcF92c2NfcHNyICp2c2MpOwogc3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2Zl
-cihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAkJCSAgICAgc3RydWN0IGRybV9kcF9h
-dXhfbXNnICptc2cpOwogI2VuZGlmIC8qIF9BTkFMT0dJWF9EUF9DT1JFX0ggKi8KZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCmluZGV4IDE1
-YTRjZjAuLjdmZDRlZDAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
-eC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtMTAwNCwxMCArMTAwNCwxMiBAQCB2b2lkIGFuYWxvZ2l4
-X2RwX2VuYWJsZV9wc3JfY3JjKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQogCXdyaXRl
-bChQU1JfVklEX0NSQ19FTkFCTEUsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0NSQ19DT04p
-OwogfQogCi12b2lkIGFuYWxvZ2l4X2RwX3NlbmRfcHNyX3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBf
-ZGV2aWNlICpkcCwKLQkJCSAgICAgIHN0cnVjdCBlZHBfdnNjX3BzciAqdnNjKQoraW50IGFuYWxv
-Z2l4X2RwX3NlbmRfcHNyX3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKKwkJCSAg
-ICAgc3RydWN0IGVkcF92c2NfcHNyICp2c2MpCiB7CisJdW5zaWduZWQgbG9uZyB0aW1lb3V0Owog
-CXVuc2lnbmVkIGludCB2YWw7CisJdTggc2luazsKIAogCS8qIGRvbid0IHNlbmQgaW5mbyBmcmFt
-ZSAqLwogCXZhbCA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX1BLVF9TRU5EX0NU
-TCk7CkBAIC0xMDQ4LDYgKzEwNTAsMjUgQEAgdm9pZCBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQo
-c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCiAJdmFsID0gcmVhZGwoZHAtPnJlZ19iYXNl
-ICsgQU5BTE9HSVhfRFBfUEtUX1NFTkRfQ1RMKTsKIAl2YWwgfD0gSUZfRU47CiAJd3JpdGVsKHZh
-bCwgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfUEtUX1NFTkRfQ1RMKTsKKworCXRpbWVvdXQg
-PSBqaWZmaWVzICsgRFBfVElNRU9VVF9QU1JfTE9PUF9NUzsKKwl3aGlsZSAodGltZV9iZWZvcmUo
-amlmZmllcywgdGltZW91dCkpIHsKKwkJdmFsID0gZHJtX2RwX2RwY2RfcmVhZGIoJmRwLT5hdXgs
-IERQX1BTUl9TVEFUVVMsICZzaW5rKTsKKwkJaWYgKHZhbCAhPSAxKSB7CisJCQlkZXZfZXJyKGRw
-LT5kZXYsICJQU1JfU1RBVFVTIHJlYWQgZmFpbGVkIHJldD0lZCIsIHZhbCk7CisJCQlyZXR1cm4g
-LUVCVVNZOworCQl9CisKKwkJaWYgKCh2c2MtPkRCMSAmJiBzaW5rID09IERQX1BTUl9TSU5LX0FD
-VElWRV9SRkIpIHx8CisJCSAgICAoIXZzYy0+REIxICYmIHNpbmsgPT0gRFBfUFNSX1NJTktfSU5B
-Q1RJVkUpKQorCQkJcmV0dXJuIDA7CisKKwkJdXNsZWVwX3JhbmdlKDEwMDAsIDE1MDApOworCX0K
-KworCWRldl93YXJuKGRwLT5kZXYsICJGYWlsZWQgdG8gYXBwbHkgUFNSLCBzaW5rIHN0YXRlIHdh
-cyBbJXhdIiwgc2luayk7CisKKwlyZXR1cm4gLUVUSU1FRE9VVDsKIH0KIAogc3NpemVfdCBhbmFs
-b2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKLS0gCjEuOS4x
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1709932923094484918==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="G6nVm6DDWH/FONJq"
+Content-Disposition: inline
+
+
+--G6nVm6DDWH/FONJq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Sep 08, 2016 at 09:43:55PM -0700, Chris Zhong wrote:
+> This patch adds DP audio output support to the rk3399-gru machine
+> driver.
+
+Please don't resend or update single patches in the middle of a patch
+series, it makes things very confusing.  Please send the entire patch
+series at once.
+
+--G6nVm6DDWH/FONJq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJX0o72AAoJECTWi3JdVIfQW84H/iYk/sSOPrXPbtVbPXq9laSI
+SHbzC8GEG/JF0tp5CyBDyn6GnxmnfK5LCZL5wE/tmuA9WBRu9vYVKU9aQJLb7oO+
+JXDepY1ULEj9IXLvZZTNi4/h9KtP3lzeaHuDJJru5XU8+WY8jOApqOfvs6bfo6Pi
+NGprDEjaO0Nq0t+wRJ97vycm6w0bSbeClAuGEuIsUrRykAmf4vLhWswvZ31yCgq3
+Mgmv6S08pNIJm9bKcTQNVybc0ulGV459jNnvBmkF1KfSLQrezL0SMi63DZFUxT47
+3ujJA337UF7T2+GRrsEVX+rT0RCD+pQJ8d5FbSKwTfIi9nLlI5hsvhZHlDCr7eg=
+=MHwV
+-----END PGP SIGNATURE-----
+
+--G6nVm6DDWH/FONJq--
+
+
+--===============1709932923094484918==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1709932923094484918==--
