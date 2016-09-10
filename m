@@ -1,77 +1,100 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v15 1/5] extcon: Introduce EXTCON_PROP_DISP_HPD property
-Date: Fri,  9 Sep 2016 19:15:44 -0700
-Message-ID: <1473473748-22331-2-git-send-email-zyw@rock-chips.com>
-References: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH 1/3] drm/rockchip: vop: move dma_addr to plane atomic check
+Date: Sat, 10 Sep 2016 10:29:02 +0800
+Message-ID: <1473474544-16248-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473473748-22331-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hychao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-EXTCON_PROP_DISP_HPD is need by display port, if the system has no hpd
-interrupt, this property can be used.
-
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
-Changes in v15: None
-Changes in v14: None
-Changes in v13: None
-Changes in v12: None
-Changes in v11: None
-Changes in v10: None
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- include/linux/extcon.h | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-index 9147c42..4411893 100644
---- a/include/linux/extcon.h
-+++ b/include/linux/extcon.h
-@@ -131,9 +131,21 @@
- #define EXTCON_PROP_JACK_MAX		100
- #define EXTCON_PROP_JACK_CNT (EXTCON_PROP_JACK_MAX - EXTCON_PROP_JACK_MIN + 1)
- 
-+/*
-+ * Properties of EXTCON_TYPE_DISP.
-+ *
-+ * - EXTCON_PROP_DISP_HPD
-+ * @type:       integer (intval)
-+ * @value:      0 (no hpd) or 1 (hpd)
-+ * @default:    0 (no hpd)
-+ *
-+ */
-+
-+#define EXTCON_PROP_DISP_HPD		150
-+
- /* Properties of EXTCON_TYPE_DISP. */
- #define EXTCON_PROP_DISP_MIN		150
--#define EXTCON_PROP_DISP_MAX		150
-+#define EXTCON_PROP_DISP_MAX		151
- #define EXTCON_PROP_DISP_CNT (EXTCON_PROP_DISP_MAX - EXTCON_PROP_DISP_MIN + 1)
- 
- /*
--- 
-1.9.1
+Q2FsYyBkbWFfYWRkciBlYXJsaWVyLCB0aGVuIHRoZSBkbWFfYWRkciBjYW4gYmUgdXNlZCBvbgpj
+cnRjIGF0b21pYyBjaGVjay4KClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2Nr
+LWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIHwgNTIgKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAy
+OSBpbnNlcnRpb25zKCspLCAyMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCAzMzIxMTE1Li44MzQ0NTZmIDEwMDY0NAotLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTkxLDYgKzkxLDcgQEAg
+c3RydWN0IHZvcF9wbGFuZV9zdGF0ZSB7CiAJc3RydWN0IGRybV9wbGFuZV9zdGF0ZSBiYXNlOwog
+CWludCBmb3JtYXQ7CiAJZG1hX2FkZHJfdCB5cmdiX21zdDsKKwlkbWFfYWRkcl90IHV2X21zdDsK
+IAlib29sIGVuYWJsZTsKIH07CiAKQEAgLTU4OSwxMiArNTkwLDE2IEBAIHN0YXRpYyBpbnQgdm9w
+X3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAlzdHJ1Y3Qgdm9w
+X3dpbiAqdm9wX3dpbiA9IHRvX3ZvcF93aW4ocGxhbmUpOwogCXN0cnVjdCB2b3BfcGxhbmVfc3Rh
+dGUgKnZvcF9wbGFuZV9zdGF0ZSA9IHRvX3ZvcF9wbGFuZV9zdGF0ZShzdGF0ZSk7CiAJY29uc3Qg
+c3RydWN0IHZvcF93aW5fZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsKKwlzdHJ1Y3QgZHJtX2dl
+bV9vYmplY3QgKm9iaiwgKnV2X29iajsKKwlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtf
+b2JqLCAqcmtfdXZfb2JqOwogCWludCByZXQ7CisJc3RydWN0IGRybV9yZWN0ICpzcmMgPSAmc3Rh
+dGUtPnNyYzsKIAlzdHJ1Y3QgZHJtX3JlY3QgY2xpcDsKIAlpbnQgbWluX3NjYWxlID0gd2luLT5w
+aHktPnNjbCA/IEZSQUNfMTZfMTYoMSwgOCkgOgogCQkJCQlEUk1fUExBTkVfSEVMUEVSX05PX1ND
+QUxJTkc7CiAJaW50IG1heF9zY2FsZSA9IHdpbi0+cGh5LT5zY2wgPyBGUkFDXzE2XzE2KDgsIDEp
+IDoKIAkJCQkJRFJNX1BMQU5FX0hFTFBFUl9OT19TQ0FMSU5HOworCXVuc2lnbmVkIGxvbmcgb2Zm
+c2V0OwogCiAJaWYgKCFjcnRjIHx8ICFmYikKIAkJZ290byBvdXRfZGlzYWJsZTsKQEAgLTYyOCw2
+ICs2MzMsMjkgQEAgc3RhdGljIGludCB2b3BfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1f
+cGxhbmUgKnBsYW5lLAogCWlmIChpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KSAmJiAo
+KHN0YXRlLT5zcmMueDEgPj4gMTYpICUgMikpCiAJCXJldHVybiAtRUlOVkFMOwogCisJb2JqID0g
+cm9ja2NoaXBfZmJfZ2V0X2dlbV9vYmooZmIsIDApOworCXJrX29iaiA9IHRvX3JvY2tjaGlwX29i
+aihvYmopOworCisJb2Zmc2V0ID0gKHNyYy0+eDEgPj4gMTYpICogZHJtX2Zvcm1hdF9wbGFuZV9j
+cHAoZmItPnBpeGVsX2Zvcm1hdCwgMCk7CisJb2Zmc2V0ICs9IChzcmMtPnkxID4+IDE2KSAqIGZi
+LT5waXRjaGVzWzBdOworCW9mZnNldCArPSBmYi0+b2Zmc2V0c1swXTsKKwl2b3BfcGxhbmVfc3Rh
+dGUtPnlyZ2JfbXN0ID0gcmtfb2JqLT5kbWFfYWRkciArIG9mZnNldDsKKworCWlmIChpc195dXZf
+c3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KSkgeworCQlpbnQgaHN1YiA9IGRybV9mb3JtYXRfaG9y
+el9jaHJvbWFfc3Vic2FtcGxpbmcoZmItPnBpeGVsX2Zvcm1hdCk7CisJCWludCB2c3ViID0gZHJt
+X2Zvcm1hdF92ZXJ0X2Nocm9tYV9zdWJzYW1wbGluZyhmYi0+cGl4ZWxfZm9ybWF0KTsKKwkJaW50
+IGJwcCA9IGRybV9mb3JtYXRfcGxhbmVfY3BwKGZiLT5waXhlbF9mb3JtYXQsIDEpOworCisJCXV2
+X29iaiA9IHJvY2tjaGlwX2ZiX2dldF9nZW1fb2JqKGZiLCAxKTsKKwkJcmtfdXZfb2JqID0gdG9f
+cm9ja2NoaXBfb2JqKHV2X29iaik7CisKKwkJb2Zmc2V0ID0gKHNyYy0+eDEgPj4gMTYpICogYnBw
+IC8gaHN1YjsKKwkJb2Zmc2V0ICs9IChzcmMtPnkxID4+IDE2KSAqIGZiLT5waXRjaGVzWzFdIC8g
+dnN1YjsKKwkJb2Zmc2V0ICs9IGZiLT5vZmZzZXRzWzFdOworCisJCXZvcF9wbGFuZV9zdGF0ZS0+
+dXZfbXN0ID0gcmtfdXZfb2JqLT5kbWFfYWRkciArIG9mZnNldDsKKwl9CisKIAl2b3BfcGxhbmVf
+c3RhdGUtPmVuYWJsZSA9IHRydWU7CiAKIAlyZXR1cm4gMDsKQEAgLTY3NywxMCArNzA1LDYgQEAg
+c3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxh
+bmUsCiAJdWludDMyX3QgYWN0X2luZm8sIGRzcF9pbmZvLCBkc3Bfc3Q7CiAJc3RydWN0IGRybV9y
+ZWN0ICpzcmMgPSAmc3RhdGUtPnNyYzsKIAlzdHJ1Y3QgZHJtX3JlY3QgKmRlc3QgPSAmc3RhdGUt
+PmRzdDsKLQlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgKnV2X29iajsKLQlzdHJ1Y3Qgcm9j
+a2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLCAqcmtfdXZfb2JqOwotCXVuc2lnbmVkIGxvbmcgb2Zm
+c2V0OwotCWRtYV9hZGRyX3QgZG1hX2FkZHI7CiAJdWludDMyX3QgdmFsOwogCWJvb2wgcmJfc3dh
+cDsKIApAQCAtNjk4LDkgKzcyMiw2IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBk
+YXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogCQlyZXR1cm47CiAJfQogCi0Jb2JqID0gcm9j
+a2NoaXBfZmJfZ2V0X2dlbV9vYmooZmIsIDApOwotCXJrX29iaiA9IHRvX3JvY2tjaGlwX29iaihv
+YmopOwotCiAJYWN0dWFsX3cgPSBkcm1fcmVjdF93aWR0aChzcmMpID4+IDE2OwogCWFjdHVhbF9o
+ID0gZHJtX3JlY3RfaGVpZ2h0KHNyYykgPj4gMTY7CiAJYWN0X2luZm8gPSAoYWN0dWFsX2ggLSAx
+KSA8PCAxNiB8ICgoYWN0dWFsX3cgLSAxKSAmIDB4ZmZmZik7CkBAIC03MTIsMTAgKzczMyw2IEBA
+IHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBs
+YW5lLAogCWRzcF9zdHkgPSBkZXN0LT55MSArIGNydGMtPm1vZGUudnRvdGFsIC0gY3J0Yy0+bW9k
+ZS52c3luY19zdGFydDsKIAlkc3Bfc3QgPSBkc3Bfc3R5IDw8IDE2IHwgKGRzcF9zdHggJiAweGZm
+ZmYpOwogCi0Jb2Zmc2V0ID0gKHNyYy0+eDEgPj4gMTYpICogZHJtX2Zvcm1hdF9wbGFuZV9jcHAo
+ZmItPnBpeGVsX2Zvcm1hdCwgMCk7Ci0Jb2Zmc2V0ICs9IChzcmMtPnkxID4+IDE2KSAqIGZiLT5w
+aXRjaGVzWzBdOwotCXZvcF9wbGFuZV9zdGF0ZS0+eXJnYl9tc3QgPSBya19vYmotPmRtYV9hZGRy
+ICsgb2Zmc2V0ICsgZmItPm9mZnNldHNbMF07Ci0KIAlzcGluX2xvY2tfaXJxKCZwbGFuZS0+ZGV2
+LT5ldmVudF9sb2NrKTsKIAl2b3Bfd2luLT5lbmFibGUgPSB0cnVlOwogCXZvcF93aW4tPnlyZ2Jf
+bXN0ID0gdm9wX3BsYW5lX3N0YXRlLT55cmdiX21zdDsKQEAgLTcyNywxOSArNzQ0LDggQEAgc3Rh
+dGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUs
+CiAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHlyZ2JfdmlyLCBmYi0+cGl0Y2hlc1swXSA+PiAyKTsK
+IAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgeXJnYl9tc3QsIHZvcF9wbGFuZV9zdGF0ZS0+eXJnYl9t
+c3QpOwogCWlmIChpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KSkgewotCQlpbnQgaHN1
+YiA9IGRybV9mb3JtYXRfaG9yel9jaHJvbWFfc3Vic2FtcGxpbmcoZmItPnBpeGVsX2Zvcm1hdCk7
+Ci0JCWludCB2c3ViID0gZHJtX2Zvcm1hdF92ZXJ0X2Nocm9tYV9zdWJzYW1wbGluZyhmYi0+cGl4
+ZWxfZm9ybWF0KTsKLQkJaW50IGJwcCA9IGRybV9mb3JtYXRfcGxhbmVfY3BwKGZiLT5waXhlbF9m
+b3JtYXQsIDEpOwotCi0JCXV2X29iaiA9IHJvY2tjaGlwX2ZiX2dldF9nZW1fb2JqKGZiLCAxKTsK
+LQkJcmtfdXZfb2JqID0gdG9fcm9ja2NoaXBfb2JqKHV2X29iaik7Ci0KLQkJb2Zmc2V0ID0gKHNy
+Yy0+eDEgPj4gMTYpICogYnBwIC8gaHN1YjsKLQkJb2Zmc2V0ICs9IChzcmMtPnkxID4+IDE2KSAq
+IGZiLT5waXRjaGVzWzFdIC8gdnN1YjsKLQotCQlkbWFfYWRkciA9IHJrX3V2X29iai0+ZG1hX2Fk
+ZHIgKyBvZmZzZXQgKyBmYi0+b2Zmc2V0c1sxXTsKIAkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHV2
+X3ZpciwgZmItPnBpdGNoZXNbMV0gPj4gMik7Ci0JCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB1dl9t
+c3QsIGRtYV9hZGRyKTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHV2X21zdCwgdm9wX3BsYW5l
+X3N0YXRlLT51dl9tc3QpOwogCX0KIAogCWlmICh3aW4tPnBoeS0+c2NsKQotLSAKMS45LjEKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
