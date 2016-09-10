@@ -1,201 +1,56 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v15 0/5] Rockchip Type-C DisplayPort driver
-Date: Fri,  9 Sep 2016 19:15:43 -0700
-Message-ID: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hychao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v15 4/5] drm/rockchip: cdn-dp: support audio hot-plug
+Date: Fri,  9 Sep 2016 19:15:47 -0700
+Message-ID: <1473473748-22331-5-git-send-email-zyw@rock-chips.com>
+References: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, wulf@rock-chips.com, marcheu@chromium.org, briannorris@chromium.org, zhengxing@rock-chips.com, cychiang@chromium.org, hychao@chromium.org, broonie@kernel.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Hi all
-
-This series patch is for rockchip Type-C DisplayPort controller driver.
-
-The USB Type-C PHY is designed to support the USB3 and DP applications.
-The PHY basically has two main components: USB3 and DisplyPort. USB3
-operates in SuperSpeed mode and the DP can operate at RBR, HBR and HBR2
-data rates. The Type-C cable orientation detection and Power Delivery
-(PD) is accomplished using a PD PHY or a exernal PD chip.
-
-The DP controller is compliant with DisplayPort Specification,
-Version 1.3, This IP is compatible with the rockchip type-c PHY IP.
-There is a uCPU in DP controller, it need a firmware to work, please
-put the firmware file[0] rockchip/dptx.bin to
-/lib/firmware/rockchip/dptx.bin. The uCPU in charge of aux communication
-and link training, the host use mailbox to communicate with the ucpu.
-
-The DP contoller has register a notification with extcon API, to get the
-alt mode from PD, the PD driver need call the devm_extcon_dev_allocate
-to create a extcon device and use extcon_set_state to notify DP
-controller. And call extcon_set_cable_property to set orientation.
-
-About the DP audio, cdn-dp registered 2 DAIs: 0 is I2S, 1 is SPDIF.
-We can reference them in rk3399-gru machine driver. It base on the
-hdmi-notify patches[1], they are both in reviewing.
-
-This series is based on Mark Yao's branch[2], the extcon API backport
-from linux-next[3].
-
-I test this patches on the rk3399-evb board, with a fusb302 driver,
-this branch has no rk3399.dtsi, so the patch about dts is not included
-in this series.
-
-From V9, the Type-C PHY is split into two PHYs: DP and USB3. The PHY
-will be init, no matter which PHY be power_on. The DP module will
-enter A2 mode (standby mode) after phy_init, if DP PHY is powered on,
-the DP module will enter to A0 mode(running mode). Then if DP PHY is
-powered off, DP module will back to A2 mode. If everything is
-un-plugged, phy will be deinit.
-
-[0]
-kernel/git/firmware/linux-firmware.git
-[1]
-https://patchwork.kernel.org/patch/8887261/
-https://patchwork.kernel.org/patch/8887251/
-[2]
-https://github.com/markyzq/kernel-drm-rockchip/tree/drm-rockchip-next-2016-05-23
-[3]
-git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-
-
-Changes in v15:
-Chris Zhong's changes:
-- fix disable phy unbalance
-- support Apple Dock hot-plug in HDMI port
-- retraining when Apple Dock hpd irq coming
-Sean Paul's changes:
-- Restructured the worker
-- Synchronized between worker & drm hooks
-- Properly implemented enable/disable
-- Added error checking
-- Use devm variant of extcon
-- Use DRM_DEV_* logging
-- Refactored code to (hopefully) be more clear
-
-Changes in v14:
-- Modify some grammatical errors
-- remove the mutex around cdn_dp_audio_get_eld
-- power on the power domain after clk_enable
-- retry to read edid
-- change super speed property name to EXTCON_PROP_USB_SS
-- do a correct mode_valid check when bpc is 0
-
-Changes in v13:
-- add dptx and apb reset
-- support suspend/resume
-- switch power domain dynamically
-- re-training when hpd signal is triggered
-
-Changes in v12:
-- use EXTCON_PROP_USB_SUPERSPEED to replace EXTCON_USB_HOST
-
-Changes in v11:
-- refer dp phy
-- add best_encoder back, since it required by drm_atomic_helper_check
-
-Changes in v10:
-- add pclk_vio_grf clock
-- remove best_encoder ops
-- support read sink count from DPCD
-- control the grf_clk in DP
-
-Changes in v9:
-- modify the reference phy = <&tcphy0 0>, <&tcphy1 0>;
-- do not need reset the phy before power_on
-- add a orientation information for set_capability
-- retry to read dpcd in 10 seconds
-
-Changes in v8:
-- optimization the err log
-
-Changes in v7:
-- support firmware standby when no dptx connection
-- optimization the calculation of tu size and valid symbol
-
-Changes in v6:
-- add assigned-clocks and assigned-clock-rates
-- add power-domains
-- add a port struct
-- select SND_SOC_HDMI_CODEC
-- force reset the phy when hpd detected
-
-Changes in v5:
-- alphabetical order
-- do not use long, use u32 or u64
-- return MODE_CLOCK_HIGH when requested > actual
-- Optimized Coding Style
-- add a formula to get better tu size and symbol value.
-- modify according to Sean Paul's comments
-- fixed the fw_wait always 0
-
-Changes in v4:
-- add a reset node
-- support 2 phys
-- use phy framework to control DP phy
-- support 2 phys
-
-Changes in v3:
-- add SoC specific compatible string
-- remove reg = <1>;
-- use EXTCON_DISP_DP and EXTCON_DISP_DP_ALT cable to get dp port state.
-- reset spdif before config it
-- modify the firmware clk to 100Mhz
-- retry load firmware if fw file is requested too early
-- change spdif to i2s2
-
-Changes in v2:
-- Alphabetic order
-- remove excess error message
-- use define clk_rate
-- check all return value
-- remove dev_set_name(dp->dev, "cdn-dp");
-- use schedule_delayed_work
-- remove never-called functions
-- remove some unnecessary ()
-- correct the commit message
-
-Changes in v1:
-- add extcon node description
-- add #sound-dai-cells description
-- use extcon API
-- use hdmi-codec for the DP Asoc
-- do not initialize the "ret"
-- printk a err log when drm_of_encoder_active_endpoint_id
-- modify the dclk pin_pol to a single line
-
-Chris Zhong (5):
-  extcon: Introduce EXTCON_PROP_DISP_HPD property
-  Documentation: bindings: add dt documentation for cdn DP controller
-  drm/rockchip: cdn-dp: add cdn DP support for rk3399
-  drm/rockchip: cdn-dp: support audio hot-plug
-  ASoC: rockchip: Add DP dai-links to the rk3399-gru machine driver
-
- .../bindings/display/rockchip/cdn-dp-rockchip.txt  |   75 ++
- .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   11 +-
- drivers/gpu/drm/rockchip/Kconfig                   |   10 +
- drivers/gpu/drm/rockchip/Makefile                  |    1 +
- drivers/gpu/drm/rockchip/cdn-dp-core.c             | 1165 ++++++++++++++++++++
- drivers/gpu/drm/rockchip/cdn-dp-core.h             |  108 ++
- drivers/gpu/drm/rockchip/cdn-dp-reg.c              |  956 ++++++++++++++++
- drivers/gpu/drm/rockchip/cdn-dp-reg.h              |  482 ++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |   13 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |    9 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c        |    2 +
- include/linux/extcon.h                             |   14 +-
- sound/soc/rockchip/rk3399_gru_sound.c              |   93 ++
- 13 files changed, 2930 insertions(+), 9 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.c
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.h
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
- create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.h
-
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SXNzdWUgaG90LXBsdWcgZGV0ZWN0aW9uLCBFRElEIHVwZGF0ZSwgYW5kIEVMRCB1cGRhdGUgbm90
+aWZpY2F0aW9ucwpmcm9tIERQIGRyaXZlcnMuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8
+enl3QHJvY2stY2hpcHMuY29tPgotLS0KCkNoYW5nZXMgaW4gdjE1OiBOb25lCkNoYW5nZXMgaW4g
+djE0OiBOb25lCkNoYW5nZXMgaW4gdjEzOiBOb25lCkNoYW5nZXMgaW4gdjEyOiBOb25lCkNoYW5n
+ZXMgaW4gdjExOiBOb25lCkNoYW5nZXMgaW4gdjEwOiBOb25lCkNoYW5nZXMgaW4gdjk6IE5vbmUK
+Q2hhbmdlcyBpbiB2ODogTm9uZQpDaGFuZ2VzIGluIHY3OiBOb25lCkNoYW5nZXMgaW4gdjY6IE5v
+bmUKQ2hhbmdlcyBpbiB2NTogTm9uZQpDaGFuZ2VzIGluIHY0OiBOb25lCkNoYW5nZXMgaW4gdjM6
+IE5vbmUKQ2hhbmdlcyBpbiB2MjogTm9uZQpDaGFuZ2VzIGluIHYxOiBOb25lCgogZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCA0ICsrKysKIDEgZmlsZSBjaGFuZ2VkLCA0
+IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2Ru
+LWRwLWNvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCmluZGV4
+IDhkNzA4ZDMuLmRlMWNmM2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
+ZG4tZHAtY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5j
+CkBAIC0yMyw2ICsyMyw3IEBACiAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+CiAjaW5jbHVk
+ZSA8bGludXgvZXh0Y29uLmg+CiAjaW5jbHVkZSA8bGludXgvZmlybXdhcmUuaD4KKyNpbmNsdWRl
+IDxsaW51eC9oZG1pLW5vdGlmaWVyLmg+CiAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+CiAjaW5j
+bHVkZSA8bGludXgvcmVzZXQuaD4KICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+CkBAIC0y
+MzMsNiArMjM0LDcgQEAgc3RhdGljIGludCBjZG5fZHBfY29ubmVjdG9yX2dldF9tb2RlcyhzdHJ1
+Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQogCQkJZHJtX21vZGVfY29ubmVjdG9yX3VwZGF0
+ZV9lZGlkX3Byb3BlcnR5KGNvbm5lY3RvciwKIAkJCQkJCQkJZWRpZCk7CiAJCQlkcm1fZWRpZF90
+b19lbGQoY29ubmVjdG9yLCBlZGlkKTsKKwkJCWhkbWlfZXZlbnRfbmV3X2VsZChkcC0+ZGV2LCBj
+b25uZWN0b3ItPmVsZCk7CiAJCX0KIAkJa2ZyZWUoZWRpZCk7CiAJfQpAQCAtNjMxLDYgKzYzMyw3
+IEBAIHN0YXRpYyB2b2lkIGNkbl9kcF9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIg
+KmVuY29kZXIpCiAKIG91dDoKIAltdXRleF91bmxvY2soJmRwLT5sb2NrKTsKKwloZG1pX2V2ZW50
+X2Nvbm5lY3QoZHAtPmRldik7CiB9CiAKIHN0YXRpYyB2b2lkIGNkbl9kcF9lbmNvZGVyX2Rpc2Fi
+bGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQpAQCAtNjQ3LDYgKzY1MCw3IEBAIHN0YXRp
+YyB2b2lkIGNkbl9kcF9lbmNvZGVyX2Rpc2FibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVy
+KQogCQl9CiAJfQogCW11dGV4X3VubG9jaygmZHAtPmxvY2spOworCWhkbWlfZXZlbnRfZGlzY29u
+bmVjdChkcC0+ZGV2KTsKIH0KIAogc3RhdGljIGludCBjZG5fZHBfZW5jb2Rlcl9hdG9taWNfY2hl
+Y2soc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAotLSAKMS45LjEKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
