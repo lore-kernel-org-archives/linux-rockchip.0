@@ -1,253 +1,86 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v10 3/5] Documentation: bindings: add dt documentation
- for rk3399 dmc
-Date: Mon, 12 Sep 2016 11:31:02 -0500
-Message-ID: <20160912163102.GA17262@rob-hp-laptop>
-References: <1473051971-5500-1-git-send-email-hl@rock-chips.com>
- <1473051971-5500-4-git-send-email-hl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1473051971-5500-4-git-send-email-hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tixy-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, typ-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sudeep.holla-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: spdif: restore register during runtime_suspend/resume cycle" to the asoc tree
+Date: Mon, 12 Sep 2016 20:06:39 +0100
+Message-ID: <E1bjWYx-0002XB-Vt@debutante>
+References: <1473229821-54139-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473229821-54139-1-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Mark Brown <broonie@kernel.org>, dianders@chromium.orgbroonie@kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Sep 05, 2016 at 01:06:09PM +0800, Lin Huang wrote:
-> This patch adds the documentation for rockchip rk3399 dmc driver.
-> 
-> Signed-off-by: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> ---
-> Changes in v10:
+The patch
 
-And this is the first I see it?
+   ASoC: rockchip: spdif: restore register during runtime_suspend/resume cycle
 
-> - add rockchip prefix in property describe
-> 
-> Changes in v9:
-> - add ddr timing property to node
-> 
-> Changes in v8:
-> - add ddr timing properties
-> 
-> Changes in v7:
-> - None
-> 
-> Changes in v6:
-> -Add more detail in Documentation
-> 
-> Changes in v5:
-> -None
-> 
-> Changes in v4:
-> -None
-> 
-> Changes in v3:
-> -None
-> 
-> Changes in v2:
-> -None 
-> 
-> Changes in v1:
-> -None
->  .../devicetree/bindings/devfreq/rk3399_dmc.txt     | 202 +++++++++++++++++++++
->  1 file changed, 202 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
-> new file mode 100644
-> index 0000000..84660a3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
-> @@ -0,0 +1,210 @@
-> +* Rockchip rk3399 DMC(Dynamic Memory Controller) device
-> +
-> +Required properties:
-> +- compatible:		 Must be "rockchip,rk3399-dmc".
-> +- devfreq-events:	 Node to get DDR loading, Refer to
-> +			 Documentation/devicetree/bindings/devfreq/
-> +			 rockchip-dfi.txt
-> +- interrupts:		 The interrupt number to the CPU. The interrupt
-> +			 specifier format depends on the interrupt controller.
-> +			 It should be DCF interrupts, when DDR dvfs finish,
-> +			 it will happen.
-> +- clocks:		 Phandles for clock specified in "clock-names" property
-> +- clock-names :		 The name of clock used by the DFI, must be
-> +			 "pclk_ddr_mon";
-> +- operating-points-v2:	 Refer to Documentation/devicetree/bindings/power/opp.txt
-> +			 for details.
-> +- center-supply:	 DMC supply node.
-> +- status:		 Marks the node enabled/disabled.
+has been applied to the asoc tree at
 
-No need to document this.
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-> +
-> +Following properties are ddr timing:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-This is a lot of properties. I would prefer to see SPD data embedded 
-into DT if there are overlap in what SPD data defines for settings.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> +
-> +- rockchip,dram_speed_bin :	  Value reference include/dt-bindings/clock/ddr.h,
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Use '-', not '_' throughout.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-> +				  it select ddr3 cl-trp-trcd type, default value
-> +				  "DDR3_DEFAULT".it must selected according to
-> +				  "Speed Bin" in ddr3 datasheet, DO NOT use
-> +				  smaller "Speed Bin" than ddr3 exactly is.
-> +
-> +- rockchip,pd_idle :		  Config the PD_IDLE value, defined the power-down
-> +				  idle period, memories are places into power-down
-> +				  mode if bus is idle for PD_IDLE DFI clocks.
-> +
-> +- rockchip,sr_idle :		  Configure the SR_IDLE value, defined the
-> +				  selfrefresh idle period, memories are places
-> +				  into self-refresh mode if bus is idle for
-> +				  SR_IDLE*1024 DFI clocks (DFI clocks freq is
-> +				  half of dram's clocks), defaule value is "0".
-> +
-> +- rockchip,sr_mc_gate_idle :	  Defined the self-refresh with memory and
-> +				  controller clock gating idle period, memories
-> +				  are places into self-refresh mode and memory
-> +				  controller clock arg gating if bus is idle for
-> +				  sr_mc_gate_idle*1024 DFI clocks.
-> +
-> +- rockchip,srpd_lite_idle :	  Defined the self-refresh power down idle
-> +				  period, memories are places into self-refresh
-> +				  power down mode if bus is idle for
-> +				  srpd_lite_idle*1024 DFI clocks. This parameter
-> +				  is for LPDDR4 only.
-> +
-> +- rockchip,standby_idle :	  Defined the standby idle period, memories are
-> +				  places into self-refresh than controller, pi,
-> +				  phy and dram clock will gating if bus is idle
-> +				  for standby_idle * DFI clocks.
-> +
-> +- rockchip,dram_dll_disb_freq :  It's defined the DDR3 dll bypass frequency in
-> +				  MHz, when ddr freq less than DRAM_DLL_DISB_FREQ,
-> +				  ddr3 dll will bypssed note: if dll was bypassed,
-> +				  the odt also stop working.
-> +
-> +- rockchip,phy_dll_disb_freq :	  Defined the PHY dll bypass frequency in
-> +				  MHz (Mega Hz), when ddr freq less than
-> +				  DRAM_DLL_DISB_FREQ, phy dll will bypssed.
-> +				  note: phy dll and phy odt are independent.
-> +
-> +- rockchip,ddr3_odt_disb_freq :  When dram type is DDR3, this parameter defined
+Thanks,
+Mark
 
-Please group properties that are required and optional, and also group 
-by common, DDR3 only, DDR4L only, etc.
+From 3628c6987fb45d719cd963805bbba9f15017290e Mon Sep 17 00:00:00 2001
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Date: Wed, 7 Sep 2016 14:30:21 +0800
+Subject: [PATCH] ASoC: rockchip: spdif: restore register during
+ runtime_suspend/resume cycle
 
-> +				  the odt disable frequency in MHz (Mega Hz),
-> +				  when ddr frequency less then ddr3_odt_disb_freq,
-> +				  the odt on dram side and controller side are
-> +				  both disabled.
-> +
-> +- rockchip,ddr3_drv :		  When dram type is DDR3, this parameter define
-> +				  the dram side driver stength in ohm, default
-> +				  value is DDR3_DS_40ohm.
-> +
-> +- rockchip,ddr3_odt :		  When dram type is DDR3, this parameter define
-> +				  the dram side ODT stength in ohm, default value
-> +				  is DDR3_ODT_120ohm.
-> +
-> +- rockchip,phy_ddr3_ca_drv :	  When dram type is DDR3, this parameter define
-> +				  the phy side CA line(incluing command line,
-> +				  address line and clock line) driver strength.
-> +				  Default value is PHY_DRV_ODT_40.
-> +
-> +- rockchip,phy_ddr3_dq_drv :	  When dram type is DDR3, this parameter define
-> +				  the phy side DQ line(incluing DQS/DQ/DM line)
-> +				  driver strength. default value is PHY_DRV_ODT_40.
+when step into runtime_suspend, spdif pd will be disabled and loss state.
+so need to restore register when runtime_resume.
 
-You have the same properties, but they just vary by DDR type. Make the 
-property names common. 
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rockchip_spdif.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-> +
-> +- rockchip,phy_ddr3_odt : 	  When dram type is DDR3, this parameter define the
-> +				  phy side odt strength, default value is
-> +				  PHY_DRV_ODT_240.
-> +
-> +- rockchip,lpddr3_odt_disb_freq : When dram type is LPDDR3, this parameter defined
-> +				  then odt disable frequency in MHz (Mega Hz),
-> +				  when ddr frequency less then ddr3_odt_disb_freq,
-> +				  the odt on dram side and controller side are
-> +				  both disabled.
-> +
-> +- rockchip,lpddr3_drv :	  When dram type is LPDDR3, this parameter define
-> +				  the dram side driver stength in ohm, default
-> +				  value is LP3_DS_34ohm.
-> +
-> +- rockchip,lpddr3_odt :	  When dram type is LPDDR3, this parameter define
-> +				  the dram side ODT stength in ohm, default value
-> +				  is LP3_ODT_240ohm.
-
-Is this in ohms or a register value? Please make it in ohms and add a 
--ohms suffix.
-
-> +Example:
-> +	dmc_opp_table: dmc_opp_table {
-> +		compatible = "operating-points-v2";
-> +
-> +		opp00 {
-> +			opp-hz = /bits/ 64 <300000000>;
-> +			opp-microvolt = <900000>;
-> +		};
-> +		opp01 {
-> +			opp-hz = /bits/ 64 <666000000>;
-> +			opp-microvolt = <900000>;
-> +		};
-> +	};
-> +
-> +	dmc: dmc {
-> +		compatible = "rockchip,rk3399-dmc";
-> +		devfreq-events = <&dfi>;
-> +		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_DDRCLK>;
-> +		clock-names = "dmc_clk";
-> +		operating-points-v2 = <&dmc_opp_table>;
-> +		center-supply = <&ppvar_centerlogic>;
-> +		upthreshold = <15>;
-> +		downdifferential = <10>;
-> +		rockchip,ddr3_speed_bin = <21>;
-> +		rockchip,pd_idle = <0x40>;
-> +		rockchip,sr_idle = <0x2>;
-> +		rockchip,sr_mc_gate_idle = <0x3>;
-> +		rockchip,srpd_lite_idle	= <0x4>;
-> +		rockchip,standby_idle = <0x2000>;
-> +		rockchip,dram_dll_dis_freq = <300>;
-> +		rockchip,phy_dll_dis_freq = <125>;
-> +		rockchip,auto_pd_dis_freq = <666>;
-> +		rockchip,ddr3_odt_dis_freq = <333>;
-> +		rockchip,ddr3_drv = <DDR3_DS_40ohm>;
-> +		rockchip,ddr3_odt = <DDR3_ODT_120ohm>;
-> +		rockchip,phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_ddr3_odt = <PHY_DRV_ODT_240>;
-> +		rockchip,lpddr3_odt_dis_freq = <333>;
-> +		rockchip,lpddr3_drv = <LP3_DS_34ohm>;
-> +		rockchip,lpddr3_odt = <LP3_ODT_240ohm>;
-> +		rockchip,phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr3_odt = <PHY_DRV_ODT_240>;
-> +		rockchip,lpddr4_odt_dis_freq = <333>;
-> +		rockchip,lpddr4_drv = <LP4_PDDS_60ohm>;
-> +		rockchip,lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
-> +		rockchip,lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
-> +		rockchip,phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
-> +		rockchip,phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
-> +		rockchip,phy_lpddr4_odt = <PHY_DRV_ODT_60>;
-
-You have DDR3, LPDDR3 and LPDDR4 all populated at the same time? It 
-should be one set at a time.
-
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index 4ca265737eda..fa8101d1e16f 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -65,6 +65,7 @@ static int __maybe_unused rk_spdif_runtime_suspend(struct device *dev)
+ {
+ 	struct rk_spdif_dev *spdif = dev_get_drvdata(dev);
+ 
++	regcache_cache_only(spdif->regmap, true);
+ 	clk_disable_unprepare(spdif->mclk);
+ 	clk_disable_unprepare(spdif->hclk);
+ 
+@@ -88,7 +89,16 @@ static int __maybe_unused rk_spdif_runtime_resume(struct device *dev)
+ 		return ret;
+ 	}
+ 
+-	return 0;
++	regcache_cache_only(spdif->regmap, false);
++	regcache_mark_dirty(spdif->regmap);
++
++	ret = regcache_sync(spdif->regmap);
++	if (ret) {
++		clk_disable_unprepare(spdif->mclk);
++		clk_disable_unprepare(spdif->hclk);
++	}
++
++	return ret;
+ }
+ 
+ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
+-- 
+2.8.1
