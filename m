@@ -1,84 +1,72 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: i2s: restore register during runtime_suspend/resume cycle" to the asoc tree
-Date: Mon, 12 Sep 2016 20:06:57 +0100
-Message-ID: <E1bjWZF-0002YT-2V@debutante>
-References: <1473229653-53789-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473229653-53789-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, dianders@chromium.orgbroonie@kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
+ Rockchip cpu avs
+Date: Mon, 12 Sep 2016 14:55:15 -0700
+Message-ID: <20160912215515.GF7243@codeaurora.org>
+References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
+ <1471510341-63926-5-git-send-email-finley.xiao@rock-chips.com>
+ <20160829060801.GB5094@vireshk-i7>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20160829060801.GB5094@vireshk-i7>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Finlye Xiao <finley.xiao@rock-chips.com>, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, heiko@sntech.de, robh+dt@kernel.org, frowand.list@gmail.com, sre@kernel.org, dbaryshkov@gmail.com, dwmw2@infradead.org, mark.rutland@arm.com, khilman@kernel.org, nm@ti.com, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, jay.xu@rock-chips.com, rocky.hao@rock-chips.com, tim.chen@rock-chips.com, tony.xie@rock-chips.com, ulysses.huang@rock-chips.com, lin.huang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On 08/29, Viresh Kumar wrote:
+> On 18-08-16, 16:52, Finlye Xiao wrote:
+> > +static int rockchip_adjust_opp_table(struct device *cpu_dev,
+> > +				     struct cpufreq_frequency_table *table,
+> > +				     int volt)
+> > +{
+> > +	struct opp_table *opp_table;
+> > +	struct cpufreq_frequency_table *pos;
+> > +	struct dev_pm_opp *opp;
+> > +
+> > +	if (!volt)
+> > +		return 0;
+> > +
+> > +	rcu_read_lock();
+> > +
+> > +	opp_table = _find_opp_table(cpu_dev);
+> > +	if (IS_ERR(opp_table)) {
+> > +		rcu_read_unlock();
+> > +		return PTR_ERR(opp_table);
+> > +	}
+> > +
+> > +	cpufreq_for_each_valid_entry(pos, table) {
+> > +		opp = dev_pm_opp_find_freq_exact(cpu_dev, pos->frequency * 1000,
+> > +						 true);
+> > +		if (IS_ERR(opp))
+> > +			continue;
+> > +
+> > +		opp->u_volt += volt;
+> > +		opp->u_volt_min += volt;
+> > +		opp->u_volt_max += volt;
+> > +	}
+> > +
+> > +	rcu_read_unlock();
+> > +
+> > +	return 0;
+> > +}
+> 
+> I wouldn't prefer altering the opp tables from individual drivers at all. At the
+> least, it should be done via some helpers exposed by the core.
+> 
+> But before that I would like to hear from Stephen a bit as I recall he was also
+> working on something similar.
+> 
 
-   ASoC: rockchip: i2s: restore register during runtime_suspend/resume cycle
+I had a patch to modify the voltage at runtime for the "current"
+OPP. Now that we have regulator and clk control inside OPP that
+became a little easier to do without having to do some notifier
+from the OPP layer to the consumers. I haven't had time to revive
+those patches though. Should we do that? Does this need to modify
+anything besides the OPP the device is currently running at?
 
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From f0447f6cbb202e1be8244d15aee390a96d65e490 Mon Sep 17 00:00:00 2001
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Date: Wed, 7 Sep 2016 14:27:33 +0800
-Subject: [PATCH] ASoC: rockchip: i2s: restore register during
- runtime_suspend/resume cycle
-
-when step into runtime_suspend, i2s pd will be disabled and loss state.
-so need to restore register when runtime_resume.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 652e8c5ea166..974915cb4c4f 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -57,6 +57,7 @@ static int i2s_runtime_suspend(struct device *dev)
- {
- 	struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
- 
-+	regcache_cache_only(i2s->regmap, true);
- 	clk_disable_unprepare(i2s->mclk);
- 
- 	return 0;
-@@ -73,7 +74,14 @@ static int i2s_runtime_resume(struct device *dev)
- 		return ret;
- 	}
- 
--	return 0;
-+	regcache_cache_only(i2s->regmap, false);
-+	regcache_mark_dirty(i2s->regmap);
-+
-+	ret = regcache_sync(i2s->regmap);
-+	if (ret)
-+		clk_disable_unprepare(i2s->mclk);
-+
-+	return ret;
- }
- 
- static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
 -- 
-2.8.1
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
