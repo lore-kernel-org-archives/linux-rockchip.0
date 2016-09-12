@@ -1,114 +1,89 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v15.1 3/5] drm/rockchip: cdn-dp: add cdn DP support for
- rk3399
-Date: Mon, 12 Sep 2016 07:13:36 -0400
-Message-ID: <CAOw6vb+OnWchT7ufV8ZmYpn8qfGYt7A7rKwyFZSstiHyqb9aTA@mail.gmail.com>
-References: <1473473748-22331-4-git-send-email-zyw@rock-chips.com>
- <1473480966-21572-1-git-send-email-zyw@rock-chips.com>
- <20160912091339.GY27946@sirena.org.uk>
- <57D67927.7070109@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
+ delays
+Date: Mon, 12 Sep 2016 13:05:03 +0200
+Message-ID: <27811373.44ZqrxQai6@phil>
+References: <cover.1473302184.git.johnyoun@synopsys.com>
+ <6524429.86xzIcvWnK@phil>
+ <1336050364.27663.591ba3c4-a2b5-418f-9999-6b3cd631f440.open-xchange@email.1und1.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0017078862=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <57D67927.7070109@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, briannorris@chromium.org, cw00.choi@samsung.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, yzq@rock-chips.com, hychao@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, groeck@chromium.org, marcheu@chromium.org, linux-arm-kernel@lists.infradead.org, cychiang@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1336050364.27663.591ba3c4-a2b5-418f-9999-6b3cd631f440.open-xchange-7tX72C7vayboQLBSYMtkGA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Cc: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0017078862==
-Content-Type: multipart/alternative; boundary=001a114e56246a7f55053c4d9698
+Hi Stefan,
 
---001a114e56246a7f55053c4d9698
-Content-Type: text/plain; charset=UTF-8
+Am Montag, 12. September 2016, 07:20:44 CEST schrieb Stefan Wahren:
+> > Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> hat am 11. September 2016 um 23:19
+> > geschrieben:
+> > Am Mittwoch, 7. September 2016, 19:39:43 CEST schrieb John Youn:
+> > > When a force mode bit is set and the IDDIG debounce filter is enabled,
+> > > there is a delay for the forced mode to take effect. This delay is due
+> > > to the IDDIG debounce filter and is variable depending on the platform's
+> > > PHY clock speed. To account for this delay we can poll for the expected
+> > > mode.
+> > > 
+> > > On a clear force mode, since we don't know what mode to poll for, delay
+> > > for a fixed 100 ms. This is the maximum delay based on the slowest PHY
+> > > clock speed.
+> > > 
+> > > Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+> > > Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+> > > ---
+> > 
+> > [...]
+> > 
+> > > @@ -475,12 +478,6 @@ void dwc2_force_dr_mode(struct dwc2_hsotg *hsotg)
+> > > 
+> > >  			 __func__, hsotg->dr_mode);
+> > >  		
+> > >  		break;
+> > >  	
+> > >  	}
+> > > 
+> > > -
+> > > -	/*
+> > > -	 * NOTE: This is required for some rockchip soc based
+> > > -	 * platforms.
+> > > -	 */
+> > > -	msleep(50);
+> > > 
+> > >  }
+> > 
+> > sorry for not finding the time to test your subsequent versions, but this
+> > still
+> > acts up on my Rockchip boards, as I'm still running into errors like
+> > 
+> > 	[    4.875570] usb usb2-port1: connect-debounce failed
+> 
+> could you please name the relevant DTS file of the affected boards?
 
-On Sep 12, 2016 5:45 AM, "Chris Zhong" <zyw@rock-chips.com> wrote:
->
-> Hi Mark
->
-> OK, thanks.
-> I will send the whole series next time, hope it will not bother anyone
->
+So far I've been able to see that on
 
-I haven't reviewed your latest changes, so adding my r-b is a little
-premature.
+rk3188-radxarock
+rk3036-kylin
 
-Sean
+both on host-only dwc2 controllers.
 
->
->
-> On 09/12/2016 05:13 PM, Mark Brown wrote:
->>
->> On Fri, Sep 09, 2016 at 09:16:06PM -0700, Chris Zhong wrote:
->>>
->>> Add support for cdn DP controller which is embedded in the rk3399
->>> SoCs. The DP is compliant with DisplayPort Specification,
->>
->> Please don't new patches in reply to old serieses, especially not
->> individual patches in the middle of the series - it just makes
->> everything more confusing.  It becomes difficult to tell what the
->> version of the series that's actually expected is.  Please send the
->> whole series.
->
->
->
+Checking my rk3288-veyron-pinky, I see my usb-ethernet coming up correctly and 
+if I'm not mistaken (some sort of blindness when reading dmesg), there the 
+adapter is connected to the real otg dwc2 on there.
 
---001a114e56246a7f55053c4d9698
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+So right now it really seems to be limited to host-only dwc2 controllers, but 
+I guess I should double check that once I can switch cables around again.
 
-<p dir=3D"ltr">On Sep 12, 2016 5:45 AM, &quot;Chris Zhong&quot; &lt;<a href=
-=3D"mailto:zyw@rock-chips.com">zyw@rock-chips.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Hi Mark<br>
-&gt;<br>
-&gt; OK, thanks.<br>
-&gt; I will send the whole series next time, hope it will not bother anyone=
-<br>
-&gt;</p>
-<p dir=3D"ltr">I haven&#39;t reviewed your latest changes, so adding my r-b=
- is a little premature.</p>
-<p dir=3D"ltr">Sean</p>
-<p dir=3D"ltr">&gt;<br>
-&gt;<br>
-&gt; On 09/12/2016 05:13 PM, Mark Brown wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; On Fri, Sep 09, 2016 at 09:16:06PM -0700, Chris Zhong wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Add support for cdn DP controller which is embedded in the rk3=
-399<br>
-&gt;&gt;&gt; SoCs. The DP is compliant with DisplayPort Specification,<br>
-&gt;&gt;<br>
-&gt;&gt; Please don&#39;t new patches in reply to old serieses, especially =
-not<br>
-&gt;&gt; individual patches in the middle of the series - it just makes<br>
-&gt;&gt; everything more confusing.=C2=A0 It becomes difficult to tell what=
- the<br>
-&gt;&gt; version of the series that&#39;s actually expected is.=C2=A0 Pleas=
-e send the<br>
-&gt;&gt; whole series.<br>
-&gt;<br>
-&gt;<br>
-&gt;</p>
 
---001a114e56246a7f55053c4d9698--
-
---===============0017078862==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============0017078862==--
+Heiko
