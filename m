@@ -1,36 +1,32 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH v7 0/4] the fix for the USB HOST1 at rk3288 platform
-Date: Tue, 13 Sep 2016 16:30:32 +0200
-Message-ID: <10185436.tRUJHEj2GK@phil>
-References: <1473447580-10369-1-git-send-email-ayaka@soulik.info> <2037551.pvMcfteTuT@phil> <29f7cb2a-139e-ee70-a9f0-0573111207d8@soulik.info>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL 2/3] Rockchip dts32 changes for 4.9
+Date: Tue, 13 Sep 2016 17:39:35 +0200
+Message-ID: <5194266.v6W4UkKp0N@wuerfel>
+References: <1770547.rOXegfrGOH@phil> <1481725.D51jRkC1a3@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <29f7cb2a-139e-ee70-a9f0-0573111207d8@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ayaka <ayaka@soulik.info>
-Cc: linux-usb@vger.kernel.org, John.Youn@synopsys.com, kishon@ti.com, felipe.balbi@linux.intel.com, mark.rutland@arm.com, devicetree@vger.kernel.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, randy.li@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1481725.D51jRkC1a3@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 13. September 2016, 19:26:03 CEST schrieb ayaka:
-> On 09/13/2016 07:06 PM, Heiko Stuebner wrote:
-> > Hi Randy,
-> > 
-> > could you check if the other host-only dwc2 are also affected by this
-> > (rk3188, rk3036) please? Because they also seem to act up in some strange
-> > way
-> But I don't have those board currently. I would arrange them anyway.
-> Btw, I would send a new version to correct the fault reported by the
-> auto build machine.
+On Thursday, September 8, 2016 4:10:35 PM CEST Heiko Stuebner wrote:
+> 32bit Rockchip devicetree changes containing two new rk3288 boards (Fennec
+> and Firefly-reload), display support for the rk3288-evb, support for the
+> recently added firmware reboot-flag support and some housekeeping cleanups.
+> 
 
-What I meant was, if you could check with some hardware-people first, if the
-other host-only dwc2 are supposedly also affected. Right now I'm trying to
-determine if this effect is somehow related with the usb debounce issue
-I'm seeing with some recent dwc2 patches [0].
+Pulled into next/dt, thanks,
 
-
-Heiko
-
-[0] http://lists.infradead.org/pipermail/linux-rockchip/2016-September/012141.html
-https://git.kernel.org/cgit/linux/kernel/git/balbi/usb.git/commit/?h=testing/next&id=2938fc63e0c26bf694436ac81bc776c8b7eced0c
+	Arnd
