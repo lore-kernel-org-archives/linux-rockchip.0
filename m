@@ -1,87 +1,36 @@
-From: Brian Starkey <brian.starkey@arm.com>
-Subject: Re: [PATCH 2/3] drm: add ARM vendor format afbc
-Date: Tue, 13 Sep 2016 15:13:02 +0100
-Message-ID: <20160913141302.GA30625@e106950-lin.cambridge.arm.com>
-References: <1473474544-16248-1-git-send-email-mark.yao@rock-chips.com>
- <1473474544-16248-2-git-send-email-mark.yao@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RESEND PATCH v7 0/4] the fix for the USB HOST1 at rk3288 platform
+Date: Tue, 13 Sep 2016 16:30:32 +0200
+Message-ID: <10185436.tRUJHEj2GK@phil>
+References: <1473447580-10369-1-git-send-email-ayaka@soulik.info> <2037551.pvMcfteTuT@phil> <29f7cb2a-139e-ee70-a9f0-0573111207d8@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1473474544-16248-2-git-send-email-mark.yao@rock-chips.com>
+In-Reply-To: <29f7cb2a-139e-ee70-a9f0-0573111207d8@soulik.info>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: ayaka <ayaka@soulik.info>
+Cc: linux-usb@vger.kernel.org, John.Youn@synopsys.com, kishon@ti.com, felipe.balbi@linux.intel.com, mark.rutland@arm.com, devicetree@vger.kernel.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, randy.li@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+Am Dienstag, 13. September 2016, 19:26:03 CEST schrieb ayaka:
+> On 09/13/2016 07:06 PM, Heiko Stuebner wrote:
+> > Hi Randy,
+> > 
+> > could you check if the other host-only dwc2 are also affected by this
+> > (rk3188, rk3036) please? Because they also seem to act up in some strange
+> > way
+> But I don't have those board currently. I would arrange them anyway.
+> Btw, I would send a new version to correct the fault reported by the
+> auto build machine.
 
-On Sat, Sep 10, 2016 at 10:29:03AM +0800, Mark Yao wrote:
->AFBC is arm vendor format, it's a compressed format.
->
->The AFBC format is supported by rk3399 vop big.
->
->We know little about AFBC layout, hope to some guys can
->fixme about the afbc comment.
->
->Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
->---
-> include/uapi/drm/drm_fourcc.h | 7 +++++++
-> 1 file changed, 7 insertions(+)
->
->diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
->index a5890bf..9a47d7e 100644
->--- a/include/uapi/drm/drm_fourcc.h
->+++ b/include/uapi/drm/drm_fourcc.h
->@@ -159,6 +159,7 @@ extern "C" {
-> #define DRM_FORMAT_MOD_VENDOR_NV      0x03
-> #define DRM_FORMAT_MOD_VENDOR_SAMSUNG 0x04
-> #define DRM_FORMAT_MOD_VENDOR_QCOM    0x05
->+#define DRM_FORMAT_MOD_VENDOR_ARM     0x06
-> /* add more to the end as needed */
->
-> #define fourcc_mod_code(vendor, val) \
->@@ -233,6 +234,12 @@ extern "C" {
->  */
-> #define DRM_FORMAT_MOD_SAMSUNG_64_32_TILE	fourcc_mod_code(SAMSUNG, 1)
->
->+/*
->+ * FIXME: AFBC is arm vendor format, it's a compressed format.
->+ *
->+ */
->+#define DRM_FORMAT_MOD_ARM_AFBC	fourcc_mod_code(ARM, 1)
+What I meant was, if you could check with some hardware-people first, if the
+other host-only dwc2 are supposedly also affected. Right now I'm trying to
+determine if this effect is somehow related with the usb debounce issue
+I'm seeing with some recent dwc2 patches [0].
 
-Do you have any details about the exact type of AFBC data you are
-consuming here?
 
-We need to agree what exactly a buffer with the modifier
-"DRM_FORMAT_MOD_ARM_AFBC" means. For instance the block size, whether
-the data has the YUV transform applied, how the data is laid out in
-memory etc.
+Heiko
 
-We (ARM) want to make sure that the format modifiers we expose to
-userspace for AFBC are precise and non-ambiguous, cover all
-possible AFBC modifiers (of which there are many, and the list can
-only get longer) and all possible AFBC consuming/producing IPs'
-requirements.
-
-We had intended to delay adding any AFBC format modifiers to DRM until
-we'd had this kind of discussion internally to agree the exact set
-of modifiers we need, but if you need this now then we can start that 
-discussion here.
-
-Thanks,
-Brian
-
->+
-> #if defined(__cplusplus)
-> }
-> #endif
->-- 
->1.9.1
->
->
->_______________________________________________
->dri-devel mailing list
->dri-devel@lists.freedesktop.org
->https://lists.freedesktop.org/mailman/listinfo/dri-devel
+[0] http://lists.infradead.org/pipermail/linux-rockchip/2016-September/012141.html
+https://git.kernel.org/cgit/linux/kernel/git/balbi/usb.git/commit/?h=testing/next&id=2938fc63e0c26bf694436ac81bc776c8b7eced0c
