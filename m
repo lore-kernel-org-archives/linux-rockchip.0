@@ -1,134 +1,76 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH v15 1/5] extcon: Introduce EXTCON_PROP_DISP_HPD property
-Date: Tue, 13 Sep 2016 14:25:47 +0900
-Message-ID: <57D78DDB.3090206@samsung.com>
-References: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
- <CGME20160910021556epcas1p4c9ceeebf12d23b1963f78d4e789c6bf5@epcas1p4.samsung.com>
- <1473473748-22331-2-git-send-email-zyw@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RESEND PATCH v7 0/4] the fix for the USB HOST1 at rk3288 platform
+Date: Tue, 13 Sep 2016 13:06:34 +0200
+Message-ID: <2037551.pvMcfteTuT@phil>
+References: <1473447580-10369-1-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1473473748-22331-2-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>, dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, groeck@chromium.org, myungjoo.ham@samsung.com, wulf@rock-chips.com, marcheu@chromium.org, briannorris@chromium.org, zhengxing@rock-chips.com, cychiang@chromium.org, hychao@chromium.org, broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1473447580-10369-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear all,
+Hi Randy,
 
-On 2016년 09월 10일 11:15, Chris Zhong wrote:
-> EXTCON_PROP_DISP_HPD is need by display port, if the system has no hpd
-> interrupt, this property can be used.
+could you check if the other host-only dwc2 are also affected by this (rk3188, 
+rk3036) please? Because they also seem to act up in some strange way 
+sometimes.
+
+Thanks
+Heiko
+
+Am Samstag, 10. September 2016, 02:59:36 CEST schrieb Randy Li:
+>   At this stage it is the only "full features" and well verified
+> USB EHCI controller in this platform. More review is always necessary.
+>
+> Changelog:
+>  - v7:
+>     adding a wrapper for the reset operation for phy
+>     using that wrapper
+>  - v6:
+>     move pwms pinctrl to pwms node
+>     fix the order of the dtb file in Makefile
+>  - v5:
+>    - correct the mail format
+>  - v4:
+>    - re-order some nodes in alphabetical order
+>    - fix some minor bugs
+>    - add a entry in vendor list
+>  - v3:
+>    - fixing the rtc clock, using clock source from PMIC
+>    - enable the tmu
+>    - enable the fimc for elite board
+>    - suuport the audio codec at elite board
+>    - fixing minor bugs in the last commit
+>  - v2:
+>    - removing rtc node
+>      the clock source driver is not done yet.
+>    - adding exynos-bus
+>    - fixing the MFC
 > 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> ---
+> Randy Li (4):
+>   phy: Add reset callback
+>   phy: rockchip-usb: use rockchip_usb_phy_reset to reset phy during
+>     wakeup
+>   usb: dwc2: assert phy reset when waking up in rk3288 platform
+>   ARM: dts: rockchip: Point rk3288 dwc2 usb at the full PHY reset
 > 
-> Changes in v15: None
-> Changes in v14: None
-> Changes in v13: None
-> Changes in v12: None
-> Changes in v11: None
-> Changes in v10: None
-> Changes in v9: None
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> Changes in v1: None
-> 
->  include/linux/extcon.h | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-> index 9147c42..4411893 100644
-> --- a/include/linux/extcon.h
-> +++ b/include/linux/extcon.h
-> @@ -131,9 +131,21 @@
->  #define EXTCON_PROP_JACK_MAX		100
->  #define EXTCON_PROP_JACK_CNT (EXTCON_PROP_JACK_MAX - EXTCON_PROP_JACK_MIN + 1)
->  
-> +/*
-> + * Properties of EXTCON_TYPE_DISP.
-> + *
-> + * - EXTCON_PROP_DISP_HPD
-> + * @type:       integer (intval)
-> + * @value:      0 (no hpd) or 1 (hpd)
-> + * @default:    0 (no hpd)
-> + *
-> + */
-> +
-> +#define EXTCON_PROP_DISP_HPD		150
-> +
->  /* Properties of EXTCON_TYPE_DISP. */
->  #define EXTCON_PROP_DISP_MIN		150
-> -#define EXTCON_PROP_DISP_MAX		150
-> +#define EXTCON_PROP_DISP_MAX		151
->  #define EXTCON_PROP_DISP_CNT (EXTCON_PROP_DISP_MAX - EXTCON_PROP_DISP_MIN + 1)
->  
->  /*
-> 
-
-This patch rely on the extcon git repository to support the extcon property.
-I created the immutable branch(ib-extcon-phy-4.9). I send this pull request
-to prevent the build error.
-
-Best Regards,
-Chanwoo Choi
-
-The following changes since commit 29b4817d4018df78086157ea3a55c1d9424a7cfc:
-
-  Linux 4.8-rc1 (2016-08-07 18:18:00 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/extcon.git ib-extcon-phy-4.9
-
-for you to fetch changes up to c7914e8dfa4032d24ef7af4c86b9c841ec6b74e6:
-
-  extcon: Introduce EXTCON_PROP_DISP_HPD property (2016-09-13 10:08:47 +0900)
-
-----------------------------------------------------------------
-Chanwoo Choi (12):
-      extcon: arizona: Remove the usage of extcon_update_state()
-      extcon: adc-jack: Remove the usage of extcon_set_state()
-      extcon: gpio: Remove the usage of extcon_set_state()
-      extcon: Remove the state_store() to prevent the wrong access
-      extcon: Block the bit masking operation for cable state except for extcon core
-      extcon: Add the extcon_type to gather each connector into five category
-      extcon: Add the support for extcon property according to extcon type
-      extcon: Add the support for the capability of each property
-      extcon: Rename the extcon_set/get_state() to maintain the function naming pattern
-      extcon: Add the synchronization extcon APIs to support the notification
-      extcon: Add new EXTCON_DISP_HMD for Head-mounted Display device
-      extcon: Add new EXTCON_CHG_WPT for Wireless Power Transfer device
-
-Charles Keepax (1):
-      extcon: arizona: Remove unneeded semi-colon
-
-Chris Zhong (2):
-      extcon: Add EXTCON_DISP_DP and the property for USB Type-C
-      extcon: Introduce EXTCON_PROP_DISP_HPD property
-
-Guenter Roeck (1):
-      extcon: Introduce EXTCON_PROP_USB_SS property for SuperSpeed mode
-
-Maninder Singh (1):
-      extcon: Fix compile time warning
-
-Stephen Boyd (1):
-      extcon: Move extcon_get_edev_by_phandle() errors to dbg level
-
-Venkat Reddy Talla (1):
-      extcon: adc-jack: update cable state during boot
-
- drivers/extcon/extcon-adc-jack.c       |  27 +-
- drivers/extcon/extcon-arizona.c        |  13 +-
- drivers/extcon/extcon-gpio.c           |   2 +-
- drivers/extcon/extcon.c                | 774 ++++++++++++++++++++++++++-------
- include/linux/extcon.h                 | 192 +++++++-
- include/linux/extcon/extcon-adc-jack.h |   4 +-
- 6 files changed, 820 insertions(+), 192 deletions(-)
+>  .../devicetree/bindings/phy/rockchip-usb-phy.txt     |  3 +++
+>  arch/arm/boot/dts/rk3288.dtsi                        |  4 ++++
+>  drivers/phy/phy-core.c                               | 14 ++++++++++++++
+>  drivers/phy/phy-rockchip-usb.c                       | 20
+> ++++++++++++++++++++ drivers/usb/dwc2/core_intr.c                         |
+> 11 +++++++++++ include/linux/phy/phy.h                              |  3
+> +++
+>  6 files changed, 55 insertions(+)
