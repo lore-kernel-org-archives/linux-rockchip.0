@@ -1,16 +1,17 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
  delays
-Date: Tue, 13 Sep 2016 20:39:39 +0200
-Message-ID: <2928813.DT7ys6u6xZ@diego>
+Date: Tue, 13 Sep 2016 12:04:12 -0700
+Message-ID: <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
 References: <cover.1473302184.git.johnyoun@synopsys.com>
  <27811373.44ZqrxQai6@phil>
  <19473401.122600.97acfbc9-df96-4427-b533-911010ce5c3f.open-xchange@email.1und1.de>
+ <2928813.DT7ys6u6xZ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <19473401.122600.97acfbc9-df96-4427-b533-911010ce5c3f.open-xchange-7tX72C7vayboQLBSYMtkGA@public.gmane.org>
+In-Reply-To: <2928813.DT7ys6u6xZ@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,86 +21,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Cc: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 13. September 2016, 20:07:25 schrieb Stefan Wahren:
-> Hi Heiko,
-> 
-> > Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> hat am 12. September 2016 um 13:05
-> > geschrieben:
-> > 
-> > 
-> > Hi Stefan,
-> > 
-> > Am Montag, 12. September 2016, 07:20:44 CEST schrieb Stefan Wahren:
-> > > > Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> hat am 11. September 2016 um 23:19
-> > > > geschrieben:
-> > > > 
-> > > > Am Mittwoch, 7. September 2016, 19:39:43 CEST schrieb John Youn:
-> > > > > When a force mode bit is set and the IDDIG debounce filter is
-> > > > > enabled,
-> > > > > there is a delay for the forced mode to take effect. This delay is
-> > > > > due
-> > > > > to the IDDIG debounce filter and is variable depending on the
-> > > > > platform's
-> > > > > PHY clock speed. To account for this delay we can poll for the
-> > > > > expected
-> > > > > mode.
-> > > > > 
-> > > > > On a clear force mode, since we don't know what mode to poll for,
-> > > > > delay
-> > > > > for a fixed 100 ms. This is the maximum delay based on the slowest
-> > > > > PHY
-> > > > > clock speed.
-> > > > > 
-> > > > > Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-> > > > > Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-> > > > > ---
-> > > > 
-> > > > [...]
-> > > > 
-> > > > > @@ -475,12 +478,6 @@ void dwc2_force_dr_mode(struct dwc2_hsotg
-> > > > > *hsotg)
-> > > > > 
-> > > > >  			 __func__, hsotg->dr_mode);
-> > > > >  		
-> > > > >  		break;
-> > > > >  	
-> > > > >  	}
-> > > > > 
-> > > > > -
-> > > > > -	/*
-> > > > > -	 * NOTE: This is required for some rockchip soc based
-> > > > > -	 * platforms.
-> > > > > -	 */
-> > > > > -	msleep(50);
-> > > > > 
-> > > > >  }
-> > > > 
-> > > > sorry for not finding the time to test your subsequent versions, but
-> > > > this
-> > > > still
-> > > > acts up on my Rockchip boards, as I'm still running into errors like
-> > > > 
-> > > > 	[    4.875570] usb usb2-port1: connect-debounce failed
-> > > 
-> > > could you please name the relevant DTS file of the affected boards?
-> > 
-> > So far I've been able to see that on
-> > 
-> > rk3188-radxarock
-> > rk3036-kylin
-> > 
-> > both on host-only dwc2 controllers.
-> 
-> thanks, does patch 1 & 2 already have a negative effect on these
-> controllers?
-
-nope, patches 1+2 alone are ok and only the msleep(50) going away causes 
-problems. I'm back home now, so I'll hopefully have time to check host-only 
-vs. otg dwc2 controllers tomorrow as well.
-
-
-Heiko
+T24gOS8xMy8yMDE2IDExOjM5IEFNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBEaWVuc3Rh
+ZywgMTMuIFNlcHRlbWJlciAyMDE2LCAyMDowNzoyNSBzY2hyaWViIFN0ZWZhbiBXYWhyZW46Cj4+
+IEhpIEhlaWtvLAo+Pgo+Pj4gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gaGF0IGFt
+IDEyLiBTZXB0ZW1iZXIgMjAxNiB1bSAxMzowNQo+Pj4gZ2VzY2hyaWViZW46Cj4+Pgo+Pj4KPj4+
+IEhpIFN0ZWZhbiwKPj4+Cj4+PiBBbSBNb250YWcsIDEyLiBTZXB0ZW1iZXIgMjAxNiwgMDc6MjA6
+NDQgQ0VTVCBzY2hyaWViIFN0ZWZhbiBXYWhyZW46Cj4+Pj4+IEhlaWtvIFN0dWVibmVyIDxoZWlr
+b0BzbnRlY2guZGU+IGhhdCBhbSAxMS4gU2VwdGVtYmVyIDIwMTYgdW0gMjM6MTkKPj4+Pj4gZ2Vz
+Y2hyaWViZW46Cj4+Pj4+Cj4+Pj4+IEFtIE1pdHR3b2NoLCA3LiBTZXB0ZW1iZXIgMjAxNiwgMTk6
+Mzk6NDMgQ0VTVCBzY2hyaWViIEpvaG4gWW91bjoKPj4+Pj4+IFdoZW4gYSBmb3JjZSBtb2RlIGJp
+dCBpcyBzZXQgYW5kIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0ZXIgaXMKPj4+Pj4+IGVuYWJsZWQs
+Cj4+Pj4+PiB0aGVyZSBpcyBhIGRlbGF5IGZvciB0aGUgZm9yY2VkIG1vZGUgdG8gdGFrZSBlZmZl
+Y3QuIFRoaXMgZGVsYXkgaXMKPj4+Pj4+IGR1ZQo+Pj4+Pj4gdG8gdGhlIElERElHIGRlYm91bmNl
+IGZpbHRlciBhbmQgaXMgdmFyaWFibGUgZGVwZW5kaW5nIG9uIHRoZQo+Pj4+Pj4gcGxhdGZvcm0n
+cwo+Pj4+Pj4gUEhZIGNsb2NrIHNwZWVkLiBUbyBhY2NvdW50IGZvciB0aGlzIGRlbGF5IHdlIGNh
+biBwb2xsIGZvciB0aGUKPj4+Pj4+IGV4cGVjdGVkCj4+Pj4+PiBtb2RlLgo+Pj4+Pj4KPj4+Pj4+
+IE9uIGEgY2xlYXIgZm9yY2UgbW9kZSwgc2luY2Ugd2UgZG9uJ3Qga25vdyB3aGF0IG1vZGUgdG8g
+cG9sbCBmb3IsCj4+Pj4+PiBkZWxheQo+Pj4+Pj4gZm9yIGEgZml4ZWQgMTAwIG1zLiBUaGlzIGlz
+IHRoZSBtYXhpbXVtIGRlbGF5IGJhc2VkIG9uIHRoZSBzbG93ZXN0Cj4+Pj4+PiBQSFkKPj4+Pj4+
+IGNsb2NrIHNwZWVkLgo+Pj4+Pj4KPj4+Pj4+IFRlc3RlZC1ieTogU3RlZmFuIFdhaHJlbiA8c3Rl
+ZmFuLndhaHJlbkBpMnNlLmNvbT4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gWW91biA8am9o
+bnlvdW5Ac3lub3BzeXMuY29tPgo+Pj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IFsuLi5dCj4+Pj4+Cj4+
+Pj4+PiBAQCAtNDc1LDEyICs0NzgsNiBAQCB2b2lkIGR3YzJfZm9yY2VfZHJfbW9kZShzdHJ1Y3Qg
+ZHdjMl9oc290Zwo+Pj4+Pj4gKmhzb3RnKQo+Pj4+Pj4KPj4+Pj4+ICAJCQkgX19mdW5jX18sIGhz
+b3RnLT5kcl9tb2RlKTsKPj4+Pj4+ICAJCQo+Pj4+Pj4gIAkJYnJlYWs7Cj4+Pj4+PiAgCQo+Pj4+
+Pj4gIAl9Cj4+Pj4+Pgo+Pj4+Pj4gLQo+Pj4+Pj4gLQkvKgo+Pj4+Pj4gLQkgKiBOT1RFOiBUaGlz
+IGlzIHJlcXVpcmVkIGZvciBzb21lIHJvY2tjaGlwIHNvYyBiYXNlZAo+Pj4+Pj4gLQkgKiBwbGF0
+Zm9ybXMuCj4+Pj4+PiAtCSAqLwo+Pj4+Pj4gLQltc2xlZXAoNTApOwo+Pj4+Pj4KPj4+Pj4+ICB9
+Cj4+Pj4+Cj4+Pj4+IHNvcnJ5IGZvciBub3QgZmluZGluZyB0aGUgdGltZSB0byB0ZXN0IHlvdXIg
+c3Vic2VxdWVudCB2ZXJzaW9ucywgYnV0Cj4+Pj4+IHRoaXMKPj4+Pj4gc3RpbGwKPj4+Pj4gYWN0
+cyB1cCBvbiBteSBSb2NrY2hpcCBib2FyZHMsIGFzIEknbSBzdGlsbCBydW5uaW5nIGludG8gZXJy
+b3JzIGxpa2UKPj4+Pj4KPj4+Pj4gCVsgICAgNC44NzU1NzBdIHVzYiB1c2IyLXBvcnQxOiBjb25u
+ZWN0LWRlYm91bmNlIGZhaWxlZAo+Pj4+Cj4+Pj4gY291bGQgeW91IHBsZWFzZSBuYW1lIHRoZSBy
+ZWxldmFudCBEVFMgZmlsZSBvZiB0aGUgYWZmZWN0ZWQgYm9hcmRzPwo+Pj4KPj4+IFNvIGZhciBJ
+J3ZlIGJlZW4gYWJsZSB0byBzZWUgdGhhdCBvbgo+Pj4KPj4+IHJrMzE4OC1yYWR4YXJvY2sKPj4+
+IHJrMzAzNi1reWxpbgo+Pj4KPj4+IGJvdGggb24gaG9zdC1vbmx5IGR3YzIgY29udHJvbGxlcnMu
+Cj4+Cj4+IHRoYW5rcywgZG9lcyBwYXRjaCAxICYgMiBhbHJlYWR5IGhhdmUgYSBuZWdhdGl2ZSBl
+ZmZlY3Qgb24gdGhlc2UKPj4gY29udHJvbGxlcnM/Cj4gCj4gbm9wZSwgcGF0Y2hlcyAxKzIgYWxv
+bmUgYXJlIG9rIGFuZCBvbmx5IHRoZSBtc2xlZXAoNTApIGdvaW5nIGF3YXkgY2F1c2VzIAo+IHBy
+b2JsZW1zLiBJJ20gYmFjayBob21lIG5vdywgc28gSSdsbCBob3BlZnVsbHkgaGF2ZSB0aW1lIHRv
+IGNoZWNrIGhvc3Qtb25seSAKPiB2cy4gb3RnIGR3YzIgY29udHJvbGxlcnMgdG9tb3Jyb3cgYXMg
+d2VsbC4KPiAKCk9rLCB0aGFua3MgZm9yIHRlc3RpbmcgSGVpa28uCgpHaXZlbiB0aGF0LCBsZXQn
+cyB0cnkgdG8gZml4IHRoaXMgaW4gdGhlIG5leHQgLXJjIChvciBiZWZvcmUpIGJlY2F1c2UKSSB0
+aGluayB0aGUgUmFzcGJlcnJ5IFBpIG5lZWRzIHRoZSBvdGhlciBwYXJ0cyBvZiB0aGF0IGxhc3Qg
+cGF0Y2guIFdlCmNhbiBqdXN0IHJldmVydCB0aGUgbXNsZWVwKDUwKSBpZiBuZWVkZWQuCgpJJ2xs
+IGFsc28gdHJ5IHRvIGdldCBteSBoYW5kcyBvbiBhIHJvY2tjaGlwIHBsYXRmb3JtLiBJIHRoaW5r
+IHRoYXQKd2lsbCBoZWxwIHRoZSB0ZXN0aW5nIGFsb25nLgoKUmVnYXJkcywKSm9obgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
