@@ -1,404 +1,87 @@
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH v1 2/2] arm64: dts: rockchip: Add PX5 Evaluation board
-Date: Tue, 13 Sep 2016 14:23:35 +0200
-Message-ID: <ef2bb52c-26f9-49a5-fe18-538effcd30b0@suse.de>
-References: <1473529249-6151-1-git-send-email-andy.yan@rock-chips.com>
- <1473529623-6268-1-git-send-email-andy.yan@rock-chips.com>
+From: Brian Starkey <brian.starkey@arm.com>
+Subject: Re: [PATCH 2/3] drm: add ARM vendor format afbc
+Date: Tue, 13 Sep 2016 15:13:02 +0100
+Message-ID: <20160913141302.GA30625@e106950-lin.cambridge.arm.com>
+References: <1473474544-16248-1-git-send-email-mark.yao@rock-chips.com>
+ <1473474544-16248-2-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1473529623-6268-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1473474544-16248-2-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Mark,
 
-Am 10.09.2016 um 19:47 schrieb Andy Yan:
-> PX5 EVB is designed by Rockchip for automotive field,
-> which intergrated with CVBS(TP2825)/MIPI DSI/CSI/LVDS
-> HDMI video input/output interface, audio codec ES8396,
-> WIFI/BT(on RTL8723BS), Gsensor BMA250E and light&proximity
-> sensor STK3410.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Sat, Sep 10, 2016 at 10:29:03AM +0800, Mark Yao wrote:
+>AFBC is arm vendor format, it's a compressed format.
+>
+>The AFBC format is supported by rk3399 vop big.
+>
+>We know little about AFBC layout, hope to some guys can
+>fixme about the afbc comment.
+>
+>Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>---
+> include/uapi/drm/drm_fourcc.h | 7 +++++++
+> 1 file changed, 7 insertions(+)
+>
+>diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
+>index a5890bf..9a47d7e 100644
+>--- a/include/uapi/drm/drm_fourcc.h
+>+++ b/include/uapi/drm/drm_fourcc.h
+>@@ -159,6 +159,7 @@ extern "C" {
+> #define DRM_FORMAT_MOD_VENDOR_NV      0x03
+> #define DRM_FORMAT_MOD_VENDOR_SAMSUNG 0x04
+> #define DRM_FORMAT_MOD_VENDOR_QCOM    0x05
+>+#define DRM_FORMAT_MOD_VENDOR_ARM     0x06
+> /* add more to the end as needed */
+>
+> #define fourcc_mod_code(vendor, val) \
+>@@ -233,6 +234,12 @@ extern "C" {
+>  */
+> #define DRM_FORMAT_MOD_SAMSUNG_64_32_TILE	fourcc_mod_code(SAMSUNG, 1)
+>
+>+/*
+>+ * FIXME: AFBC is arm vendor format, it's a compressed format.
+>+ *
+>+ */
+>+#define DRM_FORMAT_MOD_ARM_AFBC	fourcc_mod_code(ARM, 1)
 
-Most comments from PX3 1/2 apply here, too.
+Do you have any details about the exact type of AFBC data you are
+consuming here?
 
-> ---
-> 
-> Changes in v1:
-> - board rename
-> - add vendor prefix for i2c interfaced devices
-> 
->  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
->  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
->  arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    | 304 +++++++++++++++++++++
->  3 files changed, 309 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-> index 6da3881..b6f92d6 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -107,6 +107,10 @@ Rockchip platforms device tree bindings
->      Required root node properties:
->        - compatible = "rockchip,r88", "rockchip,rk3368";
->  
-> +- Rockchip PX5 Evaluation board:
-> +    Required root node properties:
-> +      - compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
-> +
->  - Rockchip RK3228 Evaluation board:
->      Required root node properties:
->       - compatible = "rockchip,rk3228-evb", "rockchip,rk3228";
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 7037a16..86c74b2 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -1,6 +1,7 @@
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
+We need to agree what exactly a buffer with the modifier
+"DRM_FORMAT_MOD_ARM_AFBC" means. For instance the block size, whether
+the data has the YUV transform applied, how the data is laid out in
+memory etc.
 
-There is no PX5 listed on your English website (yet), but given that you
-have your own rockchip/ folder for arm64 I would encourage you to rename
-to px5-evb.dtb independent of any internal heritage or compatibility the
-SoC has. Compare apq/ipq/msm in qcom.
+We (ARM) want to make sure that the format modifiers we expose to
+userspace for AFBC are precise and non-ambiguous, cover all
+possible AFBC modifiers (of which there are many, and the list can
+only get longer) and all possible AFBC consuming/producing IPs'
+requirements.
 
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
->  
->  always		:= $(dtb-y)
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-> new file mode 100644
-> index 0000000..be0e915
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-> @@ -0,0 +1,304 @@
-> +/*
-> + * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3368.dtsi"
+We had intended to delay adding any AFBC format modifiers to DRM until
+we'd had this kind of discussion internally to agree the exact set
+of modifiers we need, but if you need this now then we can start that 
+discussion here.
 
-Similarly suggest a px5.dtsi here.
+Thanks,
+Brian
 
-> +#include <dt-bindings/input/input.h>
-> +
-> +/ {
-> +	model = "Rockchip PX5 EVB";
-> +	compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
-> +
-> +	chosen {
-> +		stdout-path = "serial4:115200n8";
-> +	};
-> +
-> +	memory@0 {
-> +		device_type = "memory";
-> +		reg = <0x0 0x0 0x0 0x80000000>;
-> +	};
-> +
-> +	keys: gpio-keys {
-> +		compatible = "gpio-keys";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pwr_key>;
-> +
-> +		power {
-> +			gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
-> +			label = "GPIO Power";
-> +			linux,code = <KEY_POWER>;
-> +			wakeup-source;
-> +		};
-> +	};
-> +
-> +	vcc_sys: vcc-sys-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sys";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
-> +};
-> +
-> +&emmc {
-> +	status = "okay";
-> +	bus-width = <8>;
-> +	cap-mmc-highspeed;
-> +	clock-frequency = <150000000>;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	non-removable;
-> +	num-slots = <1>;
-> +	vmmc-supply = <&vcc_io>;
-> +	vqmmc-supply = <&vcc18_flash>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_bus8>;
-> +};
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +
-> +	rk808: pmic@1b {
-> +		compatible = "rockchip,rk808";
-> +		reg = <0x1b>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int>, <&pmic_sleep>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <5 IRQ_TYPE_LEVEL_LOW>;
-> +		rockchip,system-power-controller;
-> +		vcc1-supply = <&vcc_sys>;
-> +		vcc2-supply = <&vcc_sys>;
-> +		vcc3-supply = <&vcc_sys>;
-> +		vcc4-supply = <&vcc_sys>;
-> +		vcc6-supply = <&vcc_sys>;
-> +		vcc7-supply = <&vcc_sys>;
-> +		vcc8-supply = <&vcc_io>;
-> +		vcc9-supply = <&vcc_sys>;
-> +		vcc10-supply = <&vcc_sys>;
-> +		vcc11-supply = <&vcc_sys>;
-> +		vcc12-supply = <&vcc_io>;
-> +		clock-output-names = "xin32k", "rk808-clkout2";
-> +		#clock-cells = <1>;
-> +
-> +		regulators {
-> +			vdd_cpu: DCDC_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <700000>;
-> +				regulator-max-microvolt = <1500000>;
-> +				regulator-name = "vdd_cpu";
-> +			};
-> +
-> +			vdd_log: DCDC_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <700000>;
-> +				regulator-max-microvolt = <1500000>;
-> +				regulator-name = "vdd_log";
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_ddr";
-> +			};
-> +
-> +			vcc_io: DCDC_REG4 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcc_io";
-> +			};
-> +
-> +			vcc18_flash: LDO_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_flash";
-> +			};
-> +
-> +			vcca_33: LDO_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcca_33";
-> +			};
-> +
-> +			vdd_10: LDO_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd_10";
-> +			};
-> +
-> +			avdd_33: LDO_REG4 {
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "avdd_33";
-> +			};
-> +
-> +			vccio_sd: LDO_REG5 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vccio_sd";
-> +			};
-> +
-> +			vdd10_lcd: LDO_REG6 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd10_lcd";
-> +			};
-> +
-> +			vcc_18: LDO_REG7 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc_18";
-> +			};
-> +
-> +			vcc18_lcd: LDO_REG8 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_lcd";
-> +			};
-> +
-> +			vcc_sd: SWITCH_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_sd";
-> +			};
-> +
-> +			vcc33_lcd: SWITCH_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc33_lcd";
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	/* Accelerometer */
-> +	bma250@18 {
-> +		compatible = "bosch,bma250";
-> +		reg = <0x18>;
-> +		interrupt-parent = <&gpio2>;
-> +		interrupts = <17 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +
-> +	stk3410@48 {
-> +		compatible = "sensortek,STK3310";
-> +		reg = <0x48>;
-> +		interrupt-parent = <&gpio2>;
-> +		interrupts = <19 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	status = "okay";
-> +
-> +	gsl1680: touchscreen@40 {
-> +		compatible = "silead,gsl1680";
-> +		reg = <0x40>;
-> +		interrupt-parent = <&gpio3>;
-> +		interrupts = <28 IRQ_TYPE_EDGE_FALLING>;
-> +		power-gpios = <&gpio3 15 GPIO_ACTIVE_HIGH>;
-> +		touchscreen-size-x = <800>;
-> +		touchscreen-size-y = <1280>;
-> +		silead,max-fingers = <5>;
-> +	};
-> +};
-> +
-> +&pinctrl {
-> +
-
-Drop white line?
-
-> +	keys {
-> +		pwr_key: pwr-key {
-> +			rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pmic {
-> +		pmic_sleep: pmic-sleep {
-> +			rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
-> +		};
-> +
-> +		pmic_int: pmic-int {
-> +			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +};
-> +
-> +&tsadc {
-> +	status = "okay";
-> +	rockchip,hw-tshut-mode = <0>; /* CRU */
-> +	rockchip,hw-tshut-polarity = <1>; /* high */
-> +};
-> +
-> +&uart4 {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_otg {
-> +	status = "okay";
-> +};
-> +
-> +&wdt {
-> +	status = "okay";
-> +};
-
-Otherwise formally looks fine.
-
-Cheers,
-Andreas
-
--- 
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 Nürnberg, Germany
-GF: Felix Imendörffer, Jane Smithard, Graham Norton
-HRB 21284 (AG Nürnberg)
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>+
+> #if defined(__cplusplus)
+> }
+> #endif
+>-- 
+>1.9.1
+>
+>
+>_______________________________________________
+>dri-devel mailing list
+>dri-devel@lists.freedesktop.org
+>https://lists.freedesktop.org/mailman/listinfo/dri-devel
