@@ -1,135 +1,144 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH 4/8] drm/rockchip: Unreference framebuffers from flip work
-Date: Wed, 14 Sep 2016 21:54:57 +0900
-Message-ID: <1473857701-9250-5-git-send-email-tfiga@chromium.org>
+Subject: [PATCH 8/8] drm/rockchip: Kill vop_plane_state
+Date: Wed, 14 Sep 2016 21:55:01 +0900
+Message-ID: <1473857701-9250-9-git-send-email-tfiga@chromium.org>
 References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, Tomasz Figa <tfiga@chromium.org>
+Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently the driver waits for vblank and then unreferences old
-framebuffers from atomic commit code path. This is however breaking the
-legacy cursor API, which requires the updates to be fully asynchronous.
-Instead of just adding a special case for cursor, we can have actually
-smaller amount of code to unreference any changed framebuffer from a
-flip work.
-
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 41 +++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index f989440..86829f5 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -17,6 +17,7 @@
- #include <drm/drm_atomic.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_crtc_helper.h>
-+#include <drm/drm_flip_work.h>
- #include <drm/drm_plane_helper.h>
- 
- #include <linux/kernel.h>
-@@ -89,6 +90,10 @@
- #define to_vop_win(x) container_of(x, struct vop_win, base)
- #define to_vop_plane_state(x) container_of(x, struct vop_plane_state, base)
- 
-+enum vop_pending {
-+	VOP_PENDING_FB_UNREF,
-+};
-+
- struct vop_plane_state {
- 	struct drm_plane_state base;
- 	int format;
-@@ -122,6 +127,9 @@ struct vop {
- 	/* protected by dev->event_lock */
- 	struct drm_pending_vblank_event *event;
- 
-+	struct drm_flip_work fb_unref_work;
-+	unsigned long pending;
-+
- 	struct completion line_flag_completion;
- 
- 	const struct vop_data *data;
-@@ -1093,7 +1101,11 @@ static void vop_wait_for_irq_handler(struct vop *vop)
- static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 				  struct drm_crtc_state *old_crtc_state)
- {
-+	struct drm_atomic_state *old_state = old_crtc_state->state;
-+	struct drm_plane_state *old_plane_state;
- 	struct vop *vop = to_vop(crtc);
-+	struct drm_plane *plane;
-+	int i;
- 
- 	if (WARN_ON(!vop->is_enabled))
- 		return;
-@@ -1110,6 +1122,19 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 	 * signalling flip completion we need to wait for it to finish.
- 	 */
- 	vop_wait_for_irq_handler(vop);
-+
-+	for_each_plane_in_state(old_state, plane, old_plane_state, i) {
-+		if (!old_plane_state->fb)
-+			continue;
-+
-+		if (old_plane_state->fb == plane->state->fb)
-+			continue;
-+
-+		drm_framebuffer_reference(old_plane_state->fb);
-+		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
-+		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
-+		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
-+	}
- }
- 
- static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
-@@ -1185,6 +1210,15 @@ static const struct drm_crtc_funcs vop_crtc_funcs = {
- 	.atomic_destroy_state = vop_crtc_destroy_state,
- };
- 
-+static void vop_fb_unref_worker(struct drm_flip_work *work, void *val)
-+{
-+	struct vop *vop = container_of(work, struct vop, fb_unref_work);
-+	struct drm_framebuffer *fb = val;
-+
-+	drm_crtc_vblank_put(&vop->crtc);
-+	drm_framebuffer_unreference(fb);
-+}
-+
- static bool vop_win_pending_is_complete(struct vop_win *vop_win)
- {
- 	dma_addr_t yrgb_mst;
-@@ -1223,6 +1257,9 @@ static void vop_handle_vblank(struct vop *vop)
- 
- 	if (!completion_done(&vop->wait_update_complete))
- 		complete(&vop->wait_update_complete);
-+
-+	if (test_and_clear_bit(VOP_PENDING_FB_UNREF, &vop->pending))
-+		drm_flip_work_commit(&vop->fb_unref_work, system_unbound_wq);
- }
- 
- static irqreturn_t vop_isr(int irq, void *data)
-@@ -1361,6 +1398,9 @@ static int vop_create_crtc(struct vop *vop)
- 		goto err_cleanup_crtc;
- 	}
- 
-+	drm_flip_work_init(&vop->fb_unref_work, "fb_unref",
-+			   vop_fb_unref_worker);
-+
- 	init_completion(&vop->dsp_hold_completion);
- 	init_completion(&vop->wait_update_complete);
- 	init_completion(&vop->line_flag_completion);
-@@ -1404,6 +1444,7 @@ static void vop_destroy_crtc(struct vop *vop)
- 	 * references the CRTC.
- 	 */
- 	drm_crtc_cleanup(crtc);
-+	drm_flip_work_cleanup(&vop->fb_unref_work);
- }
- 
- static int vop_initial(struct vop *vop)
--- 
-2.8.0.rc3.226.g39d4020
+QWZ0ZXIgY2hhbmdlcyBpbnRyb2R1Y2VkIGJ5IGxhc3QgcGF0Y2hlcywgdGhlcmUgaXMgbm8gdXNl
+ZnVsIGRhdGEgc3RvcmVkCmluIHZvcF9wbGFuZV9zdGF0ZSBzdHJ1Y3QuICBMZXQncyByZW1vdmUg
+aXQgYW5kIG1ha2UgdGhlIGRyaXZlciB1c2UKZ2VuZXJpYyBwbGFuZSBzdGF0ZSBhbG9uZS4KClNp
+Z25lZC1vZmYtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDk0ICsrKysrLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygrKSwgNzkgZGVs
+ZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
+aW5kZXggY2FjZGZmYi4uNTc2NTBjOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jCkBAIC04OCwxOSArODgsMTEgQEAKIAogI2RlZmluZSB0b192b3AoeCkg
+Y29udGFpbmVyX29mKHgsIHN0cnVjdCB2b3AsIGNydGMpCiAjZGVmaW5lIHRvX3ZvcF93aW4oeCkg
+Y29udGFpbmVyX29mKHgsIHN0cnVjdCB2b3Bfd2luLCBiYXNlKQotI2RlZmluZSB0b192b3BfcGxh
+bmVfc3RhdGUoeCkgY29udGFpbmVyX29mKHgsIHN0cnVjdCB2b3BfcGxhbmVfc3RhdGUsIGJhc2Up
+CiAKIGVudW0gdm9wX3BlbmRpbmcgewogCVZPUF9QRU5ESU5HX0ZCX1VOUkVGLAogfTsKIAotc3Ry
+dWN0IHZvcF9wbGFuZV9zdGF0ZSB7Ci0Jc3RydWN0IGRybV9wbGFuZV9zdGF0ZSBiYXNlOwotCWlu
+dCBmb3JtYXQ7Ci0JZG1hX2FkZHJfdCB5cmdiX21zdDsKLQlib29sIGVuYWJsZTsKLX07Ci0KIHN0
+cnVjdCB2b3Bfd2luIHsKIAlzdHJ1Y3QgZHJtX3BsYW5lIGJhc2U7CiAJY29uc3Qgc3RydWN0IHZv
+cF93aW5fZGF0YSAqZGF0YTsKQEAgLTY1MSw3ICs2NDMsNiBAQCBzdGF0aWMgaW50IHZvcF9wbGFu
+ZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJc3RydWN0IGRybV9jcnRj
+X3N0YXRlICpjcnRjX3N0YXRlOwogCXN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKmZiID0gc3RhdGUt
+PmZiOwogCXN0cnVjdCB2b3Bfd2luICp2b3Bfd2luID0gdG9fdm9wX3dpbihwbGFuZSk7Ci0Jc3Ry
+dWN0IHZvcF9wbGFuZV9zdGF0ZSAqdm9wX3BsYW5lX3N0YXRlID0gdG9fdm9wX3BsYW5lX3N0YXRl
+KHN0YXRlKTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4gPSB2b3Bfd2luLT5kYXRh
+OwogCWludCByZXQ7CiAJc3RydWN0IGRybV9yZWN0IGNsaXA7CkBAIC02NjEsNyArNjUyLDcgQEAg
+c3RhdGljIGludCB2b3BfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
+LAogCQkJCQlEUk1fUExBTkVfSEVMUEVSX05PX1NDQUxJTkc7CiAKIAlpZiAoIWNydGMgfHwgIWZi
+KQotCQlnb3RvIG91dF9kaXNhYmxlOworCQlyZXR1cm4gMDsKIAogCWNydGNfc3RhdGUgPSBkcm1f
+YXRvbWljX2dldF9leGlzdGluZ19jcnRjX3N0YXRlKHN0YXRlLT5zdGF0ZSwgY3J0Yyk7CiAJaWYg
+KFdBUk5fT04oIWNydGNfc3RhdGUpKQpAQCAtNjc5LDExICs2NzAsMTEgQEAgc3RhdGljIGludCB2
+b3BfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogCQlyZXR1cm4g
+cmV0OwogCiAJaWYgKCFzdGF0ZS0+dmlzaWJsZSkKLQkJZ290byBvdXRfZGlzYWJsZTsKKwkJcmV0
+dXJuIDA7CiAKLQl2b3BfcGxhbmVfc3RhdGUtPmZvcm1hdCA9IHZvcF9jb252ZXJ0X2Zvcm1hdChm
+Yi0+cGl4ZWxfZm9ybWF0KTsKLQlpZiAodm9wX3BsYW5lX3N0YXRlLT5mb3JtYXQgPCAwKQotCQly
+ZXR1cm4gdm9wX3BsYW5lX3N0YXRlLT5mb3JtYXQ7CisJcmV0ID0gdm9wX2NvbnZlcnRfZm9ybWF0
+KGZiLT5waXhlbF9mb3JtYXQpOworCWlmIChyZXQgPCAwKQorCQlyZXR1cm4gcmV0OwogCiAJLyoK
+IAkgKiBTcmMueDEgY2FuIGJlIG9kZCB3aGVuIGRvIGNsaXAsIGJ1dCB5dXYgcGxhbmUgc3RhcnQg
+cG9pbnQKQEAgLTY5MiwxOSArNjgzLDEyIEBAIHN0YXRpYyBpbnQgdm9wX3BsYW5lX2F0b21pY19j
+aGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAlpZiAoaXNfeXV2X3N1cHBvcnQoZmItPnBp
+eGVsX2Zvcm1hdCkgJiYgKChzdGF0ZS0+c3JjLngxID4+IDE2KSAlIDIpKQogCQlyZXR1cm4gLUVJ
+TlZBTDsKIAotCXZvcF9wbGFuZV9zdGF0ZS0+ZW5hYmxlID0gdHJ1ZTsKLQotCXJldHVybiAwOwot
+Ci1vdXRfZGlzYWJsZToKLQl2b3BfcGxhbmVfc3RhdGUtPmVuYWJsZSA9IGZhbHNlOwogCXJldHVy
+biAwOwogfQogCiBzdGF0aWMgdm9pZCB2b3BfcGxhbmVfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRy
+bV9wbGFuZSAqcGxhbmUsCiAJCQkJICAgICBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpvbGRfc3Rh
+dGUpCiB7Ci0Jc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSAqdm9wX3BsYW5lX3N0YXRlID0gdG9fdm9w
+X3BsYW5lX3N0YXRlKG9sZF9zdGF0ZSk7CiAJc3RydWN0IHZvcF93aW4gKnZvcF93aW4gPSB0b192
+b3Bfd2luKHBsYW5lKTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4gPSB2b3Bfd2lu
+LT5kYXRhOwogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChvbGRfc3RhdGUtPmNydGMpOwpAQCAt
+NzE3LDggKzcwMSw2IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfZGlzYWJsZShzdHJ1
+Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZW5hYmxlLCAwKTsK
+IAogCXNwaW5fdW5sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKLQotCXZvcF9wbGFuZV9zdGF0ZS0+ZW5h
+YmxlID0gZmFsc2U7CiB9CiAKIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0
+cnVjdCBkcm1fcGxhbmUgKnBsYW5lLApAQCAtNzI3LDcgKzcwOSw2IEBAIHN0YXRpYyB2b2lkIHZv
+cF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogCXN0cnVjdCBk
+cm1fcGxhbmVfc3RhdGUgKnN0YXRlID0gcGxhbmUtPnN0YXRlOwogCXN0cnVjdCBkcm1fY3J0YyAq
+Y3J0YyA9IHN0YXRlLT5jcnRjOwogCXN0cnVjdCB2b3Bfd2luICp2b3Bfd2luID0gdG9fdm9wX3dp
+bihwbGFuZSk7Ci0Jc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSAqdm9wX3BsYW5lX3N0YXRlID0gdG9f
+dm9wX3BsYW5lX3N0YXRlKHN0YXRlKTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4g
+PSB2b3Bfd2luLT5kYXRhOwogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChzdGF0ZS0+Y3J0Yyk7
+CiAJc3RydWN0IGRybV9mcmFtZWJ1ZmZlciAqZmIgPSBzdGF0ZS0+ZmI7CkBAIC03NDIsNiArNzIz
+LDcgQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFu
+ZSAqcGxhbmUsCiAJZG1hX2FkZHJfdCBkbWFfYWRkcjsKIAl1aW50MzJfdCB2YWw7CiAJYm9vbCBy
+Yl9zd2FwOworCWludCBmb3JtYXQ7CiAKIAkvKgogCSAqIGNhbid0IHVwZGF0ZSBwbGFuZSB3aGVu
+IHZvcCBpcyBkaXNhYmxlZC4KQEAgLTc1Miw3ICs3MzQsNyBAQCBzdGF0aWMgdm9pZCB2b3BfcGxh
+bmVfYXRvbWljX3VwZGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAlpZiAoV0FSTl9PTigh
+dm9wLT5pc19lbmFibGVkKSkKIAkJcmV0dXJuOwogCi0JaWYgKCF2b3BfcGxhbmVfc3RhdGUtPmVu
+YWJsZSkgeworCWlmICghc3RhdGUtPnZpc2libGUpIHsKIAkJdm9wX3BsYW5lX2F0b21pY19kaXNh
+YmxlKHBsYW5lLCBvbGRfc3RhdGUpOwogCQlyZXR1cm47CiAJfQpAQCAtNzczLDEzICs3NTUsMTUg
+QEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAq
+cGxhbmUsCiAKIAlvZmZzZXQgPSAoc3JjLT54MSA+PiAxNikgKiBkcm1fZm9ybWF0X3BsYW5lX2Nw
+cChmYi0+cGl4ZWxfZm9ybWF0LCAwKTsKIAlvZmZzZXQgKz0gKHNyYy0+eTEgPj4gMTYpICogZmIt
+PnBpdGNoZXNbMF07Ci0Jdm9wX3BsYW5lX3N0YXRlLT55cmdiX21zdCA9IHJrX29iai0+ZG1hX2Fk
+ZHIgKyBvZmZzZXQgKyBmYi0+b2Zmc2V0c1swXTsKKwlkbWFfYWRkciA9IHJrX29iai0+ZG1hX2Fk
+ZHIgKyBvZmZzZXQgKyBmYi0+b2Zmc2V0c1swXTsKKworCWZvcm1hdCA9IHZvcF9jb252ZXJ0X2Zv
+cm1hdChmYi0+cGl4ZWxfZm9ybWF0KTsKIAogCXNwaW5fbG9jaygmdm9wLT5yZWdfbG9jayk7CiAK
+LQlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZm9ybWF0LCB2b3BfcGxhbmVfc3RhdGUtPmZvcm1hdCk7
+CisJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGZvcm1hdCwgZm9ybWF0KTsKIAlWT1BfV0lOX1NFVCh2
+b3AsIHdpbiwgeXJnYl92aXIsIGZiLT5waXRjaGVzWzBdID4+IDIpOwotCVZPUF9XSU5fU0VUKHZv
+cCwgd2luLCB5cmdiX21zdCwgdm9wX3BsYW5lX3N0YXRlLT55cmdiX21zdCk7CisJVk9QX1dJTl9T
+RVQodm9wLCB3aW4sIHlyZ2JfbXN0LCBkbWFfYWRkcik7CiAJaWYgKGlzX3l1dl9zdXBwb3J0KGZi
+LT5waXhlbF9mb3JtYXQpKSB7CiAJCWludCBoc3ViID0gZHJtX2Zvcm1hdF9ob3J6X2Nocm9tYV9z
+dWJzYW1wbGluZyhmYi0+cGl4ZWxfZm9ybWF0KTsKIAkJaW50IHZzdWIgPSBkcm1fZm9ybWF0X3Zl
+cnRfY2hyb21hX3N1YnNhbXBsaW5nKGZiLT5waXhlbF9mb3JtYXQpOwpAQCAtODMxLDYxICs4MTUs
+MTMgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfaGVscGVyX2Z1bmNzIHBsYW5lX2hl
+bHBlcl9mdW5jcyA9IHsKIAkuYXRvbWljX2Rpc2FibGUgPSB2b3BfcGxhbmVfYXRvbWljX2Rpc2Fi
+bGUsCiB9OwogCi1zdGF0aWMgdm9pZCB2b3BfYXRvbWljX3BsYW5lX3Jlc2V0KHN0cnVjdCBkcm1f
+cGxhbmUgKnBsYW5lKQotewotCXN0cnVjdCB2b3BfcGxhbmVfc3RhdGUgKnZvcF9wbGFuZV9zdGF0
+ZSA9Ci0JCQkJCXRvX3ZvcF9wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwotCi0JaWYgKHBsYW5l
+LT5zdGF0ZSAmJiBwbGFuZS0+c3RhdGUtPmZiKQotCQlkcm1fZnJhbWVidWZmZXJfdW5yZWZlcmVu
+Y2UocGxhbmUtPnN0YXRlLT5mYik7Ci0KLQlrZnJlZSh2b3BfcGxhbmVfc3RhdGUpOwotCXZvcF9w
+bGFuZV9zdGF0ZSA9IGt6YWxsb2Moc2l6ZW9mKCp2b3BfcGxhbmVfc3RhdGUpLCBHRlBfS0VSTkVM
+KTsKLQlpZiAoIXZvcF9wbGFuZV9zdGF0ZSkKLQkJcmV0dXJuOwotCi0JcGxhbmUtPnN0YXRlID0g
+JnZvcF9wbGFuZV9zdGF0ZS0+YmFzZTsKLQlwbGFuZS0+c3RhdGUtPnBsYW5lID0gcGxhbmU7Ci19
+Ci0KLXN0YXRpYyBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICoKLXZvcF9hdG9taWNfcGxhbmVfZHVw
+bGljYXRlX3N0YXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQotewotCXN0cnVjdCB2b3BfcGxh
+bmVfc3RhdGUgKm9sZF92b3BfcGxhbmVfc3RhdGU7Ci0Jc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSAq
+dm9wX3BsYW5lX3N0YXRlOwotCi0JaWYgKFdBUk5fT04oIXBsYW5lLT5zdGF0ZSkpCi0JCXJldHVy
+biBOVUxMOwotCi0Jb2xkX3ZvcF9wbGFuZV9zdGF0ZSA9IHRvX3ZvcF9wbGFuZV9zdGF0ZShwbGFu
+ZS0+c3RhdGUpOwotCXZvcF9wbGFuZV9zdGF0ZSA9IGttZW1kdXAob2xkX3ZvcF9wbGFuZV9zdGF0
+ZSwKLQkJCQkgIHNpemVvZigqdm9wX3BsYW5lX3N0YXRlKSwgR0ZQX0tFUk5FTCk7Ci0JaWYgKCF2
+b3BfcGxhbmVfc3RhdGUpCi0JCXJldHVybiBOVUxMOwotCi0JX19kcm1fYXRvbWljX2hlbHBlcl9w
+bGFuZV9kdXBsaWNhdGVfc3RhdGUocGxhbmUsCi0JCQkJCQkgICZ2b3BfcGxhbmVfc3RhdGUtPmJh
+c2UpOwotCi0JcmV0dXJuICZ2b3BfcGxhbmVfc3RhdGUtPmJhc2U7Ci19Ci0KLXN0YXRpYyB2b2lk
+IHZvcF9hdG9taWNfcGxhbmVfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwK
+LQkJCQkJICAgc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqc3RhdGUpCi17Ci0Jc3RydWN0IHZvcF9w
+bGFuZV9zdGF0ZSAqdm9wX3N0YXRlID0gdG9fdm9wX3BsYW5lX3N0YXRlKHN0YXRlKTsKLQotCV9f
+ZHJtX2F0b21pY19oZWxwZXJfcGxhbmVfZGVzdHJveV9zdGF0ZShzdGF0ZSk7Ci0KLQlrZnJlZSh2
+b3Bfc3RhdGUpOwotfQotCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9wbGFuZV9mdW5jcyB2b3Bf
+cGxhbmVfZnVuY3MgPSB7CiAJLnVwZGF0ZV9wbGFuZQk9IGRybV9hdG9taWNfaGVscGVyX3VwZGF0
+ZV9wbGFuZSwKIAkuZGlzYWJsZV9wbGFuZQk9IGRybV9hdG9taWNfaGVscGVyX2Rpc2FibGVfcGxh
+bmUsCiAJLmRlc3Ryb3kgPSB2b3BfcGxhbmVfZGVzdHJveSwKLQkucmVzZXQgPSB2b3BfYXRvbWlj
+X3BsYW5lX3Jlc2V0LAotCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gdm9wX2F0b21pY19wbGFu
+ZV9kdXBsaWNhdGVfc3RhdGUsCi0JLmF0b21pY19kZXN0cm95X3N0YXRlID0gdm9wX2F0b21pY19w
+bGFuZV9kZXN0cm95X3N0YXRlLAorCS5yZXNldCA9IGRybV9hdG9taWNfaGVscGVyX3BsYW5lX3Jl
+c2V0LAorCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfcGxhbmVf
+ZHVwbGljYXRlX3N0YXRlLAorCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IGRybV9hdG9taWNfaGVs
+cGVyX3BsYW5lX2Rlc3Ryb3lfc3RhdGUsCiB9OwogCiBzdGF0aWMgaW50IHZvcF9jcnRjX2VuYWJs
+ZV92Ymxhbmsoc3RydWN0IGRybV9jcnRjICpjcnRjKQotLSAKMi44LjAucmMzLjIyNi5nMzlkNDAy
+MAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
