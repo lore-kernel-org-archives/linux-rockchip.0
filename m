@@ -1,17 +1,13 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
- delays
-Date: Wed, 14 Sep 2016 14:10:23 -0700
-Message-ID: <6b0c9143-63b3-c5c3-7122-bbbb0c9f610b@synopsys.com>
-References: <cover.1473302184.git.johnyoun@synopsys.com>
- <2928813.DT7ys6u6xZ@diego>
- <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
- <6145714.tWcMvDakYx@diego>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL 1/3] Rockchip driver changes for 4.9
+Date: Thu, 15 Sep 2016 00:14:36 +0200
+Message-ID: <6891769.FylRNsTnRC@wuerfel>
+References: <1770547.rOXegfrGOH@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6145714.tWcMvDakYx@diego>
+In-Reply-To: <1770547.rOXegfrGOH@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,87 +17,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gOS8xNC8yMDE2IDc6MDUgQU0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFtIERpZW5zdGFn
-LCAxMy4gU2VwdGVtYmVyIDIwMTYsIDEyOjA0OjEyIHNjaHJpZWIgSm9obiBZb3VuOgo+PiBPbiA5
-LzEzLzIwMTYgMTE6MzkgQU0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4gQW0gRGllbnN0YWcs
-IDEzLiBTZXB0ZW1iZXIgMjAxNiwgMjA6MDc6MjUgc2NocmllYiBTdGVmYW4gV2FocmVuOgo+Pj4+
-IEhpIEhlaWtvLAo+Pj4+Cj4+Pj4+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IGhh
-dCBhbSAxMi4gU2VwdGVtYmVyIDIwMTYgdW0gMTM6MDUKPj4+Pj4gZ2VzY2hyaWViZW46Cj4+Pj4+
-Cj4+Pj4+Cj4+Pj4+IEhpIFN0ZWZhbiwKPj4+Pj4KPj4+Pj4gQW0gTW9udGFnLCAxMi4gU2VwdGVt
-YmVyIDIwMTYsIDA3OjIwOjQ0IENFU1Qgc2NocmllYiBTdGVmYW4gV2FocmVuOgo+Pj4+Pj4+IEhl
-aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IGhhdCBhbSAxMS4gU2VwdGVtYmVyIDIwMTYg
-dW0gMjM6MTkKPj4+Pj4+PiBnZXNjaHJpZWJlbjoKPj4+Pj4+Pgo+Pj4+Pj4+IEFtIE1pdHR3b2No
-LCA3LiBTZXB0ZW1iZXIgMjAxNiwgMTk6Mzk6NDMgQ0VTVCBzY2hyaWViIEpvaG4gWW91bjoKPj4+
-Pj4+Pj4gV2hlbiBhIGZvcmNlIG1vZGUgYml0IGlzIHNldCBhbmQgdGhlIElERElHIGRlYm91bmNl
-IGZpbHRlciBpcwo+Pj4+Pj4+PiBlbmFibGVkLAo+Pj4+Pj4+PiB0aGVyZSBpcyBhIGRlbGF5IGZv
-ciB0aGUgZm9yY2VkIG1vZGUgdG8gdGFrZSBlZmZlY3QuIFRoaXMgZGVsYXkgaXMKPj4+Pj4+Pj4g
-ZHVlCj4+Pj4+Pj4+IHRvIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0ZXIgYW5kIGlzIHZhcmlhYmxl
-IGRlcGVuZGluZyBvbiB0aGUKPj4+Pj4+Pj4gcGxhdGZvcm0ncwo+Pj4+Pj4+PiBQSFkgY2xvY2sg
-c3BlZWQuIFRvIGFjY291bnQgZm9yIHRoaXMgZGVsYXkgd2UgY2FuIHBvbGwgZm9yIHRoZQo+Pj4+
-Pj4+PiBleHBlY3RlZAo+Pj4+Pj4+PiBtb2RlLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBPbiBhIGNsZWFy
-IGZvcmNlIG1vZGUsIHNpbmNlIHdlIGRvbid0IGtub3cgd2hhdCBtb2RlIHRvIHBvbGwgZm9yLAo+
-Pj4+Pj4+PiBkZWxheQo+Pj4+Pj4+PiBmb3IgYSBmaXhlZCAxMDAgbXMuIFRoaXMgaXMgdGhlIG1h
-eGltdW0gZGVsYXkgYmFzZWQgb24gdGhlIHNsb3dlc3QKPj4+Pj4+Pj4gUEhZCj4+Pj4+Pj4+IGNs
-b2NrIHNwZWVkLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBUZXN0ZWQtYnk6IFN0ZWZhbiBXYWhyZW4gPHN0
-ZWZhbi53YWhyZW5AaTJzZS5jb20+Cj4+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gWW91biA8
-am9obnlvdW5Ac3lub3BzeXMuY29tPgo+Pj4+Pj4+PiAtLS0KPj4+Pj4+Pgo+Pj4+Pj4+IFsuLi5d
-Cj4+Pj4+Pj4KPj4+Pj4+Pj4gQEAgLTQ3NSwxMiArNDc4LDYgQEAgdm9pZCBkd2MyX2ZvcmNlX2Ry
-X21vZGUoc3RydWN0IGR3YzJfaHNvdGcKPj4+Pj4+Pj4gKmhzb3RnKQo+Pj4+Pj4+Pgo+Pj4+Pj4+
-PiAgCQkJIF9fZnVuY19fLCBoc290Zy0+ZHJfbW9kZSk7Cj4+Pj4+Pj4+ICAJCQo+Pj4+Pj4+PiAg
-CQlicmVhazsKPj4+Pj4+Pj4gIAkKPj4+Pj4+Pj4gIAl9Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+IC0KPj4+
-Pj4+Pj4gLQkvKgo+Pj4+Pj4+PiAtCSAqIE5PVEU6IFRoaXMgaXMgcmVxdWlyZWQgZm9yIHNvbWUg
-cm9ja2NoaXAgc29jIGJhc2VkCj4+Pj4+Pj4+IC0JICogcGxhdGZvcm1zLgo+Pj4+Pj4+PiAtCSAq
-Lwo+Pj4+Pj4+PiAtCW1zbGVlcCg1MCk7Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+ICB9Cj4+Pj4+Pj4KPj4+
-Pj4+PiBzb3JyeSBmb3Igbm90IGZpbmRpbmcgdGhlIHRpbWUgdG8gdGVzdCB5b3VyIHN1YnNlcXVl
-bnQgdmVyc2lvbnMsIGJ1dAo+Pj4+Pj4+IHRoaXMKPj4+Pj4+PiBzdGlsbAo+Pj4+Pj4+IGFjdHMg
-dXAgb24gbXkgUm9ja2NoaXAgYm9hcmRzLCBhcyBJJ20gc3RpbGwgcnVubmluZyBpbnRvIGVycm9y
-cyBsaWtlCj4+Pj4+Pj4KPj4+Pj4+PiAJWyAgICA0Ljg3NTU3MF0gdXNiIHVzYjItcG9ydDE6IGNv
-bm5lY3QtZGVib3VuY2UgZmFpbGVkCj4+Pj4+Pgo+Pj4+Pj4gY291bGQgeW91IHBsZWFzZSBuYW1l
-IHRoZSByZWxldmFudCBEVFMgZmlsZSBvZiB0aGUgYWZmZWN0ZWQgYm9hcmRzPwo+Pj4+Pgo+Pj4+
-PiBTbyBmYXIgSSd2ZSBiZWVuIGFibGUgdG8gc2VlIHRoYXQgb24KPj4+Pj4KPj4+Pj4gcmszMTg4
-LXJhZHhhcm9jawo+Pj4+PiByazMwMzYta3lsaW4KPj4+Pj4KPj4+Pj4gYm90aCBvbiBob3N0LW9u
-bHkgZHdjMiBjb250cm9sbGVycy4KPj4+Pgo+Pj4+IHRoYW5rcywgZG9lcyBwYXRjaCAxICYgMiBh
-bHJlYWR5IGhhdmUgYSBuZWdhdGl2ZSBlZmZlY3Qgb24gdGhlc2UKPj4+PiBjb250cm9sbGVycz8K
-Pj4+Cj4+PiBub3BlLCBwYXRjaGVzIDErMiBhbG9uZSBhcmUgb2sgYW5kIG9ubHkgdGhlIG1zbGVl
-cCg1MCkgZ29pbmcgYXdheSBjYXVzZXMKPj4+IHByb2JsZW1zLiBJJ20gYmFjayBob21lIG5vdywg
-c28gSSdsbCBob3BlZnVsbHkgaGF2ZSB0aW1lIHRvIGNoZWNrCj4+PiBob3N0LW9ubHkKPj4+IHZz
-LiBvdGcgZHdjMiBjb250cm9sbGVycyB0b21vcnJvdyBhcyB3ZWxsLgo+Pgo+PiBPaywgdGhhbmtz
-IGZvciB0ZXN0aW5nIEhlaWtvLgo+Pgo+PiBHaXZlbiB0aGF0LCBsZXQncyB0cnkgdG8gZml4IHRo
-aXMgaW4gdGhlIG5leHQgLXJjIChvciBiZWZvcmUpIGJlY2F1c2UKPj4gSSB0aGluayB0aGUgUmFz
-cGJlcnJ5IFBpIG5lZWRzIHRoZSBvdGhlciBwYXJ0cyBvZiB0aGF0IGxhc3QgcGF0Y2guIFdlCj4+
-IGNhbiBqdXN0IHJldmVydCB0aGUgbXNsZWVwKDUwKSBpZiBuZWVkZWQuCj4gCj4gSSBjb3VsZCBu
-aWNlbHkgY29uZmlybSwgdGhhdCBvbmx5IHRoZSBob3N0LW9ubHkgY29udHJvbGxlciBzZWVtcyBh
-ZmZlY3RlZCBieQo+IHRoaXMuIFNhbWUga2VybmVsIGltYWdlIHRoYXQgZmFpbHMgb24gdGhlIGhv
-c3Qtb25seSBvbmUgd2l0aCB0aGUgImNvbm5lY3QtCj4gZGVib3VuY2UgZmFpbGVkIiBtZXNzYWdl
-IHNlZW1zIHRvIHdvcmsgb25jZSBJIHN3aXRjaCB0aGF0IG92ZXIgdG8gdGhlICBvdGcKPiBjb250
-cm9sbGVyIGFuZCB0aGUgc3lzdGVtIGNvbWVzIHVwIG5pY2VseSBhZ2Fpbi4KPiAKPiBTbyBpZiB3
-ZSBkb24ndCBmaW5kIHRoZSByb290IGNhdXNlIGluIHRoZSBzaG9ydCB0ZXJtLCBtYXliZSB3ZSBj
-b3VsZCBhdCBsZWFzdAo+IGxpbWl0IHRoZSBkZWxheSBmb3IgaG9zdC1vbmx5IHZhcmlhbnRzLCBs
-aWtlCj4gCj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSA4PCAtLS0tLS0tLS0tLS0tLS0tLS0tCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jIGIvZHJpdmVycy91c2IvZHdjMi9j
-b3JlLmMKPiBpbmRleCBmYTliMjZiLi40YzBmYTBiIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdXNi
-L2R3YzIvY29yZS5jCj4gKysrIGIvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMKPiBAQCAtNDYzLDkg
-KzQ2MywxOCBAQCBzdGF0aWMgdm9pZCBkd2MyX2NsZWFyX2ZvcmNlX21vZGUoc3RydWN0IGR3YzJf
-aHNvdGcgKmhzb3RnKQo+ICAgKi8KPiAgdm9pZCBkd2MyX2ZvcmNlX2RyX21vZGUoc3RydWN0IGR3
-YzJfaHNvdGcgKmhzb3RnKQo+ICB7Cj4gKwlib29sIHJldDsKPiArCj4gIAlzd2l0Y2ggKGhzb3Rn
-LT5kcl9tb2RlKSB7Cj4gIAljYXNlIFVTQl9EUl9NT0RFX0hPU1Q6Cj4gLQkJZHdjMl9mb3JjZV9t
-b2RlKGhzb3RnLCB0cnVlKTsKPiArCQlyZXQgPSBkd2MyX2ZvcmNlX21vZGUoaHNvdGcsIHRydWUp
-Owo+ICsJCS8qCj4gKwkJICogTk9URTogVGhpcyBpcyByZXF1aXJlZCBmb3Igc29tZSByb2NrY2hp
-cCBzb2MgYmFzZWQKPiArCQkgKiBwbGF0Zm9ybXMgb24gdGhlaXIgaG9zdC1vbmx5IGR3YzIuCj4g
-KwkJICovCj4gKwkJaWYgKCFyZXQpCj4gKwkJCW1zbGVlcCg1MCk7Cj4gKwo+ICAJCWJyZWFrOwo+
-ICAJY2FzZSBVU0JfRFJfTU9ERV9QRVJJUEhFUkFMOgo+ICAJCWR3YzJfZm9yY2VfbW9kZShoc290
-ZywgZmFsc2UpOwo+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gODwgLS0tLS0tLS0tLS0tLS0tLS0t
-LQo+IAo+IEkndmUgYmVlbiBydW5uaW5nIHdpdGggdGhhdCBjaGFuZ2UgZm9yIHNvbWUgdGltZSBu
-b3cgb24gYm90aCB0aGUKPiByazMwMzYta3lsaW4gYW5kIHJrMzE4OC1yYWR4YXJvY2suIFBsdWdn
-ZWQgYW5kIHVucGx1Z2dlZCBkaWZmZXJlbnQKPiBjb21iaW5hdGlvbnMgb2YgdXNiLWRldmljZXMg
-b24gdGhlIHVzYiBvdGcgYW5kIGhvc3QgcG9ydHMsIHNvIGZhcgo+IHNlZW1zIHRvIHdvcmsuCj4g
-CgpPayBncmVhdC4gV2UnbGwgdXNlIHRoYXQgZm9yIHRoZSAtcmMgaWYgd2UgY2FuJ3QgZmluZCB0
-aGUgcm9vdCBjYXVzZS4KClRoZW4gaG9wZWZ1bGx5IHdlIGNhbiBhcHBseSB0aGUgZmluYWwgZHJv
-cHBlZCBwYXRjaCBmb3IgNC4xMC4KClJlZ2FyZHMsCkpvaG4KCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thursday, September 8, 2016 4:08:45 PM CEST Heiko Stuebner wrote:
+> This enables the active-wakeup functionality of the generic power-domains
+> for the rockchip power-domain driver, so that some domains can stay
+> active during suspend.
+> 
+> 
+
+Pulled into next/drivers, thanks!
+
+	Arnd
