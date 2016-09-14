@@ -1,7 +1,7 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH 1/8] drm/rockchip: Clear interrupt status bits before enabling
-Date: Wed, 14 Sep 2016 21:54:54 +0900
-Message-ID: <1473857701-9250-2-git-send-email-tfiga@chromium.org>
+Subject: [PATCH 2/8] drm/rockchip: Get rid of some unnecessary code
+Date: Wed, 14 Sep 2016 21:54:55 +0900
+Message-ID: <1473857701-9250-3-git-send-email-tfiga@chromium.org>
 References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
@@ -10,45 +10,51 @@ To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The enable register only masks the raw status bits to signal CPU
-interrupt only for enabled interrupts. The status bits are activated
-regardless of the enable register. This means that we might have an old
-interrupt event queued, which we are not interested in. To avoid getting
-a spurious interrupt signalled, we have to clear the old bit before we
-update the enable register.
+Current code implements prepare_fb and cleanup_fb callbacks only to
+grab/release fb references, which is already done by atomic framework
+when creating/destryoing plane state. Let's remove these
+unused bits.
 
 Signed-off-by: Tomasz Figa <tfiga@chromium.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 209167b..7e811cf 100644
+index 7e811cf..68988c6 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -414,6 +414,7 @@ static void vop_dsp_hold_valid_irq_enable(struct vop *vop)
+@@ -641,22 +641,6 @@ static void vop_plane_destroy(struct drm_plane *plane)
+ 	drm_plane_cleanup(plane);
+ }
  
- 	spin_lock_irqsave(&vop->irq_lock, flags);
+-static int vop_plane_prepare_fb(struct drm_plane *plane,
+-				struct drm_plane_state *new_state)
+-{
+-	if (plane->state->fb)
+-		drm_framebuffer_reference(plane->state->fb);
+-
+-	return 0;
+-}
+-
+-static void vop_plane_cleanup_fb(struct drm_plane *plane,
+-				 struct drm_plane_state *old_state)
+-{
+-	if (old_state->fb)
+-		drm_framebuffer_unreference(old_state->fb);
+-}
+-
+ static int vop_plane_atomic_check(struct drm_plane *plane,
+ 			   struct drm_plane_state *state)
+ {
+@@ -849,8 +833,6 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ }
  
-+	VOP_INTR_SET_TYPE(vop, clear, DSP_HOLD_VALID_INTR, 1);
- 	VOP_INTR_SET_TYPE(vop, enable, DSP_HOLD_VALID_INTR, 1);
- 
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
-@@ -479,6 +480,7 @@ static void vop_line_flag_irq_enable(struct vop *vop, int line_num)
- 	spin_lock_irqsave(&vop->irq_lock, flags);
- 
- 	VOP_CTRL_SET(vop, line_flag_num[0], line_num);
-+	VOP_INTR_SET_TYPE(vop, clear, LINE_FLAG_INTR, 1);
- 	VOP_INTR_SET_TYPE(vop, enable, LINE_FLAG_INTR, 1);
- 
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
-@@ -921,6 +923,7 @@ static int vop_crtc_enable_vblank(struct drm_crtc *crtc)
- 
- 	spin_lock_irqsave(&vop->irq_lock, flags);
- 
-+	VOP_INTR_SET_TYPE(vop, clear, FS_INTR, 1);
- 	VOP_INTR_SET_TYPE(vop, enable, FS_INTR, 1);
- 
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
+ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+-	.prepare_fb = vop_plane_prepare_fb,
+-	.cleanup_fb = vop_plane_cleanup_fb,
+ 	.atomic_check = vop_plane_atomic_check,
+ 	.atomic_update = vop_plane_atomic_update,
+ 	.atomic_disable = vop_plane_atomic_disable,
 -- 
 2.8.0.rc3.226.g39d4020
