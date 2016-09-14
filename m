@@ -1,91 +1,180 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH 7/8] drm/rockchip: Always signal event in next vblank after
- cfg_done
-Date: Wed, 14 Sep 2016 21:55:00 +0900
-Message-ID: <1473857701-9250-8-git-send-email-tfiga@chromium.org>
-References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
+ delays
+Date: Wed, 14 Sep 2016 16:05:15 +0200
+Message-ID: <6145714.tWcMvDakYx@diego>
+References: <cover.1473302184.git.johnyoun@synopsys.com>
+ <2928813.DT7ys6u6xZ@diego>
+ <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <97a3539d-7176-086f-71f9-371d8d4b016c-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBwYXRjaCBtYWtlcyB0aGUgZHJpdmVyIHNlbmQgdGhlIHBlbmRpbmcgdmJsYW5rIGV2ZW50
-IGluIG5leHQgdmJsYW5rCmZvbGxvd2luZyB0aGUgY29tbWl0LCByZWx5aW5nIG9uIHZibGFuayBz
-aWduYWxsaW5nIGltcHJvdmVtZW50cyBkb25lIGluCnByZXZpb3VzIHBhdGNoZXMuIFRoaXMgZ2l2
-ZXMgdXMgdmJsYW5rIGV2ZW50cyB0aGF0IGFsd2F5cyByZXByZXNlbnQgdGhlCnJlYWwgbW9tZW50
-IG9mIGNoYW5nZXMgaGl0dGluZyBvbiB0aGUgc2NyZWVuICh3aGljaCB3YXMgdGhlIGNhc2Ugb25s
-eQpmb3IgY29tcGxldGUgRkIgY2hhbmdlcyBiZWZvcmUpIGFuZCBsZXRzIHVzIHJlbW92ZSB0aGUg
-bWFudWFsIHdpbmRvdwp1cGRhdGUgY2hlY2suCgpTaWduZWQtb2ZmLWJ5OiBUb21hc3ogRmlnYSA8
-dGZpZ2FAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMgfCA1NCArKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNo
-YW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDQ0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IGJiN2E4NjUuLmNhY2RmZmIgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTA1LDEw
-ICsxMDUsNiBAQCBzdHJ1Y3Qgdm9wX3dpbiB7CiAJc3RydWN0IGRybV9wbGFuZSBiYXNlOwogCWNv
-bnN0IHN0cnVjdCB2b3Bfd2luX2RhdGEgKmRhdGE7CiAJc3RydWN0IHZvcCAqdm9wOwotCi0JLyog
-cHJvdGVjdGVkIGJ5IGRldi0+ZXZlbnRfbG9jayAqLwotCWJvb2wgZW5hYmxlOwotCWRtYV9hZGRy
-X3QgeXJnYl9tc3Q7CiB9OwogCiBzdHJ1Y3Qgdm9wIHsKQEAgLTcxNiwxMSArNzEyLDYgQEAgc3Rh
-dGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
-LAogCWlmICghb2xkX3N0YXRlLT5jcnRjKQogCQlyZXR1cm47CiAKLQlzcGluX2xvY2tfaXJxKCZw
-bGFuZS0+ZGV2LT5ldmVudF9sb2NrKTsKLQl2b3Bfd2luLT5lbmFibGUgPSBmYWxzZTsKLQl2b3Bf
-d2luLT55cmdiX21zdCA9IDA7Ci0Jc3Bpbl91bmxvY2tfaXJxKCZwbGFuZS0+ZGV2LT5ldmVudF9s
-b2NrKTsKLQogCXNwaW5fbG9jaygmdm9wLT5yZWdfbG9jayk7CiAKIAlWT1BfV0lOX1NFVCh2b3As
-IHdpbiwgZW5hYmxlLCAwKTsKQEAgLTc4NCwxMSArNzc1LDYgQEAgc3RhdGljIHZvaWQgdm9wX3Bs
-YW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJb2Zmc2V0ICs9IChz
-cmMtPnkxID4+IDE2KSAqIGZiLT5waXRjaGVzWzBdOwogCXZvcF9wbGFuZV9zdGF0ZS0+eXJnYl9t
-c3QgPSBya19vYmotPmRtYV9hZGRyICsgb2Zmc2V0ICsgZmItPm9mZnNldHNbMF07CiAKLQlzcGlu
-X2xvY2tfaXJxKCZwbGFuZS0+ZGV2LT5ldmVudF9sb2NrKTsKLQl2b3Bfd2luLT5lbmFibGUgPSB0
-cnVlOwotCXZvcF93aW4tPnlyZ2JfbXN0ID0gdm9wX3BsYW5lX3N0YXRlLT55cmdiX21zdDsKLQlz
-cGluX3VubG9ja19pcnEoJnBsYW5lLT5kZXYtPmV2ZW50X2xvY2spOwotCiAJc3Bpbl9sb2NrKCZ2
-b3AtPnJlZ19sb2NrKTsKIAogCVZPUF9XSU5fU0VUKHZvcCwgd2luLCBmb3JtYXQsIHZvcF9wbGFu
-ZV9zdGF0ZS0+Zm9ybWF0KTsKQEAgLTExMTIsNiArMTA5OCwxNiBAQCBzdGF0aWMgdm9pZCB2b3Bf
-Y3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAogCSAqLwogCXZvcF93YWl0
-X2Zvcl9pcnFfaGFuZGxlcih2b3ApOwogCisJc3Bpbl9sb2NrX2lycSgmY3J0Yy0+ZGV2LT5ldmVu
-dF9sb2NrKTsKKwlpZiAoY3J0Yy0+c3RhdGUtPmV2ZW50KSB7CisJCVdBUk5fT04oZHJtX2NydGNf
-dmJsYW5rX2dldChjcnRjKSAhPSAwKTsKKwkJV0FSTl9PTih2b3AtPmV2ZW50KTsKKworCQl2b3At
-PmV2ZW50ID0gY3J0Yy0+c3RhdGUtPmV2ZW50OworCQljcnRjLT5zdGF0ZS0+ZXZlbnQgPSBOVUxM
-OworCX0KKwlzcGluX3VubG9ja19pcnEoJmNydGMtPmRldi0+ZXZlbnRfbG9jayk7CisKIAlmb3Jf
-ZWFjaF9wbGFuZV9pbl9zdGF0ZShvbGRfc3RhdGUsIHBsYW5lLCBvbGRfcGxhbmVfc3RhdGUsIGkp
-IHsKIAkJaWYgKCFvbGRfcGxhbmVfc3RhdGUtPmZiKQogCQkJY29udGludWU7CkBAIC0xMTI5LDE5
-ICsxMTI1LDcgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRvbWljX2ZsdXNoKHN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YywKIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19iZWdpbihzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMsCiAJCQkJICBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKm9sZF9jcnRjX3N0YXRl
-KQogewotCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKLQogCXJvY2tjaGlwX2RybV9w
-c3JfZmx1c2goY3J0Yyk7Ci0KLQlzcGluX2xvY2tfaXJxKCZjcnRjLT5kZXYtPmV2ZW50X2xvY2sp
-OwotCWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQpIHsKLQkJV0FSTl9PTihkcm1fY3J0Y192Ymxhbmtf
-Z2V0KGNydGMpICE9IDApOwotCQlXQVJOX09OKHZvcC0+ZXZlbnQpOwotCi0JCXZvcC0+ZXZlbnQg
-PSBjcnRjLT5zdGF0ZS0+ZXZlbnQ7Ci0JCWNydGMtPnN0YXRlLT5ldmVudCA9IE5VTEw7Ci0JfQot
-CXNwaW5fdW5sb2NrX2lycSgmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKIH0KIAogc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fY3J0Y19oZWxwZXJfZnVuY3Mgdm9wX2NydGNfaGVscGVyX2Z1bmNzID0g
-ewpAQCAtMTIwNywyOSArMTE5MSwxMSBAQCBzdGF0aWMgdm9pZCB2b3BfZmJfdW5yZWZfd29ya2Vy
-KHN0cnVjdCBkcm1fZmxpcF93b3JrICp3b3JrLCB2b2lkICp2YWwpCiAJZHJtX2ZyYW1lYnVmZmVy
-X3VucmVmZXJlbmNlKGZiKTsKIH0KIAotc3RhdGljIGJvb2wgdm9wX3dpbl9wZW5kaW5nX2lzX2Nv
-bXBsZXRlKHN0cnVjdCB2b3Bfd2luICp2b3Bfd2luKQotewotCWRtYV9hZGRyX3QgeXJnYl9tc3Q7
-Ci0KLQlpZiAoIXZvcF93aW4tPmVuYWJsZSkKLQkJcmV0dXJuIFZPUF9XSU5fR0VUKHZvcF93aW4t
-PnZvcCwgdm9wX3dpbi0+ZGF0YSwgZW5hYmxlKSA9PSAwOwotCi0JeXJnYl9tc3QgPSBWT1BfV0lO
-X0dFVF9ZUkdCQUREUih2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEpOwotCi0JcmV0dXJuIHly
-Z2JfbXN0ID09IHZvcF93aW4tPnlyZ2JfbXN0OwotfQotCiBzdGF0aWMgdm9pZCB2b3BfaGFuZGxl
-X3ZibGFuayhzdHJ1Y3Qgdm9wICp2b3ApCiB7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHZv
-cC0+ZHJtX2RldjsKIAlzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRjOwogCXVuc2ln
-bmVkIGxvbmcgZmxhZ3M7Ci0JaW50IGk7Ci0KLQlmb3IgKGkgPSAwOyBpIDwgdm9wLT5kYXRhLT53
-aW5fc2l6ZTsgaSsrKSB7Ci0JCWlmICghdm9wX3dpbl9wZW5kaW5nX2lzX2NvbXBsZXRlKCZ2b3At
-PndpbltpXSkpCi0JCQlyZXR1cm47Ci0JfQogCiAJc3Bpbl9sb2NrX2lycXNhdmUoJmRybS0+ZXZl
-bnRfbG9jaywgZmxhZ3MpOwogCWlmICh2b3AtPmV2ZW50KSB7Ci0tIAoyLjguMC5yYzMuMjI2Lmcz
-OWQ0MDIwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Dienstag, 13. September 2016, 12:04:12 schrieb John Youn:
+> On 9/13/2016 11:39 AM, Heiko St=FCbner wrote:
+> > Am Dienstag, 13. September 2016, 20:07:25 schrieb Stefan Wahren:
+> >> Hi Heiko,
+> >> =
+
+> >>> Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> hat am 12. September 2016 um 13:05
+> >>> geschrieben:
+> >>> =
+
+> >>> =
+
+> >>> Hi Stefan,
+> >>> =
+
+> >>> Am Montag, 12. September 2016, 07:20:44 CEST schrieb Stefan Wahren:
+> >>>>> Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> hat am 11. September 2016 um 23:19
+> >>>>> geschrieben:
+> >>>>> =
+
+> >>>>> Am Mittwoch, 7. September 2016, 19:39:43 CEST schrieb John Youn:
+> >>>>>> When a force mode bit is set and the IDDIG debounce filter is
+> >>>>>> enabled,
+> >>>>>> there is a delay for the forced mode to take effect. This delay is
+> >>>>>> due
+> >>>>>> to the IDDIG debounce filter and is variable depending on the
+> >>>>>> platform's
+> >>>>>> PHY clock speed. To account for this delay we can poll for the
+> >>>>>> expected
+> >>>>>> mode.
+> >>>>>> =
+
+> >>>>>> On a clear force mode, since we don't know what mode to poll for,
+> >>>>>> delay
+> >>>>>> for a fixed 100 ms. This is the maximum delay based on the slowest
+> >>>>>> PHY
+> >>>>>> clock speed.
+> >>>>>> =
+
+> >>>>>> Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+> >>>>>> Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+> >>>>>> ---
+> >>>>> =
+
+> >>>>> [...]
+> >>>>> =
+
+> >>>>>> @@ -475,12 +478,6 @@ void dwc2_force_dr_mode(struct dwc2_hsotg
+> >>>>>> *hsotg)
+> >>>>>> =
+
+> >>>>>>  			 __func__, hsotg->dr_mode);
+> >>>>>>  		=
+
+> >>>>>>  		break;
+> >>>>>>  	=
+
+> >>>>>>  	}
+> >>>>>> =
+
+> >>>>>> -
+> >>>>>> -	/*
+> >>>>>> -	 * NOTE: This is required for some rockchip soc based
+> >>>>>> -	 * platforms.
+> >>>>>> -	 */
+> >>>>>> -	msleep(50);
+> >>>>>> =
+
+> >>>>>>  }
+> >>>>> =
+
+> >>>>> sorry for not finding the time to test your subsequent versions, but
+> >>>>> this
+> >>>>> still
+> >>>>> acts up on my Rockchip boards, as I'm still running into errors like
+> >>>>> =
+
+> >>>>> 	[    4.875570] usb usb2-port1: connect-debounce failed
+> >>>> =
+
+> >>>> could you please name the relevant DTS file of the affected boards?
+> >>> =
+
+> >>> So far I've been able to see that on
+> >>> =
+
+> >>> rk3188-radxarock
+> >>> rk3036-kylin
+> >>> =
+
+> >>> both on host-only dwc2 controllers.
+> >> =
+
+> >> thanks, does patch 1 & 2 already have a negative effect on these
+> >> controllers?
+> > =
+
+> > nope, patches 1+2 alone are ok and only the msleep(50) going away causes
+> > problems. I'm back home now, so I'll hopefully have time to check
+> > host-only
+> > vs. otg dwc2 controllers tomorrow as well.
+> =
+
+> Ok, thanks for testing Heiko.
+> =
+
+> Given that, let's try to fix this in the next -rc (or before) because
+> I think the Raspberry Pi needs the other parts of that last patch. We
+> can just revert the msleep(50) if needed.
+
+I could nicely confirm, that only the host-only controller seems affected by
+this. Same kernel image that fails on the host-only one with the "connect-
+debounce failed" message seems to work once I switch that over to the  otg
+controller and the system comes up nicely again.
+
+So if we don't find the root cause in the short term, maybe we could at lea=
+st
+limit the delay for host-only variants, like
+
+---------------------- 8< -------------------
+diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+index fa9b26b..4c0fa0b 100644
+--- a/drivers/usb/dwc2/core.c
++++ b/drivers/usb/dwc2/core.c
+@@ -463,9 +463,18 @@ static void dwc2_clear_force_mode(struct dwc2_hsotg *h=
+sotg)
+  */
+ void dwc2_force_dr_mode(struct dwc2_hsotg *hsotg)
+ {
++	bool ret;
++
+ 	switch (hsotg->dr_mode) {
+ 	case USB_DR_MODE_HOST:
+-		dwc2_force_mode(hsotg, true);
++		ret =3D dwc2_force_mode(hsotg, true);
++		/*
++		 * NOTE: This is required for some rockchip soc based
++		 * platforms on their host-only dwc2.
++		 */
++		if (!ret)
++			msleep(50);
++
+ 		break;
+ 	case USB_DR_MODE_PERIPHERAL:
+ 		dwc2_force_mode(hsotg, false);
+---------------------- 8< -------------------
+
+I've been running with that change for some time now on both the
+rk3036-kylin and rk3188-radxarock. Plugged and unplugged different
+combinations of usb-devices on the usb otg and host ports, so far
+seems to work.
+
+
+Heiko
