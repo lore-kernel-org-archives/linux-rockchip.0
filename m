@@ -1,92 +1,60 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH 3/8] drm/rockchip: Avoid race with vblank count increment
-Date: Wed, 14 Sep 2016 21:54:56 +0900
-Message-ID: <1473857701-9250-4-git-send-email-tfiga@chromium.org>
+Subject: [PATCH 6/8] drm/rockchip: Do not enable vblank without event
+Date: Wed, 14 Sep 2016 21:54:59 +0900
+Message-ID: <1473857701-9250-7-git-send-email-tfiga@chromium.org>
 References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, Tomasz Figa <tfiga@chromium.org>
+Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Since VOP does not have a hardware vblank count register, the ongoing
-commit might be racing with a requested vblank interrupt, which would
-increment the software vblank counter before the changes being committed
-actually happen.
-
-To avoid this, we can extend .atomic_flush(), so after it sets cfg_done
-bit, it polls the vblank interrupt bit until it's inactive to make sure
-that any old vblank interrupt gets to the handler and then uses
-synchronize_irq(vop->irq) to make sure the handler finishes running.
-
-The polling case should happen very rarely, but even if, the total wait
-time should be relatively low and in practice almost equal to the vop
-hardirq handler running time.
-
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 34 +++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 68988c6..f989440 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -23,6 +23,7 @@
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/clk.h>
-+#include <linux/iopoll.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/pm_runtime.h>
-@@ -1063,6 +1064,32 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
- 	rockchip_drm_psr_activate(&vop->crtc);
- }
- 
-+static bool vop_fs_irq_is_pending(struct vop *vop)
-+{
-+	return VOP_INTR_GET_TYPE(vop, status, FS_INTR);
-+}
-+
-+static void vop_wait_for_irq_handler(struct vop *vop)
-+{
-+	bool pending;
-+	int ret;
-+
-+	/*
-+	 * Spin until frame start interrupt status bit goes low, which means
-+	 * that interrupt handler was invoked and cleared it. The timeout of
-+	 * 10 msecs is really too long, but it is just a safety measure if
-+	 * something goes really wrong. The wait will only happen in the very
-+	 * unlikely case of a vblank happening exactly at the same time and
-+	 * shouldn't exceed microseconds range.
-+	 */
-+	ret = readx_poll_timeout_atomic(vop_fs_irq_is_pending, vop, pending,
-+					!pending, 0, 10 * 1000);
-+	if (ret)
-+		DRM_DEV_ERROR(vop->dev, "VOP vblank IRQ stuck for 10 ms\n");
-+
-+	synchronize_irq(vop->irq);
-+}
-+
- static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 				  struct drm_crtc_state *old_crtc_state)
- {
-@@ -1076,6 +1103,13 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 	vop_cfg_done(vop);
- 
- 	spin_unlock(&vop->reg_lock);
-+
-+	/*
-+	 * There is a (rather unlikely) possiblity that a vblank interrupt
-+	 * fired before we set the cfg_done bit. To avoid spuriously
-+	 * signalling flip completion we need to wait for it to finish.
-+	 */
-+	vop_wait_for_irq_handler(vop);
- }
- 
- static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
--- 
-2.8.0.rc3.226.g39d4020
+T3JpZ2luYWxseSB3ZSBuZWVkZWQgdG8gZW5hYmxlIHZibGFuayBmb3IgYW55IGF0b21pYyBjb21t
+aXQgdG8ga2ljayB0aGUKUFNSIG1hY2hpbmUsIGJ1dCB0aGF0IHdhcyBjaGFuZ2VkIGFuZCB3ZSBu
+byBsb25nZXIgbmVlZCB0byBkbyBzbyBmcm9tCmEgdmJsYW5rIGludGVycnVwdC4gTGV0J3MgcmV0
+dXJuIHRvIG9yaWdpbmFsIGJlaGF2aW9yIG9mIGVuYWJsaW5nCnZibGFuayBvbmx5IGlmIGl0IGlz
+IHJlYWxseSBuZWNlc3NhcnkuCgpUaGlzIGVzc2VudGlhbGx5IHJldmVydHMgY29tbWl0IDViNjgw
+NDAzNGFlOSAoImRybS9yb2NrY2hpcDogRW5hYmxlCnZibGFuayB3aXRob3V0IGV2ZW50IikuCgpT
+aWduZWQtb2ZmLWJ5OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxNSArKysrLS0tLS0tLS0t
+LS0KIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQoKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IGFmOWRkYmUu
+LmJiN2E4NjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YwpAQCAtMTE2LDcgKzExNiw2IEBAIHN0cnVjdCB2b3AgewogCXN0cnVjdCBkZXZpY2UgKmRldjsK
+IAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldjsKIAlib29sIGlzX2VuYWJsZWQ7Ci0JYm9vbCB2
+YmxhbmtfYWN0aXZlOwogCiAJLyogbXV0ZXggdnN5bmNfIHdvcmsgKi8KIAlzdHJ1Y3QgbXV0ZXgg
+dnN5bmNfbXV0ZXg7CkBAIC0xMTM1LDExICsxMTM0LDEwIEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRj
+X2F0b21pY19iZWdpbihzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJcm9ja2NoaXBfZHJtX3Bzcl9m
+bHVzaChjcnRjKTsKIAogCXNwaW5fbG9ja19pcnEoJmNydGMtPmRldi0+ZXZlbnRfbG9jayk7Ci0J
+dm9wLT52YmxhbmtfYWN0aXZlID0gdHJ1ZTsKLQlXQVJOX09OKGRybV9jcnRjX3ZibGFua19nZXQo
+Y3J0YykgIT0gMCk7Ci0JV0FSTl9PTih2b3AtPmV2ZW50KTsKLQogCWlmIChjcnRjLT5zdGF0ZS0+
+ZXZlbnQpIHsKKwkJV0FSTl9PTihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOworCQlX
+QVJOX09OKHZvcC0+ZXZlbnQpOworCiAJCXZvcC0+ZXZlbnQgPSBjcnRjLT5zdGF0ZS0+ZXZlbnQ7
+CiAJCWNydGMtPnN0YXRlLT5ldmVudCA9IE5VTEw7CiAJfQpAQCAtMTIzNiwxMiArMTIzNCw4IEBA
+IHN0YXRpYyB2b2lkIHZvcF9oYW5kbGVfdmJsYW5rKHN0cnVjdCB2b3AgKnZvcCkKIAlzcGluX2xv
+Y2tfaXJxc2F2ZSgmZHJtLT5ldmVudF9sb2NrLCBmbGFncyk7CiAJaWYgKHZvcC0+ZXZlbnQpIHsK
+IAkJZHJtX2NydGNfc2VuZF92YmxhbmtfZXZlbnQoY3J0Yywgdm9wLT5ldmVudCk7Ci0JCXZvcC0+
+ZXZlbnQgPSBOVUxMOwotCi0JfQotCWlmICh2b3AtPnZibGFua19hY3RpdmUpIHsKLQkJdm9wLT52
+YmxhbmtfYWN0aXZlID0gZmFsc2U7CiAJCWRybV9jcnRjX3ZibGFua19wdXQoY3J0Yyk7CisJCXZv
+cC0+ZXZlbnQgPSBOVUxMOwogCX0KIAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZkcm0tPmV2ZW50
+X2xvY2ssIGZsYWdzKTsKIApAQCAtMTUxOCw3ICsxNTEyLDYgQEAgc3RhdGljIGludCB2b3BfaW5p
+dGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiAJY2xrX2Rpc2FibGUodm9wLT5hY2xrKTsKIAogCXZvcC0+
+aXNfZW5hYmxlZCA9IGZhbHNlOwotCXZvcC0+dmJsYW5rX2FjdGl2ZSA9IGZhbHNlOwogCiAJcmV0
+dXJuIDA7CiAKLS0gCjIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
