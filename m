@@ -1,76 +1,127 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
- delays
-Date: Tue, 13 Sep 2016 12:04:12 -0700
-Message-ID: <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
-References: <cover.1473302184.git.johnyoun@synopsys.com>
- <27811373.44ZqrxQai6@phil>
- <19473401.122600.97acfbc9-df96-4427-b533-911010ce5c3f.open-xchange@email.1und1.de>
- <2928813.DT7ys6u6xZ@diego>
+From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+Subject: Re: [PATCH 2/2] HID: i2c-hid: support the regulator
+Date: Wed, 14 Sep 2016 09:36:03 +0200
+Message-ID: <20160914073603.GH25951@mail.corp.redhat.com>
+References: <1473027116-13892-1-git-send-email-wxt@rock-chips.com>
+ <1473027116-13892-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2928813.DT7ys6u6xZ@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-input-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1473027116-13892-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-input-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Jiri Kosina <jikos@kernel.org>, linux-rockchip@lists.infradead.org, dbasehore@chromium.org, Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-input@vger.kernel.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Dmitry Torokhov <dtor@chromium.org>, Benson Leung <bleung@chromium.org>, Guohua Zhong <ghzhong@yifangdigital.com>, "Zhonghui\"" <zhonghui.fu@linux.intel.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gOS8xMy8yMDE2IDExOjM5IEFNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBEaWVuc3Rh
-ZywgMTMuIFNlcHRlbWJlciAyMDE2LCAyMDowNzoyNSBzY2hyaWViIFN0ZWZhbiBXYWhyZW46Cj4+
-IEhpIEhlaWtvLAo+Pgo+Pj4gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gaGF0IGFt
-IDEyLiBTZXB0ZW1iZXIgMjAxNiB1bSAxMzowNQo+Pj4gZ2VzY2hyaWViZW46Cj4+Pgo+Pj4KPj4+
-IEhpIFN0ZWZhbiwKPj4+Cj4+PiBBbSBNb250YWcsIDEyLiBTZXB0ZW1iZXIgMjAxNiwgMDc6MjA6
-NDQgQ0VTVCBzY2hyaWViIFN0ZWZhbiBXYWhyZW46Cj4+Pj4+IEhlaWtvIFN0dWVibmVyIDxoZWlr
-b0BzbnRlY2guZGU+IGhhdCBhbSAxMS4gU2VwdGVtYmVyIDIwMTYgdW0gMjM6MTkKPj4+Pj4gZ2Vz
-Y2hyaWViZW46Cj4+Pj4+Cj4+Pj4+IEFtIE1pdHR3b2NoLCA3LiBTZXB0ZW1iZXIgMjAxNiwgMTk6
-Mzk6NDMgQ0VTVCBzY2hyaWViIEpvaG4gWW91bjoKPj4+Pj4+IFdoZW4gYSBmb3JjZSBtb2RlIGJp
-dCBpcyBzZXQgYW5kIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0ZXIgaXMKPj4+Pj4+IGVuYWJsZWQs
-Cj4+Pj4+PiB0aGVyZSBpcyBhIGRlbGF5IGZvciB0aGUgZm9yY2VkIG1vZGUgdG8gdGFrZSBlZmZl
-Y3QuIFRoaXMgZGVsYXkgaXMKPj4+Pj4+IGR1ZQo+Pj4+Pj4gdG8gdGhlIElERElHIGRlYm91bmNl
-IGZpbHRlciBhbmQgaXMgdmFyaWFibGUgZGVwZW5kaW5nIG9uIHRoZQo+Pj4+Pj4gcGxhdGZvcm0n
-cwo+Pj4+Pj4gUEhZIGNsb2NrIHNwZWVkLiBUbyBhY2NvdW50IGZvciB0aGlzIGRlbGF5IHdlIGNh
-biBwb2xsIGZvciB0aGUKPj4+Pj4+IGV4cGVjdGVkCj4+Pj4+PiBtb2RlLgo+Pj4+Pj4KPj4+Pj4+
-IE9uIGEgY2xlYXIgZm9yY2UgbW9kZSwgc2luY2Ugd2UgZG9uJ3Qga25vdyB3aGF0IG1vZGUgdG8g
-cG9sbCBmb3IsCj4+Pj4+PiBkZWxheQo+Pj4+Pj4gZm9yIGEgZml4ZWQgMTAwIG1zLiBUaGlzIGlz
-IHRoZSBtYXhpbXVtIGRlbGF5IGJhc2VkIG9uIHRoZSBzbG93ZXN0Cj4+Pj4+PiBQSFkKPj4+Pj4+
-IGNsb2NrIHNwZWVkLgo+Pj4+Pj4KPj4+Pj4+IFRlc3RlZC1ieTogU3RlZmFuIFdhaHJlbiA8c3Rl
-ZmFuLndhaHJlbkBpMnNlLmNvbT4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gWW91biA8am9o
-bnlvdW5Ac3lub3BzeXMuY29tPgo+Pj4+Pj4gLS0tCj4+Pj4+Cj4+Pj4+IFsuLi5dCj4+Pj4+Cj4+
-Pj4+PiBAQCAtNDc1LDEyICs0NzgsNiBAQCB2b2lkIGR3YzJfZm9yY2VfZHJfbW9kZShzdHJ1Y3Qg
-ZHdjMl9oc290Zwo+Pj4+Pj4gKmhzb3RnKQo+Pj4+Pj4KPj4+Pj4+ICAJCQkgX19mdW5jX18sIGhz
-b3RnLT5kcl9tb2RlKTsKPj4+Pj4+ICAJCQo+Pj4+Pj4gIAkJYnJlYWs7Cj4+Pj4+PiAgCQo+Pj4+
-Pj4gIAl9Cj4+Pj4+Pgo+Pj4+Pj4gLQo+Pj4+Pj4gLQkvKgo+Pj4+Pj4gLQkgKiBOT1RFOiBUaGlz
-IGlzIHJlcXVpcmVkIGZvciBzb21lIHJvY2tjaGlwIHNvYyBiYXNlZAo+Pj4+Pj4gLQkgKiBwbGF0
-Zm9ybXMuCj4+Pj4+PiAtCSAqLwo+Pj4+Pj4gLQltc2xlZXAoNTApOwo+Pj4+Pj4KPj4+Pj4+ICB9
-Cj4+Pj4+Cj4+Pj4+IHNvcnJ5IGZvciBub3QgZmluZGluZyB0aGUgdGltZSB0byB0ZXN0IHlvdXIg
-c3Vic2VxdWVudCB2ZXJzaW9ucywgYnV0Cj4+Pj4+IHRoaXMKPj4+Pj4gc3RpbGwKPj4+Pj4gYWN0
-cyB1cCBvbiBteSBSb2NrY2hpcCBib2FyZHMsIGFzIEknbSBzdGlsbCBydW5uaW5nIGludG8gZXJy
-b3JzIGxpa2UKPj4+Pj4KPj4+Pj4gCVsgICAgNC44NzU1NzBdIHVzYiB1c2IyLXBvcnQxOiBjb25u
-ZWN0LWRlYm91bmNlIGZhaWxlZAo+Pj4+Cj4+Pj4gY291bGQgeW91IHBsZWFzZSBuYW1lIHRoZSBy
-ZWxldmFudCBEVFMgZmlsZSBvZiB0aGUgYWZmZWN0ZWQgYm9hcmRzPwo+Pj4KPj4+IFNvIGZhciBJ
-J3ZlIGJlZW4gYWJsZSB0byBzZWUgdGhhdCBvbgo+Pj4KPj4+IHJrMzE4OC1yYWR4YXJvY2sKPj4+
-IHJrMzAzNi1reWxpbgo+Pj4KPj4+IGJvdGggb24gaG9zdC1vbmx5IGR3YzIgY29udHJvbGxlcnMu
-Cj4+Cj4+IHRoYW5rcywgZG9lcyBwYXRjaCAxICYgMiBhbHJlYWR5IGhhdmUgYSBuZWdhdGl2ZSBl
-ZmZlY3Qgb24gdGhlc2UKPj4gY29udHJvbGxlcnM/Cj4gCj4gbm9wZSwgcGF0Y2hlcyAxKzIgYWxv
-bmUgYXJlIG9rIGFuZCBvbmx5IHRoZSBtc2xlZXAoNTApIGdvaW5nIGF3YXkgY2F1c2VzIAo+IHBy
-b2JsZW1zLiBJJ20gYmFjayBob21lIG5vdywgc28gSSdsbCBob3BlZnVsbHkgaGF2ZSB0aW1lIHRv
-IGNoZWNrIGhvc3Qtb25seSAKPiB2cy4gb3RnIGR3YzIgY29udHJvbGxlcnMgdG9tb3Jyb3cgYXMg
-d2VsbC4KPiAKCk9rLCB0aGFua3MgZm9yIHRlc3RpbmcgSGVpa28uCgpHaXZlbiB0aGF0LCBsZXQn
-cyB0cnkgdG8gZml4IHRoaXMgaW4gdGhlIG5leHQgLXJjIChvciBiZWZvcmUpIGJlY2F1c2UKSSB0
-aGluayB0aGUgUmFzcGJlcnJ5IFBpIG5lZWRzIHRoZSBvdGhlciBwYXJ0cyBvZiB0aGF0IGxhc3Qg
-cGF0Y2guIFdlCmNhbiBqdXN0IHJldmVydCB0aGUgbXNsZWVwKDUwKSBpZiBuZWVkZWQuCgpJJ2xs
-IGFsc28gdHJ5IHRvIGdldCBteSBoYW5kcyBvbiBhIHJvY2tjaGlwIHBsYXRmb3JtLiBJIHRoaW5r
-IHRoYXQKd2lsbCBoZWxwIHRoZSB0ZXN0aW5nIGFsb25nLgoKUmVnYXJkcywKSm9obgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Sep 05 2016 or thereabouts, Caesar Wang wrote:
+> From: Brian Norris <briannorris@chromium.org>
+> 
+> In order to allow supporting the HID based devices that need power on/off
+> the regulator. We try to get a power-supply property from the
+> device tree.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Jiri Kosina <jikos@kernel.org>
+> Cc: linux-input@vger.kernel.org
+> 
+> ---
+> 
+>  drivers/hid/i2c-hid/i2c-hid.c | 31 ++++++++++++++++++++++++++++++-
+>  1 file changed, 30 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/hid/i2c-hid/i2c-hid.c b/drivers/hid/i2c-hid/i2c-hid.c
+> index b3ec4f2..07cc7aa 100644
+> --- a/drivers/hid/i2c-hid/i2c-hid.c
+> +++ b/drivers/hid/i2c-hid/i2c-hid.c
+> @@ -38,6 +38,7 @@
+>  #include <linux/acpi.h>
+>  #include <linux/of.h>
+>  #include <linux/gpio/consumer.h>
+> +#include <linux/regulator/consumer.h>
+>  
+>  #include <linux/i2c/i2c-hid.h>
+>  
+> @@ -152,6 +153,7 @@ struct i2c_hid {
+>  
+>  	bool			irq_wake_enabled;
+>  	struct mutex		reset_lock;
+> +	struct regulator	*supply;
+>  };
+>  
+>  static int __i2c_hid_command(struct i2c_client *client,
+> @@ -968,6 +970,21 @@ static int i2c_hid_probe(struct i2c_client *client,
+>  	if (!ihid)
+>  		return -ENOMEM;
+>  
+> +	ihid->supply = devm_regulator_get(&client->dev, "power");
+> +	if (IS_ERR(ihid->supply)) {
+
+I am not familiar with regulators, but what if (like 99% of the
+available i2c-hid devices) there is no regulator attached to the device?
+
+Will the pointer be null? Will there be a dummy regulator?
+
+It seems at first sight that you are adding a requirement on the devices
+which is not part of the spec, and which will break every existing
+systems but yours. Again, I might be wrong, so please provide more
+information.
+
+Cheers,
+Benjamin
+
+> +		ret = PTR_ERR(ihid->supply);
+> +		dev_err(&client->dev, "Failed to get power regulator: %d\n",
+> +			ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = regulator_enable(ihid->supply);
+> +	if (ret < 0) {
+> +		dev_err(&client->dev, "Failed to enable power regulator: %d\n",
+> +			ret);
+> +		return ret;
+> +	}
+> +
+>  	if (client->dev.of_node) {
+>  		ret = i2c_hid_of_probe(client, &ihid->pdata);
+>  		if (ret)
+> @@ -1100,6 +1117,8 @@ static int i2c_hid_remove(struct i2c_client *client)
+>  	if (ihid->desc)
+>  		gpiod_put(ihid->desc);
+>  
+> +	regulator_disable(ihid->supply);
+> +
+>  	kfree(ihid);
+>  
+>  	acpi_dev_remove_driver_gpios(ACPI_COMPANION(&client->dev));
+> @@ -1152,6 +1171,11 @@ static int i2c_hid_suspend(struct device *dev)
+>  		else
+>  			hid_warn(hid, "Failed to enable irq wake: %d\n",
+>  				wake_status);
+> +	} else {
+> +		ret = regulator_disable(ihid->supply);
+> +		if (ret < 0)
+> +			hid_warn(hid, "Failed to disable power supply: %d\n",
+> +				 ret);
+>  	}
+>  
+>  	return 0;
+> @@ -1165,7 +1189,12 @@ static int i2c_hid_resume(struct device *dev)
+>  	struct hid_device *hid = ihid->hid;
+>  	int wake_status;
+>  
+> -	if (device_may_wakeup(&client->dev) && ihid->irq_wake_enabled) {
+> +	if (!device_may_wakeup(&client->dev)) {
+> +		ret = regulator_enable(ihid->supply);
+> +		if (ret < 0)
+> +			hid_warn(hid, "Failed to enable power supply: %d\n",
+> +				 ret);
+> +	} else if (ihid->irq_wake_enabled) {
+>  		wake_status = disable_irq_wake(ihid->irq);
+>  		if (!wake_status)
+>  			ihid->irq_wake_enabled = false;
+> -- 
+> 1.9.1
+> 
