@@ -1,43 +1,53 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 2/2] HID: i2c-hid: support the regulator
-Date: Wed, 14 Sep 2016 16:02:42 +0800
-Message-ID: <20160914080241.GA14576@localhost>
-References: <1473027116-13892-1-git-send-email-wxt@rock-chips.com>
- <1473027116-13892-2-git-send-email-wxt@rock-chips.com>
- <20160914073603.GH25951@mail.corp.redhat.com>
- <20160914075505.GA14271@localhost>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-input-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160914075505.GA14271@localhost>
-Sender: linux-input-owner@vger.kernel.org
-To: Benjamin Tissoires <benjamin.tissoires@redhat.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Jiri Kosina <jikos@kernel.org>, linux-rockchip@lists.infradead.org, dbasehore@chromium.org, Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-input@vger.kernel.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Dmitry Torokhov <dtor@chromium.org>, Benson Leung <bleung@chromium.org>, Guohua Zhong <ghzhong@yifangdigital.com>, "Zhonghui\"" <zhonghui.fu@linux.intel.com>, linux-kernel@vger.kernel.org
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH 0/8] drm/rockchip: Flip wait clean-up
+Date: Wed, 14 Sep 2016 21:54:53 +0900
+Message-ID: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 14, 2016 at 03:55:05PM +0800, Brian Norris wrote:
-> The default behavior of regulator_get() is to provide a dummy regulator
-> if none is found. So the pointer is never NULL, and it won't break
-> devices without a regulator. If you don't want a dummy regulator you
-> would use regulator_get_optional() instead, and you would then need to
-> handle ERR_PTR(-ENODEV) specifically.
+The display controller found on Rockchip SoCs supported by Rockchip DRM
+driver (VOP) is a bit problematic, because it does not provide hardware
+vblank counter. Because vblank interrupt is used to feed the software
+counter, the driver had custom code to wait for flip completion to avoid
+race between atomic flush and vblank interrupt handler.
 
-One caveat to the never-NULL comment above that I just noticed:
+This, however, brought a different set of issues. In fact, even with the
+custom wait code, there is stil a race between the handler and driver
+state update (of the values used to compare with registers to determine
+if flip has completed). On top of that, legacy cursor updates are not
+implemented properly and have to wait for vblank to complete, which
+is against the API specification.
 
-If CONFIG_REGULATOR=n, then regulator_get() actually returns NULL (see
-include/linux/regulator/consumer.h), but it also specifically has a
-comment right next to that NULL return, saying:
+This series attempts to clean up the driver from this custom waiting code,
+eliminating related races and bringing correct handling of legacy cursor
+plane. It also gives a nice effect of more than 100 lines of code removed.
 
-        /* Nothing except the stubbed out regulator API should be
-         * looking at the value except to check if it is an error
-         * value. Drivers are free to handle NULL specifically by
-         * skipping all regulator API calls, but they don't have to.
-         * Drivers which don't, should make sure they properly handle
-         * corner cases of the API, such as regulator_get_voltage()
-         * returning 0.
-         */
+This is a forward port of patches from 4.4 kernel used by ChromiumOS and
+tested there. Even though the code base has not changed significantly, it
+would be nice if someone with proper testing environment could give them
+a try.
 
-So, we still don't need to handle the NULL case specially.
+Based on for-next branch of Sean Paul's dogwood tree:
+https://cgit.freedesktop.org/~seanpaul/dogwood/log/?h=for-next
+git://people.freedesktop.org/~seanpaul/dogwood
 
-Brian
+Tomasz Figa (8):
+  drm/rockchip: Clear interrupt status bits before enabling
+  drm/rockchip: Get rid of some unnecessary code
+  drm/rockchip: Avoid race with vblank count increment
+  drm/rockchip: Unreference framebuffers from flip work
+  drm/rockchip: Replace custom wait_for_vblanks with helper
+  drm/rockchip: Do not enable vblank without event
+  drm/rockchip: Always signal event in next vblank after cfg_done
+  drm/rockchip: Kill vop_plane_state
+
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h |   1 -
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  64 +------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 247 +++++++++++-----------------
+ 3 files changed, 95 insertions(+), 217 deletions(-)
+
+-- 
+2.8.0.rc3.226.g39d4020
