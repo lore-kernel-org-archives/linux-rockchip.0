@@ -1,41 +1,68 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH] soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell
-Date: Thu, 15 Sep 2016 12:43:41 +0200
-Message-ID: <1473936221-9248-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 0/8] drm/rockchip: Flip wait clean-up
+Date: Thu, 15 Sep 2016 10:02:26 -0400
+Message-ID: <CAOw6vb+=sY0N+7+VkmoiHiaLqJxsQUqKmTtZROAbmLXOFiYOSw@mail.gmail.com>
+References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Daniel Kurtz <djkurtz@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-It was a bit surprising that the device was reported to have probed just
-fine, but the provider hadn't been registered.
+On Wed, Sep 14, 2016 at 8:54 AM, Tomasz Figa <tfiga@chromium.org> wrote:
+> The display controller found on Rockchip SoCs supported by Rockchip DRM
+> driver (VOP) is a bit problematic, because it does not provide hardware
+> vblank counter. Because vblank interrupt is used to feed the software
+> counter, the driver had custom code to wait for flip completion to avoid
+> race between atomic flush and vblank interrupt handler.
+>
+> This, however, brought a different set of issues. In fact, even with the
+> custom wait code, there is stil a race between the handler and driver
+> state update (of the values used to compare with registers to determine
+> if flip has completed). On top of that, legacy cursor updates are not
+> implemented properly and have to wait for vblank to complete, which
+> is against the API specification.
+>
+> This series attempts to clean up the driver from this custom waiting code,
+> eliminating related races and bringing correct handling of legacy cursor
+> plane. It also gives a nice effect of more than 100 lines of code removed.
+>
+> This is a forward port of patches from 4.4 kernel used by ChromiumOS and
+> tested there. Even though the code base has not changed significantly, it
+> would be nice if someone with proper testing environment could give them
+> a try.
+>
+> Based on for-next branch of Sean Paul's dogwood tree:
+> https://cgit.freedesktop.org/~seanpaul/dogwood/log/?h=for-next
+> git://people.freedesktop.org/~seanpaul/dogwood
+>
 
-So handle any errors when registering the provider and fail the probe
-accordingly.
+Thanks for the patches, Tomasz.
 
-Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: Caesar Wang <wxt@rock-chips.com>
----
- drivers/soc/rockchip/pm_domains.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+I'll queue them up in my rockchip for-next branch.
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 7acd1517dd37..57e920128cb2 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -627,7 +627,11 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
- 		goto err_out;
- 	}
- 
--	of_genpd_add_provider_onecell(np, &pmu->genpd_data);
-+	error = of_genpd_add_provider_onecell(np, &pmu->genpd_data);
-+	if (error) {
-+		dev_err(dev, "failed to add provider: %d\n", error);
-+		goto err_out;
-+	}
- 
- 	return 0;
- 
--- 
-2.7.4
+Sean
+
+
+
+> Tomasz Figa (8):
+>   drm/rockchip: Clear interrupt status bits before enabling
+>   drm/rockchip: Get rid of some unnecessary code
+>   drm/rockchip: Avoid race with vblank count increment
+>   drm/rockchip: Unreference framebuffers from flip work
+>   drm/rockchip: Replace custom wait_for_vblanks with helper
+>   drm/rockchip: Do not enable vblank without event
+>   drm/rockchip: Always signal event in next vblank after cfg_done
+>   drm/rockchip: Kill vop_plane_state
+>
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h |   1 -
+>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  64 +------
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 247 +++++++++++-----------------
+>  3 files changed, 95 insertions(+), 217 deletions(-)
+>
+> --
+> 2.8.0.rc3.226.g39d4020
+>
