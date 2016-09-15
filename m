@@ -1,114 +1,41 @@
-From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
- delays
-Date: Thu, 15 Sep 2016 09:08:25 +0200
-Message-ID: <ad02126f-6c0e-9216-f7ab-ec528eeda2e2@i2se.com>
-References: <cover.1473302184.git.johnyoun@synopsys.com>
- <2928813.DT7ys6u6xZ@diego>
- <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
- <6145714.tWcMvDakYx@diego>
- <6b0c9143-63b3-c5c3-7122-bbbb0c9f610b@synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6b0c9143-63b3-c5c3-7122-bbbb0c9f610b-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell
+Date: Thu, 15 Sep 2016 12:43:41 +0200
+Message-ID: <1473936221-9248-1-git-send-email-tomeu.vizoso@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obiwKClthZGQgRmVsaXBlIGFuZCBHcmVnXQoKQW0gMTQuMDkuMjAxNiB1bSAyMzoxMCBz
-Y2hyaWViIEpvaG4gWW91bjoKPiBPbiA5LzE0LzIwMTYgNzowNSBBTSwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4+IEFtIERpZW5zdGFnLCAxMy4gU2VwdGVtYmVyIDIwMTYsIDEyOjA0OjEyIHNjaHJp
-ZWIgSm9obiBZb3VuOgo+Pj4gT24gOS8xMy8yMDE2IDExOjM5IEFNLCBIZWlrbyBTdMO8Ym5lciB3
-cm90ZToKPj4+PiBBbSBEaWVuc3RhZywgMTMuIFNlcHRlbWJlciAyMDE2LCAyMDowNzoyNSBzY2hy
-aWViIFN0ZWZhbiBXYWhyZW46Cj4+Pj4+IEhpIEhlaWtvLAo+Pj4+Pgo+Pj4+Pj4gSGVpa28gU3R1
-ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gaGF0IGFtIDEyLiBTZXB0ZW1iZXIgMjAxNiB1bSAxMzow
-NQo+Pj4+Pj4gZ2VzY2hyaWViZW46Cj4+Pj4+Pgo+Pj4+Pj4KPj4+Pj4+IEhpIFN0ZWZhbiwKPj4+
-Pj4+Cj4+Pj4+PiBBbSBNb250YWcsIDEyLiBTZXB0ZW1iZXIgMjAxNiwgMDc6MjA6NDQgQ0VTVCBz
-Y2hyaWViIFN0ZWZhbiBXYWhyZW46Cj4+Pj4+Pj4+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRl
-Y2guZGU+IGhhdCBhbSAxMS4gU2VwdGVtYmVyIDIwMTYgdW0gMjM6MTkKPj4+Pj4+Pj4gZ2VzY2hy
-aWViZW46Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+IEFtIE1pdHR3b2NoLCA3LiBTZXB0ZW1iZXIgMjAxNiwg
-MTk6Mzk6NDMgQ0VTVCBzY2hyaWViIEpvaG4gWW91bjoKPj4+Pj4+Pj4+IFdoZW4gYSBmb3JjZSBt
-b2RlIGJpdCBpcyBzZXQgYW5kIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0ZXIgaXMKPj4+Pj4+Pj4+
-IGVuYWJsZWQsCj4+Pj4+Pj4+PiB0aGVyZSBpcyBhIGRlbGF5IGZvciB0aGUgZm9yY2VkIG1vZGUg
-dG8gdGFrZSBlZmZlY3QuIFRoaXMgZGVsYXkgaXMKPj4+Pj4+Pj4+IGR1ZQo+Pj4+Pj4+Pj4gdG8g
-dGhlIElERElHIGRlYm91bmNlIGZpbHRlciBhbmQgaXMgdmFyaWFibGUgZGVwZW5kaW5nIG9uIHRo
-ZQo+Pj4+Pj4+Pj4gcGxhdGZvcm0ncwo+Pj4+Pj4+Pj4gUEhZIGNsb2NrIHNwZWVkLiBUbyBhY2Nv
-dW50IGZvciB0aGlzIGRlbGF5IHdlIGNhbiBwb2xsIGZvciB0aGUKPj4+Pj4+Pj4+IGV4cGVjdGVk
-Cj4+Pj4+Pj4+PiBtb2RlLgo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+IE9uIGEgY2xlYXIgZm9yY2UgbW9k
-ZSwgc2luY2Ugd2UgZG9uJ3Qga25vdyB3aGF0IG1vZGUgdG8gcG9sbCBmb3IsCj4+Pj4+Pj4+PiBk
-ZWxheQo+Pj4+Pj4+Pj4gZm9yIGEgZml4ZWQgMTAwIG1zLiBUaGlzIGlzIHRoZSBtYXhpbXVtIGRl
-bGF5IGJhc2VkIG9uIHRoZSBzbG93ZXN0Cj4+Pj4+Pj4+PiBQSFkKPj4+Pj4+Pj4+IGNsb2NrIHNw
-ZWVkLgo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+IFRlc3RlZC1ieTogU3RlZmFuIFdhaHJlbiA8c3RlZmFu
-LndhaHJlbkBpMnNlLmNvbT4KPj4+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gWW91biA8am9o
-bnlvdW5Ac3lub3BzeXMuY29tPgo+Pj4+Pj4+Pj4gLS0tCj4+Pj4+Pj4+IFsuLi5dCj4+Pj4+Pj4+
-Cj4+Pj4+Pj4+PiBAQCAtNDc1LDEyICs0NzgsNiBAQCB2b2lkIGR3YzJfZm9yY2VfZHJfbW9kZShz
-dHJ1Y3QgZHdjMl9oc290Zwo+Pj4+Pj4+Pj4gKmhzb3RnKQo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+ICAg
-CQkJIF9fZnVuY19fLCBoc290Zy0+ZHJfbW9kZSk7Cj4+Pj4+Pj4+PiAgIAkJCj4+Pj4+Pj4+PiAg
-IAkJYnJlYWs7Cj4+Pj4+Pj4+PiAgIAkKPj4+Pj4+Pj4+ICAgCX0KPj4+Pj4+Pj4+Cj4+Pj4+Pj4+
-PiAtCj4+Pj4+Pj4+PiAtCS8qCj4+Pj4+Pj4+PiAtCSAqIE5PVEU6IFRoaXMgaXMgcmVxdWlyZWQg
-Zm9yIHNvbWUgcm9ja2NoaXAgc29jIGJhc2VkCj4+Pj4+Pj4+PiAtCSAqIHBsYXRmb3Jtcy4KPj4+
-Pj4+Pj4+IC0JICovCj4+Pj4+Pj4+PiAtCW1zbGVlcCg1MCk7Cj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4g
-ICB9Cj4+Pj4+Pj4+IHNvcnJ5IGZvciBub3QgZmluZGluZyB0aGUgdGltZSB0byB0ZXN0IHlvdXIg
-c3Vic2VxdWVudCB2ZXJzaW9ucywgYnV0Cj4+Pj4+Pj4+IHRoaXMKPj4+Pj4+Pj4gc3RpbGwKPj4+
-Pj4+Pj4gYWN0cyB1cCBvbiBteSBSb2NrY2hpcCBib2FyZHMsIGFzIEknbSBzdGlsbCBydW5uaW5n
-IGludG8gZXJyb3JzIGxpa2UKPj4+Pj4+Pj4KPj4+Pj4+Pj4gCVsgICAgNC44NzU1NzBdIHVzYiB1
-c2IyLXBvcnQxOiBjb25uZWN0LWRlYm91bmNlIGZhaWxlZAo+Pj4+Pj4+IGNvdWxkIHlvdSBwbGVh
-c2UgbmFtZSB0aGUgcmVsZXZhbnQgRFRTIGZpbGUgb2YgdGhlIGFmZmVjdGVkIGJvYXJkcz8KPj4+
-Pj4+IFNvIGZhciBJJ3ZlIGJlZW4gYWJsZSB0byBzZWUgdGhhdCBvbgo+Pj4+Pj4KPj4+Pj4+IHJr
-MzE4OC1yYWR4YXJvY2sKPj4+Pj4+IHJrMzAzNi1reWxpbgo+Pj4+Pj4KPj4+Pj4+IGJvdGggb24g
-aG9zdC1vbmx5IGR3YzIgY29udHJvbGxlcnMuCj4+Pj4+IHRoYW5rcywgZG9lcyBwYXRjaCAxICYg
-MiBhbHJlYWR5IGhhdmUgYSBuZWdhdGl2ZSBlZmZlY3Qgb24gdGhlc2UKPj4+Pj4gY29udHJvbGxl
-cnM/Cj4+Pj4gbm9wZSwgcGF0Y2hlcyAxKzIgYWxvbmUgYXJlIG9rIGFuZCBvbmx5IHRoZSBtc2xl
-ZXAoNTApIGdvaW5nIGF3YXkgY2F1c2VzCj4+Pj4gcHJvYmxlbXMuIEknbSBiYWNrIGhvbWUgbm93
-LCBzbyBJJ2xsIGhvcGVmdWxseSBoYXZlIHRpbWUgdG8gY2hlY2sKPj4+PiBob3N0LW9ubHkKPj4+
-PiB2cy4gb3RnIGR3YzIgY29udHJvbGxlcnMgdG9tb3Jyb3cgYXMgd2VsbC4KPj4+IE9rLCB0aGFu
-a3MgZm9yIHRlc3RpbmcgSGVpa28uCj4+Pgo+Pj4gR2l2ZW4gdGhhdCwgbGV0J3MgdHJ5IHRvIGZp
-eCB0aGlzIGluIHRoZSBuZXh0IC1yYyAob3IgYmVmb3JlKSBiZWNhdXNlCj4+PiBJIHRoaW5rIHRo
-ZSBSYXNwYmVycnkgUGkgbmVlZHMgdGhlIG90aGVyIHBhcnRzIG9mIHRoYXQgbGFzdCBwYXRjaC4g
-V2UKPj4+IGNhbiBqdXN0IHJldmVydCB0aGUgbXNsZWVwKDUwKSBpZiBuZWVkZWQuCj4+IEkgY291
-bGQgbmljZWx5IGNvbmZpcm0sIHRoYXQgb25seSB0aGUgaG9zdC1vbmx5IGNvbnRyb2xsZXIgc2Vl
-bXMgYWZmZWN0ZWQgYnkKPj4gdGhpcy4gU2FtZSBrZXJuZWwgaW1hZ2UgdGhhdCBmYWlscyBvbiB0
-aGUgaG9zdC1vbmx5IG9uZSB3aXRoIHRoZSAiY29ubmVjdC0KPj4gZGVib3VuY2UgZmFpbGVkIiBt
-ZXNzYWdlIHNlZW1zIHRvIHdvcmsgb25jZSBJIHN3aXRjaCB0aGF0IG92ZXIgdG8gdGhlICBvdGcK
-Pj4gY29udHJvbGxlciBhbmQgdGhlIHN5c3RlbSBjb21lcyB1cCBuaWNlbHkgYWdhaW4uCj4+Cj4+
-IFNvIGlmIHdlIGRvbid0IGZpbmQgdGhlIHJvb3QgY2F1c2UgaW4gdGhlIHNob3J0IHRlcm0sIG1h
-eWJlIHdlIGNvdWxkIGF0IGxlYXN0Cj4+IGxpbWl0IHRoZSBkZWxheSBmb3IgaG9zdC1vbmx5IHZh
-cmlhbnRzLCBsaWtlCj4+Cj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gODwgLS0tLS0tLS0tLS0t
-LS0tLS0tLQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMgYi9kcml2ZXJz
-L3VzYi9kd2MyL2NvcmUuYwo+PiBpbmRleCBmYTliMjZiLi40YzBmYTBiIDEwMDY0NAo+PiAtLS0g
-YS9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwo+PiArKysgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUu
-Ywo+PiBAQCAtNDYzLDkgKzQ2MywxOCBAQCBzdGF0aWMgdm9pZCBkd2MyX2NsZWFyX2ZvcmNlX21v
-ZGUoc3RydWN0IGR3YzJfaHNvdGcgKmhzb3RnKQo+PiAgICAqLwo+PiAgIHZvaWQgZHdjMl9mb3Jj
-ZV9kcl9tb2RlKHN0cnVjdCBkd2MyX2hzb3RnICpoc290ZykKPj4gICB7Cj4+ICsJYm9vbCByZXQ7
-Cj4+ICsKPj4gICAJc3dpdGNoIChoc290Zy0+ZHJfbW9kZSkgewo+PiAgIAljYXNlIFVTQl9EUl9N
-T0RFX0hPU1Q6Cj4+IC0JCWR3YzJfZm9yY2VfbW9kZShoc290ZywgdHJ1ZSk7Cj4+ICsJCXJldCA9
-IGR3YzJfZm9yY2VfbW9kZShoc290ZywgdHJ1ZSk7Cj4+ICsJCS8qCj4+ICsJCSAqIE5PVEU6IFRo
-aXMgaXMgcmVxdWlyZWQgZm9yIHNvbWUgcm9ja2NoaXAgc29jIGJhc2VkCj4+ICsJCSAqIHBsYXRm
-b3JtcyBvbiB0aGVpciBob3N0LW9ubHkgZHdjMi4KPj4gKwkJICovCj4+ICsJCWlmICghcmV0KQo+
-PiArCQkJbXNsZWVwKDUwKTsKPj4gKwo+PiAgIAkJYnJlYWs7Cj4+ICAgCWNhc2UgVVNCX0RSX01P
-REVfUEVSSVBIRVJBTDoKPj4gICAJCWR3YzJfZm9yY2VfbW9kZShoc290ZywgZmFsc2UpOwo+PiAt
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tIDg8IC0tLS0tLS0tLS0tLS0tLS0tLS0KPj4KPj4gSSd2ZSBi
-ZWVuIHJ1bm5pbmcgd2l0aCB0aGF0IGNoYW5nZSBmb3Igc29tZSB0aW1lIG5vdyBvbiBib3RoIHRo
-ZQo+PiByazMwMzYta3lsaW4gYW5kIHJrMzE4OC1yYWR4YXJvY2suIFBsdWdnZWQgYW5kIHVucGx1
-Z2dlZCBkaWZmZXJlbnQKPj4gY29tYmluYXRpb25zIG9mIHVzYi1kZXZpY2VzIG9uIHRoZSB1c2Ig
-b3RnIGFuZCBob3N0IHBvcnRzLCBzbyBmYXIKPj4gc2VlbXMgdG8gd29yay4KPj4KPiBPayBncmVh
-dC4gV2UnbGwgdXNlIHRoYXQgZm9yIHRoZSAtcmMgaWYgd2UgY2FuJ3QgZmluZCB0aGUgcm9vdCBj
-YXVzZS4KPgo+IFRoZW4gaG9wZWZ1bGx5IHdlIGNhbiBhcHBseSB0aGUgZmluYWwgZHJvcHBlZCBw
-YXRjaCBmb3IgNC4xMC4KCnVuZm9ydHVuYXRlbHkgaSBub3RpY2VkIHRvbyBsYXRlIHRoYXQgRmVs
-aXBlIGFuZCBHcmVnIGRpZG4ndCBnZXQgdGhlIAp3aG9sZSBjb252ZXJzYXRpb24uIFRoZSBzZXJp
-ZXMgdjUgaGFzIGJlZW4gbWVyZ2VkIGluIEdyZWcncyBVU0IgdHJlZS4KClN0ZWZhbgoKPgo+IFJl
-Z2FyZHMsCj4gSm9obgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+It was a bit surprising that the device was reported to have probed just
+fine, but the provider hadn't been registered.
+
+So handle any errors when registering the provider and fail the probe
+accordingly.
+
+Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: Caesar Wang <wxt@rock-chips.com>
+---
+ drivers/soc/rockchip/pm_domains.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 7acd1517dd37..57e920128cb2 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -627,7 +627,11 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+ 		goto err_out;
+ 	}
+ 
+-	of_genpd_add_provider_onecell(np, &pmu->genpd_data);
++	error = of_genpd_add_provider_onecell(np, &pmu->genpd_data);
++	if (error) {
++		dev_err(dev, "failed to add provider: %d\n", error);
++		goto err_out;
++	}
+ 
+ 	return 0;
+ 
+-- 
+2.7.4
