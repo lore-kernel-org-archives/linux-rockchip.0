@@ -1,90 +1,120 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell
-Date: Thu, 15 Sep 2016 16:39:34 +0200
-Message-ID: <14744126.0kYUlUJ0mc@diego>
-References: <1473936221-9248-1-git-send-email-tomeu.vizoso@collabora.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 3/3] usb: dwc2: Properly account for the force mode
+ delays
+Date: Thu, 15 Sep 2016 12:39:56 -0700
+Message-ID: <d87a9140-c39f-5287-6eac-b74759b3806f@synopsys.com>
+References: <cover.1473302184.git.johnyoun@synopsys.com>
+ <2928813.DT7ys6u6xZ@diego>
+ <97a3539d-7176-086f-71f9-371d8d4b016c@synopsys.com>
+ <6145714.tWcMvDakYx@diego>
+ <6b0c9143-63b3-c5c3-7122-bbbb0c9f610b@synopsys.com>
+ <ad02126f-6c0e-9216-f7ab-ec528eeda2e2@i2se.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473936221-9248-1-git-send-email-tomeu.vizoso@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <ad02126f-6c0e-9216-f7ab-ec528eeda2e2-eS4NqCHxEME@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg
+ Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 15. September 2016, 12:43:41 schrieb Tomeu Vizoso:
-> It was a bit surprising that the device was reported to have probed just
-> fine, but the provider hadn't been registered.
-> 
-> So handle any errors when registering the provider and fail the probe
-> accordingly.
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-> Cc: Caesar Wang <wxt@rock-chips.com>
-> ---
->  drivers/soc/rockchip/pm_domains.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/rockchip/pm_domains.c
-> b/drivers/soc/rockchip/pm_domains.c index 7acd1517dd37..57e920128cb2 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -627,7 +627,11 @@ static int rockchip_pm_domain_probe(struct
-> platform_device *pdev) goto err_out;
->  	}
-> 
-> -	of_genpd_add_provider_onecell(np, &pmu->genpd_data);
-> +	error = of_genpd_add_provider_onecell(np, &pmu->genpd_data);
-> +	if (error) {
-> +		dev_err(dev, "failed to add provider: %d\n", error);
-> +		goto err_out;
-> +	}
-> 
->  	return 0;
-
-Looks good in itself, but seems to trigger some issue in the genpd code
-when applied alone on top of linux-next-20160915. Looks like genpd
-is missing counter-initialization somewhere, as I'm seeing now:
-
-[    1.664744] genpd_poweroff_unused disabling (null)
-[    1.669553] ------------[ cut here ]------------
-[    1.674169] WARNING: CPU: 0 PID: 1 at ../kernel/workqueue.c:1440 __queue_work+0x2b8/0x3f8
-[    1.682337] Modules linked in:
-[    1.685401] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.8.0-rc6-next-20160915-00001-g7432710-dirty #5
-[    1.694608] Hardware name: Rockchip (Device Tree)
-[    1.699312] [<c0310388>] (unwind_backtrace) from [<c030ba04>] (show_stack+0x10/0x14)
-[    1.707050] [<c030ba04>] (show_stack) from [<c0599c90>] (dump_stack+0x90/0xa4)
-[    1.714267] [<c0599c90>] (dump_stack) from [<c0341bc0>] (__warn+0xe8/0x100)
-[    1.721221] [<c0341bc0>] (__warn) from [<c0341c88>] (warn_slowpath_null+0x20/0x28)
-[    1.728785] [<c0341c88>] (warn_slowpath_null) from [<c0355b28>] (__queue_work+0x2b8/0x3f8)
-[    1.737041] [<c0355b28>] (__queue_work) from [<c0355ca8>] (queue_work_on+0x40/0x4c)
-[    1.744692] [<c0355ca8>] (queue_work_on) from [<c103e8b8>] (genpd_poweroff_unused+0x78/0x9c)
-[    1.753123] [<c103e8b8>] (genpd_poweroff_unused) from [<c0301e78>] (do_one_initcall+0x40/0x170)
-[    1.761815] [<c0301e78>] (do_one_initcall) from [<c1000dc8>] (kernel_init_freeable+0x15c/0x1fc)
-[    1.770507] [<c1000dc8>] (kernel_init_freeable) from [<c0bb7ba0>] (kernel_init+0x8/0x114)
-[    1.778678] [<c0bb7ba0>] (kernel_init) from [<c0307df8>] (ret_from_fork+0x14/0x3c)
-[    1.786240] ---[ end trace b38c51ace1463add ]---
-[    1.790875] genpd_poweroff_unused disabling ������
-[    1.795856] genpd_poweroff_unused disabling ������
-[    1.800830] ------------[ cut here ]------------
-[    1.805443] WARNING: CPU: 0 PID: 1 at ../kernel/workqueue.c:1440 __queue_work+0x2b8/0x3f8
-[    1.813610] Modules linked in:
-[    1.816673] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W       4.8.0-rc6-next-20160915-00001-g7432710-dirty #5
-[    1.827094] Hardware name: Rockchip (Device Tree)
-[    1.831795] [<c0310388>] (unwind_backtrace) from [<c030ba04>] (show_stack+0x10/0x14)
-[    1.839532] [<c030ba04>] (show_stack) from [<c0599c90>] (dump_stack+0x90/0xa4)
-[    1.846747] [<c0599c90>] (dump_stack) from [<c0341bc0>] (__warn+0xe8/0x100)
-[    1.853700] [<c0341bc0>] (__warn) from [<c0341c88>] (warn_slowpath_null+0x20/0x28)
-[    1.861264] [<c0341c88>] (warn_slowpath_null) from [<c0355b28>] (__queue_work+0x2b8/0x3f8)
-[    1.869521] [<c0355b28>] (__queue_work) from [<c0355ca8>] (queue_work_on+0x40/0x4c)
-[    1.877170] [<c0355ca8>] (queue_work_on) from [<c103e8b8>] (genpd_poweroff_unused+0x78/0x9c)
-[    1.885600] [<c103e8b8>] (genpd_poweroff_unused) from [<c0301e78>] (do_one_initcall+0x40/0x170)
-[    1.894290] [<c0301e78>] (do_one_initcall) from [<c1000dc8>] (kernel_init_freeable+0x15c/0x1fc)
-[    1.902981] [<c1000dc8>] (kernel_init_freeable) from [<c0bb7ba0>] (kernel_init+0x8/0x114)
-[    1.911152] [<c0bb7ba0>] (kernel_init) from [<c0307df8>] (ret_from_fork+0x14/0x3c)
-[    1.918713] ---[ end trace b38c51ace1463ade ]---
-[    1.923338] genpd_poweroff_unused disabling ������
-[    1.928325] genpd_poweroff_unused disabling ������
-
-[+ millions more of those]
+T24gOS8xNS8yMDE2IDEyOjA4IEFNLCBTdGVmYW4gV2FocmVuIHdyb3RlOgo+IEhpIEpvaG4sCj4g
+Cj4gW2FkZCBGZWxpcGUgYW5kIEdyZWddCj4gCj4gQW0gMTQuMDkuMjAxNiB1bSAyMzoxMCBzY2hy
+aWViIEpvaG4gWW91bjoKPj4gT24gOS8xNC8yMDE2IDc6MDUgQU0sIEhlaWtvIFN0w7xibmVyIHdy
+b3RlOgo+Pj4gQW0gRGllbnN0YWcsIDEzLiBTZXB0ZW1iZXIgMjAxNiwgMTI6MDQ6MTIgc2Nocmll
+YiBKb2huIFlvdW46Cj4+Pj4gT24gOS8xMy8yMDE2IDExOjM5IEFNLCBIZWlrbyBTdMO8Ym5lciB3
+cm90ZToKPj4+Pj4gQW0gRGllbnN0YWcsIDEzLiBTZXB0ZW1iZXIgMjAxNiwgMjA6MDc6MjUgc2No
+cmllYiBTdGVmYW4gV2FocmVuOgo+Pj4+Pj4gSGkgSGVpa28sCj4+Pj4+Pgo+Pj4+Pj4+IEhlaWtv
+IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IGhhdCBhbSAxMi4gU2VwdGVtYmVyIDIwMTYgdW0g
+MTM6MDUKPj4+Pj4+PiBnZXNjaHJpZWJlbjoKPj4+Pj4+Pgo+Pj4+Pj4+Cj4+Pj4+Pj4gSGkgU3Rl
+ZmFuLAo+Pj4+Pj4+Cj4+Pj4+Pj4gQW0gTW9udGFnLCAxMi4gU2VwdGVtYmVyIDIwMTYsIDA3OjIw
+OjQ0IENFU1Qgc2NocmllYiBTdGVmYW4gV2FocmVuOgo+Pj4+Pj4+Pj4gSGVpa28gU3R1ZWJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4gaGF0IGFtIDExLiBTZXB0ZW1iZXIgMjAxNiB1bSAyMzoxOQo+Pj4+
+Pj4+Pj4gZ2VzY2hyaWViZW46Cj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gQW0gTWl0dHdvY2gsIDcuIFNl
+cHRlbWJlciAyMDE2LCAxOTozOTo0MyBDRVNUIHNjaHJpZWIgSm9obiBZb3VuOgo+Pj4+Pj4+Pj4+
+IFdoZW4gYSBmb3JjZSBtb2RlIGJpdCBpcyBzZXQgYW5kIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0
+ZXIgaXMKPj4+Pj4+Pj4+PiBlbmFibGVkLAo+Pj4+Pj4+Pj4+IHRoZXJlIGlzIGEgZGVsYXkgZm9y
+IHRoZSBmb3JjZWQgbW9kZSB0byB0YWtlIGVmZmVjdC4gVGhpcyBkZWxheSBpcwo+Pj4+Pj4+Pj4+
+IGR1ZQo+Pj4+Pj4+Pj4+IHRvIHRoZSBJRERJRyBkZWJvdW5jZSBmaWx0ZXIgYW5kIGlzIHZhcmlh
+YmxlIGRlcGVuZGluZyBvbiB0aGUKPj4+Pj4+Pj4+PiBwbGF0Zm9ybSdzCj4+Pj4+Pj4+Pj4gUEhZ
+IGNsb2NrIHNwZWVkLiBUbyBhY2NvdW50IGZvciB0aGlzIGRlbGF5IHdlIGNhbiBwb2xsIGZvciB0
+aGUKPj4+Pj4+Pj4+PiBleHBlY3RlZAo+Pj4+Pj4+Pj4+IG1vZGUuCj4+Pj4+Pj4+Pj4KPj4+Pj4+
+Pj4+PiBPbiBhIGNsZWFyIGZvcmNlIG1vZGUsIHNpbmNlIHdlIGRvbid0IGtub3cgd2hhdCBtb2Rl
+IHRvIHBvbGwgZm9yLAo+Pj4+Pj4+Pj4+IGRlbGF5Cj4+Pj4+Pj4+Pj4gZm9yIGEgZml4ZWQgMTAw
+IG1zLiBUaGlzIGlzIHRoZSBtYXhpbXVtIGRlbGF5IGJhc2VkIG9uIHRoZSBzbG93ZXN0Cj4+Pj4+
+Pj4+Pj4gUEhZCj4+Pj4+Pj4+Pj4gY2xvY2sgc3BlZWQuCj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+PiBU
+ZXN0ZWQtYnk6IFN0ZWZhbiBXYWhyZW4gPHN0ZWZhbi53YWhyZW5AaTJzZS5jb20+Cj4+Pj4+Pj4+
+Pj4gU2lnbmVkLW9mZi1ieTogSm9obiBZb3VuIDxqb2hueW91bkBzeW5vcHN5cy5jb20+Cj4+Pj4+
+Pj4+Pj4gLS0tCj4+Pj4+Pj4+PiBbLi4uXQo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+PiBAQCAtNDc1LDEy
+ICs0NzgsNiBAQCB2b2lkIGR3YzJfZm9yY2VfZHJfbW9kZShzdHJ1Y3QgZHdjMl9oc290Zwo+Pj4+
+Pj4+Pj4+ICpoc290ZykKPj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+ICAgCQkJIF9fZnVuY19fLCBoc290
+Zy0+ZHJfbW9kZSk7Cj4+Pj4+Pj4+Pj4gICAJCQo+Pj4+Pj4+Pj4+ICAgCQlicmVhazsKPj4+Pj4+
+Pj4+PiAgIAkKPj4+Pj4+Pj4+PiAgIAl9Cj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+PiAtCj4+Pj4+Pj4+
+Pj4gLQkvKgo+Pj4+Pj4+Pj4+IC0JICogTk9URTogVGhpcyBpcyByZXF1aXJlZCBmb3Igc29tZSBy
+b2NrY2hpcCBzb2MgYmFzZWQKPj4+Pj4+Pj4+PiAtCSAqIHBsYXRmb3Jtcy4KPj4+Pj4+Pj4+PiAt
+CSAqLwo+Pj4+Pj4+Pj4+IC0JbXNsZWVwKDUwKTsKPj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+ICAgfQo+
+Pj4+Pj4+Pj4gc29ycnkgZm9yIG5vdCBmaW5kaW5nIHRoZSB0aW1lIHRvIHRlc3QgeW91ciBzdWJz
+ZXF1ZW50IHZlcnNpb25zLCBidXQKPj4+Pj4+Pj4+IHRoaXMKPj4+Pj4+Pj4+IHN0aWxsCj4+Pj4+
+Pj4+PiBhY3RzIHVwIG9uIG15IFJvY2tjaGlwIGJvYXJkcywgYXMgSSdtIHN0aWxsIHJ1bm5pbmcg
+aW50byBlcnJvcnMgbGlrZQo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+IAlbICAgIDQuODc1NTcwXSB1c2Ig
+dXNiMi1wb3J0MTogY29ubmVjdC1kZWJvdW5jZSBmYWlsZWQKPj4+Pj4+Pj4gY291bGQgeW91IHBs
+ZWFzZSBuYW1lIHRoZSByZWxldmFudCBEVFMgZmlsZSBvZiB0aGUgYWZmZWN0ZWQgYm9hcmRzPwo+
+Pj4+Pj4+IFNvIGZhciBJJ3ZlIGJlZW4gYWJsZSB0byBzZWUgdGhhdCBvbgo+Pj4+Pj4+Cj4+Pj4+
+Pj4gcmszMTg4LXJhZHhhcm9jawo+Pj4+Pj4+IHJrMzAzNi1reWxpbgo+Pj4+Pj4+Cj4+Pj4+Pj4g
+Ym90aCBvbiBob3N0LW9ubHkgZHdjMiBjb250cm9sbGVycy4KPj4+Pj4+IHRoYW5rcywgZG9lcyBw
+YXRjaCAxICYgMiBhbHJlYWR5IGhhdmUgYSBuZWdhdGl2ZSBlZmZlY3Qgb24gdGhlc2UKPj4+Pj4+
+IGNvbnRyb2xsZXJzPwo+Pj4+PiBub3BlLCBwYXRjaGVzIDErMiBhbG9uZSBhcmUgb2sgYW5kIG9u
+bHkgdGhlIG1zbGVlcCg1MCkgZ29pbmcgYXdheSBjYXVzZXMKPj4+Pj4gcHJvYmxlbXMuIEknbSBi
+YWNrIGhvbWUgbm93LCBzbyBJJ2xsIGhvcGVmdWxseSBoYXZlIHRpbWUgdG8gY2hlY2sKPj4+Pj4g
+aG9zdC1vbmx5Cj4+Pj4+IHZzLiBvdGcgZHdjMiBjb250cm9sbGVycyB0b21vcnJvdyBhcyB3ZWxs
+Lgo+Pj4+IE9rLCB0aGFua3MgZm9yIHRlc3RpbmcgSGVpa28uCj4+Pj4KPj4+PiBHaXZlbiB0aGF0
+LCBsZXQncyB0cnkgdG8gZml4IHRoaXMgaW4gdGhlIG5leHQgLXJjIChvciBiZWZvcmUpIGJlY2F1
+c2UKPj4+PiBJIHRoaW5rIHRoZSBSYXNwYmVycnkgUGkgbmVlZHMgdGhlIG90aGVyIHBhcnRzIG9m
+IHRoYXQgbGFzdCBwYXRjaC4gV2UKPj4+PiBjYW4ganVzdCByZXZlcnQgdGhlIG1zbGVlcCg1MCkg
+aWYgbmVlZGVkLgo+Pj4gSSBjb3VsZCBuaWNlbHkgY29uZmlybSwgdGhhdCBvbmx5IHRoZSBob3N0
+LW9ubHkgY29udHJvbGxlciBzZWVtcyBhZmZlY3RlZCBieQo+Pj4gdGhpcy4gU2FtZSBrZXJuZWwg
+aW1hZ2UgdGhhdCBmYWlscyBvbiB0aGUgaG9zdC1vbmx5IG9uZSB3aXRoIHRoZSAiY29ubmVjdC0K
+Pj4+IGRlYm91bmNlIGZhaWxlZCIgbWVzc2FnZSBzZWVtcyB0byB3b3JrIG9uY2UgSSBzd2l0Y2gg
+dGhhdCBvdmVyIHRvIHRoZSAgb3RnCj4+PiBjb250cm9sbGVyIGFuZCB0aGUgc3lzdGVtIGNvbWVz
+IHVwIG5pY2VseSBhZ2Fpbi4KPj4+Cj4+PiBTbyBpZiB3ZSBkb24ndCBmaW5kIHRoZSByb290IGNh
+dXNlIGluIHRoZSBzaG9ydCB0ZXJtLCBtYXliZSB3ZSBjb3VsZCBhdCBsZWFzdAo+Pj4gbGltaXQg
+dGhlIGRlbGF5IGZvciBob3N0LW9ubHkgdmFyaWFudHMsIGxpa2UKPj4+Cj4+PiAtLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tIDg8IC0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL3VzYi9kd2MyL2NvcmUuYyBiL2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jCj4+PiBpbmRleCBm
+YTliMjZiLi40YzBmYTBiIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMK
+Pj4+ICsrKyBiL2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jCj4+PiBAQCAtNDYzLDkgKzQ2MywxOCBA
+QCBzdGF0aWMgdm9pZCBkd2MyX2NsZWFyX2ZvcmNlX21vZGUoc3RydWN0IGR3YzJfaHNvdGcgKmhz
+b3RnKQo+Pj4gICAgKi8KPj4+ICAgdm9pZCBkd2MyX2ZvcmNlX2RyX21vZGUoc3RydWN0IGR3YzJf
+aHNvdGcgKmhzb3RnKQo+Pj4gICB7Cj4+PiArCWJvb2wgcmV0Owo+Pj4gKwo+Pj4gICAJc3dpdGNo
+IChoc290Zy0+ZHJfbW9kZSkgewo+Pj4gICAJY2FzZSBVU0JfRFJfTU9ERV9IT1NUOgo+Pj4gLQkJ
+ZHdjMl9mb3JjZV9tb2RlKGhzb3RnLCB0cnVlKTsKPj4+ICsJCXJldCA9IGR3YzJfZm9yY2VfbW9k
+ZShoc290ZywgdHJ1ZSk7Cj4+PiArCQkvKgo+Pj4gKwkJICogTk9URTogVGhpcyBpcyByZXF1aXJl
+ZCBmb3Igc29tZSByb2NrY2hpcCBzb2MgYmFzZWQKPj4+ICsJCSAqIHBsYXRmb3JtcyBvbiB0aGVp
+ciBob3N0LW9ubHkgZHdjMi4KPj4+ICsJCSAqLwo+Pj4gKwkJaWYgKCFyZXQpCj4+PiArCQkJbXNs
+ZWVwKDUwKTsKPj4+ICsKPj4+ICAgCQlicmVhazsKPj4+ICAgCWNhc2UgVVNCX0RSX01PREVfUEVS
+SVBIRVJBTDoKPj4+ICAgCQlkd2MyX2ZvcmNlX21vZGUoaHNvdGcsIGZhbHNlKTsKPj4+IC0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0gODwgLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4KPj4+IEkndmUgYmVl
+biBydW5uaW5nIHdpdGggdGhhdCBjaGFuZ2UgZm9yIHNvbWUgdGltZSBub3cgb24gYm90aCB0aGUK
+Pj4+IHJrMzAzNi1reWxpbiBhbmQgcmszMTg4LXJhZHhhcm9jay4gUGx1Z2dlZCBhbmQgdW5wbHVn
+Z2VkIGRpZmZlcmVudAo+Pj4gY29tYmluYXRpb25zIG9mIHVzYi1kZXZpY2VzIG9uIHRoZSB1c2Ig
+b3RnIGFuZCBob3N0IHBvcnRzLCBzbyBmYXIKPj4+IHNlZW1zIHRvIHdvcmsuCj4+Pgo+PiBPayBn
+cmVhdC4gV2UnbGwgdXNlIHRoYXQgZm9yIHRoZSAtcmMgaWYgd2UgY2FuJ3QgZmluZCB0aGUgcm9v
+dCBjYXVzZS4KPj4KPj4gVGhlbiBob3BlZnVsbHkgd2UgY2FuIGFwcGx5IHRoZSBmaW5hbCBkcm9w
+cGVkIHBhdGNoIGZvciA0LjEwLgo+IAo+IHVuZm9ydHVuYXRlbHkgaSBub3RpY2VkIHRvbyBsYXRl
+IHRoYXQgRmVsaXBlIGFuZCBHcmVnIGRpZG4ndCBnZXQgdGhlIAo+IHdob2xlIGNvbnZlcnNhdGlv
+bi4gVGhlIHNlcmllcyB2NSBoYXMgYmVlbiBtZXJnZWQgaW4gR3JlZydzIFVTQiB0cmVlLgo+IAoK
+WWVhaCwgd2UnbGwgaGF2ZSB0byBmaXggaW4gLXJjLiBFaXRoZXIgcmV2ZXJ0IHRoZSBsYXN0IHBh
+dGNoIG9yIGFkZAp0aGUgbXNsZWVwLgoKUmVnYXJkcywKSm9obgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
