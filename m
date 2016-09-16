@@ -1,83 +1,57 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
  suspend
-Date: Fri, 16 Sep 2016 09:06:55 +0100
-Message-ID: <57DBA81F.2060404@arm.com>
+Date: Fri, 16 Sep 2016 10:10:33 +0200
+Message-ID: <dacd2461-8989-323d-d2ad-b20d10c9282b@linaro.org>
 References: <20160916054917.16930-1-briannorris@chromium.org>
+ <57DBA81F.2060404@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160916054917.16930-1-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <57DBA81F.2060404-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
-
-On 16/09/16 06:49, Brian Norris wrote:
-> Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
-> for suspend timekeeping"), this driver assumes that the ARM architected
-> timer keeps running in suspend. This is not the case for some ARM SoCs,
-> depending on the HW state used for system suspend. Let's not assume that
-> all SoCs support this, and instead only support this if the device tree
-> explicitly tells us it's "always on". In all other cases, just fall back
-> to the RTC. This should be relatively harmless.
-
-I'm afraid you're confusing two things:
-- the counter, which *must* carry on counting no matter what, as
-(quoting the ARM ARM) "The system counter must be implemented in an
-always-on power domain"
-- the timer, which is allowed to be powered off, and can be tagged with
-the "always-on" property to indicate that it is guaranteed to stay up
-(which in practice only exists in virtual machines and never on real HW).
-
-If your counter does stop counting when suspended, then this is starting
-to either feel like a HW bug, or someone is killing the clock that feeds
-this counter when entering suspend.
-
-If this is the former, then we need a separate quirk to indicate the
-non-standard behaviour. If it is the latter, don't do it! ;-)
-
-> 
-> It seems fair to key the system-suspend behavior off the same property
-> used for C3STOP, since if the timer doesn't keep context for CPU sleep,
-> it likely doesn't for system sleep either.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->  drivers/clocksource/arm_arch_timer.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clocksource/arm_arch_timer.c b/drivers/clocksource/arm_arch_timer.c
-> index 57700541f951..e28677a34f02 100644
-> --- a/drivers/clocksource/arm_arch_timer.c
-> +++ b/drivers/clocksource/arm_arch_timer.c
-> @@ -490,7 +490,7 @@ static struct clocksource clocksource_counter = {
->  	.rating	= 400,
->  	.read	= arch_counter_read,
->  	.mask	= CLOCKSOURCE_MASK(56),
-> -	.flags	= CLOCK_SOURCE_IS_CONTINUOUS | CLOCK_SOURCE_SUSPEND_NONSTOP,
-> +	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
->  };
->  
->  static struct cyclecounter cyclecounter = {
-> @@ -526,6 +526,8 @@ static void __init arch_counter_register(unsigned type)
->  		clocksource_counter.name = "arch_mem_counter";
->  	}
->  
-> +	if (!arch_timer_c3stop)
-> +		clocksource_counter.flags |= CLOCK_SOURCE_SUSPEND_NONSTOP;
->  	start_count = arch_timer_read_counter();
->  	clocksource_register_hz(&clocksource_counter, arch_timer_rate);
->  	cyclecounter.mult = clocksource_counter.mult;
-> 
-
-Given the above, I don't think this patch is acceptable.
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny...
+T24gMTYvMDkvMjAxNiAxMDowNiwgTWFyYyBaeW5naWVyIHdyb3RlOgo+IEhpIEJyaWFuLAo+IAo+
+IE9uIDE2LzA5LzE2IDA2OjQ5LCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4+IFNpbmNlIGNvbW1pdCA0
+ZmJjZGM4MTNmYjkgKCJjbG9ja3NvdXJjZTogYXJtX2FyY2hfdGltZXI6IFVzZSBjbG9ja3NvdXJj
+ZQo+PiBmb3Igc3VzcGVuZCB0aW1la2VlcGluZyIpLCB0aGlzIGRyaXZlciBhc3N1bWVzIHRoYXQg
+dGhlIEFSTSBhcmNoaXRlY3RlZAo+PiB0aW1lciBrZWVwcyBydW5uaW5nIGluIHN1c3BlbmQuIFRo
+aXMgaXMgbm90IHRoZSBjYXNlIGZvciBzb21lIEFSTSBTb0NzLAo+PiBkZXBlbmRpbmcgb24gdGhl
+IEhXIHN0YXRlIHVzZWQgZm9yIHN5c3RlbSBzdXNwZW5kLiBMZXQncyBub3QgYXNzdW1lIHRoYXQK
+Pj4gYWxsIFNvQ3Mgc3VwcG9ydCB0aGlzLCBhbmQgaW5zdGVhZCBvbmx5IHN1cHBvcnQgdGhpcyBp
+ZiB0aGUgZGV2aWNlIHRyZWUKPj4gZXhwbGljaXRseSB0ZWxscyB1cyBpdCdzICJhbHdheXMgb24i
+LiBJbiBhbGwgb3RoZXIgY2FzZXMsIGp1c3QgZmFsbCBiYWNrCj4+IHRvIHRoZSBSVEMuIFRoaXMg
+c2hvdWxkIGJlIHJlbGF0aXZlbHkgaGFybWxlc3MuCj4gCj4gSSdtIGFmcmFpZCB5b3UncmUgY29u
+ZnVzaW5nIHR3byB0aGluZ3M6Cj4gLSB0aGUgY291bnRlciwgd2hpY2ggKm11c3QqIGNhcnJ5IG9u
+IGNvdW50aW5nIG5vIG1hdHRlciB3aGF0LCBhcwo+IChxdW90aW5nIHRoZSBBUk0gQVJNKSAiVGhl
+IHN5c3RlbSBjb3VudGVyIG11c3QgYmUgaW1wbGVtZW50ZWQgaW4gYW4KPiBhbHdheXMtb24gcG93
+ZXIgZG9tYWluIgo+IC0gdGhlIHRpbWVyLCB3aGljaCBpcyBhbGxvd2VkIHRvIGJlIHBvd2VyZWQg
+b2ZmLCBhbmQgY2FuIGJlIHRhZ2dlZCB3aXRoCj4gdGhlICJhbHdheXMtb24iIHByb3BlcnR5IHRv
+IGluZGljYXRlIHRoYXQgaXQgaXMgZ3VhcmFudGVlZCB0byBzdGF5IHVwCj4gKHdoaWNoIGluIHBy
+YWN0aWNlIG9ubHkgZXhpc3RzIGluIHZpcnR1YWwgbWFjaGluZXMgYW5kIG5ldmVyIG9uIHJlYWwg
+SFcpLgo+IAo+IElmIHlvdXIgY291bnRlciBkb2VzIHN0b3AgY291bnRpbmcgd2hlbiBzdXNwZW5k
+ZWQsIHRoZW4gdGhpcyBpcyBzdGFydGluZwo+IHRvIGVpdGhlciBmZWVsIGxpa2UgYSBIVyBidWcs
+IG9yIHNvbWVvbmUgaXMga2lsbGluZyB0aGUgY2xvY2sgdGhhdCBmZWVkcwo+IHRoaXMgY291bnRl
+ciB3aGVuIGVudGVyaW5nIHN1c3BlbmQuCj4gCj4gSWYgdGhpcyBpcyB0aGUgZm9ybWVyLCB0aGVu
+IHdlIG5lZWQgYSBzZXBhcmF0ZSBxdWlyayB0byBpbmRpY2F0ZSB0aGUKPiBub24tc3RhbmRhcmQg
+YmVoYXZpb3VyLiBJZiBpdCBpcyB0aGUgbGF0dGVyLCBkb24ndCBkbyBpdCEgOy0pCgorMQoKICAt
+LSBEYW5pZWwKCgogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4g
+c291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3
+LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNv
+bS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1i
+bG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
