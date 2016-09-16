@@ -1,51 +1,123 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in suspend
-Date: Fri, 16 Sep 2016 13:49:17 +0800
-Message-ID: <20160916054917.16930-1-briannorris@chromium.org>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH] soc: rockchip: power-domain: Handle errors from
+ of_genpd_add_provider_onecell
+Date: Fri, 16 Sep 2016 07:59:02 +0200
+Message-ID: <4f94a0bf-921c-cacb-a035-8111a969d156@collabora.com>
+References: <1473936221-9248-1-git-send-email-tomeu.vizoso@collabora.com>
+ <14744126.0kYUlUJ0mc@diego> <6250295.kzQYkblnJM@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6250295.kzQYkblnJM@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
-for suspend timekeeping"), this driver assumes that the ARM architected
-timer keeps running in suspend. This is not the case for some ARM SoCs,
-depending on the HW state used for system suspend. Let's not assume that
-all SoCs support this, and instead only support this if the device tree
-explicitly tells us it's "always on". In all other cases, just fall back
-to the RTC. This should be relatively harmless.
+On 09/16/2016 12:31 AM, Heiko Stübner wrote:
+> Am Donnerstag, 15. September 2016, 16:39:34 schrieb Heiko Stübner:
+>> Am Donnerstag, 15. September 2016, 12:43:41 schrieb Tomeu Vizoso:
+>>> It was a bit surprising that the device was reported to have probed just
+>>> fine, but the provider hadn't been registered.
+>>>
+>>> So handle any errors when registering the provider and fail the probe
+>>> accordingly.
+>>>
+>>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+>>> Cc: Caesar Wang <wxt@rock-chips.com>
+>>> ---
+>>>
+>>>  drivers/soc/rockchip/pm_domains.c | 6 +++++-
+>>>  1 file changed, 5 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/soc/rockchip/pm_domains.c
+>>> b/drivers/soc/rockchip/pm_domains.c index 7acd1517dd37..57e920128cb2
+>>> 100644
+>>> --- a/drivers/soc/rockchip/pm_domains.c
+>>> +++ b/drivers/soc/rockchip/pm_domains.c
+>>> @@ -627,7 +627,11 @@ static int rockchip_pm_domain_probe(struct
+>>> platform_device *pdev) goto err_out;
+>>>
+>>>  	}
+>>>
+>>> -	of_genpd_add_provider_onecell(np, &pmu->genpd_data);
+>>> +	error = of_genpd_add_provider_onecell(np, &pmu->genpd_data);
+>>> +	if (error) {
+>>> +		dev_err(dev, "failed to add provider: %d\n", error);
+>>> +		goto err_out;
+>>> +	}
+>>>
+>>>  	return 0;
+>>
+>> Looks good in itself, but seems to trigger some issue in the genpd code
+>> when applied alone on top of linux-next-20160915. Looks like genpd
+>> is missing counter-initialization somewhere, as I'm seeing now:
+>>
+>> [    1.664744] genpd_poweroff_unused disabling (null)
+>> [    1.669553] ------------[ cut here ]------------
+>> [    1.674169] WARNING: CPU: 0 PID: 1 at ../kernel/workqueue.c:1440
+>> __queue_work+0x2b8/0x3f8 [    1.682337] Modules linked in:
+>> [    1.685401] CPU: 0 PID: 1 Comm: swapper/0 Not tainted
+>> 4.8.0-rc6-next-20160915-00001-g7432710-dirty #5 [    1.694608] Hardware
+>> name: Rockchip (Device Tree)
+>> [    1.699312] [<c0310388>] (unwind_backtrace) from [<c030ba04>]
+>> (show_stack+0x10/0x14) [    1.707050] [<c030ba04>] (show_stack) from
+>> [<c0599c90>] (dump_stack+0x90/0xa4) [    1.714267] [<c0599c90>]
+>> (dump_stack) from [<c0341bc0>] (__warn+0xe8/0x100) [    1.721221]
+>> [<c0341bc0>] (__warn) from [<c0341c88>] (warn_slowpath_null+0x20/0x28) [   
+>> 1.728785] [<c0341c88>] (warn_slowpath_null) from [<c0355b28>]
+>> (__queue_work+0x2b8/0x3f8) [    1.737041] [<c0355b28>] (__queue_work) from
+>> [<c0355ca8>] (queue_work_on+0x40/0x4c) [    1.744692] [<c0355ca8>]
+>> (queue_work_on) from [<c103e8b8>] (genpd_poweroff_unused+0x78/0x9c) [   
+>> 1.753123] [<c103e8b8>] (genpd_poweroff_unused) from [<c0301e78>]
+>> (do_one_initcall+0x40/0x170) [    1.761815] [<c0301e78>] (do_one_initcall)
+>> from [<c1000dc8>] (kernel_init_freeable+0x15c/0x1fc) [    1.770507]
+>> [<c1000dc8>] (kernel_init_freeable) from [<c0bb7ba0>]
+>> (kernel_init+0x8/0x114) [    1.778678] [<c0bb7ba0>] (kernel_init) from
+>> [<c0307df8>] (ret_from_fork+0x14/0x3c) [    1.786240] ---[ end trace
+>> b38c51ace1463add ]---
+>> [    1.790875] genpd_poweroff_unused disabling ������
+>> [    1.795856] genpd_poweroff_unused disabling ������
+>> [    1.800830] ------------[ cut here ]------------
+>> [    1.805443] WARNING: CPU: 0 PID: 1 at ../kernel/workqueue.c:1440
+>> __queue_work+0x2b8/0x3f8 [    1.813610] Modules linked in:
+>> [    1.816673] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W      
+>> 4.8.0-rc6-next-20160915-00001-g7432710-dirty #5 [    1.827094] Hardware
+>> name: Rockchip (Device Tree)
+>> [    1.831795] [<c0310388>] (unwind_backtrace) from [<c030ba04>]
+>> (show_stack+0x10/0x14) [    1.839532] [<c030ba04>] (show_stack) from
+>> [<c0599c90>] (dump_stack+0x90/0xa4) [    1.846747] [<c0599c90>]
+>> (dump_stack) from [<c0341bc0>] (__warn+0xe8/0x100) [    1.853700]
+>> [<c0341bc0>] (__warn) from [<c0341c88>] (warn_slowpath_null+0x20/0x28) [   
+>> 1.861264] [<c0341c88>] (warn_slowpath_null) from [<c0355b28>]
+>> (__queue_work+0x2b8/0x3f8) [    1.869521] [<c0355b28>] (__queue_work) from
+>> [<c0355ca8>] (queue_work_on+0x40/0x4c) [    1.877170] [<c0355ca8>]
+>> (queue_work_on) from [<c103e8b8>] (genpd_poweroff_unused+0x78/0x9c) [   
+>> 1.885600] [<c103e8b8>] (genpd_poweroff_unused) from [<c0301e78>]
+>> (do_one_initcall+0x40/0x170) [    1.894290] [<c0301e78>] (do_one_initcall)
+>> from [<c1000dc8>] (kernel_init_freeable+0x15c/0x1fc) [    1.902981]
+>> [<c1000dc8>] (kernel_init_freeable) from [<c0bb7ba0>]
+>> (kernel_init+0x8/0x114) [    1.911152] [<c0bb7ba0>] (kernel_init) from
+>> [<c0307df8>] (ret_from_fork+0x14/0x3c) [    1.918713] ---[ end trace
+>> b38c51ace1463ade ]---
+>> [    1.923338] genpd_poweroff_unused disabling ������
+>> [    1.928325] genpd_poweroff_unused disabling ������
+>>
+>> [+ millions more of those]
+> 
+> just for completenes sake, I've included your patch in a series of my
+> own [0] which adds the necessary  pm_genpd_remove prequisite to prevent
+> the errors shown above.
 
-It seems fair to key the system-suspend behavior off the same property
-used for C3STOP, since if the timer doesn't keep context for CPU sleep,
-it likely doesn't for system sleep either.
+That's awesome, thanks. For some reason I hadn't noticed those.
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
- drivers/clocksource/arm_arch_timer.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Regards,
 
-diff --git a/drivers/clocksource/arm_arch_timer.c b/drivers/clocksource/arm_arch_timer.c
-index 57700541f951..e28677a34f02 100644
---- a/drivers/clocksource/arm_arch_timer.c
-+++ b/drivers/clocksource/arm_arch_timer.c
-@@ -490,7 +490,7 @@ static struct clocksource clocksource_counter = {
- 	.rating	= 400,
- 	.read	= arch_counter_read,
- 	.mask	= CLOCKSOURCE_MASK(56),
--	.flags	= CLOCK_SOURCE_IS_CONTINUOUS | CLOCK_SOURCE_SUSPEND_NONSTOP,
-+	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
- };
- 
- static struct cyclecounter cyclecounter = {
-@@ -526,6 +526,8 @@ static void __init arch_counter_register(unsigned type)
- 		clocksource_counter.name = "arch_mem_counter";
- 	}
- 
-+	if (!arch_timer_c3stop)
-+		clocksource_counter.flags |= CLOCK_SOURCE_SUSPEND_NONSTOP;
- 	start_count = arch_timer_read_counter();
- 	clocksource_register_hz(&clocksource_counter, arch_timer_rate);
- 	cyclecounter.mult = clocksource_counter.mult;
--- 
-2.8.1.340.g018a5d0.dirty
+Tomeu
+
+> 
+> Heiko
+> 
+> [0] "[PATCH 0/2] soc: rockchip: fix probe error path in power-domain driver"
+> 
