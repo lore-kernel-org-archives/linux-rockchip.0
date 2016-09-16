@@ -1,61 +1,43 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH] drm/rockchip: Respect page offset for PRIME mmap calls
-Date: Fri, 16 Sep 2016 18:17:22 +0900
-Message-ID: <1474017442-7262-1-git-send-email-tfiga@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] Documentation: mmc: sdhci-of-arasan: add
+ description of power domain
+Date: Fri, 16 Sep 2016 10:25:35 -0500
+Message-ID: <20160916152535.GA6020@rob-hp-laptop>
+References: <20160908064905.18080-1-xzy.xu@rock-chips.com>
+ <20160908064905.18080-2-xzy.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Tomasz Figa <tfiga@chromium.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20160908064905.18080-2-xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Ørjan Eide <orjan.eide@arm.com>
+On Thu, Sep 08, 2016 at 02:49:04PM +0800, Ziyuan Xu wrote:
+> Add power domain as a optional property for sdhci-of-arasan, which can
+> be truned off in the so-called unused condition, such as suspend and
 
-When mapping external DMA-bufs through the PRIME mmap call, we might be
-given an offset which has to be respected. However for the internal DRM
-GEM mmap path, we have to ignore the fake mmap offset used to identify
-the buffer only. Currently the code always zeroes out vma->vm_pgoff,
-which breaks the former.
+s/truned/turned/
 
-This patch fixes the problem by moving the vm_pgoff assignment to a
-function that is used only for GEM mmap path, so that the PRIME path
-retains the original offset.
+> remove. Aim to lower power requirements.
+> 
+> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v2:
+> - fix a typo
+> - add an example code for power-domain
+> 
+>  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 
-Fixes: a8594f2 ("drm/rockchip: unset pgoff when mmap'ing gems")
+With that,
 
-Signed-off-by: Ørjan Eide <orjan.eide@arm.com>
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Cc: stable@vger.kernel.org
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index b70f942..cab4d60 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -64,7 +64,6 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
- 	 */
- 	vma->vm_flags &= ~VM_PFNMAP;
--	vma->vm_pgoff = 0;
- 
- 	ret = dma_mmap_attrs(drm->dev, vma, rk_obj->kvaddr, rk_obj->dma_addr,
- 			     obj->size, rk_obj->dma_attrs);
-@@ -96,6 +95,12 @@ int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma)
- 	if (ret)
- 		return ret;
- 
-+	/*
-+	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
-+	 * whole buffer from the start.
-+	 */
-+	vma->vm_pgoff = 0;
-+
- 	obj = vma->vm_private_data;
- 
- 	return rockchip_drm_gem_object_mmap(obj, vma);
--- 
-2.8.0.rc3.226.g39d4020
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
