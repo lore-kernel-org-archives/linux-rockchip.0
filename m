@@ -1,43 +1,81 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] Documentation: mmc: sdhci-of-arasan: add
- description of power domain
-Date: Fri, 16 Sep 2016 10:25:35 -0500
-Message-ID: <20160916152535.GA6020@rob-hp-laptop>
-References: <20160908064905.18080-1-xzy.xu@rock-chips.com>
- <20160908064905.18080-2-xzy.xu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160908064905.18080-2-xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Support headset button function on rk3399" to the asoc tree
+Date: Fri, 16 Sep 2016 18:39:41 +0100
+Message-ID: <E1bkx6z-0003yX-Rd@debutante>
+References: <1473981006-20542-1-git-send-email-cychiang@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473981006-20542-1-git-send-email-cychiang@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Sep 08, 2016 at 02:49:04PM +0800, Ziyuan Xu wrote:
-> Add power domain as a optional property for sdhci-of-arasan, which can
-> be truned off in the so-called unused condition, such as suspend and
+The patch
 
-s/truned/turned/
+   ASoC: rockchip: Support headset button function on rk3399
 
-> remove. Aim to lower power requirements.
-> 
-> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v2:
-> - fix a typo
-> - add an example code for power-domain
-> 
->  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+has been applied to the asoc tree at
 
-With that,
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 22b93eaf55edfd2f1fe9d1fc0d7338f582f12745 Mon Sep 17 00:00:00 2001
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Date: Fri, 16 Sep 2016 07:10:06 +0800
+Subject: [PATCH] ASoC: rockchip: Support headset button function on rk3399
+
+Set the mapping between button and media key event.
+
+Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rk3399_gru_sound.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 164b6da4f2cf..ee0648927afc 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -23,6 +23,7 @@
+ #include <linux/of_gpio.h>
+ #include <linux/delay.h>
+ #include <linux/spi/spi.h>
++#include <linux/input.h>
+ #include <sound/core.h>
+ #include <sound/jack.h>
+ #include <sound/pcm.h>
+@@ -209,6 +210,14 @@ static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
+ 		return ret;
+ 	}
+ 
++	snd_jack_set_key(rockchip_sound_jack.jack, SND_JACK_BTN_0, KEY_MEDIA);
++	snd_jack_set_key(
++		rockchip_sound_jack.jack, SND_JACK_BTN_1, KEY_VOLUMEUP);
++	snd_jack_set_key(
++		rockchip_sound_jack.jack, SND_JACK_BTN_2, KEY_VOLUMEDOWN);
++	snd_jack_set_key(
++		rockchip_sound_jack.jack, SND_JACK_BTN_3, KEY_VOICECOMMAND);
++
+ 	da7219_aad_jack_det(codec, &rockchip_sound_jack);
+ 
+ 	return 0;
+-- 
+2.8.1
