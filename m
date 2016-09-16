@@ -1,57 +1,61 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Fri, 16 Sep 2016 10:10:33 +0200
-Message-ID: <dacd2461-8989-323d-d2ad-b20d10c9282b@linaro.org>
-References: <20160916054917.16930-1-briannorris@chromium.org>
- <57DBA81F.2060404@arm.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH] drm/rockchip: Respect page offset for PRIME mmap calls
+Date: Fri, 16 Sep 2016 18:17:22 +0900
+Message-ID: <1474017442-7262-1-git-send-email-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <57DBA81F.2060404-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTYvMDkvMjAxNiAxMDowNiwgTWFyYyBaeW5naWVyIHdyb3RlOgo+IEhpIEJyaWFuLAo+IAo+
-IE9uIDE2LzA5LzE2IDA2OjQ5LCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4+IFNpbmNlIGNvbW1pdCA0
-ZmJjZGM4MTNmYjkgKCJjbG9ja3NvdXJjZTogYXJtX2FyY2hfdGltZXI6IFVzZSBjbG9ja3NvdXJj
-ZQo+PiBmb3Igc3VzcGVuZCB0aW1la2VlcGluZyIpLCB0aGlzIGRyaXZlciBhc3N1bWVzIHRoYXQg
-dGhlIEFSTSBhcmNoaXRlY3RlZAo+PiB0aW1lciBrZWVwcyBydW5uaW5nIGluIHN1c3BlbmQuIFRo
-aXMgaXMgbm90IHRoZSBjYXNlIGZvciBzb21lIEFSTSBTb0NzLAo+PiBkZXBlbmRpbmcgb24gdGhl
-IEhXIHN0YXRlIHVzZWQgZm9yIHN5c3RlbSBzdXNwZW5kLiBMZXQncyBub3QgYXNzdW1lIHRoYXQK
-Pj4gYWxsIFNvQ3Mgc3VwcG9ydCB0aGlzLCBhbmQgaW5zdGVhZCBvbmx5IHN1cHBvcnQgdGhpcyBp
-ZiB0aGUgZGV2aWNlIHRyZWUKPj4gZXhwbGljaXRseSB0ZWxscyB1cyBpdCdzICJhbHdheXMgb24i
-LiBJbiBhbGwgb3RoZXIgY2FzZXMsIGp1c3QgZmFsbCBiYWNrCj4+IHRvIHRoZSBSVEMuIFRoaXMg
-c2hvdWxkIGJlIHJlbGF0aXZlbHkgaGFybWxlc3MuCj4gCj4gSSdtIGFmcmFpZCB5b3UncmUgY29u
-ZnVzaW5nIHR3byB0aGluZ3M6Cj4gLSB0aGUgY291bnRlciwgd2hpY2ggKm11c3QqIGNhcnJ5IG9u
-IGNvdW50aW5nIG5vIG1hdHRlciB3aGF0LCBhcwo+IChxdW90aW5nIHRoZSBBUk0gQVJNKSAiVGhl
-IHN5c3RlbSBjb3VudGVyIG11c3QgYmUgaW1wbGVtZW50ZWQgaW4gYW4KPiBhbHdheXMtb24gcG93
-ZXIgZG9tYWluIgo+IC0gdGhlIHRpbWVyLCB3aGljaCBpcyBhbGxvd2VkIHRvIGJlIHBvd2VyZWQg
-b2ZmLCBhbmQgY2FuIGJlIHRhZ2dlZCB3aXRoCj4gdGhlICJhbHdheXMtb24iIHByb3BlcnR5IHRv
-IGluZGljYXRlIHRoYXQgaXQgaXMgZ3VhcmFudGVlZCB0byBzdGF5IHVwCj4gKHdoaWNoIGluIHBy
-YWN0aWNlIG9ubHkgZXhpc3RzIGluIHZpcnR1YWwgbWFjaGluZXMgYW5kIG5ldmVyIG9uIHJlYWwg
-SFcpLgo+IAo+IElmIHlvdXIgY291bnRlciBkb2VzIHN0b3AgY291bnRpbmcgd2hlbiBzdXNwZW5k
-ZWQsIHRoZW4gdGhpcyBpcyBzdGFydGluZwo+IHRvIGVpdGhlciBmZWVsIGxpa2UgYSBIVyBidWcs
-IG9yIHNvbWVvbmUgaXMga2lsbGluZyB0aGUgY2xvY2sgdGhhdCBmZWVkcwo+IHRoaXMgY291bnRl
-ciB3aGVuIGVudGVyaW5nIHN1c3BlbmQuCj4gCj4gSWYgdGhpcyBpcyB0aGUgZm9ybWVyLCB0aGVu
-IHdlIG5lZWQgYSBzZXBhcmF0ZSBxdWlyayB0byBpbmRpY2F0ZSB0aGUKPiBub24tc3RhbmRhcmQg
-YmVoYXZpb3VyLiBJZiBpdCBpcyB0aGUgbGF0dGVyLCBkb24ndCBkbyBpdCEgOy0pCgorMQoKICAt
-LSBEYW5pZWwKCgogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4g
-c291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3
-LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNv
-bS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1i
-bG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+From: Ørjan Eide <orjan.eide@arm.com>
+
+When mapping external DMA-bufs through the PRIME mmap call, we might be
+given an offset which has to be respected. However for the internal DRM
+GEM mmap path, we have to ignore the fake mmap offset used to identify
+the buffer only. Currently the code always zeroes out vma->vm_pgoff,
+which breaks the former.
+
+This patch fixes the problem by moving the vm_pgoff assignment to a
+function that is used only for GEM mmap path, so that the PRIME path
+retains the original offset.
+
+Fixes: a8594f2 ("drm/rockchip: unset pgoff when mmap'ing gems")
+
+Signed-off-by: Ørjan Eide <orjan.eide@arm.com>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Cc: stable@vger.kernel.org
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index b70f942..cab4d60 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -64,7 +64,6 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
+ 	 */
+ 	vma->vm_flags &= ~VM_PFNMAP;
+-	vma->vm_pgoff = 0;
+ 
+ 	ret = dma_mmap_attrs(drm->dev, vma, rk_obj->kvaddr, rk_obj->dma_addr,
+ 			     obj->size, rk_obj->dma_attrs);
+@@ -96,6 +95,12 @@ int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+ 	if (ret)
+ 		return ret;
+ 
++	/*
++	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
++	 * whole buffer from the start.
++	 */
++	vma->vm_pgoff = 0;
++
+ 	obj = vma->vm_private_data;
+ 
+ 	return rockchip_drm_gem_object_mmap(obj, vma);
+-- 
+2.8.0.rc3.226.g39d4020
