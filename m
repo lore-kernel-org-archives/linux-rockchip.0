@@ -1,81 +1,41 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: Support headset button function on rk3399" to the asoc tree
-Date: Fri, 16 Sep 2016 18:39:41 +0100
-Message-ID: <E1bkx6z-0003yX-Rd@debutante>
-References: <1473981006-20542-1-git-send-email-cychiang@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473981006-20542-1-git-send-email-cychiang@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Cheng-Yi Chiang <cychiang@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH] drm/rockchip: Balance irq refcount on failure
+Date: Fri, 16 Sep 2016 14:22:03 -0400
+Message-ID: <1474050123-29897-1-git-send-email-seanpaul@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: mark.yao@rock-chips.com, heiko@sntech.de, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
-
-   ASoC: rockchip: Support headset button function on rk3399
-
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 22b93eaf55edfd2f1fe9d1fc0d7338f582f12745 Mon Sep 17 00:00:00 2001
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Date: Fri, 16 Sep 2016 07:10:06 +0800
-Subject: [PATCH] ASoC: rockchip: Support headset button function on rk3399
-
-Set the mapping between button and media key event.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 164b6da4f2cf..ee0648927afc 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -23,6 +23,7 @@
- #include <linux/of_gpio.h>
- #include <linux/delay.h>
- #include <linux/spi/spi.h>
-+#include <linux/input.h>
- #include <sound/core.h>
- #include <sound/jack.h>
- #include <sound/pcm.h>
-@@ -209,6 +210,14 @@ static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
- 		return ret;
- 	}
- 
-+	snd_jack_set_key(rockchip_sound_jack.jack, SND_JACK_BTN_0, KEY_MEDIA);
-+	snd_jack_set_key(
-+		rockchip_sound_jack.jack, SND_JACK_BTN_1, KEY_VOLUMEUP);
-+	snd_jack_set_key(
-+		rockchip_sound_jack.jack, SND_JACK_BTN_2, KEY_VOLUMEDOWN);
-+	snd_jack_set_key(
-+		rockchip_sound_jack.jack, SND_JACK_BTN_3, KEY_VOICECOMMAND);
-+
- 	da7219_aad_jack_det(codec, &rockchip_sound_jack);
- 
- 	return 0;
--- 
-2.8.1
+SWYgY3JlYXRlX2NydGMgZmFpbHMgaW4gdm9wIGJpbmQsIGVuc3VyZSB0aGUgaXJxIHJlZmNvdW50
+IGlzIHplcm9lZApiYWNrIG91dCBiZWZvcmUgZXhpdGluZy4KClNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA2ICsrKysrLQogMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0
+aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jCmluZGV4IDU3NjUwYzkuLjEzMWFlMGYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTU1MSwxMSArMTU1MSwxNSBAQCBzdGF0
+aWMgaW50IHZvcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
+LCB2b2lkICpkYXRhKQogCiAJcmV0ID0gdm9wX2NyZWF0ZV9jcnRjKHZvcCk7CiAJaWYgKHJldCkK
+LQkJcmV0dXJuIHJldDsKKwkJZ290byBlcnJfZW5hYmxlX2lycTsKIAogCXBtX3J1bnRpbWVfZW5h
+YmxlKCZwZGV2LT5kZXYpOwogCiAJcmV0dXJuIDA7CisKK2Vycl9lbmFibGVfaXJxOgorCWVuYWJs
+ZV9pcnEodm9wLT5pcnEpOyAvKiBUbyBiYWxhbmNlIG91dCB0aGUgZGlzYWJsZV9pcnEgYWJvdmUg
+Ki8KKwlyZXR1cm4gcmV0OwogfQogCiBzdGF0aWMgdm9pZCB2b3BfdW5iaW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQotLSAKMi44LjAucmMz
+LjIyNi5nMzlkNDAyMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
