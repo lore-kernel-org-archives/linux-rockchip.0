@@ -1,52 +1,59 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH] drm/rockchip: Cleanup dangling devm pointers
-Date: Fri, 16 Sep 2016 14:22:23 -0400
-Message-ID: <1474050143-29962-1-git-send-email-seanpaul@chromium.org>
+From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] Documentation: mmc: sdhci-of-arasan: add
+ description of power domain
+Date: Sat, 17 Sep 2016 10:18:09 +0800
+Message-ID: <d0855b38-2dd3-826b-9624-4ec1c2d00b07@rock-chips.com>
+References: <20160908064905.18080-1-xzy.xu@rock-chips.com>
+ <20160908064905.18080-2-xzy.xu@rock-chips.com>
+ <20160916152535.GA6020@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: mark.yao@rock-chips.com, heiko@sntech.de, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160916152535.GA6020@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW5zdGVhZCBvZiBhc3NpZ25pbmcgZGV2aWNlIG1hbmFnZWQgcmVzb3VyY2VzIHRvIGxvY2FsIHZh
-cmlhYmxlcywKa2VlcCB0cmFjayBvZiB0aGVtIGluIHRoZSB2b3Agc3RydWN0LgoKU2lnbmVkLW9m
-Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDEyICsrKysrKy0tLS0tLQogMSBmaWxl
-IGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCAxMzFhZTBmLi5iZWQ3ODJlIDEw
-MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTE0Miw2
-ICsxNDIsNyBAQCBzdHJ1Y3Qgdm9wIHsKIAogCS8qIHZvcCBkY2xrIHJlc2V0ICovCiAJc3RydWN0
-IHJlc2V0X2NvbnRyb2wgKmRjbGtfcnN0OworCXN0cnVjdCByZXNldF9jb250cm9sICphaGJfcnN0
-OwogCiAJc3RydWN0IHZvcF93aW4gd2luW107CiB9OwpAQCAtMTMzMyw3ICsxMzM0LDYgQEAgc3Rh
-dGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiB7CiAJY29uc3Qgc3RydWN0IHZv
-cF9kYXRhICp2b3BfZGF0YSA9IHZvcC0+ZGF0YTsKIAljb25zdCBzdHJ1Y3Qgdm9wX3JlZ19kYXRh
-ICppbml0X3RhYmxlID0gdm9wX2RhdGEtPmluaXRfdGFibGU7Ci0Jc3RydWN0IHJlc2V0X2NvbnRy
-b2wgKmFoYl9yc3Q7CiAJaW50IGksIHJldDsKIAogCXZvcC0+aGNsayA9IGRldm1fY2xrX2dldCh2
-b3AtPmRldiwgImhjbGtfdm9wIik7CkBAIC0xMzc0LDE1ICsxMzc0LDE1IEBAIHN0YXRpYyBpbnQg
-dm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCS8qCiAJICogZG8gaGNsa19yZXNldCwgcmVz
-ZXQgYWxsIHZvcCByZWdpc3RlcnMuCiAJICovCi0JYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJv
-bF9nZXQodm9wLT5kZXYsICJhaGIiKTsKLQlpZiAoSVNfRVJSKGFoYl9yc3QpKSB7CisJdm9wLT5h
-aGJfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldCh2b3AtPmRldiwgImFoYiIpOworCWlmIChJ
-U19FUlIodm9wLT5haGJfcnN0KSkgewogCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdl
-dCBhaGIgcmVzZXRcbiIpOwotCQlyZXQgPSBQVFJfRVJSKGFoYl9yc3QpOworCQlyZXQgPSBQVFJf
-RVJSKHZvcC0+YWhiX3JzdCk7CiAJCWdvdG8gZXJyX2Rpc2FibGVfYWNsazsKIAl9Ci0JcmVzZXRf
-Y29udHJvbF9hc3NlcnQoYWhiX3JzdCk7CisJcmVzZXRfY29udHJvbF9hc3NlcnQodm9wLT5haGJf
-cnN0KTsKIAl1c2xlZXBfcmFuZ2UoMTAsIDIwKTsKLQlyZXNldF9jb250cm9sX2RlYXNzZXJ0KGFo
-Yl9yc3QpOworCXJlc2V0X2NvbnRyb2xfZGVhc3NlcnQodm9wLT5haGJfcnN0KTsKIAogCW1lbWNw
-eSh2b3AtPnJlZ3NiYWssIHZvcC0+cmVncywgdm9wLT5sZW4pOwogCi0tIAoyLjguMC5yYzMuMjI2
-LmczOWQ0MDIwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Rob,
+
+
+On 2016年09月16日 23:25, Rob Herring wrote:
+> On Thu, Sep 08, 2016 at 02:49:04PM +0800, Ziyuan Xu wrote:
+>> Add power domain as a optional property for sdhci-of-arasan, which can
+>> be truned off in the so-called unused condition, such as suspend and
+> s/truned/turned/
+>
+>> remove. Aim to lower power requirements.
+>>
+>> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - fix a typo
+>> - add an example code for power-domain
+>>
+>>   Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
+>>   1 file changed, 6 insertions(+), 1 deletion(-)
+> With that,
+>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+Thanks, Rob. I fill fix it and send a follow up patch with your tag.
+
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+>
+>
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
