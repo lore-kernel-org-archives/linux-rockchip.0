@@ -1,72 +1,64 @@
-From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: add eMMC's power domain support for rk3399
-Date: Sat, 17 Sep 2016 10:32:50 +0800
-Message-ID: <20160917023250.1159-3-xzy.xu@rock-chips.com>
-References: <20160917023250.1159-1-xzy.xu@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160917023250.1159-1-xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [GIT PULL] drm/rockchip: some fixes
+Date: Sat, 17 Sep 2016 13:41:26 +0800
+Message-ID: <57DCD786.6000102@rock-chips.com>
+References: <57D3769C.80305@rock-chips.com>
+ <CAPM=9tyGT_5_QpqWpU+=E7GfrGZz0rWHn76WDMJoV9VFwedBcQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPM=9tyGT_5_QpqWpU+=E7GfrGZz0rWHn76WDMJoV9VFwedBcQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Control power domain for eMMC via genpd to reduce power consumption.
-
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
----
-
-Changes in v3: None
-Changes in v2:
-- add Shawn's review-tag and Doug's review-tag
-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 76b2864..13905ce 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -269,6 +269,7 @@
- 		#clock-cells = <0>;
- 		phys = <&emmc_phy>;
- 		phy-names = "phy_arasan";
-+		power-domains = <&power RK3399_PD_EMMC>;
- 		status = "disabled";
- 	};
- 
-@@ -690,6 +691,11 @@
- 		status = "disabled";
- 	};
- 
-+	qos_emmc: qos@ffa58000 {
-+		compatible = "syscon";
-+		reg = <0x0 0xffa58000 0x0 0x20>;
-+	};
-+
- 	qos_gmac: qos@ffa5c000 {
- 		compatible = "syscon";
- 		reg = <0x0 0xffa5c000 0x0 0x20>;
-@@ -823,6 +829,11 @@
- 			};
- 
- 			/* These power domains are grouped by VD_LOGIC */
-+			pd_emmc@RK3399_PD_EMMC {
-+				reg = <RK3399_PD_EMMC>;
-+				clocks = <&cru ACLK_EMMC>;
-+				pm_qos = <&qos_emmc>;
-+			};
- 			pd_gmac@RK3399_PD_GMAC {
- 				reg = <RK3399_PD_GMAC>;
- 				clocks = <&cru ACLK_GMAC>;
--- 
-2.9.2
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxNuW5tDA55pyIMTPml6UgMDg6MjAsIERhdmUgQWlybGllIHdyb3RlOgo+IE9uIDEwIFNl
+cHRlbWJlciAyMDE2IGF0IDEyOjU3LCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+
+IHdyb3RlOgo+PiBIaSBEYXZlCj4+ICAgICAgSGVyZSBhcmUgc29tZSBsaXR0bGUgZml4ZXMgZm9y
+IHJvY2tjaGlwIGRybSwgbG9va3MgZ29vZCBmb3IgbWUsIGFuZAo+PiB0aGVyZSBpcyBubyBkb3Vi
+dCBvbiB0aGVtLCBTbyBJJ2QgbGlrZSB5b3UgY2FuIGxhbmQgdGhlbS4KPj4KPj4gVGhhbmtzLgo+
+Pgo+PiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDYwM2YyYzlmNDVjNjYyMGFm
+ZDY1YjYwZWMwODRjMWVhN2MzNmIyZWM6Cj4+Cj4+ICAgIE1lcmdlIHRhZyAnZHJtLXZjNC1maXhl
+cy0yMDE2LTA4LTI5JyBvZiBodHRwczovL2dpdGh1Yi5jb20vYW5ob2x0L2xpbnV4Cj4+IGludG8g
+ZHJtLWZpeGVzICgyMDE2LTA5LTAyIDE1OjU1OjE1ICsxMDAwKQo+Pgo+PiBhcmUgYXZhaWxhYmxl
+IGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoKPj4KPj4KPj4gICAgaHR0cHM6Ly9naXRodWIuY29t
+L21hcmt5enEva2VybmVsLWRybS1yb2NrY2hpcC5naXQKPiBTb21ldGhpbmcgaXMgd3Jvbmcgd2l0
+aCB0aGlzIHB1bGwgcmVxdWVzdCwgdGhlcmUgaXMgbm8gYnJhbmNoIG5hbWUuCj4KPiBQbGVhc2Ug
+dGVzdCBwdWxsIHJlcXVlc3RzIGFyZSBjb21wbGV0ZSBiZWZvcmUgc2VuZGluZywKPgo+IFRoYW5r
+cywKPiBEYXZlLgo+Cj4KPgpIaSBEYXZlCgpTb3JyeSwgaGVyZSBpcyBjb3JyZWN0IG9uZS4KClRo
+ZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgNjAzZjJjOWY0NWM2NjIwYWZkNjViNjBl
+YzA4NGMxZWE3YzM2YjJlYzoKCiAgIE1lcmdlIHRhZyAnZHJtLXZjNC1maXhlcy0yMDE2LTA4LTI5
+JyBvZiAKaHR0cHM6Ly9naXRodWIuY29tL2FuaG9sdC9saW51eCBpbnRvIGRybS1maXhlcyAoMjAx
+Ni0wOS0wMiAxNTo1NToxNSArMTAwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0
+b3J5IGF0OgoKCiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9tYXJreXpxL2tlcm5lbC1kcm0tcm9ja2No
+aXAuZ2l0IApkcm0tcm9ja2NoaXAtZml4ZXMtMjAxNi0wOS0xMAoKZm9yIHlvdSB0byBmZXRjaCBj
+aGFuZ2VzIHVwIHRvIGQ1OWNhY2ZiNjllZTQ2ODc4MzczMjg0NDAzNTk1ZTMwZjcxODIxOGE6Cgog
+ICBkcm0vcm9ja2NoaXA6IG1hcmsgc3ltYm9scyBzdGF0aWMgd2hlcmUgcG9zc2libGUgKDIwMTYt
+MDktMTAgMTA6NDg6MzcgCiswODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpCYW95b3UgWGllICgyKToKICAgICAgIGRy
+bS9yb2NrY2hpcDogYWRkIG1pc3NpbmcgaGVhZGVyIGRlcGVuZGVuY2llcwogICAgICAgZHJtL3Jv
+Y2tjaGlwOiBtYXJrIHN5bWJvbHMgc3RhdGljIHdoZXJlIHBvc3NpYmxlCgpDaHJpcyBaaG9uZyAo
+MSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDogbWFrZSB2b3AgcmVnaXN0ZXIgc2V0dGluZyB0
+YWtlIGVmZmVjdAoKRG91Z2xhcyBBbmRlcnNvbiAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IFBy
+b3Blcmx5IGFkanVzdCB0byBhIHRydWUgY2xvY2sgaW4gYWRqdXN0ZWRfbW9kZQoKTWFyayBZYW8g
+KDEpOgogICAgICAgZHJtL3JvY2tjaGlwOiBmaXggZmJkZXYgY3Jhc2ggd2hlbiBub3QgdXNlIERS
+TV9GQkRFVl9FTVVMQVRJT04KCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV9kcnYuYyAgIHwgMTAgKysrKystLS0tLQogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmggICB8ICAyICstCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9mYi5jICAgIHwgIDIgKy0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2ZiZGV2LmMgfCAxOCArKysrKysrKysrKy0tLS0tLS0KICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCAgNyArKysrKystCiAgNSBmaWxlcyBjaGFu
+Z2VkLCAyNCBpbnNlcnRpb25zKCspLCAxNSBkZWxldGlvbnMoLSkKCi0tIArvvK1hcmsgWWFvCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
