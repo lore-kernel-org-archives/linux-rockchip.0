@@ -1,115 +1,68 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 1/2] Documentation: mmc: sdhci-of-arasan: add description of power domain
-Date: Sat, 17 Sep 2016 11:57:00 +0200
-Message-ID: <2176583.VnE4kDODlR@phil>
-References: <20160917023250.1159-1-xzy.xu@rock-chips.com> <1516490.mHlkLq5CeM@phil> <CAPDyKFo6332LYwLk8xBz8aNQiLC+FEc5-1yY-jHPMm2ReXC=bQ@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 2/8] drm/rockchip: Get rid of some unnecessary code
+Date: Sun, 18 Sep 2016 09:50:38 +0800
+Message-ID: <57DDF2EE.5060807@rock-chips.com>
+References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
+ <1473857701-9250-3-git-send-email-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFo6332LYwLk8xBz8aNQiLC+FEc5-1yY-jHPMm2ReXC=bQ@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Ziyuan Xu <xzy.xu@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Doug Anderson <dianders@chromium.org>, zhangqing <zhangqing@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473857701-9250-3-git-send-email-tfiga@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>, dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 17. September 2016, 11:09:15 CEST schrieb Ulf Hansson:
-> On 17 September 2016 at 11:01, Heiko Stuebner <heiko@sntech.de> wrote:
-> > Hi,
-> > 
-> > Am Samstag, 17. September 2016, 10:32:49 CEST schrieb Ziyuan Xu:
-> >> Add power domain as a optional property for sdhci-of-arasan, which can
-> >> be turned off in the so-called unused condition, such as suspend and
-> >> remove. Aim to lower power requirements.
-> >> 
-> >> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
-> >> 
-> >> Acked-by: Rob Herring <robh@kernel.org>
-> > 
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> > 
-> > @Ulf: I guess you'll take this binding change through the mmc tree and
-> > I'll
-> > pick up the devicetree change.
-> 
-> Ideally the documentation and DT change should go together, so I think
-> it's better for you to pick up both.
-
-I was more thinking about future conflicts with possible other changes during 
-the 4.9 cycle. We have -rc7 now, so arm-soc is pretty off limits for new 
-changes thus the binding change would only land in time for 4.10 and may cause 
-conflicts then.
-
-> I intend to ack it, although it would be nice with some more
-> information as I requested, in the change-log first.
-
-I guess we'll just wait until you are comfortable with the change and decide 
-then through which trees it should go :-)
-
-
-Heiko
-
-> >> ---
-> >> 
-> >> Changes in v3:
-> >> - fix a typo
-> >> - add Rob's ack-tag
-> >> 
-> >> Changes in v2:
-> >> - fix a typo
-> >> - add an example code for power-domain
-> >> 
-> >>  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
-> >>  1 file changed, 6 insertions(+), 1 deletion(-)
-> >> 
-> >> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> >> b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt index
-> >> 3404afa..eb84d29 100644
-> >> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> >> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> >> @@ -1,12 +1,14 @@
-> >> 
-> >>  Device Tree Bindings for the Arasan SDHCI Controller
-> >> 
-> >> -  The bindings follow the mmc[1], clock[2], interrupt[3] and phy[4]
-> >> bindings. +  The bindings follow the mmc[1], clock[2], interrupt[3],
-> >> phy[4]
-> >> and power +  domain[5] bindings.
-> >> 
-> >>    Only deviations are documented here.
-> >>    
-> >>    [1] Documentation/devicetree/bindings/mmc/mmc.txt
-> >>    [2] Documentation/devicetree/bindings/clock/clock-bindings.txt
-> >>    [3]
-> >>    Documentation/devicetree/bindings/interrupt-controller/interrupts.txt
-> >> 
-> >> [4] Documentation/devicetree/bindings/phy/phy-bindings.txt
-> >> +  [5] Documentation/devicetree/bindings/power/power_domain.txt
-> >> 
-> >>  Required Properties:
-> >>    - compatible: Compatibility string.  One of:
-> >> @@ -36,6 +38,8 @@ Optional Properties:
-> >>    - #clock-cells: If specified this should be the value <0>.  With this
-> >> 
-> >> property in place we will export a clock representing the Card Clock. 
-> >> This
-> >> clock is expected to be consumed by our PHY.  You must also specify +  -
-> >> power-domains: A phandle and PM domain as specifier defined by bindings +
-> >> 
-> >>  of the power controller specified by phandle.
-> >>  
-> >>  Example:
-> >>       sdhci@e0100000 {
-> >> 
-> >> @@ -71,5 +75,6 @@ Example:
-> >>               phys = <&emmc_phy>;
-> >>               phy-names = "phy_arasan";
-> >>               #clock-cells = <0>;
-> >> 
-> >> +             power-domains = <&power RK3399_PD_EMMC>;
-> >> 
-> >>               status = "disabled";
-> >>       
-> >>       };
-
-
+T24gMjAxNuW5tDA55pyIMTTml6UgMjA6NTQsIFRvbWFzeiBGaWdhIHdyb3RlOgo+IEN1cnJlbnQg
+Y29kZSBpbXBsZW1lbnRzIHByZXBhcmVfZmIgYW5kIGNsZWFudXBfZmIgY2FsbGJhY2tzIG9ubHkg
+dG8KPiBncmFiL3JlbGVhc2UgZmIgcmVmZXJlbmNlcywgd2hpY2ggaXMgYWxyZWFkeSBkb25lIGJ5
+IGF0b21pYyBmcmFtZXdvcmsKPiB3aGVuIGNyZWF0aW5nL2Rlc3RyeW9pbmcgcGxhbmUgc3RhdGUu
+IExldCdzIHJlbW92ZSB0aGVzZQo+IHVudXNlZCBiaXRzLgo+Cj4gU2lnbmVkLW9mZi1ieTogVG9t
+YXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxOCAtLS0tLS0tLS0tLS0tLS0tLS0KPiAgIDEg
+ZmlsZSBjaGFuZ2VkLCAxOCBkZWxldGlvbnMoLSkKCkhpIFRvbWFzegoKSSB0aGluayB3ZSBjYW4n
+dCBnZXQgcmlkIG9mIHRoZSBwcmVwYXJlX2ZiIGFuZCBjbGVhbnVwX2ZiCgpzZWUgdGhlIHJlYXNv
+bjoKY29tbWl0IDQ0ZDAyMzdhMjYzOTVhYzk0MTYwY2YyM2YzMjc2OTAxM2IzNjU1OTAKQXV0aG9y
+OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+CkRhdGU6ICAgRnJpIEFwciAyOSAx
+MTozNzoyMCAyMDE2ICswODAwCgogICAgIGRybS9yb2NrY2hpcDogdm9wOiBmaXggaW9tbXUgY3Jh
+c2ggd2l0aCBhc3luYyBhdG9taWMKCiAgICAgQWZ0ZXIgYXN5bmMgYXRvbWljX2NvbW1pdCBjYWxs
+YmFjaywgZHJtX2F0b21pY19jbGVhbl9vbGRfZmIgd2lsbAogICAgIGNsZWFuIGFsbCBvbGQgZmIs
+IGJ1dCBiZWNhdXNlIGFzeW5jLCB0aGUgb2xkIGZiIG1heSBiZSBhbHNvIG9uCiAgICAgdGhlIHZv
+cCBoYXJkd2FyZSwgZG1hIHdpbGwgYWNjZXNzIHRoZSBvbGQgZmIgYnVmZmVyLCBjbGVhbiBvbGQK
+ICAgICBmYiB3aWxsIGNhdXNlIGlvbW11IHBhZ2UgZmF1bHQuCgogICAgIFJlZmVyZW5jZSB0aGUg
+ZmIgYW5kIHVucmVmZXJlbmNlIGl0IHdoZW4gdGhlIGZiIGFjdHVhbGwgc3dhcCBvdXQKICAgICBm
+cm9tIHZvcCBoYXJkd2FyZS4KCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYwo+IGluZGV4IDdlODExY2YuLjY4OTg4YzYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNjQxLDIyICs2NDEsNiBAQCBz
+dGF0aWMgdm9pZCB2b3BfcGxhbmVfZGVzdHJveShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSkKPiAg
+IAlkcm1fcGxhbmVfY2xlYW51cChwbGFuZSk7Cj4gICB9Cj4gICAKPiAtc3RhdGljIGludCB2b3Bf
+cGxhbmVfcHJlcGFyZV9mYihzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAtCQkJCXN0cnVjdCBk
+cm1fcGxhbmVfc3RhdGUgKm5ld19zdGF0ZSkKPiAtewo+IC0JaWYgKHBsYW5lLT5zdGF0ZS0+ZmIp
+Cj4gLQkJZHJtX2ZyYW1lYnVmZmVyX3JlZmVyZW5jZShwbGFuZS0+c3RhdGUtPmZiKTsKPiAtCj4g
+LQlyZXR1cm4gMDsKPiAtfQo+IC0KPiAtc3RhdGljIHZvaWQgdm9wX3BsYW5lX2NsZWFudXBfZmIo
+c3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gLQkJCQkgc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAq
+b2xkX3N0YXRlKQo+IC17Cj4gLQlpZiAob2xkX3N0YXRlLT5mYikKPiAtCQlkcm1fZnJhbWVidWZm
+ZXJfdW5yZWZlcmVuY2Uob2xkX3N0YXRlLT5mYik7Cj4gLX0KPiAtCj4gICBzdGF0aWMgaW50IHZv
+cF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gICAJCQkgICBz
+dHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpzdGF0ZSkKPiAgIHsKPiBAQCAtODQ5LDggKzgzMyw2IEBA
+IHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBs
+YW5lLAo+ICAgfQo+ICAgCj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9wbGFuZV9oZWxwZXJf
+ZnVuY3MgcGxhbmVfaGVscGVyX2Z1bmNzID0gewo+IC0JLnByZXBhcmVfZmIgPSB2b3BfcGxhbmVf
+cHJlcGFyZV9mYiwKPiAtCS5jbGVhbnVwX2ZiID0gdm9wX3BsYW5lX2NsZWFudXBfZmIsCj4gICAJ
+LmF0b21pY19jaGVjayA9IHZvcF9wbGFuZV9hdG9taWNfY2hlY2ssCj4gICAJLmF0b21pY191cGRh
+dGUgPSB2b3BfcGxhbmVfYXRvbWljX3VwZGF0ZSwKPiAgIAkuYXRvbWljX2Rpc2FibGUgPSB2b3Bf
+cGxhbmVfYXRvbWljX2Rpc2FibGUsCgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
