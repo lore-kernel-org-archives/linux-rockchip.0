@@ -1,48 +1,78 @@
 From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH 0/1] fix rk3066a based boards boot issue on linux-4.8
-Date: Mon, 19 Sep 2016 11:21:21 +0200
-Message-ID: <20160919112121.2e0bc376@bbrezillon>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
+ initialization
+Date: Mon, 19 Sep 2016 11:25:22 +0200
+Message-ID: <20160919112522.5567b882@bbrezillon>
 References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+        <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+In-Reply-To: <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Andy Yan <andy.yan@rock-chips.com>
 Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
-
-On Mon, 19 Sep 2016 16:43:59 +0800
+On Mon, 19 Sep 2016 16:44:56 +0800
 Andy Yan <andy.yan@rock-chips.com> wrote:
 
-> Hi, heiko:
->    I found my Rayeager board couldn't boot up on linux 4.8. After some
-> dig, I found the pwm-regulator for vdd_log register failed and found
-> some change in Boris's patch: commit 87248991a1de(regulator: pwm: Properly
-> initialize the ->state field).
-
-Hm, that's weird. This commit only makes sure that the regulator
-voltage state is correctly initialized (matching the hardware state),
-and I don't understand why changing the voltage-table make it work.
-
-Can you share the kernel logs? What are the symptoms?
-
-Thanks,
-
-Boris
-
->    I send this patch to make the pwm-regulator can register success on
-> this change.
+> The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
+> pwm modulate vdd_logic voltage, but the pwm is default disabled and
+> the pwm pin acts as a gpio before pwm regulator probed, so the pwm
+> regulator driver will get a zero dutycycle at probe time, so change
+> the initial dutycycle to zero to match pwm_regulator_init_state check.
 > 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > 
-> Andy Yan (1):
->   arm: dts: fix rk3066a based boards vdd_log voltage initialization
+> ---
 > 
 >  arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
 >  arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
 >  arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
 >  3 files changed, 3 insertions(+), 3 deletions(-)
 > 
+> diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> index bc674ee..618450d 100644
+> --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> @@ -61,7 +61,7 @@
+>  		regulator-min-microvolt = <1200000>;
+>  		regulator-max-microvolt = <1200000>;
+>  		regulator-always-on;
+> -		voltage-table = <1000000 100>,
+> +		voltage-table = <1000000 0>,
+>  				<1200000 42>;
+
+So, it seems you are reversing the PWM polarity here. Are you sure you
+shouldn't change the 2nd entry of this table (<1200000 58>)?
+
+>  		status = "okay";
+>  	};
+> diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+> index a2b763e..ddc680b 100644
+> --- a/arch/arm/boot/dts/rk3066a-marsboard.dts
+> +++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+> @@ -59,7 +59,7 @@
+>  		regulator-min-microvolt = <1200000>;
+>  		regulator-max-microvolt = <1200000>;
+>  		regulator-always-on;
+> -		voltage-table = <1000000 100>,
+> +		voltage-table = <1000000 0>,
+>  				<1200000 42>;
+>  		status = "okay";
+>  	};
+> diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+> index 2536b3a..30aee99 100644
+> --- a/arch/arm/boot/dts/rk3066a-rayeager.dts
+> +++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+> @@ -84,7 +84,7 @@
+>  		regulator-min-microvolt = <1200000>;
+>  		regulator-max-microvolt = <1200000>;
+>  		regulator-always-on;
+> -		voltage-table = <1000000 100>,
+> +		voltage-table = <1000000 0>,
+>  				<1200000 42>;
+>  		status = "okay";
+>  	};
