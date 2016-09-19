@@ -1,64 +1,82 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 09/26] drm/rockchip: dw-mipi-dsi: respect message flags
-Date: Mon, 19 Sep 2016 18:17:19 +0100
-Message-ID: <20160919171747.28512-10-john@metanate.com>
+Subject: [PATCH 14/27] drm/rockchip: dw-mipi-dsi: use specific poll helper
+Date: Mon, 19 Sep 2016 18:17:25 +0100
+Message-ID: <20160919171747.28512-16-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Instead of always sending commands in LP mode, respect the
-MIPI_DSI_MSG_USE_LPM flag to decide how to send each message.  Also
-request acks if MIPI_DSI_MSG_REQ_ACK is set.
+As the documentation for readx_poll_timeout says, we want to use the
+specialized macro for readl rather than using the generic version
+directly.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index a25db02e1c19..554336f8023e 100644
+index 5e343b54f0d0..097b3b0af78f 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -543,6 +543,19 @@ static int dw_mipi_dsi_host_detach(struct mipi_dsi_host *host,
- 	return 0;
- }
+@@ -440,14 +440,14 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ 				     PHY_UNRSTZ | PHY_UNSHUTDOWNZ);
  
-+static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
-+				   const struct mipi_dsi_msg *msg)
-+{
-+	u32 val = 0;
-+
-+	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
-+		val |= EN_ACK_RQST;
-+	if (msg->flags & MIPI_DSI_MSG_USE_LPM)
-+		val |= CMD_MODE_ALL_LP;
-+
-+	dsi_write(dsi, DSI_CMD_MODE_CFG, val);
-+}
-+
- static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- {
+ 
+-	ret = readx_poll_timeout(readl, dsi->base + DSI_PHY_STATUS,
++	ret = readl_poll_timeout(dsi->base + DSI_PHY_STATUS,
+ 				 val, val & LOCK, 1000, PHY_STATUS_TIMEOUT_US);
+ 	if (ret < 0) {
+ 		dev_err(dsi->dev, "failed to wait for phy lock state\n");
+ 		return ret;
+ 	}
+ 
+-	ret = readx_poll_timeout(readl, dsi->base + DSI_PHY_STATUS,
++	ret = readl_poll_timeout(dsi->base + DSI_PHY_STATUS,
+ 				 val, val & STOP_STATE_CLK_LANE, 1000,
+ 				 PHY_STATUS_TIMEOUT_US);
+ 	if (ret < 0) {
+@@ -563,7 +563,7 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
  	int ret;
-@@ -635,6 +648,8 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 	struct dw_mipi_dsi *dsi = host_to_dsi(host);
- 	int ret;
+ 	u32 val, mask;
  
-+	dw_mipi_message_config(dsi, msg);
-+
- 	switch (msg->type) {
- 	case MIPI_DSI_DCS_SHORT_WRITE:
- 	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
-@@ -747,7 +762,6 @@ static void dw_mipi_dsi_command_mode_config(struct dw_mipi_dsi *dsi)
- {
- 	dsi_write(dsi, DSI_TO_CNT_CFG, HSTX_TO_CNT(1000) | LPRX_TO_CNT(1000));
- 	dsi_write(dsi, DSI_BTA_TO_CNT, 0xd00);
--	dsi_write(dsi, DSI_CMD_MODE_CFG, CMD_MODE_ALL_LP);
- 	dsi_write(dsi, DSI_MODE_CFG, ENABLE_CMD_MODE);
- }
+-	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
++	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
+ 				 val, !(val & GEN_CMD_FULL), 1000,
+ 				 CMD_PKT_STATUS_TIMEOUT_US);
+ 	if (ret < 0) {
+@@ -574,7 +574,7 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
+ 	dsi_write(dsi, DSI_GEN_HDR, hdr_val);
  
+ 	mask = GEN_CMD_EMPTY | GEN_PLD_W_EMPTY;
+-	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
++	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
+ 				 val, (val & mask) == mask,
+ 				 1000, CMD_PKT_STATUS_TIMEOUT_US);
+ 	if (ret < 0) {
+@@ -633,7 +633,7 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 			len -= pld_data_bytes;
+ 		}
+ 
+-		ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
++		ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
+ 					 val, !(val & GEN_PLD_W_FULL), 1000,
+ 					 CMD_PKT_STATUS_TIMEOUT_US);
+ 		if (ret < 0) {
 -- 
 2.10.0.278.g4f427b1.dirty
