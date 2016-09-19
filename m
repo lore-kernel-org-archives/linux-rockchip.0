@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 25/26] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Mon, 19 Sep 2016 18:17:46 +0100
-Message-ID: <20160919171747.28512-37-john@metanate.com>
+Subject: [PATCH 26/26] drm/rockchip: dw-mipi-dsi: support read commands
+Date: Mon, 19 Sep 2016 18:17:47 +0100
+Message-ID: <20160919171747.28512-38-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
@@ -10,71 +10,85 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to fully reset the state of the MIPI controller we must assert
-this reset.
-
-This is slightly more complicated than it could be in order to maintain
-compatibility with device trees that do not specify the reset property.
+I haven't found any method for getting the length of a response, so this
+just uses the requested rx_len
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 54 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index d93e620adea6..d0b2f6e9517d 100644
+index d0b2f6e9517d..6dc43c024bca 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -13,6 +13,7 @@
- #include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/regmap.h>
-+#include <linux/reset.h>
- #include <linux/mfd/syscon.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_crtc.h>
-@@ -1134,6 +1135,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 			of_match_device(dw_mipi_dsi_dt_ids, dev);
- 	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
- 	struct platform_device *pdev = to_platform_device(dev);
-+	struct reset_control *apb_rst;
- 	struct drm_device *drm = data;
- 	struct dw_mipi_dsi *dsi;
- 	struct resource *res;
-@@ -1172,6 +1174,34 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 		return ret;
- 	}
+@@ -676,6 +676,54 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
+ }
  
-+	/*
-+	 * Note that the reset was not defined in the initial device tree, so
-+	 * we have to be prepared for it not being found.
-+	 */
-+	apb_rst = devm_reset_control_get(dev, "apb");
-+	if (IS_ERR(apb_rst)) {
-+		if (PTR_ERR(apb_rst) == -ENODEV) {
-+			apb_rst = NULL;
-+		} else {
-+			dev_err(dev, "Unable to get reset control: %d\n", ret);
-+			return PTR_ERR(apb_rst);
++static int dw_mipi_dsi_dcs_read(struct dw_mipi_dsi *dsi,
++				const struct mipi_dsi_msg *msg)
++{
++	const u8 *tx_buf = msg->tx_buf;
++	u8 *rx_buf = msg->rx_buf;
++	size_t i;
++	int ret, val;
++
++	dsi_write(dsi, DSI_PCKHDL_CFG, EN_CRC_RX | EN_ECC_RX | EN_BTA);
++	dsi_write(dsi, DSI_GEN_HDR, GEN_HDATA(tx_buf[0]) | GEN_HTYPE(msg->type));
++
++	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
++				 val, !(val & GEN_RD_CMD_BUSY), 1000,
++				 CMD_PKT_STATUS_TIMEOUT_US);
++	if (ret < 0) {
++		dev_err(dsi->dev, "failed to read command response\n");
++		return ret;
++	}
++
++	for (i = 0; i < msg->rx_len;) {
++		u32 pld = dsi_read(dsi, DSI_GEN_PLD_DATA);
++		while (i < msg->rx_len) {
++			rx_buf[i] = pld & 0xff;
++			pld >>= 8;
++			i++;
 +		}
 +	}
 +
-+	if (apb_rst) {
-+		ret = clk_prepare_enable(dsi->pclk);
-+		if (ret) {
-+			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
++	return msg->rx_len;
++}
++
++static int dw_mipi_dsi_set_max_return_packet_size(struct dw_mipi_dsi *dsi,
++						  size_t len)
++{
++	u8 val[] = { len & 0xff, (len >> 8) & 0xff };
++	struct mipi_dsi_msg msg = {
++		.channel = dsi->channel,
++		.type = MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE,
++		.tx_buf = val,
++		.tx_len = 2,
++	};
++
++	if (len > 0xffff)
++		return -EINVAL;
++
++	return dw_mipi_dsi_dcs_short_write(dsi, &msg);
++}
++
+ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 					 const struct mipi_dsi_msg *msg)
+ {
+@@ -693,6 +741,12 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	case MIPI_DSI_DCS_LONG_WRITE:
+ 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
+ 		break;
++	case MIPI_DSI_DCS_READ:
++		ret = dw_mipi_dsi_set_max_return_packet_size(dsi, msg->rx_len);
++		if (ret < 0)
 +			return ret;
-+		}
-+
-+		reset_control_assert(apb_rst);
-+		usleep_range(10, 20);
-+		reset_control_deassert(apb_rst);
-+
-+		clk_disable_unprepare(dsi->pclk);
-+	}
-+
- 	ret = clk_prepare_enable(dsi->pllref_clk);
- 	if (ret) {
- 		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
++		ret = dw_mipi_dsi_dcs_read(dsi, msg);
++		break;
+ 	default:
+ 		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
+ 			msg->type);
 -- 
 2.10.0.278.g4f427b1.dirty
