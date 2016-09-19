@@ -1,8 +1,8 @@
 From: Boris Brezillon <boris.brezillon@free-electrons.com>
 Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
  initialization
-Date: Mon, 19 Sep 2016 20:31:07 +0200
-Message-ID: <20160919203107.23b84c1d@bbrezillon>
+Date: Mon, 19 Sep 2016 22:43:52 +0200
+Message-ID: <20160919224352.3b84b6c0@bbrezillon>
 References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
         <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
         <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
@@ -52,9 +52,6 @@ Doug Anderson <dianders@chromium.org> wrote:
 > > specific pinmux depending on the PWM state)?  
 > 
 > It is not happening right now as far as I know.  ...but that's a bug.
-
-Okay.
-
 > 
 > > Anyway, we really need to handle this case, we should define the
 > > typical voltage when the PWM is disabled. Same as what you suggested
@@ -68,10 +65,28 @@ Okay.
 > where it was when you turned it off).  Not all "disabled" states will
 > mean that the pin is configured as an input.
 
-Well, my point was that, from the regulator PoV, a PWM is either
-enabled or disabled. The pinmux config when the PWM is disabled
-depends on the PWM driver/hardware, and I don't think it's a good idea
-to expose this information at the regulator level, hence the name
-"voltage-when-pwm-disabled". Anyway, let's stop bikeshedding, no
-matter the name, I think we both agree that a new DT property is needed
-to handle this case :-).
+Okay, after reading again your first answer, I think I understand why
+you want to differentiate the when-disabled and when-input cases. You
+want to use the "init" and "default" pinctrl states. The "init" state
+(applied at probe time) would keep the PWM pin in gpio+input mode and
+the "default" state (applied when the PWM device is enabled for the
+first time) would mux the pin to the PWM device.
+Your solution requires that the pwm-regulator device knows in which
+state the pin attached to the PWM is, which IMO is breaking the
+layering we have right now: a PWM-regulator is assigned a PWM device
+which is assigned a pin and a pinmux config.
+Another solution would be to expose an additional information in the
+pwm_state: whether the PWM is in the INIT state (probed, but not yet
+configured by its user) or DEFAULT state (probed and already
+configured by its user). But again, by doing that we also expose
+internal PWM details to its user, which I'm not sure will help keep
+the PWM API simple.
+
+Actually, I had something slightly different in mind. I thought about
+having two new pinctrl states ("enabled" and "disabled"). The "enabled"
+state (pin muxed to the PWM device) would be applied each time the PWM
+is enabled, and "disabled" state (gpio+input mode) would be applied each
+time the PWM is disabled.
+This way we can guarantee that even when the PWM is disabled, the
+PWM-driven regulator is configured to output a non-destructive voltage.
+Hence my suggestion to name the property 'voltage-when-pwm-disabled'.
