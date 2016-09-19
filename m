@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 19/26] drm/rockchip: dw-mipi-dsi: improve PLL configuration
-Date: Mon, 19 Sep 2016 18:17:35 +0100
-Message-ID: <20160919171747.28512-26-john@metanate.com>
+Subject: [PATCH 08/26] drm/rockchip: dw-mipi-dsi: include bad value in error message
+Date: Mon, 19 Sep 2016 18:17:18 +0100
+Message-ID: <20160919171747.28512-9-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
@@ -10,41 +10,26 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The multiplication ratio for the PLL is required to be even due to the
-use of a "by 2 pre-scaler".  Currently we are likely to end up with an
-odd multiplier even though there is an equivalent set of parameters with
-an even multiplier.
-
-For example, using the 324MHz bit rate with a reference clock of 24MHz
-we end up with M = 27, N = 2 whereas the example in the PHY databook
-gives M = 54, N = 4 for this bit rate and reference clock.
-
-By walking down through the available multiplier instead of up we are
-more likely to hit an even multiplier.  With the above example we do now
-get M = 54, N = 4 as given by the databook.
-
-While doing this, change the loop limits to encode the actual limits on
-the divisor, which are:
-
-	40MHz >= (pllref / N) >= 5MHz
+As an aid to debugging.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 55237d72f3f9..7983b2749518 100644
+index 38186df8476e..a25db02e1c19 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -520,7 +520,7 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
- 	pllref = DIV_ROUND_UP(clk_get_rate(dsi->pllref_clk), USEC_PER_SEC);
- 	tmp = pllref;
+@@ -645,7 +645,8 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
+ 		break;
+ 	default:
+-		dev_err(dsi->dev, "unsupported message type\n");
++		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
++			msg->type);
+ 		ret = -EINVAL;
+ 	}
  
--	for (i = 1; i < 6; i++) {
-+	for (i = pllref / 5; i > (pllref / 40); i--) {
- 		pre = pllref / i;
- 		if ((tmp > (target_mbps % pre)) && (target_mbps / pre < 512)) {
- 			tmp = target_mbps % pre;
 -- 
 2.10.0.278.g4f427b1.dirty
