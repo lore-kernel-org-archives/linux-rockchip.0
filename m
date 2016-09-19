@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 24/26] drm/rockchip: dw-mipi-dsi: support non-burst modes
-Date: Mon, 19 Sep 2016 18:17:44 +0100
-Message-ID: <20160919171747.28512-35-john@metanate.com>
+Subject: [PATCH 23/27] drm/rockchip: dw-mipi-dsi: support non-burst modes
+Date: Mon, 19 Sep 2016 18:17:43 +0100
+Message-ID: <20160919171747.28512-34-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
