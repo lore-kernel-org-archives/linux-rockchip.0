@@ -1,92 +1,102 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 20/27] drm/rockchip: dw-mipi-dsi: properly configure PHY timing
-Date: Mon, 19 Sep 2016 18:17:36 +0100
-Message-ID: <20160919171747.28512-27-john@metanate.com>
-References: <20160919171747.28512-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20160919171747.28512-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Subject: [PATCH 00/27] drm/rockchip: MIPI fixes & improvements
+Date: Mon, 19 Sep 2016 18:17:10 +0100
+Message-ID: <20160919171747.28512-1-john@metanate.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-These values are specified as constant time periods but the PHY
-configuration is in terms of the current lane byte clock so using
-constant values guarantees that the timings will be outside the
-specification with some display configurations.
+This is a bit of a mixed selection of patches to all areas of the
+Rockchip dw-mipi-dsi driver, which I've been using for a while.
 
-Derive the necessary configuration from the byte clock in order to
-ensure that the PHY configuration is correct.
+The first few patches fix the driver's use of the atomic API by removing
+hardware manipulation from the mode_set hook:
 
-Signed-off-by: John Keeping <john@metanate.com>
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 36 ++++++++++++++++++++++++++++++----
- 1 file changed, 32 insertions(+), 4 deletions(-)
+  drm/rockchip: dw-mipi-dsi: use mode from display state
+  drm/rockchip: dw-mipi-dsi: pass new mode into MIPI mode set
+  drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
+    MIPI
+  drm/rockchip: dw-mipi-dsi: rename commit hook to enable
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 61cee02e5f72..911ddcbab00d 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -384,6 +384,26 @@ static void dw_mipi_dsi_phy_write(struct dw_mipi_dsi *dsi, u8 test_code,
- 	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
- }
- 
-+/**
-+ * ns2bc - Nanoseconds to byte clock cycles
-+ */
-+static inline unsigned int ns2bc(struct dw_mipi_dsi *dsi, int ns)
-+{
-+	unsigned long byte_clk_khz = dsi->lane_mbps * MSEC_PER_SEC / 8;
-+
-+	return (ns * (byte_clk_khz / 1000) + 999) / 1000;
-+}
-+
-+/**
-+ * ns2ui - Nanoseconds to UI time periods
-+ */
-+static inline unsigned int ns2ui(struct dw_mipi_dsi *dsi, int ns)
-+{
-+	unsigned long byte_clk_khz = dsi->lane_mbps * MSEC_PER_SEC;
-+
-+	return (ns * (byte_clk_khz / 1000) + 999) / 1000;
-+}
-+
- static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- {
- 	int ret, testdin, vco, val;
-@@ -435,10 +455,18 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 					 SETRD_MAX | POWER_MANAGE |
- 					 TER_RESISTORS_ON);
- 
--
--	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | 0xf);
--	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | 0x55);
--	dw_mipi_dsi_phy_write(dsi, 0x72, THS_ZERO_PROGRAM_EN | 0xa);
-+	dw_mipi_dsi_phy_write(dsi, 0x60, TLP_PROGRAM_EN | ns2bc(dsi, 500));
-+	dw_mipi_dsi_phy_write(dsi, 0x61, THS_PRE_PROGRAM_EN | ns2ui(dsi, 40));
-+	dw_mipi_dsi_phy_write(dsi, 0x62, THS_ZERO_PROGRAM_EN | ns2bc(dsi, 300));
-+	dw_mipi_dsi_phy_write(dsi, 0x63, THS_PRE_PROGRAM_EN | ns2ui(dsi, 100));
-+	dw_mipi_dsi_phy_write(dsi, 0x64, BIT(5) | ns2bc(dsi, 100));
-+	dw_mipi_dsi_phy_write(dsi, 0x65, BIT(5) | (ns2bc(dsi, 60) + 7));
-+
-+	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | ns2bc(dsi, 500));
-+	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | (ns2ui(dsi, 50) + 5));
-+	dw_mipi_dsi_phy_write(dsi, 0x72, THS_ZERO_PROGRAM_EN | (ns2bc(dsi, 140) + 2));
-+	dw_mipi_dsi_phy_write(dsi, 0x73, THS_PRE_PROGRAM_EN | (ns2ui(dsi, 60) + 8));
-+	dw_mipi_dsi_phy_write(dsi, 0x74, BIT(5) | ns2bc(dsi, 100));
- 
- 	dsi_write(dsi, DSI_PHY_RSTZ, PHY_ENFORCEPLL | PHY_ENABLECLK |
- 				     PHY_UNRSTZ | PHY_UNSHUTDOWNZ);
+The following several patches fix various aspects of DSI host transfers
+in order to improve support for displays that need to be set up via DSI
+commands:
+
+  drm/rockchip: dw-mipi-dsi: fix command header writes
+  drm/rockchip: dw-mipi-dsi: fix generic packet status check
+  drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
+  drm/rockchip: dw-mipi-dsi: include bad value in error message
+  drm/rockchip: dw-mipi-dsi: respect message flags
+  drm/rockchip: dw-mipi-dsi: only request HS clock when required
+  drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
+  drm/rockchip: dw-mipi-dsi: prepare panel after phy init
+  drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
+
+Then a bunch of patches to improve the PHY PLL and other clock setup:
+
+  drm/rockchip: dw-mipi-dsi: fix escape clock rate
+  drm/rockchip: dw-mipi-dsi: ensure PHY is reset
+  drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
+  drm/rockchip: dw-mipi-dsi: don't enable PHY PLL until it's configured
+  drm/rockchip: dw-mipi-dsi: properly configure PHY timing
+  drm/rockchip: dw-mipi-dsi: improve PLL configuration
+
+A couple of patches make the VOP and MIPI host consistent when panels do
+not set explicit hsync/vsync polarities:
+
+  drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
+  drm/rockchip: vop: test for P{H,V}SYNC
+
+The following patch fixes fbcon by making sure that the output
+resolution is known before it loads:
+
+  drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
+
+Then a patch that should be self-explanatory:
+
+  drm/rockchip: dw-mipi-dsi: support non-burst modes
+
+And the final two patches were useful in development but aren't really
+needed once everything's working:
+
+  drm/rockchip: dw-mipi-dsi: add reset control
+  drm/rockchip: dw-mipi-dsi: support read commands
+
+
+John Keeping (26):
+  drm/rockchip: dw-mipi-dsi: use mode from display state
+  drm/rockchip: dw-mipi-dsi: pass new mode into MIPI mode set
+  drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
+    MIPI
+  drm/rockchip: dw-mipi-dsi: rename commit hook to enable
+  drm/rockchip: dw-mipi-dsi: fix command header writes
+  drm/rockchip: dw-mipi-dsi: fix generic packet status check
+  drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
+  drm/rockchip: dw-mipi-dsi: include bad value in error message
+  drm/rockchip: dw-mipi-dsi: respect message flags
+  drm/rockchip: dw-mipi-dsi: only request HS clock when required
+  drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
+  drm/rockchip: dw-mipi-dsi: prepare panel after phy init
+  drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
+  drm/rockchip: dw-mipi-dsi: fix escape clock rate
+  drm/rockchip: dw-mipi-dsi: ensure PHY is reset
+  drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
+  drm/rockchip: dw-mipi-dsi: don't enable PHY PLL until it's configured
+  drm/rockchip: dw-mipi-dsi: properly configure PHY timing
+  drm/rockchip: dw-mipi-dsi: improve PLL configuration
+  drm/rockchip: dw-mipi-dsi: use specific poll helper
+  drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
+  drm/rockchip: vop: test for P{H,V}SYNC
+  drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
+  drm/rockchip: dw-mipi-dsi: support non-burst modes
+  drm/rockchip: dw-mipi-dsi: add reset control
+  drm/rockchip: dw-mipi-dsi: support read commands
+
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c      | 325 ++++++++++++++++++++--------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
+ 2 files changed, 234 insertions(+), 95 deletions(-)
+
 -- 
 2.10.0.278.g4f427b1.dirty
