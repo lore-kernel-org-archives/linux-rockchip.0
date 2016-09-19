@@ -1,69 +1,86 @@
-From: Doug Anderson <dianders@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage initialization
-Date: Mon, 19 Sep 2016 08:15:30 -0700
-Message-ID: <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
-References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com> <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+Date: Mon, 19 Sep 2016 18:15:23 +0200
+Message-ID: <2318029.f7g774Bk76@phil>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com> <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com> <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+In-Reply-To: <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Boris Brezillon <boris.brezillon@free-electrons.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Am Montag, 19. September 2016, 08:15:30 CEST schrieb Doug Anderson:
+> Hi,
+> 
+> On Mon, Sep 19, 2016 at 1:44 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+> > The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
+> > pwm modulate vdd_logic voltage, but the pwm is default disabled and
+> > the pwm pin acts as a gpio before pwm regulator probed, so the pwm
+> > regulator driver will get a zero dutycycle at probe time, so change
+> > the initial dutycycle to zero to match pwm_regulator_init_state check.
+> > 
+> > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > ---
+> > 
+> >  arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
+> >  arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
+> >  arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
+> >  3 files changed, 3 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > b/arch/arm/boot/dts/rk3066a-bqcurie2.dts index bc674ee..618450d 100644
+> > --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > @@ -61,7 +61,7 @@
+> > 
+> >                 regulator-min-microvolt = <1200000>;
+> >                 regulator-max-microvolt = <1200000>;
+> >                 regulator-always-on;
+> > 
+> > -               voltage-table = <1000000 100>,
+> > +               voltage-table = <1000000 0>,
+> 
+> In my opinion this isn't quite the right answer.  I think that you
+> should add a new property describing the voltage in the case that the
+> pin is an input and you should fill that property in, like:
+> 
+>   voltage-when-input = <1000000>;
 
-On Mon, Sep 19, 2016 at 1:44 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
-> The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
-> pwm modulate vdd_logic voltage, but the pwm is default disabled and
-> the pwm pin acts as a gpio before pwm regulator probed, so the pwm
-> regulator driver will get a zero dutycycle at probe time, so change
-> the initial dutycycle to zero to match pwm_regulator_init_state check.
->
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->
-> ---
->
->  arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
->  arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
->  arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> index bc674ee..618450d 100644
-> --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> @@ -61,7 +61,7 @@
->                 regulator-min-microvolt = <1200000>;
->                 regulator-max-microvolt = <1200000>;
->                 regulator-always-on;
-> -               voltage-table = <1000000 100>,
-> +               voltage-table = <1000000 0>,
+I'd think this would be more of a pwm issue, not something the pwm-regulator 
+should need to care about.
 
-In my opinion this isn't quite the right answer.  I think that you
-should add a new property describing the voltage in the case that the
-pin is an input and you should fill that property in, like:
+Ideally the pwm driver should be able to return some state information even if 
+disabled? I.e. deriving a duty-cycle value from its pin state similar to what 
+Doug described below (it's either 0% or 100%)
 
-  voltage-when-input = <1000000>;
-
-Once you have this property you should ideally be able to read whether
-the pin is currently configured as an input or as a special function
-at bootup.  Note that I don't actually know if this is possible with
-the current pinctrl API, but it does seem like the ideal way to do it
-since it means you'll work even if the BIOS changes (AKA: if the BIOS
-leaves the pin as an input you can keep the voltage the same and if
-the BIOS leaves the pin as PWM you can keep the voltage the same).
-
-It's also possible that you could just add a property that says "init
-to a certain value at bootup no matter what the BIOS left it as".  As
-long as that voltage is the maximum (and you'll lower it later) this
-ought to be safe and you shouldn't risk temporarily undervolting
-things.
+But right now I have a hard time understanding how the pwm could return any 
+duty-cycle information for an input gpio to the pwm-regulator, as I assume the 
+pwm-driver has to probe (and thus set pinctrl to the pwm function) before the 
+pwm-regulator is able to get the pwm handle?
 
 
-Note that, if you haven't already done so, you almost certainly want
-to make sure your pinctrl species an "init" state in addition to a
-"default" state.  See <https://patchwork.kernel.org/patch/7454311/>.
-
--Doug
+> Once you have this property you should ideally be able to read whether
+> the pin is currently configured as an input or as a special function
+> at bootup.  Note that I don't actually know if this is possible with
+> the current pinctrl API, but it does seem like the ideal way to do it
+> since it means you'll work even if the BIOS changes (AKA: if the BIOS
+> leaves the pin as an input you can keep the voltage the same and if
+> the BIOS leaves the pin as PWM you can keep the voltage the same).
+> 
+> It's also possible that you could just add a property that says "init
+> to a certain value at bootup no matter what the BIOS left it as".  As
+> long as that voltage is the maximum (and you'll lower it later) this
+> ought to be safe and you shouldn't risk temporarily undervolting
+> things.
+> 
+> 
+> Note that, if you haven't already done so, you almost certainly want
+> to make sure your pinctrl species an "init" state in addition to a
+> "default" state.  See <https://patchwork.kernel.org/patch/7454311/>.
+> 
+> -Doug
