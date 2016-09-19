@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 16/26] drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
-Date: Mon, 19 Sep 2016 18:17:28 +0100
-Message-ID: <20160919171747.28512-19-john@metanate.com>
+Subject: [PATCH 14/26] drm/rockchip: dw-mipi-dsi: fix escape clock rate
+Date: Mon, 19 Sep 2016 18:17:24 +0100
+Message-ID: <20160919171747.28512-15-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
@@ -10,39 +10,32 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should configure these functions before enabling them.
+Use the same calculation as the vendor kernel to derive the escape clock
+speed.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 73c28e205fc5..f824c99b872e 100644
+index 5e343b54f0d0..8854b8670d72 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -421,6 +421,11 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
- 					 HIGH_PROGRAM_EN);
+@@ -711,11 +711,13 @@ static void dw_mipi_dsi_disable(struct dw_mipi_dsi *dsi)
  
-+	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
-+					 BIASEXTR_SEL(BIASEXTR_127_7));
-+	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
-+					 BANDGAP_SEL(BANDGAP_96_10));
+ static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
+ {
++	u32 esc_clk_division = (dsi->lane_mbps >> 3) / 20 + 1;
 +
- 	dw_mipi_dsi_phy_write(dsi, 0x20, POWER_CONTROL | INTERNAL_REG_CURRENT |
- 					 BIAS_BLOCK_ON | BANDGAP_ON);
+ 	dsi_write(dsi, DSI_PWR_UP, RESET);
+ 	dsi_write(dsi, DSI_PHY_RSTZ, PHY_DISFORCEPLL | PHY_DISABLECLK
+ 		  | PHY_RSTZ | PHY_SHUTDOWNZ);
+ 	dsi_write(dsi, DSI_CLKMGR_CFG, TO_CLK_DIVIDSION(10) |
+-		  TX_ESC_CLK_DIVIDSION(7));
++		  TX_ESC_CLK_DIVIDSION(esc_clk_division));
+ }
  
-@@ -430,10 +435,6 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 					 SETRD_MAX | POWER_MANAGE |
- 					 TER_RESISTORS_ON);
- 
--	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
--					 BIASEXTR_SEL(BIASEXTR_127_7));
--	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
--					 BANDGAP_SEL(BANDGAP_96_10));
- 
- 	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | 0xf);
- 	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | 0x55);
+ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi)
 -- 
 2.10.0.278.g4f427b1.dirty
