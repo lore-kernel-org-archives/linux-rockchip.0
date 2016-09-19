@@ -1,50 +1,68 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Balance irq refcount on failure
-Date: Mon, 19 Sep 2016 12:18:23 +0800
-Message-ID: <CAGS+omD2LUUQyTMzTjORKhGa_VFRNEFzFRHNVM6B6rk2fgBbfA@mail.gmail.com>
-References: <1474050123-29897-1-git-send-email-seanpaul@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1474050123-29897-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage initialization
+Date: Mon, 19 Sep 2016 16:44:56 +0800
+Message-ID: <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: boris.brezillon@free-electrons.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBTZXAgMTcsIDIwMTYgYXQgMjoyMiBBTSwgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJv
-bWl1bS5vcmc+IHdyb3RlOgo+IElmIGNyZWF0ZV9jcnRjIGZhaWxzIGluIHZvcCBiaW5kLCBlbnN1
-cmUgdGhlIGlycSByZWZjb3VudCBpcyB6ZXJvZWQKPiBiYWNrIG91dCBiZWZvcmUgZXhpdGluZy4K
-Pgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKUmV2
-aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cgo+IC0tLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNiArKysrKy0KPiAg
-MSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNTc2NTBjOS4u
-MTMxYWUwZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYwo+IEBAIC0xNTUxLDExICsxNTUxLDE1IEBAIHN0YXRpYyBpbnQgdm9wX2JpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4KPiAgICAg
-ICAgIHJldCA9IHZvcF9jcmVhdGVfY3J0Yyh2b3ApOwo+ICAgICAgICAgaWYgKHJldCkKPiAtICAg
-ICAgICAgICAgICAgcmV0dXJuIHJldDsKPiArICAgICAgICAgICAgICAgZ290byBlcnJfZW5hYmxl
-X2lycTsKPgo+ICAgICAgICAgcG1fcnVudGltZV9lbmFibGUoJnBkZXYtPmRldik7Cj4KPiAgICAg
-ICAgIHJldHVybiAwOwo+ICsKPiArZXJyX2VuYWJsZV9pcnE6Cj4gKyAgICAgICBlbmFibGVfaXJx
-KHZvcC0+aXJxKTsgLyogVG8gYmFsYW5jZSBvdXQgdGhlIGRpc2FibGVfaXJxIGFib3ZlICovCj4g
-KyAgICAgICByZXR1cm4gcmV0Owo+ICB9Cj4KPiAgc3RhdGljIHZvaWQgdm9wX3VuYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPiAtLQo+
-IDIuOC4wLnJjMy4yMjYuZzM5ZDQwMjAKPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
+pwm modulate vdd_logic voltage, but the pwm is default disabled and
+the pwm pin acts as a gpio before pwm regulator probed, so the pwm
+regulator driver will get a zero dutycycle at probe time, so change
+the initial dutycycle to zero to match pwm_regulator_init_state check.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
+---
+
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
+ arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
+ arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+index bc674ee..618450d 100644
+--- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
++++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+@@ -61,7 +61,7 @@
+ 		regulator-min-microvolt = <1200000>;
+ 		regulator-max-microvolt = <1200000>;
+ 		regulator-always-on;
+-		voltage-table = <1000000 100>,
++		voltage-table = <1000000 0>,
+ 				<1200000 42>;
+ 		status = "okay";
+ 	};
+diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+index a2b763e..ddc680b 100644
+--- a/arch/arm/boot/dts/rk3066a-marsboard.dts
++++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+@@ -59,7 +59,7 @@
+ 		regulator-min-microvolt = <1200000>;
+ 		regulator-max-microvolt = <1200000>;
+ 		regulator-always-on;
+-		voltage-table = <1000000 100>,
++		voltage-table = <1000000 0>,
+ 				<1200000 42>;
+ 		status = "okay";
+ 	};
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index 2536b3a..30aee99 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -84,7 +84,7 @@
+ 		regulator-min-microvolt = <1200000>;
+ 		regulator-max-microvolt = <1200000>;
+ 		regulator-always-on;
+-		voltage-table = <1000000 100>,
++		voltage-table = <1000000 0>,
+ 				<1200000 42>;
+ 		status = "okay";
+ 	};
+-- 
+2.7.4
