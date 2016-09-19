@@ -1,102 +1,49 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH 00/27] drm/rockchip: MIPI fixes & improvements
-Date: Mon, 19 Sep 2016 18:17:10 +0100
-Message-ID: <20160919171747.28512-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 15/27] drm/rockchip: dw-mipi-dsi: use positive check for N{H,
+ V}SYNC
+Date: Mon, 19 Sep 2016 18:17:27 +0100
+Message-ID: <20160919171747.28512-18-john@metanate.com>
+References: <20160919171747.28512-1-john@metanate.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160919171747.28512-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a bit of a mixed selection of patches to all areas of the
-Rockchip dw-mipi-dsi driver, which I've been using for a while.
+This matches other drivers.
 
-The first few patches fix the driver's use of the atomic API by removing
-hardware manipulation from the mode_set hook:
+Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-  drm/rockchip: dw-mipi-dsi: use mode from display state
-  drm/rockchip: dw-mipi-dsi: pass new mode into MIPI mode set
-  drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
-    MIPI
-  drm/rockchip: dw-mipi-dsi: rename commit hook to enable
-
-The following several patches fix various aspects of DSI host transfers
-in order to improve support for displays that need to be set up via DSI
-commands:
-
-  drm/rockchip: dw-mipi-dsi: fix command header writes
-  drm/rockchip: dw-mipi-dsi: fix generic packet status check
-  drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
-  drm/rockchip: dw-mipi-dsi: include bad value in error message
-  drm/rockchip: dw-mipi-dsi: respect message flags
-  drm/rockchip: dw-mipi-dsi: only request HS clock when required
-  drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
-  drm/rockchip: dw-mipi-dsi: prepare panel after phy init
-  drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
-
-Then a bunch of patches to improve the PHY PLL and other clock setup:
-
-  drm/rockchip: dw-mipi-dsi: fix escape clock rate
-  drm/rockchip: dw-mipi-dsi: ensure PHY is reset
-  drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
-  drm/rockchip: dw-mipi-dsi: don't enable PHY PLL until it's configured
-  drm/rockchip: dw-mipi-dsi: properly configure PHY timing
-  drm/rockchip: dw-mipi-dsi: improve PLL configuration
-
-A couple of patches make the VOP and MIPI host consistent when panels do
-not set explicit hsync/vsync polarities:
-
-  drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
-  drm/rockchip: vop: test for P{H,V}SYNC
-
-The following patch fixes fbcon by making sure that the output
-resolution is known before it loads:
-
-  drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
-
-Then a patch that should be self-explanatory:
-
-  drm/rockchip: dw-mipi-dsi: support non-burst modes
-
-And the final two patches were useful in development but aren't really
-needed once everything's working:
-
-  drm/rockchip: dw-mipi-dsi: add reset control
-  drm/rockchip: dw-mipi-dsi: support read commands
-
-
-John Keeping (26):
-  drm/rockchip: dw-mipi-dsi: use mode from display state
-  drm/rockchip: dw-mipi-dsi: pass new mode into MIPI mode set
-  drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
-    MIPI
-  drm/rockchip: dw-mipi-dsi: rename commit hook to enable
-  drm/rockchip: dw-mipi-dsi: fix command header writes
-  drm/rockchip: dw-mipi-dsi: fix generic packet status check
-  drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
-  drm/rockchip: dw-mipi-dsi: include bad value in error message
-  drm/rockchip: dw-mipi-dsi: respect message flags
-  drm/rockchip: dw-mipi-dsi: only request HS clock when required
-  drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
-  drm/rockchip: dw-mipi-dsi: prepare panel after phy init
-  drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
-  drm/rockchip: dw-mipi-dsi: fix escape clock rate
-  drm/rockchip: dw-mipi-dsi: ensure PHY is reset
-  drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
-  drm/rockchip: dw-mipi-dsi: don't enable PHY PLL until it's configured
-  drm/rockchip: dw-mipi-dsi: properly configure PHY timing
-  drm/rockchip: dw-mipi-dsi: improve PLL configuration
-  drm/rockchip: dw-mipi-dsi: use specific poll helper
-  drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
-  drm/rockchip: vop: test for P{H,V}SYNC
-  drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
-  drm/rockchip: dw-mipi-dsi: support non-burst modes
-  drm/rockchip: dw-mipi-dsi: add reset control
-  drm/rockchip: dw-mipi-dsi: support read commands
-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c      | 325 ++++++++++++++++++++--------
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
- 2 files changed, 234 insertions(+), 95 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 097b3b0af78f..7b4f4f150a0d 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -738,9 +738,9 @@ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi)
+ 		break;
+ 	}
+ 
+-	if (!(mode->flags & DRM_MODE_FLAG_PVSYNC))
++	if (mode->flags & DRM_MODE_FLAG_NVSYNC)
+ 		val |= VSYNC_ACTIVE_LOW;
+-	if (!(mode->flags & DRM_MODE_FLAG_PHSYNC))
++	if (mode->flags & DRM_MODE_FLAG_NHSYNC)
+ 		val |= HSYNC_ACTIVE_LOW;
+ 
+ 	dsi_write(dsi, DSI_DPI_VCID, DPI_VID(dsi->channel));
 -- 
 2.10.0.278.g4f427b1.dirty
