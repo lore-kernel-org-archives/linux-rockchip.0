@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 15/26] drm/rockchip: dw-mipi-dsi: ensure PHY is reset
-Date: Mon, 19 Sep 2016 18:17:26 +0100
-Message-ID: <20160919171747.28512-17-john@metanate.com>
+Subject: [PATCH 09/26] drm/rockchip: dw-mipi-dsi: respect message flags
+Date: Mon, 19 Sep 2016 18:17:19 +0100
+Message-ID: <20160919171747.28512-10-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
@@ -10,30 +10,55 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Also don't power up the DSI host at this point since this is not
-necessary in order to configure the PHY and we do so later when
-selecting video or command mode.
+Instead of always sending commands in LP mode, respect the
+MIPI_DSI_MSG_USE_LPM flag to decide how to send each message.  Also
+request acks if MIPI_DSI_MSG_REQ_ACK is set.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 8854b8670d72..73c28e205fc5 100644
+index a25db02e1c19..554336f8023e 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -398,7 +398,10 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 		return testdin;
- 	}
+@@ -543,6 +543,19 @@ static int dw_mipi_dsi_host_detach(struct mipi_dsi_host *host,
+ 	return 0;
+ }
  
--	dsi_write(dsi, DSI_PWR_UP, POWERUP);
-+	/* Start by clearing PHY state */
-+	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
-+	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLR);
-+	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
++static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
++				   const struct mipi_dsi_msg *msg)
++{
++	u32 val = 0;
++
++	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
++		val |= EN_ACK_RQST;
++	if (msg->flags & MIPI_DSI_MSG_USE_LPM)
++		val |= CMD_MODE_ALL_LP;
++
++	dsi_write(dsi, DSI_CMD_MODE_CFG, val);
++}
++
+ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
+ {
+ 	int ret;
+@@ -635,6 +648,8 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	struct dw_mipi_dsi *dsi = host_to_dsi(host);
+ 	int ret;
  
- 	dw_mipi_dsi_phy_write(dsi, 0x10, BYPASS_VCO_RANGE |
- 					 VCO_RANGE_CON_SEL(vco) |
++	dw_mipi_message_config(dsi, msg);
++
+ 	switch (msg->type) {
+ 	case MIPI_DSI_DCS_SHORT_WRITE:
+ 	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
+@@ -747,7 +762,6 @@ static void dw_mipi_dsi_command_mode_config(struct dw_mipi_dsi *dsi)
+ {
+ 	dsi_write(dsi, DSI_TO_CNT_CFG, HSTX_TO_CNT(1000) | LPRX_TO_CNT(1000));
+ 	dsi_write(dsi, DSI_BTA_TO_CNT, 0xd00);
+-	dsi_write(dsi, DSI_CMD_MODE_CFG, CMD_MODE_ALL_LP);
+ 	dsi_write(dsi, DSI_MODE_CFG, ENABLE_CMD_MODE);
+ }
+ 
 -- 
 2.10.0.278.g4f427b1.dirty
