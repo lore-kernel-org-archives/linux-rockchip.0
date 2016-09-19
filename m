@@ -1,39 +1,83 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH 24/27] drm/rockchip: vop: test for P{H,V}SYNC
-Date: Mon, 19 Sep 2016 18:17:45 +0100
-Message-ID: <20160919171747.28512-36-john@metanate.com>
-References: <20160919171747.28512-1-john@metanate.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
+ initialization
+Date: Mon, 19 Sep 2016 19:48:44 +0200
+Message-ID: <20160919194844.0db7b307@bbrezillon>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+        <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+        <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
+        <2318029.f7g774Bk76@phil>
+        <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
+        <20160919191327.741a2b89@bbrezillon>
+        <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160919171747.28512-1-john@metanate.com>
+In-Reply-To: <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-When connected to the MIPI DSI output, we need to use N{H,V}SYNC for the
-internal connection but these flags are meaningless for DSI panels.
-Switch the test so that we do not set the P{H,V}SYNC bits unless the
-mode requires it.
+On Mon, 19 Sep 2016 10:22:43 -0700
+Doug Anderson <dianders@chromium.org> wrote:
 
-Signed-off-by: John Keeping <john@metanate.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> Hi,
+> 
+> On Mon, Sep 19, 2016 at 10:13 AM, Boris Brezillon
+> <boris.brezillon@free-electrons.com> wrote:
+> > Correct me if I'm wrong, but the main problem here is that, when we try
+> > to detect the initial regulator state, we ran into a "missing entry in
+> > the duty-cycle <-> voltage table" error, which then triggers an -EINVAL
+> > error preventing the PWM regulator probe to succeed.
+> >
+> > Of course, adding an entry for the 0% dutycle case would solve the
+> > issue, but I wonder if we should not allow "unknown value" at probe
+> > time, and let the regulator user set the voltage output when it claims
+> > it.
+> >
+> > Another option would be to fake a valid value in this case (choose the
+> > closest entry in the voltage table?).  
+> 
+> If the goal is to avoid glitching the voltage at bootup, then the
+> above doesn't really solve it.
+> 
+> For instance, you could have:
+> 
+> 0% - 1.5V
+> 100% - 0.8V
+> When configured as input: 1.1V
+> Max useful value: 1.2V
+> 
+> So if firmware doesn't touch the PWM regulator then that means you're
+> booting up at 1.1V.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index d486049f9722..7c4ce1b2e694 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1030,8 +1030,8 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
- 	}
- 
- 	pin_pol = 0x8;
--	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_NHSYNC) ? 0 : 1;
--	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_NVSYNC) ? 0 : (1 << 1);
-+	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PHSYNC) ? 1 : 0;
-+	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PVSYNC) ? (1 << 1) : 0;
- 	VOP_CTRL_SET(vop, pin_pol, pin_pol);
- 
- 	switch (s->output_type) {
--- 
-2.10.0.278.g4f427b1.dirty
+Oh! I really didn't consider this case when developing the solution. I
+was assuming that the firmware/bootloader would configure the PWM
+correctly and leave it activating when booting the kernel.
+
+> 
+> If you read out the PWM itself, it will claim that it's running at 0%.
+> While that's true, that doesn't mean that the voltage on the system is
+> actually 1.5V because at boot the system had configured the pinmux as
+> GPIO input.  ...so it's actually 1.1V because the PWM isn't actually
+> controlling the pins.
+
+The PWM chip has always claimed the pins and muxed them to the PWM IP.
+So, this means it's broken from the beginning, and my patch is only
+uncovering the problem (unless the pins stay configured as input until
+the PWM is enabled, which I'm not sure is the case).
+
+> 
+> So if you want to avoid glitching the line then you want to make sure
+> that you properly init to 1.1V, _not_ to 1.5V.
+> 
+> In the case above, it's possible that 1.5V isn't really so great for
+> the hardware lifespan because 1.2V is the maximum useful value.  You
+> could argue that the hardware is badly designed in this case, but I
+> have certainly seen boards designed where the maximum achievable value
+> is higher than the maximum "safe" value.
+
+> 
+> -Doug
