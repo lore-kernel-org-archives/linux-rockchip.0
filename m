@@ -1,106 +1,45 @@
 From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH 00/27] drm/rockchip: MIPI fixes & improvements
-Date: Mon, 19 Sep 2016 18:24:30 +0100
-Message-ID: <20160919182430.13fb3151.john@metanate.com>
+Subject: [PATCH 23/26] drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
+Date: Mon, 19 Sep 2016 18:17:42 +0100
+Message-ID: <20160919171747.28512-33-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RCdvaCwgSSBnb3Qgc2VuZC1lbWFpbCBob3JyaWJseSB3cm9uZyBoZXJlLiAgUGxlYXNlIGlnbm9y
-ZSB0aGUgbi8yNwpwYXRjaGVzIGZvbGxvd2luZyB0aGlzIG1lc3NhZ2UgLSB0aGUgbi8yNiB2ZXJz
-aW9ucyBhcmUgY29ycmVjdC4KCkkgd29uJ3Qgc3BhbSB0aGUgbGlzdCB3aXRoIGEgY2xlYW5lZC11
-cCB2MiBpbW1lZGlhdGVseSwgYnV0IEknbGwgbWFrZQpleHRyYSBzdXJlIHRvIGNsZWFuIG91dCBt
-eSB3b3JraW5nIGRpcmVjdG9yeSB3aGVuIEkgZG8gc2VuZCB0aGUgcmUtcm9sbCEKCk9uIE1vbiwg
-MTkgU2VwIDIwMTYgMTg6MTc6MTAgKzAxMDAsIEpvaG4gS2VlcGluZyB3cm90ZToKCj4gVGhpcyBp
-cyBhIGJpdCBvZiBhIG1peGVkIHNlbGVjdGlvbiBvZiBwYXRjaGVzIHRvIGFsbCBhcmVhcyBvZiB0
-aGUKPiBSb2NrY2hpcCBkdy1taXBpLWRzaSBkcml2ZXIsIHdoaWNoIEkndmUgYmVlbiB1c2luZyBm
-b3IgYSB3aGlsZS4KPiAKPiBUaGUgZmlyc3QgZmV3IHBhdGNoZXMgZml4IHRoZSBkcml2ZXIncyB1
-c2Ugb2YgdGhlIGF0b21pYyBBUEkgYnkgcmVtb3ZpbmcKPiBoYXJkd2FyZSBtYW5pcHVsYXRpb24g
-ZnJvbSB0aGUgbW9kZV9zZXQgaG9vazoKPiAKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6
-IHVzZSBtb2RlIGZyb20gZGlzcGxheSBzdGF0ZQo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRz
-aTogcGFzcyBuZXcgbW9kZSBpbnRvIE1JUEkgbW9kZSBzZXQKPiAgIGRybS9yb2NrY2hpcDogZHct
-bWlwaS1kc2k6IGRvbid0IGNvbmZpZ3VyZSBoYXJkd2FyZSBpbiBtb2RlX3NldCBmb3IKPiAgICAg
-TUlQSQo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogcmVuYW1lIGNvbW1pdCBob29rIHRv
-IGVuYWJsZQo+IAo+IFRoZSBmb2xsb3dpbmcgc2V2ZXJhbCBwYXRjaGVzIGZpeCB2YXJpb3VzIGFz
-cGVjdHMgb2YgRFNJIGhvc3QgdHJhbnNmZXJzCj4gaW4gb3JkZXIgdG8gaW1wcm92ZSBzdXBwb3J0
-IGZvciBkaXNwbGF5cyB0aGF0IG5lZWQgdG8gYmUgc2V0IHVwIHZpYSBEU0kKPiBjb21tYW5kczoK
-PiAKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGZpeCBjb21tYW5kIGhlYWRlciB3cml0
-ZXMKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGZpeCBnZW5lcmljIHBhY2tldCBzdGF0
-dXMgY2hlY2sKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGF2b2lkIG91dC1vZi1ib3Vu
-ZHMgcmVhZCBvbiB0eF9idWYKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGluY2x1ZGUg
-YmFkIHZhbHVlIGluIGVycm9yIG1lc3NhZ2UKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6
-IHJlc3BlY3QgbWVzc2FnZSBmbGFncwo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogb25s
-eSByZXF1ZXN0IEhTIGNsb2NrIHdoZW4gcmVxdWlyZWQKPiAgIGRybS9yb2NrY2hpcDogZHctbWlw
-aS1kc2k6IGRvbid0IGFzc3VtZSBidWZmZXIgaXMgYWxpZ25lZAo+ICAgZHJtL3JvY2tjaGlwOiBk
-dy1taXBpLWRzaTogcHJlcGFyZSBwYW5lbCBhZnRlciBwaHkgaW5pdAo+ICAgZHJtL3JvY2tjaGlw
-OiBkdy1taXBpLWRzaTogYWxsb3cgY29tbWFuZHMgaW4gcGFuZWxfZGlzYWJsZQo+IAo+IFRoZW4g
-YSBidW5jaCBvZiBwYXRjaGVzIHRvIGltcHJvdmUgdGhlIFBIWSBQTEwgYW5kIG90aGVyIGNsb2Nr
-IHNldHVwOgo+IAo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogZml4IGVzY2FwZSBjbG9j
-ayByYXRlCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBlbnN1cmUgUEhZIGlzIHJlc2V0
-Cj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBjb25maWd1cmUgYmlhcyBhbmQgYmFuZGdh
-cCBiZWZvcmUgZW5hYmxlCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBkb24ndCBlbmFi
-bGUgUEhZIFBMTCB1bnRpbCBpdCdzIGNvbmZpZ3VyZWQKPiAgIGRybS9yb2NrY2hpcDogZHctbWlw
-aS1kc2k6IHByb3Blcmx5IGNvbmZpZ3VyZSBQSFkgdGltaW5nCj4gICBkcm0vcm9ja2NoaXA6IGR3
-LW1pcGktZHNpOiBpbXByb3ZlIFBMTCBjb25maWd1cmF0aW9uCj4gCj4gQSBjb3VwbGUgb2YgcGF0
-Y2hlcyBtYWtlIHRoZSBWT1AgYW5kIE1JUEkgaG9zdCBjb25zaXN0ZW50IHdoZW4gcGFuZWxzIGRv
-Cj4gbm90IHNldCBleHBsaWNpdCBoc3luYy92c3luYyBwb2xhcml0aWVzOgo+IAo+ICAgZHJtL3Jv
-Y2tjaGlwOiBkdy1taXBpLWRzaTogdXNlIHBvc2l0aXZlIGNoZWNrIGZvciBOe0gsVn1TWU5DCj4g
-ICBkcm0vcm9ja2NoaXA6IHZvcDogdGVzdCBmb3IgUHtILFZ9U1lOQwo+IAo+IFRoZSBmb2xsb3dp
-bmcgcGF0Y2ggZml4ZXMgZmJjb24gYnkgbWFraW5nIHN1cmUgdGhhdCB0aGUgb3V0cHV0Cj4gcmVz
-b2x1dGlvbiBpcyBrbm93biBiZWZvcmUgaXQgbG9hZHM6Cj4gCj4gICBkcm0vcm9ja2NoaXA6IGR3
-LW1pcGktZHNpOiBkZWZlciBwcm9iZSBpZiBwYW5lbCBpcyBub3QgbG9hZGVkCj4gCj4gVGhlbiBh
-IHBhdGNoIHRoYXQgc2hvdWxkIGJlIHNlbGYtZXhwbGFuYXRvcnk6Cj4gCj4gICBkcm0vcm9ja2No
-aXA6IGR3LW1pcGktZHNpOiBzdXBwb3J0IG5vbi1idXJzdCBtb2Rlcwo+IAo+IEFuZCB0aGUgZmlu
-YWwgdHdvIHBhdGNoZXMgd2VyZSB1c2VmdWwgaW4gZGV2ZWxvcG1lbnQgYnV0IGFyZW4ndCByZWFs
-bHkKPiBuZWVkZWQgb25jZSBldmVyeXRoaW5nJ3Mgd29ya2luZzoKPiAKPiAgIGRybS9yb2NrY2hp
-cDogZHctbWlwaS1kc2k6IGFkZCByZXNldCBjb250cm9sCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1p
-cGktZHNpOiBzdXBwb3J0IHJlYWQgY29tbWFuZHMKPiAKPiAKPiBKb2huIEtlZXBpbmcgKDI2KToK
-PiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHVzZSBtb2RlIGZyb20gZGlzcGxheSBzdGF0
-ZQo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogcGFzcyBuZXcgbW9kZSBpbnRvIE1JUEkg
-bW9kZSBzZXQKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGRvbid0IGNvbmZpZ3VyZSBo
-YXJkd2FyZSBpbiBtb2RlX3NldCBmb3IKPiAgICAgTUlQSQo+ICAgZHJtL3JvY2tjaGlwOiBkdy1t
-aXBpLWRzaTogcmVuYW1lIGNvbW1pdCBob29rIHRvIGVuYWJsZQo+ICAgZHJtL3JvY2tjaGlwOiBk
-dy1taXBpLWRzaTogZml4IGNvbW1hbmQgaGVhZGVyIHdyaXRlcwo+ICAgZHJtL3JvY2tjaGlwOiBk
-dy1taXBpLWRzaTogZml4IGdlbmVyaWMgcGFja2V0IHN0YXR1cyBjaGVjawo+ICAgZHJtL3JvY2tj
-aGlwOiBkdy1taXBpLWRzaTogYXZvaWQgb3V0LW9mLWJvdW5kcyByZWFkIG9uIHR4X2J1Zgo+ICAg
-ZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogaW5jbHVkZSBiYWQgdmFsdWUgaW4gZXJyb3IgbWVz
-c2FnZQo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogcmVzcGVjdCBtZXNzYWdlIGZsYWdz
-Cj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBvbmx5IHJlcXVlc3QgSFMgY2xvY2sgd2hl
-biByZXF1aXJlZAo+ICAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogZG9uJ3QgYXNzdW1lIGJ1
-ZmZlciBpcyBhbGlnbmVkCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBwcmVwYXJlIHBh
-bmVsIGFmdGVyIHBoeSBpbml0Cj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBhbGxvdyBj
-b21tYW5kcyBpbiBwYW5lbF9kaXNhYmxlCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBm
-aXggZXNjYXBlIGNsb2NrIHJhdGUKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGVuc3Vy
-ZSBQSFkgaXMgcmVzZXQKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGNvbmZpZ3VyZSBi
-aWFzIGFuZCBiYW5kZ2FwIGJlZm9yZSBlbmFibGUKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1k
-c2k6IGRvbid0IGVuYWJsZSBQSFkgUExMIHVudGlsIGl0J3MgY29uZmlndXJlZAo+ICAgZHJtL3Jv
-Y2tjaGlwOiBkdy1taXBpLWRzaTogcHJvcGVybHkgY29uZmlndXJlIFBIWSB0aW1pbmcKPiAgIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGltcHJvdmUgUExMIGNvbmZpZ3VyYXRpb24KPiAgIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHVzZSBzcGVjaWZpYyBwb2xsIGhlbHBlcgo+ICAgZHJt
-L3JvY2tjaGlwOiBkdy1taXBpLWRzaTogdXNlIHBvc2l0aXZlIGNoZWNrIGZvciBOe0gsVn1TWU5D
-Cj4gICBkcm0vcm9ja2NoaXA6IHZvcDogdGVzdCBmb3IgUHtILFZ9U1lOQwo+ICAgZHJtL3JvY2tj
-aGlwOiBkdy1taXBpLWRzaTogZGVmZXIgcHJvYmUgaWYgcGFuZWwgaXMgbm90IGxvYWRlZAo+ICAg
-ZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogc3VwcG9ydCBub24tYnVyc3QgbW9kZXMKPiAgIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGFkZCByZXNldCBjb250cm9sCj4gICBkcm0vcm9ja2No
-aXA6IGR3LW1pcGktZHNpOiBzdXBwb3J0IHJlYWQgY29tbWFuZHMKPiAKPiAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgICAgICB8IDMyNSArKysrKysrKysrKysrKysrKysr
-Ky0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMg
-fCAgIDQgKy0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAyMzQgaW5zZXJ0aW9ucygrKSwgOTUgZGVsZXRp
-b25zKC0pCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This ensures that the output resolution is known before fbcon loads.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 2b26a54972da..5ecb03c24c2f 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -1186,10 +1186,17 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+ 
+ 	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
+ 	dsi->dsi_host.dev = dev;
+-	return mipi_dsi_host_register(&dsi->dsi_host);
++	ret = mipi_dsi_host_register(&dsi->dsi_host);
++	if (!ret && !dsi->panel) {
++		mipi_dsi_host_unregister(&dsi->dsi_host);
++		drm_encoder_cleanup(&dsi->encoder);
++		drm_connector_cleanup(&dsi->connector);
++		ret = -EPROBE_DEFER;
++	}
+ 
+ err_pllref:
+-	clk_disable_unprepare(dsi->pllref_clk);
++	if (ret)
++		clk_disable_unprepare(dsi->pllref_clk);
+ 	return ret;
+ }
+ 
+-- 
+2.10.0.278.g4f427b1.dirty
