@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 19/27] drm/rockchip: dw-mipi-dsi: don't enable PHY PLL until it's configured
-Date: Mon, 19 Sep 2016 18:17:34 +0100
-Message-ID: <20160919171747.28512-25-john@metanate.com>
+Subject: [PATCH 10/26] drm/rockchip: dw-mipi-dsi: only request HS clock when required
+Date: Mon, 19 Sep 2016 18:17:20 +0100
+Message-ID: <20160919171747.28512-11-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160919171747.28512-1-john@metanate.com>
@@ -10,28 +10,52 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Requesting the HS clock from the PHY before we initialize it causes an
+invalid signal to be sent out since the input clock is not yet
+configured.  The PHY databook suggests only asserting this signal when
+performing HS transfers, so let's do that.
+
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 65c89367d8b2..61cee02e5f72 100644
+index 554336f8023e..ed2da1bbada9 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -414,12 +414,12 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+@@ -546,13 +546,15 @@ static int dw_mipi_dsi_host_detach(struct mipi_dsi_host *host,
+ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
+ 				   const struct mipi_dsi_msg *msg)
+ {
++	bool lpm = msg->flags & MIPI_DSI_MSG_USE_LPM;
+ 	u32 val = 0;
  
- 	dw_mipi_dsi_phy_write(dsi, 0x44, HSFREQRANGE_SEL(testdin));
+ 	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
+ 		val |= EN_ACK_RQST;
+-	if (msg->flags & MIPI_DSI_MSG_USE_LPM)
++	if (lpm)
+ 		val |= CMD_MODE_ALL_LP;
  
--	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
- 	dw_mipi_dsi_phy_write(dsi, 0x17, INPUT_DIVIDER(dsi->input_div));
- 	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_LOW_SEL(dsi->feedback_div) |
- 					 LOW_PROGRAM_EN);
- 	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
- 					 HIGH_PROGRAM_EN);
-+	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
++	dsi_write(dsi, DSI_LPCLK_CTRL, lpm ? 0 : PHY_TXREQUESTCLKHS);
+ 	dsi_write(dsi, DSI_CMD_MODE_CFG, val);
+ }
  
- 	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
- 					 BIASEXTR_SEL(BIASEXTR_127_7));
+@@ -694,6 +696,7 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
+ 		dsi_write(dsi, DSI_PWR_UP, RESET);
+ 		dsi_write(dsi, DSI_MODE_CFG, ENABLE_VIDEO_MODE);
+ 		dw_mipi_dsi_video_mode_config(dsi);
++		dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
+ 		dsi_write(dsi, DSI_PWR_UP, POWERUP);
+ 	}
+ }
+@@ -711,7 +714,6 @@ static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
+ 		  | PHY_RSTZ | PHY_SHUTDOWNZ);
+ 	dsi_write(dsi, DSI_CLKMGR_CFG, TO_CLK_DIVIDSION(10) |
+ 		  TX_ESC_CLK_DIVIDSION(7));
+-	dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
+ }
+ 
+ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi)
 -- 
 2.10.0.278.g4f427b1.dirty
