@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 14/27] drm/rockchip: dw-mipi-dsi: use specific poll helper
-Date: Mon, 19 Sep 2016 18:17:25 +0100
-Message-ID: <20160919171747.28512-16-john@metanate.com>
+Subject: [PATCH 20/27] drm/rockchip: dw-mipi-dsi: properly configure PHY timing
+Date: Mon, 19 Sep 2016 18:17:36 +0100
+Message-ID: <20160919171747.28512-27-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,62 +21,72 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As the documentation for readx_poll_timeout says, we want to use the
-specialized macro for readl rather than using the generic version
-directly.
+These values are specified as constant time periods but the PHY
+configuration is in terms of the current lane byte clock so using
+constant values guarantees that the timings will be outside the
+specification with some display configurations.
+
+Derive the necessary configuration from the byte clock in order to
+ensure that the PHY configuration is correct.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 36 ++++++++++++++++++++++++++++++----
+ 1 file changed, 32 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 5e343b54f0d0..097b3b0af78f 100644
+index 61cee02e5f72..911ddcbab00d 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -440,14 +440,14 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+@@ -384,6 +384,26 @@ static void dw_mipi_dsi_phy_write(struct dw_mipi_dsi *dsi, u8 test_code,
+ 	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
+ }
+ 
++/**
++ * ns2bc - Nanoseconds to byte clock cycles
++ */
++static inline unsigned int ns2bc(struct dw_mipi_dsi *dsi, int ns)
++{
++	unsigned long byte_clk_khz = dsi->lane_mbps * MSEC_PER_SEC / 8;
++
++	return (ns * (byte_clk_khz / 1000) + 999) / 1000;
++}
++
++/**
++ * ns2ui - Nanoseconds to UI time periods
++ */
++static inline unsigned int ns2ui(struct dw_mipi_dsi *dsi, int ns)
++{
++	unsigned long byte_clk_khz = dsi->lane_mbps * MSEC_PER_SEC;
++
++	return (ns * (byte_clk_khz / 1000) + 999) / 1000;
++}
++
+ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ {
+ 	int ret, testdin, vco, val;
+@@ -435,10 +455,18 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ 					 SETRD_MAX | POWER_MANAGE |
+ 					 TER_RESISTORS_ON);
+ 
+-
+-	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | 0xf);
+-	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | 0x55);
+-	dw_mipi_dsi_phy_write(dsi, 0x72, THS_ZERO_PROGRAM_EN | 0xa);
++	dw_mipi_dsi_phy_write(dsi, 0x60, TLP_PROGRAM_EN | ns2bc(dsi, 500));
++	dw_mipi_dsi_phy_write(dsi, 0x61, THS_PRE_PROGRAM_EN | ns2ui(dsi, 40));
++	dw_mipi_dsi_phy_write(dsi, 0x62, THS_ZERO_PROGRAM_EN | ns2bc(dsi, 300));
++	dw_mipi_dsi_phy_write(dsi, 0x63, THS_PRE_PROGRAM_EN | ns2ui(dsi, 100));
++	dw_mipi_dsi_phy_write(dsi, 0x64, BIT(5) | ns2bc(dsi, 100));
++	dw_mipi_dsi_phy_write(dsi, 0x65, BIT(5) | (ns2bc(dsi, 60) + 7));
++
++	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | ns2bc(dsi, 500));
++	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | (ns2ui(dsi, 50) + 5));
++	dw_mipi_dsi_phy_write(dsi, 0x72, THS_ZERO_PROGRAM_EN | (ns2bc(dsi, 140) + 2));
++	dw_mipi_dsi_phy_write(dsi, 0x73, THS_PRE_PROGRAM_EN | (ns2ui(dsi, 60) + 8));
++	dw_mipi_dsi_phy_write(dsi, 0x74, BIT(5) | ns2bc(dsi, 100));
+ 
+ 	dsi_write(dsi, DSI_PHY_RSTZ, PHY_ENFORCEPLL | PHY_ENABLECLK |
  				     PHY_UNRSTZ | PHY_UNSHUTDOWNZ);
- 
- 
--	ret = readx_poll_timeout(readl, dsi->base + DSI_PHY_STATUS,
-+	ret = readl_poll_timeout(dsi->base + DSI_PHY_STATUS,
- 				 val, val & LOCK, 1000, PHY_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
- 		dev_err(dsi->dev, "failed to wait for phy lock state\n");
- 		return ret;
- 	}
- 
--	ret = readx_poll_timeout(readl, dsi->base + DSI_PHY_STATUS,
-+	ret = readl_poll_timeout(dsi->base + DSI_PHY_STATUS,
- 				 val, val & STOP_STATE_CLK_LANE, 1000,
- 				 PHY_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
-@@ -563,7 +563,7 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 	int ret;
- 	u32 val, mask;
- 
--	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
-+	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
- 				 val, !(val & GEN_CMD_FULL), 1000,
- 				 CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
-@@ -574,7 +574,7 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 	dsi_write(dsi, DSI_GEN_HDR, hdr_val);
- 
- 	mask = GEN_CMD_EMPTY | GEN_PLD_W_EMPTY;
--	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
-+	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
- 				 val, (val & mask) == mask,
- 				 1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
-@@ -633,7 +633,7 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 			len -= pld_data_bytes;
- 		}
- 
--		ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
-+		ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
- 					 val, !(val & GEN_PLD_W_FULL), 1000,
- 					 CMD_PKT_STATUS_TIMEOUT_US);
- 		if (ret < 0) {
 -- 
 2.10.0.278.g4f427b1.dirty
