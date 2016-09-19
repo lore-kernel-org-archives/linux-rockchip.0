@@ -1,59 +1,48 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 06/26] drm/rockchip: dw-mipi-dsi: fix generic packet status
- check
-Date: Mon, 19 Sep 2016 18:17:16 +0100
-Message-ID: <20160919171747.28512-7-john@metanate.com>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH 18/27] drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
+Date: Mon, 19 Sep 2016 18:17:32 +0100
+Message-ID: <20160919171747.28512-23-john@metanate.com>
 References: <20160919171747.28512-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160919171747.28512-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160919171747.28512-1-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We want to check that both the GEN_CMD_EMPTY and GEN_PLD_W_EMPTY bits
-are set so we can't just check "val & mask" because that will be true if
-either bit is set.
+We should configure these functions before enabling them.
 
-Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 03915bf9c97d..f2bed2a0f907 100644
+index e310c3d81bb8..65c89367d8b2 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -546,7 +546,7 @@ static int dw_mipi_dsi_host_detach(struct mipi_dsi_host *host,
- static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- {
- 	int ret;
--	u32 val;
-+	u32 val, mask;
+@@ -421,6 +421,11 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ 	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
+ 					 HIGH_PROGRAM_EN);
  
- 	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
- 				 val, !(val & GEN_CMD_FULL), 1000,
-@@ -558,8 +558,9 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
++	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
++					 BIASEXTR_SEL(BIASEXTR_127_7));
++	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
++					 BANDGAP_SEL(BANDGAP_96_10));
++
+ 	dw_mipi_dsi_phy_write(dsi, 0x20, POWER_CONTROL | INTERNAL_REG_CURRENT |
+ 					 BIAS_BLOCK_ON | BANDGAP_ON);
  
- 	dsi_write(dsi, DSI_GEN_HDR, hdr_val);
+@@ -430,10 +435,6 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ 					 SETRD_MAX | POWER_MANAGE |
+ 					 TER_RESISTORS_ON);
  
-+	mask = GEN_CMD_EMPTY | GEN_PLD_W_EMPTY;
- 	ret = readx_poll_timeout(readl, dsi->base + DSI_CMD_PKT_STATUS,
--				 val, val & (GEN_CMD_EMPTY | GEN_PLD_W_EMPTY),
-+				 val, (val & mask) == mask,
- 				 1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
- 		dev_err(dsi->dev, "failed to write command FIFO\n");
+-	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
+-					 BIASEXTR_SEL(BIASEXTR_127_7));
+-	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
+-					 BANDGAP_SEL(BANDGAP_96_10));
+ 
+ 	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | 0xf);
+ 	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | 0x55);
 -- 
 2.10.0.278.g4f427b1.dirty
