@@ -1,70 +1,108 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH 11/26] drm/rockchip: dw-mipi-dsi: don't assume buffer is
- aligned
-Date: Mon, 19 Sep 2016 18:17:21 +0100
-Message-ID: <20160919171747.28512-12-john@metanate.com>
-References: <20160919171747.28512-1-john@metanate.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage initialization
+Date: Mon, 19 Sep 2016 19:25:05 +0200
+Message-ID: <18665684.Ns8BPg2lAe@phil>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com> <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com> <20160919191327.741a2b89@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20160919171747.28512-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160919191327.741a2b89@bbrezillon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Doug Anderson <dianders@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-By dereferencing the MIPI command buffer as a u32* we rely on it being
-correctly aligned on ARM, but this may not be the case.  Copy it into a
-stack variable that will be correctly aligned.
+Am Montag, 19. September 2016, 19:13:27 CEST schrieb Boris Brezillon:
+> On Mon, 19 Sep 2016 09:38:34 -0700
+> 
+> Doug Anderson <dianders@chromium.org> wrote:
+> > Hi,
+> > 
+> > On Mon, Sep 19, 2016 at 9:15 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> > > Am Montag, 19. September 2016, 08:15:30 CEST schrieb Doug Anderson:
+> > >> Hi,
+> > >> 
+> > >> On Mon, Sep 19, 2016 at 1:44 AM, Andy Yan <andy.yan@rock-chips.com> 
+wrote:
+> > >> > The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
+> > >> > pwm modulate vdd_logic voltage, but the pwm is default disabled and
+> > >> > the pwm pin acts as a gpio before pwm regulator probed, so the pwm
+> > >> > regulator driver will get a zero dutycycle at probe time, so change
+> > >> > the initial dutycycle to zero to match pwm_regulator_init_state
+> > >> > check.
+> > >> > 
+> > >> > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > >> > 
+> > >> > ---
+> > >> > 
+> > >> >  arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
+> > >> >  arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
+> > >> >  arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
+> > >> >  3 files changed, 3 insertions(+), 3 deletions(-)
+> > >> > 
+> > >> > diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > >> > b/arch/arm/boot/dts/rk3066a-bqcurie2.dts index bc674ee..618450d
+> > >> > 100644
+> > >> > --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > >> > +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> > >> > @@ -61,7 +61,7 @@
+> > >> > 
+> > >> >                 regulator-min-microvolt = <1200000>;
+> > >> >                 regulator-max-microvolt = <1200000>;
+> > >> >                 regulator-always-on;
+> > >> > 
+> > >> > -               voltage-table = <1000000 100>,
+> > >> > +               voltage-table = <1000000 0>,
+> > >> 
+> > >> In my opinion this isn't quite the right answer.  I think that you
+> > >> should add a new property describing the voltage in the case that the
+> > >> 
+> > >> pin is an input and you should fill that property in, like:
+> > >>   voltage-when-input = <1000000>;
+> > > 
+> > > I'd think this would be more of a pwm issue, not something the
+> > > pwm-regulator should need to care about.
+> > > 
+> > > Ideally the pwm driver should be able to return some state information
+> > > even if disabled? I.e. deriving a duty-cycle value from its pin state
+> > > similar to what Doug described below (it's either 0% or 100%)
+> > > 
+> > > But right now I have a hard time understanding how the pwm could return
+> > > any
+> > > duty-cycle information for an input gpio to the pwm-regulator, as I
+> > > assume the pwm-driver has to probe (and thus set pinctrl to the pwm
+> > > function) before the pwm-regulator is able to get the pwm handle?
+> > 
+> > Hrm, right.  The PWM ought to own the pinctrl, not the regulator.
+> > Hrm.  Then I guess this gets more complicated.
+> > 
+> > One thing to point out, though, is that an EE I talked to said that
+> > the "voltage when input" is actually a well defined property and is
+> > unrelated to the min/max voltage.  AKA: it's not guaranteed to be
+> > equal to the 50% duty cycle.  ...so adding a property to the PWM
+> > regulator that includes this value is something very sane.  The
+> > "voltage when input" is defined by the pile of resistors and
+> > capacitors that are used to actually make the PWM control the
+> > regulator.
+> > 
+> > The "voltage when input" is super important because this is the
+> > voltage that's used at bootup (when all pins are configured as inputs,
+> > possible with a pull applied) and that's used during suspend time when
+> > the PWM stops.
+> 
+> Correct me if I'm wrong, but the main problem here is that, when we try
+> to detect the initial regulator state, we ran into a "missing entry in
+> the duty-cycle <-> voltage table" error, which then triggers an -EINVAL
+> error preventing the PWM regulator probe to succeed.
 
-Signed-off-by: John Keeping <john@metanate.com>
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+I'm unsure about this ... i.e. according to Andy's description, the pin is 
+muxed as gpio and set to input, which in turn results in the voltage-when-
+input scenario.
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index ed2da1bbada9..4c945cc4d31a 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -608,10 +608,10 @@ static int dw_mipi_dsi_dcs_short_write(struct dw_mipi_dsi *dsi,
- static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 				      const struct mipi_dsi_msg *msg)
- {
--	const u32 *tx_buf = msg->tx_buf;
--	int len = msg->tx_len, pld_data_bytes = sizeof(*tx_buf), ret;
-+	const u8 *tx_buf = msg->tx_buf;
-+	int len = msg->tx_len, pld_data_bytes = sizeof(u32), ret;
- 	u32 hdr_val = GEN_HDATA(msg->tx_len) | GEN_HTYPE(msg->type);
--	u32 remainder = 0;
-+	u32 remainder;
- 	u32 val;
- 
- 	if (msg->tx_len < 3) {
-@@ -622,12 +622,14 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 
- 	while (DIV_ROUND_UP(len, pld_data_bytes)) {
- 		if (len < pld_data_bytes) {
-+			remainder = 0;
- 			memcpy(&remainder, tx_buf, len);
- 			dsi_write(dsi, DSI_GEN_PLD_DATA, remainder);
- 			len = 0;
- 		} else {
--			dsi_write(dsi, DSI_GEN_PLD_DATA, *tx_buf);
--			tx_buf++;
-+			memcpy(&remainder, tx_buf, pld_data_bytes);
-+			dsi_write(dsi, DSI_GEN_PLD_DATA, remainder);
-+			tx_buf += pld_data_bytes;
- 			len -= pld_data_bytes;
- 		}
- 
--- 
-2.10.0.278.g4f427b1.dirty
+So what happens with that voltage when the pwm-driver (= driver-core after 
+probe) switches the pinmux to the pwm output, but that pwm itself is not 
+running?
+
+For veyrons it was easy, as the firmware set up the pwm to what it wanted, so 
+the state could be read back.
