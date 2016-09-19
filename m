@@ -1,108 +1,69 @@
-From: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] ASoC: rk3399_gru_sound: fix recording pop at first
- attempt
-Date: Mon, 19 Sep 2016 15:44:30 +0100
-Message-ID: <20160919144404.GA18734@leverpostej>
-References: <1474295379-16936-1-git-send-email-zhengxing@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage initialization
+Date: Mon, 19 Sep 2016 08:15:30 -0700
+Message-ID: <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com> <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1474295379-16936-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, hychao-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cychiang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Boris Brezillon <boris.brezillon@free-electrons.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Sep 19, 2016 at 10:29:39PM +0800, Xing Zheng wrote:
-> From: Wonjoon Lee <woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> 
-> Pop happens when mclk applied but dmic's own boot-time
-> Specify dmic delay times in dt to make sure
-> clocks are ready earlier than dmic working
-> 
-> Signed-off-by: Wonjoon Lee <woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi,
+
+On Mon, Sep 19, 2016 at 1:44 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+> The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
+> pwm modulate vdd_logic voltage, but the pwm is default disabled and
+> the pwm pin acts as a gpio before pwm regulator probed, so the pwm
+> regulator driver will get a zero dutycycle at probe time, so change
+> the initial dutycycle to zero to match pwm_regulator_init_state check.
+>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>
 > ---
-> 
->  .../bindings/sound/rockchip,rk3399-gru-sound.txt   |    6 ++++++
->  sound/soc/rockchip/rk3399_gru_sound.c              |   14 ++++++++++++++
->  2 files changed, 20 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> index f19b6c8..b7dd3ab 100644
-> --- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> +++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> @@ -6,6 +6,12 @@ Required properties:
->    connected to the codecs
->  - rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
->  
-> +Optional properties:
-> +- dmic-delay : specify delay time for DMIC ready.
-> +  If this option is specified, which means it's required dmic need
-> +  delay for DMIC to ready so that rt5514 can avoid recording before
-> +  DMIC send valid data
+>
+>  arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
+>  arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
+>  arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> index bc674ee..618450d 100644
+> --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> @@ -61,7 +61,7 @@
+>                 regulator-min-microvolt = <1200000>;
+>                 regulator-max-microvolt = <1200000>;
+>                 regulator-always-on;
+> -               voltage-table = <1000000 100>,
+> +               voltage-table = <1000000 0>,
 
-What units is this in? Per the code it looks like ms, so if we follow
-Documentation/devicetree/bindings/property-units.txt, thous should be
-named something like dmic-enable-delay-ms.
+In my opinion this isn't quite the right answer.  I think that you
+should add a new property describing the voltage in the case that the
+pin is an input and you should fill that property in, like:
 
-That said, do we even need a property for this? Does this vary much in
-practice?
+  voltage-when-input = <1000000>;
 
-If it does, can we not derive this delay from other information (e.g.
-the rates of input clocks and so on)? What exactly determines the
-necessary delay?
+Once you have this property you should ideally be able to read whether
+the pin is currently configured as an input or as a special function
+at bootup.  Note that I don't actually know if this is possible with
+the current pinctrl API, but it does seem like the ideal way to do it
+since it means you'll work even if the BIOS changes (AKA: if the BIOS
+leaves the pin as an input you can keep the voltage the same and if
+the BIOS leaves the pin as PWM you can keep the voltage the same).
 
-Thanks,
-Mark.
+It's also possible that you could just add a property that says "init
+to a certain value at bootup no matter what the BIOS left it as".  As
+long as that voltage is the maximum (and you'll lower it later) this
+ought to be safe and you shouldn't risk temporarily undervolting
+things.
 
->  
->  sound {
-> diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-> index 164b6da..6ab838b 100644
-> --- a/sound/soc/rockchip/rk3399_gru_sound.c
-> +++ b/sound/soc/rockchip/rk3399_gru_sound.c
-> @@ -37,6 +37,8 @@
->  
->  #define SOUND_FS	256
->  
-> +unsigned int rt5514_dmic_delay;
-> +
->  static struct snd_soc_jack rockchip_sound_jack;
->  
->  static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
-> @@ -122,6 +124,9 @@ static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
->  		return ret;
->  	}
->  
-> +	/* Wait for DMIC stable */
-> +	msleep(rt5514_dmic_delay);
-> +
->  	return 0;
->  }
->  
-> @@ -334,6 +339,15 @@ static int rockchip_sound_probe(struct platform_device *pdev)
->  		return -ENODEV;
->  	}
->  
-> +	/* Set DMIC delay */
-> +	ret = device_property_read_u32(&pdev->dev, "dmic-delay",
-> +					&rt5514_dmic_delay);
-> +	if (ret) {
-> +		rt5514_dmic_delay = 0;
-> +		dev_dbg(&pdev->dev,
-> +			"no optional property 'dmic-delay' found, default: no delay\n");
-> +	}
-> +
->  	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
->  	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
->  	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
-> -- 
-> 1.7.9.5
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+Note that, if you haven't already done so, you almost certainly want
+to make sure your pinctrl species an "init" state in addition to a
+"default" state.  See <https://patchwork.kernel.org/patch/7454311/>.
+
+-Doug
