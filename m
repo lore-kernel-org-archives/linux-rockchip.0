@@ -1,66 +1,59 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v15 5/5] ASoC: rockchip: Add DP dai-links to the
- rk3399-gru machine driver
-Date: Mon, 19 Sep 2016 16:37:27 -0500
-Message-ID: <20160919213727.GA22901@rob-hp-laptop>
-References: <1473473748-22331-1-git-send-email-zyw@rock-chips.com>
- <1473473748-22331-6-git-send-email-zyw@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
+ suspend
+Date: Mon, 19 Sep 2016 16:14:42 -0700
+Message-ID: <20160919231441.GA60928@google.com>
+References: <20160916054917.16930-1-briannorris@chromium.org>
+ <57DBA81F.2060404@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1473473748-22331-6-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hychao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <57DBA81F.2060404@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Sep 09, 2016 at 07:15:48PM -0700, Chris Zhong wrote:
-> This patch adds DP audio output support to the rk3399-gru machine
-> driver.
-> 
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v15: None
-> Changes in v14: None
-> Changes in v13: None
-> Changes in v12: None
-> Changes in v11: None
-> Changes in v10: None
-> Changes in v9: None
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3:
-> - change spdif to i2s2
-> 
-> Changes in v2:
-> - correct the commit message
-> 
-> Changes in v1: None
-> 
->  .../bindings/sound/rockchip,rk3399-gru-sound.txt   | 11 +--
->  sound/soc/rockchip/rk3399_gru_sound.c              | 93 ++++++++++++++++++++++
->  2 files changed, 99 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> index f19b6c8..83af540 100644
-> --- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> +++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-> @@ -1,15 +1,16 @@
-> -ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
-> +ROCKCHIP with MAX98357A/RT5514/DA7219 codecs and DP via spdif on GRU boards
->  
->  Required properties:
->  - compatible: "rockchip,rk3399-gru-sound"
-> -- rockchip,cpu: The phandle of the Rockchip I2S controller that's
-> +- rockchip,cpu: The phandle of the Rockchip I2S controller controller that's
+On Fri, Sep 16, 2016 at 09:06:55AM +0100, Marc Zyngier wrote:
+> Hi Brian,
 
-Huh?
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Hi Marc,
+
+Thanks for the quick response.
+
+> On 16/09/16 06:49, Brian Norris wrote:
+> > Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
+> > for suspend timekeeping"), this driver assumes that the ARM architected
+> > timer keeps running in suspend. This is not the case for some ARM SoCs,
+> > depending on the HW state used for system suspend. Let's not assume that
+> > all SoCs support this, and instead only support this if the device tree
+> > explicitly tells us it's "always on". In all other cases, just fall back
+> > to the RTC. This should be relatively harmless.
+> 
+> I'm afraid you're confusing two things:
+> - the counter, which *must* carry on counting no matter what, as
+> (quoting the ARM ARM) "The system counter must be implemented in an
+> always-on power domain"
+> - the timer, which is allowed to be powered off, and can be tagged with
+> the "always-on" property to indicate that it is guaranteed to stay up
+> (which in practice only exists in virtual machines and never on real HW).
+
+Indeed, sorry for that confusion, and thanks for the explanations.
+
+> If your counter does stop counting when suspended, then this is starting
+> to either feel like a HW bug, or someone is killing the clock that feeds
+> this counter when entering suspend.
+> 
+> If this is the former, then we need a separate quirk to indicate the
+> non-standard behaviour. If it is the latter, don't do it! ;-)
+
+It's beginning to seem more like a HW quirk which yields nonstandard
+behavior. AIUI, this SoC normally runs the counter off its 24 MHz clock,
+but for low power modes, this "always-on" domain switches over to a 32
+KHz alternative clock. Unfortunately, the counter doesn't actually tick
+when run this way. I'm trying to confirm with the chip designers
+(Rockchip, RK3399) about the nature of the quirk, but I think we'll need
+a separate DT flag for this behavior.
+
+Brian
