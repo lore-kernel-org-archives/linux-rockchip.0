@@ -1,104 +1,101 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
  initialization
-Date: Mon, 19 Sep 2016 11:44:38 +0200
-Message-ID: <20160919114438.0f702782@bbrezillon>
+Date: Mon, 19 Sep 2016 17:59:32 +0800
+Message-ID: <2e142e7a-1b53-b251-bc7d-56d27258ee53@rock-chips.com>
 References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
-        <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
-        <20160919112522.5567b882@bbrezillon>
-        <66bc44e2-2549-c6d1-150c-5ddadf538f06@rock-chips.com>
+ <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+ <20160919112522.5567b882@bbrezillon>
+ <66bc44e2-2549-c6d1-150c-5ddadf538f06@rock-chips.com>
+ <20160919114438.0f702782@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <66bc44e2-2549-c6d1-150c-5ddadf538f06@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160919114438.0f702782@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 19 Sep 2016 17:38:10 +0800
-Andy Yan <andy.yan@rock-chips.com> wrote:
-
-> On 2016年09月19日 17:25, Boris Brezillon wrote:
-> > On Mon, 19 Sep 2016 16:44:56 +0800
-> > Andy Yan <andy.yan@rock-chips.com> wrote:
-> >  
-> >> The current rk3066a based boards(Rayeager, Bqcurie2, Marsboard) use
-> >> pwm modulate vdd_logic voltage, but the pwm is default disabled and
-> >> the pwm pin acts as a gpio before pwm regulator probed, so the pwm
-> >> regulator driver will get a zero dutycycle at probe time, so change
-> >> the initial dutycycle to zero to match pwm_regulator_init_state check.
-> >>
-> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> >>
-> >> ---
-> >>
-> >>   arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 2 +-
-> >>   arch/arm/boot/dts/rk3066a-marsboard.dts | 2 +-
-> >>   arch/arm/boot/dts/rk3066a-rayeager.dts  | 2 +-
-> >>   3 files changed, 3 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> >> index bc674ee..618450d 100644
-> >> --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> >> +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-> >> @@ -61,7 +61,7 @@
-> >>   		regulator-min-microvolt = <1200000>;
-> >>   		regulator-max-microvolt = <1200000>;
-> >>   		regulator-always-on;
-> >> -		voltage-table = <1000000 100>,
-> >> +		voltage-table = <1000000 0>,
-> >>   				<1200000 42>;  
-> > So, it seems you are reversing the PWM polarity here. Are you sure you
-> > shouldn't change the 2nd entry of this table (<1200000 58>)?  
-> 
-> 
->      no, 42% duty cycle give a stable 1.2v vdd_logic voltage on my 
-> board. As i explained in the commit, the pwm was default at a disabled 
-> state before regulator_register success at pwm_regulator probe, so 
-> pwm_regulator_init_state  function will get  a zero dutycycle from 
-> pwm_get_relative_dutycycle. I have to change the dutycycle of  fist 
-> table to zero to match the following check, other wise the function will 
-> return defualt value(-EINVAL), then the pwm regulator register failed.
-
-Is 0% duty really producing a 1V output, or are you just changing it to
-make it work?
-
-BTW, I'm not sure we should fail when the current PWM state does not
-match one of the value in the voltage-table.
-
-> >  
-> >>   		status = "okay";
-> >>   	};
-> >> diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
-> >> index a2b763e..ddc680b 100644
-> >> --- a/arch/arm/boot/dts/rk3066a-marsboard.dts
-> >> +++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
-> >> @@ -59,7 +59,7 @@
-> >>   		regulator-min-microvolt = <1200000>;
-> >>   		regulator-max-microvolt = <1200000>;
-> >>   		regulator-always-on;
-> >> -		voltage-table = <1000000 100>,
-> >> +		voltage-table = <1000000 0>,
-> >>   				<1200000 42>;
-> >>   		status = "okay";
-> >>   	};
-> >> diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
-> >> index 2536b3a..30aee99 100644
-> >> --- a/arch/arm/boot/dts/rk3066a-rayeager.dts
-> >> +++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
-> >> @@ -84,7 +84,7 @@
-> >>   		regulator-min-microvolt = <1200000>;
-> >>   		regulator-max-microvolt = <1200000>;
-> >>   		regulator-always-on;
-> >> -		voltage-table = <1000000 100>,
-> >> +		voltage-table = <1000000 0>,
-> >>   				<1200000 42>;
-> >>   		status = "okay";
-> >>   	};  
-> >
-> >
-> >  
-> 
-> 
+SGkgQm9yaXM6CgoKT24gMjAxNuW5tDA55pyIMTnml6UgMTc6NDQsIEJvcmlzIEJyZXppbGxvbiB3
+cm90ZToKPiBPbiBNb24sIDE5IFNlcCAyMDE2IDE3OjM4OjEwICswODAwCj4gQW5keSBZYW4gPGFu
+ZHkueWFuQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPgo+PiBPbiAyMDE25bm0MDnmnIgxOeaXpSAx
+NzoyNSwgQm9yaXMgQnJlemlsbG9uIHdyb3RlOgo+Pj4gT24gTW9uLCAxOSBTZXAgMjAxNiAxNjo0
+NDo1NiArMDgwMAo+Pj4gQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPiB3cm90ZToK
+Pj4+ICAgCj4+Pj4gVGhlIGN1cnJlbnQgcmszMDY2YSBiYXNlZCBib2FyZHMoUmF5ZWFnZXIsIEJx
+Y3VyaWUyLCBNYXJzYm9hcmQpIHVzZQo+Pj4+IHB3bSBtb2R1bGF0ZSB2ZGRfbG9naWMgdm9sdGFn
+ZSwgYnV0IHRoZSBwd20gaXMgZGVmYXVsdCBkaXNhYmxlZCBhbmQKPj4+PiB0aGUgcHdtIHBpbiBh
+Y3RzIGFzIGEgZ3BpbyBiZWZvcmUgcHdtIHJlZ3VsYXRvciBwcm9iZWQsIHNvIHRoZSBwd20KPj4+
+PiByZWd1bGF0b3IgZHJpdmVyIHdpbGwgZ2V0IGEgemVybyBkdXR5Y3ljbGUgYXQgcHJvYmUgdGlt
+ZSwgc28gY2hhbmdlCj4+Pj4gdGhlIGluaXRpYWwgZHV0eWN5Y2xlIHRvIHplcm8gdG8gbWF0Y2gg
+cHdtX3JlZ3VsYXRvcl9pbml0X3N0YXRlIGNoZWNrLgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTog
+QW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+Pj4+Cj4+Pj4gLS0tCj4+Pj4KPj4+
+PiAgICBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLWJxY3VyaWUyLmR0cyAgfCAyICstCj4+Pj4g
+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tYXJzYm9hcmQuZHRzIHwgMiArLQo+Pj4+ICAg
+IGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzICB8IDIgKy0KPj4+PiAgICAz
+IGZpbGVzIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+
+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLWJxY3VyaWUyLmR0cyBiL2Fy
+Y2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtYnFjdXJpZTIuZHRzCj4+Pj4gaW5kZXggYmM2NzRlZS4u
+NjE4NDUwZCAxMDA2NDQKPj4+PiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLWJxY3Vy
+aWUyLmR0cwo+Pj4+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtYnFjdXJpZTIuZHRz
+Cj4+Pj4gQEAgLTYxLDcgKzYxLDcgQEAKPj4+PiAgICAJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0
+ID0gPDEyMDAwMDA+Owo+Pj4+ICAgIAkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAw
+MD47Cj4+Pj4gICAgCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4+IC0JCXZvbHRhZ2UtdGFibGUg
+PSA8MTAwMDAwMCAxMDA+LAo+Pj4+ICsJCXZvbHRhZ2UtdGFibGUgPSA8MTAwMDAwMCAwPiwKPj4+
+PiAgICAJCQkJPDEyMDAwMDAgNDI+Owo+Pj4gU28sIGl0IHNlZW1zIHlvdSBhcmUgcmV2ZXJzaW5n
+IHRoZSBQV00gcG9sYXJpdHkgaGVyZS4gQXJlIHlvdSBzdXJlIHlvdQo+Pj4gc2hvdWxkbid0IGNo
+YW5nZSB0aGUgMm5kIGVudHJ5IG9mIHRoaXMgdGFibGUgKDwxMjAwMDAwIDU4Pik/Cj4+Cj4+ICAg
+ICAgIG5vLCA0MiUgZHV0eSBjeWNsZSBnaXZlIGEgc3RhYmxlIDEuMnYgdmRkX2xvZ2ljIHZvbHRh
+Z2Ugb24gbXkKPj4gYm9hcmQuIEFzIGkgZXhwbGFpbmVkIGluIHRoZSBjb21taXQsIHRoZSBwd20g
+d2FzIGRlZmF1bHQgYXQgYSBkaXNhYmxlZAo+PiBzdGF0ZSBiZWZvcmUgcmVndWxhdG9yX3JlZ2lz
+dGVyIHN1Y2Nlc3MgYXQgcHdtX3JlZ3VsYXRvciBwcm9iZSwgc28KPj4gcHdtX3JlZ3VsYXRvcl9p
+bml0X3N0YXRlICBmdW5jdGlvbiB3aWxsIGdldCAgYSB6ZXJvIGR1dHljeWNsZSBmcm9tCj4+IHB3
+bV9nZXRfcmVsYXRpdmVfZHV0eWN5Y2xlLiBJIGhhdmUgdG8gY2hhbmdlIHRoZSBkdXR5Y3ljbGUg
+b2YgIGZpc3QKPj4gdGFibGUgdG8gemVybyB0byBtYXRjaCB0aGUgZm9sbG93aW5nIGNoZWNrLCBv
+dGhlciB3aXNlIHRoZSBmdW5jdGlvbiB3aWxsCj4+IHJldHVybiBkZWZ1YWx0IHZhbHVlKC1FSU5W
+QUwpLCB0aGVuIHRoZSBwd20gcmVndWxhdG9yIHJlZ2lzdGVyIGZhaWxlZC4KPiBJcyAwJSBkdXR5
+IHJlYWxseSBwcm9kdWNpbmcgYSAxViBvdXRwdXQsIG9yIGFyZSB5b3UganVzdCBjaGFuZ2luZyBp
+dCB0bwo+IG1ha2UgaXQgd29yaz8KCiAgICAgbm8sIEknbSBub3Qgc3VyZSAwJSBkdXR5IGlzIHJl
+YWxseSBwcm9kdWNpbmcgYSAxdiBvdXRwdXQsIG1heWJlIHRoZSAKMTAwJSBkdXR5IHByb2R1Y2lu
+ZyBhIDF2IG91dHB1dCwgSSBqdXN0IGNoYW5naW5nIGl0IHRvIG1ha2UgaXQgd29yayBvbiAKeW91
+ciBQYXRjaC4gQmVmb3JlIHRoZSBwd20gcmVndWxhdG9yIHJlZ2lzdGVyZWQgc3VjY2VzcywgdGhl
+IHB3bSBvdXRwdXQgCnBpbiBhY3QgYXMgYSBzdGFibGUgZ3BpbyBhdCBhIGhpZ2h0IG9yIGxvdyBs
+ZXZlbChkZXBlbmRzIG9uIHRoZSBzb2MgCnBvd2VyIG9uIHN0YXRlKSB0byBjb250cm9sIGEgMXYg
+b3V0cHV0Lgo+Cj4gQlRXLCBJJ20gbm90IHN1cmUgd2Ugc2hvdWxkIGZhaWwgd2hlbiB0aGUgY3Vy
+cmVudCBQV00gc3RhdGUgZG9lcyBub3QKPiBtYXRjaCBvbmUgb2YgdGhlIHZhbHVlIGluIHRoZSB2
+b2x0YWdlLXRhYmxlLgoKICAgICAgICAgWWVzLCB0aGUgcHJldmlvdXMgdmVyc2lvbiBkb24ndCBo
+YXZlIHRoZSBzdGF0ZSBjaGVjaywgc28gdGhlIApyZWd1bGF0b3IgY2FuIHJlZ2lzdGVyIHN1Y2Nl
+c3MuCj4KPj4+ICAgCj4+Pj4gICAgCQlzdGF0dXMgPSAib2theSI7Cj4+Pj4gICAgCX07Cj4+Pj4g
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtbWFyc2JvYXJkLmR0cyBiL2Fy
+Y2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtbWFyc2JvYXJkLmR0cwo+Pj4+IGluZGV4IGEyYjc2M2Uu
+LmRkYzY4MGIgMTAwNjQ0Cj4+Pj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tYXJz
+Ym9hcmQuZHRzCj4+Pj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tYXJzYm9hcmQu
+ZHRzCj4+Pj4gQEAgLTU5LDcgKzU5LDcgQEAKPj4+PiAgICAJCXJlZ3VsYXRvci1taW4tbWljcm92
+b2x0ID0gPDEyMDAwMDA+Owo+Pj4+ICAgIAkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIw
+MDAwMD47Cj4+Pj4gICAgCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4+IC0JCXZvbHRhZ2UtdGFi
+bGUgPSA8MTAwMDAwMCAxMDA+LAo+Pj4+ICsJCXZvbHRhZ2UtdGFibGUgPSA8MTAwMDAwMCAwPiwK
+Pj4+PiAgICAJCQkJPDEyMDAwMDAgNDI+Owo+Pj4+ICAgIAkJc3RhdHVzID0gIm9rYXkiOwo+Pj4+
+ICAgIAl9Owo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLXJheWVh
+Z2VyLmR0cyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+Pj4gaW5k
+ZXggMjUzNmIzYS4uMzBhZWU5OSAxMDA2NDQKPj4+PiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9y
+azMwNjZhLXJheWVhZ2VyLmR0cwo+Pj4+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEt
+cmF5ZWFnZXIuZHRzCj4+Pj4gQEAgLTg0LDcgKzg0LDcgQEAKPj4+PiAgICAJCXJlZ3VsYXRvci1t
+aW4tbWljcm92b2x0ID0gPDEyMDAwMDA+Owo+Pj4+ICAgIAkJcmVndWxhdG9yLW1heC1taWNyb3Zv
+bHQgPSA8MTIwMDAwMD47Cj4+Pj4gICAgCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4+IC0JCXZv
+bHRhZ2UtdGFibGUgPSA8MTAwMDAwMCAxMDA+LAo+Pj4+ICsJCXZvbHRhZ2UtdGFibGUgPSA8MTAw
+MDAwMCAwPiwKPj4+PiAgICAJCQkJPDEyMDAwMDAgNDI+Owo+Pj4+ICAgIAkJc3RhdHVzID0gIm9r
+YXkiOwo+Pj4+ICAgIAl9Owo+Pj4KPj4+ICAgCj4+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+
+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
