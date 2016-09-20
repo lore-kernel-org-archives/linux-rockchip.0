@@ -1,155 +1,124 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v3 3/3] drm/bridge: analogix_dp: detect Sink PSR state
- after configuring the PSR
-Date: Tue, 20 Sep 2016 10:22:34 +0800
-Message-ID: <a2d8a2e5-7568-12b2-0541-5d58d3aafca6@rock-chips.com>
-References: <1473306526-4340-1-git-send-email-ykk@rock-chips.com>
- <1473414302-390-1-git-send-email-ykk@rock-chips.com>
- <CAOw6vbJKggHaA9zeeiL2FUR7oraMRdVEocmLzrtBtM7mjBCVcQ@mail.gmail.com>
+From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] Documentation: mmc: sdhci-of-arasan: add
+ description of power domain
+Date: Tue, 20 Sep 2016 10:29:44 +0800
+Message-ID: <1ec66aea-10b4-4208-369e-9ef5feb800df@rock-chips.com>
+References: <20160917023250.1159-1-xzy.xu@rock-chips.com>
+ <20160917023250.1159-2-xzy.xu@rock-chips.com>
+ <CAPDyKFrgdsppLg9RkCsSh4nhjUiJR6D4u+E8qnzfbtNxhwLOmw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAOw6vbJKggHaA9zeeiL2FUR7oraMRdVEocmLzrtBtM7mjBCVcQ@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAPDyKFrgdsppLg9RkCsSh4nhjUiJR6D4u+E8qnzfbtNxhwLOmw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
+hi Ulf,
 
-On 09/12/2016 09:52 PM, Sean Paul wrote:
-> On Fri, Sep 9, 2016 at 5:45 AM, Yakir Yang <ykk@rock-chips.com> wrote:
->> Make sure the request PSR state takes effect in analogix_dp_send_psr_spd()
->> function, or print the sink PSR error state if we failed to apply the
->> requested PSR setting.
+
+On 2016年09月17日 16:49, Ulf Hansson wrote:
+> On 17 September 2016 at 04:32, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>> Add power domain as a optional property for sdhci-of-arasan, which can
+>> be turned off in the so-called unused condition, such as suspend and
+>> remove. Aim to lower power requirements.
+> I assume runtime suspend make sense as well?
+
+Sorry to reply this mail after a long time.
+
+On rk3399 platform, there is a eMMC-phy which is in charge of eMMC's 
+logic interface. We should guarantee that phy is ready before cmd/data 
+transfer.
+I mean that I need to consider about the resume latency, so that I can 
+land RPM for arasan-of-sdhci.
+I intend to use auto-suspend for arasan-of-sdhci.
+
+>
+> Moreover, perhaps you could share a little information here about what
+> needs to be done at the driver level which controls the mmc IP. More
+> precisely, what do you need to do at runtime_suspend, suspend,
+> runtime_resume, and resume?
+
+Invoke sdhci_runtime_suspend_host, disable relevant clock in 
+rumtime_suspend, deprocessing in runtime_resume.
+Is that ok?
+
+>
+> Kind regards
+> Uffe
+>
+>> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >>
->> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 >> ---
+>>
 >> Changes in v3:
->> - Update commit message
->> - Add DP_TIMEOUT_PSR_LOOP_MS marcos
->> - Correct the return values of analogix_dp_send_psr_spd()
+>> - fix a typo
+>> - add Rob's ack-tag
 >>
 >> Changes in v2:
->> - A bunch of good fixes from Sean
+>> - fix a typo
+>> - add an example code for power-domain
 >>
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 ++----
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  5 +++--
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 25 ++++++++++++++++++++--
->>   3 files changed, 28 insertions(+), 8 deletions(-)
+>>   Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
+>>   1 file changed, 6 insertions(+), 1 deletion(-)
 >>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 5fe3982..c0ce16a 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -116,8 +116,7 @@ int analogix_dp_enable_psr(struct device *dev)
->>          psr_vsc.DB0 = 0;
->>          psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+>> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> index 3404afa..eb84d29 100644
+>> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+>> @@ -1,12 +1,14 @@
+>>   Device Tree Bindings for the Arasan SDHCI Controller
 >>
->> -       analogix_dp_send_psr_spd(dp, &psr_vsc);
->> -       return 0;
->> +       return analogix_dp_send_psr_spd(dp, &psr_vsc);
->>   }
->>   EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+>> -  The bindings follow the mmc[1], clock[2], interrupt[3] and phy[4] bindings.
+>> +  The bindings follow the mmc[1], clock[2], interrupt[3], phy[4] and power
+>> +  domain[5] bindings.
+>>     Only deviations are documented here.
 >>
->> @@ -139,8 +138,7 @@ int analogix_dp_disable_psr(struct device *dev)
->>          psr_vsc.DB0 = 0;
->>          psr_vsc.DB1 = 0;
+>>     [1] Documentation/devicetree/bindings/mmc/mmc.txt
+>>     [2] Documentation/devicetree/bindings/clock/clock-bindings.txt
+>>     [3] Documentation/devicetree/bindings/interrupt-controller/interrupts.txt
+>>     [4] Documentation/devicetree/bindings/phy/phy-bindings.txt
+>> +  [5] Documentation/devicetree/bindings/power/power_domain.txt
 >>
->> -       analogix_dp_send_psr_spd(dp, &psr_vsc);
->> -       return 0;
->> +       return analogix_dp_send_psr_spd(dp, &psr_vsc);
->>   }
->>   EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
+>>   Required Properties:
+>>     - compatible: Compatibility string.  One of:
+>> @@ -36,6 +38,8 @@ Optional Properties:
+>>     - #clock-cells: If specified this should be the value <0>.  With this property
+>>       in place we will export a clock representing the Card Clock.  This clock
+>>       is expected to be consumed by our PHY.  You must also specify
+>> +  - power-domains: A phandle and PM domain as specifier defined by bindings
+>> +    of the power controller specified by phandle.
 >>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> index d564e90..a27f1e3 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> @@ -20,6 +20,7 @@
->>   #define MAX_EQ_LOOP 5
->>
->>   #define DP_TIMEOUT_LOOP_MS                     msecs_to_jiffies(1)
->> +#define DP_TIMEOUT_PSR_LOOP_MS                 msecs_to_jiffies(300)
-> Same comment here re: units.
->
-> 300ms seems like a really long time. Why does it take this long?
-
-This magic number '300ms' just come from my test, I haven't found the 
-description in eDP 1.4a Spec about what exact time should Sink take to 
-entry PSR.
-
-- Yakir
-
-> Sean
->
->
->>   /* DP_MAX_LANE_COUNT */
->>   #define DPCD_ENHANCED_FRAME_CAP(x)             (((x) >> 7) & 0x1)
->> @@ -248,8 +249,8 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp);
->>   void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
->>   void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
->>   void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
->> -void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->> -                             struct edp_vsc_psr *vsc);
->> +int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->> +                            struct edp_vsc_psr *vsc);
->>   ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
->>                               struct drm_dp_aux_msg *msg);
->>   #endif /* _ANALOGIX_DP_CORE_H */
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> index 15a4cf0..7fd4ed0 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> @@ -1004,10 +1004,12 @@ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp)
->>          writel(PSR_VID_CRC_ENABLE, dp->reg_base + ANALOGIX_DP_CRC_CON);
->>   }
->>
->> -void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->> -                             struct edp_vsc_psr *vsc)
->> +int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->> +                            struct edp_vsc_psr *vsc)
->>   {
->> +       unsigned long timeout;
->>          unsigned int val;
->> +       u8 sink;
->>
->>          /* don't send info frame */
->>          val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
->> @@ -1048,6 +1050,25 @@ void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->>          val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
->>          val |= IF_EN;
->>          writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
->> +
->> +       timeout = jiffies + DP_TIMEOUT_PSR_LOOP_MS;
->> +       while (time_before(jiffies, timeout)) {
->> +               val = drm_dp_dpcd_readb(&dp->aux, DP_PSR_STATUS, &sink);
->> +               if (val != 1) {
->> +                       dev_err(dp->dev, "PSR_STATUS read failed ret=%d", val);
->> +                       return -EBUSY;
->> +               }
->> +
->> +               if ((vsc->DB1 && sink == DP_PSR_SINK_ACTIVE_RFB) ||
->> +                   (!vsc->DB1 && sink == DP_PSR_SINK_INACTIVE))
->> +                       return 0;
->> +
->> +               usleep_range(1000, 1500);
->> +       }
->> +
->> +       dev_warn(dp->dev, "Failed to apply PSR, sink state was [%x]", sink);
->> +
->> +       return -ETIMEDOUT;
->>   }
->>
->>   ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+>>   Example:
+>>          sdhci@e0100000 {
+>> @@ -71,5 +75,6 @@ Example:
+>>                  phys = <&emmc_phy>;
+>>                  phy-names = "phy_arasan";
+>>                  #clock-cells = <0>;
+>> +               power-domains = <&power RK3399_PD_EMMC>;
+>>                  status = "disabled";
+>>          };
 >> --
->> 1.9.1
+>> 2.9.2
 >>
 >>
 >> --
->> To unsubscribe from this list: send the line "unsubscribe linux-samsung-soc" in
->> the body of a message to majordomo@vger.kernel.org
+>> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+>> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 >> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
 >
 >
+>
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
