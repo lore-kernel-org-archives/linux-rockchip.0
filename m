@@ -1,59 +1,75 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Mon, 19 Sep 2016 16:14:42 -0700
-Message-ID: <20160919231441.GA60928@google.com>
-References: <20160916054917.16930-1-briannorris@chromium.org>
- <57DBA81F.2060404@arm.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 2/8] drm/rockchip: Get rid of some unnecessary code
+Date: Tue, 20 Sep 2016 09:36:12 +0800
+Message-ID: <57E0928C.8080103@rock-chips.com>
+References: <1473857701-9250-1-git-send-email-tfiga@chromium.org>
+ <1473857701-9250-3-git-send-email-tfiga@chromium.org>
+ <57DDF2EE.5060807@rock-chips.com>
+ <CAAFQd5A0M6vAbXHhUDMMXsaWND0hzWcT71HzOsSSCHa--qh0dA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <57DBA81F.2060404@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAFQd5A0M6vAbXHhUDMMXsaWND0hzWcT71HzOsSSCHa--qh0dA@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Sep 16, 2016 at 09:06:55AM +0100, Marc Zyngier wrote:
-> Hi Brian,
-
-Hi Marc,
-
-Thanks for the quick response.
-
-> On 16/09/16 06:49, Brian Norris wrote:
-> > Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
-> > for suspend timekeeping"), this driver assumes that the ARM architected
-> > timer keeps running in suspend. This is not the case for some ARM SoCs,
-> > depending on the HW state used for system suspend. Let's not assume that
-> > all SoCs support this, and instead only support this if the device tree
-> > explicitly tells us it's "always on". In all other cases, just fall back
-> > to the RTC. This should be relatively harmless.
-> 
-> I'm afraid you're confusing two things:
-> - the counter, which *must* carry on counting no matter what, as
-> (quoting the ARM ARM) "The system counter must be implemented in an
-> always-on power domain"
-> - the timer, which is allowed to be powered off, and can be tagged with
-> the "always-on" property to indicate that it is guaranteed to stay up
-> (which in practice only exists in virtual machines and never on real HW).
-
-Indeed, sorry for that confusion, and thanks for the explanations.
-
-> If your counter does stop counting when suspended, then this is starting
-> to either feel like a HW bug, or someone is killing the clock that feeds
-> this counter when entering suspend.
-> 
-> If this is the former, then we need a separate quirk to indicate the
-> non-standard behaviour. If it is the latter, don't do it! ;-)
-
-It's beginning to seem more like a HW quirk which yields nonstandard
-behavior. AIUI, this SoC normally runs the counter off its 24 MHz clock,
-but for low power modes, this "always-on" domain switches over to a 32
-KHz alternative clock. Unfortunately, the counter doesn't actually tick
-when run this way. I'm trying to confirm with the chip designers
-(Rockchip, RK3399) about the nature of the quirk, but I think we'll need
-a separate DT flag for this behavior.
-
-Brian
+T24gMjAxNuW5tDA55pyIMTjml6UgMTI6MDEsIFRvbWFzeiBGaWdhIHdyb3RlOgo+IEhpIE1hcmss
+Cj4KPiBPbiBTdW4sIFNlcCAxOCwgMjAxNiBhdCAxMDo1MCBBTSwgTWFyayB5YW8gPG1hcmsueWFv
+QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4gT24gMjAxNuW5tDA55pyIMTTml6UgMjA6NTQsIFRv
+bWFzeiBGaWdhIHdyb3RlOgo+Pj4gQ3VycmVudCBjb2RlIGltcGxlbWVudHMgcHJlcGFyZV9mYiBh
+bmQgY2xlYW51cF9mYiBjYWxsYmFja3Mgb25seSB0bwo+Pj4gZ3JhYi9yZWxlYXNlIGZiIHJlZmVy
+ZW5jZXMsIHdoaWNoIGlzIGFscmVhZHkgZG9uZSBieSBhdG9taWMgZnJhbWV3b3JrCj4+PiB3aGVu
+IGNyZWF0aW5nL2Rlc3RyeW9pbmcgcGxhbmUgc3RhdGUuIExldCdzIHJlbW92ZSB0aGVzZQo+Pj4g
+dW51c2VkIGJpdHMuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNo
+cm9taXVtLm9yZz4KPj4+IC0tLQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYyB8IDE4IC0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4gICAgMSBmaWxlIGNoYW5n
+ZWQsIDE4IGRlbGV0aW9ucygtKQo+Pgo+PiBIaSBUb21hc3oKPj4KPj4gSSB0aGluayB3ZSBjYW4n
+dCBnZXQgcmlkIG9mIHRoZSBwcmVwYXJlX2ZiIGFuZCBjbGVhbnVwX2ZiCj4gSSB0aGluayBJIGhh
+dmUgdG8gZGlzYWdyZWUuIFBsZWFzZSBzZWUgYmVsb3cgZm9yIGRldGFpbGVkIGV4cGxhbmF0aW9u
+Lgo+Cj4+IHNlZSB0aGUgcmVhc29uOgo+PiBjb21taXQgNDRkMDIzN2EyNjM5NWFjOTQxNjBjZjIz
+ZjMyNzY5MDEzYjM2NTU5MAo+PiBBdXRob3I6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
+LmNvbT4KPj4gRGF0ZTogICBGcmkgQXByIDI5IDExOjM3OjIwIDIwMTYgKzA4MDAKPj4KPj4gICAg
+ICBkcm0vcm9ja2NoaXA6IHZvcDogZml4IGlvbW11IGNyYXNoIHdpdGggYXN5bmMgYXRvbWljCj4+
+Cj4+ICAgICAgQWZ0ZXIgYXN5bmMgYXRvbWljX2NvbW1pdCBjYWxsYmFjaywgZHJtX2F0b21pY19j
+bGVhbl9vbGRfZmIgd2lsbAo+PiAgICAgIGNsZWFuIGFsbCBvbGQgZmIsIGJ1dCBiZWNhdXNlIGFz
+eW5jLCB0aGUgb2xkIGZiIG1heSBiZSBhbHNvIG9uCj4+ICAgICAgdGhlIHZvcCBoYXJkd2FyZSwg
+ZG1hIHdpbGwgYWNjZXNzIHRoZSBvbGQgZmIgYnVmZmVyLCBjbGVhbiBvbGQKPj4gICAgICBmYiB3
+aWxsIGNhdXNlIGlvbW11IHBhZ2UgZmF1bHQuCj4gSSB0aGluayB0aGUgYWJvdmUgaXMgbm90IHF1
+aXRlIHJpZ2h0LiBBdG9taWMgcGxhbmUgc3RhdGUgaG9sZHMgYQo+IHJlZmVyZW5jZSB0byBpdHMg
+ZmIgYW5kIG9sZCBzdGF0ZSBpcyBub3Qgc3VwcG9zZWQgdG8gYmUgZGVzdHJveWVkCj4gdW50aWwg
+dGhlIGZsaXAgY29tcGxldGVzLgo+Cj4gSW5kZWVkIGN1cnJlbnQgcm9ja2NoaXBfYXRvbWljX2Nv
+bW1pdCBpbXBsZW1lbnRhdGlvbiBoYXMgZm9sbG93aW5nCj4gb3JkZXIgb2YgY2FsbHM6IHJvY2tj
+aGlwX2F0b21pY193YWl0X2Zvcl9jb21wbGV0ZSgpLAo+IGRybV9hdG9taWNfaGVscGVyX2NsZWFu
+dXBfcGxhbmVzKCksIGRybV9hdG9taWNfc3RhdGVfZnJlZSgpLiBUaGlzCj4gbWVhbnMgdGhhdCAu
+Y2xlYW51cF9mYigpIGlzIGNhbGxlZCBmcm9tCj4gZHJtX2F0b21pY19oZWxwZXJfY2xlYW51cF9w
+bGFuZXMoKSBqdXN0IGJlZm9yZSBkcm1fYXRvbWljX3N0YXRlX2ZyZWUoKQo+IHdpbGwgcmVsZWFz
+ZSByZWZlcmVuY2VzIGJ5IGRlc3Ryb3lpbmcgb2xkIHBsYW5lIHN0YXRlcy4gTm90ZSB0aGF0IGJv
+dGgKPiBhcmUgY2FsbGVkIGFscmVhZHkgYWZ0ZXIgcm9ja2NoaXBfYXRvbWljX3dhaXRfZm9yX2Nv
+bXBsZXRlKCksIHNvIGl0Cj4gc2hvdWxkIGJlIGFscmVhZHkgc2FmZSB0byBmcmVlIHRoZSBvbGQg
+ZmJzLgo+Cj4gU28gdGhlIGFib3ZlIGZpeCBkb2Vzbid0IHJlYWxseSBkbyBhbnl0aGluZywgcG9z
+c2libHkganVzdCBjb3ZlcnMgdGhlCj4gcmFjZSBjb25kaXRpb24gb2YgdGhlIG9yaWdpbmFsIHdh
+aXQgZm9yIHZibGFuayBmdW5jdGlvbiBieSBkZWxheWluZwo+IGRybV9hdG9taWNfc3RhdGVfZnJl
+ZSgpIGEgYml0Lgo+Cj4gTW9yZW92ZXIsIHRoZSB3aG9sZSBzZXJpZXMgaGFzIGJlZW4gdGhvcm91
+Z2hseSB0ZXN0ZWQgaW4gQ2hyb21lIE9TIDQuNAo+IGtlcm5lbCwgaW5jbHVkaW5nIGFzeW5jIGNv
+bW1pdHMuIChUaGVyZSBpcyBzdGlsbCBhIHBvc3NpYmlsaXR5IHNvbWUKPiBuZXdlciB1cHN0cmVh
+bSBjaGFuZ2VzIHNsaWdodGx5IG1vZGlmaWVkIHRoZSBzZW1hbnRpY3MsIGJ1dCBJIGNvdWxkbid0
+Cj4gZmluZCBzdWNoIGRpZmZlcmVuY2UuIEFjdHVhbGx5IG9uZSBvZiB0aGUgYWR2YW50YWdlcyBv
+ZiBhdG9taWMgaGVscGVycwo+IHdhcyB0byBhdm9pZCBtYW51YWxseSByZWZjb3VudGluZyB0aGUg
+ZmJzIGZyb20gdGhlIGRyaXZlci4pCj4KPiBCZXN0IHJlZ2FyZHMsCj4gVG9tYXN6Cj4KSGkgVG9t
+YXN6CgpZb3UgYXJlIHJpZ2h0LCBwbGFuZV9kdXBsaWNhdGVfc3RhdGUvcGxhbmVfZGVzdHJveV9z
+dGF0ZSBhbHJlYWR5IHByb3RlY3QgCnRoZSBvbGQgZmJzLgp3ZSBjYW4gZ2V0IHJpZCBvZiBwcmVw
+YXJlX2ZiIGFuZCBjbGVhbnVwX2ZiLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
