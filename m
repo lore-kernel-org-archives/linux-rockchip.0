@@ -1,124 +1,75 @@
-From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] Documentation: mmc: sdhci-of-arasan: add
- description of power domain
-Date: Tue, 20 Sep 2016 10:29:44 +0800
-Message-ID: <1ec66aea-10b4-4208-369e-9ef5feb800df@rock-chips.com>
-References: <20160917023250.1159-1-xzy.xu@rock-chips.com>
- <20160917023250.1159-2-xzy.xu@rock-chips.com>
- <CAPDyKFrgdsppLg9RkCsSh4nhjUiJR6D4u+E8qnzfbtNxhwLOmw@mail.gmail.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
+ suspend
+Date: Tue, 20 Sep 2016 08:47:07 +0100
+Message-ID: <57E0E97B.5000106@arm.com>
+References: <20160916054917.16930-1-briannorris@chromium.org>
+ <57DBA81F.2060404@arm.com> <20160919231441.GA60928@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAPDyKFrgdsppLg9RkCsSh4nhjUiJR6D4u+E8qnzfbtNxhwLOmw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160919231441.GA60928@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-hi Ulf,
+On 20/09/16 00:14, Brian Norris wrote:
+> On Fri, Sep 16, 2016 at 09:06:55AM +0100, Marc Zyngier wrote:
+>> Hi Brian,
+> 
+> Hi Marc,
+> 
+> Thanks for the quick response.
+> 
+>> On 16/09/16 06:49, Brian Norris wrote:
+>>> Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
+>>> for suspend timekeeping"), this driver assumes that the ARM architected
+>>> timer keeps running in suspend. This is not the case for some ARM SoCs,
+>>> depending on the HW state used for system suspend. Let's not assume that
+>>> all SoCs support this, and instead only support this if the device tree
+>>> explicitly tells us it's "always on". In all other cases, just fall back
+>>> to the RTC. This should be relatively harmless.
+>>
+>> I'm afraid you're confusing two things:
+>> - the counter, which *must* carry on counting no matter what, as
+>> (quoting the ARM ARM) "The system counter must be implemented in an
+>> always-on power domain"
+>> - the timer, which is allowed to be powered off, and can be tagged with
+>> the "always-on" property to indicate that it is guaranteed to stay up
+>> (which in practice only exists in virtual machines and never on real HW).
+> 
+> Indeed, sorry for that confusion, and thanks for the explanations.
+> 
+>> If your counter does stop counting when suspended, then this is starting
+>> to either feel like a HW bug, or someone is killing the clock that feeds
+>> this counter when entering suspend.
+>>
+>> If this is the former, then we need a separate quirk to indicate the
+>> non-standard behaviour. If it is the latter, don't do it! ;-)
+> 
+> It's beginning to seem more like a HW quirk which yields nonstandard
+> behavior. AIUI, this SoC normally runs the counter off its 24 MHz clock,
+> but for low power modes, this "always-on" domain switches over to a 32
+> KHz alternative clock. Unfortunately, the counter doesn't actually tick
+> when run this way. I'm trying to confirm with the chip designers
+> (Rockchip, RK3399) about the nature of the quirk, but I think we'll need
+> a separate DT flag for this behavior.
 
+The counter is allowed to be clocked at a different rate, as long as it
+is incremented by the frequency ratio on each tick of the new frequency.
+In your case, the counter should increment by 750 on each tick of the
+32kHz clock. If the rk3399 implementation doesn't do this, then this is
+a bug, and we need a quirk to work around it.
 
-On 2016年09月17日 16:49, Ulf Hansson wrote:
-> On 17 September 2016 at 04:32, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Add power domain as a optional property for sdhci-of-arasan, which can
->> be turned off in the so-called unused condition, such as suspend and
->> remove. Aim to lower power requirements.
-> I assume runtime suspend make sense as well?
+Note that such a quirk will have some other impacts, such as the
+gettimeofday implementation in the VDSO (which relies on the counter
+making forward progress). There could be other issues in the timer
+subsystem as well... This doesn't look like a pleasant thing to fix.
 
-Sorry to reply this mail after a long time.
+Thanks,
 
-On rk3399 platform, there is a eMMC-phy which is in charge of eMMC's 
-logic interface. We should guarantee that phy is ready before cmd/data 
-transfer.
-I mean that I need to consider about the resume latency, so that I can 
-land RPM for arasan-of-sdhci.
-I intend to use auto-suspend for arasan-of-sdhci.
-
->
-> Moreover, perhaps you could share a little information here about what
-> needs to be done at the driver level which controls the mmc IP. More
-> precisely, what do you need to do at runtime_suspend, suspend,
-> runtime_resume, and resume?
-
-Invoke sdhci_runtime_suspend_host, disable relevant clock in 
-rumtime_suspend, deprocessing in runtime_resume.
-Is that ok?
-
->
-> Kind regards
-> Uffe
->
->> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->> ---
->>
->> Changes in v3:
->> - fix a typo
->> - add Rob's ack-tag
->>
->> Changes in v2:
->> - fix a typo
->> - add an example code for power-domain
->>
->>   Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 7 ++++++-
->>   1 file changed, 6 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> index 3404afa..eb84d29 100644
->> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> @@ -1,12 +1,14 @@
->>   Device Tree Bindings for the Arasan SDHCI Controller
->>
->> -  The bindings follow the mmc[1], clock[2], interrupt[3] and phy[4] bindings.
->> +  The bindings follow the mmc[1], clock[2], interrupt[3], phy[4] and power
->> +  domain[5] bindings.
->>     Only deviations are documented here.
->>
->>     [1] Documentation/devicetree/bindings/mmc/mmc.txt
->>     [2] Documentation/devicetree/bindings/clock/clock-bindings.txt
->>     [3] Documentation/devicetree/bindings/interrupt-controller/interrupts.txt
->>     [4] Documentation/devicetree/bindings/phy/phy-bindings.txt
->> +  [5] Documentation/devicetree/bindings/power/power_domain.txt
->>
->>   Required Properties:
->>     - compatible: Compatibility string.  One of:
->> @@ -36,6 +38,8 @@ Optional Properties:
->>     - #clock-cells: If specified this should be the value <0>.  With this property
->>       in place we will export a clock representing the Card Clock.  This clock
->>       is expected to be consumed by our PHY.  You must also specify
->> +  - power-domains: A phandle and PM domain as specifier defined by bindings
->> +    of the power controller specified by phandle.
->>
->>   Example:
->>          sdhci@e0100000 {
->> @@ -71,5 +75,6 @@ Example:
->>                  phys = <&emmc_phy>;
->>                  phy-names = "phy_arasan";
->>                  #clock-cells = <0>;
->> +               power-domains = <&power RK3399_PD_EMMC>;
->>                  status = "disabled";
->>          };
->> --
->> 2.9.2
->>
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
->> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	M.
+-- 
+Jazz is not dead. It just smells funny...
