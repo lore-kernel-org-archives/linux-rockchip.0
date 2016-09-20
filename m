@@ -1,75 +1,331 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Tue, 20 Sep 2016 08:47:07 +0100
-Message-ID: <57E0E97B.5000106@arm.com>
-References: <20160916054917.16930-1-briannorris@chromium.org>
- <57DBA81F.2060404@arm.com> <20160919231441.GA60928@google.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 2/4] mmc: dw_mmc: avoid race condition of cpu and IDMAC
+Date: Tue, 20 Sep 2016 17:47:16 +0800
+Message-ID: <35afa945-1b94-f870-d52e-6ab7b1da4a67@rock-chips.com>
+References: <1472789679-15121-1-git-send-email-shawn.lin@rock-chips.com>
+ <1472789679-15121-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160919231441.GA60928@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1472789679-15121-2-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20/09/16 00:14, Brian Norris wrote:
-> On Fri, Sep 16, 2016 at 09:06:55AM +0100, Marc Zyngier wrote:
->> Hi Brian,
-> 
-> Hi Marc,
-> 
-> Thanks for the quick response.
-> 
->> On 16/09/16 06:49, Brian Norris wrote:
->>> Since commit 4fbcdc813fb9 ("clocksource: arm_arch_timer: Use clocksource
->>> for suspend timekeeping"), this driver assumes that the ARM architected
->>> timer keeps running in suspend. This is not the case for some ARM SoCs,
->>> depending on the HW state used for system suspend. Let's not assume that
->>> all SoCs support this, and instead only support this if the device tree
->>> explicitly tells us it's "always on". In all other cases, just fall back
->>> to the RTC. This should be relatively harmless.
->>
->> I'm afraid you're confusing two things:
->> - the counter, which *must* carry on counting no matter what, as
->> (quoting the ARM ARM) "The system counter must be implemented in an
->> always-on power domain"
->> - the timer, which is allowed to be powered off, and can be tagged with
->> the "always-on" property to indicate that it is guaranteed to stay up
->> (which in practice only exists in virtual machines and never on real HW).
-> 
-> Indeed, sorry for that confusion, and thanks for the explanations.
-> 
->> If your counter does stop counting when suspended, then this is starting
->> to either feel like a HW bug, or someone is killing the clock that feeds
->> this counter when entering suspend.
->>
->> If this is the former, then we need a separate quirk to indicate the
->> non-standard behaviour. If it is the latter, don't do it! ;-)
-> 
-> It's beginning to seem more like a HW quirk which yields nonstandard
-> behavior. AIUI, this SoC normally runs the counter off its 24 MHz clock,
-> but for low power modes, this "always-on" domain switches over to a 32
-> KHz alternative clock. Unfortunately, the counter doesn't actually tick
-> when run this way. I'm trying to confirm with the chip designers
-> (Rockchip, RK3399) about the nature of the quirk, but I think we'll need
-> a separate DT flag for this behavior.
+Hi Jaehoon,
 
-The counter is allowed to be clocked at a different rate, as long as it
-is incremented by the frequency ratio on each tick of the new frequency.
-In your case, the counter should increment by 750 on each tick of the
-32kHz clock. If the rk3399 implementation doesn't do this, then this is
-a bug, and we need a quirk to work around it.
+Friendly ping... :)
 
-Note that such a quirk will have some other impacts, such as the
-gettimeofday implementation in the VDSO (which relies on the counter
-making forward progress). There could be other issues in the timer
-subsystem as well... This doesn't look like a pleasant thing to fix.
+On 2016/9/2 12:14, Shawn Lin wrote:
+> We could see an obvious race condition by test that
+> the former write operation by IDMAC aiming to clear
+> OWN bit reach right after the later configuration of
+> the same desc, which makes the IDMAC be in SUSPEND
+> state as the OWN bit was cleared by the asynchronous
+> write operation of IDMAC. The bug can be very easy
+> reproduced on RK3288 or similar when we reduce the
+> running rate of system buses and keep the CPU running
+> faster. So as two separate masters, IDMAC and cpu
+> write the same descriptor stored on the same address,
+> and this should be protected by adding check of OWN
+> bit before preparing new descriptors.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v2:
+> - fallback to PIO mode if failing to wait for OWN bit
+> - cleanup polluted desc chain as the own bit error could
+>   occur on any place of the chain, so we need to clr the desc
+>   configured before that one. Use the exist function to reinit
+>   the desc chain. As this issue is really rare, so after applied,
+>   the fio/iozone stress test didn't show up performance regression.
+>
+>  drivers/mmc/host/dw_mmc.c | 208 ++++++++++++++++++++++++++++------------------
+>  1 file changed, 129 insertions(+), 79 deletions(-)
+>
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 782b303..daa1c52 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -467,12 +467,87 @@ static void dw_mci_dmac_complete_dma(void *arg)
+>  	}
+>  }
+>
+> -static inline void dw_mci_prepare_desc64(struct dw_mci *host,
+> +static int dw_mci_idmac_init(struct dw_mci *host)
+> +{
+> +	int i;
+> +
+> +	if (host->dma_64bit_address == 1) {
+> +		struct idmac_desc_64addr *p;
+> +		/* Number of descriptors in the ring buffer */
+> +		host->ring_size = PAGE_SIZE / sizeof(struct idmac_desc_64addr);
+> +
+> +		/* Forward link the descriptor list */
+> +		for (i = 0, p = host->sg_cpu; i < host->ring_size - 1;
+> +								i++, p++) {
+> +			p->des6 = (host->sg_dma +
+> +					(sizeof(struct idmac_desc_64addr) *
+> +							(i + 1))) & 0xffffffff;
+> +
+> +			p->des7 = (u64)(host->sg_dma +
+> +					(sizeof(struct idmac_desc_64addr) *
+> +							(i + 1))) >> 32;
+> +			/* Initialize reserved and buffer size fields to "0" */
+> +			p->des1 = 0;
+> +			p->des2 = 0;
+> +			p->des3 = 0;
+> +		}
+> +
+> +		/* Set the last descriptor as the end-of-ring descriptor */
+> +		p->des6 = host->sg_dma & 0xffffffff;
+> +		p->des7 = (u64)host->sg_dma >> 32;
+> +		p->des0 = IDMAC_DES0_ER;
+> +
+> +	} else {
+> +		struct idmac_desc *p;
+> +		/* Number of descriptors in the ring buffer */
+> +		host->ring_size = PAGE_SIZE / sizeof(struct idmac_desc);
+> +
+> +		/* Forward link the descriptor list */
+> +		for (i = 0, p = host->sg_cpu;
+> +		     i < host->ring_size - 1;
+> +		     i++, p++) {
+> +			p->des3 = cpu_to_le32(host->sg_dma +
+> +					(sizeof(struct idmac_desc) * (i + 1)));
+> +			p->des1 = 0;
+> +		}
+> +
+> +		/* Set the last descriptor as the end-of-ring descriptor */
+> +		p->des3 = cpu_to_le32(host->sg_dma);
+> +		p->des0 = cpu_to_le32(IDMAC_DES0_ER);
+> +	}
+> +
+> +	dw_mci_idmac_reset(host);
+> +
+> +	if (host->dma_64bit_address == 1) {
+> +		/* Mask out interrupts - get Tx & Rx complete only */
+> +		mci_writel(host, IDSTS64, IDMAC_INT_CLR);
+> +		mci_writel(host, IDINTEN64, SDMMC_IDMAC_INT_NI |
+> +				SDMMC_IDMAC_INT_RI | SDMMC_IDMAC_INT_TI);
+> +
+> +		/* Set the descriptor base address */
+> +		mci_writel(host, DBADDRL, host->sg_dma & 0xffffffff);
+> +		mci_writel(host, DBADDRU, (u64)host->sg_dma >> 32);
+> +
+> +	} else {
+> +		/* Mask out interrupts - get Tx & Rx complete only */
+> +		mci_writel(host, IDSTS, IDMAC_INT_CLR);
+> +		mci_writel(host, IDINTEN, SDMMC_IDMAC_INT_NI |
+> +				SDMMC_IDMAC_INT_RI | SDMMC_IDMAC_INT_TI);
+> +
+> +		/* Set the descriptor base address */
+> +		mci_writel(host, DBADDR, host->sg_dma);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static inline int dw_mci_prepare_desc64(struct dw_mci *host,
+>  					 struct mmc_data *data,
+>  					 unsigned int sg_len)
+>  {
+>  	unsigned int desc_len;
+>  	struct idmac_desc_64addr *desc_first, *desc_last, *desc;
+> +	unsigned long timeout;
+>  	int i;
+>
+>  	desc_first = desc_last = desc = host->sg_cpu;
+> @@ -489,6 +564,19 @@ static inline void dw_mci_prepare_desc64(struct dw_mci *host,
+>  			length -= desc_len;
+>
+>  			/*
+> +			 * Wait for the former clear OWN bit operation
+> +			 * of IDMAC to make sure that this descriptor
+> +			 * isn't still owned by IDMAC as IDMAC's write
+> +			 * ops and CPU's read ops are asynchronous.
+> +			 */
+> +			timeout = jiffies + msecs_to_jiffies(100);
+> +			while (readl(&desc->des0) & IDMAC_DES0_OWN) {
+> +				if (time_after(jiffies, timeout))
+> +					goto err_own_bit;
+> +				udelay(10);
+> +			}
+> +
+> +			/*
+>  			 * Set the OWN bit and disable interrupts
+>  			 * for this descriptor
+>  			 */
+> @@ -516,15 +604,24 @@ static inline void dw_mci_prepare_desc64(struct dw_mci *host,
+>  	/* Set last descriptor */
+>  	desc_last->des0 &= ~(IDMAC_DES0_CH | IDMAC_DES0_DIC);
+>  	desc_last->des0 |= IDMAC_DES0_LD;
+> +
+> +	return 0;
+> +err_own_bit:
+> +	/* restore the descriptor chain as it's polluted */
+> +	dev_dbg(host->dev, "desciptor is still owned by IDMAC.\n");
+> +	memset(host->sg_cpu, 0, PAGE_SIZE);
+> +	dw_mci_idmac_init(host);
+> +	return -EINVAL;
+>  }
+>
+>
+> -static inline void dw_mci_prepare_desc32(struct dw_mci *host,
+> +static inline int dw_mci_prepare_desc32(struct dw_mci *host,
+>  					 struct mmc_data *data,
+>  					 unsigned int sg_len)
+>  {
+>  	unsigned int desc_len;
+>  	struct idmac_desc *desc_first, *desc_last, *desc;
+> +	unsigned long timeout;
+>  	int i;
+>
+>  	desc_first = desc_last = desc = host->sg_cpu;
+> @@ -541,6 +638,20 @@ static inline void dw_mci_prepare_desc32(struct dw_mci *host,
+>  			length -= desc_len;
+>
+>  			/*
+> +			 * Wait for the former clear OWN bit operation
+> +			 * of IDMAC to make sure that this descriptor
+> +			 * isn't still owned by IDMAC as IDMAC's write
+> +			 * ops and CPU's read ops are asynchronous.
+> +			 */
+> +			timeout = jiffies + msecs_to_jiffies(100);
+> +			while (readl(&desc->des0) &
+> +			       cpu_to_le32(IDMAC_DES0_OWN)) {
+> +				if (time_after(jiffies, timeout))
+> +					goto err_own_bit;
+> +				udelay(10);
+> +			}
+> +
+> +			/*
+>  			 * Set the OWN bit and disable interrupts
+>  			 * for this descriptor
+>  			 */
+> @@ -569,16 +680,28 @@ static inline void dw_mci_prepare_desc32(struct dw_mci *host,
+>  	desc_last->des0 &= cpu_to_le32(~(IDMAC_DES0_CH |
+>  				       IDMAC_DES0_DIC));
+>  	desc_last->des0 |= cpu_to_le32(IDMAC_DES0_LD);
+> +
+> +	return 0;
+> +err_own_bit:
+> +	/* restore the descriptor chain as it's polluted */
+> +	dev_dbg(host->dev, "desciptor is still owned by IDMAC.\n");
+> +	memset(host->sg_cpu, 0, PAGE_SIZE);
+> +	dw_mci_idmac_init(host);
+> +	return -EINVAL;
+>  }
+>
+>  static int dw_mci_idmac_start_dma(struct dw_mci *host, unsigned int sg_len)
+>  {
+>  	u32 temp;
+> +	int ret;
+>
+>  	if (host->dma_64bit_address == 1)
+> -		dw_mci_prepare_desc64(host, host->data, sg_len);
+> +		ret = dw_mci_prepare_desc64(host, host->data, sg_len);
+>  	else
+> -		dw_mci_prepare_desc32(host, host->data, sg_len);
+> +		ret = dw_mci_prepare_desc32(host, host->data, sg_len);
+> +
+> +	if (ret)
+> +		goto out;
+>
+>  	/* drain writebuffer */
+>  	wmb();
+> @@ -603,81 +726,8 @@ static int dw_mci_idmac_start_dma(struct dw_mci *host, unsigned int sg_len)
+>  	/* Start it running */
+>  	mci_writel(host, PLDMND, 1);
+>
+> -	return 0;
+> -}
+> -
+> -static int dw_mci_idmac_init(struct dw_mci *host)
+> -{
+> -	int i;
+> -
+> -	if (host->dma_64bit_address == 1) {
+> -		struct idmac_desc_64addr *p;
+> -		/* Number of descriptors in the ring buffer */
+> -		host->ring_size = PAGE_SIZE / sizeof(struct idmac_desc_64addr);
+> -
+> -		/* Forward link the descriptor list */
+> -		for (i = 0, p = host->sg_cpu; i < host->ring_size - 1;
+> -								i++, p++) {
+> -			p->des6 = (host->sg_dma +
+> -					(sizeof(struct idmac_desc_64addr) *
+> -							(i + 1))) & 0xffffffff;
+> -
+> -			p->des7 = (u64)(host->sg_dma +
+> -					(sizeof(struct idmac_desc_64addr) *
+> -							(i + 1))) >> 32;
+> -			/* Initialize reserved and buffer size fields to "0" */
+> -			p->des1 = 0;
+> -			p->des2 = 0;
+> -			p->des3 = 0;
+> -		}
+> -
+> -		/* Set the last descriptor as the end-of-ring descriptor */
+> -		p->des6 = host->sg_dma & 0xffffffff;
+> -		p->des7 = (u64)host->sg_dma >> 32;
+> -		p->des0 = IDMAC_DES0_ER;
+> -
+> -	} else {
+> -		struct idmac_desc *p;
+> -		/* Number of descriptors in the ring buffer */
+> -		host->ring_size = PAGE_SIZE / sizeof(struct idmac_desc);
+> -
+> -		/* Forward link the descriptor list */
+> -		for (i = 0, p = host->sg_cpu;
+> -		     i < host->ring_size - 1;
+> -		     i++, p++) {
+> -			p->des3 = cpu_to_le32(host->sg_dma +
+> -					(sizeof(struct idmac_desc) * (i + 1)));
+> -			p->des1 = 0;
+> -		}
+> -
+> -		/* Set the last descriptor as the end-of-ring descriptor */
+> -		p->des3 = cpu_to_le32(host->sg_dma);
+> -		p->des0 = cpu_to_le32(IDMAC_DES0_ER);
+> -	}
+> -
+> -	dw_mci_idmac_reset(host);
+> -
+> -	if (host->dma_64bit_address == 1) {
+> -		/* Mask out interrupts - get Tx & Rx complete only */
+> -		mci_writel(host, IDSTS64, IDMAC_INT_CLR);
+> -		mci_writel(host, IDINTEN64, SDMMC_IDMAC_INT_NI |
+> -				SDMMC_IDMAC_INT_RI | SDMMC_IDMAC_INT_TI);
+> -
+> -		/* Set the descriptor base address */
+> -		mci_writel(host, DBADDRL, host->sg_dma & 0xffffffff);
+> -		mci_writel(host, DBADDRU, (u64)host->sg_dma >> 32);
+> -
+> -	} else {
+> -		/* Mask out interrupts - get Tx & Rx complete only */
+> -		mci_writel(host, IDSTS, IDMAC_INT_CLR);
+> -		mci_writel(host, IDINTEN, SDMMC_IDMAC_INT_NI |
+> -				SDMMC_IDMAC_INT_RI | SDMMC_IDMAC_INT_TI);
+> -
+> -		/* Set the descriptor base address */
+> -		mci_writel(host, DBADDR, host->sg_dma);
+> -	}
+> -
+> -	return 0;
+> +out:
+> +	return ret;
+>  }
+>
+>  static const struct dw_mci_dma_ops dw_mci_idmac_ops = {
+>
 
-Thanks,
 
-	M.
 -- 
-Jazz is not dead. It just smells funny...
+Best Regards
+Shawn Lin
+
