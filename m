@@ -1,87 +1,49 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Cleanup dangling devm pointers
-Date: Wed, 21 Sep 2016 16:55:56 +0800
-Message-ID: <CAGS+omCtTq0i79=tciTSkP1zrCZ3UAri+ZnNv-4-49T5S2BDrw@mail.gmail.com>
-References: <1474050143-29962-1-git-send-email-seanpaul@chromium.org>
- <CAGS+omDEhwcKsDV7DCu+K73dRQHf0+9SnrkU=PGp8W+kfvmDbg@mail.gmail.com>
- <CAEqLBRnxcCfWmbJxHdWFt-X-eqVktaAcj6zd=H=Oi2M5npxqmw@mail.gmail.com>
+From: Wei Yongjun <weiyj.lk@gmail.com>
+Subject: [PATCH -next] phy: rockchip-typec: fix non static symbol warnings
+Date: Wed, 21 Sep 2016 15:05:25 +0000
+Message-ID: <1474470325-32139-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAEqLBRnxcCfWmbJxHdWFt-X-eqVktaAcj6zd=H=Oi2M5npxqmw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBTZXAgMjEsIDIwMTYgYXQgMzozNiBQTSwgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJv
-bWl1bS5vcmc+IHdyb3RlOgo+IE9uIE1vbiwgU2VwIDE5LCAyMDE2IGF0IDc6MTQgQU0sIERhbmll
-bCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+IHdyb3RlOgo+PiBIaSBTZWFuLAo+Pgo+PiBP
-biBTYXQsIFNlcCAxNywgMjAxNiBhdCAyOjIyIEFNLCBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9t
-aXVtLm9yZz4gd3JvdGU6Cj4+Pgo+Pj4gSW5zdGVhZCBvZiBhc3NpZ25pbmcgZGV2aWNlIG1hbmFn
-ZWQgcmVzb3VyY2VzIHRvIGxvY2FsIHZhcmlhYmxlcywKPj4+IGtlZXAgdHJhY2sgb2YgdGhlbSBp
-biB0aGUgdm9wIHN0cnVjdC4KPj4KPj4gV2h5IHRoaXMgcGF0Y2g/Cj4+IElzIGl0IGZpeGluZyBh
-biBpc3N1ZT8KPj4gT3IsIGlzIGl0IHByZXBhcmluZyBmb3Igc29tZSBmdXR1cmUgdXNlIG9mIGFo
-Yl9yc3Qgb3V0c2lkZSBvZiB2b3BfaW5pdGlhbD8KPj4KPgo+IE5haCwgdGhpcyBpcyBqdXN0IG1l
-IGJlaW5nIHBlZGFudGljLgo+Cj4+IEkgdGhvdWdodCB0aGF0IG9uZSBvZiB0aGUgbmljZSBmZWF0
-dXJlcyBvZiB1c2luZyBkZXZtIGlzIHlvdSBkbyBub3QKPj4gbmVlZCB0byBjYXJyeSBhcm91bmQg
-cG9pbnRlcnMgdG8gZGV2bSBhbGxvY2F0ZWQgcmVzb3VyY2VzIGluIHRoZQo+PiBkcml2ZXIgbG9j
-YWwgZGV2aWNlIHN0cnVjdC4KPj4KPgo+IFRydWUsIGJ1dCBpdCBmZWVscyBhIGJpdCB3ZWlyZCB0
-byBhbGxvY2F0ZSBzb21ldGhpbmcgb24gZHJpdmVyIGxvYWQKPiBhbmQgaW50ZW50aW9uYWxseSBh
-YmFuZG9uIGl0IGZvciB0aGUgbGlmZXRpbWUgb2YgdGhlIGRyaXZlci4gSSdkIGZlZWwKPiBiZXR0
-ZXIgZWl0aGVyIGtlZXBpbmcgaXQgYXJvdW5kLCBvciBwZXJoYXBzIGl0IHNob3VsZCBiZSBwdXQg
-b25jZQo+IHdlJ3JlIGRvbmUgdXNpbmcgaXQgaW4gdm9wX2luaXRpYWwuCgpZZWFoLi4uIGlmIHdl
-IGRvbid0IGV2ZXIgdXNlIGl0IGFnYWluLCBJIGFncmVlIC0gbm8gcmVhc29uIHRvIGRldm0gaXQs
-Cmp1c3QgdXNlIHJlc2V0X2NvbnRyb2xfZ2V0IC8gX3B1dCBoZXJlIGluIHZvcF9pbml0aWFsLgoK
-Pgo+IFNlYW4KPgo+Cj4+IC1EYW4KPj4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwg
-PHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPj4+IC0tLQo+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxMiArKysrKystLS0tLS0KPj4+ICAxIGZpbGUgY2hh
-bmdlZCwgNiBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4gaW5kZXggMTMxYWUwZi4uYmVk
-NzgyZSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMKPj4+IEBAIC0xNDIsNiArMTQyLDcgQEAgc3RydWN0IHZvcCB7Cj4+Pgo+Pj4gICAgICAg
-ICAvKiB2b3AgZGNsayByZXNldCAqLwo+Pj4gICAgICAgICBzdHJ1Y3QgcmVzZXRfY29udHJvbCAq
-ZGNsa19yc3Q7Cj4+PiArICAgICAgIHN0cnVjdCByZXNldF9jb250cm9sICphaGJfcnN0Owo+Pj4K
-Pj4+ICAgICAgICAgc3RydWN0IHZvcF93aW4gd2luW107Cj4+PiAgfTsKPj4+IEBAIC0xMzMzLDcg
-KzEzMzQsNiBAQCBzdGF0aWMgaW50IHZvcF9pbml0aWFsKHN0cnVjdCB2b3AgKnZvcCkKPj4+ICB7
-Cj4+PiAgICAgICAgIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSAqdm9wX2RhdGEgPSB2b3AtPmRhdGE7
-Cj4+PiAgICAgICAgIGNvbnN0IHN0cnVjdCB2b3BfcmVnX2RhdGEgKmluaXRfdGFibGUgPSB2b3Bf
-ZGF0YS0+aW5pdF90YWJsZTsKPj4+IC0gICAgICAgc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9y
-c3Q7Cj4+PiAgICAgICAgIGludCBpLCByZXQ7Cj4+Pgo+Pj4gICAgICAgICB2b3AtPmhjbGsgPSBk
-ZXZtX2Nsa19nZXQodm9wLT5kZXYsICJoY2xrX3ZvcCIpOwo+Pj4gQEAgLTEzNzQsMTUgKzEzNzQs
-MTUgQEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4+PiAgICAgICAg
-IC8qCj4+PiAgICAgICAgICAqIGRvIGhjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3AgcmVnaXN0ZXJz
-Lgo+Pj4gICAgICAgICAgKi8KPj4+IC0gICAgICAgYWhiX3JzdCA9IGRldm1fcmVzZXRfY29udHJv
-bF9nZXQodm9wLT5kZXYsICJhaGIiKTsKPj4+IC0gICAgICAgaWYgKElTX0VSUihhaGJfcnN0KSkg
-ewo+Pj4gKyAgICAgICB2b3AtPmFoYl9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0KHZvcC0+
-ZGV2LCAiYWhiIik7Cj4+PiArICAgICAgIGlmIChJU19FUlIodm9wLT5haGJfcnN0KSkgewo+Pj4g
-ICAgICAgICAgICAgICAgIGRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGFoYiByZXNl
-dFxuIik7Cj4+PiAtICAgICAgICAgICAgICAgcmV0ID0gUFRSX0VSUihhaGJfcnN0KTsKPj4+ICsg
-ICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKHZvcC0+YWhiX3JzdCk7Cj4+PiAgICAgICAgICAg
-ICAgICAgZ290byBlcnJfZGlzYWJsZV9hY2xrOwo+Pj4gICAgICAgICB9Cj4+PiAtICAgICAgIHJl
-c2V0X2NvbnRyb2xfYXNzZXJ0KGFoYl9yc3QpOwo+Pj4gKyAgICAgICByZXNldF9jb250cm9sX2Fz
-c2VydCh2b3AtPmFoYl9yc3QpOwo+Pj4gICAgICAgICB1c2xlZXBfcmFuZ2UoMTAsIDIwKTsKPj4+
-IC0gICAgICAgcmVzZXRfY29udHJvbF9kZWFzc2VydChhaGJfcnN0KTsKPj4+ICsgICAgICAgcmVz
-ZXRfY29udHJvbF9kZWFzc2VydCh2b3AtPmFoYl9yc3QpOwo+Pj4KPj4+ICAgICAgICAgbWVtY3B5
-KHZvcC0+cmVnc2Jhaywgdm9wLT5yZWdzLCB2b3AtPmxlbik7Cj4+Pgo+Pj4gLS0KPj4+IDIuOC4w
-LnJjMy4yMjYuZzM5ZDQwMjAKPj4+Cj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwo+Pj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+Pj4gZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+Pj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KPj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+PiBkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+From: Wei Yongjun <weiyongjun1@huawei.com>
+
+Fixes the following sparse warnings:
+
+drivers/phy/phy-rockchip-typec.c:295:16: warning:
+ symbol 'usb3_pll_cfg' was not declared. Should it be static?
+drivers/phy/phy-rockchip-typec.c:312:16: warning:
+ symbol 'dp_pll_cfg' was not declared. Should it be static?
+
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+---
+ drivers/phy/phy-rockchip-typec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
+index 7cfb0f8..555604c 100644
+--- a/drivers/phy/phy-rockchip-typec.c
++++ b/drivers/phy/phy-rockchip-typec.c
+@@ -292,7 +292,7 @@ struct phy_reg {
+ 	u32 addr;
+ };
+ 
+-struct phy_reg usb3_pll_cfg[] = {
++static struct phy_reg usb3_pll_cfg[] = {
+ 	{ 0xf0,		CMN_PLL0_VCOCAL_INIT },
+ 	{ 0x18,		CMN_PLL0_VCOCAL_ITER },
+ 	{ 0xd0,		CMN_PLL0_INTDIV },
+@@ -309,7 +309,7 @@ struct phy_reg usb3_pll_cfg[] = {
+ 	{ 0x8,		CMN_DIAG_PLL0_LF_PROG },
+ };
+ 
+-struct phy_reg dp_pll_cfg[] = {
++static struct phy_reg dp_pll_cfg[] = {
+ 	{ 0xf0,		CMN_PLL1_VCOCAL_INIT },
+ 	{ 0x18,		CMN_PLL1_VCOCAL_ITER },
+ 	{ 0x30b9,	CMN_PLL1_VCOCAL_START },
