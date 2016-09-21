@@ -1,40 +1,81 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] mmc: dw_mmc: minor cleanup for dw_mci_adjust_fifoth
-Date: Wed, 21 Sep 2016 10:40:25 +0800
-Message-ID: <1474425625-24178-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: Cleanup dangling devm pointers
+Date: Wed, 21 Sep 2016 10:36:17 +0300
+Message-ID: <CAEqLBRnxcCfWmbJxHdWFt-X-eqVktaAcj6zd=H=Oi2M5npxqmw@mail.gmail.com>
+References: <1474050143-29962-1-git-send-email-seanpaul@chromium.org>
+ <CAGS+omDEhwcKsDV7DCu+K73dRQHf0+9SnrkU=PGp8W+kfvmDbg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAGS+omDEhwcKsDV7DCu+K73dRQHf0+9SnrkU=PGp8W+kfvmDbg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-msize and rx_wmark are properly initialized, we dont't
-need to assign them again.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/mmc/host/dw_mmc.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 22dacae..d838428 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -876,11 +876,8 @@ static void dw_mci_adjust_fifoth(struct dw_mci *host, struct mmc_data *data)
- 	 * MSIZE is '1',
- 	 * if blksz is not a multiple of the FIFO width
- 	 */
--	if (blksz % fifo_width) {
--		msize = 0;
--		rx_wmark = 1;
-+	if (blksz % fifo_width)
- 		goto done;
--	}
- 
- 	do {
- 		if (!((blksz_depth % mszs[idx]) ||
--- 
-2.3.7
-
-
+T24gTW9uLCBTZXAgMTksIDIwMTYgYXQgNzoxNCBBTSwgRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNo
+cm9taXVtLm9yZz4gd3JvdGU6Cj4gSGkgU2VhbiwKPgo+IE9uIFNhdCwgU2VwIDE3LCAyMDE2IGF0
+IDI6MjIgQU0sIFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPiB3cm90ZToKPj4KPj4g
+SW5zdGVhZCBvZiBhc3NpZ25pbmcgZGV2aWNlIG1hbmFnZWQgcmVzb3VyY2VzIHRvIGxvY2FsIHZh
+cmlhYmxlcywKPj4ga2VlcCB0cmFjayBvZiB0aGVtIGluIHRoZSB2b3Agc3RydWN0Lgo+Cj4gV2h5
+IHRoaXMgcGF0Y2g/Cj4gSXMgaXQgZml4aW5nIGFuIGlzc3VlPwo+IE9yLCBpcyBpdCBwcmVwYXJp
+bmcgZm9yIHNvbWUgZnV0dXJlIHVzZSBvZiBhaGJfcnN0IG91dHNpZGUgb2Ygdm9wX2luaXRpYWw/
+Cj4KCk5haCwgdGhpcyBpcyBqdXN0IG1lIGJlaW5nIHBlZGFudGljLgoKPiBJIHRob3VnaHQgdGhh
+dCBvbmUgb2YgdGhlIG5pY2UgZmVhdHVyZXMgb2YgdXNpbmcgZGV2bSBpcyB5b3UgZG8gbm90Cj4g
+bmVlZCB0byBjYXJyeSBhcm91bmQgcG9pbnRlcnMgdG8gZGV2bSBhbGxvY2F0ZWQgcmVzb3VyY2Vz
+IGluIHRoZQo+IGRyaXZlciBsb2NhbCBkZXZpY2Ugc3RydWN0Lgo+CgpUcnVlLCBidXQgaXQgZmVl
+bHMgYSBiaXQgd2VpcmQgdG8gYWxsb2NhdGUgc29tZXRoaW5nIG9uIGRyaXZlciBsb2FkCmFuZCBp
+bnRlbnRpb25hbGx5IGFiYW5kb24gaXQgZm9yIHRoZSBsaWZldGltZSBvZiB0aGUgZHJpdmVyLiBJ
+J2QgZmVlbApiZXR0ZXIgZWl0aGVyIGtlZXBpbmcgaXQgYXJvdW5kLCBvciBwZXJoYXBzIGl0IHNo
+b3VsZCBiZSBwdXQgb25jZQp3ZSdyZSBkb25lIHVzaW5nIGl0IGluIHZvcF9pbml0aWFsLgoKU2Vh
+bgoKCj4gLURhbgo+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hy
+b21pdW0ub3JnPgo+PiAtLS0KPj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMgfCAxMiArKysrKystLS0tLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlv
+bnMoKyksIDYgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuYwo+PiBpbmRleCAxMzFhZTBmLi5iZWQ3ODJlIDEwMDY0NAo+PiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gQEAgLTE0Miw2ICsx
+NDIsNyBAQCBzdHJ1Y3Qgdm9wIHsKPj4KPj4gICAgICAgICAvKiB2b3AgZGNsayByZXNldCAqLwo+
+PiAgICAgICAgIHN0cnVjdCByZXNldF9jb250cm9sICpkY2xrX3JzdDsKPj4gKyAgICAgICBzdHJ1
+Y3QgcmVzZXRfY29udHJvbCAqYWhiX3JzdDsKPj4KPj4gICAgICAgICBzdHJ1Y3Qgdm9wX3dpbiB3
+aW5bXTsKPj4gIH07Cj4+IEBAIC0xMzMzLDcgKzEzMzQsNiBAQCBzdGF0aWMgaW50IHZvcF9pbml0
+aWFsKHN0cnVjdCB2b3AgKnZvcCkKPj4gIHsKPj4gICAgICAgICBjb25zdCBzdHJ1Y3Qgdm9wX2Rh
+dGEgKnZvcF9kYXRhID0gdm9wLT5kYXRhOwo+PiAgICAgICAgIGNvbnN0IHN0cnVjdCB2b3BfcmVn
+X2RhdGEgKmluaXRfdGFibGUgPSB2b3BfZGF0YS0+aW5pdF90YWJsZTsKPj4gLSAgICAgICBzdHJ1
+Y3QgcmVzZXRfY29udHJvbCAqYWhiX3JzdDsKPj4gICAgICAgICBpbnQgaSwgcmV0Owo+Pgo+PiAg
+ICAgICAgIHZvcC0+aGNsayA9IGRldm1fY2xrX2dldCh2b3AtPmRldiwgImhjbGtfdm9wIik7Cj4+
+IEBAIC0xMzc0LDE1ICsxMzc0LDE1IEBAIHN0YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZv
+cCAqdm9wKQo+PiAgICAgICAgIC8qCj4+ICAgICAgICAgICogZG8gaGNsa19yZXNldCwgcmVzZXQg
+YWxsIHZvcCByZWdpc3RlcnMuCj4+ICAgICAgICAgICovCj4+IC0gICAgICAgYWhiX3JzdCA9IGRl
+dm1fcmVzZXRfY29udHJvbF9nZXQodm9wLT5kZXYsICJhaGIiKTsKPj4gLSAgICAgICBpZiAoSVNf
+RVJSKGFoYl9yc3QpKSB7Cj4+ICsgICAgICAgdm9wLT5haGJfcnN0ID0gZGV2bV9yZXNldF9jb250
+cm9sX2dldCh2b3AtPmRldiwgImFoYiIpOwo+PiArICAgICAgIGlmIChJU19FUlIodm9wLT5haGJf
+cnN0KSkgewo+PiAgICAgICAgICAgICAgICAgZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBn
+ZXQgYWhiIHJlc2V0XG4iKTsKPj4gLSAgICAgICAgICAgICAgIHJldCA9IFBUUl9FUlIoYWhiX3Jz
+dCk7Cj4+ICsgICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKHZvcC0+YWhiX3JzdCk7Cj4+ICAg
+ICAgICAgICAgICAgICBnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4+ICAgICAgICAgfQo+PiAtICAg
+ICAgIHJlc2V0X2NvbnRyb2xfYXNzZXJ0KGFoYl9yc3QpOwo+PiArICAgICAgIHJlc2V0X2NvbnRy
+b2xfYXNzZXJ0KHZvcC0+YWhiX3JzdCk7Cj4+ICAgICAgICAgdXNsZWVwX3JhbmdlKDEwLCAyMCk7
+Cj4+IC0gICAgICAgcmVzZXRfY29udHJvbF9kZWFzc2VydChhaGJfcnN0KTsKPj4gKyAgICAgICBy
+ZXNldF9jb250cm9sX2RlYXNzZXJ0KHZvcC0+YWhiX3JzdCk7Cj4+Cj4+ICAgICAgICAgbWVtY3B5
+KHZvcC0+cmVnc2Jhaywgdm9wLT5yZWdzLCB2b3AtPmxlbik7Cj4+Cj4+IC0tCj4+IDIuOC4wLnJj
+My4yMjYuZzM5ZDQwMjAKPj4KPj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KPj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+PiBkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCj4+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
