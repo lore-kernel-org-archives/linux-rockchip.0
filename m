@@ -1,14 +1,14 @@
 From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: [PATCH 4.4 029/118] iio: adc: rockchip_saradc: reset saradc
+Subject: [PATCH 4.7 069/184] iio: adc: rockchip_saradc: reset saradc
  controller before programming it
-Date: Thu, 22 Sep 2016 19:28:49 +0200
-Message-ID: <20160922172940.064396173@linuxfoundation.org>
-References: <20160922172938.643879685@linuxfoundation.org>
+Date: Thu, 22 Sep 2016 19:40:03 +0200
+Message-ID: <20160922174051.671741226@linuxfoundation.org>
+References: <20160922174048.653794923@linuxfoundation.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160922172938.643879685-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160922174048.653794923-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,7 +22,7 @@ To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-4.4-stable review patch.  If anyone has any objections, please let me know.
+4.7-stable review patch.  If anyone has any objections, please let me know.
 
 ------------------
 
@@ -51,7 +51,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
 
 --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
 +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-@@ -12,6 +12,11 @@ Required properties:
+@@ -16,6 +16,11 @@ Required properties:
  - vref-supply: The regulator supply ADC reference voltage.
  - #io-channel-cells: Should be 1, see ../iio-bindings.txt
  
@@ -63,7 +63,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
  Example:
  	saradc: saradc@2006c000 {
  		compatible = "rockchip,saradc";
-@@ -19,6 +24,8 @@ Example:
+@@ -23,6 +28,8 @@ Example:
  		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
  		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
  		clock-names = "saradc", "apb_pclk";
@@ -74,7 +74,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
  	};
 --- a/drivers/iio/adc/Kconfig
 +++ b/drivers/iio/adc/Kconfig
-@@ -306,6 +306,7 @@ config QCOM_SPMI_VADC
+@@ -377,6 +377,7 @@ config QCOM_SPMI_VADC
  config ROCKCHIP_SARADC
  	tristate "Rockchip SARADC driver"
  	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
@@ -101,7 +101,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
  	const struct rockchip_saradc_data *data;
  	u16			last_val;
  };
-@@ -171,6 +174,16 @@ static const struct of_device_id rockchi
+@@ -190,6 +193,16 @@ static const struct of_device_id rockchi
  };
  MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
  
@@ -118,7 +118,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
  static int rockchip_saradc_probe(struct platform_device *pdev)
  {
  	struct rockchip_saradc *info = NULL;
-@@ -199,6 +212,20 @@ static int rockchip_saradc_probe(struct
+@@ -218,6 +231,20 @@ static int rockchip_saradc_probe(struct
  	if (IS_ERR(info->regs))
  		return PTR_ERR(info->regs);
  
@@ -139,7 +139,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@publi
  	init_completion(&info->completion);
  
  	irq = platform_get_irq(pdev, 0);
-@@ -233,6 +260,9 @@ static int rockchip_saradc_probe(struct
+@@ -252,6 +279,9 @@ static int rockchip_saradc_probe(struct
  		return PTR_ERR(info->vref);
  	}
  
