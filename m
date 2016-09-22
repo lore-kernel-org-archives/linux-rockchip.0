@@ -1,140 +1,151 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] PCI: rockchip: Support quirk to disable 5 GT/s (PCIe 2.x) link rate
-Date: Thu, 22 Sep 2016 10:31:18 -0700
-Message-ID: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>
+From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: [PATCH 4.4 029/118] iio: adc: rockchip_saradc: reset saradc
+ controller before programming it
+Date: Thu, 22 Sep 2016 19:28:49 +0200
+Message-ID: <20160922172940.064396173@linuxfoundation.org>
+References: <20160922172938.643879685@linuxfoundation.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160922172938.643879685-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-rk3399 supports PCIe 2.x link speeds marginally at best, and on some
-boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
-ms waiting for training that will never happen, let's support a device
-tree quirk flag to disable generation 2 speeds entirely.
+4.4-stable review patch.  If anyone has any objections, please let me know.
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
+------------------
+
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+commit 543852af8e5902aee8f7c72c89e1513663e0f696 upstream.
+
+SARADC controller needs to be reset before programming it, otherwise
+it will not function properly.
+
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Tested-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Signed-off-by: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+
 ---
- .../devicetree/bindings/pci/rockchip-pcie.txt      |  2 +
- drivers/pci/host/pcie-rockchip.c                   | 57 +++++++++++++---------
- 2 files changed, 37 insertions(+), 22 deletions(-)
+ Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt |    7 ++
+ drivers/iio/adc/Kconfig                                       |    1 
+ drivers/iio/adc/rockchip_saradc.c                             |   30 ++++++++++
+ 3 files changed, 38 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-index ba67b39939c1..e769726fd093 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-@@ -42,6 +42,8 @@ Required properties:
- Optional Property:
- - ep-gpios: contain the entry for pre-reset gpio
- - num-lanes: number of lanes to use
-+- rockchip,disable-gen2: present if PCIe generation 2.x (i.e., 5 GT/s link
-+	speeds) is not supported.
- - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
- - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
- - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index c3593e633ccd..f047c4a73f69 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -53,6 +53,7 @@
- #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
- #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
- #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
-+#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
- #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
- #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
- #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
-@@ -191,6 +192,7 @@ struct rockchip_pcie {
- 	struct	gpio_desc *ep_gpio;
- 	u32	lanes;
- 	u8	root_bus_nr;
-+	bool	enable_gen2;
- 	struct	device *dev;
- 	struct	irq_domain *irq_domain;
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+@@ -12,6 +12,11 @@ Required properties:
+ - vref-supply: The regulator supply ADC reference voltage.
+ - #io-channel-cells: Should be 1, see ../iio-bindings.txt
+ 
++Optional properties:
++- resets: Must contain an entry for each entry in reset-names if need support
++	  this option. See ../reset/reset.txt for details.
++- reset-names: Must include the name "saradc-apb".
++
+ Example:
+ 	saradc: saradc@2006c000 {
+ 		compatible = "rockchip,saradc";
+@@ -19,6 +24,8 @@ Example:
+ 		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+ 		clock-names = "saradc", "apb_pclk";
++		resets = <&cru SRST_SARADC>;
++		reset-names = "saradc-apb";
+ 		#io-channel-cells = <1>;
+ 		vref-supply = <&vcc18>;
+ 	};
+--- a/drivers/iio/adc/Kconfig
++++ b/drivers/iio/adc/Kconfig
+@@ -306,6 +306,7 @@ config QCOM_SPMI_VADC
+ config ROCKCHIP_SARADC
+ 	tristate "Rockchip SARADC driver"
+ 	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
++	depends on RESET_CONTROLLER
+ 	help
+ 	  Say yes here to build support for the SARADC found in SoCs from
+ 	  Rockchip.
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -21,6 +21,8 @@
+ #include <linux/of_device.h>
+ #include <linux/clk.h>
+ #include <linux/completion.h>
++#include <linux/delay.h>
++#include <linux/reset.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/iio/iio.h>
+ 
+@@ -53,6 +55,7 @@ struct rockchip_saradc {
+ 	struct clk		*clk;
+ 	struct completion	completion;
+ 	struct regulator	*vref;
++	struct reset_control	*reset;
+ 	const struct rockchip_saradc_data *data;
+ 	u16			last_val;
  };
-@@ -418,13 +420,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
+@@ -171,6 +174,16 @@ static const struct of_device_id rockchi
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
  
-+	if (rockchip->enable_gen2)
-+		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
-+				    PCIE_CLIENT_CONFIG);
-+	else
-+		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
-+				    PCIE_CLIENT_CONFIG);
++/**
++ * Reset SARADC Controller.
++ */
++static void rockchip_saradc_reset_controller(struct reset_control *reset)
++{
++	reset_control_assert(reset);
++	usleep_range(10, 20);
++	reset_control_deassert(reset);
++}
 +
- 	rockchip_pcie_write(rockchip,
- 			    PCIE_CLIENT_CONF_ENABLE |
- 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
- 			    PCIE_CLIENT_ARI_ENABLE |
- 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
--			    PCIE_CLIENT_MODE_RC |
--			    PCIE_CLIENT_GEN_SEL_2,
-+			    PCIE_CLIENT_MODE_RC,
- 				PCIE_CLIENT_CONFIG);
+ static int rockchip_saradc_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_saradc *info = NULL;
+@@ -199,6 +212,20 @@ static int rockchip_saradc_probe(struct
+ 	if (IS_ERR(info->regs))
+ 		return PTR_ERR(info->regs);
  
- 	err = phy_power_on(rockchip->phy);
-@@ -492,29 +500,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		msleep(20);
- 	}
- 
--	/*
--	 * Enable retrain for gen2. This should be configured only after
--	 * gen1 finished.
--	 */
--	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
--	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
--	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
-+	if (rockchip->enable_gen2) {
-+		/*
-+		 * Enable retrain for gen2. This should be configured only after
-+		 * gen1 finished.
-+		 */
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-+		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	/*
++	 * The reset should be an optional property, as it should work
++	 * with old devicetrees as well
++	 */
++	info->reset = devm_reset_control_get(&pdev->dev, "saradc-apb");
++	if (IS_ERR(info->reset)) {
++		ret = PTR_ERR(info->reset);
++		if (ret != -ENOENT)
++			return ret;
 +
-+		timeout = jiffies + msecs_to_jiffies(500);
-+		for (;;) {
-+			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
-+			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
-+					PCIE_CORE_PL_CONF_SPEED_5G) {
-+				dev_dbg(dev, "PCIe link training gen2 pass!\n");
-+				break;
-+			}
- 
--	timeout = jiffies + msecs_to_jiffies(500);
--	for (;;) {
--		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
--		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
--		    PCIE_CORE_PL_CONF_SPEED_5G) {
--			dev_dbg(dev, "PCIe link training gen2 pass!\n");
--			break;
--		}
-+			if (time_after(jiffies, timeout)) {
-+				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
-+				break;
-+			}
- 
--		if (time_after(jiffies, timeout)) {
--			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
--			break;
-+			msleep(20);
- 		}
--
--		msleep(20);
- 	}
- 
- 	/* Check the final link width from negotiated lane counter from MGMT */
-@@ -722,6 +732,9 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		rockchip->lanes = 1;
- 	}
- 
-+	rockchip->enable_gen2 = !of_property_read_bool(node,
-+						       "rockchip,disable-gen2");
++		dev_dbg(&pdev->dev, "no reset control found\n");
++		info->reset = NULL;
++	}
 +
- 	rockchip->core_rst = devm_reset_control_get(dev, "core");
- 	if (IS_ERR(rockchip->core_rst)) {
- 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
--- 
-2.8.0.rc3.226.g39d4020
+ 	init_completion(&info->completion);
+ 
+ 	irq = platform_get_irq(pdev, 0);
+@@ -233,6 +260,9 @@ static int rockchip_saradc_probe(struct
+ 		return PTR_ERR(info->vref);
+ 	}
+ 
++	if (info->reset)
++		rockchip_saradc_reset_controller(info->reset);
++
+ 	/*
+ 	 * Use a default value for the converter clock.
+ 	 * This may become user-configurable in the future.
