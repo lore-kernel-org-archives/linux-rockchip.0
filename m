@@ -1,101 +1,156 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2] ASoC: rk3399_gru_sound: fix recording pop at first attempt
-Date: Thu, 22 Sep 2016 21:50:06 +0800
-Message-ID: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
+ initialization
+Date: Thu, 22 Sep 2016 17:12:17 +0200
+Message-ID: <20160922171217.09a6d13f@bbrezillon>
+References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
+        <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
+        <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
+        <2318029.f7g774Bk76@phil>
+        <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
+        <20160919191327.741a2b89@bbrezillon>
+        <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
+        <20160919194844.0db7b307@bbrezillon>
+        <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
+        <20160919200627.3ca1aae4@bbrezillon>
+        <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
+        <20160919224352.3b84b6c0@bbrezillon>
+        <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, woojoo.lee@samsung.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, dianders@google.com, Mark Brown <broonie@kernel.org>, smbarber@google.com, hychao@google.com, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, cychiang@google.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mark Brown <broonie@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Wonjoon Lee <woojoo.lee@samsung.com>
++Mark
 
-Pop happens when mclk applied but dmic's own boot-time
-Specify dmic delay times in dt to make sure
-clocks are ready earlier than dmic working
+I realize Mark has been out of the discussion, and what started as a DT
+problem actually turned into a PWM regulator discussion.
+Maybe we should start a new thread.
 
-Signed-off-by: Wonjoon Lee <woojoo.lee@samsung.com>
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+On Mon, 19 Sep 2016 14:15:06 -0700
+Doug Anderson <dianders@chromium.org> wrote:
 
-Changes in v2:
-- rename dmic-delay to dmic-wakeup-delay-ms
+> Hi,
+> 
+> On Mon, Sep 19, 2016 at 1:43 PM, Boris Brezillon
+> <boris.brezillon@free-electrons.com> wrote:
+> > On Mon, 19 Sep 2016 11:12:12 -0700
+> > Doug Anderson <dianders@chromium.org> wrote:
+> >  
+> >> Hi,
+> >>
+> >> On Mon, Sep 19, 2016 at 11:06 AM, Boris Brezillon
+> >> <boris.brezillon@free-electrons.com> wrote:  
+> >> > On Mon, 19 Sep 2016 10:52:51 -0700
+> >> > Doug Anderson <dianders@chromium.org> wrote:
+> >> >  
+> >> >> Hi,
+> >> >>
+> >> >> On Mon, Sep 19, 2016 at 10:48 AM, Boris Brezillon
+> >> >> <boris.brezillon@free-electrons.com> wrote:  
+> >> >> > The PWM chip has always claimed the pins and muxed them to the PWM IP.
+> >> >> > So, this means it's broken from the beginning, and my patch is only
+> >> >> > uncovering the problem (unless the pins stay configured as input until
+> >> >> > the PWM is enabled, which I'm not sure is the case).  
+> >> >>
+> >> >> Such a solution is achievable with the pinctrl APIs pretty easily.
+> >> >> You might not be able to use the automatic "init" state but you can do
+> >> >> something similar and switch to an "active" state once the PWM is
+> >> >> actually turned on the first time.  
+> >> >
+> >> > But is it really the case here (I don't see any code requesting a
+> >> > specific pinmux depending on the PWM state)?  
+> >>
+> >> It is not happening right now as far as I know.  ...but that's a bug.
+> >>  
+> >> > Anyway, we really need to handle this case, we should define the
+> >> > typical voltage when the PWM is disabled. Same as what you suggested
+> >> > with voltage-when-input, but with a different naming (since the concept
+> >> > of pinmux is PWM hardware/driver specific).
+> >> >
+> >> >         voltage-when-pwm-disabled = <...>;  
+> >>
+> >> Voltage when disabled and voltage when input are two different states.
+> >> A disabled PWM will typically either drive high or low (depending on
+> >> where it was when you turned it off).  Not all "disabled" states will
+> >> mean that the pin is configured as an input.  
+> >
+> > Okay, after reading again your first answer, I think I understand why
+> > you want to differentiate the when-disabled and when-input cases. You
+> > want to use the "init" and "default" pinctrl states. The "init" state
+> > (applied at probe time) would keep the PWM pin in gpio+input mode and
+> > the "default" state (applied when the PWM device is enabled for the
+> > first time) would mux the pin to the PWM device.
+> > Your solution requires that the pwm-regulator device knows in which
+> > state the pin attached to the PWM is, which IMO is breaking the
+> > layering we have right now: a PWM-regulator is assigned a PWM device
+> > which is assigned a pin and a pinmux config.
+> > Another solution would be to expose an additional information in the
+> > pwm_state: whether the PWM is in the INIT state (probed, but not yet
+> > configured by its user) or DEFAULT state (probed and already
+> > configured by its user). But again, by doing that we also expose
+> > internal PWM details to its user, which I'm not sure will help keep
+> > the PWM API simple.  
+> 
+> One note is that probably using the "init" state would not be a good
+> idea because it would make assumptions about what state the firmware
+> left things.  Possibly a firmware update could cause a change from a
+> PWM being left as "input" to the PWM actually being initted.
+> ...really we should be able to detect if the PWM was left on at
+> bootup.
 
- .../bindings/sound/rockchip,rk3399-gru-sound.txt           |  7 +++++++
- sound/soc/rockchip/rk3399_gru_sound.c                      | 14 ++++++++++++++
- 2 files changed, 21 insertions(+)
+Yep.
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-index f19b6c8..eac91db 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-@@ -6,10 +6,17 @@ Required properties:
-   connected to the codecs
- - rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
- 
-+Optional properties:
-+- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
-+  If this option is specified, which means it's required dmic need
-+  delay for DMIC to ready so that rt5514 can avoid recording before
-+  DMIC send valid data
-+
- Example:
- 
- sound {
- 	compatible = "rockchip,rk3399-gru-sound";
- 	rockchip,cpu = <&i2s0>;
- 	rockchip,codec = <&max98357a &rt5514 &da7219>;
-+	dmic-wakeup-delay-ms = <20>;
- };
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index ee06489..9ed735a 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -38,6 +38,8 @@
- 
- #define SOUND_FS	256
- 
-+unsigned int rt5514_dmic_delay;
-+
- static struct snd_soc_jack rockchip_sound_jack;
- 
- static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
-@@ -123,6 +125,9 @@ static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
- 
-+	/* Wait for DMIC stable */
-+	msleep(rt5514_dmic_delay);
-+
- 	return 0;
- }
- 
-@@ -343,6 +348,15 @@ static int rockchip_sound_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	/* Set DMIC delay */
-+	ret = device_property_read_u32(&pdev->dev, "dmic-delay",
-+					&rt5514_dmic_delay);
-+	if (ret) {
-+		rt5514_dmic_delay = 0;
-+		dev_dbg(&pdev->dev,
-+			"no optional property 'dmic-delay' found, default: no delay\n");
-+	}
-+
- 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
- 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
- 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
--- 
-1.9.1
+> 
+> 
+> > Actually, I had something slightly different in mind. I thought about
+> > having two new pinctrl states ("enabled" and "disabled"). The "enabled"
+> > state (pin muxed to the PWM device) would be applied each time the PWM
+> > is enabled, and "disabled" state (gpio+input mode) would be applied each
+> > time the PWM is disabled.  
+> 
+> Adding "enabled" and "disabled" state is sane IMHO.  At the moment the
+> PWM regulator never actually puts things in "disabled" state, but I
+> suppose it could in the future.
+> 
+> > This way we can guarantee that even when the PWM is disabled, the
+> > PWM-driven regulator is configured to output a non-destructive voltage.
+> > Hence my suggestion to name the property 'voltage-when-pwm-disabled'.  
+> 
+> That's fine with me, as long as the PWM starts up as "enabled" if the
+> pinctrl happened to be left initted by the BIOS.
+
+Yes, that's already the case in the pwm-rockchip driver.
+
+Okay, I can try to implement what is described above, but, in the
+meantime, I think we should find a solution for Andy's initial problem.
+
+As I said, the problem you're describing (pins muxed to the PWM device
+when it should actually stay in gpio+input mode) is not new, and the old
+pwm-regulator and pwm-rockchip implementation (before my atomic PWM
+changes) were behaving the same way.
+
+What is new though, is the pwm_regulator_init_state() function [1], and
+it seems it's now preventing the probe of a pwm-regulator device if the
+initial PWM state is not described in the voltage-table.
+
+The question is, what should we do?
+
+1/ Force users to put an entry matching this state (which means
+   breaking DT compat)
+2/ Put a valid value in drvdata->state even if it's not reflecting the
+   real state
+3/ Patch regulator core to support an "unknown-selector" return code.
+
+Mark, any opinion?
+
+Thanks,
+
+Boris
+
+[1]https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/tree/drivers/regulator/pwm-regulator.c?id=refs/tags/next-20160922#n60
