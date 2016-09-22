@@ -1,76 +1,81 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
- initialization
-Date: Thu, 22 Sep 2016 20:26:02 +0100
-Message-ID: <20160922192602.GV7994@sirena.org.uk>
-References: <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
- <20160919194844.0db7b307@bbrezillon>
- <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
- <20160919200627.3ca1aae4@bbrezillon>
- <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
- <20160919224352.3b84b6c0@bbrezillon>
- <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
- <20160922171217.09a6d13f@bbrezillon>
- <20160922164752.GP7994@sirena.org.uk>
- <20160922201301.0157a292@bbrezillon>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 3/5] mmc: core: changes frequency to hs_max_dtr when
+ selecting hs400es
+Date: Fri, 23 Sep 2016 07:34:13 +0800
+Message-ID: <3559c25a-44ce-021d-de1c-d330bb02b704@rock-chips.com>
+References: <1474422233-29355-1-git-send-email-shawn.lin@rock-chips.com>
+ <1474422233-29355-4-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFoHxSpFurgV9swN3MCTWUinPFNUHSzxgyKj+K3iqkGSbA@mail.gmail.com>
+ <62a8d622-39d2-db7d-042d-5425a3efba58@rock-chips.com>
+ <CAPDyKFrNp=Y3BhVE_kxtggv7Qc6m=2kef2U8Dn2Bb3ANHPYV-Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="Zd8I2GZVcdxtyaG/"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160922201301.0157a292@bbrezillon>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrNp=Y3BhVE_kxtggv7Qc6m=2kef2U8Dn2Bb3ANHPYV-Q@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On 2016/9/22 18:21, Ulf Hansson wrote:
+> On 22 September 2016 at 12:06, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>> Hi ulf,
+>>
+>> 在 2016/9/22 17:38, Ulf Hansson 写道:
+>>>
+>>> On 21 September 2016 at 03:43, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>>>>
+>>>> Per JESD84-B51 P69, Host need to change frequency to <=52MHz after
+>>>> setting HS_TIMING to 0x1, and host may changes frequency to <= 200MHz
+>>>> after setting HS_TIMING to 0x3. It seems there is no difference if
+>>>> we don't change frequency to <= 52MHz as f_init is already less than
+>>>> 52MHz. But actually it does make difference. When doing compatibility
+>>>> test we see failures for some eMMC devices without changing the
+>>>> frequency to hs_max_dtr. And let's read the spec again, we could see
+>>>> that "Host may changes frequency to 200MHz" implies that it's not
+>>>> mandatory. But the "Host need to change frequency to <= 52MHz" implies
+>>>> that we should do this.
+>>>
+>>>
+>>> I don't get this. Are you saying that f_init > 52 MHz? That should not
+>>> be impossible, right!?
+>>
+>>
+>> nope, I was saying that the spec implies we to set clock after
+>> setting HS_TIMING to 0x1 when doing hs400es selection.
+>>
+>> I thought there is no difference because the spec says "Host need to
+>> change frequency to <= 52MHz", and the f_init(<=400k) is <= 52MHz,
+>> right? So I didn't set clock to hs_max_dtr. But I think I misunderstood
+>> the spec, so this patch will fix this.
+>
+> Okay, I see what you mean now!
+>
+> In other words:
+> The card expects the clock rate to increase from the current used
+> f_init (which is <= 400KHz), but still being <= 52MHz, when you have
+> set HS_TIMING to 0x1.
+>
+> Okay, we can do that change! Could you try to improve the change log a
+> little bit or you want me to help?
 
---Zd8I2GZVcdxtyaG/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+yep, I could change the commit msg a bit and fix another
+copy-paste error, then respin v2.
+BTW, I noticed you have applied one of these 5 patches, so
+I will remove that one for V2.
 
-On Thu, Sep 22, 2016 at 08:13:01PM +0200, Boris Brezillon wrote:
+Thanks, Ulf.
 
-> So, there are 2 different problems here:
-> 1/ the board no longer boots because of commit 87248991a1de and a
->    missing entry in the voltage table
-> 2/ claiming the PWM pins at probe time can cause glitches
+>
+> Kind regards
+> Uffe
+>
+>
+>
 
-> I'm currently trying to solve #1, but most of the discussion in this
-> thread was about addressing #2.
 
-Well, if you actually want the entry in the voltage table then adding it
-does seem the most sensible fix.
+-- 
+Best Regards
+Shawn Lin
 
-> > That was a very
-> > long e-mail so I might be missing something but the obvious thing seems
-> > to be to force a state since we'll be doing that when we enable anyway.
-
-> Hm, okay, but which state should we choose? The first entry in the
-> voltage-table?
-
-That's why we don't do this currently.  Probably the closest one if we
-can work out what it was trying to achieve.
-
-> > Or just not have the voltage table and use it as a continuous regulator.
-
-> Yes, but that means patching the DT, which means breaking the DT compat.
-
-It sounds like you want to fix the DT anyway though?
-
---Zd8I2GZVcdxtyaG/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJX5DBJAAoJECTWi3JdVIfQc/sIAIC0oPt32oPQmpktSrTYn59i
-q9BaM1DAYLykTIjLDvHxfzUafnZ+/20G4sdp44lPJ2mSh20qbPojUTkzAa+ElriD
-bKPFL2ZQdBFPB3+fjmzErvMQGaj/eoEXag/QHT8DohgH8ytpMw9x3FP1RnWvEIuS
-5ZaRkxKyBQPgEt2kTgTkGt/uqc1FhiDJmyIRwCh5mCSpGwzukSVDR3XxbcXYVtzu
-g9Fwr2cP+2XdCawNPvWAeU5smDgMWRcl/tSyjDg0XkgmjlFCzw1TBVFOUGjkQiDn
-vUcnO4d8c09WWUZGj74J2HM4GuIHXcKulsNkkSbhZ0j2cbpAAbkMyCN9QuYBtpM=
-=o5X3
------END PGP SIGNATURE-----
-
---Zd8I2GZVcdxtyaG/--
