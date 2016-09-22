@@ -1,45 +1,89 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH 2/2] i2c: rk3x: Fix variable 'min_total_ns' unused warning
-Date: Thu, 22 Sep 2016 19:29:24 +0800
-Message-ID: <1474543764-51135-3-git-send-email-david.wu@rock-chips.com>
-References: <1474543764-51135-1-git-send-email-david.wu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1474543764-51135-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: heiko@sntech.de, wsa@the-dreams.de
-Cc: dianders@chromium.org, huangtao@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] ASoC: rk3399_gru_sound: fix recording pop at first attempt
+Date: Thu, 22 Sep 2016 21:50:42 +0800
+Message-ID: <7d3cce2f-bda3-292f-cb3f-223c26b5ced3@rock-chips.com>
+References: <1474295379-16936-1-git-send-email-zhengxing@rock-chips.com>
+ <20160919144404.GA18734@leverpostej>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160919144404.GA18734@leverpostej>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, cychiang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, hychao-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch fixs the following warning:
-drivers/i2c/busses/i2c-rk3x.c: In function 'rk3x_i2c_v1_calc_timings':
-drivers/i2c/busses/i2c-rk3x.c:745:41: warning: variable 'min_total_ns' set but not used [-Wunused-but-set-variable]
-
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
- drivers/i2c/busses/i2c-rk3x.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 965477e..50702c7 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -742,7 +742,7 @@ static int rk3x_i2c_v1_calc_timings(unsigned long clk_rate,
- 				    struct i2c_timings *t,
- 				    struct rk3x_i2c_calced_timings *t_calc)
- {
--	unsigned long min_low_ns, min_high_ns, min_total_ns;
-+	unsigned long min_low_ns, min_high_ns;
- 	unsigned long min_setup_start_ns, min_setup_data_ns;
- 	unsigned long min_setup_stop_ns, max_hold_data_ns;
- 
-@@ -793,7 +793,6 @@ static int rk3x_i2c_v1_calc_timings(unsigned long clk_rate,
- 
- 	/* These are the min dividers needed for min hold times. */
- 	min_div_for_hold = (min_low_div + min_high_div);
--	min_total_ns = min_low_ns + min_high_ns;
- 
- 	/*
- 	 * This is the maximum divider so we don't go over the maximum.
--- 
-1.9.1
+SGkgTWFyaywKCk9uIDIwMTblubQwOeaciDE55pelIDIyOjQ0LCBNYXJrIFJ1dGxhbmQgd3JvdGU6
+Cj4gT24gTW9uLCBTZXAgMTksIDIwMTYgYXQgMTA6Mjk6MzlQTSArMDgwMCwgWGluZyBaaGVuZyB3
+cm90ZToKPj4gRnJvbTogV29uam9vbiBMZWUgPHdvb2pvby5sZWVAc2Ftc3VuZy5jb20+Cj4+Cj4+
+IFBvcCBoYXBwZW5zIHdoZW4gbWNsayBhcHBsaWVkIGJ1dCBkbWljJ3Mgb3duIGJvb3QtdGltZQo+
+PiBTcGVjaWZ5IGRtaWMgZGVsYXkgdGltZXMgaW4gZHQgdG8gbWFrZSBzdXJlCj4+IGNsb2NrcyBh
+cmUgcmVhZHkgZWFybGllciB0aGFuIGRtaWMgd29ya2luZwo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBX
+b25qb29uIExlZSA8d29vam9vLmxlZUBzYW1zdW5nLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogWGlu
+ZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4KPj4gICAuLi4vYmlu
+ZGluZ3Mvc291bmQvcm9ja2NoaXAscmszMzk5LWdydS1zb3VuZC50eHQgICB8ICAgIDYgKysrKysr
+Cj4+ICAgc291bmQvc29jL3JvY2tjaGlwL3JrMzM5OV9ncnVfc291bmQuYyAgICAgICAgICAgICAg
+fCAgIDE0ICsrKysrKysrKysrKysrCj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25z
+KCspCj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
+c291bmQvcm9ja2NoaXAscmszMzk5LWdydS1zb3VuZC50eHQgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3Mvc291bmQvcm9ja2NoaXAscmszMzk5LWdydS1zb3VuZC50eHQKPj4gaW5k
+ZXggZjE5YjZjOC4uYjdkZDNhYiAxMDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLHJrMzM5OS1ncnUtc291bmQudHh0Cj4+ICsrKyBi
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcCxyazMzOTkt
+Z3J1LXNvdW5kLnR4dAo+PiBAQCAtNiw2ICs2LDEyIEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+
+ICAgICBjb25uZWN0ZWQgdG8gdGhlIGNvZGVjcwo+PiAgIC0gcm9ja2NoaXAsY29kZWM6IFRoZSBw
+aGFuZGxlIG9mIHRoZSBNQVg5ODM1N0EvUlQ1NTE0L0RBNzIxOSBjb2RlY3MKPj4gICAKPj4gK09w
+dGlvbmFsIHByb3BlcnRpZXM6Cj4+ICstIGRtaWMtZGVsYXkgOiBzcGVjaWZ5IGRlbGF5IHRpbWUg
+Zm9yIERNSUMgcmVhZHkuCj4+ICsgIElmIHRoaXMgb3B0aW9uIGlzIHNwZWNpZmllZCwgd2hpY2gg
+bWVhbnMgaXQncyByZXF1aXJlZCBkbWljIG5lZWQKPj4gKyAgZGVsYXkgZm9yIERNSUMgdG8gcmVh
+ZHkgc28gdGhhdCBydDU1MTQgY2FuIGF2b2lkIHJlY29yZGluZyBiZWZvcmUKPj4gKyAgRE1JQyBz
+ZW5kIHZhbGlkIGRhdGEKPiBXaGF0IHVuaXRzIGlzIHRoaXMgaW4/IFBlciB0aGUgY29kZSBpdCBs
+b29rcyBsaWtlIG1zLCBzbyBpZiB3ZSBmb2xsb3cKPiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvcHJvcGVydHktdW5pdHMudHh0LCB0aG91cyBzaG91bGQgYmUKPiBuYW1lZCBzb21l
+dGhpbmcgbGlrZSBkbWljLWVuYWJsZS1kZWxheS1tcy4KT0ssIHRoZSAiZG1pYy13YWtldXAtZGVs
+YXktbXMiIGhhdmUgYmVlbiBkb25lLgo+IFRoYXQgc2FpZCwgZG8gd2UgZXZlbiBuZWVkIGEgcHJv
+cGVydHkgZm9yIHRoaXM/IERvZXMgdGhpcyB2YXJ5IG11Y2ggaW4KPiBwcmFjdGljZT8KPgo+IElm
+IGl0IGRvZXMsIGNhbiB3ZSBub3QgZGVyaXZlIHRoaXMgZGVsYXkgZnJvbSBvdGhlciBpbmZvcm1h
+dGlvbiAoZS5nLgo+IHRoZSByYXRlcyBvZiBpbnB1dCBjbG9ja3MgYW5kIHNvIG9uKT8gV2hhdCBl
+eGFjdGx5IGRldGVybWluZXMgdGhlCj4gbmVjZXNzYXJ5IGRlbGF5PwpZZWFoLCB0aGUgRE1JQyBz
+cGVjIGluZGljYXRlcyB3YWtlLXVwIHRpbWUgYXMgMTVtcyBtYXgsIHNvIHdlIG5lZWQgdG8gCnN0
+YXJ0IHJlY29yZGluZyAxNW1zIGFmdGVyIE1DTEsgYWZ0ZXIgdGVzdGluZy4KCkBXb29qb28sIHBs
+ZWFzZSBjb3JyZWN0IG1lIGlmIEkgd2FzIHdyb25nLgoKVGhhbmtzLgo+Cj4gVGhhbmtzLAo+IE1h
+cmsuCj4KPj4gICAKPj4gICBzb3VuZCB7Cj4+IGRpZmYgLS1naXQgYS9zb3VuZC9zb2Mvcm9ja2No
+aXAvcmszMzk5X2dydV9zb3VuZC5jIGIvc291bmQvc29jL3JvY2tjaGlwL3JrMzM5OV9ncnVfc291
+bmQuYwo+PiBpbmRleCAxNjRiNmRhLi42YWI4MzhiIDEwMDY0NAo+PiAtLS0gYS9zb3VuZC9zb2Mv
+cm9ja2NoaXAvcmszMzk5X2dydV9zb3VuZC5jCj4+ICsrKyBiL3NvdW5kL3NvYy9yb2NrY2hpcC9y
+azMzOTlfZ3J1X3NvdW5kLmMKPj4gQEAgLTM3LDYgKzM3LDggQEAKPj4gICAKPj4gICAjZGVmaW5l
+IFNPVU5EX0ZTCTI1Ngo+PiAgIAo+PiArdW5zaWduZWQgaW50IHJ0NTUxNF9kbWljX2RlbGF5Owo+
+PiArCj4+ICAgc3RhdGljIHN0cnVjdCBzbmRfc29jX2phY2sgcm9ja2NoaXBfc291bmRfamFjazsK
+Pj4gICAKPj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IHNuZF9zb2NfZGFwbV93aWRnZXQgcm9ja2No
+aXBfZGFwbV93aWRnZXRzW10gPSB7Cj4+IEBAIC0xMjIsNiArMTI0LDkgQEAgc3RhdGljIGludCBy
+b2NrY2hpcF9zb3VuZF9ydDU1MTRfaHdfcGFyYW1zKHN0cnVjdCBzbmRfcGNtX3N1YnN0cmVhbSAq
+c3Vic3RyZWFtLAo+PiAgIAkJcmV0dXJuIHJldDsKPj4gICAJfQo+PiAgIAo+PiArCS8qIFdhaXQg
+Zm9yIERNSUMgc3RhYmxlICovCj4+ICsJbXNsZWVwKHJ0NTUxNF9kbWljX2RlbGF5KTsKPj4gKwo+
+PiAgIAlyZXR1cm4gMDsKPj4gICB9Cj4+ICAgCj4+IEBAIC0zMzQsNiArMzM5LDE1IEBAIHN0YXRp
+YyBpbnQgcm9ja2NoaXBfc291bmRfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikK
+Pj4gICAJCXJldHVybiAtRU5PREVWOwo+PiAgIAl9Cj4+ICAgCj4+ICsJLyogU2V0IERNSUMgZGVs
+YXkgKi8KPj4gKwlyZXQgPSBkZXZpY2VfcHJvcGVydHlfcmVhZF91MzIoJnBkZXYtPmRldiwgImRt
+aWMtZGVsYXkiLAo+PiArCQkJCQkmcnQ1NTE0X2RtaWNfZGVsYXkpOwo+PiArCWlmIChyZXQpIHsK
+Pj4gKwkJcnQ1NTE0X2RtaWNfZGVsYXkgPSAwOwo+PiArCQlkZXZfZGJnKCZwZGV2LT5kZXYsCj4+
+ICsJCQkibm8gb3B0aW9uYWwgcHJvcGVydHkgJ2RtaWMtZGVsYXknIGZvdW5kLCBkZWZhdWx0OiBu
+byBkZWxheVxuIik7Cj4+ICsJfQo+PiArCj4+ICAgCXJvY2tjaGlwX2RhaWxpbmtzW0RBSUxJTktf
+UlQ1NTE0X0RTUF0uY3B1X25hbWUgPSBrc3RyZHVwX2NvbnN0KGRldl9uYW1lKGRldiksIEdGUF9L
+RVJORUwpOwo+PiAgIAlyb2NrY2hpcF9kYWlsaW5rc1tEQUlMSU5LX1JUNTUxNF9EU1BdLmNwdV9k
+YWlfbmFtZSA9IGtzdHJkdXBfY29uc3QoZGV2X25hbWUoZGV2KSwgR0ZQX0tFUk5FTCk7Cj4+ICAg
+CXJvY2tjaGlwX2RhaWxpbmtzW0RBSUxJTktfUlQ1NTE0X0RTUF0ucGxhdGZvcm1fbmFtZSA9IGtz
+dHJkdXBfY29uc3QoZGV2X25hbWUoZGV2KSwgR0ZQX0tFUk5FTCk7Cj4+IC0tIAo+PiAxLjcuOS41
+Cj4+Cj4+Cj4KPgoKLS0gCi0gWGluZyBaaGVuZwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
