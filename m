@@ -1,156 +1,83 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
+From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
  initialization
-Date: Thu, 22 Sep 2016 17:12:17 +0200
-Message-ID: <20160922171217.09a6d13f@bbrezillon>
-References: <1474274639-27768-1-git-send-email-andy.yan@rock-chips.com>
-        <1474274696-28090-1-git-send-email-andy.yan@rock-chips.com>
-        <CAD=FV=VawAOWBF_PoXqSj3oiVgfF8SnCBp56p8F==XsaVLmMcg@mail.gmail.com>
-        <2318029.f7g774Bk76@phil>
-        <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
-        <20160919191327.741a2b89@bbrezillon>
-        <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
-        <20160919194844.0db7b307@bbrezillon>
-        <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
-        <20160919200627.3ca1aae4@bbrezillon>
-        <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
-        <20160919224352.3b84b6c0@bbrezillon>
-        <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
+Date: Thu, 22 Sep 2016 17:47:52 +0100
+Message-ID: <20160922164752.GP7994@sirena.org.uk>
+References: <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
+ <20160919191327.741a2b89@bbrezillon>
+ <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
+ <20160919194844.0db7b307@bbrezillon>
+ <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
+ <20160919200627.3ca1aae4@bbrezillon>
+ <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
+ <20160919224352.3b84b6c0@bbrezillon>
+ <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
+ <20160922171217.09a6d13f@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="DBUa/BSa4z6QPQv1"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20160922171217.09a6d13f@bbrezillon>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mark Brown <broonie@kernel.org>
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-+Mark
 
-I realize Mark has been out of the discussion, and what started as a DT
-problem actually turned into a PWM regulator discussion.
-Maybe we should start a new thread.
+--DBUa/BSa4z6QPQv1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Mon, 19 Sep 2016 14:15:06 -0700
-Doug Anderson <dianders@chromium.org> wrote:
+On Thu, Sep 22, 2016 at 05:12:17PM +0200, Boris Brezillon wrote:
+> +Mark
 
-> Hi,
-> 
-> On Mon, Sep 19, 2016 at 1:43 PM, Boris Brezillon
-> <boris.brezillon@free-electrons.com> wrote:
-> > On Mon, 19 Sep 2016 11:12:12 -0700
-> > Doug Anderson <dianders@chromium.org> wrote:
-> >  
-> >> Hi,
-> >>
-> >> On Mon, Sep 19, 2016 at 11:06 AM, Boris Brezillon
-> >> <boris.brezillon@free-electrons.com> wrote:  
-> >> > On Mon, 19 Sep 2016 10:52:51 -0700
-> >> > Doug Anderson <dianders@chromium.org> wrote:
-> >> >  
-> >> >> Hi,
-> >> >>
-> >> >> On Mon, Sep 19, 2016 at 10:48 AM, Boris Brezillon
-> >> >> <boris.brezillon@free-electrons.com> wrote:  
-> >> >> > The PWM chip has always claimed the pins and muxed them to the PWM IP.
-> >> >> > So, this means it's broken from the beginning, and my patch is only
-> >> >> > uncovering the problem (unless the pins stay configured as input until
-> >> >> > the PWM is enabled, which I'm not sure is the case).  
-> >> >>
-> >> >> Such a solution is achievable with the pinctrl APIs pretty easily.
-> >> >> You might not be able to use the automatic "init" state but you can do
-> >> >> something similar and switch to an "active" state once the PWM is
-> >> >> actually turned on the first time.  
-> >> >
-> >> > But is it really the case here (I don't see any code requesting a
-> >> > specific pinmux depending on the PWM state)?  
-> >>
-> >> It is not happening right now as far as I know.  ...but that's a bug.
-> >>  
-> >> > Anyway, we really need to handle this case, we should define the
-> >> > typical voltage when the PWM is disabled. Same as what you suggested
-> >> > with voltage-when-input, but with a different naming (since the concept
-> >> > of pinmux is PWM hardware/driver specific).
-> >> >
-> >> >         voltage-when-pwm-disabled = <...>;  
-> >>
-> >> Voltage when disabled and voltage when input are two different states.
-> >> A disabled PWM will typically either drive high or low (depending on
-> >> where it was when you turned it off).  Not all "disabled" states will
-> >> mean that the pin is configured as an input.  
-> >
-> > Okay, after reading again your first answer, I think I understand why
-> > you want to differentiate the when-disabled and when-input cases. You
-> > want to use the "init" and "default" pinctrl states. The "init" state
-> > (applied at probe time) would keep the PWM pin in gpio+input mode and
-> > the "default" state (applied when the PWM device is enabled for the
-> > first time) would mux the pin to the PWM device.
-> > Your solution requires that the pwm-regulator device knows in which
-> > state the pin attached to the PWM is, which IMO is breaking the
-> > layering we have right now: a PWM-regulator is assigned a PWM device
-> > which is assigned a pin and a pinmux config.
-> > Another solution would be to expose an additional information in the
-> > pwm_state: whether the PWM is in the INIT state (probed, but not yet
-> > configured by its user) or DEFAULT state (probed and already
-> > configured by its user). But again, by doing that we also expose
-> > internal PWM details to its user, which I'm not sure will help keep
-> > the PWM API simple.  
-> 
-> One note is that probably using the "init" state would not be a good
-> idea because it would make assumptions about what state the firmware
-> left things.  Possibly a firmware update could cause a change from a
-> PWM being left as "input" to the PWM actually being initted.
-> ...really we should be able to detect if the PWM was left on at
-> bootup.
+> I realize Mark has been out of the discussion, and what started as a DT
+> problem actually turned into a PWM regulator discussion.
+> Maybe we should start a new thread.
 
-Yep.
+Probably, you're lucky I even looked at this - the number of irrelevant
+patches I get CCed on is such that I'll often delete things that look
+irrelevant unread.  I'm unsure what the relevance is, it looks like it's
+mainly a discussion about pinctrl?
 
-> 
-> 
-> > Actually, I had something slightly different in mind. I thought about
-> > having two new pinctrl states ("enabled" and "disabled"). The "enabled"
-> > state (pin muxed to the PWM device) would be applied each time the PWM
-> > is enabled, and "disabled" state (gpio+input mode) would be applied each
-> > time the PWM is disabled.  
-> 
-> Adding "enabled" and "disabled" state is sane IMHO.  At the moment the
-> PWM regulator never actually puts things in "disabled" state, but I
-> suppose it could in the future.
-> 
-> > This way we can guarantee that even when the PWM is disabled, the
-> > PWM-driven regulator is configured to output a non-destructive voltage.
-> > Hence my suggestion to name the property 'voltage-when-pwm-disabled'.  
-> 
-> That's fine with me, as long as the PWM starts up as "enabled" if the
-> pinctrl happened to be left initted by the BIOS.
+> As I said, the problem you're describing (pins muxed to the PWM device
+> when it should actually stay in gpio+input mode) is not new, and the old
+> pwm-regulator and pwm-rockchip implementation (before my atomic PWM
+> changes) were behaving the same way.
 
-Yes, that's already the case in the pwm-rockchip driver.
+Why would this make any kind of sense?
 
-Okay, I can try to implement what is described above, but, in the
-meantime, I think we should find a solution for Andy's initial problem.
+> What is new though, is the pwm_regulator_init_state() function [1], and
+> it seems it's now preventing the probe of a pwm-regulator device if the
+> initial PWM state is not described in the voltage-table.
 
-As I said, the problem you're describing (pins muxed to the PWM device
-when it should actually stay in gpio+input mode) is not new, and the old
-pwm-regulator and pwm-rockchip implementation (before my atomic PWM
-changes) were behaving the same way.
+> The question is, what should we do?
 
-What is new though, is the pwm_regulator_init_state() function [1], and
-it seems it's now preventing the probe of a pwm-regulator device if the
-initial PWM state is not described in the voltage-table.
+> 1/ Force users to put an entry matching this state (which means
+>    breaking DT compat)
+> 2/ Put a valid value in drvdata->state even if it's not reflecting the
+>    real state
+> 3/ Patch regulator core to support an "unknown-selector" return code.
 
-The question is, what should we do?
+Could someone say what the actual problem was please?  That was a very
+long e-mail so I might be missing something but the obvious thing seems
+to be to force a state since we'll be doing that when we enable anyway.
+Or just not have the voltage table and use it as a continuous regulator.
 
-1/ Force users to put an entry matching this state (which means
-   breaking DT compat)
-2/ Put a valid value in drvdata->state even if it's not reflecting the
-   real state
-3/ Patch regulator core to support an "unknown-selector" return code.
+--DBUa/BSa4z6QPQv1
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Mark, any opinion?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-Thanks,
+iQEcBAEBCAAGBQJX5As3AAoJECTWi3JdVIfQJIwH/18s3JY0eVu7ABRM5Nvx6gp1
+VHwknofE7gKPgGm8II141HOB9nsz5Bn3xX8Z3KY7K2vnR21F1ZulVsrkBWN1xPaA
+d3nAKnKT1JvtOgORgwWsRdTFGnn8USDcEC/MBujuRsJb+PHWcKI9nZKyYd44nYfm
+eRApMwd6CK2ngcCgYSt0pU3Uqp7JPoed0XhgWXfZ28eisCBi1Za2ZmEJvwIV2G6U
+PY3MF0q1McI+VslYRHu/d0sVnxjA4uECuiftXNz3iRa0MGv02ZBzQwoOOLg4tW3a
+YR07s+rcYaeWLJlC88eX6SxVD99qNnZcJgG81H+ZKEcqPoKWrHnhFmyuoLM5Oa0=
+=nKd6
+-----END PGP SIGNATURE-----
 
-Boris
-
-[1]https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/tree/drivers/regulator/pwm-regulator.c?id=refs/tags/next-20160922#n60
+--DBUa/BSa4z6QPQv1--
