@@ -1,52 +1,87 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH] PCI: rockchip: fix uninitialized variable use
-Date: Thu, 22 Sep 2016 11:39:59 +0200
-Message-ID: <20160922094018.2138640-1-arnd@arndb.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 3/5] mmc: core: changes frequency to hs_max_dtr when
+ selecting hs400es
+Date: Thu, 22 Sep 2016 18:06:52 +0800
+Message-ID: <62a8d622-39d2-db7d-042d-5425a3efba58@rock-chips.com>
+References: <1474422233-29355-1-git-send-email-shawn.lin@rock-chips.com>
+ <1474422233-29355-4-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFoHxSpFurgV9swN3MCTWUinPFNUHSzxgyKj+K3iqkGSbA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFoHxSpFurgV9swN3MCTWUinPFNUHSzxgyKj+K3iqkGSbA@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The newly added pcie-rockchip driver fails to initialize the
-io_size variable if the DT doesn't provide ranges for the PCI
-I/O space, as found by building it with -Wmaybe-uninitialized:
+Hi ulf,
 
-drivers/pci/host/pcie-rockchip.c: In function 'rockchip_pcie_probe':
-drivers/pci/host/pcie-rockchip.c:1007:6: warning: 'io_size' may be used uninitialized in this function [-Wmaybe-uninitialized]
+在 2016/9/22 17:38, Ulf Hansson 写道:
+> On 21 September 2016 at 03:43, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>> Per JESD84-B51 P69, Host need to change frequency to <=52MHz after
+>> setting HS_TIMING to 0x1, and host may changes frequency to <= 200MHz
+>> after setting HS_TIMING to 0x3. It seems there is no difference if
+>> we don't change frequency to <= 52MHz as f_init is already less than
+>> 52MHz. But actually it does make difference. When doing compatibility
+>> test we see failures for some eMMC devices without changing the
+>> frequency to hs_max_dtr. And let's read the spec again, we could see
+>> that "Host may changes frequency to 200MHz" implies that it's not
+>> mandatory. But the "Host need to change frequency to <= 52MHz" implies
+>> that we should do this.
+>
+> I don't get this. Are you saying that f_init > 52 MHz? That should not
+> be impossible, right!?
 
-This adds an appropriate initialization immediately in front of
-the loop, so the io_size is zero as expected afterwards for that
-case.
+nope, I was saying that the spec implies we to set clock after
+setting HS_TIMING to 0x1 when doing hs400es selection.
 
-Fixes: abe17181b16f ("PCI: rockchip: Add Rockchip PCIe controller support")
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
- drivers/pci/host/pcie-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+I thought there is no difference because the spec says "Host need to
+change frequency to <= 52MHz", and the f_init(<=400k) is <= 52MHz,
+right? So I didn't set clock to hs_max_dtr. But I think I misunderstood
+the spec, so this patch will fix this.
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index c3593e633ccd..8bedc1e1ef80 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1078,6 +1078,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 		goto err_vpcie;
- 
- 	/* Get the I/O and memory ranges from DT */
-+	io_size = 0;
- 	resource_list_for_each_entry(win, &res) {
- 		switch (resource_type(win->res)) {
- 		case IORESOURCE_IO:
+
+>
+> So either the core has changed the clock rate by mistake at some other
+> execution path, or the host driver didn't set the correct clock rate
+> the first time when invoked via mmc_power_up()?
+>
+> Kind regards
+> Uffe
+>
+>>
+>> Reported-by: Xiao Yao <xiaoyao@rock-chips.com>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>>  drivers/mmc/core/mmc.c | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+>> index 3163bb9..989d37e 100644
+>> --- a/drivers/mmc/core/mmc.c
+>> +++ b/drivers/mmc/core/mmc.c
+>> @@ -1282,6 +1282,8 @@ static int mmc_select_hs400es(struct mmc_card *card)
+>>         if (err)
+>>                 goto out_err;
+>>
+>> +       mmc_set_clock(host, card->ext_csd.hs_max_dtr);
+>> +
+>>         err = mmc_switch_status(card);
+>>         if (err)
+>>                 goto out_err;
+>> --
+>> 2.3.7
+>>
+>>
+>
+>
+>
+
+
 -- 
-2.9.0
+Best Regards
+Shawn Lin
+
