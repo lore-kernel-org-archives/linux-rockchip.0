@@ -1,83 +1,50 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
- initialization
-Date: Thu, 22 Sep 2016 17:47:52 +0100
-Message-ID: <20160922164752.GP7994@sirena.org.uk>
-References: <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
- <20160919191327.741a2b89@bbrezillon>
- <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
- <20160919194844.0db7b307@bbrezillon>
- <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
- <20160919200627.3ca1aae4@bbrezillon>
- <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
- <20160919224352.3b84b6c0@bbrezillon>
- <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
- <20160922171217.09a6d13f@bbrezillon>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] PCI: rockchip: fix uninitialized variable use
+Date: Thu, 22 Sep 2016 10:15:11 -0700
+Message-ID: <20160922171510.GA113955@google.com>
+References: <20160922094018.2138640-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="DBUa/BSa4z6QPQv1"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20160922171217.09a6d13f@bbrezillon>
+In-Reply-To: <20160922094018.2138640-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Thu, Sep 22, 2016 at 11:39:59AM +0200, Arnd Bergmann wrote:
+> The newly added pcie-rockchip driver fails to initialize the
+> io_size variable if the DT doesn't provide ranges for the PCI
+> I/O space, as found by building it with -Wmaybe-uninitialized:
+> 
+> drivers/pci/host/pcie-rockchip.c: In function 'rockchip_pcie_probe':
+> drivers/pci/host/pcie-rockchip.c:1007:6: warning: 'io_size' may be used uninitialized in this function [-Wmaybe-uninitialized]
+> 
+> This adds an appropriate initialization immediately in front of
+> the loop, so the io_size is zero as expected afterwards for that
+> case.
+> 
+> Fixes: abe17181b16f ("PCI: rockchip: Add Rockchip PCIe controller support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/pci/host/pcie-rockchip.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index c3593e633ccd..8bedc1e1ef80 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1078,6 +1078,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		goto err_vpcie;
+>  
+>  	/* Get the I/O and memory ranges from DT */
+> +	io_size = 0;
+>  	resource_list_for_each_entry(win, &res) {
+>  		switch (resource_type(win->res)) {
+>  		case IORESOURCE_IO:
 
---DBUa/BSa4z6QPQv1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I feel like we've fixed this one before, but then it's been refactored
+many times along the way...
 
-On Thu, Sep 22, 2016 at 05:12:17PM +0200, Boris Brezillon wrote:
-> +Mark
-
-> I realize Mark has been out of the discussion, and what started as a DT
-> problem actually turned into a PWM regulator discussion.
-> Maybe we should start a new thread.
-
-Probably, you're lucky I even looked at this - the number of irrelevant
-patches I get CCed on is such that I'll often delete things that look
-irrelevant unread.  I'm unsure what the relevance is, it looks like it's
-mainly a discussion about pinctrl?
-
-> As I said, the problem you're describing (pins muxed to the PWM device
-> when it should actually stay in gpio+input mode) is not new, and the old
-> pwm-regulator and pwm-rockchip implementation (before my atomic PWM
-> changes) were behaving the same way.
-
-Why would this make any kind of sense?
-
-> What is new though, is the pwm_regulator_init_state() function [1], and
-> it seems it's now preventing the probe of a pwm-regulator device if the
-> initial PWM state is not described in the voltage-table.
-
-> The question is, what should we do?
-
-> 1/ Force users to put an entry matching this state (which means
->    breaking DT compat)
-> 2/ Put a valid value in drvdata->state even if it's not reflecting the
->    real state
-> 3/ Patch regulator core to support an "unknown-selector" return code.
-
-Could someone say what the actual problem was please?  That was a very
-long e-mail so I might be missing something but the obvious thing seems
-to be to force a state since we'll be doing that when we enable anyway.
-Or just not have the voltage table and use it as a continuous regulator.
-
---DBUa/BSa4z6QPQv1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJX5As3AAoJECTWi3JdVIfQJIwH/18s3JY0eVu7ABRM5Nvx6gp1
-VHwknofE7gKPgGm8II141HOB9nsz5Bn3xX8Z3KY7K2vnR21F1ZulVsrkBWN1xPaA
-d3nAKnKT1JvtOgORgwWsRdTFGnn8USDcEC/MBujuRsJb+PHWcKI9nZKyYd44nYfm
-eRApMwd6CK2ngcCgYSt0pU3Uqp7JPoed0XhgWXfZ28eisCBi1Za2ZmEJvwIV2G6U
-PY3MF0q1McI+VslYRHu/d0sVnxjA4uECuiftXNz3iRa0MGv02ZBzQwoOOLg4tW3a
-YR07s+rcYaeWLJlC88eX6SxVD99qNnZcJgG81H+ZKEcqPoKWrHnhFmyuoLM5Oa0=
-=nKd6
------END PGP SIGNATURE-----
-
---DBUa/BSa4z6QPQv1--
+Reviewed-by: Brian Norris <briannorris@chromium.org>
