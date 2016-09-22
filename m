@@ -1,53 +1,102 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 0/2] Fix warnings for i2c-rk3x.c
-Date: Thu, 22 Sep 2016 19:52:25 +0200
-Message-ID: <20160922175224.GD1861@katana>
-References: <1474543764-51135-1-git-send-email-david.wu@rock-chips.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH] arm: dts: fix rk3066a based boards vdd_log voltage
+ initialization
+Date: Thu, 22 Sep 2016 20:13:01 +0200
+Message-ID: <20160922201301.0157a292@bbrezillon>
+References: <CAD=FV=UOXcUZyXRj++GkKksyFedGt59vQz8958nhhF9UM7rOuw@mail.gmail.com>
+ <20160919191327.741a2b89@bbrezillon>
+ <CAD=FV=Ufmvg1P8suOPQ53kpOD1pei4N2dOpKUCxZk001XKj_OA@mail.gmail.com>
+ <20160919194844.0db7b307@bbrezillon>
+ <CAD=FV=UyW5cXGGmq5xUzZ1aV5NzbBYGOz1gO9V1itrFU-PigAw@mail.gmail.com>
+ <20160919200627.3ca1aae4@bbrezillon>
+ <CAD=FV=U_BQez2eCqm7mX9kj0dcEsnBKiFWcLAhXXJD+yTZhACw@mail.gmail.com>
+ <20160919224352.3b84b6c0@bbrezillon>
+ <CAD=FV=W=ZiaLu1=zcnDyUqvK6f=E-0AWH9URHE3cgAKWWa+aJA@mail.gmail.com>
+ <20160922171217.09a6d13f@bbrezillon>
+ <20160922164752.GP7994@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="48TaNjbzBVislYPb"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1474543764-51135-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: heiko@sntech.de, dianders@chromium.org, huangtao@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160922164752.GP7994-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Thu, 22 Sep 2016 17:47:52 +0100
+Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 
---48TaNjbzBVislYPb
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Thu, Sep 22, 2016 at 05:12:17PM +0200, Boris Brezillon wrote:
+> > +Mark  
+> 
+> > I realize Mark has been out of the discussion, and what started as a DT
+> > problem actually turned into a PWM regulator discussion.
+> > Maybe we should start a new thread.  
+> 
+> Probably, you're lucky I even looked at this - the number of irrelevant
+> patches I get CCed on is such that I'll often delete things that look
+> irrelevant unread.  I'm unsure what the relevance is, it looks like it's
+> mainly a discussion about pinctrl?
 
-On Thu, Sep 22, 2016 at 07:29:22PM +0800, David Wu wrote:
-> David Wu (2):
->   i2c: rk3x: Fix sparse warning
->   i2c: rk3x: fix variable 'min_total_ns' unused warning
->=20
+Not exactly, even if this involves pin muxing.
 
-Applied to for-next, thanks!
+> 
+> > As I said, the problem you're describing (pins muxed to the PWM device
+> > when it should actually stay in gpio+input mode) is not new, and the old
+> > pwm-regulator and pwm-rockchip implementation (before my atomic PWM
+> > changes) were behaving the same way.  
+> 
+> Why would this make any kind of sense?
+> 
+> > What is new though, is the pwm_regulator_init_state() function [1], and
+> > it seems it's now preventing the probe of a pwm-regulator device if the
+> > initial PWM state is not described in the voltage-table.  
+> 
+> > The question is, what should we do?  
+> 
+> > 1/ Force users to put an entry matching this state (which means
+> >    breaking DT compat)
+> > 2/ Put a valid value in drvdata->state even if it's not reflecting the
+> >    real state
+> > 3/ Patch regulator core to support an "unknown-selector" return code.  
+> 
+> Could someone say what the actual problem was please?
 
+Well, to sum-up, the discussion started because Andy notice that some
+boards were no longer booting, and found out that commit 87248991a1de
+("regulator: pwm: Properly initialize the ->state field") was causing
+the regression, because ->get_voltage_sel() was returning -EINVAL,
+which in turn was caused by a missing entry in the voltage table.
 
---48TaNjbzBVislYPb
-Content-Type: application/pgp-signature; name="signature.asc"
+Doug also noted that Andy was expecting the pin connected to the PWM
+regulator to stay in a GPIO+input state until the PWM is really
+enabled, in order to avoid glitches. But this not the case currently,
+since the PWM chip claims all the pins at probe time.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
+So, there are 2 different problems here:
+1/ the board no longer boots because of commit 87248991a1de and a
+   missing entry in the voltage table
+2/ claiming the PWM pins at probe time can cause glitches
 
-iQIcBAEBAgAGBQJX5BpYAAoJEBQN5MwUoCm2vMoP/AsVxS31e91s05zivRt4VShE
-4qDOyW4BHw7D+D8+KJHrdnMPwt7RgUyZskjSn2H+asTfq4R7XIBwYVLfnc0j1zJe
-5BOWQd+n5w6XO6ZN3Rw2eyOowvBiQ4Xdfe7IqmUHPhpe+QmsYb+U90YAb0pL24wI
-f4A47EaaP3HSmzKr/u/2r5NTZmdo6OJxmrNPsQqPfERnjQ32Pw8+ibdUfR1ayhOC
-fi91btgtjoCUcEFSOAZQbPiTFt/0Lq1FAMnu13PcZBJfFYjOpOtdN5nYFBJzKVVl
-vVPWt9gLhxN0TgZbScLhhKv3KSR1s5+wCnbbbWpv4hQHiFCSL9CQn4aSzSwTAOvQ
-aVQ1WNwvU5BcjJVk94LbD2dOQK0+Zr3ItqcxOC7ESp8WmMzFCcAMy7YZ5zop9EVU
-pgR0/mrJFPYtqeKnIyuMjdDHDxjiarBsDYZIz4w66z9l6gzI+5aJ9zKEJIMf91ic
-jRUrmCl4Z77LQWg+IYrdDXeECwWFBEdPf2i5rqLv4OpveNqoYi5MmoaC8vZIqQVW
-r6Cw3kH5BS99V5LESyqph3z1qADOQUi8rv6ZGsWwtuNa7ydpJOrtSZzp951+fWg6
-JalL1lPN5GhwN7DgZTAw9PGe078bUBVhZWh5OGNXGzEQmzagyHXpEYOX9LUA+R5z
-pJIEQYjz05Ee1dB0xv0E
-=Pg1D
------END PGP SIGNATURE-----
+I'm currently trying to solve #1, but most of the discussion in this
+thread was about addressing #2.
 
---48TaNjbzBVislYPb--
+> That was a very
+> long e-mail so I might be missing something but the obvious thing seems
+> to be to force a state since we'll be doing that when we enable anyway.
+
+Hm, okay, but which state should we choose? The first entry in the
+voltage-table?
+
+> Or just not have the voltage table and use it as a continuous regulator.
+
+Yes, but that means patching the DT, which means breaking the DT compat.
