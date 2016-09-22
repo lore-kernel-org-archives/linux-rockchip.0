@@ -1,51 +1,66 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: dw_mmc: minor cleanup for dw_mci_adjust_fifoth
-Date: Thu, 22 Sep 2016 13:27:30 +0900
-Message-ID: <d5b788a0-a5f2-d772-0097-9efabeedbeed@samsung.com>
-References: <CGME20160921024005epcas1p37f9a6a779906c283bb42e26f38c8d512@epcas1p3.samsung.com>
- <1474425625-24178-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 1/2] Documentation: mmc: sdhci-of-arasan: add
+ description of power domain
+Date: Thu, 22 Sep 2016 09:14:03 +0200
+Message-ID: <CAPDyKFo+DZkd4v06DOOHLBdAD-7UgYcBspbZkzFSnjA-a3pOkg@mail.gmail.com>
+References: <20160917023250.1159-1-xzy.xu@rock-chips.com> <20160917023250.1159-2-xzy.xu@rock-chips.com>
+ <CAPDyKFrgdsppLg9RkCsSh4nhjUiJR6D4u+E8qnzfbtNxhwLOmw@mail.gmail.com> <1ec66aea-10b4-4208-369e-9ef5feb800df@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <1474425625-24178-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1ec66aea-10b4-4208-369e-9ef5feb800df@rock-chips.com>
 Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Ziyuan Xu <xzy.xu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Doug Anderson <dianders@chromium.org>, zhangqing <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/21/2016 11:40 AM, Shawn Lin wrote:
-> msize and rx_wmark are properly initialized, we dont't
-> need to assign them again.
+On 20 September 2016 at 04:29, Ziyuan Xu <xzy.xu@rock-chips.com> wrote:
+> hi Ulf,
+>
+>
+> On 2016=E5=B9=B409=E6=9C=8817=E6=97=A5 16:49, Ulf Hansson wrote:
+>>
+>> On 17 September 2016 at 04:32, Ziyuan Xu <xzy.xu@rock-chips.com> wrote:
+>>>
+>>> Add power domain as a optional property for sdhci-of-arasan, which can
+>>> be turned off in the so-called unused condition, such as suspend and
+>>> remove. Aim to lower power requirements.
+>>
+>> I assume runtime suspend make sense as well?
+>
+>
+> Sorry to reply this mail after a long time.
+>
+> On rk3399 platform, there is a eMMC-phy which is in charge of eMMC's logi=
+c
+> interface. We should guarantee that phy is ready before cmd/data transfer=
+.
+> I mean that I need to consider about the resume latency, so that I can la=
+nd
+> RPM for arasan-of-sdhci.
+> I intend to use auto-suspend for arasan-of-sdhci.
+>
 
-Applied on my tree. Thanks!
+Okay!
 
-Best Regards,
-Jaehoon Chung
+>>
+>> Moreover, perhaps you could share a little information here about what
+>> needs to be done at the driver level which controls the mmc IP. More
+>> precisely, what do you need to do at runtime_suspend, suspend,
+>> runtime_resume, and resume?
+>
+>
+> Invoke sdhci_runtime_suspend_host, disable relevant clock in
+> rumtime_suspend, deprocessing in runtime_resume.
+> Is that ok?
 
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/mmc/host/dw_mmc.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 22dacae..d838428 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -876,11 +876,8 @@ static void dw_mci_adjust_fifoth(struct dw_mci *host, struct mmc_data *data)
->  	 * MSIZE is '1',
->  	 * if blksz is not a multiple of the FIFO width
->  	 */
-> -	if (blksz % fifo_width) {
-> -		msize = 0;
-> -		rx_wmark = 1;
-> +	if (blksz % fifo_width)
->  		goto done;
-> -	}
->  
->  	do {
->  		if (!((blksz_depth % mszs[idx]) ||
-> 
+Okay!
 
+[...]
+
+Thanks for sharing some more information, could you please re-spin
+with an updated change log?
+
+Kind regards
+Uffe
