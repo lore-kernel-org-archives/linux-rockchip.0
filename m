@@ -1,50 +1,140 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] PCI: rockchip: fix uninitialized variable use
-Date: Thu, 22 Sep 2016 10:15:11 -0700
-Message-ID: <20160922171510.GA113955@google.com>
-References: <20160922094018.2138640-1-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160922094018.2138640-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] PCI: rockchip: Support quirk to disable 5 GT/s (PCIe 2.x) link rate
+Date: Thu, 22 Sep 2016 10:31:18 -0700
+Message-ID: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Sep 22, 2016 at 11:39:59AM +0200, Arnd Bergmann wrote:
-> The newly added pcie-rockchip driver fails to initialize the
-> io_size variable if the DT doesn't provide ranges for the PCI
-> I/O space, as found by building it with -Wmaybe-uninitialized:
-> 
-> drivers/pci/host/pcie-rockchip.c: In function 'rockchip_pcie_probe':
-> drivers/pci/host/pcie-rockchip.c:1007:6: warning: 'io_size' may be used uninitialized in this function [-Wmaybe-uninitialized]
-> 
-> This adds an appropriate initialization immediately in front of
-> the loop, so the io_size is zero as expected afterwards for that
-> case.
-> 
-> Fixes: abe17181b16f ("PCI: rockchip: Add Rockchip PCIe controller support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/pci/host/pcie-rockchip.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index c3593e633ccd..8bedc1e1ef80 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1078,6 +1078,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		goto err_vpcie;
->  
->  	/* Get the I/O and memory ranges from DT */
-> +	io_size = 0;
->  	resource_list_for_each_entry(win, &res) {
->  		switch (resource_type(win->res)) {
->  		case IORESOURCE_IO:
+rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
+ms waiting for training that will never happen, let's support a device
+tree quirk flag to disable generation 2 speeds entirely.
 
-I feel like we've fixed this one before, but then it's been refactored
-many times along the way...
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+ .../devicetree/bindings/pci/rockchip-pcie.txt      |  2 +
+ drivers/pci/host/pcie-rockchip.c                   | 57 +++++++++++++---------
+ 2 files changed, 37 insertions(+), 22 deletions(-)
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+index ba67b39939c1..e769726fd093 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+@@ -42,6 +42,8 @@ Required properties:
+ Optional Property:
+ - ep-gpios: contain the entry for pre-reset gpio
+ - num-lanes: number of lanes to use
++- rockchip,disable-gen2: present if PCIe generation 2.x (i.e., 5 GT/s link
++	speeds) is not supported.
+ - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+ - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+ - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index c3593e633ccd..f047c4a73f69 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -53,6 +53,7 @@
+ #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+ #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
++#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+@@ -191,6 +192,7 @@ struct rockchip_pcie {
+ 	struct	gpio_desc *ep_gpio;
+ 	u32	lanes;
+ 	u8	root_bus_nr;
++	bool	enable_gen2;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
+ };
+@@ -418,13 +420,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
++	if (rockchip->enable_gen2)
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
++				    PCIE_CLIENT_CONFIG);
++	else
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
++				    PCIE_CLIENT_CONFIG);
++
+ 	rockchip_pcie_write(rockchip,
+ 			    PCIE_CLIENT_CONF_ENABLE |
+ 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
+ 			    PCIE_CLIENT_ARI_ENABLE |
+ 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
+-			    PCIE_CLIENT_MODE_RC |
+-			    PCIE_CLIENT_GEN_SEL_2,
++			    PCIE_CLIENT_MODE_RC,
+ 				PCIE_CLIENT_CONFIG);
+ 
+ 	err = phy_power_on(rockchip->phy);
+@@ -492,29 +500,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		msleep(20);
+ 	}
+ 
+-	/*
+-	 * Enable retrain for gen2. This should be configured only after
+-	 * gen1 finished.
+-	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+-	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	if (rockchip->enable_gen2) {
++		/*
++		 * Enable retrain for gen2. This should be configured only after
++		 * gen1 finished.
++		 */
++		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
++		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++
++		timeout = jiffies + msecs_to_jiffies(500);
++		for (;;) {
++			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
++					PCIE_CORE_PL_CONF_SPEED_5G) {
++				dev_dbg(dev, "PCIe link training gen2 pass!\n");
++				break;
++			}
+ 
+-	timeout = jiffies + msecs_to_jiffies(500);
+-	for (;;) {
+-		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
+-		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+-		    PCIE_CORE_PL_CONF_SPEED_5G) {
+-			dev_dbg(dev, "PCIe link training gen2 pass!\n");
+-			break;
+-		}
++			if (time_after(jiffies, timeout)) {
++				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
++				break;
++			}
+ 
+-		if (time_after(jiffies, timeout)) {
+-			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+-			break;
++			msleep(20);
+ 		}
+-
+-		msleep(20);
+ 	}
+ 
+ 	/* Check the final link width from negotiated lane counter from MGMT */
+@@ -722,6 +732,9 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		rockchip->lanes = 1;
+ 	}
+ 
++	rockchip->enable_gen2 = !of_property_read_bool(node,
++						       "rockchip,disable-gen2");
++
+ 	rockchip->core_rst = devm_reset_control_get(dev, "core");
+ 	if (IS_ERR(rockchip->core_rst)) {
+ 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+-- 
+2.8.0.rc3.226.g39d4020
