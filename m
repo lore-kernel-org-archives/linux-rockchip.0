@@ -1,122 +1,77 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RFC PATCH 2/2] mmc: dw_mmc-rockchip: add runtime PM support
-Date: Fri, 23 Sep 2016 12:17:45 +0800
-Message-ID: <1474604265-29837-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1474604265-29837-1-git-send-email-shawn.lin@rock-chips.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [RESEDN PATCH v2 3/4] mmc: sdhci: Don't try to switch to
+ unsupported voltage
+Date: Fri, 23 Sep 2016 10:12:43 +0300
+Message-ID: <785df157-dadc-4dd3-76e9-aea3a0f031a5@intel.com>
+References: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com>
+ <1474589577-11193-3-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474604265-29837-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1474589577-11193-3-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Ziyuan Xu <xzy.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds runtime PM support for dw_mmc-rockchip.
+On 23/09/16 03:12, Shawn Lin wrote:
+> From: Ziyuan Xu <xzy.xu@rock-chips.com>
+> 
+> Sdhci shouldn't switch to the unsupported voltage if claiming
+> that it can not support the requested voltage. Let's fix it.
+> 
+> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v2: None
+> 
+>  drivers/mmc/host/sdhci.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+> index 4805566..b1f1edd 100644
+> --- a/drivers/mmc/host/sdhci.c
+> +++ b/drivers/mmc/host/sdhci.c
+> @@ -1845,7 +1845,8 @@ static int sdhci_start_signal_voltage_switch(struct mmc_host *mmc,
+>  
+>  	switch (ios->signal_voltage) {
+>  	case MMC_SIGNAL_VOLTAGE_330:
+> -		if (!(host->flags & SDHCI_SIGNALING_330))
+> +		if (!(host->flags & SDHCI_SIGNALING_330) ||
+> +		    !(host->caps & SDHCI_CAN_VDD_330))
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+You are mixing signal voltage and supply voltage here.  Note, I don't
+believe all drivers set the capabilities correctly when they are using
+regulators, but in any case this is not the place in the code to make such
+assumptions.
 
- drivers/mmc/host/dw_mmc-rockchip.c | 57 ++++++++++++++++++++++++++++++++++++--
- 1 file changed, 54 insertions(+), 3 deletions(-)
+Better for the driver to remove SDHCI_SIGNALING_330 from flags when it is
+not supported.
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 25eae35..3ad041c 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -13,6 +13,7 @@
- #include <linux/mmc/host.h>
- #include <linux/mmc/dw_mmc.h>
- #include <linux/of_address.h>
-+#include <linux/pm_runtime.h>
- #include <linux/slab.h>
- 
- #include "dw_mmc.h"
-@@ -325,6 +326,7 @@ static int dw_mci_rockchip_probe(struct platform_device *pdev)
- {
- 	const struct dw_mci_drv_data *drv_data;
- 	const struct of_device_id *match;
-+	int ret;
- 
- 	if (!pdev->dev.of_node)
- 		return -ENODEV;
-@@ -332,16 +334,65 @@ static int dw_mci_rockchip_probe(struct platform_device *pdev)
- 	match = of_match_node(dw_mci_rockchip_match, pdev->dev.of_node);
- 	drv_data = match->data;
- 
--	return dw_mci_pltfm_register(pdev, drv_data);
-+	pm_runtime_get_noresume(&pdev->dev);
-+	pm_runtime_set_active(&pdev->dev);
-+	pm_runtime_enable(&pdev->dev);
-+	pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
-+	pm_runtime_use_autosuspend(&pdev->dev);
-+
-+	ret = dw_mci_pltfm_register(pdev, drv_data);
-+	if (ret) {
-+		pm_runtime_disable(&pdev->dev);
-+		pm_runtime_set_suspended(&pdev->dev);
-+		pm_runtime_put_noidle(&pdev->dev);
-+		return ret;
-+	}
-+
-+	pm_runtime_put_autosuspend(&pdev->dev);
-+
-+	return 0;
-+}
-+
-+static int dw_mci_rockchip_remove(struct platform_device *pdev)
-+{
-+       pm_runtime_get_sync(&pdev->dev);
-+       pm_runtime_disable(&pdev->dev);
-+       pm_runtime_put_noidle(&pdev->dev);
-+
-+       return dw_mci_pltfm_remove(pdev);
- }
- 
-+#ifdef CONFIG_PM
-+static int dw_mci_rockchip_runtime_suspend(struct device *dev)
-+{
-+	struct dw_mci *host = dev_get_drvdata(dev);
-+
-+	return dw_mci_runtime_suspend(host);
-+}
-+
-+static int dw_mci_rockchip_runtime_resume(struct device *dev)
-+{
-+	struct dw_mci *host = dev_get_drvdata(dev);
-+
-+	return dw_mci_runtime_resume(host);
-+}
-+#endif /* CONFIG_PM */
-+
-+static const struct dev_pm_ops dw_mci_rockchip_dev_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-+				pm_runtime_force_resume)
-+	SET_RUNTIME_PM_OPS(dw_mci_rockchip_runtime_suspend,
-+			   dw_mci_rockchip_runtime_resume,
-+			   NULL)
-+};
-+
- static struct platform_driver dw_mci_rockchip_pltfm_driver = {
- 	.probe		= dw_mci_rockchip_probe,
--	.remove		= dw_mci_pltfm_remove,
-+	.remove		= dw_mci_rockchip_remove,
- 	.driver		= {
- 		.name		= "dwmmc_rockchip",
- 		.of_match_table	= dw_mci_rockchip_match,
--		.pm		= &dw_mci_pltfm_pmops,
-+		.pm		= &dw_mci_rockchip_dev_pm_ops,
- 	},
- };
- 
--- 
-2.3.7
+>  			return -EINVAL;
+>  		/* Set 1.8V Signal Enable in the Host Control2 register to 0 */
+>  		ctrl &= ~SDHCI_CTRL_VDD_180;
+> @@ -1872,7 +1873,8 @@ static int sdhci_start_signal_voltage_switch(struct mmc_host *mmc,
+>  
+>  		return -EAGAIN;
+>  	case MMC_SIGNAL_VOLTAGE_180:
+> -		if (!(host->flags & SDHCI_SIGNALING_180))
+> +		if (!(host->flags & SDHCI_SIGNALING_180) ||
+> +		    !(host->caps & SDHCI_CAN_VDD_180))
+
+You are mixing signal voltage and supply voltage here, and this is not
+correct: not being able to do 1.8V supply does not mean you can't do 1.8V
+signaling.  The SDHCI way of determining supported signal voltages is based
+on supported transfer modes.
+
+If the driver can't get the transfer modes correct (e.g. we still don't have
+MMC_CAP2_3_3V_ONLY_DDR or equivalent), remove SDHCI_SIGNALING_180 from the
+flags.
+
+>  			return -EINVAL;
+>  		if (!IS_ERR(mmc->supply.vqmmc)) {
+>  			ret = mmc_regulator_set_vqmmc(mmc, ios);
+> 
+
