@@ -1,70 +1,63 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: rockchip: Support quirk to disable 5 GT/s (PCIe 2.x)
- link rate
-Date: Fri, 23 Sep 2016 09:34:15 +0800
-Message-ID: <2f111fdf-f4a5-2f8a-0121-1a566e6527c8@rock-chips.com>
-References: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
- <b9527acf-e3cf-19d2-b8fc-0a59637e9598@rock-chips.com>
- <20160923011518.GA97876@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH 1/2] PCI: rockchip: improve the deassert sequence of four reset pins
+Date: Fri, 23 Sep 2016 10:05:59 +0800
+Message-ID: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20160923011518.GA97876@google.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brain,
+Per TRM, we need to deassert the four reset pins simultaneously.
+Currently the reset framework doesn't support that so we did it
+one by one. It seems no side effect found but it does impact the
+state machine of controller, so sometimes the change speed bit is
+not setted when sending training sequence from recover state.
+After the silicon RTL review from Soc guys, we don't need to do
+the sequence recommended by TRM, and could just move the deassert
+of mgmt_sticky_rst to the first place.
 
-在 2016/9/23 9:15, Brian Norris 写道:
-> Hi Shawn,
->
-> On Fri, Sep 23, 2016 at 08:27:35AM +0800, Shawn Lin wrote:
->> 在 2016/9/23 1:31, Brian Norris 写道:
->>> rk3399 supports PCIe 2.x link speeds marginally at best, and on some
->>> boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
->>> ms waiting for training that will never happen, let's support a device
->>> tree quirk flag to disable generation 2 speeds entirely.
->>
->> I was thinking about could we get target link speed [TLS] from the
->> end-point when finishing Gen1 training, but it seems that the location
->> of ep's TLS is not fixed.
->
-> Indeed it's not, but we could probably handle that if absolutely needed
-> (get a reference to the root port pci_dev somehow, then use the existing
-> helpers to walk children and get the computed ->pcie_cap offset). But
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-Right, we could probably walk through the ep's cap and get this, but
-sure, it's not the problem here, and that is maybe what I want to dig
-more later.
+ drivers/pci/host/pcie-rockchip.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-Thanks for sharing this.
-
-> that's not the problem here; we have 5 GT/s devices, but they are not
-> running at 5 GT/s because link training can't pass. We have been told
-> there are still SI issues, and so you wouldn't really be able to turn
-> this out at runtime anyway.
->
-> But sure, I suppose that'd be a way to (for chips/boards that don't have
-> SI issues) determine whether or not to attempt gen2 training at all.
-> That does sound better than just timing out after 500ms...
->
->> Anyway, your patch looks sane to me as we leave gen2 as default and
->> people could drop that feature by adding rockchip,disable-gen2 to
->> their dts if they are sure the board would never supoort Gen2 devices.
->>
->> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> Thanks.
->
-> Brian
->
->
->
-
-
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index c3593e6..5e51121 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -433,21 +433,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
+-	err = reset_control_deassert(rockchip->core_rst);
++	/*
++	 * Please don't reorder the deassert sequence of the following
++	 * four reset pins.
++	 */
++	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+ 	if (err) {
+-		dev_err(dev, "deassert core_rst err %d\n", err);
++		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+ 		return err;
+ 	}
+ 
+-	err = reset_control_deassert(rockchip->mgmt_rst);
++	err = reset_control_deassert(rockchip->core_rst);
+ 	if (err) {
+-		dev_err(dev, "deassert mgmt_rst err %d\n", err);
++		dev_err(dev, "deassert core_rst err %d\n", err);
+ 		return err;
+ 	}
+ 
+-	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
++	err = reset_control_deassert(rockchip->mgmt_rst);
+ 	if (err) {
+-		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
++		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+ 		return err;
+ 	}
+ 
 -- 
-Best Regards
-Shawn Lin
+2.3.7
