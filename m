@@ -1,58 +1,123 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/2] PCI: rockchip: fix wrong transmitted FTS count
-Date: Fri, 23 Sep 2016 10:06:00 +0800
-Message-ID: <1474596360-23483-2-git-send-email-shawn.lin@rock-chips.com>
-References: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RFC PATCH 1/2] mmc: dw_mmc: add runtime PM callback
+Date: Fri, 23 Sep 2016 12:17:44 +0800
+Message-ID: <1474604265-29837-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1474604265-29837-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1474604265-29837-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-If the expected numbers of FTS aren't recevied by RC when
-exiting from L0s, the LTSSM will fall into recover state.
-So it will need to send TS for retraining which makes the
-latency of exiting from L0s a little longer than expected.
-This issue is caused by the wrong reset value of FTS count
-on PLC1 register(offset 0x4). The expected value for Gen1/2
-should be more than 240 and we may leave a little margin here.
-Let's fix this before starting Gen1 traning which will makes
-TS1 contains the correct FTS count.
+This patch add dw_mci_runtime_suspend/resume interfaces
+and expose it to dw_mci variant driver to support runtime
+PM.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
 ---
 
- drivers/pci/host/pcie-rockchip.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/mmc/host/dw_mmc.c | 60 +++++++++++++++++++++++++++++++++++++++++++++--
+ drivers/mmc/host/dw_mmc.h |  4 +++-
+ 2 files changed, 61 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 5e51121..6a7a9df 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -95,6 +95,10 @@
- #define   PCIE_CORE_PL_CONF_SPEED_MASK		0x00000018
- #define   PCIE_CORE_PL_CONF_LANE_MASK		0x00000006
- #define   PCIE_CORE_PL_CONF_LANE_SHIFT		1
-+#define PCIE_CORE_CTRL_PLC1		(PCIE_CORE_CTRL_MGMT_BASE + 0x004)
-+#define   PCIE_CORE_CTRL_PLC1_FTS_MASK		GENMASK(23, 8)
-+#define   PCIE_CORE_CTRL_PLC1_FTS_SHIFT	8
-+#define   PCIE_CORE_CTRL_PLC1_FTS_CNT		0xffff
- #define PCIE_CORE_INT_STATUS		(PCIE_CORE_CTRL_MGMT_BASE + 0x20c)
- #define   PCIE_CORE_INT_PRFPE			BIT(0)
- #define   PCIE_CORE_INT_CRFPE			BIT(1)
-@@ -470,6 +474,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 4fcbc40..54b860e 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -3266,7 +3266,7 @@ EXPORT_SYMBOL(dw_mci_remove);
  
-+	/* Fix the transmitted FTS count desired to exit from L0s. */
-+	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
-+	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
-+		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
-+	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
+ 
+ 
+-#ifdef CONFIG_PM_SLEEP
++#ifdef CONFIG_PM
+ /*
+  * TODO: we should probably disable the clock to the card in the suspend path.
+  */
+@@ -3324,7 +3324,63 @@ int dw_mci_resume(struct dw_mci *host)
+ 	return 0;
+ }
+ EXPORT_SYMBOL(dw_mci_resume);
+-#endif /* CONFIG_PM_SLEEP */
 +
- 	/* Enable Gen1 training */
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
++int dw_mci_runtime_suspend(struct dw_mci *host)
++{
++	pr_info("dw_mci_runtime_suspend\n");
++
++	if (host->use_dma && host->dma_ops->exit)
++		host->dma_ops->exit(host);
++
++	clk_disable_unprepare(host->ciu_clk);
++
++	return 0;
++}
++EXPORT_SYMBOL(dw_mci_runtime_suspend);
++
++int dw_mci_runtime_resume(struct dw_mci *host)
++{
++	int ret = 0;
++	int i;
++
++	pr_info("dw_mci_runtime_resume\n");
++
++	ret = clk_prepare_enable(host->ciu_clk);
++	if (ret)
++		return ret;
++
++	if (host->use_dma && host->dma_ops->init)
++		host->dma_ops->init(host);
++
++	mci_writel(host, FIFOTH, host->fifoth_val);
++	host->prev_blksz = 0;
++
++	mci_writel(host, TMOUT, 0xFFFFFFFF);
++	mci_writel(host, RINTSTS, 0xFFFFFFFF);
++	mci_writel(host, INTMASK, SDMMC_INT_CMD_DONE |
++				  SDMMC_INT_DATA_OVER |
++				  SDMMC_INT_TXDR | SDMMC_INT_RXDR |
++				  DW_MCI_ERROR_FLAGS);
++	mci_writel(host, CTRL, SDMMC_CTRL_INT_ENABLE);
++
++	for (i = 0; i < host->num_slots; i++) {
++		struct dw_mci_slot *slot = host->slot[i];
++
++		if (!slot)
++			continue;
++
++		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
++			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
++			dw_mci_setup_bus(slot, true);
++		}
++	}
++
++	dw_mci_enable_cd(host);
++
++	return ret;
++}
++EXPORT_SYMBOL(dw_mci_runtime_resume);
++#endif /* CONFIG_PM */
+ 
+ static int __init dw_mci_init(void)
+ {
+diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
+index e8cd2de..baa7261 100644
+--- a/drivers/mmc/host/dw_mmc.h
++++ b/drivers/mmc/host/dw_mmc.h
+@@ -234,9 +234,11 @@
+ 
+ extern int dw_mci_probe(struct dw_mci *host);
+ extern void dw_mci_remove(struct dw_mci *host);
+-#ifdef CONFIG_PM_SLEEP
++#ifdef CONFIG_PM
+ extern int dw_mci_suspend(struct dw_mci *host);
+ extern int dw_mci_resume(struct dw_mci *host);
++extern int dw_mci_runtime_suspend(struct dw_mci *host);
++extern int dw_mci_runtime_resume(struct dw_mci *host);
+ #endif
+ 
+ /**
 -- 
 2.3.7
+
+
