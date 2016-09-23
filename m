@@ -1,46 +1,47 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH 2/2] drm/rockchip: analogix_dp: Refuse to enable PSR if panel doesn't support it
-Date: Fri, 23 Sep 2016 16:06:40 +0200
-Message-ID: <1474639600-30090-2-git-send-email-tomeu.vizoso@collabora.com>
-References: <1474639600-30090-1-git-send-email-tomeu.vizoso@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474639600-30090-1-git-send-email-tomeu.vizoso@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH] pinctrl: rockchip: don't disable clk when irq mask is already set
+Date: Sat, 24 Sep 2016 02:26:37 +0800
+Message-ID: <1474655197-26919-1-git-send-email-jacob-chen@iotwrt.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Sean Paul <seanpaul@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Archit Taneja <architt@codeaurora.org>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linus.walleij@linaro.org, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-There's no point in enabling PSR when the panel doesn't support it.
+From: Jacob Chen <jacob2.chen@rock-chips.com>
 
-This also avoids a problem when PSR gets enabled when a CRTC is being
-disabled, because sometimes in that situation the DSP_HOLD_VALID_INTR
-interrupt on which we wait will never arrive. This was observed on
-RK3288 with a panel without PSR (veyron-jaq Chromebook).
+In some drivers, disable_irq() call don't be symmetric with enable_irq()
+, disable_irq() will be called before call free_irq().
 
-It's very easy to reproduce by running the kms_rmfb test in IGT a few
-times.
+But both disable_irq() and free_irq() will call rockchip_irq_gc_mask_set_bit,
+ and clk_disable() will be called more times than clk_enable(), which will
+cause bugs.
 
-Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: Sean Paul <seanpaul@chromium.org>
-Cc: Yakir Yang <ykk@rock-chips.com>
-Cc: Archit Taneja <architt@codeaurora.org>
+I think we can correct that by checking of mask.If mask is already set, do nothing.
+
+Change-Id: If19912c7658253e15531c04db6c70fdbffd5960a
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/pinctrl/pinctrl-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index e83be157cc2a..8548e8271639 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -85,6 +85,9 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- 	struct rockchip_dp_device *dp = to_dp(encoder);
- 	unsigned long flags;
- 
-+	if (!analogix_dp_psr_supported(dp->dev))
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index c6c04ac..9a8804a 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2334,8 +2334,12 @@ static void rockchip_irq_gc_mask_clr_bit(struct irq_data *d)
+ void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
++	struct irq_chip_type *ct = irq_data_get_chip_type(d);
+ 	struct rockchip_pin_bank *bank = gc->private;
+
++	if (*ct->mask_cache & d->mask)
 +		return;
 +
- 	dev_dbg(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
- 
- 	spin_lock_irqsave(&dp->psr_lock, flags);
--- 
+ 	irq_gc_mask_set_bit(d);
+ 	clk_disable(bank->clk);
+ }
+--
 2.7.4
+
