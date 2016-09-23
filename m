@@ -1,8 +1,8 @@
-From: Rob Herring <robh@kernel.org>
+From: Bjorn Helgaas <helgaas@kernel.org>
 Subject: Re: [PATCH] PCI: rockchip: Support quirk to disable 5 GT/s (PCIe
  2.x) link rate
-Date: Fri, 23 Sep 2016 16:46:16 -0500
-Message-ID: <20160923214616.GA30743@rob-hp-laptop>
+Date: Fri, 23 Sep 2016 18:55:00 -0500
+Message-ID: <20160923235500.GA3569@localhost>
 References: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -25,5 +25,23 @@ On Thu, Sep 22, 2016 at 10:31:18AM -0700, Brian Norris wrote:
 >  .../devicetree/bindings/pci/rockchip-pcie.txt      |  2 +
 >  drivers/pci/host/pcie-rockchip.c                   | 57 +++++++++++++---------
 >  2 files changed, 37 insertions(+), 22 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> index ba67b39939c1..e769726fd093 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -42,6 +42,8 @@ Required properties:
+>  Optional Property:
+>  - ep-gpios: contain the entry for pre-reset gpio
+>  - num-lanes: number of lanes to use
+> +- rockchip,disable-gen2: present if PCIe generation 2.x (i.e., 5 GT/s link
+> +	speeds) is not supported.
+>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+>  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+>  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
 
-Acked-by: Rob Herring <robh@kernel.org>
+We already have st,pcie-is-gen1 and fsl,max-link-speed for similar
+issues.  Can you copy the naming of one of those?  The
+"max-link-speed" one seems a little more general.
+
+Bjorn
