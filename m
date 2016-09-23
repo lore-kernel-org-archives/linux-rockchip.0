@@ -1,61 +1,54 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: remove always-on and boot-on from vcc_sd
- for px3-evb
-Date: Fri, 23 Sep 2016 08:09:10 +0800
-Message-ID: <1474589350-10877-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RESEND PATCH v2 1/4] mmc: core: switch to 1V8 or 1V2 for hs400es mode
+Date: Fri, 23 Sep 2016 08:12:54 +0800
+Message-ID: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, stable@vger.kernel.org, 4.4#@263.net
 List-Id: linux-rockchip.vger.kernel.org
 
-Please don't add these for vcc_sd, and mmc-core/driver will control
-it. Otherwise, it will waste energy even without sdmmc in slot.
+When introducing hs400es, I didn't notice that we haven't
+switched voltage to 1V2 or 1V8 for it. That happens to work
+as the first controller claiming to support hs400es, arasan(5.1),
+which is designed to only support 1V8. So the voltage is fixed to 1V8.
+But it actually is wrong, and will not fit for other host controllers.
+Let's fix it.
 
-Moreover, it will causes a bug:
-If we insert/remove sd card, we could see
-[9.337271] mmc0: new ultra high speed SDR25 SDHC card at address 0007
-[9.345144] mmcblk0: mmc0:0007 SD32G 29.3 GiB
+Fixes: commit 81ac2af65793ecf ("mmc: core: implement enhanced strobe support")
+Cc: <stable@vger.kernel.org> 4.4#
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-This is okay for normal sd insert/remove test, but when I debug some
-issues for sdmmc, I did unbind/bind test. And there is a interesting
-phenomenon when we bind the driver again:
-[58.314069] mmc0: new high speed SDHC card at address 0007
-[58.320282] mmcblk0: mmc0:0007 SD32G 29.3 GiB
-
-So the sd card could just support high speed without power cycle
-since the vcc_sd is always on, which makes the sd card fail to
-reinit its internal ocr mask.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- arch/arm/boot/dts/rk3188-px3-evb.dts | 2 --
- 1 file changed, 2 deletions(-)
+Changes in v2:
+- fix copy-paste error, mea culpa
 
-diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts b/arch/arm/boot/dts/rk3188-px3-evb.dts
-index c1e41b8..62cbdd5 100644
---- a/arch/arm/boot/dts/rk3188-px3-evb.dts
-+++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
-@@ -219,8 +219,6 @@
- 			};
+ drivers/mmc/core/mmc.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index 3486bc7..f4ed5ac 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1263,6 +1263,16 @@ static int mmc_select_hs400es(struct mmc_card *card)
+ 		goto out_err;
+ 	}
  
- 			vcc_sd: LDO_REG7 {
--				regulator-always-on;
--				regulator-boot-on;
- 				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <3300000>;
- 				regulator-name = "vcc_sd";
++	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_2V)
++		err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_120);
++
++	if (err && card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_8V)
++		err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_180);
++
++	/* If fails try again during next card power cycle */
++	if (err)
++		goto out_err;
++
+ 	err = mmc_select_bus_width(card);
+ 	if (err < 0)
+ 		goto out_err;
 -- 
 2.3.7
+
+
