@@ -1,63 +1,58 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 1/2] PCI: rockchip: improve the deassert sequence of four reset pins
-Date: Fri, 23 Sep 2016 10:05:59 +0800
-Message-ID: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 2/2] PCI: rockchip: fix wrong transmitted FTS count
+Date: Fri, 23 Sep 2016 10:06:00 +0800
+Message-ID: <1474596360-23483-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Per TRM, we need to deassert the four reset pins simultaneously.
-Currently the reset framework doesn't support that so we did it
-one by one. It seems no side effect found but it does impact the
-state machine of controller, so sometimes the change speed bit is
-not setted when sending training sequence from recover state.
-After the silicon RTL review from Soc guys, we don't need to do
-the sequence recommended by TRM, and could just move the deassert
-of mgmt_sticky_rst to the first place.
+If the expected numbers of FTS aren't recevied by RC when
+exiting from L0s, the LTSSM will fall into recover state.
+So it will need to send TS for retraining which makes the
+latency of exiting from L0s a little longer than expected.
+This issue is caused by the wrong reset value of FTS count
+on PLC1 register(offset 0x4). The expected value for Gen1/2
+should be more than 240 and we may leave a little margin here.
+Let's fix this before starting Gen1 traning which will makes
+TS1 contains the correct FTS count.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/pci/host/pcie-rockchip.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index c3593e6..5e51121 100644
+index 5e51121..6a7a9df 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -433,21 +433,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
+@@ -95,6 +95,10 @@
+ #define   PCIE_CORE_PL_CONF_SPEED_MASK		0x00000018
+ #define   PCIE_CORE_PL_CONF_LANE_MASK		0x00000006
+ #define   PCIE_CORE_PL_CONF_LANE_SHIFT		1
++#define PCIE_CORE_CTRL_PLC1		(PCIE_CORE_CTRL_MGMT_BASE + 0x004)
++#define   PCIE_CORE_CTRL_PLC1_FTS_MASK		GENMASK(23, 8)
++#define   PCIE_CORE_CTRL_PLC1_FTS_SHIFT	8
++#define   PCIE_CORE_CTRL_PLC1_FTS_CNT		0xffff
+ #define PCIE_CORE_INT_STATUS		(PCIE_CORE_CTRL_MGMT_BASE + 0x20c)
+ #define   PCIE_CORE_INT_PRFPE			BIT(0)
+ #define   PCIE_CORE_INT_CRFPE			BIT(1)
+@@ -470,6 +474,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+ 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
  
--	err = reset_control_deassert(rockchip->core_rst);
-+	/*
-+	 * Please don't reorder the deassert sequence of the following
-+	 * four reset pins.
-+	 */
-+	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
- 	if (err) {
--		dev_err(dev, "deassert core_rst err %d\n", err);
-+		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
- 		return err;
- 	}
- 
--	err = reset_control_deassert(rockchip->mgmt_rst);
-+	err = reset_control_deassert(rockchip->core_rst);
- 	if (err) {
--		dev_err(dev, "deassert mgmt_rst err %d\n", err);
-+		dev_err(dev, "deassert core_rst err %d\n", err);
- 		return err;
- 	}
- 
--	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
-+	err = reset_control_deassert(rockchip->mgmt_rst);
- 	if (err) {
--		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
-+		dev_err(dev, "deassert mgmt_rst err %d\n", err);
- 		return err;
- 	}
- 
++	/* Fix the transmitted FTS count desired to exit from L0s. */
++	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
++	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
++		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
++	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
++
+ 	/* Enable Gen1 training */
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
 -- 
 2.3.7
