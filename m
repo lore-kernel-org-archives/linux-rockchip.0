@@ -1,196 +1,90 @@
-From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: RK3288 USB Issues
-Date: Sun, 25 Sep 2016 12:02:22 +0800
-Message-ID: <1340bbc1-224e-27cf-4d3b-3cbc66d5f5a0@soulik.info>
-References: <CADYdroO5sQgLEujisG5-nHbkB90s7upJhbJRxLbykmz5cgU9YQ@mail.gmail.com>
- <46A5EBA0-0F42-4851-9172-E0897AD42B0D@soulik.info>
- <CADYdroP3SE9g5fMo1p3Twmpd7o3u=zOQgHtfc9NKgdVX2wHbxA@mail.gmail.com>
- <d668fd3a-e54e-ef0a-59c7-5bb420437b1b@soulik.info>
- <CADYdroMADjBKccdtZ7PnW3AvY8oAp1Mw6hzz+nXLjyG5zB1E1g@mail.gmail.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] ASoC: rk3399_gru_sound: fix recording pop at first
+ attempt
+Date: Sat, 24 Sep 2016 19:10:42 +0100
+Message-ID: <20160924181042.7odqqbae2sixdeyx@sirena.org.uk>
+References: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
+ <20160923212737.GA17658@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CADYdroMADjBKccdtZ7PnW3AvY8oAp1Mw6hzz+nXLjyG5zB1E1g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Norbert Lange <nolange79-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============2831427539561862994=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160923212737.GA17658@rob-hp-laptop>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, cychiang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hychao-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
+--===============2831427539561862994==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="74ywsfvevlsgndw7"
+Content-Disposition: inline
 
-On 09/25/2016 04:10 AM, Norbert Lange wrote:
-> Hello,
->
-> did you try without your patches, to see if you can reproduce the problem?
-> I can fix my issues if I disable usb autosuspend
->
-> To narrow down the causes I can think of:
-> *) Some hardware issue only on my side -> please try to reproduce it
-> with an unpached kernel
-Of course it does. Without those patch it won't work.
-> *) Some other stuff I modified -> gonna try a clean kernel with just
-> your patches (hopefully will find time on sunday
-Of course I did that. You could check my kernel repository at github
-https://github.com/hizukiayaka/linux-kernel/tree/firefly-rk3288-reload-next
 
-> *) Maybe some different kernel config options -> mine are
-> multi_v7_defconfig with a few modules added
-Not sure with that defconfig, even I didn't know whether you enabled the 
-USB module
->
-> Kind regards,
-> Norbert
->
-> 2016-09-24 20:53 GMT+02:00 ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>:
->> On 09/23/2016 03:10 PM, Norbert Lange wrote:
->>> Hi,
->>>
->>> I wanted to reply to the Linux mailing List (your patch thread), I
->>> dont know exactly where since the addresses are blanked out.
->>> Just tell me where I should move this discussion.
->>>
->>> The board can use both USB peripherals (haven`t tested the OTG Port).
->>> The issue starts if the board has *no* USB peripherals attached
->>> (either booting without any USB peripherals, or disconnecting all
->>> peripherals).
->> I have checked my patches with kernel next-20160923, I didn't meet your
->> problem. The firefly RK3288 release board works fine.
->>
->>> *Then* I cant connect a single peripheral, just getting read errors.
-I may not match your situation, there is always a usb hub at firefly 
-board, unless I would remove that chip, there is always a USB peripheral 
-device there.
->>> Seems like something is getting powered down if no USB peripheral is
->>> connected, and can`t start up again.
->>>
->>> Kind regard,
->>> Norbert
->>>
->>> 2016-09-23 2:48 GMT+02:00 Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>:
->>>>
->>>> 從我的 iPad 傳送
->>>>
->>>>> Norbert Lange <nolange79-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> 於 2016年9月23日 上午7:37 寫道：
->>>>>
->>>>> Hello Randi,
->>>>> I am Randy
->>>>> sorry for stalking you, but I have a problem with the USB Ports on
->>>> You have better CC to Linux-use as well
->>>>> RK3288 and Heiko pointed me to your patch [1].
->>>>>
->>>>> Firefly RK3288
->>>>> Linux Kernel 4.8rc3 with multi_v7_defconfig and some additional
->>>>> modules and mali drm driver
->>>>> Your patch v7 applied [2]
->>>>>
->>>>> [1] https://irclog.whitequark.org/linux-rockchip/2016-09-20
->>>>> [2] https://www.spinics.net/lists/linux-usb/msg146496.html
->>>>>
->>>>> I can easily reproduce the issue, if no USB Device is connected then
->>>>> attaching USB Devices will produce Read Errors.
->>>>> The only way around that is to always leave one device connected.
->>>>>
->>>> So the board could only connect to use one usb peripheral device?
->>>>> # plug in an USB Stick
->>>>> Sep 10 23:05:19 hipase2firefly kernel: usb 1-1: reset high-speed USB
->>>>> device numb
->>>>> Sep 10 23:05:24 hipase2firefly kernel: usb 1-1: device descriptor
->>>>> read/64, error
->>>>> Sep 10 23:05:40 hipase2firefly kernel: usb 1-1: device descriptor
->>>>> read/64, error
->>>>> Sep 10 23:05:42 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:43 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:44 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:44 hipase2firefly kernel: usb 1-1: USB disconnect, device
->>>>> number 2
->>>>> Sep 10 23:05:45 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:47 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:48 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:49 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:05:49 hipase2firefly kernel: usb usb1-port1: unable to
->>>>> enumerate USB d
->>>>>
->>>>> # reset without disconnecting USB
->>>>> # connecting a second USB Device (Logitech Receiver)
->>>>>
->>>>> Sep 10 23:03:14 hipase2firefly kernel: usb 1-1.4: new full-speed USB
->>>>> device numb
->>>>> Sep 10 23:03:14 hipase2firefly mtp-probe[2207]: checking bus 1, device
->>>>> 4: "/sys/
->>>>> Sep 10 23:03:14 hipase2firefly mtp-probe[2207]: bus: 1, device: 4 was
->>>>> not an MTP
->>>>> Sep 10 23:03:14 hipase2firefly kernel: logitech-djreceiver
->>>>> 0003:046D:C52B.0003:
->>>>> Sep 10 23:03:14 hipase2firefly kernel: input: Logitech K400 as
->>>>> /devices/platform
->>>>> Sep 10 23:03:14 hipase2firefly kernel: logitech-hidpp-device
->>>>> 0003:046D:4024.0004
->>>>>
->>>>> # disconnectin 1 USB Device
->>>>> Sep 10 23:04:00 hipase2firefly kernel: usb 1-1.4: USB disconnect, device
->>>>> number
->>>>>
->>>>> #reconnecting the same device
->>>>> Sep 10 23:05:49 hipase2firefly kernel: usb 1-1.4: new full-speed USB
->>>>> device numb
->>>>> Sep 10 23:05:49 hipase2firefly kernel: logitech-djreceiver
->>>>> 0003:046D:C52B.0007:
->>>>> Sep 10 23:05:49 hipase2firefly mtp-probe[2276]: checking bus 1, device
->>>>> 5: "/sys/
->>>>> Sep 10 23:05:49 hipase2firefly mtp-probe[2276]: bus: 1, device: 5 was
->>>>> not an MTP
->>>>> Sep 10 23:05:49 hipase2firefly kernel: input: Logitech K400 as
->>>>> /devices/platform
->>>>> Sep 10 23:05:49 hipase2firefly kernel: logitech-hidpp-device
->>>>> 0003:046D:4024.0008
->>>>>
->>>>> # disconnecting both USB Devices
->>>>> Sep 10 23:06:45 hipase2firefly kernel: usb 1-1.4: USB disconnect, device
->>>>> number
->>>>> Sep 10 23:06:49 hipase2firefly kernel: usb 1-1.1: USB disconnect, device
->>>>> number
->>>>> Sep 10 23:06:49 hipase2firefly systemd-udevd[2339]:
->>>>> inotify_add_watch(9, /dev/sdb, 10) failed: No such file or directory
->>>>>
->>>>> # reconnecting the Logitech Receiver
->>>>> Sep 10 23:08:40 hipase2firefly kernel: usb 1-1: reset high-speed USB
->>>>> device number 2 using dwc2
->>>>> Sep 10 23:08:46 hipase2firefly kernel: usb 1-1: device descriptor
->>>>> read/64, error -110
->>>>> Sep 10 23:09:01 hipase2firefly kernel: usb 1-1: device descriptor
->>>>> read/64, error -110
->>>>> Sep 10 23:09:03 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:04 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:05 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:05 hipase2firefly kernel: usb 1-1: USB disconnect, device
->>>>> number 2
->>>>> Sep 10 23:09:07 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:08 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:09 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:11 hipase2firefly kernel: usb usb1-port1: Cannot enable.
->>>>> Maybe the
->>>>> Sep 10 23:09:11 hipase2firefly kernel: usb usb1-port1: unable to
->>>>> enumerate USB device
->>>>>
->>>>> Kind regards,
->>>>> Norbert
->>
+--74ywsfvevlsgndw7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Fri, Sep 23, 2016 at 04:27:37PM -0500, Rob Herring wrote:
+> On Thu, Sep 22, 2016 at 09:50:06PM +0800, Xing Zheng wrote:
+> > From: Wonjoon Lee <woojoo.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+
+> > Pop happens when mclk applied but dmic's own boot-time
+
+> This statement doesn't make sense.
+
+It is very clear if you're familiar with the problem domain - because a
+DMIC is digital it's got an on/off state which means that when it
+transitions from off and not outputting anything to outputting something
+you get a sudden DC transition which manifests as a pop in the audio
+output.
+
+> > Specify dmic delay times in dt to make sure
+> > clocks are ready earlier than dmic working
+
+> I don't think this really belongs in DT. Seems like better control of=20
+> the init order is needed. Or why not just a fixed delay in the driver?
+
+The changelog says this is due to the DMICs having a startup time of
+their own so needing a delay after they've started.  That's going to be
+a system dependent thing since it'll depend on the specific component
+selected and DMICs are easily interchangable.
+
+--74ywsfvevlsgndw7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAABCAAGBQJX5sGhAAoJECTWi3JdVIfQb3EH/03yJ0kjMHCIoNGPcdCfEnNc
+WgzImLpEQpNfLf5iN7h+n0N0z1RGsgPiss8hj33TYRqqBXsgvJvRx2X5g0DtuVwn
+TKxGmnQTqiwCZCk5RdT3sNu+PgYxIX8L3Vg/03+2rYfbc5Ua+77MeKM4mcxOGl9+
+Qt7WhxZo/oMjVoyh5V+GjZScDvdFPQsvQabJ417MkOwfm506OlsuQ/VhJWA1TocG
+8PAvloEpR/ZWifYByE0pFSM6ZRlJB85ftTyV8Qxy4opCNg+QS/ik/QlKmZAx9eXw
+nDQmhMYjaYYF6Dmz6nzztGOgViM3SQ9tPXIWbeI8lnD4T1UoAKi1p9ucgqutvBI=
+=oOfW
+-----END PGP SIGNATURE-----
+
+--74ywsfvevlsgndw7--
+
+
+--===============2831427539561862994==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2831427539561862994==--
