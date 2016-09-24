@@ -1,47 +1,77 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: Support quirk to disable 5 GT/s (PCIe
- 2.x) link rate
-Date: Fri, 23 Sep 2016 18:55:00 -0500
-Message-ID: <20160923235500.GA3569@localhost>
-References: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] pinctrl: rockchip: don't disable clk when irq mask is
+ already set
+Date: Sat, 24 Sep 2016 18:24:11 +0800
+Message-ID: <fb4ec747-fde3-142b-1963-be3b9cfab260@rock-chips.com>
+References: <1474655197-26919-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1474565478-27242-1-git-send-email-briannorris@chromium.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1474655197-26919-1-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, linux-kernel@vger.kernel.org
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linus.walleij@linaro.org, Jacob Chen <jacob2.chen@rock-chips.com>, heiko@sntech.de, linux-gpio@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Sep 22, 2016 at 10:31:18AM -0700, Brian Norris wrote:
-> rk3399 supports PCIe 2.x link speeds marginally at best, and on some
-> boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
-> ms waiting for training that will never happen, let's support a device
-> tree quirk flag to disable generation 2 speeds entirely.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+On 2016/9/24 2:26, Jacob Chen wrote:
+> From: Jacob Chen <jacob2.chen@rock-chips.com>
+>
+> In some drivers, disable_irq() call don't be symmetric with enable_irq()
+> , disable_irq() will be called before call free_irq().
+
+Which upstream drivers you refer to?
+
+Shouldn't it be the unbalanced call for these drivers?
+
+>
+> But both disable_irq() and free_irq() will call rockchip_irq_gc_mask_set_bit,
+>  and clk_disable() will be called more times than clk_enable(), which will
+> cause bugs.
+>
+> I think we can correct that by checking of mask.If mask is already set, do nothing.
+>
+
+Looks like a little hacky to me.
+
+> Change-Id: If19912c7658253e15531c04db6c70fdbffd5960a
+
+remove this.
+
+> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 > ---
->  .../devicetree/bindings/pci/rockchip-pcie.txt      |  2 +
->  drivers/pci/host/pcie-rockchip.c                   | 57 +++++++++++++---------
->  2 files changed, 37 insertions(+), 22 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> index ba67b39939c1..e769726fd093 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -42,6 +42,8 @@ Required properties:
->  Optional Property:
->  - ep-gpios: contain the entry for pre-reset gpio
->  - num-lanes: number of lanes to use
-> +- rockchip,disable-gen2: present if PCIe generation 2.x (i.e., 5 GT/s link
-> +	speeds) is not supported.
->  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
->  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
->  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+>  drivers/pinctrl/pinctrl-rockchip.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index c6c04ac..9a8804a 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -2334,8 +2334,12 @@ static void rockchip_irq_gc_mask_clr_bit(struct irq_data *d)
+>  void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
+>  {
+>  	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+> +	struct irq_chip_type *ct = irq_data_get_chip_type(d);
+>  	struct rockchip_pin_bank *bank = gc->private;
+>
+> +	if (*ct->mask_cache & d->mask)
+> +		return;
+> +
+>  	irq_gc_mask_set_bit(d);
+>  	clk_disable(bank->clk);
+>  }
+> --
+> 2.7.4
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
 
-We already have st,pcie-is-gen1 and fsl,max-link-speed for similar
-issues.  Can you copy the naming of one of those?  The
-"max-link-speed" one seems a little more general.
 
-Bjorn
+-- 
+Best Regards
+Shawn Lin
+
