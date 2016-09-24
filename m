@@ -1,80 +1,125 @@
-From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH v8 2/3] usb: dwc2: assert phy reset when waking up in rk3288
- platform
-Date: Sun, 25 Sep 2016 02:50:18 +0800
-Message-ID: <1474743019-1050-3-git-send-email-ayaka@soulik.info>
-References: <1474743019-1050-1-git-send-email-ayaka@soulik.info>
+From: ayaka <ayaka@soulik.info>
+Subject: Re: RK3288 USB Issues
+Date: Sun, 25 Sep 2016 02:53:13 +0800
+Message-ID: <d668fd3a-e54e-ef0a-59c7-5bb420437b1b@soulik.info>
+References: <CADYdroO5sQgLEujisG5-nHbkB90s7upJhbJRxLbykmz5cgU9YQ@mail.gmail.com>
+ <46A5EBA0-0F42-4851-9172-E0897AD42B0D@soulik.info>
+ <CADYdroP3SE9g5fMo1p3Twmpd7o3u=zOQgHtfc9NKgdVX2wHbxA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474743019-1050-1-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CADYdroP3SE9g5fMo1p3Twmpd7o3u=zOQgHtfc9NKgdVX2wHbxA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Norbert Lange <nolange79@gmail.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On the rk3288 USB host-only port (the one that's not the OTG-enabled
-port) the PHY can get into a bad state when a wakeup is asserted (not
-just a wakeup from full system suspend but also a wakeup from
-autosuspend).
 
-We can get the PHY out of its bad state by asserting its "port reset",
-but unfortunately that seems to assert a reset onto the USB bus so it
-could confuse things if we don't actually deenumerate / reenumerate the
-device.
-
-We can also get the PHY out of its bad state by fully resetting it using
-the reset from the CRU (clock reset unit) in chip, which does a more full
-reset.  The CRU-based reset appears to actually cause devices on the bus
-to be removed and reinserted, which fixes the problem (albeit in a hacky
-way).
-
-It's unfortunate that we need to do a full re-enumeration of devices at
-wakeup time, but this is better than alternative of letting the bus get
-wedged.
-
-Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
----
- drivers/usb/dwc2/core_intr.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-index d85c5c9..af27edc 100644
---- a/drivers/usb/dwc2/core_intr.c
-+++ b/drivers/usb/dwc2/core_intr.c
-@@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
- static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
- {
- 	int ret;
-+	struct device_node *np = hsotg->dev->of_node;
- 
- 	/* Clear interrupt */
- 	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-@@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
- 			/* Restart the Phy Clock */
- 			pcgcctl &= ~PCGCTL_STOPPCLK;
- 			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
-+
-+			/*
-+			 * It is a quirk in Rockchip RK3288, causing by
-+			 * a hardware bug. This will propagate out and
-+			 * eventually we'll re-enumerate the device.
-+			 * Not great but the best we can do.
-+			 */
-+			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
-+				phy_reset(hsotg->phy);
-+
- 			mod_timer(&hsotg->wkp_timer,
- 				  jiffies + msecs_to_jiffies(71));
- 		} else {
--- 
-2.7.4
+On 09/23/2016 03:10 PM, Norbert Lange wrote:
+> Hi,
+>
+> I wanted to reply to the Linux mailing List (your patch thread), I
+> dont know exactly where since the addresses are blanked out.
+> Just tell me where I should move this discussion.
+>
+> The board can use both USB peripherals (haven`t tested the OTG Port).
+> The issue starts if the board has *no* USB peripherals attached
+> (either booting without any USB peripherals, or disconnecting all
+> peripherals).
+I have checked my patches with kernel next-20160923, I didn't meet your 
+problem. The firefly RK3288 release board works fine.
+> *Then* I cant connect a single peripheral, just getting read errors.
+>
+> Seems like something is getting powered down if no USB peripheral is
+> connected, and can`t start up again.
+>
+> Kind regard,
+> Norbert
+>
+> 2016-09-23 2:48 GMT+02:00 Ayaka <ayaka@soulik.info>:
+>>
+>> 從我的 iPad 傳送
+>>
+>>> Norbert Lange <nolange79@gmail.com> 於 2016年9月23日 上午7:37 寫道：
+>>>
+>>> Hello Randi,
+>>> I am Randy
+>>> sorry for stalking you, but I have a problem with the USB Ports on
+>> You have better CC to Linux-use as well
+>>> RK3288 and Heiko pointed me to your patch [1].
+>>>
+>>> Firefly RK3288
+>>> Linux Kernel 4.8rc3 with multi_v7_defconfig and some additional
+>>> modules and mali drm driver
+>>> Your patch v7 applied [2]
+>>>
+>>> [1] https://irclog.whitequark.org/linux-rockchip/2016-09-20
+>>> [2] https://www.spinics.net/lists/linux-usb/msg146496.html
+>>>
+>>> I can easily reproduce the issue, if no USB Device is connected then
+>>> attaching USB Devices will produce Read Errors.
+>>> The only way around that is to always leave one device connected.
+>>>
+>> So the board could only connect to use one usb peripheral device?
+>>> # plug in an USB Stick
+>>> Sep 10 23:05:19 hipase2firefly kernel: usb 1-1: reset high-speed USB device numb
+>>> Sep 10 23:05:24 hipase2firefly kernel: usb 1-1: device descriptor read/64, error
+>>> Sep 10 23:05:40 hipase2firefly kernel: usb 1-1: device descriptor read/64, error
+>>> Sep 10 23:05:42 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:43 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:44 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:44 hipase2firefly kernel: usb 1-1: USB disconnect, device number 2
+>>> Sep 10 23:05:45 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:47 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:48 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:49 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:05:49 hipase2firefly kernel: usb usb1-port1: unable to enumerate USB d
+>>>
+>>> # reset without disconnecting USB
+>>> # connecting a second USB Device (Logitech Receiver)
+>>>
+>>> Sep 10 23:03:14 hipase2firefly kernel: usb 1-1.4: new full-speed USB device numb
+>>> Sep 10 23:03:14 hipase2firefly mtp-probe[2207]: checking bus 1, device 4: "/sys/
+>>> Sep 10 23:03:14 hipase2firefly mtp-probe[2207]: bus: 1, device: 4 was not an MTP
+>>> Sep 10 23:03:14 hipase2firefly kernel: logitech-djreceiver 0003:046D:C52B.0003:
+>>> Sep 10 23:03:14 hipase2firefly kernel: input: Logitech K400 as /devices/platform
+>>> Sep 10 23:03:14 hipase2firefly kernel: logitech-hidpp-device 0003:046D:4024.0004
+>>>
+>>> # disconnectin 1 USB Device
+>>> Sep 10 23:04:00 hipase2firefly kernel: usb 1-1.4: USB disconnect, device number
+>>>
+>>> #reconnecting the same device
+>>> Sep 10 23:05:49 hipase2firefly kernel: usb 1-1.4: new full-speed USB device numb
+>>> Sep 10 23:05:49 hipase2firefly kernel: logitech-djreceiver 0003:046D:C52B.0007:
+>>> Sep 10 23:05:49 hipase2firefly mtp-probe[2276]: checking bus 1, device 5: "/sys/
+>>> Sep 10 23:05:49 hipase2firefly mtp-probe[2276]: bus: 1, device: 5 was not an MTP
+>>> Sep 10 23:05:49 hipase2firefly kernel: input: Logitech K400 as /devices/platform
+>>> Sep 10 23:05:49 hipase2firefly kernel: logitech-hidpp-device 0003:046D:4024.0008
+>>>
+>>> # disconnecting both USB Devices
+>>> Sep 10 23:06:45 hipase2firefly kernel: usb 1-1.4: USB disconnect, device number
+>>> Sep 10 23:06:49 hipase2firefly kernel: usb 1-1.1: USB disconnect, device number
+>>> Sep 10 23:06:49 hipase2firefly systemd-udevd[2339]:
+>>> inotify_add_watch(9, /dev/sdb, 10) failed: No such file or directory
+>>>
+>>> # reconnecting the Logitech Receiver
+>>> Sep 10 23:08:40 hipase2firefly kernel: usb 1-1: reset high-speed USB
+>>> device number 2 using dwc2
+>>> Sep 10 23:08:46 hipase2firefly kernel: usb 1-1: device descriptor
+>>> read/64, error -110
+>>> Sep 10 23:09:01 hipase2firefly kernel: usb 1-1: device descriptor
+>>> read/64, error -110
+>>> Sep 10 23:09:03 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:04 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:05 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:05 hipase2firefly kernel: usb 1-1: USB disconnect, device number 2
+>>> Sep 10 23:09:07 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:08 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:09 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:11 hipase2firefly kernel: usb usb1-port1: Cannot enable. Maybe the
+>>> Sep 10 23:09:11 hipase2firefly kernel: usb usb1-port1: unable to
+>>> enumerate USB device
+>>>
+>>> Kind regards,
+>>> Norbert
