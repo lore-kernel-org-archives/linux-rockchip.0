@@ -1,47 +1,81 @@
-From: Baoyou Xie <baoyou.xie@linaro.org>
-Subject: [PATCH 2/2] drm/rockchip: mark symbols static where possible
-Date: Sun, 25 Sep 2016 15:43:08 +0800
-Message-ID: <1474789388-3284-1-git-send-email-baoyou.xie@linaro.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] clk: rockchip: add I2S internal clock IDs for rk3288
+Date: Sun, 25 Sep 2016 23:50:29 +0200
+Message-ID: <21692410.II2VYnELL8@phil>
+References: <20160907165330.14607-1-john@metanate.com> <2003903.QOgKKA6m1b@phil> <20160907191823.7f955ae2.john@metanate.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160907191823.7f955ae2.john@metanate.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com, mark.yao@rock-chips.com, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
+To: John Keeping <john@metanate.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We get 2 warnings when building kernel with W=1:
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:309:6: warning: no previous prototype for 'rockchip_drm_fb_suspend' [-Wmissing-prototypes]
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:318:6: warning: no previous prototype for 'rockchip_drm_fb_resume' [-Wmissing-prototypes]
+Hi John,
 
-In fact, these functions are only used in the file in which they are
-declared and don't need a declaration, but can be made static.
-So this patch marks these functions with 'static'.
+sorry this took so long,
 
-Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Am Mittwoch, 7. September 2016, 19:18:23 CEST schrieb John Keeping:
+> On Wed, 07 Sep 2016 19:58:31 +0200, Heiko Stuebner wrote:
+> > Am Mittwoch, 7. September 2016, 17:53:29 CEST schrieb John Keeping:
+> > > To minimize jitter on the I2S clocks, it is important that the
+> > > denominator in the fractional divider is much greater than the
+> > > numerator.  Add identifiers for these internal clocks so that the
+> > > specific clock topology and rates can be specified in the device tree.
+> > 
+> > The TRM states that the denominator must be bigger than 20. Is this the
+> > one
+> > you found or did you find further constraints?
+> 
+> Is it not that the denominator must be bigger than 20 times the
+> numerator?  That's what we found, although it seems that the greater the
+> divisor the better, so our aim is dividing down from 594MHz from GPLL to
+> the target rate in i2s_frac.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 76eaf1d..38c3be5 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -309,7 +309,7 @@ static struct drm_driver rockchip_drm_driver = {
- };
- 
- #ifdef CONFIG_PM_SLEEP
--void rockchip_drm_fb_suspend(struct drm_device *drm)
-+static void rockchip_drm_fb_suspend(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
- 
-@@ -318,7 +318,7 @@ void rockchip_drm_fb_suspend(struct drm_device *drm)
- 	console_unlock();
- }
- 
--void rockchip_drm_fb_resume(struct drm_device *drm)
-+static void rockchip_drm_fb_resume(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
- 
--- 
-2.7.4
+That is good to know ... the TRM probably lost the real information during 
+translation or so and only states that hard value. Looking at the rk3368 TRM 
+just now, the value really is 20 times greater than the numerator.
+
+
+> > Did you try teaching the fractional divider to handle these constraints
+> > before going this way?
+> 
+> No, I hadn't looked at doing that.  I'm not sure how that would work,
+> we'd need to add support for fractional divider changing the parent rate
+> wouldn't we?
+
+Doug had a somewhat similar problem, mentioning the lack of a "bestdiv" 
+equivalent that the standard divider provides. I'm not sure if there isn't a 
+way to provide something like this and/or make the fractional clock honor 
+specific requirments concerning numerator/denominator - any mathematicians 
+around? :-)
+
+One could also replace the generic fraction divider use with a rockchip-
+specific implementation that somehow handles that.
+
+
+> > Exporting the internal clocks really would be sort of plan d or e, after
+> > handling this in the clock framework failed. Especially as i2s rates are
+> > probably dependant on the media being handled (frequencies and such), so
+> > setting fractional rates statically in the dts won't help you much in the
+> > general case, as any new playback could trigger a clk_set_rate call
+> > anyway?
+> 
+> We're not setting the fractional rate specifically, instead we're
+> setting the i2s_pre rate and parent explicitly and banning the i2s_src
+> mux setting to i2s_pre, which means that clk_set_rate on sclk_i2s0 will
+> always change i2s_frac but leave i2s_pre alone.
+
+But then you are again in the situation where some requested rate can ignore 
+those fractional-divider constraints? In general I really don't like encoding 
+such board-specific behaviour into the generic clock tree, like needing to 
+disable parent relationships.
+
+It works for your board now but does not necessarily for all other boards, 
+which might require other "hacks" and also doesn't solve the general problem 
+for all other fractional dividers we have.
+
+
+Heiko
