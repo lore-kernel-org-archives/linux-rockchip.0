@@ -1,84 +1,101 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v8 2/3] usb: dwc2: assert phy reset when waking up in
- rk3288 platform
-Date: Mon, 26 Sep 2016 13:50:03 -0700
-Message-ID: <65475ef5-b391-c543-4ece-a9484270e20b@synopsys.com>
-References: <1474743019-1050-1-git-send-email-ayaka@soulik.info>
- <1474743019-1050-3-git-send-email-ayaka@soulik.info>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] pinctrl: rockchip: don't disable clk when irq mask is
+ already set
+Date: Tue, 27 Sep 2016 00:35:18 +0200
+Message-ID: <3592219.tUs91je5kA@phil>
+References: <1474655197-26919-1-git-send-email-jacob-chen@iotwrt.com>
+ <fb4ec747-fde3-142b-1963-be3b9cfab260@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1474743019-1050-3-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <fb4ec747-fde3-142b-1963-be3b9cfab260-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 9/24/2016 11:51 AM, Randy Li wrote:
-> On the rk3288 USB host-only port (the one that's not the OTG-enabled
-> port) the PHY can get into a bad state when a wakeup is asserted (not
-> just a wakeup from full system suspend but also a wakeup from
-> autosuspend).
+Am Samstag, 24. September 2016, 18:24:11 CEST schrieb Shawn Lin:
+> On 2016/9/24 2:26, Jacob Chen wrote:
+> > From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > 
+> > In some drivers, disable_irq() call don't be symmetric with enable_irq()
+> > , disable_irq() will be called before call free_irq().
 > 
-> We can get the PHY out of its bad state by asserting its "port reset",
-> but unfortunately that seems to assert a reset onto the USB bus so it
-> could confuse things if we don't actually deenumerate / reenumerate the
-> device.
+> Which upstream drivers you refer to?
 > 
-> We can also get the PHY out of its bad state by fully resetting it using
-> the reset from the CRU (clock reset unit) in chip, which does a more full
-> reset.  The CRU-based reset appears to actually cause devices on the bus
-> to be removed and reinserted, which fixes the problem (albeit in a hacky
-> way).
+> Shouldn't it be the unbalanced call for these drivers?
 > 
-> It's unfortunate that we need to do a full re-enumeration of devices at
-> wakeup time, but this is better than alternative of letting the bus get
-> wedged.
-> 
-> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-> ---
->  drivers/usb/dwc2/core_intr.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-> index d85c5c9..af27edc 100644
-> --- a/drivers/usb/dwc2/core_intr.c
-> +++ b/drivers/usb/dwc2/core_intr.c
-> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
->  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
->  {
->  	int ret;
-> +	struct device_node *np = hsotg->dev->of_node;
->  
->  	/* Clear interrupt */
->  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-> @@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
->  			/* Restart the Phy Clock */
->  			pcgcctl &= ~PCGCTL_STOPPCLK;
->  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
-> +
-> +			/*
-> +			 * It is a quirk in Rockchip RK3288, causing by
-> +			 * a hardware bug. This will propagate out and
-> +			 * eventually we'll re-enumerate the device.
-> +			 * Not great but the best we can do.
-> +			 */
-> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
-> +				phy_reset(hsotg->phy);
-> +
->  			mod_timer(&hsotg->wkp_timer,
->  				  jiffies + msecs_to_jiffies(71));
->  		} else {
-> 
+> > But both disable_irq() and free_irq() will call
+> > rockchip_irq_gc_mask_set_bit,> 
+> >  and clk_disable() will be called more times than clk_enable(), which will
+> > 
+> > cause bugs.
+> > 
+> > I think we can correct that by checking of mask.If mask is already set, do
+> > nothing.
+> Looks like a little hacky to me.
+
+that may be true, but on first glance I tend to agree with Jacob.
+Look for example at (a driver using disable_irq I picked at random) drivertc/
+rtcrs/-tps6586x.c .
+
+In its probe function it does devm_request_irq directly followed by 
+disable_irq on its alarm interrupt. The interrupt only gets enabled again if 
+the rtc alarm gets enabled. So you can easily run into the disable + free case 
+there as well. Similar probably in a lot of other drivers.
 
 
-Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Heiko
 
-Regards,
-John
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> > Change-Id: If19912c7658253e15531c04db6c70fdbffd5960a
+> 
+> remove this.
+> 
+> > Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > ---
+> > 
+> >  drivers/pinctrl/pinctrl-rockchip.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/pinctrl/pinctrl-rockchip.c
+> > b/drivers/pinctrl/pinctrl-rockchip.c index c6c04ac..9a8804a 100644
+> > --- a/drivers/pinctrl/pinctrl-rockchip.c
+> > +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> > @@ -2334,8 +2334,12 @@ static void rockchip_irq_gc_mask_clr_bit(struct
+> > irq_data *d)> 
+> >  void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
+> >  {
+> >  
+> >  	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+> > 
+> > +	struct irq_chip_type *ct = irq_data_get_chip_type(d);
+> > 
+> >  	struct rockchip_pin_bank *bank = gc->private;
+> > 
+> > +	if (*ct->mask_cache & d->mask)
+> > +		return;
+> > +
+> > 
+> >  	irq_gc_mask_set_bit(d);
+> >  	clk_disable(bank->clk);
+> >  
+> >  }
+> > 
+> > --
+> > 2.7.4
+> > 
+> > 
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
