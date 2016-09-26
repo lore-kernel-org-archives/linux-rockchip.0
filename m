@@ -1,40 +1,118 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] power-domain: rockchip: fix up the PMU_GPU_PWRDW/UP_CNT for RK3399
-Date: Mon, 26 Sep 2016 17:25:49 +0200
-Message-ID: <6388447.xfRkPC5TP9@phil>
-References: <1474874730-12802-1-git-send-email-zhangqing@rock-chips.com> <CAD=FV=VeZj0u9Phqv4V5s4aJ73R57+tZbKz40rbMkMLPkkArCw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rk3399_gru_sound: fix recording pop at first attempt" to the asoc tree
+Date: Mon, 26 Sep 2016 09:15:42 -0700
+Message-ID: <E1boYZC-0005RL-8m@finisterre>
+References: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VeZj0u9Phqv4V5s4aJ73R57+tZbKz40rbMkMLPkkArCw@mail.gmail.com>
+In-Reply-To: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, xxx <xxx@rock-chips.com>, Xu Jianqun <jay.xu@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Xing Zheng <zhengxing@rock-chips.com>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, woojoo.lee@samsung.com, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.deXing Zheng <zhengxing@rock-chips.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, dianders@google.comMark Brown <broonie@kernel.org>, smbarber@google.com, hychao@google.com, linux-arm-kernel@lists.infradead.org, cychiang@google.comalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 26. September 2016, 08:17:54 CEST schrieb Doug Anderson:
-> Hi,
-> 
-> On Mon, Sep 26, 2016 at 12:25 AM, Elaine Zhang <zhangqing@rock-chips.com> 
-wrote:
-> > According to the advice of the IC,
-> > setting the PMU_GPU_PWRDW/PWRUP_CNT regs 6 cycel(250ns) for RK3399 SOC.
-> > 
-> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > ---
-> > 
-> >  drivers/soc/rockchip/pm_domains.c | 8 ++++----
-> >  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> This has problems on several levels.  Please see
-> <https://patchwork.kernel.org/patch/9288607/> for some context.
-> 
-> Note that ATF changes have landed, so my patch could probably land at any
-> time.
+The patch
 
-thanks for the heads up. As before I still agree with you that this is better 
-done in the ATF, so I guess I can merge your other patch for 4.10 now.
+   ASoC: rk3399_gru_sound: fix recording pop at first attempt
 
+has been applied to the asoc tree at
 
-Heiko
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 3a6f9dce6116cc54e31dc10d176ceecb1a7e4e7f Mon Sep 17 00:00:00 2001
+From: Wonjoon Lee <woojoo.lee@samsung.com>
+Date: Thu, 22 Sep 2016 21:50:06 +0800
+Subject: [PATCH] ASoC: rk3399_gru_sound: fix recording pop at first attempt
+
+Pop happens when mclk applied but dmic's own boot-time
+Specify dmic delay times in dt to make sure
+clocks are ready earlier than dmic working
+
+Signed-off-by: Wonjoon Lee <woojoo.lee@samsung.com>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ .../bindings/sound/rockchip,rk3399-gru-sound.txt           |  7 +++++++
+ sound/soc/rockchip/rk3399_gru_sound.c                      | 14 ++++++++++++++
+ 2 files changed, 21 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+index f19b6c830a34..eac91db07178 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+@@ -6,10 +6,17 @@ Required properties:
+   connected to the codecs
+ - rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
+ 
++Optional properties:
++- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
++  If this option is specified, which means it's required dmic need
++  delay for DMIC to ready so that rt5514 can avoid recording before
++  DMIC send valid data
++
+ Example:
+ 
+ sound {
+ 	compatible = "rockchip,rk3399-gru-sound";
+ 	rockchip,cpu = <&i2s0>;
+ 	rockchip,codec = <&max98357a &rt5514 &da7219>;
++	dmic-wakeup-delay-ms = <20>;
+ };
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index ee0648927afc..9ed735a6cf49 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -38,6 +38,8 @@
+ 
+ #define SOUND_FS	256
+ 
++unsigned int rt5514_dmic_delay;
++
+ static struct snd_soc_jack rockchip_sound_jack;
+ 
+ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
+@@ -123,6 +125,9 @@ static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
+ 		return ret;
+ 	}
+ 
++	/* Wait for DMIC stable */
++	msleep(rt5514_dmic_delay);
++
+ 	return 0;
+ }
+ 
+@@ -343,6 +348,15 @@ static int rockchip_sound_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	/* Set DMIC delay */
++	ret = device_property_read_u32(&pdev->dev, "dmic-delay",
++					&rt5514_dmic_delay);
++	if (ret) {
++		rt5514_dmic_delay = 0;
++		dev_dbg(&pdev->dev,
++			"no optional property 'dmic-delay' found, default: no delay\n");
++	}
++
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
+-- 
+2.9.3
