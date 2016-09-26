@@ -1,118 +1,107 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rk3399_gru_sound: fix recording pop at first attempt" to the asoc tree
-Date: Mon, 26 Sep 2016 09:15:42 -0700
-Message-ID: <E1boYZC-0005RL-8m@finisterre>
-References: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474552206-31742-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Xing Zheng <zhengxing@rock-chips.com>, Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, woojoo.lee@samsung.com, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.deXing Zheng <zhengxing@rock-chips.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, dianders@google.comMark Brown <broonie@kernel.org>, smbarber@google.com, hychao@google.com, linux-arm-kernel@lists.infradead.org, cychiang@google.comalsa-devel@alsa-project.org
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH 1/2] clk: rockchip: add I2S internal clock IDs for
+ rk3288
+Date: Mon, 26 Sep 2016 18:04:39 +0100
+Message-ID: <20160926180439.64a16cf1.john@metanate.com>
+References: <20160907165330.14607-1-john@metanate.com>
+        <2003903.QOgKKA6m1b@phil>
+        <20160907191823.7f955ae2.john@metanate.com>
+        <21692410.II2VYnELL8@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <21692410.II2VYnELL8@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On Sun, 25 Sep 2016 23:50:29 +0200, Heiko Stuebner wrote:
 
-   ASoC: rk3399_gru_sound: fix recording pop at first attempt
+> Am Mittwoch, 7. September 2016, 19:18:23 CEST schrieb John Keeping:
+> > On Wed, 07 Sep 2016 19:58:31 +0200, Heiko Stuebner wrote:  
+> > > Am Mittwoch, 7. September 2016, 17:53:29 CEST schrieb John Keeping:  
+> > > > To minimize jitter on the I2S clocks, it is important that the
+> > > > denominator in the fractional divider is much greater than the
+> > > > numerator.  Add identifiers for these internal clocks so that the
+> > > > specific clock topology and rates can be specified in the device tree.  
+> > > 
+> > > The TRM states that the denominator must be bigger than 20. Is this the
+> > > one
+> > > you found or did you find further constraints?  
+> > 
+> > Is it not that the denominator must be bigger than 20 times the
+> > numerator?  That's what we found, although it seems that the greater the
+> > divisor the better, so our aim is dividing down from 594MHz from GPLL to
+> > the target rate in i2s_frac.  
+> 
+> That is good to know ... the TRM probably lost the real information during 
+> translation or so and only states that hard value. Looking at the rk3368 TRM 
+> just now, the value really is 20 times greater than the numerator.
+> 
+> 
+> > > Did you try teaching the fractional divider to handle these constraints
+> > > before going this way?  
+> > 
+> > No, I hadn't looked at doing that.  I'm not sure how that would work,
+> > we'd need to add support for fractional divider changing the parent rate
+> > wouldn't we?  
+> 
+> Doug had a somewhat similar problem, mentioning the lack of a "bestdiv" 
+> equivalent that the standard divider provides. I'm not sure if there isn't a 
+> way to provide something like this and/or make the fractional clock honor 
+> specific requirments concerning numerator/denominator - any mathematicians 
+> around? :-)
 
-has been applied to the asoc tree at
+Yes, this is difficult, although I expect a simple approach of setting
+the input as fast as possible would work reasonably well in practice.
+But even when the input is a mux with a fixed set of possible rates it
+is difficult to extract its maximum frequency within the clock
+framework.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+> One could also replace the generic fraction divider use with a rockchip-
+> specific implementation that somehow handles that.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+I hadn't considered that, I assumed there would be a strong preference
+for enhancing the generic code rather than writing a special case
+implementation.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+> > > Exporting the internal clocks really would be sort of plan d or e, after
+> > > handling this in the clock framework failed. Especially as i2s rates are
+> > > probably dependant on the media being handled (frequencies and such), so
+> > > setting fractional rates statically in the dts won't help you much in the
+> > > general case, as any new playback could trigger a clk_set_rate call
+> > > anyway?  
+> > 
+> > We're not setting the fractional rate specifically, instead we're
+> > setting the i2s_pre rate and parent explicitly and banning the i2s_src
+> > mux setting to i2s_pre, which means that clk_set_rate on sclk_i2s0 will
+> > always change i2s_frac but leave i2s_pre alone.  
+> 
+> But then you are again in the situation where some requested rate can ignore 
+> those fractional-divider constraints? In general I really don't like encoding 
+> such board-specific behaviour into the generic clock tree, like needing to 
+> disable parent relationships.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Yes, I wouldn't suggest changing the clock mux in the upstream kernel.
+I was hoping specifying an assigned parent in DT would be enough to keep
+the parent set correctly, but it doesn't seem to be.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+> It works for your board now but does not necessarily for all other boards, 
+> which might require other "hacks" and also doesn't solve the general problem 
+> for all other fractional dividers we have.
 
-Thanks,
-Mark
+The sensible heuristic is to minimize the length of the clock path when
+there are two equally good routes, which would handle the case where the
+I2S clock can be generated without the need for a fractional divider.
+But I don't think the clock framework has any way to take into account
+that a mux may end up bypassing another clock.
 
-From 3a6f9dce6116cc54e31dc10d176ceecb1a7e4e7f Mon Sep 17 00:00:00 2001
-From: Wonjoon Lee <woojoo.lee@samsung.com>
-Date: Thu, 22 Sep 2016 21:50:06 +0800
-Subject: [PATCH] ASoC: rk3399_gru_sound: fix recording pop at first attempt
+It seems that even without the fractional divider we can't get low
+enough jitter to meet our requirements, so we've decided to use an
+external clock for I2S.  As a result of that, we're no longer using this
+part of the clock tree at all, so I'm happy to drop these patches.
 
-Pop happens when mclk applied but dmic's own boot-time
-Specify dmic delay times in dt to make sure
-clocks are ready earlier than dmic working
 
-Signed-off-by: Wonjoon Lee <woojoo.lee@samsung.com>
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- .../bindings/sound/rockchip,rk3399-gru-sound.txt           |  7 +++++++
- sound/soc/rockchip/rk3399_gru_sound.c                      | 14 ++++++++++++++
- 2 files changed, 21 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-index f19b6c830a34..eac91db07178 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-@@ -6,10 +6,17 @@ Required properties:
-   connected to the codecs
- - rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
- 
-+Optional properties:
-+- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
-+  If this option is specified, which means it's required dmic need
-+  delay for DMIC to ready so that rt5514 can avoid recording before
-+  DMIC send valid data
-+
- Example:
- 
- sound {
- 	compatible = "rockchip,rk3399-gru-sound";
- 	rockchip,cpu = <&i2s0>;
- 	rockchip,codec = <&max98357a &rt5514 &da7219>;
-+	dmic-wakeup-delay-ms = <20>;
- };
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index ee0648927afc..9ed735a6cf49 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -38,6 +38,8 @@
- 
- #define SOUND_FS	256
- 
-+unsigned int rt5514_dmic_delay;
-+
- static struct snd_soc_jack rockchip_sound_jack;
- 
- static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
-@@ -123,6 +125,9 @@ static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
- 
-+	/* Wait for DMIC stable */
-+	msleep(rt5514_dmic_delay);
-+
- 	return 0;
- }
- 
-@@ -343,6 +348,15 @@ static int rockchip_sound_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	/* Set DMIC delay */
-+	ret = device_property_read_u32(&pdev->dev, "dmic-delay",
-+					&rt5514_dmic_delay);
-+	if (ret) {
-+		rt5514_dmic_delay = 0;
-+		dev_dbg(&pdev->dev,
-+			"no optional property 'dmic-delay' found, default: no delay\n");
-+	}
-+
- 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
- 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_dai_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
- 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
--- 
-2.9.3
+John
