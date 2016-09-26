@@ -1,55 +1,84 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] soc: rockchip: power-domain: Don't (incorrectly) set rk3399 up/down counts
-Date: Mon, 26 Sep 2016 22:18:42 +0200
-Message-ID: <3409868.mFCNHRg95O@phil>
-References: <1471546561-4459-1-git-send-email-dianders@chromium.org>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] usb: dwc2: assert phy reset when waking up in
+ rk3288 platform
+Date: Mon, 26 Sep 2016 13:50:03 -0700
+Message-ID: <65475ef5-b391-c543-4ece-a9484270e20b@synopsys.com>
+References: <1474743019-1050-1-git-send-email-ayaka@soulik.info>
+ <1474743019-1050-3-git-send-email-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1471546561-4459-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, wxt@rock-chips.com, zhengxing@rock-chips.com, dbasehore@chromium.org, shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1474743019-1050-3-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 18. August 2016, 11:56:01 CEST schrieb Douglas Anderson:
-> On rk3288 it was important that powerdown and powerup counts for the
-> CPU/GPU in the kernel because:
-> * The power on default was crazy long.
-> * We couldn't rely on the firmware to set this up because really this
->   wasn't the firmware's job--the kernel was the only one that really
->   cared about bringing up / down CPUs and the GPU and doing suspend /
->   resume (which involves bringing up / down CPUs).
+On 9/24/2016 11:51 AM, Randy Li wrote:
+> On the rk3288 USB host-only port (the one that's not the OTG-enabled
+> port) the PHY can get into a bad state when a wakeup is asserted (not
+> just a wakeup from full system suspend but also a wakeup from
+> autosuspend).
 > 
-> On newer ARM systems (like rk3399) ARM Trusted Firmware is in charge of
-> bringing up and down the CPUs and it really should be in charge of
-> setting all these counts right.  After all ATF is in charge of suspend /
-> resume and CPU up / down.  Let's get out of the way and let ATF do its
-> job.
+> We can get the PHY out of its bad state by asserting its "port reset",
+> but unfortunately that seems to assert a reset onto the USB bus so it
+> could confuse things if we don't actually deenumerate / reenumerate the
+> device.
 > 
-> A few other motivations for doing this:
-> * Depending on another configuration (PMU_24M_EN_CFG) these counts can
->   be either in 24M or 32k cycles.  Thus, though ATF isn't really so
->   involved in bringing up the GPU, ATF should probably manage the counts
->   for everything so it can also manage the 24M / 32k choice.
-> * It turns out that (right now) 24M mode is broken on rk3399 and not
->   being used.  That means that the count the kernel was programming
->   in (24) was not 1 us (which it seems was intended) but was actually
->   .75 ms
-> * On rk3399 there are actually 2 separate registers for setting CPU
->   up/down time plus 1 register for GPU up/down time.  The curent kernel
->   code actually was putting the register for the "little" cores in the
->   "CPU" slot and the register for the "big" cores in the "GPU" slot.  It
->   was never initting the GPU counts.
+> We can also get the PHY out of its bad state by fully resetting it using
+> the reset from the CRU (clock reset unit) in chip, which does a more full
+> reset.  The CRU-based reset appears to actually cause devices on the bus
+> to be removed and reinserted, which fixes the problem (albeit in a hacky
+> way).
 > 
-> Note: this change assumes that ATF will actually set these values at
-> boot, as I'm proposing in <http://crosreview.com/372381>.
+> It's unfortunate that we need to do a full re-enumeration of devices at
+> wakeup time, but this is better than alternative of letting the bus get
+> wedged.
 > 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+> ---
+>  drivers/usb/dwc2/core_intr.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+> index d85c5c9..af27edc 100644
+> --- a/drivers/usb/dwc2/core_intr.c
+> +++ b/drivers/usb/dwc2/core_intr.c
+> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_hsotg *hsotg)
+>  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>  {
+>  	int ret;
+> +	struct device_node *np = hsotg->dev->of_node;
+>  
+>  	/* Clear interrupt */
+>  	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
+> @@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+>  			/* Restart the Phy Clock */
+>  			pcgcctl &= ~PCGCTL_STOPPCLK;
+>  			dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
+> +
+> +			/*
+> +			 * It is a quirk in Rockchip RK3288, causing by
+> +			 * a hardware bug. This will propagate out and
+> +			 * eventually we'll re-enumerate the device.
+> +			 * Not great but the best we can do.
+> +			 */
+> +			if (of_device_is_compatible(np, "rockchip,rk3288-usb"))
+> +				phy_reset(hsotg->phy);
+> +
+>  			mod_timer(&hsotg->wkp_timer,
+>  				  jiffies + msecs_to_jiffies(71));
+>  		} else {
+> 
 
-applied to my drivers branch for 4.10
 
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 
-Thanks
-Heiko
+Regards,
+John
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
