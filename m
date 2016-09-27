@@ -1,36 +1,42 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: media: rockchip-vpu: I should place the huffman table at kernel or
- userspace ?
-Date: Tue, 27 Sep 2016 11:43:35 +0800
-Message-ID: <5de5d305-0ecc-a994-d133-63d55c8b1741@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "nicolas.dufresne@collabora.co.uk" <nicolas.dufresne@collabora.co.uk>, Hans Verkuil <hverkuil@xs4all.nl>
+From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/2] Add power domain support for eMMC node on rk3399
+Date: Tue, 27 Sep 2016 14:15:56 +0800
+Message-ID: <20160927061558.2110-1-xzy.xu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello:
-   I have just done a JPEG HW encoder for the RK3288. I have been told 
-that I can't use the standard way to generate huffman table, the VPU 
-supports only 10 levels with a different huffman table.
-   If I send the huffman table through the v4l2 extra control, the 
-memory copy is requested, although the data is not very large(2 x 64 
-bytes) but still a overhead. The other way is to place them in the 
-kernel driver, and just define the quality every time it encode a 
-picture. But storing in kernel would make the driver a little bigger(2 x 
-11 x 64 bytes) and beyond the FIFO job.
-   So where Should I place the huffman table?
+This series add power domain for eMMC node which will be controlled by
+genpd to make sure it's available in probing state, and will be gate
+once suspend/resume.
+
+Changes in v4:
+- add heiko's review-tag
+
+Changes in v3:
+- fix a typo
+- add Rob's ack-tag
+
+Changes in v2:
+- fix a typo
+- add an example code for power-domain
+- add Shawn's review-tag and Doug's review-tag
+
+Ziyuan Xu (2):
+  Documentation: mmc: sdhci-of-arasan: add description of power domain
+  arm64: dts: rockchip: add eMMC's power domain support for rk3399
+
+ Documentation/devicetree/bindings/mmc/arasan,sdhci.txt |  7 ++++++-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi               | 11 +++++++++++
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
 -- 
-Randy Li
-The third produce department
-===========================================================================
-This email message, including any attachments, is for the sole
-use of the intended recipient(s) and may contain confidential and
-privileged information. Any unauthorized review, use, disclosure or
-distribution is prohibited. If you are not the intended recipient, please
-contact the sender by reply e-mail and destroy all copies of the original
-message. [Fuzhou Rockchip Electronics, INC. China mainland]
-===========================================================================
+2.9.3
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
