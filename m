@@ -1,56 +1,49 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: analogix_dp: Refuse to enable PSR if
- panel doesn't support it
-Date: Tue, 27 Sep 2016 09:28:58 -0400
-Message-ID: <CAOw6vbL1fDpPbFeePEFqYZ+i0sbbsB+vu7fCC8U88HAj-1D2Ag@mail.gmail.com>
-References: <1474639600-30090-1-git-send-email-tomeu.vizoso@collabora.com>
- <1474639600-30090-2-git-send-email-tomeu.vizoso@collabora.com>
+From: Sean Paul <seanpaul@google.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: add missing header dependencies
+Date: Tue, 27 Sep 2016 12:34:04 -0400
+Message-ID: <CAOw6vbJLhUHdditnN6W2K=NQ71b_+oHyDF6GfxOEvw9zPHrn3A@mail.gmail.com>
+References: <1474789109-22010-1-git-send-email-baoyou.xie@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1474639600-30090-2-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474789109-22010-1-git-send-email-baoyou.xie@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Baoyou Xie <baoyou.xie@linaro.org>
+Cc: CK HU <ck.hu@mediatek.com>, p.zabel@pengutronix.de, Dave Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Baoyou Xie <xie.baoyou@zte.com.cn>, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBTZXAgMjMsIDIwMTYgYXQgMTA6MDYgQU0sIFRvbWV1IFZpem9zbwo8dG9tZXUudml6
-b3NvQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IFRoZXJlJ3Mgbm8gcG9pbnQgaW4gZW5hYmxpbmcg
-UFNSIHdoZW4gdGhlIHBhbmVsIGRvZXNuJ3Qgc3VwcG9ydCBpdC4KPgo+IFRoaXMgYWxzbyBhdm9p
-ZHMgYSBwcm9ibGVtIHdoZW4gUFNSIGdldHMgZW5hYmxlZCB3aGVuIGEgQ1JUQyBpcyBiZWluZwo+
-IGRpc2FibGVkLCBiZWNhdXNlIHNvbWV0aW1lcyBpbiB0aGF0IHNpdHVhdGlvbiB0aGUgRFNQX0hP
-TERfVkFMSURfSU5UUgo+IGludGVycnVwdCBvbiB3aGljaCB3ZSB3YWl0IHdpbGwgbmV2ZXIgYXJy
-aXZlLiBUaGlzIHdhcyBvYnNlcnZlZCBvbgo+IFJLMzI4OCB3aXRoIGEgcGFuZWwgd2l0aG91dCBQ
-U1IgKHZleXJvbi1qYXEgQ2hyb21lYm9vaykuCj4KPiBJdCdzIHZlcnkgZWFzeSB0byByZXByb2R1
-Y2UgYnkgcnVubmluZyB0aGUga21zX3JtZmIgdGVzdCBpbiBJR1QgYSBmZXcKPiB0aW1lcy4KPgo+
-IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxhYm9yYS5jb20+
-CgpUaGFua3MgZm9yIGRpZ2dpbmcgaW50byB0aGlzLgoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8
-c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKCgo+IENjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9t
-aXVtLm9yZz4KPiBDYzogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+IENjOiBBcmNo
-aXQgVGFuZWphIDxhcmNoaXR0QGNvZGVhdXJvcmEub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDMgKysrCj4gIDEgZmlsZSBjaGFu
-Z2VkLCAzIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9h
-bmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5kZXggZTgzYmUxNTdjYzJhLi44NTQ4ZTgyNzE2Mzkg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tj
-aGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
-aXAuYwo+IEBAIC04NSw2ICs4NSw5IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX3Bzcl9zZXQo
-c3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLCBib29sIGVuYWJsZWQpCj4gICAgICAgICBzdHJ1
-Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCA9IHRvX2RwKGVuY29kZXIpOwo+ICAgICAgICAgdW5z
-aWduZWQgbG9uZyBmbGFnczsKPgo+ICsgICAgICAgaWYgKCFhbmFsb2dpeF9kcF9wc3Jfc3VwcG9y
-dGVkKGRwLT5kZXYpKQo+ICsgICAgICAgICAgICAgICByZXR1cm47Cj4gKwo+ICAgICAgICAgZGV2
-X2RiZyhkcC0+ZGV2LCAiJXMgUFNSLi4uXG4iLCBlbmFibGVkID8gIkVudHJ5IiA6ICJFeGl0Iik7
-Cj4KPiAgICAgICAgIHNwaW5fbG9ja19pcnFzYXZlKCZkcC0+cHNyX2xvY2ssIGZsYWdzKTsKPiAt
-LQo+IDIuNy40Cj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+On Sun, Sep 25, 2016 at 3:38 AM, Baoyou Xie <baoyou.xie@linaro.org> wrote:
+> We get 2 warnings when building kernel with W=1:
+> drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:130:5: warning: no previous prototype for 'rockchip_drm_fbdev_init' [-Wmissing-prototypes]
+> drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:173:6: warning: no previous prototype for 'rockchip_drm_fbdev_fini' [-Wmissing-prototypes]
+>
+> In fact, these functions are declared
+> in drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h,
+> so this patch adds missing header dependencies.
+>
+> Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
+
+
+Applied to -misc, thanks.
+
+Sean
+
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+> index 207e01d..a16c69f 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+> @@ -20,6 +20,7 @@
+>  #include "rockchip_drm_drv.h"
+>  #include "rockchip_drm_gem.h"
+>  #include "rockchip_drm_fb.h"
+> +#include "rockchip_drm_fbdev.h"
+>
+>  #define PREFERRED_BPP          32
+>  #define to_drm_private(x) \
+> --
+> 2.7.4
+>
