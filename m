@@ -1,77 +1,70 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: media: rockchip-vpu: I should place the huffman table at kernel
- or userspace?
-Date: Tue, 27 Sep 2016 16:08:09 +0800
-Message-ID: <8ea18fd5-44a6-5217-acdb-6472f419dbed@rock-chips.com>
-References: <5de5d305-0ecc-a994-d133-63d55c8b1741@rock-chips.com>
- <84ce2871-be3b-bf9f-ba0e-75de8c7d4824@xs4all.nl>
+From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
+ Rockchip cpu avs
+Date: Tue, 27 Sep 2016 16:40:22 +0800
+Message-ID: <c58a6eb3-7db0-4327-20a3-35c892ae1b93@rock-chips.com>
+References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
+ <20160912215515.GF7243@codeaurora.org> <20160926035511.GG17336@vireshk-i7>
+ <20776501.pZ2NDOzLK3@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <84ce2871-be3b-bf9f-ba0e-75de8c7d4824@xs4all.nl>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, "nicolas.dufresne@collabora.co.uk" <nicolas.dufresne@collabora.co.uk>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20776501.pZ2NDOzLK3@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, nm-l0cyMroinI0@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 09/27/2016 03:52 PM, Hans Verkuil wrote:
-> On 27/09/16 05:43, Randy Li wrote:
->> Hello:
->>   I have just done a JPEG HW encoder for the RK3288. I have been told
->> that I can't use the standard way to generate huffman table, the VPU
->> supports only 10 levels with a different huffman table.
->>   If I send the huffman table through the v4l2 extra control, the memory
->> copy is requested, although the data is not very large(2 x 64 bytes) but
->> still a overhead. The other way is to place them in the kernel driver,
->> and just define the quality every time it encode a picture. But storing
->> in kernel would make the driver a little bigger(2 x 11 x 64 bytes) and
->> beyond the FIFO job.
->>   So where Should I place the huffman table?
->
-> Put it in the driver. It's less than 1.5 kB, so really small.
-I see.
->
-> I'm not sure what you mean with 'beyond the FIFO job' though.
-I always been taught that the kernel driver is just FIFO between 
-userspace and hardware.
-Next time I would learn those small thing(even hard code) could be 
-stored in kernel source code.
->
-> My understanding is that there 10 quality levels, each with its own
-> huffman table?
-Right. But I still asking what the relationship is to the standard 
-quality in JPEG from 0 to 100 to the other staff.
->
-> So the driver would implement the V4L2_CID_JPEG_COMPRESSION_QUALITY control
-> and for each quality level it picks a table. Makes sense to me.
-Let looks I could omit a extra JPEG control then.
->
-> Regards,
-Thank you.
-
-P.S the encoder for VP8 and H.264 is really very hard. I really need 
-more time to do them. There is a new VA-API driver[1] which removed the 
-most possible information from the third party library(but still need 
-it) and using most decoder settings from the VA-API client.
-
-The new kernel driver is in schedule as well.
-
-[1] https://github.com/hizukiayaka/rockchip-video-driver/tree/rk_v4l2_mix
->
->     Hans
->
-
--- 
-Randy Li
-The third produce department
-===========================================================================
-This email message, including any attachments, is for the sole
-use of the intended recipient(s) and may contain confidential and
-privileged information. Any unauthorized review, use, disclosure or
-distribution is prohibited. If you are not the intended recipient, please
-contact the sender by reply e-mail and destroy all copies of the original
-message. [Fuzhou Rockchip Electronics, INC. China mainland]
-===========================================================================
+CgrlnKggMjAxNi85LzI2IDE2OjA1LCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4gQW0gTW9udGFn
+LCAyNi4gU2VwdGVtYmVyIDIwMTYsIDA5OjI1OjExIENFU1Qgc2NocmllYiBWaXJlc2ggS3VtYXI6
+Cj4+IE9uIDEyLTA5LTE2LCAxNDo1NSwgU3RlcGhlbiBCb3lkIHdyb3RlOgo+Pj4gT24gMDgvMjks
+IFZpcmVzaCBLdW1hciB3cm90ZToKPj4+PiBPbiAxOC0wOC0xNiwgMTY6NTIsIEZpbmx5ZSBYaWFv
+IHdyb3RlOgo+Pj4+PiArc3RhdGljIGludCByb2NrY2hpcF9hZGp1c3Rfb3BwX3RhYmxlKHN0cnVj
+dCBkZXZpY2UgKmNwdV9kZXYsCj4+Pj4+ICsJCQkJICAgICBzdHJ1Y3QgY3B1ZnJlcV9mcmVxdWVu
+Y3lfdGFibGUgKnRhYmxlLAo+Pj4+PiArCQkJCSAgICAgaW50IHZvbHQpCj4+Pj4+ICt7Cj4+Pj4+
+ICsJc3RydWN0IG9wcF90YWJsZSAqb3BwX3RhYmxlOwo+Pj4+PiArCXN0cnVjdCBjcHVmcmVxX2Zy
+ZXF1ZW5jeV90YWJsZSAqcG9zOwo+Pj4+PiArCXN0cnVjdCBkZXZfcG1fb3BwICpvcHA7Cj4+Pj4+
+ICsKPj4+Pj4gKwlpZiAoIXZvbHQpCj4+Pj4+ICsJCXJldHVybiAwOwo+Pj4+PiArCj4+Pj4+ICsJ
+cmN1X3JlYWRfbG9jaygpOwo+Pj4+PiArCj4+Pj4+ICsJb3BwX3RhYmxlID0gX2ZpbmRfb3BwX3Rh
+YmxlKGNwdV9kZXYpOwo+Pj4+PiArCWlmIChJU19FUlIob3BwX3RhYmxlKSkgewo+Pj4+PiArCQly
+Y3VfcmVhZF91bmxvY2soKTsKPj4+Pj4gKwkJcmV0dXJuIFBUUl9FUlIob3BwX3RhYmxlKTsKPj4+
+Pj4gKwl9Cj4+Pj4+ICsKPj4+Pj4gKwljcHVmcmVxX2Zvcl9lYWNoX3ZhbGlkX2VudHJ5KHBvcywg
+dGFibGUpIHsKPj4+Pj4gKwkJb3BwID0gZGV2X3BtX29wcF9maW5kX2ZyZXFfZXhhY3QoY3B1X2Rl
+diwgcG9zLT5mcmVxdWVuY3kgKiAxMDAwLAo+Pj4+PiArCQkJCQkJIHRydWUpOwo+Pj4+PiArCQlp
+ZiAoSVNfRVJSKG9wcCkpCj4+Pj4+ICsJCQljb250aW51ZTsKPj4+Pj4gKwo+Pj4+PiArCQlvcHAt
+PnVfdm9sdCArPSB2b2x0Owo+Pj4+PiArCQlvcHAtPnVfdm9sdF9taW4gKz0gdm9sdDsKPj4+Pj4g
+KwkJb3BwLT51X3ZvbHRfbWF4ICs9IHZvbHQ7Cj4+Pj4+ICsJfQo+Pj4+PiArCj4+Pj4+ICsJcmN1
+X3JlYWRfdW5sb2NrKCk7Cj4+Pj4+ICsKPj4+Pj4gKwlyZXR1cm4gMDsKPj4+Pj4gK30KPj4+PiBJ
+IHdvdWxkbid0IHByZWZlciBhbHRlcmluZyB0aGUgb3BwIHRhYmxlcyBmcm9tIGluZGl2aWR1YWwg
+ZHJpdmVycyBhdAo+Pj4+IGFsbC4gQXQgdGhlIGxlYXN0LCBpdCBzaG91bGQgYmUgZG9uZSB2aWEg
+c29tZSBoZWxwZXJzIGV4cG9zZWQgYnkgdGhlCj4+Pj4gY29yZS4KPj4+Pgo+Pj4+IEJ1dCBiZWZv
+cmUgdGhhdCBJIHdvdWxkIGxpa2UgdG8gaGVhciBmcm9tIFN0ZXBoZW4gYSBiaXQgYXMgSSByZWNh
+bGwgaGUKPj4+PiB3YXMgYWxzbyB3b3JraW5nIG9uIHNvbWV0aGluZyBzaW1pbGFyLgo+Pj4gSSBo
+YWQgYSBwYXRjaCB0byBtb2RpZnkgdGhlIHZvbHRhZ2UgYXQgcnVudGltZSBmb3IgdGhlICJjdXJy
+ZW50Igo+Pj4gT1BQLiBOb3cgdGhhdCB3ZSBoYXZlIHJlZ3VsYXRvciBhbmQgY2xrIGNvbnRyb2wg
+aW5zaWRlIE9QUCB0aGF0Cj4+PiBiZWNhbWUgYSBsaXR0bGUgZWFzaWVyIHRvIGRvIHdpdGhvdXQg
+aGF2aW5nIHRvIGRvIHNvbWUgbm90aWZpZXIKPj4+IGZyb20gdGhlIE9QUCBsYXllciB0byB0aGUg
+Y29uc3VtZXJzLiBJIGhhdmVuJ3QgaGFkIHRpbWUgdG8gcmV2aXZlCj4+PiB0aG9zZSBwYXRjaGVz
+IHRob3VnaC4gU2hvdWxkIHdlIGRvIHRoYXQ/Cj4+IFBlcmhhcHMgeWVzLCB3ZSBzaG91bGQgaGF2
+ZSBhIGNvbW1vbiBwbGFjZSBmb3IgZG9pbmcgYWxsIHRoYXQuCj4+Cj4+PiBEb2VzIHRoaXMgbmVl
+ZCB0byBtb2RpZnkKPj4+IGFueXRoaW5nIGJlc2lkZXMgdGhlIE9QUCB0aGUgZGV2aWNlIGlzIGN1
+cnJlbnRseSBydW5uaW5nIGF0Pwo+PiBGaW5seWUsIGNhbiB5b3UgcGxlYXNlIGFuc3dlciB0aGlz
+ID8KPiBJZiBJIHVuZGVyc3RhbmQgaXQgY29ycmVjdGx5LCBkZXBlbmRpbmcgb24gdGhlIGxlYWth
+Z2UgdmFsdWUgc3RvcmVkIGluIGFuCj4gZWZ1c2UsIGFsbCBvcHAgdm9sdGFnZXMgYXJlIHJlZHVj
+ZWQgYnkgYSBjZXJ0YWluIHZhbHVlLiBSaWdodCBub3cgdGhlIGRyaXZlcgo+IGRvZXMgaXQgaW4g
+b25lIGdvIGZvciB0aGUgZnVsbCBvcHAgdGFibGUsIGJ1dCBvZiBjb3Vyc2UgY291bGQgYWxzbyBk
+byBpdCBmb3IKPiBlYWNoIG5ldyBvcHAgaW5kaXZpZHVhbGx5IGJlZm9yZSBpdCBnZXRzIHNldC4K
+PgpZZXPvvIwgaXQgaXMgbmVjZXNzYXJ5IHRvIG1vZGlmeSBhbGwgb3BwIHZvbHRhZ2VzIGFuZCAg
+SSBhZ3JlZWQgd2l0aCBIZWlrby4KPgoKLS0gCkZpbmxleQoKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
