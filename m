@@ -1,91 +1,70 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2 4/4] PM / AVS: rockchip-cpu-avs: add driver handling
- Rockchip cpu avs
-Date: Tue, 27 Sep 2016 15:14:01 -0700
-Message-ID: <20160927221401.GA940@codeaurora.org>
-References: <1471510341-63926-1-git-send-email-finley.xiao@rock-chips.com>
- <20160912215515.GF7243@codeaurora.org>
- <20160926035511.GG17336@vireshk-i7>
- <20776501.pZ2NDOzLK3@phil>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
+ suspend
+Date: Tue, 27 Sep 2016 18:23:11 -0700
+Message-ID: <20160928012309.GA29518@localhost>
+References: <20160916054917.16930-1-briannorris@chromium.org>
+ <57DBA81F.2060404@arm.com>
+ <20160919231441.GA60928@google.com>
+ <57E0E97B.5000106@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20776501.pZ2NDOzLK3@phil>
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Finlye Xiao <finley.xiao@rock-chips.com>, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, robh+dt@kernel.org, frowand.list@gmail.com, sre@kernel.org, dbaryshkov@gmail.com, dwmw2@infradead.org, mark.rutland@arm.com, khilman@kernel.org, nm@ti.com, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, jay.xu@rock-chips.com, rocky.hao@rock-chips.com, tim.chen@rock-chips.com, tony.xie@rock-chips.com, ulysses.huang@rock-chips.com, lin.huang@rock-chips.com
+In-Reply-To: <57E0E97B.5000106@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/26, Heiko Stuebner wrote:
-> Am Montag, 26. September 2016, 09:25:11 CEST schrieb Viresh Kumar:
-> > On 12-09-16, 14:55, Stephen Boyd wrote:
-> > > On 08/29, Viresh Kumar wrote:
-> > > > On 18-08-16, 16:52, Finlye Xiao wrote:
-> > > > > +static int rockchip_adjust_opp_table(struct device *cpu_dev,
-> > > > > +				     struct cpufreq_frequency_table *table,
-> > > > > +				     int volt)
-> > > > > +{
-> > > > > +	struct opp_table *opp_table;
-> > > > > +	struct cpufreq_frequency_table *pos;
-> > > > > +	struct dev_pm_opp *opp;
-> > > > > +
-> > > > > +	if (!volt)
-> > > > > +		return 0;
-> > > > > +
-> > > > > +	rcu_read_lock();
-> > > > > +
-> > > > > +	opp_table = _find_opp_table(cpu_dev);
-> > > > > +	if (IS_ERR(opp_table)) {
-> > > > > +		rcu_read_unlock();
-> > > > > +		return PTR_ERR(opp_table);
-> > > > > +	}
-> > > > > +
-> > > > > +	cpufreq_for_each_valid_entry(pos, table) {
-> > > > > +		opp = dev_pm_opp_find_freq_exact(cpu_dev, pos->frequency * 1000,
-> > > > > +						 true);
-> > > > > +		if (IS_ERR(opp))
-> > > > > +			continue;
-> > > > > +
-> > > > > +		opp->u_volt += volt;
-> > > > > +		opp->u_volt_min += volt;
-> > > > > +		opp->u_volt_max += volt;
-> > > > > +	}
-> > > > > +
-> > > > > +	rcu_read_unlock();
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > 
-> > > > I wouldn't prefer altering the opp tables from individual drivers at
-> > > > all. At the least, it should be done via some helpers exposed by the
-> > > > core.
-> > > > 
-> > > > But before that I would like to hear from Stephen a bit as I recall he
-> > > > was also working on something similar.
-> > > 
-> > > I had a patch to modify the voltage at runtime for the "current"
-> > > OPP. Now that we have regulator and clk control inside OPP that
-> > > became a little easier to do without having to do some notifier
-> > > from the OPP layer to the consumers. I haven't had time to revive
-> > > those patches though. Should we do that?
-> > 
-> > Perhaps yes, we should have a common place for doing all that.
-> > 
-> > > Does this need to modify
-> > > anything besides the OPP the device is currently running at?
-> > 
-> > Finlye, can you please answer this ?
-> 
-> If I understand it correctly, depending on the leakage value stored in an 
-> efuse, all opp voltages are reduced by a certain value. Right now the driver 
-> does it in one go for the full opp table, but of course could also do it for 
-> each new opp individually before it gets set.
+Hi Marc,
 
-Ok. Well either way that sounds fine. We could expose an API to
-change each voltage and an API to change the current voltage and
-update the table.
+Thanks again for the help. I was checking with Rockchip on the details.
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
+> The counter is allowed to be clocked at a different rate, as long as it
+> is incremented by the frequency ratio on each tick of the new frequency.
+> In your case, the counter should increment by 750 on each tick of the
+> 32kHz clock. If the rk3399 implementation doesn't do this, then this is
+> a bug, and we need a quirk to work around it.
+
+I had hope that we could find a switch that would do the above for
+rk3399, since other parts of the system (e.g., the PMU itself) support
+switching from the 24MHz to 32KHz clock, but Rockchip confirmed that it
+is indeed a HW quirk that the arch timer's counter does not support
+clocking out ticks based on the 32KHz clock. So I'm planning to send a
+v2 that adds a "arm,no-tick-in-suspend" property.
+
+<Begin side note>
+rk3288 (ARMv7 system widely used for our Chromebooks) has the same
+issue, except the kernel we're using for production (based on v3.14)
+doesn't have the following commit, which stopped utilizing the RTC:
+
+commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
+Author: Xunlei Pang <pang.xunlei@linaro.org>
+Date:   Wed Apr 1 20:34:38 2015 -0700
+
+    time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
+
+And any mainline testing on rk3288 doesn't see the problem, because
+mainline doesn't support its lowest-power sleep modes well enough (see
+ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
+<End side note>
+
+> Note that such a quirk will have some other impacts, such as the
+> gettimeofday implementation in the VDSO (which relies on the counter
+> making forward progress). There could be other issues in the timer
+> subsystem as well... This doesn't look like a pleasant thing to fix.
+
+How sure are you of these problems? I'm a bit new to the kernel
+timekeeping subsystem, but doesn't this kind of code already have to
+handle time adjustments like this when reprogramming the system time
+(settimeofday())? And might we be covered for the suspend/resume case
+when we allow the kernel to fall back to the RTC instead, which adjusts
+the sleep delta with timekeeping_inject_sleeptime64()? And (weaker
+evidence here) we haven't seen problems on rk3288 so far, at least
+without the above referenced rtc commit 0fa88cb4b82. But admittedly
+there are some differences between arch/{arm,arm64}/.
+
+Regards,
+Brian
