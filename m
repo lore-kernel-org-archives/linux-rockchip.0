@@ -1,70 +1,85 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Tue, 27 Sep 2016 18:23:11 -0700
-Message-ID: <20160928012309.GA29518@localhost>
-References: <20160916054917.16930-1-briannorris@chromium.org>
- <57DBA81F.2060404@arm.com>
- <20160919231441.GA60928@google.com>
- <57E0E97B.5000106@arm.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [RESEND PATCH v2 4/4] mmc: sdhci-of-arasan: add
+ sdhci_arasan_voltage_switch for arasan,5.1
+Date: Wed, 28 Sep 2016 11:20:08 +0300
+Message-ID: <d3eea497-be67-c890-4bf9-5ef573193ba8@intel.com>
+References: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com>
+ <1474589577-11193-4-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <57E0E97B.5000106@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1474589577-11193-4-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc,
+On 23/09/16 03:12, Shawn Lin wrote:
+> Per the vendor's requirement, we shouldn't do any setting for
+> 1.8V Signaling Enable, otherwise the interaction/behaviour between
+> phy and controller will be undefined. Mostly it works fine if we do
+> that, but we still see failures. Anyway, let's fix it to meet the
+> vendor's requirement. The error log looks like:
+> 
+>  [   93.405085] mmc1: unexpected status 0x800900 after switch
+>  [   93.408474] mmc1: switch to bus width 1 failed
+>  [   93.408482] mmc1: mmc_select_hs200 failed, error -110
+>  [   93.408492] mmc1: error -110 during resume (card was removed?)
+>  [   93.408705] PM: resume of devices complete after 213.453 msecs
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Thanks again for the help. I was checking with Rockchip on the details.
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
-On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
-> The counter is allowed to be clocked at a different rate, as long as it
-> is incremented by the frequency ratio on each tick of the new frequency.
-> In your case, the counter should increment by 750 on each tick of the
-> 32kHz clock. If the rk3399 implementation doesn't do this, then this is
-> a bug, and we need a quirk to work around it.
+> ---
+> 
+> Changes in v2: None
+> 
+>  drivers/mmc/host/sdhci-of-arasan.c | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+> index da8e40a..1573a8d 100644
+> --- a/drivers/mmc/host/sdhci-of-arasan.c
+> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+> @@ -265,6 +265,28 @@ void sdhci_arasan_reset(struct sdhci_host *host, u8 mask)
+>  	}
+>  }
+>  
+> +static int sdhci_arasan_voltage_switch(struct mmc_host *mmc,
+> +				       struct mmc_ios *ios)
+> +{
+> +	switch (ios->signal_voltage) {
+> +	case MMC_SIGNAL_VOLTAGE_180:
+> +		/*
+> +		 * Plese don't switch to 1V8 as arasan,5.1 doesn't
+> +		 * actually refer to this setting to indicate the
+> +		 * signal voltage and the state machine will be broken
+> +		 * actually if we force to enable 1V8. That's something
+> +		 * like broken quirk but we could work around here.
+> +		 */
+> +		return 0;
+> +	case MMC_SIGNAL_VOLTAGE_330:
+> +	case MMC_SIGNAL_VOLTAGE_120:
+> +		/* We don't support 3V3 and 1V2 */
+> +		break;
+> +	}
+> +
+> +	return -EINVAL;
+> +}
+> +
+>  static struct sdhci_ops sdhci_arasan_ops = {
+>  	.set_clock = sdhci_arasan_set_clock,
+>  	.get_max_clock = sdhci_pltfm_clk_get_max_clock,
+> @@ -661,6 +683,8 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+>  
+>  		host->mmc_host_ops.hs400_enhanced_strobe =
+>  					sdhci_arasan_hs400_enhanced_strobe;
+> +		host->mmc_host_ops.start_signal_voltage_switch =
+> +					sdhci_arasan_voltage_switch;
+>  	}
+>  
+>  	ret = sdhci_add_host(host);
+> 
 
-I had hope that we could find a switch that would do the above for
-rk3399, since other parts of the system (e.g., the PMU itself) support
-switching from the 24MHz to 32KHz clock, but Rockchip confirmed that it
-is indeed a HW quirk that the arch timer's counter does not support
-clocking out ticks based on the 32KHz clock. So I'm planning to send a
-v2 that adds a "arm,no-tick-in-suspend" property.
-
-<Begin side note>
-rk3288 (ARMv7 system widely used for our Chromebooks) has the same
-issue, except the kernel we're using for production (based on v3.14)
-doesn't have the following commit, which stopped utilizing the RTC:
-
-commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
-Author: Xunlei Pang <pang.xunlei@linaro.org>
-Date:   Wed Apr 1 20:34:38 2015 -0700
-
-    time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
-
-And any mainline testing on rk3288 doesn't see the problem, because
-mainline doesn't support its lowest-power sleep modes well enough (see
-ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
-<End side note>
-
-> Note that such a quirk will have some other impacts, such as the
-> gettimeofday implementation in the VDSO (which relies on the counter
-> making forward progress). There could be other issues in the timer
-> subsystem as well... This doesn't look like a pleasant thing to fix.
-
-How sure are you of these problems? I'm a bit new to the kernel
-timekeeping subsystem, but doesn't this kind of code already have to
-handle time adjustments like this when reprogramming the system time
-(settimeofday())? And might we be covered for the suspend/resume case
-when we allow the kernel to fall back to the RTC instead, which adjusts
-the sleep delta with timekeeping_inject_sleeptime64()? And (weaker
-evidence here) we haven't seen problems on rk3288 so far, at least
-without the above referenced rtc commit 0fa88cb4b82. But admittedly
-there are some differences between arch/{arm,arm64}/.
-
-Regards,
-Brian
