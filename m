@@ -1,169 +1,93 @@
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 4/4] drm: bridge/analogix: switch Main-link and eDP PHY
- when enable/disable psr
-Date: Thu, 29 Sep 2016 22:46:40 +0800
-Message-ID: <1475160400-30782-5-git-send-email-wzz@rock-chips.com>
-References: <1475160400-30782-1-git-send-email-wzz@rock-chips.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
+ suspend
+Date: Thu, 29 Sep 2016 17:08:47 +0100
+Message-ID: <20160929170847.1227a312@arm.com>
+References: <20160916054917.16930-1-briannorris@chromium.org>
+        <57DBA81F.2060404@arm.com>
+        <20160919231441.GA60928@google.com>
+        <57E0E97B.5000106@arm.com>
+        <20160928012309.GA29518@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1475160400-30782-1-git-send-email-wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mika Kahola <mika.kahola-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160928012309.GA29518@localhost>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-turn off Main-link and power down eDP PHY when enable psr,
-turn on Main-link and power up eDP PHY when disable psr.
+On Tue, 27 Sep 2016 18:23:11 -0700
+Brian Norris <briannorris@chromium.org> wrote:
 
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi Brian,
 
----
+> Hi Marc,
+> 
+> Thanks again for the help. I was checking with Rockchip on the details.
+> 
+> On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
+> > The counter is allowed to be clocked at a different rate, as long as it
+> > is incremented by the frequency ratio on each tick of the new frequency.
+> > In your case, the counter should increment by 750 on each tick of the
+> > 32kHz clock. If the rk3399 implementation doesn't do this, then this is
+> > a bug, and we need a quirk to work around it.  
+> 
+> I had hope that we could find a switch that would do the above for
+> rk3399, since other parts of the system (e.g., the PMU itself) support
+> switching from the 24MHz to 32KHz clock, but Rockchip confirmed that it
+> is indeed a HW quirk that the arch timer's counter does not support
+> clocking out ticks based on the 32KHz clock. So I'm planning to send a
+> v2 that adds a "arm,no-tick-in-suspend" property.
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 105 ++++++++++-----------
- 1 file changed, 52 insertions(+), 53 deletions(-)
+Fair enough.
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 7177f5f..1bc98ab 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -98,56 +98,6 @@ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
- 	return 0;
- }
- 
--int analogix_dp_enable_psr(struct device *dev)
--{
--	struct analogix_dp_device *dp = dev_get_drvdata(dev);
--	struct edp_vsc_psr psr_vsc;
--
--	if (!dp->psr_support)
--		return -EINVAL;
--
--	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
--		return -EBUSY;
--
--	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
--	memset(&psr_vsc, 0, sizeof(psr_vsc));
--	psr_vsc.sdp_header.HB0 = 0;
--	psr_vsc.sdp_header.HB1 = 0x7;
--	psr_vsc.sdp_header.HB2 = 0x2;
--	psr_vsc.sdp_header.HB3 = 0x8;
--
--	psr_vsc.DB0 = 0;
--	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
--
--	return analogix_dp_send_psr_spd(dp, &psr_vsc);
--}
--EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
--
--int analogix_dp_disable_psr(struct device *dev)
--{
--	struct analogix_dp_device *dp = dev_get_drvdata(dev);
--	struct edp_vsc_psr psr_vsc;
--
--	if (!dp->psr_support)
--		return -EINVAL;
--
--	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
--		return -EBUSY;
--
--	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
--	memset(&psr_vsc, 0, sizeof(psr_vsc));
--	psr_vsc.sdp_header.HB0 = 0;
--	psr_vsc.sdp_header.HB1 = 0x7;
--	psr_vsc.sdp_header.HB2 = 0x2;
--	psr_vsc.sdp_header.HB3 = 0x8;
--
--	psr_vsc.DB0 = 0;
--	psr_vsc.DB1 = 0;
--
--	return analogix_dp_send_psr_spd(dp, &psr_vsc);
--}
--EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
--
- static bool analogix_dp_detect_sink_psr(struct analogix_dp_device *dp)
- {
- 	unsigned char psr_version;
-@@ -168,12 +118,11 @@ static void analogix_dp_enable_sink_psr(struct analogix_dp_device *dp)
- 	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
- 
- 	/* Main-Link transmitter remains active during PSR active states */
--	psr_en = DP_PSR_MAIN_LINK_ACTIVE | DP_PSR_CRC_VERIFICATION;
-+	psr_en = DP_PSR_CRC_VERIFICATION;
- 	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
- 
- 	/* Enable psr function */
--	psr_en = DP_PSR_ENABLE | DP_PSR_MAIN_LINK_ACTIVE |
--		 DP_PSR_CRC_VERIFICATION;
-+	psr_en = DP_PSR_ENABLE | DP_PSR_CRC_VERIFICATION;
- 	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
- 
- 	analogix_dp_enable_psr_crc(dp);
-@@ -876,6 +825,56 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
- 		analogix_dp_enable_sink_psr(dp);
- }
- 
-+int analogix_dp_enable_psr(struct device *dev)
-+{
-+	struct analogix_dp_device *dp = dev_get_drvdata(dev);
-+	struct edp_vsc_psr psr_vsc;
-+
-+	if (!dp->psr_support)
-+		return -EINVAL;
-+
-+	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
-+		return -EBUSY;
-+
-+	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
-+	memset(&psr_vsc, 0, sizeof(psr_vsc));
-+	psr_vsc.sdp_header.HB0 = 0;
-+	psr_vsc.sdp_header.HB1 = 0x7;
-+	psr_vsc.sdp_header.HB2 = 0x2;
-+	psr_vsc.sdp_header.HB3 = 0x8;
-+
-+	psr_vsc.DB0 = 0;
-+	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
-+
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc);
-+}
-+EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
-+
-+int analogix_dp_disable_psr(struct device *dev)
-+{
-+	struct analogix_dp_device *dp = dev_get_drvdata(dev);
-+	struct edp_vsc_psr psr_vsc;
-+
-+	if (!dp->psr_support)
-+		return -EINVAL;
-+
-+	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
-+		return -EBUSY;
-+
-+	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
-+	memset(&psr_vsc, 0, sizeof(psr_vsc));
-+	psr_vsc.sdp_header.HB0 = 0;
-+	psr_vsc.sdp_header.HB1 = 0x7;
-+	psr_vsc.sdp_header.HB2 = 0x2;
-+	psr_vsc.sdp_header.HB3 = 0x8;
-+
-+	psr_vsc.DB0 = 0;
-+	psr_vsc.DB1 = 0;
-+
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc);
-+}
-+EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
-+
- /*
-  * This function is a bit of a catch-all for panel preparation, hopefully
-  * simplifying the logic of functions that need to prepare/unprepare the panel
+> 
+> <Begin side note>
+> rk3288 (ARMv7 system widely used for our Chromebooks) has the same
+> issue, except the kernel we're using for production (based on v3.14)
+> doesn't have the following commit, which stopped utilizing the RTC:
+> 
+> commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
+> Author: Xunlei Pang <pang.xunlei@linaro.org>
+> Date:   Wed Apr 1 20:34:38 2015 -0700
+> 
+>     time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
+> 
+> And any mainline testing on rk3288 doesn't see the problem, because
+> mainline doesn't support its lowest-power sleep modes well enough (see
+> ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
+
+Arghh... So even my favourite Chromebook (from which I'm typing this
+email) is affected? Not very nice...
+
+> <End side note>
+> 
+> > Note that such a quirk will have some other impacts, such as the
+> > gettimeofday implementation in the VDSO (which relies on the counter
+> > making forward progress). There could be other issues in the timer
+> > subsystem as well... This doesn't look like a pleasant thing to fix.  
+> 
+> How sure are you of these problems? I'm a bit new to the kernel
+> timekeeping subsystem, but doesn't this kind of code already have to
+> handle time adjustments like this when reprogramming the system time
+> (settimeofday())? And might we be covered for the suspend/resume case
+> when we allow the kernel to fall back to the RTC instead, which adjusts
+> the sleep delta with timekeeping_inject_sleeptime64()? And (weaker
+> evidence here) we haven't seen problems on rk3288 so far, at least
+> without the above referenced rtc commit 0fa88cb4b82. But admittedly
+> there are some differences between arch/{arm,arm64}/.
+
+The 32bit port only gained a VDSO recently (3.14 doesn't have it), and
+mainline doesn't switch the counter off, as you noted above.
+
+As for the 64bit kernel, it would be interesting to verify that on
+resume, the VDSO does return the right (corrected) value, and not
+something stale.
+
+Thanks,
+
+	M.
 -- 
-1.9.1
+Jazz is not dead. It just smells funny.
