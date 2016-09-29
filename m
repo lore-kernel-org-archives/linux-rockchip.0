@@ -1,93 +1,37 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Thu, 29 Sep 2016 17:08:47 +0100
-Message-ID: <20160929170847.1227a312@arm.com>
-References: <20160916054917.16930-1-briannorris@chromium.org>
-        <57DBA81F.2060404@arm.com>
-        <20160919231441.GA60928@google.com>
-        <57E0E97B.5000106@arm.com>
-        <20160928012309.GA29518@localhost>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [RESEND PATCH v2 2/4] mmc: core: changes frequency to hs_max_dtr
+ when selecting hs400es
+Date: Thu, 29 Sep 2016 12:47:37 -0700
+Message-ID: <CAD=FV=XptsmgTm-CA1tOd6Dhk7eYbU1qyewkKbBCYP02uGoovg@mail.gmail.com>
+References: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com> <1474589577-11193-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160928012309.GA29518@localhost>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1474589577-11193-2-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 27 Sep 2016 18:23:11 -0700
-Brian Norris <briannorris@chromium.org> wrote:
+Hi,
 
-Hi Brian,
+On Thu, Sep 22, 2016 at 5:12 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> Per JESD84-B51 P69, Host need to change frequency to <=52MHz
 
-> Hi Marc,
-> 
-> Thanks again for the help. I was checking with Rockchip on the details.
-> 
-> On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
-> > The counter is allowed to be clocked at a different rate, as long as it
-> > is incremented by the frequency ratio on each tick of the new frequency.
-> > In your case, the counter should increment by 750 on each tick of the
-> > 32kHz clock. If the rk3399 implementation doesn't do this, then this is
-> > a bug, and we need a quirk to work around it.  
-> 
-> I had hope that we could find a switch that would do the above for
-> rk3399, since other parts of the system (e.g., the PMU itself) support
-> switching from the 24MHz to 32KHz clock, but Rockchip confirmed that it
-> is indeed a HW quirk that the arch timer's counter does not support
-> clocking out ticks based on the 32KHz clock. So I'm planning to send a
-> v2 that adds a "arm,no-tick-in-suspend" property.
+Technically Page 49.  In the PDF you go to page 69, but the heading on
+the top of the page says 49.
 
-Fair enough.
+> after setting HS_TIMING to 0x1, and host may changes frequency
+> to <= 200MHz after setting HS_TIMING to 0x3. That means the card
+> expects the clock rate to increase from the current used f_init
+> (which is less than 400KHz, but still being less than 52MHz) to
+> 52MHz, otherwise we find some eMMC devices significantly report
+> failure when sending status.
 
-> 
-> <Begin side note>
-> rk3288 (ARMv7 system widely used for our Chromebooks) has the same
-> issue, except the kernel we're using for production (based on v3.14)
-> doesn't have the following commit, which stopped utilizing the RTC:
-> 
-> commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
-> Author: Xunlei Pang <pang.xunlei@linaro.org>
-> Date:   Wed Apr 1 20:34:38 2015 -0700
-> 
->     time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
-> 
-> And any mainline testing on rk3288 doesn't see the problem, because
-> mainline doesn't support its lowest-power sleep modes well enough (see
-> ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
+Technically it seems like things ought to be OK at the slow speed
+since technically we're allowed to talk "high speed" at 400 kHZ (or at
+any rate <= 52MHz).  ...but I guess I could also see some cards not
+liking that.  Though I'm no expert, feel free to add my reviewed-by if
+it is useful:
 
-Arghh... So even my favourite Chromebook (from which I'm typing this
-email) is affected? Not very nice...
-
-> <End side note>
-> 
-> > Note that such a quirk will have some other impacts, such as the
-> > gettimeofday implementation in the VDSO (which relies on the counter
-> > making forward progress). There could be other issues in the timer
-> > subsystem as well... This doesn't look like a pleasant thing to fix.  
-> 
-> How sure are you of these problems? I'm a bit new to the kernel
-> timekeeping subsystem, but doesn't this kind of code already have to
-> handle time adjustments like this when reprogramming the system time
-> (settimeofday())? And might we be covered for the suspend/resume case
-> when we allow the kernel to fall back to the RTC instead, which adjusts
-> the sleep delta with timekeeping_inject_sleeptime64()? And (weaker
-> evidence here) we haven't seen problems on rk3288 so far, at least
-> without the above referenced rtc commit 0fa88cb4b82. But admittedly
-> there are some differences between arch/{arm,arm64}/.
-
-The 32bit port only gained a VDSO recently (3.14 doesn't have it), and
-mainline doesn't switch the counter off, as you noted above.
-
-As for the 64bit kernel, it would be interesting to verify that on
-resume, the VDSO does return the right (corrected) value, and not
-something stale.
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny.
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
