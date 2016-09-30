@@ -1,39 +1,58 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [RESEND PATCH v2 1/4] mmc: core: switch to 1V8 or 1V2 for hs400es mode
-Date: Thu, 29 Sep 2016 12:49:50 -0700
-Message-ID: <CAD=FV=U0souQowEKK1JBMTGqXqx9g-_xt3mJB_hJXnJgog8+PQ@mail.gmail.com>
-References: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3 1/3] mmc: core: switch to 1V8 or 1V2 for hs400es mode
+Date: Fri, 30 Sep 2016 14:18:58 +0800
+Message-ID: <1475216340-15344-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1474589577-11193-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "stable@vger.kernel.org" <stable@vger.kernel.org>, 4.4#@263.net
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+When introducing hs400es, I didn't notice that we haven't
+switched voltage to 1V2 or 1V8 for it. That happens to work
+as the first controller claiming to support hs400es, arasan(5.1),
+which is designed to only support 1V8. So the voltage is fixed to 1V8.
+But it actually is wrong, and will not fit for other host controllers.
+Let's fix it.
 
-On Thu, Sep 22, 2016 at 5:12 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
-> When introducing hs400es, I didn't notice that we haven't
-> switched voltage to 1V2 or 1V8 for it. That happens to work
-> as the first controller claiming to support hs400es, arasan(5.1),
-> which is designed to only support 1V8. So the voltage is fixed to 1V8.
-> But it actually is wrong, and will not fit for other host controllers.
-> Let's fix it.
->
-> Fixes: commit 81ac2af65793ecf ("mmc: core: implement enhanced strobe support")
-> Cc: <stable@vger.kernel.org> 4.4#
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> ---
->
-> Changes in v2:
-> - fix copy-paste error, mea culpa
->
->  drivers/mmc/core/mmc.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-
-This matches what's done for hs200 and also seems sane.
+Fixes: commit 81ac2af65793ecf ("mmc: core: implement enhanced strobe support")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
 Reviewed-by: Douglas Anderson <dianders@chromium.org>
+---
+
+Changes in v3:
+- add Doug's tag
+
+Changes in v2:
+- fix copy-paste error, mea culpa
+
+ drivers/mmc/core/mmc.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index 3486bc7..f4ed5ac 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1263,6 +1263,16 @@ static int mmc_select_hs400es(struct mmc_card *card)
+ 		goto out_err;
+ 	}
+ 
++	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_2V)
++		err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_120);
++
++	if (err && card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_8V)
++		err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_180);
++
++	/* If fails try again during next card power cycle */
++	if (err)
++		goto out_err;
++
+ 	err = mmc_select_bus_width(card);
+ 	if (err < 0)
+ 		goto out_err;
+-- 
+2.3.7
+
+
