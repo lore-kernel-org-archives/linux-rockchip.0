@@ -1,56 +1,53 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [RFC PATCH v2 3/4] mmc: core: expose the capability of gpio card detect
-Date: Fri, 30 Sep 2016 16:48:36 +0800
-Message-ID: <1475225317-2815-4-git-send-email-shawn.lin@rock-chips.com>
-References: <1475225317-2815-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1475225317-2815-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/4] Misc changes to Rockchip PSR drivers
+Date: Fri, 30 Sep 2016 20:40:52 +0800
+Message-ID: <1475239256-16083-1-git-send-email-wzz@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mika Kahola <mika.kahola-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add new helper API mmc_can_gpio_cd for slot-gpio to make
-host drivers know whether it supports gpio card detect.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+1. prevent runing enable_psr when disabled bridge
+2. get sync PM when init eDP
+3. detect Sink PSR state after configuring the PSR
+4. switch Main-Link and eDP phy when enable/disable psr
 
- drivers/mmc/core/slot-gpio.c  | 8 ++++++++
- include/linux/mmc/slot-gpio.h | 1 +
- 2 files changed, 9 insertions(+)
+BR,
+- Zain
 
-diff --git a/drivers/mmc/core/slot-gpio.c b/drivers/mmc/core/slot-gpio.c
-index 27117ba..babe591 100644
---- a/drivers/mmc/core/slot-gpio.c
-+++ b/drivers/mmc/core/slot-gpio.c
-@@ -258,6 +258,14 @@ int mmc_gpiod_request_cd(struct mmc_host *host, const char *con_id,
- }
- EXPORT_SYMBOL(mmc_gpiod_request_cd);
- 
-+bool mmc_can_gpio_cd(struct mmc_host *host)
-+{
-+	struct mmc_gpio *ctx = host->slot.handler_priv;
-+
-+	return ctx->cd_gpio ? true : false;
-+}
-+EXPORT_SYMBOL(mmc_can_gpio_cd);
-+
- /**
-  * mmc_gpiod_request_ro - request a gpio descriptor for write protection
-  * @host: mmc host
-diff --git a/include/linux/mmc/slot-gpio.h b/include/linux/mmc/slot-gpio.h
-index 3945a8c..a7972cd 100644
---- a/include/linux/mmc/slot-gpio.h
-+++ b/include/linux/mmc/slot-gpio.h
-@@ -29,5 +29,6 @@ int mmc_gpiod_request_ro(struct mmc_host *host, const char *con_id,
- void mmc_gpio_set_cd_isr(struct mmc_host *host,
- 			 irqreturn_t (*isr)(int irq, void *dev_id));
- void mmc_gpiod_request_cd_irq(struct mmc_host *host);
-+bool mmc_can_gpio_cd(struct mmc_host *host);
- 
- #endif
+Changes in v2:
+- add spin_lock to protect dpms_mode
+- misc changes
+
+Yakir Yang (1):
+  drm/bridge: analogix_dp: detect Sink PSR state after configuring the
+    PSR
+
+zain wang (3):
+  drm/bridge: analogix_dp: prevent runing enable_psr when disabled
+    bridge.
+  drm/bridge: analogix_dp: get sync PM when init eDP
+  drm: bridge/analogix: switch Main-link and eDP PHY when enable/disable
+    psr
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 137 ++++++++++++++-------
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   7 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  |  25 +++-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |   8 +-
+ 4 files changed, 125 insertions(+), 52 deletions(-)
+
 -- 
-2.3.7
-
-
+1.9.1
