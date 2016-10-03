@@ -1,91 +1,61 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
- rk3066
-Date: Mon, 03 Oct 2016 12:54:56 +0200
-Message-ID: <2391111.dvDuarNnp9@phil>
-References: <20161001140939.GA31220@vaio-ubuntu> <6962779.A926KxJite@phil>
- <20161003102054.GB7632@leverpostej>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH 2/2] drm/rockchip: analogix_dp: Refuse to enable PSR if
+ panel doesn't support it
+Date: Mon, 3 Oct 2016 16:43:41 +0530
+Message-ID: <de7a4a12-6e52-92c8-7c4c-fc5ec4533eeb@codeaurora.org>
+References: <1474639600-30090-1-git-send-email-tomeu.vizoso@collabora.com>
+ <1474639600-30090-2-git-send-email-tomeu.vizoso@collabora.com>
+ <CAOw6vbL1fDpPbFeePEFqYZ+i0sbbsB+vu7fCC8U88HAj-1D2Ag@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161003102054.GB7632@leverpostej>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAOw6vbL1fDpPbFeePEFqYZ+i0sbbsB+vu7fCC8U88HAj-1D2Ag@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 3. Oktober 2016, 11:20:54 CEST schrieb Mark Rutland:
-> On Sat, Oct 01, 2016 at 09:18:15PM +0200, Heiko Stuebner wrote:
-> > Am Samstag, 1. Oktober 2016, 19:17:11 CEST schrieb Mark Rutland:
-> > > On Sat, Oct 01, 2016 at 04:09:39PM +0200,
-> > > =?UTF-8?q?Pawe=C5=82=20Jarosz?=
-> > 
-> > wrote:
-> > > > For some reason accessing memory region above 0xfe000000 freezes
-> > > > system on rk3066. There is similiar bug on later rockchip soc (rk3288)
-> > > > solved same way.
-> 
-> [...]
-> 
-> > > > +	reserved-memory {
-> > > > +		#address-cells = <1>;
-> > > > +		#size-cells = <1>;
-> > > > +		ranges;
-> > > > +		/*
-> > > > +		 * The rk3066 cannot use the memory area above 0x9F000000
-> > > > +		 * for some unknown reason.
-> > > > +		 */
-> > > > +		unusable@9F000000 {
-> > > > +			reg = <0x9F000000 0x1000000>;
-> > > > +		};
-> > > 
-> > > I don't think this is a sane workaround, but it is at best difficult to
-> > > tell, given there's no reason given for why this memory is unusable.
-> > > 
-> > > For instance, if bus accesses to this address hang, then this patch only
-> > > makes the hand less likely, since the kernel will still map the region
-> > > (and
-> > > therefore the CPU can perform speculative accesses).
-> > > 
-> > > Are issues with this memory consistently seen in practice?
-> > > 
-> > > Can you enable CONFIG_MEMTEST and pass 'memtest' to the kernel, to
-> > > determine if the memory is returning erroneous values?
-> > 
-> > just for the sake of completeness, on the rk3288 the issue was the dma not
-> > being able to access the specific memory region (interestingly also the
-> > last 16MB but of the 4GB area supported on the rk3288). So memory itself
-> > was ok, just dma access to it failed.
-> 
-> How odd.
-> 
-> > We didn't find any other sane solution to limit the dma access in a
-> > general way at the time, so opted for just blocking the memory region (as
-> > it was similarly only
-> 
-> I was under the impression that dma-ranges could describe this kind of
-> DMA addressing limitation. Was there some problem with that? Perhaps the
-> driver is not acquiring/configuring its mask correctly?
-
-I remember looking at (and trying) different options back then.
-
-dma-mask wanted power-of-2 values (so it's either 4GB or 2GB (or lower)),  
-zone-dma was a 32bit (and non-dt) thing and dma-ranges seem to simply also 
-calculate a dma-mask from the value, so you're down to 2GB again.
-
-So just blocking of those 16MB at the end for 4GB devices somehow sounded 
-nicer than limiting dma access to only half the memory.
-
-I may be overlooking something but that was what I came up with last year.
-
-
-Heiko
+CgpPbiAwOS8yNy8yMDE2IDA2OjU4IFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4gT24gRnJpLCBTZXAg
+MjMsIDIwMTYgYXQgMTA6MDYgQU0sIFRvbWV1IFZpem9zbwo+IDx0b21ldS52aXpvc29AY29sbGFi
+b3JhLmNvbT4gd3JvdGU6Cj4+IFRoZXJlJ3Mgbm8gcG9pbnQgaW4gZW5hYmxpbmcgUFNSIHdoZW4g
+dGhlIHBhbmVsIGRvZXNuJ3Qgc3VwcG9ydCBpdC4KPj4KPj4gVGhpcyBhbHNvIGF2b2lkcyBhIHBy
+b2JsZW0gd2hlbiBQU1IgZ2V0cyBlbmFibGVkIHdoZW4gYSBDUlRDIGlzIGJlaW5nCj4+IGRpc2Fi
+bGVkLCBiZWNhdXNlIHNvbWV0aW1lcyBpbiB0aGF0IHNpdHVhdGlvbiB0aGUgRFNQX0hPTERfVkFM
+SURfSU5UUgo+PiBpbnRlcnJ1cHQgb24gd2hpY2ggd2Ugd2FpdCB3aWxsIG5ldmVyIGFycml2ZS4g
+VGhpcyB3YXMgb2JzZXJ2ZWQgb24KPj4gUkszMjg4IHdpdGggYSBwYW5lbCB3aXRob3V0IFBTUiAo
+dmV5cm9uLWphcSBDaHJvbWVib29rKS4KPj4KPj4gSXQncyB2ZXJ5IGVhc3kgdG8gcmVwcm9kdWNl
+IGJ5IHJ1bm5pbmcgdGhlIGttc19ybWZiIHRlc3QgaW4gSUdUIGEgZmV3Cj4+IHRpbWVzLgo+Pgo+
+PiBTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29t
+Pgo+Cj4gVGhhbmtzIGZvciBkaWdnaW5nIGludG8gdGhpcy4KPgo+IFJldmlld2VkLWJ5OiBTZWFu
+IFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPgoKcXVldWVkIHRvIGRybS1taXNjLgoKQXJj
+aGl0CgoKPgo+Cj4+IENjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPj4gQ2M6
+IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPj4gQ2M6IEFyY2hpdCBUYW5lamEgPGFy
+Y2hpdHRAY29kZWF1cm9yYS5vcmc+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAzICsrKwo+PiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5z
+ZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Fu
+YWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhf
+ZHAtcm9ja2NoaXAuYwo+PiBpbmRleCBlODNiZTE1N2NjMmEuLjg1NDhlODI3MTYzOSAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMK
+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMK
+Pj4gQEAgLTg1LDYgKzg1LDkgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfcHNyX3NldChzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsIGJvb2wgZW5hYmxlZCkKPj4gICAgICAgICBzdHJ1Y3Qg
+cm9ja2NoaXBfZHBfZGV2aWNlICpkcCA9IHRvX2RwKGVuY29kZXIpOwo+PiAgICAgICAgIHVuc2ln
+bmVkIGxvbmcgZmxhZ3M7Cj4+Cj4+ICsgICAgICAgaWYgKCFhbmFsb2dpeF9kcF9wc3Jfc3VwcG9y
+dGVkKGRwLT5kZXYpKQo+PiArICAgICAgICAgICAgICAgcmV0dXJuOwo+PiArCj4+ICAgICAgICAg
+ZGV2X2RiZyhkcC0+ZGV2LCAiJXMgUFNSLi4uXG4iLCBlbmFibGVkID8gIkVudHJ5IiA6ICJFeGl0
+Iik7Cj4+Cj4+ICAgICAgICAgc3Bpbl9sb2NrX2lycXNhdmUoJmRwLT5wc3JfbG9jaywgZmxhZ3Mp
+Owo+PiAtLQo+PiAyLjcuNAo+PgoKLS0gClF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMu
+IGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29s
+bGFib3JhdGl2ZSBQcm9qZWN0Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
