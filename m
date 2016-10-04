@@ -1,86 +1,74 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 1/2] clocksource: arm_arch_timer: Don't assume clock runs in suspend
-Date: Tue,  4 Oct 2016 11:12:09 -0700
-Message-ID: <1475604730-140264-1-git-send-email-briannorris@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Brian Norris <briannorris@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
+ rk3066
+Date: Tue, 04 Oct 2016 20:56:27 +0200
+Message-ID: <2236986.cydz8Jad7F@diego>
+References: <20161001140939.GA31220@vaio-ubuntu> <2391111.dvDuarNnp9@phil>
+ <81d1fb8b-ee0e-35a7-77db-5e15c3f46449@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <81d1fb8b-ee0e-35a7-77db-5e15c3f46449-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The ARM ARM specifies that the system counter "must be implemented in an
-always-on power domain," and so we try to use the counter as a source of
-timekeeping across suspend/resume. Unfortunately, some SoCs (e.g.,
-Rockchip's RK3399) do not keep the counter ticking properly when
-switched from their high-power clock to the lower-power clock used in
-system suspend. Support this quirk by adding a new device tree property.
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-v2:
- * add new device tree property, instead of re-using the "always-on"
-   property (which has different meaning)
-
- Documentation/devicetree/bindings/arm/arch_timer.txt | 5 +++++
- drivers/clocksource/arm_arch_timer.c                 | 9 ++++++++-
- 2 files changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/arm/arch_timer.txt b/Documentation/devicetree/bindings/arm/arch_timer.txt
-index ef5fbe9a77c7..ad440a2b8051 100644
---- a/Documentation/devicetree/bindings/arm/arch_timer.txt
-+++ b/Documentation/devicetree/bindings/arm/arch_timer.txt
-@@ -38,6 +38,11 @@ to deliver its interrupts via SPIs.
-   architecturally-defined reset values. Only supported for 32-bit
-   systems which follow the ARMv7 architected reset values.
- 
-+- arm,no-tick-in-suspend : The main counter does not tick when the system is in
-+  low-power system suspend on some SoCs. This behavior does not match the
-+  Architecture Reference Manual's specification that the system counter "must
-+  be implemented in an always-on power domain."
-+
- 
- Example:
- 
-diff --git a/drivers/clocksource/arm_arch_timer.c b/drivers/clocksource/arm_arch_timer.c
-index 73c487da6d2a..a2503db7e533 100644
---- a/drivers/clocksource/arm_arch_timer.c
-+++ b/drivers/clocksource/arm_arch_timer.c
-@@ -81,6 +81,7 @@ static struct clock_event_device __percpu *arch_timer_evt;
- static enum ppi_nr arch_timer_uses_ppi = VIRT_PPI;
- static bool arch_timer_c3stop;
- static bool arch_timer_mem_use_virtual;
-+static bool arch_counter_suspend_stop;
- 
- static bool evtstrm_enable = IS_ENABLED(CONFIG_ARM_ARCH_TIMER_EVTSTREAM);
- 
-@@ -576,7 +577,7 @@ static struct clocksource clocksource_counter = {
- 	.rating	= 400,
- 	.read	= arch_counter_read,
- 	.mask	= CLOCKSOURCE_MASK(56),
--	.flags	= CLOCK_SOURCE_IS_CONTINUOUS | CLOCK_SOURCE_SUSPEND_NONSTOP,
-+	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
- };
- 
- static struct cyclecounter cyclecounter = {
-@@ -616,6 +617,8 @@ static void __init arch_counter_register(unsigned type)
- 		arch_timer_read_counter = arch_counter_get_cntvct_mem;
- 	}
- 
-+	if (!arch_counter_suspend_stop)
-+		clocksource_counter.flags |= CLOCK_SOURCE_SUSPEND_NONSTOP;
- 	start_count = arch_timer_read_counter();
- 	clocksource_register_hz(&clocksource_counter, arch_timer_rate);
- 	cyclecounter.mult = clocksource_counter.mult;
-@@ -907,6 +910,10 @@ static int __init arch_timer_of_init(struct device_node *np)
- 	    of_property_read_bool(np, "arm,cpu-registers-not-fw-configured"))
- 		arch_timer_uses_ppi = PHYS_SECURE_PPI;
- 
-+	/* On some systems, the counter stops ticking when in suspend. */
-+	arch_counter_suspend_stop = of_property_read_bool(np,
-+							 "arm,no-tick-in-suspend");
-+
- 	return arch_timer_init();
- }
- CLOCKSOURCE_OF_DECLARE(armv7_arch_timer, "arm,armv7-timer", arch_timer_of_init);
--- 
-2.8.0.rc3.226.g39d4020
+SGkgUGF3ZcWCLAoKQW0gRGllbnN0YWcsIDQuIE9rdG9iZXIgMjAxNiwgMTM6NTY6MDcgc2Nocmll
+YiBQYXdlxYIgSmFyb3N6Ogo+ID4+Pj4gSSBkb24ndCB0aGluayB0aGlzIGlzIGEgc2FuZSB3b3Jr
+YXJvdW5kLCBidXQgaXQgaXMgYXQgYmVzdCBkaWZmaWN1bHQgdG8KPiA+Pj4+IHRlbGwsIGdpdmVu
+IHRoZXJlJ3Mgbm8gcmVhc29uIGdpdmVuIGZvciB3aHkgdGhpcyBtZW1vcnkgaXMgdW51c2FibGUu
+Cj4gPj4+PiAKPiA+Pj4+IEZvciBpbnN0YW5jZSwgaWYgYnVzIGFjY2Vzc2VzIHRvIHRoaXMgYWRk
+cmVzcyBoYW5nLCB0aGVuIHRoaXMgcGF0Y2gKPiA+Pj4+IG9ubHkKPiA+Pj4+IG1ha2VzIHRoZSBo
+YW5kIGxlc3MgbGlrZWx5LCBzaW5jZSB0aGUga2VybmVsIHdpbGwgc3RpbGwgbWFwIHRoZSByZWdp
+b24KPiA+Pj4+IChhbmQKPiA+Pj4+IHRoZXJlZm9yZSB0aGUgQ1BVIGNhbiBwZXJmb3JtIHNwZWN1
+bGF0aXZlIGFjY2Vzc2VzKS4KPiA+Pj4+IAo+ID4+Pj4gQXJlIGlzc3VlcyB3aXRoIHRoaXMgbWVt
+b3J5IGNvbnNpc3RlbnRseSBzZWVuIGluIHByYWN0aWNlPwo+ID4+Pj4gCj4gPj4+PiBDYW4geW91
+IGVuYWJsZSBDT05GSUdfTUVNVEVTVCBhbmQgcGFzcyAnbWVtdGVzdCcgdG8gdGhlIGtlcm5lbCwg
+dG8KPiA+Pj4+IGRldGVybWluZSBpZiB0aGUgbWVtb3J5IGlzIHJldHVybmluZyBlcnJvbmVvdXMg
+dmFsdWVzPwo+ID4+PiAKPiA+Pj4ganVzdCBmb3IgdGhlIHNha2Ugb2YgY29tcGxldGVuZXNzLCBv
+biB0aGUgcmszMjg4IHRoZSBpc3N1ZSB3YXMgdGhlIGRtYQo+ID4+PiBub3QKPiA+Pj4gYmVpbmcg
+YWJsZSB0byBhY2Nlc3MgdGhlIHNwZWNpZmljIG1lbW9yeSByZWdpb24gKGludGVyZXN0aW5nbHkg
+YWxzbyB0aGUKPiA+Pj4gbGFzdCAxNk1CIGJ1dCBvZiB0aGUgNEdCIGFyZWEgc3VwcG9ydGVkIG9u
+IHRoZSByazMyODgpLiBTbyBtZW1vcnkgaXRzZWxmCj4gPj4+IHdhcyBvaywganVzdCBkbWEgYWNj
+ZXNzIHRvIGl0IGZhaWxlZC4KPiA+PiAKPiA+PiBIb3cgb2RkLgo+ID4+IAo+ID4+PiBXZSBkaWRu
+J3QgZmluZCBhbnkgb3RoZXIgc2FuZSBzb2x1dGlvbiB0byBsaW1pdCB0aGUgZG1hIGFjY2VzcyBp
+biBhCj4gPj4+IGdlbmVyYWwgd2F5IGF0IHRoZSB0aW1lLCBzbyBvcHRlZCBmb3IganVzdCBibG9j
+a2luZyB0aGUgbWVtb3J5IHJlZ2lvbgo+ID4+PiAoYXMKPiA+Pj4gaXQgd2FzIHNpbWlsYXJseSBv
+bmx5Cj4gPj4gCj4gPj4gSSB3YXMgdW5kZXIgdGhlIGltcHJlc3Npb24gdGhhdCBkbWEtcmFuZ2Vz
+IGNvdWxkIGRlc2NyaWJlIHRoaXMga2luZCBvZgo+ID4+IERNQSBhZGRyZXNzaW5nIGxpbWl0YXRp
+b24uIFdhcyB0aGVyZSBzb21lIHByb2JsZW0gd2l0aCB0aGF0PyBQZXJoYXBzIHRoZQo+ID4+IGRy
+aXZlciBpcyBub3QgYWNxdWlyaW5nL2NvbmZpZ3VyaW5nIGl0cyBtYXNrIGNvcnJlY3RseT8KPiA+
+IAo+ID4gSSByZW1lbWJlciBsb29raW5nIGF0IChhbmQgdHJ5aW5nKSBkaWZmZXJlbnQgb3B0aW9u
+cyBiYWNrIHRoZW4uCj4gPiAKPiA+IGRtYS1tYXNrIHdhbnRlZCBwb3dlci1vZi0yIHZhbHVlcyAo
+c28gaXQncyBlaXRoZXIgNEdCIG9yIDJHQiAob3IgbG93ZXIpKSwKPiA+IHpvbmUtZG1hIHdhcyBh
+IDMyYml0IChhbmQgbm9uLWR0KSB0aGluZyBhbmQgZG1hLXJhbmdlcyBzZWVtIHRvIHNpbXBseSBh
+bHNvCj4gPiBjYWxjdWxhdGUgYSBkbWEtbWFzayBmcm9tIHRoZSB2YWx1ZSwgc28geW91J3JlIGRv
+d24gdG8gMkdCIGFnYWluLgo+ID4gCj4gPiBTbyBqdXN0IGJsb2NraW5nIG9mIHRob3NlIDE2TUIg
+YXQgdGhlIGVuZCBmb3IgNEdCIGRldmljZXMgc29tZWhvdyBzb3VuZGVkCj4gPiBuaWNlciB0aGFu
+IGxpbWl0aW5nIGRtYSBhY2Nlc3MgdG8gb25seSBoYWxmIHRoZSBtZW1vcnkuCj4gPiAKPiA+IEkg
+bWF5IGJlIG92ZXJsb29raW5nIHNvbWV0aGluZyBidXQgdGhhdCB3YXMgd2hhdCBJIGNhbWUgdXAg
+d2l0aCBsYXN0IHllYXIuCj4gPiAKPiA+IAo+ID4gSGVpa28KPiAKPiBJcyB0aGVyZSBhIGNoYW5j
+ZSB0byBhY2NlcHQgdGhpcyBwYXRjaD8KPiAKPiBJIGtub3cgaXQncyBub3QgdGhlIGJlc3Qgc29s
+dXRpb24gdG8gdGhpcyBwcm9ibGVtLCBidXQgaSBkb24ndCBrbm93Cj4gYSBiZXR0ZXIgb25lLgoK
+dGhlcmUgaXMgYWx3YXlzIGEgImNoYW5jZSIuIEJ1dCB3aXRoIGNoYW5nZXMgbGlrZSB0aGVzZSwg
+d2UgYWx3YXlzIHRyeSB0byBmaW5kIAphIHJlYWwgY2F1c2UgZmlyc3QsIGJlZm9yZSByZXNvcnRp
+bmcgdG8gc29sdXRpb25zIGxpa2UgdGhpcy4gU28gaXQncyBkZWZpbml0bHkgCm5vdCBvZmYgdGhl
+IHRhYmxlLCBidXQgSSdkIGxpa2UgdG8gaW52ZXN0aWdhdGUgZnVydGhlciBmaXJzdCwgc28gdGhh
+dCB3ZSBkb24ndCAKYWNjdW11bGF0ZSB1bm5lY2Vzc2FyeSBoYWNrcyBvdmVyIHRpbWUuCgpFc3Bl
+Y2lhbGx5IHRoYXQgeW91ciByZWdpb24gc2VlbXMgdG8gYmUgaW4gdGhlIG1pZGRsZSBvZiB0aGUg
+ZGVzaWduYXRlZCByYW0gCmFyZWEgaXMgc3RyYW5nZS4KCkNvdWxkIHlvdSBwbGVhc2UgdGVsbCB3
+aGljaCBib2FyZCB5b3UncmUgdXNpbmcgKGFuZCBob3cgbXVjaCBtZW1vcnkgaXQgaGFzKQoKClRo
+YW5rcwpIZWlrbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
