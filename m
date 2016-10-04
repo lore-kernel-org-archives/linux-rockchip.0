@@ -1,56 +1,79 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 2/4] drm/bridge: analogix_dp: get sync PM when init eDP
-Date: Tue, 4 Oct 2016 10:53:58 -0400
-Message-ID: <CAOw6vb+jSg-N74Nj=md8kW0aukk_u=HjTBa45XwxJkyFVqtKFQ@mail.gmail.com>
-References: <1475239256-16083-1-git-send-email-wzz@rock-chips.com> <1475239256-16083-3-git-send-email-wzz@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/2] PCI: rockchip: improve the deassert sequence of four
+ reset pins
+Date: Tue, 4 Oct 2016 12:24:04 -0500
+Message-ID: <20161004172404.GC3449@localhost>
+References: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1475239256-16083-3-git-send-email-wzz@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: zain wang <wzz@rock-chips.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Sep 30, 2016 at 8:40 AM, zain wang <wzz@rock-chips.com> wrote:
+On Fri, Sep 23, 2016 at 10:05:59AM +0800, Shawn Lin wrote:
+> Per TRM, we need to deassert the four reset pins simultaneously.
+> Currently the reset framework doesn't support that so we did it
+> one by one. It seems no side effect found but it does impact the
+> state machine of controller, so sometimes the change speed bit is
+> not setted when sending training sequence from recover state.
+> After the silicon RTL review from Soc guys, we don't need to do
+> the sequence recommended by TRM, and could just move the deassert
+> of mgmt_sticky_rst to the first place.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
+Applied both to pci/host-rockchip for v4.9, thanks!
 
-Can you please add a commit message describing why this is needed.
-
-Sean
-
-
-> Signed-off-by: zain wang <wzz@rock-chips.com>
->
 > ---
->
-> Changes in v2: None
->
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index b4ce16a..1bd190e 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1411,10 +1411,12 @@ int analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
->         }
->
->         pm_runtime_enable(dev);
-> +       pm_runtime_get_sync(dev);
->
->         phy_power_on(dp->phy);
->
->         analogix_dp_init_dp(dp);
-> +       pm_runtime_put_sync(dev);
->
->         ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
->                                         analogix_dp_hardirq,
+> 
+>  drivers/pci/host/pcie-rockchip.c | 16 ++++++++++------
+>  1 file changed, 10 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index c3593e6..5e51121 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -433,21 +433,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  		return err;
+>  	}
+>  
+> -	err = reset_control_deassert(rockchip->core_rst);
+> +	/*
+> +	 * Please don't reorder the deassert sequence of the following
+> +	 * four reset pins.
+> +	 */
+> +	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+>  	if (err) {
+> -		dev_err(dev, "deassert core_rst err %d\n", err);
+> +		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+>  		return err;
+>  	}
+>  
+> -	err = reset_control_deassert(rockchip->mgmt_rst);
+> +	err = reset_control_deassert(rockchip->core_rst);
+>  	if (err) {
+> -		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+> +		dev_err(dev, "deassert core_rst err %d\n", err);
+>  		return err;
+>  	}
+>  
+> -	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+> +	err = reset_control_deassert(rockchip->mgmt_rst);
+>  	if (err) {
+> -		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+> +		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+>  		return err;
+>  	}
+>  
+> -- 
+> 2.3.7
+> 
+> 
 > --
-> 1.9.1
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-samsung-soc" in
+> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
