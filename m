@@ -1,62 +1,54 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
- suspend
-Date: Tue, 4 Oct 2016 10:49:04 -0700
-Message-ID: <20161004174903.GA3098@localhost>
-References: <20160916054917.16930-1-briannorris@chromium.org>
- <57DBA81F.2060404@arm.com>
- <20160919231441.GA60928@google.com>
- <57E0E97B.5000106@arm.com>
- <20160928012309.GA29518@localhost>
- <20160929170847.1227a312@arm.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: arch counter doesn't tick in
+ system suspend
+Date: Tue,  4 Oct 2016 11:12:10 -0700
+Message-ID: <1475604730-140264-2-git-send-email-briannorris@chromium.org>
+References: <1475604730-140264-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160929170847.1227a312@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1475604730-140264-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc,
+The "arm,no-tick-in-suspend" property was introduced to note
+implementations where the system counter does not quite follow the ARM
+specification that it "must be implemented in an always-on power
+domain".
 
-On Thu, Sep 29, 2016 at 05:08:47PM +0100, Marc Zyngier wrote:
-> On Tue, 27 Sep 2016 18:23:11 -0700
-> Brian Norris <briannorris@chromium.org> wrote:
-> > On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
-> > <Begin side note>
-> > rk3288 (ARMv7 system widely used for our Chromebooks) has the same
-> > issue, except the kernel we're using for production (based on v3.14)
-> > doesn't have the following commit, which stopped utilizing the RTC:
-> > 
-> > commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
-> > Author: Xunlei Pang <pang.xunlei@linaro.org>
-> > Date:   Wed Apr 1 20:34:38 2015 -0700
-> > 
-> >     time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
-> > 
-> > And any mainline testing on rk3288 doesn't see the problem, because
-> > mainline doesn't support its lowest-power sleep modes well enough (see
-> > ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
-> 
-> Arghh... So even my favourite Chromebook (from which I'm typing this
-> email) is affected? Not very nice...
+Particularly, RK3399's counter stops ticking when we switch from the
+24MHz clock to the 32KHz clock in low-power suspend, so let's mark it as
+such.
 
-Yep. But if you're running mainline, you just get to have high S3 power
-consumption instead!
+Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+v2: new in v2
 
-> > <End side note>
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-> As for the 64bit kernel, it would be interesting to verify that on
-> resume, the VDSO does return the right (corrected) value, and not
-> something stale.
-
-It would be interesting, except all my current user spaces are built for
-32-bit, so it's not too easy for me to test. Perhaps I could pull in
-this [1]. (On the bright side, this means that VDSO can't possibly be
-breaking on my systems!)
-
-Brian
-
-[1] http://www.spinics.net/lists/arm-kernel/msg530185.html
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 76b28649f0b0..401c8be8c8ac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -174,6 +174,7 @@
+ 			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW 0>,
+ 			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW 0>,
+ 			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
++		arm,no-tick-in-suspend;
+ 	};
+ 
+ 	xin24m: xin24m {
+-- 
+2.8.0.rc3.226.g39d4020
