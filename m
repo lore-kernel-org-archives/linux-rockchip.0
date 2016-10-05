@@ -1,137 +1,159 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2] PCI: rockchip: Support property to specify the link
- capability
-Date: Wed, 5 Oct 2016 15:41:54 +0800
-Message-ID: <6dc5a9b2-8ac3-93a5-3f82-143beeaeebee@rock-chips.com>
-References: <1475636776-11386-1-git-send-email-shawn.lin@rock-chips.com>
- <20161005043647.GA125531@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161005043647.GA125531-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3] PCI: rockchip: Support property to specify the link capability
+Date: Wed,  5 Oct 2016 16:05:17 +0800
+Message-ID: <1475654717-15159-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4sCgrlnKggMjAxNi8xMC81IDEyOjM2LCBCcmlhbiBOb3JyaXMg5YaZ6YGTOgo+IEhp
-IFNoYXduLAo+Cj4gT24gV2VkLCBPY3QgMDUsIDIwMTYgYXQgMTE6MDY6MTZBTSArMDgwMCwgU2hh
-d24gTGluIHdyb3RlOgo+PiBGcm9tOiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVt
-Lm9yZz4KPj4KPj4gcmszMzk5IHN1cHBvcnRzIFBDSWUgMi54IGxpbmsgc3BlZWRzIG1hcmdpbmFs
-bHkgYXQgYmVzdCwgYW5kIG9uIHNvbWUKPj4gYm9hcmRzLCB0aGUgbGluayB3b24ndCB0cmFpbiBh
-dCA1IEdUL3MgYXQgYWxsLiBSYXRoZXIgdGhhbiBzYWNyaWZpY2UgNTAwCj4+IG1zIHdhaXRpbmcg
-Zm9yIHRyYWluaW5nIHRoYXQgd2lsbCBuZXZlciBoYXBwZW4sIGxldCdzIGFkZCBhIHByb3BlcnR5
-Cj4+IGZyb20gZGV2aWNldHJlZSB0byBzcGVjaWZ5IGxpbmsgY2FwYWJpbGl0eS4KPj4KPj4gU2ln
-bmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+Cj4+IFNp
-Z25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+Pgo+PiAt
-LS0KPj4KPj4gQ2hhbmdlcyBpbiB2MjoKPj4gLSByZW5hbWUgdGhlIHByb3BlcnR5IHRvIHJvY2tj
-aGlwLG1heC1saW5rLXNwZWVkIGFjY29yZGluZyB0bwo+PiAgIEJqb3JuJ3MgcmVjb21tZW5kYXRp
-b24gYW5kIHRha2Ugc29tZSBiaXRzIGZyb20gaW14NnEtcGNpZSB0bwo+PiAgIG1ha2UgdGhpcyBy
-ZXF1aXJlbWVudCBtb3JlIGNvbnNpc2VudC4KPj4KPj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L3BjaS9yb2NrY2hpcC1wY2llLnR4dCAgICAgIHwgIDIgKwo+PiAgZHJpdmVycy9wY2kvaG9zdC9w
-Y2llLXJvY2tjaGlwLmMgICAgICAgICAgICAgICAgICAgfCA2MSArKysrKysrKysrKysrKy0tLS0t
-LS0tCj4+ICAyIGZpbGVzIGNoYW5nZWQsIDQxIGluc2VydGlvbnMoKyksIDIyIGRlbGV0aW9ucygt
-KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Bj
-aS9yb2NrY2hpcC1wY2llLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9w
-Y2kvcm9ja2NoaXAtcGNpZS50eHQKPj4gaW5kZXggYmE2N2IzOS4uODMzNWYwMyAxMDA2NDQKPj4g
-LS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1wY2ll
-LnR4dAo+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGNpL3JvY2tj
-aGlwLXBjaWUudHh0Cj4+IEBAIC00Miw2ICs0Miw4IEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+
-ICBPcHRpb25hbCBQcm9wZXJ0eToKPj4gIC0gZXAtZ3Bpb3M6IGNvbnRhaW4gdGhlIGVudHJ5IGZv
-ciBwcmUtcmVzZXQgZ3Bpbwo+PiAgLSBudW0tbGFuZXM6IG51bWJlciBvZiBsYW5lcyB0byB1c2UK
-Pj4gKy0gcm9ja2NoaXAsbWF4LWxpbmstc3BlZWQ6IFNwZWNpZnkgUENJIGdlbiBmb3IgbGluayBj
-YXBhYmlsaXR5LiBNdXN0Cj4+ICsJYmUgJzInIGZvciBnZW4yLCBvdGhlcndpc2Ugd2lsbCBkZWZh
-dWx0IHRvIGdlbjEuCj4+ICAtIHZwY2llM3YzLXN1cHBseTogVGhlIHBoYW5kbGUgdG8gdGhlIDMu
-M3YgcmVndWxhdG9yIHRvIHVzZSBmb3IgUENJZS4KPj4gIC0gdnBjaWUxdjgtc3VwcGx5OiBUaGUg
-cGhhbmRsZSB0byB0aGUgMS44diByZWd1bGF0b3IgdG8gdXNlIGZvciBQQ0llLgo+PiAgLSB2cGNp
-ZTB2OS1zdXBwbHk6IFRoZSBwaGFuZGxlIHRvIHRoZSAwLjl2IHJlZ3VsYXRvciB0byB1c2UgZm9y
-IFBDSWUuCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9ob3N0L3BjaWUtcm9ja2NoaXAuYyBi
-L2RyaXZlcnMvcGNpL2hvc3QvcGNpZS1yb2NrY2hpcC5jCj4+IGluZGV4IDM1NTkxYjEuLmNhM2Ri
-NTEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcGNpL2hvc3QvcGNpZS1yb2NrY2hpcC5jCj4+ICsr
-KyBiL2RyaXZlcnMvcGNpL2hvc3QvcGNpZS1yb2NrY2hpcC5jCj4+IEBAIC01Myw2ICs1Myw3IEBA
-Cj4+ICAjZGVmaW5lICAgUENJRV9DTElFTlRfQVJJX0VOQUJMRQkgIEhJV09SRF9VUERBVEVfQklU
-KDB4MDAwOCkKPj4gICNkZWZpbmUgICBQQ0lFX0NMSUVOVF9DT05GX0xBTkVfTlVNKHgpCSAgSElX
-T1JEX1VQREFURSgweDAwMzAsIEVOQ09ERV9MQU5FUyh4KSkKPj4gICNkZWZpbmUgICBQQ0lFX0NM
-SUVOVF9NT0RFX1JDCQkgIEhJV09SRF9VUERBVEVfQklUKDB4MDA0MCkKPj4gKyNkZWZpbmUgICBQ
-Q0lFX0NMSUVOVF9HRU5fU0VMXzEJCSAgSElXT1JEX1VQREFURSgweDAwODAsIDApCj4+ICAjZGVm
-aW5lICAgUENJRV9DTElFTlRfR0VOX1NFTF8yCQkgIEhJV09SRF9VUERBVEVfQklUKDB4MDA4MCkK
-Pj4gICNkZWZpbmUgUENJRV9DTElFTlRfQkFTSUNfU1RBVFVTMQkoUENJRV9DTElFTlRfQkFTRSAr
-IDB4NDgpCj4+ICAjZGVmaW5lICAgUENJRV9DTElFTlRfTElOS19TVEFUVVNfVVAJCTB4MDAzMDAw
-MDAKPj4gQEAgLTIwNSw2ICsyMDYsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSB7Cj4+ICAJc3Ry
-dWN0CWdwaW9fZGVzYyAqZXBfZ3BpbzsKPj4gIAl1MzIJbGFuZXM7Cj4+ICAJdTgJcm9vdF9idXNf
-bnI7Cj4+ICsJaW50CWxpbmtfZ2VuOwo+PiAgCXN0cnVjdAlkZXZpY2UgKmRldjsKPj4gIAlzdHJ1
-Y3QJaXJxX2RvbWFpbiAqaXJxX2RvbWFpbjsKPj4gIH07Cj4+IEBAIC00NDMsMTMgKzQ0NSwyMSBA
-QCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfaW5pdF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2ll
-ICpyb2NrY2hpcCkKPj4gIAkJcmV0dXJuIGVycjsKPj4gIAl9Cj4+Cj4+ICsJaWYgKHJvY2tjaGlw
-LT5saW5rX2dlbiA9PSAyKSB7Cj4+ICsJCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIFBD
-SUVfQ0xJRU5UX0dFTl9TRUxfMiwKPj4gKwkJCQkgICAgUENJRV9DTElFTlRfQ09ORklHKTsKPj4g
-Kwl9IGVsc2Ugewo+PiArCQlyb2NrY2hpcF9wY2llX3dyaXRlKHJvY2tjaGlwLCBQQ0lFX0NMSUVO
-VF9HRU5fU0VMXzEsCj4+ICsJCQkJICAgIFBDSUVfQ0xJRU5UX0NPTkZJRyk7Cj4+ICsJCWRldl9p
-bmZvKGRldiwgIm1heCBsaW5rIHNwZWVkIGlzIGdlbiAxXG4iKTsKPj4gKwl9Cj4+ICsKPj4gIAly
-b2NrY2hpcF9wY2llX3dyaXRlKHJvY2tjaGlwLAo+PiAgCQkJICAgIFBDSUVfQ0xJRU5UX0NPTkZf
-RU5BQkxFIHwKPj4gIAkJCSAgICBQQ0lFX0NMSUVOVF9MSU5LX1RSQUlOX0VOQUJMRSB8Cj4+ICAJ
-CQkgICAgUENJRV9DTElFTlRfQVJJX0VOQUJMRSB8Cj4+ICAJCQkgICAgUENJRV9DTElFTlRfQ09O
-Rl9MQU5FX05VTShyb2NrY2hpcC0+bGFuZXMpIHwKPj4gLQkJCSAgICBQQ0lFX0NMSUVOVF9NT0RF
-X1JDIHwKPj4gLQkJCSAgICBQQ0lFX0NMSUVOVF9HRU5fU0VMXzIsCj4+ICsJCQkgICAgUENJRV9D
-TElFTlRfTU9ERV9SQywKPj4gIAkJCQlQQ0lFX0NMSUVOVF9DT05GSUcpOwo+Pgo+PiAgCWVyciA9
-IHBoeV9wb3dlcl9vbihyb2NrY2hpcC0+cGh5KTsKPj4gQEAgLTU1MCwyOSArNTYwLDMxIEBAIHN0
-YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9pbml0X3BvcnQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJv
-Y2tjaGlwKQo+PiAgCQltc2xlZXAoMjApOwo+PiAgCX0KPj4KPj4gLQkvKgo+PiAtCSAqIEVuYWJs
-ZSByZXRyYWluIGZvciBnZW4yLiBUaGlzIHNob3VsZCBiZSBjb25maWd1cmVkIG9ubHkgYWZ0ZXIK
-Pj4gLQkgKiBnZW4xIGZpbmlzaGVkLgo+PiAtCSAqLwo+PiAtCXN0YXR1cyA9IHJvY2tjaGlwX3Bj
-aWVfcmVhZChyb2NrY2hpcCwgUENJRV9SQ19DT05GSUdfTENTKTsKPj4gLQlzdGF0dXMgfD0gUENJ
-RV9SQ19DT05GSUdfTENTX1JFVFJBSU5fTElOSzsKPj4gLQlyb2NrY2hpcF9wY2llX3dyaXRlKHJv
-Y2tjaGlwLCBzdGF0dXMsIFBDSUVfUkNfQ09ORklHX0xDUyk7Cj4+ICsJaWYgKHJvY2tjaGlwLT5s
-aW5rX2dlbiA9PSAyKSB7Cj4+ICsJCS8qCj4+ICsJCSAqIEVuYWJsZSByZXRyYWluIGZvciBnZW4y
-LiBUaGlzIHNob3VsZCBiZSBjb25maWd1cmVkIG9ubHkgYWZ0ZXIKPj4gKwkJICogZ2VuMSBmaW5p
-c2hlZC4KPj4gKwkJICovCj4+ICsJCXN0YXR1cyA9IHJvY2tjaGlwX3BjaWVfcmVhZChyb2NrY2hp
-cCwgUENJRV9SQ19DT05GSUdfTENTKTsKPj4gKwkJc3RhdHVzIHw9IFBDSUVfUkNfQ09ORklHX0xD
-U19SRVRSQUlOX0xJTks7Cj4+ICsJCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIHN0YXR1
-cywgUENJRV9SQ19DT05GSUdfTENTKTsKPj4gKwo+PiArCQl0aW1lb3V0ID0gamlmZmllcyArIG1z
-ZWNzX3RvX2ppZmZpZXMoNTAwKTsKPj4gKwkJZm9yICg7Oykgewo+PiArCQkJc3RhdHVzID0gcm9j
-a2NoaXBfcGNpZV9yZWFkKHJvY2tjaGlwLCBQQ0lFX0NPUkVfQ1RSTCk7Cj4+ICsJCQlpZiAoKHN0
-YXR1cyAmIFBDSUVfQ09SRV9QTF9DT05GX1NQRUVEX01BU0spID09Cj4+ICsJCQkJCVBDSUVfQ09S
-RV9QTF9DT05GX1NQRUVEXzVHKSB7Cj4+ICsJCQkJZGV2X2RiZyhkZXYsICJQQ0llIGxpbmsgdHJh
-aW5pbmcgZ2VuMiBwYXNzIVxuIik7Cj4+ICsJCQkJYnJlYWs7Cj4+ICsJCQl9Cj4+Cj4+IC0JdGlt
-ZW91dCA9IGppZmZpZXMgKyBtc2Vjc190b19qaWZmaWVzKDUwMCk7Cj4+IC0JZm9yICg7Oykgewo+
-PiAtCQlzdGF0dXMgPSByb2NrY2hpcF9wY2llX3JlYWQocm9ja2NoaXAsIFBDSUVfQ09SRV9DVFJM
-KTsKPj4gLQkJaWYgKChzdGF0dXMgJiBQQ0lFX0NPUkVfUExfQ09ORl9TUEVFRF9NQVNLKSA9PQo+
-PiAtCQkgICAgUENJRV9DT1JFX1BMX0NPTkZfU1BFRURfNUcpIHsKPj4gLQkJCWRldl9kYmcoZGV2
-LCAiUENJZSBsaW5rIHRyYWluaW5nIGdlbjIgcGFzcyFcbiIpOwo+PiAtCQkJYnJlYWs7Cj4+IC0J
-CX0KPj4gKwkJCWlmICh0aW1lX2FmdGVyKGppZmZpZXMsIHRpbWVvdXQpKSB7Cj4+ICsJCQkJZGV2
-X2RiZyhkZXYsICJQQ0llIGxpbmsgdHJhaW5pbmcgZ2VuMiB0aW1lb3V0LCBmYWxsIGJhY2sgdG8g
-Z2VuMSFcbiIpOwo+PiArCQkJCWJyZWFrOwo+PiArCQkJfQo+Pgo+PiAtCQlpZiAodGltZV9hZnRl
-cihqaWZmaWVzLCB0aW1lb3V0KSkgewo+PiAtCQkJZGV2X2RiZyhkZXYsICJQQ0llIGxpbmsgdHJh
-aW5pbmcgZ2VuMiB0aW1lb3V0LCBmYWxsIGJhY2sgdG8gZ2VuMSFcbiIpOwo+PiAtCQkJYnJlYWs7
-Cj4+ICsJCQltc2xlZXAoMjApOwo+PiAgCQl9Cj4+IC0KPj4gLQkJbXNsZWVwKDIwKTsKPj4gIAl9
-Cj4+Cj4+ICAJLyogQ2hlY2sgdGhlIGZpbmFsIGxpbmsgd2lkdGggZnJvbSBuZWdvdGlhdGVkIGxh
-bmUgY291bnRlciBmcm9tIE1HTVQgKi8KPj4gQEAgLTc4MSw2ICs3OTMsMTEgQEAgc3RhdGljIGlu
-dCByb2NrY2hpcF9wY2llX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkK
-Pj4gIAkJcm9ja2NoaXAtPmxhbmVzID0gMTsKPj4gIAl9Cj4+Cj4+ICsJZXJyID0gb2ZfcHJvcGVy
-dHlfcmVhZF91MzIobm9kZSwgInJvY2tjaGlwLG1heC1saW5rLXNwZWVkIiwKPj4gKwkJCQkgICAm
-cm9ja2NoaXAtPmxpbmtfZ2VuKTsKPj4gKwlpZiAoZXJyKQo+PiArCQlyb2NrY2hpcC0+bGlua19n
-ZW4gPSAxOwo+Cj4gSSByZWFsaXplIHlvdSBjb3BpZWQgdGhpcyBmcm9tIHRoZSBJTVg2IGRyaXZl
-ciwgYnV0IHRoaXMgYWxsb3dzIHBlb3BsZQo+IHRvIHB1dCBhbnl0aGluZyBidXQgJzInIGluIHRo
-ZSBwcm9wZXJ0eSwgYW5kIHdlJ2xsIHRyZWF0IGl0IGxpa2UgJzEnLgo+IEhvdyBhYm91dCBpbiB0
-aGUgIWVyciBjYXNlLCB3ZSBjaGVjayB0aGF0IHRoZSB2YWx1ZSBpcyBlaXRoZXIgMSBvciAyLAo+
-IGFuZCByZXR1cm4gYW4gZXJyb3IgZm9yIGFueXRoaW5nIGVsc2U/Cj4KClNvdW5kcyBmaW5lLCBi
-dXQgaXQgc2hvdWxkbid0IHJldHVybiBlcnJvciBmb3IgYW55dGhpbmcgZWxzZS4gV2Ugc2hvdWxk
-CmZhbGwgYmFjayB0byBkZWZhdWx0IHN0YXRlLCBuYW1lbHkgZ2VuIDEuIEFuZCB3ZSBjb3VsZCBj
-YXN0IGEgd2FybmluZwp0aGVyZSBqdXN0IGxpa2Ugd2hhdCB3ZSBkaWQgZm9yIG51bS1sYW5lcy4K
-Ckkgd2lsbCByZXNwaW4gdjMuCgpUaGFua3MuCgo+IEJyaWFuCj4KPj4gKwo+PiAgCXJvY2tjaGlw
-LT5jb3JlX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQoZGV2LCAiY29yZSIpOwo+PiAgCWlm
-IChJU19FUlIocm9ja2NoaXAtPmNvcmVfcnN0KSkgewo+PiAgCQlpZiAoUFRSX0VSUihyb2NrY2hp
-cC0+Y29yZV9yc3QpICE9IC1FUFJPQkVfREVGRVIpCj4+IC0tCj4+IDIuMy43Cj4+Cj4+Cj4KPgo+
-CgoKLS0gCkJlc3QgUmVnYXJkcwpTaGF3biBMaW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Brian Norris <briannorris@chromium.org>
+
+rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
+ms waiting for training that will never happen, let's add a property
+from devicetree to specify link capability.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+Changes in v3:
+- Cast a warning for invalid max link speed and use gen1 for it.
+  That looks better than v2. (Suggested by Brian)
+
+Changes in v2:
+- rename the property to rockchip,max-link-speed according to
+  Bjorn's recommendation and take some bits from imx6q-pcie to
+  make this requirement more consisent.
+
+ .../devicetree/bindings/pci/rockchip-pcie.txt      |  2 +
+ drivers/pci/host/pcie-rockchip.c                   | 62 ++++++++++++++--------
+ 2 files changed, 42 insertions(+), 22 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+index ba67b39..7bb730e 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+@@ -42,6 +42,8 @@ Required properties:
+ Optional Property:
+ - ep-gpios: contain the entry for pre-reset gpio
+ - num-lanes: number of lanes to use
++- rockchip,max-link-speed: Specify PCI gen for link capability. Must
++	be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
+ - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+ - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+ - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 35591b1..66476ea 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -53,6 +53,7 @@
+ #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+ #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
++#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+@@ -205,6 +206,7 @@ struct rockchip_pcie {
+ 	struct	gpio_desc *ep_gpio;
+ 	u32	lanes;
+ 	u8	root_bus_nr;
++	int	link_gen;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
+ };
+@@ -443,13 +445,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
++	if (rockchip->link_gen == 2)
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
++				    PCIE_CLIENT_CONFIG);
++	else
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
++				    PCIE_CLIENT_CONFIG);
++
+ 	rockchip_pcie_write(rockchip,
+ 			    PCIE_CLIENT_CONF_ENABLE |
+ 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
+ 			    PCIE_CLIENT_ARI_ENABLE |
+ 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
+-			    PCIE_CLIENT_MODE_RC |
+-			    PCIE_CLIENT_GEN_SEL_2,
++			    PCIE_CLIENT_MODE_RC,
+ 				PCIE_CLIENT_CONFIG);
+ 
+ 	err = phy_power_on(rockchip->phy);
+@@ -550,29 +558,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		msleep(20);
+ 	}
+ 
+-	/*
+-	 * Enable retrain for gen2. This should be configured only after
+-	 * gen1 finished.
+-	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+-	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	if (rockchip->link_gen == 2) {
++		/*
++		 * Enable retrain for gen2. This should be configured only after
++		 * gen1 finished.
++		 */
++		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
++		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++
++		timeout = jiffies + msecs_to_jiffies(500);
++		for (;;) {
++			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
++					PCIE_CORE_PL_CONF_SPEED_5G) {
++				dev_dbg(dev, "PCIe link training gen2 pass!\n");
++				break;
++			}
+ 
+-	timeout = jiffies + msecs_to_jiffies(500);
+-	for (;;) {
+-		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
+-		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+-		    PCIE_CORE_PL_CONF_SPEED_5G) {
+-			dev_dbg(dev, "PCIe link training gen2 pass!\n");
+-			break;
+-		}
++			if (time_after(jiffies, timeout)) {
++				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
++				break;
++			}
+ 
+-		if (time_after(jiffies, timeout)) {
+-			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+-			break;
++			msleep(20);
+ 		}
+-
+-		msleep(20);
+ 	}
+ 
+ 	/* Check the final link width from negotiated lane counter from MGMT */
+@@ -781,6 +791,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		rockchip->lanes = 1;
+ 	}
+ 
++	rockchip->link_gen = 2;
++	err = of_property_read_u32(node, "rockchip,max-link-speed",
++				   &rockchip->link_gen);
++	if (!err && rockchip->link_gen != 1 && rockchip->link_gen != 2) {
++		dev_warn(dev, "invalid max-link-speed, default to use gen1\n");
++		rockchip->link_gen = 1;
++	}
++
+ 	rockchip->core_rst = devm_reset_control_get(dev, "core");
+ 	if (IS_ERR(rockchip->core_rst)) {
+ 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+-- 
+2.3.7
