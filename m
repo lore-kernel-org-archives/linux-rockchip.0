@@ -1,35 +1,49 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: arch counter doesn't tick in
- system suspend
-Date: Tue, 4 Oct 2016 15:14:49 -0700
-Message-ID: <CAD=FV=XGwc8k-OctcKmdJoFK44v86qegAAFDOpN71wpciA=3Tg@mail.gmail.com>
-References: <1475604730-140264-1-git-send-email-briannorris@chromium.org> <1475604730-140264-2-git-send-email-briannorris@chromium.org>
+From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
+ rk3066
+Date: Wed, 5 Oct 2016 10:27:15 +0800
+Message-ID: <6239b970-09d3-f7ee-e6f5-c019eaedb725@rock-chips.com>
+References: <20161001140939.GA31220@vaio-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1475604730-140264-2-git-send-email-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Marc Zyngier <marc.zyngier@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161001140939.GA31220@vaio-ubuntu>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Oct 4, 2016 at 11:12 AM, Brian Norris <briannorris@chromium.org> wrote:
-> The "arm,no-tick-in-suspend" property was introduced to note
-> implementations where the system counter does not quite follow the ARM
-> specification that it "must be implemented in an always-on power
-> domain".
->
-> Particularly, RK3399's counter stops ticking when we switch from the
-> 24MHz clock to the 32KHz clock in low-power suspend, so let's mark it as
-> such.
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> v2: new in v2
->
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
->  1 file changed, 1 insertion(+)
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+SGksIFBhd2XFgjoKT24gMjAxNuW5tDEw5pyIMDHml6UgMjI6MDksID0/VVRGLTg/cT9QYXdlPUM1
+PTgyPTIwSmFyb3N6Pz0gd3JvdGU6Cj4gRm9yIHNvbWUgcmVhc29uIGFjY2Vzc2luZyBtZW1vcnkg
+cmVnaW9uIGFib3ZlIDB4ZmUwMDAwMDAgZnJlZXplcwo+IHN5c3RlbSBvbiByazMwNjYuIFRoZXJl
+IGlzIHNpbWlsaWFyIGJ1ZyBvbiBsYXRlciByb2NrY2hpcCBzb2MgKHJrMzI4OCkKUkszMDY2IG9u
+bHkgc3VwcG9ydCAyR0IgbWVtb3J5IGZyb20gMHg2MDAwMDAwMCB0byAweEUwMDAwMDAwLCBjYW4g
+bm90IGFjY2VzcwphYm92ZSAweGZlMDAwMDAwLiBJIHRoaW5rIHlvdSBtZWFuIDB4OUYwMDAwMDA/
+Cj4gc29sdmVkIHNhbWUgd2F5Lgo+Cj4gU2lnbmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3
+ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2
+YS5kdHNpIHwgMTMgKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9u
+cygrKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaSBiL2Fy
+Y2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaQo+IGluZGV4IDBkMGRhZTMuLjQ0Yzg5NTYgMTAw
+NjQ0Cj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpCj4gKysrIGIvYXJjaC9h
+cm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpCj4gQEAgLTkzLDYgKzkzLDE5IEBACj4gIAkJfTsKPiAg
+CX07Cj4gIAo+ICsJcmVzZXJ2ZWQtbWVtb3J5IHsKPiArCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsK
+PiArCQkjc2l6ZS1jZWxscyA9IDwxPjsKPiArCQlyYW5nZXM7Cj4gKwkJLyoKPiArCQkgKiBUaGUg
+cmszMDY2IGNhbm5vdCB1c2UgdGhlIG1lbW9yeSBhcmVhIGFib3ZlIDB4OUYwMDAwMDAKPiArCQkg
+KiBmb3Igc29tZSB1bmtub3duIHJlYXNvbi4KPiArCQkgKi8KCkkgZG9uJ3QgcmVtZW1iZXIgUksz
+MDY2IGhhcyBzdWNoIGxpbWl0LiBJIHdpbGwgZG91YmxlIGNoZWNrIHdpdGggb3VyIElDCmRlc2ln
+biB0ZWFtLgpEbyB5b3Uga25vdyB3aGljaCBtYXN0ZXIgY2FuIG5vdCBhY2Nlc3MgdGhpcyBtZW1v
+cnkgYXJlYQpbMHg5RjAwMDAwMH4weEEwMDAwMDAwKT8KCj4gKwkJdW51c2FibGVAOUYwMDAwMDAg
+ewo+ICsJCQlyZWcgPSA8MHg5RjAwMDAwMCAweDEwMDAwMDA+Owo+ICsJCX07Cj4gKwl9Owo+ICsK
+PiAgCWkyczA6IGkyc0AxMDExODAwMCB7Cj4gIAkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMw
+NjYtaTJzIjsKPiAgCQlyZWcgPSA8MHgxMDExODAwMCAweDIwMDA+OwoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
