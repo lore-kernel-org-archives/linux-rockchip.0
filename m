@@ -1,12 +1,13 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4] PCI: rockchip: Support property to specify the link
- capability
-Date: Thu,  6 Oct 2016 16:50:00 +0800
-Message-ID: <1475743800-1036-1-git-send-email-shawn.lin@rock-chips.com>
+From: =?us-ascii?B?PT9VVEYtOD9xP1Bhd2U9QzU9ODI9MjBKYXJvc3o/PQ==?=
+ <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 0/3] Add MK808 RK3066 device
+Date: Thu, 6 Oct 2016 18:22:09 +0200
+Message-ID: <cover.1475764778.git.paweljarosz3691@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,163 +17,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
-rk3399 supports PCIe 2.x link speeds marginally at best, and on some
-boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
-ms waiting for training that will never happen, let's add a property
-from devicetree to specify link capability.
-
-Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Changes in v4:
-- define link_gen as u32
-- elaborate more for rockchip,max-link-speed on doc
-
-Changes in v3:
-- Cast a warning for invalid max link speed and use gen1 for it.
-  That looks better than v2. (Suggested by Brian)
-
-Changes in v2:
-- rename the property to rockchip,max-link-speed according to
-  Bjorn's recommendation and take some bits from imx6q-pcie to
-  make this requirement more consisent.
-
- .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
- drivers/pci/host/pcie-rockchip.c                   | 63 ++++++++++++++--------
- 2 files changed, 44 insertions(+), 23 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-index ba67b39..9bb29de 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-@@ -42,6 +42,10 @@ Required properties:
- Optional Property:
- - ep-gpios: contain the entry for pre-reset gpio
- - num-lanes: number of lanes to use
-+- rockchip,max-link-speed: Specify PCI gen for link capability. Must
-+	be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
-+	For backward compatibility, if this property isn't assigned, we
-+	use gen2 by default.
- - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
- - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
- - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 35591b1..6dde999 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -53,6 +53,7 @@
- #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
- #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
- #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
-+#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
- #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
- #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
- #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
-@@ -205,6 +206,7 @@ struct rockchip_pcie {
- 	struct	gpio_desc *ep_gpio;
- 	u32	lanes;
- 	u8	root_bus_nr;
-+	u32	link_gen;
- 	struct	device *dev;
- 	struct	irq_domain *irq_domain;
- };
-@@ -443,14 +445,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
- 
-+	if (rockchip->link_gen == 2)
-+		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
-+				    PCIE_CLIENT_CONFIG);
-+	else
-+		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
-+				    PCIE_CLIENT_CONFIG);
-+
- 	rockchip_pcie_write(rockchip,
- 			    PCIE_CLIENT_CONF_ENABLE |
- 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
- 			    PCIE_CLIENT_ARI_ENABLE |
- 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
--			    PCIE_CLIENT_MODE_RC |
--			    PCIE_CLIENT_GEN_SEL_2,
--				PCIE_CLIENT_CONFIG);
-+			    PCIE_CLIENT_MODE_RC, PCIE_CLIENT_CONFIG);
- 
- 	err = phy_power_on(rockchip->phy);
- 	if (err) {
-@@ -550,29 +557,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		msleep(20);
- 	}
- 
--	/*
--	 * Enable retrain for gen2. This should be configured only after
--	 * gen1 finished.
--	 */
--	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
--	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
--	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
-+	if (rockchip->link_gen == 2) {
-+		/*
-+		 * Enable retrain for gen2. This should be configured only after
-+		 * gen1 finished.
-+		 */
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-+		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
-+
-+		timeout = jiffies + msecs_to_jiffies(500);
-+		for (;;) {
-+			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
-+			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
-+					PCIE_CORE_PL_CONF_SPEED_5G) {
-+				dev_dbg(dev, "PCIe link training gen2 pass!\n");
-+				break;
-+			}
- 
--	timeout = jiffies + msecs_to_jiffies(500);
--	for (;;) {
--		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
--		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
--		    PCIE_CORE_PL_CONF_SPEED_5G) {
--			dev_dbg(dev, "PCIe link training gen2 pass!\n");
--			break;
--		}
-+			if (time_after(jiffies, timeout)) {
-+				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
-+				break;
-+			}
- 
--		if (time_after(jiffies, timeout)) {
--			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
--			break;
-+			msleep(20);
- 		}
--
--		msleep(20);
- 	}
- 
- 	/* Check the final link width from negotiated lane counter from MGMT */
-@@ -781,6 +790,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		rockchip->lanes = 1;
- 	}
- 
-+	rockchip->link_gen = 2;
-+	err = of_property_read_u32(node, "rockchip,max-link-speed",
-+				   &rockchip->link_gen);
-+	if (!err && rockchip->link_gen != 1 && rockchip->link_gen != 2) {
-+		dev_warn(dev, "invalid max-link-speed, default to use gen1\n");
-+		rockchip->link_gen = 1;
-+	}
-+
- 	rockchip->core_rst = devm_reset_control_get(dev, "core");
- 	if (IS_ERR(rockchip->core_rst)) {
- 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
--- 
-2.3.7
+VGhpcyBwYXRjaHNldCBhZGRzIHN1cHBvcnQgZm9yIFJpa29tYWdpYyBNSzgwOCB2MSBkZXZpY2Ug
+d2l0aCBSSzkwMSB3aWZpLgoKSXQgaXMgaGRtaSBzdGljayB3aXRoIHR3byB1c2IgcG9ydHMoaG9z
+dCBhbmQgb3RnKSwgc2RtbWMsIHdpZmkgYW5kIHVhcnQKb25ib2FyZC4KCkl0IGlzIFJLMzA2NiBi
+YXNlZC4KClBhd2XFgiBKYXJvc3ogKDMpOgogIEFSTTogZHRzOiByb2NrY2hpcDogRW5hYmxlIGJ1
+aWxkIG9mIHJrMzA2NiBNSzgwOCBkdHMKICBkZXZpY2V0cmVlOiBBZGQgdmVuZG9yIHByZWZpeCBm
+b3IgUmlrb21hZ2ljCiAgQVJNOiBkdHM6IHJvY2tjaGlwOiBBZGQgcmszMDY2IE1LODA4IGJvYXJk
+IGRldmljZXRyZWUgZGVzY3JpcHRpb24gZmlsZQoKIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zl
+bmRvci1wcmVmaXhlcy50eHQgICAgICAgIHwgICAxICsKIGFyY2gvYXJtL2Jvb3QvZHRzL01ha2Vm
+aWxlICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGFyY2gvYXJtL2Jvb3QvZHRzL3Jr
+MzA2NmEtbWs4MDguZHRzICAgICAgICAgICAgICAgIHwgMTg0ICsrKysrKysrKysrKysrKysrKysr
+KwogMyBmaWxlcyBjaGFuZ2VkLCAxODYgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0
+IGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtbWs4MDguZHRzCgotLSAKMi43LjQKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
