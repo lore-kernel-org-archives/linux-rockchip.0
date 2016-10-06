@@ -1,39 +1,53 @@
-From: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: initialize rk3066 PLL clock rate
-Date: Thu, 6 Oct 2016 21:42:21 +0200
-Message-ID: <20161006194221.GA4895@vaio-ubuntu>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v4] PCI: rockchip: Support property to specify the link
+ capability
+Date: Thu, 6 Oct 2016 14:38:00 -0700
+Message-ID: <20161006213800.GA2347@localhost>
+References: <1475743800-1036-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1475743800-1036-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SW5pdGlhbGl6ZSBQTEwgcmF0ZSB3aGlsZSBrZXJuZWwgaW5pdC4gTm8gb3RoZXIgbW9kdWxlIGRv
-ZXMgdGhhbi4KQ2xvY2sgcmF0ZXMgYXJlIHRha2VuIGZyb20gcmszMDY2IFRSTS4gQXNzaWduZWQg
-dmFsdWVzIGFyZSBmb3IgMTI1IGRlZ3JlZXMKY2VsY2l1cyBvcGVyYXRpbmcgcG9pbnQuClRoaXMg
-Z2l2ZXMgdXMgcGVyZm9ybWFuY2UgYm9vc3Qgb2JzZXJ2YWJsZSBmb3IgZXhhbXBsZSBpbiBtbWMg
-dHJhbnNmZXJzLgoKU2lnbmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkx
-QGdtYWlsLmNvbT4KLS0tCiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kgfCA0ICsrKysK
-IDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9i
-b290L2R0cy9yazMwNjZhLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKaW5k
-ZXggMGQwZGFlMy4uY2YyMTVlOCAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2
-YS5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaQpAQCAtMTUxLDYgKzE1
-MSwxMCBAQAogCiAJCSNjbG9jay1jZWxscyA9IDwxPjsKIAkJI3Jlc2V0LWNlbGxzID0gPDE+Owor
-CQlhc3NpZ25lZC1jbG9ja3MgPSA8JmNydSBQTExfRFBMTD4sIDwmY3J1IFBMTF9BUExMPiwKKwkJ
-CQkgIDwmY3J1IFBMTF9DUExMPiwgPCZjcnUgUExMX0dQTEw+OworCQlhc3NpZ25lZC1jbG9jay1y
-YXRlcyA9IDw1MzMwMDAwMDA+LCA8NjAwMDAwMDAwPiwKKwkJCQkgICAgICAgPDYwMDAwMDAwMD4s
-IDw2MDAwMDAwMDA+OwogCX07CiAKIAl0aW1lckAyMDAwZTAwMCB7Ci0tIAoyLjcuNAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thu, Oct 06, 2016 at 04:50:00PM +0800, Shawn Lin wrote:
+> From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+> boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
+> ms waiting for training that will never happen, let's add a property
+> from devicetree to specify link capability.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v4:
+> - define link_gen as u32
+> - elaborate more for rockchip,max-link-speed on doc
+> 
+> Changes in v3:
+> - Cast a warning for invalid max link speed and use gen1 for it.
+>   That looks better than v2. (Suggested by Brian)
+> 
+> Changes in v2:
+> - rename the property to rockchip,max-link-speed according to
+>   Bjorn's recommendation and take some bits from imx6q-pcie to
+>   make this requirement more consisent.
+> 
+>  .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
+>  drivers/pci/host/pcie-rockchip.c                   | 63 ++++++++++++++--------
+>  2 files changed, 44 insertions(+), 23 deletions(-)
+
+Not sure if it means anything much, since I wrote half of this, but:
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
