@@ -1,130 +1,270 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: Add rk3066 MK808 board
-Date: Fri, 07 Oct 2016 12:01:38 +0200
-Message-ID: <2320435.WKGs9crzlB@phil>
-References: <cover.1475774981.git.paweljarosz3691@gmail.com>
- <b63a0ad452a487beb1d0c07addb9208cc3b3eeef.1475774981.git.paweljarosz3691@gmail.com>
- <a166a444-8819-ffe7-8ee1-1f632f6a66ab@rock-chips.com>
+From: Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH 1/3] PCI: rockchip: Rename accessors
+Date: Fri, 07 Oct 2016 11:27:06 -0500
+Message-ID: <20161007162706.23835.10081.stgit@bhelgaas-glaptop2.roam.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a166a444-8819-ffe7-8ee1-1f632f6a66ab-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgNy4gT2t0b2JlciAyMDE2LCAxMDoyOTo0OCBDRVNUIHNjaHJpZWIgU2hhd24g
-TGluOgo+IEhpIFBhd2XFgiAsCj4gCj4gT24gMjAxNi8xMC83IDE6MzgsIFBhd2XFgiBKYXJvc3og
-d3JvdGU6Cj4gPiBNSzgwOCBpcyBhIHR2IHN0aWNrIHdoaWNoIGhhcyByb2NrY2hpcCByazMwNjYg
-Q1BVIGluc2lkZSwgdHdvIHVzYiBwb3J0cwo+ID4gLSBob3N0IGFuZCBvdGcsIG1pY3JvIHNkIGNh
-cmQgc2xvdCBhbmQgb25ib2FyZCB3aWZpIFJLOTAxLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBQ
-YXdlxYIgSmFyb3N6IDxwYXdlbGphcm9zejM2OTFAZ21haWwuY29tPgo+ID4gLS0tCj4gPiAKPiA+
-IENoYW5nZXMgaW4gdjI6Cj4gPiAtIGluY2x1ZGVkIEhlaWtvIHN1Z2VzdGlvbi4KPiA+IAo+ID4g
-IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAudHh0IHwgICA0
-ICsKPiA+ICBhcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgMSArCj4gPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tazgwOC5kdHMgICAgICAg
-ICAgICAgICAgfCAxODQKPiA+ICArKysrKysrKysrKysrKysrKysrKysgMyBmaWxlcyBjaGFuZ2Vk
-LCAxODkgaW5zZXJ0aW9ucygrKQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9ib290
-L2R0cy9yazMwNjZhLW1rODA4LmR0cwo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC50eHQKPiA+IGIvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC50eHQgaW5kZXgKPiA+IDU1ZjM4OGYu
-LmMwOTU5NWIgMTAwNjQ0Cj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvYXJtL3JvY2tjaGlwLnR4dAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2FybS9yb2NrY2hpcC50eHQKPiA+IEBAIC0xNyw2ICsxNywxMCBAQCBSb2NrY2hpcCBw
-bGF0Zm9ybXMgZGV2aWNlIHRyZWUgYmluZGluZ3MKPiA+IAo+ID4gICAgICBSZXF1aXJlZCByb290
-IG5vZGUgcHJvcGVydGllczoKPiA+ICAgICAgICAtIGNvbXBhdGlibGUgPSAiY2hpcHNwYXJrLHJh
-eWVhZ2VyLXB4MiIsICJyb2NrY2hpcCxyazMwNjZhIjsKPiA+IAo+ID4gKy0gUmlrb21hZ2ljIE1L
-ODA4IHYxIGJvYXJkOgo+ID4gKyAgICBSZXF1aXJlZCByb290IG5vZGUgcHJvcGVydGllczoKPiA+
-ICsgICAgICAtIGNvbXBhdGlibGUgPSAicmlrb21hZ2ljLG1rODA4IiwgInJvY2tjaGlwLHJrMzA2
-NmEiOwo+ID4gKwo+ID4gCj4gPiAgLSBSYWR4YSBSb2NrIGJvYXJkOgo+ID4gICAgICBSZXF1aXJl
-ZCByb290IG5vZGUgcHJvcGVydGllczoKPiA+ICAgICAgICAtIGNvbXBhdGlibGUgPSAicmFkeGEs
-cm9jayIsICJyb2NrY2hpcCxyazMxODgiOwo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0v
-Ym9vdC9kdHMvTWFrZWZpbGUgYi9hcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZQo+ID4gaW5kZXgg
-YmVmY2QyNi4uZjE5Y2MxZCAxMDA2NDQKPiA+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL01ha2Vm
-aWxlCj4gPiArKysgYi9hcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZQo+ID4gQEAgLTYzOSw2ICs2
-MzksNyBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gXAo+ID4gCj4gPiAgCXJrMzAz
-Ni1reWxpbi5kdGIgXAo+ID4gIAlyazMwNjZhLWJxY3VyaWUyLmR0YiBcCj4gPiAgCXJrMzA2NmEt
-bWFyc2JvYXJkLmR0YiBcCj4gPiAKPiA+ICsJcmszMDY2YS1tazgwOC5kdGIgXAo+ID4gCj4gPiAg
-CXJrMzA2NmEtcmF5ZWFnZXIuZHRiIFwKPiA+ICAJcmszMTg4LXJhZHhhcm9jay5kdGIgXAo+ID4g
-IAlyazMyMjgtZXZiLmR0YiBcCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0
-cy9yazMwNjZhLW1rODA4LmR0cwo+ID4gYi9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLW1rODA4
-LmR0cyBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5kZXggMDAwMDAwMC4uMjg3ODU2Mgo+ID4g
-LS0tIC9kZXYvbnVsbAo+ID4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tazgwOC5k
-dHMKPiA+IEBAIC0wLDAgKzEsMTg0IEBACj4gPiArLyoKPiA+ICsgKiBDb3B5cmlnaHQgKGMpIDIw
-MTYgUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KPiA+ICsgKgo+ID4g
-KyAqIFRoaXMgZmlsZSBpcyBkdWFsLWxpY2Vuc2VkOiB5b3UgY2FuIHVzZSBpdCBlaXRoZXIgdW5k
-ZXIgdGhlIHRlcm1zCj4gPiArICogb2YgdGhlIEdQTCBvciB0aGUgWDExIGxpY2Vuc2UsIGF0IHlv
-dXIgb3B0aW9uLiBOb3RlIHRoYXQgdGhpcyBkdWFsCj4gPiArICogbGljZW5zaW5nIG9ubHkgYXBw
-bGllcyB0byB0aGlzIGZpbGUsIGFuZCBub3QgdGhpcyBwcm9qZWN0IGFzIGEKPiA+ICsgKiB3aG9s
-ZS4KPiA+ICsgKgo+ID4gKyAqICBhKSBUaGlzIGZpbGUgaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNh
-biByZWRpc3RyaWJ1dGUgaXQgYW5kL29yCj4gPiArICogICAgIG1vZGlmeSBpdCB1bmRlciB0aGUg
-dGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGFzCj4gPiArICogICAgIHB1
-Ymxpc2hlZCBieSB0aGUgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uOyBlaXRoZXIgdmVyc2lvbiAy
-IG9mIHRoZQo+ID4gKyAqICAgICBMaWNlbnNlLCBvciAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRl
-ciB2ZXJzaW9uLgo+ID4gKyAqCj4gPiArICogICAgIFRoaXMgZmlsZSBpcyBkaXN0cmlidXRlZCBp
-biB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAo+ID4gKyAqICAgICBidXQgV0lUSE9V
-VCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgo+ID4g
-KyAqICAgICBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBP
-U0UuICBTZWUgdGhlCj4gPiArICogICAgIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBt
-b3JlIGRldGFpbHMuCj4gPiArICoKPiA+ICsgKiBPciwgYWx0ZXJuYXRpdmVseSwKPiA+ICsgKgo+
-ID4gKyAqICBiKSBQZXJtaXNzaW9uIGlzIGhlcmVieSBncmFudGVkLCBmcmVlIG9mIGNoYXJnZSwg
-dG8gYW55IHBlcnNvbgo+ID4gKyAqICAgICBvYnRhaW5pbmcgYSBjb3B5IG9mIHRoaXMgc29mdHdh
-cmUgYW5kIGFzc29jaWF0ZWQgZG9jdW1lbnRhdGlvbgo+ID4gKyAqICAgICBmaWxlcyAodGhlICJT
-b2Z0d2FyZSIpLCB0byBkZWFsIGluIHRoZSBTb2Z0d2FyZSB3aXRob3V0Cj4gPiArICogICAgIHJl
-c3RyaWN0aW9uLCBpbmNsdWRpbmcgd2l0aG91dCBsaW1pdGF0aW9uIHRoZSByaWdodHMgdG8gdXNl
-LAo+ID4gKyAqICAgICBjb3B5LCBtb2RpZnksIG1lcmdlLCBwdWJsaXNoLCBkaXN0cmlidXRlLCBz
-dWJsaWNlbnNlLCBhbmQvb3IKPiA+ICsgKiAgICAgc2VsbCBjb3BpZXMgb2YgdGhlIFNvZnR3YXJl
-LCBhbmQgdG8gcGVybWl0IHBlcnNvbnMgdG8gd2hvbSB0aGUKPiA+ICsgKiAgICAgU29mdHdhcmUg
-aXMgZnVybmlzaGVkIHRvIGRvIHNvLCBzdWJqZWN0IHRvIHRoZSBmb2xsb3dpbmcKPiA+ICsgKiAg
-ICAgY29uZGl0aW9uczoKPiA+ICsgKgo+ID4gKyAqICAgICBUaGUgYWJvdmUgY29weXJpZ2h0IG5v
-dGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZQo+ID4gKyAqICAgICBpbmNs
-dWRlZCBpbiBhbGwgY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2Fy
-ZS4KPiA+ICsgKgo+ID4gKyAqICAgICBUSEUgU09GVFdBUkUgSVMgUFJPVklERUQgIkFTIElTIiwg
-V0lUSE9VVCBXQVJSQU5UWSBPRiBBTlkgS0lORCwKPiA+ICsgKiAgICAgRVhQUkVTUyBPUiBJTVBM
-SUVELCBJTkNMVURJTkcgQlVUIE5PVCBMSU1JVEVEIFRPIFRIRSBXQVJSQU5USUVTCj4gPiArICog
-ICAgIE9GIE1FUkNIQU5UQUJJTElUWSwgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0Ug
-QU5ECj4gPiArICogICAgIE5PTklORlJJTkdFTUVOVC4gSU4gTk8gRVZFTlQgU0hBTEwgVEhFIEFV
-VEhPUlMgT1IgQ09QWVJJR0hUCj4gPiArICogICAgIEhPTERFUlMgQkUgTElBQkxFIEZPUiBBTlkg
-Q0xBSU0sIERBTUFHRVMgT1IgT1RIRVIgTElBQklMSVRZLAo+ID4gKyAqICAgICBXSEVUSEVSIElO
-IEFOIEFDVElPTiBPRiBDT05UUkFDVCwgVE9SVCBPUiBPVEhFUldJU0UsIEFSSVNJTkcKPiA+ICsg
-KiAgICAgRlJPTSwgT1VUIE9GIE9SIElOIENPTk5FQ1RJT04gV0lUSCBUSEUgU09GVFdBUkUgT1Ig
-VEhFIFVTRSBPUgo+ID4gKyAqICAgICBPVEhFUiBERUFMSU5HUyBJTiBUSEUgU09GVFdBUkUuCj4g
-PiArICovCj4gPiArCj4gPiArL2R0cy12MS87Cj4gPiArI2luY2x1ZGUgInJrMzA2NmEuZHRzaSIK
-PiA+ICsKPiA+ICsvIHsKPiA+ICsJbW9kZWwgPSAiUmlrb21hZ2ljIE1LODA4IjsKPiA+ICsJY29t
-cGF0aWJsZSA9ICJyaWtvbWFnaWMsbWs4MDgiLCAicm9ja2NoaXAscmszMDY2YSI7Cj4gPiArCj4g
-PiArCWNob3NlbiB7Cj4gPiArCQlzdGRvdXQtcGF0aCA9ICJzZXJpYWwyOjExNTIwMG44IjsKPiA+
-ICsJfTsKPiA+ICsKPiA+ICsJbWVtb3J5QDYwMDAwMDAwIHsKPiA+ICsJCWRldmljZV90eXBlID0g
-Im1lbW9yeSI7Cj4gPiArCQlyZWcgPSA8MHg2MDAwMDAwMCAweDQwMDAwMDAwPjsKPiA+ICsJfTsK
-PiA+ICsKPiA+ICsJZ3Bpby1sZWRzIHsKPiA+ICsJCWNvbXBhdGlibGUgPSAiZ3Bpby1sZWRzIjsK
-PiA+ICsKPiA+ICsJCWJsdWUgewo+ID4gKwkJCWxhYmVsID0gIm1rODA4OmJsdWU6cG93ZXIiOwo+
-ID4gKwkJCWdwaW9zID0gPCZncGlvMCAzIEdQSU9fQUNUSVZFX0hJR0g+Owo+ID4gKwkJCWRlZmF1
-bHQtc3RhdGUgPSAib2ZmIjsKPiA+ICsJCQlsaW51eCxkZWZhdWx0LXRyaWdnZXIgPSAiZGVmYXVs
-dC1vbiI7Cj4gPiArCQl9Owo+ID4gKwl9Owo+ID4gKwo+ID4gKwltbWNfcHdyc2VxOiBtbWMtcHdy
-c2VxIHsKPiA+ICsJCWNvbXBhdGlibGUgPSAibW1jLXB3cnNlcS1zaW1wbGUiOwo+ID4gKwkJcGlu
-Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+ICsJCXBpbmN0cmwtMCA9IDwmc2RtbWNfcHdyPjsK
-PiAKPiBzZCBzbG90IGRvZXMgbm90IGNvbnRhaW4gYSByZXNldCBwaW4uIFNvIHRoZSBwb3dlciBw
-aW4gc2hvdWxkIGJlCj4gZW5vdWdoLiBqdXN0IGFkZCBzZG1tY19wd3IgdG8gbW1jMCdzIHBpbmN0
-cmwtMCBhbmQgbGV0IG1tYyBkcml2ZXIKPiBjb250cm9sIGl0IHNob3VsZCBiZSBlbm91Z2guIFR5
-cGljYWxseSBwd3JzZXEgaXMgZm9yIGVtbWMgYW5kIHNkaW8uCj4gV2UgZG9uJ3QgbmVlZCBhIHB3
-ZXJzZXEgdG8gY29udHJvbCBwb3dlciBmb3Igc2Qgc2xvdC4uCj4gCj4gQnV0IGl0IHNlZW1zIHNk
-bW1jX3B3ciBpcyBhIEdQSU8sIGJ1dCBub3QgZnVuY3Rpb25hbCBwb3J0Lgo+IFNvIEkgYW0gaW50
-ZXJlc3RpbmcgdGhhdCB3aHkgTUs4MDggYm9hcmQgZG9lc24ndCB1c2UgdGhlIG1tYwo+IGNvbnRy
-b2xsZXIncyBkZWZhdWx0IHBvd2VyIHBpbiBidXQgY2hvc2luZyBhbm90aGVyIGdwaW8sIHNvIGZp
-bmFsbHkKPiB3ZSBoYXZlIHRvIGFkZCB0aHNlcyBjb2RlIGZvciB5b3VyIERULgoKQWN0dWFsbHks
-IHdlIGFsd2F5cyBtb2RlbCB0aGUgc2QtbW1jIHB3ci1waW4gYXMgZ3Bpby1iYXNlZCByZWd1bGF0
-b3IgKHNlZSAKc2RtbWMtcmVndWxhdG9yIGZvciBleGFtcGxlIGluIHRoZSByazMwNjZhLXJheWVh
-Z2VyLmR0cyksIGFuZCBzcGVjaWZpeSB0aGlzIApyZWd1bGF0b3IgYXMgdm1tYy4gVGhhdCB3YXkg
-dGhlIG1tYyBjb3JlIHJlYWxseSBjYW4gY29udHJvbCB0aGUgcG93ZXIuCgoKSGVpa28KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Rename rockchip_pcie_read() to rockchip_readl() and rockchip_pcie_write()
+to rockchip_writel() for consistency with other drivers.  No functional
+change intended.
+
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+---
+ drivers/pci/host/pcie-rockchip.c |   85 +++++++++++++++++++-------------------
+ 1 file changed, 42 insertions(+), 43 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index b8c82fc..0ef2f9f 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -204,12 +204,12 @@ struct rockchip_pcie {
+ 	struct	irq_domain *irq_domain;
+ };
+ 
+-static u32 rockchip_pcie_read(struct rockchip_pcie *rockchip, u32 reg)
++static u32 rockchip_readl(struct rockchip_pcie *rockchip, u32 reg)
+ {
+ 	return readl(rockchip->apb_base + reg);
+ }
+ 
+-static void rockchip_pcie_write(struct rockchip_pcie *rockchip, u32 val,
++static void rockchip_writel(struct rockchip_pcie *rockchip, u32 val,
+ 				u32 reg)
+ {
+ 	writel(val, rockchip->apb_base + reg);
+@@ -219,18 +219,18 @@ static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
+ {
+ 	u32 status;
+ 
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++	status = rockchip_readl(rockchip, PCIE_RC_CONFIG_LCS);
+ 	status |= (PCIE_RC_CONFIG_LCS_LBMIE | PCIE_RC_CONFIG_LCS_LABIE);
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	rockchip_writel(rockchip, status, PCIE_RC_CONFIG_LCS);
+ }
+ 
+ static void rockchip_pcie_clr_bw_int(struct rockchip_pcie *rockchip)
+ {
+ 	u32 status;
+ 
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++	status = rockchip_readl(rockchip, PCIE_RC_CONFIG_LCS);
+ 	status |= (PCIE_RC_CONFIG_LCS_LBMS | PCIE_RC_CONFIG_LCS_LAMS);
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	rockchip_writel(rockchip, status, PCIE_RC_CONFIG_LCS);
+ }
+ 
+ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
+@@ -238,10 +238,10 @@ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
+ 	u32 val;
+ 
+ 	/* Update Tx credit maximum update interval */
+-	val = rockchip_pcie_read(rockchip, PCIE_CORE_TXCREDIT_CFG1);
++	val = rockchip_readl(rockchip, PCIE_CORE_TXCREDIT_CFG1);
+ 	val &= ~PCIE_CORE_TXCREDIT_CFG1_MUI_MASK;
+ 	val |= PCIE_CORE_TXCREDIT_CFG1_MUI_ENCODE(24000);	/* ns */
+-	rockchip_pcie_write(rockchip, val, PCIE_CORE_TXCREDIT_CFG1);
++	rockchip_writel(rockchip, val, PCIE_CORE_TXCREDIT_CFG1);
+ }
+ 
+ static int rockchip_pcie_valid_device(struct rockchip_pcie *rockchip,
+@@ -438,7 +438,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
+-	rockchip_pcie_write(rockchip,
++	rockchip_writel(rockchip,
+ 			    PCIE_CLIENT_CONF_ENABLE |
+ 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
+ 			    PCIE_CLIENT_ARI_ENABLE |
+@@ -487,17 +487,17 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	 * reliable and enabling ASPM doesn't work.  This is a controller
+ 	 * bug we need to work around.
+ 	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
++	status = rockchip_readl(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
++	rockchip_writel(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+ 
+ 	/* Fix the transmitted FTS count desired to exit from L0s. */
+-	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
++	status = rockchip_readl(rockchip, PCIE_CORE_CTRL_PLC1);
+ 	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
+ 		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
+-	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
++	rockchip_writel(rockchip, status, PCIE_CORE_CTRL_PLC1);
+ 
+ 	/* Enable Gen1 training */
+-	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
++	rockchip_writel(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+ 
+ 	gpiod_set_value(rockchip->ep_gpio, 1);
+@@ -506,8 +506,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	timeout = jiffies + msecs_to_jiffies(500);
+ 
+ 	for (;;) {
+-		status = rockchip_pcie_read(rockchip,
+-					    PCIE_CLIENT_BASIC_STATUS1);
++		status = rockchip_readl(rockchip, PCIE_CLIENT_BASIC_STATUS1);
+ 		if ((status & PCIE_CLIENT_LINK_STATUS_MASK) ==
+ 		    PCIE_CLIENT_LINK_STATUS_UP) {
+ 			dev_dbg(dev, "PCIe link training gen1 pass!\n");
+@@ -526,13 +525,13 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	 * Enable retrain for gen2. This should be configured only after
+ 	 * gen1 finished.
+ 	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++	status = rockchip_readl(rockchip, PCIE_RC_CONFIG_LCS);
+ 	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	rockchip_writel(rockchip, status, PCIE_RC_CONFIG_LCS);
+ 
+ 	timeout = jiffies + msecs_to_jiffies(500);
+ 	for (;;) {
+-		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++		status = rockchip_readl(rockchip, PCIE_CORE_CTRL);
+ 		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+ 		    PCIE_CORE_PL_CONF_SPEED_5G) {
+ 			dev_dbg(dev, "PCIe link training gen2 pass!\n");
+@@ -548,25 +547,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	}
+ 
+ 	/* Check the final link width from negotiated lane counter from MGMT */
+-	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++	status = rockchip_readl(rockchip, PCIE_CORE_CTRL);
+ 	status =  0x1 << ((status & PCIE_CORE_PL_CONF_LANE_MASK) >>
+ 			  PCIE_CORE_PL_CONF_LANE_MASK);
+ 	dev_dbg(dev, "current link width is x%d\n", status);
+ 
+-	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
++	rockchip_writel(rockchip, ROCKCHIP_VENDOR_ID,
+ 			    PCIE_RC_CONFIG_VENDOR);
+-	rockchip_pcie_write(rockchip,
++	rockchip_writel(rockchip,
+ 			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
+ 			    PCIE_RC_CONFIG_RID_CCR);
+-	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
++	rockchip_writel(rockchip, 0x0, PCIE_RC_BAR_CONF);
+ 
+-	rockchip_pcie_write(rockchip,
++	rockchip_writel(rockchip,
+ 			    (RC_REGION_0_ADDR_TRANS_L + RC_REGION_0_PASS_BITS),
+ 			    PCIE_CORE_OB_REGION_ADDR0);
+-	rockchip_pcie_write(rockchip, RC_REGION_0_ADDR_TRANS_H,
++	rockchip_writel(rockchip, RC_REGION_0_ADDR_TRANS_H,
+ 			    PCIE_CORE_OB_REGION_ADDR1);
+-	rockchip_pcie_write(rockchip, 0x0080000a, PCIE_CORE_OB_REGION_DESC0);
+-	rockchip_pcie_write(rockchip, 0x0, PCIE_CORE_OB_REGION_DESC1);
++	rockchip_writel(rockchip, 0x0080000a, PCIE_CORE_OB_REGION_DESC0);
++	rockchip_writel(rockchip, 0x0, PCIE_CORE_OB_REGION_DESC1);
+ 
+ 	return 0;
+ }
+@@ -578,10 +577,10 @@ static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+ 	u32 reg;
+ 	u32 sub_reg;
+ 
+-	reg = rockchip_pcie_read(rockchip, PCIE_CLIENT_INT_STATUS);
++	reg = rockchip_readl(rockchip, PCIE_CLIENT_INT_STATUS);
+ 	if (reg & PCIE_CLIENT_INT_LOCAL) {
+ 		dev_dbg(dev, "local interrupt received\n");
+-		sub_reg = rockchip_pcie_read(rockchip, PCIE_CORE_INT_STATUS);
++		sub_reg = rockchip_readl(rockchip, PCIE_CORE_INT_STATUS);
+ 		if (sub_reg & PCIE_CORE_INT_PRFPE)
+ 			dev_dbg(dev, "parity error detected while reading from the PNP receive FIFO RAM\n");
+ 
+@@ -624,15 +623,15 @@ static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+ 		if (sub_reg & PCIE_CORE_INT_MMVC)
+ 			dev_dbg(dev, "MSI mask register changes\n");
+ 
+-		rockchip_pcie_write(rockchip, sub_reg, PCIE_CORE_INT_STATUS);
++		rockchip_writel(rockchip, sub_reg, PCIE_CORE_INT_STATUS);
+ 	} else if (reg & PCIE_CLIENT_INT_PHY) {
+ 		dev_dbg(dev, "phy link changes\n");
+ 		rockchip_pcie_update_txcredit_mui(rockchip);
+ 		rockchip_pcie_clr_bw_int(rockchip);
+ 	}
+ 
+-	rockchip_pcie_write(rockchip, reg & PCIE_CLIENT_INT_LOCAL,
+-			    PCIE_CLIENT_INT_STATUS);
++	rockchip_writel(rockchip, reg & PCIE_CLIENT_INT_LOCAL,
++			PCIE_CLIENT_INT_STATUS);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -643,7 +642,7 @@ static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
+ 	struct device *dev = rockchip->dev;
+ 	u32 reg;
+ 
+-	reg = rockchip_pcie_read(rockchip, PCIE_CLIENT_INT_STATUS);
++	reg = rockchip_readl(rockchip, PCIE_CLIENT_INT_STATUS);
+ 	if (reg & PCIE_CLIENT_INT_LEGACY_DONE)
+ 		dev_dbg(dev, "legacy done interrupt received\n");
+ 
+@@ -668,7 +667,7 @@ static irqreturn_t rockchip_pcie_client_irq_handler(int irq, void *arg)
+ 	if (reg & PCIE_CLIENT_INT_PHY)
+ 		dev_dbg(dev, "phy interrupt received\n");
+ 
+-	rockchip_pcie_write(rockchip, reg & (PCIE_CLIENT_INT_LEGACY_DONE |
++	rockchip_writel(rockchip, reg & (PCIE_CLIENT_INT_LEGACY_DONE |
+ 			      PCIE_CLIENT_INT_MSG | PCIE_CLIENT_INT_HOT_RST |
+ 			      PCIE_CLIENT_INT_DPA | PCIE_CLIENT_INT_FATAL_ERR |
+ 			      PCIE_CLIENT_INT_NFATAL_ERR |
+@@ -690,7 +689,7 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+ 
+ 	chained_irq_enter(chip, desc);
+ 
+-	reg = rockchip_pcie_read(rockchip, PCIE_CLIENT_INT_STATUS);
++	reg = rockchip_readl(rockchip, PCIE_CLIENT_INT_STATUS);
+ 	reg = (reg & PCIE_CLIENT_INTR_MASK) >> PCIE_CLIENT_INTR_SHIFT;
+ 
+ 	while (reg) {
+@@ -914,9 +913,9 @@ err_out:
+ 
+ static void rockchip_pcie_enable_interrupts(struct rockchip_pcie *rockchip)
+ {
+-	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) &
++	rockchip_writel(rockchip, (PCIE_CLIENT_INT_CLI << 16) &
+ 			    (~PCIE_CLIENT_INT_CLI), PCIE_CLIENT_INT_MASK);
+-	rockchip_pcie_write(rockchip, (u32)(~PCIE_CORE_INT),
++	rockchip_writel(rockchip, (u32)(~PCIE_CORE_INT),
+ 			    PCIE_CORE_INT_MASK);
+ 
+ 	rockchip_pcie_enable_bw_int(rockchip);
+@@ -986,13 +985,13 @@ static int rockchip_pcie_prog_ob_atu(struct rockchip_pcie *rockchip,
+ 	ob_addr_1 = upper_addr;
+ 	ob_desc_0 = (1 << 23 | type);
+ 
+-	rockchip_pcie_write(rockchip, ob_addr_0,
++	rockchip_writel(rockchip, ob_addr_0,
+ 			    PCIE_CORE_OB_REGION_ADDR0 + aw_offset);
+-	rockchip_pcie_write(rockchip, ob_addr_1,
++	rockchip_writel(rockchip, ob_addr_1,
+ 			    PCIE_CORE_OB_REGION_ADDR1 + aw_offset);
+-	rockchip_pcie_write(rockchip, ob_desc_0,
++	rockchip_writel(rockchip, ob_desc_0,
+ 			    PCIE_CORE_OB_REGION_DESC0 + aw_offset);
+-	rockchip_pcie_write(rockchip, 0,
++	rockchip_writel(rockchip, 0,
+ 			    PCIE_CORE_OB_REGION_DESC1 + aw_offset);
+ 
+ 	return 0;
+@@ -1019,8 +1018,8 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+ 	ib_addr_0 |= (lower_addr << 8) & PCIE_CORE_IB_REGION_ADDR0_LO_ADDR;
+ 	ib_addr_1 = upper_addr;
+ 
+-	rockchip_pcie_write(rockchip, ib_addr_0, PCIE_RP_IB_ADDR0 + aw_offset);
+-	rockchip_pcie_write(rockchip, ib_addr_1, PCIE_RP_IB_ADDR1 + aw_offset);
++	rockchip_writel(rockchip, ib_addr_0, PCIE_RP_IB_ADDR0 + aw_offset);
++	rockchip_writel(rockchip, ib_addr_1, PCIE_RP_IB_ADDR1 + aw_offset);
+ 
+ 	return 0;
+ }
