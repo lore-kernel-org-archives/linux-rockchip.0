@@ -1,86 +1,35 @@
-From: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [RFC PATCH v2 4/4] mmc: dw_mmc-rockchip: disable biu clk and genpd
- if possible
-Date: Fri, 07 Oct 2016 13:15:55 +0900
-Message-ID: <b9180674-648a-d2d1-0221-cec90b73adab@samsung.com>
-References: <1475225317-2815-1-git-send-email-shawn.lin@rock-chips.com>
- <CGME20160930084711epcas1p39c48a870457a6f9985574963ae683354@epcas1p3.samsung.com>
- <1475225317-2815-5-git-send-email-shawn.lin@rock-chips.com>
+From: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691@gmail.com>
+Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: Add rk3066 MK808 board
+Date: Fri, 7 Oct 2016 10:40:21 +0200
+Message-ID: <18c0552c-10fa-a749-9777-9a99da9f275f@gmail.com>
+References: <cover.1475774981.git.paweljarosz3691@gmail.com>
+ <b63a0ad452a487beb1d0c07addb9208cc3b3eeef.1475774981.git.paweljarosz3691@gmail.com>
+ <a166a444-8819-ffe7-8ee1-1f632f6a66ab@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <1475225317-2815-5-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <a166a444-8819-ffe7-8ee1-1f632f6a66ab@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: mark.rutland@arm.com, heiko@sntech.de, linux@armlinux.org.uk, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/30/2016 05:48 PM, Shawn Lin wrote:
-> We could disable biu clk and power-off genpd if gpio
-> card detect available.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  drivers/mmc/host/dw_mmc-rockchip.c | 18 +++++++++++++++++-
->  1 file changed, 17 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 3ad041c..e7b3b6d 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -13,6 +13,7 @@
->  #include <linux/mmc/host.h>
->  #include <linux/mmc/dw_mmc.h>
->  #include <linux/of_address.h>
-> +#include <linux/mmc/slot-gpio.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/slab.h>
->  
-> @@ -366,14 +367,29 @@ static int dw_mci_rockchip_remove(struct platform_device *pdev)
->  static int dw_mci_rockchip_runtime_suspend(struct device *dev)
->  {
->  	struct dw_mci *host = dev_get_drvdata(dev);
-> +	int ret;
->  
-> -	return dw_mci_runtime_suspend(host);
-> +	ret = dw_mci_runtime_suspend(host);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (mmc_can_gpio_cd(host->slot[0]->mmc)) {
-
-Can use cur_slot instead of slot[0]? And doesn't need to check "host->slot[]" or "host->cur_slot"?
-
-Best Regards,
-Jaehoon Chung
-
-> +		clk_disable_unprepare(host->biu_clk);
-> +		pm_runtime_put(dev);
-> +	}
-> +
-> +	return 0;
->  }
->  
->  static int dw_mci_rockchip_runtime_resume(struct device *dev)
->  {
->  	struct dw_mci *host = dev_get_drvdata(dev);
->  
-> +	if (mmc_can_gpio_cd(host->slot[0]->mmc)) {
-> +		pm_runtime_get_sync(dev);
-> +		clk_prepare_enable(host->biu_clk);
-> +	}
-> +
->  	return dw_mci_runtime_resume(host);
->  }
->  #endif /* CONFIG_PM */
-> 
+SGkgU2hhd24sCgoKPj4gKyZtbWMwIHsKPj4gKyAgICBidXMtd2lkdGggPSA8ND47Cj4+ICsgICAg
+Y2FwLW1tYy1oaWdoc3BlZWQ7Cj4+ICsgICAgY2FwLXNkLWhpZ2hzcGVlZDsKPj4gKyAgICBtbWMt
+cHdyc2VxID0gPCZtbWNfcHdyc2VxPjsKPgo+IFJlbW92ZWQgdGhpcyBjb3VsZCBtYWtlIFNEIHdv
+cmtzPwoKWWVzIGJ1dCBkaXNhYmxpbmcgYnVzLXdpZHRoIGNhdXNlcyBzZCBwZXJmb3JtYW5jZSBk
+ZWNyZWFzZShkZWZhdWx0cyB0byAKMT8pIHNvIGknbGwgbGVhdmUgdGhpcyBvbmUuCgpPdGhlciBz
+dWdlc3Rpb25zIHdpbGwgYmUgaW5jbHVkZWQgaW4gdjMuCgpUaGFua3MKClBhd2XFgi4KCgoKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0t
+a2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2Vy
+bmVsCg==
