@@ -1,170 +1,144 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: Add rk3066 MK808 board
-Date: Fri, 7 Oct 2016 10:29:48 +0800
-Message-ID: <a166a444-8819-ffe7-8ee1-1f632f6a66ab@rock-chips.com>
-References: <cover.1475774981.git.paweljarosz3691@gmail.com>
- <b63a0ad452a487beb1d0c07addb9208cc3b3eeef.1475774981.git.paweljarosz3691@gmail.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [RFC PATCH v2 1/4] mmc: dw_mmc: add runtime PM callback
+Date: Fri, 07 Oct 2016 13:12:54 +0900
+Message-ID: <2dd84d82-a14b-7d5e-80f0-89e6c0b1aaae@samsung.com>
+References: <1475225317-2815-1-git-send-email-shawn.lin@rock-chips.com>
+ <CGME20160930084627epcas1p182ccca03bf63d4cd072e061ca5800510@epcas1p1.samsung.com>
+ <1475225317-2815-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b63a0ad452a487beb1d0c07addb9208cc3b3eeef.1475774981.git.paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1475225317-2815-2-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGF3ZcWCICwKCk9uIDIwMTYvMTAvNyAxOjM4LCBQYXdlxYIgSmFyb3N6IHdyb3RlOgo+IE1L
-ODA4IGlzIGEgdHYgc3RpY2sgd2hpY2ggaGFzIHJvY2tjaGlwIHJrMzA2NiBDUFUgaW5zaWRlLCB0
-d28gdXNiIHBvcnRzCj4gLSBob3N0IGFuZCBvdGcsIG1pY3JvIHNkIGNhcmQgc2xvdCBhbmQgb25i
-b2FyZCB3aWZpIFJLOTAxLgo+Cj4gU2lnbmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxq
-YXJvc3ozNjkxQGdtYWlsLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSBpbmNsdWRl
-ZCBIZWlrbyBzdWdlc3Rpb24uCj4KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2FybS9yb2NrY2hpcC50eHQgfCAgIDQgKwo+ICBhcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZSAg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2
-NmEtbWs4MDguZHRzICAgICAgICAgICAgICAgIHwgMTg0ICsrKysrKysrKysrKysrKysrKysrKwo+
-ICAzIGZpbGVzIGNoYW5nZWQsIDE4OSBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLW1rODA4LmR0cwo+Cj4gZGlmZiAtLWdpdCBhL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAudHh0IGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC50eHQKPiBpbmRleCA1NWYz
-ODhmLi5jMDk1OTViIDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9hcm0vcm9ja2NoaXAudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2FybS9yb2NrY2hpcC50eHQKPiBAQCAtMTcsNiArMTcsMTAgQEAgUm9ja2NoaXAgcGxh
-dGZvcm1zIGRldmljZSB0cmVlIGJpbmRpbmdzCj4gICAgICBSZXF1aXJlZCByb290IG5vZGUgcHJv
-cGVydGllczoKPiAgICAgICAgLSBjb21wYXRpYmxlID0gImNoaXBzcGFyayxyYXllYWdlci1weDIi
-LCAicm9ja2NoaXAscmszMDY2YSI7Cj4KPiArLSBSaWtvbWFnaWMgTUs4MDggdjEgYm9hcmQ6Cj4g
-KyAgICBSZXF1aXJlZCByb290IG5vZGUgcHJvcGVydGllczoKPiArICAgICAgLSBjb21wYXRpYmxl
-ID0gInJpa29tYWdpYyxtazgwOCIsICJyb2NrY2hpcCxyazMwNjZhIjsKPiArCj4gIC0gUmFkeGEg
-Um9jayBib2FyZDoKPiAgICAgIFJlcXVpcmVkIHJvb3Qgbm9kZSBwcm9wZXJ0aWVzOgo+ICAgICAg
-ICAtIGNvbXBhdGlibGUgPSAicmFkeGEscm9jayIsICJyb2NrY2hpcCxyazMxODgiOwo+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZSBiL2FyY2gvYXJtL2Jvb3QvZHRzL01h
-a2VmaWxlCj4gaW5kZXggYmVmY2QyNi4uZjE5Y2MxZCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9i
-b290L2R0cy9NYWtlZmlsZQo+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL01ha2VmaWxlCj4gQEAg
-LTYzOSw2ICs2MzksNyBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gXAo+ICAJcmsz
-MDM2LWt5bGluLmR0YiBcCj4gIAlyazMwNjZhLWJxY3VyaWUyLmR0YiBcCj4gIAlyazMwNjZhLW1h
-cnNib2FyZC5kdGIgXAo+ICsJcmszMDY2YS1tazgwOC5kdGIgXAo+ICAJcmszMDY2YS1yYXllYWdl
-ci5kdGIgXAo+ICAJcmszMTg4LXJhZHhhcm9jay5kdGIgXAo+ICAJcmszMjI4LWV2Yi5kdGIgXAo+
-IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLW1rODA4LmR0cyBiL2FyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzA2NmEtbWs4MDguZHRzCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBp
-bmRleCAwMDAwMDAwLi4yODc4NTYyCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2FyY2gvYXJtL2Jv
-b3QvZHRzL3JrMzA2NmEtbWs4MDguZHRzCj4gQEAgLTAsMCArMSwxODQgQEAKPiArLyoKPiArICog
-Q29weXJpZ2h0IChjKSAyMDE2IFBhd2XFgiBKYXJvc3ogPHBhd2VsamFyb3N6MzY5MUBnbWFpbC5j
-b20+Cj4gKyAqCj4gKyAqIFRoaXMgZmlsZSBpcyBkdWFsLWxpY2Vuc2VkOiB5b3UgY2FuIHVzZSBp
-dCBlaXRoZXIgdW5kZXIgdGhlIHRlcm1zCj4gKyAqIG9mIHRoZSBHUEwgb3IgdGhlIFgxMSBsaWNl
-bnNlLCBhdCB5b3VyIG9wdGlvbi4gTm90ZSB0aGF0IHRoaXMgZHVhbAo+ICsgKiBsaWNlbnNpbmcg
-b25seSBhcHBsaWVzIHRvIHRoaXMgZmlsZSwgYW5kIG5vdCB0aGlzIHByb2plY3QgYXMgYQo+ICsg
-KiB3aG9sZS4KPiArICoKPiArICogIGEpIFRoaXMgZmlsZSBpcyBmcmVlIHNvZnR3YXJlOyB5b3Ug
-Y2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IKPiArICogICAgIG1vZGlmeSBpdCB1bmRlciB0aGUg
-dGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGFzCj4gKyAqICAgICBwdWJs
-aXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbjsgZWl0aGVyIHZlcnNpb24gMiBv
-ZiB0aGUKPiArICogICAgIExpY2Vuc2UsIG9yIChhdCB5b3VyIG9wdGlvbikgYW55IGxhdGVyIHZl
-cnNpb24uCj4gKyAqCj4gKyAqICAgICBUaGlzIGZpbGUgaXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhv
-cGUgdGhhdCBpdCB3aWxsIGJlIHVzZWZ1bCwKPiArICogICAgIGJ1dCBXSVRIT1VUIEFOWSBXQVJS
-QU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mCj4gKyAqICAgICBNRVJD
-SEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhl
-Cj4gKyAqICAgICBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBmb3IgbW9yZSBkZXRhaWxzLgo+
-ICsgKgo+ICsgKiBPciwgYWx0ZXJuYXRpdmVseSwKPiArICoKPiArICogIGIpIFBlcm1pc3Npb24g
-aXMgaGVyZWJ5IGdyYW50ZWQsIGZyZWUgb2YgY2hhcmdlLCB0byBhbnkgcGVyc29uCj4gKyAqICAg
-ICBvYnRhaW5pbmcgYSBjb3B5IG9mIHRoaXMgc29mdHdhcmUgYW5kIGFzc29jaWF0ZWQgZG9jdW1l
-bnRhdGlvbgo+ICsgKiAgICAgZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbCBpbiB0aGUg
-U29mdHdhcmUgd2l0aG91dAo+ICsgKiAgICAgcmVzdHJpY3Rpb24sIGluY2x1ZGluZyB3aXRob3V0
-IGxpbWl0YXRpb24gdGhlIHJpZ2h0cyB0byB1c2UsCj4gKyAqICAgICBjb3B5LCBtb2RpZnksIG1l
-cmdlLCBwdWJsaXNoLCBkaXN0cmlidXRlLCBzdWJsaWNlbnNlLCBhbmQvb3IKPiArICogICAgIHNl
-bGwgY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20g
-dGhlCj4gKyAqICAgICBTb2Z0d2FyZSBpcyBmdXJuaXNoZWQgdG8gZG8gc28sIHN1YmplY3QgdG8g
-dGhlIGZvbGxvd2luZwo+ICsgKiAgICAgY29uZGl0aW9uczoKPiArICoKPiArICogICAgIFRoZSBh
-Ym92ZSBjb3B5cmlnaHQgbm90aWNlIGFuZCB0aGlzIHBlcm1pc3Npb24gbm90aWNlIHNoYWxsIGJl
-Cj4gKyAqICAgICBpbmNsdWRlZCBpbiBhbGwgY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25z
-IG9mIHRoZSBTb2Z0d2FyZS4KPiArICoKPiArICogICAgIFRIRSBTT0ZUV0FSRSBJUyBQUk9WSURF
-RCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELAo+ICsgKiAgICAgRVhQUkVT
-UyBPUiBJTVBMSUVELCBJTkNMVURJTkcgQlVUIE5PVCBMSU1JVEVEIFRPIFRIRSBXQVJSQU5USUVT
-Cj4gKyAqICAgICBPRiBNRVJDSEFOVEFCSUxJVFksIEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQ
-VVJQT1NFIEFORAo+ICsgKiAgICAgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBU
-SEUgQVVUSE9SUyBPUiBDT1BZUklHSFQKPiArICogICAgIEhPTERFUlMgQkUgTElBQkxFIEZPUiBB
-TlkgQ0xBSU0sIERBTUFHRVMgT1IgT1RIRVIgTElBQklMSVRZLAo+ICsgKiAgICAgV0hFVEhFUiBJ
-TiBBTiBBQ1RJT04gT0YgQ09OVFJBQ1QsIFRPUlQgT1IgT1RIRVJXSVNFLCBBUklTSU5HCj4gKyAq
-ICAgICBGUk9NLCBPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBU
-SEUgVVNFIE9SCj4gKyAqICAgICBPVEhFUiBERUFMSU5HUyBJTiBUSEUgU09GVFdBUkUuCj4gKyAq
-Lwo+ICsKPiArL2R0cy12MS87Cj4gKyNpbmNsdWRlICJyazMwNjZhLmR0c2kiCj4gKwo+ICsvIHsK
-PiArCW1vZGVsID0gIlJpa29tYWdpYyBNSzgwOCI7Cj4gKwljb21wYXRpYmxlID0gInJpa29tYWdp
-YyxtazgwOCIsICJyb2NrY2hpcCxyazMwNjZhIjsKPiArCj4gKwljaG9zZW4gewo+ICsJCXN0ZG91
-dC1wYXRoID0gInNlcmlhbDI6MTE1MjAwbjgiOwo+ICsJfTsKPiArCj4gKwltZW1vcnlANjAwMDAw
-MDAgewo+ICsJCWRldmljZV90eXBlID0gIm1lbW9yeSI7Cj4gKwkJcmVnID0gPDB4NjAwMDAwMDAg
-MHg0MDAwMDAwMD47Cj4gKwl9Owo+ICsKPiArCWdwaW8tbGVkcyB7Cj4gKwkJY29tcGF0aWJsZSA9
-ICJncGlvLWxlZHMiOwo+ICsKPiArCQlibHVlIHsKPiArCQkJbGFiZWwgPSAibWs4MDg6Ymx1ZTpw
-b3dlciI7Cj4gKwkJCWdwaW9zID0gPCZncGlvMCAzIEdQSU9fQUNUSVZFX0hJR0g+Owo+ICsJCQlk
-ZWZhdWx0LXN0YXRlID0gIm9mZiI7Cj4gKwkJCWxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJkZWZh
-dWx0LW9uIjsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwltbWNfcHdyc2VxOiBtbWMtcHdyc2VxIHsK
-PiArCQljb21wYXRpYmxlID0gIm1tYy1wd3JzZXEtc2ltcGxlIjsKPiArCQlwaW5jdHJsLW5hbWVz
-ID0gImRlZmF1bHQiOwo+ICsJCXBpbmN0cmwtMCA9IDwmc2RtbWNfcHdyPjsKCnNkIHNsb3QgZG9l
-cyBub3QgY29udGFpbiBhIHJlc2V0IHBpbi4gU28gdGhlIHBvd2VyIHBpbiBzaG91bGQgYmUKZW5v
-dWdoLiBqdXN0IGFkZCBzZG1tY19wd3IgdG8gbW1jMCdzIHBpbmN0cmwtMCBhbmQgbGV0IG1tYyBk
-cml2ZXIKY29udHJvbCBpdCBzaG91bGQgYmUgZW5vdWdoLiBUeXBpY2FsbHkgcHdyc2VxIGlzIGZv
-ciBlbW1jIGFuZCBzZGlvLgpXZSBkb24ndCBuZWVkIGEgcHdlcnNlcSB0byBjb250cm9sIHBvd2Vy
-IGZvciBzZCBzbG90Li4KCkJ1dCBpdCBzZWVtcyBzZG1tY19wd3IgaXMgYSBHUElPLCBidXQgbm90
-IGZ1bmN0aW9uYWwgcG9ydC4KU28gSSBhbSBpbnRlcmVzdGluZyB0aGF0IHdoeSBNSzgwOCBib2Fy
-ZCBkb2Vzbid0IHVzZSB0aGUgbW1jCmNvbnRyb2xsZXIncyBkZWZhdWx0IHBvd2VyIHBpbiBidXQg
-Y2hvc2luZyBhbm90aGVyIGdwaW8sIHNvIGZpbmFsbHkKd2UgaGF2ZSB0byBhZGQgdGhzZXMgY29k
-ZSBmb3IgeW91ciBEVC4KCj4gKwkJcmVzZXQtZ3Bpb3MgPSA8JmdwaW8zIDcgR1BJT19BQ1RJVkVf
-SElHSD47Cj4gKwl9Owo+ICsKPiArCXNkaW9fcHdyc2VxOiBzZGlvLXB3cnNlcSB7Cj4gKwkJY29t
-cGF0aWJsZSA9ICJtbWMtcHdyc2VxLXNpbXBsZSI7Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZh
-dWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8JndpZmlfcHdyPjsKPiArCQlyZXNldC1ncGlvcyA9IDwm
-Z3BpbzMgMjQgR1BJT19BQ1RJVkVfTE9XPjsKPiArCX07Cj4gKwo+ICsJdmNjX2lvOiB2Y2MtaW8g
-ewo+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiArCQlyZWd1bGF0b3ItbmFt
-ZSA9ICJ2Y2NfaW8iOwo+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMDA+Owo+
-ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDUwMDAwMDA+OwoKQXJlIHlvdSBzdXJlIGl0
-IHNob3VsZCBiZSBmaXhlZCB0byA1Vj8gSSBhc2sgdGhpcyBzaW5jZSBJIHNlZQp0aGUgbW1jIHVz
-ZSB0aGlzIGFzIHZtbWMgd2hpY2ggc2hvdWxkIGJlIDNWfjNWMyBpbiBwcmluY2lwbGUuCgo+ICsJ
-CXJlZ3VsYXRvci1hbHdheXMtb247CgpJJ20gbm90IHN1cmUgd2hldGhlciB5b3UgbmVlZCB0aGlz
-LiBUaGUgcmVndWxhdG9yIHdvdWxkIG1haW50YWluCnRoZSB1c2VyX2NvdW50IHRoZXJlLiBTbyBm
-cm9tIHRoaXMgcGF0Y2gsIEkgdGhpbmsgaXQgc2hvdWxkIGJlIHR1cm5lZApvZmYgc2luY2Ugd2Ug
-cG9zc2libGUgZG9uJ3QgZW5hYmxlIHVzYiBhbmQgbW1jPwoKTW9yZW92ZXIsIHRoZSBhbHdheXMt
-b24gcG93ZXIgc3VwcGx5IGlzIGRlcHJlY2lhdGVkIGJ5IHZtbWMgc2luY2UgaXQKY2F1c2Ugc29t
-ZSBwcm9ibGVtIHRvIGEgY2VydGFpbiBkZWdyZWUuCgo+ICsJfTsKPiArCj4gKwl2Y2NfaG9zdDog
-dXNiLWhvc3QtcmVndWxhdG9yIHsKPiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7
-Cj4gKwkJZ3BpbyA9IDwmZ3BpbzAgNiBHUElPX0FDVElWRV9ISUdIPjsKPiArCQlwaW5jdHJsLTAg
-PSA8Jmhvc3RfZHJ2PjsKPiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJCXJlZ3Vs
-YXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAiaG9zdC1wd3IiOwo+ICsJCXJl
-Z3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1tYXgtbWlj
-cm92b2x0ID0gPDUwMDAwMDA+Owo+ICsJCXN0YXJ0dXAtZGVsYXktdXMgPSA8MTAwMDAwPjsKPiAr
-CQl2aW4tc3VwcGx5ID0gPCZ2Y2NfaW8+Owo+ICsJfTsKPiArCj4gKwl2Y2Nfb3RnOiB1c2Itb3Rn
-LXJlZ3VsYXRvciB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCWdw
-aW8gPSA8JmdwaW8wIDUgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJcGluY3RybC0wID0gPCZvdGdf
-ZHJ2PjsKPiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJCXJlZ3VsYXRvci1hbHdh
-eXMtb247Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjX290ZyI7Cj4gKwkJcmVndWxhdG9yLW1p
-bi1taWNyb3ZvbHQgPSA8NTAwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8
-NTAwMDAwMD47Cj4gKwkJc3RhcnR1cC1kZWxheS11cyA9IDwxMDAwMDA+Owo+ICsJCXZpbi1zdXBw
-bHkgPSA8JnZjY19pbz47Cj4gKwl9Owo+ICt9OwoKU2FtZSBjb25jZXJuIGZvciB0aGVzZSBhYm92
-ZS4KCj4gKwo+ICsmbW1jMCB7Cj4gKwlidXMtd2lkdGggPSA8ND47Cj4gKwljYXAtbW1jLWhpZ2hz
-cGVlZDsKPiArCWNhcC1zZC1oaWdoc3BlZWQ7Cj4gKwltbWMtcHdyc2VxID0gPCZtbWNfcHdyc2Vx
-PjsKClJlbW92ZWQgdGhpcyBjb3VsZCBtYWtlIFNEIHdvcmtzPwoKQWxzbyBkbyB5b3UgbmVlZCBk
-aXNhYmxlLXdwIGZvciBzZCBzbG90PwoKPiArCW51bS1zbG90cyA9IDwxPjsKPiArCXN0YXR1cyA9
-ICJva2F5IjsKPiArCXZtbWMtc3VwcGx5ID0gPCZ2Y2NfaW8+Owo+ICt9Owo+ICsKPiArJm1tYzEg
-ewo+ICsJYnVzLXdpZHRoID0gPDQ+Owo+ICsJZGlzYWJsZS13cDsKPiArCW1tYy1wd3JzZXEgPSA8
-JnNkaW9fcHdyc2VxPjsKPiArCW5vbi1yZW1vdmFibGU7Cj4gKwludW0tc2xvdHMgPSA8MT47Cj4g
-KwlzdGF0dXMgPSAib2theSI7Cj4gKwl2bW1jLXN1cHBseSA9IDwmdmNjX2lvPjsKPiArfTsKPiAr
-Cj4gKyZwaW5jdHJsIHsKPiArCXVzYi1ob3N0IHsKPiArCQlob3N0X2RydjogaG9zdC1kcnYgewo+
-ICsJCQlyb2NrY2hpcCxwaW5zID0gPFJLX0dQSU8wIDYgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxf
-ZGVmYXVsdD47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICsJdXNiLW90ZyB7Cj4gKwkJb3RnX2Rydjog
-b3RnLWRydiB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8UktfR1BJTzAgNSBSS19GVU5DX0dQSU8g
-JnBjZmdfcHVsbF9kZWZhdWx0PjsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwlzZG1tYyB7Cj4gKwkJ
-c2RtbWNfcHdyOiBzZG1tYy1wd3Igewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPFJLX0dQSU8zIDcg
-UktfRlVOQ19HUElPICZwY2ZnX3B1bGxfZGVmYXVsdD47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICsJ
-c2RpbyB7Cj4gKwkJd2lmaV9wd3I6IHdpZmktcHdyIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDxS
-S19HUElPMyAyNCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsJfTsK
-PiArfTsKPiArCj4gKyZ1YXJ0MiB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsm
-dXNiX2hvc3Qgewo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVzYl9vdGcgewo+
-ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVzYnBoeSB7Cj4gKwlzdGF0dXMgPSAi
-b2theSI7Cj4gK307Cj4gKwo+ICsmd2R0IHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiAr
-Cj4KCgotLSAKQmVzdCBSZWdhcmRzClNoYXduIExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Shawn,
+
+On 09/30/2016 05:48 PM, Shawn Lin wrote:
+> This patch add dw_mci_runtime_suspend/resume interfaces
+> and expose it to dw_mci variant driver to support runtime
+> PM.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+>  drivers/mmc/host/dw_mmc.c | 60 +++++++++++++++++++++++++++++++++++++++++++++--
+>  drivers/mmc/host/dw_mmc.h |  4 +++-
+>  2 files changed, 61 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 4fcbc40..54b860e 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -3266,7 +3266,7 @@ EXPORT_SYMBOL(dw_mci_remove);
+>  
+>  
+>  
+> -#ifdef CONFIG_PM_SLEEP
+> +#ifdef CONFIG_PM
+>  /*
+>   * TODO: we should probably disable the clock to the card in the suspend path.
+>   */
+> @@ -3324,7 +3324,63 @@ int dw_mci_resume(struct dw_mci *host)
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL(dw_mci_resume);
+> -#endif /* CONFIG_PM_SLEEP */
+> +
+> +int dw_mci_runtime_suspend(struct dw_mci *host)
+> +{
+> +	printk("dw_mci_runtime_suspend\n");
+
+Maybe I think you will remove this..if you send the patch, not RFC.
+
+> +
+> +	if (host->use_dma && host->dma_ops->exit)
+> +		host->dma_ops->exit(host);
+
+Can just call dw_mci_suspend()
+
+> +
+> +	clk_disable_unprepare(host->ciu_clk);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(dw_mci_runtime_suspend);
+> +
+> +int dw_mci_runtime_resume(struct dw_mci *host)
+> +{
+> +	int ret = 0;
+> +	int i;
+
+Can make one line.
+
+> +
+> +	printk("dw_mci_runtime_resume\n");
+> +
+> +	ret = clk_prepare_enable(host->ciu_clk);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (host->use_dma && host->dma_ops->init)
+> +		host->dma_ops->init(host);
+> +
+> +	mci_writel(host, FIFOTH, host->fifoth_val);
+> +	host->prev_blksz = 0;
+> +
+> +	mci_writel(host, TMOUT, 0xFFFFFFFF);
+> +	mci_writel(host, RINTSTS, 0xFFFFFFFF);
+> +	mci_writel(host, INTMASK, SDMMC_INT_CMD_DONE |
+> +				  SDMMC_INT_DATA_OVER |
+> +				  SDMMC_INT_TXDR | SDMMC_INT_RXDR |
+> +				  DW_MCI_ERROR_FLAGS);
+> +	mci_writel(host, CTRL, SDMMC_CTRL_INT_ENABLE);
+> +
+> +	for (i = 0; i < host->num_slots; i++) {
+> +		struct dw_mci_slot *slot = host->slot[i];
+> +
+> +		if (!slot)
+> +			continue;
+> +
+> +		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+> +			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+> +			dw_mci_setup_bus(slot, true);
+> +		}
+> +	}
+> +
+> +	dw_mci_enable_cd(host);
+
+Some part of this function can be reused with codes in dw_mci_resume().
+
+Best Regards,
+Jaehoon Chung
+
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(dw_mci_runtime_resume);
+> +#endif /* CONFIG_PM */
+>  
+>  static int __init dw_mci_init(void)
+>  {
+> diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
+> index e8cd2de..baa7261 100644
+> --- a/drivers/mmc/host/dw_mmc.h
+> +++ b/drivers/mmc/host/dw_mmc.h
+> @@ -234,9 +234,11 @@
+>  
+>  extern int dw_mci_probe(struct dw_mci *host);
+>  extern void dw_mci_remove(struct dw_mci *host);
+> -#ifdef CONFIG_PM_SLEEP
+> +#ifdef CONFIG_PM
+>  extern int dw_mci_suspend(struct dw_mci *host);
+>  extern int dw_mci_resume(struct dw_mci *host);
+> +extern int dw_mci_runtime_suspend(struct dw_mci *host);
+> +extern int dw_mci_runtime_resume(struct dw_mci *host);
+>  #endif
+>  
+>  /**
+> 
+
