@@ -1,73 +1,91 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: remove always-on and boot-on
- from vcc_sd
-Date: Sun, 9 Oct 2016 21:42:07 +0800
-Message-ID: <bfb38696-9e11-e75f-b169-6df41d594b37@rock-chips.com>
-References: <1474516939-22001-1-git-send-email-shawn.lin@rock-chips.com>
- <1474516939-22001-3-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474516939-22001-3-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 1/9] mmc: dw_mmc: add runtime PM callback
+Date: Sun,  9 Oct 2016 21:49:02 +0800
+Message-ID: <1476020951-31292-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpQaW5nLi4uIDopCgrlnKggMjAxNi85LzIyIDEyOjAyLCBTaGF3biBMaW4g5YaZ
-6YGTOgo+IFBsZWFzZSBkb24ndCBhZGQgdGhlc2UgZm9yIHZjY19zZCwgYW5kIG1tYy1jb3JlL2Ry
-aXZlciB3aWxsIGNvbnRyb2wKPiBpdC4gT3RoZXJ3aXNlLCBpdCB3aWxsIHdhc3RlIGVuZXJneSBl
-dmVuIHdpdGhvdXQgc2RtbWMgaW4gc2xvdC4KPgo+IE1vcmVvdmVyLCBpdCB3aWxsIGNhdXNlcyBh
-IGJ1ZzoKPiBJZiB3ZSBpbnNlcnQvcmVtb3ZlIHNkIGNhcmQsIHdlIGNvdWxkIHNlZQo+IFs5LjMz
-NzI3MV0gbW1jMDogbmV3IHVsdHJhIGhpZ2ggc3BlZWQgU0RSMjUgU0RIQyBjYXJkIGF0IGFkZHJl
-c3MgMDAwNwo+IFs5LjM0NTE0NF0gbW1jYmxrMDogbW1jMDowMDA3IFNEMzJHIDI5LjMgR2lCCj4K
-PiBUaGlzIGlzIG9rYXkgZm9yIG5vcm1hbCBzZCBpbnNlcnQvcmVtb3ZlIHRlc3QsIGJ1dCB3aGVu
-IEkgZGVidWcgc29tZQo+IGlzc3VlcyBmb3Igc2RtbWMsIEkgZGlkIHVuYmluZC9iaW5kIHRlc3Qu
-IEFuZCB0aGVyZSBpcyBhIGludGVyZXN0aW5nCj4gcGhlbm9tZW5vbiB3aGVuIHdlIGJpbmQgdGhl
-IGRyaXZlciBhZ2FpbjoKPiBbNTguMzE0MDY5XSBtbWMwOiBuZXcgaGlnaCBzcGVlZCBTREhDIGNh
-cmQgYXQgYWRkcmVzcyAwMDA3Cj4gWzU4LjMyMDI4Ml0gbW1jYmxrMDogbW1jMDowMDA3IFNEMzJH
-IDI5LjMgR2lCCj4KPiBTbyB0aGUgc2QgY2FyZCBjb3VsZCBqdXN0IHN1cHBvcnQgaGlnaCBzcGVl
-ZCB3aXRob3V0IHBvd2VyIGN5Y2xlCj4gc2luY2UgdGhlIHZjY19zZCBpcyBhbHdheXMgb24sIHdo
-aWNoIG1ha2VzIHRoZSBzZCBjYXJkIGZhaWwgdG8KPiByZWluaXQgaXRzIGludGVybmFsIG9jciBt
-YXNrLgo+Cj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5j
-b20+Cj4gLS0tCj4KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgtZ2Vla2Jv
-eC5kdHMgICAgICAgIHwgMiAtLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2
-OC1vcmlvbi1yNjgtbWV0YS5kdHMgfCAyIC0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzY4LXB4NS1ldmIuZHRzICAgICAgICB8IDIgLS0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA2
-IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzY4LWdlZWtib3guZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
-NjgtZ2Vla2JveC5kdHMKPiBpbmRleCA0NmNkZGRmLi4zNTMzMTRjIDEwMDY0NAo+IC0tLSBhL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LWdlZWtib3guZHRzCj4gKysrIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgtZ2Vla2JveC5kdHMKPiBAQCAtMjU4LDgg
-KzI1OCw2IEBACj4gIAkJCX07Cj4KPiAgCQkJdmNjX3NkOiBTV0lUQ0hfUkVHMSB7Cj4gLQkJCQly
-ZWd1bGF0b3ItYWx3YXlzLW9uOwo+IC0JCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4gIAkJCQlyZWd1
-bGF0b3ItbmFtZSA9ICJ2Y2Nfc2QiOwo+ICAJCQl9Owo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LW9yaW9uLXI2OC1tZXRhLmR0cyBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LW9yaW9uLXI2OC1tZXRhLmR0cwo+IGluZGV4IDU3
-OTc5MzMuLjEzYjdmMWVkIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzY4LW9yaW9uLXI2OC1tZXRhLmR0cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzY4LW9yaW9uLXI2OC1tZXRhLmR0cwo+IEBAIC0xNTIsOCArMTUyLDYgQEAK
-PiAgCQlncGlvID0gPCZncGlvMyAxMSBHUElPX0FDVElWRV9MT1c+Owo+ICAJCXJlZ3VsYXRvci1t
-aW4tbWljcm92b2x0ID0gPDE4MDAwMDA+Owo+ICAJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0g
-PDMzMDAwMDA+Owo+IC0JCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gLQkJcmVndWxhdG9yLWJvb3Qt
-b247Cj4gIAkJdmluLXN1cHBseSA9IDwmdmNjX2lvPjsKPiAgCX07Cj4KPiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgtcHg1LWV2Yi5kdHMgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1weDUtZXZiLmR0cwo+IGluZGV4IGY1OTA0OWIu
-LjhjNDdiMDEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
-NjgtcHg1LWV2Yi5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2
-OC1weDUtZXZiLmR0cwo+IEBAIC0yMzYsOCArMjM2LDYgQEAKPiAgCQkJfTsKPgo+ICAJCQl2Y2Nf
-c2Q6IFNXSVRDSF9SRUcxIHsKPiAtCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gLQkJCQlyZWd1
-bGF0b3ItYm9vdC1vbjsKPiAgCQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY19zZCI7Cj4gIAkJCX07
-Cj4KPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This patch add dw_mci_runtime_suspend/resume interfaces
+and expose it to dw_mci variant driver to support runtime
+PM.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+ drivers/mmc/host/dw_mmc.c | 30 ++++++++++++++++++++++++++++--
+ drivers/mmc/host/dw_mmc.h |  4 +++-
+ 2 files changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 4fcbc40..c5ef263 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -3266,7 +3266,7 @@ EXPORT_SYMBOL(dw_mci_remove);
+ 
+ 
+ 
+-#ifdef CONFIG_PM_SLEEP
++#ifdef CONFIG_PM
+ /*
+  * TODO: we should probably disable the clock to the card in the suspend path.
+  */
+@@ -3324,7 +3324,33 @@ int dw_mci_resume(struct dw_mci *host)
+ 	return 0;
+ }
+ EXPORT_SYMBOL(dw_mci_resume);
+-#endif /* CONFIG_PM_SLEEP */
++
++int dw_mci_runtime_suspend(struct dw_mci *host)
++{
++	int err = 0;
++
++	err = dw_mci_suspend(host);
++	if (err)
++		return err;
++
++	clk_disable_unprepare(host->ciu_clk);
++
++	return err;
++}
++EXPORT_SYMBOL(dw_mci_runtime_suspend);
++
++int dw_mci_runtime_resume(struct dw_mci *host)
++{
++	int ret = 0;
++
++	ret = clk_prepare_enable(host->ciu_clk);
++	if (ret)
++		return ret;
++
++	return dw_mci_resume(host);
++}
++EXPORT_SYMBOL(dw_mci_runtime_resume);
++#endif /* CONFIG_PM */
+ 
+ static int __init dw_mci_init(void)
+ {
+diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
+index e8cd2de..baa7261 100644
+--- a/drivers/mmc/host/dw_mmc.h
++++ b/drivers/mmc/host/dw_mmc.h
+@@ -234,9 +234,11 @@
+ 
+ extern int dw_mci_probe(struct dw_mci *host);
+ extern void dw_mci_remove(struct dw_mci *host);
+-#ifdef CONFIG_PM_SLEEP
++#ifdef CONFIG_PM
+ extern int dw_mci_suspend(struct dw_mci *host);
+ extern int dw_mci_resume(struct dw_mci *host);
++extern int dw_mci_runtime_suspend(struct dw_mci *host);
++extern int dw_mci_runtime_resume(struct dw_mci *host);
+ #endif
+ 
+ /**
+-- 
+2.3.7
+
+
