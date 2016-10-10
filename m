@@ -1,44 +1,41 @@
 From: Andreas Mohr <andi@lisas.de>
 Subject: Re: [PATCH] timers: Fix usleep_range() in the context of
  wake_up_process()
-Date: Mon, 10 Oct 2016 22:42:14 +0200
-Message-ID: <20161010204214.GA3100@rhlx01.hs-esslingen.de>
+Date: Mon, 10 Oct 2016 22:47:37 +0200
+Message-ID: <20161010204737.GB3100@rhlx01.hs-esslingen.de>
 References: <1476125277-6061-1-git-send-email-dianders@chromium.org>
  <20161010200400.GA9230@localhost>
- <CAD=FV=XfQB=BG4o08hmjd5waOHo=PsW=RYhyDSY_kbAJcE6spQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAD=FV=XfQB=BG4o08hmjd5waOHo=PsW=RYhyDSY_kbAJcE6spQ@mail.gmail.com>
+In-Reply-To: <20161010200400.GA9230@localhost>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Tony Xie <tony.xie@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andreas Mohr <andi@lisas.de>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Douglas Anderson <dianders@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andreas Mohr <andi@lisas.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 10, 2016 at 01:12:39PM -0700, Doug Anderson wrote:
-> Hi,
-> 
-> On Mon, Oct 10, 2016 at 1:04 PM, Brian Norris <briannorris@chromium.org> wrote:
-> > I believe 'min' is unmodified throughout, and therefore 'kmin' is
-> > computed to be the same minimum timeout in each loop. Shouldn't this be
-> > decreasing on each iteration of the loop? (i.e., either your compute
-> > 'kmin' differently here, or you recompute 'min' based on the elapsed
-> > time?)
-> 
-> Yes, I stupidly changed something at the last second and then didn't
-> test again after my stupid change.  Fix coming soon with all comments
-> addressed.  Sorry for posting broken code.  :( :( :(
+Hi,
 
-With a loop style that is actively re-calculating things,
-such implementations should then not fall into the trap of
-basing the "next" value on "current" time,
-thereby bogusly accumulating scheduling-based delays
-with each new loop iteration etc.
-(i.e., things should still be based on hard, precise termination according to
-an *initially* calculated, *absolute*, *minimum* expiry time).
+On Mon, Oct 10, 2016 at 01:04:01PM -0700, Brian Norris wrote:
+> Hi Doug,
+> 
+> On Mon, Oct 10, 2016 at 11:47:57AM -0700, Doug Anderson wrote:
+> > +		end = ktime_get();
+> > +		elapsed = ktime_to_us(ktime_sub(end, start));
+> > +	} while (elapsed < min);
+> 
+> I think Andreas had similar comments, but it seemed to me like
+> ktime_before() might be nicer. But (as Andreas did) you might get into
+> (premature?) micro-optimizations down that path, and I'm certainly not
+> an expert there.
+
+I'd justify it this way:
+orientation/type of input data is rather irrelevant -
+all that matters is how you want to treat things in your *inner handling* -
+and if that happens to be ktime-based
+(as is usually - if not pretty much always - the case within kernel code),
+then it ought to be that way,
+*consistently* (to avoid conversion transition overhead).
 
 Andreas Mohr
-
--- 
-GNU/Linux. It's not the software that's free, it's you.
