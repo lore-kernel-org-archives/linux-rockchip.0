@@ -1,76 +1,44 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] thermal: rockchip: improve the warning log
-Date: Mon, 10 Oct 2016 22:28:49 +0200
-Message-ID: <1729478.KIY7mRhFMh@phil>
-References: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
+From: Andreas Mohr <andi@lisas.de>
+Subject: Re: [PATCH] timers: Fix usleep_range() in the context of
+ wake_up_process()
+Date: Mon, 10 Oct 2016 22:42:14 +0200
+Message-ID: <20161010204214.GA3100@rhlx01.hs-esslingen.de>
+References: <1476125277-6061-1-git-send-email-dianders@chromium.org>
+ <20161010200400.GA9230@localhost>
+ <CAD=FV=XfQB=BG4o08hmjd5waOHo=PsW=RYhyDSY_kbAJcE6spQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=XfQB=BG4o08hmjd5waOHo=PsW=RYhyDSY_kbAJcE6spQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Tony Xie <tony.xie@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andreas Mohr <andi@lisas.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 9. Oktober 2016, 20:49:18 CEST schrieb Shawn Lin:
-> There is no necessary to print warning agian and
-
-It is not necessary to print a warning again and ...
-
-> again if we don't add rockchip,grf for dt, otherwise
-> I saw the following log when doning suspend-2-resume.
-								^ doing
-
-> We only need to print it once when parsing dt. It looks
-> quite trivial but the log is apparently verbose.
+On Mon, Oct 10, 2016 at 01:12:39PM -0700, Doug Anderson wrote:
+> Hi,
 > 
-> [   26.615415] PM: early resume of devices complete after 1.539 msecs
-> [   26.622002] rk_tsadcv2_initialize: Missing rockchip,grf property
-> [   26.629359] rk_gmac-dwmac ff290000.ethernet: init for RGMII
-> [   26.639794] PM: resume of devices complete after 18.109 msecs
-> [   26.646925] Restarting tasks ... done.
+> On Mon, Oct 10, 2016 at 1:04 PM, Brian Norris <briannorris@chromium.org> wrote:
+> > I believe 'min' is unmodified throughout, and therefore 'kmin' is
+> > computed to be the same minimum timeout in each loop. Shouldn't this be
+> > decreasing on each iteration of the loop? (i.e., either your compute
+> > 'kmin' differently here, or you recompute 'min' based on the elapsed
+> > time?)
 > 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/thermal/rockchip_thermal.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c
-> b/drivers/thermal/rockchip_thermal.c index e227a9f..b811b0f 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -524,11 +524,6 @@ static void rk_tsadcv2_initialize(struct regmap *grf,
-> void __iomem *regs, regs + TSADCV2_AUTO_PERIOD_HT);
->  	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
->  		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
-> -
-> -	if (IS_ERR(grf)) {
-> -		pr_warn("%s: Missing rockchip,grf property\n", __func__);
-> -		return;
-> -	}
+> Yes, I stupidly changed something at the last second and then didn't
+> test again after my stupid change.  Fix coming soon with all comments
+> addressed.  Sorry for posting broken code.  :( :( :(
 
-dropping the pr_warn here is ok, as the v2 tsadc does not access it anyway
+With a loop style that is actively re-calculating things,
+such implementations should then not fall into the trap of
+basing the "next" value on "current" time,
+thereby bogusly accumulating scheduling-based delays
+with each new loop iteration etc.
+(i.e., things should still be based on hard, precise termination according to
+an *initially* calculated, *absolute*, *minimum* expiry time).
 
->  }
-> 
->  /**
-> @@ -971,6 +966,8 @@ static int rockchip_configure_from_dt(struct device
-> *dev, * need this property.
->  	 */
->  	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	if (IS_ERR(thermal->grf))
-> +		dev_warn(dev, "Missing rockchip,grf property\n");
+Andreas Mohr
 
-but I'm not sure if we need this warning here. As said above v2-tsadc does not 
-need it at all and the v3 tsadc seems to work around a missing grf regmap?
-
-So maybe don't do any warning at all or something like that?
-
-Btw. it also seems like the binding txt document is missing an entry for the 
-rockchip,grf property. So maybe you could do another patch to add that 
-optional property to the binding doc?
-
-
-Heiko
+-- 
+GNU/Linux. It's not the software that's free, it's you.
