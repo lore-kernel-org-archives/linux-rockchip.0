@@ -1,82 +1,62 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] mmc: core: switch to 1V8 or 1V2 for hs400es mode
-Date: Mon, 10 Oct 2016 14:38:01 +0200
-Message-ID: <CAPDyKFrRGee=g4Nc5Cyb1d1O7Gux3DG4GX=Q-izr+kbz5M+YEw@mail.gmail.com>
-References: <1475216340-15344-1-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PM / AVS: rockchip-io: make the log more consistent
+Date: Mon, 10 Oct 2016 20:44:22 +0800
+Message-ID: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1475216340-15344-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "# 4.0+" <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kevin Hilman <khilman@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Nishanth Menon <nm@ti.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 30 September 2016 at 08:18, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> When introducing hs400es, I didn't notice that we haven't
-> switched voltage to 1V2 or 1V8 for it. That happens to work
-> as the first controller claiming to support hs400es, arasan(5.1),
-> which is designed to only support 1V8. So the voltage is fixed to 1V8.
-> But it actually is wrong, and will not fit for other host controllers.
-> Let's fix it.
->
-> Fixes: commit 81ac2af65793ecf ("mmc: core: implement enhanced strobe support")
-> Cc: <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+When testing SD hotplug automatically, I got bunch of
+useless log like this:
 
-Thanks, applied for fixes!
+[  588.357838] mmc0: card 0007 removed
+[  589.492664] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
+[  589.500698] vccio_sd: ramp_delay not set
+[  589.504817] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
+[  589.669705] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
+[  589.677593] vccio_sd: ramp_delay not set
+[  589.681581] rockchip-iodomain ff770000.syscon:io-domains: Setting to 1800000 done
+[  590.032820] dwmmc_rockchip ff0c0000.dwmmc: Successfully tuned phase to 140
+[  590.039725] mmc0: new ultra high speed SDR50 SDHC card at address 0007
+[  590.046641] mmcblk0: mmc0:0007 SD32G 29.3 GiB
+[  590.052163]  mmcblk0: p1
 
-Kind regards
-Uffe
+Moreover the code is intent to print the 'uV' for debug but
+later print it using dev_info. It looks more like to me that
+it should be the real intention of the code. Anyway, let's
+mark this verbose log as debug message.
 
-> ---
->
-> Changes in v3:
-> - add Doug's tag
->
-> Changes in v2:
-> - fix copy-paste error, mea culpa
->
->  drivers/mmc/core/mmc.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> index 3486bc7..f4ed5ac 100644
-> --- a/drivers/mmc/core/mmc.c
-> +++ b/drivers/mmc/core/mmc.c
-> @@ -1263,6 +1263,16 @@ static int mmc_select_hs400es(struct mmc_card *card)
->                 goto out_err;
->         }
->
-> +       if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_2V)
-> +               err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_120);
-> +
-> +       if (err && card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400_1_8V)
-> +               err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_180);
-> +
-> +       /* If fails try again during next card power cycle */
-> +       if (err)
-> +               goto out_err;
-> +
->         err = mmc_select_bus_width(card);
->         if (err < 0)
->                 goto out_err;
-> --
-> 2.3.7
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/power/avs/rockchip-io-domain.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
+index 01b6d3f..56bce19 100644
+--- a/drivers/power/avs/rockchip-io-domain.c
++++ b/drivers/power/avs/rockchip-io-domain.c
+@@ -143,7 +143,7 @@ static int rockchip_iodomain_notify(struct notifier_block *nb,
+ 	if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
+ 		return NOTIFY_BAD;
+ 
+-	dev_info(supply->iod->dev, "Setting to %d done\n", uV);
++	dev_dbg(supply->iod->dev, "Setting to %d done\n", uV);
+ 	return NOTIFY_OK;
+ }
+ 
+-- 
+2.3.7
