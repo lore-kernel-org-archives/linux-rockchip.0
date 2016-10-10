@@ -1,62 +1,70 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PM / AVS: rockchip-io: make the log more consistent
-Date: Mon, 10 Oct 2016 20:44:22 +0800
-Message-ID: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4] PCI: rockchip: Support property to specify the link
+ capability
+Date: Mon, 10 Oct 2016 09:16:39 -0500
+Message-ID: <20161010141639.GA22113@rob-hp-laptop>
+References: <1475743800-1036-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kevin Hilman <khilman@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Nishanth Menon <nm@ti.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1475743800-1036-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When testing SD hotplug automatically, I got bunch of
-useless log like this:
+On Thu, Oct 06, 2016 at 04:50:00PM +0800, Shawn Lin wrote:
+> From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+> boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
+> ms waiting for training that will never happen, let's add a property
+> from devicetree to specify link capability.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v4:
+> - define link_gen as u32
+> - elaborate more for rockchip,max-link-speed on doc
+> 
+> Changes in v3:
+> - Cast a warning for invalid max link speed and use gen1 for it.
+>   That looks better than v2. (Suggested by Brian)
+> 
+> Changes in v2:
+> - rename the property to rockchip,max-link-speed according to
+>   Bjorn's recommendation and take some bits from imx6q-pcie to
+>   make this requirement more consisent.
+> 
+>  .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
+>  drivers/pci/host/pcie-rockchip.c                   | 63 ++++++++++++++--------
+>  2 files changed, 44 insertions(+), 23 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> index ba67b39..9bb29de 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -42,6 +42,10 @@ Required properties:
+>  Optional Property:
+>  - ep-gpios: contain the entry for pre-reset gpio
+>  - num-lanes: number of lanes to use
+> +- rockchip,max-link-speed: Specify PCI gen for link capability. Must
+> +	be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
+> +	For backward compatibility, if this property isn't assigned, we
+> +	use gen2 by default.
 
-[  588.357838] mmc0: card 0007 removed
-[  589.492664] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
-[  589.500698] vccio_sd: ramp_delay not set
-[  589.504817] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
-[  589.669705] rockchip-iodomain ff770000.syscon:io-domains: Setting to 3300000 done
-[  589.677593] vccio_sd: ramp_delay not set
-[  589.681581] rockchip-iodomain ff770000.syscon:io-domains: Setting to 1800000 done
-[  590.032820] dwmmc_rockchip ff0c0000.dwmmc: Successfully tuned phase to 140
-[  590.039725] mmc0: new ultra high speed SDR50 SDHC card at address 0007
-[  590.046641] mmcblk0: mmc0:0007 SD32G 29.3 GiB
-[  590.052163]  mmcblk0: p1
+Defaults to gen1 or gen2?
 
-Moreover the code is intent to print the 'uV' for debug but
-later print it using dev_info. It looks more like to me that
-it should be the real intention of the code. Anyway, let's
-mark this verbose log as debug message.
+Let's drop rockchip and make this a common property. 
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/power/avs/rockchip-io-domain.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-index 01b6d3f..56bce19 100644
---- a/drivers/power/avs/rockchip-io-domain.c
-+++ b/drivers/power/avs/rockchip-io-domain.c
-@@ -143,7 +143,7 @@ static int rockchip_iodomain_notify(struct notifier_block *nb,
- 	if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
- 		return NOTIFY_BAD;
- 
--	dev_info(supply->iod->dev, "Setting to %d done\n", uV);
-+	dev_dbg(supply->iod->dev, "Setting to %d done\n", uV);
- 	return NOTIFY_OK;
- }
- 
--- 
-2.3.7
+>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+>  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+>  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
