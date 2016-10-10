@@ -1,50 +1,96 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: remove always-on and boot-on from
- vcc_sd for px3-evb
-Date: Mon, 10 Oct 2016 23:30:23 +0200
-Message-ID: <7170729.x9hBlEviIo@phil>
-References: <1474589350-10877-1-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of wake_up_process()
+Date: Mon, 10 Oct 2016 15:39:06 -0700
+Message-ID: <CAD=FV=WCe==Dx_qRM3nKz-sc_7zxbNyOGK3HuA02oG1A9Fxwdg@mail.gmail.com>
+References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474589350-10877-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>
+Cc: Andreas Mohr <andi@lisas.de>, Brian Norris <briannorris@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Tony Xie <tony.xie@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Douglas Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 23. September 2016, 08:09:10 CEST schrieb Shawn Lin:
-> Please don't add these for vcc_sd, and mmc-core/driver will control
-> it. Otherwise, it will waste energy even without sdmmc in slot.
-> 
-> Moreover, it will causes a bug:
-> If we insert/remove sd card, we could see
-> [9.337271] mmc0: new ultra high speed SDR25 SDHC card at address 0007
-> [9.345144] mmcblk0: mmc0:0007 SD32G 29.3 GiB
-> 
-> This is okay for normal sd insert/remove test, but when I debug some
-> issues for sdmmc, I did unbind/bind test. And there is a interesting
-> phenomenon when we bind the driver again:
-> [58.314069] mmc0: new high speed SDHC card at address 0007
-> [58.320282] mmcblk0: mmc0:0007 SD32G 29.3 GiB
-> 
-> So the sd card could just support high speed without power cycle
-> since the vcc_sd is always on, which makes the sd card fail to
-> reinit its internal ocr mask.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi,
 
-applied for 4.10
+On Mon, Oct 10, 2016 at 2:04 PM, Douglas Anderson <dianders@chromium.org> wrote:
+> Users of usleep_range() expect that it will _never_ return in less time
+> than the minimum passed parameter.  However, nothing in any of the code
+> ensures this.  Specifically:
+>
+> usleep_range() => do_usleep_range() => schedule_hrtimeout_range() =>
+> schedule_hrtimeout_range_clock() just ends up calling schedule() with an
+> appropriate timeout set using the hrtimer.  If someone else happens to
+> wake up our task then we'll happily return from usleep_range() early.
+>
+> msleep() already has code to handle this case since it will loop as long
+> as there was still time left.  usleep_range() had no such loop.
+>
+> The problem is is easily demonstrated with a small bit of test code:
+>
+>   static int usleep_test_task(void *data)
+>   {
+>     atomic_t *done = data;
+>     ktime_t start, end;
+>
+>     start = ktime_get();
+>     usleep_range(50000, 100000);
+>     end = ktime_get();
+>     pr_info("Requested 50000 - 100000 us.  Actually slept for %llu us\n",
+>       (unsigned long long)ktime_to_us(ktime_sub(end, start)));
+>     atomic_set(done, 1);
+>
+>     return 0;
+>   }
+>
+>   static void run_usleep_test(void)
+>   {
+>     struct task_struct *t;
+>     atomic_t done;
+>
+>     atomic_set(&done, 0);
+>
+>     t = kthread_run(usleep_test_task, &done, "usleep_test_task");
+>     while (!atomic_read(&done)) {
+>       wake_up_process(t);
+>       udelay(1000);
+>     }
+>     kthread_stop(t);
+>   }
+>
+> If you run the above code without this patch you get things like:
+>   Requested 50000 - 100000 us.  Actually slept for 967 us
+>
+> If you run the above code _with_ this patch, you get:
+>   Requested 50000 - 100000 us.  Actually slept for 50001 us
+>
+> Presumably this problem was not detected before because:
+> - It's not terribly common to use wake_up_process() directly.
+> - Other ways for processes to wake up are not typically mixed with
+>   usleep_range().
+> - There aren't lots of places that use usleep_range(), since many people
+>   call either msleep() or udelay().
+>
+> Reported-by: Tao Huang <huangtao@rock-chips.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Changes in v2:
+> - Fixed stupid bug that snuck in before posting
+> - Use ktime_before
+> - Remove delta from the loop
+>
+> NOTE: Tested against 4.4 tree w/ backports.  I'm trying to get myself
+> up and running with mainline again to test there now but it might be a
+> little while.  Hopefully this time I don't shoot myself in the foot.
 
+OK, I finally resolved all my issues and have officially tested this
+on mainline (not just in my private kernel) linux 4.8 on an
+rk3288-veyron-jerry based device.  Problem still exists there and fix
+still works.
 
-Thanks
-Heiko
+Sorry for the noise earlier.  Hopefully this version of the patch
+addresses all of Andreas's review feedback (and thank you very much
+for the review!)
+
+-Doug
