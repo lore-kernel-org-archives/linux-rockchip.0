@@ -1,264 +1,169 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 1/2] ARM: dts: add rockchip PX3 Evaluation board
-Date: Mon, 10 Oct 2016 11:54:01 +0200
-Message-ID: <738050204.FfkOZgkGGl@phil>
-References: <1473529249-6151-1-git-send-email-andy.yan@rock-chips.com> <1473529440-6202-1-git-send-email-andy.yan@rock-chips.com> <64f4be31-1b19-60e3-da7c-f2fec186fab9@suse.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <64f4be31-1b19-60e3-da7c-f2fec186fab9-l3A5Bk7waGM@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v5] PCI: rockchip: Support property to specify the link capability
+Date: Mon, 10 Oct 2016 18:25:28 +0800
+Message-ID: <1476095128-15380-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andreas, Andy,
+From: Brian Norris <briannorris@chromium.org>
 
-Am Dienstag, 13. September 2016, 14:14:01 CEST schrieb Andreas Färber:
-> Hi Andy,
-> 
-> This patch didn't make it to linux-rockchip list somehow...
-> Not sure why I'm CC'ed, I don't have access to such a board to check, so
-> just a couple formal nitpicks:
-> 
-> Am 10.09.2016 um 19:44 schrieb Andy Yan:
-> > PX3 EVB is designed by Rockchip for automotive field,
-> > which intergrated with CVBS(TP2825)/MIPI DSI/LVDS/HDMI
-> 
-> "integrated"
-> but the grammar is somewhat incorrect with "which" referring to field -
-> I assume you meant "with integrated CVBS..."?
-> 
-> > video input/output interface, WIFI/BT/GPS(on a module
-> 
-> Also please always leave a space before an opening parenthesis in
-> English text. Similarly above, spaces around "/" would help recognize
-> that MIPI DSI belongs together rather than being two lists.
-> 
-> If nothing else applies below then maybe Heiko can edit it for you?
+rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
+ms waiting for training that will never happen, let's add a property
+from devicetree to specify link capability.
 
-I've fixed the remarks in the commit description.
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Reviewed-by: Brian Norris <briannorris@chromium.org>
 
+---
 
-> > named S500 which based on MT6620), Gsensor BMA250E and
-> > light&proximity sensor STK3410.
-> > 
-> > Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > 
-> > ---
-> > 
-> > Changes in v1:
-> > - board rename
-> > - add vendor prefix for i2c interfaced sensors
-> > - use stdout-path to set the default console
-> > 
-> >  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
-> >  arch/arm/boot/dts/Makefile                         |   1 +
-> >  arch/arm/boot/dts/rk3188-px3-evb.dts               | 337
-> >  +++++++++++++++++++++ 3 files changed, 342 insertions(+)
-> >  create mode 100644 arch/arm/boot/dts/rk3188-px3-evb.dts
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > b/Documentation/devicetree/bindings/arm/rockchip.txt index
-> > 6668645..6da3881 100644
-> > --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> > @@ -21,6 +21,10 @@ Rockchip platforms device tree bindings
-> > 
-> >      Required root node properties:
-> >        - compatible = "radxa,rock", "rockchip,rk3188";
-> > 
-> > +- Rockchip PX3 Evaluation board:
-> > +    Required root node properties:
-> > +      - compatible = "rockchip,px3-evb", "rockchip,px3",
-> > "rockchip,rk3188";
-> How compatible is PX3 with RK3188? It is a separate SoC product:
-> 
-> http://www.rock-chips.com/a/en/products/rkpower/2015/1125/730.html
-> 
-> Wondering whether or not to drop the third compatible string.
+Changes in v5:
+- rebase the code since it isn't cleanly applied after Bjorn's cleanup
 
-As discussed in IRC (and with arm-soc maintainers), I intend to keep the 
-rk3188 part, as the chip really is just a (hardened?) variant of the consumer 
-rk3188, but shares the same internals with the original.
+Changes in v4:
+- define link_gen as u32
+- elaborate more for rockchip,max-link-speed on doc
 
-> > +
-> > 
-> >  - Radxa Rock2 Square board:
-> >      Required root node properties:
-> >        - compatible = "radxa,rock2-square", "rockchip,rk3288";
-> > 
-> > diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> > index faacd52..88d27a2 100644
-> > --- a/arch/arm/boot/dts/Makefile
-> > +++ b/arch/arm/boot/dts/Makefile
-> > @@ -620,6 +620,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
-> > 
-> >  	rk3066a-marsboard.dtb \
-> >  	rk3066a-rayeager.dtb \
-> >  	rk3188-radxarock.dtb \
-> > 
-> > +	rk3188-px3-evb.dtb \
-> 
-> Affects file naming as well: px3-evb.dtb?
+Changes in v3:
+- Cast a warning for invalid max link speed and use gen1 for it.
+  That looks better than v2. (Suggested by Brian)
 
-see above
+Changes in v2:
+- rename the property to rockchip,max-link-speed according to
+  Bjorn's recommendation and take some bits from imx6q-pcie to
+  make this requirement more consisent.
 
-> 
-> >  	rk3228-evb.dtb \
-> >  	rk3229-evb.dtb \
-> >  	rk3288-evb-act8846.dtb \
-> > 
-> > diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts
-> > b/arch/arm/boot/dts/rk3188-px3-evb.dts new file mode 100644
-> > index 0000000..f6bc738
-> > --- /dev/null
-> > +++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
-> > @@ -0,0 +1,337 @@
-> > +/*
-> > + * Copyright (c) 2016 Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > + *
-> > + * This file is dual-licensed: you can use it either under the terms
-> > + * of the GPL or the X11 license, at your option. Note that this dual
-> > + * licensing only applies to this file, and not this project as a
-> > + * whole.
-> > + *
-> > + *  a) This file is free software; you can redistribute it and/or
-> > + *     modify it under the terms of the GNU General Public License as
-> > + *     published by the Free Software Foundation; either version 2 of the
-> > + *     License, or (at your option) any later version.
-> > + *
-> > + *     This file is distributed in the hope that it will be useful,
-> > + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + *     GNU General Public License for more details.
-> > + *
-> > + * Or, alternatively,
-> > + *
-> > + *  b) Permission is hereby granted, free of charge, to any person
-> > + *     obtaining a copy of this software and associated documentation
-> > + *     files (the "Software"), to deal in the Software without
-> > + *     restriction, including without limitation the rights to use,
-> > + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> > + *     sell copies of the Software, and to permit persons to whom the
-> > + *     Software is furnished to do so, subject to the following
-> > + *     conditions:
-> > + *
-> > + *     The above copyright notice and this permission notice shall be
-> > + *     included in all copies or substantial portions of the Software.
-> > + *
-> > + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> > + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> > + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> > + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> > + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> > + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> > + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> > + *     OTHER DEALINGS IN THE SOFTWARE.
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include <dt-bindings/input/input.h>
-> > +#include "rk3188.dtsi"
-> 
-> I'm surprised there is no [rk3188-]px3.dtsi here! Surely some automotive
-> vendor may design their own board with it and should have at least the
-> two trailing compatible strings pre-set.
+ .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
+ drivers/pci/host/pcie-rockchip.c                   | 62 ++++++++++++++--------
+ 2 files changed, 44 insertions(+), 22 deletions(-)
 
-see above. I don't think there is a need to pollute the directory with 
-(nearly) empty dtsi files, especially as the compatible will get overwritten by 
-a board compatible anyway.
-
-> 
-> > +
-> > +/ {
-> > +	model = "Rockchip PX3-EVB";
-> > +	compatible = "rockchip,px3-evb", "rockchip,px3", "rockchip,rk3188";
-> > +
-> > +	chosen {
-> > +		stdout-path = "serial2:115200n8";
-> > +	};
-> > +
-> > +	memory {
-> > +		device_type = "memory";
-> > +		reg = <0x60000000 0x80000000>;
-> > +	};
-> > +
-> > +	gpio-keys {
-> > +		compatible = "gpio-keys";
-> > +		autorepeat;
-> > +
-> > +		power {
-> > +			gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
-> > +			linux,code = <KEY_POWER>;
-> > +			label = "GPIO Key Power";
-> > +			linux,input-type = <1>;
-> > +			wakeup-source;
-> > +			debounce-interval = <100>;
-> > +		};
-> > +	};
-> > +
-> > +	vcc_sys: vsys-regulator {
-> > +		compatible = "regulator-fixed";
-> > +		regulator-name = "vsys";
-> > +		regulator-min-microvolt = <5000000>;
-> > +		regulator-max-microvolt = <5000000>;
-> > +		regulator-boot-on;
-> > +	};
-> > +};
-> > +
-> > +&cpu0 {
-> > +	cpu0-supply = <&vdd_cpu>;
-> > +};
-> > +
-> > +&i2c0 {
-> > +	status = "okay";
-> > +
-> > +	 /* Accelerometer */
-> 
-> Space after tab intentional?
-> 
-> > +	bma250@18 {
-> > +		compatible = "bosch,bma250";
-> > +		reg = <0x18>;
-> > +		interrupt-parent = <&gpio0>;
-> > +		interrupts = <15 IRQ_TYPE_LEVEL_LOW>;
-> > +	};
-> > +
-> > +	stk3410@48 {
-> > +		compatible = "sensortek,STK3310";
-> > +		reg = <0x48>;
-> > +		interrupt-parent = <&gpio1>;
-> > +		interrupts = <5 IRQ_TYPE_LEVEL_LOW>;
-> > +	};
-> 
-> Generally it is undesired to repeat the compatible name as node name -
-> did you compare other .dts files? (e.g., accelerometer@18 would be
-> self-documenting) If this is a copy from an existing .dts then please
-> ignore this comment.
-
-due to the compatible ambiguity, I had dropped the stk3410 node anyway.
-I've also checked how the bma250 gets specified and there are both variants in 
-use (accelerometer@ and bmc250@). So to set a good example for the future, 
-I've changed the node name to accelerometer@18 and dropped the now self 
-explanatory comment obove it.
-
-
-> 
-> > +};
-> > +
-> > +&i2c1 {
-> > +	status = "okay";
-> > +	clock-frequency = <400000>;
-> 
-> Insert white line?
-
-done
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+index ba67b39..9bb29de 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+@@ -42,6 +42,10 @@ Required properties:
+ Optional Property:
+ - ep-gpios: contain the entry for pre-reset gpio
+ - num-lanes: number of lanes to use
++- rockchip,max-link-speed: Specify PCI gen for link capability. Must
++	be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
++	For backward compatibility, if this property isn't assigned, we
++	use gen2 by default.
+ - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+ - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+ - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index b3548d0..cdbd98d 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -53,6 +53,7 @@
+ #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+ #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
++#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+@@ -200,6 +201,7 @@ struct rockchip_pcie {
+ 	struct	gpio_desc *ep_gpio;
+ 	u32	lanes;
+ 	u8	root_bus_nr;
++	u32	link_gen;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
+ };
+@@ -437,13 +439,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
++	if (rockchip->link_gen == 2)
++		rockchip_writel(rockchip, PCIE_CLIENT_CONFIG,
++				PCIE_CLIENT_GEN_SEL_2);
++	else
++		rockchip_writel(rockchip, PCIE_CLIENT_CONFIG,
++				PCIE_CLIENT_GEN_SEL_1);
++
+ 	rockchip_writel(rockchip, PCIE_CLIENT_CONFIG,
+ 			    PCIE_CLIENT_CONF_ENABLE |
+ 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
+ 			    PCIE_CLIENT_ARI_ENABLE |
+ 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
+-			    PCIE_CLIENT_MODE_RC |
+-			    PCIE_CLIENT_GEN_SEL_2);
++			    PCIE_CLIENT_MODE_RC);
+ 
+ 	err = phy_power_on(rockchip->phy);
+ 	if (err) {
+@@ -519,29 +527,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		msleep(20);
+ 	}
+ 
+-	/*
+-	 * Enable retrain for gen2. This should be configured only after
+-	 * gen1 finished.
+-	 */
+-	status = rockchip_readl(rockchip, PCIE_RC_CONFIG_LCS);
+-	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
+-	rockchip_writel(rockchip, PCIE_RC_CONFIG_LCS, status);
++	if (rockchip->link_gen == 2) {
++		/*
++		 * Enable retrain for gen2. This should be configured
++		 * only after gen1 finished.
++		 */
++		status = rockchip_readl(rockchip, PCIE_RC_CONFIG_LCS);
++		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
++		rockchip_writel(rockchip, PCIE_RC_CONFIG_LCS, status);
++
++		timeout = jiffies + msecs_to_jiffies(500);
++		for (;;) {
++			status = rockchip_readl(rockchip, PCIE_CORE_CTRL);
++			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
++			    PCIE_CORE_PL_CONF_SPEED_5G) {
++				dev_dbg(dev, "PCIe link training gen2 pass!\n");
++				break;
++			}
+ 
+-	timeout = jiffies + msecs_to_jiffies(500);
+-	for (;;) {
+-		status = rockchip_readl(rockchip, PCIE_CORE_CTRL);
+-		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+-		    PCIE_CORE_PL_CONF_SPEED_5G) {
+-			dev_dbg(dev, "PCIe link training gen2 pass!\n");
+-			break;
+-		}
++			if (time_after(jiffies, timeout)) {
++				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
++				break;
++			}
+ 
+-		if (time_after(jiffies, timeout)) {
+-			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+-			break;
++			msleep(20);
+ 		}
+-
+-		msleep(20);
+ 	}
+ 
+ 	/* Check the final link width from negotiated lane counter from MGMT */
+@@ -747,6 +757,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		rockchip->lanes = 1;
+ 	}
+ 
++	rockchip->link_gen = 2;
++	err = of_property_read_u32(node, "rockchip,max-link-speed",
++				   &rockchip->link_gen);
++	if (!err && rockchip->link_gen != 1 && rockchip->link_gen != 2) {
++		dev_warn(dev, "invalid max-link-speed, default to use gen1\n");
++		rockchip->link_gen = 1;
++	}
++
+ 	rockchip->core_rst = devm_reset_control_get(dev, "core");
+ 	if (IS_ERR(rockchip->core_rst)) {
+ 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+-- 
+2.3.7
