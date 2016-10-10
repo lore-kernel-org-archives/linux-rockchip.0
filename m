@@ -1,95 +1,85 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4] PCI: rockchip: Support property to specify the link capability
-Date: Mon, 10 Oct 2016 14:34:10 -0500
-Message-ID: <CAL_Jsq+p3Vnw0U4ja09HRbfJ_ECzZjHCGmajAoVRdpPZrM6KTA@mail.gmail.com>
-References: <1475743800-1036-1-git-send-email-shawn.lin@rock-chips.com>
- <20161010141639.GA22113@rob-hp-laptop> <20161010172046.GA30803@localhost>
+From: Andreas Mohr <andi@lisas.de>
+Subject: Re: [PATCH] timers: Fix usleep_range() in the context of
+ wake_up_process()
+Date: Mon, 10 Oct 2016 21:53:56 +0200
+Message-ID: <20161010195356.GA30513@rhlx01.hs-esslingen.de>
+References: <1476125277-6061-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20161010172046.GA30803@localhost>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1476125277-6061-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, briannorris@chromium.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 10, 2016 at 12:20 PM, Brian Norris <briannorris@chromium.org> wrote:
-> Hi Rob,
->
-> On Mon, Oct 10, 2016 at 09:16:39AM -0500, Rob Herring wrote:
->> On Thu, Oct 06, 2016 at 04:50:00PM +0800, Shawn Lin wrote:
->> > From: Brian Norris <briannorris@chromium.org>
->> >
->> > rk3399 supports PCIe 2.x link speeds marginally at best, and on some
->> > boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
->> > ms waiting for training that will never happen, let's add a property
->> > from devicetree to specify link capability.
->> >
->> > Signed-off-by: Brian Norris <briannorris@chromium.org>
->> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> >
->> > ---
->> >
->> > Changes in v4:
->> > - define link_gen as u32
->> > - elaborate more for rockchip,max-link-speed on doc
->> >
->> > Changes in v3:
->> > - Cast a warning for invalid max link speed and use gen1 for it.
->> >   That looks better than v2. (Suggested by Brian)
->> >
->> > Changes in v2:
->> > - rename the property to rockchip,max-link-speed according to
->> >   Bjorn's recommendation and take some bits from imx6q-pcie to
->> >   make this requirement more consisent.
->> >
->> >  .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
->> >  drivers/pci/host/pcie-rockchip.c                   | 63 ++++++++++++++--------
->> >  2 files changed, 44 insertions(+), 23 deletions(-)
->> >
->> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> > index ba67b39..9bb29de 100644
->> > --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> > +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> > @@ -42,6 +42,10 @@ Required properties:
->> >  Optional Property:
->> >  - ep-gpios: contain the entry for pre-reset gpio
->> >  - num-lanes: number of lanes to use
->> > +- rockchip,max-link-speed: Specify PCI gen for link capability. Must
->> > +   be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
->> > +   For backward compatibility, if this property isn't assigned, we
->> > +   use gen2 by default.
->>
->> Defaults to gen1 or gen2?
->
-> The wording is a bit confusing, but I think Shawn intended for:
-> (a) if no property is provided, default to the maximum supported (i.e.,
->     gen2), to keep backward compatibility
-> (b) if a property is provided, but it doesn't contain 1 or 2, just
->     default to 1
->
-> I already disagreed with (b) (and suggested we make this an error
-> instead; we have no business accepting malformed device trees here IMO).
-> Alternatives to clear up the confusion Rob pointed out might include:
-> (1) explaining this better (i.e., what does "otherwise" mean in the
->     original sentence?)
-> (2) changing this to uniformly default to 2 (if someone used an
->     unsupported value, treat it as if the property wasn't there at all)
-> (3) reject incorrect values outright (so we don't have this fuzzy middle
->     ground at all)
+Hi,
 
-Sounds good.
+On Mon, Oct 10, 2016 at 11:47:57AM -0700, Douglas Anderson wrote:
+> Users of usleep_range() expect that it will _never_ return in less time
+> than the minimum passed parameter.  However, nothing in any of the code
+> ensures this.  Specifically:
 
->> Let's drop rockchip and make this a common property.
->
-> As in, handle this in some generic/common way? AFAICT, there's really
-> no way to do that given the current structure of PCIe handling (and the
-> nature of these kinds of limitations).
->
-> Or, do you just mean make the name common? (i.e,. "max-link-speed"
-> instead of "rockchip,max-link-speed")
+Ouch (aka: good catch! - by the reporter, though... ;)
 
-Right, just the name and document in a common spot. Could be a simple
-helper function that drivers can call as well.
 
-Rob
+> diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+> index 32bf6f75a8fe..ab03c7e403a4 100644
+> --- a/kernel/time/timer.c
+> +++ b/kernel/time/timer.c
+> @@ -1898,12 +1898,29 @@ EXPORT_SYMBOL(msleep_interruptible);
+>  
+>  static void __sched do_usleep_range(unsigned long min, unsigned long max)
+>  {
+> +	ktime_t start, end;
+>  	ktime_t kmin;
+>  	u64 delta;
+> +	unsigned long elapsed = 0;
+> +	int ret;
+> +
+> +	start = ktime_get();
+> +	do {
+> +		kmin = ktime_set(0, min * NSEC_PER_USEC);
+> +		delta = (u64)(max - min) * NSEC_PER_USEC;
+> +		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
+> +
+> +		/*
+> +		 * If schedule_hrtimeout_range() returns 0 then we actually
+> +		 * hit the timeout. If not then we need to re-calculate the
+> +		 * new timeout ourselves.
+> +		 */
+> +		if (ret == 0)
+> +			break;
+>  
+> -	kmin = ktime_set(0, min * NSEC_PER_USEC);
+> -	delta = (u64)(max - min) * NSEC_PER_USEC;
+> -	schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
+> +		end = ktime_get();
+> +		elapsed = ktime_to_us(ktime_sub(end, start));
+> +	} while (elapsed < min);
+
+Some thoughts:
+- max >= min pre-condition is validated somewhere, I'd hope?
+  (somewhere in outer API frame?)
+> +		delta = (u64)(max - min) * NSEC_PER_USEC;
+
+- there is a domain transition in there, **within** the repeated loop:
+> +		elapsed = ktime_to_us(ktime_sub(end, start));
+  -->
+> +	} while (elapsed < min);
+  should likely be made to be able to
+  directly compare a *non-converted* "elapsed" value
+  (IIRC there's an API such as ktime_before()).
+  One could argue that the "repeat" case is the non-likely case
+  (thus the conversion should possibly not be done before
+  actually being required),
+  however I guess it's exactly hitting the non-likely cases
+  which will contribute towards
+  non-predictable, non-deterministic latency behaviour of
+  a code path
+  (think RT requirements)
+
+Thanks,
+
+Andreas Mohr
