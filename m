@@ -1,62 +1,76 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] PM / AVS: rockchip-io: make the log more consistent
-Date: Mon, 10 Oct 2016 22:15:50 +0200
-Message-ID: <1883054.D2Rm2X9N2G@phil>
-References: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] thermal: rockchip: improve the warning log
+Date: Mon, 10 Oct 2016 22:28:49 +0200
+Message-ID: <1729478.KIY7mRhFMh@phil>
+References: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pm-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kevin Hilman <khilman@kernel.org>, Nishanth Menon <nm@ti.com>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 10. Oktober 2016, 20:44:22 CEST schrieb Shawn Lin:
-> When testing SD hotplug automatically, I got bunch of
-> useless log like this:
+Am Sonntag, 9. Oktober 2016, 20:49:18 CEST schrieb Shawn Lin:
+> There is no necessary to print warning agian and
+
+It is not necessary to print a warning again and ...
+
+> again if we don't add rockchip,grf for dt, otherwise
+> I saw the following log when doning suspend-2-resume.
+								^ doing
+
+> We only need to print it once when parsing dt. It looks
+> quite trivial but the log is apparently verbose.
 > 
-> [  588.357838] mmc0: card 0007 removed
-> [  589.492664] rockchip-iodomain ff770000.syscon:io-domains: Setting to
-> 3300000 done [  589.500698] vccio_sd: ramp_delay not set
-> [  589.504817] rockchip-iodomain ff770000.syscon:io-domains: Setting to
-> 3300000 done [  589.669705] rockchip-iodomain ff770000.syscon:io-domains:
-> Setting to 3300000 done [  589.677593] vccio_sd: ramp_delay not set
-> [  589.681581] rockchip-iodomain ff770000.syscon:io-domains: Setting to
-> 1800000 done [  590.032820] dwmmc_rockchip ff0c0000.dwmmc: Successfully
-> tuned phase to 140 [  590.039725] mmc0: new ultra high speed SDR50 SDHC
-> card at address 0007 [  590.046641] mmcblk0: mmc0:0007 SD32G 29.3 GiB
-> [  590.052163]  mmcblk0: p1
-> 
-> Moreover the code is intent to print the 'uV' for debug but
-> later print it using dev_info. It looks more like to me that
-> it should be the real intention of the code. Anyway, let's
-> mark this verbose log as debug message.
+> [   26.615415] PM: early resume of devices complete after 1.539 msecs
+> [   26.622002] rk_tsadcv2_initialize: Missing rockchip,grf property
+> [   26.629359] rk_gmac-dwmac ff290000.ethernet: init for RGMII
+> [   26.639794] PM: resume of devices complete after 18.109 msecs
+> [   26.646925] Restarting tasks ... done.
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-reducing the amount of logs, especially for information not generally needed 
-looks sane
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
 > ---
 > 
->  drivers/power/avs/rockchip-io-domain.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/thermal/rockchip_thermal.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/power/avs/rockchip-io-domain.c
-> b/drivers/power/avs/rockchip-io-domain.c index 01b6d3f..56bce19 100644
-> --- a/drivers/power/avs/rockchip-io-domain.c
-> +++ b/drivers/power/avs/rockchip-io-domain.c
-> @@ -143,7 +143,7 @@ static int rockchip_iodomain_notify(struct
-> notifier_block *nb, if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
->  		return NOTIFY_BAD;
-> 
-> -	dev_info(supply->iod->dev, "Setting to %d done\n", uV);
-> +	dev_dbg(supply->iod->dev, "Setting to %d done\n", uV);
->  	return NOTIFY_OK;
+> diff --git a/drivers/thermal/rockchip_thermal.c
+> b/drivers/thermal/rockchip_thermal.c index e227a9f..b811b0f 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -524,11 +524,6 @@ static void rk_tsadcv2_initialize(struct regmap *grf,
+> void __iomem *regs, regs + TSADCV2_AUTO_PERIOD_HT);
+>  	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
+>  		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
+> -
+> -	if (IS_ERR(grf)) {
+> -		pr_warn("%s: Missing rockchip,grf property\n", __func__);
+> -		return;
+> -	}
+
+dropping the pr_warn here is ok, as the v2 tsadc does not access it anyway
+
 >  }
+> 
+>  /**
+> @@ -971,6 +966,8 @@ static int rockchip_configure_from_dt(struct device
+> *dev, * need this property.
+>  	 */
+>  	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +	if (IS_ERR(thermal->grf))
+> +		dev_warn(dev, "Missing rockchip,grf property\n");
+
+but I'm not sure if we need this warning here. As said above v2-tsadc does not 
+need it at all and the v3 tsadc seems to work around a missing grf regmap?
+
+So maybe don't do any warning at all or something like that?
+
+Btw. it also seems like the binding txt document is missing an entry for the 
+rockchip,grf property. So maybe you could do another patch to add that 
+optional property to the binding doc?
 
 
+Heiko
