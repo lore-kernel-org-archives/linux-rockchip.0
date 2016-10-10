@@ -1,101 +1,64 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RESEND PATCH 0/9] Init runtime PM support for dw_mmc
-Date: Mon, 10 Oct 2016 10:30:38 +0800
-Message-ID: <9290d000-73ee-6db3-34d1-4eb060c31447@rock-chips.com>
-References: <CGME20161009135255epcas1p4d5a9db74bb1dea56f61fcb2a720a07f0@epcas1p4.samsung.com>
- <1476021506-869-1-git-send-email-shawn.lin@rock-chips.com>
- <9c4dd4aa-af9f-1765-fae6-f279ca45e60e@samsung.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH] thermal: rockchip: improve the warning log
+Date: Mon, 10 Oct 2016 11:53:20 +0800
+Message-ID: <57FB10B0.8080503@gmail.com>
+References: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <9c4dd4aa-af9f-1765-fae6-f279ca45e60e@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
+Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2016/10/10 10:10, Jaehoon Chung 写道:
-> Hi Shawn,
->
-> On 10/09/2016 10:58 PM, Shawn Lin wrote:
->> Hi Jaehoon and Ulf,
->>
->>    This patch is gonna support runtime PM for dw_mmc.
->> It could support to disable ciu_clk by default and disable
->> biu_clk if the devices are non-removeable, or removeable
->> with gpio-base card detect.
->>
->>    Then I remove the system PM since the runtime PM actually
->> does the same thing as it. So I help migrate the dw_mmc variant
->> drivers to use runtime PM pairs and pm_runtime_force_*. Note
->> that I only enable runtime PM for dw_mmc-rockchip as I will
->> leave the decision to the owners of the corresponding drivers.
->> I just tested it on my RK3288 platform with linux-next to make
->> the runtime PM and system PM work fine for my emmc, sd card and
->> sdio. But I don't have hardware to help test other variant drivers.
->> But in theory it should work fine as I mentioned that the runtime
->> PM does the same thing as system PM except for disabling ciu_clk
->> aggressively which should not be related to the variant hosts.
->
-> I'm testing this patchset with exynos SoCs. If it's possible to use other SoCs,
 
-Thanks for testing this patchset, I will respin v2 if there are no any
-other nitpick from folkz and regression when you test it.
-
-> then I think your patches will be changed more clear than now.
-> e.g) Not need to define the each driver's runtime_pm_suspend/resume function.
+On 2016年10月09日 20:49, Shawn Lin wrote:
+> There is no necessary to print warning agian and
+> again if we don't add rockchip,grf for dt, otherwise
+> I saw the following log when doning suspend-2-resume.
+> We only need to print it once when parsing dt. It looks
+> quite trivial but the log is apparently verbose.
 >
-
-Sure.
-
->>
->>    As you could see that I just extend the slot-gpio a bit, so the
->> ideal way is Ulf could pick them up with Jaehoon's ack. :)
->>
->>
->>
->> Shawn Lin (9):
->>   mmc: dw_mmc: add runtime PM callback
->>   mmc: dw_mmc-rockchip: add runtime PM support
->>   mmc: core: expose the capability of gpio card detect
->>   mmc: dw_mmc-rockchip: disable biu clk if possible
->>   mmc: dw_mmc-k3: deploay runtime PM facilities
->>   mmc: dw_mmc-exynos: deploay runtime PM facilities
->>   mmc: dw_mmc-pci: deploay runtime PM facilities
->>   mmc: dw_mmc-pltfm: deploay runtime PM facilities
+> [   26.615415] PM: early resume of devices complete after 1.539 msecs
+> [   26.622002] rk_tsadcv2_initialize: Missing rockchip,grf property
+> [   26.629359] rk_gmac-dwmac ff290000.ethernet: init for RGMII
+> [   26.639794] PM: resume of devices complete after 18.109 msecs
+> [   26.646925] Restarting tasks ... done.
 >
-> Maybe s/deploay/deploy
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Will fix the copy-paste error, mea culpa, but it is quite
-interesting that checkpatch.pl didn't yell at it. :)
+Reviewed-by: Caesar Wang <wxt@rock-chips.com>
 
+> ---
 >
-> Best Regards,
-> Jaehoon Chung
+>   drivers/thermal/rockchip_thermal.c | 7 ++-----
+>   1 file changed, 2 insertions(+), 5 deletions(-)
 >
->>   mmc: dw_mmc: remove system PM callback
->>
->>  drivers/mmc/core/slot-gpio.c       |  8 +++++
->>  drivers/mmc/host/dw_mmc-exynos.c   | 21 ++++++-----
->>  drivers/mmc/host/dw_mmc-k3.c       | 37 +++++++++----------
->>  drivers/mmc/host/dw_mmc-pci.c      | 25 ++++++++-----
->>  drivers/mmc/host/dw_mmc-pltfm.c    | 26 ++++++++------
->>  drivers/mmc/host/dw_mmc-rockchip.c | 73 ++++++++++++++++++++++++++++++++++++--
->>  drivers/mmc/host/dw_mmc.c          | 24 ++++++-------
->>  drivers/mmc/host/dw_mmc.h          |  6 ++--
->>  include/linux/mmc/slot-gpio.h      |  1 +
->>  9 files changed, 152 insertions(+), 69 deletions(-)
->>
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
-
-
--- 
-Best Regards
-Shawn Lin
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index e227a9f..b811b0f 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -524,11 +524,6 @@ static void rk_tsadcv2_initialize(struct regmap *grf, void __iomem *regs,
+>   		       regs + TSADCV2_AUTO_PERIOD_HT);
+>   	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
+>   		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
+> -
+> -	if (IS_ERR(grf)) {
+> -		pr_warn("%s: Missing rockchip,grf property\n", __func__);
+> -		return;
+> -	}
+>   }
+>   
+>   /**
+> @@ -971,6 +966,8 @@ static int rockchip_configure_from_dt(struct device *dev,
+>   	 * need this property.
+>   	 */
+>   	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +	if (IS_ERR(thermal->grf))
+> +		dev_warn(dev, "Missing rockchip,grf property\n");
+>   
+>   	return 0;
+>   }
 
