@@ -1,8 +1,8 @@
-From: Andreas Mohr <andi@lisas.de>
+From: Brian Norris <briannorris@chromium.org>
 Subject: Re: [PATCH] timers: Fix usleep_range() in the context of
  wake_up_process()
-Date: Mon, 10 Oct 2016 21:53:56 +0200
-Message-ID: <20161010195356.GA30513@rhlx01.hs-esslingen.de>
+Date: Mon, 10 Oct 2016 13:04:01 -0700
+Message-ID: <20161010200400.GA9230@localhost>
 References: <1476125277-6061-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -11,19 +11,12 @@ Content-Disposition: inline
 In-Reply-To: <1476125277-6061-1-git-send-email-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Douglas Anderson <dianders@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, briannorris@chromium.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andreas Mohr <andi@lisas.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Doug,
 
-On Mon, Oct 10, 2016 at 11:47:57AM -0700, Douglas Anderson wrote:
-> Users of usleep_range() expect that it will _never_ return in less time
-> than the minimum passed parameter.  However, nothing in any of the code
-> ensures this.  Specifically:
-
-Ouch (aka: good catch! - by the reporter, though... ;)
-
-
+On Mon, Oct 10, 2016 at 11:47:57AM -0700, Doug Anderson wrote:
 > diff --git a/kernel/time/timer.c b/kernel/time/timer.c
 > index 32bf6f75a8fe..ab03c7e403a4 100644
 > --- a/kernel/time/timer.c
@@ -41,6 +34,13 @@ Ouch (aka: good catch! - by the reporter, though... ;)
 > +	start = ktime_get();
 > +	do {
 > +		kmin = ktime_set(0, min * NSEC_PER_USEC);
+
+I believe 'min' is unmodified throughout, and therefore 'kmin' is
+computed to be the same minimum timeout in each loop. Shouldn't this be
+decreasing on each iteration of the loop? (i.e., either your compute
+'kmin' differently here, or you recompute 'min' based on the elapsed
+time?)
+
 > +		delta = (u64)(max - min) * NSEC_PER_USEC;
 > +		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
 > +
@@ -59,27 +59,13 @@ Ouch (aka: good catch! - by the reporter, though... ;)
 > +		elapsed = ktime_to_us(ktime_sub(end, start));
 > +	} while (elapsed < min);
 
-Some thoughts:
-- max >= min pre-condition is validated somewhere, I'd hope?
-  (somewhere in outer API frame?)
-> +		delta = (u64)(max - min) * NSEC_PER_USEC;
+I think Andreas had similar comments, but it seemed to me like
+ktime_before() might be nicer. But (as Andreas did) you might get into
+(premature?) micro-optimizations down that path, and I'm certainly not
+an expert there.
 
-- there is a domain transition in there, **within** the repeated loop:
-> +		elapsed = ktime_to_us(ktime_sub(end, start));
-  -->
-> +	} while (elapsed < min);
-  should likely be made to be able to
-  directly compare a *non-converted* "elapsed" value
-  (IIRC there's an API such as ktime_before()).
-  One could argue that the "repeat" case is the non-likely case
-  (thus the conversion should possibly not be done before
-  actually being required),
-  however I guess it's exactly hitting the non-likely cases
-  which will contribute towards
-  non-predictable, non-deterministic latency behaviour of
-  a code path
-  (think RT requirements)
+>  }
+>  
+>  /**
 
-Thanks,
-
-Andreas Mohr
+Brian
