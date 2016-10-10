@@ -1,70 +1,196 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4] PCI: rockchip: Support property to specify the link
- capability
-Date: Mon, 10 Oct 2016 09:16:39 -0500
-Message-ID: <20161010141639.GA22113@rob-hp-laptop>
-References: <1475743800-1036-1-git-send-email-shawn.lin@rock-chips.com>
+From: "FedEx International MailService" <ruben.ziegler-QkUdHTAzVNzc+tFTI1BdjgC/G2K4zDHf@public.gmane.org>
+Subject: ROCK, Courier was unable to deliver the parcel, ID00000296927
+Date: Mon, 10 Oct 2016 04:26:10 +0000
+Message-ID: <e9acdbc3f18960f76954ba65d1866d65@tuningtalents.com>
+Reply-To: FedEx International MailService <ruben.ziegler-QkUdHTAzVNzc+tFTI1BdjgC/G2K4zDHf@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1475743800-1036-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: multipart/mixed; boundary="b1_01a5f6c71232d6bf109e75555ec36cbd"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Oct 06, 2016 at 04:50:00PM +0800, Shawn Lin wrote:
-> From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> rk3399 supports PCIe 2.x link speeds marginally at best, and on some
-> boards, the link won't train at 5 GT/s at all. Rather than sacrifice 500
-> ms waiting for training that will never happen, let's add a property
-> from devicetree to specify link capability.
-> 
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v4:
-> - define link_gen as u32
-> - elaborate more for rockchip,max-link-speed on doc
-> 
-> Changes in v3:
-> - Cast a warning for invalid max link speed and use gen1 for it.
->   That looks better than v2. (Suggested by Brian)
-> 
-> Changes in v2:
-> - rename the property to rockchip,max-link-speed according to
->   Bjorn's recommendation and take some bits from imx6q-pcie to
->   make this requirement more consisent.
-> 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      |  4 ++
->  drivers/pci/host/pcie-rockchip.c                   | 63 ++++++++++++++--------
->  2 files changed, 44 insertions(+), 23 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> index ba67b39..9bb29de 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -42,6 +42,10 @@ Required properties:
->  Optional Property:
->  - ep-gpios: contain the entry for pre-reset gpio
->  - num-lanes: number of lanes to use
-> +- rockchip,max-link-speed: Specify PCI gen for link capability. Must
-> +	be '2' for gen2, and '1' for gen1, otherwise will default to gen1.
-> +	For backward compatibility, if this property isn't assigned, we
-> +	use gen2 by default.
+--b1_01a5f6c71232d6bf109e75555ec36cbd
+Content-Type: text/plain; charset=us-ascii
 
-Defaults to gen1 or gen2?
+Dear Rock,
 
-Let's drop rockchip and make this a common property. 
+We could not deliver your parcel.
+Delivery Label is attached to this email.
 
->  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
->  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
->  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks and best regards,
+Ruben Ziegler,
+Delivery Manager.
+
+
+--b1_01a5f6c71232d6bf109e75555ec36cbd
+Content-Type: application/zip; name="Label_00000296927.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Label_00000296927.zip
+
+UEsDBBQAAAAIAEUjSkn1kihhnBIAAJcSAAAaAAAAAHJwcW9nanhrd3ZxZWJ1Z2F3cXFzbWdpaGcB
+lxJo7TC3Ng/CColapKmSGWkayvF96u8KRSAukkfamXUeOr9bFBdR3zF56V2PgK4uZFf/4qIx/+Gy
+b6BHjKfhgonmLBnagSi7xOs0WdE+UqtLdPB47xqzYCUN2ODnTeAf/GrVTaXTOczrN9UA3v3nGH5C
+W2Xg1wQqCMkE0tUfi024gSSa/yNPFMISajRhOs4A7uPTdakCf9jIbRszgkGJUk+DS8lsOFfIRWZ0
+inRl6u6Mhpwagxs3DlV4PBCqwuw+VKgzq7kKLIVpKiQokYmeRpXXg3craTEAEM6mEFrd+J4wT1tz
+HfG1MCCsdFwa84A/kx/E87xx0WmhmsNCA4EAAQK0SZ0z3tu7r0aiJQsYqVmbyY+Dsmw7ovKHgZ7n
+BxwWGqvXbW1gweeDrfSuXOVV7oW/v+UMKI0ZOacgV9FaXHbrV8OWJp0HdNpTMdx8Ort6JHhaaBFz
+ZpasI+paDW6TVWyXwLAK0XoiC9mBaJNpI/avMxN5eQiCVxB6Z7WLbm0WRR+pY0/NOpWUhI0mPQb2
+USHC+2m8Ic3OOFN2bXL7giy4cCA6CIuLEpIzUnH/V1EjPMZPpEV1oPMc8rlXV9U55FaqI5XGs9ds
+gw5SoCW6kJz+YC/Xye1GNvuEgGBGASG62GSSGyJ+SaoBYDfhtaFiRgTnPQlwUNyMLUdUM01Y3swV
+g6yqQWnoikgZjWz64vJOpHF8H6bs0TsIuCYRTb4BsUutQNBDnoZjuzEFDbNta7rPwD1ohfGFbYr5
+4Zi3CGhGKsYF/eDoklJp8UQ4bwSucKdxxjshF4IWo/MPfZZ2lPB10uO0aLl9b7qWGssTWQbXTS/c
+W2lEVPoxunN+srrDnxUBZ2B0RH0ntqOT9PZNAAMmyK5W3sgm2BOsm5KgyWG/MdaZIlaSXf2rCAMj
+m8NJwDuEg0PVz1SCbsJDvuIyoaC4YN3Q0wirp9851Nukj3WGDUsXAQooSizaIjeDfAloqF0RHnjA
+9rOyN1J0H9zK2MZYxCOGgpe9UiBcIorp4frV8uAXe3iNmzugnionCQmNjjQ/jF/Oze4lGdgQGUyd
+SOM1PROqBiyCUTy9KC5qApO5wMzmOYRN9rDhWmiRZX9zwWz2RT+JoF4sl7hzYswLBXcXegANGaDk
+TxINzrGVxzVGq5k57XxCU5b9PChLQNNetr0B40YzXyL432FgVAuSTGxMirgmAUeNUKld1nDYVNwA
+KWDFPjjM+2lNl807fuZ0W1cKLI6cIW9Ivc3lDbgJHo2I9SPsrWvwgJWGnpkKkeBdFHabxJvoq0Z4
+Sv5LQmwGlgjPfk3PLrKgqj+wjuWwTu4eeA2Bww8NEHtzRFUixap4OPkGIOYkpH/Ci4PzeBBuz+mM
+RQugkuARSfIQIWDC99TLyV05Ei7q8QGUOLP/4feiet4PwGT7ZcW2JTqvORYIyE8vIDxftkP+wN7X
++mWoeQeDf/mBgZSiXyp+c+VlrvS6qozwsVK4VIXdpYkkOSGMykCiVCGVVh2p1SMQYeFIpXNBa58H
+dPmOnQNBRvquD+H9v1MdYw4W9hGKGT5oA7IXewKzOzPHS2dOvM0MU/CUuTbJ5YiXfWSqIGivn8DG
+7NiyVqMVIdXqZdqHyElcmgwNIAmc2GJgHz9fMuA7wdXp0R/PNmkHWDT/CznptYikqjTshRfihDvL
+9YmHvvD1uzOEGDvMrsoWd9EqF9Wpdz35l3aPLlTVgfKWkK+onHVCz4iuDu5I8iw8O/bar3yZxjle
+tIdtQjDiJxzFPtuXXvqmPSaCLXUXzsA2t6QHte4HV2FsbYZ9ZzKRbVAAXgduqvEFafaosz5IPIn9
+A7N07qt/UmOctQZxG33H396AsIqiv932Q3OnfhaVviNQIzlt4SavMylsbTOQhWMfmY1WiMjAzDon
+exo4sUC45IFsut3zb9Z1fIWweMRmabcN9USVx/NJhDkOZqPFWhqD3qbawjpstsDgjCRTDUxcN07A
+O1Gl91H3G2rceCFB3is+2ljl3GIw4wv1p1VfGqwLs4ECzOaXmBlmW1qu0Ys/UUBVXnMkNTeBG8d5
+6aLEHSjFyg0qpUXvqOUpwpZI30vqDfKN0iTRliIHzIhQ+04UJzxHsXfwQoqy31R+tqGtMOjpMb7s
+rNf4z7EPmmYaWdmIt9Vtr2a22/Pd3nDdMWO6cgKxoUfPOjemFkcB5+ViNxSv/zvttWJ4txkCD9Xh
+CPxrrh/tJ0bJUUr0+/zHgaUiX9f1tsDWPny68M2TKRFoUwBKvSD/ng/DJxzJuOqnsgg+fFfyUNjU
+97ptKn2nugRfq64ZuSH7HB83eO/DBWZHiJ1ouZw9HJsC1aU99aS54eIJMbx4+Lp6vPDwV04L5Wqo
+y+9kRJKPoSxBZr8Ooa6IVcI162jYUl567P9f99Rhq3IRmYZr1ADvuTbL0LsoOsa3sjOHVG3pcW4a
+fN58z03pGQFXPnSceLhJWX3Z6wcoCa7DV8/3rxq184qLWvoDJTImbjvl1iLbzINVyfB7/SRUbT7F
+vluHseVnvCqqg+gOZlt6oSdEIRUP0h1O0+CUzlvXTZrOIFxv9mq0QY2eDrdWZXU2djx5096ZkdUV
+x8bIDYhtAzHHQIZaPvg7VTDoChpFFyix4j6hL5HKSCA4SeFFSg9sIqNYu1Hi4FcmZ3REyD2TX2rr
+ji1DSoL9sd5TTJg5wV7WPiIdrTVcDgV1bXBnIPMfIhAbZh5C6NM7oCud0Aj/oAxwToFqUzFlJPXP
+8trZd9d6EWHLjTuhQ+805GrxU4ZbglTqcEI6Afony66D4jqIhJ3aRNDZiHqHtdEgBsLYS42xQjir
+jAe93Yi7OMzsjVTaRf0Gu0TPYsUKJ13kTOptXtoWXTVzYBTmgpyBbBJmsuE31rZaow7Pbb/Wxi2W
+LmAkb2Q/22VkdmL8A8jFLPxJIoaOvNTkvrKWugUtDY8gWzR3v1du0V9mXG/8OA4xPkLwU5h30A0I
+scT0eRXGLQ5Mo+56gYkbGODUNteq6sC3CMkkDPYNQ4RIsJhRhIQGYXgh+lB4MuN8UVJm8+8B5TJz
+fyxtvVxU6T9H12XtHjBcWeZ/NX5N6+QrIt8eobxnKh+w93Ch1NKg+M9/3+vwURSKTNMV5wGIC2MA
+keVdbdlC4abSX74PHjP62FI5v+o2Oxzyn8+ApAXbwsjvnP+ShH3ntjlIVtQ+UxlY+aKOaMLojNqy
+rW8KsImxw4xMl9M4VD3/JRTis2vGnmKHdTOnpl+WBbv6/iycy4pbxqqOhOqV4Uwt4riDs28rHB1u
+ZJhKJBqLUINb+F75vFtNwtzwrkj5mhvg/NkiCU0ruB+tX8S8I87qTj8EMfZP0L7X0dGr3lQ2snrE
+4nutR1PGUu9w51zof4p2ttTy1HD/by0fr6A1i7ITf5ecSkaeehN6yBBrkLkK+qZZy9MlLnW76Egs
+ypmEpp+nbVVqVBQH1e5dDOhMgvTnKXs2XHMlIk2/QxNmP8ugrOYptvcb+vUMEQhnHVWK7pSHscmE
+9TIqVnde4jnHRjdwlgU71d0NYQNq+R8k43zPUHpL2DdeiqpDYYwuFMd7ELKCL4IxSHz+FO2ZKK1R
+Jf/VtnvooRPyeuxXwnxXRxejyB0z2GJ4iaocHyiEQ1t9D9KfWiyRKOSQjLCVP99OMZbA6AVdEDia
+RU248lseG5srcVHcCUVXlekiXbxcC3oXIpHDewD5gMnGgsFQEQc39a6IsMj3AUJX2XyDYlx7pGrP
+Wy+wjm8AhgeaRcp1BTqSQ9NsJUCBsfBsG9Jkut5b1ckZ/ePcsPvColdWBFPzDG5ztgRlui88B0SF
+zUnfZB56Ivjkg/NVS/BvdXQYI3YKoXFxsrCHhiB+DOGccRTGS+wKtdnQwhpwBNsUJghSHgKQP0QM
+i5dRdTYNj0I8QiyPDp9990bgeTI2shqu+88KcjxSz74OkuM4AXt1j4xDIcSF0WfUTZlRFdlZ/ORK
+z3SmTPtN3zFzAdFps7iyUTd78h+bzLfe632eaoDbSuJVElPzvAZt+WUrxbMrFzxThN4oakNbp0Y2
+hwjClBnw+5ZNmTUod0Y/fLnIr99UKac3PfF7+pBCJByXD7w5Vahsvos8W+dLb7A0o4CAO/HFLv7J
+z/cAyxT0rW9pwuYMeA6cjq1Qm7+o9/KaC9oIeeXe7JPaHeZVa7K1h+grSfbXDG7vEwxWIg/rRJH7
+FtzroNWvt3cgTyu9etSnivIct5m8giyGDOUPeVeV0TLxXu3u6xtjFc3I7sPQtEwfJkYXzM9vk9ks
+BOqOoytU/+vyqJRKuY6LLAJqyKAoT8q1PinpDjd7imglddaD/zk5GQrSjNuTYPpb5pVQEzkiHY8h
+Ef4j41G63m6A+VNwP3PaTZpKNtHOSJrAQV59ZewYGg+wmmT/U8iCIvATvrDCyDIzwOM/297tX077
+A24he6qaHEHQr9qXTxwLd4oES0NANHqDHFHcXX60uBC4Du7acd7tuiKO5jA0D/7ykid5aGJsk1tp
+3gP4wBR/0251x0lHitMbtyg8WlvOcDuhrJbt4svoJEPPlp/2VV3T4wKECYKZ6VPaZD7uflub9bSl
+nmf59O7tKftlsubObK4cv2MYO6usW3A4LEpVFLOc75nd+rK/jsOICzODA3EP8M/kr1n1TofUavkt
+8Eho667D5UBqtCYntLYkxo6yWwy8ZlMqMYiZ4qkCl2DEQRnho7TYOZxf06mGZ93rfhde7DNvzPFt
+FJRsQJE2K3EasGcZU/jmDDiAsvdyEbT2p9Cqy3yr8v2giz7MRcjb3PQVxTUzBykaT3pGyou3y9WX
+Z3DzKydLVzo5BANJJxPysWR992/o8ULaFQog7+fT1AknuzWI+sbLX6AmFfgbwtvVpHcaXZDCY6GG
+pVoC0omgcYkezUQgKdx3NjQRnMkh1UkuaE9LPb0gzWaQa+y5l3QXpx9FZLMzkOm9x3H0OXPIwdit
+b7fkWHFoI1Sj9mMVIrOOTwMRn2rt/h65kX++ZW6cEaGM8duPY5qVAk9Zq1nKupmu/xDh/8J1tCrL
+NiGTX3uu1cKOLEdKCGutTwtvRBVrbV/IsvHNOTtnkGwQVjtc6WXLBbbM/QkvJXpP6XqdvkQz5VRU
+iIHOeV+6pSaf//adpzOFuDFCT3IA3DNCDpls5TKgI9o2acW3v4TXOhVCRymRIBOSy5vE2XNv+5Ff
+lXbJUBcRa6Uso7LkgbsKtL6QnoehYd/a7t5svASlR9qMhwUT+8dcq4CNip4n08qnxPlxilew04lt
+s8QJaFWeU0GJhqyHUZJ6s9dI5RSPDe5IKXyziSUBm8B3J8VuKHpxFVhXTMM5y2UJ/vcaStDqgpbt
+Ugw8wVb0PoX67Wl6d8ZbQfhLUHqAf6pk6b5VDFglZGHm5pg8K9Yn9oa7J91P+bDsBQUnW/q5r+JJ
+p70TEM7I2Az3cEafmOmH2iDTHmI4TXNvcXmsgO/6+T7pL+PQYP8yIzbFavIBpRDEoZK9gVflTi4q
+OAP6f/Jlyh2W0OodfG18icXUNPO3OH+F1l0UQDTgy3MtgYy/GSzY7yIf1ftcx6WMLkud/228KSFV
+8EJ0+g8yAmztHhKDP7+OenvZsS14WYbtRQGxBXbmOIPxc/e+c10tCBYr+ZEhGtoSdP7LSWY/uOxR
+xN/gMxMn9o9ARaTqIgbm5Oqm0xnwjf1UCCUhGNSUSIALtIWTSPioCFBtuhYd4rRtwCuVqSU4NcbW
+30EoPyQmtzPLM/W45+Vlt55OjxRtrWw3VAuWn4eLA/5PF054a9aQRW2QR479rMEbfftkLwTKCahz
+aXz/qYmJhVn3iq9mXtLGSpePUfatWxJENnxMUelWLHUSk2C3P4r3NzL1Iqx4vcFSeBVIHwnzNWpw
+c9Ti744zdx517zaQ37ZjpvuFW5hj8mSeUzgjoA1zz9RnKHnTrs5LB49z2/PAhHoD8IrI8fwwF6L/
+HYoMhLvTnc7hfRAOOC2afX9MXnaXKTvTVkXuozu1DBIWbZeh5HCTVrE3TDgKTPMR6+2FxC6IoFKe
+JxA5wIWNmkS2749Upc5V46YxM9TCsYM6pKvKTQZyve4/CzuHMG0f+MERu7MazycQwW4yCtD237KB
+3cHhkuhuL83sAVRoqmImy87nuUkQ8KhCO+Wic0xGUFAB6UnkjIvZo3Kp7kuKS8OV4/KvPtYrAckE
+sWy7JhvYvUcFE15ICoIAMLUNDOUssjj/7B2ZvulEj8CGKKNtifrdTc8dcbSpJXF1xtPump9qu0rh
+ayx/iL/VPrOf0nzbjjrcQBt95lFPs4IepAir6PdKzd+L0WpYVPHg7HIpiVSK43JhLKFGt4btsrv7
+kPy6WWZYC6kEVm/y0DTBlcv9amwHoeTwghhQDMxDTl9QSwMEFAAAAAgARSNKSepNWQsIDAAAIEYA
+ABkAAABMYWJlbF8wMDAwMDI5NjkyNy5kb2Mud3NmrVz7c9pIEv5XZlXlLBRE4GecYOUKY5yXHVxA
+4s1tbe0N0mAUixlFGgzE5f/9eh4S4Fytp/H5B8ePjKa7v6+fM/LJdzF6e5KHWZxKklB+M6M3LPg4
+0D94e0czMto/JAHxvBZR390dNuG73wmNAm/3Pb36Mr2hPw8OLm5+tOmwf97dG/FJdji7+tSfTC7e
+qUW/t8g/f6jHTo6O1WPVlzE8mR5+fLWk9Kg/6SdX4Vx+ecc/nrW/H7Fd+vob/RD17k6zvfny+HNb
+/uzlf7y6/nDXO/98Pj79maWU0cvD8+bx8nb0bn756dVgj/04+7a3fzz8+r6d9QU/TQYvU35kFHKT
+bv+1ks5YIPwRDGQWOy28PXqlFvIbf5yJaWfiuJ842lfLjl9boydR0HRaeGcWKtTCwGv6B0dHsE4h
+WAu0jWsawJr+jzW9T01rV1OibiAc5lpNEB2zc6FmR0QMYyE6yX0WzfxRhKGL2qWyf1A1gmOgTJLg
+T++W/oyzcCLmKFQqr/dWG+JMa58QytwPxdSreyMqmdvmBbKTmN5kIs1ENMPoG9OIhTSDZWO1tduW
+hghKzvl87ucTDDSwSLxii1RkWlknU7XWJfauTQzyBxhhjWH/Uk9CS5uImziXcYghQydjAGFv9J2F
+soIBMiPzPChURFiHHx/qiHIXZ4JPGZfgpJh9o+7aUoymOhbkFW9n2L282sFgQsY8mOd+d5FSjuGs
+V62Fec2jnjOaNphkJI3KHaMuhggTliRetcgMrt4NnwGX1vqD1o3lVTGGtpxQzMJYWdsqnaQH4G9R
+grFzyV/vMsdQKbHZaSGCaww8i2my5/9xefF+OHRaZil/ZXEhCwqOsyU6VvSzUx/8htEpPBMjurWT
+ggiDTWHf9lkPQ8YVEaRbMrWWSqVK2+dx4raqSBHlXm5CWrrqr8dCx7ItQbFiZxVd/gVJ1IpP3Bhs
+ZVhIr1ol9yAGqp7T+/Fgt+UYlgwqg2Uu2dRAiiGBom88JpXfxgKwQTka6y4gM+WVMa95vtumlrAn
+wWGL12rGONv6jA0w+inqBxEPmm5uY02W+AnjN3LSclPbopoyXvHedYeQnCdSphiLEZktQdiF8J9S
+eqPmqMU1XidjmuQMFbLjqOa9yDg0LhhCiBmH6q/xL+q8zuxWo2o71SbVMCC8aTS8WpL8Gf9V8xoh
+viBbUF8uUwbuAhHYn2O2bikkcsajCvgARtUg2Gs2Fe0WTquS17u6CamAgHn8k73dbTr2TQaRGFaC
+oJLKmVsmLAqOWDK1MmNuyyxtqC8Ux11tUkR3wXN2KqKliidol4bPYKWNZOjn9I4NBeQLVFUHxuIn
+wV71foEqtTWckYq6GFMxFftU9GML5uTRVjfm1XfrzWrrIaQydGxgDN1BuyDYV9op+6AaRJZV7x9a
+D4RBHCFuIa/sQ6C3hNh1D9UrhoAGPmUkDIT9GV+Zdds5gdVSm+ugeo8KmyBxGimVwVYYMxkeaGM9
+oLr+UtJDZ9paIhkaKDtjIqcRd+VggBDGQC3yoGqGCrhLsItRtHqfREHcGjn3EGa/B7UfaBomImcV
+txRoGXjbgqUPxN3NbDSzzgIbY5irKAu9jmbA86qatcLKhJanZbDg2JosjdzsZJEhL14QXQDqog5D
+esuFYjEGV6+6ti2Cv2V5bYMLGAmDUmqqct0gpIEb862yJSipG5usosJ2MEM3JG290ALx/GuVxDHM
+9drDYffz8EPv82+ODb51lWKzi5gzt5lR0ahDn1OX2YyZimH7xG+NrAXwVF8CIqGyMZd5naQTIQWG
+DyutUfVuO0nIUsyg7xDhbOqU/Qs5s1xwmpAxalq/nZTxVM06KZfEsVMxNqE8IkJOmOP42nJvzjJG
+GA+zJSr9sdyC7TavKXyxTiIq6YjmLHeT0vpVKllEZnnMb0gun0dYO6JQoAwFgTobx7zkRgCqkymZ
+w2cM0wt7aU5gjJYJ0Lo/aL/cbe4dEFQWJpTMePxjxsgtW6LKQCCFdpSxa5hfr+eKUhJghlSRJGJO
+3EYNFpy1oOZdocY3PK/6xtAoWipdyQRKK8eW0lBBCpLSJfFqI7dBv/W4SZyTKeUzmrxB9eoeOR12
+SGUUy1Dgu7WNUmU9Wrs5cHHWUOLiVkRaWHxikik5BeFRXcwjp3Ho1oyGGXuzvhYTaxImG5zNUeYp
+zlL8mI9FY04d+19jna2TJzYLWqOKmBMQEfQkE9TRaqMxSkR4G06oY7lpC1X9oQZv+Zv/R+wGL1DB
+FzoEx0MGQ4kVHTA6T+pF3mG4I3cTGJTXYrhg4dzzyanjqaxNEiUTPHS4trzfIkEZPAyyjQZwA5Wc
+cJsVx/uJCYA8dz59LmYEyjrmp6ijkwl4SRlOMIRbT2Oup0M2kDRGs+XfhaLP8hkL7koShAFsr6CE
+IDSK3OhvNWAXWyQZG7tLWfdR4bBDICNLlV5PUVU6y/P1ZIEhx9aJlAwYlOtFhBg+C+KiwDzwSS9l
+nAjU6G6NoSi/AOFpVFoNo/vjrvXppG6BImsrMRldnwU21VEgqphUdIrEnCcCNZZmRIyBhlD6ovzF
+8khkpOI2Iy66RW4q9VEm5rnrFSB7bKRKc5XbkpjfOjZkNihEJGLQM6ZSZG+8LSZn/yOtmxOsQNMK
+o8U6nVAN2eoIS8xQ57blGaQ5yMTEGj2HRVWlFuYidalkC7kWP2MvKvH+jBvsMHCvukFcYPW3if/r
+4cE7xECq6Ki8Vnf1jgf4vwyw0KYtbtt0Sb972b087fbdGrvyctJa3YUKpGWPfNFtYwzs4cL2LyUm
+Yu5bpDvyknwYKxJh5NyoWTCirmdlVNEO8Z5wIVVfj+pwIAjvk4guc/Kt98VtorrBHWWfz2IkoiVB
+9ccXvR7Qrn1xofbtoyI45VDXJilggnHpGWGLkKUSmiLfcVZtExy2ufhl4qB+gWHP+YeL7mA9AD3r
+Dl7ZOwCRMWqHuBBYDPblnGasTpjjvSBjq9zEPmgZpOMEwtIvIdcxh1Inh2Y3jRyrnSJrE8plfBdn
+s5zkqFGq/E8ONGIJw3c4m3PGTM/vpvSWOU7Mf4lo6he48kfwZEnoGHVvS5Hnm86jqAIPDERCcNcR
+6mClKNDw41vL3E7/29XQlwtZ9VHHF1ZLJTIq9I6BgqZ9U9NRDI50qe4gb1VrbE8BmgAH7GkSrii6
+lSIllbPutiHJlg3vP3W+ePqurtvta2ssY6QO/ly+dz68bve7ZksUsu2zM+gWwx9ul8wsjXqXg6tu
+Z4c0Qiir3mEwbZF57qsbKd5OB18n2xLJBkSjbQcj+CzLgI1fWZbHjp24ReYyDjORi7HUm2Ia3MY5
+aVgTq6Nu1KRJKvP+Pfg3qo3p6MgS6R09t5Vl16UMCuiYtagqq/GVlKuefWStIpt6Wr1Zb6KuaK7o
+7L3flpa9SwyjHjmC85W1FbZAEIyKBZk8hTOuGoisTTHE/9TpG1r4OmNhjFpysGEO71zrbsvjmpfr
+9zT07sJNVWsjBb8VHCPwKqphGAAwFrTDwGEANKC4SVlerdxgKzqKFuYFs9qY5HjZ3Aa0+oYAGFhW
+kRDVg0PTx1IaqZtbBBU/FyZaw36K9hhM17wTQyDKH1HeQUk7mOSG56GYPnX35Z8jaFHOhiJdksbS
+0WCrBKCEV/9ghO+s6gGMkVf0Wzx1b+TRRbUyNygiYiSteTvtND2jku64u529+FCmh8EVTkuA9axr
+K3YMm2CZKUjdMLR+bSOYxh8dG6yZFG9QBctdGXd3vuQsu8qE42WsosllO4b/Z46DV3uKZ+sEw1kM
+h0ootbkwOpa8A0Jg+BOCiOYCKkbDbtnpOTtl8QKBdZJdx9PN4r6NJpzBAkM7FZtLh9bXOZ/x4t4q
+3KPefdko4ly9tLCz9hpINRjargWwp+reTf3W7tqihhTqgm15+xUV+MqAeYe7KmEuYKvrqE4KFvMJ
+bc2z7gUilxg3UZ2v8S7U6HPlzxjlomrroWU6blybPhbFa4wY+NQx526z2dSHU5iYc79xLEu3dK6i
+RypgqTm+R2IxXVXH+gG4Wle/yYHoPqzF1mpNFNvHxasD7pWfZdKv1bWDsMUx4M5mJfSMobaCJ41Q
+LXDZyhbvWTzevkXYHU0q8ONq66Rh/hjM25OG+tMw/wVQSwECAAAUAAAACABFI0pJ9ZIoYZwSAACX
+EgAAGgAAAAAAAAAAACAAAAAAAAAAAHJwcW9nanhrd3ZxZWJ1Z2F3cXFzbWdpaGdQSwECAAAUAAAA
+CABFI0pJ6k1ZCwgMAAAgRgAAGQAAAAAAAAAAACAAAADUEgAATGFiZWxfMDAwMDAyOTY5MjcuZG9j
+LndzZlBLBQYAAAAAAgACAI8AAAATHwAAAAA=
+
+
+--b1_01a5f6c71232d6bf109e75555ec36cbd
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--b1_01a5f6c71232d6bf109e75555ec36cbd--
