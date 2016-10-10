@@ -1,64 +1,42 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH] thermal: rockchip: improve the warning log
-Date: Mon, 10 Oct 2016 11:53:20 +0800
-Message-ID: <57FB10B0.8080503@gmail.com>
-References: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
+From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
+ rk3066
+Date: Mon, 10 Oct 2016 15:18:34 +0800
+Message-ID: <67831fd0-76af-a793-0b2f-958e45633fe8@rock-chips.com>
+References: <20161001140939.GA31220@vaio-ubuntu>
+ <6239b970-09d3-f7ee-e6f5-c019eaedb725@rock-chips.com>
+ <f8aba48d-6c69-b246-4cb2-48a2770c80e4@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1476017358-26143-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <f8aba48d-6c69-b246-4cb2-48a2770c80e4-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2016年10月09日 20:49, Shawn Lin wrote:
-> There is no necessary to print warning agian and
-> again if we don't add rockchip,grf for dt, otherwise
-> I saw the following log when doning suspend-2-resume.
-> We only need to print it once when parsing dt. It looks
-> quite trivial but the log is apparently verbose.
->
-> [   26.615415] PM: early resume of devices complete after 1.539 msecs
-> [   26.622002] rk_tsadcv2_initialize: Missing rockchip,grf property
-> [   26.629359] rk_gmac-dwmac ff290000.ethernet: init for RGMII
-> [   26.639794] PM: resume of devices complete after 18.109 msecs
-> [   26.646925] Restarting tasks ... done.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-Reviewed-by: Caesar Wang <wxt@rock-chips.com>
-
-> ---
->
->   drivers/thermal/rockchip_thermal.c | 7 ++-----
->   1 file changed, 2 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index e227a9f..b811b0f 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -524,11 +524,6 @@ static void rk_tsadcv2_initialize(struct regmap *grf, void __iomem *regs,
->   		       regs + TSADCV2_AUTO_PERIOD_HT);
->   	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
->   		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
-> -
-> -	if (IS_ERR(grf)) {
-> -		pr_warn("%s: Missing rockchip,grf property\n", __func__);
-> -		return;
-> -	}
->   }
->   
->   /**
-> @@ -971,6 +966,8 @@ static int rockchip_configure_from_dt(struct device *dev,
->   	 * need this property.
->   	 */
->   	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	if (IS_ERR(thermal->grf))
-> +		dev_warn(dev, "Missing rockchip,grf property\n");
->   
->   	return 0;
->   }
-
+SGkgUGF3ZcWCOgpPbiAyMDE25bm0MTDmnIgwNeaXpSAxNDowOSwgUGF3ZcWCIEphcm9zeiB3cm90
+ZToKPiBXIGRuaXUgMDUuMTAuMjAxNiBvIDA0OjI3LCBIdWFuZywgVGFvIHBpc3plOgo+PiBJIGRv
+bid0IHJlbWVtYmVyIFJLMzA2NiBoYXMgc3VjaCBsaW1pdC4gSSB3aWxsIGRvdWJsZSBjaGVjayB3
+aXRoIG91ciBJQwo+PiBkZXNpZ24gdGVhbS4KPj4gRG8geW91IGtub3cgd2hpY2ggbWFzdGVyIGNh
+biBub3QgYWNjZXNzIHRoaXMgbWVtb3J5IGFyZWEKPj4gWzB4OUYwMDAwMDB+MHhBMDAwMDAwMCk/
+Cj4gSSBkb24ndC4KPj4gQ291bGQgeW91IHBsZWFzZSB0ZWxsIHdoaWNoIGJvYXJkIHlvdSdyZSB1
+c2luZyAoYW5kIGhvdyBtdWNoIG1lbW9yeSBpdCBoYXMpCj4gUmlrb21hZ2ljIE1LODA4IDFHQiBS
+QU0KPgpPdXIgSUMgZ3V5IG5lZWQgdXMgdGVsbCB0aGVtIHdoaWNoIG1hc3RlciBjYW4gbm90IGFj
+Y2VzcyBzdWNoIGFyZWEsIERNQQpvciBFTU1DIENvbnRyb2xsZXIgb3IgR1BVLCBldGM/IENvdWxk
+IHlvdSB0ZWxsIG1lIGhvdyB0byByZXByb2R1Y2Ugc3VjaAppc3N1ZT8KQW5kIHdlIGNhbiBjb25m
+aXJtIENQVSBjb3JlIGNhbiBhY2Nlc3MgdGhpcyBtZW1vcnkgdGhyb3VnaCAvZGV2L21lbSBhbmQK
+dGhlIHRlc3QgYm9hcmQgaXMgMUdCIHRvby4gUGVyc29uYWxseSwgSSBkb24ndCB0aGluayBSSzMw
+NjYgaGFzIHN1Y2gKbGltaXQgYmVjYXVzZSB3aGVuIHdlIHZlcmlmeSB0aGlzIGNoaXAsIHdlIGRv
+bid0IGZvdW5kIHN1Y2ggbGltaXQgYXQgYWxsLgoKVGhhbmtzLApIdWFuZywgVGFvCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
