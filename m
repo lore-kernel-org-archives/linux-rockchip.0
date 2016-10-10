@@ -1,71 +1,60 @@
-From: Brian Norris <briannorris@chromium.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH] timers: Fix usleep_range() in the context of
  wake_up_process()
-Date: Mon, 10 Oct 2016 13:04:01 -0700
-Message-ID: <20161010200400.GA9230@localhost>
+Date: Mon, 10 Oct 2016 13:12:39 -0700
+Message-ID: <CAD=FV=XfQB=BG4o08hmjd5waOHo=PsW=RYhyDSY_kbAJcE6spQ@mail.gmail.com>
 References: <1476125277-6061-1-git-send-email-dianders@chromium.org>
+ <20161010200400.GA9230@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1476125277-6061-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andreas Mohr <andi@lisas.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161010200400.GA9230@localhost>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Hi,
 
-On Mon, Oct 10, 2016 at 11:47:57AM -0700, Doug Anderson wrote:
-> diff --git a/kernel/time/timer.c b/kernel/time/timer.c
-> index 32bf6f75a8fe..ab03c7e403a4 100644
-> --- a/kernel/time/timer.c
-> +++ b/kernel/time/timer.c
-> @@ -1898,12 +1898,29 @@ EXPORT_SYMBOL(msleep_interruptible);
->  
->  static void __sched do_usleep_range(unsigned long min, unsigned long max)
->  {
-> +	ktime_t start, end;
->  	ktime_t kmin;
->  	u64 delta;
-> +	unsigned long elapsed = 0;
-> +	int ret;
-> +
-> +	start = ktime_get();
-> +	do {
-> +		kmin = ktime_set(0, min * NSEC_PER_USEC);
+On Mon, Oct 10, 2016 at 1:04 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> Hi Doug,
+>
+> On Mon, Oct 10, 2016 at 11:47:57AM -0700, Doug Anderson wrote:
+>> diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+>> index 32bf6f75a8fe..ab03c7e403a4 100644
+>> --- a/kernel/time/timer.c
+>> +++ b/kernel/time/timer.c
+>> @@ -1898,12 +1898,29 @@ EXPORT_SYMBOL(msleep_interruptible);
+>>
+>>  static void __sched do_usleep_range(unsigned long min, unsigned long max)
+>>  {
+>> +     ktime_t start, end;
+>>       ktime_t kmin;
+>>       u64 delta;
+>> +     unsigned long elapsed = 0;
+>> +     int ret;
+>> +
+>> +     start = ktime_get();
+>> +     do {
+>> +             kmin = ktime_set(0, min * NSEC_PER_USEC);
+>
+> I believe 'min' is unmodified throughout, and therefore 'kmin' is
+> computed to be the same minimum timeout in each loop. Shouldn't this be
+> decreasing on each iteration of the loop? (i.e., either your compute
+> 'kmin' differently here, or you recompute 'min' based on the elapsed
+> time?)
 
-I believe 'min' is unmodified throughout, and therefore 'kmin' is
-computed to be the same minimum timeout in each loop. Shouldn't this be
-decreasing on each iteration of the loop? (i.e., either your compute
-'kmin' differently here, or you recompute 'min' based on the elapsed
-time?)
+Yes, I stupidly changed something at the last second and then didn't
+test again after my stupid change.  Fix coming soon with all comments
+addressed.  Sorry for posting broken code.  :( :( :(
 
-> +		delta = (u64)(max - min) * NSEC_PER_USEC;
-> +		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
-> +
-> +		/*
-> +		 * If schedule_hrtimeout_range() returns 0 then we actually
-> +		 * hit the timeout. If not then we need to re-calculate the
-> +		 * new timeout ourselves.
-> +		 */
-> +		if (ret == 0)
-> +			break;
->  
-> -	kmin = ktime_set(0, min * NSEC_PER_USEC);
-> -	delta = (u64)(max - min) * NSEC_PER_USEC;
-> -	schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
-> +		end = ktime_get();
-> +		elapsed = ktime_to_us(ktime_sub(end, start));
-> +	} while (elapsed < min);
-
-I think Andreas had similar comments, but it seemed to me like
-ktime_before() might be nicer. But (as Andreas did) you might get into
-(premature?) micro-optimizations down that path, and I'm certainly not
-an expert there.
-
->  }
->  
->  /**
-
-Brian
+-Doug
