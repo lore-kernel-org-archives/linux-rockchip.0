@@ -1,131 +1,27 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2] timers: Fix usleep_range() in the context of
- wake_up_process()
-Date: Mon, 10 Oct 2016 14:04:02 -0700
-Message-ID: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] timers: Fix usleep_range() in the context of wake_up_process()
+Date: Mon, 10 Oct 2016 14:16:48 -0700
+Message-ID: <CAD=FV=WmjQwt638sG5_d0pnCzjhvZM+YwPeETnh7Mp79F2oE0w@mail.gmail.com>
+References: <1476125277-6061-1-git-send-email-dianders@chromium.org> <20161010195356.GA30513@rhlx01.hs-esslingen.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20161010195356.GA30513@rhlx01.hs-esslingen.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andreas Mohr <andi@lisas.de>
+Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, Brian Norris <briannorris@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Tony Xie <tony.xie@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Users of usleep_range() expect that it will _never_ return in less time
-than the minimum passed parameter.  However, nothing in any of the code
-ensures this.  Specifically:
+Hi,
 
-usleep_range() => do_usleep_range() => schedule_hrtimeout_range() =>
-schedule_hrtimeout_range_clock() just ends up calling schedule() with an
-appropriate timeout set using the hrtimer.  If someone else happens to
-wake up our task then we'll happily return from usleep_range() early.
+On Mon, Oct 10, 2016 at 12:53 PM, Andreas Mohr <andi@lisas.de> wrote:
+> Some thoughts:
+> - max >= min pre-condition is validated somewhere, I'd hope?
+>   (somewhere in outer API frame?)
 
-msleep() already has code to handle this case since it will loop as long
-as there was still time left.  usleep_range() had no such loop.
+I don't think this is validated, but it's not a new problem.  My patch
+doesn't attempt to solve this.  A future patch could, though.  You can
+speculate on whether a WARN_ON would be better or some type of
+friendly warning.
 
-The problem is is easily demonstrated with a small bit of test code:
-
-  static int usleep_test_task(void *data)
-  {
-    atomic_t *done = data;
-    ktime_t start, end;
-
-    start = ktime_get();
-    usleep_range(50000, 100000);
-    end = ktime_get();
-    pr_info("Requested 50000 - 100000 us.  Actually slept for %llu us\n",
-      (unsigned long long)ktime_to_us(ktime_sub(end, start)));
-    atomic_set(done, 1);
-
-    return 0;
-  }
-
-  static void run_usleep_test(void)
-  {
-    struct task_struct *t;
-    atomic_t done;
-
-    atomic_set(&done, 0);
-
-    t = kthread_run(usleep_test_task, &done, "usleep_test_task");
-    while (!atomic_read(&done)) {
-      wake_up_process(t);
-      udelay(1000);
-    }
-    kthread_stop(t);
-  }
-
-If you run the above code without this patch you get things like:
-  Requested 50000 - 100000 us.  Actually slept for 967 us
-
-If you run the above code _with_ this patch, you get:
-  Requested 50000 - 100000 us.  Actually slept for 50001 us
-
-Presumably this problem was not detected before because:
-- It's not terribly common to use wake_up_process() directly.
-- Other ways for processes to wake up are not typically mixed with
-  usleep_range().
-- There aren't lots of places that use usleep_range(), since many people
-  call either msleep() or udelay().
-
-Reported-by: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-Changes in v2:
-- Fixed stupid bug that snuck in before posting
-- Use ktime_before
-- Remove delta from the loop
-
-NOTE: Tested against 4.4 tree w/ backports.  I'm trying to get myself
-up and running with mainline again to test there now but it might be a
-little while.  Hopefully this time I don't shoot myself in the foot.
-
- kernel/time/timer.c | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
-
-diff --git a/kernel/time/timer.c b/kernel/time/timer.c
-index 32bf6f75a8fe..219439efd56a 100644
---- a/kernel/time/timer.c
-+++ b/kernel/time/timer.c
-@@ -1898,12 +1898,28 @@ EXPORT_SYMBOL(msleep_interruptible);
- 
- static void __sched do_usleep_range(unsigned long min, unsigned long max)
- {
-+	ktime_t now, end;
- 	ktime_t kmin;
- 	u64 delta;
-+	int ret;
- 
--	kmin = ktime_set(0, min * NSEC_PER_USEC);
-+	now = ktime_get();
-+	end = ktime_add_us(now, min);
- 	delta = (u64)(max - min) * NSEC_PER_USEC;
--	schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
-+	do {
-+		kmin = ktime_sub(end, now);
-+		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
-+
-+		/*
-+		 * If schedule_hrtimeout_range() returns 0 then we actually
-+		 * hit the timeout. If not then we need to re-calculate the
-+		 * new timeout ourselves.
-+		 */
-+		if (ret == 0)
-+			break;
-+
-+		now = ktime_get();
-+	} while (ktime_before(now, end));
- }
- 
- /**
--- 
-2.8.0.rc3.226.g39d4020
+-Doug
