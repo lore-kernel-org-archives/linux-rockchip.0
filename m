@@ -1,16 +1,15 @@
-From: Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of
  wake_up_process()
-Date: Tue, 11 Oct 2016 20:25:41 +0200
-Message-ID: <20161011182541.GA32165@rhlx01.hs-esslingen.de>
+Date: Tue, 11 Oct 2016 11:54:28 -0700
+Message-ID: <20161011185427.GA18048@localhost>
 References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
- <alpine.DEB.2.20.1610110908240.7794@nanos>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1610110908240.7794@nanos>
+In-Reply-To: <1476133442-17757-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,51 +19,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 11, 2016 at 09:14:38AM +0200, Thomas Gleixner wrote:
-> On Mon, 10 Oct 2016, Douglas Anderson wrote:
-> > Users of usleep_range() expect that it will _never_ return in less time
-> > than the minimum passed parameter.  However, nothing in any of the code
-> > ensures this.  Specifically:
+Hi Doug,
+
+On Mon, Oct 10, 2016 at 02:04:02PM -0700, Doug Anderson wrote:
+> Users of usleep_range() expect that it will _never_ return in less time
+> than the minimum passed parameter.  However, nothing in any of the code
+> ensures this.
+
+Like you and Andreas, I also don't understand Thomas's objection to your
+above claim on what users of this function expect. I believe you have
+clearly laid out why the current behavior needs to be changed somehow;
+IMO the only remaining question is "how." Your follow up covers all this
+plenty well for me.
+
+Either we need a fix along the lines of what you've proposed, or else we
+need to completely rethink almost all uses of usleep_range().
+
+...
+
+> Reported-by: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> Changes in v2:
+> - Fixed stupid bug that snuck in before posting
+> - Use ktime_before
+> - Remove delta from the loop
 > 
-> There is no such guarantee for that interface and never has been, so how
-> did you make sure that none of the existing users is relying on this?
+> NOTE: Tested against 4.4 tree w/ backports.  I'm trying to get myself
+> up and running with mainline again to test there now but it might be a
+> little while.  Hopefully this time I don't shoot myself in the foot.
 > 
-> You can't just can't just declare that all all of the users expect that and
-> be done with it.
+>  kernel/time/timer.c | 20 ++++++++++++++++++--
+>  1 file changed, 18 insertions(+), 2 deletions(-)
 
-Hmm, somehow I don't manage to follow these thoughts.
+I've reviewed the logic here to the best of my ability, and it looks
+good to me now. I'll admit that I'm not really a timekeeping or
+scheduler expert, but FWIW:
 
-https://www.kernel.org/doc/htmldocs/device-drivers/API-usleep-range.html
-(as a hopefully sufficiently authoritative source of documentation)
-clearly specifies min to be
-"Minimum time in usecs to sleep"
-, which is what one would expect a two-param interface here to be
-(minimum-maximum),
-i.e. what would be the *natural* protocol I'd think.
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Also, [finally...] starting to enforce the minimum time
-is an additional *constraint* on the protocol,
-i.e. it's not at all like we are getting more *liberal* here
-(since usually getting more liberal in certain protocols
-is what will cause trouble, I'd think).
-
-Not to mention that
-desiring a delay in processing most certainly is
-what caused users of this API to decide to invoke it in the first place
-(else they would just have chosen to carry on with delay-less processing
-and be done with it).
-And those users then surely wouldn't want to experience a behaviour
-where the delay may be ended at any time,
-however short that may end up being.
-
-
-A related topic probably is
-premature wakeups (e.g. signal-induced) of select() etc. protocol.
-
-Greetings,
-
-Andreas Mohr
+> diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+> index 32bf6f75a8fe..219439efd56a 100644
+> --- a/kernel/time/timer.c
+> +++ b/kernel/time/timer.c
+> @@ -1898,12 +1898,28 @@ EXPORT_SYMBOL(msleep_interruptible);
+>  
+>  static void __sched do_usleep_range(unsigned long min, unsigned long max)
+>  {
+> +	ktime_t now, end;
+>  	ktime_t kmin;
+>  	u64 delta;
+> +	int ret;
+>  
+> -	kmin = ktime_set(0, min * NSEC_PER_USEC);
+> +	now = ktime_get();
+> +	end = ktime_add_us(now, min);
+>  	delta = (u64)(max - min) * NSEC_PER_USEC;
+> -	schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
+> +	do {
+> +		kmin = ktime_sub(end, now);
+> +		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
+> +
+> +		/*
+> +		 * If schedule_hrtimeout_range() returns 0 then we actually
+> +		 * hit the timeout. If not then we need to re-calculate the
+> +		 * new timeout ourselves.
+> +		 */
+> +		if (ret == 0)
+> +			break;
+> +
+> +		now = ktime_get();
+> +	} while (ktime_before(now, end));
+>  }
+>  
+>  /**
+> -- 
+> 2.8.0.rc3.226.g39d4020
+> 
