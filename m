@@ -1,13 +1,15 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: initialize rk3066 PLL clock rate
-Date: Tue, 11 Oct 2016 11:19:27 +0200
-Message-ID: <12104842.0Sv0KpAWIA@phil>
-References: <20161006194221.GA4895@vaio-ubuntu>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v6 2/3] of/pci: Add helper function to parse
+ max-link-speed from dt
+Date: Tue, 11 Oct 2016 09:02:51 -0500
+Message-ID: <CAL_JsqLkQ_q9rKmZ8pX4btWD8V5qTeYmgDncVuoXi_sAO9kGTA@mail.gmail.com>
+References: <1476159987-31372-1-git-send-email-shawn.lin@rock-chips.com>
+ <1476159987-31372-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161006194221.GA4895@vaio-ubuntu>
+In-Reply-To: <1476159987-31372-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,39 +19,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgNi4gT2t0b2JlciAyMDE2LCAyMTo0MjoyMSBDRVNUIHNjaHJpZWIgUGF3
-ZcWCIEphcm9zejoKPiBJbml0aWFsaXplIFBMTCByYXRlIHdoaWxlIGtlcm5lbCBpbml0LiBObyBv
-dGhlciBtb2R1bGUgZG9lcyB0aGFuLgo+IENsb2NrIHJhdGVzIGFyZSB0YWtlbiBmcm9tIHJrMzA2
-NiBUUk0uIEFzc2lnbmVkIHZhbHVlcyBhcmUgZm9yIDEyNSBkZWdyZWVzCj4gY2VsY2l1cyBvcGVy
-YXRpbmcgcG9pbnQuCj4gVGhpcyBnaXZlcyB1cyBwZXJmb3JtYW5jZSBib29zdCBvYnNlcnZhYmxl
-IGZvciBleGFtcGxlIGluIG1tYyB0cmFuc2ZlcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogUGF3ZcWC
-IEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm0vYm9v
-dC9kdHMvcmszMDY2YS5kdHNpIHwgNCArKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlv
-bnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpIGIv
-YXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpCj4gaW5kZXggMGQwZGFlMy4uY2YyMTVlOCAx
-MDA2NDQKPiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKPiArKysgYi9hcmNo
-L2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKPiBAQCAtMTUxLDYgKzE1MSwxMCBAQAo+IAo+ICAJ
-CSNjbG9jay1jZWxscyA9IDwxPjsKPiAgCQkjcmVzZXQtY2VsbHMgPSA8MT47Cj4gKwkJYXNzaWdu
-ZWQtY2xvY2tzID0gPCZjcnUgUExMX0RQTEw+LCA8JmNydSBQTExfQVBMTD4sCgp3ZSBzaG91bGRu
-J3QgdG91Y2ggdGhlIERQTEwgYW5kIEFQTEwgYXQgYWxsIGluIHRoaXMgY29udGV4dC4gVGhleSBh
-cmUgcXVpdGUgCnJlbGlhbnQgb24gdGhlIHVuZGVybHlpbmcgdm9sdGFnZXMgYW5kIHRoZSBib290
-bG9hZGVyIG1pZ2h0J3ZlIHNldCBvdGhlciAKdmFsdWVzLiBBbHNvIGNoYW5naW5nIHRoZSBERFIg
-ZnJlcXVlbmN5IHRocm91Z2ggdGhlIERQTEwgcmVxdWlyZXMgc3BlY2lhbCAKaGFuZGxpbmcgb24g
-dGhlIEREUiBzaWRlLgoKPiArCQkJCSAgPCZjcnUgUExMX0NQTEw+LCA8JmNydSBQTExfR1BMTD47
-CgpwbGVhc2UgYWxzbyBpbml0aWFsaXplIHRoZSBQRVJJIGFuZCBCVVMgY2xvY2tzIChzaW1pbGFy
-IHRvIHdoYXQgdGhlIHJrMzI4OCBjbGsgCnNldHRpbmdzIGRvKSwgc28gdGhhdCB0aGV5IHN0YXkg
-c2FuZSwgZXZlbiBpZiB3ZSBjaGFuZ2UgQ1BMTCBhbmQgR1BMTCAKZnJlcXVlbmNpZXMuCgo+ICsJ
-CWFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDUzMzAwMDAwMD4sIDw2MDAwMDAwMDA+LAo+ICsJCQkJ
-ICAgICAgIDw2MDAwMDAwMDA+LCA8NjAwMDAwMDAwPjsKCkFsc28gc2V0dGluZyBib3RoIENQTEwg
-YW5kIEdQTEwgdG8gdGhlIHNhbWUgdmFsdWUgbWlnaHQgYmUgdW5oZWxwZnVsIHRvIAphY2hpZXZl
-IHNwZWNpYWwgZGl2aWRlZCBmcmVxdWVuY2llcz8gQWdhaW4gc2VlIHJrMzI4OC5kdHNpIHdoZXJl
-IHdlIGhhdmUgYSA1OTQgCi8gNDAwIE1IeiBkaXZpc2lvbi4gRXNwZWNpYWxseSB0aGUgZG93bnN0
-cmVhbSBjbG9ja3Mgbm9ybWFsbHkgY2FuIHNlbGVjdCAKYmV0d2VlbiBDUExMIGFuZCBHUExMLgoK
-CkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+On Mon, Oct 10, 2016 at 11:26 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> This new helper function could be used by host drivers to
+> get the limitaion of max link speed provided by dt. If the
+> property isn't assigned or is invalid, it will return -EINVAL
+> to the caller.
+>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>
+>  drivers/of/of_pci.c    | 27 +++++++++++++++++++++++++++
+>  include/linux/of_pci.h |  7 +++++++
+>  2 files changed, 34 insertions(+)
+>
+> diff --git a/drivers/of/of_pci.c b/drivers/of/of_pci.c
+> index 589b30c..91fd465 100644
+> --- a/drivers/of/of_pci.c
+> +++ b/drivers/of/of_pci.c
+> @@ -120,6 +120,33 @@ int of_get_pci_domain_nr(struct device_node *node)
+>  EXPORT_SYMBOL_GPL(of_get_pci_domain_nr);
+>
+>  /**
+> + * This function will try to find the limitation of link speed by finding
+> + * a property called "max-link-speed" of the given device node.
+> + *
+> + * @node: device tree node with the max link speed information
+> + *
+> + * Returns the associated max link speed from DT, or a negative value if the
+> + * required property is not found or is invalid.
+> + */
+> +int of_get_pci_max_link_speed(struct device_node *node)
+
+of_pci_get_max_link_speed
+
+> +{
+> +       const __be32 *value;
+> +       int len;
+> +       u16 max_link_speed;
+> +
+> +       value = of_get_property(node, "max-link-speed", &len);
+
+Use of_property_read_u32 instead.
+
+> +       if (!value || len < sizeof(*value))
+> +               return -EINVAL;
+> +
+> +       max_link_speed = (u16)be32_to_cpup(value);
+
+There's no point in making this a u16.
+
+> +       if (max_link_speed > 4)
+> +               return -EINVAL;
+> +
+> +       return max_link_speed;
+> +}
+> +EXPORT_SYMBOL_GPL(of_get_pci_max_link_speed);
+> +
+> +/**
+>   * of_pci_check_probe_only - Setup probe only mode if linux,pci-probe-only
+>   *                           is present and valid
+>   */
+> diff --git a/include/linux/of_pci.h b/include/linux/of_pci.h
+> index b969e94..a8946d7 100644
+> --- a/include/linux/of_pci.h
+> +++ b/include/linux/of_pci.h
+> @@ -16,6 +16,7 @@ int of_pci_get_devfn(struct device_node *np);
+>  int of_irq_parse_and_map_pci(const struct pci_dev *dev, u8 slot, u8 pin);
+>  int of_pci_parse_bus_range(struct device_node *node, struct resource *res);
+>  int of_get_pci_domain_nr(struct device_node *node);
+> +int of_get_pci_max_link_speed(struct device_node *node);
+>  void of_pci_check_probe_only(void);
+>  #else
+>  static inline int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq)
+> @@ -52,6 +53,12 @@ of_get_pci_domain_nr(struct device_node *node)
+>         return -1;
+>  }
+>
+> +static inline int
+> +of_get_pci_max_link_speed(struct device_node *node)
+> +{
+> +       return -EINVAL;
+> +}
+> +
+>  static inline void of_pci_check_probe_only(void) { }
+>  #endif
+>
+> --
+> 2.3.7
+>
+>
