@@ -1,29 +1,55 @@
-From: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of
- wake_up_process()
-Date: Tue, 11 Oct 2016 09:14:38 +0200 (CEST)
-Message-ID: <alpine.DEB.2.20.1610110908240.7794@nanos>
-References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: initialize rk3066 PLL clock rate
+Date: Tue, 11 Oct 2016 11:19:27 +0200
+Message-ID: <12104842.0Sv0KpAWIA@phil>
+References: <20161006194221.GA4895@vaio-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476133442-17757-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: John Stultz <john.stultz@linaro.org>, Andreas Mohr <andi@lisas.de>, briannorris@chromium.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161006194221.GA4895@vaio-ubuntu>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 10 Oct 2016, Douglas Anderson wrote:
-> Users of usleep_range() expect that it will _never_ return in less time
-> than the minimum passed parameter.  However, nothing in any of the code
-> ensures this.  Specifically:
-
-There is no such guarantee for that interface and never has been, so how
-did you make sure that none of the existing users is relying on this?
-
-You can't just can't just declare that all all of the users expect that and
-be done with it.
-
-Thanks,
-
-	tglx
+QW0gRG9ubmVyc3RhZywgNi4gT2t0b2JlciAyMDE2LCAyMTo0MjoyMSBDRVNUIHNjaHJpZWIgUGF3
+ZcWCIEphcm9zejoKPiBJbml0aWFsaXplIFBMTCByYXRlIHdoaWxlIGtlcm5lbCBpbml0LiBObyBv
+dGhlciBtb2R1bGUgZG9lcyB0aGFuLgo+IENsb2NrIHJhdGVzIGFyZSB0YWtlbiBmcm9tIHJrMzA2
+NiBUUk0uIEFzc2lnbmVkIHZhbHVlcyBhcmUgZm9yIDEyNSBkZWdyZWVzCj4gY2VsY2l1cyBvcGVy
+YXRpbmcgcG9pbnQuCj4gVGhpcyBnaXZlcyB1cyBwZXJmb3JtYW5jZSBib29zdCBvYnNlcnZhYmxl
+IGZvciBleGFtcGxlIGluIG1tYyB0cmFuc2ZlcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogUGF3ZcWC
+IEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm0vYm9v
+dC9kdHMvcmszMDY2YS5kdHNpIHwgNCArKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlv
+bnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpIGIv
+YXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS5kdHNpCj4gaW5kZXggMGQwZGFlMy4uY2YyMTVlOCAx
+MDA2NDQKPiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKPiArKysgYi9hcmNo
+L2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKPiBAQCAtMTUxLDYgKzE1MSwxMCBAQAo+IAo+ICAJ
+CSNjbG9jay1jZWxscyA9IDwxPjsKPiAgCQkjcmVzZXQtY2VsbHMgPSA8MT47Cj4gKwkJYXNzaWdu
+ZWQtY2xvY2tzID0gPCZjcnUgUExMX0RQTEw+LCA8JmNydSBQTExfQVBMTD4sCgp3ZSBzaG91bGRu
+J3QgdG91Y2ggdGhlIERQTEwgYW5kIEFQTEwgYXQgYWxsIGluIHRoaXMgY29udGV4dC4gVGhleSBh
+cmUgcXVpdGUgCnJlbGlhbnQgb24gdGhlIHVuZGVybHlpbmcgdm9sdGFnZXMgYW5kIHRoZSBib290
+bG9hZGVyIG1pZ2h0J3ZlIHNldCBvdGhlciAKdmFsdWVzLiBBbHNvIGNoYW5naW5nIHRoZSBERFIg
+ZnJlcXVlbmN5IHRocm91Z2ggdGhlIERQTEwgcmVxdWlyZXMgc3BlY2lhbCAKaGFuZGxpbmcgb24g
+dGhlIEREUiBzaWRlLgoKPiArCQkJCSAgPCZjcnUgUExMX0NQTEw+LCA8JmNydSBQTExfR1BMTD47
+CgpwbGVhc2UgYWxzbyBpbml0aWFsaXplIHRoZSBQRVJJIGFuZCBCVVMgY2xvY2tzIChzaW1pbGFy
+IHRvIHdoYXQgdGhlIHJrMzI4OCBjbGsgCnNldHRpbmdzIGRvKSwgc28gdGhhdCB0aGV5IHN0YXkg
+c2FuZSwgZXZlbiBpZiB3ZSBjaGFuZ2UgQ1BMTCBhbmQgR1BMTCAKZnJlcXVlbmNpZXMuCgo+ICsJ
+CWFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDUzMzAwMDAwMD4sIDw2MDAwMDAwMDA+LAo+ICsJCQkJ
+ICAgICAgIDw2MDAwMDAwMDA+LCA8NjAwMDAwMDAwPjsKCkFsc28gc2V0dGluZyBib3RoIENQTEwg
+YW5kIEdQTEwgdG8gdGhlIHNhbWUgdmFsdWUgbWlnaHQgYmUgdW5oZWxwZnVsIHRvIAphY2hpZXZl
+IHNwZWNpYWwgZGl2aWRlZCBmcmVxdWVuY2llcz8gQWdhaW4gc2VlIHJrMzI4OC5kdHNpIHdoZXJl
+IHdlIGhhdmUgYSA1OTQgCi8gNDAwIE1IeiBkaXZpc2lvbi4gRXNwZWNpYWxseSB0aGUgZG93bnN0
+cmVhbSBjbG9ja3Mgbm9ybWFsbHkgY2FuIHNlbGVjdCAKYmV0d2VlbiBDUExMIGFuZCBHUExMLgoK
+CkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
