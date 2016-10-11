@@ -1,120 +1,153 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 2/3] of/pci: Add helper function to parse
- max-link-speed from dt
-Date: Tue, 11 Oct 2016 09:02:51 -0500
-Message-ID: <CAL_JsqLkQ_q9rKmZ8pX4btWD8V5qTeYmgDncVuoXi_sAO9kGTA@mail.gmail.com>
-References: <1476159987-31372-1-git-send-email-shawn.lin@rock-chips.com>
- <1476159987-31372-2-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of wake_up_process()
+Date: Tue, 11 Oct 2016 09:33:15 -0700
+Message-ID: <CAD=FV=VTc-RFNiUqkKDr=NFWhphV7r2J+EudSbqt4X3TX62mQw@mail.gmail.com>
+References: <1476133442-17757-1-git-send-email-dianders@chromium.org> <alpine.DEB.2.20.1610110908240.7794@nanos>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1476159987-31372-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <alpine.DEB.2.20.1610110908240.7794@nanos>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: John Stultz <john.stultz@linaro.org>, Andreas Mohr <andi@lisas.de>, Brian Norris <briannorris@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Tony Xie <tony.xie@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "broonie@kernel.org" <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 10, 2016 at 11:26 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> This new helper function could be used by host drivers to
-> get the limitaion of max link speed provided by dt. If the
-> property isn't assigned or is invalid, it will return -EINVAL
-> to the caller.
->
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
->
->  drivers/of/of_pci.c    | 27 +++++++++++++++++++++++++++
->  include/linux/of_pci.h |  7 +++++++
->  2 files changed, 34 insertions(+)
->
-> diff --git a/drivers/of/of_pci.c b/drivers/of/of_pci.c
-> index 589b30c..91fd465 100644
-> --- a/drivers/of/of_pci.c
-> +++ b/drivers/of/of_pci.c
-> @@ -120,6 +120,33 @@ int of_get_pci_domain_nr(struct device_node *node)
->  EXPORT_SYMBOL_GPL(of_get_pci_domain_nr);
->
->  /**
-> + * This function will try to find the limitation of link speed by finding
-> + * a property called "max-link-speed" of the given device node.
-> + *
-> + * @node: device tree node with the max link speed information
-> + *
-> + * Returns the associated max link speed from DT, or a negative value if the
-> + * required property is not found or is invalid.
-> + */
-> +int of_get_pci_max_link_speed(struct device_node *node)
+Thomas,
 
-of_pci_get_max_link_speed
++clock and regulator folks since part of my arguments below involve
+the regulator / clock core.  If you're not interested in this topic,
+feel free to ignore.  Original patch can be found on LKML or at
+<https://patchwork.kernel.org/patch/9369963/>
 
-> +{
-> +       const __be32 *value;
-> +       int len;
-> +       u16 max_link_speed;
-> +
-> +       value = of_get_property(node, "max-link-speed", &len);
-
-Use of_property_read_u32 instead.
-
-> +       if (!value || len < sizeof(*value))
-> +               return -EINVAL;
-> +
-> +       max_link_speed = (u16)be32_to_cpup(value);
-
-There's no point in making this a u16.
-
-> +       if (max_link_speed > 4)
-> +               return -EINVAL;
-> +
-> +       return max_link_speed;
-> +}
-> +EXPORT_SYMBOL_GPL(of_get_pci_max_link_speed);
-> +
-> +/**
->   * of_pci_check_probe_only - Setup probe only mode if linux,pci-probe-only
->   *                           is present and valid
->   */
-> diff --git a/include/linux/of_pci.h b/include/linux/of_pci.h
-> index b969e94..a8946d7 100644
-> --- a/include/linux/of_pci.h
-> +++ b/include/linux/of_pci.h
-> @@ -16,6 +16,7 @@ int of_pci_get_devfn(struct device_node *np);
->  int of_irq_parse_and_map_pci(const struct pci_dev *dev, u8 slot, u8 pin);
->  int of_pci_parse_bus_range(struct device_node *node, struct resource *res);
->  int of_get_pci_domain_nr(struct device_node *node);
-> +int of_get_pci_max_link_speed(struct device_node *node);
->  void of_pci_check_probe_only(void);
->  #else
->  static inline int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq)
-> @@ -52,6 +53,12 @@ of_get_pci_domain_nr(struct device_node *node)
->         return -1;
->  }
+On Tue, Oct 11, 2016 at 12:14 AM, Thomas Gleixner <tglx@linutronix.de> wrote:
+> On Mon, 10 Oct 2016, Douglas Anderson wrote:
+>> Users of usleep_range() expect that it will _never_ return in less time
+>> than the minimum passed parameter.  However, nothing in any of the code
+>> ensures this.  Specifically:
 >
-> +static inline int
-> +of_get_pci_max_link_speed(struct device_node *node)
-> +{
-> +       return -EINVAL;
-> +}
-> +
->  static inline void of_pci_check_probe_only(void) { }
->  #endif
+> There is no such guarantee for that interface and never has been, so how
+> did you make sure that none of the existing users is relying on this?
 >
-> --
-> 2.3.7
->
->
+> You can't just can't just declare that all all of the users expect that and
+> be done with it.
+
+You're right that I can't guarantee that no callers are relying on the
+existing behavior of a wake_up_process() causing usleep_range() to
+return early.  I would say, however, that all callers I've seen are
+absolutely relying on the min delay being enforced and I've never
+personally seen a caller relying on being woken up from
+usleep_range().  All the users relying on the min delay being enforced
+have never had a problem because it's not common for a task that's in
+usleep_range() to be woken up, but if you happen to call some generic
+code in a context where a wake up is possible you'll get a very
+unexpected bug (like I just did).
+
+I can try to look through some callers to usleep_range(), but there
+are 1620 of them as per my "git grep", so I can't look at them all.
+:(
+
+...in any case, below are my arguments about why we should change
+this.  If we can't agree to change this, then IMHO the way forward is
+to deprecate usleep_range() and start the transition of all callers to
+one of two functions: usleep_atlest() and usleep_wakeable().  As
+argued below I think that usleep_range() name implies that it will at
+least sleep the minimum so I would really like to avoid keeping the
+name usleep_range() and also keeping the existing behavior.
+
+--
+
+1. I believe msleep() and usleep_range() should be parallel functions.
+msleep() has this guarantee of not ending early.  I believe users will
+expect that usleep() will also.
+
+2. The "timers-howto.txt" does not have any information about the fact
+that usleep_range() might end early.  This document implies that
+(assuming you're not in atomic) udelay() / usleep_range() should be
+chosen between simply based on how long the expected delay is.  There
+is no note that you shouldn't use usleep_range() if you can't handle
+ending early.
+
+3. It seems to me that if someone wants to wait to be woken up but
+they want a timeout, they wouldn't reach for usleep_range().  They
+would instead think to use schedule_hrtimeout_range() directly.  Said
+another way: we already have a function for scheduling a delay that
+can be interrupted with a wakeup, so why do we need usleep_range() to
+also behave this way?
+
+4. We need to change a lot of places if we want to handle the fact
+that usleep_range() might wake up early.  Every instance of
+usleep_range() that I've ever seen is not expecting to end early and
+is expecting at least the minimum delay for correctness.  These
+functions have all worked correctly because they didn't happen to be
+called in a context where someone might wake up the calling task.
+...but if suddenly one of these functions is called on a task that
+might be woken up then all their correctness will go out the door.
+
+In other words, I see a lot of usleep_range() calls that look like this:
+
+  /* After 5 ms we know reset is done */
+  assert_reset()
+  usleep_range(5000, 7000)
+
+If that returns early then we'll get badness.
+
+--
+
+Here's a (perhaps more realistic) example of the problem.  Imagine
+that we are trying to do some type of DVF (Dynamic Voltage Frequency)
+switch.  That involves changing both a regulator and a clock.  It's
+possible that we might want to try to do these two things in parallel
+on two tasks, so we could imagine doing:
+
+Task #1 (voltage)
+A) Call into regulator core to change voltage.
+A1) Regulator core will call into arbitrary regulator driver.
+A2) Regulator core won't return until regulator is at the right level.
+A3) Delay waiting for regulator might be done with usleep_range().
+B) Signal Task #2 that we're done.
+C) Wait on Task #2 to finish.
+
+Task #2 (clock)
+A) Call into clock core to change clock.
+A1) Clock core will call into arbitrary clock driver.
+A2) Clock core won't return until clock is stable.
+A3) Delay waiting for clock might be done with usleep_range().
+B) Signal Task #1 that we're done.
+C) Wait on Task #1 to finish.
+
+Depending on the delays and the mechanism used to signal and wait, it
+is possible that the "Signal" step above will end up waking up the
+other task.  If it does this while the other task is in the
+usleep_range() code then we'll have serious problems: we'll either run
+with an clock or a regulator that isn't all the way ready.
+
+Now perhaps you will say that we should re-design the signaling
+mechanism above so that it doesn't cause a wake up of the other task.
+We certainly could try to do that if need be (we'd have to validate
+that there is really NEVER an unexpected wakeup), but I'd expect a lot
+of push back since I don't think folks would think that waking up a
+task would cause such incorrect behavior.
+
+Now perhaps you will say that we should re-design all clock and
+regulator drivers to not call usleep_range() (or to add a loop).  This
+implies that we should add a new function so they don't all need to
+get this loop right.
+
+
+NOTE: In the particular failure case I'm running into, I'm on a system
+using the (out of tree) "interactive" governor.  I haven't followed
+through the exact code path, but I see that it is using
+wake_up_process() in at least several places to wake up the
+"speedchange_task".  This is the same task that might be calling into
+cpufreq to change the frequency and might be calling into the
+regulator core to do the delay.  We were specifically seeing cases
+where the usleep_range() in PWM regulator was returning early.
+
+--
+
+OK, I know that the above is pretty long.  Hopefully it made sense.
+Feel free to grab me on IRC if it helps.  I can be found on freenode
+as dianders and can join any channel where it's helpful to hash this
+out.
+
+-Doug
