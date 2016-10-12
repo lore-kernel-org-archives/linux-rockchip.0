@@ -1,86 +1,97 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 1/2] include: dt-bindings: Add GPIO pin index definition for rockchip pinctrl
-Date: Wed, 12 Oct 2016 00:00:12 +0200
-Message-ID: <13068948.jkWM1OvpR7@phil>
-References: <1473210053-23743-1-git-send-email-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v7 2/3] of/pci: Add helper function to parse max-link-speed from dt
+Date: Wed, 12 Oct 2016 10:01:24 +0800
+Message-ID: <1476237685-14539-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1476237685-14539-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1473210053-23743-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1476237685-14539-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. September 2016, 09:00:53 CEST schrieb Andy Yan:
-> Add gpio pin index definition to make it easier to describe
-> GPIO in dts.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+This new helper function could be used by host drivers to
+get the limitaion of max link speed provided by dt. If the
+property isn't assigned or is invalid, it will return -EINVAL
+to the caller.
 
-just as a heads up, as I didn't respond yet:
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Looks good and I'll take them, I just want to wait for the merge-window to 
-close (should be the coming sunday), to be able to put the header change in a 
-shared branch for the case that other users appear during the 4.10 cycle.
+---
 
+Changes in v7:
+- rename the function name and using of_property_read_u32
+  suggested by Rob
 
-Heiko
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
 
-> ---
-> 
-> Changes in v1:
-> - remove gpio bank definition RK_GPIO7/8
-> - redefine GPIO PIN as RK_PA/B/C/Dx
-> 
->  include/dt-bindings/pinctrl/rockchip.h | 33
-> +++++++++++++++++++++++++++++++++ 1 file changed, 33 insertions(+)
-> 
-> diff --git a/include/dt-bindings/pinctrl/rockchip.h
-> b/include/dt-bindings/pinctrl/rockchip.h index 743e66a..aaec8ba 100644
-> --- a/include/dt-bindings/pinctrl/rockchip.h
-> +++ b/include/dt-bindings/pinctrl/rockchip.h
-> @@ -25,6 +25,39 @@
->  #define RK_GPIO4	4
->  #define RK_GPIO6	6
-> 
-> +#define RK_PA0		0
-> +#define RK_PA1		1
-> +#define RK_PA2		2
-> +#define RK_PA3		3
-> +#define RK_PA4		4
-> +#define RK_PA5		5
-> +#define RK_PA6		6
-> +#define RK_PA7		7
-> +#define RK_PB0		8
-> +#define RK_PB1		9
-> +#define RK_PB2		10
-> +#define RK_PB3		11
-> +#define RK_PB4		12
-> +#define RK_PB5		13
-> +#define RK_PB6		14
-> +#define RK_PB7		15
-> +#define RK_PC0		16
-> +#define RK_PC1		17
-> +#define RK_PC2		18
-> +#define RK_PC3		19
-> +#define RK_PC4		20
-> +#define RK_PC5		21
-> +#define RK_PC6		22
-> +#define RK_PC7		23
-> +#define RK_PD0		24
-> +#define RK_PD1		25
-> +#define RK_PD2		26
-> +#define RK_PD3		27
-> +#define RK_PD4		28
-> +#define RK_PD5		29
-> +#define RK_PD6		30
-> +#define RK_PD7		31
-> +
->  #define RK_FUNC_GPIO	0
->  #define RK_FUNC_1	1
->  #define RK_FUNC_2	2
+ drivers/of/of_pci.c    | 21 +++++++++++++++++++++
+ include/linux/of_pci.h |  7 +++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/drivers/of/of_pci.c b/drivers/of/of_pci.c
+index 589b30c..0c566ca 100644
+--- a/drivers/of/of_pci.c
++++ b/drivers/of/of_pci.c
+@@ -120,6 +120,27 @@ int of_get_pci_domain_nr(struct device_node *node)
+ EXPORT_SYMBOL_GPL(of_get_pci_domain_nr);
+ 
+ /**
++ * This function will try to find the limitation of link speed by finding
++ * a property called "max-link-speed" of the given device node.
++ *
++ * @node: device tree node with the max link speed information
++ *
++ * Returns the associated max link speed from DT, or a negative value if the
++ * required property is not found or is invalid.
++ */
++int of_pci_get_max_link_speed(struct device_node *node)
++{
++	u32 max_link_speed;
++
++	if (of_property_read_u32(node, "max-link-speed", &max_link_speed) ||
++	    max_link_speed > 4)
++		return -EINVAL;
++
++	return max_link_speed;
++}
++EXPORT_SYMBOL_GPL(of_pci_get_max_link_speed);
++
++/**
+  * of_pci_check_probe_only - Setup probe only mode if linux,pci-probe-only
+  *                           is present and valid
+  */
+diff --git a/include/linux/of_pci.h b/include/linux/of_pci.h
+index b969e94..2e668e3 100644
+--- a/include/linux/of_pci.h
++++ b/include/linux/of_pci.h
+@@ -16,6 +16,7 @@ int of_pci_get_devfn(struct device_node *np);
+ int of_irq_parse_and_map_pci(const struct pci_dev *dev, u8 slot, u8 pin);
+ int of_pci_parse_bus_range(struct device_node *node, struct resource *res);
+ int of_get_pci_domain_nr(struct device_node *node);
++int of_pci_get_max_link_speed(struct device_node *node);
+ void of_pci_check_probe_only(void);
+ #else
+ static inline int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq)
+@@ -52,6 +53,12 @@ of_get_pci_domain_nr(struct device_node *node)
+ 	return -1;
+ }
+ 
++static inline int
++of_pci_get_max_link_speed(struct device_node *node)
++{
++	return -EINVAL;
++}
++
+ static inline void of_pci_check_probe_only(void) { }
+ #endif
+ 
+-- 
+2.3.7
 
 
 --
