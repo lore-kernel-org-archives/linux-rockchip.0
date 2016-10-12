@@ -1,83 +1,99 @@
-From: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of
- wake_up_process()
-Date: Wed, 12 Oct 2016 15:11:32 +0200 (CEST)
-Message-ID: <alpine.DEB.2.20.1610121506480.8572@nanos>
-References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
- <alpine.DEB.2.20.1610110908240.7794@nanos>
- <20161011182541.GA32165@rhlx01.hs-esslingen.de>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: Question: Re: [PATCH] drm/bridge: analogix: protect power when
+ get_modes or detect
+Date: Wed, 12 Oct 2016 10:51:14 -0400
+Message-ID: <CAOw6vbKe0d66O1MymP24UQ-M3EmdR+=pZVWmgZG9iVm5x1Arrg@mail.gmail.com>
+References: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
+ <57FE0EF5.7010207@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161011182541.GA32165-p/qQFhXj4MHA4IYVXhSI5GHfThorsUsI@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <57FE0EF5.7010207@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 11 Oct 2016, Andreas Mohr wrote:
-> On Tue, Oct 11, 2016 at 09:14:38AM +0200, Thomas Gleixner wrote:
-> > On Mon, 10 Oct 2016, Douglas Anderson wrote:
-> > > Users of usleep_range() expect that it will _never_ return in less time
-> > > than the minimum passed parameter.  However, nothing in any of the code
-> > > ensures this.  Specifically:
-> > 
-> > There is no such guarantee for that interface and never has been, so how
-> > did you make sure that none of the existing users is relying on this?
-> > 
-> > You can't just can't just declare that all all of the users expect that and
-> > be done with it.
-> 
-> Hmm, somehow I don't manage to follow these thoughts.
-> 
-> https://www.kernel.org/doc/htmldocs/device-drivers/API-usleep-range.html
-> (as a hopefully sufficiently authoritative source of documentation)
-> clearly specifies min to be
-> "Minimum time in usecs to sleep"
-> , which is what one would expect a two-param interface here to be
-> (minimum-maximum),
-> i.e. what would be the *natural* protocol I'd think.
-> 
-> Also, [finally...] starting to enforce the minimum time
-> is an additional *constraint* on the protocol,
-> i.e. it's not at all like we are getting more *liberal* here
-> (since usually getting more liberal in certain protocols
-> is what will cause trouble, I'd think).
-> 
-> Not to mention that
-> desiring a delay in processing most certainly is
-> what caused users of this API to decide to invoke it in the first place
-> (else they would just have chosen to carry on with delay-less processing
-> and be done with it).
-> And those users then surely wouldn't want to experience a behaviour
-> where the delay may be ended at any time,
-> however short that may end up being.
-
-I'm well aware what Doug wants to do and I'm not saying that this is wrong,
-but I'm not going to look at all usleep() usage sites to make sure none is
-relying on such a behaviour and gets surprised by the change,
-
-The point is that we had cases over and over where stuff was depending on
-implementation bugs which made the buggy behaviour into an expected
-behaviour. I'm not saying that this is the case here, but it's not my duty
-to make sure it isn't.
-
-So the very minimum I need in the changelog is some mentioning that the
-author at least tried to verify that this is not going to break the world
-and some more. That's what I meant by:
-
-You can't just can't just declare that all all of the users expect that and
-be done with it.
-
-Thanks,
-
-	tglx
+T24gV2VkLCBPY3QgMTIsIDIwMTYgYXQgNjoyMiBBTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPgo+IEknbSBub3QgZmFtaWxpYXIgd2l0aCB0aGUgYW5hbG9naXgg
+ZHJpdmVyLCBtYXliZSB1c2UgYSBwb3dlciByZWZlcmVuY2UgY291bnQKPiB3b3VsZCBiZXR0ZXIg
+dGhlbiBkaXJlY3QgcG93ZXIgb24vb2ZmIGFuYWxvZ2l4X2RwLgo+Cj4gRG9lcyBhbnlvbmUgaGFz
+IHRoZSBpZGVhIHRvIHByb3RlY3QgZGV0ZWN0IGFuZCBnZXRfbW9kZXMgY29udGV4dD8KPgoKSSdt
+IG5vdCBzdXJlIGEgcmVmZXJlbmNlIGNvdW50IGlzIGdvaW5nIHRvIGhlbHAgaGVyZS4gVGhlIGNv
+bW1vbgpwYXR0ZXJuIGlzIHRvIGNhbGwgZGV0ZWN0KCkgZm9sbG93ZWQgYnkgZ2V0X21vZGVzKCkg
+YW5kIHRoZW4gbW9kZXNldC4KSG93ZXZlciwgaXQncyBub3QgZ3VhcmFudGVlZCB0aGF0IGFueSBv
+bmUgb2YgdGhvc2UgZnVuY3Rpb25zIHdpbGwgYmUKY2FsbGVkIGFmdGVyIHRoZSBvdGhlci4gU28s
+IGlmIHlvdSBsZWF2ZSB0aGluZ3Mgb24gYWZ0ZXIgZGV0ZWN0IG9yCmdldF9tb2RlcywgeW91IG1p
+Z2h0IGJlIHdhc3RpbmcgcG93ZXIgKG9yIHdvcnNlKS4KCkkgcmVjZW50bHkgcmFuIGludG8gdGhp
+cyBleGFjdCBwcm9ibGVtIHdpdGggYSBwYW5lbCB3ZSdyZSB1c2luZy4gQ2hlY2sKb3V0ICIwYjhi
+MDU5YTc6IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBFbnN1cmUgdGhlIHBhbmVsIGlzIHByb3Bl
+cmx5CnByZXBhcmVkL3VucHJlcGFyZWQiLiBQZXJoYXBzIHlvdSBjYW4gcGlnZ3liYWNrIG9uIHRo
+YXQgZnVuY3Rpb24gdG8KYWRkIHlvdXIgcG1fcnVudGltZSBhbmQgcGxhdF9kYXRhIGNhbGxiYWNr
+cyAoc2luY2UgdXNpbmcgZHBtc19tb2RlCm1pZ2h0IGJlIHJhY2V5KS4KClNlYW4KCgo+IEkgZm91
+bmQgbWFueSBvdGhlciBjb25uZWN0b3IgZHJpdmVyIGFsc28gZGlyZWN0IGFjY2VzcyByZWdpc3Rl
+ciBvbiBkZXRlY3Qgb3IKPiBnZXRfbW9kZXMsIG5vIHByb2JsZW0gZm9yIGl0Pwo+Cj4gT24gMjAx
+NuW5tDEw5pyIMTLml6UgMTg6MDAsIE1hcmsgWWFvIHdyb3RlOgo+Cj4gVGhlIGRybSBjYWxsYmFj
+ayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2VlbXMgaXMgbm90IHBvd2VyIHNhZmUsCj4gdGhl
+eSBtYXkgYmUgY2FsbGVkIHdoZW4gZGV2aWNlIGlzIHBvd2VyIG9mZiwgZG8gcmVnaXN0ZXIgYWNj
+ZXNzIG9uCj4gZGV0ZWN0IG9yIGdldF9tb2RlcyB3aWxsIGNhdXNlIHN5c3RlbSBkaWUuCj4KPiBI
+ZXJlIGlzIHRoZSBwYXRoIGNhbGwgLT5kZXRlY3QgYmVmb3JlIGFuYWxvZ2l4X2RwIHBvd2VyIG9u
+Cj4gWzxmZmZmZmY4MDA4NDNiYWJjPl0gYW5hbG9naXhfZHBfZGV0ZWN0KzB4NDQvMHhkYwo+IFs8
+ZmZmZmZmODAwODNmZDg0MD5dCj4gZHJtX2hlbHBlcl9wcm9iZV9zaW5nbGVfY29ubmVjdG9yX21v
+ZGVzX21lcmdlX2JpdHMrMHhlOC8weDQxYwo+IFs8ZmZmZmZmODAwODNmZGI4ND5dIGRybV9oZWxw
+ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcysweDEwLzB4MTgKPiBbPGZmZmZmZjgwMDg0
+MThkMjQ+XSBkcm1fbW9kZV9nZXRjb25uZWN0b3IrMHhmNC8weDMwNAo+IFs8ZmZmZmZmODAwODQw
+Y2ZmMD5dIGRybV9pb2N0bCsweDIzYy8weDM5MAo+IFs8ZmZmZmZmODAwODFhOGFkYz5dIGRvX3Zm
+c19pb2N0bCsweDRiOC8weDU4Ywo+IFs8ZmZmZmZmODAwODFhOGMxMD5dIFN5U19pb2N0bCsweDYw
+LzB4ODgKPgo+IENjOiBJbmtpIERhZSA8aW5raS5kYWVAc2Ftc3VuZy5jb20+Cj4gQ2M6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rh
+dm8ucGFkb3ZhbkBjb2xsYWJvcmEuY28udWs+Cj4gQ2M6ICJWaWxsZSBTeXJqw6Rsw6QiIDx2aWxs
+ZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxt
+YXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
+bmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAyOAo+ICsrKysrKysrKysrKysrKysrKysrKysK
+PiAgMSBmaWxlIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IGIvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBpbmRleCBlZmFj
+OGFiLi4wOWRlY2UyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
+aXgvYW5hbG9naXhfZHBfY29yZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBAQCAtMTA2Miw2ICsxMDYyLDEzIEBAIGludCBhbmFs
+b2dpeF9kcF9nZXRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IKPiAqY29ubmVjdG9yKQo+ICAg
+cmV0dXJuIDA7Cj4gICB9Cj4KPiArIGlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNf
+T04pIHsKPiArIHBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRldik7Cj4gKwo+ICsgaWYgKGRwLT5w
+bGF0X2RhdGEtPnBvd2VyX29uKQo+ICsgZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24oZHAtPnBsYXRf
+ZGF0YSk7Cj4gKyB9Cj4gKwo+ICAgaWYgKGFuYWxvZ2l4X2RwX2hhbmRsZV9lZGlkKGRwKSA9PSAw
+KSB7Cj4gICBkcm1fbW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoJmRwLT5jb25u
+ZWN0b3IsIGVkaWQpOwo+ICAgbnVtX21vZGVzICs9IGRybV9hZGRfZWRpZF9tb2RlcygmZHAtPmNv
+bm5lY3RvciwgZWRpZCk7Cj4gQEAgLTEwNzMsNiArMTA4MCwxMyBAQCBpbnQgYW5hbG9naXhfZHBf
+Z2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yCj4gKmNvbm5lY3RvcikKPiAgIGlmIChkcC0+
+cGxhdF9kYXRhLT5nZXRfbW9kZXMpCj4gICBudW1fbW9kZXMgKz0gZHAtPnBsYXRfZGF0YS0+Z2V0
+X21vZGVzKGRwLT5wbGF0X2RhdGEsIGNvbm5lY3Rvcik7Cj4KPiArIGlmIChkcC0+ZHBtc19tb2Rl
+ICE9IERSTV9NT0RFX0RQTVNfT04pIHsKPiArIGlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYp
+Cj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7Cj4gKwo+ICsgcG1f
+cnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiArIH0KPiArCj4gICByZXQgPSBhbmFsb2dpeF9k
+cF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwo+ICAgaWYgKHJldCkKPiAgIERSTV9F
+UlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+IEBAIC0xMTA2
+LDkgKzExMjAsMjMgQEAgYW5hbG9naXhfZHBfZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpj
+b25uZWN0b3IsCj4gYm9vbCBmb3JjZSkKPiAgIHJldHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nv
+bm5lY3RlZDsKPiAgIH0KPgo+ICsgaWYgKGRwLT5kcG1zX21vZGUgIT0gRFJNX01PREVfRFBNU19P
+Tikgewo+ICsgcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPiArCj4gKyBpZiAoZHAtPnBs
+YXRfZGF0YS0+cG93ZXJfb24pCj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihkcC0+cGxhdF9k
+YXRhKTsKPiArIH0KPiArCj4gICBpZiAoIWFuYWxvZ2l4X2RwX2RldGVjdF9ocGQoZHApKQo+ICAg
+c3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7Cj4KPiArIGlmIChkcC0+ZHBtc19t
+b2RlICE9IERSTV9NT0RFX0RQTVNfT04pIHsKPiArIGlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9v
+ZmYpCj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7Cj4gKwo+ICsg
+cG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiArIH0KPiArCj4gICByZXQgPSBhbmFsb2dp
+eF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwo+ICAgaWYgKHJldCkKPiAgIERS
+TV9FUlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+Cj4KPgo+
+IC0tCj4g77ytYXJrIFlhbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
