@@ -1,11 +1,13 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH] drm/bridge: analogix: protect power when get_modes or detect
-Date: Wed, 12 Oct 2016 18:00:42 +0800
-Message-ID: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Question: Re: [PATCH] drm/bridge: analogix: protect power when
+ get_modes or detect
+Date: Wed, 12 Oct 2016 18:22:45 +0800
+Message-ID: <57FE0EF5.7010207@rock-chips.com>
+References: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0612561465=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -19,55 +21,128 @@ To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel
 Cc: Gustavo Padovan <gustavo.padovan@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGRybSBjYWxsYmFjayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2VlbXMgaXMgbm90IHBv
-d2VyIHNhZmUsCnRoZXkgbWF5IGJlIGNhbGxlZCB3aGVuIGRldmljZSBpcyBwb3dlciBvZmYsIGRv
-IHJlZ2lzdGVyIGFjY2VzcyBvbgpkZXRlY3Qgb3IgZ2V0X21vZGVzIHdpbGwgY2F1c2Ugc3lzdGVt
-IGRpZS4KCkhlcmUgaXMgdGhlIHBhdGggY2FsbCAtPmRldGVjdCBiZWZvcmUgYW5hbG9naXhfZHAg
-cG93ZXIgb24KWzxmZmZmZmY4MDA4NDNiYWJjPl0gYW5hbG9naXhfZHBfZGV0ZWN0KzB4NDQvMHhk
-YwpbPGZmZmZmZjgwMDgzZmQ4NDA+XSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3Jf
-bW9kZXNfbWVyZ2VfYml0cysweGU4LzB4NDFjCls8ZmZmZmZmODAwODNmZGI4ND5dIGRybV9oZWxw
-ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcysweDEwLzB4MTgKWzxmZmZmZmY4MDA4NDE4
-ZDI0Pl0gZHJtX21vZGVfZ2V0Y29ubmVjdG9yKzB4ZjQvMHgzMDQKWzxmZmZmZmY4MDA4NDBjZmYw
-Pl0gZHJtX2lvY3RsKzB4MjNjLzB4MzkwCls8ZmZmZmZmODAwODFhOGFkYz5dIGRvX3Zmc19pb2N0
-bCsweDRiOC8weDU4YwpbPGZmZmZmZjgwMDgxYThjMTA+XSBTeVNfaW9jdGwrMHg2MC8weDg4CgpD
-YzogSW5raSBEYWUgPGlua2kuZGFlQHNhbXN1bmcuY29tPgpDYzogU2VhbiBQYXVsIDxzZWFucGF1
-bEBjaHJvbWl1bS5vcmc+CkNjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rhdm8ucGFkb3ZhbkBjb2xs
-YWJvcmEuY28udWs+CkNjOiAiVmlsbGUgU3lyasOkbMOkIiA8dmlsbGUuc3lyamFsYUBsaW51eC5p
-bnRlbC5jb20+CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
-b20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmMgfCAyOCArKysrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMjggaW5zZXJ0
-aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
-bG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKaW5kZXggZWZhYzhhYi4uMDlkZWNlMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKQEAgLTEwNjIsNiArMTA2
-MiwxMyBAQCBpbnQgYW5hbG9naXhfZHBfZ2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yICpj
-b25uZWN0b3IpCiAJCXJldHVybiAwOwogCX0KIAorCWlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9N
-T0RFX0RQTVNfT04pIHsKKwkJcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKKworCQlpZiAo
-ZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24pCisJCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihkcC0+
-cGxhdF9kYXRhKTsKKwl9CisKIAlpZiAoYW5hbG9naXhfZHBfaGFuZGxlX2VkaWQoZHApID09IDAp
-IHsKIAkJZHJtX21vZGVfY29ubmVjdG9yX3VwZGF0ZV9lZGlkX3Byb3BlcnR5KCZkcC0+Y29ubmVj
-dG9yLCBlZGlkKTsKIAkJbnVtX21vZGVzICs9IGRybV9hZGRfZWRpZF9tb2RlcygmZHAtPmNvbm5l
-Y3RvciwgZWRpZCk7CkBAIC0xMDczLDYgKzEwODAsMTMgQEAgaW50IGFuYWxvZ2l4X2RwX2dldF9t
-b2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQogCWlmIChkcC0+cGxhdF9kYXRh
-LT5nZXRfbW9kZXMpCiAJCW51bV9tb2RlcyArPSBkcC0+cGxhdF9kYXRhLT5nZXRfbW9kZXMoZHAt
-PnBsYXRfZGF0YSwgY29ubmVjdG9yKTsKIAorCWlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RF
-X0RQTVNfT04pIHsKKwkJaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZikKKwkJCWRwLT5wbGF0
-X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRhKTsKKworCQlwbV9ydW50aW1lX3B1dF9zeW5j
-KGRwLT5kZXYpOworCX0KKwogCXJldCA9IGFuYWxvZ2l4X2RwX3ByZXBhcmVfcGFuZWwoZHAsIGZh
-bHNlLCBmYWxzZSk7CiAJaWYgKHJldCkKIAkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gdW5wcmVwYXJl
-IHBhbmVsICglZClcbiIsIHJldCk7CkBAIC0xMTA2LDkgKzExMjAsMjMgQEAgYW5hbG9naXhfZHBf
-ZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsIGJvb2wgZm9yY2UpCiAJCXJl
-dHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKIAl9CiAKKwlpZiAoZHAtPmRwbXNf
-bW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKSB7CisJCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRl
-dik7CisKKwkJaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29uKQorCQkJZHAtPnBsYXRfZGF0YS0+
-cG93ZXJfb24oZHAtPnBsYXRfZGF0YSk7CisJfQorCiAJaWYgKCFhbmFsb2dpeF9kcF9kZXRlY3Rf
-aHBkKGRwKSkKIAkJc3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7CiAKKwlpZiAo
-ZHAtPmRwbXNfbW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKSB7CisJCWlmIChkcC0+cGxhdF9kYXRh
-LT5wb3dlcl9vZmYpCisJCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7
-CisKKwkJcG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKKwl9CisKIAlyZXQgPSBhbmFsb2dp
-eF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwogCWlmIChyZXQpCiAJCURSTV9F
-UlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwotLSAKMS45LjEK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+--===============0612561465==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <div class="moz-cite-prefix"><br>
+      I'm not familiar with the analogix driver, maybe use a power
+      reference count  would better then direct power on/off
+      analogix_dp.<br>
+      <br>
+      Does anyone has the idea to protect detect and get_modes context?<br>
+      <br>
+      I found many other connector driver also direct access register on
+      detect or get_modes, no problem for it?<br>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <br>
+      On 2016年10月12日 18:00, Mark Yao wrote:<br>
+    </div>
+    <blockquote
+      cite="mid:1476266442-29803-1-git-send-email-mark.yao@rock-chips.com"
+      type="cite">
+      <pre wrap="">The drm callback -&gt;detect and -&gt;get_modes seems is not power safe,
+they may be called when device is power off, do register access on
+detect or get_modes will cause system die.
+
+Here is the path call -&gt;detect before analogix_dp power on
+[&lt;ffffff800843babc&gt;] analogix_dp_detect+0x44/0xdc
+[&lt;ffffff80083fd840&gt;] drm_helper_probe_single_connector_modes_merge_bits+0xe8/0x41c
+[&lt;ffffff80083fdb84&gt;] drm_helper_probe_single_connector_modes+0x10/0x18
+[&lt;ffffff8008418d24&gt;] drm_mode_getconnector+0xf4/0x304
+[&lt;ffffff800840cff0&gt;] drm_ioctl+0x23c/0x390
+[&lt;ffffff80081a8adc&gt;] do_vfs_ioctl+0x4b8/0x58c
+[&lt;ffffff80081a8c10&gt;] SyS_ioctl+0x60/0x88
+
+Cc: Inki Dae <a class="moz-txt-link-rfc2396E" href="mailto:inki.dae@samsung.com">&lt;inki.dae@samsung.com&gt;</a>
+Cc: Sean Paul <a class="moz-txt-link-rfc2396E" href="mailto:seanpaul@chromium.org">&lt;seanpaul@chromium.org&gt;</a>
+Cc: Gustavo Padovan <a class="moz-txt-link-rfc2396E" href="mailto:gustavo.padovan@collabora.co.uk">&lt;gustavo.padovan@collabora.co.uk&gt;</a>
+Cc: "Ville Syrjälä" <a class="moz-txt-link-rfc2396E" href="mailto:ville.syrjala@linux.intel.com">&lt;ville.syrjala@linux.intel.com&gt;</a>
+
+Signed-off-by: Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 28 ++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index efac8ab..09dece2 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1062,6 +1062,13 @@ int analogix_dp_get_modes(struct drm_connector *connector)
+ 		return 0;
+ 	}
+ 
++	if (dp-&gt;dpms_mode != DRM_MODE_DPMS_ON) {
++		pm_runtime_get_sync(dp-&gt;dev);
++
++		if (dp-&gt;plat_data-&gt;power_on)
++			dp-&gt;plat_data-&gt;power_on(dp-&gt;plat_data);
++	}
++
+ 	if (analogix_dp_handle_edid(dp) == 0) {
+ 		drm_mode_connector_update_edid_property(&amp;dp-&gt;connector, edid);
+ 		num_modes += drm_add_edid_modes(&amp;dp-&gt;connector, edid);
+@@ -1073,6 +1080,13 @@ int analogix_dp_get_modes(struct drm_connector *connector)
+ 	if (dp-&gt;plat_data-&gt;get_modes)
+ 		num_modes += dp-&gt;plat_data-&gt;get_modes(dp-&gt;plat_data, connector);
+ 
++	if (dp-&gt;dpms_mode != DRM_MODE_DPMS_ON) {
++		if (dp-&gt;plat_data-&gt;power_off)
++			dp-&gt;plat_data-&gt;power_off(dp-&gt;plat_data);
++
++		pm_runtime_put_sync(dp-&gt;dev);
++	}
++
+ 	ret = analogix_dp_prepare_panel(dp, false, false);
+ 	if (ret)
+ 		DRM_ERROR("Failed to unprepare panel (%d)\n", ret);
+@@ -1106,9 +1120,23 @@ analogix_dp_detect(struct drm_connector *connector, bool force)
+ 		return connector_status_disconnected;
+ 	}
+ 
++	if (dp-&gt;dpms_mode != DRM_MODE_DPMS_ON) {
++		pm_runtime_get_sync(dp-&gt;dev);
++
++		if (dp-&gt;plat_data-&gt;power_on)
++			dp-&gt;plat_data-&gt;power_on(dp-&gt;plat_data);
++	}
++
+ 	if (!analogix_dp_detect_hpd(dp))
+ 		status = connector_status_connected;
+ 
++	if (dp-&gt;dpms_mode != DRM_MODE_DPMS_ON) {
++		if (dp-&gt;plat_data-&gt;power_off)
++			dp-&gt;plat_data-&gt;power_off(dp-&gt;plat_data);
++
++		pm_runtime_put_sync(dp-&gt;dev);
++	}
++
+ 	ret = analogix_dp_prepare_panel(dp, false, false);
+ 	if (ret)
+ 		DRM_ERROR("Failed to unprepare panel (%d)\n", ret);
+</pre>
+    </blockquote>
+    <br>
+    <br>
+    <pre class="moz-signature" cols="72">-- 
+Ｍark Yao</pre>
+  </body>
+</html>
+
+
+--===============0612561465==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0612561465==--
