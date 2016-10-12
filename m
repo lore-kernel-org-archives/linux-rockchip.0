@@ -1,100 +1,73 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of
- wake_up_process()
-Date: Wed, 12 Oct 2016 10:56:59 +0200
-Message-ID: <20161012085659.y74qnipuwdblkjjh@sirena.org.uk>
-References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
- <alpine.DEB.2.20.1610110908240.7794@nanos>
- <CAD=FV=VTc-RFNiUqkKDr=NFWhphV7r2J+EudSbqt4X3TX62mQw@mail.gmail.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH] drm/bridge: analogix: protect power when get_modes or detect
+Date: Wed, 12 Oct 2016 18:00:42 +0800
+Message-ID: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6765130272016773139=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=VTc-RFNiUqkKDr=NFWhphV7r2J+EudSbqt4X3TX62mQw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Gustavo Padovan <gustavo.padovan@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============6765130272016773139==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="hawcpf24p6g7vfdm"
-Content-Disposition: inline
-
-
---hawcpf24p6g7vfdm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Oct 11, 2016 at 09:33:15AM -0700, Doug Anderson wrote:
-> On Tue, Oct 11, 2016 at 12:14 AM, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org> wrote:
-> > On Mon, 10 Oct 2016, Douglas Anderson wrote:
-
-> >> Users of usleep_range() expect that it will _never_ return in less time
-> >> than the minimum passed parameter.  However, nothing in any of the code
-> >> ensures this.  Specifically:
-
-> > There is no such guarantee for that interface and never has been, so how
-> > did you make sure that none of the existing users is relying on this?
-
-> > You can't just can't just declare that all all of the users expect that and
-> > be done with it.
-
-> You're right that I can't guarantee that no callers are relying on the
-> existing behavior of a wake_up_process() causing usleep_range() to
-> return early.  I would say, however, that all callers I've seen are
-> absolutely relying on the min delay being enforced and I've never
-> personally seen a caller relying on being woken up from
-> usleep_range().  All the users relying on the min delay being enforced
-
-Indeed.  It's *highly* surprising for any sleep interface to undershoot
-on delays, the usual thing is that they might delay for longer.  If the
-function doesn't actually reliably delay for the minimum time then I'd
-expect that a large proportion of those conversions and other recent
-code that's been added is buggy.
-
-> one of two functions: usleep_atlest() and usleep_wakeable().  As
-> argued below I think that usleep_range() name implies that it will at
-> least sleep the minimum so I would really like to avoid keeping the
-> name usleep_range() and also keeping the existing behavior.
-
-I tend to agree with everything Doug is saying in terms of API
-expectations.
-
---hawcpf24p6g7vfdm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAABCAAGBQJX/frXAAoJECTWi3JdVIfQX7UH/it23a1hvDi2h8XCii6fHgkU
-X+i8VtEzCd2jNihGL6FoUYvLu71BvWYd/Pbe+mR5tIO57dhitRnfXkSwvD5VCO0o
-K+0o/4zFULAyjRuE5pTUCO0cv6dVrIZscVv7tiym8CSE35eOzmvHFdz5BqCfXDJn
-GI55tk1IN4GI/GB4+kUQZwx6bmeTCkY90qKt2mfbh6FJ5tpba04xnbsNGnPmxkWf
-M3ntKRM84lfvhBs17z0QkWEtP9YQLZ0A0uuniMGawGTumiiGUJlnwMx2thAe1/1G
-R3LpO5Hp1KLIUg23yBMxIe81vXyEg2zo9inyu/Q90dvr9JTuMqLA+UcdT0vYNSg=
-=ECTj
------END PGP SIGNATURE-----
-
---hawcpf24p6g7vfdm--
-
-
---===============6765130272016773139==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6765130272016773139==--
+VGhlIGRybSBjYWxsYmFjayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2VlbXMgaXMgbm90IHBv
+d2VyIHNhZmUsCnRoZXkgbWF5IGJlIGNhbGxlZCB3aGVuIGRldmljZSBpcyBwb3dlciBvZmYsIGRv
+IHJlZ2lzdGVyIGFjY2VzcyBvbgpkZXRlY3Qgb3IgZ2V0X21vZGVzIHdpbGwgY2F1c2Ugc3lzdGVt
+IGRpZS4KCkhlcmUgaXMgdGhlIHBhdGggY2FsbCAtPmRldGVjdCBiZWZvcmUgYW5hbG9naXhfZHAg
+cG93ZXIgb24KWzxmZmZmZmY4MDA4NDNiYWJjPl0gYW5hbG9naXhfZHBfZGV0ZWN0KzB4NDQvMHhk
+YwpbPGZmZmZmZjgwMDgzZmQ4NDA+XSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3Jf
+bW9kZXNfbWVyZ2VfYml0cysweGU4LzB4NDFjCls8ZmZmZmZmODAwODNmZGI4ND5dIGRybV9oZWxw
+ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcysweDEwLzB4MTgKWzxmZmZmZmY4MDA4NDE4
+ZDI0Pl0gZHJtX21vZGVfZ2V0Y29ubmVjdG9yKzB4ZjQvMHgzMDQKWzxmZmZmZmY4MDA4NDBjZmYw
+Pl0gZHJtX2lvY3RsKzB4MjNjLzB4MzkwCls8ZmZmZmZmODAwODFhOGFkYz5dIGRvX3Zmc19pb2N0
+bCsweDRiOC8weDU4YwpbPGZmZmZmZjgwMDgxYThjMTA+XSBTeVNfaW9jdGwrMHg2MC8weDg4CgpD
+YzogSW5raSBEYWUgPGlua2kuZGFlQHNhbXN1bmcuY29tPgpDYzogU2VhbiBQYXVsIDxzZWFucGF1
+bEBjaHJvbWl1bS5vcmc+CkNjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rhdm8ucGFkb3ZhbkBjb2xs
+YWJvcmEuY28udWs+CkNjOiAiVmlsbGUgU3lyasOkbMOkIiA8dmlsbGUuc3lyamFsYUBsaW51eC5p
+bnRlbC5jb20+CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
+LmMgfCAyOCArKysrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMjggaW5zZXJ0
+aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
+bG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
+eF9kcF9jb3JlLmMKaW5kZXggZWZhYzhhYi4uMDlkZWNlMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKQEAgLTEwNjIsNiArMTA2
+MiwxMyBAQCBpbnQgYW5hbG9naXhfZHBfZ2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yICpj
+b25uZWN0b3IpCiAJCXJldHVybiAwOwogCX0KIAorCWlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9N
+T0RFX0RQTVNfT04pIHsKKwkJcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKKworCQlpZiAo
+ZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24pCisJCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihkcC0+
+cGxhdF9kYXRhKTsKKwl9CisKIAlpZiAoYW5hbG9naXhfZHBfaGFuZGxlX2VkaWQoZHApID09IDAp
+IHsKIAkJZHJtX21vZGVfY29ubmVjdG9yX3VwZGF0ZV9lZGlkX3Byb3BlcnR5KCZkcC0+Y29ubmVj
+dG9yLCBlZGlkKTsKIAkJbnVtX21vZGVzICs9IGRybV9hZGRfZWRpZF9tb2RlcygmZHAtPmNvbm5l
+Y3RvciwgZWRpZCk7CkBAIC0xMDczLDYgKzEwODAsMTMgQEAgaW50IGFuYWxvZ2l4X2RwX2dldF9t
+b2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQogCWlmIChkcC0+cGxhdF9kYXRh
+LT5nZXRfbW9kZXMpCiAJCW51bV9tb2RlcyArPSBkcC0+cGxhdF9kYXRhLT5nZXRfbW9kZXMoZHAt
+PnBsYXRfZGF0YSwgY29ubmVjdG9yKTsKIAorCWlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RF
+X0RQTVNfT04pIHsKKwkJaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZikKKwkJCWRwLT5wbGF0
+X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRhKTsKKworCQlwbV9ydW50aW1lX3B1dF9zeW5j
+KGRwLT5kZXYpOworCX0KKwogCXJldCA9IGFuYWxvZ2l4X2RwX3ByZXBhcmVfcGFuZWwoZHAsIGZh
+bHNlLCBmYWxzZSk7CiAJaWYgKHJldCkKIAkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gdW5wcmVwYXJl
+IHBhbmVsICglZClcbiIsIHJldCk7CkBAIC0xMTA2LDkgKzExMjAsMjMgQEAgYW5hbG9naXhfZHBf
+ZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsIGJvb2wgZm9yY2UpCiAJCXJl
+dHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKIAl9CiAKKwlpZiAoZHAtPmRwbXNf
+bW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKSB7CisJCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRl
+dik7CisKKwkJaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29uKQorCQkJZHAtPnBsYXRfZGF0YS0+
+cG93ZXJfb24oZHAtPnBsYXRfZGF0YSk7CisJfQorCiAJaWYgKCFhbmFsb2dpeF9kcF9kZXRlY3Rf
+aHBkKGRwKSkKIAkJc3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7CiAKKwlpZiAo
+ZHAtPmRwbXNfbW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKSB7CisJCWlmIChkcC0+cGxhdF9kYXRh
+LT5wb3dlcl9vZmYpCisJCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7
+CisKKwkJcG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKKwl9CisKIAlyZXQgPSBhbmFsb2dp
+eF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwogCWlmIChyZXQpCiAJCURSTV9F
+UlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwotLSAKMS45LjEK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
