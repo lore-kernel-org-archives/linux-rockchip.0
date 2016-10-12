@@ -1,99 +1,47 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: Question: Re: [PATCH] drm/bridge: analogix: protect power when
- get_modes or detect
-Date: Wed, 12 Oct 2016 10:51:14 -0400
-Message-ID: <CAOw6vbKe0d66O1MymP24UQ-M3EmdR+=pZVWmgZG9iVm5x1Arrg@mail.gmail.com>
-References: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
- <57FE0EF5.7010207@rock-chips.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 0/2] PCI: rockchip: Cleanup
+Date: Wed, 12 Oct 2016 11:02:40 -0500
+Message-ID: <20161012160240.GG4308@localhost>
+References: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <57FE0EF5.7010207@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20161012130256.25212.33689.stgit-1RhO1Y9PlrlHTL0Zs8A6p/gx64E7kk8eUsxypvmhUTTZJqsBc5GL+g@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBPY3QgMTIsIDIwMTYgYXQgNjoyMiBBTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
-Y2hpcHMuY29tPiB3cm90ZToKPgo+IEknbSBub3QgZmFtaWxpYXIgd2l0aCB0aGUgYW5hbG9naXgg
-ZHJpdmVyLCBtYXliZSB1c2UgYSBwb3dlciByZWZlcmVuY2UgY291bnQKPiB3b3VsZCBiZXR0ZXIg
-dGhlbiBkaXJlY3QgcG93ZXIgb24vb2ZmIGFuYWxvZ2l4X2RwLgo+Cj4gRG9lcyBhbnlvbmUgaGFz
-IHRoZSBpZGVhIHRvIHByb3RlY3QgZGV0ZWN0IGFuZCBnZXRfbW9kZXMgY29udGV4dD8KPgoKSSdt
-IG5vdCBzdXJlIGEgcmVmZXJlbmNlIGNvdW50IGlzIGdvaW5nIHRvIGhlbHAgaGVyZS4gVGhlIGNv
-bW1vbgpwYXR0ZXJuIGlzIHRvIGNhbGwgZGV0ZWN0KCkgZm9sbG93ZWQgYnkgZ2V0X21vZGVzKCkg
-YW5kIHRoZW4gbW9kZXNldC4KSG93ZXZlciwgaXQncyBub3QgZ3VhcmFudGVlZCB0aGF0IGFueSBv
-bmUgb2YgdGhvc2UgZnVuY3Rpb25zIHdpbGwgYmUKY2FsbGVkIGFmdGVyIHRoZSBvdGhlci4gU28s
-IGlmIHlvdSBsZWF2ZSB0aGluZ3Mgb24gYWZ0ZXIgZGV0ZWN0IG9yCmdldF9tb2RlcywgeW91IG1p
-Z2h0IGJlIHdhc3RpbmcgcG93ZXIgKG9yIHdvcnNlKS4KCkkgcmVjZW50bHkgcmFuIGludG8gdGhp
-cyBleGFjdCBwcm9ibGVtIHdpdGggYSBwYW5lbCB3ZSdyZSB1c2luZy4gQ2hlY2sKb3V0ICIwYjhi
-MDU5YTc6IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBFbnN1cmUgdGhlIHBhbmVsIGlzIHByb3Bl
-cmx5CnByZXBhcmVkL3VucHJlcGFyZWQiLiBQZXJoYXBzIHlvdSBjYW4gcGlnZ3liYWNrIG9uIHRo
-YXQgZnVuY3Rpb24gdG8KYWRkIHlvdXIgcG1fcnVudGltZSBhbmQgcGxhdF9kYXRhIGNhbGxiYWNr
-cyAoc2luY2UgdXNpbmcgZHBtc19tb2RlCm1pZ2h0IGJlIHJhY2V5KS4KClNlYW4KCgo+IEkgZm91
-bmQgbWFueSBvdGhlciBjb25uZWN0b3IgZHJpdmVyIGFsc28gZGlyZWN0IGFjY2VzcyByZWdpc3Rl
-ciBvbiBkZXRlY3Qgb3IKPiBnZXRfbW9kZXMsIG5vIHByb2JsZW0gZm9yIGl0Pwo+Cj4gT24gMjAx
-NuW5tDEw5pyIMTLml6UgMTg6MDAsIE1hcmsgWWFvIHdyb3RlOgo+Cj4gVGhlIGRybSBjYWxsYmFj
-ayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2VlbXMgaXMgbm90IHBvd2VyIHNhZmUsCj4gdGhl
-eSBtYXkgYmUgY2FsbGVkIHdoZW4gZGV2aWNlIGlzIHBvd2VyIG9mZiwgZG8gcmVnaXN0ZXIgYWNj
-ZXNzIG9uCj4gZGV0ZWN0IG9yIGdldF9tb2RlcyB3aWxsIGNhdXNlIHN5c3RlbSBkaWUuCj4KPiBI
-ZXJlIGlzIHRoZSBwYXRoIGNhbGwgLT5kZXRlY3QgYmVmb3JlIGFuYWxvZ2l4X2RwIHBvd2VyIG9u
-Cj4gWzxmZmZmZmY4MDA4NDNiYWJjPl0gYW5hbG9naXhfZHBfZGV0ZWN0KzB4NDQvMHhkYwo+IFs8
-ZmZmZmZmODAwODNmZDg0MD5dCj4gZHJtX2hlbHBlcl9wcm9iZV9zaW5nbGVfY29ubmVjdG9yX21v
-ZGVzX21lcmdlX2JpdHMrMHhlOC8weDQxYwo+IFs8ZmZmZmZmODAwODNmZGI4ND5dIGRybV9oZWxw
-ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcysweDEwLzB4MTgKPiBbPGZmZmZmZjgwMDg0
-MThkMjQ+XSBkcm1fbW9kZV9nZXRjb25uZWN0b3IrMHhmNC8weDMwNAo+IFs8ZmZmZmZmODAwODQw
-Y2ZmMD5dIGRybV9pb2N0bCsweDIzYy8weDM5MAo+IFs8ZmZmZmZmODAwODFhOGFkYz5dIGRvX3Zm
-c19pb2N0bCsweDRiOC8weDU4Ywo+IFs8ZmZmZmZmODAwODFhOGMxMD5dIFN5U19pb2N0bCsweDYw
-LzB4ODgKPgo+IENjOiBJbmtpIERhZSA8aW5raS5kYWVAc2Ftc3VuZy5jb20+Cj4gQ2M6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rh
-dm8ucGFkb3ZhbkBjb2xsYWJvcmEuY28udWs+Cj4gQ2M6ICJWaWxsZSBTeXJqw6Rsw6QiIDx2aWxs
-ZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxt
-YXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
-bmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAyOAo+ICsrKysrKysrKysrKysrKysrKysrKysK
-PiAgMSBmaWxlIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBpbmRleCBlZmFj
-OGFiLi4wOWRlY2UyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBAQCAtMTA2Miw2ICsxMDYyLDEzIEBAIGludCBhbmFs
-b2dpeF9kcF9nZXRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IKPiAqY29ubmVjdG9yKQo+ICAg
-cmV0dXJuIDA7Cj4gICB9Cj4KPiArIGlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNf
-T04pIHsKPiArIHBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRldik7Cj4gKwo+ICsgaWYgKGRwLT5w
-bGF0X2RhdGEtPnBvd2VyX29uKQo+ICsgZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24oZHAtPnBsYXRf
-ZGF0YSk7Cj4gKyB9Cj4gKwo+ICAgaWYgKGFuYWxvZ2l4X2RwX2hhbmRsZV9lZGlkKGRwKSA9PSAw
-KSB7Cj4gICBkcm1fbW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoJmRwLT5jb25u
-ZWN0b3IsIGVkaWQpOwo+ICAgbnVtX21vZGVzICs9IGRybV9hZGRfZWRpZF9tb2RlcygmZHAtPmNv
-bm5lY3RvciwgZWRpZCk7Cj4gQEAgLTEwNzMsNiArMTA4MCwxMyBAQCBpbnQgYW5hbG9naXhfZHBf
-Z2V0X21vZGVzKHN0cnVjdCBkcm1fY29ubmVjdG9yCj4gKmNvbm5lY3RvcikKPiAgIGlmIChkcC0+
-cGxhdF9kYXRhLT5nZXRfbW9kZXMpCj4gICBudW1fbW9kZXMgKz0gZHAtPnBsYXRfZGF0YS0+Z2V0
-X21vZGVzKGRwLT5wbGF0X2RhdGEsIGNvbm5lY3Rvcik7Cj4KPiArIGlmIChkcC0+ZHBtc19tb2Rl
-ICE9IERSTV9NT0RFX0RQTVNfT04pIHsKPiArIGlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYp
-Cj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7Cj4gKwo+ICsgcG1f
-cnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiArIH0KPiArCj4gICByZXQgPSBhbmFsb2dpeF9k
-cF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwo+ICAgaWYgKHJldCkKPiAgIERSTV9F
-UlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+IEBAIC0xMTA2
-LDkgKzExMjAsMjMgQEAgYW5hbG9naXhfZHBfZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpj
-b25uZWN0b3IsCj4gYm9vbCBmb3JjZSkKPiAgIHJldHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nv
-bm5lY3RlZDsKPiAgIH0KPgo+ICsgaWYgKGRwLT5kcG1zX21vZGUgIT0gRFJNX01PREVfRFBNU19P
-Tikgewo+ICsgcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPiArCj4gKyBpZiAoZHAtPnBs
-YXRfZGF0YS0+cG93ZXJfb24pCj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihkcC0+cGxhdF9k
-YXRhKTsKPiArIH0KPiArCj4gICBpZiAoIWFuYWxvZ2l4X2RwX2RldGVjdF9ocGQoZHApKQo+ICAg
-c3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7Cj4KPiArIGlmIChkcC0+ZHBtc19t
-b2RlICE9IERSTV9NT0RFX0RQTVNfT04pIHsKPiArIGlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9v
-ZmYpCj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7Cj4gKwo+ICsg
-cG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiArIH0KPiArCj4gICByZXQgPSBhbmFsb2dp
-eF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwo+ICAgaWYgKHJldCkKPiAgIERS
-TV9FUlJPUigiRmFpbGVkIHRvIHVucHJlcGFyZSBwYW5lbCAoJWQpXG4iLCByZXQpOwo+Cj4KPgo+
-IC0tCj4g77ytYXJrIFlhbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+On Wed, Oct 12, 2016 at 08:04:16AM -0500, Bjorn Helgaas wrote:
+>   - Remove platform drvdata because it appears unused (we called
+>     platform_set_drvdata() but not platform_get_drvdata()).
+> 
+> Nothing here should change the behavior of the driver.
+> 
+> Changes from v1:
+>   Added Dan's indentation fix.
+>   I dropped the following patches because they were a lot of churn for
+>   questionable benefit:
+>     PCI: rockchip: Rename accessors
+>     PCI: rockchip: Swap order of rockchip_writel() reg/val arguments
+> 
+> ---
+> 
+> Bjorn Helgaas (1):
+>       PCI: rockchip: Remove unused platform data
+> 
+> Dan Carpenter (1):
+>       PCI: rockchip: Indent "if" statement body
+
+I applied these to pci/host-rockchip for v4.9.  I hope to ask Linus to
+pull them tomorrow, so if you see any issues, let me know soon.
