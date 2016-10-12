@@ -1,15 +1,15 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [v2] timers: Fix usleep_range() in the context of
  wake_up_process()
-Date: Wed, 12 Oct 2016 09:03:45 -0700
-Message-ID: <20161012160309.GA19146@roeck-us.net>
+Date: Wed, 12 Oct 2016 09:27:35 -0700
+Message-ID: <CAD=FV=Ug9P1XDvF-Z_gPeU4CtFzoXQZuy7rmdg4FNGFdT77ENQ@mail.gmail.com>
 References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+ <20161012160309.GA19146@roeck-us.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1476133442-17757-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <20161012160309.GA19146-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,88 +19,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
+To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andreas Mohr <andi-5+Cda9B46AM@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 10, 2016 at 02:04:02PM -0700, Douglas Anderson wrote:
-> Users of usleep_range() expect that it will _never_ return in less time
-> than the minimum passed parameter.  However, nothing in any of the code
-> ensures this.  Specifically:
-> 
-> usleep_range() => do_usleep_range() => schedule_hrtimeout_range() =>
-> schedule_hrtimeout_range_clock() just ends up calling schedule() with an
-> appropriate timeout set using the hrtimer.  If someone else happens to
-> wake up our task then we'll happily return from usleep_range() early.
-> 
-> msleep() already has code to handle this case since it will loop as long
-> as there was still time left.  usleep_range() had no such loop.
-> 
-> The problem is is easily demonstrated with a small bit of test code:
-> 
->   static int usleep_test_task(void *data)
->   {
->     atomic_t *done = data;
->     ktime_t start, end;
-> 
->     start = ktime_get();
->     usleep_range(50000, 100000);
->     end = ktime_get();
->     pr_info("Requested 50000 - 100000 us.  Actually slept for %llu us\n",
->       (unsigned long long)ktime_to_us(ktime_sub(end, start)));
->     atomic_set(done, 1);
-> 
->     return 0;
->   }
-> 
->   static void run_usleep_test(void)
->   {
->     struct task_struct *t;
->     atomic_t done;
-> 
->     atomic_set(&done, 0);
-> 
->     t = kthread_run(usleep_test_task, &done, "usleep_test_task");
->     while (!atomic_read(&done)) {
->       wake_up_process(t);
->       udelay(1000);
->     }
->     kthread_stop(t);
->   }
-> 
-> If you run the above code without this patch you get things like:
->   Requested 50000 - 100000 us.  Actually slept for 967 us
-> 
-> If you run the above code _with_ this patch, you get:
->   Requested 50000 - 100000 us.  Actually slept for 50001 us
-> 
-> Presumably this problem was not detected before because:
-> - It's not terribly common to use wake_up_process() directly.
-> - Other ways for processes to wake up are not typically mixed with
->   usleep_range().
-> - There aren't lots of places that use usleep_range(), since many people
->   call either msleep() or udelay().
-> 
-> Reported-by: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Andreas Mohr <andim2-iA+eEnwkJgzk1uMJSBkQmQ@public.gmane.org>
+Hi,
 
-Reviewed-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+On Wed, Oct 12, 2016 at 9:03 AM, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org> wrote:
+> drivers/iio/accel/kxcjk-1013.c: kxcjk1013_runtime_resume()
+> drivers/iio/accel/bmc150-accel-core.c:bmc150_accel_runtime_resume()
+> drivers/iio/accel/mma8452.c:mma8452_runtime_resume()
+> drivers/iio/accel/mma9551_core.c:mma9551_sleep()
 
-The following drivers may expect the function to be interruptible.
+As far as I can tell these drivers will not suffer unduly from my
+change.  Worse case they will delay 20us more, which is listed as the
+max.
 
-drivers/iio/accel/kxcjk-1013.c: kxcjk1013_runtime_resume()
-drivers/iio/accel/bmc150-accel-core.c:bmc150_accel_runtime_resume()
-drivers/iio/accel/mma8452.c:mma8452_runtime_resume()
-drivers/iio/accel/mma9551_core.c:mma9551_sleep()
-kernel/trace/ring_buffer.c:rb_test()
+Also note that I assume the reason you flagged these is because they
+follow the pattern:
 
-A possible solution might be to introduce usleep_range_interruptible()
-and use it there.
+        if (sleep_val < 20000)
+                usleep_range(sleep_val, 20000);
+        else
+                msleep_interruptible(sleep_val/1000);
 
-Note:
-drivers/scsi/mvumi.c:mvumi_rescan_bus() uses msleep() but should possibly
-use msleep_interruptible() instead.
+I will note that usleep_range() is and has always been
+uninterruptible, since the implementation says:
 
-Guenter
+void __sched usleep_range(unsigned long min, unsigned long max)
+{
+       __set_current_state(TASK_UNINTERRUPTIBLE);
+       do_usleep_range(min, max);
+}
+
+So I'm not at all convinced that we are changing behavior here.  The
+"interruptible" vs. "uninterruptible" affects whether signals can
+interrupt the sleep, not whether a random wake up of a task can.  What
+we really need to know is if they are affected by a wakeup.
+
+> kernel/trace/ring_buffer.c:rb_test()
+
+I assume that the person who wrote this code was confused since they wrote:
+
+  set_current_state(TASK_INTERRUPTIBLE);
+  /* Now sleep between a min of 100-300us and a max of 1ms */
+  usleep_range(((data->cnt % 3) + 1) * 100, 1000);
+
+That doesn't seem to make sense given the first line of usleep_range().
+
+In any case, again I don't think I am changing behavior.
+
+> A possible solution might be to introduce usleep_range_interruptible()
+> and use it there.
+
+This could be a useful function, but I don't think we need it if we
+find someone who needs a wakeup to cut short a sleep.  We can just
+call one of the schedule functions directly and use a timeout.
+
+
+Thank you for searching through for stuff and for your review, though!
+
+-Doug
