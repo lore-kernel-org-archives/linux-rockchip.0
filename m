@@ -1,54 +1,36 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] clk: rockchip: don't return NULL when failing to register
- ddrclk branch
-Date: Wed, 12 Oct 2016 20:31:41 +0800
-Message-ID: <1476275501-2653-1-git-send-email-shawn.lin@rock-chips.com>
+From: Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH v2 0/2] PCI: rockchip: Cleanup
+Date: Wed, 12 Oct 2016 08:04:16 -0500
+Message-ID: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-rockchip_clk_register_ddrclk should not return NULL when faling
-to call clk_register, otherwise rockchip_clk_register_branches
-prints "unknown clock type". The acutal case is that it's a known
-clock type but we fail to regiser it, which may makes user confuse
-the reason of failure. And the pr_err here is pointless as
-rockchip_clk_register_branches will also print the similar message.
+  - Remove platform drvdata because it appears unused (we called
+    platform_set_drvdata() but not platform_get_drvdata()).
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Nothing here should change the behavior of the driver.
+
+Changes from v1:
+  Added Dan's indentation fix.
+  I dropped the following patches because they were a lot of churn for
+  questionable benefit:
+    PCI: rockchip: Rename accessors
+    PCI: rockchip: Swap order of rockchip_writel() reg/val arguments
+
 ---
 
- drivers/clk/rockchip/clk-ddr.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Bjorn Helgaas (1):
+      PCI: rockchip: Remove unused platform data
 
-diff --git a/drivers/clk/rockchip/clk-ddr.c b/drivers/clk/rockchip/clk-ddr.c
-index 8feba93..e807535 100644
---- a/drivers/clk/rockchip/clk-ddr.c
-+++ b/drivers/clk/rockchip/clk-ddr.c
-@@ -144,11 +144,8 @@ struct clk *rockchip_clk_register_ddrclk(const char *name, int flags,
- 	ddrclk->ddr_flag = ddr_flag;
- 
- 	clk = clk_register(NULL, &ddrclk->hw);
--	if (IS_ERR(clk)) {
--		pr_err("%s: could not register ddrclk %s\n", __func__,	name);
-+	if (IS_ERR(clk))
- 		kfree(ddrclk);
--		return NULL;
--	}
- 
- 	return clk;
- }
--- 
-2.3.7
+Dan Carpenter (1):
+      PCI: rockchip: Indent "if" statement body
+
+
+ drivers/pci/host/pcie-rockchip.c |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
