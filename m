@@ -1,46 +1,51 @@
-From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: [bug report] PCI: rockchip: Add Rockchip PCIe controller support
-Date: Wed, 12 Oct 2016 13:54:34 +0300
-Message-ID: <20161012105434.GA21452@mwanda>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [patch] PCI: rockchip: Indent an if statement
+Date: Wed, 12 Oct 2016 19:04:11 +0800
+Message-ID: <2916ad6b-e6a4-b221-5820-c1c5f9387f76@rock-chips.com>
+References: <20161012105409.GA19070@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <20161012105409.GA19070@mwanda>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Wenrui Li <wenrui.li@rock-chips.com>, kernel-janitors@vger.kernel.org, linux-rockchip@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Shawn Lin,
+On 2016/10/12 18:54, Dan Carpenter wrote:
+> The if statement wasn't intended.  Add a tab.
+>
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-The patch e77f847df54c: "PCI: rockchip: Add Rockchip PCIe controller
-support" from Sep 3, 2016, leads to the following static checker
-warning:
+Thanks for this patch.
 
-	drivers/pci/host/pcie-rockchip.c:552 rockchip_pcie_init_port()
-	warn: mask and shift to zero
+Currently the driver is under cleanup, so it would be fine
+for Bjorn to pick it up for host-rockchip branch. :)
 
-drivers/pci/host/pcie-rockchip.c
-   549  
-   550          /* Check the final link width from negotiated lane counter from MGMT */
-   551          status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
-   552          status =  0x1 << ((status & PCIE_CORE_PL_CONF_LANE_MASK) >>
-   553                            PCIE_CORE_PL_CONF_LANE_MASK);
+>
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index b8c82fc..f54ef1e 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -972,7 +972,7 @@ static int rockchip_pcie_prog_ob_atu(struct rockchip_pcie *rockchip,
+>  		return -EINVAL;
+>  	if (region_no == 0) {
+>  		if (AXI_REGION_0_SIZE < (2ULL << num_pass_bits))
+> -		return -EINVAL;
+> +			return -EINVAL;
+>  	}
+>  	if (region_no != 0) {
+>  		if (AXI_REGION_SIZE < (2ULL << num_pass_bits))
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
 
-Presumably we should be shifting by PCIE_CORE_PL_CONF_LANE_SHIFT but
-this still looks all kind of jumbled up.
 
-   554          dev_dbg(dev, "current link width is x%d\n", status);
-   555  
+-- 
+Best Regards
+Shawn Lin
 
-regards,
-dan carpenter
