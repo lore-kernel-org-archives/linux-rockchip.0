@@ -1,36 +1,37 @@
 From: Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v2 0/2] PCI: rockchip: Cleanup
-Date: Wed, 12 Oct 2016 08:04:16 -0500
-Message-ID: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
+Subject: [PATCH v2 1/2] PCI: rockchip: Remove unused platform data
+Date: Wed, 12 Oct 2016 08:04:24 -0500
+Message-ID: <20161012130424.25212.24525.stgit@bhelgaas-glaptop2.roam.corp.google.com>
+References: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-  - Remove platform drvdata because it appears unused (we called
-    platform_set_drvdata() but not platform_get_drvdata()).
+The rockchip driver never uses the platform drvdata pointer, so don't
+bother setting it.  No functional change intended.
 
-Nothing here should change the behavior of the driver.
-
-Changes from v1:
-  Added Dan's indentation fix.
-  I dropped the following patches because they were a lot of churn for
-  questionable benefit:
-    PCI: rockchip: Rename accessors
-    PCI: rockchip: Swap order of rockchip_writel() reg/val arguments
-
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
+ drivers/pci/host/pcie-rockchip.c |    2 --
+ 1 file changed, 2 deletions(-)
 
-Bjorn Helgaas (1):
-      PCI: rockchip: Remove unused platform data
-
-Dan Carpenter (1):
-      PCI: rockchip: Indent "if" statement body
-
-
- drivers/pci/host/pcie-rockchip.c |    4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index b8c82fc..59bf0db 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1091,8 +1091,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto err_vpcie;
+ 
+-	platform_set_drvdata(pdev, rockchip);
+-
+ 	rockchip_pcie_enable_interrupts(rockchip);
+ 
+ 	err = rockchip_pcie_init_irq_domain(rockchip);
