@@ -1,19 +1,12 @@
-From: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
- rk3066
-Date: Thu, 13 Oct 2016 10:55:17 +0200
-Message-ID: <95e45ae4-f8cd-c7e0-4f3e-0ad0a5183078@gmail.com>
-References: <20161001140939.GA31220@vaio-ubuntu>
- <6239b970-09d3-f7ee-e6f5-c019eaedb725@rock-chips.com>
- <f8aba48d-6c69-b246-4cb2-48a2770c80e4@gmail.com>
- <67831fd0-76af-a793-0b2f-958e45633fe8@rock-chips.com>
- <149df5ee-3478-6d15-bb76-47becac146e9@gmail.com>
- <e3746f9a-084e-163e-a412-1a1fc66926d5@rock-chips.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] drm/rockchip: add an common abstracted PSR driver
+Date: Thu, 13 Oct 2016 12:26:06 +0300
+Message-ID: <20161013092606.GA23977@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <e3746f9a-084e-163e-a412-1a1fc66926d5-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Disposition: inline
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,44 +16,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKCgpXIGRuaXUgMTMuMTAuMjAxNiBvIDA5OjEyLCBIdWFuZywgVGFvIHBpc3plOgo+IEhpLCBQ
-YXdlxYI6Cj4gT24gMjAxNuW5tDEw5pyIMTDml6UgMTc6MTEsIFBhd2XFgiBKYXJvc3ogd3JvdGU6
-Cj4+IFcgZG5pdSAxMC4xMC4yMDE2IG8gMDk6MTgsIEh1YW5nLCBUYW8gcGlzemU6Cj4+PiBPdXIg
-SUMgZ3V5IG5lZWQgdXMgdGVsbCB0aGVtIHdoaWNoIG1hc3RlciBjYW4gbm90IGFjY2VzcyBzdWNo
-IGFyZWEsIERNQQo+Pj4gb3IgRU1NQyBDb250cm9sbGVyIG9yIEdQVSwgZXRjPyBDb3VsZCB5b3Ug
-dGVsbCBtZSBob3cgdG8gcmVwcm9kdWNlIHN1Y2gKPj4+IGlzc3VlPwo+Pj4gQW5kIHdlIGNhbiBj
-b25maXJtIENQVSBjb3JlIGNhbiBhY2Nlc3MgdGhpcyBtZW1vcnkgdGhyb3VnaCAvZGV2L21lbSBh
-bmQKPj4+IHRoZSB0ZXN0IGJvYXJkIGlzIDFHQiB0b28uIFBlcnNvbmFsbHksIEkgZG9uJ3QgdGhp
-bmsgUkszMDY2IGhhcyBzdWNoCj4+PiBsaW1pdCBiZWNhdXNlIHdoZW4gd2UgdmVyaWZ5IHRoaXMg
-Y2hpcCwgd2UgZG9uJ3QgZm91bmQgc3VjaCBsaW1pdCBhdCBhbGwuCj4+Pgo+Pj4gVGhhbmtzLAo+
-Pj4gSHVhbmcsIFRhbwo+PiBJJ20gZ2V0dGluZyB0aGlzIG9uIFVidW50dSAxNi4wNCB3aXRoIG1h
-aW5saW5lIGtlcm5lbC4KPj4gTXkgYm9hcmQgYWx3YXlzIGZyZWV6ZXMgd2hlbiBpIHR5cGU6ICJt
-ZW10ZXN0ZXIgODAwTSIKPj4KPiBXZSB0cnkgcnVuIG1lbXRlc3QgODAwTSB3aXRoIExpbnV4IGtl
-cm5lbCA0LjgsIHdoaWNoIGtpbGxlZCBieSBPT00uCj4gQnV0IGlmIHdlIHJ1bjoKPiAjIG1lbXRl
-c3RlciAtcCAweDlGMDAwMDAwIDE2SyAxCj4gbWVtdGVzdGVyIHZlcnNpb24gNC4zLjAgKDMyLWJp
-dCkKPiBDb3B5cmlnaHQgKEMpIDIwMDEtMjAxMiBDaGFybGVzIENhemFib24uCj4gTGljZW5zZWQg
-dW5kZXIgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHZlcnNpb24gMiAob25seSkuCj4K
-PiBwYWdlc2l6ZSBpcyA0MDk2Cj4gcGFnZXNpemVtYXNrIGlzIDB4ZmZmZmYwMDAKPiB3YW50IDBN
-QiAoMTYzODQgYnl0ZXMpCj4gTG9vcCAxLzE6Cj4gICAgIFN0dWNrIEFkZHJlc3MgICAgICAgOiBv
-awo+ICAgICBSYW5kb20gVmFsdWUgICAgICAgIDogb2sKPiAgICAgQ29tcGFyZSBYT1IgICAgICAg
-ICA6IG9rCj4gICAgIENvbXBhcmUgU1VCICAgICAgICAgOiBvawo+ICAgICBDb21wYXJlIE1VTCAg
-ICAgICAgIDogb2sKPiAgICAgQ29tcGFyZSBESVYgICAgICAgICA6IG9rCj4gICAgIENvbXBhcmUg
-T1IgICAgICAgICAgOiBvawo+ICAgICBDb21wYXJlIEFORCAgICAgICAgIDogb2sKPiAgICAgU2Vx
-dWVudGlhbCBJbmNyZW1lbnQ6IG9rCj4gICAgIFNvbGlkIEJpdHMgICAgICAgICAgOiBvawo+ICAg
-ICBCbG9jayBTZXF1ZW50aWFsICAgIDogb2sKPiAgICAgQ2hlY2tlcmJvYXJkICAgICAgICA6IG9r
-Cj4gICAgIEJpdCBTcHJlYWQgICAgICAgICAgOiBvawo+ICAgICBCaXQgRmxpcCAgICAgICAgICAg
-IDogb2sKPiAgICAgV2Fsa2luZyBPbmVzICAgICAgICA6IG9rCj4gICAgIFdhbGtpbmcgWmVyb2Vz
-ICAgICAgOiBvawo+ICAgICA4LWJpdCBXcml0ZXMgICAgICAgIDogb2sKPiAgICAgMTYtYml0IFdy
-aXRlcyAgICAgICA6IG9rCj4KPiBTbyB0aGVzZSBtZW1vcnkgc2hvdWxkIGJlIGZpbmUgdG8gQ1BV
-IGNvcmUuIE1heWJlIHlvdXIgc3lzdGVtIGp1c3QKPiBmcmVlemUgYmVjYXVzZSBvdXQgb2YgbWVt
-b3J5Lgo+Cgp3ZWlyZCAuLi4gbWVtdGVzdGVyIC1wIDB4OUYwMDAwMDAgMTZLIDEgZ2F2ZSBtZSB0
-aGUgc2FtZSByZXN1bHQuCgpDb3VsZCB5b3UgdHJ5IG9uZSBsYXN0IGNvbW1hbmQ6CgoJbWVtdGVz
-dGVyIDQwME0KClZhbHVlcyA+IDIwME0gY2F1c2luZyBmcmVlemUuCgpJZiB0aGlzIHdvbid0IGRv
-IGl0LCB0aGFuIG1heWJlIHRoZXJlIGlzIHNvbWV0aGluZyB3cm9uZyB3aXRoIG15IGJvYXJkLgoK
-VGhhbmtzIGZvciB5b3VyIHRpbWUuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello Yakir Yang,
+
+This is a semi-automatic email about new static checker warnings.
+
+The patch 5182c1a556d7: "drm/rockchip: add an common abstracted PSR 
+driver" from Jul 24, 2016, leads to the following Smatch complaint:
+
+drivers/gpu/drm/rockchip/rockchip_drm_psr.c:228 rockchip_drm_psr_register()
+	 warn: variable dereferenced before check 'encoder' (see line 224)
+
+drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+   223	{
+   224		struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+                                                       ^^^^^^^^^
+Dereference.
+
+   225		struct psr_drv *psr;
+   226		unsigned long flags;
+   227	
+   228		if (!encoder || !psr_set)
+                     ^^^^^^^
+Check.
+
+   229			return -EINVAL;
+   230	
+
+regards,
+dan carpenter
