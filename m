@@ -1,107 +1,63 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: Question: Re: [PATCH] drm/bridge: analogix: protect power when
- get_modes or detect
-Date: Thu, 13 Oct 2016 09:56:50 +0800
-Message-ID: <57FEE9E2.20505@rock-chips.com>
-References: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
- <57FE0EF5.7010207@rock-chips.com>
- <CAOw6vbKe0d66O1MymP24UQ-M3EmdR+=pZVWmgZG9iVm5x1Arrg@mail.gmail.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] phy-rockchip-pcie: remove deassert of phy_rst from exit
+ callback
+Date: Thu, 13 Oct 2016 12:42:13 +0800
+Message-ID: <1476333733-9696-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbKe0d66O1MymP24UQ-M3EmdR+=pZVWmgZG9iVm5x1Arrg@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDEw5pyIMTLml6UgMjI6NTEsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBXZWQsIE9j
-dCAxMiwgMjAxNiBhdCA2OjIyIEFNLCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+
-IHdyb3RlOgo+PiBJJ20gbm90IGZhbWlsaWFyIHdpdGggdGhlIGFuYWxvZ2l4IGRyaXZlciwgbWF5
-YmUgdXNlIGEgcG93ZXIgcmVmZXJlbmNlIGNvdW50Cj4+IHdvdWxkIGJldHRlciB0aGVuIGRpcmVj
-dCBwb3dlciBvbi9vZmYgYW5hbG9naXhfZHAuCj4+Cj4+IERvZXMgYW55b25lIGhhcyB0aGUgaWRl
-YSB0byBwcm90ZWN0IGRldGVjdCBhbmQgZ2V0X21vZGVzIGNvbnRleHQ/Cj4+Cj4gSSdtIG5vdCBz
-dXJlIGEgcmVmZXJlbmNlIGNvdW50IGlzIGdvaW5nIHRvIGhlbHAgaGVyZS4gVGhlIGNvbW1vbgo+
-IHBhdHRlcm4gaXMgdG8gY2FsbCBkZXRlY3QoKSBmb2xsb3dlZCBieSBnZXRfbW9kZXMoKSBhbmQg
-dGhlbiBtb2Rlc2V0Lgo+IEhvd2V2ZXIsIGl0J3Mgbm90IGd1YXJhbnRlZWQgdGhhdCBhbnkgb25l
-IG9mIHRob3NlIGZ1bmN0aW9ucyB3aWxsIGJlCj4gY2FsbGVkIGFmdGVyIHRoZSBvdGhlci4gU28s
-IGlmIHlvdSBsZWF2ZSB0aGluZ3Mgb24gYWZ0ZXIgZGV0ZWN0IG9yCj4gZ2V0X21vZGVzLCB5b3Ug
-bWlnaHQgYmUgd2FzdGluZyBwb3dlciAob3Igd29yc2UpLgo+Cj4gSSByZWNlbnRseSByYW4gaW50
-byB0aGlzIGV4YWN0IHByb2JsZW0gd2l0aCBhIHBhbmVsIHdlJ3JlIHVzaW5nLiBDaGVjawo+IG91
-dCAiMGI4YjA1OWE3OiBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRW5zdXJlIHRoZSBwYW5lbCBp
-cyBwcm9wZXJseQo+IHByZXBhcmVkL3VucHJlcGFyZWQiLiBQZXJoYXBzIHlvdSBjYW4gcGlnZ3li
-YWNrIG9uIHRoYXQgZnVuY3Rpb24gdG8KPiBhZGQgeW91ciBwbV9ydW50aW1lIGFuZCBwbGF0X2Rh
-dGEgY2FsbGJhY2tzIChzaW5jZSB1c2luZyBkcG1zX21vZGUKPiBtaWdodCBiZSByYWNleSkuCj4K
-PiBTZWFuCkhpIFNlYW4KClRoYW5rcyBmb3IgeW91ciBhZHZpY2UuCgpJIHJlLXRlc3QgdGhlIGRl
-dGVjdCBhbmQgZ2V0X21vZGVzLCBvbmx5IHVzZSBwbV9ydW50aW1lX2dldC9wdXQgYWxzbyBjYW4g
-CmZpeCBteSBwcm9ibGVtLgp3aXRob3V0IHBsYXRfZGF0YSBjYWxsYmFja3MgY2FuIGF2b2lkIHJh
-Y2UgdG8gZHBtc19tb2RlLgoKSSBoYWQgc2VuZCB2MiBwYXRjaCwgIHlvdSBjYW4gcmV2aWV3IGl0
-LgoKVGhhbmtzLgoKPgo+PiBJIGZvdW5kIG1hbnkgb3RoZXIgY29ubmVjdG9yIGRyaXZlciBhbHNv
-IGRpcmVjdCBhY2Nlc3MgcmVnaXN0ZXIgb24gZGV0ZWN0IG9yCj4+IGdldF9tb2Rlcywgbm8gcHJv
-YmxlbSBmb3IgaXQ/Cj4+Cj4+IE9uIDIwMTblubQxMOaciDEy5pelIDE4OjAwLCBNYXJrIFlhbyB3
-cm90ZToKPj4KPj4gVGhlIGRybSBjYWxsYmFjayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2Vl
-bXMgaXMgbm90IHBvd2VyIHNhZmUsCj4+IHRoZXkgbWF5IGJlIGNhbGxlZCB3aGVuIGRldmljZSBp
-cyBwb3dlciBvZmYsIGRvIHJlZ2lzdGVyIGFjY2VzcyBvbgo+PiBkZXRlY3Qgb3IgZ2V0X21vZGVz
-IHdpbGwgY2F1c2Ugc3lzdGVtIGRpZS4KPj4KPj4gSGVyZSBpcyB0aGUgcGF0aCBjYWxsIC0+ZGV0
-ZWN0IGJlZm9yZSBhbmFsb2dpeF9kcCBwb3dlciBvbgo+PiBbPGZmZmZmZjgwMDg0M2JhYmM+XSBh
-bmFsb2dpeF9kcF9kZXRlY3QrMHg0NC8weGRjCj4+IFs8ZmZmZmZmODAwODNmZDg0MD5dCj4+IGRy
-bV9oZWxwZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2Rlc19tZXJnZV9iaXRzKzB4ZTgvMHg0
-MWMKPj4gWzxmZmZmZmY4MDA4M2ZkYjg0Pl0gZHJtX2hlbHBlcl9wcm9iZV9zaW5nbGVfY29ubmVj
-dG9yX21vZGVzKzB4MTAvMHgxOAo+PiBbPGZmZmZmZjgwMDg0MThkMjQ+XSBkcm1fbW9kZV9nZXRj
-b25uZWN0b3IrMHhmNC8weDMwNAo+PiBbPGZmZmZmZjgwMDg0MGNmZjA+XSBkcm1faW9jdGwrMHgy
-M2MvMHgzOTAKPj4gWzxmZmZmZmY4MDA4MWE4YWRjPl0gZG9fdmZzX2lvY3RsKzB4NGI4LzB4NThj
-Cj4+IFs8ZmZmZmZmODAwODFhOGMxMD5dIFN5U19pb2N0bCsweDYwLzB4ODgKPj4KPj4gQ2M6IElu
-a2kgRGFlIDxpbmtpLmRhZUBzYW1zdW5nLmNvbT4KPj4gQ2M6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
-Y2hyb21pdW0ub3JnPgo+PiBDYzogR3VzdGF2byBQYWRvdmFuIDxndXN0YXZvLnBhZG92YW5AY29s
-bGFib3JhLmNvLnVrPgo+PiBDYzogIlZpbGxlIFN5cmrDpGzDpCIgPHZpbGxlLnN5cmphbGFAbGlu
-dXguaW50ZWwuY29tPgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
-ay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
-YW5hbG9naXhfZHBfY29yZS5jIHwgMjgKPj4gKysrKysrKysrKysrKysrKysrKysrKwo+PiAgIDEg
-ZmlsZSBjaGFuZ2VkLCAyOCBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+PiBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+IGluZGV4IGVmYWM4
-YWIuLjA5ZGVjZTIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+IEBAIC0xMDYyLDYgKzEwNjIsMTMgQEAgaW50IGFu
-YWxvZ2l4X2RwX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcgo+PiAqY29ubmVjdG9yKQo+
-PiAgICByZXR1cm4gMDsKPj4gICAgfQo+Pgo+PiArIGlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9N
-T0RFX0RQTVNfT04pIHsKPj4gKyBwbV9ydW50aW1lX2dldF9zeW5jKGRwLT5kZXYpOwo+PiArCj4+
-ICsgaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29uKQo+PiArIGRwLT5wbGF0X2RhdGEtPnBvd2Vy
-X29uKGRwLT5wbGF0X2RhdGEpOwo+PiArIH0KPj4gKwo+PiAgICBpZiAoYW5hbG9naXhfZHBfaGFu
-ZGxlX2VkaWQoZHApID09IDApIHsKPj4gICAgZHJtX21vZGVfY29ubmVjdG9yX3VwZGF0ZV9lZGlk
-X3Byb3BlcnR5KCZkcC0+Y29ubmVjdG9yLCBlZGlkKTsKPj4gICAgbnVtX21vZGVzICs9IGRybV9h
-ZGRfZWRpZF9tb2RlcygmZHAtPmNvbm5lY3RvciwgZWRpZCk7Cj4+IEBAIC0xMDczLDYgKzEwODAs
-MTMgQEAgaW50IGFuYWxvZ2l4X2RwX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcgo+PiAq
-Y29ubmVjdG9yKQo+PiAgICBpZiAoZHAtPnBsYXRfZGF0YS0+Z2V0X21vZGVzKQo+PiAgICBudW1f
-bW9kZXMgKz0gZHAtPnBsYXRfZGF0YS0+Z2V0X21vZGVzKGRwLT5wbGF0X2RhdGEsIGNvbm5lY3Rv
-cik7Cj4+Cj4+ICsgaWYgKGRwLT5kcG1zX21vZGUgIT0gRFJNX01PREVfRFBNU19PTikgewo+PiAr
-IGlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYpCj4+ICsgZHAtPnBsYXRfZGF0YS0+cG93ZXJf
-b2ZmKGRwLT5wbGF0X2RhdGEpOwo+PiArCj4+ICsgcG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2
-KTsKPj4gKyB9Cj4+ICsKPj4gICAgcmV0ID0gYW5hbG9naXhfZHBfcHJlcGFyZV9wYW5lbChkcCwg
-ZmFsc2UsIGZhbHNlKTsKPj4gICAgaWYgKHJldCkKPj4gICAgRFJNX0VSUk9SKCJGYWlsZWQgdG8g
-dW5wcmVwYXJlIHBhbmVsICglZClcbiIsIHJldCk7Cj4+IEBAIC0xMTA2LDkgKzExMjAsMjMgQEAg
-YW5hbG9naXhfZHBfZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4+IGJv
-b2wgZm9yY2UpCj4+ICAgIHJldHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKPj4g
-ICAgfQo+Pgo+PiArIGlmIChkcC0+ZHBtc19tb2RlICE9IERSTV9NT0RFX0RQTVNfT04pIHsKPj4g
-KyBwbV9ydW50aW1lX2dldF9zeW5jKGRwLT5kZXYpOwo+PiArCj4+ICsgaWYgKGRwLT5wbGF0X2Rh
-dGEtPnBvd2VyX29uKQo+PiArIGRwLT5wbGF0X2RhdGEtPnBvd2VyX29uKGRwLT5wbGF0X2RhdGEp
-Owo+PiArIH0KPj4gKwo+PiAgICBpZiAoIWFuYWxvZ2l4X2RwX2RldGVjdF9ocGQoZHApKQo+PiAg
-ICBzdGF0dXMgPSBjb25uZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZDsKPj4KPj4gKyBpZiAoZHAtPmRw
-bXNfbW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKSB7Cj4+ICsgaWYgKGRwLT5wbGF0X2RhdGEtPnBv
-d2VyX29mZikKPj4gKyBkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7Cj4+
-ICsKPj4gKyBwbV9ydW50aW1lX3B1dF9zeW5jKGRwLT5kZXYpOwo+PiArIH0KPj4gKwo+PiAgICBy
-ZXQgPSBhbmFsb2dpeF9kcF9wcmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgZmFsc2UpOwo+PiAgICBp
-ZiAocmV0KQo+PiAgICBEUk1fRVJST1IoIkZhaWxlZCB0byB1bnByZXBhcmUgcGFuZWwgKCVkKVxu
-IiwgcmV0KTsKPj4KPj4KPj4KPj4gLS0KPj4g77ytYXJrIFlhbwo+Cj4KCgotLSAK77ytYXJrIFlh
-bwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The deassert of phy_rst from exit callback is incorrect as when
+doing phy_exit, we expect the phy_rst is on asserted state which was
+done by power_off callback, but not deasserted state. Meanwhile when
+disabling clk_pciephy_ref, the assert/deassert signal can't actually
+take effect on the phy. So let's fix it anyway.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ drivers/phy/phy-rockchip-pcie.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/drivers/phy/phy-rockchip-pcie.c b/drivers/phy/phy-rockchip-pcie.c
+index a2b4c6b..6904633 100644
+--- a/drivers/phy/phy-rockchip-pcie.c
++++ b/drivers/phy/phy-rockchip-pcie.c
+@@ -249,21 +249,10 @@ static int rockchip_pcie_phy_init(struct phy *phy)
+ static int rockchip_pcie_phy_exit(struct phy *phy)
+ {
+ 	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+-	int err = 0;
+ 
+ 	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
+ 
+-	err = reset_control_deassert(rk_phy->phy_rst);
+-	if (err) {
+-		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
+-		goto err_reset;
+-	}
+-
+-	return err;
+-
+-err_reset:
+-	clk_prepare_enable(rk_phy->clk_pciephy_ref);
+-	return err;
++	return 0;
+ }
+ 
+ static const struct phy_ops ops = {
+-- 
+2.3.7
