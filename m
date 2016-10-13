@@ -1,61 +1,66 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2 0/2] PCI: rockchip: Cleanup
-Date: Thu, 13 Oct 2016 09:32:10 +0800
-Message-ID: <8b4f18cd-bced-6779-7988-574b14a42dce@rock-chips.com>
-References: <20161012130256.25212.33689.stgit@bhelgaas-glaptop2.roam.corp.google.com>
- <20161012160240.GG4308@localhost>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH v2] drm/bridge: analogix: protect power when get_modes or
+ detect
+Date: Thu, 13 Oct 2016 09:50:38 +0800
+Message-ID: <1476323438-8435-1-git-send-email-mark.yao@rock-chips.com>
+References: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20161012160240.GG4308@localhost>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: shawn.lin@rock-chips.com, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1476266442-29803-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Gustavo Padovan <gustavo.padovan@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
-
-On 2016/10/13 0:02, Bjorn Helgaas wrote:
-> On Wed, Oct 12, 2016 at 08:04:16AM -0500, Bjorn Helgaas wrote:
->>   - Remove platform drvdata because it appears unused (we called
->>     platform_set_drvdata() but not platform_get_drvdata()).
->>
->> Nothing here should change the behavior of the driver.
->>
->> Changes from v1:
->>   Added Dan's indentation fix.
->>   I dropped the following patches because they were a lot of churn for
->>   questionable benefit:
->>     PCI: rockchip: Rename accessors
->>     PCI: rockchip: Swap order of rockchip_writel() reg/val arguments
->>
->> ---
->>
->> Bjorn Helgaas (1):
->>       PCI: rockchip: Remove unused platform data
->>
->> Dan Carpenter (1):
->>       PCI: rockchip: Indent "if" statement body
->
-> I applied these to pci/host-rockchip for v4.9.  I hope to ask Linus to
-> pull them tomorrow, so if you see any issues, let me know soon.
-
-Seems the first round of cleanup for host-rockchip again v10 when this
-driver got merged was incorrectly changed. The issue wasn't exposed as
-it's just a debug log which was easily overlooked.
-
-So could you pick the  patch[0] to fix this problem ? :)
-
-[0]: https://patchwork.kernel.org/patch/9374129/
-
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
-
-
--- 
-Best Regards
-Shawn Lin
+VGhlIGRybSBjYWxsYmFjayAtPmRldGVjdCBhbmQgLT5nZXRfbW9kZXMgc2VlbXMgaXMgbm90IHBv
+d2VyIHNhZmUsCnRoZXkgbWF5IGJlIGNhbGxlZCB3aGVuIGRldmljZSBpcyBwb3dlciBvZmYsIGRv
+IHJlZ2lzdGVyIGFjY2VzcyBvbgpkZXRlY3Qgb3IgZ2V0X21vZGVzIHdpbGwgY2F1c2Ugc3lzdGVt
+IGRpZS4KCkhlcmUgaXMgdGhlIHBhdGggY2FsbCAtPmRldGVjdCBiZWZvcmUgYW5hbG9naXhfZHAg
+cG93ZXIgb24KWzxmZmZmZmY4MDA4NDNiYWJjPl0gYW5hbG9naXhfZHBfZGV0ZWN0KzB4NDQvMHhk
+YwpbPGZmZmZmZjgwMDgzZmQ4NDA+XSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3Jf
+bW9kZXNfbWVyZ2VfYml0cysweGU4LzB4NDFjCls8ZmZmZmZmODAwODNmZGI4ND5dIGRybV9oZWxw
+ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcysweDEwLzB4MTgKWzxmZmZmZmY4MDA4NDE4
+ZDI0Pl0gZHJtX21vZGVfZ2V0Y29ubmVjdG9yKzB4ZjQvMHgzMDQKWzxmZmZmZmY4MDA4NDBjZmYw
+Pl0gZHJtX2lvY3RsKzB4MjNjLzB4MzkwCls8ZmZmZmZmODAwODFhOGFkYz5dIGRvX3Zmc19pb2N0
+bCsweDRiOC8weDU4YwpbPGZmZmZmZjgwMDgxYThjMTA+XSBTeVNfaW9jdGwrMHg2MC8weDg4CgpD
+YzogSW5raSBEYWUgPGlua2kuZGFlQHNhbXN1bmcuY29tPgpDYzogU2VhbiBQYXVsIDxzZWFucGF1
+bEBjaHJvbWl1bS5vcmc+CkNjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rhdm8ucGFkb3ZhbkBjb2xs
+YWJvcmEuY28udWs+CkNjOiAiVmlsbGUgU3lyasOkbMOkIiA8dmlsbGUuc3lyamFsYUBsaW51eC5p
+bnRlbC5jb20+CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+Ci0tLQpDaGFuZ2VzIGluIHYyOgotIHJlbW92ZSBzdWIgZGV2aWNlIHBvd2VyIG9uL29mZiBj
+YWxsYmFjaywgdXNlIHBtX3J1bnRpbWVfZ2V0L3B1dCBpcyBlbm91Z2gKdG8gZml4IG15IHByb2Js
+ZW0sIHNvIHdpbGwgY2FuIGF2b2lkIHJhY2UgdG8gZHBtcy4KCiBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDggKysrKysrKysKIDEgZmlsZSBjaGFu
+Z2VkLCA4IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCmluZGV4IGVmYWM4YWIuLmZmMmQzMjggMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCisr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCkBA
+IC0xMDYyLDExICsxMDYyLDE1IEBAIGludCBhbmFsb2dpeF9kcF9nZXRfbW9kZXMoc3RydWN0IGRy
+bV9jb25uZWN0b3IgKmNvbm5lY3RvcikKIAkJcmV0dXJuIDA7CiAJfQogCisJcG1fcnVudGltZV9n
+ZXRfc3luYyhkcC0+ZGV2KTsKKwogCWlmIChhbmFsb2dpeF9kcF9oYW5kbGVfZWRpZChkcCkgPT0g
+MCkgewogCQlkcm1fbW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoJmRwLT5jb25u
+ZWN0b3IsIGVkaWQpOwogCQludW1fbW9kZXMgKz0gZHJtX2FkZF9lZGlkX21vZGVzKCZkcC0+Y29u
+bmVjdG9yLCBlZGlkKTsKIAl9CiAKKwlwbV9ydW50aW1lX3B1dChkcC0+ZGV2KTsKKwogCWlmIChk
+cC0+cGxhdF9kYXRhLT5wYW5lbCkKIAkJbnVtX21vZGVzICs9IGRybV9wYW5lbF9nZXRfbW9kZXMo
+ZHAtPnBsYXRfZGF0YS0+cGFuZWwpOwogCkBAIC0xMTA2LDkgKzExMTAsMTMgQEAgYW5hbG9naXhf
+ZHBfZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsIGJvb2wgZm9yY2UpCiAJ
+CXJldHVybiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKIAl9CiAKKwlwbV9ydW50aW1l
+X2dldF9zeW5jKGRwLT5kZXYpOworCiAJaWYgKCFhbmFsb2dpeF9kcF9kZXRlY3RfaHBkKGRwKSkK
+IAkJc3RhdHVzID0gY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7CiAKKwlwbV9ydW50aW1lX3B1
+dChkcC0+ZGV2KTsKKwogCXJldCA9IGFuYWxvZ2l4X2RwX3ByZXBhcmVfcGFuZWwoZHAsIGZhbHNl
+LCBmYWxzZSk7CiAJaWYgKHJldCkKIAkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gdW5wcmVwYXJlIHBh
+bmVsICglZClcbiIsIHJldCk7Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbAo=
