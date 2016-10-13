@@ -1,63 +1,58 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] phy-rockchip-pcie: remove deassert of phy_rst from exit
- callback
-Date: Thu, 13 Oct 2016 12:42:13 +0800
-Message-ID: <1476333733-9696-1-git-send-email-shawn.lin@rock-chips.com>
+From: "Huang, Tao" <huangtao@rock-chips.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: Reserve unusable memory region on
+ rk3066
+Date: Thu, 13 Oct 2016 15:12:38 +0800
+Message-ID: <e3746f9a-084e-163e-a412-1a1fc66926d5@rock-chips.com>
+References: <20161001140939.GA31220@vaio-ubuntu>
+ <6239b970-09d3-f7ee-e6f5-c019eaedb725@rock-chips.com>
+ <f8aba48d-6c69-b246-4cb2-48a2770c80e4@gmail.com>
+ <67831fd0-76af-a793-0b2f-958e45633fe8@rock-chips.com>
+ <149df5ee-3478-6d15-bb76-47becac146e9@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <149df5ee-3478-6d15-bb76-47becac146e9@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691@gmail.com>, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The deassert of phy_rst from exit callback is incorrect as when
-doing phy_exit, we expect the phy_rst is on asserted state which was
-done by power_off callback, but not deasserted state. Meanwhile when
-disabling clk_pciephy_ref, the assert/deassert signal can't actually
-take effect on the phy. So let's fix it anyway.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- drivers/phy/phy-rockchip-pcie.c | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
-
-diff --git a/drivers/phy/phy-rockchip-pcie.c b/drivers/phy/phy-rockchip-pcie.c
-index a2b4c6b..6904633 100644
---- a/drivers/phy/phy-rockchip-pcie.c
-+++ b/drivers/phy/phy-rockchip-pcie.c
-@@ -249,21 +249,10 @@ static int rockchip_pcie_phy_init(struct phy *phy)
- static int rockchip_pcie_phy_exit(struct phy *phy)
- {
- 	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
--	int err = 0;
- 
- 	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
- 
--	err = reset_control_deassert(rk_phy->phy_rst);
--	if (err) {
--		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
--		goto err_reset;
--	}
--
--	return err;
--
--err_reset:
--	clk_prepare_enable(rk_phy->clk_pciephy_ref);
--	return err;
-+	return 0;
- }
- 
- static const struct phy_ops ops = {
--- 
-2.3.7
+SGksIFBhd2XFgjoKT24gMjAxNuW5tDEw5pyIMTDml6UgMTc6MTEsIFBhd2XFgiBKYXJvc3ogd3Jv
+dGU6Cj4gVyBkbml1IDEwLjEwLjIwMTYgbyAwOToxOCwgSHVhbmcsIFRhbyBwaXN6ZToKPj4gT3Vy
+IElDIGd1eSBuZWVkIHVzIHRlbGwgdGhlbSB3aGljaCBtYXN0ZXIgY2FuIG5vdCBhY2Nlc3Mgc3Vj
+aCBhcmVhLCBETUEKPj4gb3IgRU1NQyBDb250cm9sbGVyIG9yIEdQVSwgZXRjPyBDb3VsZCB5b3Ug
+dGVsbCBtZSBob3cgdG8gcmVwcm9kdWNlIHN1Y2gKPj4gaXNzdWU/Cj4+IEFuZCB3ZSBjYW4gY29u
+ZmlybSBDUFUgY29yZSBjYW4gYWNjZXNzIHRoaXMgbWVtb3J5IHRocm91Z2ggL2Rldi9tZW0gYW5k
+Cj4+IHRoZSB0ZXN0IGJvYXJkIGlzIDFHQiB0b28uIFBlcnNvbmFsbHksIEkgZG9uJ3QgdGhpbmsg
+UkszMDY2IGhhcyBzdWNoCj4+IGxpbWl0IGJlY2F1c2Ugd2hlbiB3ZSB2ZXJpZnkgdGhpcyBjaGlw
+LCB3ZSBkb24ndCBmb3VuZCBzdWNoIGxpbWl0IGF0IGFsbC4KPj4KPj4gVGhhbmtzLAo+PiBIdWFu
+ZywgVGFvCj4gSSdtIGdldHRpbmcgdGhpcyBvbiBVYnVudHUgMTYuMDQgd2l0aCBtYWlubGluZSBr
+ZXJuZWwuCj4gTXkgYm9hcmQgYWx3YXlzIGZyZWV6ZXMgd2hlbiBpIHR5cGU6ICJtZW10ZXN0ZXIg
+ODAwTSIKPgpXZSB0cnkgcnVuIG1lbXRlc3QgODAwTSB3aXRoIExpbnV4IGtlcm5lbCA0LjgsIHdo
+aWNoIGtpbGxlZCBieSBPT00uCkJ1dCBpZiB3ZSBydW46CiMgbWVtdGVzdGVyIC1wIDB4OUYwMDAw
+MDAgMTZLIDEKbWVtdGVzdGVyIHZlcnNpb24gNC4zLjAgKDMyLWJpdCkKQ29weXJpZ2h0IChDKSAy
+MDAxLTIwMTIgQ2hhcmxlcyBDYXphYm9uLgpMaWNlbnNlZCB1bmRlciB0aGUgR05VIEdlbmVyYWwg
+UHVibGljIExpY2Vuc2UgdmVyc2lvbiAyIChvbmx5KS4KCnBhZ2VzaXplIGlzIDQwOTYKcGFnZXNp
+emVtYXNrIGlzIDB4ZmZmZmYwMDAKd2FudCAwTUIgKDE2Mzg0IGJ5dGVzKQpMb29wIDEvMToKICAg
+U3R1Y2sgQWRkcmVzcyAgICAgICA6IG9rCiAgIFJhbmRvbSBWYWx1ZSAgICAgICAgOiBvawogICBD
+b21wYXJlIFhPUiAgICAgICAgIDogb2sKICAgQ29tcGFyZSBTVUIgICAgICAgICA6IG9rCiAgIENv
+bXBhcmUgTVVMICAgICAgICAgOiBvawogICBDb21wYXJlIERJViAgICAgICAgIDogb2sKICAgQ29t
+cGFyZSBPUiAgICAgICAgICA6IG9rCiAgIENvbXBhcmUgQU5EICAgICAgICAgOiBvawogICBTZXF1
+ZW50aWFsIEluY3JlbWVudDogb2sKICAgU29saWQgQml0cyAgICAgICAgICA6IG9rCiAgIEJsb2Nr
+IFNlcXVlbnRpYWwgICAgOiBvawogICBDaGVja2VyYm9hcmQgICAgICAgIDogb2sKICAgQml0IFNw
+cmVhZCAgICAgICAgICA6IG9rCiAgIEJpdCBGbGlwICAgICAgICAgICAgOiBvawogICBXYWxraW5n
+IE9uZXMgICAgICAgIDogb2sKICAgV2Fsa2luZyBaZXJvZXMgICAgICA6IG9rCiAgIDgtYml0IFdy
+aXRlcyAgICAgICAgOiBvawogICAxNi1iaXQgV3JpdGVzICAgICAgIDogb2sKClNvIHRoZXNlIG1l
+bW9yeSBzaG91bGQgYmUgZmluZSB0byBDUFUgY29yZS4gTWF5YmUgeW91ciBzeXN0ZW0ganVzdApm
+cmVlemUgYmVjYXVzZSBvdXQgb2YgbWVtb3J5LgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4
+LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
