@@ -1,124 +1,47 @@
 From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 3/7] ASoC: rockchip: constify snd_soc_ops structures
-Date: Sat, 15 Oct 2016 16:55:47 +0200
-Message-ID: <1476543351-17858-4-git-send-email-Julia.Lawall@lip6.fr>
-References: <1476543351-17858-1-git-send-email-Julia.Lawall@lip6.fr>
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-In-Reply-To: <1476543351-17858-1-git-send-email-Julia.Lawall@lip6.fr>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Liam Girdwood <lgirdwood@gmail.com>
-Cc: kernel-janitors@vger.kernel.org, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 0/7] constify snd_soc_ops structures
+Date: Sat, 15 Oct 2016 16:55:44 +0200
+Message-ID: <1476543351-17858-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: kernel-janitors@vger.kernel.org, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Check for snd_soc_ops structures that are only stored in the ops field of a
-snd_soc_dai_link structure.  This field is declared const, so snd_soc_ops
-structures that have this property can be declared as const also.
-
-The semantic patch that makes this change is as follows:
-(http://coccinelle.lip6.fr/)
-
-// <smpl>
-@r disable optional_qualifier@
-identifier i;
-position p;
-@@
-static struct snd_soc_ops i@p = { ... };
-
-@ok1@
-identifier r.i;
-struct snd_soc_dai_link e;
-position p;
-@@
-e.ops = &i@p;
-
-@ok2@
-identifier r.i, e;
-position p;
-@@
-struct snd_soc_dai_link e[] = { ..., { .ops = &i@p, }, ..., };
-
-@bad@
-position p != {r.p,ok1.p,ok2.p};
-identifier r.i;
-struct snd_soc_ops e;
-@@
-e@i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r.i;
-@@
-static
-+const
- struct snd_soc_ops i = { ... };
-// </smpl>
-
-The effect on the layout of the .o files is shown by the following output
-of the size command, first before then after the transformation:
-
-   text    data     bss     dec     hex filename
-   5027    2488     416    7931    1efb sound/soc/rockchip/rk3399_gru_sound.o
-   5219    2312     416    7947    1f0b sound/soc/rockchip/rk3399_gru_sound.o
-
-   text    data     bss     dec     hex filename
-   3499    1648     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
-   3563    1584     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
-
-   text    data     bss     dec     hex filename
-   3455    1536     384    5375    14ff sound/soc/rockchip/rockchip_rt5645.o
-   3519    1480     384    5383    1507 sound/soc/rockchip/rockchip_rt5645.o
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+Constify snd_soc_ops structures.
 
 ---
- sound/soc/rockchip/rk3399_gru_sound.c  |    6 +++---
- sound/soc/rockchip/rockchip_max98090.c |    2 +-
- sound/soc/rockchip/rockchip_rt5645.c   |    2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff -u -p a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -228,15 +228,15 @@ static int rockchip_sound_da7219_init(st
- 	return 0;
- }
- 
--static struct snd_soc_ops rockchip_sound_max98357a_ops = {
-+static const struct snd_soc_ops rockchip_sound_max98357a_ops = {
- 	.hw_params = rockchip_sound_max98357a_hw_params,
- };
- 
--static struct snd_soc_ops rockchip_sound_rt5514_ops = {
-+static const struct snd_soc_ops rockchip_sound_rt5514_ops = {
- 	.hw_params = rockchip_sound_rt5514_hw_params,
- };
- 
--static struct snd_soc_ops rockchip_sound_da7219_ops = {
-+static const struct snd_soc_ops rockchip_sound_da7219_ops = {
- 	.hw_params = rockchip_sound_da7219_hw_params,
- };
- 
-diff -u -p a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -119,7 +119,7 @@ static int rk_aif1_hw_params(struct snd_
- 	return ret;
- }
- 
--static struct snd_soc_ops rk_aif1_ops = {
-+static const struct snd_soc_ops rk_aif1_ops = {
- 	.hw_params = rk_aif1_hw_params,
- };
- 
-diff -u -p a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -135,7 +135,7 @@ static int rk_init(struct snd_soc_pcm_ru
- 				     &headset_jack);
- }
- 
--static struct snd_soc_ops rk_aif1_ops = {
-+static const struct snd_soc_ops rk_aif1_ops = {
- 	.hw_params = rk_aif1_hw_params,
- };
- 
-
+ sound/soc/atmel/atmel_wm8904.c                  |    2 +-
+ sound/soc/fsl/fsl-asoc-card.c                   |    2 +-
+ sound/soc/fsl/imx-wm8962.c                      |    2 +-
+ sound/soc/generic/simple-card.c                 |    2 +-
+ sound/soc/generic/simple-scu-card.c             |    2 +-
+ sound/soc/intel/boards/bdw-rt5677.c             |    2 +-
+ sound/soc/intel/boards/broadwell.c              |    2 +-
+ sound/soc/intel/boards/bxt_da7219_max98357a.c   |    4 ++--
+ sound/soc/intel/boards/bxt_rt298.c              |    4 ++--
+ sound/soc/intel/boards/bytcr_rt5640.c           |    4 ++--
+ sound/soc/intel/boards/bytcr_rt5651.c           |    4 ++--
+ sound/soc/intel/boards/cht_bsw_max98090_ti.c    |    4 ++--
+ sound/soc/intel/boards/cht_bsw_rt5645.c         |    4 ++--
+ sound/soc/intel/boards/cht_bsw_rt5672.c         |    4 ++--
+ sound/soc/intel/boards/haswell.c                |    2 +-
+ sound/soc/intel/boards/skl_nau88l25_max98357a.c |    6 +++---
+ sound/soc/intel/boards/skl_nau88l25_ssm4567.c   |    6 +++---
+ sound/soc/intel/boards/skl_rt286.c              |    4 ++--
+ sound/soc/kirkwood/armada-370-db.c              |    2 +-
+ sound/soc/mxs/mxs-sgtl5000.c                    |    2 +-
+ sound/soc/qcom/storm.c                          |    2 +-
+ sound/soc/rockchip/rk3399_gru_sound.c           |    6 +++---
+ sound/soc/rockchip/rockchip_max98090.c          |    2 +-
+ sound/soc/rockchip/rockchip_rt5645.c            |    2 +-
+ sound/soc/tegra/tegra_alc5632.c                 |    2 +-
+ sound/soc/tegra/tegra_max98090.c                |    2 +-
+ sound/soc/tegra/tegra_rt5640.c                  |    2 +-
+ sound/soc/tegra/tegra_rt5677.c                  |    2 +-
+ sound/soc/tegra/tegra_sgtl5000.c                |    2 +-
+ sound/soc/tegra/tegra_wm8753.c                  |    2 +-
+ sound/soc/tegra/tegra_wm8903.c                  |    2 +-
+ sound/soc/tegra/trimslice.c                     |    2 +-
+ 32 files changed, 46 insertions(+), 46 deletions(-)
