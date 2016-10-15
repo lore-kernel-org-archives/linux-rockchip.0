@@ -1,89 +1,124 @@
-From: =?UTF-8?B?6ZmI6LGq?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v8 2/3] usb: dwc2: assert phy reset when waking up in
- rk3288 platform
-Date: Sat, 15 Oct 2016 23:07:36 +0800
-Message-ID: <CAFLEztRLJbMj-ttGBsCWCMW=+0N3bbMQ0c4YcgDyvUDYs1SSkA@mail.gmail.com>
-References: <1474743019-1050-1-git-send-email-ayaka@soulik.info> <1474743019-1050-3-git-send-email-ayaka@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1474743019-1050-3-git-send-email-ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Cc: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 3/7] ASoC: rockchip: constify snd_soc_ops structures
+Date: Sat, 15 Oct 2016 16:55:47 +0200
+Message-ID: <1476543351-17858-4-git-send-email-Julia.Lawall@lip6.fr>
+References: <1476543351-17858-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <1476543351-17858-1-git-send-email-Julia.Lawall@lip6.fr>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Liam Girdwood <lgirdwood@gmail.com>
+Cc: kernel-janitors@vger.kernel.org, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-2016-09-25 2:50 GMT+08:00 Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>:
-> On the rk3288 USB host-only port (the one that's not the OTG-enabled
-> port) the PHY can get into a bad state when a wakeup is asserted (not
-> just a wakeup from full system suspend but also a wakeup from
-> autosuspend).
->
-> We can get the PHY out of its bad state by asserting its "port reset",
-> but unfortunately that seems to assert a reset onto the USB bus so it
-> could confuse things if we don't actually deenumerate / reenumerate the
-> device.
->
-> We can also get the PHY out of its bad state by fully resetting it using
-> the reset from the CRU (clock reset unit) in chip, which does a more full
-> reset.  The CRU-based reset appears to actually cause devices on the bus
-> to be removed and reinserted, which fixes the problem (albeit in a hacky
-> way).
->
-> It's unfortunate that we need to do a full re-enumeration of devices at
-> wakeup time, but this is better than alternative of letting the bus get
-> wedged.
->
-> Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-> ---
->  drivers/usb/dwc2/core_intr.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->
-> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-> index d85c5c9..af27edc 100644
-> --- a/drivers/usb/dwc2/core_intr.c
-> +++ b/drivers/usb/dwc2/core_intr.c
-> @@ -345,6 +345,7 @@ static void dwc2_handle_session_req_intr(struct dwc2_=
-hsotg *hsotg)
->  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
->  {
->         int ret;
-> +       struct device_node *np =3D hsotg->dev->of_node;
->
->         /* Clear interrupt */
->         dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-> @@ -379,6 +380,16 @@ static void dwc2_handle_wakeup_detected_intr(struct =
-dwc2_hsotg *hsotg)
->                         /* Restart the Phy Clock */
->                         pcgcctl &=3D ~PCGCTL_STOPPCLK;
->                         dwc2_writel(pcgcctl, hsotg->regs + PCGCTL);
-> +
-> +                       /*
-> +                        * It is a quirk in Rockchip RK3288, causing by
-> +                        * a hardware bug. This will propagate out and
-> +                        * eventually we'll re-enumerate the device.
-> +                        * Not great but the best we can do.
-> +                        */
-> +                       if (of_device_is_compatible(np, "rockchip,rk3288-=
-usb"))
-> +                               phy_reset(hsotg->phy);
+Check for snd_soc_ops structures that are only stored in the ops field of a
+snd_soc_dai_link structure.  This field is declared const, so snd_soc_ops
+structures that have this property can be declared as const also.
 
-It will call mutex_lock in phy_reset.
+The semantic patch that makes this change is as follows:
+(http://coccinelle.lip6.fr/)
 
+// <smpl>
+@r disable optional_qualifier@
+identifier i;
+position p;
+@@
+static struct snd_soc_ops i@p = { ... };
 
-> +
->                         mod_timer(&hsotg->wkp_timer,
->                                   jiffies + msecs_to_jiffies(71));
->                 } else {
-> --
-> 2.7.4
->
+@ok1@
+identifier r.i;
+struct snd_soc_dai_link e;
+position p;
+@@
+e.ops = &i@p;
 
-What is the status of this patch=EF=BC=9F
-Sleeping calls(phy_reset =3D=3D> mutex) shouldn't be used in irq handler.
-Randy will correct that=EF=BC=9F
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+@ok2@
+identifier r.i, e;
+position p;
+@@
+struct snd_soc_dai_link e[] = { ..., { .ops = &i@p, }, ..., };
+
+@bad@
+position p != {r.p,ok1.p,ok2.p};
+identifier r.i;
+struct snd_soc_ops e;
+@@
+e@i@p
+
+@depends on !bad disable optional_qualifier@
+identifier r.i;
+@@
+static
++const
+ struct snd_soc_ops i = { ... };
+// </smpl>
+
+The effect on the layout of the .o files is shown by the following output
+of the size command, first before then after the transformation:
+
+   text    data     bss     dec     hex filename
+   5027    2488     416    7931    1efb sound/soc/rockchip/rk3399_gru_sound.o
+   5219    2312     416    7947    1f0b sound/soc/rockchip/rk3399_gru_sound.o
+
+   text    data     bss     dec     hex filename
+   3499    1648     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
+   3563    1584     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
+
+   text    data     bss     dec     hex filename
+   3455    1536     384    5375    14ff sound/soc/rockchip/rockchip_rt5645.o
+   3519    1480     384    5383    1507 sound/soc/rockchip/rockchip_rt5645.o
+
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+
+---
+ sound/soc/rockchip/rk3399_gru_sound.c  |    6 +++---
+ sound/soc/rockchip/rockchip_max98090.c |    2 +-
+ sound/soc/rockchip/rockchip_rt5645.c   |    2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff -u -p a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -228,15 +228,15 @@ static int rockchip_sound_da7219_init(st
+ 	return 0;
+ }
+ 
+-static struct snd_soc_ops rockchip_sound_max98357a_ops = {
++static const struct snd_soc_ops rockchip_sound_max98357a_ops = {
+ 	.hw_params = rockchip_sound_max98357a_hw_params,
+ };
+ 
+-static struct snd_soc_ops rockchip_sound_rt5514_ops = {
++static const struct snd_soc_ops rockchip_sound_rt5514_ops = {
+ 	.hw_params = rockchip_sound_rt5514_hw_params,
+ };
+ 
+-static struct snd_soc_ops rockchip_sound_da7219_ops = {
++static const struct snd_soc_ops rockchip_sound_da7219_ops = {
+ 	.hw_params = rockchip_sound_da7219_hw_params,
+ };
+ 
+diff -u -p a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -119,7 +119,7 @@ static int rk_aif1_hw_params(struct snd_
+ 	return ret;
+ }
+ 
+-static struct snd_soc_ops rk_aif1_ops = {
++static const struct snd_soc_ops rk_aif1_ops = {
+ 	.hw_params = rk_aif1_hw_params,
+ };
+ 
+diff -u -p a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
+--- a/sound/soc/rockchip/rockchip_rt5645.c
++++ b/sound/soc/rockchip/rockchip_rt5645.c
+@@ -135,7 +135,7 @@ static int rk_init(struct snd_soc_pcm_ru
+ 				     &headset_jack);
+ }
+ 
+-static struct snd_soc_ops rk_aif1_ops = {
++static const struct snd_soc_ops rk_aif1_ops = {
+ 	.hw_params = rk_aif1_hw_params,
+ };
+ 
+
