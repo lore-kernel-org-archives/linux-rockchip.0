@@ -1,63 +1,40 @@
 From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: rockchip: drm: analogix_dp-rockchip would stock the kernel
-Date: Mon, 17 Oct 2016 09:12:50 +0800
-Message-ID: <e04e8feb-030e-5c74-cc77-5b6f58e24a2d@rock-chips.com>
-References: <1a7ebbe4-a9d8-610d-7cd5-41f5fe8355a5@soulik.info>
- <580421E5.9030609@rock-chips.com>
+Subject: something different ideas from chromium's decoder settings API
+Date: Mon, 17 Oct 2016 12:02:39 +0800
+Message-ID: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <580421E5.9030609@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>, ayaka <ayaka@soulik.info>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: hverkuil@xs4all.nl
+Cc: pawel@osciak.com, linux-media@vger.kernel.org, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, libva@lists.freedesktop.org, eddie.cai@rock-chips.com, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, =?UTF-8?B?5p6X6YeR5Y+R?= <alpha.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMC8xNy8yMDE2IDA4OjU3IEFNLCBNYXJrIHlhbyB3cm90ZToKPiBPbiAyMDE25bm0MTDm
-nIgxNuaXpSAwMjowMywgYXlha2Egd3JvdGU6Cj4+IEhlbGxvOgo+PiAgICBJIG1lZXQgYSBwcm9i
-bGVtIHdpdGggZURQIGluIHJrMzI4OCB3aXRoIHRoZSBsaW51eCBuZXh0IDIwMTYxMDA2LAo+PiBp
-dCBpcyBqdXN0IGxpa2UgdGhlIGVhcmx5IHN0YWdlIG9mIDQuNAo+PiBrZXJuZWwuICBJIGhhdmUg
-YWRkZWQgYSBlRFAgcGFuZWwgZW50cnkgaW4gdGhlIGZpcmVmbHkgcmVsb2FkIGJvYXJkLAo+PiBv
-bmNlIHRoZSBrZXJuZWwgbG9hZGVkIGFuYWxvZ2l4X2RwLXJvY2tjaGlwLmtvLCBhZnRlciBwcmlu
-dGVkIHRoZQo+PiBmb2xsb3dpbmcgdHdvIGxpbmVzLCB0aGUga2VybmVsIHN0b3Agd29ya2luZy4K
-Pj4gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCBmZjk0MDAwMC52b3AgKG9w
-cwo+PiB2b3BfY29tcG9uZW50X29wcyBbcm9ja2NoaXBkcm1dKQo+PiByb2NrY2hpcC1kcm0gZGlz
-cGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTMwMDAwLnZvcCAob3BzCj4+IHZvcF9jb21wb25lbnRf
-b3BzIFtyb2NrY2hpcGRybV0pCj4KPiBIaSBheWFrYQo+Cj4gVGhpcyBsb2cgc2VlbXMgbm8gcHJv
-YmxlbS4KSSBmb3VuZCB0aGUgcHJvYmxlbSwgaXQgaXMgdGhlIGVEUF9BVkREXzFWMCBhbmQgZURQ
-X0FWRERfMVY4IG11c3QgaGF2ZSBhIApwcm9wZXIgcG93ZXIgc3VwcGx5LiBJIHdvdWxkIHN1Ym1p
-dCBhIHBhdGNoIHRvIGVuYWJsZSB0aGUgcmVndWxhdG9yIGF0IApEUCBkcml2ZXIuCj4KPiBIb3cg
-YWJvdXQgdGVzdGVkIGl0IHdpdGggYnVpbGQtaW4/IHdlIGhhZCB0ZXN0IGl0IHdpdGggYnVpbGQt
-aW4uCj4KPiBNYXliZSB0aGlzIHBhdGNoIGNhbiBoZWxwIHlvdSwgeW91IGNhbiBoYXZlIGEgdHJ5
-Lgo+ICAgICBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNzQxMzUKPgo+IFRo
-YW5rcy4KPgo+PiBJbiB0aGUgZWFybHkgSnVuZSBvZiB0aGUgNC40IGtlcm5lbCwgSSBtZWV0IHRo
-ZSBzYW1lIHByb2JsZW0gd2l0aAo+PiByazMyODggZXZiIGJvYXJkIHdpdGggZGlmZmVyZW50IGVy
-cm9yIG1lc3NhZ2UsIEkgaGF2ZSB0byBkaXNhYmxlIHRoZQo+PiBkaXNwbGF5IHN5c3RlbSB0aGF0
-IHRpbWUuCj4+ICAgSW4gdGhlIHRvZGF5IHRlc3QsIEkgbWVldCB0aGUgc2FtZSBwcm9ibGVtIHdp
-dGggcmszMzk5IGV2YiBib2FyZCBpbgo+PiA0LjQuCj4+ICAgSSBoYXZlIG5vIGlkZWEgd2hhdCBj
-YXVzZWQgdGhhdCwgYW5kIGl0IGlzIGEgbGl0dGxlIGhhcmQgdG8gZGVidWcgYXMKPj4ga2VybmVs
-IHN0aWxsIHdvdWxkIG5ldmVyIGtpbGwgdGhhdCB0YXNrLgo+PiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSYW5keSBMaQo+Pgo+Pgo+
-Pgo+Cj4KCi0tIApSYW5keSBMaQpUaGUgdGhpcmQgcHJvZHVjZSBkZXBhcnRtZW50Cj09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PQpUaGlzIGVtYWlsIG1lc3NhZ2UsIGluY2x1ZGluZyBhbnkgYXR0YWNobWVudHMs
-IGlzIGZvciB0aGUgc29sZQp1c2Ugb2YgdGhlIGludGVuZGVkIHJlY2lwaWVudChzKSBhbmQgbWF5
-IGNvbnRhaW4gY29uZmlkZW50aWFsIGFuZApwcml2aWxlZ2VkIGluZm9ybWF0aW9uLiBBbnkgdW5h
-dXRob3JpemVkIHJldmlldywgdXNlLCBkaXNjbG9zdXJlIG9yCmRpc3RyaWJ1dGlvbiBpcyBwcm9o
-aWJpdGVkLiBJZiB5b3UgYXJlIG5vdCB0aGUgaW50ZW5kZWQgcmVjaXBpZW50LCBwbGVhc2UKY29u
-dGFjdCB0aGUgc2VuZGVyIGJ5IHJlcGx5IGUtbWFpbCBhbmQgZGVzdHJveSBhbGwgY29waWVzIG9m
-IHRoZSBvcmlnaW5hbAptZXNzYWdlLiBbRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzLCBJTkMu
-IENoaW5hIG1haW5sYW5kXQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hello Hans and all media staff:
+   Recently I have try to run the my VA-API driver in Rockchip RK3399, 
+after ported the driver in chromium to request API, it works now.
+Thanks to the chromium project effort, both the decoder settings API and 
+structures are the same between rk3288 and rk3399.
+   However the those v4l2 decoder structures are too different between 
+the VA-API, I know those VA-API structures would not enough for our 
+situation. If we could expend the VA-API structures, it sounds more easy 
+to start up a standard.
+   Also creating a new v4l2 fourcc for each format is not convenience, 
+also the data format may be a little different, but it is still a part 
+of the original data right?
+   The slice API and request API are still not clearly, I just put my 
+ideas here and hoping more ideas coming.
+P.S Does somebody know where the chromium would switch to request API 
+instead of the config store?
+-- 
+Randy Li
+The third produce department
+===========================================================================
+This email message, including any attachments, is for the sole
+use of the intended recipient(s) and may contain confidential and
+privileged information. Any unauthorized review, use, disclosure or
+distribution is prohibited. If you are not the intended recipient, please
+contact the sender by reply e-mail and destroy all copies of the original
+message. [Fuzhou Rockchip Electronics, INC. China mainland]
+===========================================================================
