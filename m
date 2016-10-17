@@ -1,37 +1,37 @@
 From: Wei Yongjun <weiyj.lk@gmail.com>
-Subject: [PATCH -next] PCI: rockchip: Add missing of_node_put() in rockchip_pcie_init_irq_domain()
-Date: Mon, 17 Oct 2016 14:57:22 +0000
-Message-ID: <1476716242-31684-1-git-send-email-weiyj.lk@gmail.com>
+Subject: [PATCH -next] ASoC: rk3399_gru_sound: Fix non static symbol warning
+Date: Mon, 17 Oct 2016 15:15:18 +0000
+Message-ID: <1476717318-12684-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Wei Yongjun <weiyongjun1@huawei.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Wei Yongjun <weiyongjun1@huawei.com>
 
-This node pointer is returned by of_get_next_child() with refcount
-incremented in this function. of_node_put() on it before exitting
-this function on error.
+Fixes the following sparse warning:
 
-This is detected by Coccinelle semantic patch.
+sound/soc/rockchip/rk3399_gru_sound.c:41:14: warning:
+ symbol 'rt5514_dmic_delay' was not declared. Should it be static?
 
 Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
 ---
- drivers/pci/host/pcie-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+ sound/soc/rockchip/rk3399_gru_sound.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index e0b22da..ab88859 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -949,6 +949,7 @@ static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
- 						    &intx_domain_ops, rockchip);
- 	if (!rockchip->irq_domain) {
- 		dev_err(dev, "failed to get a INTx IRQ domain\n");
-+		of_node_put(intc);
- 		return -EINVAL;
- 	}
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 9ed735a..0cbd235 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -38,7 +38,7 @@
+ 
+ #define SOUND_FS	256
+ 
+-unsigned int rt5514_dmic_delay;
++static unsigned int rt5514_dmic_delay;
+ 
+ static struct snd_soc_jack rockchip_sound_jack;
