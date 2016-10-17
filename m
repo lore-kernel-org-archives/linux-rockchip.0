@@ -1,40 +1,32 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: something different ideas from chromium's decoder settings API
-Date: Mon, 17 Oct 2016 12:02:39 +0800
-Message-ID: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
+From: "Xiang, Haihao" <haihao.xiang@intel.com>
+Subject: Re: [Libva] something different ideas from chromium's decoder
+ settings API
+Date: Mon, 17 Oct 2016 04:42:52 +0000
+Message-ID: <1476679372.4871.40.camel@intel.com>
+References: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
+Content-Language: en-US
+Content-ID: <E54D89F0CBFBD444AB3F631E57A7DE8C@intel.com>
 Sender: linux-media-owner@vger.kernel.org
-To: hverkuil@xs4all.nl
-Cc: pawel@osciak.com, linux-media@vger.kernel.org, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, libva@lists.freedesktop.org, eddie.cai@rock-chips.com, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, =?UTF-8?B?5p6X6YeR5Y+R?= <alpha.lin@rock-chips.com>
+To: "randy.li@rock-chips.com" <randy.li@rock-chips.com>, "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>
+Cc: "alpha.lin@rock-chips.com" <alpha.lin@rock-chips.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "eddie.cai@rock-chips.com" <eddie.cai@rock-chips.com>, "pawel@osciak.com" <pawel@osciak.com>, "libva@lists.freedesktop.org" <libva@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Hans and all media staff:
-   Recently I have try to run the my VA-API driver in Rockchip RK3399, 
-after ported the driver in chromium to request API, it works now.
-Thanks to the chromium project effort, both the decoder settings API and 
-structures are the same between rk3288 and rk3399.
-   However the those v4l2 decoder structures are too different between 
-the VA-API, I know those VA-API structures would not enough for our 
-situation. If we could expend the VA-API structures, it sounds more easy 
-to start up a standard.
-   Also creating a new v4l2 fourcc for each format is not convenience, 
-also the data format may be a little different, but it is still a part 
-of the original data right?
-   The slice API and request API are still not clearly, I just put my 
-ideas here and hoping more ideas coming.
-P.S Does somebody know where the chromium would switch to request API 
-instead of the config store?
--- 
-Randy Li
-The third produce department
-===========================================================================
-This email message, including any attachments, is for the sole
-use of the intended recipient(s) and may contain confidential and
-privileged information. Any unauthorized review, use, disclosure or
-distribution is prohibited. If you are not the intended recipient, please
-contact the sender by reply e-mail and destroy all copies of the original
-message. [Fuzhou Rockchip Electronics, INC. China mainland]
-===========================================================================
+DQpIaSBSYW5keSzCoA0KDQpJIHNhdyBhIHN0YXRlbWVudCBiZWxvdyBhdCB0aGUgZW5kIG9mIHlv
+dXIgZW1haWw6DQoNCj09PT09PQ0KVGhpcyBlbWFpbCBtZXNzYWdlLCBpbmNsdWRpbmcgYW55IGF0
+dGFjaG1lbnRzLCBpcyBmb3IgdGhlIHNvbGUNCnVzZSBvZiB0aGUgaW50ZW5kZWQgcmVjaXBpZW50
+KHMpIGFuZCBtYXkgY29udGFpbiBjb25maWRlbnRpYWwgYW5kDQpwcml2aWxlZ2VkIGluZm9ybWF0
+aW9uLiBBbnkgdW5hdXRob3JpemVkIHJldmlldywgdXNlLCBkaXNjbG9zdXJlIG9yDQpkaXN0cmli
+dXRpb24gaXMgcHJvaGliaXRlZC4gSWYgeW91IGFyZSBub3QgdGhlIGludGVuZGVkIHJlY2lwaWVu
+dCwNCnBsZWFzZQ0KY29udGFjdCB0aGUgc2VuZGVyIGJ5IHJlcGx5IGUtbWFpbCBhbmQgZGVzdHJv
+eSBhbGwgY29waWVzIG9mIHRoZQ0Kb3JpZ2luYWwNCm1lc3NhZ2UuIFtGdXpob3UgUm9ja2NoaXAg
+RWxlY3Ryb25pY3MsIElOQy4gQ2hpbmEgbWFpbmxhbmRdDQo9PT09PT0NCg0KUGxlYXNlIGRvIG5v
+dCBzZW5kIHlvdXIgZW1haWwgdG8gbGlidmFAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIGlmIHlvdQ0K
+ZG9uJ3Qgd2FudCB0byBkaXNjdXNzIHlvdXIgcXVlc3Rpb24vaWRlYSBwdWJsaWNseSBiZWNhdXNl
+wqBsaWJ2YUBsaXN0cy5mDQpyZWVkZXNrdG9wwqBpcyBvbmx5IHVzZWQgZm9yIHB1YmxpYyBkaXNj
+dXNzaW9uIG9mIGxpYnZhLCBvdGhlcndpc2UNCnBsZWFzZSByZW1vdmUgdGhlIGFib3ZlIHN0YXRl
+bWVudCBpbiB5b3VyIGVtYWlsLg0KDQpUaGFua3MNCkhhaWhhbw0KDQo=
