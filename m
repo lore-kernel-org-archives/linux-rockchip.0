@@ -1,32 +1,96 @@
-From: "Xiang, Haihao" <haihao.xiang@intel.com>
-Subject: Re: [Libva] something different ideas from chromium's decoder
- settings API
-Date: Mon, 17 Oct 2016 04:42:52 +0000
-Message-ID: <1476679372.4871.40.camel@intel.com>
-References: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <91e1ac78-8a2f-35da-f84f-b35616153860@rock-chips.com>
-Content-Language: en-US
-Content-ID: <E54D89F0CBFBD444AB3F631E57A7DE8C@intel.com>
-Sender: linux-media-owner@vger.kernel.org
-To: "randy.li@rock-chips.com" <randy.li@rock-chips.com>, "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>
-Cc: "alpha.lin@rock-chips.com" <alpha.lin@rock-chips.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "eddie.cai@rock-chips.com" <eddie.cai@rock-chips.com>, "pawel@osciak.com" <pawel@osciak.com>, "libva@lists.freedesktop.org" <libva@lists.freedesktop.org>
+From: Jianhong Chen <chenjh@rock-chips.com>
+Subject: [PATCH] mfd: rk808: RK818 uses DEV_OFF to power off supplies
+Date: Mon, 17 Oct 2016 17:03:10 +0800
+Message-ID: <1476694990-1887-1-git-send-email-chenjh@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: zhangqing@rock-chips.com, zyw@rock-chips.com, w.egorov@phytec.de
+Cc: lee.jones@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tony.xie@rock-chips.com, huangtao@rock-chips.com, xsf@rock-chips.com, Jianhong Chen <chenjh@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-DQpIaSBSYW5keSzCoA0KDQpJIHNhdyBhIHN0YXRlbWVudCBiZWxvdyBhdCB0aGUgZW5kIG9mIHlv
-dXIgZW1haWw6DQoNCj09PT09PQ0KVGhpcyBlbWFpbCBtZXNzYWdlLCBpbmNsdWRpbmcgYW55IGF0
-dGFjaG1lbnRzLCBpcyBmb3IgdGhlIHNvbGUNCnVzZSBvZiB0aGUgaW50ZW5kZWQgcmVjaXBpZW50
-KHMpIGFuZCBtYXkgY29udGFpbiBjb25maWRlbnRpYWwgYW5kDQpwcml2aWxlZ2VkIGluZm9ybWF0
-aW9uLiBBbnkgdW5hdXRob3JpemVkIHJldmlldywgdXNlLCBkaXNjbG9zdXJlIG9yDQpkaXN0cmli
-dXRpb24gaXMgcHJvaGliaXRlZC4gSWYgeW91IGFyZSBub3QgdGhlIGludGVuZGVkIHJlY2lwaWVu
-dCwNCnBsZWFzZQ0KY29udGFjdCB0aGUgc2VuZGVyIGJ5IHJlcGx5IGUtbWFpbCBhbmQgZGVzdHJv
-eSBhbGwgY29waWVzIG9mIHRoZQ0Kb3JpZ2luYWwNCm1lc3NhZ2UuIFtGdXpob3UgUm9ja2NoaXAg
-RWxlY3Ryb25pY3MsIElOQy4gQ2hpbmEgbWFpbmxhbmRdDQo9PT09PT0NCg0KUGxlYXNlIGRvIG5v
-dCBzZW5kIHlvdXIgZW1haWwgdG8gbGlidmFAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIGlmIHlvdQ0K
-ZG9uJ3Qgd2FudCB0byBkaXNjdXNzIHlvdXIgcXVlc3Rpb24vaWRlYSBwdWJsaWNseSBiZWNhdXNl
-wqBsaWJ2YUBsaXN0cy5mDQpyZWVkZXNrdG9wwqBpcyBvbmx5IHVzZWQgZm9yIHB1YmxpYyBkaXNj
-dXNzaW9uIG9mIGxpYnZhLCBvdGhlcndpc2UNCnBsZWFzZSByZW1vdmUgdGhlIGFib3ZlIHN0YXRl
-bWVudCBpbiB5b3VyIGVtYWlsLg0KDQpUaGFua3MNCkhhaWhhbw0KDQo=
+DEV_OFF and DEV_OFF_RST functions for RK808 are designed error that
+only DEV_OFF_RST can power off supplies. RK818 has been fixed this
+issue, so that DEV_OFF is used to power off supplies.
+
+Signed-off-by: Jianhong Chen <chenjh@rock-chips.com>
+---
+ drivers/mfd/rk808.c       | 23 ++++++++++++++++++++++-
+ include/linux/mfd/rk808.h |  1 +
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 0f8acc5..2c9acdb 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -290,6 +290,24 @@ static void rk808_device_shutdown(void)
+ 		dev_err(&rk808_i2c_client->dev, "power off error!\n");
+ }
+ 
++static void rk818_device_shutdown(void)
++{
++	int ret;
++	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
++
++	if (!rk808) {
++		dev_warn(&rk808_i2c_client->dev,
++			 "have no rk818, so do nothing here\n");
++		return;
++	}
++
++	ret = regmap_update_bits(rk808->regmap,
++				 RK818_DEVCTRL_REG,
++				 DEV_OFF, DEV_OFF);
++	if (ret)
++		dev_err(&rk808_i2c_client->dev, "power off error!\n");
++}
++
+ static const struct of_device_id rk808_of_match[] = {
+ 	{ .compatible = "rockchip,rk808" },
+ 	{ .compatible = "rockchip,rk818" },
+@@ -304,6 +322,7 @@ static int rk808_probe(struct i2c_client *client,
+ 	struct rk808 *rk808;
+ 	const struct rk808_reg_data *pre_init_reg;
+ 	const struct mfd_cell *cells;
++	void (*pm_pwroff_fn)(void);
+ 	int nr_pre_init_regs;
+ 	int nr_cells;
+ 	int pm_off = 0;
+@@ -331,6 +350,7 @@ static int rk808_probe(struct i2c_client *client,
+ 		nr_pre_init_regs = ARRAY_SIZE(rk808_pre_init_reg);
+ 		cells = rk808s;
+ 		nr_cells = ARRAY_SIZE(rk808s);
++		pm_pwroff_fn = rk808_device_shutdown;
+ 		break;
+ 	case RK818_ID:
+ 		rk808->regmap_cfg = &rk818_regmap_config;
+@@ -339,6 +359,7 @@ static int rk808_probe(struct i2c_client *client,
+ 		nr_pre_init_regs = ARRAY_SIZE(rk818_pre_init_reg);
+ 		cells = rk818s;
+ 		nr_cells = ARRAY_SIZE(rk818s);
++		pm_pwroff_fn = rk818_device_shutdown;
+ 		break;
+ 	default:
+ 		dev_err(&client->dev, "Unsupported RK8XX ID %lu\n",
+@@ -393,7 +414,7 @@ static int rk808_probe(struct i2c_client *client,
+ 				"rockchip,system-power-controller");
+ 	if (pm_off && !pm_power_off) {
+ 		rk808_i2c_client = client;
+-		pm_power_off = rk808_device_shutdown;
++		pm_power_off = pm_pwroff_fn;
+ 	}
+ 
+ 	return 0;
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 6d435a3..83701ef 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -290,6 +290,7 @@ enum rk818_reg {
+ #define SWITCH2_EN	BIT(6)
+ #define SWITCH1_EN	BIT(5)
+ #define DEV_OFF_RST	BIT(3)
++#define DEV_OFF		BIT(0)
+ 
+ #define VB_LO_ACT		BIT(4)
+ #define VB_LO_SEL_3500MV	(7 << 0)
+-- 
+1.9.1
