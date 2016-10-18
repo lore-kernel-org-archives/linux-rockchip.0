@@ -1,131 +1,67 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 6/6] drm: bridge/analogix: enable vop standby when entry PSR
-Date: Tue, 18 Oct 2016 11:54:56 -0400
-Message-ID: <CAOw6vbLL-_GisEmLnE9S7uQvLGnqvfi5+KAcW9PSVHVo7TdMMQ@mail.gmail.com>
-References: <1476771756-12045-1-git-send-email-wzz@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v8 1/3] Documentation/devicetree: Add new property to
+ specify the max link speed
+Date: Tue, 18 Oct 2016 11:41:39 -0500
+Message-ID: <20161018164139.z52uo7eda5xgwkzu@rob-hp-laptop>
+References: <1476755110-22647-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1476771756-12045-1-git-send-email-wzz@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Zain Wang <wzz@rock-chips.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org, Archit <architt@codeaurora.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1476755110-22647-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 18, 2016 at 2:22 AM, Zain Wang <wzz@rock-chips.com> wrote:
-> From: zain wang <wzz@rock-chips.com>
->
-> make VOP standby when entry PSR to save some power.
-
-This is super racey and will cause bugs. Hopefully once you base it on
-the updated locking it won't be.
-
-I'll wait until then to review.
-
-Sean
-
-
->
-> Signed-off-by: zain wang <wzz@rock-chips.com>
+On Tue, Oct 18, 2016 at 09:45:08AM +0800, Shawn Lin wrote:
+> Some of the host drivers have the requirement of knowing whether the
+> EP would never train at some link speed at all. For instance, on some
+> boards, the link won't train at 5 GT/s but the host driver still sacrifice
+> some cycle to wait for the resule of training at 5 GT/s as the host could
+> actually support 5 GT/s. So we could parse this new property and make the
+> host drivers be aware of these cases.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 29 ++++++++++++++++++-------
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |  1 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 19 ++++++++++++++++
->  3 files changed, 41 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 1c2d756..e0f3ed3 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -113,6 +113,13 @@ static void analogix_dp_psr_work(struct work_struct *work)
->         if (!crtc)
->                 return;
->
-> +       spin_lock_irqsave(&dp->psr_lock, flags);
-> +       psr_state = dp->psr_state;
-> +       spin_unlock_irqrestore(&dp->psr_lock, flags);
-> +
-> +       if (psr_state != EDP_VSC_PSR_STATE_ACTIVE)
-> +               rockchip_drm_vop_set_standby(crtc, false);
-> +
->         vact_end = crtc->mode.vtotal - crtc->mode.vsync_start + crtc->mode.vdisplay;
->
->         ret = rockchip_drm_wait_line_flag(dp->encoder.crtc, vact_end,
-> @@ -122,14 +129,20 @@ static void analogix_dp_psr_work(struct work_struct *work)
->                 return;
->         }
->
-> -       spin_lock_irqsave(&dp->psr_lock, flags);
-> -       psr_state = dp->psr_state;
-> -       spin_unlock_irqrestore(&dp->psr_lock, flags);
-> -
-> -       if (psr_state == EDP_VSC_PSR_STATE_ACTIVE)
-> -               analogix_dp_enable_psr(dp->dev);
-> -       else
-> -               analogix_dp_disable_psr(dp->dev);
-> +       if (psr_state == EDP_VSC_PSR_STATE_ACTIVE) {
-> +               ret = analogix_dp_enable_psr(dp->dev);
-> +               if (ret) {
-> +                       dev_err(dp->dev, "failed to enable psr\n");
-> +                       return;
-> +               }
-> +               rockchip_drm_vop_set_standby(crtc, true);
-> +       } else {
-> +               ret = analogix_dp_disable_psr(dp->dev);
-> +               if (ret) {
-> +                       dev_err(dp->dev, "failed to disable psr\n");
-> +                       return;
-> +               }
-> +       }
->  }
->
->  static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> index fb6226c..7149c69 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> @@ -74,5 +74,6 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
->                                     struct device *dev);
->  int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
->                                 unsigned int mstimeout);
-> +void rockchip_drm_vop_set_standby(struct drm_crtc *crtc, bool enabled);
->
->  #endif /* _ROCKCHIP_DRM_DRV_H_ */
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 1740a0b..13eabda 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1478,6 +1478,25 @@ int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
->  }
->  EXPORT_SYMBOL(rockchip_drm_wait_line_flag);
->
-> +void rockchip_drm_vop_set_standby(struct drm_crtc *crtc, bool enabled)
-> +{
-> +       struct vop *vop = to_vop(crtc);
-> +
-> +       if (!crtc || !vop->is_enabled)
-> +               return;
-> +
-> +       spin_lock(&vop->reg_lock);
-> +
-> +       if (enabled)
-> +               VOP_CTRL_SET(vop, standby, 1);
-> +       else
-> +               VOP_CTRL_SET(vop, standby, 0);
-> +
-> +       spin_unlock(&vop->reg_lock);
-> +
-> +}
-> +EXPORT_SYMBOL(rockchip_drm_vop_set_standby);
-> +
->  static int vop_bind(struct device *dev, struct device *master, void *data)
->  {
->         struct platform_device *pdev = to_platform_device(dev);
-> --
-> 1.9.1
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-samsung-soc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+
+Humm, either you are respinning versions too quickly or failed to copy 
+the DT list.
+
+> 
+>  Documentation/devicetree/bindings/pci/pci.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/pci.txt b/Documentation/devicetree/bindings/pci/pci.txt
+> index 08dcfad..e7d97a3 100644
+> --- a/Documentation/devicetree/bindings/pci/pci.txt
+> +++ b/Documentation/devicetree/bindings/pci/pci.txt
+> @@ -18,3 +18,9 @@ driver implementation may support the following properties:
+>     host bridges in the system, otherwise potentially conflicting domain numbers
+>     may be assigned to root buses behind different host bridges.  The domain
+>     number for each host bridge in the system must be unique.
+> +- max-link-speed:
+> +   If present this property specifies PCI gen for link capability. The host drivers
+> +   could add this as a strategy to avoid unnecessary operation for unsupported
+> +   link speed, for instance, trying to do training for unsupported link speed, etc.
+> +   Must be '4' for gen4, '3' for gen3, '2' for gen2, and '1' for gen1. Any other
+> +   values are invalid.
+> -- 
+> 2.3.7
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
