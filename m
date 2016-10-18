@@ -1,52 +1,80 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH] PM / AVS: rockchip-io: make the log more consistent
-Date: Tue, 18 Oct 2016 14:14:18 -0700
-Message-ID: <7heg3d9x79.fsf@baylibre.com>
-References: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com>
-        <1883054.D2Rm2X9N2G@phil>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/2] PCI: rockchip: fix wrong transmitted FTS count
+Date: Tue, 18 Oct 2016 15:57:05 -0700
+Message-ID: <20161018225703.GA114318@google.com>
+References: <1474596360-23483-1-git-send-email-shawn.lin@rock-chips.com>
+ <1474596360-23483-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1883054.D2Rm2X9N2G@phil> (Heiko Stuebner's message of "Mon, 10
-        Oct 2016 22:15:50 +0200")
-Sender: linux-pm-owner@vger.kernel.org
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Nishanth Menon <nm@ti.com>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1474596360-23483-2-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko Stuebner <heiko@sntech.de> writes:
+On Fri, Sep 23, 2016 at 10:06:00AM +0800, Shawn Lin wrote:
+> If the expected numbers of FTS aren't recevied by RC when
+> exiting from L0s, the LTSSM will fall into recover state.
+> So it will need to send TS for retraining which makes the
+> latency of exiting from L0s a little longer than expected.
+> This issue is caused by the wrong reset value of FTS count
+> on PLC1 register(offset 0x4). The expected value for Gen1/2
+> should be more than 240 and we may leave a little margin here.
+> Let's fix this before starting Gen1 traning which will makes
+> TS1 contains the correct FTS count.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 5e51121..6a7a9df 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -95,6 +95,10 @@
+>  #define   PCIE_CORE_PL_CONF_SPEED_MASK		0x00000018
+>  #define   PCIE_CORE_PL_CONF_LANE_MASK		0x00000006
+>  #define   PCIE_CORE_PL_CONF_LANE_SHIFT		1
+> +#define PCIE_CORE_CTRL_PLC1		(PCIE_CORE_CTRL_MGMT_BASE + 0x004)
+> +#define   PCIE_CORE_CTRL_PLC1_FTS_MASK		GENMASK(23, 8)
 
-> Am Montag, 10. Oktober 2016, 20:44:22 CEST schrieb Shawn Lin:
->> When testing SD hotplug automatically, I got bunch of
->> useless log like this:
->> 
->> [  588.357838] mmc0: card 0007 removed
->> [  589.492664] rockchip-iodomain ff770000.syscon:io-domains: Setting to
->> 3300000 done [  589.500698] vccio_sd: ramp_delay not set
->> [  589.504817] rockchip-iodomain ff770000.syscon:io-domains: Setting to
->> 3300000 done [  589.669705] rockchip-iodomain ff770000.syscon:io-domains:
->> Setting to 3300000 done [  589.677593] vccio_sd: ramp_delay not set
->> [  589.681581] rockchip-iodomain ff770000.syscon:io-domains: Setting to
->> 1800000 done [  590.032820] dwmmc_rockchip ff0c0000.dwmmc: Successfully
->> tuned phase to 140 [  590.039725] mmc0: new ultra high speed SDR50 SDHC
->> card at address 0007 [  590.046641] mmcblk0: mmc0:0007 SD32G 29.3 GiB
->> [  590.052163]  mmcblk0: p1
->> 
->> Moreover the code is intent to print the 'uV' for debug but
->> later print it using dev_info. It looks more like to me that
->> it should be the real intention of the code. Anyway, let's
->> mark this verbose log as debug message.
->> 
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> reducing the amount of logs, especially for information not generally needed 
-> looks sane
->
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+^^^ That's 0x00ffff00, isn't it?
 
-Acked-by: Kevin Hilman <khilman@baylibre.com>
+> +#define   PCIE_CORE_CTRL_PLC1_FTS_SHIFT	8
+> +#define   PCIE_CORE_CTRL_PLC1_FTS_CNT		0xffff
+>  #define PCIE_CORE_INT_STATUS		(PCIE_CORE_CTRL_MGMT_BASE + 0x20c)
+>  #define   PCIE_CORE_INT_PRFPE			BIT(0)
+>  #define   PCIE_CORE_INT_CRFPE			BIT(1)
+> @@ -470,6 +474,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+>  
+> +	/* Fix the transmitted FTS count desired to exit from L0s. */
+> +	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
+> +	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
 
-Rafael, feel free to apply directly as a fix for v4.9-rc, or wait for
-v4.10 if you prefer.
+^^^ That's not the way to use this then, is it? We want
 
-Kevin
+	(status & ~PCIE_CORE_CTRL_PLC1_FTS_MASK) | ...
+
+Fortunately the lowest 8 bits default to 0, and the highest 8 bits are
+for 8GT/s operation (not used).
+
+This is already upstream, so I guess we need a follow-up.
+
+Brian
+
+> +		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
+> +	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
+> +
+>  	/* Enable Gen1 training */
+>  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+>  			    PCIE_CLIENT_CONFIG);
+> -- 
+> 2.3.7
+> 
+> 
