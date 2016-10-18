@@ -1,122 +1,66 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 0/9] Init runtime PM support for dw_mmc
-Date: Tue, 18 Oct 2016 10:46:12 +0200
-Message-ID: <CAPDyKFopNgWh=+0RNFwJc+aaFPXGuJMAac5rPtfOawvLwSbN+g@mail.gmail.com>
-References: <1476240643-5701-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] ARM: dts: rockchip: temporarily remove emmc hs200 speed from rk3288-veyron-speedy.
+Date: Tue, 18 Oct 2016 11:21:59 +0200
+Message-ID: <12872023.2LumKfgYDl@diego>
+References: <87twd1vzc5.fsf@aikidev.net> <1476647383.3885.3.camel@paulk.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1476240643-5701-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1476647383.3885.3.camel-W9ppeneeCTY@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>
+Cc: Vagrant Cascadian <vagrantc-LkDtOWtB3X7R7s880joybQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Heiko
+Am Sonntag, 16. Oktober 2016, 21:49:43 schrieb Paul Kocialkowski:
+> Hi,
+> 
+> Le mardi 27 septembre 2016 à 13:53 -0700, Vagrant Cascadian a écrit :
+> > This essentially mimics what was done with rk3288-veyron-minnie in
+> > commit 984926781122f034d5bc9962815d135b6c4a8e1d.
+> > 
+> > The eMMC of the speedy Chromebook also appears to need the same tuning
+> > workaround, as it frequently fails to recognize the eMMC without it.
+> 
+> I have a device where (without this patch) eMMC sometimes fails, with:
+> [    3.561010] dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to
+> 175 [    3.571742] mmc2: new HS200 MMC card at address 0001
+> [    3.571943] mmcblk2: mmc2:0001 HAG2e 14.7 GiB 
+> [    3.572026] mmcblk2boot0: mmc2:0001 HAG2e partition 1 4.00 MiB
+> [    3.572107] mmcblk2boot1: mmc2:0001 HAG2e partition 2 4.00 MiB
+> [    3.572181] mmcblk2rpmb: mmc2:0001 HAG2e partition 3 4.00 MiB
+> [    3.685647] mmcblk2: error -110 transferring data, sector 0, nr 8, cmd
+> response 0x900, card status 0x0
+> 
+> And sometimes works, with:
+> [    3.451058] dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to
+> 176 [    3.491093] mmc2: new HS200 MMC card at address 0001
+> [    3.491277] mmcblk2: mmc2:0001 HAG2e 14.7 GiB 
+> [    3.491345] mmcblk2boot0: mmc2:0001 HAG2e partition 1 4.00 MiB
+> [    3.491409] mmcblk2boot1: mmc2:0001 HAG2e partition 2 4.00 MiB
+> [    3.491474] mmcblk2rpmb: mmc2:0001 HAG2e partition 3 4.00 MiB
+> [    3.493548]  mmcblk2: p1 p2
+> 
+> However, with this change, it always fails, with:
+> [    3.322129] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req
+> 52000000Hz, actual 50000000HZ div = 0) [    3.333174] mmc2: error -110
+> whilst initialising MMC card
+> 
+> I don't have so much time to investigate this issue, but it's clear that
+> this patch doesn't fix the issue (and actually worsens it) for my device.
 
-On 12 October 2016 at 04:50, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->
-> Hi Jaehoon and Ulf,
->
->    This patch is gonna support runtime PM for dw_mmc.
-> It could support to disable ciu_clk by default and disable
-> biu_clk if the devices are non-removeable, or removeable
-> with gpio-base card detect.
->
->    Then I remove the system PM since the runtime PM actually
-> does the same thing as it. So I help migrate the dw_mmc variant
-> drivers to use runtime PM pairs and pm_runtime_force_*. Note
-> that I only enable runtime PM for dw_mmc-rockchip as I will
-> leave the decision to the owners of the corresponding drivers.
-> I just tested it on my RK3288 platform with linux-next to make
-> the runtime PM and system PM work fine for my emmc, sd card and
-> sdio. But I don't have hardware to help test other variant drivers.
-> But in theory it should work fine as I mentioned that the runtime
-> PM does the same thing as system PM except for disabling ciu_clk
-> aggressively which should not be related to the variant hosts.
->
->    As you could see that I just extend the slot-gpio a bit, so the
-> ideal way is Ulf could pick them up with Jaehoon's ack. :)
+thanks for the heads up.
 
-The mmc core change looks fine to me, so I will wait for a pull
-request from Jaehoon.
+As discussed on IRC we now have varying reports of the emmc working or not 
+working with and without that patch applied. So it's not really a bandaid fix 
+and I've thus dropped this patch again.
 
->
->
-> Changes in v2:
-> - use struct device as argument for runtime callback
-> - use dw_mci_runtime_* directly
-> - use dw_mci_runtime_* directly
-> - minor fix since I change the argument for dw_mci_runtime_*
-> - use dw_mci_runtime_* directly
-> - use dw_mci_runtime_* directly
->
-> Shawn Lin (9):
->   mmc: dw_mmc: add runtime PM callback
->   mmc: dw_mmc-rockchip: add runtime PM support
->   mmc: core: expose the capability of gpio card detect
->   mmc: dw_mmc: disable biu clk if possible
->   mmc: dw_mmc-k3: deploy runtime PM facilities
->   mmc: dw_mmc-exynos: deploy runtime PM facilities
->   mmc: dw_mmc-pci: deploy runtime PM facilities
->   mmc: dw_mmc-pltfm: deploy runtime PM facilities
->   mmc: dw_mmc: remove system PM callback
->
->  drivers/mmc/core/slot-gpio.c       |  8 +++++++
->  drivers/mmc/host/dw_mmc-exynos.c   | 24 +++++++++-----------
->  drivers/mmc/host/dw_mmc-k3.c       | 39 ++++++++------------------------
->  drivers/mmc/host/dw_mmc-pci.c      | 29 ++++++++----------------
->  drivers/mmc/host/dw_mmc-pltfm.c    | 28 +++++++----------------
->  drivers/mmc/host/dw_mmc-rockchip.c | 42 +++++++++++++++++++++++++++++++---
->  drivers/mmc/host/dw_mmc.c          | 46 +++++++++++++++++++++++++-------------
->  drivers/mmc/host/dw_mmc.h          |  6 ++---
->  include/linux/mmc/slot-gpio.h      |  1 +
->  9 files changed, 117 insertions(+), 106 deletions(-)
->
-
-Overall these changes looks good to me, so I am ready to accept the PR
-from Jaehoon!!
+Still hoping someone will find the source of the problem somewhere :-)
 
 
-Although, highly related to this patchset, I am worried that there is
-a misunderstanding on how MMC_PM_KEEP_POWER (DT binding
-"keep-power-in-suspend") is being used for dw_mmc. Perhaps I am wrong,
-but I would appreciate if you could elaborate a bit for my
-understanding.
-
-First, this cap is solely intended to be used for controllers which
-may have SDIO cards attached, as it indicates those cards may be
-configured to be powered on while the system enters suspend state. By
-looking at some DTS files, for example
-arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts which uses it
-for an eMMC slot, this is clearly being abused.
-
-Anyway, the wrong DT configurations might not be a big deal, as in
-dw_mci_resume(), it's not the capabilities bit that is checked but the
-corresponding "pm_flag". This flag is set via calling
-sdio_set_host_pm_flags(), but as that doesn't happen for an eMMC card
-we should be fine, right!?
-
-Now, what also do puzzles me, is exactly that piece of code in
-dw_mci_resume() that is being executed *when* the pm_flag contains
-MMC_PM_KEEP_POWER:
-if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
-     dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
-     dw_mci_setup_bus(slot, true);
-}
-
-So, in the system resume path, the above do makes sense as you need to
-restore the registers etc for the dw_mmc controller to enable it to
-operate the SDIO card. Such as bus width, clocks, etc.
-
-Although, I would expect something similar would be needed in the new
-runtime resume path as well. And in particular also for eMMC/SD cards,
-as you need to restore the dw_mmc registers to be able to operate the
-card again. Don't you?
-
-So in the end, perhaps you should *always* call dw_mci_set_ios() and
-dw_mci_setup_bus() in dw_mci_resume() instead of conditionally check
-for MMC_PM_KEEP_POWER? Or maybe only a subset of those functions?
-
-Kind regards
-Uffe
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
