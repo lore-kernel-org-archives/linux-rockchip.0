@@ -1,97 +1,175 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v4 1/4] PCI: rockchip: Provide captured slot power limit and scale
-Date: Tue, 18 Oct 2016 09:41:26 +0800
-Message-ID: <1476754889-21804-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v8 3/3] PCI: rockchip: Specify the link capability
+Date: Tue, 18 Oct 2016 09:45:10 +0800
+Message-ID: <1476755110-22647-3-git-send-email-shawn.lin@rock-chips.com>
+References: <1476755110-22647-1-git-send-email-shawn.lin@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1476755110-22647-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If vpcie3v3 is available, we could provide these information
-via RC's configure register to make EP able to know the power
-limit.
+rk3399 supports PCIe 2.x link speeds marginally at best, and on some
+boards, the link won't train at 5 GT/s at all. Rather than sacrifice
+500ms waiting for training that will never happen, let's use the helper
+function, of_pci_get_max_link_speed, to get the max link speed from DT
+and specify link capability.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 ---
 
-Changes in v4:
+Changes in v8:
 - rebase on next branch
 
-Changes in v3:
-- rebase the code since it isn't cleanly applied again.
+Changes in v7:
+- rebase on Bjorn's host-rockcip branch again since it isn't applied
+  cleanly after the cleanup
+- call new function, of_pci_get_max_link_speed.
 
-Changes in v2:
+Changes in v6:
+- user helper function of_get_pci_max_link_speed and use gen2 by default
+  if finding any errors from of_get_pci_max_link_speed. It could be
+  backward compatibe to the old dtb. (Suggested by Rob)
+
+Changes in v5:
 - rebase the code since it isn't cleanly applied after Bjorn's cleanup
 
- drivers/pci/host/pcie-rockchip.c | 40 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+Changes in v4:
+- define link_gen as u32
+- elaborate more for rockchip,max-link-speed on doc
+
+Changes in v3:
+- Cast a warning for invalid max link speed and use gen1 for it.
+  That looks better than v2. (Suggested by Brian)
+
+Changes in v2:
+- rename the property to rockchip,max-link-speed according to
+  Bjorn's recommendation and take some bits from imx6q-pcie to
+  make this requirement more consisent.
+
+ drivers/pci/host/pcie-rockchip.c | 60 +++++++++++++++++++++++++---------------
+ 1 file changed, 37 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index e0b22da..3ede865 100644
+index e0b22da..1ba676f 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -135,6 +135,10 @@
- #define PCIE_RC_CONFIG_VENDOR		(PCIE_RC_CONFIG_BASE + 0x00)
- #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
- #define   PCIE_RC_CONFIG_SCC_SHIFT		16
-+#define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
-+#define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
-+#define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
-+#define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
- #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
- #define   PCIE_RC_CONFIG_LCS_RETRAIN_LINK	BIT(5)
- #define   PCIE_RC_CONFIG_LCS_LBMIE		BIT(10)
-@@ -395,6 +399,40 @@ static struct pci_ops rockchip_pcie_ops = {
- 	.write = rockchip_pcie_wr_conf,
+@@ -53,6 +53,7 @@
+ #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+ #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
++#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+@@ -200,6 +201,7 @@ struct rockchip_pcie {
+ 	struct	gpio_desc *ep_gpio;
+ 	u32	lanes;
+ 	u8	root_bus_nr;
++	int	link_gen;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
  };
+@@ -438,14 +440,20 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
  
-+static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
-+{
-+	u32 status, curr, scale, power;
++	if (rockchip->link_gen == 2)
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
++				    PCIE_CLIENT_CONFIG);
++	else
++		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
++				    PCIE_CLIENT_CONFIG);
 +
-+	if (IS_ERR(rockchip->vpcie3v3))
-+		return;
+ 	rockchip_pcie_write(rockchip,
+ 			    PCIE_CLIENT_CONF_ENABLE |
+ 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
+ 			    PCIE_CLIENT_ARI_ENABLE |
+ 			    PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes) |
+-			    PCIE_CLIENT_MODE_RC |
+-			    PCIE_CLIENT_GEN_SEL_2,
+-				PCIE_CLIENT_CONFIG);
++			    PCIE_CLIENT_MODE_RC,
++			    PCIE_CLIENT_CONFIG);
+ 
+ 	err = phy_power_on(rockchip->phy);
+ 	if (err) {
+@@ -522,29 +530,31 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		msleep(20);
+ 	}
+ 
+-	/*
+-	 * Enable retrain for gen2. This should be configured only after
+-	 * gen1 finished.
+-	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+-	status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
++	if (rockchip->link_gen == 2) {
++		/*
++		 * Enable retrain for gen2. This should be configured only after
++		 * gen1 finished.
++		 */
++		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
++		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
++		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
 +
-+	/*
-+	 * Set RC's captured slot power limit and scale if
-+	 * vpcie3v3 available. The default values are both zero
-+	 * which means the software should set these two according
-+	 * to the actual power supply.
-+	 */
-+	curr = regulator_get_current_limit(rockchip->vpcie3v3);
-+	if (curr > 0) {
-+		scale = 3; /* 0.001x */
-+		curr = curr / 1000; /* convert to mA */
-+		power = (curr * 3300) / 1000; /* milliwatt */
-+		while (power > PCIE_RC_CONFIG_DCR_CSPL_LIMIT) {
-+			if (!scale) {
-+				dev_warn(rockchip->dev, "invalid power supply\n");
-+				return;
++		timeout = jiffies + msecs_to_jiffies(500);
++		for (;;) {
++			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
++			    PCIE_CORE_PL_CONF_SPEED_5G) {
++				dev_dbg(dev, "PCIe link training gen2 pass!\n");
++				break;
 +			}
-+			scale--;
-+			power = power / 10;
-+		}
-+
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCR);
-+		status |= (power << PCIE_RC_CONFIG_DCR_CSPL_SHIFT) |
-+			  (scale << PCIE_RC_CONFIG_DCR_CPLS_SHIFT);
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCR);
-+	}
-+}
-+
- /**
-  * rockchip_pcie_init_port - Initialize hardware
-  * @rockchip: PCIe port information
-@@ -496,6 +534,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
- 	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
  
-+	rockchip_pcie_set_power_limit(rockchip);
+-	timeout = jiffies + msecs_to_jiffies(500);
+-	for (;;) {
+-		status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
+-		if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+-		    PCIE_CORE_PL_CONF_SPEED_5G) {
+-			dev_dbg(dev, "PCIe link training gen2 pass!\n");
+-			break;
+-		}
++			if (time_after(jiffies, timeout)) {
++				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
++				break;
++			}
+ 
+-		if (time_after(jiffies, timeout)) {
+-			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+-			break;
++			msleep(20);
+ 		}
+-
+-		msleep(20);
+ 	}
+ 
+ 	/* Check the final link width from negotiated lane counter from MGMT */
+@@ -753,6 +763,10 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		rockchip->lanes = 1;
+ 	}
+ 
++	rockchip->link_gen = of_pci_get_max_link_speed(node);
++	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
++		rockchip->link_gen = 2;
 +
- 	/* Enable Gen1 training */
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
+ 	rockchip->core_rst = devm_reset_control_get(dev, "core");
+ 	if (IS_ERR(rockchip->core_rst)) {
+ 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
 -- 
 2.3.7
