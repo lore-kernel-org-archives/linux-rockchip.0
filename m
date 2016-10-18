@@ -1,72 +1,171 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v2] timers: Fix usleep_range() in the context of wake_up_process()
-Date: Tue, 18 Oct 2016 21:44:16 +0800
-Message-ID: <CAGS+omAT5gFD3vF7iz=Mc=CO00W_x2MSyGdpgD+tO2YfGnwpsA@mail.gmail.com>
-References: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 1/6] drm/bridge: analogix_dp: set psr
+ activate/deactivate when enable/disable bridge
+Date: Tue, 18 Oct 2016 11:52:16 -0400
+Message-ID: <CAOw6vb+peajznT3BkAZSG7f_7NRB08rTA8Vh_AufPSmwYjT0EQ@mail.gmail.com>
+References: <1476771283-11398-1-git-send-email-wzz@rock-chips.com> <1476771283-11398-2-git-send-email-wzz@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476133442-17757-1-git-send-email-dianders@chromium.org>
+In-Reply-To: <1476771283-11398-2-git-send-email-wzz@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Andreas Mohr <andi@lisas.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, tony.xie@rock-chips.com, Akihiro Tsukada <tskd08@gmail.com>
+To: Zain Wang <wzz@rock-chips.com>, Archit <architt@codeaurora.org>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-On Tue, Oct 11, 2016 at 5:04 AM, Douglas Anderson <dianders@chromium.org> wrote:
-> Users of usleep_range() expect that it will _never_ return in less time
-> than the minimum passed parameter.  However, nothing in any of the code
-> ensures this.  Specifically:
+On Tue, Oct 18, 2016 at 2:14 AM, Zain Wang <wzz@rock-chips.com> wrote:
+> From: zain wang <wzz@rock-chips.com>
 >
-> usleep_range() => do_usleep_range() => schedule_hrtimeout_range() =>
-> schedule_hrtimeout_range_clock() just ends up calling schedule() with an
-> appropriate timeout set using the hrtimer.  If someone else happens to
-> wake up our task then we'll happily return from usleep_range() early.
+> There's a race between when bridge_disable and when vop_crtc_disable are called.
+> If the flush timer triggers a new psr work between these, we will operate eDP
+> without power shutdowned by bridge_disable.
+> In this case, moving activate/deactivate to enable/disable bridge to avoid it.
+>
 
-I think this change works, and fixes a real issue, however, I don't
-think you are fixing this at the right layer.
-The comment for schedule_hrtimeout_range says:
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
 
-/**
- * schedule_hrtimeout_range - sleep until timeout
- * @expires:    timeout value (ktime_t)
- * @delta:      slack in expires timeout (ktime_t)
- * @mode:       timer mode, HRTIMER_MODE_ABS or HRTIMER_MODE_REL
- *
- * Make the current task sleep until the given expiry time has
- * elapsed. The routine will return immediately unless
- * the current task state has been set (see set_current_state()).
- *
- * The @delta argument gives the kernel the freedom to schedule the
- * actual wakeup to a time that is both power and performance friendly.
- * The kernel give the normal best effort behavior for "@expires+@delta",
- * but may decide to fire the timer earlier, but no earlier than @expires.
- *
- * You can set the task state as follows -
- *
- * %TASK_UNINTERRUPTIBLE - at least @timeout time is guaranteed to
- * pass before the routine returns.
- *
- * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
- * delivered to the current task.
- *
- * The current task state is guaranteed to be TASK_RUNNING when this
- * routine returns.
- *
- * Returns 0 when the timer has expired otherwise -EINTR
- */
-
-The behavior as specified for this function "at least @timeout time is
-guaranteed to pass before the routine returns" already guarantees the
-behavior you are adding to do_usleep_range() whenever the current task
-state is (pre-)set to TASK_UNINTERRUPTIBLE.
-
-Thus, I think the loop around 'schedule()' should be moved to
-schedule_hrtimeout_range() itself.
-This would also fix direct callers of schedule_hrtimeout_range() that
-use TASK_UNINTERRUPTIBLE, although, I could only find one:
-
-pt3_fetch_thread()
-
--Dan
+> Signed-off-by: zain wang <wzz@rock-chips.com>
+> ---
+>
+> Changes in v3:
+> - remove changes before.
+> - move psr activat/deactivate to enable/disable bridge.
+>
+> Changes in v2:
+> - add spin_lock to protect dpms_mode
+>
+>
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  4 ++--
+>  drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 30 ++++++++++++++++++++-----
+>  drivers/gpu/drm/rockchip/rockchip_drm_psr.h     |  4 ++--
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 ----
+>  4 files changed, 28 insertions(+), 14 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index 8548e82..e5471e7 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -159,7 +159,7 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+>                 return ret;
+>         }
+>
+> -       return 0;
+> +       return rockchip_drm_psr_activate(&dp->encoder);
+>  }
+>
+>  static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+> @@ -168,7 +168,7 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+>
+>         clk_disable_unprepare(dp->pclk);
+>
+> -       return 0;
+> +       return rockchip_drm_psr_deactivate(&dp->encoder);
+>  }
+>
+>  static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> index a553e18..4c379e9 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> @@ -57,6 +57,24 @@ out:
+>         return psr;
+>  }
+>
+> +static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
+> +{
+> +       struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+> +       struct psr_drv *psr;
+> +       unsigned long flags;
+> +
+> +       spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
+> +       list_for_each_entry(psr, &drm_drv->psr_list, list) {
+> +               if (psr->encoder == encoder)
+> +                       goto out;
+> +       }
+> +       psr = ERR_PTR(-ENODEV);
+> +
+> +out:
+> +       spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
+> +       return psr;
+> +}
+> +
+>  static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
+>  {
+>         /*
+> @@ -115,14 +133,14 @@ static void psr_flush_handler(unsigned long data)
+>
+>  /**
+>   * rockchip_drm_psr_activate - activate PSR on the given pipe
+> - * @crtc: CRTC to obtain the PSR encoder
+> + * @encoder: encoder to obtain the PSR encoder
+>   *
+>   * Returns:
+>   * Zero on success, negative errno on failure.
+>   */
+> -int rockchip_drm_psr_activate(struct drm_crtc *crtc)
+> +int rockchip_drm_psr_activate(struct drm_encoder *encoder)
+>  {
+> -       struct psr_drv *psr = find_psr_by_crtc(crtc);
+> +       struct psr_drv *psr = find_psr_by_encoder(encoder);
+>         unsigned long flags;
+>
+>         if (IS_ERR(psr))
+> @@ -138,14 +156,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_activate);
+>
+>  /**
+>   * rockchip_drm_psr_deactivate - deactivate PSR on the given pipe
+> - * @crtc: CRTC to obtain the PSR encoder
+> + * @encoder: encoder to obtain the PSR encoder
+>   *
+>   * Returns:
+>   * Zero on success, negative errno on failure.
+>   */
+> -int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
+> +int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
+>  {
+> -       struct psr_drv *psr = find_psr_by_crtc(crtc);
+> +       struct psr_drv *psr = find_psr_by_encoder(encoder);
+>         unsigned long flags;
+>
+>         if (IS_ERR(psr))
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+> index b420cf1..b1ea015 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+> @@ -18,8 +18,8 @@
+>  void rockchip_drm_psr_flush_all(struct drm_device *dev);
+>  int rockchip_drm_psr_flush(struct drm_crtc *crtc);
+>
+> -int rockchip_drm_psr_activate(struct drm_crtc *crtc);
+> -int rockchip_drm_psr_deactivate(struct drm_crtc *crtc);
+> +int rockchip_drm_psr_activate(struct drm_encoder *encoder);
+> +int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
+>
+>  int rockchip_drm_psr_register(struct drm_encoder *encoder,
+>                         void (*psr_set)(struct drm_encoder *, bool enable));
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index c7eba30..1740a0b 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -566,8 +566,6 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
+>
+>         WARN_ON(vop->event);
+>
+> -       rockchip_drm_psr_deactivate(&vop->crtc);
+> -
+>         /*
+>          * We need to make sure that all windows are disabled before we
+>          * disable that crtc. Otherwise we might try to scan from a destroyed
+> @@ -975,8 +973,6 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
+>         clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
+>
+>         VOP_CTRL_SET(vop, standby, 0);
+> -
+> -       rockchip_drm_psr_activate(&vop->crtc);
+>  }
+>
+>  static bool vop_fs_irq_is_pending(struct vop *vop)
+> --
+> 1.9.1
+>
+>
