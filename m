@@ -1,38 +1,66 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] dt-bindings: rockchip-thermal: fix the misleading
- description
-Date: Tue, 18 Oct 2016 07:41:20 -0500
-Message-ID: <20161018124120.vgbamfjsgvf6ntxg@rob-hp-laptop>
-References: <1476151655-18415-1-git-send-email-shawn.lin@rock-chips.com>
- <1476151655-18415-2-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: remove the abuse of
+ keep-power-in-suspend
+Date: Tue, 18 Oct 2016 20:52:28 +0800
+Message-ID: <1476795148-7515-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1476151655-18415-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 11, 2016 at 10:07:35AM +0800, Shawn Lin wrote:
-> "rockchip,hw-tshut-temp", "rockchip,hw-tshut-mode" and
-> "rockchip,hw-tshut-polarity" are not a required properties
-> actually as the code could also work by loading the default
-> settings there. So it is apprently misleading, although we
-> prefer to get these from DT. And it seems we miss the 'rockchip,grf'
-> here which should also be an optional property.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v2: None
-> 
->  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 3 +++
->  1 file changed, 3 insertions(+)
+It was invented for sdio only, and should not be used for sdmmc
+or emmc. Remove it.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts        | 1 -
+ arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts | 2 --
+ 2 files changed, 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+index 46cdddf..7b2c43a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+@@ -116,7 +116,6 @@
+ 	cap-mmc-highspeed;
+ 	clock-frequency = <150000000>;
+ 	disable-wp;
+-	keep-power-in-suspend;
+ 	non-removable;
+ 	num-slots = <1>;
+ 	vmmc-supply = <&vcc_io>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+index 5797933..e788b42 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+@@ -201,7 +201,6 @@
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+ 	disable-wp;
+-	keep-power-in-suspend;
+ 	mmc-pwrseq = <&emmc_pwrseq>;
+ 	mmc-hs200-1_2v;
+ 	mmc-hs200-1_8v;
+@@ -350,7 +349,6 @@
+ 	clock-freq-min-max = <400000 50000000>;
+ 	cap-sd-highspeed;
+ 	card-detect-delay = <200>;
+-	keep-power-in-suspend;
+ 	num-slots = <1>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+-- 
+2.3.7
