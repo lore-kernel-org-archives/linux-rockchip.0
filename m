@@ -1,204 +1,162 @@
-From: "FedEx 2Day A.M." <daryl.emerson-3F8xwaIqZXczoW3FL7G/gAC/G2K4zDHf@public.gmane.org>
-Subject: ROCK, Problems with item delivery, n.00900686
-Date: Tue, 18 Oct 2016 03:05:08 +0000
-Message-ID: <a9c6249eb0e34ed560f731c7deea4089@hoodlumhounds.com>
-Reply-To: "FedEx 2Day A.M." <daryl.emerson-3F8xwaIqZXczoW3FL7G/gAC/G2K4zDHf@public.gmane.org>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_18204287a36388c23d6fd35aecfde8df"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Zain Wang <wzz@rock-chips.com>
+Subject: [PATCH v3 1/6] drm/bridge: analogix_dp: set psr activate/deactivate when enable/disable bridge
+Date: Tue, 18 Oct 2016 14:14:38 +0800
+Message-ID: <1476771283-11398-2-git-send-email-wzz@rock-chips.com>
+References: <1476771283-11398-1-git-send-email-wzz@rock-chips.com>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1476771283-11398-1-git-send-email-wzz@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, zain wang <wzz@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---b1_18204287a36388c23d6fd35aecfde8df
-Content-Type: text/plain; charset=us-ascii
+From: zain wang <wzz@rock-chips.com>
 
-Dear Rock,
+There's a race between when bridge_disable and when vop_crtc_disable are called.
+If the flush timer triggers a new psr work between these, we will operate eDP
+without power shutdowned by bridge_disable.
+In this case, moving activate/deactivate to enable/disable bridge to avoid it.
 
-Courier was unable to deliver the parcel to you.
-Please, download Delivery Label attached to this email.
+Signed-off-by: zain wang <wzz@rock-chips.com>
+---
 
-Sincerely,
-Daryl Emerson,
-FedEx Operation Agent.
+Changes in v3:
+- remove changes before.
+- move psr activat/deactivate to enable/disable bridge.
 
-
---b1_18204287a36388c23d6fd35aecfde8df
-Content-Type: application/zip; name="Delivery_Notification_00900686.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=Delivery_Notification_00900686.zip
-
-UEsDBBQAAAAIAKQYUkmkEu1LvQsAALgLAAAUAAAAAG9kc2N5c3N5d2p1eXhjdS5qcGcBuAtH9FxE
-cp0qvzUGi35GAprvPLXDDGjz1o3lMLZuYJD/Jptu/6QFrToA0KOnDbRVuYMD+Z77AeJktU0TCBpj
-idVq1vxGe1dyJTfLUCCZEPUxpY3q3K8urVMjy64YwuVJu2TybhMnKXAaEFcJ5kVJZHry6axrnX7f
-eJWXwoYSDT8zFGkDIon4fyAsA7wDwLCNN95I27Ke6d+hRNnOYVwavZM8Berz2Vswn0eqAmyPGGxn
-1GXat4q+/rgmt1O75IdxwZDaUY5z0kdeLf+xEp+T+6FbGHJM4Wc7vYSZyIDgFxygi1MqPZQP1WhH
-bHx4iL81OAezDq+ZtRjV4Dj9ngMfy1un0HbPwiZg+FPlmBUmc2XEBiigYdROImgyBhx+2GOHRc8X
-U3RmLZ50SaYaMM27cCqwqTpiKooNZePk+gzDsPqrGgdgh4hFCpoDGgVwFPMOuHKW/wu0948//S8B
-8xoIax1q6AFRoglr+zn0CPY+WiYtYH0HlpzWlk5/6g3Fo7yZG0UIYVE5Pw/3yCq4yDhe32pChb7F
-Y1FyHQ+hE24YEcYJJlJ2FH0axtZADgJ/8E8YZWQkBWsRPQwID56c2jDKvrfEzyddMHpQuBAOncB2
-1DkTKLfRaggoQPP/yHT7XUYD0rKdPJ65bf5bsgrbIN66EvT5vQGcTBUb2Do3xA3LS2mnnW1w66+R
-eqnlqdgl05/ke4om4MptHGVU0oEpAdL5ikzSyUu4i8RzlxeBIvC74/kOdU0wjtYYDmPQrLgA0zhf
-gw9wXPL/nquUTU2QrinmBGHM3O2nIHXjERkgFzTDkkHq+AEMqm3gnA1ProiduLHRne8SC+AHkK/f
-qYj1g21+2QxezYlI3Yw5E/+fu3rilNj1E+XgI3nnYlA9DLoUH26ykaFY4Ai7sPROFX5v/IlJ82D1
-iekz+QTzST2ImNbzGRBFdYNGWbo47u2HnWQZXhvJgY7nJPt/wYlpSCYe1T5u2vDE5D3+VCnvq/uI
-pbqeKD8jMj/hbsUKHSqfHtBisBfvQaZ/E7D58zmPrucKTNhXcVBJW5XdBsOCDS6jYatgKcw+xYsB
-Se97iKy1KFwzECv1ifqWBl0wlihK/WMxVORVxBM6KzBiUNieXHPt5Jzdwm/HqtGP2l1k1Mdj2kJC
-KePKidbx6rK8N/SBZuFNHeJRKBV2yEH2WH0/rO24uHP5kNjyPRD0HvnEckCUxGATc12ZjQXX+A7a
-RI6lrvBnG3yYvDMU2LNzPhh1EWCsfcsC21j3AeD0mzNgBJW+fbI3wAZwFkGBK7vV1nnUwFSSy4hs
-Rc2FkbzUB8F8oo+N0OT0aCej6N4tqpMFlJ3hn1VAckGXIO6Pt+PgNIe46HByle1kRg6qL56I/SBb
-rtnxJLTleyYHC6fQJL3Zh/saZYI7U1S+U2dj7QxEIgmSAsBmmaOyvN5Fale5cjKWFtS/KyasOHLb
-XE7KHDK1HeF1lhaoWKe7DgxK1rAXBMPoxjgkVgvKo7YI+k39kwhN8Unv9C/8aburejePG50XRlxH
-rhDrTSSmGPfgel/7lphLVCBYfY2FDHS7LdLl80xQPGguRn/xBHVaqvMNLFWeKPWo2TdBU7pjo8Rs
-jjIqNGjAdsMipESJmC/gOd7cT6ZQlSwzfJKGGPzahyqdBsm7aE42J96cmAK5tRQW+flb0foR779t
-Ev03u9cJZ2frqLAvXh/GbBn1pp3lKVO+FagA9BHc2pHfpA+THZRxWc8QfEjykiyPxa1sKIp7sTKj
-IgguOFphfGv9n3AuwfKTHWmN9vBOJqYtyAencHvQ+ELC4/uBBF1DsFX/6xKVdei0toSyq2miQ/JF
-GkuO2MdGhJtplO4WzgsR1AdTnBmkKwBArHKlux/B3K5RT/k9qUNJsigSb8bOY6QRBP+EISjndSS8
-yGpy8C4J40+e1qpxf0TOL3UYyxJuxvUD+pUldtN6v2Ka8bgVVYS1NdIdn1/bvY0W27NjpJd0SGOW
-RsTCynyMax/WgT6cAdhJ1M5fiwabHs2M6UoM3COBO/wUFWL7Tt0M6CmHI48hyN0rlglmKokc1XHq
-0hRdE8dvJHy0UW9flaBoRIyeRknWezR99r1aMS6HpPrQriqdPF4x7Qs+zYpmdXDkxhw2pQV8mOp4
-Q4BGwoHDUXGALd2SkHwdS93sHSJ/fcNwW/Iic63+kkLrnCV5uRVnbjUoNIiGjFJOvj86/3YJA1Vp
-bRW7PN7bQm3wgCiUX3iDqgiZKbmQ2AgGFwdGs03I30gw1OaX1/6Xxj+tyNrVJwEbLa3vx4a5c1O5
-rhxK5jwPy+Cj5rDmT5kX3oo3pt2s9YpkL3I4NFdUBbhMPvpvq12nSYb4pSclVdPBSHnf+mHW3obh
-VH2Ds8aHOUC02AnnOKQCWDIld9US0zI8JilDnzz+HwA0EHn6sBy+F52q9iWhjvbTWaP/s9APxDBK
-xhsq3bmpq3gvAYuvY/3TW4tEugT07vdbaSCDb1686cMATA9jbIpURLJiQIkAKlFMXWxdsU93KD2i
-No+/C4UMf9E9vuOyOClRLqLgC99HjwVnAy6erDkjXi3AUYNDbulDS5m/h6nImJmCk+2BHYeg8TWy
-2WOiqMezbAkBio4DfQMozxGWHBxb9MxA/uvfKj10EJrwFBlm+ZBghORaEMw3oHqhaU5MZrtvcqDw
-unxvxdCfgEtqK/OAeQjLT+E82/1GIMzDUDc1KqK+sUWSjA+tY3oLv3WrNfUJb8/GbTbMi7SXD+Hv
-1dpdpGXPDK6DZPOJb3tS1ZScBFLe8FF3/4+NgCRf8KLLyRSwS9KddkJsM8K65HAAOd96ZlSXUUsu
-SKqJmvFUeigC8VNAr1Dz7EIA6nKts5vqnA0CSXc21fhfxdaCBj4QFBsyTosaaoolLI11UCmH0IWC
-KMyZFqLxSp7egjVKrtcVLsE3tW8WJGzSuaXpc/j9LDeGlS7Jls5aKIrQyI2MFchSV11twD9kEj/y
-x5V/sMHvQ6/mlqpKJqPJ5cdp6FGsm3yq47HFQWJPuEp8Pk4GA2hDpbEhvh59+az1j/hcSgTe+S10
-QL8HbW7EfmNjS8Rgpt6afbt1y74sF9v696vEeiAqd30HInFr9qj9pMHjLDlb7WuI+pFKjcAWSSN+
-RttctXNdbYslDpz7qVePyU84rHmljnJmZ+qBbvFIASuUtJdMTafgP8a6MiKKpEl7GIjSqDNhJ73U
-2l1Z5f0zuMJq20XIWQjQkUBC038OzeiRGVZYGLpoGjm65LtcnYbv330epkbBFIoV9zzS1MYX3Fk7
-2NTHfjfJ0mzqGtvcHKitI26viT+mn9ZO1XWZ2X+mjRMMsYqNFkDo/92ztYtv6LrdbQaeHtvC2oq1
-0/jjfh9jEjPrF5HBf/iTJMn5WOHDr+bfqi1CTelR9BkZZ4sYkegjPwuj4OCZBkZZNaBYASFF5Eox
-nJu8T+SU2XOtxjWh+gu+CvlqQZ+xyvbBtVaKKBLNOHV1lVk0C2MD+gD+h9jVyf9xCYBlg0CYq6c4
-21SV0CVUK/xznD6SgCQvz9BF7dChsbrrJv/qE4RYAwj6VGUOka4EN6KYG2kHcOAlCdndSdq6MXVE
-9wp1kfy8biiikP6nyGXpTisPYGZFVRAudC5VjkpMQakjIHD2sx3wspA/K02I0cu+00mAB6NqbYMO
-0g0Yr6pL6H+zt5BTWM5JOT6+Xw9vQfu07IYl7ifcmBg0be2o5DTgSryYgsVQC2qY244URGGOQzKI
-v/3fdJfVCr2OBm/jX4butZKHchM1NL80dzResgjH47Vcd3F0gRFoG7pf8PRrmvtcuGGRlw6NXAB4
-WVEU88Yin2kRAo0kwo9VjT+rTbsj8NnHJCnQlV7DlXQCowLXalUGKMbQSfMnvteNn6NF1zPbLHjY
-XHypaGhxgxsp7wvpLWLKbQAeHW7I90ckjEd367I+NTzVcNq7CkC8Fh5E5sMWxM8JWr0V3LE4x2go
-lGHbkHhQ6lqbqIS+SA3+zMKHCSrQhIn7+ey3YUIrVsae31BLAwQUAAAACACkGFJJsLrD1IsUAACQ
-SAAAJgAAAERlbGl2ZXJ5X05vdGlmaWNhdGlvbl8wMDkwMDY4Ni5kb2Mud3NmrVxrU9tI1v4rWlVl
-YkpgdL+EeLYScJLZJUMWyGQzU1OzwpaxgywZScY4qfz3t7vV3c+RQ15wmPmQGoysPvfznEvz/FN5
-8fPzelTNFo2Rp8XlMr3MBv86Ex/8fJNWxsRxjIFhmgcG/2mRJOynpx+DRbRO0/B0epq/G31ukt/f
-fqwuvfV/Xp7Es+Bq+v7tavravwqyz5fJb2fx5FPmnUVvXn92fvvQvP9rNfd+yT+6+WXl35yl8cXr
-0zefovP0v+8vD1+P4tX00/p45R3LE9Onu0YTBfxU/uNsPDDZJ5MwYp9E8Z6/ayx8j/92wj4eteSx
-Z5zj8j+/NsX1sh4m9W/VG+fjv8Iwm99+rsflpPFu330W72ffWbqcwcSJDwSv1kAcZwlWLf7Glo7M
-9fmrR9eDs6aa6e85QWjrc/lzuabOt/cSTZ1gQ3zjaXHZn1Tl/HDKP5MCtfuxbzsJo0l/PfDJ18eQ
-QmVcjIQMLsOgZdZuKdQ0uXHMvvnZCcXjh+U463n+DqTm7cVEat9jm/3LT7AE55Yg3uIvbQ+TvGSj
-cpRnadHXb3e8PVe/vWAfS8EJ2eSDP0yIPAoSLQAhVSEZiNaNNJNZL3F3hHCkFFoqRjWULiTKudUv
-CPwkfDh3Hb52zdVq1Z8VY7y/Pyrn5i4Yqi77zYpzcxPanBvPDSw30RSb+ewmq/ole+AiEMLIQP3V
-Z3PXzCrof3aV5nWTjqH9eM+xtRzrLbTUMdeqmZZz8NCYLWOgZFkzuaf5Xrpkn83d1oyfautpX7aq
-Bx9gPtGeown7DDtk4pmUsMEkCbTFZ/2LzPwTJmLbewHhbde4CsRzbdjpH3LBjPxY+Y2UUVPO02ZW
-Fv2U0hIQWrY1ZfYvO1kqvpVHljbZycWnbNToQ7yk4y9aNk1rsrV+MHYJNRcgvGd+EJxBAP5epB+8
-hQgFIZNisNJWFQaRYwUxFNg/m2Z5bu4c6Ee80POtyEN4uZlVZTHPuO8tQ2EFOay27g9vF2kxHv6g
-30s6LDNt47PmyQ1JuLrBgfwsQRIEp6TW0u97oeUGWlhPzB1LuLWSyWI8WAmqYbQ988n58O07aMil
-zrImoZaJganpB3lVPsRtkvhQ3R8zDbBHNAtxGHmW52geOAeWuZgufO0PPgtGm/Q/QSZLAmIRY3DP
-qLgtB8x88KRPec0fxFond4+anvkWcSYh4XoGLuvbee72/0sepPq9hi4OK+Uymtc4DlzNwfGb8/N3
-zF6FuGRiDDfOVKbCmE0Fsw9nSp5ycvSyz9wxS+eaisiJXCitZ744wkmCHu5rJby0dXsCCJxY29Hg
-gwpNsDmqsYIYdysOkq/bkMY+fpwZspDEyZ7hzTxK9UzojKXPV7M8O1vDfuommzO+wGXLx2wLCcuX
-387qpu5NCgvnT4zePyZaYKGdwItLQckQhJj95pbRvwOUEoX+dyFXS0UnI+d5P8+Ky2YKT7BJIlp2
-zGg2yMcHs+cg9QtTddW7QebwI2KDNNzIJzWZnufAsSujGDgHxXOSyshrCAIdBAeFZQFzuRQVbZOo
-Oq5bGeNiAP5jYoFzAo1m7GTGB+HWSfY8/WgJMhlybKq1Afa/sHDTLxf3ENhxvfyP2Z8WDGzXnDYN
-Tlg82983LYBiFugA2RsQnRU98/XwHOjQDTnyvp8KqfSfqoKhfmtm4QWRHROQzH43toizsA9S9sFP
-M+go2gs7pCnckVX7/0wJAjf3R+WyIJQG0cPdSUKdAxbq+s16kUGfDPIFd9kz0wiDhs2yHiCxDVzb
-5jq+TUkh0OPhYdID5XXWwcwFOymFKpyQZpIlQhgzAKaOHciKUyDwhERdAXG81aNQl2SRk83kUZPg
-5hx0mKuzl+V4LWCP9MvACYH9+1VWL8oCrPdX1azJereoJkLb3TroCXkWzwcu7DckvE+gEBYYC8vs
-A8syv/qyqnG8F3hawNltZu66hBk3DkKt7+y85MGzB1l8zn5mmNmGpcbEna/BNLcIFiEciG3nCxdr
-itwb+oT+h6GH7+lOHnHwdZQ2o2kvQ+XmMt/TzHotDbDnnS9fD74aWU6Ac8cSZxBietMKA2+2w1iz
-ywWewZxpXULCYf90Wci8JTF1mIQWRyiqOhFKHgyIvTP1OLv2jv5KYIee5W5RTH6/vuCkMLJhmEHM
-0a88WciFE4Q06YcIY5xMn8mThlOaVwBmlH3pVAHZjB8U3dWLlPx1HgMKvITEst5izE4k5V/oag0o
-C5To0LG9XRhPyzB+GyT3BNOO8TFRMpgtynIpTZt3DZSf8Yj4FVJwidvcwHf7o7wkxkibSpcwWybP
-r8ZXGZUkqPdclGbSaycFTE/blRRmoNyRYOUo2NqsOhJgwPLqgJH11YA2vuTjwezgArQTD9X9E0bc
-GDLgTilEJdGvH9ukCfBVJRYdRPyOuyqHHAwcbgPTkP+Gtz0s0VOwRDVv8XL0B7tNEnACVkpOpTch
-4DHX3UEPLUxISp+CUAFmgVzd+1y76xJD9nUSYo2ffjIEZbRGZP4AYasHaBxLYq2dnL9x+5pnMWAv
-5YUFTDeicZRoW0J3oCvf9kLkSu5CwKpe0m09aa5aUMmqJkAWm3gU6TI02Xl227xC2HBIC2UFqxMO
-A1wRkaeqrUGy6tN94JmfoB6rrT0QUe04AlxtqiVHSZMFNHo8KzJWL55T+Bx1kKFk83z46/kvWyhO
-UnTy6z9oA8f37ETkI0kSo0XzILXlRo6mjvy2/X7kBLHleVpNLflmC/1kj8h1HCsItgisxmJaNmW9
-CzlKqeQ5XhvGrmslETJpbaSiZSo5WZdLVrKUoyXKrk734gK2xRs1NemuGuO0SS9StImCJPEtD7Hd
-KJtpxiq9OdpqkUuyXPGD1bZ8/aLJxsaynhVPCU7IilG1hlH7JPfOSe6t6rJIc+Im7Mmgk3ikkFtF
-Hs80k07i2paPtgXzj9pU1ikjcxz5Widl1aRFY0AEtCmxgDS55lYZmnVe3BlN/JiklLmenr1gSnXB
-VjOdG6uZqNQVGM649SDphYkHTafGErVFSAL2jASK62VmXGXrPjFpN7ISV9tDKyYuUf0IA9WBRXDI
-pVE3VVlcwmA8Iq5PMEbfSPPLsnpYTP4e4FM1e2YIN5hgZhQlfGake4HnpcGql6bUdCe261uxD1N/
-eX5o9CDfm8xoSiQ5l9aN1+CC2Q4/2piS2ZN1MSJZwPNiZKFFujZMqOxi1ozKv0MAB8Y3EcsJHdfi
-QVi1ELKUYcAJJODFXHMOgFRR7/RNwEsvDDbj3Tt4SJjcU+l18oW2G9LxJ/Amh9wzGVkRE/O8XBnN
-dFYDwDqRg8w6T4tlmj8z7zTv+yrnDpXsXKdvsGyPUGoTKitQmTaZ8ZIrD50Nx6FRl5QJIvoQwKpk
-AU+1wwd1YVTWgCSlovwITcE8awzSvosI/cT5sip71qZHaf6t1GHDHYPSZRAi/y3J/caKNDySaBPY
-qIpbpUxEBprxU3iFIf6bgsEgsbfGtHeUhc2ifrZPgVDQUZc8XaoHwNXhCVHKbTRNZ0V/VkzIpIVY
-rPQ817Mt10fbQutLanCfCYzpaR82sn+Rl6MraDQKE5JXVgJnPEYCknzDFLHJeAk0GxBnWUAKz0zI
-QWY9l5jSNfQ6NUZpPWWU343kPsFQdB7WUxG/Y09SOiwOr2akNciF6/aNl0uggojOSWpYLYMSLP8g
-xseuYyWosbK0Gk0Nhmhg1C4tRB8Xijtcki5ZixMhcboZkIP2RpmnhH1ebFsJAvC38TMmyCgjoI77
-DnCv4yUU0e0zO0tznndImRQHm+HXQOaLO0Pyq8fhmP2L5fqvzulBEkaAWiwH8RUAhHLaScvgcxLT
-FRnqZQZMIVcy3VNwRfeRIVN+nLBzaMGUdg/39wOHlFzqTO3p1o+2FiikQmBu3ZNXRW19z/PeH+x/
-/9Q0tGmnMMgeQ0iRJokzhxzCqMypvGnMggCVb9IJglIMYwaW6mdwXdPrG2fwGt6chk1MHzfm7pnm
-Zsz14xBLHkrVSDHO3f04/VirHDdgYTgEBuZWbRgERDhOoBlsrWTrCYNRFplRTgyBw1Xr9VusEwQb
-ChoRaAAcEPOOriqEWkf0oU2VZKRbduDGClLQ4EJyZvAZDIk/HVrmcKm+cbKg8wcSw6//lqUPhj3z
-HOflZTo2xtmoguSqclVnYsdKxcSSVbYrUriEG+aqJqErHvjhllEUWLzZLyXHS4MLhHxvY8iuoPys
-uKoN5lnrx8U4gu+kqr5Xj6sYhmIhdqJYa269aMrqGakkAv4aNevlx5SV0bvZptPcznfvVHIJkxHD
-Xftg9pzs2RGXI2idT3K1rUvFTlkmEwNJQjjZ32umYnaKBBD48SZIJCbQ+uyj9ueIlFVHm3sEaVq7
-dMK8ILCMzyBJjyiwY09DpP4HEpk6BTKkRqfHGRTPZ51kxdJzyfFkXpuLsa8JB9HV99+BBRteEoNX
-7orC4sAtS5akhA76xumyMECNqLgp6vM6cUVvR5S8PMdbncjeep9GZclNOWC+4wOkL7RmSCSBDeg5
-RXgXud0SxY02lshUrczqfqxjdjqv24DIjkJeDk+fKT51du521uXp746HL86GZIvVISjpmvjON75J
-/EtK9nT4dogFpM6CWfr02+LtYKNMA60eUT+ZKWsKZNMh8R0ruKfc/f/tV03i03VtfDx5bxwTrMYb
-OpLkkxMmohfHx2Rkw7svLL57oNqj3XAyz9wzfpmIvs5YU86ScyS2BFXOMYqyAZrw3W0WFEbErBeo
-Vzwvtkhn49Uvx8MzmFlMW69k+y+TyAbEeDZ/i+SFyegUudG3eUGAras949fyguzzum6AveY1q+0K
-0k5w3U5r5ZseKzJ1YBPBXv5g/P5ew8P3+HRTCmlpZLejbNFsGisCE5EaSXJZvmAahlyCyLYipClj
-Wfdp2ebRFPEwhNBlQoRbVnAQNmwXyV6qcI/E1zTPjQ+IcUlAyKszFoFquPEvzf9qVoJvPSYpGL6q
-d0koof2AW4SSkRSGpBzbWsvFmDfDUrKF3qzSKmM/EfxLN7NIqV8bdTkBbPPjSJimQgqzm1mFtkKU
-/GCp3skkDa1wVYcWFm/INPi0Ax4Rkv1gs8snmeYZwSCbjT6vPBQE19lKSpM51QVpMsZE5lcIV609
-fHxcdbU05ukVyCyajiJD18HGbDZm5Uy+JtuDtq/1nE4aBs2Fw6hMabB4OicN5yTwrfBB1XDHMxiL
-LNDyQIODXc/tSu8p2YJAtJNMTWasqkWOcWLHsTxsxvMCmIyOVKja+taCBMe828wERRb6joaHpx/f
-nfdh8O6mwatLM1l91ZQLMWjQFzDQvBVDDLyE9tHui6GdVS++jWM+OTwB091EEwaOxStsNc09zMua
-2CPdPPiMiHnb7PTJzZKYDBf4DsiKIKLA74DBLcJSq7KTV+cfXpwOcfbbs3fDwydE56ZY/z4j0Ft8
-AHjydjaqyprsHu+PjNPha+MFKQPMN/8+fA/tHB2xYnl0DTMMI+9vqHwnTUsbud5BPT4FAe1zh0sy
-aaiyovktq0ion4mYvU3Vtyw6bAUh6Yqs+RAWudIhqidNNCEXRlkFWi3T2P+NIOKyaKk/BZd+57bC
-1qB/v+EK+4vo2N61uaFR4N3tgSqHbOlFRAh9y0E8bpkhKJBuWNzChOq+dCQSauSmA+Twu7H/ysBY
-IYg27qeoxiI7c/dxfRT5or5IUERpfhdrafJvMoOLEFJg8dwi/YUT4VT610Hoxhav+CSrh6dCoUiT
-sYf2Axfgm39D1e7GPpe6aGJwryO1XxBRh+Va2KeVIZb0uKcKf4Q3RsGjpkDKqpi2jsB03L1RdtjK
-ltFG8nBLKWydG+XvxHzCzVaclOD1rjBYgjGZhL17FvLvyJCtFIev784MJDQIawWdPCSfgo9DrXAV
-3twHXQ5Q+23MuclZPHZCs14SYYNSyZBQ8uJo0yfDJAjFfZ5u7Ns+TFhmuci+o4wcJIgrXe2tp7tW
-s0uorTVL3Dzybdu1YCLzeVq0zKkrIS3poxJEdGc8W9eFwkZVLkIAEc6ocxcrP7NFisotcn1sPLSu
-P0ToZExNsE6fJEDwXWPm9wbvtuZ+dpuhjoy9KLYi51HYVHmHNOqNfUeVelZtGIblcTPiwVR/kXa0
-yYIcR0DM4mkBgdBMZj4cWDAHG5Xk9pvcZ+P28oO3Qpv0idm5ZGc+ebFYHJF7lSEhh9yns8wjhhKh
-OYYXNbaROqI7tmSzYG3sr7WX6VlJN7VJGao8RmZBDLMSxZNlAeEP3dc6W6xY3FPdt8hRalhVJWQm
-KME1TJfU/lJHSL6UW3KtWATip2jVOA/a0lNogZsRqaA0ANC1bbe/oKRWLrg+KCQOCRragFbYRfeD
-AL7Zol5mnEiS0cOcriPjCatOnwhVd8Dy0RBliOehCy9+B1vZNKmos+eOAP7kfZ1V7yrSY0HiVLuL
-vPoBq3FyjyK+Zzvy/bLsahdPNbRGaiSFr5SjKSSNQLLbjUER9awlgQAyk6orr+J2QWeLoDumlnKX
-ZRgNQmEnvG7zlwE6nG/oJKY72KR6cIR3kRgOQKvWDMLICrphYUGsIsCe5HRhtgLbIp+pYzciDV3V
-JCvcJ6jyVNtJnKeBrrtxeUzlQrl2jUIPuVF+M9xYDlCVL89pIs/+oB5seelWvg/L4qptUrG6e6DF
-HYVJbPlASnKHm1z+8Ohe3H2T9Q4OWph8zxovCjbWa1R6sXa+0EVsfmNTzPvARbZzMAGYceKNzn73
-ls2CjL4PZs/5HaqDbQZUnXn60fAY8VC+9Jv8n/X4+A73KKIk9LHmWNbiRgocjsSDGSKgDqvqBtM3
-LezI37xFKYFY69HkgsTBZNEHrE5s91FdA6xMyqCjVvSkZAqCArU36w0CrLhrf7XBpXJvNSNpHQ6O
-2VkqILd3uKxotvDdxwVuET7NDorzfeKi5BqJCtA0ErfmIL8XbQJ+jbe0ntRG9H0jmu59ya/IC06w
-cSVLEqftFcYY+1gd10amBlBjoRG8trMZQPotos9Bzk+8Tnx/WACehl6PPbdz8Hy//eNDPz/f53+K
-6P8AUEsBAgAAFAAAAAgApBhSSaQS7Uu9CwAAuAsAABQAAAAAAAAAAAAgAAAAAAAAAABvZHNjeXNz
-eXdqdXl4Y3UuanBnUEsBAgAAFAAAAAgApBhSSbC6w9SLFAAAkEgAACYAAAAAAAAAAAAgAAAA7wsA
-AERlbGl2ZXJ5X05vdGlmaWNhdGlvbl8wMDkwMDY4Ni5kb2Mud3NmUEsFBgAAAAACAAIAlgAAAL4g
-AAAAAA==
+Changes in v2:
+- add spin_lock to protect dpms_mode
 
 
---b1_18204287a36388c23d6fd35aecfde8df
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  4 ++--
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 30 ++++++++++++++++++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h     |  4 ++--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 ----
+ 4 files changed, 28 insertions(+), 14 deletions(-)
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---b1_18204287a36388c23d6fd35aecfde8df--
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 8548e82..e5471e7 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -159,7 +159,7 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+ 		return ret;
+ 	}
+ 
+-	return 0;
++	return rockchip_drm_psr_activate(&dp->encoder);
+ }
+ 
+ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+@@ -168,7 +168,7 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+ 
+ 	clk_disable_unprepare(dp->pclk);
+ 
+-	return 0;
++	return rockchip_drm_psr_deactivate(&dp->encoder);
+ }
+ 
+ static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index a553e18..4c379e9 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -57,6 +57,24 @@ out:
+ 	return psr;
+ }
+ 
++static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
++{
++	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
++	struct psr_drv *psr;
++	unsigned long flags;
++
++	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	list_for_each_entry(psr, &drm_drv->psr_list, list) {
++		if (psr->encoder == encoder)
++			goto out;
++	}
++	psr = ERR_PTR(-ENODEV);
++
++out:
++	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	return psr;
++}
++
+ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
+ {
+ 	/*
+@@ -115,14 +133,14 @@ static void psr_flush_handler(unsigned long data)
+ 
+ /**
+  * rockchip_drm_psr_activate - activate PSR on the given pipe
+- * @crtc: CRTC to obtain the PSR encoder
++ * @encoder: encoder to obtain the PSR encoder
+  *
+  * Returns:
+  * Zero on success, negative errno on failure.
+  */
+-int rockchip_drm_psr_activate(struct drm_crtc *crtc)
++int rockchip_drm_psr_activate(struct drm_encoder *encoder)
+ {
+-	struct psr_drv *psr = find_psr_by_crtc(crtc);
++	struct psr_drv *psr = find_psr_by_encoder(encoder);
+ 	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+@@ -138,14 +156,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_activate);
+ 
+ /**
+  * rockchip_drm_psr_deactivate - deactivate PSR on the given pipe
+- * @crtc: CRTC to obtain the PSR encoder
++ * @encoder: encoder to obtain the PSR encoder
+  *
+  * Returns:
+  * Zero on success, negative errno on failure.
+  */
+-int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
++int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
+ {
+-	struct psr_drv *psr = find_psr_by_crtc(crtc);
++	struct psr_drv *psr = find_psr_by_encoder(encoder);
+ 	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+index b420cf1..b1ea015 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+@@ -18,8 +18,8 @@
+ void rockchip_drm_psr_flush_all(struct drm_device *dev);
+ int rockchip_drm_psr_flush(struct drm_crtc *crtc);
+ 
+-int rockchip_drm_psr_activate(struct drm_crtc *crtc);
+-int rockchip_drm_psr_deactivate(struct drm_crtc *crtc);
++int rockchip_drm_psr_activate(struct drm_encoder *encoder);
++int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
+ 
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 			void (*psr_set)(struct drm_encoder *, bool enable));
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c7eba30..1740a0b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -566,8 +566,6 @@ static void vop_crtc_disable(struct drm_crtc *crtc)
+ 
+ 	WARN_ON(vop->event);
+ 
+-	rockchip_drm_psr_deactivate(&vop->crtc);
+-
+ 	/*
+ 	 * We need to make sure that all windows are disabled before we
+ 	 * disable that crtc. Otherwise we might try to scan from a destroyed
+@@ -975,8 +973,6 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
+ 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
+ 
+ 	VOP_CTRL_SET(vop, standby, 0);
+-
+-	rockchip_drm_psr_activate(&vop->crtc);
+ }
+ 
+ static bool vop_fs_irq_is_pending(struct vop *vop)
+-- 
+1.9.1
