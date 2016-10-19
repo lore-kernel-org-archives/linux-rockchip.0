@@ -1,33 +1,68 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: the dp helper would try to enable the i2c channel for rockchip-edp
-Date: Wed, 19 Oct 2016 21:52:26 +0800
-Message-ID: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] PCI: rockchip: remove the pointer to L1 substate cap
+Date: Wed, 19 Oct 2016 10:42:05 -0700
+Message-ID: <20161019174205.GA78840@google.com>
+References: <1476868234-15135-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: tomeu.vizoso@collabora.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, gustavo.padovan@collabora.co.uk
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1476868234-15135-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgogICBSZWNlbnRseSwgSSB3YW50IHRvIHVzZSBhIGVEUCBwYW5lbCBpbiBteSBSSzMy
-ODggcGxhdGZvcm0sIGJ1dCBJIGdvdCAKdGhlIGZvbGxvd2luZyBtZXNzYWdlOgoKWyAgICA4Ljkz
-NTkxOF0gaTJjIGkyYy02OiBvZl9pMmM6IG1vZGFsaWFzIGZhaWx1cmUgb24gL2RwQGZmOTcwMDAw
-L3BvcnRzClsgICAgOC45MzYwMThdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91
-bmQgZmY5NzAwMDAuZHAgKG9wcyAKcm9ja2NoaXBfZHBfY29tcG9uZW50X29wcyBbYW5hbG9naXhf
-ZHBfcm9ja2NoaXBdKQpJdCB0cnkgdG8gZW5hYmxlIHRoZSBlRFAgYXV4IGNoYW5uZWwgYW5kIGFk
-ZCBhIG5ldyBJMkMgY29udHJvbGxlciwgYnV0IAppdCBmYWlsZWQgdGhlbiB0aGUgd2hvbGUgZGlz
-cGxheSBzdWJzeXN0ZW0gaXMgYnJva2VuLCB0aGUgcGFuZWwgZG9lc24ndCAKcG93ZXIgb24gZWl0
-aGVyLgoKICAgSSBob3BlIHNvbWVib2R5IGNvdWxkIGZpZ3VyZSBvdXQgd2hhdCBpcyB3cm9uZyB3
-aXRoIGl0LgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+On Wed, Oct 19, 2016 at 05:10:34PM +0800, Shawn Lin wrote:
+> Per the errata of TRM, the RC can't support L1 substate, so we
+> need to remove the L1 substate cap.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index e0b22da..8370a85 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -142,6 +142,8 @@
+>  #define   PCIE_RC_CONFIG_LCS_LBMS		BIT(30)
+>  #define   PCIE_RC_CONFIG_LCS_LAMS		BIT(31)
+>  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+> +#define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+> +#define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
+>  
+>  #define PCIE_CORE_AXI_CONF_BASE		0xc00000
+>  #define PCIE_CORE_OB_REGION_ADDR0	(PCIE_CORE_AXI_CONF_BASE + 0x0)
+> @@ -558,6 +560,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	rockchip_pcie_write(rockchip,
+>  			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
+>  			    PCIE_RC_CONFIG_RID_CCR);
+> +
+> +	/* Clear THP cap's next cap pointer to remove L1 substate cap */
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_THP_CAP);
+> +	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
+> +
+
+Tested-by: Brian Norris <briannorris@chromium.org>
+
+>  	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+>  
+>  	rockchip_pcie_write(rockchip,
+
+You could also probably do away with the handling of L1 substates here,
+since they're officially declared broken:
+
+        /*
+         * We need to read/write PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 before
+         * enabling ASPM.  Otherwise L1PwrOnSc and L1PwrOnVal isn't
+         * reliable and enabling ASPM doesn't work.  This is a controller
+         * bug we need to work around.
+         */
+        status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+        rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
