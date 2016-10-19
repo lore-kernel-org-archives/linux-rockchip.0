@@ -1,32 +1,34 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] PCI: rockchip: remove the pointer to L1 substate cap
-Date: Wed, 19 Oct 2016 10:43:57 -0700
-Message-ID: <20161019174357.GB78840@google.com>
-References: <1476868234-15135-1-git-send-email-shawn.lin@rock-chips.com>
- <20161019174205.GA78840@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20161019174205.GA78840@google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: [PATCH 0/4] PM / devfreq: Fix module autoload for platform drivers
+Date: Wed, 19 Oct 2016 18:06:23 -0300
+Message-ID: <1476911187-11040-1-git-send-email-javier@osg.samsung.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 19, 2016 at 10:42:05AM -0700, Brian Norris wrote:
-> Hi,
-> 
-> On Wed, Oct 19, 2016 at 05:10:34PM +0800, Shawn Lin wrote:
-> > Per the errata of TRM, the RC can't support L1 substate, so we
-> > need to remove the L1 substate cap.
-> > 
-> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Hello,
 
-[snip]
+I noticed that module autoload won't be working in some of the defreq
+platform drivers. This patch series contains the fixes for these.
 
-BTW, I couldn't actually find the original patch email in any mailing
-list archive, nor in patchwork. Did the email get held up by the mailing
-list or something?
+Best regards,
+Javier
 
-Brian
+
+Javier Martinez Canillas (4):
+  PM / devfreq: rk3399_dmc: Fix module autoload
+  PM / devfreq: exynos-nocp: Fix module autoload
+  PM / devfreq: rockchip-dfi: Fix module autoload
+  PM / devfreq: exynos-ppmu: Fix module autoload
+
+ drivers/devfreq/event/exynos-nocp.c  | 1 +
+ drivers/devfreq/event/exynos-ppmu.c  | 1 +
+ drivers/devfreq/event/rockchip-dfi.c | 1 +
+ drivers/devfreq/rk3399_dmc.c         | 1 +
+ 4 files changed, 4 insertions(+)
+
+-- 
+2.7.4
+
