@@ -1,89 +1,56 @@
-From: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: question about [RESEND PATCH v7 0/4] the fix for the USB HOST1 at
- rk3288 platform
-Date: Wed, 19 Oct 2016 09:17:01 +0800
-Message-ID: <53425EB5-B46A-459C-BC99-7410C1CEEC4D@soulik.info>
-References: <CALd3UbT=cxsNnW+aUoAtdWRsj3L4azF17L9c+znfQn_Vz3PzkQ@mail.gmail.com>
- <9b4a7c5f-a78b-26a6-8112-b6439cf3f224@soulik.info>
- <CALd3UbQ=wr7p_RjEJ5xBUCSmGOkH1kcM+zcfYzMDpD5Nxeur7Q@mail.gmail.com>
- <CALd3UbS7xe=5g+UbmGMY70dS8Rxeq8w10ZwBUz1ejY+R9zGy+A@mail.gmail.com>
- <CALd3UbQqw8VREZwkjPoPyk9SGnE0X0yi7W6wOU7DT88m4si=LA@mail.gmail.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CALd3UbQqw8VREZwkjPoPyk9SGnE0X0yi7W6wOU7DT88m4si=LA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bert Schiettecatte <bert-SPTOQ0XKFtOY49tRHJ+t6mXnswh1EIUO@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH] clocksource: arm_arch_timer: Don't assume clock runs in
+ suspend
+Date: Tue, 18 Oct 2016 18:24:41 -0700
+Message-ID: <20161019012441.GW8871@codeaurora.org>
+References: <20160916054917.16930-1-briannorris@chromium.org>
+ <57DBA81F.2060404@arm.com>
+ <20160919231441.GA60928@google.com>
+ <57E0E97B.5000106@arm.com>
+ <20160928012309.GA29518@localhost>
+ <20160929170847.1227a312@arm.com>
+ <20161004174903.GA3098@localhost>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20161004174903.GA3098@localhost>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgqxcafaqrogaVBhZCC2x7BlCgo+IEJlcnQgU2NoaWV0dGVjYXR0ZSA8YmVydEBiZXJ0c2NoaWV0
-dGVjYXR0ZS5jb20+IKnzIDIwMTamfjEwpOsxOaTpIKRXpMgzOjMzILxnuUShRwo+IAo+IEhpIFJh
-bmR5Cj4gCj4gSSBqdXN0IG5vdGljZWQgdGhlcmUgaXMgbm8gTFZEUyBkcml2ZXIgeWV0IC0KPiAu
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgaXMgbWlzc2luZywgc28g
-SSBjYW4ndAp3aHkgbm90LCBpdCBleGlzdHMuCj4gY29tcGlsZSB5b3VyIC5kdHMgd2l0aCBteSBs
-dmRzIGNoYW5nZXMuCj4gCj4gRG8geW91IGtub3cgaG93IEkgY2FuIGFkZCB0aGUgTFZEUyBkcml2
-ZXI/IElmIHlvdSBnaXZlIG1lIGEgc3RhcnRpbmcKPiBwb2ludCBJIGNhbiB3b3JrIG9uIGl0Lgo+
-IAo+IFRoYW5rcwo+IAo+IEJlcnQKPiAKPiAKPiBPbiBUdWUsIE9jdCAxOCwgMjAxNiBhdCA5OjE2
-IFBNLCBCZXJ0IFNjaGlldHRlY2F0dGUKPiA8YmVydEBiZXJ0c2NoaWV0dGVjYXR0ZS5jb20+IHdy
-b3RlOgo+PiBIaSBSYW5keQo+PiAKPj4gSSBjaGVja2VkIG91dCB5b3VyIGJyYW5jaCBhbmQgVVNC
-IHdvcmtzIHdoZW4gSSBjb25uZWN0IGEgbW91c2UsCj4+IHRoYW5rcyEgSSB0aGVuIGNvbm5lY3Rl
-ZCBzb21lIG90aGVyIGdlbmVyaWMgSElEIGRldmljZSBhbmQgSSBnb3QgdGhpczoKPj4gCj4+IFsg
-IDU0My4zNTM4OTBdIHVzYiAxLTEuMzogbmV3IGZ1bGwtc3BlZWQgVVNCIGRldmljZSBudW1iZXIg
-MTAgdXNpbmcgZHdjMgo+PiBbICA1NDMuNDY4NjY5XSBoaWQtZ2VuZXJpYyAwMDAzOjE2QzA6MDdC
-Qy4wMDA4OiBkZXZpY2UgaGFzIG5vCj4+IGxpc3RlbmVycywgcXVpdHRpbmcKPj4gCj4+IFRoaXMg
-aXMgbm90IGFuIGVycm9yLCBjb3JyZWN0Pwo+PiAKPj4gVGhhbmtzCj4+IEJlcnQKPj4gCj4+IAo+
-PiBPbiBUdWUsIE9jdCAxOCwgMjAxNiBhdCA3OjI4IFBNLCBCZXJ0IFNjaGlldHRlY2F0dGUKPj4g
-PGJlcnRAYmVydHNjaGlldHRlY2F0dGUuY29tPiB3cm90ZToKPj4+IE9LLCB0aGUgcGF0Y2ggaXMg
-YWxyZWFkeSBhcHBsaWVkIHRoZXJlLCByaWdodD8KPj4+IAo+Pj4+IE9uIFR1ZSwgT2N0IDE4LCAy
-MDE2IGF0IDc6MjEgUE0sIGF5YWthIDxheWFrYUBzb3VsaWsuaW5mbz4gd3JvdGU6Cj4+Pj4gCj4+
-Pj4gCj4+Pj4gT24gMTAvMTgvMjAxNiAxMDowNiBQTSwgQmVydCBTY2hpZXR0ZWNhdHRlIHdyb3Rl
-Ogo+Pj4+IAo+Pj4+IEhpIFJhbmR5Cj4+Pj4gCj4+Pj4gSG9wZSB5b3UgYXJlIHdlbGw/Cj4+Pj4g
-Cj4+Pj4gTWVhbndoaWxlIEkgc29sdmVkIG15IFNEIC8gTFZEUyBwcm9ibGVtcy4gSSBoYXZlIExW
-RFMgb3V0cHV0IGFuZCBjYW4gYm9vdAo+Pj4+IGZyb20gU0QuCj4+Pj4gCj4+Pj4gVW5mb3J0dW5h
-dGVseSB0aGVyZSBzZWVtcyB0byBiZSBhbiBpc3N1ZSB3aXRoIFVTQi4gIFdoZW4gSSBwbHVnIGlu
-IGEgbW91c2UKPj4+PiB0byBvbmUgb2YgdGhlIFVTQiBwb3J0cyBvbiB0aGUgcmVsb2FkIGJvYXJk
-IEkgZ2V0IHRoaXM6Cj4+Pj4gCj4+Pj4gLi4uCj4+Pj4gWyAgICAzLjQzMTg2M10gdXNiIDEtMS4z
-LjI6IFByb2R1Y3Q6IFVTQiBPcHRpY2FsIE1vdXNlCj4+Pj4gWyAgICAzLjQzNjczN10gdXNiIDEt
-MS4zLjI6IE1hbnVmYWN0dXJlcjogTG9naXRlY2gKPj4+PiBbICAgIDMuNDQzOTQzXSBpbnB1dDog
-TG9naXRlY2ggVVNCIE9wdGljYWwgTW91c2UgYXMKPj4+PiAvZGV2aWNlcy9wbGF0Zm9ybS9mZjU0
-MDAwMC51c2IvdXNiMS8xLTEvMS0xLjMvMS0xLjMuMi8xLTEuMy4yOjEuMC8wMDAzOjA0NkQ6QzA3
-Ny4wMDAxL2lucHV0L2lucHV0MAo+Pj4+IFsgICAgMy40NTczNTJdIGhpZC1nZW5lcmljIDAwMDM6
-MDQ2RDpDMDc3LjAwMDE6IGlucHV0LGhpZHJhdzA6IFVTQiBISUQKPj4+PiB2MS4xMSBNb3VzZSBb
-TG9naXRlY2ggVVNCIE9wdGljYWwgTW91c2VdIG9uCj4+Pj4gdXNiLWZmNTQwMDAwLnVzYi0xLjMu
-Mi9pbnB1dDAKPj4+PiBbICAgIDQuNTg4MjExXSB1c2IgdXNiMS1wb3J0MTogZGlzYWJsZWQgYnkg
-aHViIChFTUk/KSwgcmUtZW5hYmxpbmcuLi4KPj4+PiBbICAgIDQuNTk1ODQ4XSB1c2IgMS0xOiBV
-U0IgZGlzY29ubmVjdCwgZGV2aWNlIG51bWJlciAyCj4+Pj4gWyAgICA0LjYwMjI2MV0gdXNiIDEt
-MS4zOiBVU0IgZGlzY29ubmVjdCwgZGV2aWNlIG51bWJlciAzCj4+Pj4gWyAgICA0LjYwODgxNV0g
-dXNiIDEtMS4zLjE6IFVTQiBkaXNjb25uZWN0LCBkZXZpY2UgbnVtYmVyIDQKPj4+PiBbICAgIDQu
-NjE1ODg0XSB1c2IgMS0xLjMuMjogVVNCIGRpc2Nvbm5lY3QsIGRldmljZSBudW1iZXIgNQo+Pj4+
-IFsgICAgNi4wNTgxOTBdIHVzYiB1c2IxLXBvcnQxOiBDYW5ub3QgZW5hYmxlLiBNYXliZSB0aGUg
-VVNCIGNhYmxlIGlzIGJhZD8KPj4+PiBbICAgIDcuMzE4MjczXSB1c2IgdXNiMS1wb3J0MTogQ2Fu
-bm90IGVuYWJsZS4gTWF5YmUgdGhlIFVTQiBjYWJsZSBpcyBiYWQ/Cj4+Pj4gWyAgICA4LjU2ODMx
-OV0gdXNiIHVzYjEtcG9ydDE6IENhbm5vdCBlbmFibGUuIE1heWJlIHRoZSBVU0IgY2FibGUgaXMg
-YmFkPwo+Pj4+IFsgICAgOS44MjgxNjVdIHVzYiB1c2IxLXBvcnQxOiBDYW5ub3QgZW5hYmxlLiBN
-YXliZSB0aGUgVVNCIGNhYmxlIGlzIGJhZD8KPj4+PiBbICAgIDkuODM1MTY0XSB1c2IgdXNiMS1w
-b3J0MTogdW5hYmxlIHRvIGVudW1lcmF0ZSBVU0IgZGV2aWNlCj4+Pj4gcm9vdEBsaW5hcm8tYWxp
-cDp+Iwo+Pj4+IAo+Pj4+IEphY29iIGFscmVhZHkgcG9pbnRlZCBtZSBhdCB5b3VyIHBhdGNoIHNl
-dCBbUkVTRU5EIFBBVENIIHY3IDAvNF0gdGhlIGZpeCBmb3IKPj4+PiB0aGUgVVNCIEhPU1QxIGF0
-IHJrMzI4OCBwbGF0Zm9ybSBidXQgSSB3YW50IHRvIGFzayBpZiB0aGVzZSBwYXRjaGVzIGFyZQo+
-Pj4+IGFscmVhZHkgZmluaXNoZWQsIGFuZCB3aGF0IHJlcG9zaXRvcnkgYW5kIGJyYW5jaCB5b3Ug
-YXBwbGllZCB0aGVtIHRvPwo+Pj4+IAo+Pj4+IEkgYW0gY3VycmVudGx5IHVzaW5nIHJlbGVhc2Ut
-NC40IGZyb20gdGhlIHJvY2tjaGlwIHJlcG9zaXRvcnkgb24gZ2l0aHViLiBJCj4+Pj4gdHJpZWQg
-YXBwbHlpbmcgeW91ciBwYXRjaGVzIGJ1dCBnb3Qgc2V2ZXJhbCBlcnJvcnMsIHNvIGp1c3Qgd2Fu
-dCB0byBkb3VibGUKPj4+PiBjaGVjayB3aXRoIHlvdS4KPj4+PiAKPj4+PiBGb3IgdGhlIHVwc3Ry
-ZWFtLCB0cnkgdGhpcwo+Pj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9oaXp1a2lheWFrYS9saW51eC1r
-ZXJuZWwvdHJlZS9maXJlZmx5LXJrMzI4OC1yZWxvYWQtbmV4dAo+Pj4+IAo+Pj4+IAo+Pj4+IFRo
-YW5rcyBmb3IgeW91ciBoZWxwIGFuZCBwYXRpZW5jZSwKPj4+PiBCZXJ0Cj4+Pj4gCj4+Pj4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 10/04, Brian Norris wrote:
+> Hi Marc,
+> 
+> On Thu, Sep 29, 2016 at 05:08:47PM +0100, Marc Zyngier wrote:
+> > On Tue, 27 Sep 2016 18:23:11 -0700
+> > Brian Norris <briannorris@chromium.org> wrote:
+> > > On Tue, Sep 20, 2016 at 08:47:07AM +0100, Marc Zyngier wrote:
+> > > <Begin side note>
+> > > rk3288 (ARMv7 system widely used for our Chromebooks) has the same
+> > > issue, except the kernel we're using for production (based on v3.14)
+> > > doesn't have the following commit, which stopped utilizing the RTC:
+> > > 
+> > > commit 0fa88cb4b82b5cf7429bc1cef9db006ca035754e
+> > > Author: Xunlei Pang <pang.xunlei@linaro.org>
+> > > Date:   Wed Apr 1 20:34:38 2015 -0700
+> > > 
+> > >     time, drivers/rtc: Don't bother with rtc_resume() for the nonstop clocksource
+> > > 
+> > > And any mainline testing on rk3288 doesn't see the problem, because
+> > > mainline doesn't support its lowest-power sleep modes well enough (see
+> > > ROCKCHIP_ARM_OFF_LOGIC_DEEP in arch/arm/mach-rockchip/pm.c).
+> > 
+> > Arghh... So even my favourite Chromebook (from which I'm typing this
+> > email) is affected? Not very nice...
+> 
+> Yep. But if you're running mainline, you just get to have high S3 power
+> consumption instead!
+
+Just curious, do we enter this state during cpuidle as well? Or
+is it only across suspend that the clock stops working?
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
