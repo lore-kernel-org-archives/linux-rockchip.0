@@ -1,34 +1,49 @@
 From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: [PATCH 0/4] PM / devfreq: Fix module autoload for platform drivers
-Date: Wed, 19 Oct 2016 18:06:23 -0300
-Message-ID: <1476911187-11040-1-git-send-email-javier@osg.samsung.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
+Subject: [PATCH 3/4] PM / devfreq: rockchip-dfi: Fix module autoload
+Date: Wed, 19 Oct 2016 18:06:26 -0300
+Message-ID: <1476911187-11040-4-git-send-email-javier@osg.samsung.com>
+References: <1476911187-11040-1-git-send-email-javier@osg.samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1476911187-11040-1-git-send-email-javier@osg.samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Javier Martinez Canillas <javier@osg.samsung.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+If the driver is built as a module, autoload won't work because the module
+alias information is not filled. So user-space can't match the registered
+device with the corresponding module.
 
-I noticed that module autoload won't be working in some of the defreq
-platform drivers. This patch series contains the fixes for these.
+Export the module alias information using the MODULE_DEVICE_TABLE() macro.
 
-Best regards,
-Javier
+Before this patch:
 
+$ modinfo drivers/devfreq/event/rockchip-dfi.ko | grep alias
+$
 
-Javier Martinez Canillas (4):
-  PM / devfreq: rk3399_dmc: Fix module autoload
-  PM / devfreq: exynos-nocp: Fix module autoload
-  PM / devfreq: rockchip-dfi: Fix module autoload
-  PM / devfreq: exynos-ppmu: Fix module autoload
+After this patch:
 
- drivers/devfreq/event/exynos-nocp.c  | 1 +
- drivers/devfreq/event/exynos-ppmu.c  | 1 +
+$ modinfo drivers/devfreq/event/rockchip-dfi.ko | grep alias
+alias:          of:N*T*Crockchip,rk3399-dfiC*
+alias:          of:N*T*Crockchip,rk3399-dfi
+
+Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+---
+
  drivers/devfreq/event/rockchip-dfi.c | 1 +
- drivers/devfreq/rk3399_dmc.c         | 1 +
- 4 files changed, 4 insertions(+)
+ 1 file changed, 1 insertion(+)
 
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 43fcc5a7f515..22b113363ffc 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -188,6 +188,7 @@ static const struct of_device_id rockchip_dfi_id_match[] = {
+ 	{ .compatible = "rockchip,rk3399-dfi" },
+ 	{ },
+ };
++MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
+ 
+ static int rockchip_dfi_probe(struct platform_device *pdev)
+ {
 -- 
 2.7.4
-
