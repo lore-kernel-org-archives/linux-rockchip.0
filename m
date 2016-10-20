@@ -1,128 +1,133 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 2/2] timers: Fix documentation for schedule_timeout() and similar
-Date: Thu, 20 Oct 2016 13:34:24 -0700
-Message-ID: <1476995664-15668-2-git-send-email-dianders@chromium.org>
-References: <1476995664-15668-1-git-send-email-dianders@chromium.org>
+Subject: [PATCH v3 1/2] timers: Fix usleep_range() in the context of wake_up_process()
+Date: Thu, 20 Oct 2016 13:34:23 -0700
+Message-ID: <1476995664-15668-1-git-send-email-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476995664-15668-1-git-send-email-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>
 Cc: Andreas Mohr <andi@lisas.de>, briannorris@chromium.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux@roeck-us.net, heiko@sntech.de, broonie@kernel.org, djkurtz@chromium.org, tskd08@gmail.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The documentatoin for schedule_timeout(), schedule_hrtimeout(), and
-schedule_hrtimeout_range() all claimed that the routines couldn't
-possibly return early if the task state was TASK_UNINTERRUPTIBLE.  This
-was simply not true, since anyone calling wake_up_process() would cause
-those routines to exit early.
+Users of usleep_range() expect that it will _never_ return in less time
+than the minimum passed parameter.  However, nothing in any of the code
+ensures this.  Specifically:
 
-As some evidence that the documentation was broken (not the code):
-- If we changed the code to match the documentation, msleep() would be
-  identical to schedule_timeout_uninterruptible() and
-  msleep_interruptible() would be identical to
-  schedule_timeout_interruptible().  That doesn't seem likely to have
-  been the intention.
-- The schedule() function sleeps until a task is woken up.  Logically,
-  one would expect that the schedule_timeout() function would sleep
-  until a task is woken up or a timeout occurrs.
+usleep_range() => do_usleep_range() => schedule_hrtimeout_range() =>
+schedule_hrtimeout_range_clock() just ends up calling schedule() with an
+appropriate timeout set using the hrtimer.  If someone else happens to
+wake up our task then we'll happily return from usleep_range() early.
 
-As part of the above observation, it can be seen that
-schedule_hrtimeout() and schedule_hrtimeout_range() might return -EINTR
-even if the task state was TASK_UNINTERRUPTIBLE.  This isn't terrible
-behavior so we'll document it and keep it as-is.  After all, trying to
-match schedule_timeout() and return the time left would incure a bunch
-of extra calculation cost that isn't needed in all cases.
+msleep() already has code to handle this case since it will loop as long
+as there was still time left.  usleep_range() had no such loop.
 
-Suggested-by: Daniel Kurtz <djkurtz@chromium.org>
+The problem is is easily demonstrated with a small bit of test code:
+
+  static int usleep_test_task(void *data)
+  {
+    atomic_t *done = data;
+    ktime_t start, end;
+
+    start = ktime_get();
+    usleep_range(50000, 100000);
+    end = ktime_get();
+    pr_info("Requested 50000 - 100000 us.  Actually slept for %llu us\n",
+      (unsigned long long)ktime_to_us(ktime_sub(end, start)));
+    atomic_set(done, 1);
+
+    return 0;
+  }
+
+  static void run_usleep_test(void)
+  {
+    struct task_struct *t;
+    atomic_t done;
+
+    atomic_set(&done, 0);
+
+    t = kthread_run(usleep_test_task, &done, "usleep_test_task");
+    while (!atomic_read(&done)) {
+      wake_up_process(t);
+      udelay(1000);
+    }
+    kthread_stop(t);
+  }
+
+If you run the above code without this patch you get things like:
+  Requested 50000 - 100000 us.  Actually slept for 967 us
+
+If you run the above code _with_ this patch, you get:
+  Requested 50000 - 100000 us.  Actually slept for 50001 us
+
+Presumably this problem was not detected before because:
+- It's not terribly common to use wake_up_process() directly.
+- Other ways for processes to wake up are not typically mixed with
+  usleep_range().
+- There aren't lots of places that use usleep_range(), since many people
+  call either msleep() or udelay().
+
+NOTES:
+- An effort was made to look for users relying on the old behavior by
+  looking for usleep_range() in the same file as wake_up_process().
+  No problems was found by this search, though it is conceivable that
+  someone could have put the sleep and wakeup in two different files.
+- An effort was made to ask several upstream maintainers if they were
+  aware of people relying on wake_up_process() to wake up
+  usleep_range().  No maintainers were aware of that but they were aware
+  of many people relying on usleep_range() never returning before the
+  minimum.
+
+Reported-by: Tao Huang <huangtao@rock-chips.com>
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Andreas Mohr <andim2@users.sf.net>
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 ---
 Changes in v3:
-- Documentation fix new for v3.
+- Add Reviewed-by tags
+- Add notes about validation
 
- kernel/time/hrtimer.c | 20 ++++++++++++++------
- kernel/time/timer.c   | 11 +++++++----
- 2 files changed, 21 insertions(+), 10 deletions(-)
+Changes in v2:
+- Fixed stupid bug that snuck in before posting
+- Use ktime_before
+- Remove delta from the loop
 
-diff --git a/kernel/time/hrtimer.c b/kernel/time/hrtimer.c
-index bb5ec425dfe0..707ecf47a5fd 100644
---- a/kernel/time/hrtimer.c
-+++ b/kernel/time/hrtimer.c
-@@ -1742,15 +1742,19 @@ schedule_hrtimeout_range_clock(ktime_t *expires, u64 delta,
-  * You can set the task state as follows -
-  *
-  * %TASK_UNINTERRUPTIBLE - at least @timeout time is guaranteed to
-- * pass before the routine returns.
-+ * pass before the routine returns unless the current task is explicitly
-+ * woken up, (e.g. by wake_up_process())".
-  *
-  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
-- * delivered to the current task.
-+ * delivered to the current task or the current task is explicitly woken
-+ * up.
-  *
-  * The current task state is guaranteed to be TASK_RUNNING when this
-  * routine returns.
-  *
-- * Returns 0 when the timer has expired otherwise -EINTR
-+ * Returns 0 when the timer has expired otherwise -EINTR. Note that
-+ * -EINTR can still be returned even if the task state is
-+ * TASK_UNINTERRUPTIBLE if the current task is explicitly woken up.
-  */
- int __sched schedule_hrtimeout_range(ktime_t *expires, u64 delta,
- 				     const enum hrtimer_mode mode)
-@@ -1772,15 +1776,19 @@ EXPORT_SYMBOL_GPL(schedule_hrtimeout_range);
-  * You can set the task state as follows -
-  *
-  * %TASK_UNINTERRUPTIBLE - at least @timeout time is guaranteed to
-- * pass before the routine returns.
-+ * pass before the routine returns unless the current task is explicitly
-+ * woken up, (e.g. by wake_up_process())".
-  *
-  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
-- * delivered to the current task.
-+ * delivered to the current task or the current task is explicitly woken
-+ * up.
-  *
-  * The current task state is guaranteed to be TASK_RUNNING when this
-  * routine returns.
-  *
-- * Returns 0 when the timer has expired otherwise -EINTR
-+ * Returns 0 when the timer has expired otherwise -EINTR. Note that
-+ * -EINTR can still be returned even if the task state is
-+ * TASK_UNINTERRUPTIBLE if the current task is explicitly woken up.
-  */
- int __sched schedule_hrtimeout(ktime_t *expires,
- 			       const enum hrtimer_mode mode)
+ kernel/time/timer.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
 diff --git a/kernel/time/timer.c b/kernel/time/timer.c
-index 219439efd56a..b2ca2a6bc4d2 100644
+index 32bf6f75a8fe..219439efd56a 100644
 --- a/kernel/time/timer.c
 +++ b/kernel/time/timer.c
-@@ -1691,11 +1691,12 @@ static void process_timeout(unsigned long __data)
-  * You can set the task state as follows -
-  *
-  * %TASK_UNINTERRUPTIBLE - at least @timeout jiffies are guaranteed to
-- * pass before the routine returns. The routine will return 0
-+ * pass before the routine returns unless the current task is explicitly
-+ * woken up, (e.g. by wake_up_process())".
-  *
-  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
-- * delivered to the current task. In this case the remaining time
-- * in jiffies will be returned, or 0 if the timer expired in time
-+ * delivered to the current task or the current task is explicitly woken
-+ * up.
-  *
-  * The current task state is guaranteed to be TASK_RUNNING when this
-  * routine returns.
-@@ -1704,7 +1705,9 @@ static void process_timeout(unsigned long __data)
-  * the CPU away without a bound on the timeout. In this case the return
-  * value will be %MAX_SCHEDULE_TIMEOUT.
-  *
-- * In all cases the return value is guaranteed to be non-negative.
-+ * Returns 0 when the timer has expired otherwise the remaining time in
-+ * jiffies will be returned.  In all cases the return value is guaranteed
-+ * to be non-negative.
-  */
- signed long __sched schedule_timeout(signed long timeout)
+@@ -1898,12 +1898,28 @@ EXPORT_SYMBOL(msleep_interruptible);
+ 
+ static void __sched do_usleep_range(unsigned long min, unsigned long max)
  {
++	ktime_t now, end;
+ 	ktime_t kmin;
+ 	u64 delta;
++	int ret;
+ 
+-	kmin = ktime_set(0, min * NSEC_PER_USEC);
++	now = ktime_get();
++	end = ktime_add_us(now, min);
+ 	delta = (u64)(max - min) * NSEC_PER_USEC;
+-	schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
++	do {
++		kmin = ktime_sub(end, now);
++		ret = schedule_hrtimeout_range(&kmin, delta, HRTIMER_MODE_REL);
++
++		/*
++		 * If schedule_hrtimeout_range() returns 0 then we actually
++		 * hit the timeout. If not then we need to re-calculate the
++		 * new timeout ourselves.
++		 */
++		if (ret == 0)
++			break;
++
++		now = ktime_get();
++	} while (ktime_before(now, end));
+ }
+ 
+ /**
 -- 
 2.8.0.rc3.226.g39d4020
