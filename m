@@ -1,69 +1,56 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] PCI: rockchip: remove the pointer to L1 substate cap
-Date: Thu, 20 Oct 2016 15:53:20 +0800
-Message-ID: <1476950000-16910-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: the dp helper would try to enable the i2c channel for rockchip-edp
+Date: Thu, 20 Oct 2016 10:02:22 +0200
+Message-ID: <CAAObsKD-9NoBz28O7ekTGUz_nr6Sp2Ho43=dfccJUOoNtkx8Tg@mail.gmail.com>
+References: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
+ <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
+ <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Randy Li <randy.li@rock-chips.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Per the errata of TRM, the RC can't support L1 substate, so we
-need to remove the L1 substate cap as well as operation for
-PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-Tested-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v2:
-- Add Brian's tag and remove operation for PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2.
-
- drivers/pci/host/pcie-rockchip.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index e0b22da..a23c7f1 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -142,6 +142,8 @@
- #define   PCIE_RC_CONFIG_LCS_LBMS		BIT(30)
- #define   PCIE_RC_CONFIG_LCS_LAMS		BIT(31)
- #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
-+#define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
-+#define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
- 
- #define PCIE_CORE_AXI_CONF_BASE		0xc00000
- #define PCIE_CORE_OB_REGION_ADDR0	(PCIE_CORE_AXI_CONF_BASE + 0x0)
-@@ -481,15 +483,6 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
- 
--	/*
--	 * We need to read/write PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 before
--	 * enabling ASPM.  Otherwise L1PwrOnSc and L1PwrOnVal isn't
--	 * reliable and enabling ASPM doesn't work.  This is a controller
--	 * bug we need to work around.
--	 */
--	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
--	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
--
- 	/* Fix the transmitted FTS count desired to exit from L0s. */
- 	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
- 	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
-@@ -558,6 +551,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip,
- 			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
- 			    PCIE_RC_CONFIG_RID_CCR);
-+
-+	/* Clear THP cap's next cap pointer to remove L1 substate cap */
-+	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_THP_CAP);
-+	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
-+	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
-+
- 	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
- 
- 	rockchip_pcie_write(rockchip,
--- 
-2.3.7
+T24gMjAgT2N0b2JlciAyMDE2IGF0IDA5OjM4LCBSYW5keSBMaSA8cmFuZHkubGlAcm9jay1jaGlw
+cy5jb20+IHdyb3RlOgo+Cj4KPiBPbiAxMC8yMC8yMDE2IDAzOjE4IFBNLCBUb21ldSBWaXpvc28g
+d3JvdGU6Cj4+Cj4+IE9uIDE5IE9jdG9iZXIgMjAxNiBhdCAxNTo1MiwgUmFuZHkgTGkgPHJhbmR5
+LmxpQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+PiBIZWxsbywKPj4+Cj4+PiAgIFJlY2Vu
+dGx5LCBJIHdhbnQgdG8gdXNlIGEgZURQIHBhbmVsIGluIG15IFJLMzI4OCBwbGF0Zm9ybSwgYnV0
+IEkgZ290Cj4+PiB0aGUKPj4+IGZvbGxvd2luZyBtZXNzYWdlOgo+Pj4KPj4+IFsgICAgOC45MzU5
+MThdIGkyYyBpMmMtNjogb2ZfaTJjOiBtb2RhbGlhcyBmYWlsdXJlIG9uIC9kcEBmZjk3MDAwMC9w
+b3J0cwo+Pj4gWyAgICA4LjkzNjAxOF0gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBi
+b3VuZCBmZjk3MDAwMC5kcCAob3BzCj4+PiByb2NrY2hpcF9kcF9jb21wb25lbnRfb3BzIFthbmFs
+b2dpeF9kcF9yb2NrY2hpcF0pCj4+PiBJdCB0cnkgdG8gZW5hYmxlIHRoZSBlRFAgYXV4IGNoYW5u
+ZWwgYW5kIGFkZCBhIG5ldyBJMkMgY29udHJvbGxlciwgYnV0IGl0Cj4+PiBmYWlsZWQgdGhlbiB0
+aGUgd2hvbGUgZGlzcGxheSBzdWJzeXN0ZW0gaXMgYnJva2VuLCB0aGUgcGFuZWwgZG9lc24ndAo+
+Pj4gcG93ZXIKPj4+IG9uIGVpdGhlci4KPj4+Cj4+PiAgIEkgaG9wZSBzb21lYm9keSBjb3VsZCBm
+aWd1cmUgb3V0IHdoYXQgaXMgd3Jvbmcgd2l0aCBpdC4KPj4KPj4KPj4gSGkgUmFuZHksCj4+Cj4+
+IHlvdSB3YW50IHRvIGRlYnVnIHdoeSB0aGUgY2FsbCB0byBvZl9tb2RhbGlhc19ub2RlIGZhaWxz
+Lgo+Pgo+IEJ1dCBJIGRpZG4ndCBrbm93IHdobyByZWdpc3RlciB0aGF0IEkyQyBjb250cm9sbGVy
+LCBhcyB0aGUgc3lzdGVtIG9ubHkgaGF2ZQo+IDYgSTJDIGNvbnRyb2xsZXIoMC01KS4KCkFoLCBu
+b3cgSSByZW1lbWJlciB0aGF0IHRoZSB3YXJuaW5nIGlzIHNwdXJpb3VzLCBoYXZlIGp1c3Qgc2Vu
+dCBhCnBhdGNoIHRvIGF2b2lkIGl0IHdpdGggeW91IG9uIENjICgiQVJNOiBkdHM6IHJvY2tjaGlw
+OiBhZGQgaTJjLWJ1cwpzdWJub2RlIHRvIGVkcCIpLgoKQ291bGQgeW91IHBsZWFzZSB0ZXN0IGl0
+IG91dD8KClJlZ2FyZGluZyB3aHkgYSA3dGggSTJDIGFkYXB0ZXIgaXMgYmVpbmcgcmVnaXN0ZXJl
+ZCwgdGhhdCdzIHRoZSBvbmUKdXNlZCBieSB0aGUgZURQIGNvbnRyb2xsZXIsIGFuZCB0aGUgY29k
+ZSByZWdpc3RlcmluZyBpdCBpcyBEUk0gY29yZQp3aGVuIHRoZSBhbmFsb2dpeCBkcml2ZXIgY2Fs
+bHMgZHJtX2RwX2F1eF9yZWdpc3Rlci4KClJlZ2FyZGluZyB5b3VyIHByb2JsZW0gd2l0aCBEUk0g
+bm90IGxvYWRpbmcgcHJvcGVybHksIHlvdSB3b3VsZCBuZWVkCnRvIGF0dGFjaCBtb3JlIGNvbnRl
+bnQgZnJvbSBkbWVzZyBhcyB0aGUgbGluZXMgeW91IGF0dGFjaGVkIGRvZXNuJ3QKc2VlbSByZWxh
+dGVkIHRvIGl0LiBZb3UgY2FuIGdldCBtb3JlIGRlYnVnIGxvZ3MgZnJvbSBEUk0gYnkgYm9vdGlu
+Zwp3aXRoIHRoaXMga2VybmVsIHBhcmFtZXRlcjoKCmRybS5kZWJ1Zz0weDFmCgpSZWdhcmRzLAoK
+VG9tZXUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
