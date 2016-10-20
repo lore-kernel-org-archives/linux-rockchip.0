@@ -1,64 +1,69 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: the dp helper would try to enable the i2c channel for
- rockchip-edp
-Date: Thu, 20 Oct 2016 15:38:29 +0800
-Message-ID: <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
-References: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
- <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2] PCI: rockchip: remove the pointer to L1 substate cap
+Date: Thu, 20 Oct 2016 15:53:20 +0800
+Message-ID: <1476950000-16910-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Per the errata of TRM, the RC can't support L1 substate, so we
+need to remove the L1 substate cap as well as operation for
+PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-On 10/20/2016 03:18 PM, Tomeu Vizoso wrote:
-> On 19 October 2016 at 15:52, Randy Li <randy.li@rock-chips.com> wrote:
->> Hello,
->>
->>   Recently, I want to use a eDP panel in my RK3288 platform, but I got the
->> following message:
->>
->> [    8.935918] i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
->> [    8.936018] rockchip-drm display-subsystem: bound ff970000.dp (ops
->> rockchip_dp_component_ops [analogix_dp_rockchip])
->> It try to enable the eDP aux channel and add a new I2C controller, but it
->> failed then the whole display subsystem is broken, the panel doesn't power
->> on either.
->>
->>   I hope somebody could figure out what is wrong with it.
->
-> Hi Randy,
->
-> you want to debug why the call to of_modalias_node fails.
->
-But I didn't know who register that I2C controller, as the system only 
-have 6 I2C controller(0-5).
-> Good luck,
->
-> Tomeu
->
->
->>
->> _______________________________________________
->> dri-devel mailing list
->> dri-devel@lists.freedesktop.org
->> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->
+Tested-by: Brian Norris <briannorris@chromium.org>
+---
 
+Changes in v2:
+- Add Brian's tag and remove operation for PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2.
+
+ drivers/pci/host/pcie-rockchip.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index e0b22da..a23c7f1 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -142,6 +142,8 @@
+ #define   PCIE_RC_CONFIG_LCS_LBMS		BIT(30)
+ #define   PCIE_RC_CONFIG_LCS_LAMS		BIT(31)
+ #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
++#define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
++#define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
+ 
+ #define PCIE_CORE_AXI_CONF_BASE		0xc00000
+ #define PCIE_CORE_OB_REGION_ADDR0	(PCIE_CORE_AXI_CONF_BASE + 0x0)
+@@ -481,15 +483,6 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
+-	/*
+-	 * We need to read/write PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 before
+-	 * enabling ASPM.  Otherwise L1PwrOnSc and L1PwrOnVal isn't
+-	 * reliable and enabling ASPM doesn't work.  This is a controller
+-	 * bug we need to work around.
+-	 */
+-	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+-	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2);
+-
+ 	/* Fix the transmitted FTS count desired to exit from L0s. */
+ 	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
+ 	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
+@@ -558,6 +551,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	rockchip_pcie_write(rockchip,
+ 			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
+ 			    PCIE_RC_CONFIG_RID_CCR);
++
++	/* Clear THP cap's next cap pointer to remove L1 substate cap */
++	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_THP_CAP);
++	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
++	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
++
+ 	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+ 
+ 	rockchip_pcie_write(rockchip,
 -- 
-Randy Li
-The third produce department
-===========================================================================
-This email message, including any attachments, is for the sole
-use of the intended recipient(s) and may contain confidential and
-privileged information. Any unauthorized review, use, disclosure or
-distribution is prohibited. If you are not the intended recipient, please
-contact the sender by reply e-mail and destroy all copies of the original
-message. [Fuzhou Rockchip Electronics, INC. China mainland]
-===========================================================================
+2.3.7
