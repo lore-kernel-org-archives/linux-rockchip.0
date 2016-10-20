@@ -1,42 +1,64 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: Re: the dp helper would try to enable the i2c channel for rockchip-edp
-Date: Thu, 20 Oct 2016 09:18:04 +0200
-Message-ID: <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
+From: Randy Li <randy.li@rock-chips.com>
+Subject: Re: the dp helper would try to enable the i2c channel for
+ rockchip-edp
+Date: Thu, 20 Oct 2016 15:38:29 +0800
+Message-ID: <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
 References: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
+ <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Randy Li <randy.li@rock-chips.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTkgT2N0b2JlciAyMDE2IGF0IDE1OjUyLCBSYW5keSBMaSA8cmFuZHkubGlAcm9jay1jaGlw
-cy5jb20+IHdyb3RlOgo+IEhlbGxvLAo+Cj4gICBSZWNlbnRseSwgSSB3YW50IHRvIHVzZSBhIGVE
-UCBwYW5lbCBpbiBteSBSSzMyODggcGxhdGZvcm0sIGJ1dCBJIGdvdCB0aGUKPiBmb2xsb3dpbmcg
-bWVzc2FnZToKPgo+IFsgICAgOC45MzU5MThdIGkyYyBpMmMtNjogb2ZfaTJjOiBtb2RhbGlhcyBm
-YWlsdXJlIG9uIC9kcEBmZjk3MDAwMC9wb3J0cwo+IFsgICAgOC45MzYwMThdIHJvY2tjaGlwLWRy
-bSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5NzAwMDAuZHAgKG9wcwo+IHJvY2tjaGlwX2Rw
-X2NvbXBvbmVudF9vcHMgW2FuYWxvZ2l4X2RwX3JvY2tjaGlwXSkKPiBJdCB0cnkgdG8gZW5hYmxl
-IHRoZSBlRFAgYXV4IGNoYW5uZWwgYW5kIGFkZCBhIG5ldyBJMkMgY29udHJvbGxlciwgYnV0IGl0
-Cj4gZmFpbGVkIHRoZW4gdGhlIHdob2xlIGRpc3BsYXkgc3Vic3lzdGVtIGlzIGJyb2tlbiwgdGhl
-IHBhbmVsIGRvZXNuJ3QgcG93ZXIKPiBvbiBlaXRoZXIuCj4KPiAgIEkgaG9wZSBzb21lYm9keSBj
-b3VsZCBmaWd1cmUgb3V0IHdoYXQgaXMgd3Jvbmcgd2l0aCBpdC4KCkhpIFJhbmR5LAoKeW91IHdh
-bnQgdG8gZGVidWcgd2h5IHRoZSBjYWxsIHRvIG9mX21vZGFsaWFzX25vZGUgZmFpbHMuCgpHb29k
-IGx1Y2ssCgpUb21ldQoKCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+
+
+On 10/20/2016 03:18 PM, Tomeu Vizoso wrote:
+> On 19 October 2016 at 15:52, Randy Li <randy.li@rock-chips.com> wrote:
+>> Hello,
+>>
+>>   Recently, I want to use a eDP panel in my RK3288 platform, but I got the
+>> following message:
+>>
+>> [    8.935918] i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
+>> [    8.936018] rockchip-drm display-subsystem: bound ff970000.dp (ops
+>> rockchip_dp_component_ops [analogix_dp_rockchip])
+>> It try to enable the eDP aux channel and add a new I2C controller, but it
+>> failed then the whole display subsystem is broken, the panel doesn't power
+>> on either.
+>>
+>>   I hope somebody could figure out what is wrong with it.
+>
+> Hi Randy,
+>
+> you want to debug why the call to of_modalias_node fails.
+>
+But I didn't know who register that I2C controller, as the system only 
+have 6 I2C controller(0-5).
+> Good luck,
+>
+> Tomeu
+>
+>
+>>
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>
+
+-- 
+Randy Li
+The third produce department
+===========================================================================
+This email message, including any attachments, is for the sole
+use of the intended recipient(s) and may contain confidential and
+privileged information. Any unauthorized review, use, disclosure or
+distribution is prohibited. If you are not the intended recipient, please
+contact the sender by reply e-mail and destroy all copies of the original
+message. [Fuzhou Rockchip Electronics, INC. China mainland]
+===========================================================================
