@@ -1,43 +1,37 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] PCI: rockchip: fix wrong print for negotiated lane
- numbers
-Date: Wed, 19 Oct 2016 18:39:26 -0700
-Message-ID: <20161020013925.GD78840@google.com>
-References: <1476321391-6665-1-git-send-email-shawn.lin@rock-chips.com>
+From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
+Subject: =?UTF-8?B?UkU6IFtQQVRDSCAwLzRdIFBNIC8gZGV2ZnJlcTogRml4IG1v?=
+ =?UTF-8?B?ZHVsZSBhdXRvbG9hZCBmb3IgcGxhdGZvcm0gZHJpdmVycw==?=
+Date: Thu, 20 Oct 2016 02:22:46 +0000
+Message-ID: <877108885.1462124.1476930166421.JavaMail.weblogic@ep1ml101a>
+References: <CGME20161019210645epcas1p449463edf9c3cb3681b0a4e8116ccf7f2@epcas1p4.samsung.com>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1476321391-6665-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>
+Content-Type: multipart/related;
+ boundary="----=_Part_1462123_578481322.1476930166421"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?B?SmF2aWVyIE1hcnRpbmV6IENhbmlsbGFz?= <javier@osg.samsung.com>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>
+Cc: =?UTF-8?B?S3VramluIEtpbQ==?= <kgene@kernel.org>, =?UTF-8?B?SGVpa28gU3R1ZWJuZXI=?= <heiko@sntech.de>, =?UTF-8?B?bGludXgtcG1Admdlci5rZXJuZWwub3Jn?= <linux-pm@vger.kernel.org>, =?UTF-8?B?Q2hhbndvbyBDaG9p?= <cw00.choi@samsung.com>, =?UTF-8?B?bGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3Jn?= <linux-samsung-soc@vger.kernel.org>, =?UTF-8?B?S3l1bmdtaW4gUGFyaw==?= <kyungmin.park@samsung.com>, =?UTF-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?= <krzk@kernel.org>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn?= <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Oct 13, 2016 at 09:16:31AM +0800, Shawn Lin wrote:
-> The negotiated lane numbers was incorrectly calculated, fix it.
-> 
-> Fixes: e77f847df54c6b0 ("PCI: rockchip: Add Rockchip PCIe controller support")
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index e0b22da..0d69d8c 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -549,7 +549,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  
->  	/* Check the final link width from negotiated lane counter from MGMT */
->  	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
-> -	status =  0x1 << ((status & PCIE_CORE_PL_CONF_LANE_MASK) >>
-> +	status =  0x1 << ((status >> PCIE_CORE_PL_CONF_LANE_SHIFT) &
->  			  PCIE_CORE_PL_CONF_LANE_MASK);
->  	dev_dbg(dev, "current link width is x%d\n", status);
->  
+------=_Part_1462123_578481322.1476930166421
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"
 
-Looks good to me:
-
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+PiBIZWxsbywNCj4gDQo+IEkgbm90aWNlZCB0aGF0IG1vZHVsZSBhdXRvbG9hZCB3b24ndCBiZSB3
+b3JraW5nIGluIHNvbWUgb2YgdGhlIGRlZnJlcQ0KPiBwbGF0Zm9ybSBkcml2ZXJzLiBUaGlzIHBh
+dGNoIHNlcmllcyBjb250YWlucyB0aGUgZml4ZXMgZm9yIHRoZXNlLg0KPiANCj4gQmVzdCByZWdh
+cmRzLA0KPiBKYXZpZXINCj4gDQo+IA0KPiBKYXZpZXIgTWFydGluZXogQ2FuaWxsYXMgKDQpOg0K
+PiAgIFBNIC8gZGV2ZnJlcTogcmszMzk5X2RtYzogRml4IG1vZHVsZSBhdXRvbG9hZA0KPiAgIFBN
+IC8gZGV2ZnJlcTogZXh5bm9zLW5vY3A6IEZpeCBtb2R1bGUgYXV0b2xvYWQNCj4gICBQTSAvIGRl
+dmZyZXE6IHJvY2tjaGlwLWRmaTogRml4IG1vZHVsZSBhdXRvbG9hZA0KPiAgIFBNIC8gZGV2ZnJl
+cTogZXh5bm9zLXBwbXU6IEZpeCBtb2R1bGUgYXV0b2xvYWQNCg0KQWNrZWQtYnk6IE15dW5nSm9v
+IEhhbSA8bXl1bmdqb28uaGFtQHNhbXN1bmcuY29tPg0KDQpBbGwgdGhlIGZvdXIgYXJlIG5vdCBh
+dCBmb3ItNC45LXJjIGJyYW5jaC4NCmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9r
+ZXJuZWwvZ2l0L216eC9kZXZmcmVxLmdpdC9sb2cvP2g9Zm9yLTQuOS1yYw0KDQoNCkNoZWVycywN
+Ck15dW5nSm9vDQoNCj4gDQo+ICBkcml2ZXJzL2RldmZyZXEvZXZlbnQvZXh5bm9zLW5vY3AuYyAg
+fCAxICsNCj4gIGRyaXZlcnMvZGV2ZnJlcS9ldmVudC9leHlub3MtcHBtdS5jICB8IDEgKw0KPiAg
+ZHJpdmVycy9kZXZmcmVxL2V2ZW50L3JvY2tjaGlwLWRmaS5jIHwgMSArDQo+ICBkcml2ZXJzL2Rl
+dmZyZXEvcmszMzk5X2RtYy5jICAgICAgICAgfCAxICsNCj4gIDQgZmlsZXMgY2hhbmdlZCwgNCBp
+bnNlcnRpb25zKCspDQo+IA0KPiAtLSANCj4gMi43LjQNCg==
+------=_Part_1462123_578481322.1476930166421--
