@@ -1,56 +1,42 @@
 From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: Re: the dp helper would try to enable the i2c channel for rockchip-edp
-Date: Thu, 20 Oct 2016 10:02:22 +0200
-Message-ID: <CAAObsKD-9NoBz28O7ekTGUz_nr6Sp2Ho43=dfccJUOoNtkx8Tg@mail.gmail.com>
-References: <24daffe0-42a4-2a37-d685-7d9ecf9c3b11@rock-chips.com>
- <CAAObsKBkQuUgk_p76Mc3U-tMy6mhX0puwKNoNHZcrWW1LRfbPg@mail.gmail.com>
- <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <410fd2c1-e841-cffb-51ba-cc4907c81203@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Randy Li <randy.li@rock-chips.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: [PATCH] ARM: dts: rockchip: add i2c-bus subnode to edp
+Date: Thu, 20 Oct 2016 10:07:25 +0200
+Message-ID: <1476950845-28242-1-git-send-email-tomeu.vizoso@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Randy Li <randy.li@rock-chips.com>, Jon Hunter <jonathanh@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAgT2N0b2JlciAyMDE2IGF0IDA5OjM4LCBSYW5keSBMaSA8cmFuZHkubGlAcm9jay1jaGlw
-cy5jb20+IHdyb3RlOgo+Cj4KPiBPbiAxMC8yMC8yMDE2IDAzOjE4IFBNLCBUb21ldSBWaXpvc28g
-d3JvdGU6Cj4+Cj4+IE9uIDE5IE9jdG9iZXIgMjAxNiBhdCAxNTo1MiwgUmFuZHkgTGkgPHJhbmR5
-LmxpQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+PiBIZWxsbywKPj4+Cj4+PiAgIFJlY2Vu
-dGx5LCBJIHdhbnQgdG8gdXNlIGEgZURQIHBhbmVsIGluIG15IFJLMzI4OCBwbGF0Zm9ybSwgYnV0
-IEkgZ290Cj4+PiB0aGUKPj4+IGZvbGxvd2luZyBtZXNzYWdlOgo+Pj4KPj4+IFsgICAgOC45MzU5
-MThdIGkyYyBpMmMtNjogb2ZfaTJjOiBtb2RhbGlhcyBmYWlsdXJlIG9uIC9kcEBmZjk3MDAwMC9w
-b3J0cwo+Pj4gWyAgICA4LjkzNjAxOF0gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBi
-b3VuZCBmZjk3MDAwMC5kcCAob3BzCj4+PiByb2NrY2hpcF9kcF9jb21wb25lbnRfb3BzIFthbmFs
-b2dpeF9kcF9yb2NrY2hpcF0pCj4+PiBJdCB0cnkgdG8gZW5hYmxlIHRoZSBlRFAgYXV4IGNoYW5u
-ZWwgYW5kIGFkZCBhIG5ldyBJMkMgY29udHJvbGxlciwgYnV0IGl0Cj4+PiBmYWlsZWQgdGhlbiB0
-aGUgd2hvbGUgZGlzcGxheSBzdWJzeXN0ZW0gaXMgYnJva2VuLCB0aGUgcGFuZWwgZG9lc24ndAo+
-Pj4gcG93ZXIKPj4+IG9uIGVpdGhlci4KPj4+Cj4+PiAgIEkgaG9wZSBzb21lYm9keSBjb3VsZCBm
-aWd1cmUgb3V0IHdoYXQgaXMgd3Jvbmcgd2l0aCBpdC4KPj4KPj4KPj4gSGkgUmFuZHksCj4+Cj4+
-IHlvdSB3YW50IHRvIGRlYnVnIHdoeSB0aGUgY2FsbCB0byBvZl9tb2RhbGlhc19ub2RlIGZhaWxz
-Lgo+Pgo+IEJ1dCBJIGRpZG4ndCBrbm93IHdobyByZWdpc3RlciB0aGF0IEkyQyBjb250cm9sbGVy
-LCBhcyB0aGUgc3lzdGVtIG9ubHkgaGF2ZQo+IDYgSTJDIGNvbnRyb2xsZXIoMC01KS4KCkFoLCBu
-b3cgSSByZW1lbWJlciB0aGF0IHRoZSB3YXJuaW5nIGlzIHNwdXJpb3VzLCBoYXZlIGp1c3Qgc2Vu
-dCBhCnBhdGNoIHRvIGF2b2lkIGl0IHdpdGggeW91IG9uIENjICgiQVJNOiBkdHM6IHJvY2tjaGlw
-OiBhZGQgaTJjLWJ1cwpzdWJub2RlIHRvIGVkcCIpLgoKQ291bGQgeW91IHBsZWFzZSB0ZXN0IGl0
-IG91dD8KClJlZ2FyZGluZyB3aHkgYSA3dGggSTJDIGFkYXB0ZXIgaXMgYmVpbmcgcmVnaXN0ZXJl
-ZCwgdGhhdCdzIHRoZSBvbmUKdXNlZCBieSB0aGUgZURQIGNvbnRyb2xsZXIsIGFuZCB0aGUgY29k
-ZSByZWdpc3RlcmluZyBpdCBpcyBEUk0gY29yZQp3aGVuIHRoZSBhbmFsb2dpeCBkcml2ZXIgY2Fs
-bHMgZHJtX2RwX2F1eF9yZWdpc3Rlci4KClJlZ2FyZGluZyB5b3VyIHByb2JsZW0gd2l0aCBEUk0g
-bm90IGxvYWRpbmcgcHJvcGVybHksIHlvdSB3b3VsZCBuZWVkCnRvIGF0dGFjaCBtb3JlIGNvbnRl
-bnQgZnJvbSBkbWVzZyBhcyB0aGUgbGluZXMgeW91IGF0dGFjaGVkIGRvZXNuJ3QKc2VlbSByZWxh
-dGVkIHRvIGl0LiBZb3UgY2FuIGdldCBtb3JlIGRlYnVnIGxvZ3MgZnJvbSBEUk0gYnkgYm9vdGlu
-Zwp3aXRoIHRoaXMga2VybmVsIHBhcmFtZXRlcjoKCmRybS5kZWJ1Zz0weDFmCgpSZWdhcmRzLAoK
-VG9tZXUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Add an empty 'i2c-bus' subnode to the edp node just so that the I2C core
+doesn't attemp to parse the 'ports' subnode as containing i2c devices.
+
+This is to avoid spurious failure messages such as:
+
+i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
+
+Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: Randy Li <randy.li@rock-chips.com>
+Cc: Jon Hunter <jonathanh@nvidia.com>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 2f814ffeb605..94f4b7eecca2 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1075,6 +1075,11 @@
+ 				};
+ 			};
+ 		};
++
++		i2c-bus {
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
+ 	};
+ 
+ 	hdmi: hdmi@ff980000 {
+-- 
+2.7.4
