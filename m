@@ -1,51 +1,43 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: rockchip: remove the pointer to L1 substate cap
-Date: Thu, 20 Oct 2016 09:07:14 +0800
-Message-ID: <22d32ccb-9c3c-4a8b-f2e2-2de471f8dac5@rock-chips.com>
-References: <1476868234-15135-1-git-send-email-shawn.lin@rock-chips.com>
- <20161019174205.GA78840@google.com> <20161019174357.GB78840@google.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] PCI: rockchip: fix wrong print for negotiated lane
+ numbers
+Date: Wed, 19 Oct 2016 18:39:26 -0700
+Message-ID: <20161020013925.GD78840@google.com>
+References: <1476321391-6665-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20161019174357.GB78840@google.com>
+Content-Disposition: inline
+In-Reply-To: <1476321391-6665-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>, Wenrui Li <wenrui.li@rock-chips.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2016/10/20 1:43, Brian Norris 写道:
-> On Wed, Oct 19, 2016 at 10:42:05AM -0700, Brian Norris wrote:
->> Hi,
->>
->> On Wed, Oct 19, 2016 at 05:10:34PM +0800, Shawn Lin wrote:
->>> Per the errata of TRM, the RC can't support L1 substate, so we
->>> need to remove the L1 substate cap.
->>>
->>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> [snip]
->
-> BTW, I couldn't actually find the original patch email in any mailing
-> list archive, nor in patchwork. Did the email get held up by the mailing
-> list or something?
+On Thu, Oct 13, 2016 at 09:16:31AM +0800, Shawn Lin wrote:
+> The negotiated lane numbers was incorrectly calculated, fix it.
+> 
+> Fixes: e77f847df54c6b0 ("PCI: rockchip: Add Rockchip PCIe controller support")
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index e0b22da..0d69d8c 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -549,7 +549,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  
+>  	/* Check the final link width from negotiated lane counter from MGMT */
+>  	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
+> -	status =  0x1 << ((status & PCIE_CORE_PL_CONF_LANE_MASK) >>
+> +	status =  0x1 << ((status >> PCIE_CORE_PL_CONF_LANE_SHIFT) &
+>  			  PCIE_CORE_PL_CONF_LANE_MASK);
+>  	dev_dbg(dev, "current link width is x%d\n", status);
+>  
 
-I don't know if this patch was held by linux-pci, but I could find it
-here:
+Looks good to me:
 
-https://patchwork.kernel.org/patch/9383721/
-
-
-
->
-> Brian
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
-
-
--- 
-Best Regards
-Shawn Lin
+Reviewed-by: Brian Norris <briannorris@chromium.org>
