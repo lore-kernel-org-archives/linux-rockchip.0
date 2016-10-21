@@ -1,129 +1,38 @@
-From: chenjh <chenjh@rock-chips.com>
-Subject: Re: [PATCH] mfd: rk808: RK818 uses DEV_OFF to power off supplies
-Date: Fri, 21 Oct 2016 17:15:34 +0800
-Message-ID: <5809DCB6.9020703@rock-chips.com>
-References: <1476694990-1887-1-git-send-email-chenjh@rock-chips.com>
- <5809C76F.4070409@phytec.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 0/2] Assign RK3066 clocks at boot time
+Date: Fri, 21 Oct 2016 15:44:49 +0200
+Message-ID: <13309666.zpbVPubHs9@phil>
+References: <cover.1476447057.git.paweljarosz3691@gmail.com>
+ <1569308.lsrqUgJ5m1@phil> <58a16125-d0bd-1019-eee3-615b35c71c6a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5809C76F.4070409@phytec.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>, zhangqing@rock-chips.com, zyw@rock-chips.com
-Cc: lee.jones@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tony.xie@rock-chips.com, huangtao@rock-chips.com, xsf@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <58a16125-d0bd-1019-eee3-615b35c71c6a@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691@gmail.com>
+Cc: mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux@armlinux.org.uk, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Wadim:
-
-     It's impossible not to restart automatically, this situation is 
-normal for RK818.
-     Because it is hardware designed that RK818 can't power off when a 
-voltage is supplies on the USB supply input pins.
-
-
-
-Best Regards
-
-在 2016/10/21 15:44, Wadim Egorov 写道:
-> Hi Jianhong,
->
-> with this patch a poweroff causes a restart on our board.
-> In our design a 5V USB voltage is supplied on the USB supply input pins.
-> After setting DEV_OFF bit, the RK818 restart automatically. The
-> ON_SOURCE_REG (Address AEH) is 0x40 after the automatic restart which
-> says that the RK818 was started by ON_PLUG_IN event.
-> Is there a possibility to configure the RK818 that it will not start
-> automatically in this case?
->
-> Regards,
-> Wadim
->
-> On 17.10.2016 11:03, Jianhong Chen wrote:
->> DEV_OFF and DEV_OFF_RST functions for RK808 are designed error that
->> only DEV_OFF_RST can power off supplies. RK818 has been fixed this
->> issue, so that DEV_OFF is used to power off supplies.
->>
->> Signed-off-by: Jianhong Chen <chenjh@rock-chips.com>
->> ---
->>   drivers/mfd/rk808.c       | 23 ++++++++++++++++++++++-
->>   include/linux/mfd/rk808.h |  1 +
->>   2 files changed, 23 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
->> index 0f8acc5..2c9acdb 100644
->> --- a/drivers/mfd/rk808.c
->> +++ b/drivers/mfd/rk808.c
->> @@ -290,6 +290,24 @@ static void rk808_device_shutdown(void)
->>   		dev_err(&rk808_i2c_client->dev, "power off error!\n");
->>   }
->>   
->> +static void rk818_device_shutdown(void)
->> +{
->> +	int ret;
->> +	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
->> +
->> +	if (!rk808) {
->> +		dev_warn(&rk808_i2c_client->dev,
->> +			 "have no rk818, so do nothing here\n");
->> +		return;
->> +	}
->> +
->> +	ret = regmap_update_bits(rk808->regmap,
->> +				 RK818_DEVCTRL_REG,
->> +				 DEV_OFF, DEV_OFF);
->> +	if (ret)
->> +		dev_err(&rk808_i2c_client->dev, "power off error!\n");
->> +}
->> +
->>   static const struct of_device_id rk808_of_match[] = {
->>   	{ .compatible = "rockchip,rk808" },
->>   	{ .compatible = "rockchip,rk818" },
->> @@ -304,6 +322,7 @@ static int rk808_probe(struct i2c_client *client,
->>   	struct rk808 *rk808;
->>   	const struct rk808_reg_data *pre_init_reg;
->>   	const struct mfd_cell *cells;
->> +	void (*pm_pwroff_fn)(void);
->>   	int nr_pre_init_regs;
->>   	int nr_cells;
->>   	int pm_off = 0;
->> @@ -331,6 +350,7 @@ static int rk808_probe(struct i2c_client *client,
->>   		nr_pre_init_regs = ARRAY_SIZE(rk808_pre_init_reg);
->>   		cells = rk808s;
->>   		nr_cells = ARRAY_SIZE(rk808s);
->> +		pm_pwroff_fn = rk808_device_shutdown;
->>   		break;
->>   	case RK818_ID:
->>   		rk808->regmap_cfg = &rk818_regmap_config;
->> @@ -339,6 +359,7 @@ static int rk808_probe(struct i2c_client *client,
->>   		nr_pre_init_regs = ARRAY_SIZE(rk818_pre_init_reg);
->>   		cells = rk818s;
->>   		nr_cells = ARRAY_SIZE(rk818s);
->> +		pm_pwroff_fn = rk818_device_shutdown;
->>   		break;
->>   	default:
->>   		dev_err(&client->dev, "Unsupported RK8XX ID %lu\n",
->> @@ -393,7 +414,7 @@ static int rk808_probe(struct i2c_client *client,
->>   				"rockchip,system-power-controller");
->>   	if (pm_off && !pm_power_off) {
->>   		rk808_i2c_client = client;
->> -		pm_power_off = rk808_device_shutdown;
->> +		pm_power_off = pm_pwroff_fn;
->>   	}
->>   
->>   	return 0;
->> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
->> index 6d435a3..83701ef 100644
->> --- a/include/linux/mfd/rk808.h
->> +++ b/include/linux/mfd/rk808.h
->> @@ -290,6 +290,7 @@ enum rk818_reg {
->>   #define SWITCH2_EN	BIT(6)
->>   #define SWITCH1_EN	BIT(5)
->>   #define DEV_OFF_RST	BIT(3)
->> +#define DEV_OFF		BIT(0)
->>   
->>   #define VB_LO_ACT		BIT(4)
->>   #define VB_LO_SEL_3500MV	(7 << 0)
->
->
->
+QW0gRnJlaXRhZywgMTQuIE9rdG9iZXIgMjAxNiwgMTY6MTE6MjYgQ0VTVCBzY2hyaWViIFBhd2XF
+giBKYXJvc3o6Cj4gVyBkbml1IDE0LjEwLjIwMTYgbyAxNToyOCwgSGVpa28gU3R1ZWJuZXIgcGlz
+emU6Cj4gPiBjaGFuZ2VzIGxvb2sgZ29vZC4gT25lIHRoaW5nIHRvIGtlZXAgaW4gbWluZCBpcyB0
+aGF0IHdlIG5lZWQgY2xvY2staWQKPiA+IGFkZGl0aW9ucyBpbiBhIHNlcGFyYXRlIHBhdGNoIChh
+cyB0aGV5IG5lZWQgdG8gYmUgb24gYSBzaGFyZWQgYnJhbmNoKS4KPiA+IAo+ID4gSSBjYW4gZG8g
+dGhpcyBzcGxpdCBvZiBwYXRjaDEgb24gbXkgb3duIGhlcmUsIHNvIG5vIG5lZWQgdG8gcmVzZW5k
+IHRoZQo+ID4gc2VyaWVzIGFuZCB3aWxsIGRvIHRoYXQgYWZ0ZXIgNC45LXJjMSAocHJvYmFibHkg
+c29tZXdoZXJlIGFmdGVyIHN1bmRheSkKPiA+IGFzIEkgbmVlZCBhIHN0YWJsZSBiYXNlIGZvciB0
+aGF0IHNoYXJlZCBicmFuY2guCj4gPiAKCkFzIHdyaXR0ZW4gYmVmb3JlLCBJJ3ZlIG5vdyBzcGxp
+dCB1cCBwYXRjaDEgaW50byB0d28gYW5kIGFwcGxpZWQgYWxsIDMgcGF0Y2hlcyAKZm9yIDQuMTAK
+CgpUaGFua3MKSGVpa28KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LWFybS1rZXJuZWwK
