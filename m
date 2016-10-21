@@ -1,139 +1,129 @@
-From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: add i2c-bus subnode to edp
-Date: Fri, 21 Oct 2016 16:32:24 +0800
-Message-ID: <13de56c8-accb-de5d-1713-1bdedf0291b7@rock-chips.com>
-References: <1476950845-28242-1-git-send-email-tomeu.vizoso@collabora.com>
- <7604646.6yosK0XMNL@diego>
- <6083453f-08e1-643a-9638-1db38c704aa5@collabora.com>
- <1681294.eoXpQL8f8l@phil>
+From: chenjh <chenjh@rock-chips.com>
+Subject: Re: [PATCH] mfd: rk808: RK818 uses DEV_OFF to power off supplies
+Date: Fri, 21 Oct 2016 17:15:34 +0800
+Message-ID: <5809DCB6.9020703@rock-chips.com>
+References: <1476694990-1887-1-git-send-email-chenjh@rock-chips.com>
+ <5809C76F.4070409@phytec.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1681294.eoXpQL8f8l@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5809C76F.4070409@phytec.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wadim Egorov <w.egorov@phytec.de>, zhangqing@rock-chips.com, zyw@rock-chips.com
+Cc: lee.jones@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tony.xie@rock-chips.com, huangtao@rock-chips.com, xsf@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Wadim:
+
+     It's impossible not to restart automatically, this situation is 
+normal for RK818.
+     Because it is hardware designed that RK818 can't power off when a 
+voltage is supplies on the USB supply input pins.
 
 
-On 10/21/2016 04:25 PM, Heiko Stuebner wrote:
-> Am Donnerstag, 20. Oktober 2016, 15:47:56 CEST schrieb Tomeu Vizoso:
->> On 10/20/2016 03:45 PM, Heiko St=FCbner wrote:
->>> Am Donnerstag, 20. Oktober 2016, 10:07:25 schrieb Tomeu Vizoso:
->>>> Add an empty 'i2c-bus' subnode to the edp node just so that the I2C co=
-re
->>>> doesn't attemp to parse the 'ports' subnode as containing i2c devices.
->>>>
->>>> This is to avoid spurious failure messages such as:
->>>>
->>>> i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
->>>
->>> On the one hand, the edp really has an i2c bus - with its only client t=
-he
->>> EDID listening at 0x50 (and maybe 0x30).
->>>
->>> On the other hand, adding an empty bus to the (implementation independe=
-nt)
->>> devicetree just to make the Linux i2c subsystem happy sounds heavily li=
-ke
->>> a
->>> implementation-specific hack, as the edp i2c bus doesn't leak into the
->>> outside world otherwise.
->>>
->>> I guess this empty i2c bus not being part of the binding document points
->>> heavily into the implementation-specific corner :-) .
->>>
->>> My short search on other patches touching this didn't reveal anything b=
-ut
->>> maybe this was already discussed somewhere and found to be ok?
+
+Best Regards
+
+在 2016/10/21 15:44, Wadim Egorov 写道:
+> Hi Jianhong,
+>
+> with this patch a poweroff causes a restart on our board.
+> In our design a 5V USB voltage is supplied on the USB supply input pins.
+> After setting DEV_OFF bit, the RK818 restart automatically. The
+> ON_SOURCE_REG (Address AEH) is 0x40 after the automatic restart which
+> says that the RK818 was started by ON_PLUG_IN event.
+> Is there a possibility to configure the RK818 that it will not start
+> automatically in this case?
+>
+> Regards,
+> Wadim
+>
+> On 17.10.2016 11:03, Jianhong Chen wrote:
+>> DEV_OFF and DEV_OFF_RST functions for RK808 are designed error that
+>> only DEV_OFF_RST can power off supplies. RK818 has been fixed this
+>> issue, so that DEV_OFF is used to power off supplies.
 >>
->> Here it is:
+>> Signed-off-by: Jianhong Chen <chenjh@rock-chips.com>
+>> ---
+>>   drivers/mfd/rk808.c       | 23 ++++++++++++++++++++++-
+>>   include/linux/mfd/rk808.h |  1 +
+>>   2 files changed, 23 insertions(+), 1 deletion(-)
 >>
->> http://www.spinics.net/lists/linux-tegra/msg27862.html
+>> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+>> index 0f8acc5..2c9acdb 100644
+>> --- a/drivers/mfd/rk808.c
+>> +++ b/drivers/mfd/rk808.c
+>> @@ -290,6 +290,24 @@ static void rk808_device_shutdown(void)
+>>   		dev_err(&rk808_i2c_client->dev, "power off error!\n");
+>>   }
+>>   
+>> +static void rk818_device_shutdown(void)
+>> +{
+>> +	int ret;
+>> +	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+>> +
+>> +	if (!rk808) {
+>> +		dev_warn(&rk808_i2c_client->dev,
+>> +			 "have no rk818, so do nothing here\n");
+>> +		return;
+>> +	}
+>> +
+>> +	ret = regmap_update_bits(rk808->regmap,
+>> +				 RK818_DEVCTRL_REG,
+>> +				 DEV_OFF, DEV_OFF);
+>> +	if (ret)
+>> +		dev_err(&rk808_i2c_client->dev, "power off error!\n");
+>> +}
+>> +
+>>   static const struct of_device_id rk808_of_match[] = {
+>>   	{ .compatible = "rockchip,rk808" },
+>>   	{ .compatible = "rockchip,rk818" },
+>> @@ -304,6 +322,7 @@ static int rk808_probe(struct i2c_client *client,
+>>   	struct rk808 *rk808;
+>>   	const struct rk808_reg_data *pre_init_reg;
+>>   	const struct mfd_cell *cells;
+>> +	void (*pm_pwroff_fn)(void);
+>>   	int nr_pre_init_regs;
+>>   	int nr_cells;
+>>   	int pm_off = 0;
+>> @@ -331,6 +350,7 @@ static int rk808_probe(struct i2c_client *client,
+>>   		nr_pre_init_regs = ARRAY_SIZE(rk808_pre_init_reg);
+>>   		cells = rk808s;
+>>   		nr_cells = ARRAY_SIZE(rk808s);
+>> +		pm_pwroff_fn = rk808_device_shutdown;
+>>   		break;
+>>   	case RK818_ID:
+>>   		rk808->regmap_cfg = &rk818_regmap_config;
+>> @@ -339,6 +359,7 @@ static int rk808_probe(struct i2c_client *client,
+>>   		nr_pre_init_regs = ARRAY_SIZE(rk818_pre_init_reg);
+>>   		cells = rk818s;
+>>   		nr_cells = ARRAY_SIZE(rk818s);
+>> +		pm_pwroff_fn = rk818_device_shutdown;
+>>   		break;
+>>   	default:
+>>   		dev_err(&client->dev, "Unsupported RK8XX ID %lu\n",
+>> @@ -393,7 +414,7 @@ static int rk808_probe(struct i2c_client *client,
+>>   				"rockchip,system-power-controller");
+>>   	if (pm_off && !pm_power_off) {
+>>   		rk808_i2c_client = client;
+>> -		pm_power_off = rk808_device_shutdown;
+>> +		pm_power_off = pm_pwroff_fn;
+>>   	}
+>>   
+>>   	return 0;
+>> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+>> index 6d435a3..83701ef 100644
+>> --- a/include/linux/mfd/rk808.h
+>> +++ b/include/linux/mfd/rk808.h
+>> @@ -290,6 +290,7 @@ enum rk818_reg {
+>>   #define SWITCH2_EN	BIT(6)
+>>   #define SWITCH1_EN	BIT(5)
+>>   #define DEV_OFF_RST	BIT(3)
+>> +#define DEV_OFF		BIT(0)
+>>   
+>>   #define VB_LO_ACT		BIT(4)
+>>   #define VB_LO_SEL_3500MV	(7 << 0)
 >
-> thanks ... I'm still not sure about the placeholder though, aka needing an
-> undocumented subnode to make a Linux error message silent.
-No it won't and the other error message. I have enabled the i2c debug, =
-
-and would report what it is going on.
-Just it is too late yesterday, I have no time to report that.
->
-> In the thread you pointed to I also did not see any dt-maintainer involve=
-ment
-> pointing one way or another, but spinics is often not easy to navigate
-> threads, so I may have missed that.
 >
 >
->>> Another option could be to just make of_i2c_register_device silent if
->>> of_modalias_node returns -ENODEV?
->
->
-> Heiko
->
->>>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>>> Cc: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>> Cc: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
->>>> ---
->>>>
->>>>  arch/arm/boot/dts/rk3288.dtsi | 5 +++++
->>>>  1 file changed, 5 insertions(+)
->>>>
->>>> diff --git a/arch/arm/boot/dts/rk3288.dtsi
->>>> b/arch/arm/boot/dts/rk3288.dtsi
->>>> index 2f814ffeb605..94f4b7eecca2 100644
->>>> --- a/arch/arm/boot/dts/rk3288.dtsi
->>>> +++ b/arch/arm/boot/dts/rk3288.dtsi
->>>> @@ -1075,6 +1075,11 @@
->>>>
->>>>  				};
->>>>  			=
-
->>>>  			};
->>>>  		=
-
->>>>  		};
->>>>
->>>> +
->>>> +		i2c-bus {
->>>> +			#address-cells =3D <1>;
->>>> +			#size-cells =3D <0>;
->>>> +		};
->>>>
->>>>  	};
->>>>  	=
-
->>>>  	hdmi: hdmi@ff980000 {
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
-
--- =
-
-Randy Li
-The third produce department
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-This email message, including any attachments, is for the sole
-use of the intended recipient(s) and may contain confidential and
-privileged information. Any unauthorized review, use, disclosure or
-distribution is prohibited. If you are not the intended recipient, please
-contact the sender by reply e-mail and destroy all copies of the original
-message. [Fuzhou Rockchip Electronics, INC. China mainland]
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
