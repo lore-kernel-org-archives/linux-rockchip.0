@@ -1,40 +1,37 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 0/2] Add MK808 RK3066 device
-Date: Fri, 21 Oct 2016 18:18:10 +0200
-Message-ID: <1671843.4nkAJvukGm@phil>
-References: <cover.1475957884.git.paweljarosz3691@gmail.com>
+Subject: Re: [PATCH v1 1/2] include: dt-bindings: Add GPIO pin index definition for rockchip pinctrl
+Date: Fri, 21 Oct 2016 23:32:57 +0200
+Message-ID: <1517801.GjkO3No2Gs@phil>
+References: <1473210053-23743-1-git-send-email-andy.yan@rock-chips.com> <13068948.jkWM1OvpR7@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1475957884.git.paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <13068948.jkWM1OvpR7@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gU2Ftc3RhZywgOC4gT2t0b2JlciAyMDE2LCAyMjoyMTo0NyBDRVNUIHNjaHJpZWIgUGF3ZcWC
-IEphcm9zejoKPiBBZGQgTUs4MDggUkszMDY2IGRldmljZQo+IAo+IFRoaXMgcGF0Y2hzZXQgYWRk
-cyBzdXBwb3J0IGZvciBSaWtvbWFnaWMgTUs4MDggdjEgZGV2aWNlIHdpdGggUks5MDEgd2lmaS4K
-PiAKPiBJdCBpcyBoZG1pIHN0aWNrIHdpdGggdHdvIHVzYiBwb3J0cyhob3N0IGFuZCBvdGcpLCBz
-ZG1tYywgd2lmaSBhbmQgdWFydAo+IG9uYm9hcmQuCj4gCj4gSXQgaXMgUkszMDY2IGJhc2VkLgo+
-IAo+IFBhd2XFgiBKYXJvc3ogKDIpOgo+ICAgZGV2aWNldHJlZTogQWRkIHZlbmRvciBwcmVmaXgg
-Zm9yIFJpa29tYWdpYwo+ICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBBZGQgcmszMDY2IE1LODA4IGJv
-YXJkCgphcHBsaWVkIGJvdGggcGF0Y2hlcyB3aXRoIHJlY2VpdmVkIHRhZ3MgZm9yIDQuMTAuCgpJ
-ZiB5b3UgaGF2ZSB0aW1lIGNvdWxkIHRyeSB0byBkbyBhIGZvbGxvd3VwIHBhdGNoLCBhZGRpbmcg
-KGFuZCB0ZXN0aW5nKSB0aGUgCnVzYnBoeSBzdXBwbGllcyBwbGVhc2U/CgpTaG91bGQgYmUgbGlr
-ZQoKJnVzYnBoeTAgewoJcGh5LXN1cHBseSA9IDwmdmNjX290Zz47Cn07CgomdXNicGh5MSB7Cglw
-aHktc3VwcGx5ID0gPCZ2Y2NfaG9zdD47Cn07CgpUaGF0IHdheSB3ZSBjYW4gZHJvcCB0aGUgcmVn
-dWxhdG9yLWFsd2F5cy1vbiBwcm9wZXJ0eSBmcm9tIHRob3NlIHR3byBzdXBwbGllcy4KCgpUaGFu
-a3MKSGVpa28KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Am Mittwoch, 12. Oktober 2016, 00:00:12 CEST schrieb Heiko Stuebner:
+> Am Mittwoch, 7. September 2016, 09:00:53 CEST schrieb Andy Yan:
+> > Add gpio pin index definition to make it easier to describe
+> > GPIO in dts.
+> > 
+> > Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> just as a heads up, as I didn't respond yet:
+> 
+> Looks good and I'll take them, I just want to wait for the merge-window to
+> close (should be the coming sunday), to be able to put the header change in
+> a shared branch for the case that other users appear during the 4.10 cycle.
+
+I've now applied both patches for 4.10
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
