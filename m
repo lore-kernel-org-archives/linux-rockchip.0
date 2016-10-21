@@ -1,142 +1,133 @@
-From: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Subject: Re: [PATCH] drm: convert DT component matching to
- component_match_add_release()
-Date: Fri, 21 Oct 2016 16:23:12 +0100
-Message-ID: <20161021152312.GB1041@n2100.armlinux.org.uk>
-References: <E1bwo6l-0005Io-Q1@rmk-PC.armlinux.org.uk>
- <CAOw6vbK=z3wJKTh8jZoU2Gj1PtTLLH_sAUUShbsxL=Qi7d+FLw@mail.gmail.com>
- <20161020215022.GZ1041@n2100.armlinux.org.uk>
- <CAOw6vbJ64JOugR2b3R87pFRDGDVs9HM3uZJM2z1-jHyhPf6WOA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAOw6vbJ64JOugR2b3R87pFRDGDVs9HM3uZJM2z1-jHyhPf6WOA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xinwei Kong <kong.kongxinwei-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Mali DP Maintainers <malidp-VeJGdqYn5oNWk0Htik3J/w@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chen Feng <puck.chen-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Christian Gmeiner <christian.gmeiner-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Linux ARM Kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v5 2/2] timers: Fix documentation for schedule_timeout() and similar
+Date: Fri, 21 Oct 2016 08:58:51 -0700
+Message-ID: <1477065531-30342-2-git-send-email-dianders@chromium.org>
+References: <1477065531-30342-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1477065531-30342-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thomas Gleixner <tglx@linutronix.de>, John Stultz <john.stultz@linaro.org>
+Cc: Andreas Mohr <andi@lisas.de>, briannorris@chromium.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, linux-rockchip@lists.infradead.org, linux@roeck-us.net, heiko@sntech.de, broonie@kernel.org, djkurtz@chromium.org, tskd08@gmail.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Oct 20, 2016 at 07:15:56PM -0400, Sean Paul wrote:
-> On Thu, Oct 20, 2016 at 5:50 PM, Russell King - ARM Linux
-> <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org> wrote:
-> > On Thu, Oct 20, 2016 at 04:39:04PM -0400, Sean Paul wrote:
-> >> On Wed, Oct 19, 2016 at 6:28 AM, Russell King
-> >> <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org> wrote:
-> >> > Convert DT component matching to use component_match_add_release().
-> >> >
-> >> > Signed-off-by: Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-> >> > ---
-> >> > Can we please get this patch from May merged into the drm-misc or
-> >> > whatever trees so that we don't end up with conflicts?  I've no idea
-> >> > who looks after drm-misc, as they have _still_ failed to add
-> >> > themselves to MAINTAINERS.
-> >>
-> >> I think Daniel explained pretty clearly why this wasn't happening in
-> >> the previous thread.
-> >>
-> >> Next time you send a v2, can you please mark it as such and include a
-> >> "Changes in v2" section?
-> >
-> > Why - nothing's changed other than a rebase onto 4.9-rc1.  This isn't
-> > a "I've changed it in XYZ way, so here's a new copy".
-> 
-> 
-> Changes in v2: None
-> 
-> Is still useful since:
-> a) the diffstat is different from v1, which necessitates me going
-> through both versions to see what's changed from the previous reviews
-> (only to find out myself that it's been rebased and a function has
-> changed names)
+The documentatoin for schedule_timeout(), schedule_hrtimeout(), and
+schedule_hrtimeout_range() all claimed that the routines couldn't
+possibly return early if the task state was TASK_UNINTERRUPTIBLE.  This
+was simply not true since anyone calling wake_up_process() would cause
+those routines to exit early.
 
-Sorry, but I don't track in any fine detail what the changes are
-between patches when I bring them forward: I have far too many patches
-to do that (I have 300 right now) and I never know whether they're
-going to result in a pull request or not.  It means finding some way
-to manually attach a change log to each patch I send out, which will
-be very time consuming.  I'd rather not send patches out than jump
-through hoops like that, especially when the reason is that the
-previous version was ignored.
+As some evidence that the documentation was broken (not the code):
+- If we changed the code to match the documentation, msleep() would be
+  identical to schedule_timeout_uninterruptible() and
+  msleep_interruptible() would be identical to
+  schedule_timeout_interruptible().  That doesn't seem likely to have
+  been the intention.
+- The schedule() function sleeps until a task is woken up.  Logically,
+  one would expect that the schedule_timeout() function would sleep
+  until a task is woken up or a timeout occurrs.
 
-> b) in June, you said you were going to roll a new version with the
-> common OF bits extracted. it's nice to know at the outset that this
-> has/hasn't happened
+As part of the above observation, it can be seen that
+schedule_hrtimeout() and schedule_hrtimeout_range() might return -EINTR
+even if the task state was TASK_UNINTERRUPTIBLE.  This isn't terrible
+behavior so we'll document it and keep it as-is.  After all, trying to
+match schedule_timeout() and return the time left would incure a bunch
+of extra calculation cost that isn't needed in all cases.
 
-Now if you were following the rest of it, rather than just random parts
-that suited you, you'd have noticed that I posted the new version, but
-that caused more issues, so I publically said I was reverting back to
-the original version.
+Suggested-by: Daniel Kurtz <djkurtz@chromium.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+Changes in v5: None
+Changes in v4:
+- Fixed stray double quotes.
+- Updated wording as per Thomas Gleixner.
 
-> Also, prefacing the subject with [PATCH v2] or [PATCH RESEND] lets me
-> know there is prior history with the change. Reading the previous
-> version is helpful to see what reviewer's concerns were, and whether
-> they've been addressed.
+Changes in v3:
+- Documentation fix new for v3.
 
-Yea, I'm very bad at changing the subject line in that way, and I'm
-getting worse at it.  Sorry, I try my best, but I can't do better than
-that.
+ kernel/time/hrtimer.c | 20 ++++++++++++++------
+ kernel/time/timer.c   | 11 +++++++----
+ 2 files changed, 21 insertions(+), 10 deletions(-)
 
-> 
-> 
-> > It's being
-> > posted in the hope that someone will finally either comment on it or
-> > merge the damn thing, rather than ignoring it was done when it was
-> > last posted.
-> >
-> >> >  drivers/gpu/drm/arm/hdlcd_drv.c                 |  3 ++-
-> >> >  drivers/gpu/drm/arm/malidp_drv.c                |  4 +++-
-> >> >  drivers/gpu/drm/armada/armada_drv.c             |  2 +-
-> >> >  drivers/gpu/drm/drm_of.c                        | 28 +++++++++++++++++++++++--
-> >> >  drivers/gpu/drm/etnaviv/etnaviv_drv.c           |  5 +++--
-> >> >  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  7 ++++---
-> >> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  4 +++-
-> >> >  drivers/gpu/drm/msm/msm_drv.c                   | 12 ++++++-----
-> >> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ++++--
-> >> >  drivers/gpu/drm/sti/sti_drv.c                   |  5 +++--
-> >> >  drivers/gpu/drm/sun4i/sun4i_drv.c               |  3 ++-
-> >> >  drivers/gpu/drm/tilcdc/tilcdc_external.c        |  4 +++-
-> >> >  include/drm/drm_of.h                            | 12 +++++++++++
-> >> >  13 files changed, 73 insertions(+), 22 deletions(-)
-> >> >
-> >> > diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> >> > index fb6a418ce6be..6477d1a65266 100644
-> >> > --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> >> > +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> >> > @@ -453,7 +453,8 @@ static int hdlcd_probe(struct platform_device *pdev)
-> >> >                 return -EAGAIN;
-> >> >         }
-> >> >
-> >> > -       component_match_add(&pdev->dev, &match, compare_dev, port);
-> >> > +       drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
-> >> > +       of_node_put(port);
-> >>
-> >> There's no mention in your commit message about fixing these node leaks.
-> >
-> > Isn't that kind-of the whole point of this patch?
-> >
-> 
-> Not according to the commit msg, it isn't.
-> 
-> You could have just done the of_node_put adds/relocations without
-> wrapping component_match_add_release.
-
-No, adding the of_node_put() there without the other changes means that
-the OF layer can drop the "port" device node, kfree() it, and reallocate
-it as a different device node - which means that we can end up matching
-some random other device rather than the intended one.  Hence, it is
-_fundamentally_ a part of this patch and isn't an independent change.
-
+diff --git a/kernel/time/hrtimer.c b/kernel/time/hrtimer.c
+index bb5ec425dfe0..08be5c99d26b 100644
+--- a/kernel/time/hrtimer.c
++++ b/kernel/time/hrtimer.c
+@@ -1742,15 +1742,19 @@ schedule_hrtimeout_range_clock(ktime_t *expires, u64 delta,
+  * You can set the task state as follows -
+  *
+  * %TASK_UNINTERRUPTIBLE - at least @timeout time is guaranteed to
+- * pass before the routine returns.
++ * pass before the routine returns unless the current task is explicitly
++ * woken up, (e.g. by wake_up_process()).
+  *
+  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
+- * delivered to the current task.
++ * delivered to the current task or the current task is explicitly woken
++ * up.
+  *
+  * The current task state is guaranteed to be TASK_RUNNING when this
+  * routine returns.
+  *
+- * Returns 0 when the timer has expired otherwise -EINTR
++ * Returns 0 when the timer has expired. If the task was woken before the
++ * timer expired by a signal (only possible in state TASK_INTERRUPTIBLE) or
++ * by an explicit wakeup, it returns -EINTR.
+  */
+ int __sched schedule_hrtimeout_range(ktime_t *expires, u64 delta,
+ 				     const enum hrtimer_mode mode)
+@@ -1772,15 +1776,19 @@ EXPORT_SYMBOL_GPL(schedule_hrtimeout_range);
+  * You can set the task state as follows -
+  *
+  * %TASK_UNINTERRUPTIBLE - at least @timeout time is guaranteed to
+- * pass before the routine returns.
++ * pass before the routine returns unless the current task is explicitly
++ * woken up, (e.g. by wake_up_process()).
+  *
+  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
+- * delivered to the current task.
++ * delivered to the current task or the current task is explicitly woken
++ * up.
+  *
+  * The current task state is guaranteed to be TASK_RUNNING when this
+  * routine returns.
+  *
+- * Returns 0 when the timer has expired otherwise -EINTR
++ * Returns 0 when the timer has expired. If the task was woken before the
++ * timer expired by a signal (only possible in state TASK_INTERRUPTIBLE) or
++ * by an explicit wakeup, it returns -EINTR.
+  */
+ int __sched schedule_hrtimeout(ktime_t *expires,
+ 			       const enum hrtimer_mode mode)
+diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+index ab65e7bcc2c2..330214a19beb 100644
+--- a/kernel/time/timer.c
++++ b/kernel/time/timer.c
+@@ -1691,11 +1691,12 @@ static void process_timeout(unsigned long __data)
+  * You can set the task state as follows -
+  *
+  * %TASK_UNINTERRUPTIBLE - at least @timeout jiffies are guaranteed to
+- * pass before the routine returns. The routine will return 0
++ * pass before the routine returns unless the current task is explicitly
++ * woken up, (e.g. by wake_up_process())".
+  *
+  * %TASK_INTERRUPTIBLE - the routine may return early if a signal is
+- * delivered to the current task. In this case the remaining time
+- * in jiffies will be returned, or 0 if the timer expired in time
++ * delivered to the current task or the current task is explicitly woken
++ * up.
+  *
+  * The current task state is guaranteed to be TASK_RUNNING when this
+  * routine returns.
+@@ -1704,7 +1705,9 @@ static void process_timeout(unsigned long __data)
+  * the CPU away without a bound on the timeout. In this case the return
+  * value will be %MAX_SCHEDULE_TIMEOUT.
+  *
+- * In all cases the return value is guaranteed to be non-negative.
++ * Returns 0 when the timer has expired otherwise the remaining time in
++ * jiffies will be returned.  In all cases the return value is guaranteed
++ * to be non-negative.
+  */
+ signed long __sched schedule_timeout(signed long timeout)
+ {
 -- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+2.8.0.rc3.226.g39d4020
