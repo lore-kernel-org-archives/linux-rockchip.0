@@ -1,40 +1,72 @@
-From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] i2c: rk3x: Give the tuning value 0 during rk3x_i2c_v0_calc_timings
-Date: Sat, 22 Oct 2016 16:43:42 +0800
-Message-ID: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/2] Use macros to describe gpios on rockchip platform
+Date: Sat, 22 Oct 2016 20:51:46 +0800
+Message-ID: <1477140706-6886-1-git-send-email-andy.yan@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We found a bug that i2c transfer sometimes failed on 3066a board with
-stabel-4.8, the con register would be updated by uninitialized tuning
-value, it made the i2c transfer failed.
 
-So give the tuning value to be zero during rk3x_i2c_v0_calc_timings.
+As patch 150696e2e3a4("Add GPIO pin index definition for rockchip pinctrl") has
+been applied, now we can use these macros to describe the corresponding gpio
+ranther than hard code numbers, this will make the dts easier to read and
+write.
 
-Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/i2c/busses/i2c-rk3x.c | 2 ++
- 1 file changed, 2 insertions(+)
+Some ideas from Krzysztof's patch on EXYNOS[0].
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 50702c7..df22066 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -694,6 +694,8 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
- 	t_calc->div_low--;
- 	t_calc->div_high--;
- 
-+	/* Give the tuning value 0, that would not update con register */
-+	t_calc->tuning = 0;
- 	/* Maximum divider supported by hw is 0xffff */
- 	if (t_calc->div_low > 0xffff) {
- 		t_calc->div_low = 0xffff;
+[0]https://lkml.org/lkml/2016/9/4/71
+
+
+
+Andy Yan (2):
+  ARM: dts: rockchip: use pin constants to describe gpios
+  ARM64: dts: rockchip: use pin constants to describe gpios
+
+ arch/arm/boot/dts/rk3036-evb.dts                   |  2 +-
+ arch/arm/boot/dts/rk3036-kylin.dts                 | 10 ++++-----
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts             |  6 +++---
+ arch/arm/boot/dts/rk3066a-marsboard.dts            |  2 +-
+ arch/arm/boot/dts/rk3066a-mk808.dts                | 10 ++++-----
+ arch/arm/boot/dts/rk3066a-rayeager.dts             | 12 +++++------
+ arch/arm/boot/dts/rk3188-px3-evb.dts               |  4 ++--
+ arch/arm/boot/dts/rk3188-radxarock.dts             | 16 +++++++--------
+ arch/arm/boot/dts/rk3229-evb.dts                   |  2 +-
+ arch/arm/boot/dts/rk3288-evb-act8846.dts           |  4 ++--
+ arch/arm/boot/dts/rk3288-evb.dtsi                  | 14 ++++++-------
+ arch/arm/boot/dts/rk3288-fennec.dts                |  4 ++--
+ arch/arm/boot/dts/rk3288-firefly-beta.dts          |  2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi  |  2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload.dts        | 24 +++++++++++-----------
+ arch/arm/boot/dts/rk3288-firefly.dts               |  2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi              | 16 +++++++--------
+ arch/arm/boot/dts/rk3288-miqi.dts                  |  8 ++++----
+ arch/arm/boot/dts/rk3288-popmetal.dts              |  2 +-
+ arch/arm/boot/dts/rk3288-r89.dts                   | 12 +++++------
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  4 ++--
+ arch/arm/boot/dts/rk3288-rock2-square.dts          | 12 +++++------
+ arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi  |  4 ++--
+ arch/arm/boot/dts/rk3288-veyron-brain.dts          |  8 ++++----
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi    | 10 ++++-----
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts            | 14 ++++++-------
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts          | 10 ++++-----
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts         |  6 +++---
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts         | 16 +++++++--------
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts          |  4 ++--
+ arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi         |  2 +-
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 10 ++++-----
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  8 ++++----
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       | 10 ++++-----
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |  8 ++++----
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    | 14 ++++++-------
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    |  4 ++--
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        | 16 +++++++--------
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  6 +++---
+ 39 files changed, 160 insertions(+), 160 deletions(-)
+
 -- 
-1.9.1
+2.7.4
 
 
 --
