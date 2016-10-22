@@ -1,103 +1,43 @@
-From: ayaka <ayaka@soulik.info>
-Subject: Re: [PATCH] ARM: dts: rockchip: add i2c-bus subnode to edp
-Date: Sat, 22 Oct 2016 11:52:45 +0800
-Message-ID: <1026cfe7-836f-7e78-af71-54c858b6a95e@soulik.info>
-References: <1476950845-28242-1-git-send-email-tomeu.vizoso@collabora.com>
- <7604646.6yosK0XMNL@diego>
- <6083453f-08e1-643a-9638-1db38c704aa5@collabora.com>
- <1681294.eoXpQL8f8l@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1681294.eoXpQL8f8l@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jon Hunter <jonathanh@nvidia.com>, linux-arm-kernel@lists.infradead.org
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] i2c: rk3x: Give the tuning value 0 during rk3x_i2c_v0_calc_timings
+Date: Sat, 22 Oct 2016 16:43:42 +0800
+Message-ID: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org
+Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+We found a bug that i2c transfer sometimes failed on 3066a board with
+stabel-4.8, the con register would be updated by uninitialized tuning
+value, it made the i2c transfer failed.
 
-On 10/21/2016 04:25 PM, Heiko Stuebner wrote:
-> Am Donnerstag, 20. Oktober 2016, 15:47:56 CEST schrieb Tomeu Vizoso:
->> On 10/20/2016 03:45 PM, Heiko Stübner wrote:
->>> Am Donnerstag, 20. Oktober 2016, 10:07:25 schrieb Tomeu Vizoso:
->>>> Add an empty 'i2c-bus' subnode to the edp node just so that the I2C core
->>>> doesn't attemp to parse the 'ports' subnode as containing i2c devices.
->>>>
->>>> This is to avoid spurious failure messages such as:
->>>>
->>>> i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
->>> On the one hand, the edp really has an i2c bus - with its only client the
->>> EDID listening at 0x50 (and maybe 0x30).
->>>
->>> On the other hand, adding an empty bus to the (implementation independent)
->>> devicetree just to make the Linux i2c subsystem happy sounds heavily like
->>> a
->>> implementation-specific hack, as the edp i2c bus doesn't leak into the
->>> outside world otherwise.
->>>
->>> I guess this empty i2c bus not being part of the binding document points
->>> heavily into the implementation-specific corner :-) .
->>>
->>> My short search on other patches touching this didn't reveal anything but
->>> maybe this was already discussed somewhere and found to be ok?
->> Here it is:
->>
->> http://www.spinics.net/lists/linux-tegra/msg27862.html
-> thanks ... I'm still not sure about the placeholder though, aka needing an
-> undocumented subnode to make a Linux error message silent.
-Sorry, I report the error result, it would work.
+So give the tuning value to be zero during rk3x_i2c_v0_calc_timings.
 
-And about the problem at this thread beginning, I found I have to use 
-something like Xserver to access DRM or the panel would not be power on. 
-The legacy fbdev won't help.
-But there is still problem to be solved, so the eDP panel for firefly is 
-not ready yet.
->
-> In the thread you pointed to I also did not see any dt-maintainer involvement
-> pointing one way or another, but spinics is often not easy to navigate
-> threads, so I may have missed that.
->
->
->>> Another option could be to just make of_i2c_register_device silent if
->>> of_modalias_node returns -ENODEV?
->
-> Heiko
->
->>>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
->>>> Cc: Randy Li <randy.li@rock-chips.com>
->>>> Cc: Jon Hunter <jonathanh@nvidia.com>
->>>> ---
->>>>
->>>>   arch/arm/boot/dts/rk3288.dtsi | 5 +++++
->>>>   1 file changed, 5 insertions(+)
->>>>
->>>> diff --git a/arch/arm/boot/dts/rk3288.dtsi
->>>> b/arch/arm/boot/dts/rk3288.dtsi
->>>> index 2f814ffeb605..94f4b7eecca2 100644
->>>> --- a/arch/arm/boot/dts/rk3288.dtsi
->>>> +++ b/arch/arm/boot/dts/rk3288.dtsi
->>>> @@ -1075,6 +1075,11 @@
->>>>
->>>>   				};
->>>>   			
->>>>   			};
->>>>   		
->>>>   		};
->>>>
->>>> +
->>>> +		i2c-bus {
->>>> +			#address-cells = <1>;
->>>> +			#size-cells = <0>;
->>>> +		};
->>>>
->>>>   	};
->>>>   	
->>>>   	hdmi: hdmi@ff980000 {
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
+Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/i2c/busses/i2c-rk3x.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 50702c7..df22066 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -694,6 +694,8 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+ 	t_calc->div_low--;
+ 	t_calc->div_high--;
+ 
++	/* Give the tuning value 0, that would not update con register */
++	t_calc->tuning = 0;
+ 	/* Maximum divider supported by hw is 0xffff */
+ 	if (t_calc->div_low > 0xffff) {
+ 		t_calc->div_low = 0xffff;
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
