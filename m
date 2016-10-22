@@ -1,37 +1,103 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 1/2] include: dt-bindings: Add GPIO pin index definition for rockchip pinctrl
-Date: Fri, 21 Oct 2016 23:32:57 +0200
-Message-ID: <1517801.GjkO3No2Gs@phil>
-References: <1473210053-23743-1-git-send-email-andy.yan@rock-chips.com> <13068948.jkWM1OvpR7@phil>
+From: ayaka <ayaka@soulik.info>
+Subject: Re: [PATCH] ARM: dts: rockchip: add i2c-bus subnode to edp
+Date: Sat, 22 Oct 2016 11:52:45 +0800
+Message-ID: <1026cfe7-836f-7e78-af71-54c858b6a95e@soulik.info>
+References: <1476950845-28242-1-git-send-email-tomeu.vizoso@collabora.com>
+ <7604646.6yosK0XMNL@diego>
+ <6083453f-08e1-643a-9638-1db38c704aa5@collabora.com>
+ <1681294.eoXpQL8f8l@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <13068948.jkWM1OvpR7@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1681294.eoXpQL8f8l@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jon Hunter <jonathanh@nvidia.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 12. Oktober 2016, 00:00:12 CEST schrieb Heiko Stuebner:
-> Am Mittwoch, 7. September 2016, 09:00:53 CEST schrieb Andy Yan:
-> > Add gpio pin index definition to make it easier to describe
-> > GPIO in dts.
-> > 
-> > Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> just as a heads up, as I didn't respond yet:
-> 
-> Looks good and I'll take them, I just want to wait for the merge-window to
-> close (should be the coming sunday), to be able to put the header change in
-> a shared branch for the case that other users appear during the 4.10 cycle.
 
-I've now applied both patches for 4.10
+On 10/21/2016 04:25 PM, Heiko Stuebner wrote:
+> Am Donnerstag, 20. Oktober 2016, 15:47:56 CEST schrieb Tomeu Vizoso:
+>> On 10/20/2016 03:45 PM, Heiko Stübner wrote:
+>>> Am Donnerstag, 20. Oktober 2016, 10:07:25 schrieb Tomeu Vizoso:
+>>>> Add an empty 'i2c-bus' subnode to the edp node just so that the I2C core
+>>>> doesn't attemp to parse the 'ports' subnode as containing i2c devices.
+>>>>
+>>>> This is to avoid spurious failure messages such as:
+>>>>
+>>>> i2c i2c-6: of_i2c: modalias failure on /dp@ff970000/ports
+>>> On the one hand, the edp really has an i2c bus - with its only client the
+>>> EDID listening at 0x50 (and maybe 0x30).
+>>>
+>>> On the other hand, adding an empty bus to the (implementation independent)
+>>> devicetree just to make the Linux i2c subsystem happy sounds heavily like
+>>> a
+>>> implementation-specific hack, as the edp i2c bus doesn't leak into the
+>>> outside world otherwise.
+>>>
+>>> I guess this empty i2c bus not being part of the binding document points
+>>> heavily into the implementation-specific corner :-) .
+>>>
+>>> My short search on other patches touching this didn't reveal anything but
+>>> maybe this was already discussed somewhere and found to be ok?
+>> Here it is:
+>>
+>> http://www.spinics.net/lists/linux-tegra/msg27862.html
+> thanks ... I'm still not sure about the placeholder though, aka needing an
+> undocumented subnode to make a Linux error message silent.
+Sorry, I report the error result, it would work.
 
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+And about the problem at this thread beginning, I found I have to use 
+something like Xserver to access DRM or the panel would not be power on. 
+The legacy fbdev won't help.
+But there is still problem to be solved, so the eDP panel for firefly is 
+not ready yet.
+>
+> In the thread you pointed to I also did not see any dt-maintainer involvement
+> pointing one way or another, but spinics is often not easy to navigate
+> threads, so I may have missed that.
+>
+>
+>>> Another option could be to just make of_i2c_register_device silent if
+>>> of_modalias_node returns -ENODEV?
+>
+> Heiko
+>
+>>>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+>>>> Cc: Randy Li <randy.li@rock-chips.com>
+>>>> Cc: Jon Hunter <jonathanh@nvidia.com>
+>>>> ---
+>>>>
+>>>>   arch/arm/boot/dts/rk3288.dtsi | 5 +++++
+>>>>   1 file changed, 5 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm/boot/dts/rk3288.dtsi
+>>>> b/arch/arm/boot/dts/rk3288.dtsi
+>>>> index 2f814ffeb605..94f4b7eecca2 100644
+>>>> --- a/arch/arm/boot/dts/rk3288.dtsi
+>>>> +++ b/arch/arm/boot/dts/rk3288.dtsi
+>>>> @@ -1075,6 +1075,11 @@
+>>>>
+>>>>   				};
+>>>>   			
+>>>>   			};
+>>>>   		
+>>>>   		};
+>>>>
+>>>> +
+>>>> +		i2c-bus {
+>>>> +			#address-cells = <1>;
+>>>> +			#size-cells = <0>;
+>>>> +		};
+>>>>
+>>>>   	};
+>>>>   	
+>>>>   	hdmi: hdmi@ff980000 {
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
