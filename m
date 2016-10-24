@@ -1,70 +1,29 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rk3399_gru_sound: Fix non static symbol warning" to the asoc tree
-Date: Mon, 24 Oct 2016 19:03:36 +0100
-Message-ID: <E1byjay-000129-Lg@debutante>
-References: <1476717318-12684-1-git-send-email-weiyj.lk@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476717318-12684-1-git-send-email-weiyj.lk@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] i2c: rk3x: Give the tuning value 0 during rk3x_i2c_v0_calc_timings
+Date: Mon, 24 Oct 2016 11:29:54 -0700
+Message-ID: <CAD=FV=VKJhaZtfT7CZBN1UE0-aHpJrMPYUDicO6vAcNUvfOP5g@mail.gmail.com>
+References: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Hi,
 
-   ASoC: rk3399_gru_sound: Fix non static symbol warning
+On Sat, Oct 22, 2016 at 1:43 AM, David Wu <david.wu@rock-chips.com> wrote:
+> We found a bug that i2c transfer sometimes failed on 3066a board with
+> stabel-4.8, the con register would be updated by uninitialized tuning
+> value, it made the i2c transfer failed.
+>
+> So give the tuning value to be zero during rk3x_i2c_v0_calc_timings.
+>
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> ---
+>  drivers/i2c/busses/i2c-rk3x.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 818f76831992198121c8949789c71a1adb02e329 Mon Sep 17 00:00:00 2001
-From: Wei Yongjun <weiyongjun1@huawei.com>
-Date: Mon, 17 Oct 2016 15:15:18 +0000
-Subject: [PATCH] ASoC: rk3399_gru_sound: Fix non static symbol warning
-
-Fixes the following sparse warning:
-
-sound/soc/rockchip/rk3399_gru_sound.c:41:14: warning:
- symbol 'rt5514_dmic_delay' was not declared. Should it be static?
-
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 9ed735a6cf49..0cbd23555ba4 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -38,7 +38,7 @@
- 
- #define SOUND_FS	256
- 
--unsigned int rt5514_dmic_delay;
-+static unsigned int rt5514_dmic_delay;
- 
- static struct snd_soc_jack rockchip_sound_jack;
- 
--- 
-2.8.1
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
