@@ -1,87 +1,42 @@
-From: Randy Li <ayaka@soulik.info>
-Subject: [PATCH] drm/rockchip: analogix_dp: add supports for regulators in edp IP
-Date: Sun, 23 Oct 2016 03:18:53 +0800
-Message-ID: <1477163933-13140-1-git-send-email-ayaka@soulik.info>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org
-Cc: mark.yao@rock-chips.com, heiko@sntech.de, airlied@linux.ie, randy.li@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Randy Li <ayaka@soulik.info>
+From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: How to implement a EGL or DRM display in VA-API driver
+Date: Mon, 24 Oct 2016 15:59:27 +0800
+Message-ID: <8cbe53b0-29af-bb45-7895-6e0a6c23d024@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "libva-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <libva-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Cc: gwenole.beauchesne-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, victorx.jaquez-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, "eddie.cai" <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?B?5p6X6YeR5Y+R?= <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "herman.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <herman.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, vjaquez-wEGTBA9jqPzQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-I found if eDP_AVDD_1V0 and eDP_AVDD_1V8 are not been power at
-RK3288, once trying to enable the pclk clock, the kernel would dead.
-This patch would try to enable them first. The eDP_AVDD_1V8 more
-likely to be applied to eDP phy, but I have no time to confirmed
-it yet.
+Hello:
+   I am going to implement a EGL and DRM display for Rockchip VA-API 
+driver. We do have a EGL implementation in Rockchip VA-API driver, but 
+it is implemented in the standard way, we did that as a X11 display.
+   I didn't see the usage of struct VADriverVTableEGL in gstreamer, and 
+I have no idea about where should I implement something functions like 
+eglExportDRMImageMESA().
+   The DRM seems more complex, the reason I want to use the DRM is that, 
+GPU would not work with the 4K video rendering, so the DRM means that 
+directly output the video into video controller in our platform. But 
+still have no idea what kind of thing I should implement in the VA-API 
+driver. It seems that the VA-API base library would open a DRM instance 
+for the driver, but leaving those configure for connector, encoder, 
+planes to VA-API driver?
+   Could you guys give me same sample code or example of those kind of 
+display in VA-API or the documents would help(I would not image there is 
+a VA-API documents)
 
-Signed-off-by: Randy Li <ayaka@soulik.info>
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 8548e82..6bf0441 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -17,6 +17,7 @@
- #include <linux/of_device.h>
- #include <linux/of_graph.h>
- #include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
- #include <linux/reset.h>
- #include <linux/clk.h>
- 
-@@ -70,6 +71,7 @@ struct rockchip_dp_device {
- 	struct clk               *grfclk;
- 	struct regmap            *grf;
- 	struct reset_control     *rst;
-+	struct regulator_bulk_data supplies[2];
- 
- 	struct work_struct	 psr_work;
- 	spinlock_t		 psr_lock;
-@@ -146,6 +148,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 
- 	cancel_work_sync(&dp->psr_work);
- 
-+	ret = regulator_bulk_enable(ARRAY_SIZE(dp->supplies),
-+			dp->supplies);
-+	if (ret) {
-+		dev_err(dp->dev, "failed to enable vdd supply %d\n", ret);
-+		return ret;
-+	}
-+
- 	ret = clk_prepare_enable(dp->pclk);
- 	if (ret < 0) {
- 		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
-@@ -168,6 +177,9 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
- 
- 	clk_disable_unprepare(dp->pclk);
- 
-+	regulator_bulk_disable(ARRAY_SIZE(dp->supplies),
-+			dp->supplies);
-+
- 	return 0;
- }
- 
-@@ -323,6 +335,19 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
- 		return PTR_ERR(dp->rst);
- 	}
- 
-+	dp->supplies[0].supply = "vcc";
-+	dp->supplies[1].supply = "vccio";
-+	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dp->supplies),
-+			dp->supplies);
-+	if (ret < 0) {
-+		dev_err(dev, "failed to get regulators: %d\n", ret);
-+	}
-+	ret = regulator_bulk_enable(ARRAY_SIZE(dp->supplies),
-+			dp->supplies);
-+	if (ret < 0) {
-+		dev_err(dev, "failed to enable regulators: %d\n", ret);
-+	}
-+
- 	ret = clk_prepare_enable(dp->pclk);
- 	if (ret < 0) {
- 		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
 -- 
-2.7.4
+Randy Li
+The third produce department
