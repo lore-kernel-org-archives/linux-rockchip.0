@@ -1,18 +1,18 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: constify snd_soc_ops structures" to the asoc tree
-Date: Mon, 24 Oct 2016 19:01:32 +0100
-Message-ID: <E1byjYy-0000sp-Cx@debutante>
-References: <1476543351-17858-4-git-send-email-Julia.Lawall@lip6.fr>
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-In-Reply-To: <1476543351-17858-4-git-send-email-Julia.Lawall@lip6.fr>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
+Subject: Applied "ASoC: rk3399_gru_sound: Fix non static symbol warning" to the asoc tree
+Date: Mon, 24 Oct 2016 19:03:36 +0100
+Message-ID: <E1byjay-000129-Lg@debutante>
+References: <1476717318-12684-1-git-send-email-weiyj.lk@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1476717318-12684-1-git-send-email-weiyj.lk@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wei Yongjun <weiyongjun1@huawei.com>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 The patch
 
-   ASoC: rockchip: constify snd_soc_ops structures
+   ASoC: rk3399_gru_sound: Fix non static symbol warning
 
 has been applied to the asoc tree at
 
@@ -37,125 +37,34 @@ to this mail.
 Thanks,
 Mark
 
-From 705e9994a437bbdaf655612f3526e3567db56bdd Mon Sep 17 00:00:00 2001
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Date: Sat, 15 Oct 2016 16:55:47 +0200
-Subject: [PATCH] ASoC: rockchip: constify snd_soc_ops structures
+From 818f76831992198121c8949789c71a1adb02e329 Mon Sep 17 00:00:00 2001
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Date: Mon, 17 Oct 2016 15:15:18 +0000
+Subject: [PATCH] ASoC: rk3399_gru_sound: Fix non static symbol warning
 
-Check for snd_soc_ops structures that are only stored in the ops field of a
-snd_soc_dai_link structure.  This field is declared const, so snd_soc_ops
-structures that have this property can be declared as const also.
+Fixes the following sparse warning:
 
-The semantic patch that makes this change is as follows:
-(http://coccinelle.lip6.fr/)
+sound/soc/rockchip/rk3399_gru_sound.c:41:14: warning:
+ symbol 'rt5514_dmic_delay' was not declared. Should it be static?
 
-// <smpl>
-@r disable optional_qualifier@
-identifier i;
-position p;
-@@
-static struct snd_soc_ops i@p = { ... };
-
-@ok1@
-identifier r.i;
-struct snd_soc_dai_link e;
-position p;
-@@
-e.ops = &i@p;
-
-@ok2@
-identifier r.i, e;
-position p;
-@@
-struct snd_soc_dai_link e[] = { ..., { .ops = &i@p, }, ..., };
-
-@bad@
-position p != {r.p,ok1.p,ok2.p};
-identifier r.i;
-struct snd_soc_ops e;
-@@
-e@i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r.i;
-@@
-static
-+const
- struct snd_soc_ops i = { ... };
-// </smpl>
-
-The effect on the layout of the .o files is shown by the following output
-of the size command, first before then after the transformation:
-
-   text    data     bss     dec     hex filename
-   5027    2488     416    7931    1efb sound/soc/rockchip/rk3399_gru_sound.o
-   5219    2312     416    7947    1f0b sound/soc/rockchip/rk3399_gru_sound.o
-
-   text    data     bss     dec     hex filename
-   3499    1648     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
-   3563    1584     384    5531    159b sound/soc/rockchip/rockchip_max98090.o
-
-   text    data     bss     dec     hex filename
-   3455    1536     384    5375    14ff sound/soc/rockchip/rockchip_rt5645.o
-   3519    1480     384    5383    1507 sound/soc/rockchip/rockchip_rt5645.o
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rk3399_gru_sound.c  | 6 +++---
- sound/soc/rockchip/rockchip_max98090.c | 2 +-
- sound/soc/rockchip/rockchip_rt5645.c   | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ sound/soc/rockchip/rk3399_gru_sound.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 0cbd23555ba4..3475c61a5fa0 100644
+index 9ed735a6cf49..0cbd23555ba4 100644
 --- a/sound/soc/rockchip/rk3399_gru_sound.c
 +++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -228,15 +228,15 @@ static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
- 	return 0;
- }
+@@ -38,7 +38,7 @@
  
--static struct snd_soc_ops rockchip_sound_max98357a_ops = {
-+static const struct snd_soc_ops rockchip_sound_max98357a_ops = {
- 	.hw_params = rockchip_sound_max98357a_hw_params,
- };
+ #define SOUND_FS	256
  
--static struct snd_soc_ops rockchip_sound_rt5514_ops = {
-+static const struct snd_soc_ops rockchip_sound_rt5514_ops = {
- 	.hw_params = rockchip_sound_rt5514_hw_params,
- };
+-unsigned int rt5514_dmic_delay;
++static unsigned int rt5514_dmic_delay;
  
--static struct snd_soc_ops rockchip_sound_da7219_ops = {
-+static const struct snd_soc_ops rockchip_sound_da7219_ops = {
- 	.hw_params = rockchip_sound_da7219_hw_params,
- };
- 
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index e70ffad07184..789d6f1e2b5f 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -119,7 +119,7 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 	return ret;
- }
- 
--static struct snd_soc_ops rk_aif1_ops = {
-+static const struct snd_soc_ops rk_aif1_ops = {
- 	.hw_params = rk_aif1_hw_params,
- };
- 
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index 440a8026346a..9e0c17805807 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -135,7 +135,7 @@ static int rk_init(struct snd_soc_pcm_runtime *runtime)
- 				     &headset_jack);
- }
- 
--static struct snd_soc_ops rk_aif1_ops = {
-+static const struct snd_soc_ops rk_aif1_ops = {
- 	.hw_params = rk_aif1_hw_params,
- };
+ static struct snd_soc_jack rockchip_sound_jack;
  
 -- 
 2.8.1
-
