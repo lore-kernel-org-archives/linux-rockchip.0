@@ -1,32 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: The PWM is broken at RK3288
-Date: Tue, 25 Oct 2016 14:58:11 +0200
-Message-ID: <25477004.WQlyuGeDoO@diego>
-References: <e2f9b965-e025-e260-48a2-b6968f96e11b@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <e2f9b965-e025-e260-48a2-b6968f96e11b@rock-chips.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Randy Li <randy.li@rock-chips.com>
-Cc: linux-pwm@vger.kernel.org, thierry.reding@gmail.com, linux-rockchip@lists.infradead.org, "ayaka@soulik.info" <ayaka@soulik.info>, contact@paulk.fr
+From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [PATCH] phy: Add reset callback for not generic phy
+Date: Tue, 25 Oct 2016 22:15:34 +0800
+Message-ID: <1477404934-7425-1-git-send-email-ayaka@soulik.info>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Randy,
+I forget to add a dummy function in case the CONFIG_GENERIC_PHY
+is disabled.
 
-Am Dienstag, 25. Oktober 2016, 20:47:49 schrieb Randy Li:
->    Recently, paulk told me that he meet a problem with PWM backlight at
-> rk3288, I do a test at EVB board a few minutes age, it is true. The
-> kernel 4.4 would work fine. So the pwm driver at next-20161020 maybe
-> broken. It is too late, so I have no time to confirm whether the PWM1
-> would have the same problem.
->    I would look into it in the other day and see whether I could do
-> something for that.
+Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+---
+ include/linux/phy/phy.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-just yesterday I booted a 4.9-rc2 on my rk3288-veyron-pinky Chromebook and the 
-display (backlight supplied by the pwm) was still working correctly. I haven't 
-tested any next-kernels yet though, so maybe something broke there.
+diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
+index ee1bed7..78bb0d7 100644
+--- a/include/linux/phy/phy.h
++++ b/include/linux/phy/phy.h
+@@ -253,6 +253,13 @@ static inline int phy_set_mode(struct phy *phy, enum phy_mode mode)
+ 	return -ENOSYS;
+ }
+ 
++static inline int phy_reset(struct phy *phy)
++{
++	if (!phy)
++		return 0;
++	return -ENOSYS;
++}
++
+ static inline int phy_get_bus_width(struct phy *phy)
+ {
+ 	return -ENOSYS;
+-- 
+2.7.4
 
-
-Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
