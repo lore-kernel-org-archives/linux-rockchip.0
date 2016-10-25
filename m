@@ -1,57 +1,32 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: rk3x: Give the tuning value 0 during
- rk3x_i2c_v0_calc_timings
-Date: Tue, 25 Oct 2016 11:12:49 +0200
-Message-ID: <20161025091249.GB1597@katana>
-References: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
+From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: The PWM is broken at RK3288
+Date: Tue, 25 Oct 2016 20:47:49 +0800
+Message-ID: <e2f9b965-e025-e260-48a2-b6968f96e11b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="7ZAtKRhVyVSsbBD2"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: heiko@sntech.de, dianders@chromium.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org" <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, contact-W9ppeneeCTY@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---7ZAtKRhVyVSsbBD2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Oct 22, 2016 at 04:43:42PM +0800, David Wu wrote:
-> We found a bug that i2c transfer sometimes failed on 3066a board with
-> stabel-4.8, the con register would be updated by uninitialized tuning
-> value, it made the i2c transfer failed.
->=20
-> So give the tuning value to be zero during rk3x_i2c_v0_calc_timings.
->=20
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-
-Added stable and applied to for-current, thanks!
-
-
---7ZAtKRhVyVSsbBD2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJYDyIQAAoJEBQN5MwUoCm2lMUP/i82Id2/URoH8Gh4QxcR6rpk
-d/IIEuYFLBjPZfD0iGYxIPH9iabKRTwi+x/c4TgFOA8YU+VybHnzu4ZPQLuIC79l
-5jBc+nkwLgwD69iud+V/7EJF3891C29BPx/UarK+HPouF2CnBUhlKhUtGRxun+AG
-6/m+lOPZ8CvZnxaU08P+qWM0nkVeSLpooU0vM389sd/uHJ/0FmgU4s6LWuC/yqvg
-0wOpXhn4npcT37ApqssKses6MRDCAH1abv8z58zLGDURQZVU50g9D3fOki1pWdQO
-7pw0UdnjE2Ix/4v/9R1MZJdox6cRmRD/x8TCNerUE3ChgecNuX0SDpH6lb8/kxT0
-vJBSw5U+A53Z6vemnU91VfxFg9o/dNE7hRRgP+T0dnL+BRU6iuUaAErdnk97NDzK
-qfpvCEisWeQG0lODuBX16nD1ESgxE+gmPFFyz45ZkNPqmKh2IySNk0mDa4s+wJsD
-8AELlo/uxYNZvMy0fOczOpqE3jRsDxD5CPkgQcUAMrV3xA6anleVdpDZBSrPkcHU
-MDSLw1aQuZHge7eWet8nFsZwYzcRvelFfX3bn6ac3/W5eNdGyaR5NA/nTREpumA9
-fJZsVsNvwEEE4Mobgtv6QjlJj1MPCt6Sdxumb9T5eTPrVdjJCW7jETGr+JwK/y67
-kjA5ov2GIT+tKo3S5Qbh
-=3kD+
------END PGP SIGNATURE-----
-
---7ZAtKRhVyVSsbBD2--
+Hello
+   Recently, paulk told me that he meet a problem with PWM backlight at 
+rk3288, I do a test at EVB board a few minutes age, it is true. The 
+kernel 4.4 would work fine. So the pwm driver at next-20161020 maybe 
+broken. It is too late, so I have no time to confirm whether the PWM1 
+would have the same problem.
+   I would look into it in the other day and see whether I could do 
+something for that.
+-- 
+Randy Li
+The third produce department
