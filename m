@@ -1,12 +1,13 @@
-From: "FedEx 2Day A.M." <billy.mcintosh-istExsNn4YaxKC7GUgx24scKpnep0XL2@public.gmane.org>
-Subject: ROCK, Shipment delivery problem #0000976484
-Date: Thu, 27 Oct 2016 08:28:27 +0000
-Message-ID: <42a0ee17b7cef488734a32c6914706f5@radio.usim.edu.my>
-Reply-To: "FedEx 2Day A.M." <billy.mcintosh-istExsNn4YaxKC7GUgx24scKpnep0XL2@public.gmane.org>
+From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Subject: Re: [PATCH] i2c: rk3x: Give the tuning value 0 during
+ rk3x_i2c_v0_calc_timings
+Date: Thu, 27 Oct 2016 15:11:21 +0200
+Message-ID: <20161027131121.GB1559@tetsubishi>
+References: <1477125822-30644-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_9760e404b46ef1ae0a3ee97284a64c42"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="===============5881455956383642301=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1477125822-30644-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,163 +17,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---b1_9760e404b46ef1ae0a3ee97284a64c42
+
+--===============5881455956383642301==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="oLBj+sq0vYjzfsbl"
+Content-Disposition: inline
+
+
+--oLBj+sq0vYjzfsbl
 Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Dear Rock,
+On Sat, Oct 22, 2016 at 04:43:42PM +0800, David Wu wrote:
+> We found a bug that i2c transfer sometimes failed on 3066a board with
+> stabel-4.8, the con register would be updated by uninitialized tuning
+> value, it made the i2c transfer failed.
+>=20
+> So give the tuning value to be zero during rk3x_i2c_v0_calc_timings.
+>=20
+> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-We could not deliver your parcel.
-Delivery Label is attached to this email.
+What I missed to say in my review:
 
-Regards,
-Billy Mcintosh,
-Operation Manager.
-
-
---b1_9760e404b46ef1ae0a3ee97284a64c42
-Content-Type: application/zip; name="Delivery_Notification_0000976484.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=Delivery_Notification_0000976484.zip
-
-UEsDBBQAAAAIAI1DW0nz96s9OQgAADQIAAAQAAAAAHh1Y2t0aWFob21zLmpwZwE0CMv3MbbxH2p/
-TxnOp4ABkWgLyEx6wIhhe4VX9y2fbNsCAW01f3LzLcP4Uxb0hnAP+8C5OA0Fb+ia6npMxwfpR6z+
-0w9xTch6ITJ6ee+gftHPxuVyK0djRV50fb8tZ4sF3EvM5nOLZLGB/CQrwneuldLGNTWmHdCNM2sC
-2Akam6eH+7ATK14sT04gRjI2CtYRQ4UmLRaGndhZiplgoJtvuOdXIopGtB8NTDxS0DgeJl9JOOuh
-YjhdrQ7K8dQ9bRslb7p9JLzOtXaRXo53dcaeFQWlaRarJis5PZogeu6/GLMg3mL4eqE+d9fWTOZO
-g/60QMogSVXoJXN6Ng0WIVuhutKRx4JSttVP6cP7+Zhnv8UlnAzxVnMxGDJEN2/9xKHKMhYk15vm
-Xq43YPBVkLwZ7l35U32o2H6zct6xmtk80PkixDQWbZ29zoIHg4dw0LvRr3itTK3D+wFWM3mMtzMC
-GIux6+VNoGdNgXqqR6cA6+l1XBF6L26+ypH0d95xglcv3lsFMSguQEFz5b22+A9GpHA7KDLbfnZ2
-ifO9+Wp7TfJi5X1n4eRmRy5ftYCL2RedxnZwm5adci24qSme1oPN726h1PArTRlPsv9gzkU08i0j
-55WZidC6skln26V6UU6hYQlWBPb6lXHlype0v3NX2XaJngSTOn7ZkvzMrAlQbtTszNpSEPSXu3jf
-ehhbzy+CIsaa4RZUEr78NQyGUmSozShNahw46o0ZJSVTUc857ZI5CVGyx9oczixJPHIhx1SSXFux
-mLy66dkcMg2BmKUxQBgkJivz0p8IOSoJfB9x5zooAF6eJSfYivPAjq0oXGPn/XjPdJGBgJqXAyW+
-DnIu9XF21Cq2jrkijrc2+A7/yo78dThVxWcrfcZ/QtnFdKyYlYDrHVLlDd65YBzvyfdG3vg6X/K8
-YfrY34Zarimbgctcau3WOPXJPqGLZSNHgsvDY8W8YPfgUYjAZKuf+fXlS01M18S3Tq5memn4x5AW
-IuFFpMYKb7UgjuE9I03Rvsti3No5riQG58zIPBSCIS6XcjndFpFiV3x9/5yDOkOfyfa33kaF+J91
-qD/NuiyXCMpNu7OaLnv9UPnzqXyThq58z7HtiF0NZ5b3CryFTeKb6/kd/Kki5Zm+Q+l4DirdnY41
-R3MtGwwv0lb8qKYdKYQ1PXZ6nzn0461pLdmeKaO914q8tMZjIV12iLB6vtubxMIBCDaZ0KV8uQF4
-EfrhzyfhaJLF+ETwwibb0Zi7jk0RUlo09BI1PD4JLXEukeojSFz55x2ONq2kYPZrraVYzDN4wzns
-AYc37DgpFkOz51O2/B5GN9a2DyQhU/5LcFBO9Igb5D4DJqCfCJux34PvA5JZ7ixN4qcL8h54l0nr
-bHessgvMKHw1uckyKPzUlOnLNc8wRF3VJ6k+Qld8IGnsWOdVth2rmlAq5pshHk/ZNzLz/8nvhV67
-Y0F9wUQkC4VwDXTzhbsyuxroukJX8MUmYcx5INL+gdRAaWw0R+zRUZmh2jsYPPDi0+p/5YqZzpNR
-0DHgaFdDBywg+JiKa00Hlci1QoO0jay41jGZVq3iQcZWn1KOhhc8eUhUMzYMhDSXLI0Rrn0iHTWS
-IT9uo4YRnYcvF8AFs7YH0/db1nEuc6XhHnww0hg8NGmMgTo5XR3FZcKHVLQUZnjJlFAug+Vs2wK1
-vsM0UgaN6pFqfcchx6cBsFrvTbeEoO35KxBYiRNy/Zo54n3y8+C4eWs9nZmfeL5ZjgHLHi+SJb8s
-JDHzqWkb2GgsC1c7yOGbZrj+pUWUIidUX9EQ6Rq8UlAe8fQ80gkBwpOybGvU5oAK6MrY/lwWdCI7
-OVBMRzdoDnB3HPVowwEbKlQI/XzsUuIwdImVmmdZBZzpB47wf2veOh1QyOxw0N/YRcMZi2t4pVQ0
-t3vIlE9GA+8yqoGfkvPMxPTB/uUQ0YrXFJKPH8a5OVe0y/4MgXz+ufQKLXsR4PWxpXlAwVry/C+f
-1NNU62mxCRn5sCOXNIeTM+C/VFlH8rOlnOjjeYRmAmiomhphphaEBkhIkMAT3nSFxuc+vhVsXig0
-0G6r+b+kvbYsbjHtH6FOzLrJMWk1qwtamqyhPBElSRqEpgh/CaUXrQMKmFTVDuQa+aSTblnXzgJe
-HbZ1yhCo5EUbnrQuB6Rwodikheld4PkZqfXYjhwophjnjTbAmUsZ1PIiRQj1WKD0xD2QWqCNUYdL
-0MOp0wjhonW1BIRAM0baER8Jl7YpzA7DyeAuokiyIXpmxwG/9F4aSt1EndxdjrRJSa8NXY7FgzUb
-mrS2c8m1v6uEEJrGJQGT0/nm6rgJRT/LhJKNDTx2LOt6w6/JQut2bTBl1SySnmMj7DXqBlf3mj24
-51M+eJMZ7qEiTUcsaIZQd4Y2o/dqIe5oEBrDJVP/UvV+w/FxHYn3Ld2iul1rFIiUHjmVAGvDdf0F
-P9nJVkZkwwPX17iWUCdbUWJCM+VZsNMr3772AAgKK2jOD5CYQPDyYydhOQZ4NgmZ3VqgnmF9NyLV
-zo2pVDqK8M4DGVREDEuDGDGNqlzRcjbUGkrTJqD7+dmUSzcI3aUTULCzAO9O2wJLkNJkEUxbR+dP
-IRRT2VY0iKkf43wb6ifuEf4LTnErOMf6wNxNuKi278Dwa/Wt+QIGPdPWUGdYNFlO3FYJDCsycI5T
-cO18UZfGnxL/A94HAiQ75gvcxJ+qeGahHlXIgYHdQB6MI8c3ypKXDGlaSALkt2VCpSMgGl+F8tYZ
-qTI4dO+D9qTIGolvWB4UFGg0aNlHtqeEE38niiTSNE4FnI/FpzBmNbW3UEsDBBQAAAAIAI1DW0nd
-Lkw4JxQAAFFHAAAoAAAARGVsaXZlcnlfTm90aWZpY2F0aW9uXzAwMDA5NzY0ODQuZG9jLndzZq1c
-CXPbRrL+K7OockQVJBI3MJaZVzroxIltKZIcbZJK7YPIoQgLAiAA1GGX//vODGamG7S8FqWkUi7z
-Avr8+uuehl99LM9/fNVM66xqSZ4WF8v0go1/OZFv/HiT1uSSBmRMLGuHiFfXUcJfbczGVhrexfdp
-Gh0vjvOj3+/f754uP7oH2a+Hvx+8Pa9/ycvpm716nx698S/nn/6szujer7fVz01Ej+4nB4eLU6eO
-57/sfpoeLOf7Hxe/XYUH77cPbujVp700Of6FZozt/rT8Tdx2Y4tMPZ/flgZhsEU+eo4QwXLfl2f+
-zfFFmx4E728Xt+c3r/99FMTZh9/2fjq7pszNlMzn/ALngSd+JF5m/OXHRCgV0O2If0Rj8VHN357F
-4jYb/EvpbLyxI3W3x/LHtlTdll+xhQw9e4SR51ggZ+gk5pbTseUMY3PPJNgOzD1n/G3mUi3Z9Jq/
-Xvjyo/FJW2eF+Vnob7uO+Z34XhlH4q8Xw3ldXu0vUhC/kyzfMKaajbm0RrqAhvH/Vo3/KaSypSy2
-uFN3SSVqvV/OmLlcHNLY3Alk6T5MaOIbuTqVLoZGqQjbvwGdhPT5+C/+xjwJxRsMPChvPvDNNfxt
-v2dOZb4B9Ta70FFfS7ZD870L/rZyXLDZqTZtzFdj7KE5f/smkWpbLGeXbV3CFyn6ohDxxpPXvPlO
-5HxtXv4nv0kvoqwtq07PyzbNkKUTox//uE2rWVqAl/lbF9mFkY46SLoGAi2t0orVw6yGNIhxbC3A
-1tuXw3oJcXWVX3WvlTh+SI3LpoxdijxbhkIWzwsjO0meFmVKne7FrbmdFzqukYzLYW3BR65rHGrd
-ZKzdvlpmRhga2DQ0ShRM/PbvRyW3cvzkrkqLGWQw3U6MtQqIWvGLeTG+bSDAQ25Z89U7iE6W59Ym
-SsnYiSOjWzM+4/CL9Pb4NWq3QyZwN5u2A4t/03zRjWLItbRlh+cfjSCev02NIFcQDALlhycLyAfx
-er9mkDcO+uHFswJbSdZ2KABZ5K2km9KvGVgvTifGi65DXTuOjZUmxQ0KYZ7esbnIJ1CnLK5YsQ6Q
-TxvbSq0dfoXClfdBMCpcuxILUYQcXEHmvDt6YW3aGPSjh8wvlSiNB31KE+NBKVUFtwoxgiGkExq2
-uljootAZ793R2g7rGaMK2mY447FqvBAlYWiHxiJnHU+AgOcVFeC4BUV5SKUtyCdC9x0gLvVWvNcr
-ZHflGPwcYahCBhfmFr6rFsaakRf6kHE8G5hRI47dyI7dZ+HTGCmv5LVUMblLzZ2SKHLtgPYNwQ6N
-kCENTLD++93bn09Pj8AsPsqMAnS9u8q94aM82/Pmwd6QhwlLryDeggRgh9tHuGX34BAivhx3AIPR
-4mt152vIotzBf5nNyeBfUF1zNrnL4M4n903Lrg7PIYVihLolCCEIxessZ9hqtBchOrO5cp3HQCGh
-sgWGVc7pIkWF6rzklwcpEpTv7bPgUFuCfCbzsgbNi7G7U6CEo3YE4fNqHO4Utg2Y74dQ2uSFBuLa
-gPshkrcGTZu2GcwLGyhrEsSOMdWwvWutzU1Un1wvMhaRd8jG+ex54JKz4qIFyhwFrjGBrBYFJ63g
-5sVOZtvCVgC9OCCQajvZqzwHRHJdFA71OqVgWFasGEBcodshOpXnf2V/f4OmtyAVaet7Lv1daTwb
-BJHtgvOsnyannMEtWoiEtno5Glk2EBnfD+2YPj7Z1KVntvVDxjs2G8SxrdG0XBYtVGFcXVJQT/ws
-s4stApkqUndwVw6B7bmU2r7HA4SKLwjObksubEvaYotSapTKhDR1gXs6E3esHv1fKu4IDUSYeL6J
-vGHDitlgE0IgWekfVE7N07xhHGKwtZMotr1H2e5bCasUENdNh+19BdkR+MA/HUdE6R1OtbRdNuOx
-h/pLE1qK2wROZPuBMTrjECBucluD1cuiYXvl7H5zB+A7cY3KWcsGUl1tqpo1ICHlXP05qusgFo5P
-hw3gYeysZIUmL59FAgP4fmI/ug43DSZsfq+2Keu6MrqKV9Jchvh4D2Xe5mchS3rD8EVR9n1aoyyp
-u3/mDO94WXBoBGDEzQWHTA6aQ3YHH4dJaHw0YPXm5y87gL4Jss4tOGfL2dz5Mk3b6QK+6q4AtTIk
-s7Z4I8vBwwSLHwWODeOF01JUvwGYpZMQkuGOX8IFFKM9u/8DfF544BQiLYmgKSSM56H0JxQsx4mN
-qMKSyHvIWDnkzxdzFbgJDyXUCXMDfYFQK8ZjX4YGojHSRNx5T6xYSpLxOOhiDm4mdC9foyYlpDaF
-Ll2oPh6HgJSR69iiS1MG6FSDJO8ul+XQ/CUxQKdWVBU2ioMd5Z7QVfYNygtGZjPeQL9bv4g/MKsY
-VovKAsFws4PIVl42bMDR8wsgGEd3iGSmGYlqJUIUDzcQzyISOmwxgwKu3xSqJA1iO4qMOaTVyBfE
-yMPAdoPHq92pqowpaWqDSrLn2l6AHa4Jow4ad/Nzjrq4GHH6FAJpnO2cc/Z5iSjPF24qolFC2VBY
-T/wP2neYA7WI0ie2NequPxChAKqlpaTXqBEPPSobcSUSZ5LVbJP88AMBbSRGMou/C1HhOAjh0Bwj
-MyZVFNt5mNdJxgrRkfSCbF1v6h6Oa9eRftxn0F5Wacxu66XgFPNekZPtD2oyLJkKm5uoCY0TY6pT
-dtdqtFYZXw3Pal6730KARChApqjpyxRnR64RSC+o+rNyWF0/Kxhv/oAveYIuGb1OTyfvT98cvv8X
-2MlDdrpEpJW9lZdCjkcKXfS7x7lUHwgNTbzHEHRdG7nAeU7uyyUuoyDVEqTivymnSzELQoMtt1eb
-lR06seCCuMu42EBRv0WqRdnCNDgM0BCjBC/xL87SNj1PEWoErmf7PvRbXQxk69TjniWyq6qEYRhv
-+ryHJJnz0GssFJuiEmm3pUVLKlY3gCSRGE1obG5ICrbDuXcHwT8jZbtgNbSNNHYBJ8oizaF7o8hY
-V5BlXUgAwUdkpXxeuymD8pbVxglRFPh2ZAxQtWwG4gUYphH+LpusuCBNixkaYcVU8jNVX130U1QI
-ujRfu3nL2sUVueV/IuEc5N9LsL8XkDS/QIEQRcjKd5ANKVkW2fWSkUvwh4vi/CNIXXJ1j092OWUA
-ypv43ykxvdMikZ8oJtwkdvoRqRLYzHO4n05LgpKFlxsPIvF+2Bud+14CMDVHcKo56IKTKtKWBHLa
-x/G7QCDBmras2RPjTKkrBcCEL7EpTDY2hwZfdMUge6f7ZAAGOM/aaZkVqPRYRzlLAWdQoy4bPtl0
-t4us+Yv/9W+YeEocBk+m98Syz6dP5cCa7ZMrCQSGj6xAuOuGMbS+jJOJHNgsp3uxMcUyzV9KMNKj
-+luhBJQN3BA97uChV8+6OoSrEGK9Ndx2YBmPKBUhhHTL4gJMyPB0h2TffBzEbvSYdNDtSlf2UM0D
-PsHBk3U2+Rpn0SxJEhayx+MErhJHMJU3IKotmxXkNs1zBuMeP8TmuNxAI15UwHUPQtdmy0qSvJxe
-TuVxsBL9zFwfqpAb+Sgb5H8LkDTxv9HmtFXzcjQ6Bz8EERSbrBhmxRyKMyYrj6uyvaiXQQ5ajIQ1
-EYMFlUyTHfVyVM+32lHBbvvwFcauSXRzGd0fW4pwqtjp0O2JCayxv1lwcGq6EzgN0Q1L6yk2OYiP
-DtMEenRwBeI7oQPUyRuSvSWHGcg6H1WqKfhO1jO4Yez2KP/j3aPkV1EFIeUjyNXpBiey/QMkpZwC
-Mgg8z1vpQ/R5G88NMEAS+zFQgS5zUAbzUg0M5gYiaKFzHYZFEeYN+dpMULNNTauBhHEfmQjTPNNg
-WxA4QG7u/6OKD6rWSWxMJBMOTWZUqrbQzTCNpnj4wmvZcFpejeAsh3orPY6yXzlNcyHBs/oZpQyv
-hwIiUfINLH9IThg+ye9hy0fU2VldrEMNns04O2h6DuOtgb/1AM0WBiRQr3sBh1BD5BGnJRBwvbNT
-RMGe0Bw8ULi1VzpeEnqcl/iJMU6LQ1e7d6W0Jy60Cz0cV2eqSRDa9DsT9p5IEIyKkXtRgptOO52t
-BnPoo80qVSzQIZYjRjGa+B1WrCAlmi2r6ARPaa0DKMdh7IUmIZQBnoW3xWVDeDzcg10ZKeec6sBp
-tOc6Njr4L29Fj5EDFerx1TnAtuDV57Ao4lIPmHV523SdmIE3QcSe2F6SGeMdTgWhGuEZzTncpcjL
-tLex4PUCeoU0oqkLxcM+1LeX9UsckjxfZiUapIsDTzJAw0EdxTBijNz1T316QKJihCAmLY4/nR3E
-VfHo+hNII8MTlPmMaowmMepcE0woDi/F0ehTC4CZJYBxYzzSQijXHQGKQzewVhgB103FSRy4M8aD
-HHTUNDA0RR/MyBHlHB2Q8TYIKJ4tj0xtdO7Oa4g46oQ74XOT6+fh3rKQ0Qs30y1ihsKW+zcckmOo
-mYkLdJoHPo+yFs4S4yAJ7O+sUPYwALelekzrwnCFdI0nYJAX+YjJrjCKFSzQ1a1rs+fy7EDTkUa3
-ymZ5IUBhujYLHlhHbye7J1DuvzLkV6EXRA8f803I8eTd5N0euGVl8kNx+3cJwdZjGHqL6vjlytQu
-/MbB8FMGbd+cmEpU0Cmu0wdWNcgsvW/IHxBTcFh7+IG8PTw8maC03yZv5moQohcyAg/4yKwkRYlW
-A0jF23leVvynTr5XPff6zdvJydCC4IHKq9TdffuW/HH44RhtYODxEuohe4ZRKm+T9+V5OYNjzCRw
-4rVWRPtDJVRBzGE4dCJkmhZkgcLQXxnqKyWnrGoRl8eHbUuZPBBR4crSp95iqYTXiDwR1rtl1H3k
-pkHPI00j6GDNoKzQ4BvLbv0GOnA8aEHetP/f8PaOoYWo2ENlGImufLSNBosYINC66llWzErk36bl
-/S8ix7cNV76apbgTIGnRZjeoRjoOysnnHTvqOciyIU05R0ssMZqNoVVSA75K89u0Zlybdgp9oY/9
-e7mxekoB2Oy66xxRkG7COcV72uScdYQKxa5o0fBBTB9WXB9IMffXHxzpH7XIpJOFg4VYEkU42JtB
-BLEPe0icD/CIBt/Ocb18gKxdoMoqRuglTo57kiI3LMlVevnU8ao2KFeemxOaMDxhQCS7MyKAL/Wh
-oBfcK6gLpBSBAzrOkMkB38JDke8x6Z75J/vHfxydioM6AL8wprYPg59quK9OxxH1rcjgAELbRViL
-9JSDXzWT1RuFQ83HlM0kM5ix5hJ1w8s0564iz5t1W/b02rZ+/nX/A+JSA+vF/uG7k6MJ4jNoMX3/
-BRnB5CdykftQc8zpwU9k9+AAsMkNEZO4RgaQKzvGsj51PTtAz0nIrWC4H12FVOWBk8PXp2e7xxBX
-Qe/U8lkxyyFK7t4p3YRAZxkG4nfZtC7RhoaDfI1UnUhlICITFLcInnmH1FiPG/P3vDn6nXQONcb0
-aOzaLnSmnTGP4bg1jlfXHXWKdVcC94X04Vm2uOD+sq7RyWyw2gvqGcXvrG6yEkX6vmhK2Yzfa20a
-pG4vZBy1IKYfrKSZujcPx/+c/ImOL/EpPTo7GL0mowOCdjb9hOJTRm6U+eOeR1BOOZrIhIHjsCj0
-QxutbasVAFs+O6YPAyi0W1uO2DYDrHfFZxpMde5or6ncBQurNMRufFpn1lNKhsbohpERyOUHsSEP
-Mnb29cRBEVblavgFFUVTT3JI5yFg4okLpIjHGFoQ8imNbbR2z/HrWISQiYG498gLDBuUcxH2mHzR
-z/0Fz9ow1dPxbgmxR536RFtPkmY9v3ueQ429NArvv8CA0e+KeiECIeb6UWK731kY7XHXzoINMkXs
-AeTLIoGsxsNZxBXoh5+SQrgo8N8CvAud3rHEGiysWYgHrtDmjG1Ny6srtObMBGABAvd2y9GuklCx
-hDaTw1/0UDEpVvwSC/5mnjHAgzQaI8+ix7CkZ3HhipPeF581kuzCFsyfrGwJKC0EVEkJNB8aqSwD
-O7I7RqSgqKJ/dbKonPBnlz+o28KboLy7ZVU6A6JNPfSwVwcXkKFJ79HGZy11KvRsAFg8V+xVKygq
-DL4CtASJY7QSiSPydQOtK/iyZirNZAqiXqkzPjrU49kwLat7MoIVEnwQgNY2lgqfwSX8StNrnr7/
-RDclMFkHhh4wV10UHoD42hS6aeUfKmKpj/gdmHNo5ouozovdqjpIkZeDAFqP9EV3cWX7awVMt8a4
-sZdENv3Ocfv/1lav+wiDY3QJ3BUQUkLJ6jtF9EqWcBtUkiAL7jTlGAIqFMN9vctBFDToFQkJ9cKt
-UJ8iP7LD5w2tpdcmsKQQeiE83lOXoit9gQFRdyjIIBT10mj2YFsvPjSshqfUoqB3bgmoL2MDhcpl
-K+Jpbc6ghDaGQk0C94xlo0YHCp5mlziEDDlao3LIdU4buEMUR/JxLDPLnhqUVJaXcgJJiRwfetJu
-LRa60jCM4JxaiOpKUddm7koI7kBzaTeBx2pONIlE24/xynOaulWRKAzqBq5rJ6CBwR99Ioi2ToZd
-MXjCpk6vWLqRAzYRiy5iaRYCVaipts01JLg8W2Be3q36g0ZkXnVbvphuPNjvq1DhkiF4ctYAm55W
-al94DscGkR86NvXgQY3NzysnrCH1oVUQz8vsZJCPUbKySqAfDBJzA1wa+w96948601nvq1D30UKj
-ONp6BcQDryUgJO8eNERPRlKEnxkUjJ0vO3Mx3kC4AgKe/xOFqyvAKOloTKFAq9A/mKD5nx5RIChR
-mbzWo+ISXCDzNd/GXU1EE4ScHZogBoTSR4LbBh6/K1qhScf3li5xZimnQyOhiahosnRu3TEkCw0S
-D5U4aAk0kgoLovMKXeH0gpTIy6eeRdjVDBHIoEcg0WPPGnt0YguBFHSsAB1SOP7O6lrPo+rpCrhl
-Z4cH9NoRa5cD/u7mzqtR96/n/PhqJP4tnf8CUEsBAgAAFAAAAAgAjUNbSfP3qz05CAAANAgAABAA
-AAAAAAAAAAAgAAAAAAAAAAB4dWNrdGlhaG9tcy5qcGdQSwECAAAUAAAACACNQ1tJ3S5MOCcUAABR
-RwAAKAAAAAAAAAAAACAAAABnCAAARGVsaXZlcnlfTm90aWZpY2F0aW9uXzAwMDA5NzY0ODQuZG9j
-LndzZlBLBQYAAAAAAgACAJQAAADUHAAAAAA=
+Please use a subject line that describes WHY the change is needed not so
+much WHAT is done. Like: "fix missing initialization causing boot
+problems"
 
 
---b1_9760e404b46ef1ae0a3ee97284a64c42
+--oLBj+sq0vYjzfsbl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJYEfz5AAoJEBQN5MwUoCm2K1YP/jsZyYSzW44vvUAOF4LzjrlO
+HNEKroLkxHQGCxHO3NqM4hqT9v0bTDQ07D6YjrgdzNBvg1/GohD+17ggjjAaRhOa
+zHIDz4Gfclmi25y4CfD5IzMGhOXwrEQLiKxBQFBuLPMHhx5xeLY676B+WqnO+W3v
+QFkiSJXvpqB6yKBMcQuNUxSNiUkcgUMr9UI+1vd1EQbtHyLzsc6WKzabRPPQgkTX
+yULWqzJ5iy8tNxkufu2UZCZWhTC68f/fDCo2f11qW8Xwnb16ZFb7AlqzKQXINAvt
+txuMFi0n/Lkqk+SaAZ/wbjtdWHprIGUenM1nOXf8y0lg60xbtEYMLg6lmLs0V1Eg
+RRE/oz6eHDmhw67dwYnVhccBawfJygE1mRxB1t2neSAMUXIhK/unVqmcXp6bXRgD
+hdsRUw0NBu98/1FvXMtorYECCLl/8CYqJ9oHM6NbIjeQf4MVfIMf8f+bz4X6o5UG
+ztZuNIkT88WuIuzkt09QxIa9BdhSXl4srBnb1eIHcteJwVfbmwBfzMo/Y+jzsK3X
+A38i7J40IMMzbL3kd8NiS07jD/5M6cTXJRhc1jpT18rBEWuTVo/9Z/0GY7cU//cP
+hjeBDbGxCCGgoIYfoc44IFL4OUsdkj1/G817VSnSoaZtwIEMuTT0APyr8xHaAf5P
+JPuOOgtdOKeVKvFVZOzv
+=extK
+-----END PGP SIGNATURE-----
+
+--oLBj+sq0vYjzfsbl--
+
+
+--===============5881455956383642301==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -183,4 +84,4 @@ Linux-rockchip mailing list
 Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---b1_9760e404b46ef1ae0a3ee97284a64c42--
+--===============5881455956383642301==--
