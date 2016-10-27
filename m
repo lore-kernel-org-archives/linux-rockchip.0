@@ -1,167 +1,67 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] PCI: rockchip: Add three new resets as required
- properties
-Date: Thu, 27 Oct 2016 09:54:27 -0500
-Message-ID: <20161027145427.xxdtq7i37wgphowj@rob-hp-laptop>
-References: <1477017836-19317-1-git-send-email-shawn.lin@rock-chips.com>
- <1477017836-19317-2-git-send-email-shawn.lin@rock-chips.com>
+From: "Xiang, Haihao" <haihao.xiang@intel.com>
+Subject: RE: How to implement a EGL or DRM display in VA-API driver
+Date: Thu, 27 Oct 2016 15:03:42 +0000
+Message-ID: <9289A01B6775FB46847EB523F7DC186860933C03@SHSMSX103.ccr.corp.intel.com>
+References: <8cbe53b0-29af-bb45-7895-6e0a6c23d024@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1477017836-19317-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <8cbe53b0-29af-bb45-7895-6e0a6c23d024@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Randy Li <randy.li@rock-chips.com>, "libva@lists.freedesktop.org" <libva@lists.freedesktop.org>
+Cc: "gwenole.beauchesne@intel.com" <gwenole.beauchesne@intel.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Jaquez,
+ VictorX" <victorx.jaquez@intel.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "eddie.cai" <eddie.cai@rock-chips.com>, ??? <alpha.lin@rock-chips.com>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "vjaquez@igalia.com" <vjaquez@igalia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Oct 21, 2016 at 10:43:55AM +0800, Shawn Lin wrote:
-> pm_rst, aclk_rst, pclk_rst was controlled by rom code so the
-> software wasn't needed to control it again in theory. But it
-> didn't work properly, so we do need to do it again and add a
-> enough delay between the assert of pm_rst and the deassert of
-> pm_rst. The Soc intergrated with this controller, rk3399 is still
-> under MP test internally, so the backward compatibility won't be
-> a big deal.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      | 11 ++--
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
->  drivers/pci/host/pcie-rockchip.c                   | 62 ++++++++++++++++++++++
->  2 files changed, 70 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> index ba67b39..71aeda1 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -26,13 +26,16 @@ Required properties:
->  	- "sys"
->  	- "legacy"
->  	- "client"
-> -- resets: Must contain five entries for each entry in reset-names.
-> +- resets: Must contain seven entries for each entry in reset-names.
->  	   See ../reset/reset.txt for details.
->  - reset-names: Must include the following names
->  	- "core"
->  	- "mgmt"
->  	- "mgmt-sticky"
->  	- "pipe"
-> +	- "pm"
-> +	- "aclk"
-> +	- "pclk"
->  - pinctrl-names : The pin control state names
->  - pinctrl-0: The "default" pinctrl state
->  - #interrupt-cells: specifies the number of cells needed to encode an
-> @@ -86,8 +89,10 @@ pcie0: pcie@f8000000 {
->  	reg = <0x0 0xf8000000 0x0 0x2000000>, <0x0 0xfd000000 0x0 0x1000000>;
->  	reg-names = "axi-base", "apb-base";
->  	resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
-> -		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>;
-> -	reset-names = "core", "mgmt", "mgmt-sticky", "pipe";
-> +		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
-> +		 <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
-> +	reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
-> +		      "pm", "pclk", "aclk";
->  	phys = <&pcie_phy>;
->  	phy-names = "pcie-phy";
->  	pinctrl-names = "default";
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index e0b22da..e04f69b 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -190,6 +190,9 @@ struct rockchip_pcie {
->  	struct	reset_control *mgmt_rst;
->  	struct	reset_control *mgmt_sticky_rst;
->  	struct	reset_control *pipe_rst;
-> +	struct	reset_control *pm_rst;
-> +	struct	reset_control *aclk_rst;
-> +	struct	reset_control *pclk_rst;
->  	struct	clk *aclk_pcie;
->  	struct	clk *aclk_perf_pcie;
->  	struct	clk *hclk_pcie;
-> @@ -408,6 +411,44 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  
->  	gpiod_set_value(rockchip->ep_gpio, 0);
->  
-> +	err = reset_control_assert(rockchip->aclk_rst);
-> +	if (err) {
-> +		dev_err(dev, "assert aclk_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = reset_control_assert(rockchip->pclk_rst);
-> +	if (err) {
-> +		dev_err(dev, "assert pclk_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = reset_control_assert(rockchip->pm_rst);
-> +	if (err) {
-> +		dev_err(dev, "assert pm_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	udelay(10);
-> +
-> +	err = reset_control_deassert(rockchip->pm_rst);
-> +	if (err) {
-> +		dev_err(dev, "deassert pm_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = reset_control_deassert(rockchip->aclk_rst);
-> +	if (err) {
-> +		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = reset_control_deassert(rockchip->pclk_rst);
-> +	if (err) {
-> +		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
-> +		return err;
-> +	}
-> +
->  	err = phy_init(rockchip->phy);
->  	if (err < 0) {
->  		dev_err(dev, "fail to init phy, err %d\n", err);
-> @@ -781,6 +822,27 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->  		return PTR_ERR(rockchip->pipe_rst);
->  	}
->  
-> +	rockchip->pm_rst = devm_reset_control_get(dev, "pm");
-> +	if (IS_ERR(rockchip->pm_rst)) {
-> +		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing pm reset property in node\n");
-> +		return PTR_ERR(rockchip->pm_rst);
-> +	}
-> +
-> +	rockchip->pclk_rst = devm_reset_control_get(dev, "pclk");
-> +	if (IS_ERR(rockchip->pclk_rst)) {
-> +		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing pclk reset property in node\n");
-> +		return PTR_ERR(rockchip->pclk_rst);
-> +	}
-> +
-> +	rockchip->aclk_rst = devm_reset_control_get(dev, "aclk");
-> +	if (IS_ERR(rockchip->aclk_rst)) {
-> +		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing aclk reset property in node\n");
-> +		return PTR_ERR(rockchip->aclk_rst);
-> +	}
-> +
->  	rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
->  	if (IS_ERR(rockchip->ep_gpio)) {
->  		dev_err(dev, "missing ep-gpios property in node\n");
-> -- 
-> 2.3.7
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogZHJpLWRldmVsIFttYWlsdG86ZHJp
+LWRldmVsLWJvdW5jZXNAbGlzdHMuZnJlZWRlc2t0b3Aub3JnXSBPbiBCZWhhbGYNCj5PZiBSYW5k
+eSBMaQ0KPlNlbnQ6IE1vbmRheSwgT2N0b2JlciAyNCwgMjAxNiAzOjU5IFBNDQo+VG86IGxpYnZh
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZw0KPkNjOiBnd2Vub2xlLmJlYXVjaGVzbmVAaW50ZWwuY29t
+OyBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBsaW51eC0NCj5yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnOyBKYXF1ZXosIFZpY3RvclggPHZpY3RvcnguamFxdWV6QGludGVsLmNv
+bT47DQo+ZWRkaWUuY2FpIDxlZGRpZS5jYWlAcm9jay1jaGlwcy5jb20+OyDmnpfph5Hlj5EgPGFs
+cGhhLmxpbkByb2NrLWNoaXBzLmNvbT47DQo+aGVybWFuLmNoZW5Acm9jay1jaGlwcy5jb207IHZq
+YXF1ZXpAaWdhbGlhLmNvbQ0KPlN1YmplY3Q6IEhvdyB0byBpbXBsZW1lbnQgYSBFR0wgb3IgRFJN
+IGRpc3BsYXkgaW4gVkEtQVBJIGRyaXZlcg0KPg0KPkhlbGxvOg0KPiAgIEkgYW0gZ29pbmcgdG8g
+aW1wbGVtZW50IGEgRUdMIGFuZCBEUk0gZGlzcGxheSBmb3IgUm9ja2NoaXAgVkEtQVBJIGRyaXZl
+ci4NCj5XZSBkbyBoYXZlIGEgRUdMIGltcGxlbWVudGF0aW9uIGluIFJvY2tjaGlwIFZBLUFQSSBk
+cml2ZXIsIGJ1dCBpdCBpcw0KPmltcGxlbWVudGVkIGluIHRoZSBzdGFuZGFyZCB3YXksIHdlIGRp
+ZCB0aGF0IGFzIGEgWDExIGRpc3BsYXkuDQo+ICAgSSBkaWRuJ3Qgc2VlIHRoZSB1c2FnZSBvZiBz
+dHJ1Y3QgVkFEcml2ZXJWVGFibGVFR0wgaW4gZ3N0cmVhbWVyLCBhbmQgSSBoYXZlDQo+bm8gaWRl
+YSBhYm91dCB3aGVyZSBzaG91bGQgSSBpbXBsZW1lbnQgc29tZXRoaW5nIGZ1bmN0aW9ucyBsaWtl
+DQo+ZWdsRXhwb3J0RFJNSW1hZ2VNRVNBKCkuDQoNClZBRHJpdmVyVlRhYmxlRUdMIGlzIGRlcHJl
+Y2F0ZWQgaW4gbGlidmEsIHdlIGhhcyBhIG1vcmUgZWZmaWNpZW50IHdheSB0byB1c2UgdmFhcGkg
+YW5kIGVnbC4NCllvdSBjYW4gcmVmZXIgdG8gdGhlIGV4YW1wbGVzIGluIGxpYnlhbWktdXRpbHMg
+KGh0dHBzOi8vZ2l0aHViLmNvbS8wMW9yZy9saWJ5YW1pLXV0aWxzLmdpdCkgZm9yIA0KaG93IHRv
+IHVzZSB2YWFwaSBhbmQgZWdsLg0KDQo+ICAgVGhlIERSTSBzZWVtcyBtb3JlIGNvbXBsZXgsIHRo
+ZSByZWFzb24gSSB3YW50IHRvIHVzZSB0aGUgRFJNIGlzIHRoYXQsDQo+R1BVIHdvdWxkIG5vdCB3
+b3JrIHdpdGggdGhlIDRLIHZpZGVvIHJlbmRlcmluZywgc28gdGhlIERSTSBtZWFucyB0aGF0DQo+
+ZGlyZWN0bHkgb3V0cHV0IHRoZSB2aWRlbyBpbnRvIHZpZGVvIGNvbnRyb2xsZXIgaW4gb3VyIHBs
+YXRmb3JtLiBCdXQgc3RpbGwgaGF2ZSBubw0KPmlkZWEgd2hhdCBraW5kIG9mIHRoaW5nIEkgc2hv
+dWxkIGltcGxlbWVudCBpbiB0aGUgVkEtQVBJIGRyaXZlci4gSXQgc2VlbXMgdGhhdA0KPnRoZSBW
+QS1BUEkgYmFzZSBsaWJyYXJ5IHdvdWxkIG9wZW4gYSBEUk0gaW5zdGFuY2UgZm9yIHRoZSBkcml2
+ZXIsIGJ1dCBsZWF2aW5nDQo+dGhvc2UgY29uZmlndXJlIGZvciBjb25uZWN0b3IsIGVuY29kZXIs
+IHBsYW5lcyB0byBWQS1BUEkgZHJpdmVyPw0KDQpjb25maWd1cmUgZm9yIGNvbm5lY3RvciwgZW5j
+b2RlciwgcGxhbmVzIGFyZW4ndCBhIHBhcnQgb2YgdmEtYXBpIGRyaXZlci4gIFlvdSBzaG91bGQg
+Y2hlY2sgbGliZHJtIGFuZCBkcm0vaTkxNS4NCllvdSBjYW4gcmVmZXIgdG8gdGhlIHRlc3QgY2Fz
+ZSBvZiBtb2RldGVzdCBpbiBsaWJkcm0gKGdpdC5mcmVlZGVza3RvcC5vcmcvZ2l0L21lc2EvZHJt
+KQ0KDQoNCj4gICBDb3VsZCB5b3UgZ3V5cyBnaXZlIG1lIHNhbWUgc2FtcGxlIGNvZGUgb3IgZXhh
+bXBsZSBvZiB0aG9zZSBraW5kIG9mDQo+ZGlzcGxheSBpbiBWQS1BUEkgb3IgdGhlIGRvY3VtZW50
+cyB3b3VsZCBoZWxwKEkgd291bGQgbm90IGltYWdlIHRoZXJlIGlzIGENCj5WQS1BUEkgZG9jdW1l
+bnRzKQ0KPg0KPi0tDQo+UmFuZHkgTGkNCj5UaGUgdGhpcmQgcHJvZHVjZSBkZXBhcnRtZW50DQo+
+DQo+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCj5kcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0DQo+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZw0KPmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsDQpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
