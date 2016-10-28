@@ -1,109 +1,49 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: analogix_dp: add supports for regulators in
- edp IP
-Date: Fri, 28 Oct 2016 17:11:59 +0800
-Message-ID: <6d050f06-996f-5ecc-20f9-587299ee34c7@rock-chips.com>
-References: <1477163933-13140-1-git-send-email-ayaka@soulik.info>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] rockchip clock fixes for 4.9-rc
+Date: Fri, 28 Oct 2016 11:18:47 +0200
+Message-ID: <2723813.N9JiJ3CpWT@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1477163933-13140-1-git-send-email-ayaka@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Randy Li <ayaka@soulik.info>, dri-devel@lists.freedesktop.org
-Cc: shawn.lin@rock-chips.com, heiko@sntech.de, airlied@linux.ie, randy.li@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/10/23 3:18, Randy Li wrote:
-> I found if eDP_AVDD_1V0 and eDP_AVDD_1V8 are not been power at
-> RK3288, once trying to enable the pclk clock, the kernel would dead.
-> This patch would try to enable them first. The eDP_AVDD_1V8 more
-> likely to be applied to eDP phy, but I have no time to confirmed
-> it yet.
+Hi Mike, Stephen,
 
-Comfirm it or at least someone should be able to answer your
-question, Mark?
+please find below one small fix to the newly introduced ddrclk type.
 
-Have you considered to add some details about vcc-supply and vccio-
-supply for your analogix_dp-rockchip.txt ?
+Thanks
+Heiko
 
- From your commit msg, these two properties are more likely to be
-required but the code itself tell me them should be optional(from the
-point of backward compatibility, it should also be optinoal).
+The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
 
->
-> Signed-off-by: Randy Li <ayaka@soulik.info>
-> ---
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 8548e82..6bf0441 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -17,6 +17,7 @@
->  #include <linux/of_device.h>
->  #include <linux/of_graph.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
->  #include <linux/reset.h>
->  #include <linux/clk.h>
->
-> @@ -70,6 +71,7 @@ struct rockchip_dp_device {
->  	struct clk               *grfclk;
->  	struct regmap            *grf;
->  	struct reset_control     *rst;
-> +	struct regulator_bulk_data supplies[2];
->
->  	struct work_struct	 psr_work;
->  	spinlock_t		 psr_lock;
-> @@ -146,6 +148,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
->
->  	cancel_work_sync(&dp->psr_work);
->
-> +	ret = regulator_bulk_enable(ARRAY_SIZE(dp->supplies),
-> +			dp->supplies);
-> +	if (ret) {
-> +		dev_err(dp->dev, "failed to enable vdd supply %d\n", ret);
-> +		return ret;
-> +	}
-> +
->  	ret = clk_prepare_enable(dp->pclk);
->  	if (ret < 0) {
->  		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
-> @@ -168,6 +177,9 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
->
->  	clk_disable_unprepare(dp->pclk);
->
-> +	regulator_bulk_disable(ARRAY_SIZE(dp->supplies),
-> +			dp->supplies);
-> +
->  	return 0;
->  }
->
-> @@ -323,6 +335,19 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
->  		return PTR_ERR(dp->rst);
->  	}
->
-> +	dp->supplies[0].supply = "vcc";
-> +	dp->supplies[1].supply = "vccio";
-> +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dp->supplies),
-> +			dp->supplies);
-> +	if (ret < 0) {
-> +		dev_err(dev, "failed to get regulators: %d\n", ret);
-> +	}
-> +	ret = regulator_bulk_enable(ARRAY_SIZE(dp->supplies),
-> +			dp->supplies);
-> +	if (ret < 0) {
-> +		dev_err(dev, "failed to enable regulators: %d\n", ret);
-> +	}
-> +
->  	ret = clk_prepare_enable(dp->pclk);
->  	if (ret < 0) {
->  		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
->
+  Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
 
+are available in the git repository at:
 
--- 
-Best Regards
-Shawn Lin
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.9-rockchip-clkfixes1
+
+for you to fetch changes up to 4a262b14c57d6ec88982d40273e742f7b9151560:
+
+  clk: rockchip: don't return NULL when failing to register ddrclk branch (2016-10-16 02:39:58 +0200)
+
+----------------------------------------------------------------
+Fix return value in error case of new ddrclk type.
+
+----------------------------------------------------------------
+Shawn Lin (1):
+      clk: rockchip: don't return NULL when failing to register ddrclk branch
+
+ drivers/clk/rockchip/clk-ddr.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
