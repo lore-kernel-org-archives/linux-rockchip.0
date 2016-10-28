@@ -1,56 +1,99 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip dts64 fixes for 4.9-rc
-Date: Fri, 28 Oct 2016 11:22:20 +0200
-Message-ID: <2007497.qXCdMDh9Wq@phil>
+From: Randy Li <randy.li@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: analogix_dp: add supports for regulators in
+ edp IP
+Date: Fri, 28 Oct 2016 17:29:15 +0800
+Message-ID: <16dfbe16-eae7-8da9-4108-07e623210d35@rock-chips.com>
+References: <1477163933-13140-1-git-send-email-ayaka@soulik.info>
+ <6d050f06-996f-5ecc-20f9-587299ee34c7@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <6d050f06-996f-5ecc-20f9-587299ee34c7@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>, Randy Li <ayaka@soulik.info>, dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
-
-please find below two fixes for 64bit Rockchip boards. One makes
-binds/unbinds fail and the other drops one unnecessary property.
-
-Please pull.
-Thanks
-Heiko
-
-The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
-
-  Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.9-rockchip-dts64-fixes1
-
-for you to fetch changes up to 7c6273194445fe1316084d3096f9311c3dfa4da6:
-
-  arm64: dts: rockchip: remove the abuse of keep-power-in-suspend (2016-10-18 20:03:54 +0200)
-
-----------------------------------------------------------------
-Correct regulator handling on Rockchip arm64 boards to make
-bind/unbind calls work correctly and remove a sdio-only
-property from non-sdio mmc hosts, that accidentially was
-added there.
-
-----------------------------------------------------------------
-Shawn Lin (2):
-      arm64: dts: rockchip: remove always-on and boot-on from vcc_sd
-      arm64: dts: rockchip: remove the abuse of keep-power-in-suspend
-
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts        | 3 ---
- arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts | 4 ----
- 2 files changed, 7 deletions(-)
+CgpPbiAxMC8yOC8yMDE2IDA1OjExIFBNLCBTaGF3biBMaW4gd3JvdGU6Cj4gT24gMjAxNi8xMC8y
+MyAzOjE4LCBSYW5keSBMaSB3cm90ZToKPj4gSSBmb3VuZCBpZiBlRFBfQVZERF8xVjAgYW5kIGVE
+UF9BVkREXzFWOCBhcmUgbm90IGJlZW4gcG93ZXIgYXQKPj4gUkszMjg4LCBvbmNlIHRyeWluZyB0
+byBlbmFibGUgdGhlIHBjbGsgY2xvY2ssIHRoZSBrZXJuZWwgd291bGQgZGVhZC4KPj4gVGhpcyBw
+YXRjaCB3b3VsZCB0cnkgdG8gZW5hYmxlIHRoZW0gZmlyc3QuIFRoZSBlRFBfQVZERF8xVjggbW9y
+ZQo+PiBsaWtlbHkgdG8gYmUgYXBwbGllZCB0byBlRFAgcGh5LCBidXQgSSBoYXZlIG5vIHRpbWUg
+dG8gY29uZmlybWVkCj4+IGl0IHlldC4KPgo+IENvbWZpcm0gaXQgb3IgYXQgbGVhc3Qgc29tZW9u
+ZSBzaG91bGQgYmUgYWJsZSB0byBhbnN3ZXIgeW91cgo+IHF1ZXN0aW9uLCBNYXJrPwpJIGp1c3Qg
+Zm9yZ2V0IHRvIGFzayB0aGUgSUMgZGVwYXJ0bWVudCwgdGhlIFRSTSBkaWRuJ3QgY292ZXIgdGhh
+dC4KPgo+IEhhdmUgeW91IGNvbnNpZGVyZWQgdG8gYWRkIHNvbWUgZGV0YWlscyBhYm91dCB2Y2Mt
+c3VwcGx5IGFuZCB2Y2Npby0KPiBzdXBwbHkgZm9yIHlvdXIgYW5hbG9naXhfZHAtcm9ja2NoaXAu
+dHh0ID8KPgo+IEZyb20geW91ciBjb21taXQgbXNnLCB0aGVzZSB0d28gcHJvcGVydGllcyBhcmUg
+bW9yZSBsaWtlbHkgdG8gYmUKPiByZXF1aXJlZCBidXQgdGhlIGNvZGUgaXRzZWxmIHRlbGwgbWUg
+dGhlbSBzaG91bGQgYmUgb3B0aW9uYWwoZnJvbSB0aGUKPiBwb2ludCBvZiBiYWNrd2FyZCBjb21w
+YXRpYmlsaXR5LCBpdCBzaG91bGQgYWxzbyBiZSBvcHRpbm9hbCkuClllcywgSSBrZWVwIGl0IG9w
+dGlvbmFsIGZvciB0aGUgc2FtZSByZWFzb24uIE1vc3Qgb2YgYm9hcmRzIHdvbid0IHR1cm4gCm9m
+ZiB0aG9zZSBwb3dlciBzdXBwbHkgYW5kIG1heSB1c2Ugc29tZSBmaXhlZCByZWd1bGF0b3JzLgo+
+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFJhbmR5IExpIDxheWFrYUBzb3VsaWsuaW5mbz4KPj4gLS0t
+Cj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDI1
+Cj4+ICsrKysrKysrKysrKysrKysrKysrKysrKysKPj4gIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNl
+cnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5h
+bG9naXhfZHAtcm9ja2NoaXAuYwo+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dp
+eF9kcC1yb2NrY2hpcC5jCj4+IGluZGV4IDg1NDhlODIuLjZiZjA0NDEgMTAwNjQ0Cj4+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4+IEBAIC0x
+Nyw2ICsxNyw3IEBACj4+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4+ICAjaW5jbHVk
+ZSA8bGludXgvb2ZfZ3JhcGguaD4KPj4gICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPj4gKyNp
+bmNsdWRlIDxsaW51eC9yZWd1bGF0b3IvY29uc3VtZXIuaD4KPj4gICNpbmNsdWRlIDxsaW51eC9y
+ZXNldC5oPgo+PiAgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+Pgo+PiBAQCAtNzAsNiArNzEsNyBA
+QCBzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlIHsKPj4gICAgICBzdHJ1Y3QgY2xrICAgICAgICAg
+ICAgICAgKmdyZmNsazsKPj4gICAgICBzdHJ1Y3QgcmVnbWFwICAgICAgICAgICAgKmdyZjsKPj4g
+ICAgICBzdHJ1Y3QgcmVzZXRfY29udHJvbCAgICAgKnJzdDsKPj4gKyAgICBzdHJ1Y3QgcmVndWxh
+dG9yX2J1bGtfZGF0YSBzdXBwbGllc1syXTsKPj4KPj4gICAgICBzdHJ1Y3Qgd29ya19zdHJ1Y3Qg
+ICAgIHBzcl93b3JrOwo+PiAgICAgIHNwaW5sb2NrX3QgICAgICAgICBwc3JfbG9jazsKPj4gQEAg
+LTE0Niw2ICsxNDgsMTMgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcF9wb3dlcm9uKHN0cnVjdAo+
+PiBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKPj4KPj4gICAgICBjYW5jZWxfd29y
+a19zeW5jKCZkcC0+cHNyX3dvcmspOwo+Pgo+PiArICAgIHJldCA9IHJlZ3VsYXRvcl9idWxrX2Vu
+YWJsZShBUlJBWV9TSVpFKGRwLT5zdXBwbGllcyksCj4+ICsgICAgICAgICAgICBkcC0+c3VwcGxp
+ZXMpOwo+PiArICAgIGlmIChyZXQpIHsKPj4gKyAgICAgICAgZGV2X2VycihkcC0+ZGV2LCAiZmFp
+bGVkIHRvIGVuYWJsZSB2ZGQgc3VwcGx5ICVkXG4iLCByZXQpOwo+PiArICAgICAgICByZXR1cm4g
+cmV0Owo+PiArICAgIH0KPj4gKwo+PiAgICAgIHJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcC0+
+cGNsayk7Cj4+ICAgICAgaWYgKHJldCA8IDApIHsKPj4gICAgICAgICAgZGV2X2VycihkcC0+ZGV2
+LCAiZmFpbGVkIHRvIGVuYWJsZSBwY2xrICVkXG4iLCByZXQpOwo+PiBAQCAtMTY4LDYgKzE3Nyw5
+IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcG93ZXJkb3duKHN0cnVjdAo+PiBhbmFsb2dpeF9k
+cF9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKPj4KPj4gICAgICBjbGtfZGlzYWJsZV91bnByZXBhcmUo
+ZHAtPnBjbGspOwo+Pgo+PiArICAgIHJlZ3VsYXRvcl9idWxrX2Rpc2FibGUoQVJSQVlfU0laRShk
+cC0+c3VwcGxpZXMpLAo+PiArICAgICAgICAgICAgZHAtPnN1cHBsaWVzKTsKPj4gKwo+PiAgICAg
+IHJldHVybiAwOwo+PiAgfQo+Pgo+PiBAQCAtMzIzLDYgKzMzNSwxOSBAQCBzdGF0aWMgaW50IHJv
+Y2tjaGlwX2RwX2luaXQoc3RydWN0Cj4+IHJvY2tjaGlwX2RwX2RldmljZSAqZHApCj4+ICAgICAg
+ICAgIHJldHVybiBQVFJfRVJSKGRwLT5yc3QpOwo+PiAgICAgIH0KPj4KPj4gKyAgICBkcC0+c3Vw
+cGxpZXNbMF0uc3VwcGx5ID0gInZjYyI7Cj4+ICsgICAgZHAtPnN1cHBsaWVzWzFdLnN1cHBseSA9
+ICJ2Y2NpbyI7Cj4+ICsgICAgcmV0ID0gZGV2bV9yZWd1bGF0b3JfYnVsa19nZXQoZGV2LCBBUlJB
+WV9TSVpFKGRwLT5zdXBwbGllcyksCj4+ICsgICAgICAgICAgICBkcC0+c3VwcGxpZXMpOwo+PiAr
+ICAgIGlmIChyZXQgPCAwKSB7Cj4+ICsgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIGdl
+dCByZWd1bGF0b3JzOiAlZFxuIiwgcmV0KTsKPj4gKyAgICB9Cj4+ICsgICAgcmV0ID0gcmVndWxh
+dG9yX2J1bGtfZW5hYmxlKEFSUkFZX1NJWkUoZHAtPnN1cHBsaWVzKSwKPj4gKyAgICAgICAgICAg
+IGRwLT5zdXBwbGllcyk7Cj4+ICsgICAgaWYgKHJldCA8IDApIHsKPj4gKyAgICAgICAgZGV2X2Vy
+cihkZXYsICJmYWlsZWQgdG8gZW5hYmxlIHJlZ3VsYXRvcnM6ICVkXG4iLCByZXQpOwo+PiArICAg
+IH0KPj4gKwo+PiAgICAgIHJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcC0+cGNsayk7Cj4+ICAg
+ICAgaWYgKHJldCA8IDApIHsKPj4gICAgICAgICAgZGV2X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRv
+IGVuYWJsZSBwY2xrICVkXG4iLCByZXQpOwo+Pgo+Cj4KCi0tIApSYW5keSBMaQpUaGUgdGhpcmQg
+cHJvZHVjZSBkZXBhcnRtZW50Cj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpUaGlzIGVtYWlsIG1lc3NhZ2Us
+IGluY2x1ZGluZyBhbnkgYXR0YWNobWVudHMsIGlzIGZvciB0aGUgc29sZQp1c2Ugb2YgdGhlIGlu
+dGVuZGVkIHJlY2lwaWVudChzKSBhbmQgbWF5IGNvbnRhaW4gY29uZmlkZW50aWFsIGFuZApwcml2
+aWxlZ2VkIGluZm9ybWF0aW9uLiBBbnkgdW5hdXRob3JpemVkIHJldmlldywgdXNlLCBkaXNjbG9z
+dXJlIG9yCmRpc3RyaWJ1dGlvbiBpcyBwcm9oaWJpdGVkLiBJZiB5b3UgYXJlIG5vdCB0aGUgaW50
+ZW5kZWQgcmVjaXBpZW50LCBwbGVhc2UKY29udGFjdCB0aGUgc2VuZGVyIGJ5IHJlcGx5IGUtbWFp
+bCBhbmQgZGVzdHJveSBhbGwgY29waWVzIG9mIHRoZSBvcmlnaW5hbAptZXNzYWdlLiBbRnV6aG91
+IFJvY2tjaGlwIEVsZWN0cm9uaWNzLCBJTkMuIENoaW5hIG1haW5sYW5kXQo9PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT0KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
