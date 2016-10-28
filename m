@@ -1,84 +1,28 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: How to implement a EGL or DRM display in VA-API driver
-Date: Fri, 28 Oct 2016 10:05:29 +0800
-Message-ID: <d6924234-8490-cf4a-282d-cc3f5fa291af@rock-chips.com>
-References: <8cbe53b0-29af-bb45-7895-6e0a6c23d024@rock-chips.com>
- <9289A01B6775FB46847EB523F7DC186860933C03@SHSMSX103.ccr.corp.intel.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] phy-rockchip-pcie: remove deassert of phy_rst from exit callback
+Date: Fri, 28 Oct 2016 10:31:00 +0200
+Message-ID: <2348307.ygIaYT7LcH@phil>
+References: <1476333733-9696-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <9289A01B6775FB46847EB523F7DC186860933C03@SHSMSX103.ccr.corp.intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: "Xiang, Haihao" <haihao.xiang@intel.com>, "libva@lists.freedesktop.org" <libva@lists.freedesktop.org>
-Cc: "gwenole.beauchesne@intel.com" <gwenole.beauchesne@intel.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Jaquez,
- VictorX" <victorx.jaquez@intel.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "eddie.cai" <eddie.cai@rock-chips.com>, ??? <alpha.lin@rock-chips.com>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "vjaquez@igalia.com" <vjaquez@igalia.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1476333733-9696-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMC8yNy8yMDE2IDExOjAzIFBNLCBYaWFuZywgSGFpaGFvIHdyb3RlOgo+PiAtLS0tLU9y
-aWdpbmFsIE1lc3NhZ2UtLS0tLQo+PiBGcm9tOiBkcmktZGV2ZWwgW21haWx0bzpkcmktZGV2ZWwt
-Ym91bmNlc0BsaXN0cy5mcmVlZGVza3RvcC5vcmddIE9uIEJlaGFsZgo+PiBPZiBSYW5keSBMaQo+
-PiBTZW50OiBNb25kYXksIE9jdG9iZXIgMjQsIDIwMTYgMzo1OSBQTQo+PiBUbzogbGlidmFAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCj4+IENjOiBnd2Vub2xlLmJlYXVjaGVzbmVAaW50ZWwuY29tOyBk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBsaW51eC0KPj4gcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZzsgSmFxdWV6LCBWaWN0b3JYIDx2aWN0b3J4LmphcXVlekBpbnRlbC5jb20+
-Owo+PiBlZGRpZS5jYWkgPGVkZGllLmNhaUByb2NrLWNoaXBzLmNvbT47IOael+mHkeWPkSA8YWxw
-aGEubGluQHJvY2stY2hpcHMuY29tPjsKPj4gaGVybWFuLmNoZW5Acm9jay1jaGlwcy5jb207IHZq
-YXF1ZXpAaWdhbGlhLmNvbQo+PiBTdWJqZWN0OiBIb3cgdG8gaW1wbGVtZW50IGEgRUdMIG9yIERS
-TSBkaXNwbGF5IGluIFZBLUFQSSBkcml2ZXIKPj4KPj4gSGVsbG86Cj4+ICAgSSBhbSBnb2luZyB0
-byBpbXBsZW1lbnQgYSBFR0wgYW5kIERSTSBkaXNwbGF5IGZvciBSb2NrY2hpcCBWQS1BUEkgZHJp
-dmVyLgo+PiBXZSBkbyBoYXZlIGEgRUdMIGltcGxlbWVudGF0aW9uIGluIFJvY2tjaGlwIFZBLUFQ
-SSBkcml2ZXIsIGJ1dCBpdCBpcwo+PiBpbXBsZW1lbnRlZCBpbiB0aGUgc3RhbmRhcmQgd2F5LCB3
-ZSBkaWQgdGhhdCBhcyBhIFgxMSBkaXNwbGF5Lgo+PiAgIEkgZGlkbid0IHNlZSB0aGUgdXNhZ2Ug
-b2Ygc3RydWN0IFZBRHJpdmVyVlRhYmxlRUdMIGluIGdzdHJlYW1lciwgYW5kIEkgaGF2ZQo+PiBu
-byBpZGVhIGFib3V0IHdoZXJlIHNob3VsZCBJIGltcGxlbWVudCBzb21ldGhpbmcgZnVuY3Rpb25z
-IGxpa2UKPj4gZWdsRXhwb3J0RFJNSW1hZ2VNRVNBKCkuCj4KPiBWQURyaXZlclZUYWJsZUVHTCBp
-cyBkZXByZWNhdGVkIGluIGxpYnZhLCB3ZSBoYXMgYSBtb3JlIGVmZmljaWVudCB3YXkgdG8gdXNl
-IHZhYXBpIGFuZCBlZ2wuCj4gWW91IGNhbiByZWZlciB0byB0aGUgZXhhbXBsZXMgaW4gbGlieWFt
-aS11dGlscyAoaHR0cHM6Ly9naXRodWIuY29tLzAxb3JnL2xpYnlhbWktdXRpbHMuZ2l0KSBmb3IK
-PiBob3cgdG8gdXNlIHZhYXBpIGFuZCBlZ2wuCkkgc2VlLCB0aGFuayB5b3UuCj4KPj4gICBUaGUg
-RFJNIHNlZW1zIG1vcmUgY29tcGxleCwgdGhlIHJlYXNvbiBJIHdhbnQgdG8gdXNlIHRoZSBEUk0g
-aXMgdGhhdCwKPj4gR1BVIHdvdWxkIG5vdCB3b3JrIHdpdGggdGhlIDRLIHZpZGVvIHJlbmRlcmlu
-Zywgc28gdGhlIERSTSBtZWFucyB0aGF0Cj4+IGRpcmVjdGx5IG91dHB1dCB0aGUgdmlkZW8gaW50
-byB2aWRlbyBjb250cm9sbGVyIGluIG91ciBwbGF0Zm9ybS4gQnV0IHN0aWxsIGhhdmUgbm8KPj4g
-aWRlYSB3aGF0IGtpbmQgb2YgdGhpbmcgSSBzaG91bGQgaW1wbGVtZW50IGluIHRoZSBWQS1BUEkg
-ZHJpdmVyLiBJdCBzZWVtcyB0aGF0Cj4+IHRoZSBWQS1BUEkgYmFzZSBsaWJyYXJ5IHdvdWxkIG9w
-ZW4gYSBEUk0gaW5zdGFuY2UgZm9yIHRoZSBkcml2ZXIsIGJ1dCBsZWF2aW5nCj4+IHRob3NlIGNv
-bmZpZ3VyZSBmb3IgY29ubmVjdG9yLCBlbmNvZGVyLCBwbGFuZXMgdG8gVkEtQVBJIGRyaXZlcj8K
-QWJvdXQgdGhlIERSTSwgSSBoYXZlIGltcGxlbWVudGVkIGEgdmVyc2lvbiB3aGljaCBwcmV0ZW5k
-cyBhIFggb3V0cHV0LCBJIAp3b3VsZCBsaWtlIHRvIGtub3cgYSBiZXR0ZXIgd2F5Lgo+Cj4gY29u
-ZmlndXJlIGZvciBjb25uZWN0b3IsIGVuY29kZXIsIHBsYW5lcyBhcmVuJ3QgYSBwYXJ0IG9mIHZh
-LWFwaSBkcml2ZXIuICBZb3Ugc2hvdWxkIGNoZWNrIGxpYmRybSBhbmQgZHJtL2k5MTUuCj4gWW91
-IGNhbiByZWZlciB0byB0aGUgdGVzdCBjYXNlIG9mIG1vZGV0ZXN0IGluIGxpYmRybSAoZ2l0LmZy
-ZWVkZXNrdG9wLm9yZy9naXQvbWVzYS9kcm0pCj4KPgo+PiAgIENvdWxkIHlvdSBndXlzIGdpdmUg
-bWUgc2FtZSBzYW1wbGUgY29kZSBvciBleGFtcGxlIG9mIHRob3NlIGtpbmQgb2YKPj4gZGlzcGxh
-eSBpbiBWQS1BUEkgb3IgdGhlIGRvY3VtZW50cyB3b3VsZCBoZWxwKEkgd291bGQgbm90IGltYWdl
-IHRoZXJlIGlzIGEKPj4gVkEtQVBJIGRvY3VtZW50cykKPj4KPj4gLS0KPj4gUmFuZHkgTGkKPj4g
-VGhlIHRoaXJkIHByb2R1Y2UgZGVwYXJ0bWVudAo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+IGRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPgoKLS0gClJhbmR5IExpClRoZSB0aGlyZCBw
-cm9kdWNlIGRlcGFydG1lbnQKPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ClRoaXMgZW1haWwgbWVzc2FnZSwg
-aW5jbHVkaW5nIGFueSBhdHRhY2htZW50cywgaXMgZm9yIHRoZSBzb2xlCnVzZSBvZiB0aGUgaW50
-ZW5kZWQgcmVjaXBpZW50KHMpIGFuZCBtYXkgY29udGFpbiBjb25maWRlbnRpYWwgYW5kCnByaXZp
-bGVnZWQgaW5mb3JtYXRpb24uIEFueSB1bmF1dGhvcml6ZWQgcmV2aWV3LCB1c2UsIGRpc2Nsb3N1
-cmUgb3IKZGlzdHJpYnV0aW9uIGlzIHByb2hpYml0ZWQuIElmIHlvdSBhcmUgbm90IHRoZSBpbnRl
-bmRlZCByZWNpcGllbnQsIHBsZWFzZQpjb250YWN0IHRoZSBzZW5kZXIgYnkgcmVwbHkgZS1tYWls
-IGFuZCBkZXN0cm95IGFsbCBjb3BpZXMgb2YgdGhlIG9yaWdpbmFsCm1lc3NhZ2UuIFtGdXpob3Ug
-Um9ja2NoaXAgRWxlY3Ryb25pY3MsIElOQy4gQ2hpbmEgbWFpbmxhbmRdCj09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Donnerstag, 13. Oktober 2016, 12:42:13 CEST schrieb Shawn Lin:
+> The deassert of phy_rst from exit callback is incorrect as when
+> doing phy_exit, we expect the phy_rst is on asserted state which was
+> done by power_off callback, but not deasserted state. Meanwhile when
+> disabling clk_pciephy_ref, the assert/deassert signal can't actually
+> take effect on the phy. So let's fix it anyway.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+looks ok to have that removed, as any future phy_init call will make sure it 
+gets asserted anyway.
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
