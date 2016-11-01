@@ -1,33 +1,37 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 0/2] soc: rockchip: fix probe error path in power-domain driver
-Date: Tue, 01 Nov 2016 23:50:48 +0100
-Message-ID: <3287084.B8mS2I86W8@phil>
-References: <1473977679-18649-1-git-send-email-heiko@sntech.de>
+Subject: Re: [PATCH v2] soc: rockchip: avoid infinite loop for power domain
+Date: Wed, 02 Nov 2016 00:22:13 +0100
+Message-ID: <1994521.aqSE2RsRj4@phil>
+References: <1476296168-29154-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473977679-18649-1-git-send-email-heiko@sntech.de>
+In-Reply-To: <1476296168-29154-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, tomeu.vizoso@collabora.com, wxt@rock-chips.com, rjw@rjwysocki.net
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: khilman@linaro.org, zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 16. September 2016, 00:14:37 CET schrieb Heiko Stuebner:
-> A recent change to generic power-domains revealed that the rockchip
-> driver cannot safely fail it's probe. Also pm_genpd_init creates a
-> situation where a probe error leads to the generic power-domains
-> accessing already freed data.
+Am Donnerstag, 13. Oktober 2016, 02:16:08 CET schrieb Caesar Wang:
+> In some cases, we have met the infinite loop in
+> rockchip_pmu_set_idle_request() or rockchip_do_pmu_set_power_domain().
 > 
-> The reason for us finding this issue (holes in power-domain lists), will
-> get fixed in the generic power-domains, but the fixes below will only
-> work after the newly added genpd-removal code got merged.
+> As the crosbug.com/p/57351 reported, the boot hangs right after this
+> [1.629163] bootconsole [uart8250] disabled
+> [1.639286] [drm:drm_core_init] Initialized drm 1.1.0 20060810
+> [1.645926] [drm:drm_get_platform_dev] Initialized vgem 1.0.0 20120112..
+> [1.654558] iommu: Adding device ff8f0000.vop to group 0
+> [1.660569] iommu: Adding device ff900000.vop to group 1
+> <hang>
 > 
+> This patch adds the error message and timeout to avoid infinite loop if
+> it fails to get the ack.
 > 
-> Therefore I hope to remember to send the two patches below as fix after
-> 4.9-rc1.
-> 
-> Alternatively Rafael could include them into his branch directly.
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-I've applied now both in a fixes branch for 4.9 and plan on sending it through 
-arm-soc later this week.
+applied to by drivers-branch for 4.10
+
+
+Thanks
+Heiko
