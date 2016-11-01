@@ -1,36 +1,33 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] soc: rockchip: avoid infinite loop for power domain
-Date: Wed, 02 Nov 2016 00:22:13 +0100
-Message-ID: <1994521.aqSE2RsRj4@phil>
-References: <1476296168-29154-1-git-send-email-wxt@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: optimize the configuration for 800MHz and 1GHz on RK3399
+Date: Wed, 02 Nov 2016 00:25:37 +0100
+Message-ID: <37901081.P92AxpVH96@phil>
+References: <1477970526-26388-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476296168-29154-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: khilman@linaro.org, zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tfiga@chromium.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1477970526-26388-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: dianders@google.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, briannorris@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 13. Oktober 2016, 02:16:08 CET schrieb Caesar Wang:
-> In some cases, we have met the infinite loop in
-> rockchip_pmu_set_idle_request() or rockchip_do_pmu_set_power_domain().
+Am Dienstag, 1. November 2016, 11:22:06 CET schrieb Xing Zheng:
+> Usually, the 800MHz and 1GHz are supplied for CPLL and NPLL in the RK3399.
+> But dues to the carelessly copying from RK3036 when the RK3399 bringing up,
+> the refdiv == 6, it will increase the lock time, and it is not an optimal
+> configuration.
 > 
-> As the crosbug.com/p/57351 reported, the boot hangs right after this
-> [1.629163] bootconsole [uart8250] disabled
-> [1.639286] [drm:drm_core_init] Initialized drm 1.1.0 20060810
-> [1.645926] [drm:drm_get_platform_dev] Initialized vgem 1.0.0 20120112..
-> [1.654558] iommu: Adding device ff8f0000.vop to group 0
-> [1.660569] iommu: Adding device ff900000.vop to group 1
-> <hang>
+> Please let's fix them for the lock time and jitter are lower:
+> 800 MHz:
+> - FVCO == 2.4 GHz, revdiv == 1.
+> 1 GHz:
+> - FVCO == 3 GHz, revdiv == 1.
 > 
-> This patch adds the error message and timeout to avoid infinite loop if
-> it fails to get the ack.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 
-applied to by drivers-branch for 4.10
+applied to my clk-branch for 4.10
 
 
 Thanks
