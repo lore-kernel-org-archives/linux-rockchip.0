@@ -1,34 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: optimize the configuration for 800MHz and 1GHz on RK3399
-Date: Wed, 02 Nov 2016 00:25:37 +0100
-Message-ID: <37901081.P92AxpVH96@phil>
-References: <1477970526-26388-1-git-send-email-zhengxing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add cpu-id nvmem cell node for rk3399
+Date: Wed, 02 Nov 2016 00:30:20 +0100
+Message-ID: <1575310.lunAtp0ymU@diego>
+References: <20161030025725.32155-1-xzy.xu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1477970526-26388-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: dianders@google.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, briannorris@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20161030025725.32155-1-xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 1. November 2016, 11:22:06 CET schrieb Xing Zheng:
-> Usually, the 800MHz and 1GHz are supplied for CPLL and NPLL in the RK3399.
-> But dues to the carelessly copying from RK3036 when the RK3399 bringing up,
-> the refdiv == 6, it will increase the lock time, and it is not an optimal
-> configuration.
+Am Sonntag, 30. Oktober 2016, 10:57:25 schrieb Ziyuan Xu:
+> There is a 'cpu-id' field in efuse, export it for other drivers
+> reference.
 > 
-> Please let's fix them for the lock time and jitter are lower:
-> 800 MHz:
-> - FVCO == 2.4 GHz, revdiv == 1.
-> 1 GHz:
-> - FVCO == 3 GHz, revdiv == 1.
+> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 76b2864..71c3ce7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1023,6 +1023,9 @@
+>  		clock-names = "pclk_efuse";
+> 
+>  		/* Data cells */
+> +		cpu_id: cpu-id {
 
-applied to my clk-branch for 4.10
+I've added the address, so this gets to be cpu_id: cpu-id@7 to make it 
+compliant and applied the result to my dts64 branch for 4.10
 
 
 Thanks
 Heiko
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
