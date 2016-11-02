@@ -1,38 +1,61 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH] clk: rockchip: fix some clocks' name to be more standard style
-Date: Wed,  2 Nov 2016 15:04:56 +0800
-Message-ID: <1478070296-23080-1-git-send-email-jay.xu@rock-chips.com>
+From: William Wu <wulf@rock-chips.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: add usb2-phy otg-port support for rk3399
+Date: Wed,  2 Nov 2016 15:42:18 +0800
+Message-ID: <1478072538-32081-3-git-send-email-wulf@rock-chips.com>
+References: <1478072538-32081-1-git-send-email-wulf@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478072538-32081-1-git-send-email-wulf@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de, huangtao@rock-chips.com, zhangqing@rock-chips.com, zhengxing@rock-chips.com
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, lintao@rock-chips.com, Jianqun Xu <jay.xu@rock-chips.com>
+To: kishon@ti.com, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, wulf@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Fix aclk_emmcgrf to aclk_emmc_grf, and fix aclk_emmccore to be
-aclk_emmc_core.
+Add otg-port nodes for both u2phy0 and u2phy1. The otg-port can
+be used for USB2.0 part of USB3.0 OTG controller.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: William Wu <wulf@rock-chips.com>
 ---
- drivers/clk/rockchip/clk-rk3399.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 2c7cba7..b3df2c6 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -935,11 +935,11 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKGATE_CON(6), 13, GFLAGS),
- 	COMPOSITE_NOGATE(ACLK_EMMC, "aclk_emmc", mux_aclk_emmc_p, CLK_IGNORE_UNUSED,
- 			RK3399_CLKSEL_CON(21), 7, 1, MFLAGS, 0, 5, DFLAGS),
--	GATE(ACLK_EMMC_CORE, "aclk_emmccore", "aclk_emmc", CLK_IGNORE_UNUSED,
-+	GATE(ACLK_EMMC_CORE, "aclk_emmc_core", "aclk_emmc", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(32), 8, GFLAGS),
- 	GATE(ACLK_EMMC_NOC, "aclk_emmc_noc", "aclk_emmc", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(32), 9, GFLAGS),
--	GATE(ACLK_EMMC_GRF, "aclk_emmcgrf", "aclk_emmc", CLK_IGNORE_UNUSED,
-+	GATE(ACLK_EMMC_GRF, "aclk_emmc_grf", "aclk_emmc", CLK_IGNORE_UNUSED,
- 			RK3399_CLKGATE_CON(32), 10, GFLAGS),
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index b65c193..ea2df51 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1095,6 +1095,17 @@
+ 			clock-output-names = "clk_usbphy0_480m";
+ 			status = "disabled";
  
- 	/* perilp0 */
++			u2phy0_otg: otg-port {
++				#phy-cells = <0>;
++				interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>,
++					     <GIC_SPI 104 IRQ_TYPE_LEVEL_HIGH 0>,
++					     <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH 0>;
++				interrupt-names = "otg-bvalid", "otg-id",
++						  "linestate";
++				status = "disabled";
++			};
++
++
+ 			u2phy0_host: host-port {
+ 				#phy-cells = <0>;
+ 				interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH 0>;
+@@ -1112,6 +1123,16 @@
+ 			clock-output-names = "clk_usbphy1_480m";
+ 			status = "disabled";
+ 
++			u2phy1_otg: otg-port {
++				#phy-cells = <0>;
++				interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH 0>,
++					     <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>,
++					     <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
++				interrupt-names = "otg-bvalid", "otg-id",
++						  "linestate";
++				status = "disabled";
++			};
++
+ 			u2phy1_host: host-port {
+ 				#phy-cells = <0>;
+ 				interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH 0>;
 -- 
-1.9.1
+2.0.0
