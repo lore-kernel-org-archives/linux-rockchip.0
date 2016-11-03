@@ -1,51 +1,39 @@
 From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 0/6] Add basic support for support for Rockchip RK1108 SOC
-Date: Thu,  3 Nov 2016 20:26:15 +0800
-Message-ID: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
+Subject: [PATCH 1/6] dt-bindings: rockchip-dw-mshc: add RK1108 dw-mshc description
+Date: Thu,  3 Nov 2016 20:30:50 +0800
+Message-ID: <1478176250-11840-1-git-send-email-andy.yan@rock-chips.com>
+References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: linus.walleij@linaro.org, robh+dt@kernel.org, shawn.lin@rock-chips.com, linux-clk@vger.kernel.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-gpio@vger.kernel.org, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, mark.rutland@arm.com, elaine.zhang@rock-chips.com, Andy Yan <andy.yan@rock-chips.com>
+Cc: robh+dt@kernel.org, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, mark.rutland@arm.com, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+From: Shawn Lin <shawn.lin@rock-chips.com>
 
-RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
-It is designed for varies application scenario such as car DVR, sports
-DV, secure camera and UAV camera.
-This patch series add basic support for it, which can boot a board with
-initramfs into shell.
-More new feathers will come soon.
+Add "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc" for
+dwmmc on rk1108 platform.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Andy Yan (4):
-  pinctrl: rockchip: add support for rk1108
-  ARM: dts: add basic support for Rockchip RK1108 SOC
-  ARM: add low level debug uart for rk1108
-  ARM: dts: rockchip: add rockchip RK1108 Evaluation board
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-Shawn Lin (2):
-  dt-bindings: rockchip-dw-mshc: add RK1108 dw-mshc description
-  clk: rockchip: add clock controller for rk1108
+ Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
- Documentation/devicetree/bindings/arm/rockchip.txt |   3 +
- .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   1 +
- arch/arm/Kconfig.debug                             |  30 ++
- arch/arm/boot/dts/Makefile                         |   1 +
- arch/arm/boot/dts/rk1108-evb.dts                   |  69 +++
- arch/arm/boot/dts/rk1108.dtsi                      | 420 +++++++++++++++++++
- arch/arm/mach-rockchip/rockchip.c                  |   1 +
- drivers/clk/rockchip/Makefile                      |   1 +
- drivers/clk/rockchip/clk-rk1108.c                  | 463 +++++++++++++++++++++
- drivers/clk/rockchip/clk.h                         |  14 +
- drivers/pinctrl/pinctrl-rockchip.c                 |  27 +-
- include/dt-bindings/clock/rk1108-cru.h             | 308 ++++++++++++++
- 12 files changed, 1337 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
- create mode 100644 arch/arm/boot/dts/rk1108.dtsi
- create mode 100644 drivers/clk/rockchip/clk-rk1108.c
- create mode 100644 include/dt-bindings/clock/rk1108-cru.h
-
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+index 07184e8..ea9c1c9 100644
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
++++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+@@ -13,6 +13,7 @@ Required Properties:
+ 	- "rockchip,rk2928-dw-mshc": for Rockchip RK2928 and following,
+ 							before RK3288
+ 	- "rockchip,rk3288-dw-mshc": for Rockchip RK3288
++	- "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK1108
+ 	- "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3036
+ 	- "rockchip,rk3368-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3368
+ 	- "rockchip,rk3399-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3399
 -- 
 2.7.4
-
-
