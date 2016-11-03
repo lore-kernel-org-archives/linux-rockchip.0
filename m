@@ -1,55 +1,62 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: fix some clocks' name to be more standard
- style
-Date: Thu, 3 Nov 2016 16:52:48 +0800
-Message-ID: <763cad68-a068-9a4b-e26d-2c459c2d4808@rock-chips.com>
-References: <1478070296-23080-1-git-send-email-jay.xu@rock-chips.com>
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] drm/bridge: analogix_dp: return error if transfer none byte
+Date: Thu,  3 Nov 2016 18:17:30 +0800
+Message-ID: <1478168250-30858-1-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478070296-23080-1-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>, mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de, huangtao@rock-chips.com, zhangqing@rock-chips.com, zhengxing@rock-chips.com
-Cc: shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, lintao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: airlied-cv59FeDIM0c@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/11/2 15:04, Jianqun Xu wrote:
-> Fix aclk_emmcgrf to aclk_emmc_grf, and fix aclk_emmccore to be
-> aclk_emmc_core.
->
+Reference from drm_dp_aux description (about transfer):
+Upon success, the implementation should return the number of payload bytes
+that were transferred, or a negative error-code on failure. Helpers
+propagate errors from the .transfer() function, with the exception of
+the -EBUSY error, which causes a transaction to be retried. On a short,
+helpers will return -EPROTO to make it simpler to check for failure.
 
-What is the standard style should be?
+The analogix_dp_transfer will return num_transferred, but if there is none
+byte been transferred, the return value will be 0, which means success, we
+should return error-code if transfer none byte.
 
-TRM uses aclk_emmccore but not aclk_emmc_core, so should it be more
-standrad to keep it as-is?
+for (retry = 0; retry < 32; retry++) {
+	err = aux->transfer(aux, &msg);
+	if (err < 0) {
+		if (err == -EBUSY)
+			continue;
 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  drivers/clk/rockchip/clk-rk3399.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 2c7cba7..b3df2c6 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -935,11 +935,11 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
->  			RK3399_CLKGATE_CON(6), 13, GFLAGS),
->  	COMPOSITE_NOGATE(ACLK_EMMC, "aclk_emmc", mux_aclk_emmc_p, CLK_IGNORE_UNUSED,
->  			RK3399_CLKSEL_CON(21), 7, 1, MFLAGS, 0, 5, DFLAGS),
-> -	GATE(ACLK_EMMC_CORE, "aclk_emmccore", "aclk_emmc", CLK_IGNORE_UNUSED,
-> +	GATE(ACLK_EMMC_CORE, "aclk_emmc_core", "aclk_emmc", CLK_IGNORE_UNUSED,
->  			RK3399_CLKGATE_CON(32), 8, GFLAGS),
->  	GATE(ACLK_EMMC_NOC, "aclk_emmc_noc", "aclk_emmc", CLK_IGNORE_UNUSED,
->  			RK3399_CLKGATE_CON(32), 9, GFLAGS),
-> -	GATE(ACLK_EMMC_GRF, "aclk_emmcgrf", "aclk_emmc", CLK_IGNORE_UNUSED,
-> +	GATE(ACLK_EMMC_GRF, "aclk_emmc_grf", "aclk_emmc", CLK_IGNORE_UNUSED,
->  			RK3399_CLKGATE_CON(32), 10, GFLAGS),
->
->  	/* perilp0 */
->
+		goto unlock;
+	}
+}
 
+Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index cd37ac0..303083a 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -1162,5 +1162,5 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 		 (msg->request & ~DP_AUX_I2C_MOT) == DP_AUX_NATIVE_READ)
+ 		msg->reply = DP_AUX_NATIVE_REPLY_ACK;
+ 
+-	return num_transferred;
++	return num_transferred > 0 ? num_transferred : -EBUSY;
+ }
 -- 
-Best Regards
-Shawn Lin
+1.9.1
