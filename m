@@ -1,36 +1,104 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 10/13] ARM: dts: exynos: replace to "max-frequecy"
- instead of "clock-freq-min-max"
-Date: Thu, 3 Nov 2016 20:41:12 +0200
-Message-ID: <20161103184112.GB11071@kozik-lap>
-References: <20161103062135.10697-1-jh80.chung@samsung.com>
- <20161103062135.10697-11-jh80.chung@samsung.com>
+From: "FedEx SmartPost" <clarence.oliver-UNZO3pFYv0pWk0Htik3J/w@public.gmane.org>
+Subject: ROCK, Problems with item delivery, n.000433561
+Date: Thu, 3 Nov 2016 14:44:19 -0600
+Message-ID: <d113d4e53c15b01d6f29f08323cea477@purelyvr.com>
+Reply-To: FedEx SmartPost <clarence.oliver-UNZO3pFYv0pWk0Htik3J/w@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20161103062135.10697-11-jh80.chung@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, shawn.lin@rock-chips.com
+Content-Type: multipart/mixed; boundary="b1_8b49a889ddc0f59f7cf920c49513e3d3"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 03, 2016 at 03:21:32PM +0900, Jaehoon Chung wrote:
-> In drivers/mmc/core/host.c, there is "max-frequency" property.
-> It should be same behavior. So Use the "max-frequency" instead of
-> "clock-freq-min-max".
-> 
-> Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
-> ---
->  arch/arm/boot/dts/exynos3250-artik5-eval.dts | 2 +-
->  arch/arm/boot/dts/exynos3250-artik5.dtsi     | 2 +-
->  arch/arm/boot/dts/exynos3250-monk.dts        | 2 +-
->  arch/arm/boot/dts/exynos3250-rinato.dts      | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+--b1_8b49a889ddc0f59f7cf920c49513e3d3
+Content-Type: text/plain; charset=us-ascii
 
-This looks totally independent to rest of patches so it can be applied
-separately without any functional impact (except lack of minimum
-frequency). Is that correct?
+Dear Rock,
 
-Best regards,
-Krzysztof
+We could not deliver your item.
+Please, download Delivery Label attached to this email.
+
+Thank you for choosing FedEx,
+Clarence Oliver,
+Sr. Delivery Agent.
+
+
+--b1_8b49a889ddc0f59f7cf920c49513e3d3
+Content-Type: application/zip; name="Delivery_Notification_000433561.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Delivery_Notification_000433561.zip
+
+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
+
+
+--b1_8b49a889ddc0f59f7cf920c49513e3d3
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--b1_8b49a889ddc0f59f7cf920c49513e3d3--
