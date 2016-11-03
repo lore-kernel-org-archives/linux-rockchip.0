@@ -1,47 +1,33 @@
-From: Julius Werner <jwerner@chromium.org>
-Subject: [PATCH] clk: rockchip: Ignore frac divisor for PLL equivalence when it's unused
-Date: Wed,  2 Nov 2016 16:43:24 -0700
-Message-ID: <1478130204-3167-1-git-send-email-jwerner@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Xing Zheng <zhengxing@rock-chips.com>, Julius Werner <jwerner@chromium.org>
+From: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/2] support USB2 PHY OTG port for rk3399
+Date: Thu,  3 Nov 2016 10:06:12 +0800
+Message-ID: <1478138774-3254-1-git-send-email-wulf@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip RK3399 PLLs can be used in two separate modes: integral and
-fractional. We can select between these two modes with the unambiguously
-named DSMPD bit.
+This series add support for rk3399 USB2 PHY0 and PHY1 OTG port.
+rk3399 has two USB2 PHYs, and each USB2 PHY is comprised of one
+Host port and one OTG port. We have supported Host port before,
+and try to support OTG port now.
 
-During boot, we check all PLL settings to confirm that they match our
-PLL table for that frequency, and reinitialize the PLLs where they
-don't. The settings checked for this include the fractional divider
-field that is only used in fractional mode, even if we're in integral
-mode (DSMPD = 1) and that field has no effect.
+Test on rk3399-evb board.
 
-This patch changes the check to only compare the fractional divider if
-we're actually in fractional mode. This way, we won't reinitialize the
-PLL in cases where there's absolutely no reason for that, which may
-avoid glitching child clocks that should better not be glitched (e.g.
-PWM regulators).
+William Wu (2):
+  phy: rockchip-inno-usb2: support otg-port for rk3399
+  arm64: dts: rockchip: add usb2-phy otg-port support for rk3399
 
-Signed-off-by: Julius Werner <jwerner@chromium.org>
----
- drivers/clk/rockchip/clk-pll.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi |  21 ++
+ drivers/phy/phy-rockchip-inno-usb2.c     | 593 +++++++++++++++++++++++++++++--
+ 2 files changed, 583 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 9c1373e..1449c76 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -795,7 +795,8 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
- 
- 	if (rate->fbdiv != cur.fbdiv || rate->postdiv1 != cur.postdiv1 ||
- 		rate->refdiv != cur.refdiv || rate->postdiv2 != cur.postdiv2 ||
--		rate->dsmpd != cur.dsmpd || rate->frac != cur.frac) {
-+		rate->dsmpd != cur.dsmpd ||
-+		(!cur.dsmpd && (rate->frac != cur.frac))) {
- 		struct clk *parent = clk_get_parent(hw->clk);
- 
- 		if (!parent) {
 -- 
-2.6.6
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
