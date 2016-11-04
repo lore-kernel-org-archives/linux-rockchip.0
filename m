@@ -1,77 +1,56 @@
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [RFC] V4L2 unified low-level decoder API
-Date: Fri, 04 Nov 2016 10:18:10 -0400
-Message-ID: <1478269090.18909.8.camel@ndufresne.ca>
-References: <58C70A34B28DE743B9604C8841D375C2793D2999@SAFEX1MAIL5.st.com>
-         <aab23d5d-d41d-78e1-7324-77b9d98ee127@rock-chips.com>
-         <e6b89733-465e-74d3-45b9-0a39d1136779@st.com>
-Reply-To: nicolas@ndufresne.ca
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 10/13] ARM: dts: exynos: replace to "max-frequecy"
+ instead of "clock-freq-min-max"
+Date: Fri, 4 Nov 2016 17:04:47 +0200
+Message-ID: <20161104150447.GA4829@kozik-lap>
+References: <20161103062135.10697-1-jh80.chung@samsung.com>
+ <20161103184112.GB11071@kozik-lap>
+ <ecf4fac2-0ab7-d4c4-69e3-d498ee5b601c@samsung.com>
+ <4066252.a1W9ejEKHX@phil>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-        boundary="=-/lWNLrjFYHOAxgWE6iwN"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e6b89733-465e-74d3-45b9-0a39d1136779@st.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Hugues FRUCHET <hugues.fruchet@st.com>, Randy Li <randy.li@rock-chips.com>, "posciak@chromium.org" <posciak@chromium.org>, "jung.zhao@rock-chips.com" <jung.zhao@rock-chips.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
-Cc: Florent Revest <florent.revest@free-electrons.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "eddie.cai" <eddie.cai@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "nicolas.dufresne@collabora.co.uk" <nicolas.dufresne@collabora.co.uk>, =?UTF-8?Q?=E6=9E=97=E9=87=91=E5=8F=91?= <alpha.lin@rock-chips.com>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <4066252.a1W9ejEKHX@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, robh+dt@kernel.org, shawn.lin@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
+On Fri, Nov 04, 2016 at 12:19:49PM +0100, Heiko Stuebner wrote:
+> Hi Jaehoon,
+> 
+> Am Freitag, 4. November 2016, 19:21:30 CET schrieb Jaehoon Chung:
+> > On 11/04/2016 03:41 AM, Krzysztof Kozlowski wrote:
+> > > On Thu, Nov 03, 2016 at 03:21:32PM +0900, Jaehoon Chung wrote:
+> > >> In drivers/mmc/core/host.c, there is "max-frequency" property.
+> > >> It should be same behavior. So Use the "max-frequency" instead of
+> > >> "clock-freq-min-max".
+> > >> 
+> > >> Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+> > >> ---
+> > >> 
+> > >>  arch/arm/boot/dts/exynos3250-artik5-eval.dts | 2 +-
+> > >>  arch/arm/boot/dts/exynos3250-artik5.dtsi     | 2 +-
+> > >>  arch/arm/boot/dts/exynos3250-monk.dts        | 2 +-
+> > >>  arch/arm/boot/dts/exynos3250-rinato.dts      | 2 +-
+> > >>  4 files changed, 4 insertions(+), 4 deletions(-)
+> > > 
+> > > This looks totally independent to rest of patches so it can be applied
+> > > separately without any functional impact (except lack of minimum
+> > > frequency). Is that correct?
+> > 
+> > You're right. I will split the patches. And will resend.
+> > Thanks!
+> 
+> I think what Krzysztof was asking was just if he can simply pick up this patch 
+> alone, as it does not require any of the previous changes.
+> 
+> Same is true for the Rockchip patches I guess, so we could just take them 
+> individually into samsung/rockchip dts branches.
 
---=-/lWNLrjFYHOAxgWE6iwN
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Yes, I wanted to get exactly this information. I couldn't find it in
+cover letter.
 
-Le vendredi 04 novembre 2016 =C3=A0 14:55 +0100, Hugues FRUCHET a =C3=A9cri=
-t=C2=A0:
-> >>
-> >> I can help on H264 on a code review basis based on the functional H264
-> >> setup I have in-house and codec knowledge, but I cannot provide
-> >> implementation in a reasonable timeframe, same for VP8.
-> >>
-> >>
-> >>
-> >> Apart of very details of each codec, we have also to state about gener=
-ic
-> >> concerns such as:
-> >>
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 new pixel form=
-at introduction (VP8 =3D> VP8F, H264 =3D> S264,
-> >> MPG2 =3D> MG2F, MPG4 =3D> MG4F)
-> > I don't think it is necessary.
->=20
-> But currently it is done that way in all patches proposals I have seen=C2=
-=A0
-> so far, including rockchip:
-> rockchip_decoder_v4l2.c:{VAProfileH264Baseline,V4L2_PIX_FMT_H264_SLICE},
->=20
-> We have to state about it all together. Seems natural to me to do this=C2=
-=A0
-> way instead of device caps.
-> Doing so user knows that the driver is based on "Frame API" -so=C2=A0
-> additional headers are required to decode input stream- and not
-> on "Stream API" -H264 stream can be decoded directly-.
-
-We should probably use something else then "STREAMING" in the
-capabilities instead of duplicating all the encoding formats (exception
-to H264 byte-stream and H264 AVC, that also applies to streaming
-drivers and there is not easy way to introduce stream-format in the API
-atm). Other then that, this solution works, so it could just be
-considered the right way, I just find it less elegant personally.
-
-my two cents,
-Nicolas
-
---=-/lWNLrjFYHOAxgWE6iwN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEABECAAYFAlgcmKIACgkQcVMCLawGqBxHtQCfYLV4JGXKWR9naxz2oiqzH2wg
-KWMAn0YB1mBwmWN+iIPIGyUclveK/q2q
-=1Ku1
------END PGP SIGNATURE-----
-
---=-/lWNLrjFYHOAxgWE6iwN--
+Best regards,
+Krzysztof
