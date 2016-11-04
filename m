@@ -1,300 +1,80 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 4/6] ARM: dts: add basic support for Rockchip RK1108 SOC
-Date: Fri, 04 Nov 2016 09:00:05 +0100
-Message-ID: <1788707.rfxhNfegGu@phil>
-References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com> <1478176848-12132-1-git-send-email-andy.yan@rock-chips.com>
+Subject: Re: [PATCH 5/6] ARM: add low level debug uart for rk1108
+Date: Fri, 04 Nov 2016 09:03:19 +0100
+Message-ID: <82141041.b0Orf57KCy@phil>
+References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
+ <12034481.WHiLii4Pov@phil>
+ <56bcae77-3aed-c183-5e9f-3581cc187a7d@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1478176848-12132-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56bcae77-3aed-c183-5e9f-3581cc187a7d-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 3. November 2016, 20:40:48 CET schrieb Andy Yan:
-> RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
-> It is designed for varies application scenario such as car DVR, sports
-> DV, secure camera and UAV camera.
-> 
-> This patch add basic support for it with DMAC / UART / CRU / pinctrl
-> enabled.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  arch/arm/boot/dts/rk1108.dtsi     | 420
-> ++++++++++++++++++++++++++++++++++++++ arch/arm/mach-rockchip/rockchip.c | 
->  1 +
->  2 files changed, 421 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk1108.dtsi
-> 
-> diff --git a/arch/arm/boot/dts/rk1108.dtsi b/arch/arm/boot/dts/rk1108.dtsi
-> new file mode 100644
-> index 0000000..9dccfea
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk1108.dtsi
-> @@ -0,0 +1,420 @@
-> +/*
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/clock/rk1108-cru.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +/ {
-> +	#address-cells = <1>;
-> +	#size-cells = <1>;
-> +
-> +	compatible = "rockchip,rk1108";
-> +
-> +	interrupt-parent = <&gic>;
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +		serial1 = &uart1;
-> +		serial2 = &uart2;
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu0: cpu@f00 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0xf00>;
-> +		};
-> +
-
-unnecessary empty line
-
-> +	};
-> +
-> +	amba {
-> +		compatible = "simple-bus";
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		ranges;
-> +
-> +		pdma: pdma@102a0000 {
-> +			compatible = "arm,pl330", "arm,primecell";
-> +			reg = <0x102a0000 0x4000>;
-> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
-> +			#dma-cells = <1>;
-> +			arm,pl330-broken-no-flushp;
-> +			clocks = <&cru ACLK_DMAC>;
-> +			clock-names = "apb_pclk";
-> +		};
-> +	};
-> +
-> +	arm-pmu {
-> +		compatible = "arm,cortex-a7-pmu";
-> +		interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
-> +
-> +
-> +	timer {
-> +		compatible = "arm,armv7-timer";
-> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | 
-IRQ_TYPE_LEVEL_HIGH)>,
-> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-
-CPU_MASK_SIMPLE(4)? You only have one core, not 4.
-
-
-> +		clock-frequency = <24000000>;
-> +	};
-> +
-> +	xin24m: oscillator {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <24000000>;
-> +		clock-output-names = "xin24m";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	bus_intmem@10080000 {
-> +		compatible = "mmio-sram";
-> +		reg = <0x10080000 0x2000>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		ranges = <0 0x10080000 0x2000>;
-> +	};
-> +
-> +	grf: syscon@10300000 {
-> +		compatible = "rockchip,rk1108-grf", "syscon";
-> +		reg = <0x10300000 0x1000>;
-> +	};
-> +
-> +	emmc: dwmmc@30110000 {
-> +		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
-> +		clock-freq-min-max = <400000 150000000>;
-> +		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-> +			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +		fifo-depth = <0x100>;
-> +		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg = <0x30110000 0x4000>;
-> +		status = "disabled";
-> +	};
-> +
-> +	sdio: dwmmc@30120000 {
-> +		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
-> +		clock-freq-min-max = <400000 150000000>;
-> +		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
-> +			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +		fifo-depth = <0x100>;
-> +		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg = <0x30120000 0x4000>;
-> +		status = "disabled";
-> +	};
-> +
-> +	sdmmc: dwmmc@30130000 {
-
-ordering by register address please (uart2 before sdmmc etc; same for 
-everything else)
-
-
-> +		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
-> +		clock-freq-min-max = <400000 100000000>;
-> +		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-> +			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +		fifo-depth = <0x100>;
-> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg = <0x30130000 0x4000>;
-> +		status = "disabled";
-> +	};
-> +
-> +	uart2: serial@10210000 {
-> +		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
-> +		reg = <0x10210000 0x100>;
-> +		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg-shift = <2>;
-> +		reg-io-width = <4>;
-> +		clock-frequency = <24000000>;
-> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-> +		clock-names = "baudclk", "apb_pclk";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&uart2m0_xfer>;
-> +		status = "disabled";
-> +	};
-> +
-> +	uart1: serial@10220000 {
-> +		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
-> +		reg = <0x10220000 0x100>;
-> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg-shift = <2>;
-> +		reg-io-width = <4>;
-> +		clock-frequency = <24000000>;
-> +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
-> +		clock-names = "baudclk", "apb_pclk";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&uart1_xfer>;
-> +		status = "disabled";
-> +	};
-> +
-> +	uart0: serial@10230000 {
-> +		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
-> +		reg = <0x10230000 0x100>;
-> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg-shift = <2>;
-> +		reg-io-width = <4>;
-> +		clock-frequency = <24000000>;
-> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
-> +		clock-names = "baudclk", "apb_pclk";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
-> +		status = "disabled";
-> +	};
-> +
-> +	cru: clock-controller@20200000 {
-> +		compatible = "rockchip,rk1108-cru";
-> +		reg = <0x20200000 0x1000>;
-> +		rockchip,grf = <&grf>;
-> +		#clock-cells = <1>;
-> +		#reset-cells = <1>;
-> +	};
-> +
-> +	gic: interrupt-controller@32010000 {
-> +		compatible = "arm,cortex-a15-gic";
-
-compatible = "arm,gic-400"; ?
-
-> +		interrupt-controller;
-> +		#interrupt-cells = <3>;
-> +		#address-cells = <0>;
-> +
-> +		reg = <0x32011000 0x1000>,
-> +		      <0x32012000 0x1000>;
-
-please provide all 4 register areas and also the interrupt (
-
-> +	};
-> +
-
-[...]
-
-> diff --git a/arch/arm/mach-rockchip/rockchip.c
-> b/arch/arm/mach-rockchip/rockchip.c index a7ab9ec..e7fdf06 100644
-> --- a/arch/arm/mach-rockchip/rockchip.c
-> +++ b/arch/arm/mach-rockchip/rockchip.c
-> @@ -76,6 +76,7 @@ static void __init rockchip_dt_init(void)
->  }
-> 
->  static const char * const rockchip_board_dt_compat[] = {
-> +	"rockchip,rk1108",
->  	"rockchip,rk2928",
->  	"rockchip,rk3066a",
->  	"rockchip,rk3066b",
-
-please split this into a separate patch, as code and dts changes need to go 
-through different branches.
-
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+QW0gRnJlaXRhZywgNC4gTm92ZW1iZXIgMjAxNiwgMTU6NTg6MzUgQ0VUIHNjaHJpZWIgQW5keSBZ
+YW46Cj4gSGkgSGVpa286Cj4gCj4gT24gMjAxNuW5tDEx5pyIMDTml6UgMTU6MzYsIEhlaWtvIFN0
+dWVibmVyIHdyb3RlOgo+ID4gQW0gRG9ubmVyc3RhZywgMy4gTm92ZW1iZXIgMjAxNiwgMjA6NDI6
+MjEgQ0VUIHNjaHJpZWIgQW5keSBZYW46Cj4gPj4gUksxMTA4IFVBUlRzIGFyZSBTeW5vcHNpcyBE
+ZXNpZ25XYXJlIDgyNTAgY29tcGF0aWJsZS4KPiA+PiBPbmx5IHdpdGggZGlmZmVyZW50IHJlZ2lz
+dGVyIGFkZHJlc3Nlcy4KPiA+PiAKPiA+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFlhbiA8YW5keS55
+YW5Acm9jay1jaGlwcy5jb20+Cj4gPj4gLS0tCj4gPj4gCj4gPj4gICBhcmNoL2FybS9LY29uZmln
+LmRlYnVnIHwgMzAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPj4gICAxIGZpbGUg
+Y2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKQo+ID4+IAo+ID4+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
+bS9LY29uZmlnLmRlYnVnIGIvYXJjaC9hcm0vS2NvbmZpZy5kZWJ1Zwo+ID4+IGluZGV4IGQ4M2Y3
+YzMuLjQwODU0MGYgMTAwNjQ0Cj4gPj4gLS0tIGEvYXJjaC9hcm0vS2NvbmZpZy5kZWJ1Zwo+ID4+
+ICsrKyBiL2FyY2gvYXJtL0tjb25maWcuZGVidWcKPiA+PiBAQCAtNzc2LDYgKzc3NiwzMCBAQCBj
+aG9pY2UKPiA+PiAKPiA+PiAgIAkJICB0aGVpciBvdXRwdXQgdG8gdGhlIHN0YW5kYXJkIHNlcmlh
+bCBwb3J0IG9uIHRoZSBSZWFsVmlldwo+ID4+ICAgCQkgIFBCMTE3NiBwbGF0Zm9ybS4KPiA+PiAK
+PiA+PiArCWNvbmZpZyBERUJVR19SSzExMDhfVUFSVDAKPiA+PiArCQlib29sICJLZXJuZWwgbG93
+LWxldmVsIGRlYnVnZ2luZyBtZXNzYWdlcyB2aWEgUm9ja2NoaXAgUksxMTA4IApVQVJUMCIKPiA+
+PiArCQlkZXBlbmRzIG9uIEFSQ0hfUk9DS0NISVAKPiA+PiArCQlzZWxlY3QgREVCVUdfVUFSVF84
+MjUwCj4gPj4gKwkJaGVscAo+ID4+ICsJCSAgU2F5IFkgaGVyZSBpZiB5b3Ugd2FudCBrZXJuZWwg
+bG93LWxldmVsIGRlYnVnZ2luZyBzdXBwb3J0Cj4gPj4gKyAgICAgICAgICAgICAgICAgIG9uIFJv
+Y2tjaGlwIFJLMTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4gPj4gKwo+ID4+ICsJY29uZmlnIERFQlVH
+X1JLMTEwOF9VQVJUMQo+ID4+ICsJCWJvb2wgIktlcm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5nIG1l
+c3NhZ2VzIHZpYSBSb2NrY2hpcCBSSzExMDggClVBUlQxIgo+ID4+ICsJCWRlcGVuZHMgb24gQVJD
+SF9ST0NLQ0hJUAo+ID4+ICsJCXNlbGVjdCBERUJVR19VQVJUXzgyNTAKPiA+PiArCQloZWxwCj4g
+Pj4gKwkJICBTYXkgWSBoZXJlIGlmIHlvdSB3YW50IGtlcm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5n
+IHN1cHBvcnQKPiA+PiArCQkgIG9uIFJvY2tjaGlwIFJLMTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4g
+Pj4gKwo+ID4+ICsJY29uZmlnIERFQlVHX1JLMTEwOF9VQVJUMgo+ID4+ICsJCWJvb2wgIktlcm5l
+bCBsb3ctbGV2ZWwgZGVidWdnaW5nIG1lc3NhZ2VzIHZpYSBSb2NrY2hpcCBSSzExMDggClVBUlQy
+Igo+ID4+ICsJCWRlcGVuZHMgb24gQVJDSF9ST0NLQ0hJUAo+ID4+ICsJCXNlbGVjdCBERUJVR19V
+QVJUXzgyNTAKPiA+PiArCQloZWxwCj4gPj4gKwkJICBTYXkgWSBoZXJlIGlmIHlvdSB3YW50IGtl
+cm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5nIHN1cHBvcnQKPiA+PiArCQkgIG9uIFJvY2tjaGlwIFJL
+MTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4gPj4gKwo+ID4gCj4gPiBhcmUgeW91IHN1cmUsIHlvdSBu
+ZWVkIGFsbCAzIG9mIHRoZW0/Cj4gPiAKPiA+IEkuZS4gbW9zdCBSb2NrY2hpcCBTb0NzIHNvIGZh
+ciBoYWQgb25lIHVhcnQgc29tZXdoYXQgZGVzaWduYXRlZCBhcyBkZWJ1Zwo+ID4gdWFydC4gTW9z
+dCBsaWtlbHkgZHVlIHRvIGl0IG5vdCBoYXZpbmcgcnRzL2N0cyBhbmQgYmVpbmcgdXNlZCBpbgo+
+ID4gcmVmZXJlbmNlIHNjaGVtYXRpY3MsIGJ1dCBubyBvbmUgZXZlciB1c2VkIGFub3RoZXIgdWFy
+dCB0aGFuIHVhcnQyIG9uCj4gPiBwcmV2aW91cyBzb2NzLiBTbyBpZGVhbGx5IHdlIGNvdWxkIGNo
+ZWNrIGFuZCBvbmx5IGFkZCB1YXJ0cyB3ZSBhY3R1YWxseQo+ID4gbmVlZCBmb3Igbm93LiBNb3Jl
+IGNhbiBiZSBhZGRlZCBsYXRlciBhbnl3YXkgb25jZSBib2FyZHMgdHJ5IHRvIHVzZSB0aGVtLgo+
+ID4gCj4gPiAKPiA+IEhlaWtvCj4gCj4gICAgICBBY3R1YWxseSwgSSBoYXZlIHR3byBib2FyZHMg
+b24gbXkgaGFuZCwgb25lIHVzZXMgdWFydDAgYXMgZGVidWcKPiBwb3J0IGFuZCB0aGUgYW5vdGhl
+ciB1c2VzIHVhcnQyLCBzbyBJIGFkZCBhbGwgb2YgdGhlbSBoZXJlLgoKb2ssIHRoZW4gdGhpcyBp
+cyBmaW5lLgoKPiAgICAgSSBoYXZlIGEgcXVlc3Rpb24gaGVyZSwgSSBub3QgdmVyeSBjbGVhciBo
+b3cgdG8gZ2V0IHRoZQo+IERFQlVHX1VBUlRfVklSVCB2YWx1ZSBoZXJlLCAgSSBub3cgc2V0IHRo
+ZSB2YWx1ZSBJIGdvdCBmcm9tIHVhcnQgZHJpdmVyCj4gYW5kIGl0IHdvcmtzICwgaXMgdGhlcmUg
+c29tZSBydWxlIG9yICBtZXRob2QgdG8gY2FsY3VsYXRlIHRoaXMKPiBERUJVR19VQVJUX1ZJUlQg
+dmFsdWUgb24gZGlmZmVyZW50IHBsYXRmb3JtPwoKSSBkb24ndCByZWFsbHkga25vdy4gV2hlbiBJ
+IGFkZGVkIHRoZSBvbGQgdWFydHMsIEkgYWx3YXlzIGp1c3QgdG9vayB0aGUgdmFsdWUgCmZyb20g
+dGhlIHZlbmRvci1rZXJuZWwgOi0pIC4KCkluIGFueSBjYXNlLCBhcm0zMiBub3cgYWxzbyBzdXBw
+b3J0cyBlYXJseWNvbiAobGlrZSBhcm02NCkgbm90IG5lZWRpbmcgdGhlIApib290bG9hZGVyIHNl
+dHVwIG9mIHRoZSB1YXJ0LiBUaGUgb25lIHRoaW5nIGRlYnVnX2xsIGNhbiBkbyB0aGF0IGVhcmx5
+Y29uIApjYW5ub3QgaXMgb3V0cHV0dGluZyBzdHVmZiBmcm9tIHRoZSBrZXJuZWwgZGVjb21wcmVz
+c29yLgoKCkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
