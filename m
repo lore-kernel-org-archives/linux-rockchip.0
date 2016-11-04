@@ -1,80 +1,54 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 5/6] ARM: add low level debug uart for rk1108
-Date: Fri, 04 Nov 2016 09:03:19 +0100
-Message-ID: <82141041.b0Orf57KCy@phil>
-References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
- <12034481.WHiLii4Pov@phil>
- <56bcae77-3aed-c183-5e9f-3581cc187a7d@rock-chips.com>
+Subject: Re: [PATCH 4/6] ARM: dts: add basic support for Rockchip RK1108 SOC
+Date: Fri, 04 Nov 2016 09:07:11 +0100
+Message-ID: <18728215.xtkCC4d9TF@phil>
+References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com> <1478176848-12132-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56bcae77-3aed-c183-5e9f-3581cc187a7d-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1478176848-12132-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgNC4gTm92ZW1iZXIgMjAxNiwgMTU6NTg6MzUgQ0VUIHNjaHJpZWIgQW5keSBZ
-YW46Cj4gSGkgSGVpa286Cj4gCj4gT24gMjAxNuW5tDEx5pyIMDTml6UgMTU6MzYsIEhlaWtvIFN0
-dWVibmVyIHdyb3RlOgo+ID4gQW0gRG9ubmVyc3RhZywgMy4gTm92ZW1iZXIgMjAxNiwgMjA6NDI6
-MjEgQ0VUIHNjaHJpZWIgQW5keSBZYW46Cj4gPj4gUksxMTA4IFVBUlRzIGFyZSBTeW5vcHNpcyBE
-ZXNpZ25XYXJlIDgyNTAgY29tcGF0aWJsZS4KPiA+PiBPbmx5IHdpdGggZGlmZmVyZW50IHJlZ2lz
-dGVyIGFkZHJlc3Nlcy4KPiA+PiAKPiA+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFlhbiA8YW5keS55
-YW5Acm9jay1jaGlwcy5jb20+Cj4gPj4gLS0tCj4gPj4gCj4gPj4gICBhcmNoL2FybS9LY29uZmln
-LmRlYnVnIHwgMzAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPj4gICAxIGZpbGUg
-Y2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKQo+ID4+IAo+ID4+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9LY29uZmlnLmRlYnVnIGIvYXJjaC9hcm0vS2NvbmZpZy5kZWJ1Zwo+ID4+IGluZGV4IGQ4M2Y3
-YzMuLjQwODU0MGYgMTAwNjQ0Cj4gPj4gLS0tIGEvYXJjaC9hcm0vS2NvbmZpZy5kZWJ1Zwo+ID4+
-ICsrKyBiL2FyY2gvYXJtL0tjb25maWcuZGVidWcKPiA+PiBAQCAtNzc2LDYgKzc3NiwzMCBAQCBj
-aG9pY2UKPiA+PiAKPiA+PiAgIAkJICB0aGVpciBvdXRwdXQgdG8gdGhlIHN0YW5kYXJkIHNlcmlh
-bCBwb3J0IG9uIHRoZSBSZWFsVmlldwo+ID4+ICAgCQkgIFBCMTE3NiBwbGF0Zm9ybS4KPiA+PiAK
-PiA+PiArCWNvbmZpZyBERUJVR19SSzExMDhfVUFSVDAKPiA+PiArCQlib29sICJLZXJuZWwgbG93
-LWxldmVsIGRlYnVnZ2luZyBtZXNzYWdlcyB2aWEgUm9ja2NoaXAgUksxMTA4IApVQVJUMCIKPiA+
-PiArCQlkZXBlbmRzIG9uIEFSQ0hfUk9DS0NISVAKPiA+PiArCQlzZWxlY3QgREVCVUdfVUFSVF84
-MjUwCj4gPj4gKwkJaGVscAo+ID4+ICsJCSAgU2F5IFkgaGVyZSBpZiB5b3Ugd2FudCBrZXJuZWwg
-bG93LWxldmVsIGRlYnVnZ2luZyBzdXBwb3J0Cj4gPj4gKyAgICAgICAgICAgICAgICAgIG9uIFJv
-Y2tjaGlwIFJLMTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4gPj4gKwo+ID4+ICsJY29uZmlnIERFQlVH
-X1JLMTEwOF9VQVJUMQo+ID4+ICsJCWJvb2wgIktlcm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5nIG1l
-c3NhZ2VzIHZpYSBSb2NrY2hpcCBSSzExMDggClVBUlQxIgo+ID4+ICsJCWRlcGVuZHMgb24gQVJD
-SF9ST0NLQ0hJUAo+ID4+ICsJCXNlbGVjdCBERUJVR19VQVJUXzgyNTAKPiA+PiArCQloZWxwCj4g
-Pj4gKwkJICBTYXkgWSBoZXJlIGlmIHlvdSB3YW50IGtlcm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5n
-IHN1cHBvcnQKPiA+PiArCQkgIG9uIFJvY2tjaGlwIFJLMTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4g
-Pj4gKwo+ID4+ICsJY29uZmlnIERFQlVHX1JLMTEwOF9VQVJUMgo+ID4+ICsJCWJvb2wgIktlcm5l
-bCBsb3ctbGV2ZWwgZGVidWdnaW5nIG1lc3NhZ2VzIHZpYSBSb2NrY2hpcCBSSzExMDggClVBUlQy
-Igo+ID4+ICsJCWRlcGVuZHMgb24gQVJDSF9ST0NLQ0hJUAo+ID4+ICsJCXNlbGVjdCBERUJVR19V
-QVJUXzgyNTAKPiA+PiArCQloZWxwCj4gPj4gKwkJICBTYXkgWSBoZXJlIGlmIHlvdSB3YW50IGtl
-cm5lbCBsb3ctbGV2ZWwgZGVidWdnaW5nIHN1cHBvcnQKPiA+PiArCQkgIG9uIFJvY2tjaGlwIFJL
-MTEwOCBiYXNlZCBwbGF0Zm9ybXMuCj4gPj4gKwo+ID4gCj4gPiBhcmUgeW91IHN1cmUsIHlvdSBu
-ZWVkIGFsbCAzIG9mIHRoZW0/Cj4gPiAKPiA+IEkuZS4gbW9zdCBSb2NrY2hpcCBTb0NzIHNvIGZh
-ciBoYWQgb25lIHVhcnQgc29tZXdoYXQgZGVzaWduYXRlZCBhcyBkZWJ1Zwo+ID4gdWFydC4gTW9z
-dCBsaWtlbHkgZHVlIHRvIGl0IG5vdCBoYXZpbmcgcnRzL2N0cyBhbmQgYmVpbmcgdXNlZCBpbgo+
-ID4gcmVmZXJlbmNlIHNjaGVtYXRpY3MsIGJ1dCBubyBvbmUgZXZlciB1c2VkIGFub3RoZXIgdWFy
-dCB0aGFuIHVhcnQyIG9uCj4gPiBwcmV2aW91cyBzb2NzLiBTbyBpZGVhbGx5IHdlIGNvdWxkIGNo
-ZWNrIGFuZCBvbmx5IGFkZCB1YXJ0cyB3ZSBhY3R1YWxseQo+ID4gbmVlZCBmb3Igbm93LiBNb3Jl
-IGNhbiBiZSBhZGRlZCBsYXRlciBhbnl3YXkgb25jZSBib2FyZHMgdHJ5IHRvIHVzZSB0aGVtLgo+
-ID4gCj4gPiAKPiA+IEhlaWtvCj4gCj4gICAgICBBY3R1YWxseSwgSSBoYXZlIHR3byBib2FyZHMg
-b24gbXkgaGFuZCwgb25lIHVzZXMgdWFydDAgYXMgZGVidWcKPiBwb3J0IGFuZCB0aGUgYW5vdGhl
-ciB1c2VzIHVhcnQyLCBzbyBJIGFkZCBhbGwgb2YgdGhlbSBoZXJlLgoKb2ssIHRoZW4gdGhpcyBp
-cyBmaW5lLgoKPiAgICAgSSBoYXZlIGEgcXVlc3Rpb24gaGVyZSwgSSBub3QgdmVyeSBjbGVhciBo
-b3cgdG8gZ2V0IHRoZQo+IERFQlVHX1VBUlRfVklSVCB2YWx1ZSBoZXJlLCAgSSBub3cgc2V0IHRo
-ZSB2YWx1ZSBJIGdvdCBmcm9tIHVhcnQgZHJpdmVyCj4gYW5kIGl0IHdvcmtzICwgaXMgdGhlcmUg
-c29tZSBydWxlIG9yICBtZXRob2QgdG8gY2FsY3VsYXRlIHRoaXMKPiBERUJVR19VQVJUX1ZJUlQg
-dmFsdWUgb24gZGlmZmVyZW50IHBsYXRmb3JtPwoKSSBkb24ndCByZWFsbHkga25vdy4gV2hlbiBJ
-IGFkZGVkIHRoZSBvbGQgdWFydHMsIEkgYWx3YXlzIGp1c3QgdG9vayB0aGUgdmFsdWUgCmZyb20g
-dGhlIHZlbmRvci1rZXJuZWwgOi0pIC4KCkluIGFueSBjYXNlLCBhcm0zMiBub3cgYWxzbyBzdXBw
-b3J0cyBlYXJseWNvbiAobGlrZSBhcm02NCkgbm90IG5lZWRpbmcgdGhlIApib290bG9hZGVyIHNl
-dHVwIG9mIHRoZSB1YXJ0LiBUaGUgb25lIHRoaW5nIGRlYnVnX2xsIGNhbiBkbyB0aGF0IGVhcmx5
-Y29uIApjYW5ub3QgaXMgb3V0cHV0dGluZyBzdHVmZiBmcm9tIHRoZSBrZXJuZWwgZGVjb21wcmVz
-c29yLgoKCkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Am Donnerstag, 3. November 2016, 20:40:48 CET schrieb Andy Yan:
+> RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
+> It is designed for varies application scenario such as car DVR, sports
+> DV, secure camera and UAV camera.
+> 
+> This patch add basic support for it with DMAC / UART / CRU / pinctrl
+> enabled.
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  arch/arm/boot/dts/rk1108.dtsi     | 420
+> ++++++++++++++++++++++++++++++++++++++ arch/arm/mach-rockchip/rockchip.c | 
+>  1 +
+>  2 files changed, 421 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/rk1108.dtsi
+> 
+> diff --git a/arch/arm/boot/dts/rk1108.dtsi b/arch/arm/boot/dts/rk1108.dtsi
+> new file mode 100644
+> index 0000000..9dccfea
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rk1108.dtsi
+
+[...]
+
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rk1108-pinctrl";
+> +		rockchip,grf = <&grf>;
+
+missing rockchip,pmu phandle for gpio0 iomuxes and also syscon declaration for 
+said pmugrf syscon in this file.
+
+
+Heiko
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
