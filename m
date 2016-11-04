@@ -1,48 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 10/13] ARM: dts: exynos: replace to "max-frequecy" instead of "clock-freq-min-max"
-Date: Fri, 04 Nov 2016 12:19:49 +0100
-Message-ID: <4066252.a1W9ejEKHX@phil>
-References: <20161103062135.10697-1-jh80.chung@samsung.com> <20161103184112.GB11071@kozik-lap> <ecf4fac2-0ab7-d4c4-69e3-d498ee5b601c@samsung.com>
+From: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] clk: rockchip: add 400MHz to rk3066 clock rates table
+Date: Fri, 4 Nov 2016 14:10:56 +0100
+Message-ID: <20161104131056.GA9801@vaio-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ecf4fac2-0ab7-d4c4-69e3-d498ee5b601c@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, robh+dt@kernel.org, shawn.lin@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jaehoon,
-
-Am Freitag, 4. November 2016, 19:21:30 CET schrieb Jaehoon Chung:
-> On 11/04/2016 03:41 AM, Krzysztof Kozlowski wrote:
-> > On Thu, Nov 03, 2016 at 03:21:32PM +0900, Jaehoon Chung wrote:
-> >> In drivers/mmc/core/host.c, there is "max-frequency" property.
-> >> It should be same behavior. So Use the "max-frequency" instead of
-> >> "clock-freq-min-max".
-> >> 
-> >> Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
-> >> ---
-> >> 
-> >>  arch/arm/boot/dts/exynos3250-artik5-eval.dts | 2 +-
-> >>  arch/arm/boot/dts/exynos3250-artik5.dtsi     | 2 +-
-> >>  arch/arm/boot/dts/exynos3250-monk.dts        | 2 +-
-> >>  arch/arm/boot/dts/exynos3250-rinato.dts      | 2 +-
-> >>  4 files changed, 4 insertions(+), 4 deletions(-)
-> > 
-> > This looks totally independent to rest of patches so it can be applied
-> > separately without any functional impact (except lack of minimum
-> > frequency). Is that correct?
-> 
-> You're right. I will split the patches. And will resend.
-> Thanks!
-
-I think what Krzysztof was asking was just if he can simply pick up this patch 
-alone, as it does not require any of the previous changes.
-
-Same is true for the Rockchip patches I guess, so we could just take them 
-individually into samsung/rockchip dts branches.
-
-
-Heiko
+V2UgbmVlZCB0aGlzIHRvIGluaXQgUExMX0NQTEwgdG8gNDAwTUh6IGF0IGJvb3QuCgpTaWduZWQt
+b2ZmLWJ5OiBQYXdlxYIgSmFyb3N6IDxwYXdlbGphcm9zejM2OTFAZ21haWwuY29tPgotLS0KIGRy
+aXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMxODguYyB8IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEg
+aW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzE4
+OC5jIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzE4OC5jCmluZGV4IGE2ZDM5OGYuLjA2
+MmVmNDkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMxODguYworKysg
+Yi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMTg4LmMKQEAgLTg5LDYgKzg5LDcgQEAgc3Rh
+dGljIHN0cnVjdCByb2NrY2hpcF9wbGxfcmF0ZV90YWJsZSByazMxODhfcGxsX3JhdGVzW10gPSB7
+CiAJUkszMDY2X1BMTF9SQVRFKCA1MDQwMDAwMDAsIDEsIDg0LCA0KSwKIAlSSzMwNjZfUExMX1JB
+VEUoIDQ1NjAwMDAwMCwgMSwgNzYsIDQpLAogCVJLMzA2Nl9QTExfUkFURSggNDA4MDAwMDAwLCAx
+LCA2OCwgNCksCisJUkszMDY2X1BMTF9SQVRFKCA0MDAwMDAwMDAsIDMsIDEwMCwgMiksCiAJUksz
+MDY2X1BMTF9SQVRFKCAzODQwMDAwMDAsIDIsIDEyOCwgNCksCiAJUkszMDY2X1BMTF9SQVRFKCAz
+NjAwMDAwMDAsIDEsIDYwLCA0KSwKIAlSSzMwNjZfUExMX1JBVEUoIDMxMjAwMDAwMCwgMSwgNTIs
+IDQpLAotLSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
