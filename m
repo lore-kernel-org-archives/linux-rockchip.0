@@ -1,56 +1,36 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 10/13] ARM: dts: exynos: replace to "max-frequecy"
- instead of "clock-freq-min-max"
-Date: Fri, 4 Nov 2016 17:04:47 +0200
-Message-ID: <20161104150447.GA4829@kozik-lap>
-References: <20161103062135.10697-1-jh80.chung@samsung.com>
- <20161103184112.GB11071@kozik-lap>
- <ecf4fac2-0ab7-d4c4-69e3-d498ee5b601c@samsung.com>
- <4066252.a1W9ejEKHX@phil>
+From: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: Set sdmmc frequency at boot time
+Date: Fri, 4 Nov 2016 19:07:31 +0100
+Message-ID: <20161104180730.GA14508@vaio-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <4066252.a1W9ejEKHX@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, robh+dt@kernel.org, shawn.lin@rock-chips.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 04, 2016 at 12:19:49PM +0100, Heiko Stuebner wrote:
-> Hi Jaehoon,
-> 
-> Am Freitag, 4. November 2016, 19:21:30 CET schrieb Jaehoon Chung:
-> > On 11/04/2016 03:41 AM, Krzysztof Kozlowski wrote:
-> > > On Thu, Nov 03, 2016 at 03:21:32PM +0900, Jaehoon Chung wrote:
-> > >> In drivers/mmc/core/host.c, there is "max-frequency" property.
-> > >> It should be same behavior. So Use the "max-frequency" instead of
-> > >> "clock-freq-min-max".
-> > >> 
-> > >> Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
-> > >> ---
-> > >> 
-> > >>  arch/arm/boot/dts/exynos3250-artik5-eval.dts | 2 +-
-> > >>  arch/arm/boot/dts/exynos3250-artik5.dtsi     | 2 +-
-> > >>  arch/arm/boot/dts/exynos3250-monk.dts        | 2 +-
-> > >>  arch/arm/boot/dts/exynos3250-rinato.dts      | 2 +-
-> > >>  4 files changed, 4 insertions(+), 4 deletions(-)
-> > > 
-> > > This looks totally independent to rest of patches so it can be applied
-> > > separately without any functional impact (except lack of minimum
-> > > frequency). Is that correct?
-> > 
-> > You're right. I will split the patches. And will resend.
-> > Thanks!
-> 
-> I think what Krzysztof was asking was just if he can simply pick up this patch 
-> alone, as it does not require any of the previous changes.
-> 
-> Same is true for the Rockchip patches I guess, so we could just take them 
-> individually into samsung/rockchip dts branches.
-
-Yes, I wanted to get exactly this information. I couldn't find it in
-cover letter.
-
-Best regards,
-Krzysztof
+Q3VycmVudGx5IGRyaXZlciBsZWF2ZXMgc2RtbWMgZnJlcXVlbmN5IGF0IGl0cyBkZWZhdWx0LiBT
+byBsZXRzIHNldCB0aGlzCnRvIDUwTUh6LgpUaGlzIGdpdmVzIHVzIHBlcmZvcm1hbmNlIGJvb3N0
+IGluIG1tYyB0cmFuc2ZlcnMuCgpTaWduZWQtb2ZmLWJ5OiBQYXdlxYIgSmFyb3N6IDxwYXdlbGph
+cm9zejM2OTFAZ21haWwuY29tPgotLS0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaSB8
+IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNo
+L2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0
+c2kKaW5kZXggZjNhNTEwOS4uZmM4ZGNjNyAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMv
+cmszMDY2YS5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaQpAQCAtNjM2
+LDYgKzYzNiw4IEBACiB9OwogCiAmbW1jMCB7CisJY2xvY2stZnJlcXVlbmN5ID0gPDUwMDAwMDAw
+PjsKKwltYXgtZnJlcXVlbmN5ID0gPDUwMDAwMDAwPjsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1
+bHQiOwogCXBpbmN0cmwtMCA9IDwmc2QwX2NsayAmc2QwX2NtZCAmc2QwX2NkICZzZDBfYnVzND47
+CiB9OwotLSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
