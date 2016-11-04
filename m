@@ -1,104 +1,49 @@
-From: "FedEx SmartPost" <clarence.oliver-UNZO3pFYv0pWk0Htik3J/w@public.gmane.org>
-Subject: ROCK, Problems with item delivery, n.000433561
-Date: Thu, 3 Nov 2016 14:44:19 -0600
-Message-ID: <d113d4e53c15b01d6f29f08323cea477@purelyvr.com>
-Reply-To: FedEx SmartPost <clarence.oliver-UNZO3pFYv0pWk0Htik3J/w@public.gmane.org>
+From: "jay.xu" <jay.xu@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: fix some clocks' name to be more standard
+ style
+Date: Fri, 4 Nov 2016 08:33:15 +0800
+Message-ID: <33f1004e-bbc8-5074-3e67-38cd98d3915c@rock-chips.com>
+References: <1478070296-23080-1-git-send-email-jay.xu@rock-chips.com>
+ <763cad68-a068-9a4b-e26d-2c459c2d4808@rock-chips.com>
+ <44798035.VNVnDcOLnj@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_8b49a889ddc0f59f7cf920c49513e3d3"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <44798035.VNVnDcOLnj@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, zhengxing@rock-chips.com, linux-kernel@vger.kernel.org, lintao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
---b1_8b49a889ddc0f59f7cf920c49513e3d3
-Content-Type: text/plain; charset=us-ascii
+Hi Heiko and Shawn:
 
-Dear Rock,
+ok, I agree with you, and the root fix seems to fix it in the TRM first.
+I'll feedback to TRM makers.
 
-We could not deliver your item.
-Please, download Delivery Label attached to this email.
+Thanks.
 
-Thank you for choosing FedEx,
-Clarence Oliver,
-Sr. Delivery Agent.
+On 2016年11月03日 22:32, Heiko Stübner wrote:
+> Am Donnerstag, 3. November 2016, 16:52:48 schrieb Shawn Lin:
+>> On 2016/11/2 15:04, Jianqun Xu wrote:
+>>> Fix aclk_emmcgrf to aclk_emmc_grf, and fix aclk_emmccore to be
+>>> aclk_emmc_core.
+>>
+>> What is the standard style should be?
+>>
+>> TRM uses aclk_emmccore but not aclk_emmc_core, so should it be more
+>> standrad to keep it as-is?
+>
+> I tend to agree with Shawn. While it looks like the missing "_" is some sort
+> of mistake, we should strive to follow TRM naming, so grepping so it becomes
+> easier to look for informations in these things in the TRM.
+>
+> Same reason for naming our regulators and pinctrl after the names used in
+> device schematics, if available.
+>
+>
+> Heiko
+>
+>
+>
 
-
---b1_8b49a889ddc0f59f7cf920c49513e3d3
-Content-Type: application/zip; name="Delivery_Notification_000433561.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=Delivery_Notification_000433561.zip
-
-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
-
-
---b1_8b49a889ddc0f59f7cf920c49513e3d3
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---b1_8b49a889ddc0f59f7cf920c49513e3d3--
