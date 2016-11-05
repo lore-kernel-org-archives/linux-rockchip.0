@@ -1,188 +1,860 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: [RFC] V4L2 unified low-level decoder API
-Date: Sat, 5 Nov 2016 10:44:22 +0800
-Message-ID: <6d308d93-b0be-45b6-f330-ee00bea5d5a0@rock-chips.com>
-References: <58C70A34B28DE743B9604C8841D375C2793D2999@SAFEX1MAIL5.st.com>
- <aab23d5d-d41d-78e1-7324-77b9d98ee127@rock-chips.com>
- <e6b89733-465e-74d3-45b9-0a39d1136779@st.com>
+From: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] phy: rockchip-inno-usb2: support otg-port for
+ rk3399
+Date: Sat, 5 Nov 2016 10:58:18 +0800
+Message-ID: <f0125634-2e74-ea8c-5de3-101c7e299ccb@rock-chips.com>
+References: <1478138774-3254-1-git-send-email-wulf@rock-chips.com>
+ <1478138774-3254-2-git-send-email-wulf@rock-chips.com>
+ <0eeb3dd9-fc1e-f04b-4612-06367929ede6@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e6b89733-465e-74d3-45b9-0a39d1136779@st.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Hugues FRUCHET <hugues.fruchet@st.com>
-Cc: "posciak@chromium.org" <posciak@chromium.org>, Florent Revest <florent.revest@free-electrons.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, "herman.chen@rock-chips.com" <herman.chen@rock-chips.com>, "eddie.cai" <eddie.cai@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "nicolas.dufresne@collabora.co.uk" <nicolas.dufresne@collabora.co.uk>, =?UTF-8?B?5p6X6YeR5Y+R?= <alpha.lin@rock-chips.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, =?UTF-8?B?6LW15L+K?= <jung.zhao@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <0eeb3dd9-fc1e-f04b-4612-06367929ede6-l0cyMroinI0@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Kishon,
 
-
-On 11/04/2016 09:55 PM, Hugues FRUCHET wrote:
-> Hi Randy,
+在 2016年11月04日 01:17, Kishon Vijay Abraham I 写道:
 >
-> thanks for reply, some comments below:
->
->
-> On 10/27/2016 03:08 AM, Randy Li wrote:
+> On Thursday 03 November 2016 07:36 AM, William Wu wrote:
+>> The rk3399 SoC USB2 PHY is comprised of one Host port and
+>> one OTG port. And OTG port is for USB2.0 part of USB3.0 OTG
+>> controller, as a part to construct a fully feature Type-C
+>> subsystem.
 >>
+>> With this patch, we can support OTG port with the following
+>> functions:
+>> - Support BC1.2 charger detect, and use extcon notifier to
+>>    send USB charger types to power driver.
+>> - Support PHY suspend for power management.
+>> - Support OTG Host only mode.
 >>
->> On 10/26/2016 11:09 PM, Hugues FRUCHET wrote:
->>> Hi,
->>>
->>>
->>>
->>> This RFC aims to start discussions in order to define the codec specific
->>> controls structures to fulfill the low-level decoder API needed by non
->>> “Stream API” based decoders (“stateless” or “Frame API” based decoders).
->>>
->>> Several implementation exists now which runs on several SoC and various
->>> software frameworks.
->>>
->>> The idea is to find the communalities between all those implementations
->>> and SoC to define a single unified interface in V4L2 includes.
->>>
->>> Even if “Request API” is needed to pass those codec specific controls
->>> from userspace down to kernel on a per-buffer basis, we can start
->>> discussions and define the controls in parallel of its development.
->> Yes, I have sent a one for H.264 decoder and JPEG encoder.
->>>
->>> We can even propose some implementations based on existing V4L2 control
->>> framework (which doesn’t support “per-frame” basis) by ensuring
->>> atomicity of sequence S_EXT_CTRL(header[i])/QBUF(stream[i]). Constraint
->>> can then be relaxed when “Request API” is merged.
->>>
->>>
->>>
->>> I would like to propose to work on a “per-codec” basis, having at least
->>> 2 different SoC and 2 different frameworks to test and validate controls.
->>>
->>> To do so, I have tried to identify some people that have worked on this
->>> subject and have proposed some implementations, feel free to correct me
->>> and enhance the list if needed:
->>>
->>> * MPEG2/MPEG4
->>>
->>>    - Florent Revest for Allwinner A13 CedarX support [1] tested with VLC
->>> -> libVA + sunxi-cedrus-drv-video -> V4L2
->>>
->>>    - Myself for STMicroelectronics Delta support [2] tested with
->>> GStreamer V4L2 -> libv4l2 + libv4l-delta plugin -> V4L2
->>>
->>>
->>>
->>> * VP8
->>>
->>> - Pawel Osciak for Rockchip RK3288, RK3399? VPU Support [3] tested with
->>> Chromium -> V4L2
->>>
->>> - Jung Zhao for Rockchip RK3288 VPU support [4] <cannot find the
->>> framework used>
->> There is rockchip VDPAU driver supporting it, but it is .
+>> Also, correct 480MHz output clock stable time. We found that
+>> the system crashed due to 480MHz output clock of USB2 PHY was
+>> unstable after clock had been enabled by gpu module.
+> Can you split the clock fix into a separate patch?
+OK, I will separate the clock patch in next version.
+
+Best regards,
+          wulf
 >
-> Could you point out the code that is used ? Which application is used on
-> top of VDPAU ?
-https://github.com/rockchip-linux/libvdpau-rockchip
->
->>>
->>>
->>>
->>> * H264
->>>
->>> - Pawel Osciak for Rockchip RK3288, RK3399? VPU Support [5] tested with
->>> Chromium -> V4L2
->>>
->>> - Randy Li for Rockchip RK3288  VPU support [6] tested with VLC? ->
->>> libVA + rockchip-va-driver -> V4L2
->> I only tested it with Gstreamer -> VA-API element -> Rockchip VA-API
->> driver -> V4L2
->
-> OK got it, thks !
->
->>>
->>>                                                                                                                          VLC?
->>> -> libVDPAU + rockchip-va-driver -> V4L2
->>>
->>> I can work to define MPEG2/MPEG4 controls and propose functional
->>> implementations for those codecs, and will be glad to co-work with you
->>> Florent.
->> But it may not work with Rockchip's SoC, you may check the following branch
->> https://github.com/hizukiayaka/rockchip-video-driver/tree/rk_v4l2_mix
->
-> I have checked code and I have only found H264 support, do I miss
-> something ?
-No, I have said above, only H264 decoder and JPEG encoder are supported 
-in currently Rockchip VA-API driver. And H264 decoder depends on a 
-Rockchip H264 parser. The rk_v4l2_mix just a branch make that clearly, 
-it could get what the VA-API doesn't offer from code.
->
->>>
->>> I can help on H264 on a code review basis based on the functional H264
->>> setup I have in-house and codec knowledge, but I cannot provide
->>> implementation in a reasonable timeframe, same for VP8.
->>>
->>>
->>>
->>> Apart of very details of each codec, we have also to state about generic
->>> concerns such as:
->>>
->>> -          new pixel format introduction (VP8 => VP8F, H264 => S264,
->>> MPG2 => MG2F, MPG4 => MG4F)
->> I don't think it is necessary.
->
-> But currently it is done that way in all patches proposals I have seen
-> so far, including rockchip:
-> rockchip_decoder_v4l2.c:{VAProfileH264Baseline,V4L2_PIX_FMT_H264_SLICE},
-It is Google's idea, it would be removed with new version kernel driver 
-of mine. Also I don't like multiplanes image format from Google driver.
->
-> We have to state about it all together. Seems natural to me to do this
-> way instead of device caps.
-> Doing so user knows that the driver is based on "Frame API" -so
-> additional headers are required to decode input stream- and not
-> on "Stream API" -H264 stream can be decoded directly-.
- > We should probably use something else then "STREAMING" in the
- > capabilities instead of duplicating all the encoding formats (exception
- > to H264 byte-stream and H264 AVC, that also applies to streaming
- > drivers and there is not easy way to introduce stream-format in the API
- > atm). Other then that, this solution works, so it could just be
- > considered the right way, I just find it less elegant personally.
-I agree with Nicolas.
+> Thanks
+> Kishon
+>> Theoretically, 1 millisecond is a critical value for 480 output
+>> clock stable time, so we try changing the delay time to 1.2
+>> millisecond to avoid this issue.
+>>
+>> Signed-off-by: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>> Changes in v2:
+>> - remove wakelock
+>>
+>>   drivers/phy/phy-rockchip-inno-usb2.c | 593 +++++++++++++++++++++++++++++++++--
+>>   1 file changed, 562 insertions(+), 31 deletions(-)
+>>
+>> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
+>> index ac20310..8f2d2b6 100644
+>> --- a/drivers/phy/phy-rockchip-inno-usb2.c
+>> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
+>> @@ -17,6 +17,7 @@
+>>   #include <linux/clk.h>
+>>   #include <linux/clk-provider.h>
+>>   #include <linux/delay.h>
+>> +#include <linux/extcon.h>
+>>   #include <linux/interrupt.h>
+>>   #include <linux/io.h>
+>>   #include <linux/gpio/consumer.h>
+>> @@ -30,11 +31,15 @@
+>>   #include <linux/of_platform.h>
+>>   #include <linux/phy/phy.h>
+>>   #include <linux/platform_device.h>
+>> +#include <linux/power_supply.h>
+>>   #include <linux/regmap.h>
+>>   #include <linux/mfd/syscon.h>
+>> +#include <linux/usb/of.h>
+>> +#include <linux/usb/otg.h>
+>>   
+>>   #define BIT_WRITEABLE_SHIFT	16
+>> -#define SCHEDULE_DELAY	(60 * HZ)
+>> +#define SCHEDULE_DELAY		(60 * HZ)
+>> +#define OTG_SCHEDULE_DELAY	(2 * HZ)
+>>   
+>>   enum rockchip_usb2phy_port_id {
+>>   	USB2PHY_PORT_OTG,
+>> @@ -49,6 +54,37 @@ enum rockchip_usb2phy_host_state {
+>>   	PHY_STATE_FS_LS_ONLINE	= 4,
+>>   };
+>>   
+>> +/**
+>> + * Different states involved in USB charger detection.
+>> + * USB_CHG_STATE_UNDEFINED	USB charger is not connected or detection
+>> + *				process is not yet started.
+>> + * USB_CHG_STATE_WAIT_FOR_DCD	Waiting for Data pins contact.
+>> + * USB_CHG_STATE_DCD_DONE	Data pin contact is detected.
+>> + * USB_CHG_STATE_PRIMARY_DONE	Primary detection is completed (Detects
+>> + *				between SDP and DCP/CDP).
+>> + * USB_CHG_STATE_SECONDARY_DONE	Secondary detection is completed (Detects
+>> + *				between DCP and CDP).
+>> + * USB_CHG_STATE_DETECTED	USB charger type is determined.
+>> + */
+>> +enum usb_chg_state {
+>> +	USB_CHG_STATE_UNDEFINED = 0,
+>> +	USB_CHG_STATE_WAIT_FOR_DCD,
+>> +	USB_CHG_STATE_DCD_DONE,
+>> +	USB_CHG_STATE_PRIMARY_DONE,
+>> +	USB_CHG_STATE_SECONDARY_DONE,
+>> +	USB_CHG_STATE_DETECTED,
+>> +};
+>> +
+>> +static const unsigned int rockchip_usb2phy_extcon_cable[] = {
+>> +	EXTCON_USB,
+>> +	EXTCON_USB_HOST,
+>> +	EXTCON_CHG_USB_SDP,
+>> +	EXTCON_CHG_USB_CDP,
+>> +	EXTCON_CHG_USB_DCP,
+>> +	EXTCON_CHG_USB_SLOW,
+>> +	EXTCON_NONE,
+>> +};
+>> +
+>>   struct usb2phy_reg {
+>>   	unsigned int	offset;
+>>   	unsigned int	bitend;
+>> @@ -58,19 +94,55 @@ struct usb2phy_reg {
+>>   };
+>>   
+>>   /**
+>> + * struct rockchip_chg_det_reg: usb charger detect registers
+>> + * @cp_det: charging port detected successfully.
+>> + * @dcp_det: dedicated charging port detected successfully.
+>> + * @dp_det: assert data pin connect successfully.
+>> + * @idm_sink_en: open dm sink curren.
+>> + * @idp_sink_en: open dp sink current.
+>> + * @idp_src_en: open dm source current.
+>> + * @rdm_pdwn_en: open dm pull down resistor.
+>> + * @vdm_src_en: open dm voltage source.
+>> + * @vdp_src_en: open dp voltage source.
+>> + * @opmode: utmi operational mode.
+>> + */
+>> +struct rockchip_chg_det_reg {
+>> +	struct usb2phy_reg	cp_det;
+>> +	struct usb2phy_reg	dcp_det;
+>> +	struct usb2phy_reg	dp_det;
+>> +	struct usb2phy_reg	idm_sink_en;
+>> +	struct usb2phy_reg	idp_sink_en;
+>> +	struct usb2phy_reg	idp_src_en;
+>> +	struct usb2phy_reg	rdm_pdwn_en;
+>> +	struct usb2phy_reg	vdm_src_en;
+>> +	struct usb2phy_reg	vdp_src_en;
+>> +	struct usb2phy_reg	opmode;
+>> +};
+>> +
+>> +/**
+>>    * struct rockchip_usb2phy_port_cfg: usb-phy port configuration.
+>>    * @phy_sus: phy suspend register.
+>> + * @bvalid_det_en: vbus valid rise detection enable register.
+>> + * @bvalid_det_st: vbus valid rise detection status register.
+>> + * @bvalid_det_clr: vbus valid rise detection clear register.
+>>    * @ls_det_en: linestate detection enable register.
+>>    * @ls_det_st: linestate detection state register.
+>>    * @ls_det_clr: linestate detection clear register.
+>> + * @utmi_avalid: utmi vbus avalid status register.
+>> + * @utmi_bvalid: utmi vbus bvalid status register.
+>>    * @utmi_ls: utmi linestate state register.
+>>    * @utmi_hstdet: utmi host disconnect register.
+>>    */
+>>   struct rockchip_usb2phy_port_cfg {
+>>   	struct usb2phy_reg	phy_sus;
+>> +	struct usb2phy_reg	bvalid_det_en;
+>> +	struct usb2phy_reg	bvalid_det_st;
+>> +	struct usb2phy_reg	bvalid_det_clr;
+>>   	struct usb2phy_reg	ls_det_en;
+>>   	struct usb2phy_reg	ls_det_st;
+>>   	struct usb2phy_reg	ls_det_clr;
+>> +	struct usb2phy_reg	utmi_avalid;
+>> +	struct usb2phy_reg	utmi_bvalid;
+>>   	struct usb2phy_reg	utmi_ls;
+>>   	struct usb2phy_reg	utmi_hstdet;
+>>   };
+>> @@ -80,31 +152,51 @@ struct rockchip_usb2phy_port_cfg {
+>>    * @reg: the address offset of grf for usb-phy config.
+>>    * @num_ports: specify how many ports that the phy has.
+>>    * @clkout_ctl: keep on/turn off output clk of phy.
+>> + * @chg_det: charger detection registers.
+>>    */
+>>   struct rockchip_usb2phy_cfg {
+>>   	unsigned int	reg;
+>>   	unsigned int	num_ports;
+>>   	struct usb2phy_reg	clkout_ctl;
+>>   	const struct rockchip_usb2phy_port_cfg	port_cfgs[USB2PHY_NUM_PORTS];
+>> +	const struct rockchip_chg_det_reg	chg_det;
+>>   };
+>>   
+>>   /**
+>>    * struct rockchip_usb2phy_port: usb-phy port data.
+>>    * @port_id: flag for otg port or host port.
+>>    * @suspended: phy suspended flag.
+>> + * @utmi_avalid: utmi avalid status usage flag.
+>> + *	true	- use avalid to get vbus status
+>> + *	flase	- use bvalid to get vbus status
+>> + * @vbus_attached: otg device vbus status.
+>> + * @bvalid_irq: IRQ number assigned for vbus valid rise detection.
+>>    * @ls_irq: IRQ number assigned for linestate detection.
+>>    * @mutex: for register updating in sm_work.
+>> - * @sm_work: OTG state machine work.
+>> + * @chg_work: charge detect work.
+>> + * @otg_sm_work: OTG state machine work.
+>> + * @sm_work: HOST state machine work.
+>>    * @phy_cfg: port register configuration, assigned by driver data.
+>> + * @event_nb: hold event notification callback.
+>> + * @state: define OTG enumeration states before device reset.
+>> + * @mode: the dr_mode of the controller.
+>>    */
+>>   struct rockchip_usb2phy_port {
+>>   	struct phy	*phy;
+>>   	unsigned int	port_id;
+>>   	bool		suspended;
+>> +	bool		utmi_avalid;
+>> +	bool		vbus_attached;
+>> +	int		bvalid_irq;
+>>   	int		ls_irq;
+>>   	struct mutex	mutex;
+>> +	struct		delayed_work chg_work;
+>> +	struct		delayed_work otg_sm_work;
+>>   	struct		delayed_work sm_work;
+>>   	const struct	rockchip_usb2phy_port_cfg *port_cfg;
+>> +	struct notifier_block	event_nb;
+>> +	enum usb_otg_state	state;
+>> +	enum usb_dr_mode	mode;
+>>   };
+>>   
+>>   /**
+>> @@ -113,6 +205,11 @@ struct rockchip_usb2phy_port {
+>>    * @clk: clock struct of phy input clk.
+>>    * @clk480m: clock struct of phy output clk.
+>>    * @clk_hw: clock struct of phy output clk management.
+>> + * @chg_state: states involved in USB charger detection.
+>> + * @chg_type: USB charger types.
+>> + * @dcd_retries: The retry count used to track Data contact
+>> + *		 detection process.
+>> + * @edev: extcon device for notification registration
+>>    * @phy_cfg: phy register configuration, assigned by driver data.
+>>    * @ports: phy port instance.
+>>    */
+>> @@ -122,6 +219,10 @@ struct rockchip_usb2phy {
+>>   	struct clk	*clk;
+>>   	struct clk	*clk480m;
+>>   	struct clk_hw	clk480m_hw;
+>> +	enum usb_chg_state	chg_state;
+>> +	enum power_supply_type	chg_type;
+>> +	u8			dcd_retries;
+>> +	struct extcon_dev	*edev;
+>>   	const struct rockchip_usb2phy_cfg	*phy_cfg;
+>>   	struct rockchip_usb2phy_port	ports[USB2PHY_NUM_PORTS];
+>>   };
+>> @@ -166,7 +267,7 @@ static int rockchip_usb2phy_clk480m_enable(struct clk_hw *hw)
+>>   			return ret;
+>>   
+>>   		/* waitting for the clk become stable */
+>> -		mdelay(1);
+>> +		udelay(1200);
+>>   	}
+>>   
+>>   	return 0;
+>> @@ -263,33 +364,84 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+>>   	return ret;
+>>   }
+>>   
+>> -static int rockchip_usb2phy_init(struct phy *phy)
+>> +static int rockchip_usb2phy_extcon_register(struct rockchip_usb2phy *rphy)
+>>   {
+>> -	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
+>> -	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
+>>   	int ret;
+>> +	struct device_node *node = rphy->dev->of_node;
+>> +	struct extcon_dev *edev;
+>> +
+>> +	if (of_property_read_bool(node, "extcon")) {
+>> +		edev = extcon_get_edev_by_phandle(rphy->dev, 0);
+>> +		if (IS_ERR(edev)) {
+>> +			if (PTR_ERR(edev) != -EPROBE_DEFER)
+>> +				dev_err(rphy->dev, "Invalid or missing extcon\n");
+>> +			return PTR_ERR(edev);
+>> +		}
+>> +	} else {
+>> +		/* Initialize extcon device */
+>> +		edev = devm_extcon_dev_allocate(rphy->dev,
+>> +						rockchip_usb2phy_extcon_cable);
+>>   
+>> -	if (rport->port_id == USB2PHY_PORT_HOST) {
+>> -		/* clear linestate and enable linestate detect irq */
+>> -		mutex_lock(&rport->mutex);
+>> +		if (IS_ERR(edev))
+>> +			return -ENOMEM;
+>>   
+>> -		ret = property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
+>> +		ret = devm_extcon_dev_register(rphy->dev, edev);
+>>   		if (ret) {
+>> -			mutex_unlock(&rport->mutex);
+>> +			dev_err(rphy->dev, "failed to register extcon device\n");
+>>   			return ret;
+>>   		}
+>> +	}
+>>   
+>> -		ret = property_enable(rphy, &rport->port_cfg->ls_det_en, true);
+>> -		if (ret) {
+>> -			mutex_unlock(&rport->mutex);
+>> -			return ret;
+>> +	rphy->edev = edev;
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int rockchip_usb2phy_init(struct phy *phy)
+>> +{
+>> +	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
+>> +	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
+>> +	int ret = 0;
+>> +
+>> +	mutex_lock(&rport->mutex);
+>> +
+>> +	if (rport->port_id == USB2PHY_PORT_OTG) {
+>> +		if (rport->mode != USB_DR_MODE_HOST) {
+>> +			/* clear bvalid status and enable bvalid detect irq */
+>> +			ret = property_enable(rphy,
+>> +					      &rport->port_cfg->bvalid_det_clr,
+>> +					      true);
+>> +			if (ret)
+>> +				goto out;
+>> +
+>> +			ret = property_enable(rphy,
+>> +					      &rport->port_cfg->bvalid_det_en,
+>> +					      true);
+>> +			if (ret)
+>> +				goto out;
+>> +
+>> +			schedule_delayed_work(&rport->otg_sm_work,
+>> +					      OTG_SCHEDULE_DELAY);
+>> +		} else {
+>> +			/* If OTG works in host only mode, do nothing. */
+>> +			dev_dbg(&rport->phy->dev, "mode %d\n", rport->mode);
+>>   		}
+>> +	} else if (rport->port_id == USB2PHY_PORT_HOST) {
+>> +		/* clear linestate and enable linestate detect irq */
+>> +		ret = property_enable(rphy, &rport->port_cfg->ls_det_clr, true);
+>> +		if (ret)
+>> +			goto out;
+>> +
+>> +		ret = property_enable(rphy, &rport->port_cfg->ls_det_en, true);
+>> +		if (ret)
+>> +			goto out;
+>>   
+>> -		mutex_unlock(&rport->mutex);
+>>   		schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
+>>   	}
+>>   
+>> -	return 0;
+>> +out:
+>> +	mutex_unlock(&rport->mutex);
+>> +	return ret;
+>>   }
+>>   
+>>   static int rockchip_usb2phy_power_on(struct phy *phy)
+>> @@ -340,7 +492,11 @@ static int rockchip_usb2phy_exit(struct phy *phy)
+>>   {
+>>   	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
+>>   
+>> -	if (rport->port_id == USB2PHY_PORT_HOST)
+>> +	if (rport->port_id == USB2PHY_PORT_OTG &&
+>> +	    rport->mode != USB_DR_MODE_HOST) {
+>> +		cancel_delayed_work_sync(&rport->otg_sm_work);
+>> +		cancel_delayed_work_sync(&rport->chg_work);
+>> +	} else if (rport->port_id == USB2PHY_PORT_HOST)
+>>   		cancel_delayed_work_sync(&rport->sm_work);
+>>   
+>>   	return 0;
+>> @@ -354,6 +510,249 @@ static const struct phy_ops rockchip_usb2phy_ops = {
+>>   	.owner		= THIS_MODULE,
+>>   };
+>>   
+>> +static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>> +{
+>> +	struct rockchip_usb2phy_port *rport =
+>> +		container_of(work, struct rockchip_usb2phy_port,
+>> +			     otg_sm_work.work);
+>> +	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
+>> +	static unsigned int cable;
+>> +	unsigned long delay;
+>> +	bool vbus_attach, sch_work, notify_charger;
+>> +
+>> +	if (rport->utmi_avalid)
+>> +		vbus_attach =
+>> +			property_enabled(rphy, &rport->port_cfg->utmi_avalid);
+>> +	else
+>> +		vbus_attach =
+>> +			property_enabled(rphy, &rport->port_cfg->utmi_bvalid);
+>> +
+>> +	sch_work = false;
+>> +	notify_charger = false;
+>> +	delay = OTG_SCHEDULE_DELAY;
+>> +	dev_dbg(&rport->phy->dev, "%s otg sm work\n",
+>> +		usb_otg_state_string(rport->state));
+>> +
+>> +	switch (rport->state) {
+>> +	case OTG_STATE_UNDEFINED:
+>> +		rport->state = OTG_STATE_B_IDLE;
+>> +		if (!vbus_attach)
+>> +			rockchip_usb2phy_power_off(rport->phy);
+>> +		/* fall through */
+>> +	case OTG_STATE_B_IDLE:
+>> +		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) > 0) {
+>> +			dev_dbg(&rport->phy->dev, "usb otg host connect\n");
+>> +			rport->state = OTG_STATE_A_HOST;
+>> +			rockchip_usb2phy_power_on(rport->phy);
+>> +			return;
+>> +		} else if (vbus_attach) {
+>> +			dev_dbg(&rport->phy->dev, "vbus_attach\n");
+>> +			switch (rphy->chg_state) {
+>> +			case USB_CHG_STATE_UNDEFINED:
+>> +				schedule_delayed_work(&rport->chg_work, 0);
+>> +				return;
+>> +			case USB_CHG_STATE_DETECTED:
+>> +				switch (rphy->chg_type) {
+>> +				case POWER_SUPPLY_TYPE_USB:
+>> +					dev_dbg(&rport->phy->dev,
+>> +						"sdp cable is connecetd\n");
+>> +					rockchip_usb2phy_power_on(rport->phy);
+>> +					rport->state = OTG_STATE_B_PERIPHERAL;
+>> +					notify_charger = true;
+>> +					sch_work = true;
+>> +					cable = EXTCON_CHG_USB_SDP;
+>> +					break;
+>> +				case POWER_SUPPLY_TYPE_USB_DCP:
+>> +					dev_dbg(&rport->phy->dev,
+>> +						"dcp cable is connecetd\n");
+>> +					rockchip_usb2phy_power_off(rport->phy);
+>> +					notify_charger = true;
+>> +					sch_work = true;
+>> +					cable = EXTCON_CHG_USB_DCP;
+>> +					break;
+>> +				case POWER_SUPPLY_TYPE_USB_CDP:
+>> +					dev_dbg(&rport->phy->dev,
+>> +						"cdp cable is connecetd\n");
+>> +					rockchip_usb2phy_power_on(rport->phy);
+>> +					rport->state = OTG_STATE_B_PERIPHERAL;
+>> +					notify_charger = true;
+>> +					sch_work = true;
+>> +					cable = EXTCON_CHG_USB_CDP;
+>> +					break;
+>> +				default:
+>> +					break;
+>> +				}
+>> +				break;
+>> +			default:
+>> +				break;
+>> +			}
+>> +		} else {
+>> +			notify_charger = true;
+>> +			rphy->chg_state = USB_CHG_STATE_UNDEFINED;
+>> +			rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
+>> +		}
+>> +
+>> +		if (rport->vbus_attached != vbus_attach) {
+>> +			rport->vbus_attached = vbus_attach;
+>> +
+>> +			if (notify_charger && rphy->edev)
+>> +				extcon_set_cable_state_(rphy->edev,
+>> +							cable, vbus_attach);
+>> +		}
+>> +		break;
+>> +	case OTG_STATE_B_PERIPHERAL:
+>> +		if (!vbus_attach) {
+>> +			dev_dbg(&rport->phy->dev, "usb disconnect\n");
+>> +			rphy->chg_state = USB_CHG_STATE_UNDEFINED;
+>> +			rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
+>> +			rport->state = OTG_STATE_B_IDLE;
+>> +			delay = 0;
+>> +			rockchip_usb2phy_power_off(rport->phy);
+>> +		}
+>> +		sch_work = true;
+>> +		break;
+>> +	case OTG_STATE_A_HOST:
+>> +		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) == 0) {
+>> +			dev_dbg(&rport->phy->dev, "usb otg host disconnect\n");
+>> +			rport->state = OTG_STATE_B_IDLE;
+>> +			rockchip_usb2phy_power_off(rport->phy);
+>> +		}
+>> +		break;
+>> +	default:
+>> +		break;
+>> +	}
+>> +
+>> +	if (sch_work)
+>> +		schedule_delayed_work(&rport->otg_sm_work, delay);
+>> +}
+>> +
+>> +static const char *chg_to_string(enum power_supply_type chg_type)
+>> +{
+>> +	switch (chg_type) {
+>> +	case POWER_SUPPLY_TYPE_USB:
+>> +		return "USB_SDP_CHARGER";
+>> +	case POWER_SUPPLY_TYPE_USB_DCP:
+>> +		return "USB_DCP_CHARGER";
+>> +	case POWER_SUPPLY_TYPE_USB_CDP:
+>> +		return "USB_CDP_CHARGER";
+>> +	default:
+>> +		return "INVALID_CHARGER";
+>> +	}
+>> +}
+>> +
+>> +static void rockchip_chg_enable_dcd(struct rockchip_usb2phy *rphy,
+>> +				    bool en)
+>> +{
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.rdm_pdwn_en, en);
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.idp_src_en, en);
+>> +}
+>> +
+>> +static void rockchip_chg_enable_primary_det(struct rockchip_usb2phy *rphy,
+>> +					    bool en)
+>> +{
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.vdp_src_en, en);
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.idm_sink_en, en);
+>> +}
+>> +
+>> +static void rockchip_chg_enable_secondary_det(struct rockchip_usb2phy *rphy,
+>> +					      bool en)
+>> +{
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.vdm_src_en, en);
+>> +	property_enable(rphy, &rphy->phy_cfg->chg_det.idp_sink_en, en);
+>> +}
+>> +
+>> +#define CHG_DCD_POLL_TIME	(100 * HZ / 1000)
+>> +#define CHG_DCD_MAX_RETRIES	6
+>> +#define CHG_PRIMARY_DET_TIME	(40 * HZ / 1000)
+>> +#define CHG_SECONDARY_DET_TIME	(40 * HZ / 1000)
+>> +static void rockchip_chg_detect_work(struct work_struct *work)
+>> +{
+>> +	struct rockchip_usb2phy_port *rport =
+>> +		container_of(work, struct rockchip_usb2phy_port, chg_work.work);
+>> +	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
+>> +	bool is_dcd, tmout, vout;
+>> +	unsigned long delay;
+>> +
+>> +	dev_dbg(&rport->phy->dev, "chg detection work state = %d\n",
+>> +		rphy->chg_state);
+>> +	switch (rphy->chg_state) {
+>> +	case USB_CHG_STATE_UNDEFINED:
+>> +		if (!rport->suspended)
+>> +			rockchip_usb2phy_power_off(rport->phy);
+>> +		/* put the controller in non-driving mode */
+>> +		property_enable(rphy, &rphy->phy_cfg->chg_det.opmode, false);
+>> +		/* Start DCD processing stage 1 */
+>> +		rockchip_chg_enable_dcd(rphy, true);
+>> +		rphy->chg_state = USB_CHG_STATE_WAIT_FOR_DCD;
+>> +		rphy->dcd_retries = 0;
+>> +		delay = CHG_DCD_POLL_TIME;
+>> +		break;
+>> +	case USB_CHG_STATE_WAIT_FOR_DCD:
+>> +		/* get data contact detection status */
+>> +		is_dcd = property_enabled(rphy, &rphy->phy_cfg->chg_det.dp_det);
+>> +		tmout = ++rphy->dcd_retries == CHG_DCD_MAX_RETRIES;
+>> +		/* stage 2 */
+>> +		if (is_dcd || tmout) {
+>> +			/* stage 4 */
+>> +			/* Turn off DCD circuitry */
+>> +			rockchip_chg_enable_dcd(rphy, false);
+>> +			/* Voltage Source on DP, Probe on DM */
+>> +			rockchip_chg_enable_primary_det(rphy, true);
+>> +			delay = CHG_PRIMARY_DET_TIME;
+>> +			rphy->chg_state = USB_CHG_STATE_DCD_DONE;
+>> +		} else {
+>> +			/* stage 3 */
+>> +			delay = CHG_DCD_POLL_TIME;
+>> +		}
+>> +		break;
+>> +	case USB_CHG_STATE_DCD_DONE:
+>> +		vout = property_enabled(rphy, &rphy->phy_cfg->chg_det.cp_det);
+>> +		rockchip_chg_enable_primary_det(rphy, false);
+>> +		if (vout) {
+>> +			/* Voltage Source on DM, Probe on DP  */
+>> +			rockchip_chg_enable_secondary_det(rphy, true);
+>> +			delay = CHG_SECONDARY_DET_TIME;
+>> +			rphy->chg_state = USB_CHG_STATE_PRIMARY_DONE;
+>> +		} else {
+>> +			if (tmout) {
+>> +				/* floating charger found */
+>> +				rphy->chg_type = POWER_SUPPLY_TYPE_USB_DCP;
+>> +				rphy->chg_state = USB_CHG_STATE_DETECTED;
+>> +				delay = 0;
+>> +			} else {
+>> +				rphy->chg_type = POWER_SUPPLY_TYPE_USB;
+>> +				rphy->chg_state = USB_CHG_STATE_DETECTED;
+>> +				delay = 0;
+>> +			}
+>> +		}
+>> +		break;
+>> +	case USB_CHG_STATE_PRIMARY_DONE:
+>> +		vout = property_enabled(rphy, &rphy->phy_cfg->chg_det.dcp_det);
+>> +		/* Turn off voltage source */
+>> +		rockchip_chg_enable_secondary_det(rphy, false);
+>> +		if (vout)
+>> +			rphy->chg_type = POWER_SUPPLY_TYPE_USB_DCP;
+>> +		else
+>> +			rphy->chg_type = POWER_SUPPLY_TYPE_USB_CDP;
+>> +		/* fall through */
+>> +	case USB_CHG_STATE_SECONDARY_DONE:
+>> +		rphy->chg_state = USB_CHG_STATE_DETECTED;
+>> +		delay = 0;
+>> +		/* fall through */
+>> +	case USB_CHG_STATE_DETECTED:
+>> +		/* put the controller in normal mode */
+>> +		property_enable(rphy, &rphy->phy_cfg->chg_det.opmode, true);
+>> +		rockchip_usb2phy_otg_sm_work(&rport->otg_sm_work.work);
+>> +		dev_info(&rport->phy->dev, "charger = %s\n",
+>> +			 chg_to_string(rphy->chg_type));
+>> +		return;
+>> +	default:
+>> +		return;
+>> +	}
+>> +
+>> +	schedule_delayed_work(&rport->chg_work, delay);
+>> +}
+>> +
+>>   /*
+>>    * The function manage host-phy port state and suspend/resume phy port
+>>    * to save power.
+>> @@ -485,6 +884,26 @@ static irqreturn_t rockchip_usb2phy_linestate_irq(int irq, void *data)
+>>   	return IRQ_HANDLED;
+>>   }
+>>   
+>> +static irqreturn_t rockchip_usb2phy_bvalid_irq(int irq, void *data)
+>> +{
+>> +	struct rockchip_usb2phy_port *rport = data;
+>> +	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
+>> +
+>> +	if (!property_enabled(rphy, &rport->port_cfg->bvalid_det_st))
+>> +		return IRQ_NONE;
+>> +
+>> +	mutex_lock(&rport->mutex);
+>> +
+>> +	/* clear bvalid detect irq pending status */
+>> +	property_enable(rphy, &rport->port_cfg->bvalid_det_clr, true);
+>> +
+>> +	mutex_unlock(&rport->mutex);
+>> +
+>> +	rockchip_usb2phy_otg_sm_work(&rport->otg_sm_work.work);
+>> +
+>> +	return IRQ_HANDLED;
+>> +}
+>> +
+>>   static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
+>>   					   struct rockchip_usb2phy_port *rport,
+>>   					   struct device_node *child_np)
+>> @@ -509,13 +928,86 @@ static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
+>>   					IRQF_ONESHOT,
+>>   					"rockchip_usb2phy", rport);
+>>   	if (ret) {
+>> -		dev_err(rphy->dev, "failed to request irq handle\n");
+>> +		dev_err(rphy->dev, "failed to request linestate irq handle\n");
+>>   		return ret;
+>>   	}
+>>   
+>>   	return 0;
+>>   }
+>>   
+>> +static int rockchip_otg_event(struct notifier_block *nb,
+>> +			      unsigned long event, void *ptr)
+>> +{
+>> +	struct rockchip_usb2phy_port *rport =
+>> +		container_of(nb, struct rockchip_usb2phy_port, event_nb);
+>> +
+>> +	schedule_delayed_work(&rport->otg_sm_work, OTG_SCHEDULE_DELAY);
+>> +
+>> +	return NOTIFY_DONE;
+>> +}
+>> +
+>> +static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+>> +					  struct rockchip_usb2phy_port *rport,
+>> +					  struct device_node *child_np)
+>> +{
+>> +	int ret;
+>> +
+>> +	rport->port_id = USB2PHY_PORT_OTG;
+>> +	rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_OTG];
+>> +	rport->state = OTG_STATE_UNDEFINED;
+>> +
+>> +	/*
+>> +	 * set suspended flag to true, but actually don't
+>> +	 * put phy in suspend mode, it aims to enable usb
+>> +	 * phy and clock in power_on() called by usb controller
+>> +	 * driver during probe.
+>> +	 */
+>> +	rport->suspended = true;
+>> +	rport->vbus_attached = false;
+>> +
+>> +	mutex_init(&rport->mutex);
+>> +
+>> +	rport->mode = of_usb_get_dr_mode_by_phy(child_np, -1);
+>> +	if (rport->mode == USB_DR_MODE_HOST) {
+>> +		ret = 0;
+>> +		goto out;
+>> +	}
+>> +
+>> +	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
+>> +	INIT_DELAYED_WORK(&rport->otg_sm_work, rockchip_usb2phy_otg_sm_work);
+>> +
+>> +	rport->utmi_avalid =
+>> +		of_property_read_bool(child_np, "rockchip,utmi-avalid");
+>> +
+>> +	rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
+>> +	if (rport->bvalid_irq < 0) {
+>> +		dev_err(rphy->dev, "no vbus valid irq provided\n");
+>> +		ret = rport->bvalid_irq;
+>> +		goto out;
+>> +	}
+>> +
+>> +	ret = devm_request_threaded_irq(rphy->dev, rport->bvalid_irq, NULL,
+>> +					rockchip_usb2phy_bvalid_irq,
+>> +					IRQF_ONESHOT,
+>> +					"rockchip_usb2phy_bvalid", rport);
+>> +	if (ret) {
+>> +		dev_err(rphy->dev, "failed to request otg-bvalid irq handle\n");
+>> +		goto out;
+>> +	}
+>> +
+>> +	if (!IS_ERR(rphy->edev)) {
+>> +		rport->event_nb.notifier_call = rockchip_otg_event;
+>> +
+>> +		ret = extcon_register_notifier(rphy->edev, EXTCON_USB_HOST,
+>> +					       &rport->event_nb);
+>> +		if (ret)
+>> +			dev_err(rphy->dev, "register USB HOST notifier failed\n");
+>> +	}
+>> +
+>> +out:
+>> +	return ret;
+>> +}
+>> +
+>>   static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>>   {
+>>   	struct device *dev = &pdev->dev;
+>> @@ -553,8 +1045,14 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>>   
+>>   	rphy->dev = dev;
+>>   	phy_cfgs = match->data;
+>> +	rphy->chg_state = USB_CHG_STATE_UNDEFINED;
+>> +	rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
+>>   	platform_set_drvdata(pdev, rphy);
+>>   
+>> +	ret = rockchip_usb2phy_extcon_register(rphy);
+>> +	if (ret)
+>> +		return ret;
+>> +
+>>   	/* find out a proper config which can be matched with dt. */
+>>   	index = 0;
+>>   	while (phy_cfgs[index].reg) {
+>> @@ -591,13 +1089,9 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>>   		struct rockchip_usb2phy_port *rport = &rphy->ports[index];
+>>   		struct phy *phy;
+>>   
+>> -		/*
+>> -		 * This driver aim to support both otg-port and host-port,
+>> -		 * but unfortunately, the otg part is not ready in current,
+>> -		 * so this comments and below codes are interim, which should
+>> -		 * be changed after otg-port is supplied soon.
+>> -		 */
+>> -		if (of_node_cmp(child_np->name, "host-port"))
+>> +		/* This driver aims to support both otg-port and host-port */
+>> +		if (of_node_cmp(child_np->name, "host-port") &&
+>> +		    of_node_cmp(child_np->name, "otg-port"))
+>>   			goto next_child;
+>>   
+>>   		phy = devm_phy_create(dev, child_np, &rockchip_usb2phy_ops);
+>> @@ -610,9 +1104,18 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>>   		rport->phy = phy;
+>>   		phy_set_drvdata(rport->phy, rport);
+>>   
+>> -		ret = rockchip_usb2phy_host_port_init(rphy, rport, child_np);
+>> -		if (ret)
+>> -			goto put_child;
+>> +		/* initialize otg/host port separately */
+>> +		if (!of_node_cmp(child_np->name, "host-port")) {
+>> +			ret = rockchip_usb2phy_host_port_init(rphy, rport,
+>> +							      child_np);
+>> +			if (ret)
+>> +				goto put_child;
+>> +		} else {
+>> +			ret = rockchip_usb2phy_otg_port_init(rphy, rport,
+>> +							     child_np);
+>> +			if (ret)
+>> +				goto put_child;
+>> +		}
+>>   
+>>   next_child:
+>>   		/* to prevent out of boundary */
+>> @@ -654,10 +1157,18 @@ static const struct rockchip_usb2phy_cfg rk3366_phy_cfgs[] = {
+>>   
+>>   static const struct rockchip_usb2phy_cfg rk3399_phy_cfgs[] = {
+>>   	{
+>> -		.reg = 0xe450,
+>> +		.reg		= 0xe450,
+>>   		.num_ports	= 2,
+>>   		.clkout_ctl	= { 0xe450, 4, 4, 1, 0 },
+>>   		.port_cfgs	= {
+>> +			[USB2PHY_PORT_OTG] = {
+>> +				.phy_sus	= { 0xe454, 1, 0, 2, 1 },
+>> +				.bvalid_det_en	= { 0xe3c0, 3, 3, 0, 1 },
+>> +				.bvalid_det_st	= { 0xe3e0, 3, 3, 0, 1 },
+>> +				.bvalid_det_clr	= { 0xe3d0, 3, 3, 0, 1 },
+>> +				.utmi_avalid	= { 0xe2ac, 7, 7, 0, 1 },
+>> +				.utmi_bvalid	= { 0xe2ac, 12, 12, 0, 1 },
+>> +			},
+>>   			[USB2PHY_PORT_HOST] = {
+>>   				.phy_sus	= { 0xe458, 1, 0, 0x2, 0x1 },
+>>   				.ls_det_en	= { 0xe3c0, 6, 6, 0, 1 },
+>> @@ -667,12 +1178,32 @@ static const struct rockchip_usb2phy_cfg rk3399_phy_cfgs[] = {
+>>   				.utmi_hstdet	= { 0xe2ac, 23, 23, 0, 1 }
+>>   			}
+>>   		},
+>> +		.chg_det = {
+>> +			.opmode		= { 0xe454, 3, 0, 5, 1 },
+>> +			.cp_det		= { 0xe2ac, 2, 2, 0, 1 },
+>> +			.dcp_det	= { 0xe2ac, 1, 1, 0, 1 },
+>> +			.dp_det		= { 0xe2ac, 0, 0, 0, 1 },
+>> +			.idm_sink_en	= { 0xe450, 8, 8, 0, 1 },
+>> +			.idp_sink_en	= { 0xe450, 7, 7, 0, 1 },
+>> +			.idp_src_en	= { 0xe450, 9, 9, 0, 1 },
+>> +			.rdm_pdwn_en	= { 0xe450, 10, 10, 0, 1 },
+>> +			.vdm_src_en	= { 0xe450, 12, 12, 0, 1 },
+>> +			.vdp_src_en	= { 0xe450, 11, 11, 0, 1 },
+>> +		},
+>>   	},
+>>   	{
+>> -		.reg = 0xe460,
+>> +		.reg		= 0xe460,
+>>   		.num_ports	= 2,
+>>   		.clkout_ctl	= { 0xe460, 4, 4, 1, 0 },
+>>   		.port_cfgs	= {
+>> +			[USB2PHY_PORT_OTG] = {
+>> +				.phy_sus        = { 0xe464, 1, 0, 2, 1 },
+>> +				.bvalid_det_en  = { 0xe3c0, 8, 8, 0, 1 },
+>> +				.bvalid_det_st  = { 0xe3e0, 8, 8, 0, 1 },
+>> +				.bvalid_det_clr = { 0xe3d0, 8, 8, 0, 1 },
+>> +				.utmi_avalid	= { 0xe2ac, 10, 10, 0, 1 },
+>> +				.utmi_bvalid    = { 0xe2ac, 16, 16, 0, 1 },
+>> +			},
+>>   			[USB2PHY_PORT_HOST] = {
+>>   				.phy_sus	= { 0xe468, 1, 0, 0x2, 0x1 },
+>>   				.ls_det_en	= { 0xe3c0, 11, 11, 0, 1 },
+>>
 >
 >
 
->>>
->>> Best regards,
->>>
->>> Hugues.
->>>
->>>
->>>
->>> [0] [ANN] Codec & Request API Brainstorm meeting Oct 10 & 11
->>> https://www.spinics.net/lists/linux-media/msg106699.html
->>>
->>> [1] MPEG2 A13 CedarX http://www.spinics.net/lists/linux-media/msg104823.html
->>>
->>> [1] MPEG4 A13 CedarX http://www.spinics.net/lists/linux-media/msg104817.html
->>>
->>> [2] MPEG2 STi4xx Delta
->>> http://www.spinics.net/lists/linux-media/msg106240.html
->>>
->>> [2] MPEG4 STi4xx Delta is also supported but not yet pushed
->>>
->>> [3] VP8 Rockchip RK3288, RK3399? VPU
->>> https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/sys-kernel/linux-headers/files/0002-CHROMIUM-v4l-Add-VP8-low-level-decoder-API-controls.patch
->>>
->>>
->>> [4] VP8 Rockchip RK3288 VPU
->>> http://www.spinics.net/lists/linux-media/msg97997.html
->>>
->>> [5] H264 Rockchip RK3288, RK3399? VPU
->>> https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/sys-kernel/linux-headers/files/0001-CHROMIUM-media-headers-Import-V4L2-headers-from-Chro.patch
->>>
->>> [6] H264 Rockchip RK3288 VPU
->>> http://www.spinics.net/lists/linux-media/msg105095.html
->>>
 
--- 
-Randy Li
-The third produce department
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
