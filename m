@@ -1,42 +1,54 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: remove more CLK_IGNORE_UNUSED for rk3399 clocktree
-Date: Sat, 05 Nov 2016 23:14:46 +0100
-Message-ID: <1554357.c2SylEul2r@phil>
-References: <1478144333-13436-1-git-send-email-jay.xu@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: Ignore frac divisor for PLL equivalence
+ when it's unused
+Date: Sat, 05 Nov 2016 23:25:56 +0100
+Message-ID: <2456323.GVNA1yFAA5@phil>
+References: <1478130204-3167-1-git-send-email-jwerner@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478144333-13436-1-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, huangtao@rock-chips.com, zhangqing@rock-chips.com, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, lintao@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1478130204-3167-1-git-send-email-jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 3. November 2016, 11:38:53 CET schrieb Jianqun Xu:
-> Optimize rk3399 clocktree by removing CLK_IGNORE_UNUSED of some clocks.
+Am Mittwoch, 2. November 2016, 16:43:24 CET schrieb Julius Werner:
+> Rockchip RK3399 PLLs can be used in two separate modes: integral and
+> fractional. We can select between these two modes with the unambiguously
+> named DSMPD bit.
 > 
-> clocks will managered by usb:
-> - clk_usbphy0_480m_src
-> - clk_usbphy1_480m_src
-> - clk_usbphy_480m
+> During boot, we check all PLL settings to confirm that they match our
+> PLL table for that frequency, and reinitialize the PLLs where they
+> don't. The settings checked for this include the fractional divider
+> field that is only used in fractional mode, even if we're in integral
+> mode (DSMPD = 1) and that field has no effect.
 > 
-> clocks will be managered by pvtm:
-> - clk_pvtm_core_l
-> - clk_pvtm_core_b
-> - clk_pvtm_ddr
+> This patch changes the check to only compare the fractional divider if
+> we're actually in fractional mode. This way, we won't reinitialize the
+> PLL in cases where there's absolutely no reason for that, which may
+> avoid glitching child clocks that should better not be glitched (e.g.
+> PWM regulators).
 > 
-> clocks will be managered by dfi:
-> - pclk_ddr_mon
-> - clk_dfimon0_timer
-> - clk_dfimon1_timer
-> - aclk_dcf
-> - pclk_dcf
-> 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> Signed-off-by: Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-I gave this a test on a rk3399-gru device and was still able to boot 
-sucessfully. So I've applied the patch to my clk-branch for 4.10
+I took the liberty to clone the fix to the rk3036 pll type as well, which is
+quite similar and only differs in the actual register layout.
 
-Thanks
+As sugested by the above, I've applied this to my clk branch for 4.10 [0]
+
+
+Thanks for fixing this
 Heiko
+
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=bf92384b6d729b22916ba832b4a225ca196e98ba
