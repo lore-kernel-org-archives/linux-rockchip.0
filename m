@@ -1,37 +1,33 @@
-From: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 0/2] set specific ddr frequency when stop ddr dvfs
-Date: Mon,  7 Nov 2016 14:23:07 +0800
-Message-ID: <1478499789-21589-1-git-send-email-hl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
-Cc: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/2] support USB2 PHY OTG port for rk3399
+Date: Mon,  7 Nov 2016 20:08:47 +0800
+Message-ID: <1478520529-8869-1-git-send-email-wulf@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We need ddr run a specific frequency when ddr dvfs stop working. So we
-implement get suspend frequency function in devfreq framework, and call
-it in rk3399 dmc driver. 
+This series add support for rk3399 USB2 PHY0 and PHY1 OTG port.
+rk3399 has two USB2 PHYs, and each USB2 PHY is comprised of one
+Host port and one OTG port. We have supported Host port before,
+and try to support OTG port now.
 
-Lin Huang (2):
-  PM/devfreq: add suspend frequency support
-  PM/devfreq: rk3399: get devfreq suspend frequency
+Test on rk3399-evb board.
 
- drivers/devfreq/devfreq.c                 | 18 ++++++++++++++++--
- drivers/devfreq/governor_simpleondemand.c |  9 +++++++++
- drivers/devfreq/rk3399_dmc.c              |  2 +-
- include/linux/devfreq.h                   |  8 ++++++++
- 4 files changed, 34 insertions(+), 3 deletions(-)
+William Wu (2):
+  phy: rockchip-inno-usb2: support otg-port for rk3399
+  arm64: dts: rockchip: add usb2-phy otg-port support for rk3399
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi |  21 ++
+ drivers/phy/phy-rockchip-inno-usb2.c     | 591 +++++++++++++++++++++++++++++--
+ 2 files changed, 582 insertions(+), 30 deletions(-)
 
 -- 
-1.9.1
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
