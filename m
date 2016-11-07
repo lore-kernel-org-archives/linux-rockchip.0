@@ -1,32 +1,89 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Set sdmmc frequency at boot time
-Date: Mon, 07 Nov 2016 16:16:53 +0100
-Message-ID: <4155843.KPt5obxOXP@phil>
-References: <20161104180730.GA14508@vaio-ubuntu>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161104180730.GA14508@vaio-ubuntu>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
+From: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 00/30] usb: dwc2: Gadget descriptor DMA and IOT
+Date: Mon, 07 Nov 2016 14:39:43 -0800
+Message-ID: <cover.1478558343.git.johnyoun@synopsys.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Vardan Mikayelyan <mvardan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Vahram Aharonyan <vahrama-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgNC4gTm92ZW1iZXIgMjAxNiwgMTk6MDc6MzEgQ0VUIHNjaHJpZWIgUGF3ZcWC
-IEphcm9zejoKPiBDdXJyZW50bHkgZHJpdmVyIGxlYXZlcyBzZG1tYyBmcmVxdWVuY3kgYXQgaXRz
-IGRlZmF1bHQuIFNvIGxldHMgc2V0IHRoaXMKPiB0byA1ME1Iei4KPiBUaGlzIGdpdmVzIHVzIHBl
-cmZvcm1hbmNlIGJvb3N0IGluIG1tYyB0cmFuc2ZlcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogUGF3
-ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KCmFwcGxpZWQgdG8gbXkgZHRz
-MzIgYnJhbmNoIGZvciA0LjEwCgoKVGhhbmtzCkhlaWtvCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This series implements gadget-side descriptor DMA for the DWC_hsotg
+controller.
+
+It also includes support for DWC USB IOT controllers which use the
+descriptor DMA mode of operation exclusively. These are two new
+device-only USB controller IPs based on DWC_hsotg.
+
+Tested on HAPS platform with:
+* HSOTG IP version 3.30a
+* FS/LS IOT IP version 1.00a
+* HS IOT IP version 1.00a
+
+This series should be applied on top of:
+http://marc.info/?l=linux-usb&m=147822095118860&w=2
+
+Regards,
+John
+
+
+John Youn (2):
+  usb: dwc2: Deprecate g-use-dma binding
+  usb: dwc2: Enable gadget DDMA by default for HAPS
+
+Vahram Aharonyan (25):
+  usb: dwc2: Update DMA descriptor structure
+  usb: dwc2: gadget: Add descriptor DMA binding
+  usb: dwc2: gadget: Add DMA descriptor status quadlet fields
+  usb: dwc2: gadget: Enable BNA interrupt in descriptor DMA mode
+  usb: dwc2: gadget: Add DMA descriptor chains for EP 0
+  usb: dwc2: host: Rename MAX_DMA_DESC_SIZE to HOST_DMA_NBYTES_LIMIT
+  usb: dwc2: gadget: Transfer length limit checking for DDMA
+  usb: dwc2: gadget: Add DDMA chain pointers to dwc2_hsotg_ep structure
+  usb: dwc2: gadget: Add DDMA chain fill and parse functions
+  usb: dwc2: gadget: EP 0 specific DDMA programming
+  usb: dwc2: gadget: DDMA transfer start and complete
+  usb: dwc2: gadget: Fixes for StsPhseRcvd interrupt
+  usb: dwc2: gadget: Start DDMA IN status phase in StsPhseRcvd handler
+  usb: dwc2: gadget: Enable descriptor DMA mode
+  usb: dwc2: gadget: Add DDMA isoc related fields to dwc2_hsotg_ep
+  usb: dwc2: gadget: Fill isoc descriptor and start transfer in DDMA
+  usb: dwc2: gadget: Add completions for DDMA isoc transfers
+  usb: dwc2: gadget: In DDMA keep incompISOOUT and incompISOIN masked
+  usb: dwc2: gadget: Add start and complete calls for DDMA ISOC
+  usb: dwc2: gadget: Adjust ISOC OUT request's actual len for DDMA
+  usb: dwc2: gadget: Adjustments in debug prints
+  usb: dwc2: gadget: For DDMA parse setup only after SetUp interrupt
+  usb: dwc2: gadget: Correct dwc2_hsotg_ep_stop_xfr() function
+  usb: dwc2: gadget: Disable enabled HW endpoint in
+    dwc2_hsotg_ep_disable
+  usb: dwc2: Add support of dedicated full-speed PHY interface
+
+Vardan Mikayelyan (3):
+  usb: dwc2: gadget: Add IOT device IDs, configure core accordingly
+  usb: dwc2: gadget: Program ep0_mps for LS
+  usb: dwc2: gadget: Add new core parameter for low speed
+
+ Documentation/devicetree/bindings/usb/dwc2.txt |   6 +-
+ arch/arm/boot/dts/rk3036.dtsi                  |   2 +-
+ arch/arm/boot/dts/rk3288.dtsi                  |   2 +-
+ arch/arm/boot/dts/rk3xxx.dtsi                  |   2 +-
+ arch/arm64/boot/dts/hisilicon/hi6220.dtsi      |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi       |   2 +-
+ drivers/usb/dwc2/core.h                        |  48 ++
+ drivers/usb/dwc2/gadget.c                      | 978 ++++++++++++++++++++++---
+ drivers/usb/dwc2/hcd.c                         |  12 +-
+ drivers/usb/dwc2/hcd.h                         |   2 +-
+ drivers/usb/dwc2/hcd_ddma.c                    |  52 +-
+ drivers/usb/dwc2/hw.h                          |  48 +-
+ drivers/usb/dwc2/params.c                      |  42 +-
+ drivers/usb/dwc2/pci.c                         |   3 +-
+ 14 files changed, 1039 insertions(+), 162 deletions(-)
+
+-- 
+2.10.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
