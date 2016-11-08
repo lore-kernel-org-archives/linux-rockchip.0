@@ -1,60 +1,58 @@
-From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
-Subject: =?UTF-8?B?UkU6IFtSRVNFTkQgUEFUQ0ggdjMgMS8yXSBQTS9kZXZmcmVx?=
- =?UTF-8?B?OiBhZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydA==?=
-Date: Tue, 08 Nov 2016 02:06:58 +0000
-Message-ID: <960394560.458817.1478570818491.JavaMail.weblogic@ep2ml102b>
-References: <1478500420-22045-1-git-send-email-hl@rock-chips.com>
- <CGME20161107063403epcas5p4f8d0d95b9a997ca7bf2b2702c3e5d337@epcas5p4.samsung.com>
-Reply-To: myungjoo.ham@samsung.com
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] clk: rockchip: validity should be checked prior to clock rate
+ change
+Date: Tue,  8 Nov 2016 17:10:14 +0800
+Message-ID: <1478596214-761-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/related;
- boundary="----=_Part_458816_470645723.1478570818491"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?TGluIEh1YW5n?= <hl@rock-chips.com>
-Cc: =?UTF-8?B?Q2hhbndvbyBDaG9p?= <cw00.choi@samsung.com>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chromium.org>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?bGludXgtcG1Admdlci5rZXJuZWwub3Jn?= <linux-pm@vger.kernel.org>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn?= <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-------=_Part_458816_470645723.1478570818491
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"
+If validity is not checked prior to clock rate change, clk_set_rate(
+cpu_clk, unsupported_rate) will return success, but the real clock rate
+change operation is prohibited in post clock change event. Alough post
+clock change event will report error due to unsupported clock rate is
+set, but this error message is ignored by clock framework.
 
-PiBBZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydCBhbmQgaWYgbmVlZGVkIHNldCBpdCB0bw0K
-PiB0aGUgZnJlcXVlbmN5IG9idGFpbmVkIGZyb20gdGhlIHN1c3BlbmQgb3BwIChjYW4gYmUgZGVm
-aW5lZA0KPiB1c2luZyBvcHAtdjIgYmluZGluZ3MgYW5kIGlzIG9wdGlvbmFsKS4NCj4gDQo+IFNp
-Z25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+DQo+IC0tLQ0KPiBDaGFu
-Z2VzIGluIHYyOg0KPiAtIHVzZSB1cGRhdGVfZGV2ZnJlcSgpIGluc3RlYWQgZGV2ZnJlcV91cGRh
-dGVfc3RhdHVzKCkNCj4gQ2hhbmdlcyBpbiB2MzoNCj4gLSBmaXggYnVpbGQgZXJyb3INCj4gDQo+
-ICBkcml2ZXJzL2RldmZyZXEvZGV2ZnJlcS5jICAgICAgICAgICAgICAgICB8IDE4ICsrKysrKysr
-KysrKysrKystLQ0KPiAgZHJpdmVycy9kZXZmcmVxL2dvdmVybm9yX3NpbXBsZW9uZGVtYW5kLmMg
-fCAgOSArKysrKysrKysNCj4gIGluY2x1ZGUvbGludXgvZGV2ZnJlcS5oICAgICAgICAgICAgICAg
-ICAgIHwgIDggKysrKysrKysNCj4gIDMgZmlsZXMgY2hhbmdlZCwgMzMgaW5zZXJ0aW9ucygrKSwg
-MiBkZWxldGlvbnMoLSkNCj4gDQo+ICANCltdDQo+ICt2b2lkIGRldmZyZXFfb3BwX2dldF9zdXNw
-ZW5kX29wcChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxKQ0KPiAr
-ew0KPiArCXN0cnVjdCBkZXZfcG1fb3BwICpzdXNwZW5kX29wcDsNCj4gKw0KPiArCXJjdV9yZWFk
-X2xvY2soKTsNCj4gKwlzdXNwZW5kX29wcCA9IGRldl9wbV9vcHBfZ2V0X3N1c3BlbmRfb3BwKGRl
-dik7DQo+ICsJaWYgKHN1c3BlbmRfb3BwKQ0KPiArCQlkZXZmcmVxLT5zdXNwZW5kX2ZyZXEgPSBk
-ZXZfcG1fb3BwX2dldF9mcmVxKHN1c3BlbmRfb3BwKTsNCj4gKwlyY3VfcmVhZF91bmxvY2soKTsN
-Cj4gK30NCj4gK0VYUE9SVF9TWU1CT0woZGV2ZnJlcV9vcHBfZ2V0X3N1c3BlbmRfb3BwKTsNCj4g
-Kw0KDQpXaHkgZG8gd2UgbmVlZCB0aGlzIGZ1bmN0aW9uPw0KDQpUaGlzIGNvdWxkIGJlIGRvbmUg
-YXQgdGhlIGluaXQgdGltZSAoZGV2ZnJlcV9hZGRfZGV2aWNlKS4NCg0KUGx1cywgd2hlbiBpdCBk
-b2VzIG5vdCBoYXZlIGRldl9wbV9vcHBfZ2V0X3N1c3BlbmRfb3BwKCkgYXZhaWxhYmxlLA0KDQo+
-ICAvKioNCj4gICAqIGRldmZyZXFfcmVnaXN0ZXJfb3BwX25vdGlmaWVyKCkgLSBIZWxwZXIgZnVu
-Y3Rpb24gdG8gZ2V0IGRldmZyZXEgbm90aWZpZWQNCj4gICAqCQkJCSAgIGZvciBhbnkgY2hhbmdl
-cyBpbiB0aGUgT1BQIGF2YWlsYWJpbGl0eQ0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVx
-L2dvdmVybm9yX3NpbXBsZW9uZGVtYW5kLmMgYi9kcml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2lt
-cGxlb25kZW1hbmQuYw0KPiBpbmRleCBhZTcyYmE1Li5hM2VmZWUwIDEwMDY0NA0KPiAtLS0gYS9k
-cml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiArKysgYi9kcml2ZXJz
-L2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiBAQCAtMjksNiArMjksMTUgQEAg
-c3RhdGljIGludCBkZXZmcmVxX3NpbXBsZV9vbmRlbWFuZF9mdW5jKHN0cnVjdCBkZXZmcmVxICpk
-ZiwNCj4gIAlzdHJ1Y3QgZGV2ZnJlcV9zaW1wbGVfb25kZW1hbmRfZGF0YSAqZGF0YSA9IGRmLT5k
-YXRhOw0KPiAgCXVuc2lnbmVkIGxvbmcgbWF4ID0gKGRmLT5tYXhfZnJlcSkgPyBkZi0+bWF4X2Zy
-ZXEgOiBVSU5UX01BWDsNCj4gIA0KPiArCS8qDQo+ICsJICogaWYgZGV2ZnJlcSBpbiBzdXNwZW5k
-IHN0YXR1cyBhbmQgaGF2ZSBzdXNwZW5kX2ZyZXEsDQo+ICsJICogdGhlIGZyZXF1ZW5jeSBuZWVk
-IHRvIHNldCB0byBzdXNwZW5kX2ZyZXENCj4gKwkgKi8NCj4gKwlpZiAoZGYtPnN0b3BfcG9sbGlu
-ZyAmJiBkZi0+c3VzcGVuZF9mcmVxKSB7DQo+ICsJCSpmcmVxID0JZGYtPnN1c3BlbmRfZnJlcTsN
-Cj4gKwkJcmV0dXJuIDA7DQo+ICsJfQ0KPiArDQoNCldoeSBhcmUgeW91IGFkZGluZyB0aGlzPyAi
-U3RvcCBwb2xsaW5nIiBkb2VzIG5vdCBuZWNlc3NhcmlseSBtZWFuIHRoYXQNCndlIGFyZSBkb2lu
-ZyBzdXNwZW5kLXRvLVJBTS9kaXNrLiBJdCBtYXkgcmVhbGx5IG1lYW4ganVzdCB0byBzdG9wIGF0
-DQp0aGUgY3VycmVudCBmcmVxdWVuY3kuDQoNCg0KQ2hlZXJzLA0KTXl1bmdKb28NCg0K
-------=_Part_458816_470645723.1478570818491--
+Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/clk/rockchip/clk-cpu.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index 05b3d73bfefa..c4b0cc83fa87 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -125,8 +125,17 @@ static int rockchip_cpuclk_pre_rate_change(struct rockchip_cpuclk *cpuclk,
+ {
+ 	const struct rockchip_cpuclk_reg_data *reg_data = cpuclk->reg_data;
+ 	unsigned long alt_prate, alt_div;
++	const struct rockchip_cpuclk_rate_table *rate;
+ 	unsigned long flags;
+ 
++	/* check validity of the new rate */
++	rate = rockchip_get_cpuclk_settings(cpuclk, ndata->new_rate);
++	if (!rate) {
++		pr_err("%s: Invalid rate : %lu for cpuclk\n",
++		       __func__, ndata->new_rate);
++		return -EINVAL;
++	}
++
+ 	alt_prate = clk_get_rate(cpuclk->alt_parent);
+ 
+ 	spin_lock_irqsave(cpuclk->lock, flags);
+-- 
+1.9.1
