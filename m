@@ -1,95 +1,60 @@
-From: John Youn <johnyoun@synopsys.com>
-Subject: [PATCH 00/30] usb: dwc2: Gadget descriptor DMA and IOT
-Date: Mon, 07 Nov 2016 14:39:43 -0800
-Message-ID: <cover.1478558343.git.johnyoun__31134.3519286767$1478558484$gmane$org@synopsys.com>
+From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
+Subject: =?UTF-8?B?UkU6IFtSRVNFTkQgUEFUQ0ggdjMgMS8yXSBQTS9kZXZmcmVx?=
+ =?UTF-8?B?OiBhZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydA==?=
+Date: Tue, 08 Nov 2016 02:06:58 +0000
+Message-ID: <960394560.458817.1478570818491.JavaMail.weblogic@ep2ml102b>
+References: <1478500420-22045-1-git-send-email-hl@rock-chips.com>
+ <CGME20161107063403epcas5p4f8d0d95b9a997ca7bf2b2702c3e5d337@epcas5p4.samsung.com>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Youn <johnyoun@synopsys.com>, Felipe Balbi <balbi@kernel.org>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Matthias Brugger <mbrugger@suse.com>, Wei Xu <xuwei5@hisilicon.com>, Andy Yan <andy.yan@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Vahram Aharonyan <vahrama@synopsys.com>, Vardan Mikayelyan <mvardan@synopsys.com>
+Content-Type: multipart/related;
+ boundary="----=_Part_458816_470645723.1478570818491"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?B?TGluIEh1YW5n?= <hl@rock-chips.com>
+Cc: =?UTF-8?B?Q2hhbndvbyBDaG9p?= <cw00.choi@samsung.com>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chromium.org>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?bGludXgtcG1Admdlci5rZXJuZWwub3Jn?= <linux-pm@vger.kernel.org>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn?= <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series implements gadget-side descriptor DMA for the DWC_hsotg
-controller.
+------=_Part_458816_470645723.1478570818491
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"
 
-It also includes support for DWC USB IOT controllers which use the
-descriptor DMA mode of operation exclusively. These are two new
-device-only USB controller IPs based on DWC_hsotg.
-
-Tested on HAPS platform with:
-* HSOTG IP version 3.30a
-* FS/LS IOT IP version 1.00a
-* HS IOT IP version 1.00a
-
-This series should be applied on top of:
-http://marc.info/?l=linux-usb&m=147822095118860&w=2
-
-Regards,
-John
-
-
-John Youn (2):
-  usb: dwc2: Deprecate g-use-dma binding
-  usb: dwc2: Enable gadget DDMA by default for HAPS
-
-Vahram Aharonyan (25):
-  usb: dwc2: Update DMA descriptor structure
-  usb: dwc2: gadget: Add descriptor DMA binding
-  usb: dwc2: gadget: Add DMA descriptor status quadlet fields
-  usb: dwc2: gadget: Enable BNA interrupt in descriptor DMA mode
-  usb: dwc2: gadget: Add DMA descriptor chains for EP 0
-  usb: dwc2: host: Rename MAX_DMA_DESC_SIZE to HOST_DMA_NBYTES_LIMIT
-  usb: dwc2: gadget: Transfer length limit checking for DDMA
-  usb: dwc2: gadget: Add DDMA chain pointers to dwc2_hsotg_ep structure
-  usb: dwc2: gadget: Add DDMA chain fill and parse functions
-  usb: dwc2: gadget: EP 0 specific DDMA programming
-  usb: dwc2: gadget: DDMA transfer start and complete
-  usb: dwc2: gadget: Fixes for StsPhseRcvd interrupt
-  usb: dwc2: gadget: Start DDMA IN status phase in StsPhseRcvd handler
-  usb: dwc2: gadget: Enable descriptor DMA mode
-  usb: dwc2: gadget: Add DDMA isoc related fields to dwc2_hsotg_ep
-  usb: dwc2: gadget: Fill isoc descriptor and start transfer in DDMA
-  usb: dwc2: gadget: Add completions for DDMA isoc transfers
-  usb: dwc2: gadget: In DDMA keep incompISOOUT and incompISOIN masked
-  usb: dwc2: gadget: Add start and complete calls for DDMA ISOC
-  usb: dwc2: gadget: Adjust ISOC OUT request's actual len for DDMA
-  usb: dwc2: gadget: Adjustments in debug prints
-  usb: dwc2: gadget: For DDMA parse setup only after SetUp interrupt
-  usb: dwc2: gadget: Correct dwc2_hsotg_ep_stop_xfr() function
-  usb: dwc2: gadget: Disable enabled HW endpoint in
-    dwc2_hsotg_ep_disable
-  usb: dwc2: Add support of dedicated full-speed PHY interface
-
-Vardan Mikayelyan (3):
-  usb: dwc2: gadget: Add IOT device IDs, configure core accordingly
-  usb: dwc2: gadget: Program ep0_mps for LS
-  usb: dwc2: gadget: Add new core parameter for low speed
-
- Documentation/devicetree/bindings/usb/dwc2.txt |   6 +-
- arch/arm/boot/dts/rk3036.dtsi                  |   2 +-
- arch/arm/boot/dts/rk3288.dtsi                  |   2 +-
- arch/arm/boot/dts/rk3xxx.dtsi                  |   2 +-
- arch/arm64/boot/dts/hisilicon/hi6220.dtsi      |   2 +-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi       |   2 +-
- drivers/usb/dwc2/core.h                        |  48 ++
- drivers/usb/dwc2/gadget.c                      | 978 ++++++++++++++++++++++---
- drivers/usb/dwc2/hcd.c                         |  12 +-
- drivers/usb/dwc2/hcd.h                         |   2 +-
- drivers/usb/dwc2/hcd_ddma.c                    |  52 +-
- drivers/usb/dwc2/hw.h                          |  48 +-
- drivers/usb/dwc2/params.c                      |  42 +-
- drivers/usb/dwc2/pci.c                         |   3 +-
- 14 files changed, 1039 insertions(+), 162 deletions(-)
-
--- 
-2.10.0
+PiBBZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydCBhbmQgaWYgbmVlZGVkIHNldCBpdCB0bw0K
+PiB0aGUgZnJlcXVlbmN5IG9idGFpbmVkIGZyb20gdGhlIHN1c3BlbmQgb3BwIChjYW4gYmUgZGVm
+aW5lZA0KPiB1c2luZyBvcHAtdjIgYmluZGluZ3MgYW5kIGlzIG9wdGlvbmFsKS4NCj4gDQo+IFNp
+Z25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+DQo+IC0tLQ0KPiBDaGFu
+Z2VzIGluIHYyOg0KPiAtIHVzZSB1cGRhdGVfZGV2ZnJlcSgpIGluc3RlYWQgZGV2ZnJlcV91cGRh
+dGVfc3RhdHVzKCkNCj4gQ2hhbmdlcyBpbiB2MzoNCj4gLSBmaXggYnVpbGQgZXJyb3INCj4gDQo+
+ICBkcml2ZXJzL2RldmZyZXEvZGV2ZnJlcS5jICAgICAgICAgICAgICAgICB8IDE4ICsrKysrKysr
+KysrKysrKystLQ0KPiAgZHJpdmVycy9kZXZmcmVxL2dvdmVybm9yX3NpbXBsZW9uZGVtYW5kLmMg
+fCAgOSArKysrKysrKysNCj4gIGluY2x1ZGUvbGludXgvZGV2ZnJlcS5oICAgICAgICAgICAgICAg
+ICAgIHwgIDggKysrKysrKysNCj4gIDMgZmlsZXMgY2hhbmdlZCwgMzMgaW5zZXJ0aW9ucygrKSwg
+MiBkZWxldGlvbnMoLSkNCj4gDQo+ICANCltdDQo+ICt2b2lkIGRldmZyZXFfb3BwX2dldF9zdXNw
+ZW5kX29wcChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxKQ0KPiAr
+ew0KPiArCXN0cnVjdCBkZXZfcG1fb3BwICpzdXNwZW5kX29wcDsNCj4gKw0KPiArCXJjdV9yZWFk
+X2xvY2soKTsNCj4gKwlzdXNwZW5kX29wcCA9IGRldl9wbV9vcHBfZ2V0X3N1c3BlbmRfb3BwKGRl
+dik7DQo+ICsJaWYgKHN1c3BlbmRfb3BwKQ0KPiArCQlkZXZmcmVxLT5zdXNwZW5kX2ZyZXEgPSBk
+ZXZfcG1fb3BwX2dldF9mcmVxKHN1c3BlbmRfb3BwKTsNCj4gKwlyY3VfcmVhZF91bmxvY2soKTsN
+Cj4gK30NCj4gK0VYUE9SVF9TWU1CT0woZGV2ZnJlcV9vcHBfZ2V0X3N1c3BlbmRfb3BwKTsNCj4g
+Kw0KDQpXaHkgZG8gd2UgbmVlZCB0aGlzIGZ1bmN0aW9uPw0KDQpUaGlzIGNvdWxkIGJlIGRvbmUg
+YXQgdGhlIGluaXQgdGltZSAoZGV2ZnJlcV9hZGRfZGV2aWNlKS4NCg0KUGx1cywgd2hlbiBpdCBk
+b2VzIG5vdCBoYXZlIGRldl9wbV9vcHBfZ2V0X3N1c3BlbmRfb3BwKCkgYXZhaWxhYmxlLA0KDQo+
+ICAvKioNCj4gICAqIGRldmZyZXFfcmVnaXN0ZXJfb3BwX25vdGlmaWVyKCkgLSBIZWxwZXIgZnVu
+Y3Rpb24gdG8gZ2V0IGRldmZyZXEgbm90aWZpZWQNCj4gICAqCQkJCSAgIGZvciBhbnkgY2hhbmdl
+cyBpbiB0aGUgT1BQIGF2YWlsYWJpbGl0eQ0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVx
+L2dvdmVybm9yX3NpbXBsZW9uZGVtYW5kLmMgYi9kcml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2lt
+cGxlb25kZW1hbmQuYw0KPiBpbmRleCBhZTcyYmE1Li5hM2VmZWUwIDEwMDY0NA0KPiAtLS0gYS9k
+cml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiArKysgYi9kcml2ZXJz
+L2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiBAQCAtMjksNiArMjksMTUgQEAg
+c3RhdGljIGludCBkZXZmcmVxX3NpbXBsZV9vbmRlbWFuZF9mdW5jKHN0cnVjdCBkZXZmcmVxICpk
+ZiwNCj4gIAlzdHJ1Y3QgZGV2ZnJlcV9zaW1wbGVfb25kZW1hbmRfZGF0YSAqZGF0YSA9IGRmLT5k
+YXRhOw0KPiAgCXVuc2lnbmVkIGxvbmcgbWF4ID0gKGRmLT5tYXhfZnJlcSkgPyBkZi0+bWF4X2Zy
+ZXEgOiBVSU5UX01BWDsNCj4gIA0KPiArCS8qDQo+ICsJICogaWYgZGV2ZnJlcSBpbiBzdXNwZW5k
+IHN0YXR1cyBhbmQgaGF2ZSBzdXNwZW5kX2ZyZXEsDQo+ICsJICogdGhlIGZyZXF1ZW5jeSBuZWVk
+IHRvIHNldCB0byBzdXNwZW5kX2ZyZXENCj4gKwkgKi8NCj4gKwlpZiAoZGYtPnN0b3BfcG9sbGlu
+ZyAmJiBkZi0+c3VzcGVuZF9mcmVxKSB7DQo+ICsJCSpmcmVxID0JZGYtPnN1c3BlbmRfZnJlcTsN
+Cj4gKwkJcmV0dXJuIDA7DQo+ICsJfQ0KPiArDQoNCldoeSBhcmUgeW91IGFkZGluZyB0aGlzPyAi
+U3RvcCBwb2xsaW5nIiBkb2VzIG5vdCBuZWNlc3NhcmlseSBtZWFuIHRoYXQNCndlIGFyZSBkb2lu
+ZyBzdXNwZW5kLXRvLVJBTS9kaXNrLiBJdCBtYXkgcmVhbGx5IG1lYW4ganVzdCB0byBzdG9wIGF0
+DQp0aGUgY3VycmVudCBmcmVxdWVuY3kuDQoNCg0KQ2hlZXJzLA0KTXl1bmdKb28NCg0K
+------=_Part_458816_470645723.1478570818491--
