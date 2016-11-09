@@ -1,27 +1,29 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 12/13] ARM64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max"
-Date: Wed, 09 Nov 2016 15:37:17 +0100
-Message-ID: <8752381.WGgomIQVST@phil>
-References: <20161103062135.10697-1-jh80.chung@samsung.com> <20161103062135.10697-13-jh80.chung@samsung.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next 0/4] stmmac: dwmac-rk: convert to standard
+ PM/remove functions
+Date: Wed, 09 Nov 2016 13:21:40 -0500 (EST)
+Message-ID: <20161109.132140.1147308599056185241.davem@davemloft.net>
+References: <20161105130452.24226-1-manabian@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20161103062135.10697-13-jh80.chung@samsung.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, robh+dt@kernel.org, krzk@kernel.org, shawn.lin@rock-chips.com
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20161105130452.24226-1-manabian@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: manabian@gmail.com
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, vpalatin@chromium.org, peppe.cavallaro@st.com, netdev@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 3. November 2016, 15:21:34 CET schrieb Jaehoon Chung:
-> In drivers/mmc/core/host.c, there is "max-freqeuncy" property.
-> It should be same behavior, So Use the "max-frequency" instead of
-> "clock-freq-min-max".
+From: Joachim Eastwood <manabian@gmail.com>
+Date: Sat,  5 Nov 2016 14:04:48 +0100
+
+> This patch set aims to remove the init/exit callbacks from the 
+> dwmac-rk driver and instead use standard PM callbacks. Eventually
+> the init/exit callbacks will be deprecated and removed from all
+> drivers dwmac-* except for dwmac-generic. Drivers will be refactored
+> to use standard PM and remove callbacks.
 > 
-> Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+> This conversion was pretty straight forward, but it would really nice
+> if some chromium people could test suspend/resume with this patch set.
 
-applied to my dts64 branch for 4.10
-
-
-Thanks
-Heiko
+Series applied, thank you.
