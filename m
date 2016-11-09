@@ -1,17 +1,25 @@
 From: ayaka <ayaka@soulik.info>
 Subject: Re: [PATCH] drm/rockchip: analogix_dp: add supports for regulators in
  edp IP
-Date: Wed, 9 Nov 2016 22:08:42 +0800
-Message-ID: <47328a44-617b-b0a8-2006-c5d3c835a0d8@soulik.info>
+Date: Wed, 9 Nov 2016 22:10:58 +0800
+Message-ID: <050e7c65-0c48-01d3-a8b7-a4a20b795f5e@soulik.info>
 References: <1477163933-13140-1-git-send-email-ayaka@soulik.info>
  <6d050f06-996f-5ecc-20f9-587299ee34c7@rock-chips.com>
  <16dfbe16-eae7-8da9-4108-07e623210d35@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <16dfbe16-eae7-8da9-4108-07e623210d35@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Randy Li <randy.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, dri-devel@lists.freedesktop.org
 Cc: heiko@sntech.de, airlied@linux.ie, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
