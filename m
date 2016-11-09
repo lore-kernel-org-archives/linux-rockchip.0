@@ -1,117 +1,113 @@
-From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
-Subject: =?UTF-8?B?UkU6IFtQQVRDSCB2NF0gUE0vZGV2ZnJlcTogYWRkIHN1c3Bl?=
- =?UTF-8?B?bmQgZnJlcXVlbmN5IHN1cHBvcnQ=?=
-Date: Wed, 09 Nov 2016 01:53:37 +0000
-Message-ID: <851217549.619875.1478656417915.JavaMail.weblogic@ep2ml103c>
-References: <CGME20161108091840epcas3p21af60a1b0a4867306366633427567dc3@epcas3p2.samsung.com>
-Reply-To: myungjoo.ham@samsung.com
-Mime-Version: 1.0
-Content-Type: multipart/related;
- boundary="----=_Part_619874_1729843805.1478656417915"
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: =?UTF-8?B?TGluIEh1YW5n?= <hl@rock-chips.com>
-Cc: =?UTF-8?B?Q2hhbndvbyBDaG9p?= <cw00.choi@samsung.com>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chromium.org>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>, =?UTF-8?B?bGludXgtcG1Admdlci5rZXJuZWwub3Jn?= <linux-pm@vger.kernel.org>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn?= <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?= <linux-kernel@vger.kernel.org>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH v6] PM/devfreq: add suspend frequency support
+Date: Wed,  9 Nov 2016 11:37:45 +0800
+Message-ID: <1478662665-6357-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: myungjoo.ham@samsung.com
+Cc: cw00.choi@samsung.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, dbasehore@chromium.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-------=_Part_619874_1729843805.1478656417915
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"
+Add suspend frequency support and if needed set it to
+the frequency obtained from the suspend opp (can be defined
+using opp-v2 bindings and is optional).
 
-PiBBZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydCBhbmQgaWYgbmVlZGVkIHNldCBpdCB0bw0K
-PiB0aGUgZnJlcXVlbmN5IG9idGFpbmVkIGZyb20gdGhlIHN1c3BlbmQgb3BwIChjYW4gYmUgZGVm
-aW5lZA0KPiB1c2luZyBvcHAtdjIgYmluZGluZ3MgYW5kIGlzIG9wdGlvbmFsKS4NCj4gDQo+IFNp
-Z25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+DQo+IC0tLQ0KPiBDaGFu
-Z2VzIGluIHYyOg0KPiAtIHVzZSB1cGRhdGVfZGV2ZnJlcSgpIGluc3RlYWQgZGV2ZnJlcV91cGRh
-dGVfc3RhdHVzKCkNCj4gQ2hhbmdlcyBpbiB2MzoNCj4gLSBmaXggYnVpbGQgZXJyb3INCj4gQ2hh
-bmdlcyBpbiB2NDoNCj4gLSBtb3ZlIGRldl9wbV9vcHBfZ2V0X3N1c3BlbmRfb3BwKCkgdG8gZGV2
-ZnJlcV9hZGRfZGV2aWNlKCkNCj4gDQo+ICBkcml2ZXJzL2RldmZyZXEvZGV2ZnJlcS5jICAgICAg
-ICAgICAgICAgICB8IDE1ICsrKysrKysrKysrKystLQ0KPiAgZHJpdmVycy9kZXZmcmVxL2dvdmVy
-bm9yX3NpbXBsZW9uZGVtYW5kLmMgfCAgOSArKysrKysrKysNCj4gIGluY2x1ZGUvbGludXgvZGV2
-ZnJlcS5oICAgICAgICAgICAgICAgICAgIHwgIDkgKysrKysrKysrDQo+ICAzIGZpbGVzIGNoYW5n
-ZWQsIDMxIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9kZXZmcmVxL2RldmZyZXEuYyBiL2RyaXZlcnMvZGV2ZnJlcS9kZXZmcmVxLmMNCj4g
-aW5kZXggYmYzZWE3Ni4uZDlkNTZlMSAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9kZXZmcmVxL2Rl
-dmZyZXEuYw0KPiArKysgYi9kcml2ZXJzL2RldmZyZXEvZGV2ZnJlcS5jDQo+IEBAIC0zNjMsNyAr
-MzYzLDEwIEBAIHZvaWQgZGV2ZnJlcV9tb25pdG9yX3N1c3BlbmQoc3RydWN0IGRldmZyZXEgKmRl
-dmZyZXEpDQo+ICAJCW11dGV4X3VubG9jaygmZGV2ZnJlcS0+bG9jayk7DQo+ICAJCXJldHVybjsN
-Cj4gIAl9DQo+IC0NCj4gKwlpZiAoZGV2ZnJlcS0+c3VzcGVuZF9mcmVxKSB7DQo+ICsJCXVwZGF0
-ZV9kZXZmcmVxKGRldmZyZXEpOw0KPiArCQlkZXZmcmVxLT5zdXNwZW5kX2ZsYWcgPSB0cnVlOw0K
-DQorCX0gZWxzZSB7DQorIAkJZGV2ZnJlcV91cGRhdGVfc3RhdHVzKGRldmZyZXEsIGRldmZyZXEt
-PnByZXZpb3VzX2ZyZXEpOw0KKwl9DQotICAgCWRldmZyZXFfdXBkYXRlX3N0YXR1cyhkZXZmcmVx
-LCBkZXZmcmVxLT5wcmV2aW91c19mcmVxKTsNCg0KdXBkYXRlX2RldmZyZXEoKSBjYWxscyBkZXZm
-cmVxX3VwZGF0ZV9zdGF0dXMuDQpTbyBsZXQncyBjYWxsIGl0IG9ubHkgd2hlbiB1cGRhdGVfZGV2
-ZnJlcSBpcyBub3QgY2FsbGVkLg0KDQo+ICAJZGV2ZnJlcS0+c3RvcF9wb2xsaW5nID0gdHJ1ZTsN
-Cj4gIAltdXRleF91bmxvY2soJmRldmZyZXEtPmxvY2spOw0KPiBAQCAtMzk0LDcgKzM5Nyw4IEBA
-IHZvaWQgZGV2ZnJlcV9tb25pdG9yX3Jlc3VtZShzdHJ1Y3QgZGV2ZnJlcSAqZGV2ZnJlcSkNCj4g
-IA0KPiAgCWRldmZyZXEtPmxhc3Rfc3RhdF91cGRhdGVkID0gamlmZmllczsNCj4gIAlkZXZmcmVx
-LT5zdG9wX3BvbGxpbmcgPSBmYWxzZTsNCj4gLQ0KPiArCWlmIChkZXZmcmVxLT5zdXNwZW5kX2Zy
-ZXEpDQo+ICsJCWRldmZyZXEtPnN1c3BlbmRfZmxhZyA9IGZhbHNlOw0KPiAgCWlmIChkZXZmcmVx
-LT5wcm9maWxlLT5nZXRfY3VyX2ZyZXEgJiYNCj4gIAkJIWRldmZyZXEtPnByb2ZpbGUtPmdldF9j
-dXJfZnJlcShkZXZmcmVxLT5kZXYucGFyZW50LCAmZnJlcSkpDQo+ICAJCWRldmZyZXEtPnByZXZp
-b3VzX2ZyZXEgPSBmcmVxOw0KPiBAQCAtNTI4LDYgKzUzMiw3IEBAIHN0cnVjdCBkZXZmcmVxICpk
-ZXZmcmVxX2FkZF9kZXZpY2Uoc3RydWN0IGRldmljZSAqZGV2LA0KPiAgCXN0cnVjdCBkZXZmcmVx
-ICpkZXZmcmVxOw0KPiAgCXN0cnVjdCBkZXZmcmVxX2dvdmVybm9yICpnb3Zlcm5vcjsNCj4gIAlp
-bnQgZXJyID0gMDsNCj4gKwlzdHJ1Y3QgZGV2X3BtX29wcCAqc3VzcGVuZF9vcHA7DQo+ICANCj4g
-IAlpZiAoIWRldiB8fCAhcHJvZmlsZSB8fCAhZ292ZXJub3JfbmFtZSkgew0KPiAgCQlkZXZfZXJy
-KGRldiwgIiVzOiBJbnZhbGlkIHBhcmFtZXRlcnMuXG4iLCBfX2Z1bmNfXyk7DQo+IEBAIC01NjMs
-NiArNTY4LDEyIEBAIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxX2FkZF9kZXZpY2Uoc3RydWN0IGRl
-dmljZSAqZGV2LA0KPiAgCWRldmZyZXEtPmRhdGEgPSBkYXRhOw0KPiAgCWRldmZyZXEtPm5iLm5v
-dGlmaWVyX2NhbGwgPSBkZXZmcmVxX25vdGlmaWVyX2NhbGw7DQo+ICANCj4gKwlyY3VfcmVhZF9s
-b2NrKCk7DQo+ICsJc3VzcGVuZF9vcHAgPSBkZXZfcG1fb3BwX2dldF9zdXNwZW5kX29wcChkZXYp
-Ow0KPiArCWlmIChzdXNwZW5kX29wcCkNCj4gKwkJZGV2ZnJlcS0+c3VzcGVuZF9mcmVxID0gZGV2
-X3BtX29wcF9nZXRfZnJlcShzdXNwZW5kX29wcCk7DQo+ICsJcmN1X3JlYWRfdW5sb2NrKCk7DQo+
-ICsNCj4gIAlpZiAoIWRldmZyZXEtPnByb2ZpbGUtPm1heF9zdGF0ZSAmJiAhZGV2ZnJlcS0+cHJv
-ZmlsZS0+ZnJlcV90YWJsZSkgew0KPiAgCQltdXRleF91bmxvY2soJmRldmZyZXEtPmxvY2spOw0K
-PiAgCQlkZXZmcmVxX3NldF9mcmVxX3RhYmxlKGRldmZyZXEpOw0KPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9kZXZmcmVxL2dvdmVybm9yX3NpbXBsZW9uZGVtYW5kLmMgYi9kcml2ZXJzL2RldmZyZXEv
-Z292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiBpbmRleCBhZTcyYmE1Li44NGIzY2UxIDEwMDY0
-NA0KPiAtLS0gYS9kcml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiAr
-KysgYi9kcml2ZXJzL2RldmZyZXEvZ292ZXJub3Jfc2ltcGxlb25kZW1hbmQuYw0KPiBAQCAtMjks
-NiArMjksMTUgQEAgc3RhdGljIGludCBkZXZmcmVxX3NpbXBsZV9vbmRlbWFuZF9mdW5jKHN0cnVj
-dCBkZXZmcmVxICpkZiwNCj4gIAlzdHJ1Y3QgZGV2ZnJlcV9zaW1wbGVfb25kZW1hbmRfZGF0YSAq
-ZGF0YSA9IGRmLT5kYXRhOw0KPiAgCXVuc2lnbmVkIGxvbmcgbWF4ID0gKGRmLT5tYXhfZnJlcSkg
-PyBkZi0+bWF4X2ZyZXEgOiBVSU5UX01BWDsNCj4gIA0KPiArCS8qDQo+ICsJICogaWYgZGV2ZnJl
-cSBpbiBzdXNwZW5kIHN0YXR1cyBhbmQgaGF2ZSBzdXNwZW5kX2ZyZXEsDQo+ICsJICogdGhlIGZy
-ZXF1ZW5jeSBuZWVkIHRvIHNldCB0byBzdXNwZW5kX2ZyZXENCj4gKwkgKi8NCj4gKwlpZiAoZGYt
-PnN1c3BlbmRfZmxhZykgew0KPiArCQkqZnJlcSA9CWRmLT5zdXNwZW5kX2ZyZXE7DQo+ICsJCXJl
-dHVybiAwOw0KPiArCX0NCj4gKw0KDQpJZiB0aGlzIGlzIGJlY2F1c2Ugb2YgdGhlIGNhc2Ugd2hl
-biBkZXZmcmVxX3NpbXBsZV9vbmRlbWFuZF9mdW5jKCkgaXMgY2FsbGVkDQpiZWZvcmUgY2FuY2Vs
-X2RlbGF5ZWRfd29ya19zeW5jKCkgaW4gZGV2ZnJlcV9tb25pdG9yX3N1c3BlbmQoKSBhbmQNCmFm
-dGVyIHVwZGF0ZV9kZXZmcmVxKCkgaW4gZGV2ZnJlcV9tb25pdG9yX3N1c3BlbmQoKSwNCnlvdSBj
-YW4gdXNlIGRldmZyZXEtPnN0b3BfcG9sbGluZyAoYW5kIG1vdmUgZGV2ZnJlcS0+c3RvcF9wb2xs
-aW5nID0gdHJ1ZTsgYSBiaXQgZWFybGllcikuDQoNCllvdSBkbyBub3QgbmVlZCB0byBpbnRyb2R1
-Y2UgeWV0IGFub3RoZXIgdmFyaWFibGUsIHN1c3BlbmRfZmxhZywgaW4gdGhlIGRldmZyZXEgc3Ry
-dWN0Lg0KDQpUaGUgc2VtYW50aWNzIG9mICJzdG9wX3BvbGxpbmciIGZpdHMgdGhlIHB1cnBvc2Ug
-d2VsbCBlbm91Z2guDQoNCj4gIAllcnIgPSBkZXZmcmVxX3VwZGF0ZV9zdGF0cyhkZik7DQo+ICAJ
-aWYgKGVycikNCj4gIAkJcmV0dXJuIGVycjsNCj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbGludXgv
-ZGV2ZnJlcS5oIGIvaW5jbHVkZS9saW51eC9kZXZmcmVxLmgNCj4gaW5kZXggMmRlNGUyZS4uYzQ2
-M2FlMSAxMDA2NDQNCj4gLS0tIGEvaW5jbHVkZS9saW51eC9kZXZmcmVxLmgNCj4gKysrIGIvaW5j
-bHVkZS9saW51eC9kZXZmcmVxLmgNCj4gQEAgLTE3Miw2ICsxNzIsNyBAQCBzdHJ1Y3QgZGV2ZnJl
-cSB7DQo+ICAJc3RydWN0IGRlbGF5ZWRfd29yayB3b3JrOw0KPiAgDQo+ICAJdW5zaWduZWQgbG9u
-ZyBwcmV2aW91c19mcmVxOw0KPiArCXVuc2lnbmVkIGxvbmcgc3VzcGVuZF9mcmVxOw0KPiAgCXN0
-cnVjdCBkZXZmcmVxX2Rldl9zdGF0dXMgbGFzdF9zdGF0dXM7DQo+ICANCj4gIAl2b2lkICpkYXRh
-OyAvKiBwcml2YXRlIGRhdGEgZm9yIGdvdmVybm9ycyAqLw0KPiBAQCAtMTc5LDYgKzE4MCw3IEBA
-IHN0cnVjdCBkZXZmcmVxIHsNCj4gIAl1bnNpZ25lZCBsb25nIG1pbl9mcmVxOw0KPiAgCXVuc2ln
-bmVkIGxvbmcgbWF4X2ZyZXE7DQo+ICAJYm9vbCBzdG9wX3BvbGxpbmc7DQo+ICsJYm9vbCBzdXNw
-ZW5kX2ZsYWc7DQo+ICANCj4gIAkvKiBpbmZvcm1hdGlvbiBmb3IgZGV2aWNlIGZyZXF1ZW5jeSB0
-cmFuc2l0aW9uICovDQo+ICAJdW5zaWduZWQgaW50IHRvdGFsX3RyYW5zOw0KPiBAQCAtMjE0LDYg
-KzIxNiw4IEBAIGV4dGVybiBpbnQgZGV2ZnJlcV9yZXN1bWVfZGV2aWNlKHN0cnVjdCBkZXZmcmVx
-ICpkZXZmcmVxKTsNCj4gIC8qIEhlbHBlciBmdW5jdGlvbnMgZm9yIGRldmZyZXEgdXNlciBkZXZp
-Y2UgZHJpdmVyIHdpdGggT1BQLiAqLw0KPiAgZXh0ZXJuIHN0cnVjdCBkZXZfcG1fb3BwICpkZXZm
-cmVxX3JlY29tbWVuZGVkX29wcChzdHJ1Y3QgZGV2aWNlICpkZXYsDQo+ICAJCQkJCSAgIHVuc2ln
-bmVkIGxvbmcgKmZyZXEsIHUzMiBmbGFncyk7DQo+ICtleHRlcm4gdm9pZCBkZXZmcmVxX29wcF9n
-ZXRfc3VzcGVuZF9vcHAoc3RydWN0IGRldmljZSAqZGV2LA0KPiArCQkJCQlzdHJ1Y3QgZGV2ZnJl
-cSAqZGV2ZnJlcSk7DQoNCk5vIG1vcmUgcmVxdWlyZWQuDQoNCj4gIGV4dGVybiBpbnQgZGV2ZnJl
-cV9yZWdpc3Rlcl9vcHBfbm90aWZpZXIoc3RydWN0IGRldmljZSAqZGV2LA0KPiAgCQkJCQkgc3Ry
-dWN0IGRldmZyZXEgKmRldmZyZXEpOw0KPiAgZXh0ZXJuIGludCBkZXZmcmVxX3VucmVnaXN0ZXJf
-b3BwX25vdGlmaWVyKHN0cnVjdCBkZXZpY2UgKmRldiwNCj4gQEAgLTM0OCw2ICszNTIsMTEgQEAg
-c3RhdGljIGlubGluZSBzdHJ1Y3QgZGV2X3BtX29wcCAqZGV2ZnJlcV9yZWNvbW1lbmRlZF9vcHAo
-c3RydWN0IGRldmljZSAqZGV2LA0KPiAgCXJldHVybiBFUlJfUFRSKC1FSU5WQUwpOw0KPiAgfQ0K
-PiAgDQo+ICtzdGF0aWMgaW5saW5lIHZvaWQgZGV2ZnJlcV9vcHBfZ2V0X3N1c3BlbmRfb3BwKHN0
-cnVjdCBkZXZpY2UgKmRldiwNCj4gKwkJCQkJICAgICAgIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVx
-KQ0KPiArew0KPiArfQ0KPiArDQoNCk5vIG1vcmUgcmVxdWlyZWQuDQoNCj4gIHN0YXRpYyBpbmxp
-bmUgaW50IGRldmZyZXFfcmVnaXN0ZXJfb3BwX25vdGlmaWVyKHN0cnVjdCBkZXZpY2UgKmRldiwN
-Cj4gIAkJCQkJIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxKQ0KPiAgew0KPiAtLSANCj4gMi42LjYN
-Cj4gDQo+IA0KPiANCg==
-------=_Part_619874_1729843805.1478656417915--
+Signed-off-by: Lin Huang <hl@rock-chips.com>
+---
+Changes in v2:
+- use update_devfreq() instead devfreq_update_status()
+Changes in v3:
+- fix build error
+Changes in v4:
+- move dev_pm_opp_get_suspend_opp() to devfreq_add_device()
+Changes in v5:
+- delete devfreq_opp_get_suspend_opp() in devfreq.h
+Changes in v6:
+- return to use stop_polling check suspend status
+
+ drivers/devfreq/devfreq.c                 | 14 +++++++++++---
+ drivers/devfreq/governor_simpleondemand.c |  9 +++++++++
+ include/linux/devfreq.h                   |  1 +
+ 3 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
+index da72d97..cfa64a0 100644
+--- a/drivers/devfreq/devfreq.c
++++ b/drivers/devfreq/devfreq.c
+@@ -359,9 +359,11 @@ void devfreq_monitor_suspend(struct devfreq *devfreq)
+ 		mutex_unlock(&devfreq->lock);
+ 		return;
+ 	}
+-
+-	devfreq_update_status(devfreq, devfreq->previous_freq);
+ 	devfreq->stop_polling = true;
++	if (devfreq->suspend_freq)
++		update_devfreq(devfreq);
++	else
++		devfreq_update_status(devfreq, devfreq->previous_freq);
+ 	mutex_unlock(&devfreq->lock);
+ 	cancel_delayed_work_sync(&devfreq->work);
+ }
+@@ -390,7 +392,6 @@ void devfreq_monitor_resume(struct devfreq *devfreq)
+ 
+ 	devfreq->last_stat_updated = jiffies;
+ 	devfreq->stop_polling = false;
+-
+ 	if (devfreq->profile->get_cur_freq &&
+ 		!devfreq->profile->get_cur_freq(devfreq->dev.parent, &freq))
+ 		devfreq->previous_freq = freq;
+@@ -524,6 +525,7 @@ struct devfreq *devfreq_add_device(struct device *dev,
+ 	struct devfreq *devfreq;
+ 	struct devfreq_governor *governor;
+ 	int err = 0;
++	struct dev_pm_opp *suspend_opp;
+ 
+ 	if (!dev || !profile || !governor_name) {
+ 		dev_err(dev, "%s: Invalid parameters.\n", __func__);
+@@ -558,6 +560,12 @@ struct devfreq *devfreq_add_device(struct device *dev,
+ 	devfreq->data = data;
+ 	devfreq->nb.notifier_call = devfreq_notifier_call;
+ 
++	rcu_read_lock();
++	suspend_opp = dev_pm_opp_get_suspend_opp(dev);
++	if (suspend_opp)
++		devfreq->suspend_freq = dev_pm_opp_get_freq(suspend_opp);
++	rcu_read_unlock();
++
+ 	if (!devfreq->profile->max_state && !devfreq->profile->freq_table) {
+ 		mutex_unlock(&devfreq->lock);
+ 		devfreq_set_freq_table(devfreq);
+diff --git a/drivers/devfreq/governor_simpleondemand.c b/drivers/devfreq/governor_simpleondemand.c
+index ae72ba5..b82f089 100644
+--- a/drivers/devfreq/governor_simpleondemand.c
++++ b/drivers/devfreq/governor_simpleondemand.c
+@@ -29,6 +29,15 @@ static int devfreq_simple_ondemand_func(struct devfreq *df,
+ 	struct devfreq_simple_ondemand_data *data = df->data;
+ 	unsigned long max = (df->max_freq) ? df->max_freq : UINT_MAX;
+ 
++	/*
++	 * if devfreq in suspend status and have suspend_freq,
++	 * the frequency need to set to suspend_freq
++	 */
++	if (df->stop_polling) {
++		*freq =	df->suspend_freq;
++		return 0;
++	}
++
+ 	err = devfreq_update_stats(df);
+ 	if (err)
+ 		return err;
+diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
+index 98c6993..517e394 100644
+--- a/include/linux/devfreq.h
++++ b/include/linux/devfreq.h
+@@ -172,6 +172,7 @@ struct devfreq {
+ 	struct delayed_work work;
+ 
+ 	unsigned long previous_freq;
++	unsigned long suspend_freq;
+ 	struct devfreq_dev_status last_status;
+ 
+ 	void *data; /* private data for governors */
+-- 
+2.6.6
