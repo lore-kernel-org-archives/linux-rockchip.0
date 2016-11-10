@@ -1,80 +1,97 @@
-From: wlf <wulf@rock-chips.com>
-Subject: Re: [PATCH] phy: rockchip-inno-usb2: correct 480MHz output clock
- stable time
-Date: Thu, 10 Nov 2016 10:54:49 +0800
-Message-ID: <9eeb3d84-f850-4b76-ce6a-67cc92d6de3b@rock-chips.com>
-References: <1478523658-9400-1-git-send-email-wulf@rock-chips.com>
- <CAD=FV=VC15_QAs7+DOoqCeWrU6-qqnUku2SSPFLOvLanu8xL3g@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VC15_QAs7+DOoqCeWrU6-qqnUku2SSPFLOvLanu8xL3g@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@google.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, Brian Norris <briannorris@google.com>, Guenter Roeck <groeck@google.com>, Matthias Kaehlcke <mka@chromium.org>, linux-clk <linux-clk@vger.kernel.org>
+From: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 00/30] usb: dwc2: Gadget descriptor DMA and IOT
+Date: Wed, 09 Nov 2016 19:27:36 -0800
+Message-ID: <cover.1478748145.git.johnyoun@synopsys.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Vardan Mikayelyan <mvardan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Vahram Aharonyan <vahrama-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+This series implements gadget-side descriptor DMA for the DWC_hsotg
+controller.
 
-在 2016年11月10日 04:54, Doug Anderson 写道:
-> Hi,
->
-> On Mon, Nov 7, 2016 at 5:00 AM, William Wu <wulf@rock-chips.com> wrote:
->> We found that the system crashed due to 480MHz output clock of
->> USB2 PHY was unstable after clock had been enabled by gpu module.
->>
->> Theoretically, 1 millisecond is a critical value for 480MHz
->> output clock stable time, so we try to change the delay time
->> to 1.2 millisecond to avoid this issue.
->>
->> Signed-off-by: William Wu <wulf@rock-chips.com>
->> ---
->>   drivers/phy/phy-rockchip-inno-usb2.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
->> index ecfd7d1..8f2d2b6 100644
->> --- a/drivers/phy/phy-rockchip-inno-usb2.c
->> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
->> @@ -267,7 +267,7 @@ static int rockchip_usb2phy_clk480m_enable(struct clk_hw *hw)
->>                          return ret;
->>
->>                  /* waitting for the clk become stable */
->> -               mdelay(1);
->> +               udelay(1200);
-> Several people who have seen this patch have expressed concern that a
-> 1.2 ms delay is pretty long for something that's supposed to be
-> "atomic" like a clk_enable().  Consider that someone might call
-> clk_enable() while interrupts are disabled and that a 1.2 ms interrupt
-> latency is not so great.
->
-> It seems like this clock should be moved to be enabled in "prepare"
-> and the "enable" should be a no-op.  This is a functionality change,
-> but I don't think there are any real users for this clock at the
-> moment so it should be fine.
->
-> (of course, the 1 ms latency that existed before this patch was still
-> pretty bad, but ...)
-Thanks a lot for your suggestion.
-I agree with you.  clk_enable() will call spin_lock_irqsave() to disable 
-interrupt, and we add
-more than 1ms in clk_enable may cause big latency.
+It also includes support for DWC USB IOT controllers which use the
+descriptor DMA mode of operation exclusively. These are two new
+device-only USB controller IPs based on DWC_hsotg.
 
-And according to clk_prepare() description:
-  In a simple case, clk_prepare can be used instead of clk_enable to 
-ungate a clk if the
-  operation may sleep.  One example is a clk which is accessed over I2c.
+Tested on HAPS platform with:
+* HSOTG IP version 3.30a
+* FS/LS IOT IP version 1.00a
+* HS IOT IP version 1.00a
 
-So maybe we can remove the clock to clk_prepare.
 
-Hi Heiko, Frank,
-        What  do you think of it?
+v2:
+* Remove the DMA 'enable' bindings and make them autodetected.
+* Add DMA 'disable' bindings to override.
+* Separate out commit to add '__packed' attribute.
+* Don't print errors on -ENOMEM.
+* Remove unnecessary GFP_ATOMIC flags.
+* Remove unnecessary patch removing a WARN_ON.
+* Reorganize and clarify BNA interrupt.
+* Fix issue with enabling STSPHSERCVD interrupt.
 
-Best regards,
-         wulf
->
-> -Doug
->
->
->
+Regards,
+John
+
+
+John Youn (4):
+  usb: dwc2: Deprecate g-use-dma binding
+  usb: dwc2: Update DMA descriptor structure
+  usb: dwc2: Make the DMA descriptor structure packed
+  usb: dwc2: Add bindings to disable gadget DMA modes
+
+Vahram Aharonyan (23):
+  usb: dwc2: gadget: Add descriptor DMA parameter
+  usb: dwc2: gadget: Add DMA descriptor status quadlet fields
+  usb: dwc2: gadget: Add DMA descriptor chains for EP 0
+  usb: dwc2: host: Rename MAX_DMA_DESC_SIZE to HOST_DMA_NBYTES_LIMIT
+  usb: dwc2: gadget: Transfer length limit checking for DDMA
+  usb: dwc2: gadget: Add DDMA chain pointers to dwc2_hsotg_ep structure
+  usb: dwc2: gadget: Add DDMA chain fill and parse functions
+  usb: dwc2: gadget: EP 0 specific DDMA programming
+  usb: dwc2: gadget: DDMA transfer start and complete
+  usb: dwc2: gadget: Fixes for StsPhseRcvd interrupt
+  usb: dwc2: gadget: Start DDMA IN status phase in StsPhseRcvd handler
+  usb: dwc2: gadget: Enable descriptor DMA mode
+  usb: dwc2: gadget: Add DDMA isoc related fields to dwc2_hsotg_ep
+  usb: dwc2: gadget: Fill isoc descriptor and start transfer in DDMA
+  usb: dwc2: gadget: Add completions for DDMA isoc transfers
+  usb: dwc2: gadget: In DDMA keep incompISOOUT and incompISOIN masked
+  usb: dwc2: gadget: Add start and complete calls for DDMA ISOC
+  usb: dwc2: gadget: Enable the BNA interrupt
+  usb: dwc2: gadget: Adjust ISOC OUT request's actual len for DDMA
+  usb: dwc2: gadget: For DDMA parse setup only after SetUp interrupt
+  usb: dwc2: gadget: Correct dwc2_hsotg_ep_stop_xfr() function
+  usb: dwc2: gadget: Disable enabled HW endpoint in
+    dwc2_hsotg_ep_disable
+  usb: dwc2: Add support of dedicated full-speed PHY interface
+
+Vardan Mikayelyan (3):
+  usb: dwc2: gadget: Add IOT device IDs, configure core accordingly
+  usb: dwc2: gadget: Program ep0_mps for LS
+  usb: dwc2: gadget: Add new core parameter for low speed
+
+ Documentation/devicetree/bindings/usb/dwc2.txt |   6 +-
+ arch/arm/boot/dts/rk3036.dtsi                  |   1 -
+ arch/arm/boot/dts/rk3288.dtsi                  |   1 -
+ arch/arm/boot/dts/rk3xxx.dtsi                  |   1 -
+ arch/arm64/boot/dts/hisilicon/hi6220.dtsi      |   1 -
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi       |   1 -
+ drivers/usb/dwc2/core.h                        |  50 +-
+ drivers/usb/dwc2/gadget.c                      | 968 ++++++++++++++++++++++---
+ drivers/usb/dwc2/hcd.c                         |  12 +-
+ drivers/usb/dwc2/hcd.h                         |   2 +-
+ drivers/usb/dwc2/hcd_ddma.c                    |  52 +-
+ drivers/usb/dwc2/hw.h                          |  48 +-
+ drivers/usb/dwc2/params.c                      |  45 +-
+ drivers/usb/dwc2/pci.c                         |   1 -
+ 14 files changed, 1023 insertions(+), 166 deletions(-)
+
+-- 
+2.10.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
