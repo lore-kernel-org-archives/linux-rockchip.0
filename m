@@ -1,36 +1,36 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 6/6] ARM: dts: rockchip: add rockchip RK1108 Evaluation
- board
-Date: Thu, 10 Nov 2016 12:57:38 -0600
-Message-ID: <20161110185738.dyglqkhokc46zd3v@rob-hp-laptop>
-References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
- <1478177039-12257-1-git-send-email-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1478177039-12257-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH] drm/rockchip: return ERR_PTR instead of NULL
+Date: Thu, 10 Nov 2016 22:10:56 +0100
+Message-ID: <1478812256-26189-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: kernel-janitors@vger.kernel.org, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 03, 2016 at 08:43:59PM +0800, Andy Yan wrote:
-> RK1108EVB is designed by Rockchip for CVR field.
-> This patch add basic support for it, which can boot with
-> initramfs into shell.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  Documentation/devicetree/bindings/arm/rockchip.txt |  3 +
->  arch/arm/boot/dts/Makefile                         |  1 +
->  arch/arm/boot/dts/rk1108-evb.dts                   | 69 ++++++++++++++++++++++
->  3 files changed, 73 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
+rockchip_drm_framebuffer_init is only used in one case, in
+rockchip_drm_fbdev.c, where its return value is tested using IS_ERR.  To
+enable propagating the reason for the error, change the definition so that
+it returns an ERR_PTR value.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Problem found with the help of Coccinelle.
+
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index 0f6eda0..01e11bf 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -213,7 +213,7 @@ struct drm_framebuffer *
+ 
+ 	rockchip_fb = rockchip_fb_alloc(dev, mode_cmd, &obj, 1);
+ 	if (IS_ERR(rockchip_fb))
+-		return NULL;
++		return ERR_CAST(rockchip_fb);
+ 
+ 	return &rockchip_fb->fb;
+ }
