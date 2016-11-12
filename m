@@ -1,63 +1,110 @@
-From: =?UTF-8?B?6ZmI6LGq?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/6] Add basic support for support for Rockchip RK1108 SOC
-Date: Sun, 13 Nov 2016 00:02:20 +0800
-Message-ID: <CAFLEztT+mCNqxKnaHYKYwKPPwiBH9fxJEcKAzio6oV0oW81eGw@mail.gmail.com>
-References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
+From: =?UTF-8?B?6ZmI6LGq?= <jacobchen110@gmail.com>
+Subject: Re: [PATCH 2/6] pinctrl: rockchip: add support for rk1108
+Date: Sun, 13 Nov 2016 01:41:21 +0800
+Message-ID: <CAFLEztRW8P4kiPZzVX2jM5UZMZun=TBBCij4B7j2TiesCuJYWA@mail.gmail.com>
+References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com> <1478176470-11956-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1478175975-11779-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1478176470-11956-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, david.wu@rock-chips.com, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-patches 1-5 on rk1108-cvr-v10 board.
-Tested-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-2016-11-03 20:26 GMT+08:00 Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
+2016-11-03 20:34 GMT+08:00 Andy Yan <andy.yan@rock-chips.com>:
+> Add basic support for rk1108 soc
 >
-> RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
-> It is designed for varies application scenario such as car DVR, sports
-> DV, secure camera and UAV camera.
-> This patch series add basic support for it, which can boot a board with
-> initramfs into shell.
-> More new feathers will come soon.
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
 >
+>  drivers/pinctrl/pinctrl-rockchip.c | 27 ++++++++++++++++++++++++++-
+>  1 file changed, 26 insertions(+), 1 deletion(-)
 >
-> Andy Yan (4):
->   pinctrl: rockchip: add support for rk1108
->   ARM: dts: add basic support for Rockchip RK1108 SOC
->   ARM: add low level debug uart for rk1108
->   ARM: dts: rockchip: add rockchip RK1108 Evaluation board
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index 49bf7dc..9f324b1 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -59,6 +59,7 @@
+>  #define GPIO_LS_SYNC           0x60
 >
-> Shawn Lin (2):
->   dt-bindings: rockchip-dw-mshc: add RK1108 dw-mshc description
->   clk: rockchip: add clock controller for rk1108
+>  enum rockchip_pinctrl_type {
+> +       RK1108,
+>         RK2928,
+>         RK3066B,
+>         RK3188,
+> @@ -1123,6 +1124,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+>                 return !(data & BIT(bit))
+>                                 ? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
+>                                 : PIN_CONFIG_BIAS_DISABLE;
+> +       case RK1108:
+>         case RK3188:
+>         case RK3288:
+>         case RK3368:
+> @@ -1169,6 +1171,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
 >
->  Documentation/devicetree/bindings/arm/rockchip.txt |   3 +
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   1 +
->  arch/arm/Kconfig.debug                             |  30 ++
->  arch/arm/boot/dts/Makefile                         |   1 +
->  arch/arm/boot/dts/rk1108-evb.dts                   |  69 +++
->  arch/arm/boot/dts/rk1108.dtsi                      | 420 +++++++++++++++++++
->  arch/arm/mach-rockchip/rockchip.c                  |   1 +
->  drivers/clk/rockchip/Makefile                      |   1 +
->  drivers/clk/rockchip/clk-rk1108.c                  | 463 +++++++++++++++++++++
->  drivers/clk/rockchip/clk.h                         |  14 +
->  drivers/pinctrl/pinctrl-rockchip.c                 |  27 +-
->  include/dt-bindings/clock/rk1108-cru.h             | 308 ++++++++++++++
->  12 files changed, 1337 insertions(+), 1 deletion(-)
->  create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
->  create mode 100644 arch/arm/boot/dts/rk1108.dtsi
->  create mode 100644 drivers/clk/rockchip/clk-rk1108.c
->  create mode 100644 include/dt-bindings/clock/rk1108-cru.h
+>                 spin_unlock_irqrestore(&bank->slock, flags);
+>                 break;
+> +       case RK1108:
+>         case RK3188:
+>         case RK3288:
+>         case RK3368:
+> @@ -1358,6 +1361,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
+>                                         pull == PIN_CONFIG_BIAS_DISABLE);
+>         case RK3066B:
+>                 return pull ? false : true;
+> +       case RK1108:
+>         case RK3188:
+>         case RK3288:
+>         case RK3368:
+> @@ -1385,7 +1389,6 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+>         for (i = 0; i < num_configs; i++) {
+>                 param = pinconf_to_config_param(configs[i]);
+>                 arg = pinconf_to_config_argument(configs[i]);
+> -
+>                 switch (param) {
+>                 case PIN_CONFIG_BIAS_DISABLE:
+>                         rc =  rockchip_set_pull(bank, pin - bank->pin_base,
+> @@ -2455,6 +2458,26 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>         return 0;
+>  }
 >
+> +static struct rockchip_pin_bank rk1108_pin_banks[] = {
+> +       PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
+> +                                            IOMUX_SOURCE_PMU,
+> +                                            IOMUX_SOURCE_PMU,
+> +                                            IOMUX_SOURCE_PMU),
+> +       PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
+> +       PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0, 0, 0, 0),
+> +       PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", 0, 0, 0, 0),
+> +};
+> +
+> +static struct rockchip_pin_ctrl rk1108_pin_ctrl = {
+> +       .pin_banks              = rk1108_pin_banks,
+> +       .nr_banks               = ARRAY_SIZE(rk1108_pin_banks),
+> +       .label                  = "RK1108-GPIO",
+> +       .type                   = RK1108,
+> +       .grf_mux_offset         = 0x10,
+> +       .pmu_mux_offset         = 0x0,
+> +       .pull_calc_reg          = rk3288_calc_pull_reg_and_bit,
+> +};
+> +
+>  static struct rockchip_pin_bank rk2928_pin_banks[] = {
+>         PIN_BANK(0, 32, "gpio0"),
+>         PIN_BANK(1, 32, "gpio1"),
+> @@ -2684,6 +2707,8 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
+>  };
+>
+>  static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+> +       { .compatible = "rockchip,rk1108-pinctrl",
+> +               .data = (void *)&rk1108_pin_ctrl },
+>         { .compatible = "rockchip,rk2928-pinctrl",
+>                 .data = (void *)&rk2928_pin_ctrl },
+>         { .compatible = "rockchip,rk3036-pinctrl",
 > --
 > 2.7.4
 >
 >
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+rk3288_calc_pull_reg_and_bit can't be used directly in rk1108.
+rk1108 have a different PULL_PMU_OFFSET and PULL_OFFSET.
