@@ -1,20 +1,31 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.10
-Date: Sat, 12 Nov 2016 16:30:05 +0100
-Message-ID: <2643672.7kkyv0VVfm@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL 1/3] Rockchip driver changes for 4.10
+Date: Sat, 12 Nov 2016 16:34:17 +0100
+Message-ID: <1698724.ZQnZMjf8xY@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Arnd, Kevin, Olof,
 
-please find below a pull request for rockchip-related clock changes for 4.10.
-Nothing really big stands out this time, so if it looks ok please pull.
+please find below and in the following two mails, Rockchip power-domain as
+well as dts32 and dts64 changes for 4.10.
+
+I don't think anything big stands out, just the usual mix of incremental
+improvements, so if stuff looks ok please pull.
 
 
 Thanks
@@ -27,42 +38,31 @@ The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-clk1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-drivers1
 
-for you to fetch changes up to bf92384b6d729b22916ba832b4a225ca196e98ba:
+for you to fetch changes up to dabc0259db63338f0e64107cc92b2241f98a3284:
 
-  clk: rockchip: Ignore frac divisor for PLL equivalence when it's unused (2016-11-05 23:16:29 +0100)
-
-----------------------------------------------------------------
-PLL initialization for PLLs having both an integral and fractional mode
-(rk3036, rk3399) does now take into account the mode that the PLL is
-actually running at.
-As always also some additional and optimized PLL rates for rk3066 and
-rk3399, some additional clock ids for rk3066 and some additional clocks
-on rk3399 are now sucessfully handled inside their respective driver.
+  soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell (2016-11-11 02:14:59 +0100)
 
 ----------------------------------------------------------------
+Changes to the power-domain driver including counter presets now being set
+by firmware on the rk3399, avoiding infite loops when powering on/off a
+domain and actually returning an error if power-domain addition fails.
+The last part requires usage of the (new in 4.9-rc1) pm_genpd_remove
+functionality as well.
+
+----------------------------------------------------------------
+Caesar Wang (1):
+      soc: rockchip: power-domain: avoid infinite loop
+
+Douglas Anderson (1):
+      soc: rockchip: power-domain: Don't (incorrectly) set rk3399 up/down counts
+
 Heiko Stuebner (1):
-      Merge branch 'v4.10-shared/clkids' into v4.10-clk/next
+      soc: rockchip: power-domain: use pm_genpd_remove in error cleanup
 
-Jianqun Xu (1):
-      clk: rockchip: remove more CLK_IGNORE_UNUSED for rk3399 clocktree
+Tomeu Vizoso (1):
+      soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell
 
-Julius Werner (1):
-      clk: rockchip: Ignore frac divisor for PLL equivalence when it's unused
-
-Paweł Jarosz (3):
-      clk: rockchip: Add binding ids for cpu and peri clocks on rk3066
-      clk: rockchip: Use clock ids for cpu and peri clocks on rk3066
-      clk: rockchip: add 400MHz to rk3066 clock rates table
-
-Xing Zheng (2):
-      clk: rockchip: add 533.25MHz to rk3399 clock rates table
-      clk: rockchip: optimize 800MHz and 1GHz pll rates on RK3399
-
- drivers/clk/rockchip/clk-pll.c                |  6 ++++--
- drivers/clk/rockchip/clk-rk3188.c             | 13 +++++++------
- drivers/clk/rockchip/clk-rk3399.c             | 27 ++++++++++++++-------------
- include/dt-bindings/clock/rk3188-cru-common.h |  8 +++++++-
- 4 files changed, 32 insertions(+), 22 deletions(-)
-
+ drivers/soc/rockchip/pm_domains.c | 81 ++++++++++++++++++++++++++++++---------
+ 1 file changed, 63 insertions(+), 18 deletions(-)
