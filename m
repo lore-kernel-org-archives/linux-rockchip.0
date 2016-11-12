@@ -1,67 +1,63 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 3/3] Rockchip dts64 changes for 4.10
-Date: Sat, 12 Nov 2016 16:36:25 +0100
-Message-ID: <4932547.OPNQihgQS9@phil>
-References: <1698724.ZQnZMjf8xY@phil>
+From: =?UTF-8?B?6ZmI6LGq?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/6] Add basic support for support for Rockchip RK1108 SOC
+Date: Sun, 13 Nov 2016 00:02:20 +0800
+Message-ID: <CAFLEztT+mCNqxKnaHYKYwKPPwiBH9fxJEcKAzio6oV0oW81eGw@mail.gmail.com>
+References: <1478175975-11779-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1698724.ZQnZMjf8xY@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1478175975-11779-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+patches 1-5 on rk1108-cvr-v10 board.
+Tested-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-  Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-dts64-1
-
-for you to fetch changes up to c49590691f3819bb6be3f77938ef39038eb76643:
-
-  arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max" (2016-11-09 15:08:55 +0100)
-
-----------------------------------------------------------------
-64bit devicetree changes including the px5 evaluation board
-a fix for wrong i2c registers on rk3368 a new nvmem cell and
-power-domain on rk3399 as well as moving mmc frequency
-properties to the more generic max-frequency one.
-
-----------------------------------------------------------------
-Andy Yan (2):
-      arm64: dts: rockchip: fix i2c resource error of rk3368
-      arm64: dts: rockchip: Add PX5 Evaluation board
-
-Chris Zhong (1):
-      arm64: dts: rockchip: add powerdomain for typec on rk3399
-
-Jaehoon Chung (1):
-      arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max"
-
-Shawn Lin (2):
-      arm64: dts: rockchip: Add more properties for emmc on px5-evb
-      arm64: dts: rockchip: add sdmmc support for px5-evb
-
-Ziyuan Xu (1):
-      arm64: dts: rockchip: add cpu-id nvmem cell node for rk3399
-
- Documentation/devicetree/bindings/arm/rockchip.txt |   8 +
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |   2 +-
- arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    | 314 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  18 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   9 +-
- 6 files changed, 340 insertions(+), 12 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
+2016-11-03 20:26 GMT+08:00 Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
+>
+> RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
+> It is designed for varies application scenario such as car DVR, sports
+> DV, secure camera and UAV camera.
+> This patch series add basic support for it, which can boot a board with
+> initramfs into shell.
+> More new feathers will come soon.
+>
+>
+> Andy Yan (4):
+>   pinctrl: rockchip: add support for rk1108
+>   ARM: dts: add basic support for Rockchip RK1108 SOC
+>   ARM: add low level debug uart for rk1108
+>   ARM: dts: rockchip: add rockchip RK1108 Evaluation board
+>
+> Shawn Lin (2):
+>   dt-bindings: rockchip-dw-mshc: add RK1108 dw-mshc description
+>   clk: rockchip: add clock controller for rk1108
+>
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   3 +
+>  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   1 +
+>  arch/arm/Kconfig.debug                             |  30 ++
+>  arch/arm/boot/dts/Makefile                         |   1 +
+>  arch/arm/boot/dts/rk1108-evb.dts                   |  69 +++
+>  arch/arm/boot/dts/rk1108.dtsi                      | 420 +++++++++++++++++++
+>  arch/arm/mach-rockchip/rockchip.c                  |   1 +
+>  drivers/clk/rockchip/Makefile                      |   1 +
+>  drivers/clk/rockchip/clk-rk1108.c                  | 463 +++++++++++++++++++++
+>  drivers/clk/rockchip/clk.h                         |  14 +
+>  drivers/pinctrl/pinctrl-rockchip.c                 |  27 +-
+>  include/dt-bindings/clock/rk1108-cru.h             | 308 ++++++++++++++
+>  12 files changed, 1337 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
+>  create mode 100644 arch/arm/boot/dts/rk1108.dtsi
+>  create mode 100644 drivers/clk/rockchip/clk-rk1108.c
+>  create mode 100644 include/dt-bindings/clock/rk1108-cru.h
+>
+> --
+> 2.7.4
+>
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
