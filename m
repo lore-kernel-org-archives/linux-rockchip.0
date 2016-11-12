@@ -1,11 +1,13 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 1/3] Rockchip driver changes for 4.10
-Date: Sat, 12 Nov 2016 16:34:17 +0100
-Message-ID: <1698724.ZQnZMjf8xY@phil>
+Subject: [GIT PULL 2/3] Rockchip dts32 changes for 4.10
+Date: Sat, 12 Nov 2016 16:35:49 +0100
+Message-ID: <2517910.T56YgEDzxC@phil>
+References: <1698724.ZQnZMjf8xY@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1698724.ZQnZMjf8xY@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,50 +21,94 @@ To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
-
-please find below and in the following two mails, Rockchip power-domain as
-well as dts32 and dts64 changes for 4.10.
-
-I don't think anything big stands out, just the usual mix of incremental
-improvements, so if stuff looks ok please pull.
-
-
-Thanks
-Heiko
-
-
-The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
-
-  Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-drivers1
-
-for you to fetch changes up to dabc0259db63338f0e64107cc92b2241f98a3284:
-
-  soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell (2016-11-11 02:14:59 +0100)
-
-----------------------------------------------------------------
-Changes to the power-domain driver including counter presets now being set
-by firmware on the rk3399, avoiding infite loops when powering on/off a
-domain and actually returning an error if power-domain addition fails.
-The last part requires usage of the (new in 4.9-rc1) pm_genpd_remove
-functionality as well.
-
-----------------------------------------------------------------
-Caesar Wang (1):
-      soc: rockchip: power-domain: avoid infinite loop
-
-Douglas Anderson (1):
-      soc: rockchip: power-domain: Don't (incorrectly) set rk3399 up/down counts
-
-Heiko Stuebner (1):
-      soc: rockchip: power-domain: use pm_genpd_remove in error cleanup
-
-Tomeu Vizoso (1):
-      soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell
-
- drivers/soc/rockchip/pm_domains.c | 81 ++++++++++++++++++++++++++++++---------
- 1 file changed, 63 insertions(+), 18 deletions(-)
+VGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCAxMDAxMzU0Y2EzNDE3OWYzZGI5MjRl
+YjY2NjcyNDQyYTE3MzE0N2RjOgoKICBMaW51eCA0LjktcmMxICgyMDE2LTEwLTE1IDEyOjE3OjUw
+IC0wNzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGdpdDov
+L2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2Nr
+Y2hpcC5naXQgdGFncy92NC4xMC1yb2NrY2hpcC1kdHMzMi0xCgpmb3IgeW91IHRvIGZldGNoIGNo
+YW5nZXMgdXAgdG8gNmE4ODgzZDYxNGM3YmVkZTEwNzVhNDg1MDEzOWRhYTk3MjNjMjkxZToKCiAg
+QVJNOiBkdHM6IHJvY2tjaGlwOiByZXBsYWNlIHRvICJtYXgtZnJlcXVlbmN5IiBpbnN0ZWFkIG9m
+ICJjbG9jay1mcmVxLW1pbi1tYXgiICgyMDE2LTExLTA5IDE0OjQ2OjA0ICswMTAwKQoKLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LQozMmJpdCBkZXZpY2V0cmVlIGNoYW5nZXMgZm9yIFJvY2tjaGlwIGluY2x1ZGluZyByZW1vdmFs
+IG9mIHNrZWxldG9uLmR0c2kKaW5jbHVzaW9uLCBtaXNzaW5nIHVuaXQgbmFtZXMgZm9yIG1lbW9y
+eSBub2RlcywgdmFyaW91cyBmcmVxdWVuY3kKb3B0aW1pemF0aW9ucyBhbGxvd2luZyBmb3IgYmV0
+dGVyIHBlcmZvcm1hbmNlIG9uIHJrMzA2NiwgdGhlIHVzYWdlIG9mCnBpbiBjb25zdGFudHMgdG8g
+YnJpZGdlIGJldHdlZW4gdGhlIHR3byBudW1iZXJpbmcgc2NoZW1lcyB1c2VkIChncGlvCmNvbnRy
+b2xsZXJzIHVzaW5nIDAtMzEgYW5kIHBpbnMgYmVpbmcgbGFiZWxlZCBBMC1BNywuLi4sIEQwLUQ3
+KQphbmQgVUhTL0hTIG1vZGVzIGZvciB0aGUgbW1jIGNvbnRyb2xsZXJzIG9uIHRoZSBwb3BtZXRh
+bCBib2FyZC4KClR3byBuZXcgYm9hcmRzLCB0aGUgUFgzLWJhc2VkIGV2YWx1YXRpb24gYm9hcmQs
+IHdpdGggdGhlIFBYMyBiZWluZyBhbgppbmR1c3RyaWFsIHZhcmlhbnQgb2YgdGhlIHJrMzE4OCBz
+b2MgYW5kIHRoZSBSaWtvbWFnaWMgTUs4MDggYm9hcmQKYmFzZWQgYXJvdW5kIHRoZSByazMwNjYg
+YXJlIGFsc28gYWRkZWQuCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkFuZHkgWWFuICgzKToKICAgICAgQVJNOiBkdHM6IHJv
+Y2tjaGlwOiBhZGQgcm9ja2NoaXAgUFgzIEV2YWx1YXRpb24gYm9hcmQKICAgICAgaW5jbHVkZTog
+ZHQtYmluZGluZ3M6IEFkZCBHUElPIHBpbiBpbmRleCBkZWZpbml0aW9uIGZvciByb2NrY2hpcCBw
+aW5jdHJsCiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogdXNlIHBpbiBjb25zdGFudHMgdG8gZGVz
+Y3JpYmUgZ3Bpb3Mgb24gUG9wbWV0YWwtUkszMjg4CgpGaW5sZXkgWGlhbyAoMSk6CiAgICAgIEFS
+TTogZHRzOiByb2NrY2hpcDogdXBkYXRlIGNvbXBhdGlibGUgc3RyaW5ncyBmb3IgUm9ja2NoaXAg
+ZWZ1c2UKCkhlaWtvIFN0dWVibmVyICgyKToKICAgICAgTWVyZ2UgYnJhbmNoICd2NC4xMC1zaGFy
+ZWQvY2xraWRzJyBpbnRvIHY0LjEwLWFybXNvYy9kdHMzMgogICAgICBNZXJnZSBicmFuY2ggJ3Y0
+LjEwLXNoYXJlZC9waW5jdHJsJyBpbnRvIHY0LjEwLWFybXNvYy9kdHMzMgoKSmFlaG9vbiBDaHVu
+ZyAoMSk6CiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogcmVwbGFjZSB0byAibWF4LWZyZXF1ZW5j
+eSIgaW5zdGVhZCBvZiAiY2xvY2stZnJlcS1taW4tbWF4IgoKSmF2aWVyIE1hcnRpbmV6IENhbmls
+bGFzICg4KToKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBSZW1vdmUgc2tlbGV0b24uZHRzaSBp
+bmNsdXNpb24gaW4gcmszMDM2LmR0c2kKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBSZW1vdmUg
+c2tlbGV0b24uZHRzaSBpbmNsdXNpb24gaW4gcmszMjJ4LmR0c2kKICAgICAgQVJNOiBkdHM6IHJv
+Y2tjaGlwOiBSZW1vdmUgc2tlbGV0b24uZHRzaSBpbmNsdXNpb24gaW4gcmszMjg4LmR0c2kKICAg
+ICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBSZW1vdmUgc2tlbGV0b24uZHRzaSBpbmNsdXNpb24gaW4g
+cmszeHh4LmR0c2kKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBBZGQgbWlzc2luZyB1bml0IG5h
+bWUgdG8gbWVtb3J5IG5vZGVzIGluIHJrMzAzNiBib2FyZHMKICAgICAgQVJNOiBkdHM6IHJvY2tj
+aGlwOiBBZGQgbWlzc2luZyB1bml0IG5hbWUgdG8gbWVtb3J5IG5vZGVzIGluIHJrMzIyeCBib2Fy
+ZHMKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBBZGQgbWlzc2luZyB1bml0IG5hbWUgdG8gbWVt
+b3J5IG5vZGVzIGluIHJrMzI4OCBib2FyZHMKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBBZGQg
+bWlzc2luZyB1bml0IG5hbWUgdG8gbWVtb3J5IG5vZGVzIGluIHJrM3h4eCBib2FyZHMKClBhd2XF
+giBKYXJvc3ogKDUpOgogICAgICBjbGs6IHJvY2tjaGlwOiBBZGQgYmluZGluZyBpZHMgZm9yIGNw
+dSBhbmQgcGVyaSBjbG9ja3Mgb24gcmszMDY2CiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogaW5p
+dGlhbGl6ZSByazMwNjYgUExMIGNsb2NrIHJhdGUKICAgICAgZGV2aWNldHJlZTogQWRkIHZlbmRv
+ciBwcmVmaXggZm9yIFJpa29tYWdpYwogICAgICBBUk06IGR0czogcm9ja2NoaXA6IEFkZCByazMw
+NjYgTUs4MDggYm9hcmQKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBTZXQgc2RtbWMgZnJlcXVl
+bmN5IGF0IGJvb3QgdGltZSBmb3IgcmszMDY2YQoKU2hhd24gTGluICgzKToKICAgICAgQVJNOiBk
+dHM6IHJvY2tjaGlwOiByZW1vdmUgYWx3YXlzLW9uIGFuZCBib290LW9uIGZyb20gdmNjX3NkIGZv
+ciBweDMtZXZiCiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogU3VwcG9ydCBVSFMgbW9kZSBmb3Ig
+U0QgY2FyZCBvbiBQb3BNZXRhbC1SSzMyODggYm9hcmQKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlw
+OiBlbmFibGUgSFMyMDAvRERSNTIgbW9kZSBmb3IgZW1tYyBvbiByazMyODgtcG9wbWV0YWwKCiBE
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnR4dCB8ICAgNCAr
+CiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMudHh0ICAgICAgICB8ICAg
+MSArCiBhcmNoL2FybS9ib290L2R0cy9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICB8
+ICAgMiArCiBhcmNoL2FybS9ib290L2R0cy9yazMwMzYtZXZiLmR0cyAgICAgICAgICAgICAgICAg
+ICB8ICAgMiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMDM2LWt5bGluLmR0cyAgICAgICAgICAg
+ICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzAzNi5kdHNpICAgICAgICAgICAg
+ICAgICAgICAgIHwgIDEwICstCiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLWJxY3VyaWUyLmR0
+cyAgICAgICAgICAgICB8ICAgMiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1tYXJzYm9h
+cmQuZHRzICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtbWs4
+MDguZHRzICAgICAgICAgICAgICAgIHwgMTk1ICsrKysrKysrKysrKwogYXJjaC9hcm0vYm9vdC9k
+dHMvcmszMDY2YS1yYXllYWdlci5kdHMgICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jv
+b3QvZHRzL3JrMzA2NmEuZHRzaSAgICAgICAgICAgICAgICAgICAgIHwgIDEyICstCiBhcmNoL2Fy
+bS9ib290L2R0cy9yazMxODgtcHgzLWV2Yi5kdHMgICAgICAgICAgICAgICB8IDMyOCArKysrKysr
+KysrKysrKysrKysrKysKIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC1yYWR4YXJvY2suZHRzICAg
+ICAgICAgICAgIHwgICAyICstCiBhcmNoL2FybS9ib290L2R0cy9yazMxODguZHRzaSAgICAgICAg
+ICAgICAgICAgICAgICB8ICAgMiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjI4LWV2Yi5kdHMg
+ICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzIyOS1ldmIu
+ZHRzICAgICAgICAgICAgICAgICAgIHwgICAyICstCiBhcmNoL2FybS9ib290L2R0cy9yazMyMngu
+ZHRzaSAgICAgICAgICAgICAgICAgICAgICB8ICAgNiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmsz
+Mjg4LWV2Yi5kdHNpICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRz
+L3JrMzI4OC1mZW5uZWMuZHRzICAgICAgICAgICAgICAgIHwgICAyICstCiBhcmNoL2FybS9ib290
+L2R0cy9yazMyODgtZmlyZWZseS1yZWxvYWQtY29yZS5kdHNpICB8ICAgMiArLQogYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaSAgICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gv
+YXJtL2Jvb3QvZHRzL3JrMzI4OC1taXFpLmR0cyAgICAgICAgICAgICAgICAgIHwgICAyICstCiBh
+cmNoL2FybS9ib290L2R0cy9yazMyODgtcG9wbWV0YWwuZHRzICAgICAgICAgICAgICB8ICAzNCAr
+Ky0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1yODkuZHRzICAgICAgICAgICAgICAgICAgIHwg
+ICAyICstCiBhcmNoL2FybS9ib290L2R0cy9yazMyODgtcm9jazItc29tLmR0c2kgICAgICAgICAg
+ICB8ICAgMiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi5kdHNpICAgICAgICAg
+ICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpICAgICAgICAgICAg
+ICAgICAgICAgIHwgIDE0ICstCiBhcmNoL2FybS9ib290L2R0cy9yazN4eHguZHRzaSAgICAgICAg
+ICAgICAgICAgICAgICB8ICAgNCArLQogaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMxODgt
+Y3J1LWNvbW1vbi5oICAgICAgfCAgIDggKy0KIGluY2x1ZGUvZHQtYmluZGluZ3MvcGluY3RybC9y
+b2NrY2hpcC5oICAgICAgICAgICAgIHwgIDMzICsrKwogMzAgZmlsZXMgY2hhbmdlZCwgNjM5IGlu
+c2VydGlvbnMoKyksIDQ2IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzA2NmEtbWs4MDguZHRzCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMTg4LXB4My1ldmIuZHRzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
