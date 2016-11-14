@@ -1,46 +1,68 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RESEND] ARM: dts: rockchip: fix TSADC reset node for rk3066a
-Date: Mon, 14 Nov 2016 00:11:56 +0100
-Message-ID: <1489175.liRG3HopZd@phil>
-References: <CAFYR25XPx4QEu4bVyL2s4=Eqz+7w_Xjw8ZYOYzYsmz3z+rq84A@mail.gmail.com>
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Subject: Re: [PATCH] PM / AVS: rockchip-io: make the log more consistent
+Date: Mon, 14 Nov 2016 01:19:37 +0100
+Message-ID: <1828121.EAG4WFMlqn@vostro.rjw.lan>
+References: <1476103462-7559-1-git-send-email-shawn.lin@rock-chips.com> <1883054.D2Rm2X9N2G@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAFYR25XPx4QEu4bVyL2s4=Eqz+7w_Xjw8ZYOYzYsmz3z+rq84A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1883054.D2Rm2X9N2G@phil>
+Sender: linux-pm-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kevin Hilman <khilman@kernel.org>, Nishanth Menon <nm@ti.com>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGF3ZcWCLAoKQW0gU29ubnRhZywgMTMuIE5vdmVtYmVyIDIwMTYsIDE3OjAyOjM5IENFVCBz
-Y2hyaWViIFBhd2XFgiBKYXJvc3o6Cj4gVGhpcyBwYXRjaCBmaXhlcyBpbmNvcmVjdGx5IGFzc2ln
-bmVkIHJrMzA2NmEgVFNBREMgbm9kZQo+IAo+IFNpZ25lZC1vZmYtYnk6IFBhd2XFgiBKYXJvc3og
-PHBhd2VsamFyb3N6MzY5MUBnbWFpbC5jb20+Cgpib3RoIHBhdGNoZXMgZnJvbSB0b2RheSBsb29r
-IGdvb2QsIGJ1dCB5b3VyIG1haWxlciBzZWVtcyB0byBoYXZlIHNjcmFtYmxlZCB0aGUgCnBhdGNo
-ZXMgd2hlbiBzZW5kaW5nLiBJbnN0ZWFkIG9mIHRhYnMgSSBzZWUgYSBsb3Qgb2Ygc3BhY2VzIGZv
-ciBleGFtcGxlLCB3aGljaCAKb2YgY291cnNlIHJlc3VsdHMgaW4gdGhlIHBhdGNoZXMgbm90IGFw
-cGx5aW5nLgoKCkhlaWtvCgo+IC0tLQo+ICBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kg
-fCAyICstCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+
-IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kgYi9hcmNoL2Fy
-bS9ib290L2R0cy9yazMwNjZhLmR0c2kKPiBpbmRleCBmYzhkY2M3Li5hYzQ2MTA5IDEwMDY0NAo+
-IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaQo+ICsrKyBiL2FyY2gvYXJtL2Jv
-b3QvZHRzL3JrMzA2NmEuZHRzaQo+IEBAIC0yMDUsNyArMjA1LDcgQEAKPiAgICAgICAgICAgICAg
-ICAgY2xvY2stbmFtZXMgPSAic2FyYWRjIiwgImFwYl9wY2xrIjsKPiAgICAgICAgICAgICAgICAg
-aW50ZXJydXB0cyA9IDxHSUNfU1BJIDIxIElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ICAgICAgICAg
-ICAgICAgICAjaW8tY2hhbm5lbC1jZWxscyA9IDwxPjsKPiAtICAgICAgICAgICAgICAgcmVzZXRz
-ID0gPCZjcnUgU1JTVF9TQVJBREM+Owo+ICsgICAgICAgICAgICAgICByZXNldHMgPSA8JmNydSBT
-UlNUX1RTQURDPjsKPiAgICAgICAgICAgICAgICAgcmVzZXQtbmFtZXMgPSAic2FyYWRjLWFwYiI7
-Cj4gICAgICAgICAgICAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gICAgICAgICB9Owo+IC0t
-Cj4gMi43LjQKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+On Monday, October 10, 2016 10:15:50 PM Heiko Stuebner wrote:
+> Am Montag, 10. Oktober 2016, 20:44:22 CEST schrieb Shawn Lin:
+> > When testing SD hotplug automatically, I got bunch of
+> > useless log like this:
+> > 
+> > [  588.357838] mmc0: card 0007 removed
+> > [  589.492664] rockchip-iodomain ff770000.syscon:io-domains: Setting to
+> > 3300000 done [  589.500698] vccio_sd: ramp_delay not set
+> > [  589.504817] rockchip-iodomain ff770000.syscon:io-domains: Setting to
+> > 3300000 done [  589.669705] rockchip-iodomain ff770000.syscon:io-domains:
+> > Setting to 3300000 done [  589.677593] vccio_sd: ramp_delay not set
+> > [  589.681581] rockchip-iodomain ff770000.syscon:io-domains: Setting to
+> > 1800000 done [  590.032820] dwmmc_rockchip ff0c0000.dwmmc: Successfully
+> > tuned phase to 140 [  590.039725] mmc0: new ultra high speed SDR50 SDHC
+> > card at address 0007 [  590.046641] mmcblk0: mmc0:0007 SD32G 29.3 GiB
+> > [  590.052163]  mmcblk0: p1
+> > 
+> > Moreover the code is intent to print the 'uV' for debug but
+> > later print it using dev_info. It looks more like to me that
+> > it should be the real intention of the code. Anyway, let's
+> > mark this verbose log as debug message.
+> > 
+> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> reducing the amount of logs, especially for information not generally needed 
+> looks sane
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> 
+> > ---
+> > 
+> >  drivers/power/avs/rockchip-io-domain.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/power/avs/rockchip-io-domain.c
+> > b/drivers/power/avs/rockchip-io-domain.c index 01b6d3f..56bce19 100644
+> > --- a/drivers/power/avs/rockchip-io-domain.c
+> > +++ b/drivers/power/avs/rockchip-io-domain.c
+> > @@ -143,7 +143,7 @@ static int rockchip_iodomain_notify(struct
+> > notifier_block *nb, if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
+> >  		return NOTIFY_BAD;
+> > 
+> > -	dev_info(supply->iod->dev, "Setting to %d done\n", uV);
+> > +	dev_dbg(supply->iod->dev, "Setting to %d done\n", uV);
+> >  	return NOTIFY_OK;
+> >  }
+> 
+
+Applied (for v4.10).
+
+Thanks,
+Rafael
+
