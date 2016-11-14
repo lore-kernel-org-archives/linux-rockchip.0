@@ -1,81 +1,474 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 07/10] ARM: add low level debug uart for rk1108
-Date: Mon, 14 Nov 2016 20:12:35 +0800
-Message-ID: <1479125555-24465-1-git-send-email-andy.yan@rock-chips.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 08/10] ARM: dts: add basic support for Rockchip RK1108 SOC
+Date: Mon, 14 Nov 2016 20:14:48 +0800
+Message-ID: <1479125688-24528-1-git-send-email-andy.yan@rock-chips.com>
 References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1479124550-24037-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RK1108 UARTs are Synopsis DesignWare 8250 compatible.
-Only with different register addresses.
+RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
+It is designed for varies application scenario such as car DVR, sports
+DV, secure camera and UAV camera.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Jacob Chen <jacob2.chen@rock-chips.com>
+This patch add basic support for it with DMAC / UART / CRU / pinctrl / MMC
+enabled.
+
+Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Tested-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
-Changes in v2: None
+Changes in v2:
+- fix timer and gic dt description
+- ordering devices by register address
 
- arch/arm/Kconfig.debug | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ arch/arm/boot/dts/rk1108.dtsi | 428 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 428 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rk1108.dtsi
 
-diff --git a/arch/arm/Kconfig.debug b/arch/arm/Kconfig.debug
-index d83f7c3..408540f 100644
---- a/arch/arm/Kconfig.debug
-+++ b/arch/arm/Kconfig.debug
-@@ -776,6 +776,30 @@ choice
- 		  their output to the standard serial port on the RealView
- 		  PB1176 platform.
- 
-+	config DEBUG_RK1108_UART0
-+		bool "Kernel low-level debugging messages via Rockchip RK1108 UART0"
-+		depends on ARCH_ROCKCHIP
-+		select DEBUG_UART_8250
-+		help
-+		  Say Y here if you want kernel low-level debugging support
-+                  on Rockchip RK1108 based platforms.
+diff --git a/arch/arm/boot/dts/rk1108.dtsi b/arch/arm/boot/dts/rk1108.dtsi
+new file mode 100644
+index 0000000..636c294
+--- /dev/null
++++ b/arch/arm/boot/dts/rk1108.dtsi
+@@ -0,0 +1,428 @@
++/*
++ * This file is dual-licensed: you can use it either under the terms
++ * of the GPL or the X11 license, at your option. Note that this dual
++ * licensing only applies to this file, and not this project as a
++ * whole.
++ *
++ *  a) This file is free software; you can redistribute it and/or
++ *     modify it under the terms of the GNU General Public License as
++ *     published by the Free Software Foundation; either version 2 of the
++ *     License, or (at your option) any later version.
++ *
++ *     This file is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ * Or, alternatively,
++ *
++ *  b) Permission is hereby granted, free of charge, to any person
++ *     obtaining a copy of this software and associated documentation
++ *     files (the "Software"), to deal in the Software without
++ *     restriction, including without limitation the rights to use,
++ *     copy, modify, merge, publish, distribute, sublicense, and/or
++ *     sell copies of the Software, and to permit persons to whom the
++ *     Software is furnished to do so, subject to the following
++ *     conditions:
++ *
++ *     The above copyright notice and this permission notice shall be
++ *     included in all copies or substantial portions of the Software.
++ *
++ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ *     OTHER DEALINGS IN THE SOFTWARE.
++ */
 +
-+	config DEBUG_RK1108_UART1
-+		bool "Kernel low-level debugging messages via Rockchip RK1108 UART1"
-+		depends on ARCH_ROCKCHIP
-+		select DEBUG_UART_8250
-+		help
-+		  Say Y here if you want kernel low-level debugging support
-+		  on Rockchip RK1108 based platforms.
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/clock/rk1108-cru.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++/ {
++	#address-cells = <1>;
++	#size-cells = <1>;
 +
-+	config DEBUG_RK1108_UART2
-+		bool "Kernel low-level debugging messages via Rockchip RK1108 UART2"
-+		depends on ARCH_ROCKCHIP
-+		select DEBUG_UART_8250
-+		help
-+		  Say Y here if you want kernel low-level debugging support
-+		  on Rockchip RK1108 based platforms.
++	compatible = "rockchip,rk1108";
 +
- 	config DEBUG_RK29_UART0
- 		bool "Kernel low-level debugging messages via Rockchip RK29 UART0"
- 		depends on ARCH_ROCKCHIP
-@@ -1465,6 +1489,9 @@ config DEBUG_UART_PHYS
- 	default 0x10126000 if DEBUG_RK3X_UART1
- 	default 0x101f1000 if DEBUG_VERSATILE
- 	default 0x101fb000 if DEBUG_NOMADIK_UART
-+	default 0x10210000 if DEBUG_RK1108_UART2
-+	default 0x10220000 if DEBUG_RK1108_UART1
-+	default 0x10230000 if DEBUG_RK1108_UART0
- 	default 0x11002000 if DEBUG_MT8127_UART0
- 	default 0x11006000 if DEBUG_MT6589_UART0
- 	default 0x11009000 if DEBUG_MT8135_UART3
-@@ -1563,6 +1590,9 @@ config DEBUG_UART_PHYS
- 
- config DEBUG_UART_VIRT
- 	hex "Virtual base address of debug UART"
-+	default 0xc881f000 if DEBUG_RK1108_UART2
-+	default 0xc8821000 if DEBUG_RK1108_UART1
-+	default 0xc8912000 if DEBUG_RK1108_UART0
- 	default 0xe0000a00 if DEBUG_NETX_UART
- 	default 0xe0010fe0 if ARCH_RPC
- 	default 0xf0000be0 if ARCH_EBSA110
++	interrupt-parent = <&gic>;
++
++	aliases {
++		serial0 = &uart0;
++		serial1 = &uart1;
++		serial2 = &uart2;
++	};
++
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu0: cpu@f00 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a7";
++			reg = <0xf00>;
++		};
++	};
++
++	arm-pmu {
++		compatible = "arm,cortex-a7-pmu";
++		interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
++	};
++
++
++	timer {
++		compatible = "arm,armv7-timer";
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
++			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
++		clock-frequency = <24000000>;
++	};
++
++	xin24m: oscillator {
++		compatible = "fixed-clock";
++		clock-frequency = <24000000>;
++		clock-output-names = "xin24m";
++		#clock-cells = <0>;
++	};
++
++	bus_intmem@10080000 {
++		compatible = "mmio-sram";
++		reg = <0x10080000 0x2000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges = <0 0x10080000 0x2000>;
++	};
++
++	amba {
++		compatible = "simple-bus";
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		pdma: pdma@102a0000 {
++			compatible = "arm,pl330", "arm,primecell";
++			reg = <0x102a0000 0x4000>;
++			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
++			#dma-cells = <1>;
++			arm,pl330-broken-no-flushp;
++			clocks = <&cru ACLK_DMAC>;
++			clock-names = "apb_pclk";
++		};
++	};
++
++	uart2: serial@10210000 {
++		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
++		reg = <0x10210000 0x100>;
++		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
++		reg-shift = <2>;
++		reg-io-width = <4>;
++		clock-frequency = <24000000>;
++		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
++		clock-names = "baudclk", "apb_pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&uart2m0_xfer>;
++		status = "disabled";
++	};
++
++	uart1: serial@10220000 {
++		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
++		reg = <0x10220000 0x100>;
++		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++		reg-shift = <2>;
++		reg-io-width = <4>;
++		clock-frequency = <24000000>;
++		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
++		clock-names = "baudclk", "apb_pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&uart1_xfer>;
++		status = "disabled";
++	};
++
++	uart0: serial@10230000 {
++		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
++		reg = <0x10230000 0x100>;
++		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
++		reg-shift = <2>;
++		reg-io-width = <4>;
++		clock-frequency = <24000000>;
++		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
++		clock-names = "baudclk", "apb_pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
++		status = "disabled";
++	};
++
++	grf: syscon@10300000 {
++		compatible = "rockchip,rk1108-grf", "syscon";
++		reg = <0x10300000 0x1000>;
++	};
++
++	pmugrf: syscon@20060000 {
++		compatible = "rockchip,rk1108-pmugrf", "syscon";
++		reg = <0x20060000 0x1000>;
++	};
++
++	cru: clock-controller@20200000 {
++		compatible = "rockchip,rk1108-cru";
++		reg = <0x20200000 0x1000>;
++		rockchip,grf = <&grf>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
++	emmc: dwmmc@30110000 {
++		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
++		clock-freq-min-max = <400000 150000000>;
++		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
++			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
++		reg = <0x30110000 0x4000>;
++		status = "disabled";
++	};
++
++	sdio: dwmmc@30120000 {
++		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
++		clock-freq-min-max = <400000 150000000>;
++		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
++			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
++		reg = <0x30120000 0x4000>;
++		status = "disabled";
++	};
++
++	sdmmc: dwmmc@30130000 {
++		compatible = "rockchip,rk1108-dw-mshc", "rockchip,rk3288-dw-mshc";
++		clock-freq-min-max = <400000 100000000>;
++		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
++			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		reg = <0x30130000 0x4000>;
++		status = "disabled";
++	};
++
++	gic: interrupt-controller@32010000 {
++		compatible = "arm,gic-400";
++		interrupt-controller;
++		#interrupt-cells = <3>;
++		#address-cells = <0>;
++
++		reg = <0x32011000 0x1000>,
++		      <0x32012000 0x1000>,
++		      <0x32014000 0x2000>,
++		      <0x32016000 0x2000>;
++		interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
++	};
++
++	pinctrl: pinctrl {
++		compatible = "rockchip,rk1108-pinctrl";
++		rockchip,grf = <&grf>;
++		rockchip,pmu = <&pmugrf>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		gpio0: gpio0@20030000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x20030000 0x100>;
++			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&xin24m>;
++
++			gpio-controller;
++			#gpio-cells = <2>;
++
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		gpio1: gpio1@10310000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x10310000 0x100>;
++			interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&xin24m>;
++
++			gpio-controller;
++			#gpio-cells = <2>;
++
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		gpio2: gpio2@10320000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x10320000 0x100>;
++			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&xin24m>;
++
++			gpio-controller;
++			#gpio-cells = <2>;
++
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		gpio3: gpio3@10330000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x10330000 0x100>;
++			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&xin24m>;
++
++			gpio-controller;
++			#gpio-cells = <2>;
++
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		pcfg_pull_up: pcfg-pull-up {
++			bias-pull-up;
++		};
++
++		pcfg_pull_down: pcfg-pull-down {
++			bias-pull-down;
++		};
++
++		pcfg_pull_none: pcfg-pull-none {
++			bias-disable;
++		};
++
++		pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
++			drive-strength = <8>;
++		};
++
++		pcfg_pull_none_drv_12ma: pcfg-pull-none-drv-12ma {
++			drive-strength = <12>;
++		};
++
++		pcfg_pull_up_drv_8ma: pcfg-pull-up-drv-8ma {
++			bias-pull-up;
++			drive-strength = <8>;
++		};
++
++		pcfg_pull_none_drv_4ma: pcfg-pull-none-drv-4ma {
++			drive-strength = <4>;
++		};
++
++		pcfg_pull_up_drv_4ma: pcfg-pull-up-drv-4ma {
++			bias-pull-up;
++			drive-strength = <4>;
++		};
++
++		pcfg_output_high: pcfg-output-high {
++			output-high;
++		};
++
++		pcfg_output_low: pcfg-output-low {
++			output-low;
++		};
++
++		pcfg_input_high: pcfg-input-high {
++			bias-pull-up;
++			input-enable;
++		};
++
++		i2c1 {
++			i2c1_xfer: i2c1-xfer {
++				rockchip,pins = <2 RK_PD3 RK_FUNC_1 &pcfg_pull_up>,
++						<2 RK_PD4 RK_FUNC_1 &pcfg_pull_up>;
++			};
++		};
++
++		i2c2m1 {
++			i2c2m1_xfer: i2c2m1-xfer {
++				rockchip,pins = <0 RK_PC2 RK_FUNC_2 &pcfg_pull_none>,
++						<0 RK_PC6 RK_FUNC_3 &pcfg_pull_none>;
++			};
++
++			i2c2m1_gpio: i2c2m1-gpio {
++				rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>,
++						<0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++		};
++
++		i2c2m05v {
++			i2c2m05v_xfer: i2c2m05v-xfer {
++				rockchip,pins = <1 RK_PD5 RK_FUNC_2 &pcfg_pull_none>,
++						<1 RK_PD4 RK_FUNC_2 &pcfg_pull_none>;
++			};
++
++			i2c2m05v_gpio: i2c2m05v-gpio {
++				rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>,
++						<1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++		};
++
++		i2c3 {
++			i2c3_xfer: i2c3-xfer {
++				rockchip,pins = <0 RK_PB6 RK_FUNC_1 &pcfg_pull_none>,
++						<0 RK_PC4 RK_FUNC_2 &pcfg_pull_none>;
++			};
++		};
++
++		uart0 {
++			uart0_xfer: uart0-xfer {
++				rockchip,pins = <3 RK_PA6 RK_FUNC_1 &pcfg_pull_up>,
++						<3 RK_PA5 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart0_cts: uart0-cts {
++				rockchip,pins = <3 RK_PA4 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart0_rts: uart0-rts {
++				rockchip,pins = <3 RK_PA3 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart0_rts_gpio: uart0-rts-gpio {
++				rockchip,pins = <3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++		};
++
++		uart1 {
++			uart1_xfer: uart1-xfer {
++				rockchip,pins = <1 RK_PD3 RK_FUNC_1 &pcfg_pull_up>,
++						<1 RK_PD2 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart1_cts: uart1-cts {
++				rockchip,pins = <1 RK_PD0 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart1_rts: uart1-rts {
++				rockchip,pins = <1 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
++		uart2m0 {
++			uart2m0_xfer: uart2m0-xfer {
++				rockchip,pins = <2 RK_PD2 RK_FUNC_1 &pcfg_pull_up>,
++						<2 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
++		uart2m1 {
++			uart2m1_xfer: uart2m1-xfer {
++				rockchip,pins = <3 RK_PC3 RK_FUNC_2 &pcfg_pull_up>,
++						<3 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
++			};
++		};
++
++		uart2_5v {
++			uart2_5v_cts: uart2_5v-cts {
++				rockchip,pins = <1 RK_PD4 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			uart2_5v_rts: uart2_5v-rts {
++				rockchip,pins = <1 RK_PD5 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++	};
++};
 -- 
 2.7.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
