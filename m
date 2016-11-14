@@ -1,48 +1,53 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: add gmac needed clk for rk3399 pd
-Date: Mon, 14 Nov 2016 12:36:39 +0800
-Message-ID: <1479098199-20170-1-git-send-email-wxt@rock-chips.com>
+From: Pankaj Dubey <pankaj.dubey@samsung.com>
+Subject: [PATCH 11/16] ARM: rockchip: use generic API for enabling SCU
+Date: Mon, 14 Nov 2016 10:32:06 +0530
+Message-ID: <1479099731-28108-12-git-send-email-pankaj.dubey@samsung.com>
+References: <1479099731-28108-1-git-send-email-pankaj.dubey@samsung.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1479099731-28108-1-git-send-email-pankaj.dubey@samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: dianders@chromium.org, linux-arm-kernel@lists.infradead.org, zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>
+To: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: rmk+kernel@armlinux.org.uk, arnd@arndb.de, horms@verge.net.au, magnus.damm@gmail.com, geert+renesas@glider.be, vireshk@kernel.org, shiraz.linux.kernel@gmail.com, krzk@kernel.org, thomas.ab@samsung.com, Pankaj Dubey <pankaj.dubey@samsung.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Now as we have of_scu_enable which takes care of mapping
+scu base from DT, lets use it.
 
-This patch fixes that sometimes hang at start-up time of the system.
-As the below log:
-...
-[   11.136543] calling  pm_genpd_debug_init+0x0/0x60 @ 1
-[   11.141602] initcall pm_genpd_debug_init+0x0/0x60 returned 0 after 11 usecs
-[   11.148558] calling  genpd_poweroff_unused+0x0/0x84 @ 1
-<hang>
-
-In some cases, the rk3399 should turn off the gmac power domain to save
-power if some boards didn't register the gmac device node for rk3399.
-Then, rk3399 need to make sure the gmac's pclk enabled if we need
-operate the gmac power domain. (Due to the NOC had enabled always)
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+CC: Heiko Stuebner <heiko@sntech.de>
+CC: linux-rockchip@lists.infradead.org
+Signed-off-by: Pankaj Dubey <pankaj.dubey@samsung.com>
 ---
+ arch/arm/mach-rockchip/platsmp.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 172e7ed..e8b9df9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -825,7 +825,8 @@
- 			/* These power domains are grouped by VD_LOGIC */
- 			pd_gmac@RK3399_PD_GMAC {
- 				reg = <RK3399_PD_GMAC>;
--				clocks = <&cru ACLK_GMAC>;
-+				clocks = <&cru ACLK_GMAC>,
-+					 <&cru PCLK_GMAC>;
- 				pm_qos = <&qos_gmac>;
- 			};
- 			pd_vio@RK3399_PD_VIO {
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index 4d827a0..31169cf 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -282,21 +282,15 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+ 	if (has_pmu && rockchip_smp_prepare_pmu())
+ 		return;
+ 
+-	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
++	if (scu_a9_has_base()) {
+ 		if (rockchip_smp_prepare_sram(node))
+ 			return;
+ 
+ 		/* enable the SCU power domain */
+ 		pmu_set_power_domain(PMU_PWRDN_SCU, true);
+ 
+-		node = of_find_compatible_node(NULL, NULL, "arm,cortex-a9-scu");
+-		if (!node) {
+-			pr_err("%s: missing scu\n", __func__);
+-			return;
+-		}
+-
+-		scu_base_addr = of_iomap(node, 0);
+-		if (!scu_base_addr) {
++		scu_base_addr = of_scu_get_base();
++		if (IS_ERR(scu_base_addr)) {
+ 			pr_err("%s: could not map scu registers\n", __func__);
+ 			return;
+ 		}
 -- 
 2.7.4
