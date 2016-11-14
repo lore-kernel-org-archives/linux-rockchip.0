@@ -1,175 +1,81 @@
 From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 06/10] pinctrl: rockchip: add support for rk1108
-Date: Mon, 14 Nov 2016 20:10:47 +0800
-Message-ID: <1479125447-24406-1-git-send-email-andy.yan@rock-chips.com>
+Subject: [PATCH v2 07/10] ARM: add low level debug uart for rk1108
+Date: Mon, 14 Nov 2016 20:12:35 +0800
+Message-ID: <1479125555-24465-1-git-send-email-andy.yan@rock-chips.com>
 References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linus.walleij@linaro.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This add pinctrl support for Rockchip RK1108 Soc.
+RK1108 UARTs are Synopsis DesignWare 8250 compatible.
+Only with different register addresses.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
+Tested-by: Jacob Chen <jacob2.chen@rock-chips.com>
 ---
 
-Changes in v2:
-- add pull and drive-strength functionality
+Changes in v2: None
 
- drivers/pinctrl/pinctrl-rockchip.c | 87 +++++++++++++++++++++++++++++++++++++-
- 1 file changed, 86 insertions(+), 1 deletion(-)
+ arch/arm/Kconfig.debug | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 49bf7dc..fcc89fb 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -59,6 +59,7 @@
- #define GPIO_LS_SYNC		0x60
+diff --git a/arch/arm/Kconfig.debug b/arch/arm/Kconfig.debug
+index d83f7c3..408540f 100644
+--- a/arch/arm/Kconfig.debug
++++ b/arch/arm/Kconfig.debug
+@@ -776,6 +776,30 @@ choice
+ 		  their output to the standard serial port on the RealView
+ 		  PB1176 platform.
  
- enum rockchip_pinctrl_type {
-+	RK1108,
- 	RK2928,
- 	RK3066B,
- 	RK3188,
-@@ -624,6 +625,65 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	return ret;
- }
++	config DEBUG_RK1108_UART0
++		bool "Kernel low-level debugging messages via Rockchip RK1108 UART0"
++		depends on ARCH_ROCKCHIP
++		select DEBUG_UART_8250
++		help
++		  Say Y here if you want kernel low-level debugging support
++                  on Rockchip RK1108 based platforms.
++
++	config DEBUG_RK1108_UART1
++		bool "Kernel low-level debugging messages via Rockchip RK1108 UART1"
++		depends on ARCH_ROCKCHIP
++		select DEBUG_UART_8250
++		help
++		  Say Y here if you want kernel low-level debugging support
++		  on Rockchip RK1108 based platforms.
++
++	config DEBUG_RK1108_UART2
++		bool "Kernel low-level debugging messages via Rockchip RK1108 UART2"
++		depends on ARCH_ROCKCHIP
++		select DEBUG_UART_8250
++		help
++		  Say Y here if you want kernel low-level debugging support
++		  on Rockchip RK1108 based platforms.
++
+ 	config DEBUG_RK29_UART0
+ 		bool "Kernel low-level debugging messages via Rockchip RK29 UART0"
+ 		depends on ARCH_ROCKCHIP
+@@ -1465,6 +1489,9 @@ config DEBUG_UART_PHYS
+ 	default 0x10126000 if DEBUG_RK3X_UART1
+ 	default 0x101f1000 if DEBUG_VERSATILE
+ 	default 0x101fb000 if DEBUG_NOMADIK_UART
++	default 0x10210000 if DEBUG_RK1108_UART2
++	default 0x10220000 if DEBUG_RK1108_UART1
++	default 0x10230000 if DEBUG_RK1108_UART0
+ 	default 0x11002000 if DEBUG_MT8127_UART0
+ 	default 0x11006000 if DEBUG_MT6589_UART0
+ 	default 0x11009000 if DEBUG_MT8135_UART3
+@@ -1563,6 +1590,9 @@ config DEBUG_UART_PHYS
  
-+#define RK1108_PULL_PMU_OFFSET		0x10
-+#define RK1108_PULL_OFFSET		0x110
-+#define RK1108_PULL_PINS_PER_REG	8
-+#define RK1108_PULL_BITS_PER_PIN	2
-+#define RK1108_PULL_BANK_STRIDE		16
-+
-+static void rk1108_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					 int pin_num, struct regmap **regmap,
-+					 int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK1108_PULL_PMU_OFFSET;
-+	} else {
-+		*reg = RK1108_PULL_OFFSET;
-+		*regmap = info->regmap_base;
-+		/* correct the offset, as we're starting with the 2nd bank */
-+		*reg -= 0x10;
-+		*reg += bank->bank_num * RK1108_PULL_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RK1108_PULL_PINS_PER_REG) * 4);
-+	*bit = (pin_num % RK1108_PULL_PINS_PER_REG);
-+	*bit *= RK1108_PULL_BITS_PER_PIN;
-+}
-+
-+#define RK1108_DRV_PMU_OFFSET           0x20
-+#define RK1108_DRV_GRF_OFFSET           0x210
-+#define RK1108_DRV_BITS_PER_PIN         2
-+#define RK1108_DRV_PINS_PER_REG         8
-+#define RK1108_DRV_BANK_STRIDE          16
-+
-+static void rk1108_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK1108_DRV_PMU_OFFSET;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK1108_DRV_GRF_OFFSET;
-+
-+		/* correct the offset, as we're starting with the 2nd bank */
-+		*reg -= 0x10;
-+		*reg += bank->bank_num * RK1108_DRV_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RK1108_DRV_PINS_PER_REG) * 4);
-+	*bit = pin_num % RK1108_DRV_PINS_PER_REG;
-+	*bit *= RK1108_DRV_BITS_PER_PIN;
-+}
-+
- #define RK2928_PULL_OFFSET		0x118
- #define RK2928_PULL_PINS_PER_REG	16
- #define RK2928_PULL_BANK_STRIDE		8
-@@ -1123,6 +1183,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 		return !(data & BIT(bit))
- 				? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
- 				: PIN_CONFIG_BIAS_DISABLE;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -1169,6 +1230,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 
- 		spin_unlock_irqrestore(&bank->slock, flags);
- 		break;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -1358,6 +1420,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 					pull == PIN_CONFIG_BIAS_DISABLE);
- 	case RK3066B:
- 		return pull ? false : true;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -1385,7 +1448,6 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 	for (i = 0; i < num_configs; i++) {
- 		param = pinconf_to_config_param(configs[i]);
- 		arg = pinconf_to_config_argument(configs[i]);
--
- 		switch (param) {
- 		case PIN_CONFIG_BIAS_DISABLE:
- 			rc =  rockchip_set_pull(bank, pin - bank->pin_base,
-@@ -2455,6 +2517,27 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static struct rockchip_pin_bank rk1108_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU),
-+	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
-+	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0, 0, 0, 0),
-+	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", 0, 0, 0, 0),
-+};
-+
-+static struct rockchip_pin_ctrl rk1108_pin_ctrl = {
-+	.pin_banks		= rk1108_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rk1108_pin_banks),
-+	.label			= "RK1108-GPIO",
-+	.type			= RK1108,
-+	.grf_mux_offset		= 0x10,
-+	.pmu_mux_offset		= 0x0,
-+	.pull_calc_reg		= rk1108_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rk1108_calc_drv_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rk2928_pin_banks[] = {
- 	PIN_BANK(0, 32, "gpio0"),
- 	PIN_BANK(1, 32, "gpio1"),
-@@ -2684,6 +2767,8 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
- };
- 
- static const struct of_device_id rockchip_pinctrl_dt_match[] = {
-+	{ .compatible = "rockchip,rk1108-pinctrl",
-+		.data = (void *)&rk1108_pin_ctrl },
- 	{ .compatible = "rockchip,rk2928-pinctrl",
- 		.data = (void *)&rk2928_pin_ctrl },
- 	{ .compatible = "rockchip,rk3036-pinctrl",
+ config DEBUG_UART_VIRT
+ 	hex "Virtual base address of debug UART"
++	default 0xc881f000 if DEBUG_RK1108_UART2
++	default 0xc8821000 if DEBUG_RK1108_UART1
++	default 0xc8912000 if DEBUG_RK1108_UART0
+ 	default 0xe0000a00 if DEBUG_NETX_UART
+ 	default 0xe0010fe0 if ARCH_RPC
+ 	default 0xf0000be0 if ARCH_EBSA110
 -- 
 2.7.4
-
-
