@@ -1,53 +1,51 @@
-From: Pankaj Dubey <pankaj.dubey@samsung.com>
-Subject: [PATCH 11/16] ARM: rockchip: use generic API for enabling SCU
-Date: Mon, 14 Nov 2016 10:32:06 +0530
-Message-ID: <1479099731-28108-12-git-send-email-pankaj.dubey@samsung.com>
-References: <1479099731-28108-1-git-send-email-pankaj.dubey@samsung.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1479099731-28108-1-git-send-email-pankaj.dubey@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: rmk+kernel@armlinux.org.uk, arnd@arndb.de, horms@verge.net.au, magnus.damm@gmail.com, geert+renesas@glider.be, vireshk@kernel.org, shiraz.linux.kernel@gmail.com, krzk@kernel.org, thomas.ab@samsung.com, Pankaj Dubey <pankaj.dubey@samsung.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+From: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RESEND] ARM: dts: rockchip: enable dma for uart and mmc on rk3066a
+Date: Mon, 14 Nov 2016 07:52:06 +0100
+Message-ID: <20161114065206.GA14635@vaio-ubuntu>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Now as we have of_scu_enable which takes care of mapping
-scu base from DT, lets use it.
-
-CC: Heiko Stuebner <heiko@sntech.de>
-CC: linux-rockchip@lists.infradead.org
-Signed-off-by: Pankaj Dubey <pankaj.dubey@samsung.com>
----
- arch/arm/mach-rockchip/platsmp.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 4d827a0..31169cf 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -282,21 +282,15 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 	if (has_pmu && rockchip_smp_prepare_pmu())
- 		return;
- 
--	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
-+	if (scu_a9_has_base()) {
- 		if (rockchip_smp_prepare_sram(node))
- 			return;
- 
- 		/* enable the SCU power domain */
- 		pmu_set_power_domain(PMU_PWRDN_SCU, true);
- 
--		node = of_find_compatible_node(NULL, NULL, "arm,cortex-a9-scu");
--		if (!node) {
--			pr_err("%s: missing scu\n", __func__);
--			return;
--		}
--
--		scu_base_addr = of_iomap(node, 0);
--		if (!scu_base_addr) {
-+		scu_base_addr = of_scu_get_base();
-+		if (IS_ERR(scu_base_addr)) {
- 			pr_err("%s: could not map scu registers\n", __func__);
- 			return;
- 		}
--- 
-2.7.4
+RE1BIGNvbnRyb2xsZXIgZHJpdmVyIGlzIGluIGdvb2Qgc2hhcGUgdGhlc2UgZGF5cyBvbiByb2Nr
+Y2hpcCBwbGF0Zm9ybXMuClNvIGxldHMgZW5hYmxlIERNQSBmb3IgdWFydCBhbmQgbW1jLgoKU2ln
+bmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KLS0t
+CiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kgfCAxNyArKysrKysrKysrKysrKysrKwog
+MSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9i
+b290L2R0cy9yazMwNjZhLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kKaW5k
+ZXggZmM4ZGNjNy4uMmYwOWNmMSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2
+YS5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEuZHRzaQpAQCAtNjM3LDE2ICs2
+MzcsMjUgQEAKIAogJm1tYzAgewogCWNsb2NrLWZyZXF1ZW5jeSA9IDw1MDAwMDAwMD47CisJZG1h
+cyA9IDwmZG1hYzIgMT47CisJZG1hLW5hbWVzID0gInJ4LXR4IjsKIAltYXgtZnJlcXVlbmN5ID0g
+PDUwMDAwMDAwPjsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwm
+c2QwX2NsayAmc2QwX2NtZCAmc2QwX2NkICZzZDBfYnVzND47CiB9OwogCiAmbW1jMSB7CisJZG1h
+cyA9IDwmZG1hYzIgMz47CisJZG1hLW5hbWVzID0gInJ4LXR4IjsKIAlwaW5jdHJsLW5hbWVzID0g
+ImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmc2QxX2NsayAmc2QxX2NtZCAmc2QxX2NkICZzZDFf
+YnVzND47CiB9OwogCismZW1tYyB7CisJZG1hcyA9IDwmZG1hYzIgND47CisJZG1hLW5hbWVzID0g
+InJ4LXR4IjsKK307CisKICZwd20wIHsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBp
+bmN0cmwtMCA9IDwmcHdtMF9vdXQ+OwpAQCAtNjc4LDIxICs2ODcsMjkgQEAKIH07CiAKICZ1YXJ0
+MCB7CisJZG1hcyA9IDwmZG1hYzFfcyAwPiwgPCZkbWFjMV9zIDE+OworCWRtYS1uYW1lcyA9ICJ0
+eCIsICJyeCI7CiAJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAlwaW5jdHJsLTAgPSA8JnVh
+cnQwX3hmZXI+OwogfTsKIAogJnVhcnQxIHsKKwlkbWFzID0gPCZkbWFjMV9zIDI+LCA8JmRtYWMx
+X3MgMz47CisJZG1hLW5hbWVzID0gInR4IiwgInJ4IjsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1
+bHQiOwogCXBpbmN0cmwtMCA9IDwmdWFydDFfeGZlcj47CiB9OwogCiAmdWFydDIgeworCWRtYXMg
+PSA8JmRtYWMyIDY+LCA8JmRtYWMyIDc+OworCWRtYS1uYW1lcyA9ICJ0eCIsICJyeCI7CiAJcGlu
+Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAlwaW5jdHJsLTAgPSA8JnVhcnQyX3hmZXI+OwogfTsK
+IAogJnVhcnQzIHsKKwlkbWFzID0gPCZkbWFjMiA4PiwgPCZkbWFjMiA5PjsKKwlkbWEtbmFtZXMg
+PSAidHgiLCAicngiOwogCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJcGluY3RybC0wID0g
+PCZ1YXJ0M194ZmVyPjsKIH07Ci0tIAoyLjcuNAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
