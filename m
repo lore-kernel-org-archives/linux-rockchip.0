@@ -1,57 +1,46 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [PATCH v3 2/2] phy: rockchip-inno-usb2: correct 480MHz output
- clock stable time
-Date: Mon, 14 Nov 2016 10:17:03 -0800
-Message-ID: <CAD=FV=VJsuiXV3NS0uroF2OWJEDn5eiCpX-jP3BOYgLZ8gy6Hw@mail.gmail.com>
-References: <1479115631-20137-1-git-send-email-wulf@rock-chips.com> <1479115631-20137-3-git-send-email-wulf@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: correct the use of FTS mask
+Date: Mon, 14 Nov 2016 14:17:30 -0600
+Message-ID: <20161114201730.GZ9868@bhelgaas-glaptop.roam.corp.google.com>
+References: <1476832384-10215-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479115631-20137-3-git-send-email-wulf@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: William Wu <wulf@rock-chips.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, Brian Norris <briannorris@google.com>, Guenter Roeck <groeck@google.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1476832384-10215-1-git-send-email-briannorris@chromium.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rajat Jain <rajatja@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-William,
+On Tue, Oct 18, 2016 at 04:13:04PM -0700, Brian Norris wrote:
+> We're trying to mask out bits[23:8] while retaining [32:24, 7:0], but
+> we're doing the inverse. That doesn't have too much effect, since we're
+> setting all the [23:8] bits to 1, and the other bits are only relevant
+> for modes we're currently not using. But we should get this right.
+> 
+> Fixes: ca1989084054 ("PCI: rockchip: Fix wrong transmitted FTS count")
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-On Mon, Nov 14, 2016 at 1:27 AM, William Wu <wulf@rock-chips.com> wrote:
-> We found that the system crashed due to 480MHz output clock of
-> USB2 PHY was unstable after clock had been enabled by gpu module.
->
-> Theoretically, 1 millisecond is a critical value for 480MHz
-> output clock stable time, so we try to change the delay time
-> to 1.2 millisecond to avoid this issue.
->
-> And the commit ed907fb1d7c3 ("phy: rockchip-inno-usb2: correct
-> clk_ops callback") used prepare callbacks instead of enable
-> callbacks to support gate a clk if the operation may sleep. So
-> we can switch from delay to sleep functions.
->
-> Signed-off-by: William Wu <wulf@rock-chips.com>
+Applied with Shawn's ack to pci/host-rockchip, thanks!
+
 > ---
-> Changes in v3:
-> - fix kbuild test error: too few arguments to function 'usleep_range'
->
-> Changes in v2:
-> - use usleep_range() function instead of mdelay()
->
->  drivers/phy/phy-rockchip-inno-usb2.c | 2 +-
+>  drivers/pci/host/pcie-rockchip.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-> index 365e077..0e52b25 100644
-> --- a/drivers/phy/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
-> @@ -166,7 +166,7 @@ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
->                         return ret;
->
->                 /* waitting for the clk become stable */
-> -               mdelay(1);
-> +               usleep_range(1200, 1300);
-
-Sight nit that you could also fix the spelling from "waitting" to "waiting".
-
-...but that's pre-existing, so:
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index e0b22dab9b7a..5c2e3297a3ff 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -492,7 +492,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  
+>  	/* Fix the transmitted FTS count desired to exit from L0s. */
+>  	status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL_PLC1);
+> -	status = (status & PCIE_CORE_CTRL_PLC1_FTS_MASK) |
+> +	status = (status & ~PCIE_CORE_CTRL_PLC1_FTS_MASK) |
+>  		 (PCIE_CORE_CTRL_PLC1_FTS_CNT << PCIE_CORE_CTRL_PLC1_FTS_SHIFT);
+>  	rockchip_pcie_write(rockchip, status, PCIE_CORE_CTRL_PLC1);
+>  
+> -- 
+> 2.8.0.rc3.226.g39d4020
+> 
