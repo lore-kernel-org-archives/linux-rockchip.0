@@ -1,72 +1,36 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 7/9] arm64: dts: rockchip: add pd_edp node for rk3399
-Date: Mon, 14 Nov 2016 09:26:28 -0800
-Message-ID: <CAD=FV=WDsPF1dHgZePKq20tQjguHm7yyBEA9-+sNoDm7HdspXg@mail.gmail.com>
-References: <1478697721-2323-1-git-send-email-wxt@rock-chips.com> <1478697721-2323-8-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] phy: rockchip-inno-usb2: correct clk_ops callback
+Date: Mon, 14 Nov 2016 10:15:30 -0800
+Message-ID: <CAD=FV=W36tdw3LqPq3tp58U4trYX6n=qaotMTsP6tm0QzZrRWQ@mail.gmail.com>
+References: <1479106911-16049-1-git-send-email-wulf@rock-chips.com> <1479106911-16049-2-git-send-email-wulf@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478697721-2323-8-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Eddie Cai <eddie.cai@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, zhangqing <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1479106911-16049-2-git-send-email-wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?B?6buE5rab?= <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
+William
 
-On Wed, Nov 9, 2016 at 5:21 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> From: zhangqing <zhangqing@rock-chips.com>
+On Sun, Nov 13, 2016 at 11:01 PM, William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Since we needs to delay ~1ms to wait for 480MHz output clock
+> of USB2 PHY to become stable after turn on it, the delay time
+> is pretty long for something that's supposed to be "atomic"
+> like a clk_enable(). Consider that clk_enable() will disable
+> interrupt and that a 1ms interrupt latency is not sensible.
 >
-> 1. add pd node for RK3399 Soc
-> 2. create power domain tree
-> 3. add qos node for domain
-
-No step #3 since there doesn't appear to be a qos node for eDP.  Your
-patch doesn't add one and I can't find one in the TRM.
-
-> 4. add the pd support for edp
+> The 480MHz output clock should be handled in prepare callbacks
+> which support gate a clk if the operation may sleep.
 >
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->
-> Changes in v2: None
->
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 74deb44..09ebf4e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -835,6 +835,10 @@
->                         };
->
->                         /* These power domains are grouped by VD_LOGIC */
-> +                       pd_edp@RK3399_PD_EDP {
-> +                               reg = <RK3399_PD_EDP>;
-> +                               clocks = <&cru PCLK_EDP_CTRL>;
+>  drivers/phy/phy-rockchip-inno-usb2.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 
-Are you sure that PCLK_EDP isn't needed as well?  After the super
-hard-to-debug problems we just faced with the missing GMAC clock in
-the power domains, I figure it's at least worth a check.  ;)
-
-> +                       };
->                         pd_emmc@RK3399_PD_EMMC {
->                                 reg = <RK3399_PD_EMMC>;
->                                 clocks = <&cru ACLK_EMMC>;
-> @@ -1364,6 +1368,7 @@
->                 status = "disabled";
->                 pinctrl-names = "default";
->                 pinctrl-0 = <&edp_hpd>;
-> +               power-domains = <&power RK3399_PD_EDP>;
->
->                 ports {
->                         #address-cells = <1>;
-
-Other than the question about the clock and the nits about the commit
-message, this all looks fine to me.  Feel free to add my Reviewed-by
-if you fix those things.
-
-
--Doug
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
