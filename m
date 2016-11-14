@@ -1,141 +1,39 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 10/10] ARM: dts: rockchip: add rockchip RK1108 Evaluation board
-Date: Mon, 14 Nov 2016 20:17:43 +0800
-Message-ID: <1479125863-24646-1-git-send-email-andy.yan@rock-chips.com>
-References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add gmac needed clk for rk3399 pd
+Date: Mon, 14 Nov 2016 15:42:34 +0100
+Message-ID: <15590097.XDc0ARC38n@phil>
+References: <1479098199-20170-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
+In-Reply-To: <1479098199-20170-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: dianders@chromium.org, linux-arm-kernel@lists.infradead.org, zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RK1108 EVB is designed by Rockchip for CVR field.
-This patch add basic support for it, which can boot with
-initramfs into shell.
+Am Montag, 14. November 2016, 12:36:39 CET schrieb Caesar Wang:
+> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+> 
+> This patch fixes that sometimes hang at start-up time of the system.
+> As the below log:
+> ...
+> [   11.136543] calling  pm_genpd_debug_init+0x0/0x60 @ 1
+> [   11.141602] initcall pm_genpd_debug_init+0x0/0x60 returned 0 after 11
+> usecs [   11.148558] calling  genpd_poweroff_unused+0x0/0x84 @ 1
+> <hang>
+> 
+> In some cases, the rk3399 should turn off the gmac power domain to save
+> power if some boards didn't register the gmac device node for rk3399.
+> Then, rk3399 need to make sure the gmac's pclk enabled if we need
+> operate the gmac power domain. (Due to the NOC had enabled always)
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Acked-by: Rob Herring <robh@kernel.org>
+applied to my dts64 branch
 
----
 
-Changes in v2:
-- move the board in the rockchip.txt to the block of Rockchip boards
-
- Documentation/devicetree/bindings/arm/rockchip.txt |  5 +-
- arch/arm/boot/dts/Makefile                         |  1 +
- arch/arm/boot/dts/rk1108-evb.dts                   | 69 ++++++++++++++++++++++
- 3 files changed, 74 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
-
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 10b92b5..e658b62 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -1,6 +1,5 @@
- Rockchip platforms device tree bindings
- ---------------------------------------
--
- - Kylin RK3036 board:
-     Required root node properties:
-       - compatible = "rockchip,kylin-rk3036", "rockchip,rk3036";
-@@ -111,6 +110,10 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
- 
-+- Rockchip RK1108 Evaluation board
-+    Required root node properties:
-+      - compatible = "rockchip,rk1108-evb", "rockchip,rk1108";
-+
- - Rockchip RK3368 evb:
-     Required root node properties:
-       - compatible = "rockchip,rk3368-evb-act8846", "rockchip,rk3368";
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index e49476a..249dca9 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -635,6 +635,7 @@ dtb-$(CONFIG_ARCH_REALVIEW) += \
- 	arm-realview-pba8.dtb \
- 	arm-realview-pbx-a9.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
-+	rk1108-evb.dtb \
- 	rk3036-evb.dtb \
- 	rk3036-kylin.dtb \
- 	rk3066a-bqcurie2.dtb \
-diff --git a/arch/arm/boot/dts/rk1108-evb.dts b/arch/arm/boot/dts/rk1108-evb.dts
-new file mode 100644
-index 0000000..3956cff
---- /dev/null
-+++ b/arch/arm/boot/dts/rk1108-evb.dts
-@@ -0,0 +1,69 @@
-+/*
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ *  Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+
-+#include "rk1108.dtsi"
-+
-+/ {
-+	model = "Rockchip RK1108 Evaluation board";
-+	compatible = "rockchip,rk1108-evb", "rockchip,rk1108";
-+
-+	memory@60000000 {
-+		device_type = "memory";
-+		reg = <0x60000000 0x08000000>;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&uart1 {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
--- 
-2.7.4
+Thanks
+Heiko
