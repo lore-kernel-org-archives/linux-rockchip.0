@@ -1,14 +1,13 @@
-From: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 2/2] phy: rockchip-inno-usb2: correct 480MHz output clock
- stable time
-Date: Mon, 14 Nov 2016 17:27:11 +0800
-Message-ID: <1479115631-20137-3-git-send-email-wulf@rock-chips.com>
-References: <1479115631-20137-1-git-send-email-wulf@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RESEND] ARM: dts: rockchip: fix TSADC reset node for rk3066a
+Date: Mon, 14 Nov 2016 10:32:44 +0100
+Message-ID: <3584058.XWe9YJVFb7@phil>
+References: <20161114065400.GA14669@vaio-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1479115631-20137-1-git-send-email-wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20161114065400.GA14669@vaio-ubuntu>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,45 +17,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: kishon-l0cyMroinI0@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We found that the system crashed due to 480MHz output clock of
-USB2 PHY was unstable after clock had been enabled by gpu module.
-
-Theoretically, 1 millisecond is a critical value for 480MHz
-output clock stable time, so we try to change the delay time
-to 1.2 millisecond to avoid this issue.
-
-And the commit ed907fb1d7c3 ("phy: rockchip-inno-usb2: correct
-clk_ops callback") used prepare callbacks instead of enable
-callbacks to support gate a clk if the operation may sleep. So
-we can switch from delay to sleep functions.
-
-Signed-off-by: William Wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-Changes in v3:
-- fix kbuild test error: too few arguments to function 'usleep_range'
-
-Changes in v2:
-- use usleep_range() function instead of mdelay()
-
- drivers/phy/phy-rockchip-inno-usb2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index 365e077..0e52b25 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -166,7 +166,7 @@ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- 			return ret;
- 
- 		/* waitting for the clk become stable */
--		mdelay(1);
-+		usleep_range(1200, 1300);
- 	}
- 
- 	return 0;
--- 
-2.0.0
+QW0gTW9udGFnLCAxNC4gTm92ZW1iZXIgMjAxNiwgMDc6NTQ6MDAgQ0VUIHNjaHJpZWIgUGF3ZcWC
+IEphcm9zejoKPiBUaGlzIHBhdGNoIGZpeGVzIGluY29yZWN0bHkgYXNzaWduZWQgcmszMDY2YSBU
+U0FEQyBub2RlCj4gCj4gU2lnbmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3oz
+NjkxQGdtYWlsLmNvbT4KCmFwcGxpZWQgdG8gbXkgZHRzMzIgYnJhbmNoCgpUaGFua3MKSGVpa28K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
