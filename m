@@ -1,32 +1,66 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RESEND] ARM: dts: rockchip: enable dma for uart and mmc on
- rk3066a
-Date: Mon, 14 Nov 2016 10:34:02 +0100
-Message-ID: <246522004.9v2qHGS65P@phil>
-References: <20161114065206.GA14635@vaio-ubuntu>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161114065206.GA14635@vaio-ubuntu>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v2 00/10] Add basic support for Rockchip RK1108 SOC
+Date: Mon, 14 Nov 2016 19:55:50 +0800
+Message-ID: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: shawn.lin@rock-chips.com, linus.walleij@linaro.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-gpio@vger.kernel.org, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, mark.rutland@arm.com, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCAxNC4gTm92ZW1iZXIgMjAxNiwgMDc6NTI6MDYgQ0VUIHNjaHJpZWIgUGF3ZcWC
-IEphcm9zejoKPiBETUEgY29udHJvbGxlciBkcml2ZXIgaXMgaW4gZ29vZCBzaGFwZSB0aGVzZSBk
-YXlzIG9uIHJvY2tjaGlwIHBsYXRmb3Jtcy4KPiBTbyBsZXRzIGVuYWJsZSBETUEgZm9yIHVhcnQg
-YW5kIG1tYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBQYXdlxYIgSmFyb3N6IDxwYXdlbGphcm9zejM2
-OTFAZ21haWwuY29tPgoKYXBwbGllZCB0byBteSBkdHMzMiBicmFuY2gKClRoYW5rcwpIZWlrbwoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+RK1108 is embedded with an ARM Cortex-A7 single core and a DSP core.
+It is designed for varies application scenario such as car DVR, sports
+DV, secure camera and UAV camera.
+This patch series add basic support for it, which can boot a board with
+initramfs into shell.
+More new feathers will come soon.
+
+Changes in v2:
+- split dt-binding header from clk driver
+- fix some CodingStyle issues
+- add dt-binding documentation for pinctrl
+- add pull and drive-strength functionality for pinctrl
+- fix timer and gic dt description
+- ordering devices by register address
+- move the board in the rockchip.txt to the block of Rockchip boards
+
+Andy Yan (6):
+  dt-bindings: add documentation for rk1108 pinctrl
+  pinctrl: rockchip: add support for rk1108
+  ARM: add low level debug uart for rk1108
+  ARM: dts: add basic support for Rockchip RK1108 SOC
+  ARM: rockchip: enable support for RK1108 SoC
+  ARM: dts: rockchip: add rockchip RK1108 Evaluation board
+
+Shawn Lin (4):
+  dt-bindings: rockchip-dw-mshc: add RK1108 dw-mshc description
+  dt-bindings: add documentation for rk1108 cru
+  clk: rockchip: add dt-binding header for rk1108
+  clk: rockchip: add clock controller for rk1108
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   5 +-
+ .../bindings/clock/rockchip,rk1108-cru.txt         |  60 +++
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   1 +
+ .../bindings/pinctrl/rockchip,pinctrl.txt          |   9 +-
+ arch/arm/Kconfig.debug                             |  30 ++
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/rk1108-evb.dts                   |  69 ++++
+ arch/arm/boot/dts/rk1108.dtsi                      | 428 +++++++++++++++++++
+ arch/arm/mach-rockchip/rockchip.c                  |   1 +
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-rk1108.c                  | 451 +++++++++++++++++++++
+ drivers/clk/rockchip/clk.h                         |  14 +
+ drivers/pinctrl/pinctrl-rockchip.c                 |  87 +++-
+ include/dt-bindings/clock/rk1108-cru.h             | 270 ++++++++++++
+ 14 files changed, 1421 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+ create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
+ create mode 100644 arch/arm/boot/dts/rk1108.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rk1108.c
+ create mode 100644 include/dt-bindings/clock/rk1108-cru.h
+
+-- 
+2.7.4
+
+
