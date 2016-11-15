@@ -1,82 +1,91 @@
-From: William Wu <wulf@rock-chips.com>
-Subject: [PATCH v4 1/2] phy: rockchip-inno-usb2: correct clk_ops callback
-Date: Tue, 15 Nov 2016 11:54:06 +0800
-Message-ID: <1479182047-3399-2-git-send-email-wulf@rock-chips.com>
-References: <1479182047-3399-1-git-send-email-wulf@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479182047-3399-1-git-send-email-wulf@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, heiko@sntech.de
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, wulf@rock-chips.com
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 02/10] dt-bindings: add documentation for rk1108 cru
+Date: Tue, 15 Nov 2016 10:35:39 +0100
+Message-ID: <2131710.LesyKkLYAr@phil>
+References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com> <1479124981-24181-1-git-send-email-andy.yan@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1479124981-24181-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Since we needs to delay ~1ms to wait for 480MHz output clock
-of USB2 PHY to become stable after turn on it, the delay time
-is pretty long for something that's supposed to be "atomic"
-like a clk_enable(). Consider that clk_enable() will disable
-interrupt and that a 1ms interrupt latency is not sensible.
+Hi Andy,
 
-The 480MHz output clock should be handled in prepare callbacks
-which support gate a clk if the operation may sleep.
+Am Montag, 14. November 2016, 20:03:01 CET schrieb Andy Yan:
+> From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> This adds the dt-binding documentation for the clock and reset unit
+> found on Rockchip rk1108 SoCs.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v2: None
+> 
+>  .../bindings/clock/rockchip,rk1108-cru.txt         | 60
+> ++++++++++++++++++++++ 1 file changed, 60 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+> b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt new file
+> mode 100644
+> index 0000000..4d2356b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+> @@ -0,0 +1,60 @@
+> +* Rockchip RK1108 Clock and Reset Unit
+> +
+> +The RK1108 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: should be "rockchip,rk1108-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock
+> status. +
+> +Each clock is assigned an identifier and client nodes can use this
+> identifier +to specify the clock which they consume. All available clocks
+> are defined as +preprocessor macros in the dt-bindings/clock/rk1108-cru.h
+> headers and can be +used in device tree sources. Similar macros exist for
+> the reset sources in +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "cif_clkout" - output clock for the cif - optional
+> + - "mipi_csi_clkout" - output clock for the mipi csi - optional
+> + - "pclkin_vip" - external VIP clock - optional
+> + - "ext_i2s" - external I2S clock - optional
+> + - "ext_gmac" - external GMAC clock - optional
+> + - "mac_ref_clkout" - output clock of the pll in the mac phy
 
-Signed-off-by: William Wu <wulf@rock-chips.com>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
----
-Changes in v4:
-- add Reviewed-by
+we really only want to list the actual input clocks here, not outputs.
 
-Changes in v3:
-- None
+Also, the list of actual input clocks seems incomplete (hdmiphy, usbphy) and 
+some clocks listed here do not match the clock controller 2 patches later 
+(pclkin_vip, ext_gmac [rk1108 only has 10/100], ext_i2s, ...)
 
-Changes in v2:
-- None
 
- drivers/phy/phy-rockchip-inno-usb2.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index ac20310..365e077 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -153,7 +153,7 @@ static inline bool property_enabled(struct rockchip_usb2phy *rphy,
- 	return tmp == reg->enable;
- }
- 
--static int rockchip_usb2phy_clk480m_enable(struct clk_hw *hw)
-+static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- {
- 	struct rockchip_usb2phy *rphy =
- 		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-@@ -172,7 +172,7 @@ static int rockchip_usb2phy_clk480m_enable(struct clk_hw *hw)
- 	return 0;
- }
- 
--static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
-+static void rockchip_usb2phy_clk480m_unprepare(struct clk_hw *hw)
- {
- 	struct rockchip_usb2phy *rphy =
- 		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-@@ -181,7 +181,7 @@ static void rockchip_usb2phy_clk480m_disable(struct clk_hw *hw)
- 	property_enable(rphy, &rphy->phy_cfg->clkout_ctl, false);
- }
- 
--static int rockchip_usb2phy_clk480m_enabled(struct clk_hw *hw)
-+static int rockchip_usb2phy_clk480m_prepared(struct clk_hw *hw)
- {
- 	struct rockchip_usb2phy *rphy =
- 		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-@@ -197,9 +197,9 @@ rockchip_usb2phy_clk480m_recalc_rate(struct clk_hw *hw,
- }
- 
- static const struct clk_ops rockchip_usb2phy_clkout_ops = {
--	.enable = rockchip_usb2phy_clk480m_enable,
--	.disable = rockchip_usb2phy_clk480m_disable,
--	.is_enabled = rockchip_usb2phy_clk480m_enabled,
-+	.prepare = rockchip_usb2phy_clk480m_prepare,
-+	.unprepare = rockchip_usb2phy_clk480m_unprepare,
-+	.is_prepared = rockchip_usb2phy_clk480m_prepared,
- 	.recalc_rate = rockchip_usb2phy_clk480m_recalc_rate,
- };
- 
--- 
-2.0.0
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
