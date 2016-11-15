@@ -1,130 +1,39 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 06/10] pinctrl: rockchip: add support for rk1108
-Date: Tue, 15 Nov 2016 00:23:42 +0100
-Message-ID: <1626303.kfRfHpSgHU@phil>
-References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com> <1479125447-24406-1-git-send-email-andy.yan@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 01/30] usb: dwc2: Deprecate g-use-dma binding
+Date: Mon, 14 Nov 2016 18:05:55 -0600
+Message-ID: <20161115000555.fqemw7uuvphqpe2b@rob-hp-laptop>
+References: <cover.1478748145.git.johnyoun@synopsys.com>
+ <966d342a5a7fee9ac3ef8140b60c228c4a87c7d3.1478748145.git.johnyoun@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479125447-24406-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linus.walleij@linaro.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <966d342a5a7fee9ac3ef8140b60c228c4a87c7d3.1478748145.git.johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. November 2016, 20:10:47 CET schrieb Andy Yan:
-> This add pinctrl support for Rockchip RK1108 Soc.
+On Wed, Nov 09, 2016 at 07:27:40PM -0800, John Youn wrote:
+> This is not needed as the gadget now fully supports DMA and it can
+> autodetect it. This was initially added because gadget DMA mode was only
+> partially implemented so could not be automatically enabled.
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
-still looks mostly good. I think I've now compared every register offset with 
-the TRM - they all look good. I've noticed two styling issues below, with 
-those fixed:
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
+> Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 > ---
-> Changes in v2:
-> - add pull and drive-strength functionality
-> 
->  drivers/pinctrl/pinctrl-rockchip.c | 87
-> +++++++++++++++++++++++++++++++++++++- 1 file changed, 86 insertions(+), 1
-> deletion(-)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> b/drivers/pinctrl/pinctrl-rockchip.c index 49bf7dc..fcc89fb 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -59,6 +59,7 @@
->  #define GPIO_LS_SYNC		0x60
-> 
->  enum rockchip_pinctrl_type {
-> +	RK1108,
->  	RK2928,
->  	RK3066B,
->  	RK3188,
-> @@ -624,6 +625,65 @@ static int rockchip_set_mux(struct rockchip_pin_bank
-> *bank, int pin, int mux) return ret;
->  }
-> 
-> +#define RK1108_PULL_PMU_OFFSET		0x10
-> +#define RK1108_PULL_OFFSET		0x110
-> +#define RK1108_PULL_PINS_PER_REG	8
-> +#define RK1108_PULL_BITS_PER_PIN	2
-> +#define RK1108_PULL_BANK_STRIDE		16
-> +
-> +static void rk1108_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					 int pin_num, struct regmap **regmap,
-> +					 int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +
-> +	/* The first 24 pins of the first bank are located in PMU */
-> +	if (bank->bank_num == 0) {
-> +		*regmap = info->regmap_pmu;
-> +		*reg = RK1108_PULL_PMU_OFFSET;
-> +	} else {
-> +		*reg = RK1108_PULL_OFFSET;
-> +		*regmap = info->regmap_base;
-> +		/* correct the offset, as we're starting with the 2nd bank */
-> +		*reg -= 0x10;
-> +		*reg += bank->bank_num * RK1108_PULL_BANK_STRIDE;
-> +	}
-> +
-> +	*reg += ((pin_num / RK1108_PULL_PINS_PER_REG) * 4);
-> +	*bit = (pin_num % RK1108_PULL_PINS_PER_REG);
-> +	*bit *= RK1108_PULL_BITS_PER_PIN;
-> +}
-> +
-> +#define RK1108_DRV_PMU_OFFSET           0x20
-> +#define RK1108_DRV_GRF_OFFSET           0x210
-> +#define RK1108_DRV_BITS_PER_PIN         2
-> +#define RK1108_DRV_PINS_PER_REG         8
-> +#define RK1108_DRV_BANK_STRIDE          16
+>  Documentation/devicetree/bindings/usb/dwc2.txt |  4 +++-
+>  arch/arm/boot/dts/rk3036.dtsi                  |  1 -
+>  arch/arm/boot/dts/rk3288.dtsi                  |  1 -
+>  arch/arm/boot/dts/rk3xxx.dtsi                  |  1 -
+>  arch/arm64/boot/dts/hisilicon/hi6220.dtsi      |  1 -
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi       |  1 -
+>  drivers/usb/dwc2/core.h                        |  4 +---
+>  drivers/usb/dwc2/params.c                      | 17 ++++++++++++++---
+>  drivers/usb/dwc2/pci.c                         |  1 -
+>  9 files changed, 18 insertions(+), 13 deletions(-)
 
-styling nitpick, spaces instead of tabs between name and value. The pull 
-constants are correct though and only the drv constants need a fixup.
-
-> +
-> +static void rk1108_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					int pin_num, struct regmap **regmap,
-> +					int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +
-> +	/* The first 24 pins of the first bank are located in PMU */
-> +	if (bank->bank_num == 0) {
-> +		*regmap = info->regmap_pmu;
-> +		*reg = RK1108_DRV_PMU_OFFSET;
-> +	} else {
-> +		*regmap = info->regmap_base;
-> +		*reg = RK1108_DRV_GRF_OFFSET;
-> +
-> +		/* correct the offset, as we're starting with the 2nd bank */
-> +		*reg -= 0x10;
-> +		*reg += bank->bank_num * RK1108_DRV_BANK_STRIDE;
-> +	}
-> +
-> +	*reg += ((pin_num / RK1108_DRV_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RK1108_DRV_PINS_PER_REG;
-> +	*bit *= RK1108_DRV_BITS_PER_PIN;
-> +}
-> +
->  #define RK2928_PULL_OFFSET		0x118
->  #define RK2928_PULL_PINS_PER_REG	16
->  #define RK2928_PULL_BANK_STRIDE		8
-
-[...]
-
-> @@ -1385,7 +1448,6 @@ static int rockchip_pinconf_set(struct pinctrl_dev
-> *pctldev, unsigned int pin, for (i = 0; i < num_configs; i++) {
->  		param = pinconf_to_config_param(configs[i]);
->  		arg = pinconf_to_config_argument(configs[i]);
-> -
-
-unrelated change that should be removed.
-
->  		switch (param) {
->  		case PIN_CONFIG_BIAS_DISABLE:
->  			rc =  rockchip_set_pull(bank, pin - bank->pin_base,
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
