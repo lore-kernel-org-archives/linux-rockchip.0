@@ -1,16 +1,13 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH 2/2] PCI: rockchip: Add quirk to disable RC's ASPM
- L0s
-Date: Tue, 15 Nov 2016 16:26:49 -0600
-Message-ID: <20161115222649.uymslcg2fyfwtxpd@rob-hp-laptop>
-References: <1479096666-112668-1-git-send-email-shawn.lin@rock-chips.com>
- <1479096666-112668-2-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 3/3] ARM: rockchip: drop rk3288 jtag/mmc switch handling
+Date: Tue, 15 Nov 2016 23:39:00 +0100
+Message-ID: <20161115223900.30728-4-heiko@sntech.de>
+References: <20161115223900.30728-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1479096666-112668-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20161115223900.30728-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,40 +17,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 14, 2016 at 12:11:06PM +0800, Shawn Lin wrote:
-> Rockchip's RC outputs 100MHz reference clock but there are
-> two methods for PHY to generate it.
-> 
-> (1)One of them is to use system PLL to generate 100MHz clock and
-> the PHY will relock it and filter signal noise then outputs the
-> reference clock.
-> 
-> (2)Another way is to share Soc's 24MHZ crystal oscillator with
-> PHY and force PHY's DLL to generate 100MHz internally.
-> 
-> When using case(2), the exit from L0s doesn't work fine occasionally
-> due to the broken design of RC receiver's logical circuit. So even if
-> we use extended-synch, it still fails for PHY to relock the bits from
-> FTS sometimes. This will hang the system.
-> 
-> Maybe we could argue that why not use case(1) to avoid it? The reason
-> is that as we could see the reference clock is derived from system PLL
-> and the path from it to PHY isn't so clean which means there are some
-> noise introduced by power-domain and other buses can't be filterd out
-> by PHY and we could see noise from the frequency spectrum by oscilloscope.
-> This makes the TX compatibility test a little difficult to pass the spec.
-> So case(1) and case(2) are both used indeed now. If using case(2), we
-> should disable RC's L0s support, and that is why we need this property to
-> indicate this quirk.
+We moved that functionality to a more generic place where it can also
+be used for other socs, so drop it from architecture code.
 
-Doesn't the driver know which case it is using? I don't see why you need 
-the quirk property.
-> 
-> Also after checking quirk.c, I noticed there is already a quirk for
-> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
-> shouldn't do that as mentioned above that case(1) could still works fine
-> with L0s.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm/mach-rockchip/rockchip.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
+index e7fdf06..0008783 100644
+--- a/arch/arm/mach-rockchip/rockchip.c
++++ b/arch/arm/mach-rockchip/rockchip.c
+@@ -29,13 +29,11 @@
+ #include "core.h"
+ #include "pm.h"
+ 
+-#define RK3288_GRF_SOC_CON0 0x244
+ #define RK3288_TIMER6_7_PHYS 0xff810000
+ 
+ static void __init rockchip_timer_init(void)
+ {
+ 	if (of_machine_is_compatible("rockchip,rk3288")) {
+-		struct regmap *grf;
+ 		void __iomem *reg_base;
+ 
+ 		/*
+@@ -54,16 +52,6 @@ static void __init rockchip_timer_init(void)
+ 		} else {
+ 			pr_err("rockchip: could not map timer7 registers\n");
+ 		}
+-
+-		/*
+-		 * Disable auto jtag/sdmmc switching that causes issues
+-		 * with the mmc controllers making them unreliable
+-		 */
+-		grf = syscon_regmap_lookup_by_compatible("rockchip,rk3288-grf");
+-		if (!IS_ERR(grf))
+-			regmap_write(grf, RK3288_GRF_SOC_CON0, 0x10000000);
+-		else
+-			pr_err("rockchip: could not get grf syscon\n");
+ 	}
+ 
+ 	of_clk_init(NULL);
+-- 
+2.10.2
