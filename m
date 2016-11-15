@@ -1,167 +1,182 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH V3] pinctrl: rockchip: add support for rk1108
-Date: Tue, 15 Nov 2016 18:02:43 +0800
-Message-ID: <1479204163-3137-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: linus.walleij@linaro.org
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/10] clk: rockchip: add clock controller for rk1108
+Date: Tue, 15 Nov 2016 11:32:32 +0100
+Message-ID: <2185081.FigXhudOUe@phil>
+References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com> <1479125262-24294-1-git-send-email-andy.yan@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1479125262-24294-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, sboyd@codeaurora.org, mturquette@baylibre.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This add pinctrl support for Rockchip RK1108 Soc.
+Am Montag, 14. November 2016, 20:07:42 CET schrieb Andy Yan:
+> From: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> Add the clock tree definition and driver for rk1108 SoC.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Tested-by: Jacob Chen <jacob2.chen@rock-chips.com>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - fix some CodingStyle issues
+> 
+>  drivers/clk/rockchip/Makefile     |   1 +
+>  drivers/clk/rockchip/clk-rk1108.c | 451
+> ++++++++++++++++++++++++++++++++++++++ drivers/clk/rockchip/clk.h        | 
+> 14 ++
+>  3 files changed, 466 insertions(+)
+>  create mode 100644 drivers/clk/rockchip/clk-rk1108.c
+> 
+> diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+> index b5f2c8e..16e098c 100644
+> --- a/drivers/clk/rockchip/Makefile
+> +++ b/drivers/clk/rockchip/Makefile
+> @@ -11,6 +11,7 @@ obj-y	+= clk-mmc-phase.o
+>  obj-y	+= clk-ddr.o
+>  obj-$(CONFIG_RESET_CONTROLLER)	+= softrst.o
+> 
+> +obj-y	+= clk-rk1108.o
+>  obj-y	+= clk-rk3036.o
+>  obj-y	+= clk-rk3188.o
+>  obj-y	+= clk-rk3228.o
+> diff --git a/drivers/clk/rockchip/clk-rk1108.c
+> b/drivers/clk/rockchip/clk-rk1108.c new file mode 100644
+> index 0000000..e3a4f74
+> --- /dev/null
+> +++ b/drivers/clk/rockchip/clk-rk1108.c
+> @@ -0,0 +1,451 @@
+> +/*
+> + * Copyright (c) 2016 Rockchip Electronics Co. Ltd.
+> + * Author: Shawn Lin <shawn.lin@rock-chips.com>
+> + *         Andy Yan <andy.yan@rock-chips.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/syscore_ops.h>
+> +#include <dt-bindings/clock/rk1108-cru.h>
+> +#include "clk.h"
+> +
+> +#define RK1108_GRF_SOC_STATUS0	0x480
+> +
+> +enum rk1108_plls {
+> +	apll, dpll, gpll,
+> +};
+> +
+> +static struct rockchip_pll_rate_table rk1108_pll_rates[] = {
+> +	/* _mhz, _refdiv, _fbdiv, _postdiv1, _postdiv2, _dsmpd, _frac */
+> +	RK3036_PLL_RATE(1608000000, 1, 67, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1584000000, 1, 66, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1560000000, 1, 65, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1536000000, 1, 64, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1512000000, 1, 63, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1488000000, 1, 62, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1464000000, 1, 61, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1440000000, 1, 60, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1416000000, 1, 59, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1392000000, 1, 58, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1368000000, 1, 57, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1344000000, 1, 56, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1320000000, 1, 55, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1296000000, 1, 54, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1272000000, 1, 53, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1248000000, 1, 52, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1200000000, 1, 50, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1188000000, 2, 99, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1104000000, 1, 46, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1100000000, 12, 550, 1, 1, 1, 0),
+> +	RK3036_PLL_RATE(1008000000, 1, 84, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE(1000000000, 6, 500, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 984000000, 1, 82, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 960000000, 1, 80, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 936000000, 1, 78, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 912000000, 1, 76, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 900000000, 4, 300, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 888000000, 1, 74, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 864000000, 1, 72, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 840000000, 1, 70, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 816000000, 1, 68, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 800000000, 6, 400, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 700000000, 6, 350, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 696000000, 1, 58, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 600000000, 1, 75, 3, 1, 1, 0),
+> +	RK3036_PLL_RATE( 594000000, 2, 99, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 504000000, 1, 63, 3, 1, 1, 0),
+> +	RK3036_PLL_RATE( 500000000, 6, 250, 2, 1, 1, 0),
+> +	RK3036_PLL_RATE( 408000000, 1, 68, 2, 2, 1, 0),
+> +	RK3036_PLL_RATE( 312000000, 1, 52, 2, 2, 1, 0),
+> +	RK3036_PLL_RATE( 216000000, 1, 72, 4, 2, 1, 0),
+> +	RK3036_PLL_RATE(  96000000, 1, 64, 4, 4, 1, 0),
+> +	{ /* sentinel */ },
+> +};
+> +
+> +#define RK1108_DIV_CORE_MASK		0xf
+> +#define RK1108_DIV_CORE_SHIFT		4
+> +
+> +#define RK1108_CLKSEL0(_core_peri_div)					\
+> +	{									\
+> +		.reg = RK1108_CLKSEL_CON(1),					\
+> +		.val = HIWORD_UPDATE(_core_peri_div, RK1108_DIV_CORE_MASK,	\
+> +				RK1108_DIV_CORE_SHIFT)				\
+> +	}
+> +
+> +#define RK1108_CPUCLK_RATE(_prate, _core_peri_div)			\
+> +	{								\
+> +		.prate = _prate,					\
+> +		.divs = {						\
+> +			RK1108_CLKSEL0(_core_peri_div),		\
+> +		},							\
+> +	}
+> +
+> +static struct rockchip_cpuclk_rate_table rk1108_cpuclk_rates[] __initdata =
+> { +	RK1108_CPUCLK_RATE(816000000, 4),
+> +	RK1108_CPUCLK_RATE(600000000, 4),
+> +	RK1108_CPUCLK_RATE(312000000, 4),
+> +};
+> +
+> +static const struct rockchip_cpuclk_reg_data rk1108_cpuclk_data = {
+> +	.core_reg = RK1108_CLKSEL_CON(0),
+> +	.div_core_shift = 0,
+> +	.div_core_mask = 0x1f,
+> +	.mux_core_alt = 1,
+> +	.mux_core_main = 0,
+> +	.mux_core_shift = 8,
+> +	.mux_core_mask = 0x1,
+> +};
+> +
+> +PNAME(mux_pll_p)		= { "xin24m", "xin24m"};
+> +PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr", "apll_ddr" };
+> +PNAME(mux_armclk_p)		= { "apll_core", "gpll_core", "dpll_core" };
+> +PNAME(mux_pmu_1f)		= { "xin24m", "pmu_24m"};
+> +PNAME(mux_usb480m_phy_p)	= { "usb480m_phy0", "usb480m_phy1" };
+> +PNAME(mux_usb480m_p)		= { "usb480m_phy", "xin24m" };
+> +PNAME(mux_hdmiphy_p)		= { "hdmiphy_phy", "pclk_top_pre", "xin24m" };
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+pmu_1f, usbphy and hdmiphy do not seem to be used in this driver, while they 
+are specified in the clock documentation.
 
-Series-changes: 2
-- add pull and drive-strength functionality
-
-Series-changes: 3
-- two minor CodingStyle fixes adviced by Heiko
----
- drivers/pinctrl/pinctrl-rockchip.c | 86 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 86 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 49bf7dc..08765f5 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -59,6 +59,7 @@
- #define GPIO_LS_SYNC		0x60
- 
- enum rockchip_pinctrl_type {
-+	RK1108,
- 	RK2928,
- 	RK3066B,
- 	RK3188,
-@@ -624,6 +625,65 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	return ret;
- }
- 
-+#define RK1108_PULL_PMU_OFFSET		0x10
-+#define RK1108_PULL_OFFSET		0x110
-+#define RK1108_PULL_PINS_PER_REG	8
-+#define RK1108_PULL_BITS_PER_PIN	2
-+#define RK1108_PULL_BANK_STRIDE		16
-+
-+static void rk1108_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					 int pin_num, struct regmap **regmap,
-+					 int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK1108_PULL_PMU_OFFSET;
-+	} else {
-+		*reg = RK1108_PULL_OFFSET;
-+		*regmap = info->regmap_base;
-+		/* correct the offset, as we're starting with the 2nd bank */
-+		*reg -= 0x10;
-+		*reg += bank->bank_num * RK1108_PULL_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RK1108_PULL_PINS_PER_REG) * 4);
-+	*bit = (pin_num % RK1108_PULL_PINS_PER_REG);
-+	*bit *= RK1108_PULL_BITS_PER_PIN;
-+}
-+
-+#define RK1108_DRV_PMU_OFFSET		0x20
-+#define RK1108_DRV_GRF_OFFSET		0x210
-+#define RK1108_DRV_BITS_PER_PIN		2
-+#define RK1108_DRV_PINS_PER_REG		8
-+#define RK1108_DRV_BANK_STRIDE		16
-+
-+static void rk1108_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK1108_DRV_PMU_OFFSET;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK1108_DRV_GRF_OFFSET;
-+
-+		/* correct the offset, as we're starting with the 2nd bank */
-+		*reg -= 0x10;
-+		*reg += bank->bank_num * RK1108_DRV_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RK1108_DRV_PINS_PER_REG) * 4);
-+	*bit = pin_num % RK1108_DRV_PINS_PER_REG;
-+	*bit *= RK1108_DRV_BITS_PER_PIN;
-+}
-+
- #define RK2928_PULL_OFFSET		0x118
- #define RK2928_PULL_PINS_PER_REG	16
- #define RK2928_PULL_BANK_STRIDE		8
-@@ -1123,6 +1183,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 		return !(data & BIT(bit))
- 				? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
- 				: PIN_CONFIG_BIAS_DISABLE;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -1169,6 +1230,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 
- 		spin_unlock_irqrestore(&bank->slock, flags);
- 		break;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -1358,6 +1420,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 					pull == PIN_CONFIG_BIAS_DISABLE);
- 	case RK3066B:
- 		return pull ? false : true;
-+	case RK1108:
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-@@ -2455,6 +2518,27 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static struct rockchip_pin_bank rk1108_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU,
-+					     IOMUX_SOURCE_PMU),
-+	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
-+	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0, 0, 0, 0),
-+	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", 0, 0, 0, 0),
-+};
-+
-+static struct rockchip_pin_ctrl rk1108_pin_ctrl = {
-+	.pin_banks		= rk1108_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rk1108_pin_banks),
-+	.label			= "RK1108-GPIO",
-+	.type			= RK1108,
-+	.grf_mux_offset		= 0x10,
-+	.pmu_mux_offset		= 0x0,
-+	.pull_calc_reg		= rk1108_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rk1108_calc_drv_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rk2928_pin_banks[] = {
- 	PIN_BANK(0, 32, "gpio0"),
- 	PIN_BANK(1, 32, "gpio1"),
-@@ -2684,6 +2768,8 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
- };
- 
- static const struct of_device_id rockchip_pinctrl_dt_match[] = {
-+	{ .compatible = "rockchip,rk1108-pinctrl",
-+		.data = (void *)&rk1108_pin_ctrl },
- 	{ .compatible = "rockchip,rk2928-pinctrl",
- 		.data = (void *)&rk2928_pin_ctrl },
- 	{ .compatible = "rockchip,rk3036-pinctrl",
--- 
-2.7.4
+Also there is a discrepancy between your pmu_24m and pmu_24m_ena below I 
+think.
 
 
+The rest looks sane but I didn't check every register offset :-) .
+
+
+Heiko
