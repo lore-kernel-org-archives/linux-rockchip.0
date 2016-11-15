@@ -1,118 +1,42 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RESEND PATCH 1/2] PCI: rockchip: cleanup bit definition for
- PCIE_RC_CONFIG_LCS
-Date: Tue, 15 Nov 2016 09:09:37 +0800
-Message-ID: <6279a593-2a86-220c-98b9-c930f4502513@rock-chips.com>
-References: <1479096666-112668-1-git-send-email-shawn.lin@rock-chips.com>
- <20161114222604.GJ9868@bhelgaas-glaptop.roam.corp.google.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [GIT PULL] rockchip clock changes for 4.10
+Date: Mon, 14 Nov 2016 18:39:54 -0800
+Message-ID: <20161115023954.GU5177@codeaurora.org>
+References: <2643672.7kkyv0VVfm@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20161114222604.GJ9868-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <2643672.7kkyv0VVfm@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+On 11/12, Heiko Stuebner wrote:
+> Hi Mike, Stephen,
+> 
+> please find below a pull request for rockchip-related clock changes for 4.10.
+> Nothing really big stands out this time, so if it looks ok please pull.
+> 
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+> 
+>   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-clk1
+> 
+> for you to fetch changes up to bf92384b6d729b22916ba832b4a225ca196e98ba:
 
-On 2016/11/15 6:26, Bjorn Helgaas wrote:
-> On Mon, Nov 14, 2016 at 12:11:05PM +0800, Shawn Lin wrote:
->> PCIE_RC_CONFIG_LCS contains control and status bits specific
->> to the PCIe link. The layout for this register looks the same
->> as the existed PCI_EXP_LNKCTL and PCI_EXP_LNKSTA. So let's
->> reuse them.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> Did something change since the version you posted yesterday?
-> Resending a patch with no changes or with no hint about what changed
-> doesn't speed things up; in fact, it slows things down.
->
-
-Sorry for that, mea culpa. I was finding I had sent a wrong patch which
-couldn't be compiled cleanly, so I resent a new one. I should directly
-respin a new version for that case.
-
->> ---
->>
->>  drivers/pci/host/pcie-rockchip.c | 14 ++++----------
->>  1 file changed, 4 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
->> index 7f238af..1dba698 100644
->> --- a/drivers/pci/host/pcie-rockchip.c
->> +++ b/drivers/pci/host/pcie-rockchip.c
->> @@ -141,12 +141,6 @@
->>  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
->>  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
->>  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
->> -#define   PCIE_RC_CONFIG_LCS_RETRAIN_LINK	BIT(5)
->> -#define   PCIE_RC_CONFIG_LCS_CCC		BIT(6)
->> -#define   PCIE_RC_CONFIG_LCS_LBMIE		BIT(10)
->> -#define   PCIE_RC_CONFIG_LCS_LABIE		BIT(11)
->> -#define   PCIE_RC_CONFIG_LCS_LBMS		BIT(30)
->> -#define   PCIE_RC_CONFIG_LCS_LAMS		BIT(31)
->>  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
->>  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
->>  #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
->> @@ -229,7 +223,7 @@ static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
->>  	u32 status;
->>
->>  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
->> -	status |= (PCIE_RC_CONFIG_LCS_LBMIE | PCIE_RC_CONFIG_LCS_LABIE);
->> +	status |= (PCI_EXP_LNKCTL_LBMIE | PCI_EXP_LNKCTL_LABIE);
->>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->>  }
->>
->> @@ -238,7 +232,7 @@ static void rockchip_pcie_clr_bw_int(struct rockchip_pcie *rockchip)
->>  	u32 status;
->>
->>  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
->> -	status |= (PCIE_RC_CONFIG_LCS_LBMS | PCIE_RC_CONFIG_LCS_LAMS);
->> +	status |= (PCI_EXP_LNKSTA_LBMS | PCI_EXP_LNKSTA_LABS) << 16;
->>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->>  }
->>
->> @@ -540,7 +534,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->>
->>  	/* Set RC's clock architecture as common clock */
->>  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
->> -	status |= PCIE_RC_CONFIG_LCS_CCC;
->> +	status |= PCI_EXP_LNKCTL_CCC;
->>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->>
->>  	/* Enable Gen1 training */
->> @@ -575,7 +569,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->>  		 * gen1 finished.
->>  		 */
->>  		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
->> -		status |= PCIE_RC_CONFIG_LCS_RETRAIN_LINK;
->> +		status |= PCI_EXP_LNKCTL_RL;
->>  		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->>
->>  		timeout = jiffies + msecs_to_jiffies(500);
->> --
->> 1.9.1
->>
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
->> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
+Thanks. Pulled.
 
 
 -- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
