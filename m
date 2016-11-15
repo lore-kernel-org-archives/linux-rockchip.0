@@ -1,332 +1,167 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 03/10] clk: rockchip: add dt-binding header for rk1108
-Date: Tue, 15 Nov 2016 10:41:17 +0100
-Message-ID: <4684383.I4rhnr9WVC@phil>
-References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com>
- <1479125092-24234-1-git-send-email-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1479125092-24234-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH V3] pinctrl: rockchip: add support for rk1108
+Date: Tue, 15 Nov 2016 18:02:43 +0800
+Message-ID: <1479204163-3137-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linus.walleij@linaro.org
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. November 2016, 20:04:52 CET schrieb Andy Yan:
-> From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Add the dt-bindings header for the rk1108, that gets shared
-> between the clock controller and the clock references in the dts.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v2:
-> - split dt-binding header from clk driver
-> 
->  include/dt-bindings/clock/rk1108-cru.h | 270
-> +++++++++++++++++++++++++++++++++ 1 file changed, 270 insertions(+)
->  create mode 100644 include/dt-bindings/clock/rk1108-cru.h
-> 
-> diff --git a/include/dt-bindings/clock/rk1108-cru.h
-> b/include/dt-bindings/clock/rk1108-cru.h new file mode 100644
-> index 0000000..6f30008
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/rk1108-cru.h
-> @@ -0,0 +1,270 @@
-> +/*
-> + * Copyright (c) 2016 Rockchip Electronics Co. Ltd.
-> + * Author: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK1108_H
-> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK1108_H
-> +
-> +/* pll id */
-> +#define RK1108_APLL_ID			0
-> +#define RK1108_DPLL_ID			1
-> +#define RK1108_GPLL_ID			2
-> +#define RK1108_ARMCLK			3
+This add pinctrl support for Rockchip RK1108 Soc.
 
-any particular reason for diverging from namings set in the other binding 
-headers (PLL_APLL, ARMCLK, ...)?
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Series-changes: 2
+- add pull and drive-strength functionality
+
+Series-changes: 3
+- two minor CodingStyle fixes adviced by Heiko
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 86 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 49bf7dc..08765f5 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -59,6 +59,7 @@
+ #define GPIO_LS_SYNC		0x60
+ 
+ enum rockchip_pinctrl_type {
++	RK1108,
+ 	RK2928,
+ 	RK3066B,
+ 	RK3188,
+@@ -624,6 +625,65 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+ 	return ret;
+ }
+ 
++#define RK1108_PULL_PMU_OFFSET		0x10
++#define RK1108_PULL_OFFSET		0x110
++#define RK1108_PULL_PINS_PER_REG	8
++#define RK1108_PULL_BITS_PER_PIN	2
++#define RK1108_PULL_BANK_STRIDE		16
++
++static void rk1108_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
++					 int pin_num, struct regmap **regmap,
++					 int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	/* The first 24 pins of the first bank are located in PMU */
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK1108_PULL_PMU_OFFSET;
++	} else {
++		*reg = RK1108_PULL_OFFSET;
++		*regmap = info->regmap_base;
++		/* correct the offset, as we're starting with the 2nd bank */
++		*reg -= 0x10;
++		*reg += bank->bank_num * RK1108_PULL_BANK_STRIDE;
++	}
++
++	*reg += ((pin_num / RK1108_PULL_PINS_PER_REG) * 4);
++	*bit = (pin_num % RK1108_PULL_PINS_PER_REG);
++	*bit *= RK1108_PULL_BITS_PER_PIN;
++}
++
++#define RK1108_DRV_PMU_OFFSET		0x20
++#define RK1108_DRV_GRF_OFFSET		0x210
++#define RK1108_DRV_BITS_PER_PIN		2
++#define RK1108_DRV_PINS_PER_REG		8
++#define RK1108_DRV_BANK_STRIDE		16
++
++static void rk1108_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
++					int pin_num, struct regmap **regmap,
++					int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	/* The first 24 pins of the first bank are located in PMU */
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK1108_DRV_PMU_OFFSET;
++	} else {
++		*regmap = info->regmap_base;
++		*reg = RK1108_DRV_GRF_OFFSET;
++
++		/* correct the offset, as we're starting with the 2nd bank */
++		*reg -= 0x10;
++		*reg += bank->bank_num * RK1108_DRV_BANK_STRIDE;
++	}
++
++	*reg += ((pin_num / RK1108_DRV_PINS_PER_REG) * 4);
++	*bit = pin_num % RK1108_DRV_PINS_PER_REG;
++	*bit *= RK1108_DRV_BITS_PER_PIN;
++}
++
+ #define RK2928_PULL_OFFSET		0x118
+ #define RK2928_PULL_PINS_PER_REG	16
+ #define RK2928_PULL_BANK_STRIDE		8
+@@ -1123,6 +1183,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ 		return !(data & BIT(bit))
+ 				? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
+ 				: PIN_CONFIG_BIAS_DISABLE;
++	case RK1108:
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3368:
+@@ -1169,6 +1230,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 
+ 		spin_unlock_irqrestore(&bank->slock, flags);
+ 		break;
++	case RK1108:
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3368:
+@@ -1358,6 +1420,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
+ 					pull == PIN_CONFIG_BIAS_DISABLE);
+ 	case RK3066B:
+ 		return pull ? false : true;
++	case RK1108:
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3368:
+@@ -2455,6 +2518,27 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
++static struct rockchip_pin_bank rk1108_pin_banks[] = {
++	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
++					     IOMUX_SOURCE_PMU,
++					     IOMUX_SOURCE_PMU,
++					     IOMUX_SOURCE_PMU),
++	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
++	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0, 0, 0, 0),
++	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", 0, 0, 0, 0),
++};
++
++static struct rockchip_pin_ctrl rk1108_pin_ctrl = {
++	.pin_banks		= rk1108_pin_banks,
++	.nr_banks		= ARRAY_SIZE(rk1108_pin_banks),
++	.label			= "RK1108-GPIO",
++	.type			= RK1108,
++	.grf_mux_offset		= 0x10,
++	.pmu_mux_offset		= 0x0,
++	.pull_calc_reg		= rk1108_calc_pull_reg_and_bit,
++	.drv_calc_reg		= rk1108_calc_drv_reg_and_bit,
++};
++
+ static struct rockchip_pin_bank rk2928_pin_banks[] = {
+ 	PIN_BANK(0, 32, "gpio0"),
+ 	PIN_BANK(1, 32, "gpio1"),
+@@ -2684,6 +2768,8 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
+ };
+ 
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
++	{ .compatible = "rockchip,rk1108-pinctrl",
++		.data = (void *)&rk1108_pin_ctrl },
+ 	{ .compatible = "rockchip,rk2928-pinctrl",
+ 		.data = (void *)&rk2928_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3036-pinctrl",
+-- 
+2.7.4
 
 
-> +
-> +/* sclk gates (special clocks) */
-> +#define SCLK_SPI0			65
-> +#define SCLK_NANDC			67
-> +#define SCLK_SDMMC			68
-> +#define SCLK_SDIO			69
-> +#define SCLK_EMMC			71
-> +#define SCLK_UART0			72
-> +#define SCLK_UART1			73
-> +#define SCLK_UART2			74
-> +#define SCLK_I2S0			75
-> +#define SCLK_I2S1			76
-> +#define SCLK_I2S2			77
-> +#define SCLK_TIMER0			78
-> +#define SCLK_TIMER1			79
-> +#define SCLK_SFC			80
-> +#define SCLK_SDMMC_DRV			81
-> +#define SCLK_SDIO_DRV			82
-> +#define SCLK_EMMC_DRV			83
-> +#define SCLK_SDMMC_SAMPLE		84
-> +#define SCLK_SDIO_SAMPLE		85
-> +#define SCLK_EMMC_SAMPLE		86
-
-the rk1108 seems to have a pretty small clock tree, so maybe you can reduce 
-the gap here a bit, like starting at 128 or 192 for the ACLKs and move 
-everything up a bit?
-
-That way you save a bit of space, as we're allocation CLK_NR_CLKS entries or 
-the lookup array when probing the clock driver.
-
-
-Heiko
-
-> +/* aclk gates */
-> +#define ACLK_DMAC			251
-> +#define ACLK_PRE			252
-> +#define ACLK_CORE			253
-> +#define ACLK_ENMCORE			254
-> +
-> +/* pclk gates */
-> +#define PCLK_GPIO1			321
-> +#define PCLK_GPIO2			322
-> +#define PCLK_GPIO3			323
-> +#define PCLK_GRF			329
-> +#define PCLK_I2C1			333
-> +#define PCLK_I2C2			334
-> +#define PCLK_I2C3			335
-> +#define PCLK_SPI			338
-> +#define PCLK_SFC			339
-> +#define PCLK_UART0			341
-> +#define PCLK_UART1			342
-> +#define PCLK_UART2			343
-> +#define PCLK_TSADC			344
-> +#define PCLK_PWM			350
-> +#define PCLK_TIMER			353
-> +#define PCLK_PERI			363
-> +
-> +/* hclk gates */
-> +#define HCLK_I2S0_8CH			442
-> +#define HCLK_I2S1_8CH			443
-> +#define HCLK_I2S2_2CH			444
-> +#define HCLK_NANDC			453
-> +#define HCLK_SDMMC			456
-> +#define HCLK_SDIO			457
-> +#define HCLK_EMMC			459
-> +#define HCLK_PERI			478
-> +#define HCLK_SFC			479
-> +
-> +#define CLK_NR_CLKS			(HCLK_SFC + 1)
-> +
-> +/* reset id */
-> +#define SRST_CORE_PO_AD			0
-> +#define SRST_CORE_AD			1
-> +#define SRST_L2_AD			2
-> +#define SRST_CPU_NIU_AD			3
-> +#define SRST_CORE_PO			4
-> +#define SRST_CORE			5
-> +#define SRST_L2				6
-> +#define SRST_CORE_DBG			8
-> +#define PRST_DBG			9
-> +#define RST_DAP				10
-> +#define PRST_DBG_NIU			11
-> +#define ARST_STRC_SYS_AD		15
-> +
-> +#define SRST_DDRPHY_CLKDIV		16
-> +#define SRST_DDRPHY			17
-> +#define PRST_DDRPHY			18
-> +#define PRST_HDMIPHY			19
-> +#define PRST_VDACPHY			20
-> +#define PRST_VADCPHY			21
-> +#define PRST_MIPI_CSI_PHY		22
-> +#define PRST_MIPI_DSI_PHY		23
-> +#define PRST_ACODEC			24
-> +#define ARST_BUS_NIU			25
-> +#define PRST_TOP_NIU			26
-> +#define ARST_INTMEM			27
-> +#define HRST_ROM			28
-> +#define ARST_DMAC			29
-> +#define SRST_MSCH_NIU			30
-> +#define PRST_MSCH_NIU			31
-> +
-> +#define PRST_DDRUPCTL			32
-> +#define NRST_DDRUPCTL			33
-> +#define PRST_DDRMON			34
-> +#define HRST_I2S0_8CH			35
-> +#define MRST_I2S0_8CH			36
-> +#define HRST_I2S1_2CH			37
-> +#define MRST_IS21_2CH			38
-> +#define HRST_I2S2_2CH			39
-> +#define MRST_I2S2_2CH			40
-> +#define HRST_CRYPTO			41
-> +#define SRST_CRYPTO			42
-> +#define PRST_SPI			43
-> +#define SRST_SPI			44
-> +#define PRST_UART0			45
-> +#define PRST_UART1			46
-> +#define PRST_UART2			47
-> +
-> +#define SRST_UART0			48
-> +#define SRST_UART1			49
-> +#define SRST_UART2			50
-> +#define PRST_I2C1			51
-> +#define PRST_I2C2			52
-> +#define PRST_I2C3			53
-> +#define SRST_I2C1			54
-> +#define SRST_I2C2			55
-> +#define SRST_I2C3			56
-> +#define PRST_PWM1			58
-> +#define SRST_PWM1			60
-> +#define PRST_WDT			61
-> +#define PRST_GPIO1			62
-> +#define PRST_GPIO2			63
-> +
-> +#define PRST_GPIO3			64
-> +#define PRST_GRF			65
-> +#define PRST_EFUSE			66
-> +#define PRST_EFUSE512			67
-> +#define PRST_TIMER0			68
-> +#define SRST_TIMER0			69
-> +#define SRST_TIMER1			70
-> +#define PRST_TSADC			71
-> +#define SRST_TSADC			72
-> +#define PRST_SARADC			73
-> +#define SRST_SARADC			74
-> +#define HRST_SYSBUS			75
-> +#define PRST_USBGRF			76
-> +
-> +#define ARST_PERIPH_NIU			80
-> +#define HRST_PERIPH_NIU			81
-> +#define PRST_PERIPH_NIU			82
-> +#define HRST_PERIPH			83
-> +#define HRST_SDMMC			84
-> +#define HRST_SDIO			85
-> +#define HRST_EMMC			86
-> +#define HRST_NANDC			87
-> +#define NRST_NANDC			88
-> +#define HRST_SFC			89
-> +#define SRST_SFC			90
-> +#define ARST_GMAC			91
-> +#define HRST_OTG			92
-> +#define SRST_OTG			93
-> +#define SRST_OTG_ADP			94
-> +#define HRST_HOST0			95
-> +
-> +#define HRST_HOST0_AUX			96
-> +#define HRST_HOST0_ARB			97
-> +#define SRST_HOST0_EHCIPHY		98
-> +#define SRST_HOST0_UTMI			99
-> +#define SRST_USBPOR			100
-> +#define SRST_UTMI0			101
-> +#define SRST_UTMI1			102
-> +
-> +#define ARST_VIO0_NIU			102
-> +#define ARST_VIO1_NIU			103
-> +#define HRST_VIO_NIU			104
-> +#define PRST_VIO_NIU			105
-> +#define ARST_VOP			106
-> +#define HRST_VOP			107
-> +#define DRST_VOP			108
-> +#define ARST_IEP			109
-> +#define HRST_IEP			110
-> +#define ARST_RGA			111
-> +#define HRST_RGA			112
-> +#define SRST_RGA			113
-> +#define PRST_CVBS			114
-> +#define PRST_HDMI			115
-> +#define SRST_HDMI			116
-> +#define PRST_MIPI_DSI			117
-> +
-> +#define ARST_ISP_NIU			118
-> +#define HRST_ISP_NIU			119
-> +#define HRST_ISP			120
-> +#define SRST_ISP			121
-> +#define ARST_VIP0			122
-> +#define HRST_VIP0			123
-> +#define PRST_VIP0			124
-> +#define ARST_VIP1			125
-> +#define HRST_VIP1			126
-> +#define PRST_VIP1			127
-> +#define ARST_VIP2			128
-> +#define HRST_VIP2			129
-> +#define PRST_VIP2			120
-> +#define ARST_VIP3			121
-> +#define HRST_VIP3			122
-> +#define PRST_VIP4			123
-> +
-> +#define PRST_CIF1TO4			124
-> +#define SRST_CVBS_CLK			125
-> +#define HRST_CVBS			126
-> +
-> +#define ARST_VPU_NIU			140
-> +#define HRST_VPU_NIU			141
-> +#define ARST_VPU			142
-> +#define HRST_VPU			143
-> +#define ARST_RKVDEC_NIU			144
-> +#define HRST_RKVDEC_NIU			145
-> +#define ARST_RKVDEC			146
-> +#define HRST_RKVDEC			147
-> +#define SRST_RKVDEC_CABAC		148
-> +#define SRST_RKVDEC_CORE		149
-> +#define ARST_RKVENC_NIU			150
-> +#define HRST_RKVENC_NIU			151
-> +#define ARST_RKVENC			152
-> +#define HRST_RKVENC			153
-> +#define SRST_RKVENC_CORE		154
-> +
-> +#define SRST_DSP_CORE			156
-> +#define SRST_DSP_SYS			157
-> +#define SRST_DSP_GLOBAL			158
-> +#define SRST_DSP_OECM			159
-> +#define PRST_DSP_IOP_NIU		160
-> +#define ARST_DSP_EPP_NIU		161
-> +#define ARST_DSP_EDP_NIU		162
-> +#define PRST_DSP_DBG_NIU		163
-> +#define PRST_DSP_CFG_NIU		164
-> +#define PRST_DSP_GRF			165
-> +#define PRST_DSP_MAILBOX		166
-> +#define PRST_DSP_INTC			167
-> +#define PRST_DSP_PFM_MON		169
-> +#define SRST_DSP_PFM_MON		170
-> +#define ARST_DSP_EDAP_NIU		171
-> +
-> +#define SRST_PMU			172
-> +#define SRST_PMU_I2C0			173
-> +#define PRST_PMU_I2C0			174
-> +#define PRST_PMU_GPIO0			175
-> +#define PRST_PMU_INTMEM			176
-> +#define PRST_PMU_PWM0			177
-> +#define SRST_PMU_PWM0			178
-> +#define PRST_PMU_GRF			179
-> +#define SRST_PMU_NIU			180
-> +#define SRST_PMU_PVTM			181
-> +#define ARST_DSP_EDP_PERF		184
-> +#define ARST_DSP_EPP_PERF		185
-> +
-> +#endif /* _DT_BINDINGS_CLK_ROCKCHIP_RK1108_H */
-> +
