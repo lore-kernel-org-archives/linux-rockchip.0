@@ -1,70 +1,41 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: enable sdmmc for rk1108-evb
-Date: Wed, 16 Nov 2016 13:28:42 +0100
-Message-ID: <5071766.aON0S2k73p@phil>
-References: <1479024799-29198-1-git-send-email-jacob-chen@iotwrt.com> <1479024799-29198-2-git-send-email-jacob-chen@iotwrt.com>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: add the sdmmc pinctrl for rk1108
+Date: Wed, 16 Nov 2016 13:42:28 +0100
+Message-ID: <17426494.06vbuIDA0O@phil>
+References: <1479024799-29198-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1479024799-29198-2-git-send-email-jacob-chen@iotwrt.com>
+In-Reply-To: <1479024799-29198-1-git-send-email-jacob-chen@iotwrt.com>
 Sender: linux-gpio-owner@vger.kernel.org
 To: Jacob Chen <jacob-chen@iotwrt.com>
 Cc: andy.yan@rock-chips.com, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 13. November 2016, 16:13:19 CET schrieb Jacob Chen:
+Am Sonntag, 13. November 2016, 16:13:18 CET schrieb Jacob Chen:
 > From: Jacob Chen <jacob2.chen@rock-chips.com>
-> 
-> This patch add sdmmc support for rk1108-evb, now I can load the rootfs
-> from sdmmc.
 > 
 > Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 > ---
->  arch/arm/boot/dts/rk1108-evb.dts | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
+>  arch/arm/boot/dts/rk1108.dtsi | 25 +++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/rk1108-evb.dts
-> b/arch/arm/boot/dts/rk1108-evb.dts index 3956cff..cea26e5 100644
-> --- a/arch/arm/boot/dts/rk1108-evb.dts
-> +++ b/arch/arm/boot/dts/rk1108-evb.dts
-> @@ -56,6 +56,18 @@
->  	};
->  };
+> diff --git a/arch/arm/boot/dts/rk1108.dtsi b/arch/arm/boot/dts/rk1108.dtsi
+> index 9dccfea..6a06ad7 100644
+> --- a/arch/arm/boot/dts/rk1108.dtsi
+> +++ b/arch/arm/boot/dts/rk1108.dtsi
+> @@ -321,6 +321,31 @@
+>  			input-enable;
+>  		};
 > 
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	card-detect-delay = <200>;
-> +	disable-wp;
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
-> +	status = "okay";
-> +};
-> +
->  &uart0 {
->  	status = "okay";
->  };
-> @@ -67,3 +79,12 @@
->  &uart2 {
->  	status = "okay";
->  };
-> +
-> +&pinctrl {
-> +
-> +	sdmmc {
-> +		sdmmc_pwr: sdmmc-pwr {
-> +			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up_drv_4ma>;
-> +		};
+> +        sdmmc {
 
-the above is unsued, and in general please use a fixed regulator as vmmc, as 
-all other  Rockchip boards do already, so that the mmc core can handle it 
-itself.
+I've fixed the intendation here (needed tabs instead of spaces) and moved the 
+block to its alphabetically correct position between i2c and uart nodes and 
+applied the result to my dts32 branch.
 
 
 Thanks
 Heiko
-
 
