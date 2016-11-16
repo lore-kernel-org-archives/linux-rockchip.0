@@ -1,74 +1,70 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 10/10] ARM: dts: rockchip: add rockchip RK1108 Evaluation board
-Date: Wed, 16 Nov 2016 12:59:27 +0100
-Message-ID: <5287367.F6IKuQ3eke@phil>
-References: <1479124550-24037-1-git-send-email-andy.yan@rock-chips.com> <1479125863-24646-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: enable sdmmc for rk1108-evb
+Date: Wed, 16 Nov 2016 13:28:42 +0100
+Message-ID: <5071766.aON0S2k73p@phil>
+References: <1479024799-29198-1-git-send-email-jacob-chen@iotwrt.com> <1479024799-29198-2-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1479125863-24646-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1479024799-29198-2-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: andy.yan@rock-chips.com, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. November 2016, 20:17:43 CET schrieb Andy Yan:
-> RK1108 EVB is designed by Rockchip for CVR field.
-> This patch add basic support for it, which can boot with
-> initramfs into shell.
+Am Sonntag, 13. November 2016, 16:13:19 CET schrieb Jacob Chen:
+> From: Jacob Chen <jacob2.chen@rock-chips.com>
 > 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> This patch add sdmmc support for rk1108-evb, now I can load the rootfs
+> from sdmmc.
 > 
+> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 > ---
+>  arch/arm/boot/dts/rk1108-evb.dts | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
 > 
-> Changes in v2:
-> - move the board in the rockchip.txt to the block of Rockchip boards
+> diff --git a/arch/arm/boot/dts/rk1108-evb.dts
+> b/arch/arm/boot/dts/rk1108-evb.dts index 3956cff..cea26e5 100644
+> --- a/arch/arm/boot/dts/rk1108-evb.dts
+> +++ b/arch/arm/boot/dts/rk1108-evb.dts
+> @@ -56,6 +56,18 @@
+>  	};
+>  };
 > 
->  Documentation/devicetree/bindings/arm/rockchip.txt |  5 +-
->  arch/arm/boot/dts/Makefile                         |  1 +
->  arch/arm/boot/dts/rk1108-evb.dts                   | 69
-> ++++++++++++++++++++++ 3 files changed, 74 insertions(+), 1 deletion(-)
->  create mode 100644 arch/arm/boot/dts/rk1108-evb.dts
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> b/Documentation/devicetree/bindings/arm/rockchip.txt index 10b92b5..e658b62
-> 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -1,6 +1,5 @@
->  Rockchip platforms device tree bindings
->  ---------------------------------------
-> -
->  - Kylin RK3036 board:
->      Required root node properties:
->        - compatible = "rockchip,kylin-rk3036", "rockchip,rk3036";
-
-dropped this unrelated change
-
-> @@ -111,6 +110,10 @@ Rockchip platforms device tree bindings
->      Required root node properties:
->        - compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
-> 
-> +- Rockchip RK1108 Evaluation board
-> +    Required root node properties:
-> +      - compatible = "rockchip,rk1108-evb", "rockchip,rk1108";
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	card-detect-delay = <200>;
+> +	disable-wp;
+> +	num-slots = <1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
+> +	status = "okay";
+> +};
 > +
->  - Rockchip RK3368 evb:
->      Required root node properties:
->        - compatible = "rockchip,rk3368-evb-act8846", "rockchip,rk3368";
+>  &uart0 {
+>  	status = "okay";
+>  };
+> @@ -67,3 +79,12 @@
+>  &uart2 {
+>  	status = "okay";
+>  };
+> +
+> +&pinctrl {
+> +
+> +	sdmmc {
+> +		sdmmc_pwr: sdmmc-pwr {
+> +			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up_drv_4ma>;
+> +		};
 
-binding moved to a separate patch and applied to my dts64 to prevent conflicts 
-with px5 addition.
-
-And the actual board dts of course applied to my dts32 branch.
+the above is unsued, and in general please use a fixed regulator as vmmc, as 
+all other  Rockchip boards do already, so that the mmc core can handle it 
+itself.
 
 
 Thanks
 Heiko
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
