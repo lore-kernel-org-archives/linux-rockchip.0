@@ -1,100 +1,159 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 1/3] dt-bindings: add documentation for rk1108 cru
-Date: Wed, 16 Nov 2016 16:49:21 +0800
-Message-ID: <1479286163-34789-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/3] soc: rockchip: add driver handling grf setup
+Date: Wed, 16 Nov 2016 17:33:21 +0800
+Message-ID: <95cd052e-7e0d-d13b-fedb-21f7b49d17bb@rock-chips.com>
+References: <20161115223900.30728-1-heiko@sntech.de>
+ <20161115223900.30728-3-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161115223900.30728-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the dt-binding documentation for the clock and reset unit
-found on Rockchip rk1108 SoCs.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Changes in v3:
-- fix mismatch of external clk input name
-- add hdmiphy and usbphy clk input
-
-Changes in v2: None
-
- .../bindings/clock/rockchip,rk1108-cru.txt         | 59 ++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
-
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
-new file mode 100644
-index 0000000..4da1261
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
-@@ -0,0 +1,59 @@
-+* Rockchip RK1108 Clock and Reset Unit
-+
-+The RK1108 clock controller generates and supplies clock to various
-+controllers within the SoC and also implements a reset controller for SoC
-+peripherals.
-+
-+Required Properties:
-+
-+- compatible: should be "rockchip,rk1108-cru"
-+- reg: physical base address of the controller and length of memory mapped
-+  region.
-+- #clock-cells: should be 1.
-+- #reset-cells: should be 1.
-+
-+Optional Properties:
-+
-+- rockchip,grf: phandle to the syscon managing the "general register files"
-+  If missing pll rates are not changeable, due to the missing pll lock status.
-+
-+Each clock is assigned an identifier and client nodes can use this identifier
-+to specify the clock which they consume. All available clocks are defined as
-+preprocessor macros in the dt-bindings/clock/rk1108-cru.h headers and can be
-+used in device tree sources. Similar macros exist for the reset sources in
-+these files.
-+
-+External clocks:
-+
-+There are several clocks that are generated outside the SoC. It is expected
-+that they are defined using standard clock bindings with following
-+clock-output-names:
-+ - "xin24m" - crystal input - required,
-+ - "ext_vip" - external VIP clock - optional
-+ - "ext_i2s" - external I2S clock - optional
-+ - "ext_gmac" - external GMAC clock - optional
-+ - "hdmiphy" - external clock input derived from HDMI PHY - optional
-+ - "usbphy" - external clock input derived from USB PHY - optional
-+
-+Example: Clock controller node:
-+
-+	cru: cru@20200000 {
-+		compatible = "rockchip,rk1108-cru";
-+		reg = <0x20200000 0x1000>;
-+		rockchip,grf = <&grf>;
-+
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+Example: UART controller node that consumes the clock generated by the clock
-+  controller:
-+
-+	uart0: serial@10230000 {
-+		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
-+		reg = <0x10230000 0x100>;
-+		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		clocks = <&cru SCLK_UART0>;
-+	};
--- 
-1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1NogMjAxNi8xMS8xNiA2OjM4LCBIZWlrbyBTdHVlYm5lciDQtLXAOgo+IFRoZSBHZW5lcmFsIFJl
+Z2lzdGVyIEZpbGVzIGFyZSBhbiBhcmVhIG9mIHJlZ2lzdGVycyBjb250YWluaW5nIGEgbG90Cj4g
+b2Ygc2luZ2xlLWJpdCBzZXR0aW5ncyBmb3IgbnVtZXJvdXMgY29tcG9uZW50cyBhcyB3ZWxsIGZ1
+bGwgY29tcG9uZW50cwo+IGxpa2UgdXNicGh5IGNvbnRyb2wuIFRoZXJlZm9yZSBhbGwgdXNlZCBj
+b21wb25lbnRzIGFyZSBhY2Nlc3NlZAo+IHZpYSB0aGUgc3lzY29uIHByb3ZpZGVkIGJ5IHRoZSBn
+cmYgbm9kZXMgb3IgZnJvbSB0aGUgc3ViLWRldmljZXMKPiBjcmVhdGVkIHRocm91Z2ggdGhlIHNp
+bXBsZS1tZmQgY3JlYXRlZCBmcm9tIHRoZSBncmYgbm9kZS4KPgo+IFNvbWUgc2V0dGluZ3MgYXJl
+IG5vdCB1c2VkIGJ5IGFueXRoaW5nIGJ1dCB3aWxsIG5lZWQgdG8gYmUgc2V0IHVwCj4gYWNjb3Jk
+aW5nIHRvIGV4cGVjdGF0aW9ucyBvbiB0aGUga2VybmVsIHNpZGUuCj4KPiBCZXN0IGV4YW1wbGUg
+aXMgdGhlIGZvcmNlX2p0YWcgc2V0dGluZywgd2hpY2ggZGVmYXVsdHMgdG8gb24gYW5kCj4gcmVz
+dWx0cyBpbiB0aGUgc29jIHN3aXRjaGluZyB0aGUgcGluLW91dHB1dHMgYmV0d2VlbiBqdGFnIGFu
+ZCBzZG1tYwo+IGF1dG9tYXRpY2FsbHkgZGVwZW5kaW5nIG9uIHRoZSBjYXJkLWRldGVjdCBzdGF0
+dXMuIFRoaXMgY29uZmxpY3RzCj4gaGVhdmlseSB3aXRoIGhvdyB0aGUgZHdfbW1jIGRyaXZlciBl
+eHBlY3RzIHRvIGRvIGl0cyB3b3JrIGFuZCBhbHNvCj4gd2l0aCB0aGUgY2xvY2stY29udHJvbGxl
+ciwgd2hpY2ggaGFzIG1vc3QgbGlrZWx5IGRlYWN0aXZhdGVkIHRoZQo+IGp0YWcgY2xvY2sgZHVl
+IHRvIGl0IGJlaW5nIHVudXNlZC4KCkkgaGF0ZSBmb3JjZV9qdGFnIHBlcnNvbmFsbHkuLi4gOikK
+Cj4KPiBTbyBmYXIgdGhlIGhhbmRsaW5nIG9mIHRoaXMgc2V0dGluZyB3YXMgbGl2aW5nIGluIHRo
+ZSBtYWNoLXJvY2tjaGlwCj4gY29kZSBmb3IgdGhlIGFybTMyLWJhc2VkIHJrMzI4OCBidXQgdGhh
+dCBvZiBjb3Vyc2UgZG9lc24ndCB3b3JrCj4gZm9yIGFybTY0IHNvY3MgYW5kIHdvdWxkIGFsc28g
+bG9vayB1Z2x5IGZvciBmdXJ0aGVyIGFybTMyIHNvY3MuCgp5ZXMsIEkgZGlkIHRoaXMgaW5zaWRl
+IHRoZSBsb2FkZXIuLi4uIHdoZW4gcnVubmluZyBhcm02NAoKPgo+IEFsc28gYWx3YXlzIGRpc2Fi
+bGluZyB0aGlzIHNldHRpbmcgaXMgcXVpdGUgc3BlY2lmaWMgdG8gbGludXggYW5kCj4gaXRzIHN1
+YnN5c3RlbXMsIG90aGVyIG9wZXJhdGluZyBzeXN0ZW1zIG1pZ2h0IHByZWZlciBvdGhlciBzZXR0
+aW5ncywKPiBzbyB0aGF0IHRoZSBib290bG9hZGVyIGNhbm5vdCByZWFsbHkgc2V0IGEgc2FuZSBk
+ZWZhdWx0IGZvciBhbGwuCj4KPiBTbyBpbnRyb2R1Y2UgYSB0b3AtbGV2ZWwgZHJpdmVyIGZvciB0
+aGUgZ3JmIHRoYXQgaGFuZGxlcyB0aGVzZQo+IHNldHRpbmdzIHRoYXQgbmVlZCB0byBiZSBhIGNl
+cnRhaW4gd2F5IGJ1dCBub2JvZHkgY2FyZXMgYWJvdXQuCj4KPiBPdGhlciBuZWVkZWQgc2V0dGlu
+Z3MgbWlnaHQgc3VyZmFjZSBpbiB0aGUgZnV0dXJlIGFuZCBjYW4gdGhlbgo+IGJlIGFkZGVkIGhl
+cmUsIGJ1dCBvbmx5IGFzIGEgbGFzdCBvcHRpb24uIElkZWFsbHkgZ2VuZXJhbCBHUkYKPiBzZXR0
+aW5ncyBzaG91bGQgYmUgaGFuZGxlZCBpbiB0aGUgZHJpdmVyIG5lZWRpbmcgdGhlbS4KPgo+IFNp
+Z25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gIGRy
+aXZlcnMvc29jL3JvY2tjaGlwL0tjb25maWcgIHwgIDEwICsrKysKPiAgZHJpdmVycy9zb2Mvcm9j
+a2NoaXAvTWFrZWZpbGUgfCAgIDEgKwo+ICBkcml2ZXJzL3NvYy9yb2NrY2hpcC9ncmYuYyAgICB8
+IDEzNCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMyBmaWxl
+cyBjaGFuZ2VkLCAxNDUgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9zb2Mvcm9ja2NoaXAvZ3JmLmMKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9yb2NrY2hp
+cC9LY29uZmlnIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvS2NvbmZpZwo+IGluZGV4IDcxNDBmZjgu
+LjIwZGE1NWQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zb2Mvcm9ja2NoaXAvS2NvbmZpZwo+ICsr
+KyBiL2RyaXZlcnMvc29jL3JvY2tjaGlwL0tjb25maWcKPiBAQCAtMyw2ICszLDE2IEBAIGlmIEFS
+Q0hfUk9DS0NISVAgfHwgQ09NUElMRV9URVNUCj4gICMKPiAgIyBSb2NrY2hpcCBTb2MgZHJpdmVy
+cwo+ICAjCj4gKwo+ICtjb25maWcgUk9DS0NISVBfR1JGCj4gKwlib29sCj4gKwlkZWZhdWx0IHkK
+PiArCWhlbHAKPiArCSAgVGhlIEdlbmVyYWwgUmVnaXN0ZXIgRmlsZXMgYXJlIGEgY2VudHJhbCBj
+b21wb25lbnQgcHJvdmlkaW5nCj4gKwkgIHNwZWNpYWwgYWRkaXRpb25hbCBzZXR0aW5ncyByZWdp
+c3RlcnMgZm9yIGEgbG90IG9mIHNvYy1jb21wb25lbnRzLgo+ICsJICBJbiBhIGxvdCBvZiBjYXNl
+cyB0aGVyZSBhbHNvIG5lZWQgdG8gYmUgZGVmYXVsdCBzZXR0aW5ncyBpbml0aWFsaXplZAo+ICsJ
+ICB0byBtYWtlIHNvbWUgb2YgdGhlbSBjb25mb3JtIHRvIGV4cGVjdGF0aW9ucyBvZiB0aGUga2Vy
+bmVsLgo+ICsKPiAgY29uZmlnIFJPQ0tDSElQX1BNX0RPTUFJTlMKPiAgICAgICAgICBib29sICJS
+b2NrY2hpcCBnZW5lcmljIHBvd2VyIGRvbWFpbiIKPiAgICAgICAgICBkZXBlbmRzIG9uIFBNCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc29jL3JvY2tjaGlwL01ha2VmaWxlIGIvZHJpdmVycy9zb2Mv
+cm9ja2NoaXAvTWFrZWZpbGUKPiBpbmRleCAzZDczZDA2Li5jODUxZmEwIDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvc29jL3JvY2tjaGlwL01ha2VmaWxlCj4gKysrIGIvZHJpdmVycy9zb2Mvcm9ja2No
+aXAvTWFrZWZpbGUKPiBAQCAtMSw0ICsxLDUgQEAKPiAgIwo+ICAjIFJvY2tjaGlwIFNvYyBkcml2
+ZXJzCj4gICMKPiArb2JqLSQoQ09ORklHX1JPQ0tDSElQX0dSRikgKz0gZ3JmLm8KPiAgb2JqLSQo
+Q09ORklHX1JPQ0tDSElQX1BNX0RPTUFJTlMpICs9IHBtX2RvbWFpbnMubwo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL3NvYy9yb2NrY2hpcC9ncmYuYyBiL2RyaXZlcnMvc29jL3JvY2tjaGlwL2dyZi5j
+Cj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi4wYzg1NDc2YQo+IC0tLSAv
+ZGV2L251bGwKPiArKysgYi9kcml2ZXJzL3NvYy9yb2NrY2hpcC9ncmYuYwo+IEBAIC0wLDAgKzEs
+MTM0IEBACj4gKy8qCj4gKyAqIFJvY2tjaGlwIEdlbmVyaWMgUmVnaXN0ZXIgRmlsZXMgc2V0dXAK
+PiArICoKPiArICogQ29weXJpZ2h0IChjKSAyMDE2IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRl
+Y2guZGU+Cj4gKyAqCj4gKyAqIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2Fu
+IHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9kaWZ5Cj4gKyAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBv
+ZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgdmVyc2lvbiAyIGFzCj4gKyAqIHB1Ymxp
+c2hlZCBieSB0aGUgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLgo+ICsgKi8KPiArCj4gKyNpbmNs
+dWRlIDxsaW51eC9lcnIuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ICsjaW5jbHVk
+ZSA8bGludXgvbWZkL3N5c2Nvbi5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4g
+KyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3Jl
+Z21hcC5oPgoKVGhlIG9yZGVyIDopCgo+ICsKPiArI2RlZmluZSBISVdPUkRfVVBEQVRFKHZhbCwg
+bWFzaywgc2hpZnQpIFwKPiArCQkoKHZhbCkgPDwgKHNoaWZ0KSB8IChtYXNrKSA8PCAoKHNoaWZ0
+KSArIDE2KSkKPiArCj4gK3N0cnVjdCByb2NrY2hpcF9ncmZfdmFsdWUgewo+ICsJY29uc3QgY2hh
+ciAqZGVzYzsKPiArCXUzMiByZWc7Cj4gKwl1MzIgdmFsOwo+ICt9Owo+ICsKPiArc3RydWN0IHJv
+Y2tjaGlwX2dyZl9pbmZvIHsKPiArCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9ncmZfdmFsdWUgKnZh
+bHVlczsKPiArCWludCBudW1fdmFsdWVzOwo+ICt9Owo+ICsKPiArI2RlZmluZSBSSzMwMzZfR1JG
+X1NPQ19DT04wCQkweDE0MAo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9ncmZf
+dmFsdWUgcmszMDM2X2RlZmF1bHRzW10gX19pbml0Y29uc3QgPSB7Cj4gKwkvKgo+ICsJICogRGlz
+YWJsZSBhdXRvIGp0YWcvc2RtbWMgc3dpdGNoaW5nIHRoYXQgY2F1c2VzIGlzc3VlcyB3aXRoIHRo
+ZQo+ICsJICogY2xvY2stZnJhbWV3b3JrIGFuZCB0aGUgbW1jIGNvbnRyb2xsZXJzIG1ha2luZyB0
+aGVtIHVucmVsaWFibGUuCj4gKwkgKi8KPiArCXsgImp0YWcgc3dpdGNoaW5nIiwgUkszMDM2X0dS
+Rl9TT0NfQ09OMCwgSElXT1JEX1VQREFURSgwLCAxLCAxMSkgfSwKPiArfTsKPiArCj4gK3N0YXRp
+YyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZ3JmX2luZm8gcmszMDM2X2dyZiBfX2luaXRjb25zdCA9
+IHsKPiArCS52YWx1ZXMgPSByazMwMzZfZGVmYXVsdHMsCj4gKwkubnVtX3ZhbHVlcyA9IEFSUkFZ
+X1NJWkUocmszMDM2X2RlZmF1bHRzKSwKPiArfTsKPiArCj4gKyNkZWZpbmUgUkszMjg4X0dSRl9T
+T0NfQ09OMAkJMHgyNDQKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZ3JmX3Zh
+bHVlIHJrMzI4OF9kZWZhdWx0c1tdIF9faW5pdGNvbnN0ID0gewo+ICsJeyAianRhZyBzd2l0Y2hp
+bmciLCBSSzMyODhfR1JGX1NPQ19DT04wLCBISVdPUkRfVVBEQVRFKDAsIDEsIDEyKSB9LAo+ICt9
+Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9ncmZfaW5mbyByazMyODhfZ3Jm
+IF9faW5pdGNvbnN0ID0gewo+ICsJLnZhbHVlcyA9IHJrMzI4OF9kZWZhdWx0cywKPiArCS5udW1f
+dmFsdWVzID0gQVJSQVlfU0laRShyazMyODhfZGVmYXVsdHMpLAo+ICt9Owo+ICsKPiArI2RlZmlu
+ZSBSSzMzNjhfR1JGX1NPQ19DT04xNQkJMHg0M2MKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qg
+cm9ja2NoaXBfZ3JmX3ZhbHVlIHJrMzM2OF9kZWZhdWx0c1tdIF9faW5pdGNvbnN0ID0gewo+ICsJ
+eyAianRhZyBzd2l0Y2hpbmciLCBSSzMzNjhfR1JGX1NPQ19DT04xNSwgSElXT1JEX1VQREFURSgw
+LCAxLCAxMykgfSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZ3Jm
+X2luZm8gcmszMzY4X2dyZiBfX2luaXRjb25zdCA9IHsKPiArCS52YWx1ZXMgPSByazMzNjhfZGVm
+YXVsdHMsCj4gKwkubnVtX3ZhbHVlcyA9IEFSUkFZX1NJWkUocmszMzY4X2RlZmF1bHRzKSwKPiAr
+fTsKPiArCj4gKyNkZWZpbmUgUkszMzk5X0dSRl9TT0NfQ09ONwkJMHhlMjFjCj4gKwo+ICtzdGF0
+aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX2dyZl92YWx1ZSByazMzOTlfZGVmYXVsdHNbXSBfX2lu
+aXRjb25zdCA9IHsKPiArCXsgImp0YWcgc3dpdGNoaW5nIiwgUkszMzk5X0dSRl9TT0NfQ09ONywg
+SElXT1JEX1VQREFURSgwLCAxLCAxMikgfSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1
+Y3Qgcm9ja2NoaXBfZ3JmX2luZm8gcmszMzk5X2dyZiBfX2luaXRjb25zdCA9IHsKPiArCS52YWx1
+ZXMgPSByazMzOTlfZGVmYXVsdHMsCj4gKwkubnVtX3ZhbHVlcyA9IEFSUkFZX1NJWkUocmszMzk5
+X2RlZmF1bHRzKSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
+IHJvY2tjaGlwX2dyZl9kdF9tYXRjaFtdIF9faW5pdGNvbnN0ID0gewo+ICsJewo+ICsJCS5jb21w
+YXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi1ncmYiLAo+ICsJCS5kYXRhID0gKHZvaWQgKikmcmsz
+MDM2X2dyZiwKPiArCX0sIHsKPiArCQkuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMyODgtZ3Jm
+IiwKPiArCQkuZGF0YSA9ICh2b2lkICopJnJrMzI4OF9ncmYsCj4gKwl9LCB7Cj4gKwkJLmNvbXBh
+dGlibGUgPSAicm9ja2NoaXAscmszMzY4LWdyZiIsCj4gKwkJLmRhdGEgPSAodm9pZCAqKSZyazMz
+NjhfZ3JmLAo+ICsJfSwgewo+ICsJCS5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1ncmYi
+LAo+ICsJCS5kYXRhID0gKHZvaWQgKikmcmszMzk5X2dyZiwKPiArCX0sCj4gKwl7IC8qIHNlbnRp
+bmVsICovIH0sCj4gK307Cj4gKwo+ICtzdGF0aWMgaW50IF9faW5pdCByb2NrY2hpcF9ncmZfaW5p
+dCh2b2lkKQo+ICt7Cj4gKwljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZ3JmX2luZm8gKmdyZl9pbmZv
+Owo+ICsJY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqbWF0Y2g7Cj4gKwlzdHJ1Y3QgZGV2aWNl
+X25vZGUgKm5wOwo+ICsJc3RydWN0IHJlZ21hcCAqZ3JmOwo+ICsJaW50IHJldCwgaTsKPiArCj4g
+KwlucCA9IG9mX2ZpbmRfbWF0Y2hpbmdfbm9kZV9hbmRfbWF0Y2goTlVMTCwgcm9ja2NoaXBfZ3Jm
+X2R0X21hdGNoLCAmbWF0Y2gpOwo+ICsJaWYgKCFucCkKPiArCQlyZXR1cm4gLUVOT0RFVjsKPiAr
+CWlmICghbWF0Y2ggfHwgIW1hdGNoLT5kYXRhKSB7Cj4gKwkJcHJfZXJyKCIlczogbWlzc2luZyBn
+cmYgZGF0YVxuIiwgX19mdW5jX18pOwo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsJfQo+ICsKPiAr
+CWdyZl9pbmZvID0gbWF0Y2gtPmRhdGE7Cj4gKwo+ICsJZ3JmID0gc3lzY29uX25vZGVfdG9fcmVn
+bWFwKG5wKTsKPiArCWlmIChJU19FUlIoZ3JmKSkgewo+ICsJCXByX2VycigiJXM6IGNvdWxkIG5v
+dCBnZXQgZ3JmIHN5c2NvblxuIiwgX19mdW5jX18pOwo+ICsJCXJldHVybiBQVFJfRVJSKGdyZik7
+Cj4gKwl9Cj4gKwo+ICsJZm9yIChpID0gMDsgaSA8IGdyZl9pbmZvLT5udW1fdmFsdWVzOyBpKysp
+IHsKPiArCQljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZ3JmX3ZhbHVlICp2YWwgPSAmZ3JmX2luZm8t
+PnZhbHVlc1tpXTsKPiArCj4gKwkJcHJfZGVidWcoIiVzOiBhZGp1c3RpbmcgJXMgaW4gJSM2eCB0
+byAlIzEweFxuIiwgX19mdW5jX18sCj4gKwkJCXZhbC0+ZGVzYywgdmFsLT5yZWcsIHZhbC0+dmFs
+KTsKPiArCQlyZXQgPSByZWdtYXBfd3JpdGUoZ3JmLCB2YWwtPnJlZywgdmFsLT52YWwpOwo+ICsJ
+CWlmIChyZXQgPCAwKQo+ICsJCQlwcl9lcnIoIiVzOiB3cml0ZSB0byAlIzZ4IGZhaWxlZCB3aXRo
+ICVkXG4iLAo+ICsJCQkgICAgICAgX19mdW5jX18sIHZhbC0+cmVnLCByZXQpOwoKU28sIHdoZW4g
+ZmFpbGluZyB0byBkbyBvbmUgb2YgdGhlIHNldHRpbmdzLCBzaG91bGQgd2Ugc3RpbGwgbGV0IGl0
+IGdvZXM/ClNvbWV0aW1lcyB0aGUgbG9nIG9mIHBvc3Rjb3JlX2luaXRjYWxsIGlzIGVhc3kgdG8g
+YmUgbmVnbGVjdGVkIHdoZW4KcGVvcGxlIGZpbmFsbHkgZmluZCBwcm9ibGVtcyBsYXRlciBidXQg
+dGhlIHZlcnkgZWFybGllciBsb2cgd2FzIG1pc3NpbmcKZHVlIHRvIHdoYXRldmVyIHJlYXNvbiBs
+aWtlIGJ1ZmZlciBsaW1pdGF0aW9uLCBldGMuCgoKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiAr
+fQo+ICtwb3N0Y29yZV9pbml0Y2FsbChyb2NrY2hpcF9ncmZfaW5pdCk7Cj4KCgotLSAKQmVzdCBS
+ZWdhcmRzClNoYXduIExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
