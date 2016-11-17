@@ -1,13 +1,16 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 2/3] soc: rockchip: add driver handling grf setup
-Date: Thu, 17 Nov 2016 00:03:03 +0100
-Message-ID: <20161116230304.8432-3-heiko@sntech.de>
-References: <20161116230304.8432-1-heiko@sntech.de>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/3] soc: rockchip: add driver handling grf setup
+Date: Thu, 17 Nov 2016 09:38:11 +0800
+Message-ID: <a01a1a8c-b01b-4335-b69c-bb99dec9d6d6@rock-chips.com>
+References: <20161115223900.30728-1-heiko@sntech.de>
+ <20161115223900.30728-3-heiko@sntech.de>
+ <95cd052e-7e0d-d13b-fedb-21f7b49d17bb@rock-chips.com>
+ <5037506.GEHFh4fruS@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161116230304.8432-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <5037506.GEHFh4fruS@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,220 +20,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: arnd-r2nGTMty4D4@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The General Register Files are an area of registers containing a lot
-of single-bit settings for numerous components as well full components
-like usbphy control. Therefore all used components are accessed
-via the syscon provided by the grf nodes or from the sub-devices
-created through the simple-mfd created from the grf node.
-
-Some settings are not used by anything but will need to be set up
-according to expectations on the kernel side.
-
-Best example is the force_jtag setting, which defaults to on and
-results in the soc switching the pin-outputs between jtag and sdmmc
-automatically depending on the card-detect status. This conflicts
-heavily with how the dw_mmc driver expects to do its work and also
-with the clock-controller, which has most likely deactivated the
-jtag clock due to it being unused.
-
-So far the handling of this setting was living in the mach-rockchip
-code for the arm32-based rk3288 but that of course doesn't work
-for arm64 socs and would also look ugly for further arm32 socs.
-
-Also always disabling this setting is quite specific to linux and
-its subsystems, other operating systems might prefer other settings,
-so that the bootloader cannot really set a sane default for all.
-
-So introduce a top-level driver for the grf that handles these
-settings that need to be a certain way but nobody cares about.
-
-Other needed settings might surface in the future and can then
-be added here, but only as a last option. Ideally general GRF
-settings should be handled in the driver needing them.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/soc/rockchip/Kconfig  |  10 ++++
- drivers/soc/rockchip/Makefile |   1 +
- drivers/soc/rockchip/grf.c    | 133 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 144 insertions(+)
- create mode 100644 drivers/soc/rockchip/grf.c
-
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index 7140ff8..20da55d 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -3,6 +3,16 @@ if ARCH_ROCKCHIP || COMPILE_TEST
- #
- # Rockchip Soc drivers
- #
-+
-+config ROCKCHIP_GRF
-+	bool
-+	default y
-+	help
-+	  The General Register Files are a central component providing
-+	  special additional settings registers for a lot of soc-components.
-+	  In a lot of cases there also need to be default settings initialized
-+	  to make some of them conform to expectations of the kernel.
-+
- config ROCKCHIP_PM_DOMAINS
-         bool "Rockchip generic power domain"
-         depends on PM
-diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
-index 3d73d06..c851fa0 100644
---- a/drivers/soc/rockchip/Makefile
-+++ b/drivers/soc/rockchip/Makefile
-@@ -1,4 +1,5 @@
- #
- # Rockchip Soc drivers
- #
-+obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
- obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-new file mode 100644
-index 0000000..190b0ed
---- /dev/null
-+++ b/drivers/soc/rockchip/grf.c
-@@ -0,0 +1,134 @@
-+/*
-+ * Rockchip Generic Register Files setup
-+ *
-+ * Copyright (c) 2016 Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
-+
-+#include <linux/err.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define HIWORD_UPDATE(val, mask, shift) \
-+		((val) << (shift) | (mask) << ((shift) + 16))
-+
-+struct rockchip_grf_value {
-+	const char *desc;
-+	u32 reg;
-+	u32 val;
-+};
-+
-+struct rockchip_grf_info {
-+	const struct rockchip_grf_value *values;
-+	int num_values;
-+};
-+
-+#define RK3036_GRF_SOC_CON0		0x140
-+
-+static const struct rockchip_grf_value rk3036_defaults[] __initconst = {
-+	/*
-+	 * Disable auto jtag/sdmmc switching that causes issues with the
-+	 * clock-framework and the mmc controllers making them unreliable.
-+	 */
-+	{ "jtag switching", RK3036_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 11) },
-+};
-+
-+static const struct rockchip_grf_info rk3036_grf __initconst = {
-+	.values = rk3036_defaults,
-+	.num_values = ARRAY_SIZE(rk3036_defaults),
-+};
-+
-+#define RK3288_GRF_SOC_CON0		0x244
-+
-+static const struct rockchip_grf_value rk3288_defaults[] __initconst = {
-+	{ "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
-+};
-+
-+static const struct rockchip_grf_info rk3288_grf __initconst = {
-+	.values = rk3288_defaults,
-+	.num_values = ARRAY_SIZE(rk3288_defaults),
-+};
-+
-+#define RK3368_GRF_SOC_CON15		0x43c
-+
-+static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
-+	{ "jtag switching", RK3368_GRF_SOC_CON15, HIWORD_UPDATE(0, 1, 13) },
-+};
-+
-+static const struct rockchip_grf_info rk3368_grf __initconst = {
-+	.values = rk3368_defaults,
-+	.num_values = ARRAY_SIZE(rk3368_defaults),
-+};
-+
-+#define RK3399_GRF_SOC_CON7		0xe21c
-+
-+static const struct rockchip_grf_value rk3399_defaults[] __initconst = {
-+	{ "jtag switching", RK3399_GRF_SOC_CON7, HIWORD_UPDATE(0, 1, 12) },
-+};
-+
-+static const struct rockchip_grf_info rk3399_grf __initconst = {
-+	.values = rk3399_defaults,
-+	.num_values = ARRAY_SIZE(rk3399_defaults),
-+};
-+
-+static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
-+	{
-+		.compatible = "rockchip,rk3036-grf",
-+		.data = (void *)&rk3036_grf,
-+	}, {
-+		.compatible = "rockchip,rk3288-grf",
-+		.data = (void *)&rk3288_grf,
-+	}, {
-+		.compatible = "rockchip,rk3368-grf",
-+		.data = (void *)&rk3368_grf,
-+	}, {
-+		.compatible = "rockchip,rk3399-grf",
-+		.data = (void *)&rk3399_grf,
-+	},
-+	{ /* sentinel */ },
-+};
-+
-+static int __init rockchip_grf_init(void)
-+{
-+	const struct rockchip_grf_info *grf_info;
-+	const struct of_device_id *match;
-+	struct device_node *np;
-+	struct regmap *grf;
-+	int ret, i;
-+
-+	np = of_find_matching_node_and_match(NULL, rockchip_grf_dt_match,
-+					     &match);
-+	if (!np)
-+		return -ENODEV;
-+	if (!match || !match->data) {
-+		pr_err("%s: missing grf data\n", __func__);
-+		return -EINVAL;
-+	}
-+
-+	grf_info = match->data;
-+
-+	grf = syscon_node_to_regmap(np);
-+	if (IS_ERR(grf)) {
-+		pr_err("%s: could not get grf syscon\n", __func__);
-+		return PTR_ERR(grf);
-+	}
-+
-+	for (i = 0; i < grf_info->num_values; i++) {
-+		const struct rockchip_grf_value *val = &grf_info->values[i];
-+
-+		pr_debug("%s: adjusting %s in %#6x to %#10x\n", __func__,
-+			val->desc, val->reg, val->val);
-+		ret = regmap_write(grf, val->reg, val->val);
-+		if (ret < 0)
-+			pr_err("%s: write to %#6x failed with %d\n",
-+			       __func__, val->reg, ret);
-+	}
-+
-+	return 0;
-+}
-+postcore_initcall(rockchip_grf_init);
--- 
-2.10.2
+SGkgSGVpa28sCgrlnKggMjAxNi8xMS8xNiAxNzo1OCwgSGVpa28gU3R1ZWJuZXIg5YaZ6YGTOgo+
+IEhpIFNoYXduLAo+Cj4gQW0gTWl0dHdvY2gsIDE2LiBOb3ZlbWJlciAyMDE2LCAxNzozMzoyMSBD
+RVQgc2NocmllYiBTaGF3biBMaW46Cj4+IOWcqCAyMDE2LzExLzE2IDY6MzgsIEhlaWtvIFN0dWVi
+bmVyIOWGmemBkzoKPj4+IFRoZSBHZW5lcmFsIFJlZ2lzdGVyIEZpbGVzIGFyZSBhbiBhcmVhIG9m
+IHJlZ2lzdGVycyBjb250YWluaW5nIGEgbG90Cj4+PiBvZiBzaW5nbGUtYml0IHNldHRpbmdzIGZv
+ciBudW1lcm91cyBjb21wb25lbnRzIGFzIHdlbGwgZnVsbCBjb21wb25lbnRzCj4+PiBsaWtlIHVz
+YnBoeSBjb250cm9sLiBUaGVyZWZvcmUgYWxsIHVzZWQgY29tcG9uZW50cyBhcmUgYWNjZXNzZWQK
+Pj4+IHZpYSB0aGUgc3lzY29uIHByb3ZpZGVkIGJ5IHRoZSBncmYgbm9kZXMgb3IgZnJvbSB0aGUg
+c3ViLWRldmljZXMKPj4+IGNyZWF0ZWQgdGhyb3VnaCB0aGUgc2ltcGxlLW1mZCBjcmVhdGVkIGZy
+b20gdGhlIGdyZiBub2RlLgo+Pj4KCi0tLS04PC0tLS0tLS0tLS0tLS0tLS0KWy4uLl0KCj4+PiAr
+CWZvciAoaSA9IDA7IGkgPCBncmZfaW5mby0+bnVtX3ZhbHVlczsgaSsrKSB7Cj4+PiArCQljb25z
+dCBzdHJ1Y3Qgcm9ja2NoaXBfZ3JmX3ZhbHVlICp2YWwgPSAmZ3JmX2luZm8tPnZhbHVlc1tpXTsK
+Pj4+ICsKPj4+ICsJCXByX2RlYnVnKCIlczogYWRqdXN0aW5nICVzIGluICUjNnggdG8gJSMxMHhc
+biIsIF9fZnVuY19fLAo+Pj4gKwkJCXZhbC0+ZGVzYywgdmFsLT5yZWcsIHZhbC0+dmFsKTsKPj4+
+ICsJCXJldCA9IHJlZ21hcF93cml0ZShncmYsIHZhbC0+cmVnLCB2YWwtPnZhbCk7Cj4+PiArCQlp
+ZiAocmV0IDwgMCkKPj4+ICsJCQlwcl9lcnIoIiVzOiB3cml0ZSB0byAlIzZ4IGZhaWxlZCB3aXRo
+ICVkXG4iLAo+Pj4gKwkJCSAgICAgICBfX2Z1bmNfXywgdmFsLT5yZWcsIHJldCk7Cj4+Cj4+IFNv
+LCB3aGVuIGZhaWxpbmcgdG8gZG8gb25lIG9mIHRoZSBzZXR0aW5ncywgc2hvdWxkIHdlIHN0aWxs
+IGxldCBpdCBnb2VzPwo+PiBTb21ldGltZXMgdGhlIGxvZyBvZiBwb3N0Y29yZV9pbml0Y2FsbCBp
+cyBlYXN5IHRvIGJlIG5lZ2xlY3RlZCB3aGVuCj4+IHBlb3BsZSBmaW5hbGx5IGZpbmQgcHJvYmxl
+bXMgbGF0ZXIgYnV0IHRoZSB2ZXJ5IGVhcmxpZXIgbG9nIHdhcyBtaXNzaW5nCj4+IGR1ZSB0byB3
+aGF0ZXZlciByZWFzb24gbGlrZSBidWZmZXIgbGltaXRhdGlvbiwgZXRjLgo+Cj4gSSBleHBlY3Qg
+ZXJyb3JzIGhlcmUgdG8gYmUgdmVyeSByYXJlLiBJLmUuIERvdWcgdGhvdWdodCB0aGF0IHJlZ21h
+cCBtaWdodAo+IHJldHVybiBlcnJvcnMgaWYgd2Ugd3JpdGUgb3V0c2lkZSB0aGUgbWFwcGVkIHJl
+Z2lvbiwgd2hpY2ggd291bGQgbWVhbiBzb21lb25lCj4gcmVhbGx5IG1lc3NlZCB1cCBpbiB0aGlz
+IGNvcmUgY29tcG9uZW50IG9yIGEgY29yZS1lbGVtZW50IG9mIHRoZSBkdHMuCj4gQnV0IGluIGdl
+bmVyYWwgdGhlIEdSRiBpcyBhbHdheXMgYSBtbWlvLXJlZ21hcCwgc28gdGhlcmUgd29uJ3QgYmUg
+YW55IGkyYy9zcGkvCj4gd2hhdGV2ZXIgZXJyb3JzIHBvc3NpYmxlLgoKSSB3YXMganVzdCB0aGlu
+a2luZyBhYm91dCB0aGUgc2NhbGFiaWxpdHkgdGhhdCBpbiB0aGUgZnV0dXJlIHNvbWUgb2YgdGhl
+CkdSRiBzZXR0aW5ncyBtYXkgZGVwZW5kIG9uIGdlbnBkIG9yIGNsb2NrIGV2ZW4gaWYgdGhleSBh
+cmUgb25seSBhCm1taW8tcmVnbWFwIGJ1dCB0aGV5IGRvbid0IGJlbG9uZyB0byB0aGUgZ2VuZXJh
+bCBwZC9jbG9jayBmb3IgR1JGLCBmb3IKaW5zdGFuY2UsIHNvbWUgb2YgdGhlIFBIWXMnIG9yIGNv
+bnRyb2xsZXIncyBjYXAobGlrZSBlbW1jKSBzZXR0aW5ncy4KCkJ1dCwgSUlSQywgeW91IHN1Z2dl
+c3RlZCB0aGlzIGRyaXZlciBzaG91bGRuJ3QgYmUgYSBjYXRjaGFsbCwgYW5kIHdlCm5vdyBhc2sg
+dGhlIGRyaXZlcnMgb2YgY29udHJvbGxlcnMgYW5kIHBoeXMgdG8gdGFrZSBvdmVyIHRoaXMsIHNv
+IEkKZ3Vlc3Mgd2Ugd29uJ3QgcHV0IHRob3NlIHNldHRpbmdzIGhlcmUgZXZlci4gOikKClRoYW5r
+cyBmb3IgZXhwbGFpbmluZyB0aGlzLgoKPgo+IEFsc28gc2V0dGluZ3MgYXJlIHByZXR0eSBpbmRp
+dmlkdWFsLCBzbyBpZiBzZXR0aW5nIDEgZmFpbHMsIHNldHRpbmcgMiBjYW4KPiBzdGlsbCBzdWNj
+ZWVkIGFuZCB0aGUgYm9vdCBjYW4gY29udGludWUgc29tZXdoYXQgZmFydGhlci4KPgoKc3VyZQoK
+PiBUaGUgb3ZlcmFsbCB0YXJnZXQgaXMgc3VwcG9zZWQgdG8gYWx3YXlzIGJvb3QgYXMgZmFyIGFz
+IHBvc3NpYmxlLCBzbyB0aGF0Cj4gcGVvcGxlIG1pZ2h0IHJlY292ZXIgb3IgZ2V0IG1vcmUgaW5m
+b3JtYXRpb24gYW5kIG5vdCBmYWlsIChhbmQgZGllKSBlYXJseS4KPgoKb2ssIGdvdCBpdC4KCj4K
+PiBIZWlrbwo+Cj4KPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
