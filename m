@@ -1,14 +1,12 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/3] soc: rockchip: add driver handling grf setup
-Date: Thu, 17 Nov 2016 10:12:01 +0100
-Message-ID: <3512052.5NJHIQHqMY@phil>
-References: <20161115223900.30728-1-heiko@sntech.de> <5037506.GEHFh4fruS@phil>
- <a01a1a8c-b01b-4335-b69c-bb99dec9d6d6@rock-chips.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] phy: rockchip-inno-usb2: support otg-port for rk3399
+Date: Thu, 17 Nov 2016 14:04:57 +0300
+Message-ID: <20161117110456.GA10885@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a01a1a8c-b01b-4335-b69c-bb99dec9d6d6-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Disposition: inline
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,58 +16,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMTcuIE5vdmVtYmVyIDIwMTYsIDA5OjM4OjExIENFVCBzY2hyaWViIFNo
-YXduIExpbjoKPiBIaSBIZWlrbywKPiAKPiDlnKggMjAxNi8xMS8xNiAxNzo1OCwgSGVpa28gU3R1
-ZWJuZXIg5YaZ6YGTOgo+ID4gSGkgU2hhd24sCj4gPiAKPiA+IEFtIE1pdHR3b2NoLCAxNi4gTm92
-ZW1iZXIgMjAxNiwgMTc6MzM6MjEgQ0VUIHNjaHJpZWIgU2hhd24gTGluOgo+ID4+IOWcqCAyMDE2
-LzExLzE2IDY6MzgsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiA+Pj4gVGhlIEdlbmVyYWwgUmVn
-aXN0ZXIgRmlsZXMgYXJlIGFuIGFyZWEgb2YgcmVnaXN0ZXJzIGNvbnRhaW5pbmcgYSBsb3QKPiA+
-Pj4gb2Ygc2luZ2xlLWJpdCBzZXR0aW5ncyBmb3IgbnVtZXJvdXMgY29tcG9uZW50cyBhcyB3ZWxs
-IGZ1bGwgY29tcG9uZW50cwo+ID4+PiBsaWtlIHVzYnBoeSBjb250cm9sLiBUaGVyZWZvcmUgYWxs
-IHVzZWQgY29tcG9uZW50cyBhcmUgYWNjZXNzZWQKPiA+Pj4gdmlhIHRoZSBzeXNjb24gcHJvdmlk
-ZWQgYnkgdGhlIGdyZiBub2RlcyBvciBmcm9tIHRoZSBzdWItZGV2aWNlcwo+ID4+PiBjcmVhdGVk
-IHRocm91Z2ggdGhlIHNpbXBsZS1tZmQgY3JlYXRlZCBmcm9tIHRoZSBncmYgbm9kZS4KPiAKPiAt
-LS0tODwtLS0tLS0tLS0tLS0tLS0tCj4gWy4uLl0KPiAKPiA+Pj4gKwlmb3IgKGkgPSAwOyBpIDwg
-Z3JmX2luZm8tPm51bV92YWx1ZXM7IGkrKykgewo+ID4+PiArCQljb25zdCBzdHJ1Y3Qgcm9ja2No
-aXBfZ3JmX3ZhbHVlICp2YWwgPSAmZ3JmX2luZm8tPnZhbHVlc1tpXTsKPiA+Pj4gKwo+ID4+PiAr
-CQlwcl9kZWJ1ZygiJXM6IGFkanVzdGluZyAlcyBpbiAlIzZ4IHRvICUjMTB4XG4iLCBfX2Z1bmNf
-XywKPiA+Pj4gKwkJCXZhbC0+ZGVzYywgdmFsLT5yZWcsIHZhbC0+dmFsKTsKPiA+Pj4gKwkJcmV0
-ID0gcmVnbWFwX3dyaXRlKGdyZiwgdmFsLT5yZWcsIHZhbC0+dmFsKTsKPiA+Pj4gKwkJaWYgKHJl
-dCA8IDApCj4gPj4+ICsJCQlwcl9lcnIoIiVzOiB3cml0ZSB0byAlIzZ4IGZhaWxlZCB3aXRoICVk
-XG4iLAo+ID4+PiArCQkJICAgICAgIF9fZnVuY19fLCB2YWwtPnJlZywgcmV0KTsKPiA+PiAKPiA+
-PiBTbywgd2hlbiBmYWlsaW5nIHRvIGRvIG9uZSBvZiB0aGUgc2V0dGluZ3MsIHNob3VsZCB3ZSBz
-dGlsbCBsZXQgaXQgZ29lcz8KPiA+PiBTb21ldGltZXMgdGhlIGxvZyBvZiBwb3N0Y29yZV9pbml0
-Y2FsbCBpcyBlYXN5IHRvIGJlIG5lZ2xlY3RlZCB3aGVuCj4gPj4gcGVvcGxlIGZpbmFsbHkgZmlu
-ZCBwcm9ibGVtcyBsYXRlciBidXQgdGhlIHZlcnkgZWFybGllciBsb2cgd2FzIG1pc3NpbmcKPiA+
-PiBkdWUgdG8gd2hhdGV2ZXIgcmVhc29uIGxpa2UgYnVmZmVyIGxpbWl0YXRpb24sIGV0Yy4KPiA+
-IAo+ID4gSSBleHBlY3QgZXJyb3JzIGhlcmUgdG8gYmUgdmVyeSByYXJlLiBJLmUuIERvdWcgdGhv
-dWdodCB0aGF0IHJlZ21hcCBtaWdodAo+ID4gcmV0dXJuIGVycm9ycyBpZiB3ZSB3cml0ZSBvdXRz
-aWRlIHRoZSBtYXBwZWQgcmVnaW9uLCB3aGljaCB3b3VsZCBtZWFuCj4gPiBzb21lb25lIHJlYWxs
-eSBtZXNzZWQgdXAgaW4gdGhpcyBjb3JlIGNvbXBvbmVudCBvciBhIGNvcmUtZWxlbWVudCBvZiB0
-aGUKPiA+IGR0cy4gQnV0IGluIGdlbmVyYWwgdGhlIEdSRiBpcyBhbHdheXMgYSBtbWlvLXJlZ21h
-cCwgc28gdGhlcmUgd29uJ3QgYmUKPiA+IGFueSBpMmMvc3BpLyB3aGF0ZXZlciBlcnJvcnMgcG9z
-c2libGUuCj4gCj4gSSB3YXMganVzdCB0aGlua2luZyBhYm91dCB0aGUgc2NhbGFiaWxpdHkgdGhh
-dCBpbiB0aGUgZnV0dXJlIHNvbWUgb2YgdGhlCj4gR1JGIHNldHRpbmdzIG1heSBkZXBlbmQgb24g
-Z2VucGQgb3IgY2xvY2sgZXZlbiBpZiB0aGV5IGFyZSBvbmx5IGEKPiBtbWlvLXJlZ21hcCBidXQg
-dGhleSBkb24ndCBiZWxvbmcgdG8gdGhlIGdlbmVyYWwgcGQvY2xvY2sgZm9yIEdSRiwgZm9yCj4g
-aW5zdGFuY2UsIHNvbWUgb2YgdGhlIFBIWXMnIG9yIGNvbnRyb2xsZXIncyBjYXAobGlrZSBlbW1j
-KSBzZXR0aW5ncy4KPiAKPiBCdXQsIElJUkMsIHlvdSBzdWdnZXN0ZWQgdGhpcyBkcml2ZXIgc2hv
-dWxkbid0IGJlIGEgY2F0Y2hhbGwsIGFuZCB3ZQo+IG5vdyBhc2sgdGhlIGRyaXZlcnMgb2YgY29u
-dHJvbGxlcnMgYW5kIHBoeXMgdG8gdGFrZSBvdmVyIHRoaXMsIHNvIEkKPiBndWVzcyB3ZSB3b24n
-dCBwdXQgdGhvc2Ugc2V0dGluZ3MgaGVyZSBldmVyLiA6KQo+IAo+IFRoYW5rcyBmb3IgZXhwbGFp
-bmluZyB0aGlzLgoKY29ycmVjdCwgaXQgc2hvdWxkIG5ldmVyIGJlY29tZSBhIGNhdGNoYWxsIGFz
-IHRoaW5ncyBsaWtlIHRob3NlIHBoeS1zdWJkZXZpY2VzIAp0aGF0IG5lZWQgcnVudGltZSBoYW5k
-bGluZyBzaG91bGQgZGVmaW5pdGx5IGJlIGhhbmRsZWQgaW4gdGhlaXIgcmVzcGVjdGl2ZSAKZHJp
-dmVycy4KClNvIGZhciB3ZSdyZSBhbHNvIGFsd2F5cyBzdGFydGluZyB3aXRoIGFsbCBjbG9ja3Mg
-YW5kIHBvd2VyLWRvbWFpbnMgYmVpbmcgb24sIApzbyBzZXR0aW5ncyBzaG91bGQgYWx3YXlzIHN1
-Y2NlZWQgYXMgd2UncmUgb25seSBhY3RpdmUgZHVyaW5nIGVhcmx5IGJvb3QgaGVyZS4KV2UnbGwg
-c2ltcGx5IGhhdmUgdG8gcmVldmFsdWF0ZSBpZiBzb21lIG5ldyBzb2MgYmVnaW5zIHRvIGJvb3Qg
-d2l0aCBzb21lIApuZWVkZWQgY2xvY2tzL3Bvd2VyLWRvbWFpbnMgYmVpbmcgb2ZmLgoKCkhlaWtv
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+Hello William Wu,
+
+The patch 0c42fe48fd23: "phy: rockchip-inno-usb2: support otg-port
+for rk3399" from Nov 7, 2016, leads to the following static checker
+warning:
+
+	drivers/phy/phy-rockchip-inno-usb2.c:998 rockchip_usb2phy_otg_port_init()
+	warn: 'rphy->edev' isn't an ERR_PTR
+
+drivers/phy/phy-rockchip-inno-usb2.c
+   989          ret = devm_request_threaded_irq(rphy->dev, rport->bvalid_irq, NULL,
+   990                                          rockchip_usb2phy_bvalid_irq,
+   991                                          IRQF_ONESHOT,
+   992                                          "rockchip_usb2phy_bvalid", rport);
+   993          if (ret) {
+   994                  dev_err(rphy->dev, "failed to request otg-bvalid irq handle\n");
+   995                  goto out;
+   996          }
+   997  
+   998          if (!IS_ERR(rphy->edev)) {
+
+I think the static checker is correct that this check should be removed.
+The rest of the code assumes ->edev is a valid pointer.
+
+   999                  rport->event_nb.notifier_call = rockchip_otg_event;
+  1000  
+  1001                  ret = extcon_register_notifier(rphy->edev, EXTCON_USB_HOST,
+  1002                                                 &rport->event_nb);
+  1003                  if (ret)
+  1004                          dev_err(rphy->dev, "register USB HOST notifier failed\n");
+  1005          }
+  1006  
+  1007  out:
+  1008          return ret;
+  1009  }
+
+regards,
+dan carpenter
