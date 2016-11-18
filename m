@@ -1,54 +1,61 @@
-From: wlf <wulf@rock-chips.com>
-Subject: Re: [PATCH 1/2] phy: rockchip-inno-usb2: fix uninitialized tmout
- variable
-Date: Fri, 18 Nov 2016 11:17:14 +0800
-Message-ID: <4f75b364-c79a-2d03-00e1-42e941b75b2e@rock-chips.com>
-References: <20161116142259.2123506-1-arnd@arndb.de>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 1/3] Rockchip driver changes for 4.10
+Date: Thu, 17 Nov 2016 23:31:41 -0800
+Message-ID: <20161118073141.GI1785@localhost>
+References: <1698724.ZQnZMjf8xY@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161116142259.2123506-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Frank Wang <frank.wang@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1698724.ZQnZMjf8xY@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
+On Sat, Nov 12, 2016 at 04:34:17PM +0100, Heiko Stuebner wrote:
+> Hi Arnd, Kevin, Olof,
+> 
+> please find below and in the following two mails, Rockchip power-domain as
+> well as dts32 and dts64 changes for 4.10.
+> 
+> I don't think anything big stands out, just the usual mix of incremental
+> improvements, so if stuff looks ok please pull.
+> 
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+> 
+>   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-drivers1
+> 
+> for you to fetch changes up to dabc0259db63338f0e64107cc92b2241f98a3284:
+> 
+>   soc: rockchip: power-domain: Handle errors from of_genpd_add_provider_onecell (2016-11-11 02:14:59 +0100)
+> 
+> ----------------------------------------------------------------
+> Changes to the power-domain driver including counter presets now being set
+> by firmware on the rk3399, avoiding infite loops when powering on/off a
+> domain and actually returning an error if power-domain addition fails.
+> The last part requires usage of the (new in 4.9-rc1) pm_genpd_remove
+> functionality as well.
 
-在 2016年11月16日 22:22, Arnd Bergmann 写道:
-> The newly added OTG support has an obvious uninitialized variable
-> access that gcc warns about:
->
-> drivers/phy/phy-rockchip-inno-usb2.c: In function 'rockchip_chg_detect_work':
-> drivers/phy/phy-rockchip-inno-usb2.c:717:7: error: 'tmout' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->
-> This replaces the use of the uninitialized variable with what
-> the value was in the previous USB_CHG_STATE_WAIT_FOR_DCD
-> state.
->
-> Fixes: 0c42fe48fd23 ("phy: rockchip-inno-usb2: support otg-port for rk3399")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->   drivers/phy/phy-rockchip-inno-usb2.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-> index eb89de59b68f..2f99ec95079c 100644
-> --- a/drivers/phy/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
-> @@ -714,7 +714,7 @@ static void rockchip_chg_detect_work(struct work_struct *work)
->   			delay = CHG_SECONDARY_DET_TIME;
->   			rphy->chg_state = USB_CHG_STATE_PRIMARY_DONE;
->   		} else {
-> -			if (tmout) {
-> +			if (rphy->dcd_retries == CHG_DCD_MAX_RETRIES) {
->   				/* floating charger found */
->   				rphy->chg_type = POWER_SUPPLY_TYPE_USB_DCP;
->   				rphy->chg_state = USB_CHG_STATE_DETECTED;
-Thanks very much for your help.
+Merged, thanks!
 
-Reviewed-by: William Wu <wulf@rock-chips.com>
 
-Best Regards,
-           wulf
+-Olof
