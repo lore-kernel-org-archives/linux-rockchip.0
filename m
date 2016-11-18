@@ -1,15 +1,15 @@
 From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL 2/3] Rockchip dts32 changes for 4.10
-Date: Thu, 17 Nov 2016 23:32:31 -0800
-Message-ID: <20161118073231.GJ1785@localhost>
+Subject: Re: [GIT PULL 3/3] Rockchip dts64 changes for 4.10
+Date: Thu, 17 Nov 2016 23:33:03 -0800
+Message-ID: <20161118073303.GK1785@localhost>
 References: <1698724.ZQnZMjf8xY@phil>
- <2517910.T56YgEDzxC@phil>
+ <4932547.OPNQihgQS9@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <2517910.T56YgEDzxC@phil>
+In-Reply-To: <4932547.OPNQihgQS9@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,30 +23,42 @@ To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Nov 12, 2016 at 04:35:49PM +0100, Heiko Stuebner wrote:
+On Sat, Nov 12, 2016 at 04:36:25PM +0100, Heiko Stuebner wrote:
 > The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
 > 
 >   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
 > 
 > are available in the git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-dts32-1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-dts64-1
 > 
-> for you to fetch changes up to 6a8883d614c7bede1075a4850139daa9723c291e:
+> for you to fetch changes up to c49590691f3819bb6be3f77938ef39038eb76643:
 > 
->   ARM: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max" (2016-11-09 14:46:04 +0100)
+>   arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max" (2016-11-09 15:08:55 +0100)
 > 
 > ----------------------------------------------------------------
-> 32bit devicetree changes for Rockchip including removal of skeleton.dtsi
-> inclusion, missing unit names for memory nodes, various frequency
-> optimizations allowing for better performance on rk3066, the usage of
-> pin constants to bridge between the two numbering schemes used (gpio
-> controllers using 0-31 and pins being labeled A0-A7,..., D0-D7)
-> and UHS/HS modes for the mmc controllers on the popmetal board.
+> 64bit devicetree changes including the px5 evaluation board
+> a fix for wrong i2c registers on rk3368 a new nvmem cell and
+> power-domain on rk3399 as well as moving mmc frequency
+> properties to the more generic max-frequency one.
 > 
-> Two new boards, the PX3-based evaluation board, with the PX3 being an
-> industrial variant of the rk3188 soc and the Rikomagic MK808 board
-> based around the rk3066 are also added.
+> ----------------------------------------------------------------
+> Andy Yan (2):
+>       arm64: dts: rockchip: fix i2c resource error of rk3368
+>       arm64: dts: rockchip: Add PX5 Evaluation board
+> 
+> Chris Zhong (1):
+>       arm64: dts: rockchip: add powerdomain for typec on rk3399
+> 
+> Jaehoon Chung (1):
+>       arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max"
+> 
+> Shawn Lin (2):
+>       arm64: dts: rockchip: Add more properties for emmc on px5-evb
+>       arm64: dts: rockchip: add sdmmc support for px5-evb
+> 
+> Ziyuan Xu (1):
+>       arm64: dts: rockchip: add cpu-id nvmem cell node for rk3399
 
 Merged, thanks!
 
