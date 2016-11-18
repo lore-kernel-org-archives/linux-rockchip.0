@@ -1,66 +1,108 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL 3/3] Rockchip dts64 changes for 4.10
-Date: Thu, 17 Nov 2016 23:33:03 -0800
-Message-ID: <20161118073303.GK1785@localhost>
-References: <1698724.ZQnZMjf8xY@phil>
- <4932547.OPNQihgQS9@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 1/3] dt-bindings: add documentation for rk1108 cru
+Date: Fri, 18 Nov 2016 08:03:13 -0600
+Message-ID: <20161118140313.5uz56im37nt6qv7x@rob-hp-laptop>
+References: <1479286163-34789-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <4932547.OPNQihgQS9@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1479286163-34789-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Nov 12, 2016 at 04:36:25PM +0100, Heiko Stuebner wrote:
-> The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+On Wed, Nov 16, 2016 at 04:49:21PM +0800, Shawn Lin wrote:
+> This adds the dt-binding documentation for the clock and reset unit
+> found on Rockchip rk1108 SoCs.
 > 
->   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> are available in the git repository at:
+> ---
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-dts64-1
+> Changes in v3:
+> - fix mismatch of external clk input name
+> - add hdmiphy and usbphy clk input
 > 
-> for you to fetch changes up to c49590691f3819bb6be3f77938ef39038eb76643:
+> Changes in v2: None
 > 
->   arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max" (2016-11-09 15:08:55 +0100)
+>  .../bindings/clock/rockchip,rk1108-cru.txt         | 59 ++++++++++++++++++++++
+>  1 file changed, 59 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
 > 
-> ----------------------------------------------------------------
-> 64bit devicetree changes including the px5 evaluation board
-> a fix for wrong i2c registers on rk3368 a new nvmem cell and
-> power-domain on rk3399 as well as moving mmc frequency
-> properties to the more generic max-frequency one.
-> 
-> ----------------------------------------------------------------
-> Andy Yan (2):
->       arm64: dts: rockchip: fix i2c resource error of rk3368
->       arm64: dts: rockchip: Add PX5 Evaluation board
-> 
-> Chris Zhong (1):
->       arm64: dts: rockchip: add powerdomain for typec on rk3399
-> 
-> Jaehoon Chung (1):
->       arm64: dts: rockchip: replace to "max-frequency" instead of "clock-freq-min-max"
-> 
-> Shawn Lin (2):
->       arm64: dts: rockchip: Add more properties for emmc on px5-evb
->       arm64: dts: rockchip: add sdmmc support for px5-evb
-> 
-> Ziyuan Xu (1):
->       arm64: dts: rockchip: add cpu-id nvmem cell node for rk3399
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+> new file mode 100644
+> index 0000000..4da1261
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+> @@ -0,0 +1,59 @@
+> +* Rockchip RK1108 Clock and Reset Unit
+> +
+> +The RK1108 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: should be "rockchip,rk1108-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock status.
+> +
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk1108-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
 
-Merged, thanks!
+This stilll doesn't seem right. These are inputs to the CRU or 
+completely separate? If inputs, then you need a 'clocks' property. If 
+completely separate, then they should be listed in their respective IP 
+block binding (e.g. the USB phy).
 
-
--Olof
+> + - "xin24m" - crystal input - required,
+> + - "ext_vip" - external VIP clock - optional
+> + - "ext_i2s" - external I2S clock - optional
+> + - "ext_gmac" - external GMAC clock - optional
+> + - "hdmiphy" - external clock input derived from HDMI PHY - optional
+> + - "usbphy" - external clock input derived from USB PHY - optional
+> +
+> +Example: Clock controller node:
+> +
+> +	cru: cru@20200000 {
+> +		compatible = "rockchip,rk1108-cru";
+> +		reg = <0x20200000 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart0: serial@10230000 {
+> +		compatible = "rockchip,rk1108-uart", "snps,dw-apb-uart";
+> +		reg = <0x10230000 0x100>;
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART0>;
+> +	};
+> -- 
+> 1.9.1
+> 
+> 
