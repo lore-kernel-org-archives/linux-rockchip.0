@@ -1,31 +1,59 @@
-From: zain wang <wzz@rock-chips.com>
-Subject: [PATCH] drm/panel: simple: add 8bit-bps for Sharp lq123p1jx31
-Date: Sat, 19 Nov 2016 10:27:16 +0800
-Message-ID: <1479522436-7752-1-git-send-email-wzz@rock-chips.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, zain wang <wzz@rock-chips.com>
+From: Caesar Wang <sasukewxt@163.com>
+Subject: Re: [PATCH 1/3] thermal: handle get_temp() errors properly
+Date: Sat, 19 Nov 2016 11:21:39 +0800
+Message-ID: <b798233b-7525-3264-247c-5d9c6374d105@163.com>
+References: <1479513177-81504-1-git-send-email-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1479513177-81504-1-git-send-email-briannorris@chromium.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Stephen Barber <smbarber@chromium.org>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Sharp lq123p1jx31 support 8bit bps.
+Brian,
+在 2016年11月19日 07:52, Brian Norris 写道:
+> If using CONFIG_THERMAL_EMULATION, there's a corner case where we might
+> get an error from the zone's get_temp() callback, but we'll ignore that
+> and keep using its value. Let's just error out properly instead.
+>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+Tested-by: Caesar Wang <wxt@rock-chips.com>
 
-Signed-off-by: zain wang <wzz@rock-chips.com>
----
- drivers/gpu/drm/panel/panel-simple.c | 1 +
- 1 file changed, 1 insertion(+)
+[    8.111296] thermal thermal_zone4: power_allocator: sustainable_power 
+will be estimated
+[    8.119420] thermal_zone_get_temp:537 the ret=-19, no such device, 
+look like the A/D value had no ready yet.
+..
+Anyway, this patch is useful for improving thermal.
 
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 113db3c..6b0c026 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -1409,6 +1409,7 @@ static const struct drm_display_mode sharp_lq123p1jx31_mode = {
- static const struct panel_desc sharp_lq123p1jx31 = {
- 	.modes = &sharp_lq123p1jx31_mode,
- 	.num_modes = 1,
-+	.bpc = 8,
- 	.size = {
- 		.width = 259,
- 		.height = 173,
--- 
-1.9.1
+-Caesar
+> ---
+>   drivers/thermal/thermal_core.c | 3 +++
+>   1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+> index 911fd964c742..0fa497f10d25 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -494,6 +494,8 @@ int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp)
+>   	mutex_lock(&tz->lock);
+>   
+>   	ret = tz->ops->get_temp(tz, temp);
+> +	if (ret)
+> +		goto exit_unlock;
+>   
+>   	if (IS_ENABLED(CONFIG_THERMAL_EMULATION) && tz->emul_temperature) {
+>   		for (count = 0; count < tz->trips; count++) {
+> @@ -514,6 +516,7 @@ int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp)
+>   			*temp = tz->emul_temperature;
+>   	}
+>    
+> +exit_unlock:
+>   	mutex_unlock(&tz->lock);
+>   exit:
+>   	return ret;
+
+
