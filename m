@@ -1,86 +1,201 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/3] thermal: handle get_temp() errors properly
-Date: Fri, 18 Nov 2016 21:30:15 -0800
-Message-ID: <20161119053014.GA58324@google.com>
-References: <1479513177-81504-1-git-send-email-briannorris@chromium.org>
- <20161119034158.GA26405@localhost.localdomain>
+From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] mtd: spi-nor: add rockchip serial flash controller
+ driver
+Date: Sun, 20 Nov 2016 22:11:24 +0100
+Message-ID: <8f8213a1-f694-8159-fdbd-5e607c8aaaa2@gmail.com>
+References: <1478855766-151673-1-git-send-email-shawn.lin@rock-chips.com>
+ <1478855766-151673-3-git-send-email-shawn.lin@rock-chips.com>
+ <b1420e9d-b6a1-7fe8-4381-e32e0bc7dd53@gmail.com>
+ <775a8918-bc93-218a-808d-2a160137ad56@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20161119034158.GA26405@localhost.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Stephen Barber <smbarber@chromium.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <775a8918-bc93-218a-808d-2a160137ad56-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
+
+On 11/16/2016 02:59 AM, Shawn Lin wrote:
+> Hi Marek,
 
 Hi,
 
-On Fri, Nov 18, 2016 at 07:41:59PM -0800, Eduardo Valentin wrote:
-> On Fri, Nov 18, 2016 at 03:52:55PM -0800, Brian Norris wrote:
-> > If using CONFIG_THERMAL_EMULATION, there's a corner case where we might
-> > get an error from the zone's get_temp() callback, but we'll ignore that
-> > and keep using its value. Let's just error out properly instead.
-> > 
-> > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > ---
-> >  drivers/thermal/thermal_core.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> > index 911fd964c742..0fa497f10d25 100644
-> > --- a/drivers/thermal/thermal_core.c
-> > +++ b/drivers/thermal/thermal_core.c
-> > @@ -494,6 +494,8 @@ int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp)
-> >  	mutex_lock(&tz->lock);
-> >  
-> >  	ret = tz->ops->get_temp(tz, temp);
-> > +	if (ret)
-> > +		goto exit_unlock;
+[...]
+
+>>> +static int rockchip_sfc_read_reg(struct spi_nor *nor, u8 opcode,
+>>> +                 u8 *buf, int len)
+>>> +{
+>>> +    struct rockchip_sfc_priv *priv = nor->priv;
+>>> +    struct rockchip_sfc *sfc = priv->sfc;
+>>> +    int ret;
+>>> +    u32 tmp;
+>>> +    u32 i;
+>>> +
+>>> +    ret = rockchip_sfc_op_reg(nor, opcode, len, SFC_CMD_DIR_RD);
+>>> +    if (ret)
+>>> +        return ret;
+>>> +
+>>> +    while (len > 0) {
+>>> +        tmp = readl_relaxed(sfc->regbase + SFC_DATA);
+>>> +        for (i = 0; i < len; i++)
+>>> +            *buf++ = (u8)((tmp >> (i * 8)) & 0xff);
+>>
+>> Won't this fail for len > 4 ?
 > 
-> Yeah, but the follow through is intentional, if I am not mistaken.
+> nope, this loop will reduce 4 for each successful readl. And
+> reading the remained bytes which isn't aligned to DWORD, isn't it?
 
-OK...but it has a bug. It potentially utilizes an uninitialized value
-for *temp.
+Try for len = 8 ... it will write 8 bytes to the buf, but half of them
+would be zero. I believe it should look like:
 
-> >  
-> >  	if (IS_ENABLED(CONFIG_THERMAL_EMULATION) && tz->emul_temperature) {
+        for (i = 0; i < 4 /* was len */; i++)
+            *buf++ = (u8)((tmp >> (i * 8)) & 0xff);
+
+>>
+>> Also, you can use ioread32_rep() here, but (!) that won't work for
+>> unaligned reads, which I dunno if they can happen here, but please do
+>> double-check.
 > 
-> Even if the driver is not able to read real temperature, but emul temp
-> is configured, then there is still opportunity to report the emulated
-> temperature.
+> yes, I have checked this API as well as others like memcpy_{to,from}io
+> , etc. They will generate a external abort for arm core as the unaligned
+> (DWORD) read/write via AHB aren't supported by Rockchip Socs. So I have
+> to open code these stuff. This could be easily found for other
+> upstreamed rockchip drivers. :)
 
-OK, maybe, but you should avoid doing this comparison then:
+This is normal, but you can still use the _rep variant if you handle the
+corner cases.
 
-513                 if (!ret && *temp < crit_temp)
-514                         *temp = tz->emul_temperature;
+>>
+>>> +        len = len - 4;
+>>> +    }
+>>> +
+>>> +    return 0;
+>>> +}
 
-Note that 'ret' might be 0 (from the calls to ->get_trip_type()), and then
-you're comparing with the uninitialized value of *temp. So you need some
-solution that accounts for this and decides to ignore the real
-temperature properly.
+[...]
 
-> >  		for (count = 0; count < tz->trips; count++) {
-> > @@ -514,6 +516,7 @@ int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp)
-> >  			*temp = tz->emul_temperature;
+>>> +static ssize_t rockchip_sfc_write(struct spi_nor *nor, loff_t to,
+>>> +                  size_t len, const u_char *write_buf)
+>>> +{
+>>> +    struct rockchip_sfc_priv *priv = nor->priv;
+>>> +    struct rockchip_sfc *sfc = priv->sfc;
+>>> +    size_t offset;
+>>> +    int ret;
+>>> +    dma_addr_t dma_addr = 0;
+>>> +
+>>> +    if (!sfc->use_dma)
+>>> +        goto no_dma;
+>>
+>> Seems like there's a lot of similarity between read/write .
 > 
-> And if you check the lines at the bottom of the loop, you will see that,
-> in the fail case, we will stil compare to what is the content of temp,
-> which might be problematic.
+> I was thinking to combine read/write with a extra argument to
+> indicate WR/RD. But as we could see still some differece between
+> WR and RD and there are already some condiction checks. So it
+> will make the code hard to read with stuffing lots of condition
+> checks. So I splited out read and write strightforward. :)
 
-Yes...are you saying the same thing I am above?
+Hrm, is it that bad ?
 
-> I would prefer we consider the patch I sent
-> some time ago:
-> https://patchwork.kernel.org/patch/7876381/
+>>> +    for (offset = 0; offset < len; offset += SFC_DMA_MAX_LEN) {
+>>> +        size_t trans = min_t(size_t, SFC_DMA_MAX_LEN, len - offset);
+>>> +
+>>> +        dma_addr = dma_map_single(NULL, (void *)write_buf,
+>>> +                      trans, DMA_TO_DEVICE);
+>>> +        if (dma_mapping_error(sfc->dev, dma_addr)) {
+>>> +            dma_addr = 0;
+>>> +            memcpy(sfc->buffer, write_buf + offset, trans);
+>>> +        }
+>>> +
+>>> +        /* Fail to map dma, use pre-allocated area instead */
+>>> +        ret = rockchip_sfc_dma_transfer(nor, to + offset,
+>>> +                        dma_addr ? dma_addr :
+>>> +                        sfc->dma_buffer,
+>>> +                        trans, SFC_CMD_DIR_WR);
+>>> +        if (dma_addr)
+>>> +            dma_unmap_single(NULL, dma_addr,
+>>> +                     trans, DMA_TO_DEVICE);
+>>> +        if (ret) {
+>>> +            dev_warn(nor->dev, "DMA write timeout\n");
+>>> +            return ret;
+>>> +        }
+>>> +    }
+>>> +
+>>> +    return len;
+>>> +no_dma:
+>>> +    ret = rockchip_sfc_pio_transfer(nor, to, len,
+>>> +                    (u_char *)write_buf, SFC_CMD_DIR_WR);
+>>> +    if (ret) {
+>>> +        dev_warn(nor->dev, "PIO write timeout\n");
+>>> +        return ret;
+>>> +    }
+>>> +    return len;
+>>> +}
 
-Honestly I didn't look that deeply into the framework here (and I also
-don't use CONFIG_THERMAL_EMULATION), I was just fixing something that
-was obviously wrong.
+[...]
 
-But on first read, that patch looks good to me -- although it'd be good
-to note the uninitialized value fix in the comit log. Any reason that
-didn't end up getting merged? It looks like it got reviewed, and you're
-a thermal subsystem maintainer...
+>>> +static void rockchip_sfc_unregister_all(struct rockchip_sfc *sfc)
+>>> +{
+>>> +    int i;
+>>> +
+>>> +    for (i = 0; i < sfc->num_chip; i++)
+>>> +        mtd_device_unregister(&sfc->nor[i]->mtd);
+>>> +}
+>>> +
+>>> +static int rockchip_sfc_register_all(struct rockchip_sfc *sfc)
+>>> +{
+>>> +    struct device *dev = sfc->dev;
+>>> +    struct device_node *np;
+>>> +    int ret;
+>>> +
+>>> +    for_each_available_child_of_node(dev->of_node, np) {
+>>> +        ret = rockchip_sfc_register(np, sfc);
+>>> +        if (ret)
+>>> +            goto fail;
+>>> +
+>>> +        if (sfc->num_chip == SFC_MAX_CHIP_NUM) {
+>>> +            dev_warn(dev, "Exceeds the max cs limitation\n");
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +
+>>> +    return 0;
+>>> +
+>>> +fail:
+>>> +    dev_err(dev, "Failed to register all chip\n");
+>>> +    rockchip_sfc_unregister_all(sfc);
+>>
+>> See cadence qspi where we only unregister the registered flashes.
+>> Implement it the same way here.
+>>
+> 
+> yup, but I'm afraid that rockchip_sfc_unregister_all confused you
+> as it actually unregisters the registered ones, not for all.
+> 
+> static void rockchip_sfc_unregister_all(struct rockchip_sfc *sfc)
+> {
+>         int i;
+> 
+>         for (i = 0; i < sfc->num_chip; i++)
+>                 mtd_device_unregister(&sfc->nor[i]->mtd);
+> }
+> 
+> sfc->num_chip stands for how many flashes registered successfully.
 
-Brian
+Does it work if you have a hole in there ? Like if you have a flash on
+chipselect 0 and chipselect 2 ?
+
+>>> +    return ret;
+>>> +}
+
+[...]
+
+
+-- 
+Best regards,
+Marek Vasut
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
