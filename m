@@ -1,98 +1,55 @@
-From: MyungJoo Ham <myungjoo.ham@samsung.com>
-Subject: Re: [PATCH v1 1/2] PM/devfreq: add suspend frequency support
-Date: Tue, 22 Nov 2016 21:48:14 +0900
-Message-ID: <CAJ0PZbSYZYF6xJ-ut23G+tTXYLCDNpQ8_AJpjTdDGO7VnECMvg@mail.gmail.com>
-References: <1477990029-11062-1-git-send-email-hl@rock-chips.com>
- <CGME20161101084721epcas4p471cc74df8b12d042d1fac542e5371db8@epcas4p4.samsung.com>
- <422077764.570918.1478068526663.JavaMail.weblogic@ep1ml102b> <581AE13C.9070706@rock-chips.com>
-Reply-To: myungjoo.ham@gmail.com
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Arch counter doesn't tick in system suspend
+Date: Tue, 22 Nov 2016 16:02:41 +0100
+Message-ID: <6410694.RN5yFFi4kR@diego>
+References: <20161122094300.GA2017@mai> <1479807866-6957-1-git-send-email-daniel.lezcano@linaro.org> <1479807866-6957-2-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <581AE13C.9070706@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: hl <hl@rock-chips.com>
-Cc: Chanwoo Choi <cw00.choi@samsung.com>, "dianders@chromium.org" <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1479807866-6957-2-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM64 PORT (AARCH64 ARCHITECTURE)" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 3, 2016 at 4:03 PM, hl <hl@rock-chips.com> wrote:
-> Hi MyungJoo Ham,
->
->
-> On 2016=E5=B9=B411=E6=9C=8802=E6=97=A5 14:35, MyungJoo Ham wrote:
->>>
->>> Add suspend frequency support and if needed set it to
->>> the frequency obtained from the suspend opp (can be defined
->>> using opp-v2 bindings and is optional).
->>>
->>> Change-Id: Iaa0d3848d63d9ce03f65ea76f263e4685a4c295e
->>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>> ---
->>>   drivers/devfreq/devfreq.c | 17 ++++++++++++++++-
->>>   include/linux/devfreq.h   |  9 +++++++++
->>>   2 files changed, 25 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->>> index bf3ea76..d1152eb 100644
->>> --- a/drivers/devfreq/devfreq.c
->>> +++ b/drivers/devfreq/devfreq.c
->>> @@ -364,7 +364,10 @@ void devfreq_monitor_suspend(struct devfreq
->>> *devfreq)
->>>                 return;
->>>         }
->>>   -     devfreq_update_status(devfreq, devfreq->previous_freq);
->>> +       if (devfreq->suspend_freq)
->>> +               devfreq_update_status(devfreq, devfreq->suspend_freq);
->>> +       else
->>> +               devfreq_update_status(devfreq, devfreq->previous_freq);
->>
->> This is incorrect.
->>
->> devfreq_update_status is to record the statistics.
->> This code intends to record the current status before entering suspend;
->> thus you should not record "suspend_freq" here.
->>
->> If you really need to record the frequency during suspended state
->> for the statistics, you need to do that at resume; however, I object to
->> that idea either.
->>
->> If you really want to set a predefined suspend-to-RAM mode frequency,
->> (probably because of HW instability during resume process)
->> you need to update, not udpate_status (statistics).
->>
-> Thanks for pointing it, but if i use update_devfreq(), it can not specify
-> the
-> frequency, it call the get_target_freq() to get the frequency and setting=
-,
-> use now devfreq framework, it seems hard to set the specific freqeuency
-> when suspend. Do you have any idea, thanks.
+Am Dienstag, 22. November 2016, 10:44:22 schrieb Daniel Lezcano:
+> From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> The "arm,no-tick-in-suspend" property was introduced to note
+> implementations where the system counter does not quite follow the ARM
+> specification that it "must be implemented in an always-on power
+> domain".
+> 
+> Particularly, RK3399's counter stops ticking when we switch from the
+> 24MHz clock to the 32KHz clock in low-power suspend, so let's mark it as
+> such.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
+not sure if needed, but anyway
+Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-It appears that we need to set the frequency directly with target() functio=
-n
-at suspend/resume after it is assured that related routines are
-already suspended.
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index b65c193..d85b651 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -174,6 +174,7 @@
+>  			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW 0>,
+>  			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW 0>,
+>  			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
+> +		arm,no-tick-in-suspend;
+>  	};
+> 
+>  	xin24m: xin24m {
 
-Plus, you might need to consider using devfreq_suspend/resume_device instea=
-d
-of monitor. monitor functions are for the governor-specific behaviors.
-You'll need such capabilities regardless of governors. (even userspace-gove=
-rnor
-needs this)
-
-Cheers,
-MyungJoo
-
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-
-
-
---=20
-MyungJoo Ham, Ph.D.
-Frontier CS Lab, S/W Center, Samsung Electronics
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
