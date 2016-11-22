@@ -1,105 +1,57 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH 2/3] thermal: rockchip: improve conversion error messages
-Date: Tue, 22 Nov 2016 15:57:16 +0800
-Message-ID: <1479801436.2360.26.camel@intel.com>
-References: <1479513177-81504-1-git-send-email-briannorris@chromium.org>
-         <1479513177-81504-2-git-send-email-briannorris@chromium.org>
-         <b6da9490-9a27-4330-7988-cb25724ba345@rock-chips.com>
-         <378ade3d-a980-58e4-5253-c16702c74bf3@gmail.com>
+From: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [bug report] phy: rockchip-inno-usb2: support otg-port for rk3399
+Date: Tue, 22 Nov 2016 17:16:30 +0800
+Message-ID: <81fc5933-7bee-2d83-f8ef-a951355c4248@rock-chips.com>
+References: <20161117110456.GA10885@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <378ade3d-a980-58e4-5253-c16702c74bf3@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>, Caesar Wang <wxt@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Eduardo Valentin <edubezval@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Stephen Barber <smbarber@chromium.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161117110456.GA10885@mwanda>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2016-11-22 at 09:51 +0800, Caesar Wang wrote:
-> 在 2016年11月19日 11:31, Caesar Wang 写道:
-> > 
-> > Brian,
-> > 
-> > 在 2016年11月19日 07:52, Brian Norris 写道:
-> > > 
-> > > These error messages don't give much information about what went
-> > > wrong.
-> > > It would be nice, for one, to see what invalid temperature was
-> > > being
-> > > requested when conversion fails. It's also good to return an
-> > > error when
-> > > we can't handle a conversion properly.
-> > > 
-> > > While we're at it, fix the grammar too.
-> > > 
-> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > > ---
-> > > Note: it'd probably be even nicer to know which sensor this was,
-> > > but 
-> > > we've
-> > > kinda abstracted that one away by this point...
-> > > 
-> > >   drivers/thermal/rockchip_thermal.c | 7 +++++--
-> > >   1 file changed, 5 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/thermal/rockchip_thermal.c 
-> > > b/drivers/thermal/rockchip_thermal.c
-> > > index e227a9f0acf7..35554d146b9d 100644
-> > > --- a/drivers/thermal/rockchip_thermal.c
-> > > +++ b/drivers/thermal/rockchip_thermal.c
-> > > @@ -424,7 +424,8 @@ static u32 rk_tsadcv2_temp_to_code(struct 
-> > > chip_tsadc_table table,
-> > >       }
-> > >     exit:
-> > > -    pr_err("Invalid the conversion, error=%d\n", error);
-> > > +    pr_err("%s: invalid temperature, temp=%d error=%d\n",
-> > > +        __func__, temp, error);
-> > I have do some similar for rockchip inside thermal driver.  Forget
-> > to 
-> > send for upstream. :(
-> > exit:
-> >     pr_err("%s: Invalid conversion table: code=%d,
-> > temperature=%d\n",
-> >            __func__, error, temp);
-> > 
-> > > 
-> > >       return error;
-> > >   }
-> > >   @@ -475,7 +476,9 @@ static int rk_tsadcv2_code_to_temp(struct 
-> > > chip_tsadc_table table, u32 code,
-> > >           }
-> > >           break;
-> > >       default:
-> > > -        pr_err("Invalid the conversion table\n");
-> > > +        pr_err("%s: invalid conversion table, mode=%d\n",
-> > > +            __func__, table.mode);
-> > > +        return -EINVAL;
-> CHECK: Alignment should match open parenthesis
-> #428: FILE: drivers/thermal/rockchip_thermal.c:428:
-> +    pr_err("%s: invalid temperature, temp=%d error=%d\n",
-> +        __func__, temp, error);
-> 
-> CHECK: Alignment should match open parenthesis
-> #480: FILE: drivers/thermal/rockchip_thermal.c:480:
-> +        pr_err("%s: invalid conversion table, mode=%d\n",
-> +            __func__, table->mode);
-> 
-> 
-> I'm ready to resend all rockchip thermal patches. (contain them)
-> 
-so I will ignore patch 2/3 and 3/3 for now and wait for your new patch
-set.
-
-thanks,
-rui
-> > 
-> > > 
-> > >       }
-> > >         /*
-> > 
-> > 
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RGVhciBEYW7vvIwKCuWcqCAyMDE25bm0MTHmnIgxN+aXpSAxOTowNCwgRGFuIENhcnBlbnRlciDl
+hpnpgZM6Cj4gSGVsbG8gV2lsbGlhbSBXdSwKPgo+IFRoZSBwYXRjaCAwYzQyZmU0OGZkMjM6ICJw
+aHk6IHJvY2tjaGlwLWlubm8tdXNiMjogc3VwcG9ydCBvdGctcG9ydAo+IGZvciByazMzOTkiIGZy
+b20gTm92IDcsIDIwMTYsIGxlYWRzIHRvIHRoZSBmb2xsb3dpbmcgc3RhdGljIGNoZWNrZXIKPiB3
+YXJuaW5nOgo+Cj4gCWRyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYzo5OTggcm9j
+a2NoaXBfdXNiMnBoeV9vdGdfcG9ydF9pbml0KCkKPiAJd2FybjogJ3JwaHktPmVkZXYnIGlzbid0
+IGFuIEVSUl9QVFIKPgo+IGRyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYwo+ICAg
+ICA5ODkgICAgICAgICAgcmV0ID0gZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycShycGh5LT5kZXYs
+IHJwb3J0LT5idmFsaWRfaXJxLCBOVUxMLAo+ICAgICA5OTAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICByb2NrY2hpcF91c2IycGh5X2J2YWxpZF9pcnEsCj4gICAgIDk5
+MSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIElSUUZfT05FU0hPVCwK
+PiAgICAgOTkyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInJvY2tj
+aGlwX3VzYjJwaHlfYnZhbGlkIiwgcnBvcnQpOwo+ICAgICA5OTMgICAgICAgICAgaWYgKHJldCkg
+ewo+ICAgICA5OTQgICAgICAgICAgICAgICAgICBkZXZfZXJyKHJwaHktPmRldiwgImZhaWxlZCB0
+byByZXF1ZXN0IG90Zy1idmFsaWQgaXJxIGhhbmRsZVxuIik7Cj4gICAgIDk5NSAgICAgICAgICAg
+ICAgICAgIGdvdG8gb3V0Owo+ICAgICA5OTYgICAgICAgICAgfQo+ICAgICA5OTcKPiAgICAgOTk4
+ICAgICAgICAgIGlmICghSVNfRVJSKHJwaHktPmVkZXYpKSB7Cj4KPiBJIHRoaW5rIHRoZSBzdGF0
+aWMgY2hlY2tlciBpcyBjb3JyZWN0IHRoYXQgdGhpcyBjaGVjayBzaG91bGQgYmUgcmVtb3ZlZC4K
+PiBUaGUgcmVzdCBvZiB0aGUgY29kZSBhc3N1bWVzIC0+ZWRldiBpcyBhIHZhbGlkIHBvaW50ZXIu
+ClllcywgeW91IGFyZSByaWdodC4gVGhpcyBzdGF0aWMgY2hlY2tlciBjYW4gYmUgcmVtb3ZlZCBz
+YWZlbHkuClRoYW5rcyB2ZXJ5IG11Y2ggZm9yIHlvdXIgaGVscC4KCkJlc3QgcmVnYXJkc++8jAog
+ICAgICAgICAgd3VsZgoKPgo+ICAgICA5OTkgICAgICAgICAgICAgICAgICBycG9ydC0+ZXZlbnRf
+bmIubm90aWZpZXJfY2FsbCA9IHJvY2tjaGlwX290Z19ldmVudDsKPiAgICAxMDAwCj4gICAgMTAw
+MSAgICAgICAgICAgICAgICAgIHJldCA9IGV4dGNvbl9yZWdpc3Rlcl9ub3RpZmllcihycGh5LT5l
+ZGV2LCBFWFRDT05fVVNCX0hPU1QsCj4gICAgMTAwMiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAmcnBvcnQtPmV2ZW50X25iKTsKPiAgICAxMDAzICAgICAg
+ICAgICAgICAgICAgaWYgKHJldCkKPiAgICAxMDA0ICAgICAgICAgICAgICAgICAgICAgICAgICBk
+ZXZfZXJyKHJwaHktPmRldiwgInJlZ2lzdGVyIFVTQiBIT1NUIG5vdGlmaWVyIGZhaWxlZFxuIik7
+Cj4gICAgMTAwNSAgICAgICAgICB9Cj4gICAgMTAwNgo+ICAgIDEwMDcgIG91dDoKPiAgICAxMDA4
+ICAgICAgICAgIHJldHVybiByZXQ7Cj4gICAgMTAwOSAgfQo+Cj4gcmVnYXJkcywKPiBkYW4gY2Fy
+cGVudGVyCj4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
