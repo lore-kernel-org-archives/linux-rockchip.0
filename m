@@ -1,83 +1,70 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Tue, 22 Nov 2016 13:52:42 -0800
-Message-ID: <20161122215240.GA52900@google.com>
-References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
- <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
- <20161122205737.GB45366@google.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 1/3] thermal: handle get_temp() errors properly
+Date: Tue, 22 Nov 2016 14:27:13 -0800
+Message-ID: <20161122222712.GA53509@google.com>
+References: <1479513177-81504-1-git-send-email-briannorris@chromium.org>
+ <20161119034158.GA26405@localhost.localdomain>
+ <20161119053014.GA58324@google.com>
+ <1479801145.2360.24.camel@intel.com>
+ <20161122110045.GB2018@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20161122205737.GB45366@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
+In-Reply-To: <20161122110045.GB2018-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 22, 2016 at 12:57:37PM -0800, Brian Norris wrote:
-> On Tue, Nov 22, 2016 at 08:34:46PM +0800, Caesar Wang wrote:
-> > The temp_to_code function will return 0 when we set the trip points value
-> > or valid temperature.
+On Tue, Nov 22, 2016 at 03:00:47AM -0800, Eduardo Valentin wrote:
+> On Tue, Nov 22, 2016 at 03:52:25PM +0800, Zhang Rui wrote:
+> > On Fri, 2016-11-18 at 21:30 -0800, Brian Norris wrote:
+> > > On Fri, Nov 18, 2016 at 07:41:59PM -0800, Eduardo Valentin wrote:
+> > > > I would prefer we consider the patch I sent
+> > > > some time ago:
+> > > > https://patchwork.kernel.org/patch/7876381/
+> > > Honestly I didn't look that deeply into the framework here (and I
+> > > also
+> > > don't use CONFIG_THERMAL_EMULATION), I was just fixing something that
+> > > was obviously wrong.
 > 
-> I'm not quite sure what you mean by "when we set the trip points value
-> or valid temperature." Do you mean "when we set the trip point's value
-> to an invalid temperature"?
+> Yeah, but that is why we need people to look the code considering all
+> features. :-)
+
+Well, there are bugfixes and there are features. My patch fixed the bug
+in the simplest way possible; it didn't break CONFIG_THERMAL_EMULATION
+any further than it already was, and it'll still work if get_temp()
+doesn't return an error.
+
+I'd say your patch is essentially adding a feature, and IMO that's not
+the best way to fix a bug. You can fix the bug and *then* add the
+feature.
+
+Anyway, I'm not going to tell you how to run your subsystem. If your
+patch goes through, that's probably just as well.
+
+[...]
+
+> > hmmm, I forgot why I missed this one in the end.
+> > Eduardo,
+> > would you mind refresh and resend the patch?
 > 
-> Assuming that's what you meant...
-> 
-> > This patch will prevent this case happening.
-> 
-> This is good to change, but IMO, it's better to actually pick a close
-> value, instead of the max. e.g., if you support temperatures at degree
-> intervals of 80, 85, 90, ..., 125, but someone lists 82 in the device
-> tree, we should pick either 80 or 85, not 125.
+> Yeah sure. I have at least three extra patch sets on thermal core on
+> my queue. But I would like to get first the thermal sysfs reorg in
+> first. This fix is one of the changes that will go on top of the thermal
+> sysfs reorg.
 
-I see that's what you're doing in a patch later in this series. Good.
-
-> > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> > ---
-> > 
-> >  drivers/thermal/rockchip_thermal.c | 6 ++----
-> >  1 file changed, 2 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> > index 766486f..535f1fa 100644
-> > --- a/drivers/thermal/rockchip_thermal.c
-> > +++ b/drivers/thermal/rockchip_thermal.c
-> > @@ -401,17 +401,15 @@ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
-> >  				   int temp)
-> >  {
-> >  	int high, low, mid;
-> > -	u32 error = 0;
-> > +	u32 error = table->data_mask;
-> >  
-> >  	low = 0;
-> >  	high = table->length - 1;
-> >  	mid = (high + low) / 2;
-> >  
-> >  	/* Return mask code data when the temp is over table range */
-> > -	if (temp < table->id[low].temp || temp > table->id[high].temp) {
-> > -		error = table->data_mask;
-> > +	if (temp < table->id[low].temp || temp > table->id[high].temp)
-> >  		goto exit;
-
-I was revisiting the logic here though, and I don't understand your
-error case. You're treating "too low" and "too high" the same, and in
-either case, you're choosing a value of ->data_mask. That doesn't make
-sense to me, especially for ADC_DECREMENT cases like rk3288. In that
-case, you're programming the trip to the lowest possible temperature.
-
-It seems like either you should make this conditional, so that "too low"
-and "too high" make sane alternative choices (like MAX or MIN temp), or
-else restructure this to pass error codes back to the upper layers.
+So, the bugfix depends on feature work? I guess I'll check back in
+another year to see what the status of the bugfix is :)
 
 Brian
-
-> > -	}
-> >  
-> >  	while (low <= high) {
-> >  		if (temp == table->id[mid].temp)
-> > -- 
-> > 2.7.4
-> > 
