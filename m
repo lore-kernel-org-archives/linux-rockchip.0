@@ -1,78 +1,85 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 3/3] drm/rockchip: cdn-dp: Do not run worker while suspended
-Date: Tue, 22 Nov 2016 15:50:07 -0500
-Message-ID: <1479847815-30750-4-git-send-email-seanpaul@chromium.org>
-References: <1479847815-30750-1-git-send-email-seanpaul@chromium.org>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 5/5] thermal: rockchip: handle the set_trips without the
+ trip points.
+Date: Tue, 22 Nov 2016 12:51:43 -0800
+Message-ID: <20161122205142.GA45366@google.com>
+References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
+ <1479818088-6007-6-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1479847815-30750-1-git-send-email-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: zyw@rock-chips.com, groeck@chromium.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1479818088-6007-6-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: edubezval@gmail.com, rui.zhang@intel.com, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, smbarber@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogR3VlbnRlciBSb2VjayA8Z3JvZWNrQGNocm9taXVtLm9yZz4KCklmIHRoZSBkcml2ZXIg
-aXMgaW4gc3VzcGVuZGVkIG1vZGUsIHRoZSBkcCBibG9jayBtYXkgYmUgZGlzYWJsZWQsIGFuZApj
-aGlwIHJlZ2lzdGVycyBtYXkgbm90IGJlIGFjY2Vzc2libGUuIFlldCwgdGhlIHdvcmtlciBtYXkg
-YmUgdHJpZ2dlcmVkCmluIHRoaXMgc2l0dWF0aW9uIGJ5IGFuIGV4dGNvbiBldmVudC4gSWYgdGhh
-dCBoYXBwZW5zLCB0aGUgZm9sbG93aW5nIGNyYXNoCndpbGwgYmUgc2Vlbi4KCmNkbi1kcCBmZWMw
-MDAwMC5kcDogW2RybTpjZG5fZHBfcGRfZXZlbnRfd29ya10gKkVSUk9SKiBFbmFibGUgZHAgZmFp
-bGVkIC0xOQpjZG4tZHAgZmVjMDAwMDAuZHA6IFtkcm06Y2RuX2RwX3BkX2V2ZW50X3dvcmtdIENv
-bm5lY3RlZCwgbm90IGVuYWJsZWQuIEVuYWJsaW5nIGNkbgpCYWQgbW9kZSBpbiBFcnJvciBoYW5k
-bGVyIGRldGVjdGVkLCBjb2RlIDB4YmYwMDAwMDIgLS0gU0Vycm9yCkNQVTogMSBQSUQ6IDEwMzU3
-IENvbW06IGt3b3JrZXIvMToyIE5vdCB0YWludGVkIDQuNC4yMS0wNTkwMy1nZTA1MTRlYSAjMQpI
-YXJkd2FyZSBuYW1lOiBHb29nbGUgS2V2aW4gKERUKQpXb3JrcXVldWU6IGV2ZW50cyBjZG5fZHBf
-cGRfZXZlbnRfd29yawp0YXNrOiBmZmZmZmZjMGNkYTY3MDgwIHRpOiBmZmZmZmZjMGI5YjgwMDAw
-IHRhc2sudGk6IGZmZmZmZmMwYjliODAwMDAKUEMgaXMgYXQgY2RuX2RwX2Nsb2NrX3Jlc2V0KzB4
-MzAvMHhhOApMUiBpcyBhdCBjZG5fZHBfZW5hYmxlKzB4MWUwLzB4NjljCi4uLgpDYWxsIHRyYWNl
-OgpbPGZmZmZmZmMwMDA1YTdlMjQ+XSBjZG5fZHBfcGRfZXZlbnRfd29yaysweDU4LzB4M2Y0Cls8
-ZmZmZmZmYzAwMDIzOTdmMD5dIHByb2Nlc3Nfb25lX3dvcmsrMHgyNDAvMHg0MjQKWzxmZmZmZmZj
-MDAwMjNhMjhjPl0gd29ya2VyX3RocmVhZCsweDJmYy8weDQyNApbPGZmZmZmZmMwMDAyM2Y1ZmM+
-XSBrdGhyZWFkKzB4MTBjLzB4MTE0Cls8ZmZmZmZmYzAwMDIwM2RkMD5dIHJldF9mcm9tX2Zvcmsr
-MHgxMC8weDQwCgpQcm9ibGVtIGlzIHR3by1mb2xkOiBUaGUgd29ya2VyIHNob3VsZCBub3QgcnVu
-IHdoaWxlIHN1c3BlbmRlZCwgYW5kIHRoZQpzdXNwZW5kIGZ1bmN0aW9uIHNob3VsZCBub3QgY2Fs
-bCBjZG5fZHBfZGlzYWJsZSgpIHdoaWxlIHRoZSB3b3JrZXIgaXMKcnVubmluZy4KClNpZ25lZC1v
-ZmYtYnk6IEd1ZW50ZXIgUm9lY2sgPGdyb2Vja0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6
-IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgMTUgKysrKysrKysrKysrKy0tCiBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuaCB8ICAxICsKIDIgZmlsZXMgY2hhbmdlZCwgMTQgaW5z
-ZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLWNvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
-Y29yZS5jCmluZGV4IGY3OGNkYWYuLmFkYzQyMzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
-ZG4tZHAtY29yZS5jCkBAIC05MzksNiArOTM5LDEwIEBAIHN0YXRpYyB2b2lkIGNkbl9kcF9wZF9l
-dmVudF93b3JrKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKIAl1OCBzaW5rX2NvdW50OwogCiAJ
-bXV0ZXhfbG9jaygmZHAtPmxvY2spOworCisJaWYgKGRwLT5zdXNwZW5kZWQpCisJCWdvdG8gb3V0
-OworCiAJcmV0ID0gY2RuX2RwX3JlcXVlc3RfZmlybXdhcmUoZHApOwogCWlmIChyZXQpCiAJCWdv
-dG8gb3V0OwpAQCAtMTEyMywxOSArMTEyNywyNiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNvbXBv
-bmVudF9vcHMgY2RuX2RwX2NvbXBvbmVudF9vcHMgPSB7CiBpbnQgY2RuX2RwX3N1c3BlbmQoc3Ry
-dWN0IGRldmljZSAqZGV2KQogewogCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGRldl9nZXRf
-ZHJ2ZGF0YShkZXYpOworCWludCByZXQgPSAwOwogCisJbXV0ZXhfbG9jaygmZHAtPmxvY2spOwog
-CWlmIChkcC0+YWN0aXZlKQotCQlyZXR1cm4gY2RuX2RwX2Rpc2FibGUoZHApOworCQlyZXQgPSBj
-ZG5fZHBfZGlzYWJsZShkcCk7CisJZHAtPnN1c3BlbmRlZCA9IHRydWU7CisJbXV0ZXhfdW5sb2Nr
-KCZkcC0+bG9jayk7CiAKLQlyZXR1cm4gMDsKKwlyZXR1cm4gcmV0OwogfQogCiBpbnQgY2RuX2Rw
-X3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCiB7CiAJc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
-ID0gZGV2X2dldF9kcnZkYXRhKGRldik7CiAKKwltdXRleF9sb2NrKCZkcC0+bG9jayk7CisJZHAt
-PnN1c3BlbmRlZCA9IGZhbHNlOwogCWlmIChkcC0+ZndfbG9hZGVkKQogCQlzY2hlZHVsZV93b3Jr
-KCZkcC0+ZXZlbnRfd29yayk7CisJbXV0ZXhfdW5sb2NrKCZkcC0+bG9jayk7CiAKIAlyZXR1cm4g
-MDsKIH0KZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5o
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKaW5kZXggM2JlYTRiOC4u
-N2Q0ODY2MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
-LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKQEAgLTgyLDYg
-KzgyLDcgQEAgc3RydWN0IGNkbl9kcF9kZXZpY2UgewogCXN0cnVjdCBtdXRleCBsb2NrOwogCWJv
-b2wgY29ubmVjdGVkOwogCWJvb2wgYWN0aXZlOworCWJvb2wgc3VzcGVuZGVkOwogCiAJY29uc3Qg
-c3RydWN0IGZpcm13YXJlICpmdzsJLyogY2RuIGRwIGZpcm13YXJlICovCiAJdW5zaWduZWQgaW50
-IGZ3X3ZlcnNpb247CS8qIGNkbiBmdyB2ZXJzaW9uICovCi0tIAoyLjguMC5yYzMuMjI2LmczOWQ0
-MDIwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Nov 22, 2016 at 08:34:48PM +0800, Caesar Wang wrote:
+> In some cases, some sensors didn't need the trip points, the
+> set_trips will return {-INT_MAX, INT_MAX} to trigger thermal alarm.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+> 
+>  drivers/thermal/rockchip_thermal.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index f4d4be9..5b9c346 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -200,6 +200,7 @@ struct rockchip_thermal_data {
+>  #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
+>  
+>  #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
+> +#define TSADCV2_INT_SRC_SHIFT(chn)		chn
+>  #define TSADCV2_SHUT_2GPIO_SRC_EN(chn)		BIT(4 + (chn))
+>  #define TSADCV2_SHUT_2CRU_SRC_EN(chn)		BIT(8 + (chn))
+>  
+> @@ -903,10 +904,22 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
+>  	struct rockchip_thermal_sensor *sensor = _sensor;
+>  	struct rockchip_thermal_data *thermal = sensor->thermal;
+>  	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
+> +	u32 int_clr;
+>  
+>  	dev_dbg(&thermal->pdev->dev, "%s: sensor %d: low: %d, high %d\n",
+>  		__func__, sensor->id, low, high);
+>  
+> +	/*
+> +	 * In some cases, some sensors didn't need the trip points, the
+> +	 * set_trips will return {-INT_MAX, INT_MAX} to trigger thermal alarm.
+
+This language is a little unclear. AFAICT, set_trips is not "returning"
+those values, it's "passing" them as arguments.
+
+> +	 */
+> +	if (high == INT_MAX) {
+> +		int_clr = readl_relaxed(thermal->regs + TSADCV2_INT_EN);
+> +		int_clr |= 0 << TSADCV2_INT_SRC_SHIFT(sensor->id);
+
+Uhh, really? This line is a no-op; you're just OR'ing a value of zero...
+
+It also seems like this should use the existing shift macro,
+TSADCV2_INT_SRC_EN(). So:
+
+		int_clr &= ~TSADCV2_INT_SRC_EN(sensor->id);
+
+> +		writel_relaxed(int_clr, thermal->regs + TSADCV2_INT_EN);
+> +		return 0;
+> +	}
+> +
+>  	tsadc->set_alarm_temp(&tsadc->table,
+>  			      sensor->id, thermal->regs, high);
+
+Given that you have a level of indirection here for ->set_alarm_temp(),
+it seems like you should not be doing the above register programming
+directly in this function; it should either go in the ->set_alarm_temp()
+callback, or in a new callback like ->disable_alarm().
+
+Brian
+
+>  
+> -- 
+> 2.7.4
+> 
