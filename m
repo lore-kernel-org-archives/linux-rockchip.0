@@ -1,64 +1,53 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Tue, 22 Nov 2016 20:36:43 -0800
-Message-ID: <20161123043642.GA28948@google.com>
-References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
- <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
- <20161122205737.GB45366@google.com>
- <20161122215240.GA52900@google.com>
- <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
- <20161123023325.GB122654@google.com>
- <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
+Subject: Re: [PATCH 3/3] PCI: rockchip: Add system PM support
+Date: Tue, 22 Nov 2016 20:56:58 -0800
+Message-ID: <20161123045658.GB28948@google.com>
+References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479863953-123874-3-git-send-email-shawn.lin@rock-chips.com>
+ <20161123020835.GB119441@google.com>
+ <1c4bd848-67f7-0d31-6392-d9550e4767a9@rock-chips.com>
+ <20161123024527.GA18020@google.com>
+ <bf970e48-80a0-7a18-4d87-93a5748f01c2@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
+In-Reply-To: <bf970e48-80a0-7a18-4d87-93a5748f01c2@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Nov 23, 2016 at 11:03:33AM +0800, Caesar Wang wrote:
-> 在 2016年11月23日 10:33, Brian Norris 写道:
-> >IIUC, "too high" should not be interpreted as TSADCV2_DATA_MASK on
-> >rk3288, should it? That corresponds to -40C, which means you'll be
-> >triggering the alarm temperature at a very *low* temperature, not a very
-> >high one, no?
+On Wed, Nov 23, 2016 at 10:51:50AM +0800, Shawn Lin wrote:
+> 在 2016/11/23 10:45, Brian Norris 写道:
+> >I'm not sure if that's necessary. I was just curious on how this got
+> >determined, when it seemed that 500ms was plenty.
+> >
 > 
-> The "too high" will correspond to -40C on rk3288, but shouldn't
-> trigger the alarm temperature.
+> Refer to https://lists.launchpad.net/kernel-packages/msg123315.html
 > 
-> Due to the alarm or tshut function will handle it.
+> "When the host (Linux/Driver) sends the PME_TURN_OFF message it should
+> wait for PME_TO_ACK from the device. Microsoft Windows versions
+> typically wait for 5 seconds."
 > 
-> e.g.:
-> static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
->                   int chn, void __iomem *regs, int temp)
-> {
->     u32 alarm_value, int_en;
-> 
->     /* Make sure the value is valid */
->     alarm_value = rk_tsadcv2_temp_to_code(table, temp);
->     if (alarm_value == table->data_mask)
->         return;
+> This is the reason for why I added 5s for timeout.
 
-Ah, right. I keep forgetting about this odd error handling.
+Huh, good find. Seems like something that could go in either the commit
+message or the comments.
 
-That's still the wrong error handling though; the right response is
-never to avoid doing anything (and therefore returning "success" to the
-thermal core). You need to either program a high (or low) trip value, or
-else report an error (i.e., allow rk_tsadcv2_alarm_temp() to return an
-error code back to the calling function). Otherwise, this:
+FWIW, that bug report seems to also be related to the question at hand
+-- how to handle L2 link state entry. That bug notes that Linux "doesn't
+wait for PME_TO_ACK from the device", but AFAICT, Linux PCI drivers
+don't typically send PME_TURN_OFF at all.
 
-echo -45000 > trip_0_temp
+So right now, we're just relying on our platform suspend code like this.
+It'd be interesting to know if other root complexes had programmable
+Message Request support like this available to the host CPU, or if they
+all have something hardcoded into their BIOS/ACPI support or something
+(or just don't use PME_TURN_OFF at all).
 
-will succeed without error, and:
-
-cat trip_0_temp
--45000
-
-will return the cached temperature from of-thermal, even though the trip
-point is programmed to something else entirely.
+Anyway, I guess that's just a future-work question, in case we want to
+consolidate support like this into the PCI core framework.
 
 Brian
