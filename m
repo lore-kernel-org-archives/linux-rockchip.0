@@ -1,15 +1,15 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Wed, 23 Nov 2016 10:06:15 +0800
-Message-ID: <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
-References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
- <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
- <20161122205737.GB45366@google.com> <20161122215240.GA52900@google.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 3/3] PCI: rockchip: Add system PM support
+Date: Tue, 22 Nov 2016 18:08:35 -0800
+Message-ID: <20161123020835.GB119441@google.com>
+References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479863953-123874-3-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20161122215240.GA52900-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1479863953-123874-3-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,69 +19,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTblubQxMeaciDIz5pelIDA1OjUyLCBCcmlhbiBOb3JyaXMg5YaZ6YGTOgo+IE9uIFR1
-ZSwgTm92IDIyLCAyMDE2IGF0IDEyOjU3OjM3UE0gLTA4MDAsIEJyaWFuIE5vcnJpcyB3cm90ZToK
-Pj4gT24gVHVlLCBOb3YgMjIsIDIwMTYgYXQgMDg6MzQ6NDZQTSArMDgwMCwgQ2Flc2FyIFdhbmcg
-d3JvdGU6Cj4+PiBUaGUgdGVtcF90b19jb2RlIGZ1bmN0aW9uIHdpbGwgcmV0dXJuIDAgd2hlbiB3
-ZSBzZXQgdGhlIHRyaXAgcG9pbnRzIHZhbHVlCj4+PiBvciB2YWxpZCB0ZW1wZXJhdHVyZS4KPj4g
-SSdtIG5vdCBxdWl0ZSBzdXJlIHdoYXQgeW91IG1lYW4gYnkgIndoZW4gd2Ugc2V0IHRoZSB0cmlw
-IHBvaW50cyB2YWx1ZQo+PiBvciB2YWxpZCB0ZW1wZXJhdHVyZS4iIERvIHlvdSBtZWFuICJ3aGVu
-IHdlIHNldCB0aGUgdHJpcCBwb2ludCdzIHZhbHVlCj4+IHRvIGFuIGludmFsaWQgdGVtcGVyYXR1
-cmUiPwo+Pgo+PiBBc3N1bWluZyB0aGF0J3Mgd2hhdCB5b3UgbWVhbnQuLi4KCkFsbW9zdCwgSSB3
-aWxsIGltcHJvdmUgdGhlIGNvbW1pdC4KCj4+Cj4+PiBUaGlzIHBhdGNoIHdpbGwgcHJldmVudCB0
-aGlzIGNhc2UgaGFwcGVuaW5nLgo+PiBUaGlzIGlzIGdvb2QgdG8gY2hhbmdlLCBidXQgSU1PLCBp
-dCdzIGJldHRlciB0byBhY3R1YWxseSBwaWNrIGEgY2xvc2UKPj4gdmFsdWUsIGluc3RlYWQgb2Yg
-dGhlIG1heC4gZS5nLiwgaWYgeW91IHN1cHBvcnQgdGVtcGVyYXR1cmVzIGF0IGRlZ3JlZQo+PiBp
-bnRlcnZhbHMgb2YgODAsIDg1LCA5MCwgLi4uLCAxMjUsIGJ1dCBzb21lb25lIGxpc3RzIDgyIGlu
-IHRoZSBkZXZpY2UKPj4gdHJlZSwgd2Ugc2hvdWxkIHBpY2sgZWl0aGVyIDgwIG9yIDg1LCBub3Qg
-MTI1Lgo+IEkgc2VlIHRoYXQncyB3aGF0IHlvdSdyZSBkb2luZyBpbiBhIHBhdGNoIGxhdGVyIGlu
-IHRoaXMgc2VyaWVzLiBHb29kLgoKWWVhaCwgZmluZCBhbm90aGVyIGlzc3VlIGR1cmluZyB3cml0
-aW5nIHRoaXMgcGF0Y2gsIGFzIHRoZSBwYXRjaFs0LzVdLgoKPgo+Pj4gU2lnbmVkLW9mZi1ieTog
-Q2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4KPj4+ICAgZHJpdmVy
-cy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyB8IDYgKystLS0tCj4+PiAgIDEgZmlsZSBjaGFu
-Z2VkLCAyIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4+Pgo+Pj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMgYi9kcml2ZXJzL3RoZXJtYWwvcm9j
-a2NoaXBfdGhlcm1hbC5jCj4+PiBpbmRleCA3NjY0ODZmLi41MzVmMWZhIDEwMDY0NAo+Pj4gLS0t
-IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+Pj4gKysrIGIvZHJpdmVycy90
-aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+Pj4gQEAgLTQwMSwxNyArNDAxLDE1IEBAIHN0YXRp
-YyB1MzIgcmtfdHNhZGN2Ml90ZW1wX3RvX2NvZGUoY29uc3Qgc3RydWN0IGNoaXBfdHNhZGNfdGFi
-bGUgKnRhYmxlLAo+Pj4gICAJCQkJICAgaW50IHRlbXApCj4+PiAgIHsKPj4+ICAgCWludCBoaWdo
-LCBsb3csIG1pZDsKPj4+IC0JdTMyIGVycm9yID0gMDsKPj4+ICsJdTMyIGVycm9yID0gdGFibGUt
-PmRhdGFfbWFzazsKPj4+ICAgCj4+PiAgIAlsb3cgPSAwOwo+Pj4gICAJaGlnaCA9IHRhYmxlLT5s
-ZW5ndGggLSAxOwo+Pj4gICAJbWlkID0gKGhpZ2ggKyBsb3cpIC8gMjsKPj4+ICAgCj4+PiAgIAkv
-KiBSZXR1cm4gbWFzayBjb2RlIGRhdGEgd2hlbiB0aGUgdGVtcCBpcyBvdmVyIHRhYmxlIHJhbmdl
-ICovCj4+PiAtCWlmICh0ZW1wIDwgdGFibGUtPmlkW2xvd10udGVtcCB8fCB0ZW1wID4gdGFibGUt
-PmlkW2hpZ2hdLnRlbXApIHsKPj4+IC0JCWVycm9yID0gdGFibGUtPmRhdGFfbWFzazsKPj4+ICsJ
-aWYgKHRlbXAgPCB0YWJsZS0+aWRbbG93XS50ZW1wIHx8IHRlbXAgPiB0YWJsZS0+aWRbaGlnaF0u
-dGVtcCkKPj4+ICAgCQlnb3RvIGV4aXQ7Cj4gSSB3YXMgcmV2aXNpdGluZyB0aGUgbG9naWMgaGVy
-ZSB0aG91Z2gsIGFuZCBJIGRvbid0IHVuZGVyc3RhbmQgeW91cgo+IGVycm9yIGNhc2UuIFlvdSdy
-ZSB0cmVhdGluZyAidG9vIGxvdyIgYW5kICJ0b28gaGlnaCIgdGhlIHNhbWUsIGFuZCBpbgo+IGVp
-dGhlciBjYXNlLCB5b3UncmUgY2hvb3NpbmcgYSB2YWx1ZSBvZiAtPmRhdGFfbWFzay4gVGhhdCBk
-b2Vzbid0IG1ha2UKPiBzZW5zZSB0byBtZSwgZXNwZWNpYWxseSBmb3IgQURDX0RFQ1JFTUVOVCBj
-YXNlcyBsaWtlIHJrMzI4OC4gSW4gdGhhdAo+IGNhc2UsIHlvdSdyZSBwcm9ncmFtbWluZyB0aGUg
-dHJpcCB0byB0aGUgbG93ZXN0IHBvc3NpYmxlIHRlbXBlcmF0dXJlLgoKSSBhZG1pdCB0aGF0J3Mg
-bm90IHBlcmZlY3QsIGJ1dCB0aGF0IHNob3VsZCBjb25mb3JtIHRvIHJlYWxpdHkuCgpXaGljaGV2
-ZXIgaXMgdGhlIGFkYyB2YWx1ZSwgMTJpdCBvciAxMGJpdC4KI2RlZmluZSBUU0FEQ1YyX0RBVEFf
-TUFTSyAgICAgICAgICAgIDB4ZmZmCiNkZWZpbmUgVFNBRENWM19EQVRBX01BU0sgICAgICAgICAg
-ICAweDNmZgoKVGhlICJ0b28gbG93IiBhbmQgInRvbyBoaWdoIiBhcmUgc2FtZSwgdGhhdCBzaG91
-bGQgaW5kaWNhdGUgdGhhdCB0ZW1wZXJhdHVyZSBpcwppbnZhbGlkIG9yIG92ZXIgdGFibGUgcmFu
-Z2UuCgpUaGUgY3VycmVjdCBjb2RlIHdpbGwgcmV0dXJuIHRoZSBtYXggYW5hbG9nIHZhbHVlIHRv
-IHdhcm4gaXQuCi0tLQoKVGhlIHRlbXBlcmF0dXJlIHstNDBDLCAxMjVDfSBpcyBmb3Igcm9ja2No
-aXAgU29DcywgdGhhdCBzaG91bGQgYmUgCnNpbWlsYXIgd2l0aCByZWFsIHdvcmxkJ3MgdGVtcGVy
-YXR1cmUgey1JTlRfTUFYLCBJTlRfTUFYfS4KCi1DYWVzYXIKPgo+IEl0IHNlZW1zIGxpa2UgZWl0
-aGVyIHlvdSBzaG91bGQgbWFrZSB0aGlzIGNvbmRpdGlvbmFsLCBzbyB0aGF0ICJ0b28gbG93Igo+
-IGFuZCAidG9vIGhpZ2giIG1ha2Ugc2FuZSBhbHRlcm5hdGl2ZSBjaG9pY2VzIChsaWtlIE1BWCBv
-ciBNSU4gdGVtcCksIG9yCj4gZWxzZSByZXN0cnVjdHVyZSB0aGlzIHRvIHBhc3MgZXJyb3IgY29k
-ZXMgYmFjayB0byB0aGUgdXBwZXIgbGF5ZXJzLgo+Cj4gQnJpYW4KPgo+Pj4gLQl9Cj4+PiAgIAo+
-Pj4gICAJd2hpbGUgKGxvdyA8PSBoaWdoKSB7Cj4+PiAgIAkJaWYgKHRlbXAgPT0gdGFibGUtPmlk
-W21pZF0udGVtcCkKPj4+IC0tIAo+Pj4gMi43LjQKPj4+Cj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, Nov 23, 2016 at 09:19:13AM +0800, Shawn Lin wrote:
+> This patch adds system PM support for Rockchip's RC.
+> For pre S3, the EP is configured into D3 state which guarantees
+> the link state should be in L1. So we could send PME_Turn_Off message
+> to the EP and wait for its ACK to make the link state into L2 or L3
+> without the aux-supply. This could help save more power which I think
+> should be very important for mobile devices.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 90 +++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 89 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 71d056d..720535b 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -20,6 +20,7 @@
+>  #include <linux/gpio/consumer.h>
+>  #include <linux/init.h>
+>  #include <linux/interrupt.h>
+> +#include <linux/iopoll.h>
+>  #include <linux/irq.h>
+>  #include <linux/irqchip/chained_irq.h>
+>  #include <linux/irqdomain.h>
+> @@ -55,6 +56,10 @@
+>  #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+>  #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+>  #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+> +#define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+> +#define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
+> +#define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
+> +#define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
+>  #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+>  #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+>  #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
+> @@ -173,6 +178,7 @@
+>  
+>  #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
+>  #define MIN_AXI_ADDR_BITS_PASSED		8
+> +#define PCIE_RC_SEND_PME_OFF			0x11960
+>  #define ROCKCHIP_VENDOR_ID			0x1d87
+>  #define PCIE_ECAM_BUS(x)			(((x) & 0xff) << 20)
+>  #define PCIE_ECAM_DEV(x)			(((x) & 0x1f) << 15)
+> @@ -181,6 +187,9 @@
+>  #define PCIE_ECAM_ADDR(bus, dev, func, reg) \
+>  	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
+>  	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
+> +#define PCIE_LINK_IS_L2(x) \
+> +		((x & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
+
+Wrap the 'x' in parentheses, for safety in case the caller passes
+something complicated.
+
+> +		 PCIE_CLIENT_DEBUG_LTSSM_L2)
+>  
+>  #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+>  #define RC_REGION_0_ADDR_TRANS_L		0x00000000
+> @@ -1205,9 +1214,80 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+>  				  AXI_WRAPPER_NOR_MSG,
+>  				  20 - 1, 0, 0);
+>  	rockchip->msg_region = ioremap(rockchip->mem_bus_addr +
+> -				       ((reg_no - 1) << 20), SZ_1M);
+> +				       ((reg_no + offset) << 20), SZ_1M);
+
+^^^ You're leaking this, now that you call rockchip_cfg_atu() every
+time you resume.
+
+>  	return err;
+>  }
+> +
+> +static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
+> +{
+> +	u32 value;
+> +	int err;
+> +
+> +	/* send PME_TURN_OFF message */
+> +	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
+> +
+> +	/* read LTSSM and wait for falling into L2 link state */
+> +	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
+> +				 value, PCIE_LINK_IS_L2(value), 20,
+> +				 jiffies_to_usecs(5 * HZ));
+
+You really want to wait a whole 5 seconds for this? Last I saw, you were
+doing testing with about 500ms or less. As I read the spec, there's cap
+on per-device time to ACK the request, and I recall that was on the
+order of 10s of milliseconds. But technically that can add up if you
+have a large hierarchy of devices attached...
+
+> +	if (err) {
+> +		dev_err(rockchip->dev, "PCIe link enter L2 timeout!\n");
+> +		return err;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rockchip_pcie_suspend_noirq(struct device *dev)
+> +{
+> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	/* disable core and cli int since we don't need to ack PME_ACK */
+> +	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
+> +			    PCIE_CLIENT_INT_CLI, PCIE_CLIENT_INT_MASK);
+> +	rockchip_pcie_write(rockchip, (u32)PCIE_CORE_INT, PCIE_CORE_INT_MASK);
+> +
+> +	ret = rockchip_pcie_wait_l2(rockchip);
+> +	if (ret)
+> +		return ret;
+
+You leave core and client interrupts masked if you timeout here?
+
+Brian
+
+> +
+> +	phy_power_off(rockchip->phy);
+> +	phy_exit(rockchip->phy);
+> +
+> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
+> +	clk_disable_unprepare(rockchip->hclk_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_pcie);
+> +
+> +	return ret;
+> +}
+> +
+> +static int rockchip_pcie_resume_noirq(struct device *dev)
+> +{
+> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+> +	int err;
+> +
+> +	clk_prepare_enable(rockchip->clk_pcie_pm);
+> +	clk_prepare_enable(rockchip->hclk_pcie);
+> +	clk_prepare_enable(rockchip->aclk_perf_pcie);
+> +	clk_prepare_enable(rockchip->aclk_pcie);
+> +
+> +	err = rockchip_pcie_init_port(rockchip);
+> +	if (err)
+> +		return err;
+> +
+> +	err = rockchip_cfg_atu(rockchip);
+> +	if (err)
+> +		return err;
+> +
+> +	/* Need this to enter L1 again */
+> +	rockchip_pcie_update_txcredit_mui(rockchip);
+> +	rockchip_pcie_enable_interrupts(rockchip);
+> +
+> +	return 0;
+> +}
+> +
+>  static int rockchip_pcie_probe(struct platform_device *pdev)
+>  {
+>  	struct rockchip_pcie *rockchip;
+> @@ -1228,6 +1308,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	if (!rockchip)
+>  		return -ENOMEM;
+>  
+> +	platform_set_drvdata(pdev, rockchip);
+> +
+>  	rockchip->dev = dev;
+>  
+>  	err = rockchip_pcie_parse_dt(rockchip);
+> @@ -1352,6 +1434,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	return err;
+>  }
+>  
+> +static const struct dev_pm_ops rockchip_pcie_pm_ops = {
+> +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
+> +				      rockchip_pcie_resume_noirq)
+> +};
+> +
+>  static const struct of_device_id rockchip_pcie_of_match[] = {
+>  	{ .compatible = "rockchip,rk3399-pcie", },
+>  	{}
+> @@ -1361,6 +1448,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	.driver = {
+>  		.name = "rockchip-pcie",
+>  		.of_match_table = rockchip_pcie_of_match,
+> +		.pm = &rockchip_pcie_pm_ops,
+>  	},
+>  	.probe = rockchip_pcie_probe,
+>  
+> -- 
+> 1.9.1
+> 
+> 
