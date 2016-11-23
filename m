@@ -1,7 +1,7 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH 4/9] clocksource/drivers/rockchip_timer: move TIMER_INT_UNMASK out of rk_timer_enable()
-Date: Wed, 23 Nov 2016 20:29:32 +0300
-Message-ID: <1479922177-20136-4-git-send-email-al.kochet@gmail.com>
+Subject: [PATCH 7/9] clocksource/drivers/rockchip_timer: implement clocksource timer
+Date: Wed, 23 Nov 2016 20:29:35 +0300
+Message-ID: <1479922177-20136-7-git-send-email-al.kochet@gmail.com>
 References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
@@ -10,45 +10,150 @@ To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel
 Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This allow to enable timer without enabling interrupts from it.
-As that mode will be used in clocksource implementation.
+The patch implement stable clocksource for rk3188. It register
+one of the timers as clocksource and sched_clock. Also it override
+arm_global_timer clocksource using rating property (350).
+
+arm_global_timer enabled on rk3188 provide unstable clocksource.
+It's rate depend on ARM CPU rate. As result the command 'sleep 60'
+could run either ~60s (with CPU freq 312 MHZ) or ~45s (with CPU
+freq 1.6GHz).
+
+In order to use the patch you have to setup the timer using
+'rockchip,clocksource' device tree property. timer6 was used as
+clocksource in kernel 3.0 from rockchip SDK.
+
+    cpufreq-set -f 1.6GHZ
+    date; sleep 60; date
 
 Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 ---
- drivers/clocksource/rockchip_timer.c |    7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/clocksource/rockchip_timer.c |   79 +++++++++++++++++++++++++++-------
+ 1 file changed, 63 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index 2f18166..3b530f9 100644
+index 61787c5..77bea97 100644
 --- a/drivers/clocksource/rockchip_timer.c
 +++ b/drivers/clocksource/rockchip_timer.c
-@@ -60,8 +60,7 @@ static inline void rk_timer_disable(struct rk_timer *timer)
+@@ -11,6 +11,7 @@
+ #include <linux/clockchips.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
++#include <linux/sched_clock.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+@@ -42,7 +43,13 @@ struct rk_clock_event_device {
+ 	struct rk_timer timer;
+ };
  
- static inline void rk_timer_enable(struct rk_timer *timer, u32 flags)
++struct rk_clocksource {
++	struct clocksource cs;
++	struct rk_timer timer;
++};
++
+ static struct rk_clock_event_device bc_timer;
++static struct rk_clocksource cs_timer;
+ 
+ static inline struct rk_clock_event_device*
+ rk_clock_event_device(struct clock_event_device *ce)
+@@ -139,14 +146,35 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static cycle_t rk_timer_clocksource_read(struct clocksource *cs)
++{
++	struct rk_clocksource *_cs = container_of(cs, struct rk_clocksource, cs);
++	return ~rk_timer_counter_read(&_cs->timer);
++}
++
++static u64 notrace rk_timer_sched_clock_read(void)
++{
++	struct rk_clocksource *_cs = &cs_timer;
++	return ~rk_timer_counter_read(&_cs->timer);
++}
++
+ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
  {
--	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
--		       timer->ctrl);
-+	writel_relaxed(TIMER_ENABLE | flags, timer->ctrl);
- }
+-	struct clock_event_device *ce = &bc_timer.ce;
+-	struct rk_timer *timer = &bc_timer.timer;
++	struct clock_event_device *ce = NULL;
++	struct clocksource *cs = NULL;
++	struct rk_timer *timer = NULL;
+ 	struct clk *timer_clk;
+ 	struct clk *pclk;
+ 	int ret = -EINVAL, irq;
  
- static void rk_timer_update_counter(unsigned long cycles,
-@@ -82,7 +81,7 @@ static inline int rk_timer_set_next_event(unsigned long cycles,
- 	struct rk_timer *timer = rk_timer(ce);
- 	rk_timer_disable(timer);
- 	rk_timer_update_counter(cycles, timer);
--	rk_timer_enable(timer, TIMER_MODE_USER_DEFINED_COUNT);
-+	rk_timer_enable(timer, TIMER_MODE_USER_DEFINED_COUNT | TIMER_INT_UNMASK);
- 	return 0;
- }
++	if (of_property_read_bool(np, "rockchip,clocksource")) {
++		cs = &cs_timer.cs;
++		timer = &cs_timer.timer;
++	} else {
++		ce = &bc_timer.ce;
++		timer = &bc_timer.timer;
++	}
++
+ 	timer->base = of_iomap(np, 0);
+ 	if (!timer->base) {
+ 		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
+@@ -189,26 +217,45 @@ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ 		goto out_irq;
+ 	}
  
-@@ -98,7 +97,7 @@ static int rk_timer_set_periodic(struct clock_event_device *ce)
- 	struct rk_timer *timer = rk_timer(ce);
+-	ce->name = TIMER_NAME;
+-	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT |
+-		       CLOCK_EVT_FEAT_DYNIRQ;
+-	ce->set_next_event = rk_timer_set_next_event;
+-	ce->set_state_shutdown = rk_timer_shutdown;
+-	ce->set_state_periodic = rk_timer_set_periodic;
+-	ce->irq = irq;
+-	ce->cpumask = cpu_possible_mask;
+-	ce->rating = 250;
++	if (ce) {
++		ce->name = TIMER_NAME;
++		ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT |
++			       CLOCK_EVT_FEAT_DYNIRQ;
++		ce->set_next_event = rk_timer_set_next_event;
++		ce->set_state_shutdown = rk_timer_shutdown;
++		ce->set_state_periodic = rk_timer_set_periodic;
++		ce->irq = irq;
++		ce->cpumask = cpu_possible_mask;
++		ce->rating = 250;
++	}
++
++	if (cs) {
++		cs->name = TIMER_NAME;
++		cs->flags = CLOCK_SOURCE_IS_CONTINUOUS;
++		cs->mask = CLOCKSOURCE_MASK(64);
++		cs->read = rk_timer_clocksource_read;
++		cs->rating = 350;
++	}
+ 
+ 	rk_timer_interrupt_clear(timer);
  	rk_timer_disable(timer);
- 	rk_timer_update_counter(timer->freq / HZ - 1, timer);
--	rk_timer_enable(timer, TIMER_MODE_FREE_RUNNING);
-+	rk_timer_enable(timer, TIMER_MODE_FREE_RUNNING | TIMER_INT_UNMASK);
+ 
+-	ret = request_irq(irq, rk_timer_interrupt, IRQF_TIMER, TIMER_NAME, ce);
+-	if (ret) {
+-		pr_err("Failed to initialize '%s': %d\n", TIMER_NAME, ret);
+-		goto out_irq;
++	if (ce) {
++		ret = request_irq(irq, rk_timer_interrupt, IRQF_TIMER, TIMER_NAME, ce);
++		if (ret) {
++			pr_err("Failed to initialize '%s': %d\n", TIMER_NAME, ret);
++			goto out_irq;
++		}
++
++		clockevents_config_and_register(ce, timer->freq, 1, UINT_MAX);
+ 	}
+ 
+-	clockevents_config_and_register(ce, timer->freq, 1, UINT_MAX);
++	if (cs) {
++		rk_timer_update_counter(U64_MAX, timer);
++		rk_timer_enable(timer, 0);
++		clocksource_register_hz(cs, timer->freq);
++		sched_clock_register(rk_timer_sched_clock_read, 64, timer->freq);
++	}
+ 
  	return 0;
- }
  
 -- 
 1.7.9.5
