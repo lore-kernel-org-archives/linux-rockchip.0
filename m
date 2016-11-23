@@ -1,90 +1,183 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Wed, 23 Nov 2016 11:03:33 +0800
-Message-ID: <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
-References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
- <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
- <20161122205737.GB45366@google.com> <20161122215240.GA52900@google.com>
- <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
- <20161123023325.GB122654@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20161123023325.GB122654@google.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/3] PCI: rockchip: split out rockchip_cfg_atu
+Date: Wed, 23 Nov 2016 12:15:13 +0800
+Message-ID: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+We split out a new function, rockchip_cfg_atu, in order to
+re-configure the atu when missing these information after
+wakeup from S3.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-在 2016年11月23日 10:33, Brian Norris 写道:
-> On Wed, Nov 23, 2016 at 10:06:15AM +0800, Caesar Wang wrote:
->> 在 2016年11月23日 05:52, Brian Norris 写道:
->>> On Tue, Nov 22, 2016 at 12:57:37PM -0800, Brian Norris wrote:
->>>>> +	if (temp < table->id[low].temp || temp > table->id[high].temp)
->>>>>   		goto exit;
->>> I was revisiting the logic here though, and I don't understand your
->>> error case. You're treating "too low" and "too high" the same, and in
->>> either case, you're choosing a value of ->data_mask. That doesn't make
->>> sense to me, especially for ADC_DECREMENT cases like rk3288. In that
->>> case, you're programming the trip to the lowest possible temperature.
->> I admit that's not perfect, but that should conform to reality.
->>
->> Whichever is the adc value, 12it or 10bit.
->> #define TSADCV2_DATA_MASK            0xfff
->> #define TSADCV3_DATA_MASK            0x3ff
->>
->> The "too low" and "too high" are same, that should indicate that temperature is
->> invalid or over table range.
->>
->> The currect code will return the max analog value to warn it.
->> ---
->>
->> The temperature {-40C, 125C} is for rockchip SoCs, that should be
->> similar with real world's temperature {-INT_MAX, INT_MAX}.
-> IIUC, "too high" should not be interpreted as TSADCV2_DATA_MASK on
-> rk3288, should it? That corresponds to -40C, which means you'll be
-> triggering the alarm temperature at a very *low* temperature, not a very
-> high one, no?
+---
 
-The "too high" will correspond to -40C on rk3288, but shouldn't trigger 
-the alarm temperature.
+Changes in v2:
+- remove msg region support
 
-Due to the alarm or tshut function will handle it.
+ drivers/pci/host/pcie-rockchip.c | 104 +++++++++++++++++++++------------------
+ 1 file changed, 55 insertions(+), 49 deletions(-)
 
-e.g.:
-static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
-                   int chn, void __iomem *regs, int temp)
-{
-     u32 alarm_value, int_en;
-
-     /* Make sure the value is valid */
-     alarm_value = rk_tsadcv2_temp_to_code(table, temp);
-     if (alarm_value == table->data_mask)
-         return;
-....
-}
-or
-static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
-                   int chn, void __iomem *regs, int temp)
-{
-     u32 tshut_value, val;
-
-     /* Make sure the value is valid */
-     tshut_value = rk_tsadcv2_temp_to_code(table, temp);
-     if (tshut_value == table->data_mask)
-         return;
-...
-}
-
->
-> Brian
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index b55037a..9cb84b1 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -210,6 +210,11 @@ struct rockchip_pcie {
+ 	int	link_gen;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
++	u32     io_size;
++	int     offset;
++	phys_addr_t io_bus_addr;
++	u32     mem_size;
++	phys_addr_t mem_bus_addr;
+ };
+ 
+ static u32 rockchip_pcie_read(struct rockchip_pcie *rockchip, u32 reg)
+@@ -1149,6 +1154,50 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+ 	return 0;
+ }
+ 
++static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
++{
++	int offset;
++	int err;
++	int reg_no;
++
++	for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
++		err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
++						AXI_WRAPPER_MEM_WRITE,
++						20 - 1,
++						rockchip->mem_bus_addr +
++						(reg_no << 20),
++						0);
++		if (err) {
++			dev_err(rockchip->dev,
++					"program RC mem outbound ATU failed\n");
++			return err;
++		}
++	}
++
++	err = rockchip_pcie_prog_ib_atu(rockchip, 2, 32 - 1, 0x0, 0);
++	if (err) {
++		dev_err(rockchip->dev, "program RC mem inbound ATU failed\n");
++		return err;
++	}
++
++	offset = rockchip->mem_size >> 20;
++	for (reg_no = 0; reg_no < (rockchip->io_size >> 20); reg_no++) {
++		err = rockchip_pcie_prog_ob_atu(rockchip,
++						reg_no + 1 + offset,
++						AXI_WRAPPER_IO_WRITE,
++						20 - 1,
++						rockchip->io_bus_addr +
++						(reg_no << 20),
++						0);
++		if (err) {
++			dev_err(rockchip->dev,
++					"program RC io outbound ATU failed\n");
++			return err;
++		}
++	}
++
++	return err;
++}
+ static int rockchip_pcie_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_pcie *rockchip;
+@@ -1158,13 +1207,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	resource_size_t io_base;
+ 	struct resource	*mem;
+ 	struct resource	*io;
+-	phys_addr_t io_bus_addr = 0;
+-	u32 io_size;
+-	phys_addr_t mem_bus_addr = 0;
+-	u32 mem_size = 0;
+-	int reg_no;
+ 	int err;
+-	int offset;
+ 
+ 	LIST_HEAD(res);
+ 
+@@ -1231,14 +1274,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		goto err_vpcie;
+ 
+ 	/* Get the I/O and memory ranges from DT */
+-	io_size = 0;
+ 	resource_list_for_each_entry(win, &res) {
+ 		switch (resource_type(win->res)) {
+ 		case IORESOURCE_IO:
+ 			io = win->res;
+ 			io->name = "I/O";
+-			io_size = resource_size(io);
+-			io_bus_addr = io->start - win->offset;
++			rockchip->io_size = resource_size(io);
++			rockchip->io_bus_addr = io->start - win->offset;
+ 			err = pci_remap_iospace(io, io_base);
+ 			if (err) {
+ 				dev_warn(dev, "error %d: failed to map resource %pR\n",
+@@ -1249,8 +1291,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		case IORESOURCE_MEM:
+ 			mem = win->res;
+ 			mem->name = "MEM";
+-			mem_size = resource_size(mem);
+-			mem_bus_addr = mem->start - win->offset;
++			rockchip->mem_size = resource_size(mem);
++			rockchip->mem_bus_addr = mem->start - win->offset;
+ 			break;
+ 		case IORESOURCE_BUS:
+ 			rockchip->root_bus_nr = win->res->start;
+@@ -1260,45 +1302,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	if (mem_size) {
+-		for (reg_no = 0; reg_no < (mem_size >> 20); reg_no++) {
+-			err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
+-							AXI_WRAPPER_MEM_WRITE,
+-							20 - 1,
+-							mem_bus_addr +
+-							(reg_no << 20),
+-							0);
+-			if (err) {
+-				dev_err(dev, "program RC mem outbound ATU failed\n");
+-				goto err_vpcie;
+-			}
+-		}
+-	}
+-
+-	err = rockchip_pcie_prog_ib_atu(rockchip, 2, 32 - 1, 0x0, 0);
+-	if (err) {
+-		dev_err(dev, "program RC mem inbound ATU failed\n");
++	err = rockchip_cfg_atu(rockchip);
++	if (err)
+ 		goto err_vpcie;
+-	}
+-
+-	offset = mem_size >> 20;
+-
+-	if (io_size) {
+-		for (reg_no = 0; reg_no < (io_size >> 20); reg_no++) {
+-			err = rockchip_pcie_prog_ob_atu(rockchip,
+-							reg_no + 1 + offset,
+-							AXI_WRAPPER_IO_WRITE,
+-							20 - 1,
+-							io_bus_addr +
+-							(reg_no << 20),
+-							0);
+-			if (err) {
+-				dev_err(dev, "program RC io outbound ATU failed\n");
+-				goto err_vpcie;
+-			}
+-		}
+-	}
+-
+ 	bus = pci_scan_root_bus(&pdev->dev, 0, &rockchip_pcie_ops, rockchip, &res);
+ 	if (!bus) {
+ 		err = -ENOMEM;
+-- 
+1.9.1
