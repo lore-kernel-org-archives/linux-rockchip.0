@@ -1,53 +1,82 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 3/3] PCI: rockchip: Add system PM support
-Date: Tue, 22 Nov 2016 20:56:58 -0800
-Message-ID: <20161123045658.GB28948@google.com>
-References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
- <1479863953-123874-3-git-send-email-shawn.lin@rock-chips.com>
- <20161123020835.GB119441@google.com>
- <1c4bd848-67f7-0d31-6392-d9550e4767a9@rock-chips.com>
- <20161123024527.GA18020@google.com>
- <bf970e48-80a0-7a18-4d87-93a5748f01c2@rock-chips.com>
+Subject: Re: [PATCH v2 3/3] PCI: rockchip: Add system PM support
+Date: Tue, 22 Nov 2016 21:06:42 -0800
+Message-ID: <20161123050642.GC28948@google.com>
+References: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479874515-65872-3-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <bf970e48-80a0-7a18-4d87-93a5748f01c2@rock-chips.com>
+In-Reply-To: <1479874515-65872-3-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Nov 23, 2016 at 10:51:50AM +0800, Shawn Lin wrote:
-> 在 2016/11/23 10:45, Brian Norris 写道:
-> >I'm not sure if that's necessary. I was just curious on how this got
-> >determined, when it seemed that 500ms was plenty.
-> >
+Hi Shawn,
+
+On Wed, Nov 23, 2016 at 12:15:15PM +0800, Shawn Lin wrote:
+> This patch adds system PM support for Rockchip's RC.
+> For pre S3, the EP is configured into D3 state which guarantees
+> the link state should be in L1. So we could send PME_Turn_Off message
+> to the EP and wait for its ACK to make the link state into L2 or L3
+> without the aux-supply. This could help save more power which I think
+> should be very important for mobile devices.
 > 
-> Refer to https://lists.launchpad.net/kernel-packages/msg123315.html
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> "When the host (Linux/Driver) sends the PME_TURN_OFF message it should
-> wait for PME_TO_ACK from the device. Microsoft Windows versions
-> typically wait for 5 seconds."
+> ---
 > 
-> This is the reason for why I added 5s for timeout.
+> Changes in v2:
+> - Wrap the 'x' in parentheses
+> - add msg regison mapped support
+> - enable int for err case in suspend_noirq
+> 
+>  drivers/pci/host/pcie-rockchip.c | 102 +++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 102 insertions(+)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 457401d..f2828a8 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
 
-Huh, good find. Seems like something that could go in either the commit
-message or the comments.
+[...]
 
-FWIW, that bug report seems to also be related to the question at hand
--- how to handle L2 link state entry. That bug notes that Linux "doesn't
-wait for PME_TO_ACK from the device", but AFAICT, Linux PCI drivers
-don't typically send PME_TURN_OFF at all.
+> @@ -1196,8 +1207,91 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+>  		}
+>  	}
+>  
+> +	/* assign message regions */
+> +	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
+> +				  AXI_WRAPPER_NOR_MSG,
+> +				  20 - 1, 0, 0);
+> +	if (!rockchip->msg_region)
+> +		rockchip->msg_region = devm_ioremap(rockchip->dev,
+> +						    rockchip->mem_bus_addr +
+> +						    ((reg_no + offset) << 20),
+> +						    SZ_1M);
 
-So right now, we're just relying on our platform suspend code like this.
-It'd be interesting to know if other root complexes had programmable
-Message Request support like this available to the host CPU, or if they
-all have something hardcoded into their BIOS/ACPI support or something
-(or just don't use PME_TURN_OFF at all).
+You still forgot to check for devm_ioremap() failures. Should probably
+have:
 
-Anyway, I guess that's just a future-work question, in case we want to
-consolidate support like this into the PCI core framework.
+		if (!rockchip->msg_region)
+			return -ENOMEM;
 
+in there.
+
+Otherwise (and maybe with the "why 5 seconds" answer noted in the commit
+message?):
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+
+on all 3 patches.
+
+> +
+>  	return err;
+>  }
+
+[...]
+
+Thanks,
 Brian
