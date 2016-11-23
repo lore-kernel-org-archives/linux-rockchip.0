@@ -1,84 +1,90 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 3/3] PCI: rockchip: Add system PM support
-Date: Wed, 23 Nov 2016 10:51:50 +0800
-Message-ID: <bf970e48-80a0-7a18-4d87-93a5748f01c2@rock-chips.com>
-References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
- <1479863953-123874-3-git-send-email-shawn.lin@rock-chips.com>
- <20161123020835.GB119441@google.com>
- <1c4bd848-67f7-0d31-6392-d9550e4767a9@rock-chips.com>
- <20161123024527.GA18020@google.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
+Date: Wed, 23 Nov 2016 11:03:33 +0800
+Message-ID: <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
+References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
+ <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
+ <20161122205737.GB45366@google.com> <20161122215240.GA52900@google.com>
+ <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
+ <20161123023325.GB122654@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20161123024527.GA18020@google.com>
-Sender: linux-pci-owner@vger.kernel.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20161123023325.GB122654@google.com>
+Sender: linux-pm-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2016/11/23 10:45, Brian Norris 写道:
-> On Wed, Nov 23, 2016 at 10:39:30AM +0800, Shawn Lin wrote:
->> 在 2016/11/23 10:08, Brian Norris 写道:
->>> On Wed, Nov 23, 2016 at 09:19:13AM +0800, Shawn Lin wrote:
->>>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
->>>> index 71d056d..720535b 100644
->>>> --- a/drivers/pci/host/pcie-rockchip.c
->>>> +++ b/drivers/pci/host/pcie-rockchip.c
->
-> ...
->
->>>> +static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
->>>> +{
->>>> +	u32 value;
->>>> +	int err;
->>>> +
->>>> +	/* send PME_TURN_OFF message */
->>>> +	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
->>>> +
->>>> +	/* read LTSSM and wait for falling into L2 link state */
->>>> +	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
->>>> +				 value, PCIE_LINK_IS_L2(value), 20,
->>>> +				 jiffies_to_usecs(5 * HZ));
->>>
->>> You really want to wait a whole 5 seconds for this? Last I saw, you were
->>> doing testing with about 500ms or less. As I read the spec, there's cap
->>> on per-device time to ACK the request, and I recall that was on the
->>> order of 10s of milliseconds. But technically that can add up if you
->>> have a large hierarchy of devices attached...
->>>
+
+
+在 2016年11月23日 10:33, Brian Norris 写道:
+> On Wed, Nov 23, 2016 at 10:06:15AM +0800, Caesar Wang wrote:
+>> 在 2016年11月23日 05:52, Brian Norris 写道:
+>>> On Tue, Nov 22, 2016 at 12:57:37PM -0800, Brian Norris wrote:
+>>>>> +	if (temp < table->id[low].temp || temp > table->id[high].temp)
+>>>>>   		goto exit;
+>>> I was revisiting the logic here though, and I don't understand your
+>>> error case. You're treating "too low" and "too high" the same, and in
+>>> either case, you're choosing a value of ->data_mask. That doesn't make
+>>> sense to me, especially for ADC_DECREMENT cases like rk3288. In that
+>>> case, you're programming the trip to the lowest possible temperature.
+>> I admit that's not perfect, but that should conform to reality.
 >>
->> I have no very clear thought about how long we should set up the
->> timeout for PME_ACK. As you point out that a large hierarchy of devices
->> need quite a long time I guess.
+>> Whichever is the adc value, 12it or 10bit.
+>> #define TSADCV2_DATA_MASK            0xfff
+>> #define TSADCV3_DATA_MASK            0x3ff
 >>
->> A possible work for PCIe core is walk through the hierarchy of devices
->> and calculate the max ACK timeout(including the latency of HUB).. But
->> I guess ACPI-base platforms don't need linux-pci to handle L2 stuff at
->> S3 at all, instead it will be handled by firmware, so still I don't
->> know how they will calculate it.
->
-> I'm not sure if that's necessary. I was just curious on how this got
-> determined, when it seemed that 500ms was plenty.
->
+>> The "too low" and "too high" are same, that should indicate that temperature is
+>> invalid or over table range.
+>>
+>> The currect code will return the max analog value to warn it.
+>> ---
+>>
+>> The temperature {-40C, 125C} is for rockchip SoCs, that should be
+>> similar with real world's temperature {-INT_MAX, INT_MAX}.
+> IIUC, "too high" should not be interpreted as TSADCV2_DATA_MASK on
+> rk3288, should it? That corresponds to -40C, which means you'll be
+> triggering the alarm temperature at a very *low* temperature, not a very
+> high one, no?
 
-Refer to https://lists.launchpad.net/kernel-packages/msg123315.html
+The "too high" will correspond to -40C on rk3288, but shouldn't trigger 
+the alarm temperature.
 
-"When the host (Linux/Driver) sends the PME_TURN_OFF message it should
-wait for PME_TO_ACK from the device. Microsoft Windows versions 
-typically wait for 5 seconds."
+Due to the alarm or tshut function will handle it.
 
-This is the reason for why I added 5s for timeout.
+e.g.:
+static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+                   int chn, void __iomem *regs, int temp)
+{
+     u32 alarm_value, int_en;
 
-> We shouldn't be hitting this (and if we do, then that means we'd
-> probably need to reassess anyway), so maybe "too large" is fine.
+     /* Make sure the value is valid */
+     alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+     if (alarm_value == table->data_mask)
+         return;
+....
+}
+or
+static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+                   int chn, void __iomem *regs, int temp)
+{
+     u32 tshut_value, val;
+
+     /* Make sure the value is valid */
+     tshut_value = rk_tsadcv2_temp_to_code(table, temp);
+     if (tshut_value == table->data_mask)
+         return;
+...
+}
+
 >
 > Brian
 >
->
->
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
--- 
-Best Regards
-Shawn Lin
