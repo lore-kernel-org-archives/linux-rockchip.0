@@ -1,77 +1,53 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/3] PCI: rockchip: split out rockchip_cfg_atu
-Date: Wed, 23 Nov 2016 10:33:02 +0800
-Message-ID: <b2e2c1f4-7127-6684-cf56-c6eb1de3564d@rock-chips.com>
-References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
- <20161123015914.GA119441@google.com>
- <30d37e0c-73df-5bae-f489-3d9b56cc7b02@rock-chips.com>
- <20161123022905.GA122654@google.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
+Date: Tue, 22 Nov 2016 18:33:26 -0800
+Message-ID: <20161123023325.GB122654@google.com>
+References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
+ <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
+ <20161122205737.GB45366@google.com>
+ <20161122215240.GA52900@google.com>
+ <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20161123022905.GA122654@google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2016/11/23 10:29, Brian Norris 写道:
-> On Wed, Nov 23, 2016 at 10:15:16AM +0800, Shawn Lin wrote:
->> 在 2016/11/23 9:59, Brian Norris 写道:
->>> On Wed, Nov 23, 2016 at 09:19:11AM +0800, Shawn Lin wrote:
->>>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
->>>> index b55037a..19399fc 100644
->>>> --- a/drivers/pci/host/pcie-rockchip.c
->>>> +++ b/drivers/pci/host/pcie-rockchip.c
->
-> ...
->
->>>> +	rockchip->msg_region = ioremap(rockchip->mem_bus_addr +
->>>> +				       ((reg_no - 1) << 20), SZ_1M);
->>>
->>> (And here.)
->>>
->>> ioremap() can fail; check for NULL.
->>>
->>
->> Sure.
->>
->>> Also, when you start reusing rockchip_cfg_atu() in patch 3, you'll be
->>> leaking virtual address space, as you'll keep remapping this every time.
->>
->> How about just check if rockchip->msg_region was already mapped?
->> Otherwise we don't remap it again when calling rockchip_cfg_atu.
->
-> That'd work, even if it's a little awkward. That's basically one of my
-> suggestions below.
->
->>> You should straighten that out. Either some kind of check for
->>> 'if (!rockchip->msg_region)', or just do the map/unmap where it's
->>> actually used (in patch 3).
->>
->> Should we really need to unmap it? As this driver won't be a module and
->> I think it's okay to keep the rockchip->msg_region always.
->
-> No, I guess we don't really need to unmap it. I just meant, you could
-> map/unmap every time you use it, or make sure you just map it once (and
-> only once).
->
+On Wed, Nov 23, 2016 at 10:06:15AM +0800, Caesar Wang wrote:
+> 在 2016年11月23日 05:52, Brian Norris 写道:
+> >On Tue, Nov 22, 2016 at 12:57:37PM -0800, Brian Norris wrote:
 
-Got it.
+> >>>+	if (temp < table->id[low].temp || temp > table->id[high].temp)
+> >>>  		goto exit;
+> >I was revisiting the logic here though, and I don't understand your
+> >error case. You're treating "too low" and "too high" the same, and in
+> >either case, you're choosing a value of ->data_mask. That doesn't make
+> >sense to me, especially for ADC_DECREMENT cases like rk3288. In that
+> >case, you're programming the trip to the lowest possible temperature.
+> 
+> I admit that's not perfect, but that should conform to reality.
+> 
+> Whichever is the adc value, 12it or 10bit.
+> #define TSADCV2_DATA_MASK            0xfff
+> #define TSADCV3_DATA_MASK            0x3ff
+> 
+> The "too low" and "too high" are same, that should indicate that temperature is
+> invalid or over table range.
+> 
+> The currect code will return the max analog value to warn it.
+> ---
+> 
+> The temperature {-40C, 125C} is for rockchip SoCs, that should be
+> similar with real world's temperature {-INT_MAX, INT_MAX}.
 
-> Also (if it helps), you could use devm_ioremap(), in case you ever do
-> make it removable.
+IIUC, "too high" should not be interpreted as TSADCV2_DATA_MASK on
+rk3288, should it? That corresponds to -40C, which means you'll be
+triggering the alarm temperature at a very *low* temperature, not a very
+high one, no?
 
-That sounds good. :)
-
->
-> Brian
->
->
->
-
-
--- 
-Best Regards
-Shawn Lin
+Brian
