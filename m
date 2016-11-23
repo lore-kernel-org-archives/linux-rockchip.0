@@ -1,41 +1,106 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH 5/9] clocksource/drivers/rockchip_timer: implement loading 64bit value into timer
-Date: Wed, 23 Nov 2016 20:29:33 +0300
-Message-ID: <1479922177-20136-5-git-send-email-al.kochet@gmail.com>
-References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
+Subject: [PATCH 1/9] clocksource/drivers/rockchip_timer: split bc_timer into rk_timer and rk_clock_event_device
+Date: Wed, 23 Nov 2016 20:29:29 +0300
+Message-ID: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Move ce field out of struct bc_timer into struct rk_clock_event_device,
+rename struct bc_timer to struct rk_timer.
+
 Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 ---
- drivers/clocksource/rockchip_timer.c |   10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/clocksource/rockchip_timer.c |   33 ++++++++++++++++++++++-----------
+ 1 file changed, 22 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index 3b530f9..f4c26be 100644
+index 23e267a..6d68d4c 100644
 --- a/drivers/clocksource/rockchip_timer.c
 +++ b/drivers/clocksource/rockchip_timer.c
-@@ -63,11 +63,13 @@ static inline void rk_timer_enable(struct rk_timer *timer, u32 flags)
- 	writel_relaxed(TIMER_ENABLE | flags, timer->ctrl);
- }
+@@ -29,18 +29,28 @@
+ #define TIMER_MODE_USER_DEFINED_COUNT		(1 << 1)
+ #define TIMER_INT_UNMASK			(1 << 2)
  
--static void rk_timer_update_counter(unsigned long cycles,
--				    struct rk_timer *timer)
-+static void rk_timer_update_counter(u64 cycles, struct rk_timer *timer)
- {
--	writel_relaxed(cycles, timer->base + TIMER_LOAD_COUNT0);
--	writel_relaxed(0, timer->base + TIMER_LOAD_COUNT1);
-+	u32 lower = cycles & 0xFFFFFFFF;
-+	u32 upper = (cycles >> 32) & 0xFFFFFFFF;
+-struct bc_timer {
+-	struct clock_event_device ce;
++struct rk_timer {
+ 	void __iomem *base;
+ 	void __iomem *ctrl;
+ 	u32 freq;
+ };
+ 
+-static struct bc_timer bc_timer;
++struct rk_clock_event_device {
++	struct clock_event_device ce;
++	struct rk_timer timer;
++};
 +
-+	writel_relaxed(lower, timer->base + TIMER_LOAD_COUNT0);
-+	writel_relaxed(upper, timer->base + TIMER_LOAD_COUNT1);
++static struct rk_clock_event_device bc_timer;
++
++static inline struct rk_clock_event_device*
++rk_clock_event_device(struct clock_event_device *ce)
++{
++	return container_of(ce, struct rk_clock_event_device, ce);
++}
+ 
+-static inline struct bc_timer *rk_timer(struct clock_event_device *ce)
++static inline struct rk_timer *rk_timer(struct clock_event_device *ce)
+ {
+-	return container_of(ce, struct bc_timer, ce);
++	return &rk_clock_event_device(ce)->timer;
  }
  
- static void rk_timer_interrupt_clear(struct rk_timer *timer)
+ static inline void __iomem *rk_base(struct clock_event_device *ce)
+@@ -116,16 +126,17 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ {
+ 	struct clock_event_device *ce = &bc_timer.ce;
++	struct rk_timer *timer = &bc_timer.timer;
+ 	struct clk *timer_clk;
+ 	struct clk *pclk;
+ 	int ret = -EINVAL, irq;
+ 
+-	bc_timer.base = of_iomap(np, 0);
+-	if (!bc_timer.base) {
++	timer->base = of_iomap(np, 0);
++	if (!timer->base) {
+ 		pr_err("Failed to get base address for '%s'\n", TIMER_NAME);
+ 		return -ENXIO;
+ 	}
+-	bc_timer.ctrl = bc_timer.base + ctrl_reg;
++	timer->ctrl = timer->base + ctrl_reg;
+ 
+ 	pclk = of_clk_get_by_name(np, "pclk");
+ 	if (IS_ERR(pclk)) {
+@@ -153,7 +164,7 @@ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ 		goto out_timer_clk;
+ 	}
+ 
+-	bc_timer.freq = clk_get_rate(timer_clk);
++	timer->freq = clk_get_rate(timer_clk);
+ 
+ 	irq = irq_of_parse_and_map(np, 0);
+ 	if (!irq) {
+@@ -181,7 +192,7 @@ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
+ 		goto out_irq;
+ 	}
+ 
+-	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
++	clockevents_config_and_register(ce, timer->freq, 1, UINT_MAX);
+ 
+ 	return 0;
+ 
+@@ -190,7 +201,7 @@ out_irq:
+ out_timer_clk:
+ 	clk_disable_unprepare(pclk);
+ out_unmap:
+-	iounmap(bc_timer.base);
++	iounmap(timer->base);
+ 
+ 	return ret;
+ }
 -- 
 1.7.9.5
