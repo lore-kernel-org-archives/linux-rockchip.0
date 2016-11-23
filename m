@@ -1,207 +1,64 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 3/3] PCI: rockchip: Add system PM support
-Date: Wed, 23 Nov 2016 12:15:15 +0800
-Message-ID: <1479874515-65872-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 3/5] thermal: rockchip: fixes invalid temperature case
+Date: Tue, 22 Nov 2016 20:36:43 -0800
+Message-ID: <20161123043642.GA28948@google.com>
+References: <1479818088-6007-1-git-send-email-wxt@rock-chips.com>
+ <1479818088-6007-4-git-send-email-wxt@rock-chips.com>
+ <20161122205737.GB45366@google.com>
+ <20161122215240.GA52900@google.com>
+ <7168a98b-be91-8180-f9c0-8d54f5535075@rock-chips.com>
+ <20161123023325.GB122654@google.com>
+ <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <b2736d4e-120e-cbb9-3371-838c8f36c752@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds system PM support for Rockchip's RC.
-For pre S3, the EP is configured into D3 state which guarantees
-the link state should be in L1. So we could send PME_Turn_Off message
-to the EP and wait for its ACK to make the link state into L2 or L3
-without the aux-supply. This could help save more power which I think
-should be very important for mobile devices.
+On Wed, Nov 23, 2016 at 11:03:33AM +0800, Caesar Wang wrote:
+> 在 2016年11月23日 10:33, Brian Norris 写道:
+> >IIUC, "too high" should not be interpreted as TSADCV2_DATA_MASK on
+> >rk3288, should it? That corresponds to -40C, which means you'll be
+> >triggering the alarm temperature at a very *low* temperature, not a very
+> >high one, no?
+> 
+> The "too high" will correspond to -40C on rk3288, but shouldn't
+> trigger the alarm temperature.
+> 
+> Due to the alarm or tshut function will handle it.
+> 
+> e.g.:
+> static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+>                   int chn, void __iomem *regs, int temp)
+> {
+>     u32 alarm_value, int_en;
+> 
+>     /* Make sure the value is valid */
+>     alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+>     if (alarm_value == table->data_mask)
+>         return;
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Ah, right. I keep forgetting about this odd error handling.
 
----
+That's still the wrong error handling though; the right response is
+never to avoid doing anything (and therefore returning "success" to the
+thermal core). You need to either program a high (or low) trip value, or
+else report an error (i.e., allow rk_tsadcv2_alarm_temp() to return an
+error code back to the calling function). Otherwise, this:
 
-Changes in v2:
-- Wrap the 'x' in parentheses
-- add msg regison mapped support
-- enable int for err case in suspend_noirq
+echo -45000 > trip_0_temp
 
- drivers/pci/host/pcie-rockchip.c | 102 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
+will succeed without error, and:
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 457401d..f2828a8 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -20,6 +20,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
-+#include <linux/iopoll.h>
- #include <linux/irq.h>
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
-@@ -55,6 +56,10 @@
- #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
- #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
- #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
-+#define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
-+#define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
-+#define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
-+#define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
- #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
- #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
- #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
-@@ -169,9 +174,11 @@
- #define IB_ROOT_PORT_REG_SIZE_SHIFT		3
- #define AXI_WRAPPER_IO_WRITE			0x6
- #define AXI_WRAPPER_MEM_WRITE			0x2
-+#define AXI_WRAPPER_NOR_MSG			0xc
- 
- #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
- #define MIN_AXI_ADDR_BITS_PASSED		8
-+#define PCIE_RC_SEND_PME_OFF			0x11960
- #define ROCKCHIP_VENDOR_ID			0x1d87
- #define PCIE_ECAM_BUS(x)			(((x) & 0xff) << 20)
- #define PCIE_ECAM_DEV(x)			(((x) & 0x1f) << 15)
-@@ -180,6 +187,9 @@
- #define PCIE_ECAM_ADDR(bus, dev, func, reg) \
- 	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
- 	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
-+#define PCIE_LINK_IS_L2(x) \
-+		(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
-+		 PCIE_CLIENT_DEBUG_LTSSM_L2)
- 
- #define RC_REGION_0_ADDR_TRANS_H		0x00000000
- #define RC_REGION_0_ADDR_TRANS_L		0x00000000
-@@ -213,6 +223,7 @@ struct rockchip_pcie {
- 	u32     io_size;
- 	int     offset;
- 	phys_addr_t io_bus_addr;
-+	void	__iomem *msg_region;
- 	u32     mem_size;
- 	phys_addr_t mem_bus_addr;
- };
-@@ -1196,8 +1207,91 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
- 		}
- 	}
- 
-+	/* assign message regions */
-+	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
-+				  AXI_WRAPPER_NOR_MSG,
-+				  20 - 1, 0, 0);
-+	if (!rockchip->msg_region)
-+		rockchip->msg_region = devm_ioremap(rockchip->dev,
-+						    rockchip->mem_bus_addr +
-+						    ((reg_no + offset) << 20),
-+						    SZ_1M);
-+
- 	return err;
- }
-+
-+static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
-+{
-+	u32 value;
-+	int err;
-+
-+	/* send PME_TURN_OFF message */
-+	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
-+
-+	/* read LTSSM and wait for falling into L2 link state */
-+	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
-+				 value, PCIE_LINK_IS_L2(value), 20,
-+				 jiffies_to_usecs(5 * HZ));
-+	if (err) {
-+		dev_err(rockchip->dev, "PCIe link enter L2 timeout!\n");
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	int ret;
-+
-+	/* disable core and cli int since we don't need to ack PME_ACK */
-+	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
-+			    PCIE_CLIENT_INT_CLI, PCIE_CLIENT_INT_MASK);
-+	rockchip_pcie_write(rockchip, (u32)PCIE_CORE_INT, PCIE_CORE_INT_MASK);
-+
-+	ret = rockchip_pcie_wait_l2(rockchip);
-+	if (ret) {
-+		rockchip_pcie_enable_interrupts(rockchip);
-+		return ret;
-+	}
-+
-+	phy_power_off(rockchip->phy);
-+	phy_exit(rockchip->phy);
-+
-+	clk_disable_unprepare(rockchip->clk_pcie_pm);
-+	clk_disable_unprepare(rockchip->hclk_pcie);
-+	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+	clk_disable_unprepare(rockchip->aclk_pcie);
-+
-+	return ret;
-+}
-+
-+static int rockchip_pcie_resume_noirq(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	int err;
-+
-+	clk_prepare_enable(rockchip->clk_pcie_pm);
-+	clk_prepare_enable(rockchip->hclk_pcie);
-+	clk_prepare_enable(rockchip->aclk_perf_pcie);
-+	clk_prepare_enable(rockchip->aclk_pcie);
-+
-+	err = rockchip_pcie_init_port(rockchip);
-+	if (err)
-+		return err;
-+
-+	err = rockchip_cfg_atu(rockchip);
-+	if (err)
-+		return err;
-+
-+	/* Need this to enter L1 again */
-+	rockchip_pcie_update_txcredit_mui(rockchip);
-+	rockchip_pcie_enable_interrupts(rockchip);
-+
-+	return 0;
-+}
-+
- static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pcie *rockchip;
-@@ -1218,6 +1312,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (!rockchip)
- 		return -ENOMEM;
- 
-+	platform_set_drvdata(pdev, rockchip);
-+
- 	rockchip->dev = dev;
- 
- 	err = rockchip_pcie_parse_dt(rockchip);
-@@ -1341,6 +1437,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+static const struct dev_pm_ops rockchip_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
-+				      rockchip_pcie_resume_noirq)
-+};
-+
- static const struct of_device_id rockchip_pcie_of_match[] = {
- 	{ .compatible = "rockchip,rk3399-pcie", },
- 	{}
-@@ -1350,6 +1451,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	.driver = {
- 		.name = "rockchip-pcie",
- 		.of_match_table = rockchip_pcie_of_match,
-+		.pm = &rockchip_pcie_pm_ops,
- 	},
- 	.probe = rockchip_pcie_probe,
- 
--- 
-1.9.1
+cat trip_0_temp
+-45000
+
+will return the cached temperature from of-thermal, even though the trip
+point is programmed to something else entirely.
+
+Brian
