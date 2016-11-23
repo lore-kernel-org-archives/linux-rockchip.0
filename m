@@ -1,52 +1,84 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH 3/9] clocksource/drivers/rockchip_timer: drop unused rk_base()
- and rk_ctrl()
-Date: Wed, 23 Nov 2016 20:29:31 +0300
-Message-ID: <1479922177-20136-3-git-send-email-al.kochet@gmail.com>
+Subject: [PATCH 9/9] ARM: dts: rockchip: add timer entries to rk3188.dtsi
+Date: Wed, 23 Nov 2016 20:29:37 +0300
+Message-ID: <1479922177-20136-9-git-send-email-al.kochet@gmail.com>
 References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+This is correct configuration borrowed from 3.0 kernel[1].
+timer 6 used as clocksource, timers 0, 1, 4 and 5 used
+as clockevents.
+
+Timers can do interrupts and work as expected with correct
+driver support.
+
+[1] https://github.com/radxa/linux-rockchip/blob/radxa-stable-3.0/arch/arm/mach-rk3188/rk_timer.c
+
 Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 ---
- drivers/clocksource/rockchip_timer.c |   10 ----------
- 1 file changed, 10 deletions(-)
+ arch/arm/boot/dts/rk3188.dtsi |   45 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index f84f67c..2f18166 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -53,16 +53,6 @@ static inline struct rk_timer *rk_timer(struct clock_event_device *ce)
- 	return &rk_clock_event_device(ce)->timer;
- }
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 31f81b2..e2f88c8 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -106,6 +106,51 @@
+ 		};
+ 	};
  
--static inline void __iomem *rk_base(struct clock_event_device *ce)
--{
--	return rk_timer(ce)->base;
--}
--
--static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
--{
--	return rk_timer(ce)->ctrl;
--}
--
- static inline void rk_timer_disable(struct rk_timer *timer)
- {
- 	writel_relaxed(TIMER_DISABLE, timer->ctrl);
++	timer0: timer@20038000 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x20038000 0x20>;
++		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TIMER0>, <&cru PCLK_TIMER0>;
++		clock-names = "timer", "pclk";
++		status = "disabled";
++	};
++
++	timer1: timer@20038020 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x20038020 0x20>;
++		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TIMER1>, <&cru PCLK_TIMER0>;
++		clock-names = "timer", "pclk";
++		status = "disabled";
++	};
++
++	timer4: timer@20038060 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x20038060 0x20>;
++		interrupts = <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TIMER4>, <&cru PCLK_TIMER0>;
++		clock-names = "timer", "pclk";
++		status = "disabled";
++	};
++
++	timer5: timer@20038080 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x20038080 0x20>;
++		interrupts = <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TIMER5>, <&cru PCLK_TIMER0>;
++		clock-names = "timer", "pclk";
++		status = "disabled";
++	};
++
++	timer6: timer@200380A0 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x200380A0 0x20>;
++		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
++		clock-names = "timer", "pclk";
++		status = "disabled";
++	};
++
+ 	i2s0: i2s@1011a000 {
+ 		compatible = "rockchip,rk3188-i2s", "rockchip,rk3066-i2s";
+ 		reg = <0x1011a000 0x2000>;
 -- 
 1.7.9.5
