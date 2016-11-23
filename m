@@ -1,7 +1,7 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH 8/9] dt-bindings: add rockchip,clocksource property to rk-timer
-Date: Wed, 23 Nov 2016 20:29:36 +0300
-Message-ID: <1479922177-20136-8-git-send-email-al.kochet@gmail.com>
+Subject: [PATCH 4/9] clocksource/drivers/rockchip_timer: move TIMER_INT_UNMASK out of rk_timer_enable()
+Date: Wed, 23 Nov 2016 20:29:32 +0300
+Message-ID: <1479922177-20136-4-git-send-email-al.kochet@gmail.com>
 References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
@@ -10,21 +10,45 @@ To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel
 Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
----
- .../bindings/timer/rockchip,rk-timer.txt           |    1 +
- 1 file changed, 1 insertion(+)
+This allow to enable timer without enabling interrupts from it.
+As that mode will be used in clocksource implementation.
 
-diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-index a41b184..ed5392a 100644
---- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-@@ -9,6 +9,7 @@ Required properties:
- - clocks : must contain an entry for each entry in clock-names
- - clock-names : must include the following entries:
-   "timer", "pclk"
-+- rockchip,clocksource: setup the timer as clocksource
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+---
+ drivers/clocksource/rockchip_timer.c |    7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index 2f18166..3b530f9 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -60,8 +60,7 @@ static inline void rk_timer_disable(struct rk_timer *timer)
  
- Example:
- 	timer: timer@ff810000 {
+ static inline void rk_timer_enable(struct rk_timer *timer, u32 flags)
+ {
+-	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
+-		       timer->ctrl);
++	writel_relaxed(TIMER_ENABLE | flags, timer->ctrl);
+ }
+ 
+ static void rk_timer_update_counter(unsigned long cycles,
+@@ -82,7 +81,7 @@ static inline int rk_timer_set_next_event(unsigned long cycles,
+ 	struct rk_timer *timer = rk_timer(ce);
+ 	rk_timer_disable(timer);
+ 	rk_timer_update_counter(cycles, timer);
+-	rk_timer_enable(timer, TIMER_MODE_USER_DEFINED_COUNT);
++	rk_timer_enable(timer, TIMER_MODE_USER_DEFINED_COUNT | TIMER_INT_UNMASK);
+ 	return 0;
+ }
+ 
+@@ -98,7 +97,7 @@ static int rk_timer_set_periodic(struct clock_event_device *ce)
+ 	struct rk_timer *timer = rk_timer(ce);
+ 	rk_timer_disable(timer);
+ 	rk_timer_update_counter(timer->freq / HZ - 1, timer);
+-	rk_timer_enable(timer, TIMER_MODE_FREE_RUNNING);
++	rk_timer_enable(timer, TIMER_MODE_FREE_RUNNING | TIMER_INT_UNMASK);
+ 	return 0;
+ }
+ 
 -- 
 1.7.9.5
