@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/3] PCI: rockchip: move the deassert of pm/aclk/pclk after phy_init
-Date: Wed, 23 Nov 2016 12:15:14 +0800
-Message-ID: <1479874515-65872-2-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2 3/3] PCI: rockchip: Add system PM support
+Date: Wed, 23 Nov 2016 12:15:15 +0800
+Message-ID: <1479874515-65872-3-git-send-email-shawn.lin@rock-chips.com>
 References: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
 In-Reply-To: <1479874515-65872-1-git-send-email-shawn.lin@rock-chips.com>
@@ -10,76 +10,198 @@ To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Move them after phy_init as we want to optimize the logic
-of reset control and reuse rockchip_pcie_init_port later
-which should fully follow the cold boot procedure of ROM
-code.
+This patch adds system PM support for Rockchip's RC.
+For pre S3, the EP is configured into D3 state which guarantees
+the link state should be in L1. So we could send PME_Turn_Off message
+to the EP and wait for its ACK to make the link state into L2 or L3
+without the aux-supply. This could help save more power which I think
+should be very important for mobile devices.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
 ---
 
-Changes in v2: None
+Changes in v2:
+- Wrap the 'x' in parentheses
+- add msg regison mapped support
+- enable int for err case in suspend_noirq
 
- drivers/pci/host/pcie-rockchip.c | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 102 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 9cb84b1..457401d 100644
+index 457401d..f2828a8 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -473,26 +473,6 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
+@@ -20,6 +20,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
++#include <linux/iopoll.h>
+ #include <linux/irq.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqdomain.h>
+@@ -55,6 +56,10 @@
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+ #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
++#define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
++#define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
++#define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
++#define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+ #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
+@@ -169,9 +174,11 @@
+ #define IB_ROOT_PORT_REG_SIZE_SHIFT		3
+ #define AXI_WRAPPER_IO_WRITE			0x6
+ #define AXI_WRAPPER_MEM_WRITE			0x2
++#define AXI_WRAPPER_NOR_MSG			0xc
+ 
+ #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
+ #define MIN_AXI_ADDR_BITS_PASSED		8
++#define PCIE_RC_SEND_PME_OFF			0x11960
+ #define ROCKCHIP_VENDOR_ID			0x1d87
+ #define PCIE_ECAM_BUS(x)			(((x) & 0xff) << 20)
+ #define PCIE_ECAM_DEV(x)			(((x) & 0x1f) << 15)
+@@ -180,6 +187,9 @@
+ #define PCIE_ECAM_ADDR(bus, dev, func, reg) \
+ 	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
+ 	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
++#define PCIE_LINK_IS_L2(x) \
++		(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
++		 PCIE_CLIENT_DEBUG_LTSSM_L2)
+ 
+ #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+ #define RC_REGION_0_ADDR_TRANS_L		0x00000000
+@@ -213,6 +223,7 @@ struct rockchip_pcie {
+ 	u32     io_size;
+ 	int     offset;
+ 	phys_addr_t io_bus_addr;
++	void	__iomem *msg_region;
+ 	u32     mem_size;
+ 	phys_addr_t mem_bus_addr;
+ };
+@@ -1196,8 +1207,91 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+ 		}
  	}
  
--	udelay(10);
--
--	err = reset_control_deassert(rockchip->pm_rst);
--	if (err) {
--		dev_err(dev, "deassert pm_rst err %d\n", err);
--		return err;
--	}
--
--	err = reset_control_deassert(rockchip->aclk_rst);
--	if (err) {
--		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
--		return err;
--	}
--
--	err = reset_control_deassert(rockchip->pclk_rst);
--	if (err) {
--		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
--		return err;
--	}
--
- 	err = phy_init(rockchip->phy);
- 	if (err < 0) {
- 		dev_err(dev, "fail to init phy, err %d\n", err);
-@@ -523,6 +503,26 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
++	/* assign message regions */
++	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
++				  AXI_WRAPPER_NOR_MSG,
++				  20 - 1, 0, 0);
++	if (!rockchip->msg_region)
++		rockchip->msg_region = devm_ioremap(rockchip->dev,
++						    rockchip->mem_bus_addr +
++						    ((reg_no + offset) << 20),
++						    SZ_1M);
++
+ 	return err;
+ }
++
++static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
++{
++	u32 value;
++	int err;
++
++	/* send PME_TURN_OFF message */
++	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
++
++	/* read LTSSM and wait for falling into L2 link state */
++	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
++				 value, PCIE_LINK_IS_L2(value), 20,
++				 jiffies_to_usecs(5 * HZ));
++	if (err) {
++		dev_err(rockchip->dev, "PCIe link enter L2 timeout!\n");
++		return err;
++	}
++
++	return 0;
++}
++
++static int rockchip_pcie_suspend_noirq(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	int ret;
++
++	/* disable core and cli int since we don't need to ack PME_ACK */
++	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
++			    PCIE_CLIENT_INT_CLI, PCIE_CLIENT_INT_MASK);
++	rockchip_pcie_write(rockchip, (u32)PCIE_CORE_INT, PCIE_CORE_INT_MASK);
++
++	ret = rockchip_pcie_wait_l2(rockchip);
++	if (ret) {
++		rockchip_pcie_enable_interrupts(rockchip);
++		return ret;
++	}
++
++	phy_power_off(rockchip->phy);
++	phy_exit(rockchip->phy);
++
++	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	clk_disable_unprepare(rockchip->hclk_pcie);
++	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++	clk_disable_unprepare(rockchip->aclk_pcie);
++
++	return ret;
++}
++
++static int rockchip_pcie_resume_noirq(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	int err;
++
++	clk_prepare_enable(rockchip->clk_pcie_pm);
++	clk_prepare_enable(rockchip->hclk_pcie);
++	clk_prepare_enable(rockchip->aclk_perf_pcie);
++	clk_prepare_enable(rockchip->aclk_pcie);
++
++	err = rockchip_pcie_init_port(rockchip);
++	if (err)
++		return err;
++
++	err = rockchip_cfg_atu(rockchip);
++	if (err)
++		return err;
++
++	/* Need this to enter L1 again */
++	rockchip_pcie_update_txcredit_mui(rockchip);
++	rockchip_pcie_enable_interrupts(rockchip);
++
++	return 0;
++}
++
+ static int rockchip_pcie_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_pcie *rockchip;
+@@ -1218,6 +1312,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (!rockchip)
+ 		return -ENOMEM;
  
-+	udelay(10);
++	platform_set_drvdata(pdev, rockchip);
 +
-+	err = reset_control_deassert(rockchip->pm_rst);
-+	if (err) {
-+		dev_err(dev, "deassert pm_rst err %d\n", err);
-+		return err;
-+	}
+ 	rockchip->dev = dev;
+ 
+ 	err = rockchip_pcie_parse_dt(rockchip);
+@@ -1341,6 +1437,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return err;
+ }
+ 
++static const struct dev_pm_ops rockchip_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
++				      rockchip_pcie_resume_noirq)
++};
 +
-+	err = reset_control_deassert(rockchip->aclk_rst);
-+	if (err) {
-+		dev_err(dev, "deassert aclk_rst err %d\n", err);
-+		return err;
-+	}
-+
-+	err = reset_control_deassert(rockchip->pclk_rst);
-+	if (err) {
-+		dev_err(dev, "deassert pclk_rst err %d\n", err);
-+		return err;
-+	}
-+
- 	if (rockchip->link_gen == 2)
- 		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
- 				    PCIE_CLIENT_CONFIG);
+ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 	{ .compatible = "rockchip,rk3399-pcie", },
+ 	{}
+@@ -1350,6 +1451,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	.driver = {
+ 		.name = "rockchip-pcie",
+ 		.of_match_table = rockchip_pcie_of_match,
++		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+ 
 -- 
 1.9.1
