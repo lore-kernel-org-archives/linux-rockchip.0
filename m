@@ -1,68 +1,41 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 5/5] thermal: rockchip: handle set_trips without the trip
- points
-Date: Wed, 23 Nov 2016 22:29:34 +0800
-Message-ID: <1479911374-22006-6-git-send-email-wxt@rock-chips.com>
-References: <1479911374-22006-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1479911374-22006-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH 5/9] clocksource/drivers/rockchip_timer: implement loading 64bit value into timer
+Date: Wed, 23 Nov 2016 20:29:33 +0300
+Message-ID: <1479922177-20136-5-git-send-email-al.kochet@gmail.com>
+References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-In some cases, some sensors didn't need the trip points, the
-set_trips will return {-INT_MAX, INT_MAX} to trigger thermal alarm.
-
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 ---
+ drivers/clocksource/rockchip_timer.c |   10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-Changes in v2:
-- Fixes something as Brian comments on
-  https://patchwork.kernel.org/patch/9440989.
-
-Changes in v1: None
-
- drivers/thermal/rockchip_thermal.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 0d50df7..f873053 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -675,7 +675,21 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
- static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
- 				  int chn, void __iomem *regs, int temp)
- {
--	u32 alarm_value, int_en;
-+	u32 alarm_value;
-+	u32 int_en, int_clr;
-+
-+	/*
-+	 * In some cases, some sensors didn't need the trip points, the
-+	 * set_trips will pass {-INT_MAX, INT_MAX} to trigger tsadc alarm
-+	 * in the end, ignore this case and disable the high temperature
-+	 * interrupt.
-+	 */
-+	if (temp == INT_MAX) {
-+		int_clr = readl_relaxed(regs + TSADCV2_INT_EN);
-+		int_clr &= ~TSADCV2_INT_SRC_EN(chn);
-+		writel_relaxed(int_clr, regs + TSADCV2_INT_EN);
-+		return 0;
-+	}
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index 3b530f9..f4c26be 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -63,11 +63,13 @@ static inline void rk_timer_enable(struct rk_timer *timer, u32 flags)
+ 	writel_relaxed(TIMER_ENABLE | flags, timer->ctrl);
+ }
  
- 	/* Make sure the value is valid */
- 	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+-static void rk_timer_update_counter(unsigned long cycles,
+-				    struct rk_timer *timer)
++static void rk_timer_update_counter(u64 cycles, struct rk_timer *timer)
+ {
+-	writel_relaxed(cycles, timer->base + TIMER_LOAD_COUNT0);
+-	writel_relaxed(0, timer->base + TIMER_LOAD_COUNT1);
++	u32 lower = cycles & 0xFFFFFFFF;
++	u32 upper = (cycles >> 32) & 0xFFFFFFFF;
++
++	writel_relaxed(lower, timer->base + TIMER_LOAD_COUNT0);
++	writel_relaxed(upper, timer->base + TIMER_LOAD_COUNT1);
+ }
+ 
+ static void rk_timer_interrupt_clear(struct rk_timer *timer)
 -- 
-2.7.4
+1.7.9.5
