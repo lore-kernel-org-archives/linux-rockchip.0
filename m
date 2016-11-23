@@ -1,239 +1,83 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/3] PCI: rockchip: split out rockchip_cfg_atu
-Date: Tue, 22 Nov 2016 17:59:15 -0800
-Message-ID: <20161123015914.GA119441@google.com>
-References: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
+From: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v1 1/2] PM/devfreq: add suspend frequency support
+Date: Wed, 23 Nov 2016 10:01:06 +0800
+Message-ID: <5834F862.6000603@rock-chips.com>
+References: <1477990029-11062-1-git-send-email-hl@rock-chips.com>
+ <CGME20161101084721epcas4p471cc74df8b12d042d1fac542e5371db8@epcas4p4.samsung.com>
+ <422077764.570918.1478068526663.JavaMail.weblogic@ep1ml102b>
+ <581AE13C.9070706@rock-chips.com>
+ <CAJ0PZbSYZYF6xJ-ut23G+tTXYLCDNpQ8_AJpjTdDGO7VnECMvg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1479863953-123874-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAJ0PZbSYZYF6xJ-ut23G+tTXYLCDNpQ8_AJpjTdDGO7VnECMvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: myungjoo.ham-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Nov 23, 2016 at 09:19:11AM +0800, Shawn Lin wrote:
-> We split out a new function, rockchip_cfg_atu, in order to
-> re-configure the atu when missing these information after
-> wakeup from S3.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 119 ++++++++++++++++++++++-----------------
->  1 file changed, 68 insertions(+), 51 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index b55037a..19399fc 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -169,6 +169,7 @@
->  #define IB_ROOT_PORT_REG_SIZE_SHIFT		3
->  #define AXI_WRAPPER_IO_WRITE			0x6
->  #define AXI_WRAPPER_MEM_WRITE			0x2
-> +#define AXI_WRAPPER_NOR_MSG			0xc
-
-You're also adding this 'normal message' support in a refactoring patch.
-This should be in another patch -- preferably patch 3 I think.
-
->  
->  #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
->  #define MIN_AXI_ADDR_BITS_PASSED		8
-> @@ -210,6 +211,13 @@ struct rockchip_pcie {
->  	int	link_gen;
->  	struct	device *dev;
->  	struct	irq_domain *irq_domain;
-> +	u32     io_size;
-> +	int     offset;
-> +	phys_addr_t io_bus_addr;
-> +	int     msg_region_nr;
-> +	void	__iomem *msg_region;
-> +	u32     mem_size;
-> +	phys_addr_t mem_bus_addr;
->  };
->  
->  static u32 rockchip_pcie_read(struct rockchip_pcie *rockchip, u32 reg)
-> @@ -1149,6 +1157,57 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
->  	return 0;
->  }
->  
-> +static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
-> +{
-> +	int offset;
-> +	int err;
-> +	int reg_no;
-> +
-> +	for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
-> +		err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
-> +						AXI_WRAPPER_MEM_WRITE,
-> +						20 - 1,
-> +						rockchip->mem_bus_addr +
-> +						(reg_no << 20),
-> +						0);
-> +		if (err) {
-> +			dev_err(rockchip->dev,
-> +					"program RC mem outbound ATU failed\n");
-> +			return err;
-> +		}
-> +	}
-> +
-> +	err = rockchip_pcie_prog_ib_atu(rockchip, 2, 32 - 1, 0x0, 0);
-> +	if (err) {
-> +		dev_err(rockchip->dev, "program RC mem inbound ATU failed\n");
-> +		return err;
-> +	}
-> +
-> +	offset = rockchip->mem_size >> 20;
-> +	for (reg_no = 0; reg_no < (rockchip->io_size >> 20); reg_no++) {
-> +		err = rockchip_pcie_prog_ob_atu(rockchip,
-> +						reg_no + 1 + offset,
-> +						AXI_WRAPPER_IO_WRITE,
-> +						20 - 1,
-> +						rockchip->io_bus_addr +
-> +						(reg_no << 20),
-> +						0);
-> +		if (err) {
-> +			dev_err(rockchip->dev,
-> +					"program RC io outbound ATU failed\n");
-> +			return err;
-> +		}
-> +	}
-> +
-> +	/* assign message regions */
-> +	rockchip->msg_region_nr = reg_no + 1 + offset;
-> +	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
-> +				  AXI_WRAPPER_NOR_MSG,
-> +				  20 - 1, 0, 0);
-
-Same here.
-
-> +	rockchip->msg_region = ioremap(rockchip->mem_bus_addr +
-> +				       ((reg_no - 1) << 20), SZ_1M);
-
-(And here.)
-
-ioremap() can fail; check for NULL.
-
-Also, when you start reusing rockchip_cfg_atu() in patch 3, you'll be
-leaking virtual address space, as you'll keep remapping this every time.
-You should straighten that out. Either some kind of check for
-'if (!rockchip->msg_region)', or just do the map/unmap where it's
-actually used (in patch 3).
-
-Brian
-
-> +	return err;
-> +}
->  static int rockchip_pcie_probe(struct platform_device *pdev)
->  {
->  	struct rockchip_pcie *rockchip;
-> @@ -1158,13 +1217,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	resource_size_t io_base;
->  	struct resource	*mem;
->  	struct resource	*io;
-> -	phys_addr_t io_bus_addr = 0;
-> -	u32 io_size;
-> -	phys_addr_t mem_bus_addr = 0;
-> -	u32 mem_size = 0;
-> -	int reg_no;
->  	int err;
-> -	int offset;
->  
->  	LIST_HEAD(res);
->  
-> @@ -1231,14 +1284,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		goto err_vpcie;
->  
->  	/* Get the I/O and memory ranges from DT */
-> -	io_size = 0;
->  	resource_list_for_each_entry(win, &res) {
->  		switch (resource_type(win->res)) {
->  		case IORESOURCE_IO:
->  			io = win->res;
->  			io->name = "I/O";
-> -			io_size = resource_size(io);
-> -			io_bus_addr = io->start - win->offset;
-> +			rockchip->io_size = resource_size(io);
-> +			rockchip->io_bus_addr = io->start - win->offset;
->  			err = pci_remap_iospace(io, io_base);
->  			if (err) {
->  				dev_warn(dev, "error %d: failed to map resource %pR\n",
-> @@ -1249,8 +1301,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		case IORESOURCE_MEM:
->  			mem = win->res;
->  			mem->name = "MEM";
-> -			mem_size = resource_size(mem);
-> -			mem_bus_addr = mem->start - win->offset;
-> +			rockchip->mem_size = resource_size(mem);
-> +			rockchip->mem_bus_addr = mem->start - win->offset;
->  			break;
->  		case IORESOURCE_BUS:
->  			rockchip->root_bus_nr = win->res->start;
-> @@ -1260,49 +1312,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> -	if (mem_size) {
-> -		for (reg_no = 0; reg_no < (mem_size >> 20); reg_no++) {
-> -			err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
-> -							AXI_WRAPPER_MEM_WRITE,
-> -							20 - 1,
-> -							mem_bus_addr +
-> -							(reg_no << 20),
-> -							0);
-> -			if (err) {
-> -				dev_err(dev, "program RC mem outbound ATU failed\n");
-> -				goto err_vpcie;
-> -			}
-> -		}
-> -	}
-> -
-> -	err = rockchip_pcie_prog_ib_atu(rockchip, 2, 32 - 1, 0x0, 0);
-> -	if (err) {
-> -		dev_err(dev, "program RC mem inbound ATU failed\n");
-> +	err = rockchip_cfg_atu(rockchip);
-> +	if (err)
->  		goto err_vpcie;
-> -	}
-> -
-> -	offset = mem_size >> 20;
-> -
-> -	if (io_size) {
-> -		for (reg_no = 0; reg_no < (io_size >> 20); reg_no++) {
-> -			err = rockchip_pcie_prog_ob_atu(rockchip,
-> -							reg_no + 1 + offset,
-> -							AXI_WRAPPER_IO_WRITE,
-> -							20 - 1,
-> -							io_bus_addr +
-> -							(reg_no << 20),
-> -							0);
-> -			if (err) {
-> -				dev_err(dev, "program RC io outbound ATU failed\n");
-> -				goto err_vpcie;
-> -			}
-> -		}
-> -	}
-> -
->  	bus = pci_scan_root_bus(&pdev->dev, 0, &rockchip_pcie_ops, rockchip, &res);
->  	if (!bus) {
->  		err = -ENOMEM;
-> -		goto err_vpcie;
-> +		goto err_scan;
->  	}
->  
->  	pci_bus_size_bridges(bus);
-> @@ -1315,7 +1331,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	dev_warn(dev, "only 32-bit config accesses supported; smaller writes may corrupt adjacent RW1C fields\n");
->  
->  	return err;
-> -
-> +err_scan:
-> +	iounmap(rockchip->msg_region);
->  err_vpcie:
->  	if (!IS_ERR(rockchip->vpcie3v3))
->  		regulator_disable(rockchip->vpcie3v3);
-> -- 
-> 1.9.1
-> 
-> 
+CgpPbiAyMDE25bm0MTHmnIgyMuaXpSAyMDo0OCwgTXl1bmdKb28gSGFtIHdyb3RlOgo+IE9uIFRo
+dSwgTm92IDMsIDIwMTYgYXQgNDowMyBQTSwgaGwgPGhsQHJvY2stY2hpcHMuY29tPiB3cm90ZToK
+Pj4gSGkgTXl1bmdKb28gSGFtLAo+Pgo+Pgo+PiBPbiAyMDE25bm0MTHmnIgwMuaXpSAxNDozNSwg
+TXl1bmdKb28gSGFtIHdyb3RlOgo+Pj4+IEFkZCBzdXNwZW5kIGZyZXF1ZW5jeSBzdXBwb3J0IGFu
+ZCBpZiBuZWVkZWQgc2V0IGl0IHRvCj4+Pj4gdGhlIGZyZXF1ZW5jeSBvYnRhaW5lZCBmcm9tIHRo
+ZSBzdXNwZW5kIG9wcCAoY2FuIGJlIGRlZmluZWQKPj4+PiB1c2luZyBvcHAtdjIgYmluZGluZ3Mg
+YW5kIGlzIG9wdGlvbmFsKS4KPj4+Pgo+Pj4+IENoYW5nZS1JZDogSWFhMGQzODQ4ZDYzZDljZTAz
+ZjY1ZWE3NmYyNjNlNDY4NWE0YzI5NWUKPj4+PiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhs
+QHJvY2stY2hpcHMuY29tPgo+Pj4+IC0tLQo+Pj4+ICAgIGRyaXZlcnMvZGV2ZnJlcS9kZXZmcmVx
+LmMgfCAxNyArKysrKysrKysrKysrKysrLQo+Pj4+ICAgIGluY2x1ZGUvbGludXgvZGV2ZnJlcS5o
+ICAgfCAgOSArKysrKysrKysKPj4+PiAgICAyIGZpbGVzIGNoYW5nZWQsIDI1IGluc2VydGlvbnMo
+KyksIDEgZGVsZXRpb24oLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2RldmZyZXEv
+ZGV2ZnJlcS5jIGIvZHJpdmVycy9kZXZmcmVxL2RldmZyZXEuYwo+Pj4+IGluZGV4IGJmM2VhNzYu
+LmQxMTUyZWIgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9kZXZmcmVxL2RldmZyZXEuYwo+Pj4+
+ICsrKyBiL2RyaXZlcnMvZGV2ZnJlcS9kZXZmcmVxLmMKPj4+PiBAQCAtMzY0LDcgKzM2NCwxMCBA
+QCB2b2lkIGRldmZyZXFfbW9uaXRvcl9zdXNwZW5kKHN0cnVjdCBkZXZmcmVxCj4+Pj4gKmRldmZy
+ZXEpCj4+Pj4gICAgICAgICAgICAgICAgICByZXR1cm47Cj4+Pj4gICAgICAgICAgfQo+Pj4+ICAg
+IC0gICAgIGRldmZyZXFfdXBkYXRlX3N0YXR1cyhkZXZmcmVxLCBkZXZmcmVxLT5wcmV2aW91c19m
+cmVxKTsKPj4+PiArICAgICAgIGlmIChkZXZmcmVxLT5zdXNwZW5kX2ZyZXEpCj4+Pj4gKyAgICAg
+ICAgICAgICAgIGRldmZyZXFfdXBkYXRlX3N0YXR1cyhkZXZmcmVxLCBkZXZmcmVxLT5zdXNwZW5k
+X2ZyZXEpOwo+Pj4+ICsgICAgICAgZWxzZQo+Pj4+ICsgICAgICAgICAgICAgICBkZXZmcmVxX3Vw
+ZGF0ZV9zdGF0dXMoZGV2ZnJlcSwgZGV2ZnJlcS0+cHJldmlvdXNfZnJlcSk7Cj4+PiBUaGlzIGlz
+IGluY29ycmVjdC4KPj4+Cj4+PiBkZXZmcmVxX3VwZGF0ZV9zdGF0dXMgaXMgdG8gcmVjb3JkIHRo
+ZSBzdGF0aXN0aWNzLgo+Pj4gVGhpcyBjb2RlIGludGVuZHMgdG8gcmVjb3JkIHRoZSBjdXJyZW50
+IHN0YXR1cyBiZWZvcmUgZW50ZXJpbmcgc3VzcGVuZDsKPj4+IHRodXMgeW91IHNob3VsZCBub3Qg
+cmVjb3JkICJzdXNwZW5kX2ZyZXEiIGhlcmUuCj4+Pgo+Pj4gSWYgeW91IHJlYWxseSBuZWVkIHRv
+IHJlY29yZCB0aGUgZnJlcXVlbmN5IGR1cmluZyBzdXNwZW5kZWQgc3RhdGUKPj4+IGZvciB0aGUg
+c3RhdGlzdGljcywgeW91IG5lZWQgdG8gZG8gdGhhdCBhdCByZXN1bWU7IGhvd2V2ZXIsIEkgb2Jq
+ZWN0IHRvCj4+PiB0aGF0IGlkZWEgZWl0aGVyLgo+Pj4KPj4+IElmIHlvdSByZWFsbHkgd2FudCB0
+byBzZXQgYSBwcmVkZWZpbmVkIHN1c3BlbmQtdG8tUkFNIG1vZGUgZnJlcXVlbmN5LAo+Pj4gKHBy
+b2JhYmx5IGJlY2F1c2Ugb2YgSFcgaW5zdGFiaWxpdHkgZHVyaW5nIHJlc3VtZSBwcm9jZXNzKQo+
+Pj4geW91IG5lZWQgdG8gdXBkYXRlLCBub3QgdWRwYXRlX3N0YXR1cyAoc3RhdGlzdGljcykuCj4+
+Pgo+PiBUaGFua3MgZm9yIHBvaW50aW5nIGl0LCBidXQgaWYgaSB1c2UgdXBkYXRlX2RldmZyZXEo
+KSwgaXQgY2FuIG5vdCBzcGVjaWZ5Cj4+IHRoZQo+PiBmcmVxdWVuY3ksIGl0IGNhbGwgdGhlIGdl
+dF90YXJnZXRfZnJlcSgpIHRvIGdldCB0aGUgZnJlcXVlbmN5IGFuZCBzZXR0aW5nLAo+PiB1c2Ug
+bm93IGRldmZyZXEgZnJhbWV3b3JrLCBpdCBzZWVtcyBoYXJkIHRvIHNldCB0aGUgc3BlY2lmaWMg
+ZnJlcWV1ZW5jeQo+PiB3aGVuIHN1c3BlbmQuIERvIHlvdSBoYXZlIGFueSBpZGVhLCB0aGFua3Mu
+Cj4KPiBJdCBhcHBlYXJzIHRoYXQgd2UgbmVlZCB0byBzZXQgdGhlIGZyZXF1ZW5jeSBkaXJlY3Rs
+eSB3aXRoIHRhcmdldCgpIGZ1bmN0aW9uCj4gYXQgc3VzcGVuZC9yZXN1bWUgYWZ0ZXIgaXQgaXMg
+YXNzdXJlZCB0aGF0IHJlbGF0ZWQgcm91dGluZXMgYXJlCj4gYWxyZWFkeSBzdXNwZW5kZWQuCj4K
+PiBQbHVzLCB5b3UgbWlnaHQgbmVlZCB0byBjb25zaWRlciB1c2luZyBkZXZmcmVxX3N1c3BlbmQv
+cmVzdW1lX2RldmljZSBpbnN0ZWFkCj4gb2YgbW9uaXRvci4gbW9uaXRvciBmdW5jdGlvbnMgYXJl
+IGZvciB0aGUgZ292ZXJub3Itc3BlY2lmaWMgYmVoYXZpb3JzLgo+IFlvdSdsbCBuZWVkIHN1Y2gg
+Y2FwYWJpbGl0aWVzIHJlZ2FyZGxlc3Mgb2YgZ292ZXJub3JzLiAoZXZlbiB1c2Vyc3BhY2UtZ292
+ZXJub3IKPiBuZWVkcyB0aGlzKQpXZSBzdGlsbCBuZWVkIHRvIHN5bmMgdGhlIGFsbCBzdGF0dXMg
+ZXZlbiBpIGNhbGwgdGFyZ2V0KCkgaW4gCmRldmZyZXFfc3VzcGVuZC9yZXN1bWVfZGV2aWNlCmRp
+cmVjdGx5LCBzbyBzdGlsbCBuZWVkIHVwZGF0ZV9kZXZmcmVxKCkgb3RoZXIgc2V0cCBleGNlcHQK
+ZGV2ZnJlcS0+Z292ZXJub3ItPmdldF90YXJnZXRfZnJlcShkZXZmcmVxLCAmZnJlcSk7Cj4KPiBD
+aGVlcnMsCj4gTXl1bmdKb28KPgo+Pgo+PiAtLQo+PiBUbyB1bnN1YnNjcmliZSBmcm9tIHRoaXMg
+bGlzdDogc2VuZCB0aGUgbGluZSAidW5zdWJzY3JpYmUgbGludXgtcG0iIGluCj4+IHRoZSBib2R5
+IG9mIGEgbWVzc2FnZSB0byBtYWpvcmRvbW9Admdlci5rZXJuZWwub3JnCj4+IE1vcmUgbWFqb3Jk
+b21vIGluZm8gYXQgIGh0dHA6Ly92Z2VyLmtlcm5lbC5vcmcvbWFqb3Jkb21vLWluZm8uaHRtbAo+
+Cj4KCi0tIApMaW4gSHVhbmcKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
