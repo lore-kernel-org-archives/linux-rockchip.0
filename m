@@ -1,120 +1,190 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH 2/9] clocksource/drivers/rockchip_timer: low level routines take rk_timer as parameter
-Date: Wed, 23 Nov 2016 20:29:30 +0300
-Message-ID: <1479922177-20136-2-git-send-email-al.kochet@gmail.com>
-References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479922177-20136-1-git-send-email-al.kochet@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.lezcano@linaro.org, tglx@linutronix.de, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Alexander Kochetkov <al.kochet@gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2 3/5] thermal: rockchip: fixes invalid temperature case
+Date: Wed, 23 Nov 2016 10:35:14 -0800
+Message-ID: <20161123183513.GA12380@google.com>
+References: <1479911374-22006-1-git-send-email-wxt@rock-chips.com>
+ <1479911374-22006-4-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1479911374-22006-4-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: edubezval@gmail.com, rui.zhang@intel.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, smbarber@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Pass rk_timer instead of clock_event_device to low lever timer routines.
-So that code could be reused by clocksource implementation.
+Hi Caesar,
 
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
----
- drivers/clocksource/rockchip_timer.c |   44 ++++++++++++++++++----------------
- 1 file changed, 24 insertions(+), 20 deletions(-)
+On Wed, Nov 23, 2016 at 10:29:32PM +0800, Caesar Wang wrote:
+> The temp_to_code function will return 0 when we set the temperature to a
+> invalid value (e.g. 61C, 62C, 63C....), that's unpractical. This patch
+> will prevent this case happening. That will return the max analog value to
+> indicate the temperature is invalid or over table temperature range.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - As Brian commnets that restructure this to pass error codes back to the
+>   upper layers.
+> - Improve the commit message.
+> 
+> Changes in v1: None
+> 
+>  drivers/thermal/rockchip_thermal.c | 41 ++++++++++++++++++++++++++------------
+>  1 file changed, 28 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index 766486f..e243e40 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -120,9 +120,9 @@ struct rockchip_tsadc_chip {
+>  	/* Per-sensor methods */
+>  	int (*get_temp)(const struct chip_tsadc_table *table,
+>  			int chn, void __iomem *reg, int *temp);
+> -	void (*set_alarm_temp)(const struct chip_tsadc_table *table,
+> +	int (*set_alarm_temp)(const struct chip_tsadc_table *table,
+>  			       int chn, void __iomem *reg, int temp);
+> -	void (*set_tshut_temp)(const struct chip_tsadc_table *table,
+> +	int (*set_tshut_temp)(const struct chip_tsadc_table *table,
+>  			       int chn, void __iomem *reg, int temp);
+>  	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
+>  
+> @@ -401,17 +401,15 @@ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
+>  				   int temp)
+>  {
+>  	int high, low, mid;
+> -	u32 error = 0;
+> +	u32 error = table->data_mask;
+>  
+>  	low = 0;
+>  	high = table->length - 1;
+>  	mid = (high + low) / 2;
+>  
+>  	/* Return mask code data when the temp is over table range */
+> -	if (temp < table->id[low].temp || temp > table->id[high].temp) {
+> -		error = table->data_mask;
+> +	if (temp < table->id[low].temp || temp > table->id[high].temp)
+>  		goto exit;
+> -	}
+>  
+>  	while (low <= high) {
+>  		if (temp == table->id[mid].temp)
+> @@ -651,7 +649,7 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
+>  	return rk_tsadcv2_code_to_temp(table, val, temp);
+>  }
+>  
+> -static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+> +static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+>  				  int chn, void __iomem *regs, int temp)
+>  {
+>  	u32 alarm_value, int_en;
+> @@ -659,7 +657,7 @@ static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+>  	/* Make sure the value is valid */
+>  	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+>  	if (alarm_value == table->data_mask)
+> -		return;
+> +		return -ERANGE;
+>  
+>  	writel_relaxed(alarm_value & table->data_mask,
+>  		       regs + TSADCV2_COMP_INT(chn));
+> @@ -667,9 +665,11 @@ static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+>  	int_en = readl_relaxed(regs + TSADCV2_INT_EN);
+>  	int_en |= TSADCV2_INT_SRC_EN(chn);
+>  	writel_relaxed(int_en, regs + TSADCV2_INT_EN);
+> +
+> +	return 0;
+>  }
+>  
+> -static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+> +static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+>  				  int chn, void __iomem *regs, int temp)
+>  {
+>  	u32 tshut_value, val;
+> @@ -677,13 +677,15 @@ static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+>  	/* Make sure the value is valid */
+>  	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
+>  	if (tshut_value == table->data_mask)
+> -		return;
+> +		return -ERANGE;
+>  
+>  	writel_relaxed(tshut_value, regs + TSADCV2_COMP_SHUT(chn));
+>  
+>  	/* TSHUT will be valid */
+>  	val = readl_relaxed(regs + TSADCV2_AUTO_CON);
+>  	writel_relaxed(val | TSADCV2_AUTO_SRC_EN(chn), regs + TSADCV2_AUTO_CON);
+> +
+> +	return 0;
+>  }
+>  
+>  static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+> @@ -882,12 +884,17 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
+>  	struct rockchip_thermal_sensor *sensor = _sensor;
+>  	struct rockchip_thermal_data *thermal = sensor->thermal;
+>  	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
+> +	int ret;
+>  
+>  	dev_dbg(&thermal->pdev->dev, "%s: sensor %d: low: %d, high %d\n",
+>  		__func__, sensor->id, low, high);
+>  
+> -	tsadc->set_alarm_temp(&tsadc->table,
+> +	ret = tsadc->set_alarm_temp(&tsadc->table,
+>  			      sensor->id, thermal->regs, high);
+> +	if (ret)
+> +		dev_err(&thermal->pdev->dev,
+> +			"%s: disable sensor[%d] alarm temp: %d, ret: %d\n",
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index 6d68d4c..f84f67c 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -63,60 +63,64 @@ static inline void __iomem *rk_ctrl(struct clock_event_device *ce)
- 	return rk_timer(ce)->ctrl;
- }
- 
--static inline void rk_timer_disable(struct clock_event_device *ce)
-+static inline void rk_timer_disable(struct rk_timer *timer)
- {
--	writel_relaxed(TIMER_DISABLE, rk_ctrl(ce));
-+	writel_relaxed(TIMER_DISABLE, timer->ctrl);
- }
- 
--static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
-+static inline void rk_timer_enable(struct rk_timer *timer, u32 flags)
- {
- 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
--		       rk_ctrl(ce));
-+		       timer->ctrl);
- }
- 
- static void rk_timer_update_counter(unsigned long cycles,
--				    struct clock_event_device *ce)
-+				    struct rk_timer *timer)
- {
--	writel_relaxed(cycles, rk_base(ce) + TIMER_LOAD_COUNT0);
--	writel_relaxed(0, rk_base(ce) + TIMER_LOAD_COUNT1);
-+	writel_relaxed(cycles, timer->base + TIMER_LOAD_COUNT0);
-+	writel_relaxed(0, timer->base + TIMER_LOAD_COUNT1);
- }
- 
--static void rk_timer_interrupt_clear(struct clock_event_device *ce)
-+static void rk_timer_interrupt_clear(struct rk_timer *timer)
- {
--	writel_relaxed(1, rk_base(ce) + TIMER_INT_STATUS);
-+	writel_relaxed(1, timer->base + TIMER_INT_STATUS);
- }
- 
- static inline int rk_timer_set_next_event(unsigned long cycles,
- 					  struct clock_event_device *ce)
- {
--	rk_timer_disable(ce);
--	rk_timer_update_counter(cycles, ce);
--	rk_timer_enable(ce, TIMER_MODE_USER_DEFINED_COUNT);
-+	struct rk_timer *timer = rk_timer(ce);
-+	rk_timer_disable(timer);
-+	rk_timer_update_counter(cycles, timer);
-+	rk_timer_enable(timer, TIMER_MODE_USER_DEFINED_COUNT);
- 	return 0;
- }
- 
- static int rk_timer_shutdown(struct clock_event_device *ce)
- {
--	rk_timer_disable(ce);
-+	struct rk_timer *timer = rk_timer(ce);
-+	rk_timer_disable(timer);
- 	return 0;
- }
- 
- static int rk_timer_set_periodic(struct clock_event_device *ce)
- {
--	rk_timer_disable(ce);
--	rk_timer_update_counter(rk_timer(ce)->freq / HZ - 1, ce);
--	rk_timer_enable(ce, TIMER_MODE_FREE_RUNNING);
-+	struct rk_timer *timer = rk_timer(ce);
-+	rk_timer_disable(timer);
-+	rk_timer_update_counter(timer->freq / HZ - 1, timer);
-+	rk_timer_enable(timer, TIMER_MODE_FREE_RUNNING);
- 	return 0;
- }
- 
- static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
- {
- 	struct clock_event_device *ce = dev_id;
-+	struct rk_timer *timer = rk_timer(ce);
- 
--	rk_timer_interrupt_clear(ce);
-+	rk_timer_interrupt_clear(timer);
- 
- 	if (clockevent_state_oneshot(ce))
--		rk_timer_disable(ce);
-+		rk_timer_disable(timer);
- 
- 	ce->event_handler(ce);
- 
-@@ -183,8 +187,8 @@ static int __init rk_timer_init(struct device_node *np, u32 ctrl_reg)
- 	ce->cpumask = cpu_possible_mask;
- 	ce->rating = 250;
- 
--	rk_timer_interrupt_clear(ce);
--	rk_timer_disable(ce);
-+	rk_timer_interrupt_clear(timer);
-+	rk_timer_disable(timer);
- 
- 	ret = request_irq(irq, rk_timer_interrupt, IRQF_TIMER, TIMER_NAME, ce);
- 	if (ret) {
--- 
-1.7.9.5
+You're not necessarily disabling the sensor; you're just not programming
+it. If this is the second time setting the trip points (e.g., using
+'echo > trip_X_temp') then this just means you've retained the old
+value.
+
+Also, I'm not sure you need to print anything here, as the thermal core
+prints errors for you. Maybe make this dev_dbg() so it doesn't print by
+default?
+
+> +			__func__, sensor->id, high, ret);
+>  
+>  	return 0;
+
+Oh, but you missed the whole point of returning errors; you need to
+propagate 'ret' here! i.e.:
+
+	return ret;
+
+Brian
+
+>  }
+> @@ -985,8 +992,12 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
+>  	int error;
+>  
+>  	tsadc->set_tshut_mode(id, thermal->regs, thermal->tshut_mode);
+> -	tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
+> +
+> +	error = tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
+>  			      thermal->tshut_temp);
+> +	if (error)
+> +		dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
+> +			__func__, thermal->tshut_temp, error);
+>  
+>  	sensor->thermal = thermal;
+>  	sensor->id = id;
+> @@ -1199,9 +1210,13 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  
+>  		thermal->chip->set_tshut_mode(id, thermal->regs,
+>  					      thermal->tshut_mode);
+> -		thermal->chip->set_tshut_temp(&thermal->chip->table,
+> +
+> +		error = thermal->chip->set_tshut_temp(&thermal->chip->table,
+>  					      id, thermal->regs,
+>  					      thermal->tshut_temp);
+> +		if (error)
+> +			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
+> +				__func__, thermal->tshut_temp, error);
+>  	}
+>  
+>  	thermal->chip->control(thermal->regs, true);
+> -- 
+> 2.7.4
+> 
