@@ -1,86 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.10 part2
-Date: Thu, 24 Nov 2016 16:17:46 +0100
-Message-ID: <2743552.IWmOsK33LT@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH] dt-bindings: clarify compatible field usage for rockchip timers
+Date: Fri, 25 Nov 2016 01:10:55 +0300
+Message-ID: <1480025455-6797-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, wxt@rock-chips.com, daniel.lezcano@linaro.org, huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+rk3036 dtsi file already use compatible field as
+"rockchip,rk3036-timer", "rockchip,rk3288-timer".
 
-here are some more rockchip-specific clock changes, hopefully still in
-time for 4.10.
+The patch clearly shows how that filed should be used on other chips.
 
-Apart from some smaller fixes there is one new clock-controller for
-the RK1108 (a soc combining a single-core Cortex-A7 with a DSP).
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+---
+ .../bindings/timer/rockchip,rk-timer.txt           |   12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-
-There was a bit of concern from Rob regarding our softer links to
-circular input clocks which I tried to explain in [0] and [1] but
-haven't heared anything back in nearly a week now from my
-initial reply last friday.
-
-He did ack bindings with the same behaviour for the rk3036, rk3228
-and rk3399 in the past though, so I can only hope my explanation did
-somehow alleviate his concerns.
-
-I've Cc'ed him on this pull request, so hopefully he'll protest if
-that isn't the case.
-
-
-Heiko
-
-[0] http://www.spinics.net/lists/devicetree/msg151344.html
-[1] http://www.spinics.net/lists/devicetree/msg151658.html
-
-
-
-The following changes since commit bf92384b6d729b22916ba832b4a225ca196e98ba:
-
-  clk: rockchip: Ignore frac divisor for PLL equivalence when it's unused (2016-11-05 23:16:29 +0100)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-clk2
-
-for you to fetch changes up to e44dde27949254b7da7259ab90864c211c14ade3:
-
-  clk: rockchip: add clock controller for rk1108 (2016-11-16 12:37:37 +0100)
-
-----------------------------------------------------------------
-A new clock controller for the rk1108 soc (single-core Cortex-A7+DSP),
-a fix making sure the cpuclk rate is actually valid, before trying to
-set it and a copy-paste fix for the rk3399's testclk.
-
-----------------------------------------------------------------
-Elaine Zhang (1):
-      clk: rockchip: validity should be checked prior to cpu clock rate change
-
-Heiko Stuebner (1):
-      Merge branch 'v4.10-shared/clkids' into v4.10-clk/next
-
-Jianqun Xu (1):
-      clk: rockchip: fix copy-paste error in rk3399 testclk
-
-Shawn Lin (3):
-      clk: rockchip: add dt-binding header for rk1108
-      dt-bindings: add documentation for rk1108 cru
-      clk: rockchip: add clock controller for rk1108
-
- .../bindings/clock/rockchip,rk1108-cru.txt         |  59 +++
- drivers/clk/rockchip/Makefile                      |   1 +
- drivers/clk/rockchip/clk-cpu.c                     |   9 +
- drivers/clk/rockchip/clk-rk1108.c                  | 531 +++++++++++++++++++++
- drivers/clk/rockchip/clk-rk3399.c                  |   4 +-
- drivers/clk/rockchip/clk.h                         |  15 +
- include/dt-bindings/clock/rk1108-cru.h             | 269 +++++++++++
- 7 files changed, 886 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk1108.c
- create mode 100644 include/dt-bindings/clock/rk1108-cru.h
-
+diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+index a41b184..7bc9691 100644
+--- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+@@ -1,9 +1,15 @@
+ Rockchip rk timer
+ 
+ Required properties:
+-- compatible: shall be one of:
+-  "rockchip,rk3288-timer" - for rk3066, rk3036, rk3188, rk322x, rk3288, rk3368
+-  "rockchip,rk3399-timer" - for rk3399
++- compatible: should be:
++  "rockchip,rk3036-timer", "rockchip,rk3288-timer": for Rockchip RK3036
++  "rockchip,rk3066-timer", "rockchip,rk3288-timer": for Rockchip RK3066
++  "rockchip,rk3188-timer", "rockchip,rk3288-timer": for Rockchip RK3188
++  "rockchip,rk322x-timer", "rockchip,rk3288-timer": for Rockchip RK322X
++   (please replace rk322x with exact device name and update this file)
++  "rockchip,rk3288-timer": for Rockchip RK3288
++  "rockchip,rk3368-timer", "rockchip,rk3288-timer": for Rockchip RK3368
++  "rockchip,rk3399-timer": for Rockchip RK3399
+ - reg: base address of the timer register starting with TIMERS CONTROL register
+ - interrupts: should contain the interrupts for Timer0
+ - clocks : must contain an entry for each entry in clock-names
+-- 
+1.7.9.5
