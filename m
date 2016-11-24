@@ -1,55 +1,86 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 7/9] clocksource/drivers/rockchip_timer: implement clocksource timer
-Date: Thu, 24 Nov 2016 15:32:39 +0100
-Message-ID: <28466016.LeLsKNAIhE@diego>
-References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com> <4357439.aV0xjsImc7@diego> <95FE175F-B7B4-4271-99FE-69516140C56A@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] rockchip clock changes for 4.10 part2
+Date: Thu, 24 Nov 2016 16:17:46 +0100
+Message-ID: <2743552.IWmOsK33LT@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <95FE175F-B7B4-4271-99FE-69516140C56A@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 24. November 2016, 17:14:56 schrieb Alexander Kochetkov:
-> > 24 нояб. 2016 г., в 16:21, Heiko Stübner <heiko@sntech.de> написал(а):
-> > 
-> > what I actually meant was that the driver could also recognize the rk3188-
-> > timer compatible as "we need a clocksource" and it shouldn't matter which
-> > timer actually gets used for this.
-> 
-> One rockchip timer cannot be used as clockevent and clocksource at the same
-> time.
-> 
-> In case of clockevent we want interrupts from it at specified times. So we
-> load one value into timer counter and it generates an interrupt.
-> 
-> In case of clocksource we load max value into timer counter, run timer and
-> read current value on demand.
-> 
-> rockchip_timer driver currently implement clockevent. So, if I create only
-> one timer in the device tree, it should be clockevent timer. As that
-> behavior already expected from driver by people used it.
-> 
-> I may suggest such solution here: if I want clocksource, I have to declare
-> two timer in device tree. First probed timer would be clockevent and second
-> one would be clocksource. All other timers will be ignored. Is that
-> solution good?
+Hi Mike, Stephen,
 
-yep, sounds good, especially as with your patch 9/9 you already declare these 
-necessary timers.
+here are some more rockchip-specific clock changes, hopefully still in
+time for 4.10.
 
-> If I want one timer and want it be clocksource not clockevent how that
-> situation should be configured? Device tree not good for this. Kconfig not
-> good. Pass that configuration on kernel command line?
+Apart from some smaller fixes there is one new clock-controller for
+the RK1108 (a soc combining a single-core Cortex-A7 with a DSP).
 
-simply ignore that case :-)
 
-I.e. newer kernels are supposed to be able to run old devicetrees and in that 
-case they will have the global-timer as (slightly unstable) clocksource.
+There was a bit of concern from Rob regarding our softer links to
+circular input clocks which I tried to explain in [0] and [1] but
+haven't heared anything back in nearly a week now from my
+initial reply last friday.
 
-Also on the cortex-a9 we also still have the smp-twd as clockevent device.
+He did ack bindings with the same behaviour for the rk3036, rk3228
+and rk3399 in the past though, so I can only hope my explanation did
+somehow alleviate his concerns.
+
+I've Cc'ed him on this pull request, so hopefully he'll protest if
+that isn't the case.
+
 
 Heiko
+
+[0] http://www.spinics.net/lists/devicetree/msg151344.html
+[1] http://www.spinics.net/lists/devicetree/msg151658.html
+
+
+
+The following changes since commit bf92384b6d729b22916ba832b4a225ca196e98ba:
+
+  clk: rockchip: Ignore frac divisor for PLL equivalence when it's unused (2016-11-05 23:16:29 +0100)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.10-rockchip-clk2
+
+for you to fetch changes up to e44dde27949254b7da7259ab90864c211c14ade3:
+
+  clk: rockchip: add clock controller for rk1108 (2016-11-16 12:37:37 +0100)
+
+----------------------------------------------------------------
+A new clock controller for the rk1108 soc (single-core Cortex-A7+DSP),
+a fix making sure the cpuclk rate is actually valid, before trying to
+set it and a copy-paste fix for the rk3399's testclk.
+
+----------------------------------------------------------------
+Elaine Zhang (1):
+      clk: rockchip: validity should be checked prior to cpu clock rate change
+
+Heiko Stuebner (1):
+      Merge branch 'v4.10-shared/clkids' into v4.10-clk/next
+
+Jianqun Xu (1):
+      clk: rockchip: fix copy-paste error in rk3399 testclk
+
+Shawn Lin (3):
+      clk: rockchip: add dt-binding header for rk1108
+      dt-bindings: add documentation for rk1108 cru
+      clk: rockchip: add clock controller for rk1108
+
+ .../bindings/clock/rockchip,rk1108-cru.txt         |  59 +++
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-cpu.c                     |   9 +
+ drivers/clk/rockchip/clk-rk1108.c                  | 531 +++++++++++++++++++++
+ drivers/clk/rockchip/clk-rk3399.c                  |   4 +-
+ drivers/clk/rockchip/clk.h                         |  15 +
+ include/dt-bindings/clock/rk1108-cru.h             | 269 +++++++++++
+ 7 files changed, 886 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk1108-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk1108.c
+ create mode 100644 include/dt-bindings/clock/rk1108-cru.h
+
