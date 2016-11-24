@@ -1,121 +1,71 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH v1 1/2] PM/devfreq: add suspend frequency support
-Date: Thu, 24 Nov 2016 10:18:12 +0800
-Message-ID: <58364DE4.9030505@rock-chips.com>
-References: <1477990029-11062-1-git-send-email-hl@rock-chips.com>
- <CGME20161101084721epcas4p471cc74df8b12d042d1fac542e5371db8@epcas4p4.samsung.com>
- <422077764.570918.1478068526663.JavaMail.weblogic@ep1ml102b>
- <581AE13C.9070706@rock-chips.com>
- <CAJ0PZbSYZYF6xJ-ut23G+tTXYLCDNpQ8_AJpjTdDGO7VnECMvg@mail.gmail.com>
- <5834F862.6000603@rock-chips.com>
+From: =?UTF-8?B?TXl1bmdKb28gSGFt?= <myungjoo.ham@samsung.com>
+Subject: =?UTF-8?B?UmU6IFtQQVRDSCB2MSAxLzJdIFBNL2RldmZyZXE6IGFkZCBz?=
+ =?UTF-8?B?dXNwZW5kIGZyZXF1ZW5jeSBzdXBwb3J0?=
+Date: Thu, 24 Nov 2016 05:19:03 +0000
+Message-ID: <20161124051903epcms1p75ab1450eff0361338592c5cb659104f3@epcms1p7>
+References: <CGME20161124051903epcms1p75ab1450eff0361338592c5cb659104f3@epcms1p7>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/related;
+ boundary="----=_Part_835729_275350538.1479964743674"
 Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <5834F862.6000603@rock-chips.com>
 Sender: linux-pm-owner@vger.kernel.org
-To: myungjoo.ham@gmail.com
-Cc: Chanwoo Choi <cw00.choi@samsung.com>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "dianders@chromium.org" <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+To: =?UTF-8?B?aGxAcm9jay1jaGlwcy5jb20=?= <hl@rock-chips.com>
+Cc: =?UTF-8?B?Q2hhbndvbyBDaG9p?= <cw00.choi@samsung.com>, =?UTF-8?B?ZGJhc2Vob3JlQGNocm9taXVtLm9yZw==?= <dbasehore@chromium.org>, =?UTF-8?B?bGludXgtcG1Admdlci5rZXJuZWwub3Jn?= <linux-pm@vger.kernel.org>, =?UTF-8?B?ZGlhbmRlcnNAY2hyb21pdW0ub3Jn?= <dianders@chromium.org>, =?UTF-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?= <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi MyungJoo Ham,
+------=_Part_835729_275350538.1479964743674
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"
 
-On 2016年11月23日 10:01, hl wrote:
->
->
-> On 2016年11月22日 20:48, MyungJoo Ham wrote:
->> On Thu, Nov 3, 2016 at 4:03 PM, hl <hl@rock-chips.com> wrote:
->>> Hi MyungJoo Ham,
->>>
->>>
->>> On 2016年11月02日 14:35, MyungJoo Ham wrote:
->>>>> Add suspend frequency support and if needed set it to
->>>>> the frequency obtained from the suspend opp (can be defined
->>>>> using opp-v2 bindings and is optional).
->>>>>
->>>>> Change-Id: Iaa0d3848d63d9ce03f65ea76f263e4685a4c295e
->>>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
->>>>> ---
->>>>>    drivers/devfreq/devfreq.c | 17 ++++++++++++++++-
->>>>>    include/linux/devfreq.h   |  9 +++++++++
->>>>>    2 files changed, 25 insertions(+), 1 deletion(-)
->>>>>
->>>>> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->>>>> index bf3ea76..d1152eb 100644
->>>>> --- a/drivers/devfreq/devfreq.c
->>>>> +++ b/drivers/devfreq/devfreq.c
->>>>> @@ -364,7 +364,10 @@ void devfreq_monitor_suspend(struct devfreq
->>>>> *devfreq)
->>>>>                  return;
->>>>>          }
->>>>>    -     devfreq_update_status(devfreq, devfreq->previous_freq);
->>>>> +       if (devfreq->suspend_freq)
->>>>> +               devfreq_update_status(devfreq, 
->>>>> devfreq->suspend_freq);
->>>>> +       else
->>>>> +               devfreq_update_status(devfreq, 
->>>>> devfreq->previous_freq);
->>>> This is incorrect.
->>>>
->>>> devfreq_update_status is to record the statistics.
->>>> This code intends to record the current status before entering 
->>>> suspend;
->>>> thus you should not record "suspend_freq" here.
->>>>
->>>> If you really need to record the frequency during suspended state
->>>> for the statistics, you need to do that at resume; however, I 
->>>> object to
->>>> that idea either.
->>>>
->>>> If you really want to set a predefined suspend-to-RAM mode frequency,
->>>> (probably because of HW instability during resume process)
->>>> you need to update, not udpate_status (statistics).
->>>>
->>> Thanks for pointing it, but if i use update_devfreq(), it can not 
->>> specify
->>> the
->>> frequency, it call the get_target_freq() to get the frequency and 
->>> setting,
->>> use now devfreq framework, it seems hard to set the specific freqeuency
->>> when suspend. Do you have any idea, thanks.
->>
->> It appears that we need to set the frequency directly with target() 
->> function
->> at suspend/resume after it is assured that related routines are
->> already suspended.
->>
->> Plus, you might need to consider using devfreq_suspend/resume_device 
->> instead
->> of monitor. monitor functions are for the governor-specific behaviors.
->> You'll need such capabilities regardless of governors. (even 
->> userspace-governor
->> needs this)
-> We still need to sync the all status even i call target() in 
-> devfreq_suspend/resume_device
-> directly, so still need update_devfreq() other setp except
-> devfreq->governor->get_target_freq(devfreq, &freq);
-And i think it better to be governor behaviors, for userspace they may 
-not want to change
-the suspend frequency like other governor, the frequency should decide 
-by the user, if they
-want this function, they should like other governor to rigister a 
-devfreq_monitor_suspend().
-What do you think about my rev6 patch?
-
->>
->> Cheers,
->> MyungJoo
->>
->>>
->>> -- 
->>> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
->>> the body of a message to majordomo@vger.kernel.org
->>> More majordomo info at http://vger.kernel.org/majordomo-info.html
->>
->>
->
-
--- 
-Lin Huang
-
-
+DQoNCk9uIFdlZCwgTm92IDIzLCAyMDE2IGF0IDExOjAxIEFNLCBobCA8aGxAcm9jay1jaGlwcy5j
+b20+IHdyb3RlOg0KPg0KPg0KPiBPbiAyMDE25bm0MTHmnIgyMuaXpSAyMDo0OCwgTXl1bmdKb28g
+SGFtIHdyb3RlOg0KPj4NCj4+IE9uIFRodSwgTm92IDMsIDIwMTYgYXQgNDowMyBQTSwgaGwgPGhs
+QHJvY2stY2hpcHMuY29tPiB3cm90ZToNCj4+Pg0KPj4+IEhpIE15dW5nSm9vIEhhbSwNCj4+Pg0K
+Pj4+DQo+Pj4gT24gMjAxNuW5tDEx5pyIMDLml6UgMTQ6MzUsIE15dW5nSm9vIEhhbSB3cm90ZToN
+Cj4+Pj4+DQo+Pj4+PiBBZGQgc3VzcGVuZCBmcmVxdWVuY3kgc3VwcG9ydCBhbmQgaWYgbmVlZGVk
+IHNldCBpdCB0bw0KPj4+Pj4gdGhlIGZyZXF1ZW5jeSBvYnRhaW5lZCBmcm9tIHRoZSBzdXNwZW5k
+IG9wcCAoY2FuIGJlIGRlZmluZWQNCj4+Pj4+IHVzaW5nIG9wcC12MiBiaW5kaW5ncyBhbmQgaXMg
+b3B0aW9uYWwpLg0KPj4+Pj4NCj4+Pj4+ICsgICAgICAgaWYgKGRldmZyZXEtPnN1c3BlbmRfZnJl
+cSkNCj4+Pj4+ICsgICAgICAgICAgICAgICBkZXZmcmVxX3VwZGF0ZV9zdGF0dXMoZGV2ZnJlcSwg
+ZGV2ZnJlcS0+c3VzcGVuZF9mcmVxKTsNCj4+Pj4+ICsgICAgICAgZWxzZQ0KPj4+Pj4gKyAgICAg
+ICAgICAgICAgIGRldmZyZXFfdXBkYXRlX3N0YXR1cyhkZXZmcmVxLCBkZXZmcmVxLT5wcmV2aW91
+c19mcmVxKTsNCj4+Pj4NCj4+Pj4gVGhpcyBpcyBpbmNvcnJlY3QuDQo+Pj4+DQo+Pj4+IGRldmZy
+ZXFfdXBkYXRlX3N0YXR1cyBpcyB0byByZWNvcmQgdGhlIHN0YXRpc3RpY3MuDQo+Pj4+IFRoaXMg
+Y29kZSBpbnRlbmRzIHRvIHJlY29yZCB0aGUgY3VycmVudCBzdGF0dXMgYmVmb3JlIGVudGVyaW5n
+IHN1c3BlbmQ7DQo+Pj4+IHRodXMgeW91IHNob3VsZCBub3QgcmVjb3JkICJzdXNwZW5kX2ZyZXEi
+IGhlcmUuDQo+Pj4+DQo+Pj4+IElmIHlvdSByZWFsbHkgbmVlZCB0byByZWNvcmQgdGhlIGZyZXF1
+ZW5jeSBkdXJpbmcgc3VzcGVuZGVkIHN0YXRlDQo+Pj4+IGZvciB0aGUgc3RhdGlzdGljcywgeW91
+IG5lZWQgdG8gZG8gdGhhdCBhdCByZXN1bWU7IGhvd2V2ZXIsIEkgb2JqZWN0IHRvDQo+Pj4+IHRo
+YXQgaWRlYSBlaXRoZXIuDQo+Pj4+DQo+Pj4+IElmIHlvdSByZWFsbHkgd2FudCB0byBzZXQgYSBw
+cmVkZWZpbmVkIHN1c3BlbmQtdG8tUkFNIG1vZGUgZnJlcXVlbmN5LA0KPj4+PiAocHJvYmFibHkg
+YmVjYXVzZSBvZiBIVyBpbnN0YWJpbGl0eSBkdXJpbmcgcmVzdW1lIHByb2Nlc3MpDQo+Pj4+IHlv
+dSBuZWVkIHRvIHVwZGF0ZSwgbm90IHVkcGF0ZV9zdGF0dXMgKHN0YXRpc3RpY3MpLg0KPj4+Pg0K
+Pj4+IFRoYW5rcyBmb3IgcG9pbnRpbmcgaXQsIGJ1dCBpZiBpIHVzZSB1cGRhdGVfZGV2ZnJlcSgp
+LCBpdCBjYW4gbm90IHNwZWNpZnkNCj4+PiB0aGUNCj4+PiBmcmVxdWVuY3ksIGl0IGNhbGwgdGhl
+IGdldF90YXJnZXRfZnJlcSgpIHRvIGdldCB0aGUgZnJlcXVlbmN5IGFuZA0KPj4+IHNldHRpbmcs
+DQo+Pj4gdXNlIG5vdyBkZXZmcmVxIGZyYW1ld29yaywgaXQgc2VlbXMgaGFyZCB0byBzZXQgdGhl
+IHNwZWNpZmljIGZyZXFldWVuY3kNCj4+PiB3aGVuIHN1c3BlbmQuIERvIHlvdSBoYXZlIGFueSBp
+ZGVhLCB0aGFua3MuDQo+Pg0KPj4NCj4+IEl0IGFwcGVhcnMgdGhhdCB3ZSBuZWVkIHRvIHNldCB0
+aGUgZnJlcXVlbmN5IGRpcmVjdGx5IHdpdGggdGFyZ2V0KCkNCj4+IGZ1bmN0aW9uDQo+PiBhdCBz
+dXNwZW5kL3Jlc3VtZSBhZnRlciBpdCBpcyBhc3N1cmVkIHRoYXQgcmVsYXRlZCByb3V0aW5lcyBh
+cmUNCj4+IGFscmVhZHkgc3VzcGVuZGVkLg0KPj4NCj4+IFBsdXMsIHlvdSBtaWdodCBuZWVkIHRv
+IGNvbnNpZGVyIHVzaW5nIGRldmZyZXFfc3VzcGVuZC9yZXN1bWVfZGV2aWNlDQo+PiBpbnN0ZWFk
+DQo+PiBvZiBtb25pdG9yLiBtb25pdG9yIGZ1bmN0aW9ucyBhcmUgZm9yIHRoZSBnb3Zlcm5vci1z
+cGVjaWZpYyBiZWhhdmlvcnMuDQo+PiBZb3UnbGwgbmVlZCBzdWNoIGNhcGFiaWxpdGllcyByZWdh
+cmRsZXNzIG9mIGdvdmVybm9ycy4gKGV2ZW4NCj4+IHVzZXJzcGFjZS1nb3Zlcm5vcg0KPj4gbmVl
+ZHMgdGhpcykNCj4NCj4gV2Ugc3RpbGwgbmVlZCB0byBzeW5jIHRoZSBhbGwgc3RhdHVzIGV2ZW4g
+aSBjYWxsIHRhcmdldCgpIGluDQo+IGRldmZyZXFfc3VzcGVuZC9yZXN1bWVfZGV2aWNlDQo+IGRp
+cmVjdGx5LCBzbyBzdGlsbCBuZWVkIHVwZGF0ZV9kZXZmcmVxKCkgb3RoZXIgc2V0cCBleGNlcHQN
+Cj4gZGV2ZnJlcS0+Z292ZXJub3ItPmdldF90YXJnZXRfZnJlcShkZXZmcmVxLCAmZnJlcSk7DQoN
+ClRoZSBkZXZmcmVxX3VwZGF0ZSgpIHRoZXJlLCB3aGljaCBpcyB0byBpbnZva2UgY29ycmVzcG9u
+ZGluZw0KZ292ZXJub3IgdG8gZGVjaWRlIG5leHQgZnJlcXVlbmN5IChnZXRfdGFyZ2V0X2ZyZXEp
+Lg0KDQpJbiBvcmRlciB0byBjaGFuZ2UgdGhlIGZyZXF1ZW5jeSBpZ25vcmluZyB3aGF0ZXZlciBn
+b3Zlcm5vcnMgbWlnaHQgc2F5DQooaS5lLiwgd2UgYXJlIGdvaW5nIHRvIHN1c3BlbmQgLyByZXN1
+bWUgbm93KSwgeW91IG5lZWQgdG8gdGFsayB0bw0KdGhlIGRyaXZlciBkaXJlY3RseSB3aXRob3V0
+IGludm9raW5nIGdvdmVybm9ycy4NCg0KWW91IG9ubHkgbmVlZCB0byBiZSBjYXJlZnVsIG9uIHRo
+ZSBzZXF1ZW5jZSBvZiBub3RpZmljYXRpb24gY2hhaW5zIGFuZA0Kc3RhdHVzIHVwZGF0aW5nICh5
+b3Ugd2lsbCBwcm9iYWJseSBiZSB3cml0aW5nIGEgbXVjaCBzaW1wbGVyIHZlcnNpb24gb2YNCnVw
+ZGF0ZV9kZXZmcmVxKCkgZm9yIHN1c3BlbmQvcmVzdW1lKQ0KDQogDQoNCkNoZWVycywNCk15dW5n
+Sm9vDQoNCiANCg==
+------=_Part_835729_275350538.1479964743674--
