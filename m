@@ -1,227 +1,121 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 3/3] PCI: rockchip: Add system PM support
-Date: Thu, 24 Nov 2016 09:54:22 +0800
-Message-ID: <1479952462-194300-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1479952462-194300-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1479952462-194300-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: hl <hl@rock-chips.com>
+Subject: Re: [PATCH v1 1/2] PM/devfreq: add suspend frequency support
+Date: Thu, 24 Nov 2016 10:18:12 +0800
+Message-ID: <58364DE4.9030505@rock-chips.com>
+References: <1477990029-11062-1-git-send-email-hl@rock-chips.com>
+ <CGME20161101084721epcas4p471cc74df8b12d042d1fac542e5371db8@epcas4p4.samsung.com>
+ <422077764.570918.1478068526663.JavaMail.weblogic@ep1ml102b>
+ <581AE13C.9070706@rock-chips.com>
+ <CAJ0PZbSYZYF6xJ-ut23G+tTXYLCDNpQ8_AJpjTdDGO7VnECMvg@mail.gmail.com>
+ <5834F862.6000603@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <5834F862.6000603@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: myungjoo.ham@gmail.com
+Cc: Chanwoo Choi <cw00.choi@samsung.com>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "dianders@chromium.org" <dianders@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds system PM support for Rockchip's RC.
-For pre S3, the EP is configured into D3 state which guarantees
-the link state should be in L1. So we could send PME_Turn_Off message
-to the EP and wait for its ACK to make the link state into L2 or L3
-without the aux-supply. This could help save more power which I think
-should be very important for mobile devices.
+Hi MyungJoo Ham,
 
-As note that there is a 5s timeout for RC to wait for the PMA_ACK
-aftering send PME_Turn_Off. Technically it should depends on the
-hierarchy of devices but seems PCIe core framework doesn't handle the
-L2/3 for S3 at all. So that means we should presume to set a default
-value for PME_ACK. From the bug report[1], we could find a statment that
-Microsoft Windows versions typically wait for 5 seconds. So we are prone
-to take 5s for this timeout here.
+On 2016年11月23日 10:01, hl wrote:
+>
+>
+> On 2016年11月22日 20:48, MyungJoo Ham wrote:
+>> On Thu, Nov 3, 2016 at 4:03 PM, hl <hl@rock-chips.com> wrote:
+>>> Hi MyungJoo Ham,
+>>>
+>>>
+>>> On 2016年11月02日 14:35, MyungJoo Ham wrote:
+>>>>> Add suspend frequency support and if needed set it to
+>>>>> the frequency obtained from the suspend opp (can be defined
+>>>>> using opp-v2 bindings and is optional).
+>>>>>
+>>>>> Change-Id: Iaa0d3848d63d9ce03f65ea76f263e4685a4c295e
+>>>>> Signed-off-by: Lin Huang <hl@rock-chips.com>
+>>>>> ---
+>>>>>    drivers/devfreq/devfreq.c | 17 ++++++++++++++++-
+>>>>>    include/linux/devfreq.h   |  9 +++++++++
+>>>>>    2 files changed, 25 insertions(+), 1 deletion(-)
+>>>>>
+>>>>> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
+>>>>> index bf3ea76..d1152eb 100644
+>>>>> --- a/drivers/devfreq/devfreq.c
+>>>>> +++ b/drivers/devfreq/devfreq.c
+>>>>> @@ -364,7 +364,10 @@ void devfreq_monitor_suspend(struct devfreq
+>>>>> *devfreq)
+>>>>>                  return;
+>>>>>          }
+>>>>>    -     devfreq_update_status(devfreq, devfreq->previous_freq);
+>>>>> +       if (devfreq->suspend_freq)
+>>>>> +               devfreq_update_status(devfreq, 
+>>>>> devfreq->suspend_freq);
+>>>>> +       else
+>>>>> +               devfreq_update_status(devfreq, 
+>>>>> devfreq->previous_freq);
+>>>> This is incorrect.
+>>>>
+>>>> devfreq_update_status is to record the statistics.
+>>>> This code intends to record the current status before entering 
+>>>> suspend;
+>>>> thus you should not record "suspend_freq" here.
+>>>>
+>>>> If you really need to record the frequency during suspended state
+>>>> for the statistics, you need to do that at resume; however, I 
+>>>> object to
+>>>> that idea either.
+>>>>
+>>>> If you really want to set a predefined suspend-to-RAM mode frequency,
+>>>> (probably because of HW instability during resume process)
+>>>> you need to update, not udpate_status (statistics).
+>>>>
+>>> Thanks for pointing it, but if i use update_devfreq(), it can not 
+>>> specify
+>>> the
+>>> frequency, it call the get_target_freq() to get the frequency and 
+>>> setting,
+>>> use now devfreq framework, it seems hard to set the specific freqeuency
+>>> when suspend. Do you have any idea, thanks.
+>>
+>> It appears that we need to set the frequency directly with target() 
+>> function
+>> at suspend/resume after it is assured that related routines are
+>> already suspended.
+>>
+>> Plus, you might need to consider using devfreq_suspend/resume_device 
+>> instead
+>> of monitor. monitor functions are for the governor-specific behaviors.
+>> You'll need such capabilities regardless of governors. (even 
+>> userspace-governor
+>> needs this)
+> We still need to sync the all status even i call target() in 
+> devfreq_suspend/resume_device
+> directly, so still need update_devfreq() other setp except
+> devfreq->governor->get_target_freq(devfreq, &freq);
+And i think it better to be governor behaviors, for userspace they may 
+not want to change
+the suspend frequency like other governor, the frequency should decide 
+by the user, if they
+want this function, they should like other governor to rigister a 
+devfreq_monitor_suspend().
+What do you think about my rev6 patch?
 
-[1] https://lists.launchpad.net/kernel-packages/msg123315.html
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>
+>> Cheers,
+>> MyungJoo
+>>
+>>>
+>>> -- 
+>>> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
+>>> the body of a message to majordomo@vger.kernel.org
+>>> More majordomo info at http://vger.kernel.org/majordomo-info.html
+>>
+>>
+>
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v3:
-- check the return value of devm_ioremap
-- elaborate for commit msg
-- add tag from Brian
-
-Changes in v2:
-- Wrap the 'x' in parentheses
-- add msg regison mapped support
-- enable int for err case in suspend_noirq
-
- drivers/pci/host/pcie-rockchip.c | 107 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 107 insertions(+)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 457401d..2b36795 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -20,6 +20,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
-+#include <linux/iopoll.h>
- #include <linux/irq.h>
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
-@@ -55,6 +56,10 @@
- #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
- #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
- #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
-+#define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
-+#define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
-+#define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
-+#define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
- #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
- #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
- #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
-@@ -169,9 +174,11 @@
- #define IB_ROOT_PORT_REG_SIZE_SHIFT		3
- #define AXI_WRAPPER_IO_WRITE			0x6
- #define AXI_WRAPPER_MEM_WRITE			0x2
-+#define AXI_WRAPPER_NOR_MSG			0xc
- 
- #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
- #define MIN_AXI_ADDR_BITS_PASSED		8
-+#define PCIE_RC_SEND_PME_OFF			0x11960
- #define ROCKCHIP_VENDOR_ID			0x1d87
- #define PCIE_ECAM_BUS(x)			(((x) & 0xff) << 20)
- #define PCIE_ECAM_DEV(x)			(((x) & 0x1f) << 15)
-@@ -180,6 +187,9 @@
- #define PCIE_ECAM_ADDR(bus, dev, func, reg) \
- 	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
- 	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
-+#define PCIE_LINK_IS_L2(x) \
-+		(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
-+		 PCIE_CLIENT_DEBUG_LTSSM_L2)
- 
- #define RC_REGION_0_ADDR_TRANS_H		0x00000000
- #define RC_REGION_0_ADDR_TRANS_L		0x00000000
-@@ -213,6 +223,7 @@ struct rockchip_pcie {
- 	u32     io_size;
- 	int     offset;
- 	phys_addr_t io_bus_addr;
-+	void	__iomem *msg_region;
- 	u32     mem_size;
- 	phys_addr_t mem_bus_addr;
- };
-@@ -1196,8 +1207,96 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
- 		}
- 	}
- 
-+	/* assign message regions */
-+	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
-+				  AXI_WRAPPER_NOR_MSG,
-+				  20 - 1, 0, 0);
-+	if (rockchip->msg_region)
-+		goto out;
-+
-+	rockchip->msg_region = devm_ioremap(rockchip->dev,
-+					    rockchip->mem_bus_addr +
-+					    ((reg_no + offset) << 20),
-+					    SZ_1M);
-+	if (!rockchip->msg_region)
-+		err = -ENOMEM;
-+
-+out:
- 	return err;
- }
-+
-+static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
-+{
-+	u32 value;
-+	int err;
-+
-+	/* send PME_TURN_OFF message */
-+	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
-+
-+	/* read LTSSM and wait for falling into L2 link state */
-+	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
-+				 value, PCIE_LINK_IS_L2(value), 20,
-+				 jiffies_to_usecs(5 * HZ));
-+	if (err) {
-+		dev_err(rockchip->dev, "PCIe link enter L2 timeout!\n");
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	int ret;
-+
-+	/* disable core and cli int since we don't need to ack PME_ACK */
-+	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
-+			    PCIE_CLIENT_INT_CLI, PCIE_CLIENT_INT_MASK);
-+	rockchip_pcie_write(rockchip, (u32)PCIE_CORE_INT, PCIE_CORE_INT_MASK);
-+
-+	ret = rockchip_pcie_wait_l2(rockchip);
-+	if (ret) {
-+		rockchip_pcie_enable_interrupts(rockchip);
-+		return ret;
-+	}
-+
-+	phy_power_off(rockchip->phy);
-+	phy_exit(rockchip->phy);
-+
-+	clk_disable_unprepare(rockchip->clk_pcie_pm);
-+	clk_disable_unprepare(rockchip->hclk_pcie);
-+	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+	clk_disable_unprepare(rockchip->aclk_pcie);
-+
-+	return ret;
-+}
-+
-+static int rockchip_pcie_resume_noirq(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	int err;
-+
-+	clk_prepare_enable(rockchip->clk_pcie_pm);
-+	clk_prepare_enable(rockchip->hclk_pcie);
-+	clk_prepare_enable(rockchip->aclk_perf_pcie);
-+	clk_prepare_enable(rockchip->aclk_pcie);
-+
-+	err = rockchip_pcie_init_port(rockchip);
-+	if (err)
-+		return err;
-+
-+	err = rockchip_cfg_atu(rockchip);
-+	if (err)
-+		return err;
-+
-+	/* Need this to enter L1 again */
-+	rockchip_pcie_update_txcredit_mui(rockchip);
-+	rockchip_pcie_enable_interrupts(rockchip);
-+
-+	return 0;
-+}
-+
- static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pcie *rockchip;
-@@ -1218,6 +1317,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (!rockchip)
- 		return -ENOMEM;
- 
-+	platform_set_drvdata(pdev, rockchip);
-+
- 	rockchip->dev = dev;
- 
- 	err = rockchip_pcie_parse_dt(rockchip);
-@@ -1341,6 +1442,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+static const struct dev_pm_ops rockchip_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
-+				      rockchip_pcie_resume_noirq)
-+};
-+
- static const struct of_device_id rockchip_pcie_of_match[] = {
- 	{ .compatible = "rockchip,rk3399-pcie", },
- 	{}
-@@ -1350,6 +1456,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	.driver = {
- 		.name = "rockchip-pcie",
- 		.of_match_table = rockchip_pcie_of_match,
-+		.pm = &rockchip_pcie_pm_ops,
- 	},
- 	.probe = rockchip_pcie_probe,
- 
 -- 
-1.9.1
+Lin Huang
+
+
