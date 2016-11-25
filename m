@@ -1,77 +1,76 @@
-From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] dt-bindings: document how to setup rockchip timers as clocksource
-Date: Fri, 25 Nov 2016 01:12:16 +0300
-Message-ID: <1480025536-6837-1-git-send-email-al.kochet@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: Re: [PATCH 7/9] clocksource/drivers/rockchip_timer: implement clocksource timer
+Date: Fri, 25 Nov 2016 12:17:53 +0300
+Message-ID: <3FBBE6BD-3090-40AE-A4C7-5035D75A0F4C@gmail.com>
+References: <1479922177-20136-1-git-send-email-al.kochet@gmail.com> <1479922177-20136-7-git-send-email-al.kochet@gmail.com> <FFD6E644-F68B-4880-BC76-88F6063D070E@gmail.com> <1800621.EhepfMxccR@diego>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1800621.EhepfMxccR@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch describes how to setup rockchip timers in device tree
-so they can be used as clocksource.
+Hello Heiko!
 
-I'm going to implement this feature.
+> 24 =D0=BD=D0=BE=D1=8F=D0=B1. 2016 =D0=B3., =D0=B2 15:17, Heiko =
+St=C3=BCbner <heiko@sntech.de> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=
+=D0=B0):
+>=20
+> When touching devicetree-properties, please also adapt the binding =
+document
+> 	Documentation/devicetree/bindings/timer,rockchip,rk-timer.txt
+> in this case and also include the devicetree maintainers.
 
-Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- .../bindings/timer/rockchip,rk-timer.txt           |   35 +++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
+Could you please clarify, i should send whole patch series and include =
+devicetree maintainers
+for whole patch series or i should send devicetree patches separately?
 
-diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-index 7bc9691..15f8fed 100644
---- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
-@@ -16,7 +16,18 @@ Required properties:
- - clock-names : must include the following entries:
-   "timer", "pclk"
- 
--Example:
-+Note:
-+If device tree contain only one timer, than the timer will be intialized
-+as clockevent provider. If device tree contain two timers, than first timer
-+will be initialized as clockevent provider and second one as clocksource.
-+
-+If you want to bind specific timer as clockevent (i.e. one from alive subsystem)
-+and specific timer as clocksource, you can number the timers in "aliases" node.
-+
-+If device tree contain only one timer and the timer is named as timer1 in
-+"aliases" node, then the timer will be initialized as clocksource.
-+
-+Example (clockevent only):
- 	timer: timer@ff810000 {
- 		compatible = "rockchip,rk3288-timer";
- 		reg = <0xff810000 0x20>;
-@@ -24,3 +35,25 @@ Example:
- 		clocks = <&xin24m>, <&cru PCLK_TIMER>;
- 		clock-names = "timer", "pclk";
- 	};
-+
-+Example (clockevent and clocksource with explicit numbering):
-+	aliases {
-+		timer0 = &timer6;
-+		timer1 = &timer5;
-+	};
-+
-+	timer5: timer@20038080 {
-+		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
-+		reg = <0x20038080 0x20>;
-+		interrupts = <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER5>, <&cru PCLK_TIMER0>;
-+		clock-names = "timer", "pclk";
-+	};
-+
-+	timer6: timer@200380A0 {
-+		compatible = ""rockchip,rk3188-timer", rockchip,rk3288-timer";
-+		reg = <0x200380A0 0x20>;
-+		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
-+		clock-names = "timer", "pclk";
-+	};
--- 
-1.7.9.5
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 24 =D0=BD=D0=BE=D1=8F=D0=B1. 2016 =D0=B3., =D0=B2 16:21, Heiko =
+St=C3=BCbner <heiko@sntech.de> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=
+=D0=B0):
+>=20
+> correct, use both but also update the binding, like=20
+> mmc/rockchip-dw-mshc.txt does.
+
+Here devicetree patch for this:
+http://www.spinics.net/lists/devicetree/msg152246.html
+
+
+> 24 =D0=BD=D0=BE=D1=8F=D0=B1. 2016 =D0=B3., =D0=B2 17:32, Heiko =
+St=C3=BCbner <heiko@sntech.de> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=
+=D0=B0):
+>=20
+>> I may suggest such solution here: if I want clocksource, I have to =
+declare
+>> two timer in device tree. First probed timer would be clockevent and =
+second
+>> one would be clocksource. All other timers will be ignored. Is that
+>> solution good?
+>=20
+> yep, sounds good, especially as with your patch 9/9 you already =
+declare these=20
+> necessary timers.
+>=20
+>> If I want one timer and want it be clocksource not clockevent how =
+that
+>> situation should be configured? Device tree not good for this. =
+Kconfig not
+>> good. Pass that configuration on kernel command line?
+>=20
+> simply ignore that case :-)
+
+
+Here devicetree patch for this:
+http://www.spinics.net/lists/devicetree/msg152247.html
+
+And I=E2=80=99ll going to resend new patch series with discussed =
+modifications.
+It will contain only rk_timer and dts modifications.
+I have to do more tests.
+
+Regards,
+Alexander.
