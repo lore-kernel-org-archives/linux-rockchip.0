@@ -1,74 +1,92 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 5/5] thermal: rockchip: handle set_trips without the trip
- points
-Date: Mon, 28 Nov 2016 19:12:04 +0800
-Message-ID: <1480331524-18741-6-git-send-email-wxt@rock-chips.com>
-References: <1480331524-18741-1-git-send-email-wxt@rock-chips.com>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCHv2 00/11] Implement clocksource for rockchip SoC using rockchip timer
+Date: Mon, 28 Nov 2016 17:31:15 +0300
+Message-ID: <1480343486-25539-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1480331524-18741-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In some cases, some sensors didn't need the trip points, the
-set_trips will pass {-INT_MAX, INT_MAX} to trigger tsadc alarm in the end,
-ignore this case and disable the high temperature interrupt.
+Hello,
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
+This patch series contain:
+- devicetree bindings clarification for rockchip timers
+- dts files fixes for rk3228-evb, rk3229-evb and rk3188
+- implementation of clocksource for rockchip SoC
 
-Changes in v3:
-- change the commit.
-- Fixes something as Brian comments on
+The clock supplying the arm-global-timer on the rk3188 is coming from the
+the cpu clock itself and thus changes its rate everytime cpufreq adjusts
+the cpu frequency making this timer unsuitable as a stable clocksource.
+    
+The rk3188, rk3288 and following socs share a separate timer block already
+handled by the rockchip-timer driver. Therefore adapt this driver to also
+be able to act as clocksource on rk3188.
+    
+In order to test clocksource you can run following commands and check
+how much time it take in real. On rk3188 it take about ~45 seconds.
+Such error cannot be fixed using NTP. Haven't test clocksource
+on rk3288 and onwards. Guess they can also have unstable clocksource.
+    
+        cpufreq-set -f 1.6GHZ
+        date; sleep 60; date
 
-Changes in v2:
-- Fixes something as Brian comments on
-  https://patchwork.kernel.org/patch/9440989.
+Regards,
+Alexander.
 
-Changes in v1: None
+This is try 2. Please discard all previous patches:
 
- drivers/thermal/rockchip_thermal.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+devicetree:
+https://patchwork.ozlabs.org/patch/699019/
+https://patchwork.ozlabs.org/patch/699020/
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 660ed3b..56c663c 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -675,7 +675,21 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
- static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
- 				 int chn, void __iomem *regs, int temp)
- {
--	u32 alarm_value, int_en;
-+	u32 alarm_value;
-+	u32 int_en, int_clr;
-+
-+	/*
-+	 * In some cases, some sensors didn't need the trip points, the
-+	 * set_trips will pass {-INT_MAX, INT_MAX} to trigger tsadc alarm
-+	 * in the end, ignore this case and disable the high temperature
-+	 * interrupt.
-+	 */
-+	if (temp == INT_MAX) {
-+		int_clr = readl_relaxed(regs + TSADCV2_INT_EN);
-+		int_clr &= ~TSADCV2_INT_SRC_EN(chn);
-+		writel_relaxed(int_clr, regs + TSADCV2_INT_EN);
-+		return 0;
-+	}
- 
- 	/* Make sure the value is valid */
- 	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+kernel:
+https://patchwork.kernel.org/patch/9443975/
+https://patchwork.kernel.org/patch/9443971/
+https://patchwork.kernel.org/patch/9443959/
+https://patchwork.kernel.org/patch/9443963/
+https://patchwork.kernel.org/patch/9443979/
+https://patchwork.kernel.org/patch/9443989/
+https://patchwork.kernel.org/patch/9443987/
+https://patchwork.kernel.org/patch/9443977/
+https://patchwork.kernel.org/patch/9443991/
+
+Old thread:
+http://lists.infradead.org/pipermail/linux-rockchip/2016-November/013147.html
+
+Alexander Kochetkov (11):
+  dt-bindings: clarify compatible property for rockchip timers
+  ARM: dts: rockchip: update compatible property for rk3228 timer
+  ARM: dts: rockchip: update compatible property for rk3229 timer
+  ARM: dts: rockchip: add timer entries to rk3188 dtsi
+  clocksource/drivers/rockchip_timer: split bc_timer into rk_timer and
+    rk_clock_event_device
+  clocksource/drivers/rockchip_timer: low level routines take rk_timer
+    as parameter
+  clocksource/drivers/rockchip_timer: drop unused rk_base() and
+    rk_ctrl()
+  clocksource/drivers/rockchip_timer: move TIMER_INT_UNMASK out of
+    rk_timer_enable()
+  clocksource/drivers/rockchip_timer: implement loading 64bit value
+    into timer
+  clocksource/drivers/rockchip_timer: implement reading 64bit value
+    from timer
+  clocksource/drivers/rockchip_timer: implement clocksource timer
+
+ .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
+ arch/arm/boot/dts/rk3188.dtsi                      |   16 ++
+ arch/arm/boot/dts/rk3228-evb.dts                   |    4 +
+ arch/arm/boot/dts/rk3229-evb.dts                   |    4 +
+ drivers/clocksource/rockchip_timer.c               |  202 +++++++++++++++-----
+ 5 files changed, 184 insertions(+), 54 deletions(-)
+
 -- 
-2.7.4
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
