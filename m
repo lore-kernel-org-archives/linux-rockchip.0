@@ -1,57 +1,119 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v5 8/8] iommu/rockchip: Enable Rockchip IOMMU on ARM64
-Date: Mon, 28 Nov 2016 16:42:27 -0800
-Message-ID: <20161129004225.GA109697@google.com>
-References: <1466734413-7453-9-git-send-email-zhengsq@rock-chips.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH v3 3/5] thermal: rockchip: fixes invalid temperature case
+Date: Mon, 28 Nov 2016 17:45:54 -0800
+Message-ID: <20161129014553.GA3097@localhost.localdomain>
+References: <1480331524-18741-1-git-send-email-wxt@rock-chips.com>
+ <1480331524-18741-4-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1466734413-7453-9-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1480331524-18741-4-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: rui.zhang@intel.com, heiko@sntech.de, smbarber@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hey Caesar, Brian,
 
-On Fri, Jun 24, 2016 at 10:13:33AM +0800, Shunqian Zheng wrote:
-> From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This patch makes it possible to compile the rockchip-iommu driver on
-> ARM64, so that it can be used with 64-bit SoCs equipped with this type
-> of IOMMU.
-> 
-> Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
->  drivers/iommu/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/Kconfig b/drivers/iommu/Kconfig
-> index ad08603..5572621 100644
-> --- a/drivers/iommu/Kconfig
-> +++ b/drivers/iommu/Kconfig
-> @@ -218,7 +218,7 @@ config OMAP_IOMMU_DEBUG
+On Mon, Nov 28, 2016 at 07:12:02PM +0800, Caesar Wang wrote:
+> The temp_to_code function will return 0 when we set the temperature to a
+> invalid value (e.g. 61C, 62C, 63C....), that's unpractical. This patch
+> will prevent this case happening. That will return the max analog value to
+> indicate the temperature is invalid or over table temperature range.
+
+<cut>
+
 >  
->  config ROCKCHIP_IOMMU
->  	bool "Rockchip IOMMU Support"
-> -	depends on ARM
-> +	depends on ARM || ARM64
->  	depends on ARCH_ROCKCHIP || COMPILE_TEST
->  	select IOMMU_API
->  	select ARM_DMA_USE_IOMMU
+>  	/* Make sure the value is valid */
+>  	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
 
-Whatever happened with the rest of this series? Some of the IOMMU bits
-made it, but the DRM fixes never did, and so this didn't get applied.
-This leaves the whole DRM stack unusable on ARM64 Rockchip systems.
+dummy question here, looking at your tables, if I did not miss
+something, looks like we have an accuracy of 5C steps. Not only, that,
+we also support only multiples of 5C temperatures. If that observation
+is correct, would it make more sense to simply check for this property,
+and min and max temperature check, instead of going through the binary
+search to check for valid temperature? 
 
-The patch context has changed a bit on patch 7 (and maybe 6?), so
-somebody will need to refresh those on the latest upstream.
-
-Brian
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>  	if (alarm_value == table->data_mask)
+> -		return;
+> +		return -ERANGE;
+>  
+>  	writel_relaxed(alarm_value & table->data_mask,
+>  		       regs + TSADCV2_COMP_INT(chn));
+> @@ -667,23 +665,27 @@ static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+>  	int_en = readl_relaxed(regs + TSADCV2_INT_EN);
+>  	int_en |= TSADCV2_INT_SRC_EN(chn);
+>  	writel_relaxed(int_en, regs + TSADCV2_INT_EN);
+> +
+> +	return 0;
+>  }
+>  
+> -static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+> -				  int chn, void __iomem *regs, int temp)
+> +static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+> +				 int chn, void __iomem *regs, int temp)
+>  {
+>  	u32 tshut_value, val;
+>  
+>  	/* Make sure the value is valid */
+>  	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
+>  	if (tshut_value == table->data_mask)
+> -		return;
+> +		return -ERANGE;
+>  
+>  	writel_relaxed(tshut_value, regs + TSADCV2_COMP_SHUT(chn));
+>  
+>  	/* TSHUT will be valid */
+>  	val = readl_relaxed(regs + TSADCV2_AUTO_CON);
+>  	writel_relaxed(val | TSADCV2_AUTO_SRC_EN(chn), regs + TSADCV2_AUTO_CON);
+> +
+> +	return 0;
+>  }
+>  
+>  static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+> @@ -886,10 +888,8 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
+>  	dev_dbg(&thermal->pdev->dev, "%s: sensor %d: low: %d, high %d\n",
+>  		__func__, sensor->id, low, high);
+>  
+> -	tsadc->set_alarm_temp(&tsadc->table,
+> -			      sensor->id, thermal->regs, high);
+> -
+> -	return 0;
+> +	return tsadc->set_alarm_temp(&tsadc->table,
+> +				     sensor->id, thermal->regs, high);
+>  }
+>  
+>  static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
+> @@ -985,8 +985,12 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
+>  	int error;
+>  
+>  	tsadc->set_tshut_mode(id, thermal->regs, thermal->tshut_mode);
+> -	tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
+> +
+> +	error = tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
+>  			      thermal->tshut_temp);
+> +	if (error)
+> +		dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
+> +			__func__, thermal->tshut_temp, error);
+>  
+>  	sensor->thermal = thermal;
+>  	sensor->id = id;
+> @@ -1199,9 +1203,13 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  
+>  		thermal->chip->set_tshut_mode(id, thermal->regs,
+>  					      thermal->tshut_mode);
+> -		thermal->chip->set_tshut_temp(&thermal->chip->table,
+> +
+> +		error = thermal->chip->set_tshut_temp(&thermal->chip->table,
+>  					      id, thermal->regs,
+>  					      thermal->tshut_temp);
+> +		if (error)
+> +			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
+> +				__func__, thermal->tshut_temp, error);
+>  	}
+>  
+>  	thermal->chip->control(thermal->regs, true);
+> -- 
+> 2.7.4
+> 
