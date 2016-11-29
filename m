@@ -1,91 +1,76 @@
 From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v3 4/5] thermal: rockchip: optimize the conversion table
-Date: Mon, 28 Nov 2016 17:48:14 -0800
-Message-ID: <20161129014814.GB3097@localhost.localdomain>
+Subject: Re: [PATCH v3 1/5] thermal: rockchip: improve conversion error
+ messages
+Date: Mon, 28 Nov 2016 17:51:55 -0800
+Message-ID: <20161129015155.GA3329@localhost.localdomain>
 References: <1480331524-18741-1-git-send-email-wxt@rock-chips.com>
- <1480331524-18741-5-git-send-email-wxt@rock-chips.com>
+ <1480331524-18741-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1480331524-18741-5-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1480331524-18741-2-git-send-email-wxt@rock-chips.com>
 Sender: linux-pm-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
 Cc: rui.zhang@intel.com, heiko@sntech.de, smbarber@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 28, 2016 at 07:12:03PM +0800, Caesar Wang wrote:
-> In order to support the valid temperature can conver to analog value.
-> The rockchip thermal driver has not supported the all valid temperature
-> to convert the analog value. (e.g.: 61C, 62C, 63C....)
+Hello,
+
+On Mon, Nov 28, 2016 at 07:12:00PM +0800, Caesar Wang wrote:
+> From: Brian Norris <briannorris@chromium.org>
 > 
-> For example:
-> In some cases, we need adjust the trip point.
-> $cd /sys/class/thermal/thermal_zone*
-> $echo 68000 > trip_point_0_temp
-> That will return the max analogic value indicates the invalid before
-> posting this patch.
+> These error messages don't give much information about what went wrong.
+> It would be nice, for one, to see what invalid temperature was being
+> requested when conversion fails. It's also good to return an error when
+> we can't handle a conversion properly.
 > 
-> So, this patch will optimize the conversion table to support the other
-> cases.
+> While we're at it, fix the grammar too.
 > 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Reviewed-by: Brian Norris <briannorris@chromium.org>
+> 
 > ---
 > 
 > Changes in v3: None
-> Changes in v2:
-> - improve the commit as Brian commnets on https://patchwork.kernel.org/patch/9440985
+> Changes in v2: None
+> Changes in v1:
+> - The original Brian posted on https://patchwork.kernel.org/patch/9437686
+>   Note: it'd probably be even nicer to know which sensor this was, but we've
+>   kinda abstracted that one away by this point...
 > 
-> Changes in v1: None
-> 
->  drivers/thermal/rockchip_thermal.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
+>  drivers/thermal/rockchip_thermal.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index ca1730e..660ed3b 100644
+> index b811b0f..26c247c 100644
 > --- a/drivers/thermal/rockchip_thermal.c
 > +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -401,6 +401,8 @@ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
->  				   int temp)
->  {
->  	int high, low, mid;
-> +	unsigned long num;
-> +	unsigned int denom;
->  	u32 error = table->data_mask;
->  
->  	low = 0;
-> @@ -421,6 +423,27 @@ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
->  		mid = (low + high) / 2;
+> @@ -424,7 +424,8 @@ static u32 rk_tsadcv2_temp_to_code(struct chip_tsadc_table table,
 >  	}
 >  
-> +	/*
-> +	 * The conversion code granularity provided by the table. Let's
-> +	 * assume that the relationship between temperature and
-> +	 * analog value between 2 table entries is linear and interpolate
-> +	 * to produce less granular result.
-> +	 */
-> +	num = abs(table->id[mid].code - table->id[mid + 1].code);
-> +	num *= temp - table->id[mid].temp;
-> +	denom = table->id[mid + 1].temp - table->id[mid].temp;
-> +
-> +	switch (table->mode) {
-> +	case ADC_DECREMENT:
-> +		return table->id[mid].code - (num / denom);
-> +	case ADC_INCREMENT:
-> +		return table->id[mid].code + (num / denom);
-> +	default:
-> +		pr_err("%s: invalid conversion table, mode=%d\n",
-
-Is this really an invalid conversion table, or an invalid conversion mode?
-
-> +		       __func__, table->mode);
-> +		return error;
-> +	}
-> +
 >  exit:
->  	pr_err("%s: invalid temperature, temp=%d error=%d\n",
->  	       __func__, temp, error);
+> -	pr_err("Invalid the conversion, error=%d\n", error);
+> +	pr_err("%s: invalid temperature, temp=%d error=%d\n",
+> +	       __func__, temp, error);
+>  	return error;
+>  }
+>  
+> @@ -475,7 +476,9 @@ static int rk_tsadcv2_code_to_temp(struct chip_tsadc_table table, u32 code,
+>  		}
+>  		break;
+>  	default:
+> -		pr_err("Invalid the conversion table\n");
+> +		pr_err("%s: invalid conversion table, mode=%d\n",
+> +		       __func__, table.mode);
+
+Given that we are improving messages, would it be more informative to
+say that you have an invalid table mode?
+
+> +		return -EINVAL;
+>  	}
+>  
+>  	/*
 > -- 
 > 2.7.4
 > 
