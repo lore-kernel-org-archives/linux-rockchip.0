@@ -1,80 +1,101 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [U-Boot] Rockchip RK3288 u-boot with mainline kernel
-Date: Tue, 29 Nov 2016 11:20:52 +0100
-Message-ID: <1790297.5MBZbjcMZN@diego>
-References: <476576ec2671ff75030249e453491add.squirrel@webmail.efn.org>
- <CAPnjgZ3-ugQ_tmYsvg_cpxwv-aHzcKncn0BXD_R8C=Y7qjySFw@mail.gmail.com>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v3 00/13] Implement clocksource for rockchip SoC using rockchip timer
+Date: Tue, 29 Nov 2016 16:45:05 +0300
+Message-ID: <1480427118-5126-1-git-send-email-al.kochet@gmail.com>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPnjgZ3-ugQ_tmYsvg_cpxwv-aHzcKncn0BXD_R8C=Y7qjySFw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: "eddie.cai" <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rick Bronson <rick-YvnXKLUTzOA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1480343486-25539-1-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rick,
+Hello,
 
-Am Montag, 28. November 2016, 15:09:05 schrieb Simon Glass:
-> + A few rockchip people and linux-rockchip
-> 
-> Hi Rick,
-> 
-> On 25 November 2016 at 11:20, Rick Bronson <rick-YvnXKLUTzOA@public.gmane.org> wrote:
-> > Hi All,
-> > 
-> >   I've got unsupported RK3288 hardware running the latest git u-boot to
-> > 
-> > SPL as explained in
-> > http://git.denx.de/?p=u-boot.git;a=blob;f=doc/README.rockchip.  My goal
-> > is to run the mainline (ie. not Android) Linux kernel on this hardware
-> > 
-> > and wondered:
-> >  - Do I need to get the latest git u-boot to run before I can run the
-> > 
-> > mainline kernel?  Or can I use
-> > github.com/linux-rockchip/u-boot-rockchip.git, which I have running
-> > u-boot fully.
-> 
-> It's up to you - obviously mainline is where the development should
-> be, but there is no requirement that I know of.
+This patch series contain:
+- devicetree bindings clarification for rockchip timers
+- dts files fixes for rk3228-evb, rk3229-evb and rk3188
+- implementation of clocksource for rockchip SoC
 
-correct, the (mainline-)kernel runs just fine on both the vendor-fork of uboot 
-as well as on mainline.
+The clock supplying the arm-global-timer on the rk3188 is coming from the
+the cpu clock itself and thus changes its rate everytime cpufreq adjusts
+the cpu frequency making this timer unsuitable as a stable clocksource.
 
+The rk3188, rk3288 and following socs share a separate timer block already
+handled by the rockchip-timer driver. Therefore adapt this driver to also
+be able to act as clocksource on rk3188.
 
-> Does mainline run on your board?
-> 
-> >  - The device tree seems to be in two places, once via:
-> >         resource_tool --image=resource2.img --pack linux/logo.bmp
-> >         ${DTS}.dtb
-> >   
-> >   that gets put into the resource file and then again at the end of the
-> > 
-> > kernel via CONFIG_ARM_APPENDED_DTB.  Do I need both?  When I do both
-> > I get things like:
->
-> > Unknow param: MACHINE_MODEL:rk30sdk!
-> > Unknow param: MACHINE_ID:007!
+In order to test clocksource you can run following commands and check
+how much time it take in real. On rk3188 it take about ~45 seconds.
+Such error cannot be fixed using NTP. Haven't test clocksource
+on rk3288 and onwards. Guess they can also have unstable clocksource.
 
-ARM_APPEND_DTB is meant for boards where the bootloader cannot load the 
-devicetree (to old or so) and also cannot be reasonably exchanged. So the 
-append-mechanism was invented to allow bundling the devicetree with the actual 
-kernel image, so that to the bootloader it looks like just any other kernel 
-image.
+       cpufreq-set -f 1.6GHZ
+       date; sleep 60; date
 
-So you essentially only need one or the other. Also at least mainline uboot 
-also supports the FIT image type, where you can bundle the devicetree in a 
-more generalized way.
+Regards,
+Alexander.
 
-For your message I would guess the kernel didn't find a usable devicetree 
-somehow and was falling back to ATAGS-based board selection?
+Changes in v3:
+added patches:
+ARM: dts: rockchip: disable arm-global-timer for rk3188
+clocksource/drivers/rockchip_timer: Prevent ftrace recursion
+
+This is try 3. Please discard all v1 patches:
+
+devicetree:
+https://patchwork.ozlabs.org/patch/699019/
+https://patchwork.ozlabs.org/patch/699020/
+
+kernel:
+https://patchwork.kernel.org/patch/9443975/
+https://patchwork.kernel.org/patch/9443971/
+https://patchwork.kernel.org/patch/9443959/
+https://patchwork.kernel.org/patch/9443963/
+https://patchwork.kernel.org/patch/9443979/
+https://patchwork.kernel.org/patch/9443989/
+https://patchwork.kernel.org/patch/9443987/
+https://patchwork.kernel.org/patch/9443977/
+https://patchwork.kernel.org/patch/9443991/
+
+Old thread:
+http://lists.infradead.org/pipermail/linux-rockchip/2016-November/013147.html
+
+Alexander Kochetkov (13):
+  dt-bindings: clarify compatible property for rockchip timers
+  ARM: dts: rockchip: update compatible property for rk3228 timer
+  ARM: dts: rockchip: update compatible property for rk3229 timer
+  ARM: dts: rockchip: add timer entries to rk3188 dtsi
+  ARM: dts: rockchip: disable arm-global-timer for rk3188
+  clocksource/drivers/rockchip_timer: split bc_timer into rk_timer and
+    rk_clock_event_device
+  clocksource/drivers/rockchip_timer: low level routines take rk_timer
+    as parameter
+  clocksource/drivers/rockchip_timer: drop unused rk_base() and
+    rk_ctrl()
+  clocksource/drivers/rockchip_timer: move TIMER_INT_UNMASK out of
+    rk_timer_enable()
+  clocksource/drivers/rockchip_timer: implement loading 64bit value
+    into timer
+  clocksource/drivers/rockchip_timer: implement reading 64bit value
+    from timer
+  clocksource/drivers/rockchip_timer: implement clocksource timer
+  clocksource/drivers/rockchip_timer: Prevent ftrace recursion
+
+ .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
+ arch/arm/boot/dts/rk3188.dtsi                      |   17 ++
+ arch/arm/boot/dts/rk3228-evb.dts                   |    4 +
+ arch/arm/boot/dts/rk3229-evb.dts                   |    4 +
+ drivers/clocksource/rockchip_timer.c               |  207 +++++++++++++++-----
+ 5 files changed, 190 insertions(+), 54 deletions(-)
+
+-- 
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
