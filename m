@@ -1,73 +1,181 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Tue, 29 Nov 2016 13:57:45 -0800
-Message-ID: <20161129215744.GA99997@google.com>
-References: <1480331524-18741-1-git-send-email-wxt@rock-chips.com>
- <1480331524-18741-4-git-send-email-wxt@rock-chips.com>
- <20161129014553.GA3097@localhost.localdomain>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: Rockchip RK3288 u-boot with mainline kernel
+Date: Tue, 29 Nov 2016 23:11:41 +0100
+Message-ID: <1773280.0dvm9XSGYt@diego>
+References: <22a3c520dfce32c8baa59ced883afd53.squirrel@webmail.efn.org>
+ <CAPnjgZ0NOsW1Qm9ho0q=ibagcDq9NVy-C8pfpT5dJTrjJVuLLw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20161129014553.GA3097-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAPnjgZ0NOsW1Qm9ho0q=ibagcDq9NVy-C8pfpT5dJTrjJVuLLw@mail.gmail.com>
+List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>
+Cc: U-Boot Mailing List <u-boot@lists.denx.de>, "eddie.cai" <eddie.cai@rock-chips.com>, Rick Bronson <rick@efn.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eduardo,
-
-I'm not sure I completely understand what you're asking, but I'll see
-what I can answer.
-
-On Mon, Nov 28, 2016 at 05:45:54PM -0800, Eduardo Valentin wrote:
-> On Mon, Nov 28, 2016 at 07:12:02PM +0800, Caesar Wang wrote:
-> > The temp_to_code function will return 0 when we set the temperature to a
-> > invalid value (e.g. 61C, 62C, 63C....), that's unpractical. This patch
-> > will prevent this case happening. That will return the max analog value to
-> > indicate the temperature is invalid or over table temperature range.
+Am Dienstag, 29. November 2016, 14:40:49 schrieb Simon Glass:
+> Hi Rick,
 > 
-> <cut>
+> On 29 November 2016 at 11:22, Rick Bronson <rick@efn.org> wrote:
+> > Hi Heiko and Simon,
+> > 
+> >   Thank you both for your help, I really appreciate it.
+> >   
+> >   No, I do not have the Linux mainline running yet as I was focusing
+> > 
+> > on getting the mainline u-boot running since I saw some references
+> > that implied I may need that to use the mainline Linux.  I did try the
+> > mainline kernel with the vendor-fork u-boot but got nothing pas the
+> > "Loading Linux...." line from u-boot.
+> > 
+> >   I think what I will probably do is take the easy way out and use the
+> > 
+> > vendor-fork u-boot since that boots on this hardware.
+> > 
+> >   But since I've invested some amount of time in the mainline u-boot
+> > 
+> > and it's drinving me mad that I can't seem to figure out what's wrong,
+> > I do have one last question (hopefully).
 > 
-> >  
-> >  	/* Make sure the value is valid */
-> >  	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
+> It would certainly make sense to invest in getting this running if you can.
 > 
-> dummy question here, looking at your tables, if I did not miss
-> something, looks like we have an accuracy of 5C steps. Not only, that,
-> we also support only multiples of 5C temperatures. If that observation
+> >   I've got mainline u-boot getting this far (I added debug to show
+> > 
+> > what GPIO0 and 2 are outputting).
+> > 
+> > --------------------
+> > U-Boot SPL 2016.11-00138-g136179b-dirty (Nov 28 2016 - 13:29:59)
+> > Trying to boot from MMC1
+> > Card did not respond to voltage select! GPIO0=0x0 GPIO2=0x0
+> > ...
+> > --------------------
+> > 
+> >   I've modified rk3288-firefly.dts (the closest thing to hardware I
+> > 
+> > have) to set the eMMC reset line high but as you see above, nothing is
+> > set on any GPIO.  This leads me to believe that I do not understand
+> > how the device tree is loaded/used in SPL.  Can anyone point me to
+> > help on whether I should use u-boot-spl-nodtb or u-boot-spl-dtb (I've
+> > tried both) or how to debug if I am in fact even reading my dtb.
+> 
+> You should be able to use 'gpio status' to see the GPIO state once you
+> get to U-Boot.
+> 
+> But if your board is booting SPL from MMC how can it possibly fail to
+> load U-Boot from MMC? The MMC GPIO must already work for you to get
+> this far. Or are you loading SPL from something other than MMC?
 
-Currently, that's true I think. But patch 4 actually supports doing the
-linear interpolation that is claimed (but not fully implemented) in the
-comments today. So with that patch, we roughly support temperatures in
-between the 5C intervals.
+Or you can try enabling the 
+	CONFIG_ROCKCHIP_SPL_BACK_TO_BROM=y
+option, which will simply let the on-chip rom also load the 2nd stage uboot 
+seemingly using the same method as for the spl.
 
-> is correct, would it make more sense to simply check for this property,
+I'm currently testing Simon's network patches and this option works quite 
+nicely.
 
-I'm not quite sure what you mean by "this property." Do you mean to just
-assume that there will be 5C intervals, and jump ahead in the table
-accordingly? Seems a bit fragile; nothing really guarantees that a
-future ADC supported by this driver won't have 1, 2, 6, or 7C accuracy
-(and therefore a different set of steps).
 
-> and min and max temperature check, instead of going through the binary
-> search to check for valid temperature? 
+Heiko
 
-I was thinking while reviewing that the binary search serves more to
-complicate things than to help -- it's much harder to read (and validate
-that the loop termination logic is correct). And searching through a few
-dozen table entries doesn't really get much benefit from a O(n) ->
-O(log(n)) speed improvement.
-
-Anyway, I'm not sure if you were thinking along the same lines as me.
-
-Brian
+> You want u-boot-spl.bin (which includes the device tree).
+> 
+> >   Thanks again,
+> >   
+> >   Rick
+> > 
+> > PS.  My Makefile is here if you are so inclined:
+> > http://members.efn.org/~rick/pub/Makefile  See the targets u-boot-denx
+> > and uboot_new_flash to see what I've tried.
+> 
+> You could push your tree somewhere or a patch showing what changes you
+> have made.
+> 
+> Regards,
+> Simon
+> 
+> >> From heiko@sntech.de Tue Nov 29 08:45:02 2016
+> >> To: u-boot@lists.denx.de
+> >> Cc: Simon Glass <sjg@chromium.org>, Rick Bronson <rick@efn.org>,
+> > 
+> > "eddie.cai" <eddie.cai@rock-chips.com>,
+> > linux-rockchip@lists.infradead.org
+> > 
+> >> Subject: Re: [U-Boot] Rockchip RK3288 u-boot with mainline kernel
+> >> Date: Tue, 29 Nov 2016 11:20:52 +0100
+> >> 
+> >> Hi Rick,
+> >> 
+> >> Am Montag, 28. November 2016, 15:09:05 schrieb Simon Glass:
+> >> > + A few rockchip people and linux-rockchip
+> >> > 
+> >> > Hi Rick,
+> >> > 
+> >> > On 25 November 2016 at 11:20, Rick Bronson <rick@efn.org> wrote:
+> >> > > Hi All,
+> >> > > 
+> >> > >   I've got unsupported RK3288 hardware running the latest git u-boot
+> >> > >   to
+> >> > > 
+> >> > > SPL as explained in
+> >> > > http://git.denx.de/?p=u-boot.git;a=blob;f=doc/README.rockchip.  My
+> >> > > goal
+> >> > > is to run the mainline (ie. not Android) Linux kernel on this
+> >> > > hardware
+> >> > > 
+> >> > > and wondered:
+> >> > >  - Do I need to get the latest git u-boot to run before I can run the
+> >> > > 
+> >> > > mainline kernel?  Or can I use
+> >> > > github.com/linux-rockchip/u-boot-rockchip.git, which I have running
+> >> > > u-boot fully.
+> >> > 
+> >> > It's up to you - obviously mainline is where the development should
+> >> > be, but there is no requirement that I know of.
+> >> 
+> >> correct, the (mainline-)kernel runs just fine on both the vendor-fork of
+> > 
+> > uboot
+> > 
+> >> as well as on mainline.
+> >> 
+> >> > Does mainline run on your board?
+> >> > 
+> >> > >  - The device tree seems to be in two places, once via:
+> >> > >         resource_tool --image=resource2.img --pack linux/logo.bmp
+> >> > >         ${DTS}.dtb
+> >> > >   
+> >> > >   that gets put into the resource file and then again at the end of
+> >> > >   the
+> >> > > 
+> >> > > kernel via CONFIG_ARM_APPENDED_DTB.  Do I need both?  When I do both
+> >> > > I get things like:
+> >> > > 
+> >> > > Unknow param: MACHINE_MODEL:rk30sdk!
+> >> > > Unknow param: MACHINE_ID:007!
+> >> 
+> >> ARM_APPEND_DTB is meant for boards where the bootloader cannot load the
+> >> devicetree (to old or so) and also cannot be reasonably exchanged. So the
+> >> append-mechanism was invented to allow bundling the devicetree with the
+> > 
+> > actual
+> > 
+> >> kernel image, so that to the bootloader it looks like just any other
+> >> kernel
+> >> image.
+> >> 
+> >> So you essentially only need one or the other. Also at least mainline
+> >> uboot
+> >> also supports the FIT image type, where you can bundle the devicetree in
+> >> a
+> >> more generalized way.
+> >> 
+> >> For your message I would guess the kernel didn't find a usable devicetree
+> >> somehow and was falling back to ATAGS-based board selection?
