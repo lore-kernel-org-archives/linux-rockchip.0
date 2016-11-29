@@ -1,77 +1,131 @@
-From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH 2/2] PCI: rockchip: Add quirk to disable RC's ASPM
- L0s
-Date: Tue, 29 Nov 2016 11:25:19 -0600
-Message-ID: <20161129172519.GA17112@bhelgaas-glaptop.roam.corp.google.com>
-References: <1479096666-112668-1-git-send-email-shawn.lin@rock-chips.com>
- <1479096666-112668-2-git-send-email-shawn.lin@rock-chips.com>
- <CAL_JsqKkK15Jb3tWh1Mw7RU6d8=6RYMjSEs-c4EQySaUAwnFUA@mail.gmail.com>
+From: "Rick Bronson" <rick@efn.org>
+Subject: Re: Rockchip RK3288 u-boot with mainline kernel
+Date: Tue, 29 Nov 2016 10:22:20 -0800
+Message-ID: <22a3c520dfce32c8baa59ced883afd53.squirrel@webmail.efn.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqKkK15Jb3tWh1Mw7RU6d8=6RYMjSEs-c4EQySaUAwnFUA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, "eddie.cai" <eddie.cai@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 29, 2016 at 09:34:09AM -0600, Rob Herring wrote:
-> On Sun, Nov 13, 2016 at 10:11 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> > Rockchip's RC outputs 100MHz reference clock but there are
-> > two methods for PHY to generate it.
-> >
-> > (1)One of them is to use system PLL to generate 100MHz clock and
-> > the PHY will relock it and filter signal noise then outputs the
-> > reference clock.
-> >
-> > (2)Another way is to share Soc's 24MHZ crystal oscillator with
-> > PHY and force PHY's DLL to generate 100MHz internally.
-> >
-> > When using case(2), the exit from L0s doesn't work fine occasionally
-> > due to the broken design of RC receiver's logical circuit. So even if
-> > we use extended-synch, it still fails for PHY to relock the bits from
-> > FTS sometimes. This will hang the system.
-> >
-> > Maybe we could argue that why not use case(1) to avoid it? The reason
-> > is that as we could see the reference clock is derived from system PLL
-> > and the path from it to PHY isn't so clean which means there are some
-> > noise introduced by power-domain and other buses can't be filterd out
-> > by PHY and we could see noise from the frequency spectrum by oscilloscope.
-> > This makes the TX compatibility test a little difficult to pass the spec.
-> > So case(1) and case(2) are both used indeed now. If using case(2), we
-> > should disable RC's L0s support, and that is why we need this property to
-> > indicate this quirk.
-> >
-> > Also after checking quirk.c, I noticed there is already a quirk for
-> > disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
-> > shouldn't do that as mentioned above that case(1) could still works fine
-> > with L0s.
-> >
-> > Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >
-> > ---
-> >
-> >  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
-> >  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
-> >  2 files changed, 11 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> > index ba67b39..cfa44a7 100644
-> > --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> > +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> > @@ -42,6 +42,8 @@ Required properties:
-> >  Optional Property:
-> >  - ep-gpios: contain the entry for pre-reset gpio
-> >  - num-lanes: number of lanes to use
-> > +- quirk,aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
-> 
-> quirk is not a vendor. Drop it.
+Hi Heiko and Simon,
 
-I dropped this patch from pci/host-rockchip for now.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+  Thank you both for your help, I really appreciate it.
+
+  No, I do not have the Linux mainline running yet as I was focusing
+on getting the mainline u-boot running since I saw some references
+that implied I may need that to use the mainline Linux.  I did try the
+mainline kernel with the vendor-fork u-boot but got nothing pas the
+"Loading Linux...." line from u-boot.
+
+  I think what I will probably do is take the easy way out and use the
+vendor-fork u-boot since that boots on this hardware.
+
+  But since I've invested some amount of time in the mainline u-boot
+and it's drinving me mad that I can't seem to figure out what's wrong,
+I do have one last question (hopefully).
+
+  I've got mainline u-boot getting this far (I added debug to show
+what GPIO0 and 2 are outputting).
+
+--------------------
+U-Boot SPL 2016.11-00138-g136179b-dirty (Nov 28 2016 - 13:29:59)
+Trying to boot from MMC1
+Card did not respond to voltage select! GPIO0=0x0 GPIO2=0x0
+...
+--------------------
+
+  I've modified rk3288-firefly.dts (the closest thing to hardware I
+have) to set the eMMC reset line high but as you see above, nothing is
+set on any GPIO.  This leads me to believe that I do not understand
+how the device tree is loaded/used in SPL.  Can anyone point me to
+help on whether I should use u-boot-spl-nodtb or u-boot-spl-dtb (I've
+tried both) or how to debug if I am in fact even reading my dtb.
+
+  Thanks again,
+
+  Rick
+
+PS.  My Makefile is here if you are so inclined:
+http://members.efn.org/~rick/pub/Makefile  See the targets u-boot-denx
+and uboot_new_flash to see what I've tried.
+>
+> From heiko@sntech.de Tue Nov 29 08:45:02 2016
+> To: u-boot@lists.denx.de
+> Cc: Simon Glass <sjg@chromium.org>, Rick Bronson <rick@efn.org>,
+"eddie.cai" <eddie.cai@rock-chips.com>,
+linux-rockchip@lists.infradead.org
+> Subject: Re: [U-Boot] Rockchip RK3288 u-boot with mainline kernel
+> Date: Tue, 29 Nov 2016 11:20:52 +0100
+>
+> Hi Rick,
+>
+> Am Montag, 28. November 2016, 15:09:05 schrieb Simon Glass:
+> > + A few rockchip people and linux-rockchip
+> >
+> > Hi Rick,
+> >
+> > On 25 November 2016 at 11:20, Rick Bronson <rick@efn.org> wrote:
+> > > Hi All,
+> > >
+> > >   I've got unsupported RK3288 hardware running the latest git u-boot to
+> > >
+> > > SPL as explained in
+> > > http://git.denx.de/?p=u-boot.git;a=blob;f=doc/README.rockchip.  My goal
+> > > is to run the mainline (ie. not Android) Linux kernel on this hardware
+> > >
+> > > and wondered:
+> > >  - Do I need to get the latest git u-boot to run before I can run the
+> > >
+> > > mainline kernel?  Or can I use
+> > > github.com/linux-rockchip/u-boot-rockchip.git, which I have running
+> > > u-boot fully.
+> >
+> > It's up to you - obviously mainline is where the development should
+> > be, but there is no requirement that I know of.
+>
+> correct, the (mainline-)kernel runs just fine on both the vendor-fork of
+uboot
+> as well as on mainline.
+>
+>
+> > Does mainline run on your board?
+> >
+> > >  - The device tree seems to be in two places, once via:
+> > >         resource_tool --image=resource2.img --pack linux/logo.bmp
+> > >         ${DTS}.dtb
+> > >
+> > >   that gets put into the resource file and then again at the end of the
+> > >
+> > > kernel via CONFIG_ARM_APPENDED_DTB.  Do I need both?  When I do both
+> > > I get things like:
+> >
+> > > Unknow param: MACHINE_MODEL:rk30sdk!
+> > > Unknow param: MACHINE_ID:007!
+>
+> ARM_APPEND_DTB is meant for boards where the bootloader cannot load the
+> devicetree (to old or so) and also cannot be reasonably exchanged. So the
+> append-mechanism was invented to allow bundling the devicetree with the
+actual
+> kernel image, so that to the bootloader it looks like just any other kernel
+> image.
+>
+> So you essentially only need one or the other. Also at least mainline uboot
+> also supports the FIT image type, where you can bundle the devicetree in a
+> more generalized way.
+>
+> For your message I would guess the kernel didn't find a usable devicetree
+> somehow and was falling back to ATAGS-based board selection?
+>
+>
