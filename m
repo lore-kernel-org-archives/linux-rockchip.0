@@ -1,86 +1,84 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RESEND PATCH 2/2] PCI: rockchip: Add quirk to disable RC's ASPM
- L0s
-Date: Wed, 30 Nov 2016 08:41:45 +0800
-Message-ID: <56e13221-9889-c373-4dc5-748c6601aae7@rock-chips.com>
-References: <1479096666-112668-1-git-send-email-shawn.lin@rock-chips.com>
- <1479096666-112668-2-git-send-email-shawn.lin@rock-chips.com>
- <CAL_JsqKkK15Jb3tWh1Mw7RU6d8=6RYMjSEs-c4EQySaUAwnFUA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] mtd: spi-nor: Bindings for Rockchip serial flash
+ controller
+Date: Wed, 30 Nov 2016 08:55:23 +0800
+Message-ID: <a5f13048-fbfa-7988-659a-0223b767ddf3@rock-chips.com>
+References: <1479437945-27918-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479437945-27918-2-git-send-email-shawn.lin@rock-chips.com>
+ <7fd2cdc0-2103-d254-c7b2-d2552a32a738@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAL_JsqKkK15Jb3tWh1Mw7RU6d8=6RYMjSEs-c4EQySaUAwnFUA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <7fd2cdc0-2103-d254-c7b2-d2552a32a738-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
-
-On 2016/11/29 23:34, Rob Herring wrote:
-> On Sun, Nov 13, 2016 at 10:11 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Rockchip's RC outputs 100MHz reference clock but there are
->> two methods for PHY to generate it.
+On 2016/11/25 21:30, Marek Vasut wrote:
+> On 11/18/2016 03:59 AM, Shawn Lin wrote:
+>> Add binding document for the Rockchip serial flash controller.
 >>
->> (1)One of them is to use system PLL to generate 100MHz clock and
->> the PHY will relock it and filter signal noise then outputs the
->> reference clock.
->>
->> (2)Another way is to share Soc's 24MHZ crystal oscillator with
->> PHY and force PHY's DLL to generate 100MHz internally.
->>
->> When using case(2), the exit from L0s doesn't work fine occasionally
->> due to the broken design of RC receiver's logical circuit. So even if
->> we use extended-synch, it still fails for PHY to relock the bits from
->> FTS sometimes. This will hang the system.
->>
->> Maybe we could argue that why not use case(1) to avoid it? The reason
->> is that as we could see the reference clock is derived from system PLL
->> and the path from it to PHY isn't so clean which means there are some
->> noise introduced by power-domain and other buses can't be filterd out
->> by PHY and we could see noise from the frequency spectrum by oscilloscope.
->> This makes the TX compatibility test a little difficult to pass the spec.
->> So case(1) and case(2) are both used indeed now. If using case(2), we
->> should disable RC's L0s support, and that is why we need this property to
->> indicate this quirk.
->>
->> Also after checking quirk.c, I noticed there is already a quirk for
->> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
->> shouldn't do that as mentioned above that case(1) could still works fine
->> with L0s.
->>
->> Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 >> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
+>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 >> ---
 >>
->>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
->>  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
->>  2 files changed, 11 insertions(+)
+>> Changes in v2: None
 >>
->> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> index ba67b39..cfa44a7 100644
->> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> @@ -42,6 +42,8 @@ Required properties:
->>  Optional Property:
->>  - ep-gpios: contain the entry for pre-reset gpio
->>  - num-lanes: number of lanes to use
->> +- quirk,aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
+>>  .../devicetree/bindings/mtd/rockchip-sfc.txt       | 31 ++++++++++++++++++++++
+>>  1 file changed, 31 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>> new file mode 100644
+>> index 0000000..28430ce
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>> @@ -0,0 +1,31 @@
+>> +Rockchip Serial Flash Controller
+>> +
+>> +Required properties:
+>> +- compatible : Should be
+>> +		"rockchip,rk1108-sfc", "rockchip,sfc" for ROCKCHIP RK1108.
+>> +- address-cells : Should be 1.
+>> +- size-cells : Should be 0.
 >
-> quirk is not a vendor. Drop it.
+> Shouldn't these two props have a # prefix ? I'm not sure they should
+> even be part of this binding document at all.
+>
+>> +- clocks: Must contain two entries for each entry in clock-names.
+>> +- clock-names: Shall be "sfc" for the transfer-clock, and "hsfc" for
+>> +		the peripheral clock.
+>> +- interrupts : Should contain the interrupt for the device.
+>> +- reg: Physical base address of the controller and length of memory mapped.
+>> +
+>> +Optional properties:
+>> +- rockchip,sfc-no-dma: Indicate the controller doesn't support dma transfer.
+>
+> DMA should be in capital letters.
 
-I guess you want me to drop the "quirk" prefix and just use
-aspm-no-l0s instaed?
+Both of DMA or dma could be found by grepping the
+Documentation/devicetree/bindings/, so I think it
+isn't a big deal for this. :)
 
 >
->> +       using 24MHz OSC for RC's PHY.
->>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
->>  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
->>  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
->
+>> +Example:
+>> +nor_flash: sfc@301c0000 {
+>> +	compatible = "rockchip,rk1108-sfc", "rockchip,sfc";
+>> +	#address-cells = <1>;
+>> +	#size-cells = <0>;
+>> +	clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+>> +	clock-names = "sfc", "hsfc";
+>> +	interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+>> +	reg = <0x301c0000 0x1000>;
+>> +	spi-nor@0 {
+>> +		compatible = "jedec,spi-nor";
+>> +		spi-max-frequency = <12000000>;
+>> +		reg = <0>;
+>> +	};
+>> +};
+>>
 >
 >
 
