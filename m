@@ -1,32 +1,82 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v3 4/5] thermal: rockchip: optimize the conversion table
-Date: Tue, 29 Nov 2016 22:29:11 -0800
-Message-ID: <20161130062911.GB28498@localhost.localdomain>
-References: <1480331524-18741-1-git-send-email-wxt@rock-chips.com>
- <1480331524-18741-5-git-send-email-wxt@rock-chips.com>
+From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] mtd: spi-nor: Bindings for Rockchip serial flash
+ controller
+Date: Wed, 30 Nov 2016 04:18:39 +0100
+Message-ID: <492f9988-816b-f857-3b3d-957479501ed5@gmail.com>
+References: <1479437945-27918-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479437945-27918-2-git-send-email-shawn.lin@rock-chips.com>
+ <7fd2cdc0-2103-d254-c7b2-d2552a32a738@gmail.com>
+ <a5f13048-fbfa-7988-659a-0223b767ddf3@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1480331524-18741-5-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: rui.zhang@intel.com, heiko@sntech.de, smbarber@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <a5f13048-fbfa-7988-659a-0223b767ddf3-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hey,
+On 11/30/2016 01:55 AM, Shawn Lin wrote:
+> On 2016/11/25 21:30, Marek Vasut wrote:
+>> On 11/18/2016 03:59 AM, Shawn Lin wrote:
+>>> Add binding document for the Rockchip serial flash controller.
+>>>
+>>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>>> ---
+>>>
+>>> Changes in v2: None
+>>>
+>>>  .../devicetree/bindings/mtd/rockchip-sfc.txt       | 31
+>>> ++++++++++++++++++++++
+>>>  1 file changed, 31 insertions(+)
+>>>  create mode 100644
+>>> Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>>> b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>>> new file mode 100644
+>>> index 0000000..28430ce
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+>>> @@ -0,0 +1,31 @@
+>>> +Rockchip Serial Flash Controller
+>>> +
+>>> +Required properties:
+>>> +- compatible : Should be
+>>> +        "rockchip,rk1108-sfc", "rockchip,sfc" for ROCKCHIP RK1108.
+>>> +- address-cells : Should be 1.
+>>> +- size-cells : Should be 0.
+>>
+>> Shouldn't these two props have a # prefix ? I'm not sure they should
+>> even be part of this binding document at all.
+>>
+>>> +- clocks: Must contain two entries for each entry in clock-names.
+>>> +- clock-names: Shall be "sfc" for the transfer-clock, and "hsfc" for
+>>> +        the peripheral clock.
+>>> +- interrupts : Should contain the interrupt for the device.
+>>> +- reg: Physical base address of the controller and length of memory
+>>> mapped.
+>>> +
+>>> +Optional properties:
+>>> +- rockchip,sfc-no-dma: Indicate the controller doesn't support dma
+>>> transfer.
+>>
+>> DMA should be in capital letters.
+> 
+> Both of DMA or dma could be found by grepping the
+> Documentation/devicetree/bindings/, so I think it
+> isn't a big deal for this. :)
 
-On Mon, Nov 28, 2016 at 07:12:03PM +0800, Caesar Wang wrote:
-
-<cut>
-
-> +	num = abs(table->id[mid].code - table->id[mid + 1].code);
-> +	num *= temp - table->id[mid].temp;
-> +	denom = table->id[mid + 1].temp - table->id[mid].temp;
+You can find a lot of spelling mistakes throughout the kernel, which
+doesn't make them right.
 
 
-isn't the above 'mid + 1' off-by-one when mid ends being == table.length - 1?
-
-You would be accessing table->id[table.length], which is wrong memory
-access, no?
-
+-- 
+Best regards,
+Marek Vasut
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
