@@ -1,100 +1,63 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/bridge: analogix: Don't return -EINVAL when panel not
- support PSR in PSR functions
-Date: Fri, 2 Dec 2016 11:03:09 -0500
-Message-ID: <CAOw6vbJTRLu6mTWXWNBmhhgxmkK-szgnUY_bZ+es5PKnjetiXw@mail.gmail.com>
-References: <1480645942-29912-1-git-send-email-wzz@rock-chips.com> <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 1/2] devicetree: i2c-hid: Add regulator support
+Date: Fri,  2 Dec 2016 14:18:59 -0800
+Message-ID: <1480717140-14558-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>
-Cc: zain wang <wzz@rock-chips.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Benjamin Tissoires <benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 1, 2016 at 10:54 PM, Archit Taneja <architt@codeaurora.org> wrote:
-> Hi,
->
-> On 12/02/2016 08:02 AM, zain wang wrote:
->>
->> We will ignored PSR setting if panel not support it. So, in this case, we
->> should
->> return from analogix_dp_enable/disable_psr() without any error code.
->> Let's retrun 0 instead of -EINVAL when panel not support PSR in
->> analogix_dp_enable/disable_psr().
->>
->> Signed-off-by: zain wang <wzz@rock-chips.com>
->> ---
->>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++++--
->>  1 file changed, 4 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 6e0447f..0cb3695 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -112,7 +112,7 @@ int analogix_dp_enable_psr(struct device *dev)
->>         struct edp_vsc_psr psr_vsc;
->>
->>         if (!dp->psr_support)
->> -               return -EINVAL;
->> +               return 0;
->
->
-> Looking at the rockchip analogix dp code, in analogix_dp_psr_set, the worker
-> that calls
-> analogix_dp_enable/disable_psr isn't even if psr isn't enabled. So, the
-> bridge funcs
-> shouldn't be called in the first place. I think the error handling is fine
-> to have
-> here.
->
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Hi Archit,
+Document a "vdd-supply" and an initialization delay. Can be used for
+powering on/off a HID.
 
-This was my first impression, too, and the complexity of the various
-psr abstraction layers don't help :)
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+v2:
+ * add compatible property for wacom, per Rob's request
+ * name the regulator property specifically (VDD)
 
-However, this code path will be hit if the source supports psr, but
-the sink doesn't. The rockchip_drm_psr code doesn't know if the sink
-supports psr, so it will end up calling this.
+v3:
+ * remove wacom property, per Benjamin's request
+ * add delay property
 
-Sean
+v4: no change
+---
+ Documentation/devicetree/bindings/input/hid-over-i2c.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-
->>
->>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
->>         memset(&psr_vsc, 0, sizeof(psr_vsc));
->> @@ -135,7 +135,7 @@ int analogix_dp_disable_psr(struct device *dev)
->>         struct edp_vsc_psr psr_vsc;
->>
->>         if (!dp->psr_support)
->> -               return -EINVAL;
->> +               return 0;
->>
->>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
->>         memset(&psr_vsc, 0, sizeof(psr_vsc));
->> @@ -878,6 +878,8 @@ static void analogix_dp_commit(struct
->> analogix_dp_device *dp)
->>         dp->psr_support = analogix_dp_detect_sink_psr(dp);
->>         if (dp->psr_support)
->>                 analogix_dp_enable_sink_psr(dp);
->> +       else
->> +               dev_warn(dp->dev, "Sink not support PSR\n");
->
->
-> This doesn't seem beneficial either. There seems to be a debug
-> print already in analogix_dp_detect_sink_psr which reports PSR
-> related info.
->
-> Archit
->
->>  }
->>
->>  /*
->>
->
-> --
-> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-> a Linux Foundation Collaborative Project
+diff --git a/Documentation/devicetree/bindings/input/hid-over-i2c.txt b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
+index 488edcb264c4..1ea290167652 100644
+--- a/Documentation/devicetree/bindings/input/hid-over-i2c.txt
++++ b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
+@@ -17,6 +17,11 @@ Required properties:
+ - interrupt-parent: the phandle for the interrupt controller
+ - interrupts: interrupt line
+ 
++Optional properties:
++- vdd-supply: phandle of the regulator that provides the supply voltage.
++- init-delay-ms: time required by the device after power-on before it is ready
++  for communication.
++
+ Example:
+ 
+ 	i2c-hid-dev@2c {
+-- 
+2.8.0.rc3.226.g39d4020
