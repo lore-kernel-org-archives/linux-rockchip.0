@@ -1,99 +1,64 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] HID: i2c-hid: support regulator power on/off
-Date: Thu, 1 Dec 2016 18:43:00 -0800
-Message-ID: <20161202024259.GA39759@google.com>
-References: <1480638670-111492-1-git-send-email-briannorris@chromium.org>
- <1480638670-111492-2-git-send-email-briannorris@chromium.org>
- <20161202003737.GA24901@dtor-ws>
- <20161202004214.GA112550@google.com>
- <20161202011615.GB24901@dtor-ws>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH] drm/bridge: analogix: Don't return -EINVAL when panel not
+ support PSR in PSR functions
+Date: Fri, 2 Dec 2016 09:24:11 +0530
+Message-ID: <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org>
+References: <1480645942-29912-1-git-send-email-wzz@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20161202011615.GB24901@dtor-ws>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Benjamin Tissoires <benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1480645942-29912-1-git-send-email-wzz@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: zain wang <wzz@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Thierry Reding <treding@nvidia.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 01, 2016 at 05:16:15PM -0800, Dmitry Torokhov wrote:
-> On Thu, Dec 01, 2016 at 04:42:15PM -0800, Brian Norris wrote:
-> > On Thu, Dec 01, 2016 at 04:37:37PM -0800, Dmitry Torokhov wrote:
-> > > On Thu, Dec 01, 2016 at 04:31:10PM -0800, Brian Norris wrote:
-> > > > On some boards, we need to enable a regulator before using the HID, and
-> > > > it's also nice to save power in suspend by disabling it. Support an
-> > > > optional "vdd-supply" and a companion initialization delay.
-> > > > 
-> > > > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > > > Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > > > Cc: Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> > > > Cc: linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > > > ---
-> > > > v2:
-> > > >  * support compatible property for wacom, with specific "vdd-supply" name
-> > > >  * support the 100ms delay needed for this digitizer
-> > > >  * target regulator support only at specific device
-> > > > 
-> > > > v3:
-> > > >  * drop Wacom specifics and allow this to be used generically
-> > > >  * add "init-delay-ms" property support
-> > > > 
-> > > >  drivers/hid/i2c-hid/i2c-hid.c | 48 ++++++++++++++++++++++++++++++++++++++++++-
-> > > >  include/linux/i2c/i2c-hid.h   |  6 ++++++
-> > > >  2 files changed, 53 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/hid/i2c-hid/i2c-hid.c b/drivers/hid/i2c-hid/i2c-hid.c
-> > > > index b3ec4f2de875..4cb523133d13 100644
-> > > > --- a/drivers/hid/i2c-hid/i2c-hid.c
-> > > > +++ b/drivers/hid/i2c-hid/i2c-hid.c
-
-...
-
-> > > > @@ -937,6 +939,22 @@ static int i2c_hid_of_probe(struct i2c_client *client,
-> > > >  	}
-> > > >  	pdata->hid_descriptor_address = val;
-> > > >  
-> > > > +	ret = of_property_read_u32(dev->of_node, "init-delay-ms", &val);
-> > > > +	if (!ret)
-> > > > +		pdata->init_delay_ms = ret;
-> > > > +
-> > > > +	pdata->supply = devm_regulator_get_optional(dev, "vdd");
-> > > 
-> > > Make it devm_regulator_get(), it's cleaner (you'll get a dummy regulator
-> > > that you can enable/disbale and not check if it is null or not).
-> > > 
-> > > 	pdata->supply = devm_regulator_get_optional(dev, "vdd");
-> > > 	if (IS_ERR(pdata->supply)) {
-> > > 		ret = PTR_ERR(pdata->supply);
-> > > 		if (ret != -EPROBE_DEFER)
-> > > 			dev_err(...);
-> > > 		return ret;
-> > > 	}
-> > 
-> > I had it as devm_regulator_get() in v1, but at that time, I was faking
-> > the firmware init delay using a regulator property. Now that I want to
-> > delay in this driver after enabling the regulator, I'd like to know the
-> > difference between a dummy and a real regulator. There's no need to wait
-> > after messing with the dummy regulator.
-> 
-> If there is no regulator in ACPI/DT there would not be "init-delay-ms"
-> property either.
-
-I suppose that's a fair assumption... the difference being that you
-assumed it, and I enforced it :)
-
-Anyway, I can respin without the _optional(). I'll wait at least a day
-or so, as the DT binding could use some review (it's the more
-controversial piece).
-
-Brian
+SGksCgpPbiAxMi8wMi8yMDE2IDA4OjAyIEFNLCB6YWluIHdhbmcgd3JvdGU6Cj4gV2Ugd2lsbCBp
+Z25vcmVkIFBTUiBzZXR0aW5nIGlmIHBhbmVsIG5vdCBzdXBwb3J0IGl0LiBTbywgaW4gdGhpcyBj
+YXNlLCB3ZSBzaG91bGQKPiByZXR1cm4gZnJvbSBhbmFsb2dpeF9kcF9lbmFibGUvZGlzYWJsZV9w
+c3IoKSB3aXRob3V0IGFueSBlcnJvciBjb2RlLgo+IExldCdzIHJldHJ1biAwIGluc3RlYWQgb2Yg
+LUVJTlZBTCB3aGVuIHBhbmVsIG5vdCBzdXBwb3J0IFBTUiBpbgo+IGFuYWxvZ2l4X2RwX2VuYWJs
+ZS9kaXNhYmxlX3BzcigpLgo+Cj4gU2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1j
+aGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
+aXhfZHBfY29yZS5jIHwgNiArKysrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygr
+KSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gaW5kZXggNmUwNDQ3Zi4uMGNiMzY5NSAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
+ZS5jCj4gQEAgLTExMiw3ICsxMTIsNyBAQCBpbnQgYW5hbG9naXhfZHBfZW5hYmxlX3BzcihzdHJ1
+Y3QgZGV2aWNlICpkZXYpCj4gIAlzdHJ1Y3QgZWRwX3ZzY19wc3IgcHNyX3ZzYzsKPgo+ICAJaWYg
+KCFkcC0+cHNyX3N1cHBvcnQpCj4gLQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJcmV0dXJuIDA7CgpM
+b29raW5nIGF0IHRoZSByb2NrY2hpcCBhbmFsb2dpeCBkcCBjb2RlLCBpbiBhbmFsb2dpeF9kcF9w
+c3Jfc2V0LCB0aGUgd29ya2VyIHRoYXQgY2FsbHMKYW5hbG9naXhfZHBfZW5hYmxlL2Rpc2FibGVf
+cHNyIGlzbid0IGV2ZW4gaWYgcHNyIGlzbid0IGVuYWJsZWQuIFNvLCB0aGUgYnJpZGdlIGZ1bmNz
+CnNob3VsZG4ndCBiZSBjYWxsZWQgaW4gdGhlIGZpcnN0IHBsYWNlLiBJIHRoaW5rIHRoZSBlcnJv
+ciBoYW5kbGluZyBpcyBmaW5lIHRvIGhhdmUKaGVyZS4KCj4KPiAgCS8qIFByZXBhcmUgVlNDIHBh
+Y2tldCBhcyBwZXIgRURQIDEuNCBzcGVjLCBUYWJsZSA2LjkgKi8KPiAgCW1lbXNldCgmcHNyX3Zz
+YywgMCwgc2l6ZW9mKHBzcl92c2MpKTsKPiBAQCAtMTM1LDcgKzEzNSw3IEBAIGludCBhbmFsb2dp
+eF9kcF9kaXNhYmxlX3BzcihzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIAlzdHJ1Y3QgZWRwX3ZzY19w
+c3IgcHNyX3ZzYzsKPgo+ICAJaWYgKCFkcC0+cHNyX3N1cHBvcnQpCj4gLQkJcmV0dXJuIC1FSU5W
+QUw7Cj4gKwkJcmV0dXJuIDA7Cj4KPiAgCS8qIFByZXBhcmUgVlNDIHBhY2tldCBhcyBwZXIgRURQ
+IDEuNCBzcGVjLCBUYWJsZSA2LjkgKi8KPiAgCW1lbXNldCgmcHNyX3ZzYywgMCwgc2l6ZW9mKHBz
+cl92c2MpKTsKPiBAQCAtODc4LDYgKzg3OCw4IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2Nv
+bW1pdChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPiAgCWRwLT5wc3Jfc3VwcG9ydCA9
+IGFuYWxvZ2l4X2RwX2RldGVjdF9zaW5rX3BzcihkcCk7Cj4gIAlpZiAoZHAtPnBzcl9zdXBwb3J0
+KQo+ICAJCWFuYWxvZ2l4X2RwX2VuYWJsZV9zaW5rX3BzcihkcCk7Cj4gKwllbHNlCj4gKwkJZGV2
+X3dhcm4oZHAtPmRldiwgIlNpbmsgbm90IHN1cHBvcnQgUFNSXG4iKTsKClRoaXMgZG9lc24ndCBz
+ZWVtIGJlbmVmaWNpYWwgZWl0aGVyLiBUaGVyZSBzZWVtcyB0byBiZSBhIGRlYnVnCnByaW50IGFs
+cmVhZHkgaW4gYW5hbG9naXhfZHBfZGV0ZWN0X3NpbmtfcHNyIHdoaWNoIHJlcG9ydHMgUFNSCnJl
+bGF0ZWQgaW5mby4KCkFyY2hpdAoKPiAgfQo+Cj4gIC8qCj4KCi0tIApRdWFsY29tbSBJbm5vdmF0
+aW9uIENlbnRlciwgSW5jLiBpcyBhIG1lbWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKYSBMaW51
+eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
