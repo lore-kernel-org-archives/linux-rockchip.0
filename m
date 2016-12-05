@@ -1,70 +1,146 @@
-From: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH v5] PM/devfreq: add suspend frequency support
-Date: Sat, 3 Dec 2016 21:15:10 +0100
-Message-ID: <20161203201509.GB13417@amd>
-References: <1478599598-26015-1-git-send-email-hl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="IiVenqGWf+H9Y6IX"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1478599598-26015-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: myungjoo.ham@samsung.com, cw00.choi@samsung.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, dbasehore@chromium.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/2] Add rockchip serial flash controller support
+Date: Mon,  5 Dec 2016 10:56:15 +0800
+Message-ID: <1480906577-38455-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---IiVenqGWf+H9Y6IX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This pathset is gonna support serial flash controller
+, namely SFC, found on Rockchip RK1108 platform.
 
-Hi!
+Feature:
+(1) Support x1, x2, x4 data bits mode
+(2) Support up to 4 chip select
+(3) Support two independent clock domain: AHB clock and SPI clock
+(4) Support DMA master up to 16KB/transfer
 
-> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
-> index 98c6993..8567153 100644
-> --- a/include/linux/devfreq.h
-> +++ b/include/linux/devfreq.h
-> @@ -172,6 +172,7 @@ struct devfreq {
->  	struct delayed_work work;
-> =20
->  	unsigned long previous_freq;
-> +	unsigned long suspend_freq;
->  	struct devfreq_dev_status last_status;
-> =20
->  	void *data; /* private data for governors */
-> @@ -179,6 +180,7 @@ struct devfreq {
->  	unsigned long min_freq;
->  	unsigned long max_freq;
->  	bool stop_polling;
-> +	bool suspend_flag;
-> =20
->  	/* information for device frequency transition */
->  	unsigned int total_trans;
+Test environment:
+This patchset was tested on RK1108 evb boards with Winboud flash
+(w25q256) and working fine with PIO or DMA mode.
 
-It would be nice to comment what "suspend_flag" is... plus... Would it
-be possible to rename suspend_freq or suspend_flag? They are really
-really similar visually...
+How-to:
+Any rockchip guys who are interested in testing it could refer to
+the following steps:
+(1) enable CONFIG_MTD_M25P80
+(2) enable CONFIG_SPI_ROCKCHIP_SFC
+(3) enable CONFIG_MTD_CMDLINE_PARTS
+(4) enable CONFIG_SQUASHFS
+(4) CONFIG_CMDLINE="root=/dev/mtdblock2
+	mtdparts=spi-nor:256k@0(loader)ro,8m(kernel)ro,7m(rootfs),-(freedisk)"
+	Of course, you should check the partition layout if you modify it. Also
+	you could pass it from your loader to the kernel's cmdline.
+(5) Add dts support:
+nor_flash: sfc@301c0000 {
+	compatible = "rockchip,rk1108-sfc", "rockchip,sfc";
+	#address-cells = <1>;
+	#size-cells = <0>;
+	clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+	clock-names = "sfc", "hsfc";
+	interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+	reg = <0x301c0000 0x1000>;
+	/* If you want to use PIO mode, activate this */
+	#rockchip,sfc-no-DMA;
+	spi-nor@0 {
+		compatible = "jedec,spi-nor";
+		spi-max-frequency = <12000000>;
+		reg = <0>;
+	}
+};
 
-Thanks.
-								Pavel
+please make sure your DT's mdtid matchs what you assgin to the
+mdtparts(cmdline), namely they are both *spi-nor* here.
 
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
+With enabling DBG for cmdlinepart.c, you could get following log and
+boot kernel and rootfs successfully.
 
---IiVenqGWf+H9Y6IX
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+[    0.481420] rockchip-sfc 301c0000.sfc: w25q256 (32768 Kbytes)
+[    0.481962] DEBUG-CMDLINE-PART: parsing
+<256k@0(loader)ro,8m(kernel)ro,7m(rootfs)ro,-(freedisk)>
+[    0.482897] DEBUG-CMDLINE-PART: partition 3: name
+<freedisk>, offset ffffffffffffffff, size ffffffffffffffff, mask flags 0
+[    0.484021] DEBUG-CMDLINE-PART: partition 2: name
+<rootfs>, offset ffffffffffffffff, size 700000, mask flags 400
+[    0.485066] DEBUG-CMDLINE-PART: partition 1: name
+<kernel>, offset ffffffffffffffff, size 800000, mask flags 400
+[    0.486108] DEBUG-CMDLINE-PART: partition 0: name
+<loader>, offset 0, size 40000, mask flags 400
+[    0.487152] DEBUG-CMDLINE-PART: mtdid=<spi-nor> num_parts=<4>
+[    0.487827] 4 cmdlinepart partitions found on MTD device spi-nor
+[    0.488370] Creating 4 MTD partitions on "spi-nor":
+[    0.488826] 0x000000000000-0x000000040000 : "loader"
+[    0.492340] 0x000000040000-0x000000840000 : "kernel"
+[    0.495679] 0x000000840000-0x000000f40000 : "rootfs"
+[    0.499241] 0x000000f40000-0x000002000000 : "freedisk"
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
+[root@arm-linux]#
+[root@arm-linux]#mount
+/dev/root on / type squashfs (ro,relatime)
+devtmpfs on /dev type devtmpfs
+(rw,relatime,size=26124k,nr_inodes=6531,mode=755)
+proc on /proc type proc (rw,relatime)
+none on /tmp type ramfs (rw,relatime)
+none on /var type ramfs (rw,relatime)
+sysfs on /sys type sysfs (rw,relatime)
+debug on /sys/kernel/debug type debugfs (rw,relatime)
+none on /dev/pts type devpts (rw,relatime,mode=600,ptmxmode=000)
 
-iEYEARECAAYFAlhDJ80ACgkQMOfwapXb+vJGqwCglw8JFkNNBEqtkabvIs4+Yk1L
-RuUAoJgsk989wRU5BBhNHpoDscyVv7xZ
-=zWEe
------END PGP SIGNATURE-----
 
---IiVenqGWf+H9Y6IX--
+Changes in v3:
+- rename sfc-no-dma to sfc-no-DMA
+- use io{read32,write32}_rep to simplify the corner cases
+- remove more unnecessary bit definitions
+- some minor comment fixes and improvement
+- fix wrong unregister function
+- unify more code
+- use nor to avoid constantly replicating the whole
+  sfc->flash[sfc->num_chip].nor
+- add email for MODULE_AUTHOR
+- remove #if 1 --- #endif
+- extract DMA code to imporve the code structure
+- reset all when failing to do dma
+- pass sfc to get_if_type
+
+Changes in v2:
+- fix typos
+- add some comment for buffer and others operations
+- rename SFC_MAX_CHIP_NUM to MAX_CHIPSELECT_NUM
+- use u8 for cs
+- return -EINVAL for default case of get_if_type
+- use readl_poll_*() to check timeout cases
+- simplify and clarify some condition checks
+- rework the bitshifts to simplify the code
+- define SFC_CMD_DUMMY(x)
+- fix ummap for dma read path and finish all the
+  cache maintenance.
+- rename to rockchip_sfc_chip_priv and embed struct spi_nor
+  in it.
+- add MODULE_AUTHOR
+- add runtime PM and general PM support.
+- Thanks for Marek's comments. Link:
+  http://lists.infradead.org/pipermail/linux-mtd/2016-November/070321.html
+
+Shawn Lin (2):
+  mtd: spi-nor: Bindings for Rockchip serial flash controller
+  mtd: spi-nor: add rockchip serial flash controller driver
+
+ .../devicetree/bindings/mtd/rockchip-sfc.txt       |  31 +
+ MAINTAINERS                                        |   8 +
+ drivers/mtd/spi-nor/Kconfig                        |   7 +
+ drivers/mtd/spi-nor/Makefile                       |   1 +
+ drivers/mtd/spi-nor/rockchip-sfc.c                 | 889 +++++++++++++++++++++
+ 5 files changed, 936 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+ create mode 100644 drivers/mtd/spi-nor/rockchip-sfc.c
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
