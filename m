@@ -1,69 +1,134 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] i2c: rk3x: keep i2c irq ON in suspend
-Date: Mon, 05 Dec 2016 11:54:00 +0100
-Message-ID: <1737869.ycGphUXI8X@phil>
-References: <1480924979-13450-1-git-send-email-david.wu@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/bridge: analogix: Don't return -EINVAL when panel not
+ support PSR in PSR functions
+Date: Mon, 5 Dec 2016 12:28:01 -0500
+Message-ID: <CAOw6vbLv_q8XPj4_A7Yx1HaVVkdUTeq9=EHAjtJd7bOge2C21Q@mail.gmail.com>
+References: <1480645942-29912-1-git-send-email-wzz@rock-chips.com>
+ <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org> <CAOw6vbJTRLu6mTWXWNBmhhgxmkK-szgnUY_bZ+es5PKnjetiXw@mail.gmail.com>
+ <85f3e098-9566-751e-f201-dddda973f77a@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1480924979-13450-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <85f3e098-9566-751e-f201-dddda973f77a@codeaurora.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>
+Cc: zain wang <wzz@rock-chips.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+On Sun, Dec 4, 2016 at 10:13 PM, Archit Taneja <architt@codeaurora.org> wrote:
+>
+>
+> On 12/02/2016 09:33 PM, Sean Paul wrote:
+>>
+>> On Thu, Dec 1, 2016 at 10:54 PM, Archit Taneja <architt@codeaurora.org>
+>> wrote:
+>>>
+>>> Hi,
+>>>
+>>> On 12/02/2016 08:02 AM, zain wang wrote:
+>>>>
+>>>>
+>>>> We will ignored PSR setting if panel not support it. So, in this case,
+>>>> we
+>>>> should
+>>>> return from analogix_dp_enable/disable_psr() without any error code.
+>>>> Let's retrun 0 instead of -EINVAL when panel not support PSR in
+>>>> analogix_dp_enable/disable_psr().
+>>>>
+>>>> Signed-off-by: zain wang <wzz@rock-chips.com>
+>>>> ---
+>>>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++++--
+>>>>  1 file changed, 4 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>>> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>>> index 6e0447f..0cb3695 100644
+>>>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>>> @@ -112,7 +112,7 @@ int analogix_dp_enable_psr(struct device *dev)
+>>>>         struct edp_vsc_psr psr_vsc;
+>>>>
+>>>>         if (!dp->psr_support)
+>>>> -               return -EINVAL;
+>>>> +               return 0;
+>>>
+>>>
+>>>
+>>> Looking at the rockchip analogix dp code, in analogix_dp_psr_set, the
+>>> worker
+>>> that calls
+>>> analogix_dp_enable/disable_psr isn't even if psr isn't enabled. So, the
+>>> bridge funcs
+>>> shouldn't be called in the first place. I think the error handling is
+>>> fine
+>>> to have
+>>> here.
+>>>
+>>
+>> Hi Archit,
+>>
+>> This was my first impression, too, and the complexity of the various
+>> psr abstraction layers don't help :)
+>>
+>> However, this code path will be hit if the source supports psr, but
+>> the sink doesn't. The rockchip_drm_psr code doesn't know if the sink
+>> supports psr, so it will end up calling this.
+>
+>
+> Okay, thanks for the explanation. The dev_warn() below still seems
+> unnecessary, right?
+>
 
-Am Montag, 5. Dezember 2016, 16:02:59 CET schrieb David Wu:
-> During suspend there may still be some i2c access happening.
-> And if we don't keep i2c irq ON, there may be i2c access timeout if
-> i2c is in irq mode of operation.
+Yeah, one could make a case for dev_info (disclaimer: I have a high
+tolerance for noisy logs), but a warning does seem excessive.
 
-can you describe the issue you're trying to fix a bit more please?
+Sean
 
-I.e. I'd think the i2c-core does suspend i2c-client devices first, so that
-these should be able to finish up their ongoing transfers and not start any
-new ones instead?
-
-Your irq can still happen slightly after the system started going to actually
-sleep, so to me it looks like you just widened the window where irqs can be
-handled. Especially as your irq could also just simply stem from the start
-state, so you cannot even be sure if your transaction actually is finished.
-
-So to me it looks like the i2c-connected device driver should be fixed instead?
-
-In the past I solved this for example in the zforce_ts driver [0] to
-prevent i2c transfers from happening during suspend.
-
-
-Heiko
-
-[0] https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/drivers/input/touchscreen/zforce_ts.c
-
-
-> 
-> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  drivers/i2c/busses/i2c-rk3x.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index df22066..67af32a 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -1261,7 +1261,7 @@ static int rk3x_i2c_probe(struct platform_device
-> *pdev) }
-> 
->  	ret = devm_request_irq(&pdev->dev, irq, rk3x_i2c_irq,
-> -			       0, dev_name(&pdev->dev), i2c);
-> +			       IRQF_NO_SUSPEND, dev_name(&pdev->dev), i2c);
->  	if (ret < 0) {
->  		dev_err(&pdev->dev, "cannot request IRQ\n");
->  		return ret;
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Archit
+>
+>
+>>
+>> Sean
+>>
+>>
+>>>>
+>>>>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>>>>         memset(&psr_vsc, 0, sizeof(psr_vsc));
+>>>> @@ -135,7 +135,7 @@ int analogix_dp_disable_psr(struct device *dev)
+>>>>         struct edp_vsc_psr psr_vsc;
+>>>>
+>>>>         if (!dp->psr_support)
+>>>> -               return -EINVAL;
+>>>> +               return 0;
+>>>>
+>>>>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>>>>         memset(&psr_vsc, 0, sizeof(psr_vsc));
+>>>> @@ -878,6 +878,8 @@ static void analogix_dp_commit(struct
+>>>> analogix_dp_device *dp)
+>>>>         dp->psr_support = analogix_dp_detect_sink_psr(dp);
+>>>>         if (dp->psr_support)
+>>>>                 analogix_dp_enable_sink_psr(dp);
+>>>> +       else
+>>>> +               dev_warn(dp->dev, "Sink not support PSR\n");
+>>>
+>>>
+>>>
+>>> This doesn't seem beneficial either. There seems to be a debug
+>>> print already in analogix_dp_detect_sink_psr which reports PSR
+>>> related info.
+>>>
+>>> Archit
+>>>
+>>>>  }
+>>>>
+>>>>  /*
+>>>>
+>>>
+>>> --
+>>> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+>>> a Linux Foundation Collaborative Project
+>
+>
+> --
+> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+> a Linux Foundation Collaborative Project
