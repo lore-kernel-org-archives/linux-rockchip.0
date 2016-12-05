@@ -1,116 +1,88 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH] drm/bridge: analogix: Don't return -EINVAL when panel not
- support PSR in PSR functions
-Date: Mon, 5 Dec 2016 08:43:38 +0530
-Message-ID: <85f3e098-9566-751e-f201-dddda973f77a@codeaurora.org>
-References: <1480645942-29912-1-git-send-email-wzz@rock-chips.com>
- <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org>
- <CAOw6vbJTRLu6mTWXWNBmhhgxmkK-szgnUY_bZ+es5PKnjetiXw@mail.gmail.com>
+From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] mtd: spi-nor: Bindings for Rockchip serial flash
+ controller
+Date: Mon, 5 Dec 2016 04:24:55 +0100
+Message-ID: <40cb2739-f58d-2e35-5b87-6b46e93e422e@gmail.com>
+References: <1480906577-38455-1-git-send-email-shawn.lin@rock-chips.com>
+ <1480906577-38455-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAOw6vbJTRLu6mTWXWNBmhhgxmkK-szgnUY_bZ+es5PKnjetiXw@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: zain wang <wzz@rock-chips.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Doug Anderson <dianders@chromium.org>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1480906577-38455-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On 12/05/2016 03:56 AM, Shawn Lin wrote:
+> Add binding document for the Rockchip serial flash controller.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> 
+> Changes in v3:
+> - rename sfc-no-dma to sfc-no-DMA
+> 
+> Changes in v2: None
+> 
+>  .../devicetree/bindings/mtd/rockchip-sfc.txt       | 31 ++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+> new file mode 100644
+> index 0000000..c6b4f58
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+> @@ -0,0 +1,31 @@
+> +Rockchip Serial Flash Controller
+> +
+> +Required properties:
+> +- compatible : Should be
+> +		"rockchip,rk1108-sfc", "rockchip,sfc" for ROCKCHIP RK1108.
+> +- address-cells : Should be 1.
+> +- size-cells : Should be 0.
+> +- clocks: Must contain two entries for each entry in clock-names.
+> +- clock-names: Shall be "sfc" for the transfer-clock, and "hsfc" for
+> +		the peripheral clock.
+> +- interrupts : Should contain the interrupt for the device.
+> +- reg: Physical base address of the controller and length of memory mapped.
+> +
+> +Optional properties:
 
+Uhhh, I apologize for the miscommunication.
 
-On 12/02/2016 09:33 PM, Sean Paul wrote:
-> On Thu, Dec 1, 2016 at 10:54 PM, Archit Taneja <architt@codeaurora.org> wrote:
->> Hi,
->>
->> On 12/02/2016 08:02 AM, zain wang wrote:
->>>
->>> We will ignored PSR setting if panel not support it. So, in this case, we
->>> should
->>> return from analogix_dp_enable/disable_psr() without any error code.
->>> Let's retrun 0 instead of -EINVAL when panel not support PSR in
->>> analogix_dp_enable/disable_psr().
->>>
->>> Signed-off-by: zain wang <wzz@rock-chips.com>
->>> ---
->>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++++--
->>>  1 file changed, 4 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->>> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->>> index 6e0447f..0cb3695 100644
->>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->>> @@ -112,7 +112,7 @@ int analogix_dp_enable_psr(struct device *dev)
->>>         struct edp_vsc_psr psr_vsc;
->>>
->>>         if (!dp->psr_support)
->>> -               return -EINVAL;
->>> +               return 0;
->>
->>
->> Looking at the rockchip analogix dp code, in analogix_dp_psr_set, the worker
->> that calls
->> analogix_dp_enable/disable_psr isn't even if psr isn't enabled. So, the
->> bridge funcs
->> shouldn't be called in the first place. I think the error handling is fine
->> to have
->> here.
->>
->
-> Hi Archit,
->
-> This was my first impression, too, and the complexity of the various
-> psr abstraction layers don't help :)
->
-> However, this code path will be hit if the source supports psr, but
-> the sink doesn't. The rockchip_drm_psr code doesn't know if the sink
-> supports psr, so it will end up calling this.
+> +- rockchip,sfc-no-DMA: Indicate the controller doesn't support dma transfer.
+I didn't mean this   ^^^ DMA, that should be lowercase. I meant   ^^^
+this one. The property should be lowercase, the description
+should be uppercase.
 
-Okay, thanks for the explanation. The dev_warn() below still seems
-unnecessary, right?
+> +
+> +Example:
+> +nor_flash: sfc@301c0000 {
+> +	compatible = "rockchip,rk1108-sfc", "rockchip,sfc";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+> +	clock-names = "sfc", "hsfc";
+> +	interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+> +	reg = <0x301c0000 0x1000>;
+> +	spi-nor@0 {
+> +		compatible = "jedec,spi-nor";
+> +		spi-max-frequency = <12000000>;
+> +		reg = <0>;
+> +	};
+> +};
+> 
 
-Archit
-
->
-> Sean
->
->
->>>
->>>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
->>>         memset(&psr_vsc, 0, sizeof(psr_vsc));
->>> @@ -135,7 +135,7 @@ int analogix_dp_disable_psr(struct device *dev)
->>>         struct edp_vsc_psr psr_vsc;
->>>
->>>         if (!dp->psr_support)
->>> -               return -EINVAL;
->>> +               return 0;
->>>
->>>         /* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
->>>         memset(&psr_vsc, 0, sizeof(psr_vsc));
->>> @@ -878,6 +878,8 @@ static void analogix_dp_commit(struct
->>> analogix_dp_device *dp)
->>>         dp->psr_support = analogix_dp_detect_sink_psr(dp);
->>>         if (dp->psr_support)
->>>                 analogix_dp_enable_sink_psr(dp);
->>> +       else
->>> +               dev_warn(dp->dev, "Sink not support PSR\n");
->>
->>
->> This doesn't seem beneficial either. There seems to be a debug
->> print already in analogix_dp_detect_sink_psr which reports PSR
->> related info.
->>
->> Archit
->>
->>>  }
->>>
->>>  /*
->>>
->>
->> --
->> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
->> a Linux Foundation Collaborative Project
 
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+Best regards,
+Marek Vasut
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
