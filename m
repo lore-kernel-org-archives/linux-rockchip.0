@@ -1,85 +1,72 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] i2c: rk3x: keep i2c irq ON in suspend
-Date: Tue, 6 Dec 2016 08:31:41 -0800
-Message-ID: <CAD=FV=VgGy5hA4+7nvLs4NPNRuopak+bTW34S6X6S_vWgtnkjg@mail.gmail.com>
-References: <1480924979-13450-1-git-send-email-david.wu@rock-chips.com>
- <1737869.ycGphUXI8X@phil> <1d570232-af87-467e-e6f4-5b514d583a02@rock-chips.com>
+From: Andy Gross <andy.gross@linaro.org>
+Subject: Re: [PATCH 1/2] arm: kernel: Add SMC structure parameter
+Date: Tue, 6 Dec 2016 12:01:57 -0600
+Message-ID: <20161206180157.GB2870@hector.attlocal.net>
+References: <1480405463-23165-1-git-send-email-andy.gross@linaro.org>
+ <1480405463-23165-2-git-send-email-andy.gross@linaro.org>
+ <20161206115507.GD2498@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1d570232-af87-467e-e6f4-5b514d583a02@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20161206115507.GD2498@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "David.Wu" <david.wu@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Will Deacon <will.deacon@arm.com>
+Cc: jesper.nilsson@axis.com, lorenzo.pieralisi@arm.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, lars.persson@axis.com, p.zabel@pengutronix.de, niklas.cassel@axis.com, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, Bjorn Andersson <bjorn.andersson@linaro.org>, Kevin Hilman <khilman@baylibre.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Tue, Dec 06, 2016 at 11:55:08AM +0000, Will Deacon wrote:
+> Hi Andy,
+> 
+> On Tue, Nov 29, 2016 at 01:44:22AM -0600, Andy Gross wrote:
+> > This patch adds a quirk parameter to the arm_smccc_smc call.  The quirk
+> > structure allows for specialized SMC operations due to SoC specific
+> > requirements.
+> > 
+> > This patch also fixes up all the current users of the arm_smccc_smc API.
+> > 
+> > This patch and partial implementation was suggested by Will Deacon.
+> > 
+> > Signed-off-by: Andy Gross <andy.gross@linaro.org>
+> > ---
+> >  arch/arm/kernel/smccc-call.S         |  3 ++-
+> >  arch/arm/mach-artpec/board-artpec6.c |  2 +-
+> >  arch/arm64/kernel/asm-offsets.c      |  7 +++++--
+> >  arch/arm64/kernel/smccc-call.S       |  3 ++-
+> >  drivers/clk/rockchip/clk-ddr.c       |  6 +++---
+> >  drivers/devfreq/rk3399_dmc.c         |  6 +++---
+> >  drivers/firmware/meson/meson_sm.c    |  2 +-
+> >  drivers/firmware/psci.c              |  2 +-
+> >  drivers/firmware/qcom_scm-64.c       |  4 ++--
+> >  drivers/gpu/drm/mediatek/mtk_hdmi.c  |  2 +-
+> >  include/linux/arm-smccc.h            | 18 ++++++++++++++++--
+> >  11 files changed, 37 insertions(+), 18 deletions(-)
+> 
+> Thanks for respinning this; I'd forgotten about it!
+> 
+> > diff --git a/arch/arm/kernel/smccc-call.S b/arch/arm/kernel/smccc-call.S
+> > index 37669e7..e77950a 100644
+> > --- a/arch/arm/kernel/smccc-call.S
+> > +++ b/arch/arm/kernel/smccc-call.S
+> > @@ -47,7 +47,8 @@ UNWIND(	.fnend)
+> >  /*
+> >   * void smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2,
+> >   *		  unsigned long a3, unsigned long a4, unsigned long a5,
+> > - *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res)
+> > + *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res,
+> > + *		  struct arm_smccc_quirk *quirk)
+> 
+> I'd not thought of doing it like this -- I envisaged embedding the quirk
+> structure into arm_smccc_res, but this works too. I wonder if we could avoid
+> having to pass NULL everywhere if we renamed arm_smccc_{hvc.smc} and added
+> a default wrapper around them?
+> 
+> For example, rename arm_smccc_smc to __arm_smccc_smc, add a macro called
+> arm_smccc_smc that passes a NULL argument for the quirk, then finally add
+> a macro arm_smccc_smc_quirk that takes the additional parameter?
 
-On Tue, Dec 6, 2016 at 12:12 AM, David.Wu <david.wu@rock-chips.com> wrote:
-> Hi Heiko,
->
-> =E5=9C=A8 2016/12/5 18:54, Heiko Stuebner =E5=86=99=E9=81=93:
->>
->> Hi David,
->>
->> Am Montag, 5. Dezember 2016, 16:02:59 CET schrieb David Wu:
->>>
->>> During suspend there may still be some i2c access happening.
->>> And if we don't keep i2c irq ON, there may be i2c access timeout if
->>> i2c is in irq mode of operation.
->>
->>
->> can you describe the issue you're trying to fix a bit more please?
->
->
-> Sometimes we could see the i2c timeout errors during suspend/resume, whic=
-h
-> makes the duration of suspend/resume too longer.
->
-> [  484.171541] CPU4: Booted secondary processor [410fd082]
-> [  485.172777] rk3x-i2c ff3c0000.i2c: timeout, ipd: 0x10, state: 1
-> [  486.172760] rk3x-i2c ff3c0000.i2c: timeout, ipd: 0x10, state: 1
-> [  487.172759] rk3x-i2c ff3c0000.i2c: timeout, ipd: 0x10, state: 1
-> [  487.172840] cpu cpu4: _set_opp_voltage: failed to set voltage (800000
-> 800000 800000 mV): -110
-> [  487.172874] cpu cpu4: failed to set volt 800000
->
->>
->> I.e. I'd think the i2c-core does suspend i2c-client devices first, so th=
-at
->> these should be able to finish up their ongoing transfers and not start
->> any
->> new ones instead?
->>
->> Your irq can still happen slightly after the system started going to
->> actually
->> sleep, so to me it looks like you just widened the window where irqs can
->> be
->> handled. Especially as your irq could also just simply stem from the sta=
-rt
->> state, so you cannot even be sure if your transaction actually is
->> finished.
->
->
-> Okay, you are right. I want to give it a double insurance at first, but i=
-t
-> may hide the unhappend issue.
->
->>
->> So to me it looks like the i2c-connected device driver should be fixed
->> instead?
->
->
-> I tell them to fix it in rk808 driver.
+This would work pretty well.  I'll send another version with this
+implementation.
 
-To me it seems like perhaps cpufreq should not be changing frequencies
-until it is resumed properly.  Presumably if all the ordering is done
-right then cpufreq should be resumed _after_ the i2c regulator so you
-should be OK.  ...or am I somehow confused about that?
-
-Also note that previous i2c busses I worked with simply returned -EIO
-in the case where they were called when suspended.  See
-"i2c-exynos5.c" and "i2c-s3c2410.c".
-
--Doug
+Regards,
+Andy
