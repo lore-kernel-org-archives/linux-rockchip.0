@@ -1,103 +1,73 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] mtd: spi-nor: add rockchip serial flash controller
- driver
-Date: Tue, 6 Dec 2016 15:15:00 +0800
-Message-ID: <25392a10-a2e7-4147-baf9-b54af946fa67@rock-chips.com>
-References: <1480906577-38455-1-git-send-email-shawn.lin@rock-chips.com>
- <1480906577-38455-3-git-send-email-shawn.lin@rock-chips.com>
- <852b11c2-daf3-75dc-a5c6-576109a974a9@gmail.com>
- <8cac8489-3fd1-bfc3-9a25-a3fbda74e03e@rock-chips.com>
- <cdc8647b-77c5-5d74-931c-46bcebafae65@gmail.com>
+From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] i2c: rk3x: keep i2c irq ON in suspend
+Date: Tue, 6 Dec 2016 16:12:02 +0800
+Message-ID: <1d570232-af87-467e-e6f4-5b514d583a02@rock-chips.com>
+References: <1480924979-13450-1-git-send-email-david.wu@rock-chips.com>
+ <1737869.ycGphUXI8X@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cdc8647b-77c5-5d74-931c-46bcebafae65-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1737869.ycGphUXI8X@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/12/6 11:08, Marek Vasut wrote:
-> On 12/06/2016 03:56 AM, Shawn Lin wrote:
->
-> [...]
->
->>>> +static inline void rockchip_sfc_setup_transfer(struct spi_nor *nor,
->>>> +                           loff_t from_to,
->>>> +                           size_t len, u8 op_type)
->>>> +{
->>>> +    struct rockchip_sfc_chip_priv *priv = nor->priv;
->>>> +    struct rockchip_sfc *sfc = priv->sfc;
->>>> +    u32 reg;
->>>> +    u8 if_type = 0;
->>>> +
->>>> +    if_type = get_if_type(sfc, nor->flash_read);
->>>> +    writel_relaxed((if_type << SFC_CTRL_DATA_BITS_SHIFT) |
->>>> +               (if_type << SFC_CTRL_ADDR_BITS_SHIFT) |
->>>> +               (if_type << SFC_CTRL_CMD_BITS_SHIFT) |
->>>
->>> Hm, looking at this, does the controller only support n-n-n mode (1-1-1,
->>> 2-2-2, 4-4-4) ? Or why don't you allow 1-1-n/1-n-n/2-n-n ?
->>
->> No, it also could support 1-1-n, etc.
->> By looking at the cadence-quadspi.c,  it only allows
->> CQSPI_INST_TYPE_SINGLE for f_pdata->addr_width and f_pdata->inst_width,
->> so finally it only supports 1-1-1, 1-1-2, 1-1-4?
->>
->>> I would like to hear some input from Cyrille on this one.
->
-> The CQSPI driver indeed does only 1-1-x read thus far.
-> I am not sure whether support for the other modes in the SPI NOR
-> subsystem landed already, which is why I'd like to hear from
-> Cyrille here.
->
-> [...]
->
->>>> +#ifdef CONFIG_PM
->>>> +int rockchip_sfc_runtime_suspend(struct device *dev)
->>>> +{
->>>> +    struct rockchip_sfc *sfc = dev_get_drvdata(dev);
->>>> +
->>>> +    clk_disable_unprepare(sfc->hclk);
->>>> +    return 0;
->>>> +}
->>>
->>> Was the suspend ever really tested with this block ? Is disabling clock
->>> really enough ?
->>
->> It was tested and we could do more, for instance power off the genpd,
->> but disabling clcok should be enough.
->
-> What about putting the controller into some reset state , is that possible?
-
-yup, there are two reset control for sfc for some Socs.
-I will include them as optional properties to put the controller
-into reset state.
-
->
->>>> +int rockchip_sfc_runtime_resume(struct device *dev)
->>>> +{
->>>> +    struct rockchip_sfc *sfc = dev_get_drvdata(dev);
->>>> +
->>>> +    clk_prepare_enable(sfc->hclk);
->>>> +    return 0;
->>>> +}
->>>> +#endif /* CONFIG_PM */
->>>
->>> [...]
->>>
->>
->>
->
->
-
-
--- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgSGVpa28sCgrlnKggMjAxNi8xMi81IDE4OjU0LCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
+SGkgRGF2aWQsCj4KPiBBbSBNb250YWcsIDUuIERlemVtYmVyIDIwMTYsIDE2OjAyOjU5IENFVCBz
+Y2hyaWViIERhdmlkIFd1Ogo+PiBEdXJpbmcgc3VzcGVuZCB0aGVyZSBtYXkgc3RpbGwgYmUgc29t
+ZSBpMmMgYWNjZXNzIGhhcHBlbmluZy4KPj4gQW5kIGlmIHdlIGRvbid0IGtlZXAgaTJjIGlycSBP
+TiwgdGhlcmUgbWF5IGJlIGkyYyBhY2Nlc3MgdGltZW91dCBpZgo+PiBpMmMgaXMgaW4gaXJxIG1v
+ZGUgb2Ygb3BlcmF0aW9uLgo+Cj4gY2FuIHlvdSBkZXNjcmliZSB0aGUgaXNzdWUgeW91J3JlIHRy
+eWluZyB0byBmaXggYSBiaXQgbW9yZSBwbGVhc2U/CgpTb21ldGltZXMgd2UgY291bGQgc2VlIHRo
+ZSBpMmMgdGltZW91dCBlcnJvcnMgZHVyaW5nIHN1c3BlbmQvcmVzdW1lLCAKd2hpY2ggbWFrZXMg
+dGhlIGR1cmF0aW9uIG9mIHN1c3BlbmQvcmVzdW1lIHRvbyBsb25nZXIuCgpbICA0ODQuMTcxNTQx
+XSBDUFU0OiBCb290ZWQgc2Vjb25kYXJ5IHByb2Nlc3NvciBbNDEwZmQwODJdClsgIDQ4NS4xNzI3
+NzddIHJrM3gtaTJjIGZmM2MwMDAwLmkyYzogdGltZW91dCwgaXBkOiAweDEwLCBzdGF0ZTogMQpb
+ICA0ODYuMTcyNzYwXSByazN4LWkyYyBmZjNjMDAwMC5pMmM6IHRpbWVvdXQsIGlwZDogMHgxMCwg
+c3RhdGU6IDEKWyAgNDg3LjE3Mjc1OV0gcmszeC1pMmMgZmYzYzAwMDAuaTJjOiB0aW1lb3V0LCBp
+cGQ6IDB4MTAsIHN0YXRlOiAxClsgIDQ4Ny4xNzI4NDBdIGNwdSBjcHU0OiBfc2V0X29wcF92b2x0
+YWdlOiBmYWlsZWQgdG8gc2V0IHZvbHRhZ2UgKDgwMDAwMCAKODAwMDAwIDgwMDAwMCBtVik6IC0x
+MTAKWyAgNDg3LjE3Mjg3NF0gY3B1IGNwdTQ6IGZhaWxlZCB0byBzZXQgdm9sdCA4MDAwMDAKCj4K
+PiBJLmUuIEknZCB0aGluayB0aGUgaTJjLWNvcmUgZG9lcyBzdXNwZW5kIGkyYy1jbGllbnQgZGV2
+aWNlcyBmaXJzdCwgc28gdGhhdAo+IHRoZXNlIHNob3VsZCBiZSBhYmxlIHRvIGZpbmlzaCB1cCB0
+aGVpciBvbmdvaW5nIHRyYW5zZmVycyBhbmQgbm90IHN0YXJ0IGFueQo+IG5ldyBvbmVzIGluc3Rl
+YWQ/Cj4KPiBZb3VyIGlycSBjYW4gc3RpbGwgaGFwcGVuIHNsaWdodGx5IGFmdGVyIHRoZSBzeXN0
+ZW0gc3RhcnRlZCBnb2luZyB0byBhY3R1YWxseQo+IHNsZWVwLCBzbyB0byBtZSBpdCBsb29rcyBs
+aWtlIHlvdSBqdXN0IHdpZGVuZWQgdGhlIHdpbmRvdyB3aGVyZSBpcnFzIGNhbiBiZQo+IGhhbmRs
+ZWQuIEVzcGVjaWFsbHkgYXMgeW91ciBpcnEgY291bGQgYWxzbyBqdXN0IHNpbXBseSBzdGVtIGZy
+b20gdGhlIHN0YXJ0Cj4gc3RhdGUsIHNvIHlvdSBjYW5ub3QgZXZlbiBiZSBzdXJlIGlmIHlvdXIg
+dHJhbnNhY3Rpb24gYWN0dWFsbHkgaXMgZmluaXNoZWQuCgpPa2F5LCB5b3UgYXJlIHJpZ2h0LiBJ
+IHdhbnQgdG8gZ2l2ZSBpdCBhIGRvdWJsZSBpbnN1cmFuY2UgYXQgZmlyc3QsIGJ1dCAKaXQgbWF5
+IGhpZGUgdGhlIHVuaGFwcGVuZCBpc3N1ZS4KCj4KPiBTbyB0byBtZSBpdCBsb29rcyBsaWtlIHRo
+ZSBpMmMtY29ubmVjdGVkIGRldmljZSBkcml2ZXIgc2hvdWxkIGJlIGZpeGVkIGluc3RlYWQ/CgpJ
+IHRlbGwgdGhlbSB0byBmaXggaXQgaW4gcms4MDggZHJpdmVyLgoKPgo+IEluIHRoZSBwYXN0IEkg
+c29sdmVkIHRoaXMgZm9yIGV4YW1wbGUgaW4gdGhlIHpmb3JjZV90cyBkcml2ZXIgWzBdIHRvCj4g
+cHJldmVudCBpMmMgdHJhbnNmZXJzIGZyb20gaGFwcGVuaW5nIGR1cmluZyBzdXNwZW5kLgo+Cj4K
+PiBIZWlrbwo+Cj4gWzBdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwv
+Z2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvaW5wdXQvdG91Y2hzY3JlZW4vemZv
+cmNlX3RzLmMKPgo+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IERhdmlkIFd1IDxkYXZpZC53dUByb2Nr
+LWNoaXBzLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2kyYy9idXNzZXMvaTJjLXJrM3guYyB8IDIg
+Ky0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pgo+
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1yazN4LmMgYi9kcml2ZXJzL2ky
+Yy9idXNzZXMvaTJjLXJrM3guYwo+PiBpbmRleCBkZjIyMDY2Li42N2FmMzJhIDEwMDY0NAo+PiAt
+LS0gYS9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLXJrM3guYwo+PiArKysgYi9kcml2ZXJzL2kyYy9i
+dXNzZXMvaTJjLXJrM3guYwo+PiBAQCAtMTI2MSw3ICsxMjYxLDcgQEAgc3RhdGljIGludCByazN4
+X2kyY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlCj4+ICpwZGV2KSB9Cj4+Cj4+ICAJcmV0
+ID0gZGV2bV9yZXF1ZXN0X2lycSgmcGRldi0+ZGV2LCBpcnEsIHJrM3hfaTJjX2lycSwKPj4gLQkJ
+CSAgICAgICAwLCBkZXZfbmFtZSgmcGRldi0+ZGV2KSwgaTJjKTsKPj4gKwkJCSAgICAgICBJUlFG
+X05PX1NVU1BFTkQsIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBpMmMpOwo+PiAgCWlmIChyZXQgPCAw
+KSB7Cj4+ICAJCWRldl9lcnIoJnBkZXYtPmRldiwgImNhbm5vdCByZXF1ZXN0IElSUVxuIik7Cj4+
+ICAJCXJldHVybiByZXQ7Cj4KPgo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
