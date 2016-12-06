@@ -1,155 +1,122 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
- regulator support
-Date: Tue, 6 Dec 2016 08:56:16 -0600
-Message-ID: <CAL_Jsq+C1MWrN4Sg_xOgpTzQh9gfL12G5Uxb1ya2MTkoa=7fMA@mail.gmail.com>
-References: <1480555288-142791-1-git-send-email-briannorris@chromium.org>
- <20161201143434.GD1280@mail.corp.redhat.com> <20161201172448.GA46688@google.com>
- <20161205235908.rmiyd7io4kddple6@rob-hp-laptop> <20161206084803.GR1280@mail.corp.redhat.com>
+From: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] mtd: spi-nor: add rockchip serial flash controller
+ driver
+Date: Tue, 6 Dec 2016 16:44:51 +0100
+Message-ID: <8fae0968-5e3d-2454-c79c-599bc55ac0e5@atmel.com>
+References: <1480906577-38455-1-git-send-email-shawn.lin@rock-chips.com>
+ <1480906577-38455-3-git-send-email-shawn.lin@rock-chips.com>
+ <852b11c2-daf3-75dc-a5c6-576109a974a9@gmail.com>
+ <8cac8489-3fd1-bfc3-9a25-a3fbda74e03e@rock-chips.com>
+ <cdc8647b-77c5-5d74-931c-46bcebafae65@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161206084803.GR1280@mail.corp.redhat.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Benjamin Tissoires <benjamin.tissoires@redhat.com>
-Cc: Brian Norris <briannorris@chromium.org>, Jiri Kosina <jikos@kernel.org>, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Doug Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <cdc8647b-77c5-5d74-931c-46bcebafae65-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 6, 2016 at 2:48 AM, Benjamin Tissoires
-<benjamin.tissoires@redhat.com> wrote:
-> On Dec 05 2016 or thereabouts, Rob Herring wrote:
->> On Thu, Dec 01, 2016 at 09:24:50AM -0800, Brian Norris wrote:
->> > Hi Benjamin and Rob,
->> >
->> > On Thu, Dec 01, 2016 at 03:34:34PM +0100, Benjamin Tissoires wrote:
->> > > On Nov 30 2016 or thereabouts, Brian Norris wrote:
->> > > > From: Caesar Wang <wxt@rock-chips.com>
->> > > >
->> > > > Add a compatible string and regulator property for Wacom W9103
->> > > > digitizer. Its VDD supply may need to be enabled before using it.
->> > > >
->> > > > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> > > > Cc: Rob Herring <robh+dt@kernel.org>
->> > > > Cc: Jiri Kosina <jikos@kernel.org>
->> > > > Cc: linux-input@vger.kernel.org
->> > > > Signed-off-by: Brian Norris <briannorris@chromium.org>
->> > > > ---
->> > > > v1 was a few months back. I finally got around to rewriting it based on
->> > > > DT binding feedback.
->> > > >
->> > > > v2:
->> > > >  * add compatible property for wacom
->> > > >  * name the regulator property specifically (VDD)
->> > > >
->> > > >  Documentation/devicetree/bindings/input/hid-over-i2c.txt | 6 +++++-
->> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
->> > > >
->> > > > diff --git a/Documentation/devicetree/bindings/input/hid-over-i2c.txt b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
->> > > > index 488edcb264c4..eb98054e60c9 100644
->> > > > --- a/Documentation/devicetree/bindings/input/hid-over-i2c.txt
->> > > > +++ b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
->> > > > @@ -11,12 +11,16 @@ If this binding is used, the kernel module i2c-hid will handle the communication
->> > > >  with the device and the generic hid core layer will handle the protocol.
->> > > >
->> > > >  Required properties:
->> > > > -- compatible: must be "hid-over-i2c"
->> > > > +- compatible: must be "hid-over-i2c", or a device-specific string like:
->> > > > +    * "wacom,w9013"
->> > >
->> > > NACK on this one.
->> > >
->> > > After re-reading the v1 submission I realized Rob asked for this change,
->> > > but I strongly disagree.
->> > >
->> > > HID over I2C is a generic protocol, in the same way HID over USB is. We
->> > > can not start adding device specifics here, this is opening the can of
->> > > worms. If the device is a HID one, nothing else should matter. The rest
->> > > (description of the device, name, etc...) is all provided by the
->> > > protocol.
->> >
->> > I should have spoken up when Rob made the suggestion, because I more or
->> > less agree with Benjamin here. I don't really see why this needs to have
->> > a specialized compatible string, as the property is still fairly
->> > generic, and the entire device handling is via a generic protocol. The
->> > fact that we manage its power via a regulator is not very
->> > device-specific.
->>
->> It doesn't matter that the protocol is generic. The device attached and
->> the implementation is not. Implementations have been known to have
->> bugs/quirks (generally speaking, not HID over I2C in particular). There
->> are also things outside the scope of what is 'hid-over-i2c' like what's
->> needed to power-on the device which this patch clearly show.
->
-> Yes, there are bugs, quirks, even with HID. But the HID declares within
-> the protocol the Vendor ID and the Product ID, which means once we pass
-> the initial "device is ready" step and can do a single i2c write/read,
-> we don't give a crap about device tree anymore.
->
-> This is just about setting the device in shape so that it can answer a
-> single write/read.
->
->>
->> This is no different than a panel attached via LVDS, eDP, etc., or
->> USB/PCIe device hard-wired on a board. They all use standard protocols
->> and all need additional data to describe them. Of course, adding a
->> single property for a delay would not be a big deal, but it's never
->> ending. Next you need multiple supplies, GPIO controls, mutiple
->> delays... This has been discussed to death already. As Thierry Reding
->> said, you're not special[1].
->
-> I can somewhat understand what you mean. The official specification is
-> for ACPI. And ACPI allows to calls various settings while querying the
-> _STA method for instance. So in the ACPI world, we don't need to care
-> about regulators or GPIOs because the OEM deals with this in its own
-> blob.
->
-> Now, coming back to our issue. We are not special, maybe, if he says so.
-> But this really feels like a design choice between putting the burden on
-> device tree and OEMs or in the module maintainers. And I'd rather have
-> the OEM deal with their device than me having to update the module for
-> each generations of hardware. Indeed, this looks like an "endless"
-> amount of quirks, but I'd rather have this endless amount of quirks than
-> having to maintain an endless amount of list of new devices that behaves
-> the same way. We are talking here about "wacom,w9013", but then comes
-> "wacom,w9014" and we need to upgrade the kernel.
-
-No. If the w9014 can claim compatibility with then w9013, then you
-don't need a kernel change. The DT should list the w9014 AND w9013,
-but the kernel only needs to know about the w9013. That is until there
-is some difference which is why the DT should list w9014 to start
-with.
-
-If you don't have any power control to deal with, then the kernel can
-always just match on "hid-over-i2c" compatible.
-
-> I have dealt with that for the wacom modules for years, and this is
-> definitively not a good solution.
->
-> And one additional caveat of this solution is the time between the
-> release of the new device and its readiness in the hands of the
-> consumer. You need to push a patch upstream, then backport it or wait
-> for it to come to your distribution. While if there is a device tree
-> specific quirk, you just read the spec of the device and applies it to
-> your device tree and you are good to go.
->
-> So no, I don't buy this. If hardware makers want to have fancy way of
-> initializing their devices, we can cope with those, but I don't want to
-> do the Device Tree job in a kernel module were you need to recompile it
-> each time a new device appears.
->
->>
->> Now if you want to make 'hid-over-i2c' a fallback to 'wacom,w9013', I'm
->> fine with that.
->
-> I agree to have some sort of quirks in the i2c-hid module, but
-> definitively not a list of devices with a specific initialization
-> sequence. Device Tree has also been introduced to remove the specific
-> platform devices, and you are basically asking us to go back there,
-> which I don't want.
-
-That is not correct. DT does not abstract the h/w to hide
-implementation details like ACPI does with AML code. We still have
-specific platform drivers and always will. DT is about removing the
-board files and describing connections between devices.
-
-Rob
+SGkgYWxsLAoKTGUgMDYvMTIvMjAxNiDDoCAwNDowOCwgTWFyZWsgVmFzdXQgYSDDqWNyaXQgOgo+
+IE9uIDEyLzA2LzIwMTYgMDM6NTYgQU0sIFNoYXduIExpbiB3cm90ZToKPiAKPiBbLi4uXQo+IAo+
+Pj4+ICtzdGF0aWMgaW5saW5lIHZvaWQgcm9ja2NoaXBfc2ZjX3NldHVwX3RyYW5zZmVyKHN0cnVj
+dCBzcGlfbm9yICpub3IsCj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgIGxvZmZfdCBm
+cm9tX3RvLAo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICBzaXplX3QgbGVuLCB1OCBv
+cF90eXBlKQo+Pj4+ICt7Cj4+Pj4gKyAgICBzdHJ1Y3Qgcm9ja2NoaXBfc2ZjX2NoaXBfcHJpdiAq
+cHJpdiA9IG5vci0+cHJpdjsKPj4+PiArICAgIHN0cnVjdCByb2NrY2hpcF9zZmMgKnNmYyA9IHBy
+aXYtPnNmYzsKPj4+PiArICAgIHUzMiByZWc7Cj4+Pj4gKyAgICB1OCBpZl90eXBlID0gMDsKPj4+
+PiArCj4+Pj4gKyAgICBpZl90eXBlID0gZ2V0X2lmX3R5cGUoc2ZjLCBub3ItPmZsYXNoX3JlYWQp
+Owo+Pj4+ICsgICAgd3JpdGVsX3JlbGF4ZWQoKGlmX3R5cGUgPDwgU0ZDX0NUUkxfREFUQV9CSVRT
+X1NISUZUKSB8Cj4+Pj4gKyAgICAgICAgICAgICAgIChpZl90eXBlIDw8IFNGQ19DVFJMX0FERFJf
+QklUU19TSElGVCkgfAo+Pj4+ICsgICAgICAgICAgICAgICAoaWZfdHlwZSA8PCBTRkNfQ1RSTF9D
+TURfQklUU19TSElGVCkgfAo+Pj4KPj4+IEhtLCBsb29raW5nIGF0IHRoaXMsIGRvZXMgdGhlIGNv
+bnRyb2xsZXIgb25seSBzdXBwb3J0IG4tbi1uIG1vZGUgKDEtMS0xLAo+Pj4gMi0yLTIsIDQtNC00
+KSA/IE9yIHdoeSBkb24ndCB5b3UgYWxsb3cgMS0xLW4vMS1uLW4vMi1uLW4gPwo+Pgo+PiBObywg
+aXQgYWxzbyBjb3VsZCBzdXBwb3J0IDEtMS1uLCBldGMuCj4+IEJ5IGxvb2tpbmcgYXQgdGhlIGNh
+ZGVuY2UtcXVhZHNwaS5jLCAgaXQgb25seSBhbGxvd3MKPj4gQ1FTUElfSU5TVF9UWVBFX1NJTkdM
+RSBmb3IgZl9wZGF0YS0+YWRkcl93aWR0aCBhbmQgZl9wZGF0YS0+aW5zdF93aWR0aCwKPj4gc28g
+ZmluYWxseSBpdCBvbmx5IHN1cHBvcnRzIDEtMS0xLCAxLTEtMiwgMS0xLTQ/Cj4+Cj4+PiBJIHdv
+dWxkIGxpa2UgdG8gaGVhciBzb21lIGlucHV0IGZyb20gQ3lyaWxsZSBvbiB0aGlzIG9uZS4KPiAK
+PiBUaGUgQ1FTUEkgZHJpdmVyIGluZGVlZCBkb2VzIG9ubHkgMS0xLXggcmVhZCB0aHVzIGZhci4K
+PiBJIGFtIG5vdCBzdXJlIHdoZXRoZXIgc3VwcG9ydCBmb3IgdGhlIG90aGVyIG1vZGVzIGluIHRo
+ZSBTUEkgTk9SCj4gc3Vic3lzdGVtIGxhbmRlZCBhbHJlYWR5LCB3aGljaCBpcyB3aHkgSSdkIGxp
+a2UgdG8gaGVhciBmcm9tCj4gQ3lyaWxsZSBoZXJlLgo+IAo+IFsuLi5dCj4gCgpObywgdGhlIHN1
+cHBvcnQgb2YgU1BJIHByb3RvY29scyBvdGhlciB0aGFuIDEtMS16IGhhcyBub3QgYmVlbiBtZXJn
+ZWQgeWV0CmludG8gdGhlIHNwaS1ub3Igc3Vic3lzdGVtLiBJJ3ZlIHNlbnQgaXQgYXMgcGFydCBv
+ZiB0aGUgU0ZEUCBzZXJpZXMsIHNpbmNlCnRoZW4gSSd2ZSBiZWVuIHdhaXRpbmcgZm9yIG1vcmUg
+cmV2aWV3cyBhbmQgYXBwcm92YWxzIGJlZm9yZSBtZXJnaW5nIGl0CmJlY2F1c2UgSSBkb24ndCB3
+YW50IHRvIGZvcmNlIGFueXRoaW5nIGFuZCB3YWl0IHRvIGF2b2lkIHJlZ3Jlc3Npb24uCgpSZWNl
+bnRseSBJIHdhcyB0aGlua2luZyBhYm91dCBzcGxpdHRpbmcgdGhlIHNlcmllcyBpbnRvIHNtYWxs
+ZXIgYW5kIGFsbW9zdAppbmRlcGVuZGVudCB0b3BpY3MuIEZvciBpbnN0YW5jZSB0aGUgTWFjcm9u
+aXggcGF0Y2ggdG8gaW1wcm92ZSB0aGUKbWFuYWdlbWVudCBvZiB0aGUgUXVhZCBFbmFibGUgYml0
+IGlzIGEgc3RhbmQgYWxvbmUgcGF0Y2guCgpUaGVuIHRoZSBwYXRjaCBhYm91dCBpbXByb3Zpbmcg
+c3VwcG9ydCBvZiA+IDEyOE1iaXQgbWVtb3J5IGJ5IHVzaW5nIHRoZQpkZWRpY2F0ZWQgNC1ieXRl
+IGluc3RydWN0aW9uIHNldCBvbmx5IGRlcGVuZHMgb24gdGhlIHBhdGNoIHJlbmFtaW5nIHNvbWUK
+U1BJTk9SX09QXyogbWFjcm9zIHRvIHVuaWZ5IHRoZSB1c2Ugb2YgdGhlICJfNEIiIHN1ZmZpeC4g
+VGhvc2UgdHdvIHBhdGNoZXMKc29sdmUgdGhlIGlzc3VlIG9mIGJvb3Rsb2FkZXJzIHdoaWNoIGZh
+aWwgdG8gcmVhZCBmcm9tIFNQSSBmbGFzaCB3aGVuIHRoZQptZW1vcnkgaGFzIGVudGVyZWQgaXRz
+IHN0YXRlZnVsbCA0LWJ5dGUgYWRkcmVzcyBtb2RlLgoKTmV4dCwgdGhlcmUgYXJlIDMgcGF0Y2hl
+cyB0byBhZGQgc3VwcG9ydCB0byBTUEkgcHJvdG9jb2xzIDEteS16LiBJIGd1ZXNzCnRoZXkgYXJl
+IHRoZSBwYXRjaGVzIHlvdXIgYXJlIHRhbGtpbmcgYWJvdXQuIFRob3NlIHBhdGNoZXMgcHJlcGFy
+ZXMgdGhlCm1vdmUgdG8gdGhlIFNGRFAgc3VwcG9ydCBidXQgYWN0dWFsbHkgdGhleSBjYW4gYmUg
+YWxzbyBiZSB1c2VkIGFzIGlzIGp1c3QKdG8gdXNlIFNQSSAxLXkteiBwcm90b2NvbCB3aXRob3V0
+IHRhbGtpbmcgYWJvdXQgU0ZEUC4KCkZpbmFsbHksIHRoZSBsYXN0IHBhdGNoZXMgaW50cm9kdWNl
+IHRoZSBTRkRQIHN1cHBvcnQuIEFzIEkgc2FpZCwgdGhlcmUgYXJlCm5vdCBtYW5kYXRvcnkgZm9y
+IHlvdXIgdXNlIGNhc2UgaWYgeW91IG9ubHkgd2FudCB0byB0ZXN0IFNQSSBwcm90b2NvbHMgc3Vj
+aAphcyAxLTQtNC4KCkluIHlvdXIgY2FzZSwgeW91IG1pZ2h0IGJlIGludGVyZXN0ZWQgaW4gcmV2
+aWV3aW5nL3Rlc3Rpbmc6CgpbdjQsIDQvOF0gbXRkOiBzcGktbm9yOiBhZGQgc3VwcG9ydCBvZiBT
+UEkgcHJvdG9jb2xzIGxpa2UgU1BJIDEtMi0yIGFuZApTUEktMS00LTQKaHR0cDovL3BhdGNod29y
+ay5vemxhYnMub3JnL3BhdGNoLzY5NzI2OC8KVGhpcyBpcyB0aGUgbWFpbiBwYXRjaC4KClt2NCwg
+NS84XSBtdGQ6IHNwaS1ub3I6IHJlbW92ZSB1bnVzZWQgc2V0X3F1YWRfbW9kZSgpIGZ1bmN0aW9u
+Cmh0dHA6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9wYXRjaC82OTcyNjkvCk9ubHkgc21hbGwgY2xl
+YW51cCwgcGxlYXNlIHJlYWQgdGhlIGNvbW1pdCBtZXNzYWdlIGZvciBtb3JlIGV4cGxpbmF0aW9u
+CgpbdjQsIDYvOF0gbXRkOiBtMjVwODA6IGFkZCBzdXBwb3J0IG9mIGR1YWwgYW5kIHF1YWQgc3Bp
+IHByb3RvY29scyB0byBhbGwKY29tbWFuZHMKaHR0cDovL3BhdGNod29yay5vemxhYnMub3JnL3Bh
+dGNoLzY5NzI3MC8KVGhpcyBvbmUgaXMgbm90IG5lZWQgd2hlbiB0ZXN0aW5nIHdpdGggdGhpcyBy
+b2NrY2hpcCBzZXJpYWwgZmxhc2gKY29udHJvbGxlciBkcml2ZXIgYXMgaXQgZGlyZWN0bHkgY2Fs
+bHMgc3BpX25vcl9zY2FuKCkgZnJvbQpyb2NrY2hpcF9zZmNfcmVnaXN0ZXIuCgpQbGVhc2Ugbm90
+ZSB0aGVyZSBtaWdodCBiZSBhIHNtYWxsIGRlcGVuZGVuY2UgdG8gdGhlIFNQSU5PUl9PUF8qIG1h
+Y3JvCnJlbmFtaW5nIHBhdGNoOgpbdjQsIDIvOF0gbXRkOiBzcGktbm9yOiByZW5hbWUgU1BJTk9S
+X09QXyogbWFjcm9zIG9mIHRoZSA0LWJ5dGUgYWRkcmVzcyBvcApjb2RlcwpodHRwOi8vcGF0Y2h3
+b3JrLm96bGFicy5vcmcvcGF0Y2gvNjk3MjY2LwpJbmRlZWQgdGhpcyBwYXRjaCBpbnRyb2R1Y2Vz
+IGluIHNwaS1ub3IuaCB0aGUgU1BJTk9SX09QX1JFQURfMV8yXzIgYW5kClNQSU5PUl9PUF9SRUFE
+XzFfNF80IG1hY3JvcyBhbmQgdGhlaXIgYXNzb2NpYXRlZCBvcCBjb2Rlcy4KCkFib3V0IHRoZSBz
+dXBwb3J0IG9mIFNQSSAyLTItMiBhbmQgU1BJIDQtNC00LCBJIGFsc28gaGF2ZSBwYXRjaGVzIHRv
+IGFkZApzdXBwb3J0IHRvIHRob3NlIHR3byBwcm90b2NvbHMgaG93ZXZlciBJIGRlY2lkZWQgbm90
+IHRvIHN1Ym1pdCB0aGVtIGZvciBub3cKZm9yIG1hbnkgcmVhc29ucy4gRmlyc3QsIHRoZSBzZXJp
+ZXMgaXMgYWxyZWFkeSBsb25nIGFuZCBoYXJkIGVub3VnaCB0bwpyZXZpZXcuIFNlY29uZGx5LCBp
+biBtb3N0IGNhc2VzIHRoZSBwZXJmb3JtYW5jZSBpbmNyZWFzZSBiZXR3ZWVuIFNQSSAxLTQtNAph
+bmQgU1BJIDQtNC00IGlzbid0IHdvcnRoIGl0IHdoZW4geW91IHJlYWQgNTEyIGJ5dGUgcGFnZXMg
+b3IgNjRLQiBzZWN0b3JzLgoKSSB0aGluayBpdCB3YXMgYSBtaXN0YWtlIHRvIHNlbmQgYWxsIHRo
+b3NlIHBhdGNoZXMgaW4gYSBzaW5nbGUgYmlnIHNlcmllcwpzaW5jZSBhY3R1YWxseSBtb3N0IG9m
+IHRoZW0gaGF2ZSBub3RoaW5nIHRvIGRvIHdpdGggU0ZEUC4gVGhleSBqdXN0IHByZXBhcmUKdGhl
+IHRyYW5zaXRpb24uIEkgdW5kZXJzdGFuZCBiaWcgc2VyaWVzIG1pZ2h0IHNjYXJlIHBlb3BsZSBh
+bmQgZGlzY291cmFnZQp0aGVtIGZyb20gcmV2aWV3aW5nIG9yIHRlc3RpbmcuCgpIb3dldmVyLCBp
+ZiB5b3UgYXJlIGludGVyZXN0ZWQgaW4gc29tZSBvZiB0aG9zZSBmZWF0dXJlcywgSSB0aGluayBJ
+IHNob3VsZApzZW5kIHRoZSBwYXRjaGVzIHN0ZXAgYnkgc3RlcC4KCkJlc3QgcmVnYXJkcywKCkN5
+cmlsbGUKCj4+Pj4gKyNpZmRlZiBDT05GSUdfUE0KPj4+PiAraW50IHJvY2tjaGlwX3NmY19ydW50
+aW1lX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+Pj4+ICt7Cj4+Pj4gKyAgICBzdHJ1Y3Qg
+cm9ja2NoaXBfc2ZjICpzZmMgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPj4+PiArCj4+Pj4gKyAg
+ICBjbGtfZGlzYWJsZV91bnByZXBhcmUoc2ZjLT5oY2xrKTsKPj4+PiArICAgIHJldHVybiAwOwo+
+Pj4+ICt9Cj4+Pgo+Pj4gV2FzIHRoZSBzdXNwZW5kIGV2ZXIgcmVhbGx5IHRlc3RlZCB3aXRoIHRo
+aXMgYmxvY2sgPyBJcyBkaXNhYmxpbmcgY2xvY2sKPj4+IHJlYWxseSBlbm91Z2ggPwo+Pgo+PiBJ
+dCB3YXMgdGVzdGVkIGFuZCB3ZSBjb3VsZCBkbyBtb3JlLCBmb3IgaW5zdGFuY2UgcG93ZXIgb2Zm
+IHRoZSBnZW5wZCwKPj4gYnV0IGRpc2FibGluZyBjbGNvayBzaG91bGQgYmUgZW5vdWdoLgo+IAo+
+IFdoYXQgYWJvdXQgcHV0dGluZyB0aGUgY29udHJvbGxlciBpbnRvIHNvbWUgcmVzZXQgc3RhdGUg
+LCBpcyB0aGF0IHBvc3NpYmxlPwo+IAo+Pj4+ICtpbnQgcm9ja2NoaXBfc2ZjX3J1bnRpbWVfcmVz
+dW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPj4+PiArewo+Pj4+ICsgICAgc3RydWN0IHJvY2tjaGlw
+X3NmYyAqc2ZjID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4+Pj4gKwo+Pj4+ICsgICAgY2xrX3By
+ZXBhcmVfZW5hYmxlKHNmYy0+aGNsayk7Cj4+Pj4gKyAgICByZXR1cm4gMDsKPj4+PiArfQo+Pj4+
+ICsjZW5kaWYgLyogQ09ORklHX1BNICovCj4+Pgo+Pj4gWy4uLl0KPj4+Cj4+Cj4+Cj4gCj4gCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
