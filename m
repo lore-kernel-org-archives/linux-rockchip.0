@@ -1,73 +1,151 @@
-From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] i2c: rk3x: keep i2c irq ON in suspend
-Date: Tue, 6 Dec 2016 16:12:02 +0800
-Message-ID: <1d570232-af87-467e-e6f4-5b514d583a02@rock-chips.com>
-References: <1480924979-13450-1-git-send-email-david.wu@rock-chips.com>
- <1737869.ycGphUXI8X@phil>
+From: Benjamin Tissoires <benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
+ regulator support
+Date: Tue, 6 Dec 2016 09:48:03 +0100
+Message-ID: <20161206084803.GR1280@mail.corp.redhat.com>
+References: <1480555288-142791-1-git-send-email-briannorris@chromium.org>
+ <20161201143434.GD1280@mail.corp.redhat.com>
+ <20161201172448.GA46688@google.com>
+ <20161205235908.rmiyd7io4kddple6@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1737869.ycGphUXI8X@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20161205235908.rmiyd7io4kddple6@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgrlnKggMjAxNi8xMi81IDE4OjU0LCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
-SGkgRGF2aWQsCj4KPiBBbSBNb250YWcsIDUuIERlemVtYmVyIDIwMTYsIDE2OjAyOjU5IENFVCBz
-Y2hyaWViIERhdmlkIFd1Ogo+PiBEdXJpbmcgc3VzcGVuZCB0aGVyZSBtYXkgc3RpbGwgYmUgc29t
-ZSBpMmMgYWNjZXNzIGhhcHBlbmluZy4KPj4gQW5kIGlmIHdlIGRvbid0IGtlZXAgaTJjIGlycSBP
-TiwgdGhlcmUgbWF5IGJlIGkyYyBhY2Nlc3MgdGltZW91dCBpZgo+PiBpMmMgaXMgaW4gaXJxIG1v
-ZGUgb2Ygb3BlcmF0aW9uLgo+Cj4gY2FuIHlvdSBkZXNjcmliZSB0aGUgaXNzdWUgeW91J3JlIHRy
-eWluZyB0byBmaXggYSBiaXQgbW9yZSBwbGVhc2U/CgpTb21ldGltZXMgd2UgY291bGQgc2VlIHRo
-ZSBpMmMgdGltZW91dCBlcnJvcnMgZHVyaW5nIHN1c3BlbmQvcmVzdW1lLCAKd2hpY2ggbWFrZXMg
-dGhlIGR1cmF0aW9uIG9mIHN1c3BlbmQvcmVzdW1lIHRvbyBsb25nZXIuCgpbICA0ODQuMTcxNTQx
-XSBDUFU0OiBCb290ZWQgc2Vjb25kYXJ5IHByb2Nlc3NvciBbNDEwZmQwODJdClsgIDQ4NS4xNzI3
-NzddIHJrM3gtaTJjIGZmM2MwMDAwLmkyYzogdGltZW91dCwgaXBkOiAweDEwLCBzdGF0ZTogMQpb
-ICA0ODYuMTcyNzYwXSByazN4LWkyYyBmZjNjMDAwMC5pMmM6IHRpbWVvdXQsIGlwZDogMHgxMCwg
-c3RhdGU6IDEKWyAgNDg3LjE3Mjc1OV0gcmszeC1pMmMgZmYzYzAwMDAuaTJjOiB0aW1lb3V0LCBp
-cGQ6IDB4MTAsIHN0YXRlOiAxClsgIDQ4Ny4xNzI4NDBdIGNwdSBjcHU0OiBfc2V0X29wcF92b2x0
-YWdlOiBmYWlsZWQgdG8gc2V0IHZvbHRhZ2UgKDgwMDAwMCAKODAwMDAwIDgwMDAwMCBtVik6IC0x
-MTAKWyAgNDg3LjE3Mjg3NF0gY3B1IGNwdTQ6IGZhaWxlZCB0byBzZXQgdm9sdCA4MDAwMDAKCj4K
-PiBJLmUuIEknZCB0aGluayB0aGUgaTJjLWNvcmUgZG9lcyBzdXNwZW5kIGkyYy1jbGllbnQgZGV2
-aWNlcyBmaXJzdCwgc28gdGhhdAo+IHRoZXNlIHNob3VsZCBiZSBhYmxlIHRvIGZpbmlzaCB1cCB0
-aGVpciBvbmdvaW5nIHRyYW5zZmVycyBhbmQgbm90IHN0YXJ0IGFueQo+IG5ldyBvbmVzIGluc3Rl
-YWQ/Cj4KPiBZb3VyIGlycSBjYW4gc3RpbGwgaGFwcGVuIHNsaWdodGx5IGFmdGVyIHRoZSBzeXN0
-ZW0gc3RhcnRlZCBnb2luZyB0byBhY3R1YWxseQo+IHNsZWVwLCBzbyB0byBtZSBpdCBsb29rcyBs
-aWtlIHlvdSBqdXN0IHdpZGVuZWQgdGhlIHdpbmRvdyB3aGVyZSBpcnFzIGNhbiBiZQo+IGhhbmRs
-ZWQuIEVzcGVjaWFsbHkgYXMgeW91ciBpcnEgY291bGQgYWxzbyBqdXN0IHNpbXBseSBzdGVtIGZy
-b20gdGhlIHN0YXJ0Cj4gc3RhdGUsIHNvIHlvdSBjYW5ub3QgZXZlbiBiZSBzdXJlIGlmIHlvdXIg
-dHJhbnNhY3Rpb24gYWN0dWFsbHkgaXMgZmluaXNoZWQuCgpPa2F5LCB5b3UgYXJlIHJpZ2h0LiBJ
-IHdhbnQgdG8gZ2l2ZSBpdCBhIGRvdWJsZSBpbnN1cmFuY2UgYXQgZmlyc3QsIGJ1dCAKaXQgbWF5
-IGhpZGUgdGhlIHVuaGFwcGVuZCBpc3N1ZS4KCj4KPiBTbyB0byBtZSBpdCBsb29rcyBsaWtlIHRo
-ZSBpMmMtY29ubmVjdGVkIGRldmljZSBkcml2ZXIgc2hvdWxkIGJlIGZpeGVkIGluc3RlYWQ/CgpJ
-IHRlbGwgdGhlbSB0byBmaXggaXQgaW4gcms4MDggZHJpdmVyLgoKPgo+IEluIHRoZSBwYXN0IEkg
-c29sdmVkIHRoaXMgZm9yIGV4YW1wbGUgaW4gdGhlIHpmb3JjZV90cyBkcml2ZXIgWzBdIHRvCj4g
-cHJldmVudCBpMmMgdHJhbnNmZXJzIGZyb20gaGFwcGVuaW5nIGR1cmluZyBzdXNwZW5kLgo+Cj4K
-PiBIZWlrbwo+Cj4gWzBdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwv
-Z2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvaW5wdXQvdG91Y2hzY3JlZW4vemZv
-cmNlX3RzLmMKPgo+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IERhdmlkIFd1IDxkYXZpZC53dUByb2Nr
-LWNoaXBzLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2kyYy9idXNzZXMvaTJjLXJrM3guYyB8IDIg
-Ky0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pgo+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1yazN4LmMgYi9kcml2ZXJzL2ky
-Yy9idXNzZXMvaTJjLXJrM3guYwo+PiBpbmRleCBkZjIyMDY2Li42N2FmMzJhIDEwMDY0NAo+PiAt
-LS0gYS9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLXJrM3guYwo+PiArKysgYi9kcml2ZXJzL2kyYy9i
-dXNzZXMvaTJjLXJrM3guYwo+PiBAQCAtMTI2MSw3ICsxMjYxLDcgQEAgc3RhdGljIGludCByazN4
-X2kyY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlCj4+ICpwZGV2KSB9Cj4+Cj4+ICAJcmV0
-ID0gZGV2bV9yZXF1ZXN0X2lycSgmcGRldi0+ZGV2LCBpcnEsIHJrM3hfaTJjX2lycSwKPj4gLQkJ
-CSAgICAgICAwLCBkZXZfbmFtZSgmcGRldi0+ZGV2KSwgaTJjKTsKPj4gKwkJCSAgICAgICBJUlFG
-X05PX1NVU1BFTkQsIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBpMmMpOwo+PiAgCWlmIChyZXQgPCAw
-KSB7Cj4+ICAJCWRldl9lcnIoJnBkZXYtPmRldiwgImNhbm5vdCByZXF1ZXN0IElSUVxuIik7Cj4+
-ICAJCXJldHVybiByZXQ7Cj4KPgo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Dec 05 2016 or thereabouts, Rob Herring wrote:
+> On Thu, Dec 01, 2016 at 09:24:50AM -0800, Brian Norris wrote:
+> > Hi Benjamin and Rob,
+> > 
+> > On Thu, Dec 01, 2016 at 03:34:34PM +0100, Benjamin Tissoires wrote:
+> > > On Nov 30 2016 or thereabouts, Brian Norris wrote:
+> > > > From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > > > 
+> > > > Add a compatible string and regulator property for Wacom W9103
+> > > > digitizer. Its VDD supply may need to be enabled before using it.
+> > > > 
+> > > > Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > > > Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > > > Cc: Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > > > Cc: linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> > > > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > > > ---
+> > > > v1 was a few months back. I finally got around to rewriting it based on
+> > > > DT binding feedback.
+> > > > 
+> > > > v2:
+> > > >  * add compatible property for wacom
+> > > >  * name the regulator property specifically (VDD)
+> > > > 
+> > > >  Documentation/devicetree/bindings/input/hid-over-i2c.txt | 6 +++++-
+> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/input/hid-over-i2c.txt b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
+> > > > index 488edcb264c4..eb98054e60c9 100644
+> > > > --- a/Documentation/devicetree/bindings/input/hid-over-i2c.txt
+> > > > +++ b/Documentation/devicetree/bindings/input/hid-over-i2c.txt
+> > > > @@ -11,12 +11,16 @@ If this binding is used, the kernel module i2c-hid will handle the communication
+> > > >  with the device and the generic hid core layer will handle the protocol.
+> > > >  
+> > > >  Required properties:
+> > > > -- compatible: must be "hid-over-i2c"
+> > > > +- compatible: must be "hid-over-i2c", or a device-specific string like:
+> > > > +    * "wacom,w9013"
+> > > 
+> > > NACK on this one.
+> > > 
+> > > After re-reading the v1 submission I realized Rob asked for this change,
+> > > but I strongly disagree.
+> > > 
+> > > HID over I2C is a generic protocol, in the same way HID over USB is. We
+> > > can not start adding device specifics here, this is opening the can of
+> > > worms. If the device is a HID one, nothing else should matter. The rest
+> > > (description of the device, name, etc...) is all provided by the
+> > > protocol.
+> > 
+> > I should have spoken up when Rob made the suggestion, because I more or
+> > less agree with Benjamin here. I don't really see why this needs to have
+> > a specialized compatible string, as the property is still fairly
+> > generic, and the entire device handling is via a generic protocol. The
+> > fact that we manage its power via a regulator is not very
+> > device-specific.
+> 
+> It doesn't matter that the protocol is generic. The device attached and 
+> the implementation is not. Implementations have been known to have 
+> bugs/quirks (generally speaking, not HID over I2C in particular). There 
+> are also things outside the scope of what is 'hid-over-i2c' like what's 
+> needed to power-on the device which this patch clearly show.
+
+Yes, there are bugs, quirks, even with HID. But the HID declares within
+the protocol the Vendor ID and the Product ID, which means once we pass
+the initial "device is ready" step and can do a single i2c write/read,
+we don't give a crap about device tree anymore.
+
+This is just about setting the device in shape so that it can answer a
+single write/read.
+
+> 
+> This is no different than a panel attached via LVDS, eDP, etc., or 
+> USB/PCIe device hard-wired on a board. They all use standard protocols 
+> and all need additional data to describe them. Of course, adding a 
+> single property for a delay would not be a big deal, but it's never 
+> ending. Next you need multiple supplies, GPIO controls, mutiple 
+> delays... This has been discussed to death already. As Thierry Reding 
+> said, you're not special[1].
+
+I can somewhat understand what you mean. The official specification is
+for ACPI. And ACPI allows to calls various settings while querying the
+_STA method for instance. So in the ACPI world, we don't need to care
+about regulators or GPIOs because the OEM deals with this in its own
+blob.
+
+Now, coming back to our issue. We are not special, maybe, if he says so.
+But this really feels like a design choice between putting the burden on
+device tree and OEMs or in the module maintainers. And I'd rather have
+the OEM deal with their device than me having to update the module for
+each generations of hardware. Indeed, this looks like an "endless"
+amount of quirks, but I'd rather have this endless amount of quirks than
+having to maintain an endless amount of list of new devices that behaves
+the same way. We are talking here about "wacom,w9013", but then comes
+"wacom,w9014" and we need to upgrade the kernel.
+
+I have dealt with that for the wacom modules for years, and this is
+definitively not a good solution.
+
+And one additional caveat of this solution is the time between the
+release of the new device and its readiness in the hands of the
+consumer. You need to push a patch upstream, then backport it or wait
+for it to come to your distribution. While if there is a device tree
+specific quirk, you just read the spec of the device and applies it to
+your device tree and you are good to go.
+
+So no, I don't buy this. If hardware makers want to have fancy way of
+initializing their devices, we can cope with those, but I don't want to
+do the Device Tree job in a kernel module were you need to recompile it
+each time a new device appears.
+
+> 
+> Now if you want to make 'hid-over-i2c' a fallback to 'wacom,w9013', I'm 
+> fine with that.
+
+I agree to have some sort of quirks in the i2c-hid module, but
+definitively not a list of devices with a specific initialization
+sequence. Device Tree has also been introduced to remove the specific
+platform devices, and you are basically asking us to go back there,
+which I don't want.
+
+Cheers,
+Benjamin
+
+> 
+> Rob
+> 
+> [1] https://sietch-tagr.blogspot.de/2016/04/display-panels-are-not-special.html
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
