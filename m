@@ -1,37 +1,62 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/9] arm64: dts: rockchip: support dwc3 USB for rk3399
-Date: Wed, 07 Dec 2016 20:09:35 +0100
-Message-ID: <5292364.Xa7yl762Dv@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <1972184.o3UeJg0tK9@phil> <20161207190301.GA107036@google.com>
+Subject: Re: [PATCH 6/9] dt-bindings: Document rk3399 Gru/Kevin
+Date: Wed, 07 Dec 2016 20:15:32 +0100
+Message-ID: <4532061.zEGHLIjg0t@phil>
+References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <1720836.rjtWqG8OD3@phil> <20161207174139.GA87970@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161207190301.GA107036@google.com>
+In-Reply-To: <20161207174139.GA87970@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
 Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Stephen Barber <smbarber@chromium.org>, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. Dezember 2016, 11:03:02 CET schrieb Brian Norris:
-> On Wed, Dec 07, 2016 at 08:01:23PM +0100, Heiko Stuebner wrote:
-> > Am Mittwoch, 7. Dezember 2016, 09:52:08 CET schrieb Brian Norris:
-> > > But pcie@f8000000 is also out of order then. I guess maybe
-> > > that's the only one then.
+Am Mittwoch, 7. Dezember 2016, 09:41:39 CET schrieb Brian Norris:
+> On Wed, Dec 07, 2016 at 06:12:13PM +0100, Heiko Stuebner wrote:
+> > Hi Brian,
 > > 
-> > Yep, pcie is misplaced as sadly sometimes I miss those errors as well.
+> > Am Donnerstag, 1. Dezember 2016, 18:27:30 CET schrieb Brian Norris:
+> > > Gru is a base dev board for a family of devices, including Kevin. Both
+> > > utilize Rockchip RK3399, and they share much of their design.
+> > > 
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > ---
+> > > 
+> > >  Documentation/devicetree/bindings/arm/rockchip.txt | 20
+> > > 
+> > > ++++++++++++++++++++ 1 file changed, 20 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
+> > > b/Documentation/devicetree/bindings/arm/rockchip.txt index
+> > > cc4ace6397ab..830e13f5890c 100644
+> > > --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> > > +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> > > @@ -99,6 +99,26 @@ Rockchip platforms device tree bindings
+> > > 
+> > >  		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
+> > >  		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
+> > > 
+> > > +- Google Gru (dev-board):
+> > boards sorted alphabetically please
+> > 
+> > Brian, Gru, Jaq, ... Kevin, ...
+> > 
+> > While the sorting of old boards is not right yet, new boards should be
+> > sorted.
+> I got the idea that there was some attempt to group logically before
+> alphabetically. Like keeping board/SoC families together. But maybe not.
 > 
-> OK. Do you want me to patch that at the end of my series, or is that
-> unnecessary churn?
+> I can do as you suggested, if you don't care about keeping actual
+> similar boards together (i.e., veyron/3288 vs gru/3399).
 
-I'm still pondering [and am investing way to much brain cells in trying to 
-decide this ;-) ], but tend to want to move it.
+I'd prefer a simple alphabetical sorting.
 
-That way the dtsi gives the correct sorting impression for future dt-patches 
-of which I guess we'll see a lot in the time to come.
+I think people reading the document will know what device they have, but not 
+necessarily the actual soc in it. At least I would look for Google Kevin 
+primarily without thinking of the soc at first.
 
-So yes, please move it as well.
-
-
-Thanks
-Heiko
+And in general, most Rockchip boards (maybe except Google-boards) tend to 
+follow the reference design quite closely, so it may become hard to decide 
+when one is similar to another :-) . So best to keep it simple.
