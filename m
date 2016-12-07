@@ -1,62 +1,72 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 6/9] dt-bindings: Document rk3399 Gru/Kevin
-Date: Wed, 07 Dec 2016 20:15:32 +0100
-Message-ID: <4532061.zEGHLIjg0t@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <1720836.rjtWqG8OD3@phil> <20161207174139.GA87970@google.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 3/3] PCI: rockchip: Add system PM support
+Date: Wed, 7 Dec 2016 15:46:53 -0600
+Message-ID: <20161207214653.GF22129@bhelgaas-glaptop.roam.corp.google.com>
+References: <1479952462-194300-1-git-send-email-shawn.lin@rock-chips.com>
+ <1479952462-194300-3-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161207174139.GA87970@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Stephen Barber <smbarber@chromium.org>, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1479952462-194300-3-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. Dezember 2016, 09:41:39 CET schrieb Brian Norris:
-> On Wed, Dec 07, 2016 at 06:12:13PM +0100, Heiko Stuebner wrote:
-> > Hi Brian,
-> > 
-> > Am Donnerstag, 1. Dezember 2016, 18:27:30 CET schrieb Brian Norris:
-> > > Gru is a base dev board for a family of devices, including Kevin. Both
-> > > utilize Rockchip RK3399, and they share much of their design.
-> > > 
-> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > > ---
-> > > 
-> > >  Documentation/devicetree/bindings/arm/rockchip.txt | 20
-> > > 
-> > > ++++++++++++++++++++ 1 file changed, 20 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > b/Documentation/devicetree/bindings/arm/rockchip.txt index
-> > > cc4ace6397ab..830e13f5890c 100644
-> > > --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > @@ -99,6 +99,26 @@ Rockchip platforms device tree bindings
-> > > 
-> > >  		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-> > >  		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-> > > 
-> > > +- Google Gru (dev-board):
-> > boards sorted alphabetically please
-> > 
-> > Brian, Gru, Jaq, ... Kevin, ...
-> > 
-> > While the sorting of old boards is not right yet, new boards should be
-> > sorted.
-> I got the idea that there was some attempt to group logically before
-> alphabetically. Like keeping board/SoC families together. But maybe not.
+Hi Shawn,
+
+On Thu, Nov 24, 2016 at 09:54:22AM +0800, Shawn Lin wrote:
+> This patch adds system PM support for Rockchip's RC.
+> For pre S3, the EP is configured into D3 state which guarantees
+> the link state should be in L1. So we could send PME_Turn_Off message
+> to the EP and wait for its ACK to make the link state into L2 or L3
+> without the aux-supply. This could help save more power which I think
+> should be very important for mobile devices.
 > 
-> I can do as you suggested, if you don't care about keeping actual
-> similar boards together (i.e., veyron/3288 vs gru/3399).
+> As note that there is a 5s timeout for RC to wait for the PMA_ACK
+> aftering send PME_Turn_Off. Technically it should depends on the
+> hierarchy of devices but seems PCIe core framework doesn't handle the
+> L2/3 for S3 at all. So that means we should presume to set a default
+> value for PME_ACK. From the bug report[1], we could find a statment that
+> Microsoft Windows versions typically wait for 5 seconds. So we are prone
+> to take 5s for this timeout here.
+> 
+> [1] https://lists.launchpad.net/kernel-packages/msg123315.html
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-I'd prefer a simple alphabetical sorting.
+> @@ -1196,8 +1207,96 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+>  		}
+>  	}
+>  
+> +	/* assign message regions */
+> +	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
+> +				  AXI_WRAPPER_NOR_MSG,
+> +				  20 - 1, 0, 0);
+> +	if (rockchip->msg_region)
+> +		goto out;
+> +
+> +	rockchip->msg_region = devm_ioremap(rockchip->dev,
+> +					    rockchip->mem_bus_addr +
+> +					    ((reg_no + offset) << 20),
+> +					    SZ_1M);
+> +	if (!rockchip->msg_region)
+> +		err = -ENOMEM;
 
-I think people reading the document will know what device they have, but not 
-necessarily the actual soc in it. At least I would look for Google Kevin 
-primarily without thinking of the soc at first.
+I don't really like this strategy of "if msg_region is already mapped,
+skip it; otherwise map it."  The ioremap() looks like something that
+should be done at probe-time and does not need to be re-done at
+resume-time.
 
-And in general, most Rockchip boards (maybe except Google-boards) tend to 
-follow the reference design quite closely, so it may become hard to decide 
-when one is similar to another :-) . So best to keep it simple.
+Bjorn
