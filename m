@@ -1,97 +1,48 @@
-From: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] drm/bridge: analogix: Don't return -EINVAL when panel not
- support PSR in PSR functions
-Date: Wed, 7 Dec 2016 08:45:19 +0800
-Message-ID: <bca14f6c-4280-6006-3ad6-b3ae9b83965d@rock-chips.com>
-References: <1480645942-29912-1-git-send-email-wzz@rock-chips.com>
- <b9e49431-5680-8a03-557a-b9c5b8307737@codeaurora.org>
- <CAOw6vbJTRLu6mTWXWNBmhhgxmkK-szgnUY_bZ+es5PKnjetiXw@mail.gmail.com>
- <85f3e098-9566-751e-f201-dddda973f77a@codeaurora.org>
- <CAOw6vbLv_q8XPj4_A7Yx1HaVVkdUTeq9=EHAjtJd7bOge2C21Q@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAOw6vbLv_q8XPj4_A7Yx1HaVVkdUTeq9=EHAjtJd7bOge2C21Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: zain wang <wzz@rock-chips.com>
+Subject: [PATCH v2] drm/bridge: analogix: Don't return -EINVAL when panel not support PSR in PSR functions
+Date: Wed,  7 Dec 2016 08:57:33 +0800
+Message-ID: <1481072253-8917-1-git-send-email-wzz@rock-chips.com>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, Thierry Reding <treding@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, zain wang <wzz@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNi8xMi82IDE6MjgsIFNlYW4gUGF1bCDlhpnpgZM6Cj4gT24gU3VuLCBEZWMgNCwg
-MjAxNiBhdCAxMDoxMyBQTSwgQXJjaGl0IFRhbmVqYSA8YXJjaGl0dEBjb2RlYXVyb3JhLm9yZz4g
-d3JvdGU6Cj4+Cj4+IE9uIDEyLzAyLzIwMTYgMDk6MzMgUE0sIFNlYW4gUGF1bCB3cm90ZToKPj4+
-IE9uIFRodSwgRGVjIDEsIDIwMTYgYXQgMTA6NTQgUE0sIEFyY2hpdCBUYW5lamEgPGFyY2hpdHRA
-Y29kZWF1cm9yYS5vcmc+Cj4+PiB3cm90ZToKPj4+PiBIaSwKPj4+Pgo+Pj4+IE9uIDEyLzAyLzIw
-MTYgMDg6MDIgQU0sIHphaW4gd2FuZyB3cm90ZToKPj4+Pj4KPj4+Pj4gV2Ugd2lsbCBpZ25vcmVk
-IFBTUiBzZXR0aW5nIGlmIHBhbmVsIG5vdCBzdXBwb3J0IGl0LiBTbywgaW4gdGhpcyBjYXNlLAo+
-Pj4+PiB3ZQo+Pj4+PiBzaG91bGQKPj4+Pj4gcmV0dXJuIGZyb20gYW5hbG9naXhfZHBfZW5hYmxl
-L2Rpc2FibGVfcHNyKCkgd2l0aG91dCBhbnkgZXJyb3IgY29kZS4KPj4+Pj4gTGV0J3MgcmV0cnVu
-IDAgaW5zdGVhZCBvZiAtRUlOVkFMIHdoZW4gcGFuZWwgbm90IHN1cHBvcnQgUFNSIGluCj4+Pj4+
-IGFuYWxvZ2l4X2RwX2VuYWJsZS9kaXNhYmxlX3BzcigpLgo+Pj4+Pgo+Pj4+PiBTaWduZWQtb2Zm
-LWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPj4+Pj4gLS0tCj4+Pj4+ICAgZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCA2ICsrKyst
-LQo+Pj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0p
-Cj4+Pj4+Cj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
-L2FuYWxvZ2l4X2RwX2NvcmUuYwo+Pj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4+Pj4+IGluZGV4IDZlMDQ0N2YuLjBjYjM2OTUgMTAwNjQ0
-Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5jCj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5jCj4+Pj4+IEBAIC0xMTIsNyArMTEyLDcgQEAgaW50IGFuYWxvZ2l4X2RwX2Vu
-YWJsZV9wc3Ioc3RydWN0IGRldmljZSAqZGV2KQo+Pj4+PiAgICAgICAgICBzdHJ1Y3QgZWRwX3Zz
-Y19wc3IgcHNyX3ZzYzsKPj4+Pj4KPj4+Pj4gICAgICAgICAgaWYgKCFkcC0+cHNyX3N1cHBvcnQp
-Cj4+Pj4+IC0gICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPj4+Pj4gKyAgICAgICAgICAg
-ICAgIHJldHVybiAwOwo+Pj4+Cj4+Pj4KPj4+PiBMb29raW5nIGF0IHRoZSByb2NrY2hpcCBhbmFs
-b2dpeCBkcCBjb2RlLCBpbiBhbmFsb2dpeF9kcF9wc3Jfc2V0LCB0aGUKPj4+PiB3b3JrZXIKPj4+
-PiB0aGF0IGNhbGxzCj4+Pj4gYW5hbG9naXhfZHBfZW5hYmxlL2Rpc2FibGVfcHNyIGlzbid0IGV2
-ZW4gaWYgcHNyIGlzbid0IGVuYWJsZWQuIFNvLCB0aGUKPj4+PiBicmlkZ2UgZnVuY3MKPj4+PiBz
-aG91bGRuJ3QgYmUgY2FsbGVkIGluIHRoZSBmaXJzdCBwbGFjZS4gSSB0aGluayB0aGUgZXJyb3Ig
-aGFuZGxpbmcgaXMKPj4+PiBmaW5lCj4+Pj4gdG8gaGF2ZQo+Pj4+IGhlcmUuCj4+Pj4KPj4+IEhp
-IEFyY2hpdCwKPj4+Cj4+PiBUaGlzIHdhcyBteSBmaXJzdCBpbXByZXNzaW9uLCB0b28sIGFuZCB0
-aGUgY29tcGxleGl0eSBvZiB0aGUgdmFyaW91cwo+Pj4gcHNyIGFic3RyYWN0aW9uIGxheWVycyBk
-b24ndCBoZWxwIDopCj4+Pgo+Pj4gSG93ZXZlciwgdGhpcyBjb2RlIHBhdGggd2lsbCBiZSBoaXQg
-aWYgdGhlIHNvdXJjZSBzdXBwb3J0cyBwc3IsIGJ1dAo+Pj4gdGhlIHNpbmsgZG9lc24ndC4gVGhl
-IHJvY2tjaGlwX2RybV9wc3IgY29kZSBkb2Vzbid0IGtub3cgaWYgdGhlIHNpbmsKPj4+IHN1cHBv
-cnRzIHBzciwgc28gaXQgd2lsbCBlbmQgdXAgY2FsbGluZyB0aGlzLgo+Pgo+PiBPa2F5LCB0aGFu
-a3MgZm9yIHRoZSBleHBsYW5hdGlvbi4gVGhlIGRldl93YXJuKCkgYmVsb3cgc3RpbGwgc2VlbXMK
-Pj4gdW5uZWNlc3NhcnksIHJpZ2h0Pwo+Pgo+IFllYWgsIG9uZSBjb3VsZCBtYWtlIGEgY2FzZSBm
-b3IgZGV2X2luZm8gKGRpc2NsYWltZXI6IEkgaGF2ZSBhIGhpZ2gKPiB0b2xlcmFuY2UgZm9yIG5v
-aXN5IGxvZ3MpLCBidXQgYSB3YXJuaW5nIGRvZXMgc2VlbSBleGNlc3NpdmUuCj4KPiBTZWFuCk9L
-LCBJIHdpbGwgcmVtb3ZlIHRoZSBkZXZfd2FybiBzaW5jZSB0aGVyZSBpcyBhIGRldl9kYmcgZm9y
-IHRoZSBzYW1lIGNhc2UuCj4KPj4gQXJjaGl0Cj4+Cj4+Cj4+PiBTZWFuCj4+Pgo+Pj4KPj4+Pj4g
-ICAgICAgICAgLyogUHJlcGFyZSBWU0MgcGFja2V0IGFzIHBlciBFRFAgMS40IHNwZWMsIFRhYmxl
-IDYuOSAqLwo+Pj4+PiAgICAgICAgICBtZW1zZXQoJnBzcl92c2MsIDAsIHNpemVvZihwc3JfdnNj
-KSk7Cj4+Pj4+IEBAIC0xMzUsNyArMTM1LDcgQEAgaW50IGFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNy
-KHN0cnVjdCBkZXZpY2UgKmRldikKPj4+Pj4gICAgICAgICAgc3RydWN0IGVkcF92c2NfcHNyIHBz
-cl92c2M7Cj4+Pj4+Cj4+Pj4+ICAgICAgICAgIGlmICghZHAtPnBzcl9zdXBwb3J0KQo+Pj4+PiAt
-ICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4+Pj4+ICsgICAgICAgICAgICAgICByZXR1
-cm4gMDsKPj4+Pj4KPj4+Pj4gICAgICAgICAgLyogUHJlcGFyZSBWU0MgcGFja2V0IGFzIHBlciBF
-RFAgMS40IHNwZWMsIFRhYmxlIDYuOSAqLwo+Pj4+PiAgICAgICAgICBtZW1zZXQoJnBzcl92c2Ms
-IDAsIHNpemVvZihwc3JfdnNjKSk7Cj4+Pj4+IEBAIC04NzgsNiArODc4LDggQEAgc3RhdGljIHZv
-aWQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVjdAo+Pj4+PiBhbmFsb2dpeF9kcF9kZXZpY2UgKmRw
-KQo+Pj4+PiAgICAgICAgICBkcC0+cHNyX3N1cHBvcnQgPSBhbmFsb2dpeF9kcF9kZXRlY3Rfc2lu
-a19wc3IoZHApOwo+Pj4+PiAgICAgICAgICBpZiAoZHAtPnBzcl9zdXBwb3J0KQo+Pj4+PiAgICAg
-ICAgICAgICAgICAgIGFuYWxvZ2l4X2RwX2VuYWJsZV9zaW5rX3BzcihkcCk7Cj4+Pj4+ICsgICAg
-ICAgZWxzZQo+Pj4+PiArICAgICAgICAgICAgICAgZGV2X3dhcm4oZHAtPmRldiwgIlNpbmsgbm90
-IHN1cHBvcnQgUFNSXG4iKTsKPj4+Pgo+Pj4+Cj4+Pj4gVGhpcyBkb2Vzbid0IHNlZW0gYmVuZWZp
-Y2lhbCBlaXRoZXIuIFRoZXJlIHNlZW1zIHRvIGJlIGEgZGVidWcKPj4+PiBwcmludCBhbHJlYWR5
-IGluIGFuYWxvZ2l4X2RwX2RldGVjdF9zaW5rX3BzciB3aGljaCByZXBvcnRzIFBTUgo+Pj4+IHJl
-bGF0ZWQgaW5mby4KPj4+Pgo+Pj4+IEFyY2hpdAo+Pj4+Cj4+Pj4+ICAgfQo+Pj4+Pgo+Pj4+PiAg
-IC8qCj4+Pj4+Cj4+Pj4gLS0KPj4+PiBRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRlciwgSW5jLiBp
-cyBhIG1lbWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKPj4+PiBhIExpbnV4IEZvdW5kYXRpb24g
-Q29sbGFib3JhdGl2ZSBQcm9qZWN0Cj4+Cj4+IC0tCj4+IFF1YWxjb21tIElubm92YXRpb24gQ2Vu
-dGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZvcnVtLAo+PiBhIExpbnV4IEZv
-dW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cj4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgoKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+We will ignored PSR setting if panel not support it. So, in this case, we should
+return from analogix_dp_enable/disable_psr() without any error code.
+Let's retrun 0 instead of -EINVAL when panel not support PSR in
+analogix_dp_enable/disable_psr().
+
+Signed-off-by: zain wang <wzz@rock-chips.com>
+---
+
+Changes in v2:
+- Remove dev_warn if panel not support PSR.
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 6e0447f..eb9bf87 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -112,7 +112,7 @@ int analogix_dp_enable_psr(struct device *dev)
+ 	struct edp_vsc_psr psr_vsc;
+ 
+ 	if (!dp->psr_support)
+-		return -EINVAL;
++		return 0;
+ 
+ 	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+ 	memset(&psr_vsc, 0, sizeof(psr_vsc));
+@@ -135,7 +135,7 @@ int analogix_dp_disable_psr(struct device *dev)
+ 	struct edp_vsc_psr psr_vsc;
+ 
+ 	if (!dp->psr_support)
+-		return -EINVAL;
++		return 0;
+ 
+ 	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+ 	memset(&psr_vsc, 0, sizeof(psr_vsc));
+-- 
+1.9.1
