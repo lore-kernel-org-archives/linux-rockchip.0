@@ -1,25 +1,63 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/9] arm64: dts: rockchip: add rk3399 eDP HPD pinctrl
-Date: Wed, 07 Dec 2016 17:56:49 +0100
-Message-ID: <2656941.S2ZIGXgA4E@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <1480645653-36943-4-git-send-email-briannorris@chromium.org>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 8/9] arm64: dts: rockchip: partially describe PWM
+ regulators for Gru
+Date: Wed, 7 Dec 2016 09:09:17 -0800
+Message-ID: <20161207170916.GA84287@google.com>
+References: <1480645653-36943-1-git-send-email-briannorris@chromium.org>
+ <1480645653-36943-9-git-send-email-briannorris@chromium.org>
+ <2418784.7dMdkAyuIx@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1480645653-36943-4-git-send-email-briannorris@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <2418784.7dMdkAyuIx@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Stephen Barber <smbarber@chromium.org>, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 1. Dezember 2016, 18:27:27 CET schrieb Brian Norris:
-> We haven't enabled eDP support yet, but we might as well describe the
-> pin now.
+Hi Heiko,
+
+On Wed, Dec 07, 2016 at 05:48:24PM +0100, Heiko Stuebner wrote:
+> Am Donnerstag, 1. Dezember 2016, 18:27:32 CET schrieb Brian Norris:
+> > We need to add regulators to the CPU nodes, so cpufreq doesn't think it
+> > can crank up the clock speed without changing the voltage. However, we
+> > don't yet have the DT bindings to fully describe the Over Voltage
+> > Protection (OVP) circuits on these boards. Without that description, we
+> > might end up changing the voltage too much, too fast.
+> > 
+> > Add the pwm-regulator descriptions and associate the CPU OPPs, but leave
+> > them disabled.
+> > 
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
 > 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> is there a specific reason for keeping this change separate?
 
-applied for 4.11
+Maybe not a great one. I figured they were somewhat controversial, so I
+at least wanted to split the "cpufreq patches" (i.e., this and the
+previous) from the main DTS(I) additions. I also figured we typically
+like to keep the base SoC changes separate from the board DTS(I)
+changes.
 
-Thanks
-Heiko
+> While it is nice for documentation reasons, as it stands now the previous 
+> patch introduces a regression (cpufreq trying to scale without regulators) and 
+> immediately fixes it here.
+
+Right. Additionally, as noted on the previous patch, we might do the
+same with EVB. But I don't know what the regulators are like for EVB.
+This is probably a bigger deal, since EVB has been working (allegedly)
+upstream for a while now.
+
+There's no way to split these up without either breaking compilation or
+breaking bisectability. For Kevin/Gru, they don't function at all before
+this series, so I figured some "settle" time wasn't a huge deal.
+
+> So if you're ok with it, I'd like to merge this one back into the previous 
+> patch when applying.
+
+That'd be OK with me, as long as we're also confident about EVB.
+
+Maybe at a minimum, I should just patch in some empty regulator nodes,
+so cpufreq doesn't think there's no need to handle voltage.
+
+Brian
