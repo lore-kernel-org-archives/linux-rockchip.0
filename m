@@ -1,148 +1,66 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm: dts: rockchip: add qos node for rk3288
-Date: Wed,  7 Dec 2016 10:17:45 +0800
-Message-ID: <1481077065-11309-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2] drm/bridge: analogix: Don't return -EINVAL when panel
+ not support PSR in PSR functions
+Date: Wed, 7 Dec 2016 08:46:32 +0530
+Message-ID: <5be43224-8360-2899-c75f-0fba57e812c6@codeaurora.org>
+References: <1481072253-8917-1-git-send-email-wzz@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1481072253-8917-1-git-send-email-wzz@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: zain wang <wzz@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Inki Dae <inki.dae@samsung.com>, David Airlie <airlied@linux.ie>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Mika Kahola <mika.kahola@intel.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Tomasz Figa <tfiga@chromium.org>, dianders@chromium.org, Thierry Reding <treding@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-when pd power on/off, the qos regs need to save and restore.
 
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 84 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 84 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 4fad13368a7b..2628edc871fa 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -699,6 +699,76 @@
- 		reg = <0xff720000 0x1000>;
- 	};
- 
-+	qos_gpu_r: qos@ffaa0000 {
-+		compatible = "syscon";
-+		reg = <0xffaa0000 0x20>;
-+	};
-+
-+	qos_gpu_w: qos@ffaa0080 {
-+		compatible = "syscon";
-+		reg = <0xffaa0080 0x20>;
-+	};
-+
-+	qos_vio1_vop: qos@ffad0000 {
-+		compatible = "syscon";
-+		reg = <0xffad0000 0x20>;
-+	};
-+
-+	qos_vio1_isp_w0: qos@ffad0100 {
-+		compatible = "syscon";
-+		reg = <0xffad0100 0x20>;
-+	};
-+
-+	qos_vio1_isp_w1: qos@ffad0180 {
-+		compatible = "syscon";
-+		reg = <0xffad0180 0x20>;
-+	};
-+
-+	qos_vio0_vop: qos@ffad0400 {
-+		compatible = "syscon";
-+		reg = <0xffad0400 0x20>;
-+	};
-+
-+	qos_vio0_vip: qos@ffad0480 {
-+		compatible = "syscon";
-+		reg = <0xffad0480 0x20>;
-+	};
-+
-+	qos_vio0_iep: qos@ffad0500 {
-+		compatible = "syscon";
-+		reg = <0xffad0500 0x20>;
-+	};
-+
-+	qos_vio2_rga_r: qos@ffad0800 {
-+		compatible = "syscon";
-+		reg = <0xffad0800 0x20>;
-+	};
-+
-+	qos_vio2_rga_w: qos@ffad0880 {
-+		compatible = "syscon";
-+		reg = <0xffad0880 0x20>;
-+	};
-+
-+	qos_vio1_isp_r: qos@ffad0900 {
-+		compatible = "syscon";
-+		reg = <0xffad0900 0x20>;
-+	};
-+
-+	qos_video: qos@ffae0000 {
-+		compatible = "syscon";
-+		reg = <0xffae0000 0x20>;
-+	};
-+
-+	qos_hevc_r: qos@ffaf0000 {
-+		compatible = "syscon";
-+		reg = <0xffaf0000 0x20>;
-+	};
-+
-+	qos_hevc_w: qos@ffaf0080 {
-+		compatible = "syscon";
-+		reg = <0xffaf0080 0x20>;
-+	};
-+
- 	pmu: power-management@ff730000 {
- 		compatible = "rockchip,rk3288-pmu", "syscon", "simple-mfd";
- 		reg = <0xff730000 0x100>;
-@@ -762,6 +832,15 @@
- 					 <&cru SCLK_ISP_JPE>,
- 					 <&cru SCLK_ISP>,
- 					 <&cru SCLK_RGA>;
-+				pm_qos = <&qos_vio0_iep>,
-+					 <&qos_vio1_vop>,
-+					 <&qos_vio1_isp_w0>,
-+					 <&qos_vio1_isp_w1>,
-+					 <&qos_vio0_vop>,
-+					 <&qos_vio0_vip>,
-+					 <&qos_vio2_rga_r>,
-+					 <&qos_vio2_rga_w>,
-+					 <&qos_vio1_isp_r>;
- 			};
- 
- 			/*
-@@ -773,6 +852,8 @@
- 				clocks = <&cru ACLK_HEVC>,
- 					 <&cru SCLK_HEVC_CABAC>,
- 					 <&cru SCLK_HEVC_CORE>;
-+				pm_qos = <&qos_hevc_r>,
-+					 <&qos_hevc_w>;
- 			};
- 
- 			/*
-@@ -784,6 +865,7 @@
- 				reg = <RK3288_PD_VIDEO>;
- 				clocks = <&cru ACLK_VCODEC>,
- 					 <&cru HCLK_VCODEC>;
-+				pm_qos = <&qos_video>;
- 			};
- 
- 			/*
-@@ -793,6 +875,8 @@
- 			pd_gpu@RK3288_PD_GPU {
- 				reg = <RK3288_PD_GPU>;
- 				clocks = <&cru ACLK_GPU>;
-+				pm_qos = <&qos_gpu_r>,
-+					 <&qos_gpu_w>;
- 			};
- 		};
- 
+On 12/07/2016 06:27 AM, zain wang wrote:
+> We will ignored PSR setting if panel not support it. So, in this case, we should
+> return from analogix_dp_enable/disable_psr() without any error code.
+> Let's retrun 0 instead of -EINVAL when panel not support PSR in
+> analogix_dp_enable/disable_psr().
+
+Thanks. Pushed to drm-misc after wrapping the commit
+message text.
+
+Archit
+
+>
+> Signed-off-by: zain wang <wzz@rock-chips.com>
+> ---
+>
+> Changes in v2:
+> - Remove dev_warn if panel not support PSR.
+>
+>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 6e0447f..eb9bf87 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -112,7 +112,7 @@ int analogix_dp_enable_psr(struct device *dev)
+>  	struct edp_vsc_psr psr_vsc;
+>
+>  	if (!dp->psr_support)
+> -		return -EINVAL;
+> +		return 0;
+>
+>  	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>  	memset(&psr_vsc, 0, sizeof(psr_vsc));
+> @@ -135,7 +135,7 @@ int analogix_dp_disable_psr(struct device *dev)
+>  	struct edp_vsc_psr psr_vsc;
+>
+>  	if (!dp->psr_support)
+> -		return -EINVAL;
+> +		return 0;
+>
+>  	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>  	memset(&psr_vsc, 0, sizeof(psr_vsc));
+>
+
 -- 
-1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
