@@ -1,53 +1,79 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] drm/panel: simple: Add support BOE nv101wxmn51
-Date: Thu,  8 Dec 2016 13:26:05 +0800
-Message-ID: <1481174765-28286-1-git-send-email-wxt@rock-chips.com>
+Subject: Re: [PATCH] drm/panel: simple: Add support BOE nv101wxmn51
+Date: Thu, 8 Dec 2016 14:01:15 +0800
+Message-ID: <5999b6b3-383c-f9b8-8f29-4f1104f65da5@rock-chips.com>
+References: <1481174765-28286-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1481174765-28286-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: thierry.reding@gmail.com
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Caesar Wang <wxt@rock-chips.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, airlied@linux.ie, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-MTAuMVdYR0EgaXMgYSBjb2xvciBhY3RpdmUgbWF0cml4IFRGVCBMQ0QgbW9kdWxlIHVzaW5nIGFt
-b3JwaG91cyBzaWxpY29uClRGVCdzIGFzIGFuIGFjdGl2ZSBzd2l0Y2hpbmcgZGV2aWNlcy4gSXQg
-Y2FuIGJlIHN1cHBvcnRlZCBieSB0aGUKc2ltcGxlLXBhbmVsIGRyaXZlci4KClNpZ25lZC1vZmYt
-Ynk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Ci0tLQoKIGRyaXZlcnMvZ3B1L2Ry
-bS9wYW5lbC9wYW5lbC1zaW1wbGUuYyB8IDMxICsrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysKIDEgZmlsZSBjaGFuZ2VkLCAzMSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3Bh
-bmVsLXNpbXBsZS5jCmluZGV4IDA2YWFmNzkuLmM5MTM1ZGMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwv
-cGFuZWwtc2ltcGxlLmMKQEAgLTY2OCw2ICs2NjgsMzQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBw
-YW5lbF9kZXNjIGF2aWNfdG0wNzBkZGgwMyA9IHsKIAl9LAogfTsKIAorc3RhdGljIGNvbnN0IHN0
-cnVjdCBkcm1fZGlzcGxheV9tb2RlIGJvZV9udjEwMXd4bW41MV9tb2RlID0geworCS5jbG9jayA9
-IDcxOTAwLAorCS5oZGlzcGxheSA9IDEyODAsCisJLmhzeW5jX3N0YXJ0ID0gMTI4MCArIDQ4LAor
-CS5oc3luY19lbmQgPSAxMjgwICsgNDggKyAzMiwKKwkuaHRvdGFsID0gMTI4MCArIDQ4ICsgMzIg
-KyA4MCwKKwkudmRpc3BsYXkgPSA4MDAsCisJLnZzeW5jX3N0YXJ0ID0gODAwICsgMywKKwkudnN5
-bmNfZW5kID0gODAwICsgMyArIDIwLAorCS52dG90YWwgPSA4MDAgKyAzICsgMjAgKyA5LAorCS52
-cmVmcmVzaCA9IDYwLAorfTsKKworc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIGJvZV9u
-djEwMXd4bW41MSA9IHsKKwkubW9kZXMgPSAmYm9lX252MTAxd3htbjUxX21vZGUsCisJLm51bV9t
-b2RlcyA9IDEsCisJLmJwYyA9IDgsCisJLnNpemUgPSB7CisJCS53aWR0aCA9IDIxNywKKwkJLmhl
-aWdodCA9IDEzNiwKKwl9LAorCS5kZWxheSA9IHsKKwkJLnByZXBhcmUgPSAyMTAsCisJCS5lbmFi
-bGUgPSA1MCwKKwkJLnVucHJlcGFyZSA9IDE2MCwKKwl9LAorfTsKKwogc3RhdGljIGNvbnN0IHN0
-cnVjdCBkcm1fZGlzcGxheV9tb2RlIGNodW5naHdhX2NsYWEwNzB3cDAzeGdfbW9kZSA9IHsKIAku
-Y2xvY2sgPSA2Njc3MCwKIAkuaGRpc3BsYXkgPSA4MDAsCkBAIC0xNzQ4LDYgKzE3NzYsOSBAQCBz
-dGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBwbGF0Zm9ybV9vZl9tYXRjaFtdID0gewog
-CQkuY29tcGF0aWJsZSA9ICJhdmljLHRtMDcwZGRoMDMiLAogCQkuZGF0YSA9ICZhdmljX3RtMDcw
-ZGRoMDMsCiAJfSwgeworCQkuY29tcGF0aWJsZSA9ICJib2UsbnYxMDF3eG1uNTEiLAorCQkuZGF0
-YSA9ICZib2VfbnYxMDF3eG1uNTEsCisJfSwgewogCQkuY29tcGF0aWJsZSA9ICJjaHVuZ2h3YSxj
-bGFhMDcwd3AwM3hnIiwKIAkJLmRhdGEgPSAmY2h1bmdod2FfY2xhYTA3MHdwMDN4ZywKIAl9LCB7
-Ci0tIAoyLjcuNAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+Resend the missing document.
+
+Sorry for the noise.
+
+在 2016年12月08日 13:26, Caesar Wang 写道:
+> 10.1WXGA is a color active matrix TFT LCD module using amorphous silicon
+> TFT's as an active switching devices. It can be supported by the
+> simple-panel driver.
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+>
+>   drivers/gpu/drm/panel/panel-simple.c | 31 +++++++++++++++++++++++++++++++
+>   1 file changed, 31 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+> index 06aaf79..c9135dc 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -668,6 +668,34 @@ static const struct panel_desc avic_tm070ddh03 = {
+>   	},
+>   };
+>   
+> +static const struct drm_display_mode boe_nv101wxmn51_mode = {
+> +	.clock = 71900,
+> +	.hdisplay = 1280,
+> +	.hsync_start = 1280 + 48,
+> +	.hsync_end = 1280 + 48 + 32,
+> +	.htotal = 1280 + 48 + 32 + 80,
+> +	.vdisplay = 800,
+> +	.vsync_start = 800 + 3,
+> +	.vsync_end = 800 + 3 + 20,
+> +	.vtotal = 800 + 3 + 20 + 9,
+> +	.vrefresh = 60,
+> +};
+> +
+> +static const struct panel_desc boe_nv101wxmn51 = {
+> +	.modes = &boe_nv101wxmn51_mode,
+> +	.num_modes = 1,
+> +	.bpc = 8,
+> +	.size = {
+> +		.width = 217,
+> +		.height = 136,
+> +	},
+> +	.delay = {
+> +		.prepare = 210,
+> +		.enable = 50,
+> +		.unprepare = 160,
+> +	},
+> +};
+> +
+>   static const struct drm_display_mode chunghwa_claa070wp03xg_mode = {
+>   	.clock = 66770,
+>   	.hdisplay = 800,
+> @@ -1748,6 +1776,9 @@ static const struct of_device_id platform_of_match[] = {
+>   		.compatible = "avic,tm070ddh03",
+>   		.data = &avic_tm070ddh03,
+>   	}, {
+> +		.compatible = "boe,nv101wxmn51",
+> +		.data = &boe_nv101wxmn51,
+> +	}, {
+>   		.compatible = "chunghwa,claa070wp03xg",
+>   		.data = &chunghwa_claa070wp03xg,
+>   	}, {
