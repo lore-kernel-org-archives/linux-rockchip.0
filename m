@@ -1,81 +1,46 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 6/9] dt-bindings: Document rk3399 Gru/Kevin
-Date: Fri, 09 Dec 2016 19:28:36 +0100
-Message-ID: <3895286.MqKyp9eiJu@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <1480645653-36943-7-git-send-email-briannorris@chromium.org> <20161209175402.gy4mqjaf2rsib7qf@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20161209175402.gy4mqjaf2rsib7qf@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH] drm/bridge: analogix_dp: set the DPCD600 during disabling the psr
+Date: Sat, 10 Dec 2016 10:49:19 +0800
+Message-ID: <1481338159-7189-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: seanpaul@chromium.org
+Cc: airlied@linux.ie, tomeu.vizoso@collabora.com, gustavo.padovan@collabora.co.uk, daniel.vetter@ffwll.ch, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, heiko@sntech.de, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 9. Dezember 2016, 11:54:02 CET schrieb Rob Herring:
-> On Thu, Dec 01, 2016 at 06:27:30PM -0800, Brian Norris wrote:
-> > Gru is a base dev board for a family of devices, including Kevin. Both
-> > utilize Rockchip RK3399, and they share much of their design.
-> > 
-> > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > ---
-> > 
-> >  Documentation/devicetree/bindings/arm/rockchip.txt | 20
-> >  ++++++++++++++++++++ 1 file changed, 20 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > b/Documentation/devicetree/bindings/arm/rockchip.txt index
-> > cc4ace6397ab..830e13f5890c 100644
-> > --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> > @@ -99,6 +99,26 @@ Rockchip platforms device tree bindings
-> > 
-> >  		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-> >  		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-> > 
-> > +- Google Gru (dev-board):
-> > +    Required root node properties:
-> > +      - compatible = "google,gru-rev15", "google,gru-rev14",
-> > +		     "google,gru-rev13", "google,gru-rev12",
-> > +		     "google,gru-rev11", "google,gru-rev10",
-> > +		     "google,gru-rev9", "google,gru-rev8",
-> > +		     "google,gru-rev7", "google,gru-rev6",
-> > +		     "google,gru-rev5", "google,gru-rev4",
-> > +		     "google,gru-rev3", "google,gru-rev2",
-> > +		     "google,gru", "rockchip,rk3399";
-> 
-> All of these are supposed to be specified or just one rev at a time?
+Look likes, the BOE panel FW didn't ack the DPCD600 signal from the host
+device, that will cause the panel hang on the startup display.
+The root cause we use the fast link mode during enter and exit the psr,
+this issue is gone if switching the fast link to main link mode.
 
-All of them. I.e. the devicetree is supposed to be compatible with all of 
-those, while the bootloader determines the actual board revision and sets the 
-choosen compatible - at least that was the way with the previous series of 
-devices based around the rk3288 (veyron) and I think it will be the same way 
-still.
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
 
-I.e. as you can see below, Kevin starts being compatible at -rev6, as 
-(engineering) revisions before that probably had some differences on the 
-board.
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-
-> 
-> > +
-> > +- Google Kevin:
-> > +    Required root node properties:
-> > +      - compatible = "google,kevin-rev15", "google,kevin-rev14",
-> > +		     "google,kevin-rev13", "google,kevin-rev12",
-> > +		     "google,kevin-rev11", "google,kevin-rev10",
-> > +		     "google,kevin-rev9", "google,kevin-rev8",
-> > +		     "google,kevin-rev7", "google,kevin-rev6",
-> > +		     "google,kevin", "google,gru", "rockchip,rk3399";
-> > +
-> > 
-> >  - mqmaker MiQi:
-> >      Required root node properties:
-> >        - compatible = "mqmaker,miqi", "rockchip,rk3288";
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 6e0447f..6a5347b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -133,6 +133,7 @@ int analogix_dp_disable_psr(struct device *dev)
+ {
+ 	struct analogix_dp_device *dp = dev_get_drvdata(dev);
+ 	struct edp_vsc_psr psr_vsc;
++	int ret;
+ 
+ 	if (!dp->psr_support)
+ 		return -EINVAL;
+@@ -147,6 +148,10 @@ int analogix_dp_disable_psr(struct device *dev)
+ 	psr_vsc.DB0 = 0;
+ 	psr_vsc.DB1 = 0;
+ 
++	ret = drm_dp_dpcd_writeb(&dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
++	if (ret != 1)
++		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
++
+ 	analogix_dp_send_psr_spd(dp, &psr_vsc);
+ 	return 0;
+ }
+-- 
+2.7.4
