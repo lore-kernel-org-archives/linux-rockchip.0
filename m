@@ -1,46 +1,27 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] drm/bridge: analogix_dp: set the DPCD600 during disabling the psr
-Date: Sat, 10 Dec 2016 10:49:19 +0800
-Message-ID: <1481338159-7189-1-git-send-email-wxt@rock-chips.com>
+From: Jiri Kosina <jikos@kernel.org>
+Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
+ regulator support
+Date: Mon, 12 Dec 2016 09:53:10 +0100 (CET)
+Message-ID: <alpine.LNX.2.00.1612120951130.16984@cbobk.fhfr.pm>
+References: <1480555288-142791-1-git-send-email-briannorris@chromium.org> <20161201143434.GD1280@mail.corp.redhat.com> <20161201172448.GA46688@google.com> <20161205235908.rmiyd7io4kddple6@rob-hp-laptop> <20161206084803.GR1280@mail.corp.redhat.com>
+ <CAL_Jsq+C1MWrN4Sg_xOgpTzQh9gfL12G5Uxb1ya2MTkoa=7fMA@mail.gmail.com> <CAD=FV=UMonRe8WJ1feDv3Nh9g8hEGAwwFT5NYLbzXADBqhTf-A@mail.gmail.com> <20161208154145.GA30888@mail.corp.redhat.com> <CAL_Jsq+fdoFnarXYkPv6FjVue3v31ry-Ddfkq9fQk9Ek+AjETw@mail.gmail.com>
+ <E409F66F-1E4B-4A63-9977-69DF44ACAB0A@gmail.com> <CAL_JsqKu0yhLVyEjcZs_rn=VqM9O4F_VMhOkfhEEvbYAjvWSTg@mail.gmail.com> <alpine.LNX.2.00.1612091532240.16984@cbobk.fhfr.pm> <CAL_JsqLpjhHeeKq3PmNToux1Rgkg0M84-dv9HGCOws223ima4w@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqLpjhHeeKq3PmNToux1Rgkg0M84-dv9HGCOws223ima4w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: seanpaul@chromium.org
-Cc: airlied@linux.ie, tomeu.vizoso@collabora.com, gustavo.padovan@collabora.co.uk, daniel.vetter@ffwll.ch, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, heiko@sntech.de, Caesar Wang <wxt@rock-chips.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Look likes, the BOE panel FW didn't ack the DPCD600 signal from the host
-device, that will cause the panel hang on the startup display.
-The root cause we use the fast link mode during enter and exit the psr,
-this issue is gone if switching the fast link to main link mode.
+Given the timing (merge window being open) and given then NACK given by 
+Rob, I've now unapplied the patches (the for-4.10/i2c-hid branch is now 
+obsolete, and has been superseded by for-4.10/i2c-hid-nopower).
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
+However, this is mostly done in order to provide more time for discussion; 
+I still disagree with the reasoning behind the NACK.
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 6e0447f..6a5347b 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -133,6 +133,7 @@ int analogix_dp_disable_psr(struct device *dev)
- {
- 	struct analogix_dp_device *dp = dev_get_drvdata(dev);
- 	struct edp_vsc_psr psr_vsc;
-+	int ret;
- 
- 	if (!dp->psr_support)
- 		return -EINVAL;
-@@ -147,6 +148,10 @@ int analogix_dp_disable_psr(struct device *dev)
- 	psr_vsc.DB0 = 0;
- 	psr_vsc.DB1 = 0;
- 
-+	ret = drm_dp_dpcd_writeb(&dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
-+	if (ret != 1)
-+		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
-+
- 	analogix_dp_send_psr_spd(dp, &psr_vsc);
- 	return 0;
- }
 -- 
-2.7.4
+Jiri Kosina
+SUSE Labs
