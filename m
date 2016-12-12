@@ -1,100 +1,111 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
-Date: Mon, 12 Dec 2016 19:51:27 +0800
-Message-ID: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
+ regulator support
+Date: Mon, 12 Dec 2016 08:47:06 -0600
+Message-ID: <CAL_JsqJ7t=C4+PgCyNTev66V33-cyPkUHKsTcbnsYgvAaffVfw@mail.gmail.com>
+References: <20161206084803.GR1280@mail.corp.redhat.com> <CAL_Jsq+C1MWrN4Sg_xOgpTzQh9gfL12G5Uxb1ya2MTkoa=7fMA@mail.gmail.com>
+ <CAD=FV=UMonRe8WJ1feDv3Nh9g8hEGAwwFT5NYLbzXADBqhTf-A@mail.gmail.com>
+ <20161208154145.GA30888@mail.corp.redhat.com> <CAL_Jsq+fdoFnarXYkPv6FjVue3v31ry-Ddfkq9fQk9Ek+AjETw@mail.gmail.com>
+ <E409F66F-1E4B-4A63-9977-69DF44ACAB0A@gmail.com> <CAL_JsqKu0yhLVyEjcZs_rn=VqM9O4F_VMhOkfhEEvbYAjvWSTg@mail.gmail.com>
+ <alpine.LNX.2.00.1612091532240.16984@cbobk.fhfr.pm> <CAL_JsqLpjhHeeKq3PmNToux1Rgkg0M84-dv9HGCOws223ima4w@mail.gmail.com>
+ <alpine.LNX.2.00.1612120951130.16984@cbobk.fhfr.pm> <20161212100110.GA13907@mail.corp.redhat.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20161212100110.GA13907-/m+UfqrgI5QNLKR9yMNcA1aTQe2KTcn/@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Benjamin Tissoires <benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip's RC outputs 100MHz reference clock but there are
-two methods for PHY to generate it.
+On Mon, Dec 12, 2016 at 4:01 AM, Benjamin Tissoires
+<benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+> On Dec 12 2016 or thereabouts, Jiri Kosina wrote:
+>> Given the timing (merge window being open) and given then NACK given by
+>> Rob, I've now unapplied the patches (the for-4.10/i2c-hid branch is now
+>> obsolete, and has been superseded by for-4.10/i2c-hid-nopower).
+>>
+>> However, this is mostly done in order to provide more time for discussion;
+>> I still disagree with the reasoning behind the NACK.
+>>
+>
+> To hopefully make things going forward a little bit, I was wondering
+> over the week-end if we should not solve this particular issue by adding
+> an intermediate platform DT node:
+>
+> instead of having:
+> ---
+>         i2c-hid-dev@2c {
+>                 compatible = "hid-over-i2c";
+>                 reg = <0x2c>;
+>                 hid-descr-addr = <0x0020>;
+>                 interrupt-parent = <&gpx3>;
+>                 interrupts = <3 2>;
+>                 vdd-supply = <sth>;
+>                 init-delay-ms = <100>;
+>         };
+> ---
+>
+> we would have:
+> ---
+>         platform-i2c-hid@01 {
+>                 compatible = "very-special-board-that-needs-firmware-quirks-and-delay-of-100ms";
+>                 vdd-supply = <sth>;
+>                 i2c-hid-dev@2c {
+>                         compatible = "hid-over-i2c";
+>                         reg = <0x2c>;
+>                         hid-descr-addr = <0x0020>;
+>                         interrupt-parent = <&gpx3>;
+>                         interrupts = <3 2>;
+>                 };
+>         };
+> ---
+>
+> If I am not wrong, the platform device should be initialized before
+> i2c-hid get called, which allows to setup properly the vdd supply.
+> On resume/suspend, the tree should be respected and we should be able to
+> enable/disable power in the same fashion this patch provides.
+>
+> We could then extend this platform device at will without tinkering in
+> i2c-hid and we could also handle the GPIOs, reset or whatever is
+> required in the future through compatibles.
+>
+> Thoughts? yes? no? bullshit?
 
-(1)One of them is to use system PLL to generate 100MHz clock and
-the PHY will relock it and filter signal noise then outputs the
-reference clock.
+That is structuring the DT match your driver structure, not what the
+h/w looks like. This would make sense if the device was multi-function
+of which HID-over-I2C was one function. You could do what you describe
+with a single node and the platform driver creates the hid-over-i2c
+device. DT is not the only way to create devices.
 
-(2)Another way is to share Soc's 24MHZ crystal oscillator with
-PHY and force PHY's DLL to generate 100MHz internally.
+Anyway, we're only debating this:
 
-When using case(2), the exit from L0s doesn't work fine occasionally
-due to the broken design of RC receiver's logical circuit. So even if
-we use extended-synch, it still fails for PHY to relock the bits from
-FTS sometimes. This will hang the system.
+         i2c-hid-dev@2c {
+                 compatible = "wacom,w9013", "hid-over-i2c";
+                 reg = <0x2c>;
+                 hid-descr-addr = <0x0020>;
+                 interrupt-parent = <&gpx3>;
+                 interrupts = <3 2>;
+                 vdd-supply = <sth>;
+                 init-delay-ms = <100>;
+         };
 
-Maybe we could argue that why not use case(1) to avoid it? The reason
-is that as we could see the reference clock is derived from system PLL
-and the path from it to PHY isn't so clean which means there are some
-noise introduced by power-domain and other buses can't be filterd out
-by PHY and we could see noise from the frequency spectrum by
-oscilloscope. This makes the TX compatibility test a little difficult
-to pass the spec. So case(1) and case(2) are both used indeed now. If
-using case(2), we should disable RC's L0s support, and that is why we
-need this property to indicate this quirk.
+vs.
 
-Also after checking quirk.c, I noticed there is already a quirk for
-disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
-shouldn't do that as mentioned above that case(1) could still works fine
-with L0s.
+         i2c-hid-dev@2c {
+                 compatible = "hid-over-i2c";
+                 reg = <0x2c>;
+                 hid-descr-addr = <0x0020>;
+                 interrupt-parent = <&gpx3>;
+                 interrupts = <3 2>;
+                 vdd-supply = <sth>;
+                 init-delay-ms = <100>;
+         };
 
-Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+My only other nit is use "post-power-on-delay-ms" which is already a
+defined property name rather than "init-delay-ms".
 
----
-
-Changes in v2:
-- drop the quirk prefix
-
- Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
- drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
- 2 files changed, 11 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-index 71aeda1..1453a73 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-@@ -43,6 +43,8 @@ Required properties:
- - interrupt-map-mask and interrupt-map: standard PCI properties
- 
- Optional Property:
-+- aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
-+	using 24MHz OSC for RC's PHY.
- - ep-gpios: contain the entry for pre-reset gpio
- - num-lanes: number of lanes to use
- - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index f2dca7b..35988fc 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -140,6 +140,8 @@
- #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
- #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
- #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
-+#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
-+#define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
- #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
- #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
- #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
-@@ -653,6 +655,13 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
- 
-+	/* Clear L0s from RC's link cap */
-+	if (of_property_read_bool(dev->of_node, "apsm-no-l0s")) {
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LINK_CAP);
-+		status &= ~PCIE_RC_CONFIG_LINK_CAP_L0S;
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
-+	}
-+
- 	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
- 
- 	rockchip_pcie_write(rockchip,
--- 
-1.9.1
-
-
+Rob
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
