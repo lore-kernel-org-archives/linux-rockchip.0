@@ -1,94 +1,73 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
- regulator support
-Date: Mon, 12 Dec 2016 10:34:23 -0800
-Message-ID: <20161212183422.GA138477@google.com>
-References: <CAD=FV=UMonRe8WJ1feDv3Nh9g8hEGAwwFT5NYLbzXADBqhTf-A@mail.gmail.com>
- <20161208154145.GA30888@mail.corp.redhat.com>
- <CAL_Jsq+fdoFnarXYkPv6FjVue3v31ry-Ddfkq9fQk9Ek+AjETw@mail.gmail.com>
- <E409F66F-1E4B-4A63-9977-69DF44ACAB0A@gmail.com>
- <CAL_JsqKu0yhLVyEjcZs_rn=VqM9O4F_VMhOkfhEEvbYAjvWSTg@mail.gmail.com>
- <alpine.LNX.2.00.1612091532240.16984@cbobk.fhfr.pm>
- <CAL_JsqLpjhHeeKq3PmNToux1Rgkg0M84-dv9HGCOws223ima4w@mail.gmail.com>
- <alpine.LNX.2.00.1612120951130.16984@cbobk.fhfr.pm>
- <20161212100110.GA13907@mail.corp.redhat.com>
- <CAL_JsqJ7t=C4+PgCyNTev66V33-cyPkUHKsTcbnsYgvAaffVfw@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
+Date: Mon, 12 Dec 2016 12:19:48 -0800
+Message-ID: <20161212201947.GA37027@google.com>
+References: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAL_JsqJ7t=C4+PgCyNTev66V33-cyPkUHKsTcbnsYgvAaffVfw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Benjamin Tissoires <benjamin.tissoires-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Jiri Kosina <jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+Hi,
 
-On Mon, Dec 12, 2016 at 08:47:06AM -0600, Rob Herring wrote:
-
-[Snip Benjamin's proposal; I agree we don't really want a multi-level DT
-layout purely for making the driver look a little nicer (I'm not sure
-this would really be nicer anyway). And I think, as Rob notes here, our
-disagreement is smaller than appears. But I might be wrong.]
-
-> Anyway, we're only debating this:
-
-OK, so I think we might have a consensus of sorts? I'll describe it
-here, in case I'm wrong. Otherwise, I'll send another rev.
-
->          i2c-hid-dev@2c {
->                  compatible = "wacom,w9013", "hid-over-i2c";
-
-I plan to document the above, but not treat "wacom,w9013" specially in
-the driver, apart from possibly listing it in the driver of_match_table.
-This was mentioned by Dmitry earlier, and I didn't see any objection.
-
-(Note that there are problems with module autoload when using multiple
-compatible strings like above. May not be supremely relevant to the
-documentation, but it *is* practically important.)
-
->                  reg = <0x2c>;
->                  hid-descr-addr = <0x0020>;
->                  interrupt-parent = <&gpx3>;
->                  interrupts = <3 2>;
->                  vdd-supply = <sth>;
-
-Document and support 'vdd-supply', optionally.
-
->                  init-delay-ms = <100>;
-
-Per Rob's mention below, support this as 'post-power-on-delay-ms',
-optionally.
-
-We can use either of these properties on any device, with the
-intention that if there are future needs for divergent bindings, the
-aforementioned compatible property can help us differentiate.
-
->          };
+On Mon, Dec 12, 2016 at 07:51:27PM +0800, Shawn Lin wrote:
+> Rockchip's RC outputs 100MHz reference clock but there are
+> two methods for PHY to generate it.
 > 
-> vs.
+> (1)One of them is to use system PLL to generate 100MHz clock and
+> the PHY will relock it and filter signal noise then outputs the
+> reference clock.
 > 
->          i2c-hid-dev@2c {
->                  compatible = "hid-over-i2c";
->                  reg = <0x2c>;
->                  hid-descr-addr = <0x0020>;
->                  interrupt-parent = <&gpx3>;
->                  interrupts = <3 2>;
->                  vdd-supply = <sth>;
->                  init-delay-ms = <100>;
->          };
+> (2)Another way is to share Soc's 24MHZ crystal oscillator with
+> PHY and force PHY's DLL to generate 100MHz internally.
 > 
-> My only other nit is use "post-power-on-delay-ms" which is already a
-> defined property name rather than "init-delay-ms".
+> When using case(2), the exit from L0s doesn't work fine occasionally
+> due to the broken design of RC receiver's logical circuit. So even if
+> we use extended-synch, it still fails for PHY to relock the bits from
+> FTS sometimes. This will hang the system.
+> 
+> Maybe we could argue that why not use case(1) to avoid it? The reason
+> is that as we could see the reference clock is derived from system PLL
+> and the path from it to PHY isn't so clean which means there are some
+> noise introduced by power-domain and other buses can't be filterd out
+> by PHY and we could see noise from the frequency spectrum by
+> oscilloscope. This makes the TX compatibility test a little difficult
+> to pass the spec. So case(1) and case(2) are both used indeed now. If
+> using case(2), we should disable RC's L0s support, and that is why we
+> need this property to indicate this quirk.
+> 
+> Also after checking quirk.c, I noticed there is already a quirk for
+> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
+> shouldn't do that as mentioned above that case(1) could still works fine
+> with L0s.
 
-Any objections? Speak now or forever [1] hold your peace.
+Side note: I think Doug mentioned previously that the default
+rk3399.dtsi actually leaves the default clock choice (i.e., case 2), so
+it might be good to patch this property into the rk3399.dtsi instead of
+the board files. If any board goes with option 1, they can delete the
+property.
 
-Brian
+I can patch this up myself if you don't, as I'm working on upstreaming
+the rk3399-gbased Gru/Kevin device trees.
 
-[1] Who am I kidding? There's always room for more paint on the
-bikeshed.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - drop the quirk prefix
+> 
+>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
+>  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
+>  2 files changed, 11 insertions(+)
+
+FWIW:
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
