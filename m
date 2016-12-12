@@ -1,178 +1,233 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 3/5] thermal: rockchip: fixes invalid temperature case
-Date: Mon, 12 Dec 2016 19:05:33 +0800
-Message-ID: <1481540735-12710-4-git-send-email-wxt@rock-chips.com>
-References: <1481540735-12710-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1481540735-12710-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v4] PCI: rockchip: Add system PM support
+Date: Mon, 12 Dec 2016 19:50:07 +0800
+Message-ID: <1481543407-33017-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The temp_to_code function will return 0 when we set the temperature to a
-invalid value (e.g. 61C, 62C, 63C....), that's unpractical. This patch
-will prevent this case happening. That will return the max analog value to
-indicate the temperature is invalid or over table temperature range.
+This patch adds system PM support for Rockchip's RC.
+For pre S3, the EP is configured into D3 state which guarantees
+the link state should be in L1. So we could send PME_Turn_Off message
+to the EP and wait for its ACK to make the link state into L2 or L3
+without the aux-supply. This could help save more power which I think
+should be very important for mobile devices.
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+As note that there is a 5s timeout for RC to wait for the PMA_ACK
+aftering send PME_Turn_Off. Technically it should depends on the
+hierarchy of devices but seems PCIe core framework doesn't handle the
+L2/3 for S3 at all. So that means we should presume to set a default
+value for PME_ACK. From the bug report[1], we could find a statment that
+Microsoft Windows versions typically wait for 5 seconds. So we are prone
+to take 5s for this timeout here.
+
+[1] https://lists.launchpad.net/kernel-packages/msg123315.html
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
 ---
 
-Changes in v4: None
+Changes in v4:
+- just map message region once when probing
+
 Changes in v3:
-- fix trivial thing for error message nd return value.
+- check the return value of devm_ioremap
+- elaborate for commit msg
+- add tag from Brian
 
 Changes in v2:
-- As Brian commnets that restructure this to pass error codes back to the
-  upper layers.
-- Improve the commit message.
+- Wrap the 'x' in parentheses
+- add msg regison mapped support
+- enable int for err case in suspend_noirq
 
-Changes in v1: None
+ drivers/pci/host/pcie-rockchip.c | 106 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 106 insertions(+)
 
- drivers/thermal/rockchip_thermal.c | 48 ++++++++++++++++++++++----------------
- 1 file changed, 28 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 415e0ce..f027b86 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -120,10 +120,10 @@ struct rockchip_tsadc_chip {
- 	/* Per-sensor methods */
- 	int (*get_temp)(const struct chip_tsadc_table *table,
- 			int chn, void __iomem *reg, int *temp);
--	void (*set_alarm_temp)(const struct chip_tsadc_table *table,
--			       int chn, void __iomem *reg, int temp);
--	void (*set_tshut_temp)(const struct chip_tsadc_table *table,
--			       int chn, void __iomem *reg, int temp);
-+	int (*set_alarm_temp)(const struct chip_tsadc_table *table,
-+			      int chn, void __iomem *reg, int temp);
-+	int (*set_tshut_temp)(const struct chip_tsadc_table *table,
-+			      int chn, void __iomem *reg, int temp);
- 	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index f2dca7b..0392349 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -20,6 +20,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
++#include <linux/iopoll.h>
+ #include <linux/irq.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqdomain.h>
+@@ -55,6 +56,10 @@
+ #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+ #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
++#define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
++#define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
++#define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
++#define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+ #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
+@@ -167,9 +172,11 @@
+ #define IB_ROOT_PORT_REG_SIZE_SHIFT		3
+ #define AXI_WRAPPER_IO_WRITE			0x6
+ #define AXI_WRAPPER_MEM_WRITE			0x2
++#define AXI_WRAPPER_NOR_MSG			0xc
  
- 	/* Per-table methods */
-@@ -401,17 +401,15 @@ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
- 				   int temp)
- {
- 	int high, low, mid;
--	u32 error = 0;
-+	u32 error = table->data_mask;
+ #define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
+ #define MIN_AXI_ADDR_BITS_PASSED		8
++#define PCIE_RC_SEND_PME_OFF			0x11960
+ #define ROCKCHIP_VENDOR_ID			0x1d87
+ #define PCIE_ECAM_BUS(x)			(((x) & 0xff) << 20)
+ #define PCIE_ECAM_DEV(x)			(((x) & 0x1f) << 15)
+@@ -178,6 +185,9 @@
+ #define PCIE_ECAM_ADDR(bus, dev, func, reg) \
+ 	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
+ 	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
++#define PCIE_LINK_IS_L2(x) \
++		(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
++		 PCIE_CLIENT_DEBUG_LTSSM_L2)
  
- 	low = 0;
- 	high = table->length - 1;
- 	mid = (high + low) / 2;
+ #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+ #define RC_REGION_0_ADDR_TRANS_L		0x00000000
+@@ -211,7 +221,9 @@ struct rockchip_pcie {
+ 	u32     io_size;
+ 	int     offset;
+ 	phys_addr_t io_bus_addr;
++	void    __iomem *msg_region;
+ 	u32     mem_size;
++	phys_addr_t msg_bus_addr;
+ 	phys_addr_t mem_bus_addr;
+ };
  
- 	/* Return mask code data when the temp is over table range */
--	if (temp < table->id[low].temp || temp > table->id[high].temp) {
--		error = table->data_mask;
-+	if (temp < table->id[low].temp || temp > table->id[high].temp)
- 		goto exit;
--	}
- 
- 	while (low <= high) {
- 		if (temp == table->id[mid].temp)
-@@ -650,15 +648,15 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
- 	return rk_tsadcv2_code_to_temp(table, val, temp);
- }
- 
--static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
--				  int chn, void __iomem *regs, int temp)
-+static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
-+				 int chn, void __iomem *regs, int temp)
- {
- 	u32 alarm_value, int_en;
- 
- 	/* Make sure the value is valid */
- 	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
- 	if (alarm_value == table->data_mask)
--		return;
-+		return -ERANGE;
- 
- 	writel_relaxed(alarm_value & table->data_mask,
- 		       regs + TSADCV2_COMP_INT(chn));
-@@ -666,23 +664,27 @@ static void rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
- 	int_en = readl_relaxed(regs + TSADCV2_INT_EN);
- 	int_en |= TSADCV2_INT_SRC_EN(chn);
- 	writel_relaxed(int_en, regs + TSADCV2_INT_EN);
-+
-+	return 0;
- }
- 
--static void rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
--				  int chn, void __iomem *regs, int temp)
-+static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
-+				 int chn, void __iomem *regs, int temp)
- {
- 	u32 tshut_value, val;
- 
- 	/* Make sure the value is valid */
- 	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
- 	if (tshut_value == table->data_mask)
--		return;
-+		return -ERANGE;
- 
- 	writel_relaxed(tshut_value, regs + TSADCV2_COMP_SHUT(chn));
- 
- 	/* TSHUT will be valid */
- 	val = readl_relaxed(regs + TSADCV2_AUTO_CON);
- 	writel_relaxed(val | TSADCV2_AUTO_SRC_EN(chn), regs + TSADCV2_AUTO_CON);
-+
-+	return 0;
- }
- 
- static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
-@@ -885,10 +887,8 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
- 	dev_dbg(&thermal->pdev->dev, "%s: sensor %d: low: %d, high %d\n",
- 		__func__, sensor->id, low, high);
- 
--	tsadc->set_alarm_temp(&tsadc->table,
--			      sensor->id, thermal->regs, high);
--
--	return 0;
-+	return tsadc->set_alarm_temp(&tsadc->table,
-+				     sensor->id, thermal->regs, high);
- }
- 
- static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
-@@ -984,8 +984,12 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
- 	int error;
- 
- 	tsadc->set_tshut_mode(id, thermal->regs, thermal->tshut_mode);
--	tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
-+
-+	error = tsadc->set_tshut_temp(&tsadc->table, id, thermal->regs,
- 			      thermal->tshut_temp);
-+	if (error)
-+		dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
-+			__func__, thermal->tshut_temp, error);
- 
- 	sensor->thermal = thermal;
- 	sensor->id = id;
-@@ -1198,9 +1202,13 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 
- 		thermal->chip->set_tshut_mode(id, thermal->regs,
- 					      thermal->tshut_mode);
--		thermal->chip->set_tshut_temp(&thermal->chip->table,
-+
-+		error = thermal->chip->set_tshut_temp(&thermal->chip->table,
- 					      id, thermal->regs,
- 					      thermal->tshut_temp);
-+		if (error)
-+			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
-+				__func__, thermal->tshut_temp, error);
+@@ -1186,6 +1198,85 @@ static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+ 		}
  	}
  
- 	thermal->chip->control(thermal->regs, true);
++	/* assign message regions */
++	rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1 + offset,
++				  AXI_WRAPPER_NOR_MSG,
++				  20 - 1, 0, 0);
++
++	rockchip->msg_bus_addr = rockchip->mem_bus_addr +
++					((reg_no + offset) << 20);
++	return err;
++}
++
++static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
++{
++	u32 value;
++	int err;
++
++	/* send PME_TURN_OFF message */
++	writel(0x0, rockchip->msg_region + PCIE_RC_SEND_PME_OFF);
++
++	/* read LTSSM and wait for falling into L2 link state */
++	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_DEBUG_OUT_0,
++				 value, PCIE_LINK_IS_L2(value), 20,
++				 jiffies_to_usecs(5 * HZ));
++	if (err) {
++		dev_err(rockchip->dev, "PCIe link enter L2 timeout!\n");
++		return err;
++	}
++
++	return 0;
++}
++
++static int rockchip_pcie_suspend_noirq(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	int ret;
++
++	/* disable core and cli int since we don't need to ack PME_ACK */
++	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
++			    PCIE_CLIENT_INT_CLI, PCIE_CLIENT_INT_MASK);
++	rockchip_pcie_write(rockchip, (u32)PCIE_CORE_INT, PCIE_CORE_INT_MASK);
++
++	ret = rockchip_pcie_wait_l2(rockchip);
++	if (ret) {
++		rockchip_pcie_enable_interrupts(rockchip);
++		return ret;
++	}
++
++	phy_power_off(rockchip->phy);
++	phy_exit(rockchip->phy);
++
++	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	clk_disable_unprepare(rockchip->hclk_pcie);
++	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++	clk_disable_unprepare(rockchip->aclk_pcie);
++
++	return ret;
++}
++
++static int rockchip_pcie_resume_noirq(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	int err;
++
++	clk_prepare_enable(rockchip->clk_pcie_pm);
++	clk_prepare_enable(rockchip->hclk_pcie);
++	clk_prepare_enable(rockchip->aclk_perf_pcie);
++	clk_prepare_enable(rockchip->aclk_pcie);
++
++	err = rockchip_pcie_init_port(rockchip);
++	if (err)
++		return err;
++
++	err = rockchip_cfg_atu(rockchip);
++	if (err)
++		return err;
++
++	/* Need this to enter L1 again */
++	rockchip_pcie_update_txcredit_mui(rockchip);
++	rockchip_pcie_enable_interrupts(rockchip);
++
+ 	return 0;
+ }
+ 
+@@ -1209,6 +1300,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (!rockchip)
+ 		return -ENOMEM;
+ 
++	platform_set_drvdata(pdev, rockchip);
+ 	rockchip->dev = dev;
+ 
+ 	err = rockchip_pcie_parse_dt(rockchip);
+@@ -1296,6 +1388,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	err = rockchip_cfg_atu(rockchip);
+ 	if (err)
+ 		goto err_vpcie;
++
++	rockchip->msg_region = devm_ioremap(rockchip->dev,
++					    rockchip->msg_bus_addr, SZ_1M);
++	if (!rockchip->msg_region) {
++		err = -ENOMEM;
++		goto err_vpcie;
++	}
++
+ 	bus = pci_scan_root_bus(&pdev->dev, 0, &rockchip_pcie_ops, rockchip, &res);
+ 	if (!bus) {
+ 		err = -ENOMEM;
+@@ -1329,6 +1429,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return err;
+ }
+ 
++static const struct dev_pm_ops rockchip_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
++				      rockchip_pcie_resume_noirq)
++};
++
+ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 	{ .compatible = "rockchip,rk3399-pcie", },
+ 	{}
+@@ -1338,6 +1443,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	.driver = {
+ 		.name = "rockchip-pcie",
+ 		.of_match_table = rockchip_pcie_of_match,
++		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+ 
 -- 
-2.7.4
+1.9.1
