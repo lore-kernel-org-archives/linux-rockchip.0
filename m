@@ -1,73 +1,126 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
-Date: Mon, 12 Dec 2016 12:19:48 -0800
-Message-ID: <20161212201947.GA37027@google.com>
-References: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
+From: =?UTF-8?Q?St=C3=A9phane_Marchesin?= <stephane.marchesin@gmail.com>
+Subject: Re: [PATCH v2 2/2] drm/panel: simple: Add support BOE nv101wxmn51
+Date: Mon, 12 Dec 2016 12:22:58 -0800
+Message-ID: <CACP_E+K1_c2ryUOKgqOvj9oJp6EKUc+44J0AiFNAU_C=7WJFSw@mail.gmail.com>
+References: <1481181996-27922-1-git-send-email-wxt@rock-chips.com> <1481181996-27922-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1481181996-27922-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-rockchip@lists.infradead.org, Linux Kernel list <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Mon, Dec 12, 2016 at 07:51:27PM +0800, Shawn Lin wrote:
-> Rockchip's RC outputs 100MHz reference clock but there are
-> two methods for PHY to generate it.
-> 
-> (1)One of them is to use system PLL to generate 100MHz clock and
-> the PHY will relock it and filter signal noise then outputs the
-> reference clock.
-> 
-> (2)Another way is to share Soc's 24MHZ crystal oscillator with
-> PHY and force PHY's DLL to generate 100MHz internally.
-> 
-> When using case(2), the exit from L0s doesn't work fine occasionally
-> due to the broken design of RC receiver's logical circuit. So even if
-> we use extended-synch, it still fails for PHY to relock the bits from
-> FTS sometimes. This will hang the system.
-> 
-> Maybe we could argue that why not use case(1) to avoid it? The reason
-> is that as we could see the reference clock is derived from system PLL
-> and the path from it to PHY isn't so clean which means there are some
-> noise introduced by power-domain and other buses can't be filterd out
-> by PHY and we could see noise from the frequency spectrum by
-> oscilloscope. This makes the TX compatibility test a little difficult
-> to pass the spec. So case(1) and case(2) are both used indeed now. If
-> using case(2), we should disable RC's L0s support, and that is why we
-> need this property to indicate this quirk.
-> 
-> Also after checking quirk.c, I noticed there is already a quirk for
-> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
-> shouldn't do that as mentioned above that case(1) could still works fine
-> with L0s.
-
-Side note: I think Doug mentioned previously that the default
-rk3399.dtsi actually leaves the default clock choice (i.e., case 2), so
-it might be good to patch this property into the rk3399.dtsi instead of
-the board files. If any board goes with option 1, they can delete the
-property.
-
-I can patch this up myself if you don't, as I'm working on upstreaming
-the rk3399-gbased Gru/Kevin device trees.
-
-> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Cc: Brian Norris <briannorris@chromium.org>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
+On Wed, Dec 7, 2016 at 11:26 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> 10.1WXGA is a color active matrix TFT LCD module using amorphous silicon
+> TFT's as an active switching devices. It can be supported by the
+> simple-panel driver.
+>
+> Read the panel edid information;
+>
+> EDID MODE DETAILS
+>                 name =3D <NULL>
+>                 pixel_clock =3D 71900
+>                 lvds_dual_channel =3D 0
+>                 refresh =3D 0
+>                 ha =3D 1280
+>                 hbl =3D 160
+>                 hso =3D 48
+>                 hspw =3D 32
+>                 hborder =3D 0
+>                 va =3D 800
+>                 vbl =3D 32
+>                 vso =3D 3
+>                 vspw =3D 5
+>                 vborder =3D 0
+>                 phsync =3D +
+>                 pvsync =3D -
+>                 x_mm =3D 0
+>                 y_mm =3D 0
+> drm_display_mode
+>                 .hdisplay =3D 1280
+>                 .hsync_start =3D 1328
+>                 .hsync_end =3D 1360
+>                 .htotal =3D 1440
+>                 .vdisplay =3D 800
+>                 .vsync_start =3D 803
+>                 .vsync_end =3D 808
+>                 .vtotal =3D 832
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 > ---
-> 
+>
 > Changes in v2:
-> - drop the quirk prefix
-> 
->  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
->  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
->  2 files changed, 11 insertions(+)
+> - fix the vsync_start and vsync_end from the edid.
+> - change the commit.
+>
+>  drivers/gpu/drm/panel/panel-simple.c | 31 ++++++++++++++++++++++++++++++=
++
+>  1 file changed, 31 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel=
+/panel-simple.c
+> index 06aaf79..7c90f16 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -668,6 +668,34 @@ static const struct panel_desc avic_tm070ddh03 =3D {
+>         },
+>  };
+>
+> +static const struct drm_display_mode boe_nv101wxmn51_mode =3D {
+> +       .clock =3D 71900,
+> +       .hdisplay =3D 1280,
+> +       .hsync_start =3D 1280 + 48,
+> +       .hsync_end =3D 1280 + 48 + 32,
+> +       .htotal =3D 1280 + 48 + 32 + 80,
+> +       .vdisplay =3D 800,
+> +       .vsync_start =3D 800 + 3,
+> +       .vsync_end =3D 800 + 3 + 5,
+> +       .vtotal =3D 800 + 3 + 5 + 24,
+> +       .vrefresh =3D 60,
+> +};
+> +
+> +static const struct panel_desc boe_nv101wxmn51 =3D {
+> +       .modes =3D &boe_nv101wxmn51_mode,
+> +       .num_modes =3D 1,
 
-FWIW:
+There are two modes in the EDID (there is a downclock one). Can you
+add both modes?
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+St=C3=A9phane
+
+> +       .bpc =3D 8,
+> +       .size =3D {
+> +               .width =3D 217,
+> +               .height =3D 136,
+> +       },
+> +       .delay =3D {
+> +               .prepare =3D 210,
+> +               .enable =3D 50,
+> +               .unprepare =3D 160,
+> +       },
+> +};
+> +
+>  static const struct drm_display_mode chunghwa_claa070wp03xg_mode =3D {
+>         .clock =3D 66770,
+>         .hdisplay =3D 800,
+> @@ -1748,6 +1776,9 @@ static const struct of_device_id platform_of_match[=
+] =3D {
+>                 .compatible =3D "avic,tm070ddh03",
+>                 .data =3D &avic_tm070ddh03,
+>         }, {
+> +               .compatible =3D "boe,nv101wxmn51",
+> +               .data =3D &boe_nv101wxmn51,
+> +       }, {
+>                 .compatible =3D "chunghwa,claa070wp03xg",
+>                 .data =3D &chunghwa_claa070wp03xg,
+>         }, {
+> --
+> 2.7.4
+>
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
