@@ -1,78 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 8/9] arm64: dts: rockchip: partially describe PWM regulators for Gru
-Date: Tue, 13 Dec 2016 18:48:50 +0100
-Message-ID: <13721273.q1HcHZAhdQ@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <2418784.7dMdkAyuIx@phil> <20161207170916.GA84287@google.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
+Date: Tue, 13 Dec 2016 13:41:15 -0600
+Message-ID: <20161213194115.tqacbotxgsvphoje@rob-hp-laptop>
+References: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161207170916.GA84287@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Stephen Barber <smbarber@chromium.org>, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1481543487-33152-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. Dezember 2016, 09:09:17 CET schrieb Brian Norris:
-> Hi Heiko,
+On Mon, Dec 12, 2016 at 07:51:27PM +0800, Shawn Lin wrote:
+> Rockchip's RC outputs 100MHz reference clock but there are
+> two methods for PHY to generate it.
 > 
-> On Wed, Dec 07, 2016 at 05:48:24PM +0100, Heiko Stuebner wrote:
-> > Am Donnerstag, 1. Dezember 2016, 18:27:32 CET schrieb Brian Norris:
-> > > We need to add regulators to the CPU nodes, so cpufreq doesn't think it
-> > > can crank up the clock speed without changing the voltage. However, we
-> > > don't yet have the DT bindings to fully describe the Over Voltage
-> > > Protection (OVP) circuits on these boards. Without that description, we
-> > > might end up changing the voltage too much, too fast.
-> > > 
-> > > Add the pwm-regulator descriptions and associate the CPU OPPs, but leave
-> > > them disabled.
-> > > 
-> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > 
-> > is there a specific reason for keeping this change separate?
+> (1)One of them is to use system PLL to generate 100MHz clock and
+> the PHY will relock it and filter signal noise then outputs the
+> reference clock.
 > 
-> Maybe not a great one. I figured they were somewhat controversial, so I
-> at least wanted to split the "cpufreq patches" (i.e., this and the
-> previous) from the main DTS(I) additions. I also figured we typically
-> like to keep the base SoC changes separate from the board DTS(I)
-> changes.
-
-I was scratching my head for a bit where this was affecting the evb, until I 
-found the include at the end of patch5 :-) .
-
-> > While it is nice for documentation reasons, as it stands now the previous
-> > patch introduces a regression (cpufreq trying to scale without regulators)
-> > and immediately fixes it here.
+> (2)Another way is to share Soc's 24MHZ crystal oscillator with
+> PHY and force PHY's DLL to generate 100MHz internally.
 > 
-> Right. Additionally, as noted on the previous patch, we might do the
-> same with EVB. But I don't know what the regulators are like for EVB.
-> This is probably a bigger deal, since EVB has been working (allegedly)
-> upstream for a while now.
-
-Yep, it was at least booting :-) . I guess I should wire it up again. My shiny 
-new Gru somehow did take up its space recently.
-
-> There's no way to split these up without either breaking compilation or
-> breaking bisectability. For Kevin/Gru, they don't function at all before
-> this series, so I figured some "settle" time wasn't a huge deal.
+> When using case(2), the exit from L0s doesn't work fine occasionally
+> due to the broken design of RC receiver's logical circuit. So even if
+> we use extended-synch, it still fails for PHY to relock the bits from
+> FTS sometimes. This will hang the system.
 > 
-> > So if you're ok with it, I'd like to merge this one back into the previous
-> > patch when applying.
+> Maybe we could argue that why not use case(1) to avoid it? The reason
+> is that as we could see the reference clock is derived from system PLL
+> and the path from it to PHY isn't so clean which means there are some
+> noise introduced by power-domain and other buses can't be filterd out
+> by PHY and we could see noise from the frequency spectrum by
+> oscilloscope. This makes the TX compatibility test a little difficult
+> to pass the spec. So case(1) and case(2) are both used indeed now. If
+> using case(2), we should disable RC's L0s support, and that is why we
+> need this property to indicate this quirk.
 > 
-> That'd be OK with me, as long as we're also confident about EVB.
+> Also after checking quirk.c, I noticed there is already a quirk for
+> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
+> shouldn't do that as mentioned above that case(1) could still works fine
+> with L0s.
+> 
+> Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v2:
+> - drop the quirk prefix
+> 
+>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
+>  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
+>  2 files changed, 11 insertions(+)
 
-That somehow sounds unrelated, as this patch only touches gru stuff anyway. So 
-if the evb breaks, it would do so after patch5 already.
-
-
-> Maybe at a minimum, I should just patch in some empty regulator nodes,
-> so cpufreq doesn't think there's no need to handle voltage.
-
-So I guess going forward we could do, describe the evb pwm regulators (in 
-disabled state), add general OPPs, add gru with pwm regulators?
-
-I'll try to hook up my evb and check on the pwm-regulators in the schematics 
-this week.
-
-
-Heiko
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
