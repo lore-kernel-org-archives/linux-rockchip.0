@@ -1,42 +1,78 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 9/9] arm64: dts: rockchip: add regulator info for Kevin
- digitizer
-Date: Tue, 13 Dec 2016 18:36:48 +0100
-Message-ID: <2884868.1AkzspAEPR@phil>
-References: <1480645653-36943-1-git-send-email-briannorris@chromium.org>
- <1480645653-36943-10-git-send-email-briannorris@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 8/9] arm64: dts: rockchip: partially describe PWM regulators for Gru
+Date: Tue, 13 Dec 2016 18:48:50 +0100
+Message-ID: <13721273.q1HcHZAhdQ@phil>
+References: <1480645653-36943-1-git-send-email-briannorris@chromium.org> <2418784.7dMdkAyuIx@phil> <20161207170916.GA84287@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1480645653-36943-10-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20161207170916.GA84287@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Stephen Barber <smbarber@chromium.org>, linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 1. Dezember 2016, 18:27:33 CET schrieb Brian Norris:
-> We need to enable this regulator before the digitizer can be used. Wacom
-> recommended waiting for 100 ms before talking to the HID.
+Am Mittwoch, 7. Dezember 2016, 09:09:17 CET schrieb Brian Norris:
+> Hi Heiko,
 > 
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> Uses WIP bindings:
+> On Wed, Dec 07, 2016 at 05:48:24PM +0100, Heiko Stuebner wrote:
+> > Am Donnerstag, 1. Dezember 2016, 18:27:32 CET schrieb Brian Norris:
+> > > We need to add regulators to the CPU nodes, so cpufreq doesn't think it
+> > > can crank up the clock speed without changing the voltage. However, we
+> > > don't yet have the DT bindings to fully describe the Over Voltage
+> > > Protection (OVP) circuits on these boards. Without that description, we
+> > > might end up changing the voltage too much, too fast.
+> > > 
+> > > Add the pwm-regulator descriptions and associate the CPU OPPs, but leave
+> > > them disabled.
+> > > 
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > 
+> > is there a specific reason for keeping this change separate?
 > 
-> [PATCH v3 1/2] devicetree: i2c-hid: Add regulator support
-> https://patchwork.kernel.org/patch/9457493/
+> Maybe not a great one. I figured they were somewhat controversial, so I
+> at least wanted to split the "cpufreq patches" (i.e., this and the
+> previous) from the main DTS(I) additions. I also figured we typically
+> like to keep the base SoC changes separate from the board DTS(I)
+> changes.
 
-if you notice the bindings being accepted before me, could you notify here 
-please?
+I was scratching my head for a bit where this was affecting the evb, until I 
+found the include at the end of patch5 :-) .
+
+> > While it is nice for documentation reasons, as it stands now the previous
+> > patch introduces a regression (cpufreq trying to scale without regulators)
+> > and immediately fixes it here.
+> 
+> Right. Additionally, as noted on the previous patch, we might do the
+> same with EVB. But I don't know what the regulators are like for EVB.
+> This is probably a bigger deal, since EVB has been working (allegedly)
+> upstream for a while now.
+
+Yep, it was at least booting :-) . I guess I should wire it up again. My shiny 
+new Gru somehow did take up its space recently.
+
+> There's no way to split these up without either breaking compilation or
+> breaking bisectability. For Kevin/Gru, they don't function at all before
+> this series, so I figured some "settle" time wasn't a huge deal.
+> 
+> > So if you're ok with it, I'd like to merge this one back into the previous
+> > patch when applying.
+> 
+> That'd be OK with me, as long as we're also confident about EVB.
+
+That somehow sounds unrelated, as this patch only touches gru stuff anyway. So 
+if the evb breaks, it would do so after patch5 already.
 
 
-Thanks
+> Maybe at a minimum, I should just patch in some empty regulator nodes,
+> so cpufreq doesn't think there's no need to handle voltage.
+
+So I guess going forward we could do, describe the evb pwm regulators (in 
+disabled state), add general OPPs, add gru with pwm regulators?
+
+I'll try to hook up my evb and check on the pwm-regulators in the schematics 
+this week.
+
+
 Heiko
