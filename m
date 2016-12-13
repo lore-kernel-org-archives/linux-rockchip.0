@@ -1,92 +1,42 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v1 2/3] clk: rockchip: add clock controller for rk3328
-Date: Tue, 13 Dec 2016 17:38:44 +0800
-Message-ID: <acc7fa12-07ee-eab0-c8e8-b8bba00d9b00@rock-chips.com>
-References: <1481618869-1239-1-git-send-email-zhangqing@rock-chips.com>
- <1481618869-1239-3-git-send-email-zhangqing@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 9/9] arm64: dts: rockchip: add regulator info for Kevin
+ digitizer
+Date: Tue, 13 Dec 2016 18:36:48 +0100
+Message-ID: <2884868.1AkzspAEPR@phil>
+References: <1480645653-36943-1-git-send-email-briannorris@chromium.org>
+ <1480645653-36943-10-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1481618869-1239-3-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com, shawn.lin@rock-chips.com, mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, cl@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1480645653-36943-10-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Elaine,
-
-I always only keep an eye for mmc stuff here. :)
-
-On 2016/12/13 16:47, Elaine Zhang wrote:
-> Add the clock tree definition for the new rk3328 SoC.
->
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Am Donnerstag, 1. Dezember 2016, 18:27:33 CET schrieb Brian Norris:
+> We need to enable this regulator before the digitizer can be used. Wacom
+> recommended waiting for 100 ms before talking to the HID.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
+> Uses WIP bindings:
+> 
+> [PATCH v3 1/2] devicetree: i2c-hid: Add regulator support
+> https://patchwork.kernel.org/patch/9457493/
 
-----8<--------------
-
-> +
-> +	/* PD_MMC */
-> +	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "sclk_sdmmc",
-> +	    RK3328_SDMMC_CON0, 1),
-> +	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "sclk_sdmmc",
-> +	    RK3328_SDMMC_CON1, 0),
-> +
-
-All of offset for these *_sample are wrong, and they should be 1
-, the same as *_drv. You could refer to P565 of TRM instead the
-section of CRU for these details.
-
-> +	MMC(SCLK_SDIO_DRV, "sdio_drv", "sclk_sdio",
-> +	    RK3328_SDIO_CON0, 1),
-> +	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "sclk_sdio",
-> +	    RK3328_SDIO_CON1, 0),
-> +
-> +	MMC(SCLK_EMMC_DRV, "emmc_drv", "sclk_emmc",
-> +	    RK3328_EMMC_CON0, 1),
-> +	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "sclk_emmc",
-> +	    RK3328_EMMC_CON1, 0),
-> +
-> +	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "sclk_sdmmc_ext",
-> +	    RK3328_SDMMC_EXT_CON0, 1),
-> +	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "sclk_sdmmc_ext",
-> +	    RK3328_SDMMC_EXT_CON1, 0),
-> +};
-> +
-
-----8<--------
+if you notice the bindings being accepted before me, could you notify here 
+please?
 
 
-> +#define RK3328_SDMMC_CON0		0x380
-> +#define RK3328_SDMMC_CON1		0x384
-> +#define RK3328_SDIO_CON0		0x388
-> +#define RK3328_SDIO_CON1		0x38c
-> +#define RK3328_EMMC_CON0		0x390
-> +#define RK3328_EMMC_CON1		0x394
-> +#define RK3328_SDMMC_EXT_CON0		0x398
-> +#define RK3328_SDMMC_EXT_CON1		0x39C
-
-
-Just wondering is it worth, but this uppercase 'C' isn't
-consistent with the former lowercase
-
-
-> +
->  #define RK3368_PLL_CON(x)		RK2928_PLL_CON(x)
->  #define RK3368_CLKSEL_CON(x)		((x) * 0x4 + 0x100)
->  #define RK3368_CLKGATE_CON(x)		((x) * 0x4 + 0x200)
-> @@ -130,6 +152,7 @@
->  enum rockchip_pll_type {
->  	pll_rk3036,
->  	pll_rk3066,
-> +	pll_rk3328,
->  	pll_rk3399,
->  };
->
->
-
-
--- 
-Best Regards
-Shawn Lin
+Thanks
+Heiko
