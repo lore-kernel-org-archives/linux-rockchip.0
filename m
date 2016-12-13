@@ -1,69 +1,92 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 3/3] clk: rockchip: add new pll-type for rk3328 and similar socs
-Date: Tue, 13 Dec 2016 16:47:49 +0800
-Message-ID: <1481618869-1239-4-git-send-email-zhangqing@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v1 2/3] clk: rockchip: add clock controller for rk3328
+Date: Tue, 13 Dec 2016 17:38:44 +0800
+Message-ID: <acc7fa12-07ee-eab0-c8e8-b8bba00d9b00@rock-chips.com>
 References: <1481618869-1239-1-git-send-email-zhangqing@rock-chips.com>
+ <1481618869-1239-3-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1481618869-1239-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1481618869-1239-3-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com, shawn.lin@rock-chips.com, mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, cl@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3328's pll and clock are similar with rk3036's,
-it different with pll_mode_mask,there are different
-adjust foctors and control registers,
-so these should be independent and separate from
-the series of rk3328s.
+Hi, Elaine,
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-pll.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+I always only keep an eye for mmc stuff here. :)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 6ed605776abd..9650c75f61d1 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -29,6 +29,7 @@
- #define PLL_MODE_SLOW		0x0
- #define PLL_MODE_NORM		0x1
- #define PLL_MODE_DEEP		0x2
-+#define PLL_RK3328_MODE_MASK	0x1
- 
- struct rockchip_clk_pll {
- 	struct clk_hw		hw;
-@@ -865,13 +866,17 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
- 	pll_mux = &pll->pll_mux;
- 	pll_mux->reg = ctx->reg_base + mode_offset;
- 	pll_mux->shift = mode_shift;
--	pll_mux->mask = PLL_MODE_MASK;
-+	if (pll_type == pll_rk3328)
-+		pll_mux->mask = PLL_RK3328_MODE_MASK;
-+	else
-+		pll_mux->mask = PLL_MODE_MASK;
- 	pll_mux->flags = 0;
- 	pll_mux->lock = &ctx->lock;
- 	pll_mux->hw.init = &init;
- 
- 	if (pll_type == pll_rk3036 ||
- 	    pll_type == pll_rk3066 ||
-+	    pll_type == pll_rk3328 ||
- 	    pll_type == pll_rk3399)
- 		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
- 
-@@ -929,6 +934,12 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
- 		else
- 			init.ops = &rockchip_rk3066_pll_clk_ops;
- 		break;
-+	case pll_rk3328:
-+		if (!pll->rate_table || IS_ERR(ctx->grf))
-+			init.ops = &rockchip_rk3036_pll_clk_norate_ops;
-+		else
-+			init.ops = &rockchip_rk3036_pll_clk_ops;
-+		break;
- 	case pll_rk3399:
- 		if (!pll->rate_table)
- 			init.ops = &rockchip_rk3399_pll_clk_norate_ops;
+On 2016/12/13 16:47, Elaine Zhang wrote:
+> Add the clock tree definition for the new rk3328 SoC.
+>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+
+----8<--------------
+
+> +
+> +	/* PD_MMC */
+> +	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "sclk_sdmmc",
+> +	    RK3328_SDMMC_CON0, 1),
+> +	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "sclk_sdmmc",
+> +	    RK3328_SDMMC_CON1, 0),
+> +
+
+All of offset for these *_sample are wrong, and they should be 1
+, the same as *_drv. You could refer to P565 of TRM instead the
+section of CRU for these details.
+
+> +	MMC(SCLK_SDIO_DRV, "sdio_drv", "sclk_sdio",
+> +	    RK3328_SDIO_CON0, 1),
+> +	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "sclk_sdio",
+> +	    RK3328_SDIO_CON1, 0),
+> +
+> +	MMC(SCLK_EMMC_DRV, "emmc_drv", "sclk_emmc",
+> +	    RK3328_EMMC_CON0, 1),
+> +	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "sclk_emmc",
+> +	    RK3328_EMMC_CON1, 0),
+> +
+> +	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "sclk_sdmmc_ext",
+> +	    RK3328_SDMMC_EXT_CON0, 1),
+> +	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "sclk_sdmmc_ext",
+> +	    RK3328_SDMMC_EXT_CON1, 0),
+> +};
+> +
+
+----8<--------
+
+
+> +#define RK3328_SDMMC_CON0		0x380
+> +#define RK3328_SDMMC_CON1		0x384
+> +#define RK3328_SDIO_CON0		0x388
+> +#define RK3328_SDIO_CON1		0x38c
+> +#define RK3328_EMMC_CON0		0x390
+> +#define RK3328_EMMC_CON1		0x394
+> +#define RK3328_SDMMC_EXT_CON0		0x398
+> +#define RK3328_SDMMC_EXT_CON1		0x39C
+
+
+Just wondering is it worth, but this uppercase 'C' isn't
+consistent with the former lowercase
+
+
+> +
+>  #define RK3368_PLL_CON(x)		RK2928_PLL_CON(x)
+>  #define RK3368_CLKSEL_CON(x)		((x) * 0x4 + 0x100)
+>  #define RK3368_CLKGATE_CON(x)		((x) * 0x4 + 0x200)
+> @@ -130,6 +152,7 @@
+>  enum rockchip_pll_type {
+>  	pll_rk3036,
+>  	pll_rk3066,
+> +	pll_rk3328,
+>  	pll_rk3399,
+>  };
+>
+>
+
+
 -- 
-1.9.1
+Best Regards
+Shawn Lin
