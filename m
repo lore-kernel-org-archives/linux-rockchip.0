@@ -1,79 +1,94 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] devicetree: i2c-hid: Add Wacom digitizer +
- regulator support
-Date: Tue, 13 Dec 2016 16:10:49 -0600
-Message-ID: <CAL_Jsq+ApH0jn3YNPxqJ54ryYVmN781B_wHTwS8cT1Nf2ej0zw@mail.gmail.com>
-References: <CAD=FV=UMonRe8WJ1feDv3Nh9g8hEGAwwFT5NYLbzXADBqhTf-A@mail.gmail.com>
- <20161208154145.GA30888@mail.corp.redhat.com> <CAL_Jsq+fdoFnarXYkPv6FjVue3v31ry-Ddfkq9fQk9Ek+AjETw@mail.gmail.com>
- <E409F66F-1E4B-4A63-9977-69DF44ACAB0A@gmail.com> <CAL_JsqKu0yhLVyEjcZs_rn=VqM9O4F_VMhOkfhEEvbYAjvWSTg@mail.gmail.com>
- <alpine.LNX.2.00.1612091532240.16984@cbobk.fhfr.pm> <CAL_JsqLpjhHeeKq3PmNToux1Rgkg0M84-dv9HGCOws223ima4w@mail.gmail.com>
- <alpine.LNX.2.00.1612120951130.16984@cbobk.fhfr.pm> <20161212100110.GA13907@mail.corp.redhat.com>
- <CAL_JsqJ7t=C4+PgCyNTev66V33-cyPkUHKsTcbnsYgvAaffVfw@mail.gmail.com> <20161212183422.GA138477@google.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v2 2/2] drm/panel: simple: Add support BOE nv101wxmn51
+Date: Wed, 14 Dec 2016 11:01:43 +0800
+Message-ID: <2985f6b8-04a5-efb3-6926-1645495efed6@rock-chips.com>
+References: <1481181996-27922-1-git-send-email-wxt@rock-chips.com>
+ <1481181996-27922-2-git-send-email-wxt@rock-chips.com>
+ <CACP_E+K1_c2ryUOKgqOvj9oJp6EKUc+44J0AiFNAU_C=7WJFSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <20161212183422.GA138477@google.com>
-Sender: linux-input-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Jiri Kosina <jikos@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Doug Anderson <dianders@chromium.org>, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CACP_E+K1_c2ryUOKgqOvj9oJp6EKUc+44J0AiFNAU_C=7WJFSw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?Q?St=c3=a9phane_Marchesin?= <stephane.marchesin@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, Linux Kernel list <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 12, 2016 at 12:34 PM, Brian Norris <briannorris@chromium.org> wrote:
-> Hi all,
->
-> On Mon, Dec 12, 2016 at 08:47:06AM -0600, Rob Herring wrote:
->
-> [Snip Benjamin's proposal; I agree we don't really want a multi-level DT
-> layout purely for making the driver look a little nicer (I'm not sure
-> this would really be nicer anyway). And I think, as Rob notes here, our
-> disagreement is smaller than appears. But I might be wrong.]
->
->> Anyway, we're only debating this:
->
-> OK, so I think we might have a consensus of sorts? I'll describe it
-> here, in case I'm wrong. Otherwise, I'll send another rev.
->
->>          i2c-hid-dev@2c {
->>                  compatible = "wacom,w9013", "hid-over-i2c";
->
-> I plan to document the above, but not treat "wacom,w9013" specially in
-> the driver, apart from possibly listing it in the driver of_match_table.
-> This was mentioned by Dmitry earlier, and I didn't see any objection.
->
-> (Note that there are problems with module autoload when using multiple
-> compatible strings like above. May not be supremely relevant to the
-> documentation, but it *is* practically important.)
-
-I'm not sure what is not working here exactly. We emit all the
-compatible strings in the uevent. However, it looks like this is only
-called for platform devices. In the case of i2c, I don't think any
-compatible string is emitted. It looks to me like i2c_device_uevent
-just needs a call to of_device_get_modalias to fix this. There's some
-issues in the I2C core in how it does matching and maybe this is
-related? I would guess if it was that easy, then it would be fixed
-already. Maybe not.
-
->>                  reg = <0x2c>;
->>                  hid-descr-addr = <0x0020>;
->>                  interrupt-parent = <&gpx3>;
->>                  interrupts = <3 2>;
->>                  vdd-supply = <sth>;
->
-> Document and support 'vdd-supply', optionally.
->
->>                  init-delay-ms = <100>;
->
-> Per Rob's mention below, support this as 'post-power-on-delay-ms',
-> optionally.
->
-> We can use either of these properties on any device, with the
-> intention that if there are future needs for divergent bindings, the
-> aforementioned compatible property can help us differentiate.
-
-TBC, from a DT perspective (and what the binding should say), is the
-properties are only valid with a wacom compatible present (or any
-others you want to add). If the driver doesn't enforce that and
-supports having those properties with just "hid-over-i2c", then
-downstream dts's can use that for all I care.
-
-Rob
+5ZyoIDIwMTblubQxMuaciDEz5pelIDA0OjIyLCBTdMOpcGhhbmUgTWFyY2hlc2luIOWGmemBkzoK
+PiBPbiBXZWQsIERlYyA3LCAyMDE2IGF0IDExOjI2IFBNLCBDYWVzYXIgV2FuZyA8d3h0QHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPj4gMTAuMVdYR0EgaXMgYSBjb2xvciBhY3RpdmUgbWF0cml4IFRG
+VCBMQ0QgbW9kdWxlIHVzaW5nIGFtb3JwaG91cyBzaWxpY29uCj4+IFRGVCdzIGFzIGFuIGFjdGl2
+ZSBzd2l0Y2hpbmcgZGV2aWNlcy4gSXQgY2FuIGJlIHN1cHBvcnRlZCBieSB0aGUKPj4gc2ltcGxl
+LXBhbmVsIGRyaXZlci4KPj4KPj4gUmVhZCB0aGUgcGFuZWwgZWRpZCBpbmZvcm1hdGlvbjsKPj4K
+Pj4gRURJRCBNT0RFIERFVEFJTFMKPj4gICAgICAgICAgICAgICAgICBuYW1lID0gPE5VTEw+Cj4+
+ICAgICAgICAgICAgICAgICAgcGl4ZWxfY2xvY2sgPSA3MTkwMAo+PiAgICAgICAgICAgICAgICAg
+IGx2ZHNfZHVhbF9jaGFubmVsID0gMAo+PiAgICAgICAgICAgICAgICAgIHJlZnJlc2ggPSAwCj4+
+ICAgICAgICAgICAgICAgICAgaGEgPSAxMjgwCj4+ICAgICAgICAgICAgICAgICAgaGJsID0gMTYw
+Cj4+ICAgICAgICAgICAgICAgICAgaHNvID0gNDgKPj4gICAgICAgICAgICAgICAgICBoc3B3ID0g
+MzIKPj4gICAgICAgICAgICAgICAgICBoYm9yZGVyID0gMAo+PiAgICAgICAgICAgICAgICAgIHZh
+ID0gODAwCj4+ICAgICAgICAgICAgICAgICAgdmJsID0gMzIKPj4gICAgICAgICAgICAgICAgICB2
+c28gPSAzCj4+ICAgICAgICAgICAgICAgICAgdnNwdyA9IDUKPj4gICAgICAgICAgICAgICAgICB2
+Ym9yZGVyID0gMAo+PiAgICAgICAgICAgICAgICAgIHBoc3luYyA9ICsKPj4gICAgICAgICAgICAg
+ICAgICBwdnN5bmMgPSAtCj4+ICAgICAgICAgICAgICAgICAgeF9tbSA9IDAKPj4gICAgICAgICAg
+ICAgICAgICB5X21tID0gMAo+PiBkcm1fZGlzcGxheV9tb2RlCj4+ICAgICAgICAgICAgICAgICAg
+LmhkaXNwbGF5ID0gMTI4MAo+PiAgICAgICAgICAgICAgICAgIC5oc3luY19zdGFydCA9IDEzMjgK
+Pj4gICAgICAgICAgICAgICAgICAuaHN5bmNfZW5kID0gMTM2MAo+PiAgICAgICAgICAgICAgICAg
+IC5odG90YWwgPSAxNDQwCj4+ICAgICAgICAgICAgICAgICAgLnZkaXNwbGF5ID0gODAwCj4+ICAg
+ICAgICAgICAgICAgICAgLnZzeW5jX3N0YXJ0ID0gODAzCj4+ICAgICAgICAgICAgICAgICAgLnZz
+eW5jX2VuZCA9IDgwOAo+PiAgICAgICAgICAgICAgICAgIC52dG90YWwgPSA4MzIKPj4KPj4gU2ln
+bmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+
+IENoYW5nZXMgaW4gdjI6Cj4+IC0gZml4IHRoZSB2c3luY19zdGFydCBhbmQgdnN5bmNfZW5kIGZy
+b20gdGhlIGVkaWQuCj4+IC0gY2hhbmdlIHRoZSBjb21taXQuCj4+Cj4+ICAgZHJpdmVycy9ncHUv
+ZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMzEgKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzMSBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMKPj4gaW5kZXggMDZhYWY3OS4uN2M5MGYxNiAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCj4+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwo+PiBAQCAtNjY4LDYgKzY2OCwzNCBA
+QCBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgYXZpY190bTA3MGRkaDAzID0gewo+PiAg
+ICAgICAgICB9LAo+PiAgIH07Cj4+Cj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5
+X21vZGUgYm9lX252MTAxd3htbjUxX21vZGUgPSB7Cj4+ICsgICAgICAgLmNsb2NrID0gNzE5MDAs
+Cj4+ICsgICAgICAgLmhkaXNwbGF5ID0gMTI4MCwKPj4gKyAgICAgICAuaHN5bmNfc3RhcnQgPSAx
+MjgwICsgNDgsCj4+ICsgICAgICAgLmhzeW5jX2VuZCA9IDEyODAgKyA0OCArIDMyLAo+PiArICAg
+ICAgIC5odG90YWwgPSAxMjgwICsgNDggKyAzMiArIDgwLAo+PiArICAgICAgIC52ZGlzcGxheSA9
+IDgwMCwKPj4gKyAgICAgICAudnN5bmNfc3RhcnQgPSA4MDAgKyAzLAo+PiArICAgICAgIC52c3lu
+Y19lbmQgPSA4MDAgKyAzICsgNSwKPj4gKyAgICAgICAudnRvdGFsID0gODAwICsgMyArIDUgKyAy
+NCwKPj4gKyAgICAgICAudnJlZnJlc2ggPSA2MCwKPj4gK307Cj4+ICsKPj4gK3N0YXRpYyBjb25z
+dCBzdHJ1Y3QgcGFuZWxfZGVzYyBib2VfbnYxMDF3eG1uNTEgPSB7Cj4+ICsgICAgICAgLm1vZGVz
+ID0gJmJvZV9udjEwMXd4bW41MV9tb2RlLAo+PiArICAgICAgIC5udW1fbW9kZXMgPSAxLAo+IFRo
+ZXJlIGFyZSB0d28gbW9kZXMgaW4gdGhlIEVESUQgKHRoZXJlIGlzIGEgZG93bmNsb2NrIG9uZSku
+IENhbiB5b3UKPiBhZGQgYm90aCBtb2Rlcz8KCll1cCwgSSB3aWxsIGFkZCB0aGVtIGZvciBuZXh0
+IHZlcnNpb24uClRoYW5rcy4KCi1DYWVzYXIKPgo+IFN0w6lwaGFuZQo+Cj4+ICsgICAgICAgLmJw
+YyA9IDgsCj4+ICsgICAgICAgLnNpemUgPSB7Cj4+ICsgICAgICAgICAgICAgICAud2lkdGggPSAy
+MTcsCj4+ICsgICAgICAgICAgICAgICAuaGVpZ2h0ID0gMTM2LAo+PiArICAgICAgIH0sCj4+ICsg
+ICAgICAgLmRlbGF5ID0gewo+PiArICAgICAgICAgICAgICAgLnByZXBhcmUgPSAyMTAsCj4+ICsg
+ICAgICAgICAgICAgICAuZW5hYmxlID0gNTAsCj4+ICsgICAgICAgICAgICAgICAudW5wcmVwYXJl
+ID0gMTYwLAo+PiArICAgICAgIH0sCj4+ICt9Owo+PiArCj4+ICAgc3RhdGljIGNvbnN0IHN0cnVj
+dCBkcm1fZGlzcGxheV9tb2RlIGNodW5naHdhX2NsYWEwNzB3cDAzeGdfbW9kZSA9IHsKPj4gICAg
+ICAgICAgLmNsb2NrID0gNjY3NzAsCj4+ICAgICAgICAgIC5oZGlzcGxheSA9IDgwMCwKPj4gQEAg
+LTE3NDgsNiArMTc3Niw5IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHBsYXRm
+b3JtX29mX21hdGNoW10gPSB7Cj4+ICAgICAgICAgICAgICAgICAgLmNvbXBhdGlibGUgPSAiYXZp
+Yyx0bTA3MGRkaDAzIiwKPj4gICAgICAgICAgICAgICAgICAuZGF0YSA9ICZhdmljX3RtMDcwZGRo
+MDMsCj4+ICAgICAgICAgIH0sIHsKPj4gKyAgICAgICAgICAgICAgIC5jb21wYXRpYmxlID0gImJv
+ZSxudjEwMXd4bW41MSIsCj4+ICsgICAgICAgICAgICAgICAuZGF0YSA9ICZib2VfbnYxMDF3eG1u
+NTEsCj4+ICsgICAgICAgfSwgewo+PiAgICAgICAgICAgICAgICAgIC5jb21wYXRpYmxlID0gImNo
+dW5naHdhLGNsYWEwNzB3cDAzeGciLAo+PiAgICAgICAgICAgICAgICAgIC5kYXRhID0gJmNodW5n
+aHdhX2NsYWEwNzB3cDAzeGcsCj4+ICAgICAgICAgIH0sIHsKPj4gLS0KPj4gMi43LjQKPj4KPj4g
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdAo+PiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+IGh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCj4g
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
