@@ -1,65 +1,38 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/bridge: analogix_dp: set the DPCD600 during disabling
- the psr
-Date: Wed, 14 Dec 2016 05:00:09 -0500
-Message-ID: <CAOw6vbJA+_38GOyki-FLTLiEEDnOkK8bcM+cSzZQx=p31a3jXA@mail.gmail.com>
-References: <1481338159-7189-1-git-send-email-wxt@rock-chips.com>
- <CAOw6vb+zKuD-ijxQDtQwyozP6budBAKECTevUf83EEvqaDMQPQ@mail.gmail.com>
- <b8793b93-b26a-de8f-0b29-34e98010720a@codeaurora.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <b8793b93-b26a-de8f-0b29-34e98010720a@codeaurora.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Brian Norris <briannorris@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Caesar Wang <wxt@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH 2/3] clk: rockchip: rk3399: export 480M_SRC clocks id for usbphy0/usbphy1
+Date: Wed, 14 Dec 2016 18:11:40 +0800
+Message-ID: <1481710301-1454-3-git-send-email-zhengxing@rock-chips.com>
+References: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: dianders@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBEZWMgMTQsIDIwMTYgYXQgMTI6MDMgQU0sIEFyY2hpdCBUYW5lamEgPGFyY2hpdHRA
-Y29kZWF1cm9yYS5vcmc+IHdyb3RlOgo+IEhpLAo+Cj4gT24gMTIvMTIvMjAxNiAwODoyOCBQTSwg
-U2VhbiBQYXVsIHdyb3RlOgo+Pgo+PiBPbiBGcmksIERlYyA5LCAyMDE2IGF0IDk6NDkgUE0sIENh
-ZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pj4KPj4+IExvb2sgbGlrZXMs
-IHRoZSBCT0UgcGFuZWwgRlcgZGlkbid0IGFjayB0aGUgRFBDRDYwMCBzaWduYWwgZnJvbSB0aGUg
-aG9zdAo+Pj4gZGV2aWNlLCB0aGF0IHdpbGwgY2F1c2UgdGhlIHBhbmVsIGhhbmcgb24gdGhlIHN0
-YXJ0dXAgZGlzcGxheS4KPj4+IFRoZSByb290IGNhdXNlIHdlIHVzZSB0aGUgZmFzdCBsaW5rIG1v
-ZGUgZHVyaW5nIGVudGVyIGFuZCBleGl0IHRoZSBwc3IsCj4+PiB0aGlzIGlzc3VlIGlzIGdvbmUg
-aWYgc3dpdGNoaW5nIHRoZSBmYXN0IGxpbmsgdG8gbWFpbiBsaW5rIG1vZGUuCj4+Pgo+Pgo+PiBD
-YzogQXJjaGl0IFRhbmVqYSA8YXJjaGl0dEBjb2RlYXVyb3JhLm9yZz4KPgo+Cj4gRG8gd2Ugd2Fu
-dCB0aGlzIGFzIGEgZml4IGluIDQuMTA/IE9yIGlzIGl0IG9rYXkgdG8gZ2V0IGl0IGluIDQuMTE/
-Cj4gSW4gb3RoZXIgd29yZHMsIHNob3VsZCB0aGlzIGdvIHRvIGRybS1taXNjLW5leHQgb3IgZHJt
-LW1pc2MtZml4ZXM/Cj4KCkhpIEFyY2hpdCwKNC4xMSBpcyB0b3RhbGx5IGZpbmUuCgpTZWFuCgoK
-PiBUaGFua3MsCj4gQXJjaGl0Cj4KPgo+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcg
-PHd4dEByb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4KPj4+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDUgKysrKysKPj4+ICAxIGZpbGUgY2hh
-bmdlZCwgNSBpbnNlcnRpb25zKCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBiL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBpbmRleCA2ZTA0NDdmLi42
-YTUzNDdiIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
-bmFsb2dpeF9kcF9jb3JlLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBAQCAtMTMzLDYgKzEzMyw3IEBAIGludCBhbmFsb2dp
-eF9kcF9kaXNhYmxlX3BzcihzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+PiAgewo+Pj4gICAgICAgICBz
-dHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+Pj4g
-ICAgICAgICBzdHJ1Y3QgZWRwX3ZzY19wc3IgcHNyX3ZzYzsKPj4+ICsgICAgICAgaW50IHJldDsK
-Pj4+Cj4+PiAgICAgICAgIGlmICghZHAtPnBzcl9zdXBwb3J0KQo+Pj4gICAgICAgICAgICAgICAg
-IHJldHVybiAtRUlOVkFMOwo+Pj4gQEAgLTE0Nyw2ICsxNDgsMTAgQEAgaW50IGFuYWxvZ2l4X2Rw
-X2Rpc2FibGVfcHNyKHN0cnVjdCBkZXZpY2UgKmRldikKPj4+ICAgICAgICAgcHNyX3ZzYy5EQjAg
-PSAwOwo+Pj4gICAgICAgICBwc3JfdnNjLkRCMSA9IDA7Cj4+Pgo+Pj4gKyAgICAgICByZXQgPSBk
-cm1fZHBfZHBjZF93cml0ZWIoJmRwLT5hdXgsIERQX1NFVF9QT1dFUiwKPj4+IERQX1NFVF9QT1dF
-Ul9EMCk7Cj4+PiArICAgICAgIGlmIChyZXQgIT0gMSkKPj4+ICsgICAgICAgICAgICAgICBkZXZf
-ZXJyKGRwLT5kZXYsICJGYWlsZWQgdG8gc2V0IERQIFBvd2VyMCAlZFxuIiwgcmV0KTsKPj4+ICsK
-Pj4+ICAgICAgICAgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKGRwLCAmcHNyX3ZzYyk7Cj4+PiAg
-ICAgICAgIHJldHVybiAwOwo+Pj4gIH0KPj4+IC0tCj4+PiAyLjcuNAo+Pj4KPgo+IC0tCj4gUXVh
-bGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBBdXJvcmEg
-Rm9ydW0sCj4gYSBMaW51eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This patch exports USBPHYx_480M_SRC clocks for usbphy.
+
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
+
+ drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 3490887..cf2af4c 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -411,9 +411,9 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 	GATE(SCLK_USB2PHY1_REF, "clk_usb2phy1_ref", "xin24m", CLK_IGNORE_UNUSED,
+ 			RK3399_CLKGATE_CON(6), 6, GFLAGS),
+ 
+-	GATE(0, "clk_usbphy0_480m_src", "clk_usbphy0_480m", 0,
++	GATE(SCLK_USBPHY0_480M_SRC, "clk_usbphy0_480m_src", "clk_usbphy0_480m", 0,
+ 			RK3399_CLKGATE_CON(13), 12, GFLAGS),
+-	GATE(0, "clk_usbphy1_480m_src", "clk_usbphy1_480m", 0,
++	GATE(SCLK_USBPHY1_480M_SRC, "clk_usbphy1_480m_src", "clk_usbphy1_480m", 0,
+ 			RK3399_CLKGATE_CON(13), 12, GFLAGS),
+ 	MUX(0, "clk_usbphy_480m", mux_usbphy_480m_p, 0,
+ 			RK3399_CLKSEL_CON(14), 6, 1, MFLAGS),
+-- 
+2.7.4
