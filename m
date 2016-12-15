@@ -1,43 +1,130 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 0/3] Add and export clk-480m clocks for ehci and ohci on RK3399
-Date: Wed, 14 Dec 2016 18:11:38 +0800
-Message-ID: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com>
+From: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add clk-480m for ehci and ohci
+ of rk3399
+Date: Wed, 14 Dec 2016 16:10:38 -0800
+Message-ID: <CAD=FV=UU4JdRjRgEvc_wxprvi6bo46+jd=x2m2QzOe4uJmuRPA@mail.gmail.com>
+References: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com> <1481710301-1454-4-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1481710301-1454-4-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dmitry Torokhov <dmitry.torok>
 List-Id: linux-rockchip.vger.kernel.org
 
-
 Hi,
-  This patches would like to fix the USB suspend block without
-the clk-480m clock. Let's add and export them to control them.
 
-Thanks.
+On Wed, Dec 14, 2016 at 2:11 AM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> We found that the suspend process was blocked when it run into
+> ehci/ohci module due to clk-480m of usb2-phy was disabled.
+>
+> The root cause is that usb2-phy suspended earlier than ehci/ohci
+> (usb2-phy will be auto suspended if no devices plug-in).
+
+This is really weird, but I can confirm it is true on my system too
+(kernel-4.4 based).  At least I see:
+
+[  208.012065] calling  usb1+ @ 4984, parent: fe380000.usb, cb: usb_dev_suspend
+[  208.569112] calling  ff770000.syscon:usb2-phy@e450+ @ 4983, parent:
+ff770000.syscon, cb: platform_pm_suspend
+[  208.569113] call ff770000.syscon:usb2-phy@e450+ returned 0 after 0 usecs
+[  208.569439] calling  fe380000.usb+ @ 4983, parent: platform, cb:
+platform_pm_suspend
+[  208.569444] call fe380000.usb+ returned 0 after 4 usecs
 
 
-William wu (1):
-  arm64: dts: rockchip: add clk-480m for ehci and ohci of rk3399
+In general I thought that suspend order was supposed to be related to
+probe order.  So if your probe order is A, B, C then your suspend
+order would be C, B, A.  ...and we know for sure that the USB PHY
+needs to probe _before_ the main USB controller.  If it didn't then
+you'd get an EPROBE_DEFER in the USB controller, right?  So that means
+that the USB controller should be suspending before its PHY.
 
-Xing Zheng (2):
-  clk: rockchip: rk3399: add USBPHYx_480M_SRC clock IDs
-  clk: rockchip: rk3399: export 480M_SRC clocks id for usbphy0/usbphy1
+Any chance this is somehow related to async probe?  I'm not a huge
+expert on async probe but I guess I could imagine things getting
+confused if you had a sequence like this:
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 28 ++++++++++++++++++++--------
- drivers/clk/rockchip/clk-rk3399.c        |  4 ++--
- include/dt-bindings/clock/rk3399-cru.h   |  2 ++
- 3 files changed, 24 insertions(+), 10 deletions(-)
+1. Start USB probe (async)
+2. Start PHY probe
+3. Finish PHY probe
+4. In USB probe, ask for PHY--no problems since PHY probe finished
+5. Finish USB probe
 
--- 
-2.7.4
+The probe order would be USB before PHY even though the USB probe
+_depended_ on the PHY probe being finished...  :-/  Anyway, probably
+I'm just misunderstanding something and someone can tell me how dumb I
+am...
+
+I also notice that the ehci_platform_power_off() function we're
+actually making PHY commands right before the same commands that turn
+off our clocks.  Presumably those commands aren't really so good to do
+if the PHY has already been suspended?
+
+Actually, does the PHY suspend from platform_pm_suspend() actually
+even do anything?  It doesn't look like it.  It looks as if all the
+PHY cares about is init/exit and on/off...  ...and it looks as if the
+PHY should be turned off by the EHCI controller at about the same time
+it turns off its clocks...
+
+I haven't fully dug, but is there any chance that things are getting
+confused between the OTG PHY and the Host PHY?  Maybe when we turn off
+the OTG PHY it turns off something that the host PHY needs?
+
+
+> and the
+> clk-480m provided by it was disabled if no module used. However,
+> some suspend process related ehci/ohci are base on this clock,
+> so we should refer it into ehci/ohci driver to prevent this case.
+
+Though I don't actually have details about the internals of the chip,
+it does seem highly likely that the USB block actually uses this clock
+for some things, so it doesn't seem insane (to me) to have the USB
+controller request that the clock be on.  So, in general, I don't have
+lots of objections to including the USB PHY Clock here.
+
+...but I think you have the wrong clock (please correct me if I'm
+wrong).  I think you really wanted your input clock to be
+"clk_usbphy0_480m", not "clk_usbphy0_480m_src".  Specifically I
+believe there is a gate between the clock outputted by the PHY and the
+USB Controller itself.  I'm guessing that the gate is only there
+between the PHY and the "clk_usbphy_480m" MUX.
+
+As evidence, I have a totally functioning system right now where
+"clk_usbphy0_480m_src" is currently gated.
+
+That means really you should be changing your clocks to this (untested):
+
+               clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
+                        <&u2phy0>;
+
+...and then you could drop the other two patches in this series.
+
+===
+
+OK, I actually briefly tested my proposed change and it at least seems
+to build and boot OK.  You'd have to test it to make sure it makes
+your tests pass...
+
+===
+
+So I guess to summarize all the above:
+
+* It seems to me like there's some deeper root cause and your patch
+will at most put a band-aid on it.  Seems like digging out the root
+cause is a good idea.
+
+* Though I don't believe it solves the root problem, the idea of the
+USB Controller holding onto the PHY clock doesn't seem wrong.
+
+* You're holding onto the wrong clock in your patch--you want the one
+before the gate (I think).
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
