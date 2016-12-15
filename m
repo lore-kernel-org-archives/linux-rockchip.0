@@ -1,71 +1,73 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH] drm/bridge: analogix_dp: set the DPCD600 during disabling
- the psr
-Date: Thu, 15 Dec 2016 15:07:59 +0530
-Message-ID: <9e2507fd-e5bb-40ce-a9a6-e4b978cd6d9a@codeaurora.org>
-References: <1481338159-7189-1-git-send-email-wxt@rock-chips.com>
- <CAOw6vb+zKuD-ijxQDtQwyozP6budBAKECTevUf83EEvqaDMQPQ@mail.gmail.com>
- <b8793b93-b26a-de8f-0b29-34e98010720a@codeaurora.org>
- <CAOw6vbJA+_38GOyki-FLTLiEEDnOkK8bcM+cSzZQx=p31a3jXA@mail.gmail.com>
+From: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add clk-480m for ehci and ohci
+ of rk3399
+Date: Thu, 15 Dec 2016 08:34:09 -0800
+Message-ID: <CAD=FV=XKQaqRS4jUM7NpN2KEV8USj_cVWbh7q4274n3jBtwORg@mail.gmail.com>
+References: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com>
+ <1481710301-1454-4-git-send-email-zhengxing@rock-chips.com>
+ <CAD=FV=UU4JdRjRgEvc_wxprvi6bo46+jd=x2m2QzOe4uJmuRPA@mail.gmail.com>
+ <5ce521da-119a-2de8-026c-5992fedfef43@rock-chips.com>
+ <991221a4-3962-1bcb-7863-72f5553eba40@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbJA+_38GOyki-FLTLiEEDnOkK8bcM+cSzZQx=p31a3jXA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Brian Norris <briannorris@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <991221a4-3962-1bcb-7863-72f5553eba40-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "daniel.meng" <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMi8xNC8yMDE2IDAzOjMwIFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4gT24gV2VkLCBEZWMg
-MTQsIDIwMTYgYXQgMTI6MDMgQU0sIEFyY2hpdCBUYW5lamEgPGFyY2hpdHRAY29kZWF1cm9yYS5v
-cmc+IHdyb3RlOgo+PiBIaSwKPj4KPj4gT24gMTIvMTIvMjAxNiAwODoyOCBQTSwgU2VhbiBQYXVs
-IHdyb3RlOgo+Pj4KPj4+IE9uIEZyaSwgRGVjIDksIDIwMTYgYXQgOTo0OSBQTSwgQ2Flc2FyIFdh
-bmcgPHd4dEByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pj4KPj4+PiBMb29rIGxpa2VzLCB0aGUg
-Qk9FIHBhbmVsIEZXIGRpZG4ndCBhY2sgdGhlIERQQ0Q2MDAgc2lnbmFsIGZyb20gdGhlIGhvc3QK
-Pj4+PiBkZXZpY2UsIHRoYXQgd2lsbCBjYXVzZSB0aGUgcGFuZWwgaGFuZyBvbiB0aGUgc3RhcnR1
-cCBkaXNwbGF5Lgo+Pj4+IFRoZSByb290IGNhdXNlIHdlIHVzZSB0aGUgZmFzdCBsaW5rIG1vZGUg
-ZHVyaW5nIGVudGVyIGFuZCBleGl0IHRoZSBwc3IsCj4+Pj4gdGhpcyBpc3N1ZSBpcyBnb25lIGlm
-IHN3aXRjaGluZyB0aGUgZmFzdCBsaW5rIHRvIG1haW4gbGluayBtb2RlLgo+Pj4+Cj4+Pgo+Pj4g
-Q2M6IEFyY2hpdCBUYW5lamEgPGFyY2hpdHRAY29kZWF1cm9yYS5vcmc+Cj4+Cj4+Cj4+IERvIHdl
-IHdhbnQgdGhpcyBhcyBhIGZpeCBpbiA0LjEwPyBPciBpcyBpdCBva2F5IHRvIGdldCBpdCBpbiA0
-LjExPwo+PiBJbiBvdGhlciB3b3Jkcywgc2hvdWxkIHRoaXMgZ28gdG8gZHJtLW1pc2MtbmV4dCBv
-ciBkcm0tbWlzYy1maXhlcz8KPj4KPgo+IEhpIEFyY2hpdCwKPiA0LjExIGlzIHRvdGFsbHkgZmlu
-ZS4KClRoYW5rcy4gUXVldWVkIGFmdGVyIHNvbWUgY29tbWl0IG1lc3NhZ2UgY2xlYW51cC4KCkFy
-Y2hpdAoKPgo+IFNlYW4KPgo+Cj4+IFRoYW5rcywKPj4gQXJjaGl0Cj4+Cj4+Cj4+Pgo+Pj4+IFNp
-Z25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4+Pj4gLS0tCj4+
-Pj4KPj4+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmMgfCA1ICsrKysrCj4+Pj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPj4+Pgo+
-Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
-X2RwX2NvcmUuYwo+Pj4+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKPj4+PiBpbmRleCA2ZTA0NDdmLi42YTUzNDdiIDEwMDY0NAo+Pj4+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+Pj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMK
-Pj4+PiBAQCAtMTMzLDYgKzEzMyw3IEBAIGludCBhbmFsb2dpeF9kcF9kaXNhYmxlX3BzcihzdHJ1
-Y3QgZGV2aWNlICpkZXYpCj4+Pj4gIHsKPj4+PiAgICAgICAgIHN0cnVjdCBhbmFsb2dpeF9kcF9k
-ZXZpY2UgKmRwID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4+Pj4gICAgICAgICBzdHJ1Y3QgZWRw
-X3ZzY19wc3IgcHNyX3ZzYzsKPj4+PiArICAgICAgIGludCByZXQ7Cj4+Pj4KPj4+PiAgICAgICAg
-IGlmICghZHAtPnBzcl9zdXBwb3J0KQo+Pj4+ICAgICAgICAgICAgICAgICByZXR1cm4gLUVJTlZB
-TDsKPj4+PiBAQCAtMTQ3LDYgKzE0OCwxMCBAQCBpbnQgYW5hbG9naXhfZHBfZGlzYWJsZV9wc3Io
-c3RydWN0IGRldmljZSAqZGV2KQo+Pj4+ICAgICAgICAgcHNyX3ZzYy5EQjAgPSAwOwo+Pj4+ICAg
-ICAgICAgcHNyX3ZzYy5EQjEgPSAwOwo+Pj4+Cj4+Pj4gKyAgICAgICByZXQgPSBkcm1fZHBfZHBj
-ZF93cml0ZWIoJmRwLT5hdXgsIERQX1NFVF9QT1dFUiwKPj4+PiBEUF9TRVRfUE9XRVJfRDApOwo+
-Pj4+ICsgICAgICAgaWYgKHJldCAhPSAxKQo+Pj4+ICsgICAgICAgICAgICAgICBkZXZfZXJyKGRw
-LT5kZXYsICJGYWlsZWQgdG8gc2V0IERQIFBvd2VyMCAlZFxuIiwgcmV0KTsKPj4+PiArCj4+Pj4g
-ICAgICAgICBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoZHAsICZwc3JfdnNjKTsKPj4+PiAgICAg
-ICAgIHJldHVybiAwOwo+Pj4+ICB9Cj4+Pj4gLS0KPj4+PiAyLjcuNAo+Pj4+Cj4+Cj4+IC0tCj4+
-IFF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVy
-b3JhIEZvcnVtLAo+PiBhIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cgot
-LSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBB
-dXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRhdGlvbiBDb2xsYWJvcmF0aXZlIFByb2plY3QKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+On Wed, Dec 14, 2016 at 10:41 PM, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Hi Brain, Doug and Heiko,
+>
+> I would like to summarize why this story was constructed.
+>
+> The ehci/ohci-platform suspend process are blocked due to UTMI clock which
+> directly output from usb-phy has been disabled, and why the UTMI clock was
+> disabled?
+>
+> UTMI clock and 480m clock all output from the same internal PLL of usb-phy,
+> and there is only one bit can use to control this PLL on or off, which we
+> named "otg_commononn"(GRF, offset 0x0e450/0x0e460 bit4 ) in RK3399 TRM.
+>
+> When system boot up, ehci/ohci-platform probe function invoke
+> phy_power_on(), further invoke rockchip_usb2phy_power_on() to enable 480m
+> clock, actually, it sets the otg_commononn bit on, and then usb-phy will go
+> to (auto)suspend if there is no devices plug-in after 1 minute, the
+> rockchip_usb2phy_power_off() will be invoked and the 480m clock may be
+> disabled in the (auto)suspend process. As a result, the otg_commononn bit
+> may be turned off, and all output clock of usb-phy will be disabled.
+> However, ehci/ohci-platform PM suspend operation (read/write controller
+> register) are based on the UTMI clock.
+>
+> So we introduced "clk_usbphy0_480m_src"/"clk_usbphy1_480m_src" as one input
+> clock for ehci/ohci-platform, in this way, the otg_commononn bit is not
+> turned off until ehci/ohci-platform go to PM suspend.
+
+I still need to digest all of the things that were added to this
+thread overnight, but nothing I've seen so far indicates that you need
+the post-gated clock.  AKA I still think you need to redo your patch
+to replace:
+
+              clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
+                       <&cru SCLK_USBPHY0_480M_SRC>;
+
+with:
+
+              clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
+                        <&u2phy0>;
+
+Can you please comment on that?
+
+-Doug
