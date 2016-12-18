@@ -1,232 +1,87 @@
-From: Chanwoo Choi <cwchoi00@gmail.com>
-Subject: Re: [PATCH v1 & v6 1/2] PM/devfreq: add suspend frequency support
-Date: Sun, 18 Dec 2016 07:03:18 +0900
-Message-ID: <CAGTfZH2OchOPFa=kEd0VMxuLicjyKJv-tiT7BrmBKE9gLnvU9Q@mail.gmail.com>
-References: <CGME20161124061416epcms1p44a0152bca14312f1229cab835ea0297f@epcms1p4>
- <20161124061416epcms1p44a0152bca14312f1229cab835ea0297f@epcms1p4>
- <58368C91.8030502@rock-chips.com> <5836927B.9010205@samsung.com>
- <5836980F.6050006@rock-chips.com> <5836A1E0.1070707@samsung.com>
- <5836A622.20007@rock-chips.com> <5836B2C2.6090308@samsung.com>
- <5836B8D1.9050707@samsung.com> <CAGTfZH34MvFGGuPgt=qUM6FMmi+Z80akY5ZH1k6gXdzg19fh9Q@mail.gmail.com>
- <5855560E.4050609@math.uni-bielefeld.de> <CAGTfZH0HDuexEHR5aqBxWifFKL1fBT1K80XGFX27YqHtDf_7hw@mail.gmail.com>
- <58558195.20907@math.uni-bielefeld.de>
-Reply-To: cwchoi00@gmail.com
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] spi: rockchip: support "sleep" pin configuration
+Date: Sun, 18 Dec 2016 15:41:16 +0800
+Message-ID: <aa90bd62-747b-d666-910e-5f9842106f1d@rock-chips.com>
+References: <1481936356-76161-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <58558195.20907@math.uni-bielefeld.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Tobias Jakobi <tjakobi@math.uni-bielefeld.de>
-Cc: Chanwoo Choi <cw00.choi@samsung.com>, hl <hl@rock-chips.com>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "dianders@chromium.org" <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1481936356-76161-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-2016-12-18 3:19 GMT+09:00 Tobias Jakobi <tjakobi@math.uni-bielefeld.de>:
-> Hey Chanwoo,
+在 2016年12月17日 08:59, Brian Norris 写道:
+> In the pattern of many other devices, support a system-sleep pin
+> configuration.
 >
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Tested-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+> ---
+>   Documentation/devicetree/bindings/spi/spi-rockchip.txt | 7 +++++++
+>   drivers/spi/spi-rockchip.c                             | 5 +++++
+>   2 files changed, 12 insertions(+)
 >
-> Chanwoo Choi wrote:
->> 2016-12-18 0:13 GMT+09:00 Tobias Jakobi <tjakobi@math.uni-bielefeld.de>:
->>> Hey guys,
->>>
->>> Chanwoo Choi wrote:
->>>> Hi Lin,
->>>>
->>>> 2016-11-24 18:54 GMT+09:00 Chanwoo Choi <cw00.choi@samsung.com>:
->>>>> Hi Lin,
->>>>>
->>>>> On 2016=EB=85=84 11=EC=9B=94 24=EC=9D=BC 18:28, Chanwoo Choi wrote:
->>>>>> Hi Lin,
->>>>>>
->>>>>> On 2016=EB=85=84 11=EC=9B=94 24=EC=9D=BC 17:34, hl wrote:
->>>>>>> Hi Chanwoo Choi,
->>>>>>>
->>>>>>>
->>>>>>> On 2016=E5=B9=B411=E6=9C=8824=E6=97=A5 16:16, Chanwoo Choi wrote:
->>>>>>>> Hi Lin,
->>>>>>>>
->>>>>>>> On 2016=EB=85=84 11=EC=9B=94 24=EC=9D=BC 16:34, hl wrote:
->>>>>>>>> Hi Chanwoo Choi,
->>>>>>>>>
->>>>>>>>>      I think the dev_pm_opp_get_suspend_opp() have implement most=
- of
->>>>>>>>> the funtion, all we need is just define the node in dts, like fol=
-lowing:
->>>>>>>>>
->>>>>>>>> &dmc_opp_table {
->>>>>>>>>      opp06 {
->>>>>>>>>          opp-suspend;
->>>>>>>>>      };
->>>>>>>>> };
->>>>>>>> Two approaches use the 'opp-suspend' property.
->>>>>>>>
->>>>>>>> I think that the method to support suspend-opp have to
->>>>>>>> guarantee following conditions:
->>>>>>>> - Support the all of devfreq's governors.
->>>>>>>     As MyungJoo Ham suggestion, i will set the suspend frequency in=
- devfreq_suspend_device(),
->>>>>>> which will ingore governor.
->>>>>>
->>>>>> Other approach already support the all of governors.
->>>>>> Before calling the mail, I discussed with Myungjoo Ham.
->>>>>> Myungjoo prefer to use the devfreq_suspend/devfreq_resume().
->>>>>
->>>>> It is not correct expression. We need to wait the reply from Myungjoo
->>>>> to clarify this.
->>>>>
->>>>>>
->>>>>> To Myungjoo,
->>>>>> Please add your opinion how to support the suspend frequency.
->>>>>
->>>>>>
->>>>>>>> - Devfreq framework have the responsibility to change the
->>>>>>>>    frequency/voltage for suspend-opp. If we uses the
->>>>>>>>    new devfreq_suspend(), each devfreq device don't care
->>>>>>>>    how to support the suspend-opp. Just the developer of each
->>>>>>>>    devfreq device need to add 'opp-suspend' propet to OPP entry in=
- DT file.
->>>>>>> Why should support change the voltage in devfreq framework, i think=
- it shuold be handle in
->>>>>>> specific driver, i think the devfreq only handle it can get the rig=
-ht frequency, then pass it to
->>>>>>
->>>>>> No, the frequency should be handled by governor or framework.
->>>>>> The each devfreq device has no any responsibility of next frequency/=
-voltage.
->>>>>> The governor and core of devfreq can decide the next frequency/volta=
-ge.
->>>>>> You can refer to the cpufreq subsystem.
->>>>>>
->>>>>>> specific driver, i think the voltage should handle in the devfreq->=
-profile->target();
->>>>>>
->>>>>> The call of devfreq->profile->target() have to be handled by devfreq=
- framework.
->>>>>> If user want to set the suspend frequency, user can add the 'suspend=
--opp' property.
->>>>>> It think this way is easy.
->>>>>>
->>>>>> But,
->>>>>> If the each devfreq device want to decide the next frequency/voltage=
- only for
->>>>>> suspend state. We can check the cpufreq subsystem.
->>>>>>
->>>>>> If specific devfreq device want to handle the suspend frequency,
->>>>>> each devfreq will add the own suspend/resume functions as following:
->>>>>>
->>>>>>       struct devfreq_dev_profile {
->>>>>>               int (*suspend)(struct devfreq *dev);    // new functio=
-n pointer
->>>>>>               int (*resume)(struct devfreq *dev);     // new functio=
-n pointer
->>>>>>       } a_profile;
->>>>>>
->>>>>>       a_profile =3D devfreq_generic_suspend;
->>>>>>
->>>>>>       The devfreq framework will provide the devfreq_generic_suspend=
-() funticon.
->>>>>>               int devfreq_generic_suspend(struce devfreq *dev) {
->>>>>>                       ...
->>>>>>                       devfreq->profile->target(..., devfreq->suspend=
-_freq);
->>>>>>                       ...
->>>>>>               }
->>>>>>
->>>>>>       or
->>>>>>
->>>>>>       a_profile =3D a_devfreq_suspend; // specific function of each =
-devfreq device
->>>>>>
->>>>>>       The devfreq_suspend() will call 'devfreq->profile->suspend()' =
-function
->>>>>>       instead of devfreq->profile->target();
->>>>>>
->>>>>>       The devfreq call the 'devfreq->profile->suspend()'
->>>>>>       to support the suspend frequency.
->>>>>>
->>>>>> Regards,
->>>>>> Chanwoo Choi
->>>>>
->>>>> The key difference between two approaches:
->>>>>
->>>>> Your approach:
->>>>> - The each developer should add the 'opp-suspend' property to the dts=
- file.
->>>>> - The each devfreq should call the devfreq_suspend_device()
->>>>>   to support the suspend frequency.
->>>>>
->>>>>   If each devfreq doesn't call the devfreq_suspend_device(), devfreq =
-framework
->>>>>   can support the suspend frequency.
->>>>>
->>>>> Other approach:
->>>>> - The each developer only should add the 'opp-suspend' property to th=
-e dts file
->>>>>   without the additional behavior.
->>>>>
->>>>> In the cpufreq subsystem,
->>>>> When support the suspend frequency of cpufreq, we just add 'opp-suspe=
-nd' property
->>>>> without the additional behavior.
->>>>
->>>> I'm missing the use-case when using the devfreq_suspend_device()
->>>> before entering the suspend mode. We should consider the case when
->>>> devfreq device
->>>> calls the devfreq_suspend_device() directly. Because devfreq_suspend_d=
-evice()
->>>> is exported function, each devfreq device call this function on the fl=
-y
->>>> without entering the suspend mode.
->>>>
->>>> I correct my opinion. Your approach is necessary. I'm sorry to confuse=
- you.
->>>> So, I make the following patch. This patch set the suspend frequency
->>>> in devfreq_suspend_device() after stoping the governor.
->>>> It consider the all governors of devfreq.
->>>>
->>>> What do you think?
->>>> If you are ok, I'll send this patch with your author.
->>> The problem I see here is that we need to keep track of the suspended
->>> state when suspending the (entire) devfreq subsystem. When doing that,
->>> we don't know if any device driver has previously called
->>> devfreq_suspend_device() and might end up calling it twice.
->>>
->>> Same thing on devfreq subsystem resume.
->>>
->>> I've prepared a new RFC of my series (going to send it shortly), but I'=
-m
->>> not so happy with the current design. I think it would be much cleaner
->>> to keep some suspend_refcount in struct devfreq so that I can call
->>> devfreq_suspend_device() multiple times, while keeping a sane internal
->>> state.
->>
->> I agree the devfreq need  reference count for devfreq_suspend/resume_dev=
-ice.
->> This patch focus on when changing the suspend frequency.
->>
->>>
->>> Something like devfreq_device_runtime_{put,get}() perhaps?
->>
->> Why do devfreq need new additional functions?
->> I think the devfreq_suspend/resume_device are enough.
-> Just thinking out loud here. I would prefer a naming that implies that
-> some refcounting is going on. When I see a pair of function with
-> put/get, then I usually know what is going on.
+> diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.txt b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
+> index d2ca153614f9..83da4931d832 100644
+> --- a/Documentation/devicetree/bindings/spi/spi-rockchip.txt
+> +++ b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
+> @@ -31,6 +31,10 @@ Optional Properties:
+>   - rx-sample-delay-ns: nanoseconds to delay after the SCLK edge before sampling
+>   		Rx data (may need to be fine tuned for high capacitance lines).
+>   		No delay (0) by default.
+> +- pinctrl-names: Names for the pin configuration(s); may be "default" or
+> +		"sleep", where the "sleep" configuration may describe the state
+> +		the pins should be in during system suspend. See also
+> +		pinctrl/pinctrl-bindings.txt.
+>   
+>   
+>   Example:
+> @@ -46,4 +50,7 @@ Example:
+>   		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+>   		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
+>   		clock-names = "spiclk", "apb_pclk";
+> +		pinctrl-0 = <&spi1_pins>;
+> +		pinctrl-1 = <&spi1_sleep>;
+> +		pinctrl-names = "default", "sleep";
+>   	};
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index 0f89c2169c24..acf31f36b898 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -17,6 +17,7 @@
+>   #include <linux/dmaengine.h>
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+> +#include <linux/pinctrl/consumer.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/spi/spi.h>
+>   #include <linux/pm_runtime.h>
+> @@ -843,6 +844,8 @@ static int rockchip_spi_suspend(struct device *dev)
+>   		clk_disable_unprepare(rs->apb_pclk);
+>   	}
+>   
+> +	pinctrl_pm_select_sleep_state(dev);
+> +
+>   	return ret;
+>   }
+>   
+> @@ -852,6 +855,8 @@ static int rockchip_spi_resume(struct device *dev)
+>   	struct spi_master *master = dev_get_drvdata(dev);
+>   	struct rockchip_spi *rs = spi_master_get_devdata(master);
+>   
+> +	pinctrl_pm_select_default_state(dev);
+> +
+>   	if (!pm_runtime_suspended(dev)) {
+>   		ret = clk_prepare_enable(rs->apb_pclk);
+>   		if (ret < 0)
 
-The suspend/resume name are already used as pair function name.
-I think that devfreq_suspend/resume_device() are appropriate.
 
-Usually, '_runtime_put/get' naming means the 'runtime PM' callback function
-which handle the all of resource (e.g., clock, regulator, register and so o=
-n).
-
->
-> Here I would have to look at the actual implementation to realize, at
-> the moment, that I have to be careful calling these functions twice.
-
-Sure. I'm waiting your patch.
-
-[snip]
-
-Thanks,
-Chanwoo Choi
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
