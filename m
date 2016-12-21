@@ -1,30 +1,45 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] spi: rockchip: support "sleep" pin configuration
-Date: Tue, 20 Dec 2016 22:04:14 -0600
-Message-ID: <20161221040414.ogs2hj6gum772tuq@rob-hp-laptop>
-References: <1481936356-76161-1-git-send-email-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1481936356-76161-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Baolin Wang <baolin.wang@linaro.org>
+Subject: [PATCH 1/3] extcon: Add documentation for EXTCON_CHG_USB_* and EXTCON_USB_*
+Date: Wed, 21 Dec 2016 14:10:47 +0800
+Message-ID: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: myungjoo.ham@samsung.com, cw00.choi@samsung.com, wens@csie.org, kishon@ti.com, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linaro-kernel@lists.linaro.org, baolin.wang@linaro.org, broonie@kernel.org, neilb@suse.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 16, 2016 at 04:59:16PM -0800, Brian Norris wrote:
-> In the pattern of many other devices, support a system-sleep pin
-> configuration.
-> 
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 7 +++++++
->  drivers/spi/spi-rockchip.c                             | 5 +++++
->  2 files changed, 12 insertions(+)
+Current there is both "EXTCON_USB" and "EXTCON_CHG_USB_SDP" which
+both seem to suggest a standard downstream port. But there is no
+documentation describing how these relate.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thus add documentation to describe EXTCON_CHG_USB_SDP should always
+appear together with EXTCON_USB, and EXTCON_CHG_USB_ACA would normally
+appear with EXTCON_USB_HOST.
+
+Signed-off-by: Baolin Wang <baolin.wang@linaro.org>
+---
+ include/linux/extcon.h |    9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/include/linux/extcon.h b/include/linux/extcon.h
+index b871c0c..6498b05 100644
+--- a/include/linux/extcon.h
++++ b/include/linux/extcon.h
+@@ -46,7 +46,14 @@
+ #define EXTCON_USB		1
+ #define EXTCON_USB_HOST		2
+ 
+-/* Charging external connector */
++/*
++ * Charging external connector
++ *
++ * When one SDP charger connector was reported, we should also report
++ * the USB connector, which means EXTCON_CHG_USB_SDP should always
++ * appear together with EXTCON_USB. The same as ACA charger connector,
++ * EXTCON_CHG_USB_ACA should always appear with EXTCON_USB_HOST.
++ */
+ #define EXTCON_CHG_USB_SDP	5	/* Standard Downstream Port */
+ #define EXTCON_CHG_USB_DCP	6	/* Dedicated Charging Port */
+ #define EXTCON_CHG_USB_CDP	7	/* Charging Downstream Port */
+-- 
+1.7.9.5
