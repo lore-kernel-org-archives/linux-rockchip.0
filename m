@@ -1,116 +1,126 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add clk-480m for ehci and ohci
- of rk3399
-Date: Wed, 21 Dec 2016 18:44:39 +0800
-Message-ID: <9bd49b12-a2cf-c804-ca8e-2d8e39f2a4b9@rock-chips.com>
-References: <1481710301-1454-1-git-send-email-zhengxing@rock-chips.com>
- <991221a4-3962-1bcb-7863-72f5553eba40@rock-chips.com>
- <CAD=FV=XKQaqRS4jUM7NpN2KEV8USj_cVWbh7q4274n3jBtwORg@mail.gmail.com>
- <2526685.VC5cUs58On@phil> <5853903D.8030605@rock-chips.com>
- <CAD=FV=W1BW6FSZ6MSxR6RhvtZyGsdQbz9vU_QshaQ5A65ENMCg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 0/9] Implement clocksource for rockchip SoC using rockchip timer
+Date: Wed, 21 Dec 2016 17:21:05 +0300
+Message-ID: <E6DD9335-0D2D-47CB-8098-5F96C2E08139@gmail.com>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-1-git-send-email-al.kochet@gmail.com>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=W1BW6FSZ6MSxR6RhvtZyGsdQbz9vU_QshaQ5A65ENMCg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1480436092-10728-1-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko, Doug
+Hello Heiko, Daniel!
 
-在 2016年12月17日 01:28, Doug Anderson 写道:
-> Hi,
->
-> On Thu, Dec 15, 2016 at 10:57 PM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Hi Heiko, Doug,
->>
->> On 2016年12月16日 02:18, Heiko Stuebner wrote:
->>
->> Am Donnerstag, 15. Dezember 2016, 08:34:09 CET schrieb Doug Anderson:
->>
->>
->> I still need to digest all of the things that were added to this
->> thread overnight, but nothing I've seen so far indicates that you need
->> the post-gated clock.  AKA I still think you need to redo your patch
->> to replace:
->>
->>                clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
->>                         <&cru SCLK_USBPHY0_480M_SRC>;
->>
->> with:
->>
->>                clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
->>                          <&u2phy0>;
->>
->> Can you please comment on that?
->>
->> Also, with the change, the ehci will keep the clock (and thus the phy)
->> always
->> on. Does the phy-autosuspend even save anything now?
->>
->> In any case, could we make the clock-names entry sound nicer than
->> usbphy0_480m
->> please? bindings/usb/atmel-usb.txt calls its UTMI clock simply "usb_clk",
->> but
->> something like "utmi" should also work.
->> While at it you could also fix up the other clock names to something like
->> "host" and "arbiter" or so?.
->>
->>
->> Heiko
->>
->>
->> The usbphy related clock tress like this:
->>
->>
->> Actually, at drivers/phy/phy-rockchip-inno-usb2.c, we can only
->> enable/disable the master gate via GRF is PHY_PLL, not UTMI_CLK.
->>
->> And the naming style of the "hclk_host0" keep the name "hclk_host0" on the
->> clcok tree diagram:
->>
->>
->> Therefore, could we rename the clock name like this:
->> ----
->> for usb_host0_ehci and usb_host0_ohci:
->>          clocks = <&cru HCLK_HOST0>, <&cru HCLK_HOST0_ARB>,
->>               <&cru SCLK_U2PHY0>;
->>          clock-names = "hclk_host0", "hclk_host0_arb",
->>                    "sclk_u2phy0";
->>
->> for usb_host1_ehci and usb_host1_ohci:
->>          clocks = <&cru HCLK_HOST1>, <&cru HCLK_HOST1_ARB>,
->>               <&cru SCLK_U2PHY1>;
->>          clock-names = "hclk_host1", "hclk_host1_arb",
->>                    "sclk_u2phy1";
->> ----
->>
->> BTW, the "arb" is an abbreviation for arbiter.
-> You don't specify what this new "SCLK_U2PHY0" ID is, so it's a little
-> hard for me to know what you're intending.
->
-> ...however, I still don't see any reason why you can't just use the
-> solution I proposed.  Specifying the clock as "<&u2phy0>" is the
-> correct thing to do.  The input clock to the EHCI driver is exactly
-> the clock provided by the USB PHY with no gate in between (just as I
-> said).  There is no reason to somehow buffer it by the cru.  The cru
-> doesn't see this clock and has no reason to be involved.
->
-> Note that there were many other comments on this thread besides mine.
-> Are you planning to address any of them?
->
-> -Doug
->
->
-Done, and have resent the patch.
+Are there any reasons why the patches [1][2] are not applied yet into =
+kernel?
+How can I help in applying patches?
 
-Thanks.
--- 
+Regards,
+Alexander.
 
-- Xing Zheng
+[1] =
+http://lists.infradead.org/pipermail/linux-rockchip/2016-November/thread.h=
+tml#13236
+     [PATCH v4 0/9] Implement clocksource for rockchip SoC using =
+rockchip timer=20
+[2] =
+http://lists.infradead.org/pipermail/linux-rockchip/2016-December/013308.h=
+tml=20
 
+
+> 29 =D0=BD=D0=BE=D1=8F=D0=B1. 2016 =D0=B3., =D0=B2 19:14, Alexander =
+Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB=
+(=D0=B0):
+>=20
+> Hello,
+>=20
+> This patch series contain:
+> - devicetree bindings clarification for rockchip timers
+> - dts files fixes for rk3228-evb, rk3229-evb and rk3188
+> - implementation of clocksource and sched clock for rockchip SoC
+>=20
+> The clock supplying the arm-global-timer on the rk3188 is coming from =
+the
+> the cpu clock itself and thus changes its rate everytime cpufreq =
+adjusts
+> the cpu frequency making this timer unsuitable as a stable =
+clocksource.
+>=20
+> The rk3188, rk3288 and following socs share a separate timer block =
+already
+> handled by the rockchip-timer driver. Therefore adapt this driver to =
+also
+> be able to act as clocksource on rk3188.
+>=20
+> In order to test clocksource you can run following commands and check
+> how much time it take in real. On rk3188 it take about ~45 seconds.
+>=20
+>        cpufreq-set -f 1.6GHZ
+>        date; sleep 60; date
+>=20
+> rk3288 (and probably anything newer) is irrelevant to this patch,
+> as it has the arch timer interface. This patch may be usefull
+> for Cortex-A9/A5 based parts.
+>=20
+> Regards,
+> Alexander.
+>=20
+> This is try 4. Please discard all v1, v2, v3 patches.
+>=20
+> Changes in v4:
+> merged 7 and 8 from series 3
+> merged 10, 11, 12, 13 from series 3
+> fixed commit message
+>=20
+> Changes in v3:
+> added patches:
+> ARM: dts: rockchip: disable arm-global-timer for rk3188
+> clocksource/drivers/rockchip_timer: Prevent ftrace recursion
+>=20
+> devicetree v1 patches:
+> https://patchwork.ozlabs.org/patch/699019/
+> https://patchwork.ozlabs.org/patch/699020/
+>=20
+> kernel v1 patches:
+> https://patchwork.kernel.org/patch/9443975/
+> https://patchwork.kernel.org/patch/9443971/
+> https://patchwork.kernel.org/patch/9443959/
+> https://patchwork.kernel.org/patch/9443963/
+> https://patchwork.kernel.org/patch/9443979/
+> https://patchwork.kernel.org/patch/9443989/
+> https://patchwork.kernel.org/patch/9443987/
+> https://patchwork.kernel.org/patch/9443977/
+> https://patchwork.kernel.org/patch/9443991/
+>=20
+> Alexander Kochetkov (9):
+>  dt-bindings: clarify compatible property for rockchip timers
+>  ARM: dts: rockchip: update compatible property for rk3228 timer
+>  ARM: dts: rockchip: update compatible property for rk3229 timer
+>  ARM: dts: rockchip: add timer entries to rk3188 SoC
+>  ARM: dts: rockchip: disable arm-global-timer for rk3188
+>  clocksource/drivers/rockchip_timer: split bc_timer into rk_timer and
+>    rk_clock_event_device
+>  clocksource/drivers/rockchip_timer: low level routines take rk_timer
+>    as parameter
+>  clocksource/drivers/rockchip_timer: move TIMER_INT_UNMASK out of
+>    rk_timer_enable()
+>  clocksource/drivers/rockchip_timer: implement clocksource timer
+>=20
+> .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
+> arch/arm/boot/dts/rk3188.dtsi                      |   17 ++
+> arch/arm/boot/dts/rk3228-evb.dts                   |    4 +
+> arch/arm/boot/dts/rk3229-evb.dts                   |    4 +
+> drivers/clocksource/rockchip_timer.c               |  207 =
++++++++++++++++-----
+> 5 files changed, 190 insertions(+), 54 deletions(-)
+>=20
+> --=20
+> 1.7.9.5
+>=20
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
