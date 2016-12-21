@@ -1,44 +1,66 @@
-From: Baolin Wang <baolin.wang@linaro.org>
-Subject: [PATCH 3/3] phy: rockchip-inno-usb2: Set EXTCON_USB when EXTCON_CHG_USB_SDP was set
-Date: Wed, 21 Dec 2016 14:10:49 +0800
-Message-ID: <767c3dfccde4807e3645951d4aeebca0ab5cc5e4.1482300213.git.baolin.wang@linaro.org>
-References: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [PATCH 1/3] extcon: Add documentation for EXTCON_CHG_USB_* and
+ EXTCON_USB_*
+Date: Wed, 21 Dec 2016 16:20:32 +0900
+Message-ID: <585A2D40.9000606@samsung.com>
+References: <CGME20161221061321epcas2p196fd90254d59164e1195840bdd546fa7@epcas2p1.samsung.com>
+ <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
-In-Reply-To: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
-References: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
+In-reply-to: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482300213.git.baolin.wang@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: myungjoo.ham@samsung.com, cw00.choi@samsung.com, wens@csie.org, kishon@ti.com, heiko@sntech.de
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linaro-kernel@lists.linaro.org, baolin.wang@linaro.org, broonie@kernel.org, neilb@suse.com
+To: Baolin Wang <baolin.wang@linaro.org>, myungjoo.ham@samsung.com, wens@csie.org, kishon@ti.com, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linaro-kernel@lists.linaro.org, broonie@kernel.org, neilb@suse.com
 List-Id: linux-rockchip.vger.kernel.org
 
-According to the documentation, we should set the EXTCON_USB when
-one SDP charger connector was reported.
+Hi,
 
-Signed-off-by: Baolin Wang <baolin.wang@linaro.org>
----
- drivers/phy/phy-rockchip-inno-usb2.c |    7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+On 2016년 12월 21일 15:10, Baolin Wang wrote:
+> Current there is both "EXTCON_USB" and "EXTCON_CHG_USB_SDP" which
+> both seem to suggest a standard downstream port. But there is no
+> documentation describing how these relate.
+> 
+> Thus add documentation to describe EXTCON_CHG_USB_SDP should always
+> appear together with EXTCON_USB, and EXTCON_CHG_USB_ACA would normally
+> appear with EXTCON_USB_HOST.
+> 
+> Signed-off-by: Baolin Wang <baolin.wang@linaro.org>
+> ---
+>  include/linux/extcon.h |    9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/linux/extcon.h b/include/linux/extcon.h
+> index b871c0c..6498b05 100644
+> --- a/include/linux/extcon.h
+> +++ b/include/linux/extcon.h
+> @@ -46,7 +46,14 @@
+>  #define EXTCON_USB		1
+>  #define EXTCON_USB_HOST		2
+>  
+> -/* Charging external connector */
+> +/*
+> + * Charging external connector
+> + *
+> + * When one SDP charger connector was reported, we should also report
+> + * the USB connector, which means EXTCON_CHG_USB_SDP should always
+> + * appear together with EXTCON_USB. The same as ACA charger connector,
+> + * EXTCON_CHG_USB_ACA should always appear with EXTCON_USB_HOST.
+> + */
 
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index 2f99ec9..71fbe0f 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -595,9 +595,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
- 		if (rport->vbus_attached != vbus_attach) {
- 			rport->vbus_attached = vbus_attach;
- 
--			if (notify_charger && rphy->edev)
-+			if (notify_charger && rphy->edev) {
- 				extcon_set_cable_state_(rphy->edev,
- 							cable, vbus_attach);
-+				if (cable == EXTCON_CHG_USB_SDP)
-+					extcon_set_cable_state_(rphy->edev,
-+								EXTCON_USB,
-+								vbus_attach);
-+			}
- 		}
- 		break;
- 	case OTG_STATE_B_PERIPHERAL:
+Looks good to me.
+But, you use the different word for ACA as following:
+I think that 'would normally' is proper in descritpion.
+
+- commit msg : EXTCON_CHG_USB_ACA would normally appear with EXTCON_USB_HOST.
+- description: EXTCON_CHG_USB_ACA should always appear with EXTCON_USB_HOST.
+
+>  #define EXTCON_CHG_USB_SDP	5	/* Standard Downstream Port */
+>  #define EXTCON_CHG_USB_DCP	6	/* Dedicated Charging Port */
+>  #define EXTCON_CHG_USB_CDP	7	/* Charging Downstream Port */
+> 
+
 -- 
-1.7.9.5
+Regards,
+Chanwoo Choi
