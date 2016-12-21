@@ -1,65 +1,30 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] net: ethernet: stmmac: dwmac-rk: make clk enablement first in powerup
-Date: Tue, 20 Dec 2016 17:17:06 +0100
-Message-ID: <20161220161706.26505-1-heiko@sntech.de>
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net, netdev@vger.kernel.org
-Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, wxt@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] spi: rockchip: support "sleep" pin configuration
+Date: Tue, 20 Dec 2016 22:04:14 -0600
+Message-ID: <20161221040414.ogs2hj6gum772tuq@rob-hp-laptop>
+References: <1481936356-76161-1-git-send-email-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1481936356-76161-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Right now the dwmac-rk tries to set up the GRF-specific speed and link
-options before enabling clocks, phys etc and on previous socs this works
-because the GRF is supplied on the whole by one clock.
+On Fri, Dec 16, 2016 at 04:59:16PM -0800, Brian Norris wrote:
+> In the pattern of many other devices, support a system-sleep pin
+> configuration.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 7 +++++++
+>  drivers/spi/spi-rockchip.c                             | 5 +++++
+>  2 files changed, 12 insertions(+)
 
-On the rk3399 however the GRF (General Register Files) clock-supply
-has been split into multiple clocks and while there is no specific
-grf-gmac clock like for other sub-blocks, it seems the mac-specific
-portions are actually supplied by the general mac clock.
-
-This results in hangs on rk3399 boards if the driver is build as module.
-When built in te problem of course doesn't surface, as the clocks
-are of course still on at the stage before clock_disable_unused.
-
-To solve this, simply move the clock enablement to the first position
-in the powerup callback. This is also a good idea in general to
-enable clocks before everything else.
-
-Tested on rk3288, rk3368 and rk3399 the dwmac still works on all of them.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-This should probably be a fix for 4.10-rc, as right now
-my rk3399evb hangs on boot with the arm64 defconfig due to this.
-
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 77ab0a8..fa6e970 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -864,6 +864,10 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 	int ret;
- 	struct device *dev = &bsp_priv->pdev->dev;
- 
-+	ret = gmac_clk_enable(bsp_priv, true);
-+	if (ret)
-+		return ret;
-+
- 	/*rmii or rgmii*/
- 	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII) {
- 		dev_info(dev, "init for RGMII\n");
-@@ -880,10 +884,6 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 	if (ret)
- 		return ret;
- 
--	ret = gmac_clk_enable(bsp_priv, true);
--	if (ret)
--		return ret;
--
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--- 
-2.10.2
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
