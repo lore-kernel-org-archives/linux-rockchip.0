@@ -1,28 +1,28 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: wlf <wulf@rock-chips.com>
 Subject: Re: [RESEND PATCH v2] arm64: dts: rockchip: add u2phy clock for ehci
  and ohci of rk3399
-Date: Thu, 22 Dec 2016 09:15:20 +0800
-Message-ID: <e3494c43-9be4-18be-a8b7-a8dc312ef87c@rock-chips.com>
+Date: Thu, 22 Dec 2016 21:54:33 +0800
+Message-ID: <4bd184b7-c88c-c6ce-1785-f2d6dd83d7b8@rock-chips.com>
 References: <1482316182-2305-1-git-send-email-zhengxing@rock-chips.com>
  <1482316865-2769-1-git-send-email-zhengxing@rock-chips.com>
  <CAD=FV=WFFGSc7yBeaE+++VAuRKwMixpGUwA9bCCro4TCe0+GAA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=WFFGSc7yBeaE+++VAuRKwMixpGUwA9bCCro4TCe0+GAA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?B?6YOR
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WFFGSc7yBeaE+++VAuRKwMixpGUwA9bCCro4TCe0+GAA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@google.com>, Xing Zheng <zhengxing@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jianqun <jay.xu@rock-chips.com>, zhangqing <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Frank Wang <frank.wang@rock-chips.com>, "Huang, Tao" <huangtao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Dear Doug & Xing Zheng,
 
 在 2016年12月22日 08:47, Doug Anderson 写道:
 > Hi,
 >
-> On Wed, Dec 21, 2016 at 2:41 AM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> On Wed, Dec 21, 2016 at 2:41 AM, Xing Zheng <zhengxing@rock-chips.com> wrote:
+>> From: William wu <wulf@rock-chips.com>
 >>
 >> We found that the suspend process was blocked when it run into
 >> ehci/ohci module due to clk-480m of usb2-phy was disabled.
@@ -30,6 +30,8 @@ Hi Doug,
 >> The root cause is that usb2-phy suspended earlier than ehci/ohci
 >> (usb2-phy will be auto suspended if no devices plug-in). and the
 >> clk-480m provided by it was disabled if no module used. However,
+I suggest that change the "clk-480m" to "utmi clock" here.
+
 >> some suspend process related ehci/ohci are base on this clock,
 >> so we should refer it into ehci/ohci driver to prevent this case.
 >>
@@ -44,8 +46,8 @@ Hi Doug,
 >>                     GRF
 >> ===
 >>
->> Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Signed-off-by: William wu <wulf@rock-chips.com>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 >> ---
 >>
 >> Changes in v2:
@@ -115,7 +117,7 @@ Hi Doug,
 > This all looks better to me.  From a device tree point of view it
 > makes lots of sense to expose this PHY clock to the controller.  Thus:
 >
-> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 >
 >
 > I can't say that I understand all the interactions between the PHY
@@ -124,6 +126,35 @@ Hi Doug,
 > which apparently calls rockchip_usb2phy_power_off() and
 > rockchip_usb2phy_power_on() directly sometimes behind the back of the
 > PHY framework.  Very strange.
+
+Yes, the rockchip_usb2phy_otg_sm_work() in the USB2 PHY driver and 
+EHCI/OHCI platform
+driver via the PHY framework can both do phy power on/off.  We do that 
+because we want
+to reduce USB2 PHY consumption in system runtime and deep sleep.
+
+For EHCI/OHCI platform drivers, they call phy_power_on() in probe to 
+power on USB2 PHY,
+and don't power off USB2 PHY in system runtime, even if there's no USB2 
+device connected.
+They just call phy_power_off() in PM suspend, and call phy_power_on() in 
+PM resume to
+power on USB2 PHY again. AKA the EHCI/OHCI platform driver can only 
+support USB power
+management in deep sleep.
+
+So we add a work in USB2 PHY driver to manage USB2 PHY power. The work 
+scheduled every
+60 seconds, check the USB D+/D- and disconnect status in GRF registers 
+to know if any USB
+device connected. If no USB connected,  it will call 
+rockchip_usb2phy_power_off() to power
+off USB2 PHY. And also, the USB2 PHY driver use an irq to detect D+/D- 
+voltage when USB
+device connected， and then call rockchip_usb2phy_power_on()  to power on 
+USB2 PHY.
+AKA the work is used to support USB PHY power management in runtime.
+
 >
 >
 > I will also say that there were still some unanswered questions from
@@ -132,9 +163,33 @@ Hi Doug,
 > A) Heiko: Also, with the change, the ehci will keep the clock (and
 > thus the phy) always on. Does the phy-autosuspend even save anything
 > now?
->
+With this patch, the GRF USB commonon will always enable in system 
+runtime. But we still
+can set USB2 PHY enter suspend mode by power down most of PHY logic 
+module via GRF,
+so the phy-autosuspend is still useful.
+On the other hand, commonon bit is used for PLL clock logical, its power 
+consumption is
+not big in theory,  I remember that I tested on the other SoC， the 
+commonon bit consumed
+about 1~2mA.
 > B) Brian: Is thre a race between power_off() and the delayed work in
 > your USB2 PHY driver?
+I'm not clear understand the race mentioned here.
+IMO,  PHY framework power_off() and work rockchip_usb2phy_power_off() 
+don't have race
+problem.
+
+And maybe there is a race between PHY framework power_off() and the 
+delayed work
+rockchip_usb2phy_power_on()  in USB2 PHY driver, but I think the 
+probability is low，
+the race case maybe：
+1. EHCI/OHCI platform call  phy_power_off() in PM suspend;
+2. Plug in an USB device after USB2 PHY has entered suspend;
+3. Power on USB2 PHY again in work;
+4. After these, finally the USB2 PHY is power on when system enter sleep.
+
 >
 >
 > IMHO neither of those two questions affect the correctness of this
@@ -152,16 +207,5 @@ Hi Doug,
 >
 > -Doug
 >
-I will *ping* Frank and William to answer your questions until they 
-finish the business travel.
-
-Thanks.
-
--- 
-- Xing Zheng
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+>
