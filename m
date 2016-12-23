@@ -1,98 +1,29 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/4] dt-bindings: add bindings for rk3328 clock
- controller
-Date: Thu, 22 Dec 2016 12:39:08 -0600
-Message-ID: <20161222183908.gjrajbfxgrwwb4vn@rob-hp-laptop>
-References: <1482112573-11613-1-git-send-email-zhangqing@rock-chips.com>
- <1482112573-11613-3-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1482112573-11613-3-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com, mark.rutland@arm.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v1 0/3] soc: rockchip: power-domain: support RK3328 SoC
+Date: Fri, 23 Dec 2016 11:47:49 +0800
+Message-ID: <1482464872-12954-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 19, 2016 at 09:56:11AM +0800, Elaine Zhang wrote:
-> Add devicetree bindings for Rockchip cru which found on
-> Rockchip SoCs.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  .../bindings/clock/rockchip,rk3328-cru.txt         | 57 ++++++++++++++++++++++
->  1 file changed, 57 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
-> new file mode 100644
-> index 000000000000..20053494d49f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
-> @@ -0,0 +1,57 @@
-> +* Rockchip RK3328 Clock and Reset Unit
-> +
-> +The RK3328 clock controller generates and supplies clock to various
-> +controllers within the SoC and also implements a reset controller for SoC
-> +peripherals.
-> +
-> +Required Properties:
-> +
-> +- compatible: should be "rockchip,rk3328-cru"
+Elaine Zhang (3):
+  dt/bindings: power: add RK3328 SoCs header for idle-request
+  dt-bindings: add binding for rk3328 power domains
+  soc: rockchip: power-domain: Modify power domain driver for rk3328
 
-The example shows other compatibles. IMO, I would drop them rather than 
-add them here.
+ .../bindings/soc/rockchip/power_domain.txt         |  3 ++
+ drivers/soc/rockchip/pm_domains.c                  | 63 +++++++++++++++++++---
+ include/dt-bindings/power/rk3328-power.h           | 18 +++++++
+ 3 files changed, 78 insertions(+), 6 deletions(-)
+ create mode 100644 include/dt-bindings/power/rk3328-power.h
 
-> +- reg: physical base address of the controller and length of memory mapped
-> +  region.
-> +- #clock-cells: should be 1.
-> +- #reset-cells: should be 1.
-> +
-> +Optional Properties:
-> +
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +  If missing pll rates are not changeable, due to the missing pll lock status.
-> +
-> +Each clock is assigned an identifier and client nodes can use this identifier
-> +to specify the clock which they consume. All available clocks are defined as
-> +preprocessor macros in the dt-bindings/clock/rk3328-cru.h headers and can be
-> +used in device tree sources. Similar macros exist for the reset sources in
-> +these files.
-> +
-> +External clocks:
-> +
-> +There are several clocks that are generated outside the SoC. It is expected
-> +that they are defined using standard clock bindings with following
-> +clock-output-names:
-> + - "xin24m" - crystal input - required,
-> + - "clkin_i2s" - external I2S clock - optional,
-> + - "gmac_clkin" - external GMAC clock - optional
-> + - "phy_50m_out" - output clock of the pll in the mac phy
-> +
-> +Example: Clock controller node:
-> +
-> +	cru: clock-controller@ff440000 {
-> +		compatible = "rockchip,rk3328-cru", "rockchip,cru", "syscon";
-> +		reg = <0x0 0xff440000 0x0 0x1000>;
-> +		rockchip,grf = <&grf>;
-> +
-> +		#clock-cells = <1>;
-> +		#reset-cells = <1>;
-> +	};
-> +
-> +Example: UART controller node that consumes the clock generated by the clock
-> +  controller:
-> +
-> +	uart0: serial@ff120000 {
-> +		compatible = "snps,dw-apb-uart";
-> +		reg = <0xff120000 0x100>;
-> +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
-> +		reg-shift = <2>;
-> +		reg-io-width = <4>;
-> +		clocks = <&cru SCLK_UART0>;
-> +	};
-> -- 
-> 1.9.1
-> 
-> 
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
