@@ -1,33 +1,195 @@
-From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] mtd: spi-nor: add rockchip serial flash controller
- driver
-Date: Fri, 23 Dec 2016 20:00:05 +0100
-Message-ID: <51e11f71-dcbd-44b1-299e-0d213a9cb3c9@gmail.com>
-References: <1481794068-241619-1-git-send-email-shawn.lin@rock-chips.com>
- <1481794068-241619-3-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 4/4] clk: rockchip: add new pll-type for rk3328
+Date: Sat, 24 Dec 2016 03:18:29 +0100
+Message-ID: <1864774.VdbssDBMbY@phil>
+References: <1482112573-11613-1-git-send-email-zhangqing@rock-chips.com> <1482112573-11613-5-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1481794068-241619-3-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1482112573-11613-5-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/15/2016 10:27 AM, Shawn Lin wrote:
-> Add rockchip serial flash controller driver
+Hi Elaine,
+
+Am Montag, 19. Dezember 2016, 09:56:13 CET schrieb Elaine Zhang:
+> The rk3328's pll and clock are similar with rk3036's,
+> it different with pll_mode_mask,there are different
+> control registers bit,
+> so these should be independent and separate from
+> the series of rk3328s.
+
+not sure I understand this description. In the patch (and TRM excerpt) I see
+that the number of parents is down to only xin24m but the general handling is
+similar to the rk3036 and thus reuses its operations.
+
+The description makes it sound like there are operational differences (the
+"different control register bit" part), so could you clarify this a bit
+please?
+
+Also, please move the pll addition before the addition of the clock-controller
+in the series and move the pll-type addition also here from the controller
+patch.
+
+Some more below:
+
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  drivers/clk/rockchip/clk-pll.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+> index 6ed605776abd..9650c75f61d1 100644
+> --- a/drivers/clk/rockchip/clk-pll.c
+> +++ b/drivers/clk/rockchip/clk-pll.c
+> @@ -29,6 +29,7 @@
+>  #define PLL_MODE_SLOW		0x0
+>  #define PLL_MODE_NORM		0x1
+>  #define PLL_MODE_DEEP		0x2
+> +#define PLL_RK3328_MODE_MASK	0x1
+> 
+>  struct rockchip_clk_pll {
+>  	struct clk_hw		hw;
+> @@ -865,13 +866,17 @@ struct clk *rockchip_clk_register_pll(struct
+> rockchip_clk_provider *ctx, pll_mux = &pll->pll_mux;
+>  	pll_mux->reg = ctx->reg_base + mode_offset;
+>  	pll_mux->shift = mode_shift;
+> -	pll_mux->mask = PLL_MODE_MASK;
+> +	if (pll_type == pll_rk3328)
+> +		pll_mux->mask = PLL_RK3328_MODE_MASK;
+> +	else
+> +		pll_mux->mask = PLL_MODE_MASK;
 
-Acked-by: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+you're missing the other parts handling parents, like num_parents check
+and the init.num_parents parameter.
 
-Thanks !
+The pll really has only one parent, xin24m, so we should handle this
+correctly in the code, instead of having 2 times xin24m in the parent
+array coming from the clock controller.
 
+>  	pll_mux->flags = 0;
+>  	pll_mux->lock = &ctx->lock;
+>  	pll_mux->hw.init = &init;
+> 
+>  	if (pll_type == pll_rk3036 ||
+>  	    pll_type == pll_rk3066 ||
+> +	    pll_type == pll_rk3328 ||
+>  	    pll_type == pll_rk3399)
+>  		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
+> 
+> @@ -929,6 +934,12 @@ struct clk *rockchip_clk_register_pll(struct
+> rockchip_clk_provider *ctx, else
+>  			init.ops = &rockchip_rk3066_pll_clk_ops;
+>  		break;
+> +	case pll_rk3328:
+> +		if (!pll->rate_table || IS_ERR(ctx->grf))
+> +			init.ops = &rockchip_rk3036_pll_clk_norate_ops;
+> +		else
+> +			init.ops = &rockchip_rk3036_pll_clk_ops;
+> +		break;
+
+please don't duplicate the rk3036-ops assignment, when adding the
+pll_rk3328 option to the rk3036 part suffices.
+
+I'd think the pll-patch should look something like the
+following (untested, so please test):
+--------------- 8< -----------------
+Subject: [PATCH] clk: rockchip: add new pll-type for rk3328
+
+The rk3328's pll and clock are similar with rk3036's,
+it different with pll_mode_mask,there are different
+control registers bit,
+so these should be independent and separate from
+the series of rk3328s.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-pll.c | 18 ++++++++++++++----
+ drivers/clk/rockchip/clk.h     |  1 +
+ 2 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 6ed6057..99ce483 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -29,6 +29,7 @@
+ #define PLL_MODE_SLOW		0x0
+ #define PLL_MODE_NORM		0x1
+ #define PLL_MODE_DEEP		0x2
++#define PLL_RK3328_MODE_MASK	0x1
+ 
+ struct rockchip_clk_pll {
+ 	struct clk_hw		hw;
+@@ -848,8 +849,9 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
+ 	struct clk *pll_clk, *mux_clk;
+ 	char pll_name[20];
+ 
+-	if (num_parents != 2) {
+-		pr_err("%s: needs two parent clocks\n", __func__);
++	if ((pll_type != pll_rk3328 && num_parents != 2) ||
++	    (pll_type == pll_rk3328 && num_parents != 1)) {
++		pr_err("%s: missing parent clocks\n", __func__);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+@@ -865,13 +867,17 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
+ 	pll_mux = &pll->pll_mux;
+ 	pll_mux->reg = ctx->reg_base + mode_offset;
+ 	pll_mux->shift = mode_shift;
+-	pll_mux->mask = PLL_MODE_MASK;
++	if (pll_type == pll_rk3328)
++		pll_mux->mask = PLL_RK3328_MODE_MASK;
++	else
++		pll_mux->mask = PLL_MODE_MASK;
+ 	pll_mux->flags = 0;
+ 	pll_mux->lock = &ctx->lock;
+ 	pll_mux->hw.init = &init;
+ 
+ 	if (pll_type == pll_rk3036 ||
+ 	    pll_type == pll_rk3066 ||
++	    pll_type == pll_rk3328 ||
+ 	    pll_type == pll_rk3399)
+ 		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
+ 
+@@ -884,7 +890,10 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
+ 	init.flags = CLK_SET_RATE_PARENT;
+ 	init.ops = pll->pll_mux_ops;
+ 	init.parent_names = pll_parents;
+-	init.num_parents = ARRAY_SIZE(pll_parents);
++	if (pll_type == pll_rk3328)
++		init.num_parents = 2;
++	else
++		init.num_parents = ARRAY_SIZE(pll_parents);
+ 
+ 	mux_clk = clk_register(NULL, &pll_mux->hw);
+ 	if (IS_ERR(mux_clk))
+@@ -918,6 +927,7 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
+ 
+ 	switch (pll_type) {
+ 	case pll_rk3036:
++	case pll_rk3328:
+ 		if (!pll->rate_table || IS_ERR(ctx->grf))
+ 			init.ops = &rockchip_rk3036_pll_clk_norate_ops;
+ 		else
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index d67eecc..06acb7e 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -130,6 +130,7 @@ struct clk;
+ enum rockchip_pll_type {
+ 	pll_rk3036,
+ 	pll_rk3066,
++	pll_rk3328,
+ 	pll_rk3399,
+ };
+ 
 -- 
-Best regards,
-Marek Vasut
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.10.2
+
+--------------- 8< -----------------
+
