@@ -1,218 +1,55 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/2] clk: rockchip: add a clock-type for muxes based in the grf
-Date: Tue, 27 Dec 2016 14:43:02 +0100
-Message-ID: <20161227134303.23492-1-heiko@sntech.de>
+Subject: [PATCH 2/2] clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288
+Date: Tue, 27 Dec 2016 14:43:03 +0100
+Message-ID: <20161227134303.23492-2-heiko@sntech.de>
+References: <20161227134303.23492-1-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20161227134303.23492-1-heiko@sntech.de>
 Sender: linux-clk-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
 Cc: linux-clk@vger.kernel.org, mturquette@baylibre.com, sboyd@codeaurora.org, zhangqing@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip socs often have some tiny number of muxes not controlled from
-the core clock controller but through bits set in the general register
-files. Add a clock-type that can control these as well, so that we
-don't need to work around them being absent.
+With the newly introduced clk type for muxes in the grf we now can
+describe some missing clocks, like the aclk_vcodec that selects between
+aclk_vdpu and aclk_vepu based on a bit set in the general register files.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
-Hi Elaine,
+ drivers/clk/rockchip/clk-rk3288.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-these two patches showcase how I'd think the tiny amount of grf-based clocks
-is handled best. I did some reparenting tests with the aclk_vcodec_pre
-from the second patch, so am pretty confident that it should work as expected.
-
-If noone complains, I plan to apply these two for 4.11 so your rk3328 clock-
-controller can build on top of these.
-
- drivers/clk/rockchip/Makefile     |   1 +
- drivers/clk/rockchip/clk-muxgrf.c | 102 ++++++++++++++++++++++++++++++++++++++
- drivers/clk/rockchip/clk.c        |   7 +++
- drivers/clk/rockchip/clk.h        |  21 ++++++++
- 4 files changed, 131 insertions(+)
- create mode 100644 drivers/clk/rockchip/clk-muxgrf.c
-
-diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
-index 16e098c..a43a54d 100644
---- a/drivers/clk/rockchip/Makefile
-+++ b/drivers/clk/rockchip/Makefile
-@@ -8,6 +8,7 @@ obj-y	+= clk-pll.o
- obj-y	+= clk-cpu.o
- obj-y	+= clk-inverter.o
- obj-y	+= clk-mmc-phase.o
-+obj-y	+= clk-muxgrf.o
- obj-y	+= clk-ddr.o
- obj-$(CONFIG_RESET_CONTROLLER)	+= softrst.o
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 39af05a..fbd7ac9 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -198,6 +198,7 @@ PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
+ PNAME(mux_edp_24m_p)	= { "ext_edp_24m", "xin24m" };
+ PNAME(mux_tspout_p)	= { "cpll", "gpll", "npll", "xin27m" };
  
-diff --git a/drivers/clk/rockchip/clk-muxgrf.c b/drivers/clk/rockchip/clk-muxgrf.c
-new file mode 100644
-index 0000000..4f29118
---- /dev/null
-+++ b/drivers/clk/rockchip/clk-muxgrf.c
-@@ -0,0 +1,102 @@
-+/*
-+ *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/slab.h>
-+#include <linux/bitops.h>
-+#include <linux/regmap.h>
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include "clk.h"
-+
-+struct rockchip_muxgrf_clock {
-+	struct clk_hw		hw;
-+	struct regmap		*regmap;
-+	u32			reg;
-+	u32			shift;
-+	u32			width;
-+	int			flags;
-+};
-+
-+#define to_muxgrf_clock(_hw) container_of(_hw, struct rockchip_muxgrf_clock, hw)
-+
-+static u8 rockchip_muxgrf_get_parent(struct clk_hw *hw)
-+{
-+	struct rockchip_muxgrf_clock *mux = to_muxgrf_clock(hw);
-+	unsigned int mask = GENMASK(mux->width - 1, 0);
-+	unsigned int val;
-+
-+	regmap_read(mux->regmap, mux->reg, &val);
-+
-+	val >>= mux->shift;
-+	val &= mask;
-+
-+	return val;
-+}
-+
-+static int rockchip_muxgrf_set_parent(struct clk_hw *hw, u8 index)
-+{
-+	struct rockchip_muxgrf_clock *mux = to_muxgrf_clock(hw);
-+	unsigned int mask = GENMASK(mux->width + mux->shift - 1, mux->shift);
-+	unsigned int val;
-+
-+	val = index;
-+	val <<= mux->shift;
-+
-+	if (mux->flags & CLK_MUX_HIWORD_MASK)
-+		return regmap_write(mux->regmap, mux->reg, val | (mask << 16));
-+	else
-+		return regmap_update_bits(mux->regmap, mux->reg, mask, val);
-+}
-+
-+static const struct clk_ops rockchip_muxgrf_clk_ops = {
-+	.get_parent = rockchip_muxgrf_get_parent,
-+	.set_parent = rockchip_muxgrf_set_parent,
-+	.determine_rate = __clk_mux_determine_rate,
-+};
-+
-+struct clk *rockchip_clk_register_muxgrf(const char *name,
-+				const char *const *parent_names, u8 num_parents,
-+				int flags, struct regmap *regmap, int reg,
-+				int shift, int width, int mux_flags)
-+{
-+	struct rockchip_muxgrf_clock *muxgrf_clock;
-+	struct clk_init_data init;
-+	struct clk *clk;
-+
-+	if (IS_ERR(regmap)) {
-+		pr_err("%s: regmap not available\n", __func__);
-+		return ERR_PTR(-ENOTSUPP);
-+	}
-+
-+	muxgrf_clock = kmalloc(sizeof(*muxgrf_clock), GFP_KERNEL);
-+	if (!muxgrf_clock)
-+		return ERR_PTR(-ENOMEM);
-+
-+	init.name = name;
-+	init.flags = flags;
-+	init.num_parents = num_parents;
-+	init.parent_names = parent_names;
-+	init.ops = &rockchip_muxgrf_clk_ops;
-+
-+	muxgrf_clock->hw.init = &init;
-+	muxgrf_clock->regmap = regmap;
-+	muxgrf_clock->reg = reg;
-+	muxgrf_clock->shift = shift;
-+	muxgrf_clock->width = width;
-+	muxgrf_clock->flags = mux_flags;
-+
-+	clk = clk_register(NULL, &muxgrf_clock->hw);
-+	if (IS_ERR(clk))
-+		kfree(muxgrf_clock);
-+
-+	return clk;
-+}
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index b886be3..3abcbf4 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -417,6 +417,13 @@ void __init rockchip_clk_register_branches(
- 				list->mux_shift, list->mux_width,
- 				list->mux_flags, &ctx->lock);
- 			break;
-+		case branch_muxgrf:
-+			clk = rockchip_clk_register_muxgrf(list->name,
-+				list->parent_names, list->num_parents,
-+				flags, ctx->grf, list->muxdiv_offset,
-+				list->mux_shift, list->mux_width,
-+				list->mux_flags);
-+			break;
- 		case branch_divider:
- 			if (list->div_table)
- 				clk = clk_register_divider_table(NULL,
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index d67eecc..58be202 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -317,11 +317,17 @@ struct clk *rockchip_clk_register_inverter(const char *name,
- 				void __iomem *reg, int shift, int flags,
- 				spinlock_t *lock);
++PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vepu", "aclk_vdpu" };
+ PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1_480m", "sclk_otgphy2_480m",
+ 				    "sclk_otgphy0_480m" };
+ PNAME(mux_hsicphy480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+@@ -398,14 +399,12 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "aclk_vdpu", mux_pll_src_cpll_gpll_usb480m_p, 0,
+ 			RK3288_CLKSEL_CON(32), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK3288_CLKGATE_CON(3), 11, GFLAGS),
+-	/*
+-	 * We use aclk_vdpu by default GRF_SOC_CON0[7] setting in system,
+-	 * so we ignore the mux and make clocks nodes as following,
+-	 */
+-	GATE(ACLK_VCODEC, "aclk_vcodec", "aclk_vdpu", 0,
++	MUXGRF(0, "aclk_vcodec_pre", mux_aclk_vcodec_pre_p, 0,
++			RK3288_GRF_SOC_CON(0), 7, 1, MFLAGS),
++	GATE(ACLK_VCODEC, "aclk_vcodec", "aclk_vcodec_pre", 0,
+ 		RK3288_CLKGATE_CON(9), 0, GFLAGS),
  
-+struct clk *rockchip_clk_register_muxgrf(const char *name,
-+				const char *const *parent_names, u8 num_parents,
-+				int flags, struct regmap *grf, int reg,
-+				int shift, int width, int mux_flags);
-+
- #define PNAME(x) static const char *const x[] __initconst
+-	FACTOR_GATE(0, "hclk_vcodec_pre", "aclk_vdpu", 0, 1, 4,
++	FACTOR_GATE(0, "hclk_vcodec_pre", "aclk_vcodec_pre", 0, 1, 4,
+ 		RK3288_CLKGATE_CON(3), 10, GFLAGS),
  
- enum rockchip_clk_branch_type {
- 	branch_composite,
- 	branch_mux,
-+	branch_muxgrf,
- 	branch_divider,
- 	branch_fraction_divider,
- 	branch_gate,
-@@ -551,6 +557,21 @@ struct rockchip_clk_branch {
- 		.gate_offset	= -1,				\
- 	}
- 
-+#define MUXGRF(_id, cname, pnames, f, o, s, w, mf)		\
-+	{							\
-+		.id		= _id,				\
-+		.branch_type	= branch_muxgrf,		\
-+		.name		= cname,			\
-+		.parent_names	= pnames,			\
-+		.num_parents	= ARRAY_SIZE(pnames),		\
-+		.flags		= f,				\
-+		.muxdiv_offset	= o,				\
-+		.mux_shift	= s,				\
-+		.mux_width	= w,				\
-+		.mux_flags	= mf,				\
-+		.gate_offset	= -1,				\
-+	}
-+
- #define DIV(_id, cname, pname, f, o, s, w, df)			\
- 	{							\
- 		.id		= _id,				\
+ 	GATE(HCLK_VCODEC, "hclk_vcodec", "hclk_vcodec_pre", 0,
 -- 
 2.10.2
 
