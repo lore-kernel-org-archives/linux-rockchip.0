@@ -1,100 +1,218 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 2/4] dt-bindings: add bindings for rk3328 clock controller
-Date: Tue, 27 Dec 2016 14:32:51 +0800
-Message-ID: <1482820373-10186-3-git-send-email-zhangqing@rock-chips.com>
-References: <1482820373-10186-1-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1482820373-10186-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 1/2] clk: rockchip: add a clock-type for muxes based in the grf
+Date: Tue, 27 Dec 2016 14:43:02 +0100
+Message-ID: <20161227134303.23492-1-heiko@sntech.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-clk@vger.kernel.org, mturquette@baylibre.com, sboyd@codeaurora.org, zhangqing@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add devicetree bindings for Rockchip cru which found on
-Rockchip SoCs.
+Rockchip socs often have some tiny number of muxes not controlled from
+the core clock controller but through bits set in the general register
+files. Add a clock-type that can control these as well, so that we
+don't need to work around them being absent.
 
-Changes in v4:
-  dropping the "rockchip,cru" and "syscon" properties for bindings of rk3328
-
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../bindings/clock/rockchip,rk3328-cru.txt         | 57 ++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
+Hi Elaine,
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
+these two patches showcase how I'd think the tiny amount of grf-based clocks
+is handled best. I did some reparenting tests with the aclk_vcodec_pre
+from the second patch, so am pretty confident that it should work as expected.
+
+If noone complains, I plan to apply these two for 4.11 so your rk3328 clock-
+controller can build on top of these.
+
+ drivers/clk/rockchip/Makefile     |   1 +
+ drivers/clk/rockchip/clk-muxgrf.c | 102 ++++++++++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk.c        |   7 +++
+ drivers/clk/rockchip/clk.h        |  21 ++++++++
+ 4 files changed, 131 insertions(+)
+ create mode 100644 drivers/clk/rockchip/clk-muxgrf.c
+
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 16e098c..a43a54d 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -8,6 +8,7 @@ obj-y	+= clk-pll.o
+ obj-y	+= clk-cpu.o
+ obj-y	+= clk-inverter.o
+ obj-y	+= clk-mmc-phase.o
++obj-y	+= clk-muxgrf.o
+ obj-y	+= clk-ddr.o
+ obj-$(CONFIG_RESET_CONTROLLER)	+= softrst.o
+ 
+diff --git a/drivers/clk/rockchip/clk-muxgrf.c b/drivers/clk/rockchip/clk-muxgrf.c
 new file mode 100644
-index 000000000000..e71c675ba5da
+index 0000000..4f29118
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
-@@ -0,0 +1,57 @@
-+* Rockchip RK3328 Clock and Reset Unit
++++ b/drivers/clk/rockchip/clk-muxgrf.c
+@@ -0,0 +1,102 @@
++/*
++ *
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
 +
-+The RK3328 clock controller generates and supplies clock to various
-+controllers within the SoC and also implements a reset controller for SoC
-+peripherals.
++#include <linux/slab.h>
++#include <linux/bitops.h>
++#include <linux/regmap.h>
++#include <linux/clk.h>
++#include <linux/clk-provider.h>
++#include "clk.h"
 +
-+Required Properties:
++struct rockchip_muxgrf_clock {
++	struct clk_hw		hw;
++	struct regmap		*regmap;
++	u32			reg;
++	u32			shift;
++	u32			width;
++	int			flags;
++};
 +
-+- compatible: should be "rockchip,rk3328-cru"
-+- reg: physical base address of the controller and length of memory mapped
-+  region.
-+- #clock-cells: should be 1.
-+- #reset-cells: should be 1.
++#define to_muxgrf_clock(_hw) container_of(_hw, struct rockchip_muxgrf_clock, hw)
 +
-+Optional Properties:
++static u8 rockchip_muxgrf_get_parent(struct clk_hw *hw)
++{
++	struct rockchip_muxgrf_clock *mux = to_muxgrf_clock(hw);
++	unsigned int mask = GENMASK(mux->width - 1, 0);
++	unsigned int val;
 +
-+- rockchip,grf: phandle to the syscon managing the "general register files"
-+  If missing pll rates are not changeable, due to the missing pll lock status.
++	regmap_read(mux->regmap, mux->reg, &val);
 +
-+Each clock is assigned an identifier and client nodes can use this identifier
-+to specify the clock which they consume. All available clocks are defined as
-+preprocessor macros in the dt-bindings/clock/rk3328-cru.h headers and can be
-+used in device tree sources. Similar macros exist for the reset sources in
-+these files.
++	val >>= mux->shift;
++	val &= mask;
 +
-+External clocks:
++	return val;
++}
 +
-+There are several clocks that are generated outside the SoC. It is expected
-+that they are defined using standard clock bindings with following
-+clock-output-names:
-+ - "xin24m" - crystal input - required,
-+ - "clkin_i2s" - external I2S clock - optional,
-+ - "gmac_clkin" - external GMAC clock - optional
-+ - "phy_50m_out" - output clock of the pll in the mac phy
++static int rockchip_muxgrf_set_parent(struct clk_hw *hw, u8 index)
++{
++	struct rockchip_muxgrf_clock *mux = to_muxgrf_clock(hw);
++	unsigned int mask = GENMASK(mux->width + mux->shift - 1, mux->shift);
++	unsigned int val;
 +
-+Example: Clock controller node:
++	val = index;
++	val <<= mux->shift;
 +
-+	cru: clock-controller@ff440000 {
-+		compatible = "rockchip,rk3328-cru";
-+		reg = <0x0 0xff440000 0x0 0x1000>;
-+		rockchip,grf = <&grf>;
++	if (mux->flags & CLK_MUX_HIWORD_MASK)
++		return regmap_write(mux->regmap, mux->reg, val | (mask << 16));
++	else
++		return regmap_update_bits(mux->regmap, mux->reg, mask, val);
++}
 +
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
++static const struct clk_ops rockchip_muxgrf_clk_ops = {
++	.get_parent = rockchip_muxgrf_get_parent,
++	.set_parent = rockchip_muxgrf_set_parent,
++	.determine_rate = __clk_mux_determine_rate,
++};
 +
-+Example: UART controller node that consumes the clock generated by the clock
-+  controller:
++struct clk *rockchip_clk_register_muxgrf(const char *name,
++				const char *const *parent_names, u8 num_parents,
++				int flags, struct regmap *regmap, int reg,
++				int shift, int width, int mux_flags)
++{
++	struct rockchip_muxgrf_clock *muxgrf_clock;
++	struct clk_init_data init;
++	struct clk *clk;
 +
-+	uart0: serial@ff120000 {
-+		compatible = "snps,dw-apb-uart";
-+		reg = <0xff120000 0x100>;
-+		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		clocks = <&cru SCLK_UART0>;
-+	};
++	if (IS_ERR(regmap)) {
++		pr_err("%s: regmap not available\n", __func__);
++		return ERR_PTR(-ENOTSUPP);
++	}
++
++	muxgrf_clock = kmalloc(sizeof(*muxgrf_clock), GFP_KERNEL);
++	if (!muxgrf_clock)
++		return ERR_PTR(-ENOMEM);
++
++	init.name = name;
++	init.flags = flags;
++	init.num_parents = num_parents;
++	init.parent_names = parent_names;
++	init.ops = &rockchip_muxgrf_clk_ops;
++
++	muxgrf_clock->hw.init = &init;
++	muxgrf_clock->regmap = regmap;
++	muxgrf_clock->reg = reg;
++	muxgrf_clock->shift = shift;
++	muxgrf_clock->width = width;
++	muxgrf_clock->flags = mux_flags;
++
++	clk = clk_register(NULL, &muxgrf_clock->hw);
++	if (IS_ERR(clk))
++		kfree(muxgrf_clock);
++
++	return clk;
++}
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index b886be3..3abcbf4 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -417,6 +417,13 @@ void __init rockchip_clk_register_branches(
+ 				list->mux_shift, list->mux_width,
+ 				list->mux_flags, &ctx->lock);
+ 			break;
++		case branch_muxgrf:
++			clk = rockchip_clk_register_muxgrf(list->name,
++				list->parent_names, list->num_parents,
++				flags, ctx->grf, list->muxdiv_offset,
++				list->mux_shift, list->mux_width,
++				list->mux_flags);
++			break;
+ 		case branch_divider:
+ 			if (list->div_table)
+ 				clk = clk_register_divider_table(NULL,
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index d67eecc..58be202 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -317,11 +317,17 @@ struct clk *rockchip_clk_register_inverter(const char *name,
+ 				void __iomem *reg, int shift, int flags,
+ 				spinlock_t *lock);
+ 
++struct clk *rockchip_clk_register_muxgrf(const char *name,
++				const char *const *parent_names, u8 num_parents,
++				int flags, struct regmap *grf, int reg,
++				int shift, int width, int mux_flags);
++
+ #define PNAME(x) static const char *const x[] __initconst
+ 
+ enum rockchip_clk_branch_type {
+ 	branch_composite,
+ 	branch_mux,
++	branch_muxgrf,
+ 	branch_divider,
+ 	branch_fraction_divider,
+ 	branch_gate,
+@@ -551,6 +557,21 @@ struct rockchip_clk_branch {
+ 		.gate_offset	= -1,				\
+ 	}
+ 
++#define MUXGRF(_id, cname, pnames, f, o, s, w, mf)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_muxgrf,		\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= o,				\
++		.mux_shift	= s,				\
++		.mux_width	= w,				\
++		.mux_flags	= mf,				\
++		.gate_offset	= -1,				\
++	}
++
+ #define DIV(_id, cname, pname, f, o, s, w, df)			\
+ 	{							\
+ 		.id		= _id,				\
 -- 
-1.9.1
+2.10.2
+
