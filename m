@@ -1,99 +1,36 @@
-From: ayaka <ayaka@soulik.info>
-Subject: Re: [PATCH v4 0/5] thermal: fixes the rockchip thermal
-Date: Sat, 31 Dec 2016 00:11:25 +0800
-Message-ID: <f68125d7-01bb-d0d9-d04f-8d1b5cff19a2@soulik.info>
-References: <1481540735-12710-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5 3/4] clk: rockchip: add new pll-type for rk3328
+Date: Sat, 31 Dec 2016 13:53:51 +0100
+Message-ID: <2438805.XRRMBVrdEM@phil>
+References: <1482979511-6847-1-git-send-email-zhangqing@rock-chips.com> <1482979511-6847-4-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1481540735-12710-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, edubezval@gmail.com, rui.zhang@intel.com
-Cc: linux-pm@vger.kernel.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, linux-rockchip@lists.infradead.org, "randy.li@rock-chips.com" <randy.li@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1482979511-6847-4-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-BTW, Caesar have you ever met this at RK3288 at booting time?
-[    8.430582] thermal thermal_zone1: critical temperature reached(125 
-C),shutting down
-[    8.439038] thermal thermal_zone2: critical temperature reached(125 
-C),shutting down
-[    8.456344] thermal thermal_zone1: critical temperature reached(125 
-C),shutting down
-[    8.465298] thermal thermal_zone2: critical temperature reached(125 
-C),shutting down
-
-On 12/12/2016 07:05 PM, Caesar Wang wrote:
-> There are five patches posted for upstream.
-> 89267b5 thermal: rockchip: improve conversion error messages
-> a0b5649 thermal: rockchip: don't pass table structs by value
-> bceed92 thermal: rockchip: fixes invalid temperature case
-> 30be6d0 thermal: rockchip: optimize the conversion table
-> 35636e9 thermal: rockchip: handle the set_trips without the trip points.
-> --
->
-> History version:
-> V1:
-> https://lkml.org/lkml/2016/11/22/250
-> V2:
-> https://lkml.org/lkml/2016/11/23/348
-> V3:
-> http://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1281432.html
-> ---
->
-> Brain posted the below patches for upstream.
-> 89267b5 thermal: rockchip: improve conversion error messages
-> a0b5649 thermal: rockchip: don't pass table structs by value
-> That make sense to improve efficiency
->
-> Caesar post the below patches for upstream.
-> bceed92 thermal: rockchip: fixes invalid temperature case
-> 30be6d0 thermal: rockchip: optimize the conversion table
-> 35636e9 thermal: rockchip: handle the set_trips without the trip points.
-> That will fixes some issues in special cases.
-> --
->
-> Anyway, this series patches should can improve the rockchip thermal driver.
->
->
+Am Donnerstag, 29. Dezember 2016, 10:45:10 CET schrieb Elaine Zhang:
+> The rk3328's pll and clock are similar with rk3036's,
+> it different with pll_mode_mask, the rk3328 soc
+> pll mode only one bit(rk3036 soc have two bits)
+> so these should be independent and separate from
+> the series of rk3328s.
+> 
 > Changes in v4:
-> - As Eduardo and Brian commnets on
->    https://patchwork.kernel.org/patch/9449301
-> - Print a better name.
-> - As Eduardo commented on https://patchwork.kernel.org/patch/9449313/
-> - remove the Brain's review for previous version, since the new version
->    update something.
->
+>   adjust the pacth 3 and 4 order.
+>   move pll_rk3328 to patch 3.
 > Changes in v3:
-> - fix trivial thing for error message nd return value.
-> - change the commit.
-> - Fixes something as Brian comments on
->
-> Changes in v2:
-> - As Brian commnets that restructure this to pass error codes back to the
->    upper layers.
-> - Improve the commit message.
-> - improve the commit as Brian commnets on https://patchwork.kernel.org/patch/9440985
-> - Fixes something as Brian comments on
->    https://patchwork.kernel.org/patch/9440989.
->
-> Changes in v1:
-> - The original Brian posted on https://patchwork.kernel.org/patch/9437686
->    Note: it'd probably be even nicer to know which sensor this was, but we've
->    kinda abstracted that one away by this point...
-> - The original Brian posted on https://patchwork.kernel.org/patch/9437687
->
-> Brian Norris (2):
->    thermal: rockchip: improve conversion error messages
->    thermal: rockchip: don't pass table structs by value
->
-> Caesar Wang (3):
->    thermal: rockchip: fixes invalid temperature case
->    thermal: rockchip: optimize the conversion table
->    thermal: rockchip: handle set_trips without the trip points
->
->   drivers/thermal/rockchip_thermal.c | 153 ++++++++++++++++++++++++-------------
->   1 file changed, 100 insertions(+), 53 deletions(-)
->
+>   fix up the pll type pll_rk3328 description and use
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
+applied to my clk-branch for 4.11
+
+The clock controller itself also looks good now, I'll just give Rob or someone 
+else a bit of time for eventual comments after new years :-)
+
+Heiko
