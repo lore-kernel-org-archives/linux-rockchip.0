@@ -1,30 +1,41 @@
-From: Baolin Wang <baolin.wang@linaro.org>
-Subject: Re: [PATCH v2 3/3] phy: rockchip-inno-usb2: Set EXTCON_USB when
- EXTCON_CHG_USB_SDP was set
-Date: Tue, 3 Jan 2017 13:54:30 +0800
-Message-ID: <CAMz4kuJP9Q7Ly4uRBjCFU32YzbVbnsGyk+wHc+M=g8W=uDBsEQ@mail.gmail.com>
-References: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482307697.git.baolin.wang@linaro.org>
- <23666cc1a5ff123ece5bdbb9821d1eab280d0927.1482307697.git.baolin.wang@linaro.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <23666cc1a5ff123ece5bdbb9821d1eab280d0927.1482307697.git.baolin.wang@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: myungjoo.ham@samsung.com, =?UTF-8?B?7LWc7LCs7Jqw?= <cw00.choi@samsung.com>, Chen-Yu Tsai <wens@csie.org>, Kishon <kishon@ti.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, Baolin Wang <baolin.wang@linaro.org>, Mark Brown <broonie@kernel.org>, NeilBrown <neilb@suse.com>
+From: Ziyuan Xu <xzy.xu@rock-chips.com>
+Subject: [PATCH] mmc: dw_mmc: update clock after ctrl reset in runtime resume
+Date: Tue,  3 Jan 2017 14:46:27 +0800
+Message-ID: <1483425987-21805-1-git-send-email-xzy.xu@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: ulf.hansson@linaro.org, jh80.chung@samsung.com, shawn.lin@rock-chips.com
+Cc: linux-mmc@vger.kernel.org, randy.li@rock-chips.com, linux-rockchip@lists.infradead.org, Ziyuan Xu <xzy.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kison and Heiko,
+Immediately after reset, issue the command which sets
+update_clock_register_only bit, the card clock will restart.
 
-On 21 December 2016 at 16:12, Baolin Wang <baolin.wang@linaro.org> wrote:
-> According to the documentation, we should set the EXTCON_USB when
-> one SDP charger connector was reported.
->
-> Signed-off-by: Baolin Wang <baolin.wang@linaro.org>
-> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
+MMC_PM_KEEP_POWER is disabled for SD card and eMMC slots, so that they
+have no chance to invoke dw_mci_setup_bus for update clock behaviour.
+Let's consummate it.
 
-Could you apply this patch if there are no other comments? Thanks.
+Fixes: e9ed883 ("mmc: dw_mmc: add runtime PM callback")
+Reported-by: Randy Li <randy.li@rock-chips.com>
+Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+---
+ drivers/mmc/host/dw_mmc.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index b44306b..71715b4 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -3357,6 +3357,8 @@ int dw_mci_runtime_resume(struct device *dev)
+ 		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+ 			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+ 			dw_mci_setup_bus(slot, true);
++		} else {
++			mci_send_cmd(slot, SDMMC_CMD_UPD_CLK, 0);
+ 		}
+ 	}
+ 
 -- 
-Baolin.wang
-Best Regards
+2.7.4
+
+
