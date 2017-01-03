@@ -1,72 +1,36 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc: update clock after ctrl reset in runtime
- resume
-Date: Tue, 3 Jan 2017 14:59:03 +0800
-Message-ID: <5e789711-b5de-5564-4538-a89d9ed9ca05@rock-chips.com>
-References: <1483425987-21805-1-git-send-email-xzy.xu@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v1 2/3] dt-bindings: add binding for rk3328 power domains
+Date: Tue, 3 Jan 2017 09:24:05 -0600
+Message-ID: <20170103152405.mdxrcf254kuqekom@rob-hp-laptop>
+References: <1482464872-12954-1-git-send-email-zhangqing@rock-chips.com>
+ <1482464872-12954-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1483425987-21805-1-git-send-email-xzy.xu@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ziyuan Xu <xzy.xu@rock-chips.com>, ulf.hansson@linaro.org, jh80.chung@samsung.com
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, randy.li@rock-chips.com, linux-rockchip@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1482464872-12954-3-git-send-email-zhangqing@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, heiko@sntech.de, tomeu.vizoso@collabora.com, xf@rock-chips.com, khilman@baylibre.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, cl@rock-chips.com, linux-arm-kernel@lists.infradead.org, wxt@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ziyuan,
-
-On 2017/1/3 14:46, Ziyuan Xu wrote:
-> Immediately after reset, issue the command which sets
-> update_clock_register_only bit, the card clock will restart.
->
-> MMC_PM_KEEP_POWER is disabled for SD card and eMMC slots, so that they
-> have no chance to invoke dw_mci_setup_bus for update clock behaviour.
-> Let's consummate it.
->
-> Fixes: e9ed883 ("mmc: dw_mmc: add runtime PM callback")
-> Reported-by: Randy Li <randy.li@rock-chips.com>
-> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+On Fri, Dec 23, 2016 at 11:47:51AM +0800, Elaine Zhang wrote:
+> Add binding documentation for the power domains
+> found on Rockchip RK3328 SoCs.
+> But RK3328 SoC just support idle, not support pd.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
->  drivers/mmc/host/dw_mmc.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index b44306b..71715b4 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -3357,6 +3357,8 @@ int dw_mci_runtime_resume(struct device *dev)
->  		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
->  			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
->  			dw_mci_setup_bus(slot, true);
-> +		} else {
-> +			mci_send_cmd(slot, SDMMC_CMD_UPD_CLK, 0);
->  		}
->  	}
+>  Documentation/devicetree/bindings/soc/rockchip/power_domain.txt | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Thanks for sending this, but I think the better fix we talked about
-offlist may be...
-
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -3324,7 +3324,7 @@ int dw_mci_runtime_resume(struct device *dev)
-         if (ret)
-                 goto err;
-
--       if (!dw_mci_ctrl_reset(host, SDMMC_CTRL_ALL_RESET_FLAGS)) {
-+       if (!dw_mci_reset(host)) {
-                 clk_disable_unprepare(host->ciu_clk);
-                 ret = -ENODEV;
-                 goto err;
-
-
-otherwise there still some unhandled cases once the reset is failure.
-
->
->
-
-
--- 
-Best Regards
-Shawn Lin
-
+Acked-by: Rob Herring <robh@kernel.org>
