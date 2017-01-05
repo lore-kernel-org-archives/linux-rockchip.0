@@ -1,13 +1,13 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4] mmc: dw_mmc: force setup bus if active slots exist
-Date: Thu, 5 Jan 2017 15:34:16 +0800
-Message-ID: <49544a65-9b3c-c56a-e5f7-89c5fa6e6cd0@rock-chips.com>
-References: <1483601012-18241-1-git-send-email-xzy.xu@rock-chips.com>
+Subject: [PATCH 2/2] phy: rockchip-emmc: try to get drive impedance from DT
+Date: Thu,  5 Jan 2017 17:31:22 +0800
+Message-ID: <1483608682-226716-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1483608682-226716-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1483601012-18241-1-git-send-email-xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1483608682-226716-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,85 +17,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
-Cc: linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/1/5 15:23, Ziyuan Xu wrote:
-> It's necessary to setup bus if any slots are present.
-> - update clock after ctrl reset
-> - if the host has genpd node, we can guarantee the clock is available
-> before starting request. Otherwies, the clock register is reset once
-> power off the pd, and host can't output the active clock during
-> communication.
->
-> fixes: e9ed8835e990 ("mmc: dw_mmc: add runtime PM callback")
-> Reported-by: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> ---
-> Hi guys,
->
-> I found a similar issue on rk3399 platform, which has a genpd node for
-> SD card host. Power off-on pd will reset the registers to a default
-> value (ie. CLKENA), so that the host can't output the active clock
-> during communication.
->
+Try to get drive impedance from DT and use it, otherwise
+use 50ohm by default in order not to break the existing boards
+as 50ohm works fine for them already.
 
-Indeed, Caesar recently introduced all the genpd for rk3399 platform,
-so we need to restore them.
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-> So we need to setup bus in rpm resume. It also wraps the update clock
-> behaviour which I did in V3.
->
-> Thanks,
-> Ziyuan Xu
->
->
-> Changes in v4:
-> - update commit message
-> - fix SD host rpm resume can't work
->
-> Changes in v3:
-> - only reset host with active slot.
->
-> Changes in v2:
-> - update the commit message
-> - use dw_mci_reset instead of dw_mci_ctrl_reset
->
->  drivers/mmc/host/dw_mmc.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index b44306b..b6053b3 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -3354,10 +3354,10 @@ int dw_mci_runtime_resume(struct device *dev)
->
->  		if (!slot)
->  			continue;
-> -		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
-> +		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER)
->  			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
-> -			dw_mci_setup_bus(slot, true);
-> -		}
-> +		/* Force setup bus to guarantee available clock output */
-> +		dw_mci_setup_bus(slot, true);
+ drivers/phy/phy-rockchip-emmc.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-So the spamming message about
-
-"Bus speed (slot %d) = %dHz (slot req %dHz, actual %dHZ div = %d)\n"
-
-will always be there, right? So you could append a new patch to shut
-up it as I think it's useless no matter for system pm or rpm to print
-it.  How about?
-
->  	}
->
->  	/* Now that slots are all setup, we can enable card detect */
->
-
-
+diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+index f1b24f1..7fd4a3e 100644
+--- a/drivers/phy/phy-rockchip-emmc.c
++++ b/drivers/phy/phy-rockchip-emmc.c
+@@ -78,6 +78,7 @@
+ 
+ struct rockchip_emmc_phy {
+ 	unsigned int	reg_offset;
++	unsigned int	drive_impedance;
+ 	struct regmap	*reg_base;
+ 	struct clk	*emmcclk;
+ };
+@@ -288,7 +289,7 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
+ 	/* Drive impedance: 50 Ohm */
+ 	regmap_write(rk_phy->reg_base,
+ 		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+-		     HIWORD_UPDATE(PHYCTRL_DR_50OHM,
++		     HIWORD_UPDATE(rk_phy->drive_impedance,
+ 				   PHYCTRL_DR_MASK,
+ 				   PHYCTRL_DR_SHIFT));
+ 
+@@ -346,6 +347,32 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
++	rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
++	if (!of_property_read_u32(dev->of_node, "drive_impedance",
++				  &rk_phy->drive_impedance)) {
++		switch (rk_phy->drive_impedance) {
++		case 33:
++			rk_phy->drive_impedance = PHYCTRL_DR_33OHM;
++			break;
++		case 40:
++			rk_phy->drive_impedance = PHYCTRL_DR_40OHM;
++			break;
++		case 50:
++			rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
++			break;
++		case 66:
++			rk_phy->drive_impedance = PHYCTRL_DR_66OHM;
++			break;
++		case 100:
++			rk_phy->drive_impedance = PHYCTRL_DR_100OHM;
++			break;
++		default:
++			dev_info(dev, "invalid drive impedance.\n");
++			rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
++			break;
++		}
++	}
++
+ 	rk_phy->reg_offset = reg_offset;
+ 	rk_phy->reg_base = grf;
+ 
 -- 
-Best Regards
-Shawn Lin
+1.9.1
