@@ -1,47 +1,43 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v5 1/4] clk: rockchip: add dt-binding header for rk3328
-Date: Thu, 05 Jan 2017 13:54:53 +0100
-Message-ID: <2865934.UftZdpvg1Y@phil>
-References: <1482979511-6847-1-git-send-email-zhangqing@rock-chips.com>
- <1482979511-6847-2-git-send-email-zhangqing@rock-chips.com>
- <6625105.hZYF0iglUL@phil>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH v2 0/5] drm/dp: Implement CRC debugfs API
+Date: Thu,  5 Jan 2017 14:06:43 +0100
+Message-ID: <20170105130648.3139-1-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6625105.hZYF0iglUL@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Emil Velikov <emil.l.velikov@gmail.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 5. Januar 2017, 13:39:38 CET schrieb Heiko Stuebner:
-> Am Donnerstag, 29. Dezember 2016, 10:45:08 CET schrieb Elaine Zhang:
-> > Add the dt-bindings header for the rk3328, that gets shared between
-> > the clock controller and the clock references in the dts.
-> > Add softreset ID for rk3328.
-> > 
-> > Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> applied, after moving the clock-ids a bit more together [0],
-> as limiting the number of empty entries in the clk-id array saves us a bit
-> of space. But please double check and shout if something looks wrong :-)
-
-forgot to add, that I also moved your mac2phy clock-ids into the regular sclk-
-area, as we want to add them via the muxgrf clktype.
-
-
-> Thanks
-> Heiko
-> 
-> [0]
-> https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commi
-> t/?id=6cc1aef0ad0daea0c6ba5432a8a6fe1c30661e4c
+SGksCgp0aGlzIHNlcmllcyBidWlsZHMgdXAgb24gdGhlIEFQSSBmb3IgZXhwb3NpbmcgY2FwdHVy
+ZWQgQ1JDcyB0aHJvdWdoCmRlYnVnZnMuCgpJdCBhZGRzIG5ldyBEUCBoZWxwZXJzIGZvciBzdGFy
+dGluZyBhbmQgc3RvcHBpbmcgQ1JDIGNhcHR1cmUgYW5kIGdldHMKdGhlIFJvY2tjaGlwIGRyaXZl
+ciB0byB1c2UgaXQuCgpBbHNvIGhhZCB0byBhZGQgYSBjb25uZWN0b3IgYmFja3BvaW50ZXIgdG8g
+dGhlIGRybV9kcF9hdXggc3RydWN0IHNvIHdlIGNvdWxkCndhaXQgZm9yIHRoZSByaWdodCB2Ymxh
+bmsgYW5kIHN0b3JlIHRoZSBDUkNzIGFmdGVyd2FyZHMsIEkgd2lsbCBiZSBnbGFkCnRvIGhlYXIg
+YWJvdXQgYmV0dGVyIGFsdGVybmF0aXZlcy4KClRoYW5rcywKClRvbWV1CgoKVG9tZXUgVml6b3Nv
+ICg1KToKICBkcm0vZHA6IGFkZCBjb25uZWN0b3IgYmFja3BvaW50ZXIgdG8gZHJtX2RwX2F1eAog
+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBzZXQgY29ubmVjdG9yIHRvIGRybV9kcF9hdXgKICBk
+cm0vZHA6IGFkZCBoZWxwZXJzIGZvciBjYXB0dXJlIG9mIGZyYW1lIENSQ3MKICBkcm0vYnJpZGdl
+OiBhbmFsb2dpeF9kcDogYWRkIGhlbHBlcnMgZm9yIGNhcHR1cmUgb2YgZnJhbWUgQ1JDcwogIGRy
+bS9yb2NrY2hpcDogSW1wbGVtZW50IENSQyBkZWJ1Z2ZzIEFQSQoKIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDM0ICsrKystLQogZHJpdmVycy9n
+cHUvZHJtL2RybV9kcF9oZWxwZXIuYyAgICAgICAgICAgICAgICAgICAgfCAxMjAgKysrKysrKysr
+KysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
+ICAgICAgICB8ICA0OCArKysrKysrKysKIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5o
+ICAgICAgICAgICAgICAgICAgIHwgICAzICsKIGluY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaCAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgICA5ICsrCiA1IGZpbGVzIGNoYW5nZWQsIDIwNiBpbnNl
+cnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKLS0gCjIuOS4zCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
