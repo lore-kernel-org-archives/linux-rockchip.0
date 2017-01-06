@@ -1,44 +1,45 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add aspm-no-l0s for rk3399
-Date: Fri, 06 Jan 2017 10:13:28 +0100
-Message-ID: <5912933.DPf2U8pco7@phil>
-References: <1481881357-1793-1-git-send-email-shawn.lin@rock-chips.com>
- <1481881357-1793-2-git-send-email-shawn.lin@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH v3 0/5] drm/dp: Implement CRC debugfs API
+Date: Fri,  6 Jan 2017 15:30:24 +0100
+Message-ID: <20170106143029.11553-1-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1481881357-1793-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Emil Velikov <emil.l.velikov@gmail.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-Am Freitag, 16. Dezember 2016, 17:42:37 CET schrieb Shawn Lin:
-> Per the discussion of bug fix[1], we now actually
-> leaves the default clock choice for pcie phy is
-> derived from 24MHz OSC to guarantee the least BER.
-> So let's add aspm-no-l0s here and folks could delete
-> this property from their dts.
-> 
-> [1] https://patchwork.kernel.org/patch/9470519/
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-looks ok, but the underlying property addition hasn't been included yet, so 
-we'll have to wait for a bit longer.
-
-If you notice the pci-host change going in, could you ping this patch please.
-
-
-Thanks
-Heiko
+SGksCgp0aGlzIHNlcmllcyBidWlsZHMgdXAgb24gdGhlIEFQSSBmb3IgZXhwb3NpbmcgY2FwdHVy
+ZWQgQ1JDcyB0aHJvdWdoCmRlYnVnZnMuCgpJdCBhZGRzIG5ldyBEUCBoZWxwZXJzIGZvciBzdGFy
+dGluZyBhbmQgc3RvcHBpbmcgQ1JDIGNhcHR1cmUgYW5kIGdldHMKdGhlIFJvY2tjaGlwIGRyaXZl
+ciB0byB1c2UgaXQuCgpBbHNvIGhhZCB0byBhZGQgYSBjb25uZWN0b3IgYmFja3BvaW50ZXIgdG8g
+dGhlIGRybV9kcF9hdXggc3RydWN0IHNvIHdlIGNvdWxkCndhaXQgZm9yIHRoZSByaWdodCB2Ymxh
+bmsgYW5kIHN0b3JlIHRoZSBDUkNzIGFmdGVyd2FyZHMsIEkgd2lsbCBiZSBnbGFkCnRvIGhlYXIg
+YWJvdXQgYmV0dGVyIGFsdGVybmF0aXZlcy4KCldpdGggdGhlc2UgcGF0Y2hlcywgdGVzdHMgaW4g
+SUdUIHN1Y2ggYXMga21zX3BpcGVfY3JjX2Jhc2ljIGFuZAprbXNfcGxhbmUgZG8gcGFzcyBvbiBS
+SzMyODguCgpUaGFua3MsCgpUb21ldQoKClRvbWV1IFZpem9zbyAoNSk6CiAgZHJtL2RwOiBhZGQg
+Y29ubmVjdG9yIGJhY2twb2ludGVyIHRvIGRybV9kcF9hdXgKICBkcm0vYnJpZGdlOiBhbmFsb2dp
+eF9kcDogc2V0IGNvbm5lY3RvciB0byBkcm1fZHBfYXV4CiAgZHJtL2RwOiBhZGQgaGVscGVycyBm
+b3IgY2FwdHVyZSBvZiBmcmFtZSBDUkNzCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IGFkZCBo
+ZWxwZXJzIGZvciBjYXB0dXJlIG9mIGZyYW1lIENSQ3MKICBkcm0vcm9ja2NoaXA6IEltcGxlbWVu
+dCBDUkMgZGVidWdmcyBBUEkKCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX2NvcmUuYyB8ICAzNCArKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fZHBfaGVscGVy
+LmMgICAgICAgICAgICAgICAgICAgIHwgMTE4ICsrKysrKysrKysrKysrKysrKysrKwogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyAgICAgICAgfCAgNDggKysrKysr
+KysrCiBpbmNsdWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaCAgICAgICAgICAgICAgICAgICB8
+ICAgMyArCiBpbmNsdWRlL2RybS9kcm1fZHBfaGVscGVyLmggICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAgOSArKwogNSBmaWxlcyBjaGFuZ2VkLCAyMDQgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlv
+bnMoLSkKCi0tIAoyLjkuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
