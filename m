@@ -1,89 +1,37 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 5/5] drm/rockchip: Implement CRC debugfs API
-Date: Fri, 6 Jan 2017 10:56:45 -0500
-Message-ID: <CAOw6vbLAwzrwfHdny=-RYrUE7wBksqwkOxatJ1=_HMojQLPm4w@mail.gmail.com>
-References: <20170106143029.11553-1-tomeu.vizoso@collabora.com>
- <20170106143029.11553-6-tomeu.vizoso@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170106143029.11553-6-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: Emil Velikov <emil.l.velikov@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] clk: rockchip: Remove useless init of "grf" to -EPROBE_DEFER
+Date: Fri,  6 Jan 2017 08:31:01 -0800
+Message-ID: <20170106163101.32048-1-dianders@chromium.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKYW4gNiwgMjAxNyBhdCA5OjMwIEFNLCBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9z
-b0Bjb2xsYWJvcmEuY29tPiB3cm90ZToKPiBJbXBsZW1lbnQgdGhlIC5zZXRfY3JjX3NvdXJjZSgp
-IGNhbGxiYWNrIGFuZCBjYWxsIHRoZSBEUCBoZWxwZXJzCj4gYWNjb3JkaW5nbHkgdG8gc3RhcnQg
-YW5kIHN0b3AgQ1JDIGNhcHR1cmUuCj4KPiBUaGlzIGlzIG9ubHkgZG9uZSBpZiB0aGlzIENSVEMg
-aXMgY3VycmVudGx5IHVzaW5nIHRoZSBlRFAgY29ubmVjdG9yLgo+Cj4gdjM6IFJlbW92ZSBzdXBl
-cmZsdW91cyBjaGVjayBvbiByb2NrY2hpcF9jcnRjX3N0YXRlLT5vdXRwdXRfdHlwZQo+Cj4gU2ln
-bmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4KPiAt
-LS0KPgo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNDgg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDQ4IGluc2Vy
-dGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-Ywo+IGluZGV4IGZiNWYwMDFmNTFjMy4uNWUxOWJlZjZkNWI0IDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTE5LDYgKzE5LDcgQEAKPiAg
-I2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fZmxp
-cF93b3JrLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3BsYW5lX2hlbHBlci5oPgo+ICsjaW5jbHVk
-ZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgo+Cj4gICNpbmNsdWRlIDxsaW51eC9rZXJuZWwu
-aD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+IEBAIC0xMTA1LDYgKzExMDYsNTIgQEAg
-c3RhdGljIHZvaWQgdm9wX2NydGNfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
-Cj4gICAgICAgICBrZnJlZShzKTsKPiAgfQo+Cj4gK3N0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rv
-ciAqdm9wX2dldF9lZHBfY29ubmVjdG9yKHN0cnVjdCB2b3AgKnZvcCkKPiArewo+ICsgICAgICAg
-c3RydWN0IGRybV9jcnRjICpjcnRjID0gJnZvcC0+Y3J0YzsKPiArICAgICAgIHN0cnVjdCBkcm1f
-Y29ubmVjdG9yICpjb25uZWN0b3I7Cj4gKwo+ICsgICAgICAgbXV0ZXhfbG9jaygmY3J0Yy0+ZGV2
-LT5tb2RlX2NvbmZpZy5tdXRleCk7Cj4gKyAgICAgICBkcm1fZm9yX2VhY2hfY29ubmVjdG9yKGNv
-bm5lY3RvciwgY3J0Yy0+ZGV2KQo+ICsgICAgICAgICAgICAgICBpZiAoY29ubmVjdG9yLT5jb25u
-ZWN0b3JfdHlwZSA9PSBEUk1fTU9ERV9DT05ORUNUT1JfZURQKSB7Cj4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgbXV0ZXhfdW5sb2NrKCZjcnRjLT5kZXYtPm1vZGVfY29uZmlnLm11dGV4KTsKPiAr
-ICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gY29ubmVjdG9yOwo+ICsgICAgICAgICAgICAg
-ICB9Cj4gKyAgICAgICBtdXRleF91bmxvY2soJmNydGMtPmRldi0+bW9kZV9jb25maWcubXV0ZXgp
-Owo+ICsKPiArICAgICAgIHJldHVybiBOVUxMOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHZvcF9j
-cnRjX3NldF9jcmNfc291cmNlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IGNoYXIgKnNvdXJjZV9uYW1lLCBzaXplX3QgKnZh
-bHVlc19jbnQpCj4gK3sKPiArICAgICAgIHN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsK
-PiArICAgICAgIHN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlICpzID0gdG9fcm9ja2NoaXBfY3J0
-Y19zdGF0ZShjcnRjLT5zdGF0ZSk7Cj4gKyAgICAgICBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29u
-bmVjdG9yOwo+ICsgICAgICAgaW50IHJldDsKPiArCj4gKyAgICAgICBjb25uZWN0b3IgPSB2b3Bf
-Z2V0X2VkcF9jb25uZWN0b3Iodm9wKTsKPiArICAgICAgIGlmICghY29ubmVjdG9yKQo+ICsgICAg
-ICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiArCj4gKyAgICAgICAqdmFsdWVzX2NudCA9IDM7
-Cj4gKwo+ICsgICAgICAgaWYgKHNvdXJjZV9uYW1lICYmCj4gKyAgICAgICAgICAgc3RyY21wKHNv
-dXJjZV9uYW1lLCAiYXV0byIpID09IDApIHsKPiArCj4gKyAgICAgICAgICAgICAgIGlmIChzLT5v
-dXRwdXRfdHlwZSAhPSBEUk1fTU9ERV9DT05ORUNUT1JfZURQKQo+ICsgICAgICAgICAgICAgICAg
-ICAgICAgIHJldHVybiAtRUlOVkFMOwo+ICsKPiArICAgICAgICAgICAgICAgcmV0ID0gYW5hbG9n
-aXhfZHBfc3RhcnRfY3JjKGNvbm5lY3Rvcik7CgpUbyBwaWNrIHVwIG15IHRob3VnaHRzIGZyb20g
-MS81LCB5b3UgY291bGQgZG8gdGhlIGZvbGxvd2luZyBpbnN0ZWFkOgoKYW5hbG9naXhfZHBfc3Rh
-cnRfY3JjKGRybV9jcnRjX2luZGV4KGNydGMpKTsKCgo+ICsgICAgICAgfSBlbHNlIGlmICghc291
-cmNlX25hbWUpCj4gKwo+ICsgICAgICAgICAgICAgICByZXQgPSBhbmFsb2dpeF9kcF9zdG9wX2Ny
-Yyhjb25uZWN0b3IpOwo+ICsgICAgICAgZWxzZQo+ICsgICAgICAgICAgICAgICByZXQgPSAtRUlO
-VkFMOwo+ICsKPiArICAgICAgIHJldHVybiByZXQ7Cj4gK30KPiArCj4gIHN0YXRpYyBjb25zdCBz
-dHJ1Y3QgZHJtX2NydGNfZnVuY3Mgdm9wX2NydGNfZnVuY3MgPSB7Cj4gICAgICAgICAuc2V0X2Nv
-bmZpZyA9IGRybV9hdG9taWNfaGVscGVyX3NldF9jb25maWcsCj4gICAgICAgICAucGFnZV9mbGlw
-ID0gZHJtX2F0b21pY19oZWxwZXJfcGFnZV9mbGlwLAo+IEBAIC0xMTEyLDYgKzExNTksNyBAQCBz
-dGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9jcnRjX2Z1bmNzID0gewo+ICAg
-ICAgICAgLnJlc2V0ID0gdm9wX2NydGNfcmVzZXQsCj4gICAgICAgICAuYXRvbWljX2R1cGxpY2F0
-ZV9zdGF0ZSA9IHZvcF9jcnRjX2R1cGxpY2F0ZV9zdGF0ZSwKPiAgICAgICAgIC5hdG9taWNfZGVz
-dHJveV9zdGF0ZSA9IHZvcF9jcnRjX2Rlc3Ryb3lfc3RhdGUsCj4gKyAgICAgICAuc2V0X2NyY19z
-b3VyY2UgPSB2b3BfY3J0Y19zZXRfY3JjX3NvdXJjZSwKPiAgfTsKPgo+ICBzdGF0aWMgdm9pZCB2
-b3BfZmJfdW5yZWZfd29ya2VyKHN0cnVjdCBkcm1fZmxpcF93b3JrICp3b3JrLCB2b2lkICp2YWwp
-Cj4gLS0KPiAyLjkuMwo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwo+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cj4gbGludXgtYXJtLWtl
-cm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCgoKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJl
-IEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+When we used to defer setting the "grf" member to
+rockchip_clk_get_grf() it was important to init the "grf" member to an
+error value in rockchip_clk_init().  With recent changes, we now set
+"grf" right in rockchip_clk_init() (two lines below the place where we
+initted it).  That makes the old init useless.  Get rid of it.
+
+Fixes: 6f339dc2719e ("clk: rockchip: lookup General Register Files in rockchip_clk_init")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/clk/rockchip/clk.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 3abcbf441cc5..fe1d393cf678 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -344,7 +344,6 @@ struct rockchip_clk_provider * __init rockchip_clk_init(struct device_node *np,
+ 	ctx->clk_data.clks = clk_table;
+ 	ctx->clk_data.clk_num = nr_clks;
+ 	ctx->cru_node = np;
+-	ctx->grf = ERR_PTR(-EPROBE_DEFER);
+ 	spin_lock_init(&ctx->lock);
+ 
+ 	ctx->grf = syscon_regmap_lookup_by_phandle(ctx->cru_node,
+-- 
+2.11.0.390.gc69c2f50cf-goog
+
