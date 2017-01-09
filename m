@@ -1,70 +1,54 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v4 5/5] drm/rockchip: Implement CRC debugfs API
-Date: Mon,  9 Jan 2017 14:32:37 +0100
-Message-ID: <20170109133237.17413-6-tomeu.vizoso@collabora.com>
-References: <20170109133237.17413-1-tomeu.vizoso@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] Documentation: phy: introduce new optional property
+ to specify drive impedance
+Date: Mon, 9 Jan 2017 12:06:27 -0600
+Message-ID: <20170109180627.uhkfnyxunksp3s6q@rob-hp-laptop>
+References: <1483608682-226716-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170109133237.17413-1-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Emil Velikov <emil.l.velikov@gmail.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1483608682-226716-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW1wbGVtZW50IHRoZSAuc2V0X2NyY19zb3VyY2UoKSBjYWxsYmFjayBhbmQgY2FsbCB0aGUgRFAg
-aGVscGVycwphY2NvcmRpbmdseSB0byBzdGFydCBhbmQgc3RvcCBDUkMgY2FwdHVyZS4KClRoaXMg
-aXMgb25seSBkb25lIGlmIHRoaXMgQ1JUQyBpcyBjdXJyZW50bHkgdXNpbmcgdGhlIGVEUCBjb25u
-ZWN0b3IuCgp2MzogUmVtb3ZlIHN1cGVyZmx1b3VzIGNoZWNrIG9uIHJvY2tjaGlwX2NydGNfc3Rh
-dGUtPm91dHB1dF90eXBlCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9z
-b0Bjb2xsYWJvcmEuY29tPgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jIHwgNDIgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFu
-Z2VkLCA0MiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMKaW5kZXggZmI1ZjAwMWY1MWMzLi42ZTVlYjFhYTE4MmEgMTAwNjQ0Ci0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTksNiArMTksNyBAQAog
-I2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2ZsaXBf
-d29yay5oPgogI2luY2x1ZGUgPGRybS9kcm1fcGxhbmVfaGVscGVyLmg+CisjaW5jbHVkZSA8ZHJt
-L2JyaWRnZS9hbmFsb2dpeF9kcC5oPgogCiAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+CiAjaW5j
-bHVkZSA8bGludXgvbW9kdWxlLmg+CkBAIC0xMTA1LDYgKzExMDYsNDYgQEAgc3RhdGljIHZvaWQg
-dm9wX2NydGNfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJa2ZyZWUocyk7
-CiB9CiAKK3N0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqdm9wX2dldF9lZHBfY29ubmVjdG9y
-KHN0cnVjdCB2b3AgKnZvcCkKK3sKKwlzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRj
-OworCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7CisKKwltdXRleF9sb2NrKCZjcnRj
-LT5kZXYtPm1vZGVfY29uZmlnLm11dGV4KTsKKwlkcm1fZm9yX2VhY2hfY29ubmVjdG9yKGNvbm5l
-Y3RvciwgY3J0Yy0+ZGV2KQorCQlpZiAoY29ubmVjdG9yLT5jb25uZWN0b3JfdHlwZSA9PSBEUk1f
-TU9ERV9DT05ORUNUT1JfZURQKSB7CisJCQltdXRleF91bmxvY2soJmNydGMtPmRldi0+bW9kZV9j
-b25maWcubXV0ZXgpOworCQkJcmV0dXJuIGNvbm5lY3RvcjsKKwkJfQorCW11dGV4X3VubG9jaygm
-Y3J0Yy0+ZGV2LT5tb2RlX2NvbmZpZy5tdXRleCk7CisKKwlyZXR1cm4gTlVMTDsKK30KKworc3Rh
-dGljIGludCB2b3BfY3J0Y19zZXRfY3JjX3NvdXJjZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCisJ
-CQkJICAgY29uc3QgY2hhciAqc291cmNlX25hbWUsIHNpemVfdCAqdmFsdWVzX2NudCkKK3sKKwlz
-dHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7CisJc3RydWN0IHJvY2tjaGlwX2NydGNfc3Rh
-dGUgKnMgPSB0b19yb2NrY2hpcF9jcnRjX3N0YXRlKGNydGMtPnN0YXRlKTsKKwlzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmVjdG9yOworCWludCByZXQ7CisKKwljb25uZWN0b3IgPSB2b3BfZ2V0
-X2VkcF9jb25uZWN0b3Iodm9wKTsKKwlpZiAoIWNvbm5lY3RvcikKKwkJcmV0dXJuIC1FSU5WQUw7
-CisKKwkqdmFsdWVzX2NudCA9IDM7CisKKwlpZiAoc291cmNlX25hbWUgJiYgc3RyY21wKHNvdXJj
-ZV9uYW1lLCAiYXV0byIpID09IDApCisJCXJldCA9IGFuYWxvZ2l4X2RwX3N0YXJ0X2NyYyhjb25u
-ZWN0b3IpOworCWVsc2UgaWYgKCFzb3VyY2VfbmFtZSkKKwkJcmV0ID0gYW5hbG9naXhfZHBfc3Rv
-cF9jcmMoY29ubmVjdG9yKTsKKwllbHNlCisJCXJldCA9IC1FSU5WQUw7CisKKwlyZXR1cm4gcmV0
-OworfQorCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9jcnRjX2Z1bmNz
-ID0gewogCS5zZXRfY29uZmlnID0gZHJtX2F0b21pY19oZWxwZXJfc2V0X2NvbmZpZywKIAkucGFn
-ZV9mbGlwID0gZHJtX2F0b21pY19oZWxwZXJfcGFnZV9mbGlwLApAQCAtMTExMiw2ICsxMTUzLDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19mdW5jcyB2b3BfY3J0Y19mdW5jcyA9IHsK
-IAkucmVzZXQgPSB2b3BfY3J0Y19yZXNldCwKIAkuYXRvbWljX2R1cGxpY2F0ZV9zdGF0ZSA9IHZv
-cF9jcnRjX2R1cGxpY2F0ZV9zdGF0ZSwKIAkuYXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSB2b3BfY3J0
-Y19kZXN0cm95X3N0YXRlLAorCS5zZXRfY3JjX3NvdXJjZSA9IHZvcF9jcnRjX3NldF9jcmNfc291
-cmNlLAogfTsKIAogc3RhdGljIHZvaWQgdm9wX2ZiX3VucmVmX3dvcmtlcihzdHJ1Y3QgZHJtX2Zs
-aXBfd29yayAqd29yaywgdm9pZCAqdmFsKQotLSAKMi45LjMKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Thu, Jan 05, 2017 at 05:31:21PM +0800, Shawn Lin wrote:
+> We need to modify the drive impedance according to the
+> different hardware condition. So let's expose this to
+> the DT.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> index e3ea557..731aeb9 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> @@ -14,6 +14,11 @@ specified by name:
+>  		access to it), it is strongly suggested.
+>   - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
+>  
+> +Optional Properties:
+> +- drive_impedance: Must be one of 33, 40, 50, 66, 100. This property allows
+> +	different boards to specify their own drive impedance depending on the
+> +	hardware condition.
+
+Needs a vendor prefix. Don't use '_'. And needs unit suffix (-ohms).
+
+> +
+>  Example:
+>  
+>  
+> -- 
+> 1.9.1
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
