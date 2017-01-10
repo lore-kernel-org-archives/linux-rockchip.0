@@ -1,46 +1,44 @@
-From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH 4/4] clk: rockchip: add rk3288 cif_out clock
-Date: Tue, 10 Jan 2017 19:59:20 +0800
-Message-ID: <1484049560-14820-4-git-send-email-jacob-chen@iotwrt.com>
-References: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com, Jacob Chen <jacob-chen@iotwrt.com>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [PATCH v4 2/2] dt-bindings: clk: add rockchip,
+ grf property for RK3399
+Date: Tue, 10 Jan 2017 10:34:41 -0800
+Message-ID: <CAD=FV=Wr0bOLaU2LnhXUSk8b7xaJC2+8ihRvx48Az=zy54Agdg@mail.gmail.com>
+References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
+ <1484028930-20305-3-git-send-email-zhengxing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1484028930-20305-3-git-send-email-zhengxing@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the clocks for the cif block of the rk3288
+Hi,
 
-Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
----
- drivers/clk/rockchip/clk-rk3288.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+On Mon, Jan 9, 2017 at 10:15 PM, Xing Zheng <zhengxing@rock-chips.com> wrote:
+> Add support for rockchip,grf property which is used for GRF muxes
+> on RK3399.
+>
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> ---
+>
+> Changes in v4:
+> - update the decription for rockchip,grf property
+>
+> Changes in v3: None
+> Changes in v2: None
+>
+>  Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 8047cea..f071c24 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -192,6 +192,7 @@ PNAME(mux_uart1_p)	= { "uart1_src", "uart1_frac", "xin24m" };
- PNAME(mux_uart2_p)	= { "uart2_src", "uart2_frac", "xin24m" };
- PNAME(mux_uart3_p)	= { "uart3_src", "uart3_frac", "xin24m" };
- PNAME(mux_uart4_p)	= { "uart4_src", "uart4_frac", "xin24m" };
-+PNAME(mux_cif_out_p)	= { "cif_src", "xin24m" };
- PNAME(mux_vip_out_p)	= { "vip_src", "xin24m" };
- PNAME(mux_mac_p)	= { "mac_pll_src", "ext_gmac" };
- PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
-@@ -448,6 +449,12 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 			RK3288_CLKSEL_CON(6), 14, 2, MFLAGS, 8, 6, DFLAGS,
- 			RK3288_CLKGATE_CON(3), 15, GFLAGS),
- 
-+	COMPOSITE_NOGATE(0, "cif_src", mux_pll_src_cpll_gpll_p, 0,
-+			RK3288_CLKSEL_CON(26), 8, 1, MFLAGS, 9, 5, DFLAGS),
-+	COMPOSITE_NODIV(SCLK_CIF_OUT, "sclk_cif_out", mux_cif_out_p, 0,
-+			RK3288_CLKSEL_CON(26), 15, 1, MFLAGS,
-+			RK3288_CLKGATE_CON(3), 7, GFLAGS),
-+
- 	GATE(SCLK_HDMI_HDCP, "sclk_hdmi_hdcp", "xin24m", 0,
- 			RK3288_CLKGATE_CON(5), 12, GFLAGS),
- 	GATE(SCLK_HDMI_CEC, "sclk_hdmi_cec", "xin32k", 0,
--- 
-2.7.4
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
