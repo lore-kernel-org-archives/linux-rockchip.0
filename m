@@ -1,36 +1,34 @@
 From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH 2/4] clk: rockchip: use rk3288 isp_in clock ids
-Date: Tue, 10 Jan 2017 19:59:18 +0800
-Message-ID: <1484049560-14820-2-git-send-email-jacob-chen@iotwrt.com>
+Subject: [PATCH 3/4] clk: rockchip: add rk3288 cif_out clock ids
+Date: Tue, 10 Jan 2017 19:59:19 +0800
+Message-ID: <1484049560-14820-3-git-send-email-jacob-chen@iotwrt.com>
 References: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
-Sender: linux-clk-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org
 Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Reference the newly added isp clock-ids in the clock-tree.
+Add clock-ids for the cif block of the rk3288
 
 
 Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 ---
- drivers/clk/rockchip/clk-rk3288.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/dt-bindings/clock/rk3288-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 39af05a..8047cea 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -801,7 +801,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
+index 08de7de..128b191 100644
+--- a/include/dt-bindings/clock/rk3288-cru.h
++++ b/include/dt-bindings/clock/rk3288-cru.h
+@@ -88,6 +88,7 @@
+ #define SCLK_PVTM_GPU		124
+ #define SCLK_CRYPTO		125
+ #define SCLK_MIPIDSI_24M	126
++#define SCLK_CIF_OUT		127
  
- 	GATE(0, "pclk_vip_in", "ext_vip", 0, RK3288_CLKGATE_CON(16), 0, GFLAGS),
- 	INVERTER(0, "pclk_vip", "pclk_vip_in", RK3288_CLKSEL_CON(29), 4, IFLAGS),
--	GATE(0, "pclk_isp_in", "ext_isp", 0, RK3288_CLKGATE_CON(16), 3, GFLAGS),
-+	GATE(PCLK_ISP_IN, "pclk_isp_in", "ext_isp", 0, RK3288_CLKGATE_CON(16), 3, GFLAGS),
- 	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
- };
- 
+ #define SCLK_MAC		151
+ #define SCLK_MACREF_OUT		152
 -- 
 2.7.4
-
