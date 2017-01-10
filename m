@@ -1,36 +1,66 @@
-From: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+From: Xing Zheng <zhengxing@rock-chips.com>
 Subject: Re: [PATCH v3] arm64: dts: rockchip: add "rockchip, grf" property for
  RK3399 PMUCRU/CRU
-Date: Mon, 9 Jan 2017 19:08:32 -0800
-Message-ID: <CAD=FV=XWWt4tfEh0x7pHiCz8mzag3NLBzPO1Z9EPMQ=TxAK5Yw@mail.gmail.com>
+Date: Tue, 10 Jan 2017 11:31:02 +0800
+Message-ID: <58745576.4010105@rock-chips.com>
 References: <1484011661-13474-1-git-send-email-zhengxing@rock-chips.com>
+ <CAD=FV=UsMR=HD5799N7ny_Ce8XXCkcd3R3tpX34AEC6UmGkXtA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1484011661-13474-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UsMR=HD5799N7ny_Ce8XXCkcd3R3tpX34AEC6UmGkXtA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@google.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, linux-clk <linux-clk@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi, Doug
 
-On Mon, Jan 9, 2017 at 5:27 PM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> +Optional Properties:
-> +
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +  If missing pll rates are not changable, due to the missing pll lock status.
+On 2017年01月10日 11:06, Doug Anderson wrote:
+> Hi,
+>
+> On Mon, Jan 9, 2017 at 5:27 PM, Xing Zheng <zhengxing@rock-chips.com> wrote:
+>> The structure rockchip_clk_provider needs to refer the GRF regmap
+>> in somewhere, if the CRU node has not "rockchip,grf" property,
+>> calling syscon_regmap_lookup_by_phandle will return an invalid GRF
+>> regmap, and the MUXGRF type clock will be not supported.
+>>
+>> Therefore, we need to add them.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> ---
+>>
+>> Changes in v3:
+>> - add optional roperty rockchip,grf in rockchip,rk3399-cru.txt
+>>
+>> Changes in v2:
+>> - referring pmugrf for PMUGRU
+>> - fix the typo "invaild" in COMMIT message
+>>
+>>   Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt | 5 +++++
+>>   arch/arm64/boot/dts/rockchip/rk3399.dtsi                        | 2 ++
+> "dts" and bindings shouldn't change in the same patch since they go
+> through different trees.  This is why I said:
+>
+>> This looks sane to me, but before you land it you need to first send
+>> up a (separate) patch that adjusts:
+>>        --------
+> AKA: you need a two patch series here.
+>
+> Sometimes it's OK to include bindings together with code changes
+> (depends on the maintainer), but never with dts changes.
+>
+> -Doug
+For little lazy, I did refer other SoC platform to using "dts" and 
+bindings in the same patch...
 
-On rk3399 the GRF isn't used for pll lock status.  It's used for PLL muxes.
+OK, I will use a two patch series.
 
-...so technically if you don't include it then the PLL muxes won't be
-changeable.  Hopefully the code handles this if the property is listed
-as "Optional".  ...and unless Heiko says otherwise, you probably need
-to list it as "Optional" since (presumably) there might be backward
-compatibility issues.
+Thanks
 
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+>
+
+-- 
+- Xing Zheng
