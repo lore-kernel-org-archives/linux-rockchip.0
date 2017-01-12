@@ -1,108 +1,118 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: add "rockchip, grf" property
- for RK3399 PMUCRU/CRU
-Date: Wed, 11 Jan 2017 16:50:10 -0800
-Message-ID: <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ@mail.gmail.com>
-References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
- <CAD=FV=Wwu3q_LqwYUWcJQRvp5neVOS9szgsYFONWTRJ0X8hRTA@mail.gmail.com>
- <8683375.pL9J7LxuT0@diego> <1523574.hS8CXi1tTP@diego>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: add "rockchip, grf" property for RK3399 PMUCRU/CRU
+Date: Thu, 12 Jan 2017 02:28:02 +0100
+Message-ID: <1637274.yXLKltLVD2@phil>
+References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com> <1523574.hS8CXi1tTP@diego> <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1523574.hS8CXi1tTP@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Am Mittwoch, 11. Januar 2017, 16:50:10 CET schrieb Doug Anderson:
+> Hi,
+> 
+> On Tue, Jan 10, 2017 at 11:58 AM, Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > Hi Doug,
+> > 
+> > Am Dienstag, 10. Januar 2017, 20:46:12 schrieb Heiko Stübner:
+> >> Am Dienstag, 10. Januar 2017, 10:45:48 schrieb Doug Anderson:
+> >> > Hi,
+> >> > 
+> >> > On Mon, Jan 9, 2017 at 10:15 PM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> 
+> >> wrote:
+> >> > > The structure rockchip_clk_provider needs to refer the GRF regmap
+> >> > > in somewhere, if the CRU node has not "rockchip,grf" property,
+> >> > > calling syscon_regmap_lookup_by_phandle will return an invalid GRF
+> >> > > regmap, and the MUXGRF type clock will be not supported.
+> >> > > 
+> >> > > Therefore, we need to add them.
+> >> > > 
+> >> > > Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> > > ---
+> >> > > 
+> >> > > Changes in v4:
+> >> > > - separte the binding patch
+> >> > > 
+> >> > > Changes in v3:
+> >> > > - add optional roperty rockchip,grf in rockchip,rk3399-cru.txt
+> >> > > 
+> >> > > Changes in v2:
+> >> > > - referring pmugrf for PMUGRU
+> >> > > - fix the typo "invaild" in COMMIT message
+> >> > > 
+> >> > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 ++
+> >> > >  1 file changed, 2 insertions(+)
+> >> > 
+> >> > This seems fine to me, so:
+> >> > 
+> >> > Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> >> > 
+> >> > ...but I will say that before you actually add any real "MUXGRF"
+> >> > clocks on rk3399 you _might_ need to rework the code to make things
+> >> > truly "optional".  If it turns out that any existing clocks that
+> >> > already exist today already go through one of these muxes in the GRF
+> >> > and we've always been assuming one setting of the mux, we'll need to
+> >> > make sure we keep assuming that setting of the mux even if the "grf"
+> >> > isn't specified.
+> >> 
+> >> I guess I see that a bit more relaxed :-) .
+> >> 
+> >> I.e. the GRF being optional is a remnant of syscons not being available
+> >> when the clocks get set up- so were coming in later or not at all. For
+> >> the rk3288 I converted, there we never really had the case of the GRF
+> >> missing.
+> >> 
+> >> And the GRF mux for the vcodec now present is not being used by anything
+> >> yet (neither driver nor binding), so no old devicetree can break.
+> >> 
+> >> > As I understand it, your motivation for this patch is to eventually be
+> >> > able to model the EDP reference clock which can either be xin24 or
+> >> > "edp osc".  Presumably the eDP "reference clock" isn't related to any
+> >> > of the pre-existing eDP clocks so that one should be safe.
+> >> 
+> >> Same here, so far we don't even have edp or even any other graphical
+> >> output
+> >> on the rk3399, so again there is no old devicetree that could break when
+> >> the grf is not specified.
+> > 
+> > reading all of the above again, it feels like you essentially also said
+> > similar things already in your original reply and I misread some of it.
+> > 
+> > But again, I don't see the need for any more code right now, as hopefully
+> > the simple stuff we currently only support does not have any grf-based
+> > muxes in it. Xing + Rockchip people, please correct me if I'm wrong here
+> > :-)
+> Right.  I have no objection to Xing's patch.  I just want to make sure
+> that if it's listed as "Optional" that it's really optional.
+> 
+> I was worried that we would introduce some GRF-based mux in the
+> _middle_ of some existing clock tree because we simply didn't model
+> the mux before and assumed one particular setting.  If nothing like
+> that ever happens then we're fine.
 
-On Tue, Jan 10, 2017 at 11:58 AM, Heiko St=C3=BCbner <heiko@sntech.de> wrot=
-e:
-> Hi Doug,
->
-> Am Dienstag, 10. Januar 2017, 20:46:12 schrieb Heiko St=C3=BCbner:
->> Am Dienstag, 10. Januar 2017, 10:45:48 schrieb Doug Anderson:
->> > Hi,
->> >
->> > On Mon, Jan 9, 2017 at 10:15 PM, Xing Zheng <zhengxing@rock-chips.com>
->>
->> wrote:
->> > > The structure rockchip_clk_provider needs to refer the GRF regmap
->> > > in somewhere, if the CRU node has not "rockchip,grf" property,
->> > > calling syscon_regmap_lookup_by_phandle will return an invalid GRF
->> > > regmap, and the MUXGRF type clock will be not supported.
->> > >
->> > > Therefore, we need to add them.
->> > >
->> > > Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->> > > ---
->> > >
->> > > Changes in v4:
->> > > - separte the binding patch
->> > >
->> > > Changes in v3:
->> > > - add optional roperty rockchip,grf in rockchip,rk3399-cru.txt
->> > >
->> > > Changes in v2:
->> > > - referring pmugrf for PMUGRU
->> > > - fix the typo "invaild" in COMMIT message
->> > >
->> > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 ++
->> > >  1 file changed, 2 insertions(+)
->> >
->> > This seems fine to me, so:
->> >
->> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
->> >
->> > ...but I will say that before you actually add any real "MUXGRF"
->> > clocks on rk3399 you _might_ need to rework the code to make things
->> > truly "optional".  If it turns out that any existing clocks that
->> > already exist today already go through one of these muxes in the GRF
->> > and we've always been assuming one setting of the mux, we'll need to
->> > make sure we keep assuming that setting of the mux even if the "grf"
->> > isn't specified.
->>
->> I guess I see that a bit more relaxed :-) .
->>
->> I.e. the GRF being optional is a remnant of syscons not being available =
-when
->> the clocks get set up- so were coming in later or not at all. For the
->> rk3288 I converted, there we never really had the case of the GRF missin=
-g.
->>
->> And the GRF mux for the vcodec now present is not being used by anything=
- yet
->> (neither driver nor binding), so no old devicetree can break.
->>
->> > As I understand it, your motivation for this patch is to eventually be
->> > able to model the EDP reference clock which can either be xin24 or
->> > "edp osc".  Presumably the eDP "reference clock" isn't related to any
->> > of the pre-existing eDP clocks so that one should be safe.
->>
->> Same here, so far we don't even have edp or even any other graphical out=
-put
->> on the rk3399, so again there is no old devicetree that could break when
->> the grf is not specified.
->
-> reading all of the above again, it feels like you essentially also said
-> similar things already in your original reply and I misread some of it.
->
-> But again, I don't see the need for any more code right now, as hopefully=
- the
-> simple stuff we currently only support does not have any grf-based muxes =
-in
-> it. Xing + Rockchip people, please correct me if I'm wrong here :-)
+Thankfully the clock diagrams on the old socs were pretty verbose, listing all
+grf-based clocks as well. For example the rk3288 seems to have two and it
+seems I've been carrying dummy definitions for those from the time I did the
+initial clock tree [0].
 
-Right.  I have no objection to Xing's patch.  I just want to make sure
-that if it's listed as "Optional" that it's really optional.
+And thankfully grf-based clocks somehow always only get used for more
+"esotheric" components like vcodec and iep on the rk3288 :-) .
 
-I was worried that we would introduce some GRF-based mux in the
-_middle_ of some existing clock tree because we simply didn't model
-the mux before and assumed one particular setting.  If nothing like
-that ever happens then we're fine.
 
-Sorry to be so confusing.
+Heiko
 
--Doug
+[0] https://github.com/mmind/linux-rockchip/blob/devel/workbench/drivers/clk/rockchip/clk-rk3288.c
+lines 371 and 799 .. looks like I'll need to add the iep clock as well
+at some point.
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
