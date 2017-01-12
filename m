@@ -1,118 +1,132 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: add "rockchip, grf" property for RK3399 PMUCRU/CRU
-Date: Thu, 12 Jan 2017 02:28:02 +0100
-Message-ID: <1637274.yXLKltLVD2@phil>
-References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com> <1523574.hS8CXi1tTP@diego> <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ@mail.gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
+Date: Thu, 12 Jan 2017 09:44:20 +0800
+Message-ID: <e6968068-ba74-5073-e4ca-9eb81a7c1f47@rock-chips.com>
+References: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170111182822.GC14532@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170111182822.GC14532@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 11. Januar 2017, 16:50:10 CET schrieb Doug Anderson:
-> Hi,
-> 
-> On Tue, Jan 10, 2017 at 11:58 AM, Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> > Hi Doug,
-> > 
-> > Am Dienstag, 10. Januar 2017, 20:46:12 schrieb Heiko Stübner:
-> >> Am Dienstag, 10. Januar 2017, 10:45:48 schrieb Doug Anderson:
-> >> > Hi,
-> >> > 
-> >> > On Mon, Jan 9, 2017 at 10:15 PM, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> 
-> >> wrote:
-> >> > > The structure rockchip_clk_provider needs to refer the GRF regmap
-> >> > > in somewhere, if the CRU node has not "rockchip,grf" property,
-> >> > > calling syscon_regmap_lookup_by_phandle will return an invalid GRF
-> >> > > regmap, and the MUXGRF type clock will be not supported.
-> >> > > 
-> >> > > Therefore, we need to add them.
-> >> > > 
-> >> > > Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> > > ---
-> >> > > 
-> >> > > Changes in v4:
-> >> > > - separte the binding patch
-> >> > > 
-> >> > > Changes in v3:
-> >> > > - add optional roperty rockchip,grf in rockchip,rk3399-cru.txt
-> >> > > 
-> >> > > Changes in v2:
-> >> > > - referring pmugrf for PMUGRU
-> >> > > - fix the typo "invaild" in COMMIT message
-> >> > > 
-> >> > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 ++
-> >> > >  1 file changed, 2 insertions(+)
-> >> > 
-> >> > This seems fine to me, so:
-> >> > 
-> >> > Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> >> > 
-> >> > ...but I will say that before you actually add any real "MUXGRF"
-> >> > clocks on rk3399 you _might_ need to rework the code to make things
-> >> > truly "optional".  If it turns out that any existing clocks that
-> >> > already exist today already go through one of these muxes in the GRF
-> >> > and we've always been assuming one setting of the mux, we'll need to
-> >> > make sure we keep assuming that setting of the mux even if the "grf"
-> >> > isn't specified.
-> >> 
-> >> I guess I see that a bit more relaxed :-) .
-> >> 
-> >> I.e. the GRF being optional is a remnant of syscons not being available
-> >> when the clocks get set up- so were coming in later or not at all. For
-> >> the rk3288 I converted, there we never really had the case of the GRF
-> >> missing.
-> >> 
-> >> And the GRF mux for the vcodec now present is not being used by anything
-> >> yet (neither driver nor binding), so no old devicetree can break.
-> >> 
-> >> > As I understand it, your motivation for this patch is to eventually be
-> >> > able to model the EDP reference clock which can either be xin24 or
-> >> > "edp osc".  Presumably the eDP "reference clock" isn't related to any
-> >> > of the pre-existing eDP clocks so that one should be safe.
-> >> 
-> >> Same here, so far we don't even have edp or even any other graphical
-> >> output
-> >> on the rk3399, so again there is no old devicetree that could break when
-> >> the grf is not specified.
-> > 
-> > reading all of the above again, it feels like you essentially also said
-> > similar things already in your original reply and I misread some of it.
-> > 
-> > But again, I don't see the need for any more code right now, as hopefully
-> > the simple stuff we currently only support does not have any grf-based
-> > muxes in it. Xing + Rockchip people, please correct me if I'm wrong here
-> > :-)
-> Right.  I have no objection to Xing's patch.  I just want to make sure
-> that if it's listed as "Optional" that it's really optional.
-> 
-> I was worried that we would introduce some GRF-based mux in the
-> _middle_ of some existing clock tree because we simply didn't model
-> the mux before and assumed one particular setting.  If nothing like
-> that ever happens then we're fine.
+On 2017/1/12 2:28, Bjorn Helgaas wrote:
+> On Mon, Dec 12, 2016 at 07:51:27PM +0800, Shawn Lin wrote:
+>> Rockchip's RC outputs 100MHz reference clock but there are
+>> two methods for PHY to generate it.
+>>
+>> (1)One of them is to use system PLL to generate 100MHz clock and
+>> the PHY will relock it and filter signal noise then outputs the
+>> reference clock.
+>>
+>> (2)Another way is to share Soc's 24MHZ crystal oscillator with
+>> PHY and force PHY's DLL to generate 100MHz internally.
+>>
+>> When using case(2), the exit from L0s doesn't work fine occasionally
+>> due to the broken design of RC receiver's logical circuit. So even if
+>> we use extended-synch, it still fails for PHY to relock the bits from
+>> FTS sometimes. This will hang the system.
+>>
+>> Maybe we could argue that why not use case(1) to avoid it? The reason
+>> is that as we could see the reference clock is derived from system PLL
+>> and the path from it to PHY isn't so clean which means there are some
+>> noise introduced by power-domain and other buses can't be filterd out
+>> by PHY and we could see noise from the frequency spectrum by
+>> oscilloscope. This makes the TX compatibility test a little difficult
+>> to pass the spec. So case(1) and case(2) are both used indeed now. If
+>> using case(2), we should disable RC's L0s support, and that is why we
+>> need this property to indicate this quirk.
+>>
+>> Also after checking quirk.c, I noticed there is already a quirk for
+>> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
+>> shouldn't do that as mentioned above that case(1) could still works fine
+>> with L0s.
+>>
+>> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> Cc: Brian Norris <briannorris@chromium.org>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - drop the quirk prefix
+>>
+>>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
+>>  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
+>>  2 files changed, 11 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>> index 71aeda1..1453a73 100644
+>> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>> @@ -43,6 +43,8 @@ Required properties:
+>>  - interrupt-map-mask and interrupt-map: standard PCI properties
+>>
+>>  Optional Property:
+>> +- aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
+>> +	using 24MHz OSC for RC's PHY.
+>>  - ep-gpios: contain the entry for pre-reset gpio
+>>  - num-lanes: number of lanes to use
+>>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+>> index f2dca7b..35988fc 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -140,6 +140,8 @@
+>>  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+>>  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+>>  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
+>> +#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+>> +#define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+>>  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
+>>  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+>>  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+>> @@ -653,6 +655,13 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>  	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
+>>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
+>>
+>> +	/* Clear L0s from RC's link cap */
+>> +	if (of_property_read_bool(dev->of_node, "apsm-no-l0s")) {
+>
+> Did you test this?  This string ("apsm-no-l0s") doesn't match the
+> "aspm-no-l0s" documented above.  The current tree doesn't contain either
+> string in any DTS.
+>
 
-Thankfully the clock diagrams on the old socs were pretty verbose, listing all
-grf-based clocks as well. For example the rk3288 seems to have two and it
-seems I've been carrying dummy definitions for those from the time I did the
-initial clock tree [0].
+oops, mea culpa. I think I wrote this and tested it on the kernel4.4
+chromeOS tree. There were some non-upstream patches there so I slightly
+amend it when rebasing on your next branch, I guess I made the mistake
+then.
 
-And thankfully grf-based clocks somehow always only get used for more
-"esotheric" components like vcodec and iep on the rk3288 :-) .
+I will fix this.
+
+>> +		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LINK_CAP);
+>> +		status &= ~PCIE_RC_CONFIG_LINK_CAP_L0S;
+>> +		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
+>> +	}
+>> +
+>>  	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+>>
+>>  	rockchip_pcie_write(rockchip,
+>> --
+>> 1.9.1
+>>
+>>
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
 
 
-Heiko
-
-[0] https://github.com/mmind/linux-rockchip/blob/devel/workbench/drivers/clk/rockchip/clk-rk3288.c
-lines 371 and 799 .. looks like I'll need to add the iep clock as well
-at some point.
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Best Regards
+Shawn Lin
