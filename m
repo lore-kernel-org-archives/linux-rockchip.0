@@ -1,70 +1,77 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v5 4/4] drm/rockchip: Implement CRC debugfs API
-Date: Thu, 12 Jan 2017 09:58:44 +0100
-Message-ID: <20170112085844.19878-5-tomeu.vizoso@collabora.com>
-References: <20170112085844.19878-1-tomeu.vizoso@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170112085844.19878-1-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Emil Velikov <emil.l.velikov@gmail.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH] usb: hcd: initialize hcd->flags to 0 when rm hcd
+Date: Thu, 12 Jan 2017 20:03:26 +0800
+Message-ID: <1484222606-15364-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, groeck@google.com, william.wu@rock-chips.com, rogerq@ti.com, William wu <wulf@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SW1wbGVtZW50IHRoZSAuc2V0X2NyY19zb3VyY2UoKSBjYWxsYmFjayBhbmQgY2FsbCB0aGUgRFAg
-aGVscGVycwphY2NvcmRpbmdseSB0byBzdGFydCBhbmQgc3RvcCBDUkMgY2FwdHVyZS4KClRoaXMg
-aXMgb25seSBkb25lIGlmIHRoaXMgQ1JUQyBpcyBjdXJyZW50bHkgdXNpbmcgdGhlIGVEUCBjb25u
-ZWN0b3IuCgp2MzogUmVtb3ZlIHN1cGVyZmx1b3VzIGNoZWNrIG9uIHJvY2tjaGlwX2NydGNfc3Rh
-dGUtPm91dHB1dF90eXBlCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9z
-b0Bjb2xsYWJvcmEuY29tPgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jIHwgNDIgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFu
-Z2VkLCA0MiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMKaW5kZXggZmI1ZjAwMWY1MWMzLi42ZTVlYjFhYTE4MmEgMTAwNjQ0Ci0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTksNiArMTksNyBAQAog
-I2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2ZsaXBf
-d29yay5oPgogI2luY2x1ZGUgPGRybS9kcm1fcGxhbmVfaGVscGVyLmg+CisjaW5jbHVkZSA8ZHJt
-L2JyaWRnZS9hbmFsb2dpeF9kcC5oPgogCiAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+CiAjaW5j
-bHVkZSA8bGludXgvbW9kdWxlLmg+CkBAIC0xMTA1LDYgKzExMDYsNDYgQEAgc3RhdGljIHZvaWQg
-dm9wX2NydGNfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJa2ZyZWUocyk7
-CiB9CiAKK3N0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqdm9wX2dldF9lZHBfY29ubmVjdG9y
-KHN0cnVjdCB2b3AgKnZvcCkKK3sKKwlzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRj
-OworCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7CisKKwltdXRleF9sb2NrKCZjcnRj
-LT5kZXYtPm1vZGVfY29uZmlnLm11dGV4KTsKKwlkcm1fZm9yX2VhY2hfY29ubmVjdG9yKGNvbm5l
-Y3RvciwgY3J0Yy0+ZGV2KQorCQlpZiAoY29ubmVjdG9yLT5jb25uZWN0b3JfdHlwZSA9PSBEUk1f
-TU9ERV9DT05ORUNUT1JfZURQKSB7CisJCQltdXRleF91bmxvY2soJmNydGMtPmRldi0+bW9kZV9j
-b25maWcubXV0ZXgpOworCQkJcmV0dXJuIGNvbm5lY3RvcjsKKwkJfQorCW11dGV4X3VubG9jaygm
-Y3J0Yy0+ZGV2LT5tb2RlX2NvbmZpZy5tdXRleCk7CisKKwlyZXR1cm4gTlVMTDsKK30KKworc3Rh
-dGljIGludCB2b3BfY3J0Y19zZXRfY3JjX3NvdXJjZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCisJ
-CQkJICAgY29uc3QgY2hhciAqc291cmNlX25hbWUsIHNpemVfdCAqdmFsdWVzX2NudCkKK3sKKwlz
-dHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7CisJc3RydWN0IHJvY2tjaGlwX2NydGNfc3Rh
-dGUgKnMgPSB0b19yb2NrY2hpcF9jcnRjX3N0YXRlKGNydGMtPnN0YXRlKTsKKwlzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmVjdG9yOworCWludCByZXQ7CisKKwljb25uZWN0b3IgPSB2b3BfZ2V0
-X2VkcF9jb25uZWN0b3Iodm9wKTsKKwlpZiAoIWNvbm5lY3RvcikKKwkJcmV0dXJuIC1FSU5WQUw7
-CisKKwkqdmFsdWVzX2NudCA9IDM7CisKKwlpZiAoc291cmNlX25hbWUgJiYgc3RyY21wKHNvdXJj
-ZV9uYW1lLCAiYXV0byIpID09IDApCisJCXJldCA9IGFuYWxvZ2l4X2RwX3N0YXJ0X2NyYyhjb25u
-ZWN0b3IpOworCWVsc2UgaWYgKCFzb3VyY2VfbmFtZSkKKwkJcmV0ID0gYW5hbG9naXhfZHBfc3Rv
-cF9jcmMoY29ubmVjdG9yKTsKKwllbHNlCisJCXJldCA9IC1FSU5WQUw7CisKKwlyZXR1cm4gcmV0
-OworfQorCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9jcnRjX2Z1bmNz
-ID0gewogCS5zZXRfY29uZmlnID0gZHJtX2F0b21pY19oZWxwZXJfc2V0X2NvbmZpZywKIAkucGFn
-ZV9mbGlwID0gZHJtX2F0b21pY19oZWxwZXJfcGFnZV9mbGlwLApAQCAtMTExMiw2ICsxMTUzLDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19mdW5jcyB2b3BfY3J0Y19mdW5jcyA9IHsK
-IAkucmVzZXQgPSB2b3BfY3J0Y19yZXNldCwKIAkuYXRvbWljX2R1cGxpY2F0ZV9zdGF0ZSA9IHZv
-cF9jcnRjX2R1cGxpY2F0ZV9zdGF0ZSwKIAkuYXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSB2b3BfY3J0
-Y19kZXN0cm95X3N0YXRlLAorCS5zZXRfY3JjX3NvdXJjZSA9IHZvcF9jcnRjX3NldF9jcmNfc291
-cmNlLAogfTsKIAogc3RhdGljIHZvaWQgdm9wX2ZiX3VucmVmX3dvcmtlcihzdHJ1Y3QgZHJtX2Zs
-aXBfd29yayAqd29yaywgdm9pZCAqdmFsKQotLSAKMi45LjMKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+From: William wu <wulf@rock-chips.com>
+
+On some platforms(e.g. rk3399 board), we can call hcd_add/remove
+consecutively without calling usb_put_hcd/usb_create_hcd in between,
+so hcd->flags can be stale.
+
+If the HC dies due to whatever reason then without this patch we get
+the below error on next hcd_add.
+
+[173.296154] xhci-hcd xhci-hcd.2.auto: HC died; cleaning up
+[173.296209] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[173.296762] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 6
+[173.296931] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
+[173.297179] usb usb6: New USB device found, idVendor=1d6b, idProduct=0003
+[173.297203] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[173.297222] usb usb6: Product: xHCI Host Controller
+[173.297240] usb usb6: Manufacturer: Linux 4.4.21 xhci-hcd
+[173.297257] usb usb6: SerialNumber: xhci-hcd.2.auto
+[173.298680] hub 6-0:1.0: USB hub found
+[173.298749] hub 6-0:1.0: 1 port detected
+[173.299382] rockchip-dwc3 usb@fe800000: USB HOST connected
+[173.395418] hub 5-0:1.0: activate --> -19
+[173.603447] irq 228: nobody cared (try booting with the "irqpoll" option)
+[173.603493] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.21 #9
+[173.603513] Hardware name: Google Kevin (DT)
+[173.603531] Call trace:
+[173.603568] [<ffffffc0002087dc>] dump_backtrace+0x0/0x160
+[173.603596] [<ffffffc00020895c>] show_stack+0x20/0x28
+[173.603623] [<ffffffc0004b28a8>] dump_stack+0x90/0xb0
+[173.603650] [<ffffffc00027347c>] __report_bad_irq+0x48/0xe8
+[173.603674] [<ffffffc0002737cc>] note_interrupt+0x1e8/0x28c
+[173.603698] [<ffffffc000270a38>] handle_irq_event_percpu+0x1d4/0x25c
+[173.603722] [<ffffffc000270b0c>] handle_irq_event+0x4c/0x7c
+[173.603748] [<ffffffc00027456c>] handle_fasteoi_irq+0xb4/0x124
+[173.603777] [<ffffffc00026fe3c>] generic_handle_irq+0x30/0x44
+[173.603804] [<ffffffc0002701a8>] __handle_domain_irq+0x90/0xbc
+[173.603827] [<ffffffc0002006f4>] gic_handle_irq+0xcc/0x188
+...
+[173.604500] [<ffffffc000203700>] el1_irq+0x80/0xf8
+[173.604530] [<ffffffc000261388>] cpu_startup_entry+0x38/0x3cc
+[173.604558] [<ffffffc00090f7d8>] rest_init+0x8c/0x94
+[173.604585] [<ffffffc000e009ac>] start_kernel+0x3d0/0x3fc
+[173.604607] [<0000000000b16000>] 0xb16000
+[173.604622] handlers:
+[173.604648] [<ffffffc000642084>] usb_hcd_irq
+[173.604673] Disabling IRQ #228
+
+Signed-off-by: William wu <wulf@rock-chips.com>
+Signed-off-by: William wu <william.wu@rock-chips.com>
+---
+ drivers/usb/core/hcd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
+index 479e223..612fab6 100644
+--- a/drivers/usb/core/hcd.c
++++ b/drivers/usb/core/hcd.c
+@@ -3017,6 +3017,7 @@ void usb_remove_hcd(struct usb_hcd *hcd)
+ 	}
+ 
+ 	usb_put_invalidate_rhdev(hcd);
++	hcd->flags = 0;
+ }
+ EXPORT_SYMBOL_GPL(usb_remove_hcd);
+ 
+-- 
+2.7.4
