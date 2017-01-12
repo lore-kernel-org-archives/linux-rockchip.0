@@ -1,58 +1,108 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2] PCI: rockchip: Add quirk to disable RC's ASPM L0s
-Date: Wed, 11 Jan 2017 10:38:56 -0800
-Message-ID: <20170111183855.GA85547@google.com>
-References: <1481543487-33152-1-git-send-email-shawn.lin@rock-chips.com>
- <20170111182822.GC14532@bhelgaas-glaptop.roam.corp.google.com>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: add "rockchip, grf" property
+ for RK3399 PMUCRU/CRU
+Date: Wed, 11 Jan 2017 16:50:10 -0800
+Message-ID: <CAD=FV=WMQ22G67YoQx2t7J6_ZuB3sUjVjXh-0KhPEO_6zbiyUQ@mail.gmail.com>
+References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
+ <CAD=FV=Wwu3q_LqwYUWcJQRvp5neVOS9szgsYFONWTRJ0X8hRTA@mail.gmail.com>
+ <8683375.pL9J7LxuT0@diego> <1523574.hS8CXi1tTP@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170111182822.GC14532@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1523574.hS8CXi1tTP@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, David Wu <david.wu@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Heiko
+Hi,
 
-On Wed, Jan 11, 2017 at 12:28:22PM -0600, Bjorn Helgaas wrote:
-> On Mon, Dec 12, 2016 at 07:51:27PM +0800, Shawn Lin wrote:
-> > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> > index f2dca7b..35988fc 100644
-> > --- a/drivers/pci/host/pcie-rockchip.c
-> > +++ b/drivers/pci/host/pcie-rockchip.c
-> > @@ -140,6 +140,8 @@
-> >  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
-> >  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
-> >  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
-> > +#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
-> > +#define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
-> >  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
-> >  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
-> >  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
-> > @@ -653,6 +655,13 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
-> >  	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
-> >  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
-> >  
-> > +	/* Clear L0s from RC's link cap */
-> > +	if (of_property_read_bool(dev->of_node, "apsm-no-l0s")) {
-> 
-> Did you test this?  This string ("apsm-no-l0s") doesn't match the
-> "aspm-no-l0s" documented above.  The current tree doesn't contain either
-> string in any DTS.
+On Tue, Jan 10, 2017 at 11:58 AM, Heiko St=C3=BCbner <heiko@sntech.de> wrot=
+e:
+> Hi Doug,
+>
+> Am Dienstag, 10. Januar 2017, 20:46:12 schrieb Heiko St=C3=BCbner:
+>> Am Dienstag, 10. Januar 2017, 10:45:48 schrieb Doug Anderson:
+>> > Hi,
+>> >
+>> > On Mon, Jan 9, 2017 at 10:15 PM, Xing Zheng <zhengxing@rock-chips.com>
+>>
+>> wrote:
+>> > > The structure rockchip_clk_provider needs to refer the GRF regmap
+>> > > in somewhere, if the CRU node has not "rockchip,grf" property,
+>> > > calling syscon_regmap_lookup_by_phandle will return an invalid GRF
+>> > > regmap, and the MUXGRF type clock will be not supported.
+>> > >
+>> > > Therefore, we need to add them.
+>> > >
+>> > > Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> > > ---
+>> > >
+>> > > Changes in v4:
+>> > > - separte the binding patch
+>> > >
+>> > > Changes in v3:
+>> > > - add optional roperty rockchip,grf in rockchip,rk3399-cru.txt
+>> > >
+>> > > Changes in v2:
+>> > > - referring pmugrf for PMUGRU
+>> > > - fix the typo "invaild" in COMMIT message
+>> > >
+>> > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 ++
+>> > >  1 file changed, 2 insertions(+)
+>> >
+>> > This seems fine to me, so:
+>> >
+>> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+>> >
+>> > ...but I will say that before you actually add any real "MUXGRF"
+>> > clocks on rk3399 you _might_ need to rework the code to make things
+>> > truly "optional".  If it turns out that any existing clocks that
+>> > already exist today already go through one of these muxes in the GRF
+>> > and we've always been assuming one setting of the mux, we'll need to
+>> > make sure we keep assuming that setting of the mux even if the "grf"
+>> > isn't specified.
+>>
+>> I guess I see that a bit more relaxed :-) .
+>>
+>> I.e. the GRF being optional is a remnant of syscons not being available =
+when
+>> the clocks get set up- so were coming in later or not at all. For the
+>> rk3288 I converted, there we never really had the case of the GRF missin=
+g.
+>>
+>> And the GRF mux for the vcodec now present is not being used by anything=
+ yet
+>> (neither driver nor binding), so no old devicetree can break.
+>>
+>> > As I understand it, your motivation for this patch is to eventually be
+>> > able to model the EDP reference clock which can either be xin24 or
+>> > "edp osc".  Presumably the eDP "reference clock" isn't related to any
+>> > of the pre-existing eDP clocks so that one should be safe.
+>>
+>> Same here, so far we don't even have edp or even any other graphical out=
+put
+>> on the rk3399, so again there is no old devicetree that could break when
+>> the grf is not specified.
+>
+> reading all of the above again, it feels like you essentially also said
+> similar things already in your original reply and I misread some of it.
+>
+> But again, I don't see the need for any more code right now, as hopefully=
+ the
+> simple stuff we currently only support does not have any grf-based muxes =
+in
+> it. Xing + Rockchip people, please correct me if I'm wrong here :-)
 
-Ha, wow. FWIW in the tree I'm using, I have both this patch and a DTS
-patch that uses the matching (but improperly-spelled) property. So *I*
-have tested it. But I obviously didn't read it well enough. Or maybe I'm
-mildly dyslexic?
+Right.  I have no objection to Xing's patch.  I just want to make sure
+that if it's listed as "Optional" that it's really optional.
 
-Notably, Shawn sent a NON-matching DTS patch already here:
+I was worried that we would introduce some GRF-based mux in the
+_middle_ of some existing clock tree because we simply didn't model
+the mux before and assumed one particular setting.  If nothing like
+that ever happens then we're fine.
 
-https://patchwork.kernel.org/patch/9477651/
+Sorry to be so confusing.
 
-So this definitely needs to get straightened out. Preferably by
-s/apsm/aspm/ in this patch.
-
-Regards,
-Brian
+-Doug
