@@ -1,77 +1,96 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH] usb: hcd: initialize hcd->flags to 0 when rm hcd
-Date: Thu, 12 Jan 2017 20:03:26 +0800
-Message-ID: <1484222606-15364-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, groeck@google.com, william.wu@rock-chips.com, rogerq@ti.com, William wu <wulf@rock-chips.com>
+From: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH] usb: hcd: initialize hcd->flags to 0 when rm hcd
+Date: Thu, 12 Jan 2017 14:26:14 +0200
+Message-ID: <daca5e7f-7c4f-7dfd-de1d-ff2bd660c0eb@ti.com>
+References: <1484222606-15364-1-git-send-email-william.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1484222606-15364-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: William wu <wulf@rock-chips.com>
+William,
 
-On some platforms(e.g. rk3399 board), we can call hcd_add/remove
-consecutively without calling usb_put_hcd/usb_create_hcd in between,
-so hcd->flags can be stale.
+On 12/01/17 14:03, William Wu wrote:
+> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> On some platforms(e.g. rk3399 board), we can call hcd_add/remove
+> consecutively without calling usb_put_hcd/usb_create_hcd in between,
+> so hcd->flags can be stale.
+> 
+> If the HC dies due to whatever reason then without this patch we get
+> the below error on next hcd_add.
+> 
+> [173.296154] xhci-hcd xhci-hcd.2.auto: HC died; cleaning up
+> [173.296209] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+> [173.296762] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 6
+> [173.296931] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
+> [173.297179] usb usb6: New USB device found, idVendor=1d6b, idProduct=0003
+> [173.297203] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+> [173.297222] usb usb6: Product: xHCI Host Controller
+> [173.297240] usb usb6: Manufacturer: Linux 4.4.21 xhci-hcd
+> [173.297257] usb usb6: SerialNumber: xhci-hcd.2.auto
+> [173.298680] hub 6-0:1.0: USB hub found
+> [173.298749] hub 6-0:1.0: 1 port detected
+> [173.299382] rockchip-dwc3 usb@fe800000: USB HOST connected
+> [173.395418] hub 5-0:1.0: activate --> -19
+> [173.603447] irq 228: nobody cared (try booting with the "irqpoll" option)
+> [173.603493] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.21 #9
+> [173.603513] Hardware name: Google Kevin (DT)
+> [173.603531] Call trace:
+> [173.603568] [<ffffffc0002087dc>] dump_backtrace+0x0/0x160
+> [173.603596] [<ffffffc00020895c>] show_stack+0x20/0x28
+> [173.603623] [<ffffffc0004b28a8>] dump_stack+0x90/0xb0
+> [173.603650] [<ffffffc00027347c>] __report_bad_irq+0x48/0xe8
+> [173.603674] [<ffffffc0002737cc>] note_interrupt+0x1e8/0x28c
+> [173.603698] [<ffffffc000270a38>] handle_irq_event_percpu+0x1d4/0x25c
+> [173.603722] [<ffffffc000270b0c>] handle_irq_event+0x4c/0x7c
+> [173.603748] [<ffffffc00027456c>] handle_fasteoi_irq+0xb4/0x124
+> [173.603777] [<ffffffc00026fe3c>] generic_handle_irq+0x30/0x44
+> [173.603804] [<ffffffc0002701a8>] __handle_domain_irq+0x90/0xbc
+> [173.603827] [<ffffffc0002006f4>] gic_handle_irq+0xcc/0x188
+> ...
+> [173.604500] [<ffffffc000203700>] el1_irq+0x80/0xf8
+> [173.604530] [<ffffffc000261388>] cpu_startup_entry+0x38/0x3cc
+> [173.604558] [<ffffffc00090f7d8>] rest_init+0x8c/0x94
+> [173.604585] [<ffffffc000e009ac>] start_kernel+0x3d0/0x3fc
+> [173.604607] [<0000000000b16000>] 0xb16000
+> [173.604622] handlers:
+> [173.604648] [<ffffffc000642084>] usb_hcd_irq
+> [173.604673] Disabling IRQ #228
+> 
+> Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: William wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/usb/core/hcd.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
+> index 479e223..612fab6 100644
+> --- a/drivers/usb/core/hcd.c
+> +++ b/drivers/usb/core/hcd.c
+> @@ -3017,6 +3017,7 @@ void usb_remove_hcd(struct usb_hcd *hcd)
+>  	}
+>  
+>  	usb_put_invalidate_rhdev(hcd);
+> +	hcd->flags = 0;
+>  }
+>  EXPORT_SYMBOL_GPL(usb_remove_hcd);
+>  
+> 
+I suggest to initialize hcd->flags to 0 in usb_add_hcd() instead.
 
-If the HC dies due to whatever reason then without this patch we get
-the below error on next hcd_add.
-
-[173.296154] xhci-hcd xhci-hcd.2.auto: HC died; cleaning up
-[173.296209] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
-[173.296762] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 6
-[173.296931] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
-[173.297179] usb usb6: New USB device found, idVendor=1d6b, idProduct=0003
-[173.297203] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
-[173.297222] usb usb6: Product: xHCI Host Controller
-[173.297240] usb usb6: Manufacturer: Linux 4.4.21 xhci-hcd
-[173.297257] usb usb6: SerialNumber: xhci-hcd.2.auto
-[173.298680] hub 6-0:1.0: USB hub found
-[173.298749] hub 6-0:1.0: 1 port detected
-[173.299382] rockchip-dwc3 usb@fe800000: USB HOST connected
-[173.395418] hub 5-0:1.0: activate --> -19
-[173.603447] irq 228: nobody cared (try booting with the "irqpoll" option)
-[173.603493] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.21 #9
-[173.603513] Hardware name: Google Kevin (DT)
-[173.603531] Call trace:
-[173.603568] [<ffffffc0002087dc>] dump_backtrace+0x0/0x160
-[173.603596] [<ffffffc00020895c>] show_stack+0x20/0x28
-[173.603623] [<ffffffc0004b28a8>] dump_stack+0x90/0xb0
-[173.603650] [<ffffffc00027347c>] __report_bad_irq+0x48/0xe8
-[173.603674] [<ffffffc0002737cc>] note_interrupt+0x1e8/0x28c
-[173.603698] [<ffffffc000270a38>] handle_irq_event_percpu+0x1d4/0x25c
-[173.603722] [<ffffffc000270b0c>] handle_irq_event+0x4c/0x7c
-[173.603748] [<ffffffc00027456c>] handle_fasteoi_irq+0xb4/0x124
-[173.603777] [<ffffffc00026fe3c>] generic_handle_irq+0x30/0x44
-[173.603804] [<ffffffc0002701a8>] __handle_domain_irq+0x90/0xbc
-[173.603827] [<ffffffc0002006f4>] gic_handle_irq+0xcc/0x188
-...
-[173.604500] [<ffffffc000203700>] el1_irq+0x80/0xf8
-[173.604530] [<ffffffc000261388>] cpu_startup_entry+0x38/0x3cc
-[173.604558] [<ffffffc00090f7d8>] rest_init+0x8c/0x94
-[173.604585] [<ffffffc000e009ac>] start_kernel+0x3d0/0x3fc
-[173.604607] [<0000000000b16000>] 0xb16000
-[173.604622] handlers:
-[173.604648] [<ffffffc000642084>] usb_hcd_irq
-[173.604673] Disabling IRQ #228
-
-Signed-off-by: William wu <wulf@rock-chips.com>
-Signed-off-by: William wu <william.wu@rock-chips.com>
----
- drivers/usb/core/hcd.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 479e223..612fab6 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -3017,6 +3017,7 @@ void usb_remove_hcd(struct usb_hcd *hcd)
- 	}
- 
- 	usb_put_invalidate_rhdev(hcd);
-+	hcd->flags = 0;
- }
- EXPORT_SYMBOL_GPL(usb_remove_hcd);
- 
--- 
-2.7.4
+cheers,
+-roger
