@@ -1,121 +1,150 @@
-From: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] usb: hcd: initialize hcd->flags to 0 when rm hcd
-Date: Thu, 12 Jan 2017 17:38:47 +0200
-Message-ID: <beceb11c-9906-1f12-6da2-0a18801b6c39@ti.com>
-References: <Pine.LNX.4.44L0.1701121031110.1998-100000@iolanthe.rowland.org>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3] PCI: rockchip: Add quirk to disable RC's ASPM L0s
+Date: Thu, 12 Jan 2017 15:57:40 -0600
+Message-ID: <20170112215740.GF8312@bhelgaas-glaptop.roam.corp.google.com>
+References: <1484185997-55685-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <Pine.LNX.4.44L0.1701121031110.1998-100000-IYeN2dnnYyZXsRXLowluHWD2FQJk+8+b@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1484185997-55685-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/01/17 17:33, Alan Stern wrote:
-> On Thu, 12 Jan 2017, Roger Quadros wrote:
+On Thu, Jan 12, 2017 at 09:53:17AM +0800, Shawn Lin wrote:
+> Rockchip's RC outputs 100MHz reference clock but there are
+> two methods for PHY to generate it.
 > 
->> William,
->>
->> On 12/01/17 14:03, William Wu wrote:
->>> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>
->>> On some platforms(e.g. rk3399 board), we can call hcd_add/remove
->>> consecutively without calling usb_put_hcd/usb_create_hcd in between,
->>> so hcd->flags can be stale.
->>>
->>> If the HC dies due to whatever reason then without this patch we get
->>> the below error on next hcd_add.
->>>
->>> [173.296154] xhci-hcd xhci-hcd.2.auto: HC died; cleaning up
->>> [173.296209] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
->>> [173.296762] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 6
->>> [173.296931] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
->>> [173.297179] usb usb6: New USB device found, idVendor=1d6b, idProduct=0003
->>> [173.297203] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
->>> [173.297222] usb usb6: Product: xHCI Host Controller
->>> [173.297240] usb usb6: Manufacturer: Linux 4.4.21 xhci-hcd
->>> [173.297257] usb usb6: SerialNumber: xhci-hcd.2.auto
->>> [173.298680] hub 6-0:1.0: USB hub found
->>> [173.298749] hub 6-0:1.0: 1 port detected
->>> [173.299382] rockchip-dwc3 usb@fe800000: USB HOST connected
->>> [173.395418] hub 5-0:1.0: activate --> -19
->>> [173.603447] irq 228: nobody cared (try booting with the "irqpoll" option)
->>> [173.603493] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.21 #9
->>> [173.603513] Hardware name: Google Kevin (DT)
->>> [173.603531] Call trace:
->>> [173.603568] [<ffffffc0002087dc>] dump_backtrace+0x0/0x160
->>> [173.603596] [<ffffffc00020895c>] show_stack+0x20/0x28
->>> [173.603623] [<ffffffc0004b28a8>] dump_stack+0x90/0xb0
->>> [173.603650] [<ffffffc00027347c>] __report_bad_irq+0x48/0xe8
->>> [173.603674] [<ffffffc0002737cc>] note_interrupt+0x1e8/0x28c
->>> [173.603698] [<ffffffc000270a38>] handle_irq_event_percpu+0x1d4/0x25c
->>> [173.603722] [<ffffffc000270b0c>] handle_irq_event+0x4c/0x7c
->>> [173.603748] [<ffffffc00027456c>] handle_fasteoi_irq+0xb4/0x124
->>> [173.603777] [<ffffffc00026fe3c>] generic_handle_irq+0x30/0x44
->>> [173.603804] [<ffffffc0002701a8>] __handle_domain_irq+0x90/0xbc
->>> [173.603827] [<ffffffc0002006f4>] gic_handle_irq+0xcc/0x188
->>> ...
->>> [173.604500] [<ffffffc000203700>] el1_irq+0x80/0xf8
->>> [173.604530] [<ffffffc000261388>] cpu_startup_entry+0x38/0x3cc
->>> [173.604558] [<ffffffc00090f7d8>] rest_init+0x8c/0x94
->>> [173.604585] [<ffffffc000e009ac>] start_kernel+0x3d0/0x3fc
->>> [173.604607] [<0000000000b16000>] 0xb16000
->>> [173.604622] handlers:
->>> [173.604648] [<ffffffc000642084>] usb_hcd_irq
->>> [173.604673] Disabling IRQ #228
->>>
->>> Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> Signed-off-by: William wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> ---
->>>  drivers/usb/core/hcd.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
->>> index 479e223..612fab6 100644
->>> --- a/drivers/usb/core/hcd.c
->>> +++ b/drivers/usb/core/hcd.c
->>> @@ -3017,6 +3017,7 @@ void usb_remove_hcd(struct usb_hcd *hcd)
->>>  	}
->>>  
->>>  	usb_put_invalidate_rhdev(hcd);
->>> +	hcd->flags = 0;
->>>  }
->>>  EXPORT_SYMBOL_GPL(usb_remove_hcd);
->>>  
->>>
->> I suggest to initialize hcd->flags to 0 in usb_add_hcd() instead.
->>
->> cheers,
->> -roger
+> (1)One of them is to use system PLL to generate 100MHz clock and
+> the PHY will relock it and filter signal noise then outputs the
+> reference clock.
 > 
-> Roger, didn't you originally propose this very same patch in
+> (2)Another way is to share Soc's 24MHZ crystal oscillator with
+> PHY and force PHY's DLL to generate 100MHz internally.
 > 
-> 	http://marc.info/?l=linux-usb&m=146556415503583&w=2
+> When using case(2), the exit from L0s doesn't work fine occasionally
+> due to the broken design of RC receiver's logical circuit. So even if
+> we use extended-synch, it still fails for PHY to relock the bits from
+> FTS sometimes. This will hang the system.
 > 
-> (and of course, the earlier versions before v10)?  What happened to it?
+> Maybe we could argue that why not use case(1) to avoid it? The reason
+> is that as we could see the reference clock is derived from system PLL
+> and the path from it to PHY isn't so clean which means there are some
+> noise introduced by power-domain and other buses can't be filterd out
+> by PHY and we could see noise from the frequency spectrum by
+> oscilloscope. This makes the TX compatibility test a little difficult
+> to pass the spec. So case(1) and case(2) are both used indeed now. If
+> using case(2), we should disable RC's L0s support, and that is why we
+> need this property to indicate this quirk.
+> 
+> Also after checking quirk.c, I noticed there is already a quirk for
+> disabling L0s unconditionally, quirk_disable_aspm_l0s. But obviously we
+> shouldn't do that as mentioned above that case(1) could still works fine
+> with L0s.
+> 
+> Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Alan, You are right. That patch got lost in the ML. Looks like I didn't push it hard enough
-and then forgot about it. Sorry.
+I applied this to pci/host-rockchip for v4.11.  I added Brian's Reviewed-by
+and Rob's Acked-by, since you didn't change anything substantive.
 
-William,
+I assume there's no way to automatically discover whether the system is
+using the 24MHz oscillator?  If there is a way, we should use that instead
+of requiring a DT property.
 
-You don't need to do any changes. My earlier version was clearing the flag
-in usb_add_hcd() and I guess Alan suggested to move it to usb_remove_hcd().
+I reworded the changelog; I hope it still make sense:
 
-So your patch is good.
-You can add my.
+    PCI: rockchip: Disable RC's ASPM L0s based on DT "aspm-no-l0s"
+    
+    Rockchip's RC produces a 100MHz reference clock but there are two methods
+    for the PHY to generate it:
+    
+      (1) Use the system PLL to generate a 100MHz clock.  The PHY will relock
+          it, filter signal noise, and output the reference clock.  ASPM L0s
+          works correctly, but circuit noise issues make it difficult to pass
+	  the TX compatibility test.
+    
+      (2) Share the SoC's 24MHZ crystal oscillator with the PHY and force the
+          PHY's PLL to generate 100MHz internally.  In this case, exit from
+          ASPM L0s sometimes fails due to a design error in the RC receiver
+          circuit.  Even if we use extended-synch, the PHY sometimes fails to
+          relock the bits from FTS, which will hang the system.
+    
+    We want the flexibility to use both clocking methods, so add a DT property,
+    "aspm-no-l0s".  If that's present, disable L0s to avoid the issues with
+    case (2).
+    
+    [bhelgaas: changelog]
+    Reported-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+    Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+    Signed-off-by: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+    Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+    Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-Acked-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-
-cheers,
--roger
+> ---
+> 
+> Changes in v3:
+> - fix misspelled aspm for the property name
+> 
+> Changes in v2:
+> - drop the quirk prefix
+> 
+>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 2 ++
+>  drivers/pci/host/pcie-rockchip.c                        | 9 +++++++++
+>  2 files changed, 11 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> index 71aeda1..1453a73 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -43,6 +43,8 @@ Required properties:
+>  - interrupt-map-mask and interrupt-map: standard PCI properties
+>  
+>  Optional Property:
+> +- aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
+> +	using 24MHz OSC for RC's PHY.
+>  - ep-gpios: contain the entry for pre-reset gpio
+>  - num-lanes: number of lanes to use
+>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index f2dca7b..140cdc7 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -140,6 +140,8 @@
+>  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+>  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+>  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
+> +#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+> +#define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+>  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
+>  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+>  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+> @@ -653,6 +655,13 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	status &= ~PCIE_RC_CONFIG_THP_CAP_NEXT_MASK;
+>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_THP_CAP);
+>  
+> +	/* Clear L0s from RC's link cap */
+> +	if (of_property_read_bool(dev->of_node, "aspm-no-l0s")) {
+> +		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LINK_CAP);
+> +		status &= ~PCIE_RC_CONFIG_LINK_CAP_L0S;
+> +		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
+> +	}
+> +
+>  	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+>  
+>  	rockchip_pcie_write(rockchip,
+> -- 
+> 1.9.1
+> 
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
