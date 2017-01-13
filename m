@@ -1,34 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 0/2] Add support rockchip,grf property for RK3399 PMU/GRU
-Date: Fri, 13 Jan 2017 20:10:54 +0100
-Message-ID: <3210111.1N6x2AkRMx@phil>
-References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH 0/4] Add support for es8388 on the rock2
+Date: Fri, 13 Jan 2017 17:14:48 +0100
+Message-ID: <20170113161452.14313-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: dianders@google.com, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, David Wu <david.wu@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, Elaine Zhang <zhangqing@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 10. Januar 2017, 14:15:28 CET schrieb Xing Zheng:
-> Hi,
->   The structure rockchip_clk_provider needs to refer the GRF regmap
-> in somewhere, if the CRU node has not "rockchip,grf" property,
-> calling syscon_regmap_lookup_by_phandle will return an invalid GRF
-> regmap, and the MUXGRF type clock will be not supported.
-> 
-> Therefore, we need to add them.
-> 
-> Thanks.
+This set of patches adds a machine driver for rockchip boards that use
+ES8388 codecs. It also adds slave mode to the es8328 driver that
+currently only supported the master mode. Then, it adds the required DT
+definitions to link rockchip-i2s to the es8388 analog output.
 
-applied both for 4.11
+This work is based on the initial work that was done by Sjoerd Simons
+<sjoerd.simons@collabora.co.uk> with some improvements, changes and more
+commits.
 
-binding-change is in my clock-branch (so that dt-binding doc changes stay 
-together) and the dts change is of course in the dts64 branch.
+Romain Perier (4):
+  ASoC: es8328-i2c: Add compatible for ES8388
+  ASoC: es8328: Add support for slave mode
+  ASoC: rockchip: Add machine driver for ES8388 codecs
+  arm: dts: Add support for ES8388 to the Radxa Rock 2
 
+ Documentation/devicetree/bindings/sound/es8328.txt |   2 +-
+ .../devicetree/bindings/sound/rockchip-es8388.txt  |  28 +++
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  37 +++
+ sound/soc/codecs/es8328-i2c.c                      |   3 +-
+ sound/soc/codecs/es8328.c                          |  28 ++-
+ sound/soc/rockchip/Kconfig                         |   9 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rockchip_es8388.c               | 270 +++++++++++++++++++++
+ 8 files changed, 371 insertions(+), 8 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip-es8388.txt
+ create mode 100644 sound/soc/rockchip/rockchip_es8388.c
 
-Thanks
-Heiko
+-- 
+2.9.3
