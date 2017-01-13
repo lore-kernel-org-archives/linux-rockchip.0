@@ -1,40 +1,25 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/2] clk: rockchip: use clock ids for memory controller parts on rk3066/rk3188
-Date: Fri, 13 Jan 2017 17:47:52 +0100
-Message-ID: <20170113164752.25368-2-heiko@sntech.de>
-References: <20170113164752.25368-1-heiko@sntech.de>
+Subject: Re: [PATCH 1/4] clk: rockchip: add rk3288 isp_in clock ids
+Date: Fri, 13 Jan 2017 19:57:52 +0100
+Message-ID: <2449565.hTUeJeJ7Db@phil>
+References: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170113164752.25368-1-heiko@sntech.de>
+In-Reply-To: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: linux-clk@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, mturquette@baylibre.com, sboyd@codeaurora.org, Heiko Stuebner <heiko@sntech.de>
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the newly added clock ids to the clock entries of the rk3066/rk3188
-clock driver. We won't be needing them in the kernel for a bit yet
-but as they're used in the new u-boot ddr setup code/dts we should make
-sure the clock ids stay identical and do not differ.
+Am Dienstag, 10. Januar 2017, 19:59:17 CET schrieb Jacob Chen:
+> Add clock-ids for the isp block of the rk3288.
+> 
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3188.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+applied for 4.11
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 062ef4960244..00ad0e5f8d66 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -507,8 +507,8 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	GATE(PCLK_GPIO2, "pclk_gpio2", "pclk_cpu", 0, RK2928_CLKGATE_CON(8), 11, GFLAGS),
- 	GATE(PCLK_EFUSE, "pclk_efuse", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 2, GFLAGS),
- 	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 3, GFLAGS),
--	GATE(0, "pclk_ddrupctl", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 7, GFLAGS),
--	GATE(0, "pclk_ddrpubl", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 6, GFLAGS),
-+	GATE(PCLK_DDRUPCTL, "pclk_ddrupctl", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 7, GFLAGS),
-+	GATE(PCLK_PUBL, "pclk_ddrpubl", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 6, GFLAGS),
- 	GATE(0, "pclk_dbg", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 1, GFLAGS),
- 	GATE(PCLK_GRF, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS),
- 	GATE(PCLK_PMU, "pclk_pmu", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 5, GFLAGS),
--- 
-2.11.0
-
+Thanks
+Heiko
