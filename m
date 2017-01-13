@@ -1,69 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/4] clk: rockchip: add rk3288 cif_out clock
-Date: Fri, 13 Jan 2017 14:53:18 +0100
-Message-ID: <2707876.A5Xp7pLXJo@phil>
-References: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
- <1484049560-14820-4-git-send-email-jacob-chen@iotwrt.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] dt-bindings: clk: add rockchip,grf property for
+ RK3399
+Date: Fri, 13 Jan 2017 10:41:04 -0600
+Message-ID: <20170113164104.2nneuzklorcrdekl@rob-hp-laptop>
+References: <1484028930-20305-1-git-send-email-zhengxing@rock-chips.com>
+ <1484028930-20305-3-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1484049560-14820-4-git-send-email-jacob-chen@iotwrt.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1484028930-20305-3-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
-
-Am Dienstag, 10. Januar 2017, 19:59:20 CET schrieb Jacob Chen:
-> Add the clocks for the cif block of the rk3288
+On Tue, Jan 10, 2017 at 02:15:30PM +0800, Xing Zheng wrote:
+> Add support for rockchip,grf property which is used for GRF muxes
+> on RK3399.
 > 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  drivers/clk/rockchip/clk-rk3288.c | 7 +++++++
->  1 file changed, 7 insertions(+)
 > 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> b/drivers/clk/rockchip/clk-rk3288.c index 8047cea..f071c24 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -192,6 +192,7 @@ PNAME(mux_uart1_p)	= { "uart1_src", "uart1_frac",
-> "xin24m" }; PNAME(mux_uart2_p)	= { "uart2_src", "uart2_frac", "xin24m" };
->  PNAME(mux_uart3_p)	= { "uart3_src", "uart3_frac", "xin24m" };
->  PNAME(mux_uart4_p)	= { "uart4_src", "uart4_frac", "xin24m" };
-> +PNAME(mux_cif_out_p)	= { "cif_src", "xin24m" };
->  PNAME(mux_vip_out_p)	= { "vip_src", "xin24m" };
->  PNAME(mux_mac_p)	= { "mac_pll_src", "ext_gmac" };
->  PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
-> @@ -448,6 +449,12 @@ static struct rockchip_clk_branch rk3288_clk_branches[]
-> __initdata = { RK3288_CLKSEL_CON(6), 14, 2, MFLAGS, 8, 6, DFLAGS,
->  			RK3288_CLKGATE_CON(3), 15, GFLAGS),
+> Changes in v4:
+> - update the decription for rockchip,grf property
 > 
-> +	COMPOSITE_NOGATE(0, "cif_src", mux_pll_src_cpll_gpll_p, 0,
-> +			RK3288_CLKSEL_CON(26), 8, 1, MFLAGS, 9, 5, DFLAGS),
-> +	COMPOSITE_NODIV(SCLK_CIF_OUT, "sclk_cif_out", mux_cif_out_p, 0,
-> +			RK3288_CLKSEL_CON(26), 15, 1, MFLAGS,
-> +			RK3288_CLKGATE_CON(3), 7, GFLAGS),
-> +
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
-we already have vip_src and sclk_vip_out defined, which I guess are the clocks 
-you are adding here and according to the TRM I have the names are also correct 
-(clock diagram 2).
-
-But the clkid is not set yet, so I'd suggest adding SCLK_VIP_OUT and assigning 
-to the existing clocks.
-
-Also, according to the clock diagram, the gate needs to be (and already is) 
-part of the vip_src clock and not the sclk_vip_out.
-
-
-Heiko
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
