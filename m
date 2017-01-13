@@ -1,125 +1,88 @@
-From: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] usb: hcd: initialize hcd->flags to 0 when rm hcd
-Date: Fri, 13 Jan 2017 10:37:18 +0800
-Message-ID: <1289c17d-baed-053d-50e1-91c57bf04583@rock-chips.com>
-References: <Pine.LNX.4.44L0.1701121031110.1998-100000@iolanthe.rowland.org>
- <beceb11c-9906-1f12-6da2-0a18801b6c39@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <beceb11c-9906-1f12-6da2-0a18801b6c39-l0cyMroinI0@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>
-Cc: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v5 1/2] mmc: dw_mmc: silent verbose log when calling from PM context
+Date: Fri, 13 Jan 2017 10:59:21 +0800
+Message-ID: <1484276362-44984-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, sgilles@math.umd.edu, Randy Li <randy.li@rock-chips.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Roger，
+When deploying runtime PM, it's quite verbose to print the
+log of ios setting. Also it's useless to print it from system
+PM as it should be the same with booting time. We also have
+sysfs to get all these information from ios attribute, so let's
+skip this print from PM context.
 
-在 2017年01月12日 23:38, Roger Quadros 写道:
-> On 12/01/17 17:33, Alan Stern wrote:
->> On Thu, 12 Jan 2017, Roger Quadros wrote:
->>
->>> William,
->>>
->>> On 12/01/17 14:03, William Wu wrote:
->>>> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>>
->>>> On some platforms(e.g. rk3399 board), we can call hcd_add/remove
->>>> consecutively without calling usb_put_hcd/usb_create_hcd in between,
->>>> so hcd->flags can be stale.
->>>>
->>>> If the HC dies due to whatever reason then without this patch we get
->>>> the below error on next hcd_add.
->>>>
->>>> [173.296154] xhci-hcd xhci-hcd.2.auto: HC died; cleaning up
->>>> [173.296209] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
->>>> [173.296762] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 6
->>>> [173.296931] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
->>>> [173.297179] usb usb6: New USB device found, idVendor=1d6b, idProduct=0003
->>>> [173.297203] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
->>>> [173.297222] usb usb6: Product: xHCI Host Controller
->>>> [173.297240] usb usb6: Manufacturer: Linux 4.4.21 xhci-hcd
->>>> [173.297257] usb usb6: SerialNumber: xhci-hcd.2.auto
->>>> [173.298680] hub 6-0:1.0: USB hub found
->>>> [173.298749] hub 6-0:1.0: 1 port detected
->>>> [173.299382] rockchip-dwc3 usb@fe800000: USB HOST connected
->>>> [173.395418] hub 5-0:1.0: activate --> -19
->>>> [173.603447] irq 228: nobody cared (try booting with the "irqpoll" option)
->>>> [173.603493] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.21 #9
->>>> [173.603513] Hardware name: Google Kevin (DT)
->>>> [173.603531] Call trace:
->>>> [173.603568] [<ffffffc0002087dc>] dump_backtrace+0x0/0x160
->>>> [173.603596] [<ffffffc00020895c>] show_stack+0x20/0x28
->>>> [173.603623] [<ffffffc0004b28a8>] dump_stack+0x90/0xb0
->>>> [173.603650] [<ffffffc00027347c>] __report_bad_irq+0x48/0xe8
->>>> [173.603674] [<ffffffc0002737cc>] note_interrupt+0x1e8/0x28c
->>>> [173.603698] [<ffffffc000270a38>] handle_irq_event_percpu+0x1d4/0x25c
->>>> [173.603722] [<ffffffc000270b0c>] handle_irq_event+0x4c/0x7c
->>>> [173.603748] [<ffffffc00027456c>] handle_fasteoi_irq+0xb4/0x124
->>>> [173.603777] [<ffffffc00026fe3c>] generic_handle_irq+0x30/0x44
->>>> [173.603804] [<ffffffc0002701a8>] __handle_domain_irq+0x90/0xbc
->>>> [173.603827] [<ffffffc0002006f4>] gic_handle_irq+0xcc/0x188
->>>> ...
->>>> [173.604500] [<ffffffc000203700>] el1_irq+0x80/0xf8
->>>> [173.604530] [<ffffffc000261388>] cpu_startup_entry+0x38/0x3cc
->>>> [173.604558] [<ffffffc00090f7d8>] rest_init+0x8c/0x94
->>>> [173.604585] [<ffffffc000e009ac>] start_kernel+0x3d0/0x3fc
->>>> [173.604607] [<0000000000b16000>] 0xb16000
->>>> [173.604622] handlers:
->>>> [173.604648] [<ffffffc000642084>] usb_hcd_irq
->>>> [173.604673] Disabling IRQ #228
->>>>
->>>> Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>> Signed-off-by: William wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>> ---
->>>>   drivers/usb/core/hcd.c | 1 +
->>>>   1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
->>>> index 479e223..612fab6 100644
->>>> --- a/drivers/usb/core/hcd.c
->>>> +++ b/drivers/usb/core/hcd.c
->>>> @@ -3017,6 +3017,7 @@ void usb_remove_hcd(struct usb_hcd *hcd)
->>>>   	}
->>>>   
->>>>   	usb_put_invalidate_rhdev(hcd);
->>>> +	hcd->flags = 0;
->>>>   }
->>>>   EXPORT_SYMBOL_GPL(usb_remove_hcd);
->>>>   
->>>>
->>> I suggest to initialize hcd->flags to 0 in usb_add_hcd() instead.
->>>
->>> cheers,
->>> -roger
->> Roger, didn't you originally propose this very same patch in
->>
->> 	http://marc.info/?l=linux-usb&m=146556415503583&w=2
->>
->> (and of course, the earlier versions before v10)?  What happened to it?
-> Alan, You are right. That patch got lost in the ML. Looks like I didn't push it hard enough
-> and then forgot about it. Sorry.
->
-> William,
->
-> You don't need to do any changes. My earlier version was clearing the flag
-> in usb_add_hcd() and I guess Alan suggested to move it to usb_remove_hcd().
->
-> So your patch is good.
-> You can add my.
->
-> Acked-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
->
-> cheers,
-> -roger
-Thanks very much for your suggestion，I  will add acked-by immediately.
->
->
->
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+
+ drivers/mmc/host/dw_mmc.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 3d213e7..dc58ec3 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -1153,7 +1153,8 @@ static void mci_send_cmd(struct dw_mci_slot *slot, u32 cmd, u32 arg)
+ 		cmd, arg, cmd_status);
+ }
+ 
+-static void dw_mci_setup_bus(struct dw_mci_slot *slot, bool force_clkinit)
++static void dw_mci_setup_bus(struct dw_mci_slot *slot,
++			     bool force_clkinit, bool pm_context)
+ {
+ 	struct dw_mci *host = slot->host;
+ 	unsigned int clock = slot->clock;
+@@ -1182,11 +1183,13 @@ static void dw_mci_setup_bus(struct dw_mci_slot *slot, bool force_clkinit)
+ 		if ((clock != slot->__clk_old &&
+ 			!test_bit(DW_MMC_CARD_NEEDS_POLL, &slot->flags)) ||
+ 			force_clkinit) {
+-			dev_info(&slot->mmc->class_dev,
+-				 "Bus speed (slot %d) = %dHz (slot req %dHz, actual %dHZ div = %d)\n",
+-				 slot->id, host->bus_hz, clock,
+-				 div ? ((host->bus_hz / div) >> 1) :
+-				 host->bus_hz, div);
++			/* Silent the verbose log if calling from PM context */
++			if (!pm_context)
++				dev_info(&slot->mmc->class_dev,
++					 "Bus speed (slot %d) = %dHz (slot req %dHz, actual %dHZ div = %d)\n",
++					 slot->id, host->bus_hz, clock,
++					 div ? ((host->bus_hz / div) >> 1) :
++					 host->bus_hz, div);
+ 
+ 			/*
+ 			 * If card is polling, display the message only
+@@ -1434,12 +1437,12 @@ static void dw_mci_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
+ 		}
+ 
+ 		/* Adjust clock / bus width after power is up */
+-		dw_mci_setup_bus(slot, false);
++		dw_mci_setup_bus(slot, false, false);
+ 
+ 		break;
+ 	case MMC_POWER_OFF:
+ 		/* Turn clock off before power goes down */
+-		dw_mci_setup_bus(slot, false);
++		dw_mci_setup_bus(slot, false, false);
+ 
+ 		if (!IS_ERR(mmc->supply.vmmc))
+ 			mmc_regulator_set_ocr(mmc, mmc->supply.vmmc, 0);
+@@ -3366,7 +3369,7 @@ int dw_mci_runtime_resume(struct device *dev)
+ 			continue;
+ 		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+ 			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+-			dw_mci_setup_bus(slot, true);
++			dw_mci_setup_bus(slot, true, true);
+ 		}
+ 	}
+ 
+-- 
+1.9.1
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
