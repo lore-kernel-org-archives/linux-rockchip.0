@@ -1,104 +1,57 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 4/4] arm: dts: Add support for ES8388 to the
-	Radxa Rock 2
-Date: Fri, 13 Jan 2017 17:14:52 +0100
-Message-ID: <20170113161452.14313-5-romain.perier@collabora.com>
-References: <20170113161452.14313-1-romain.perier@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: rk3288: make aclk_vio1_niu a critical clock
+Date: Sat, 14 Jan 2017 12:19:45 +0100
+Message-ID: <2173949.kdqYFWM6te@phil>
+References: <1484097992-9118-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170113161452.14313-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1484097992-9118-1-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device
-found at address 0x10. It also adds the definition for connecting
-the Rockchip I2S to the es8388 analog output.
+Hi Jacob,
 
-This commit is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.com> with some improvements.
+Am Mittwoch, 11. Januar 2017, 09:26:32 CET schrieb Jacob Chen:
+> According to the pd blocks, VIO1_NIU is required by RGA,ISP and VOP1.
+> Then at least one VIO_NIU should be turned on to supply eDP, HDMI, MIPI.
+> 
+> If eDP,HDMI,MIPI is inited early than VOP or RGA is inited early than VOP1,
+> system will hang.
+> 
+> So make aclk_vio1_niu a critical clock and turn it on at all times.
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
- arch/arm/boot/dts/rk3288-rock2-square.dts | 37 +++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+NIU clocks are part of the interconnect, which we do not model at all yet,
+so I guess all of those should never be turned off (until an interconnect 
+driver handles them).
 
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index 96a2e74..4f9b7d2 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -86,6 +86,17 @@
- 		#sound-dai-cells = <0>;
- 	};
- 
-+	sound_es8388 {
-+		compatible = "rockchip,rockchip-audio-es8388";
-+		rockchip,model = "Analog audio output";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8388>;
-+		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&headphone>;
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&hym8563>;
-@@ -173,10 +184,29 @@
- 	};
- };
- 
-+&i2c2 {
-+	status = "okay";
-+
-+	es8388: es8388@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_codec>;
-+		DVDD-supply = <&vcca_codec>;
-+		HPVDD-supply = <&vcca_codec>;
-+		PVDD-supply = <&vcca_codec>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
-+};
-+
- &i2c5 {
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-@@ -190,6 +220,13 @@
- 		};
- 	};
- 
-+	sound {
-+		headphone: headphone {
-+			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.9.3
+Could you just make all of them critical in one go please, so that we don't 
+have to each clock on its own once things break?
+
+
+Thanks
+Heiko
+
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> ---
+>  drivers/clk/rockchip/clk-rk3288.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c
+> b/drivers/clk/rockchip/clk-rk3288.c index f071c24..59ee244 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -815,6 +815,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[]
+> __initdata = { static const char *const rk3288_critical_clocks[]
+> __initconst = { "aclk_cpu",
+>  	"aclk_peri",
+> +	"aclk_vio1_niu",
+>  	"hclk_peri",
+>  	"pclk_pd_pmu",
+>  };
+
+
