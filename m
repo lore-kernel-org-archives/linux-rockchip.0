@@ -1,57 +1,94 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: rk3288: make aclk_vio1_niu a critical clock
-Date: Sat, 14 Jan 2017 12:19:45 +0100
-Message-ID: <2173949.kdqYFWM6te@phil>
-References: <1484097992-9118-1-git-send-email-jacob-chen@iotwrt.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH v4 0/5] thermal: fixes the rockchip thermal
+Date: Sat, 14 Jan 2017 08:54:30 -0800
+Message-ID: <20170114165428.GA2058@localhost.localdomain>
+References: <1481540735-12710-1-git-send-email-wxt@rock-chips.com>
+ <f68125d7-01bb-d0d9-d04f-8d1b5cff19a2@soulik.info>
+ <8bdcea3e-0f06-da29-cb17-6b258440900a@rock-chips.com>
+ <8e34e000-c1c7-20c9-2168-a31c85b3fa9a@rock-chips.com>
+ <c2b13d66-e89e-02c8-3a68-6eb57627aaf2@163.com>
+ <9ee3d263-8de3-eb95-034d-774ae216329f@rock-chips.com>
+ <cfa99a04-b865-c2e3-274a-a8550649bf12@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1484097992-9118-1-git-send-email-jacob-chen@iotwrt.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cfa99a04-b865-c2e3-274a-a8550649bf12@soulik.info>
+Sender: linux-pm-owner@vger.kernel.org
+To: ayaka <ayaka@soulik.info>
+Cc: Caesar Wang <sasukewxt@163.com>, Randy Li <randy.li@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, smbarber@chromium.org, linux-rockchip@lists.infradead.org, rui.zhang@intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+Folks,
 
-Am Mittwoch, 11. Januar 2017, 09:26:32 CET schrieb Jacob Chen:
-> According to the pd blocks, VIO1_NIU is required by RGA,ISP and VOP1.
-> Then at least one VIO_NIU should be turned on to supply eDP, HDMI, MIPI.
+On Wed, Jan 04, 2017 at 12:30:40AM +0800, ayaka wrote:
 > 
-> If eDP,HDMI,MIPI is inited early than VOP or RGA is inited early than VOP1,
-> system will hang.
 > 
-> So make aclk_vio1_niu a critical clock and turn it on at all times.
+> On 01/03/2017 09:13 AM, Randy Li wrote:
+> >
+> >
+> >On 01/03/2017 09:02 AM, Caesar Wang wrote:
+> >>
+> >>在 2017年01月03日 07:57, Randy Li 写道:
+> >>>
+> >>>On 01/02/2017 09:16 PM, Caesar Wang wrote:
+> >>>>在 2016年12月31日 00:11, ayaka 写道:
+> >>>>>
+> >>>>>BTW, Caesar have you ever met this at RK3288 at booting time?
+> >>>>>[    8.430582] thermal thermal_zone1: critical temperature
+> >>>>>reached(125 C),shutting down
+> >>>>>[    8.439038] thermal thermal_zone2: critical temperature
+> >>>>>reached(125 C),shutting down
+> >>>>>[    8.456344] thermal thermal_zone1: critical temperature
+> >>>>>reached(125 C),shutting down
+> >>>>>[    8.465298] thermal thermal_zone2: critical temperature
+> >>>>>reached(125 C),shutting down
+> >>>>
+> >>>>125C? the thermal zone isn't the upstream kernel, what's the kernel
+> >>>>version?
+> >>>They have been merged into the linux-next.
+> >>
+> >>Really?
+> >>I saw the 90 degree is the critical temperature on rk3288 dts .
+> >Yes I do.
+> >>kernel$ vi arch/arm/boot/dts/rk3288.dtsi
+> >>            cpu_crit: cpu_crit {
+> >>                    temperature = <90000>; /* millicelsius */
+> >>                    hysteresis = <2000>; /* millicelsius */
+> >>                    type = "critical";
+> >>                };
+> >>
+> >>>>Anyway, look like,  the TSHUT issue. Do you have the below patches
+> >>>>for your linux kernel?
+> >>>>http://lists.infradead.org/pipermail/linux-arm-kernel/2015-October/380446.html
+> >>>>
+> >>>>
+> >>>No, could you resubmit those patches ?
+> >>
+> >>These patches had merged for upstream.
+> >Sorry, it is my fault, I mistake that commit. Those patches are merged in
+> >next-20161224. I would bring a board for you later.
+> I check the schematic, the otp interrupt is not used at firefly reload nor
+> connected to the control of PMIC.
+> I also check power supply, the power is PD_PERI domain comes from VD_LOGIC
+> which is always on all the platform.
+> It more likely the tsadc doesn't report correctly temperature value?
 
-NIU clocks are part of the interconnect, which we do not model at all yet,
-so I guess all of those should never be turned off (until an interconnect 
-driver handles them).
+Folks, I got a bit confused about this discussion. I have put these
+patches into linux-next, as I did not see anything wrong with them. And
+I was about to send to next -rc. 
 
-Could you just make all of them critical in one go please, so that we don't 
-have to each clock on its own once things break?
+Are these correct or not? Is it fine to move forward with them?
 
+I believe for tomorrows rc is a bit too late, but I think they could
+still go to the next rc.
 
-Thanks
-Heiko
+BR,
 
+> >>
+> >>-Caesar
+> >>
+> >>
+> >
 > 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
-> ---
->  drivers/clk/rockchip/clk-rk3288.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> b/drivers/clk/rockchip/clk-rk3288.c index f071c24..59ee244 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -815,6 +815,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[]
-> __initdata = { static const char *const rk3288_critical_clocks[]
-> __initconst = { "aclk_cpu",
->  	"aclk_peri",
-> +	"aclk_vio1_niu",
->  	"hclk_peri",
->  	"pclk_pd_pmu",
->  };
-
-
