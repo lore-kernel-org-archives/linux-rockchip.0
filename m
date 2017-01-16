@@ -1,119 +1,63 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v5 1/2] mmc: dw_mmc: silent verbose log when calling from
- PM context
-Date: Mon, 16 Jan 2017 10:43:21 +0800
-Message-ID: <28587a11-fd3e-31da-bc50-d63252cf3a78@rock-chips.com>
-References: <1484276362-44984-1-git-send-email-shawn.lin@rock-chips.com>
- <e300d9fe-d410-815d-8615-0d319fcabc5d@soulik.info>
+From: Jacob Chen <jacobchen110@gmail.com>
+Subject: Re: [PATCH 4/4] clk: rockchip: add rk3288 cif_out clock
+Date: Mon, 16 Jan 2017 12:59:41 +0800
+Message-ID: <CAFLEztTuHOKiOTHr6J0EsxboNF=wq-6-y6e1qQGivO9PeyzBeA@mail.gmail.com>
+References: <1484049560-14820-1-git-send-email-jacob-chen@iotwrt.com>
+ <1484049560-14820-4-git-send-email-jacob-chen@iotwrt.com> <2707876.A5Xp7pLXJo@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <e300d9fe-d410-815d-8615-0d319fcabc5d@soulik.info>
-Sender: linux-mmc-owner@vger.kernel.org
-To: ayaka <ayaka@soulik.info>, Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, sgilles@math.umd.edu, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2707876.A5Xp7pLXJo@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/1/15 11:50, ayaka wrote:
+2017-01-13 21:53 GMT+08:00 Heiko Stuebner <heiko@sntech.de>:
+> Hi Jacob,
 >
->
-> On 01/13/2017 10:59 AM, Shawn Lin wrote:
->> When deploying runtime PM, it's quite verbose to print the
->> log of ios setting. Also it's useless to print it from system
->> PM as it should be the same with booting time. We also have
->> sysfs to get all these information from ios attribute, so let's
->> skip this print from PM context.
+> Am Dienstag, 10. Januar 2017, 19:59:20 CET schrieb Jacob Chen:
+>> Add the clocks for the cif block of the rk3288
 >>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 >> ---
+>>  drivers/clk/rockchip/clk-rk3288.c | 7 +++++++
+>>  1 file changed, 7 insertions(+)
 >>
->> Changes in v5: None
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
+>> diff --git a/drivers/clk/rockchip/clk-rk3288.c
+>> b/drivers/clk/rockchip/clk-rk3288.c index 8047cea..f071c24 100644
+>> --- a/drivers/clk/rockchip/clk-rk3288.c
+>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+>> @@ -192,6 +192,7 @@ PNAME(mux_uart1_p)        = { "uart1_src", "uart1_frac",
+>> "xin24m" }; PNAME(mux_uart2_p)        = { "uart2_src", "uart2_frac", "xin24m" };
+>>  PNAME(mux_uart3_p)   = { "uart3_src", "uart3_frac", "xin24m" };
+>>  PNAME(mux_uart4_p)   = { "uart4_src", "uart4_frac", "xin24m" };
+>> +PNAME(mux_cif_out_p) = { "cif_src", "xin24m" };
+>>  PNAME(mux_vip_out_p) = { "vip_src", "xin24m" };
+>>  PNAME(mux_mac_p)     = { "mac_pll_src", "ext_gmac" };
+>>  PNAME(mux_hsadcout_p)        = { "hsadc_src", "ext_hsadc" };
+>> @@ -448,6 +449,12 @@ static struct rockchip_clk_branch rk3288_clk_branches[]
+>> __initdata = { RK3288_CLKSEL_CON(6), 14, 2, MFLAGS, 8, 6, DFLAGS,
+>>                       RK3288_CLKGATE_CON(3), 15, GFLAGS),
 >>
->>   drivers/mmc/host/dw_mmc.c | 21 ++++++++++++---------
->>   1 file changed, 12 insertions(+), 9 deletions(-)
->>
->> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
->> index 3d213e7..dc58ec3 100644
->> --- a/drivers/mmc/host/dw_mmc.c
->> +++ b/drivers/mmc/host/dw_mmc.c
->> @@ -1153,7 +1153,8 @@ static void mci_send_cmd(struct dw_mci_slot
->> *slot, u32 cmd, u32 arg)
->>           cmd, arg, cmd_status);
->>   }
->>   -static void dw_mci_setup_bus(struct dw_mci_slot *slot, bool
->> force_clkinit)
->> +static void dw_mci_setup_bus(struct dw_mci_slot *slot,
->> +                 bool force_clkinit, bool pm_context)
->>   {
->>       struct dw_mci *host = slot->host;
->>       unsigned int clock = slot->clock;
->> @@ -1182,11 +1183,13 @@ static void dw_mci_setup_bus(struct
->> dw_mci_slot *slot, bool force_clkinit)
->>           if ((clock != slot->__clk_old &&
->>               !test_bit(DW_MMC_CARD_NEEDS_POLL, &slot->flags)) ||
->>               force_clkinit) {
->> -            dev_info(&slot->mmc->class_dev,
->> -                 "Bus speed (slot %d) = %dHz (slot req %dHz, actual
->> %dHZ div = %d)\n",
->> -                 slot->id, host->bus_hz, clock,
->> -                 div ? ((host->bus_hz / div) >> 1) :
->> -                 host->bus_hz, div);
->> +            /* Silent the verbose log if calling from PM context */
->> +            if (!pm_context)
->> +                dev_info(&slot->mmc->class_dev,
->> +                     "Bus speed (slot %d) = %dHz (slot req %dHz,
->> actual %dHZ div = %d)\n",
->> +                     slot->id, host->bus_hz, clock,
->> +                     div ? ((host->bus_hz / div) >> 1) :
->> +                     host->bus_hz, div);
->>                 /*
->>                * If card is polling, display the message only
->> @@ -1434,12 +1437,12 @@ static void dw_mci_set_ios(struct mmc_host
->> *mmc, struct mmc_ios *ios)
->>           }
->>             /* Adjust clock / bus width after power is up */
->> -        dw_mci_setup_bus(slot, false);
->> +        dw_mci_setup_bus(slot, false, false);
->>             break;
->>       case MMC_POWER_OFF:
->>           /* Turn clock off before power goes down */
->> -        dw_mci_setup_bus(slot, false);
->> +        dw_mci_setup_bus(slot, false, false);
->>             if (!IS_ERR(mmc->supply.vmmc))
->>               mmc_regulator_set_ocr(mmc, mmc->supply.vmmc, 0);
->> @@ -3366,7 +3369,7 @@ int dw_mci_runtime_resume(struct device *dev)
->>               continue;
->>           if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
->>               dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
->> -            dw_mci_setup_bus(slot, true);
->> +            dw_mci_setup_bus(slot, true, true);
-> Sadness, it seems not work for firefly reload, maybe there is some
-> problems with the card detect in that board.
-
-This patch is intended to prevent the spamming log from pm context but
-your firefly-reload board should have a another problem. So IIRC you
-still see the spamming log with polling mode, we need to dig that later
-but we need this two patches(at least 2/2) merged into 4.10-rc cycle to
-fix the boot problem.
-
-
-
-
-
->>           }
->>       }
->>
+>> +     COMPOSITE_NOGATE(0, "cif_src", mux_pll_src_cpll_gpll_p, 0,
+>> +                     RK3288_CLKSEL_CON(26), 8, 1, MFLAGS, 9, 5, DFLAGS),
+>> +     COMPOSITE_NODIV(SCLK_CIF_OUT, "sclk_cif_out", mux_cif_out_p, 0,
+>> +                     RK3288_CLKSEL_CON(26), 15, 1, MFLAGS,
+>> +                     RK3288_CLKGATE_CON(3), 7, GFLAGS),
+>> +
+>
+> we already have vip_src and sclk_vip_out defined, which I guess are the clocks
+> you are adding here and according to the TRM I have the names are also correct
+> (clock diagram 2).
+>
+> But the clkid is not set yet, so I'd suggest adding SCLK_VIP_OUT and assigning
+> to the existing clocks.
+>
+> Also, according to the clock diagram, the gate needs to be (and already is)
+> part of the vip_src clock and not the sclk_vip_out.
 >
 >
->
->
+> Heiko
 
-
--- 
-Best Regards
-Shawn Lin
-
+Right, I didn't find that it have already been defined..
