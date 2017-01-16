@@ -1,85 +1,66 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v2 2/4] ASoC: es8328: Add support for slave mode
-Date: Mon, 16 Jan 2017 09:17:51 +0100
-Message-ID: <20170116081753.13666-3-romain.perier@collabora.com>
-References: <20170116081753.13666-1-romain.perier@collabora.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 3/3] phy: rockchip-inno-usb2: Set EXTCON_USB when
+ EXTCON_CHG_USB_SDP was set
+Date: Mon, 16 Jan 2017 14:36:02 +0530
+Message-ID: <587C8CFA.2000304@ti.com>
+References: <7b9836ce2ca34118a2acd1ea113605a5f13b4439.1482307697.git.baolin.wang@linaro.org>
+ <23666cc1a5ff123ece5bdbb9821d1eab280d0927.1482307697.git.baolin.wang@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170116081753.13666-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <23666cc1a5ff123ece5bdbb9821d1eab280d0927.1482307697.git.baolin.wang-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Baolin Wang <baolin.wang-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, neilb-IBi9RG/b67k@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, the function that changes the DAI format only supports master
-mode. Trying to use a slave mode exits the function with -EINVAL and
-leave the codec misconfigured. This commits adds support for enabling
-the slave mode.
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
 
-Changes in v2: None
+On Wednesday 21 December 2016 01:42 PM, Baolin Wang wrote:
+> According to the documentation, we should set the EXTCON_USB when
+> one SDP charger connector was reported.
+> 
+> Signed-off-by: Baolin Wang <baolin.wang-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Reviewed-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 
- sound/soc/codecs/es8328.c | 28 ++++++++++++++++++++++------
- 1 file changed, 22 insertions(+), 6 deletions(-)
+merged, thanks!
 
-diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
-index 37722194..054e123 100644
---- a/sound/soc/codecs/es8328.c
-+++ b/sound/soc/codecs/es8328.c
-@@ -588,10 +588,18 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
- 	struct snd_soc_codec *codec = codec_dai->codec;
- 	u8 dac_mode = 0;
- 	u8 adc_mode = 0;
-+	bool master;
- 
--	/* set master/slave audio interface */
--	if ((fmt & SND_SOC_DAIFMT_MASTER_MASK) != SND_SOC_DAIFMT_CBM_CFM)
--		return -EINVAL;
-+	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-+		case SND_SOC_DAIFMT_CBM_CFM:
-+			master = true;
-+			break;
-+		case SND_SOC_DAIFMT_CBS_CFS:
-+			master = false;
-+			break;
-+		default:
-+			return -EINVAL;
-+	}
- 
- 	/* interface format */
- 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-@@ -620,9 +628,17 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
- 	snd_soc_update_bits(codec, ES8328_ADCCONTROL4,
- 			ES8328_ADCCONTROL4_ADCFORMAT_MASK, adc_mode);
- 
--	/* Master serial port mode, with BCLK generated automatically */
--	snd_soc_update_bits(codec, ES8328_MASTERMODE,
--			ES8328_MASTERMODE_MSC, ES8328_MASTERMODE_MSC);
-+	if (master) {
-+		/* Master serial port mode, with BCLK generated automatically */
-+		snd_soc_update_bits(codec, ES8328_MASTERMODE,
-+				    ES8328_MASTERMODE_MSC,
-+				    ES8328_MASTERMODE_MSC);
-+	} else {
-+		/* Slave serial port mode */
-+		snd_soc_update_bits(codec, ES8328_MASTERMODE,
-+				    ES8328_MASTERMODE_MSC,
-+				    0);
-+	}
- 
- 	return 0;
- }
--- 
-2.9.3
+-Kishon
+> ---
+> Changes since v1:
+>  - Change extcon_set_cable_state_() to extcon_set_state_sync().
+>  - Add reviewed tag by Chanwoo Choi.
+> ---
+>  drivers/phy/phy-rockchip-inno-usb2.c |    7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
+> index 2f99ec9..4ea95c2 100644
+> --- a/drivers/phy/phy-rockchip-inno-usb2.c
+> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
+> @@ -595,9 +595,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>  		if (rport->vbus_attached != vbus_attach) {
+>  			rport->vbus_attached = vbus_attach;
+>  
+> -			if (notify_charger && rphy->edev)
+> +			if (notify_charger && rphy->edev) {
+>  				extcon_set_cable_state_(rphy->edev,
+>  							cable, vbus_attach);
+> +				if (cable == EXTCON_CHG_USB_SDP)
+> +					extcon_set_state_sync(rphy->edev,
+> +							      EXTCON_USB,
+> +							      vbus_attach);
+> +			}
+>  		}
+>  		break;
+>  	case OTG_STATE_B_PERIPHERAL:
+> 
