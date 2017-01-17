@@ -1,41 +1,48 @@
-From: Tomasz Figa <tfiga@chromium.org>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH] drm/rockchip: vop: make vop register setting take effect
-Date: Tue, 17 Jan 2017 18:32:44 +0900
-Message-ID: <CAAFQd5CP8ERvJzchZo0=5gvuUuP+EBiyfhKDkgRYBa8iQYW0Kw@mail.gmail.com>
+Date: Tue, 17 Jan 2017 18:06:59 +0800
+Message-ID: <587DECC3.50304@rock-chips.com>
 References: <1472269178-16593-1-git-send-email-zyw@rock-chips.com>
  <57C3A341.9030302@rock-chips.com>
+ <CAAFQd5CP8ERvJzchZo0=5gvuUuP+EBiyfhKDkgRYBa8iQYW0Kw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <57C3A341.9030302@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, briannorris@chromium.org, Douglas Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@chromium.org>, Chris Zhong <zyw@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAFQd5CP8ERvJzchZo0=5gvuUuP+EBiyfhKDkgRYBa8iQYW0Kw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCk9uIE1vbiwgQXVnIDI5LCAyMDE2IGF0IDExOjUxIEFNLCBNYXJrIHlhbyA8bWFy
-ay55YW9Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+IE9uIDIwMTblubQwOOaciDI35pelIDExOjM5
-LCBDaHJpcyBaaG9uZyB3cm90ZToKPj4KPj4gVGhlIHNldHRpbmcgb2Ygdm9wIHJlZ2lzdGVycyBu
-ZWVkIGEgcmVnX2RvbmUgd3JpdGluZyB0byB0YWtlIGVmZmVjdC4KPj4gSW4gdm9wX2VuYWJsZSB0
-aGUgdm9wIHJldHVybiB0byB3b3JrIGJ5IGJ5IHJlc3RvcmluZyByZWdpc3RlcnMsIGJ1dCB0aGUK
-Pj4gcmVnaXN0ZXJzIGRvIG5vdCB0YWtlIGVmZmVjdCBpbW1lZGlhdGVseSwgaXQgc2hvdWxkIGEg
-dm9wX2NmZ19kb25lCj4+IGFmdGVyIGl0LiBUaGUgc2FtZSB0aGluZyBpcyBuZWVkZWQgYnkgd2lu
-ZG93c19kaXNhYmxlZCBpbgo+PiB2b3BfY3J0Y19kaXNhYmxlLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5
-OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNCArKysrCj4+ICAgMSBmaWxlIGNo
-YW5nZWQsIDQgaW5zZXJ0aW9ucygrKQo+Cj4gVGhhbmtzIGZvciB5b3VyIGZpeC4KPgo+IGFwcGxp
-ZWQgdG8gbXkgZHJtLWZpeGVzLgoKVGhpcyBwYXRjaCBzZWVtcyB0byBoYXZlIGJlZW4gbG9zdCBp
-biBhY3Rpb24uIEkgZG9uJ3Qgc2VlIGl0IGluIGxpbnV4LW5leHQuCgpCZXN0IHJlZ2FyZHMsClRv
-bWFzegoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGlu
-dXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-YXJtLWtlcm5lbAo=
+SGkgVG9tYXN6CgpJIGhhZCBzZW50IHRvIERhdmUsIGJ1dCBtYXliZSBzb21ldGhpbmcgaXMgd3Jv
+bmcsIGl0IG1pc3MuCgp0aGUgcGF0Y2ggaXMgb24gdGhpcyBwdWxsLXJlcXVlc3Q6Cmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL2FyY2hpdmVzL2RyaS1kZXZlbC8yMDE2LVNlcHRlbWJlci8x
+MTg1MDUuaHRtbAoKSSBmb3Jnb3QgdG8gZG91YmxlIGNoZWNrIGl0LCBJIHdpbGwgcmVzZW5kIHRv
+IERhdmUgc29vbi4KClRoYW5rcy4KCk9uIDIwMTflubQwMeaciDE35pelIDE3OjMyLCBUb21hc3og
+RmlnYSB3cm90ZToKPiBIaSBNYXJrLAo+Cj4gT24gTW9uLCBBdWcgMjksIDIwMTYgYXQgMTE6NTEg
+QU0sIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IE9uIDIwMTbl
+ubQwOOaciDI35pelIDExOjM5LCBDaHJpcyBaaG9uZyB3cm90ZToKPj4+IFRoZSBzZXR0aW5nIG9m
+IHZvcCByZWdpc3RlcnMgbmVlZCBhIHJlZ19kb25lIHdyaXRpbmcgdG8gdGFrZSBlZmZlY3QuCj4+
+PiBJbiB2b3BfZW5hYmxlIHRoZSB2b3AgcmV0dXJuIHRvIHdvcmsgYnkgYnkgcmVzdG9yaW5nIHJl
+Z2lzdGVycywgYnV0IHRoZQo+Pj4gcmVnaXN0ZXJzIGRvIG5vdCB0YWtlIGVmZmVjdCBpbW1lZGlh
+dGVseSwgaXQgc2hvdWxkIGEgdm9wX2NmZ19kb25lCj4+PiBhZnRlciBpdC4gVGhlIHNhbWUgdGhp
+bmcgaXMgbmVlZGVkIGJ5IHdpbmRvd3NfZGlzYWJsZWQgaW4KPj4+IHZvcF9jcnRjX2Rpc2FibGUu
+Cj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4K
+Pj4+IC0tLQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyB8IDQgKysrKwo+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQo+PiBUaGFu
+a3MgZm9yIHlvdXIgZml4Lgo+Pgo+PiBhcHBsaWVkIHRvIG15IGRybS1maXhlcy4KPiBUaGlzIHBh
+dGNoIHNlZW1zIHRvIGhhdmUgYmVlbiBsb3N0IGluIGFjdGlvbi4gSSBkb24ndCBzZWUgaXQgaW4g
+bGludXgtbmV4dC4KPgo+IEJlc3QgcmVnYXJkcywKPiBUb21hc3oKPgo+Cj4KCgotLSAK77ytYXJr
+IFlhbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
