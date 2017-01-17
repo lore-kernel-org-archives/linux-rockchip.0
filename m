@@ -1,108 +1,67 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v3 4/4] arm: dts: Add support for ES8388 to the
-	Radxa Rock 2
-Date: Tue, 17 Jan 2017 09:17:05 +0100
-Message-ID: <20170117081705.14107-5-romain.perier@collabora.com>
-References: <20170117081705.14107-1-romain.perier@collabora.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 11/11] drm/rockchip/dsi: fix insufficient bandwidth of
+ some panel
+Date: Tue, 17 Jan 2017 17:31:53 +0800
+Message-ID: <587DE489.2010004@rock-chips.com>
+References: <1484561311-494-1-git-send-email-zyw@rock-chips.com>
+ <1484561311-494-12-git-send-email-zyw@rock-chips.com>
+ <20170116124453.2154def9.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170117081705.14107-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170116124453.2154def9.john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, linux-rockchip@lists.infradead.org, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device
-found at address 0x10. It also adds the definition for connecting
-the Rockchip I2S to the es8388 analog output.
-
-This commit is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.com> with some improvements.
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
-
-Changes in v3: None
-Changes in v2: None
-
- arch/arm/boot/dts/rk3288-rock2-square.dts | 37 +++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index dd3ad2e..82d20fd 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -86,6 +86,17 @@
- 		#sound-dai-cells = <0>;
- 	};
- 
-+	sound_es8388 {
-+		compatible = "rockchip,rockchip-audio-es8388";
-+		rockchip,model = "Analog audio output";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8388>;
-+		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&headphone>;
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&hym8563>;
-@@ -173,10 +184,29 @@
- 	};
- };
- 
-+&i2c2 {
-+	status = "okay";
-+
-+	es8388: es8388@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_codec>;
-+		DVDD-supply = <&vcca_codec>;
-+		HPVDD-supply = <&vcca_codec>;
-+		PVDD-supply = <&vcca_codec>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
-+};
-+
- &i2c5 {
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-@@ -190,6 +220,13 @@
- 		};
- 	};
- 
-+	sound {
-+		headphone: headphone {
-+			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.9.3
+SGkgSm9obgoKT24gMDEvMTYvMjAxNyAwODo0NCBQTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+IE9u
+IE1vbiwgMTYgSmFuIDIwMTcgMTg6MDg6MzEgKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+Cj4+
+IFNldCB0aGUgbGFuZXMgYnBzIHRvIDEgLyAwLjkgdGltZXMgb2YgcGNsaywgdGhlIG1hcmdpbiBp
+cyBub3QgZW5vdWdoCj4+IGZvciBzb21lIHBhbmVsLCBpdCB3aWxsIGNhdXNlIHRoZSBzY3JlZW4g
+ZGlzcGxheSBpcyBub3Qgbm9ybWFsLCBzbwo+PiBpbmNyZWFzZXMgdGhlIGJhZG53aWR0aCB0byAx
+IC8gMC44Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMu
+Y29tPgo+Pgo+PiAtLS0KPj4KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYyB8IDQgKystLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVs
+ZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHct
+bWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4+IGlu
+ZGV4IDlkZmE3M2QuLjVhOTczZmUgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jCj4+IEBAIC01MDEsOCArNTAxLDggQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9n
+ZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4+ICAgCj4+ICAgCW1wY2xrID0g
+RElWX1JPVU5EX1VQKGRzaS0+bW9kZS0+Y2xvY2ssIE1TRUNfUEVSX1NFQyk7Cj4+ICAgCWlmICht
+cGNsaykgewo+PiAtCQkvKiB0YWtlIDEgLyAwLjksIHNpbmNlIG1icHMgbXVzdCBiaWcgdGhhbiBi
+YW5kd2lkdGggb2YgUkdCICovCj4+IC0JCXRtcCA9IG1wY2xrICogKGJwcCAvIGRzaS0+bGFuZXMp
+ICogMTAgLyA5Owo+PiArCQkvKiB0YWtlIDEgLyAwLjgsIHNpbmNlIG1icHMgbXVzdCBiaWcgdGhh
+biBiYW5kd2lkdGggb2YgUkdCICovCj4+ICsJCXRtcCA9IG1wY2xrICogKGJwcCAvIGRzaS0+bGFu
+ZXMpICogMTAgLyA4Owo+IFRoaXMgYW5kIHBhdGNoIDkgYXJlIGp1c3QgaGFja2luZyBhcm91bmQg
+dGhlIHVuZGVybHlpbmcgcHJvYmxlbSBpbiBvcmRlcgo+IHRvIG1ha2UgcGFydGljdWxhciBwYW5l
+bHMgd29yay4gIEknbSBwcmV0dHkgc3VyZSB0aGUgYWN0dWFsIGlzc3VlIGlzIHRoZQo+IHVzZSBv
+ZiBoYXJkY29kZWQgdmFsdWVzIHdoZW4gY29uZmlndXJpbmcgdGhlIFBIWSwgc2luY2UgdGhlIFBI
+WQo+IHBhcmFtZXRlcnMgYXJlIHNwZWNpZmllZCBpbiBjbG9jayBjeWNsZXMgYnV0IHRoZSBNSVBJ
+IHNwZWMgcmVxdWlyZXMKPiBhYnNvbHV0ZSB0aW1lIGR1cmF0aW9ucy4KPgo+IEkgcG9zdGVkIGEg
+c2VyaWVzIGFkZHJlc3NpbmcgdGhpcyBhIHdoaWxlIGFnbywgYWx0aG91Z2ggSSBzY3Jld2VkIHVw
+Cj4gc2VuZGluZyBpdCBzbyBzb21lIHBhdGNoZXMgd2VyZSBpbmNsdWRlZCB0d2ljZSBhbmQgc2lu
+Y2Ugbm8gb25lCj4gZXhwcmVzc2VkIGFueSBpbnRlcmVzdCBJIGRpZG4ndCBwb3N0IGEgY2xlYW5l
+ZCB1cCB2ZXJzaW9uLgo+Cj4gVGhlIHJlbGV2YW50IHBhdGNoIGlzIGhlcmU6Cj4KPiBodHRwczov
+L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxOTMvClRoYW5rcyB2ZXJ5IG11Y2gsIHlv
+dXIgcGF0Y2hlcyBhcmUgdmVyeSB1c2VmdWwgZm9yIG1lLiBJdCBsb29rcyB5b3VyIAptZXRob2Qg
+aXMgY29ycmVjdC4KQW5kIEkgYW0gdmVyeSBjb25mdXNlZCB3aHkgTWFyayBZYW8gYW5kIG1lIGRp
+ZCBub3QgcmVjZWl2ZSB5b3VyIHBhdGNoZXMgCmJlZm9yZSwKYWx0aG91Z2ggd2UgaGF2ZSBzdWJz
+Y3JpYmVkIHRoZSA8bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZz4uCgpJbiBhZGRp
+dGlvbiwgY291bGQgeW91IHRlbGwgbWUgd2hpY2ggZGV2aWNlIHdhcmUgeW91IHRlc3Rpbmcgd2l0
+aCB0aGVzZSAKbWlwaSBwYXRjaGVzLgpJIGdvaW5nIHRvIHRlc3QgdGhlbSB0aGVzZSBkYXkuCgpD
+aHJpcyBaaG9uZwo+PiAgIAkJaWYgKHRtcCA8IG1heF9tYnBzKQo+PiAgIAkJCXRhcmdldF9tYnBz
+ID0gdG1wOwo+PiAgIAkJZWxzZQo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
