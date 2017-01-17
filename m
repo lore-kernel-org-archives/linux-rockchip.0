@@ -1,37 +1,120 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 0/2] Add support for es8323 on the
-	firefly-rk3288
-Date: Tue, 17 Jan 2017 10:12:08 +0100
-Message-ID: <20170117091210.6837-1-romain.perier@collabora.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [01/26] drm/rockchip: dw-mipi-dsi: use mode from display state
+Date: Tue, 17 Jan 2017 18:38:41 +0800
+Message-ID: <587DF431.5040003@rock-chips.com>
+References: <20160919171747.28512-2-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org
-Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160919171747.28512-2-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This set of patches enables support for the es8323 codecs on the
-firefly-rk3288. It adds the required DT definitions to link rockchip-i2s
-to the es8388 analog output.
-
-Romain Perier (2):
-  SoC: es8328-i2c: Add compatible for ES8323
-  arm: dts: Add support for ES8323 to the Firefly-RK3288
-
- Documentation/devicetree/bindings/sound/es8328.txt |  5 ++++-
- arch/arm/boot/dts/rk3288-firefly.dtsi              | 25 ++++++++++++++++++++++
- sound/soc/codecs/es8328-i2c.c                      |  2 ++
- 3 files changed, 31 insertions(+), 1 deletion(-)
-
--- 
-2.9.3
+CgpPbiAwOS8yMC8yMDE2IDAxOjE3IEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gVGhlcmUgaXMg
+bm8gbmVlZCB0byBrZWVwIGEgcG9pbnRlciB0byB0aGUgbW9kZSBhcm91bmQgc2luY2Ugd2Uga25v
+dyBpdAo+IHdpbGwgYmUgcHJlc2VudCBpbiB0aGUgY29ubmVjdG9yIHN0YXRlLgo+Cj4gU2lnbmVk
+LW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiAgIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMzEgKysrKysrKysrKysrKysrKy0t
+LS0tLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKyksIDE1IGRl
+bGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBpbmRl
+eCBjYTIyZTVlZTg5Y2EuLmE4NzAzNzU1NmY1YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kdy1taXBpLWRzaS5jCj4gQEAgLTI4Niw3ICsyODYsNiBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2kg
+ewo+ICAgCXUzMiBmb3JtYXQ7Cj4gICAJdTE2IGlucHV0X2RpdjsKPiAgIAl1MTYgZmVlZGJhY2tf
+ZGl2Owo+IC0Jc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGU7Cj4gICAKPiAgIAljb25zdCBz
+dHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YTsKPiAgIH07Cj4gQEAgLTMzMiw5ICsz
+MzEsMTAgQEAgc3RhdGljIGludCBtYXhfbWJwc190b190ZXN0ZGluKHVuc2lnbmVkIGludCBtYXhf
+bWJwcykKPiAgICAqLwo+ICAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2Zy
+YW1lcyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIHsKPiArCXN0cnVjdCBkcm1fZGlzcGxh
+eV9tb2RlICptb2RlID0gJmRzaS0+Y29ubmVjdG9yLnN0YXRlLT5jcnRjLT5zdGF0ZS0+YWRqdXN0
+ZWRfbW9kZTsKPiAgIAlpbnQgcmVmcmVzaCwgdHdvX2ZyYW1lczsKPiAgIAo+IC0JcmVmcmVzaCA9
+IGRybV9tb2RlX3ZyZWZyZXNoKGRzaS0+bW9kZSk7Cj4gKwlyZWZyZXNoID0gZHJtX21vZGVfdnJl
+ZnJlc2gobW9kZSk7Cj4gICAJdHdvX2ZyYW1lcyA9IERJVl9ST1VORF9VUChNU0VDX1BFUl9TRUMs
+IHJlZnJlc2gpICogMjsKPiAgIAltc2xlZXAodHdvX2ZyYW1lcyk7Cj4gICB9Cj4gQEAgLTQ2MSw2
+ICs0NjEsNyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBp
+X2RzaSAqZHNpKQo+ICAgCj4gICBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2dldF9sYW5lX2Jwcyhz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIHsKPiArCXN0cnVjdCBkcm1fZGlzcGxheV9tb2Rl
+ICptb2RlID0gJmRzaS0+Y29ubmVjdG9yLnN0YXRlLT5jcnRjLT5zdGF0ZS0+YWRqdXN0ZWRfbW9k
+ZTsKPiAgIAl1bnNpZ25lZCBpbnQgaSwgcHJlOwo+ICAgCXVuc2lnbmVkIGxvbmcgbXBjbGssIHBs
+bHJlZiwgdG1wOwo+ICAgCXVuc2lnbmVkIGludCBtID0gMSwgbiA9IDEsIHRhcmdldF9tYnBzID0g
+MTAwMDsKPiBAQCAtNDc0LDcgKzQ3NSw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2V0X2xh
+bmVfYnBzKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgCQlyZXR1cm4gYnBwOwo+ICAgCX0K
+PiAgIAo+IC0JbXBjbGsgPSBESVZfUk9VTkRfVVAoZHNpLT5tb2RlLT5jbG9jaywgTVNFQ19QRVJf
+U0VDKTsKPiArCW1wY2xrID0gRElWX1JPVU5EX1VQKG1vZGUtPmNsb2NrLCBNU0VDX1BFUl9TRUMp
+Owo+ICAgCWlmIChtcGNsaykgewo+ICAgCQkvKiB0YWtlIDEgLyAwLjksIHNpbmNlIG1icHMgbXVz
+dCBiaWcgdGhhbiBiYW5kd2lkdGggb2YgUkdCICovCj4gICAJCXRtcCA9IG1wY2xrICogKGJwcCAv
+IGRzaS0+bGFuZXMpICogMTAgLyA5Owo+IEBAIC02ODksOSArNjkwLDkgQEAgc3RhdGljIHZvaWQg
+ZHdfbWlwaV9kc2lfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIAlkc2lfd3JpdGUo
+ZHNpLCBEU0lfTFBDTEtfQ1RSTCwgUEhZX1RYUkVRVUVTVENMS0hTKTsKPiAgIH0KPiAgIAo+IC1z
+dGF0aWMgdm9pZCBkd19taXBpX2RzaV9kcGlfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
+LAo+IC0JCQkJICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gK3N0YXRpYyB2b2lk
+IGR3X21pcGlfZHNpX2RwaV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gICB7Cj4g
+KwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSA9ICZkc2ktPmNvbm5lY3Rvci5zdGF0ZS0+
+Y3J0Yy0+c3RhdGUtPmFkanVzdGVkX21vZGU7Cj4gICAJdTMyIHZhbCA9IDAsIGNvbG9yID0gMDsK
+PiAgIAo+ICAgCXN3aXRjaCAoZHNpLT5mb3JtYXQpIHsKPiBAQCAtNzI2LDkgKzcyNywxMCBAQCBz
+dGF0aWMgdm9pZCBkd19taXBpX2RzaV9wYWNrZXRfaGFuZGxlcl9jb25maWcoc3RydWN0IGR3X21p
+cGlfZHNpICpkc2kpCj4gICAJZHNpX3dyaXRlKGRzaSwgRFNJX1BDS0hETF9DRkcsIEVOX0NSQ19S
+WCB8IEVOX0VDQ19SWCB8IEVOX0JUQSk7Cj4gICB9Cj4gICAKPiAtc3RhdGljIHZvaWQgZHdfbWlw
+aV9kc2lfdmlkZW9fcGFja2V0X2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAtCQkJ
+CQkgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gK3N0YXRpYyB2b2lkIGR3X21p
+cGlfZHNpX3ZpZGVvX3BhY2tldF9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gICB7
+Cj4gKwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSA9ICZkc2ktPmNvbm5lY3Rvci5zdGF0
+ZS0+Y3J0Yy0+c3RhdGUtPmFkanVzdGVkX21vZGU7Cj4gKwo+ICAgCWRzaV93cml0ZShkc2ksIERT
+SV9WSURfUEtUX1NJWkUsIFZJRF9QS1RfU0laRShtb2RlLT5oZGlzcGxheSkpOwo+ICAgfQo+ICAg
+Cj4gQEAgLTc0NCwxMiArNzQ2LDEzIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2NvbW1hbmRf
+bW9kZV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gICBzdGF0aWMgdTMyIGR3X21p
+cGlfZHNpX2dldF9oY29tcG9uZW50X2xiY2Moc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gICAJ
+CQkJCSAgIHUzMiBoY29tcG9uZW50KQo+ICAgewo+ICsJc3RydWN0IGRybV9kaXNwbGF5X21vZGUg
+Km1vZGUgPSAmZHNpLT5jb25uZWN0b3Iuc3RhdGUtPmNydGMtPnN0YXRlLT5hZGp1c3RlZF9tb2Rl
+Owo+ICAgCXUzMiBmcmFjLCBsYmNjOwo+ICAgCj4gICAJbGJjYyA9IGhjb21wb25lbnQgKiBkc2kt
+PmxhbmVfbWJwcyAqIE1TRUNfUEVSX1NFQyAvIDg7Cj4gICAKPiAtCWZyYWMgPSBsYmNjICUgZHNp
+LT5tb2RlLT5jbG9jazsKPiAtCWxiY2MgPSBsYmNjIC8gZHNpLT5tb2RlLT5jbG9jazsKPiArCWZy
+YWMgPSBsYmNjICUgbW9kZS0+Y2xvY2s7Cj4gKwlsYmNjID0gbGJjYyAvIG1vZGUtPmNsb2NrOwo+
+ICAgCWlmIChmcmFjKQo+ICAgCQlsYmNjKys7Cj4gICAKPiBAQCAtNzU5LDcgKzc2Miw3IEBAIHN0
+YXRpYyB1MzIgZHdfbWlwaV9kc2lfZ2V0X2hjb21wb25lbnRfbGJjYyhzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSwKPiAgIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKHN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgewo+ICAgCXUzMiBodG90YWwsIGhzYSwgaGJwLCBs
+YmNjOwo+IC0Jc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUgPSBkc2ktPm1vZGU7Cj4gKwlz
+dHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSA9ICZkc2ktPmNvbm5lY3Rvci5zdGF0ZS0+Y3J0
+Yy0+c3RhdGUtPmFkanVzdGVkX21vZGU7Cj4gICAKPiAgIAlodG90YWwgPSBtb2RlLT5odG90YWw7
+Cj4gICAJaHNhID0gbW9kZS0+aHN5bmNfZW5kIC0gbW9kZS0+aHN5bmNfc3RhcnQ7Cj4gQEAgLTc3
+OCw3ICs3ODEsNyBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9saW5lX3RpbWVyX2NvbmZpZyhz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3ZlcnRp
+Y2FsX3RpbWluZ19jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gICB7Cj4gICAJdTMy
+IHZhY3RpdmUsIHZzYSwgdmZwLCB2YnA7Cj4gLQlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9k
+ZSA9IGRzaS0+bW9kZTsKPiArCXN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlID0gJmRzaS0+
+Y29ubmVjdG9yLnN0YXRlLT5jcnRjLT5zdGF0ZS0+YWRqdXN0ZWRfbW9kZTsKPiAgIAo+ICAgCXZh
+Y3RpdmUgPSBtb2RlLT52ZGlzcGxheTsKPiAgIAl2c2EgPSBtb2RlLT52c3luY19lbmQgLSBtb2Rl
+LT52c3luY19zdGFydDsKPiBAQCAtODIxLDggKzgyNCw2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlf
+ZHNpX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+ICAgCXN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpID0gZW5jb2Rlcl90b19kc2koZW5jb2Rlcik7Cj4gICAJaW50
+IHJldDsKPiAgIAo+IC0JZHNpLT5tb2RlID0gYWRqdXN0ZWRfbW9kZTsKPiAtCkkgcHJlZmVyIHRv
+IGtlZXAgdGhlIG9yaWdpbmFsIG1ldGhvZCwgYWx0aG91Z2ggdGhpcyJkc2ktPm1vZGUiIHBvaW50
+ZXIgCmlzIHNhbWUgYXMgIiZkc2ktPmNvbm5lY3Rvci5zdGF0ZS0+Y3J0Yy0+c3RhdGUtPmFkanVz
+dGVkX21vZGU7ICIKSSBzdGlsbCB0aGluayBkc2ktPm1vZGUgbWFrZXMgdGhlIHByb2Nlc3MgZWFz
+aWVyIHRvIHJlYWQKCgo+ICAgCXJldCA9IGR3X21pcGlfZHNpX2dldF9sYW5lX2Jwcyhkc2kpOwo+
+ICAgCWlmIChyZXQgPCAwKQo+ICAgCQlyZXR1cm47Cj4gQEAgLTgzMywxMCArODM0LDEwIEBAIHN0
+YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0IGRybV9lbmNvZGVy
+ICplbmNvZGVyLAo+ICAgCX0KPiAgIAo+ICAgCWR3X21pcGlfZHNpX2luaXQoZHNpKTsKPiAtCWR3
+X21pcGlfZHNpX2RwaV9jb25maWcoZHNpLCBtb2RlKTsKPiArCWR3X21pcGlfZHNpX2RwaV9jb25m
+aWcoZHNpKTsKPiAgIAlkd19taXBpX2RzaV9wYWNrZXRfaGFuZGxlcl9jb25maWcoZHNpKTsKPiAg
+IAlkd19taXBpX2RzaV92aWRlb19tb2RlX2NvbmZpZyhkc2kpOwo+IC0JZHdfbWlwaV9kc2lfdmlk
+ZW9fcGFja2V0X2NvbmZpZyhkc2ksIG1vZGUpOwo+ICsJZHdfbWlwaV9kc2lfdmlkZW9fcGFja2V0
+X2NvbmZpZyhkc2kpOwo+ICAgCWR3X21pcGlfZHNpX2NvbW1hbmRfbW9kZV9jb25maWcoZHNpKTsK
+PiAgIAlkd19taXBpX2RzaV9saW5lX3RpbWVyX2NvbmZpZyhkc2kpOwo+ICAgCWR3X21pcGlfZHNp
+X3ZlcnRpY2FsX3RpbWluZ19jb25maWcoZHNpKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
