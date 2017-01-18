@@ -1,85 +1,46 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 2/2] arm: dts: Add support for ES8323 to the
-	Firefly-RK3288
-Date: Tue, 17 Jan 2017 10:12:10 +0100
-Message-ID: <20170117091210.6837-3-romain.perier@collabora.com>
-References: <20170117091210.6837-1-romain.perier@collabora.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [01/26] drm/rockchip: dw-mipi-dsi: use mode from display state
+Date: Wed, 18 Jan 2017 10:21:48 +0800
+Message-ID: <587ED13C.3000301@rock-chips.com>
+References: <20160919171747.28512-2-john@metanate.com>
+ <587DF431.5040003@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170117091210.6837-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org
-Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <587DF431.5040003@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>, John Keeping <john@metanate.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device found at
-address 0x10. It also adds the definition for connecting the Rockchip
-I2S to the es8388 analog output.
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
- arch/arm/boot/dts/rk3288-firefly.dtsi | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 44935af..bbe2d67 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -103,6 +103,16 @@
- 		};
- 	};
- 
-+	sound_es8323 {
-+		compatible = "rockchip,rockchip-audio-es8388";
-+		rockchip,model = "Analog audio output";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8323>;
-+		/* tsadc and headphone use the same pins */
-+		rockchip,hp-en-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 RK_PB7 GPIO_ACTIVE_HIGH>;
-+	};
-+
- 	vbat_wl: vcc_sys: vsys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -371,6 +381,17 @@
- 
- &i2c2 {
- 	status = "okay";
-+
-+	es8323: es8323@10 {
-+		compatible = "everest,es8323", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_33>;
-+		DVDD-supply = <&vcca_33>;
-+		HPVDD-supply = <&vcca_33>;
-+		PVDD-supply = <&vcca_33>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
- };
- 
- &i2c4 {
-@@ -381,6 +402,10 @@
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &io_domains {
- 	status = "okay";
- 
--- 
-2.9.3
+T24gMjAxN+W5tDAx5pyIMTfml6UgMTg6MzgsIENocmlzIFpob25nIHdyb3RlOgo+PiBAQCAtODIx
+LDggKzgyNCw2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfbW9kZV9zZXQoc3Ry
+dWN0IAo+PiBkcm1fZW5jb2RlciAqZW5jb2RlciwKPj4gICAgICAgc3RydWN0IGR3X21pcGlfZHNp
+ICpkc2kgPSBlbmNvZGVyX3RvX2RzaShlbmNvZGVyKTsKPj4gICAgICAgaW50IHJldDsKPj4gICAt
+ICAgIGRzaS0+bW9kZSA9IGFkanVzdGVkX21vZGU7Cj4+IC0KPiBJIHByZWZlciB0byBrZWVwIHRo
+ZSBvcmlnaW5hbCBtZXRob2QsIGFsdGhvdWdoIHRoaXMiZHNpLT5tb2RlIiBwb2ludGVyIAo+IGlz
+IHNhbWUgYXMgIiZkc2ktPmNvbm5lY3Rvci5zdGF0ZS0+Y3J0Yy0+c3RhdGUtPmFkanVzdGVkX21v
+ZGU7ICIKPiBJIHN0aWxsIHRoaW5rIGRzaS0+bW9kZSBtYWtlcyB0aGUgcHJvY2VzcyBlYXNpZXIg
+dG8gcmVhZAoiJmRzaS0+Y29ubmVjdG9yLnN0YXRlLT5jcnRjLT5zdGF0ZS0+YWRqdXN0ZWRfbW9k
+ZTsiIGlzIHRvbyBsb25nLCBhbmQgCmRzaS0+Y29ubmVjdG9yLnN0YXRlLT5jcnRjIGNhbiBiZSBO
+VUxMLCBzZWVtcyBub3QgZ29vZC4KCmFncmVlIHdpdGggQ2hyaXMsIEkgdGhpbmsgZHNpLT5tb2Rl
+IGlzIGJldHRlci4KCkJ1ZyB0aGUgb3JpZ2luIGNvZGUgImRzaS0+bW9kZSA9IGFkanVzdGVkX21v
+ZGU7ICIgYWxzbyBoYXMgYSBidWcsIAphZGp1c3RlZF9tb2RlJ3MgbGlmdCB0aW1lIGlzIHVua25v
+d24sIHVzZSBhIHBvaW50ZXIgZnJvbSBhZGp1c3RlZF9tb2RlIAppcyBkYW5nZXJvdXMuCgpJIHRo
+aW5rIHdlIGNhbiB1c2UgbGlrZSB0aGF0LCBjb3B5IGEgZGlzcGxheSBtb2RlIHRvIGRzaS0+bW9k
+ZToKc3RydWN0IGR3X21pcGlfZHNpCnsKICAgIC0gICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUg
+Km1vZGU7CiAgICArICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIG1vZGU7Cn0KICAgeHh4X2Vu
+Y29kZXJfbW9kZV9zZXQoKQp7CiAgICBkcm1fbW9kZV9jb3B5KCZkc2ktPm1vZGUsIGFkanVzdGVk
+X21vZGUpOwp9CgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
