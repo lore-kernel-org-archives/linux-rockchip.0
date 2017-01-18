@@ -1,44 +1,42 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: fix the incorrect pclk_edp div width for
- RK3399
-Date: Wed, 18 Jan 2017 12:27:03 +0800
-Message-ID: <587EEE97.804@rock-chips.com>
-References: <1484713256-3005-1-git-send-email-zhengxing@rock-chips.com>
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v2 1/3] clk: rockchip: add rk3288 vip_out clock ids
+Date: Wed, 18 Jan 2017 13:42:38 +0800
+Message-ID: <1484718161-27702-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484713256-3005-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>, heiko@sntech.de
-Cc: dianders@google.com, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Tested-by: Lin Huang <hl@rock-chips.com>
+Add clock-ids for the vip block of the rk3288
 
-On 2017年01月18日 12:20, Xing Zheng wrote:
-> The range of the  pclk_edp_div_con is [13:8] and 6 bits, not 5.
->
-> Reported-by: Lin Huang <hl@rock-chips.com>
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> ---
->
->   drivers/clk/rockchip/clk-rk3399.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 3490887..73121b14 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -1132,7 +1132,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
->   			RK3399_CLKGATE_CON(11), 8, GFLAGS),
->   
->   	COMPOSITE(PCLK_EDP, "pclk_edp", mux_pll_src_cpll_gpll_p, 0,
-> -			RK3399_CLKSEL_CON(44), 15, 1, MFLAGS, 8, 5, DFLAGS,
-> +			RK3399_CLKSEL_CON(44), 15, 1, MFLAGS, 8, 6, DFLAGS,
->   			RK3399_CLKGATE_CON(11), 11, GFLAGS),
->   	GATE(PCLK_EDP_NOC, "pclk_edp_noc", "pclk_edp", CLK_IGNORE_UNUSED,
->   			RK3399_CLKGATE_CON(32), 12, GFLAGS),
+Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+---
+ include/dt-bindings/clock/rk3288-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
+index 9a586e2..11183bf 100644
+--- a/include/dt-bindings/clock/rk3288-cru.h
++++ b/include/dt-bindings/clock/rk3288-cru.h
+@@ -88,6 +88,7 @@
+ #define SCLK_PVTM_GPU		124
+ #define SCLK_CRYPTO		125
+ #define SCLK_MIPIDSI_24M	126
++#define SCLK_VIP_OUT	127
+ 
+ #define SCLK_MAC		151
+ #define SCLK_MACREF_OUT		152
 -- 
-Lin Huang
+2.7.4
