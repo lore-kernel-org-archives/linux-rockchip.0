@@ -1,36 +1,104 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 01/11] dt-bindings: add rk3399 support for
- dw-mipi-rockchip
-Date: Thu, 19 Jan 2017 09:42:32 -0600
-Message-ID: <20170119154231.pt2tytn67yip3g42@rob-hp-laptop>
-References: <1484561311-494-1-git-send-email-zyw@rock-chips.com>
- <1484561311-494-2-git-send-email-zyw@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: add soc-specific uart compatibles for
+ rk3066/rk3188
+Date: Thu, 19 Jan 2017 19:02:00 +0100
+Message-ID: <20170119180201.2547-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1484561311-494-2-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBKYW4gMTYsIDIwMTcgYXQgMDY6MDg6MjFQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
-dGU6Cj4gVGhlIGR3LW1pcGktZHNpIG9mIHJrMzM5OSBpcyBhbG1vc3QgdGhlIHNhbWUgYXMgcmsz
-Mjg4LCB0aGUgcmszMzk5IGhhcwo+IGFkZGl0aW9uYWwgcGh5IGNvbmZpZyBjbG9jay4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+
-ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3Jv
-Y2tjaGlwLnR4dCAgICAgfCA0ICsrKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygr
-KSwgMSBkZWxldGlvbigtKQoKQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The serial IPs in Rockchip socs are based on Designware uarts and thus
+bind against the snps,dw-apb-uart compatible.
+On all newer socs we also carry around per-soc compatibles that allow
+us to have more specific drivers in the future - if needed.
+
+The cortex-a9 socs rk3066 and rk3188 that were added first don't have
+those yet, so add them for completenes sake.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3066a.dtsi | 4 ++++
+ arch/arm/boot/dts/rk3188.dtsi  | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index e498c362b9e7..f50481fd8e5c 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -687,6 +687,7 @@
+ };
+ 
+ &uart0 {
++	compatible = "rockchip,rk3066-uart", "snps,dw-apb-uart";
+ 	dmas = <&dmac1_s 0>, <&dmac1_s 1>;
+ 	dma-names = "tx", "rx";
+ 	pinctrl-names = "default";
+@@ -694,6 +695,7 @@
+ };
+ 
+ &uart1 {
++	compatible = "rockchip,rk3066-uart", "snps,dw-apb-uart";
+ 	dmas = <&dmac1_s 2>, <&dmac1_s 3>;
+ 	dma-names = "tx", "rx";
+ 	pinctrl-names = "default";
+@@ -701,6 +703,7 @@
+ };
+ 
+ &uart2 {
++	compatible = "rockchip,rk3066-uart", "snps,dw-apb-uart";
+ 	dmas = <&dmac2 6>, <&dmac2 7>;
+ 	dma-names = "tx", "rx";
+ 	pinctrl-names = "default";
+@@ -708,6 +711,7 @@
+ };
+ 
+ &uart3 {
++	compatible = "rockchip,rk3066-uart", "snps,dw-apb-uart";
+ 	dmas = <&dmac2 8>, <&dmac2 9>;
+ 	dma-names = "tx", "rx";
+ 	pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 869e189331ec..cf91254d0a43 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -599,21 +599,25 @@
+ };
+ 
+ &uart0 {
++	compatible = "rockchip,rk3188-uart", "snps,dw-apb-uart";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_xfer>;
+ };
+ 
+ &uart1 {
++	compatible = "rockchip,rk3188-uart", "snps,dw-apb-uart";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_xfer>;
+ };
+ 
+ &uart2 {
++	compatible = "rockchip,rk3188-uart", "snps,dw-apb-uart";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart2_xfer>;
+ };
+ 
+ &uart3 {
++	compatible = "rockchip,rk3188-uart", "snps,dw-apb-uart";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart3_xfer>;
+ };
+-- 
+2.11.0
