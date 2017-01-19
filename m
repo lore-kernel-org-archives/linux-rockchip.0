@@ -1,138 +1,105 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/1] usb: dwc2: add multiple clock handling
-Date: Thu, 19 Jan 2017 16:00:03 +0800
-Message-ID: <1484812803-8444-2-git-send-email-frank.wang@rock-chips.com>
-References: <1484812803-8444-1-git-send-email-frank.wang@rock-chips.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1484812803-8444-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add dts for RK3288-Tinker board
+Date: Thu, 19 Jan 2017 10:58:19 +0100
+Message-ID: <40159140.kOHBSj8v8b@phil>
+References: <1484791919-4665-1-git-send-email-eddie.cai@rock-chips.com>
+ <1484791919-4665-3-git-send-email-eddie.cai@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1484791919-4665-3-git-send-email-eddie.cai@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Eddie Cai <eddie.cai.linux@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Eddie Cai <eddie.cai@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Originally, dwc2 just handle one clock named otg, however, it may have
-two or more clock need to manage for some new SoCs, so this adds
-change clk to clk's array of dwc2_hsotg to handle more clocks operation.
+Hi Eddie,
 
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/usb/dwc2/core.h     |  5 ++++-
- drivers/usb/dwc2/platform.c | 39 ++++++++++++++++++++++++++-------------
- 2 files changed, 30 insertions(+), 14 deletions(-)
+Am Donnerstag, 19. Januar 2017, 10:11:59 CET schrieb Eddie Cai:
+> This patch add basic support for RK3288-Tinker board. We can boot in to
+> rootfs with this patch.
+> 
+> Signed-off-by: Eddie Cai <eddie.cai@rock-chips.com>
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 9548d3e..aa80837 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -121,6 +121,9 @@ static inline void dwc2_writel(u32 value, void __iomem *addr)
- /* Maximum number of Endpoints/HostChannels */
- #define MAX_EPS_CHANNELS	16
- 
-+/* Maximum number of dwc2 clocks */
-+#define DWC2_MAX_CLKS 3
-+
- /* dwc2-hsotg declarations */
- static const char * const dwc2_hsotg_supply_names[] = {
- 	"vusb_d",               /* digital USB supply, 1.2V */
-@@ -927,7 +930,7 @@ struct dwc2_hsotg {
- 	spinlock_t lock;
- 	void *priv;
- 	int     irq;
--	struct clk *clk;
-+	struct clk *clks[DWC2_MAX_CLKS];
- 	struct reset_control *reset;
- 
- 	unsigned int queuing_high_bandwidth:1;
-diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
-index 4fc8c60..5065114 100644
---- a/drivers/usb/dwc2/platform.c
-+++ b/drivers/usb/dwc2/platform.c
-@@ -123,17 +123,20 @@ static int dwc2_get_dr_mode(struct dwc2_hsotg *hsotg)
- static int __dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
- {
- 	struct platform_device *pdev = to_platform_device(hsotg->dev);
--	int ret;
-+	int clk, ret;
- 
- 	ret = regulator_bulk_enable(ARRAY_SIZE(hsotg->supplies),
- 				    hsotg->supplies);
- 	if (ret)
- 		return ret;
- 
--	if (hsotg->clk) {
--		ret = clk_prepare_enable(hsotg->clk);
--		if (ret)
-+	for (clk = 0; clk < DWC2_MAX_CLKS && hsotg->clks[clk]; clk++) {
-+		ret = clk_prepare_enable(hsotg->clks[clk]);
-+		if (ret) {
-+			while (--clk >= 0)
-+				clk_disable_unprepare(hsotg->clks[clk]);
- 			return ret;
-+		}
- 	}
- 
- 	if (hsotg->uphy)
-@@ -168,7 +171,7 @@ int dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
- static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
- {
- 	struct platform_device *pdev = to_platform_device(hsotg->dev);
--	int ret = 0;
-+	int clk, ret = 0;
- 
- 	if (hsotg->uphy)
- 		usb_phy_shutdown(hsotg->uphy);
-@@ -182,8 +185,9 @@ static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
- 	if (ret)
- 		return ret;
- 
--	if (hsotg->clk)
--		clk_disable_unprepare(hsotg->clk);
-+	for (clk = DWC2_MAX_CLKS - 1; clk >= 0; clk--)
-+		if (hsotg->clks[clk])
-+			clk_disable_unprepare(hsotg->clks[clk]);
- 
- 	ret = regulator_bulk_disable(ARRAY_SIZE(hsotg->supplies),
- 				     hsotg->supplies);
-@@ -209,7 +213,7 @@ int dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
- 
- static int dwc2_lowlevel_hw_init(struct dwc2_hsotg *hsotg)
- {
--	int i, ret;
-+	int i, clk, ret;
- 
- 	hsotg->reset = devm_reset_control_get_optional(hsotg->dev, "dwc2");
- 	if (IS_ERR(hsotg->reset)) {
-@@ -282,11 +286,20 @@ static int dwc2_lowlevel_hw_init(struct dwc2_hsotg *hsotg)
- 			hsotg->phyif = GUSBCFG_PHYIF8;
- 	}
- 
--	/* Clock */
--	hsotg->clk = devm_clk_get(hsotg->dev, "otg");
--	if (IS_ERR(hsotg->clk)) {
--		hsotg->clk = NULL;
--		dev_dbg(hsotg->dev, "cannot get otg clock\n");
-+	/* Clocks */
-+	for (clk = 0; clk < DWC2_MAX_CLKS; clk++) {
-+		hsotg->clks[clk] = of_clk_get(hsotg->dev->of_node, clk);
-+		if (IS_ERR(hsotg->clks[clk])) {
-+			ret = PTR_ERR(hsotg->clks[clk]);
-+			if (ret == -EPROBE_DEFER) {
-+				while (--clk >= 0)
-+					clk_put(hsotg->clks[clk]);
-+				return ret;
-+			}
-+
-+			hsotg->clks[clk] = NULL;
-+			break;
-+		}
- 	}
- 
- 	/* Regulators */
--- 
-2.0.0
+looks good in general, just some small question down below.
+
+[...]
+
+> +	/*
+> +	 * NOTE: vcc_sd isn't hooked up on v1.0 boards where power comes from
+> +	 * vcc_io directly.  Those boards won't be able to power cycle SD cards
+> +	 * but it shouldn't hurt to toggle this pin there anyway.
+> +	 */
+
+just to clarify, later board will have that pin connected, right?
+
+> +	vcc_sd: sdmmc-regulator {
+> +		compatible = "regulator-fixed";
+> +		gpio = <&gpio7 11 GPIO_ACTIVE_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sdmmc_pwr>;
+> +		regulator-name = "vcc_sd";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		startup-delay-us = <100000>;
+> +		vin-supply = <&vcc_io>;
+> +	};
+> +};
+
+[...]
+
+> +&hdmi {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	#sound-dai-cells = <0>;
+> +	ddc-i2c-bus = <&i2c5>;
+> +	status = "okay";
+> +	/* Don't use vopl for HDMI */
+> +	ports {
+> +		hdmi_in: port {
+> +			/delete-node/ endpoint@1;
+> +		};
+
+what is the reason for this? You enable both VOPs below and the linux display 
+subsystem should be able to select an appropriate VOP for output just fine on 
+its own. So there should be no reason for capping the hdmi's connection to one 
+of the vops.
+
+> +	};
+> +};
+
+[...]
+
+> +&usb_host0_ehci {
+> +	no-relinquish-port;
+
+This seems like an unused/undocumented property
+
+> +	status = "okay";
+> +};
+
+[...]
+
+> +&vopl {
+> +	status = "okay";
+> +	/* Don't use vopl for HDMI */
+> +	vopl_out: port {
+> +		/delete-node/ endpoint@0;
+> +	};
+
+see comment at the hdmi node
+
+> +};
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks
+Heiko
