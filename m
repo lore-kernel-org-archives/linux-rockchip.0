@@ -1,107 +1,97 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v2 4/4] arm: dts: Add support for ES8388 to the
-	Radxa Rock 2
-Date: Mon, 16 Jan 2017 09:17:53 +0100
-Message-ID: <20170116081753.13666-5-romain.perier@collabora.com>
-References: <20170116081753.13666-1-romain.perier@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add dts for RK3288-Tinker board
+Date: Fri, 20 Jan 2017 09:12:31 +0100
+Message-ID: <1831358.CPCqGifkXT@phil>
+References: <1484791919-4665-1-git-send-email-eddie.cai@rock-chips.com>
+ <40159140.kOHBSj8v8b@phil>
+ <CAJrj+DM5hVsmB_q+P8WPd0z_F1cYcGafyYZHXdX6P=nrqxpFyA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170116081753.13666-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAJrj+DM5hVsmB_q+P8WPd0z_F1cYcGafyYZHXdX6P=nrqxpFyA@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Eddie Cai <eddie.cai.linux@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Eddie Cai <eddie.cai@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device
-found at address 0x10. It also adds the definition for connecting
-the Rockchip I2S to the es8388 analog output.
+Hi Eddie,
 
-This commit is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.com> with some improvements.
+Am Freitag, 20. Januar 2017, 15:10:47 CET schrieb Eddie Cai:
+> 2017-01-19 17:58 GMT+08:00 Heiko Stuebner <heiko@sntech.de>:
+> > Hi Eddie,
+> > 
+> > Am Donnerstag, 19. Januar 2017, 10:11:59 CET schrieb Eddie Cai:
+> >> This patch add basic support for RK3288-Tinker board. We can boot in to
+> >> rootfs with this patch.
+> >> 
+> >> Signed-off-by: Eddie Cai <eddie.cai@rock-chips.com>
+> > 
+> > looks good in general, just some small question down below.
+> > 
+> > [...]
+> > 
+> >> +     /*
+> >> +      * NOTE: vcc_sd isn't hooked up on v1.0 boards where power comes
+> >> from
+> >> +      * vcc_io directly.  Those boards won't be able to power cycle SD
+> >> cards +      * but it shouldn't hurt to toggle this pin there anyway.
+> >> +      */
+> > 
+> > just to clarify, later board will have that pin connected, right?
+> 
+> Copy from rk3288-evb.dtsi. forgot to delete it. I will remove it in next
+> version
+> >> +     vcc_sd: sdmmc-regulator {
+> >> +             compatible = "regulator-fixed";
+> >> +             gpio = <&gpio7 11 GPIO_ACTIVE_LOW>;
+> >> +             pinctrl-names = "default";
+> >> +             pinctrl-0 = <&sdmmc_pwr>;
+> >> +             regulator-name = "vcc_sd";
+> >> +             regulator-min-microvolt = <3300000>;
+> >> +             regulator-max-microvolt = <3300000>;
+> >> +             startup-delay-us = <100000>;
+> >> +             vin-supply = <&vcc_io>;
+> >> +     };
+> >> +};
+> > 
+> > [...]
+> > 
+> >> +&hdmi {
+> >> +     #address-cells = <1>;
+> >> +     #size-cells = <0>;
+> >> +     #sound-dai-cells = <0>;
+> >> +     ddc-i2c-bus = <&i2c5>;
+> >> +     status = "okay";
+> >> +     /* Don't use vopl for HDMI */
+> >> +     ports {
+> >> +             hdmi_in: port {
+> >> +                     /delete-node/ endpoint@1;
+> >> +             };
+> > 
+> > what is the reason for this? You enable both VOPs below and the linux
+> > display subsystem should be able to select an appropriate VOP for output
+> > just fine on its own. So there should be no reason for capping the hdmi's
+> > connection to one of the vops.
+> 
+> The VOP big support 4k display. is designed for HDMI  4K display. VOP
+> little is for other display(eDP, LVDS, Mipi etc)
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
+The hdmi _can_ talk to both vops, which is why it has the connection to both. 
+Resolution-limitations and selecting a matching vop should be handled in the 
+drm driver I'd think - but you'll need to talk to Mark Yao or some else 
+knowledgable in graphics.
 
-Changes in v2: None
+The devicetree is about describing the _available_ hardware, not configuring 
+how it is supposed to be used ;-) .
 
- arch/arm/boot/dts/rk3288-rock2-square.dts | 37 +++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index 96a2e74..4f9b7d2 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -86,6 +86,17 @@
- 		#sound-dai-cells = <0>;
- 	};
- 
-+	sound_es8388 {
-+		compatible = "rockchip,rockchip-audio-es8388";
-+		rockchip,model = "Analog audio output";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8388>;
-+		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&headphone>;
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&hym8563>;
-@@ -173,10 +184,29 @@
- 	};
- };
- 
-+&i2c2 {
-+	status = "okay";
-+
-+	es8388: es8388@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_codec>;
-+		DVDD-supply = <&vcca_codec>;
-+		HPVDD-supply = <&vcca_codec>;
-+		PVDD-supply = <&vcca_codec>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
-+};
-+
- &i2c5 {
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-@@ -190,6 +220,13 @@
- 		};
- 	};
- 
-+	sound {
-+		headphone: headphone {
-+			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.9.3
+Heiko
