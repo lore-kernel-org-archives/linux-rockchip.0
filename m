@@ -1,38 +1,62 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
- phases
-Date: Fri, 20 Jan 2017 09:38:46 +0100
-Message-ID: <20170120083846.GB29509@kroah.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v3 0/5] Rockchip dw-mipi-dsi driver
+Date: Fri, 20 Jan 2017 18:10:46 +0800
+Message-ID: <1484907051-7159-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: xf@rock-chips.com, heiko@sntech.de, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, pavel@ucw.cz, len.brown@intel.com, linux-pm@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, wxt@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, mark.rutland@arm.com, devicetree@vger.kernel.org, robh+dt@kernel.org, galak@codeaurora.org, pawel.moll@arm.com, seanpaul@chromium.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 20, 2017 at 10:21:33AM +0800, Elaine Zhang wrote:
-> If a PM domain is powered off before system suspend,
-> we hope do nothing in system runtime suspend noirq phase
-> and system runtime resume noirq phase.
-> 
-> This modify is to slove system resume issue for RK3399.
-> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
-> so we must follow open vdd_gpu and power on pd_gpu,
-> power off pd_gpu and disable vdd_gpu.
-> Fix up in runtime resume noirq phase power on all PDs.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  drivers/base/power/domain.c | 10 +++++++---
->  include/linux/pm_domain.h   |  1 +
->  2 files changed, 8 insertions(+), 3 deletions(-)
-
-What changed from v1?  You always have to list that below the --- line.
-
-thanks,
-
-greg k-h
+SGkgYWxsCgpUaGlzIHBhdGNoIHNlcmlhbCBpcyBmb3IgUkszMzk5IE1JUEkgRFNJLiBUaGUgTUlQ
+SSBEU0kgY29udHJvbGxlciBvZgpSSzMzOTkgaXMgYWxtb3N0IHRoZSBzYW1lIGFzIFJLMzI4OCwg
+ZXhjZXB0IGEgbGl0dGxlIGJpdCBvZiBkaWZmZXJlbmNlCmluIHBoeSBjbG9jayBjb250cm9sbGlu
+ZyBhbmQgcG9ydCBpZCBzZWxlY3Rpb24gcmVnaXN0ZXIuIFRoZXNlIHBhdGNoZXMKYWRkIFJLMzM5
+OSBzdXBwb3J0IGFuZCB0aGUgcG93ZXIgZG9tYWluIHN1cHBvcnQuCgpBbmQgdGhlc2UgcGF0Y2hl
+cyBiYXNlIG9uIEpvaG4gS2VlcGluZydzIHNlcmllc1swXSwgaXQgZml4ZXMgbWFueSBidWdzLAp0
+aGV5IGhhdmUgYmVlbiB0ZXN0ZWQgb24gcmszMjg4IGV2YiBib2FyZC4KClswXToKWzAxLzI2XSBo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyMTMKWzAyLzI2XSBodHRwczov
+L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxNDUKWzAzLzI2XSBodHRwczovL3BhdGNo
+d29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyMzUKWzA0LzI2XSBodHRwczovL3BhdGNod29yay5r
+ZXJuZWwub3JnL3BhdGNoLzkzNDAxMjMKWzA1LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwu
+b3JnL3BhdGNoLzkzNDAxNjEKWzA2LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Bh
+dGNoLzkzNDAyMDMKWzA3LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkz
+NDAyMjkKWzA4LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxMzEK
+WzA5LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxOTEKWzEwLzI2
+XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxNzUKWzExLzI2XSBodHRw
+czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyMzcKWzEyLzI2XSBodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyMDcKWzEzLzI2XSBodHRwczovL3BhdGNod29y
+ay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyMzMKWzE0LzI2XSBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3BhdGNoLzkzNDAyMDUKWzE1LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
+L3BhdGNoLzkzNDAxODkKWzE2LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNo
+LzkzNDAxNDMKWzE3LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAx
+MTcKWzE4LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxOTMKWzE5
+LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxNTEKWzIwLzI2XSBo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxODMKWzIzLzI2XSBodHRwczov
+L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAxNzMKWzI0LzI2XSBodHRwczovL3BhdGNo
+d29yay5rZXJuZWwub3JnL3BhdGNoLzkzNDAyNTEKWzI1LzI2XSBodHRwczovL3BhdGNod29yay5r
+ZXJuZWwub3JnL3BhdGNoLzkzNDAxMjcKWzI2LzI2XSBodHRwczovL3BhdGNod29yay5rZXJuZWwu
+b3JnL3BhdGNoLzkzNDAxMzkKCgpDaGFuZ2VzIGluIHYzOgotIGJhc2Ugb24gSm9obiBLZWVwaW5n
+J3MgcGF0Y2ggc2VyaWVzCgpDaHJpcyBaaG9uZyAoNSk6CiAgZHQtYmluZGluZ3M6IGFkZCByazMz
+OTkgc3VwcG9ydCBmb3IgZHctbWlwaS1yb2NrY2hpcAogIGRybS9yb2NrY2hpcC9kc2k6IGR3LW1p
+cGk6IHN1cHBvcnQgUkszMzk5IG1pcGkgZHNpCiAgZHJtL3JvY2tjaGlwL2RzaTogcmVtb3ZlIG1v
+ZGVfdmFsaWQgZnVuY3Rpb24KICBkdC1iaW5kaW5nczogYWRkIHBvd2VyIGRvbWFpbiBub2RlIGZv
+ciBkdy1taXBpLXJvY2tjaGlwCiAgZHJtL3JvY2tjaGlwL2RzaTogYWRkIGR3LW1pcGkgcG93ZXIg
+ZG9tYWluIHN1cHBvcnQKCiAuLi4vZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hp
+cC50eHQgICAgICB8ICAgNyArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LmMgICAgICAgICAgICAgfCAxNTYgKysrKysrKysrKysrLS0tLS0tLS0tCiAyIGZpbGVzIGNoYW5n
+ZWQsIDk2IGluc2VydGlvbnMoKyksIDY3IGRlbGV0aW9ucygtKQoKLS0gCjIuNi4zCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
