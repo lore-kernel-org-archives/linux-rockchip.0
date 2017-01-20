@@ -1,48 +1,33 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] PCI: rockchip: mark PM functions as __maybe_unused
-Date: Fri, 20 Jan 2017 17:24:30 +0100
-Message-ID: <20170120162450.3690225-1-arnd@arndb.de>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Shawn Lin <shawn.lin@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [GIT PULL] rockchip clock changes for 4.11 part1
+Date: Fri, 20 Jan 2017 15:53:05 -0800
+Message-ID: <20170120235305.GE20800@codeaurora.org>
+References: <11273775.I1nKIbzby6@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <11273775.I1nKIbzby6@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When CONFIG_PM_SLEEP is disabled, we get harmless build warnings:
+On 01/19, Heiko Stuebner wrote:
+> Hi Mike, Stephen,
+> 
+> please find below the first part of general clock changes for 4.11.
+> It is based on v4.10-rc2 this time, as -rc1 ended up with a bug that
+> broke compilation of the whole of arm64 - fixed in [0]. Hope that is
+> ok with you.
+> 
+> So if nothing stands out, please pull.
+> 
 
-host/pcie-rockchip.c:1267:12: error: 'rockchip_pcie_resume_noirq' defined but not used [-Werror=unused-function]
-host/pcie-rockchip.c:1240:12: error: 'rockchip_pcie_suspend_noirq' defined but not used [-Werror=unused-function]
+Yeah I based clk-next on rc2 because of that already.
 
-Marking both functions as __maybe_unused avoids the warning without
-the need for #ifdef around them.
+Pulled into clk-next.
 
-Fixes: 013dd3d5e183 ("PCI: rockchip: Add system PM support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/pci/host/pcie-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 0d6e8ee5b017..b975116d2b03 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1237,7 +1237,7 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
- 	return 0;
- }
- 
--static int rockchip_pcie_suspend_noirq(struct device *dev)
-+static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
- {
- 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
- 	int ret;
-@@ -1264,7 +1264,7 @@ static int rockchip_pcie_suspend_noirq(struct device *dev)
- 	return ret;
- }
- 
--static int rockchip_pcie_resume_noirq(struct device *dev)
-+static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
- {
- 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
- 	int err;
 -- 
-2.9.0
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
