@@ -1,106 +1,67 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
-Date: Fri, 20 Jan 2017 14:16:55 +0100
-Message-ID: <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 0/4] Add support for es8388 on the rock2
+Date: Fri, 20 Jan 2017 15:54:54 +0100
+Message-ID: <ce2dca37-a9e2-4f1f-4990-ca38da3a6485@collabora.com>
+References: <20170117081705.14107-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170117081705.14107-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com> wrote:
-> If a PM domain is powered off before system suspend,
-> we hope do nothing in system runtime suspend noirq phase
-> and system runtime resume noirq phase.
+Hello,
 
-One can hope, but that isn't good enough. :-)
+Le 17/01/2017 =E0 09:17, Romain Perier a =E9crit :
+> This set of patches adds a machine driver for rockchip boards that use
+> ES8388 codecs. It also adds slave mode to the es8328 driver that
+> currently only supported the master mode. Then, it adds the required DT
+> definitions to link rockchip-i2s to the es8388 analog output.
+>
+> This work is based on the initial work that was done by Sjoerd Simons
+> <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org> with some improvements, changes and more
+> commits.
+>
+> Changes in v3:
+>  - Cosmetic changes in rockchip_es8388.c
+>  - Added missing email to MODULE_AUTHOR in rockchip_es8388.c
+> Changes in v2:
+>  - Fixed wrong use of the data structure i2c_device_id
+>  - Fixed wrong dependencies for SND_SOC_ROCKCHIP_ES8388
+>
+> Romain Perier (4):
+>   ASoC: es8328-i2c: Add compatible for ES8388
+>   ASoC: es8328: Add support for slave mode
+>   ASoC: rockchip: Add machine driver for ES8388 codecs
+>   arm: dts: Add support for ES8388 to the Radxa Rock 2
+>
+>  Documentation/devicetree/bindings/sound/es8328.txt |   2 +-
+>  .../devicetree/bindings/sound/rockchip-es8388.txt  |  28 +++
+>  arch/arm/boot/dts/rk3288-rock2-square.dts          |  37 +++
+>  sound/soc/codecs/es8328-i2c.c                      |   2 +
+>  sound/soc/codecs/es8328.c                          |  28 ++-
+>  sound/soc/rockchip/Kconfig                         |   9 +
+>  sound/soc/rockchip/Makefile                        |   2 +
+>  sound/soc/rockchip/rockchip_es8388.c               | 269 +++++++++++++++=
+++++++
+>  8 files changed, 370 insertions(+), 7 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip-es83=
+88.txt
+>  create mode 100644 sound/soc/rockchip/rockchip_es8388.c
 
+Please ignore this v3, I will re-submit it with some improvements.
 
->
-> This modify is to slove system resume issue for RK3399.
-> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
-> so we must follow open vdd_gpu and power on pd_gpu,
-> power off pd_gpu and disable vdd_gpu.
-> Fix up in runtime resume noirq phase power on all PDs.
+Regards,
 
-This doesn't make any sense to me. Can please try to explain this is
-in great more detail, then I can try to help.
-
->
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  drivers/base/power/domain.c | 10 +++++++---
->  include/linux/pm_domain.h   |  1 +
->  2 files changed, 8 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/base/power/domain.c b/drivers/base/power/domain.c
-> index 5711708532db..81351eec570f 100644
-> --- a/drivers/base/power/domain.c
-> +++ b/drivers/base/power/domain.c
-> @@ -842,8 +842,10 @@ static int pm_genpd_prepare(struct device *dev)
->
->         genpd_lock(genpd);
->
-> -       if (genpd->prepared_count++ == 0)
-> +       if (genpd->prepared_count++ == 0) {
->                 genpd->suspended_count = 0;
-> +               genpd->suspend_power_off = genpd->status == GPD_STATE_POWER_OFF;
-> +       }
->
->         genpd_unlock(genpd);
->
-> @@ -877,7 +879,8 @@ static int pm_genpd_suspend_noirq(struct device *dev)
->         if (IS_ERR(genpd))
->                 return -EINVAL;
->
-> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
-> +       if (genpd->suspend_power_off ||
-> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
->                 return 0;
-
-This isn't going to work, because the PM domain might have been powered on.
-
-There is simply no guarantee to that the PM domain remains powered off
-during the system PM suspend phases. For example, any device in the PM
-domain that get runtime resumed after the ->prepare() callback is
-invoked this, will of course also trigger the PM domain to be powered
-on.
-
->
->         if (genpd->dev_ops.stop && genpd->dev_ops.start) {
-> @@ -914,7 +917,8 @@ static int pm_genpd_resume_noirq(struct device *dev)
->         if (IS_ERR(genpd))
->                 return -EINVAL;
->
-> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
-> +       if (genpd->suspend_power_off ||
-> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
->                 return 0;
-
-Ditto, for the same reasons as above.
-
->
->         /*
-> diff --git a/include/linux/pm_domain.h b/include/linux/pm_domain.h
-> index 81ece61075df..9c0dc364f089 100644
-> --- a/include/linux/pm_domain.h
-> +++ b/include/linux/pm_domain.h
-> @@ -62,6 +62,7 @@ struct generic_pm_domain {
->         unsigned int device_count;      /* Number of devices */
->         unsigned int suspended_count;   /* System suspend device counter */
->         unsigned int prepared_count;    /* Suspend counter of prepared devices */
-> +       bool suspend_power_off; /* Power status before system suspend */
->         int (*power_off)(struct generic_pm_domain *domain);
->         int (*power_on)(struct generic_pm_domain *domain);
->         struct gpd_dev_ops dev_ops;
-> --
-> 1.9.1
->
->
-
-Kind regards
-Uffe
+Romain
