@@ -1,616 +1,229 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add dts for RK3288-Tinker board
-Date: Fri, 20 Jan 2017 10:29:46 +0800
-Message-ID: <c8e937f3-1d0b-ecdc-e1af-5db2339c52ef@rock-chips.com>
-References: <1484791919-4665-1-git-send-email-eddie.cai@rock-chips.com>
- <1484791919-4665-3-git-send-email-eddie.cai@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH] Revert "mmc: dw_mmc-rockchip: add runtime PM support"
+Date: Fri, 20 Jan 2017 15:08:57 +0900
+Message-ID: <fba28eda-51c7-2012-03ca-48b6f94e4a18@samsung.com>
+References: <CGME20161228153516epcas2p253c6bc0371ab0df464573b63218795ef@epcas2p2.samsung.com>
+ <1482939288-14950-1-git-send-email-ayaka@soulik.info>
+ <e0cc8029-0155-4879-a643-ddc4239a55ab@samsung.com>
+ <7e37b8ad-39d0-3a94-f75a-2166ae2caf10@samsung.com>
+ <7fb90b9e-75c3-0184-4f0a-d4113899b860@rock-chips.com>
+ <04b667d9-2591-51ff-e024-047bbb6e17c3@rock-chips.com>
+ <6ccade72-ae20-2ffa-1504-2536b9f03adf@soulik.info>
+ <95648282-38f5-42c2-fd8b-ab603eb3a168@gmail.com>
+ <0ccf164f-0d35-9cc3-f288-9b582db23efb@soulik.info>
+ <20afb1da-9e45-f515-01bf-2f5365d20d61@samsung.com>
+ <8f8c66f1-82d6-5151-ff64-ef62596aa10d@rock-chips.com>
+ <c8307da1-8e43-29b5-c87d-292a56831c98@samsung.com>
+ <CABgxDo+3qMcHn6e2s_ZJy1crdi=ch5hQk6sy3W29Q12-ye33Qw@mail.gmail.com>
+ <2cdd0b6c-a099-595d-1c0b-be7933b0d4a6@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484791919-4665-3-git-send-email-eddie.cai@rock-chips.com>
+In-reply-to: <2cdd0b6c-a099-595d-1c0b-be7933b0d4a6@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux@armlinux.org.uk
-Cc: shawn.lin@rock-chips.com, devicetree@vger.kernel.org, Eddie Cai <eddie.cai@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Romain Perier <romain.perier@collabora.com>, Romain Perier <romain.perier@gmail.com>
+Cc: Randy Li <randy.li@rock-chips.com>, ayaka <ayaka@soulik.info>, Jaehoon Chung <jh80.chung@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-mmc@vger.kernel.org, ulf.hansson@linaro.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, xzy.xu@rock-chips.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/1/19 10:11, Eddie Cai wrote:
-> This patch add basic support for RK3288-Tinker board. We can boot in to rootfs
-> with this patch.
->
-> Signed-off-by: Eddie Cai <eddie.cai@rock-chips.com>
-> ---
->  arch/arm/boot/dts/Makefile          |   1 +
->  arch/arm/boot/dts/rk3288-tinker.dts | 556 ++++++++++++++++++++++++++++++++++++
->  2 files changed, 557 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk3288-tinker.dts
->
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 7327250..4fc05b7 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -679,6 +679,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->  	rk3288-popmetal.dtb \
->  	rk3288-r89.dtb \
->  	rk3288-rock2-square.dtb \
-> +	rk3288-tinker.dtb \
->  	rk3288-veyron-brain.dtb \
->  	rk3288-veyron-jaq.dtb \
->  	rk3288-veyron-jerry.dtb \
-> diff --git a/arch/arm/boot/dts/rk3288-tinker.dts b/arch/arm/boot/dts/rk3288-tinker.dts
-> new file mode 100644
-> index 0000000..37cb431
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk3288-tinker.dts
-> @@ -0,0 +1,556 @@
-> +/*
-> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "rk3288.dtsi"
-> +
-> +/ {
-> +	model = "Rockchip RK3288 Tinker Board";
-> +	compatible = "rockchip,rk3288-tinker", "rockchip,rk3288";
-> +
-> +	memory {
-> +		reg = <0x0 0x80000000>;
-> +		device_type = "memory";
-> +	};
-> +
-> +	ext_gmac: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "ext_gmac";
-> +	};
-> +
-> +	gpio-keys {
-> +		compatible = "gpio-keys";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		autorepeat;
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pwrbtn>;
-> +
-> +		button@0 {
-> +			gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
-> +			linux,code = <116>;
-> +			label = "GPIO Key Power";
-> +			linux,input-type = <1>;
-> +			gpio-key,wakeup = <1>;
-> +			debounce-interval = <100>;
-> +		};
-> +	};
-> +
-> +	gpio-leds {
-> +		compatible = "gpio-leds";
-> +
-> +		pwr-led {
-> +			gpios = <&gpio2 2 GPIO_ACTIVE_HIGH>;
-> +			linux,default-trigger = "default-on";
-> +		};
-> +
-> +		act-led {
-> +			gpios=<&gpio2 3 GPIO_ACTIVE_LOW>;
-> +			linux,default-trigger="mmc0";
-> +		};
-> +	};
-> +
-> +	sound {
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,format = "i2s";
-> +		simple-audio-card,name = "rockchip,tinker-codec";
-> +		simple-audio-card,mclk-fs = <512>;
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&i2s>;
-> +		};
-> +		simple-audio-card,codec {
-> +			sound-dai = <&hdmi>;
-> +		};
-> +	};
-> +
-> +	vcc_sys: vsys-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sys";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
-> +
-> +	/*
-> +	 * NOTE: vcc_sd isn't hooked up on v1.0 boards where power comes from
-> +	 * vcc_io directly.  Those boards won't be able to power cycle SD cards
-> +	 * but it shouldn't hurt to toggle this pin there anyway.
-> +	 */
-> +	vcc_sd: sdmmc-regulator {
-> +		compatible = "regulator-fixed";
-> +		gpio = <&gpio7 11 GPIO_ACTIVE_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&sdmmc_pwr>;
-> +		regulator-name = "vcc_sd";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		startup-delay-us = <100000>;
-> +		vin-supply = <&vcc_io>;
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	cpu0-supply = <&vdd_cpu>;
-> +};
-> +
-> +&gmac {
-> +	phy-supply = <&vcc33_lan>;
-> +	phy-mode = "rgmii";
-> +	clock_in_out = "input";
-> +	snps,reset-gpio = <&gpio4 7 0>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 10000 1000000>;
-> +	assigned-clocks = <&cru SCLK_MAC>;
-> +	assigned-clock-parents = <&ext_gmac>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&rgmii_pins>;
-> +	tx_delay = <0x30>;
-> +	rx_delay = <0x10>;
-> +	status = "ok";
-> +};
-> +
-> +&hdmi {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	#sound-dai-cells = <0>;
-> +	ddc-i2c-bus = <&i2c5>;
-> +	status = "okay";
-> +	/* Don't use vopl for HDMI */
-> +	ports {
-> +		hdmi_in: port {
-> +			/delete-node/ endpoint@1;
-> +		};
-> +	};
-> +};
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +	clock-frequency = <400000>;
-> +
-> +	rk808: pmic@1b {
-> +		compatible = "rockchip,rk808";
-> +		reg = <0x1b>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int &global_pwroff &dvs_1 &dvs_2>;
-> +		dvs-gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>,
-> +				<&gpio0 12 GPIO_ACTIVE_HIGH>;
-> +
-> +		rockchip,system-power-controller;
-> +		wakeup-source;
-> +		#clock-cells = <1>;
-> +		clock-output-names = "xin32k", "rk808-clkout2";
-> +
-> +		vcc1-supply = <&vcc_sys>;
-> +		vcc2-supply = <&vcc_sys>;
-> +		vcc3-supply = <&vcc_sys>;
-> +		vcc4-supply = <&vcc_sys>;
-> +		vcc6-supply = <&vcc_sys>;
-> +		vcc7-supply = <&vcc_sys>;
-> +		vcc8-supply = <&vcc_18>;
-> +		vcc9-supply = <&vcc_io>;
-> +		vcc10-supply = <&vcc_io>;
-> +		vcc11-supply = <&vcc_sys>;
-> +		vcc12-supply = <&vcc_io>;
-> +		vddio-supply = <&vcc18_ldo1>;
-> +
-> +		regulators {
-> +			vdd_cpu: DCDC_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <750000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-name = "vdd_arm";
-> +				regulator-ramp-delay = <6000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdd_gpu: DCDC_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <850000>;
-> +				regulator-max-microvolt = <1250000>;
-> +				regulator-name = "vdd_gpu";
-> +				regulator-ramp-delay = <6000>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_ddr";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_io: DCDC_REG4 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcc_io";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vcc18_ldo1: LDO_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_ldo1";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc33_mipi: LDO_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcc33_mipi";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdd_10: LDO_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd_10";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +
-> +			vcc18_codec: LDO_REG4 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_codec";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vccio_sd: LDO_REG5 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
+Hi,
 
+On 01/17/2017 10:38 PM, Romain Perier wrote:
+> Hi,
+> 
+> In my case I can reproduce the issue on the rock2 and the firefly-rk3288. A workaround is to
+> 
+> comment the line ".pm = <&pm_ops_foo>" .
 
-are some other io banks or devices powered by
-vccio_sd, so that you mark it as boot-on and always-on?
+Sorry for late. I'm checking runtime PM for this. 
+After that, i will decide whether revert or not.
 
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vccio_sd";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vdd10_lcd: LDO_REG6 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd10_lcd";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +
-> +			vcc_18: LDO_REG7 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc_18";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc18_lcd: LDO_REG8 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_lcd";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc33_sd: SWITCH_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc33_sd";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc33_lan: SWITCH_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc33_lan";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	status = "okay";
-> +};
-> +
-> +&i2c5 {
-> +	status = "okay";
-> +};
-> +
-> +&i2s {
-> +	#sound-dai-cells = <0>;
-> +	status = "okay";
-> +};
-> +
-> +&io_domains {
-> +	status = "okay";
-> +
-> +	sdcard-supply = <&vccio_sd>;
-> +};
-> +
-> +&pinctrl {
-> +	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
-> +		drive-strength = <8>;
-> +	};
-> +
-> +	pcfg_pull_up_drv_8ma: pcfg-pull-up-drv-8ma {
-> +		bias-pull-up;
-> +		drive-strength = <8>;
-> +	};
-> +
-> +	backlight {
-> +		bl_en: bl-en {
-> +			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	buttons {
-> +		pwrbtn: pwrbtn {
-> +			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
-> +	eth_phy {
-> +		eth_phy_pwr: eth-phy-pwr {
-> +			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pmic {
-> +		pmic_int: pmic-int {
-> +			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO \
-> +					&pcfg_pull_up>;
-> +		};
-> +
-> +		dvs_1: dvs-1 {
-> +			rockchip,pins = <RK_GPIO0 11 RK_FUNC_GPIO \
-> +					&pcfg_pull_down>;
-> +		};
-> +
-> +		dvs_2: dvs-2 {
-> +			rockchip,pins = <RK_GPIO0 12 RK_FUNC_GPIO \
-> +					&pcfg_pull_down>;
-> +		};
-> +	};
-> +
-> +	sdmmc {
-> +		/*
-> +		 * Default drive strength isn't enough to achieve even
-> +		 * high-speed mode on EVB board so bump up to 8ma.
-> +		 */
-> +		sdmmc_bus4: sdmmc-bus4 {
-> +			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
-> +					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
-> +					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
-> +					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-> +		};
-> +
-> +		sdmmc_clk: sdmmc-clk {
-> +			rockchip,pins = <6 20 RK_FUNC_1 \
-> +					&pcfg_pull_none_drv_8ma>;
-> +		};
-> +
-> +		sdmmc_cmd: sdmmc-cmd {
-> +			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-> +		};
-> +
-> +		sdmmc_pwr: sdmmc-pwr {
-> +			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	usb {
-> +		host_vbus_drv: host-vbus-drv {
-> +			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
-> +		pwr_3g: pwr-3g {
-> +			rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> +
-> +&pwm0 {
-> +	status = "okay";
-> +};
-> +
-> +&saradc {
-> +	vref-supply = <&vcc18_ldo1>;
-> +	status ="okay";
-> +};
-> +
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	card-detect-delay = <200>;
-> +	disable-wp;			/* wp not hooked up */
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-> +	status = "okay";
-> +	supports-sd;
+Best Regards,
+Jaehoon Chung
 
-This is not upstreamed property. We have no-sdio/no-emmc there to
-skip the init sequence.
-
-> +	vmmc-supply = <&vcc_sd>;
-> +	vqmmc-supply = <&vccio_sd>;
-> +};
-> +
-> +&tsadc {
-> +	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
-> +	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
-> +	status = "okay";
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> +&uart1 {
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> +
-> +&uart3 {
-> +	status = "okay";
-> +};
-> +
-> +&uart4 {
-> +	status = "okay";
-> +};
-> +
-> +&usbphy {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ehci {
-> +	no-relinquish-port;
-> +	status = "okay";
-> +};
-> +
-> +&usb_host1 {
-> +	status = "okay";
-> +};
-> +
-> +&usb_otg {
-> +	status= "okay";
-> +};
-> +
-> +&vopb {
-> +	status = "okay";
-> +};
-> +
-> +&vopb_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&vopl {
-> +	status = "okay";
-> +	/* Don't use vopl for HDMI */
-> +	vopl_out: port {
-> +		/delete-node/ endpoint@0;
-> +	};
-> +};
-> +
-> +&vopl_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&wdt {
-> +	status = "okay";
-> +};
-> +
->
-
-
--- 
-Best Regards
-Shawn Lin
+> 
+> Thanks,
+> Romain
+> 
+> 
+> Le 17/01/2017 à 14:28, Romain Perier a écrit :
+>> Hello,
+>>
+>> This commit also breaks reboot and poweroff (the pmic no longer turn the power supply off), see below:
+>>
+>> # poweroff
+>> # Stopping network: ifdown: interface lo not configured
+>> OK
+>> Saving random seed... done.
+>> Stopping logging: OK
+>> umount: devtmpfs busy - remounted read-only
+>> The system is going down NOW!
+>> Sent SIGTERM to all processes
+>> Sent SIGKILL to all processes
+>> Requesting system poweroff
+>> [  243.673159] INFO: task init:168 blocked for more than 120 seconds.
+>> [  243.701298]       Not tainted 4.10.0-rc4-13066-gc10b6c6 #108
+>> [  243.728802] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+>> [  243.758948] init            D    0   168      1 0x00000000
+>> [  243.786412] [<c0888740>] (__schedule) from [<c0888b10>] (schedule+0x44/0x9c)
+>> [  243.815411] [<c0888b10>] (schedule) from [<c088c218>] (schedule_timeout+0x1d8/0x220)
+>> [  243.845267] [<c088c218>] (schedule_timeout) from [<c0889528>] (wait_for_common+0xa4/0x168)
+>> [  243.876105] [<c0889528>] (wait_for_common) from [<c06da03c>] (mmc_wait_for_req_done+0x8c/0x110)
+>> [  243.907150] [<c06da03c>] (mmc_wait_for_req_done) from [<c06da204>] (mmc_wait_for_cmd+0x58/0x78)
+>> [  243.937855] [<c06da204>] (mmc_wait_for_cmd) from [<c06e14ec>] (__mmc_switch+0xbc/0x34c)
+>> [  243.967791] [<c06e14ec>] (__mmc_switch) from [<c06e17a4>] (mmc_switch+0x28/0x30)
+>> [  243.997029] [<c06e17a4>] (mmc_switch) from [<c06db144>] (mmc_flush_cache+0x54/0x80)
+>> [  244.026955] [<c06db144>] (mmc_flush_cache) from [<c06e0084>] (_mmc_suspend+0x40/0x268)
+>> [  244.057529] [<c06e0084>] (_mmc_suspend) from [<c06dcf3c>] (mmc_bus_shutdown+0x40/0x64)
+>> [  244.088412] [<c06dcf3c>] (mmc_bus_shutdown) from [<c04db050>] (device_shutdown+0x144/0x1d8)
+>> [  244.120015] [<c04db050>] (device_shutdown) from [<c01503b8>] (kernel_power_off+0x34/0x70)
+>> [  244.151235] [<c01503b8>] (kernel_power_off) from [<c0150598>] (SyS_reboot+0x15c/0x1d0)
+>> [  244.182037] [<c0150598>] (SyS_reboot) from [<c01076c0>] (ret_fast_syscall+0x0/0x3c)
+>> [  366.553025] INFO: task init:168 blocked for more than 120 seconds.
+>> [  366.583187]       Not tainted 4.10.0-rc4-13066-gc10b6c6 #108
+>> [  366.613053] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+>>
+>>
+>>
+>> Reverting this commit solves the issue.
+>>
+>> Regards,
+>> Romain
+>>
+>>
+>> 2016-12-30 3:50 GMT+01:00 Jaehoon Chung <jh80.chung@samsung.com <mailto:jh80.chung@samsung.com>>:
+>>
+>>     On 12/30/2016 11:44 AM, Randy Li wrote:
+>>     >
+>>     >
+>>     > On 12/30/2016 10:35 AM, Jaehoon Chung wrote:
+>>     >> On 12/30/2016 12:07 AM, ayaka wrote:
+>>     >>>
+>>     >>>
+>>     >>> On 12/29/2016 10:04 PM, Jaehoon Chung wrote:
+>>     >>>> Hi,
+>>     >>>>
+>>     >>>> On 12/29/2016 09:55 PM, ayaka wrote:
+>>     >>>>> [    5.849733] rk_gmac-dwmac ff290000.ethernet (unnamed
+>>     net_device) (uninitialized): Enable RX Mitigation via HW Watchdog
+>>     Timer
+>>     >>>>> [    5.944512] mmc_host mmc1: Bus speed (slot 0) =
+>>     50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
+>>     >>>>> [    5.958249] mmc1: new ultra high speed DDR50 SDIO card at
+>>     address 0001
+>>     >>>>> [    6.294548] dwmmc_rockchip ff0f0000.dwmmc: Successfully
+>>     tuned phase to 177
+>>     >>>>> [    6.301591] mmc2: new HS200 MMC card at address 0001
+>>     >>>>> [    6.306758] mmc_host mmc0: Bus speed (slot 0) = 300000Hz
+>>     (slot req 300000Hz, actual 300000HZ div = 0)
+>>     >>>>> [    6.316830] mmcblk2: mmc2:0001 AGND3R 14.6 GiB
+>>     >>>>> [    6.321881] mmcblk2boot0: mmc2:0001 AGND3R partition 1
+>>     4.00 MiB
+>>     >>>>> [    6.328331] mmcblk2boot1: mmc2:0001 AGND3R partition 2
+>>     4.00 MiB
+>>     >>>>> [    6.334792] mmcblk2rpmb: mmc2:0001 AGND3R partition 3
+>>     4.00 MiB
+>>     >>>>> [    6.344295]  mmcblk2: p1 p2 p3 p4 p5 p6 p7
+>>     >>>>> [    6.469892] mmc_host mmc0: Bus speed (slot 0) = 200000Hz
+>>     (slot req 200000Hz, actual 200000HZ div = 0)
+>>     >>>>> [    6.621888] mmc_host mmc0: Bus speed (slot 0) = 187500Hz
+>>     (slot req 100000Hz, actual 93750HZ div = 1)
+>>     >>>>> [    6.917883] libphy: stmmac: probed
+>>     >>>>> [    6.921319] rk_gmac-dwmac ff290000.ethernet eth0: PHY ID
+>>     001cc915 at 0 IRQ POLL (stmmac-0:00) active
+>>     >>>>> [    6.930476] rk_gmac-dwmac ff290000.ethernet eth0: PHY ID
+>>     001cc915 at 2 IRQ POLL (stmmac-0:02)
+>>     >>>>> [    6.939757] input: gpio-keys as
+>>     /devices/platform/gpio-keys/input/input0
+>>     >>>>> [    6.946937] rtc-hym8563 0-0051: no valid clock/calendar
+>>     values available
+>>     >>>>> [    6.953694] rtc-hym8563 0-0051: hctosys: unable to read
+>>     the hardware clock
+>>     >>>>> [    6.961262] vcc_sd: disabling
+>>     >>>>> [    6.964275] dovdd_1v8: disabling
+>>     >>>>> [    6.967527] dvdd_1v2: disabling
+>>     >>>>> [    6.971006] vdd10_lcd: disabling
+>>     >>>>> [    6.974701] vcc18_lcd: disabling
+>>     >>>>> [    6.978467] ttyS2 - failed to request DMA
+>>     >>>>> [    7.101883] mmc_host mmc0: Bus speed (slot 0) = 400000Hz
+>>     (slot req 400000Hz, actual 400000HZ div = 0)
+>>     >>>>> [    7.253874] mmc_host mmc0: Bus speed (slot 0) = 300000Hz
+>>     (slot req 300000Hz, actual 300000HZ div = 0)
+>>     >>>>> [    7.405883] mmc_host mmc0: Bus speed (slot 0) = 200000Hz
+>>     (slot req 200000Hz, actual 200000HZ div = 0)
+>>     >>>>> [    7.557885] mmc_host mmc0: Bus speed (slot 0) = 187500Hz
+>>     (slot req 100000Hz, actual 93750HZ div = 1)
+>>     >>>>> [    8.037872] mmc_host mmc0: Bus speed (slot 0) = 400000Hz
+>>     (slot req 400000Hz, actual 400000HZ div = 0)
+>>     >>>>> [    8.189877] mmc_host mmc0: Bus speed (slot 0) = 300000Hz
+>>     (slot req 300000Hz, actual 300000HZ div = 0)
+>>     >>>>> [    8.341881] mmc_host mmc0: Bus speed (slot 0) = 200000Hz
+>>     (slot req 200000Hz, actual 200000HZ div = 0)
+>>     >>>>> [    8.493884] mmc_host mmc0: Bus speed (slot 0) = 187500Hz
+>>     (slot req 100000Hz, actual 93750HZ div = 1)
+>>     >>>>> [    8.973871] mmc_host mmc0: Bus speed (slot 0) = 400000Hz
+>>     (slot req 400000Hz, actual 400000HZ div = 0)
+>>     >>>>> [    9.125876] mmc_host mmc0: Bus speed (slot 0) = 300000Hz
+>>     (slot req 300000Hz, actual 300000HZ div = 0)
+>>     >>>>> [    9.277884] mmc_host mmc0: Bus speed (slot 0) = 200000Hz
+>>     (slot req 200000Hz, actual 200000HZ div = 0)
+>>     >>>>> [    9.429882] mmc_host mmc0: Bus speed (slot 0) = 187500Hz
+>>     (slot req 100000Hz, actual 93750HZ div = 1)
+>>     >>>>>
+>>     >>>>> looping here
+>>     >>>>>
+>>     >>>>> If I revert that patch, there are still lots of Bus speed
+>>     messages, but finally would enter into system.
+>>     >>>>>
+>>     >>>> Plz..Don't put the comment on the top.
+>>     >>>>
+>>     >>>> Which kernel did you use?
+>>     >>> Add linux-next specific files for 20161224
+>>     >>
+>>     >> mmc0 is what card? Is it polling for detecting card?
+>>     >> (It seems the SD-card..right?)
+>>     > Yes, but the Firefly release won't show that, just stop at
+>>     "ttyS2 - failed to request DMA". I check both the firefly reload
+>>     and firefly release, they both have a cd line for them, so it
+>>     won't be poll mode.
+>>
+>>     I don't have Rockchip board, so I hope that Shawn will check it.
+>>     But i will check the displayed the log message.
+>>
+>>     Best Regards,
+>>     Jaehoon Chung
+>>
+>>     >> Those logs should be polled for detecting mmc0 card..Hmm..I
+>>     sent the patch for disabling log message when polling.
+>>     >> If this log is displayed, then my patch might be some wrong.. :(
+>>     >>
+>>     >> Best Regards,
+>>     >> Jaehoon Chung
+>>     >>
+>>     >>>>
+>>     >>>>>>>>
+>>     >>>>>>>>
+>>     >>>>>>>>
+>>     >>>>>>>
+>>     >>
+>>     >> [snip]
+>>     >>
+>>     >>>
+>>     >>>
+>>     >>>
+>>     >>>
+>>     >>
+>>     >>
+>>     >
+>>
+>>
+>>     _______________________________________________
+>>     Linux-rockchip mailing list
+>>     Linux-rockchip@lists.infradead.org
+>>     <mailto:Linux-rockchip@lists.infradead.org>
+>>     http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>     <http://lists.infradead.org/mailman/listinfo/linux-rockchip>
+>>
+>>
+> 
+> 
