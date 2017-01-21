@@ -1,67 +1,41 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 3/3] Rockchip dts64 updates for 4.11 part1
-Date: Sat, 21 Jan 2017 01:12:01 +0100
-Message-ID: <7817230.eJtdPce88n@phil>
-References: <6458001.3c0YmcoF8y@phil>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH v2 08/26] drm/rockchip: dw-mipi-dsi: include bad value in
+ error message
+Date: Sat, 21 Jan 2017 16:31:10 +0000
+Message-ID: <20170121163128.22240-9-john@metanate.com>
+References: <20170121163128.22240-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6458001.3c0YmcoF8y@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170121163128.22240-1-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 0c744ea4f77d72b3dcebb7a8f2684633ec79be88:
-
-  Linux 4.10-rc2 (2017-01-01 14:31:53 -0800)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.11-rockchip-dts64-1
-
-for you to fetch changes up to 8cbb59af7ecf183b1761a178835e1c771167fa28:
-
-  arm64: dts: rockchip: add rockchip,grf property for RK3399 PMUCRU/CRU (2017-01-13 20:03:15 +0100)
-
-----------------------------------------------------------------
-64bit dts changes with some adjustments to the pcie controller,
-usb clocks, grf phandles for the rk3399 CRUs, epd pinctrl settings,
-a phandle to the rk3399 tsadc and converting boards to use the
-recently introduced pin constants.
-
-----------------------------------------------------------------
-Andy Yan (1):
-      arm64: dts: rockchip: use pin constants to describe gpios
-
-Brian Norris (2):
-      arm64: dts: rockchip: add rk3399 thermal_zones phandle
-      arm64: dts: rockchip: add rk3399 eDP HPD pinctrl
-
-Shawn Lin (2):
-      arm64: dts: rockchip: add max-link-speed for rk3399
-      arm64: dts: rockchip: add aspm-no-l0s for rk3399
-
-William wu (1):
-      arm64: dts: rockchip: add u2phy clock for ehci and ohci of rk3399
-
-Xing Zheng (1):
-      arm64: dts: rockchip: add rockchip,grf property for RK3399 PMUCRU/CRU
-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       | 10 +++---
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    | 10 +++---
- .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    | 14 ++++----
- arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    | 10 +++---
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts        | 16 ++++-----
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  8 ++---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 41 +++++++++++++++++-----
- 7 files changed, 66 insertions(+), 43 deletions(-)
+QXMgYW4gYWlkIHRvIGRlYnVnZ2luZy4KClNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9o
+bkBtZXRhbmF0ZS5jb20+Ci0tLQpVbmNoYW5nZWQgaW4gdjIKLS0tCiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDMgKystCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
+b25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
+YwppbmRleCAyZTZhZDQ1OTFlYmYuLjkyZGJjM2U1NjYwMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLmMKQEAgLTY0NCw3ICs2NDQsOCBAQCBzdGF0aWMgc3NpemVfdCBkd19t
+aXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAogCQlyZXQg
+PSBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShkc2ksIG1zZyk7CiAJCWJyZWFrOwogCWRlZmF1
+bHQ6Ci0JCWRldl9lcnIoZHNpLT5kZXYsICJ1bnN1cHBvcnRlZCBtZXNzYWdlIHR5cGVcbiIpOwor
+CQlkZXZfZXJyKGRzaS0+ZGV2LCAidW5zdXBwb3J0ZWQgbWVzc2FnZSB0eXBlIDB4JTAyeFxuIiwK
+KwkJCW1zZy0+dHlwZSk7CiAJCXJldCA9IC1FSU5WQUw7CiAJfQogCi0tIAoyLjExLjAuMTk3Lmdi
+NTU2ZGU1LmRpcnR5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
