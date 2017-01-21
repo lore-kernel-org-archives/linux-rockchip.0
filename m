@@ -1,60 +1,66 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 13/26] drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
-Date: Sat, 21 Jan 2017 16:31:15 +0000
-Message-ID: <20170121163128.22240-14-john@metanate.com>
+Subject: [PATCH v2 05/26] drm/rockchip: dw-mipi-dsi: fix command header writes
+Date: Sat, 21 Jan 2017 16:31:07 +0000
+Message-ID: <20170121163128.22240-6-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Panel drivers may want to sent commands during the disable function, for
-example MIPI_DCS_SET_DISPLAY_OFF before the video signal ends.  In order
-to send commands we need to write to registers, so pclk must be enabled.
-
-While changing this, remove the unnecessary code after the panel
-unprepare call which seems to be a workaround for a specific panel and
-thus belongs in the panel driver.
-
-Signed-off-by: John Keeping <john@metanate.com>
----
-Unchanged in v2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 7ada6d8ed143..290282e86d16 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -846,24 +846,16 @@ static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
- {
- 	struct dw_mipi_dsi *dsi = encoder_to_dsi(encoder);
- 
--	drm_panel_disable(dsi->panel);
--
- 	if (clk_prepare_enable(dsi->pclk)) {
- 		dev_err(dsi->dev, "%s: Failed to enable pclk\n", __func__);
- 		return;
- 	}
- 
-+	drm_panel_disable(dsi->panel);
-+
- 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
- 	drm_panel_unprepare(dsi->panel);
--	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_VID_MODE);
- 
--	/*
--	 * This is necessary to make sure the peripheral will be driven
--	 * normally when the display is enabled again later.
--	 */
--	msleep(120);
--
--	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
- 	dw_mipi_dsi_disable(dsi);
- 	clk_disable_unprepare(dsi->pclk);
- }
--- 
-2.11.0.197.gb556de5.dirty
+SW4gYSBjb3VwbGUgb2YgcGxhY2VzIGhlcmUgd2UgdXNlICJ2YWwiIGZvciB0aGUgdmFsdWUgdGhh
+dCBpcyBhYm91dCB0bwpiZSB3cml0dGVuIHRvIGEgcmVnaXN0ZXIgYnV0IHRoZW4gcmV1c2UgdGhl
+IHNhbWUgdmFyaWFibGUgZm9yIHRoZSB2YWx1ZQpvZiBhIHN0YXR1cyByZWdpc3RlciBiZWZvcmUg
+d2UgZ2V0IGFyb3VuZCB0byB3cml0aW5nIGl0LiAgUmVuYW1lIHRoZQp2YWx1ZSB0byBiZSB3cml0
+dGVuIHRvIHNvIHRoYXQgd2Ugd3JpdGUgdGhlIHZhbHVlIHdlIGludGVuZCB0byBhbmQgbm90Cndo
+YXQgd2UgaGF2ZSBqdXN0IHJlYWQgZnJvbSB0aGUgc3RhdHVzIHJlZ2lzdGVyLgoKU2lnbmVkLW9m
+Zi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KVGVzdGVkLWJ5OiBDaHJpcyBa
+aG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgpSZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0By
+b2NrLWNoaXBzLmNvbT4KLS0tClVuY2hhbmdlZCBpbiB2MgotLS0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMTAgKysrKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDYg
+aW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jCmluZGV4IGJkOTJlNThiNjRmMy4uNGNiYmJjYjYxOWI3IDEwMDY0NAotLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpAQCAtNTQyLDkgKzU0MiwxMCBAQCBzdGF0aWMgaW50
+IGR3X21pcGlfZHNpX2hvc3RfZGV0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAogCXJl
+dHVybiAwOwogfQogCi1zdGF0aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpLCB1MzIgdmFsKQorc3RhdGljIGludCBkd19taXBpX2RzaV9n
+ZW5fcGt0X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwpCiB7
+CiAJaW50IHJldDsKKwl1MzIgdmFsOwogCiAJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHJlYWRs
+LCBkc2ktPmJhc2UgKyBEU0lfQ01EX1BLVF9TVEFUVVMsCiAJCQkJIHZhbCwgISh2YWwgJiBHRU5f
+Q01EX0ZVTEwpLCAxMDAwLApAQCAtNTU0LDcgKzU1NSw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9k
+c2lfZ2VuX3BrdF9oZHJfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHUzMiB2YWwpCiAJ
+CXJldHVybiByZXQ7CiAJfQogCi0JZHNpX3dyaXRlKGRzaSwgRFNJX0dFTl9IRFIsIHZhbCk7CisJ
+ZHNpX3dyaXRlKGRzaSwgRFNJX0dFTl9IRFIsIGhkcl92YWwpOwogCiAJcmV0ID0gcmVhZHhfcG9s
+bF90aW1lb3V0KHJlYWRsLCBkc2ktPmJhc2UgKyBEU0lfQ01EX1BLVF9TVEFUVVMsCiAJCQkJIHZh
+bCwgdmFsICYgKEdFTl9DTURfRU1QVFkgfCBHRU5fUExEX1dfRU1QVFkpLApAQCAtNTg3LDggKzU4
+OCw5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX2xvbmdfd3JpdGUoc3RydWN0IGR3X21p
+cGlfZHNpICpkc2ksCiB7CiAJY29uc3QgdTMyICp0eF9idWYgPSBtc2ctPnR4X2J1ZjsKIAlpbnQg
+bGVuID0gbXNnLT50eF9sZW4sIHBsZF9kYXRhX2J5dGVzID0gc2l6ZW9mKCp0eF9idWYpLCByZXQ7
+Ci0JdTMyIHZhbCA9IEdFTl9IREFUQShtc2ctPnR4X2xlbikgfCBHRU5fSFRZUEUobXNnLT50eXBl
+KTsKKwl1MzIgaGRyX3ZhbCA9IEdFTl9IREFUQShtc2ctPnR4X2xlbikgfCBHRU5fSFRZUEUobXNn
+LT50eXBlKTsKIAl1MzIgcmVtYWluZGVyID0gMDsKKwl1MzIgdmFsOwogCiAJaWYgKG1zZy0+dHhf
+bGVuIDwgMykgewogCQlkZXZfZXJyKGRzaS0+ZGV2LCAid3JvbmcgdHggYnVmIGxlbmd0aCAlenUg
+Zm9yIGxvbmcgd3JpdGVcbiIsCkBAIC02MTcsNyArNjE5LDcgQEAgc3RhdGljIGludCBkd19taXBp
+X2RzaV9kY3NfbG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKIAkJfQogCX0KIAot
+CXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIHZhbCk7CisJcmV0dXJu
+IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgaGRyX3ZhbCk7CiB9CiAKIHN0YXRp
+YyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hvc3Qg
+Kmhvc3QsCi0tIAoyLjExLjAuMTk3LmdiNTU2ZGU1LmRpcnR5CgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
