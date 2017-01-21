@@ -1,49 +1,107 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 12/26] drm/rockchip: dw-mipi-dsi: prepare panel after phy
- init
-Date: Sat, 21 Jan 2017 16:31:14 +0000
-Message-ID: <20170121163128.22240-13-john@metanate.com>
+Subject: [PATCH v2 26/26] drm/rockchip: dw-mipi-dsi: support read commands
+Date: Sat, 21 Jan 2017 16:31:28 +0000
+Message-ID: <20170121163128.22240-27-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U29tZSBwYW5lbHMgbmVlZCB0byBiZSBjb25maWd1cmVkIHdpdGggY29tbWFuZHMgc2VudCBvdmVy
-IHRoZSBNSVBJIGxpbmssCndoaWNoIHRoZXkgd2lsbCBkbyBpbiB0aGUgcHJlcGFyZSBob29rLiAg
-Q2FsbCB0aGlzIGFmdGVyIHRoZSBQSFkgaGFzCmJlZW4gaW5pdGlhbGl6ZWQgc28gdGhhdCB3ZSBh
-cmUgYWJsZSB0byBzZW5kIGNvbW1hbmRzIHRvIHRoZSBwYW5lbC4KClNpZ25lZC1vZmYtYnk6IEpv
-aG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpVbmNoYW5nZWQgaW4gdjIKLS0tCiBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDYgKysrKy0tCiAxIGZpbGUg
-Y2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMKaW5kZXggZGRiYzAzN2U3Y2VkLi43YWRhNmQ4ZWQxNDMgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCkBAIC04OTYsMTIgKzg5NiwxNCBA
-QCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29k
-ZXIgKmVuY29kZXIpCiAJZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmlnKGRzaSk7CiAJZHdf
-bWlwaV9kc2lfZHBoeV9pbnRlcmZhY2VfY29uZmlnKGRzaSk7CiAJZHdfbWlwaV9kc2lfY2xlYXJf
-ZXJyKGRzaSk7Ci0JaWYgKGRybV9wYW5lbF9wcmVwYXJlKGRzaS0+cGFuZWwpKQotCQlkZXZfZXJy
-KGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHByZXBhcmUgcGFuZWxcbiIpOwogCiAJZHdfbWlwaV9kc2lf
-cGh5X2luaXQoZHNpKTsKIAlkd19taXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKG1vZGUpOwog
-CisJZHdfbWlwaV9kc2lfc2V0X21vZGUoZHNpLCBEV19NSVBJX0RTSV9DTURfTU9ERSk7CisJaWYg
-KGRybV9wYW5lbF9wcmVwYXJlKGRzaS0+cGFuZWwpKQorCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFp
-bGVkIHRvIHByZXBhcmUgcGFuZWxcbiIpOworCiAJZHdfbWlwaV9kc2lfc2V0X21vZGUoZHNpLCBE
-V19NSVBJX0RTSV9WSURfTU9ERSk7CiAJZHJtX3BhbmVsX2VuYWJsZShkc2ktPnBhbmVsKTsKIAot
-LSAKMi4xMS4wLjE5Ny5nYjU1NmRlNS5kaXJ0eQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+I haven't found any method for getting the length of a response, so this
+just uses the requested rx_len
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 54 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index f780401e8b5e..f0cb005c6d76 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -675,6 +675,54 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
+ }
+ 
++static int dw_mipi_dsi_dcs_read(struct dw_mipi_dsi *dsi,
++				const struct mipi_dsi_msg *msg)
++{
++	const u8 *tx_buf = msg->tx_buf;
++	u8 *rx_buf = msg->rx_buf;
++	size_t i;
++	int ret, val;
++
++	dsi_write(dsi, DSI_PCKHDL_CFG, EN_CRC_RX | EN_ECC_RX | EN_BTA);
++	dsi_write(dsi, DSI_GEN_HDR, GEN_HDATA(tx_buf[0]) | GEN_HTYPE(msg->type));
++
++	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
++				 val, !(val & GEN_RD_CMD_BUSY), 1000,
++				 CMD_PKT_STATUS_TIMEOUT_US);
++	if (ret < 0) {
++		dev_err(dsi->dev, "failed to read command response\n");
++		return ret;
++	}
++
++	for (i = 0; i < msg->rx_len;) {
++		u32 pld = dsi_read(dsi, DSI_GEN_PLD_DATA);
++		while (i < msg->rx_len) {
++			rx_buf[i] = pld & 0xff;
++			pld >>= 8;
++			i++;
++		}
++	}
++
++	return msg->rx_len;
++}
++
++static int dw_mipi_dsi_set_max_return_packet_size(struct dw_mipi_dsi *dsi,
++						  size_t len)
++{
++	u8 val[] = { len & 0xff, (len >> 8) & 0xff };
++	struct mipi_dsi_msg msg = {
++		.channel = dsi->channel,
++		.type = MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE,
++		.tx_buf = val,
++		.tx_len = 2,
++	};
++
++	if (len > 0xffff)
++		return -EINVAL;
++
++	return dw_mipi_dsi_dcs_short_write(dsi, &msg);
++}
++
+ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 					 const struct mipi_dsi_msg *msg)
+ {
+@@ -692,6 +740,12 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	case MIPI_DSI_DCS_LONG_WRITE:
+ 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
+ 		break;
++	case MIPI_DSI_DCS_READ:
++		ret = dw_mipi_dsi_set_max_return_packet_size(dsi, msg->rx_len);
++		if (ret < 0)
++			return ret;
++		ret = dw_mipi_dsi_dcs_read(dsi, msg);
++		break;
+ 	default:
+ 		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
+ 			msg->type);
+-- 
+2.11.0.197.gb556de5.dirty
