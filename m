@@ -1,113 +1,82 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 03/26] drm/rockchip: dw-mipi-dsi: pass mode in where needed
-Date: Sat, 21 Jan 2017 16:31:05 +0000
-Message-ID: <20170121163128.22240-4-john@metanate.com>
+Subject: [PATCH v2 25/26] drm/rockchip: dw-mipi-dsi: add reset control
+Date: Sat, 21 Jan 2017 16:31:27 +0000
+Message-ID: <20170121163128.22240-26-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBzaG93cyB0aGF0IHdlIG9ubHkgdXNlIHRoZSBtb2RlIGZyb20gdGhlIGVuYWJsZSBmdW5j
-dGlvbiBhbmQKcHJlcGFyZXMgdXMgdG8gcmVtb3ZlIHRoZSAibW9kZSIgZmllbGQgYW5kIHRoZSBt
-b2RlX3NldCBob29rIGluIHRoZSBuZXh0CmNvbW1pdC4KClNpZ25lZC1vZmYtYnk6IEpvaG4gS2Vl
-cGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpOZXcgaW4gdjIKLS0tCiBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDQxICsrKysrKysrKysrKysrKysrKy0tLS0tLS0t
-LS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAyMiBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMo
-LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCmluZGV4IGJiZDk5MjI5OWY3
-My4uY2RiZDI1MDg3ZTgzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHct
-bWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpA
-QCAtMzMwLDExICszMzAsMTEgQEAgc3RhdGljIGludCBtYXhfbWJwc190b190ZXN0ZGluKHVuc2ln
-bmVkIGludCBtYXhfbWJwcykKICAqIFRoZSBjb250cm9sbGVyIHNob3VsZCBnZW5lcmF0ZSAyIGZy
-YW1lcyBiZWZvcmUKICAqIHByZXBhcmluZyB0aGUgcGVyaXBoZXJhbC4KICAqLwotc3RhdGljIHZv
-aWQgZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRz
-aSkKK3N0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3dhaXRfZm9yX3R3b19mcmFtZXMoc3RydWN0IGRy
-bV9kaXNwbGF5X21vZGUgKm1vZGUpCiB7CiAJaW50IHJlZnJlc2gsIHR3b19mcmFtZXM7CiAKLQly
-ZWZyZXNoID0gZHJtX21vZGVfdnJlZnJlc2goZHNpLT5tb2RlKTsKKwlyZWZyZXNoID0gZHJtX21v
-ZGVfdnJlZnJlc2gobW9kZSk7CiAJdHdvX2ZyYW1lcyA9IERJVl9ST1VORF9VUChNU0VDX1BFUl9T
-RUMsIHJlZnJlc2gpICogMjsKIAltc2xlZXAodHdvX2ZyYW1lcyk7CiB9CkBAIC00NTksNyArNDU5
-LDggQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kg
-KmRzaSkKIAlyZXR1cm4gcmV0OwogfQogCi1zdGF0aWMgaW50IGR3X21pcGlfZHNpX2dldF9sYW5l
-X2JwcyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKK3N0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2V0
-X2xhbmVfYnBzKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAorCQkJCSAgICBzdHJ1Y3QgZHJtX2Rp
-c3BsYXlfbW9kZSAqbW9kZSkKIHsKIAl1bnNpZ25lZCBpbnQgaSwgcHJlOwogCXVuc2lnbmVkIGxv
-bmcgbXBjbGssIHBsbHJlZiwgdG1wOwpAQCAtNDc0LDcgKzQ3NSw3IEBAIHN0YXRpYyBpbnQgZHdf
-bWlwaV9kc2lfZ2V0X2xhbmVfYnBzKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogCQlyZXR1cm4g
-YnBwOwogCX0KIAotCW1wY2xrID0gRElWX1JPVU5EX1VQKGRzaS0+bW9kZS0+Y2xvY2ssIE1TRUNf
-UEVSX1NFQyk7CisJbXBjbGsgPSBESVZfUk9VTkRfVVAobW9kZS0+Y2xvY2ssIE1TRUNfUEVSX1NF
-Qyk7CiAJaWYgKG1wY2xrKSB7CiAJCS8qIHRha2UgMSAvIDAuOSwgc2luY2UgbWJwcyBtdXN0IGJp
-ZyB0aGFuIGJhbmR3aWR0aCBvZiBSR0IgKi8KIAkJdG1wID0gbXBjbGsgKiAoYnBwIC8gZHNpLT5s
-YW5lcykgKiAxMCAvIDk7CkBAIC03NDIsNDMgKzc0Myw0NCBAQCBzdGF0aWMgdm9pZCBkd19taXBp
-X2RzaV9jb21tYW5kX21vZGVfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogCiAvKiBH
-ZXQgbGFuZSBieXRlIGNsb2NrIGN5Y2xlcy4gKi8KIHN0YXRpYyB1MzIgZHdfbWlwaV9kc2lfZ2V0
-X2hjb21wb25lbnRfbGJjYyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKKwkJCQkJICAgc3RydWN0
-IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCiAJCQkJCSAgIHUzMiBoY29tcG9uZW50KQogewogCXUz
-MiBmcmFjLCBsYmNjOwogCiAJbGJjYyA9IGhjb21wb25lbnQgKiBkc2ktPmxhbmVfbWJwcyAqIE1T
-RUNfUEVSX1NFQyAvIDg7CiAKLQlmcmFjID0gbGJjYyAlIGRzaS0+bW9kZS0+Y2xvY2s7Ci0JbGJj
-YyA9IGxiY2MgLyBkc2ktPm1vZGUtPmNsb2NrOworCWZyYWMgPSBsYmNjICUgbW9kZS0+Y2xvY2s7
-CisJbGJjYyA9IGxiY2MgLyBtb2RlLT5jbG9jazsKIAlpZiAoZnJhYykKIAkJbGJjYysrOwogCiAJ
-cmV0dXJuIGxiY2M7CiB9CiAKLXN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29u
-ZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQorc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfbGlu
-ZV90aW1lcl9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCisJCQkJCSAgc3RydWN0IGRy
-bV9kaXNwbGF5X21vZGUgKm1vZGUpCiB7CiAJdTMyIGh0b3RhbCwgaHNhLCBoYnAsIGxiY2M7Ci0J
-c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUgPSBkc2ktPm1vZGU7CiAKIAlodG90YWwgPSBt
-b2RlLT5odG90YWw7CiAJaHNhID0gbW9kZS0+aHN5bmNfZW5kIC0gbW9kZS0+aHN5bmNfc3RhcnQ7
-CiAJaGJwID0gbW9kZS0+aHRvdGFsIC0gbW9kZS0+aHN5bmNfZW5kOwogCi0JbGJjYyA9IGR3X21p
-cGlfZHNpX2dldF9oY29tcG9uZW50X2xiY2MoZHNpLCBodG90YWwpOworCWxiY2MgPSBkd19taXBp
-X2RzaV9nZXRfaGNvbXBvbmVudF9sYmNjKGRzaSwgbW9kZSwgaHRvdGFsKTsKIAlkc2lfd3JpdGUo
-ZHNpLCBEU0lfVklEX0hMSU5FX1RJTUUsIGxiY2MpOwogCi0JbGJjYyA9IGR3X21pcGlfZHNpX2dl
-dF9oY29tcG9uZW50X2xiY2MoZHNpLCBoc2EpOworCWxiY2MgPSBkd19taXBpX2RzaV9nZXRfaGNv
-bXBvbmVudF9sYmNjKGRzaSwgbW9kZSwgaHNhKTsKIAlkc2lfd3JpdGUoZHNpLCBEU0lfVklEX0hT
-QV9USU1FLCBsYmNjKTsKIAotCWxiY2MgPSBkd19taXBpX2RzaV9nZXRfaGNvbXBvbmVudF9sYmNj
-KGRzaSwgaGJwKTsKKwlsYmNjID0gZHdfbWlwaV9kc2lfZ2V0X2hjb21wb25lbnRfbGJjYyhkc2ks
-IG1vZGUsIGhicCk7CiAJZHNpX3dyaXRlKGRzaSwgRFNJX1ZJRF9IQlBfVElNRSwgbGJjYyk7CiB9
-CiAKLXN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25maWcoc3RydWN0
-IGR3X21pcGlfZHNpICpkc2kpCitzdGF0aWMgdm9pZCBkd19taXBpX2RzaV92ZXJ0aWNhbF90aW1p
-bmdfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAorCQkJCQkgICAgICAgc3RydWN0IGRy
-bV9kaXNwbGF5X21vZGUgKm1vZGUpCiB7CiAJdTMyIHZhY3RpdmUsIHZzYSwgdmZwLCB2YnA7Ci0J
-c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUgPSBkc2ktPm1vZGU7CiAKIAl2YWN0aXZlID0g
-bW9kZS0+dmRpc3BsYXk7CiAJdnNhID0gbW9kZS0+dnN5bmNfZW5kIC0gbW9kZS0+dnN5bmNfc3Rh
-cnQ7CkBAIC04NTIsMTEgKzg1NCwxMiBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVy
-X2Rpc2FibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogc3RhdGljIHZvaWQgZHdfbWlw
-aV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewogCXN0
-cnVjdCBkd19taXBpX2RzaSAqZHNpID0gZW5jb2Rlcl90b19kc2koZW5jb2Rlcik7CisJc3RydWN0
-IGRybV9kaXNwbGF5X21vZGUgKm1vZGUgPSBkc2ktPm1vZGU7CiAJaW50IG11eCA9IGRybV9vZl9l
-bmNvZGVyX2FjdGl2ZV9lbmRwb2ludF9pZChkc2ktPmRldi0+b2Zfbm9kZSwgZW5jb2Rlcik7CiAJ
-dTMyIHZhbDsKIAlpbnQgcmV0OwogCi0JcmV0ID0gZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBzKGRz
-aSk7CisJcmV0ID0gZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBzKGRzaSwgbW9kZSk7CiAJaWYgKHJl
-dCA8IDApCiAJCXJldHVybjsKIApAQCAtODY2LDEzICs4NjksMTMgQEAgc3RhdGljIHZvaWQgZHdf
-bWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogCX0K
-IAogCWR3X21pcGlfZHNpX2luaXQoZHNpKTsKLQlkd19taXBpX2RzaV9kcGlfY29uZmlnKGRzaSwg
-ZHNpLT5tb2RlKTsKKwlkd19taXBpX2RzaV9kcGlfY29uZmlnKGRzaSwgbW9kZSk7CiAJZHdfbWlw
-aV9kc2lfcGFja2V0X2hhbmRsZXJfY29uZmlnKGRzaSk7CiAJZHdfbWlwaV9kc2lfdmlkZW9fbW9k
-ZV9jb25maWcoZHNpKTsKLQlkd19taXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKGRzaSwgZHNp
-LT5tb2RlKTsKKwlkd19taXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKGRzaSwgbW9kZSk7CiAJ
-ZHdfbWlwaV9kc2lfY29tbWFuZF9tb2RlX2NvbmZpZyhkc2kpOwotCWR3X21pcGlfZHNpX2xpbmVf
-dGltZXJfY29uZmlnKGRzaSk7Ci0JZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhk
-c2kpOworCWR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSwgbW9kZSk7CisJZHdfbWlw
-aV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIG1vZGUpOwogCWR3X21pcGlfZHNpX2Rw
-aHlfdGltaW5nX2NvbmZpZyhkc2kpOwogCWR3X21pcGlfZHNpX2RwaHlfaW50ZXJmYWNlX2NvbmZp
-Zyhkc2kpOwogCWR3X21pcGlfZHNpX2NsZWFyX2Vycihkc2kpOwpAQCAtODgwLDcgKzg4Myw3IEBA
-IHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2Rl
-ciAqZW5jb2RlcikKIAkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIHBhbmVs
-XG4iKTsKIAogCWR3X21pcGlfZHNpX3BoeV9pbml0KGRzaSk7Ci0JZHdfbWlwaV9kc2lfd2FpdF9m
-b3JfdHdvX2ZyYW1lcyhkc2kpOworCWR3X21pcGlfZHNpX3dhaXRfZm9yX3R3b19mcmFtZXMobW9k
-ZSk7CiAKIAlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIERXX01JUElfRFNJX1ZJRF9NT0RFKTsK
-IAlkcm1fcGFuZWxfZW5hYmxlKGRzaS0+cGFuZWwpOwotLSAKMi4xMS4wLjE5Ny5nYjU1NmRlNS5k
-aXJ0eQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+In order to fully reset the state of the MIPI controller we must assert
+this reset.
+
+This is slightly more complicated than it could be in order to maintain
+compatibility with device trees that do not specify the reset property.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 881bb0c62ca5..f780401e8b5e 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -13,6 +13,7 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/regmap.h>
++#include <linux/reset.h>
+ #include <linux/mfd/syscon.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_crtc.h>
+@@ -1121,6 +1122,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+ 			of_match_device(dw_mipi_dsi_dt_ids, dev);
+ 	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
+ 	struct platform_device *pdev = to_platform_device(dev);
++	struct reset_control *apb_rst;
+ 	struct drm_device *drm = data;
+ 	struct dw_mipi_dsi *dsi;
+ 	struct resource *res;
+@@ -1159,6 +1161,34 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	/*
++	 * Note that the reset was not defined in the initial device tree, so
++	 * we have to be prepared for it not being found.
++	 */
++	apb_rst = devm_reset_control_get(dev, "apb");
++	if (IS_ERR(apb_rst)) {
++		if (PTR_ERR(apb_rst) == -ENODEV) {
++			apb_rst = NULL;
++		} else {
++			dev_err(dev, "Unable to get reset control: %d\n", ret);
++			return PTR_ERR(apb_rst);
++		}
++	}
++
++	if (apb_rst) {
++		ret = clk_prepare_enable(dsi->pclk);
++		if (ret) {
++			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
++			return ret;
++		}
++
++		reset_control_assert(apb_rst);
++		usleep_range(10, 20);
++		reset_control_deassert(apb_rst);
++
++		clk_disable_unprepare(dsi->pclk);
++	}
++
+ 	ret = clk_prepare_enable(dsi->pllref_clk);
+ 	if (ret) {
+ 		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
+-- 
+2.11.0.197.gb556de5.dirty
