@@ -1,7 +1,7 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 16/26] drm/rockchip: dw-mipi-dsi: configure bias and bandgap before enable
-Date: Sat, 21 Jan 2017 16:31:18 +0000
-Message-ID: <20170121163128.22240-17-john@metanate.com>
+Subject: [PATCH v2 24/26] drm/rockchip: dw-mipi-dsi: support non-burst modes
+Date: Sat, 21 Jan 2017 16:31:26 +0000
+Message-ID: <20170121163128.22240-25-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
@@ -10,41 +10,63 @@ To: Mark Yao <mark.yao@rock-chips.com>
 Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should configure these functions before enabling them.
-
 Signed-off-by: John Keeping <john@metanate.com>
 ---
 Unchanged in v2
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 5b3068e9e8db..ce1e6f9a2041 100644
+index 2dafb17e31d2..881bb0c62ca5 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -420,6 +420,11 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
- 					 HIGH_PROGRAM_EN);
+@@ -82,6 +82,7 @@
+ #define FRAME_BTA_ACK			BIT(14)
+ #define ENABLE_LOW_POWER		(0x3f << 8)
+ #define ENABLE_LOW_POWER_MASK		(0x3f << 8)
++#define VID_MODE_TYPE_NON_BURST_SYNC_EVENTS	0x1
+ #define VID_MODE_TYPE_BURST_SYNC_PULSES		0x2
+ #define VID_MODE_TYPE_MASK			0x3
  
-+	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
-+					 BIASEXTR_SEL(BIASEXTR_127_7));
-+	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
-+					 BANDGAP_SEL(BANDGAP_96_10));
+@@ -286,6 +287,7 @@ struct dw_mipi_dsi {
+ 	u32 format;
+ 	u16 input_div;
+ 	u16 feedback_div;
++	unsigned long mode_flags;
+ 
+ 	const struct dw_mipi_dsi_plat_data *pdata;
+ };
+@@ -548,15 +550,10 @@ static int dw_mipi_dsi_host_attach(struct mipi_dsi_host *host,
+ 		return -EINVAL;
+ 	}
+ 
+-	if (!(device->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) ||
+-	    !(device->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)) {
+-		dev_err(dsi->dev, "device mode is unsupported\n");
+-		return -EINVAL;
+-	}
+-
+ 	dsi->lanes = device->lanes;
+ 	dsi->channel = device->channel;
+ 	dsi->format = device->format;
++	dsi->mode_flags = device->mode_flags;
+ 	dsi->panel = of_drm_find_panel(device->dev.of_node);
+ 	if (dsi->panel)
+ 		return drm_panel_attach(dsi->panel, &dsi->connector);
+@@ -713,7 +710,12 @@ static void dw_mipi_dsi_video_mode_config(struct dw_mipi_dsi *dsi)
+ {
+ 	u32 val;
+ 
+-	val = VID_MODE_TYPE_BURST_SYNC_PULSES | ENABLE_LOW_POWER;
++	val = ENABLE_LOW_POWER;
 +
- 	dw_mipi_dsi_phy_write(dsi, 0x20, POWER_CONTROL | INTERNAL_REG_CURRENT |
- 					 BIAS_BLOCK_ON | BANDGAP_ON);
++	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST)
++		val |= VID_MODE_TYPE_BURST_SYNC_PULSES;
++	else if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE))
++		val |= VID_MODE_TYPE_NON_BURST_SYNC_EVENTS;
  
-@@ -429,10 +434,6 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 					 SETRD_MAX | POWER_MANAGE |
- 					 TER_RESISTORS_ON);
- 
--	dw_mipi_dsi_phy_write(dsi, 0x22, LOW_PROGRAM_EN |
--					 BIASEXTR_SEL(BIASEXTR_127_7));
--	dw_mipi_dsi_phy_write(dsi, 0x22, HIGH_PROGRAM_EN |
--					 BANDGAP_SEL(BANDGAP_96_10));
- 
- 	dw_mipi_dsi_phy_write(dsi, 0x70, TLP_PROGRAM_EN | 0xf);
- 	dw_mipi_dsi_phy_write(dsi, 0x71, THS_PRE_PROGRAM_EN | 0x55);
+ 	dsi_write(dsi, DSI_VID_MODE_CFG, val);
+ }
 -- 
 2.11.0.197.gb556de5.dirty
