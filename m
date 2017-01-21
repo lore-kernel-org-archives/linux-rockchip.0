@@ -1,107 +1,56 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 26/26] drm/rockchip: dw-mipi-dsi: support read commands
-Date: Sat, 21 Jan 2017 16:31:28 +0000
-Message-ID: <20170121163128.22240-27-john@metanate.com>
+Subject: [PATCH v2 09/26] drm/rockchip: dw-mipi-dsi: respect message flags
+Date: Sat, 21 Jan 2017 16:31:11 +0000
+Message-ID: <20170121163128.22240-10-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-I haven't found any method for getting the length of a response, so this
-just uses the requested rx_len
-
-Signed-off-by: John Keeping <john@metanate.com>
----
-Unchanged in v2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 54 ++++++++++++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index f780401e8b5e..f0cb005c6d76 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -675,6 +675,54 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
- }
- 
-+static int dw_mipi_dsi_dcs_read(struct dw_mipi_dsi *dsi,
-+				const struct mipi_dsi_msg *msg)
-+{
-+	const u8 *tx_buf = msg->tx_buf;
-+	u8 *rx_buf = msg->rx_buf;
-+	size_t i;
-+	int ret, val;
-+
-+	dsi_write(dsi, DSI_PCKHDL_CFG, EN_CRC_RX | EN_ECC_RX | EN_BTA);
-+	dsi_write(dsi, DSI_GEN_HDR, GEN_HDATA(tx_buf[0]) | GEN_HTYPE(msg->type));
-+
-+	ret = readl_poll_timeout(dsi->base + DSI_CMD_PKT_STATUS,
-+				 val, !(val & GEN_RD_CMD_BUSY), 1000,
-+				 CMD_PKT_STATUS_TIMEOUT_US);
-+	if (ret < 0) {
-+		dev_err(dsi->dev, "failed to read command response\n");
-+		return ret;
-+	}
-+
-+	for (i = 0; i < msg->rx_len;) {
-+		u32 pld = dsi_read(dsi, DSI_GEN_PLD_DATA);
-+		while (i < msg->rx_len) {
-+			rx_buf[i] = pld & 0xff;
-+			pld >>= 8;
-+			i++;
-+		}
-+	}
-+
-+	return msg->rx_len;
-+}
-+
-+static int dw_mipi_dsi_set_max_return_packet_size(struct dw_mipi_dsi *dsi,
-+						  size_t len)
-+{
-+	u8 val[] = { len & 0xff, (len >> 8) & 0xff };
-+	struct mipi_dsi_msg msg = {
-+		.channel = dsi->channel,
-+		.type = MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE,
-+		.tx_buf = val,
-+		.tx_len = 2,
-+	};
-+
-+	if (len > 0xffff)
-+		return -EINVAL;
-+
-+	return dw_mipi_dsi_dcs_short_write(dsi, &msg);
-+}
-+
- static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 					 const struct mipi_dsi_msg *msg)
- {
-@@ -692,6 +740,12 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 	case MIPI_DSI_DCS_LONG_WRITE:
- 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
- 		break;
-+	case MIPI_DSI_DCS_READ:
-+		ret = dw_mipi_dsi_set_max_return_packet_size(dsi, msg->rx_len);
-+		if (ret < 0)
-+			return ret;
-+		ret = dw_mipi_dsi_dcs_read(dsi, msg);
-+		break;
- 	default:
- 		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
- 			msg->type);
--- 
-2.11.0.197.gb556de5.dirty
+SW5zdGVhZCBvZiBhbHdheXMgc2VuZGluZyBjb21tYW5kcyBpbiBMUCBtb2RlLCByZXNwZWN0IHRo
+ZQpNSVBJX0RTSV9NU0dfVVNFX0xQTSBmbGFnIHRvIGRlY2lkZSBob3cgdG8gc2VuZCBlYWNoIG1l
+c3NhZ2UuICBBbHNvCnJlcXVlc3QgYWNrcyBpZiBNSVBJX0RTSV9NU0dfUkVRX0FDSyBpcyBzZXQu
+CgpTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgotLS0KVW5j
+aGFuZ2VkIGluIHYyCi0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMg
+fCAxNiArKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygrKSwg
+MSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKaW5kZXgg
+OTJkYmMzZTU2NjAzLi4xNWQzM2MzYzhjYjcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jCkBAIC01NDIsNiArNTQyLDE5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfaG9z
+dF9kZXRhY2goc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCiAJcmV0dXJuIDA7CiB9CiAKK3N0
+YXRpYyB2b2lkIGR3X21pcGlfbWVzc2FnZV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ks
+CisJCQkJICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNnKQoreworCXUzMiB2YWwgPSAw
+OworCisJaWYgKG1zZy0+ZmxhZ3MgJiBNSVBJX0RTSV9NU0dfUkVRX0FDSykKKwkJdmFsIHw9IEVO
+X0FDS19SUVNUOworCWlmIChtc2ctPmZsYWdzICYgTUlQSV9EU0lfTVNHX1VTRV9MUE0pCisJCXZh
+bCB8PSBDTURfTU9ERV9BTExfTFA7CisKKwlkc2lfd3JpdGUoZHNpLCBEU0lfQ01EX01PREVfQ0ZH
+LCB2YWwpOworfQorCiBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpLCB1MzIgaGRyX3ZhbCkKIHsKIAlpbnQgcmV0OwpAQCAtNjM0
+LDYgKzY0Nyw4IEBAIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3Ry
+dWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCiAJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBob3N0
+X3RvX2RzaShob3N0KTsKIAlpbnQgcmV0OwogCisJZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ks
+IG1zZyk7CisKIAlzd2l0Y2ggKG1zZy0+dHlwZSkgewogCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JU
+X1dSSVRFOgogCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JUX1dSSVRFX1BBUkFNOgpAQCAtNzQ1LDcg
+Kzc2MCw2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2NvbW1hbmRfbW9kZV9jb25maWcoc3Ry
+dWN0IGR3X21pcGlfZHNpICpkc2kpCiB7CiAJZHNpX3dyaXRlKGRzaSwgRFNJX1RPX0NOVF9DRkcs
+IEhTVFhfVE9fQ05UKDEwMDApIHwgTFBSWF9UT19DTlQoMTAwMCkpOwogCWRzaV93cml0ZShkc2ks
+IERTSV9CVEFfVE9fQ05ULCAweGQwMCk7Ci0JZHNpX3dyaXRlKGRzaSwgRFNJX0NNRF9NT0RFX0NG
+RywgQ01EX01PREVfQUxMX0xQKTsKIAlkc2lfd3JpdGUoZHNpLCBEU0lfTU9ERV9DRkcsIEVOQUJM
+RV9DTURfTU9ERSk7CiB9CiAKLS0gCjIuMTEuMC4xOTcuZ2I1NTZkZTUuZGlydHkKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
