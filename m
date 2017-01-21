@@ -1,63 +1,60 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 00/26] drm/rockchip: MIPI fixes & improvements
-Date: Sat, 21 Jan 2017 16:31:02 +0000
-Message-ID: <20170121163128.22240-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [PATCH v2 13/26] drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
+Date: Sat, 21 Jan 2017 16:31:15 +0000
+Message-ID: <20170121163128.22240-14-john@metanate.com>
+References: <20170121163128.22240-1-john@metanate.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170121163128.22240-1-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBpcyBhIHJlLXJvbGwgb2YgYSBzZXJpZXMgb3JpZ2luYWxseSBwb3N0ZWQgYmFjayBpbiBT
-ZXB0ZW1iZXIgWzFdLgpJdCdzIG1vc3RseSB1bmNoYW5nZWQgYnV0IGluIHJlc3BvbnNlIHRvIENo
-cmlzIGFuZCBNYXJrJ3MgZmVlZGJhY2sgSSBoYXZlCmRyb3BwZWQgdGhlIGZpcnN0IHR3byBwYXRj
-aGVzIGFuZCByZXBsYWNlcyB0aGVtIHdpdGggdGhlIG5ldyBwYXRjaGVzIDMKYW5kIDQ7IGl0J3Mg
-YSBzbGlnaHRseSBkaWZmZXJlbnQgYXBwcm9hY2ggZnJvbSBNYXJrJ3Mgc3VnZ2VzdGlvbiBiZWNh
-dXNlCml0IHR1cm5zIG91dCB0aGF0IHdlIG9ubHkgdXNlIHRoZSBtb2RlIGluIHRoZSBlbmFibGUg
-ZnVuY3Rpb24gYW5kIGl0IGlzCnNhZmUgdG8gcmVhZCBmcm9tIHRoZSBjb25uZWN0b3Igc3RhdGUg
-dGhlcmUuCgpbMV0gaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvYXJtLWtlcm5lbC9tc2c1
-MzI5MzEuaHRtbAoKSm9obiBLZWVwaW5nICgyNik6CiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRz
-aTogZG9uJ3QgY29uZmlndXJlIGhhcmR3YXJlIGluIG1vZGVfc2V0IGZvcgogICAgTUlQSQogIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHJlbmFtZSBjb21taXQgaG9vayB0byBlbmFibGUKICBk
-cm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBwYXNzIG1vZGUgaW4gd2hlcmUgbmVlZGVkCiAgZHJt
-L3JvY2tjaGlwOiBkdy1taXBpLWRzaTogcmVtb3ZlIG1vZGVfc2V0IGhvb2sKICBkcm0vcm9ja2No
-aXA6IGR3LW1pcGktZHNpOiBmaXggY29tbWFuZCBoZWFkZXIgd3JpdGVzCiAgZHJtL3JvY2tjaGlw
-OiBkdy1taXBpLWRzaTogZml4IGdlbmVyaWMgcGFja2V0IHN0YXR1cyBjaGVjawogIGRybS9yb2Nr
-Y2hpcDogZHctbWlwaS1kc2k6IGF2b2lkIG91dC1vZi1ib3VuZHMgcmVhZCBvbiB0eF9idWYKICBk
-cm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBpbmNsdWRlIGJhZCB2YWx1ZSBpbiBlcnJvciBtZXNz
-YWdlCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogcmVzcGVjdCBtZXNzYWdlIGZsYWdzCiAg
-ZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogb25seSByZXF1ZXN0IEhTIGNsb2NrIHdoZW4gcmVx
-dWlyZWQKICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBkb24ndCBhc3N1bWUgYnVmZmVyIGlz
-IGFsaWduZWQKICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBwcmVwYXJlIHBhbmVsIGFmdGVy
-IHBoeSBpbml0CiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogYWxsb3cgY29tbWFuZHMgaW4g
-cGFuZWxfZGlzYWJsZQogIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGZpeCBlc2NhcGUgY2xv
-Y2sgcmF0ZQogIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGVuc3VyZSBQSFkgaXMgcmVzZXQK
-ICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBjb25maWd1cmUgYmlhcyBhbmQgYmFuZGdhcCBi
-ZWZvcmUgZW5hYmxlCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogZG9uJ3QgZW5hYmxlIFBI
-WSBQTEwgdW50aWwgaXQncyBjb25maWd1cmVkCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTog
-cHJvcGVybHkgY29uZmlndXJlIFBIWSB0aW1pbmcKICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNp
-OiBpbXByb3ZlIFBMTCBjb25maWd1cmF0aW9uCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTog
-dXNlIHNwZWNpZmljIHBvbGwgaGVscGVyCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogdXNl
-IHBvc2l0aXZlIGNoZWNrIGZvciBOe0gsVn1TWU5DCiAgZHJtL3JvY2tjaGlwOiB2b3A6IHRlc3Qg
-Zm9yIFB7SCxWfVNZTkMKICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBkZWZlciBwcm9iZSBp
-ZiBwYW5lbCBpcyBub3QgbG9hZGVkCiAgZHJtL3JvY2tjaGlwOiBkdy1taXBpLWRzaTogc3VwcG9y
-dCBub24tYnVyc3QgbW9kZXMKICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBhZGQgcmVzZXQg
-Y29udHJvbAogIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHN1cHBvcnQgcmVhZCBjb21tYW5k
-cwoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jICAgICAgfCAzNDEgKysr
-KysrKysrKysrKysrKysrKy0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYyB8ICAgNCArLQogMiBmaWxlcyBjaGFuZ2VkLCAyMzkgaW5zZXJ0aW9ucygr
-KSwgMTA2IGRlbGV0aW9ucygtKQoKLS0gCjIuMTEuMC4xOTcuZ2I1NTZkZTUuZGlydHkKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Panel drivers may want to sent commands during the disable function, for
+example MIPI_DCS_SET_DISPLAY_OFF before the video signal ends.  In order
+to send commands we need to write to registers, so pclk must be enabled.
+
+While changing this, remove the unnecessary code after the panel
+unprepare call which seems to be a workaround for a specific panel and
+thus belongs in the panel driver.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 7ada6d8ed143..290282e86d16 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -846,24 +846,16 @@ static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
+ {
+ 	struct dw_mipi_dsi *dsi = encoder_to_dsi(encoder);
+ 
+-	drm_panel_disable(dsi->panel);
+-
+ 	if (clk_prepare_enable(dsi->pclk)) {
+ 		dev_err(dsi->dev, "%s: Failed to enable pclk\n", __func__);
+ 		return;
+ 	}
+ 
++	drm_panel_disable(dsi->panel);
++
+ 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
+ 	drm_panel_unprepare(dsi->panel);
+-	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_VID_MODE);
+ 
+-	/*
+-	 * This is necessary to make sure the peripheral will be driven
+-	 * normally when the display is enabled again later.
+-	 */
+-	msleep(120);
+-
+-	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
+ 	dw_mipi_dsi_disable(dsi);
+ 	clk_disable_unprepare(dsi->pclk);
+ }
+-- 
+2.11.0.197.gb556de5.dirty
