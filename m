@@ -1,56 +1,72 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 09/26] drm/rockchip: dw-mipi-dsi: respect message flags
-Date: Sat, 21 Jan 2017 16:31:11 +0000
-Message-ID: <20170121163128.22240-10-john@metanate.com>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 11/26] drm/rockchip: dw-mipi-dsi: don't assume buffer is
+ aligned
+Date: Sat, 21 Jan 2017 16:31:13 +0000
+Message-ID: <20170121163128.22240-12-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170121163128.22240-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW5zdGVhZCBvZiBhbHdheXMgc2VuZGluZyBjb21tYW5kcyBpbiBMUCBtb2RlLCByZXNwZWN0IHRo
-ZQpNSVBJX0RTSV9NU0dfVVNFX0xQTSBmbGFnIHRvIGRlY2lkZSBob3cgdG8gc2VuZCBlYWNoIG1l
-c3NhZ2UuICBBbHNvCnJlcXVlc3QgYWNrcyBpZiBNSVBJX0RTSV9NU0dfUkVRX0FDSyBpcyBzZXQu
-CgpTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgotLS0KVW5j
-aGFuZ2VkIGluIHYyCi0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMg
-fCAxNiArKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygrKSwg
-MSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
-aXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKaW5kZXgg
-OTJkYmMzZTU2NjAzLi4xNWQzM2MzYzhjYjcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
-aXBpLWRzaS5jCkBAIC01NDIsNiArNTQyLDE5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfaG9z
-dF9kZXRhY2goc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCiAJcmV0dXJuIDA7CiB9CiAKK3N0
-YXRpYyB2b2lkIGR3X21pcGlfbWVzc2FnZV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ks
-CisJCQkJICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNnKQoreworCXUzMiB2YWwgPSAw
-OworCisJaWYgKG1zZy0+ZmxhZ3MgJiBNSVBJX0RTSV9NU0dfUkVRX0FDSykKKwkJdmFsIHw9IEVO
-X0FDS19SUVNUOworCWlmIChtc2ctPmZsYWdzICYgTUlQSV9EU0lfTVNHX1VTRV9MUE0pCisJCXZh
-bCB8PSBDTURfTU9ERV9BTExfTFA7CisKKwlkc2lfd3JpdGUoZHNpLCBEU0lfQ01EX01PREVfQ0ZH
-LCB2YWwpOworfQorCiBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0
-cnVjdCBkd19taXBpX2RzaSAqZHNpLCB1MzIgaGRyX3ZhbCkKIHsKIAlpbnQgcmV0OwpAQCAtNjM0
-LDYgKzY0Nyw4IEBAIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3Ry
-dWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCiAJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBob3N0
-X3RvX2RzaShob3N0KTsKIAlpbnQgcmV0OwogCisJZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ks
-IG1zZyk7CisKIAlzd2l0Y2ggKG1zZy0+dHlwZSkgewogCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JU
-X1dSSVRFOgogCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JUX1dSSVRFX1BBUkFNOgpAQCAtNzQ1LDcg
-Kzc2MCw2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2NvbW1hbmRfbW9kZV9jb25maWcoc3Ry
-dWN0IGR3X21pcGlfZHNpICpkc2kpCiB7CiAJZHNpX3dyaXRlKGRzaSwgRFNJX1RPX0NOVF9DRkcs
-IEhTVFhfVE9fQ05UKDEwMDApIHwgTFBSWF9UT19DTlQoMTAwMCkpOwogCWRzaV93cml0ZShkc2ks
-IERTSV9CVEFfVE9fQ05ULCAweGQwMCk7Ci0JZHNpX3dyaXRlKGRzaSwgRFNJX0NNRF9NT0RFX0NG
-RywgQ01EX01PREVfQUxMX0xQKTsKIAlkc2lfd3JpdGUoZHNpLCBEU0lfTU9ERV9DRkcsIEVOQUJM
-RV9DTURfTU9ERSk7CiB9CiAKLS0gCjIuMTEuMC4xOTcuZ2I1NTZkZTUuZGlydHkKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+By dereferencing the MIPI command buffer as a u32* we rely on it being
+correctly aligned on ARM, but this may not be the case.  Copy it into a
+stack variable that will be correctly aligned.
+
+Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+---
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 03fc096fe1bd..ddbc037e7ced 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -607,10 +607,10 @@ static int dw_mipi_dsi_dcs_short_write(struct dw_mipi_dsi *dsi,
+ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 				      const struct mipi_dsi_msg *msg)
+ {
+-	const u32 *tx_buf = msg->tx_buf;
+-	int len = msg->tx_len, pld_data_bytes = sizeof(*tx_buf), ret;
++	const u8 *tx_buf = msg->tx_buf;
++	int len = msg->tx_len, pld_data_bytes = sizeof(u32), ret;
+ 	u32 hdr_val = GEN_HDATA(msg->tx_len) | GEN_HTYPE(msg->type);
+-	u32 remainder = 0;
++	u32 remainder;
+ 	u32 val;
+ 
+ 	if (msg->tx_len < 3) {
+@@ -621,12 +621,14 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 
+ 	while (DIV_ROUND_UP(len, pld_data_bytes)) {
+ 		if (len < pld_data_bytes) {
++			remainder = 0;
+ 			memcpy(&remainder, tx_buf, len);
+ 			dsi_write(dsi, DSI_GEN_PLD_DATA, remainder);
+ 			len = 0;
+ 		} else {
+-			dsi_write(dsi, DSI_GEN_PLD_DATA, *tx_buf);
+-			tx_buf++;
++			memcpy(&remainder, tx_buf, pld_data_bytes);
++			dsi_write(dsi, DSI_GEN_PLD_DATA, remainder);
++			tx_buf += pld_data_bytes;
+ 			len -= pld_data_bytes;
+ 		}
+ 
+-- 
+2.11.0.197.gb556de5.dirty
