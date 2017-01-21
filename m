@@ -1,51 +1,58 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 06/26] drm/rockchip: dw-mipi-dsi: fix generic packet status
- check
-Date: Sat, 21 Jan 2017 16:31:08 +0000
-Message-ID: <20170121163128.22240-7-john@metanate.com>
+Subject: [PATCH v2 02/26] drm/rockchip: dw-mipi-dsi: rename commit hook to
+ enable
+Date: Sat, 21 Jan 2017 16:31:04 +0000
+Message-ID: <20170121163128.22240-3-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-V2Ugd2FudCB0byBjaGVjayB0aGF0IGJvdGggdGhlIEdFTl9DTURfRU1QVFkgYW5kIEdFTl9QTERf
-V19FTVBUWSBiaXRzCmFyZSBzZXQgc28gd2UgY2FuJ3QganVzdCBjaGVjayAidmFsICYgbWFzayIg
-YmVjYXVzZSB0aGF0IHdpbGwgYmUgdHJ1ZSBpZgplaXRoZXIgYml0IGlzIHNldC4KClNpZ25lZC1v
-ZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpVbmNoYW5nZWQgaW4g
-djIKLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDUgKysrLS0K
-IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwppbmRleCA0Y2JiYmNiNjE5YjcuLjRiZTFmZjNh
-NDJiYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMK
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKQEAgLTU0NSw3ICs1
-NDUsNyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfZGV0YWNoKHN0cnVjdCBtaXBpX2Rz
-aV9ob3N0ICpob3N0LAogc3RhdGljIGludCBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShz
-dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwpCiB7CiAJaW50IHJldDsKLQl1MzIg
-dmFsOworCXUzMiB2YWwsIG1hc2s7CiAKIAlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocmVhZGws
-IGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywKIAkJCQkgdmFsLCAhKHZhbCAmIEdFTl9D
-TURfRlVMTCksIDEwMDAsCkBAIC01NTcsOCArNTU3LDkgQEAgc3RhdGljIGludCBkd19taXBpX2Rz
-aV9nZW5fcGt0X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwp
-CiAKIAlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX0hEUiwgaGRyX3ZhbCk7CiAKKwltYXNrID0gR0VO
-X0NNRF9FTVBUWSB8IEdFTl9QTERfV19FTVBUWTsKIAlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQo
-cmVhZGwsIGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywKLQkJCQkgdmFsLCB2YWwgJiAo
-R0VOX0NNRF9FTVBUWSB8IEdFTl9QTERfV19FTVBUWSksCisJCQkJIHZhbCwgKHZhbCAmIG1hc2sp
-ID09IG1hc2ssCiAJCQkJIDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwogCWlmIChy
-ZXQgPCAwKSB7CiAJCWRldl9lcnIoZHNpLT5kZXYsICJmYWlsZWQgdG8gd3JpdGUgY29tbWFuZCBG
-SUZPXG4iKTsKLS0gCjIuMTEuMC4xOTcuZ2I1NTZkZTUuZGlydHkKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Rockchip DRM is fully atomic and commit is deprecated for atomic
+drivers.  No changed are needed beyond renaming the function.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index 8b83ae50c8f3..bbd992299f73 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -849,7 +849,7 @@ static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
+ 	clk_disable_unprepare(dsi->pclk);
+ }
+ 
+-static void dw_mipi_dsi_encoder_commit(struct drm_encoder *encoder)
++static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+ {
+ 	struct dw_mipi_dsi *dsi = encoder_to_dsi(encoder);
+ 	int mux = drm_of_encoder_active_endpoint_id(dsi->dev->of_node, encoder);
+@@ -926,7 +926,7 @@ dw_mipi_dsi_encoder_atomic_check(struct drm_encoder *encoder,
+ 
+ static struct drm_encoder_helper_funcs
+ dw_mipi_dsi_encoder_helper_funcs = {
+-	.commit = dw_mipi_dsi_encoder_commit,
++	.enable = dw_mipi_dsi_encoder_enable,
+ 	.mode_set = dw_mipi_dsi_encoder_mode_set,
+ 	.disable = dw_mipi_dsi_encoder_disable,
+ 	.atomic_check = dw_mipi_dsi_encoder_atomic_check,
+-- 
+2.11.0.197.gb556de5.dirty
