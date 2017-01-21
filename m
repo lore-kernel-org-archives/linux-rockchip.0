@@ -1,72 +1,46 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 24/26] drm/rockchip: dw-mipi-dsi: support non-burst modes
-Date: Sat, 21 Jan 2017 16:31:26 +0000
-Message-ID: <20170121163128.22240-25-john@metanate.com>
+Subject: [PATCH v2 22/26] drm/rockchip: vop: test for P{H,V}SYNC
+Date: Sat, 21 Jan 2017 16:31:24 +0000
+Message-ID: <20170121163128.22240-23-john@metanate.com>
 References: <20170121163128.22240-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170121163128.22240-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: John Keeping <john@metanate.com>
----
-Unchanged in v2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 2dafb17e31d2..881bb0c62ca5 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -82,6 +82,7 @@
- #define FRAME_BTA_ACK			BIT(14)
- #define ENABLE_LOW_POWER		(0x3f << 8)
- #define ENABLE_LOW_POWER_MASK		(0x3f << 8)
-+#define VID_MODE_TYPE_NON_BURST_SYNC_EVENTS	0x1
- #define VID_MODE_TYPE_BURST_SYNC_PULSES		0x2
- #define VID_MODE_TYPE_MASK			0x3
- 
-@@ -286,6 +287,7 @@ struct dw_mipi_dsi {
- 	u32 format;
- 	u16 input_div;
- 	u16 feedback_div;
-+	unsigned long mode_flags;
- 
- 	const struct dw_mipi_dsi_plat_data *pdata;
- };
-@@ -548,15 +550,10 @@ static int dw_mipi_dsi_host_attach(struct mipi_dsi_host *host,
- 		return -EINVAL;
- 	}
- 
--	if (!(device->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) ||
--	    !(device->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)) {
--		dev_err(dsi->dev, "device mode is unsupported\n");
--		return -EINVAL;
--	}
--
- 	dsi->lanes = device->lanes;
- 	dsi->channel = device->channel;
- 	dsi->format = device->format;
-+	dsi->mode_flags = device->mode_flags;
- 	dsi->panel = of_drm_find_panel(device->dev.of_node);
- 	if (dsi->panel)
- 		return drm_panel_attach(dsi->panel, &dsi->connector);
-@@ -713,7 +710,12 @@ static void dw_mipi_dsi_video_mode_config(struct dw_mipi_dsi *dsi)
- {
- 	u32 val;
- 
--	val = VID_MODE_TYPE_BURST_SYNC_PULSES | ENABLE_LOW_POWER;
-+	val = ENABLE_LOW_POWER;
-+
-+	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST)
-+		val |= VID_MODE_TYPE_BURST_SYNC_PULSES;
-+	else if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE))
-+		val |= VID_MODE_TYPE_NON_BURST_SYNC_EVENTS;
- 
- 	dsi_write(dsi, DSI_VID_MODE_CFG, val);
- }
--- 
-2.11.0.197.gb556de5.dirty
+V2hlbiBjb25uZWN0ZWQgdG8gdGhlIE1JUEkgRFNJIG91dHB1dCwgd2UgbmVlZCB0byB1c2UgTntI
+LFZ9U1lOQyBmb3IgdGhlCmludGVybmFsIGNvbm5lY3Rpb24gYnV0IHRoZXNlIGZsYWdzIGFyZSBt
+ZWFuaW5nbGVzcyBmb3IgRFNJIHBhbmVscy4KU3dpdGNoIHRoZSB0ZXN0IHNvIHRoYXQgd2UgZG8g
+bm90IHNldCB0aGUgUHtILFZ9U1lOQyBiaXRzIHVubGVzcyB0aGUKbW9kZSByZXF1aXJlcyBpdC4K
+ClNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpVbmNo
+YW5nZWQgaW4gdjIKLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIHwgNCArKy0tCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
+cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4
+IGM3ZWJhMzA1YzQ4OC4uNjdhZWZjNmQ0ZTlhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTkzMyw4ICs5MzMsOCBAQCBzdGF0aWMgdm9pZCB2b3Bf
+Y3J0Y19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCX0KIAogCXBpbl9wb2wgPSAweDg7
+Ci0JcGluX3BvbCB8PSAoYWRqdXN0ZWRfbW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX05IU1lO
+QykgPyAwIDogMTsKLQlwaW5fcG9sIHw9IChhZGp1c3RlZF9tb2RlLT5mbGFncyAmIERSTV9NT0RF
+X0ZMQUdfTlZTWU5DKSA/IDAgOiAoMSA8PCAxKTsKKwlwaW5fcG9sIHw9IChhZGp1c3RlZF9tb2Rl
+LT5mbGFncyAmIERSTV9NT0RFX0ZMQUdfUEhTWU5DKSA/IDEgOiAwOworCXBpbl9wb2wgfD0gKGFk
+anVzdGVkX21vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19QVlNZTkMpID8gKDEgPDwgMSkgOiAw
+OwogCVZPUF9DVFJMX1NFVCh2b3AsIHBpbl9wb2wsIHBpbl9wb2wpOwogCiAJc3dpdGNoIChzLT5v
+dXRwdXRfdHlwZSkgewotLSAKMi4xMS4wLjE5Ny5nYjU1NmRlNS5kaXJ0eQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
