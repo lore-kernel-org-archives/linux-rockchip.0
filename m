@@ -1,138 +1,82 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
- phases
-Date: Sun, 22 Jan 2017 11:34:32 +0800
-Message-ID: <58842848.5090806@rock-chips.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com> <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 01/26] drm/rockchip: dw-mipi-dsi: don't configure
+ hardware in mode_set for MIPI
+Date: Sun, 22 Jan 2017 11:58:32 +0800
+Message-ID: <58842DE8.1080604@rock-chips.com>
+References: <20170121163128.22240-1-john@metanate.com>
+ <20170121163128.22240-2-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170121163128.22240-2-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 01/20/2017 09:16 PM, Ulf Hansson wrote:
-> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com> wrote:
->> If a PM domain is powered off before system suspend,
->> we hope do nothing in system runtime suspend noirq phase
->> and system runtime resume noirq phase.
->
-> One can hope, but that isn't good enough. :-)
->
->
->>
->> This modify is to slove system resume issue for RK3399.
->> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
->> so we must follow open vdd_gpu and power on pd_gpu,
->> power off pd_gpu and disable vdd_gpu.
->> Fix up in runtime resume noirq phase power on all PDs.
->
-> This doesn't make any sense to me. Can please try to explain this is
-> in great more detail, then I can try to help.
->
-For example:
--->device suspend
-    (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
-     and then disabled the vdd_gpu by regulator_disable().)
-	--> system suspend
-		-->prepare
-			-->suspend_noirq():
-			(power off all pds)
-	-->system resume
-		-->resume_noirq():
-		(power up all pds)
-		(in this case the vdd_gpu is still disabled,
-		 if power on the pd_gpu maybe make the system crash)
-	-->complete : power off the not used pd
--->device resuem
-    (mali gpu driver enable vdd_gpu by regulator_enable(),
-     and then power up the pd_gpu by pm_runtime_get_sync())
-
-So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else 
-will can't get the ack back.
-I hope the pd_gpu power up/off by the driver itself.
-
-May be I solution is not the optimal solution,Do you have better suggestion?
-
->>
->> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->> ---
->>   drivers/base/power/domain.c | 10 +++++++---
->>   include/linux/pm_domain.h   |  1 +
->>   2 files changed, 8 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/base/power/domain.c b/drivers/base/power/domain.c
->> index 5711708532db..81351eec570f 100644
->> --- a/drivers/base/power/domain.c
->> +++ b/drivers/base/power/domain.c
->> @@ -842,8 +842,10 @@ static int pm_genpd_prepare(struct device *dev)
->>
->>          genpd_lock(genpd);
->>
->> -       if (genpd->prepared_count++ == 0)
->> +       if (genpd->prepared_count++ == 0) {
->>                  genpd->suspended_count = 0;
->> +               genpd->suspend_power_off = genpd->status == GPD_STATE_POWER_OFF;
->> +       }
->>
->>          genpd_unlock(genpd);
->>
->> @@ -877,7 +879,8 @@ static int pm_genpd_suspend_noirq(struct device *dev)
->>          if (IS_ERR(genpd))
->>                  return -EINVAL;
->>
->> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
->> +       if (genpd->suspend_power_off ||
->> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
->>                  return 0;
->
-> This isn't going to work, because the PM domain might have been powered on.
->
-> There is simply no guarantee to that the PM domain remains powered off
-> during the system PM suspend phases. For example, any device in the PM
-> domain that get runtime resumed after the ->prepare() callback is
-> invoked this, will of course also trigger the PM domain to be powered
-> on.
->
->>
->>          if (genpd->dev_ops.stop && genpd->dev_ops.start) {
->> @@ -914,7 +917,8 @@ static int pm_genpd_resume_noirq(struct device *dev)
->>          if (IS_ERR(genpd))
->>                  return -EINVAL;
->>
->> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
->> +       if (genpd->suspend_power_off ||
->> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
->>                  return 0;
->
-> Ditto, for the same reasons as above.
->
->>
->>          /*
->> diff --git a/include/linux/pm_domain.h b/include/linux/pm_domain.h
->> index 81ece61075df..9c0dc364f089 100644
->> --- a/include/linux/pm_domain.h
->> +++ b/include/linux/pm_domain.h
->> @@ -62,6 +62,7 @@ struct generic_pm_domain {
->>          unsigned int device_count;      /* Number of devices */
->>          unsigned int suspended_count;   /* System suspend device counter */
->>          unsigned int prepared_count;    /* Suspend counter of prepared devices */
->> +       bool suspend_power_off; /* Power status before system suspend */
->>          int (*power_off)(struct generic_pm_domain *domain);
->>          int (*power_on)(struct generic_pm_domain *domain);
->>          struct gpd_dev_ops dev_ops;
->> --
->> 1.9.1
->>
->>
->
-> Kind regards
-> Uffe
->
->
->
+SGkgSm9obgoKCk9uIDAxLzIyLzIwMTcgMTI6MzEgQU0sIEpvaG4gS2VlcGluZyB3cm90ZToKPiBX
+aXRoIGF0b21pYyBtb2Rlc2V0dGluZyB0aGUgaGFyZHdhcmUgd2lsbCBiZSBwb3dlcmVkIG9mZiB3
+aGVuIHRoZQo+IG1vZGVfc2V0IGZ1bmN0aW9uIGlzIGNhbGxlZC4gIFdlIHNob3VsZCBjb25maWd1
+cmUgdGhlIGhhcmR3YXJlIGluIHRoZQo+IGNvbW1pdCBmdW5jdGlvbiAob3IgZXZlbiB0aGUgZW5h
+YmxlIGZ1bmN0aW9uLCBidXQgc3dpdGNoaW5nIGZyb20gY29tbWl0Cj4gdG8gZW5hYmxlIGlzIGxl
+ZnQgZm9yIGEgZnV0dXJlIHBhdGNoKS4KCkkgdGVuZCB0byBtZXJnZSB0aGUgMiBwYXRjaGVzIGlu
+dG8gb25lLgoKPgo+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5j
+b20+Cj4gLS0tCj4gdjI6Cj4gLSBhbHNvIG1vdmUgZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBzIGlu
+dG8gdGhlIGNvbW1pdCBmdW5jdGlvbgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2R3LW1pcGktZHNpLmMgfCA0NSArKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tCj4g
+ICAxIGZpbGUgY2hhbmdlZCwgMTkgaW5zZXJ0aW9ucygrKSwgMjYgZGVsZXRpb25zKC0pCj4KPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGQ5YWEzODJiYjYyOS4u
+OGI4M2FlNTBjOGYzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMK
+PiBAQCAtODE5LDM0ICs4MTksOCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX21v
+ZGVfc2V0KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPiAgIAkJCQkJc3RydWN0IGRybV9k
+aXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUpCj4gICB7Cj4gICAJc3RydWN0IGR3X21pcGlfZHNp
+ICpkc2kgPSBlbmNvZGVyX3RvX2RzaShlbmNvZGVyKTsKPiAtCWludCByZXQ7Cj4gICAKPiAgIAlk
+c2ktPm1vZGUgPSBhZGp1c3RlZF9tb2RlOwo+IC0KPiAtCXJldCA9IGR3X21pcGlfZHNpX2dldF9s
+YW5lX2Jwcyhkc2kpOwo+IC0JaWYgKHJldCA8IDApCj4gLQkJcmV0dXJuOwo+IC0KPiAtCWlmIChj
+bGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wY2xrKSkgewo+IC0JCWRldl9lcnIoZHNpLT5kZXYsICIl
+czogRmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iLCBfX2Z1bmNfXyk7Cj4gLQkJcmV0dXJuOwo+IC0J
+fQo+IC0KPiAtCWR3X21pcGlfZHNpX2luaXQoZHNpKTsKPiAtCWR3X21pcGlfZHNpX2RwaV9jb25m
+aWcoZHNpLCBtb2RlKTsKPiAtCWR3X21pcGlfZHNpX3BhY2tldF9oYW5kbGVyX2NvbmZpZyhkc2kp
+Owo+IC0JZHdfbWlwaV9kc2lfdmlkZW9fbW9kZV9jb25maWcoZHNpKTsKPiAtCWR3X21pcGlfZHNp
+X3ZpZGVvX3BhY2tldF9jb25maWcoZHNpLCBtb2RlKTsKPiAtCWR3X21pcGlfZHNpX2NvbW1hbmRf
+bW9kZV9jb25maWcoZHNpKTsKPiAtCWR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSk7
+Cj4gLQlkd19taXBpX2RzaV92ZXJ0aWNhbF90aW1pbmdfY29uZmlnKGRzaSk7Cj4gLQlkd19taXBp
+X2RzaV9kcGh5X3RpbWluZ19jb25maWcoZHNpKTsKPiAtCWR3X21pcGlfZHNpX2RwaHlfaW50ZXJm
+YWNlX2NvbmZpZyhkc2kpOwo+IC0JZHdfbWlwaV9kc2lfY2xlYXJfZXJyKGRzaSk7Cj4gLQlpZiAo
+ZHJtX3BhbmVsX3ByZXBhcmUoZHNpLT5wYW5lbCkpCj4gLQkJZGV2X2Vycihkc2ktPmRldiwgImZh
+aWxlZCB0byBwcmVwYXJlIHBhbmVsXG4iKTsKPiAtCj4gLQljbGtfZGlzYWJsZV91bnByZXBhcmUo
+ZHNpLT5wY2xrKTsKPiAgIH0KPiAgIAo+ICAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rl
+cl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiBAQCAtODgwLDEyICs4NTQs
+MzEgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9jb21taXQoc3RydWN0IGRybV9l
+bmNvZGVyICplbmNvZGVyKQo+ICAgCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0gZW5jb2Rlcl90
+b19kc2koZW5jb2Rlcik7Cj4gICAJaW50IG11eCA9IGRybV9vZl9lbmNvZGVyX2FjdGl2ZV9lbmRw
+b2ludF9pZChkc2ktPmRldi0+b2Zfbm9kZSwgZW5jb2Rlcik7Cj4gICAJdTMyIHZhbDsKPiArCWlu
+dCByZXQ7Cj4gKwo+ICsJcmV0ID0gZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBzKGRzaSk7Cj4gKwlp
+ZiAocmV0IDwgMCkKPiArCQlyZXR1cm47Cj4gICAKPiAgIAlpZiAoY2xrX3ByZXBhcmVfZW5hYmxl
+KGRzaS0+cGNsaykpIHsKPiAgIAkJZGV2X2Vycihkc2ktPmRldiwgIiVzOiBGYWlsZWQgdG8gZW5h
+YmxlIHBjbGtcbiIsIF9fZnVuY19fKTsKPiAgIAkJcmV0dXJuOwo+ICAgCX0KPiAgIAo+ICsJZHdf
+bWlwaV9kc2lfaW5pdChkc2kpOwo+ICsJZHdfbWlwaV9kc2lfZHBpX2NvbmZpZyhkc2ksIGRzaS0+
+bW9kZSk7Cj4gKwlkd19taXBpX2RzaV9wYWNrZXRfaGFuZGxlcl9jb25maWcoZHNpKTsKPiArCWR3
+X21pcGlfZHNpX3ZpZGVvX21vZGVfY29uZmlnKGRzaSk7Cj4gKwlkd19taXBpX2RzaV92aWRlb19w
+YWNrZXRfY29uZmlnKGRzaSwgZHNpLT5tb2RlKTsKPiArCWR3X21pcGlfZHNpX2NvbW1hbmRfbW9k
+ZV9jb25maWcoZHNpKTsKPiArCWR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSk7Cj4g
+Kwlkd19taXBpX2RzaV92ZXJ0aWNhbF90aW1pbmdfY29uZmlnKGRzaSk7Cj4gKwlkd19taXBpX2Rz
+aV9kcGh5X3RpbWluZ19jb25maWcoZHNpKTsKPiArCWR3X21pcGlfZHNpX2RwaHlfaW50ZXJmYWNl
+X2NvbmZpZyhkc2kpOwo+ICsJZHdfbWlwaV9kc2lfY2xlYXJfZXJyKGRzaSk7Cj4gKwlpZiAoZHJt
+X3BhbmVsX3ByZXBhcmUoZHNpLT5wYW5lbCkpCj4gKwkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxl
+ZCB0byBwcmVwYXJlIHBhbmVsXG4iKTsKPiArCj4gICAJZHdfbWlwaV9kc2lfcGh5X2luaXQoZHNp
+KTsKPiAgIAlkd19taXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKGRzaSk7Cj4gICAKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
