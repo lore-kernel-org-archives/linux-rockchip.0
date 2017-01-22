@@ -1,74 +1,138 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 26/26] drm/rockchip: dw-mipi-dsi: support read commands
-Date: Sun, 22 Jan 2017 11:08:53 +0800
-Message-ID: <58842245.6000103@rock-chips.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-27-john@metanate.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
+ phases
+Date: Sun, 22 Jan 2017 11:34:32 +0800
+Message-ID: <58842848.5090806@rock-chips.com>
+References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com> <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170121163128.22240-27-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obgoKT24gMDEvMjIvMjAxNyAxMjozMSBBTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+IEkg
-aGF2ZW4ndCBmb3VuZCBhbnkgbWV0aG9kIGZvciBnZXR0aW5nIHRoZSBsZW5ndGggb2YgYSByZXNw
-b25zZSwgc28gdGhpcwo+IGp1c3QgdXNlcyB0aGUgcmVxdWVzdGVkIHJ4X2xlbgo+Cj4gU2lnbmVk
-LW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBVbmNoYW5n
-ZWQgaW4gdjIKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
-IHwgNTQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAgMSBmaWxlIGNoYW5n
-ZWQsIDU0IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS5jCj4gaW5kZXggZjc4MDQwMWU4YjVlLi5mMGNiMDA1YzZkNzYgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IEBAIC02NzUsNiArNjc1LDU0IEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfZGNzX2xvbmdfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4g
-ICAJcmV0dXJuIGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgaGRyX3ZhbCk7Cj4g
-ICB9Cj4gICAKPiArc3RhdGljIGludCBkd19taXBpX2RzaV9kY3NfcmVhZChzdHJ1Y3QgZHdfbWlw
-aV9kc2kgKmRzaSwKPiArCQkJCWNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKPiArewo+
-ICsJY29uc3QgdTggKnR4X2J1ZiA9IG1zZy0+dHhfYnVmOwo+ICsJdTggKnJ4X2J1ZiA9IG1zZy0+
-cnhfYnVmOwo+ICsJc2l6ZV90IGk7Cj4gKwlpbnQgcmV0LCB2YWw7Cj4gKwo+ICsJZHNpX3dyaXRl
-KGRzaSwgRFNJX1BDS0hETF9DRkcsIEVOX0NSQ19SWCB8IEVOX0VDQ19SWCB8IEVOX0JUQSk7Cj4g
-Kwlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX0hEUiwgR0VOX0hEQVRBKHR4X2J1ZlswXSkgfCBHRU5f
-SFRZUEUobXNnLT50eXBlKSk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwoKPiAr
-Cj4gKwlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX0NNRF9QS1RfU1RB
-VFVTLAo+ICsJCQkJIHZhbCwgISh2YWwgJiBHRU5fUkRfQ01EX0JVU1kpLCAxMDAwLAo+ICsJCQkJ
-IENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+ICsJaWYgKHJldCA8IDApIHsKPiArCQlkZXZf
-ZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHJlYWQgY29tbWFuZCByZXNwb25zZVxuIik7Cj4gKwkJ
-cmV0dXJuIHJldDsKPiArCX0KPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgbXNnLT5yeF9sZW47KSB7
-Cj4gKwkJdTMyIHBsZCA9IGRzaV9yZWFkKGRzaSwgRFNJX0dFTl9QTERfREFUQSk7Cj4gKwkJd2hp
-bGUgKGkgPCBtc2ctPnJ4X2xlbikgewo+ICsJCQlyeF9idWZbaV0gPSBwbGQgJiAweGZmOwo+ICsJ
-CQlwbGQgPj49IDg7Cj4gKwkJCWkrKzsKPiArCQl9Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIG1zZy0+
-cnhfbGVuOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IGR3X21pcGlfZHNpX3NldF9tYXhfcmV0dXJu
-X3BhY2tldF9zaXplKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICsJCQkJCQkgIHNpemVfdCBs
-ZW4pCj4gK3sKPiArCXU4IHZhbFtdID0geyBsZW4gJiAweGZmLCAobGVuID4+IDgpICYgMHhmZiB9
-Owo+ICsJc3RydWN0IG1pcGlfZHNpX21zZyBtc2cgPSB7Cj4gKwkJLmNoYW5uZWwgPSBkc2ktPmNo
-YW5uZWwsCj4gKwkJLnR5cGUgPSBNSVBJX0RTSV9TRVRfTUFYSU1VTV9SRVRVUk5fUEFDS0VUX1NJ
-WkUsCj4gKwkJLnR4X2J1ZiA9IHZhbCwKPiArCQkudHhfbGVuID0gMiwKPiArCX07Cj4gKwo+ICsJ
-aWYgKGxlbiA+IDB4ZmZmZikKPiArCQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwlyZXR1cm4gZHdf
-bWlwaV9kc2lfZGNzX3Nob3J0X3dyaXRlKGRzaSwgJm1zZyk7Cj4gK30KPiArCj4gICBzdGF0aWMg
-c3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpo
-b3N0LAo+ICAgCQkJCQkgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNnKQo+ICAgewo+IEBA
-IC02OTIsNiArNzQwLDEyIEBAIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNm
-ZXIoc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCj4gICAJY2FzZSBNSVBJX0RTSV9EQ1NfTE9O
-R19XUklURToKPiAgIAkJcmV0ID0gZHdfbWlwaV9kc2lfZGNzX2xvbmdfd3JpdGUoZHNpLCBtc2cp
-Owo+ICAgCQlicmVhazsKPiArCWNhc2UgTUlQSV9EU0lfRENTX1JFQUQ6Cj4gKwkJcmV0ID0gZHdf
-bWlwaV9kc2lfc2V0X21heF9yZXR1cm5fcGFja2V0X3NpemUoZHNpLCBtc2ctPnJ4X2xlbik7Cj4g
-KwkJaWYgKHJldCA8IDApCj4gKwkJCXJldHVybiByZXQ7Cj4gKwkJcmV0ID0gZHdfbWlwaV9kc2lf
-ZGNzX3JlYWQoZHNpLCBtc2cpOwo+ICsJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gICAJCWRldl9l
-cnIoZHNpLT5kZXYsICJ1bnN1cHBvcnRlZCBtZXNzYWdlIHR5cGUgMHglMDJ4XG4iLAo+ICAgCQkJ
-bXNnLT50eXBlKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+
+
+On 01/20/2017 09:16 PM, Ulf Hansson wrote:
+> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com> wrote:
+>> If a PM domain is powered off before system suspend,
+>> we hope do nothing in system runtime suspend noirq phase
+>> and system runtime resume noirq phase.
+>
+> One can hope, but that isn't good enough. :-)
+>
+>
+>>
+>> This modify is to slove system resume issue for RK3399.
+>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
+>> so we must follow open vdd_gpu and power on pd_gpu,
+>> power off pd_gpu and disable vdd_gpu.
+>> Fix up in runtime resume noirq phase power on all PDs.
+>
+> This doesn't make any sense to me. Can please try to explain this is
+> in great more detail, then I can try to help.
+>
+For example:
+-->device suspend
+    (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
+     and then disabled the vdd_gpu by regulator_disable().)
+	--> system suspend
+		-->prepare
+			-->suspend_noirq():
+			(power off all pds)
+	-->system resume
+		-->resume_noirq():
+		(power up all pds)
+		(in this case the vdd_gpu is still disabled,
+		 if power on the pd_gpu maybe make the system crash)
+	-->complete : power off the not used pd
+-->device resuem
+    (mali gpu driver enable vdd_gpu by regulator_enable(),
+     and then power up the pd_gpu by pm_runtime_get_sync())
+
+So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else 
+will can't get the ack back.
+I hope the pd_gpu power up/off by the driver itself.
+
+May be I solution is not the optimal solution,Do you have better suggestion?
+
+>>
+>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>> ---
+>>   drivers/base/power/domain.c | 10 +++++++---
+>>   include/linux/pm_domain.h   |  1 +
+>>   2 files changed, 8 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/base/power/domain.c b/drivers/base/power/domain.c
+>> index 5711708532db..81351eec570f 100644
+>> --- a/drivers/base/power/domain.c
+>> +++ b/drivers/base/power/domain.c
+>> @@ -842,8 +842,10 @@ static int pm_genpd_prepare(struct device *dev)
+>>
+>>          genpd_lock(genpd);
+>>
+>> -       if (genpd->prepared_count++ == 0)
+>> +       if (genpd->prepared_count++ == 0) {
+>>                  genpd->suspended_count = 0;
+>> +               genpd->suspend_power_off = genpd->status == GPD_STATE_POWER_OFF;
+>> +       }
+>>
+>>          genpd_unlock(genpd);
+>>
+>> @@ -877,7 +879,8 @@ static int pm_genpd_suspend_noirq(struct device *dev)
+>>          if (IS_ERR(genpd))
+>>                  return -EINVAL;
+>>
+>> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
+>> +       if (genpd->suspend_power_off ||
+>> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
+>>                  return 0;
+>
+> This isn't going to work, because the PM domain might have been powered on.
+>
+> There is simply no guarantee to that the PM domain remains powered off
+> during the system PM suspend phases. For example, any device in the PM
+> domain that get runtime resumed after the ->prepare() callback is
+> invoked this, will of course also trigger the PM domain to be powered
+> on.
+>
+>>
+>>          if (genpd->dev_ops.stop && genpd->dev_ops.start) {
+>> @@ -914,7 +917,8 @@ static int pm_genpd_resume_noirq(struct device *dev)
+>>          if (IS_ERR(genpd))
+>>                  return -EINVAL;
+>>
+>> -       if (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev))
+>> +       if (genpd->suspend_power_off ||
+>> +           (dev->power.wakeup_path && genpd_dev_active_wakeup(genpd, dev)))
+>>                  return 0;
+>
+> Ditto, for the same reasons as above.
+>
+>>
+>>          /*
+>> diff --git a/include/linux/pm_domain.h b/include/linux/pm_domain.h
+>> index 81ece61075df..9c0dc364f089 100644
+>> --- a/include/linux/pm_domain.h
+>> +++ b/include/linux/pm_domain.h
+>> @@ -62,6 +62,7 @@ struct generic_pm_domain {
+>>          unsigned int device_count;      /* Number of devices */
+>>          unsigned int suspended_count;   /* System suspend device counter */
+>>          unsigned int prepared_count;    /* Suspend counter of prepared devices */
+>> +       bool suspend_power_off; /* Power status before system suspend */
+>>          int (*power_off)(struct generic_pm_domain *domain);
+>>          int (*power_on)(struct generic_pm_domain *domain);
+>>          struct gpd_dev_ops dev_ops;
+>> --
+>> 1.9.1
+>>
+>>
+>
+> Kind regards
+> Uffe
+>
+>
+>
