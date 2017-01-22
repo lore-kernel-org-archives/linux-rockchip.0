@@ -1,49 +1,82 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] dt-bindings: add Asus Tinker board
-Date: Sat, 21 Jan 2017 14:42:17 -0600
-Message-ID: <20170121204217.y54lup7wkm7y7iwp@rob-hp-laptop>
-References: <1484791919-4665-1-git-send-email-eddie.cai@rock-chips.com>
- <1484791919-4665-2-git-send-email-eddie.cai@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 18/26] drm/rockchip: dw-mipi-dsi: properly configure
+ PHY timing
+Date: Sun, 22 Jan 2017 11:06:31 +0800
+Message-ID: <588421B7.4000900@rock-chips.com>
+References: <20170121163128.22240-1-john@metanate.com>
+ <20170121163128.22240-19-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1484791919-4665-2-git-send-email-eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170121163128.22240-19-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 19, 2017 at 10:11:58AM +0800, Eddie Cai wrote:
-> Tinker board is a credit card size develop board designed by Asus.
-> Powered by RK3288.
-> 
-> Signed-off-by: Eddie Cai <eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.txt | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-> index cc4ace6..ce1f04a 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -1,5 +1,8 @@
->  Rockchip platforms device tree bindings
->  ---------------------------------------
-> +- Asus Tinker board
-> +    Required root node properties:
-> +      - compatible = "rockchip,rk3288-tinker", "rockchip,rk3288";
-
-This should be asus,tinker if that's specific enough. At least the board 
-manufacturer should be the vendor.
-
->  
->  - Kylin RK3036 board:
->      Required root node properties:
-> -- 
-> 2.7.4
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+CgpPbiAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gVGhlc2UgdmFs
+dWVzIGFyZSBzcGVjaWZpZWQgYXMgY29uc3RhbnQgdGltZSBwZXJpb2RzIGJ1dCB0aGUgUEhZCj4g
+Y29uZmlndXJhdGlvbiBpcyBpbiB0ZXJtcyBvZiB0aGUgY3VycmVudCBsYW5lIGJ5dGUgY2xvY2sg
+c28gdXNpbmcKPiBjb25zdGFudCB2YWx1ZXMgZ3VhcmFudGVlcyB0aGF0IHRoZSB0aW1pbmdzIHdp
+bGwgYmUgb3V0c2lkZSB0aGUKPiBzcGVjaWZpY2F0aW9uIHdpdGggc29tZSBkaXNwbGF5IGNvbmZp
+Z3VyYXRpb25zLgo+Cj4gRGVyaXZlIHRoZSBuZWNlc3NhcnkgY29uZmlndXJhdGlvbiBmcm9tIHRo
+ZSBieXRlIGNsb2NrIGluIG9yZGVyIHRvCj4gZW5zdXJlIHRoYXQgdGhlIFBIWSBjb25maWd1cmF0
+aW9uIGlzIGNvcnJlY3QuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0
+YW5hdGUuY29tPgo+IC0tLQo+IFVuY2hhbmdlZCBpbiB2Mgo+IC0tLQo+ICAgZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAzNiArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKystLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMzIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlv
+bnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggY2Zl
+N2U0YmEzMDVjLi4xMjQzMmU0MTk3MWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHct
+bWlwaS1kc2kuYwo+IEBAIC0zODMsNiArMzgzLDI2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X3BoeV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTggdGVzdF9jb2RlLAo+ICAgCWRz
+aV93cml0ZShkc2ksIERTSV9QSFlfVFNUX0NUUkwwLCBQSFlfVEVTVENMSyB8IFBIWV9VTlRFU1RD
+TFIpOwo+ICAgfQo+ICAgCj4gKy8qKgo+ICsgKiBuczJiYyAtIE5hbm9zZWNvbmRzIHRvIGJ5dGUg
+Y2xvY2sgY3ljbGVzCj4gKyAqLwo+ICtzdGF0aWMgaW5saW5lIHVuc2lnbmVkIGludCBuczJiYyhz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgaW50IG5zKQo+ICt7Cj4gKwl1bnNpZ25lZCBsb25nIGJ5
+dGVfY2xrX2toeiA9IGRzaS0+bGFuZV9tYnBzICogTVNFQ19QRVJfU0VDIC8gODsKPiArCj4gKwly
+ZXR1cm4gKG5zICogKGJ5dGVfY2xrX2toeiAvIDEwMDApICsgOTk5KSAvIDEwMDA7Cj4gK30KPiAr
+Cj4gKy8qKgo+ICsgKiBuczJ1aSAtIE5hbm9zZWNvbmRzIHRvIFVJIHRpbWUgcGVyaW9kcwo+ICsg
+Ki8KPiArc3RhdGljIGlubGluZSB1bnNpZ25lZCBpbnQgbnMydWkoc3RydWN0IGR3X21pcGlfZHNp
+ICpkc2ksIGludCBucykKPiArewo+ICsJdW5zaWduZWQgbG9uZyBieXRlX2Nsa19raHogPSBkc2kt
+PmxhbmVfbWJwcyAqIE1TRUNfUEVSX1NFQzsKPiArCj4gKwlyZXR1cm4gKG5zICogKGJ5dGVfY2xr
+X2toeiAvIDEwMDApICsgOTk5KSAvIDEwMDA7Cj4gK30KPiArCj4gICBzdGF0aWMgaW50IGR3X21p
+cGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgewo+ICAgCWludCBy
+ZXQsIHRlc3RkaW4sIHZjbywgdmFsOwo+IEBAIC00MzQsMTAgKzQ1NCwxOCBAQCBzdGF0aWMgaW50
+IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgCQkJCQkg
+U0VUUkRfTUFYIHwgUE9XRVJfTUFOQUdFIHwKPiAgIAkJCQkJIFRFUl9SRVNJU1RPUlNfT04pOwo+
+ICAgCj4gLQo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MCwgVExQX1BST0dSQU1f
+RU4gfCAweGYpOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MSwgVEhTX1BSRV9Q
+Uk9HUkFNX0VOIHwgMHg1NSk7Cj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDcyLCBU
+SFNfWkVST19QUk9HUkFNX0VOIHwgMHhhKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ks
+IDB4NjAsIFRMUF9QUk9HUkFNX0VOIHwgbnMyYmMoZHNpLCA1MDApKTsKPiArCWR3X21pcGlfZHNp
+X3BoeV93cml0ZShkc2ksIDB4NjEsIFRIU19QUkVfUFJPR1JBTV9FTiB8IG5zMnVpKGRzaSwgNDAp
+KTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NjIsIFRIU19aRVJPX1BST0dSQU1f
+RU4gfCBuczJiYyhkc2ksIDMwMCkpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg2
+MywgVEhTX1BSRV9QUk9HUkFNX0VOIHwgbnMydWkoZHNpLCAxMDApKTsKPiArCWR3X21pcGlfZHNp
+X3BoeV93cml0ZShkc2ksIDB4NjQsIEJJVCg1KSB8IG5zMmJjKGRzaSwgMTAwKSk7Cj4gKwlkd19t
+aXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDY1LCBCSVQoNSkgfCAobnMyYmMoZHNpLCA2MCkgKyA3
+KSk7Cj4gKwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MCwgVExQX1BST0dSQU1f
+RU4gfCBuczJiYyhkc2ksIDUwMCkpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3
+MSwgVEhTX1BSRV9QUk9HUkFNX0VOIHwgKG5zMnVpKGRzaSwgNTApICsgNSkpOwpXQVJOSU5HOiBs
+aW5lIG92ZXIgODAgY2hhcmFjdGVycwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3
+MiwgVEhTX1pFUk9fUFJPR1JBTV9FTiB8IChuczJiYyhkc2ksIDE0MCkgKyAyKSk7CldBUk5JTkc6
+IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCj4gKwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAw
+eDczLCBUSFNfUFJFX1BST0dSQU1fRU4gfCAobnMydWkoZHNpLCA2MCkgKyA4KSk7CldBUk5JTkc6
+IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCj4gKwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAw
+eDc0LCBCSVQoNSkgfCBuczJiYyhkc2ksIDEwMCkpOwo+ICAgCj4gICAJZHNpX3dyaXRlKGRzaSwg
+RFNJX1BIWV9SU1RaLCBQSFlfRU5GT1JDRVBMTCB8IFBIWV9FTkFCTEVDTEsgfAo+ICAgCQkJCSAg
+ICAgUEhZX1VOUlNUWiB8IFBIWV9VTlNIVVRET1dOWik7CgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
