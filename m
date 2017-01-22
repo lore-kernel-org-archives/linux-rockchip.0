@@ -1,61 +1,65 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 09/26] drm/rockchip: dw-mipi-dsi: respect message flags
-Date: Sun, 22 Jan 2017 15:14:04 +0800
-Message-ID: <58845BBC.3040105@rock-chips.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-10-john@metanate.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: rockchip: mark PM functions as __maybe_unused
+Date: Sun, 22 Jan 2017 15:38:47 +0800
+Message-ID: <41135715-6f07-9c85-0b78-c66a37607b92@rock-chips.com>
+References: <20170120162450.3690225-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170121163128.22240-10-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170120162450.3690225-1-arnd@arndb.de>
+Sender: linux-pci-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, shawn.lin@rock-chips.com, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obgoKUmV2aWV3ZWQtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+CgpP
-biAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gSW5zdGVhZCBvZiBh
-bHdheXMgc2VuZGluZyBjb21tYW5kcyBpbiBMUCBtb2RlLCByZXNwZWN0IHRoZQo+IE1JUElfRFNJ
-X01TR19VU0VfTFBNIGZsYWcgdG8gZGVjaWRlIGhvdyB0byBzZW5kIGVhY2ggbWVzc2FnZS4gIEFs
-c28KPiByZXF1ZXN0IGFja3MgaWYgTUlQSV9EU0lfTVNHX1JFUV9BQ0sgaXMgc2V0Lgo+Cj4gU2ln
-bmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBVbmNo
-YW5nZWQgaW4gdjIKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS5jIHwgMTYgKysrKysrKysrKysrKysrLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlv
-bnMoKyksIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS5jCj4gaW5kZXggOTJkYmMzZTU2NjAzLi4xNWQzM2MzYzhjYjcgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IEBAIC01NDIsNiArNTQyLDE5IEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfaG9zdF9kZXRhY2goc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCj4g
-ICAJcmV0dXJuIDA7Cj4gICB9Cj4gICAKPiArc3RhdGljIHZvaWQgZHdfbWlwaV9tZXNzYWdlX2Nv
-bmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiArCQkJCSAgIGNvbnN0IHN0cnVjdCBtaXBp
-X2RzaV9tc2cgKm1zZykKPiArewo+ICsJdTMyIHZhbCA9IDA7Cj4gKwo+ICsJaWYgKG1zZy0+Zmxh
-Z3MgJiBNSVBJX0RTSV9NU0dfUkVRX0FDSykKPiArCQl2YWwgfD0gRU5fQUNLX1JRU1Q7Cj4gKwlp
-ZiAobXNnLT5mbGFncyAmIE1JUElfRFNJX01TR19VU0VfTFBNKQo+ICsJCXZhbCB8PSBDTURfTU9E
-RV9BTExfTFA7Cj4gKwo+ICsJZHNpX3dyaXRlKGRzaSwgRFNJX0NNRF9NT0RFX0NGRywgdmFsKTsK
-PiArfQo+ICsKPiAgIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoc3Ry
-dWN0IGR3X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQo+ICAgewo+ICAgCWludCByZXQ7Cj4g
-QEAgLTYzNCw2ICs2NDcsOCBAQCBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5z
-ZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ICAgCXN0cnVjdCBkd19taXBpX2RzaSAq
-ZHNpID0gaG9zdF90b19kc2koaG9zdCk7Cj4gICAJaW50IHJldDsKPiAgIAo+ICsJZHdfbWlwaV9t
-ZXNzYWdlX2NvbmZpZyhkc2ksIG1zZyk7Cj4gKwo+ICAgCXN3aXRjaCAobXNnLT50eXBlKSB7Cj4g
-ICAJY2FzZSBNSVBJX0RTSV9EQ1NfU0hPUlRfV1JJVEU6Cj4gICAJY2FzZSBNSVBJX0RTSV9EQ1Nf
-U0hPUlRfV1JJVEVfUEFSQU06Cj4gQEAgLTc0NSw3ICs3NjAsNiBAQCBzdGF0aWMgdm9pZCBkd19t
-aXBpX2RzaV9jb21tYW5kX21vZGVfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAg
-ewo+ICAgCWRzaV93cml0ZShkc2ksIERTSV9UT19DTlRfQ0ZHLCBIU1RYX1RPX0NOVCgxMDAwKSB8
-IExQUlhfVE9fQ05UKDEwMDApKTsKPiAgIAlkc2lfd3JpdGUoZHNpLCBEU0lfQlRBX1RPX0NOVCwg
-MHhkMDApOwo+IC0JZHNpX3dyaXRlKGRzaSwgRFNJX0NNRF9NT0RFX0NGRywgQ01EX01PREVfQUxM
-X0xQKTsKPiAgIAlkc2lfd3JpdGUoZHNpLCBEU0lfTU9ERV9DRkcsIEVOQUJMRV9DTURfTU9ERSk7
-Cj4gICB9Cj4gICAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+Hi Arnd,
+
+On 2017/1/21 0:24, Arnd Bergmann wrote:
+> When CONFIG_PM_SLEEP is disabled, we get harmless build warnings:
+>
+> host/pcie-rockchip.c:1267:12: error: 'rockchip_pcie_resume_noirq' defined but not used [-Werror=unused-function]
+> host/pcie-rockchip.c:1240:12: error: 'rockchip_pcie_suspend_noirq' defined but not used [-Werror=unused-function]
+>
+> Marking both functions as __maybe_unused avoids the warning without
+> the need for #ifdef around them.
+
+Sorry for introducing this warning, and thanks for fixing it.
+
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+>
+> Fixes: 013dd3d5e183 ("PCI: rockchip: Add system PM support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/pci/host/pcie-rockchip.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 0d6e8ee5b017..b975116d2b03 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1237,7 +1237,7 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
+>  	return 0;
+>  }
+>
+> -static int rockchip_pcie_suspend_noirq(struct device *dev)
+> +static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
+>  {
+>  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>  	int ret;
+> @@ -1264,7 +1264,7 @@ static int rockchip_pcie_suspend_noirq(struct device *dev)
+>  	return ret;
+>  }
+>
+> -static int rockchip_pcie_resume_noirq(struct device *dev)
+> +static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+>  {
+>  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>  	int err;
+>
+
+
+-- 
+Best Regards
+Shawn Lin
