@@ -1,51 +1,74 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 17/26] drm/rockchip: dw-mipi-dsi: don't enable PHY PLL
- until it's configured
-Date: Sun, 22 Jan 2017 18:07:38 +0800
-Message-ID: <5884846A.7040200@rock-chips.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-18-john@metanate.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 3/3] clk: rockchip: rk3288: make all niu clocks critical
+Date: Sun, 22 Jan 2017 13:07:53 +0100
+Message-ID: <4474818.6v0yI33TyK@phil>
+References: <1484718161-27702-1-git-send-email-jacob-chen@iotwrt.com> <1484718161-27702-3-git-send-email-jacob-chen@iotwrt.com> <CAFLEztTwyjqz0-2LriDp2WAyPR-g28RZT3VPA5vfSK5SSHTx8Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170121163128.22240-18-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAFLEztTwyjqz0-2LriDp2WAyPR-g28RZT3VPA5vfSK5SSHTx8Q@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jacob Chen <jacobchen110@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obgoKVGhpcyBwYXRjaCBkbyB0aGUgc2ltaWxhciB0aGluZyB3aXRoIApodHRwczovL3Bh
-dGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1MzA0MDUvClRoZXkgYXJlIGNoYW5naW5nIHRoZSBw
-aHkgY29uZmlndXJhdGlvbiBvcmRlciwgbXkgc3VnZ2VzdGlvbiBpcyB0byBtZXJnZSAKdGhlbS4K
-CgpPbiAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gU2lnbmVkLW9m
-Zi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBVbmNoYW5nZWQg
-aW4gdjIKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwg
-MiArLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGNlMWU2ZjlhMjA0
-MS4uY2ZlN2U0YmEzMDVjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LmMKPiBAQCAtNDEzLDEyICs0MTMsMTIgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5p
-dChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIAo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0
-ZShkc2ksIDB4NDQsIEhTRlJFUVJBTkdFX1NFTCh0ZXN0ZGluKSk7Cj4gICAKPiAtCWR3X21pcGlf
-ZHNpX3BoeV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9FTiB8IFBMTF9JTlBVVF9ESVZf
-RU4pOwo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTcsIElOUFVUX0RJVklERVIo
-ZHNpLT5pbnB1dF9kaXYpKTsKPiAgIAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE4LCBM
-T09QX0RJVl9MT1dfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4gICAJCQkJCSBMT1dfUFJPR1JB
-TV9FTik7Cj4gICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxOCwgTE9PUF9ESVZfSElH
-SF9TRUwoZHNpLT5mZWVkYmFja19kaXYpIHwKPiAgIAkJCQkJIEhJR0hfUFJPR1JBTV9FTik7Cj4g
-Kwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9ESVZfRU4gfCBQTExf
-SU5QVVRfRElWX0VOKTsKPiAgIAo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MjIs
-IExPV19QUk9HUkFNX0VOIHwKPiAgIAkJCQkJIEJJQVNFWFRSX1NFTChCSUFTRVhUUl8xMjdfNykp
-OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Sonntag, 22. Januar 2017, 17:02:17 CET schrieb Jacob Chen:
+> 2017-01-18 13:42 GMT+08:00 Jacob Chen <jacob-chen@iotwrt.com>:
+> > NIU clocks are related to the interconnect and it's important to other
+> > blocks. Since we don't have a driver to handle it, we should always
+> > enable it to avoid casually close.
+> > 
+> > Make all of them critical,so that we don't have to each clock on its own
+> > once things break.
+> > 
+> > Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> > ---
+> > 
+> >  drivers/clk/rockchip/clk-rk3288.c | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> > 
+> > diff --git a/drivers/clk/rockchip/clk-rk3288.c
+> > b/drivers/clk/rockchip/clk-rk3288.c index 3d02aa2..c50386c 100644
+> > --- a/drivers/clk/rockchip/clk-rk3288.c
+> > +++ b/drivers/clk/rockchip/clk-rk3288.c
+> > @@ -808,8 +808,15 @@ static struct rockchip_clk_branch
+> > rk3288_clk_branches[] __initdata = {> 
+> >  static const char *const rk3288_critical_clocks[] __initconst = {
+> >  
+> >         "aclk_cpu",
+> >         "aclk_peri",
+> > 
+> > +       "aclk_peri_niu",
+> > +       "aclk_vio0_niu",
+> > +       "aclk_vio1_niu",
+> > +       "aclk_rga_niu",
+> > 
+> >         "hclk_peri",
+> > 
+> > +       "hclk_vio_niu",
+> > +       "pclk_alive_niu",
+> > 
+> >         "pclk_pd_pmu",
+> > 
+> > +       "pclk_pmu_niu",
+> > 
+> >  };
+> >  
+> >  static void __iomem *rk3288_cru_base;
+> > 
+> > --
+> > 2.7.4
+> 
+> I just got an another bug that caused by closed niu clock.
+> Making niu clock always enabled is really useful, it could save me a
+> lot of time.....
+> 
+> I just wonder why we don't do that before.  Would it have great impact
+> on power consumption?
+
+The niu clocks so far seemed to rely on the CLK_IGNORE_UNUSED flag. So all was 
+well as long as nothing changed in the clock tree above those and I guess with 
+more supported peripherals, some now make changes to the more common clocks 
+and thus disable the nui clocks by accident.
+
