@@ -1,47 +1,51 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 15/26] drm/rockchip: dw-mipi-dsi: ensure PHY is reset
-Date: Sun, 22 Jan 2017 17:37:28 +0800
-Message-ID: <58847D58.5080903@rock-chips.com>
+Subject: Re: [PATCH v2 17/26] drm/rockchip: dw-mipi-dsi: don't enable PHY PLL
+ until it's configured
+Date: Sun, 22 Jan 2017 18:07:38 +0800
+Message-ID: <5884846A.7040200@rock-chips.com>
 References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-16-john@metanate.com>
+ <20170121163128.22240-18-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170121163128.22240-16-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170121163128.22240-18-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Reviewed-by: Chris Zhong <zyw@rock-chips.com>
-
-On 01/22/2017 12:31 AM, John Keeping wrote:
-> Also don't power up the DSI host at this point since this is not
-> necessary in order to configure the PHY and we do so later when
-> selecting video or command mode.
->
-> Signed-off-by: John Keeping <john@metanate.com>
-> ---
-> Unchanged in v2
-> ---
->   drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> index c2e0ba96e0a0..5b3068e9e8db 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> @@ -397,7 +397,10 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
->   		return testdin;
->   	}
->   
-> -	dsi_write(dsi, DSI_PWR_UP, POWERUP);
-> +	/* Start by clearing PHY state */
-> +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
-> +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLR);
-> +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
->   
->   	dw_mipi_dsi_phy_write(dsi, 0x10, BYPASS_VCO_RANGE |
->   					 VCO_RANGE_CON_SEL(vco) |
+SGkgSm9obgoKVGhpcyBwYXRjaCBkbyB0aGUgc2ltaWxhciB0aGluZyB3aXRoIApodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1MzA0MDUvClRoZXkgYXJlIGNoYW5naW5nIHRoZSBw
+aHkgY29uZmlndXJhdGlvbiBvcmRlciwgbXkgc3VnZ2VzdGlvbiBpcyB0byBtZXJnZSAKdGhlbS4K
+CgpPbiAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gU2lnbmVkLW9m
+Zi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBVbmNoYW5nZWQg
+aW4gdjIKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwg
+MiArLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGNlMWU2ZjlhMjA0
+MS4uY2ZlN2U0YmEzMDVjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
+dy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LmMKPiBAQCAtNDEzLDEyICs0MTMsMTIgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5p
+dChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIAo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0
+ZShkc2ksIDB4NDQsIEhTRlJFUVJBTkdFX1NFTCh0ZXN0ZGluKSk7Cj4gICAKPiAtCWR3X21pcGlf
+ZHNpX3BoeV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9FTiB8IFBMTF9JTlBVVF9ESVZf
+RU4pOwo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTcsIElOUFVUX0RJVklERVIo
+ZHNpLT5pbnB1dF9kaXYpKTsKPiAgIAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE4LCBM
+T09QX0RJVl9MT1dfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4gICAJCQkJCSBMT1dfUFJPR1JB
+TV9FTik7Cj4gICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxOCwgTE9PUF9ESVZfSElH
+SF9TRUwoZHNpLT5mZWVkYmFja19kaXYpIHwKPiAgIAkJCQkJIEhJR0hfUFJPR1JBTV9FTik7Cj4g
+Kwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9ESVZfRU4gfCBQTExf
+SU5QVVRfRElWX0VOKTsKPiAgIAo+ICAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MjIs
+IExPV19QUk9HUkFNX0VOIHwKPiAgIAkJCQkJIEJJQVNFWFRSX1NFTChCSUFTRVhUUl8xMjdfNykp
+OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
