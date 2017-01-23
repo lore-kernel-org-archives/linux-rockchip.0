@@ -1,120 +1,54 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 3/5] drm/rockchip/dsi: remove mode_valid function
-Date: Mon, 23 Jan 2017 12:48:41 -0500
-Message-ID: <20170123174841.GB25789@trickycodes.roam.corp.google.com>
-References: <1484907051-7159-1-git-send-email-zyw@rock-chips.com>
- <1484907051-7159-4-git-send-email-zyw@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 0/4] Add support for es8388 and hdmi audio on the rock2
+Date: Mon, 23 Jan 2017 17:54:51 +0000
+Message-ID: <20170123175451.hwvuum4ismutrbsf@sirena.org.uk>
+References: <20170123104149.2508-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="qh7uxobyyv5bwgbo"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1484907051-7159-4-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com, mark.rutland@arm.com, devicetree@vger.kernel.org, robh+dt@kernel.org, galak@codeaurora.org, pawel.moll@arm.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20170123104149.2508-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 20, 2017 at 06:10:49PM +0800, Chris Zhong wrote:
-> The MIPI DSI do not need check the validity of resolution, the max
-> resolution should depend VOP. Hence, remove rk3288_mipi_dsi_mode_valid
-> here.
 
-Does vop actually enforce this, though? I see that mode_config.max_width is
-4096, but there is no bounds checking in mode_fixup().
+--qh7uxobyyv5bwgbo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-The connector is currently rejecting everything greater than 2047. So I think
-you're going to regress behavior here.
+On Mon, Jan 23, 2017 at 11:41:45AM +0100, Romain Perier wrote:
 
-Sean
+> Changes in v4:
+>  - Add support for multi codecs in the asoc machine driver, so the driver
+>    matches the hw architecture (analog and hdmi audio are connected on
+>    the same i2s line)
+>  - Renamed the driver to rk3288-hdmi-analog.c and changed its
+>    documentation
+>  - Add built-in support for hdmi audio in this driver
+>  - Add support for the property 'rockchip,routing'
 
+This is the first version that has been sumbitted upstream.
 
-> 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> ---
-> 
-> Changes in v3: None
-> 
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 39 ----------------------------------
->  1 file changed, 39 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> index a93ce97..6f0e252 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> @@ -278,8 +278,6 @@ struct dw_mipi_dsi_plat_data {
->  	u32 grf_dsi0_mode;
->  	u32 grf_dsi0_mode_reg;
->  	unsigned int max_data_lanes;
-> -	enum drm_mode_status (*mode_valid)(struct drm_connector *connector,
-> -					   struct drm_display_mode *mode);
->  };
->  
->  struct dw_mipi_dsi {
-> @@ -1081,23 +1079,8 @@ static int dw_mipi_dsi_connector_get_modes(struct drm_connector *connector)
->  	return drm_panel_get_modes(dsi->panel);
->  }
->  
-> -static enum drm_mode_status dw_mipi_dsi_mode_valid(
-> -					struct drm_connector *connector,
-> -					struct drm_display_mode *mode)
-> -{
-> -	struct dw_mipi_dsi *dsi = con_to_dsi(connector);
-> -
-> -	enum drm_mode_status mode_status = MODE_OK;
-> -
-> -	if (dsi->pdata->mode_valid)
-> -		mode_status = dsi->pdata->mode_valid(connector, mode);
-> -
-> -	return mode_status;
-> -}
-> -
->  static struct drm_connector_helper_funcs dw_mipi_dsi_connector_helper_funcs = {
->  	.get_modes = dw_mipi_dsi_connector_get_modes,
-> -	.mode_valid = dw_mipi_dsi_mode_valid,
->  };
->  
->  static void dw_mipi_dsi_drm_connector_destroy(struct drm_connector *connector)
-> @@ -1168,33 +1151,11 @@ static int rockchip_mipi_parse_dt(struct dw_mipi_dsi *dsi)
->  	return 0;
->  }
->  
-> -static enum drm_mode_status rk3288_mipi_dsi_mode_valid(
-> -					struct drm_connector *connector,
-> -					struct drm_display_mode *mode)
-> -{
-> -	/*
-> -	 * The VID_PKT_SIZE field in the DSI_VID_PKT_CFG
-> -	 * register is 11-bit.
-> -	 */
-> -	if (mode->hdisplay > 0x7ff)
-> -		return MODE_BAD_HVALUE;
-> -
-> -	/*
-> -	 * The V_ACTIVE_LINES field in the DSI_VTIMING_CFG
-> -	 * register is 11-bit.
-> -	 */
-> -	if (mode->vdisplay > 0x7ff)
-> -		return MODE_BAD_VVALUE;
-> -
-> -	return MODE_OK;
-> -}
-> -
->  static struct dw_mipi_dsi_plat_data rk3288_mipi_dsi_drv_data = {
->  	.dsi0_en_bit = RK3288_DSI0_SEL_VOP_LIT,
->  	.dsi1_en_bit = RK3288_DSI1_SEL_VOP_LIT,
->  	.grf_switch_reg = RK3288_GRF_SOC_CON6,
->  	.max_data_lanes = 4,
-> -	.mode_valid = rk3288_mipi_dsi_mode_valid,
->  };
->  
->  static struct dw_mipi_dsi_plat_data rk3399_mipi_dsi_drv_data = {
-> -- 
-> 2.6.3
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+--qh7uxobyyv5bwgbo
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAliGQ2sACgkQJNaLcl1U
+h9DWrgf/cabHv+hPcw1cw88lEyI/z6V1qI/t3uKPTq8W381/n8UvI74wKx5yuHuS
+XJ4GEpe6N7K1tD9+8vPQkkC6dxOYlkOwwXFgwfPtgDLZaLRt1wybyoRkolohJpil
+WFMUT6hhfmagvyYIEvPRsMiNVuVUomX0umMZCFpo6CjoJ1ChIiPC3S2iZvwJJhG5
+phMUfPD+Q95bbh/ZGH2eIKI9+/oizFnFqVyhzuOLKCLGkSTUgSeteAjE3ySqL8q3
+eaMtvtkhCN0HfySxcI+VYqbM0qxOQj34GobXsLjoLPj1w+EAT11pjjauc2VubZ6S
+c1+e7Gk2Vw3RYtgwQMQmUDHW+16c+A==
+=yj7b
+-----END PGP SIGNATURE-----
+
+--qh7uxobyyv5bwgbo--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
