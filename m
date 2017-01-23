@@ -1,12 +1,14 @@
 From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v2 0/3] Add support for es8323 and hdmi audio
-	to the firefly-rk3288
-Date: Mon, 23 Jan 2017 14:47:44 +0100
-Message-ID: <20170123134747.1385-1-romain.perier@collabora.com>
+Subject: [PATCH v2 1/3] SoC: es8328-i2c: Add compatible for
+	ES8323
+Date: Mon, 23 Jan 2017 14:47:45 +0100
+Message-ID: <20170123134747.1385-2-romain.perier@collabora.com>
+References: <20170123134747.1385-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170123134747.1385-1-romain.perier@collabora.com>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -20,31 +22,54 @@ To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Rob Herring <r
 Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This set of patches enables support for the es8323 codecs on the
-firefly-rk3288. It adds the required DT definitions to link rockchip-i2s
-to the es8388 analog output. As the support for HDMI audio is also
-built-in in the corresponding ASoC machine driver, HDMI audio output is
-also enabled.
+This commit adds a compatible string for everest,es8323. This is an
+audio codec that is compatible with es8328 and can be found for example
+on the Firefly-RK3288 board.
 
-Changes in v2:
- - Adapted DT for the firefly-rk3288 to the ASoC machine driver
-   rk3288-hdmi-analog
- - Added patch 02/03 to this series
- - Re-wrote this cover letter
+Signed-off-by: Romain Perier <romain.perier@collabora.com>
+---
 
-Romain Perier (3):
-  SoC: es8328-i2c: Add compatible for ES8323
-  arm: dts: rockchip: Don't set otp-gpio pinctrl by default in
-    rk3288.dtsi
-  arm: dts: Add support for ES8323 to the Firefly-RK3288
+Changes in v2: None
 
- Documentation/devicetree/bindings/sound/es8328.txt |  5 +++-
- arch/arm/boot/dts/rk3288-evb.dtsi                  |  4 +++
- arch/arm/boot/dts/rk3288-firefly.dtsi              | 34 ++++++++++++++++++++++
- arch/arm/boot/dts/rk3288-veyron.dtsi               |  4 +++
- arch/arm/boot/dts/rk3288.dtsi                      |  4 ---
- sound/soc/codecs/es8328-i2c.c                      |  2 ++
- 6 files changed, 48 insertions(+), 5 deletions(-)
+ Documentation/devicetree/bindings/sound/es8328.txt | 5 ++++-
+ sound/soc/codecs/es8328-i2c.c                      | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
+index 33fbf05..86b6d6e 100644
+--- a/Documentation/devicetree/bindings/sound/es8328.txt
++++ b/Documentation/devicetree/bindings/sound/es8328.txt
+@@ -4,7 +4,10 @@ This device supports both I2C and SPI.
+ 
+ Required properties:
+ 
+-  - compatible  : Should be "everest,es8328" or "everest,es8388"
++  - compatible  : Should be one of the following:
++	- "everest,es8323"
++	- "everest,es8328"
++	- "everest,es8388"
+   - DVDD-supply : Regulator providing digital core supply voltage 1.8 - 3.6V
+   - AVDD-supply : Regulator providing analog supply voltage 3.3V
+   - PVDD-supply : Regulator providing digital IO supply voltage 1.8 - 3.6V
+diff --git a/sound/soc/codecs/es8328-i2c.c b/sound/soc/codecs/es8328-i2c.c
+index 318ab28..be3f03c 100644
+--- a/sound/soc/codecs/es8328-i2c.c
++++ b/sound/soc/codecs/es8328-i2c.c
+@@ -19,6 +19,7 @@
+ #include "es8328.h"
+ 
+ static const struct i2c_device_id es8328_id[] = {
++	{ "es8323", 0 },
+ 	{ "es8328", 0 },
+ 	{ "es8388", 0 },
+ 	{ }
+@@ -26,6 +27,7 @@ static const struct i2c_device_id es8328_id[] = {
+ MODULE_DEVICE_TABLE(i2c, es8328_id);
+ 
+ static const struct of_device_id es8328_of_match[] = {
++	{ .compatible = "everest,es8323", },
+ 	{ .compatible = "everest,es8328", },
+ 	{ .compatible = "everest,es8388", },
+ 	{ }
 -- 
 2.9.3
