@@ -1,64 +1,69 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 22/26] drm/rockchip: vop: test for P{H,V}SYNC
-Date: Mon, 23 Jan 2017 15:12:05 +0800
-Message-ID: <5885ACC5.5090108@rock-chips.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-23-john@metanate.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v4 0/4] Add support for es8388 and hdmi audio
+	on the rock2
+Date: Mon, 23 Jan 2017 11:41:45 +0100
+Message-ID: <20170123104149.2508-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170121163128.22240-23-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017年01月22日 00:31, John Keeping wrote:
-> When connected to the MIPI DSI output, we need to use N{H,V}SYNC for the
-> internal connection but these flags are meaningless for DSI panels.
-> Switch the test so that we do not set the P{H,V}SYNC bits unless the
-> mode requires it.
->
-> Signed-off-by: John Keeping <john@metanate.com>
-> ---
-> Unchanged in v2
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index c7eba305c488..67aefc6d4e9a 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -933,8 +933,8 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
->   	}
->   
->   	pin_pol = 0x8;
-> -	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_NHSYNC) ? 0 : 1;
-> -	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_NVSYNC) ? 0 : (1 << 1);
-> +	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PHSYNC) ? 1 : 0;
-> +	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PVSYNC) ? (1 << 1) : 0;
+This set of patches adds a machine driver for rk3288-based boards that have
+the built-in HDMI audio and a generic analog output. It also adds slave mode
+to the es8328 driver that currently only supported the master mode. Then, it
+adds the required DT definitions to link rockchip-i2s to the es8388 analog
+output and to hdmi audio.
 
-I'm confuse that why SYNC flags have N and P on drm, they are same meaning.
+This work is based on the initial work that was done by Sjoerd Simons
+<sjoerd.simons@collabora.co.uk> with some improvements, changes and more
+commits.
 
-If no one configure display mode's flags, I don't know which one is 
-correct, N or P? it's a problem.
-Does anyone can answer it?
+Changes in v4:
+ - Add support for multi codecs in the asoc machine driver, so the driver
+   matches the hw architecture (analog and hdmi audio are connected on
+   the same i2s line)
+ - Renamed the driver to rk3288-hdmi-analog.c and changed its
+   documentation
+ - Add built-in support for hdmi audio in this driver
+ - Add support for the property 'rockchip,routing'
 
-For this patch, it may effect non-sync flags mode on other connector's 
-behavior,
-but seems mostly display mode has sync flags except mipi dsi connector, 
-I think feed mipi's requirement would be better.
+Changes in v3:
+ - Cosmetic changes in rockchip_es8388.c
+ - Added missing email to MODULE_AUTHOR in rockchip_es8388.c
+Changes in v2:
+ - Fixed wrong use of the data structure i2c_device_id
+ - Fixed wrong dependencies for SND_SOC_ROCKCHIP_ES8388
 
-So it's no problem  on my side.
+Romain Perier (4):
+  ASoC: es8328-i2c: Add compatible for ES8388
+  ASoC: es8328: Add support for slave mode
+  ASoC: rockchip: Add machine driver for RK3288 boards that use
+    analog/HDMI
+  arm: dts: Add support for ES8388 to the Radxa Rock 2
 
-Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
-
->   	VOP_CTRL_SET(vop, pin_pol, pin_pol);
->   
->   	switch (s->output_type) {
-
+ Documentation/devicetree/bindings/sound/es8328.txt |   2 +-
+ .../bindings/sound/rockchip,rk3288-hdmi-analog.txt |  36 +++
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  39 +++
+ sound/soc/codecs/es8328-i2c.c                      |   2 +
+ sound/soc/codecs/es8328.c                          |  28 +-
+ sound/soc/rockchip/Kconfig                         |  10 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rk3288_hdmi_analog.c            | 299 +++++++++++++++++++++
+ 8 files changed, 411 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3288-hdmi-analog.txt
+ create mode 100644 sound/soc/rockchip/rk3288_hdmi_analog.c
 
 -- 
-Ｍark Yao
+2.9.3
