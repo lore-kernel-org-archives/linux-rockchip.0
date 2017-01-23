@@ -1,114 +1,90 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v4 4/4] arm: dts: Add support for ES8388 to the
-	Radxa Rock 2
-Date: Mon, 23 Jan 2017 11:41:49 +0100
-Message-ID: <20170123104149.2508-5-romain.perier@collabora.com>
-References: <20170123104149.2508-1-romain.perier@collabora.com>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH v2 19/26] drm/rockchip: dw-mipi-dsi: improve PLL
+ configuration
+Date: Mon, 23 Jan 2017 12:49:25 +0000
+Message-ID: <20170123124925.4fa10fc2.john@metanate.com>
+References: <20170121163128.22240-1-john@metanate.com>
+ <20170121163128.22240-20-john@metanate.com>
+ <58855EAE.2010704@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170123104149.2508-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <58855EAE.2010704@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device
-found at address 0x10. It also adds the definition for connecting
-the Rockchip I2S to the es8388 analog output.
-
-This commit is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.com> with some improvements.
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
-
-Changes in v4:
- - Updated to the new DT binding
- - Added the property 'rockchip,routing'
- - Renamed the node sound_es8388 to sound_i2s
-Changes in v3: None
-Changes in v2: None
-
- arch/arm/boot/dts/rk3288-rock2-square.dts | 39 +++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index dd3ad2e..6b176b8 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -86,6 +86,19 @@
- 		#sound-dai-cells = <0>;
- 	};
- 
-+	sound_i2s {
-+		compatible = "rockchip,rk3288-hdmi-analog";
-+		rockchip,model = "I2S";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8388>;
-+		rockchip,routing = "Analog", "LOUT2",
-+				   "Analog", "ROUT2";
-+		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&headphone>;
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&hym8563>;
-@@ -173,10 +186,29 @@
- 	};
- };
- 
-+&i2c2 {
-+	status = "okay";
-+
-+	es8388: es8388@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_codec>;
-+		DVDD-supply = <&vcca_codec>;
-+		HPVDD-supply = <&vcca_codec>;
-+		PVDD-supply = <&vcca_codec>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
-+};
-+
- &i2c5 {
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-@@ -190,6 +222,13 @@
- 		};
- 	};
- 
-+	sound {
-+		headphone: headphone {
-+			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.9.3
+SGkgQ2hyaXMsCgpPbiBNb24sIDIzIEphbiAyMDE3IDA5OjM4OjU0ICswODAwLCBDaHJpcyBaaG9u
+ZyB3cm90ZToKPiBPbiAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4g
+PiBUaGUgbXVsdGlwbGljYXRpb24gcmF0aW8gZm9yIHRoZSBQTEwgaXMgcmVxdWlyZWQgdG8gYmUg
+ZXZlbiBkdWUgdG8gdGhlCj4gPiB1c2Ugb2YgYSAiYnkgMiBwcmUtc2NhbGVyIi4gIEN1cnJlbnRs
+eSB3ZSBhcmUgbGlrZWx5IHRvIGVuZCB1cCB3aXRoIGFuCj4gPiBvZGQgbXVsdGlwbGllciBldmVu
+IHRob3VnaCB0aGVyZSBpcyBhbiBlcXVpdmFsZW50IHNldCBvZiBwYXJhbWV0ZXJzIHdpdGgKPiA+
+IGFuIGV2ZW4gbXVsdGlwbGllci4KPiA+Cj4gPiBGb3IgZXhhbXBsZSwgdXNpbmcgdGhlIDMyNE1I
+eiBiaXQgcmF0ZSB3aXRoIGEgcmVmZXJlbmNlIGNsb2NrIG9mIDI0TUh6Cj4gPiB3ZSBlbmQgdXAg
+d2l0aCBNID0gMjcsIE4gPSAyIHdoZXJlYXMgdGhlIGV4YW1wbGUgaW4gdGhlIFBIWSBkYXRhYm9v
+awo+ID4gZ2l2ZXMgTSA9IDU0LCBOID0gNCBmb3IgdGhpcyBiaXQgcmF0ZSBhbmQgcmVmZXJlbmNl
+IGNsb2NrLgo+ID4KPiA+IEJ5IHdhbGtpbmcgZG93biB0aHJvdWdoIHRoZSBhdmFpbGFibGUgbXVs
+dGlwbGllciBpbnN0ZWFkIG9mIHVwIHdlIGFyZQo+ID4gbW9yZSBsaWtlbHkgdG8gaGl0IGFuIGV2
+ZW4gbXVsdGlwbGllci4gIFdpdGggdGhlIGFib3ZlIGV4YW1wbGUgd2UgZG8gbm93Cj4gPiBnZXQg
+TSA9IDU0LCBOID0gNCBhcyBnaXZlbiBieSB0aGUgZGF0YWJvb2suCj4gPgo+ID4gV2hpbGUgZG9p
+bmcgdGhpcywgY2hhbmdlIHRoZSBsb29wIGxpbWl0cyB0byBlbmNvZGUgdGhlIGFjdHVhbCBsaW1p
+dHMgb24KPiA+IHRoZSBkaXZpc29yLCB3aGljaCBhcmU6Cj4gPgo+ID4gCTQwTUh6ID49IChwbGxy
+ZWYgLyBOKSA+PSA1TUh6ICAKPiAKPiBUaGlzIGZvcm11bGEgaXMgbGltaXQgZm9yIE4sIGJ1dCB3
+ZSBzdGlsbCBjYW4gbm90IGd1YXJhbnRlZSB0byBnZXQgYW4gCj4gZXZlbiBNLgo+IERvIHlvdSB0
+aGluayB3ZSBzaG91bGQgZG8gYSBjaGVjayBmb3IgTS4KPiBzdWNoIGFzOgo+IGlmIChtICUgMikK
+PiAgICAgIGNvbnRpbnVlOwo+IC4uLgo+ICAgICAgZm9yIChpID0gcGxscmVmIC8gNTsgaSA+IChw
+bGxyZWYgLyA0MCk7IGktLSkgewo+ICAgICAgICAgIHByZSA9IHBsbHJlZiAvIGk7Cj4gICAgICAg
+ICAgaWYgKCh0bXAgPiAodGFyZ2V0X21icHMgJSBwcmUpKSAmJiAodGFyZ2V0X21icHMgLyBwcmUg
+PCA1MTIpKSB7Cj4gICAgICAgICAgICAgIHRtcCA9IHRhcmdldF9tYnBzICUgcHJlOwo+ICAgICAg
+ICAgICAgICBuID0gaTsKPiAgICAgICAgICAgICAgbSA9IHRhcmdldF9tYnBzIC8gcHJlOwo+ICAg
+ICAgICAgICAgICBpZiAobSAlIDIpCj4gICAgICAgICAgICAgICAgICBjb250aW51ZTsKPiAgICAg
+ICAgICB9Cj4gICAgICAgICAgaWYgKHRtcCA9PSAwKQo+ICAgICAgICAgICAgICBicmVhazsKPiAg
+ICAgIH0KPiAKPiBpZiAobSAlIDIpCj4gICAgICBtKys7Cj4gCj4gICAgICBkc2ktPmxhbmVfbWJw
+cyA9IHBsbHJlZiAvIG4gKiBtOwo+ICAgICAgZHNpLT5pbnB1dF9kaXYgPSBuOwo+ICAgICAgZHNp
+LT5mZWVkYmFja19kaXYgPSBtOwoKWWVzLCBJIGFncmVlIHRoYXQgdGhlcmUgc2hvdWxkIGJlIGEg
+Y2hlY2sgZm9yIE0sIGJ1dCBJJ20gbm90IHN1cmUgaWYKdGhlIHZlcnNpb24gYWJvdmUgaXMgc3Vm
+ZmljaWVudC4gIFRoZSAibSAlIDIiIGNoZWNrIGluc2lkZSB0aGUgbG9vcAptZWFucyB0aGF0IHdl
+IGRvbid0IGJyZWFrIGltbWVkaWF0ZWx5IHdoZW4gdG1wPTAgYnV0IHRoZW4gd2UgYXJlCmd1YXJh
+bnRlZWQgdG8gYnJlYWsgbmV4dCB0aW1lIHdpdGhvdXQgaGF2aW5nIG1vZGlmaWVkIG4sIG0gYmVj
+YXVzZSBub3cKdG1wPTAgc28gInRtcCA+ICh0YXJnZXRfbWJwcyAlIHByZSkiIGlzIGFsd2F5cyBm
+YWxzZSBhbmQgd2UganVzdCBoaXQgdGhlCiJpZiAodG1wID09IDApIGJyZWFrIiBjYXNlIG5leHQg
+dGltZS4KCkdpdmVuIHRoYXQgdGhlIGRlc2NlbmRpbmcgbG9vcCBhbHJlYWR5IG1lYW5zIHRoYXQg
+aWYgd2UgY2FuIGhpdCAidG1wIgpleGFjdGx5IHdlIGFyZSBtb3JlIGxpa2VseSB0byBkbyBzbyB3
+aXRoIGEgYmlnZ2VyIE4gYW5kIGV2ZW4gTSwgSSB0aGluawppdCBtaWdodCBiZSBiZXR0ZXIgdG8g
+anVzdCBmaXggTSBhZnRlciB0aGUgbG9vcCBsaWtlOgoKCWlmIChtICUgMikgewoJCWlmIChtIDwg
+MjU2ICYmIChuICogMikgPD0gKHBsbHJlZiAvIDUpKSB7CgkJCW4gKj0gMjsKCQkJbSAqPSAyOwoJ
+CX0gZWxzZSB7CgkJCW0rKzsKCQl9Cgl9CgpidXQgSSBoYXZlbid0IHRob3VnaHQgYWJvdXQgdGhp
+cyB0b28gY2FyZWZ1bGx5LgoKRm9yIHRoaXMgc2VyaWVzLCBJJ2QgcmF0aGVyIGVpdGhlciBrZWVw
+IHRoaXMgcGF0Y2ggYXMgaXQgaXMgb3IgZHJvcCBpdAppbiBmYXZvdXIgb2YgYSBtb3JlIGNvbXBy
+ZWhlbnNpdmUgc29sdXRpb24uICBJIGRvbid0IHdhbnQgdG8gYmxvY2sgdGhlCm90aGVyIGZpeGVz
+IHdhaXRpbmcgZm9yIGEgcGVyZmVjdCBmaXggaGVyZSBhbmQgd2UgY2FuIGFsd2F5cyBpbXByb3Zl
+CnRoaXMgZnVydGhlciB3aXRoIGEgZm9sbG93LXVwIHBhdGNoLgoKPiA+IFNpZ25lZC1vZmYtYnk6
+IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4gPiAtLS0KPiA+IFVuY2hhbmdlZCBp
+biB2Mgo+ID4gLS0tCj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
+IHwgMiArLQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
+LSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gaW5kZXgg
+MTI0MzJlNDE5NzFiLi5mMjMyMGNmMTM2NmMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLmMKPiA+IEBAIC01MTksNyArNTE5LDcgQEAgc3RhdGljIGludCBkd19t
+aXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gPiAgIAlwbGxy
+ZWYgPSBESVZfUk9VTkRfVVAoY2xrX2dldF9yYXRlKGRzaS0+cGxscmVmX2NsayksIFVTRUNfUEVS
+X1NFQyk7Cj4gPiAgIAl0bXAgPSBwbGxyZWY7Cj4gPiAgIAo+ID4gLQlmb3IgKGkgPSAxOyBpIDwg
+NjsgaSsrKSB7Cj4gPiArCWZvciAoaSA9IHBsbHJlZiAvIDU7IGkgPiAocGxscmVmIC8gNDApOyBp
+LS0pIHsKPiA+ICAgCQlwcmUgPSBwbGxyZWYgLyBpOwo+ID4gICAJCWlmICgodG1wID4gKHRhcmdl
+dF9tYnBzICUgcHJlKSkgJiYgKHRhcmdldF9tYnBzIC8gcHJlIDwgNTEyKSkgewo+ID4gICAJCQl0
+bXAgPSB0YXJnZXRfbWJwcyAlIHByZTsgIAo+IAo+IApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
