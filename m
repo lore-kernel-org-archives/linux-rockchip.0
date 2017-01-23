@@ -1,103 +1,50 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] Revert "mmc: dw_mmc-rockchip: add runtime PM support"
-Date: Mon, 23 Jan 2017 13:22:01 +0000
-Message-ID: <20170123132201.30fc4dc1.john@metanate.com>
-References: <CGME20161228153516epcas2p253c6bc0371ab0df464573b63218795ef@epcas2p2.samsung.com>
- <1482939288-14950-1-git-send-email-ayaka@soulik.info>
- <e0cc8029-0155-4879-a643-ddc4239a55ab@samsung.com>
- <7e37b8ad-39d0-3a94-f75a-2166ae2caf10@samsung.com>
- <7fb90b9e-75c3-0184-4f0a-d4113899b860@rock-chips.com>
- <04b667d9-2591-51ff-e024-047bbb6e17c3@rock-chips.com>
- <6ccade72-ae20-2ffa-1504-2536b9f03adf@soulik.info>
- <95648282-38f5-42c2-fd8b-ab603eb3a168@gmail.com>
- <0ccf164f-0d35-9cc3-f288-9b582db23efb@soulik.info>
- <20afb1da-9e45-f515-01bf-2f5365d20d61@samsung.com>
- <8f8c66f1-82d6-5151-ff64-ef62596aa10d@rock-chips.com>
- <c8307da1-8e43-29b5-c87d-292a56831c98@samsung.com>
- <CABgxDo+3qMcHn6e2s_ZJy1crdi=ch5hQk6sy3W29Q12-ye33Qw@mail.gmail.com>
- <2cdd0b6c-a099-595d-1c0b-be7933b0d4a6@collabora.com>
- <fba28eda-51c7-2012-03ca-48b6f94e4a18@samsung.com>
- <20170123112432.08337d26.john@metanate.com>
- <845aea80-10a5-e8f9-5620-952bdcc37234@samsung.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v2 0/3] Add support for es8323 and hdmi audio
+	to the firefly-rk3288
+Date: Mon, 23 Jan 2017 14:47:44 +0100
+Message-ID: <20170123134747.1385-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <845aea80-10a5-e8f9-5620-952bdcc37234-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Jaehoon Chung <jh80.chung-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org
+Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 23 Jan 2017 21:53:02 +0900, Jaehoon Chung wrote:
+This set of patches enables support for the es8323 codecs on the
+firefly-rk3288. It adds the required DT definitions to link rockchip-i2s
+to the es8388 analog output. As the support for HDMI audio is also
+built-in in the corresponding ASoC machine driver, HDMI audio output is
+also enabled.
 
-> On 01/23/2017 08:24 PM, John Keeping wrote:
-> > Hi,
-> > 
-> > On Fri, 20 Jan 2017 15:08:57 +0900, Jaehoon Chung wrote:  
-> >> On 01/17/2017 10:38 PM, Romain Perier wrote:  
-> >>> In my case I can reproduce the issue on the rock2 and the firefly-rk3288. A workaround is to
-> >>>
-> >>> comment the line ".pm = <&pm_ops_foo>" .    
-> >>
-> >> Sorry for late. I'm checking runtime PM for this. 
-> >> After that, i will decide whether revert or not.  
-> > 
-> > I hit this problem on Rock2 when trying 4.10-rc4.  The following patch
-> > fixes it for me.  
-> 
-> Could you check with Ulf's repository?
-> 
-> https://git.kernel.org/cgit/linux/kernel/git/ulfh/mmc.git/commit/?h=next&id=e86738ac78c22956f1c787ebafefc83d43cab30a
-> 
-> Shawn's patch was applied. If also occurred the same issue, let me know, plz.
+Changes in v2:
+ - Adapted DT for the firefly-rk3288 to the ASoC machine driver
+   rk3288-hdmi-analog
+ - Added patch 02/03 to this series
+ - Re-wrote this cover letter
 
-I missed that patch, it also fixes the issue for me.
+Romain Perier (3):
+  SoC: es8328-i2c: Add compatible for ES8323
+  arm: dts: rockchip: Don't set otp-gpio pinctrl by default in
+    rk3288.dtsi
+  arm: dts: Add support for ES8323 to the Firefly-RK3288
 
-> > I'm not sure if this is safe in general or whether it should be guarded
-> > by a quirk that is enabled for RK3288.
-> >   
-> > -- >8 --  
-> > Subject: [PATCH] mmc: dw_mmc: restore CIU state on resume
-> > 
-> > At least on RK3288, asserting SDMMC_CTRL_RESET causes the CIU to reset
-> > and disable the clock.  We need to send SDMMC_CMD_UPD_CLK after doing
-> > this in order to avoid the MMC host hanging.
-> > 
-> > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mmc/host/dw_mmc.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> > index b44306b886cb..e7504dabcfb6 100644
-> > --- a/drivers/mmc/host/dw_mmc.c
-> > +++ b/drivers/mmc/host/dw_mmc.c
-> > @@ -3311,6 +3311,7 @@ int dw_mci_runtime_resume(struct device *dev)
-> >  {
-> >  	int i, ret = 0;
-> >  	struct dw_mci *host = dev_get_drvdata(dev);
-> > +	u32 sdmmc_cmd_bits = SDMMC_CMD_UPD_CLK | SDMMC_CMD_PRV_DAT_WAIT;
-> >  
-> >  	if (host->cur_slot &&
-> >  	    (mmc_can_gpio_cd(host->cur_slot->mmc) ||
-> > @@ -3357,6 +3358,9 @@ int dw_mci_runtime_resume(struct device *dev)
-> >  		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
-> >  			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
-> >  			dw_mci_setup_bus(slot, true);
-> > +		} else {
-> > +			/* restore CIU */
-> > +			mci_send_cmd(slot, sdmmc_cmd_bits, 0);
-> >  		}
-> >  	}
-> >  
-> >   
-> 
+ Documentation/devicetree/bindings/sound/es8328.txt |  5 +++-
+ arch/arm/boot/dts/rk3288-evb.dtsi                  |  4 +++
+ arch/arm/boot/dts/rk3288-firefly.dtsi              | 34 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  4 +++
+ arch/arm/boot/dts/rk3288.dtsi                      |  4 ---
+ sound/soc/codecs/es8328-i2c.c                      |  2 ++
+ 6 files changed, 48 insertions(+), 5 deletions(-)
+
+-- 
+2.9.3
