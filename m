@@ -1,90 +1,93 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v2 19/26] drm/rockchip: dw-mipi-dsi: improve PLL
- configuration
-Date: Mon, 23 Jan 2017 12:49:25 +0000
-Message-ID: <20170123124925.4fa10fc2.john@metanate.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-20-john@metanate.com>
- <58855EAE.2010704@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH] Revert "mmc: dw_mmc-rockchip: add runtime PM support"
+Date: Mon, 23 Jan 2017 21:53:02 +0900
+Message-ID: <845aea80-10a5-e8f9-5620-952bdcc37234@samsung.com>
+References: <CGME20161228153516epcas2p253c6bc0371ab0df464573b63218795ef@epcas2p2.samsung.com>
+ <1482939288-14950-1-git-send-email-ayaka@soulik.info>
+ <e0cc8029-0155-4879-a643-ddc4239a55ab@samsung.com>
+ <7e37b8ad-39d0-3a94-f75a-2166ae2caf10@samsung.com>
+ <7fb90b9e-75c3-0184-4f0a-d4113899b860@rock-chips.com>
+ <04b667d9-2591-51ff-e024-047bbb6e17c3@rock-chips.com>
+ <6ccade72-ae20-2ffa-1504-2536b9f03adf@soulik.info>
+ <95648282-38f5-42c2-fd8b-ab603eb3a168@gmail.com>
+ <0ccf164f-0d35-9cc3-f288-9b582db23efb@soulik.info>
+ <20afb1da-9e45-f515-01bf-2f5365d20d61@samsung.com>
+ <8f8c66f1-82d6-5151-ff64-ef62596aa10d@rock-chips.com>
+ <c8307da1-8e43-29b5-c87d-292a56831c98@samsung.com>
+ <CABgxDo+3qMcHn6e2s_ZJy1crdi=ch5hQk6sy3W29Q12-ye33Qw@mail.gmail.com>
+ <2cdd0b6c-a099-595d-1c0b-be7933b0d4a6@collabora.com>
+ <fba28eda-51c7-2012-03ca-48b6f94e4a18@samsung.com>
+ <20170123112432.08337d26.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <58855EAE.2010704@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <20170123112432.08337d26.john@metanate.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Romain Perier <romain.perier@collabora.com>, Romain Perier <romain.perier@gmail.com>, ulf.hansson@linaro.org, xzy.xu@rock-chips.com, Jaehoon Chung <jh80.chung@gmail.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Randy Li <randy.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, ayaka <ayaka@soulik.info>, linux-mmc@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hyaXMsCgpPbiBNb24sIDIzIEphbiAyMDE3IDA5OjM4OjU0ICswODAwLCBDaHJpcyBaaG9u
-ZyB3cm90ZToKPiBPbiAwMS8yMi8yMDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4g
-PiBUaGUgbXVsdGlwbGljYXRpb24gcmF0aW8gZm9yIHRoZSBQTEwgaXMgcmVxdWlyZWQgdG8gYmUg
-ZXZlbiBkdWUgdG8gdGhlCj4gPiB1c2Ugb2YgYSAiYnkgMiBwcmUtc2NhbGVyIi4gIEN1cnJlbnRs
-eSB3ZSBhcmUgbGlrZWx5IHRvIGVuZCB1cCB3aXRoIGFuCj4gPiBvZGQgbXVsdGlwbGllciBldmVu
-IHRob3VnaCB0aGVyZSBpcyBhbiBlcXVpdmFsZW50IHNldCBvZiBwYXJhbWV0ZXJzIHdpdGgKPiA+
-IGFuIGV2ZW4gbXVsdGlwbGllci4KPiA+Cj4gPiBGb3IgZXhhbXBsZSwgdXNpbmcgdGhlIDMyNE1I
-eiBiaXQgcmF0ZSB3aXRoIGEgcmVmZXJlbmNlIGNsb2NrIG9mIDI0TUh6Cj4gPiB3ZSBlbmQgdXAg
-d2l0aCBNID0gMjcsIE4gPSAyIHdoZXJlYXMgdGhlIGV4YW1wbGUgaW4gdGhlIFBIWSBkYXRhYm9v
-awo+ID4gZ2l2ZXMgTSA9IDU0LCBOID0gNCBmb3IgdGhpcyBiaXQgcmF0ZSBhbmQgcmVmZXJlbmNl
-IGNsb2NrLgo+ID4KPiA+IEJ5IHdhbGtpbmcgZG93biB0aHJvdWdoIHRoZSBhdmFpbGFibGUgbXVs
-dGlwbGllciBpbnN0ZWFkIG9mIHVwIHdlIGFyZQo+ID4gbW9yZSBsaWtlbHkgdG8gaGl0IGFuIGV2
-ZW4gbXVsdGlwbGllci4gIFdpdGggdGhlIGFib3ZlIGV4YW1wbGUgd2UgZG8gbm93Cj4gPiBnZXQg
-TSA9IDU0LCBOID0gNCBhcyBnaXZlbiBieSB0aGUgZGF0YWJvb2suCj4gPgo+ID4gV2hpbGUgZG9p
-bmcgdGhpcywgY2hhbmdlIHRoZSBsb29wIGxpbWl0cyB0byBlbmNvZGUgdGhlIGFjdHVhbCBsaW1p
-dHMgb24KPiA+IHRoZSBkaXZpc29yLCB3aGljaCBhcmU6Cj4gPgo+ID4gCTQwTUh6ID49IChwbGxy
-ZWYgLyBOKSA+PSA1TUh6ICAKPiAKPiBUaGlzIGZvcm11bGEgaXMgbGltaXQgZm9yIE4sIGJ1dCB3
-ZSBzdGlsbCBjYW4gbm90IGd1YXJhbnRlZSB0byBnZXQgYW4gCj4gZXZlbiBNLgo+IERvIHlvdSB0
-aGluayB3ZSBzaG91bGQgZG8gYSBjaGVjayBmb3IgTS4KPiBzdWNoIGFzOgo+IGlmIChtICUgMikK
-PiAgICAgIGNvbnRpbnVlOwo+IC4uLgo+ICAgICAgZm9yIChpID0gcGxscmVmIC8gNTsgaSA+IChw
-bGxyZWYgLyA0MCk7IGktLSkgewo+ICAgICAgICAgIHByZSA9IHBsbHJlZiAvIGk7Cj4gICAgICAg
-ICAgaWYgKCh0bXAgPiAodGFyZ2V0X21icHMgJSBwcmUpKSAmJiAodGFyZ2V0X21icHMgLyBwcmUg
-PCA1MTIpKSB7Cj4gICAgICAgICAgICAgIHRtcCA9IHRhcmdldF9tYnBzICUgcHJlOwo+ICAgICAg
-ICAgICAgICBuID0gaTsKPiAgICAgICAgICAgICAgbSA9IHRhcmdldF9tYnBzIC8gcHJlOwo+ICAg
-ICAgICAgICAgICBpZiAobSAlIDIpCj4gICAgICAgICAgICAgICAgICBjb250aW51ZTsKPiAgICAg
-ICAgICB9Cj4gICAgICAgICAgaWYgKHRtcCA9PSAwKQo+ICAgICAgICAgICAgICBicmVhazsKPiAg
-ICAgIH0KPiAKPiBpZiAobSAlIDIpCj4gICAgICBtKys7Cj4gCj4gICAgICBkc2ktPmxhbmVfbWJw
-cyA9IHBsbHJlZiAvIG4gKiBtOwo+ICAgICAgZHNpLT5pbnB1dF9kaXYgPSBuOwo+ICAgICAgZHNp
-LT5mZWVkYmFja19kaXYgPSBtOwoKWWVzLCBJIGFncmVlIHRoYXQgdGhlcmUgc2hvdWxkIGJlIGEg
-Y2hlY2sgZm9yIE0sIGJ1dCBJJ20gbm90IHN1cmUgaWYKdGhlIHZlcnNpb24gYWJvdmUgaXMgc3Vm
-ZmljaWVudC4gIFRoZSAibSAlIDIiIGNoZWNrIGluc2lkZSB0aGUgbG9vcAptZWFucyB0aGF0IHdl
-IGRvbid0IGJyZWFrIGltbWVkaWF0ZWx5IHdoZW4gdG1wPTAgYnV0IHRoZW4gd2UgYXJlCmd1YXJh
-bnRlZWQgdG8gYnJlYWsgbmV4dCB0aW1lIHdpdGhvdXQgaGF2aW5nIG1vZGlmaWVkIG4sIG0gYmVj
-YXVzZSBub3cKdG1wPTAgc28gInRtcCA+ICh0YXJnZXRfbWJwcyAlIHByZSkiIGlzIGFsd2F5cyBm
-YWxzZSBhbmQgd2UganVzdCBoaXQgdGhlCiJpZiAodG1wID09IDApIGJyZWFrIiBjYXNlIG5leHQg
-dGltZS4KCkdpdmVuIHRoYXQgdGhlIGRlc2NlbmRpbmcgbG9vcCBhbHJlYWR5IG1lYW5zIHRoYXQg
-aWYgd2UgY2FuIGhpdCAidG1wIgpleGFjdGx5IHdlIGFyZSBtb3JlIGxpa2VseSB0byBkbyBzbyB3
-aXRoIGEgYmlnZ2VyIE4gYW5kIGV2ZW4gTSwgSSB0aGluawppdCBtaWdodCBiZSBiZXR0ZXIgdG8g
-anVzdCBmaXggTSBhZnRlciB0aGUgbG9vcCBsaWtlOgoKCWlmIChtICUgMikgewoJCWlmIChtIDwg
-MjU2ICYmIChuICogMikgPD0gKHBsbHJlZiAvIDUpKSB7CgkJCW4gKj0gMjsKCQkJbSAqPSAyOwoJ
-CX0gZWxzZSB7CgkJCW0rKzsKCQl9Cgl9CgpidXQgSSBoYXZlbid0IHRob3VnaHQgYWJvdXQgdGhp
-cyB0b28gY2FyZWZ1bGx5LgoKRm9yIHRoaXMgc2VyaWVzLCBJJ2QgcmF0aGVyIGVpdGhlciBrZWVw
-IHRoaXMgcGF0Y2ggYXMgaXQgaXMgb3IgZHJvcCBpdAppbiBmYXZvdXIgb2YgYSBtb3JlIGNvbXBy
-ZWhlbnNpdmUgc29sdXRpb24uICBJIGRvbid0IHdhbnQgdG8gYmxvY2sgdGhlCm90aGVyIGZpeGVz
-IHdhaXRpbmcgZm9yIGEgcGVyZmVjdCBmaXggaGVyZSBhbmQgd2UgY2FuIGFsd2F5cyBpbXByb3Zl
-CnRoaXMgZnVydGhlciB3aXRoIGEgZm9sbG93LXVwIHBhdGNoLgoKPiA+IFNpZ25lZC1vZmYtYnk6
-IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4gPiAtLS0KPiA+IFVuY2hhbmdlZCBp
-biB2Mgo+ID4gLS0tCj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
-IHwgMiArLQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gaW5kZXgg
-MTI0MzJlNDE5NzFiLi5mMjMyMGNmMTM2NmMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3LW1pcGktZHNpLmMKPiA+IEBAIC01MTksNyArNTE5LDcgQEAgc3RhdGljIGludCBkd19t
-aXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gPiAgIAlwbGxy
-ZWYgPSBESVZfUk9VTkRfVVAoY2xrX2dldF9yYXRlKGRzaS0+cGxscmVmX2NsayksIFVTRUNfUEVS
-X1NFQyk7Cj4gPiAgIAl0bXAgPSBwbGxyZWY7Cj4gPiAgIAo+ID4gLQlmb3IgKGkgPSAxOyBpIDwg
-NjsgaSsrKSB7Cj4gPiArCWZvciAoaSA9IHBsbHJlZiAvIDU7IGkgPiAocGxscmVmIC8gNDApOyBp
-LS0pIHsKPiA+ICAgCQlwcmUgPSBwbGxyZWYgLyBpOwo+ID4gICAJCWlmICgodG1wID4gKHRhcmdl
-dF9tYnBzICUgcHJlKSkgJiYgKHRhcmdldF9tYnBzIC8gcHJlIDwgNTEyKSkgewo+ID4gICAJCQl0
-bXAgPSB0YXJnZXRfbWJwcyAlIHByZTsgIAo+IAo+IApfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi John,
+
+On 01/23/2017 08:24 PM, John Keeping wrote:
+> Hi,
+> 
+> On Fri, 20 Jan 2017 15:08:57 +0900, Jaehoon Chung wrote:
+>> On 01/17/2017 10:38 PM, Romain Perier wrote:
+>>> In my case I can reproduce the issue on the rock2 and the firefly-rk3288. A workaround is to
+>>>
+>>> comment the line ".pm = <&pm_ops_foo>" .  
+>>
+>> Sorry for late. I'm checking runtime PM for this. 
+>> After that, i will decide whether revert or not.
+> 
+> I hit this problem on Rock2 when trying 4.10-rc4.  The following patch
+> fixes it for me.
+
+Could you check with Ulf's repository?
+
+https://git.kernel.org/cgit/linux/kernel/git/ulfh/mmc.git/commit/?h=next&id=e86738ac78c22956f1c787ebafefc83d43cab30a
+
+Shawn's patch was applied. If also occurred the same issue, let me know, plz.
+
+> 
+> I'm not sure if this is safe in general or whether it should be guarded
+> by a quirk that is enabled for RK3288.
+> 
+> -- >8 --
+> Subject: [PATCH] mmc: dw_mmc: restore CIU state on resume
+> 
+> At least on RK3288, asserting SDMMC_CTRL_RESET causes the CIU to reset
+> and disable the clock.  We need to send SDMMC_CMD_UPD_CLK after doing
+> this in order to avoid the MMC host hanging.
+> 
+> Signed-off-by: John Keeping <john@metanate.com>
+> ---
+>  drivers/mmc/host/dw_mmc.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index b44306b886cb..e7504dabcfb6 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -3311,6 +3311,7 @@ int dw_mci_runtime_resume(struct device *dev)
+>  {
+>  	int i, ret = 0;
+>  	struct dw_mci *host = dev_get_drvdata(dev);
+> +	u32 sdmmc_cmd_bits = SDMMC_CMD_UPD_CLK | SDMMC_CMD_PRV_DAT_WAIT;
+>  
+>  	if (host->cur_slot &&
+>  	    (mmc_can_gpio_cd(host->cur_slot->mmc) ||
+> @@ -3357,6 +3358,9 @@ int dw_mci_runtime_resume(struct device *dev)
+>  		if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+>  			dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+>  			dw_mci_setup_bus(slot, true);
+> +		} else {
+> +			/* restore CIU */
+> +			mci_send_cmd(slot, sdmmc_cmd_bits, 0);
+>  		}
+>  	}
+>  
+> 
+
