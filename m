@@ -1,65 +1,87 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 24/26] drm/rockchip: dw-mipi-dsi: support non-burst
- modes
-Date: Mon, 23 Jan 2017 14:11:13 +0800
-Message-ID: <58859E81.3060606@rock-chips.com>
+Subject: Re: [PATCH v2 25/26] drm/rockchip: dw-mipi-dsi: add reset control
+Date: Mon, 23 Jan 2017 14:12:58 +0800
+Message-ID: <58859EEA.7080309@rock-chips.com>
 References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-25-john@metanate.com>
+ <20170121163128.22240-26-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170121163128.22240-25-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170121163128.22240-26-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UmV2aWV3ZWQtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+CgpPbiAwMS8yMi8y
-MDE3IDEyOjMxIEFNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gU2lnbmVkLW9mZi1ieTogSm9obiBL
-ZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBVbmNoYW5nZWQgaW4gdjIKPiAtLS0K
-PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMTYgKysrKysrKysr
-LS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMo
-LSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggMmRhZmIx
-N2UzMWQyLi44ODFiYjBjNjJjYTUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlw
-aS1kc2kuYwo+IEBAIC04Miw2ICs4Miw3IEBACj4gICAjZGVmaW5lIEZSQU1FX0JUQV9BQ0sJCQlC
-SVQoMTQpCj4gICAjZGVmaW5lIEVOQUJMRV9MT1dfUE9XRVIJCSgweDNmIDw8IDgpCj4gICAjZGVm
-aW5lIEVOQUJMRV9MT1dfUE9XRVJfTUFTSwkJKDB4M2YgPDwgOCkKPiArI2RlZmluZSBWSURfTU9E
-RV9UWVBFX05PTl9CVVJTVF9TWU5DX0VWRU5UUwkweDEKPiAgICNkZWZpbmUgVklEX01PREVfVFlQ
-RV9CVVJTVF9TWU5DX1BVTFNFUwkJMHgyCj4gICAjZGVmaW5lIFZJRF9NT0RFX1RZUEVfTUFTSwkJ
-CTB4Mwo+ICAgCj4gQEAgLTI4Niw2ICsyODcsNyBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2kgewo+ICAg
-CXUzMiBmb3JtYXQ7Cj4gICAJdTE2IGlucHV0X2RpdjsKPiAgIAl1MTYgZmVlZGJhY2tfZGl2Owo+
-ICsJdW5zaWduZWQgbG9uZyBtb2RlX2ZsYWdzOwo+ICAgCj4gICAJY29uc3Qgc3RydWN0IGR3X21p
-cGlfZHNpX3BsYXRfZGF0YSAqcGRhdGE7Cj4gICB9Owo+IEBAIC01NDgsMTUgKzU1MCwxMCBAQCBz
-dGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfYXR0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpo
-b3N0LAo+ICAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgIAl9Cj4gICAKPiAtCWlmICghKGRldmljZS0+
-bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9fQlVSU1QpIHx8Cj4gLQkgICAgIShkZXZp
-Y2UtPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX1NZTkNfUFVMU0UpKSB7Cj4gLQkJ
-ZGV2X2Vycihkc2ktPmRldiwgImRldmljZSBtb2RlIGlzIHVuc3VwcG9ydGVkXG4iKTsKPiAtCQly
-ZXR1cm4gLUVJTlZBTDsKPiAtCX0KPiAtCj4gICAJZHNpLT5sYW5lcyA9IGRldmljZS0+bGFuZXM7
-Cj4gICAJZHNpLT5jaGFubmVsID0gZGV2aWNlLT5jaGFubmVsOwo+ICAgCWRzaS0+Zm9ybWF0ID0g
-ZGV2aWNlLT5mb3JtYXQ7Cj4gKwlkc2ktPm1vZGVfZmxhZ3MgPSBkZXZpY2UtPm1vZGVfZmxhZ3M7
-Cj4gICAJZHNpLT5wYW5lbCA9IG9mX2RybV9maW5kX3BhbmVsKGRldmljZS0+ZGV2Lm9mX25vZGUp
-Owo+ICAgCWlmIChkc2ktPnBhbmVsKQo+ICAgCQlyZXR1cm4gZHJtX3BhbmVsX2F0dGFjaChkc2kt
-PnBhbmVsLCAmZHNpLT5jb25uZWN0b3IpOwo+IEBAIC03MTMsNyArNzEwLDEyIEBAIHN0YXRpYyB2
-b2lkIGR3X21pcGlfZHNpX3ZpZGVvX21vZGVfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
-KQo+ICAgewo+ICAgCXUzMiB2YWw7Cj4gICAKPiAtCXZhbCA9IFZJRF9NT0RFX1RZUEVfQlVSU1Rf
-U1lOQ19QVUxTRVMgfCBFTkFCTEVfTE9XX1BPV0VSOwo+ICsJdmFsID0gRU5BQkxFX0xPV19QT1dF
-UjsKPiArCj4gKwlpZiAoZHNpLT5tb2RlX2ZsYWdzICYgTUlQSV9EU0lfTU9ERV9WSURFT19CVVJT
-VCkKPiArCQl2YWwgfD0gVklEX01PREVfVFlQRV9CVVJTVF9TWU5DX1BVTFNFUzsKPiArCWVsc2Ug
-aWYgKCEoZHNpLT5tb2RlX2ZsYWdzICYgTUlQSV9EU0lfTU9ERV9WSURFT19TWU5DX1BVTFNFKSkK
-PiArCQl2YWwgfD0gVklEX01PREVfVFlQRV9OT05fQlVSU1RfU1lOQ19FVkVOVFM7Cj4gICAKPiAg
-IAlkc2lfd3JpdGUoZHNpLCBEU0lfVklEX01PREVfQ0ZHLCB2YWwpOwo+ICAgfQoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+
+On 01/22/2017 12:31 AM, John Keeping wrote:
+> In order to fully reset the state of the MIPI controller we must assert
+> this reset.
+>
+> This is slightly more complicated than it could be in order to maintain
+> compatibility with device trees that do not specify the reset property.
+>
+> Signed-off-by: John Keeping <john@metanate.com>
+> ---
+> Unchanged in v2
+> ---
+>   drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 30 ++++++++++++++++++++++++++++++
+>   1 file changed, 30 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index 881bb0c62ca5..f780401e8b5e 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> @@ -13,6 +13,7 @@
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+>   #include <linux/regmap.h>
+> +#include <linux/reset.h>
+>   #include <linux/mfd/syscon.h>
+>   #include <drm/drm_atomic_helper.h>
+>   #include <drm/drm_crtc.h>
+> @@ -1121,6 +1122,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+>   			of_match_device(dw_mipi_dsi_dt_ids, dev);
+>   	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
+>   	struct platform_device *pdev = to_platform_device(dev);
+> +	struct reset_control *apb_rst;
+>   	struct drm_device *drm = data;
+>   	struct dw_mipi_dsi *dsi;
+>   	struct resource *res;
+> @@ -1159,6 +1161,34 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+>   		return ret;
+>   	}
+>   
+> +	/*
+> +	 * Note that the reset was not defined in the initial device tree, so
+> +	 * we have to be prepared for it not being found.
+> +	 */
+> +	apb_rst = devm_reset_control_get(dev, "apb");
+> +	if (IS_ERR(apb_rst)) {
+> +		if (PTR_ERR(apb_rst) == -ENODEV) {
+> +			apb_rst = NULL;
+> +		} else {
+> +			dev_err(dev, "Unable to get reset control: %d\n", ret);
+> +			return PTR_ERR(apb_rst);
+> +		}
+> +	}
+> +
+> +	if (apb_rst) {
+> +		ret = clk_prepare_enable(dsi->pclk);
+> +		if (ret) {
+> +			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
+> +			return ret;
+> +		}
+> +
+> +		reset_control_assert(apb_rst);
+> +		usleep_range(10, 20);
+> +		reset_control_deassert(apb_rst);
+> +
+> +		clk_disable_unprepare(dsi->pclk);
+> +	}
+> +
+>   	ret = clk_prepare_enable(dsi->pllref_clk);
+>   	if (ret) {
+>   		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
