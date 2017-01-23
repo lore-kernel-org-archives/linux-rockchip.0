@@ -1,59 +1,39 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 9/9] clocksource/drivers/rockchip_timer: implement clocksource timer
-Date: Mon, 23 Jan 2017 18:09:41 +0100
-Message-ID: <2966820.3ediQCxqSR@diego>
-References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-10-git-send-email-al.kochet@gmail.com>
+Subject: Re: [PATCH v4 0/9] Implement clocksource for rockchip SoC using rockchip timer
+Date: Mon, 23 Jan 2017 18:12:42 +0100
+Message-ID: <1793912.WfGyM7qEjy@diego>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <E6DD9335-0D2D-47CB-8098-5F96C2E08139@gmail.com> <20170123144744.GE2166@mai>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1480436092-10728-10-git-send-email-al.kochet@gmail.com>
+In-Reply-To: <20170123144744.GE2166@mai>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>, Daniel Lezcano <daniel.lezcano@linaro.org>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexander Kochetkov <al.kochet@gmail.com>, LKML <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 29. November 2016, 19:14:52 CET schrieb Alexander Kochetkov:
-> The clock supplying the arm-global-timer on the rk3188 is coming from the
-> the cpu clock itself and thus changes its rate everytime cpufreq adjusts
-> the cpu frequency making this timer unsuitable as a stable clocksource
-> and sched clock.
+Am Montag, 23. Januar 2017, 15:47:44 CET schrieb Daniel Lezcano:
+> On Wed, Dec 21, 2016 at 05:21:05PM +0300, Alexander Kochetkov wrote:
+> > Hello Heiko, Daniel!
+> > 
+> > Are there any reasons why the patches [1][2] are not applied yet into
+> > kernel? How can I help in applying patches?
 > 
-> The rk3188, rk3288 and following socs share a separate timer block already
-> handled by the rockchip-timer driver. Therefore adapt this driver to also
-> be able to act as clocksource and sched clock on rk3188.
+> Hi Alexander,
 > 
-> In order to test clocksource you can run following commands and check
-> how much time it take in real. On rk3188 it take about ~45 seconds.
+> sorry for the delay. Let me review them before taking the patchset.
 > 
->     cpufreq-set -f 1.6GHZ
->     date; sleep 60; date
-> 
-> In order to use the patch you need to declare two timers in the dts
-> file. The first timer will be initialized as clockevent provider
-> and the second one as clocksource. The clockevent must be from
-> alive subsystem as it used as backup for the local timers at sleep
-> time.
-> 
-> The patch does not break compatibility with older device tree files.
-> The older device tree files contain only one timer. The timer
-> will be initialized as clockevent, as expected.
-> 
-> rk3288 (and probably anything newer) is irrelevant to this patch,
-> as it has the arch timer interface. This patch may be usefull
-> for Cortex-A9/A5 based parts.
-> 
-> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+> Heiko, can you have a look to them also ?
 
-[...]
+somehow this series moved down to much in my inbox, sorry.
 
-> @@ -120,13 +161,46 @@ static irqreturn_t rk_timer_interrupt(int irq, void
-> *dev_id) return IRQ_HANDLED;
->  }
-> 
-> +static cycle_t rk_timer_clocksource_read(struct clocksource *cs)
-^^
-../drivers/clocksource/rockchip_timer.c:164:8: error: unknown type name ‘cycle_t’
- static cycle_t rk_timer_clocksource_read(struct clocksource *cs)
+Devicetree changes look good, except where I commented.
+I guess it would be best (least intrusive) if I queue up the (then fixed) 
+devicetree changes after you are satisfied with the code parts.
 
-looks like something in clocksources changed since november
+I've also looked over the code changes again, test-build them and found the 
+build error mentioned separately. Overall they look good though.
+
+
+Heiko
