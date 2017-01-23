@@ -1,45 +1,59 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: Re: [PATCH v4 6/9] clocksource/drivers/rockchip_timer: split bc_timer into rk_timer and rk_clock_event_device
-Date: Mon, 23 Jan 2017 19:45:10 +0300
-Message-ID: <EA64873A-7F03-4095-BE38-939183B6457E@gmail.com>
-References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-7-git-send-email-al.kochet@gmail.com> <20170123162624.GG2166@mai>
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 9/9] clocksource/drivers/rockchip_timer: implement clocksource timer
+Date: Mon, 23 Jan 2017 18:09:41 +0100
+Message-ID: <2966820.3ediQCxqSR@diego>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-1-git-send-email-al.kochet@gmail.com> <1480436092-10728-10-git-send-email-al.kochet@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170123162624.GG2166@mai>
+In-Reply-To: <1480436092-10728-10-git-send-email-al.kochet@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>, Daniel Lezcano <daniel.lezcano@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Daniel, thanks for reviewing patches!
+Am Dienstag, 29. November 2016, 19:14:52 CET schrieb Alexander Kochetkov:
+> The clock supplying the arm-global-timer on the rk3188 is coming from the
+> the cpu clock itself and thus changes its rate everytime cpufreq adjusts
+> the cpu frequency making this timer unsuitable as a stable clocksource
+> and sched clock.
+> 
+> The rk3188, rk3288 and following socs share a separate timer block already
+> handled by the rockchip-timer driver. Therefore adapt this driver to also
+> be able to act as clocksource and sched clock on rk3188.
+> 
+> In order to test clocksource you can run following commands and check
+> how much time it take in real. On rk3188 it take about ~45 seconds.
+> 
+>     cpufreq-set -f 1.6GHZ
+>     date; sleep 60; date
+> 
+> In order to use the patch you need to declare two timers in the dts
+> file. The first timer will be initialized as clockevent provider
+> and the second one as clocksource. The clockevent must be from
+> alive subsystem as it used as backup for the local timers at sleep
+> time.
+> 
+> The patch does not break compatibility with older device tree files.
+> The older device tree files contain only one timer. The timer
+> will be initialized as clockevent, as expected.
+> 
+> rk3288 (and probably anything newer) is irrelevant to this patch,
+> as it has the arch timer interface. This patch may be usefull
+> for Cortex-A9/A5 based parts.
+> 
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 
-> 23 =D1=8F=D0=BD=D0=B2. 2017 =D0=B3., =D0=B2 19:26, Daniel Lezcano =
-<daniel.lezcano@linaro.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=
-=B0):
->=20
-> On Tue, Nov 29, 2016 at 07:14:49PM +0300, Alexander Kochetkov wrote:
->> The patch move ce field out of struct bc_timer into struct
->> rk_clock_event_device and rename struct bc_timer to struct rk_timer.
->=20
-> Why ?
+[...]
 
-Single rockchip timer can be either broadcast timer/clockevent (current =
-implementation) or
-clocksource (the one I=E2=80=99ve implemented in series). Both =
-implementations based on
-low level timer routines (rk_timer_disable, rk_timer_enable, =
-rk_timer_update_counter,=20
-rk_timer_counter_read and so on). Both implementations use timers in =
-different modes
-(interrupts vs free running). In order to distinguish this concepts I =
-tried to split
-low level timer routines from bc_timer.
+> @@ -120,13 +161,46 @@ static irqreturn_t rk_timer_interrupt(int irq, void
+> *dev_id) return IRQ_HANDLED;
+>  }
+> 
+> +static cycle_t rk_timer_clocksource_read(struct clocksource *cs)
+^^
+../drivers/clocksource/rockchip_timer.c:164:8: error: unknown type name ‘cycle_t’
+ static cycle_t rk_timer_clocksource_read(struct clocksource *cs)
 
-Otherwise I can place all needed clocksource filelds into 'struct =
-bc_timer=E2=80=99 and rename 'struct bc_timer=E2=80=99
-into 'struct rk_timer=E2=80=99. If this is more clear solution I can =
-rewrite patches.
-
-Alexander.=
+looks like something in clocksources changed since november
