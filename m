@@ -1,39 +1,61 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v4 0/9] Implement clocksource for rockchip SoC using rockchip timer
-Date: Mon, 23 Jan 2017 18:12:42 +0100
-Message-ID: <1793912.WfGyM7qEjy@diego>
-References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <E6DD9335-0D2D-47CB-8098-5F96C2E08139@gmail.com> <20170123144744.GE2166@mai>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170123144744.GE2166@mai>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Alexander Kochetkov <al.kochet@gmail.com>, LKML <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+Date: Mon, 23 Jan 2017 20:24:47 +0300
+Message-ID: <58B283B0-02F6-4342-A6D2-7E082E04863E@gmail.com>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <E6DD9335-0D2D-47CB-8098-5F96C2E08139@gmail.com> <20170123144744.GE2166@mai> <1793912.WfGyM7qEjy@diego>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1793912.WfGyM7qEjy@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 23. Januar 2017, 15:47:44 CET schrieb Daniel Lezcano:
-> On Wed, Dec 21, 2016 at 05:21:05PM +0300, Alexander Kochetkov wrote:
-> > Hello Heiko, Daniel!
-> > 
-> > Are there any reasons why the patches [1][2] are not applied yet into
-> > kernel? How can I help in applying patches?
-> 
-> Hi Alexander,
-> 
-> sorry for the delay. Let me review them before taking the patchset.
-> 
-> Heiko, can you have a look to them also ?
+Heiko, Daniel, thanks a lot for review!
+I=E2=80=99ll send v5 series this week.
 
-somehow this series moved down to much in my inbox, sorry.
+Heiko, Daniel, may I add 'Reviewed-by:=E2=80=99 to patch series?
 
-Devicetree changes look good, except where I commented.
-I guess it would be best (least intrusive) if I queue up the (then fixed) 
-devicetree changes after you are satisfied with the code parts.
+Reviewed-by: Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> ?
+Reviewed-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> ?
 
-I've also looked over the code changes again, test-build them and found the 
-build error mentioned separately. Overall they look good though.
+Regards,
+Alexander.
 
+> 23 =D1=8F=D0=BD=D0=B2. 2017 =D0=B3., =D0=B2 20:12, Heiko St=C3=BCbner =
+<heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):
+>=20
+> Am Montag, 23. Januar 2017, 15:47:44 CET schrieb Daniel Lezcano:
+>> On Wed, Dec 21, 2016 at 05:21:05PM +0300, Alexander Kochetkov wrote:
+>>> Hello Heiko, Daniel!
+>>>=20
+>>> Are there any reasons why the patches [1][2] are not applied yet =
+into
+>>> kernel? How can I help in applying patches?
+>>=20
+>> Hi Alexander,
+>>=20
+>> sorry for the delay. Let me review them before taking the patchset.
+>>=20
+>> Heiko, can you have a look to them also ?
+>=20
+> somehow this series moved down to much in my inbox, sorry.
+>=20
+> Devicetree changes look good, except where I commented.
+> I guess it would be best (least intrusive) if I queue up the (then =
+fixed)=20
+> devicetree changes after you are satisfied with the code parts.
+>=20
+> I've also looked over the code changes again, test-build them and =
+found the=20
+> build error mentioned separately. Overall they look good though.
+>=20
+>=20
+> Heiko
 
-Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
