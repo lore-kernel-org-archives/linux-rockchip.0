@@ -1,28 +1,72 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/3] clk: rockchip: add rk3288 vip_out clock ids
-Date: Mon, 23 Jan 2017 01:26:04 +0100
-Message-ID: <1826150.hujBsPdyRR@phil>
-References: <1484718161-27702-1-git-send-email-jacob-chen@iotwrt.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 20/26] drm/rockchip: dw-mipi-dsi: use specific poll
+ helper
+Date: Mon, 23 Jan 2017 08:49:22 +0800
+Message-ID: <58855312.7020207@rock-chips.com>
+References: <20170121163128.22240-1-john@metanate.com>
+ <20170121163128.22240-21-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1484718161-27702-1-git-send-email-jacob-chen@iotwrt.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, zhangqing@rock-chips.com, zhengxing@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170121163128.22240-21-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 18. Januar 2017, 13:42:38 CET schrieb Jacob Chen:
-> Add clock-ids for the vip block of the rk3288
-> 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
-
-applied all 3 for 4.11 .
-
-I've fixed the indentation below (missing one additional tab)
-and adapted patch3 to also remove the CLK_IGNORE_UNUSED flags for the clocks we 
-now moved to the critical clocks.
-
-
-Heiko
+ClJldmlld2VkLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgoKT24gMDEvMjIv
+MjAxNyAxMjozMSBBTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+IEFzIHRoZSBkb2N1bWVudGF0aW9u
+IGZvciByZWFkeF9wb2xsX3RpbWVvdXQgc2F5cywgd2Ugd2FudCB0byB1c2UgdGhlCj4gc3BlY2lh
+bGl6ZWQgbWFjcm8gZm9yIHJlYWRsIHJhdGhlciB0aGFuIHVzaW5nIHRoZSBnZW5lcmljIHZlcnNp
+b24KPiBkaXJlY3RseS4KPgo+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRh
+bmF0ZS5jb20+Cj4gLS0tCj4gVW5jaGFuZ2VkIGluIHYyCj4gLS0tCj4gICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDEwICsrKysrLS0tLS0KPiAgIDEgZmlsZSBjaGFu
+Z2VkLCA1IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGYyMzIwY2YxMzY2Yy4uM2UxOTY5M2FlNTliIDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBAQCAtNDcxLDE0ICs0
+NzEsMTQgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSkKPiAgIAkJCQkgICAgIFBIWV9VTlJTVFogfCBQSFlfVU5TSFVURE9XTlopOwo+ICAg
+Cj4gICAKPiAtCXJldCA9IHJlYWR4X3BvbGxfdGltZW91dChyZWFkbCwgZHNpLT5iYXNlICsgRFNJ
+X1BIWV9TVEFUVVMsCj4gKwlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJ
+X1BIWV9TVEFUVVMsCj4gICAJCQkJIHZhbCwgdmFsICYgTE9DSywgMTAwMCwgUEhZX1NUQVRVU19U
+SU1FT1VUX1VTKTsKPiAgIAlpZiAocmV0IDwgMCkgewo+ICAgCQlkZXZfZXJyKGRzaS0+ZGV2LCAi
+ZmFpbGVkIHRvIHdhaXQgZm9yIHBoeSBsb2NrIHN0YXRlXG4iKTsKPiAgIAkJcmV0dXJuIHJldDsK
+PiAgIAl9Cj4gICAKPiAtCXJldCA9IHJlYWR4X3BvbGxfdGltZW91dChyZWFkbCwgZHNpLT5iYXNl
+ICsgRFNJX1BIWV9TVEFUVVMsCj4gKwlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNl
+ICsgRFNJX1BIWV9TVEFUVVMsCj4gICAJCQkJIHZhbCwgdmFsICYgU1RPUF9TVEFURV9DTEtfTEFO
+RSwgMTAwMCwKPiAgIAkJCQkgUEhZX1NUQVRVU19USU1FT1VUX1VTKTsKPiAgIAlpZiAocmV0IDwg
+MCkgewo+IEBAIC01OTQsNyArNTk0LDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9nZW5fcGt0
+X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwpCj4gICAJaW50
+IHJldDsKPiAgIAl1MzIgdmFsLCBtYXNrOwo+ICAgCj4gLQlyZXQgPSByZWFkeF9wb2xsX3RpbWVv
+dXQocmVhZGwsIGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywKPiArCXJldCA9IHJlYWRs
+X3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfQ01EX1BLVF9TVEFUVVMsCj4gICAJCQkJIHZh
+bCwgISh2YWwgJiBHRU5fQ01EX0ZVTEwpLCAxMDAwLAo+ICAgCQkJCSBDTURfUEtUX1NUQVRVU19U
+SU1FT1VUX1VTKTsKPiAgIAlpZiAocmV0IDwgMCkgewo+IEBAIC02MDUsNyArNjA1LDcgQEAgc3Rh
+dGljIGludCBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaSwgdTMyIGhkcl92YWwpCj4gICAJZHNpX3dyaXRlKGRzaSwgRFNJX0dFTl9IRFIsIGhkcl92
+YWwpOwo+ICAgCj4gICAJbWFzayA9IEdFTl9DTURfRU1QVFkgfCBHRU5fUExEX1dfRU1QVFk7Cj4g
+LQlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocmVhZGwsIGRzaS0+YmFzZSArIERTSV9DTURfUEtU
+X1NUQVRVUywKPiArCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfQ01E
+X1BLVF9TVEFUVVMsCj4gICAJCQkJIHZhbCwgKHZhbCAmIG1hc2spID09IG1hc2ssCj4gICAJCQkJ
+IDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+ICAgCWlmIChyZXQgPCAwKSB7Cj4g
+QEAgLTY2NCw3ICs2NjQsNyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rjc19sb25nX3dyaXRl
+KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICAgCQkJbGVuIC09IHBsZF9kYXRhX2J5dGVzOwo+
+ICAgCQl9Cj4gICAKPiAtCQlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocmVhZGwsIGRzaS0+YmFz
+ZSArIERTSV9DTURfUEtUX1NUQVRVUywKPiArCQlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNp
+LT5iYXNlICsgRFNJX0NNRF9QS1RfU1RBVFVTLAo+ICAgCQkJCQkgdmFsLCAhKHZhbCAmIEdFTl9Q
+TERfV19GVUxMKSwgMTAwMCwKPiAgIAkJCQkJIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+
+ICAgCQlpZiAocmV0IDwgMCkgewoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
