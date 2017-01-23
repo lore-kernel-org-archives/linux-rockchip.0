@@ -1,97 +1,73 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add dts for RK3288-Tinker board
-Date: Fri, 20 Jan 2017 09:12:31 +0100
-Message-ID: <1831358.CPCqGifkXT@phil>
-References: <1484791919-4665-1-git-send-email-eddie.cai@rock-chips.com>
- <40159140.kOHBSj8v8b@phil>
- <CAJrj+DM5hVsmB_q+P8WPd0z_F1cYcGafyYZHXdX6P=nrqxpFyA@mail.gmail.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v4 1/4] ASoC: es8328-i2c: Add compatible for
+	ES8388
+Date: Mon, 23 Jan 2017 11:41:46 +0100
+Message-ID: <20170123104149.2508-2-romain.perier@collabora.com>
+References: <20170123104149.2508-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAJrj+DM5hVsmB_q+P8WPd0z_F1cYcGafyYZHXdX6P=nrqxpFyA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Eddie Cai <eddie.cai@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170123104149.2508-1-romain.perier@collabora.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eddie,
+This commit adds a compatible string for everest,es8388. This is
+an audio codec that is compatible with es8328.
 
-Am Freitag, 20. Januar 2017, 15:10:47 CET schrieb Eddie Cai:
-> 2017-01-19 17:58 GMT+08:00 Heiko Stuebner <heiko@sntech.de>:
-> > Hi Eddie,
-> > 
-> > Am Donnerstag, 19. Januar 2017, 10:11:59 CET schrieb Eddie Cai:
-> >> This patch add basic support for RK3288-Tinker board. We can boot in to
-> >> rootfs with this patch.
-> >> 
-> >> Signed-off-by: Eddie Cai <eddie.cai@rock-chips.com>
-> > 
-> > looks good in general, just some small question down below.
-> > 
-> > [...]
-> > 
-> >> +     /*
-> >> +      * NOTE: vcc_sd isn't hooked up on v1.0 boards where power comes
-> >> from
-> >> +      * vcc_io directly.  Those boards won't be able to power cycle SD
-> >> cards +      * but it shouldn't hurt to toggle this pin there anyway.
-> >> +      */
-> > 
-> > just to clarify, later board will have that pin connected, right?
-> 
-> Copy from rk3288-evb.dtsi. forgot to delete it. I will remove it in next
-> version
-> >> +     vcc_sd: sdmmc-regulator {
-> >> +             compatible = "regulator-fixed";
-> >> +             gpio = <&gpio7 11 GPIO_ACTIVE_LOW>;
-> >> +             pinctrl-names = "default";
-> >> +             pinctrl-0 = <&sdmmc_pwr>;
-> >> +             regulator-name = "vcc_sd";
-> >> +             regulator-min-microvolt = <3300000>;
-> >> +             regulator-max-microvolt = <3300000>;
-> >> +             startup-delay-us = <100000>;
-> >> +             vin-supply = <&vcc_io>;
-> >> +     };
-> >> +};
-> > 
-> > [...]
-> > 
-> >> +&hdmi {
-> >> +     #address-cells = <1>;
-> >> +     #size-cells = <0>;
-> >> +     #sound-dai-cells = <0>;
-> >> +     ddc-i2c-bus = <&i2c5>;
-> >> +     status = "okay";
-> >> +     /* Don't use vopl for HDMI */
-> >> +     ports {
-> >> +             hdmi_in: port {
-> >> +                     /delete-node/ endpoint@1;
-> >> +             };
-> > 
-> > what is the reason for this? You enable both VOPs below and the linux
-> > display subsystem should be able to select an appropriate VOP for output
-> > just fine on its own. So there should be no reason for capping the hdmi's
-> > connection to one of the vops.
-> 
-> The VOP big support 4k display. is designed for HDMI  4K display. VOP
-> little is for other display(eDP, LVDS, Mipi etc)
+Signed-off-by: Romain Perier <romain.perier@collabora.com>
+---
 
-The hdmi _can_ talk to both vops, which is why it has the connection to both. 
-Resolution-limitations and selecting a matching vop should be handled in the 
-drm driver I'd think - but you'll need to talk to Mark Yao or some else 
-knowledgable in graphics.
+Changes in v4: None
+Changes in v3: None
+Changes in v2:
+- Fixed wrong use of the i2c_device_id data structure
 
-The devicetree is about describing the _available_ hardware, not configuring 
-how it is supposed to be used ;-) .
+ Documentation/devicetree/bindings/sound/es8328.txt | 2 +-
+ sound/soc/codecs/es8328-i2c.c                      | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-
-Heiko
+diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
+index 30ea8a3..33fbf05 100644
+--- a/Documentation/devicetree/bindings/sound/es8328.txt
++++ b/Documentation/devicetree/bindings/sound/es8328.txt
+@@ -4,7 +4,7 @@ This device supports both I2C and SPI.
+ 
+ Required properties:
+ 
+-  - compatible : "everest,es8328"
++  - compatible  : Should be "everest,es8328" or "everest,es8388"
+   - DVDD-supply : Regulator providing digital core supply voltage 1.8 - 3.6V
+   - AVDD-supply : Regulator providing analog supply voltage 3.3V
+   - PVDD-supply : Regulator providing digital IO supply voltage 1.8 - 3.6V
+diff --git a/sound/soc/codecs/es8328-i2c.c b/sound/soc/codecs/es8328-i2c.c
+index 2d05b5d..318ab28 100644
+--- a/sound/soc/codecs/es8328-i2c.c
++++ b/sound/soc/codecs/es8328-i2c.c
+@@ -20,12 +20,14 @@
+ 
+ static const struct i2c_device_id es8328_id[] = {
+ 	{ "es8328", 0 },
++	{ "es8388", 0 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, es8328_id);
+ 
+ static const struct of_device_id es8328_of_match[] = {
+ 	{ .compatible = "everest,es8328", },
++	{ .compatible = "everest,es8388", },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, es8328_of_match);
+-- 
+2.9.3
