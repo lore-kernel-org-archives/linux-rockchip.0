@@ -1,115 +1,58 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v5 4/4] arm: dts: Add support for ES8388 to the
-	Radxa Rock 2
-Date: Tue, 24 Jan 2017 11:08:35 +0100
-Message-ID: <20170124100835.9540-5-romain.perier@collabora.com>
-References: <20170124100835.9540-1-romain.perier@collabora.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 0/4] Add support for es8388 and hdmi audio on the rock2
+Date: Tue, 24 Jan 2017 12:08:59 +0000
+Message-ID: <20170124120859.p3n6suezf6t2iip2@sirena.org.uk>
+References: <20170123104149.2508-1-romain.perier@collabora.com>
+ <20170123175451.hwvuum4ismutrbsf@sirena.org.uk>
+ <3f39ed38-309f-2e79-bd00-21ff367c83b5@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170124100835.9540-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="w7mfcncwg7e6w25s"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <3f39ed38-309f-2e79-bd00-21ff367c83b5-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device
-found at address 0x10. It also adds the definition for connecting
-the Rockchip I2S to the es8388 analog output.
 
-This commit is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.com> with some improvements.
+--w7mfcncwg7e6w25s
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
+On Tue, Jan 24, 2017 at 09:09:02AM +0100, Romain Perier wrote:
+> Le 23/01/2017 =E0 18:54, Mark Brown a =E9crit :
 
-Changes in v5: None
-Changes in v4:
- - Updated to the new DT binding
- - Added the property 'rockchip,routing'
- - Renamed the node sound_es8388 to sound_i2s
-Changes in v3: None
-Changes in v2: None
+> > This is the first version that has been sumbitted upstream.
 
- arch/arm/boot/dts/rk3288-rock2-square.dts | 39 +++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+> No this is the 4th, I have just re-worded the title :
 
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index dd3ad2e..6b176b8 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -86,6 +86,19 @@
- 		#sound-dai-cells = <0>;
- 	};
- 
-+	sound_i2s {
-+		compatible = "rockchip,rk3288-hdmi-analog";
-+		rockchip,model = "I2S";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&es8388>;
-+		rockchip,routing = "Analog", "LOUT2",
-+				   "Analog", "ROUT2";
-+		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&headphone>;
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&hym8563>;
-@@ -173,10 +186,29 @@
- 	};
- };
- 
-+&i2c2 {
-+	status = "okay";
-+
-+	es8388: es8388@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_codec>;
-+		DVDD-supply = <&vcca_codec>;
-+		HPVDD-supply = <&vcca_codec>;
-+		PVDD-supply = <&vcca_codec>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
-+};
-+
- &i2c5 {
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-@@ -190,6 +222,13 @@
- 		};
- 	};
- 
-+	sound {
-+		headphone: headphone {
-+			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.9.3
+> http://mailman.alsa-project.org/pipermail/alsa-devel/2017-January/116702.=
+html
+
+> Not sure that you was in Cc: for the previous ones (whoops?)
+
+I wasn't, that's my point.
+
+--w7mfcncwg7e6w25s
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAliHQ9sACgkQJNaLcl1U
+h9B0Ogf/UZZdo1aN5bI5Tz4oLI3A+gIDqJmYCc0uPPY9NRbnrZIlZ5eToN8oHhZi
+EYBKKDwWo7/rFqQCQOI/UQif+w/HwEtPB2rasPEH64Y+CcBtE8NvwS1AR9oRUexr
+44b5vvDdXeFNGLtOe2uXrLJhxMINB9pk54pURT9yJibfZ6RC4wkNbiqrJuutxmVp
+Lh1JJKInb9eOqugUZ/ENV1AKXB0rI9V1u9JL5p0PYJRGlwd3dT7inWxnxuD7PNrE
+Km9MkkujwDq+zEofqp38Rd8HTqMh37/3tglkc/EiPUYgRAeJwCdwgjrsb9FWHIJg
+c2SZ/dTuMKpRW37+fzKBMvylWi/gXg==
+=fs05
+-----END PGP SIGNATURE-----
+
+--w7mfcncwg7e6w25s--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
