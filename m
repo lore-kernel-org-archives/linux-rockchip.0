@@ -1,93 +1,41 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v2 19/26] drm/rockchip: dw-mipi-dsi: improve PLL
- configuration
-Date: Tue, 24 Jan 2017 10:42:17 +0800
-Message-ID: <5886BF09.6090301@rock-chips.com>
-References: <20170121163128.22240-1-john@metanate.com>
- <20170121163128.22240-20-john@metanate.com> <58855EAE.2010704@rock-chips.com>
- <20170123124925.4fa10fc2.john@metanate.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v4 0/4] Add support for es8388 and hdmi audio on the rock2
+Date: Tue, 24 Jan 2017 09:09:02 +0100
+Message-ID: <3f39ed38-309f-2e79-bd00-21ff367c83b5@collabora.com>
+References: <20170123104149.2508-1-romain.perier@collabora.com>
+ <20170123175451.hwvuum4ismutrbsf@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170123124925.4fa10fc2.john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170123175451.hwvuum4ismutrbsf-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwMS8yMy8yMDE3IDA4OjQ5IFBNLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gSGkgQ2hyaXMs
-Cj4KPiBPbiBNb24sIDIzIEphbiAyMDE3IDA5OjM4OjU0ICswODAwLCBDaHJpcyBaaG9uZyB3cm90
-ZToKPj4gT24gMDEvMjIvMjAxNyAxMjozMSBBTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+Pj4gVGhl
-IG11bHRpcGxpY2F0aW9uIHJhdGlvIGZvciB0aGUgUExMIGlzIHJlcXVpcmVkIHRvIGJlIGV2ZW4g
-ZHVlIHRvIHRoZQo+Pj4gdXNlIG9mIGEgImJ5IDIgcHJlLXNjYWxlciIuICBDdXJyZW50bHkgd2Ug
-YXJlIGxpa2VseSB0byBlbmQgdXAgd2l0aCBhbgo+Pj4gb2RkIG11bHRpcGxpZXIgZXZlbiB0aG91
-Z2ggdGhlcmUgaXMgYW4gZXF1aXZhbGVudCBzZXQgb2YgcGFyYW1ldGVycyB3aXRoCj4+PiBhbiBl
-dmVuIG11bHRpcGxpZXIuCj4+Pgo+Pj4gRm9yIGV4YW1wbGUsIHVzaW5nIHRoZSAzMjRNSHogYml0
-IHJhdGUgd2l0aCBhIHJlZmVyZW5jZSBjbG9jayBvZiAyNE1Iego+Pj4gd2UgZW5kIHVwIHdpdGgg
-TSA9IDI3LCBOID0gMiB3aGVyZWFzIHRoZSBleGFtcGxlIGluIHRoZSBQSFkgZGF0YWJvb2sKPj4+
-IGdpdmVzIE0gPSA1NCwgTiA9IDQgZm9yIHRoaXMgYml0IHJhdGUgYW5kIHJlZmVyZW5jZSBjbG9j
-ay4KPj4+Cj4+PiBCeSB3YWxraW5nIGRvd24gdGhyb3VnaCB0aGUgYXZhaWxhYmxlIG11bHRpcGxp
-ZXIgaW5zdGVhZCBvZiB1cCB3ZSBhcmUKPj4+IG1vcmUgbGlrZWx5IHRvIGhpdCBhbiBldmVuIG11
-bHRpcGxpZXIuICBXaXRoIHRoZSBhYm92ZSBleGFtcGxlIHdlIGRvIG5vdwo+Pj4gZ2V0IE0gPSA1
-NCwgTiA9IDQgYXMgZ2l2ZW4gYnkgdGhlIGRhdGFib29rLgo+Pj4KPj4+IFdoaWxlIGRvaW5nIHRo
-aXMsIGNoYW5nZSB0aGUgbG9vcCBsaW1pdHMgdG8gZW5jb2RlIHRoZSBhY3R1YWwgbGltaXRzIG9u
-Cj4+PiB0aGUgZGl2aXNvciwgd2hpY2ggYXJlOgo+Pj4KPj4+IAk0ME1IeiA+PSAocGxscmVmIC8g
-TikgPj0gNU1Iego+PiBUaGlzIGZvcm11bGEgaXMgbGltaXQgZm9yIE4sIGJ1dCB3ZSBzdGlsbCBj
-YW4gbm90IGd1YXJhbnRlZSB0byBnZXQgYW4KPj4gZXZlbiBNLgo+PiBEbyB5b3UgdGhpbmsgd2Ug
-c2hvdWxkIGRvIGEgY2hlY2sgZm9yIE0uCj4+IHN1Y2ggYXM6Cj4+IGlmIChtICUgMikKPj4gICAg
-ICAgY29udGludWU7Cj4+IC4uLgo+PiAgICAgICBmb3IgKGkgPSBwbGxyZWYgLyA1OyBpID4gKHBs
-bHJlZiAvIDQwKTsgaS0tKSB7Cj4+ICAgICAgICAgICBwcmUgPSBwbGxyZWYgLyBpOwo+PiAgICAg
-ICAgICAgaWYgKCh0bXAgPiAodGFyZ2V0X21icHMgJSBwcmUpKSAmJiAodGFyZ2V0X21icHMgLyBw
-cmUgPCA1MTIpKSB7Cj4+ICAgICAgICAgICAgICAgdG1wID0gdGFyZ2V0X21icHMgJSBwcmU7Cj4+
-ICAgICAgICAgICAgICAgbiA9IGk7Cj4+ICAgICAgICAgICAgICAgbSA9IHRhcmdldF9tYnBzIC8g
-cHJlOwo+PiAgICAgICAgICAgICAgIGlmIChtICUgMikKPj4gICAgICAgICAgICAgICAgICAgY29u
-dGludWU7Cj4+ICAgICAgICAgICB9Cj4+ICAgICAgICAgICBpZiAodG1wID09IDApCj4+ICAgICAg
-ICAgICAgICAgYnJlYWs7Cj4+ICAgICAgIH0KPj4KPj4gaWYgKG0gJSAyKQo+PiAgICAgICBtKys7
-Cj4+Cj4+ICAgICAgIGRzaS0+bGFuZV9tYnBzID0gcGxscmVmIC8gbiAqIG07Cj4+ICAgICAgIGRz
-aS0+aW5wdXRfZGl2ID0gbjsKPj4gICAgICAgZHNpLT5mZWVkYmFja19kaXYgPSBtOwo+IFllcywg
-SSBhZ3JlZSB0aGF0IHRoZXJlIHNob3VsZCBiZSBhIGNoZWNrIGZvciBNLCBidXQgSSdtIG5vdCBz
-dXJlIGlmCj4gdGhlIHZlcnNpb24gYWJvdmUgaXMgc3VmZmljaWVudC4gIFRoZSAibSAlIDIiIGNo
-ZWNrIGluc2lkZSB0aGUgbG9vcAo+IG1lYW5zIHRoYXQgd2UgZG9uJ3QgYnJlYWsgaW1tZWRpYXRl
-bHkgd2hlbiB0bXA9MCBidXQgdGhlbiB3ZSBhcmUKPiBndWFyYW50ZWVkIHRvIGJyZWFrIG5leHQg
-dGltZSB3aXRob3V0IGhhdmluZyBtb2RpZmllZCBuLCBtIGJlY2F1c2Ugbm93Cj4gdG1wPTAgc28g
-InRtcCA+ICh0YXJnZXRfbWJwcyAlIHByZSkiIGlzIGFsd2F5cyBmYWxzZSBhbmQgd2UganVzdCBo
-aXQgdGhlCj4gImlmICh0bXAgPT0gMCkgYnJlYWsiIGNhc2UgbmV4dCB0aW1lLgo+Cj4gR2l2ZW4g
-dGhhdCB0aGUgZGVzY2VuZGluZyBsb29wIGFscmVhZHkgbWVhbnMgdGhhdCBpZiB3ZSBjYW4gaGl0
-ICJ0bXAiCj4gZXhhY3RseSB3ZSBhcmUgbW9yZSBsaWtlbHkgdG8gZG8gc28gd2l0aCBhIGJpZ2dl
-ciBOIGFuZCBldmVuIE0sIEkgdGhpbmsKPiBpdCBtaWdodCBiZSBiZXR0ZXIgdG8ganVzdCBmaXgg
-TSBhZnRlciB0aGUgbG9vcCBsaWtlOgo+Cj4gCWlmIChtICUgMikgewo+IAkJaWYgKG0gPCAyNTYg
-JiYgKG4gKiAyKSA8PSAocGxscmVmIC8gNSkpIHsKPiAJCQluICo9IDI7Cj4gCQkJbSAqPSAyOwo+
-IAkJfSBlbHNlIHsKPiAJCQltKys7Cj4gCQl9Cj4gCX0KPgo+IGJ1dCBJIGhhdmVuJ3QgdGhvdWdo
-dCBhYm91dCB0aGlzIHRvbyBjYXJlZnVsbHkuCj4KPiBGb3IgdGhpcyBzZXJpZXMsIEknZCByYXRo
-ZXIgZWl0aGVyIGtlZXAgdGhpcyBwYXRjaCBhcyBpdCBpcyBvciBkcm9wIGl0Cj4gaW4gZmF2b3Vy
-IG9mIGEgbW9yZSBjb21wcmVoZW5zaXZlIHNvbHV0aW9uLiAgSSBkb24ndCB3YW50IHRvIGJsb2Nr
-IHRoZQo+IG90aGVyIGZpeGVzIHdhaXRpbmcgZm9yIGEgcGVyZmVjdCBmaXggaGVyZSBhbmQgd2Ug
-Y2FuIGFsd2F5cyBpbXByb3ZlCj4gdGhpcyBmdXJ0aGVyIHdpdGggYSBmb2xsb3ctdXAgcGF0Y2gu
-CkFncmVlLCBXZSBjYW4gaW1wcm92ZSB0aGUgd2hvbGUgZm9ybXVsYSBpbiB0aGUgZnV0dXJlLgoK
-Pgo+Pj4gU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPj4+
-IC0tLQo+Pj4gVW5jaGFuZ2VkIGluIHYyCj4+PiAtLS0KPj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMiArLQo+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
-ZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
-LW1pcGktZHNpLmMKPj4+IGluZGV4IDEyNDMyZTQxOTcxYi4uZjIzMjBjZjEzNjZjIDEwMDY0NAo+
-Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPj4+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4+PiBAQCAtNTE5LDcgKzUx
-OSw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBzKHN0cnVjdCBkd19taXBp
-X2RzaSAqZHNpLAo+Pj4gICAgCXBsbHJlZiA9IERJVl9ST1VORF9VUChjbGtfZ2V0X3JhdGUoZHNp
-LT5wbGxyZWZfY2xrKSwgVVNFQ19QRVJfU0VDKTsKPj4+ICAgIAl0bXAgPSBwbGxyZWY7Cj4+PiAg
-ICAKPj4+IC0JZm9yIChpID0gMTsgaSA8IDY7IGkrKykgewo+Pj4gKwlmb3IgKGkgPSBwbGxyZWYg
-LyA1OyBpID4gKHBsbHJlZiAvIDQwKTsgaS0tKSB7Cj4+PiAgICAJCXByZSA9IHBsbHJlZiAvIGk7
-Cj4+PiAgICAJCWlmICgodG1wID4gKHRhcmdldF9tYnBzICUgcHJlKSkgJiYgKHRhcmdldF9tYnBz
-IC8gcHJlIDwgNTEyKSkgewo+Pj4gICAgCQkJdG1wID0gdGFyZ2V0X21icHMgJSBwcmU7Cj4+Cj4K
-PgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+Le 23/01/2017 à 18:54, Mark Brown a écrit :
+> On Mon, Jan 23, 2017 at 11:41:45AM +0100, Romain Perier wrote:
+>
+>> Changes in v4:
+>>  - Add support for multi codecs in the asoc machine driver, so the driver
+>>    matches the hw architecture (analog and hdmi audio are connected on
+>>    the same i2s line)
+>>  - Renamed the driver to rk3288-hdmi-analog.c and changed its
+>>    documentation
+>>  - Add built-in support for hdmi audio in this driver
+>>  - Add support for the property 'rockchip,routing'
+> This is the first version that has been sumbitted upstream.
+No this is the 4th, I have just re-worded the title :
+-
+http://mailman.alsa-project.org/pipermail/alsa-devel/2017-January/116702.html
+
+Not sure that you was in Cc: for the previous ones (whoops?)
+
+Romain
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
