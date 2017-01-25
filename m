@@ -1,93 +1,91 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: es8328-i2c: Add compatible for ES8388" to the asoc tree
-Date: Tue, 24 Jan 2017 18:39:21 +0000
-Message-ID: <E1cW601-0006aO-73@debutante>
-References: <20170116081753.13666-2-romain.perier@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170116081753.13666-2-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
+Date: Wed, 25 Jan 2017 22:30:22 +0100
+Message-ID: <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
+References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
+ <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com> <58842848.5090806@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <58842848.5090806@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
+>
+>
+> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
+>>
+>> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
+>> wrote:
+>>>
+>>> If a PM domain is powered off before system suspend,
+>>> we hope do nothing in system runtime suspend noirq phase
+>>> and system runtime resume noirq phase.
+>>
+>>
+>> One can hope, but that isn't good enough. :-)
+>>
+>>
+>>>
+>>> This modify is to slove system resume issue for RK3399.
+>>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
+>>> so we must follow open vdd_gpu and power on pd_gpu,
+>>> power off pd_gpu and disable vdd_gpu.
+>>> Fix up in runtime resume noirq phase power on all PDs.
+>>
+>>
+>> This doesn't make any sense to me. Can please try to explain this is
+>> in great more detail, then I can try to help.
+>>
+> For example:
+> -->device suspend
+>    (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
 
-   ASoC: es8328-i2c: Add compatible for ES8388
+This is the wrong approach, as runtime suspend is prevented by the PM
+core in this phase. More precisely, it does a
+pm_runtime_get_noresume() in the device prepare phase.
 
-has been applied to the asoc tree at
+I think it seems like you would benefit from using the so called the
+runtime PM centric approach, which gives you system PM support for
+"free". Please have a look at the pm_runtime_force_suspend|resume()
+helpers.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+>     and then disabled the vdd_gpu by regulator_disable().)
+>         --> system suspend
+>                 -->prepare
+>                         -->suspend_noirq():
+>                         (power off all pds)
+>         -->system resume
+>                 -->resume_noirq():
+>                 (power up all pds)
+>                 (in this case the vdd_gpu is still disabled,
+>                  if power on the pd_gpu maybe make the system crash)
+>         -->complete : power off the not used pd
+> -->device resuem
+>    (mali gpu driver enable vdd_gpu by regulator_enable(),
+>     and then power up the pd_gpu by pm_runtime_get_sync())
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Seems like there is also a missing configuration of the relationship
+between the PM domains. In the genpd terminology, you probably want to
+set pd_gpu as a subdomain of the vdd_gpu.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+In that way, the vdd_gpu is always powered on before pd_gpu is powered
+on. And vice verse when powering off.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+>
+> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
+> will can't get the ack back.
+> I hope the pd_gpu power up/off by the driver itself.
+>
+> May be I solution is not the optimal solution,Do you have better suggestion?
+>
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Please see my comment above.
 
-Thanks,
-Mark
+[...]
 
-From 5f166156dbd4c0cf85632799ee7330d24deeec4e Mon Sep 17 00:00:00 2001
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Date: Mon, 23 Jan 2017 11:41:46 +0100
-Subject: [PATCH] ASoC: es8328-i2c: Add compatible for ES8388
-
-This commit adds a compatible string for everest,es8388. This is
-an audio codec that is compatible with es8328.
-
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- Documentation/devicetree/bindings/sound/es8328.txt | 2 +-
- sound/soc/codecs/es8328-i2c.c                      | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
-index 30ea8a318ae9..33fbf058c997 100644
---- a/Documentation/devicetree/bindings/sound/es8328.txt
-+++ b/Documentation/devicetree/bindings/sound/es8328.txt
-@@ -4,7 +4,7 @@ This device supports both I2C and SPI.
- 
- Required properties:
- 
--  - compatible : "everest,es8328"
-+  - compatible  : Should be "everest,es8328" or "everest,es8388"
-   - DVDD-supply : Regulator providing digital core supply voltage 1.8 - 3.6V
-   - AVDD-supply : Regulator providing analog supply voltage 3.3V
-   - PVDD-supply : Regulator providing digital IO supply voltage 1.8 - 3.6V
-diff --git a/sound/soc/codecs/es8328-i2c.c b/sound/soc/codecs/es8328-i2c.c
-index 2d05b5d3a6ce..318ab28c5351 100644
---- a/sound/soc/codecs/es8328-i2c.c
-+++ b/sound/soc/codecs/es8328-i2c.c
-@@ -20,12 +20,14 @@
- 
- static const struct i2c_device_id es8328_id[] = {
- 	{ "es8328", 0 },
-+	{ "es8388", 0 },
- 	{ }
- };
- MODULE_DEVICE_TABLE(i2c, es8328_id);
- 
- static const struct of_device_id es8328_of_match[] = {
- 	{ .compatible = "everest,es8328", },
-+	{ .compatible = "everest,es8388", },
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, es8328_of_match);
--- 
-2.11.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Kind regards
+Uffe
