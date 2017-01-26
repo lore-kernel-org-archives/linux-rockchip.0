@@ -1,74 +1,37 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v6 0/3] Add support for es8388 and hdmi audio
-	on the rock2
-Date: Thu, 26 Jan 2017 14:23:12 +0100
-Message-ID: <20170126132315.17955-1-romain.perier@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: rockchip: Add rk3328 pinctrl support
+Date: Thu, 26 Jan 2017 14:29:17 +0100
+Message-ID: <CACRpkdaJEEGFnfX0_eBtwLMqYtSTShB5u6WCaA-YZG53OMnk+w@mail.gmail.com>
+References: <1485074286-7863-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1485074286-7863-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This set of patches adds a machine driver for rk3288-based boards that have
-the built-in HDMI audio and a generic analog output. It also adds slave mode
-to the es8328 driver that currently only supported the master mode. Then, it
-adds the required DT definitions to link rockchip-i2s to the es8388 analog
-output and to hdmi audio.
+On Sun, Jan 22, 2017 at 9:38 AM, David Wu <david.wu@rock-chips.com> wrote:
 
-This work is based on the initial work that was done by Sjoerd Simons
-<sjoerd.simons@collabora.co.uk> with some improvements, changes and more
-commits.
+> From: "david.wu" <david.wu@rock-chips.com>
+>
+> This patch supports 3bit width iomux type.
+> Note, the iomux of following pins are special, need to
+> be handled specially.
+>  - gpio2_b0 ~ gpio2_b6
+>  - gpio2_b7
+>  - gpio2_c7
+>  - gpio3_b0
+>  - gpio3_b1 ~ gpio3_b7
+> And therefore add IOMUX_RECALCED_FLAG to indicate which
+> iomux source of the bank need to be recalced. If the mux
+> recalced callback and IOMUX_RECALCED_FLAG were set, recalc
+> the related pins' iomux.
+>
+> Signed-off-by: david.wu <david.wu@rock-chips.com>
 
-Changes in v6:
- - Fixed bad error handling for gpio in rk3288_analog_hdmi.c
- - Removed message duplication in rk_hw_params(), in rk3288_analog_hdmi.c
- - Removed patch 1/4 (from the previous series), as it has been merged
-Changes in v5:
- - Fixed coding style issue in patch 2/4 (the switch case).
- - Moved the code for the master mode and the slave mode into the switch case for patch 2/4
- - Fixed error handling for patch 3/4
-Changes in v4:
- - Add support for multi codecs in the asoc machine driver, so the driver
-   matches the hw architecture (analog and hdmi audio are connected on
-   the same i2s line)
- - Renamed the driver to rk3288-hdmi-analog.c and changed its
-   documentation
- - Add built-in support for hdmi audio in this driver
- - Add support for the property 'rockchip,routing'
+Heiko, could you review this?
 
-Changes in v3:
- - Cosmetic changes in rockchip_es8388.c
- - Added missing email to MODULE_AUTHOR in rockchip_es8388.c
-Changes in v2:
- - Fixed wrong use of the data structure i2c_device_id
- - Fixed wrong dependencies for SND_SOC_ROCKCHIP_ES8388
-
-Romain Perier (3):
-  ASoC: es8328: Add support for slave mode
-  ASoC: rockchip: Add machine driver for RK3288 boards that use
-    analog/HDMI
-  arm: dts: Add support for ES8388 to the Radxa Rock 2
-
- .../bindings/sound/rockchip,rk3288-hdmi-analog.txt |  36 +++
- arch/arm/boot/dts/rk3288-rock2-square.dts          |  39 +++
- sound/soc/codecs/es8328.c                          |  20 +-
- sound/soc/rockchip/Kconfig                         |  10 +
- sound/soc/rockchip/Makefile                        |   2 +
- sound/soc/rockchip/rk3288_hdmi_analog.c            | 299 +++++++++++++++++++++
- 6 files changed, 400 insertions(+), 6 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3288-hdmi-analog.txt
- create mode 100644 sound/soc/rockchip/rk3288_hdmi_analog.c
-
--- 
-2.9.3
+Yours,
+Linus Walleij
