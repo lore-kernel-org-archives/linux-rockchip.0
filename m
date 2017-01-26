@@ -1,37 +1,84 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: rockchip: Add rk3328 pinctrl support
-Date: Thu, 26 Jan 2017 14:29:17 +0100
-Message-ID: <CACRpkdaJEEGFnfX0_eBtwLMqYtSTShB5u6WCaA-YZG53OMnk+w@mail.gmail.com>
-References: <1485074286-7863-1-git-send-email-david.wu@rock-chips.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v6 1/3] ASoC: es8328: Add support for slave mode
+Date: Thu, 26 Jan 2017 14:23:13 +0100
+Message-ID: <20170126132315.17955-2-romain.perier@collabora.com>
+References: <20170126132315.17955-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1485074286-7863-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170126132315.17955-1-romain.perier@collabora.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Jan 22, 2017 at 9:38 AM, David Wu <david.wu@rock-chips.com> wrote:
+Currently, the function that changes the DAI format only supports master
+mode. Trying to use a slave mode exits the function with -EINVAL and
+leave the codec misconfigured. This commits adds support for enabling
+the slave mode.
 
-> From: "david.wu" <david.wu@rock-chips.com>
->
-> This patch supports 3bit width iomux type.
-> Note, the iomux of following pins are special, need to
-> be handled specially.
->  - gpio2_b0 ~ gpio2_b6
->  - gpio2_b7
->  - gpio2_c7
->  - gpio3_b0
->  - gpio3_b1 ~ gpio3_b7
-> And therefore add IOMUX_RECALCED_FLAG to indicate which
-> iomux source of the bank need to be recalced. If the mux
-> recalced callback and IOMUX_RECALCED_FLAG were set, recalc
-> the related pins' iomux.
->
-> Signed-off-by: david.wu <david.wu@rock-chips.com>
+Signed-off-by: Romain Perier <romain.perier@collabora.com>
+---
 
-Heiko, could you review this?
+Changes in v6: None
+Changes in v5:
+ - Fixed coding style issue for the switch case
+ - Moved the code for master mode and slave mode to the switch case
 
-Yours,
-Linus Walleij
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+
+ sound/soc/codecs/es8328.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
+index 37722194..3f84fbd 100644
+--- a/sound/soc/codecs/es8328.c
++++ b/sound/soc/codecs/es8328.c
+@@ -589,9 +589,21 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
+ 	u8 dac_mode = 0;
+ 	u8 adc_mode = 0;
+ 
+-	/* set master/slave audio interface */
+-	if ((fmt & SND_SOC_DAIFMT_MASTER_MASK) != SND_SOC_DAIFMT_CBM_CFM)
++	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
++	case SND_SOC_DAIFMT_CBM_CFM:
++		/* Master serial port mode, with BCLK generated automatically */
++		snd_soc_update_bits(codec, ES8328_MASTERMODE,
++				    ES8328_MASTERMODE_MSC,
++				    ES8328_MASTERMODE_MSC);
++		break;
++	case SND_SOC_DAIFMT_CBS_CFS:
++		/* Slave serial port mode */
++		snd_soc_update_bits(codec, ES8328_MASTERMODE,
++				    ES8328_MASTERMODE_MSC, 0);
++		break;
++	default:
+ 		return -EINVAL;
++	}
+ 
+ 	/* interface format */
+ 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
+@@ -620,10 +632,6 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
+ 	snd_soc_update_bits(codec, ES8328_ADCCONTROL4,
+ 			ES8328_ADCCONTROL4_ADCFORMAT_MASK, adc_mode);
+ 
+-	/* Master serial port mode, with BCLK generated automatically */
+-	snd_soc_update_bits(codec, ES8328_MASTERMODE,
+-			ES8328_MASTERMODE_MSC, ES8328_MASTERMODE_MSC);
+-
+ 	return 0;
+ }
+ 
+-- 
+2.9.3
