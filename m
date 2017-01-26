@@ -1,91 +1,68 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
-Date: Wed, 25 Jan 2017 22:30:22 +0100
-Message-ID: <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
- <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com> <58842848.5090806@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <58842848.5090806@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 0/9] Implement clocksource for rockchip SoC using rockchip timer
+Date: Thu, 26 Jan 2017 14:08:45 +0300
+Message-ID: <F4C90577-1F45-47A0-A532-7AC581825279@gmail.com>
+References: <1480343486-25539-1-git-send-email-al.kochet@gmail.com> <E6DD9335-0D2D-47CB-8098-5F96C2E08139@gmail.com> <20170123144744.GE2166@mai> <1793912.WfGyM7qEjy@diego> <58B283B0-02F6-4342-A6D2-7E082E04863E@gmail.com> <20170123175740.GI2166@mai>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170123175740.GI2166@mai>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
->
->
-> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
->>
->> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
->> wrote:
->>>
->>> If a PM domain is powered off before system suspend,
->>> we hope do nothing in system runtime suspend noirq phase
->>> and system runtime resume noirq phase.
->>
->>
->> One can hope, but that isn't good enough. :-)
->>
->>
->>>
->>> This modify is to slove system resume issue for RK3399.
->>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
->>> so we must follow open vdd_gpu and power on pd_gpu,
->>> power off pd_gpu and disable vdd_gpu.
->>> Fix up in runtime resume noirq phase power on all PDs.
->>
->>
->> This doesn't make any sense to me. Can please try to explain this is
->> in great more detail, then I can try to help.
->>
-> For example:
-> -->device suspend
->    (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
+Hello Daniel!
 
-This is the wrong approach, as runtime suspend is prevented by the PM
-core in this phase. More precisely, it does a
-pm_runtime_get_noresume() in the device prepare phase.
+Sorry for bothering you. Just let you know that I sent v5 here:
+=
+http://lists.infradead.org/pipermail/linux-rockchip/2017-January/thread.ht=
+ml#13812
 
-I think it seems like you would benefit from using the so called the
-runtime PM centric approach, which gives you system PM support for
-"free". Please have a look at the pm_runtime_force_suspend|resume()
-helpers.
+Because previous series was somehow missed in your inbox.
 
->     and then disabled the vdd_gpu by regulator_disable().)
->         --> system suspend
->                 -->prepare
->                         -->suspend_noirq():
->                         (power off all pds)
->         -->system resume
->                 -->resume_noirq():
->                 (power up all pds)
->                 (in this case the vdd_gpu is still disabled,
->                  if power on the pd_gpu maybe make the system crash)
->         -->complete : power off the not used pd
-> -->device resuem
->    (mali gpu driver enable vdd_gpu by regulator_enable(),
->     and then power up the pd_gpu by pm_runtime_get_sync())
+Heiko don=E2=80=99t want to add  "Reviewed-by=C2=BB to my patches. Could =
+you please
+apply the patches without the tag.
 
-Seems like there is also a missing configuration of the relationship
-between the PM domains. In the genpd terminology, you probably want to
-set pd_gpu as a subdomain of the vdd_gpu.
+Let me know is all ok with series now? Or may be I have to do something =
+else?
 
-In that way, the vdd_gpu is always powered on before pd_gpu is powered
-on. And vice verse when powering off.
+Regards,
+Alexander.
 
->
-> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
-> will can't get the ack back.
-> I hope the pd_gpu power up/off by the driver itself.
->
-> May be I solution is not the optimal solution,Do you have better suggestion?
->
 
-Please see my comment above.
+> 23 =D1=8F=D0=BD=D0=B2. 2017 =D0=B3., =D0=B2 20:57, Daniel Lezcano =
+<daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=
+=B0):
+>=20
+> On Mon, Jan 23, 2017 at 08:24:47PM +0300, Alexander Kochetkov wrote:
+>> Heiko, Daniel, thanks a lot for review!
+>> I=E2=80=99ll send v5 series this week.
+>>=20
+>> Heiko, Daniel, may I add 'Reviewed-by:=E2=80=99 to patch series?
+>>=20
+>> Reviewed-by: Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> ?
+>> Reviewed-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> ?
+>>=20
+>=20
+> I will answer with the corresponding tag myself when you send the v5.
+>=20
+> Thanks.
+>=20
+>  -- Daniel
+>=20
+> --=20
+>=20
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for =
+ARM SoCs
+>=20
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
 
-[...]
-
-Kind regards
-Uffe
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
