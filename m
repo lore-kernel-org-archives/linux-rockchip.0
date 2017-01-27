@@ -1,61 +1,55 @@
-From: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH] Gpu: drm: rockchip - Fix possible NULL derefrence.
-Date: Fri, 27 Jan 2017 16:41:50 +0530
-Message-ID: <1485515510-3129-1-git-send-email-shailendra.v@samsung.com>
+From: Corentin Labbe <clabbe.montjoie@gmail.com>
+Subject: Re: [PATCH] Gpu: drm: rockchip - Fix possible NULL derefrence.
+Date: Fri, 27 Jan 2017 13:43:19 +0100
+Message-ID: <20170127124319.GA13611@Red>
 References: <CGME20170127111200epcas3p34bf747c6c3c0da798ddaf34788d1a324@epcas3p3.samsung.com>
+ <1485515510-3129-1-git-send-email-shailendra.v@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, p.shailesh-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, ashish.kalra-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Shailendra Verma <shailendra.capricorn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1485515510-3129-1-git-send-email-shailendra.v@samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Shailendra Verma <shailendra.v@samsung.com>
+Cc: ashish.kalra@samsung.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, p.shailesh@samsung.com, Shailendra Verma <shailendra.capricorn@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-of_match_device could return NULL, and so can cause a NULL
-pointer dereference later.
-
-Signed-off-by: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c |   13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index ca22e5e..dbb99cf 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -1082,15 +1082,22 @@ static enum drm_mode_status rk3288_mipi_dsi_mode_valid(
- static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 			     void *data)
- {
--	const struct of_device_id *of_id =
--			of_match_device(dw_mipi_dsi_dt_ids, dev);
--	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
-+	const struct of_device_id *of_id;
-+	const struct dw_mipi_dsi_plat_data *pdata;
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct drm_device *drm = data;
- 	struct dw_mipi_dsi *dsi;
- 	struct resource *res;
- 	int ret;
- 
-+	of_id = of_match_device(dw_mipi_dsi_dt_ids, dev);
-+	if (!of_id) {
-+		dev_err(dev, "Error: No device match found\n");
-+		return -ENODEV;
-+	}
-+
-+	pdata = of_id->data;
-+
- 	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
- 	if (!dsi)
- 		return -ENOMEM;
--- 
-1.7.9.5
+T24gRnJpLCBKYW4gMjcsIDIwMTcgYXQgMDQ6NDE6NTBQTSArMDUzMCwgU2hhaWxlbmRyYSBWZXJt
+YSB3cm90ZToKPiBvZl9tYXRjaF9kZXZpY2UgY291bGQgcmV0dXJuIE5VTEwsIGFuZCBzbyBjYW4g
+Y2F1c2UgYSBOVUxMCj4gcG9pbnRlciBkZXJlZmVyZW5jZSBsYXRlci4KPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBTaGFpbGVuZHJhIFZlcm1hIDxzaGFpbGVuZHJhLnZAc2Ftc3VuZy5jb20+Cj4gLS0tCj4g
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgICAxMyArKysrKysrKysr
+LS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+
+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggY2EyMmU1ZS4u
+ZGJiOTljZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gQEAg
+LTEwODIsMTUgKzEwODIsMjIgQEAgc3RhdGljIGVudW0gZHJtX21vZGVfc3RhdHVzIHJrMzI4OF9t
+aXBpX2RzaV9tb2RlX3ZhbGlkKAo+ICBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gIAkJCSAgICAgdm9pZCAqZGF0
+YSkKPiAgewo+IC0JY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqb2ZfaWQgPQo+IC0JCQlvZl9t
+YXRjaF9kZXZpY2UoZHdfbWlwaV9kc2lfZHRfaWRzLCBkZXYpOwo+IC0JY29uc3Qgc3RydWN0IGR3
+X21pcGlfZHNpX3BsYXRfZGF0YSAqcGRhdGEgPSBvZl9pZC0+ZGF0YTsKPiArCWNvbnN0IHN0cnVj
+dCBvZl9kZXZpY2VfaWQgKm9mX2lkOwo+ICsJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRf
+ZGF0YSAqcGRhdGE7Cj4gIAlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZv
+cm1fZGV2aWNlKGRldik7Cj4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gZGF0YTsKPiAgCXN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpOwo+ICAJc3RydWN0IHJlc291cmNlICpyZXM7Cj4gIAlpbnQg
+cmV0Owo+ICAKPiArCW9mX2lkID0gb2ZfbWF0Y2hfZGV2aWNlKGR3X21pcGlfZHNpX2R0X2lkcywg
+ZGV2KTsKPiArCWlmICghb2ZfaWQpIHsKPiArCQlkZXZfZXJyKGRldiwgIkVycm9yOiBObyBkZXZp
+Y2UgbWF0Y2ggZm91bmRcbiIpOwo+ICsJCXJldHVybiAtRU5PREVWOwo+ICsJfQo+ICsKPiArCXBk
+YXRhID0gb2ZfaWQtPmRhdGE7Cj4gKwo+ICAJZHNpID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9m
+KCpkc2kpLCBHRlBfS0VSTkVMKTsKPiAgCWlmICghZHNpKQo+ICAJCXJldHVybiAtRU5PTUVNOwoK
+SGVsbG8KCllvdSBjb3VsZCB1c2Ugb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCkKClJlZ2FyZHMK
+Q29yZW50aW4gTGFiYmUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
