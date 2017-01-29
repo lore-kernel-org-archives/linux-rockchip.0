@@ -1,79 +1,48 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 1/3] Rockchip driver updates for 4.11 part1
-Date: Sun, 29 Jan 2017 14:41:43 -0800
-Message-ID: <20170129224143.GC3133@localhost>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL 2/3] Rockchip dts32 updates for 4.11 part1
+Date: Sun, 29 Jan 2017 14:42:46 -0800
+Message-ID: <20170129224246.GE3133@localhost>
 References: <6458001.3c0YmcoF8y@phil>
+ <1581407.91s7OzFVNJ@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <6458001.3c0YmcoF8y@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1581407.91s7OzFVNJ@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-HI,
-
-On Sat, Jan 21, 2017 at 01:10:38AM +0100, Heiko Stuebner wrote:
-> Hi Arnd, Kevin, Olof,
-> 
-> please find below some rockchip-specific soc-driver updates for 4.11.
-> It is based on 4.10-rc2 due to the bug in 4.10-rc1 that caused the whole
-> arm64 to not build.
-> 
-> The grf-thingy has been on the lists in some iterations and as the tag
-> message says is really only ever meant for stuff that really fits nowhere
-> else but can also not be set in firmware in a sane way.
-> 
-> So if there are no complaints, please pull.
-
-I replied to one of the patches -- I think it can be done better but this can
-go in meanwhile and it can be switched over to later.
-
-
-> 
+On Sat, Jan 21, 2017 at 01:11:25AM +0100, Heiko Stuebner wrote:
 > The following changes since commit 0c744ea4f77d72b3dcebb7a8f2684633ec79be88:
 > 
 >   Linux 4.10-rc2 (2017-01-01 14:31:53 -0800)
 > 
 > are available in the git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.11-armsoc-drivers1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.11-rockchip-dts32-1
 > 
-> for you to fetch changes up to 19f0f3021e7532a1056886e3ddf524f9847e4f15:
+> for you to fetch changes up to ec7c98ec9b8dd2c04ed75cad88e91eebedbb1a25:
 > 
->   ARM: rockchip: drop rk3288 jtag/mmc switch handling (2017-01-06 10:29:16 +0100)
+>   ARM: dts: rockchip: add soc-specific uart compatibles for rk3066/rk3188 (2017-01-19 17:04:44 +0100)
 > 
 > ----------------------------------------------------------------
-> Some extensions to the power-domain driver to support domains in
-> hiword registers (write-mask in upper 16bit) and domain-definitions
-> for the rk3328 soc.
-> 
-> Secondly a "driver" that attaches to the already existing grf nodes
-> and is able to set static defaults for settings that cannot really
-> be attached to any specific subsystem.
-> Most GRF settings can already be set from drivers using them, but there
-> are some behavioural settings like the mmc/jtag switch that cannot.
-> 
-> As the commit message states this is really meant as a last line
-> of defence for things that neither belong to a subsystem nor to the
-> 
-> Having this here allows arm64 socs to have this as well and also
-> moves another bit of code out of the arm32 mach-rockchip.
+> Bit of cleanup for the cortex-a9 uarts to have that soc-specific
+> spare-compatible as all others have, conversion to gpio constants
+> and addition of rk3288 qos nodes that need to be saved before a
+> power-domain gets turned off.
 
-Third paragraph looks cut off.
-
-Still, merged.
+Merged, thanks.
 
 
 -Olof
