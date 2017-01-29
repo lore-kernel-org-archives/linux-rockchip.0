@@ -1,15 +1,14 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5 5/8] clocksource/drivers/rockchip_timer: split bc_timer
- into rk_timer and rk_clock_event_device
-Date: Sun, 29 Jan 2017 21:30:13 +0100
-Message-ID: <3616490.5RPja2j5kp@phil>
-References: <1485260203-14216-1-git-send-email-al.kochet@gmail.com>
- <3890508.0j97LNriXL@diego> <14EAE124-D504-4480-A6D4-EB7EFFC3C561@gmail.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH v2 2/3] soc: rockchip: add driver handling grf setup
+Date: Sun, 29 Jan 2017 14:40:53 -0800
+Message-ID: <CAOesGMjq3uPqaWjMkEkqXs9W90XTwXknjheZNdYsOaGu4fw9_g@mail.gmail.com>
+References: <20161115223900.30728-1-heiko@sntech.de>
+ <20161115223900.30728-3-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <14EAE124-D504-4480-A6D4-EB7EFFC3C561@gmail.com>
+In-Reply-To: <20161115223900.30728-3-heiko@sntech.de>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,26 +18,209 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Huang Tao <huangtao@rock-chips.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, LKML <linux-kernel@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, LAK <linux-arm-kernel@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, shawn.lin@rock-chips.com, Arnd Bergmann <arnd@arndb.de>, Doug Anderson <dianders@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQWxleGFuZGVyLAoKQW0gRGllbnN0YWcsIDI0LiBKYW51YXIgMjAxNywgMTg6MTY6MjAgQ0VU
-IHNjaHJpZWIgQWxleGFuZGVyIEtvY2hldGtvdjoKPiA+IDI0INGP0L3Qsi4gMjAxNyDQsy4sINCy
-IDE4OjAyLCBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiDQvdCw0L/QuNGB0LDQuyjQ
-sCk6Cj4gPiAKPiA+IFBsZWFzZSBkb24ndCBhZGQgUmV2aWV3ZWQtYnkgdGFncyB3aXRob3V0IGV4
-cGxpY2l0IG1lbnRpb24gb2YgdGhlbSBieQo+ID4gcmV2aWV3ZXJzLiAoQWxzbyBpdCdzIHNwZWxs
-ZWQgd3JvbmcpLgo+ID4gCj4gPiBJIGhhdmVuJ3QgbG9va2VkIHRoYXQgZGVlcGx5IGludG8gdGhl
-IGRyaXZlciBpdHNlbGYgYW5kIHRoZSBjaGFuZ2VzIG1hZGUKPiA+IHRvCj4gPiBmZWVsIGNvbWZv
-cnRhYmxlIHdpdGggYSAiUmV2aWV3ZWQtYnkiLgo+IAo+IFRoYW4gSSBwb3N0ZWQgYW5vdGhlciBs
-aW51eCBjb2RlIEkgd2FzIGFza2VkIHRvIGFkZCBzdWNoIHRhZ3MgKGFuZCBvdGhlcnMpCj4gdG8g
-YWRkIGNyZWRpdHMgdG8gcGVvcGxlLgo+IAo+IFNvcnJ5IGZvciB0aGF0LgoKbm8gcHJvYmxlbS4g
-SW4gZ2VuZXJhbCBwZW9wbGUgcmV2aWV3aW5nIHBhdGNoZXMgd2lsbCByZXNwb25kIHRvIHRoZSBw
-YXRjaCB3aXRoIAp0YWdzIHRoZXkgYXJlIGNvbWZvcnRhYmxlIHdpdGggYmVpbmcgYWRkZWQuIEFu
-ZCBhIFJldmlld2VkLWJ5IGlzIGEgcHJldHR5IApzdHJvbmcgdGFnLCBpbmRpY2F0aW5nIHRoYXQg
-c29tZSB0aG91Z2h0IHdlbnQgaW50byByZXZpZXdpbmcgYSBzcGVjaWZpYyBwYXRjaCwgCndoaWNo
-IEkgaGFkbid0IGRvbmUgd2l0aCBteSBjdXJzb3J5IGdsYW5jZSBhdCB0aGUgdGltZSA6LSkKCkhl
-aWtvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+Heiko,
+
+
+
+On Tue, Nov 15, 2016 at 2:38 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> The General Register Files are an area of registers containing a lot
+> of single-bit settings for numerous components as well full components
+> like usbphy control. Therefore all used components are accessed
+> via the syscon provided by the grf nodes or from the sub-devices
+> created through the simple-mfd created from the grf node.
+>
+> Some settings are not used by anything but will need to be set up
+> according to expectations on the kernel side.
+>
+> Best example is the force_jtag setting, which defaults to on and
+> results in the soc switching the pin-outputs between jtag and sdmmc
+> automatically depending on the card-detect status. This conflicts
+> heavily with how the dw_mmc driver expects to do its work and also
+> with the clock-controller, which has most likely deactivated the
+> jtag clock due to it being unused.
+>
+> So far the handling of this setting was living in the mach-rockchip
+> code for the arm32-based rk3288 but that of course doesn't work
+> for arm64 socs and would also look ugly for further arm32 socs.
+>
+> Also always disabling this setting is quite specific to linux and
+> its subsystems, other operating systems might prefer other settings,
+> so that the bootloader cannot really set a sane default for all.
+>
+> So introduce a top-level driver for the grf that handles these
+> settings that need to be a certain way but nobody cares about.
+>
+> Other needed settings might surface in the future and can then
+> be added here, but only as a last option. Ideally general GRF
+> settings should be handled in the driver needing them.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  drivers/soc/rockchip/Kconfig  |  10 ++++
+>  drivers/soc/rockchip/Makefile |   1 +
+>  drivers/soc/rockchip/grf.c    | 134 ++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 145 insertions(+)
+>  create mode 100644 drivers/soc/rockchip/grf.c
+>
+> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+> index 7140ff8..20da55d 100644
+> --- a/drivers/soc/rockchip/Kconfig
+> +++ b/drivers/soc/rockchip/Kconfig
+> @@ -3,6 +3,16 @@ if ARCH_ROCKCHIP || COMPILE_TEST
+>  #
+>  # Rockchip Soc drivers
+>  #
+> +
+> +config ROCKCHIP_GRF
+> +       bool
+> +       default y
+> +       help
+> +         The General Register Files are a central component providing
+> +         special additional settings registers for a lot of soc-components.
+> +         In a lot of cases there also need to be default settings initialized
+> +         to make some of them conform to expectations of the kernel.
+> +
+>  config ROCKCHIP_PM_DOMAINS
+>          bool "Rockchip generic power domain"
+>          depends on PM
+> diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+> index 3d73d06..c851fa0 100644
+> --- a/drivers/soc/rockchip/Makefile
+> +++ b/drivers/soc/rockchip/Makefile
+> @@ -1,4 +1,5 @@
+>  #
+>  # Rockchip Soc drivers
+>  #
+> +obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
+>  obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
+> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+> new file mode 100644
+> index 0000000..0c85476a
+> --- /dev/null
+> +++ b/drivers/soc/rockchip/grf.c
+> @@ -0,0 +1,134 @@
+> +/*
+> + * Rockchip Generic Register Files setup
+> + *
+> + * Copyright (c) 2016 Heiko Stuebner <heiko@sntech.de>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + */
+> +
+> +#include <linux/err.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define HIWORD_UPDATE(val, mask, shift) \
+> +               ((val) << (shift) | (mask) << ((shift) + 16))
+> +
+> +struct rockchip_grf_value {
+> +       const char *desc;
+> +       u32 reg;
+> +       u32 val;
+> +};
+> +
+> +struct rockchip_grf_info {
+> +       const struct rockchip_grf_value *values;
+> +       int num_values;
+> +};
+> +
+> +#define RK3036_GRF_SOC_CON0            0x140
+> +
+> +static const struct rockchip_grf_value rk3036_defaults[] __initconst = {
+> +       /*
+> +        * Disable auto jtag/sdmmc switching that causes issues with the
+> +        * clock-framework and the mmc controllers making them unreliable.
+> +        */
+> +       { "jtag switching", RK3036_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 11) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3036_grf __initconst = {
+> +       .values = rk3036_defaults,
+> +       .num_values = ARRAY_SIZE(rk3036_defaults),
+> +};
+> +
+> +#define RK3288_GRF_SOC_CON0            0x244
+> +
+> +static const struct rockchip_grf_value rk3288_defaults[] __initconst = {
+> +       { "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3288_grf __initconst = {
+> +       .values = rk3288_defaults,
+> +       .num_values = ARRAY_SIZE(rk3288_defaults),
+> +};
+> +
+> +#define RK3368_GRF_SOC_CON15           0x43c
+> +
+> +static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
+> +       { "jtag switching", RK3368_GRF_SOC_CON15, HIWORD_UPDATE(0, 1, 13) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3368_grf __initconst = {
+> +       .values = rk3368_defaults,
+> +       .num_values = ARRAY_SIZE(rk3368_defaults),
+> +};
+> +
+> +#define RK3399_GRF_SOC_CON7            0xe21c
+> +
+> +static const struct rockchip_grf_value rk3399_defaults[] __initconst = {
+> +       { "jtag switching", RK3399_GRF_SOC_CON7, HIWORD_UPDATE(0, 1, 12) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3399_grf __initconst = {
+> +       .values = rk3399_defaults,
+> +       .num_values = ARRAY_SIZE(rk3399_defaults),
+> +};
+> +
+> +static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+> +       {
+> +               .compatible = "rockchip,rk3036-grf",
+> +               .data = (void *)&rk3036_grf,
+> +       }, {
+> +               .compatible = "rockchip,rk3288-grf",
+> +               .data = (void *)&rk3288_grf,
+> +       }, {
+> +               .compatible = "rockchip,rk3368-grf",
+> +               .data = (void *)&rk3368_grf,
+> +       }, {
+> +               .compatible = "rockchip,rk3399-grf",
+> +               .data = (void *)&rk3399_grf,
+> +       },
+> +       { /* sentinel */ },
+> +};
+
+I often come in after there's already been discussion on a topic, and
+don't always find all of it, so let me know if this has already been
+considered and not chosen for some reason:
+
+
+I get a little worried when you see these per-SoC tables build up in
+the kernel. It means there'll need to be additions here for a bunch of
+different SoCs.
+
+Would it be possible to describe this directly in the DT instead? If
+nothing else, something like
+
+function-regs = < array of regs >
+function-values = < array of values >
+function-names = < array of names >
+
+Not ideal either, especially if abused into a random poke table, but
+it won't require per-SoC changes to the kernel. If we keep the binding
+under close eyes we can hopefully avoid abuse.
+
+Given that Rockchip is still working on new SoCs, this list will just
+grow and doing it in-kernel will stop scaling at some point.
+
+
+-Olof
