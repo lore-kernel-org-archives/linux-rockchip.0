@@ -1,84 +1,64 @@
-From: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
-Subject: Re: [PATCH] iio: adc - Fix possible NULL derefrence.
-Date: Mon, 30 Jan 2017 13:13:22 +0100
-Message-ID: <a4f4f5fc-5a00-5a39-8c2a-999686196a45@denx.de>
-References: <CGME20170130044724epcas3p444b23d43fed213511e6994ecb4ed0ef3@epcas3p4.samsung.com>
- <1485751634-28963-1-git-send-email-shailendra.v@samsung.com>
-Mime-Version: 1.0
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v5 3/8] ARM: dts: rockchip: add timer entries to rk3188 SoC
+Date: Mon, 30 Jan 2017 16:13:07 +0300
+Message-ID: <046978C2-808F-4EC3-9429-063BC1A7CE7B@gmail.com>
+References: <1485260203-14216-1-git-send-email-al.kochet@gmail.com> <1485260203-14216-4-git-send-email-al.kochet@gmail.com> <20170130110428.GC2206@mai> <A5940770-B960-4409-8DA4-BE39EF9A6325@gmail.com> <20170130120444.GE2206@mai>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1485751634-28963-1-git-send-email-shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ksenija Stanojevic <ksenija.stanojevic-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, p.shailesh-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, ashish.kalra-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Shailendra Verma <shailendra.capricorn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170130120444.GE2206@mai>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/30/2017 05:47 AM, Shailendra Verma wrote:
-> of_match_device could return NULL, and so can cause a NULL
-> pointer dereference later.
-> 
-> Signed-off-by: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 
-a) this should be two patches
-b) same question as in case of the mmc patch -- The probe won't be
-called if OF match doesn't happen in the first place, so this check is
-redundant, no ?
+> 30 =D1=8F=D0=BD=D0=B2. 2017 =D0=B3., =D0=B2 15:04, Daniel Lezcano =
+<daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=
+=B0):
+>=20
+> There is no case when the rockchip timer is used for the clockevent.
+The is already timer entry for rk3228 in the DT. And it act as =
+clockevent. I guess it work as backup,
+but I cannot test it also. In order to not break DT compatibility I had =
+to provide one timer to be
+initialized as clockevent. And implemented implicit rule the driver =
+(first DT timer - clockevent,
+second DT timer - clocksource) already exists for other timers.
 
-> ---
->  drivers/iio/adc/mxs-lradc.c       |   14 ++++++++++----
->  drivers/iio/adc/rockchip_saradc.c |    4 ++++
->  2 files changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/iio/adc/mxs-lradc.c b/drivers/iio/adc/mxs-lradc.c
-> index b84d37c..4308a59 100644
-> --- a/drivers/iio/adc/mxs-lradc.c
-> +++ b/drivers/iio/adc/mxs-lradc.c
-> @@ -1570,10 +1570,8 @@ static int mxs_lradc_probe_touchscreen(struct mxs_lradc *lradc,
->  
->  static int mxs_lradc_probe(struct platform_device *pdev)
->  {
-> -	const struct of_device_id *of_id =
-> -		of_match_device(mxs_lradc_dt_ids, &pdev->dev);
-> -	const struct mxs_lradc_of_config *of_cfg =
-> -		&mxs_lradc_of_config[(enum mxs_lradc_id)of_id->data];
-> +	const struct of_device_id *of_id;
-> +	const struct mxs_lradc_of_config *of_cfg;
->  	struct device *dev = &pdev->dev;
->  	struct device_node *node = dev->of_node;
->  	struct mxs_lradc *lradc;
-> @@ -1583,6 +1581,14 @@ static int mxs_lradc_probe(struct platform_device *pdev)
->  	int i, s;
->  	u64 scale_uv;
->  
-> +	of_id = of_match_device(mxs_lradc_dt_ids, &pdev->dev);
-> +	if (!of_id) {
-> +		dev_err(&pdev->dev, "Error: No device match found\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	of_cfg = &mxs_lradc_of_config[(enum mxs_lradc_id)of_id->data];
-> +
->  	/* Allocate the IIO device. */
->  	iio = devm_iio_device_alloc(dev, sizeof(*lradc));
->  	if (!iio) {
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index 85d7012..08dfb43 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -224,6 +224,10 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
->  	info = iio_priv(indio_dev);
->  
->  	match = of_match_device(rockchip_saradc_match, &pdev->dev);
-> +	if (!match) {
-> +		dev_err(&pdev->dev, "Error: No device match found\n");
-> +		return -ENODEV;
-> +	}
->  	info->data = match->data;
->  
->  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> 
+> If I'm not wrong, you can check /proc/interrupts and see there is no =
+interrupt
+> on the rockchip timer.
 
+Yes, you right here. I=E2=80=99ve temporary disable smp_twd to test =
+rockchip timer interrupts.
+There is no interrupt on the rockchip timer during normal work.
 
--- 
-Best regards,
-Marek Vasut
+> - when the CPU enters a deep idle state. But such state does not exist =
+on rk3188
+ARM chip/revision specific?
+
+> - when the system goes to suspend. But the timers are stopped in any =
+case and
+>   CPU0 is always on.
+There is timer for rk3228 in the DT. I guess there are situations where =
+it can be used.
+May be the situations are also acceptable for rk3188? May be something =
+like suspend to RAM or
+suspend to HDD? I am not expert in that questions. I can do some tests =
+if you give hint/link.
+
+So, as I understood you suggest to leave only one timer what can be used =
+as clocksource
+only. I can implement that, but there should be DT rule what allow to =
+setup timer
+as clocksource only. I cannot do more without timer framework support.
+Looks, like I have to wait your patch to implement that.
+
+Alexander.
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
