@@ -1,72 +1,119 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 15/24] drm/rockchip: dw-mipi-dsi: configure PHY before
- enabling
-Date: Mon, 30 Jan 2017 15:28:08 -0500
-Message-ID: <20170130202808.GR20076@art_vandelay>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-16-john@metanate.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: improve the training polling code
+Date: Mon, 30 Jan 2017 14:53:46 -0600
+Message-ID: <20170130205346.GU20550@bhelgaas-glaptop.roam.corp.google.com>
+References: <1484728155-72502-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170129132444.25251-16-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1484728155-72502-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU3VuLCBKYW4gMjksIDIwMTcgYXQgMDE6MjQ6MzVQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IFRoZSBiaWFzLCBiYW5kZ2FwIGFuZCBQTEwgc2hvdWxkIGFsbCBiZSBjb25maWd1cmVk
-IGJlZm9yZSB3ZSBlbmFibGUKPiB0aGVtLgo+IAoKRG8geW91IGtub3cgd2h5IHRoZSB0ZXN0IGNv
-ZGVzIGFyZSBoYXJkLWNvZGVkIG1hZ2ljPyBJdCdkIGJlIG5pY2UgdG8gbWFrZSBzb21lCnNlbnNl
-IG9mIHRoZW0gaW4gYSBmdXR1cmUgcGF0Y2guCgpSZXZpZXdlZC1ieTogU2VhbiBQYXVsIDxzZWFu
-cGF1bEBjaHJvbWl1bS5vcmc+Cgo+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBt
-ZXRhbmF0ZS5jb20+Cj4gLS0tCj4gdjM6Cj4gLSBTcXVhc2ggdG9nZXRoZXIgdHdvIHBhdGNoZXMg
-dGhhdCBib3RoIGFmZmVjdCBpbml0aWFsaXphdGlvbiBvcmRlciBvZgo+ICAgdGhlIFBIWQo+IFVu
-Y2hhbmdlZCBpbiB2Mgo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-YyB8IDExICsrKysrKy0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDUg
-ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBp
-bmRleCA1YjMwNjhlOWU4ZGIuLmNmZTdlNGJhMzA1YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jCj4gQEAgLTQxMywxMiArNDEzLDE3IEBAIHN0YXRpYyBpbnQgZHdf
-bWlwaV9kc2lfcGh5X2luaXQoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gIAo+ICAJZHdfbWlw
-aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg0NCwgSFNGUkVRUkFOR0VfU0VMKHRlc3RkaW4pKTsKPiAg
-Cj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9ESVZfRU4gfCBQ
-TExfSU5QVVRfRElWX0VOKTsKPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTcsIElO
-UFVUX0RJVklERVIoZHNpLT5pbnB1dF9kaXYpKTsKPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShk
-c2ksIDB4MTgsIExPT1BfRElWX0xPV19TRUwoZHNpLT5mZWVkYmFja19kaXYpIHwKPiAgCQkJCQkg
-TE9XX1BST0dSQU1fRU4pOwo+ICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxOCwgTE9P
-UF9ESVZfSElHSF9TRUwoZHNpLT5mZWVkYmFja19kaXYpIHwKPiAgCQkJCQkgSElHSF9QUk9HUkFN
-X0VOKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9F
-TiB8IFBMTF9JTlBVVF9ESVZfRU4pOwo+ICsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ks
-IDB4MjIsIExPV19QUk9HUkFNX0VOIHwKPiArCQkJCQkgQklBU0VYVFJfU0VMKEJJQVNFWFRSXzEy
-N183KSk7Cj4gKwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDIyLCBISUdIX1BST0dSQU1f
-RU4gfAo+ICsJCQkJCSBCQU5ER0FQX1NFTChCQU5ER0FQXzk2XzEwKSk7Cj4gIAo+ICAJZHdfbWlw
-aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgyMCwgUE9XRVJfQ09OVFJPTCB8IElOVEVSTkFMX1JFR19D
-VVJSRU5UIHwKPiAgCQkJCQkgQklBU19CTE9DS19PTiB8IEJBTkRHQVBfT04pOwo+IEBAIC00Mjks
-MTAgKzQzNCw2IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcGh5X2luaXQoc3RydWN0IGR3X21p
-cGlfZHNpICpkc2kpCj4gIAkJCQkJIFNFVFJEX01BWCB8IFBPV0VSX01BTkFHRSB8Cj4gIAkJCQkJ
-IFRFUl9SRVNJU1RPUlNfT04pOwo+ICAKPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4
-MjIsIExPV19QUk9HUkFNX0VOIHwKPiAtCQkJCQkgQklBU0VYVFJfU0VMKEJJQVNFWFRSXzEyN183
-KSk7Cj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDIyLCBISUdIX1BST0dSQU1fRU4g
-fAo+IC0JCQkJCSBCQU5ER0FQX1NFTChCQU5ER0FQXzk2XzEwKSk7Cj4gIAo+ICAJZHdfbWlwaV9k
-c2lfcGh5X3dyaXRlKGRzaSwgMHg3MCwgVExQX1BST0dSQU1fRU4gfCAweGYpOwo+ICAJZHdfbWlw
-aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MSwgVEhTX1BSRV9QUk9HUkFNX0VOIHwgMHg1NSk7Cj4g
-LS0gCj4gMi4xMS4wLjE5Ny5nYjU1NmRlNS5kaXJ0eQo+IAo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUg
-RW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Wed, Jan 18, 2017 at 04:29:15PM +0800, Shawn Lin wrote:
+> Use the readl_poll_timeout instead of open coding them.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Applied to pci/host-rockship for v4.11, thanks!
+
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 52 +++++++++++++---------------------------
+>  1 file changed, 16 insertions(+), 36 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 0d6e8ee..17374a9 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -188,8 +188,11 @@
+>  	  (PCIE_ECAM_BUS(bus) | PCIE_ECAM_DEV(dev) | \
+>  	   PCIE_ECAM_FUNC(func) | PCIE_ECAM_REG(reg))
+>  #define PCIE_LINK_IS_L2(x) \
+> -		(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == \
+> -		 PCIE_CLIENT_DEBUG_LTSSM_L2)
+> +	(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == PCIE_CLIENT_DEBUG_LTSSM_L2)
+> +#define PCIE_LINK_UP(x) \
+> +	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
+> +#define PCIE_LINK_IS_GEN2(x) \
+> +	(((x) & PCIE_CORE_PL_CONF_SPEED_MASK) == PCIE_CORE_PL_CONF_SPEED_5G)
+>  
+>  #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+>  #define RC_REGION_0_ADDR_TRANS_L		0x00000000
+> @@ -463,7 +466,6 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	struct device *dev = rockchip->dev;
+>  	int err;
+>  	u32 status;
+> -	unsigned long timeout;
+>  
+>  	gpiod_set_value(rockchip->ep_gpio, 0);
+>  
+> @@ -604,23 +606,12 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	gpiod_set_value(rockchip->ep_gpio, 1);
+>  
+>  	/* 500ms timeout value should be enough for Gen1/2 training */
+> -	timeout = jiffies + msecs_to_jiffies(500);
+> -
+> -	for (;;) {
+> -		status = rockchip_pcie_read(rockchip,
+> -					    PCIE_CLIENT_BASIC_STATUS1);
+> -		if ((status & PCIE_CLIENT_LINK_STATUS_MASK) ==
+> -		    PCIE_CLIENT_LINK_STATUS_UP) {
+> -			dev_dbg(dev, "PCIe link training gen1 pass!\n");
+> -			break;
+> -		}
+> -
+> -		if (time_after(jiffies, timeout)) {
+> -			dev_err(dev, "PCIe link training gen1 timeout!\n");
+> -			return -ETIMEDOUT;
+> -		}
+> -
+> -		msleep(20);
+> +	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_BASIC_STATUS1,
+> +				 status, PCIE_LINK_UP(status), 20,
+> +				 500 * USEC_PER_MSEC);
+> +	if (err) {
+> +		dev_err(dev, "PCIe link training gen1 timeout!\n");
+> +		return -ETIMEDOUT;
+>  	}
+>  
+>  	if (rockchip->link_gen == 2) {
+> @@ -632,22 +623,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  		status |= PCI_EXP_LNKCTL_RL;
+>  		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+>  
+> -		timeout = jiffies + msecs_to_jiffies(500);
+> -		for (;;) {
+> -			status = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
+> -			if ((status & PCIE_CORE_PL_CONF_SPEED_MASK) ==
+> -			    PCIE_CORE_PL_CONF_SPEED_5G) {
+> -				dev_dbg(dev, "PCIe link training gen2 pass!\n");
+> -				break;
+> -			}
+> -
+> -			if (time_after(jiffies, timeout)) {
+> -				dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+> -				break;
+> -			}
+> -
+> -			msleep(20);
+> -		}
+> +		err = readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
+> +					 status, PCIE_LINK_IS_GEN2(status), 20,
+> +					 500 * USEC_PER_MSEC);
+> +		if (err)
+> +			dev_dbg(dev, "PCIe link training gen2 timeout, fall back to gen1!\n");
+>  	}
+>  
+>  	/* Check the final link width from negotiated lane counter from MGMT */
+> -- 
+> 1.9.1
+> 
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-pci" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
