@@ -1,61 +1,86 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 5/8] clocksource/drivers/rockchip_timer: split
- bc_timer into rk_timer and rk_clock_event_device
-Date: Mon, 30 Jan 2017 15:20:04 +0100
-Message-ID: <20170130142004.GI2206@mai>
-References: <1485260203-14216-1-git-send-email-al.kochet@gmail.com>
- <1485260203-14216-6-git-send-email-al.kochet@gmail.com>
- <20170130131258.GF2206@mai>
- <0E7077EE-0D5A-4653-99EF-E8F2E8FD2FB0@gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 24/24] drm/rockchip: dw-mipi-dsi: support read commands
+Date: Mon, 30 Jan 2017 10:26:11 -0500
+Message-ID: <20170130152611.GA20076@art_vandelay>
+References: <20170129132444.25251-1-john@metanate.com>
+ <20170129132444.25251-25-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <0E7077EE-0D5A-4653-99EF-E8F2E8FD2FB0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20170129132444.25251-25-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jan 30, 2017 at 04:55:33PM +0300, Alexander Kochetkov wrote:
-> 
-> > 30 янв. 2017 г., в 16:12, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> написал(а):
-> > 
-> > I don't get the point of these changes. The patch does not explain why they are
-> > needed.
-> 
-> I’d like to extract timer API from current implementation.
-> And to make code more readable I’d like to introduce 'struct rk_timer’ what can be
-> reused with current implementation and with my patch (8/8). And in order keep patches
-> simple and readable I split that into three patches: 5/8, 6/8, 7/8.
-> 
-> Current implementation named rockchip timer as ‘struct bc_timer’ (broadcast timer).
-> I renamed it to more suitable to it role (may be bad choice).
-> 
-> Yes, the patch itself looks strange. You are right.
-> 
-> What do you think about that solution:
-> - in the patch 6/8 i will Introduce 'struct rk_timer’ and 'struct rk_time_clkevt’ (renamed ‘struct bc_timer’).
-
-I prefer rk_clksrc and rk_clkevt.
-
-> - rk_timer_init() changes from 5/8 I will merge with 8/8
-> - 8/8 introduce 'struct rk_time_clksrc' 
-> - 5/8 drop
-
-Ok, let's see what that gives.
-
-  -- Daniel
-
--- 
-
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gU3VuLCBKYW4gMjksIDIwMTcgYXQgMDE6MjQ6NDRQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IEkgaGF2ZW4ndCBmb3VuZCBhbnkgbWV0aG9kIGZvciBnZXR0aW5nIHRoZSBsZW5ndGgg
+b2YgYSByZXNwb25zZSwgc28gdGhpcwo+IGp1c3QgdXNlcyB0aGUgcmVxdWVzdGVkIHJ4X2xlbgo+
+IAo+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4gLS0t
+Cj4gdjM6Cj4gLSBGaXggY2hlY2twYXRjaCB3YXJuaW5ncwo+IFVuY2hhbmdlZCBpbiB2Mgo+IAo+
+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDU2ICsrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDU2IGluc2VydGlvbnMo
+KykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGNmM2Nh
+NmIwY2JkYi4uY2M1OGFkYTc1NDI1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1p
+cGktZHNpLmMKPiBAQCAtNjc4LDYgKzY3OCw1NiBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rj
+c19sb25nX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICAJcmV0dXJuIGR3X21pcGlf
+ZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgaGRyX3ZhbCk7Cj4gIH0KPiAgCj4gK3N0YXRpYyBp
+bnQgZHdfbWlwaV9kc2lfZGNzX3JlYWQoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gKwkJCQlj
+b25zdCBzdHJ1Y3QgbWlwaV9kc2lfbXNnICptc2cpCj4gK3sKPiArCWNvbnN0IHU4ICp0eF9idWYg
+PSBtc2ctPnR4X2J1ZjsKPiArCXU4ICpyeF9idWYgPSBtc2ctPnJ4X2J1ZjsKPiArCXNpemVfdCBp
+Owo+ICsJaW50IHJldCwgdmFsOwo+ICsKPiArCWRzaV93cml0ZShkc2ksIERTSV9QQ0tIRExfQ0ZH
+LCBFTl9DUkNfUlggfCBFTl9FQ0NfUlggfCBFTl9CVEEpOwo+ICsJZHNpX3dyaXRlKGRzaSwgRFNJ
+X0dFTl9IRFIsCj4gKwkJICBHRU5fSERBVEEodHhfYnVmWzBdKSB8IEdFTl9IVFlQRShtc2ctPnR5
+cGUpKTsKPiArCj4gKwlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX0NN
+RF9QS1RfU1RBVFVTLAo+ICsJCQkJIHZhbCwgISh2YWwgJiBHRU5fUkRfQ01EX0JVU1kpLCAxMDAw
+LAo+ICsJCQkJIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+ICsJaWYgKHJldCA8IDApIHsK
+PiArCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHJlYWQgY29tbWFuZCByZXNwb25zZVxu
+Iik7Cj4gKwkJcmV0dXJuIHJldDsKPiArCX0KPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgbXNnLT5y
+eF9sZW47KSB7Cj4gKwkJdTMyIHBsZCA9IGRzaV9yZWFkKGRzaSwgRFNJX0dFTl9QTERfREFUQSk7
+Cj4gKwo+ICsJCXdoaWxlIChpIDwgbXNnLT5yeF9sZW4pIHsKPiArCQkJcnhfYnVmW2ldID0gcGxk
+ICYgMHhmZjsKPiArCQkJcGxkID4+PSA4Owo+ICsJCQlpKys7Cj4gKwkJfQo+ICsJfQoKQUZBSUNU
+LCB0aGUgb3V0ZXIgZm9yIGxvb3AganVzdCBpbml0aWFsaXplcyBpIGFuZCBlbnN1cmVzIG1zZy0+
+cnhfbGVuIGlzCm5vbi16ZXJvPyAKCkkgdGhpbmsgdGhlIGZvbGxvd2luZyB3b3VsZCBiZSBlYXNp
+ZXIgdG8gcmVhZCAoYW5kIHNhZmUgYWdhaW5zdCB0aGUgY2FzZSB3aGVyZQptc2ctPnJ4X2xlbiA+
+IHNpemVvZihwbGQpIChldmVuIHRob3VnaCB0aGlzIHNob3VsZG4ndCBoYXBwZW4gYWNjb3JkaW5n
+IHRvIERDUwpzcGVjKSkuCgppZiAobXNnLT5yeF9sZW4gPiAwKSB7CiAgICAgICAgdTMyIHBsZCA9
+IGRzaV9yZWFkKGRzaSwgRFNJX0dFTl9QTERfREFUQSk7CiAgICAgICAgbWVtY3B5KHJ4X2J1Ziwg
+JnBsZCwgTUlOKG1zZy0+cnhfbGVuLCBzaXplb2YocGxkKSk7Cn0KCgo+ICsKPiArCXJldHVybiBt
+c2ctPnJ4X2xlbjsKPiArfQo+ICsKPiArc3RhdGljIGludCBkd19taXBpX2RzaV9zZXRfbWF4X3Jl
+dHVybl9wYWNrZXRfc2l6ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiArCQkJCQkJICBzaXpl
+X3QgbGVuKQo+ICt7Cj4gKwl1OCB2YWxbXSA9IHsgbGVuICYgMHhmZiwgKGxlbiA+PiA4KSAmIDB4
+ZmYgfTsKPiArCXN0cnVjdCBtaXBpX2RzaV9tc2cgbXNnID0gewo+ICsJCS5jaGFubmVsID0gZHNp
+LT5jaGFubmVsLAo+ICsJCS50eXBlID0gTUlQSV9EU0lfU0VUX01BWElNVU1fUkVUVVJOX1BBQ0tF
+VF9TSVpFLAo+ICsJCS50eF9idWYgPSB2YWwsCj4gKwkJLnR4X2xlbiA9IDIsCj4gKwl9Owo+ICsK
+PiArCWlmIChsZW4gPiAweGZmZmYpCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJcmV0dXJu
+IGR3X21pcGlfZHNpX2Rjc19zaG9ydF93cml0ZShkc2ksICZtc2cpOwo+ICt9Cj4gKwo+ICBzdGF0
+aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0
+ICpob3N0LAo+ICAJCQkJCSBjb25zdCBzdHJ1Y3QgbWlwaV9kc2lfbXNnICptc2cpCj4gIHsKPiBA
+QCAtNjk1LDYgKzc0NSwxMiBAQCBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5z
+ZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ICAJY2FzZSBNSVBJX0RTSV9EQ1NfTE9O
+R19XUklURToKPiAgCQlyZXQgPSBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShkc2ksIG1zZyk7
+Cj4gIAkJYnJlYWs7Cj4gKwljYXNlIE1JUElfRFNJX0RDU19SRUFEOgo+ICsJCXJldCA9IGR3X21p
+cGlfZHNpX3NldF9tYXhfcmV0dXJuX3BhY2tldF9zaXplKGRzaSwgbXNnLT5yeF9sZW4pOwo+ICsJ
+CWlmIChyZXQgPCAwKQo+ICsJCQlyZXR1cm4gcmV0Owo+ICsJCXJldCA9IGR3X21pcGlfZHNpX2Rj
+c19yZWFkKGRzaSwgbXNnKTsKPiArCQlicmVhazsKPiAgCWRlZmF1bHQ6Cj4gIAkJZGV2X2Vycihk
+c2ktPmRldiwgInVuc3VwcG9ydGVkIG1lc3NhZ2UgdHlwZSAweCUwMnhcbiIsCj4gIAkJCW1zZy0+
+dHlwZSk7Cj4gLS0gCj4gMi4xMS4wLjE5Ny5nYjU1NmRlNS5kaXJ0eQo+IAo+IF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcg
+bGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gClNlYW4gUGF1bCwg
+U29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
