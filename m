@@ -1,63 +1,90 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: mark PM functions as __maybe_unused
-Date: Mon, 30 Jan 2017 14:54:05 -0600
-Message-ID: <20170130205405.GV20550@bhelgaas-glaptop.roam.corp.google.com>
-References: <20170120162450.3690225-1-arnd@arndb.de>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 16/24] drm/rockchip: dw-mipi-dsi: properly configure
+ PHY timing
+Date: Mon, 30 Jan 2017 16:57:36 -0500
+Message-ID: <20170130215736.GT20076@art_vandelay>
+References: <20170129132444.25251-1-john@metanate.com>
+ <20170129132444.25251-17-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20170120162450.3690225-1-arnd@arndb.de>
-Sender: linux-pci-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20170129132444.25251-17-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 20, 2017 at 05:24:30PM +0100, Arnd Bergmann wrote:
-> When CONFIG_PM_SLEEP is disabled, we get harmless build warnings:
-> 
-> host/pcie-rockchip.c:1267:12: error: 'rockchip_pcie_resume_noirq' defined but not used [-Werror=unused-function]
-> host/pcie-rockchip.c:1240:12: error: 'rockchip_pcie_suspend_noirq' defined but not used [-Werror=unused-function]
-> 
-> Marking both functions as __maybe_unused avoids the warning without
-> the need for #ifdef around them.
-> 
-> Fixes: 013dd3d5e183 ("PCI: rockchip: Add system PM support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Applied with Shawn's ack to pci/host-rockchip for v4.11, thanks!
-
-> ---
->  drivers/pci/host/pcie-rockchip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 0d6e8ee5b017..b975116d2b03 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1237,7 +1237,7 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
->  	return 0;
->  }
->  
-> -static int rockchip_pcie_suspend_noirq(struct device *dev)
-> +static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
->  {
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  	int ret;
-> @@ -1264,7 +1264,7 @@ static int rockchip_pcie_suspend_noirq(struct device *dev)
->  	return ret;
->  }
->  
-> -static int rockchip_pcie_resume_noirq(struct device *dev)
-> +static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  {
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  	int err;
-> -- 
-> 2.9.0
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+T24gU3VuLCBKYW4gMjksIDIwMTcgYXQgMDE6MjQ6MzZQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IFRoZXNlIHZhbHVlcyBhcmUgc3BlY2lmaWVkIGFzIGNvbnN0YW50IHRpbWUgcGVyaW9k
+cyBidXQgdGhlIFBIWQo+IGNvbmZpZ3VyYXRpb24gaXMgaW4gdGVybXMgb2YgdGhlIGN1cnJlbnQg
+bGFuZSBieXRlIGNsb2NrIHNvIHVzaW5nCj4gY29uc3RhbnQgdmFsdWVzIGd1YXJhbnRlZXMgdGhh
+dCB0aGUgdGltaW5ncyB3aWxsIGJlIG91dHNpZGUgdGhlCj4gc3BlY2lmaWNhdGlvbiB3aXRoIHNv
+bWUgZGlzcGxheSBjb25maWd1cmF0aW9ucy4KPiAKPiBEZXJpdmUgdGhlIG5lY2Vzc2FyeSBjb25m
+aWd1cmF0aW9uIGZyb20gdGhlIGJ5dGUgY2xvY2sgaW4gb3JkZXIgdG8KPiBlbnN1cmUgdGhhdCB0
+aGUgUEhZIGNvbmZpZ3VyYXRpb24gaXMgY29ycmVjdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2hu
+IEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+IC0tLQo+IHYzOgo+IC0gV3JhcCBzb21lIGxv
+bmcgbGluZXMKPiBVbmNoYW5nZWQgaW4gdjIKPiAKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2R3LW1pcGktZHNpLmMgfCAzOSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tCj4g
+IDEgZmlsZSBjaGFuZ2VkLCAzNSBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+IAo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggY2ZlN2U0YmEzMDVjLi44
+NWVkZjZkZDJiYWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1p
+cGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+
+IEBAIC0zODMsNiArMzgzLDI2IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3BoeV93cml0ZShz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTggdGVzdF9jb2RlLAo+ICAJZHNpX3dyaXRlKGRzaSwg
+RFNJX1BIWV9UU1RfQ1RSTDAsIFBIWV9URVNUQ0xLIHwgUEhZX1VOVEVTVENMUik7Cj4gIH0KPiAg
+Cj4gKy8qKgo+ICsgKiBuczJiYyAtIE5hbm9zZWNvbmRzIHRvIGJ5dGUgY2xvY2sgY3ljbGVzCj4g
+KyAqLwo+ICtzdGF0aWMgaW5saW5lIHVuc2lnbmVkIGludCBuczJiYyhzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSwgaW50IG5zKQo+ICt7Cj4gKwl1bnNpZ25lZCBsb25nIGJ5dGVfY2xrX2toeiA9IGRz
+aS0+bGFuZV9tYnBzICogTVNFQ19QRVJfU0VDIC8gODsKCldoeSBtdWx0aXBseSBieSAxMDAwIChN
+U0VDX1BFUl9TRUMpIG9ubHkgdG8gaW1tZWRpYXRlbHkgZGl2aWRlIGJ5IDEwMDA/Cgo+ICsKPiAr
+CXJldHVybiAobnMgKiAoYnl0ZV9jbGtfa2h6IC8gMTAwMCkgKyA5OTkpIC8gMTAwMDsKCkNhbiB5
+b3UgcmVwbGFjZSB0aGlzIHdob2xlIGZ1bmN0aW9uIHdpdGg6CgpyZXR1cm4gRElWX1JPVU5EX1VQ
+KG5zICogZHNpLT5sYW5lX21icHMgLyA4LCAxMDAwKTsKCj4gK30KPiArCj4gKy8qKgo+ICsgKiBu
+czJ1aSAtIE5hbm9zZWNvbmRzIHRvIFVJIHRpbWUgcGVyaW9kcwo+ICsgKi8KPiArc3RhdGljIGlu
+bGluZSB1bnNpZ25lZCBpbnQgbnMydWkoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksIGludCBucykK
+PiArewo+ICsJdW5zaWduZWQgbG9uZyBieXRlX2Nsa19raHogPSBkc2ktPmxhbmVfbWJwcyAqIE1T
+RUNfUEVSX1NFQzsKPiArCj4gKwlyZXR1cm4gKG5zICogKGJ5dGVfY2xrX2toeiAvIDEwMDApICsg
+OTk5KSAvIDEwMDA7CgpTYW1lIHJlbWFya3MgaGVyZS4KClNlYW4KCgo+ICt9Cj4gKwo+ICBzdGF0
+aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICB7
+Cj4gIAlpbnQgcmV0LCB0ZXN0ZGluLCB2Y28sIHZhbDsKPiBAQCAtNDM0LDEwICs0NTQsMjEgQEAg
+c3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkK
+PiAgCQkJCQkgU0VUUkRfTUFYIHwgUE9XRVJfTUFOQUdFIHwKPiAgCQkJCQkgVEVSX1JFU0lTVE9S
+U19PTik7Cj4gIAo+IC0KPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NzAsIFRMUF9Q
+Uk9HUkFNX0VOIHwgMHhmKTsKPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NzEsIFRI
+U19QUkVfUFJPR1JBTV9FTiB8IDB4NTUpOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwg
+MHg3MiwgVEhTX1pFUk9fUFJPR1JBTV9FTiB8IDB4YSk7Cj4gKwlkd19taXBpX2RzaV9waHlfd3Jp
+dGUoZHNpLCAweDYwLCBUTFBfUFJPR1JBTV9FTiB8IG5zMmJjKGRzaSwgNTAwKSk7Cj4gKwlkd19t
+aXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDYxLCBUSFNfUFJFX1BST0dSQU1fRU4gfCBuczJ1aShk
+c2ksIDQwKSk7Cj4gKwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDYyLCBUSFNfWkVST19Q
+Uk9HUkFNX0VOIHwgbnMyYmMoZHNpLCAzMDApKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShk
+c2ksIDB4NjMsIFRIU19QUkVfUFJPR1JBTV9FTiB8IG5zMnVpKGRzaSwgMTAwKSk7Cj4gKwlkd19t
+aXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDY0LCBCSVQoNSkgfCBuczJiYyhkc2ksIDEwMCkpOwo+
+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg2NSwgQklUKDUpIHwgKG5zMmJjKGRzaSwg
+NjApICsgNykpOwo+ICsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NzAsIFRMUF9Q
+Uk9HUkFNX0VOIHwgbnMyYmMoZHNpLCA1MDApKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShk
+c2ksIDB4NzEsCj4gKwkJCSAgICAgIFRIU19QUkVfUFJPR1JBTV9FTiB8IChuczJ1aShkc2ksIDUw
+KSArIDUpKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NzIsCj4gKwkJCSAgICAg
+IFRIU19aRVJPX1BST0dSQU1fRU4gfCAobnMyYmMoZHNpLCAxNDApICsgMikpOwo+ICsJZHdfbWlw
+aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MywKPiArCQkJICAgICAgVEhTX1BSRV9QUk9HUkFNX0VO
+IHwgKG5zMnVpKGRzaSwgNjApICsgOCkpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwg
+MHg3NCwgQklUKDUpIHwgbnMyYmMoZHNpLCAxMDApKTsKPiAgCj4gIAlkc2lfd3JpdGUoZHNpLCBE
+U0lfUEhZX1JTVFosIFBIWV9FTkZPUkNFUExMIHwgUEhZX0VOQUJMRUNMSyB8Cj4gIAkJCQkgICAg
+IFBIWV9VTlJTVFogfCBQSFlfVU5TSFVURE9XTlopOwo+IC0tIAo+IDIuMTEuMC4xOTcuZ2I1NTZk
+ZTUuZGlydHkKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJv
+bWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
