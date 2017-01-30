@@ -1,84 +1,84 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v5 3/8] ARM: dts: rockchip: add timer entries to rk3188
- SoC
-Date: Mon, 30 Jan 2017 13:04:44 +0100
-Message-ID: <20170130120444.GE2206@mai>
-References: <1485260203-14216-1-git-send-email-al.kochet@gmail.com>
- <1485260203-14216-4-git-send-email-al.kochet@gmail.com>
- <20170130110428.GC2206@mai>
- <A5940770-B960-4409-8DA4-BE39EF9A6325@gmail.com>
+From: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
+Subject: Re: [PATCH] iio: adc - Fix possible NULL derefrence.
+Date: Mon, 30 Jan 2017 13:13:22 +0100
+Message-ID: <a4f4f5fc-5a00-5a39-8c2a-999686196a45@denx.de>
+References: <CGME20170130044724epcas3p444b23d43fed213511e6994ecb4ed0ef3@epcas3p4.samsung.com>
+ <1485751634-28963-1-git-send-email-shailendra.v@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <A5940770-B960-4409-8DA4-BE39EF9A6325@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1485751634-28963-1-git-send-email-shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ksenija Stanojevic <ksenija.stanojevic-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, p.shailesh-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, ashish.kalra-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Shailendra Verma <shailendra.capricorn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jan 30, 2017 at 02:20:13PM +0300, Alexander Kochetkov wrote:
+On 01/30/2017 05:47 AM, Shailendra Verma wrote:
+> of_match_device could return NULL, and so can cause a NULL
+> pointer dereference later.
 > 
-> > 30 янв. 2017 г., в 14:04, Daniel Lezcano <daniel.lezcano@linaro.org> написал(а):
-> > 
-> > t is up to the RTC to wake up the system from suspend and there is no
-> > idle state stopping the local timers on these SoCs. So, the rockchip timers
-> > won't be ever used on the rk3188, right ?
+> Signed-off-by: Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+
+a) this should be two patches
+b) same question as in case of the mmc patch -- The probe won't be
+called if OF match doesn't happen in the first place, so this check is
+redundant, no ?
+
+> ---
+>  drivers/iio/adc/mxs-lradc.c       |   14 ++++++++++----
+>  drivers/iio/adc/rockchip_saradc.c |    4 ++++
+>  2 files changed, 14 insertions(+), 4 deletions(-)
 > 
-> No rockchip timers where used on rk3188 before.
+> diff --git a/drivers/iio/adc/mxs-lradc.c b/drivers/iio/adc/mxs-lradc.c
+> index b84d37c..4308a59 100644
+> --- a/drivers/iio/adc/mxs-lradc.c
+> +++ b/drivers/iio/adc/mxs-lradc.c
+> @@ -1570,10 +1570,8 @@ static int mxs_lradc_probe_touchscreen(struct mxs_lradc *lradc,
+>  
+>  static int mxs_lradc_probe(struct platform_device *pdev)
+>  {
+> -	const struct of_device_id *of_id =
+> -		of_match_device(mxs_lradc_dt_ids, &pdev->dev);
+> -	const struct mxs_lradc_of_config *of_cfg =
+> -		&mxs_lradc_of_config[(enum mxs_lradc_id)of_id->data];
+> +	const struct of_device_id *of_id;
+> +	const struct mxs_lradc_of_config *of_cfg;
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *node = dev->of_node;
+>  	struct mxs_lradc *lradc;
+> @@ -1583,6 +1581,14 @@ static int mxs_lradc_probe(struct platform_device *pdev)
+>  	int i, s;
+>  	u64 scale_uv;
+>  
+> +	of_id = of_match_device(mxs_lradc_dt_ids, &pdev->dev);
+> +	if (!of_id) {
+> +		dev_err(&pdev->dev, "Error: No device match found\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	of_cfg = &mxs_lradc_of_config[(enum mxs_lradc_id)of_id->data];
+> +
+>  	/* Allocate the IIO device. */
+>  	iio = devm_iio_device_alloc(dev, sizeof(*lradc));
+>  	if (!iio) {
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index 85d7012..08dfb43 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -224,6 +224,10 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  	info = iio_priv(indio_dev);
+>  
+>  	match = of_match_device(rockchip_saradc_match, &pdev->dev);
+> +	if (!match) {
+> +		dev_err(&pdev->dev, "Error: No device match found\n");
+> +		return -ENODEV;
+> +	}
+>  	info->data = match->data;
+>  
+>  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 > 
-> Actually, I don’t know how to test backup timer functionality. rk3228 backup timer is from alive
-> subsystem. It is unclear from TRM what this mean, 
 
-It means it is on an always-on power domain, so it will be always powered even
-in suspend mode.
-
-There are different clockevents on the SoC, the local timers (smp_twd) and the
-rockchip timer. They are not used together, the local timers will be used as
-default because they are per cpu. So the rockchip timer is not used in this case.
-
-Then there is the situation when the cpu is powered down, the local timers,
-which belongs to the same power domain, will be powered down also. If there is a
-timer set for this CPU, an alternate, backup timer must be used, and that is the
-rockchip timer. However this situation happens:
-
- - when a CPU is offlined. But the timers are moved to another CPU.
- - when the CPU enters a deep idle state. But such state does not exist on rk3188
- - when the system goes to suspend. But the timers are stopped in any case and
-   CPU0 is always on.
-
-There is no case when the rockchip timer is used for the clockevent.
-
-If I'm not wrong, you can check /proc/interrupts and see there is no interrupt
-on the rockchip timer.
-
-So the board is typically a case where we want to use a clocksource from one IP
-and the clockevents from another IP (just looping back with the clkevt macro
-patch I answered a few minutes ago).
-
-That does not call in question this patch as it describes the hardware.
-
-> I assume that somehow related to CLK
-> during suspend. So I pick the timer from alive subsystem on rk3188 also.
-> DT timer configuration where tested: interrupts and IO works.
-> 
-> > This patch should go after the rockchip timer patches
-> 
-> 
-> Ok, let me know, when I should send v6. Or may be you change the order of the patches
-> during merge.
-
-I have to review the last 3 patches of the series. I will let you know for a V6.
-
-Thanks.
-
-  -- Daniel
 
 -- 
-
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Best regards,
+Marek Vasut
