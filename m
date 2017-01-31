@@ -1,88 +1,82 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 10/24] drm/rockchip: dw-mipi-dsi: don't assume buffer
- is aligned
-Date: Tue, 31 Jan 2017 09:53:13 -0500
-Message-ID: <20170131145313.GY20076@art_vandelay>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-11-john@metanate.com>
- <20170130200811.GK20076@art_vandelay>
- <20170131115618.633398fc.john@metanate.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v7 0/4] Add support for es8388 and hdmi audio
+	on the rock2
+Date: Tue, 31 Jan 2017 15:55:22 +0100
+Message-ID: <20170131145526.26808-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170131115618.633398fc.john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKYW4gMzEsIDIwMTcgYXQgMTE6NTY6MThBTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IE9uIE1vbiwgMzAgSmFuIDIwMTcgMTU6MDg6MTEgLTA1MDAsIFNlYW4gUGF1bCB3cm90
-ZToKPiAKPiA+IE9uIFN1biwgSmFuIDI5LCAyMDE3IGF0IDAxOjI0OjMwUE0gKzAwMDAsIEpvaG4g
-S2VlcGluZyB3cm90ZToKPiA+ID4gQnkgZGVyZWZlcmVuY2luZyB0aGUgTUlQSSBjb21tYW5kIGJ1
-ZmZlciBhcyBhIHUzMiogd2UgcmVseSBvbiBpdCBiZWluZwo+ID4gPiBjb3JyZWN0bHkgYWxpZ25l
-ZCBvbiBBUk0sIGJ1dCB0aGlzIG1heSBub3QgYmUgdGhlIGNhc2UuICBDb3B5IGl0IGludG8gYQo+
-ID4gPiBzdGFjayB2YXJpYWJsZSB0aGF0IHdpbGwgYmUgY29ycmVjdGx5IGFsaWduZWQuCj4gPiA+
-IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+
-ID4gPiBSZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4g
-LS0tCj4gPiA+IHYzOgo+ID4gPiAtIEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKPiA+ID4gVW5jaGFu
-Z2VkIGluIHYyCj4gPiA+IAo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgfCAxMiArKysrKysrLS0tLS0KPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlv
-bnMoKyksIDUgZGVsZXRpb25zKC0pCj4gPiA+IAo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-ZHctbWlwaS1kc2kuYwo+ID4gPiBpbmRleCAwM2ZjMDk2ZmUxYmQuLmRkYmMwMzdlN2NlZCAxMDA2
-NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+
-ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+ID4gQEAg
-LTYwNywxMCArNjA3LDEwIEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX3Nob3J0X3dyaXRl
-KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ID4gPiAgc3RhdGljIGludCBkd19taXBpX2RzaV9k
-Y3NfbG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiA+ID4gIAkJCQkgICAgICBj
-b25zdCBzdHJ1Y3QgbWlwaV9kc2lfbXNnICptc2cpCj4gPiA+ICB7Cj4gPiA+IC0JY29uc3QgdTMy
-ICp0eF9idWYgPSBtc2ctPnR4X2J1ZjsKPiA+ID4gLQlpbnQgbGVuID0gbXNnLT50eF9sZW4sIHBs
-ZF9kYXRhX2J5dGVzID0gc2l6ZW9mKCp0eF9idWYpLCByZXQ7Cj4gPiA+ICsJY29uc3QgdTggKnR4
-X2J1ZiA9IG1zZy0+dHhfYnVmOwo+ID4gPiArCWludCBsZW4gPSBtc2ctPnR4X2xlbiwgcGxkX2Rh
-dGFfYnl0ZXMgPSBzaXplb2YodTMyKSwgcmV0Owo+ID4gPiAgCXUzMiBoZHJfdmFsID0gR0VOX0hE
-QVRBKG1zZy0+dHhfbGVuKSB8IEdFTl9IVFlQRShtc2ctPnR5cGUpOwo+ID4gPiAtCXUzMiByZW1h
-aW5kZXIgPSAwOwo+ID4gPiArCXUzMiByZW1haW5kZXI7Cj4gPiA+ICAJdTMyIHZhbDsKPiA+ID4g
-IAo+ID4gPiAgCWlmIChtc2ctPnR4X2xlbiA8IDMpIHsKPiA+ID4gQEAgLTYyMSwxMiArNjIxLDE0
-IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX2xvbmdfd3JpdGUoc3RydWN0IGR3X21pcGlf
-ZHNpICpkc2ksCj4gPiA+ICAKPiA+ID4gIAl3aGlsZSAoRElWX1JPVU5EX1VQKGxlbiwgcGxkX2Rh
-dGFfYnl0ZXMpKSB7Cj4gPiA+ICAJCWlmIChsZW4gPCBwbGRfZGF0YV9ieXRlcykgewo+ID4gPiAr
-CQkJcmVtYWluZGVyID0gMDsKPiA+ID4gIAkJCW1lbWNweSgmcmVtYWluZGVyLCB0eF9idWYsIGxl
-bik7Cj4gPiA+ICAJCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRBLCByZW1haW5kZXIp
-Owo+ID4gPiAgCQkJbGVuID0gMDsKPiA+ID4gIAkJfSBlbHNlIHsKPiA+ID4gLQkJCWRzaV93cml0
-ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsICp0eF9idWYpOwo+ID4gPiAtCQkJdHhfYnVmKys7Cj4g
-PiA+ICsJCQltZW1jcHkoJnJlbWFpbmRlciwgdHhfYnVmLCBwbGRfZGF0YV9ieXRlcyk7Cj4gPiA+
-ICsJCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRBLCByZW1haW5kZXIpOwo+ID4gPiAr
-CQkJdHhfYnVmICs9IHBsZF9kYXRhX2J5dGVzOwo+ID4gPiAgCQkJbGVuIC09IHBsZF9kYXRhX2J5
-dGVzOwo+ID4gPiAgCQl9ICAKPiA+IAo+ID4gCj4gPiBZb3UgY2FuIGNsZWFuIHRoaXMgdXAgZnVy
-dGhlciBieSByZW1vdmluZyBhIGNvdXBsZSBvZiB0aGUgbG9jYWxzLCB0aGUKPiA+IGNvbmRpdGlv
-bmFsIGFuZCB0aGUgZGl2aXNpb246Cj4gPiAKPiA+IHdoaWxlKGxlbiA8IG1zZy0+dHhfbGVuKSB7
-Cj4gPiAgICAgICAgIHNpemVfdCB0b193cml0ZSA9IE1JTihtc2ctPnR4X2xlbiAtIGxlbiwgc2l6
-ZW9mKHJlbWFpbmRlcikpOwo+ID4gCj4gPiAgICAgICAgIG1lbWNweSgmcmVtYWluZGVyLCBtc2ct
-PnR4X2J1ZiArIGxlbiwgdG9fd3JpdGUpOwo+ID4gICAgICAgICBkc2lfd3JpdGUoZHNpLCBEU0lf
-R0VOX1BMRF9EQVRBLCByZW1haW5kZXIpOwo+ID4gICAgICAgICBsZW4gKz0gdG9fd3JpdGU7Cj4g
-PiAKPiA+ICAgICAgICAgLi4uCj4gPiB9Cj4gCj4gVGhhdCdzIGEgbmljZSBzaW1wbGlmaWNhdGlv
-biwgYnV0IGl0J3MgbW9yZSB0aGFuIEkgd2FzIHRyeWluZyB0byBkbyB3aXRoCj4gdGhpcyBwYXRj
-aC4gIEkgY2FuIGFkZCBhIGNsZWFudXAgcGF0Y2ggb24gdG9wIHRvIHNpbXBsaWZ5IHRoZSBmdW5j
-dGlvbiwKPiBidXQgSSBkb24ndCBoYXZlIHRoYXQgbXVjaCB0aW1lIHRvIHNwZW5kIG9uIHRoaXMg
-YXQgdGhlIG1vbWVudCBhbmQgSSdkCj4gcmF0aGVyIG5vdCBibG9jayB0aGlzIGZpeCBiZWNhdXNl
-IHRoZSBvcmlnaW5hbCBjb2RlIHN0cnVjdHVyZSBjb3VsZCBiZQo+IGltcHJvdmVkLgoKT2suIEkn
-bSBpbmNsaW5lZCB0byBhcmd1ZSB0aGF0IHdyaXRpbmcgeW91ciByZXNwb25zZSBwcm9iYWJseSB0
-b29rIG1vcmUgdGltZQp0aGFuIHRoZSBjb3B5L3Bhc3RlIHRvIGZpeCBpdCwgYnV0ICpzaHJ1Zyou
-CgpTZWFuCgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Cj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVt
-IE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This set of patches adds a machine driver for rk3288-based boards that have
+the built-in HDMI audio and a generic analog output. It also adds slave mode
+to the es8328 driver that currently only supported the master mode. Then, it
+adds the required DT definitions to link rockchip-i2s to the es8388 analog
+output and to hdmi audio.
+
+This work is based on the initial work that was done by Sjoerd Simons
+<sjoerd.simons@collabora.co.uk> with some improvements, changes and more
+commits.
+
+Changes in v7:
+ - Added patch 2/4
+ - No longer select ES8328_I2C for RK3288_HDMI_ANALOG
+ - Fixed DT regulator names in the DT for the Rock2
+ - Splitted pins for the headphone in the DT for the Rock2
+Changes in v6:
+ - Fixed bad error handling for gpio in rk3288_analog_hdmi.c
+ - Removed message duplication in rk_hw_params(), in rk3288_analog_hdmi.c
+ - Removed patch 1/4 (from the previous series), as it has been merged
+Changes in v5:
+ - Fixed coding style issue in patch 2/4 (the switch case).
+ - Moved the code for the master mode and the slave mode into the switch case for patch 2/4
+ - Fixed error handling for patch 3/4
+Changes in v4:
+ - Add support for multi codecs in the asoc machine driver, so the driver
+   matches the hw architecture (analog and hdmi audio are connected on
+   the same i2s line)
+ - Renamed the driver to rk3288-hdmi-analog.c and changed its
+   documentation
+ - Add built-in support for hdmi audio in this driver
+ - Add support for the property 'rockchip,routing'
+
+Changes in v3:
+ - Cosmetic changes in rockchip_es8388.c
+ - Added missing email to MODULE_AUTHOR in rockchip_es8388.c
+Changes in v2:
+ - Fixed wrong use of the data structure i2c_device_id
+ - Fixed wrong dependencies for SND_SOC_ROCKCHIP_ES8388
+
+Romain Perier (4):
+  ASoC: es8328: Add support for slave mode
+  ASoC: Allow to select ES8328_I2C and ES8328_SPI directly
+  ASoC: rockchip: Add machine driver for RK3288 boards that use
+    analog/HDMI
+  arm: dts: Add support for ES8388 to the Radxa Rock 2
+
+ .../bindings/sound/rockchip,rk3288-hdmi-analog.txt |  36 +++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |   2 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  42 +++
+ sound/soc/codecs/Kconfig                           |   8 +-
+ sound/soc/codecs/es8328.c                          |  20 +-
+ sound/soc/rockchip/Kconfig                         |   9 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rk3288_hdmi_analog.c            | 299 +++++++++++++++++++++
+ 8 files changed, 407 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3288-hdmi-analog.txt
+ create mode 100644 sound/soc/rockchip/rk3288_hdmi_analog.c
+
+-- 
+2.9.3
