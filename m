@@ -1,61 +1,143 @@
-From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v6 4/5] ARM: dts: rockchip: add timer entries to rk3188 SoC
-Date: Tue, 31 Jan 2017 15:43:15 +0300
-Message-ID: <1485866596-32254-5-git-send-email-al.kochet@gmail.com>
-References: <1485866596-32254-1-git-send-email-al.kochet@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1485866596-32254-1-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v6 3/3] arm: dts: Add support for ES8388 to
+	the Radxa Rock 2
+Date: Tue, 31 Jan 2017 14:23:17 +0100
+Message-ID: <135092877.7rVIOCLxlb@phil>
+References: <20170126132315.17955-1-romain.perier@collabora.com>
+ <20170126132315.17955-4-romain.perier@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170126132315.17955-4-romain.perier@collabora.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Romain Perier <romain.perier@collabora.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch add two timers to all rk3188 based boards.
+Hi Romain,
 
-The first timer is from alive subsystem and it act as a backup
-for the local timers at sleep time. It act the same as other
-SoC rockchip timers already present in kernel.
+Am Donnerstag, 26. Januar 2017, 14:23:15 CET schrieb Romain Perier:
+> This commit adds the DT definition of the es8388 i2c device
+> found at address 0x10. It also adds the definition for connecting
+> the Rockchip I2S to the es8388 analog output.
+> 
+> This commit is based on the initial work that was done by Sjoerd Simons
+> <sjoerd.simons@collabora.com> with some improvements.
+> 
+> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+> ---
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4:
+>  - Updated to the new DT binding
+>  - Added the property 'rockchip,routing'
+>  - Renamed the node sound_es8388 to sound_i2s
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  arch/arm/boot/dts/rk3288-rock2-square.dts | 39
+> +++++++++++++++++++++++++++++++ 1 file changed, 39 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts
+> b/arch/arm/boot/dts/rk3288-rock2-square.dts index dd3ad2e..6b176b8 100644
+> --- a/arch/arm/boot/dts/rk3288-rock2-square.dts
+> +++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
+> @@ -86,6 +86,19 @@
+>  		#sound-dai-cells = <0>;
+>  	};
+> 
+> +	sound_i2s {
+> +		compatible = "rockchip,rk3288-hdmi-analog";
+> +		rockchip,model = "I2S";
 
-The second timer is from CPU subsystem and act as replacement
-for the arm-global-timer clocksource and sched clock. It run
-at stable frequency 24MHz.
+Are you sure "I2S" is not to generic? Don't know enough about sound, but 
+remember this somehow matching against possible alsa ucm profiles.
 
-Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm/boot/dts/rk3188.dtsi |   16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+So this could maybe produce conflicts with such a generic name?
 
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 31f81b2..0dc52fe 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -106,6 +106,22 @@
- 		};
- 	};
- 
-+	timer3: timer@2000e000 {
-+		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
-+		reg = <0x2000e000 0x20>;
-+		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
-+		clock-names = "timer", "pclk";
-+	};
-+
-+	timer6: timer@200380a0 {
-+		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
-+		reg = <0x200380a0 0x20>;
-+		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
-+		clock-names = "timer", "pclk";
-+	};
-+
- 	i2s0: i2s@1011a000 {
- 		compatible = "rockchip,rk3188-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x1011a000 0x2000>;
--- 
-1.7.9.5
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +		rockchip,i2s-controller = <&i2s>;
+> +		rockchip,audio-codec = <&es8388>;
+> +		rockchip,routing = "Analog", "LOUT2",
+> +				   "Analog", "ROUT2";
+> +		rockchip,hp-en-gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
+> +		rockchip,hp-det-gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&headphone>;
+> +	};
+> +
+>  	sdio_pwrseq: sdio-pwrseq {
+>  		compatible = "mmc-pwrseq-simple";
+>  		clocks = <&hym8563>;
+> @@ -173,10 +186,29 @@
+>  	};
+>  };
+> 
+> +&i2c2 {
+> +	status = "okay";
+> +
+> +	es8388: es8388@10 {
+> +		compatible = "everest,es8388", "everest,es8328";
+> +		reg = <0x10>;
+> +		AVDD-supply = <&vcca_codec>;
+> +		DVDD-supply = <&vcca_codec>;
+
+According to the schematics I have, this comes from
+	vccio_codec
+and thus from vcc_io
+
+So please give the regulator node simply a second phandle, like
+	vcc_io: vccio_codec: REG2 {
+
+and reference the correct regulator here.
+See DCDC_REG4 in rk3288-veyron.dtsi for reference.
+
+
+> +		HPVDD-supply = <&vcca_codec>;
+> +		PVDD-supply = <&vcca_codec>;
+
+vccio_codec as well
+
+
+> +		clocks = <&cru SCLK_I2S0_OUT>;
+> +		clock-names = "i2s_clk_out";
+> +	};
+> +};
+> +
+>  &i2c5 {
+>  	status = "okay";
+>  };
+> 
+> +&i2s {
+> +	status = "okay";
+> +};
+> +
+>  &pinctrl {
+>  	ir {
+>  		ir_int: ir-int {
+> @@ -190,6 +222,13 @@
+>  		};
+>  	};
+> 
+> +	sound {
+> +		headphone: headphone {
+> +			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>,
+> +					<7 7 RK_FUNC_GPIO &pcfg_pull_none>;
+
+please use real pin names from schematics fro pinctrl entries when they are 
+known. This makes greping for things easier.
+
+So please two separate definitions, "hp_det" and "phone_ctl".
+
+
+Heiko
