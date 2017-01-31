@@ -1,83 +1,60 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v5 2/4] ASoC: es8328: Add support for slave mode
-Date: Tue, 24 Jan 2017 11:08:33 +0100
-Message-ID: <20170124100835.9540-3-romain.perier@collabora.com>
-References: <20170124100835.9540-1-romain.perier@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] rockchip clock changes for 4.11 part2
+Date: Tue, 31 Jan 2017 23:59:50 +0100
+Message-ID: <2089162.48xHT324p0@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170124100835.9540-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, the function that changes the DAI format only supports master
-mode. Trying to use a slave mode exits the function with -EINVAL and
-leave the codec misconfigured. This commits adds support for enabling
-the slave mode.
+Hi Mike, Stephen,
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
+some more smallish clock changes popped up since the first pull request,
+which you can find below. Looking at my inbox devoid of clock-related
+patches, this should most likely also be all for 4.7.
 
-Changes in v5:
- - Fixed coding style issue for the switch case
- - Moved the code for master mode and slave mode to the switch case
+So please pull.
 
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+Thanks
+Heiko
 
- sound/soc/codecs/es8328.c | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
-index 37722194..3f84fbd 100644
---- a/sound/soc/codecs/es8328.c
-+++ b/sound/soc/codecs/es8328.c
-@@ -589,9 +589,21 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
- 	u8 dac_mode = 0;
- 	u8 adc_mode = 0;
- 
--	/* set master/slave audio interface */
--	if ((fmt & SND_SOC_DAIFMT_MASTER_MASK) != SND_SOC_DAIFMT_CBM_CFM)
-+	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-+	case SND_SOC_DAIFMT_CBM_CFM:
-+		/* Master serial port mode, with BCLK generated automatically */
-+		snd_soc_update_bits(codec, ES8328_MASTERMODE,
-+				    ES8328_MASTERMODE_MSC,
-+				    ES8328_MASTERMODE_MSC);
-+		break;
-+	case SND_SOC_DAIFMT_CBS_CFS:
-+		/* Slave serial port mode */
-+		snd_soc_update_bits(codec, ES8328_MASTERMODE,
-+				    ES8328_MASTERMODE_MSC, 0);
-+		break;
-+	default:
- 		return -EINVAL;
-+	}
- 
- 	/* interface format */
- 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-@@ -620,10 +632,6 @@ static int es8328_set_dai_fmt(struct snd_soc_dai *codec_dai,
- 	snd_soc_update_bits(codec, ES8328_ADCCONTROL4,
- 			ES8328_ADCCONTROL4_ADCFORMAT_MASK, adc_mode);
- 
--	/* Master serial port mode, with BCLK generated automatically */
--	snd_soc_update_bits(codec, ES8328_MASTERMODE,
--			ES8328_MASTERMODE_MSC, ES8328_MASTERMODE_MSC);
--
- 	return 0;
- }
- 
--- 
-2.9.3
+The following changes since commit 1a0abcd634dc3caf0d15cb8625e3f43d77b37031:
+
+  dt-bindings: clk: add rockchip,grf property for RK3399 (2017-01-13 20:02:27 +0100)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.11-rockchip-clk2
+
+for you to fetch changes up to a811498902cf4c3f6e659f9bc877a1cd1c180606:
+
+  clk: rockchip: rk3288: make all niu clocks critical (2017-01-23 00:58:45 +0100)
+
+----------------------------------------------------------------
+Non-critical fix for the pclk_edp divider on rk3399, one new clock-id
+and making niu (interconnect) clocks critical on rk3288, as
+CLK_IGNORE_UNUSED is not enough to keep them running all the time
+when more users access particular clock subtrees.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      Merge branch 'v4.11-shared/clkids' into v4.11-clk/next
+
+Jacob Chen (3):
+      clk: rockchip: add rk3288 vip_out clock id
+      clk: rockchip: use rk3288 vip_out clock ids
+      clk: rockchip: rk3288: make all niu clocks critical
+
+Xing Zheng (1):
+      clk: rockchip: fix the incorrect pclk_edp div width for RK3399
+
+ drivers/clk/rockchip/clk-rk3288.c      | 23 +++++++++++++++--------
+ drivers/clk/rockchip/clk-rk3399.c      |  2 +-
+ include/dt-bindings/clock/rk3288-cru.h |  1 +
+ 3 files changed, 17 insertions(+), 9 deletions(-)
+
