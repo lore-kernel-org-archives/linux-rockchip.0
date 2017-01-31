@@ -1,93 +1,88 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v3 24/24] drm/rockchip: dw-mipi-dsi: support read commands
-Date: Tue, 31 Jan 2017 12:41:47 +0000
-Message-ID: <20170131124147.170d8588.john@metanate.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-25-john@metanate.com>
- <20170130152611.GA20076@art_vandelay>
- <20170130181427.1940024f.john@metanate.com>
- <20170130201609.GM20076@art_vandelay>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v6 0/5] Implement clocksource for rockchip SoC using rockchip timer
+Date: Tue, 31 Jan 2017 15:43:11 +0300
+Message-ID: <1485866596-32254-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170130201609.GM20076@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Alexander Kochetkov <akochetkov-KJfikXucm3wvJsYlp49lxw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAzMCBKYW4gMjAxNyAxNToxNjowOSAtMDUwMCwgU2VhbiBQYXVsIHdyb3RlOgoKPiBP
-biBNb24sIEphbiAzMCwgMjAxNyBhdCAwNjoxNDoyN1BNICswMDAwLCBKb2huIEtlZXBpbmcgd3Jv
-dGU6Cj4gPiBPbiBNb24sIDMwIEphbiAyMDE3IDEwOjI2OjExIC0wNTAwLCBTZWFuIFBhdWwgd3Jv
-dGU6Cj4gPiAgIAo+ID4gPiBPbiBTdW4sIEphbiAyOSwgMjAxNyBhdCAwMToyNDo0NFBNICswMDAw
-LCBKb2huIEtlZXBpbmcgd3JvdGU6ICAKPiA+ID4gPiBJIGhhdmVuJ3QgZm91bmQgYW55IG1ldGhv
-ZCBmb3IgZ2V0dGluZyB0aGUgbGVuZ3RoIG9mIGEgcmVzcG9uc2UsIHNvIHRoaXMKPiA+ID4gPiBq
-dXN0IHVzZXMgdGhlIHJlcXVlc3RlZCByeF9sZW4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2Zm
-LWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gPiA+IC0tLQo+ID4gPiA+
-IHYzOgo+ID4gPiA+IC0gRml4IGNoZWNrcGF0Y2ggd2FybmluZ3MKPiA+ID4gPiBVbmNoYW5nZWQg
-aW4gdjIKPiA+ID4gPiAKPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgfCA1NiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ID4gIDEg
-ZmlsZSBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspCj4gPiA+ID4gCj4gPiA+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+ID4gPiBpbmRleCBjZjNjYTZiMGNiZGIuLmNj
-NThhZGE3NTQyNSAxMDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-ZHctbWlwaS1kc2kuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
-aXBpLWRzaS5jCj4gPiA+ID4gQEAgLTY3OCw2ICs2NzgsNTYgQEAgc3RhdGljIGludCBkd19taXBp
-X2RzaV9kY3NfbG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiA+ID4gPiAgCXJl
-dHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGhkcl92YWwpOwo+ID4gPiA+
-ICB9Cj4gPiA+ID4gIAo+ID4gPiA+ICtzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rjc19yZWFkKHN0
-cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ID4gPiA+ICsJCQkJY29uc3Qgc3RydWN0IG1pcGlfZHNp
-X21zZyAqbXNnKQo+ID4gPiA+ICt7Cj4gPiA+ID4gKwljb25zdCB1OCAqdHhfYnVmID0gbXNnLT50
-eF9idWY7Cj4gPiA+ID4gKwl1OCAqcnhfYnVmID0gbXNnLT5yeF9idWY7Cj4gPiA+ID4gKwlzaXpl
-X3QgaTsKPiA+ID4gPiArCWludCByZXQsIHZhbDsKPiA+ID4gPiArCj4gPiA+ID4gKwlkc2lfd3Jp
-dGUoZHNpLCBEU0lfUENLSERMX0NGRywgRU5fQ1JDX1JYIHwgRU5fRUNDX1JYIHwgRU5fQlRBKTsK
-PiA+ID4gPiArCWRzaV93cml0ZShkc2ksIERTSV9HRU5fSERSLAo+ID4gPiA+ICsJCSAgR0VOX0hE
-QVRBKHR4X2J1ZlswXSkgfCBHRU5fSFRZUEUobXNnLT50eXBlKSk7Cj4gPiA+ID4gKwo+ID4gPiA+
-ICsJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRV
-UywKPiA+ID4gPiArCQkJCSB2YWwsICEodmFsICYgR0VOX1JEX0NNRF9CVVNZKSwgMTAwMCwKPiA+
-ID4gPiArCQkJCSBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKPiA+ID4gPiArCWlmIChyZXQg
-PCAwKSB7Cj4gPiA+ID4gKwkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxlZCB0byByZWFkIGNvbW1h
-bmQgcmVzcG9uc2VcbiIpOwo+ID4gPiA+ICsJCXJldHVybiByZXQ7Cj4gPiA+ID4gKwl9Cj4gPiA+
-ID4gKwo+ID4gPiA+ICsJZm9yIChpID0gMDsgaSA8IG1zZy0+cnhfbGVuOykgewo+ID4gPiA+ICsJ
-CXUzMiBwbGQgPSBkc2lfcmVhZChkc2ksIERTSV9HRU5fUExEX0RBVEEpOwo+ID4gPiA+ICsKPiA+
-ID4gPiArCQl3aGlsZSAoaSA8IG1zZy0+cnhfbGVuKSB7Cj4gPiA+ID4gKwkJCXJ4X2J1ZltpXSA9
-IHBsZCAmIDB4ZmY7Cj4gPiA+ID4gKwkJCXBsZCA+Pj0gODsKPiA+ID4gPiArCQkJaSsrOwo+ID4g
-PiA+ICsJCX0KPiA+ID4gPiArCX0gICAgCj4gPiA+IAo+ID4gPiBBRkFJQ1QsIHRoZSBvdXRlciBm
-b3IgbG9vcCBqdXN0IGluaXRpYWxpemVzIGkgYW5kIGVuc3VyZXMgbXNnLT5yeF9sZW4gaXMKPiA+
-ID4gbm9uLXplcm8/IAo+ID4gPiAKPiA+ID4gSSB0aGluayB0aGUgZm9sbG93aW5nIHdvdWxkIGJl
-IGVhc2llciB0byByZWFkIChhbmQgc2FmZSBhZ2FpbnN0IHRoZSBjYXNlIHdoZXJlCj4gPiA+IG1z
-Zy0+cnhfbGVuID4gc2l6ZW9mKHBsZCkgKGV2ZW4gdGhvdWdoIHRoaXMgc2hvdWxkbid0IGhhcHBl
-biBhY2NvcmRpbmcgdG8gRENTCj4gPiA+IHNwZWMpKS4KPiA+ID4gCj4gPiA+IGlmIChtc2ctPnJ4
-X2xlbiA+IDApIHsKPiA+ID4gICAgICAgICB1MzIgcGxkID0gZHNpX3JlYWQoZHNpLCBEU0lfR0VO
-X1BMRF9EQVRBKTsKPiA+ID4gICAgICAgICBtZW1jcHkocnhfYnVmLCAmcGxkLCBNSU4obXNnLT5y
-eF9sZW4sIHNpemVvZihwbGQpKTsKPiA+ID4gfSAgCj4gPiAKPiA+IEkgdGhpbmsgdGhlIGludGVu
-dCB3YXMgdG8gaGFuZGxlIHJ4X2xlbiA+IDQsIGJ1dCB0aGUgcGF0Y2ggaXMgb2J2b3VzbHkKPiA+
-IGNvbXBsZXRlbHkgYnJva2VuIHJlZ2FyZGluZyB0aGF0LiAgQXMgZmFyIGFzIEkgY2FuIHRlbGws
-IHJ4X2xlbiBpcwo+ID4gbGltaXRlZCBieSB0aGUgbWF4aW11bSByZXR1cm4gcGFja2V0IHNpemUg
-d2hpY2ggY2FuIGJlIGFueSB2YWx1ZSB1cCB0bwo+ID4gdGhlIG1heGltdW0gc2l6ZSBvZiBhIGxv
-bmcgcGFja2V0LCBzbyB3ZSBtYXkgbmVlZCB0byByZWFkIGZyb20gdGhlIEZJRk8KPiA+IG11bHRp
-cGxlIHRpbWVzLgo+ID4gCj4gPiBUaGUgbG9vcCBzaG91bGQgYmUgc29tZXRoaW5nIGxpa2UgdGhp
-czoKPiA+IAo+ID4gCWZvciAoaSA9IDA7IGkgPCBtc2ctPnJ4X2xlbjspIHsKPiA+IAkJdTMyIHBs
-ZCA9IGRzaV9yZWFkKGRzaSwgRFNJX0dFTl9QTERfREFUQSk7Cj4gPiAJCWludCBqOwo+ID4gCj4g
-PiAJCWZvciAoaiA9IDA7IGogPCA0ICYmIGkgPCBtc2ctPnJ4X2xlbjsgaSsrLCBqKyspIHsKPiA+
-IAkJCXJ4X2J1ZltpXSA9IHBsZCAmIDB4ZmY7Cj4gPiAJCQlwbGQgPj49IDg7Cj4gPiAJCX0KPiA+
-IAl9ICAKPiAKPiBTaG9ydCBwYWNrZXRzIHNob3VsZCBuZXZlciBleGNlZWQgMzIgYml0cywgc28g
-SSBkb24ndCB0aGluayB5b3UgbmVlZCB0byBhZGQgdGhlCj4gbmVzdGVkIGxvb3AuCgpUaGUgcmVh
-ZCByZXNwb25zZSBpcyBub3QgcmVzdHJpY3RlZCB0byBhIHNob3J0IHBhY2tldC4gIEkgaGF2ZSBh
-IHBhbmVsCnRoYXQgZG9jdW1lbnRzIGEgcmVhZCByZXF1ZXN0IHRoYXQgcmV0dXJucyB1cCB0byA2
-NEtpQiwgYWRtaXR0ZWRseSB3aXRoCmEgY29udGludWF0aW9uIGNvbW1hbmQgYW5kIHRoZSBwYW5l
-bHMgSSBoYXZlIHNlZW0gdG8gb25seSBiZSBwcm9ncmFtbWVkCnRvIHJldHVybiA1IGJ5dGVzIG9m
-IG1lYW5pbmdmdWwgZGF0YSwgYnV0IHRoZXkgZG8gcmV0dXJuIGFsbCBvZiB0aG9zZQpieXRlcyBp
-biBhIHNpbmdsZSByZWFkIHJlc3BvbnNlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+From: Alexander Kochetkov <akochetkov-KJfikXucm3wvJsYlp49lxw@public.gmane.org>
+
+Hello, Daniel, Heiko.
+
+Here is try 6 :) Thanks a lot for helping me to bring the code
+into kernel!
+
+This patch series contain:
+- devicetree bindings clarification for rockchip timers
+- dts files fixes for rk3228-evb, rk3229-evb and rk3188
+- implementation of clocksource and sched clock for rockchip SoC
+
+The clock supplying the arm-global-timer on the rk3188 is coming from the
+the cpu clock itself and thus changes its rate everytime cpufreq adjusts
+the cpu frequency making this timer unsuitable as a stable clocksource.
+
+The rk3188, rk3288 and following socs share a separate timer block already
+handled by the rockchip-timer driver. Therefore adapt this driver to also
+be able to act as clocksource on rk3188.
+
+In order to test clocksource you can run following commands and check
+how much time it take in real. On rk3188 it take about ~45 seconds.
+
+       cpufreq-set -f 1.6GHZ
+       date; sleep 60; date
+
+rk3288 (and probably anything newer) is irrelevant to this patch,
+as it has the arch timer interface. This patch may be usefull
+for Cortex-A9/A5 based parts.
+
+Regards,
+Alexander.
+
+Changes in v6:
+- Removed Reviewed-by: Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> tag
+- Merge 5/8, 6/8, 7/8, 8/9 into single file
+- split init paths into rk_clkevt_init() and rk_clksrc_init()
+  so the driver code could be adopted to CLOCKEVENT_OF_DECLARE()
+- clockevents implemented using clocksource_mmio_init()
+- fixed commit message for 4/8 (thanks a lot Daniel)
+
+Changes in v5:
+- Add Acked-by: Rob Herring <robh at kernel.org> to 1/8
+  http://lists.infradead.org/pipermail/linux-rockchip/2016-December/013308.html
+- Add Reviwed-by: Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> to series
+- change timer compatible property in the rk322x.dtsi 2/8
+  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013784.html
+- updated comment message for 4/8
+  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013786.html
+- updated comment message for 5/8
+  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013787.html
+- fixed build error for 8/8
+  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013789.html
+
+Alexander Kochetkov (5):
+  dt-bindings: clarify compatible property for rockchip timers
+  ARM: dts: rockchip: update compatible property for rk322x timer
+  clocksource/drivers/rockchip_timer: implement clocksource timer
+  ARM: dts: rockchip: add timer entries to rk3188 SoC
+  ARM: dts: rockchip: disable arm-global-timer for rk3188
+
+ .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
+ arch/arm/boot/dts/rk3188.dtsi                      |   17 ++
+ arch/arm/boot/dts/rk322x.dtsi                      |    2 +-
+ drivers/clocksource/Kconfig                        |    1 +
+ drivers/clocksource/rockchip_timer.c               |  218 ++++++++++++++------
+ 5 files changed, 185 insertions(+), 65 deletions(-)
+
+-- 
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
