@@ -1,79 +1,94 @@
-From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Subject: Re: [PATCH] dmaengine: pl330: Fix race in residue reporting
-Date: Wed, 01 Feb 2017 13:56:36 +0100
-Message-ID: <1485953796.14092.24.camel@collabora.co.uk>
-References: <20170201124349.21443-1-romain.perier@collabora.com>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH v3 13/24] drm/rockchip: dw-mipi-dsi: fix escape clock
+ rate
+Date: Wed, 1 Feb 2017 17:23:18 +0000
+Message-ID: <20170201172318.6ee90c2d.john@metanate.com>
+References: <20170129132444.25251-1-john@metanate.com>
+        <20170129132444.25251-14-john@metanate.com>
+        <20170130202510.GP20076@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170201124349.21443-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170130202510.GP20076@art_vandelay>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGV5IFJvbWFpbiwKCkkgc3VibWl0dGVkIHRoaXMgYWdlcyBhZ28sIGJ1dCBnb3QgZGlzdHJhY3Rl
-ZC4gVGhhbmtzIGZvciByZXZpdmluZy4KTm90ZSB0aGF0IGkgcmVtZW1iZXIgS3J6eXN6dG9mIGhh
-ZCBzb21lIHJldmlldyByZW1hcmtzLCBpdCdzIHByb2JhYmx5CndvcnRoIGRpZ2dpbmcgdXAgdGhl
-IG9sZCB0aHJlYWQgYW5kIG1ha2luZyBzdXJlIHlvdSBhZGRyZXNzIHRob3NlLgoKT24gV2VkLCAy
-MDE3LTAyLTAxIGF0IDEzOjQzICswMTAwLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+IEZyb206IFNq
-b2VyZCBTaW1vbnMgPHNqb2VyZC5zaW1vbnNAY29sbGFib3JhLmNvLnVrPgo+IAo+IFdoZW4gYSB0
-cmFuc2ZlciBjb21wbGV0ZXMgdGhlcmUgaXMgYSBzbWFsbCB3aW5kb3cgYmV0d2VlbiB0aGUKPiBk
-ZXNjcmlwdG9yCj4gYmVpbmcgdW5zZXQgYXMgdGhlIGN1cnJlbnQgYWN0aXZlIG9uZSBpbiB0aGUg
-dGhyZWFkIGFuZCBpdCBiZWluZwo+IG1hcmtlZAo+IGFzIGRvbmUuIFRoaXMgY2F1c2VzIHRoZSBy
-ZXNpZHVlIHRvIGJlIGluY29ycmVjdGx5IHNldCB3aGVuCj4gcGwzMzBfdHhfc3RhdHVzIGlzIHJ1
-biBpbiB0aGF0IHdpbmRvdy4gUHJhY3RpY2FsbHkgdGhpcyBjYXVzZWQKPiBpc3N1ZSBmb3IgbWUg
-d2l0aCBhdWRpbyBwbGF5YmFjayBhcyB0aGUgcmVzaWR1ZSBnb2VzIHVwIGR1cmluZyBhCj4gdHJh
-bnNmZXIgKGFzIHRoZSBpbi1wcm9ncmVzcyB0cmFuc2ZlciBpcyBubyBsb25nZXIgYWNjb3VudGVk
-IGZvciksCj4gd2hpY2ggbWFrZXMgdGhlIGhpZ2hlciBsZXZlbHMgdGhpbmsgdGhlIGF1ZGlvIHJp
-bmdidWZmZXIgd3JhcHBlZAo+IGFyb3VuZAo+IGFuZCB0aHVzIGRpZCBhIHN1ZGRlbiBiaWcganVt
-cCBmb3J3YXJkLgo+IAo+IFRvIHJlc29sdmUgdGhpcywgYWRkIGEgZmllbGQgcHJvdGVjdGVkIGJ5
-IHRoZSBkbWEgZW5naW5lIGxvY2sgdG8KPiBpbmRpY2F0ZSB0aGUgdHJhbnNmZXIgaXMgZG9uZSBi
-dXQgdGhlIHN0YXR1cyBoYXNuJ3QgYmVlbiB1cGRhdGVkIHlldC4KPiAKPiBTaWduZWQtb2ZmLWJ5
-OiBTam9lcmQgU2ltb25zIDxzam9lcmQuc2ltb25zQGNvbGxhYm9yYS5jby51az4KPiBTaWduZWQt
-b2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGNvbGxhYm9yYS5jb20+Cj4gCj4g
-U2VyaWVzLXRvOiBWaW5vZCBLb3VsIDx2aW5vZC5rb3VsQGludGVsLmNvbT4KPiBTZXJpZXMtY2M6
-IGRtYWVuZ2luZUB2Z2VyLmtlcm5lbC5vcmcKPiBTZXJpZXMtY2M6IGxpbnV4LWtlcm5lbEB2Z2Vy
-Lmtlcm5lbC5vcmcKPiBTZXJpZXMtY2M6IEtyenlzenRvZiBLb3psb3dza2kgPGsua296bG93c2tp
-QHNhbXN1bmcuY29tPgo+IFNlcmllcy1jYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwo+IFNlcmllcy1jYzogbGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3JnCj4gU2Vy
-aWVzLWNjOsKgwqBsaW51eC1hcm0ta2VybmVsQHZnZXIua2VybmVsLm9yZwoKVGhlc2UgYXJlIHBh
-dG1hbiBtZXRhZGF0YSwgeW91IHByb2JhYmx5IHdhbnQgdG8gZHJvcCB0aGVzZSBmcm9tIHRoZQpj
-b21taXQgbWVzc2FnZSA7KQoKCgo+IMKgZHJpdmVycy9kbWEvcGwzMzAuYyB8IDkgKysrKysrKyst
-Cj4gwqAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZG1hL3BsMzMwLmMgYi9kcml2ZXJzL2RtYS9wbDMzMC5jCj4g
-aW5kZXggNzQwYmJiOS4uZDk0MmZhYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2RtYS9wbDMzMC5j
-Cj4gKysrIGIvZHJpdmVycy9kbWEvcGwzMzAuYwo+IEBAIC01MjEsNiArNTIxLDkgQEAgc3RydWN0
-IGRtYV9wbDMzMF9kZXNjIHsKPiDCoAo+IMKgCWVudW0gZGVzY19zdGF0dXMgc3RhdHVzOwo+IMKg
-Cj4gKwkvKiBUcmFuc2ZlciBjb21wbGV0ZWQsIGJ1dCBub3QgeWV0IG1vdmVkIHRvIERPTkUgc3Rh
-dGUgKi8KPiArCWJvb2wgeGZlcnJlZDsKPiArCj4gwqAJaW50IGJ5dGVzX3JlcXVlc3RlZDsKPiDC
-oAlib29sIGxhc3Q7Cj4gwqAKPiBAQCAtMTUwOCw2ICsxNTExLDkgQEAgc3RhdGljIHZvaWQgZG1h
-X3BsMzMwX3JxY2Ioc3RydWN0Cj4gZG1hX3BsMzMwX2Rlc2MgKmRlc2MsIGVudW0gcGwzMzBfb3Bf
-ZXJyIGVycikKPiDCoAlzcGluX2xvY2tfaXJxc2F2ZSgmcGNoLT5sb2NrLCBmbGFncyk7Cj4gwqAK
-PiDCoAlkZXNjLT5zdGF0dXMgPSBET05FOwo+ICsJc3Bpbl9sb2NrKCZwY2gtPnRocmVhZC0+ZG1h
-Yy0+bG9jayk7Cj4gKwlkZXNjLT54ZmVycmVkID0gZmFsc2U7Cj4gKwlzcGluX3VubG9jaygmcGNo
-LT50aHJlYWQtPmRtYWMtPmxvY2spOwo+IMKgCj4gwqAJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgm
-cGNoLT5sb2NrLCBmbGFncyk7Cj4gwqAKPiBAQCAtMTY0MCw2ICsxNjQ2LDcgQEAgc3RhdGljIGlu
-dCBwbDMzMF91cGRhdGUoc3RydWN0IHBsMzMwX2RtYWMKPiAqcGwzMzApCj4gwqAKPiDCoAkJCS8q
-IERldGFjaCB0aGUgcmVxICovCj4gwqAJCQlkZXNjZG9uZSA9IHRocmQtPnJlcVthY3RpdmVdLmRl
-c2M7Cj4gKwkJCWRlc2Nkb25lLT54ZmVycmVkID0gdHJ1ZTsKPiDCoAkJCXRocmQtPnJlcVthY3Rp
-dmVdLmRlc2MgPSBOVUxMOwo+IMKgCj4gwqAJCQl0aHJkLT5yZXFfcnVubmluZyA9IC0xOwo+IEBA
-IC0yMzExLDcgKzIzMTgsNyBAQCBwbDMzMF90eF9zdGF0dXMoc3RydWN0IGRtYV9jaGFuICpjaGFu
-LAo+IGRtYV9jb29raWVfdCBjb29raWUsCj4gwqAKPiDCoAkvKiBDaGVjayBpbiBwZW5kaW5nIGxp
-c3QgKi8KPiDCoAlsaXN0X2Zvcl9lYWNoX2VudHJ5KGRlc2MsICZwY2gtPndvcmtfbGlzdCwgbm9k
-ZSkgewo+IC0JCWlmIChkZXNjLT5zdGF0dXMgPT0gRE9ORSkKPiArCQlpZiAoZGVzYy0+eGZlcnJl
-ZCB8fCBkZXNjLT5zdGF0dXMgPT0gRE9ORSkKPiDCoAkJCXRyYW5zZmVycmVkID0gZGVzYy0+Ynl0
-ZXNfcmVxdWVzdGVkOwo+IMKgCQllbHNlIGlmIChydW5uaW5nICYmIGRlc2MgPT0gcnVubmluZykK
-PiDCoAkJCXRyYW5zZmVycmVkID0KCi0tIApTam9lcmQgU2ltb25zCkNvbGxhYm9yYSBMdGQuCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Mon, 30 Jan 2017 15:25:10 -0500, Sean Paul wrote:
+
+> On Sun, Jan 29, 2017 at 01:24:33PM +0000, John Keeping wrote:
+> > This clock rate is derived from the PHY PLL, so it should be calculated
+> > dynamically.  Use the same calculation as the vendor kernel to derive
+> > the escape clock speed.
+> >   
+> 
+> Nit below, but
+> 
+> Reviewed-by: Sean Paul <seanpaul@chromium.org>
+> 
+> > Signed-off-by: John Keeping <john@metanate.com>
+> > Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+> > ---
+> > v3:
+> > - Improve the commit message a bit
+> > - Add Chris' Reviewed-by
+> > Unchanged in v2
+> > 
+> >  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> > index 290282e86d16..c2e0ba96e0a0 100644
+> > --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> > +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> > @@ -710,11 +710,13 @@ static void dw_mipi_dsi_disable(struct dw_mipi_dsi *dsi)
+> >  
+> >  static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
+> >  {  
+> 
+> Nit: It would be nice to add a comment to the effect of "You are not meant to
+> understand this, it comes from the vendor kernel"
+
+Actually, I think my commit message was misleading.  I think I do
+understand the calculation, although the TRM is not particularly clear
+about it.  TX_ESC_CLK_DIVISION is described as:
+
+    the division factor for the TX_Escape clock source (lanebyteclk).
+    The value 0 and 1 stop the TX_ESC clock generation
+
+Now lanebyteclk is (dsi->lane_mbps >> 3) since lane_mbps is the
+lane bit clock.  The maximum escape mode clock from the MIPI
+specification is 20MHz, so we end up needing
+
+    lanebyteclk / esc_clk_division < 20
+
+thus:
+
+    esc_clk_division > lanebyteclk / 20
+
+and we want esc_clk_division >= 2 to avoid disabling the clock
+generation.
+
+I'll add a comment to this effect.
+
+> > +	u32 esc_clk_division = (dsi->lane_mbps >> 3) / 20 + 1;
+> > +
+> >  	dsi_write(dsi, DSI_PWR_UP, RESET);
+> >  	dsi_write(dsi, DSI_PHY_RSTZ, PHY_DISFORCEPLL | PHY_DISABLECLK
+> >  		  | PHY_RSTZ | PHY_SHUTDOWNZ);
+> >  	dsi_write(dsi, DSI_CLKMGR_CFG, TO_CLK_DIVIDSION(10) |
+> > -		  TX_ESC_CLK_DIVIDSION(7));
+> > +		  TX_ESC_CLK_DIVIDSION(esc_clk_division));
+> >  }
+> >  
+> >  static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
+> > -- 
+> > 2.11.0.197.gb556de5.dirty
+> > 
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/dri-devel  
+> 
