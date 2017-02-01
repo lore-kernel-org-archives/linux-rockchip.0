@@ -1,94 +1,101 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v3 13/24] drm/rockchip: dw-mipi-dsi: fix escape clock
- rate
-Date: Wed, 1 Feb 2017 17:23:18 +0000
-Message-ID: <20170201172318.6ee90c2d.john@metanate.com>
-References: <20170129132444.25251-1-john@metanate.com>
-        <20170129132444.25251-14-john@metanate.com>
-        <20170130202510.GP20076@art_vandelay>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 3/5] drm/rockchip/dsi: remove mode_valid function
+Date: Wed, 1 Feb 2017 13:12:18 -0500
+Message-ID: <20170201181218.GA8595@art_vandelay>
+References: <1484907051-7159-1-git-send-email-zyw@rock-chips.com>
+ <1484907051-7159-4-git-send-email-zyw@rock-chips.com>
+ <20170123174841.GB25789@trickycodes.roam.corp.google.com>
+ <5886BB8F.6040707@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170130202510.GP20076@art_vandelay>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <5886BB8F.6040707@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 30 Jan 2017 15:25:10 -0500, Sean Paul wrote:
-
-> On Sun, Jan 29, 2017 at 01:24:33PM +0000, John Keeping wrote:
-> > This clock rate is derived from the PHY PLL, so it should be calculated
-> > dynamically.  Use the same calculation as the vendor kernel to derive
-> > the escape clock speed.
-> >   
-> 
-> Nit below, but
-> 
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
-> 
-> > Signed-off-by: John Keeping <john@metanate.com>
-> > Reviewed-by: Chris Zhong <zyw@rock-chips.com>
-> > ---
-> > v3:
-> > - Improve the commit message a bit
-> > - Add Chris' Reviewed-by
-> > Unchanged in v2
-> > 
-> >  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> > index 290282e86d16..c2e0ba96e0a0 100644
-> > --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> > +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> > @@ -710,11 +710,13 @@ static void dw_mipi_dsi_disable(struct dw_mipi_dsi *dsi)
-> >  
-> >  static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
-> >  {  
-> 
-> Nit: It would be nice to add a comment to the effect of "You are not meant to
-> understand this, it comes from the vendor kernel"
-
-Actually, I think my commit message was misleading.  I think I do
-understand the calculation, although the TRM is not particularly clear
-about it.  TX_ESC_CLK_DIVISION is described as:
-
-    the division factor for the TX_Escape clock source (lanebyteclk).
-    The value 0 and 1 stop the TX_ESC clock generation
-
-Now lanebyteclk is (dsi->lane_mbps >> 3) since lane_mbps is the
-lane bit clock.  The maximum escape mode clock from the MIPI
-specification is 20MHz, so we end up needing
-
-    lanebyteclk / esc_clk_division < 20
-
-thus:
-
-    esc_clk_division > lanebyteclk / 20
-
-and we want esc_clk_division >= 2 to avoid disabling the clock
-generation.
-
-I'll add a comment to this effect.
-
-> > +	u32 esc_clk_division = (dsi->lane_mbps >> 3) / 20 + 1;
-> > +
-> >  	dsi_write(dsi, DSI_PWR_UP, RESET);
-> >  	dsi_write(dsi, DSI_PHY_RSTZ, PHY_DISFORCEPLL | PHY_DISABLECLK
-> >  		  | PHY_RSTZ | PHY_SHUTDOWNZ);
-> >  	dsi_write(dsi, DSI_CLKMGR_CFG, TO_CLK_DIVIDSION(10) |
-> > -		  TX_ESC_CLK_DIVIDSION(7));
-> > +		  TX_ESC_CLK_DIVIDSION(esc_clk_division));
-> >  }
-> >  
-> >  static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
-> > -- 
-> > 2.11.0.197.gb556de5.dirty
-> > 
-> > _______________________________________________
-> > dri-devel mailing list
-> > dri-devel@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/dri-devel  
-> 
+T24gVHVlLCBKYW4gMjQsIDIwMTcgYXQgMTA6Mjc6MjdBTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gSGkgU2Vhbgo+IAo+IE9uIDAxLzI0LzIwMTcgMDE6NDggQU0sIFNlYW4gUGF1bCB3cm90
+ZToKPiA+T24gRnJpLCBKYW4gMjAsIDIwMTcgYXQgMDY6MTA6NDlQTSArMDgwMCwgQ2hyaXMgWmhv
+bmcgd3JvdGU6Cj4gPj5UaGUgTUlQSSBEU0kgZG8gbm90IG5lZWQgY2hlY2sgdGhlIHZhbGlkaXR5
+IG9mIHJlc29sdXRpb24sIHRoZSBtYXgKPiA+PnJlc29sdXRpb24gc2hvdWxkIGRlcGVuZCBWT1Au
+IEhlbmNlLCByZW1vdmUgcmszMjg4X21pcGlfZHNpX21vZGVfdmFsaWQKPiA+PmhlcmUuCj4gPkRv
+ZXMgdm9wIGFjdHVhbGx5IGVuZm9yY2UgdGhpcywgdGhvdWdoPyBJIHNlZSB0aGF0IG1vZGVfY29u
+ZmlnLm1heF93aWR0aCBpcwo+ID40MDk2LCBidXQgdGhlcmUgaXMgbm8gYm91bmRzIGNoZWNraW5n
+IGluIG1vZGVfZml4dXAoKS4KPiA+Cj4gPlRoZSBjb25uZWN0b3IgaXMgY3VycmVudGx5IHJlamVj
+dGluZyBldmVyeXRoaW5nIGdyZWF0ZXIgdGhhbiAyMDQ3LiBTbyBJIHRoaW5rCj4gPnlvdSdyZSBn
+b2luZyB0byByZWdyZXNzIGJlaGF2aW9yIGhlcmUuCj4gPgo+ID5TZWFuCj4gVGhlIG1pcGkgY29u
+dHJvbGxlciBoYXMgbm90IHRoaXMgd2lkdGggbGltaXQsIGl0IGRlcGVuZCB0aGUgVk9QLAo+IHN1
+Y2ggYXMgUkszMzk5LCBWT1BfTElUIG9ubHkgc3VwcG9ydCAyNTYwLAo+IGJ1dCBWT1BfQklHIHN1
+cHBvcnQgNEsuIFNvIHRoaXMgZHJpdmVyIHNob3VsZCBjaGVjayB0aGUgd2lkdGggaGVyZS4KCkkg
+ZG9uJ3Qgc2VlIGFueXRoaW5nIGluIHRoZSB2b3AgZHJpdmVyIHRoYXQgcmVqZWN0cyBsYXJnZSBt
+b2RlcyBmb3IgbGl0dGxlIHZvcC4KU28sIHdoaWxlIEkgYWdyZWUgdGhlIGNoZWNrIHNob3VsZG4n
+dCBiZSBoZXJlLCB5b3Ugc2hvdWxkIG1vdmUgaXQgdG8gd2hlcmUgaXQKc2hvdWxkIGJlIGluc3Rl
+YWQgb2YgcmVtb3ZpbmcgaXQgZW50aXJlbHkuCgpTZWFuCgo+IAo+ID4KPiA+Cj4gPj5TaWduZWQt
+b2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+ID4+LS0tCj4gPj4KPiA+
+PkNoYW5nZXMgaW4gdjM6IE5vbmUKPiA+Pgo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+ZHctbWlwaS1kc2kuYyB8IDM5IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+
+PiAgMSBmaWxlIGNoYW5nZWQsIDM5IGRlbGV0aW9ucygtKQo+ID4+Cj4gPj5kaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+aW5kZXggYTkzY2U5Ny4uNmYwZTI1MiAxMDA2NDQK
+PiA+Pi0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPj4rKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+QEAgLTI3OCw4ICsy
+NzgsNiBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHsKPiA+PiAgCXUzMiBncmZfZHNp
+MF9tb2RlOwo+ID4+ICAJdTMyIGdyZl9kc2kwX21vZGVfcmVnOwo+ID4+ICAJdW5zaWduZWQgaW50
+IG1heF9kYXRhX2xhbmVzOwo+ID4+LQllbnVtIGRybV9tb2RlX3N0YXR1cyAoKm1vZGVfdmFsaWQp
+KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4gPj4tCQkJCQkgICBzdHJ1Y3QgZHJt
+X2Rpc3BsYXlfbW9kZSAqbW9kZSk7Cj4gPj4gIH07Cj4gPj4gIHN0cnVjdCBkd19taXBpX2RzaSB7
+Cj4gPj5AQCAtMTA4MSwyMyArMTA3OSw4IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfY29ubmVj
+dG9yX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ID4+ICAJcmV0
+dXJuIGRybV9wYW5lbF9nZXRfbW9kZXMoZHNpLT5wYW5lbCk7Cj4gPj4gIH0KPiA+Pi1zdGF0aWMg
+ZW51bSBkcm1fbW9kZV9zdGF0dXMgZHdfbWlwaV9kc2lfbW9kZV92YWxpZCgKPiA+Pi0JCQkJCXN0
+cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4gPj4tCQkJCQlzdHJ1Y3QgZHJtX2Rpc3Bs
+YXlfbW9kZSAqbW9kZSkKPiA+Pi17Cj4gPj4tCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0gY29u
+X3RvX2RzaShjb25uZWN0b3IpOwo+ID4+LQo+ID4+LQllbnVtIGRybV9tb2RlX3N0YXR1cyBtb2Rl
+X3N0YXR1cyA9IE1PREVfT0s7Cj4gPj4tCj4gPj4tCWlmIChkc2ktPnBkYXRhLT5tb2RlX3ZhbGlk
+KQo+ID4+LQkJbW9kZV9zdGF0dXMgPSBkc2ktPnBkYXRhLT5tb2RlX3ZhbGlkKGNvbm5lY3Rvciwg
+bW9kZSk7Cj4gPj4tCj4gPj4tCXJldHVybiBtb2RlX3N0YXR1czsKPiA+Pi19Cj4gPj4tCj4gPj4g
+IHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgZHdfbWlwaV9kc2lfY29u
+bmVjdG9yX2hlbHBlcl9mdW5jcyA9IHsKPiA+PiAgCS5nZXRfbW9kZXMgPSBkd19taXBpX2RzaV9j
+b25uZWN0b3JfZ2V0X21vZGVzLAo+ID4+LQkubW9kZV92YWxpZCA9IGR3X21pcGlfZHNpX21vZGVf
+dmFsaWQsCj4gPj4gIH07Cj4gPj4gIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2RybV9jb25uZWN0
+b3JfZGVzdHJveShzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ID4+QEAgLTExNjgs
+MzMgKzExNTEsMTEgQEAgc3RhdGljIGludCByb2NrY2hpcF9taXBpX3BhcnNlX2R0KHN0cnVjdCBk
+d19taXBpX2RzaSAqZHNpKQo+ID4+ICAJcmV0dXJuIDA7Cj4gPj4gIH0KPiA+Pi1zdGF0aWMgZW51
+bSBkcm1fbW9kZV9zdGF0dXMgcmszMjg4X21pcGlfZHNpX21vZGVfdmFsaWQoCj4gPj4tCQkJCQlz
+dHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+ID4+LQkJCQkJc3RydWN0IGRybV9kaXNw
+bGF5X21vZGUgKm1vZGUpCj4gPj4tewo+ID4+LQkvKgo+ID4+LQkgKiBUaGUgVklEX1BLVF9TSVpF
+IGZpZWxkIGluIHRoZSBEU0lfVklEX1BLVF9DRkcKPiA+Pi0JICogcmVnaXN0ZXIgaXMgMTEtYml0
+Lgo+ID4+LQkgKi8KPiA+Pi0JaWYgKG1vZGUtPmhkaXNwbGF5ID4gMHg3ZmYpCj4gPj4tCQlyZXR1
+cm4gTU9ERV9CQURfSFZBTFVFOwo+ID4+LQo+ID4+LQkvKgo+ID4+LQkgKiBUaGUgVl9BQ1RJVkVf
+TElORVMgZmllbGQgaW4gdGhlIERTSV9WVElNSU5HX0NGRwo+ID4+LQkgKiByZWdpc3RlciBpcyAx
+MS1iaXQuCj4gPj4tCSAqLwo+ID4+LQlpZiAobW9kZS0+dmRpc3BsYXkgPiAweDdmZikKPiA+Pi0J
+CXJldHVybiBNT0RFX0JBRF9WVkFMVUU7Cj4gPj4tCj4gPj4tCXJldHVybiBNT0RFX09LOwo+ID4+
+LX0KPiA+Pi0KPiA+PiAgc3RhdGljIHN0cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgcmszMjg4
+X21pcGlfZHNpX2Rydl9kYXRhID0gewo+ID4+ICAJLmRzaTBfZW5fYml0ID0gUkszMjg4X0RTSTBf
+U0VMX1ZPUF9MSVQsCj4gPj4gIAkuZHNpMV9lbl9iaXQgPSBSSzMyODhfRFNJMV9TRUxfVk9QX0xJ
+VCwKPiA+PiAgCS5ncmZfc3dpdGNoX3JlZyA9IFJLMzI4OF9HUkZfU09DX0NPTjYsCj4gPj4gIAku
+bWF4X2RhdGFfbGFuZXMgPSA0LAo+ID4+LQkubW9kZV92YWxpZCA9IHJrMzI4OF9taXBpX2RzaV9t
+b2RlX3ZhbGlkLAo+ID4+ICB9Owo+ID4+ICBzdGF0aWMgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRf
+ZGF0YSByazMzOTlfbWlwaV9kc2lfZHJ2X2RhdGEgPSB7Cj4gPj4tLSAKPiA+PjIuNi4zCj4gPj4K
+PiA+Pl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPj5k
+cmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPj5kcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cj4gPj5odHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9t
+aXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
