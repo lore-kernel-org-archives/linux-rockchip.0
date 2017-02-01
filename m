@@ -1,60 +1,33 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.11 part2
-Date: Tue, 31 Jan 2017 23:59:50 +0100
-Message-ID: <2089162.48xHT324p0@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v6 1/5] dt-bindings: clarify compatible property for rockchip timers
+Date: Wed, 01 Feb 2017 10:33:12 +0100
+Message-ID: <1778654.xTaFcqOD9S@phil>
+References: <1485866596-32254-1-git-send-email-al.kochet@gmail.com> <1485866596-32254-2-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1485866596-32254-2-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Am Dienstag, 31. Januar 2017, 15:43:12 CET schrieb Alexander Kochetkov:
+> Make all properties description in form '"rockchip,<chip>-timer",
+> "rockchip,rk3288-timer"' for all chips found in linux kernel.
+> 
+> Suggested-by: Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-some more smallish clock changes popped up since the first pull request,
-which you can find below. Looking at my inbox devoid of clock-related
-patches, this should most likely also be all for 4.7.
+looks good
 
-So please pull.
-
-Thanks
-Heiko
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
 
-The following changes since commit 1a0abcd634dc3caf0d15cb8625e3f43d77b37031:
 
-  dt-bindings: clk: add rockchip,grf property for RK3399 (2017-01-13 20:02:27 +0100)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.11-rockchip-clk2
-
-for you to fetch changes up to a811498902cf4c3f6e659f9bc877a1cd1c180606:
-
-  clk: rockchip: rk3288: make all niu clocks critical (2017-01-23 00:58:45 +0100)
-
-----------------------------------------------------------------
-Non-critical fix for the pclk_edp divider on rk3399, one new clock-id
-and making niu (interconnect) clocks critical on rk3288, as
-CLK_IGNORE_UNUSED is not enough to keep them running all the time
-when more users access particular clock subtrees.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      Merge branch 'v4.11-shared/clkids' into v4.11-clk/next
-
-Jacob Chen (3):
-      clk: rockchip: add rk3288 vip_out clock id
-      clk: rockchip: use rk3288 vip_out clock ids
-      clk: rockchip: rk3288: make all niu clocks critical
-
-Xing Zheng (1):
-      clk: rockchip: fix the incorrect pclk_edp div width for RK3399
-
- drivers/clk/rockchip/clk-rk3288.c      | 23 +++++++++++++++--------
- drivers/clk/rockchip/clk-rk3399.c      |  2 +-
- include/dt-bindings/clock/rk3288-cru.h |  1 +
- 3 files changed, 17 insertions(+), 9 deletions(-)
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
