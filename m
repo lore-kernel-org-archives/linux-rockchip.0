@@ -1,39 +1,79 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v6 5/5] ARM: dts: rockchip: disable arm-global-timer for rk3188
-Date: Wed, 01 Feb 2017 10:48:53 +0100
-Message-ID: <2265306.UfJ65TkXez@phil>
-References: <1485866596-32254-1-git-send-email-al.kochet@gmail.com> <1485866596-32254-6-git-send-email-al.kochet@gmail.com>
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: Re: [PATCH] dmaengine: pl330: Fix race in residue reporting
+Date: Wed, 01 Feb 2017 13:56:36 +0100
+Message-ID: <1485953796.14092.24.camel@collabora.co.uk>
+References: <20170201124349.21443-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1485866596-32254-6-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170201124349.21443-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 31. Januar 2017, 15:43:16 CET schrieb Alexander Kochetkov:
-> The clocksource and the sched_clock provided by the arm_global_timer
-> are quite unstable because their rates depend on the cpu frequency.
-> 
-> On the other side, the arm_global_timer has a higher rating than the
-> rockchip_timer, it will be selected by default by the time framework
-> while we want to use the stable rockchip clocksource.
-> 
-> Let's disable the arm_global_timer in order to have the rockchip
-> clocksource selected by default.
-> 
-> Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-depending on who is picking that up, they can add my
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-if needed.
-
-Later on we might need to look at the rk3066 as well, as it might have the 
-same issue.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGV5IFJvbWFpbiwKCkkgc3VibWl0dGVkIHRoaXMgYWdlcyBhZ28sIGJ1dCBnb3QgZGlzdHJhY3Rl
+ZC4gVGhhbmtzIGZvciByZXZpdmluZy4KTm90ZSB0aGF0IGkgcmVtZW1iZXIgS3J6eXN6dG9mIGhh
+ZCBzb21lIHJldmlldyByZW1hcmtzLCBpdCdzIHByb2JhYmx5CndvcnRoIGRpZ2dpbmcgdXAgdGhl
+IG9sZCB0aHJlYWQgYW5kIG1ha2luZyBzdXJlIHlvdSBhZGRyZXNzIHRob3NlLgoKT24gV2VkLCAy
+MDE3LTAyLTAxIGF0IDEzOjQzICswMTAwLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+IEZyb206IFNq
+b2VyZCBTaW1vbnMgPHNqb2VyZC5zaW1vbnNAY29sbGFib3JhLmNvLnVrPgo+IAo+IFdoZW4gYSB0
+cmFuc2ZlciBjb21wbGV0ZXMgdGhlcmUgaXMgYSBzbWFsbCB3aW5kb3cgYmV0d2VlbiB0aGUKPiBk
+ZXNjcmlwdG9yCj4gYmVpbmcgdW5zZXQgYXMgdGhlIGN1cnJlbnQgYWN0aXZlIG9uZSBpbiB0aGUg
+dGhyZWFkIGFuZCBpdCBiZWluZwo+IG1hcmtlZAo+IGFzIGRvbmUuIFRoaXMgY2F1c2VzIHRoZSBy
+ZXNpZHVlIHRvIGJlIGluY29ycmVjdGx5IHNldCB3aGVuCj4gcGwzMzBfdHhfc3RhdHVzIGlzIHJ1
+biBpbiB0aGF0IHdpbmRvdy4gUHJhY3RpY2FsbHkgdGhpcyBjYXVzZWQKPiBpc3N1ZSBmb3IgbWUg
+d2l0aCBhdWRpbyBwbGF5YmFjayBhcyB0aGUgcmVzaWR1ZSBnb2VzIHVwIGR1cmluZyBhCj4gdHJh
+bnNmZXIgKGFzIHRoZSBpbi1wcm9ncmVzcyB0cmFuc2ZlciBpcyBubyBsb25nZXIgYWNjb3VudGVk
+IGZvciksCj4gd2hpY2ggbWFrZXMgdGhlIGhpZ2hlciBsZXZlbHMgdGhpbmsgdGhlIGF1ZGlvIHJp
+bmdidWZmZXIgd3JhcHBlZAo+IGFyb3VuZAo+IGFuZCB0aHVzIGRpZCBhIHN1ZGRlbiBiaWcganVt
+cCBmb3J3YXJkLgo+IAo+IFRvIHJlc29sdmUgdGhpcywgYWRkIGEgZmllbGQgcHJvdGVjdGVkIGJ5
+IHRoZSBkbWEgZW5naW5lIGxvY2sgdG8KPiBpbmRpY2F0ZSB0aGUgdHJhbnNmZXIgaXMgZG9uZSBi
+dXQgdGhlIHN0YXR1cyBoYXNuJ3QgYmVlbiB1cGRhdGVkIHlldC4KPiAKPiBTaWduZWQtb2ZmLWJ5
+OiBTam9lcmQgU2ltb25zIDxzam9lcmQuc2ltb25zQGNvbGxhYm9yYS5jby51az4KPiBTaWduZWQt
+b2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGNvbGxhYm9yYS5jb20+Cj4gCj4g
+U2VyaWVzLXRvOiBWaW5vZCBLb3VsIDx2aW5vZC5rb3VsQGludGVsLmNvbT4KPiBTZXJpZXMtY2M6
+IGRtYWVuZ2luZUB2Z2VyLmtlcm5lbC5vcmcKPiBTZXJpZXMtY2M6IGxpbnV4LWtlcm5lbEB2Z2Vy
+Lmtlcm5lbC5vcmcKPiBTZXJpZXMtY2M6IEtyenlzenRvZiBLb3psb3dza2kgPGsua296bG93c2tp
+QHNhbXN1bmcuY29tPgo+IFNlcmllcy1jYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwo+IFNlcmllcy1jYzogbGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3JnCj4gU2Vy
+aWVzLWNjOsKgwqBsaW51eC1hcm0ta2VybmVsQHZnZXIua2VybmVsLm9yZwoKVGhlc2UgYXJlIHBh
+dG1hbiBtZXRhZGF0YSwgeW91IHByb2JhYmx5IHdhbnQgdG8gZHJvcCB0aGVzZSBmcm9tIHRoZQpj
+b21taXQgbWVzc2FnZSA7KQoKCgo+IMKgZHJpdmVycy9kbWEvcGwzMzAuYyB8IDkgKysrKysrKyst
+Cj4gwqAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZG1hL3BsMzMwLmMgYi9kcml2ZXJzL2RtYS9wbDMzMC5jCj4g
+aW5kZXggNzQwYmJiOS4uZDk0MmZhYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2RtYS9wbDMzMC5j
+Cj4gKysrIGIvZHJpdmVycy9kbWEvcGwzMzAuYwo+IEBAIC01MjEsNiArNTIxLDkgQEAgc3RydWN0
+IGRtYV9wbDMzMF9kZXNjIHsKPiDCoAo+IMKgCWVudW0gZGVzY19zdGF0dXMgc3RhdHVzOwo+IMKg
+Cj4gKwkvKiBUcmFuc2ZlciBjb21wbGV0ZWQsIGJ1dCBub3QgeWV0IG1vdmVkIHRvIERPTkUgc3Rh
+dGUgKi8KPiArCWJvb2wgeGZlcnJlZDsKPiArCj4gwqAJaW50IGJ5dGVzX3JlcXVlc3RlZDsKPiDC
+oAlib29sIGxhc3Q7Cj4gwqAKPiBAQCAtMTUwOCw2ICsxNTExLDkgQEAgc3RhdGljIHZvaWQgZG1h
+X3BsMzMwX3JxY2Ioc3RydWN0Cj4gZG1hX3BsMzMwX2Rlc2MgKmRlc2MsIGVudW0gcGwzMzBfb3Bf
+ZXJyIGVycikKPiDCoAlzcGluX2xvY2tfaXJxc2F2ZSgmcGNoLT5sb2NrLCBmbGFncyk7Cj4gwqAK
+PiDCoAlkZXNjLT5zdGF0dXMgPSBET05FOwo+ICsJc3Bpbl9sb2NrKCZwY2gtPnRocmVhZC0+ZG1h
+Yy0+bG9jayk7Cj4gKwlkZXNjLT54ZmVycmVkID0gZmFsc2U7Cj4gKwlzcGluX3VubG9jaygmcGNo
+LT50aHJlYWQtPmRtYWMtPmxvY2spOwo+IMKgCj4gwqAJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgm
+cGNoLT5sb2NrLCBmbGFncyk7Cj4gwqAKPiBAQCAtMTY0MCw2ICsxNjQ2LDcgQEAgc3RhdGljIGlu
+dCBwbDMzMF91cGRhdGUoc3RydWN0IHBsMzMwX2RtYWMKPiAqcGwzMzApCj4gwqAKPiDCoAkJCS8q
+IERldGFjaCB0aGUgcmVxICovCj4gwqAJCQlkZXNjZG9uZSA9IHRocmQtPnJlcVthY3RpdmVdLmRl
+c2M7Cj4gKwkJCWRlc2Nkb25lLT54ZmVycmVkID0gdHJ1ZTsKPiDCoAkJCXRocmQtPnJlcVthY3Rp
+dmVdLmRlc2MgPSBOVUxMOwo+IMKgCj4gwqAJCQl0aHJkLT5yZXFfcnVubmluZyA9IC0xOwo+IEBA
+IC0yMzExLDcgKzIzMTgsNyBAQCBwbDMzMF90eF9zdGF0dXMoc3RydWN0IGRtYV9jaGFuICpjaGFu
+LAo+IGRtYV9jb29raWVfdCBjb29raWUsCj4gwqAKPiDCoAkvKiBDaGVjayBpbiBwZW5kaW5nIGxp
+c3QgKi8KPiDCoAlsaXN0X2Zvcl9lYWNoX2VudHJ5KGRlc2MsICZwY2gtPndvcmtfbGlzdCwgbm9k
+ZSkgewo+IC0JCWlmIChkZXNjLT5zdGF0dXMgPT0gRE9ORSkKPiArCQlpZiAoZGVzYy0+eGZlcnJl
+ZCB8fCBkZXNjLT5zdGF0dXMgPT0gRE9ORSkKPiDCoAkJCXRyYW5zZmVycmVkID0gZGVzYy0+Ynl0
+ZXNfcmVxdWVzdGVkOwo+IMKgCQllbHNlIGlmIChydW5uaW5nICYmIGRlc2MgPT0gcnVubmluZykK
+PiDCoAkJCXRyYW5zZmVycmVkID0KCi0tIApTam9lcmQgU2ltb25zCkNvbGxhYm9yYSBMdGQuCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
