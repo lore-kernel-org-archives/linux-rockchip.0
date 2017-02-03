@@ -1,133 +1,85 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v4 3/6] drm/rockchip/dsi: dw-mipi: correct the coding style
-Date: Wed, 1 Feb 2017 13:47:59 -0500
-Message-ID: <20170201184759.GA14264@art_vandelay>
-References: <1485225486-669-1-git-send-email-zyw@rock-chips.com>
- <1485225486-669-4-git-send-email-zyw@rock-chips.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v8 0/4] Add support for es8388 and hdmi audio
+	on the rock2
+Date: Fri,  3 Feb 2017 15:37:56 +0100
+Message-ID: <20170203143800.23859-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1485225486-669-4-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Romain Perier <romain.perier@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKYW4gMjQsIDIwMTcgYXQgMTA6Mzg6MDNBTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
-dGU6Cj4gY29ycmVjdCB0aGUgY29kaW5nIHN0eWxlLCBhY2NvcmRpbmcgdGhlIGNoZWNrcGF0Y2gg
-c2NyaXB0cwo+IAoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3Jn
-PgoKPiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IC0t
-LQo+IAo+IENoYW5nZXMgaW4gdjQ6IE5vbmUKPiBDaGFuZ2VzIGluIHYzOiBOb25lCj4gCj4gIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMzMgKysrKysrKysrKysrKysr
-Ky0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspLCAx
-NyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+
-IGluZGV4IGI3YjY3YmUuLmE5M2NlOTcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHct
-bWlwaS1kc2kuYwo+IEBAIC0xNTcsNyArMTU3LDYgQEAKPiAgI2RlZmluZSBMUFJYX1RPX0NOVChw
-KQkJCSgocCkgJiAweGZmZmYpCj4gIAo+ICAjZGVmaW5lIERTSV9CVEFfVE9fQ05UCQkJMHg4Ywo+
-IC0KPiAgI2RlZmluZSBEU0lfTFBDTEtfQ1RSTAkJCTB4OTQKPiAgI2RlZmluZSBBVVRPX0NMS0xB
-TkVfQ1RSTAkJQklUKDEpCj4gICNkZWZpbmUgUEhZX1RYUkVRVUVTVENMS0hTCQlCSVQoMCkKPiBA
-QCAtMjIzLDExICsyMjIsMTEgQEAKPiAgCj4gICNkZWZpbmUgSFNGUkVRUkFOR0VfU0VMKHZhbCkJ
-KCgodmFsKSAmIDB4M2YpIDw8IDEpCj4gIAo+IC0jZGVmaW5lIElOUFVUX0RJVklERVIodmFsKQko
-KHZhbCAtIDEpICYgMHg3ZikKPiArI2RlZmluZSBJTlBVVF9ESVZJREVSKHZhbCkJKCgodmFsKSAt
-IDEpICYgMHg3ZikKPiAgI2RlZmluZSBMT1dfUFJPR1JBTV9FTgkJMAo+ICAjZGVmaW5lIEhJR0hf
-UFJPR1JBTV9FTgkJQklUKDcpCj4gLSNkZWZpbmUgTE9PUF9ESVZfTE9XX1NFTCh2YWwpCSgodmFs
-IC0gMSkgJiAweDFmKQo+IC0jZGVmaW5lIExPT1BfRElWX0hJR0hfU0VMKHZhbCkJKCgodmFsIC0g
-MSkgPj4gNSkgJiAweDFmKQo+ICsjZGVmaW5lIExPT1BfRElWX0xPV19TRUwodmFsKQkoKCh2YWwp
-IC0gMSkgJiAweDFmKQo+ICsjZGVmaW5lIExPT1BfRElWX0hJR0hfU0VMKHZhbCkJKCgoKHZhbCkg
-LSAxKSA+PiA1KSAmIDB4MWYpCj4gICNkZWZpbmUgUExMX0xPT1BfRElWX0VOCQlCSVQoNSkKPiAg
-I2RlZmluZSBQTExfSU5QVVRfRElWX0VOCUJJVCg0KQo+ICAKPiBAQCAtMzcwLDYgKzM2OSw3IEBA
-IHN0YXRpYyBpbmxpbmUgc3RydWN0IGR3X21pcGlfZHNpICplbmNvZGVyX3RvX2RzaShzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIpCj4gIHsKPiAgCXJldHVybiBjb250YWluZXJfb2YoZW5jb2Rl
-ciwgc3RydWN0IGR3X21pcGlfZHNpLCBlbmNvZGVyKTsKPiAgfQo+ICsKPiAgc3RhdGljIGlubGlu
-ZSB2b2lkIGRzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIHJlZywgdTMyIHZh
-bCkKPiAgewo+ICAJd3JpdGVsKHZhbCwgZHNpLT5iYXNlICsgcmVnKTsKPiBAQCAtMzgxLDcgKzM4
-MSw3IEBAIHN0YXRpYyBpbmxpbmUgdTMyIGRzaV9yZWFkKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
-LCB1MzIgcmVnKQo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9waHlfd3JpdGUo
-c3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHU4IHRlc3RfY29kZSwKPiAtCQkJCSB1OCB0ZXN0X2Rh
-dGEpCj4gKwkJCQkgIHU4IHRlc3RfZGF0YSkKPiAgewo+ICAJLyoKPiAgCSAqIFdpdGggdGhlIGZh
-bGxpbmcgZWRnZSBvbiBURVNUQ0xLLCB0aGUgVEVTVERJTls3OjBdIHNpZ25hbCBjb250ZW50Cj4g
-QEAgLTQ5Niw3ICs0OTYsNiBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVj
-dCBkd19taXBpX2RzaSAqZHNpKQo+ICAJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9SU1RaLCBQSFlf
-RU5GT1JDRVBMTCB8IFBIWV9FTkFCTEVDTEsgfAo+ICAJCQkJICAgICBQSFlfVU5SU1RaIHwgUEhZ
-X1VOU0hVVERPV05aKTsKPiAgCj4gLQo+ICAJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+
-YmFzZSArIERTSV9QSFlfU1RBVFVTLAo+ICAJCQkJIHZhbCwgdmFsICYgTE9DSywgMTAwMCwgUEhZ
-X1NUQVRVU19USU1FT1VUX1VTKTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gQEAgLTU3Miw3ICs1NzEs
-NyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfYXR0YWNoKHN0cnVjdCBtaXBpX2RzaV9o
-b3N0ICpob3N0LAo+ICAKPiAgCWlmIChkZXZpY2UtPmxhbmVzID4gZHNpLT5wZGF0YS0+bWF4X2Rh
-dGFfbGFuZXMpIHsKPiAgCQlkZXZfZXJyKGRzaS0+ZGV2LCAidGhlIG51bWJlciBvZiBkYXRhIGxh
-bmVzKCV1KSBpcyB0b28gbWFueVxuIiwKPiAtCQkJCWRldmljZS0+bGFuZXMpOwo+ICsJCQlkZXZp
-Y2UtPmxhbmVzKTsKPiAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgCX0KPiAgCj4gQEAgLTk2MCw4ICs5
-NTksOCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9jbGVhcl9lcnIoc3RydWN0IGR3X21pcGlf
-ZHNpICpkc2kpCj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfbW9k
-ZV9zZXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+IC0JCQkJCXN0cnVjdCBkcm1fZGlz
-cGxheV9tb2RlICptb2RlLAo+IC0JCQkJCXN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGp1c3Rl
-ZF9tb2RlKQo+ICsJCQkJCSBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPiArCQkJCQkg
-c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUpCj4gIHsKPiAgCXN0cnVjdCBk
-d19taXBpX2RzaSAqZHNpID0gZW5jb2Rlcl90b19kc2koZW5jb2Rlcik7Cj4gIAo+IEBAIC0xMDYz
-LDcgKzEwNjIsNyBAQCBkd19taXBpX2RzaV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJt
-X2VuY29kZXIgKmVuY29kZXIsCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiAtc3RhdGljIHN0cnVj
-dCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZW5j
-b2Rlcl9oZWxwZXJfZnVuY3MKPiAgZHdfbWlwaV9kc2lfZW5jb2Rlcl9oZWxwZXJfZnVuY3MgPSB7
-Cj4gIAkuZW5hYmxlID0gZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUsCj4gIAkubW9kZV9zZXQg
-PSBkd19taXBpX2RzaV9lbmNvZGVyX21vZGVfc2V0LAo+IEBAIC0xMDcxLDcgKzEwNzAsNyBAQCBk
-d19taXBpX2RzaV9lbmNvZGVyX2hlbHBlcl9mdW5jcyA9IHsKPiAgCS5hdG9taWNfY2hlY2sgPSBk
-d19taXBpX2RzaV9lbmNvZGVyX2F0b21pY19jaGVjaywKPiAgfTsKPiAgCj4gLXN0YXRpYyBzdHJ1
-Y3QgZHJtX2VuY29kZXJfZnVuY3MgZHdfbWlwaV9kc2lfZW5jb2Rlcl9mdW5jcyA9IHsKPiArc3Rh
-dGljIGNvbnN0IHN0cnVjdCBkcm1fZW5jb2Rlcl9mdW5jcyBkd19taXBpX2RzaV9lbmNvZGVyX2Z1
-bmNzID0gewo+ICAJLmRlc3Ryb3kgPSBkcm1fZW5jb2Rlcl9jbGVhbnVwLAo+ICB9Owo+ICAKPiBA
-QCAtMTEwNyw3ICsxMTA2LDcgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZHJtX2Nvbm5lY3Rv
-cl9kZXN0cm95KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IpCj4gIAlkcm1fY29ubmVj
-dG9yX2NsZWFudXAoY29ubmVjdG9yKTsKPiAgfQo+ICAKPiAtc3RhdGljIHN0cnVjdCBkcm1fY29u
-bmVjdG9yX2Z1bmNzIGR3X21pcGlfZHNpX2F0b21pY19jb25uZWN0b3JfZnVuY3MgPSB7Cj4gK3N0
-YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyBkd19taXBpX2RzaV9hdG9taWNf
-Y29ubmVjdG9yX2Z1bmNzID0gewo+ICAJLmRwbXMgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0
-b3JfZHBtcywKPiAgCS5maWxsX21vZGVzID0gZHJtX2hlbHBlcl9wcm9iZV9zaW5nbGVfY29ubmVj
-dG9yX21vZGVzLAo+ICAJLmRlc3Ryb3kgPSBkd19taXBpX2RzaV9kcm1fY29ubmVjdG9yX2Rlc3Ry
-b3ksCj4gQEAgLTExMTcsNyArMTExNiw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9m
-dW5jcyBkd19taXBpX2RzaV9hdG9taWNfY29ubmVjdG9yX2Z1bmNzID0gewo+ICB9Owo+ICAKPiAg
-c3RhdGljIGludCBkd19taXBpX2RzaV9yZWdpc3RlcihzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+
-IC0JCQkJICAgICAgc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gKwkJCQlzdHJ1Y3QgZHdfbWlw
-aV9kc2kgKmRzaSkKPiAgewo+ICAJc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyID0gJmRzaS0+
-ZW5jb2RlcjsKPiAgCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmZHNpLT5jb25u
-ZWN0b3I7Cj4gQEAgLTExMzgsMTQgKzExMzcsMTQgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9y
-ZWdpc3RlcihzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+ICAJZHJtX2VuY29kZXJfaGVscGVyX2Fk
-ZCgmZHNpLT5lbmNvZGVyLAo+ICAJCQkgICAgICAgJmR3X21pcGlfZHNpX2VuY29kZXJfaGVscGVy
-X2Z1bmNzKTsKPiAgCXJldCA9IGRybV9lbmNvZGVyX2luaXQoZHJtLCAmZHNpLT5lbmNvZGVyLCAm
-ZHdfbWlwaV9kc2lfZW5jb2Rlcl9mdW5jcywKPiAtCQkJIERSTV9NT0RFX0VOQ09ERVJfRFNJLCBO
-VUxMKTsKPiArCQkJICAgICAgIERSTV9NT0RFX0VOQ09ERVJfRFNJLCBOVUxMKTsKPiAgCWlmIChy
-ZXQpIHsKPiAgCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGVuY29kZXIgd2l0
-aCBkcm1cbiIpOwo+ICAJCXJldHVybiByZXQ7Cj4gIAl9Cj4gIAo+ICAJZHJtX2Nvbm5lY3Rvcl9o
-ZWxwZXJfYWRkKGNvbm5lY3RvciwKPiAtCQkJJmR3X21pcGlfZHNpX2Nvbm5lY3Rvcl9oZWxwZXJf
-ZnVuY3MpOwo+ICsJCQkJICZkd19taXBpX2RzaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzKTsKPiAg
-Cj4gIAlkcm1fY29ubmVjdG9yX2luaXQoZHJtLCAmZHNpLT5jb25uZWN0b3IsCj4gIAkJCSAgICZk
-d19taXBpX2RzaV9hdG9taWNfY29ubmVjdG9yX2Z1bmNzLAo+IEBAIC0xMjIwLDcgKzEyMTksNyBA
-QCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBkd19taXBpX2RzaV9kdF9pZHNbXSA9
-IHsKPiAgTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgZHdfbWlwaV9kc2lfZHRfaWRzKTsKPiAgCj4g
-IHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBk
-ZXZpY2UgKm1hc3RlciwKPiAtCQkJICAgICB2b2lkICpkYXRhKQo+ICsJCQkgICAgdm9pZCAqZGF0
-YSkKPiAgewo+ICAJY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqb2ZfaWQgPQo+ICAJCQlvZl9t
-YXRjaF9kZXZpY2UoZHdfbWlwaV9kc2lfZHRfaWRzLCBkZXYpOwo+IEBAIC0xMzI4LDcgKzEzMjcs
-NyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1
-Y3QgZGV2aWNlICptYXN0ZXIsCj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3Vu
-YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAtCXZvaWQg
-KmRhdGEpCj4gKwkJCSAgICAgICB2b2lkICpkYXRhKQo+ICB7Cj4gIAlzdHJ1Y3QgZHdfbWlwaV9k
-c2kgKmRzaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICAKPiAtLSAKPiAyLjYuMwo+IAo+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVs
-IG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gClNl
-YW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This set of patches adds a machine driver for rk3288-based boards that have
+the built-in HDMI audio and a generic analog output. It also adds slave mode
+to the es8328 driver that currently only supported the master mode. Then, it
+adds the required DT definitions to link rockchip-i2s to the es8388 analog
+output and to hdmi audio.
+
+This work is based on the initial work that was done by Sjoerd Simons
+<sjoerd.simons@collabora.co.uk> with some improvements, changes and more
+commits.
+
+Changes in v8:
+ - Fixed unmet direct dependencies for SND_SOC_IMX_ES8328 caused by patch 2/4
+Changes in v7:
+ - Added patch 2/4
+ - No longer select ES8328_I2C for RK3288_HDMI_ANALOG
+ - Fixed DT regulator names in the DT for the Rock2
+ - Splitted pins for the headphone in the DT for the Rock2
+Changes in v6:
+ - Fixed bad error handling for gpio in rk3288_analog_hdmi.c
+ - Removed message duplication in rk_hw_params(), in rk3288_analog_hdmi.c
+ - Removed patch 1/4 (from the previous series), as it has been merged
+Changes in v5:
+ - Fixed coding style issue in patch 2/4 (the switch case).
+ - Moved the code for the master mode and the slave mode into the switch case for patch 2/4
+ - Fixed error handling for patch 3/4
+Changes in v4:
+ - Add support for multi codecs in the asoc machine driver, so the driver
+   matches the hw architecture (analog and hdmi audio are connected on
+   the same i2s line)
+ - Renamed the driver to rk3288-hdmi-analog.c and changed its
+   documentation
+ - Add built-in support for hdmi audio in this driver
+ - Add support for the property 'rockchip,routing'
+
+Changes in v3:
+ - Cosmetic changes in rockchip_es8388.c
+ - Added missing email to MODULE_AUTHOR in rockchip_es8388.c
+Changes in v2:
+ - Fixed wrong use of the data structure i2c_device_id
+ - Fixed wrong dependencies for SND_SOC_ROCKCHIP_ES8388
+
+Romain Perier (4):
+  ASoC: es8328: Add support for slave mode
+  ASoC: Allow to select ES8328_I2C and ES8328_SPI directly
+  ASoC: rockchip: Add machine driver for RK3288 boards that use
+    analog/HDMI
+  arm: dts: Add support for ES8388 to the Radxa Rock 2
+
+ .../bindings/sound/rockchip,rk3288-hdmi-analog.txt |  36 +++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |   2 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  42 +++
+ sound/soc/codecs/Kconfig                           |   8 +-
+ sound/soc/codecs/es8328.c                          |  20 +-
+ sound/soc/fsl/Kconfig                              |   2 +-
+ sound/soc/rockchip/Kconfig                         |   9 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rk3288_hdmi_analog.c            | 299 +++++++++++++++++++++
+ 9 files changed, 408 insertions(+), 12 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3288-hdmi-analog.txt
+ create mode 100644 sound/soc/rockchip/rk3288_hdmi_analog.c
+
+-- 
+2.9.3
