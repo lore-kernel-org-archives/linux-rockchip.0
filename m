@@ -1,127 +1,106 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v17 6/7] drm/rockchip: cdn-dp: retry to check sink count
-Date: Sun,  5 Feb 2017 15:55:01 +0800
-Message-ID: <1486281302-28200-7-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v17 7/7] drm/rockchip: cdn-dp: don't configure hardware in mode_set
+Date: Sun,  5 Feb 2017 15:55:02 +0800
+Message-ID: <1486281302-28200-8-git-send-email-zyw@rock-chips.com>
 References: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, zyw@rock-chips.com, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, groeck@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U29tZXRpbWVzIHRoZSBEb2NrIGlzIGRpc2Nvbm5lY3RlZCwgYnV0IGNkbl9kcF9lbmNvZGVyX2Rp
-c2FibGUgaXMgbm90CnRyaWdnZXJlZCBieSBEUk0uIEZvciBleGFtcGxlLCB1bnBsdWcgdGhlIERv
-Y2sgaW4gY29uc29sZSBtb2RlLCBhbmQKcmUtcGx1ZyBpdCBhZ2FpbiwgdGhlIGNkbl9kcF9ldmVu
-dF93b3JrIHdpbGwgdHJ5IHRvIGdldCB0aGUgc2luayBjb3VudApvZiBEb2NrLCBzaW5jZSB0aGUg
-RFAgaXMgc3RpbGwgYWN0aXZlLiBCdXQgdGhlIERvY2sgaGFzIGJlZW4gcG93ZXJlZApkb3duLCBp
-dCBuZWVkIHJlLXBvd2VyIG9uLCBhbmQgd2FpdCBmb3IgYSB3aGlsZSB1bnRpbCBpdCBpcyByZWFk
-eSB0bwpEUENEIGNvbW11bmljYXRpb24uCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3
-QHJvY2stY2hpcHMuY29tPgotLS0KCkNoYW5nZXMgaW4gdjE3OiBOb25lCgogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCA5MSArKysrKysrKysrKysrKysrKysrLS0tLS0t
-LS0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuaCB8ICAxICsK
-IDIgZmlsZXMgY2hhbmdlZCwgNTIgaW5zZXJ0aW9ucygrKSwgNDAgZGVsZXRpb25zKC0pCgpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwppbmRleCA3OTllODI2Li5hNjMwYjBkIDEw
-MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYworKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwpAQCAtMTk3LDYgKzE5NywzOSBA
-QCBzdGF0aWMgc3RydWN0IGNkbl9kcF9wb3J0ICpjZG5fZHBfY29ubmVjdGVkX3BvcnQoc3RydWN0
-IGNkbl9kcF9kZXZpY2UgKmRwKQogCXJldHVybiBOVUxMOwogfQogCitzdGF0aWMgYm9vbCBjZG5f
-ZHBfY2hlY2tfc2lua19jb25uZWN0aW9uKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCkKK3sKKwl1
-bnNpZ25lZCBsb25nIHRpbWVvdXQgPSBqaWZmaWVzICsgbXNlY3NfdG9famlmZmllcyhDRE5fRFBD
-RF9USU1FT1VUX01TKTsKKwlzdHJ1Y3QgY2RuX2RwX3BvcnQgKnBvcnQ7CisJdTggc2lua19jb3Vu
-dCA9IDA7CisKKwlpZiAoZHAtPmFjdGl2ZV9wb3J0IDwgMCB8fCBkcC0+YWN0aXZlX3BvcnQgPj0g
-ZHAtPnBvcnRzKSB7CisJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImFjdGl2ZV9wb3J0IGlzIHdy
-b25nIVxuIik7CisJCXJldHVybiBmYWxzZTsKKwl9CisKKwlwb3J0ID0gZHAtPnBvcnRbZHAtPmFj
-dGl2ZV9wb3J0XTsKKworCS8qCisJICogQXR0ZW1wdCB0byByZWFkIHNpbmsgY291bnQsIHJldHJ5
-IGluIGNhc2UgdGhlIHNpbmsgbWF5IG5vdCBiZSByZWFkeS4KKwkgKgorCSAqIFNpbmtzIGFyZSAq
-c3VwcG9zZWQqIHRvIGNvbWUgdXAgd2l0aGluIDFtcyBmcm9tIGFuIG9mZiBzdGF0ZSwgYnV0CisJ
-ICogc29tZSBkb2NrcyBuZWVkIG1vcmUgdGltZSB0byBwb3dlciB1cC4KKwkgKi8KKwl3aGlsZSAo
-dGltZV9iZWZvcmUoamlmZmllcywgdGltZW91dCkpIHsKKwkJaWYgKCFleHRjb25fZ2V0X3N0YXRl
-KHBvcnQtPmV4dGNvbiwgRVhUQ09OX0RJU1BfRFApKQorCQkJcmV0dXJuIGZhbHNlOworCisJCWlm
-ICghY2RuX2RwX2dldF9zaW5rX2NvdW50KGRwLCAmc2lua19jb3VudCkpCisJCQlyZXR1cm4gc2lu
-a19jb3VudCA/IHRydWUgOiBmYWxzZTsKKworCQl1c2xlZXBfcmFuZ2UoNTAwMCwgMTAwMDApOwor
-CX0KKworCURSTV9ERVZfRVJST1IoZHAtPmRldiwgIkdldCBzaW5rIGNhcGFiaWxpdHkgdGltZWQg
-b3V0XG4iKTsKKwlyZXR1cm4gZmFsc2U7Cit9CisKIHN0YXRpYyBlbnVtIGRybV9jb25uZWN0b3Jf
-c3RhdHVzCiBjZG5fZHBfY29ubmVjdG9yX2RldGVjdChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29u
-bmVjdG9yLCBib29sIGZvcmNlKQogewpAQCAtMzQ1LDQ3ICszNzgsMjQgQEAgc3RhdGljIGludCBj
-ZG5fZHBfZmlybXdhcmVfaW5pdChzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHApCiAJcmV0dXJuIGNk
-bl9kcF9ldmVudF9jb25maWcoZHApOwogfQogCi1zdGF0aWMgaW50IGNkbl9kcF9nZXRfc2lua19j
-YXBhYmlsaXR5KHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCwKLQkJCQkgICAgICBzdHJ1Y3QgY2Ru
-X2RwX3BvcnQgKnBvcnQsCi0JCQkJICAgICAgdTggKnNpbmtfY291bnQpCitzdGF0aWMgaW50IGNk
-bl9kcF9nZXRfc2lua19jYXBhYmlsaXR5KHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCkKIHsKIAlp
-bnQgcmV0OwotCXVuc2lnbmVkIGxvbmcgdGltZW91dCA9IGppZmZpZXMgKyBtc2Vjc190b19qaWZm
-aWVzKENETl9EUENEX1RJTUVPVVRfTVMpOwogCi0JLyoKLQkgKiBBdHRlbXB0IHRvIHJlYWQgc2lu
-ayBjb3VudCAmIHNpbmsgY2FwYWJpbGl0eSwgcmV0cnkgaW4gY2FzZSB0aGUgc2luawotCSAqIG1h
-eSBub3QgYmUgcmVhZHkuCi0JICoKLQkgKiBTaW5rcyBhcmUgKnN1cHBvc2VkKiB0byBjb21lIHVw
-IHdpdGhpbiAxbXMgZnJvbSBhbiBvZmYgc3RhdGUsIGJ1dAotCSAqIHNvbWUgZG9ja3MgbmVlZCBt
-b3JlIHRpbWUgdG8gcG93ZXIgdXAuCi0JICovCi0Jd2hpbGUgKHRpbWVfYmVmb3JlKGppZmZpZXMs
-IHRpbWVvdXQpKSB7Ci0JCWlmICghZXh0Y29uX2dldF9zdGF0ZShwb3J0LT5leHRjb24sIEVYVENP
-Tl9ESVNQX0RQKSkKLQkJCXJldHVybiAtRU5PREVWOwotCi0JCWlmIChjZG5fZHBfZ2V0X3Npbmtf
-Y291bnQoZHAsIHNpbmtfY291bnQpKSB7Ci0JCQl1c2xlZXBfcmFuZ2UoNTAwMCwgMTAwMDApOwot
-CQkJY29udGludWU7Ci0JCX0KLQotCQlpZiAoISpzaW5rX2NvdW50KQotCQkJcmV0dXJuIC1FTk9E
-RVY7Ci0KLQkJcmV0ID0gY2RuX2RwX2RwY2RfcmVhZChkcCwgRFBfRFBDRF9SRVYsIGRwLT5kcGNk
-LAotCQkJCSAgICAgICBEUF9SRUNFSVZFUl9DQVBfU0laRSk7Ci0JCWlmIChyZXQpIHsKLQkJCURS
-TV9ERVZfRVJST1IoZHAtPmRldiwgIkZhaWxlZCB0byBnZXQgY2FwcyAlZFxuIiwgcmV0KTsKLQkJ
-CXJldHVybiByZXQ7Ci0JCX0KKwlpZiAoIWNkbl9kcF9jaGVja19zaW5rX2Nvbm5lY3Rpb24oZHAp
-KQorCQlyZXR1cm4gLUVOT0RFVjsKIAotCQlrZnJlZShkcC0+ZWRpZCk7Ci0JCWRwLT5lZGlkID0g
-ZHJtX2RvX2dldF9lZGlkKCZkcC0+Y29ubmVjdG9yLAotCQkJCQkgICBjZG5fZHBfZ2V0X2VkaWRf
-YmxvY2ssIGRwKTsKLQkJcmV0dXJuIDA7CisJcmV0ID0gY2RuX2RwX2RwY2RfcmVhZChkcCwgRFBf
-RFBDRF9SRVYsIGRwLT5kcGNkLAorCQkJICAgICAgIERQX1JFQ0VJVkVSX0NBUF9TSVpFKTsKKwlp
-ZiAocmV0KSB7CisJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgIkZhaWxlZCB0byBnZXQgY2FwcyAl
-ZFxuIiwgcmV0KTsKKwkJcmV0dXJuIHJldDsKIAl9CiAKLQlEUk1fREVWX0VSUk9SKGRwLT5kZXYs
-ICJHZXQgc2luayBjYXBhYmlsaXR5IHRpbWVkIG91dFxuIik7Ci0JcmV0dXJuIC1FVElNRURPVVQ7
-CisJa2ZyZWUoZHAtPmVkaWQpOworCWRwLT5lZGlkID0gZHJtX2RvX2dldF9lZGlkKCZkcC0+Y29u
-bmVjdG9yLAorCQkJCSAgIGNkbl9kcF9nZXRfZWRpZF9ibG9jaywgZHApOworCXJldHVybiAwOwog
-fQogCiBzdGF0aWMgaW50IGNkbl9kcF9lbmFibGVfcGh5KHN0cnVjdCBjZG5fZHBfZGV2aWNlICpk
-cCwgc3RydWN0IGNkbl9kcF9wb3J0ICpwb3J0KQpAQCAtNDM3LDYgKzQ0Nyw3IEBAIHN0YXRpYyBp
-bnQgY2RuX2RwX2VuYWJsZV9waHkoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCBzdHJ1Y3QgY2Ru
-X2RwX3BvcnQgKnBvcnQpCiAJCWdvdG8gZXJyX3Bvd2VyX29uOwogCX0KIAorCWRwLT5hY3RpdmVf
-cG9ydCA9IHBvcnQtPmlkOwogCXJldHVybiAwOwogCiBlcnJfcG93ZXJfb246CkBAIC00NjYsNiAr
-NDc3LDcgQEAgc3RhdGljIGludCBjZG5fZHBfZGlzYWJsZV9waHkoc3RydWN0IGNkbl9kcF9kZXZp
-Y2UgKmRwLAogCiAJcG9ydC0+cGh5X2VuYWJsZWQgPSBmYWxzZTsKIAlwb3J0LT5sYW5lcyA9IDA7
-CisJZHAtPmFjdGl2ZV9wb3J0ID0gLTE7CiAJcmV0dXJuIDA7CiB9CiAKQEAgLTUwNCw3ICs1MTYs
-NiBAQCBzdGF0aWMgaW50IGNkbl9kcF9lbmFibGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQog
-ewogCWludCByZXQsIGksIGxhbmVzOwogCXN0cnVjdCBjZG5fZHBfcG9ydCAqcG9ydDsKLQl1OCBz
-aW5rX2NvdW50OwogCiAJcG9ydCA9IGNkbl9kcF9jb25uZWN0ZWRfcG9ydChkcCk7CiAJaWYgKCFw
-b3J0KSB7CkBAIC01MzUsOCArNTQ2LDggQEAgc3RhdGljIGludCBjZG5fZHBfZW5hYmxlKHN0cnVj
-dCBjZG5fZHBfZGV2aWNlICpkcCkKIAkJCWlmIChyZXQpCiAJCQkJY29udGludWU7CiAKLQkJCXJl
-dCA9IGNkbl9kcF9nZXRfc2lua19jYXBhYmlsaXR5KGRwLCBwb3J0LCAmc2lua19jb3VudCk7Ci0J
-CQlpZiAocmV0IHx8ICghcmV0ICYmICFzaW5rX2NvdW50KSkgeworCQkJcmV0ID0gY2RuX2RwX2dl
-dF9zaW5rX2NhcGFiaWxpdHkoZHApOworCQkJaWYgKHJldCkgewogCQkJCWNkbl9kcF9kaXNhYmxl
-X3BoeShkcCwgcG9ydCk7CiAJCQl9IGVsc2UgewogCQkJCWRwLT5hY3RpdmUgPSB0cnVlOwpAQCAt
-OTM5LDcgKzk1MCw2IEBAIHN0YXRpYyB2b2lkIGNkbl9kcF9wZF9ldmVudF93b3JrKHN0cnVjdCB3
-b3JrX3N0cnVjdCAqd29yaykKIAllbnVtIGRybV9jb25uZWN0b3Jfc3RhdHVzIG9sZF9zdGF0dXM7
-CiAKIAlpbnQgcmV0OwotCXU4IHNpbmtfY291bnQ7CiAKIAltdXRleF9sb2NrKCZkcC0+bG9jayk7
-CiAKQEAgLTk2Nyw3ICs5NzcsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfcGRfZXZlbnRfd29yayhz
-dHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCiAJCX0KIAogCS8qIEVuYWJsZWQgYW5kIGNvbm5lY3Rl
-ZCB0byBhIGRvbmdsZSB3aXRob3V0IGEgc2luaywgbm90aWZ5IHVzZXJzcGFjZSAqLwotCX0gZWxz
-ZSBpZiAoY2RuX2RwX2dldF9zaW5rX2NvdW50KGRwLCAmc2lua19jb3VudCkgfHwgIXNpbmtfY291
-bnQpIHsKKwl9IGVsc2UgaWYgKCFjZG5fZHBfY2hlY2tfc2lua19jb25uZWN0aW9uKGRwKSkgewog
-CQlEUk1fREVWX0lORk8oZHAtPmRldiwgIkNvbm5lY3RlZCB3aXRob3V0IHNpbmsuIEFzc2VydCBo
-cGRcbiIpOwogCQlkcC0+Y29ubmVjdGVkID0gZmFsc2U7CiAKQEAgLTEwNDAsNiArMTA1MCw3IEBA
-IHN0YXRpYyBpbnQgY2RuX2RwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNl
-ICptYXN0ZXIsIHZvaWQgKmRhdGEpCiAJZHAtPmRybV9kZXYgPSBkcm1fZGV2OwogCWRwLT5jb25u
-ZWN0ZWQgPSBmYWxzZTsKIAlkcC0+YWN0aXZlID0gZmFsc2U7CisJZHAtPmFjdGl2ZV9wb3J0ID0g
-LTE7CiAKIAlJTklUX1dPUksoJmRwLT5ldmVudF93b3JrLCBjZG5fZHBfcGRfZXZlbnRfd29yayk7
-CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKaW5kZXggN2Q0ODY2MS4uZjU3
-ZTI5NiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgK
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKQEAgLTEwNCw2ICsx
-MDQsNyBAQCBzdHJ1Y3QgY2RuX2RwX2RldmljZSB7CiAJc3RydWN0IGNkbl9kcF9wb3J0ICpwb3J0
-W01BWF9QSFldOwogCXU4IHBvcnRzOwogCXU4IGxhbmVzOworCWludCBhY3RpdmVfcG9ydDsKIAog
-CXU4IGRwY2RbRFBfUkVDRUlWRVJfQ0FQX1NJWkVdOwogCWJvb2wgc2lua19oYXNfYXVkaW87Ci0t
-IAoyLjYuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+With atomic modesetting the hardware will be powered off when the
+mode_set function is called.  We should configure the hardware in the
+enable function.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
+
+Changes in v17: None
+
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 49 +++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index a630b0d..9ab67a6 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -568,9 +568,7 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
+ {
+ 	struct cdn_dp_device *dp = encoder_to_dp(encoder);
+ 	struct drm_display_info *display_info = &dp->connector.display_info;
+-	struct rockchip_crtc_state *state;
+ 	struct video_info *video = &dp->video_info;
+-	int ret, val;
+ 
+ 	switch (display_info->bpc) {
+ 	case 10:
+@@ -585,31 +583,9 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
+ 	}
+ 
+ 	video->color_fmt = PXL_RGB;
+-
+ 	video->v_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NVSYNC);
+ 	video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
+ 
+-	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
+-	if (ret < 0) {
+-		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
+-		return;
+-	}
+-
+-	DRM_DEV_DEBUG_KMS(dp->dev, "vop %s output to cdn-dp\n",
+-			  (ret) ? "LIT" : "BIG");
+-	state = to_rockchip_crtc_state(encoder->crtc->state);
+-	if (ret) {
+-		val = DP_SEL_VOP_LIT | (DP_SEL_VOP_LIT << 16);
+-		state->output_mode = ROCKCHIP_OUT_MODE_P888;
+-	} else {
+-		val = DP_SEL_VOP_LIT << 16;
+-		state->output_mode = ROCKCHIP_OUT_MODE_AAAA;
+-	}
+-
+-	ret = cdn_dp_grf_write(dp, GRF_SOC_CON9, val);
+-	if (ret)
+-		return;
+-
+ 	memcpy(&dp->mode, adjusted, sizeof(*mode));
+ }
+ 
+@@ -635,9 +611,32 @@ static bool cdn_dp_check_link_status(struct cdn_dp_device *dp)
+ static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
+ {
+ 	struct cdn_dp_device *dp = encoder_to_dp(encoder);
+-	int ret;
++	int ret, val;
++	struct rockchip_crtc_state *state;
++
++	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
++	if (ret < 0) {
++		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
++		return;
++	}
++
++	DRM_DEV_DEBUG_KMS(dp->dev, "vop %s output to cdn-dp\n",
++			  (ret) ? "LIT" : "BIG");
++	state = to_rockchip_crtc_state(encoder->crtc->state);
++	if (ret) {
++		val = DP_SEL_VOP_LIT | (DP_SEL_VOP_LIT << 16);
++		state->output_mode = ROCKCHIP_OUT_MODE_P888;
++	} else {
++		val = DP_SEL_VOP_LIT << 16;
++		state->output_mode = ROCKCHIP_OUT_MODE_AAAA;
++	}
++
++	ret = cdn_dp_grf_write(dp, GRF_SOC_CON9, val);
++	if (ret)
++		return;
+ 
+ 	mutex_lock(&dp->lock);
++
+ 	ret = cdn_dp_enable(dp);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(dp->dev, "Failed to enable encoder %d\n",
+-- 
+2.6.3
