@@ -1,106 +1,67 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v17 7/7] drm/rockchip: cdn-dp: don't configure hardware in mode_set
-Date: Sun,  5 Feb 2017 15:55:02 +0800
-Message-ID: <1486281302-28200-8-git-send-email-zyw@rock-chips.com>
-References: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, groeck@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: add cdn-dp support and some fixes
+Date: Sun, 5 Feb 2017 16:40:21 +0800
+Message-ID: <5896E4F5.5040708@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: airlied@linux.ie, linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Cc: =?UTF-8?B?6ZKf5YuH5rGq?= <chris.zhong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-With atomic modesetting the hardware will be powered off when the
-mode_set function is called.  We should configure the hardware in the
-enable function.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
----
-
-Changes in v17: None
-
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 49 +++++++++++++++++-----------------
- 1 file changed, 24 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index a630b0d..9ab67a6 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -568,9 +568,7 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
- {
- 	struct cdn_dp_device *dp = encoder_to_dp(encoder);
- 	struct drm_display_info *display_info = &dp->connector.display_info;
--	struct rockchip_crtc_state *state;
- 	struct video_info *video = &dp->video_info;
--	int ret, val;
- 
- 	switch (display_info->bpc) {
- 	case 10:
-@@ -585,31 +583,9 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
- 	}
- 
- 	video->color_fmt = PXL_RGB;
--
- 	video->v_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NVSYNC);
- 	video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
- 
--	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
--	if (ret < 0) {
--		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
--		return;
--	}
--
--	DRM_DEV_DEBUG_KMS(dp->dev, "vop %s output to cdn-dp\n",
--			  (ret) ? "LIT" : "BIG");
--	state = to_rockchip_crtc_state(encoder->crtc->state);
--	if (ret) {
--		val = DP_SEL_VOP_LIT | (DP_SEL_VOP_LIT << 16);
--		state->output_mode = ROCKCHIP_OUT_MODE_P888;
--	} else {
--		val = DP_SEL_VOP_LIT << 16;
--		state->output_mode = ROCKCHIP_OUT_MODE_AAAA;
--	}
--
--	ret = cdn_dp_grf_write(dp, GRF_SOC_CON9, val);
--	if (ret)
--		return;
--
- 	memcpy(&dp->mode, adjusted, sizeof(*mode));
- }
- 
-@@ -635,9 +611,32 @@ static bool cdn_dp_check_link_status(struct cdn_dp_device *dp)
- static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
- {
- 	struct cdn_dp_device *dp = encoder_to_dp(encoder);
--	int ret;
-+	int ret, val;
-+	struct rockchip_crtc_state *state;
-+
-+	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
-+		return;
-+	}
-+
-+	DRM_DEV_DEBUG_KMS(dp->dev, "vop %s output to cdn-dp\n",
-+			  (ret) ? "LIT" : "BIG");
-+	state = to_rockchip_crtc_state(encoder->crtc->state);
-+	if (ret) {
-+		val = DP_SEL_VOP_LIT | (DP_SEL_VOP_LIT << 16);
-+		state->output_mode = ROCKCHIP_OUT_MODE_P888;
-+	} else {
-+		val = DP_SEL_VOP_LIT << 16;
-+		state->output_mode = ROCKCHIP_OUT_MODE_AAAA;
-+	}
-+
-+	ret = cdn_dp_grf_write(dp, GRF_SOC_CON9, val);
-+	if (ret)
-+		return;
- 
- 	mutex_lock(&dp->lock);
-+
- 	ret = cdn_dp_enable(dp);
- 	if (ret) {
- 		DRM_DEV_ERROR(dp->dev, "Failed to enable encoder %d\n",
--- 
-2.6.3
+SGkgRGF2ZQoKZHJtL3JvY2tjaGlwIGNkbi1kcCBkcml2ZXIgaXMgdjE3IG5vdywgSSB0aGluayBp
+dCdzIHJlYWR5IHRvIGxhbmQgaXQuCgpUaGFua3MuCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2lu
+Y2UgY29tbWl0IDk5NzQzYWU0YzVmNTJmOGY4Y2ViMTc3ODMwNTZmY2M5YjRmOGI2NGM6CgogICBN
+ZXJnZSBicmFuY2ggJ2RybS1ldG5hdml2LW5leHQnIG9mIApodHRwczovL2dpdC5wZW5ndXRyb25p
+eC5kZS9naXQvbHN0L2xpbnV4IGludG8gZHJtLW5leHQgKDIwMTctMDItMDMgCjA1OjQxOjU4ICsx
+MDAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogICBodHRwczov
+L2dpdGh1Yi5jb20vbWFya3l6cS9rZXJuZWwtZHJtLXJvY2tjaGlwLmdpdCAKZHJtLXJvY2tjaGlw
+LW5leHQtMjAxNy0wMi0wNQoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIGVmMTg0NGI3
+ZWQ4NDc0MzA5NTVhOTVkMjAyNDJmMGQxYjlmNWZhNjQ6CgogICBkcm0vcm9ja2NoaXA6IGNkbi1k
+cDogZG9uJ3QgY29uZmlndXJlIGhhcmR3YXJlIGluIG1vZGVfc2V0IAooMjAxNy0wMi0wNSAxNjoz
+MDoxMSArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0KQ2hyaXMgWmhvbmcgKDUpOgogICAgICAgZHJtL3JvY2tjaGlw
+OiB2b3A6IG1ha2Ugdm9wIHJlZ2lzdGVyIHNldHRpbmcgdGFrZSBlZmZlY3QKICAgICAgIGRybS9y
+b2NrY2hpcDogY2RuLWRwOiBhZGQgY2RuIERQIHN1cHBvcnQgZm9yIHJrMzM5OQogICAgICAgZHJt
+L3JvY2tjaGlwOiBjZG4tZHA6IGRvIG5vdCB1c2UgZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50CiAg
+ICAgICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogcmV0cnkgdG8gY2hlY2sgc2luayBjb3VudAogICAg
+ICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGRvbid0IGNvbmZpZ3VyZSBoYXJkd2FyZSBpbiBtb2Rl
+X3NldAoKR3VlbnRlciBSb2VjayAoMik6CiAgICAgICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogTG9h
+ZCBmaXJtd2FyZSBpZiBubyBtb25pdG9yIGNvbm5lY3RlZAogICAgICAgZHJtL3JvY2tjaGlwOiBj
+ZG4tZHA6IERvIG5vdCBydW4gd29ya2VyIHdoaWxlIHN1c3BlbmRlZAoKSmVmZnkgQ2hlbiAoMSk6
+CiAgICAgICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogTW92ZSBtdXRleF9pbml0IHRvIHByb2JlCgpK
+dWxpYSBMYXdhbGwgKDEpOgogICAgICAgZHJtL3JvY2tjaGlwOiByZXR1cm4gRVJSX1BUUiBpbnN0
+ZWFkIG9mIE5VTEwKCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICAg
+ICB8ICAgMTAgKwogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAg
+fCAgICAyICsKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyAgICAgIHwg
+MTI2MCAKKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
+LmggICAgICB8ICAxMTIgKysrKysrKysrKysrCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nk
+bi1kcC1yZWcuYyAgICAgICB8ICA5NzkgCisrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCAgICAgICB8
+ICA0ODMgCisrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwog
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgfCAgICAyICstCiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAgMTcgKy0KICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgICAgOSArCiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8ICAgIDIgKwogIDEwIGZp
+bGVzIGNoYW5nZWQsIDI4NzIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKICBjcmVhdGUg
+bW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKICBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKICBj
+cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwog
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5o
+CgotLSDvvK1hcmsgWWFvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
