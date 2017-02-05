@@ -1,67 +1,115 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v17 0/7] drm/rockchip: Add CDN DP driver
-Date: Sun, 5 Feb 2017 16:42:23 +0800
-Message-ID: <5896E56F.6020500@rock-chips.com>
-References: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
+ phases
+Date: Sun, 05 Feb 2017 17:34:29 +0800
+Message-ID: <5896F1A5.9080405@rock-chips.com>
+References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com> <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com> <58842848.5090806@rock-chips.com> <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1486281302-28200-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hyaXMKCkFwcGxpZWQgdG8gbXkgZHJtLW5leHQgYW5kIGFscmVhZHkgc2VudCBwdWxsIHJl
-cXVlc3QgdG8gRGF2ZS4KClRoYW5rcy4KCk9uIDIwMTflubQwMuaciDA15pelIDE1OjU0LCBDaHJp
-cyBaaG9uZyB3cm90ZToKPiBUaGlzIHNlcmllcyBhZGRzIHN1cHBvcnQgZm9yIHRoZSBDRE4gRFAg
-Y29udHJvbGxlciB0byB0aGUgcm9ja2NoaXAgZHJtCj4gZHJpdmVyLiBUaGlzIHZlcnNpb24gZml4
-ZXMgc29tZSBjb2Rpbmcgc3R5bGUgZXJyb3IgaW4gdjE2LCBpdCBwb3N0IGJ5Cj4gU2VhbiBQYXVs
-LCB5b3UgY2FuIGZpbmQgaXQgaGVyZToKPiAJaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9w
-YXRjaC85NDQyMTM1Lwo+Cj4gQW5kIEkgc29ydGVkIG91dCBhIGZldyBwYXRjaGVzIHRvIGZpeCB0
-aGUgZm9sbG93aW5nIHByb2JsZW1zOgo+IC0gc3VzcGVuZC9yZXN1bWUgY3Jhc2ggY2F1c2UgYnkg
-ZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50Cj4gLSBjcmFzaCBkdXJpbmcgc2h1dGRvd24gd2hlbiBj
-ZG4tZHAgZmFpbGVkIHRvIGJpbmQKPiAtIGNoZWNrIHNpbmsgY291bnQgZmFpbGVkIGFmdGVyIHJl
-Y29ubmVjdGlvbgo+IC0gc3VzcGVuZC9yZXVzbWUgY3Jhc2ggaW4gbW9kZV9zZXQgZnVuY3Rpb24K
-Pgo+IEkgYWxzbyBhZGRlZCB0aGVzZSAyIHBhdGNoZXMgdG8gdGhpcyBzZXJpZXMsIGFsdGhvdWdo
-IG5vdGhpbmcgY2hhbmdlZDoKPiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk0
-NDIxNDEvCj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NDQyMTUxLwo+Cj4K
-PiBDaGFuZ2VzIGluIHYxNzoKPiAtIENvcnJlY3QgdGhlIGNsb2NrIGNoZWNrIGNvbmRpdGlvbgo+
-IC0gQ29ycmVjdCB0aGUgY29kaW5nIHN0eWxlCj4gLSBjaGFuZ2UgTEFORV9SRUZfQ1lDIHRvIDB4
-ODAwMAo+Cj4gQ2hyaXMgWmhvbmcgKDQpOgo+ICAgIGRybS9yb2NrY2hpcDogY2RuLWRwOiBhZGQg
-Y2RuIERQIHN1cHBvcnQgZm9yIHJrMzM5OQo+ICAgIGRybS9yb2NrY2hpcDogY2RuLWRwOiBkbyBu
-b3QgdXNlIGRybV9oZWxwZXJfaHBkX2lycV9ldmVudAo+ICAgIGRybS9yb2NrY2hpcDogY2RuLWRw
-OiByZXRyeSB0byBjaGVjayBzaW5rIGNvdW50Cj4gICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGRv
-bid0IGNvbmZpZ3VyZSBoYXJkd2FyZSBpbiBtb2RlX3NldAo+Cj4gR3VlbnRlciBSb2VjayAoMik6
-Cj4gICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IExvYWQgZmlybXdhcmUgaWYgbm8gbW9uaXRvciBj
-b25uZWN0ZWQKPiAgICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogRG8gbm90IHJ1biB3b3JrZXIgd2hp
-bGUgc3VzcGVuZGVkCj4KPiBKZWZmeSBDaGVuICgxKToKPiAgICBkcm0vcm9ja2NoaXA6IGNkbi1k
-cDogTW92ZSBtdXRleF9pbml0IHRvIHByb2JlCj4KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9LY29uZmlnICAgICAgICAgICAgfCAgIDEwICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9NYWtlZmlsZSAgICAgICAgICAgfCAgICAyICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9jZG4tZHAtY29yZS5jICAgICAgfCAxMjYwICsrKysrKysrKysrKysrKysrKysrKysrKysrKwo+
-ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmggICAgICB8ICAxMTIgKysr
-Cj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jICAgICAgIHwgIDk3OSAr
-KysrKysrKysrKysrKysrKysrKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
-cmVnLmggICAgICAgfCAgNDgzICsrKysrKysrKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgIDEzICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgICAgOSArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgICAgMiArCj4gICA5IGZpbGVzIGNoYW5nZWQsIDI4Njcg
-aW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oCj4gICBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwo+ICAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKPgoKCi0tIArv
-vK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+
+
+On 01/26/2017 05:30 AM, Ulf Hansson wrote:
+> On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
+>>
+>>
+>> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
+>>>
+>>> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
+>>> wrote:
+>>>>
+>>>> If a PM domain is powered off before system suspend,
+>>>> we hope do nothing in system runtime suspend noirq phase
+>>>> and system runtime resume noirq phase.
+>>>
+>>>
+>>> One can hope, but that isn't good enough. :-)
+>>>
+>>>
+>>>>
+>>>> This modify is to slove system resume issue for RK3399.
+>>>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
+>>>> so we must follow open vdd_gpu and power on pd_gpu,
+>>>> power off pd_gpu and disable vdd_gpu.
+>>>> Fix up in runtime resume noirq phase power on all PDs.
+>>>
+>>>
+>>> This doesn't make any sense to me. Can please try to explain this is
+>>> in great more detail, then I can try to help.
+>>>
+>> For example:
+>> -->device suspend
+>>     (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
+>
+> This is the wrong approach, as runtime suspend is prevented by the PM
+> core in this phase. More precisely, it does a
+> pm_runtime_get_noresume() in the device prepare phase.
+>
+> I think it seems like you would benefit from using the so called the
+> runtime PM centric approach, which gives you system PM support for
+> "free". Please have a look at the pm_runtime_force_suspend|resume()
+> helpers.
+>
+>>      and then disabled the vdd_gpu by regulator_disable().)
+>>          --> system suspend
+>>                  -->prepare
+>>                          -->suspend_noirq():
+>>                          (power off all pds)
+>>          -->system resume
+>>                  -->resume_noirq():
+>>                  (power up all pds)
+>>                  (in this case the vdd_gpu is still disabled,
+>>                   if power on the pd_gpu maybe make the system crash)
+>>          -->complete : power off the not used pd
+>> -->device resuem
+>>     (mali gpu driver enable vdd_gpu by regulator_enable(),
+>>      and then power up the pd_gpu by pm_runtime_get_sync())
+>
+> Seems like there is also a missing configuration of the relationship
+> between the PM domains. In the genpd terminology, you probably want to
+> set pd_gpu as a subdomain of the vdd_gpu.
+>
+> In that way, the vdd_gpu is always powered on before pd_gpu is powered
+> on. And vice verse when powering off.
+>
+I thought about this project, but can't slove the problem of sleep and 
+wakp up issue.
+Because
+	-->system resume
+                  -->resume_noirq():
+                   (power up all pds)
+In this case, we set pd_gpu as a subdomain of the vdd_gpu.
+And then to enable the vdd_gpu,but the system resume is not complete 
+yet, the regulator and i2c can't work.So the vdd_gpu enable will failed.
+
+So I think the more appropriate solution is keep the pd status during 
+system PM phases.
+If a PM domain is powered off before system suspend,
+we hope do nothing in system runtime suspend noirq phase
+and system runtime resume noirq phase.
+
+>>
+>> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
+>> will can't get the ack back.
+>> I hope the pd_gpu power up/off by the driver itself.
+>>
+>> May be I solution is not the optimal solution,Do you have better suggestion?
+>>
+>
+> Please see my comment above.
+>
+> [...]
+>
+> Kind regards
+> Uffe
+>
+>
+>
+
