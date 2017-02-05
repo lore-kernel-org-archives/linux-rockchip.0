@@ -1,40 +1,25 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v8 4/4] arm: dts: Add support for ES8388 to the Radxa Rock 2
-Date: Sat, 04 Feb 2017 15:15:53 +0100
-Message-ID: <53082230.chFLIDQHUm@phil>
-References: <20170203143800.23859-1-romain.perier@collabora.com> <20170203143800.23859-5-romain.perier@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170203143800.23859-5-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [RESEND PATCH 0/1] add multiple clock handling for dwc2 driver
+Date: Sun,  5 Feb 2017 10:51:00 +0800
+Message-ID: <1486263061-10681-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: johnyoun@synopsys.com, gregkh@linuxfoundation.org, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, kever.yang@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Romain,
+The original posting on Jan 19th have not received any responses, so I resend them.
 
-Am Freitag, 3. Februar 2017, 15:38:00 CET schrieb Romain Perier:
-> This commit adds the DT definition of the es8388 i2c device
-> found at address 0x10. It also adds the definition for connecting
-> the Rockchip I2S to the es8388 analog output.
-> 
-> This commit is based on the initial work that was done by Sjoerd Simons
-> <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> with some improvements.
-> 
-> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+The Current default dwc2 just handle one clock named otg, however, it may have
+two or more clock need to manage for some new SoCs(such as RK3328), so this
+adds change clk to clk's array of dwc2_hsotg to handle more clocks operation.
 
-applied for 4.12, with the following changes:
+Frank Wang (1):
+  usb: dwc2: add multiple clock handling
 
-- subject: ARM: dts: rockchip: ... (ARM upper case + "rockchip:")
-- sound-i2s (dash instead of underscore, better alphabetical ordering)
-- es8388: dropped clock-names property, the driver only ever grabs the first
-  clock and clock-names is not part of the binding
+ drivers/usb/dwc2/core.h     |  5 ++++-
+ drivers/usb/dwc2/platform.c | 39 ++++++++++++++++++++++++++-------------
+ 2 files changed, 30 insertions(+), 14 deletions(-)
 
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.9.1
