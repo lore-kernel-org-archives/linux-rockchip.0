@@ -1,143 +1,98 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
-Date: Mon, 6 Feb 2017 13:46:26 +0100
-Message-ID: <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
- <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
- <58842848.5090806@rock-chips.com> <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
- <5896F1A5.9080405@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2] serial: 8250_dw: Avoid "too much work" from bogus rx timeout interrupt
+Date: Mon,  6 Feb 2017 15:30:00 -0800
+Message-ID: <20170206233000.3021-1-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5896F1A5.9080405@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: gregkh@linuxfoundation.org, jslaby@suse.com
+Cc: briannorris@chromium.org, linux-rockchip@lists.infradead.org, jeffy.chen@rock-chips.com, eric.gao@rock-chips.com, andriy.shevchenko@linux.intel.com, california.l.sullivan@intel.com, guennadi.liakhovetski@intel.com, Douglas Anderson <dianders@chromium.org>, wangkefeng.wang@huawei.com, noamc@ezchip.com, heikki.krogerus@linux.intel.com, jason.uy@broadcom.com, ed.blake@imgtec.com, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5 February 2017 at 10:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
->
->
-> On 01/26/2017 05:30 AM, Ulf Hansson wrote:
->>
->> On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com>
->> wrote:
->>>
->>>
->>>
->>> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
->>>>
->>>>
->>>> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
->>>> wrote:
->>>>>
->>>>>
->>>>> If a PM domain is powered off before system suspend,
->>>>> we hope do nothing in system runtime suspend noirq phase
->>>>> and system runtime resume noirq phase.
->>>>
->>>>
->>>>
->>>> One can hope, but that isn't good enough. :-)
->>>>
->>>>
->>>>>
->>>>> This modify is to slove system resume issue for RK3399.
->>>>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
->>>>> so we must follow open vdd_gpu and power on pd_gpu,
->>>>> power off pd_gpu and disable vdd_gpu.
->>>>> Fix up in runtime resume noirq phase power on all PDs.
->>>>
->>>>
->>>>
->>>> This doesn't make any sense to me. Can please try to explain this is
->>>> in great more detail, then I can try to help.
->>>>
->>> For example:
->>> -->device suspend
->>>     (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
->>
->>
->> This is the wrong approach, as runtime suspend is prevented by the PM
->> core in this phase. More precisely, it does a
->> pm_runtime_get_noresume() in the device prepare phase.
->>
->> I think it seems like you would benefit from using the so called the
->> runtime PM centric approach, which gives you system PM support for
->> "free". Please have a look at the pm_runtime_force_suspend|resume()
->> helpers.
->>
->>>      and then disabled the vdd_gpu by regulator_disable().)
->>>          --> system suspend
->>>                  -->prepare
->>>                          -->suspend_noirq():
->>>                          (power off all pds)
->>>          -->system resume
->>>                  -->resume_noirq():
->>>                  (power up all pds)
->>>                  (in this case the vdd_gpu is still disabled,
->>>                   if power on the pd_gpu maybe make the system crash)
->>>          -->complete : power off the not used pd
->>> -->device resuem
->>>     (mali gpu driver enable vdd_gpu by regulator_enable(),
->>>      and then power up the pd_gpu by pm_runtime_get_sync())
->>
->>
->> Seems like there is also a missing configuration of the relationship
->> between the PM domains. In the genpd terminology, you probably want to
->> set pd_gpu as a subdomain of the vdd_gpu.
->>
->> In that way, the vdd_gpu is always powered on before pd_gpu is powered
->> on. And vice verse when powering off.
->>
-> I thought about this project, but can't slove the problem of sleep and wakp
-> up issue.
-> Because
->         -->system resume
->                  -->resume_noirq():
->                   (power up all pds)
-> In this case, we set pd_gpu as a subdomain of the vdd_gpu.
-> And then to enable the vdd_gpu,but the system resume is not complete yet,
-> the regulator and i2c can't work.So the vdd_gpu enable will failed.
+On a Rockchip rk3399-based board during suspend/resume testing, we
+found that we could get the console UART into a state where it would
+print this to the console a lot:
+  serial8250: too much work for irq42
 
-Okay, I see.
+Followed eventually by:
+  NMI watchdog: BUG: soft lockup - CPU#0 stuck for 11s!
 
->
-> So I think the more appropriate solution is keep the pd status during system
-> PM phases.
-> If a PM domain is powered off before system suspend,
-> we hope do nothing in system runtime suspend noirq phase
-> and system runtime resume noirq phase.
+Upon debugging I found that we're in this state:
+  iir = 0x000000cc
+  lsr = 0x00000060
 
-Unfortunate, I am still not fully understanding the scenarios. As you
-indicate, the problem seems related to wakeup settings.
+It appears that somehow we have a RX Timeout interrupt but there is no
+actual data present to receive.  When we're in this state the UART
+driver claims that it handled the interrupt but it actually doesn't
+really do anything.  This means that we keep getting the interrupt
+over and over again.
 
-Could you please try to answer the below questions, hopefully it helps
-me to better understand.
+Normally we don't actually need to do anything special to handle a RX
+Timeout interrupt.  We'll notice that there is some data ready and
+we'll read it, which will end up clearing the RX Timeout.  In this
+case we have a problem specifically because we got the RX TImeout
+without any data.  Reading a bogus byte is confirmed to get us out of
+this state.
 
-1)
-While starting the system suspend sequence, under what circumstances
-are you expecting the vdd_gpu and pd_gpu to be powered on?
+It's unclear how exactly the UART got into this state, but it is known
+that the UART lines are essentially undriven and unpowered during
+suspend, so possibly during resume some garbage / half transmitted
+bits are seen on the line and put the UART into this state.
 
-2)
-While starting the system suspend sequence, under what circumstances
-are you expecting the vdd_gpu and the pd_gpu to be powered off?
+The UART on the rk3399 is a DesignWare based 8250 UART.  From mailing
+list posts, it appears that other people have run into similar
+problems with DesignWare based IP.  Presumably this problem is unique
+to that IP, so I have placed the workaround there to avoid possibly of
+accidentally triggering bad behavior on other IP.  Also note the RX
+Timeout behaves very differently in the DMA case, for for now the
+workaround is only applied to the non-DMA case.
 
-3)
-What devices are attached to vdd_gpu?
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+Testing and development done on a kernel-4.4 based tree, then picked
+to ToT, where the code applied cleanly.
 
-4)
-What devices are attached to pd_gpu?
+Changes in v2:
+- Only apply to 8250_dw, not all 8250
+- Only apply to the non-DMA case
 
+ drivers/tty/serial/8250/8250_dw.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
->
->>>
->>> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
->>> will can't get the ack back.
->>> I hope the pd_gpu power up/off by the driver itself.
->>>
-
-[...]
-
-Kind regards
-Uffe
+diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
+index c89ae4581378..6ee55a2d47bb 100644
+--- a/drivers/tty/serial/8250/8250_dw.c
++++ b/drivers/tty/serial/8250/8250_dw.c
+@@ -201,8 +201,31 @@ static unsigned int dw8250_serial_in32be(struct uart_port *p, int offset)
+ 
+ static int dw8250_handle_irq(struct uart_port *p)
+ {
++	struct uart_8250_port *up = up_to_u8250p(p);
+ 	struct dw8250_data *d = p->private_data;
+ 	unsigned int iir = p->serial_in(p, UART_IIR);
++	unsigned int status;
++	unsigned long flags;
++
++	/*
++	 * There are ways to get Designware-based UARTs into a state where
++	 * they are asserting UART_IIR_RX_TIMEOUT but there is no actual
++	 * data available.  If we see such a case then we'll do a bogus
++	 * read.  If we don't do this then the "RX TIMEOUT" interrupt will
++	 * fire forever.
++	 *
++	 * This problem has only been observed so far when not in DMA mode
++	 * so we limit the workaround only to non-DMA mode.
++	 */
++	if (!up->dma && ((iir & 0x3f) == UART_IIR_RX_TIMEOUT)) {
++		spin_lock_irqsave(&p->lock, flags);
++		status = p->serial_in(p, UART_LSR);
++
++		if (!(status & (UART_LSR_DR | UART_LSR_BI)))
++			(void) p->serial_in(p, UART_RX);
++
++		spin_unlock_irqrestore(&p->lock, flags);
++	}
+ 
+ 	if (serial8250_handle_irq(p, iir))
+ 		return 1;
+-- 
+2.11.0.483.g087da7b7c-goog
