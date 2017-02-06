@@ -1,156 +1,143 @@
-From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: rockchip: Add rk3328 pinctrl support
-Date: Mon, 6 Feb 2017 16:50:33 +0800
-Message-ID: <339f2b10-9810-017f-a240-a558bdc69431@rock-chips.com>
-References: <1485074286-7863-1-git-send-email-david.wu@rock-chips.com>
- <1512819.Zr7BpdjdZU@phil>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
+Date: Mon, 6 Feb 2017 13:46:26 +0100
+Message-ID: <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
+References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
+ <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
+ <58842848.5090806@rock-chips.com> <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
+ <5896F1A5.9080405@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1512819.Zr7BpdjdZU@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5896F1A5.9080405@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-Sorry for late reply because of the holiday.
-
->> @@ -355,6 +359,24 @@ struct rockchip_pinctrl {
->>  	unsigned int			nfunctions;
->>  };
+On 5 February 2017 at 10:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
+>
+>
+> On 01/26/2017 05:30 AM, Ulf Hansson wrote:
 >>
->> +/**
->> + * struct rockchip_mux_recalced_data: represent a pin iomux data.
->> + * @num: bank num.
->> + * @bit: index at register or used to calc index.
->> + * @min_pin: the min pin.
->> + * @max_pin: the max pin.
->> + * @reg: the register offset.
->> + * @mask: mask bit
->> + */
->> +struct rockchip_mux_recalced_data {
->> +	u8 num;
->> +	u8 bit;
->> +	int min_pin;
->> +	int max_pin;
->> +	int reg;
->> +	int mask;
->
-> please reorganize
-> 	num, min_pin, max_pin are the queried values
-> while
-> 	reg, bit, mask are the result values
->
-> Mixing these makes it hard to understand. Same for the table below.
->
-
-How about this struct?
-struct rockchip_mux_recalced_data {
-	struct {
-		u8 num;
-		int pin;
-	} querie;
-	struct {
-		u8 reg;
-		u8 bit;
-		u8 mask;
-	} result;
-};
-
->
->> +};
->> +
->>  static struct regmap_config rockchip_regmap_config = {
->>  	.reg_bits = 32,
->>  	.val_bits = 32,
->> @@ -514,13 +536,83 @@ static void rockchip_dt_free_map(struct pinctrl_dev
->> *pctldev, * Hardware access
->>   */
+>> On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com>
+>> wrote:
+>>>
+>>>
+>>>
+>>> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
+>>>>
+>>>>
+>>>> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
+>>>> wrote:
+>>>>>
+>>>>>
+>>>>> If a PM domain is powered off before system suspend,
+>>>>> we hope do nothing in system runtime suspend noirq phase
+>>>>> and system runtime resume noirq phase.
+>>>>
+>>>>
+>>>>
+>>>> One can hope, but that isn't good enough. :-)
+>>>>
+>>>>
+>>>>>
+>>>>> This modify is to slove system resume issue for RK3399.
+>>>>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
+>>>>> so we must follow open vdd_gpu and power on pd_gpu,
+>>>>> power off pd_gpu and disable vdd_gpu.
+>>>>> Fix up in runtime resume noirq phase power on all PDs.
+>>>>
+>>>>
+>>>>
+>>>> This doesn't make any sense to me. Can please try to explain this is
+>>>> in great more detail, then I can try to help.
+>>>>
+>>> For example:
+>>> -->device suspend
+>>>     (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
 >>
->> +static const struct rockchip_mux_recalced_data rk3328_mux_recalced_data[] =
->> { +	{
->> +		.num = 2,
->> +		.bit = 0x2,
->> +		.min_pin = 8,
->> +		.max_pin = 14,
->> +		.reg = 0x24,
->> +		.mask = 0x3
->> +	},
->> +	{
->> +		.num = 2,
->> +		.bit = 0,
->> +		.min_pin = 15,
->> +		.max_pin = 15,
->> +		.reg = 0x28,
->> +		.mask = 0x7
->> +	},
->> +	{
->
-> nit: coding style, "}, {"
->
->
->> +		.num = 2,
->> +		.bit = 14,
->> +		.min_pin = 23,
->> +		.max_pin = 23,
->> +		.reg = 0x30,
->> +		.mask = 0x3
->> +	},
->> +	{
->> +		.num = 3,
->> +		.bit = 0,
->> +		.min_pin = 8,
->> +		.max_pin = 8,
->> +		.reg = 0x40,
->> +		.mask = 0x7
->> +	},
->> +	{
->> +		.num = 3,
->> +		.bit = 0x2,
->> +		.min_pin = 9,
->> +		.max_pin = 15,
->> +		.reg = 0x44,
->> +		.mask = 0x3
->
-> I think I don't fully understand what this is supposed to do. In the TRM you
-> send me at 0x44 all bits are marked as reserved and the other registers also
-> look very strange.
+>>
+>> This is the wrong approach, as runtime suspend is prevented by the PM
+>> core in this phase. More precisely, it does a
+>> pm_runtime_get_noresume() in the device prepare phase.
+>>
+>> I think it seems like you would benefit from using the so called the
+>> runtime PM centric approach, which gives you system PM support for
+>> "free". Please have a look at the pm_runtime_force_suspend|resume()
+>> helpers.
+>>
+>>>      and then disabled the vdd_gpu by regulator_disable().)
+>>>          --> system suspend
+>>>                  -->prepare
+>>>                          -->suspend_noirq():
+>>>                          (power off all pds)
+>>>          -->system resume
+>>>                  -->resume_noirq():
+>>>                  (power up all pds)
+>>>                  (in this case the vdd_gpu is still disabled,
+>>>                   if power on the pd_gpu maybe make the system crash)
+>>>          -->complete : power off the not used pd
+>>> -->device resuem
+>>>     (mali gpu driver enable vdd_gpu by regulator_enable(),
+>>>      and then power up the pd_gpu by pm_runtime_get_sync())
+>>
+>>
+>> Seems like there is also a missing configuration of the relationship
+>> between the PM domains. In the genpd terminology, you probably want to
+>> set pd_gpu as a subdomain of the vdd_gpu.
+>>
+>> In that way, the vdd_gpu is always powered on before pd_gpu is powered
+>> on. And vice verse when powering off.
+>>
+> I thought about this project, but can't slove the problem of sleep and wakp
+> up issue.
+> Because
+>         -->system resume
+>                  -->resume_noirq():
+>                   (power up all pds)
+> In this case, we set pd_gpu as a subdomain of the vdd_gpu.
+> And then to enable the vdd_gpu,but the system resume is not complete yet,
+> the regulator and i2c can't work.So the vdd_gpu enable will failed.
 
-Sorry, there is a wrong description in my patch.
-The reserved pins are not opened at rk3328 soc, could not be used, but 
-they appear in my code, this makes you confused.
-
-There are three pins need to be recalculated from the the latest GRF i 
-sent to you just now.
-  - gpio2_b4
-  - gpio2_b7
-  - gpio2_c7
-
-So, the max_pin and min_pin changes to pin in the 
-"rockchip_mux_recalced_data" struct, because there are no serial pins to 
-be recalculated, but three single pins.
+Okay, I see.
 
 >
-> I guess GPIO2CH_IOMUX shows the thing you're trying solve, with gpio2_c6 being
-> at [5:3] but gpio2_c7 got moved to [15:14] out of its natural position.
-> Chip designers have strange ideas it seems.
+> So I think the more appropriate solution is keep the pd status during system
+> PM phases.
+> If a PM domain is powered off before system suspend,
+> we hope do nothing in system runtime suspend noirq phase
+> and system runtime resume noirq phase.
 
-Yes, it is very strange here, not so well-regulated.
+Unfortunate, I am still not fully understanding the scenarios. As you
+indicate, the problem seems related to wakeup settings.
+
+Could you please try to answer the below questions, hopefully it helps
+me to better understand.
+
+1)
+While starting the system suspend sequence, under what circumstances
+are you expecting the vdd_gpu and pd_gpu to be powered on?
+
+2)
+While starting the system suspend sequence, under what circumstances
+are you expecting the vdd_gpu and the pd_gpu to be powered off?
+
+3)
+What devices are attached to vdd_gpu?
+
+4)
+What devices are attached to pd_gpu?
+
 
 >
->
-> Heiko
->
->
->
+>>>
+>>> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
+>>> will can't get the ack back.
+>>> I hope the pd_gpu power up/off by the driver itself.
+>>>
+
+[...]
+
+Kind regards
+Uffe
