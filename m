@@ -1,13 +1,11 @@
-From: Dave Airlie <airlied@gmail.com>
-Subject: Re: [GIT PULL] drm/rockchip: add cdn-dp support and some fixes
-Date: Tue, 7 Feb 2017 11:05:20 +1000
-Message-ID: <CAPM=9txYtmVXJdfHGUMC4VG8OAFb=NU9GX0izuWRgh3Uiiu3Qw@mail.gmail.com>
-References: <5896E4F5.5040708@rock-chips.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH] drm/rockchip: cdn-dp: fix cdn-dp complie warning
+Date: Tue,  7 Feb 2017 09:34:01 +0800
+Message-ID: <1486431241-11374-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5896E4F5.5040708@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,29 +15,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, =?UTF-8?B?6ZKf5YuH5rGq?= <chris.zhong@rock-chips.com>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gNSBGZWJydWFyeSAyMDE3IGF0IDE4OjQwLCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlw
-cy5jb20+IHdyb3RlOgo+IEhpIERhdmUKPgo+IGRybS9yb2NrY2hpcCBjZG4tZHAgZHJpdmVyIGlz
-IHYxNyBub3csIEkgdGhpbmsgaXQncyByZWFkeSB0byBsYW5kIGl0Lgo+Cj4gVGhhbmtzLgo+Cj4g
-VGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA5OTc0M2FlNGM1ZjUyZjhmOGNlYjE3
-NzgzMDU2ZmNjOWI0ZjhiNjRjOgo+Cj4gICBNZXJnZSBicmFuY2ggJ2RybS1ldG5hdml2LW5leHQn
-IG9mCj4gaHR0cHM6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L2xzdC9saW51eCBpbnRvIGRybS1u
-ZXh0ICgyMDE3LTAyLTAzIDA1OjQxOjU4Cj4gKzEwMDApCj4KICBDQyBbTV0gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLm8KICBDQyBbTV0gIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLm8KL2hvbWUvYWlybGllZC9kZXZlbC9rZXJuZWwv
-ZHJtLW5leHQvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYzoKSW4gZnVuY3Rp
-b24g4oCYY2RuX2RwX2NvbmZpZ192aWRlb+KAmToKL2hvbWUvYWlybGllZC9kZXZlbC9rZXJuZWwv
-ZHJtLW5leHQvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYzo2MzI6MjQ6Cndh
-cm5pbmc6IOKAmHZhbFsxXeKAmSBtYXkgYmUgdXNlZCB1bmluaXRpYWxpemVkIGluIHRoaXMgZnVu
-Y3Rpb24KWy1XbWF5YmUtdW5pbml0aWFsaXplZF0KICBtc2FfbWlzYyA9IDIgKiB2YWxbMF0gKyAz
-MiAqIHZhbFsxXSArCiAgICAgICAgICAgICB+fn5+fn5+fn5+fl5+fn5+fn5+fn5+fn4KL2hvbWUv
-YWlybGllZC9kZXZlbC9rZXJuZWwvZHJtLW5leHQvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nk
-bi1kcC1yZWcuYzo1OTU6NToKbm90ZTog4oCYdmFsWzFd4oCZIHdhcyBkZWNsYXJlZCBoZXJlCiAg
-dTggdmFsWzJdOwoKWW91IG1pZ2h0IHdhbnQgdG8gc2VuZCBtZSBhIGZvbGxvdyB1cCBwdWxsIHJl
-cXVlc3QgdG8gZml4IHRoYXQuCgpEYXZlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Zml4IHdhcm5pbmc6Cgpkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jOjYzMjoy
+NDogd2FybmluZzoKICAndmFsWzFdJyBtYXkgYmUgdXNlZCB1bmluaXRpYWxpemVkIGluIHRoaXMg
+ZnVuY3Rpb24gWy1XbWF5YmUtdW5pbml0aWFsaXplZF0KICBtc2FfbWlzYyA9IDIgKiB2YWxbMF0g
+KyAzMiAqIHZhbFsxXSArCgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1j
+aGlwcy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyB8IDIg
+Ky0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jCmluZGV4IDNhNWI4YTQuLjMxOWRiYmEgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwpAQCAtNTkyLDcgKzU5Miw3IEBAIHN0YXRp
+YyBpbnQgY2RuX2RwX2dldF9tc2FfbWlzYyhzdHJ1Y3QgdmlkZW9faW5mbyAqdmlkZW8sCiAJCQkg
+ICAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCiB7CiAJdTMyIG1zYV9taXNjOwot
+CXU4IHZhbFsyXTsKKwl1OCB2YWxbMl0gPSB7MH07CiAKIAlzd2l0Y2ggKHZpZGVvLT5jb2xvcl9m
+bXQpIHsKIAljYXNlIFBYTF9SR0I6Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
