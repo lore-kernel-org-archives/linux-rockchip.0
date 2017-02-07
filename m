@@ -1,62 +1,187 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [GIT PULL] drm/rockchip: add cdn-dp support and some fixes
-Date: Tue, 7 Feb 2017 11:17:10 +0800
-Message-ID: <58993C36.3000007@rock-chips.com>
-References: <5896E4F5.5040708@rock-chips.com>
- <CAPM=9txYtmVXJdfHGUMC4VG8OAFb=NU9GX0izuWRgh3Uiiu3Qw@mail.gmail.com>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [RESEND PATCH 1/1] usb: dwc2: add multiple clock handling
+Date: Tue, 7 Feb 2017 11:18:13 +0800
+Message-ID: <ce60a874-fe78-840a-d79a-1589a965e3f5@rock-chips.com>
+References: <1486263061-10681-1-git-send-email-frank.wang@rock-chips.com>
+ <1486263061-10681-2-git-send-email-frank.wang@rock-chips.com>
+ <1521643.nOmCoBUNHr@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAPM=9txYtmVXJdfHGUMC4VG8OAFb=NU9GX0izuWRgh3Uiiu3Qw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, =?UTF-8?B?6ZKf5YuH5rGq?= <chris.zhong@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1521643.nOmCoBUNHr@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, johnyoun@synopsys.com, gregkh@linuxfoundation.org
+Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, kever.yang@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDAy5pyIMDfml6UgMDk6MDUsIERhdmUgQWlybGllIHdyb3RlOgo+IE9uIDUgRmVi
-cnVhcnkgMjAxNyBhdCAxODo0MCwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3
-cm90ZToKPj4gSGkgRGF2ZQo+Pgo+PiBkcm0vcm9ja2NoaXAgY2RuLWRwIGRyaXZlciBpcyB2MTcg
-bm93LCBJIHRoaW5rIGl0J3MgcmVhZHkgdG8gbGFuZCBpdC4KPj4KPj4gVGhhbmtzLgo+Pgo+PiBU
-aGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDk5NzQzYWU0YzVmNTJmOGY4Y2ViMTc3
-ODMwNTZmY2M5YjRmOGI2NGM6Cj4+Cj4+ICAgIE1lcmdlIGJyYW5jaCAnZHJtLWV0bmF2aXYtbmV4
-dCcgb2YKPj4gaHR0cHM6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L2xzdC9saW51eCBpbnRvIGRy
-bS1uZXh0ICgyMDE3LTAyLTAzIDA1OjQxOjU4Cj4+ICsxMDAwKQo+Pgo+ICAgIENDIFtNXSAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcubwo+ICAgIENDIFtNXSAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Aubwo+IC9ob21lL2FpcmxpZWQv
-ZGV2ZWwva2VybmVsL2RybS1uZXh0L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVn
-LmM6Cj4gSW4gZnVuY3Rpb24g4oCYY2RuX2RwX2NvbmZpZ192aWRlb+KAmToKPiAvaG9tZS9haXJs
-aWVkL2RldmVsL2tlcm5lbC9kcm0tbmV4dC9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRw
-LXJlZy5jOjYzMjoyNDoKPiB3YXJuaW5nOiDigJh2YWxbMV3igJkgbWF5IGJlIHVzZWQgdW5pbml0
-aWFsaXplZCBpbiB0aGlzIGZ1bmN0aW9uCj4gWy1XbWF5YmUtdW5pbml0aWFsaXplZF0KPiAgICBt
-c2FfbWlzYyA9IDIgKiB2YWxbMF0gKyAzMiAqIHZhbFsxXSArCj4gICAgICAgICAgICAgICB+fn5+
-fn5+fn5+fl5+fn5+fn5+fn5+fn4KPiAvaG9tZS9haXJsaWVkL2RldmVsL2tlcm5lbC9kcm0tbmV4
-dC9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jOjU5NTo1Ogo+IG5vdGU6IOKA
-mHZhbFsxXeKAmSB3YXMgZGVjbGFyZWQgaGVyZQo+ICAgIHU4IHZhbFsyXTsKPgo+IFlvdSBtaWdo
-dCB3YW50IHRvIHNlbmQgbWUgYSBmb2xsb3cgdXAgcHVsbCByZXF1ZXN0IHRvIGZpeCB0aGF0Lgo+
-Cj4gRGF2ZS4KPgpIaSBEYXZlCgpTb3JyeSBmb3IgdGhlIGNvbXBpbGUgd2FybmluZywgZm9sbG93
-aW5nIHBhdGNoIGZpeCB0aGUgY29tcGlsZSB3YXJuaW5nIAp3aXRoIHRpbnkgbW9kaWZ5LgoKVGhh
-bmtzLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCAyNmQ3ZjM0Y2FlN2FhZDk2
-MDBjZDQwY2UwN2VjM2ZiZTg2MDZhNTY3OgoKICAgTWVyZ2UgYnJhbmNoICdtc20tbmV4dCcgb2Yg
-CmdpdDovL3Blb3BsZS5mcmVlZGVza3RvcC5vcmcvfnJvYmNsYXJrL2xpbnV4IGludG8gZHJtLW5l
-eHQgKDIwMTctMDItMDcgCjExOjA1OjQyICsxMDAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0
-IHJlcG9zaXRvcnkgYXQ6CgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRy
-bS1yb2NrY2hpcC5naXQgCmRybS1yb2NrY2hpcC1uZXh0LTIwMTctMDItMDcKCmZvciB5b3UgdG8g
-ZmV0Y2ggY2hhbmdlcyB1cCB0byAyMTNjNGI5NjYzOTgxOGEyZGM4NzUwZDFiN2EzNzY3MmE5Yzll
-YWViOgoKICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGZpeCBjZG4tZHAgY29tcGxpZSB3YXJuaW5n
-ICgyMDE3LTAyLTA3IDExOjA2OjAxIAorMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTWFyayBZYW8gKDEpOgogICAg
-ICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGZpeCBjZG4tZHAgY29tcGxpZSB3YXJuaW5nCgogIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgfCAyICstCiAgMSBmaWxlIGNoYW5n
-ZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgotLSAK77ytYXJrIFlhbwoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Heiko, John and Greg,
+
+On 2017/2/7 8:06, Heiko Stuebner wrote:
+> Hi Frank,
+>
+> Am Sonntag, 5. Februar 2017, 10:51:01 CET schrieb Frank Wang:
+>> Originally, dwc2 just handle one clock named otg, however, it may have
+>> two or more clock need to manage for some new SoCs, so this adds
+>> change clk to clk's array of dwc2_hsotg to handle more clocks operation.
+>>
+>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+>> ---
+>>   drivers/usb/dwc2/core.h     |  5 ++++-
+>>   drivers/usb/dwc2/platform.c | 39 ++++++++++++++++++++++++++-------------
+>>   2 files changed, 30 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+>> index 1a7e830..d10a466 100644
+>> --- a/drivers/usb/dwc2/core.h
+>> +++ b/drivers/usb/dwc2/core.h
+>> @@ -121,6 +121,9 @@ static inline void dwc2_writel(u32 value, void __iomem
+>> *addr) /* Maximum number of Endpoints/HostChannels */
+>>   #define MAX_EPS_CHANNELS	16
+>>
+>> +/* Maximum number of dwc2 clocks */
+>> +#define DWC2_MAX_CLKS 3
+> why 3 clocks?
+
+Showing from the chapter 2.4 of dwc otg databook v3.10, it seems there 
+should be five clocks, am I right?
+hclk/pmu_hclk/utmi_clk/ulpi_clk/utmifs_clk48
+
+> I.e. the binding currently only specifies the "otg" clock, so you should
+> definitly amend it to also specifiy this "pmu" clock - in a separate patch
+> before this one of course :-) .
+> "pmu" also looks like a good name for that clock-binding and these new clocks
+> of course should be optional in the binding.
+
+No problem, I will amend the binding when the implementation scheme is 
+clear.
+
+> And ideally also just specify this mysterious third clock as well while you're
+> at it.
+>
+>> +
+>>   /* dwc2-hsotg declarations */
+>>   static const char * const dwc2_hsotg_supply_names[] = {
+>>   	"vusb_d",               /* digital USB supply, 1.2V */
+>> @@ -913,7 +916,7 @@ struct dwc2_hsotg {
+>>   	spinlock_t lock;
+>>   	void *priv;
+>>   	int     irq;
+>> -	struct clk *clk;
+>> +	struct clk *clks[DWC2_MAX_CLKS];
+>>   	struct reset_control *reset;
+>>
+>>   	unsigned int queuing_high_bandwidth:1;
+> [...]
+>
+>> @@ -123,17 +123,20 @@ static int dwc2_get_dr_mode(struct dwc2_hsotg *hsotg)
+>>   static int __dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
+>>   {
+>>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
+>> -	int ret;
+>> +	int clk, ret;
+>>
+>>   	ret = regulator_bulk_enable(ARRAY_SIZE(hsotg->supplies),
+>>   				    hsotg->supplies);
+>>   	if (ret)
+>>   		return ret;
+>>
+>> -	if (hsotg->clk) {
+>> -		ret = clk_prepare_enable(hsotg->clk);
+>> -		if (ret)
+>> +	for (clk = 0; clk < DWC2_MAX_CLKS && hsotg->clks[clk]; clk++) {
+>> +		ret = clk_prepare_enable(hsotg->clks[clk]);
+>> +		if (ret) {
+>> +			while (--clk >= 0)
+>> +				clk_disable_unprepare(hsotg->clks[clk]);
+>>   			return ret;
+>> +		}
+>>   	}
+>>
+>>   	if (hsotg->uphy) {
+>> @@ -168,7 +171,7 @@ int dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
+>>   static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
+>>   {
+>>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
+>> -	int ret = 0;
+>> +	int clk, ret = 0;
+>>
+>>   	if (hsotg->uphy) {
+>>   		usb_phy_shutdown(hsotg->uphy);
+>> @@ -182,8 +185,9 @@ static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg
+>> *hsotg) if (ret)
+>>   		return ret;
+>>
+>> -	if (hsotg->clk)
+>> -		clk_disable_unprepare(hsotg->clk);
+>> +	for (clk = DWC2_MAX_CLKS - 1; clk >= 0; clk--)
+>> +		if (hsotg->clks[clk])
+>> +			clk_disable_unprepare(hsotg->clks[clk]);
+>>   	ret = regulator_bulk_disable(ARRAY_SIZE(hsotg->supplies),
+>>   				     hsotg->supplies);
+>> @@ -209,7 +213,7 @@ int dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
+>>
+>>   static int dwc2_lowlevel_hw_init(struct dwc2_hsotg *hsotg)
+>>   {
+>> -	int i, ret;
+>> +	int i, clk, ret;
+>>
+>>   	hsotg->reset = devm_reset_control_get_optional(hsotg->dev, "dwc2");
+>>   	if (IS_ERR(hsotg->reset)) {
+>> @@ -282,11 +286,20 @@ static int dwc2_lowlevel_hw_init(struct dwc2_hsotg
+>> *hsotg) hsotg->phyif = GUSBCFG_PHYIF8;
+>>   	}
+>>
+>> -	/* Clock */
+>> -	hsotg->clk = devm_clk_get(hsotg->dev, "otg");
+>> -	if (IS_ERR(hsotg->clk)) {
+>> -		hsotg->clk = NULL;
+>> -		dev_dbg(hsotg->dev, "cannot get otg clock\n");
+>> +	/* Clocks */
+>> +	for (clk = 0; clk < DWC2_MAX_CLKS; clk++) {
+>> +		hsotg->clks[clk] = of_clk_get(hsotg->dev->of_node, clk);
+>> +		if (IS_ERR(hsotg->clks[clk])) {
+>> +			ret = PTR_ERR(hsotg->clks[clk]);
+>> +			if (ret == -EPROBE_DEFER) {
+>> +				while (--clk >= 0)
+>> +					clk_put(hsotg->clks[clk]);
+>> +				return ret;
+>> +			}
+>> +
+>> +			hsotg->clks[clk] = NULL;
+>> +			break;
+>> +		}
+> I guess this depends on the feelings of the usb-people, but for me it might
+> make more sense to not carry the clocks in an anonymous array but instead as
+> named members in struct dwc2_hsotg - aka clk_otg, clk_pmu, clk_??? .
+>
+> Because the otg clocks is actually marked as required in the binding while our
+> two new clocks are optional and some future code might actually want to
+> control these separate clocks to save some power somewhere.
+>
+>
+> Sidenote: I don't really understand why the driver allows the otg clock to be
+> missing, as it is a required property in the binding.
+
+Yes, if there are only two clocks need to control, separate member in 
+struct dwc2_hsotg is really better,
+but for more clocks, the operations of each clock 
+(get/prepare/unprepare) may become tedious
+
+How about keeping the original 'otg' clk and adding a new clk array 
+member for optional clocks in struct dwc2_hsotg?
+because excepting 'otg' clk, the others are all optional clocks.
+
+Of course, if we only consider hclk and pmu_hclk, I guess the separate 
+member scheme is still better.
+
+John and Greg, would you like to give some comments please?
+
+
+BR.
+Frank
+
+> Heiko
+>
+>
+>
