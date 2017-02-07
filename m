@@ -1,62 +1,125 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v2 7/7] drm/rockchip: Call drm_gem_object_release() to destroy
- GEM base
-Date: Tue,  7 Feb 2017 16:39:33 +0800
-Message-ID: <1486456773-19233-1-git-send-email-mark.yao@rock-chips.com>
-References: <1486456542-18675-1-git-send-email-mark.yao@rock-chips.com>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
+ phases
+Date: Tue, 07 Feb 2017 17:22:51 +0800
+Message-ID: <589991EB.9090501@rock-chips.com>
+References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
+ <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
+ <58842848.5090806@rock-chips.com>
+ <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
+ <5896F1A5.9080405@rock-chips.com>
+ <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
+ <589925B7.4020009@rock-chips.com>
+ <CAPDyKFojbX1uiS00EsyxxkM5uLUbHkbu3xAN4R5=PKo4iFOcCA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1486456542-18675-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPDyKFojbX1uiS00EsyxxkM5uLUbHkbu3xAN4R5=PKo4iFOcCA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Len Brown <len.brown-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Feng Xiao <xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KCldoZW4gY29udmVydGluZyB0
-aGUgZHJpdmVyIHRvIHVzZSBzaG1lbS1iYWNrZWQgR0VNcyBmb3IgSU9NTVUtZW5hYmxlZApzeXN0
-ZW1zLCB3ZSBmb3Jnb3QgdG8gYWRkIGNhbGxzIHRvIGRybV9nZW1fb2JqZWN0X3JlbGVhc2UoKSwg
-d2hpY2ggZ2F2ZQp1cyBhIHF1aXRlIG5pY2UgbWVtb3J5IGxlYWsuIFRoaXMgcGF0Y2ggYWRkcyB0
-aGUgbWlzc2luZyBjYWxscy4KCkZpeGVzOiBmMTFkNWYwICgiRlJPTUxJU1Q6IGRybS9yb2NrY2hp
-cDogRG8gbm90IHVzZSBETUEgbWFwcGluZyBBUEkgaWYKYXR0YWNoZWQgdG8gSU9NTVUgZG9tYWlu
-IikKClRFU1Q9d2hpbGUgdHJ1ZTsgZG8gYmFja2xpZ2h0X2RidXNfdG9vbCAtLXNldCAtLXBlcmNl
-bnQ9MCAmJiBzbGVlcCA4ICYmCiBiYWNrbGlnaHRfZGJ1c190b29sIC0tc2V0IC0tcGVyY2VudD0x
-MDAgJiYgc2xlZXAgMyA7IGRvbmUKClNpZ25lZC1vZmYtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBj
-aHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
-LmNvbT4KUmV2aWV3ZWQtb246IGh0dHBzOi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5j
-b20vMzg1NDU2ClJldmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1
-bS5vcmc+ClJldmlld2VkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgot
-LS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAxMiArKysr
-KysrKy0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0p
-CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKaW5kZXggMTc2
-OTE0Ni4uZGY5ZTU3MCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9nZW0uYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2dlbS5jCkBAIC0zMDEsNiArMzAxLDEyIEBAIGludCByb2NrY2hpcF9nZW1fbW1hcChzdHJ1Y3Qg
-ZmlsZSAqZmlscCwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCiAJcmV0dXJuIHJvY2tjaGlw
-X2RybV9nZW1fb2JqZWN0X21tYXAob2JqLCB2bWEpOwogfQogCitzdGF0aWMgdm9pZCByb2NrY2hp
-cF9nZW1fcmVsZWFzZV9vYmplY3Qoc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikK
-K3sKKwlkcm1fZ2VtX29iamVjdF9yZWxlYXNlKCZya19vYmotPmJhc2UpOworCWtmcmVlKHJrX29i
-aik7Cit9CisKIHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICoKIAlyb2NrY2hpcF9nZW1fY3Jl
-YXRlX29iamVjdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCB1bnNpZ25lZCBpbnQgc2l6ZSwKIAkJ
-CQkgICBib29sIGFsbG9jX2ttYXApCkBAIC0zMjYsNyArMzMyLDcgQEAgc3RydWN0IHJvY2tjaGlw
-X2dlbV9vYmplY3QgKgogCXJldHVybiBya19vYmo7CiAKIGVycl9mcmVlX3JrX29iajoKLQlrZnJl
-ZShya19vYmopOworCXJvY2tjaGlwX2dlbV9yZWxlYXNlX29iamVjdChya19vYmopOwogCXJldHVy
-biBFUlJfUFRSKHJldCk7CiB9CiAKQEAgLTMzOCwxMyArMzQ0LDExIEBAIHZvaWQgcm9ja2NoaXBf
-Z2VtX2ZyZWVfb2JqZWN0KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQogewogCXN0cnVjdCBy
-b2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmo7CiAKLQlkcm1fZ2VtX2ZyZWVfbW1hcF9vZmZzZXQo
-b2JqKTsKLQogCXJrX29iaiA9IHRvX3JvY2tjaGlwX29iaihvYmopOwogCiAJcm9ja2NoaXBfZ2Vt
-X2ZyZWVfYnVmKHJrX29iaik7CiAKLQlrZnJlZShya19vYmopOworCXJvY2tjaGlwX2dlbV9yZWxl
-YXNlX29iamVjdChya19vYmopOwogfQogCiAvKgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+
+On 02/07/2017 04:19 PM, Ulf Hansson wrote:
+> [...]
+>
+>>>
+>>>
+>>> Unfortunate, I am still not fully understanding the scenarios. As you
+>>> indicate, the problem seems related to wakeup settings.
+>>>
+>>> Could you please try to answer the below questions, hopefully it helps
+>>> me to better understand.
+>>>
+>>> 1)
+>>> While starting the system suspend sequence, under what circumstances
+>>> are you expecting the vdd_gpu and pd_gpu to be powered on?
+>>>
+>>
+>> I don't want to power on the vdd_gpu and pd_gpu during the system suspend
+>> sequence.
+>> I hope the pd_gpu and vdd_gpu power on/off just by gpu device.
+>
+> Let me rephrase my question.
+>
+> Can the vdd_gpu/pd_gpu ever remain in a powered on state while the
+> system is suspended?
+>
+NO, the vdd_gpu/pd_gpu ever remain in a powered off state while the
+system is suspended.
+> If yes, when is that the case?
+>
+>>
+>>> 2)
+>>> While starting the system suspend sequence, under what circumstances
+>>> are you expecting the vdd_gpu and the pd_gpu to be powered off?
+>>>
+>>
+>> I don't want to power off the vdd_gpu and pd_gpu during the system suspend
+>> sequence.
+>> Because before the system suspend,the vdd_gpu and pd_gpu has been power off
+>> by gpu device(pm_ruantime_put).
+>
+> *Exactly*, how do you guarantee that a pm_runtime_put() for the gpu
+> device triggers a runtime suspend - before a system suspend sequence
+> starts?
+>
+> For example, userspace may via sysfs prevent runtime suspend for any
+> device with runtime PM enabled.
+>
+Yes, you are right.I did't consider this.
+Whether on or off pd_gpu, the vdd_gpu is must be enabled.How to deal 
+with the enable/disable the vdd_gpu?
+
+our process in devices/platform/ff9a0000.gpu:
+device init
+	pm_runtime_enable()
+
+gpu_power_on
+	regulator_enable(vdd_gpu)
+	pm_runtime_get_sync(pd_gpu)
+
+gpu_power_off
+	pm_runtime_put_sync(pd_gpu)
+	regulator_disable(vdd_gpu)
+
+device remove
+	pm_runtime_disable()
+
+>>
+>>> 3)
+>>> What devices are attached to vdd_gpu?
+>>>
+>> just pd_gpu
+>>>
+>>> 4)
+>>> What devices are attached to pd_gpu?
+>>>
+>> just gpu device(mali driver)
+>>
+>> vdd_gpu
+>> ------- pd_gpu
+>> ----------------devices/platform/ff9a0000.gpu
+>>>
+>>>
+>
+> Thanks for these details, very useful!
+>
+> [...]
+>
+> Kind regards
+> Uffe
+>
+>
+>
