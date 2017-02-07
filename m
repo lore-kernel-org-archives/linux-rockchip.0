@@ -1,166 +1,62 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM
- phases
-Date: Tue, 07 Feb 2017 09:41:11 +0800
-Message-ID: <589925B7.4020009@rock-chips.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com> <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com> <58842848.5090806@rock-chips.com> <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com> <5896F1A5.9080405@rock-chips.com> <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [GIT PULL] drm/rockchip: add cdn-dp support and some fixes
+Date: Tue, 7 Feb 2017 11:17:10 +0800
+Message-ID: <58993C36.3000007@rock-chips.com>
+References: <5896E4F5.5040708@rock-chips.com>
+ <CAPM=9txYtmVXJdfHGUMC4VG8OAFb=NU9GX0izuWRgh3Uiiu3Qw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPM=9txYtmVXJdfHGUMC4VG8OAFb=NU9GX0izuWRgh3Uiiu3Qw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, =?UTF-8?B?6ZKf5YuH5rGq?= <chris.zhong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 02/06/2017 08:46 PM, Ulf Hansson wrote:
-> On 5 February 2017 at 10:34, Elaine Zhang <zhangqing@rock-chips.com> wrote:
->>
->>
->> On 01/26/2017 05:30 AM, Ulf Hansson wrote:
->>>
->>> On 22 January 2017 at 04:34, Elaine Zhang <zhangqing@rock-chips.com>
->>> wrote:
->>>>
->>>>
->>>>
->>>> On 01/20/2017 09:16 PM, Ulf Hansson wrote:
->>>>>
->>>>>
->>>>> On 20 January 2017 at 03:21, Elaine Zhang <zhangqing@rock-chips.com>
->>>>> wrote:
->>>>>>
->>>>>>
->>>>>> If a PM domain is powered off before system suspend,
->>>>>> we hope do nothing in system runtime suspend noirq phase
->>>>>> and system runtime resume noirq phase.
->>>>>
->>>>>
->>>>>
->>>>> One can hope, but that isn't good enough. :-)
->>>>>
->>>>>
->>>>>>
->>>>>> This modify is to slove system resume issue for RK3399.
->>>>>> RK3399 SOC pd_gpu have voltage domain vdd_gpu,
->>>>>> so we must follow open vdd_gpu and power on pd_gpu,
->>>>>> power off pd_gpu and disable vdd_gpu.
->>>>>> Fix up in runtime resume noirq phase power on all PDs.
->>>>>
->>>>>
->>>>>
->>>>> This doesn't make any sense to me. Can please try to explain this is
->>>>> in great more detail, then I can try to help.
->>>>>
->>>> For example:
->>>> -->device suspend
->>>>      (mali gpu driver set pd_gpu off by pm_runtime_put_sync(),
->>>
->>>
->>> This is the wrong approach, as runtime suspend is prevented by the PM
->>> core in this phase. More precisely, it does a
->>> pm_runtime_get_noresume() in the device prepare phase.
->>>
->>> I think it seems like you would benefit from using the so called the
->>> runtime PM centric approach, which gives you system PM support for
->>> "free". Please have a look at the pm_runtime_force_suspend|resume()
->>> helpers.
->>>
->>>>       and then disabled the vdd_gpu by regulator_disable().)
->>>>           --> system suspend
->>>>                   -->prepare
->>>>                           -->suspend_noirq():
->>>>                           (power off all pds)
->>>>           -->system resume
->>>>                   -->resume_noirq():
->>>>                   (power up all pds)
->>>>                   (in this case the vdd_gpu is still disabled,
->>>>                    if power on the pd_gpu maybe make the system crash)
->>>>           -->complete : power off the not used pd
->>>> -->device resuem
->>>>      (mali gpu driver enable vdd_gpu by regulator_enable(),
->>>>       and then power up the pd_gpu by pm_runtime_get_sync())
->>>
->>>
->>> Seems like there is also a missing configuration of the relationship
->>> between the PM domains. In the genpd terminology, you probably want to
->>> set pd_gpu as a subdomain of the vdd_gpu.
->>>
->>> In that way, the vdd_gpu is always powered on before pd_gpu is powered
->>> on. And vice verse when powering off.
->>>
->> I thought about this project, but can't slove the problem of sleep and wakp
->> up issue.
->> Because
->>          -->system resume
->>                   -->resume_noirq():
->>                    (power up all pds)
->> In this case, we set pd_gpu as a subdomain of the vdd_gpu.
->> And then to enable the vdd_gpu,but the system resume is not complete yet,
->> the regulator and i2c can't work.So the vdd_gpu enable will failed.
->
-> Okay, I see.
->
->>
->> So I think the more appropriate solution is keep the pd status during system
->> PM phases.
->> If a PM domain is powered off before system suspend,
->> we hope do nothing in system runtime suspend noirq phase
->> and system runtime resume noirq phase.
->
-> Unfortunate, I am still not fully understanding the scenarios. As you
-> indicate, the problem seems related to wakeup settings.
->
-> Could you please try to answer the below questions, hopefully it helps
-> me to better understand.
->
-> 1)
-> While starting the system suspend sequence, under what circumstances
-> are you expecting the vdd_gpu and pd_gpu to be powered on?
->
-
-I don't want to power on the vdd_gpu and pd_gpu during the system 
-suspend sequence.
-I hope the pd_gpu and vdd_gpu power on/off just by gpu device.
-
-> 2)
-> While starting the system suspend sequence, under what circumstances
-> are you expecting the vdd_gpu and the pd_gpu to be powered off?
->
-
-I don't want to power off the vdd_gpu and pd_gpu during the system 
-suspend sequence.
-Because before the system suspend,the vdd_gpu and pd_gpu has been power 
-off by gpu device(pm_ruantime_put).
-
-> 3)
-> What devices are attached to vdd_gpu?
->
-just pd_gpu
-> 4)
-> What devices are attached to pd_gpu?
->
-just gpu device(mali driver)
-
-vdd_gpu
--------	pd_gpu
-----------------devices/platform/ff9a0000.gpu
->
->>
->>>>
->>>> So for RK3399 soc, if to set pd_gpu the vdd_gpu must be enabled, or else
->>>> will can't get the ack back.
->>>> I hope the pd_gpu power up/off by the driver itself.
->>>>
->
-> [...]
->
-> Kind regards
-> Uffe
->
->
->
-
+T24gMjAxN+W5tDAy5pyIMDfml6UgMDk6MDUsIERhdmUgQWlybGllIHdyb3RlOgo+IE9uIDUgRmVi
+cnVhcnkgMjAxNyBhdCAxODo0MCwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3
+cm90ZToKPj4gSGkgRGF2ZQo+Pgo+PiBkcm0vcm9ja2NoaXAgY2RuLWRwIGRyaXZlciBpcyB2MTcg
+bm93LCBJIHRoaW5rIGl0J3MgcmVhZHkgdG8gbGFuZCBpdC4KPj4KPj4gVGhhbmtzLgo+Pgo+PiBU
+aGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDk5NzQzYWU0YzVmNTJmOGY4Y2ViMTc3
+ODMwNTZmY2M5YjRmOGI2NGM6Cj4+Cj4+ICAgIE1lcmdlIGJyYW5jaCAnZHJtLWV0bmF2aXYtbmV4
+dCcgb2YKPj4gaHR0cHM6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L2xzdC9saW51eCBpbnRvIGRy
+bS1uZXh0ICgyMDE3LTAyLTAzIDA1OjQxOjU4Cj4+ICsxMDAwKQo+Pgo+ICAgIENDIFtNXSAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcubwo+ICAgIENDIFtNXSAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Aubwo+IC9ob21lL2FpcmxpZWQv
+ZGV2ZWwva2VybmVsL2RybS1uZXh0L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVn
+LmM6Cj4gSW4gZnVuY3Rpb24g4oCYY2RuX2RwX2NvbmZpZ192aWRlb+KAmToKPiAvaG9tZS9haXJs
+aWVkL2RldmVsL2tlcm5lbC9kcm0tbmV4dC9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRw
+LXJlZy5jOjYzMjoyNDoKPiB3YXJuaW5nOiDigJh2YWxbMV3igJkgbWF5IGJlIHVzZWQgdW5pbml0
+aWFsaXplZCBpbiB0aGlzIGZ1bmN0aW9uCj4gWy1XbWF5YmUtdW5pbml0aWFsaXplZF0KPiAgICBt
+c2FfbWlzYyA9IDIgKiB2YWxbMF0gKyAzMiAqIHZhbFsxXSArCj4gICAgICAgICAgICAgICB+fn5+
+fn5+fn5+fl5+fn5+fn5+fn5+fn4KPiAvaG9tZS9haXJsaWVkL2RldmVsL2tlcm5lbC9kcm0tbmV4
+dC9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jOjU5NTo1Ogo+IG5vdGU6IOKA
+mHZhbFsxXeKAmSB3YXMgZGVjbGFyZWQgaGVyZQo+ICAgIHU4IHZhbFsyXTsKPgo+IFlvdSBtaWdo
+dCB3YW50IHRvIHNlbmQgbWUgYSBmb2xsb3cgdXAgcHVsbCByZXF1ZXN0IHRvIGZpeCB0aGF0Lgo+
+Cj4gRGF2ZS4KPgpIaSBEYXZlCgpTb3JyeSBmb3IgdGhlIGNvbXBpbGUgd2FybmluZywgZm9sbG93
+aW5nIHBhdGNoIGZpeCB0aGUgY29tcGlsZSB3YXJuaW5nIAp3aXRoIHRpbnkgbW9kaWZ5LgoKVGhh
+bmtzLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCAyNmQ3ZjM0Y2FlN2FhZDk2
+MDBjZDQwY2UwN2VjM2ZiZTg2MDZhNTY3OgoKICAgTWVyZ2UgYnJhbmNoICdtc20tbmV4dCcgb2Yg
+CmdpdDovL3Blb3BsZS5mcmVlZGVza3RvcC5vcmcvfnJvYmNsYXJrL2xpbnV4IGludG8gZHJtLW5l
+eHQgKDIwMTctMDItMDcgCjExOjA1OjQyICsxMDAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0
+IHJlcG9zaXRvcnkgYXQ6CgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRy
+bS1yb2NrY2hpcC5naXQgCmRybS1yb2NrY2hpcC1uZXh0LTIwMTctMDItMDcKCmZvciB5b3UgdG8g
+ZmV0Y2ggY2hhbmdlcyB1cCB0byAyMTNjNGI5NjYzOTgxOGEyZGM4NzUwZDFiN2EzNzY3MmE5Yzll
+YWViOgoKICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGZpeCBjZG4tZHAgY29tcGxpZSB3YXJuaW5n
+ICgyMDE3LTAyLTA3IDExOjA2OjAxIAorMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTWFyayBZYW8gKDEpOgogICAg
+ICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IGZpeCBjZG4tZHAgY29tcGxpZSB3YXJuaW5nCgogIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgfCAyICstCiAgMSBmaWxlIGNoYW5n
+ZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgotLSAK77ytYXJrIFlhbwoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
