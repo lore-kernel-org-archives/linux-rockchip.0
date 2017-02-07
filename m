@@ -1,85 +1,46 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] PM / Domains: Keep the pd status during system PM phases
-Date: Tue, 7 Feb 2017 09:19:09 +0100
-Message-ID: <CAPDyKFojbX1uiS00EsyxxkM5uLUbHkbu3xAN4R5=PKo4iFOcCA@mail.gmail.com>
-References: <1484878893-25270-1-git-send-email-zhangqing@rock-chips.com>
- <CAPDyKFp0GrSQYftSk1UHUSL=+OR_BGf4OVxJDVht-eXnTX8CtQ@mail.gmail.com>
- <58842848.5090806@rock-chips.com> <CAPDyKFpHttGjKGJi5_TbaD0uepMRC8+NSUqAa5Pmg5j61PT4-Q@mail.gmail.com>
- <5896F1A5.9080405@rock-chips.com> <CAPDyKFpXXL+zpGZCYSEqtJ6_1=tH+FCths7HuuO5OdRcALoRRA@mail.gmail.com>
- <589925B7.4020009@rock-chips.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH v2 0/7] drm/rockchip: switch to drm_mm for support arm64 iommu
+Date: Tue,  7 Feb 2017 16:35:35 +0800
+Message-ID: <1486456542-18675-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <589925B7.4020009@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Feng Xiao <xf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Tao Huang <huangtao@rock-chips.com>, xxx@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-[...]
-
->>
->>
->> Unfortunate, I am still not fully understanding the scenarios. As you
->> indicate, the problem seems related to wakeup settings.
->>
->> Could you please try to answer the below questions, hopefully it helps
->> me to better understand.
->>
->> 1)
->> While starting the system suspend sequence, under what circumstances
->> are you expecting the vdd_gpu and pd_gpu to be powered on?
->>
->
-> I don't want to power on the vdd_gpu and pd_gpu during the system suspend
-> sequence.
-> I hope the pd_gpu and vdd_gpu power on/off just by gpu device.
-
-Let me rephrase my question.
-
-Can the vdd_gpu/pd_gpu ever remain in a powered on state while the
-system is suspended?
-
-If yes, when is that the case?
-
->
->> 2)
->> While starting the system suspend sequence, under what circumstances
->> are you expecting the vdd_gpu and the pd_gpu to be powered off?
->>
->
-> I don't want to power off the vdd_gpu and pd_gpu during the system suspend
-> sequence.
-> Because before the system suspend,the vdd_gpu and pd_gpu has been power off
-> by gpu device(pm_ruantime_put).
-
-*Exactly*, how do you guarantee that a pm_runtime_put() for the gpu
-device triggers a runtime suspend - before a system suspend sequence
-starts?
-
-For example, userspace may via sysfs prevent runtime suspend for any
-device with runtime PM enabled.
-
->
->> 3)
->> What devices are attached to vdd_gpu?
->>
-> just pd_gpu
->>
->> 4)
->> What devices are attached to pd_gpu?
->>
-> just gpu device(mali driver)
->
-> vdd_gpu
-> ------- pd_gpu
-> ----------------devices/platform/ff9a0000.gpu
->>
->>
-
-Thanks for these details, very useful!
-
-[...]
-
-Kind regards
-Uffe
+U29tZSBpb21tdSBwYXRjaGVzIG9uIHRoZSBzZXJpZXNbMF0gImlvbW11L3JvY2tjaGlwOiBGaXgg
+YnVncyBhbmQKZW5hYmxlIG9uIEFSTTY0IiBhbHJlYWR5IGxhbmRlZCwgU28gZHJtL3JvY2tjaGlw
+IHJlbGF0ZWQgcGF0Y2hlcyBbMV0gYW5kIFsyXQpyZWFkeSB0byBsYW5kZWQsIHRoaXMgc2VyaWVz
+IGp1c3QgcmViYXNlIHRoZW0gdG8gbGFzdGVzdCBkcm0tbmV4dC4KCkFuZCBmaXggc29tZSBidWdz
+IGZvciBkcm0vcm9ja2NoaXAgZHJtX21tCgpbMF06IGh0dHA6Ly93d3cuc3Bpbmljcy5uZXQvbGlz
+dHMvYXJtLWtlcm5lbC9tc2c1MTM3ODEuaHRtbApbMV06IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5l
+bC5vcmcvcGF0Y2gvOTE5NjM2NwpbMl06IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
+Y2gvOTE5NjM2OQoKQ2hhbmdlcyBpbiB2MjoKQWR2aWNlcyBieSBUb21hc3o6CiAgYWRkIHNvbWUg
+Zml4ZXMgcGF0Y2hlcyBmcm9tIGNocm9tZW9zIHByb2plY3QuCgpNYXJrIFlhbyAoMik6CiAgZHJt
+L3JvY2tjaGlwOiBnZW06IGFkZCBtdXRleCBsb2NrIGZvciBkcm0gbW0KICBkcm0vcm9ja2NoaXA6
+IGdlbTogZml4dXAgaW9tbXVfbWFwX3NnIGVycm9yIHBhdGgKClNodW5xaWFuIFpoZW5nICgxKToK
+ICBkcm0vcm9ja2NoaXA6IFVzZSBjb21tb24gSU9NTVUgQVBJIHRvIGF0dGFjaCBkZXZpY2VzCgpU
+b21hc3ogRmlnYSAoMyk6CiAgZHJtL3JvY2tjaGlwOiBEbyBub3QgdXNlIERNQSBtYXBwaW5nIEFQ
+SSBpZiBhdHRhY2hlZCB0byBJT01NVSBkb21haW4KICBkcm0vcm9ja2NoaXA6IEZpeCB0aGUgY2Fs
+bCB0byBkcm1fZ2VtX3B1dF9wYWdlcygpCiAgZHJtL3JvY2tjaGlwOiBDYWxsIGRybV9nZW1fb2Jq
+ZWN0X3JlbGVhc2UoKSB0byBkZXN0cm95IEdFTSBiYXNlCgrDmHJqYW4gRWlkZSAoMSk6CiAgZHJt
+L3JvY2tjaGlwOiBSZXNwZWN0IHBhZ2Ugb2Zmc2V0IGluIElPTU1VIG1tYXAKCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMTAxICsrKysrKy0tLS0tLQogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAgNiArLQogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDI0NCArKysrKysrKysrKysr
+KysrKysrKysrKysrKy0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
+bS5oIHwgICA4ICsKIDQgZmlsZXMgY2hhbmdlZCwgMjk4IGluc2VydGlvbnMoKyksIDYxIGRlbGV0
+aW9ucygtKQoKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
