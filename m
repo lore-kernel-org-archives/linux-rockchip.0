@@ -1,46 +1,119 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH 0/1] add multiple clock handling for dwc2 driver
-Date: Tue, 07 Feb 2017 00:53:13 +0100
-Message-ID: <2573136.XRL8a3JAlG@phil>
-References: <1486263061-10681-1-git-send-email-frank.wang@rock-chips.com> <3508420.z4eX5F6ytJ@phil> <a573a8d1-7df8-24cd-1291-4dfdc8068f18@rock-chips.com>
+From: Cal Sullivan <california.l.sullivan@intel.com>
+Subject: Re: [PATCH v2] serial: 8250_dw: Avoid "too much work" from bogus rx
+ timeout interrupt
+Date: Mon, 6 Feb 2017 16:04:30 -0800
+Message-ID: <31559eb7-2bd3-1e37-bf4a-d62e889bc347@intel.com>
+References: <20170206233000.3021-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a573a8d1-7df8-24cd-1291-4dfdc8068f18@rock-chips.com>
+In-Reply-To: <20170206233000.3021-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, kever.yang@rock-chips.com, william.wu@rock-chips.com, elaine.zhang@rock-chips.com
+To: Douglas Anderson <dianders@chromium.org>, gregkh@linuxfoundation.org, jslaby@suse.com
+Cc: briannorris@chromium.org, linux-rockchip@lists.infradead.org, jeffy.chen@rock-chips.com, eric.gao@rock-chips.com, andriy.shevchenko@linux.intel.com, guennadi.liakhovetski@intel.com, wangkefeng.wang@huawei.com, noamc@ezchip.com, heikki.krogerus@linux.intel.com, jason.uy@broadcom.com, ed.blake@imgtec.com, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Frank,
 
-Am Montag, 6. Februar 2017, 09:40:35 CET schrieb Frank Wang:
-> On 2017/2/5 17:41, Heiko Stuebner wrote:
-> > Am Sonntag, 5. Februar 2017, 10:51:00 CET schrieb Frank Wang:
-> >> The original posting on Jan 19th have not received any responses, so I
-> >> resend them.
-> >> 
-> >> The Current default dwc2 just handle one clock named otg, however, it may
-> >> have two or more clock need to manage for some new SoCs(such as RK3328),
-> >> so
-> >> this adds change clk to clk's array of dwc2_hsotg to handle more clocks
-> >> operation.
-> > 
-> > can you please give a bit more detail on the specific layout.
-> > 
-> > I guess you're talking about hclk_otg_pmu, right? What component does it
-> > supply, because I didn't find anything in the partial TRM in the PMU
-> > section relating to the "otg".
-> 
-> Yes, it is hclk_otg_pmu.
-> 
-> The rock-chip hclk_otg_pmu is an input clock for dwc2 PMU module which
-> named pmu_hclk in chapter 2.4 of dwc otg databook v3.10.
 
-ok great, on establishing that this is a actual part of the IP block.
+On 02/06/2017 03:30 PM, Douglas Anderson wrote:
+> On a Rockchip rk3399-based board during suspend/resume testing, we
+> found that we could get the console UART into a state where it would
+> print this to the console a lot:
+>    serial8250: too much work for irq42
+>
+> Followed eventually by:
+>    NMI watchdog: BUG: soft lockup - CPU#0 stuck for 11s!
+>
+> Upon debugging I found that we're in this state:
+>    iir = 0x000000cc
+>    lsr = 0x00000060
+>
+> It appears that somehow we have a RX Timeout interrupt but there is no
+> actual data present to receive.  When we're in this state the UART
+> driver claims that it handled the interrupt but it actually doesn't
+> really do anything.  This means that we keep getting the interrupt
+> over and over again.
+>
+> Normally we don't actually need to do anything special to handle a RX
+> Timeout interrupt.  We'll notice that there is some data ready and
+> we'll read it, which will end up clearing the RX Timeout.  In this
+> case we have a problem specifically because we got the RX TImeout
+> without any data.  Reading a bogus byte is confirmed to get us out of
+> this state.
+>
+> It's unclear how exactly the UART got into this state, but it is known
+> that the UART lines are essentially undriven and unpowered during
+> suspend, so possibly during resume some garbage / half transmitted
+> bits are seen on the line and put the UART into this state.
+Its been a long time since I looked at this, but IIRC it wasn't garbage 
+bits, but spurious interrupts. The FIFO is implemented in such a way 
+that it acts as a ring, and with a known input you could know ahead of 
+time what the result of the extra read would be. This tricked me up, as 
+with the inputs I was originally using it appeared to be valid data, 
+when in fact it was just the next buffer in the ring which still had old 
+data.
 
-I'm going to comment on the actual code change in a minute, so see you over 
-there :-)
+This probably doesn't help much, but at least gives some background 
+knowledge.
 
-Heiko
+---
+Cal
+
+>
+> The UART on the rk3399 is a DesignWare based 8250 UART.  From mailing
+> list posts, it appears that other people have run into similar
+> problems with DesignWare based IP.  Presumably this problem is unique
+> to that IP, so I have placed the workaround there to avoid possibly of
+> accidentally triggering bad behavior on other IP.  Also note the RX
+> Timeout behaves very differently in the DMA case, for for now the
+> workaround is only applied to the non-DMA case.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Testing and development done on a kernel-4.4 based tree, then picked
+> to ToT, where the code applied cleanly.
+>
+> Changes in v2:
+> - Only apply to 8250_dw, not all 8250
+> - Only apply to the non-DMA case
+>
+>   drivers/tty/serial/8250/8250_dw.c | 23 +++++++++++++++++++++++
+>   1 file changed, 23 insertions(+)
+>
+> diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
+> index c89ae4581378..6ee55a2d47bb 100644
+> --- a/drivers/tty/serial/8250/8250_dw.c
+> +++ b/drivers/tty/serial/8250/8250_dw.c
+> @@ -201,8 +201,31 @@ static unsigned int dw8250_serial_in32be(struct uart_port *p, int offset)
+>   
+>   static int dw8250_handle_irq(struct uart_port *p)
+>   {
+> +	struct uart_8250_port *up = up_to_u8250p(p);
+>   	struct dw8250_data *d = p->private_data;
+>   	unsigned int iir = p->serial_in(p, UART_IIR);
+> +	unsigned int status;
+> +	unsigned long flags;
+> +
+> +	/*
+> +	 * There are ways to get Designware-based UARTs into a state where
+> +	 * they are asserting UART_IIR_RX_TIMEOUT but there is no actual
+> +	 * data available.  If we see such a case then we'll do a bogus
+> +	 * read.  If we don't do this then the "RX TIMEOUT" interrupt will
+> +	 * fire forever.
+> +	 *
+> +	 * This problem has only been observed so far when not in DMA mode
+> +	 * so we limit the workaround only to non-DMA mode.
+> +	 */
+> +	if (!up->dma && ((iir & 0x3f) == UART_IIR_RX_TIMEOUT)) {
+> +		spin_lock_irqsave(&p->lock, flags);
+> +		status = p->serial_in(p, UART_LSR);
+> +
+> +		if (!(status & (UART_LSR_DR | UART_LSR_BI)))
+> +			(void) p->serial_in(p, UART_RX);
+> +
+> +		spin_unlock_irqrestore(&p->lock, flags);
+> +	}
+>   
+>   	if (serial8250_handle_irq(p, iir))
+>   		return 1;
