@@ -1,187 +1,204 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [RESEND PATCH 1/1] usb: dwc2: add multiple clock handling
-Date: Tue, 7 Feb 2017 11:18:13 +0800
-Message-ID: <ce60a874-fe78-840a-d79a-1589a965e3f5@rock-chips.com>
-References: <1486263061-10681-1-git-send-email-frank.wang@rock-chips.com>
- <1486263061-10681-2-git-send-email-frank.wang@rock-chips.com>
- <1521643.nOmCoBUNHr@phil>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH 1/4] drm/rockchip: Do not use DMA mapping API if attached to
+ IOMMU domain
+Date: Tue,  7 Feb 2017 14:09:33 +0800
+Message-ID: <1486447776-30543-2-git-send-email-mark.yao@rock-chips.com>
+References: <1486447776-30543-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1521643.nOmCoBUNHr@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, johnyoun@synopsys.com, gregkh@linuxfoundation.org
-Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, kever.yang@rock-chips.com, william.wu@rock-chips.com, frank.wang@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1486447776-30543-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Shunqian Zheng <zhengsq@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko, John and Greg,
-
-On 2017/2/7 8:06, Heiko Stuebner wrote:
-> Hi Frank,
->
-> Am Sonntag, 5. Februar 2017, 10:51:01 CET schrieb Frank Wang:
->> Originally, dwc2 just handle one clock named otg, however, it may have
->> two or more clock need to manage for some new SoCs, so this adds
->> change clk to clk's array of dwc2_hsotg to handle more clocks operation.
->>
->> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->> ---
->>   drivers/usb/dwc2/core.h     |  5 ++++-
->>   drivers/usb/dwc2/platform.c | 39 ++++++++++++++++++++++++++-------------
->>   2 files changed, 30 insertions(+), 14 deletions(-)
->>
->> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
->> index 1a7e830..d10a466 100644
->> --- a/drivers/usb/dwc2/core.h
->> +++ b/drivers/usb/dwc2/core.h
->> @@ -121,6 +121,9 @@ static inline void dwc2_writel(u32 value, void __iomem
->> *addr) /* Maximum number of Endpoints/HostChannels */
->>   #define MAX_EPS_CHANNELS	16
->>
->> +/* Maximum number of dwc2 clocks */
->> +#define DWC2_MAX_CLKS 3
-> why 3 clocks?
-
-Showing from the chapter 2.4 of dwc otg databook v3.10, it seems there 
-should be five clocks, am I right?
-hclk/pmu_hclk/utmi_clk/ulpi_clk/utmifs_clk48
-
-> I.e. the binding currently only specifies the "otg" clock, so you should
-> definitly amend it to also specifiy this "pmu" clock - in a separate patch
-> before this one of course :-) .
-> "pmu" also looks like a good name for that clock-binding and these new clocks
-> of course should be optional in the binding.
-
-No problem, I will amend the binding when the implementation scheme is 
-clear.
-
-> And ideally also just specify this mysterious third clock as well while you're
-> at it.
->
->> +
->>   /* dwc2-hsotg declarations */
->>   static const char * const dwc2_hsotg_supply_names[] = {
->>   	"vusb_d",               /* digital USB supply, 1.2V */
->> @@ -913,7 +916,7 @@ struct dwc2_hsotg {
->>   	spinlock_t lock;
->>   	void *priv;
->>   	int     irq;
->> -	struct clk *clk;
->> +	struct clk *clks[DWC2_MAX_CLKS];
->>   	struct reset_control *reset;
->>
->>   	unsigned int queuing_high_bandwidth:1;
-> [...]
->
->> @@ -123,17 +123,20 @@ static int dwc2_get_dr_mode(struct dwc2_hsotg *hsotg)
->>   static int __dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
->>   {
->>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
->> -	int ret;
->> +	int clk, ret;
->>
->>   	ret = regulator_bulk_enable(ARRAY_SIZE(hsotg->supplies),
->>   				    hsotg->supplies);
->>   	if (ret)
->>   		return ret;
->>
->> -	if (hsotg->clk) {
->> -		ret = clk_prepare_enable(hsotg->clk);
->> -		if (ret)
->> +	for (clk = 0; clk < DWC2_MAX_CLKS && hsotg->clks[clk]; clk++) {
->> +		ret = clk_prepare_enable(hsotg->clks[clk]);
->> +		if (ret) {
->> +			while (--clk >= 0)
->> +				clk_disable_unprepare(hsotg->clks[clk]);
->>   			return ret;
->> +		}
->>   	}
->>
->>   	if (hsotg->uphy) {
->> @@ -168,7 +171,7 @@ int dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
->>   static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
->>   {
->>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
->> -	int ret = 0;
->> +	int clk, ret = 0;
->>
->>   	if (hsotg->uphy) {
->>   		usb_phy_shutdown(hsotg->uphy);
->> @@ -182,8 +185,9 @@ static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg
->> *hsotg) if (ret)
->>   		return ret;
->>
->> -	if (hsotg->clk)
->> -		clk_disable_unprepare(hsotg->clk);
->> +	for (clk = DWC2_MAX_CLKS - 1; clk >= 0; clk--)
->> +		if (hsotg->clks[clk])
->> +			clk_disable_unprepare(hsotg->clks[clk]);
->>   	ret = regulator_bulk_disable(ARRAY_SIZE(hsotg->supplies),
->>   				     hsotg->supplies);
->> @@ -209,7 +213,7 @@ int dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
->>
->>   static int dwc2_lowlevel_hw_init(struct dwc2_hsotg *hsotg)
->>   {
->> -	int i, ret;
->> +	int i, clk, ret;
->>
->>   	hsotg->reset = devm_reset_control_get_optional(hsotg->dev, "dwc2");
->>   	if (IS_ERR(hsotg->reset)) {
->> @@ -282,11 +286,20 @@ static int dwc2_lowlevel_hw_init(struct dwc2_hsotg
->> *hsotg) hsotg->phyif = GUSBCFG_PHYIF8;
->>   	}
->>
->> -	/* Clock */
->> -	hsotg->clk = devm_clk_get(hsotg->dev, "otg");
->> -	if (IS_ERR(hsotg->clk)) {
->> -		hsotg->clk = NULL;
->> -		dev_dbg(hsotg->dev, "cannot get otg clock\n");
->> +	/* Clocks */
->> +	for (clk = 0; clk < DWC2_MAX_CLKS; clk++) {
->> +		hsotg->clks[clk] = of_clk_get(hsotg->dev->of_node, clk);
->> +		if (IS_ERR(hsotg->clks[clk])) {
->> +			ret = PTR_ERR(hsotg->clks[clk]);
->> +			if (ret == -EPROBE_DEFER) {
->> +				while (--clk >= 0)
->> +					clk_put(hsotg->clks[clk]);
->> +				return ret;
->> +			}
->> +
->> +			hsotg->clks[clk] = NULL;
->> +			break;
->> +		}
-> I guess this depends on the feelings of the usb-people, but for me it might
-> make more sense to not carry the clocks in an anonymous array but instead as
-> named members in struct dwc2_hsotg - aka clk_otg, clk_pmu, clk_??? .
->
-> Because the otg clocks is actually marked as required in the binding while our
-> two new clocks are optional and some future code might actually want to
-> control these separate clocks to save some power somewhere.
->
->
-> Sidenote: I don't really understand why the driver allows the otg clock to be
-> missing, as it is a required property in the binding.
-
-Yes, if there are only two clocks need to control, separate member in 
-struct dwc2_hsotg is really better,
-but for more clocks, the operations of each clock 
-(get/prepare/unprepare) may become tedious
-
-How about keeping the original 'otg' clk and adding a new clk array 
-member for optional clocks in struct dwc2_hsotg?
-because excepting 'otg' clk, the others are all optional clocks.
-
-Of course, if we only consider hclk and pmu_hclk, I guess the separate 
-member scheme is still better.
-
-John and Greg, would you like to give some comments please?
-
-
-BR.
-Frank
-
-> Heiko
->
->
->
+RnJvbTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KClRoZSBBUEkgaXMgbm90IHN1
+aXRhYmxlIGZvciBzdWJzeXN0ZW1zIGNvbnNpc3Rpbmcgb2YgbXVsdGlwbGUgZGV2aWNlcwphbmQg
+cmVxdWlyZXMgc2V2ZXJlIGhhY2tzIHRvIHVzZSBpdC4gVG8gbWl0aWdhdGUgdGhpcywgdGhpcyBw
+YXRjaAppbXBsZW1lbnRzIGFsbG9jYXRpb24gYW5kIGFkZHJlc3Mgc3BhY2UgbWFuYWdlbWVudCBs
+b2NhbGx5IGJ5IHVzaW5nCmhlbHBlcnMgcHJvdmlkZWQgYnkgRFJNIGZyYW1ld29yaywgbGlrZSBv
+dGhlciBEUk0gZHJpdmVycyBkbywgZS5nLgpUZWdyYS4KClRoaXMgcGF0Y2ggc2hvdWxkIG5vdCBp
+bnRyb2R1Y2UgYW55IGZ1bmN0aW9uYWwgY2hhbmdlcyB1bnRpbCB0aGUgZHJpdmVyCmlzIG1hZGUg
+dG8gYXR0YWNoIHN1YmRldmljZXMgaW50byBhbiBJT01NVSBkb21haW4gd2l0aCB0aGUgZ2VuZXJp
+YyBJT01NVQpBUEksIHdoaWNoIHdpbGwgaGFwcGVuIGluIGZvbGxvd2luZyBwYXRjaC4gQmFzZWQg
+aGVhdmlseSBvbiBHRU0KaW1wbGVtZW50YXRpb24gb2YgVGVncmEgRFJNIGRyaXZlci4KClNpZ25l
+ZC1vZmYtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6
+IFNodW5xaWFuIFpoZW5nIDx6aGVuZ3NxQHJvY2stY2hpcHMuY29tPgpBY2tlZC1ieTogTWFyayBZ
+YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgIDQgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZ2VtLmMgfCAyMTcgKysrKysrKysrKysrKysrKysrKysrKysrKystLQogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uaCB8ICAgOCArCiAzIGZpbGVz
+IGNoYW5nZWQsIDIxOSBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAppbmRleCBmYjYyMjZjLi43YzEyM2Q5
+IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5o
+CisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKQEAgLTMw
+LDYgKzMwLDcgQEAKIAogc3RydWN0IGRybV9kZXZpY2U7CiBzdHJ1Y3QgZHJtX2Nvbm5lY3RvcjsK
+K3N0cnVjdCBpb21tdV9kb21haW47CiAKIC8qCiAgKiBSb2NrY2hpcCBkcm0gcHJpdmF0ZSBjcnRj
+IGZ1bmNzLgpAQCAtNjAsNyArNjEsOCBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgewog
+CXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqZmJkZXZfYm87CiAJY29uc3Qgc3RydWN0IHJvY2tjaGlw
+X2NydGNfZnVuY3MgKmNydGNfZnVuY3NbUk9DS0NISVBfTUFYX0NSVENdOwogCXN0cnVjdCBkcm1f
+YXRvbWljX3N0YXRlICpzdGF0ZTsKLQorCXN0cnVjdCBpb21tdV9kb21haW4gKmRvbWFpbjsKKwlz
+dHJ1Y3QgZHJtX21tIG1tOwogCXN0cnVjdCBsaXN0X2hlYWQgcHNyX2xpc3Q7CiAJc3BpbmxvY2tf
+dCBwc3JfbGlzdF9sb2NrOwogfTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2dlbS5jCmluZGV4IGI3MGY5NDIuLjUyMDkzOTIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwpAQCAtMTYsMTEgKzE2LDEzNSBAQAogI2luY2x1ZGUg
+PGRybS9kcm1QLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KICNpbmNsdWRlIDxkcm0vZHJt
+X3ZtYV9tYW5hZ2VyLmg+CisjaW5jbHVkZSA8bGludXgvaW9tbXUuaD4KIAogI2luY2x1ZGUgInJv
+Y2tjaGlwX2RybV9kcnYuaCIKICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZ2VtLmgiCiAKLXN0YXRp
+YyBpbnQgcm9ja2NoaXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAq
+cmtfb2JqLAorc3RhdGljIGludCByb2NrY2hpcF9nZW1faW9tbXVfbWFwKHN0cnVjdCByb2NrY2hp
+cF9nZW1fb2JqZWN0ICpya19vYmopCit7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHJrX29i
+ai0+YmFzZS5kZXY7CisJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZHJt
+LT5kZXZfcHJpdmF0ZTsKKwlpbnQgcHJvdCA9IElPTU1VX1JFQUQgfCBJT01NVV9XUklURTsKKwlz
+c2l6ZV90IHJldDsKKworCXJldCA9IGRybV9tbV9pbnNlcnRfbm9kZV9nZW5lcmljKCZwcml2YXRl
+LT5tbSwgJnJrX29iai0+bW0sCisJCQkJCSBya19vYmotPmJhc2Uuc2l6ZSwgUEFHRV9TSVpFLAor
+CQkJCQkgMCwgMCk7CisJaWYgKHJldCA8IDApIHsKKwkJRFJNX0VSUk9SKCJvdXQgb2YgSS9PIHZp
+cnR1YWwgbWVtb3J5OiAlemRcbiIsIHJldCk7CisJCXJldHVybiByZXQ7CisJfQorCisJcmtfb2Jq
+LT5kbWFfYWRkciA9IHJrX29iai0+bW0uc3RhcnQ7CisKKwlyZXQgPSBpb21tdV9tYXBfc2cocHJp
+dmF0ZS0+ZG9tYWluLCBya19vYmotPmRtYV9hZGRyLCBya19vYmotPnNndC0+c2dsLAorCQkJICAg
+cmtfb2JqLT5zZ3QtPm5lbnRzLCBwcm90KTsKKwlpZiAocmV0IDwgMCkgeworCQlEUk1fRVJST1Io
+ImZhaWxlZCB0byBtYXAgYnVmZmVyOiAlemRcbiIsIHJldCk7CisJCWdvdG8gZXJyX3JlbW92ZV9u
+b2RlOworCX0KKworCXJrX29iai0+c2l6ZSA9IHJldDsKKworCXJldHVybiAwOworCitlcnJfcmVt
+b3ZlX25vZGU6CisJZHJtX21tX3JlbW92ZV9ub2RlKCZya19vYmotPm1tKTsKKworCXJldHVybiBy
+ZXQ7Cit9CisKK3N0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2lvbW11X3VubWFwKHN0cnVjdCByb2Nr
+Y2hpcF9nZW1fb2JqZWN0ICpya19vYmopCit7CisJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHJr
+X29iai0+YmFzZS5kZXY7CisJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0g
+ZHJtLT5kZXZfcHJpdmF0ZTsKKworCWlvbW11X3VubWFwKHByaXZhdGUtPmRvbWFpbiwgcmtfb2Jq
+LT5kbWFfYWRkciwgcmtfb2JqLT5zaXplKTsKKwlkcm1fbW1fcmVtb3ZlX25vZGUoJnJrX29iai0+
+bW0pOworCisJcmV0dXJuIDA7Cit9CisKK3N0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2dldF9wYWdl
+cyhzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQoreworCXN0cnVjdCBkcm1fZGV2
+aWNlICpkcm0gPSBya19vYmotPmJhc2UuZGV2OworCWludCByZXQsIGk7CisJc3RydWN0IHNjYXR0
+ZXJsaXN0ICpzOworCisJcmtfb2JqLT5wYWdlcyA9IGRybV9nZW1fZ2V0X3BhZ2VzKCZya19vYmot
+PmJhc2UpOworCWlmIChJU19FUlIocmtfb2JqLT5wYWdlcykpCisJCXJldHVybiBQVFJfRVJSKHJr
+X29iai0+cGFnZXMpOworCisJcmtfb2JqLT5udW1fcGFnZXMgPSBya19vYmotPmJhc2Uuc2l6ZSA+
+PiBQQUdFX1NISUZUOworCisJcmtfb2JqLT5zZ3QgPSBkcm1fcHJpbWVfcGFnZXNfdG9fc2cocmtf
+b2JqLT5wYWdlcywgcmtfb2JqLT5udW1fcGFnZXMpOworCWlmIChJU19FUlIocmtfb2JqLT5zZ3Qp
+KSB7CisJCXJldCA9IFBUUl9FUlIocmtfb2JqLT5zZ3QpOworCQlnb3RvIGVycl9wdXRfcGFnZXM7
+CisJfQorCisJLyoKKwkgKiBGYWtlIHVwIHRoZSBTRyB0YWJsZSBzbyB0aGF0IGRtYV9zeW5jX3Nn
+X2Zvcl9kZXZpY2UoKSBjYW4gYmUgdXNlZAorCSAqIHRvIGZsdXNoIHRoZSBwYWdlcyBhc3NvY2lh
+dGVkIHdpdGggaXQuCisJICoKKwkgKiBUT0RPOiBSZXBsYWNlIHRoaXMgYnkgZHJtX2NsZmx1c2hf
+c2coKSBvbmNlIGl0IGNhbiBiZSBpbXBsZW1lbnRlZAorCSAqIHdpdGhvdXQgcmVseWluZyBvbiBz
+eW1ib2xzIHRoYXQgYXJlIG5vdCBleHBvcnRlZC4KKwkgKi8KKwlmb3JfZWFjaF9zZyhya19vYmot
+PnNndC0+c2dsLCBzLCBya19vYmotPnNndC0+bmVudHMsIGkpCisJCXNnX2RtYV9hZGRyZXNzKHMp
+ID0gc2dfcGh5cyhzKTsKKworCWRtYV9zeW5jX3NnX2Zvcl9kZXZpY2UoZHJtLT5kZXYsIHJrX29i
+ai0+c2d0LT5zZ2wsIHJrX29iai0+c2d0LT5uZW50cywKKwkJCSAgICAgICBETUFfVE9fREVWSUNF
+KTsKKworCXJldHVybiAwOworCitlcnJfcHV0X3BhZ2VzOgorCWRybV9nZW1fcHV0X3BhZ2VzKCZy
+a19vYmotPmJhc2UsIHJrX29iai0+cGFnZXMsIGZhbHNlLCBmYWxzZSk7CisJcmV0dXJuIHJldDsK
+K30KKworc3RhdGljIHZvaWQgcm9ja2NoaXBfZ2VtX3B1dF9wYWdlcyhzdHJ1Y3Qgcm9ja2NoaXBf
+Z2VtX29iamVjdCAqcmtfb2JqKQoreworCXNnX2ZyZWVfdGFibGUocmtfb2JqLT5zZ3QpOworCWtm
+cmVlKHJrX29iai0+c2d0KTsKKwlkcm1fZ2VtX3B1dF9wYWdlcygmcmtfb2JqLT5iYXNlLCBya19v
+YmotPnBhZ2VzLCBmYWxzZSwgZmFsc2UpOworfQorCitzdGF0aWMgaW50IHJvY2tjaGlwX2dlbV9h
+bGxvY19pb21tdShzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLAorCQkJCSAgICBi
+b29sIGFsbG9jX2ttYXApCit7CisJaW50IHJldDsKKworCXJldCA9IHJvY2tjaGlwX2dlbV9nZXRf
+cGFnZXMocmtfb2JqKTsKKwlpZiAocmV0IDwgMCkKKwkJcmV0dXJuIHJldDsKKworCXJldCA9IHJv
+Y2tjaGlwX2dlbV9pb21tdV9tYXAocmtfb2JqKTsKKwlpZiAocmV0IDwgMCkKKwkJZ290byBlcnJf
+ZnJlZTsKKworCWlmIChhbGxvY19rbWFwKSB7CisJCXJrX29iai0+a3ZhZGRyID0gdm1hcChya19v
+YmotPnBhZ2VzLCBya19vYmotPm51bV9wYWdlcywgVk1fTUFQLAorCQkJCSAgICAgIHBncHJvdF93
+cml0ZWNvbWJpbmUoUEFHRV9LRVJORUwpKTsKKwkJaWYgKCFya19vYmotPmt2YWRkcikgeworCQkJ
+RFJNX0VSUk9SKCJmYWlsZWQgdG8gdm1hcCgpIGJ1ZmZlclxuIik7CisJCQlyZXQgPSAtRU5PTUVN
+OworCQkJZ290byBlcnJfdW5tYXA7CisJCX0KKwl9CisKKwlyZXR1cm4gMDsKKworZXJyX3VubWFw
+OgorCXJvY2tjaGlwX2dlbV9pb21tdV91bm1hcChya19vYmopOworZXJyX2ZyZWU6CisJcm9ja2No
+aXBfZ2VtX3B1dF9wYWdlcyhya19vYmopOworCisJcmV0dXJuIHJldDsKK30KKworc3RhdGljIGlu
+dCByb2NrY2hpcF9nZW1fYWxsb2NfZG1hKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19v
+YmosCiAJCQkJICBib29sIGFsbG9jX2ttYXApCiB7CiAJc3RydWN0IGRybV9nZW1fb2JqZWN0ICpv
+YmogPSAmcmtfb2JqLT5iYXNlOwpAQCAtNDIsNyArMTY2LDI3IEBAIHN0YXRpYyBpbnQgcm9ja2No
+aXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLAogCXJl
+dHVybiAwOwogfQogCi1zdGF0aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9idWYoc3RydWN0IHJv
+Y2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikKK3N0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2FsbG9j
+X2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLAorCQkJCSAgYm9vbCBhbGxv
+Y19rbWFwKQoreworCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqID0gJnJrX29iai0+YmFzZTsK
+KwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gb2JqLT5kZXY7CisJc3RydWN0IHJvY2tjaGlwX2Ry
+bV9wcml2YXRlICpwcml2YXRlID0gZHJtLT5kZXZfcHJpdmF0ZTsKKworCWlmIChwcml2YXRlLT5k
+b21haW4pCisJCXJldHVybiByb2NrY2hpcF9nZW1fYWxsb2NfaW9tbXUocmtfb2JqLCBhbGxvY19r
+bWFwKTsKKwllbHNlCisJCXJldHVybiByb2NrY2hpcF9nZW1fYWxsb2NfZG1hKHJrX29iaiwgYWxs
+b2Nfa21hcCk7Cit9CisKK3N0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX2lvbW11KHN0cnVj
+dCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmopCit7CisJdnVubWFwKHJrX29iai0+a3ZhZGRy
+KTsKKwlyb2NrY2hpcF9nZW1faW9tbXVfdW5tYXAocmtfb2JqKTsKKwlyb2NrY2hpcF9nZW1fcHV0
+X3BhZ2VzKHJrX29iaik7Cit9CisKK3N0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX2RtYShz
+dHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQogewogCXN0cnVjdCBkcm1fZ2VtX29i
+amVjdCAqb2JqID0gJnJrX29iai0+YmFzZTsKIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gb2Jq
+LT5kZXY7CkBAIC01MSwyMyArMTk1LDY0IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9mcmVl
+X2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQogCQkgICAgICAgcmtfb2Jq
+LT5kbWFfYXR0cnMpOwogfQogCi1zdGF0aWMgaW50IHJvY2tjaGlwX2RybV9nZW1fb2JqZWN0X21t
+YXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCi0JCQkJCXN0cnVjdCB2bV9hcmVhX3N0cnVj
+dCAqdm1hKQorc3RhdGljIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHN0cnVjdCByb2NrY2hp
+cF9nZW1fb2JqZWN0ICpya19vYmopCit7CisJaWYgKHJrX29iai0+cGFnZXMpCisJCXJvY2tjaGlw
+X2dlbV9mcmVlX2lvbW11KHJrX29iaik7CisJZWxzZQorCQlyb2NrY2hpcF9nZW1fZnJlZV9kbWEo
+cmtfb2JqKTsKK30KIAorc3RhdGljIGludCByb2NrY2hpcF9kcm1fZ2VtX29iamVjdF9tbWFwX2lv
+bW11KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLAorCQkJCQkgICAgICBzdHJ1Y3Qgdm1fYXJl
+YV9zdHJ1Y3QgKnZtYSkKIHsKKwlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqID0g
+dG9fcm9ja2NoaXBfb2JqKG9iaik7CisJdW5zaWduZWQgaW50IGksIGNvdW50ID0gb2JqLT5zaXpl
+ID4+IFBBR0VfU0hJRlQ7CisJdW5zaWduZWQgbG9uZyB1c2VyX2NvdW50ID0gKHZtYS0+dm1fZW5k
+IC0gdm1hLT52bV9zdGFydCkgPj4gUEFHRV9TSElGVDsKKwl1bnNpZ25lZCBsb25nIHVhZGRyID0g
+dm1hLT52bV9zdGFydDsKIAlpbnQgcmV0OworCisJaWYgKHVzZXJfY291bnQgPT0gMCB8fCB1c2Vy
+X2NvdW50ID4gY291bnQpCisJCXJldHVybiAtRU5YSU87CisKKwlmb3IgKGkgPSAwOyBpIDwgdXNl
+cl9jb3VudDsgaSsrKSB7CisJCXJldCA9IHZtX2luc2VydF9wYWdlKHZtYSwgdWFkZHIsIHJrX29i
+ai0+cGFnZXNbaV0pOworCQlpZiAocmV0KQorCQkJcmV0dXJuIHJldDsKKwkJdWFkZHIgKz0gUEFH
+RV9TSVpFOworCX0KKworCXJldHVybiAwOworfQorCitzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9n
+ZW1fb2JqZWN0X21tYXBfZG1hKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLAorCQkJCQkgICAg
+c3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCit7CiAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmpl
+Y3QgKnJrX29iaiA9IHRvX3JvY2tjaGlwX29iaihvYmopOwogCXN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0gPSBvYmotPmRldjsKIAorCXJldHVybiBkbWFfbW1hcF9hdHRycyhkcm0tPmRldiwgdm1hLCBy
+a19vYmotPmt2YWRkciwgcmtfb2JqLT5kbWFfYWRkciwKKwkJCSAgICAgIG9iai0+c2l6ZSwgcmtf
+b2JqLT5kbWFfYXR0cnMpOworfQorCitzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9nZW1fb2JqZWN0
+X21tYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCisJCQkJCXN0cnVjdCB2bV9hcmVhX3N0
+cnVjdCAqdm1hKQoreworCWludCByZXQ7CisJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJr
+X29iaiA9IHRvX3JvY2tjaGlwX29iaihvYmopOworCiAJLyoKLQkgKiBkbWFfYWxsb2NfYXR0cnMo
+KSBhbGxvY2F0ZWQgYSBzdHJ1Y3QgcGFnZSB0YWJsZSBmb3Igcmtfb2JqLCBzbyBjbGVhcgorCSAq
+IFdlIGFsbG9jYXRlZCBhIHN0cnVjdCBwYWdlIHRhYmxlIGZvciBya19vYmosIHNvIGNsZWFyCiAJ
+ICogVk1fUEZOTUFQIGZsYWcgdGhhdCB3YXMgc2V0IGJ5IGRybV9nZW1fbW1hcF9vYmooKS9kcm1f
+Z2VtX21tYXAoKS4KIAkgKi8KIAl2bWEtPnZtX2ZsYWdzICY9IH5WTV9QRk5NQVA7CiAJdm1hLT52
+bV9wZ29mZiA9IDA7CiAKLQlyZXQgPSBkbWFfbW1hcF9hdHRycyhkcm0tPmRldiwgdm1hLCBya19v
+YmotPmt2YWRkciwgcmtfb2JqLT5kbWFfYWRkciwKLQkJCSAgICAgb2JqLT5zaXplLCBya19vYmot
+PmRtYV9hdHRycyk7CisJaWYgKHJrX29iai0+cGFnZXMpCisJCXJldCA9IHJvY2tjaGlwX2RybV9n
+ZW1fb2JqZWN0X21tYXBfaW9tbXUob2JqLCB2bWEpOworCWVsc2UKKwkJcmV0ID0gcm9ja2NoaXBf
+ZHJtX2dlbV9vYmplY3RfbW1hcF9kbWEob2JqLCB2bWEpOworCiAJaWYgKHJldCkKIAkJZHJtX2dl
+bV92bV9jbG9zZSh2bWEpOwogCkBAIC0xMTcsNyArMzAyLDcgQEAgc3RydWN0IHJvY2tjaGlwX2dl
+bV9vYmplY3QgKgogCiAJb2JqID0gJnJrX29iai0+YmFzZTsKIAotCWRybV9nZW1fcHJpdmF0ZV9v
+YmplY3RfaW5pdChkcm0sIG9iaiwgc2l6ZSk7CisJZHJtX2dlbV9vYmplY3RfaW5pdChkcm0sIG9i
+aiwgc2l6ZSk7CiAKIAlyZXQgPSByb2NrY2hpcF9nZW1fYWxsb2NfYnVmKHJrX29iaiwgYWxsb2Nf
+a21hcCk7CiAJaWYgKHJldCkKQEAgLTI1Myw2ICs0MzgsOSBAQCBzdHJ1Y3Qgc2dfdGFibGUgKnJv
+Y2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFibGUoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmop
+CiAJc3RydWN0IHNnX3RhYmxlICpzZ3Q7CiAJaW50IHJldDsKIAorCWlmIChya19vYmotPnBhZ2Vz
+KQorCQlyZXR1cm4gZHJtX3ByaW1lX3BhZ2VzX3RvX3NnKHJrX29iai0+cGFnZXMsIHJrX29iai0+
+bnVtX3BhZ2VzKTsKKwogCXNndCA9IGt6YWxsb2Moc2l6ZW9mKCpzZ3QpLCBHRlBfS0VSTkVMKTsK
+IAlpZiAoIXNndCkKIAkJcmV0dXJuIEVSUl9QVFIoLUVOT01FTSk7CkBAIC0yNzMsNiArNDYxLDEw
+IEBAIHZvaWQgKnJvY2tjaGlwX2dlbV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
+b2JqKQogewogCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmogPSB0b19yb2NrY2hp
+cF9vYmoob2JqKTsKIAorCWlmIChya19vYmotPnBhZ2VzKQorCQlyZXR1cm4gdm1hcChya19vYmot
+PnBhZ2VzLCBya19vYmotPm51bV9wYWdlcywgVk1fTUFQLAorCQkJICAgIHBncHJvdF93cml0ZWNv
+bWJpbmUoUEFHRV9LRVJORUwpKTsKKwogCWlmIChya19vYmotPmRtYV9hdHRycyAmIERNQV9BVFRS
+X05PX0tFUk5FTF9NQVBQSU5HKQogCQlyZXR1cm4gTlVMTDsKIApAQCAtMjgxLDUgKzQ3MywxMiBA
+QCB2b2lkICpyb2NrY2hpcF9nZW1fcHJpbWVfdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9i
+aikKIAogdm9pZCByb2NrY2hpcF9nZW1fcHJpbWVfdnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqb2JqLCB2b2lkICp2YWRkcikKIHsKLQkvKiBOb3RoaW5nIHRvIGRvICovCisJc3RydWN0IHJv
+Y2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaiA9IHRvX3JvY2tjaGlwX29iaihvYmopOworCisJaWYg
+KHJrX29iai0+cGFnZXMpIHsKKwkJdnVubWFwKHZhZGRyKTsKKwkJcmV0dXJuOworCX0KKworCS8q
+IE5vdGhpbmcgdG8gZG8gaWYgYWxsb2NhdGVkIGJ5IERNQSBtYXBwaW5nIEFQSS4gKi8KIH0KZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmggYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oCmluZGV4IDE4YjM0ODgu
+LjNmNmVhNGQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZ2VtLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
+aApAQCAtMjMsNyArMjMsMTUgQEAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgewogCiAJdm9p
+ZCAqa3ZhZGRyOwogCWRtYV9hZGRyX3QgZG1hX2FkZHI7CisJLyogVXNlZCB3aGVuIElPTU1VIGlz
+IGRpc2FibGVkICovCiAJdW5zaWduZWQgbG9uZyBkbWFfYXR0cnM7CisKKwkvKiBVc2VkIHdoZW4g
+SU9NTVUgaXMgZW5hYmxlZCAqLworCXN0cnVjdCBkcm1fbW1fbm9kZSBtbTsKKwl1bnNpZ25lZCBs
+b25nIG51bV9wYWdlczsKKwlzdHJ1Y3QgcGFnZSAqKnBhZ2VzOworCXN0cnVjdCBzZ190YWJsZSAq
+c2d0OworCXNpemVfdCBzaXplOwogfTsKIAogc3RydWN0IHNnX3RhYmxlICpyb2NrY2hpcF9nZW1f
+cHJpbWVfZ2V0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKLS0gCjEuOS4x
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
