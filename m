@@ -1,212 +1,105 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND PATCH 1/1] usb: dwc2: add multiple clock handling
-Date: Tue, 7 Feb 2017 09:51:18 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE300772909021B41A29C@US01WEMBX2.internal.synopsys.com>
-References: <1486263061-10681-1-git-send-email-frank.wang@rock-chips.com>
- <1486263061-10681-2-git-send-email-frank.wang@rock-chips.com>
- <1521643.nOmCoBUNHr@phil>
- <ce60a874-fe78-840a-d79a-1589a965e3f5@rock-chips.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v2 3/7] drm/rockchip: gem: add mutex lock for drm mm
+Date: Tue, 7 Feb 2017 13:19:09 +0100
+Message-ID: <20170207121909.GA18315@ulmo.ba.sec>
+References: <1486456542-18675-1-git-send-email-mark.yao@rock-chips.com>
+ <1486456542-18675-4-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Language: en-US
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============1240555821=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1486456542-18675-4-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2/6/2017 7:18 PM, Frank Wang wrote:
-> Hi Heiko, John and Greg,
->
-> On 2017/2/7 8:06, Heiko Stuebner wrote:
->> Hi Frank,
->>
->> Am Sonntag, 5. Februar 2017, 10:51:01 CET schrieb Frank Wang:
->>> Originally, dwc2 just handle one clock named otg, however, it may have
->>> two or more clock need to manage for some new SoCs, so this adds
->>> change clk to clk's array of dwc2_hsotg to handle more clocks operation.
->>>
->>> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> ---
->>>   drivers/usb/dwc2/core.h     |  5 ++++-
->>>   drivers/usb/dwc2/platform.c | 39 ++++++++++++++++++++++++++-------------
->>>   2 files changed, 30 insertions(+), 14 deletions(-)
->>>
->>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
->>> index 1a7e830..d10a466 100644
->>> --- a/drivers/usb/dwc2/core.h
->>> +++ b/drivers/usb/dwc2/core.h
->>> @@ -121,6 +121,9 @@ static inline void dwc2_writel(u32 value, void __iomem
->>> *addr) /* Maximum number of Endpoints/HostChannels */
->>>   #define MAX_EPS_CHANNELS	16
->>>
->>> +/* Maximum number of dwc2 clocks */
->>> +#define DWC2_MAX_CLKS 3
->> why 3 clocks?
->
-> Showing from the chapter 2.4 of dwc otg databook v3.10, it seems there
-> should be five clocks, am I right?
-> hclk/pmu_hclk/utmi_clk/ulpi_clk/utmifs_clk48
->
->> I.e. the binding currently only specifies the "otg" clock, so you should
->> definitly amend it to also specifiy this "pmu" clock - in a separate patch
->> before this one of course :-) .
->> "pmu" also looks like a good name for that clock-binding and these new clocks
->> of course should be optional in the binding.
->
-> No problem, I will amend the binding when the implementation scheme is
-> clear.
->
->> And ideally also just specify this mysterious third clock as well while you're
->> at it.
->>
->>> +
->>>   /* dwc2-hsotg declarations */
->>>   static const char * const dwc2_hsotg_supply_names[] = {
->>>   	"vusb_d",               /* digital USB supply, 1.2V */
->>> @@ -913,7 +916,7 @@ struct dwc2_hsotg {
->>>   	spinlock_t lock;
->>>   	void *priv;
->>>   	int     irq;
->>> -	struct clk *clk;
->>> +	struct clk *clks[DWC2_MAX_CLKS];
->>>   	struct reset_control *reset;
->>>
->>>   	unsigned int queuing_high_bandwidth:1;
->> [...]
->>
->>> @@ -123,17 +123,20 @@ static int dwc2_get_dr_mode(struct dwc2_hsotg *hsotg)
->>>   static int __dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
->>>   {
->>>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
->>> -	int ret;
->>> +	int clk, ret;
->>>
->>>   	ret = regulator_bulk_enable(ARRAY_SIZE(hsotg->supplies),
->>>   				    hsotg->supplies);
->>>   	if (ret)
->>>   		return ret;
->>>
->>> -	if (hsotg->clk) {
->>> -		ret = clk_prepare_enable(hsotg->clk);
->>> -		if (ret)
->>> +	for (clk = 0; clk < DWC2_MAX_CLKS && hsotg->clks[clk]; clk++) {
->>> +		ret = clk_prepare_enable(hsotg->clks[clk]);
->>> +		if (ret) {
->>> +			while (--clk >= 0)
->>> +				clk_disable_unprepare(hsotg->clks[clk]);
->>>   			return ret;
->>> +		}
->>>   	}
->>>
->>>   	if (hsotg->uphy) {
->>> @@ -168,7 +171,7 @@ int dwc2_lowlevel_hw_enable(struct dwc2_hsotg *hsotg)
->>>   static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
->>>   {
->>>   	struct platform_device *pdev = to_platform_device(hsotg->dev);
->>> -	int ret = 0;
->>> +	int clk, ret = 0;
->>>
->>>   	if (hsotg->uphy) {
->>>   		usb_phy_shutdown(hsotg->uphy);
->>> @@ -182,8 +185,9 @@ static int __dwc2_lowlevel_hw_disable(struct dwc2_hsotg
->>> *hsotg) if (ret)
->>>   		return ret;
->>>
->>> -	if (hsotg->clk)
->>> -		clk_disable_unprepare(hsotg->clk);
->>> +	for (clk = DWC2_MAX_CLKS - 1; clk >= 0; clk--)
->>> +		if (hsotg->clks[clk])
->>> +			clk_disable_unprepare(hsotg->clks[clk]);
->>>   	ret = regulator_bulk_disable(ARRAY_SIZE(hsotg->supplies),
->>>   				     hsotg->supplies);
->>> @@ -209,7 +213,7 @@ int dwc2_lowlevel_hw_disable(struct dwc2_hsotg *hsotg)
->>>
->>>   static int dwc2_lowlevel_hw_init(struct dwc2_hsotg *hsotg)
->>>   {
->>> -	int i, ret;
->>> +	int i, clk, ret;
->>>
->>>   	hsotg->reset = devm_reset_control_get_optional(hsotg->dev, "dwc2");
->>>   	if (IS_ERR(hsotg->reset)) {
->>> @@ -282,11 +286,20 @@ static int dwc2_lowlevel_hw_init(struct dwc2_hsotg
->>> *hsotg) hsotg->phyif = GUSBCFG_PHYIF8;
->>>   	}
->>>
->>> -	/* Clock */
->>> -	hsotg->clk = devm_clk_get(hsotg->dev, "otg");
->>> -	if (IS_ERR(hsotg->clk)) {
->>> -		hsotg->clk = NULL;
->>> -		dev_dbg(hsotg->dev, "cannot get otg clock\n");
->>> +	/* Clocks */
->>> +	for (clk = 0; clk < DWC2_MAX_CLKS; clk++) {
->>> +		hsotg->clks[clk] = of_clk_get(hsotg->dev->of_node, clk);
->>> +		if (IS_ERR(hsotg->clks[clk])) {
->>> +			ret = PTR_ERR(hsotg->clks[clk]);
->>> +			if (ret == -EPROBE_DEFER) {
->>> +				while (--clk >= 0)
->>> +					clk_put(hsotg->clks[clk]);
->>> +				return ret;
->>> +			}
->>> +
->>> +			hsotg->clks[clk] = NULL;
->>> +			break;
->>> +		}
->> I guess this depends on the feelings of the usb-people, but for me it might
->> make more sense to not carry the clocks in an anonymous array but instead as
->> named members in struct dwc2_hsotg - aka clk_otg, clk_pmu, clk_??? .
 
-This is fine with me.
+--===============1240555821==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="jRHKVT23PllUwdXP"
+Content-Disposition: inline
 
->>
->> Because the otg clocks is actually marked as required in the binding while our
->> two new clocks are optional and some future code might actually want to
->> control these separate clocks to save some power somewhere.
->>
->>
->> Sidenote: I don't really understand why the driver allows the otg clock to be
->> missing, as it is a required property in the binding.
 
-This should be optional since not every platform is going to need to
-specify it. And it is implemented that way now so I think this doc
-needs to be updated.
+--jRHKVT23PllUwdXP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->
-> Yes, if there are only two clocks need to control, separate member in
-> struct dwc2_hsotg is really better,
-> but for more clocks, the operations of each clock
-> (get/prepare/unprepare) may become tedious
->
-> How about keeping the original 'otg' clk and adding a new clk array
-> member for optional clocks in struct dwc2_hsotg?
-> because excepting 'otg' clk, the others are all optional clocks.
+On Tue, Feb 07, 2017 at 04:35:38PM +0800, Mark Yao wrote:
+> drm_mm_insert_node_generic and drm_mm_remove_node may access same
+> resource with list ops, it's not threads safe, so protect this context
+> with mutex lock.
+>=20
+> Fix bug:
+> [49451.856244] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> [49451.856350] BUG: KASAN: wild-memory-access on address dead000000000108
+> [49451.856379] Write of size 8 by task Binder:218_4/683
+> [49451.856417] CPU: 2 PID: 683 Comm: Binder:218_4 Not tainted 4.4.36 #62
+> [49451.856443] Hardware name: Rockchip RK3399 Excavator Board edp (Androi=
+d) (DT)
+> [49451.856469] Call trace:
+> [49451.856519] [<ffffff900808a9d0>] dump_backtrace+0x0/0x230
+> [49451.856556] [<ffffff900808ac14>] show_stack+0x14/0x1c
+> [49451.856592] [<ffffff90084a4de0>] dump_stack+0xa0/0xc8
+> [49451.856633] [<ffffff900821b700>] kasan_report+0x110/0x4dc
+> [49451.856670] [<ffffff900821aa84>] __asan_store8+0x24/0x7c
+> [49451.856715] [<ffffff90086158c4>] drm_mm_insert_node_generic+0x2dc/0x464
+> [49451.856760] [<ffffff90086406a8>] rockchip_gem_iommu_map+0x60/0x158
+> [49451.856794] [<ffffff9008640bb4>] rockchip_gem_create_object+0x278/0x488
+> [49451.856827] [<ffffff9008641020>] rockchip_gem_create_with_handle+0x24/=
+0x10c
+> [49451.856862] [<ffffff9008641364>] rockchip_gem_create_ioctl+0x3c/0x50
+> [49451.856896] [<ffffff900860aee4>] drm_ioctl+0x354/0x52c
+> [49451.856939] [<ffffff900823d948>] do_vfs_ioctl+0x670/0x78c
+> [49451.856976] [<ffffff900823dac4>] SyS_ioctl+0x60/0x88
+> [49451.857009] [<ffffff9008082ef0>] el0_svc_naked+0x24/0x28
+>=20
+> Change-Id: I2ea377aa9ca24f70c59e2d86f2a6ad5ccb9c0891
 
-I'd like to keep all the clocks optional and all accessed in a similar
-manner.
+This is meaningless in an upstream tree. Please remove.
 
-Regards,
-John
+Thierry
 
->
-> Of course, if we only consider hclk and pmu_hclk, I guess the separate
-> member scheme is still better.
->
-> John and Greg, would you like to give some comments please?
->
->
-> BR.
-> Frank
->
->> Heiko
->>
->>
->>
->
->
->
+--jRHKVT23PllUwdXP
+Content-Type: application/pgp-signature; name="signature.asc"
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAliZuzoACgkQ3SOs138+
+s6FH3A/6AwgZdl4NnAX/xBmWmzAiHXyJW/ATNJm2yBvmgaaM5JjssQAeg8nJ00LB
+WGQOroSDrgHuPRonXQX9WQY2z4eSquPIj9qLhF+EB7CzgUQ7S4dSvn8sHxyTxT74
+b1S4vT1gC2mSj3XONXN4MZBEolr5AYHshxDJsKHnPQuan3LNkLBK97vycH2CtCna
+aB4XdUQWCbC0qxxvmnOuZh34yf8BUfebdkQqEnD8QlB6SFuZmK3+Zq23ZciKRgme
+qG28kWSKq14rySL+RnPsTitAKLSfVwGw22CA6CaSEHa0ieR6MpjTMdEKt9zz2Ejb
+HpNf+3iLdyMEgDwftat6ys1HXD1qQX6BHQN1N7tXLZ49Wz1nfqcDZJIwANFR94j+
+ocSFuPutMDwQ9cwmQe61awjr86OQuA8Mdso6faIx6AQTgUhs2ZmtYH2p4F35u6x9
+ZmbIeGmWttqbiiXoUYuCXtgecAhgN7y3lUZPX+6gwO+jYyfXMriV+hCDv++9v230
+WBi396AEp4PToZUfO2L9iz3Lp+wjakMjGpqjfsz7VZ9GkKkHJBjlzztxyDUZzyBq
+A9jWogXMl6qS7ZYyZd9a06gEAeunz9ttbg9pULZCQi94VqZWuQxE6buF2BsXyj9e
+dTnzyNI5Y2sWHX1ZYkmc70gQwIBZHhB6JPgsRfuVf36lRStAc+A=
+=1y6h
+-----END PGP SIGNATURE-----
+
+--jRHKVT23PllUwdXP--
+
+--===============1240555821==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1240555821==--
