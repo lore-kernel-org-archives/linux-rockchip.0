@@ -1,79 +1,35 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v6 0/6] Rockchip dw-mipi-dsi driver
-Date: Wed, 8 Feb 2017 11:14:40 -0500
-Message-ID: <20170208161440.GD14321@art_vandelay>
-References: <1486520722-8853-1-git-send-email-zyw@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH V2 1/2] dt-bindings: add Asus Tinker board
+Date: Wed, 8 Feb 2017 17:01:07 -0600
+Message-ID: <20170208230107.e6cz2isoglw7iem2@rob-hp-laptop>
+References: <1486347287-31051-1-git-send-email-eddie.cai@rock-chips.com>
+ <1486347287-31051-2-git-send-email-eddie.cai@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1486520722-8853-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1486347287-31051-2-git-send-email-eddie.cai@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Eddie Cai <eddie.cai.linux@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, heiko@sntech.de, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBGZWIgMDgsIDIwMTcgYXQgMTA6MjU6MTZBTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
-dGU6Cj4gSGkgYWxsCj4gCj4gVGhpcyBwYXRjaCBzZXJpYWwgaXMgZm9yIFJLMzM5OSBNSVBJIERT
-SS4gVGhlIE1JUEkgRFNJIGNvbnRyb2xsZXIgb2YKPiBSSzMzOTkgaXMgYWxtb3N0IHRoZSBzYW1l
-IGFzIFJLMzI4OCwgZXhjZXB0IGEgbGl0dGxlIGJpdCBvZiBkaWZmZXJlbmNlCj4gaW4gcGh5IGNs
-b2NrIGNvbnRyb2xsaW5nIGFuZCBwb3J0IGlkIHNlbGVjdGlvbiByZWdpc3Rlci4gVGhlc2UgcGF0
-Y2hlcwo+IGFkZCBSSzMzOTkgc3VwcG9ydCBhbmQgdGhlIHBvd2VyIGRvbWFpbiBzdXBwb3J0Lgo+
-IAo+IEFuZCB0aGVzZSBwYXRjaGVzIGJhc2Ugb24gSm9obiBLZWVwaW5nJ3MgdjMgcGF0Y2hlc1sw
-XSwgaXQgZml4ZXMgbWFueSBidWdzLAo+IHRoZXkgaGF2ZSBiZWVuIHRlc3RlZCBvbiByazMyODgg
-ZXZiIGJvYXJkLgo+IAoKSGkgQ2hyaXMsClRoZSBzZXQgbG9va3MgZ29vZCB3aXRoIHRoZSBleGNl
-cHRpb24gb2YgNC82LCBzaW5jZSB3ZSBkb24ndCBoYXZlIGFueSBib3VuZHMKY2hlY2tpbmcgaW4g
-dm9wIHlldC4gCgpPbmNlIHRoZSBib3VuZHMgY2hlY2tpbmcgaXMgaW4gcGxhY2UgYW5kIEpvaG4n
-cyBzZXQgaXMgbWVyZ2VkLCB0aGlzIHNldCBjYW4gYmUKcHVsbGVkIGludG8gLW1pc2MuCgpUaGFu
-a3MsCgpTZWFuCgoKPiBbMF06Cj4gWzAxLzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
-L3BhdGNoLzk1NDQwODkKPiBbMDIvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
-Y2gvOTU0NDA2MQo+IFswMy8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85
-NTQ0MDY1Cj4gWzA0LzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQw
-NzcKPiBbMDUvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMwo+
-IFswNi8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDM3Cj4gWzA3
-LzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwMjkKPiBbMDgvMjRd
-IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMQo+IFswOS8yNF0gaHR0
-cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDgzCj4gWzEwLzI0XSBodHRwczov
-L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwNjMKPiBbMTEvMjRdIGh0dHBzOi8vcGF0
-Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA4NQo+IFsxMi8yNF0gaHR0cHM6Ly9wYXRjaHdv
-cmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDkzCj4gWzEzLzI0XSBodHRwczovL3BhdGNod29yay5r
-ZXJuZWwub3JnL3BhdGNoLzk1NDQwODEKPiBbMTQvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5l
-bC5vcmcvcGF0Y2gvOTU0NDA1Nwo+IFsxNS8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
-Zy9wYXRjaC85NTQ0MDc5Cj4gWzE2LzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Bh
-dGNoLzk1NDQwMzUKPiBbMTcvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gv
-OTU0NDEwNQo+IFsxOC8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0
-MDU5Cj4gWzIxLzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwMDkK
-PiBbMjIvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA0OQo+IFsy
-My8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDU1Cj4gWzI0LzI0
-XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQxMDkKPiAKPiAKPiBDaGFu
-Z2VzIGluIHY2Ogo+IC0gbm8gbmVlZCBjaGVjayBwaHlfY2ZnX2NsayBiZWZvcmUgZW5hYmxlL2Rp
-c2FibGUKPiAKPiBDaGFuZ2VzIGluIHY1Ogo+IC0gY2hlY2sgdGhlIGVycm9yIG9mIHBoeV9jZmdf
-Y2xrIGluIGR3X21pcGlfZHNpX2JpbmQKPiAKPiBDaGFuZ2VzIGluIHY0Ogo+IC0gcmVtb3ZlIHRo
-ZSB1bnJlbGF0ZWQgY2hhbmdlCj4gCj4gQ2hhbmdlcyBpbiB2MzoKPiAtIGJhc2Ugb24gSm9obiBL
-ZWVwaW5nJ3MgcGF0Y2ggc2VyaWVzCj4gCj4gQ2hyaXMgWmhvbmcgKDYpOgo+ICAgZHQtYmluZGlu
-Z3M6IGFkZCByazMzOTkgc3VwcG9ydCBmb3IgZHctbWlwaS1yb2NrY2hpcAo+ICAgZHJtL3JvY2tj
-aGlwL2RzaTogZHctbWlwaTogc3VwcG9ydCBSSzMzOTkgbWlwaSBkc2kKPiAgIGRybS9yb2NrY2hp
-cC9kc2k6IGR3LW1pcGk6IGNvcnJlY3QgdGhlIGNvZGluZyBzdHlsZQo+ICAgZHJtL3JvY2tjaGlw
-L2RzaTogcmVtb3ZlIG1vZGVfdmFsaWQgZnVuY3Rpb24KPiAgIGR0LWJpbmRpbmdzOiBhZGQgcG93
-ZXIgZG9tYWluIG5vZGUgZm9yIGR3LW1pcGktcm9ja2NoaXAKPiAgIGRybS9yb2NrY2hpcC9kc2k6
-IGFkZCBkdy1taXBpIHBvd2VyIGRvbWFpbiBzdXBwb3J0Cj4gCj4gIC4uLi9kaXNwbGF5L3JvY2tj
-aGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAgICAgIHwgICA3ICstCj4gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jICAgICAgICAgICAgIHwgMTU2ICsrKysrKysrKysr
-Ky0tLS0tLS0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDk4IGluc2VydGlvbnMoKyksIDY1IGRlbGV0
-aW9ucygtKQo+IAo+IC0tIAo+IDIuNi4zCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVl
-ciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+On Mon, Feb 06, 2017 at 10:14:46AM +0800, Eddie Cai wrote:
+> Tinker board is a credit card size develop board designed by Asus.
+> Powered by RK3288.
+> 
+> Signed-off-by: Eddie Cai <eddie.cai@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.txt | 3 +++
+>  1 file changed, 3 insertions(+)
+
+Acked-by: Rob Herring <robh@kernel.org>
