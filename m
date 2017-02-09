@@ -1,13 +1,14 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 1/2] Documentation: dt: dwc2: amend clocks property
-Date: Thu,  9 Feb 2017 10:44:38 +0800
-Message-ID: <1486608279-22278-2-git-send-email-frank.wang@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] usb: dwc2: add multiple clocks handling
+Date: Thu, 09 Feb 2017 13:31:33 +0100
+Message-ID: <1905699.rAdUkra9dJ@diego>
 References: <1486608279-22278-1-git-send-email-frank.wang@rock-chips.com>
+ <1486608279-22278-3-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1486608279-22278-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1486608279-22278-3-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,44 +18,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move 'clocks' to optional properties since not every platform
-is going to need to specify it and add pmu/utmi/ulpi/utmifs
-optional clocks into 'clock-names' list.
+Am Donnerstag, 9. Februar 2017, 10:44:39 CET schrieb Frank Wang:
+> Since dwc2 may have one or more input clocks need to manage for some
+> platform, so this adds change clk to clk's array of struct dwc2_hsotg
+> to handle more clocks operation.
+> 
+> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- Documentation/devicetree/bindings/usb/dwc2.txt | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+for the simple clock handling the dwc2-driver does right now, this looks 
+adquate and honoring EPROBE_DEFER is a nice touch ;-), so
 
-diff --git a/Documentation/devicetree/bindings/usb/dwc2.txt b/Documentation/devicetree/bindings/usb/dwc2.txt
-index 6c7c2bce..4d8b6dd 100644
---- a/Documentation/devicetree/bindings/usb/dwc2.txt
-+++ b/Documentation/devicetree/bindings/usb/dwc2.txt
-@@ -16,11 +16,18 @@ Required properties:
-   - snps,dwc2: A generic DWC2 USB controller with default parameters.
- - reg : Should contain 1 register range (address and length)
- - interrupts : Should contain 1 interrupt
--- clocks: clock provider specifier
--- clock-names: shall be "otg"
--Refer to clk/clock-bindings.txt for generic clock consumer properties
- 
- Optional properties:
-+- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock-names.
-+- clock-names: Contain the following optional clocks on demand:
-+  - "otg":	AHB clock. It is the scan clock for the core's AHB domain.
-+  - "pmu":	PMU hclk. Clock to PMU module when hibernation and/or ADP is enabled.
-+  - "utmi":	UTMI+ clock. Functionally used only when a UTMI PHY is selected,
-+		but always used as the PHY domain clock during DFT Scan mode.
-+  - "ulpi":	ULPI PHY clock. Present only when a ULPI PHY is selected; negedge
-+		is also used in DDR mode.
-+  - "utmifs":	UTMI FS clock. Present only when OTG_FSPHY_INTERFACE != 0.
-+Refer to clk/clock-bindings.txt for generic clock consumer properties
- - phys: phy provider specifier
- - phy-names: shall be "usb2-phy"
- Refer to phy/phy-bindings.txt for generic phy consumer properties
--- 
-1.9.1
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+
+Heiko
