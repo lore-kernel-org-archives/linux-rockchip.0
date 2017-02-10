@@ -1,66 +1,29 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v3 21/24] drm/rockchip: dw-mipi-dsi: defer probe if
- panel is not loaded
-Date: Fri, 10 Feb 2017 17:27:47 +0000
-Message-ID: <20170210172747.5f0afb0a.john@metanate.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-22-john@metanate.com>
- <20170131192117.GE20076@art_vandelay>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 6/6] arm64: dts: rockchip: sort rk3399 by unit address
+Date: Fri, 10 Feb 2017 22:39:50 +0100
+Message-ID: <2755247.TOgJaCFP5o@phil>
+References: <20170210010521.78872-1-briannorris@chromium.org> <20170210010521.78872-7-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170131192117.GE20076@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170210010521.78872-7-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAzMSBKYW4gMjAxNyAxNDoyMToxNyAtMDUwMCwgU2VhbiBQYXVsIHdyb3RlOgoKPiBP
-biBTdW4sIEphbiAyOSwgMjAxNyBhdCAwMToyNDo0MVBNICswMDAwLCBKb2huIEtlZXBpbmcgd3Jv
-dGU6Cj4gPiBUaGlzIGVuc3VyZXMgdGhhdCB0aGUgb3V0cHV0IHJlc29sdXRpb24gaXMga25vd24g
-YmVmb3JlIGZiY29uIGxvYWRzLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcg
-PGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gLS0tCj4gPiBVbmNoYW5nZWQgaW4gdjMKPiA+IFVuY2hh
-bmdlZCBpbiB2Mgo+ID4gCj4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LmMgfCAxMSArKysrKysrKystLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKyks
-IDIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS5jCj4gPiBpbmRleCBmNWIxNTM3N2VmODUuLjViYWQ5MmUyMzcwZSAxMDA2NDQKPiA+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gQEAgLTExNzYsMTAgKzExNzYsMTcg
-QEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
-IGRldmljZSAqbWFzdGVyLAo+ID4gIAo+ID4gIAlkc2ktPmRzaV9ob3N0Lm9wcyA9ICZkd19taXBp
-X2RzaV9ob3N0X29wczsKPiA+ICAJZHNpLT5kc2lfaG9zdC5kZXYgPSBkZXY7Cj4gPiAtCXJldHVy
-biBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPiA+ICsJcmV0ID0gbWlw
-aV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Cj4gPiArCWlmICghcmV0ICYmICFk
-c2ktPnBhbmVsKSB7Cj4gPiArCQltaXBpX2RzaV9ob3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hv
-c3QpOwo+ID4gKwkJZHJtX2VuY29kZXJfY2xlYW51cCgmZHNpLT5lbmNvZGVyKTsKPiA+ICsJCWRy
-bV9jb25uZWN0b3JfY2xlYW51cCgmZHNpLT5jb25uZWN0b3IpOyAgCj4gCj4gTW92ZSB0aGUgaG9z
-dCByZWdpc3RyYXRpb24gdXAgYmVmb3JlIGR3X21pcGlfZHNpX3JlZ2lzdGVyKCkgdG8gYXZvaWQK
-PiBoYXZpbmcgdG8gY2xlYW4gdXAgdGhlIGVuY29kZXIgYW5kIGNvbm5lY3Rvcj8KCk5vLCBtaXBp
-X2RzaV9ob3N0X3JlZ2lzdGVyKCkgaGFzIHRvIGJlIGNhbGxlZCBhZnRlciB0aGUgY29ubmVjdG9y
-IGlzCnJlZ2lzdGVyZWQgYmVjYXVzZSBpdCBpcyBsaWtlbHkgdG8gcmVzdWx0IGluIGEgY2FsbCB0
-bwpkd19taXBpX2RzaV9ob3N0X2F0dGFjaCgpIHdoaWNoIGF0dGFjaGVzIGEgcGFuZWwgdG8gdGhl
-IGNvbm5lY3Rvci4KCj4gPiArCQlyZXQgPSAtRVBST0JFX0RFRkVSOwo+ID4gKwl9Cj4gPiAgCj4g
-PiAgZXJyX3BsbHJlZjoKPiA+IC0JY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Ns
-ayk7Cj4gPiArCWlmIChyZXQpICAKPiAKPiBJIHBlcnNvbmFsbHkgdGhpbmsgaXQncyBjbGVhbmVy
-IHRvIGV4cGxpY2l0bHkgZ290byBpbiB0aGUgZXJyb3IgY29uZGl0aW9uYWwgKG9yCj4gaW4gdGhp
-cyBjYXNlLCB0aGUgZGVmZXIgY29uZGl0aW9uYWwpIGFuZCBoYXZlIGEgcmV0dXJuIDA7IHJpZ2h0
-IGJlZm9yZSB0aGUgZXJyXyoKPiBsYWJlbHMuIFRoZW4geW91IGRvbid0IG5lZWQgdG8gd29ycnkg
-YWJvdXQgYSkgY2hlY2tpbmcgcmV0IGluIGFsbCBvZiB5b3VyCj4gY2xlYW51cHMgYW5kIGIpIHNv
-bWVvbmUgYWRkaW5nIGNvZGUgYWJvdmUgdGhlIGxhYmVscyB0aGF0IHlvdSBkb24ndCBpbnRlbmQg
-dG8KPiBydW4uCgpBZ3JlZWQuICBJJ2xsIGNoYW5nZSB0aGlzIHRvIHVzZSBhIGdvdG8gaWYgd2Ug
-aGl0IHRoZSBFUFJPQkVfREVGRVIgY2FzZQphbmQga2VlcCBhbGwgdGhlIGNsZWFudXAgdG9nZXRo
-ZXIuCgo+ID4gKwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7Cj4gPiAg
-CXJldHVybiByZXQ7Cj4gPiAgfQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Am Donnerstag, 9. Februar 2017, 17:05:21 CET schrieb Brian Norris:
+> f8000000 is less than all the other (top-level) unit addresses.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+applied for 4.12
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
