@@ -1,80 +1,28 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: fix error path to free resource
-Date: Fri, 10 Feb 2017 15:46:11 -0600
-Message-ID: <20170210214611.GP29169@bhelgaas-glaptop.roam.corp.google.com>
-References: <1486709522-160491-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] arm64: dts: rockchip: support dwc3 USB for rk3399
+Date: Fri, 10 Feb 2017 23:01:54 +0100
+Message-ID: <2384713.Q7s8nQmdof@phil>
+References: <20170210010521.78872-1-briannorris@chromium.org> <20170210010521.78872-3-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1486709522-160491-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170210010521.78872-3-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 10, 2017 at 02:52:02PM +0800, Shawn Lin wrote:
-> rockchip_pcie_probe calls of_pci_get_host_bridge_resources to
-> parse resource from DT but it's caller's job to free it advised
-> by this API. So let's fix the error patch to free it by calling
-> pci_free_resource_list.
+Am Donnerstag, 9. Februar 2017, 17:05:17 CET schrieb Brian Norris:
+> Add the dwc3 usb needed node information for rk3399.
 > 
-> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Applied to pci/host-rockchip for v4.11, thanks, Shawn!
+applied for 4.12
 
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index ff43a7e..c0b3b65 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1343,7 +1343,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	err = devm_request_pci_bus_resources(dev, &res);
->  	if (err)
-> -		goto err_vpcie;
-> +		goto err_free_res;
->  
->  	/* Get the I/O and memory ranges from DT */
->  	resource_list_for_each_entry(win, &res) {
-> @@ -1376,19 +1376,19 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	err = rockchip_cfg_atu(rockchip);
->  	if (err)
-> -		goto err_vpcie;
-> +		goto err_free_res;
->  
->  	rockchip->msg_region = devm_ioremap(rockchip->dev,
->  					    rockchip->msg_bus_addr, SZ_1M);
->  	if (!rockchip->msg_region) {
->  		err = -ENOMEM;
-> -		goto err_vpcie;
-> +		goto err_free_res;
->  	}
->  
->  	bus = pci_scan_root_bus(&pdev->dev, 0, &rockchip_pcie_ops, rockchip, &res);
->  	if (!bus) {
->  		err = -ENOMEM;
-> -		goto err_vpcie;
-> +		goto err_free_res;
->  	}
->  
->  	pci_bus_size_bridges(bus);
-> @@ -1399,6 +1399,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	pci_bus_add_devices(bus);
->  	return err;
->  
-> +err_free_res:
-> +	pci_free_resource_list(&res);
->  err_vpcie:
->  	if (!IS_ERR(rockchip->vpcie3v3))
->  		regulator_disable(rockchip->vpcie3v3);
-> -- 
-> 1.9.1
-> 
-> 
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
