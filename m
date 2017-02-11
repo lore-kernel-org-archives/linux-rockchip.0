@@ -1,27 +1,51 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/6] arm64: dts: rockchip: support dwc3 USB for rk3399
-Date: Fri, 10 Feb 2017 23:01:54 +0100
-Message-ID: <2384713.Q7s8nQmdof@phil>
-References: <20170210010521.78872-1-briannorris@chromium.org> <20170210010521.78872-3-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Willy Tarreau <w@1wt.eu>
+Subject: ARM: dts: rockchip: add the MiQi board's fan definition
+Date: Sat, 11 Feb 2017 09:56:55 +0100
+Message-ID: <1486803415-14680-1-git-send-email-w@1wt.eu>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170210010521.78872-3-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Willy Tarreau <w@1wt.eu>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 9. Februar 2017, 17:05:17 CET schrieb Brian Norris:
-> Add the dwc3 usb needed node information for rk3399.
-> 
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+The MiQi board is sold with an enclosure in which a fan is connected
+to the second LED output, and configured by default in "heartbeat"
+mode so that it rotates slowly and increases when the CPU load
+increases, ensuring appropriate cooling by default. This LED output
+is called "Fan" in the original kernel and connected to GPIO18
+(gpiochip 0, pin 18). Here we called it "miqi:green:fan" to stay
+consistent with the kernel's naming conventions.
 
-applied for 4.12
+It's worth noting that without this patch the fan doesn't work at
+all, risking to make the board overheat.
 
-Thanks
-Heiko
+Fixes: 162718c (v4.7)
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Willy Tarreau <w@1wt.eu>
+---
+ arch/arm/boot/dts/rk3288-miqi.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index 2f4c635..ef702db 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -67,6 +67,12 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
++		fan {
++			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
++			label = "miqi:green:fan";
++			linux,default-trigger = "heartbeat";
++		};
++
+ 		work {
+ 			gpios = <&gpio7 2 GPIO_ACTIVE_HIGH>;
+ 			label = "miqi:green:user";
+-- 
+2.8.0.rc2.1.gbe9624a
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
