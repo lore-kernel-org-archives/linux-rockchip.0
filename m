@@ -1,44 +1,84 @@
-From: Willy Tarreau <w@1wt.eu>
-Subject: Re: ARM: dts: rockchip: add the MiQi board's fan definition
-Date: Sun, 12 Feb 2017 08:17:01 +0100
-Message-ID: <20170212071701.GA18263@1wt.eu>
-References: <1486803415-14680-1-git-send-email-w@1wt.eu>
- <3614963.WjR2ddleWK@phil>
- <20170211174554.GA14513@1wt.eu>
- <1552549.5mxCAWQDxc@phil>
+From: Eddie Cai <eddie.cai.linux@gmail.com>
+Subject: Re: [PATCH v5 2/2] mmc: dw_mmc: force setup bus if active slots exist
+Date: Mon, 13 Feb 2017 14:32:36 +0800
+Message-ID: <CAJrj+DOcdpQ8EQLv=bMberrbmO3QmKj=kHWDOdjQmoonryhk3Q@mail.gmail.com>
+References: <1484276362-44984-1-git-send-email-shawn.lin@rock-chips.com> <1484276362-44984-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1552549.5mxCAWQDxc@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1484276362-44984-2-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, sgilles@math.umd.edu, linux-mmc@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, Randy Li <randy.li@rock-chips.com>, stable@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Feb 12, 2017 at 02:41:35AM +0100, Heiko Stuebner wrote:
-> > I find it sad to waste all the performance
-> > of a 3288 that way, otherwise it's easier to use something like a dirt
-> > a much slower and cheaper cortex A5. But I agree with the point regarding
-> > the gpio-pwm.
-> 
-> Even with the gpio-fan you should see results if you simply add the fan as 
-> active trip point somewhere before the cpufreq trip points. So let the fan get 
-> activated at 50/60° or so.
+Hi Heiko
 
-Better not do it as-is, the small fan is extremely noisy. That was the
-benefit of the heartbeat mode, it was a poor man's pwm. I'll see what I
-can do with the gpio-pwm. BTW, on all my MiQi, I have raised the critical
-points to 90 degrees, one of my workplace build farm made of 4 MiQi, I
-have connected a large slow fan which start to run above 85 degrees and
-it's enough to prevent the critical point from ever being reached. The
-dissipate heat is very low and the heatsink small so with minimal air
-flow, the temperature drops very quickly.
+I guess you may lost this patch. We need it to prevent crash when boot
+up RK3288.
 
-Thanks,
-Willy
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2017-01-13 10:59 GMT+08:00 Shawn Lin <shawn.lin@rock-chips.com>:
+> From: Ziyuan Xu <xzy.xu@rock-chips.com>
+>
+> It's necessary to setup bus if any slots are present.
+> - update clock after ctrl reset
+> - if the host has genpd node, we can guarantee the clock is
+>   available before starting request. Otherwies, the clock register
+>   is reset once power off the pd, and host can't output the active
+>   clock during communication.
+>
+> Fixes: e9ed8835e990 ("mmc: dw_mmc: add runtime PM callback")
+> Fixes: df9bcc2bc0a1 ("mmc: dw_mmc: add missing codes for runtime resume")
+> cc: <stable@vger.kernel.org>
+> Reported-by: Randy Li <randy.li@rock-chips.com>
+> Reported-by: S. Gilles <sgilles@math.umd.edu>
+> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v5:
+> - rebase in order to skip spamming log
+>
+> Changes in v4:
+> - update commit message
+> - fix SD host rpm resume can't work
+>
+> Changes in v3:
+> - only reset host with active slot.
+>
+> Changes in v2:
+> - update the commit message
+> - use dw_mci_reset instead of dw_mci_ctrl_reset
+>
+>  drivers/mmc/host/dw_mmc.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index dc58ec3..0914d53 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -3367,10 +3367,11 @@ int dw_mci_runtime_resume(struct device *dev)
+>
+>                 if (!slot)
+>                         continue;
+> -               if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+> +               if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER)
+>                         dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+> -                       dw_mci_setup_bus(slot, true, true);
+> -               }
+> +
+> +               /* Force setup bus to guarantee available clock output */
+> +               dw_mci_setup_bus(slot, true, true);
+>         }
+>
+>         /* Now that slots are all setup, we can enable card detect */
+> --
+> 1.9.1
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
