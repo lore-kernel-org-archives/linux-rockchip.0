@@ -1,57 +1,51 @@
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] drm/bridge: analogix_dp: Don't return -EBUSY when msg->size
- is 0 in aux transaction
-Date: Mon, 13 Feb 2017 17:27:46 +0800
-Message-ID: <1486978066-5351-1-git-send-email-wzz@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mika Kahola <mika.kahola-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/7] Rename RK1108 to RV1108
+Date: Mon, 13 Feb 2017 18:59:26 +0800
+Message-ID: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The analogix_dp_transfer() will return -EBUSY if num_transferred is zero.
-But sometimes we will send a bare address packet to start the transaction,
-like drm_dp_i2c_xfer() show:
-	......
-	/* Send a bare address packet to start the transaction.
-	 * Zero sized messages specify an address only (bare
-	 * address) transaction.
-	 */
-	msg.buffer = NULL;
-	msg.size = 0;
-	err = drm_dp_i2c_do_msg(aux, &msg);
-	......
 
-In this case, the msg->size is zero, so the num_transferred will be zero too.
-We can't return -EBUSY here, let's we return num_transferred if num_transferred
-equals msg->size.
+Rockchip finally named this soc as RV1108, so change
+RK1108/rk1108 to RV1108/rv1108 for compatible.
 
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 303083a..5384aca 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -1162,5 +1162,5 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 		 (msg->request & ~DP_AUX_I2C_MOT) == DP_AUX_NATIVE_READ)
- 		msg->reply = DP_AUX_NATIVE_REPLY_ACK;
- 
--	return num_transferred > 0 ? num_transferred : -EBUSY;
-+	return (num_transferred == msg->size) ? num_transferred : -EBUSY;
- }
+Andy Yan (7):
+  dt-bindings: rockchip-dw-mshc: rename RK1108 to RV1108
+  dt-bindings: rk1108-cru: rename RK1108 to RV1108
+  clk: rockchip: rename RK1108 to RV1108
+  dt-bindings: rockchip,pinctrl: rename RK1108 to RV1108
+  pinctrl: rockchip: rename RK1108 to RV1108
+  ARM: dts: rename RK1108 to RV1108
+  ARM: rockchip: reanme RK1108 to RV1108
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   4 +-
+ ...chip,rk1108-cru.txt => rockchip,rv1108-cru.txt} |  12 +-
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   2 +-
+ .../bindings/pinctrl/rockchip,pinctrl.txt          |  16 +-
+ arch/arm/boot/dts/Makefile                         |   2 +-
+ .../boot/dts/{rk1108-evb.dts => rv1108-evb.dts}    |   7 +-
+ arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}     |  24 +-
+ drivers/clk/rockchip/Makefile                      |   2 +-
+ .../clk/rockchip/{clk-rk1108.c => clk-rv1108.c}    | 414 ++++++++++-----------
+ drivers/clk/rockchip/clk.h                         |  28 +-
+ drivers/pinctrl/pinctrl-rockchip.c                 |  76 ++--
+ .../clock/{rk1108-cru.h => rv1108-cru.h}           |   6 +-
+ 12 files changed, 300 insertions(+), 293 deletions(-)
+ rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt} (83%)
+ rename arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} (89%)
+ rename arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi} (94%)
+ rename drivers/clk/rockchip/{clk-rk1108.c => clk-rv1108.c} (57%)
+ rename include/dt-bindings/clock/{rk1108-cru.h => rv1108-cru.h} (97%)
+
 -- 
-1.9.1
+2.7.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
