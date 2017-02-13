@@ -1,90 +1,64 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 7/7] ARM: rockchip: reanme RK1108 to RV1108
-Date: Mon, 13 Feb 2017 19:10:34 +0800
-Message-ID: <1486984234-32693-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 0/7] Rename RK1108 to RV1108
+Date: Mon, 13 Feb 2017 13:51:53 +0100
+Message-ID: <2809087.MHZWQWdaOC@phil>
 References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1486983566-32265-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2yhQFI55V6+gNQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>, robh+dt@kernel.org
+Cc: linus.walleij@linaro.org, shawn.lin@rock-chips.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, sboyd@codeaurora.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip finally named the SOC as RV1108, so change it
-for compatible.
+Hi Andy,
 
-Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Am Montag, 13. Februar 2017, 18:59:26 CET schrieb Andy Yan:
+> Rockchip finally named this soc as RV1108, so change
+> RK1108/rk1108 to RV1108/rv1108 for compatible.
 
- Documentation/devicetree/bindings/arm/rockchip.txt   | 4 ++--
- arch/arm/boot/dts/Makefile                           | 2 +-
- arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} | 7 ++++---
- 3 files changed, 7 insertions(+), 6 deletions(-)
- rename arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} (89%)
+renaming existing bindings (that have been in multiple kernel versions 
+already) always is a hot topic. So I'll be hoping for Rob to give a go-ahead 
+for it :-) .
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index cc4ace6..9901cbd 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -111,9 +111,9 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
- 
--- Rockchip RK1108 Evaluation board
-+- Rockchip RV1108 Evaluation board
-     Required root node properties:
--      - compatible = "rockchip,rk1108-evb", "rockchip,rk1108";
-+      - compatible = "rockchip,rv1108-evb", "rockchip,rv1108";
- 
- - Rockchip RK3368 evb:
-     Required root node properties:
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index f10fe85..7100227 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -658,7 +658,7 @@ dtb-$(CONFIG_ARCH_REALVIEW) += \
- 	arm-realview-pba8.dtb \
- 	arm-realview-pbx-a9.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
--	rk1108-evb.dtb \
-+	rv1108-evb.dtb \
- 	rk3036-evb.dtb \
- 	rk3036-kylin.dtb \
- 	rk3066a-bqcurie2.dtb \
-diff --git a/arch/arm/boot/dts/rk1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-similarity index 89%
-rename from arch/arm/boot/dts/rk1108-evb.dts
-rename to arch/arm/boot/dts/rv1108-evb.dts
-index 3956cff..2f5d46b 100644
---- a/arch/arm/boot/dts/rk1108-evb.dts
-+++ b/arch/arm/boot/dts/rv1108-evb.dts
-@@ -40,11 +40,11 @@
- 
- /dts-v1/;
- 
--#include "rk1108.dtsi"
-+#include "rv1108.dtsi"
- 
- / {
--	model = "Rockchip RK1108 Evaluation board";
--	compatible = "rockchip,rk1108-evb", "rockchip,rk1108";
-+	model = "Rockchip RV1108 Evaluation board";
-+	compatible = "rockchip,rv1108-evb", "rockchip,rv1108";
- 
- 	memory@60000000 {
- 		device_type = "memory";
-@@ -53,6 +53,7 @@
- 
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- };
- 
--- 
-2.7.4
+Just to confirm, the rk1108/rv1108 is completely new to the market, so we're 
+not breaking any existing devices, right?
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Heiko
+
+
+
+> Andy Yan (7):
+>   dt-bindings: rockchip-dw-mshc: rename RK1108 to RV1108
+>   dt-bindings: rk1108-cru: rename RK1108 to RV1108
+>   clk: rockchip: rename RK1108 to RV1108
+>   dt-bindings: rockchip,pinctrl: rename RK1108 to RV1108
+>   pinctrl: rockchip: rename RK1108 to RV1108
+>   ARM: dts: rename RK1108 to RV1108
+>   ARM: rockchip: reanme RK1108 to RV1108
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +-
+>  ...chip,rk1108-cru.txt => rockchip,rv1108-cru.txt} |  12 +-
+>  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   2 +-
+>  .../bindings/pinctrl/rockchip,pinctrl.txt          |  16 +-
+>  arch/arm/boot/dts/Makefile                         |   2 +-
+>  .../boot/dts/{rk1108-evb.dts => rv1108-evb.dts}    |   7 +-
+>  arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}     |  24 +-
+>  drivers/clk/rockchip/Makefile                      |   2 +-
+>  .../clk/rockchip/{clk-rk1108.c => clk-rv1108.c}    | 414
+> ++++++++++----------- drivers/clk/rockchip/clk.h                         | 
+> 28 +-
+>  drivers/pinctrl/pinctrl-rockchip.c                 |  76 ++--
+>  .../clock/{rk1108-cru.h => rv1108-cru.h}           |   6 +-
+>  12 files changed, 300 insertions(+), 293 deletions(-)
+>  rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt =>
+> rockchip,rv1108-cru.txt} (83%) rename arch/arm/boot/dts/{rk1108-evb.dts =>
+> rv1108-evb.dts} (89%) rename arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}
+> (94%)
+>  rename drivers/clk/rockchip/{clk-rk1108.c => clk-rv1108.c} (57%)
+>  rename include/dt-bindings/clock/{rk1108-cru.h => rv1108-cru.h} (97%)
+
+
