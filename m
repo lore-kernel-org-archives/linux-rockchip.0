@@ -1,84 +1,107 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 0/7] Rename RK1108 to RV1108
-Date: Tue, 14 Feb 2017 08:44:31 +0800
-Message-ID: <0bbc4151-d954-1a27-48c3-1e8c9cb9e16f@rock-chips.com>
-References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
- <2809087.MHZWQWdaOC@phil>
+From: Eddie Cai <eddie.cai.linux@gmail.com>
+Subject: Re: [PATCH v5 2/2] mmc: dw_mmc: force setup bus if active slots exist
+Date: Tue, 14 Feb 2017 10:12:44 +0800
+Message-ID: <CAJrj+DP02=vVz+SmiojkiuG5zVnMvvAQ==EFZ5CDzWNENCmdFg@mail.gmail.com>
+References: <1484276362-44984-1-git-send-email-shawn.lin@rock-chips.com>
+ <1484276362-44984-2-git-send-email-shawn.lin@rock-chips.com>
+ <CGME20170213063335epcas1p173d7e65a7819292bb31baecf28a70fda@epcas1p1.samsung.com>
+ <CAJrj+DOcdpQ8EQLv=bMberrbmO3QmKj=kHWDOdjQmoonryhk3Q@mail.gmail.com> <0996c366-743a-a120-5be0-719c82539e8a@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2809087.MHZWQWdaOC@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <0996c366-743a-a120-5be0-719c82539e8a@samsung.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, sgilles@math.umd.edu, linux-mmc@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, Randy Li <randy.li@rock-chips.com>, stable@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko & Rob:
+Hi
 
-
-On 2017年02月13日 20:51, Heiko Stuebner wrote:
-> Hi Andy,
+2017-02-13 15:54 GMT+08:00 Jaehoon Chung <jh80.chung@samsung.com>:
+> Hi,
 >
-> Am Montag, 13. Februar 2017, 18:59:26 CET schrieb Andy Yan:
->> Rockchip finally named this soc as RV1108, so change
->> RK1108/rk1108 to RV1108/rv1108 for compatible.
-> renaming existing bindings (that have been in multiple kernel versions
-> already) always is a hot topic. So I'll be hoping for Rob to give a go-ahead
-> for it :-) .
->
-> Just to confirm, the rk1108/rv1108 is completely new to the market, so we're
-> not breaking any existing devices, right?
-
-     Yes, the 1108 Soc is completely new to market, this change will not 
-breaking any existing devices.
-     Hope more suggestions from you.
->
-> Heiko
->
->
->
->> Andy Yan (7):
->>    dt-bindings: rockchip-dw-mshc: rename RK1108 to RV1108
->>    dt-bindings: rk1108-cru: rename RK1108 to RV1108
->>    clk: rockchip: rename RK1108 to RV1108
->>    dt-bindings: rockchip,pinctrl: rename RK1108 to RV1108
->>    pinctrl: rockchip: rename RK1108 to RV1108
->>    ARM: dts: rename RK1108 to RV1108
->>    ARM: rockchip: reanme RK1108 to RV1108
+> On 02/13/2017 03:32 PM, Eddie Cai wrote:
+>> Hi Heiko
 >>
->>   Documentation/devicetree/bindings/arm/rockchip.txt |   4 +-
->>   ...chip,rk1108-cru.txt => rockchip,rv1108-cru.txt} |  12 +-
->>   .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |   2 +-
->>   .../bindings/pinctrl/rockchip,pinctrl.txt          |  16 +-
->>   arch/arm/boot/dts/Makefile                         |   2 +-
->>   .../boot/dts/{rk1108-evb.dts => rv1108-evb.dts}    |   7 +-
->>   arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}     |  24 +-
->>   drivers/clk/rockchip/Makefile                      |   2 +-
->>   .../clk/rockchip/{clk-rk1108.c => clk-rv1108.c}    | 414
->> ++++++++++----------- drivers/clk/rockchip/clk.h                         |
->> 28 +-
->>   drivers/pinctrl/pinctrl-rockchip.c                 |  76 ++--
->>   .../clock/{rk1108-cru.h => rv1108-cru.h}           |   6 +-
->>   12 files changed, 300 insertions(+), 293 deletions(-)
->>   rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt =>
->> rockchip,rv1108-cru.txt} (83%) rename arch/arm/boot/dts/{rk1108-evb.dts =>
->> rv1108-evb.dts} (89%) rename arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}
->> (94%)
->>   rename drivers/clk/rockchip/{clk-rk1108.c => clk-rv1108.c} (57%)
->>   rename include/dt-bindings/clock/{rk1108-cru.h => rv1108-cru.h} (97%)
+>> I guess you may lost this patch. We need it to prevent crash when boot
+>> up RK3288.
+>>
+>> 2017-01-13 10:59 GMT+08:00 Shawn Lin <shawn.lin@rock-chips.com>:
+>>> From: Ziyuan Xu <xzy.xu@rock-chips.com>
+>>>
+>>> It's necessary to setup bus if any slots are present.
+>>> - update clock after ctrl reset
+>>> - if the host has genpd node, we can guarantee the clock is
+>>>   available before starting request. Otherwies, the clock register
+>>>   is reset once power off the pd, and host can't output the active
+>>>   clock during communication.
 >
+> As i know, this patch was applied. Which kernel do you use?
+I just update the kernel and find it applied. Thanks for reminding.
 >
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> Best Regards,
+> Jaehoon Chung
 >
+>>>
+>>> Fixes: e9ed8835e990 ("mmc: dw_mmc: add runtime PM callback")
+>>> Fixes: df9bcc2bc0a1 ("mmc: dw_mmc: add missing codes for runtime resume")
+>>> cc: <stable@vger.kernel.org>
+>>> Reported-by: Randy Li <randy.li@rock-chips.com>
+>>> Reported-by: S. Gilles <sgilles@math.umd.edu>
+>>> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+>>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>>
+>>> ---
+>>>
+>>> Changes in v5:
+>>> - rebase in order to skip spamming log
+>>>
+>>> Changes in v4:
+>>> - update commit message
+>>> - fix SD host rpm resume can't work
+>>>
+>>> Changes in v3:
+>>> - only reset host with active slot.
+>>>
+>>> Changes in v2:
+>>> - update the commit message
+>>> - use dw_mci_reset instead of dw_mci_ctrl_reset
+>>>
+>>>  drivers/mmc/host/dw_mmc.c | 7 ++++---
+>>>  1 file changed, 4 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+>>> index dc58ec3..0914d53 100644
+>>> --- a/drivers/mmc/host/dw_mmc.c
+>>> +++ b/drivers/mmc/host/dw_mmc.c
+>>> @@ -3367,10 +3367,11 @@ int dw_mci_runtime_resume(struct device *dev)
+>>>
+>>>                 if (!slot)
+>>>                         continue;
+>>> -               if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER) {
+>>> +               if (slot->mmc->pm_flags & MMC_PM_KEEP_POWER)
+>>>                         dw_mci_set_ios(slot->mmc, &slot->mmc->ios);
+>>> -                       dw_mci_setup_bus(slot, true, true);
+>>> -               }
+>>> +
+>>> +               /* Force setup bus to guarantee available clock output */
+>>> +               dw_mci_setup_bus(slot, true, true);
+>>>         }
+>>>
+>>>         /* Now that slots are all setup, we can enable card detect */
+>>> --
+>>> 1.9.1
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> Linux-rockchip mailing list
+>>> Linux-rockchip@lists.infradead.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>>
+>>
 >
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
