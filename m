@@ -1,140 +1,61 @@
-From: Wadim Egorov <w.egorov@phytec.de>
-Subject: Re: [PATCH V3 2/2] ARM: dts: rockchip: add dts for RK3288-Tinker board
-Date: Tue, 14 Feb 2017 15:12:37 +0100
-Message-ID: <e555144a-b698-1fad-c377-8af2fd8697c5@phytec.de>
-References: <1487066851-25142-1-git-send-email-eddie.cai.linux@gmail.com>
- <1487066851-25142-3-git-send-email-eddie.cai.linux@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1487066851-25142-3-git-send-email-eddie.cai.linux@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
+Date: Tue, 14 Feb 2017 13:01:14 -0800
+Message-ID: <20170214210114.5846-1-dianders@chromium.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, jwerner@chromium.org, hl@rock-chips.com, dbasehore@chromium.org, zhengxing@rock-chips.com, Douglas Anderson <dianders@chromium.org>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eddie,
+The PMU Cortex M0 on rk3399 is intended to be used for things like
+DDRFreq transitions, suspend/resume, and other things that are the
+purview of ARM Trusted Firmware and not the kernel.  As such, the
+kernel shouldn't be messing with the clocks.  Add CLK_IGNORE_UNUSED to
+these clocks.
 
+Without this change, the following was observed on a Chromebook with a
+rk3399 (using not-yet-upstream ARM Trusted Firmware code and
+not-yet-upstream kernel code based on kernel-4.4):
 
-On 14.02.2017 11:07, Eddie Cai wrote:
-> This patch add basic support for RK3288-Tinker board. We can boot in to rootfs
-> with this patch.
->
-> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
-> ---
->  arch/arm/boot/dts/Makefile          |   1 +
->  arch/arm/boot/dts/rk3288-tinker.dts | 536 ++++++++++++++++++++++++++++++++++++
->  2 files changed, 537 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk3288-tinker.dts
->
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 01d178a..0dfef24 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -679,6 +679,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->  	rk3288-popmetal.dtb \
->  	rk3288-r89.dtb \
->  	rk3288-rock2-square.dtb \
-> +	rk3288-tinker.dtb \
->  	rk3288-veyron-brain.dtb \
->  	rk3288-veyron-jaq.dtb \
->  	rk3288-veyron-jerry.dtb \
-> diff --git a/arch/arm/boot/dts/rk3288-tinker.dts b/arch/arm/boot/dts/rk3288-tinker.dts
-> new file mode 100644
-> index 0000000..9600d1f
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk3288-tinker.dts
-> @@ -0,0 +1,536 @@
-> +/*
-> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "rk3288.dtsi"
-> +#include <dt-bindings/input/input.h>
-> +
-> +/ {
-> +	model = "Rockchip RK3288 Tinker Board";
-> +	compatible = "asus,rk3288-tinker", "rockchip,rk3288";
-> +
-> +	memory {
-> +		reg = <0x0 0x80000000>;
-> +		device_type = "memory";
-> +	};
-> +
-> +	ext_gmac: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "ext_gmac";
-> +	};
-> +
-> +	gpio-keys {
-> +		compatible = "gpio-keys";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		autorepeat;
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pwrbtn>;
-> +
-> +		button@0 {
-> +			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
-> +			linux,code = <KEY_POWER>;
-> +			label = "GPIO Key Power";
-> +			linux,input-type = <1>;
-> +			gpio-key,wakeup = <1>;
+1. We init the clock framework.
 
-you should replace this with wakeup-source as specified in
-Documentation/devicetree/bindings/power/wakeup-source.txt
+2. We start up "DDRFreq", which causes ATF to occasionally fire up the
+   M0 for transitions.  Each time ATF fires up the M0 it will turn on
+   these clocks and each time it is done it will turn them off.
 
-Regards,
-Wadim
+3. We finally get to the the part of the kernel that calls
+   clk_disable_unused() and we disables the clocks.
+
+You can see the race above.  Basically everything is fine as long as
+ARM Trusted Firmware isn't starting up the M0 at exactly the same time
+that the kernel is disabling unused clocks.  ...but if the race
+happens then we go boom.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/clk/rockchip/clk-rk3399.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 73121b144634..fa3cbef08776 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1477,10 +1477,10 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 	GATE(PCLK_UART4_PMU, "pclk_uart4_pmu", "pclk_pmu_src", 0, RK3399_PMU_CLKGATE_CON(1), 14, GFLAGS),
+ 	GATE(PCLK_WDT_M0_PMU, "pclk_wdt_m0_pmu", "pclk_pmu_src", 0, RK3399_PMU_CLKGATE_CON(1), 15, GFLAGS),
+ 
+-	GATE(FCLK_CM0S_PMU, "fclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 0, GFLAGS),
+-	GATE(SCLK_CM0S_PMU, "sclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 1, GFLAGS),
+-	GATE(HCLK_CM0S_PMU, "hclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 2, GFLAGS),
+-	GATE(DCLK_CM0S_PMU, "dclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 3, GFLAGS),
++	GATE(FCLK_CM0S_PMU, "fclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 0, GFLAGS),
++	GATE(SCLK_CM0S_PMU, "sclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 1, GFLAGS),
++	GATE(HCLK_CM0S_PMU, "hclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 2, GFLAGS),
++	GATE(DCLK_CM0S_PMU, "dclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 3, GFLAGS),
+ 	GATE(HCLK_NOC_PMU, "hclk_noc_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 5, GFLAGS),
+ };
+ 
+-- 
+2.11.0.483.g087da7b7c-goog
+
