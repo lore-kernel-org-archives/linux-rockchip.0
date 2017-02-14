@@ -1,61 +1,44 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
-Date: Tue, 14 Feb 2017 13:01:14 -0800
-Message-ID: <20170214210114.5846-1-dianders@chromium.org>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, jwerner@chromium.org, hl@rock-chips.com, dbasehore@chromium.org, zhengxing@rock-chips.com, Douglas Anderson <dianders@chromium.org>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] drm/rockchip: add extcon dependency for DP
+Date: Tue, 14 Feb 2017 22:31:51 +0100
+Message-ID: <20170214213215.2888509-1-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>
+Cc: Arnd Bergmann <arnd@arndb.de>, Tobias Jakobi <tjakobi@math.uni-bielefeld.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The PMU Cortex M0 on rk3399 is intended to be used for things like
-DDRFreq transitions, suspend/resume, and other things that are the
-purview of ARM Trusted Firmware and not the kernel.  As such, the
-kernel shouldn't be messing with the clocks.  Add CLK_IGNORE_UNUSED to
-these clocks.
-
-Without this change, the following was observed on a Chromebook with a
-rk3399 (using not-yet-upstream ARM Trusted Firmware code and
-not-yet-upstream kernel code based on kernel-4.4):
-
-1. We init the clock framework.
-
-2. We start up "DDRFreq", which causes ATF to occasionally fire up the
-   M0 for transitions.  Each time ATF fires up the M0 it will turn on
-   these clocks and each time it is done it will turn them off.
-
-3. We finally get to the the part of the kernel that calls
-   clk_disable_unused() and we disables the clocks.
-
-You can see the race above.  Basically everything is fine as long as
-ARM Trusted Firmware isn't starting up the M0 at exactly the same time
-that the kernel is disabling unused clocks.  ...but if the race
-happens then we go boom.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
- drivers/clk/rockchip/clk-rk3399.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 73121b144634..fa3cbef08776 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1477,10 +1477,10 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
- 	GATE(PCLK_UART4_PMU, "pclk_uart4_pmu", "pclk_pmu_src", 0, RK3399_PMU_CLKGATE_CON(1), 14, GFLAGS),
- 	GATE(PCLK_WDT_M0_PMU, "pclk_wdt_m0_pmu", "pclk_pmu_src", 0, RK3399_PMU_CLKGATE_CON(1), 15, GFLAGS),
- 
--	GATE(FCLK_CM0S_PMU, "fclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 0, GFLAGS),
--	GATE(SCLK_CM0S_PMU, "sclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 1, GFLAGS),
--	GATE(HCLK_CM0S_PMU, "hclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 2, GFLAGS),
--	GATE(DCLK_CM0S_PMU, "dclk_cm0s_pmu", "fclk_cm0s_src_pmu", 0, RK3399_PMU_CLKGATE_CON(2), 3, GFLAGS),
-+	GATE(FCLK_CM0S_PMU, "fclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 0, GFLAGS),
-+	GATE(SCLK_CM0S_PMU, "sclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 1, GFLAGS),
-+	GATE(HCLK_CM0S_PMU, "hclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 2, GFLAGS),
-+	GATE(DCLK_CM0S_PMU, "dclk_cm0s_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 3, GFLAGS),
- 	GATE(HCLK_NOC_PMU, "hclk_noc_pmu", "fclk_cm0s_src_pmu", CLK_IGNORE_UNUSED, RK3399_PMU_CLKGATE_CON(2), 5, GFLAGS),
- };
- 
--- 
-2.11.0.483.g087da7b7c-goog
-
+VGhlIG5ld2x5IGFkZGVkIERQIGRyaXZlciBsaW5rcyBhZ2FpbnN0IHRoZSBleHRjb24gY29yZSwg
+d2hpY2ggZmFpbHMgd2hlbgpleHRjb24gaXMgYSBtb2R1bGUgYW5kIHRoaXMgZHJpdmVyIGlzIG5v
+dDoKCmRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5vOiBJbiBmdW5jdGlvbiBg
+Y2RuX2RwX2dldF9wb3J0X2xhbmVzJzoKY2RuLWRwLWNvcmUuYzooLnRleHQuY2RuX2RwX2dldF9w
+b3J0X2xhbmVzKzB4MjQpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBleHRjb25fZ2V0X3N0YXRl
+JwpjZG4tZHAtY29yZS5jOigudGV4dC5jZG5fZHBfZ2V0X3BvcnRfbGFuZXMrMHg0NCk6IHVuZGVm
+aW5lZCByZWZlcmVuY2UgdG8gYGV4dGNvbl9nZXRfcHJvcGVydHknCgpMZXQncyBtYWtlIEtjb25m
+aWcgZW5mb3JjZSBjb3JyZWN0IGJlaGF2aW9yIHdpdGggYSBkZXBlbmRlbmN5LgoKRml4ZXM6IDFh
+MGY3ZWQzYWJlMiAoImRybS9yb2NrY2hpcDogY2RuLWRwOiBhZGQgY2RuIERQIHN1cHBvcnQgZm9y
+IHJrMzM5OSIpClNpZ25lZC1vZmYtYnk6IEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+Ci0t
+LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgfCAxICsKIDEgZmlsZSBjaGFuZ2Vk
+LCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9L
+Y29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKaW5kZXggYWQzMWIzZWI0
+MDhmLi4wZTRlYjg0NWNiYjAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9L
+Y29uZmlnCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCkBAIC0yNCw2ICsy
+NCw3IEBAIGNvbmZpZyBST0NLQ0hJUF9BTkFMT0dJWF9EUAogY29uZmlnIFJPQ0tDSElQX0NETl9E
+UAogICAgICAgICB0cmlzdGF0ZSAiUm9ja2NoaXAgY2RuIERQIgogICAgICAgICBkZXBlbmRzIG9u
+IERSTV9ST0NLQ0hJUAorCWRlcGVuZHMgb24gRVhUQ09OCiAJc2VsZWN0IFNORF9TT0NfSERNSV9D
+T0RFQyBpZiBTTkRfU09DCiAgICAgICAgIGhlbHAKIAkgIFRoaXMgc2VsZWN0cyBzdXBwb3J0IGZv
+ciBSb2NrY2hpcCBTb0Mgc3BlY2lmaWMgZXh0ZW5zaW9ucwotLSAKMi45LjAKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
