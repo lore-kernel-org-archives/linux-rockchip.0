@@ -1,95 +1,28 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v3 23/24] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Wed, 15 Feb 2017 12:39:44 +0000
-Message-ID: <20170215123944.798ae363.john@metanate.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-24-john@metanate.com>
- <58A3CD45.9090309@rock-chips.com>
+From: Javier Martinez Canillas <javier@dowhile0.org>
+Subject: Re: [PATCH] clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
+Date: Wed, 15 Feb 2017 12:27:59 -0300
+Message-ID: <CABxcv=kzW9SvrWYNasqCDkV7D6Y2zq+oRuqoPFdWuaWUhPehEA@mail.gmail.com>
+References: <20170214210114.5846-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <58A3CD45.9090309@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170214210114.5846-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, jwerner@chromium.org, hl@rock-chips.com, dbasehore@chromium.org, zhengxing@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCAxNSBGZWIgMjAxNyAxMTozODo0NSArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cgo+
-IE9uIDAxLzI5LzIwMTcgMDk6MjQgUE0sIEpvaG4gS2VlcGluZyB3cm90ZToKPiA+IEluIG9yZGVy
-IHRvIGZ1bGx5IHJlc2V0IHRoZSBzdGF0ZSBvZiB0aGUgTUlQSSBjb250cm9sbGVyIHdlIG11c3Qg
-YXNzZXJ0Cj4gPiB0aGlzIHJlc2V0Lgo+ID4KPiA+IFRoaXMgaXMgc2xpZ2h0bHkgbW9yZSBjb21w
-bGljYXRlZCB0aGFuIGl0IGNvdWxkIGJlIGluIG9yZGVyIHRvIG1haW50YWluCj4gPiBjb21wYXRp
-YmlsaXR5IHdpdGggZGV2aWNlIHRyZWVzIHRoYXQgZG8gbm90IHNwZWNpZnkgdGhlIHJlc2V0IHBy
-b3BlcnR5Lgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0
-ZS5jb20+Cj4gPiBSZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4K
-PiA+IC0tLQo+ID4gdjM6Cj4gPiAtIEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKPiA+IFVuY2hhbmdl
-ZCBpbiB2Mgo+ID4KPiA+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMg
-fCAzMCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICAgMSBmaWxlIGNoYW5nZWQs
-IDMwIGluc2VydGlvbnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
-c2kuYwo+ID4gaW5kZXggNThjYjhhY2UyZmU4Li5jZjNjYTZiMGNiZGIgMTAwNjQ0Cj4gPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+IEBAIC0xMyw2ICsxMyw3IEBACj4g
-PiAgICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiA+ICAgI2luY2x1ZGUgPGxpbnV4L29mX2Rl
-dmljZS5oPgo+ID4gICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gPiArI2luY2x1ZGUgPGxp
-bnV4L3Jlc2V0Lmg+Cj4gPiAgICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4gPiAgICNp
-bmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiA+ICAgI2luY2x1ZGUgPGRybS9kcm1f
-Y3J0Yy5oPgo+ID4gQEAgLTExMjQsNiArMTEyNSw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lf
-YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiA+ICAgCQkJ
-b2ZfbWF0Y2hfZGV2aWNlKGR3X21pcGlfZHNpX2R0X2lkcywgZGV2KTsKPiA+ICAgCWNvbnN0IHN0
-cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgKnBkYXRhID0gb2ZfaWQtPmRhdGE7Cj4gPiAgIAlz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7Cj4g
-PiArCXN0cnVjdCByZXNldF9jb250cm9sICphcGJfcnN0Owo+ID4gICAJc3RydWN0IGRybV9kZXZp
-Y2UgKmRybSA9IGRhdGE7Cj4gPiAgIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaTsKPiA+ICAgCXN0
-cnVjdCByZXNvdXJjZSAqcmVzOwo+ID4gQEAgLTExNjIsNiArMTE2NCwzNCBAQCBzdGF0aWMgaW50
-IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0
-ZXIsCj4gPiAgIAkJcmV0dXJuIHJldDsKPiA+ICAgCX0KPiA+ICAgCj4gPiArCS8qCj4gPiArCSAq
-IE5vdGUgdGhhdCB0aGUgcmVzZXQgd2FzIG5vdCBkZWZpbmVkIGluIHRoZSBpbml0aWFsIGRldmlj
-ZSB0cmVlLCBzbwo+ID4gKwkgKiB3ZSBoYXZlIHRvIGJlIHByZXBhcmVkIGZvciBpdCBub3QgYmVp
-bmcgZm91bmQuCj4gPiArCSAqLwo+ID4gKwlhcGJfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dl
-dChkZXYsICJhcGIiKTsKPiA+ICsJaWYgKElTX0VSUihhcGJfcnN0KSkgewo+ID4gKwkJaWYgKFBU
-Ul9FUlIoYXBiX3JzdCkgPT0gLUVOT0RFVikgeyAgCj4gQWNjb3JkaW5nIHRvIFswXSwgSSB0aGlu
-ayBpdCBzaG91bGQgYmUgLUVOT0VOVCBoZXJlLgoKTmljZSBjYXRjaCwgSSdsbCBmaXggdGhpcy4K
-Cj4gWzBdCj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9jZ2l0L2xpbnV4L2tlcm5lbC9naXQvbmV4
-dC9saW51eC1uZXh0LmdpdC9jb21taXQvP2lkPTNkODEyMTZmZGU0NjVlNzZjNWVhZTk4ZjYxZDM2
-NjYxNjM2MzQzOTUKPiAKPiBjb21taXQgM2Q4MTIxNmZkZTQ2NWU3NmM1ZWFlOThmNjFkMzY2NjE2
-MzYzNDM5NQo+IEF1dGhvcjogQWxiYW4gQmVkZWwgPGFsYmV1QGZyZWUuZnI+Cj4gRGF0ZTogICBU
-dWUgU2VwIDEgMTc6Mjg6MzEgMjAxNSArMDIwMAo+IAo+ICAgICAgcmVzZXQ6IEZpeCBvZl9yZXNl
-dF9jb250cm9sX2dldCgpIGZvciBjb25zaXN0ZW50IHJldHVybiB2YWx1ZXMKPiAKPiAgICAgIFdo
-ZW4gb2ZfcmVzZXRfY29udHJvbF9nZXQoKSBpcyBjYWxsZWQgd2l0aG91dCBjb25uZWN0aW9uIElE
-IGl0IHJldHVybnMKPiAgICAgIC1FTk9FTlQgd2hlbiB0aGUgJ3Jlc2V0cycgcHJvcGVydHkgZG9l
-c24ndCBleGlzdHMgb3IgaXMgYW4gZW1wdHkgZW50cnkuCj4gICAgICBIb3dldmVyIHdoZW4gYSBj
-b25uZWN0aW9uIElEIGlzIGdpdmVuIGl0IHJldHVybnMgLUVJTlZBTCB3aGVuIHRoZSAKPiAncmVz
-ZXRzJwo+ICAgICAgcHJvcGVydHkgZG9lc24ndCBleGlzdHMgb3IgdGhlIHJlcXVlc3RlZCBuYW1l
-IGNhbid0IGJlIGZvdW5kLiBUaGlzIGlzCj4gICAgICBiZWNhdXNlIHRoZSBlcnJvciBjb2RlIHJl
-dHVybmVkIGJ5IG9mX3Byb3BlcnR5X21hdGNoX3N0cmluZygpIGlzIGp1c3QKPiAgICAgIHBhc3Nl
-ZCBkb3duIGFzIGFuIGluZGV4IHRvIG9mX3BhcnNlX3BoYW5kbGVfd2l0aF9hcmdzKCksIHdoaWNo
-IHRoZW4KPiAgICAgIHJldHVybnMgLUVJTlZBTC4KPiAKPiAgICAgIFRvIGdldCBhIGNvbnNpc3Rl
-bnQgcmV0dXJuIHZhbHVlIHdpdGggYm90aCBjb2RlIHBhdGhzIHdlIG11c3QgcmV0dXJuCj4gICAg
-ICAtRU5PRU5UIHdoZW4gb2ZfcHJvcGVydHlfbWF0Y2hfc3RyaW5nKCkgZmFpbHMuCj4gCj4gICAg
-ICBTaWduZWQtb2ZmLWJ5OiBBbGJhbiBCZWRlbCA8YWxiZXVAZnJlZS5mcj4KPiAgICAgIFNpZ25l
-ZC1vZmYtYnk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gCj4gCj4g
-PiArCQkJYXBiX3JzdCA9IE5VTEw7Cj4gPiArCQl9IGVsc2Ugewo+ID4gKwkJCWRldl9lcnIoZGV2
-LCAiVW5hYmxlIHRvIGdldCByZXNldCBjb250cm9sOiAlZFxuIiwgcmV0KTsKPiA+ICsJCQlyZXR1
-cm4gUFRSX0VSUihhcGJfcnN0KTsKPiA+ICsJCX0KPiA+ICsJfQo+ID4gKwo+ID4gKwlpZiAoYXBi
-X3JzdCkgewo+ID4gKwkJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+cGNsayk7Cj4gPiAr
-CQlpZiAocmV0KSB7Cj4gPiArCQkJZGV2X2VycihkZXYsICIlczogRmFpbGVkIHRvIGVuYWJsZSBw
-Y2xrXG4iLCBfX2Z1bmNfXyk7Cj4gPiArCQkJcmV0dXJuIHJldDsKPiA+ICsJCX0KPiA+ICsKPiA+
-ICsJCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KGFwYl9yc3QpOwo+ID4gKwkJdXNsZWVwX3JhbmdlKDEw
-LCAyMCk7Cj4gPiArCQlyZXNldF9jb250cm9sX2RlYXNzZXJ0KGFwYl9yc3QpOwo+ID4gKwo+ID4g
-KwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGNsayk7Cj4gPiArCX0KPiA+ICsKPiA+ICAg
-CXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBsbHJlZl9jbGspOwo+ID4gICAJaWYgKHJl
-dCkgewo+ID4gICAJCWRldl9lcnIoZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFibGUgcGxscmVmX2Ns
-a1xuIiwgX19mdW5jX18pOyAgCj4gCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+Hello Doug,
+
+On Tue, Feb 14, 2017 at 6:01 PM, Douglas Anderson <dianders@chromium.org> wrote:
+> The PMU Cortex M0 on rk3399 is intended to be used for things like
+> DDRFreq transitions, suspend/resume, and other things that are the
+> purview of ARM Trusted Firmware and not the kernel.  As such, the
+> kernel shouldn't be messing with the clocks.  Add CLK_IGNORE_UNUSED to
+> these clocks.
+>
+
+Isn't CLK_IS_CRITICAL a more suitable flag for this case?
+
+Best regards,
+Javier
