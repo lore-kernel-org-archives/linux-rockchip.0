@@ -1,61 +1,30 @@
-From: Javier Martinez Canillas <javier@dowhile0.org>
-Subject: Re: [PATCH] clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
-Date: Wed, 15 Feb 2017 14:06:03 -0300
-Message-ID: <CABxcv=m8X1o=5vo1CdpozD2YgfVZUq663+etc-ywGwBPvSs1Qw@mail.gmail.com>
-References: <20170214210114.5846-1-dianders@chromium.org> <CABxcv=kzW9SvrWYNasqCDkV7D6Y2zq+oRuqoPFdWuaWUhPehEA@mail.gmail.com>
- <1716357.fXUCSFMPB6@diego>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 3/6] dt-bindings: Document rk3399 Gru/Kevin
+Date: Wed, 15 Feb 2017 20:12:08 -0600
+Message-ID: <20170216021208.zpjvmcqnyzfs6wkg@rob-hp-laptop>
+References: <20170210010521.78872-1-briannorris@chromium.org>
+ <20170210010521.78872-4-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1716357.fXUCSFMPB6@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Douglas Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, jwerner@chromium.org, hl@rock-chips.com, dbasehore@chromium.org, zhengxing@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170210010521.78872-4-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko and Doug,
+On Thu, Feb 09, 2017 at 05:05:18PM -0800, Brian Norris wrote:
+> Gru is a base dev board for a family of devices, including Kevin. Both
+> utilize Rockchip RK3399, and they share much of their design.
+> 
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.txt | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
 
-On Wed, Feb 15, 2017 at 2:01 PM, Heiko St=C3=BCbner <heiko@sntech.de> wrote=
-:
-> Am Mittwoch, 15. Februar 2017, 12:27:59 CET schrieb Javier Martinez Canil=
-las:
->> Hello Doug,
->>
->> On Tue, Feb 14, 2017 at 6:01 PM, Douglas Anderson <dianders@chromium.org=
->
-> wrote:
->> > The PMU Cortex M0 on rk3399 is intended to be used for things like
->> > DDRFreq transitions, suspend/resume, and other things that are the
->> > purview of ARM Trusted Firmware and not the kernel.  As such, the
->> > kernel shouldn't be messing with the clocks.  Add CLK_IGNORE_UNUSED to
->> > these clocks.
->>
->> Isn't CLK_IS_CRITICAL a more suitable flag for this case?
->
-> From the patch description it looks like the clock is expected to be
-> controlled from firmware in most cases as I guess the Cortex M0 will be u=
-sed
-> for that all the time now. And the clock is not expected to run all the t=
-ime.
->
-> So I'd think clk_ignore_unused is the correct one. The whole clock-subtre=
-e for
-> these clocks also does not get affected by other clocks, as it is
-> independendly coming from PLLs.
->
->
-
-I see. Thanks a lot for your explanations. I just asked because
-CLK_IGNORE_UNUSED only prevents the clock to be disabled by
-clk_disable_unused() but still can be disabled if a driver explicitly
-looks it up and calls clk_disable() or if the clock is affected by
-other clocks.
-
-But I understand now that both scenarios are not possible. So yes,
-CLK_IGNORE_UNUSED is more suitable in this case.
-
-> Heiko
-
-Best regards,
-Javier
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
