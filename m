@@ -1,36 +1,37 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 1/2] Documentation: dt: dwc2: amend clocks
- property
-Date: Wed, 15 Feb 2017 20:16:14 -0600
-Message-ID: <20170216021614.7vu4xhdtmk5dtwwj@rob-hp-laptop>
-References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
- <1486695987-7280-2-git-send-email-frank.wang@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/4] Documentation: bindings: add uphy-dp-sel for
+ Rockchip USB Type-C PHY
+Date: Wed, 15 Feb 2017 20:20:16 -0600
+Message-ID: <20170216022016.ubspejlr7no7ttgl@rob-hp-laptop>
+References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
+ <1486712654-15431-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1486695987-7280-2-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+In-Reply-To: <1486712654-15431-2-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kishon@ti.com, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, groeck@chromium.org, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 10, 2017 at 11:06:26AM +0800, Frank Wang wrote:
-> Move 'clocks' to optional properties since not every platform
-> is going to need to specify it and add pmu/utmi/ulpi/utmifs
-> optional clocks into 'clock-names' list.
-> 
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/usb/dwc2.txt | 13 ++++++++++---
->  1 file changed, 10 insertions(+), 3 deletions(-)
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> 
-
-It would be good to get some acks from others familar with this block.
-
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gRnJpLCBGZWIgMTAsIDIwMTcgYXQgMDM6NDQ6MTFQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gcm9ja2NoaXAsdXBoeS1kcC1zZWwgaXMgdGhlIHJlZ2lzdGVyIG9mIHR5cGUtYyBwaHkg
+ZW5hYmxlIERQIGZ1bmN0aW9uLgoKImR0LWJpbmRpbmdzOiBwaHk6IiBpcyB0aGUgcHJlZmVycmVk
+IHN1YmplY3QgcHJlZml4LgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJv
+Y2stY2hpcHMuY29tPgo+IC0tLQo+IAo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy50eHQgfCA1ICsrKysrCj4gIDEgZmlsZSBjaGFuZ2Vk
+LCA1IGluc2VydGlvbnMoKykKCk90aGVyd2lzZSwKCkFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9i
+aEBrZXJuZWwub3JnPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
