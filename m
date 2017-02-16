@@ -1,98 +1,49 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v3 23/24] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Thu, 16 Feb 2017 10:12:33 +0800
-Message-ID: <58A50A91.6010202@rock-chips.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-24-john@metanate.com> <58A3CD45.9090309@rock-chips.com>
- <20170215123944.798ae363.john@metanate.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/2] devicetree: i2c-hid: Add regulator support
+Date: Wed, 15 Feb 2017 20:12:58 -0600
+Message-ID: <20170216021258.wo77aj56q7osfhph@rob-hp-laptop>
+References: <20170210020357.10679-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170215123944.798ae363.john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-input-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170210020357.10679-1-briannorris@chromium.org>
+Sender: linux-input-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Jiri Kosina <jikos@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obgoKT24gMDIvMTUvMjAxNyAwODozOSBQTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+IE9u
-IFdlZCwgMTUgRmViIDIwMTcgMTE6Mzg6NDUgKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+Cj4+
-IE9uIDAxLzI5LzIwMTcgMDk6MjQgUE0sIEpvaG4gS2VlcGluZyB3cm90ZToKPj4+IEluIG9yZGVy
-IHRvIGZ1bGx5IHJlc2V0IHRoZSBzdGF0ZSBvZiB0aGUgTUlQSSBjb250cm9sbGVyIHdlIG11c3Qg
-YXNzZXJ0Cj4+PiB0aGlzIHJlc2V0Lgo+Pj4KPj4+IFRoaXMgaXMgc2xpZ2h0bHkgbW9yZSBjb21w
-bGljYXRlZCB0aGFuIGl0IGNvdWxkIGJlIGluIG9yZGVyIHRvIG1haW50YWluCj4+PiBjb21wYXRp
-YmlsaXR5IHdpdGggZGV2aWNlIHRyZWVzIHRoYXQgZG8gbm90IHNwZWNpZnkgdGhlIHJlc2V0IHBy
-b3BlcnR5Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0
-ZS5jb20+Cj4+PiBSZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4K
-Pj4+IC0tLQo+Pj4gdjM6Cj4+PiAtIEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKPj4+IFVuY2hhbmdl
-ZCBpbiB2Mgo+Pj4KPj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
-IHwgMzAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4+PiAgICAxIGZpbGUgY2hhbmdl
-ZCwgMzAgaW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
-LWRzaS5jCj4+PiBpbmRleCA1OGNiOGFjZTJmZTguLmNmM2NhNmIwY2JkYiAxMDA2NDQKPj4+IC0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4+PiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+Pj4gQEAgLTEzLDYgKzEzLDcgQEAK
-Pj4+ICAgICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPj4+ICAgICNpbmNsdWRlIDxsaW51eC9v
-Zl9kZXZpY2UuaD4KPj4+ICAgICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPj4+ICsjaW5jbHVk
-ZSA8bGludXgvcmVzZXQuaD4KPj4+ICAgICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4+
-PiAgICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4+PiAgICAjaW5jbHVkZSA8
-ZHJtL2RybV9jcnRjLmg+Cj4+PiBAQCAtMTEyNCw2ICsxMTI1LDcgQEAgc3RhdGljIGludCBkd19t
-aXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+
-Pj4gICAgCQkJb2ZfbWF0Y2hfZGV2aWNlKGR3X21pcGlfZHNpX2R0X2lkcywgZGV2KTsKPj4+ICAg
-IAljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YSA9IG9mX2lkLT5kYXRh
-Owo+Pj4gICAgCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYgPSB0b19wbGF0Zm9ybV9kZXZp
-Y2UoZGV2KTsKPj4+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFwYl9yc3Q7Cj4+PiAgICAJc3Ry
-dWN0IGRybV9kZXZpY2UgKmRybSA9IGRhdGE7Cj4+PiAgICAJc3RydWN0IGR3X21pcGlfZHNpICpk
-c2k7Cj4+PiAgICAJc3RydWN0IHJlc291cmNlICpyZXM7Cj4+PiBAQCAtMTE2Miw2ICsxMTY0LDM0
-IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVj
-dCBkZXZpY2UgKm1hc3RlciwKPj4+ICAgIAkJcmV0dXJuIHJldDsKPj4+ICAgIAl9Cj4+PiAgICAK
-Pj4+ICsJLyoKPj4+ICsJICogTm90ZSB0aGF0IHRoZSByZXNldCB3YXMgbm90IGRlZmluZWQgaW4g
-dGhlIGluaXRpYWwgZGV2aWNlIHRyZWUsIHNvCj4+PiArCSAqIHdlIGhhdmUgdG8gYmUgcHJlcGFy
-ZWQgZm9yIGl0IG5vdCBiZWluZyBmb3VuZC4KPj4+ICsJICovCj4+PiArCWFwYl9yc3QgPSBkZXZt
-X3Jlc2V0X2NvbnRyb2xfZ2V0KGRldiwgImFwYiIpOwo+Pj4gKwlpZiAoSVNfRVJSKGFwYl9yc3Qp
-KSB7Cj4+PiArCQlpZiAoUFRSX0VSUihhcGJfcnN0KSA9PSAtRU5PREVWKSB7Cj4+IEFjY29yZGlu
-ZyB0byBbMF0sIEkgdGhpbmsgaXQgc2hvdWxkIGJlIC1FTk9FTlQgaGVyZS4KPiBOaWNlIGNhdGNo
-LCBJJ2xsIGZpeCB0aGlzLgo+Cj4+IFswXQo+PiBodHRwczovL2dpdC5rZXJuZWwub3JnL2NnaXQv
-bGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5leHQuZ2l0L2NvbW1pdC8/aWQ9M2Q4MTIxNmZk
-ZTQ2NWU3NmM1ZWFlOThmNjFkMzY2NjE2MzYzNDM5NQo+Pgo+PiBjb21taXQgM2Q4MTIxNmZkZTQ2
-NWU3NmM1ZWFlOThmNjFkMzY2NjE2MzYzNDM5NQo+PiBBdXRob3I6IEFsYmFuIEJlZGVsIDxhbGJl
-dUBmcmVlLmZyPgo+PiBEYXRlOiAgIFR1ZSBTZXAgMSAxNzoyODozMSAyMDE1ICswMjAwCj4+Cj4+
-ICAgICAgIHJlc2V0OiBGaXggb2ZfcmVzZXRfY29udHJvbF9nZXQoKSBmb3IgY29uc2lzdGVudCBy
-ZXR1cm4gdmFsdWVzCj4+Cj4+ICAgICAgIFdoZW4gb2ZfcmVzZXRfY29udHJvbF9nZXQoKSBpcyBj
-YWxsZWQgd2l0aG91dCBjb25uZWN0aW9uIElEIGl0IHJldHVybnMKPj4gICAgICAgLUVOT0VOVCB3
-aGVuIHRoZSAncmVzZXRzJyBwcm9wZXJ0eSBkb2Vzbid0IGV4aXN0cyBvciBpcyBhbiBlbXB0eSBl
-bnRyeS4KPj4gICAgICAgSG93ZXZlciB3aGVuIGEgY29ubmVjdGlvbiBJRCBpcyBnaXZlbiBpdCBy
-ZXR1cm5zIC1FSU5WQUwgd2hlbiB0aGUKPj4gJ3Jlc2V0cycKPj4gICAgICAgcHJvcGVydHkgZG9l
-c24ndCBleGlzdHMgb3IgdGhlIHJlcXVlc3RlZCBuYW1lIGNhbid0IGJlIGZvdW5kLiBUaGlzIGlz
-Cj4+ICAgICAgIGJlY2F1c2UgdGhlIGVycm9yIGNvZGUgcmV0dXJuZWQgYnkgb2ZfcHJvcGVydHlf
-bWF0Y2hfc3RyaW5nKCkgaXMganVzdAo+PiAgICAgICBwYXNzZWQgZG93biBhcyBhbiBpbmRleCB0
-byBvZl9wYXJzZV9waGFuZGxlX3dpdGhfYXJncygpLCB3aGljaCB0aGVuCj4+ICAgICAgIHJldHVy
-bnMgLUVJTlZBTC4KPj4KPj4gICAgICAgVG8gZ2V0IGEgY29uc2lzdGVudCByZXR1cm4gdmFsdWUg
-d2l0aCBib3RoIGNvZGUgcGF0aHMgd2UgbXVzdCByZXR1cm4KPj4gICAgICAgLUVOT0VOVCB3aGVu
-IG9mX3Byb3BlcnR5X21hdGNoX3N0cmluZygpIGZhaWxzLgo+Pgo+PiAgICAgICBTaWduZWQtb2Zm
-LWJ5OiBBbGJhbiBCZWRlbCA8YWxiZXVAZnJlZS5mcj4KPj4gICAgICAgU2lnbmVkLW9mZi1ieTog
-UGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KPj4KPj4KPj4+ICsJCQlhcGJf
-cnN0ID0gTlVMTDsKPj4+ICsJCX0gZWxzZSB7Cj4+PiArCQkJZGV2X2VycihkZXYsICJVbmFibGUg
-dG8gZ2V0IHJlc2V0IGNvbnRyb2w6ICVkXG4iLCByZXQpOwpBbHNvLCB3ZSBjYW4gbm90IGdldCBl
-cnJvciBudW1iZXIgZnJvbSAicmV0IiBoZXJlLgoKPj4+ICsJCQlyZXR1cm4gUFRSX0VSUihhcGJf
-cnN0KTsKPj4+ICsJCX0KPj4+ICsJfQo+Pj4gKwo+Pj4gKwlpZiAoYXBiX3JzdCkgewo+Pj4gKwkJ
-cmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+cGNsayk7Cj4+PiArCQlpZiAocmV0KSB7Cj4+
-PiArCQkJZGV2X2VycihkZXYsICIlczogRmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iLCBfX2Z1bmNf
-Xyk7Cj4+PiArCQkJcmV0dXJuIHJldDsKPj4+ICsJCX0KPj4+ICsKPj4+ICsJCXJlc2V0X2NvbnRy
-b2xfYXNzZXJ0KGFwYl9yc3QpOwo+Pj4gKwkJdXNsZWVwX3JhbmdlKDEwLCAyMCk7Cj4+PiArCQly
-ZXNldF9jb250cm9sX2RlYXNzZXJ0KGFwYl9yc3QpOwo+Pj4gKwo+Pj4gKwkJY2xrX2Rpc2FibGVf
-dW5wcmVwYXJlKGRzaS0+cGNsayk7Cj4+PiArCX0KPj4+ICsKPj4+ICAgIAlyZXQgPSBjbGtfcHJl
-cGFyZV9lbmFibGUoZHNpLT5wbGxyZWZfY2xrKTsKPj4+ICAgIAlpZiAocmV0KSB7Cj4+PiAgICAJ
-CWRldl9lcnIoZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFibGUgcGxscmVmX2Nsa1xuIiwgX19mdW5j
-X18pOwo+Pgo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On Thu, Feb 09, 2017 at 06:03:56PM -0800, Brian Norris wrote:
+> From: Caesar Wang <wxt@rock-chips.com>
+> 
+> Document a "vdd-supply" and an initialization delay. Can be used for
+> powering on/off a HID.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Jiri Kosina <jikos@kernel.org>
+> Cc: linux-input@vger.kernel.org
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+> Sorry for the delay on resending this. I *think* I've addressed all the
+> concerns from last time though?
+> 
+> v2:
+>  * add compatible property for wacom, per Rob's request
+>  * name the regulator property specifically (VDD)
+> 
+> v3:
+>  * remove wacom property, per Benjamin's request
+>  * add delay property
+> 
+> v4: no change
+> 
+> v5:
+>  * change name to "post-power-on-delay-ms"
+>  * reword to describe how the power sequencing properties require a
+>    specific 'compatible' property
+> ---
+>  Documentation/devicetree/bindings/input/hid-over-i2c.txt | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+
+Acked-by: Rob Herring <robh@kernel.org> 
