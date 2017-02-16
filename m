@@ -1,55 +1,94 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PCI: rockchip: fix wrong setting of vendor ID
-Date: Thu, 16 Feb 2017 15:29:35 +0800
-Message-ID: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH v3 23/24] drm/rockchip: dw-mipi-dsi: add reset control
+Date: Thu, 16 Feb 2017 14:11:04 +0000
+Message-ID: <20170216141104.5ecca1df.john@metanate.com>
+References: <20170129132444.25251-1-john@metanate.com>
+ <20170129132444.25251-24-john@metanate.com>
+ <58A3CD45.9090309@rock-chips.com>
+ <20170215123944.798ae363.john@metanate.com>
+ <58A50A91.6010202@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <58A50A91.6010202@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The TRM says that the vendor ID in RC's configure
-space could be rewrote and the value must be the same
-as the value read from the local core configure space.
-But we misread that and didn't notice it before. Actually
-we should only able to rewrite it from the local core
-configure space. This patch fix that issue in order to make
-lspci show the correct IP vendor infomation.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/pci/host/pcie-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index c0b3b65..26ddd35 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -125,6 +125,7 @@
- #define   PCIE_CORE_INT_CT			BIT(11)
- #define   PCIE_CORE_INT_UTC			BIT(18)
- #define   PCIE_CORE_INT_MMVC			BIT(19)
-+#define PCIE_CORE_CONFIG_VENDOR		(PCIE_CORE_CTRL_MGMT_BASE + 0x44)
- #define PCIE_CORE_INT_MASK		(PCIE_CORE_CTRL_MGMT_BASE + 0x210)
- #define PCIE_RC_BAR_CONF		(PCIE_CORE_CTRL_MGMT_BASE + 0x300)
- 
-@@ -138,7 +139,6 @@
- 		 PCIE_CORE_INT_MMVC)
- 
- #define PCIE_RC_CONFIG_BASE		0xa00000
--#define PCIE_RC_CONFIG_VENDOR		(PCIE_RC_CONFIG_BASE + 0x00)
- #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
- #define   PCIE_RC_CONFIG_SCC_SHIFT		16
- #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
-@@ -637,7 +637,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	dev_dbg(dev, "current link width is x%d\n", status);
- 
- 	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
--			    PCIE_RC_CONFIG_VENDOR);
-+			    PCIE_CORE_CONFIG_VENDOR);
- 	rockchip_pcie_write(rockchip,
- 			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
- 			    PCIE_RC_CONFIG_RID_CCR);
--- 
-1.9.1
+T24gVGh1LCAxNiBGZWIgMjAxNyAxMDoxMjozMyArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cgo+
+IE9uIDAyLzE1LzIwMTcgMDg6MzkgUE0sIEpvaG4gS2VlcGluZyB3cm90ZToKPiA+IE9uIFdlZCwg
+MTUgRmViIDIwMTcgMTE6Mzg6NDUgKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+ID4gIAo+ID4+
+IE9uIDAxLzI5LzIwMTcgMDk6MjQgUE0sIEpvaG4gS2VlcGluZyB3cm90ZTogIAo+ID4+PiBJbiBv
+cmRlciB0byBmdWxseSByZXNldCB0aGUgc3RhdGUgb2YgdGhlIE1JUEkgY29udHJvbGxlciB3ZSBt
+dXN0IGFzc2VydAo+ID4+PiB0aGlzIHJlc2V0Lgo+ID4+Pgo+ID4+PiBUaGlzIGlzIHNsaWdodGx5
+IG1vcmUgY29tcGxpY2F0ZWQgdGhhbiBpdCBjb3VsZCBiZSBpbiBvcmRlciB0byBtYWludGFpbgo+
+ID4+PiBjb21wYXRpYmlsaXR5IHdpdGggZGV2aWNlIHRyZWVzIHRoYXQgZG8gbm90IHNwZWNpZnkg
+dGhlIHJlc2V0IHByb3BlcnR5Lgo+ID4+Pgo+ID4+PiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBp
+bmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4+PiBSZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5
+d0Byb2NrLWNoaXBzLmNvbT4KPiA+Pj4gLS0tCj4gPj4+IHYzOgo+ID4+PiAtIEFkZCBDaHJpcycg
+UmV2aWV3ZWQtYnkKPiA+Pj4gVW5jaGFuZ2VkIGluIHYyCj4gPj4+Cj4gPj4+ICAgIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMzAgKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrCj4gPj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspCj4gPj4+
+Cj4gPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPj4+IGluZGV4IDU4
+Y2I4YWNlMmZlOC4uY2YzY2E2YjBjYmRiIDEwMDY0NAo+ID4+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+PiBAQCAtMTMsNiArMTMsNyBAQAo+ID4+PiAgICAjaW5j
+bHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPj4+ICAgICNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2Uu
+aD4KPiA+Pj4gICAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ID4+PiArI2luY2x1ZGUgPGxp
+bnV4L3Jlc2V0Lmg+Cj4gPj4+ICAgICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4gPj4+
+ICAgICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiA+Pj4gICAgI2luY2x1ZGUg
+PGRybS9kcm1fY3J0Yy5oPgo+ID4+PiBAQCAtMTEyNCw2ICsxMTI1LDcgQEAgc3RhdGljIGludCBk
+d19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
+LAo+ID4+PiAgICAJCQlvZl9tYXRjaF9kZXZpY2UoZHdfbWlwaV9kc2lfZHRfaWRzLCBkZXYpOwo+
+ID4+PiAgICAJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGRhdGEgPSBvZl9p
+ZC0+ZGF0YTsKPiA+Pj4gICAgCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYgPSB0b19wbGF0
+Zm9ybV9kZXZpY2UoZGV2KTsKPiA+Pj4gKwlzdHJ1Y3QgcmVzZXRfY29udHJvbCAqYXBiX3JzdDsK
+PiA+Pj4gICAgCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBkYXRhOwo+ID4+PiAgICAJc3RydWN0
+IGR3X21pcGlfZHNpICpkc2k7Cj4gPj4+ICAgIAlzdHJ1Y3QgcmVzb3VyY2UgKnJlczsKPiA+Pj4g
+QEAgLTExNjIsNiArMTE2NCwzNCBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gPj4+ICAgIAkJcmV0dXJuIHJl
+dDsKPiA+Pj4gICAgCX0KPiA+Pj4gICAgCj4gPj4+ICsJLyoKPiA+Pj4gKwkgKiBOb3RlIHRoYXQg
+dGhlIHJlc2V0IHdhcyBub3QgZGVmaW5lZCBpbiB0aGUgaW5pdGlhbCBkZXZpY2UgdHJlZSwgc28K
+PiA+Pj4gKwkgKiB3ZSBoYXZlIHRvIGJlIHByZXBhcmVkIGZvciBpdCBub3QgYmVpbmcgZm91bmQu
+Cj4gPj4+ICsJICovCj4gPj4+ICsJYXBiX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQoZGV2
+LCAiYXBiIik7Cj4gPj4+ICsJaWYgKElTX0VSUihhcGJfcnN0KSkgewo+ID4+PiArCQlpZiAoUFRS
+X0VSUihhcGJfcnN0KSA9PSAtRU5PREVWKSB7ICAKPiA+PiBBY2NvcmRpbmcgdG8gWzBdLCBJIHRo
+aW5rIGl0IHNob3VsZCBiZSAtRU5PRU5UIGhlcmUuICAKPiA+IE5pY2UgY2F0Y2gsIEknbGwgZml4
+IHRoaXMuCj4gPiAgCj4gPj4gWzBdCj4gPj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9jZ2l0L2xp
+bnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC9jb21taXQvP2lkPTNkODEyMTZmZGU0
+NjVlNzZjNWVhZTk4ZjYxZDM2NjYxNjM2MzQzOTUKPiA+Pgo+ID4+IGNvbW1pdCAzZDgxMjE2ZmRl
+NDY1ZTc2YzVlYWU5OGY2MWQzNjY2MTYzNjM0Mzk1Cj4gPj4gQXV0aG9yOiBBbGJhbiBCZWRlbCA8
+YWxiZXVAZnJlZS5mcj4KPiA+PiBEYXRlOiAgIFR1ZSBTZXAgMSAxNzoyODozMSAyMDE1ICswMjAw
+Cj4gPj4KPiA+PiAgICAgICByZXNldDogRml4IG9mX3Jlc2V0X2NvbnRyb2xfZ2V0KCkgZm9yIGNv
+bnNpc3RlbnQgcmV0dXJuIHZhbHVlcwo+ID4+Cj4gPj4gICAgICAgV2hlbiBvZl9yZXNldF9jb250
+cm9sX2dldCgpIGlzIGNhbGxlZCB3aXRob3V0IGNvbm5lY3Rpb24gSUQgaXQgcmV0dXJucwo+ID4+
+ICAgICAgIC1FTk9FTlQgd2hlbiB0aGUgJ3Jlc2V0cycgcHJvcGVydHkgZG9lc24ndCBleGlzdHMg
+b3IgaXMgYW4gZW1wdHkgZW50cnkuCj4gPj4gICAgICAgSG93ZXZlciB3aGVuIGEgY29ubmVjdGlv
+biBJRCBpcyBnaXZlbiBpdCByZXR1cm5zIC1FSU5WQUwgd2hlbiB0aGUKPiA+PiAncmVzZXRzJwo+
+ID4+ICAgICAgIHByb3BlcnR5IGRvZXNuJ3QgZXhpc3RzIG9yIHRoZSByZXF1ZXN0ZWQgbmFtZSBj
+YW4ndCBiZSBmb3VuZC4gVGhpcyBpcwo+ID4+ICAgICAgIGJlY2F1c2UgdGhlIGVycm9yIGNvZGUg
+cmV0dXJuZWQgYnkgb2ZfcHJvcGVydHlfbWF0Y2hfc3RyaW5nKCkgaXMganVzdAo+ID4+ICAgICAg
+IHBhc3NlZCBkb3duIGFzIGFuIGluZGV4IHRvIG9mX3BhcnNlX3BoYW5kbGVfd2l0aF9hcmdzKCks
+IHdoaWNoIHRoZW4KPiA+PiAgICAgICByZXR1cm5zIC1FSU5WQUwuCj4gPj4KPiA+PiAgICAgICBU
+byBnZXQgYSBjb25zaXN0ZW50IHJldHVybiB2YWx1ZSB3aXRoIGJvdGggY29kZSBwYXRocyB3ZSBt
+dXN0IHJldHVybgo+ID4+ICAgICAgIC1FTk9FTlQgd2hlbiBvZl9wcm9wZXJ0eV9tYXRjaF9zdHJp
+bmcoKSBmYWlscy4KPiA+Pgo+ID4+ICAgICAgIFNpZ25lZC1vZmYtYnk6IEFsYmFuIEJlZGVsIDxh
+bGJldUBmcmVlLmZyPgo+ID4+ICAgICAgIFNpZ25lZC1vZmYtYnk6IFBoaWxpcHAgWmFiZWwgPHAu
+emFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gPj4KPiA+PiAgCj4gPj4+ICsJCQlhcGJfcnN0ID0gTlVM
+TDsKPiA+Pj4gKwkJfSBlbHNlIHsKPiA+Pj4gKwkJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdl
+dCByZXNldCBjb250cm9sOiAlZFxuIiwgcmV0KTsgIAo+IEFsc28sIHdlIGNhbiBub3QgZ2V0IGVy
+cm9yIG51bWJlciBmcm9tICJyZXQiIGhlcmUuCgpHb29kIHBvaW50LCBJJ2xsIGZpeCB0aGlzLgoK
+CkpvaG4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
