@@ -1,40 +1,55 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH 1/4] Documentation: bindings: add uphy-dp-sel for Rockchip
- USB Type-C PHY
-Date: Thu, 16 Feb 2017 11:14:10 +0800
-Message-ID: <58A51902.5040508@rock-chips.com>
-References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
- <1486712654-15431-2-git-send-email-zyw@rock-chips.com>
- <20170216022016.ubspejlr7no7ttgl@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170216022016.ubspejlr7no7ttgl@rob-hp-laptop>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kishon@ti.com, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, groeck@chromium.org, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: rockchip: fix wrong setting of vendor ID
+Date: Thu, 16 Feb 2017 15:29:35 +0800
+Message-ID: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iCgpPbiAwMi8xNi8yMDE3IDEwOjIwIEFNLCBSb2IgSGVycmluZyB3cm90ZToKPiBPbiBG
-cmksIEZlYiAxMCwgMjAxNyBhdCAwMzo0NDoxMVBNICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToK
-Pj4gcm9ja2NoaXAsdXBoeS1kcC1zZWwgaXMgdGhlIHJlZ2lzdGVyIG9mIHR5cGUtYyBwaHkgZW5h
-YmxlIERQIGZ1bmN0aW9uLgo+ICJkdC1iaW5kaW5nczogcGh5OiIgaXMgdGhlIHByZWZlcnJlZCBz
-dWJqZWN0IHByZWZpeC4KT0ssIEkgd2lsbCBjaGFuZ2UgdGhlIGhlYWRlciBuZXh0IHZlcnNpb24u
-CmR0LWJpbmRpbmdzOiBwaHk6IGFkZCB1cGh5LWRwLXNlbCBmb3IgUm9ja2NoaXAgVVNCIFR5cGUt
-QyBQSFkuCgo+Cj4+IFNpZ25lZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5j
-b20+Cj4+IC0tLQo+Pgo+PiAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkv
-cGh5LXJvY2tjaGlwLXR5cGVjLnR4dCB8IDUgKysrKysKPj4gICAxIGZpbGUgY2hhbmdlZCwgNSBp
-bnNlcnRpb25zKCspCj4gT3RoZXJ3aXNlLAo+Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2Jo
-QGtlcm5lbC5vcmc+Cj4KPgo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCg==
+The TRM says that the vendor ID in RC's configure
+space could be rewrote and the value must be the same
+as the value read from the local core configure space.
+But we misread that and didn't notice it before. Actually
+we should only able to rewrite it from the local core
+configure space. This patch fix that issue in order to make
+lspci show the correct IP vendor infomation.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/pci/host/pcie-rockchip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index c0b3b65..26ddd35 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -125,6 +125,7 @@
+ #define   PCIE_CORE_INT_CT			BIT(11)
+ #define   PCIE_CORE_INT_UTC			BIT(18)
+ #define   PCIE_CORE_INT_MMVC			BIT(19)
++#define PCIE_CORE_CONFIG_VENDOR		(PCIE_CORE_CTRL_MGMT_BASE + 0x44)
+ #define PCIE_CORE_INT_MASK		(PCIE_CORE_CTRL_MGMT_BASE + 0x210)
+ #define PCIE_RC_BAR_CONF		(PCIE_CORE_CTRL_MGMT_BASE + 0x300)
+ 
+@@ -138,7 +139,6 @@
+ 		 PCIE_CORE_INT_MMVC)
+ 
+ #define PCIE_RC_CONFIG_BASE		0xa00000
+-#define PCIE_RC_CONFIG_VENDOR		(PCIE_RC_CONFIG_BASE + 0x00)
+ #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
+ #define   PCIE_RC_CONFIG_SCC_SHIFT		16
+ #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
+@@ -637,7 +637,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	dev_dbg(dev, "current link width is x%d\n", status);
+ 
+ 	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
+-			    PCIE_RC_CONFIG_VENDOR);
++			    PCIE_CORE_CONFIG_VENDOR);
+ 	rockchip_pcie_write(rockchip,
+ 			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
+ 			    PCIE_RC_CONFIG_RID_CCR);
+-- 
+1.9.1
