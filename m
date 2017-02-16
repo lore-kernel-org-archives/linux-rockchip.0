@@ -1,16 +1,10 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v3 22/24] drm/rockchip: dw-mipi-dsi: support non-burst
- modes
-Date: Thu, 16 Feb 2017 11:01:46 +0800
-Message-ID: <58A5161A.3070205@rock-chips.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-23-john@metanate.com>
- <20170131192255.GF20076@art_vandelay>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: convert to drm_mm
+Date: Thu, 16 Feb 2017 11:02:31 +0800
+Message-ID: <58A51647.2040003@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0314811816=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170131192255.GF20076@art_vandelay>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -20,65 +14,80 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+To: David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9obgoKT24gMDIvMDEvMjAxNyAwMzoyMiBBTSwgU2VhbiBQYXVsIHdyb3RlOgo+IE9uIFN1
-biwgSmFuIDI5LCAyMDE3IGF0IDAxOjI0OjQyUE0gKzAwMDAsIEpvaG4gS2VlcGluZyB3cm90ZToK
-Pgo+IFJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPgo+PiBT
-aWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+PiBSZXZpZXdl
-ZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+IHYzOgo+PiAt
-IEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKPj4gVW5jaGFuZ2VkIGluIHYyCj4+Cj4+ICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAxNiArKysrKysrKystLS0tLS0tCj4+
-ICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPj4KPj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPj4gaW5kZXggNWJhZDkyZTIzNzBl
-Li41OGNiOGFjZTJmZTggMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS5jCj4+IEBAIC04Miw2ICs4Miw3IEBACj4+ICAgI2RlZmluZSBGUkFNRV9CVEFfQUNLCQkJQklU
-KDE0KQo+PiAgICNkZWZpbmUgRU5BQkxFX0xPV19QT1dFUgkJKDB4M2YgPDwgOCkKPj4gICAjZGVm
-aW5lIEVOQUJMRV9MT1dfUE9XRVJfTUFTSwkJKDB4M2YgPDwgOCkKPj4gKyNkZWZpbmUgVklEX01P
-REVfVFlQRV9OT05fQlVSU1RfU1lOQ19FVkVOVFMJMHgxCj4+ICAgI2RlZmluZSBWSURfTU9ERV9U
-WVBFX0JVUlNUX1NZTkNfUFVMU0VTCQkweDIKVGhpcyBmaWVsZCBpbmRpY2F0ZXMgdGhlIHZpZGVv
-IG1vZGUgdHJhbnNtaXNzaW9uIHR5cGUgYXMgZm9sbG93czoKMDA6IE5vbi1idXJzdCB3aXRoIHN5
-bmMgcHVsc2VzCjAxOiBOb24tYnVyc3Qgd2l0aCBzeW5jIGV2ZW50cwoxMCBhbmQgMTE6IEJ1cnN0
-IG1vZGUKClNvLCBJIHRoaW5rIGRlZmluZSB0aGUgbWFjcm8gbGlrZSB0aGlzIGlzIGJldHRlcjoK
-CiNkZWZpbmUgVklEX01PREVfVFlQRV9OT05fQlVSU1RfU1lOQ19QVUxTRVMgICAgMHgwCiNkZWZp
-bmUgVklEX01PREVfVFlQRV9OT05fQlVSU1RfU1lOQ19FVkVOVFMgICAgMHgxCiNkZWZpbmUgVklE
-X01PREVfVFlQRV9CVVJTVCAgICAgICAgICAgIDB4MgoKCj4+ICAgI2RlZmluZSBWSURfTU9ERV9U
-WVBFX01BU0sJCQkweDMKPj4gICAKPj4gQEAgLTI4Niw2ICsyODcsNyBAQCBzdHJ1Y3QgZHdfbWlw
-aV9kc2kgewo+PiAgIAl1MzIgZm9ybWF0Owo+PiAgIAl1MTYgaW5wdXRfZGl2Owo+PiAgIAl1MTYg
-ZmVlZGJhY2tfZGl2Owo+PiArCXVuc2lnbmVkIGxvbmcgbW9kZV9mbGFnczsKPj4gICAKPj4gICAJ
-Y29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGRhdGE7Cj4+ICAgfTsKPj4gQEAg
-LTU1MSwxNSArNTUzLDEwIEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfaG9zdF9hdHRhY2goc3Ry
-dWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCj4+ICAgCQlyZXR1cm4gLUVJTlZBTDsKPj4gICAJfQo+
-PiAgIAo+PiAtCWlmICghKGRldmljZS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9f
-QlVSU1QpIHx8Cj4+IC0JICAgICEoZGV2aWNlLT5tb2RlX2ZsYWdzICYgTUlQSV9EU0lfTU9ERV9W
-SURFT19TWU5DX1BVTFNFKSkgewo+PiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZGV2aWNlIG1vZGUg
-aXMgdW5zdXBwb3J0ZWRcbiIpOwo+PiAtCQlyZXR1cm4gLUVJTlZBTDsKPj4gLQl9Cj4+IC0KPj4g
-ICAJZHNpLT5sYW5lcyA9IGRldmljZS0+bGFuZXM7Cj4+ICAgCWRzaS0+Y2hhbm5lbCA9IGRldmlj
-ZS0+Y2hhbm5lbDsKPj4gICAJZHNpLT5mb3JtYXQgPSBkZXZpY2UtPmZvcm1hdDsKPj4gKwlkc2kt
-Pm1vZGVfZmxhZ3MgPSBkZXZpY2UtPm1vZGVfZmxhZ3M7Cj4+ICAgCWRzaS0+cGFuZWwgPSBvZl9k
-cm1fZmluZF9wYW5lbChkZXZpY2UtPmRldi5vZl9ub2RlKTsKPj4gICAJaWYgKGRzaS0+cGFuZWwp
-Cj4+ICAgCQlyZXR1cm4gZHJtX3BhbmVsX2F0dGFjaChkc2ktPnBhbmVsLCAmZHNpLT5jb25uZWN0
-b3IpOwo+PiBAQCAtNzE2LDcgKzcxMywxMiBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV92aWRl
-b19tb2RlX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPj4gICB7Cj4+ICAgCXUzMiB2
-YWw7Cj4+ICAgCj4+IC0JdmFsID0gVklEX01PREVfVFlQRV9CVVJTVF9TWU5DX1BVTFNFUyB8IEVO
-QUJMRV9MT1dfUE9XRVI7Cj4+ICsJdmFsID0gRU5BQkxFX0xPV19QT1dFUjsKPj4gKwo+PiArCWlm
-IChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX0JVUlNUKQo+PiArCQl2YWwg
-fD0gVklEX01PREVfVFlQRV9CVVJTVF9TWU5DX1BVTFNFUzsKPj4gKwllbHNlIGlmICghKGRzaS0+
-bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9fU1lOQ19QVUxTRSkpCj4+ICsJCXZhbCB8
-PSBWSURfTU9ERV9UWVBFX05PTl9CVVJTVF9TWU5DX0VWRU5UUzsKCmlmIChkc2ktPm1vZGVfZmxh
-Z3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX0JVUlNUKQoJdmFsIHw9IFZJRF9NT0RFX1RZUEVfQlVS
-U1Q7CmVsc2UgaWYgKGRzaS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9fU1lOQ19Q
-VUxTRSkKCXZhbCB8PSBWSURfTU9ERV9UWVBFX05PTl9CVVJTVF9TWU5DX1BVTFNFUzsKZWxzZQoJ
-dmFsIHw9IFZJRF9NT0RFX1RZUEVfTk9OX0JVUlNUX1NZTkNfRVZFTlRTOwoKCgo+PiAgIAo+PiAg
-IAlkc2lfd3JpdGUoZHNpLCBEU0lfVklEX01PREVfQ0ZHLCB2YWwpOwo+PiAgIH0KPj4gLS0gCj4+
-IDIuMTEuMC4xOTcuZ2I1NTZkZTUuZGlydHkKPj4KPj4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KPj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+PiBkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+--===============0314811816==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    Hi Dave<br>
+    <br>
+    After convert to drm_mm, rockchip arm64 platform can works with
+    iommu, like rk3399. it's import patches for rockchip arm64 platform<br>
+    <br>
+    And these patches already have full reviewed, I hope these patches
+    can be landed.<br>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <br>
+    Best regards<br>
+    <br>
+    The following changes since commit
+    13f62f54d174d3417c3caaafedf5e22a0a03e442:<br>
+    <br>
+      Merge branch 'drm-next-4.11' of
+    git://people.freedesktop.org/~agd5f/linux into drm-next (2017-02-10
+    10:13:30 +1000)<br>
+    <br>
+    are available in the git repository at:<br>
+    <br>
+    <br>
+      <a class="moz-txt-link-freetext" href="https://github.com/markyzq/kernel-drm-rockchip.git">https://github.com/markyzq/kernel-drm-rockchip.git</a>
+    drm-rockchip-next-2017-02-16<br>
+    <br>
+    for you to fetch changes up to
+    1aa5ca6e3ec63aa5815d78646748e88a7ceb1c8e:<br>
+    <br>
+      drm/rockchip: Use common IOMMU API to attach devices (2017-02-15
+    08:52:13 +0800)<br>
+    <br>
+    ----------------------------------------------------------------<br>
+    Shunqian Zheng (1):<br>
+          drm/rockchip: Use common IOMMU API to attach devices<br>
+    <br>
+    Tomasz Figa (1):<br>
+          drm/rockchip: Do not use DMA mapping API if attached to IOMMU
+    domain<br>
+    <br>
+     drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 101
+    ++++++++++++++++++++++++++++-------------------------<br>
+     drivers/gpu/drm/rockchip/rockchip_drm_drv.h |   6 +++-<br>
+     drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 244
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-------<br>
+     drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   8 +++++<br>
+     4 files changed, 298 insertions(+), 61 deletions(-)<br>
+    <br>
+    <br>
+    -- Ｍark Yao
+  </body>
+</html>
+
+
+--===============0314811816==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0314811816==--
