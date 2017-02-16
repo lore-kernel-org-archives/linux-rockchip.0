@@ -1,49 +1,36 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/2] devicetree: i2c-hid: Add regulator support
-Date: Wed, 15 Feb 2017 20:12:58 -0600
-Message-ID: <20170216021258.wo77aj56q7osfhph@rob-hp-laptop>
-References: <20170210020357.10679-1-briannorris@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 1/2] Documentation: dt: dwc2: amend clocks
+ property
+Date: Wed, 15 Feb 2017 20:16:14 -0600
+Message-ID: <20170216021614.7vu4xhdtmk5dtwwj@rob-hp-laptop>
+References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
+ <1486695987-7280-2-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-input-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20170210020357.10679-1-briannorris@chromium.org>
-Sender: linux-input-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Jiri Kosina <jikos@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Doug Anderson <dianders@chromium.org>
+In-Reply-To: <1486695987-7280-2-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 09, 2017 at 06:03:56PM -0800, Brian Norris wrote:
-> From: Caesar Wang <wxt@rock-chips.com>
+On Fri, Feb 10, 2017 at 11:06:26AM +0800, Frank Wang wrote:
+> Move 'clocks' to optional properties since not every platform
+> is going to need to specify it and add pmu/utmi/ulpi/utmifs
+> optional clocks into 'clock-names' list.
 > 
-> Document a "vdd-supply" and an initialization delay. Can be used for
-> powering on/off a HID.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Jiri Kosina <jikos@kernel.org>
-> Cc: linux-input@vger.kernel.org
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
-> Sorry for the delay on resending this. I *think* I've addressed all the
-> concerns from last time though?
-> 
-> v2:
->  * add compatible property for wacom, per Rob's request
->  * name the regulator property specifically (VDD)
-> 
-> v3:
->  * remove wacom property, per Benjamin's request
->  * add delay property
-> 
-> v4: no change
-> 
-> v5:
->  * change name to "post-power-on-delay-ms"
->  * reword to describe how the power sequencing properties require a
->    specific 'compatible' property
-> ---
->  Documentation/devicetree/bindings/input/hid-over-i2c.txt | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+>  Documentation/devicetree/bindings/usb/dwc2.txt | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
 
-Acked-by: Rob Herring <robh@kernel.org> 
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> 
+
+It would be good to get some acks from others familar with this block.
+
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
