@@ -1,182 +1,66 @@
-From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] net: ethernet: stmmac: dwmac-rk: Add RK3328 gmac support
-Date: Fri, 17 Feb 2017 20:55:11 +0800
-Message-ID: <1487336111-24987-1-git-send-email-david.wu@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: fix wrong setting of vendor ID
+Date: Fri, 17 Feb 2017 14:16:58 -0600
+Message-ID: <20170217201658.GD17762@bhelgaas-glaptop.roam.corp.google.com>
+References: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Thu, Feb 16, 2017 at 03:29:35PM +0800, Shawn Lin wrote:
+> The TRM says that the vendor ID in RC's configure
+> space could be rewrote and the value must be the same
+> as the value read from the local core configure space.
+> But we misread that and didn't notice it before. Actually
+> we should only able to rewrite it from the local core
+> configure space. This patch fix that issue in order to make
+> lspci show the correct IP vendor infomation.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Add constants and callback functions for the dwmac on rk3328 socs.
-As can be seen, the base structure is the same, only registers and the
-bits in them moved slightly.
+Applied to pci/host-rockchip for v4.11, thanks, Shawn!
 
-Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- .../devicetree/bindings/net/rockchip-dwmac.txt     |   1 +
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 117 +++++++++++++++++++++
- 2 files changed, 118 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-index 95383c5..8f42755 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-@@ -6,6 +6,7 @@ Required properties:
-  - compatible: should be "rockchip,<name>-gamc"
-    "rockchip,rk3228-gmac": found on RK322x SoCs
-    "rockchip,rk3288-gmac": found on RK3288 SoCs
-+   "rockchip,rk3328-gmac": found on RK3328 SoCs
-    "rockchip,rk3366-gmac": found on RK3366 SoCs
-    "rockchip,rk3368-gmac": found on RK3368 SoCs
-    "rockchip,rk3399-gmac": found on RK3399 SoCs
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index fa6e970..e5db6ac 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -302,6 +302,122 @@ static void rk3288_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
- 	.set_rmii_speed = rk3288_set_rmii_speed,
- };
- 
-+#define RK3328_GRF_MAC_CON0	0x0900
-+#define RK3328_GRF_MAC_CON1	0x0904
-+
-+/* RK3328_GRF_MAC_CON0 */
-+#define RK3328_GMAC_CLK_RX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 7)
-+#define RK3328_GMAC_CLK_TX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 0)
-+
-+/* RK3328_GRF_MAC_CON1 */
-+#define RK3328_GMAC_PHY_INTF_SEL_RGMII	\
-+		(GRF_BIT(4) | GRF_CLR_BIT(5) | GRF_CLR_BIT(6))
-+#define RK3328_GMAC_PHY_INTF_SEL_RMII	\
-+		(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | GRF_BIT(6))
-+#define RK3328_GMAC_FLOW_CTRL		GRF_BIT(3)
-+#define RK3328_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
-+#define RK3328_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-+#define RK3328_GMAC_SPEED_100M		GRF_BIT(2)
-+#define RK3328_GMAC_RMII_CLK_25M	GRF_BIT(7)
-+#define RK3328_GMAC_RMII_CLK_2_5M	GRF_CLR_BIT(7)
-+#define RK3328_GMAC_CLK_125M		(GRF_CLR_BIT(11) | GRF_CLR_BIT(12))
-+#define RK3328_GMAC_CLK_25M		(GRF_BIT(11) | GRF_BIT(12))
-+#define RK3328_GMAC_CLK_2_5M		(GRF_CLR_BIT(11) | GRF_BIT(12))
-+#define RK3328_GMAC_RMII_MODE		GRF_BIT(9)
-+#define RK3328_GMAC_RMII_MODE_CLR	GRF_CLR_BIT(9)
-+#define RK3328_GMAC_TXCLK_DLY_ENABLE	GRF_BIT(0)
-+#define RK3328_GMAC_TXCLK_DLY_DISABLE	GRF_CLR_BIT(0)
-+#define RK3328_GMAC_RXCLK_DLY_ENABLE	GRF_BIT(1)
-+#define RK3328_GMAC_RXCLK_DLY_DISABLE	GRF_CLR_BIT(0)
-+
-+static void rk3328_set_to_rgmii(struct rk_priv_data *bsp_priv,
-+				int tx_delay, int rx_delay)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+
-+	if (IS_ERR(bsp_priv->grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return;
-+	}
-+
-+	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+		     RK3328_GMAC_PHY_INTF_SEL_RGMII |
-+		     RK3328_GMAC_RMII_MODE_CLR |
-+		     RK3328_GMAC_RXCLK_DLY_ENABLE |
-+		     RK3328_GMAC_TXCLK_DLY_ENABLE);
-+
-+	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON0,
-+		     RK3328_GMAC_CLK_RX_DL_CFG(rx_delay) |
-+		     RK3328_GMAC_CLK_TX_DL_CFG(tx_delay));
-+}
-+
-+static void rk3328_set_to_rmii(struct rk_priv_data *bsp_priv)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+
-+	if (IS_ERR(bsp_priv->grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return;
-+	}
-+
-+	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+		     RK3328_GMAC_PHY_INTF_SEL_RMII |
-+		     RK3328_GMAC_RMII_MODE);
-+
-+	/* set MAC to RMII mode */
-+	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1, GRF_BIT(11));
-+}
-+
-+static void rk3328_set_rgmii_speed(struct rk_priv_data *bsp_priv, int speed)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+
-+	if (IS_ERR(bsp_priv->grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return;
-+	}
-+
-+	if (speed == 10)
-+		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+			     RK3328_GMAC_CLK_2_5M);
-+	else if (speed == 100)
-+		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+			     RK3328_GMAC_CLK_25M);
-+	else if (speed == 1000)
-+		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+			     RK3328_GMAC_CLK_125M);
-+	else
-+		dev_err(dev, "unknown speed value for RGMII! speed=%d", speed);
-+}
-+
-+static void rk3328_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+
-+	if (IS_ERR(bsp_priv->grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return;
-+	}
-+
-+	if (speed == 10)
-+		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+			     RK3328_GMAC_RMII_CLK_2_5M |
-+			     RK3328_GMAC_SPEED_10M);
-+	else if (speed == 100)
-+		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-+			     RK3328_GMAC_RMII_CLK_25M |
-+			     RK3328_GMAC_SPEED_100M);
-+	else
-+		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
-+}
-+
-+static const struct rk_gmac_ops rk3328_ops = {
-+	.set_to_rgmii = rk3328_set_to_rgmii,
-+	.set_to_rmii = rk3328_set_to_rmii,
-+	.set_rgmii_speed = rk3328_set_rgmii_speed,
-+	.set_rmii_speed = rk3328_set_rmii_speed,
-+};
-+
- #define RK3366_GRF_SOC_CON6	0x0418
- #define RK3366_GRF_SOC_CON7	0x041c
- 
-@@ -1006,6 +1122,7 @@ static int rk_gmac_resume(struct device *dev)
- static const struct of_device_id rk_gmac_dwmac_match[] = {
- 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
- 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
-+	{ .compatible = "rockchip,rk3328-gmac", .data = &rk3328_ops },
- 	{ .compatible = "rockchip,rk3366-gmac", .data = &rk3366_ops },
- 	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
- 	{ .compatible = "rockchip,rk3399-gmac", .data = &rk3399_ops },
--- 
-1.9.1
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index c0b3b65..26ddd35 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -125,6 +125,7 @@
+>  #define   PCIE_CORE_INT_CT			BIT(11)
+>  #define   PCIE_CORE_INT_UTC			BIT(18)
+>  #define   PCIE_CORE_INT_MMVC			BIT(19)
+> +#define PCIE_CORE_CONFIG_VENDOR		(PCIE_CORE_CTRL_MGMT_BASE + 0x44)
+>  #define PCIE_CORE_INT_MASK		(PCIE_CORE_CTRL_MGMT_BASE + 0x210)
+>  #define PCIE_RC_BAR_CONF		(PCIE_CORE_CTRL_MGMT_BASE + 0x300)
+>  
+> @@ -138,7 +139,6 @@
+>  		 PCIE_CORE_INT_MMVC)
+>  
+>  #define PCIE_RC_CONFIG_BASE		0xa00000
+> -#define PCIE_RC_CONFIG_VENDOR		(PCIE_RC_CONFIG_BASE + 0x00)
+>  #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
+>  #define   PCIE_RC_CONFIG_SCC_SHIFT		16
+>  #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
+> @@ -637,7 +637,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	dev_dbg(dev, "current link width is x%d\n", status);
+>  
+>  	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
+> -			    PCIE_RC_CONFIG_VENDOR);
+> +			    PCIE_CORE_CONFIG_VENDOR);
+>  	rockchip_pcie_write(rockchip,
+>  			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
+>  			    PCIE_RC_CONFIG_RID_CCR);
+> -- 
+> 1.9.1
+> 
+> 
