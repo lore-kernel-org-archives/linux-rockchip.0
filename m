@@ -1,87 +1,182 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [PATCH v3 22/24] drm/rockchip: dw-mipi-dsi: support non-burst
- modes
-Date: Thu, 16 Feb 2017 14:22:22 +0000
-Message-ID: <20170216142222.2831e474.john@metanate.com>
-References: <20170129132444.25251-1-john@metanate.com>
- <20170129132444.25251-23-john@metanate.com>
- <20170131192255.GF20076@art_vandelay>
- <58A5161A.3070205@rock-chips.com>
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] net: ethernet: stmmac: dwmac-rk: Add RK3328 gmac support
+Date: Fri, 17 Feb 2017 20:55:11 +0800
+Message-ID: <1487336111-24987-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <58A5161A.3070205@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCAxNiBGZWIgMjAxNyAxMTowMTo0NiArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cgo+
-IE9uIDAyLzAxLzIwMTcgMDM6MjIgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiA+IE9uIFN1biwgSmFu
-IDI5LCAyMDE3IGF0IDAxOjI0OjQyUE0gKzAwMDAsIEpvaG4gS2VlcGluZyB3cm90ZToKPiA+Cj4g
-PiBSZXZpZXdlZC1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPiAgCj4g
-Pj4gU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiA+PiBS
-ZXZpZXdlZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+PiAtLS0KPiA+
-PiB2MzoKPiA+PiAtIEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKPiA+PiBVbmNoYW5nZWQgaW4gdjIK
-PiA+Pgo+ID4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAxNiAr
-KysrKysrKystLS0tLS0tCj4gPj4gICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCA3
-IGRlbGV0aW9ucygtKQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LmMKPiA+PiBpbmRleCA1YmFkOTJlMjM3MGUuLjU4Y2I4YWNlMmZlOCAxMDA2NDQKPiA+PiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPj4gQEAgLTgyLDYgKzgyLDcgQEAK
-PiA+PiAgICNkZWZpbmUgRlJBTUVfQlRBX0FDSwkJCUJJVCgxNCkKPiA+PiAgICNkZWZpbmUgRU5B
-QkxFX0xPV19QT1dFUgkJKDB4M2YgPDwgOCkKPiA+PiAgICNkZWZpbmUgRU5BQkxFX0xPV19QT1dF
-Ul9NQVNLCQkoMHgzZiA8PCA4KQo+ID4+ICsjZGVmaW5lIFZJRF9NT0RFX1RZUEVfTk9OX0JVUlNU
-X1NZTkNfRVZFTlRTCTB4MQo+ID4+ICAgI2RlZmluZSBWSURfTU9ERV9UWVBFX0JVUlNUX1NZTkNf
-UFVMU0VTCQkweDIgIAo+IFRoaXMgZmllbGQgaW5kaWNhdGVzIHRoZSB2aWRlbyBtb2RlIHRyYW5z
-bWlzc2lvbiB0eXBlIGFzIGZvbGxvd3M6Cj4gMDA6IE5vbi1idXJzdCB3aXRoIHN5bmMgcHVsc2Vz
-Cj4gMDE6IE5vbi1idXJzdCB3aXRoIHN5bmMgZXZlbnRzCj4gMTAgYW5kIDExOiBCdXJzdCBtb2Rl
-Cj4gCj4gU28sIEkgdGhpbmsgZGVmaW5lIHRoZSBtYWNybyBsaWtlIHRoaXMgaXMgYmV0dGVyOgo+
-IAo+ICNkZWZpbmUgVklEX01PREVfVFlQRV9OT05fQlVSU1RfU1lOQ19QVUxTRVMgICAgMHgwCj4g
-I2RlZmluZSBWSURfTU9ERV9UWVBFX05PTl9CVVJTVF9TWU5DX0VWRU5UUyAgICAweDEKPiAjZGVm
-aW5lIFZJRF9NT0RFX1RZUEVfQlVSU1QgICAgICAgICAgICAweDIKPiAKPiAKPiA+PiAgICNkZWZp
-bmUgVklEX01PREVfVFlQRV9NQVNLCQkJMHgzCj4gPj4gICAKPiA+PiBAQCAtMjg2LDYgKzI4Nyw3
-IEBAIHN0cnVjdCBkd19taXBpX2RzaSB7Cj4gPj4gICAJdTMyIGZvcm1hdDsKPiA+PiAgIAl1MTYg
-aW5wdXRfZGl2Owo+ID4+ICAgCXUxNiBmZWVkYmFja19kaXY7Cj4gPj4gKwl1bnNpZ25lZCBsb25n
-IG1vZGVfZmxhZ3M7Cj4gPj4gICAKPiA+PiAgIAljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxh
-dF9kYXRhICpwZGF0YTsKPiA+PiAgIH07Cj4gPj4gQEAgLTU1MSwxNSArNTUzLDEwIEBAIHN0YXRp
-YyBpbnQgZHdfbWlwaV9kc2lfaG9zdF9hdHRhY2goc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3Qs
-Cj4gPj4gICAJCXJldHVybiAtRUlOVkFMOwo+ID4+ICAgCX0KPiA+PiAgIAo+ID4+IC0JaWYgKCEo
-ZGV2aWNlLT5tb2RlX2ZsYWdzICYgTUlQSV9EU0lfTU9ERV9WSURFT19CVVJTVCkgfHwKPiA+PiAt
-CSAgICAhKGRldmljZS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9fU1lOQ19QVUxT
-RSkpIHsKPiA+PiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZGV2aWNlIG1vZGUgaXMgdW5zdXBwb3J0
-ZWRcbiIpOwo+ID4+IC0JCXJldHVybiAtRUlOVkFMOwo+ID4+IC0JfQo+ID4+IC0KPiA+PiAgIAlk
-c2ktPmxhbmVzID0gZGV2aWNlLT5sYW5lczsKPiA+PiAgIAlkc2ktPmNoYW5uZWwgPSBkZXZpY2Ut
-PmNoYW5uZWw7Cj4gPj4gICAJZHNpLT5mb3JtYXQgPSBkZXZpY2UtPmZvcm1hdDsKPiA+PiArCWRz
-aS0+bW9kZV9mbGFncyA9IGRldmljZS0+bW9kZV9mbGFnczsKPiA+PiAgIAlkc2ktPnBhbmVsID0g
-b2ZfZHJtX2ZpbmRfcGFuZWwoZGV2aWNlLT5kZXYub2Zfbm9kZSk7Cj4gPj4gICAJaWYgKGRzaS0+
-cGFuZWwpCj4gPj4gICAJCXJldHVybiBkcm1fcGFuZWxfYXR0YWNoKGRzaS0+cGFuZWwsICZkc2kt
-PmNvbm5lY3Rvcik7Cj4gPj4gQEAgLTcxNiw3ICs3MTMsMTIgQEAgc3RhdGljIHZvaWQgZHdfbWlw
-aV9kc2lfdmlkZW9fbW9kZV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gPj4gICB7
-Cj4gPj4gICAJdTMyIHZhbDsKPiA+PiAgIAo+ID4+IC0JdmFsID0gVklEX01PREVfVFlQRV9CVVJT
-VF9TWU5DX1BVTFNFUyB8IEVOQUJMRV9MT1dfUE9XRVI7Cj4gPj4gKwl2YWwgPSBFTkFCTEVfTE9X
-X1BPV0VSOwo+ID4+ICsKPiA+PiArCWlmIChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RF
-X1ZJREVPX0JVUlNUKQo+ID4+ICsJCXZhbCB8PSBWSURfTU9ERV9UWVBFX0JVUlNUX1NZTkNfUFVM
-U0VTOwo+ID4+ICsJZWxzZSBpZiAoIShkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJ
-REVPX1NZTkNfUFVMU0UpKQo+ID4+ICsJCXZhbCB8PSBWSURfTU9ERV9UWVBFX05PTl9CVVJTVF9T
-WU5DX0VWRU5UUzsgIAo+IAo+IGlmIChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJ
-REVPX0JVUlNUKQo+IAl2YWwgfD0gVklEX01PREVfVFlQRV9CVVJTVDsKPiBlbHNlIGlmIChkc2kt
-Pm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX1NZTkNfUFVMU0UpCj4gCXZhbCB8PSBW
-SURfTU9ERV9UWVBFX05PTl9CVVJTVF9TWU5DX1BVTFNFUzsKPiBlbHNlCj4gCXZhbCB8PSBWSURf
-TU9ERV9UWVBFX05PTl9CVVJTVF9TWU5DX0VWRU5UUzsKCk9LLCB0aGlzIGlzIGRlZmluaXRlbHkg
-Y2xlYXJlciBub3cgdGhhdCBJJ3ZlIGZvcmdvdHRlbiBtb3N0IG9mIHRoZQpkYXRhc2hlZXQ7IHdp
-dGhvdXQgeW91ciBkZWZpbml0aW9ucyBhdCB0aGUgdG9wIGl0J3Mgbm90IGNsZWFyIHRoYXQKVklE
-X01PREVfVFlQRV9CVVJTVF9TWU5DX1BVTFNFUyBpcyB6ZXJvLgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Add constants and callback functions for the dwmac on rk3328 socs.
+As can be seen, the base structure is the same, only registers and the
+bits in them moved slightly.
+
+Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |   1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 117 +++++++++++++++++++++
+ 2 files changed, 118 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 95383c5..8f42755 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -6,6 +6,7 @@ Required properties:
+  - compatible: should be "rockchip,<name>-gamc"
+    "rockchip,rk3228-gmac": found on RK322x SoCs
+    "rockchip,rk3288-gmac": found on RK3288 SoCs
++   "rockchip,rk3328-gmac": found on RK3328 SoCs
+    "rockchip,rk3366-gmac": found on RK3366 SoCs
+    "rockchip,rk3368-gmac": found on RK3368 SoCs
+    "rockchip,rk3399-gmac": found on RK3399 SoCs
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index fa6e970..e5db6ac 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -302,6 +302,122 @@ static void rk3288_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
+ 	.set_rmii_speed = rk3288_set_rmii_speed,
+ };
+ 
++#define RK3328_GRF_MAC_CON0	0x0900
++#define RK3328_GRF_MAC_CON1	0x0904
++
++/* RK3328_GRF_MAC_CON0 */
++#define RK3328_GMAC_CLK_RX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 7)
++#define RK3328_GMAC_CLK_TX_DL_CFG(val)	HIWORD_UPDATE(val, 0x7F, 0)
++
++/* RK3328_GRF_MAC_CON1 */
++#define RK3328_GMAC_PHY_INTF_SEL_RGMII	\
++		(GRF_BIT(4) | GRF_CLR_BIT(5) | GRF_CLR_BIT(6))
++#define RK3328_GMAC_PHY_INTF_SEL_RMII	\
++		(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | GRF_BIT(6))
++#define RK3328_GMAC_FLOW_CTRL		GRF_BIT(3)
++#define RK3328_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
++#define RK3328_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define RK3328_GMAC_SPEED_100M		GRF_BIT(2)
++#define RK3328_GMAC_RMII_CLK_25M	GRF_BIT(7)
++#define RK3328_GMAC_RMII_CLK_2_5M	GRF_CLR_BIT(7)
++#define RK3328_GMAC_CLK_125M		(GRF_CLR_BIT(11) | GRF_CLR_BIT(12))
++#define RK3328_GMAC_CLK_25M		(GRF_BIT(11) | GRF_BIT(12))
++#define RK3328_GMAC_CLK_2_5M		(GRF_CLR_BIT(11) | GRF_BIT(12))
++#define RK3328_GMAC_RMII_MODE		GRF_BIT(9)
++#define RK3328_GMAC_RMII_MODE_CLR	GRF_CLR_BIT(9)
++#define RK3328_GMAC_TXCLK_DLY_ENABLE	GRF_BIT(0)
++#define RK3328_GMAC_TXCLK_DLY_DISABLE	GRF_CLR_BIT(0)
++#define RK3328_GMAC_RXCLK_DLY_ENABLE	GRF_BIT(1)
++#define RK3328_GMAC_RXCLK_DLY_DISABLE	GRF_CLR_BIT(0)
++
++static void rk3328_set_to_rgmii(struct rk_priv_data *bsp_priv,
++				int tx_delay, int rx_delay)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++		     RK3328_GMAC_PHY_INTF_SEL_RGMII |
++		     RK3328_GMAC_RMII_MODE_CLR |
++		     RK3328_GMAC_RXCLK_DLY_ENABLE |
++		     RK3328_GMAC_TXCLK_DLY_ENABLE);
++
++	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON0,
++		     RK3328_GMAC_CLK_RX_DL_CFG(rx_delay) |
++		     RK3328_GMAC_CLK_TX_DL_CFG(tx_delay));
++}
++
++static void rk3328_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++		     RK3328_GMAC_PHY_INTF_SEL_RMII |
++		     RK3328_GMAC_RMII_MODE);
++
++	/* set MAC to RMII mode */
++	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1, GRF_BIT(11));
++}
++
++static void rk3328_set_rgmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	if (speed == 10)
++		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++			     RK3328_GMAC_CLK_2_5M);
++	else if (speed == 100)
++		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++			     RK3328_GMAC_CLK_25M);
++	else if (speed == 1000)
++		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++			     RK3328_GMAC_CLK_125M);
++	else
++		dev_err(dev, "unknown speed value for RGMII! speed=%d", speed);
++}
++
++static void rk3328_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "Missing rockchip,grf property\n");
++		return;
++	}
++
++	if (speed == 10)
++		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++			     RK3328_GMAC_RMII_CLK_2_5M |
++			     RK3328_GMAC_SPEED_10M);
++	else if (speed == 100)
++		regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
++			     RK3328_GMAC_RMII_CLK_25M |
++			     RK3328_GMAC_SPEED_100M);
++	else
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++}
++
++static const struct rk_gmac_ops rk3328_ops = {
++	.set_to_rgmii = rk3328_set_to_rgmii,
++	.set_to_rmii = rk3328_set_to_rmii,
++	.set_rgmii_speed = rk3328_set_rgmii_speed,
++	.set_rmii_speed = rk3328_set_rmii_speed,
++};
++
+ #define RK3366_GRF_SOC_CON6	0x0418
+ #define RK3366_GRF_SOC_CON7	0x041c
+ 
+@@ -1006,6 +1122,7 @@ static int rk_gmac_resume(struct device *dev)
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
+ 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
+ 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
++	{ .compatible = "rockchip,rk3328-gmac", .data = &rk3328_ops },
+ 	{ .compatible = "rockchip,rk3366-gmac", .data = &rk3366_ops },
+ 	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
+ 	{ .compatible = "rockchip,rk3399-gmac", .data = &rk3399_ops },
+-- 
+1.9.1
