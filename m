@@ -1,50 +1,35 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] drm/rockchip: cdn-dp: Fix error handling
-Date: Sun, 19 Feb 2017 17:59:42 +0100
-Message-ID: <20170219165942.17268-1-christophe.jaillet@wanadoo.fr>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [PATCH] net: ethernet: stmmac: dwmac-rk: Add RK3328 gmac support
+Date: Sun, 19 Feb 2017 18:20:04 -0500 (EST)
+Message-ID: <20170219.182004.2280114319984536630.davem@davemloft.net>
+References: <1487336111-24987-1-git-send-email-david.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1487336111-24987-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It is likely that both 'clk_disable_unprepare()' should be called if
-'pm_runtime_get_sync()' fails.
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Date: Fri, 17 Feb 2017 20:55:11 +0800
 
-Add a new label for that, because 'err_set_rate' is not meaningful in this
-case.
+> From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Add constants and callback functions for the dwmac on rk3328 socs.
+> As can be seen, the base structure is the same, only registers and the
+> bits in them moved slightly.
+> 
+> Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-
-Fixes: 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Not sure but a 'pm_runtime_get_sync()' is maybe also required in the
-'err_set_rate' path.
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 9ab67a670885..0fe1ec8b8fb1 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -111,7 +111,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 	ret = pm_runtime_get_sync(dp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
--		goto err_pclk;
-+		goto err_sync;
- 	}
- 
- 	reset_control_assert(dp->core_rst);
-@@ -133,6 +133,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 	return 0;
- 
- err_set_rate:
-+err_sync:
- 	clk_disable_unprepare(dp->core_clk);
- err_core_clk:
- 	clk_disable_unprepare(dp->pclk);
--- 
-2.9.3
+Applied.
