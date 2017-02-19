@@ -1,66 +1,50 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: fix wrong setting of vendor ID
-Date: Fri, 17 Feb 2017 14:16:58 -0600
-Message-ID: <20170217201658.GD17762@bhelgaas-glaptop.roam.corp.google.com>
-References: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1487230175-213629-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH] drm/rockchip: cdn-dp: Fix error handling
+Date: Sun, 19 Feb 2017 17:59:42 +0100
+Message-ID: <20170219165942.17268-1-christophe.jaillet@wanadoo.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 16, 2017 at 03:29:35PM +0800, Shawn Lin wrote:
-> The TRM says that the vendor ID in RC's configure
-> space could be rewrote and the value must be the same
-> as the value read from the local core configure space.
-> But we misread that and didn't notice it before. Actually
-> we should only able to rewrite it from the local core
-> configure space. This patch fix that issue in order to make
-> lspci show the correct IP vendor infomation.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+It is likely that both 'clk_disable_unprepare()' should be called if
+'pm_runtime_get_sync()' fails.
 
-Applied to pci/host-rockchip for v4.11, thanks, Shawn!
+Add a new label for that, because 'err_set_rate' is not meaningful in this
+case.
 
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index c0b3b65..26ddd35 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -125,6 +125,7 @@
->  #define   PCIE_CORE_INT_CT			BIT(11)
->  #define   PCIE_CORE_INT_UTC			BIT(18)
->  #define   PCIE_CORE_INT_MMVC			BIT(19)
-> +#define PCIE_CORE_CONFIG_VENDOR		(PCIE_CORE_CTRL_MGMT_BASE + 0x44)
->  #define PCIE_CORE_INT_MASK		(PCIE_CORE_CTRL_MGMT_BASE + 0x210)
->  #define PCIE_RC_BAR_CONF		(PCIE_CORE_CTRL_MGMT_BASE + 0x300)
->  
-> @@ -138,7 +139,6 @@
->  		 PCIE_CORE_INT_MMVC)
->  
->  #define PCIE_RC_CONFIG_BASE		0xa00000
-> -#define PCIE_RC_CONFIG_VENDOR		(PCIE_RC_CONFIG_BASE + 0x00)
->  #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
->  #define   PCIE_RC_CONFIG_SCC_SHIFT		16
->  #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
-> @@ -637,7 +637,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	dev_dbg(dev, "current link width is x%d\n", status);
->  
->  	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
-> -			    PCIE_RC_CONFIG_VENDOR);
-> +			    PCIE_CORE_CONFIG_VENDOR);
->  	rockchip_pcie_write(rockchip,
->  			    PCI_CLASS_BRIDGE_PCI << PCIE_RC_CONFIG_SCC_SHIFT,
->  			    PCIE_RC_CONFIG_RID_CCR);
-> -- 
-> 1.9.1
-> 
-> 
+
+Fixes: 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Not sure but a 'pm_runtime_get_sync()' is maybe also required in the
+'err_set_rate' path.
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 9ab67a670885..0fe1ec8b8fb1 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -111,7 +111,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
+ 	ret = pm_runtime_get_sync(dp->dev);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
+-		goto err_pclk;
++		goto err_sync;
+ 	}
+ 
+ 	reset_control_assert(dp->core_rst);
+@@ -133,6 +133,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
+ 	return 0;
+ 
+ err_set_rate:
++err_sync:
+ 	clk_disable_unprepare(dp->core_clk);
+ err_core_clk:
+ 	clk_disable_unprepare(dp->pclk);
+-- 
+2.9.3
