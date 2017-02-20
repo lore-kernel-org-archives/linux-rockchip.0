@@ -1,35 +1,55 @@
-From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Subject: Re: [PATCH] net: ethernet: stmmac: dwmac-rk: Add RK3328 gmac support
-Date: Sun, 19 Feb 2017 18:20:04 -0500 (EST)
-Message-ID: <20170219.182004.2280114319984536630.davem@davemloft.net>
-References: <1487336111-24987-1-git-send-email-david.wu@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: Fix error handling
+Date: Mon, 20 Feb 2017 09:40:24 +0800
+Message-ID: <58AA4908.2000808@rock-chips.com>
+References: <20170219165942.17268-1-christophe.jaillet@wanadoo.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1487336111-24987-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170219165942.17268-1-christophe.jaillet@wanadoo.fr>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, airlied@linux.ie, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Date: Fri, 17 Feb 2017 20:55:11 +0800
-
-> From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Add constants and callback functions for the dwmac on rk3328 socs.
-> As can be seen, the base structure is the same, only registers and the
-> bits in them moved slightly.
-> 
-> Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Applied.
+T24gMjAxN+W5tDAy5pyIMjDml6UgMDA6NTksIENocmlzdG9waGUgSkFJTExFVCB3cm90ZToKPiBJ
+dCBpcyBsaWtlbHkgdGhhdCBib3RoICdjbGtfZGlzYWJsZV91bnByZXBhcmUoKScgc2hvdWxkIGJl
+IGNhbGxlZCBpZgo+ICdwbV9ydW50aW1lX2dldF9zeW5jKCknIGZhaWxzLgo+Cj4gQWRkIGEgbmV3
+IGxhYmVsIGZvciB0aGF0LCBiZWNhdXNlICdlcnJfc2V0X3JhdGUnIGlzIG5vdCBtZWFuaW5nZnVs
+IGluIHRoaXMKPiBjYXNlLgo+Cj4KPiBGaXhlczogMWEwZjdlZDNhYmUyICgiZHJtL3JvY2tjaGlw
+OiBjZG4tZHA6IGFkZCBjZG4gRFAgc3VwcG9ydCBmb3IgcmszMzk5IikKPgo+IFNpZ25lZC1vZmYt
+Ynk6IENocmlzdG9waGUgSkFJTExFVCA8Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI+Cj4g
+LS0tCj4gTm90IHN1cmUgYnV0IGEgJ3BtX3J1bnRpbWVfZ2V0X3N5bmMoKScgaXMgbWF5YmUgYWxz
+byByZXF1aXJlZCBpbiB0aGUKPiAnZXJyX3NldF9yYXRlJyBwYXRoLgo+IC0tLQo+ICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCAzICsrLQo+ICAgMSBmaWxlIGNoYW5n
+ZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2Nkbi1kcC1jb3JlLmMKPiBpbmRleCA5YWI2N2E2NzA4ODUuLjBmZTFlYzhiOGZiMSAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gQEAgLTExMSw3ICsxMTEs
+NyBAQCBzdGF0aWMgaW50IGNkbl9kcF9jbGtfZW5hYmxlKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpk
+cCkKPiAgIAlyZXQgPSBwbV9ydW50aW1lX2dldF9zeW5jKGRwLT5kZXYpOwo+ICAgCWlmIChyZXQg
+PCAwKSB7Cj4gICAJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImNhbm5vdCBnZXQgcG0gcnVudGlt
+ZSAlZFxuIiwgcmV0KTsKPiAtCQlnb3RvIGVycl9wY2xrOwo+ICsJCWdvdG8gZXJyX3N5bmM7CgpJ
+IHRoaW5rIHRoZSBuYW1lIGVycl9wbV9ydW50aW1lX2dldCBpcyBiZXR0ZXIuCmVycl9zeW5jIGlz
+IG5vdCBhIGNsZWFyIG5hbWUgZm9yIHRoZSBwbV9ydW50aW1lX2dldF9zeW5jLgoKPiAgIAl9Cj4g
+ICAKPiAgIAlyZXNldF9jb250cm9sX2Fzc2VydChkcC0+Y29yZV9yc3QpOwo+IEBAIC0xMzMsNiAr
+MTMzLDcgQEAgc3RhdGljIGludCBjZG5fZHBfY2xrX2VuYWJsZShzdHJ1Y3QgY2RuX2RwX2Rldmlj
+ZSAqZHApCj4gICAJcmV0dXJuIDA7Cj4gICAKPiAgIGVycl9zZXRfcmF0ZToKPiArZXJyX3N5bmM6
+CgptaXNzIHBtX3J1bnRpbWVfcHV0LCBpdCBzaG91bGQgYmU6CgplcnJfc2V0X3JhdGU6CiAgICAg
+cG1fcnVudGltZV9wdXQoZHAtPmRldik7CmVycl9wbV9ydW50aW1lX2dldDoKICAgICBjbGtfZGlz
+YWJsZV91bnByZXBhcmUoZHAtPmNvcmVfY2xrKTsKZXJyX2NvcmVfY2xrOgoKPiAgIAljbGtfZGlz
+YWJsZV91bnByZXBhcmUoZHAtPmNvcmVfY2xrKTsKPiAgIGVycl9jb3JlX2NsazoKPiAgIAljbGtf
+ZGlzYWJsZV91bnByZXBhcmUoZHAtPnBjbGspOwoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
