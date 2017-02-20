@@ -1,53 +1,53 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH v2] drm/rockchip: cdn-dp: Fix error handling
-Date: Mon, 20 Feb 2017 08:08:15 +0100
-Message-ID: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: cdn-dp: Fix error handling
+Date: Mon, 20 Feb 2017 15:34:31 +0800
+Message-ID: <58AA9C07.5070303@rock-chips.com>
+References: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, airlied@linux.ie, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It is likely that both 'clk_disable_unprepare()' should be called if
-'pm_runtime_get_sync()' fails.
-
-Add a new label for that, because 'err_set_rate' is not meaningful in this
-case.
-
-Add a missing call to 'pm_runtime_put()'.
-
-Fixes: 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-V2: rename label
-    add missing call to 'pm_runtime_put_sync()' in error path
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 9ab67a670885..0fe1ec8b8fb1 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -111,7 +111,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 	ret = pm_runtime_get_sync(dp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
--		goto err_pclk;
-+		goto err_pm_runtime_get;
- 	}
- 
- 	reset_control_assert(dp->core_rst);
-@@ -133,6 +133,8 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 	return 0;
- 
- err_set_rate:
-+	pm_runtime_put(dp->dev);
-+err_pm_runtime_get:
- 	clk_disable_unprepare(dp->core_clk);
- err_core_clk:
- 	clk_disable_unprepare(dp->pclk);
--- 
-2.9.3
-
+T24gMjAxN+W5tDAy5pyIMjDml6UgMTU6MDgsIENocmlzdG9waGUgSkFJTExFVCB3cm90ZToKPiBJ
+dCBpcyBsaWtlbHkgdGhhdCBib3RoICdjbGtfZGlzYWJsZV91bnByZXBhcmUoKScgc2hvdWxkIGJl
+IGNhbGxlZCBpZgo+ICdwbV9ydW50aW1lX2dldF9zeW5jKCknIGZhaWxzLgo+Cj4gQWRkIGEgbmV3
+IGxhYmVsIGZvciB0aGF0LCBiZWNhdXNlICdlcnJfc2V0X3JhdGUnIGlzIG5vdCBtZWFuaW5nZnVs
+IGluIHRoaXMKPiBjYXNlLgo+Cj4gQWRkIGEgbWlzc2luZyBjYWxsIHRvICdwbV9ydW50aW1lX3B1
+dCgpJy4KPgo+IEZpeGVzOiAxYTBmN2VkM2FiZTIgKCJkcm0vcm9ja2NoaXA6IGNkbi1kcDogYWRk
+IGNkbiBEUCBzdXBwb3J0IGZvciByazMzOTkiKQo+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXN0b3Bo
+ZSBKQUlMTEVUIDxjaHJpc3RvcGhlLmphaWxsZXRAd2FuYWRvby5mcj4KCmxvb2tzIGdvb2QgZm9y
+IG1lCgpSZXZpZXdlZC1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKCj4g
+LS0tCj4gVjI6IHJlbmFtZSBsYWJlbAo+ICAgICAgYWRkIG1pc3NpbmcgY2FsbCB0byAncG1fcnVu
+dGltZV9wdXRfc3luYygpJyBpbiBlcnJvciBwYXRoCj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8IDMgKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNl
+cnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRw
+LWNvcmUuYwo+IGluZGV4IDlhYjY3YTY3MDg4NS4uMGZlMWVjOGI4ZmIxIDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBAQCAtMTExLDcgKzExMSw3IEBAIHN0YXRp
+YyBpbnQgY2RuX2RwX2Nsa19lbmFibGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQo+ICAgCXJl
+dCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRldik7Cj4gICAJaWYgKHJldCA8IDApIHsKPiAg
+IAkJRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAiY2Fubm90IGdldCBwbSBydW50aW1lICVkXG4iLCBy
+ZXQpOwo+IC0JCWdvdG8gZXJyX3BjbGs7Cj4gKwkJZ290byBlcnJfcG1fcnVudGltZV9nZXQ7Cj4g
+ICAJfQo+ICAgCj4gICAJcmVzZXRfY29udHJvbF9hc3NlcnQoZHAtPmNvcmVfcnN0KTsKPiBAQCAt
+MTMzLDYgKzEzMyw4IEBAIHN0YXRpYyBpbnQgY2RuX2RwX2Nsa19lbmFibGUoc3RydWN0IGNkbl9k
+cF9kZXZpY2UgKmRwKQo+ICAgCXJldHVybiAwOwo+ICAgCj4gICBlcnJfc2V0X3JhdGU6Cj4gKwlw
+bV9ydW50aW1lX3B1dChkcC0+ZGV2KTsKPiArZXJyX3BtX3J1bnRpbWVfZ2V0Ogo+ICAgCWNsa19k
+aXNhYmxlX3VucHJlcGFyZShkcC0+Y29yZV9jbGspOwo+ICAgZXJyX2NvcmVfY2xrOgo+ICAgCWNs
+a19kaXNhYmxlX3VucHJlcGFyZShkcC0+cGNsayk7CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
