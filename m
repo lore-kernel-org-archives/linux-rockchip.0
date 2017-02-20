@@ -1,74 +1,53 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: Fix error handling
-Date: Mon, 20 Feb 2017 14:58:21 +0800
-Message-ID: <58AA938D.5010902@rock-chips.com>
-References: <20170219165942.17268-1-christophe.jaillet@wanadoo.fr>
- <58AA4908.2000808@rock-chips.com>
- <a3eca2d9-0cd2-925c-0b9b-b23893710382@wanadoo.fr>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <a3eca2d9-0cd2-925c-0b9b-b23893710382@wanadoo.fr>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, airlied@linux.ie, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH v2] drm/rockchip: cdn-dp: Fix error handling
+Date: Mon, 20 Feb 2017 08:08:15 +0100
+Message-ID: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDAy5pyIMjDml6UgMTQ6NDEsIENocmlzdG9waGUgSkFJTExFVCB3cm90ZToKPiBM
-ZSAyMC8wMi8yMDE3IMOgIDAyOjQwLCBNYXJrIHlhbyBhIMOpY3JpdCA6Cj4+IE9uIDIwMTflubQw
-MuaciDIw5pelIDAwOjU5LCBDaHJpc3RvcGhlIEpBSUxMRVQgd3JvdGU6Cj4+PiBJdCBpcyBsaWtl
-bHkgdGhhdCBib3RoICdjbGtfZGlzYWJsZV91bnByZXBhcmUoKScgc2hvdWxkIGJlIGNhbGxlZCBp
-Zgo+Pj4gJ3BtX3J1bnRpbWVfZ2V0X3N5bmMoKScgZmFpbHMuCj4+Pgo+Pj4gQWRkIGEgbmV3IGxh
-YmVsIGZvciB0aGF0LCBiZWNhdXNlICdlcnJfc2V0X3JhdGUnIGlzIG5vdCBtZWFuaW5nZnVsIAo+
-Pj4gaW4gdGhpcwo+Pj4gY2FzZS4KPj4+Cj4+Pgo+Pj4gRml4ZXM6IDFhMGY3ZWQzYWJlMiAoImRy
-bS9yb2NrY2hpcDogY2RuLWRwOiBhZGQgY2RuIERQIHN1cHBvcnQgZm9yIAo+Pj4gcmszMzk5IikK
-Pj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpc3RvcGhlIEpBSUxMRVQgPGNocmlzdG9waGUuamFp
-bGxldEB3YW5hZG9vLmZyPgo+Pj4gLS0tCj4+PiBOb3Qgc3VyZSBidXQgYSAncG1fcnVudGltZV9n
-ZXRfc3luYygpJyBpcyBtYXliZSBhbHNvIHJlcXVpcmVkIGluIHRoZQo+Pj4gJ2Vycl9zZXRfcmF0
-ZScgcGF0aC4KPj4+IC0tLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNv
-cmUuYyB8IDMgKystCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVs
-ZXRpb24oLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nk
-bi1kcC1jb3JlLmMgCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5j
-Cj4+PiBpbmRleCA5YWI2N2E2NzA4ODUuLjBmZTFlYzhiOGZiMSAxMDA2NDQKPj4+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4+PiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+Pj4gQEAgLTExMSw3ICsxMTEsNyBAQCBzdGF0
-aWMgaW50IGNkbl9kcF9jbGtfZW5hYmxlKHN0cnVjdCAKPj4+IGNkbl9kcF9kZXZpY2UgKmRwKQo+
-Pj4gICAgICAgcmV0ID0gcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPj4+ICAgICAgIGlm
-IChyZXQgPCAwKSB7Cj4+PiAgICAgICAgICAgRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAiY2Fubm90
-IGdldCBwbSBydW50aW1lICVkXG4iLCByZXQpOwo+Pj4gLSAgICAgICAgZ290byBlcnJfcGNsazsK
-Pj4+ICsgICAgICAgIGdvdG8gZXJyX3N5bmM7Cj4+Cj4+IEkgdGhpbmsgdGhlIG5hbWUgZXJyX3Bt
-X3J1bnRpbWVfZ2V0IGlzIGJldHRlci4KPj4gZXJyX3N5bmMgaXMgbm90IGEgY2xlYXIgbmFtZSBm
-b3IgdGhlIHBtX3J1bnRpbWVfZ2V0X3N5bmMuCj4+Cj4gSSB3aWxsIGNoYW5nZSBpdC4KPgo+Pj4g
-ICAgICAgfQo+Pj4gICAgICAgICByZXNldF9jb250cm9sX2Fzc2VydChkcC0+Y29yZV9yc3QpOwo+
-Pj4gQEAgLTEzMyw2ICsxMzMsNyBAQCBzdGF0aWMgaW50IGNkbl9kcF9jbGtfZW5hYmxlKHN0cnVj
-dCAKPj4+IGNkbl9kcF9kZXZpY2UgKmRwKQo+Pj4gICAgICAgcmV0dXJuIDA7Cj4+PiAgICAgZXJy
-X3NldF9yYXRlOgo+Pj4gK2Vycl9zeW5jOgo+Pgo+PiBtaXNzIHBtX3J1bnRpbWVfcHV0LCBpdCBz
-aG91bGQgYmU6Cj4+Cj4gSSBhbSB3b25kZXJpbmcgaWYgJ3BtX3J1bnRpbWVfcHV0X3N5bmMnIHNo
-b3VsZCBiZSBhZGRlZCwgaW5zdGVhZC4KPiBXZSB3YW50IHRvIHJldmVydCB0aGUgJ3BtX3J1bnRp
-bWVfZ2V0X3N5bmMnIG9mIGxpbmUgMTExLiBBY2NvcmRpbmcgdG8gCj4gdGhlIG5hbWluZyBvZiB0
-aGUgZnVuY3Rpb24sIHRoZSBfc3luYyB2ZXJzaW9uIGxvb2tzIG1vcmUgbG9naWNhbCB0byBtZS4K
-PiBVc2luZyBjY29jY2luZWxsZSBzaG93cyB0aGF0IDIvMyBvZiBmdW5jdGlvbnMgY2FsbGluZyBi
-b3RoIAo+ICdwbV9ydW50aW1lX2dldF9zeW5jJyBhbmQgJ3BtX3J1bnRpbWVfZ2V0W19zeW5jXScg
-YW5kIHVzaW5nIHRoZSBfc3luYyAKPiB2YXJpYW50Lgo+CgpwbV9ydW50aW1lX2dldF9zeW5jIHdp
-bGwgYmxvY2sgdW50aWwgaGFyZHdhcmUgYWN0dWFsbHkgZG9uZSBwb3dlciBjb25maWd1cmUsCndl
-IG5lZWQgbWFrZSBzdXJlIHBvd2VyIGlzIGVuYWJsZSBiZWZvcmUgdXNlIHRoZSBoYXJkd2FyZSwg
-U28gd2Ugc2hvdWxkIAp1c2UgcG1fcnVudGltZV9nZXRfc3luYyBhdCBwb3dlciBvbi4KCkF0IHBv
-d2VyIG9mZiB0aW1lLCB1c2UgcG1fcnVudGltZV9wdXQgaXMgZW5vdWdoLCBpdCBjYW4gYmUgYXN5
-bmMsIG5vIApuZWVkIGJsb2NrLgoKVGhhbmtzLgoKPiBXaGljaCBzZW1hbnRpYyBpcyB0aGUgY29y
-cmVjdCBvbmU/Cj4KPgo+PiBlcnJfc2V0X3JhdGU6Cj4+ICAgICBwbV9ydW50aW1lX3B1dChkcC0+
-ZGV2KTsKPj4gZXJyX3BtX3J1bnRpbWVfZ2V0Ogo+PiAgICAgY2xrX2Rpc2FibGVfdW5wcmVwYXJl
-KGRwLT5jb3JlX2Nsayk7Cj4+IGVycl9jb3JlX2NsazoKPj4KPj4+IGNsa19kaXNhYmxlX3VucHJl
-cGFyZShkcC0+Y29yZV9jbGspOwo+Pj4gICBlcnJfY29yZV9jbGs6Cj4+PiAgICAgICBjbGtfZGlz
-YWJsZV91bnByZXBhcmUoZHAtPnBjbGspOwo+Pgo+Pgo+Cj4KPgo+CgoKLS0gCu+8rWFyayBZYW8K
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+It is likely that both 'clk_disable_unprepare()' should be called if
+'pm_runtime_get_sync()' fails.
+
+Add a new label for that, because 'err_set_rate' is not meaningful in this
+case.
+
+Add a missing call to 'pm_runtime_put()'.
+
+Fixes: 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+V2: rename label
+    add missing call to 'pm_runtime_put_sync()' in error path
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 9ab67a670885..0fe1ec8b8fb1 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -111,7 +111,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
+ 	ret = pm_runtime_get_sync(dp->dev);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
+-		goto err_pclk;
++		goto err_pm_runtime_get;
+ 	}
+ 
+ 	reset_control_assert(dp->core_rst);
+@@ -133,6 +133,8 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
+ 	return 0;
+ 
+ err_set_rate:
++	pm_runtime_put(dp->dev);
++err_pm_runtime_get:
+ 	clk_disable_unprepare(dp->core_clk);
+ err_core_clk:
+ 	clk_disable_unprepare(dp->pclk);
+-- 
+2.9.3
+
