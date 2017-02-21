@@ -1,76 +1,32 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 1/2] drm/rockchip: vop: verify display mode with vop max_output
-Date: Tue, 21 Feb 2017 10:41:24 +0800
-Message-ID: <1487644885-22492-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rk3328
+Date: Tue, 21 Feb 2017 16:06:53 +0100
+Message-ID: <43787071.1WOyg3ntUU@phil>
+References: <1487556485-18871-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1487556485-18871-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: khilman@kernel.org, nm@ti.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgNiArKysrKysKIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAgNyArKysrKysrCiBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgMTMgKysrKysrKysr
-KysrKwogMyBmaWxlcyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggOGRhYjJhZi4uN2VjNWQ3ZiAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC04NjcsNiAr
-ODY3LDEyIEBAIHN0YXRpYyBib29sIHZvcF9jcnRjX21vZGVfZml4dXAoc3RydWN0IGRybV9jcnRj
-ICpjcnRjLAogCQkJCXN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQogewog
-CXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKKwljb25zdCBzdHJ1Y3Qgdm9wX2RhdGEg
-KnZvcF9kYXRhID0gdm9wLT5kYXRhOworCisJaWYgKG1vZGUtPmhkaXNwbGF5ID4gdm9wX2RhdGEt
-Pm1heF9vdXRwdXQud2lkdGgpCisJCXJldHVybiBmYWxzZTsKKwlpZiAobW9kZS0+dmRpc3BsYXkg
-PiB2b3BfZGF0YS0+bWF4X291dHB1dC5oZWlnaHQpCisJCXJldHVybiBmYWxzZTsKIAogCWFkanVz
-dGVkX21vZGUtPmNsb2NrID0KIAkJY2xrX3JvdW5kX3JhdGUodm9wLT5kY2xrLCBtb2RlLT5jbG9j
-ayAqIDEwMDApIC8gMTAwMDsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5oCmluZGV4IDVhNGZhYTg1Li5kZTVhNzE0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKQEAgLTEzNSw2ICsxMzUsMTEgQEAgc3RydWN0IHZvcF93
-aW5fZGF0YSB7CiAJZW51bSBkcm1fcGxhbmVfdHlwZSB0eXBlOwogfTsKIAorc3RydWN0IHZvcF9y
-ZWN0IHsKKwlpbnQgd2lkdGg7CisJaW50IGhlaWdodDsKK307CisKIHN0cnVjdCB2b3BfZGF0YSB7
-CiAJY29uc3Qgc3RydWN0IHZvcF9yZWdfZGF0YSAqaW5pdF90YWJsZTsKIAl1bnNpZ25lZCBpbnQg
-dGFibGVfc2l6ZTsKQEAgLTE0Miw2ICsxNDcsOCBAQCBzdHJ1Y3Qgdm9wX2RhdGEgewogCWNvbnN0
-IHN0cnVjdCB2b3BfaW50ciAqaW50cjsKIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW47
-CiAJdW5zaWduZWQgaW50IHdpbl9zaXplOworCXN0cnVjdCB2b3BfcmVjdCBtYXhfaW5wdXQ7CisJ
-c3RydWN0IHZvcF9yZWN0IG1heF9vdXRwdXQ7CiB9OwogCiAvKiBpbnRlcnJ1cHQgZGVmaW5lICov
-CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5j
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwppbmRleCA5MWZi
-YzdiLi5mNGZmYjY3NyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX3ZvcF9yZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9w
-X3JlZy5jCkBAIC0xMzIsNiArMTMyLDggQEAKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9w
-X2RhdGEgcmszMDM2X3ZvcCA9IHsKKwkubWF4X2lucHV0ID0gezE5MjAsIDEwODB9LAorCS5tYXhf
-b3V0cHV0ID0gezE5MjAsIDEwODB9LAogCS5pbml0X3RhYmxlID0gcmszMDM2X3ZvcF9pbml0X3Jl
-Z190YWJsZSwKIAkudGFibGVfc2l6ZSA9IEFSUkFZX1NJWkUocmszMDM2X3ZvcF9pbml0X3JlZ190
-YWJsZSksCiAJLmN0cmwgPSAmcmszMDM2X2N0cmxfZGF0YSwKQEAgLTI3Myw2ICsyNzUsMTMgQEAK
-IH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2RhdGEgcmszMjg4X3ZvcCA9IHsKKwkubWF4
-X2lucHV0ID0gezQwOTYsIDgxOTJ9LAorCS8qCisJICogVE9ETzogcmszMjg4IGhhdmUgdHdvIHZv
-cCwgYmlnIG9uZSBzdXBwb3J0IDM4NDB4MjE2MCwKKwkgKiBsaXR0bGUgb25lIG9ubHkgc3VwcG9y
-dCAyNTYweDE2MDAuCisJICogTm93IGZvcmNlIHVzZSAzODQweDIxNjAuCisJICovCisJLm1heF9v
-dXRwdXQgPSB7Mzg0MCwgMjE2MH0sCiAJLmluaXRfdGFibGUgPSByazMyODhfaW5pdF9yZWdfdGFi
-bGUsCiAJLnRhYmxlX3NpemUgPSBBUlJBWV9TSVpFKHJrMzI4OF9pbml0X3JlZ190YWJsZSksCiAJ
-LmludHIgPSAmcmszMjg4X3ZvcF9pbnRyLApAQCAtMzQxLDYgKzM1MCw4IEBACiB9OwogCiBzdGF0
-aWMgY29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzM5OV92b3BfYmlnID0geworCS5tYXhfaW5wdXQg
-PSB7NDA5NiwgODE5Mn0sCisJLm1heF9vdXRwdXQgPSB7NDA5NiwgMjE2MH0sCiAJLmluaXRfdGFi
-bGUgPSByazMzOTlfaW5pdF9yZWdfdGFibGUsCiAJLnRhYmxlX3NpemUgPSBBUlJBWV9TSVpFKHJr
-MzM5OV9pbml0X3JlZ190YWJsZSksCiAJLmludHIgPSAmcmszMzk5X3ZvcF9pbnRyLApAQCAtMzYw
-LDYgKzM3MSw4IEBACiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzM5OV92
-b3BfbGl0ID0geworCS5tYXhfaW5wdXQgPSB7NDA5NiwgODE5Mn0sCisJLm1heF9vdXRwdXQgPSB7
-MjU2MCwgMTYwMH0sCiAJLmluaXRfdGFibGUgPSByazMzOTlfaW5pdF9yZWdfdGFibGUsCiAJLnRh
-YmxlX3NpemUgPSBBUlJBWV9TSVpFKHJrMzM5OV9pbml0X3JlZ190YWJsZSksCiAJLmludHIgPSAm
-cmszMzk5X3ZvcF9pbnRyLAotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Am Montag, 20. Februar 2017, 10:08:05 CET schrieb David Wu:
+> From: "david.wu" <david.wu@rock-chips.com>
+> 
+> This adds the necessary data for handling io voltage domains on the rk3328.
+> As interesting tidbit, the rk3328 only contains one iodomain area in the
+> regular General Register Files (GRF).
+> 
+> Signed-off-by: david.wu <david.wu@rock-chips.com>
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Only issue might be, that you didn't include Rafael (rjw@rjwysocki.net) and 
+most of the time io-domain patches go to him directly with an Ack from Kevin, 
+as there are normally not enough power/avs patches to warant a pull :-) 
+
+
+Heiko
