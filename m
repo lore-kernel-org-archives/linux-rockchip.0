@@ -1,55 +1,46 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [RESEND PATCH v7 6/7] drm/rockchip/dsi: fix insufficient
- bandwidth of some panel
-Date: Tue, 21 Feb 2017 10:40:10 -0500
-Message-ID: <20170221154010.GB25168@art_vandelay>
-References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
- <1487577744-2855-7-git-send-email-zyw@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
+Date: Tue, 21 Feb 2017 18:47:13 +0100
+Message-ID: <6585236.hCVu3AsgCt@phil>
+References: <20170214210114.5846-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1487577744-2855-7-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170214210114.5846-1-dianders@chromium.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, jwerner@chromium.org, hl@rock-chips.com, dbasehore@chromium.org, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBGZWIgMjAsIDIwMTcgYXQgMDQ6MDI6MjJQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
-dGU6Cj4gU2V0IHRoZSBsYW5lcyBicHMgdG8gMSAvIDAuOSB0aW1lcyBvZiBwY2xrLCB0aGUgbWFy
-Z2luIGlzIG5vdCBlbm91Z2gKPiBmb3Igc29tZSBwYW5lbCwgaXQgd2lsbCBjYXVzZSB0aGUgc2Ny
-ZWVuIGRpc3BsYXkgaXMgbm90IG5vcm1hbCwgc28KPiBpbmNyZWFzZXMgdGhlIGJhZG53aWR0aCB0
-byAxIC8gMC44Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlw
-cy5jb20+CgpSZXZpZXdlZC1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cgo+
-IC0tLQo+IAo+IENoYW5nZXMgaW4gdjY6IE5vbmUKPiBDaGFuZ2VzIGluIHY1OiBOb25lCj4gQ2hh
-bmdlcyBpbiB2NDogTm9uZQo+IENoYW5nZXMgaW4gdjM6IE5vbmUKPiAKPiAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCA0ICsrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIg
-aW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-ZHctbWlwaS1kc2kuYwo+IGluZGV4IGMyZDc2NzQuLmE2NTMzODQgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IEBAIC01MzIsOCArNTMyLDggQEAgc3RhdGljIGlu
-dCBkd19taXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gIAo+
-ICAJbXBjbGsgPSBESVZfUk9VTkRfVVAobW9kZS0+Y2xvY2ssIE1TRUNfUEVSX1NFQyk7Cj4gIAlp
-ZiAobXBjbGspIHsKPiAtCQkvKiB0YWtlIDEgLyAwLjksIHNpbmNlIG1icHMgbXVzdCBiaWcgdGhh
-biBiYW5kd2lkdGggb2YgUkdCICovCj4gLQkJdG1wID0gbXBjbGsgKiAoYnBwIC8gZHNpLT5sYW5l
-cykgKiAxMCAvIDk7Cj4gKwkJLyogdGFrZSAxIC8gMC44LCBzaW5jZSBtYnBzIG11c3QgYmlnIHRo
-YW4gYmFuZHdpZHRoIG9mIFJHQiAqLwo+ICsJCXRtcCA9IG1wY2xrICogKGJwcCAvIGRzaS0+bGFu
-ZXMpICogMTAgLyA4Owo+ICAJCWlmICh0bXAgPCBtYXhfbWJwcykKPiAgCQkJdGFyZ2V0X21icHMg
-PSB0bXA7Cj4gIAkJZWxzZQo+IC0tIAo+IDIuNi4zCj4gCj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBF
-bmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+Am Dienstag, 14. Februar 2017, 13:01:14 CET schrieb Douglas Anderson:
+> The PMU Cortex M0 on rk3399 is intended to be used for things like
+> DDRFreq transitions, suspend/resume, and other things that are the
+> purview of ARM Trusted Firmware and not the kernel.  As such, the
+> kernel shouldn't be messing with the clocks.  Add CLK_IGNORE_UNUSED to
+> these clocks.
+> 
+> Without this change, the following was observed on a Chromebook with a
+> rk3399 (using not-yet-upstream ARM Trusted Firmware code and
+> not-yet-upstream kernel code based on kernel-4.4):
+> 
+> 1. We init the clock framework.
+> 
+> 2. We start up "DDRFreq", which causes ATF to occasionally fire up the
+>    M0 for transitions.  Each time ATF fires up the M0 it will turn on
+>    these clocks and each time it is done it will turn them off.
+> 
+> 3. We finally get to the the part of the kernel that calls
+>    clk_disable_unused() and we disables the clocks.
+> 
+> You can see the race above.  Basically everything is fine as long as
+> ARM Trusted Firmware isn't starting up the M0 at exactly the same time
+> that the kernel is disabling unused clocks.  ...but if the race
+> happens then we go boom.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+applied for 4.12
+
+Thanks
+Heiko
