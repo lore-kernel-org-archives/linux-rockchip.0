@@ -1,40 +1,32 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH V3 0/2] Add support for RK3288 Tinker board
-Date: Tue, 21 Feb 2017 19:42:36 +0100
-Message-ID: <64714214.3fXrpx51Ln@phil>
-References: <1487066851-25142-1-git-send-email-eddie.cai.linux@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/7] dt-bindings: rockchip-dw-mshc: rename RK1108 to
+ RV1108
+Date: Tue, 21 Feb 2017 17:36:05 -0600
+Message-ID: <20170221233605.wpcqja6hebdrkect@rob-hp-laptop>
+References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+ <1486983759-32337-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1487066851-25142-1-git-send-email-eddie.cai.linux@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1486983759-32337-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. Februar 2017, 18:07:29 CET schrieb Eddie Cai:
-> This patch set add support for RK3288 Tinker board. Tinker board is a
-> credit card size develop board powered by RK3288.
+On Mon, Feb 13, 2017 at 07:02:39PM +0800, Andy Yan wrote:
+> Rockchip finally named the SOC as RV1108, so change it.
 > 
-> Eddie Cai (2):
->   dt-bindings: add Asus Tinker board
->   ARM: dts: rockchip: add dts for RK3288-Tinker board
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-applied both, with:
-- fixed the wakesource pointed out by Wadim
-- reordered some properties
-
-So please double check :-)
-
-
-Thanks
-Heiko
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
