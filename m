@@ -1,26 +1,32 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v1 0/2] Add pinctrl input schmitt support
-Date: Wed, 22 Feb 2017 16:04:58 +0100
-Message-ID: <CACRpkdYZg42hVuP_s1aacecsHg1XHEMO2W-yAjUBdoWbcZc5hw@mail.gmail.com>
-References: <1487068541-14120-1-git-send-email-david.wu@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 4/7] dt-bindings: rockchip,pinctrl: rename RK1108 to
+ RV1108
+Date: Wed, 22 Feb 2017 09:08:26 -0600
+Message-ID: <20170222150826.c3u3rh6wnseedy35@rob-hp-laptop>
+References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+ <1486983983-32506-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1487068541-14120-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1486983983-32506-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 14, 2017 at 11:35 AM, David Wu <david.wu@rock-chips.com> wrote:
+On Mon, Feb 13, 2017 at 07:06:23PM +0800, Andy Yan wrote:
+> Rockchip finally named the SOC as RV1108, so change it.
+> Also move the compatible list to one compatible per line.
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  .../devicetree/bindings/pinctrl/rockchip,pinctrl.txt     | 16 +++++++++++-----
+>  1 file changed, 11 insertions(+), 5 deletions(-)
 
-> From: "david.wu" <david.wu@rock-chips.com>
->
-> Some pins need to enable Schmitt triggers which are used
-> in open loop configurations for noise immunity and closed
-> loop configurations to implement function generators.
-
-Just waiting for Heiko's review on this series before I queue it.
-
-Yours,
-Linus Walleij
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
