@@ -1,36 +1,71 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/7] dt-bindings: rk1108-cru: rename RK1108 to RV1108
-Date: Wed, 22 Feb 2017 14:47:46 -0600
-Message-ID: <20170222204746.gcy4j6klz6fidrhq@rob-hp-laptop>
-References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
- <1486983857-32399-1-git-send-email-andy.yan@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
+Date: Wed, 22 Feb 2017 17:10:12 -0500
+Message-ID: <CAOw6vbJO_TQnSAu6w7XHiMSYA+gB1tyHOvB7BMc7Q2+OMY=9=w@mail.gmail.com>
+References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
+ <20170221153918.GA25168@art_vandelay>
+ <20170222134314.016a4940.john@metanate.com>
+ <CAOw6vbJoS2P5m31+bgWw3Sghz=EVGj0fpLgCFnbVEhzRujNCLw@mail.gmail.com>
+ <20170222185543.71e20187.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1486983857-32399-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170222185543.71e20187.john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Yao <yzq@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 13, 2017 at 07:04:17PM +0800, Andy Yan wrote:
-> Rockchip finally named the SOC as RV1108, so change it.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  .../{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt}     | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->  rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt} (83%)
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+T24gV2VkLCBGZWIgMjIsIDIwMTcgYXQgMTo1NSBQTSwgSm9obiBLZWVwaW5nIDxqb2huQG1ldGFu
+YXRlLmNvbT4gd3JvdGU6Cj4gT24gV2VkLCAyMiBGZWIgMjAxNyAxMDo1NzowNSAtMDUwMCwgU2Vh
+biBQYXVsIHdyb3RlOgo+Cj4+IE9uIFdlZCwgRmViIDIyLCAyMDE3IGF0IDg6NDMgQU0sIEpvaG4g
+S2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+IHdyb3RlOgo+PiA+IE9uIFR1ZSwgMjEgRmViIDIw
+MTcgMTA6Mzk6MTggLTA1MDAsIFNlYW4gUGF1bCB3cm90ZToKPj4gPgo+PiA+PiBPbiBNb24sIEZl
+YiAyMCwgMjAxNyBhdCAwNDowMjoxNlBNICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPj4gPj4g
+PiBIaSBhbGwKPj4gPj4gPgo+PiA+PiA+IFtSZXNlbmQgdGhpcyB2NyB2ZXJzaW9uIHNlcmllcywg
+c2luY2UgdGhlcmUgYXJlIDUgbWFpbHMgaGF2ZSBnb25lIG1pc3NpbmcsIGxhc3QKPj4gPj4gPiB3
+ZWVrXQo+PiA+PiA+Cj4+ID4+ID4gVGhpcyB2ZXJzaW9uIGRvZXMgbm90IGNoYW5nZSB0aGUgZXhp
+c3RpbmcgdjYgcGF0Y2hlcywganVzdCB0byBhZGQgdGhlCj4+ID4+ID4gImJhbmR3aWR0aCBmaXgi
+IHBhdGNoIGJhY2ssIHNpbmNlIHdlIHJlYWxseSBuZWVkIGl0Lgo+PiA+PiA+Cj4+ID4+ID4gVGhp
+cyBwYXRjaCBzZXJpYWwgaXMgZm9yIFJLMzM5OSBNSVBJIERTSS4gVGhlIE1JUEkgRFNJIGNvbnRy
+b2xsZXIgb2YKPj4gPj4gPiBSSzMzOTkgaXMgYWxtb3N0IHRoZSBzYW1lIGFzIFJLMzI4OCwgZXhj
+ZXB0IGEgbGl0dGxlIGJpdCBvZiBkaWZmZXJlbmNlCj4+ID4+ID4gaW4gcGh5IGNsb2NrIGNvbnRy
+b2xsaW5nIGFuZCBwb3J0IGlkIHNlbGVjdGlvbiByZWdpc3Rlci4gVGhlc2UgcGF0Y2hlcwo+PiA+
+PiA+IGFkZCBSSzMzOTkgc3VwcG9ydCBhbmQgdGhlIHBvd2VyIGRvbWFpbiBzdXBwb3J0Lgo+PiA+
+PiA+Cj4+ID4+ID4gQW5kIHRoZXNlIHBhdGNoZXMgYmFzZSBvbiBKb2huIEtlZXBpbmcncyB2MyBw
+YXRjaGVzWzBdLCBpdCBmaXhlcyBtYW55IGJ1Z3MsCj4+ID4+ID4gdGhleSBoYXZlIGJlZW4gdGVz
+dGVkIG9uIHJrMzI4OCBldmIgYm9hcmQuCj4+ID4+Cj4+ID4+IERvIHdlIGhhdmUgYW4gRVRBIG9u
+IHdoZW4gSm9obiBpcyBwbGFubmluZyBvbiByZXNwaW5uaW5nIGhpcyBwYXRjaHNldCBiYXNlZCBv
+bgo+PiA+PiByZXZpZXcgZmVlZGJhY2s/Cj4+ID4KPj4gPiBJIGhhdmUgYWxsIG9mIHRoZSBjaGFu
+Z2VzIHF1ZXVlZCBidXQgSSB3YXMgaG9waW5nIHRvIGZpbmQgc29tZSB0aW1lIHRvCj4+ID4gdGVz
+dCB0aGUgbGF0ZXN0IHZlcnNpb24gYmVmb3JlIHNlbmRpbmcgaXQgb3V0OyB1bmZvcnR1bmF0ZWx5
+IGV2ZXJ5dGhpbmcKPj4gPiBlbHNlIGlzIG1vcmUgaW1wb3J0YW50IGF0IHRoZSBtb21lbnQuICBJ
+ZiB5b3UncmUgaGFwcHkgd2l0aCB0aGUgY2F2ZWF0Cj4+ID4gdGhhdCB0aGUgbGF0ZXN0IGNoYW5n
+ZXMgYXJlIGJ1aWxkIHRlc3RlZCBvbmx5IEkgY2FuIHByb2JhYmx5IHNlbmQgaXQKPj4gPiBvdXQg
+dGhpcyBhZnRlcm5vb24uCj4+Cj4+IEkgc3VwcG9zZSBteSBhbnN3ZXIgZGVwZW5kcyBvbiB3aGVu
+IHRoZSB0ZXN0ZWQgdmVyc2lvbiB3aWxsIGJlCj4+IGF2YWlsYWJsZSwgb3IgcGVyaGFwcyBDaHJp
+cyBjYW4gdGVzdCB0aGUgbmV3IHNldCBmb3IgeW91PyBJIGRvbid0IGhhdmUKPj4gYW55IHJvY2tj
+aGlwIGRldmljZXMgd2l0aCBtaXBpLCBzbyBpJ20gbm90IG11Y2ggaGVscC4KPgo+IE5vbmUgb2Yg
+dGhlIGNoYW5nZXMgc2NhcmUgbWUgdGhhdCBtdWNoLCBzbyBJIGRvbid0IGV4cGVjdCB0ZXN0aW5n
+IHRvCj4gdGhyb3cgdXAgYW55IHByb2JsZW1zIGJ1dCBJIGRvbid0IGxpa2UgdGhyb3dpbmcgb3V0
+IHBhdGNoZXMgd2l0aG91dCBhdAo+IGxlYXN0IGEgYmFzaWMgdGVzdCBydW4uCj4KCkFncmVlZC4g
+SSBkb24ndCB0aGluayB3ZSdyZSBpbiBzdWNoIGRlc3BlcmF0ZSBuZWVkIHRoYXQgd2Ugc2hvdWxk
+CmZvcmVnbyB0ZXN0aW5nLiBJZiBDaHJpcyBjYW4gcHJvdmlkZSBUZXN0ZWQtYnksIHlvdSBzaG91
+bGQgc2VuZCB0aGVtCm91dCwgb3RoZXJ3aXNlIEknbSBoYXBweSB0byB3YWl0LgoKVGhhbmtzIGZv
+ciB0aGUgdXBkYXRlLAoKU2VhbgoKCj4gSSBtaWdodCBoYXZlIHRpbWUgdG8gdGVzdCBvbiBGcmlk
+YXksIGJ1dCBJIGV4cGVjdCBDaHJpcyBoYXMgbW9yZSB0aW1lIHRvCj4gZGV2b3RlIHRvIHRoaXMg
+dGhhbiBJIGRvLCBzbyBtYXliZSBpdCdzIGJldHRlciBpZiBJIHNlbmQgdGhlIHBhdGNoZXMgb3V0
+Cj4gdG9tb3Jyb3cuCj4KPgo+IEpvaG4KCgoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5l
+ZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
