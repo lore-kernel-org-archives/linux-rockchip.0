@@ -1,38 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/7] dt-bindings: rockchip-dw-mshc: rename RK1108 to RV1108
-Date: Wed, 22 Feb 2017 02:51:21 +0100
-Message-ID: <1743495.FQhDfDfeEj@phil>
-References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com> <1486983759-32337-1-git-send-email-andy.yan@rock-chips.com> <20170221233605.wpcqja6hebdrkect@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20170221233605.wpcqja6hebdrkect@rob-hp-laptop>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, ulf.hansson@linaro.org
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1] clk: rockchip: add pll_wait_lock for pll_enable
+Date: Wed, 22 Feb 2017 10:59:55 +0800
+Message-ID: <1487732395-30353-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com
+Cc: linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+If pll is power down,when power up pll need wait pll lock.
+The reference documents section:
+	PLL frequency change and lock check
 
-Am Dienstag, 21. Februar 2017, 17:36:05 CET schrieb Rob Herring:
-> On Mon, Feb 13, 2017 at 07:02:39PM +0800, Andy Yan wrote:
-> > Rockchip finally named the SOC as RV1108, so change it.
-> > 
-> > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> > 
-> > ---
-> > 
-> >  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-pll.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-does this Ack span to all dt-centric patches in this series?
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 6ed605776abd..c4dfd26f37ae 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -268,6 +268,7 @@ static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
+ 
+ 	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
+ 	       pll->reg_base + RK3036_PLLCON(1));
++	rockchip_pll_wait_lock(pll);
+ 
+ 	return 0;
+ }
+@@ -500,6 +501,7 @@ static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
+ 
+ 	writel(HIWORD_UPDATE(0, RK3066_PLLCON3_PWRDOWN, 0),
+ 	       pll->reg_base + RK3066_PLLCON(3));
++	rockchip_pll_wait_lock(pll);
+ 
+ 	return 0;
+ }
+@@ -745,6 +747,7 @@ static int rockchip_rk3399_pll_enable(struct clk_hw *hw)
+ 
+ 	writel(HIWORD_UPDATE(0, RK3399_PLLCON3_PWRDOWN, 0),
+ 	       pll->reg_base + RK3399_PLLCON(3));
++	rockchip_rk3399_pll_wait_lock(pll);
+ 
+ 	return 0;
+ }
+-- 
+1.9.1
 
-As stated in some other mail, should be safe, as the soc isn't on the market 
-yet.
 
-
-Thanks
-Heiko
