@@ -1,29 +1,33 @@
-From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 0/2] add multiple clock handling for dwc2 driver
-Date: Wed, 22 Feb 2017 15:58:58 +0100
-Message-ID: <20170222145858.GA17465@kroah.com>
-References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
- <706482a7-7d07-a902-9b47-1a791f9a8185@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2 1/3] pinctrl: rockchip: Add 3bit width mux support
+Date: Wed, 22 Feb 2017 16:00:46 +0100
+Message-ID: <CACRpkda=0fzZ8ZajnfiVU0Xu51gLqQvmjEZNjDKb+xTR=Xshiw@mail.gmail.com>
+References: <1486722229-5451-1-git-send-email-david.wu@rock-chips.com> <1486722229-5451-2-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <706482a7-7d07-a902-9b47-1a791f9a8185-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1486722229-5451-2-git-send-email-david.wu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 22, 2017 at 09:29:43AM +0800, Frank Wang wrote:
-> Hi John and Greg,
-> 
-> Friendly ping... :-)
+On Fri, Feb 10, 2017 at 11:23 AM, David Wu <david.wu@rock-chips.com> wrote:
 
-I'm not the one to take dwc2 patches, sorry, nothing I can do here,
-especially in the middle of the merge window...
+> From: "david.wu" <david.wu@rock-chips.com>
+>
+> This patch supports 3bit width iomux type.
+>
+> Signed-off-by: david.wu <david.wu@rock-chips.com>
+> ---
+> change in v2:
+>  - add the "% 8" in the 3bit width iomux calculating
 
-greg k-h
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Patch applied for v4.12 with Heiko's review tag.
+
+Will appear in my tree after the merge window.
+
+Same applies to any other patch I apply now except fixes.
+
+Yours,
+Linus Walleij
