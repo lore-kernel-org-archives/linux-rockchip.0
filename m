@@ -1,51 +1,83 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1] clk: rockchip: add pll_wait_lock for pll_enable
-Date: Wed, 22 Feb 2017 10:59:55 +0800
-Message-ID: <1487732395-30353-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: heiko@sntech.de, mturquette@baylibre.com, sboyd@codeaurora.org, xf@rock-chips.com
-Cc: linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 1/2] mtd: spi-nor: Bindings for Rockchip serial flash
+ controller
+Date: Wed, 22 Feb 2017 11:02:02 +0800
+Message-ID: <1487732523-97390-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1487732523-97390-1-git-send-email-shawn.lin@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1487732523-97390-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
+Cc: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If pll is power down,when power up pll need wait pll lock.
-The reference documents section:
-	PLL frequency change and lock check
+Add binding document for the Rockchip serial flash controller.
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Acked-by: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-pll.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 6ed605776abd..c4dfd26f37ae 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -268,6 +268,7 @@ static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
- 
- 	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
- 	       pll->reg_base + RK3036_PLLCON(1));
-+	rockchip_pll_wait_lock(pll);
- 
- 	return 0;
- }
-@@ -500,6 +501,7 @@ static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
- 
- 	writel(HIWORD_UPDATE(0, RK3066_PLLCON3_PWRDOWN, 0),
- 	       pll->reg_base + RK3066_PLLCON(3));
-+	rockchip_pll_wait_lock(pll);
- 
- 	return 0;
- }
-@@ -745,6 +747,7 @@ static int rockchip_rk3399_pll_enable(struct clk_hw *hw)
- 
- 	writel(HIWORD_UPDATE(0, RK3399_PLLCON3_PWRDOWN, 0),
- 	       pll->reg_base + RK3399_PLLCON(3));
-+	rockchip_rk3399_pll_wait_lock(pll);
- 
- 	return 0;
- }
+Changes in v6: None
+Changes in v5: None
+Changes in v4:
+- use uppercase DMA for description
+
+Changes in v3: None
+Changes in v2: None
+
+ .../devicetree/bindings/mtd/rockchip-sfc.txt       | 31 ++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+
+diff --git a/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+new file mode 100644
+index 0000000..1e449b0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
+@@ -0,0 +1,31 @@
++Rockchip Serial Flash Controller
++
++Required properties:
++- compatible : Should be
++		"rockchip,rv1108-sfc", "rockchip,sfc" for ROCKCHIP RV1108.
++- address-cells : Should be 1.
++- size-cells : Should be 0.
++- clocks: Must contain two entries for each entry in clock-names.
++- clock-names: Shall be "sfc" for the transfer-clock, and "hsfc" for
++		the peripheral clock.
++- interrupts : Should contain the interrupt for the device.
++- reg: Physical base address of the controller and length of memory mapped.
++
++Optional properties:
++- rockchip,sfc-no-dma: Indicate the controller doesn't support DMA transfer.
++
++Example:
++nor_flash: sfc@301c0000 {
++	compatible = "rockchip,rv1108-sfc", "rockchip,sfc";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
++	clock-names = "sfc", "hsfc";
++	interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
++	reg = <0x301c0000 0x1000>;
++	spi-nor@0 {
++		compatible = "jedec,spi-nor";
++		spi-max-frequency = <12000000>;
++		reg = <0>;
++	};
++};
 -- 
 1.9.1
-
-
