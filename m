@@ -1,43 +1,48 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [PATCH v2 1/6] arm64: dts: Add symlinks for cros-ec-keyboard and cros-ec-sbs
-Date: Tue, 21 Feb 2017 15:47:31 -0800
-Message-ID: <CAOesGMiim2WFfEAg-bJmWTwWn69=V_GuEg6AxsxPYMyzd3KFUw@mail.gmail.com>
-References: <20170210010521.78872-1-briannorris@chromium.org> <20170210010521.78872-2-briannorris@chromium.org>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: some fixes
+Date: Wed, 22 Feb 2017 08:54:48 +0800
+Message-ID: <58ACE158.9010508@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170210010521.78872-2-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Feb 9, 2017 at 5:05 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->
-> We'd like to be able to use the cros-ec-keyboard.dtsi and
-> cros-ec-sbs.dtsi snippets for arm64 devices.  Currently those files live
-> in the arm/boot/dts directory.
->
-> Let's follow the convention set by commit 8ee57b8182c4 ("ARM64: dts:
-> vexpress: Use a symlink to vexpress-v2m-rs1.dtsi from arch=arm") and use
-> a symlink.  Note that in this case we put the files in a new
-> "include/common" directory since these snippets may need to be
-> referenced by dts files in many different subdirectories.
-
-I'd rather have something like this:
-
-https://marc.info/?m=147547436324674&w=2
-
-Instead of having everybody move things over. I.e. make it easy to
-refer to the arm version from arm64 instead of creating a "common"
-layer inbetween.
-
-
--Olof
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgRGF2ZQoKU29tZSBmaXhlcywgbG9va3MgZ29vZCB0byBtZS4KCkJlc3QgcmVnYXJkcy4KClRo
+ZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgOWNhNzAzNTZhOTI2MDQwM2MxYmRhNDBk
+OTQyOTM1ZTU1ZDAwYzExYzoKCiAgIFJldmVydCAiZHJtOiBSZXN1cnJlY3QgYXRvbWljIHJtZmIg
+Y29kZSwgdjMiICgyMDE3LTAyLTE3IDEyOjM5OjA0ICsxMDAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0
+aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogICBodHRwczovL2dpdGh1Yi5jb20vbWFya3l6cS9rZXJu
+ZWwtZHJtLXJvY2tjaGlwLmdpdCAKZHJtLXJvY2tjaGlwLW5leHQtMjAxNy0wMi0yMgoKZm9yIHlv
+dSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDM2OTA2MjliODQ0Yjk2MWZjOWRkYTk4YjBmZmMxNmE2
+MDEwYTdmMjE6CgogICBkcm0vcm9ja2NoaXA6IHZvcDogdmVyaWZ5IHBpeGVsY2xvY2sgZm9yIGhk
+bWkgYW5kIGRpc3BsYXlwb3J0IAooMjAxNy0wMi0yMiAwODo0NDoyMiArMDgwMCkKCi0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
+QXJuZCBCZXJnbWFubiAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IGFkZCBleHRjb24gZGVwZW5k
+ZW5jeSBmb3IgRFAKCkNocmlzdG9waGUgSmFpbGxldCAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6
+IGNkbi1kcDogRml4IGVycm9yIGhhbmRsaW5nCgpNYXJrIFlhbyAoMyk6CiAgICAgICBkcm0vcm9j
+a2NoaXA6IHZvcDogbm8gbmVlZCB3YWl0IHZibGFuayBvbiBjcnRjIGVuYWJsZQogICAgICAgZHJt
+L3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBkaXNwbGF5IG1vZGUgd2l0aCB2b3AgbWF4X291dHB1dAog
+ICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBk
+aXNwbGF5cG9ydAoKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAg
+IHwgIDEgKwogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAgICAgfCAg
+NCArKystCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDU2
+IAorKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LQogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAgNyArKysr
+KysrCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDEzICsr
+KysrKysrKysrKysKICA1IGZpbGVzIGNoYW5nZWQsIDQyIGluc2VydGlvbnMoKyksIDM5IGRlbGV0
+aW9ucygtKQoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
