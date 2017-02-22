@@ -1,71 +1,67 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
-Date: Wed, 22 Feb 2017 17:10:12 -0500
-Message-ID: <CAOw6vbJO_TQnSAu6w7XHiMSYA+gB1tyHOvB7BMc7Q2+OMY=9=w@mail.gmail.com>
-References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
- <20170221153918.GA25168@art_vandelay>
- <20170222134314.016a4940.john@metanate.com>
- <CAOw6vbJoS2P5m31+bgWw3Sghz=EVGj0fpLgCFnbVEhzRujNCLw@mail.gmail.com>
- <20170222185543.71e20187.john@metanate.com>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] phy: rockchip-inno-usb2: fix spelling mistake: "connecetd" ->
+ "connected"
+Date: Wed, 22 Feb 2017 23:30:52 +0000
+Message-ID: <20170222233052.8016-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170222185543.71e20187.john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Yao <yzq@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBGZWIgMjIsIDIwMTcgYXQgMTo1NSBQTSwgSm9obiBLZWVwaW5nIDxqb2huQG1ldGFu
-YXRlLmNvbT4gd3JvdGU6Cj4gT24gV2VkLCAyMiBGZWIgMjAxNyAxMDo1NzowNSAtMDUwMCwgU2Vh
-biBQYXVsIHdyb3RlOgo+Cj4+IE9uIFdlZCwgRmViIDIyLCAyMDE3IGF0IDg6NDMgQU0sIEpvaG4g
-S2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+IHdyb3RlOgo+PiA+IE9uIFR1ZSwgMjEgRmViIDIw
-MTcgMTA6Mzk6MTggLTA1MDAsIFNlYW4gUGF1bCB3cm90ZToKPj4gPgo+PiA+PiBPbiBNb24sIEZl
-YiAyMCwgMjAxNyBhdCAwNDowMjoxNlBNICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPj4gPj4g
-PiBIaSBhbGwKPj4gPj4gPgo+PiA+PiA+IFtSZXNlbmQgdGhpcyB2NyB2ZXJzaW9uIHNlcmllcywg
-c2luY2UgdGhlcmUgYXJlIDUgbWFpbHMgaGF2ZSBnb25lIG1pc3NpbmcsIGxhc3QKPj4gPj4gPiB3
-ZWVrXQo+PiA+PiA+Cj4+ID4+ID4gVGhpcyB2ZXJzaW9uIGRvZXMgbm90IGNoYW5nZSB0aGUgZXhp
-c3RpbmcgdjYgcGF0Y2hlcywganVzdCB0byBhZGQgdGhlCj4+ID4+ID4gImJhbmR3aWR0aCBmaXgi
-IHBhdGNoIGJhY2ssIHNpbmNlIHdlIHJlYWxseSBuZWVkIGl0Lgo+PiA+PiA+Cj4+ID4+ID4gVGhp
-cyBwYXRjaCBzZXJpYWwgaXMgZm9yIFJLMzM5OSBNSVBJIERTSS4gVGhlIE1JUEkgRFNJIGNvbnRy
-b2xsZXIgb2YKPj4gPj4gPiBSSzMzOTkgaXMgYWxtb3N0IHRoZSBzYW1lIGFzIFJLMzI4OCwgZXhj
-ZXB0IGEgbGl0dGxlIGJpdCBvZiBkaWZmZXJlbmNlCj4+ID4+ID4gaW4gcGh5IGNsb2NrIGNvbnRy
-b2xsaW5nIGFuZCBwb3J0IGlkIHNlbGVjdGlvbiByZWdpc3Rlci4gVGhlc2UgcGF0Y2hlcwo+PiA+
-PiA+IGFkZCBSSzMzOTkgc3VwcG9ydCBhbmQgdGhlIHBvd2VyIGRvbWFpbiBzdXBwb3J0Lgo+PiA+
-PiA+Cj4+ID4+ID4gQW5kIHRoZXNlIHBhdGNoZXMgYmFzZSBvbiBKb2huIEtlZXBpbmcncyB2MyBw
-YXRjaGVzWzBdLCBpdCBmaXhlcyBtYW55IGJ1Z3MsCj4+ID4+ID4gdGhleSBoYXZlIGJlZW4gdGVz
-dGVkIG9uIHJrMzI4OCBldmIgYm9hcmQuCj4+ID4+Cj4+ID4+IERvIHdlIGhhdmUgYW4gRVRBIG9u
-IHdoZW4gSm9obiBpcyBwbGFubmluZyBvbiByZXNwaW5uaW5nIGhpcyBwYXRjaHNldCBiYXNlZCBv
-bgo+PiA+PiByZXZpZXcgZmVlZGJhY2s/Cj4+ID4KPj4gPiBJIGhhdmUgYWxsIG9mIHRoZSBjaGFu
-Z2VzIHF1ZXVlZCBidXQgSSB3YXMgaG9waW5nIHRvIGZpbmQgc29tZSB0aW1lIHRvCj4+ID4gdGVz
-dCB0aGUgbGF0ZXN0IHZlcnNpb24gYmVmb3JlIHNlbmRpbmcgaXQgb3V0OyB1bmZvcnR1bmF0ZWx5
-IGV2ZXJ5dGhpbmcKPj4gPiBlbHNlIGlzIG1vcmUgaW1wb3J0YW50IGF0IHRoZSBtb21lbnQuICBJ
-ZiB5b3UncmUgaGFwcHkgd2l0aCB0aGUgY2F2ZWF0Cj4+ID4gdGhhdCB0aGUgbGF0ZXN0IGNoYW5n
-ZXMgYXJlIGJ1aWxkIHRlc3RlZCBvbmx5IEkgY2FuIHByb2JhYmx5IHNlbmQgaXQKPj4gPiBvdXQg
-dGhpcyBhZnRlcm5vb24uCj4+Cj4+IEkgc3VwcG9zZSBteSBhbnN3ZXIgZGVwZW5kcyBvbiB3aGVu
-IHRoZSB0ZXN0ZWQgdmVyc2lvbiB3aWxsIGJlCj4+IGF2YWlsYWJsZSwgb3IgcGVyaGFwcyBDaHJp
-cyBjYW4gdGVzdCB0aGUgbmV3IHNldCBmb3IgeW91PyBJIGRvbid0IGhhdmUKPj4gYW55IHJvY2tj
-aGlwIGRldmljZXMgd2l0aCBtaXBpLCBzbyBpJ20gbm90IG11Y2ggaGVscC4KPgo+IE5vbmUgb2Yg
-dGhlIGNoYW5nZXMgc2NhcmUgbWUgdGhhdCBtdWNoLCBzbyBJIGRvbid0IGV4cGVjdCB0ZXN0aW5n
-IHRvCj4gdGhyb3cgdXAgYW55IHByb2JsZW1zIGJ1dCBJIGRvbid0IGxpa2UgdGhyb3dpbmcgb3V0
-IHBhdGNoZXMgd2l0aG91dCBhdAo+IGxlYXN0IGEgYmFzaWMgdGVzdCBydW4uCj4KCkFncmVlZC4g
-SSBkb24ndCB0aGluayB3ZSdyZSBpbiBzdWNoIGRlc3BlcmF0ZSBuZWVkIHRoYXQgd2Ugc2hvdWxk
-CmZvcmVnbyB0ZXN0aW5nLiBJZiBDaHJpcyBjYW4gcHJvdmlkZSBUZXN0ZWQtYnksIHlvdSBzaG91
-bGQgc2VuZCB0aGVtCm91dCwgb3RoZXJ3aXNlIEknbSBoYXBweSB0byB3YWl0LgoKVGhhbmtzIGZv
-ciB0aGUgdXBkYXRlLAoKU2VhbgoKCj4gSSBtaWdodCBoYXZlIHRpbWUgdG8gdGVzdCBvbiBGcmlk
-YXksIGJ1dCBJIGV4cGVjdCBDaHJpcyBoYXMgbW9yZSB0aW1lIHRvCj4gZGV2b3RlIHRvIHRoaXMg
-dGhhbiBJIGRvLCBzbyBtYXliZSBpdCdzIGJldHRlciBpZiBJIHNlbmQgdGhlIHBhdGNoZXMgb3V0
-Cj4gdG9tb3Jyb3cuCj4KPgo+IEpvaG4KCgoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5l
-ZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+From: Colin Ian King <colin.king@canonical.com>
+
+trivial fix to spelling mistake in dev_dbg message, also rejoin
+lines to clean up checkpatch warning
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/phy/phy-rockchip-inno-usb2.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
+index 4ea95c2..761a921 100644
+--- a/drivers/phy/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/phy-rockchip-inno-usb2.c
+@@ -554,8 +554,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 			case USB_CHG_STATE_DETECTED:
+ 				switch (rphy->chg_type) {
+ 				case POWER_SUPPLY_TYPE_USB:
+-					dev_dbg(&rport->phy->dev,
+-						"sdp cable is connecetd\n");
++					dev_dbg(&rport->phy->dev, "sdp cable is connected\n");
+ 					rockchip_usb2phy_power_on(rport->phy);
+ 					rport->state = OTG_STATE_B_PERIPHERAL;
+ 					notify_charger = true;
+@@ -563,16 +562,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 					cable = EXTCON_CHG_USB_SDP;
+ 					break;
+ 				case POWER_SUPPLY_TYPE_USB_DCP:
+-					dev_dbg(&rport->phy->dev,
+-						"dcp cable is connecetd\n");
++					dev_dbg(&rport->phy->dev, "dcp cable is connected\n");
+ 					rockchip_usb2phy_power_off(rport->phy);
+ 					notify_charger = true;
+ 					sch_work = true;
+ 					cable = EXTCON_CHG_USB_DCP;
+ 					break;
+ 				case POWER_SUPPLY_TYPE_USB_CDP:
+-					dev_dbg(&rport->phy->dev,
+-						"cdp cable is connecetd\n");
++					dev_dbg(&rport->phy->dev, "cdp cable is connected\n");
+ 					rockchip_usb2phy_power_on(rport->phy);
+ 					rport->state = OTG_STATE_B_PERIPHERAL;
+ 					notify_charger = true;
+-- 
+2.10.2
