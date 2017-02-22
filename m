@@ -1,48 +1,29 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
-Date: Wed, 22 Feb 2017 13:43:14 +0000
-Message-ID: <20170222134314.016a4940.john@metanate.com>
-References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
- <20170221153918.GA25168@art_vandelay>
+From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 0/2] add multiple clock handling for dwc2 driver
+Date: Wed, 22 Feb 2017 15:58:58 +0100
+Message-ID: <20170222145858.GA17465@kroah.com>
+References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
+ <706482a7-7d07-a902-9b47-1a791f9a8185@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170221153918.GA25168@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <706482a7-7d07-a902-9b47-1a791f9a8185-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAyMSBGZWIgMjAxNyAxMDozOToxOCAtMDUwMCwgU2VhbiBQYXVsIHdyb3RlOgoKPiBP
-biBNb24sIEZlYiAyMCwgMjAxNyBhdCAwNDowMjoxNlBNICswODAwLCBDaHJpcyBaaG9uZyB3cm90
-ZToKPiA+IEhpIGFsbAo+ID4gCj4gPiBbUmVzZW5kIHRoaXMgdjcgdmVyc2lvbiBzZXJpZXMsIHNp
-bmNlIHRoZXJlIGFyZSA1IG1haWxzIGhhdmUgZ29uZSBtaXNzaW5nLCBsYXN0Cj4gPiB3ZWVrXQo+
-ID4gCj4gPiBUaGlzIHZlcnNpb24gZG9lcyBub3QgY2hhbmdlIHRoZSBleGlzdGluZyB2NiBwYXRj
-aGVzLCBqdXN0IHRvIGFkZCB0aGUKPiA+ICJiYW5kd2lkdGggZml4IiBwYXRjaCBiYWNrLCBzaW5j
-ZSB3ZSByZWFsbHkgbmVlZCBpdC4KPiA+IAo+ID4gVGhpcyBwYXRjaCBzZXJpYWwgaXMgZm9yIFJL
-MzM5OSBNSVBJIERTSS4gVGhlIE1JUEkgRFNJIGNvbnRyb2xsZXIgb2YKPiA+IFJLMzM5OSBpcyBh
-bG1vc3QgdGhlIHNhbWUgYXMgUkszMjg4LCBleGNlcHQgYSBsaXR0bGUgYml0IG9mIGRpZmZlcmVu
-Y2UKPiA+IGluIHBoeSBjbG9jayBjb250cm9sbGluZyBhbmQgcG9ydCBpZCBzZWxlY3Rpb24gcmVn
-aXN0ZXIuIFRoZXNlIHBhdGNoZXMKPiA+IGFkZCBSSzMzOTkgc3VwcG9ydCBhbmQgdGhlIHBvd2Vy
-IGRvbWFpbiBzdXBwb3J0Lgo+ID4gCj4gPiBBbmQgdGhlc2UgcGF0Y2hlcyBiYXNlIG9uIEpvaG4g
-S2VlcGluZydzIHYzIHBhdGNoZXNbMF0sIGl0IGZpeGVzIG1hbnkgYnVncywKPiA+IHRoZXkgaGF2
-ZSBiZWVuIHRlc3RlZCBvbiByazMyODggZXZiIGJvYXJkLiAgCj4gCj4gRG8gd2UgaGF2ZSBhbiBF
-VEEgb24gd2hlbiBKb2huIGlzIHBsYW5uaW5nIG9uIHJlc3Bpbm5pbmcgaGlzIHBhdGNoc2V0IGJh
-c2VkIG9uCj4gcmV2aWV3IGZlZWRiYWNrPwoKSSBoYXZlIGFsbCBvZiB0aGUgY2hhbmdlcyBxdWV1
-ZWQgYnV0IEkgd2FzIGhvcGluZyB0byBmaW5kIHNvbWUgdGltZSB0bwp0ZXN0IHRoZSBsYXRlc3Qg
-dmVyc2lvbiBiZWZvcmUgc2VuZGluZyBpdCBvdXQ7IHVuZm9ydHVuYXRlbHkgZXZlcnl0aGluZwpl
-bHNlIGlzIG1vcmUgaW1wb3J0YW50IGF0IHRoZSBtb21lbnQuICBJZiB5b3UncmUgaGFwcHkgd2l0
-aCB0aGUgY2F2ZWF0CnRoYXQgdGhlIGxhdGVzdCBjaGFuZ2VzIGFyZSBidWlsZCB0ZXN0ZWQgb25s
-eSBJIGNhbiBwcm9iYWJseSBzZW5kIGl0Cm91dCB0aGlzIGFmdGVybm9vbi4KCgpKb2huCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Wed, Feb 22, 2017 at 09:29:43AM +0800, Frank Wang wrote:
+> Hi John and Greg,
+> 
+> Friendly ping... :-)
+
+I'm not the one to take dwc2 patches, sorry, nothing I can do here,
+especially in the middle of the merge window...
+
+greg k-h
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
