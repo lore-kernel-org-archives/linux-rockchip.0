@@ -1,146 +1,128 @@
-From: Jose Abreu <Jose.Abreu@synopsys.com>
+From: "Nickey.Yang" <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH] drm: bridge: dw-hdmi: support i2c extended read mode
-Date: Wed, 22 Feb 2017 09:51:18 +0000
-Message-ID: <3f562fa6-886a-104f-62be-e0b1cbb8e5f7@synopsys.com>
+Date: Wed, 22 Feb 2017 19:11:09 +0800
+Message-ID: <a857310f-8ca7-428b-f121-ec012ac29975@rock-chips.com>
 References: <1487749545-5349-1-git-send-email-nickey.yang@rock-chips.com>
+ <3f562fa6-886a-104f-62be-e0b1cbb8e5f7@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1487749545-5349-1-git-send-email-nickey.yang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nickey Yang <nickey.yang@rock-chips.com>, architt@codeaurora.org, airlied@linux.ie
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, laurent.pinchart+renesas@ideasonboard.com, Jose.Abreu@synopsys.com, andy.yan@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3f562fa6-886a-104f-62be-e0b1cbb8e5f7-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jose Abreu <Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org
+Cc: laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Nickey,
-
-
-On 22-02-2017 07:45, Nickey Yang wrote:
-> "I2C Master Interface Extended Read Mode" implements a segment
-> pointer-based read operation using the Special Register configuration.
->
-> This patch fix https://urldefense.proofpoint.com/v2/url?u=https-3A__patchwork.kernel.org_patch_7098101_&d=DwIBAg&c=DPL6_X_6JkXFx7AXWqB0tg&r=yaVFU4TjGY0gVF8El1uKcisy6TPsyCl9uN7Wsis-qhY&m=GO5hTo1pTsXMTs-_YDONdmAGQyk8vf0XXA5s-P77fPo&s=cy1I1t3kDvC0ihSnmEqbDx-PiPvzXaksyM9G240RSmE&e=  mentioned
-> "The current implementation does not support "I2C Master Interface
-> Extended Read Mode" to read data addressed by non-zero segment
-> pointer, this means that if EDID has more than 1 extension blocks"
->
-> With this patch,dw-hdmi can read EDID data with 1/2/4 blocks.
-
-Can't read an EDID with 3 extension blocks? Why? (I'm not reading
-the spec so I don't know if this is possible to exist. Maybe only
-an even number of blocks is allowed).
-
->
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> ---
->  drivers/gpu/drm/bridge/dw-hdmi.c | 38 ++++++++++++++++++++++++--------------
->  1 file changed, 24 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
-> index 9a9ec27..6ad7b87 100644
-> --- a/drivers/gpu/drm/bridge/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
-> @@ -33,6 +33,7 @@
->  #include "dw-hdmi-audio.h"
->  
->  #define HDMI_EDID_LEN		512
-> +#define DDC_SEGMENT_ADDR       0x30
->  
->  #define RGB			0
->  #define YCBCR444		1
-> @@ -111,6 +112,7 @@ struct dw_hdmi_i2c {
->  
->  	u8			slave_reg;
->  	bool			is_regaddr;
-> +	bool			is_segment;
->  };
->  
->  struct dw_hdmi_phy_data {
-> @@ -258,8 +260,12 @@ static int dw_hdmi_i2c_read(struct dw_hdmi *hdmi,
->  		reinit_completion(&i2c->cmp);
->  
->  		hdmi_writeb(hdmi, i2c->slave_reg++, HDMI_I2CM_ADDRESS);
-> -		hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ,
-> -			    HDMI_I2CM_OPERATION);
-> +		if (i2c->is_segment)
-> +			hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ_EXT,
-> +				    HDMI_I2CM_OPERATION);
-> +		else
-> +			hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ,
-> +				    HDMI_I2CM_OPERATION);
->  
->  		stat = wait_for_completion_timeout(&i2c->cmp, HZ / 10);
->  		if (!stat)
-> @@ -271,6 +277,7 @@ static int dw_hdmi_i2c_read(struct dw_hdmi *hdmi,
->  
->  		*buf++ = hdmi_readb(hdmi, HDMI_I2CM_DATAI);
->  	}
-> +	i2c->is_segment = false;
->  
->  	return 0;
->  }
-> @@ -320,12 +327,6 @@ static int dw_hdmi_i2c_xfer(struct i2c_adapter *adap,
->  	dev_dbg(hdmi->dev, "xfer: num: %d, addr: %#x\n", num, addr);
->  
->  	for (i = 0; i < num; i++) {
-> -		if (msgs[i].addr != addr) {
-> -			dev_warn(hdmi->dev,
-> -				 "unsupported transfer, changed slave address\n");
-> -			return -EOPNOTSUPP;
-> -		}
-> -
->  		if (msgs[i].len == 0) {
->  			dev_dbg(hdmi->dev,
->  				"unsupported transfer %d/%d, no data\n",
-> @@ -345,15 +346,24 @@ static int dw_hdmi_i2c_xfer(struct i2c_adapter *adap,
->  	/* Set slave device register address on transfer */
->  	i2c->is_regaddr = false;
->  
-> +	/* Set segment pointer for I2C extended read mode operation */
-> +	i2c->is_segment = false;
-> +
->  	for (i = 0; i < num; i++) {
->  		dev_dbg(hdmi->dev, "xfer: num: %d/%d, len: %d, flags: %#x\n",
->  			i + 1, num, msgs[i].len, msgs[i].flags);
-> -
-> -		if (msgs[i].flags & I2C_M_RD)
-> -			ret = dw_hdmi_i2c_read(hdmi, msgs[i].buf, msgs[i].len);
-> -		else
-> -			ret = dw_hdmi_i2c_write(hdmi, msgs[i].buf, msgs[i].len);
-> -
-> +		if (msgs[i].addr == DDC_SEGMENT_ADDR && msgs[i].len == 1) {
-> +			i2c->is_segment = true;
-> +			hdmi_writeb(hdmi, DDC_SEGMENT_ADDR, HDMI_I2CM_SEGADDR);
-> +			hdmi_writeb(hdmi, *msgs[i].buf, HDMI_I2CM_SEGPTR);
-
-Hmm, this does not match what I have here internally but I may
-have something wrong. You tested this using an EDID with how many
-extension blocks?
-
-Anyway, this is what I have:
-    if(msgs[i].addr == DDC_SEGMENT_ADDR && msgs[i].len == 1) {
-        hdmi_writeb(hdmi, msgs[i].buf[0], HDMI_I2CM_SEGADDR);
-        [and segptr is 0x0]
-    }
-
-I probably may have something wrong but I remember I tested this
-a long time ago using an HDMI 2.0 EDID and it worked fine. BUT, I
-have special cases for other addresses (0x50 and 0x54), I can't
-remember if these are for EDID or for SCDC. I can send you the
-code I have if you want.
-
-Best regards,
-Jose Miguel Abreu
-
-> +		} else {
-> +			if (msgs[i].flags & I2C_M_RD)
-> +				ret = dw_hdmi_i2c_read(hdmi, msgs[i].buf,
-> +						       msgs[i].len);
-> +			else
-> +				ret = dw_hdmi_i2c_write(hdmi, msgs[i].buf,
-> +							msgs[i].len);
-> +		}
->  		if (ret < 0)
->  			break;
->  	}
+SGkgSm9zZSwKCgrlnKggMjAxN+W5tDAy5pyIMjLml6UgMTc6NTEsIEpvc2UgQWJyZXUg5YaZ6YGT
+Ogo+IEhpIE5pY2tleSwKPgo+Cj4gT24gMjItMDItMjAxNyAwNzo0NSwgTmlja2V5IFlhbmcgd3Jv
+dGU6Cj4+ICJJMkMgTWFzdGVyIEludGVyZmFjZSBFeHRlbmRlZCBSZWFkIE1vZGUiIGltcGxlbWVu
+dHMgYSBzZWdtZW50Cj4+IHBvaW50ZXItYmFzZWQgcmVhZCBvcGVyYXRpb24gdXNpbmcgdGhlIFNw
+ZWNpYWwgUmVnaXN0ZXIgY29uZmlndXJhdGlvbi4KPj4KPj4gVGhpcyBwYXRjaCBmaXggaHR0cHM6
+Ly91cmxkZWZlbnNlLnByb29mcG9pbnQuY29tL3YyL3VybD91PWh0dHBzLTNBX19wYXRjaHdvcmsu
+a2VybmVsLm9yZ19wYXRjaF83MDk4MTAxXyZkPUR3SUJBZyZjPURQTDZfWF82SmtYRng3QVhXcUIw
+dGcmcj15YVZGVTRUakdZMGdWRjhFbDF1S2Npc3k2VFBzeUNsOXVON1dzaXMtcWhZJm09R081aFRv
+MXBUc1hNVHMtX1lET05kbUFHUXlrOHZmMFhYQTVzLVA3N2ZQbyZzPWN5MUkxdDNrRHZDMGloU25t
+RXFiRHgtUGlQdnpYYWtzeU05RzI0MFJTbUUmZT0gIG1lbnRpb25lZAo+PiAiVGhlIGN1cnJlbnQg
+aW1wbGVtZW50YXRpb24gZG9lcyBub3Qgc3VwcG9ydCAiSTJDIE1hc3RlciBJbnRlcmZhY2UKPj4g
+RXh0ZW5kZWQgUmVhZCBNb2RlIiB0byByZWFkIGRhdGEgYWRkcmVzc2VkIGJ5IG5vbi16ZXJvIHNl
+Z21lbnQKPj4gcG9pbnRlciwgdGhpcyBtZWFucyB0aGF0IGlmIEVESUQgaGFzIG1vcmUgdGhhbiAx
+IGV4dGVuc2lvbiBibG9ja3MiCj4+Cj4+IFdpdGggdGhpcyBwYXRjaCxkdy1oZG1pIGNhbiByZWFk
+IEVESUQgZGF0YSB3aXRoIDEvMi80IGJsb2Nrcy4KPiBDYW4ndCByZWFkIGFuIEVESUQgd2l0aCAz
+IGV4dGVuc2lvbiBibG9ja3M/IFdoeT8gKEknbSBub3QgcmVhZGluZwo+IHRoZSBzcGVjIHNvIEkg
+ZG9uJ3Qga25vdyBpZiB0aGlzIGlzIHBvc3NpYmxlIHRvIGV4aXN0LiBNYXliZSBvbmx5Cj4gYW4g
+ZXZlbiBudW1iZXIgb2YgYmxvY2tzIGlzIGFsbG93ZWQpLgo+ClJlYWQgRURJRCBmdW5jIGlzIGRy
+bV9kb19wcm9iZV9kZGNfZWRpZCAgICAoaW4gCmRyaXZlcnMvZ3B1L2RybS9kcm1fZWRpZC5jICAg
+ICBMaW5lOjEyMTUpCndoZW4gYmxvY2sgPSAzICBtZWFucyAmbXNnc1szXS5hZGRyID0gRERDX1NF
+R01FTlRfQUREUigweDMwKSAsYnV0IGluIApkd19oZG1pX2kyY194ZmVyCmxpbmUgMjk5ICBtc2dz
+W2ldLmFkZHIgIT0gYWRkciAoMHg1MCksICBpdCB3aWxsIHByaW50ayAidW5zdXBwb3J0ZWQgCnRy
+YW5zZmVyLCBjaGFuZ2VkIHNsYXZlIGFkZHJlc3MiCmFuZCByZXR1cm4gLUVPUE5PVFNVUFAuCgpp
+biBmYWN0LDB4MzAgbm90IG1lYW5zIGNoYW5nZSBzbGF2ZSBhZGRyZXNzIGJ1dCBtZWFucyBzZWdt
+ZW50IGFkZHJlc3MuCgo+PiBTaWduZWQtb2ZmLWJ5OiBOaWNrZXkgWWFuZyA8bmlja2V5LnlhbmdA
+cm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRt
+aS5jIHwgMzggKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0KPj4gICAxIGZp
+bGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMTQgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvZHctaGRtaS5jCj4+IGluZGV4IDlhOWVjMjcuLjZhZDdiODcgMTAwNjQ0Cj4+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvZHctaGRtaS5jCj4+IEBAIC0zMyw2ICszMyw3IEBACj4+ICAgI2luY2x1ZGUg
+ImR3LWhkbWktYXVkaW8uaCIKPj4gICAKPj4gICAjZGVmaW5lIEhETUlfRURJRF9MRU4JCTUxMgo+
+PiArI2RlZmluZSBERENfU0VHTUVOVF9BRERSICAgICAgIDB4MzAKPj4gICAKPj4gICAjZGVmaW5l
+IFJHQgkJCTAKPj4gICAjZGVmaW5lIFlDQkNSNDQ0CQkxCj4+IEBAIC0xMTEsNiArMTEyLDcgQEAg
+c3RydWN0IGR3X2hkbWlfaTJjIHsKPj4gICAKPj4gICAJdTgJCQlzbGF2ZV9yZWc7Cj4+ICAgCWJv
+b2wJCQlpc19yZWdhZGRyOwo+PiArCWJvb2wJCQlpc19zZWdtZW50Owo+PiAgIH07Cj4+ICAgCj4+
+ICAgc3RydWN0IGR3X2hkbWlfcGh5X2RhdGEgewo+PiBAQCAtMjU4LDggKzI2MCwxMiBAQCBzdGF0
+aWMgaW50IGR3X2hkbWlfaTJjX3JlYWQoc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+ICAgCQlyZWlu
+aXRfY29tcGxldGlvbigmaTJjLT5jbXApOwo+PiAgIAo+PiAgIAkJaGRtaV93cml0ZWIoaGRtaSwg
+aTJjLT5zbGF2ZV9yZWcrKywgSERNSV9JMkNNX0FERFJFU1MpOwo+PiAtCQloZG1pX3dyaXRlYiho
+ZG1pLCBIRE1JX0kyQ01fT1BFUkFUSU9OX1JFQUQsCj4+IC0JCQkgICAgSERNSV9JMkNNX09QRVJB
+VElPTik7Cj4+ICsJCWlmIChpMmMtPmlzX3NlZ21lbnQpCj4+ICsJCQloZG1pX3dyaXRlYihoZG1p
+LCBIRE1JX0kyQ01fT1BFUkFUSU9OX1JFQURfRVhULAo+PiArCQkJCSAgICBIRE1JX0kyQ01fT1BF
+UkFUSU9OKTsKPj4gKwkJZWxzZQo+PiArCQkJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9JMkNNX09Q
+RVJBVElPTl9SRUFELAo+PiArCQkJCSAgICBIRE1JX0kyQ01fT1BFUkFUSU9OKTsKPj4gICAKPj4g
+ICAJCXN0YXQgPSB3YWl0X2Zvcl9jb21wbGV0aW9uX3RpbWVvdXQoJmkyYy0+Y21wLCBIWiAvIDEw
+KTsKPj4gICAJCWlmICghc3RhdCkKPj4gQEAgLTI3MSw2ICsyNzcsNyBAQCBzdGF0aWMgaW50IGR3
+X2hkbWlfaTJjX3JlYWQoc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+ICAgCj4+ICAgCQkqYnVmKysg
+PSBoZG1pX3JlYWRiKGhkbWksIEhETUlfSTJDTV9EQVRBSSk7Cj4+ICAgCX0KPj4gKwlpMmMtPmlz
+X3NlZ21lbnQgPSBmYWxzZTsKPj4gICAKPj4gICAJcmV0dXJuIDA7Cj4+ICAgfQo+PiBAQCAtMzIw
+LDEyICszMjcsNiBAQCBzdGF0aWMgaW50IGR3X2hkbWlfaTJjX3hmZXIoc3RydWN0IGkyY19hZGFw
+dGVyICphZGFwLAo+PiAgIAlkZXZfZGJnKGhkbWktPmRldiwgInhmZXI6IG51bTogJWQsIGFkZHI6
+ICUjeFxuIiwgbnVtLCBhZGRyKTsKPj4gICAKPj4gICAJZm9yIChpID0gMDsgaSA8IG51bTsgaSsr
+KSB7Cj4+IC0JCWlmIChtc2dzW2ldLmFkZHIgIT0gYWRkcikgewo+PiAtCQkJZGV2X3dhcm4oaGRt
+aS0+ZGV2LAo+PiAtCQkJCSAidW5zdXBwb3J0ZWQgdHJhbnNmZXIsIGNoYW5nZWQgc2xhdmUgYWRk
+cmVzc1xuIik7Cj4+IC0JCQlyZXR1cm4gLUVPUE5PVFNVUFA7Cj4+IC0JCX0KPj4gLQo+PiAgIAkJ
+aWYgKG1zZ3NbaV0ubGVuID09IDApIHsKPj4gICAJCQlkZXZfZGJnKGhkbWktPmRldiwKPj4gICAJ
+CQkJInVuc3VwcG9ydGVkIHRyYW5zZmVyICVkLyVkLCBubyBkYXRhXG4iLAo+PiBAQCAtMzQ1LDE1
+ICszNDYsMjQgQEAgc3RhdGljIGludCBkd19oZG1pX2kyY194ZmVyKHN0cnVjdCBpMmNfYWRhcHRl
+ciAqYWRhcCwKPj4gICAJLyogU2V0IHNsYXZlIGRldmljZSByZWdpc3RlciBhZGRyZXNzIG9uIHRy
+YW5zZmVyICovCj4+ICAgCWkyYy0+aXNfcmVnYWRkciA9IGZhbHNlOwo+PiAgIAo+PiArCS8qIFNl
+dCBzZWdtZW50IHBvaW50ZXIgZm9yIEkyQyBleHRlbmRlZCByZWFkIG1vZGUgb3BlcmF0aW9uICov
+Cj4+ICsJaTJjLT5pc19zZWdtZW50ID0gZmFsc2U7Cj4+ICsKPj4gICAJZm9yIChpID0gMDsgaSA8
+IG51bTsgaSsrKSB7Cj4+ICAgCQlkZXZfZGJnKGhkbWktPmRldiwgInhmZXI6IG51bTogJWQvJWQs
+IGxlbjogJWQsIGZsYWdzOiAlI3hcbiIsCj4+ICAgCQkJaSArIDEsIG51bSwgbXNnc1tpXS5sZW4s
+IG1zZ3NbaV0uZmxhZ3MpOwo+PiAtCj4+IC0JCWlmIChtc2dzW2ldLmZsYWdzICYgSTJDX01fUkQp
+Cj4+IC0JCQlyZXQgPSBkd19oZG1pX2kyY19yZWFkKGhkbWksIG1zZ3NbaV0uYnVmLCBtc2dzW2ld
+Lmxlbik7Cj4+IC0JCWVsc2UKPj4gLQkJCXJldCA9IGR3X2hkbWlfaTJjX3dyaXRlKGhkbWksIG1z
+Z3NbaV0uYnVmLCBtc2dzW2ldLmxlbik7Cj4+IC0KPj4gKwkJaWYgKG1zZ3NbaV0uYWRkciA9PSBE
+RENfU0VHTUVOVF9BRERSICYmIG1zZ3NbaV0ubGVuID09IDEpIHsKPj4gKwkJCWkyYy0+aXNfc2Vn
+bWVudCA9IHRydWU7Cj4+ICsJCQloZG1pX3dyaXRlYihoZG1pLCBERENfU0VHTUVOVF9BRERSLCBI
+RE1JX0kyQ01fU0VHQUREUik7Cj4+ICsJCQloZG1pX3dyaXRlYihoZG1pLCAqbXNnc1tpXS5idWYs
+IEhETUlfSTJDTV9TRUdQVFIpOwo+IEhtbSwgdGhpcyBkb2VzIG5vdCBtYXRjaCB3aGF0IEkgaGF2
+ZSBoZXJlIGludGVybmFsbHkgYnV0IEkgbWF5Cj4gaGF2ZSBzb21ldGhpbmcgd3JvbmcuIFlvdSB0
+ZXN0ZWQgdGhpcyB1c2luZyBhbiBFRElEIHdpdGggaG93IG1hbnkKPiBleHRlbnNpb24gYmxvY2tz
+Pwo+Cj4gQW55d2F5LCB0aGlzIGlzIHdoYXQgSSBoYXZlOgo+ICAgICAgaWYobXNnc1tpXS5hZGRy
+ID09IEREQ19TRUdNRU5UX0FERFIgJiYgbXNnc1tpXS5sZW4gPT0gMSkgewo+ICAgICAgICAgIGhk
+bWlfd3JpdGViKGhkbWksIG1zZ3NbaV0uYnVmWzBdLCBIRE1JX0kyQ01fU0VHQUREUik7Cj4gICAg
+ICAgICAgW2FuZCBzZWdwdHIgaXMgMHgwXQo+ICAgICAgfQo+Cj4gSSBwcm9iYWJseSBtYXkgaGF2
+ZSBzb21ldGhpbmcgd3JvbmcgYnV0IEkgcmVtZW1iZXIgSSB0ZXN0ZWQgdGhpcwo+IGEgbG9uZyB0
+aW1lIGFnbyB1c2luZyBhbiBIRE1JIDIuMCBFRElEIGFuZCBpdCB3b3JrZWQgZmluZS4gQlVULCBJ
+Cj4gaGF2ZSBzcGVjaWFsIGNhc2VzIGZvciBvdGhlciBhZGRyZXNzZXMgKDB4NTAgYW5kIDB4NTQp
+LCBJIGNhbid0Cj4gcmVtZW1iZXIgaWYgdGhlc2UgYXJlIGZvciBFRElEIG9yIGZvciBTQ0RDLiBJ
+IGNhbiBzZW5kIHlvdSB0aGUKPiBjb2RlIEkgaGF2ZSBpZiB5b3Ugd2FudC4KPgo+IEJlc3QgcmVn
+YXJkcywKPiBKb3NlIE1pZ3VlbCBBYnJldQo+CkkgaGF2ZSB0ZXN0ZWQgdGhpcyB1c2luZyBhbiBF
+RElEIHdpdGggMC8xLzMgZXh0ZW5zaW9uIGJsb2NrcyBpbmNsdWRpbmcgSERNSTEuNC8yLjAgRURJ
+RC4KV2UgcGFzcyBIRE1JIENERiBjZXJ0aWZpY2F0aW9uICBzdWNjZXNzZnVsbHkgd2l0aCB0aGlz
+LgooICBUZXN0ICBJdGVtIDctMTogIEVESUQgUmVsYXRlZCBCZWhhdmlvciAgMi1CbG9jayBFRElE
+ICwgNC1CbG9jayBFRElEKQoKMHg1MCAgaXMgZGRjIHNsYXZlIGFkZHJlc3MgZm9yIHJlYWQgZWRp
+ZC4KMHg1NCAgaXMgZGRjIHNsYXZlIGFkZHJlc3MgZm9yIHNjZGMgb3BlcmF0aW9uLgoweDMwIGlz
+IGRkYyAgc2VnbWVudCBhZGRyZXNzLgooc2VnYWRkcgpUaGlzIHJlZ2lzdGVyIGNvbmZpZ3VyZXMg
+dGhlIHNlZ21lbnQgYWRkcmVzcyBmb3IgZXh0ZW5kZWQgUi9XIGRlc3RpbmF0aW9uIGFuZCBpcyB1
+c2VkIGZvciBFRElEIHJlYWRpbmcKb3BlcmF0aW9ucywgcGFydGljdWxhcmx5IGZvciB0aGUgRXh0
+ZW5kZWQgRGF0YSBSZWFkIE9wZXJhdGlvbiBmb3IgRW5oYW5jZWQgRERDKQoKQmVzdCByZWdhcmRz
+LApOaWNrZXkgWWFuZwoKPj4gKwkJfSBlbHNlIHsKPj4gKwkJCWlmIChtc2dzW2ldLmZsYWdzICYg
+STJDX01fUkQpCj4+ICsJCQkJcmV0ID0gZHdfaGRtaV9pMmNfcmVhZChoZG1pLCBtc2dzW2ldLmJ1
+ZiwKPj4gKwkJCQkJCSAgICAgICBtc2dzW2ldLmxlbik7Cj4+ICsJCQllbHNlCj4+ICsJCQkJcmV0
+ID0gZHdfaGRtaV9pMmNfd3JpdGUoaGRtaSwgbXNnc1tpXS5idWYsCj4+ICsJCQkJCQkJbXNnc1tp
+XS5sZW4pOwo+PiArCQl9Cj4+ICAgCQlpZiAocmV0IDwgMCkKPj4gICAJCQlicmVhazsKPj4gICAJ
+fQo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
