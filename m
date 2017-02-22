@@ -1,35 +1,61 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 7/7] ARM: rockchip: reanme RK1108 to RV1108
-Date: Wed, 22 Feb 2017 09:10:16 -0600
-Message-ID: <20170222151016.bsiyv2j5sg2qvkhm@rob-hp-laptop>
-References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
- <1486984234-32693-1-git-send-email-andy.yan@rock-chips.com>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
+Date: Wed, 22 Feb 2017 10:57:05 -0500
+Message-ID: <CAOw6vbJoS2P5m31+bgWw3Sghz=EVGj0fpLgCFnbVEhzRujNCLw@mail.gmail.com>
+References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
+ <20170221153918.GA25168@art_vandelay> <20170222134314.016a4940.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1486984234-32693-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20170222134314.016a4940.john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2yhQFI55V6+gNQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux ARM Kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 13, 2017 at 07:10:34PM +0800, Andy Yan wrote:
-> Rockchip finally named the SOC as RV1108, so change it
-> for compatible.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  Documentation/devicetree/bindings/arm/rockchip.txt   | 4 ++--
->  arch/arm/boot/dts/Makefile                           | 2 +-
->  arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} | 7 ++++---
->  3 files changed, 7 insertions(+), 6 deletions(-)
->  rename arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} (89%)
+On Wed, Feb 22, 2017 at 8:43 AM, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org> wrote:
+> On Tue, 21 Feb 2017 10:39:18 -0500, Sean Paul wrote:
+>
+>> On Mon, Feb 20, 2017 at 04:02:16PM +0800, Chris Zhong wrote:
+>> > Hi all
+>> >
+>> > [Resend this v7 version series, since there are 5 mails have gone missing, last
+>> > week]
+>> >
+>> > This version does not change the existing v6 patches, just to add the
+>> > "bandwidth fix" patch back, since we really need it.
+>> >
+>> > This patch serial is for RK3399 MIPI DSI. The MIPI DSI controller of
+>> > RK3399 is almost the same as RK3288, except a little bit of difference
+>> > in phy clock controlling and port id selection register. These patches
+>> > add RK3399 support and the power domain support.
+>> >
+>> > And these patches base on John Keeping's v3 patches[0], it fixes many bugs,
+>> > they have been tested on rk3288 evb board.
+>>
+>> Do we have an ETA on when John is planning on respinning his patchset based on
+>> review feedback?
+>
+> I have all of the changes queued but I was hoping to find some time to
+> test the latest version before sending it out; unfortunately everything
+> else is more important at the moment.  If you're happy with the caveat
+> that the latest changes are build tested only I can probably send it
+> out this afternoon.
 
-Would be nice to have the information in the discussion summarized here.
+I suppose my answer depends on when the tested version will be
+available, or perhaps Chris can test the new set for you? I don't have
+any rockchip devices with mipi, so i'm not much help.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sean
+
+>
+>
+> John
+
+
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
