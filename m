@@ -1,14 +1,15 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 0/2] add multiple clock handling for dwc2 driver
-Date: Wed, 22 Feb 2017 20:19:29 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE300772909021B42BA1C@US01WEMBX2.internal.synopsys.com>
-References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
- <706482a7-7d07-a902-9b47-1a791f9a8185@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/7] dt-bindings: rk1108-cru: rename RK1108 to RV1108
+Date: Wed, 22 Feb 2017 14:47:46 -0600
+Message-ID: <20170222204746.gcy4j6klz6fidrhq@rob-hp-laptop>
+References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+ <1486983857-32399-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1486983857-32399-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,46 +19,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2/21/2017 5:30 PM, Frank Wang wrote:
-> Hi John and Greg,
->
-> Friendly ping... :-)
->
+On Mon, Feb 13, 2017 at 07:04:17PM +0800, Andy Yan wrote:
+> Rockchip finally named the SOC as RV1108, so change it.
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  .../{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt}     | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>  rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt} (83%)
 
-Hi Frank,
-
-We'll take a look at this and get back to you soon.
-
-Regards,
-John
-
-
-> On 2017/2/10 11:06, Frank Wang wrote:
->> Resend this series to involve device tree maintainer and add 'Reviewed-by' tag for driver.
->>
->> The Current default dwc2 just handle one clock named otg, however, it may have
->> two or more clock need to manage for some new SoCs(such as RK3328), so this
->> adds change clk to clk's array of dwc2_hsotg to handle more clocks operation.
->>
->> Changes in v2:
->>   - amend dwc2 clocks property in DT.
->>   - change DWC2_MAX_CLKS to 5 and amend commit message.
->>
->> Frank Wang (2):
->>    Documentation: dt: dwc2: amend clocks property
->>    usb: dwc2: add multiple clocks handling
->>
->>   Documentation/devicetree/bindings/usb/dwc2.txt | 13 +++++++--
->>   drivers/usb/dwc2/core.h                        |  5 +++-
->>   drivers/usb/dwc2/platform.c                    | 39 +++++++++++++++++---------
->>   3 files changed, 40 insertions(+), 17 deletions(-)
->>
->
-> BR.
-> Frank
->
->
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
