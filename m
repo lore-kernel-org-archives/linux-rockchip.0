@@ -1,59 +1,27 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [GIT PULL] drm/rockchip: some fixes
-Date: Wed, 22 Feb 2017 11:09:20 -0500
-Message-ID: <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
-References: <58ACE158.9010508@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 4/7] dt-bindings: rockchip,pinctrl: rename RK1108 to RV1108
+Date: Wed, 22 Feb 2017 19:33:05 +0100
+Message-ID: <27082192.QuVMo9lZhD@phil>
+References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com> <1486983983-32506-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <58ACE158.9010508@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1486983983-32506-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBGZWIgMjEsIDIwMTcgYXQgNzo1NCBQTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
-Y2hpcHMuY29tPiB3cm90ZToKPiBIaSBEYXZlCj4KPiBTb21lIGZpeGVzLCBsb29rcyBnb29kIHRv
-IG1lLgo+CgpIaSBNYXJrLApBcyB3ZSBkaXNjdXNzZWQsIHJvY2tjaGlwIHBhdGNoZXMgc2hvdWxk
-IG5vdyBnbyB0aHJvdWdoIC1taXNjLiBTaW5jZQo0LjEwIGlzIGFscmVhZHkgcmVsZWFzZWQsIEkn
-bGwgcHVzaCB0aGVzZSB0aHJvdWdoIG92ZXIgdGhlcmUuCgpTZWFuCgoKPiBCZXN0IHJlZ2FyZHMu
-Cj4KPiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDljYTcwMzU2YTkyNjA0MDNj
-MWJkYTQwZDk0MjkzNWU1NWQwMGMxMWM6Cj4KPiAgIFJldmVydCAiZHJtOiBSZXN1cnJlY3QgYXRv
-bWljIHJtZmIgY29kZSwgdjMiICgyMDE3LTAyLTE3IDEyOjM5OjA0ICsxMDAwKQo+Cj4gYXJlIGF2
-YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6Cj4KPiAgIGh0dHBzOi8vZ2l0aHViLmNv
-bS9tYXJreXpxL2tlcm5lbC1kcm0tcm9ja2NoaXAuZ2l0Cj4gZHJtLXJvY2tjaGlwLW5leHQtMjAx
-Ny0wMi0yMgo+Cj4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDM2OTA2MjliODQ0Yjk2
-MWZjOWRkYTk4YjBmZmMxNmE2MDEwYTdmMjE6Cj4KPiAgIGRybS9yb2NrY2hpcDogdm9wOiB2ZXJp
-ZnkgcGl4ZWxjbG9jayBmb3IgaGRtaSBhbmQgZGlzcGxheXBvcnQgKDIwMTctMDItMjIKPiAwODo0
-NDoyMiArMDgwMCkKPgo+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBBcm5kIEJlcmdtYW5uICgxKToKPiAgICAgICBkcm0v
-cm9ja2NoaXA6IGFkZCBleHRjb24gZGVwZW5kZW5jeSBmb3IgRFAKPgo+IENocmlzdG9waGUgSmFp
-bGxldCAoMSk6Cj4gICAgICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IEZpeCBlcnJvciBoYW5kbGlu
-Zwo+Cj4gTWFyayBZYW8gKDMpOgo+ICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBubyBuZWVkIHdh
-aXQgdmJsYW5rIG9uIGNydGMgZW5hYmxlCj4gICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlm
-eSBkaXNwbGF5IG1vZGUgd2l0aCB2b3AgbWF4X291dHB1dAo+ICAgICAgIGRybS9yb2NrY2hpcDog
-dm9wOiB2ZXJpZnkgcGl4ZWxjbG9jayBmb3IgaGRtaSBhbmQgZGlzcGxheXBvcnQKPgo+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgIHwgIDEgKwo+ICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyAgICAgIHwgIDQgKysrLQo+ICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNTYKPiArKysrKysrKysrKysr
-KysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgIDcgKysrKysrKwo+ICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgMTMgKysrKysrKysrKysrKwo+
-ICA1IGZpbGVzIGNoYW5nZWQsIDQyIGluc2VydGlvbnMoKyksIDM5IGRlbGV0aW9ucygtKQo+Cj4g
-LS0KPiDvvK1hcmsgWWFvCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAoKCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29v
-Z2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Am Montag, 13. Februar 2017, 19:06:23 CET schrieb Andy Yan:
+> Rockchip finally named the SOC as RV1108, so change it.
+> Also move the compatible list to one compatible per line.
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
