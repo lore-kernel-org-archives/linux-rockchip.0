@@ -1,47 +1,87 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 0/2] add multiple clock handling for dwc2 driver
-Date: Wed, 22 Feb 2017 09:29:43 +0800
-Message-ID: <706482a7-7d07-a902-9b47-1a791f9a8185@rock-chips.com>
-References: <1486695987-7280-1-git-send-email-frank.wang@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
+Date: Wed, 22 Feb 2017 09:44:11 +0800
+Message-ID: <58ACECEB.2080406@rock-chips.com>
+References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
+ <20170221153918.GA25168@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1486695987-7280-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170221153918.GA25168@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi John and Greg,
-
-Friendly ping... :-)
-
-On 2017/2/10 11:06, Frank Wang wrote:
-> Resend this series to involve device tree maintainer and add 'Reviewed-by' tag for driver.
->
-> The Current default dwc2 just handle one clock named otg, however, it may have
-> two or more clock need to manage for some new SoCs(such as RK3328), so this
-> adds change clk to clk's array of dwc2_hsotg to handle more clocks operation.
->
-> Changes in v2:
->   - amend dwc2 clocks property in DT.
->   - change DWC2_MAX_CLKS to 5 and amend commit message.
->
-> Frank Wang (2):
->    Documentation: dt: dwc2: amend clocks property
->    usb: dwc2: add multiple clocks handling
->
->   Documentation/devicetree/bindings/usb/dwc2.txt | 13 +++++++--
->   drivers/usb/dwc2/core.h                        |  5 +++-
->   drivers/usb/dwc2/platform.c                    | 39 +++++++++++++++++---------
->   3 files changed, 40 insertions(+), 17 deletions(-)
->
-
-BR.
-Frank
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgU2VhbgoKT24gMDIvMjEvMjAxNyAxMTozOSBQTSwgU2VhbiBQYXVsIHdyb3RlOgo+IE9uIE1v
+biwgRmViIDIwLCAyMDE3IGF0IDA0OjAyOjE2UE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+
+PiBIaSBhbGwKPj4KPj4gW1Jlc2VuZCB0aGlzIHY3IHZlcnNpb24gc2VyaWVzLCBzaW5jZSB0aGVy
+ZSBhcmUgNSBtYWlscyBoYXZlIGdvbmUgbWlzc2luZywgbGFzdAo+PiB3ZWVrXQo+Pgo+PiBUaGlz
+IHZlcnNpb24gZG9lcyBub3QgY2hhbmdlIHRoZSBleGlzdGluZyB2NiBwYXRjaGVzLCBqdXN0IHRv
+IGFkZCB0aGUKPj4gImJhbmR3aWR0aCBmaXgiIHBhdGNoIGJhY2ssIHNpbmNlIHdlIHJlYWxseSBu
+ZWVkIGl0Lgo+Pgo+PiBUaGlzIHBhdGNoIHNlcmlhbCBpcyBmb3IgUkszMzk5IE1JUEkgRFNJLiBU
+aGUgTUlQSSBEU0kgY29udHJvbGxlciBvZgo+PiBSSzMzOTkgaXMgYWxtb3N0IHRoZSBzYW1lIGFz
+IFJLMzI4OCwgZXhjZXB0IGEgbGl0dGxlIGJpdCBvZiBkaWZmZXJlbmNlCj4+IGluIHBoeSBjbG9j
+ayBjb250cm9sbGluZyBhbmQgcG9ydCBpZCBzZWxlY3Rpb24gcmVnaXN0ZXIuIFRoZXNlIHBhdGNo
+ZXMKPj4gYWRkIFJLMzM5OSBzdXBwb3J0IGFuZCB0aGUgcG93ZXIgZG9tYWluIHN1cHBvcnQuCj4+
+Cj4+IEFuZCB0aGVzZSBwYXRjaGVzIGJhc2Ugb24gSm9obiBLZWVwaW5nJ3MgdjMgcGF0Y2hlc1sw
+XSwgaXQgZml4ZXMgbWFueSBidWdzLAo+PiB0aGV5IGhhdmUgYmVlbiB0ZXN0ZWQgb24gcmszMjg4
+IGV2YiBib2FyZC4KPiBEbyB3ZSBoYXZlIGFuIEVUQSBvbiB3aGVuIEpvaG4gaXMgcGxhbm5pbmcg
+b24gcmVzcGlubmluZyBoaXMgcGF0Y2hzZXQgYmFzZWQgb24KPiByZXZpZXcgZmVlZGJhY2s/Cj4K
+SSBndWVzcyBKb2huIHdpbGwgc2VuZCB0aGUgdjQgcGF0Y2ggc29vbiwgc2luY2UgdGhlcmUgYXJl
+IG5vdCBtYW55IHBvaW50IApuZWVkIHRvIGNoYW5nZS4KQW5kIGFzIEkga25vdywgTWFyayBZYW8g
+aXMgZ29pbmcgdG8gbWVyZ2UgSm9obidzIHY0IHNlcmllcyB0byBoaXMgCmJyYW5jaCwgYW5kIHRo
+aXMgdjcgc2VyaWVzCndpbGwgYmUgbWVyZ2VkIGFmdGVyIHRoYXQuCgoKPj4gWzBdOgo+PiBbMDEv
+MjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA4OQo+PiBbMDIvMjRd
+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA2MQo+PiBbMDMvMjRdIGh0
+dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA2NQo+PiBbMDQvMjRdIGh0dHBz
+Oi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA3Nwo+PiBbMDUvMjRdIGh0dHBzOi8v
+cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMwo+PiBbMDYvMjRdIGh0dHBzOi8vcGF0
+Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzNwo+PiBbMDcvMjRdIGh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAyOQo+PiBbMDgvMjRdIGh0dHBzOi8vcGF0Y2h3b3Jr
+Lmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMQo+PiBbMDkvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtl
+cm5lbC5vcmcvcGF0Y2gvOTU0NDA4Mwo+PiBbMTAvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5l
+bC5vcmcvcGF0Y2gvOTU0NDA2Mwo+PiBbMTEvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
+cmcvcGF0Y2gvOTU0NDA4NQo+PiBbMTIvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
+cGF0Y2gvOTU0NDA5Mwo+PiBbMTMvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
+Y2gvOTU0NDA4MQo+PiBbMTQvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gv
+OTU0NDA1Nwo+PiBbMTUvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0
+NDA3OQo+PiBbMTYvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAz
+NQo+PiBbMTcvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDEwNQo+
+PiBbMTgvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA1OQo+PiBb
+MjEvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAwOQo+PiBbMjIv
+MjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA0OQo+PiBbMjMvMjRd
+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA1NQo+PiBbMjQvMjRdIGh0
+dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDEwOQo+Pgo+Pgo+PiBDaGFuZ2Vz
+IGluIHY2Ogo+PiAtIG5vIG5lZWQgY2hlY2sgcGh5X2NmZ19jbGsgYmVmb3JlIGVuYWJsZS9kaXNh
+YmxlCj4+Cj4+IENoYW5nZXMgaW4gdjU6Cj4+IC0gY2hlY2sgdGhlIGVycm9yIG9mIHBoeV9jZmdf
+Y2xrIGluIGR3X21pcGlfZHNpX2JpbmQKPj4KPj4gQ2hhbmdlcyBpbiB2NDoKPj4gLSByZW1vdmUg
+dGhlIHVucmVsYXRlZCBjaGFuZ2UKPj4KPj4gQ2hhbmdlcyBpbiB2MzoKPj4gLSBiYXNlIG9uIEpv
+aG4gS2VlcGluZydzIHBhdGNoIHNlcmllcwo+Pgo+PiBDaHJpcyBaaG9uZyAoNyk6Cj4+ICAgIGR0
+LWJpbmRpbmdzOiBhZGQgcmszMzk5IHN1cHBvcnQgZm9yIGR3LW1pcGktcm9ja2NoaXAKPj4gICAg
+ZHJtL3JvY2tjaGlwL2RzaTogZHctbWlwaTogc3VwcG9ydCBSSzMzOTkgbWlwaSBkc2kKPj4gICAg
+ZHJtL3JvY2tjaGlwL2RzaTogZHctbWlwaTogY29ycmVjdCB0aGUgY29kaW5nIHN0eWxlCj4+ICAg
+IGRybS9yb2NrY2hpcC9kc2k6IHJlbW92ZSBtb2RlX3ZhbGlkIGZ1bmN0aW9uCj4+ICAgIGR0LWJp
+bmRpbmdzOiBhZGQgcG93ZXIgZG9tYWluIG5vZGUgZm9yIGR3LW1pcGktcm9ja2NoaXAKPj4gICAg
+ZHJtL3JvY2tjaGlwL2RzaTogZml4IGluc3VmZmljaWVudCBiYW5kd2lkdGggb2Ygc29tZSBwYW5l
+bAo+PiAgICBkcm0vcm9ja2NoaXAvZHNpOiBhZGQgZHctbWlwaSBwb3dlciBkb21haW4gc3VwcG9y
+dAo+Pgo+PiAgIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAg
+ICAgIHwgICA3ICstCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMg
+ICAgICAgICAgICAgfCAxNjAgKysrKysrKysrKysrLS0tLS0tLS0tCj4+ICAgMiBmaWxlcyBjaGFu
+Z2VkLCAxMDAgaW5zZXJ0aW9ucygrKSwgNjcgZGVsZXRpb25zKC0pCj4+Cj4+IC0tIAo+PiAyLjYu
+Mwo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKPj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwKCi0tIApDaHJpcyBaaG9uZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
