@@ -1,50 +1,55 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 0/7] Rename RK1108 to RV1108
-Date: Thu, 23 Feb 2017 16:00:30 +0100
-Message-ID: <4369285.zq7cJYMXhu@phil>
-References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
- <0bbc4151-d954-1a27-48c3-1e8c9cb9e16f@rock-chips.com>
- <CACRpkdbNbGvwUq3uLgekimOwzBZCXf37JW9LCCqLm1so=CMNrw@mail.gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v2] drm/rockchip: cdn-dp: Fix error handling
+Date: Thu, 23 Feb 2017 11:48:12 -0500
+Message-ID: <20170223164812.GB24066@art_vandelay>
+References: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CACRpkdbNbGvwUq3uLgekimOwzBZCXf37JW9LCCqLm1so=CMNrw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20170220070815.23096-1-christophe.jaillet@wanadoo.fr>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTGludXMsCgpBbSBEb25uZXJzdGFnLCAyMy4gRmVicnVhciAyMDE3LCAxMToxNTo1NiBDRVQg
-c2NocmllYiBMaW51cyBXYWxsZWlqOgo+IE9uIFR1ZSwgRmViIDE0LCAyMDE3IGF0IDE6NDQgQU0s
-IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPiBIaSBIZWlrbyAm
-IFJvYjoKPiA+IAo+ID4gT24gMjAxN+W5tDAy5pyIMTPml6UgMjA6NTEsIEhlaWtvIFN0dWVibmVy
-IHdyb3RlOgo+ID4+IEhpIEFuZHksCj4gPj4gCj4gPj4gQW0gTW9udGFnLCAxMy4gRmVicnVhciAy
-MDE3LCAxODo1OToyNiBDRVQgc2NocmllYiBBbmR5IFlhbjoKPiA+Pj4gUm9ja2NoaXAgZmluYWxs
-eSBuYW1lZCB0aGlzIHNvYyBhcyBSVjExMDgsIHNvIGNoYW5nZQo+ID4+PiBSSzExMDgvcmsxMTA4
-IHRvIFJWMTEwOC9ydjExMDggZm9yIGNvbXBhdGlibGUuCj4gPj4gCj4gPj4gcmVuYW1pbmcgZXhp
-c3RpbmcgYmluZGluZ3MgKHRoYXQgaGF2ZSBiZWVuIGluIG11bHRpcGxlIGtlcm5lbCB2ZXJzaW9u
-cwo+ID4+IGFscmVhZHkpIGFsd2F5cyBpcyBhIGhvdCB0b3BpYy4gU28gSSdsbCBiZSBob3Bpbmcg
-Zm9yIFJvYiB0byBnaXZlIGEKPiA+PiBnby1haGVhZAo+ID4+IGZvciBpdCA6LSkgLgo+ID4+IAo+
-ID4+IEp1c3QgdG8gY29uZmlybSwgdGhlIHJrMTEwOC9ydjExMDggaXMgY29tcGxldGVseSBuZXcg
-dG8gdGhlIG1hcmtldCwgc28KPiA+PiB3ZSdyZQo+ID4+IG5vdCBicmVha2luZyBhbnkgZXhpc3Rp
-bmcgZGV2aWNlcywgcmlnaHQ/Cj4gPj4gCj4gPiAgICAgWWVzLCB0aGUgMTEwOCBTb2MgaXMgY29t
-cGxldGVseSBuZXcgdG8gbWFya2V0LCB0aGlzIGNoYW5nZSB3aWxsIG5vdAo+ID4gCj4gPiBicmVh
-a2luZyBhbnkgZXhpc3RpbmcgZGV2aWNlcy4KPiAKPiBOb2JvZHkgZ2V0cyBodXJ0LiBKdXN0IHJl
-bmFtZSBldmVyeXRoaW5nIHRvIGF2b2lkIGNvbmZ1c2lvbi4KPiBKdXN0IG15IOKCrDAuMDEuCj4g
-Cj4gQWNrZWQtYnk6IExpbnVzIFdhbGxlaWogPGxpbnVzLndhbGxlaWpAbGluYXJvLm9yZz4KPiAK
-PiBUZWxsIG1lIGlmIEkgY2FuIG1lcmdlIGEgc3Vic2V0IG9mIHRoZSBwYXRjaGVzIHRvIHRoZSBw
-aW5jdHJsIHRyZWUuCgpJIGRpZCBwcm92aWRlIFJldmlld2VkLWJ5cyBmb3IgdGhlbSwgc28geW91
-IHNob3VsZCBiZSBhYmxlIHRvIG1lcmdlIHRoZSAKcGluY3RybCBwYXRjaGVzICg0KzUpIGF0IHlv
-dXIgY29udmVuaWVuY2UgOi0pCgoKVGhhbmtzCkhlaWtvCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+T24gTW9uLCBGZWIgMjAsIDIwMTcgYXQgMDg6MDg6MTVBTSArMDEwMCwgQ2hyaXN0b3BoZSBKQUlM
+TEVUIHdyb3RlOgo+IEl0IGlzIGxpa2VseSB0aGF0IGJvdGggJ2Nsa19kaXNhYmxlX3VucHJlcGFy
+ZSgpJyBzaG91bGQgYmUgY2FsbGVkIGlmCj4gJ3BtX3J1bnRpbWVfZ2V0X3N5bmMoKScgZmFpbHMu
+Cj4gCj4gQWRkIGEgbmV3IGxhYmVsIGZvciB0aGF0LCBiZWNhdXNlICdlcnJfc2V0X3JhdGUnIGlz
+IG5vdCBtZWFuaW5nZnVsIGluIHRoaXMKPiBjYXNlLgo+IAo+IEFkZCBhIG1pc3NpbmcgY2FsbCB0
+byAncG1fcnVudGltZV9wdXQoKScuCj4gCj4gRml4ZXM6IDFhMGY3ZWQzYWJlMiAoImRybS9yb2Nr
+Y2hpcDogY2RuLWRwOiBhZGQgY2RuIERQIHN1cHBvcnQgZm9yIHJrMzM5OSIpCj4gCgpBcHBsaWVk
+IHRvIGRybS1taXNjLW5leHQtZml4ZXMKClRoYW5rcywKClNlYW4KCj4gU2lnbmVkLW9mZi1ieTog
+Q2hyaXN0b3BoZSBKQUlMTEVUIDxjaHJpc3RvcGhlLmphaWxsZXRAd2FuYWRvby5mcj4KPiAtLS0K
+PiBWMjogcmVuYW1lIGxhYmVsCj4gICAgIGFkZCBtaXNzaW5nIGNhbGwgdG8gJ3BtX3J1bnRpbWVf
+cHV0X3N5bmMoKScgaW4gZXJyb3IgcGF0aAo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvY2RuLWRwLWNvcmUuYyB8IDMgKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
+KyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUu
+Ywo+IGluZGV4IDlhYjY3YTY3MDg4NS4uMGZlMWVjOGI4ZmIxIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBAQCAtMTExLDcgKzExMSw3IEBAIHN0YXRpYyBpbnQg
+Y2RuX2RwX2Nsa19lbmFibGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQo+ICAJcmV0ID0gcG1f
+cnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gIAkJRFJNX0RF
+Vl9FUlJPUihkcC0+ZGV2LCAiY2Fubm90IGdldCBwbSBydW50aW1lICVkXG4iLCByZXQpOwo+IC0J
+CWdvdG8gZXJyX3BjbGs7Cj4gKwkJZ290byBlcnJfcG1fcnVudGltZV9nZXQ7Cj4gIAl9Cj4gIAo+
+ICAJcmVzZXRfY29udHJvbF9hc3NlcnQoZHAtPmNvcmVfcnN0KTsKPiBAQCAtMTMzLDYgKzEzMyw4
+IEBAIHN0YXRpYyBpbnQgY2RuX2RwX2Nsa19lbmFibGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
+KQo+ICAJcmV0dXJuIDA7Cj4gIAo+ICBlcnJfc2V0X3JhdGU6Cj4gKwlwbV9ydW50aW1lX3B1dChk
+cC0+ZGV2KTsKPiArZXJyX3BtX3J1bnRpbWVfZ2V0Ogo+ICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJl
+KGRwLT5jb3JlX2Nsayk7Cj4gIGVycl9jb3JlX2NsazoKPiAgCWNsa19kaXNhYmxlX3VucHJlcGFy
+ZShkcC0+cGNsayk7Cj4gLS0gCj4gMi45LjMKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2lu
+ZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
