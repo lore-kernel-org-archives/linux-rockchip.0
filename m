@@ -1,76 +1,81 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [GIT PULL] drm/rockchip: some fixes
-Date: Thu, 23 Feb 2017 13:01:53 -0500
-Message-ID: <20170223180153.GD24066@art_vandelay>
-References: <58ACE158.9010508@rock-chips.com>
- <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
- <58AE42EB.6030604@rock-chips.com>
+From: Francesco Lavra <francescolavra.fl@gmail.com>
+Subject: RK3288 USB OTG controller in peripheral mode
+Date: Thu, 23 Feb 2017 19:11:37 +0100
+Message-ID: <2b818d21-62a6-515e-8116-f243a2c07e08@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <58AE42EB.6030604@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBGZWIgMjMsIDIwMTcgYXQgMTA6MDM6MjNBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
-Cj4gT24gMjAxN+W5tDAy5pyIMjPml6UgMDA6MDksIFNlYW4gUGF1bCB3cm90ZToKPiA+T24gVHVl
-LCBGZWIgMjEsIDIwMTcgYXQgNzo1NCBQTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
-Y29tPiB3cm90ZToKPiA+PkhpIERhdmUKPiA+Pgo+ID4+U29tZSBmaXhlcywgbG9va3MgZ29vZCB0
-byBtZS4KPiA+Pgo+ID5IaSBNYXJrLAo+ID5BcyB3ZSBkaXNjdXNzZWQsIHJvY2tjaGlwIHBhdGNo
-ZXMgc2hvdWxkIG5vdyBnbyB0aHJvdWdoIC1taXNjLiBTaW5jZQo+ID40LjEwIGlzIGFscmVhZHkg
-cmVsZWFzZWQsIEknbGwgcHVzaCB0aGVzZSB0aHJvdWdoIG92ZXIgdGhlcmUuCj4gPgo+ID5TZWFu
-Cj4gCj4gSGkgU2Vhbgo+IAo+IFJpZ2h0LCBJIGhhZCB0cmllZCB0aGUgLW1pc2MgYnJhbmNoLCBi
-dXQgZmFpbGVkIG9uIHNvbWUgc3RlcHMuICBsZXQKPiB1cyByZS1kaXNjdXNzZWQgaG93IHRvIHVz
-ZSBpdC4KPiAKPiBhbmQgdGhhbmtzIGZvciBwdXNoaW5nIHRoZXNlIHBhdGNoZXMgdG8gLW1pc2Mg
-YnJhbmNoLgo+IAo+IEJlc3QgUmVnYXJkcy4KPiAKPiA+Cj4gPj5CZXN0IHJlZ2FyZHMuCj4gPj4K
-PiA+PlRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgOWNhNzAzNTZhOTI2MDQwM2Mx
-YmRhNDBkOTQyOTM1ZTU1ZDAwYzExYzoKPiA+Pgo+ID4+ICAgUmV2ZXJ0ICJkcm06IFJlc3VycmVj
-dCBhdG9taWMgcm1mYiBjb2RlLCB2MyIgKDIwMTctMDItMTcgMTI6Mzk6MDQgKzEwMDApCj4gPj4K
-PiA+PmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+ID4+Cj4gPj4gICBo
-dHRwczovL2dpdGh1Yi5jb20vbWFya3l6cS9rZXJuZWwtZHJtLXJvY2tjaGlwLmdpdAo+ID4+ZHJt
-LXJvY2tjaGlwLW5leHQtMjAxNy0wMi0yMgo+ID4+Cj4gPj5mb3IgeW91IHRvIGZldGNoIGNoYW5n
-ZXMgdXAgdG8gMzY5MDYyOWI4NDRiOTYxZmM5ZGRhOThiMGZmYzE2YTYwMTBhN2YyMToKPiA+Pgo+
-ID4+ICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBk
-aXNwbGF5cG9ydCAoMjAxNy0wMi0yMgo+ID4+MDg6NDQ6MjIgKzA4MDApCj4gPj4KPiA+Pi0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0KPiA+PkFybmQgQmVyZ21hbm4gKDEpOgo+ID4+ICAgICAgIGRybS9yb2NrY2hpcDogYWRkIGV4
-dGNvbiBkZXBlbmRlbmN5IGZvciBEUAo+ID4+Cj4gPj5DaHJpc3RvcGhlIEphaWxsZXQgKDEpOgo+
-ID4+ICAgICAgIGRybS9yb2NrY2hpcDogY2RuLWRwOiBGaXggZXJyb3IgaGFuZGxpbmcKPiA+Pgo+
-ID4+TWFyayBZYW8gKDMpOgo+ID4+ICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBubyBuZWVkIHdh
-aXQgdmJsYW5rIG9uIGNydGMgZW5hYmxlCj4gPj4gICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZl
-cmlmeSBkaXNwbGF5IG1vZGUgd2l0aCB2b3AgbWF4X291dHB1dAo+ID4+ICAgICAgIGRybS9yb2Nr
-Y2hpcDogdm9wOiB2ZXJpZnkgcGl4ZWxjbG9jayBmb3IgaGRtaSBhbmQgZGlzcGxheXBvcnQKCkkg
-ZG9uJ3QgdGhpbmsgdGhlc2UgMyBhcmUgZml4ZXMsIHBlci1zZS4gU28gbGV0J3Mgd2FpdCB1bnRp
-bCBkcm0tbWlzYy1uZXh0IGlzCnVwZGF0ZWQgKHRoZXNlIGRlcGVuZCBvbiBDaHJpcyBaaG9uZydz
-IGNkbi1kcCBwYXRjaGVzKSBhbmQgbWVyZ2UgdGhlbSB0aGVyZS4KClNlYW4KCgo+ID4+Cj4gPj4g
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgMSArCj4gPj4g
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAgICAgfCAgNCArKystCj4g
-Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA1Ngo+ID4+
-KysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
-PiA+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8ICA3ICsr
-KysrKysKPiA+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8
-IDEzICsrKysrKysrKysrKysKPiA+PiAgNSBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCsp
-LCAzOSBkZWxldGlvbnMoLSkKPiA+Pgo+ID4+LS0KPiA+Pu+8rWFyayBZYW8KPiA+Pgo+ID4+Cj4g
-Pj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4+ZHJp
-LWRldmVsIG1haWxpbmcgbGlzdAo+ID4+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+
-ID4+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwKPiA+Cj4gPgo+IAo+IAo+IC0tIAo+IO+8rWFyayBZYW8KPiAKPiAKPiBfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNv
-ZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+I'm having trouble getting the RK3288 OTG controller (the one at 
+ff580000) to work in peripheral mode. I'm using a Firefly Reload board, 
+and I know the hardware is fine because I can successfully use the port 
+in device mode with U-Boot's mass storage gadget driver.
+Under Linux, the OTG port works fine when used in host mode, but fails 
+to work in device mode: nothing happens when the a USB host is plugged 
+into the OTG port, not even a single interrupt is generated by the 
+controller. I'm using the latest device tree definitions from 
+git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git.
+Tried with different gadget drivers (g_audio, g_ether, g_mass_storage), 
+but it makes no difference.
+Tried also forcing peripheral mode in the device tree, with dr_mode = 
+"peripheral", to no avail.
+
+Are there any known problems with the RK3288 OTG controller?
+
+Here is the relevant log when the dwc2 driver is loaded at boot:
+
+[    1.376935] ff580000.usb supply vusb_d not found, using dummy regulator
+[    1.383683] ff580000.usb supply vusb_a not found, using dummy regulator
+[    1.390627] dwc2 ff580000.usb: dwc2_core_reset() HANG! Soft Reset 
+GRSTCTL=80000001
+[    1.509048] dwc2 ff580000.usb: dwc2_wait_for_mode: Couldn't set 
+device mode
+[    1.750626] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g-tx-fifo-size, setting to default average
+[    1.761828] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[1]=104
+[    1.771192] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[2]=104
+[    1.780529] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[3]=104
+[    1.789888] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[4]=104
+[    1.799245] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[5]=104
+[    1.808614] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g_tx_fifo_size[6]=104
+[    1.817993] usb 1-1: new high-speed USB device number 2 using dwc2
+[    1.824390] dwc2 ff580000.usb: EPs: 10, dedicated fifos, 972 entries 
+in SPRAM
+[    1.832098] dwc2 ff580000.usb: DWC OTG Controller
+[    1.836924] dwc2 ff580000.usb: new USB bus registered, assigned bus 
+number 2
+[    1.844125] dwc2 ff580000.usb: irq 41, io mem 0xff580000
+[    1.849747] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.856598] usb usb2: New USB device strings: Mfr=3, Product=2, 
+SerialNumber=1
+[    1.863875] usb usb2: Product: DWC OTG Controller
+[    1.868601] usb usb2: Manufacturer: Linux 4.8.1+ dwc2_hsotg
+[    1.874215] usb usb2: SerialNumber: ff580000.usb
+
+and this is what I get when I load a gadget driver (in this case, g_audio):
+
+[   19.848590] dwc2 ff580000.usb: bound driver g_audio
+[   19.853816] dwc2 ff580000.usb: dwc2_hsotg_enqueue_setup: failed queue 
+(-11)
+
+Thank you,
+Francesco Lavra
