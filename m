@@ -1,54 +1,79 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: add extcon dependency for DP
-Date: Thu, 23 Feb 2017 11:48:42 -0500
-Message-ID: <20170223164841.GC24066@art_vandelay>
-References: <20170214213215.2888509-1-arnd@arndb.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/2] pinctrl: =?UTF-8?B?cm9ja2NoaXDvvJpBZGQ=?= input schmitt support
+Date: Thu, 23 Feb 2017 17:51:41 +0100
+Message-ID: <48027259.fqOrTqXNdI@phil>
+References: <1487068541-14120-1-git-send-email-david.wu@rock-chips.com> <1487068541-14120-2-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170214213215.2888509-1-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-rockchip@lists.infradead.org, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tobias Jakobi <tjakobi@math.uni-bielefeld.de>, Yakir Yang <ykk@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1487068541-14120-2-git-send-email-david.wu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBGZWIgMTQsIDIwMTcgYXQgMTA6MzE6NTFQTSArMDEwMCwgQXJuZCBCZXJnbWFubiB3
-cm90ZToKPiBUaGUgbmV3bHkgYWRkZWQgRFAgZHJpdmVyIGxpbmtzIGFnYWluc3QgdGhlIGV4dGNv
-biBjb3JlLCB3aGljaCBmYWlscyB3aGVuCj4gZXh0Y29uIGlzIGEgbW9kdWxlIGFuZCB0aGlzIGRy
-aXZlciBpcyBub3Q6Cj4gCj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLm86
-IEluIGZ1bmN0aW9uIGBjZG5fZHBfZ2V0X3BvcnRfbGFuZXMnOgo+IGNkbi1kcC1jb3JlLmM6KC50
-ZXh0LmNkbl9kcF9nZXRfcG9ydF9sYW5lcysweDI0KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBg
-ZXh0Y29uX2dldF9zdGF0ZScKPiBjZG4tZHAtY29yZS5jOigudGV4dC5jZG5fZHBfZ2V0X3BvcnRf
-bGFuZXMrMHg0NCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGV4dGNvbl9nZXRfcHJvcGVydHkn
-Cj4gCj4gTGV0J3MgbWFrZSBLY29uZmlnIGVuZm9yY2UgY29ycmVjdCBiZWhhdmlvciB3aXRoIGEg
-ZGVwZW5kZW5jeS4KPiAKPiBGaXhlczogMWEwZjdlZDNhYmUyICgiZHJtL3JvY2tjaGlwOiBjZG4t
-ZHA6IGFkZCBjZG4gRFAgc3VwcG9ydCBmb3IgcmszMzk5IikKPiBTaWduZWQtb2ZmLWJ5OiBBcm5k
-IEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgoKQXBwbGllZCB0byBkcm0tbWlzYy1uZXh0LWZpeGVz
-CgpUaGFua3MsCgpTZWFuCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZp
-ZyB8IDEgKwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvS2NvbmZpZwo+IGluZGV4IGFkMzFiM2ViNDA4Zi4uMGU0ZWI4NDVjYmIwIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPiBAQCAtMjQsNiArMjQsNyBAQCBjb25maWcgUk9DS0NI
-SVBfQU5BTE9HSVhfRFAKPiAgY29uZmlnIFJPQ0tDSElQX0NETl9EUAo+ICAgICAgICAgIHRyaXN0
-YXRlICJSb2NrY2hpcCBjZG4gRFAiCj4gICAgICAgICAgZGVwZW5kcyBvbiBEUk1fUk9DS0NISVAK
-PiArCWRlcGVuZHMgb24gRVhUQ09OCj4gIAlzZWxlY3QgU05EX1NPQ19IRE1JX0NPREVDIGlmIFNO
-RF9TT0MKPiAgICAgICAgICBoZWxwCj4gIAkgIFRoaXMgc2VsZWN0cyBzdXBwb3J0IGZvciBSb2Nr
-Y2hpcCBTb0Mgc3BlY2lmaWMgZXh0ZW5zaW9ucwo+IC0tIAo+IDIuOS4wCj4gCj4gX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVs
-LCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi David,
+
+Am Dienstag, 14. Februar 2017, 18:35:40 CET schrieb David Wu:
+> From: "david.wu" <david.wu@rock-chips.com>
+> 
+> To prevent external noise crosstalk, some pins need to
+> enable input schmitt, like i2c pins, 32k-input pin and so on.
+> 
+> Signed-off-by: david.wu <david.wu@rock-chips.com>
+> ---
+>  drivers/pinctrl/pinctrl-rockchip.c | 69
+> ++++++++++++++++++++++++++++++++++++++ 1 file changed, 69 insertions(+)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
+> b/drivers/pinctrl/pinctrl-rockchip.c index a20ce9f..6a071b1 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -308,6 +308,9 @@ struct rockchip_pin_ctrl {
+>  				    int *reg, u8 *bit);
+>  	void	(*iomux_recalc)(u8 bank_num, int pin, int *reg,
+>  				u8 *bit, int *mask);
+> +	void	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
+> +				    int pin_num, struct regmap **regmap,
+> +				    int *reg, u8 *bit);
+>  };
+> 
+>  struct rockchip_pin_config {
+> @@ -1355,6 +1358,53 @@ static int rockchip_set_pull(struct rockchip_pin_bank
+> *bank, return ret;
+>  }
+> 
+> +static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int
+> pin_num) +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+> +	struct regmap *regmap;
+> +	int reg, ret;
+> +	u8 bit;
+> +	u32 data;
+> +
+> +	ctrl->schmitt_calc_reg(bank, pin_num, &regmap, &reg, &bit);
+
+we might want to have and check an actual return value here.
+On things like the rk3288 only some special pins have these schmitt triggers 
+it seems, so we might want to abort if something tries to access an 
+unsupported one.
+
+> +
+> +	ret = regmap_read(regmap, reg, &data);
+> +	if (ret)
+> +		return ret;
+> +
+> +	data >>= bit;
+> +	return data & 0x1;
+
+The mask seems to also be variable, for example on the rk3399 there seem to be 
+multiple "levels" for at least gpio2. So your calc-callback might want to also 
+set the right mask.
+
+Otherwise looks good.
+
+
+Heiko
+
