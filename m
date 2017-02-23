@@ -1,67 +1,77 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] phy: rockchip-inno-usb2: fix spelling mistake: "connecetd" ->
- "connected"
-Date: Wed, 22 Feb 2017 23:30:52 +0000
-Message-ID: <20170222233052.8016-1-colin.king@canonical.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
+Date: Thu, 23 Feb 2017 08:25:06 +0800
+Message-ID: <58AE2BE2.7040006@rock-chips.com>
+References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
+ <20170221153918.GA25168@art_vandelay>
+ <20170222134314.016a4940.john@metanate.com>
+ <CAOw6vbJoS2P5m31+bgWw3Sghz=EVGj0fpLgCFnbVEhzRujNCLw@mail.gmail.com>
+ <20170222185543.71e20187.john@metanate.com>
+ <CAOw6vbJO_TQnSAu6w7XHiMSYA+gB1tyHOvB7BMc7Q2+OMY=9=w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAOw6vbJO_TQnSAu6w7XHiMSYA+gB1tyHOvB7BMc7Q2+OMY=9=w@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Yao <yzq@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Colin Ian King <colin.king@canonical.com>
-
-trivial fix to spelling mistake in dev_dbg message, also rejoin
-lines to clean up checkpatch warning
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/phy/phy-rockchip-inno-usb2.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index 4ea95c2..761a921 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -554,8 +554,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
- 			case USB_CHG_STATE_DETECTED:
- 				switch (rphy->chg_type) {
- 				case POWER_SUPPLY_TYPE_USB:
--					dev_dbg(&rport->phy->dev,
--						"sdp cable is connecetd\n");
-+					dev_dbg(&rport->phy->dev, "sdp cable is connected\n");
- 					rockchip_usb2phy_power_on(rport->phy);
- 					rport->state = OTG_STATE_B_PERIPHERAL;
- 					notify_charger = true;
-@@ -563,16 +562,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
- 					cable = EXTCON_CHG_USB_SDP;
- 					break;
- 				case POWER_SUPPLY_TYPE_USB_DCP:
--					dev_dbg(&rport->phy->dev,
--						"dcp cable is connecetd\n");
-+					dev_dbg(&rport->phy->dev, "dcp cable is connected\n");
- 					rockchip_usb2phy_power_off(rport->phy);
- 					notify_charger = true;
- 					sch_work = true;
- 					cable = EXTCON_CHG_USB_DCP;
- 					break;
- 				case POWER_SUPPLY_TYPE_USB_CDP:
--					dev_dbg(&rport->phy->dev,
--						"cdp cable is connecetd\n");
-+					dev_dbg(&rport->phy->dev, "cdp cable is connected\n");
- 					rockchip_usb2phy_power_on(rport->phy);
- 					rport->state = OTG_STATE_B_PERIPHERAL;
- 					notify_charger = true;
--- 
-2.10.2
+Ck9uIDAyLzIzLzIwMTcgMDY6MTAgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBXZWQsIEZlYiAy
+MiwgMjAxNyBhdCAxOjU1IFBNLCBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPiB3cm90
+ZToKPj4gT24gV2VkLCAyMiBGZWIgMjAxNyAxMDo1NzowNSAtMDUwMCwgU2VhbiBQYXVsIHdyb3Rl
+Ogo+Pgo+Pj4gT24gV2VkLCBGZWIgMjIsIDIwMTcgYXQgODo0MyBBTSwgSm9obiBLZWVwaW5nIDxq
+b2huQG1ldGFuYXRlLmNvbT4gd3JvdGU6Cj4+Pj4gT24gVHVlLCAyMSBGZWIgMjAxNyAxMDozOTox
+OCAtMDUwMCwgU2VhbiBQYXVsIHdyb3RlOgo+Pj4+Cj4+Pj4+IE9uIE1vbiwgRmViIDIwLCAyMDE3
+IGF0IDA0OjAyOjE2UE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+Pj4+Pj4gSGkgYWxsCj4+
+Pj4+Pgo+Pj4+Pj4gW1Jlc2VuZCB0aGlzIHY3IHZlcnNpb24gc2VyaWVzLCBzaW5jZSB0aGVyZSBh
+cmUgNSBtYWlscyBoYXZlIGdvbmUgbWlzc2luZywgbGFzdAo+Pj4+Pj4gd2Vla10KPj4+Pj4+Cj4+
+Pj4+PiBUaGlzIHZlcnNpb24gZG9lcyBub3QgY2hhbmdlIHRoZSBleGlzdGluZyB2NiBwYXRjaGVz
+LCBqdXN0IHRvIGFkZCB0aGUKPj4+Pj4+ICJiYW5kd2lkdGggZml4IiBwYXRjaCBiYWNrLCBzaW5j
+ZSB3ZSByZWFsbHkgbmVlZCBpdC4KPj4+Pj4+Cj4+Pj4+PiBUaGlzIHBhdGNoIHNlcmlhbCBpcyBm
+b3IgUkszMzk5IE1JUEkgRFNJLiBUaGUgTUlQSSBEU0kgY29udHJvbGxlciBvZgo+Pj4+Pj4gUksz
+Mzk5IGlzIGFsbW9zdCB0aGUgc2FtZSBhcyBSSzMyODgsIGV4Y2VwdCBhIGxpdHRsZSBiaXQgb2Yg
+ZGlmZmVyZW5jZQo+Pj4+Pj4gaW4gcGh5IGNsb2NrIGNvbnRyb2xsaW5nIGFuZCBwb3J0IGlkIHNl
+bGVjdGlvbiByZWdpc3Rlci4gVGhlc2UgcGF0Y2hlcwo+Pj4+Pj4gYWRkIFJLMzM5OSBzdXBwb3J0
+IGFuZCB0aGUgcG93ZXIgZG9tYWluIHN1cHBvcnQuCj4+Pj4+Pgo+Pj4+Pj4gQW5kIHRoZXNlIHBh
+dGNoZXMgYmFzZSBvbiBKb2huIEtlZXBpbmcncyB2MyBwYXRjaGVzWzBdLCBpdCBmaXhlcyBtYW55
+IGJ1Z3MsCj4+Pj4+PiB0aGV5IGhhdmUgYmVlbiB0ZXN0ZWQgb24gcmszMjg4IGV2YiBib2FyZC4K
+Pj4+Pj4gRG8gd2UgaGF2ZSBhbiBFVEEgb24gd2hlbiBKb2huIGlzIHBsYW5uaW5nIG9uIHJlc3Bp
+bm5pbmcgaGlzIHBhdGNoc2V0IGJhc2VkIG9uCj4+Pj4+IHJldmlldyBmZWVkYmFjaz8KPj4+PiBJ
+IGhhdmUgYWxsIG9mIHRoZSBjaGFuZ2VzIHF1ZXVlZCBidXQgSSB3YXMgaG9waW5nIHRvIGZpbmQg
+c29tZSB0aW1lIHRvCj4+Pj4gdGVzdCB0aGUgbGF0ZXN0IHZlcnNpb24gYmVmb3JlIHNlbmRpbmcg
+aXQgb3V0OyB1bmZvcnR1bmF0ZWx5IGV2ZXJ5dGhpbmcKPj4+PiBlbHNlIGlzIG1vcmUgaW1wb3J0
+YW50IGF0IHRoZSBtb21lbnQuICBJZiB5b3UncmUgaGFwcHkgd2l0aCB0aGUgY2F2ZWF0Cj4+Pj4g
+dGhhdCB0aGUgbGF0ZXN0IGNoYW5nZXMgYXJlIGJ1aWxkIHRlc3RlZCBvbmx5IEkgY2FuIHByb2Jh
+Ymx5IHNlbmQgaXQKPj4+PiBvdXQgdGhpcyBhZnRlcm5vb24uCj4+PiBJIHN1cHBvc2UgbXkgYW5z
+d2VyIGRlcGVuZHMgb24gd2hlbiB0aGUgdGVzdGVkIHZlcnNpb24gd2lsbCBiZQo+Pj4gYXZhaWxh
+YmxlLCBvciBwZXJoYXBzIENocmlzIGNhbiB0ZXN0IHRoZSBuZXcgc2V0IGZvciB5b3U/IEkgZG9u
+J3QgaGF2ZQo+Pj4gYW55IHJvY2tjaGlwIGRldmljZXMgd2l0aCBtaXBpLCBzbyBpJ20gbm90IG11
+Y2ggaGVscC4KPj4gTm9uZSBvZiB0aGUgY2hhbmdlcyBzY2FyZSBtZSB0aGF0IG11Y2gsIHNvIEkg
+ZG9uJ3QgZXhwZWN0IHRlc3RpbmcgdG8KPj4gdGhyb3cgdXAgYW55IHByb2JsZW1zIGJ1dCBJIGRv
+bid0IGxpa2UgdGhyb3dpbmcgb3V0IHBhdGNoZXMgd2l0aG91dCBhdAo+PiBsZWFzdCBhIGJhc2lj
+IHRlc3QgcnVuLgo+Pgo+IEFncmVlZC4gSSBkb24ndCB0aGluayB3ZSdyZSBpbiBzdWNoIGRlc3Bl
+cmF0ZSBuZWVkIHRoYXQgd2Ugc2hvdWxkCj4gZm9yZWdvIHRlc3RpbmcuIElmIENocmlzIGNhbiBw
+cm92aWRlIFRlc3RlZC1ieSwgeW91IHNob3VsZCBzZW5kIHRoZW0KPiBvdXQsIG90aGVyd2lzZSBJ
+J20gaGFwcHkgdG8gd2FpdC4KPgo+IFRoYW5rcyBmb3IgdGhlIHVwZGF0ZSwKPgo+IFNlYW4KClN1
+cmUsIEkgYW0gdmVyeSBnbGFkIHRvIHRlc3QgdGhlbS4KQWN0dWFsbHksIEkgaGF2ZSBwaWNrZWQg
+dGhlIHYzIHBhdGNoZXMgdG8gY3JvcyBrZXJuZWwgKGNoYW5nZWQgYSBsaXR0bGUgCmJpdCkuClNv
+IGZhciwgbXkgMiBtaXBpIGRzaSBwYW5lbHMgd29ya3Mgd2VsbC4gVGhlIGNyb3MgcGF0Y2hlczoK
+aHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvNDMwNTk2LwouLi4K
+aHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvNDQyMzQ3LwoKPgo+
+PiBJIG1pZ2h0IGhhdmUgdGltZSB0byB0ZXN0IG9uIEZyaWRheSwgYnV0IEkgZXhwZWN0IENocmlz
+IGhhcyBtb3JlIHRpbWUgdG8KPj4gZGV2b3RlIHRvIHRoaXMgdGhhbiBJIGRvLCBzbyBtYXliZSBp
+dCdzIGJldHRlciBpZiBJIHNlbmQgdGhlIHBhdGNoZXMgb3V0Cj4+IHRvbW9ycm93Lgo+Pgo+Pgo+
+PiBKb2huCj4KPgoKLS0gCkNocmlzIFpob25nCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
