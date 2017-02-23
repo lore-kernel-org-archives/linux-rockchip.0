@@ -1,21 +1,76 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/2] pinctrl: rockchip: Add input schmitt support for rk3328
-Date: Thu, 23 Feb 2017 17:53:49 +0100
-Message-ID: <2078082.SZLe3UNJV3@phil>
-References: <1487068541-14120-1-git-send-email-david.wu@rock-chips.com> <1487068541-14120-3-git-send-email-david.wu@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [GIT PULL] drm/rockchip: some fixes
+Date: Thu, 23 Feb 2017 13:01:53 -0500
+Message-ID: <20170223180153.GD24066@art_vandelay>
+References: <58ACE158.9010508@rock-chips.com>
+ <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
+ <58AE42EB.6030604@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1487068541-14120-3-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <58AE42EB.6030604@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. Februar 2017, 18:35:41 CET schrieb David Wu:
-> From: "david.wu" <david.wu@rock-chips.com>
-> 
-> Signed-off-by: david.wu <david.wu@rock-chips.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+T24gVGh1LCBGZWIgMjMsIDIwMTcgYXQgMTA6MDM6MjNBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gT24gMjAxN+W5tDAy5pyIMjPml6UgMDA6MDksIFNlYW4gUGF1bCB3cm90ZToKPiA+T24gVHVl
+LCBGZWIgMjEsIDIwMTcgYXQgNzo1NCBQTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
+Y29tPiB3cm90ZToKPiA+PkhpIERhdmUKPiA+Pgo+ID4+U29tZSBmaXhlcywgbG9va3MgZ29vZCB0
+byBtZS4KPiA+Pgo+ID5IaSBNYXJrLAo+ID5BcyB3ZSBkaXNjdXNzZWQsIHJvY2tjaGlwIHBhdGNo
+ZXMgc2hvdWxkIG5vdyBnbyB0aHJvdWdoIC1taXNjLiBTaW5jZQo+ID40LjEwIGlzIGFscmVhZHkg
+cmVsZWFzZWQsIEknbGwgcHVzaCB0aGVzZSB0aHJvdWdoIG92ZXIgdGhlcmUuCj4gPgo+ID5TZWFu
+Cj4gCj4gSGkgU2Vhbgo+IAo+IFJpZ2h0LCBJIGhhZCB0cmllZCB0aGUgLW1pc2MgYnJhbmNoLCBi
+dXQgZmFpbGVkIG9uIHNvbWUgc3RlcHMuICBsZXQKPiB1cyByZS1kaXNjdXNzZWQgaG93IHRvIHVz
+ZSBpdC4KPiAKPiBhbmQgdGhhbmtzIGZvciBwdXNoaW5nIHRoZXNlIHBhdGNoZXMgdG8gLW1pc2Mg
+YnJhbmNoLgo+IAo+IEJlc3QgUmVnYXJkcy4KPiAKPiA+Cj4gPj5CZXN0IHJlZ2FyZHMuCj4gPj4K
+PiA+PlRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgOWNhNzAzNTZhOTI2MDQwM2Mx
+YmRhNDBkOTQyOTM1ZTU1ZDAwYzExYzoKPiA+Pgo+ID4+ICAgUmV2ZXJ0ICJkcm06IFJlc3VycmVj
+dCBhdG9taWMgcm1mYiBjb2RlLCB2MyIgKDIwMTctMDItMTcgMTI6Mzk6MDQgKzEwMDApCj4gPj4K
+PiA+PmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+ID4+Cj4gPj4gICBo
+dHRwczovL2dpdGh1Yi5jb20vbWFya3l6cS9rZXJuZWwtZHJtLXJvY2tjaGlwLmdpdAo+ID4+ZHJt
+LXJvY2tjaGlwLW5leHQtMjAxNy0wMi0yMgo+ID4+Cj4gPj5mb3IgeW91IHRvIGZldGNoIGNoYW5n
+ZXMgdXAgdG8gMzY5MDYyOWI4NDRiOTYxZmM5ZGRhOThiMGZmYzE2YTYwMTBhN2YyMToKPiA+Pgo+
+ID4+ICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBk
+aXNwbGF5cG9ydCAoMjAxNy0wMi0yMgo+ID4+MDg6NDQ6MjIgKzA4MDApCj4gPj4KPiA+Pi0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KPiA+PkFybmQgQmVyZ21hbm4gKDEpOgo+ID4+ICAgICAgIGRybS9yb2NrY2hpcDogYWRkIGV4
+dGNvbiBkZXBlbmRlbmN5IGZvciBEUAo+ID4+Cj4gPj5DaHJpc3RvcGhlIEphaWxsZXQgKDEpOgo+
+ID4+ICAgICAgIGRybS9yb2NrY2hpcDogY2RuLWRwOiBGaXggZXJyb3IgaGFuZGxpbmcKPiA+Pgo+
+ID4+TWFyayBZYW8gKDMpOgo+ID4+ICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBubyBuZWVkIHdh
+aXQgdmJsYW5rIG9uIGNydGMgZW5hYmxlCj4gPj4gICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZl
+cmlmeSBkaXNwbGF5IG1vZGUgd2l0aCB2b3AgbWF4X291dHB1dAo+ID4+ICAgICAgIGRybS9yb2Nr
+Y2hpcDogdm9wOiB2ZXJpZnkgcGl4ZWxjbG9jayBmb3IgaGRtaSBhbmQgZGlzcGxheXBvcnQKCkkg
+ZG9uJ3QgdGhpbmsgdGhlc2UgMyBhcmUgZml4ZXMsIHBlci1zZS4gU28gbGV0J3Mgd2FpdCB1bnRp
+bCBkcm0tbWlzYy1uZXh0IGlzCnVwZGF0ZWQgKHRoZXNlIGRlcGVuZCBvbiBDaHJpcyBaaG9uZydz
+IGNkbi1kcCBwYXRjaGVzKSBhbmQgbWVyZ2UgdGhlbSB0aGVyZS4KClNlYW4KCgo+ID4+Cj4gPj4g
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgMSArCj4gPj4g
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAgICAgfCAgNCArKystCj4g
+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA1Ngo+ID4+
+KysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
+PiA+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8ICA3ICsr
+KysrKysKPiA+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8
+IDEzICsrKysrKysrKysrKysKPiA+PiAgNSBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCsp
+LCAzOSBkZWxldGlvbnMoLSkKPiA+Pgo+ID4+LS0KPiA+Pu+8rWFyayBZYW8KPiA+Pgo+ID4+Cj4g
+Pj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4+ZHJp
+LWRldmVsIG1haWxpbmcgbGlzdAo+ID4+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+
+ID4+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwKPiA+Cj4gPgo+IAo+IAo+IC0tIAo+IO+8rWFyayBZYW8KPiAKPiAKPiBfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNv
+ZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
