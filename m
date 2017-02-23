@@ -1,64 +1,49 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [GIT PULL] drm/rockchip: some fixes
-Date: Thu, 23 Feb 2017 10:03:23 +0800
-Message-ID: <58AE42EB.6030604@rock-chips.com>
-References: <58ACE158.9010508@rock-chips.com>
- <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 0/7] Rename RK1108 to RV1108
+Date: Thu, 23 Feb 2017 11:15:56 +0100
+Message-ID: <CACRpkdbNbGvwUq3uLgekimOwzBZCXf37JW9LCCqLm1so=CMNrw@mail.gmail.com>
+References: <1486983566-32265-1-git-send-email-andy.yan@rock-chips.com>
+ <2809087.MHZWQWdaOC@phil> <0bbc4151-d954-1a27-48c3-1e8c9cb9e16f@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <0bbc4151-d954-1a27-48c3-1e8c9cb9e16f@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDAy5pyIMjPml6UgMDA6MDksIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBUdWUsIEZl
-YiAyMSwgMjAxNyBhdCA3OjU0IFBNLCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+
-IHdyb3RlOgo+PiBIaSBEYXZlCj4+Cj4+IFNvbWUgZml4ZXMsIGxvb2tzIGdvb2QgdG8gbWUuCj4+
-Cj4gSGkgTWFyaywKPiBBcyB3ZSBkaXNjdXNzZWQsIHJvY2tjaGlwIHBhdGNoZXMgc2hvdWxkIG5v
-dyBnbyB0aHJvdWdoIC1taXNjLiBTaW5jZQo+IDQuMTAgaXMgYWxyZWFkeSByZWxlYXNlZCwgSSds
-bCBwdXNoIHRoZXNlIHRocm91Z2ggb3ZlciB0aGVyZS4KPgo+IFNlYW4KCkhpIFNlYW4KClJpZ2h0
-LCBJIGhhZCB0cmllZCB0aGUgLW1pc2MgYnJhbmNoLCBidXQgZmFpbGVkIG9uIHNvbWUgc3RlcHMu
-ICBsZXQgdXMgCnJlLWRpc2N1c3NlZCBob3cgdG8gdXNlIGl0LgoKYW5kIHRoYW5rcyBmb3IgcHVz
-aGluZyB0aGVzZSBwYXRjaGVzIHRvIC1taXNjIGJyYW5jaC4KCkJlc3QgUmVnYXJkcy4KCj4KPj4g
-QmVzdCByZWdhcmRzLgo+Pgo+PiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDlj
-YTcwMzU2YTkyNjA0MDNjMWJkYTQwZDk0MjkzNWU1NWQwMGMxMWM6Cj4+Cj4+ICAgIFJldmVydCAi
-ZHJtOiBSZXN1cnJlY3QgYXRvbWljIHJtZmIgY29kZSwgdjMiICgyMDE3LTAyLTE3IDEyOjM5OjA0
-ICsxMDAwKQo+Pgo+PiBhcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoKPj4K
-Pj4gICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1yb2NrY2hpcC5naXQK
-Pj4gZHJtLXJvY2tjaGlwLW5leHQtMjAxNy0wMi0yMgo+Pgo+PiBmb3IgeW91IHRvIGZldGNoIGNo
-YW5nZXMgdXAgdG8gMzY5MDYyOWI4NDRiOTYxZmM5ZGRhOThiMGZmYzE2YTYwMTBhN2YyMToKPj4K
-Pj4gICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBk
-aXNwbGF5cG9ydCAoMjAxNy0wMi0yMgo+PiAwODo0NDoyMiArMDgwMCkKPj4KPj4gLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+
-PiBBcm5kIEJlcmdtYW5uICgxKToKPj4gICAgICAgIGRybS9yb2NrY2hpcDogYWRkIGV4dGNvbiBk
-ZXBlbmRlbmN5IGZvciBEUAo+Pgo+PiBDaHJpc3RvcGhlIEphaWxsZXQgKDEpOgo+PiAgICAgICAg
-ZHJtL3JvY2tjaGlwOiBjZG4tZHA6IEZpeCBlcnJvciBoYW5kbGluZwo+Pgo+PiBNYXJrIFlhbyAo
-Myk6Cj4+ICAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDogbm8gbmVlZCB3YWl0IHZibGFuayBvbiBj
-cnRjIGVuYWJsZQo+PiAgICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBkaXNwbGF5IG1v
-ZGUgd2l0aCB2b3AgbWF4X291dHB1dAo+PiAgICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlm
-eSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBkaXNwbGF5cG9ydAo+Pgo+PiAgIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgMSArCj4+ICAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgICAgICB8ICA0ICsrKy0KPj4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNTYKPj4gKysrKysrKysrKysrKysr
-KysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgIDcgKysrKysrKwo+PiAgIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAxMyArKysrKysrKysrKysr
-Cj4+ICAgNSBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCAzOSBkZWxldGlvbnMoLSkK
-Pj4KPj4gLS0KPj4g77ytYXJrIFlhbwo+Pgo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwo+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+IGRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPgo+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Feb 14, 2017 at 1:44 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+> Hi Heiko & Rob:
+> On 2017=E5=B9=B402=E6=9C=8813=E6=97=A5 20:51, Heiko Stuebner wrote:
+>>
+>> Hi Andy,
+>>
+>> Am Montag, 13. Februar 2017, 18:59:26 CET schrieb Andy Yan:
+>>>
+>>> Rockchip finally named this soc as RV1108, so change
+>>> RK1108/rk1108 to RV1108/rv1108 for compatible.
+>>
+>> renaming existing bindings (that have been in multiple kernel versions
+>> already) always is a hot topic. So I'll be hoping for Rob to give a
+>> go-ahead
+>> for it :-) .
+>>
+>> Just to confirm, the rk1108/rv1108 is completely new to the market, so
+>> we're
+>> not breaking any existing devices, right?
+>
+>
+>     Yes, the 1108 Soc is completely new to market, this change will not
+> breaking any existing devices.
+
+Nobody gets hurt. Just rename everything to avoid confusion.
+Just my =E2=82=AC0.01.
+
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+Tell me if I can merge a subset of the patches to the pinctrl tree.
+
+Yours,
+Linus Walleij
