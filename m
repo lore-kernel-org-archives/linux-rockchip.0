@@ -1,70 +1,43 @@
-From: Jose Abreu <Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] drm: bridge: dw-hdmi: support i2c extended read mode
-Date: Thu, 23 Feb 2017 10:17:44 +0000
-Message-ID: <b391d2dd-3352-08b5-fe82-cd24381a10a6@synopsys.com>
-References: <1487749545-5349-1-git-send-email-nickey.yang@rock-chips.com>
- <3f562fa6-886a-104f-62be-e0b1cbb8e5f7@synopsys.com>
- <a857310f-8ca7-428b-f121-ec012ac29975@rock-chips.com>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for
+ rk3328
+Date: Thu, 23 Feb 2017 20:28:08 +0800
+Message-ID: <c49ab15e-052d-aa6f-0ed5-83b1433a469d@rock-chips.com>
+References: <1487556485-18871-1-git-send-email-david.wu@rock-chips.com>
+ <43787071.1WOyg3ntUU@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a857310f-8ca7-428b-f121-ec012ac29975-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Nickey.Yang" <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jose Abreu <Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org
-Cc: laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <43787071.1WOyg3ntUU@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, rjw@rjwysocki.net
+Cc: nm@ti.com, huangtao@rock-chips.com, rafael.j.wysocki@intel.com, linux-pm@vger.kernel.org, khilman@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Nickey,
-
-
-On 22-02-2017 11:11, Nickey.Yang wrote:
-> Read EDID func is drm_do_probe_ddc_edid    (in
-> drivers/gpu/drm/drm_edid.c     Line:1215)
-> when block = 3  means &msgs[3].addr = DDC_SEGMENT_ADDR(0x30)
-> ,but in dw_hdmi_i2c_xfer
-> line 299  msgs[i].addr != addr (0x50),  it will printk
-> "unsupported transfer, changed slave address"
-> and return -EOPNOTSUPP.
->
-> in fact,0x30 not means change slave address but means segment
-> address.
->
-
-I am reading the drm_do_probe_ddc_edid and I have one question:
-There are 2 writes and one read, but your patch only handles the
-write of segment address. What about the start address?
-
-I am refering to this structure:
-1228                 struct i2c_msg msgs[] = {
-1229                         {
-1230                                 .addr   = DDC_SEGMENT_ADDR,
-1231                                 .flags  = 0,
-1232                                 .len    = 1,
-1233                                 .buf    = &segment,
-1234                         }, {
-1235                                 .addr   = DDC_ADDR,
-1236                                 .flags  = 0,
-1237                                 .len    = 1,
-1238                                 .buf    = &start,
-1239                         }, {
-1240                                 .addr   = DDC_ADDR,
-1241                                 .flags  = I2C_M_RD,
-1242                                 .len    = len,
-1243                                 .buf    = buf,
-1244                         }
-
-There is a write which indicates DDC segment address and then
-there is another write which indicates start address. Shouldn't
-this be handled?
-
-Best regards,
-Jose Miguel Abreu
+SGkgUmFmYWVsLAoKU29ycnkgbm90IHRvIGluY2x1ZGUgeW91ciBlbWFpbCBhZGRyZXNzIGluIHRo
+ZSBlbWFpbCBsaXN0LgpBbmQgdGhhbmsgSGVpa28uCkkgd2lsbCByZXNlbmQgdGhlIHBhdGNoLgoK
+5ZyoIDIwMTcvMi8yMSAyMzowNiwgSGVpa28gU3R1ZWJuZXIg5YaZ6YGTOgo+IEFtIE1vbnRhZywg
+MjAuIEZlYnJ1YXIgMjAxNywgMTA6MDg6MDUgQ0VUIHNjaHJpZWIgRGF2aWQgV3U6Cj4+IEZyb206
+ICJkYXZpZC53dSIgPGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPgo+Pgo+PiBUaGlzIGFkZHMgdGhl
+IG5lY2Vzc2FyeSBkYXRhIGZvciBoYW5kbGluZyBpbyB2b2x0YWdlIGRvbWFpbnMgb24gdGhlIHJr
+MzMyOC4KPj4gQXMgaW50ZXJlc3RpbmcgdGlkYml0LCB0aGUgcmszMzI4IG9ubHkgY29udGFpbnMg
+b25lIGlvZG9tYWluIGFyZWEgaW4gdGhlCj4+IHJlZ3VsYXIgR2VuZXJhbCBSZWdpc3RlciBGaWxl
+cyAoR1JGKS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogZGF2aWQud3UgPGRhdmlkLnd1QHJvY2stY2hp
+cHMuY29tPgo+Cj4gUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
+Cj4KPiBPbmx5IGlzc3VlIG1pZ2h0IGJlLCB0aGF0IHlvdSBkaWRuJ3QgaW5jbHVkZSBSYWZhZWwg
+KHJqd0Byand5c29ja2kubmV0KSBhbmQKPiBtb3N0IG9mIHRoZSB0aW1lIGlvLWRvbWFpbiBwYXRj
+aGVzIGdvIHRvIGhpbSBkaXJlY3RseSB3aXRoIGFuIEFjayBmcm9tIEtldmluLAo+IGFzIHRoZXJl
+IGFyZSBub3JtYWxseSBub3QgZW5vdWdoIHBvd2VyL2F2cyBwYXRjaGVzIHRvIHdhcmFudCBhIHB1
+bGwgOi0pCj4KPgo+IEhlaWtvCj4KPgo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1h
+cm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
