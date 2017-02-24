@@ -1,52 +1,52 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v4 11/23] drm/rockchip: dw-mipi-dsi: prepare panel after phy init
-Date: Fri, 24 Feb 2017 12:54:54 +0000
-Message-ID: <20170224125506.21533-12-john@metanate.com>
+Subject: [PATCH v4 06/23] drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read
+ on tx_buf
+Date: Fri, 24 Feb 2017 12:54:49 +0000
+Message-ID: <20170224125506.21533-7-john@metanate.com>
 References: <20170224125506.21533-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Some panels need to be configured with commands sent over the MIPI link,
-which they will do in the prepare hook.  Call this after the PHY has
-been initialized so that we are able to send commands to the panel.
-
-Signed-off-by: John Keeping <john@metanate.com>
-Reviewed-by: Chris Zhong <zyw@rock-chips.com>
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
----
-v4:
-- Add Sean's Reviewed-by
-v3:
-- Add Chris' Reviewed-by
-Unchanged in v2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 0c66e6eaf44a..53515404d0ca 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -898,12 +898,14 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 	dw_mipi_dsi_dphy_timing_config(dsi);
- 	dw_mipi_dsi_dphy_interface_config(dsi);
- 	dw_mipi_dsi_clear_err(dsi);
--	if (drm_panel_prepare(dsi->panel))
--		dev_err(dsi->dev, "failed to prepare panel\n");
- 
- 	dw_mipi_dsi_phy_init(dsi);
- 	dw_mipi_dsi_wait_for_two_frames(mode);
- 
-+	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
-+	if (drm_panel_prepare(dsi->panel))
-+		dev_err(dsi->dev, "failed to prepare panel\n");
-+
- 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_VID_MODE);
- 	drm_panel_enable(dsi->panel);
- 
--- 
-2.12.0.rc0.230.gf625d4cdb9.dirty
+QXMgYSBzaWRlLWVmZmVjdCBvZiB0aGlzLCBlbmNvZGUgdGhlIGVuZGlhbm5lc3MgZXhwbGljaXRs
+eSByYXRoZXIgdGhhbgpjYXN0aW5nIGEgdTE2LgoKU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5n
+IDxqb2huQG1ldGFuYXRlLmNvbT4KLS0tCnY0OgotIEludHJvZHVjZSAiZGF0YSIgdmFyaWFibGUg
+dG8gYXZvaWQgY29uZnVzaW9uIGFyb3VuZCB0aGUgbWFza2luZyBpbgogIEdFTl9IREFUQSgpCnYz
+OgotIEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKVW5jaGFuZ2VkIGluIHYyCi0tLQogZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAxMSArKysrKysrKystLQogMSBmaWxlIGNo
+YW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS5jCmluZGV4IDRiZTFmZjNhNDJiYi4uZjU1MDEwMzEyZjI1IDEwMDY0
+NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpAQCAtNTcyLDggKzU3MiwxNCBAQCBz
+dGF0aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0cnVjdCBkd19taXBpX2Rz
+aSAqZHNpLCB1MzIgaGRyX3ZhbCkKIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX3Nob3J0X3dy
+aXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAogCQkJCSAgICAgICBjb25zdCBzdHJ1Y3QgbWlw
+aV9kc2lfbXNnICptc2cpCiB7Ci0JY29uc3QgdTE2ICp0eF9idWYgPSBtc2ctPnR4X2J1ZjsKLQl1
+MzIgdmFsID0gR0VOX0hEQVRBKCp0eF9idWYpIHwgR0VOX0hUWVBFKG1zZy0+dHlwZSk7CisJY29u
+c3QgdTggKnR4X2J1ZiA9IG1zZy0+dHhfYnVmOworCXUxNiBkYXRhID0gMDsKKwl1MzIgdmFsOwor
+CisJaWYgKG1zZy0+dHhfbGVuID4gMCkKKwkJZGF0YSB8PSB0eF9idWZbMF07CisJaWYgKG1zZy0+
+dHhfbGVuID4gMSkKKwkJZGF0YSB8PSB0eF9idWZbMV0gPDwgODsKIAogCWlmIChtc2ctPnR4X2xl
+biA+IDIpIHsKIAkJZGV2X2Vycihkc2ktPmRldiwgInRvbyBsb25nIHR4IGJ1ZiBsZW5ndGggJXp1
+IGZvciBzaG9ydCB3cml0ZVxuIiwKQEAgLTU4MSw2ICs1ODcsNyBAQCBzdGF0aWMgaW50IGR3X21p
+cGlfZHNpX2Rjc19zaG9ydF93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKIAkJcmV0dXJu
+IC1FSU5WQUw7CiAJfQogCisJdmFsID0gR0VOX0hEQVRBKGRhdGEpIHwgR0VOX0hUWVBFKG1zZy0+
+dHlwZSk7CiAJcmV0dXJuIGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgdmFsKTsK
+IH0KIAotLSAKMi4xMi4wLnJjMC4yMzAuZ2Y2MjVkNGNkYjkuZGlydHkKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
