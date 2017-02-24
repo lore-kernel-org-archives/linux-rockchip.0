@@ -1,43 +1,63 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v4 07/23] drm/rockchip: dw-mipi-dsi: include bad value in error message
-Date: Fri, 24 Feb 2017 12:54:50 +0000
-Message-ID: <20170224125506.21533-8-john@metanate.com>
+Subject: [PATCH v4 17/23] drm/rockchip: dw-mipi-dsi: improve PLL configuration
+Date: Fri, 24 Feb 2017 12:55:00 +0000
+Message-ID: <20170224125506.21533-18-john@metanate.com>
 References: <20170224125506.21533-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As an aid to debugging.
-
-Signed-off-by: John Keeping <john@metanate.com>
-Reviewed-by: Chris Zhong <zyw@rock-chips.com>
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
----
-v4:
-- Add Sean's Reviewed-by
-v3:
-- Add Chris' Reviewed-by
-Unchanged in v2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index f55010312f25..374b18c550fd 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -646,7 +646,8 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
- 		break;
- 	default:
--		dev_err(dsi->dev, "unsupported message type\n");
-+		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
-+			msg->type);
- 		ret = -EINVAL;
- 	}
- 
--- 
-2.12.0.rc0.230.gf625d4cdb9.dirty
+VGhlIG11bHRpcGxpY2F0aW9uIHJhdGlvIGZvciB0aGUgUExMIGlzIHJlcXVpcmVkIHRvIGJlIGV2
+ZW4gZHVlIHRvIHRoZQp1c2Ugb2YgYSAiYnkgMiBwcmUtc2NhbGVyIi4gIEN1cnJlbnRseSB3ZSBh
+cmUgbGlrZWx5IHRvIGVuZCB1cCB3aXRoIGFuCm9kZCBtdWx0aXBsaWVyIGV2ZW4gdGhvdWdoIHRo
+ZXJlIGlzIGFuIGVxdWl2YWxlbnQgc2V0IG9mIHBhcmFtZXRlcnMgd2l0aAphbiBldmVuIG11bHRp
+cGxpZXIuCgpGb3IgZXhhbXBsZSwgdXNpbmcgdGhlIDMyNE1IeiBiaXQgcmF0ZSB3aXRoIGEgcmVm
+ZXJlbmNlIGNsb2NrIG9mIDI0TUh6CndlIGVuZCB1cCB3aXRoIE0gPSAyNywgTiA9IDIgd2hlcmVh
+cyB0aGUgZXhhbXBsZSBpbiB0aGUgUEhZIGRhdGFib29rCmdpdmVzIE0gPSA1NCwgTiA9IDQgZm9y
+IHRoaXMgYml0IHJhdGUgYW5kIHJlZmVyZW5jZSBjbG9jay4KCkJ5IHdhbGtpbmcgZG93biB0aHJv
+dWdoIHRoZSBhdmFpbGFibGUgbXVsdGlwbGllciBpbnN0ZWFkIG9mIHVwIHdlIGFyZQptb3JlIGxp
+a2VseSB0byBoaXQgYW4gZXZlbiBtdWx0aXBsaWVyLiAgV2l0aCB0aGUgYWJvdmUgZXhhbXBsZSB3
+ZSBkbyBub3cKZ2V0IE0gPSA1NCwgTiA9IDQgYXMgZ2l2ZW4gYnkgdGhlIGRhdGFib29rLgoKV2hp
+bGUgZG9pbmcgdGhpcywgY2hhbmdlIHRoZSBsb29wIGxpbWl0cyB0byBlbmNvZGUgdGhlIGFjdHVh
+bCBsaW1pdHMgb24KdGhlIGRpdmlzb3IsIHdoaWNoIGFyZToKCgk0ME1IeiA+PSAocGxscmVmIC8g
+TikgPj0gNU1IegoKU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNv
+bT4KUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KdjQ6
+Ci0gQWRkIGEgY29tbWVudCBleHBsYWluaW5nIHRoZSBsaW1pdHMgc28gdGhhdCBpdCBjYW4gYmUg
+dW5kZXJzdG9vZAogIHdpdGhvdXQgZmluZGluZyB0aGUgY29tbWl0IG1lc3NhZ2UgYWJvdmUKLSBB
+ZGQgU2VhbidzIFJldmlld2VkLWJ5ClVuY2hhbmdlZCBpbiB2MwpVbmNoYW5nZWQgaW4gdjIKLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDEzICsrKysrKysrKysr
+Ky0KIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwppbmRleCA5YjZhNjBkZWI2OWUuLmU2YjUy
+YzdjYjVlMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKQEAgLTUxOCw3
+ICs1MTgsMTggQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3
+X21pcGlfZHNpICpkc2ksCiAJcGxscmVmID0gRElWX1JPVU5EX1VQKGNsa19nZXRfcmF0ZShkc2kt
+PnBsbHJlZl9jbGspLCBVU0VDX1BFUl9TRUMpOwogCXRtcCA9IHBsbHJlZjsKIAotCWZvciAoaSA9
+IDE7IGkgPCA2OyBpKyspIHsKKwkvKgorCSAqIFRoZSBsaW1pdHMgb24gdGhlIFBMTCBkaXZpc29y
+IGFyZToKKwkgKgorCSAqCTVNSHogPD0gKHBsbHJlZiAvIG4pIDw9IDQwTUh6CisJICoKKwkgKiB3
+ZSB3YWxrIG92ZXIgdGhlc2UgdmFsdWVzIGluIGRlc2NyZWFzaW5nIG9yZGVyIHNvIHRoYXQgaWYg
+d2UgaGl0CisJICogYW4gZXhhY3QgbWF0Y2ggZm9yIHRhcmdldF9tYnBzIGl0IGlzIG1vcmUgbGlr
+ZWx5IHRoYXQgIm0iIHdpbGwgYmUKKwkgKiBldmVuLgorCSAqCisJICogVE9ETzogZW5zdXJlIHRo
+YXQgIm0iIGlzIGV2ZW4gYWZ0ZXIgdGhpcyBsb29wLgorCSAqLworCWZvciAoaSA9IHBsbHJlZiAv
+IDU7IGkgPiAocGxscmVmIC8gNDApOyBpLS0pIHsKIAkJcHJlID0gcGxscmVmIC8gaTsKIAkJaWYg
+KCh0bXAgPiAodGFyZ2V0X21icHMgJSBwcmUpKSAmJiAodGFyZ2V0X21icHMgLyBwcmUgPCA1MTIp
+KSB7CiAJCQl0bXAgPSB0YXJnZXRfbWJwcyAlIHByZTsKLS0gCjIuMTIuMC5yYzAuMjMwLmdmNjI1
+ZDRjZGI5LmRpcnR5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
