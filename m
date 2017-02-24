@@ -1,67 +1,163 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v4 23/23] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Fri, 24 Feb 2017 12:55:06 +0000
-Message-ID: <20170224125506.21533-24-john@metanate.com>
+Subject: [PATCH v4 02/23] drm/rockchip: dw-mipi-dsi: pass mode in where needed
+Date: Fri, 24 Feb 2017 12:54:45 +0000
+Message-ID: <20170224125506.21533-3-john@metanate.com>
 References: <20170224125506.21533-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SW4gb3JkZXIgdG8gZnVsbHkgcmVzZXQgdGhlIHN0YXRlIG9mIHRoZSBNSVBJIGNvbnRyb2xsZXIg
-d2UgbXVzdCBhc3NlcnQKdGhpcyByZXNldC4KClRoaXMgaXMgc2xpZ2h0bHkgbW9yZSBjb21wbGlj
-YXRlZCB0aGFuIGl0IGNvdWxkIGJlIGluIG9yZGVyIHRvIG1haW50YWluCmNvbXBhdGliaWxpdHkg
-d2l0aCBkZXZpY2UgdHJlZXMgdGhhdCBkbyBub3Qgc3BlY2lmeSB0aGUgcmVzZXQgcHJvcGVydHku
-CgpTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgpSZXZpZXdl
-ZC1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KLS0tCnY0OgotIEZpeCBlcnJv
-ciBjaGVjayBmb3IgZGV2bV9yZXNldF9jb250cm9sX2dldCgpIHRvIHVzZSBFTk9FTlQKdjM6Ci0g
-QWRkIENocmlzJyBSZXZpZXdlZC1ieQpVbmNoYW5nZWQgaW4gdjIKLS0tCiBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDMxICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysKIDEgZmlsZSBjaGFuZ2VkLCAzMSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHctbWlwaS1kc2kuYwppbmRleCAwYzRiYWU3MTFlODQuLjMwZGE3NTY2NzMzNCAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKQEAgLTEzLDYgKzEzLDcgQEAKICNp
-bmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KICNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KICNp
-bmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KKyNpbmNsdWRlIDxsaW51eC9yZXNldC5oPgogI2luY2x1
-ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIu
-aD4KICNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KQEAgLTExNDQsNiArMTE0NSw3IEBAIHN0YXRp
-YyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2Ug
-Km1hc3RlciwKIAkJCW9mX21hdGNoX2RldmljZShkd19taXBpX2RzaV9kdF9pZHMsIGRldik7CiAJ
-Y29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGRhdGEgPSBvZl9pZC0+ZGF0YTsK
-IAlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7
-CisJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFwYl9yc3Q7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRy
-bSA9IGRhdGE7CiAJc3RydWN0IGR3X21pcGlfZHNpICpkc2k7CiAJc3RydWN0IHJlc291cmNlICpy
-ZXM7CkBAIC0xMTgyLDYgKzExODQsMzUgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCQlyZXR1cm4gcmV0Owog
-CX0KIAorCS8qCisJICogTm90ZSB0aGF0IHRoZSByZXNldCB3YXMgbm90IGRlZmluZWQgaW4gdGhl
-IGluaXRpYWwgZGV2aWNlIHRyZWUsIHNvCisJICogd2UgaGF2ZSB0byBiZSBwcmVwYXJlZCBmb3Ig
-aXQgbm90IGJlaW5nIGZvdW5kLgorCSAqLworCWFwYl9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xf
-Z2V0KGRldiwgImFwYiIpOworCWlmIChJU19FUlIoYXBiX3JzdCkpIHsKKwkJcmV0ID0gUFRSX0VS
-UihhcGJfcnN0KTsKKwkJaWYgKHJldCA9PSAtRU5PRU5UKSB7CisJCQlhcGJfcnN0ID0gTlVMTDsK
-KwkJfSBlbHNlIHsKKwkJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdldCByZXNldCBjb250cm9s
-OiAlZFxuIiwgcmV0KTsKKwkJCXJldHVybiByZXQ7CisJCX0KKwl9CisKKwlpZiAoYXBiX3JzdCkg
-eworCQlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wY2xrKTsKKwkJaWYgKHJldCkgewor
-CQkJZGV2X2VycihkZXYsICIlczogRmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iLCBfX2Z1bmNfXyk7
-CisJCQlyZXR1cm4gcmV0OworCQl9CisKKwkJcmVzZXRfY29udHJvbF9hc3NlcnQoYXBiX3JzdCk7
-CisJCXVzbGVlcF9yYW5nZSgxMCwgMjApOworCQlyZXNldF9jb250cm9sX2RlYXNzZXJ0KGFwYl9y
-c3QpOworCisJCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBjbGspOworCX0KKwogCXJldCA9
-IGNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBsbHJlZl9jbGspOwogCWlmIChyZXQpIHsKIAkJZGV2
-X2VycihkZXYsICIlczogRmFpbGVkIHRvIGVuYWJsZSBwbGxyZWZfY2xrXG4iLCBfX2Z1bmNfXyk7
-Ci0tIAoyLjEyLjAucmMwLjIzMC5nZjYyNWQ0Y2RiOS5kaXJ0eQoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+This shows that we only use the mode from the enable function and
+prepares us to remove the "mode" field and the mode_set hook in the next
+commit.
+
+Signed-off-by: John Keeping <john@metanate.com>
+Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+---
+v4:
+- Add Sean's Reviewed-by
+v3:
+- Add Chris' Reviewed-by
+New in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 41 ++++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index bbd992299f73..cdbd25087e83 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -330,11 +330,11 @@ static int max_mbps_to_testdin(unsigned int max_mbps)
+  * The controller should generate 2 frames before
+  * preparing the peripheral.
+  */
+-static void dw_mipi_dsi_wait_for_two_frames(struct dw_mipi_dsi *dsi)
++static void dw_mipi_dsi_wait_for_two_frames(struct drm_display_mode *mode)
+ {
+ 	int refresh, two_frames;
+ 
+-	refresh = drm_mode_vrefresh(dsi->mode);
++	refresh = drm_mode_vrefresh(mode);
+ 	two_frames = DIV_ROUND_UP(MSEC_PER_SEC, refresh) * 2;
+ 	msleep(two_frames);
+ }
+@@ -459,7 +459,8 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+ 	return ret;
+ }
+ 
+-static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi)
++static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
++				    struct drm_display_mode *mode)
+ {
+ 	unsigned int i, pre;
+ 	unsigned long mpclk, pllref, tmp;
+@@ -474,7 +475,7 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi)
+ 		return bpp;
+ 	}
+ 
+-	mpclk = DIV_ROUND_UP(dsi->mode->clock, MSEC_PER_SEC);
++	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
+ 	if (mpclk) {
+ 		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
+ 		tmp = mpclk * (bpp / dsi->lanes) * 10 / 9;
+@@ -742,43 +743,44 @@ static void dw_mipi_dsi_command_mode_config(struct dw_mipi_dsi *dsi)
+ 
+ /* Get lane byte clock cycles. */
+ static u32 dw_mipi_dsi_get_hcomponent_lbcc(struct dw_mipi_dsi *dsi,
++					   struct drm_display_mode *mode,
+ 					   u32 hcomponent)
+ {
+ 	u32 frac, lbcc;
+ 
+ 	lbcc = hcomponent * dsi->lane_mbps * MSEC_PER_SEC / 8;
+ 
+-	frac = lbcc % dsi->mode->clock;
+-	lbcc = lbcc / dsi->mode->clock;
++	frac = lbcc % mode->clock;
++	lbcc = lbcc / mode->clock;
+ 	if (frac)
+ 		lbcc++;
+ 
+ 	return lbcc;
+ }
+ 
+-static void dw_mipi_dsi_line_timer_config(struct dw_mipi_dsi *dsi)
++static void dw_mipi_dsi_line_timer_config(struct dw_mipi_dsi *dsi,
++					  struct drm_display_mode *mode)
+ {
+ 	u32 htotal, hsa, hbp, lbcc;
+-	struct drm_display_mode *mode = dsi->mode;
+ 
+ 	htotal = mode->htotal;
+ 	hsa = mode->hsync_end - mode->hsync_start;
+ 	hbp = mode->htotal - mode->hsync_end;
+ 
+-	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, htotal);
++	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, htotal);
+ 	dsi_write(dsi, DSI_VID_HLINE_TIME, lbcc);
+ 
+-	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, hsa);
++	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, hsa);
+ 	dsi_write(dsi, DSI_VID_HSA_TIME, lbcc);
+ 
+-	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, hbp);
++	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, hbp);
+ 	dsi_write(dsi, DSI_VID_HBP_TIME, lbcc);
+ }
+ 
+-static void dw_mipi_dsi_vertical_timing_config(struct dw_mipi_dsi *dsi)
++static void dw_mipi_dsi_vertical_timing_config(struct dw_mipi_dsi *dsi,
++					       struct drm_display_mode *mode)
+ {
+ 	u32 vactive, vsa, vfp, vbp;
+-	struct drm_display_mode *mode = dsi->mode;
+ 
+ 	vactive = mode->vdisplay;
+ 	vsa = mode->vsync_end - mode->vsync_start;
+@@ -852,11 +854,12 @@ static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
+ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+ {
+ 	struct dw_mipi_dsi *dsi = encoder_to_dsi(encoder);
++	struct drm_display_mode *mode = dsi->mode;
+ 	int mux = drm_of_encoder_active_endpoint_id(dsi->dev->of_node, encoder);
+ 	u32 val;
+ 	int ret;
+ 
+-	ret = dw_mipi_dsi_get_lane_bps(dsi);
++	ret = dw_mipi_dsi_get_lane_bps(dsi, mode);
+ 	if (ret < 0)
+ 		return;
+ 
+@@ -866,13 +869,13 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+ 	}
+ 
+ 	dw_mipi_dsi_init(dsi);
+-	dw_mipi_dsi_dpi_config(dsi, dsi->mode);
++	dw_mipi_dsi_dpi_config(dsi, mode);
+ 	dw_mipi_dsi_packet_handler_config(dsi);
+ 	dw_mipi_dsi_video_mode_config(dsi);
+-	dw_mipi_dsi_video_packet_config(dsi, dsi->mode);
++	dw_mipi_dsi_video_packet_config(dsi, mode);
+ 	dw_mipi_dsi_command_mode_config(dsi);
+-	dw_mipi_dsi_line_timer_config(dsi);
+-	dw_mipi_dsi_vertical_timing_config(dsi);
++	dw_mipi_dsi_line_timer_config(dsi, mode);
++	dw_mipi_dsi_vertical_timing_config(dsi, mode);
+ 	dw_mipi_dsi_dphy_timing_config(dsi);
+ 	dw_mipi_dsi_dphy_interface_config(dsi);
+ 	dw_mipi_dsi_clear_err(dsi);
+@@ -880,7 +883,7 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+ 		dev_err(dsi->dev, "failed to prepare panel\n");
+ 
+ 	dw_mipi_dsi_phy_init(dsi);
+-	dw_mipi_dsi_wait_for_two_frames(dsi);
++	dw_mipi_dsi_wait_for_two_frames(mode);
+ 
+ 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_VID_MODE);
+ 	drm_panel_enable(dsi->panel);
+-- 
+2.12.0.rc0.230.gf625d4cdb9.dirty
