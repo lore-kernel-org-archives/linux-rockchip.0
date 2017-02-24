@@ -1,47 +1,69 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH v4 14/23] drm/rockchip: dw-mipi-dsi: ensure PHY is reset
-Date: Fri, 24 Feb 2017 12:54:57 +0000
-Message-ID: <20170224125506.21533-15-john@metanate.com>
+Subject: [PATCH v4 09/23] drm/rockchip: dw-mipi-dsi: only request HS clock when required
+Date: Fri, 24 Feb 2017 12:54:52 +0000
+Message-ID: <20170224125506.21533-10-john@metanate.com>
 References: <20170224125506.21533-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWxzbyBkb24ndCBwb3dlciB1cCB0aGUgRFNJIGhvc3QgYXQgdGhpcyBwb2ludCBzaW5jZSB0aGlz
-IGlzIG5vdApuZWNlc3NhcnkgaW4gb3JkZXIgdG8gY29uZmlndXJlIHRoZSBQSFkgYW5kIHdlIGRv
-IHNvIGxhdGVyIHdoZW4Kc2VsZWN0aW5nIHZpZGVvIG9yIGNvbW1hbmQgbW9kZS4KClNpZ25lZC1v
-ZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+ClJldmlld2VkLWJ5OiBDaHJp
-cyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgpSZXZpZXdlZC1ieTogU2VhbiBQYXVsIDxzZWFu
-cGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQp2NDoKLSBBZGQgU2VhbidzIFJldmlld2VkLWJ5CnYzOgot
-IEFkZCBDaHJpcycgUmV2aWV3ZWQtYnkKVW5jaGFuZ2VkIGluIHYyCi0tLQogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCA1ICsrKystCiAxIGZpbGUgY2hhbmdlZCwgNCBp
-bnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlw
-aS1kc2kuYwppbmRleCAwZjliZTQxZjAzNjEuLjc4ZDY3NmI3ZTUxNiAxMDA2NDQKLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKQEAgLTM5Nyw3ICszOTcsMTAgQEAgc3RhdGljIGludCBk
-d19taXBpX2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKIAkJcmV0dXJuIHRl
-c3RkaW47CiAJfQogCi0JZHNpX3dyaXRlKGRzaSwgRFNJX1BXUl9VUCwgUE9XRVJVUCk7CisJLyog
-U3RhcnQgYnkgY2xlYXJpbmcgUEhZIHN0YXRlICovCisJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9U
-U1RfQ1RSTDAsIFBIWV9VTlRFU1RDTFIpOworCWRzaV93cml0ZShkc2ksIERTSV9QSFlfVFNUX0NU
-UkwwLCBQSFlfVEVTVENMUik7CisJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UU1RfQ1RSTDAsIFBI
-WV9VTlRFU1RDTFIpOwogCiAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxMCwgQllQQVNT
-X1ZDT19SQU5HRSB8CiAJCQkJCSBWQ09fUkFOR0VfQ09OX1NFTCh2Y28pIHwKLS0gCjIuMTIuMC5y
-YzAuMjMwLmdmNjI1ZDRjZGI5LmRpcnR5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Requesting the HS clock from the PHY before we initialize it causes an
+invalid signal to be sent out since the input clock is not yet
+configured.  The PHY databook suggests only asserting this signal when
+performing HS transfers, so let's do that.
+
+Signed-off-by: John Keeping <john@metanate.com>
+Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+---
+v4:
+- Add Sean's Reviewed-by
+v3:
+- Add Chris' Reviewed-by
+Unchanged in v2
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index a20d669b73ee..1b6fce2600f3 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -545,13 +545,15 @@ static int dw_mipi_dsi_host_detach(struct mipi_dsi_host *host,
+ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
+ 				   const struct mipi_dsi_msg *msg)
+ {
++	bool lpm = msg->flags & MIPI_DSI_MSG_USE_LPM;
+ 	u32 val = 0;
+ 
+ 	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
+ 		val |= EN_ACK_RQST;
+-	if (msg->flags & MIPI_DSI_MSG_USE_LPM)
++	if (lpm)
+ 		val |= CMD_MODE_ALL_LP;
+ 
++	dsi_write(dsi, DSI_LPCLK_CTRL, lpm ? 0 : PHY_TXREQUESTCLKHS);
+ 	dsi_write(dsi, DSI_CMD_MODE_CFG, val);
+ }
+ 
+@@ -695,6 +697,7 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
+ 		dsi_write(dsi, DSI_PWR_UP, RESET);
+ 		dsi_write(dsi, DSI_MODE_CFG, ENABLE_VIDEO_MODE);
+ 		dw_mipi_dsi_video_mode_config(dsi);
++		dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
+ 		dsi_write(dsi, DSI_PWR_UP, POWERUP);
+ 	}
+ }
+@@ -712,7 +715,6 @@ static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
+ 		  | PHY_RSTZ | PHY_SHUTDOWNZ);
+ 	dsi_write(dsi, DSI_CLKMGR_CFG, TO_CLK_DIVIDSION(10) |
+ 		  TX_ESC_CLK_DIVIDSION(7));
+-	dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
+ }
+ 
+ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
+-- 
+2.12.0.rc0.230.gf625d4cdb9.dirty
