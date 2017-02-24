@@ -1,7 +1,8 @@
 From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 3/4] ASoC: es8328: Enabling support for 192k
-Date: Fri, 24 Feb 2017 17:01:03 +0100
-Message-ID: <20170224160104.29354-4-romain.perier@collabora.com>
+Subject: [PATCH 4/4] ASoC: rockchip: Enable 192khz in hw_params
+	operation
+Date: Fri, 24 Feb 2017 17:01:04 +0100
+Message-ID: <20170224160104.29354-5-romain.perier@collabora.com>
 References: <20170224160104.29354-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,32 +22,27 @@ To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jarosl
 Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-The master and slave modes don't share the same table for MCLK/LRCLK
-ratios. The slaves mode has bigger ratios that allow to use BCLK that
-matche sampling frequency of 192khz.
-
-This commit enables this rate only for slave mode, i.e it does not
-declare this frequency in sysclk_contraints, resulting to an error in
-master mode (not supported CLK).
+As the sampling frequency is supported by es8328 in slave mode,
+add support for it in the corresponding operation.
 
 Signed-off-by: Romain Perier <romain.perier@collabora.com>
 ---
- sound/soc/codecs/es8328.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ sound/soc/rockchip/rk3288_hdmi_analog.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
-index 1363a68..ed7cc42 100644
---- a/sound/soc/codecs/es8328.c
-+++ b/sound/soc/codecs/es8328.c
-@@ -69,7 +69,8 @@ static const char * const supply_names[ES8328_SUPPLY_NUM] = {
- 	"HPVDD",
- };
- 
--#define ES8328_RATES (SNDRV_PCM_RATE_96000 | \
-+#define ES8328_RATES (SNDRV_PCM_RATE_192000 | \
-+		SNDRV_PCM_RATE_96000 | \
- 		SNDRV_PCM_RATE_88200 | \
- 		SNDRV_PCM_RATE_8000_48000)
- #define ES8328_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | \
+diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
+index b60abf3..dbc53e4 100644
+--- a/sound/soc/rockchip/rk3288_hdmi_analog.c
++++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
+@@ -93,6 +93,9 @@ static int rk_hw_params(struct snd_pcm_substream *substream,
+ 	case 96000:
+ 		mclk = 12288000;
+ 		break;
++	case 192000:
++		mclk = 24576000;
++		break;
+ 	case 11025:
+ 	case 22050:
+ 	case 44100:
 -- 
 2.9.3
