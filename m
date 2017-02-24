@@ -1,16 +1,15 @@
-From: "Nickey.Yang" <nickey.yang@rock-chips.com>
-Subject: Re: [PATCH] drm: bridge: dw-hdmi: support i2c extended read mode
-Date: Thu, 23 Feb 2017 19:47:18 +0800
-Message-ID: <2c96fb0b-c41b-82c4-7a6e-8bdd836bca71@rock-chips.com>
-References: <1487749545-5349-1-git-send-email-nickey.yang@rock-chips.com>
- <3f562fa6-886a-104f-62be-e0b1cbb8e5f7@synopsys.com>
- <a857310f-8ca7-428b-f121-ec012ac29975@rock-chips.com>
- <b391d2dd-3352-08b5-fe82-cd24381a10a6@synopsys.com>
- <925b23de-5fb6-9f6f-0d99-5268508334a2@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [GIT PULL] drm/rockchip: some fixes
+Date: Fri, 24 Feb 2017 08:42:58 +0800
+Message-ID: <58AF8192.40505@rock-chips.com>
+References: <58ACE158.9010508@rock-chips.com>
+ <CAOw6vbJFM4UcM2s-gW+iXfTPysYU3=qdTY8f=oASC5g_7CQd2A@mail.gmail.com>
+ <58AE42EB.6030604@rock-chips.com> <20170223180153.GD24066@art_vandelay>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0205657718=="
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <925b23de-5fb6-9f6f-0d99-5268508334a2@rock-chips.com>
+In-Reply-To: <20170223180153.GD24066@art_vandelay>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -20,247 +19,58 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jose Abreu <Jose.Abreu@synopsys.com>, architt@codeaurora.org, airlied@linux.ie
-Cc: laurent.pinchart+renesas@ideasonboard.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, andy.yan@rock-chips.com
+To: Sean Paul <seanpaul@chromium.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============0205657718==
-Content-Type: multipart/alternative;
- boundary="------------C6668C05372319D79614BF36"
-
-This is a multi-part message in MIME format.
---------------C6668C05372319D79614BF36
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-
-
-
-在 2017年02月23日 19:40, Nickey.Yang 写道:
->
-> Hi Jose,
->
->
-> 在 2017年02月23日 18:17, Jose Abreu 写道:
->> Hi Nickey,
->>
->>
->> On 22-02-2017 11:11, Nickey.Yang wrote:
->>> Read EDID func is drm_do_probe_ddc_edid    (in
->>> drivers/gpu/drm/drm_edid.c     Line:1215)
->>> when block = 3  means &msgs[3].addr = DDC_SEGMENT_ADDR(0x30)
->>> ,but in dw_hdmi_i2c_xfer
->>> line 299  msgs[i].addr != addr (0x50),  it will printk
->>> "unsupported transfer, changed slave address"
->>> and return -EOPNOTSUPP.
->>>
->>> in fact,0x30 not means change slave address but means segment
->>> address.
->>>
->> I am reading the drm_do_probe_ddc_edid and I have one question:
->> There are 2 writes and one read, but your patch only handles the
->> write of segment address. What about the start address?
->
-> write start address operations
-> {
-> 1235    .addr = DDC_ADDR,
-> 1236    .flags = 0,
-> 1237   .len = 1,
-> 1238    .buf = &start,
-> }
-> will be handle by dw_hdmi_i2c_write. it seems we do need to send start 
-> signal actully,
-we do not need
-> because in dw_hdmi_i2c_write will do length--    and it will skip
-> while (length--) {
->                /*   */
-> }
->
->
-> In DesignWare HDMI Transmitter Controller Databook,
-> 2.10   E-DID/HDCP/SCDC I 2 C E-DDC Interface
->
->   /* I 2 C Master Interface Normal Mode */**S   slaveaddr[6:0]   W  A  addr[7:0]   datao[7:0]  A/A PA/A
->
-> /* I 2 C Master Interface Extended Read Mode */
-> S  segaddr[6:0]  W X segpointer[7:0] X Sr slaveaddr[6:0] W A addr[7:0]  A datai[7:0]   A P
->
-> so we just need add  handles the write of segment address
-> to  support I2C Master Interface Extended Read Mode.
->
->> I am refering to this structure:
->> 1228                 struct i2c_msg msgs[] = {
->> 1229                         {
->> 1230                                 .addr   = DDC_SEGMENT_ADDR,
->> 1231                                 .flags  = 0,
->> 1232                                 .len    = 1,
->> 1233                                 .buf    = &segment,
->> 1234                         }, {
->> 1235                                 .addr   = DDC_ADDR,
->> 1236                                 .flags  = 0,
->> 1237                                 .len    = 1,
->> 1238                                 .buf    = &start,
->> 1239                         }, {
->> 1240                                 .addr   = DDC_ADDR,
->> 1241                                 .flags  = I2C_M_RD,
->> 1242                                 .len    = len,
->> 1243                                 .buf    = buf,
->> 1244                         }
->>
->> There is a write which indicates DDC segment address and then
->> there is another write which indicates start address. Shouldn't
->> this be handled?
->>
->> Best regards,
->> Jose Miguel Abreu
->
-> Best regards,
-> Nickey,
->>
->
-
-
---------------C6668C05372319D79614BF36
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000">
-    <p><br>
-    </p>
-    <br>
-    <div class="moz-cite-prefix">在 2017年02月23日 19:40, Nickey.Yang 写道:<br>
-    </div>
-    <blockquote
-      cite="mid:925b23de-5fb6-9f6f-0d99-5268508334a2@rock-chips.com"
-      type="cite">
-      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-      <p>Hi Jose,<br>
-      </p>
-      <br>
-      <div class="moz-cite-prefix">在 2017年02月23日 18:17, Jose Abreu 写道:<br>
-      </div>
-      <blockquote
-        cite="mid:b391d2dd-3352-08b5-fe82-cd24381a10a6@synopsys.com"
-        type="cite">
-        <pre wrap="">Hi Nickey,
-
-
-On 22-02-2017 11:11, Nickey.Yang wrote:
-</pre>
-        <blockquote type="cite">
-          <pre wrap="">Read EDID func is drm_do_probe_ddc_edid    (in
-drivers/gpu/drm/drm_edid.c     Line:1215)
-when block = 3  means &amp;msgs[3].addr = DDC_SEGMENT_ADDR(0x30)
-,but in dw_hdmi_i2c_xfer
-line 299  msgs[i].addr != addr (0x50),  it will printk
-"unsupported transfer, changed slave address"
-and return -EOPNOTSUPP.
-
-in fact,0x30 not means change slave address but means segment
-address.
-
-</pre>
-        </blockquote>
-        <pre wrap="">I am reading the drm_do_probe_ddc_edid and I have one question:
-There are 2 writes and one read, but your patch only handles the
-write of segment address. What about the start address?
-</pre>
-      </blockquote>
-      <br>
-      write start address operations<br>
-      {<br>
-      1235    .addr = DDC_ADDR,<br>
-      1236    .flags = 0,<br>
-      1237   .len = 1,<br>
-      1238    .buf = &amp;start,<br>
-      }<br>
-      will be handle by dw_hdmi_i2c_write. it seems we do need to send
-      start signal actully,<br>
-    </blockquote>
-    we do not need
-    <blockquote
-      cite="mid:925b23de-5fb6-9f6f-0d99-5268508334a2@rock-chips.com"
-      type="cite"> because in dw_hdmi_i2c_write will do length--    and
-      it will skip <br>
-      while (length--) {<br>
-      <pre wrap="">              /*   */
-}
-
-
-In DesignWare HDMI Transmitter Controller Databook,
-2.10   E-DID/HDCP/SCDC I 2 C E-DDC Interface
-
- /* I 2 C Master Interface Normal Mode */<b>
-</b>S   slaveaddr[6:0]   W  A  addr[7:0]   datao[7:0]  A/A PA/A
-
-/* I 2 C Master Interface Extended Read Mode */
-S  segaddr[6:0]  W X segpointer[7:0] X Sr slaveaddr[6:0] W A addr[7:0]  A datai[7:0]   A P
-
-so we just need add  handles the write of segment address
-to  support I2C Master Interface Extended Read Mode.
-
-</pre>
-      <blockquote
-        cite="mid:b391d2dd-3352-08b5-fe82-cd24381a10a6@synopsys.com"
-        type="cite">
-        <pre wrap="">I am refering to this structure:
-1228                 struct i2c_msg msgs[] = {
-1229                         {
-1230                                 .addr   = DDC_SEGMENT_ADDR,
-1231                                 .flags  = 0,
-1232                                 .len    = 1,
-1233                                 .buf    = &amp;segment,
-1234                         }, {
-1235                                 .addr   = DDC_ADDR,
-1236                                 .flags  = 0,
-1237                                 .len    = 1,
-1238                                 .buf    = &amp;start,
-1239                         }, {
-1240                                 .addr   = DDC_ADDR,
-1241                                 .flags  = I2C_M_RD,
-1242                                 .len    = len,
-1243                                 .buf    = buf,
-1244                         }
-
-There is a write which indicates DDC segment address and then
-there is another write which indicates start address. Shouldn't
-this be handled?
-
-Best regards,
-Jose Miguel Abreu
-</pre>
-      </blockquote>
-      <br>
-      <pre wrap="">Best regards,</pre>
-      Nickey,<br>
-      <blockquote
-        cite="mid:b391d2dd-3352-08b5-fe82-cd24381a10a6@synopsys.com"
-        type="cite">
-        <pre wrap="">
-
-</pre>
-      </blockquote>
-      <br>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
---------------C6668C05372319D79614BF36--
-
-
---===============0205657718==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============0205657718==--
+T24gMjAxN+W5tDAy5pyIMjTml6UgMDI6MDEsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBUaHUsIEZl
+YiAyMywgMjAxNyBhdCAxMDowMzoyM0FNICswODAwLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAx
+N+W5tDAy5pyIMjPml6UgMDA6MDksIFNlYW4gUGF1bCB3cm90ZToKPj4+IE9uIFR1ZSwgRmViIDIx
+LCAyMDE3IGF0IDc6NTQgUE0sIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3Jv
+dGU6Cj4+Pj4gSGkgRGF2ZQo+Pj4+Cj4+Pj4gU29tZSBmaXhlcywgbG9va3MgZ29vZCB0byBtZS4K
+Pj4+Pgo+Pj4gSGkgTWFyaywKPj4+IEFzIHdlIGRpc2N1c3NlZCwgcm9ja2NoaXAgcGF0Y2hlcyBz
+aG91bGQgbm93IGdvIHRocm91Z2ggLW1pc2MuIFNpbmNlCj4+PiA0LjEwIGlzIGFscmVhZHkgcmVs
+ZWFzZWQsIEknbGwgcHVzaCB0aGVzZSB0aHJvdWdoIG92ZXIgdGhlcmUuCj4+Pgo+Pj4gU2Vhbgo+
+PiBIaSBTZWFuCj4+Cj4+IFJpZ2h0LCBJIGhhZCB0cmllZCB0aGUgLW1pc2MgYnJhbmNoLCBidXQg
+ZmFpbGVkIG9uIHNvbWUgc3RlcHMuICBsZXQKPj4gdXMgcmUtZGlzY3Vzc2VkIGhvdyB0byB1c2Ug
+aXQuCj4+Cj4+IGFuZCB0aGFua3MgZm9yIHB1c2hpbmcgdGhlc2UgcGF0Y2hlcyB0byAtbWlzYyBi
+cmFuY2guCj4+Cj4+IEJlc3QgUmVnYXJkcy4KPj4KPj4+PiBCZXN0IHJlZ2FyZHMuCj4+Pj4KPj4+
+PiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDljYTcwMzU2YTkyNjA0MDNjMWJk
+YTQwZDk0MjkzNWU1NWQwMGMxMWM6Cj4+Pj4KPj4+PiAgICBSZXZlcnQgImRybTogUmVzdXJyZWN0
+IGF0b21pYyBybWZiIGNvZGUsIHYzIiAoMjAxNy0wMi0xNyAxMjozOTowNCArMTAwMCkKPj4+Pgo+
+Pj4+IGFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+Pj4+Cj4+Pj4gICAg
+aHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1yb2NrY2hpcC5naXQKPj4+PiBk
+cm0tcm9ja2NoaXAtbmV4dC0yMDE3LTAyLTIyCj4+Pj4KPj4+PiBmb3IgeW91IHRvIGZldGNoIGNo
+YW5nZXMgdXAgdG8gMzY5MDYyOWI4NDRiOTYxZmM5ZGRhOThiMGZmYzE2YTYwMTBhN2YyMToKPj4+
+Pgo+Pj4+ICAgIGRybS9yb2NrY2hpcDogdm9wOiB2ZXJpZnkgcGl4ZWxjbG9jayBmb3IgaGRtaSBh
+bmQgZGlzcGxheXBvcnQgKDIwMTctMDItMjIKPj4+PiAwODo0NDoyMiArMDgwMCkKPj4+Pgo+Pj4+
+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0KPj4+PiBBcm5kIEJlcmdtYW5uICgxKToKPj4+PiAgICAgICAgZHJtL3JvY2tjaGlw
+OiBhZGQgZXh0Y29uIGRlcGVuZGVuY3kgZm9yIERQCj4+Pj4KPj4+PiBDaHJpc3RvcGhlIEphaWxs
+ZXQgKDEpOgo+Pj4+ICAgICAgICBkcm0vcm9ja2NoaXA6IGNkbi1kcDogRml4IGVycm9yIGhhbmRs
+aW5nCj4+Pj4KPj4+PiBNYXJrIFlhbyAoMyk6Cj4+Pj4gICAgICAgIGRybS9yb2NrY2hpcDogdm9w
+OiBubyBuZWVkIHdhaXQgdmJsYW5rIG9uIGNydGMgZW5hYmxlCj4+Pj4gICAgICAgIGRybS9yb2Nr
+Y2hpcDogdm9wOiB2ZXJpZnkgZGlzcGxheSBtb2RlIHdpdGggdm9wIG1heF9vdXRwdXQKPj4+PiAg
+ICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHZlcmlmeSBwaXhlbGNsb2NrIGZvciBoZG1pIGFuZCBk
+aXNwbGF5cG9ydAo+IEkgZG9uJ3QgdGhpbmsgdGhlc2UgMyBhcmUgZml4ZXMsIHBlci1zZS4gU28g
+bGV0J3Mgd2FpdCB1bnRpbCBkcm0tbWlzYy1uZXh0IGlzCj4gdXBkYXRlZCAodGhlc2UgZGVwZW5k
+IG9uIENocmlzIFpob25nJ3MgY2RuLWRwIHBhdGNoZXMpIGFuZCBtZXJnZSB0aGVtIHRoZXJlLgoK
+UmlnaHQsIFRoYW5rcy4KCj4KPiBTZWFuCj4KPgo+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL0tjb25maWcgICAgICAgICAgICB8ICAxICsKPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9jZG4tZHAtY29yZS5jICAgICAgfCAgNCArKystCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNTYKPj4+PiArKysrKysrKysrKysrKysrKyst
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4+ICAgZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8ICA3ICsrKysrKysKPj4+PiAgIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAxMyArKysrKysrKysrKysr
+Cj4+Pj4gICA1IGZpbGVzIGNoYW5nZWQsIDQyIGluc2VydGlvbnMoKyksIDM5IGRlbGV0aW9ucygt
+KQo+Pj4+Cj4+Pj4gLS0KPj4+PiDvvK1hcmsgWWFvCj4+Pj4KPj4+Pgo+Pj4+IF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+Pj4gZHJpLWRldmVsIG1haWxp
+bmcgbGlzdAo+Pj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4+PiBodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+Pj4KPj4K
+Pj4gLS0gCj4+IO+8rWFyayBZYW8KPj4KPj4KPj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KPj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+PiBkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
