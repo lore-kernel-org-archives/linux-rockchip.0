@@ -1,48 +1,47 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 4/4] ASoC: rockchip: Enable 192khz in hw_params
-	operation
-Date: Fri, 24 Feb 2017 17:01:04 +0100
-Message-ID: <20170224160104.29354-5-romain.perier@collabora.com>
-References: <20170224160104.29354-1-romain.perier@collabora.com>
+From: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>
+Subject: [PATCH] ASoC: rockchip: i2s: Remove unnecessary 'out of memory'
+ message
+Date: Sat, 25 Feb 2017 12:18:34 +0200
+Message-ID: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170224160104.29354-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: perex@perex.cz, tiwai@suse.com, heiko@sntech.de
+Cc: alsa-devel@alsa-project.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@stud.acs.upb.ro>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As the sampling frequency is supported by es8328 in slave mode,
-add support for it in the corresponding operation.
+This was reported by checkpatch.pl
 
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
+Signed-off-by: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>
 ---
- sound/soc/rockchip/rk3288_hdmi_analog.c | 3 +++
- 1 file changed, 3 insertions(+)
+ sound/soc/rockchip/rockchip_i2s.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
-index b60abf3..dbc53e4 100644
---- a/sound/soc/rockchip/rk3288_hdmi_analog.c
-+++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
-@@ -93,6 +93,9 @@ static int rk_hw_params(struct snd_pcm_substream *substream,
- 	case 96000:
- 		mclk = 12288000;
- 		break;
-+	case 192000:
-+		mclk = 24576000;
-+		break;
- 	case 11025:
- 	case 22050:
- 	case 44100:
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 974915cb4c4f..d02a1045fc0b 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -551,10 +551,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	int val;
+ 
+ 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
+-	if (!i2s) {
+-		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
++	if (!i2s)
+ 		return -ENOMEM;
+-	}
+ 
+ 	i2s->dev = &pdev->dev;
+ 
 -- 
-2.9.3
+2.11.1
