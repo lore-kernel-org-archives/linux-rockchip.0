@@ -1,57 +1,55 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/2] ARM: dts: add arm/arm64 include symlinks
-Date: Sun, 26 Feb 2017 07:00:57 +0100
-Message-ID: <20170226060058.5841-1-heiko@sntech.de>
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: Remove unnecessary
+ 'out of memory' message
+Date: Sun, 26 Feb 2017 17:04:16 +0900
+Message-ID: <ef03f4f4-ad76-8441-87b1-fe637f53977e@sakamocchi.jp>
+References: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, arnd@arndb.de, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, olof@lixom.net
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
+Cc: alsa-devel@alsa-project.org, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@stud.acs.upb.ro>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Allow including of dtsi files in an architecture-independent manner.
-Some dtsi files may be shared between architectures and one suggestion
-was to have symlinks and let these includes get accessed via a
-    #include <arm64/foo.dtsi>
-So add the necessary symlinks for arm32.
+On Feb 25 2017 19:18, Mihai-Valentin DUMITRU wrote:
+> This was reported by checkpatch.pl
+>
+> Signed-off-by: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>
+> ---
+>  sound/soc/rockchip/rockchip_i2s.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+> index 974915cb4c4f..d02a1045fc0b 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+> @@ -551,10 +551,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+>  	int val;
+>
+>  	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
+> -	if (!i2s) {
+> -		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
+> +	if (!i2s)
 
-Suggested-by: Olof Johansson <olof@lixom.net>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-Suggested by Olof in response to the patch adding direct symlinks
-for cros-ec includes.
+The line for dev_warn() should be kept.
 
- arch/arm/boot/dts/include/arm   | 1 +
- arch/arm/boot/dts/include/arm64 | 1 +
- 2 files changed, 2 insertions(+)
- create mode 120000 arch/arm/boot/dts/include/arm
- create mode 120000 arch/arm/boot/dts/include/arm64
+>  		return -ENOMEM;
+> -	}
+>
+>  	i2s->dev = &pdev->dev;
 
-diff --git a/arch/arm/boot/dts/include/arm b/arch/arm/boot/dts/include/arm
-new file mode 120000
-index 000000000000..a96aa0ea9d8c
---- /dev/null
-+++ b/arch/arm/boot/dts/include/arm
-@@ -0,0 +1 @@
-+..
-\ No newline at end of file
-diff --git a/arch/arm/boot/dts/include/arm64 b/arch/arm/boot/dts/include/arm64
-new file mode 120000
-index 000000000000..074a835fca3e
---- /dev/null
-+++ b/arch/arm/boot/dts/include/arm64
-@@ -0,0 +1 @@
-+../../../../arm64/boot/dts
-\ No newline at end of file
--- 
-2.11.0
+
+Regards
+
+Takashi Sakamoto
