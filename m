@@ -1,55 +1,87 @@
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-Subject: Re: [PATCH] ASoC: rockchip: i2s: Remove unnecessary
- 'out of memory' message
-Date: Sun, 26 Feb 2017 17:04:16 +0900
-Message-ID: <ef03f4f4-ad76-8441-87b1-fe637f53977e@sakamocchi.jp>
-References: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Subject: Re: [GIT PULL] drm/rockchip: convert to drm_mm
+Date: Sun, 26 Feb 2017 21:45:54 +0100
+Message-ID: <20170226204554.y3dqu52hzrgbv5rj@phenom.ffwll.local>
+References: <58A51647.2040003@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
-Cc: alsa-devel@alsa-project.org, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@stud.acs.upb.ro>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <58A51647.2040003-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Feb 25 2017 19:18, Mihai-Valentin DUMITRU wrote:
-> This was reported by checkpatch.pl
->
-> Signed-off-by: Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>
-> ---
->  sound/soc/rockchip/rockchip_i2s.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 974915cb4c4f..d02a1045fc0b 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -551,10 +551,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
->  	int val;
->
->  	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
-> -	if (!i2s) {
-> -		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
-> +	if (!i2s)
+On Thu, Feb 16, 2017 at 11:02:31AM +0800, Mark yao wrote:
+> Hi Dave
+> =
 
-The line for dev_warn() should be kept.
+> After convert to drm_mm, rockchip arm64 platform can works with iommu, li=
+ke
+> rk3399. it's import patches for rockchip arm64 platform
+> =
 
->  		return -ENOMEM;
-> -	}
->
->  	i2s->dev = &pdev->dev;
+> And these patches already have full reviewed, I hope these patches can be
+> landed.
+> =A0
+> Best regards
+> =
 
+> The following changes since commit 13f62f54d174d3417c3caaafedf5e22a0a03e4=
+42:
+> =
 
-Regards
+> =A0 Merge branch 'drm-next-4.11' of git://people.freedesktop.org/~agd5f/l=
+inux
+> into drm-next (2017-02-10 10:13:30 +1000)
+> =
 
-Takashi Sakamoto
+> are available in the git repository at:
+> =
+
+> =
+
+> =A0 https://github.com/markyzq/kernel-drm-rockchip.git
+> drm-rockchip-next-2017-02-16
+> =
+
+> for you to fetch changes up to 1aa5ca6e3ec63aa5815d78646748e88a7ceb1c8e:
+> =
+
+> =A0 drm/rockchip: Use common IOMMU API to attach devices (2017-02-15 08:5=
+2:13
+> +0800)
+> =
+
+> ----------------------------------------------------------------
+> Shunqian Zheng (1):
+> =A0=A0=A0=A0=A0 drm/rockchip: Use common IOMMU API to attach devices
+> =
+
+> Tomasz Figa (1):
+> =A0=A0=A0=A0=A0 drm/rockchip: Do not use DMA mapping API if attached to I=
+OMMU domain
+
+I thought we've moved rockchip into drm-misc ...?
+
+Can you and Sean Paul please talk and figure out how exactly you want to
+maintain this driver? The current situation where we have stuff going in
+independently through different maintainers is not great at all. If you
+can't get agreement, we'll just make you agree by arbitrarily rolling the
+dice or something silly like that :-)
+-Daniel
+-- =
+
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
