@@ -1,14 +1,15 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [GIT PULL] drm/rockchip: convert to drm_mm
-Date: Sun, 26 Feb 2017 21:45:54 +0100
-Message-ID: <20170226204554.y3dqu52hzrgbv5rj@phenom.ffwll.local>
-References: <58A51647.2040003@rock-chips.com>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND PATCH] PM / AVS: rockchip-io: add io selectors and
+ supplies for rk3328
+Date: Sun, 26 Feb 2017 13:48:40 -0800
+Message-ID: <m2innw39on.fsf@baylibre.com>
+References: <1487853191-10994-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <58A51647.2040003-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1487853191-10994-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+ (David Wu's message of "Thu, 23 Feb 2017 20:33:11 +0800")
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,70 +19,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: nm-l0cyMroinI0@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rafael.j.wysocki-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 16, 2017 at 11:02:31AM +0800, Mark yao wrote:
-> Hi Dave
-> =
+David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
 
-> After convert to drm_mm, rockchip arm64 platform can works with iommu, li=
-ke
-> rk3399. it's import patches for rockchip arm64 platform
-> =
+> From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> This adds the necessary data for handling io voltage domains on the rk3328.
+> As interesting tidbit, the rk3328 only contains one iodomain area in the
+> regular General Register Files (GRF).
+>
+> Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-> And these patches already have full reviewed, I hope these patches can be
-> landed.
-> =A0
-> Best regards
-> =
+Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 
-> The following changes since commit 13f62f54d174d3417c3caaafedf5e22a0a03e4=
-42:
-> =
+Rafael, feel free to take directly.  I don't currently have any other
+AVS stuff in the queue.
 
-> =A0 Merge branch 'drm-next-4.11' of git://people.freedesktop.org/~agd5f/l=
-inux
-> into drm-next (2017-02-10 10:13:30 +1000)
-> =
+Kevin
 
-> are available in the git repository at:
-> =
-
-> =
-
-> =A0 https://github.com/markyzq/kernel-drm-rockchip.git
-> drm-rockchip-next-2017-02-16
-> =
-
-> for you to fetch changes up to 1aa5ca6e3ec63aa5815d78646748e88a7ceb1c8e:
-> =
-
-> =A0 drm/rockchip: Use common IOMMU API to attach devices (2017-02-15 08:5=
-2:13
-> +0800)
-> =
-
-> ----------------------------------------------------------------
-> Shunqian Zheng (1):
-> =A0=A0=A0=A0=A0 drm/rockchip: Use common IOMMU API to attach devices
-> =
-
-> Tomasz Figa (1):
-> =A0=A0=A0=A0=A0 drm/rockchip: Do not use DMA mapping API if attached to I=
-OMMU domain
-
-I thought we've moved rockchip into drm-misc ...?
-
-Can you and Sean Paul please talk and figure out how exactly you want to
-maintain this driver? The current situation where we have stuff going in
-independently through different maintainers is not great at all. If you
-can't get agreement, we'll just make you agree by arbitrarily rolling the
-dice or something silly like that :-)
--Daniel
--- =
-
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+> ---
+>  .../bindings/power/rockchip-io-domain.txt          |  1 +
+>  drivers/power/avs/rockchip-io-domain.c             | 41 ++++++++++++++++++++++
+>  2 files changed, 42 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> index d23dc00..d3a5a93 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> +++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> @@ -33,6 +33,7 @@ Required properties:
+>  - compatible: should be one of:
+>    - "rockchip,rk3188-io-voltage-domain" for rk3188
+>    - "rockchip,rk3288-io-voltage-domain" for rk3288
+> +  - "rockchip,rk3328-io-voltage-domain" for rk3328
+>    - "rockchip,rk3368-io-voltage-domain" for rk3368
+>    - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
+>    - "rockchip,rk3399-io-voltage-domain" for rk3399
+> diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
+> index 56bce19..8581252 100644
+> --- a/drivers/power/avs/rockchip-io-domain.c
+> +++ b/drivers/power/avs/rockchip-io-domain.c
+> @@ -43,6 +43,10 @@
+>  #define RK3288_SOC_CON2_FLASH0		BIT(7)
+>  #define RK3288_SOC_FLASH_SUPPLY_NUM	2
+>  
+> +#define RK3328_SOC_CON4			0x410
+> +#define RK3328_SOC_CON4_VCCIO2		BIT(7)
+> +#define RK3328_SOC_VCCIO2_SUPPLY_NUM	1
+> +
+>  #define RK3368_SOC_CON15		0x43c
+>  #define RK3368_SOC_CON15_FLASH0		BIT(14)
+>  #define RK3368_SOC_FLASH_SUPPLY_NUM	2
+> @@ -166,6 +170,25 @@ static void rk3288_iodomain_init(struct rockchip_iodomain *iod)
+>  		dev_warn(iod->dev, "couldn't update flash0 ctrl\n");
+>  }
+>  
+> +static void rk3328_iodomain_init(struct rockchip_iodomain *iod)
+> +{
+> +	int ret;
+> +	u32 val;
+> +
+> +	/* if no vccio2 supply we should leave things alone */
+> +	if (!iod->supplies[RK3328_SOC_VCCIO2_SUPPLY_NUM].reg)
+> +		return;
+> +
+> +	/*
+> +	 * set vccio2 iodomain to also use this framework
+> +	 * instead of a special gpio.
+> +	 */
+> +	val = RK3328_SOC_CON4_VCCIO2 | (RK3328_SOC_CON4_VCCIO2 << 16);
+> +	ret = regmap_write(iod->grf, RK3328_SOC_CON4, val);
+> +	if (ret < 0)
+> +		dev_warn(iod->dev, "couldn't update vccio2 vsel ctrl\n");
+> +}
+> +
+>  static void rk3368_iodomain_init(struct rockchip_iodomain *iod)
+>  {
+>  	int ret;
+> @@ -247,6 +270,20 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
+>  	.init = rk3288_iodomain_init,
+>  };
+>  
+> +static const struct rockchip_iodomain_soc_data soc_data_rk3328 = {
+> +	.grf_offset = 0x410,
+> +	.supply_names = {
+> +		"vccio1",
+> +		"vccio2",
+> +		"vccio3",
+> +		"vccio4",
+> +		"vccio5",
+> +		"vccio6",
+> +		"pmuio",
+> +	},
+> +	.init = rk3328_iodomain_init,
+> +};
+> +
+>  static const struct rockchip_iodomain_soc_data soc_data_rk3368 = {
+>  	.grf_offset = 0x900,
+>  	.supply_names = {
+> @@ -312,6 +349,10 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
+>  		.data = (void *)&soc_data_rk3288
+>  	},
+>  	{
+> +		.compatible = "rockchip,rk3328-io-voltage-domain",
+> +		.data = (void *)&soc_data_rk3328
+> +	},
+> +	{
+>  		.compatible = "rockchip,rk3368-io-voltage-domain",
+>  		.data = (void *)&soc_data_rk3368
+>  	},
