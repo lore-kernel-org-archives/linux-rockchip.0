@@ -1,133 +1,68 @@
-From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND PATCH] PM / AVS: rockchip-io: add io selectors and
- supplies for rk3328
-Date: Sun, 26 Feb 2017 13:48:40 -0800
-Message-ID: <m2innw39on.fsf@baylibre.com>
-References: <1487853191-10994-1-git-send-email-david.wu@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v4 00/23] drm/rockchip: MIPI fixes & improvements
+Date: Mon, 27 Feb 2017 09:41:26 +0800
+Message-ID: <58B383C6.5050204@rock-chips.com>
+References: <20170224125506.21533-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1487853191-10994-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
- (David Wu's message of "Thu, 23 Feb 2017 20:33:11 +0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: nm-l0cyMroinI0@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rafael.j.wysocki-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170224125506.21533-1-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
-
-> From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On 2017年02月24日 20:54, John Keeping wrote:
+> This version is mostly small changes in response to review comments from
+> Sean and Chris, the details are in the individual patches.
 >
-> This adds the necessary data for handling io voltage domains on the rk3328.
-> As interesting tidbit, the rk3328 only contains one iodomain area in the
-> regular General Register Files (GRF).
+> I decided to drop the final patch which adds support for MIPI read
+> commands because I'm not using that feature now and I can't easily test
+> it.  It's on the list if anyone wants to pick it up in the future.
 >
-> Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-
-Rafael, feel free to take directly.  I don't currently have any other
-AVS stuff in the queue.
-
-Kevin
-
-> ---
->  .../bindings/power/rockchip-io-domain.txt          |  1 +
->  drivers/power/avs/rockchip-io-domain.c             | 41 ++++++++++++++++++++++
->  2 files changed, 42 insertions(+)
+> Version 3 was posted here:
+> http://www.spinics.net/lists/dri-devel/msg130977.html
 >
-> diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> index d23dc00..d3a5a93 100644
-> --- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> +++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> @@ -33,6 +33,7 @@ Required properties:
->  - compatible: should be one of:
->    - "rockchip,rk3188-io-voltage-domain" for rk3188
->    - "rockchip,rk3288-io-voltage-domain" for rk3288
-> +  - "rockchip,rk3328-io-voltage-domain" for rk3328
->    - "rockchip,rk3368-io-voltage-domain" for rk3368
->    - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
->    - "rockchip,rk3399-io-voltage-domain" for rk3399
-> diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-> index 56bce19..8581252 100644
-> --- a/drivers/power/avs/rockchip-io-domain.c
-> +++ b/drivers/power/avs/rockchip-io-domain.c
-> @@ -43,6 +43,10 @@
->  #define RK3288_SOC_CON2_FLASH0		BIT(7)
->  #define RK3288_SOC_FLASH_SUPPLY_NUM	2
->  
-> +#define RK3328_SOC_CON4			0x410
-> +#define RK3328_SOC_CON4_VCCIO2		BIT(7)
-> +#define RK3328_SOC_VCCIO2_SUPPLY_NUM	1
-> +
->  #define RK3368_SOC_CON15		0x43c
->  #define RK3368_SOC_CON15_FLASH0		BIT(14)
->  #define RK3368_SOC_FLASH_SUPPLY_NUM	2
-> @@ -166,6 +170,25 @@ static void rk3288_iodomain_init(struct rockchip_iodomain *iod)
->  		dev_warn(iod->dev, "couldn't update flash0 ctrl\n");
->  }
->  
-> +static void rk3328_iodomain_init(struct rockchip_iodomain *iod)
-> +{
-> +	int ret;
-> +	u32 val;
-> +
-> +	/* if no vccio2 supply we should leave things alone */
-> +	if (!iod->supplies[RK3328_SOC_VCCIO2_SUPPLY_NUM].reg)
-> +		return;
-> +
-> +	/*
-> +	 * set vccio2 iodomain to also use this framework
-> +	 * instead of a special gpio.
-> +	 */
-> +	val = RK3328_SOC_CON4_VCCIO2 | (RK3328_SOC_CON4_VCCIO2 << 16);
-> +	ret = regmap_write(iod->grf, RK3328_SOC_CON4, val);
-> +	if (ret < 0)
-> +		dev_warn(iod->dev, "couldn't update vccio2 vsel ctrl\n");
-> +}
-> +
->  static void rk3368_iodomain_init(struct rockchip_iodomain *iod)
->  {
->  	int ret;
-> @@ -247,6 +270,20 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
->  	.init = rk3288_iodomain_init,
->  };
->  
-> +static const struct rockchip_iodomain_soc_data soc_data_rk3328 = {
-> +	.grf_offset = 0x410,
-> +	.supply_names = {
-> +		"vccio1",
-> +		"vccio2",
-> +		"vccio3",
-> +		"vccio4",
-> +		"vccio5",
-> +		"vccio6",
-> +		"pmuio",
-> +	},
-> +	.init = rk3328_iodomain_init,
-> +};
-> +
->  static const struct rockchip_iodomain_soc_data soc_data_rk3368 = {
->  	.grf_offset = 0x900,
->  	.supply_names = {
-> @@ -312,6 +349,10 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
->  		.data = (void *)&soc_data_rk3288
->  	},
->  	{
-> +		.compatible = "rockchip,rk3328-io-voltage-domain",
-> +		.data = (void *)&soc_data_rk3328
-> +	},
-> +	{
->  		.compatible = "rockchip,rk3368-io-voltage-domain",
->  		.data = (void *)&soc_data_rk3368
->  	},
+> Thanks to Sean Paul and Chris Zhong for their review and testing of this
+> series.
+
+Looks good to me.
+
+Acked-by: Mark Yao <mark.yao@rock-chips.com>
+
+>
+> John Keeping (23):
+>    drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
+>      MIPI
+>    drm/rockchip: dw-mipi-dsi: pass mode in where needed
+>    drm/rockchip: dw-mipi-dsi: remove mode_set hook
+>    drm/rockchip: dw-mipi-dsi: fix command header writes
+>    drm/rockchip: dw-mipi-dsi: fix generic packet status check
+>    drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
+>    drm/rockchip: dw-mipi-dsi: include bad value in error message
+>    drm/rockchip: dw-mipi-dsi: respect message flags
+>    drm/rockchip: dw-mipi-dsi: only request HS clock when required
+>    drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
+>    drm/rockchip: dw-mipi-dsi: prepare panel after phy init
+>    drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
+>    drm/rockchip: dw-mipi-dsi: fix escape clock rate
+>    drm/rockchip: dw-mipi-dsi: ensure PHY is reset
+>    drm/rockchip: dw-mipi-dsi: configure PHY before enabling
+>    drm/rockchip: dw-mipi-dsi: properly configure PHY timing
+>    drm/rockchip: dw-mipi-dsi: improve PLL configuration
+>    drm/rockchip: dw-mipi-dsi: use specific poll helper
+>    drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
+>    drm/rockchip: vop: test for P{H,V}SYNC
+>    drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
+>    drm/rockchip: dw-mipi-dsi: support non-burst modes
+>    drm/rockchip: dw-mipi-dsi: add reset control
+>
+>   drivers/gpu/drm/rockchip/dw-mipi-dsi.c      | 325 +++++++++++++++++++---------
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
+>   2 files changed, 220 insertions(+), 109 deletions(-)
+>
+
+
+-- 
+Ｍark Yao
