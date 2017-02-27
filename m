@@ -1,68 +1,63 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v4 00/23] drm/rockchip: MIPI fixes & improvements
-Date: Mon, 27 Feb 2017 09:41:26 +0800
-Message-ID: <58B383C6.5050204@rock-chips.com>
-References: <20170224125506.21533-1-john@metanate.com>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [GIT PULL] drm/rockchip: convert to drm_mm
+Date: Mon, 27 Feb 2017 10:20:28 +0800
+Message-ID: <58B38CEC.3020106@rock-chips.com>
+References: <58A51647.2040003@rock-chips.com>
+ <20170226204554.y3dqu52hzrgbv5rj@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170226204554.y3dqu52hzrgbv5rj-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017年02月24日 20:54, John Keeping wrote:
-> This version is mostly small changes in response to review comments from
-> Sean and Chris, the details are in the individual patches.
->
-> I decided to drop the final patch which adds support for MIPI read
-> commands because I'm not using that feature now and I can't easily test
-> it.  It's on the list if anyone wants to pick it up in the future.
->
-> Version 3 was posted here:
-> http://www.spinics.net/lists/dri-devel/msg130977.html
->
-> Thanks to Sean Paul and Chris Zhong for their review and testing of this
-> series.
-
-Looks good to me.
-
-Acked-by: Mark Yao <mark.yao@rock-chips.com>
-
->
-> John Keeping (23):
->    drm/rockchip: dw-mipi-dsi: don't configure hardware in mode_set for
->      MIPI
->    drm/rockchip: dw-mipi-dsi: pass mode in where needed
->    drm/rockchip: dw-mipi-dsi: remove mode_set hook
->    drm/rockchip: dw-mipi-dsi: fix command header writes
->    drm/rockchip: dw-mipi-dsi: fix generic packet status check
->    drm/rockchip: dw-mipi-dsi: avoid out-of-bounds read on tx_buf
->    drm/rockchip: dw-mipi-dsi: include bad value in error message
->    drm/rockchip: dw-mipi-dsi: respect message flags
->    drm/rockchip: dw-mipi-dsi: only request HS clock when required
->    drm/rockchip: dw-mipi-dsi: don't assume buffer is aligned
->    drm/rockchip: dw-mipi-dsi: prepare panel after phy init
->    drm/rockchip: dw-mipi-dsi: allow commands in panel_disable
->    drm/rockchip: dw-mipi-dsi: fix escape clock rate
->    drm/rockchip: dw-mipi-dsi: ensure PHY is reset
->    drm/rockchip: dw-mipi-dsi: configure PHY before enabling
->    drm/rockchip: dw-mipi-dsi: properly configure PHY timing
->    drm/rockchip: dw-mipi-dsi: improve PLL configuration
->    drm/rockchip: dw-mipi-dsi: use specific poll helper
->    drm/rockchip: dw-mipi-dsi: use positive check for N{H,V}SYNC
->    drm/rockchip: vop: test for P{H,V}SYNC
->    drm/rockchip: dw-mipi-dsi: defer probe if panel is not loaded
->    drm/rockchip: dw-mipi-dsi: support non-burst modes
->    drm/rockchip: dw-mipi-dsi: add reset control
->
->   drivers/gpu/drm/rockchip/dw-mipi-dsi.c      | 325 +++++++++++++++++++---------
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
->   2 files changed, 220 insertions(+), 109 deletions(-)
->
-
-
--- 
-Ｍark Yao
+T24gMjAxN+W5tDAy5pyIMjfml6UgMDQ6NDUsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gVGh1
+LCBGZWIgMTYsIDIwMTcgYXQgMTE6MDI6MzFBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6Cj4+IEhp
+IERhdmUKPj4KPj4gQWZ0ZXIgY29udmVydCB0byBkcm1fbW0sIHJvY2tjaGlwIGFybTY0IHBsYXRm
+b3JtIGNhbiB3b3JrcyB3aXRoIGlvbW11LCBsaWtlCj4+IHJrMzM5OS4gaXQncyBpbXBvcnQgcGF0
+Y2hlcyBmb3Igcm9ja2NoaXAgYXJtNjQgcGxhdGZvcm0KPj4KPj4gQW5kIHRoZXNlIHBhdGNoZXMg
+YWxyZWFkeSBoYXZlIGZ1bGwgcmV2aWV3ZWQsIEkgaG9wZSB0aGVzZSBwYXRjaGVzIGNhbiBiZQo+
+PiBsYW5kZWQuCj4+ICAgCj4+IEJlc3QgcmVnYXJkcwo+Pgo+PiBUaGUgZm9sbG93aW5nIGNoYW5n
+ZXMgc2luY2UgY29tbWl0IDEzZjYyZjU0ZDE3NGQzNDE3YzNjYWFhZmVkZjVlMjJhMGEwM2U0NDI6
+Cj4+Cj4+ICAgIE1lcmdlIGJyYW5jaCAnZHJtLW5leHQtNC4xMScgb2YgZ2l0Oi8vcGVvcGxlLmZy
+ZWVkZXNrdG9wLm9yZy9+YWdkNWYvbGludXgKPj4gaW50byBkcm0tbmV4dCAoMjAxNy0wMi0xMCAx
+MDoxMzozMCArMTAwMCkKPj4KPj4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkg
+YXQ6Cj4+Cj4+Cj4+ICAgIGh0dHBzOi8vZ2l0aHViLmNvbS9tYXJreXpxL2tlcm5lbC1kcm0tcm9j
+a2NoaXAuZ2l0Cj4+IGRybS1yb2NrY2hpcC1uZXh0LTIwMTctMDItMTYKPj4KPj4gZm9yIHlvdSB0
+byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDFhYTVjYTZlM2VjNjNhYTU4MTVkNzg2NDY3NDhlODhhN2Nl
+YjFjOGU6Cj4+Cj4+ICAgIGRybS9yb2NrY2hpcDogVXNlIGNvbW1vbiBJT01NVSBBUEkgdG8gYXR0
+YWNoIGRldmljZXMgKDIwMTctMDItMTUgMDg6NTI6MTMKPj4gKzA4MDApCj4+Cj4+IC0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
+Pj4gU2h1bnFpYW4gWmhlbmcgKDEpOgo+PiAgICAgICAgZHJtL3JvY2tjaGlwOiBVc2UgY29tbW9u
+IElPTU1VIEFQSSB0byBhdHRhY2ggZGV2aWNlcwo+Pgo+PiBUb21hc3ogRmlnYSAoMSk6Cj4+ICAg
+ICAgICBkcm0vcm9ja2NoaXA6IERvIG5vdCB1c2UgRE1BIG1hcHBpbmcgQVBJIGlmIGF0dGFjaGVk
+IHRvIElPTU1VIGRvbWFpbgo+IEkgdGhvdWdodCB3ZSd2ZSBtb3ZlZCByb2NrY2hpcCBpbnRvIGRy
+bS1taXNjIC4uLj8KClNvcnJ5LCBJJ20gbm90IGNsZWFyIHVuZGVyc3RhbmQgaG93IHRoZSBkcm0t
+bWlzYyBtYWludGFpbiBiZWZvcmUsIGxhdGVyIApwYXRjaGVzIHdvdWxkIGdvIHRocm91Z2ggZHJt
+LW1pc2MKCj4gQ2FuIHlvdSBhbmQgU2VhbiBQYXVsIHBsZWFzZSB0YWxrIGFuZCBmaWd1cmUgb3V0
+IGhvdyBleGFjdGx5IHlvdSB3YW50IHRvCj4gbWFpbnRhaW4gdGhpcyBkcml2ZXI/CgpNb3ZlIGRy
+bS9yb2NrY2hpcCBpbnRvIGRybS1taXNjIGlzIGdvb2QsIFRoYW5rcyBTZWFuIFBhdWwncyB3b3Jr
+LgpJJ20gbGVhcm5pbmcgaG93IHRvIG1haW50YWluIGRybS9yb2NrY2hpcCB3aXRoIGRybS1taXNj
+LgoKQnV0IEknbSBub3QgdW5kZXJzdGFuZCBkcm0tbWlzYydzIHN0ZXAsIEknbSBjb25mdXNlZCB0
+aGF0OiAgZG8gSSBuZWVkIHRvIApwaWNrIHVwIHBhdGNoZXMgdG8gZHJtLW1pc2MgYnkgbXlzZWxm
+PwpvciBJIGp1c3QgZ2l2ZSBhIEFDSyBvbiBwYXRjaGVzLCBhbmQgdGhlbiBTZWFuIG9yIG90aGVy
+IGRybS1taXNjJ3MgZ3V5cyAKd2lsbCBwaWNrIHBhdGNoZXMgdXAgdG8gZHJtLW1pc2M/CgpUaGFu
+a3MuCj4gVGhlIGN1cnJlbnQgc2l0dWF0aW9uIHdoZXJlIHdlIGhhdmUgc3R1ZmYgZ29pbmcgaW4K
+PiBpbmRlcGVuZGVudGx5IHRocm91Z2ggZGlmZmVyZW50IG1haW50YWluZXJzIGlzIG5vdCBncmVh
+dCBhdCBhbGwuIElmIHlvdQo+IGNhbid0IGdldCBhZ3JlZW1lbnQsIHdlJ2xsIGp1c3QgbWFrZSB5
+b3UgYWdyZWUgYnkgYXJiaXRyYXJpbHkgcm9sbGluZyB0aGUKPiBkaWNlIG9yIHNvbWV0aGluZyBz
+aWxseSBsaWtlIHRoYXQgOi0pCj4gLURhbmllbAoKLS0gCu+8rWFyayBZYW8KCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
