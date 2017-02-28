@@ -1,52 +1,56 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/6] arm64: dts: Add symlinks for cros-ec-keyboard and cros-ec-sbs
-Date: Mon, 27 Feb 2017 19:20:48 +0100
-Message-ID: <1529949.5djtX72aeJ@phil>
-References: <20170210010521.78872-1-briannorris@chromium.org> <20170210010521.78872-2-briannorris@chromium.org> <CAOesGMiim2WFfEAg-bJmWTwWn69=V_GuEg6AxsxPYMyzd3KFUw@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 4/4] ARM: dts: rockchip: Make uartpll a child of the gpll on
+ rk3036
+Date: Tue, 28 Feb 2017 06:14:20 +0100
+Message-ID: <20170228051420.7214-5-heiko@sntech.de>
+References: <20170228051420.7214-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAOesGMiim2WFfEAg-bJmWTwWn69=V_GuEg6AxsxPYMyzd3KFUw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Olof Johansson <olof@lixom.net>
-Cc: Brian Norris <briannorris@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170228051420.7214-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Olof,
+The shared uart-pll is normally a child of the apll that can get changed
+by cpu frequency scaling. So move it away to the more stable gpll to
+make sure the uart doesn't break on cpu frequency changes.
 
-Am Dienstag, 21. Februar 2017, 15:47:31 CET schrieb Olof Johansson:
-> On Thu, Feb 9, 2017 at 5:05 PM, Brian Norris <briannorris@chromium.org> wrote:
-> > From: Douglas Anderson <dianders@chromium.org>
-> > 
-> > We'd like to be able to use the cros-ec-keyboard.dtsi and
-> > cros-ec-sbs.dtsi snippets for arm64 devices.  Currently those files live
-> > in the arm/boot/dts directory.
-> > 
-> > Let's follow the convention set by commit 8ee57b8182c4 ("ARM64: dts:
-> > vexpress: Use a symlink to vexpress-v2m-rs1.dtsi from arch=arm") and use
-> > a symlink.  Note that in this case we put the files in a new
-> > "include/common" directory since these snippets may need to be
-> > referenced by dts files in many different subdirectories.
-> 
-> I'd rather have something like this:
-> 
-> https://marc.info/?m=147547436324674&w=2
-> 
-> Instead of having everybody move things over. I.e. make it easy to
-> refer to the arm version from arm64 instead of creating a "common"
-> layer inbetween.
+This turned up during the 4.11 merge-window when commit
+6a171b299379 ("serial: 8250_dw: Allow hardware flow control to be used")
+added general termios enablement making the uart on rk3036 change
+frequency and thus making it susceptible for the frequency scaling issue.
 
-just so it gets noticed, I've done and tested [0], which hopefully should
-implement your suggestions above.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3036.dtsi | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-If that looks ok, how do you want that picked up? Should I just include
-them in my regular rockchip branches or do you to pick them into some
-immutable branch, if other surprise-users turn up in time for 4.12?
-
-
-Thanks
-Heiko
-
-
-[0] http://lists.infradead.org/pipermail/linux-rockchip/2017-February/014226.html
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index ff9b90bfaefd..6442023854c5 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -310,8 +310,9 @@
+ 		rockchip,grf = <&grf>;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+-		assigned-clocks = <&cru PLL_GPLL>;
+-		assigned-clock-rates = <594000000>;
++		assigned-clocks = <&cru PLL_GPLL>, <&cru SCLK_UARTPLL>;
++		assigned-clock-rates = <594000000>, <0>;
++		assigned-clock-parents = <0>, <&cru PLL_GPLL>;
+ 	};
+ 
+ 	grf: syscon@20008000 {
+-- 
+2.11.0
