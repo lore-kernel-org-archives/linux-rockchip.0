@@ -1,59 +1,204 @@
-From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re:_[PATCH_v1_1/2]_pinctrl:_rockchip=ef=bc=9aAdd_input_sc?=
- =?UTF-8?Q?hmitt_support?=
-Date: Tue, 28 Feb 2017 19:12:19 +0800
-Message-ID: <dd65cf84-dc24-d9d1-9147-582eef3acbac@rock-chips.com>
-References: <1487068541-14120-1-git-send-email-david.wu@rock-chips.com>
- <1487068541-14120-2-git-send-email-david.wu@rock-chips.com>
- <48027259.fqOrTqXNdI@phil>
+From: Francesco Lavra <francescolavra.fl@gmail.com>
+Subject: Re: dwc2 gadget issues
+Date: Tue, 28 Feb 2017 12:43:58 +0100
+Message-ID: <08714699-8460-fccd-c786-aa5ef5d7a44e@gmail.com>
+References: <2b818d21-62a6-515e-8116-f243a2c07e08@gmail.com>
+ <2860160.8p22jOG6z4@phil> <b46ebe81-7db4-aa4f-1333-aa6e1d655e26@gmail.com>
+ <A62D4564EAF812438095D5571C2BF7D7FCC496AC@am04wembxb.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <48027259.fqOrTqXNdI@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <A62D4564EAF812438095D5571C2BF7D7FCC496AC@am04wembxb.internal.synopsys.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vardan Mikayelyan <Vardan.Mikayelyan@synopsys.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "John.Youn@synopsys.com" <John.Youn@synopsys.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgrlnKggMjAxNy8yLzI0IDA6NTEsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBI
-aSBEYXZpZCwKPgo+IEFtIERpZW5zdGFnLCAxNC4gRmVicnVhciAyMDE3LCAxODozNTo0MCBDRVQg
-c2NocmllYiBEYXZpZCBXdToKPj4gRnJvbTogImRhdmlkLnd1IiA8ZGF2aWQud3VAcm9jay1jaGlw
-cy5jb20+Cj4+Cj4+ICBzdHJ1Y3Qgcm9ja2NoaXBfcGluX2NvbmZpZyB7Cj4+IEBAIC0xMzU1LDYg
-KzEzNTgsNTMgQEAgc3RhdGljIGludCByb2NrY2hpcF9zZXRfcHVsbChzdHJ1Y3Qgcm9ja2NoaXBf
-cGluX2JhbmsKPj4gKmJhbmssIHJldHVybiByZXQ7Cj4+ICB9Cj4+Cj4+ICtzdGF0aWMgaW50IHJv
-Y2tjaGlwX2dldF9zY2htaXR0KHN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuaywgaW50Cj4+
-IHBpbl9udW0pICt7Cj4+ICsJc3RydWN0IHJvY2tjaGlwX3BpbmN0cmwgKmluZm8gPSBiYW5rLT5k
-cnZkYXRhOwo+PiArCXN0cnVjdCByb2NrY2hpcF9waW5fY3RybCAqY3RybCA9IGluZm8tPmN0cmw7
-Cj4+ICsJc3RydWN0IHJlZ21hcCAqcmVnbWFwOwo+PiArCWludCByZWcsIHJldDsKPj4gKwl1OCBi
-aXQ7Cj4+ICsJdTMyIGRhdGE7Cj4+ICsKPj4gKwljdHJsLT5zY2htaXR0X2NhbGNfcmVnKGJhbmss
-IHBpbl9udW0sICZyZWdtYXAsICZyZWcsICZiaXQpOwo+Cj4gd2UgbWlnaHQgd2FudCB0byBoYXZl
-IGFuZCBjaGVjayBhbiBhY3R1YWwgcmV0dXJuIHZhbHVlIGhlcmUuCj4gT24gdGhpbmdzIGxpa2Ug
-dGhlIHJrMzI4OCBvbmx5IHNvbWUgc3BlY2lhbCBwaW5zIGhhdmUgdGhlc2Ugc2NobWl0dCB0cmln
-Z2Vycwo+IGl0IHNlZW1zLCBzbyB3ZSBtaWdodCB3YW50IHRvIGFib3J0IGlmIHNvbWV0aGluZyB0
-cmllcyB0byBhY2Nlc3MgYW4KPiB1bnN1cHBvcnRlZCBvbmUuCgpUaGFua3MsIGkgZm9yZ2V0IHRv
-IGNoZWNrIHRoZSByZXR1cm4gdmFsdWUuCj4KPj4gKwo+PiArCXJldCA9IHJlZ21hcF9yZWFkKHJl
-Z21hcCwgcmVnLCAmZGF0YSk7Cj4+ICsJaWYgKHJldCkKPj4gKwkJcmV0dXJuIHJldDsKPj4gKwo+
-PiArCWRhdGEgPj49IGJpdDsKPj4gKwlyZXR1cm4gZGF0YSAmIDB4MTsKPgo+IFRoZSBtYXNrIHNl
-ZW1zIHRvIGFsc28gYmUgdmFyaWFibGUsIGZvciBleGFtcGxlIG9uIHRoZSByazMzOTkgdGhlcmUg
-c2VlbSB0byBiZQo+IG11bHRpcGxlICJsZXZlbHMiIGZvciBhdCBsZWFzdCBncGlvMi4gU28geW91
-ciBjYWxjLWNhbGxiYWNrIG1pZ2h0IHdhbnQgdG8gYWxzbwo+IHNldCB0aGUgcmlnaHQgbWFzay4K
-ClRvIHRoZSBtdWx0aXBsZSAibGV2ZWxzIiwgaSB0aGluayB3ZSBjYW4gdXNlIHRoZSAKIlBJTl9D
-T05GSUdfSU5QVVRfU0NITUlUVCIgcGluIGNvbmZpZywgd2hpY2ggZGVzY3JpYmVkIGF0IHBpbmNv
-bmYtZ2VuZXJpYy5oLgoKICAqIEBQSU5fQ09ORklHX0lOUFVUX1NDSE1JVFQ6IHRoaXMgd2lsbCBj
-b25maWd1cmUgYW4gaW5wdXQgcGluIHRvIHJ1biBpbgogICoJc2NobWl0dC10cmlnZ2VyIG1vZGUu
-IElmIHRoZSBzY2htaXR0LXRyaWdnZXIgaGFzIGFkanVzdGFibGUgaHlzdGVyZXNpcywKICAqCXRo
-ZSB0aHJlc2hvbGQgdmFsdWUgaXMgZ2l2ZW4gb24gYSBjdXN0b20gZm9ybWF0IGFzIGFyZ3VtZW50
-IHdoZW4KICAqCXNldHRpbmcgcGlucyB0byB0aGlzIG1vZGUuCgo+Cj4gT3RoZXJ3aXNlIGxvb2tz
-IGdvb2QuCj4KPgo+IEhlaWtvCj4KPgo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Vardan,
+
+On 02/28/2017 09:41 AM, Vardan Mikayelyan wrote:
+> On 2/27/2017 11:55 PM, Francesco Lavra wrote:
+>> Hi,
+>>
+>> On 02/23/2017 08:27 PM, Heiko Stuebner wrote:
+>>> Hi Francesco,
+>>>
+>>> Am Donnerstag, 23. Februar 2017, 19:11:37 CET schrieb Francesco Lavra:
+>>>> I'm having trouble getting the RK3288 OTG controller (the one at
+>>>> ff580000) to work in peripheral mode. I'm using a Firefly Reload board,
+>>>> and I know the hardware is fine because I can successfully use the port
+>>>> in device mode with U-Boot's mass storage gadget driver.
+>>>> Under Linux, the OTG port works fine when used in host mode, but fails
+>>>> to work in device mode: nothing happens when the a USB host is plugged
+>>>> into the OTG port, not even a single interrupt is generated by the
+>>>> controller. I'm using the latest device tree definitions from
+>>>> git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git.
+>>>
+>>> you shouldn't use my tree as base for any real work :-) . Best to use the
+>>> regular mainline kernel or alternatively try linux-next to get all recent usb
+>>> changes schedules for the next release.
+>>
+>> Thanks for your inputs.
+>>
+>> I was actually using the mainline kernel (4.8.1), in which the dwc2
+>> driver wasn't working, that's why I went to your tree to pick up any
+>> fixes or new features that might have been done. I also went to the
+>> linux-usb tree for the same reason.
+>>
+>> Anyway, today I tried with the latest mainline release 4.10.0, and also
+>> with linux-next. Unfortunately, still no luck: I can load a gadget
+>> driver, which gets correctly bound to the OTG controller, but then
+>> nothing happens if a USB host is connected to the OTG port.
+>> I'm pasting below the dmesg contents (obtained with 4.10.0, with verbose
+>> debugging enabled for the dwc2 driver) when a gadget driver is loaded,
+>> in case you might spot something suspicious:
+>>
+>> [ 1147.035367] dwc2 ff580000.usb: bound driver g_audio
+>> [ 1147.041203] dwc2 ff580000.usb: dwc2_hsotg_pullup: is_on: 1 op_state: 3
+>> [ 1147.041250] dwc2 ff580000.usb: dwc2_core_reset()
+>> [ 1147.041345] dwc2 ff580000.usb: FIFOs reset, timeout at 100
+>> [ 1147.041405] dwc2 ff580000.usb: EP0: DIEPCTL0=0x00008000,
+>> DOEPCTL0=0x00008000
+>> [ 1147.041447] dwc2 ff580000.usb: gsintmsk now 0xd08c3cc4
+>> [ 1147.041554] dwc2 ff580000.usb: DCTL=0x00000002
+>> [ 1147.041631] dwc2 ff580000.usb: dwc2_hsotg_enqueue_setup: queueing
+>> setup request
+>> [ 1147.041692] dwc2 ff580000.usb: ep0: req ee241680: 8@ee241198, noi=0,
+>> zero=0, snok=0
+>> [ 1147.041757] dwc2 ff580000.usb: dwc2_hsotg_start_req:
+>> DxEPCTL=0x80008000, ep 0, dir out
+>> [ 1147.041799] dwc2 ff580000.usb: ureq->length:8 ureq->actual:0
+>> [ 1147.041896] dwc2 ff580000.usb: dwc2_hsotg_start_req: 1@8/8,
+>> 0x00080008 => 0x00000b10
+>> [ 1147.041975] dwc2 ff580000.usb: dwc2_hsotg_start_req: 2e243000 pad =>
+>> 0x00000b14
+>> [ 1147.042014] dwc2 ff580000.usb: ep0 state:0
+>> [ 1147.042055] dwc2 ff580000.usb: dwc2_hsotg_start_req: DxEPCTL=0x80008000
+>> [ 1147.042097] dwc2 ff580000.usb: dwc2_hsotg_start_req: DXEPCTL=0x80008000
+>> [ 1147.042169] dwc2 ff580000.usb: EP0: DIEPCTL0=0x00008000,
+>> DOEPCTL0=0x80008000
+>>
+>> Thanks,
+>> Francesco
+>> --
+>
+> Hi Francesco,
+>
+> Could you please provide full log (with debugs enabled) from DWC2 driver
+> loading to issue point? Two logs are not giving us the full picture.
+
+The full log from the DWC2 driver is below:
+
+[    1.498030] dwc2 ff580000.usb: ff580000.usb supply vusb_d not found, 
+using dummy regulator
+[    1.507431] dwc2 ff580000.usb: ff580000.usb supply vusb_a not found, 
+using dummy regulator
+[    1.880012] dwc2 ff580000.usb: dwc2_check_param_tx_fifo_sizes: 
+Invalid parameter g-tx-fifo-size, setting to default average
+[    1.892596] dwc2 ff580000.usb: EPs: 10, dedicated fifos, 972 entries 
+in SPRAM
+[    1.901018] dwc2 ff580000.usb: DCFG=0x08100000, DCTL=0x00000002, 
+DIEPMSK=00000000
+[    1.909432] dwc2 ff580000.usb: GAHBCFG=0x00000000, GHWCFG1=0x00006664
+[    1.916698] dwc2 ff580000.usb: GRXFSIZ=0x00000400, GNPTXFSIZ=0x00100400
+[    1.924161] dwc2 ff580000.usb: DPTx[1] FSize=256, StAddr=0x00000410
+[    1.931224] dwc2 ff580000.usb: DPTx[2] FSize=256, StAddr=0x00000900
+[    1.938261] dwc2 ff580000.usb: DPTx[3] FSize=256, StAddr=0x00000a00
+[    1.945318] dwc2 ff580000.usb: DPTx[4] FSize=256, StAddr=0x00000b00
+[    1.952375] dwc2 ff580000.usb: DPTx[5] FSize=256, StAddr=0x00000c00
+[    1.959410] dwc2 ff580000.usb: DPTx[6] FSize=256, StAddr=0x00000d00
+[    1.966456] dwc2 ff580000.usb: DPTx[7] FSize=0, StAddr=0x00000e00
+[    1.973317] dwc2 ff580000.usb: DPTx[8] FSize=0, StAddr=0x00000f00
+[    1.980180] dwc2 ff580000.usb: DPTx[9] FSize=256, StAddr=0x00000410
+[    1.987216] dwc2 ff580000.usb: ep0-in: EPCTL=0x00008800, 
+SIZ=0x00000000, DMA=0x379a4f2d
+[    1.996232] dwc2 ff580000.usb: ep0-out: EPCTL=0x00008000, 
+SIZ=0x00000000, DMA=0xe3103c4f
+[    2.005352] dwc2 ff580000.usb: ep1-in: EPCTL=0x00001000, 
+SIZ=0x00000000, DMA=0x5cf9a35d
+[    2.014369] dwc2 ff580000.usb: ep1-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x8b00a168
+[    2.023482] dwc2 ff580000.usb: ep2-in: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0xfef360cf
+[    2.032497] dwc2 ff580000.usb: ep2-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x9f637bc4
+[    2.041609] dwc2 ff580000.usb: ep3-in: EPCTL=0x00002000, 
+SIZ=0x00000000, DMA=0xf03470c5
+[    2.050625] dwc2 ff580000.usb: ep3-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x8b00a168
+[    2.059715] dwc2 ff580000.usb: ep4-in: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0xfef360cf
+[    2.068731] dwc2 ff580000.usb: ep4-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0xb6c8c271
+[    2.077843] dwc2 ff580000.usb: ep5-in: EPCTL=0x00003000, 
+SIZ=0x00000000, DMA=0x84245611
+[    2.086858] dwc2 ff580000.usb: ep5-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x8b00a168
+[    2.095970] dwc2 ff580000.usb: ep6-in: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0xfef360cf
+[    2.104986] dwc2 ff580000.usb: ep6-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x0a6c1c90
+[    2.114102] dwc2 ff580000.usb: ep7-in: EPCTL=0x00004000, 
+SIZ=0x00000000, DMA=0xaccb75ec
+[    2.123111] dwc2 ff580000.usb: ep7-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x8b00a168
+[    2.132222] dwc2 ff580000.usb: ep8-in: EPCTL=0x00004800, 
+SIZ=0x00000000, DMA=0x4625773c
+[    2.141254] dwc2 ff580000.usb: ep8-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x437c9154
+[    2.150371] dwc2 ff580000.usb: ep9-in: EPCTL=0x00005000, 
+SIZ=0x00000000, DMA=0x9cb1c89c
+[    2.159365] dwc2 ff580000.usb: ep9-out: EPCTL=0x00000000, 
+SIZ=0x00000000, DMA=0x6ec79617
+[    2.168476] dwc2 ff580000.usb: DVBUSDIS=0x00000b8f, DVBUSPULSE=000002c6
+[    2.175996] usb 1-1: new high-speed USB device number 2 using dwc2
+[    2.176105] dwc2 ff580000.usb: DWC OTG Controller
+[    2.176147] dwc2 ff580000.usb: new USB bus registered, assigned bus 
+number 2
+[    2.176195] dwc2 ff580000.usb: irq 41, io mem 0xff580000
+[    2.176450] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    2.176462] usb usb2: New USB device strings: Mfr=3, Product=2, 
+SerialNumber=1
+[    2.176470] usb usb2: Product: DWC OTG Controller
+[    2.176478] usb usb2: Manufacturer: Linux 4.10.0+ dwc2_hsotg
+[    2.176485] usb usb2: SerialNumber: ff580000.usb
+[ 1147.035367] dwc2 ff580000.usb: bound driver g_audio
+[ 1147.041203] dwc2 ff580000.usb: dwc2_hsotg_pullup: is_on: 1 op_state: 3
+[ 1147.041250] dwc2 ff580000.usb: dwc2_core_reset()
+[ 1147.041345] dwc2 ff580000.usb: FIFOs reset, timeout at 100
+[ 1147.041405] dwc2 ff580000.usb: EP0: DIEPCTL0=0x00008000, 
+DOEPCTL0=0x00008000
+[ 1147.041447] dwc2 ff580000.usb: gsintmsk now 0xd08c3cc4
+[ 1147.041554] dwc2 ff580000.usb: DCTL=0x00000002
+[ 1147.041631] dwc2 ff580000.usb: dwc2_hsotg_enqueue_setup: queueing 
+setup request
+[ 1147.041692] dwc2 ff580000.usb: ep0: req ee241680: 8@ee241198, noi=0, 
+zero=0, snok=0
+[ 1147.041757] dwc2 ff580000.usb: dwc2_hsotg_start_req: 
+DxEPCTL=0x80008000, ep 0, dir out
+[ 1147.041799] dwc2 ff580000.usb: ureq->length:8 ureq->actual:0
+[ 1147.041896] dwc2 ff580000.usb: dwc2_hsotg_start_req: 1@8/8, 
+0x00080008 => 0x00000b10
+[ 1147.041975] dwc2 ff580000.usb: dwc2_hsotg_start_req: 2e243000 pad => 
+0x00000b14
+[ 1147.042014] dwc2 ff580000.usb: ep0 state:0
+[ 1147.042055] dwc2 ff580000.usb: dwc2_hsotg_start_req: DxEPCTL=0x80008000
+[ 1147.042097] dwc2 ff580000.usb: dwc2_hsotg_start_req: DXEPCTL=0x80008000
+[ 1147.042169] dwc2 ff580000.usb: EP0: DIEPCTL0=0x00008000, 
+DOEPCTL0=0x80008000
+
+Thanks,
+Francesco
+
+> Thanks,
+> Vardan.
+>
