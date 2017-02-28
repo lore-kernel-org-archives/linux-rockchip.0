@@ -1,46 +1,96 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 0/4] rockchip: fix serial output on rk3036
-Date: Tue, 28 Feb 2017 06:14:16 +0100
-Message-ID: <20170228051420.7214-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH] pwm: rockchip: State of pwm clock should synchronize with pwm enabled state
+Date: Tue, 28 Feb 2017 14:43:36 +0800
+Message-ID: <1488264216-9361-1-git-send-email-david.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: boris.brezillon@free-electrons.com, briannorris@chromium.org, heiko@sntech.de, thierry.reding@gmail.com
+Cc: dianders@chromium.org, b.galvani@gmail.com, caesar.wang@rock-chips.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "david.wu" <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Recent changes to the 8250-dw variant revealed issues concerning
-how the clock rates are handled on the rk3036 uart.
+From: "david.wu" <david.wu@rock-chips.com>
 
-For one, there was an error in the clock declaration, but also the
-shared uart-pll-select-mux also as default got supplied from the apll
-that also supplies the cpu and thus gets frequency scaled.
+If the pwm was not enabled at uboot loader, pwm could not work for clock
+always disabled at pwm driver. The pwm clock is enabled at beginning of
+pwm_apply(), but disabled at end of pwm_apply().
 
-The patches in this series remedy this and make the debug uart
-function again on 4.10 + current merge window.
+If the pwm was enabled at uboot loader, pwm clock is always enabled unless
+closed by ATF. The pwm-backlight might turn off the power at early suspend,
+should disable pwm clock for saving power consume.
 
+It is important to provide opportunity to enable/disable clock at pwm driver,
+the pwm consumer should ensure correct order to call pwm enable/disable, and
+pwm driver ensure state of pwm clock synchronized with pwm enabled state.
 
-Heiko Stuebner (4):
-  clk: rockchip: add "," to mux_pll_src_apll_dpll_gpll_usb480m_p on
-    rk3036
-  clk: rockchip: add SCLK_UARTPLL to rk3036 clock ids
-  clk: rockchip: assign the SCLK_UARTPLL clock id on rk3036
-  ARM: dts: rockchip: Make uartpll a child of the gpll on rk3036
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+---
+ drivers/pwm/pwm-rockchip.c | 38 +++++++++++++++++++++++++++++++-------
+ 1 file changed, 31 insertions(+), 7 deletions(-)
 
- arch/arm/boot/dts/rk3036.dtsi          | 5 +++--
- drivers/clk/rockchip/clk-rk3036.c      | 4 ++--
- include/dt-bindings/clock/rk3036-cru.h | 1 +
- 3 files changed, 6 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index ef89df1..14a0445 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -191,6 +191,26 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	return 0;
+ }
+ 
++static int rk_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm,
++			 bool enable, enum pwm_polarity polarity)
++{
++	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
++	int ret;
++
++	if (enable) {
++		ret = clk_enable(pc->clk);
++		if (ret)
++			return ret;
++	}
++
++	pc->data->set_enable(chip, pwm, enable, polarity);
++
++	if (!enable)
++		clk_disable(pc->clk);
++
++	return 0;
++}
++
+ static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 			      struct pwm_state *state)
+ {
+@@ -207,22 +227,26 @@ static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return ret;
+ 
+ 	if (state->polarity != curstate.polarity && enabled) {
+-		pc->data->set_enable(chip, pwm, false, state->polarity);
++		ret = rk_pwm_enable(chip, pwm, false, state->polarity);
++		if (ret)
++			goto out;
+ 		enabled = false;
+ 	}
+ 
+ 	ret = rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
+ 	if (ret) {
+ 		if (enabled != curstate.enabled)
+-			pc->data->set_enable(chip, pwm, !enabled,
+-					     state->polarity);
+-
++			rk_pwm_enable(chip, pwm, !enabled,
++				      state->polarity);
+ 		goto out;
+ 	}
+ 
+-	if (state->enabled != enabled)
+-		pc->data->set_enable(chip, pwm, state->enabled,
+-				     state->polarity);
++	if (state->enabled != enabled) {
++		ret = rk_pwm_enable(chip, pwm, state->enabled,
++				    state->polarity);
++		if (ret)
++			goto out;
++	}
+ 
+ 	/*
+ 	 * Update the state with the real hardware, which can differ a bit
 -- 
-2.11.0
+1.9.1
