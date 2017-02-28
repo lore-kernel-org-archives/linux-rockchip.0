@@ -1,8 +1,7 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 4/4] ARM: dts: rockchip: Make uartpll a child of the gpll on
- rk3036
-Date: Tue, 28 Feb 2017 06:14:20 +0100
-Message-ID: <20170228051420.7214-5-heiko@sntech.de>
+Subject: [PATCH 2/4] clk: rockchip: add SCLK_UARTPLL to rk3036 clock ids
+Date: Tue, 28 Feb 2017 06:14:18 +0100
+Message-ID: <20170228051420.7214-3-heiko@sntech.de>
 References: <20170228051420.7214-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,35 +21,25 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The shared uart-pll is normally a child of the apll that can get changed
-by cpu frequency scaling. So move it away to the more stable gpll to
-make sure the uart doesn't break on cpu frequency changes.
-
-This turned up during the 4.11 merge-window when commit
-6a171b299379 ("serial: 8250_dw: Allow hardware flow control to be used")
-added general termios enablement making the uart on rk3036 change
-frequency and thus making it susceptible for the frequency scaling issue.
+Systems might need it, if they want to assign the pll-mux shared
+by all uart clocks to some specific pll.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3036.dtsi | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ include/dt-bindings/clock/rk3036-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index ff9b90bfaefd..6442023854c5 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -310,8 +310,9 @@
- 		rockchip,grf = <&grf>;
- 		#clock-cells = <1>;
- 		#reset-cells = <1>;
--		assigned-clocks = <&cru PLL_GPLL>;
--		assigned-clock-rates = <594000000>;
-+		assigned-clocks = <&cru PLL_GPLL>, <&cru SCLK_UARTPLL>;
-+		assigned-clock-rates = <594000000>, <0>;
-+		assigned-clock-parents = <0>, <&cru PLL_GPLL>;
- 	};
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+index de44109a3a04..58dd05af77e2 100644
+--- a/include/dt-bindings/clock/rk3036-cru.h
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -56,6 +56,7 @@
+ #define SCLK_MACREF		152
+ #define SCLK_MACPLL		153
+ #define SCLK_SFC		160
++#define SCLK_UARTPLL		161
  
- 	grf: syscon@20008000 {
+ /* aclk gates */
+ #define ACLK_DMAC2		194
 -- 
 2.11.0
