@@ -1,7 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 3/4] clk: rockchip: assign the SCLK_UARTPLL clock id on rk3036
-Date: Tue, 28 Feb 2017 06:14:19 +0100
-Message-ID: <20170228051420.7214-4-heiko@sntech.de>
+Subject: [PATCH 1/4] clk: rockchip: add ",
+ " to mux_pll_src_apll_dpll_gpll_usb480m_p on rk3036
+Date: Tue, 28 Feb 2017 06:14:17 +0100
+Message-ID: <20170228051420.7214-2-heiko@sntech.de>
 References: <20170228051420.7214-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,7 +22,9 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Assign it to the matching clock in the clock driver.
+The mux_pll_src_apll_dpll_gpll_usb480m_p parent list was missing a ","
+between the 3rd and 4th parent names, making them fall together and thus
+lookups fail. Fix that.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
@@ -29,17 +32,17 @@ Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index dcde70f4c105..d10934b63a0d 100644
+index 924f560dcf80..dcde70f4c105 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -242,7 +242,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(2), 7, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 5, GFLAGS),
+@@ -127,7 +127,7 @@ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
+ PNAME(mux_timer_p)		= { "xin24m", "pclk_peri_src" };
  
--	MUX(0, "uart_pll_clk", mux_pll_src_apll_dpll_gpll_usb480m_p, 0,
-+	MUX(SCLK_UARTPLL, "uart_pll_clk", mux_pll_src_apll_dpll_gpll_usb480m_p, 0,
- 			RK2928_CLKSEL_CON(13), 10, 2, MFLAGS),
- 	COMPOSITE_NOMUX(0, "uart0_src", "uart_pll_clk", 0,
- 			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
+-PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll" "usb480m" };
++PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll", "usb480m" };
+ 
+ PNAME(mux_mmc_src_p)	= { "apll", "dpll", "gpll", "xin24m" };
+ PNAME(mux_i2s_pre_p)	= { "i2s_src", "i2s_frac", "ext_i2s", "xin12m" };
 -- 
 2.11.0
