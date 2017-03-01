@@ -1,8 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 2/2] clk: rockchip: Make uartpll a child of the gpll on
- rk3036
-Date: Wed,  1 Mar 2017 22:00:42 +0100
-Message-ID: <20170301210042.11352-3-heiko@sntech.de>
+Subject: [PATCH v3 1/2] clk: rockchip: add ",
+ " to mux_pll_src_apll_dpll_gpll_usb480m_p on rk3036
+Date: Wed,  1 Mar 2017 22:00:41 +0100
+Message-ID: <20170301210042.11352-2-heiko@sntech.de>
 References: <20170301210042.11352-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,37 +22,28 @@ To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The shared uart-pll is on boot a child of the apll that can get changed
-by cpu frequency scaling. So move it away to the more stable gpll to
-make sure the uart doesn't break on cpu frequency changes.
+The mux_pll_src_apll_dpll_gpll_usb480m_p parent list was missing a ","
+between the 3rd and 4th parent names, making them fall together and thus
+lookups fail. Fix that.
 
-This turned up during the 4.11 merge-window when commit
-6a171b299379 ("serial: 8250_dw: Allow hardware flow control to be used")
-added general termios enablement making the uart on rk3036 change
-frequency and thus making it susceptible for the frequency scaling issue.
-
+Fixes: 5190c08b2989 ("clk: rockchip: add clock controller for rk3036")
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3036.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/clk/rockchip/clk-rk3036.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index dcde70f4c105..00d4150e33c3 100644
+index 924f560dcf80..dcde70f4c105 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -450,6 +450,13 @@ static void __init rk3036_clk_init(struct device_node *np)
- 		return;
- 	}
+@@ -127,7 +127,7 @@ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
+ PNAME(mux_timer_p)		= { "xin24m", "pclk_peri_src" };
  
-+	/*
-+	 * Make uart_pll_clk a child of the gpll, as all other sources are
-+	 * not that usable / stable.
-+	 */
-+	writel_relaxed(HIWORD_UPDATE(0x2, 0x3, 10),
-+		       reg_base + RK2928_CLKSEL_CON(13));
-+
- 	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 	if (IS_ERR(ctx)) {
- 		pr_err("%s: rockchip clk init failed\n", __func__);
+-PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll" "usb480m" };
++PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll", "usb480m" };
+ 
+ PNAME(mux_mmc_src_p)	= { "apll", "dpll", "gpll", "xin24m" };
+ PNAME(mux_i2s_pre_p)	= { "i2s_src", "i2s_frac", "ext_i2s", "xin12m" };
 -- 
 2.11.0
