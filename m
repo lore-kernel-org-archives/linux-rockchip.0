@@ -1,7 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 0/2] rockchip: fix serial output on rk3036
-Date: Wed,  1 Mar 2017 22:00:40 +0100
-Message-ID: <20170301210042.11352-1-heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: remove wrongly added idle states on
+ rk3368
+Date: Wed,  1 Mar 2017 23:38:49 +0100
+Message-ID: <20170301223849.13401-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,44 +16,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Recent changes to the 8250-dw variant revealed issues concerning
-how the clock rates are handled on the rk3036 uart.
+As reported by Lorenzo, the residency/latency values defined in the
+idle-state for rk3368 "make no sense". When introducing them I
+simply took the idle-state node from the vendor kernel in error
+as I didn't look up if these values were sane in the first place.
 
-For one, there was an error in the clock declaration, but also the
-shared uart-pll-select-mux also as default got supplied from the apll
-that also supplies the cpu and thus gets frequency scaled.
+Talking to people and determining why they were used in this way
+showed that it was meant to make sure the cpu_suspend callback
+got initialized which at the 3.10 time was somehow required even
+for wfi-based idle handling.
 
-The patches in this series remedy this and make the debug uart
-function again on 4.10 + current merge window.
+Of course the generic arch_cpu_idle() now does wfi-based idle-handling
+already, so there is no need for this.
 
+Reported-by: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+This has been sitting ere for way to long :-(, but finally I got
+to finish the change.
 
-As for the merge-path, I've now tested all Rockchip socs I have access
-to (3036, 3288, 3368, 3399) and didn't find any more clock-related issues
-with the merge-window as of today. So if no other subtle issue turns up
-this week, these should be all fixes for the 4.11 cycle.
-So these 2 patches could be picked up by clock-maintainers directly if
-so desired, or I can send a pull request after the merge-window closes
-and we're save to say that nothing else broke.
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 20 --------------------
+ 1 file changed, 20 deletions(-)
 
-changes in v3:
-- use a direct register write, instead of using clock apis
-
-changes in v2:
-- Fixes tag for the missing ","
-- do reparenting in the driver itself
-- drop clock-id addition, as they're not needed for the fix anymore
-
-Heiko Stuebner (2):
-  clk: rockchip: add "," to mux_pll_src_apll_dpll_gpll_usb480m_p on
-    rk3036
-  clk: rockchip: Make uartpll a child of the gpll on rk3036
-
- drivers/clk/rockchip/clk-rk3036.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 49d1191..5471ace 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -107,23 +107,10 @@
+ 			};
+ 		};
+ 
+-		idle-states {
+-			entry-method = "psci";
+-
+-			cpu_sleep: cpu-sleep-0 {
+-				compatible = "arm,idle-state";
+-				arm,psci-suspend-param = <0x1010000>;
+-				entry-latency-us = <0x3fffffff>;
+-				exit-latency-us = <0x40000000>;
+-				min-residency-us = <0xffffffff>;
+-			};
+-		};
+-
+ 		cpu_l0: cpu@0 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x0>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 
+ 			#cooling-cells = <2>; /* min followed by max */
+@@ -133,7 +120,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x1>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 
+@@ -141,7 +127,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x2>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 
+@@ -149,7 +134,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x3>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 
+@@ -157,7 +141,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x100>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 
+ 			#cooling-cells = <2>; /* min followed by max */
+@@ -167,7 +150,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x101>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 
+@@ -175,7 +157,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x102>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 
+@@ -183,7 +164,6 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x103>;
+-			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
+ 		};
+ 	};
 -- 
-2.11.0
+2.6.4
