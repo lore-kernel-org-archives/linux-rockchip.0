@@ -1,14 +1,11 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 1/2] clk: rockchip: add ",
- " to mux_pll_src_apll_dpll_gpll_usb480m_p on rk3036
-Date: Wed,  1 Mar 2017 22:00:41 +0100
-Message-ID: <20170301210042.11352-2-heiko@sntech.de>
-References: <20170301210042.11352-1-heiko@sntech.de>
+Subject: [PATCH v3 0/2] rockchip: fix serial output on rk3036
+Date: Wed,  1 Mar 2017 22:00:40 +0100
+Message-ID: <20170301210042.11352-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170301210042.11352-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,28 +19,40 @@ To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The mux_pll_src_apll_dpll_gpll_usb480m_p parent list was missing a ","
-between the 3rd and 4th parent names, making them fall together and thus
-lookups fail. Fix that.
+Recent changes to the 8250-dw variant revealed issues concerning
+how the clock rates are handled on the rk3036 uart.
 
-Fixes: 5190c08b2989 ("clk: rockchip: add clock controller for rk3036")
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3036.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+For one, there was an error in the clock declaration, but also the
+shared uart-pll-select-mux also as default got supplied from the apll
+that also supplies the cpu and thus gets frequency scaled.
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 924f560dcf80..dcde70f4c105 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -127,7 +127,7 @@ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
- PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
- PNAME(mux_timer_p)		= { "xin24m", "pclk_peri_src" };
- 
--PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll" "usb480m" };
-+PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll", "usb480m" };
- 
- PNAME(mux_mmc_src_p)	= { "apll", "dpll", "gpll", "xin24m" };
- PNAME(mux_i2s_pre_p)	= { "i2s_src", "i2s_frac", "ext_i2s", "xin12m" };
+The patches in this series remedy this and make the debug uart
+function again on 4.10 + current merge window.
+
+
+As for the merge-path, I've now tested all Rockchip socs I have access
+to (3036, 3288, 3368, 3399) and didn't find any more clock-related issues
+with the merge-window as of today. So if no other subtle issue turns up
+this week, these should be all fixes for the 4.11 cycle.
+So these 2 patches could be picked up by clock-maintainers directly if
+so desired, or I can send a pull request after the merge-window closes
+and we're save to say that nothing else broke.
+
+changes in v3:
+- use a direct register write, instead of using clock apis
+
+changes in v2:
+- Fixes tag for the missing ","
+- do reparenting in the driver itself
+- drop clock-id addition, as they're not needed for the fix anymore
+
+Heiko Stuebner (2):
+  clk: rockchip: add "," to mux_pll_src_apll_dpll_gpll_usb480m_p on
+    rk3036
+  clk: rockchip: Make uartpll a child of the gpll on rk3036
+
+ drivers/clk/rockchip/clk-rk3036.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
 -- 
 2.11.0
