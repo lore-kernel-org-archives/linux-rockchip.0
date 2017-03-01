@@ -1,67 +1,58 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v4 00/23] drm/rockchip: MIPI fixes & improvements
-Date: Wed, 1 Mar 2017 15:03:12 -0500
-Message-ID: <20170301200312.GB13635@art_vandelay>
-References: <20170224125506.21533-1-john@metanate.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3 2/2] clk: rockchip: Make uartpll a child of the gpll on
+ rk3036
+Date: Wed,  1 Mar 2017 22:00:42 +0100
+Message-ID: <20170301210042.11352-3-heiko@sntech.de>
+References: <20170301210042.11352-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170224125506.21533-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170301210042.11352-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBGZWIgMjQsIDIwMTcgYXQgMTI6NTQ6NDNQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IFRoaXMgdmVyc2lvbiBpcyBtb3N0bHkgc21hbGwgY2hhbmdlcyBpbiByZXNwb25zZSB0
-byByZXZpZXcgY29tbWVudHMgZnJvbQo+IFNlYW4gYW5kIENocmlzLCB0aGUgZGV0YWlscyBhcmUg
-aW4gdGhlIGluZGl2aWR1YWwgcGF0Y2hlcy4KPiAKPiBJIGRlY2lkZWQgdG8gZHJvcCB0aGUgZmlu
-YWwgcGF0Y2ggd2hpY2ggYWRkcyBzdXBwb3J0IGZvciBNSVBJIHJlYWQKPiBjb21tYW5kcyBiZWNh
-dXNlIEknbSBub3QgdXNpbmcgdGhhdCBmZWF0dXJlIG5vdyBhbmQgSSBjYW4ndCBlYXNpbHkgdGVz
-dAo+IGl0LiAgSXQncyBvbiB0aGUgbGlzdCBpZiBhbnlvbmUgd2FudHMgdG8gcGljayBpdCB1cCBp
-biB0aGUgZnV0dXJlLgo+IAo+IFZlcnNpb24gMyB3YXMgcG9zdGVkIGhlcmU6Cj4gaHR0cDovL3d3
-dy5zcGluaWNzLm5ldC9saXN0cy9kcmktZGV2ZWwvbXNnMTMwOTc3Lmh0bWwKPiAKPiBUaGFua3Mg
-dG8gU2VhbiBQYXVsIGFuZCBDaHJpcyBaaG9uZyBmb3IgdGhlaXIgcmV2aWV3IGFuZCB0ZXN0aW5n
-IG9mIHRoaXMKPiBzZXJpZXMuCj4gCj4gSm9obiBLZWVwaW5nICgyMyk6Cj4gICBkcm0vcm9ja2No
-aXA6IGR3LW1pcGktZHNpOiBkb24ndCBjb25maWd1cmUgaGFyZHdhcmUgaW4gbW9kZV9zZXQgZm9y
-Cj4gICAgIE1JUEkKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHBhc3MgbW9kZSBpbiB3
-aGVyZSBuZWVkZWQKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHJlbW92ZSBtb2RlX3Nl
-dCBob29rCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBmaXggY29tbWFuZCBoZWFkZXIg
-d3JpdGVzCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBmaXggZ2VuZXJpYyBwYWNrZXQg
-c3RhdHVzIGNoZWNrCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBhdm9pZCBvdXQtb2Yt
-Ym91bmRzIHJlYWQgb24gdHhfYnVmCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGktZHNpOiBpbmNs
-dWRlIGJhZCB2YWx1ZSBpbiBlcnJvciBtZXNzYWdlCj4gICBkcm0vcm9ja2NoaXA6IGR3LW1pcGkt
-ZHNpOiByZXNwZWN0IG1lc3NhZ2UgZmxhZ3MKPiAgIGRybS9yb2NrY2hpcDogZHctbWlwaS1kc2k6
-IG9ubHkgcmVxdWVzdCBIUyBjbG9jayB3aGVuIHJlcXVpcmVkCj4gICBkcm0vcm9ja2NoaXA6IGR3
-LW1pcGktZHNpOiBkb24ndCBhc3N1bWUgYnVmZmVyIGlzIGFsaWduZWQKPiAgIGRybS9yb2NrY2hp
-cDogZHctbWlwaS1kc2k6IHByZXBhcmUgcGFuZWwgYWZ0ZXIgcGh5IGluaXQKPiAgIGRybS9yb2Nr
-Y2hpcDogZHctbWlwaS1kc2k6IGFsbG93IGNvbW1hbmRzIGluIHBhbmVsX2Rpc2FibGUKPiAgIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IGZpeCBlc2NhcGUgY2xvY2sgcmF0ZQo+ICAgZHJtL3Jv
-Y2tjaGlwOiBkdy1taXBpLWRzaTogZW5zdXJlIFBIWSBpcyByZXNldAo+ICAgZHJtL3JvY2tjaGlw
-OiBkdy1taXBpLWRzaTogY29uZmlndXJlIFBIWSBiZWZvcmUgZW5hYmxpbmcKPiAgIGRybS9yb2Nr
-Y2hpcDogZHctbWlwaS1kc2k6IHByb3Blcmx5IGNvbmZpZ3VyZSBQSFkgdGltaW5nCj4gICBkcm0v
-cm9ja2NoaXA6IGR3LW1pcGktZHNpOiBpbXByb3ZlIFBMTCBjb25maWd1cmF0aW9uCj4gICBkcm0v
-cm9ja2NoaXA6IGR3LW1pcGktZHNpOiB1c2Ugc3BlY2lmaWMgcG9sbCBoZWxwZXIKPiAgIGRybS9y
-b2NrY2hpcDogZHctbWlwaS1kc2k6IHVzZSBwb3NpdGl2ZSBjaGVjayBmb3IgTntILFZ9U1lOQwo+
-ICAgZHJtL3JvY2tjaGlwOiB2b3A6IHRlc3QgZm9yIFB7SCxWfVNZTkMKPiAgIGRybS9yb2NrY2hp
-cDogZHctbWlwaS1kc2k6IGRlZmVyIHByb2JlIGlmIHBhbmVsIGlzIG5vdCBsb2FkZWQKPiAgIGRy
-bS9yb2NrY2hpcDogZHctbWlwaS1kc2k6IHN1cHBvcnQgbm9uLWJ1cnN0IG1vZGVzCj4gICBkcm0v
-cm9ja2NoaXA6IGR3LW1pcGktZHNpOiBhZGQgcmVzZXQgY29udHJvbAo+IAo+ICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyAgICAgIHwgMzI1ICsrKysrKysrKysrKysrKysr
-KystLS0tLS0tLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-YyB8ICAgNCArLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDIyMCBpbnNlcnRpb25zKCspLCAxMDkgZGVs
-ZXRpb25zKC0pCgpBcHBsaWVkIHRvIGRybS1taXNjCgpUaGFua3MsCgpTZWFuCj4gCj4gLS0gCj4g
-Mi4xMi4wLnJjMC4yMzAuZ2Y2MjVkNGNkYjkuZGlydHkKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The shared uart-pll is on boot a child of the apll that can get changed
+by cpu frequency scaling. So move it away to the more stable gpll to
+make sure the uart doesn't break on cpu frequency changes.
+
+This turned up during the 4.11 merge-window when commit
+6a171b299379 ("serial: 8250_dw: Allow hardware flow control to be used")
+added general termios enablement making the uart on rk3036 change
+frequency and thus making it susceptible for the frequency scaling issue.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/clk/rockchip/clk-rk3036.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index dcde70f4c105..00d4150e33c3 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -450,6 +450,13 @@ static void __init rk3036_clk_init(struct device_node *np)
+ 		return;
+ 	}
+ 
++	/*
++	 * Make uart_pll_clk a child of the gpll, as all other sources are
++	 * not that usable / stable.
++	 */
++	writel_relaxed(HIWORD_UPDATE(0x2, 0x3, 10),
++		       reg_base + RK2928_CLKSEL_CON(13));
++
+ 	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+ 	if (IS_ERR(ctx)) {
+ 		pr_err("%s: rockchip clk init failed\n", __func__);
+-- 
+2.11.0
