@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 3/4] ARM: dts: rockchip: add rk3066/rk3188 dw-mmc resets
-Date: Thu,  2 Mar 2017 00:56:20 +0100
-Message-ID: <20170301235621.31726-3-heiko@sntech.de>
+Subject: [PATCH 4/4] ARM: dts: rockchip: add rk322x dw-mmc resets
+Date: Thu,  2 Mar 2017 00:56:21 +0100
+Message-ID: <20170301235621.31726-4-heiko@sntech.de>
 References: <20170301235621.31726-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,39 +22,21 @@ Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-ke
 List-Id: linux-rockchip.vger.kernel.org
 
 dw-mmc got its reset-properties specified, so add the softresets
-for it in rk3066/rk3188.
+for it in rk3228/rk3229.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3xxx.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm/boot/dts/rk322x.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index 0b45811cf28b..233513cdd279 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -224,6 +224,8 @@
- 		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>;
- 		clock-names = "biu", "ciu";
- 		fifo-depth = <256>;
-+		resets = <&cru SRST_SDMMC>;
-+		reset-names = "reset";
- 		status = "disabled";
- 	};
- 
-@@ -234,6 +236,8 @@
- 		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>;
- 		clock-names = "biu", "ciu";
- 		fifo-depth = <256>;
-+		resets = <&cru SRST_SDIO>;
-+		reset-names = "reset";
- 		status = "disabled";
- 	};
- 
-@@ -244,6 +248,8 @@
- 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>;
- 		clock-names = "biu", "ciu";
- 		fifo-depth = <256>;
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 9dff8221112c..7cc344684f71 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -414,6 +414,8 @@
+ 		fifo-depth = <0x100>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
 +		resets = <&cru SRST_EMMC>;
 +		reset-names = "reset";
  		status = "disabled";
