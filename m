@@ -1,57 +1,79 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] clk: rockchip: Make uartpll a child of the gpll
- on rk3036
-Date: Wed, 1 Mar 2017 11:08:53 -0800
-Message-ID: <20170301190853.GQ25384@codeaurora.org>
-References: <20170228181214.6413-1-heiko@sntech.de>
- <20170228181214.6413-3-heiko@sntech.de>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [RESEND PATCH v7 0/7] Rockchip dw-mipi-dsi driver
+Date: Wed, 1 Mar 2017 15:02:50 -0500
+Message-ID: <20170301200250.GA13635@art_vandelay>
+References: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20170228181214.6413-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <1487577744-2855-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, pawel.moll@arm.com, yzq@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 02/28, Heiko Stuebner wrote:
-> @@ -480,6 +481,19 @@ static void __init rk3036_clk_init(struct device_node *np)
->  
->  	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL);
->  
-> +	clk = __clk_lookup("uart_pll_clk");
-> +	clk2 = __clk_lookup("gpll");
-
-Can we do the register writes directly? Or call the appropriate
-function to twiddle some bits to change the parent before
-registering the clks? It's nice to avoid using clk API in
-provider drivers when we're getting clks from the provider
-itself, plus I'd like to get rid of __clk_lookup() one day.
-
-> +	if (clk && clk2) {
-> +		int ret = clk_set_parent(clk, clk2);
-> +
-> +		if (ret < 0)
-> +			pr_warn("%s: could not reparent uart_pll_clk to gpll\n",
-> +				__func__);
-> +	} else {
-> +		pr_warn("%s: missing clocks to reparent uart_pll_clk to gpll\n",
-> +			__func__);
-> +	}
-> +
->  	rockchip_clk_of_add_provider(np, ctx);
->  }
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+T24gTW9uLCBGZWIgMjAsIDIwMTcgYXQgMDQ6MDI6MTZQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gSGkgYWxsCj4gCj4gW1Jlc2VuZCB0aGlzIHY3IHZlcnNpb24gc2VyaWVzLCBzaW5jZSB0
+aGVyZSBhcmUgNSBtYWlscyBoYXZlIGdvbmUgbWlzc2luZywgbGFzdAo+IHdlZWtdCj4gCj4gVGhp
+cyB2ZXJzaW9uIGRvZXMgbm90IGNoYW5nZSB0aGUgZXhpc3RpbmcgdjYgcGF0Y2hlcywganVzdCB0
+byBhZGQgdGhlCj4gImJhbmR3aWR0aCBmaXgiIHBhdGNoIGJhY2ssIHNpbmNlIHdlIHJlYWxseSBu
+ZWVkIGl0Lgo+IAo+IFRoaXMgcGF0Y2ggc2VyaWFsIGlzIGZvciBSSzMzOTkgTUlQSSBEU0kuIFRo
+ZSBNSVBJIERTSSBjb250cm9sbGVyIG9mCj4gUkszMzk5IGlzIGFsbW9zdCB0aGUgc2FtZSBhcyBS
+SzMyODgsIGV4Y2VwdCBhIGxpdHRsZSBiaXQgb2YgZGlmZmVyZW5jZQo+IGluIHBoeSBjbG9jayBj
+b250cm9sbGluZyBhbmQgcG9ydCBpZCBzZWxlY3Rpb24gcmVnaXN0ZXIuIFRoZXNlIHBhdGNoZXMK
+PiBhZGQgUkszMzk5IHN1cHBvcnQgYW5kIHRoZSBwb3dlciBkb21haW4gc3VwcG9ydC4KPiAKPiBB
+bmQgdGhlc2UgcGF0Y2hlcyBiYXNlIG9uIEpvaG4gS2VlcGluZydzIHYzIHBhdGNoZXNbMF0sIGl0
+IGZpeGVzIG1hbnkgYnVncywKPiB0aGV5IGhhdmUgYmVlbiB0ZXN0ZWQgb24gcmszMjg4IGV2YiBi
+b2FyZC4KPiAKPiBbMF06Cj4gWzAxLzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Bh
+dGNoLzk1NDQwODkKPiBbMDIvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gv
+OTU0NDA2MQo+IFswMy8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0
+MDY1Cj4gWzA0LzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwNzcK
+PiBbMDUvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMwo+IFsw
+Ni8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDM3Cj4gWzA3LzI0
+XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwMjkKPiBbMDgvMjRdIGh0
+dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDAzMQo+IFswOS8yNF0gaHR0cHM6
+Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDgzCj4gWzEwLzI0XSBodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwNjMKPiBbMTEvMjRdIGh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA4NQo+IFsxMi8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsu
+a2VybmVsLm9yZy9wYXRjaC85NTQ0MDkzCj4gWzEzLzI0XSBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3BhdGNoLzk1NDQwODEKPiBbMTQvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
+cmcvcGF0Y2gvOTU0NDA1Nwo+IFsxNS8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9w
+YXRjaC85NTQ0MDc5Cj4gWzE2LzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNo
+Lzk1NDQwMzUKPiBbMTcvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0
+NDEwNQo+IFsxOC8yNF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDU5
+Cj4gWzIxLzI0XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQwMDkKPiBb
+MjIvMjRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU0NDA0OQo+IFsyMy8y
+NF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85NTQ0MDU1Cj4gWzI0LzI0XSBo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk1NDQxMDkKPiAKPiAKPiBDaGFuZ2Vz
+IGluIHY2Ogo+IC0gbm8gbmVlZCBjaGVjayBwaHlfY2ZnX2NsayBiZWZvcmUgZW5hYmxlL2Rpc2Fi
+bGUKPiAKPiBDaGFuZ2VzIGluIHY1Ogo+IC0gY2hlY2sgdGhlIGVycm9yIG9mIHBoeV9jZmdfY2xr
+IGluIGR3X21pcGlfZHNpX2JpbmQKPiAKPiBDaGFuZ2VzIGluIHY0Ogo+IC0gcmVtb3ZlIHRoZSB1
+bnJlbGF0ZWQgY2hhbmdlCj4gCj4gQ2hhbmdlcyBpbiB2MzoKPiAtIGJhc2Ugb24gSm9obiBLZWVw
+aW5nJ3MgcGF0Y2ggc2VyaWVzCj4gCj4gQ2hyaXMgWmhvbmcgKDcpOgo+ICAgZHQtYmluZGluZ3M6
+IGFkZCByazMzOTkgc3VwcG9ydCBmb3IgZHctbWlwaS1yb2NrY2hpcAo+ICAgZHJtL3JvY2tjaGlw
+L2RzaTogZHctbWlwaTogc3VwcG9ydCBSSzMzOTkgbWlwaSBkc2kKPiAgIGRybS9yb2NrY2hpcC9k
+c2k6IGR3LW1pcGk6IGNvcnJlY3QgdGhlIGNvZGluZyBzdHlsZQo+ICAgZHJtL3JvY2tjaGlwL2Rz
+aTogcmVtb3ZlIG1vZGVfdmFsaWQgZnVuY3Rpb24KPiAgIGR0LWJpbmRpbmdzOiBhZGQgcG93ZXIg
+ZG9tYWluIG5vZGUgZm9yIGR3LW1pcGktcm9ja2NoaXAKPiAgIGRybS9yb2NrY2hpcC9kc2k6IGZp
+eCBpbnN1ZmZpY2llbnQgYmFuZHdpZHRoIG9mIHNvbWUgcGFuZWwKPiAgIGRybS9yb2NrY2hpcC9k
+c2k6IGFkZCBkdy1taXBpIHBvd2VyIGRvbWFpbiBzdXBwb3J0CgpBcHBsaWVkIHRvIGRybS1taXNj
+CgpUaGFua3MsCgpTZWFuCj4gCj4gIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3Jv
+Y2tjaGlwLnR4dCAgICAgIHwgICA3ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS5jICAgICAgICAgICAgIHwgMTYwICsrKysrKysrKysrKy0tLS0tLS0tLQo+ICAyIGZp
+bGVzIGNoYW5nZWQsIDEwMCBpbnNlcnRpb25zKCspLCA2NyBkZWxldGlvbnMoLSkKPiAKPiAtLSAK
+PiAyLjYuMwo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
