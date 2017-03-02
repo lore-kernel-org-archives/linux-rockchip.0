@@ -1,156 +1,84 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] pinctrl: =?UTF-8?B?cm9ja2NoaXDvvJpBZGQgaW5wdXQ=?=
- =?UTF-8?B?IHNjaG1pdHQgc3VwcG9ydA==?=
-Date: Thu, 02 Mar 2017 16:30:11 +0800
-Message-ID: <58B7D813.90604@rock-chips.com>
-References: <1488438684-1801-1-git-send-email-david.wu@rock-chips.com>
- <1488438684-1801-2-git-send-email-david.wu@rock-chips.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH RESEND] dmaengine: pl330: Fix data race on TX transferred
+ bytes reporting
+Date: Thu,  2 Mar 2017 13:57:10 +0100
+Message-ID: <20170302125710.14483-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1488438684-1801-2-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vinod Koul <vinod.koul@intel.com>, Dan Williams <dan.j.williams@intel.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Romain Perier <romain.perier@collabora.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+When a transfer completes there is a small window between the descriptor
+being unset as the current active one in the thread and it being marked
+as done. This causes the residue to be incorrectly set and the
+corresponding size to be wrongly reported when pl330_tx_status is run in
+that window. This can be reproduced in different ways, the main we have
+found is with audio playback when the system load is high. When the
+residue goes up during a transfer, it makes the audio ringbuffer wrapped
+around and thus does a sudden jump forward. It can also be detected by
+sudden sound disruptions.
 
-On 03/02/2017 03:11 PM, David Wu wrote:
-> From: "david.wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+This bug was partially solved by commit a40235a2278a ("dmaengine: pl330:
+Acquire dmac's spinlock in pl330_tx_status"), as it reduces the window
+where it can happen, but the issue still exists.
 
-You do not need to add this when you send mail for yourself,
-it's need when you send mail for others.
+This patch is a re-worked version of the one wrote by Sjoerd Simons
+https://patchwork.kernel.org/patch/7568251.
 
->
-> To prevent external signal crosstalk, some pins need to
-> enable input schmitt, like i2c pins, 32k-input pin and so on.
->
-> Signed-off-by: david.wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Original-author: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Signed-off-by: Romain Perier <romain.perier@collabora.com>
+---
 
-Better to use "David Wu" for full name, you can correct this in your 
-gitconfig file.
+Note: Due to an email configuration issue, some of my patches were not
+received on infradead.org or vger.kernel.org. It is now fixed, so I
+resend this patch for this reason.
 
-Thanks,
-- Kever
-> ---
-> changes in v2:
->   - check the return value (Heiko)
->
->   drivers/pinctrl/pinctrl-rockchip.c | 73 ++++++++++++++++++++++++++++++++++++++
->   1 file changed, 73 insertions(+)
->
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index a20ce9f..9b8d516 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -308,6 +308,9 @@ struct rockchip_pin_ctrl {
->   				    int *reg, u8 *bit);
->   	void	(*iomux_recalc)(u8 bank_num, int pin, int *reg,
->   				u8 *bit, int *mask);
-> +	int	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
-> +				    int pin_num, struct regmap **regmap,
-> +				    int *reg, u8 *bit);
->   };
->   
->   struct rockchip_pin_config {
-> @@ -1355,6 +1358,57 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
->   	return ret;
->   }
->   
-> +static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +	struct rockchip_pin_ctrl *ctrl = info->ctrl;
-> +	struct regmap *regmap;
-> +	int reg, ret;
-> +	u8 bit;
-> +	u32 data;
-> +
-> +	ret = ctrl->schmitt_calc_reg(bank, pin_num, &regmap, &reg, &bit);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_read(regmap, reg, &data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	data >>= bit;
-> +	return data & 0x1;
-> +}
-> +
-> +static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
-> +				int pin_num, int enable)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +	struct rockchip_pin_ctrl *ctrl = info->ctrl;
-> +	struct regmap *regmap;
-> +	int reg, ret;
-> +	unsigned long flags;
-> +	u8 bit;
-> +	u32 data, rmask;
-> +
-> +	dev_dbg(info->dev, "setting input schmitt of GPIO%d-%d to %d\n",
-> +		bank->bank_num, pin_num, enable);
-> +
-> +	ret = ctrl->schmitt_calc_reg(bank, pin_num, &regmap, &reg, &bit);
-> +	if (ret)
-> +		return ret;
-> +
-> +	spin_lock_irqsave(&bank->slock, flags);
-> +
-> +	/* enable the write to the equivalent lower bits */
-> +	data = BIT(bit + 16) | (enable << bit);
-> +	rmask = BIT(bit + 16) | BIT(bit);
-> +
-> +	ret = regmap_update_bits(regmap, reg, rmask, data);
-> +	spin_unlock_irqrestore(&bank->slock, flags);
-> +
-> +	return ret;
-> +}
-> +
->   /*
->    * Pinmux_ops handling
->    */
-> @@ -1574,6 +1628,15 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
->   			if (rc < 0)
->   				return rc;
->   			break;
-> +		case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
-> +			if (!info->ctrl->schmitt_calc_reg)
-> +				return -ENOTSUPP;
-> +
-> +			rc = rockchip_set_schmitt(bank,
-> +						  pin - bank->pin_base, arg);
-> +			if (rc < 0)
-> +				return rc;
-> +			break;
->   		default:
->   			return -ENOTSUPP;
->   			break;
-> @@ -1634,6 +1697,16 @@ static int rockchip_pinconf_get(struct pinctrl_dev *pctldev, unsigned int pin,
->   
->   		arg = rc;
->   		break;
-> +	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
-> +		if (!info->ctrl->schmitt_calc_reg)
-> +			return -ENOTSUPP;
-> +
-> +		rc = rockchip_get_schmitt(bank, pin - bank->pin_base);
-> +		if (rc < 0)
-> +			return rc;
-> +
-> +		arg = rc;
-> +		break;
->   	default:
->   		return -ENOTSUPP;
->   		break;
+ drivers/dma/pl330.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 740bbb9..4046737 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -1640,6 +1640,7 @@ static int pl330_update(struct pl330_dmac *pl330)
+ 
+ 			/* Detach the req */
+ 			descdone = thrd->req[active].desc;
++			descdone->status = DONE;
+ 			thrd->req[active].desc = NULL;
+ 
+ 			thrd->req_running = -1;
+@@ -1654,9 +1655,18 @@ static int pl330_update(struct pl330_dmac *pl330)
+ 
+ 	/* Now that we are in no hurry, do the callbacks */
+ 	list_for_each_entry_safe(descdone, tmp, &pl330->req_done, rqd) {
++		struct dma_pl330_chan *pch;
++
+ 		list_del(&descdone->rqd);
++
+ 		spin_unlock_irqrestore(&pl330->lock, flags);
+-		dma_pl330_rqcb(descdone, PL330_ERR_NONE);
++		pch = descdone->pchan;
++		/* If desc aborted */
++		if (!pch) {
++			spin_lock_irqsave(&pl330->lock, flags);
++			continue;
++		}
++		tasklet_schedule(&pch->task);
+ 		spin_lock_irqsave(&pl330->lock, flags);
+ 	}
+ 
+-- 
+2.9.3
