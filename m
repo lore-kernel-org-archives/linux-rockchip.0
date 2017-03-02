@@ -1,87 +1,67 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/4] ARM: dts: rockchip: add rk3288 dw-mmc resets
-Date: Thu, 2 Mar 2017 10:08:55 +0800
-Message-ID: <bec1b33e-e20c-5b0f-f8ef-3b6be0b8721f@rock-chips.com>
-References: <20170301235621.31726-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170301235621.31726-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] pinctrl: rockchip: add irq_enable & irq_disable ops
+Date: Thu,  2 Mar 2017 13:56:52 +0800
+Message-ID: <1488434212-6567-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linux-gpio@vger.kernel.org
+Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Currently we are trying to enable/disable the clk of irq's gpio bank when
+unmask/mask irq. But the kernel's "lazy disable approach" will skip masking
+irq when the irq chip doesn't support irq_disable ops.
 
-On 2017/3/2 7:56, Heiko Stuebner wrote:
-> dw-mmc got its reset-properties specified, so add the softresets
-> for it in rk3288.
->
+So we may hit this case:
+	irq_enable-> enable clk
+	irq_disable-> noop
+	irq_enable-> enable clk again
+	irq_disable-> noop
 
-FWIW, for patch 1 to 4,
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Reviwed-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-I guess you will follow up for ARM64 platforms?
+ drivers/pinctrl/pinctrl-rockchip.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  arch/arm/boot/dts/rk3288.dtsi | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index df8a0dbe9d91..ad5d6022e95f 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -236,6 +236,8 @@
->  		fifo-depth = <0x100>;
->  		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
->  		reg = <0xff0c0000 0x4000>;
-> +		resets = <&cru SRST_MMC0>;
-> +		reset-names = "reset";
->  		status = "disabled";
->  	};
->
-> @@ -248,6 +250,8 @@
->  		fifo-depth = <0x100>;
->  		interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
->  		reg = <0xff0d0000 0x4000>;
-> +		resets = <&cru SRST_SDIO0>;
-> +		reset-names = "reset";
->  		status = "disabled";
->  	};
->
-> @@ -260,6 +264,8 @@
->  		fifo-depth = <0x100>;
->  		interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
->  		reg = <0xff0e0000 0x4000>;
-> +		resets = <&cru SRST_SDIO1>;
-> +		reset-names = "reset";
->  		status = "disabled";
->  	};
->
-> @@ -272,6 +278,8 @@
->  		fifo-depth = <0x100>;
->  		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
->  		reg = <0xff0f0000 0x4000>;
-> +		resets = <&cru SRST_EMMC>;
-> +		reset-names = "reset";
->  		status = "disabled";
->  	};
->
->
-
-
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 7813599..a9a7dfa 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2061,7 +2061,7 @@ static void rockchip_irq_resume(struct irq_data *d)
+ 	clk_disable(bank->clk);
+ }
+ 
+-static void rockchip_irq_gc_mask_clr_bit(struct irq_data *d)
++static void rockchip_irq_enable(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+ 	struct rockchip_pin_bank *bank = gc->private;
+@@ -2070,7 +2070,7 @@ static void rockchip_irq_gc_mask_clr_bit(struct irq_data *d)
+ 	irq_gc_mask_clr_bit(d);
+ }
+ 
+-static void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
++static void rockchip_irq_disable(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+ 	struct rockchip_pin_bank *bank = gc->private;
+@@ -2137,9 +2137,10 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+ 		gc->chip_types[0].regs.mask = GPIO_INTMASK;
+ 		gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
+ 		gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
+-		gc->chip_types[0].chip.irq_mask = rockchip_irq_gc_mask_set_bit;
+-		gc->chip_types[0].chip.irq_unmask =
+-						  rockchip_irq_gc_mask_clr_bit;
++		gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
++		gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
++		gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
++		gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
+ 		gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
+ 		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
+ 		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
 -- 
-Best Regards
-Shawn Lin
+2.1.4
+
+
