@@ -1,7 +1,7 @@
 From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH v4 23/23] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Thu, 2 Mar 2017 13:56:46 -0800
-Message-ID: <20170302215643.GA49163@google.com>
+Date: Thu, 2 Mar 2017 13:59:26 -0800
+Message-ID: <20170302215925.GA49518@google.com>
 References: <20170224125506.21533-1-john@metanate.com>
  <20170224125506.21533-24-john@metanate.com>
 Mime-Version: 1.0
@@ -20,32 +20,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-+ devicetree
-
-Hi,
+Oh, one more thing:
 
 On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:
-> In order to fully reset the state of the MIPI controller we must assert
-> this reset.
-> 
-> This is slightly more complicated than it could be in order to maintain
-> compatibility with device trees that do not specify the reset property.
-> 
-> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> v4:
-> - Fix error check for devm_reset_control_get() to use ENOENT
-> v3:
-> - Add Chris' Reviewed-by
-> Unchanged in v2
-> ---
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
-> 
+
 > diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
 > index 0c4bae711e84..30da75667334 100644
 > --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
@@ -75,10 +56,35 @@ On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:
 > +	 * we have to be prepared for it not being found.
 > +	 */
 > +	apb_rst = devm_reset_control_get(dev, "apb");
+> +	if (IS_ERR(apb_rst)) {
+> +		ret = PTR_ERR(apb_rst);
+> +		if (ret == -ENOENT) {
+> +			apb_rst = NULL;
+> +		} else {
+> +			dev_err(dev, "Unable to get reset control: %d\n", ret);
 
-Did this reset ever get documented in the device tree bindings? I
-couldn't find it. Perhaps a follow-up patch is in order?
-
-[...]
+Might want to check for -EPROBE_DEFER before printing an error?
 
 Brian
+
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	if (apb_rst) {
+> +		ret = clk_prepare_enable(dsi->pclk);
+> +		if (ret) {
+> +			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
+> +			return ret;
+> +		}
+> +
+> +		reset_control_assert(apb_rst);
+> +		usleep_range(10, 20);
+> +		reset_control_deassert(apb_rst);
+> +
+> +		clk_disable_unprepare(dsi->pclk);
+> +	}
+> +
+>  	ret = clk_prepare_enable(dsi->pllref_clk);
+>  	if (ret) {
+>  		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
