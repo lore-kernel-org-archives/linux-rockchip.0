@@ -1,68 +1,63 @@
-From: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: add dmac nodes for rk3368 SoCs
-Date: Fri,  3 Mar 2017 17:49:09 +0800
-Message-ID: <1488534549-26175-1-git-send-email-huibin.hong@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset property
+Date: Fri, 3 Mar 2017 11:39:45 +0000
+Message-ID: <20170303113945.3bd2cbd9.john@metanate.com>
+References: <20170224125506.21533-1-john@metanate.com>
+ <20170224125506.21533-24-john@metanate.com>
+ <20170302215643.GA49163@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170302215643.GA49163@google.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Addd dmac bus and dmac peri dts nodes for peripherals,
-such as I2S, SPI, UART and so on.
-
-Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index a635adc..c9be1b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -204,6 +204,37 @@
- 				     <&cpu_b2>, <&cpu_b3>;
- 	};
- 
-+	amba {
-+		compatible = "simple-bus";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		dmac_peri: dma-controller@ff250000 {
-+			compatible = "arm,pl330", "arm,primecell";
-+			reg = <0x0 0xff250000 0x0 0x4000>;
-+			interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
-+			#dma-cells = <1>;
-+			clocks = <&cru ACLK_DMAC_PERI>;
-+			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
-+			peripherals-req-type-burst;
-+		};
-+
-+		dmac_bus: dma-controller@ff600000 {
-+			compatible = "arm,pl330", "arm,primecell";
-+			reg = <0x0 0xff600000 0x0 0x4000>;
-+			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
-+			#dma-cells = <1>;
-+			clocks = <&cru ACLK_DMAC_BUS>;
-+			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
-+			peripherals-req-type-burst;
-+		};
-+	};
-+
- 	psci {
- 		compatible = "arm,psci-0.2";
- 		method = "smc";
--- 
-2.0.0
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+VGhpcyByZXNldCBpcyByZXF1aXJlZCBpbiBvcmRlciB0byBmdWxseSByZXNldCB0aGUgaW50ZXJu
+YWwgc3RhdGUgb2YgdGhlCk1JUEkgY29udHJvbGxlci4KClNpZ25lZC1vZmYtYnk6IEpvaG4gS2Vl
+cGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpPbiBUaHUsIDIgTWFyIDIwMTcgMTM6NTY6NDYg
+LTA4MDAsIEJyaWFuIE5vcnJpcyB3cm90ZToKPiBPbiBGcmksIEZlYiAyNCwgMjAxNyBhdCAxMjo1
+NTowNlBNICswMDAwLCBKb2huIEtlZXBpbmcgd3JvdGU6Cj4gPiArCS8qCj4gPiArCSAqIE5vdGUg
+dGhhdCB0aGUgcmVzZXQgd2FzIG5vdCBkZWZpbmVkIGluIHRoZSBpbml0aWFsIGRldmljZSB0cmVl
+LCBzbwo+ID4gKwkgKiB3ZSBoYXZlIHRvIGJlIHByZXBhcmVkIGZvciBpdCBub3QgYmVpbmcgZm91
+bmQuCj4gPiArCSAqLwo+ID4gKwlhcGJfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldChkZXYs
+ICJhcGIiKTsgIAo+IAo+IERpZCB0aGlzIHJlc2V0IGV2ZXIgZ2V0IGRvY3VtZW50ZWQgaW4gdGhl
+IGRldmljZSB0cmVlIGJpbmRpbmdzPyBJCj4gY291bGRuJ3QgZmluZCBpdC4gUGVyaGFwcyBhIGZv
+bGxvdy11cCBwYXRjaCBpcyBpbiBvcmRlcj8KCkhlcmUncyBhIHBhdGNoIHRvIGRvIHRoYXQuCgog
+Li4uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2Nr
+Y2hpcC50eHQgIHwgNyArKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCgpk
+aWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9j
+a2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0CmluZGV4
+IDE3NTNmMGNjNmZhZC4uMjhkMGI0MzdkM2NkIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50
+eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2No
+aXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0CkBAIC0xMyw4ICsxMywxMyBAQCBSZXF1aXJlZCBw
+cm9wZXJ0aWVzOgogLSBwb3J0czogY29udGFpbiBhIHBvcnQgbm9kZSB3aXRoIGVuZHBvaW50IGRl
+ZmluaXRpb25zIGFzIGRlZmluZWQgaW4gWzJdLgogICBGb3Igdm9wYixzZXQgdGhlIHJlZyA9IDww
+PiBhbmQgc2V0IHRoZSByZWcgPSA8MT4gZm9yIHZvcGwuCiAKK09wdGlvbmFsIHByb3BlcnRpZXM6
+CistIHJlc2V0czogbGlzdCBvZiBwaGFuZGxlICsgcmVzZXQgc3BlY2lmaWVyIHBhaXJzLCBhcyBk
+ZXNjcmliZWQgaW4gWzNdLgorLSByZXNldC1uYW1lczogc3RyaW5nIHJlc2V0IG5hbWUsIG11c3Qg
+YmUgImFwYiIuCisKIFsxXSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2sv
+Y2xvY2stYmluZGluZ3MudHh0CiBbMl0gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0CitbM10gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL3Jlc2V0L3Jlc2V0LnR4dAogCiBFeGFtcGxlOgogCW1pcGlfZHNpOiBtaXBpQGZm
+OTYwMDAwIHsKQEAgLTI1LDYgKzMwLDggQEAgRXhhbXBsZToKIAkJaW50ZXJydXB0cyA9IDxHSUNf
+U1BJIDgzIElSUV9UWVBFX0xFVkVMX0hJR0g+OwogCQljbG9ja3MgPSA8JmNydSBTQ0xLX01JUElf
+MjRNPiwgPCZjcnUgUENMS19NSVBJX0RTSTA+OwogCQljbG9jay1uYW1lcyA9ICJyZWYiLCAicGNs
+ayI7CisJCXJlc2V0cyA9IDwmY3J1IFNSU1RfTUlQSURTSTA+OworCQlyZXNldC1uYW1lcyA9ICJh
+cGIiOwogCQlyb2NrY2hpcCxncmYgPSA8JmdyZj47CiAJCXN0YXR1cyA9ICJva2F5IjsKIAotLSAK
+Mi4xMi4wLnJjMi4yMzAuZ2EyOGVkYzA3Y2QuZGlydHkKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
