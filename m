@@ -1,69 +1,51 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v6 4/4] drm/rockchip: Implement CRC debugfs API
-Date: Fri,  3 Mar 2017 14:39:36 +0100
-Message-ID: <20170303133936.14964-5-tomeu.vizoso@collabora.com>
-References: <20170303133936.14964-1-tomeu.vizoso@collabora.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset property
+Date: Fri, 3 Mar 2017 12:41:49 -0800
+Message-ID: <20170303204148.GA78598@google.com>
+References: <20170224125506.21533-1-john@metanate.com>
+ <20170224125506.21533-24-john@metanate.com>
+ <20170302215643.GA49163@google.com>
+ <20170303113945.3bd2cbd9.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170303133936.14964-1-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Emil Velikov <emil.l.velikov@gmail.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170303113945.3bd2cbd9.john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SW1wbGVtZW50IHRoZSAuc2V0X2NyY19zb3VyY2UoKSBjYWxsYmFjayBhbmQgY2FsbCB0aGUgRFAg
-aGVscGVycwphY2NvcmRpbmdseSB0byBzdGFydCBhbmQgc3RvcCBDUkMgY2FwdHVyZS4KClRoaXMg
-aXMgb25seSBkb25lIGlmIHRoaXMgQ1JUQyBpcyBjdXJyZW50bHkgdXNpbmcgdGhlIGVEUCBjb25u
-ZWN0b3IuCgp2MzogUmVtb3ZlIHN1cGVyZmx1b3VzIGNoZWNrIG9uIHJvY2tjaGlwX2NydGNfc3Rh
-dGUtPm91dHB1dF90eXBlCgp2NjogUmVtb3ZlIHN1cGVyZmx1b3VzIHZhcmlhYmxlCgpTaWduZWQt
-b2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgotLS0KCiBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNDEgKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCspCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggOTRkN2I3
-MzI3ZmY3Li4xN2FiMTZjNGI5MjIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwpAQCAtMTksNiArMTksNyBAQAogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19o
-ZWxwZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2ZsaXBfd29yay5oPgogI2luY2x1ZGUgPGRybS9k
-cm1fcGxhbmVfaGVscGVyLmg+CisjaW5jbHVkZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgog
-CiAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+CiAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+CkBA
-IC0xMTExLDYgKzExMTIsNDUgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZGVzdHJveV9zdGF0ZShz
-dHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJa2ZyZWUocyk7CiB9CiAKK3N0YXRpYyBzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqdm9wX2dldF9lZHBfY29ubmVjdG9yKHN0cnVjdCB2b3AgKnZvcCkKK3sKKwlz
-dHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRjOworCXN0cnVjdCBkcm1fY29ubmVjdG9y
-ICpjb25uZWN0b3I7CisKKwltdXRleF9sb2NrKCZjcnRjLT5kZXYtPm1vZGVfY29uZmlnLm11dGV4
-KTsKKwlkcm1fZm9yX2VhY2hfY29ubmVjdG9yKGNvbm5lY3RvciwgY3J0Yy0+ZGV2KQorCQlpZiAo
-Y29ubmVjdG9yLT5jb25uZWN0b3JfdHlwZSA9PSBEUk1fTU9ERV9DT05ORUNUT1JfZURQKSB7CisJ
-CQltdXRleF91bmxvY2soJmNydGMtPmRldi0+bW9kZV9jb25maWcubXV0ZXgpOworCQkJcmV0dXJu
-IGNvbm5lY3RvcjsKKwkJfQorCW11dGV4X3VubG9jaygmY3J0Yy0+ZGV2LT5tb2RlX2NvbmZpZy5t
-dXRleCk7CisKKwlyZXR1cm4gTlVMTDsKK30KKworc3RhdGljIGludCB2b3BfY3J0Y19zZXRfY3Jj
-X3NvdXJjZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCisJCQkJICAgY29uc3QgY2hhciAqc291cmNl
-X25hbWUsIHNpemVfdCAqdmFsdWVzX2NudCkKK3sKKwlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3Ao
-Y3J0Yyk7CisJc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKKwlpbnQgcmV0OworCisJ
-Y29ubmVjdG9yID0gdm9wX2dldF9lZHBfY29ubmVjdG9yKHZvcCk7CisJaWYgKCFjb25uZWN0b3Ip
-CisJCXJldHVybiAtRUlOVkFMOworCisJKnZhbHVlc19jbnQgPSAzOworCisJaWYgKHNvdXJjZV9u
-YW1lICYmIHN0cmNtcChzb3VyY2VfbmFtZSwgImF1dG8iKSA9PSAwKQorCQlyZXQgPSBhbmFsb2dp
-eF9kcF9zdGFydF9jcmMoY29ubmVjdG9yKTsKKwllbHNlIGlmICghc291cmNlX25hbWUpCisJCXJl
-dCA9IGFuYWxvZ2l4X2RwX3N0b3BfY3JjKGNvbm5lY3Rvcik7CisJZWxzZQorCQlyZXQgPSAtRUlO
-VkFMOworCisJcmV0dXJuIHJldDsKK30KKwogc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19m
-dW5jcyB2b3BfY3J0Y19mdW5jcyA9IHsKIAkuc2V0X2NvbmZpZyA9IGRybV9hdG9taWNfaGVscGVy
-X3NldF9jb25maWcsCiAJLnBhZ2VfZmxpcCA9IGRybV9hdG9taWNfaGVscGVyX3BhZ2VfZmxpcCwK
-QEAgLTExMjAsNiArMTE2MCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2NydGNfZnVuY3Mg
-dm9wX2NydGNfZnVuY3MgPSB7CiAJLmF0b21pY19kZXN0cm95X3N0YXRlID0gdm9wX2NydGNfZGVz
-dHJveV9zdGF0ZSwKIAkuZW5hYmxlX3ZibGFuayA9IHZvcF9jcnRjX2VuYWJsZV92YmxhbmssCiAJ
-LmRpc2FibGVfdmJsYW5rID0gdm9wX2NydGNfZGlzYWJsZV92YmxhbmssCisJLnNldF9jcmNfc291
-cmNlID0gdm9wX2NydGNfc2V0X2NyY19zb3VyY2UsCiB9OwogCiBzdGF0aWMgdm9pZCB2b3BfZmJf
-dW5yZWZfd29ya2VyKHN0cnVjdCBkcm1fZmxpcF93b3JrICp3b3JrLCB2b2lkICp2YWwpCi0tIAoy
-LjkuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Fri, Mar 03, 2017 at 11:39:45AM +0000, John Keeping wrote:
+> This reset is required in order to fully reset the internal state of the
+> MIPI controller.
+> 
+> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> ---
+> On Thu, 2 Mar 2017 13:56:46 -0800, Brian Norris wrote:
+> > On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:
+> > > +	/*
+> > > +	 * Note that the reset was not defined in the initial device tree, so
+> > > +	 * we have to be prepared for it not being found.
+> > > +	 */
+> > > +	apb_rst = devm_reset_control_get(dev, "apb");  
+> > 
+> > Did this reset ever get documented in the device tree bindings? I
+> > couldn't find it. Perhaps a follow-up patch is in order?
+> 
+> Here's a patch to do that.
+
+FWIW:
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Thanks.
