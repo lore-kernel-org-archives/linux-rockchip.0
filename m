@@ -1,90 +1,46 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v4 23/23] drm/rockchip: dw-mipi-dsi: add reset control
-Date: Thu, 2 Mar 2017 13:59:26 -0800
-Message-ID: <20170302215925.GA49518@google.com>
-References: <20170224125506.21533-1-john@metanate.com>
- <20170224125506.21533-24-john@metanate.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 1/2] dt-bindings: Add INNOLUX P079ZCA panel bindings
+Date: Fri,  3 Mar 2017 09:01:48 +0800
+Message-ID: <1488502909-22160-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20170224125506.21533-24-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Oh, one more thing:
-
-On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:
-
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> index 0c4bae711e84..30da75667334 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> @@ -13,6 +13,7 @@
->  #include <linux/module.h>
->  #include <linux/of_device.h>
->  #include <linux/regmap.h>
-> +#include <linux/reset.h>
->  #include <linux/mfd/syscon.h>
->  #include <drm/drm_atomic_helper.h>
->  #include <drm/drm_crtc.h>
-> @@ -1144,6 +1145,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
->  			of_match_device(dw_mipi_dsi_dt_ids, dev);
->  	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
->  	struct platform_device *pdev = to_platform_device(dev);
-> +	struct reset_control *apb_rst;
->  	struct drm_device *drm = data;
->  	struct dw_mipi_dsi *dsi;
->  	struct resource *res;
-> @@ -1182,6 +1184,35 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
->  		return ret;
->  	}
->  
-> +	/*
-> +	 * Note that the reset was not defined in the initial device tree, so
-> +	 * we have to be prepared for it not being found.
-> +	 */
-> +	apb_rst = devm_reset_control_get(dev, "apb");
-> +	if (IS_ERR(apb_rst)) {
-> +		ret = PTR_ERR(apb_rst);
-> +		if (ret == -ENOENT) {
-> +			apb_rst = NULL;
-> +		} else {
-> +			dev_err(dev, "Unable to get reset control: %d\n", ret);
-
-Might want to check for -EPROBE_DEFER before printing an error?
-
-Brian
-
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	if (apb_rst) {
-> +		ret = clk_prepare_enable(dsi->pclk);
-> +		if (ret) {
-> +			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
-> +			return ret;
-> +		}
-> +
-> +		reset_control_assert(apb_rst);
-> +		usleep_range(10, 20);
-> +		reset_control_deassert(apb_rst);
-> +
-> +		clk_disable_unprepare(dsi->pclk);
-> +	}
-> +
->  	ret = clk_prepare_enable(dsi->pllref_clk);
->  	if (ret) {
->  		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
+VGhlIElubm9sdXggUDA3OVpDQSBpcyBhIDcuODUiIHBhbmVsIHdpdGggYSA3NjhYMTAyNCByZXNv
+bHV0aW9uIGFuZApjb25uZWN0ZWQgdG8gRFNJIHVzaW5nIGZvdXIgbGFuZXMuCgpTaWduZWQtb2Zm
+LWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgotLS0KCiAuLi4vYmluZGluZ3Mv
+ZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0ICAgICB8IDIyICsrKysrKysrKysrKysr
+KysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyMiBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvaW5u
+b2x1eCxwMDc5emNhLnR4dAoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3BhbmVsL2lubm9sdXgscDA3OXpjYS50eHQgYi9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0Cm5l
+dyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAuLmM0MGM4ZTQKLS0tIC9kZXYvbnVsbAor
+KysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9pbm5v
+bHV4LHAwNzl6Y2EudHh0CkBAIC0wLDAgKzEsMjIgQEAKK0lubm9sdXggUDA3OVpDQSA3Ljg1IiA3
+Njh4MTAyNCBURlQgTENEIHBhbmVsCisKK1JlcXVpcmVkIHByb3BlcnRpZXM6CistIGNvbXBhdGli
+bGU6IHNob3VsZCBiZSAiaW5ub2x1eCxwMDc5emNhIgorLSBwb3dlci1zdXBwbHk6IHBoYW5kbGUg
+b2YgdGhlIHJlZ3VsYXRvciB0aGF0IHByb3ZpZGVzIHRoZSBzdXBwbHkgdm9sdGFnZQorLSBlbmFi
+bGUtZ3Bpb3M6IHBhbmVsIGVuYWJsZSBncGlvCisKK09wdGlvbmFsIHByb3BlcnRpZXM6CistIGJh
+Y2tsaWdodDogcGhhbmRsZSBvZiB0aGUgYmFja2xpZ2h0IGRldmljZSBhdHRhY2hlZCB0byB0aGUg
+cGFuZWwKKworRXhhbXBsZToKKworCSZtaXBpX2RzaSB7CisJCXBhbmVsIHsKKwkJCWNvbXBhdGli
+bGUgPSAiaW5ub2x1eCxwMDc5emNhIjsKKwkJCXJlZyA9IDwwPjsKKwkJCXBvd2VyLXN1cHBseSA9
+IDwuLi4+OworCQkJYmFja2xpZ2h0ID0gPCZiYWNrbGlnaHQ+OworCQkJZW5hYmxlLWdwaW9zID0g
+PCZncGlvMSAxMyBHUElPX0FDVElWRV9ISUdIPjsKKwkJCXN0YXR1cyA9ICJva2F5IjsKKwkJfTsK
+Kwl9OwotLSAKMi42LjMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
