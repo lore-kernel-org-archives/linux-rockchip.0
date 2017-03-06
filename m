@@ -1,14 +1,15 @@
-From: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 3/3] phy: rockchip-inno-usb2: add support of usb2-phy for
- rk3328
-Date: Mon,  6 Mar 2017 09:29:38 +0800
-Message-ID: <1488763778-27499-4-git-send-email-daniel.meng@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 1/3] dt-bindings: phy: add assign clock property in
+ usb2-phy node
+Date: Mon, 06 Mar 2017 04:57:33 +0100
+Message-ID: <2785163.Wy8s86NOKN@diego>
 References: <1488763778-27499-1-git-send-email-daniel.meng@rock-chips.com>
+ <1488763778-27499-2-git-send-email-daniel.meng@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1488763778-27499-1-git-send-email-daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1488763778-27499-2-git-send-email-daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,84 +19,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add usb2-phy config information in the data of match table for
-rk3328.
+Hi Daniel,
 
-Changes in v2:
- - add support of otg port
-Changes in v3:
- - remove tuning function and id pin configs
+Am Montag, 6. M=E4rz 2017, 09:29:36 CET schrieb Meng Dongyang:
+> On some platform such as RK3328, the 480m clock may need to assign
+> clock parent in dts in stead of clock driver. So this patch add
+> property of assigned-clocks and assigned-clock-parents to assign
+> parent for 480m clock.
+> =
 
-Signed-off-by: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/phy/phy-rockchip-inno-usb2.c | 44 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+> Changes in v2:
+>  - move usb2-phy grf specification to grf.txt
+> Changes in v3: None
+> =
 
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index 4ea95c2..257c5d9 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -1141,6 +1141,49 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+static const struct rockchip_usb2phy_cfg rk3328_phy_cfgs[] = {
-+	{
-+		.reg = 0x100,
-+		.num_ports	= 2,
-+		.clkout_ctl	= { 0x108, 4, 4, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_OTG] = {
-+				.phy_sus	= { 0x0100, 15, 0, 0, 0x1d1 },
-+				.bvalid_det_en	= { 0x0110, 2, 2, 0, 1 },
-+				.bvalid_det_st	= { 0x0114, 2, 2, 0, 1 },
-+				.bvalid_det_clr = { 0x0118, 2, 2, 0, 1 },
-+				.ls_det_en	= { 0x0110, 0, 0, 0, 1 },
-+				.ls_det_st	= { 0x0114, 0, 0, 0, 1 },
-+				.ls_det_clr	= { 0x0118, 0, 0, 0, 1 },
-+				.utmi_avalid	= { 0x0120, 10, 10, 0, 1 },
-+				.utmi_bvalid	= { 0x0120, 9, 9, 0, 1 },
-+				.utmi_ls	= { 0x0120, 5, 4, 0, 1 },
-+			},
-+			[USB2PHY_PORT_HOST] = {
-+				.phy_sus	= { 0x104, 15, 0, 0, 0x1d1 },
-+				.ls_det_en	= { 0x110, 1, 1, 0, 1 },
-+				.ls_det_st	= { 0x114, 1, 1, 0, 1 },
-+				.ls_det_clr	= { 0x118, 1, 1, 0, 1 },
-+				.utmi_ls	= { 0x120, 17, 16, 0, 1 },
-+				.utmi_hstdet	= { 0x120, 19, 19, 0, 1 }
-+			}
-+		},
-+		.chg_det = {
-+			.opmode		= { 0x0100, 3, 0, 5, 1 },
-+			.cp_det		= { 0x0120, 24, 24, 0, 1 },
-+			.dcp_det	= { 0x0120, 23, 23, 0, 1 },
-+			.dp_det		= { 0x0120, 25, 25, 0, 1 },
-+			.idm_sink_en	= { 0x0108, 8, 8, 0, 1 },
-+			.idp_sink_en	= { 0x0108, 7, 7, 0, 1 },
-+			.idp_src_en	= { 0x0108, 9, 9, 0, 1 },
-+			.rdm_pdwn_en	= { 0x0108, 10, 10, 0, 1 },
-+			.vdm_src_en	= { 0x0108, 12, 12, 0, 1 },
-+			.vdp_src_en	= { 0x0108, 11, 11, 0, 1 },
-+		},
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_usb2phy_cfg rk3366_phy_cfgs[] = {
- 	{
- 		.reg = 0x700,
-@@ -1223,6 +1266,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- };
- 
- static const struct of_device_id rockchip_usb2phy_dt_match[] = {
-+	{ .compatible = "rockchip,rk3328-usb2phy", .data = &rk3328_phy_cfgs },
- 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
- 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
- 	{}
--- 
-1.9.1
+> Signed-off-by: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+please carry over received Acks in the future. This patch already got
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+and you can add my
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
