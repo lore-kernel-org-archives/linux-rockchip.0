@@ -1,36 +1,47 @@
-From: Jiri Kosina <jikos@kernel.org>
-Subject: Re: [PATCH v5 1/2] devicetree: i2c-hid: Add regulator support
-Date: Mon, 6 Mar 2017 13:50:18 +0100 (CET)
-Message-ID: <alpine.LSU.2.20.1703061349090.31814@cbobk.fhfr.pm>
-References: <20170210020357.10679-1-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <20170210020357.10679-1-briannorris@chromium.org>
-Sender: linux-input-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Doug Anderson <dianders@chromium.org>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v2 0/4] mmc: pwrseq: post_ios power sequence
+Date: Mon,  6 Mar 2017 15:17:12 +0100
+Message-ID: <20170306141716.19120-1-romain.perier@collabora.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Romain Perier <romain.perier@collabora.com>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 9 Feb 2017, Brian Norris wrote:
+Some devices, like WiFi chipsets AP6335 require a specific power-up
+sequence ordering before being used. You must enable the vqmmc power supply
+and wait until it reaches its minimum voltage, gate the clock and wait
+at least two cycles and then assert the reset line.
 
-> From: Caesar Wang <wxt@rock-chips.com>
-> 
-> Document a "vdd-supply" and an initialization delay. Can be used for
-> powering on/off a HID.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Jiri Kosina <jikos@kernel.org>
-> Cc: linux-input@vger.kernel.org
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> Sorry for the delay on resending this. I *think* I've addressed all the
-> concerns from last time though?
+See DS 1/
 
-Both patches applied to for-4.12/i2c-hid. Thanks,
+Currently, there is no generic manner for doing this with pwrseq_simple.
+This set of patches proposes an approach to support this use case.
+
+It is related to the old patch 2/
+
+1. http://www.t-firefly.com/download/firefly-rk3288/hardware/AP6335%20datasheet_V1.3_02102014.pdf
+2. http://lists.infradead.org/pipermail/linux-arm-kernel/2017-March/490681.html
+
+Changes in v2:
+- Added missing power_off function in operations for post_ios
+- Fixed warning found by 0day-ci about missing
+  mmc_pwrseq_post_ios_power_on when CONFIG_OF is disabled.
+
+Romain Perier (4):
+  mmc: core: Add post_ios_power_on callback for power sequences
+  mmc: pwrseq-simple: Add optional op. for post_ios_power_on callback
+  mmc: pwrseq_simple: Add an optional pre-power-on-delay
+  arm: dts: rockchip: Enable post_ios_power_on and pre-power-on-delay-ms
+
+ .../devicetree/bindings/mmc/mmc-pwrseq-simple.txt  |  2 ++
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  2 ++
+ drivers/mmc/core/core.c                            |  1 +
+ drivers/mmc/core/pwrseq.c                          |  8 ++++++++
+ drivers/mmc/core/pwrseq.h                          |  3 +++
+ drivers/mmc/core/pwrseq_simple.c                   | 22 +++++++++++++++++++++-
+ 6 files changed, 37 insertions(+), 1 deletion(-)
 
 -- 
-Jiri Kosina
-SUSE Labs
+2.9.3
 
