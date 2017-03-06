@@ -1,76 +1,45 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v6 4/4] drm/rockchip: Implement CRC debugfs API
-Date: Mon, 6 Mar 2017 08:55:27 +0800
-Message-ID: <58BCB37F.50108@rock-chips.com>
-References: <20170303133936.14964-1-tomeu.vizoso@collabora.com>
- <20170303133936.14964-5-tomeu.vizoso@collabora.com>
+From: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/3] add support of usb2-phy for rk3328
+Date: Mon,  6 Mar 2017 09:29:35 +0800
+Message-ID: <1488763778-27499-1-git-send-email-daniel.meng@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170303133936.14964-5-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
-Cc: Emil Velikov <emil.l.velikov@gmail.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, intel-gfx-trybot@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDAz5pyIMDPml6UgMjE6MzksIFRvbWV1IFZpem9zbyB3cm90ZToKPiBJbXBsZW1l
-bnQgdGhlIC5zZXRfY3JjX3NvdXJjZSgpIGNhbGxiYWNrIGFuZCBjYWxsIHRoZSBEUCBoZWxwZXJz
-Cj4gYWNjb3JkaW5nbHkgdG8gc3RhcnQgYW5kIHN0b3AgQ1JDIGNhcHR1cmUuCj4KPiBUaGlzIGlz
-IG9ubHkgZG9uZSBpZiB0aGlzIENSVEMgaXMgY3VycmVudGx5IHVzaW5nIHRoZSBlRFAgY29ubmVj
-dG9yLgo+Cj4gdjM6IFJlbW92ZSBzdXBlcmZsdW91cyBjaGVjayBvbiByb2NrY2hpcF9jcnRjX3N0
-YXRlLT5vdXRwdXRfdHlwZQo+Cj4gdjY6IFJlbW92ZSBzdXBlcmZsdW91cyB2YXJpYWJsZQo+Cj4g
-U2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4K
-PiAtLS0KCmxvb2tzIGdvb2QgZm9yIG1lCgpBY2tlZC1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJv
-Y2stY2hpcHMuY29tPgoKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMgfCA0MSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAgMSBmaWxlIGNoYW5n
-ZWQsIDQxIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwo+IGluZGV4IDk0ZDdiNzMyN2ZmNy4uMTdhYjE2YzRiOTIyIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTE5LDYg
-KzE5LDcgQEAKPiAgICNpbmNsdWRlIDxkcm0vZHJtX2NydGNfaGVscGVyLmg+Cj4gICAjaW5jbHVk
-ZSA8ZHJtL2RybV9mbGlwX3dvcmsuaD4KPiAgICNpbmNsdWRlIDxkcm0vZHJtX3BsYW5lX2hlbHBl
-ci5oPgo+ICsjaW5jbHVkZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgo+ICAgCj4gICAjaW5j
-bHVkZSA8bGludXgva2VybmVsLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gQEAg
-LTExMTEsNiArMTExMiw0NSBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19kZXN0cm95X3N0YXRlKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAlrZnJlZShzKTsKPiAgIH0KPiAgIAo+ICtzdGF0aWMg
-c3RydWN0IGRybV9jb25uZWN0b3IgKnZvcF9nZXRfZWRwX2Nvbm5lY3RvcihzdHJ1Y3Qgdm9wICp2
-b3ApCj4gK3sKPiArCXN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9ICZ2b3AtPmNydGM7Cj4gKwlzdHJ1
-Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOwo+ICsKPiArCW11dGV4X2xvY2soJmNydGMtPmRl
-di0+bW9kZV9jb25maWcubXV0ZXgpOwo+ICsJZHJtX2Zvcl9lYWNoX2Nvbm5lY3Rvcihjb25uZWN0
-b3IsIGNydGMtPmRldikKPiArCQlpZiAoY29ubmVjdG9yLT5jb25uZWN0b3JfdHlwZSA9PSBEUk1f
-TU9ERV9DT05ORUNUT1JfZURQKSB7Cj4gKwkJCW11dGV4X3VubG9jaygmY3J0Yy0+ZGV2LT5tb2Rl
-X2NvbmZpZy5tdXRleCk7Cj4gKwkJCXJldHVybiBjb25uZWN0b3I7Cj4gKwkJfQo+ICsJbXV0ZXhf
-dW5sb2NrKCZjcnRjLT5kZXYtPm1vZGVfY29uZmlnLm11dGV4KTsKPiArCj4gKwlyZXR1cm4gTlVM
-TDsKPiArfQo+ICsKPiArc3RhdGljIGludCB2b3BfY3J0Y19zZXRfY3JjX3NvdXJjZShzdHJ1Y3Qg
-ZHJtX2NydGMgKmNydGMsCj4gKwkJCQkgICBjb25zdCBjaGFyICpzb3VyY2VfbmFtZSwgc2l6ZV90
-ICp2YWx1ZXNfY250KQo+ICt7Cj4gKwlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7Cj4g
-KwlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOwo+ICsJaW50IHJldDsKPiArCj4gKwlj
-b25uZWN0b3IgPSB2b3BfZ2V0X2VkcF9jb25uZWN0b3Iodm9wKTsKPiArCWlmICghY29ubmVjdG9y
-KQo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsKPiArCSp2YWx1ZXNfY250ID0gMzsKPiArCj4gKwlp
-ZiAoc291cmNlX25hbWUgJiYgc3RyY21wKHNvdXJjZV9uYW1lLCAiYXV0byIpID09IDApCj4gKwkJ
-cmV0ID0gYW5hbG9naXhfZHBfc3RhcnRfY3JjKGNvbm5lY3Rvcik7Cj4gKwllbHNlIGlmICghc291
-cmNlX25hbWUpCj4gKwkJcmV0ID0gYW5hbG9naXhfZHBfc3RvcF9jcmMoY29ubmVjdG9yKTsKPiAr
-CWVsc2UKPiArCQlyZXQgPSAtRUlOVkFMOwo+ICsKPiArCXJldHVybiByZXQ7Cj4gK30KPiArCj4g
-ICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9jcnRjX2Z1bmNzID0gewo+
-ICAgCS5zZXRfY29uZmlnID0gZHJtX2F0b21pY19oZWxwZXJfc2V0X2NvbmZpZywKPiAgIAkucGFn
-ZV9mbGlwID0gZHJtX2F0b21pY19oZWxwZXJfcGFnZV9mbGlwLAo+IEBAIC0xMTIwLDYgKzExNjAs
-NyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIHZvcF9jcnRjX2Z1bmNzID0g
-ewo+ICAgCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IHZvcF9jcnRjX2Rlc3Ryb3lfc3RhdGUsCj4g
-ICAJLmVuYWJsZV92YmxhbmsgPSB2b3BfY3J0Y19lbmFibGVfdmJsYW5rLAo+ICAgCS5kaXNhYmxl
-X3ZibGFuayA9IHZvcF9jcnRjX2Rpc2FibGVfdmJsYW5rLAo+ICsJLnNldF9jcmNfc291cmNlID0g
-dm9wX2NydGNfc2V0X2NyY19zb3VyY2UsCj4gICB9Owo+ICAgCj4gICBzdGF0aWMgdm9pZCB2b3Bf
-ZmJfdW5yZWZfd29ya2VyKHN0cnVjdCBkcm1fZmxpcF93b3JrICp3b3JrLCB2b2lkICp2YWwpCgoK
-LS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+The config information of RK3328 about address and port property
+is different from other platform. So adds config information in the
+data of match table and the device tree bindings description for
+usb2-phy.
+
+Changes in v2:
+ - move usb2-phy grf specification to .../devicetree/bindings/soc/rockchip/grf.txt
+ - add otg port config information of rk3328
+Changes in v3:
+ - remove tuning function and id pin configs
+ - delete example of usb2-phy grf in grf.txt
+
+Meng Dongyang (3):
+  dt-bindings: phy: add assign clock property in usb2-phy node
+  dt-bindings: phy: add DT bindings for usb2-phy grf
+  phy: rockchip-inno-usb2: add support of usb2-phy for rk3328
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |  6 +++
+ .../devicetree/bindings/soc/rockchip/grf.txt       |  4 ++
+ drivers/phy/phy-rockchip-inno-usb2.c               | 44 ++++++++++++++++++++++
+ 3 files changed, 54 insertions(+)
+
+-- 
+1.9.1
