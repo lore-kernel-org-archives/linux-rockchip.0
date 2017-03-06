@@ -1,15 +1,14 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 3/3] phy: rockchip-inno-usb2: add support of usb2-phy
- for rk3328
-Date: Mon, 06 Mar 2017 05:21:28 +0100
-Message-ID: <1658444.PfTs9q7449@diego>
-References: <1488763778-27499-1-git-send-email-daniel.meng@rock-chips.com>
- <1488763778-27499-4-git-send-email-daniel.meng@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: rockchip: Enable 192khz in hw_params operation" to the
+ asoc tree
+Date: Mon, 06 Mar 2017 11:46:36 +0100
+Message-ID: <E1ckqA0-0002S8-LP@finisterre>
+References: <20170224160104.29354-5-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1488763778-27499-4-git-send-email-daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20170224160104.29354-5-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,99 +18,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 6. M=E4rz 2017, 09:29:38 CET schrieb Meng Dongyang:
-> Add usb2-phy config information in the data of match table for
-> rk3328.
-> =
+The patch
 
-> Changes in v2:
->  - add support of otg port
-> Changes in v3:
->  - remove tuning function and id pin configs
-> =
+   ASoC: rockchip: Enable 192khz in hw_params operation
 
-> Signed-off-by: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+has been applied to the asoc tree at
 
-I didn't double check every individual register value, but overall this loo=
-ks =
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-correct, so
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> ---
->  drivers/phy/phy-rockchip-inno-usb2.c | 44
-> ++++++++++++++++++++++++++++++++++++ 1 file changed, 44 insertions(+)
-> =
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c
-> b/drivers/phy/phy-rockchip-inno-usb2.c index 4ea95c2..257c5d9 100644
-> --- a/drivers/phy/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
-> @@ -1141,6 +1141,49 @@ static int rockchip_usb2phy_probe(struct
-> platform_device *pdev) return ret;
->  }
-> =
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-> +static const struct rockchip_usb2phy_cfg rk3328_phy_cfgs[] =3D {
-> +	{
-> +		.reg =3D 0x100,
-> +		.num_ports	=3D 2,
-> +		.clkout_ctl	=3D { 0x108, 4, 4, 1, 0 },
-> +		.port_cfgs	=3D {
-> +			[USB2PHY_PORT_OTG] =3D {
-> +				.phy_sus	=3D { 0x0100, 15, 0, 0, 0x1d1 },
-> +				.bvalid_det_en	=3D { 0x0110, 2, 2, 0, 1 },
-> +				.bvalid_det_st	=3D { 0x0114, 2, 2, 0, 1 },
-> +				.bvalid_det_clr =3D { 0x0118, 2, 2, 0, 1 },
-> +				.ls_det_en	=3D { 0x0110, 0, 0, 0, 1 },
-> +				.ls_det_st	=3D { 0x0114, 0, 0, 0, 1 },
-> +				.ls_det_clr	=3D { 0x0118, 0, 0, 0, 1 },
-> +				.utmi_avalid	=3D { 0x0120, 10, 10, 0, 1 },
-> +				.utmi_bvalid	=3D { 0x0120, 9, 9, 0, 1 },
-> +				.utmi_ls	=3D { 0x0120, 5, 4, 0, 1 },
-> +			},
-> +			[USB2PHY_PORT_HOST] =3D {
-> +				.phy_sus	=3D { 0x104, 15, 0, 0, 0x1d1 },
-> +				.ls_det_en	=3D { 0x110, 1, 1, 0, 1 },
-> +				.ls_det_st	=3D { 0x114, 1, 1, 0, 1 },
-> +				.ls_det_clr	=3D { 0x118, 1, 1, 0, 1 },
-> +				.utmi_ls	=3D { 0x120, 17, 16, 0, 1 },
-> +				.utmi_hstdet	=3D { 0x120, 19, 19, 0, 1 }
-> +			}
-> +		},
-> +		.chg_det =3D {
-> +			.opmode		=3D { 0x0100, 3, 0, 5, 1 },
-> +			.cp_det		=3D { 0x0120, 24, 24, 0, 1 },
-> +			.dcp_det	=3D { 0x0120, 23, 23, 0, 1 },
-> +			.dp_det		=3D { 0x0120, 25, 25, 0, 1 },
-> +			.idm_sink_en	=3D { 0x0108, 8, 8, 0, 1 },
-> +			.idp_sink_en	=3D { 0x0108, 7, 7, 0, 1 },
-> +			.idp_src_en	=3D { 0x0108, 9, 9, 0, 1 },
-> +			.rdm_pdwn_en	=3D { 0x0108, 10, 10, 0, 1 },
-> +			.vdm_src_en	=3D { 0x0108, 12, 12, 0, 1 },
-> +			.vdp_src_en	=3D { 0x0108, 11, 11, 0, 1 },
-> +		},
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +
->  static const struct rockchip_usb2phy_cfg rk3366_phy_cfgs[] =3D {
->  	{
->  		.reg =3D 0x700,
-> @@ -1223,6 +1266,7 @@ static int rockchip_usb2phy_probe(struct
-> platform_device *pdev) };
-> =
+Thanks,
+Mark
 
->  static const struct of_device_id rockchip_usb2phy_dt_match[] =3D {
-> +	{ .compatible =3D "rockchip,rk3328-usb2phy", .data =3D &rk3328_phy_cfgs=
- },
->  	{ .compatible =3D "rockchip,rk3366-usb2phy", .data =3D &rk3366_phy_cfgs=
- },
->  	{ .compatible =3D "rockchip,rk3399-usb2phy", .data =3D &rk3399_phy_cfgs=
- },
->  	{}
+From 89433a284d2cc07ca07d4fa414485aa241fc98e2 Mon Sep 17 00:00:00 2001
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Date: Wed, 1 Mar 2017 10:11:07 +0100
+Subject: [PATCH] ASoC: rockchip: Enable 192khz in hw_params operation
+
+As the sampling frequency is supported by es8328 in slave mode,
+add support for it in the corresponding operation.
+
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ sound/soc/rockchip/rk3288_hdmi_analog.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
+index b60abf322ce1..dbc53e48c52c 100644
+--- a/sound/soc/rockchip/rk3288_hdmi_analog.c
++++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
+@@ -93,6 +93,9 @@ static int rk_hw_params(struct snd_pcm_substream *substream,
+ 	case 96000:
+ 		mclk = 12288000;
+ 		break;
++	case 192000:
++		mclk = 24576000;
++		break;
+ 	case 11025:
+ 	case 22050:
+ 	case 44100:
+-- 
+2.11.0
