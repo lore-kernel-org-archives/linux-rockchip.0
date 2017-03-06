@@ -1,41 +1,73 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v2 4/4] arm: dts: rockchip: Enable post_ios_power_on and pre-power-on-delay-ms
-Date: Mon,  6 Mar 2017 15:17:16 +0100
-Message-ID: <20170306141716.19120-5-romain.perier@collabora.com>
-References: <20170306141716.19120-1-romain.perier@collabora.com>
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20170306141716.19120-1-romain.perier@collabora.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Romain Perier <romain.perier@collabora.com>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset property
+Date: Mon, 6 Mar 2017 11:52:12 -0500
+Message-ID: <20170306165212.GC13635@art_vandelay>
+References: <20170224125506.21533-1-john@metanate.com>
+ <20170224125506.21533-24-john@metanate.com>
+ <20170302215643.GA49163@google.com>
+ <20170303113945.3bd2cbd9.john@metanate.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20170303113945.3bd2cbd9.john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This enables the property post_ios_power_on. With this property, the
-driver pwrseq_simple will do its entire power sequence at the end of the
-mmc_power_up() function. The property pre-power-on-delay-ms adds a delay
-of 1ms between the enablement of the clk and the assertion of the reset
-line.
-
-It fixes the power-up sequence for the Wifi chipset AP6335.
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
- arch/arm/boot/dts/rk3288-rock2-square.dts | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index 818c4bf..9bf2991 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -106,6 +106,8 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&wifi_enable>;
- 		reset-gpios = <&gpio4 28 GPIO_ACTIVE_LOW>;
-+		pre-power-on-delay-ms = <1>;
-+		post-ios-power-on;
- 	};
- 
- 	vcc_usb_host: vcc-host-regulator {
--- 
-2.9.3
-
+T24gRnJpLCBNYXIgMDMsIDIwMTcgYXQgMTE6Mzk6NDVBTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IFRoaXMgcmVzZXQgaXMgcmVxdWlyZWQgaW4gb3JkZXIgdG8gZnVsbHkgcmVzZXQgdGhl
+IGludGVybmFsIHN0YXRlIG9mIHRoZQo+IE1JUEkgY29udHJvbGxlci4KPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgoKSSdtIHNvcnJ5IEkgbWlzc2Vk
+IHRoaXMgaW4gbXkgcmV2aWV3LiBBZGRpbmcgUm9iIEhlcnJpbmcgZGlyZWN0bHkgZm9yIGhpcyBh
+Y2suCgpBbHNvLAoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3Jn
+PgoKPiAtLS0KPiBPbiBUaHUsIDIgTWFyIDIwMTcgMTM6NTY6NDYgLTA4MDAsIEJyaWFuIE5vcnJp
+cyB3cm90ZToKPiA+IE9uIEZyaSwgRmViIDI0LCAyMDE3IGF0IDEyOjU1OjA2UE0gKzAwMDAsIEpv
+aG4gS2VlcGluZyB3cm90ZToKPiA+ID4gKwkvKgo+ID4gPiArCSAqIE5vdGUgdGhhdCB0aGUgcmVz
+ZXQgd2FzIG5vdCBkZWZpbmVkIGluIHRoZSBpbml0aWFsIGRldmljZSB0cmVlLCBzbwo+ID4gPiAr
+CSAqIHdlIGhhdmUgdG8gYmUgcHJlcGFyZWQgZm9yIGl0IG5vdCBiZWluZyBmb3VuZC4KPiA+ID4g
+KwkgKi8KPiA+ID4gKwlhcGJfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldChkZXYsICJhcGIi
+KTsgIAo+ID4gCj4gPiBEaWQgdGhpcyByZXNldCBldmVyIGdldCBkb2N1bWVudGVkIGluIHRoZSBk
+ZXZpY2UgdHJlZSBiaW5kaW5ncz8gSQo+ID4gY291bGRuJ3QgZmluZCBpdC4gUGVyaGFwcyBhIGZv
+bGxvdy11cCBwYXRjaCBpcyBpbiBvcmRlcj8KPiAKPiBIZXJlJ3MgYSBwYXRjaCB0byBkbyB0aGF0
+Lgo+IAo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlf
+ZHNpX3JvY2tjaGlwLnR4dCAgfCA3ICsrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0
+aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2Nr
+Y2hpcC50eHQKPiBpbmRleCAxNzUzZjBjYzZmYWQuLjI4ZDBiNDM3ZDNjZCAxMDA2NDQKPiAtLS0g
+YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19t
+aXBpX2RzaV9yb2NrY2hpcC50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKPiBAQCAtMTMs
+OCArMTMsMTMgQEAgUmVxdWlyZWQgcHJvcGVydGllczoKPiAgLSBwb3J0czogY29udGFpbiBhIHBv
+cnQgbm9kZSB3aXRoIGVuZHBvaW50IGRlZmluaXRpb25zIGFzIGRlZmluZWQgaW4gWzJdLgo+ICAg
+IEZvciB2b3BiLHNldCB0aGUgcmVnID0gPDA+IGFuZCBzZXQgdGhlIHJlZyA9IDwxPiBmb3Igdm9w
+bC4KPiAgCj4gK09wdGlvbmFsIHByb3BlcnRpZXM6Cj4gKy0gcmVzZXRzOiBsaXN0IG9mIHBoYW5k
+bGUgKyByZXNldCBzcGVjaWZpZXIgcGFpcnMsIGFzIGRlc2NyaWJlZCBpbiBbM10uCj4gKy0gcmVz
+ZXQtbmFtZXM6IHN0cmluZyByZXNldCBuYW1lLCBtdXN0IGJlICJhcGIiLgo+ICsKPiAgWzFdIERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9jbG9jay1iaW5kaW5ncy50eHQK
+PiAgWzJdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRl
+cmZhY2VzLnR4dAo+ICtbM10gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Jlc2V0
+L3Jlc2V0LnR4dAo+ICAKPiAgRXhhbXBsZToKPiAgCW1pcGlfZHNpOiBtaXBpQGZmOTYwMDAwIHsK
+PiBAQCAtMjUsNiArMzAsOCBAQCBFeGFtcGxlOgo+ICAJCWludGVycnVwdHMgPSA8R0lDX1NQSSA4
+MyBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiAgCQljbG9ja3MgPSA8JmNydSBTQ0xLX01JUElfMjRN
+PiwgPCZjcnUgUENMS19NSVBJX0RTSTA+Owo+ICAJCWNsb2NrLW5hbWVzID0gInJlZiIsICJwY2xr
+IjsKPiArCQlyZXNldHMgPSA8JmNydSBTUlNUX01JUElEU0kwPjsKPiArCQlyZXNldC1uYW1lcyA9
+ICJhcGIiOwo+ICAJCXJvY2tjaGlwLGdyZiA9IDwmZ3JmPjsKPiAgCQlzdGF0dXMgPSAib2theSI7
+Cj4gIAo+IC0tIAo+IDIuMTIuMC5yYzIuMjMwLmdhMjhlZGMwN2NkLmRpcnR5Cj4gCj4gX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
