@@ -1,34 +1,28 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 2/5] clk: rockchip: rk3368: remove the unused id
-Date: Tue,  7 Mar 2017 19:05:16 +0800
-Message-ID: <1488884719-10350-3-git-send-email-zhangqing@rock-chips.com>
-References: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v2 0/5] clk: rockchip: fix up the clk for RK3368 SoC
+Date: Tue,  7 Mar 2017 19:05:14 +0800
+Message-ID: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-remove SCLK_TIMER6 id
+change in V2:
+split clock-id addition and the assignment in the clock-
+driver.
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- include/dt-bindings/clock/rk3368-cru.h | 1 -
- 1 file changed, 1 deletion(-)
+Elaine Zhang (5):
+  clk: rockchip: rk3368: fix up the timer-ids
+  clk: rockchip: rk3368: remove the unused id
+  clk: rockchip: add clock ids for timer10-15 of RK3368 SoCs
+  clk: rockchip: rk3368: export SCLK_TIMERXX id for timers
+  clk: rockchip: rk3368: add some clks as critical
 
-diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
-index 52f86ddac773..2bf23eda8938 100644
---- a/include/dt-bindings/clock/rk3368-cru.h
-+++ b/include/dt-bindings/clock/rk3368-cru.h
-@@ -50,7 +50,6 @@
- #define SCLK_TIMER03		88
- #define SCLK_TIMER04		89
- #define SCLK_TIMER05		90
--#define SCLK_TIMER6		91
- #define SCLK_OTGPHY0		93
- #define SCLK_OTG_ADP		96
- #define SCLK_HSICPHY480M	97
+ drivers/clk/rockchip/clk-rk3368.c      | 27 +++++++++++++++------------
+ include/dt-bindings/clock/rk3368-cru.h | 19 ++++++++++++-------
+ 2 files changed, 27 insertions(+), 19 deletions(-)
+
 -- 
 1.9.1
 
