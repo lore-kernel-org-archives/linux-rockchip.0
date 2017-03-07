@@ -1,102 +1,133 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 1/2] clk: rockchip: rk3368: export SCLK_TIMERXX id for
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 1/2] clk: rockchip: rk3368: export SCLK_TIMERXX id for
  timers
-Date: Tue,  7 Mar 2017 17:50:10 +0800
-Message-ID: <1488880211-21133-1-git-send-email-zhangqing@rock-chips.com>
+Date: Tue, 07 Mar 2017 11:18:24 +0100
+Message-ID: <15674852.NcXVK0sQHA@diego>
+References: <1488880211-21133-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: mark.rutland@arm.com, huangtao@rock-chips.com, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, sboyd@codeaurora.org, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1488880211-21133-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3368.c      | 24 ++++++++++++------------
- include/dt-bindings/clock/rk3368-cru.h | 19 ++++++++++++-------
- 2 files changed, 24 insertions(+), 19 deletions(-)
+Hi Elaine,
 
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 6cb474c593e7..139d418f448e 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -835,18 +835,18 @@ enum rk3368_plls {
- 	GATE(PCLK_PMU, "pclk_pmu", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 0, GFLAGS),
- 
- 	/* timer gates */
--	GATE(0, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 11, GFLAGS),
--	GATE(0, "sclk_timer14", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS),
--	GATE(0, "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 9, GFLAGS),
--	GATE(0, "sclk_timer12", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 8, GFLAGS),
--	GATE(0, "sclk_timer11", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 7, GFLAGS),
--	GATE(0, "sclk_timer10", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6, GFLAGS),
--	GATE(0, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 5, GFLAGS),
--	GATE(0, "sclk_timer04", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS),
--	GATE(0, "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 3, GFLAGS),
--	GATE(0, "sclk_timer02", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 2, GFLAGS),
--	GATE(0, "sclk_timer01", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 1, GFLAGS),
--	GATE(0, "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0, GFLAGS),
-+	GATE(SCLK_TIMER15, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 11, GFLAGS),
-+	GATE(SCLK_TIMER14, "sclk_timer14", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS),
-+	GATE(SCLK_TIMER13, "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 9, GFLAGS),
-+	GATE(SCLK_TIMER12, "sclk_timer12", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 8, GFLAGS),
-+	GATE(SCLK_TIMER11, "sclk_timer11", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 7, GFLAGS),
-+	GATE(SCLK_TIMER10, "sclk_timer10", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6, GFLAGS),
-+	GATE(SCLK_TIMER05, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 5, GFLAGS),
-+	GATE(SCLK_TIMER04, "sclk_timer04", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS),
-+	GATE(SCLK_TIMER03, "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 3, GFLAGS),
-+	GATE(SCLK_TIMER02, "sclk_timer02", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 2, GFLAGS),
-+	GATE(SCLK_TIMER01, "sclk_timer01", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 1, GFLAGS),
-+	GATE(SCLK_TIMER00, "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0, GFLAGS),
- };
- 
- static const char *const rk3368_critical_clocks[] __initconst = {
-diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
-index 9c5dd9ba2f6c..aeb83e581a11 100644
---- a/include/dt-bindings/clock/rk3368-cru.h
-+++ b/include/dt-bindings/clock/rk3368-cru.h
-@@ -44,13 +44,12 @@
- #define SCLK_I2S_8CH		82
- #define SCLK_SPDIF_8CH		83
- #define SCLK_I2S_2CH		84
--#define SCLK_TIMER0		85
--#define SCLK_TIMER1		86
--#define SCLK_TIMER2		87
--#define SCLK_TIMER3		88
--#define SCLK_TIMER4		89
--#define SCLK_TIMER5		90
--#define SCLK_TIMER6		91
-+#define SCLK_TIMER00		85
-+#define SCLK_TIMER01		86
-+#define SCLK_TIMER02		87
-+#define SCLK_TIMER03		88
-+#define SCLK_TIMER04		89
-+#define SCLK_TIMER05		90
- #define SCLK_OTGPHY0		93
- #define SCLK_OTG_ADP		96
- #define SCLK_HSICPHY480M	97
-@@ -82,6 +81,12 @@
- #define SCLK_SFC		126
- #define SCLK_MAC		127
- #define SCLK_MACREF_OUT		128
-+#define SCLK_TIMER10		133
-+#define SCLK_TIMER11		134
-+#define SCLK_TIMER12		135
-+#define SCLK_TIMER13		136
-+#define SCLK_TIMER14		137
-+#define SCLK_TIMER15		138
- 
- #define DCLK_VOP		190
- #define MCLK_CRYPTO		191
--- 
-1.9.1
+Am Dienstag, 7. M=E4rz 2017, 17:50:10 CET schrieb Elaine Zhang:
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/clk/rockchip/clk-rk3368.c      | 24 ++++++++++++------------
+>  include/dt-bindings/clock/rk3368-cru.h | 19 ++++++++++++-------
+
+as always, please split clock-id addition and the assignment in the clock-
+driver.
+
+Also, as it looks like the old timer-ids are wrong and also still unused, =
+
+please also state this in the patch changing the ids.
+
+
+Thanks
+Heiko
+
+>  2 files changed, 24 insertions(+), 19 deletions(-)
+> =
+
+> diff --git a/drivers/clk/rockchip/clk-rk3368.c
+> b/drivers/clk/rockchip/clk-rk3368.c index 6cb474c593e7..139d418f448e 1006=
+44
+> --- a/drivers/clk/rockchip/clk-rk3368.c
+> +++ b/drivers/clk/rockchip/clk-rk3368.c
+> @@ -835,18 +835,18 @@ enum rk3368_plls {
+>  	GATE(PCLK_PMU, "pclk_pmu", "pclk_pd_pmu", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(23), 0, GFLAGS),
+> =
+
+>  	/* timer gates */
+> -	GATE(0, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 11, GFLAGS), -	GATE(0, "sclk_timer14", "xin24m",
+> CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS), -	GATE(0,
+> "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 9,
+> GFLAGS), -	GATE(0, "sclk_timer12", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 8, GFLAGS), -	GATE(0, "sclk_timer11", "xin24m",
+> CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 7, GFLAGS), -	GATE(0,
+> "sclk_timer10", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6,
+> GFLAGS), -	GATE(0, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 5, GFLAGS), -	GATE(0, "sclk_timer04", "xin24m",
+> CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS), -	GATE(0,
+> "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 3,
+> GFLAGS), -	GATE(0, "sclk_timer02", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 2, GFLAGS), -	GATE(0, "sclk_timer01", "xin24m",
+> CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 1, GFLAGS), -	GATE(0,
+> "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0,
+> GFLAGS), +	GATE(SCLK_TIMER15, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 11, GFLAGS), +	GATE(SCLK_TIMER14, "sclk_timer14",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS),
+> +	GATE(SCLK_TIMER13, "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 9, GFLAGS), +	GATE(SCLK_TIMER12, "sclk_timer12",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 8, GFLAGS),
+> +	GATE(SCLK_TIMER11, "sclk_timer11", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 7, GFLAGS), +	GATE(SCLK_TIMER10, "sclk_timer10",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6, GFLAGS),
+> +	GATE(SCLK_TIMER05, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 5, GFLAGS), +	GATE(SCLK_TIMER04, "sclk_timer04",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS),
+> +	GATE(SCLK_TIMER03, "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 3, GFLAGS), +	GATE(SCLK_TIMER02, "sclk_timer02",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 2, GFLAGS),
+> +	GATE(SCLK_TIMER01, "sclk_timer01", "xin24m", CLK_IGNORE_UNUSED,
+> RK3368_CLKGATE_CON(24), 1, GFLAGS), +	GATE(SCLK_TIMER00, "sclk_timer00",
+> "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0, GFLAGS), };
+> =
+
+>  static const char *const rk3368_critical_clocks[] __initconst =3D {
+> diff --git a/include/dt-bindings/clock/rk3368-cru.h
+> b/include/dt-bindings/clock/rk3368-cru.h index 9c5dd9ba2f6c..aeb83e581a11
+> 100644
+> --- a/include/dt-bindings/clock/rk3368-cru.h
+> +++ b/include/dt-bindings/clock/rk3368-cru.h
+> @@ -44,13 +44,12 @@
+>  #define SCLK_I2S_8CH		82
+>  #define SCLK_SPDIF_8CH		83
+>  #define SCLK_I2S_2CH		84
+> -#define SCLK_TIMER0		85
+> -#define SCLK_TIMER1		86
+> -#define SCLK_TIMER2		87
+> -#define SCLK_TIMER3		88
+> -#define SCLK_TIMER4		89
+> -#define SCLK_TIMER5		90
+> -#define SCLK_TIMER6		91
+> +#define SCLK_TIMER00		85
+> +#define SCLK_TIMER01		86
+> +#define SCLK_TIMER02		87
+> +#define SCLK_TIMER03		88
+> +#define SCLK_TIMER04		89
+> +#define SCLK_TIMER05		90
+>  #define SCLK_OTGPHY0		93
+>  #define SCLK_OTG_ADP		96
+>  #define SCLK_HSICPHY480M	97
+> @@ -82,6 +81,12 @@
+>  #define SCLK_SFC		126
+>  #define SCLK_MAC		127
+>  #define SCLK_MACREF_OUT		128
+> +#define SCLK_TIMER10		133
+> +#define SCLK_TIMER11		134
+> +#define SCLK_TIMER12		135
+> +#define SCLK_TIMER13		136
+> +#define SCLK_TIMER14		137
+> +#define SCLK_TIMER15		138
+> =
+
+>  #define DCLK_VOP		190
+>  #define MCLK_CRYPTO		191
