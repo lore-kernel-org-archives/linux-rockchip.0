@@ -1,46 +1,44 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 5/5] clk: rockchip: rk3368: add some clks as critical
-Date: Tue,  7 Mar 2017 19:16:48 +0800
-Message-ID: <1488885408-17169-1-git-send-email-zhangqing@rock-chips.com>
-References: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v3 0/2] rockchip: fix serial output on rk3036
+Date: Tue, 7 Mar 2017 05:54:43 -0800
+Message-ID: <20170307135443.GA25384@codeaurora.org>
+References: <20170301210042.11352-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: mark.rutland@arm.com, huangtao@rock-chips.com, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, sboyd@codeaurora.org, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170301210042.11352-1-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-make pclk_pd_alive, pclk_peri, hclk_peri as critical
+On 03/01, Heiko Stuebner wrote:
+> Recent changes to the 8250-dw variant revealed issues concerning
+> how the clock rates are handled on the rk3036 uart.
+> 
+> For one, there was an error in the clock declaration, but also the
+> shared uart-pll-select-mux also as default got supplied from the apll
+> that also supplies the cpu and thus gets frequency scaled.
+> 
+> The patches in this series remedy this and make the debug uart
+> function again on 4.10 + current merge window.
+> 
+> 
+> As for the merge-path, I've now tested all Rockchip socs I have access
+> to (3036, 3288, 3368, 3399) and didn't find any more clock-related issues
+> with the merge-window as of today. So if no other subtle issue turns up
+> this week, these should be all fixes for the 4.11 cycle.
+> So these 2 patches could be picked up by clock-maintainers directly if
+> so desired, or I can send a pull request after the merge-window closes
+> and we're save to say that nothing else broke.
+> 
+> changes in v3:
+> - use a direct register write, instead of using clock apis
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3368.c | 3 +++
- 1 file changed, 3 insertions(+)
+Great. I'm happy to merge this into clk-fixes now (and I will do
+it now unless you have some need to send a pull request).
 
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 139d418f448e..024762d3214d 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -858,6 +858,9 @@ enum rk3368_plls {
- 	 */
- 	"pclk_pwm1",
- 	"pclk_pd_pmu",
-+	"pclk_pd_alive",
-+	"pclk_peri",
-+	"hclk_peri",
- };
- 
- static void __init rk3368_clk_init(struct device_node *np)
 -- 
-1.9.1
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
