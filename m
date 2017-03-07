@@ -1,93 +1,148 @@
-From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove wrongly added idle states on
- rk3368
-Date: Tue, 7 Mar 2017 15:20:28 +0800
-Message-ID: <9e79905e-8dff-2980-ab8d-9cfd880275c0@rock-chips.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: remove wrongly added idle states
+ on rk3368
+Date: Tue, 7 Mar 2017 08:36:12 +0000
+Message-ID: <20170307083612.GA27165@red-moon>
 References: <20170301223849.13401-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170301223849.13401-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20170301223849.13401-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa286CgpPbiAyMDE35bm0MDPmnIgwMuaXpSAwNjozOCwgSGVpa28gU3R1ZWJuZXIgd3Jv
-dGU6Cj4gQXMgcmVwb3J0ZWQgYnkgTG9yZW56bywgdGhlIHJlc2lkZW5jeS9sYXRlbmN5IHZhbHVl
-cyBkZWZpbmVkIGluIHRoZQo+IGlkbGUtc3RhdGUgZm9yIHJrMzM2OCAibWFrZSBubyBzZW5zZSIu
-IFdoZW4gaW50cm9kdWNpbmcgdGhlbSBJCj4gc2ltcGx5IHRvb2sgdGhlIGlkbGUtc3RhdGUgbm9k
-ZSBmcm9tIHRoZSB2ZW5kb3Iga2VybmVsIGluIGVycm9yCj4gYXMgSSBkaWRuJ3QgbG9vayB1cCBp
-ZiB0aGVzZSB2YWx1ZXMgd2VyZSBzYW5lIGluIHRoZSBmaXJzdCBwbGFjZS4KPgo+IFRhbGtpbmcg
-dG8gcGVvcGxlIGFuZCBkZXRlcm1pbmluZyB3aHkgdGhleSB3ZXJlIHVzZWQgaW4gdGhpcyB3YXkK
-PiBzaG93ZWQgdGhhdCBpdCB3YXMgbWVhbnQgdG8gbWFrZSBzdXJlIHRoZSBjcHVfc3VzcGVuZCBj
-YWxsYmFjawo+IGdvdCBpbml0aWFsaXplZCB3aGljaCBhdCB0aGUgMy4xMCB0aW1lIHdhcyBzb21l
-aG93IHJlcXVpcmVkIGV2ZW4KPiBmb3Igd2ZpLWJhc2VkIGlkbGUgaGFuZGxpbmcuCj4KPiBPZiBj
-b3Vyc2UgdGhlIGdlbmVyaWMgYXJjaF9jcHVfaWRsZSgpIG5vdyBkb2VzIHdmaS1iYXNlZCBpZGxl
-LWhhbmRsaW5nCj4gYWxyZWFkeSwgc28gdGhlcmUgaXMgbm8gbmVlZCBmb3IgdGhpcy4KPgo+IFJl
-cG9ydGVkLWJ5OiBMb3JlbnpvIFBpZXJhbGlzaSA8bG9yZW56by5waWVyYWxpc2lAYXJtLmNvbT4K
-PiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+
-IFRoaXMgaGFzIGJlZW4gc2l0dGluZyBlcmUgZm9yIHdheSB0byBsb25nIDotKCwgYnV0IGZpbmFs
-bHkgSSBnb3QKPiB0byBmaW5pc2ggdGhlIGNoYW5nZS4KPgo+ICBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM2OC5kdHNpIHwgMjAgLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgMSBmaWxl
-IGNoYW5nZWQsIDIwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzY4LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM2OC5kdHNpCj4gaW5kZXggNDlkMTE5MS4uNTQ3MWFjZSAxMDA2NDQKPiAtLS0gYS9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzNjguZHRzaQo+IEBAIC0xMDcsMjMgKzEwNywxMCBAQAo+ICAJ
-CQl9Owo+ICAJCX07Cj4gIAo+IC0JCWlkbGUtc3RhdGVzIHsKPiAtCQkJZW50cnktbWV0aG9kID0g
-InBzY2kiOwo+IC0KPiAtCQkJY3B1X3NsZWVwOiBjcHUtc2xlZXAtMCB7Cj4gLQkJCQljb21wYXRp
-YmxlID0gImFybSxpZGxlLXN0YXRlIjsKPiAtCQkJCWFybSxwc2NpLXN1c3BlbmQtcGFyYW0gPSA8
-MHgxMDEwMDAwPjsKPiAtCQkJCWVudHJ5LWxhdGVuY3ktdXMgPSA8MHgzZmZmZmZmZj47Cj4gLQkJ
-CQlleGl0LWxhdGVuY3ktdXMgPSA8MHg0MDAwMDAwMD47Cj4gLQkJCQltaW4tcmVzaWRlbmN5LXVz
-ID0gPDB4ZmZmZmZmZmY+Owo+IC0JCQl9Owo+IC0JCX07Cj4gLQo+ICAJCWNwdV9sMDogY3B1QDAg
-ewo+ICAJCQlkZXZpY2VfdHlwZSA9ICJjcHUiOwo+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0
-ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gIAkJCXJlZyA9IDwweDAgMHgwPjsKPiAtCQkJY3B1LWlk
-bGUtc3RhdGVzID0gPCZjcHVfc2xlZXA+Owo+ICAJCQllbmFibGUtbWV0aG9kID0gInBzY2kiOwo+
-ICAKPiAgCQkJI2Nvb2xpbmctY2VsbHMgPSA8Mj47IC8qIG1pbiBmb2xsb3dlZCBieSBtYXggKi8K
-PiBAQCAtMTMzLDcgKzEyMCw2IEBACj4gIAkJCWRldmljZV90eXBlID0gImNwdSI7Cj4gIAkJCWNv
-bXBhdGlibGUgPSAiYXJtLGNvcnRleC1hNTMiLCAiYXJtLGFybXY4IjsKPiAgCQkJcmVnID0gPDB4
-MCAweDE+Owo+IC0JCQljcHUtaWRsZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47Cj4gIAkJCWVuYWJs
-ZS1tZXRob2QgPSAicHNjaSI7Cj4gIAkJfTsKPiAgCj4gQEAgLTE0MSw3ICsxMjcsNiBAQAo+ICAJ
-CQlkZXZpY2VfdHlwZSA9ICJjcHUiOwo+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgtYTUz
-IiwgImFybSxhcm12OCI7Cj4gIAkJCXJlZyA9IDwweDAgMHgyPjsKPiAtCQkJY3B1LWlkbGUtc3Rh
-dGVzID0gPCZjcHVfc2xlZXA+Owo+ICAJCQllbmFibGUtbWV0aG9kID0gInBzY2kiOwo+ICAJCX07
-Cj4gIAo+IEBAIC0xNDksNyArMTM0LDYgQEAKPiAgCQkJZGV2aWNlX3R5cGUgPSAiY3B1IjsKPiAg
-CQkJY29tcGF0aWJsZSA9ICJhcm0sY29ydGV4LWE1MyIsICJhcm0sYXJtdjgiOwo+ICAJCQlyZWcg
-PSA8MHgwIDB4Mz47Cj4gLQkJCWNwdS1pZGxlLXN0YXRlcyA9IDwmY3B1X3NsZWVwPjsKPiAgCQkJ
-ZW5hYmxlLW1ldGhvZCA9ICJwc2NpIjsKPiAgCQl9Owo+ICAKPiBAQCAtMTU3LDcgKzE0MSw2IEBA
-Cj4gIAkJCWRldmljZV90eXBlID0gImNwdSI7Cj4gIAkJCWNvbXBhdGlibGUgPSAiYXJtLGNvcnRl
-eC1hNTMiLCAiYXJtLGFybXY4IjsKPiAgCQkJcmVnID0gPDB4MCAweDEwMD47Cj4gLQkJCWNwdS1p
-ZGxlLXN0YXRlcyA9IDwmY3B1X3NsZWVwPjsKPiAgCQkJZW5hYmxlLW1ldGhvZCA9ICJwc2NpIjsK
-PiAgCj4gIAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAvKiBtaW4gZm9sbG93ZWQgYnkgbWF4ICov
-Cj4gQEAgLTE2Nyw3ICsxNTAsNiBAQAo+ICAJCQlkZXZpY2VfdHlwZSA9ICJjcHUiOwo+ICAJCQlj
-b21wYXRpYmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gIAkJCXJlZyA9IDww
-eDAgMHgxMDE+Owo+IC0JCQljcHUtaWRsZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47Cj4gIAkJCWVu
-YWJsZS1tZXRob2QgPSAicHNjaSI7Cj4gIAkJfTsKPiAgCj4gQEAgLTE3NSw3ICsxNTcsNiBAQAo+
-ICAJCQlkZXZpY2VfdHlwZSA9ICJjcHUiOwo+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgt
-YTUzIiwgImFybSxhcm12OCI7Cj4gIAkJCXJlZyA9IDwweDAgMHgxMDI+Owo+IC0JCQljcHUtaWRs
-ZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47Cj4gIAkJCWVuYWJsZS1tZXRob2QgPSAicHNjaSI7Cj4g
-IAkJfTsKPiAgCj4gQEAgLTE4Myw3ICsxNjQsNiBAQAo+ICAJCQlkZXZpY2VfdHlwZSA9ICJjcHUi
-Owo+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gIAkJ
-CXJlZyA9IDwweDAgMHgxMDM+Owo+IC0JCQljcHUtaWRsZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47
-Cj4gIAkJCWVuYWJsZS1tZXRob2QgPSAicHNjaSI7Cj4gIAkJfTsKPiAgCX07Ckxvb2tzIGdvb2Qg
-dG8gbWUuClRoZXJlIGFyZSBhbm90aGVyIHJlZHVuZGFudCBub2RlIC0gdGltZXJAZmY4MTAwMDAs
-IHdoaWNoIGNhbiBub3QgcHJvYmUKc3VjY2Vzc2Z1bGx5IGJlY2F1c2Ugb2YgbWlzc2luZyBjbG9j
-a3MgcHJvcGVydHkuIFJLMzM2OCBkb24ndCBzdXBwb3J0CnBvd2VyIGRvd24gY29yZSB3aGlsZSBp
-ZGxlLCBzbyB0aGVyZSBhcmUgbm90IG5lZWQgYWRkIGJyb2FkY2FzdCB0aW1lci4KU2hvdWxkIHdl
-IGRlbGV0ZSB0aGUgdGltZXIgbm9kZSBvciBhZGQgbWlzc2luZyBjbG9ja3M/CklmIGFkZCBjbG9j
-a3MsIHdlIHNob3VsZCBmaXggY2xrIGRyaXZlcnMgZmlyc3QgYmVjYXVzZSB0aW1lciBjbGsgaXMg
-bm90CmV4cG9ydGVkLgpJIHN1Z2dlc3Qgd2Ugc2hvdWxkIGRlbGV0ZSB0aGUgdGltZXIgbm9kZS4K
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+On Wed, Mar 01, 2017 at 11:38:49PM +0100, Heiko Stuebner wrote:
+> As reported by Lorenzo, the residency/latency values defined in the
+> idle-state for rk3368 "make no sense". When introducing them I
+> simply took the idle-state node from the vendor kernel in error
+> as I didn't look up if these values were sane in the first place.
+> 
+> Talking to people and determining why they were used in this way
+> showed that it was meant to make sure the cpu_suspend callback
+> got initialized which at the 3.10 time was somehow required even
+> for wfi-based idle handling.
+> 
+> Of course the generic arch_cpu_idle() now does wfi-based idle-handling
+> already, so there is no need for this.
+> 
+> Reported-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> This has been sitting ere for way to long :-(, but finally I got
+> to finish the change.
+
+Well, the commit log needs updating, you should describe what it does
+and why, if you want to add a link to the discussion in the commit
+log use a Link: tag as per kernel documentation.
+
+So, there are not any idle states implemented in this platform ?
+
+I probably asked before, if there are instead of removing the
+states you can just update the latencies with sane values.
+
+If wfi is the only FW/HW implemented quiescent state then:
+
+Acked-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 20 --------------------
+>  1 file changed, 20 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> index 49d1191..5471ace 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -107,23 +107,10 @@
+>  			};
+>  		};
+>  
+> -		idle-states {
+> -			entry-method = "psci";
+> -
+> -			cpu_sleep: cpu-sleep-0 {
+> -				compatible = "arm,idle-state";
+> -				arm,psci-suspend-param = <0x1010000>;
+> -				entry-latency-us = <0x3fffffff>;
+> -				exit-latency-us = <0x40000000>;
+> -				min-residency-us = <0xffffffff>;
+> -			};
+> -		};
+> -
+>  		cpu_l0: cpu@0 {
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x0>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  
+>  			#cooling-cells = <2>; /* min followed by max */
+> @@ -133,7 +120,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x1>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  
+> @@ -141,7 +127,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x2>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  
+> @@ -149,7 +134,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x3>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  
+> @@ -157,7 +141,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x100>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  
+>  			#cooling-cells = <2>; /* min followed by max */
+> @@ -167,7 +150,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x101>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  
+> @@ -175,7 +157,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x102>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  
+> @@ -183,7 +164,6 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x103>;
+> -			cpu-idle-states = <&cpu_sleep>;
+>  			enable-method = "psci";
+>  		};
+>  	};
+> -- 
+> 2.6.4
+> 
