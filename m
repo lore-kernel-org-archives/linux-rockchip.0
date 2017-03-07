@@ -1,44 +1,36 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 1/5] clk: rockchip: rk3368: fix up the timer-ids
-Date: Tue,  7 Mar 2017 19:05:15 +0800
-Message-ID: <1488884719-10350-2-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v2 3/5] clk: rockchip: add clock ids for timer10-15 of RK3368 SoCs
+Date: Tue,  7 Mar 2017 19:05:17 +0800
+Message-ID: <1488884719-10350-4-git-send-email-zhangqing@rock-chips.com>
 References: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- include/dt-bindings/clock/rk3368-cru.h | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ include/dt-bindings/clock/rk3368-cru.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
-index 9c5dd9ba2f6c..52f86ddac773 100644
+index 2bf23eda8938..aeb83e581a11 100644
 --- a/include/dt-bindings/clock/rk3368-cru.h
 +++ b/include/dt-bindings/clock/rk3368-cru.h
-@@ -44,12 +44,12 @@
- #define SCLK_I2S_8CH		82
- #define SCLK_SPDIF_8CH		83
- #define SCLK_I2S_2CH		84
--#define SCLK_TIMER0		85
--#define SCLK_TIMER1		86
--#define SCLK_TIMER2		87
--#define SCLK_TIMER3		88
--#define SCLK_TIMER4		89
--#define SCLK_TIMER5		90
-+#define SCLK_TIMER00		85
-+#define SCLK_TIMER01		86
-+#define SCLK_TIMER02		87
-+#define SCLK_TIMER03		88
-+#define SCLK_TIMER04		89
-+#define SCLK_TIMER05		90
- #define SCLK_TIMER6		91
- #define SCLK_OTGPHY0		93
- #define SCLK_OTG_ADP		96
+@@ -81,6 +81,12 @@
+ #define SCLK_SFC		126
+ #define SCLK_MAC		127
+ #define SCLK_MACREF_OUT		128
++#define SCLK_TIMER10		133
++#define SCLK_TIMER11		134
++#define SCLK_TIMER12		135
++#define SCLK_TIMER13		136
++#define SCLK_TIMER14		137
++#define SCLK_TIMER15		138
+ 
+ #define DCLK_VOP		190
+ #define MCLK_CRYPTO		191
 -- 
 1.9.1
-
-
