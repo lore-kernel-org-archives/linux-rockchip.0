@@ -1,54 +1,107 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 4/5] clk: rockchip: rk3368: export SCLK_TIMERXX id for timers
-Date: Tue,  7 Mar 2017 19:05:18 +0800
-Message-ID: <1488884719-10350-5-git-send-email-zhangqing@rock-chips.com>
-References: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1488884719-10350-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: remove wrongly added idle states on
+ rk3368
+Date: Tue, 07 Mar 2017 12:06:31 +0100
+Message-ID: <1737707.xNeUlp3ZZl@diego>
+References: <20170301223849.13401-1-heiko@sntech.de>
+ <9e79905e-8dff-2980-ab8d-9cfd880275c0@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9e79905e-8dff-2980-ab8d-9cfd880275c0-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3368.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 6cb474c593e7..139d418f448e 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -835,18 +835,18 @@ enum rk3368_plls {
- 	GATE(PCLK_PMU, "pclk_pmu", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 0, GFLAGS),
- 
- 	/* timer gates */
--	GATE(0, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 11, GFLAGS),
--	GATE(0, "sclk_timer14", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS),
--	GATE(0, "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 9, GFLAGS),
--	GATE(0, "sclk_timer12", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 8, GFLAGS),
--	GATE(0, "sclk_timer11", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 7, GFLAGS),
--	GATE(0, "sclk_timer10", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6, GFLAGS),
--	GATE(0, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 5, GFLAGS),
--	GATE(0, "sclk_timer04", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS),
--	GATE(0, "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 3, GFLAGS),
--	GATE(0, "sclk_timer02", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 2, GFLAGS),
--	GATE(0, "sclk_timer01", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 1, GFLAGS),
--	GATE(0, "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0, GFLAGS),
-+	GATE(SCLK_TIMER15, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 11, GFLAGS),
-+	GATE(SCLK_TIMER14, "sclk_timer14", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 10, GFLAGS),
-+	GATE(SCLK_TIMER13, "sclk_timer13", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 9, GFLAGS),
-+	GATE(SCLK_TIMER12, "sclk_timer12", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 8, GFLAGS),
-+	GATE(SCLK_TIMER11, "sclk_timer11", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 7, GFLAGS),
-+	GATE(SCLK_TIMER10, "sclk_timer10", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 6, GFLAGS),
-+	GATE(SCLK_TIMER05, "sclk_timer05", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 5, GFLAGS),
-+	GATE(SCLK_TIMER04, "sclk_timer04", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 4, GFLAGS),
-+	GATE(SCLK_TIMER03, "sclk_timer03", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 3, GFLAGS),
-+	GATE(SCLK_TIMER02, "sclk_timer02", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 2, GFLAGS),
-+	GATE(SCLK_TIMER01, "sclk_timer01", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 1, GFLAGS),
-+	GATE(SCLK_TIMER00, "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 0, GFLAGS),
- };
- 
- static const char *const rk3368_critical_clocks[] __initconst = {
--- 
-1.9.1
+QW0gRGllbnN0YWcsIDcuIE3DpHJ6IDIwMTcsIDE1OjIwOjI4IENFVCBzY2hyaWViIEh1YW5nLCBU
+YW86Cj4gSGkgSGVpa286Cj4gCj4gT24gMjAxN+W5tDAz5pyIMDLml6UgMDY6MzgsIEhlaWtvIFN0
+dWVibmVyIHdyb3RlOgo+ID4gQXMgcmVwb3J0ZWQgYnkgTG9yZW56bywgdGhlIHJlc2lkZW5jeS9s
+YXRlbmN5IHZhbHVlcyBkZWZpbmVkIGluIHRoZQo+ID4gaWRsZS1zdGF0ZSBmb3IgcmszMzY4ICJt
+YWtlIG5vIHNlbnNlIi4gV2hlbiBpbnRyb2R1Y2luZyB0aGVtIEkKPiA+IHNpbXBseSB0b29rIHRo
+ZSBpZGxlLXN0YXRlIG5vZGUgZnJvbSB0aGUgdmVuZG9yIGtlcm5lbCBpbiBlcnJvcgo+ID4gYXMg
+SSBkaWRuJ3QgbG9vayB1cCBpZiB0aGVzZSB2YWx1ZXMgd2VyZSBzYW5lIGluIHRoZSBmaXJzdCBw
+bGFjZS4KPiA+IAo+ID4gVGFsa2luZyB0byBwZW9wbGUgYW5kIGRldGVybWluaW5nIHdoeSB0aGV5
+IHdlcmUgdXNlZCBpbiB0aGlzIHdheQo+ID4gc2hvd2VkIHRoYXQgaXQgd2FzIG1lYW50IHRvIG1h
+a2Ugc3VyZSB0aGUgY3B1X3N1c3BlbmQgY2FsbGJhY2sKPiA+IGdvdCBpbml0aWFsaXplZCB3aGlj
+aCBhdCB0aGUgMy4xMCB0aW1lIHdhcyBzb21laG93IHJlcXVpcmVkIGV2ZW4KPiA+IGZvciB3Zmkt
+YmFzZWQgaWRsZSBoYW5kbGluZy4KPiA+IAo+ID4gT2YgY291cnNlIHRoZSBnZW5lcmljIGFyY2hf
+Y3B1X2lkbGUoKSBub3cgZG9lcyB3ZmktYmFzZWQgaWRsZS1oYW5kbGluZwo+ID4gYWxyZWFkeSwg
+c28gdGhlcmUgaXMgbm8gbmVlZCBmb3IgdGhpcy4KPiA+IAo+ID4gUmVwb3J0ZWQtYnk6IExvcmVu
+em8gUGllcmFsaXNpIDxsb3JlbnpvLnBpZXJhbGlzaUBhcm0uY29tPgo+ID4gU2lnbmVkLW9mZi1i
+eTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+IC0tLQo+ID4gVGhpcyBoYXMg
+YmVlbiBzaXR0aW5nIGVyZSBmb3Igd2F5IHRvIGxvbmcgOi0oLCBidXQgZmluYWxseSBJIGdvdAo+
+ID4gdG8gZmluaXNoIHRoZSBjaGFuZ2UuCj4gPiAKPiA+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzM2OC5kdHNpIHwgMjAgLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+ICAxIGZpbGUg
+Y2hhbmdlZCwgMjAgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC5kdHNpCj4gPiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszMzY4LmR0c2kgaW5kZXggNDlkMTE5MS4uNTQ3MWFjZSAxMDA2NDQKPiA+IC0t
+LSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LmR0c2kKPiA+ICsrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LmR0c2kKPiA+IEBAIC0xMDcsMjMgKzEw
+NywxMCBAQAo+ID4gCj4gPiAgCQkJfTsKPiA+ICAJCQo+ID4gIAkJfTsKPiA+IAo+ID4gLQkJaWRs
+ZS1zdGF0ZXMgewo+ID4gLQkJCWVudHJ5LW1ldGhvZCA9ICJwc2NpIjsKPiA+IC0KPiA+IC0JCQlj
+cHVfc2xlZXA6IGNwdS1zbGVlcC0wIHsKPiA+IC0JCQkJY29tcGF0aWJsZSA9ICJhcm0saWRsZS1z
+dGF0ZSI7Cj4gPiAtCQkJCWFybSxwc2NpLXN1c3BlbmQtcGFyYW0gPSA8MHgxMDEwMDAwPjsKPiA+
+IC0JCQkJZW50cnktbGF0ZW5jeS11cyA9IDwweDNmZmZmZmZmPjsKPiA+IC0JCQkJZXhpdC1sYXRl
+bmN5LXVzID0gPDB4NDAwMDAwMDA+Owo+ID4gLQkJCQltaW4tcmVzaWRlbmN5LXVzID0gPDB4ZmZm
+ZmZmZmY+Owo+ID4gLQkJCX07Cj4gPiAtCQl9Owo+ID4gLQo+ID4gCj4gPiAgCQljcHVfbDA6IGNw
+dUAwIHsKPiA+ICAJCQo+ID4gIAkJCWRldmljZV90eXBlID0gImNwdSI7Cj4gPiAgCQkJY29tcGF0
+aWJsZSA9ICJhcm0sY29ydGV4LWE1MyIsICJhcm0sYXJtdjgiOwo+ID4gIAkJCXJlZyA9IDwweDAg
+MHgwPjsKPiA+IAo+ID4gLQkJCWNwdS1pZGxlLXN0YXRlcyA9IDwmY3B1X3NsZWVwPjsKPiA+IAo+
+ID4gIAkJCWVuYWJsZS1tZXRob2QgPSAicHNjaSI7Cj4gPiAgCQkJCj4gPiAgCQkJI2Nvb2xpbmct
+Y2VsbHMgPSA8Mj47IC8qIG1pbiBmb2xsb3dlZCBieSBtYXggKi8KPiA+IAo+ID4gQEAgLTEzMyw3
+ICsxMjAsNiBAQAo+ID4gCj4gPiAgCQkJZGV2aWNlX3R5cGUgPSAiY3B1IjsKPiA+ICAJCQljb21w
+YXRpYmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gPiAgCQkJcmVnID0gPDB4
+MCAweDE+Owo+ID4gCj4gPiAtCQkJY3B1LWlkbGUtc3RhdGVzID0gPCZjcHVfc2xlZXA+Owo+ID4g
+Cj4gPiAgCQkJZW5hYmxlLW1ldGhvZCA9ICJwc2NpIjsKPiA+ICAJCQo+ID4gIAkJfTsKPiA+IAo+
+ID4gQEAgLTE0MSw3ICsxMjcsNiBAQAo+ID4gCj4gPiAgCQkJZGV2aWNlX3R5cGUgPSAiY3B1IjsK
+PiA+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gPiAg
+CQkJcmVnID0gPDB4MCAweDI+Owo+ID4gCj4gPiAtCQkJY3B1LWlkbGUtc3RhdGVzID0gPCZjcHVf
+c2xlZXA+Owo+ID4gCj4gPiAgCQkJZW5hYmxlLW1ldGhvZCA9ICJwc2NpIjsKPiA+ICAJCQo+ID4g
+IAkJfTsKPiA+IAo+ID4gQEAgLTE0OSw3ICsxMzQsNiBAQAo+ID4gCj4gPiAgCQkJZGV2aWNlX3R5
+cGUgPSAiY3B1IjsKPiA+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxh
+cm12OCI7Cj4gPiAgCQkJcmVnID0gPDB4MCAweDM+Owo+ID4gCj4gPiAtCQkJY3B1LWlkbGUtc3Rh
+dGVzID0gPCZjcHVfc2xlZXA+Owo+ID4gCj4gPiAgCQkJZW5hYmxlLW1ldGhvZCA9ICJwc2NpIjsK
+PiA+ICAJCQo+ID4gIAkJfTsKPiA+IAo+ID4gQEAgLTE1Nyw3ICsxNDEsNiBAQAo+ID4gCj4gPiAg
+CQkJZGV2aWNlX3R5cGUgPSAiY3B1IjsKPiA+ICAJCQljb21wYXRpYmxlID0gImFybSxjb3J0ZXgt
+YTUzIiwgImFybSxhcm12OCI7Cj4gPiAgCQkJcmVnID0gPDB4MCAweDEwMD47Cj4gPiAKPiA+IC0J
+CQljcHUtaWRsZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47Cj4gPiAKPiA+ICAJCQllbmFibGUtbWV0
+aG9kID0gInBzY2kiOwo+ID4gIAkJCQo+ID4gIAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAvKiBt
+aW4gZm9sbG93ZWQgYnkgbWF4ICovCj4gPiAKPiA+IEBAIC0xNjcsNyArMTUwLDYgQEAKPiA+IAo+
+ID4gIAkJCWRldmljZV90eXBlID0gImNwdSI7Cj4gPiAgCQkJY29tcGF0aWJsZSA9ICJhcm0sY29y
+dGV4LWE1MyIsICJhcm0sYXJtdjgiOwo+ID4gIAkJCXJlZyA9IDwweDAgMHgxMDE+Owo+ID4gCj4g
+PiAtCQkJY3B1LWlkbGUtc3RhdGVzID0gPCZjcHVfc2xlZXA+Owo+ID4gCj4gPiAgCQkJZW5hYmxl
+LW1ldGhvZCA9ICJwc2NpIjsKPiA+ICAJCQo+ID4gIAkJfTsKPiA+IAo+ID4gQEAgLTE3NSw3ICsx
+NTcsNiBAQAo+ID4gCj4gPiAgCQkJZGV2aWNlX3R5cGUgPSAiY3B1IjsKPiA+ICAJCQljb21wYXRp
+YmxlID0gImFybSxjb3J0ZXgtYTUzIiwgImFybSxhcm12OCI7Cj4gPiAgCQkJcmVnID0gPDB4MCAw
+eDEwMj47Cj4gPiAKPiA+IC0JCQljcHUtaWRsZS1zdGF0ZXMgPSA8JmNwdV9zbGVlcD47Cj4gPiAK
+PiA+ICAJCQllbmFibGUtbWV0aG9kID0gInBzY2kiOwo+ID4gIAkJCj4gPiAgCQl9Owo+ID4gCj4g
+PiBAQCAtMTgzLDcgKzE2NCw2IEBACj4gPiAKPiA+ICAJCQlkZXZpY2VfdHlwZSA9ICJjcHUiOwo+
+ID4gIAkJCWNvbXBhdGlibGUgPSAiYXJtLGNvcnRleC1hNTMiLCAiYXJtLGFybXY4IjsKPiA+ICAJ
+CQlyZWcgPSA8MHgwIDB4MTAzPjsKPiA+IAo+ID4gLQkJCWNwdS1pZGxlLXN0YXRlcyA9IDwmY3B1
+X3NsZWVwPjsKPiA+IAo+ID4gIAkJCWVuYWJsZS1tZXRob2QgPSAicHNjaSI7Cj4gPiAgCQkKPiA+
+ICAJCX07Cj4gPiAgCQo+ID4gIAl9Owo+IAo+IExvb2tzIGdvb2QgdG8gbWUuCj4gVGhlcmUgYXJl
+IGFub3RoZXIgcmVkdW5kYW50IG5vZGUgLSB0aW1lckBmZjgxMDAwMCwgd2hpY2ggY2FuIG5vdCBw
+cm9iZQo+IHN1Y2Nlc3NmdWxseSBiZWNhdXNlIG9mIG1pc3NpbmcgY2xvY2tzIHByb3BlcnR5LiBS
+SzMzNjggZG9uJ3Qgc3VwcG9ydAo+IHBvd2VyIGRvd24gY29yZSB3aGlsZSBpZGxlLCBzbyB0aGVy
+ZSBhcmUgbm90IG5lZWQgYWRkIGJyb2FkY2FzdCB0aW1lci4KPiBTaG91bGQgd2UgZGVsZXRlIHRo
+ZSB0aW1lciBub2RlIG9yIGFkZCBtaXNzaW5nIGNsb2Nrcz8KPiBJZiBhZGQgY2xvY2tzLCB3ZSBz
+aG91bGQgZml4IGNsayBkcml2ZXJzIGZpcnN0IGJlY2F1c2UgdGltZXIgY2xrIGlzIG5vdAo+IGV4
+cG9ydGVkLgo+IEkgc3VnZ2VzdCB3ZSBzaG91bGQgZGVsZXRlIHRoZSB0aW1lciBub2RlLgoKRWxh
+aW5lIHNlZW1zIHRvIHdhbnQgdG8gYWRkIHRpbWUtc3BlY2lmaWMgY2xvY2sgaWRzIC0gc2VlIHBh
+dGNoZXMgZnJvbSB0b2RheSAKYW5kIEkgdGVuZCB0byBhZ3JlZSB3aXRoIGhlciBhbmQgc2ltcGx5
+IGZpeHVwIHRoZSB0aW1lciBkdHMgbm9kZSBhZnRlciB0aGF0LgoKQWZ0ZXJhbGwgdGhlIGR0IGlz
+IGEgaGFyZHdhcmUgZGVzY3JpcHRpb24sIG5vdCBhIGRlc2NyaXB0aW9uIG9mIHdoYXQgd2UgCmN1
+cnJlbnRseSBsaWtlIHRvIGhhdmUgaW4gdGhlIGtlcm5lbCA6LSkKCgpIZWlrbwoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
