@@ -1,13 +1,14 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 0/4] rk808: Add RK805 support
-Date: Thu, 9 Mar 2017 11:03:24 +0100
-Message-ID: <0e08f79f-e475-ef1e-5139-4527ca352fe9@phytec.de>
-References: <1489049402-15791-1-git-send-email-zhangqing@rock-chips.com>
+From: Jose Abreu <Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH RESEND] drm: dw_hdmi: Don't rely on the status of the
+ bridge for updating HPD
+Date: Thu, 9 Mar 2017 14:28:46 +0000
+Message-ID: <e6fa89a3-3f4a-6dfc-3ef9-e5b487994104@synopsys.com>
+References: <20170308081524.7672-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1489049402-15791-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20170308081524.7672-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,33 +18,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Stone <daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
-
-you should also add the RK805 to the device tree bindings documentation in
-
-Documentation/devicetree/bindings/mfd/rk808.txt
-
-Regards,
-Wadim
+Hi Romain,
 
 
-Am 09.03.2017 um 09:49 schrieb Elaine Zhang:
-> Elaine Zhang (4):
->   mfd: rk808: fix up the chip id get failed
->   linux: mfd: rk808: add rk805 regs addr and ID
->   regulator: rk808: Add regulator driver for RK805
->   mfd: rk808: Add RK805 support
+On 08-03-2017 08:15, Romain Perier wrote:
+> Currently, the irq handler that monitores changes for HPD anx RX_SENSE
+> relies on the status of the bridge for updating the status of the HPD.
+> The update is done only when the bridge is enabled.
 >
->  drivers/clk/Kconfig                 |   4 +-
->  drivers/mfd/Kconfig                 |   4 +-
->  drivers/mfd/rk808.c                 | 130 ++++++++++++++++++++++++++++++++++--
->  drivers/regulator/Kconfig           |   4 +-
->  drivers/regulator/rk808-regulator.c |  66 ++++++++++++++++++
->  drivers/rtc/Kconfig                 |   4 +-
->  include/linux/mfd/rk808.h           |  92 +++++++++++++++++++++++++
->  7 files changed, 290 insertions(+), 14 deletions(-)
+> However, on Rockchip platforms we have found use cases where it could be
+> a problem. When HDMI is being used, turning off/on the screen or
+> unplugging/re-plugging the cable, the following simplified code path
+> will happen:
 >
+> - dw_hdmi_irq() will be triggered by an HPD event, as the bridge is on
+> hdmi->disabled is false, then the handler will update the rxsense flag
+> accordingly.
+> - dw_hdmi_update_power() will be invoked with the mode
+> DRM_FORCE_UNSPECIFIED and rxsense == 1, so dw_hdmi_poweroff() will be
+> called and the PHY will be desactivated (its pixel clocks and TMDS)
+>
+> [...]
+>
+> - dw_hdmi_bridge_disable() will be invoked, the bridge will be marked as
+> disabled.
+>
+> - dw_hdmi_irq() will be triggered by an HPD event, as the bridge is
+> currently disabled the HPD status won't be updated, so hdmi->rxsense
+> won't be changed. Even if the data part of the PHY is disabled, this
+> information coming from the HDMI Transmitter is correct and should be
+> saved.
+>
+> [...]
+>
+> - dw_hdmi_bridge_enable() will be invoked, the bridge will be marked as
+> enabled.
+> - dw_hdmi_update_power() will be called. As hdmi->force will be equal to
+> DRM_FORCE_UNSPECIFIED the function will rely on hdmi->rxsense. This
+> field has not been updated by the irq handler, so it will be false and
+> DRM_FORCE_ON won't be put to hdmi->force.
+>
+> Consequently, most of the time dw_hdmi_poweron() won't be called in this
+> use case, TMDS won't be re-enabled the PHY won't be re-initialized,
+> resulting in a "Signal not found".
+>
+> This commit fixes the issue by removing the check for "!hdmi->disabled".
+> As already explained, even if the PHY is partially disabled, information
+> coming from HDMI Transmitter about HPD should be saved for a later use.
+>
+> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>
+> Note: Due to an email configuration issue, some of my patches were not
+> received on infradead.org or vger.kernel.org. It is now fixed, so I
+> resend this patch for this reason.
+>
+>  drivers/gpu/drm/bridge/dw-hdmi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
+> index 235ce7d..b621fc7 100644
+> --- a/drivers/gpu/drm/bridge/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
+> @@ -1790,7 +1790,7 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>  	if (intr_stat &
+>  	    (HDMI_IH_PHY_STAT0_RX_SENSE | HDMI_IH_PHY_STAT0_HPD)) {
+>  		mutex_lock(&hdmi->mutex);
+> -		if (!hdmi->disabled && !hdmi->force) {
+> +		if (!hdmi->force) {
+>  			/*
+>  			 * If the RX sense status indicates we're disconnected,
+>  			 * clear the software rxsense status.
+
+Makes sense but I think you need to make sure that phy will not
+be enabled when bridge is disabled i.e. you should update rxsense
+only.
+
+Best regards,
+Jose Miguel Abreu
