@@ -1,99 +1,83 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH 3/4] phy: rockchip-typec: support DP phy switch
-Date: Wed, 8 Mar 2017 16:39:23 -0800
-Message-ID: <20170309003921.GA101174@google.com>
+Date: Thu, 09 Mar 2017 02:02:54 +0100
+Message-ID: <11032198.PxydffNNDT@diego>
 References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
  <1486712654-15431-4-git-send-email-zyw@rock-chips.com>
+ <20170309003921.GA101174@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1486712654-15431-4-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170309003921.GA101174@google.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kishon@ti.com, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 10, 2017 at 03:44:13PM +0800, Chris Zhong wrote:
-> There are 2 Type-c PHYs in RK3399, but only one DP controller. Hence
-> only one PHY can connect to DP controller at one time, the other should
-> be disconnected. The GRF_SOC_CON26 register has a switch bit to do it,
-> set this bit means enable PHY 1, clear this bit means enable PHY 0.
-> 
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  drivers/phy/phy-rockchip-typec.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/phy-rockchip-typec.c
-> index 7cfb0f8..1604aaa 100644
-> --- a/drivers/phy/phy-rockchip-typec.c
-> +++ b/drivers/phy/phy-rockchip-typec.c
-> @@ -267,6 +267,7 @@ struct rockchip_usb3phy_port_cfg {
->  	struct usb3phy_reg usb3tousb2_en;
->  	struct usb3phy_reg external_psm;
->  	struct usb3phy_reg pipe_status;
-> +	struct usb3phy_reg uphy_dp_sel;
->  };
->  
->  struct rockchip_typec_phy {
-> @@ -736,6 +737,7 @@ static const struct phy_ops rockchip_usb3_phy_ops = {
->  static int rockchip_dp_phy_power_on(struct phy *phy)
->  {
->  	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
-> +	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
->  	int new_mode, ret = 0;
->  	u32 val;
->  
-> @@ -766,6 +768,8 @@ static int rockchip_dp_phy_power_on(struct phy *phy)
->  		tcphy_phy_init(tcphy, new_mode);
->  	}
->  
-> +	property_enable(tcphy, &cfg->uphy_dp_sel, 1);
-> +
->  	ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
-
-Idea for future work: this should just be readl_poll_timeout() here, and
-throughout the driver.
-
->  				 val, val & DP_MODE_A2, 1000,
->  				 PHY_MODE_SET_TIMEOUT);
-> @@ -869,6 +873,11 @@ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
->  	if (ret)
->  		return ret;
->  
-> +	ret = tcphy_get_param(dev, &cfg->uphy_dp_sel,
-> +			      "rockchip,uphy-dp-sel");
-> +	if (ret)
-> +		return ret;
-
-What about existing device trees? You're essentially adding this
-new property and requiring it at the same time.
-
-Or are we considering no RK3399 DP stable at the moment? I guess we
-haven't actually merged any device trees that support this yet, no?
-
-Brian
-
-> +
->  	tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
->  							  "rockchip,grf");
->  	if (IS_ERR(tcphy->grf_regs)) {
-> -- 
-> 2.6.3
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDguIE3DpHJ6IDIwMTcsIDE2OjM5OjIzIENFVCBzY2hyaWViIEJyaWFuIE5v
+cnJpczoKPiBPbiBGcmksIEZlYiAxMCwgMjAxNyBhdCAwMzo0NDoxM1BNICswODAwLCBDaHJpcyBa
+aG9uZyB3cm90ZToKPiA+IFRoZXJlIGFyZSAyIFR5cGUtYyBQSFlzIGluIFJLMzM5OSwgYnV0IG9u
+bHkgb25lIERQIGNvbnRyb2xsZXIuIEhlbmNlCj4gPiBvbmx5IG9uZSBQSFkgY2FuIGNvbm5lY3Qg
+dG8gRFAgY29udHJvbGxlciBhdCBvbmUgdGltZSwgdGhlIG90aGVyIHNob3VsZAo+ID4gYmUgZGlz
+Y29ubmVjdGVkLiBUaGUgR1JGX1NPQ19DT04yNiByZWdpc3RlciBoYXMgYSBzd2l0Y2ggYml0IHRv
+IGRvIGl0LAo+ID4gc2V0IHRoaXMgYml0IG1lYW5zIGVuYWJsZSBQSFkgMSwgY2xlYXIgdGhpcyBi
+aXQgbWVhbnMgZW5hYmxlIFBIWSAwLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9u
+ZyA8enl3QHJvY2stY2hpcHMuY29tPgo+ID4gLS0tCj4gPiAKPiA+ICBkcml2ZXJzL3BoeS9waHkt
+cm9ja2NoaXAtdHlwZWMuYyB8IDkgKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDkgaW5z
+ZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlw
+LXR5cGVjLmMKPiA+IGIvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXR5cGVjLmMgaW5kZXggN2Nm
+YjBmOC4uMTYwNGFhYSAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC10
+eXBlYy5jCj4gPiArKysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYwo+ID4gQEAg
+LTI2Nyw2ICsyNjcsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfdXNiM3BoeV9wb3J0X2NmZyB7Cj4gPiAK
+PiA+ICAJc3RydWN0IHVzYjNwaHlfcmVnIHVzYjN0b3VzYjJfZW47Cj4gPiAgCXN0cnVjdCB1c2Iz
+cGh5X3JlZyBleHRlcm5hbF9wc207Cj4gPiAgCXN0cnVjdCB1c2IzcGh5X3JlZyBwaXBlX3N0YXR1
+czsKPiA+IAo+ID4gKwlzdHJ1Y3QgdXNiM3BoeV9yZWcgdXBoeV9kcF9zZWw7Cj4gPiAKPiA+ICB9
+Owo+ID4gIAo+ID4gIHN0cnVjdCByb2NrY2hpcF90eXBlY19waHkgewo+ID4gCj4gPiBAQCAtNzM2
+LDYgKzczNyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGh5X29wcyByb2NrY2hpcF91c2IzX3Bo
+eV9vcHMgPSB7Cj4gPiAKPiA+ICBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3BoeV9wb3dlcl9vbihz
+dHJ1Y3QgcGh5ICpwaHkpCj4gPiAgewo+ID4gIAo+ID4gIAlzdHJ1Y3Qgcm9ja2NoaXBfdHlwZWNf
+cGh5ICp0Y3BoeSA9IHBoeV9nZXRfZHJ2ZGF0YShwaHkpOwo+ID4gCj4gPiArCXN0cnVjdCByb2Nr
+Y2hpcF91c2IzcGh5X3BvcnRfY2ZnICpjZmcgPSAmdGNwaHktPnBvcnRfY2ZnczsKPiA+IAo+ID4g
+IAlpbnQgbmV3X21vZGUsIHJldCA9IDA7Cj4gPiAgCXUzMiB2YWw7Cj4gPiAKPiA+IEBAIC03NjYs
+NiArNzY4LDggQEAgc3RhdGljIGludCByb2NrY2hpcF9kcF9waHlfcG93ZXJfb24oc3RydWN0IHBo
+eSAqcGh5KQo+ID4gCj4gPiAgCQl0Y3BoeV9waHlfaW5pdCh0Y3BoeSwgbmV3X21vZGUpOwo+ID4g
+IAkKPiA+ICAJfQo+ID4gCj4gPiArCXByb3BlcnR5X2VuYWJsZSh0Y3BoeSwgJmNmZy0+dXBoeV9k
+cF9zZWwsIDEpOwo+ID4gKwo+ID4gCj4gPiAgCXJldCA9IHJlYWR4X3BvbGxfdGltZW91dChyZWFk
+bCwgdGNwaHktPmJhc2UgKyBEUF9NT0RFX0NUTCwKPiAKPiBJZGVhIGZvciBmdXR1cmUgd29yazog
+dGhpcyBzaG91bGQganVzdCBiZSByZWFkbF9wb2xsX3RpbWVvdXQoKSBoZXJlLCBhbmQKPiB0aHJv
+dWdob3V0IHRoZSBkcml2ZXIuCj4gCj4gPiAgCQkJCSB2YWwsIHZhbCAmIERQX01PREVfQTIsIDEw
+MDAsCj4gPiAgCQkJCSBQSFlfTU9ERV9TRVRfVElNRU9VVCk7Cj4gPiAKPiA+IEBAIC04NjksNiAr
+ODczLDExIEBAIHN0YXRpYyBpbnQgdGNwaHlfcGFyc2VfZHQoc3RydWN0IHJvY2tjaGlwX3R5cGVj
+X3BoeQo+ID4gKnRjcGh5LD4gCj4gPiAgCWlmIChyZXQpCj4gPiAgCQo+ID4gIAkJcmV0dXJuIHJl
+dDsKPiA+IAo+ID4gKwlyZXQgPSB0Y3BoeV9nZXRfcGFyYW0oZGV2LCAmY2ZnLT51cGh5X2RwX3Nl
+bCwKPiA+ICsJCQkgICAgICAicm9ja2NoaXAsdXBoeS1kcC1zZWwiKTsKPiA+ICsJaWYgKHJldCkK
+PiA+ICsJCXJldHVybiByZXQ7Cj4gCj4gV2hhdCBhYm91dCBleGlzdGluZyBkZXZpY2UgdHJlZXM/
+IFlvdSdyZSBlc3NlbnRpYWxseSBhZGRpbmcgdGhpcwo+IG5ldyBwcm9wZXJ0eSBhbmQgcmVxdWly
+aW5nIGl0IGF0IHRoZSBzYW1lIHRpbWUuCj4gCj4gT3IgYXJlIHdlIGNvbnNpZGVyaW5nIG5vIFJL
+MzM5OSBEUCBzdGFibGUgYXQgdGhlIG1vbWVudD8gSSBndWVzcyB3ZQo+IGhhdmVuJ3QgYWN0dWFs
+bHkgbWVyZ2VkIGFueSBkZXZpY2UgdHJlZXMgdGhhdCBzdXBwb3J0IHRoaXMgeWV0LCBubz8KCkFu
+IGludGVyZXN0aW5nIHNpdHVhdGlvbiB3ZSdyZSBpbiBoZXJlLiBPbiB0aGUgb25lIGhhbmQsIHlv
+dSdyZSByaWdodCB0aGlzIApicmVha3MgImJhY2t3YXJkcyBjb21wYXRpYmxpdHkiLgoKQnV0IG9u
+IHRoZSBvdGhlciBoYW5kLCB0aGUgdHlwZS1jIHBoeSBpcyBjdXJyZW50bHkgdmVyeSBtdWNoIHVu
+dXNlZC4gVGhlIG9ubHkgCmN1cnJlbnQgYm9hcmQgcmszMzk5LWV2Yi5kdHMgZG9lcyBub3QgZW5h
+YmxlIHRoZW0gKHNvIHRoZXkncmUgZGlzYWJsZWQgCmV2ZXJ5d2hlcmUpIGFuZCB3ZSBoYXZlIG5l
+aXRoZXIgZHdjMyBub3IgZHAgbm9kZXMgaW4gYW55IHJrMzM5OSBkZXZpY2V0cmVlcyBzbyAKZmFy
+LiBBbHNvIFJvYiB3YXMgb2sgd2l0aCB0aGUgYmluZGluZyBjaGFuZ2UgOi0pIC4KClNvIGZyb20g
+bXkgcG92LCBJJ2Qgc2F5IGl0IF9zaG91bGRfIGJlIG9rLCBhcyBub3RoaW5nIGlzIHVzaW5nIHRo
+ZSBwaHlzIGF0IGFsbCAKeWV0IGFuZCB0aHVzIHRoZXJlIGlzIG5vdGhpbmcgdGhhdCBjb3VsZCBn
+ZXQgYnJva2VuLgoKCkhlaWtvCgo+IAo+IEJyaWFuCj4gCj4gPiArCj4gPiAKPiA+ICAJdGNwaHkt
+PmdyZl9yZWdzID0gc3lzY29uX3JlZ21hcF9sb29rdXBfYnlfcGhhbmRsZShkZXYtPm9mX25vZGUs
+Cj4gPiAgCQo+ID4gIAkJCQkJCQkgICJyb2NrY2hpcCxncmYiKTsKPiA+ICAJCj4gPiAgCWlmIChJ
+U19FUlIodGNwaHktPmdyZl9yZWdzKSkgewoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
