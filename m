@@ -1,14 +1,12 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] phy: rockchip-typec: support DP phy switch
-Date: Thu, 09 Mar 2017 09:31:33 +0100
-Message-ID: <1626236.28xlsfuSeg@diego>
-References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
- <11032198.PxydffNNDT@diego> <20170309031049.GA122422@google.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Refactor the component match logic.
+Date: Thu, 9 Mar 2017 16:36:34 +0800
+Message-ID: <58C11412.5070103@rock-chips.com>
+References: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1717645537=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170309031049.GA122422@google.com>
+In-Reply-To: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -18,68 +16,549 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kishon@ti.com, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Guenter Roeck <groeck@chromium.org>, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4sCgpBbSBNaXR0d29jaCwgOC4gTcOkcnogMjAxNywgMTk6MTA6NTAgQ0VUIHNjaHJp
-ZWIgQnJpYW4gTm9ycmlzOgo+IE9uIFRodSwgTWFyIDA5LCAyMDE3IGF0IDAyOjAyOjU0QU0gKzAx
-MDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gQW0gTWl0dHdvY2gsIDguIE3DpHJ6IDIwMTcs
-IDE2OjM5OjIzIENFVCBzY2hyaWViIEJyaWFuIE5vcnJpczoKPiA+ID4gT24gRnJpLCBGZWIgMTAs
-IDIwMTcgYXQgMDM6NDQ6MTNQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4gPiA+ID4gVGhl
-cmUgYXJlIDIgVHlwZS1jIFBIWXMgaW4gUkszMzk5LCBidXQgb25seSBvbmUgRFAgY29udHJvbGxl
-ci4gSGVuY2UKPiA+ID4gPiBvbmx5IG9uZSBQSFkgY2FuIGNvbm5lY3QgdG8gRFAgY29udHJvbGxl
-ciBhdCBvbmUgdGltZSwgdGhlIG90aGVyCj4gPiA+ID4gc2hvdWxkCj4gPiA+ID4gYmUgZGlzY29u
-bmVjdGVkLiBUaGUgR1JGX1NPQ19DT04yNiByZWdpc3RlciBoYXMgYSBzd2l0Y2ggYml0IHRvIGRv
-IGl0LAo+ID4gPiA+IHNldCB0aGlzIGJpdCBtZWFucyBlbmFibGUgUEhZIDEsIGNsZWFyIHRoaXMg
-Yml0IG1lYW5zIGVuYWJsZSBQSFkgMC4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBD
-aHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+ID4gPiA+IC0tLQo+ID4gPiA+IAo+ID4g
-PiA+ICBkcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYyB8IDkgKysrKysrKysrCj4gPiA+
-ID4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKPiA+ID4gPiAKPiA+ID4gPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXR5cGVjLmMKPiA+ID4gPiBiL2RyaXZl
-cnMvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy5jIGluZGV4IDdjZmIwZjguLjE2MDRhYWEgMTAwNjQ0
-Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXR5cGVjLmMKPiA+ID4gPiAr
-KysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYwo+IAo+IC4uLgo+IAo+ID4gPiA+
-IEBAIC04NjksNiArODczLDExIEBAIHN0YXRpYyBpbnQgdGNwaHlfcGFyc2VfZHQoc3RydWN0Cj4g
-PiA+ID4gcm9ja2NoaXBfdHlwZWNfcGh5Cj4gPiA+ID4gKnRjcGh5LD4KPiA+ID4gPiAKPiA+ID4g
-PiAgCWlmIChyZXQpCj4gPiA+ID4gIAkKPiA+ID4gPiAgCQlyZXR1cm4gcmV0Owo+ID4gPiA+IAo+
-ID4gPiA+ICsJcmV0ID0gdGNwaHlfZ2V0X3BhcmFtKGRldiwgJmNmZy0+dXBoeV9kcF9zZWwsCj4g
-PiA+ID4gKwkJCSAgICAgICJyb2NrY2hpcCx1cGh5LWRwLXNlbCIpOwo+ID4gPiA+ICsJaWYgKHJl
-dCkKPiA+ID4gPiArCQlyZXR1cm4gcmV0Owo+ID4gPiAKPiA+ID4gV2hhdCBhYm91dCBleGlzdGlu
-ZyBkZXZpY2UgdHJlZXM/IFlvdSdyZSBlc3NlbnRpYWxseSBhZGRpbmcgdGhpcwo+ID4gPiBuZXcg
-cHJvcGVydHkgYW5kIHJlcXVpcmluZyBpdCBhdCB0aGUgc2FtZSB0aW1lLgo+ID4gPiAKPiA+ID4g
-T3IgYXJlIHdlIGNvbnNpZGVyaW5nIG5vIFJLMzM5OSBEUCBzdGFibGUgYXQgdGhlIG1vbWVudD8g
-SSBndWVzcyB3ZQo+ID4gPiBoYXZlbid0IGFjdHVhbGx5IG1lcmdlZCBhbnkgZGV2aWNlIHRyZWVz
-IHRoYXQgc3VwcG9ydCB0aGlzIHlldCwgbm8/Cj4gPiAKPiA+IEFuIGludGVyZXN0aW5nIHNpdHVh
-dGlvbiB3ZSdyZSBpbiBoZXJlLiBPbiB0aGUgb25lIGhhbmQsIHlvdSdyZSByaWdodCB0aGlzCj4g
-PiBicmVha3MgImJhY2t3YXJkcyBjb21wYXRpYmxpdHkiLgo+ID4gCj4gPiBCdXQgb24gdGhlIG90
-aGVyIGhhbmQsIHRoZSB0eXBlLWMgcGh5IGlzIGN1cnJlbnRseSB2ZXJ5IG11Y2ggdW51c2VkLiBU
-aGUKPiA+IG9ubHkgY3VycmVudCBib2FyZCByazMzOTktZXZiLmR0cyBkb2VzIG5vdCBlbmFibGUg
-dGhlbSAoc28gdGhleSdyZQo+ID4gZGlzYWJsZWQgZXZlcnl3aGVyZSkgYW5kIHdlIGhhdmUgbmVp
-dGhlciBkd2MzIG5vciBkcCBub2RlcyBpbiBhbnkgcmszMzk5Cj4gPiBkZXZpY2V0cmVlcyBzbyBm
-YXIuIEFsc28gUm9iIHdhcyBvayB3aXRoIHRoZSBiaW5kaW5nIGNoYW5nZSA6LSkgLgo+ID4gCj4g
-PiBTbyBmcm9tIG15IHBvdiwgSSdkIHNheSBpdCBfc2hvdWxkXyBiZSBvaywgYXMgbm90aGluZyBp
-cyB1c2luZyB0aGUgcGh5cyBhdAo+ID4gYWxsIHlldCBhbmQgdGh1cyB0aGVyZSBpcyBub3RoaW5n
-IHRoYXQgY291bGQgZ2V0IGJyb2tlbi4KPiAKPiBZZWFoLCBJIGd1ZXNzIGl0J3MgT0suLi4gYnV0
-IEJUVyBvdXQtb2YtdHJlZSBEVHMgYXJlIHBlcmZlY3RseQo+IGxlZ2l0LCBvbmNlIHRoZSBiaW5k
-aW5ncyBhcmUgYWNjZXB0ZWQuCj4gCj4gQW5vdGhlciByYW5kb20gcG9pbnQgb2YgY29udGVudGlv
-biAobm90IHdvcnRoIHRvbyBtdWNoLCBhcyB0aGUgcGF0dGVybgo+IGlzIGFscmVhZHkgc2V0KSwg
-YnV0IHdoeSBkbyB0aGVzZSBkZXNlcnZlIERUIHByb3BlcnRpZXMgYXQgYWxsPyBUaGUKPiBkZXZp
-Y2UgYWxyZWFkeSBoYXMgYSAicmszMzk5IiBjb21wYXRpYmxlIHByb3BlcnR5LCBzbyBjYW4ndCB3
-ZSBkZXJpdmUKPiBHUkYgb2Zmc2V0cyBmcm9tIHRoYXQ/CgpJJ20gZGVmaW5pdGx5IHdpdGggeW91
-IGluIHRoaXMgcmVnYXJkLgoKQnV0IGl0IHNlZW1zIGxpa2UgdGhlcmUgaXMgc29tZSBzb3J0IG9m
-IGN1cnJlbnQgdHJlbmQgb2YgbW92aW5nIG1vcmUgc3R1ZmYgCmludG8gdGhlIGR0IGFnYWluLiBJ
-IHZhZ3VlbHkgcmVtZW1iZXIgcGh5IGFuZCAob3IpIGR0LW1haW50YWluZXJzIHByZWZlcnJpbmcg
-CnRvIGhhdmUgdGhlc2UgZGVmaW5pdGlvbnMgaW4gdGhlIGR0IGZvciB0aGUgdHlwZWMtcGh5LgoK
-U2VlIGFsc28gdGhlIHJlY2VudCBtYWlsIGZyb20gT2xvZiBjb25jZXJuaW5nIHRoZSBncmYgaW5p
-dGlhbGl6YXRpb24gYW5kIG1heWJlIApub3QgaGF2aW5nIHBlci1zb2MgZGVmaW5pdGlvbnMgaW4g
-dGhlIGRyaXZlciwgd2hlcmUgSSdtIHRyeWluZyB0byBrZWVwIHRoaW5ncyAKb3V0IG9mIHRoZSBk
-dCBhIGJpdCBtb3JlIHN0cm9uZ2x5IDotKSAuCgpTbyB5ZXMsIHBlcnNvbmFsbHkgSSB3b3VsZCBk
-ZWZpbml0bHkgcHJlZmVyIG5vdCBoYXZpbmcgdG8gbXVjaCBHUkYtc3R1ZmYgbGVhayAKaW50byB0
-aGUgZHQuIFNpbXBseSBiZWNhdXNlIHRoZSBHUkYgaGFzIGFsd2F5cyBiZWVuIHZlcnkgdW5zdGFi
-bGUgb3ZlciB0aW1lIApbPXlvdSBhbHdheXMgZmluZCBvbmUgbW9yZSBiaXQgdGhhdCBuZWVkcyB0
-dW5pbmddIGFuZCB0byBub3QgY2F1c2UgdGhpbmdzIGxpa2UgCnRoZSBhYm92ZS4gQnV0IGFzIHlv
-dSBzYWlkIEkgZ3Vlc3Mgd2UncmUgdG8gbGF0ZSBmb3IgdGhlIHR5cGVjLXBoeS4KCgpIZWlrbwpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+--===============1717645537==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <div class="moz-cite-prefix">On 2017年03月08日 13:58, Jeffy Chen wrote:<br>
+    </div>
+    <blockquote
+      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
+      type="cite">
+      <pre wrap="">Currently we are adding all components from the dts, if one of their
+drivers been disabled, we would not be able to bring up others.</pre>
+    </blockquote>
+    <br>
+    Right, all the dts related components should enable on kernel
+    config, otherwise drm can't bring up, high coupling, it's a problem.
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <br>
+    <br>
+    <blockquote
+      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
+      type="cite">
+      <pre wrap="">
+
+Refactor component match logic, follow exynos drm.</pre>
+    </blockquote>
+    <br>
+    RFC. is it a good idea to use platform driver match?  <br>
+    <br>
+    I hesitated, match components with device-tree make code
+    independent, but indeed has match problem.
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <br>
+    <br>
+    <blockquote
+      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
+      type="cite">
+      <pre wrap="">
+
+Signed-off-by: Jeffy Chen <a class="moz-txt-link-rfc2396E" href="mailto:jeffy.chen@rock-chips.com">&lt;jeffy.chen@rock-chips.com&gt;</a>
+
+---
+
+ drivers/gpu/drm/rockchip/Kconfig                |  10 +-
+ drivers/gpu/drm/rockchip/Makefile               |  16 +--
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |   9 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c          |   8 +-
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c          |   8 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  10 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c            |  10 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 156 ++++++++++++++++--------
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |   6 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c     |   8 +-
+ 10 files changed, 133 insertions(+), 108 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 0e4eb84..50c41c0 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -13,7 +13,7 @@ config DRM_ROCKCHIP
+ 	  IP found on the SoC.
+ 
+ config ROCKCHIP_ANALOGIX_DP
+-	tristate "Rockchip specific extensions for Analogix DP driver"
++	bool "Rockchip specific extensions for Analogix DP driver<a class="moz-txt-link-rfc2396E" href="mailto:dependsonDRM_ROCKCHIPselectDRM_ANALOGIX_DPhelp@@-22,7+22,7@@configROCKCHIP_ANALOGIX_DPonRK3288basedSoC,youshouldseletthisoption.configROCKCHIP_CDN_DP-tristate">"
+ 	depends on DRM_ROCKCHIP
+ 	select DRM_ANALOGIX_DP
+ 	help
+@@ -22,7 +22,7 @@ config ROCKCHIP_ANALOGIX_DP
+ 	  on RK3288 based SoC, you should selet this option.
+ 
+ config ROCKCHIP_CDN_DP
+-        tristate "</a>Rockchip cdn DP"
++        bool "Rockchip cdn DP"
+         depends on DRM_ROCKCHIP
+ 	depends on EXTCON
+ 	select SND_SOC_HDMI_CODEC if SND_SOC
+@@ -33,7 +33,7 @@ config ROCKCHIP_CDN_DP
+ 	  option.
+ 
+ config ROCKCHIP_DW_HDMI
+-        tristate "Rockchip specific extensions for Synopsys DW HDMI"
++        bool "Rockchip specific extensions for Synopsys DW HDMI"
+         depends on DRM_ROCKCHIP
+         select DRM_DW_HDMI
+         help
+@@ -43,7 +43,7 @@ config ROCKCHIP_DW_HDMI
+ 	  option.
+ 
+ config ROCKCHIP_DW_MIPI_DSI
+-	tristate "Rockchip specific extensions for Synopsys DW MIPI DSI"
++	bool "Rockchip specific extensions for Synopsys DW MIPI DSI<a class="moz-txt-link-rfc2396E" href="mailto:dependsonDRM_ROCKCHIPselectDRM_MIPI_DSIhelp@@-53,7+53,7@@configROCKCHIP_DW_MIPI_DSIoption.configROCKCHIP_INNO_HDMI-tristate">"
+ 	depends on DRM_ROCKCHIP
+ 	select DRM_MIPI_DSI
+ 	help
+@@ -53,7 +53,7 @@ config ROCKCHIP_DW_MIPI_DSI
+ 	 option.
+ 
+ config ROCKCHIP_INNO_HDMI
+-	tristate "</a>Rockchip specific extensions for Innosilicon HDMI"
++	bool "Rockchip specific extensions for Innosilicon HDMI"
+ 	depends on DRM_ROCKCHIP
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
+index c931e2a..fa8dc9d 100644
+--- a/drivers/gpu/drm/rockchip/Makefile
++++ b/drivers/gpu/drm/rockchip/Makefile
+@@ -3,14 +3,14 @@
+ # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+ 
+ rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
+-		rockchip_drm_gem.o rockchip_drm_psr.o rockchip_drm_vop.o
++		rockchip_drm_gem.o rockchip_drm_psr.o \
++		rockchip_drm_vop.o rockchip_vop_reg.o
+ rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
+ 
+-obj-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
+-obj-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp.o
+-cdn-dp-objs := cdn-dp-core.o cdn-dp-reg.o
+-obj-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
+-obj-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
+-obj-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
++rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
++rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
++rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
++rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
++rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
+ 
+-obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o rockchip_vop_reg.o
++obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 8548e82..91ebe5c 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -507,7 +507,7 @@ static const struct of_device_id rockchip_dp_dt_ids[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
+ 
+-static struct platform_driver rockchip_dp_driver = {
++struct platform_driver rockchip_dp_driver = {
+ 	.probe = rockchip_dp_probe,
+ 	.remove = rockchip_dp_remove,
+ 	.driver = {
+@@ -516,10 +516,3 @@ static struct platform_driver rockchip_dp_driver = {
+ 		   .of_match_table = of_match_ptr(rockchip_dp_dt_ids),
+ 	},
+ };
+-
+-module_platform_driver(rockchip_dp_driver);
+-
+-MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
+-MODULE_AUTHOR("Jeff chen <a class="moz-txt-link-rfc2396E" href="mailto:jeff.chen@rock-chips.com">&lt;jeff.chen@rock-chips.com&gt;</a>");
+-MODULE_DESCRIPTION("Rockchip Specific Analogix-DP Driver Extension");
+-MODULE_LICENSE("GPL v2");
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index fd79a70..e1796d0 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1243,7 +1243,7 @@ static const struct dev_pm_ops cdn_dp_pm_ops = {
+ 				cdn_dp_resume)
+ };
+ 
+-static struct platform_driver cdn_dp_driver = {
++struct platform_driver cdn_dp_driver = {
+ 	.probe = cdn_dp_probe,
+ 	.remove = cdn_dp_remove,
+ 	.shutdown = cdn_dp_shutdown,
+@@ -1254,9 +1254,3 @@ static struct platform_driver cdn_dp_driver = {
+ 		   .pm = &amp;cdn_dp_pm_ops,
+ 	},
+ };
+-
+-module_platform_driver(cdn_dp_driver);
+-
+-MODULE_AUTHOR("Chris Zhong <a class="moz-txt-link-rfc2396E" href="mailto:zyw@rock-chips.com">&lt;zyw@rock-chips.com&gt;</a>");
+-MODULE_DESCRIPTION("cdn DP Driver");
+-MODULE_LICENSE("GPL v2");
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+index d9aa382..65a474f 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+@@ -1165,7 +1165,7 @@ static int dw_mipi_dsi_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct platform_driver dw_mipi_dsi_driver = {
++struct platform_driver dw_mipi_dsi_driver = {
+ 	.probe		= dw_mipi_dsi_probe,
+ 	.remove		= dw_mipi_dsi_remove,
+ 	.driver		= {
+@@ -1173,9 +1173,3 @@ static struct platform_driver dw_mipi_dsi_driver = {
+ 		.name	= DRIVER_NAME,
+ 	},
+ };
+-module_platform_driver(dw_mipi_dsi_driver);
+-
+-MODULE_DESCRIPTION("ROCKCHIP MIPI DSI host controller driver");
+-MODULE_AUTHOR("Chris Zhong <a class="moz-txt-link-rfc2396E" href="mailto:zyw@rock-chips.com">&lt;zyw@rock-chips.com&gt;</a>");
+-MODULE_LICENSE("GPL");
+-MODULE_ALIAS("platform:" DRIVER_NAME);
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index a6d4a02..976ea79 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -326,7 +326,7 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
++struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
+ 	.probe  = dw_hdmi_rockchip_probe,
+ 	.remove = dw_hdmi_rockchip_remove,
+ 	.driver = {
+@@ -334,11 +334,3 @@ static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
+ 		.of_match_table = dw_hdmi_rockchip_dt_ids,
+ 	},
+ };
+-
+-module_platform_driver(dw_hdmi_rockchip_pltfm_driver);
+-
+-MODULE_AUTHOR("Andy Yan <a class="moz-txt-link-rfc2396E" href="mailto:andy.yan@rock-chips.com">&lt;andy.yan@rock-chips.com&gt;</a>");
+-MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
+-MODULE_DESCRIPTION("Rockchip Specific DW-HDMI Driver Extension");
+-MODULE_LICENSE("GPL");
+-MODULE_ALIAS("platform:dwhdmi-rockchip");
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 006260d..7d9b75e 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -923,7 +923,7 @@ static const struct of_device_id inno_hdmi_dt_ids[] = {
+ };
+ MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
+ 
+-static struct platform_driver inno_hdmi_driver = {
++struct platform_driver inno_hdmi_driver = {
+ 	.probe  = inno_hdmi_probe,
+ 	.remove = inno_hdmi_remove,
+ 	.driver = {
+@@ -931,11 +931,3 @@ static struct platform_driver inno_hdmi_driver = {
+ 		.of_match_table = inno_hdmi_dt_ids,
+ 	},
+ };
+-
+-module_platform_driver(inno_hdmi_driver);
+-
+-MODULE_AUTHOR("Zheng Yang <a class="moz-txt-link-rfc2396E" href="mailto:zhengyang@rock-chips.com">&lt;zhengyang@rock-chips.com&gt;</a>");
+-MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
+-MODULE_DESCRIPTION("Rockchip Specific INNO-HDMI Driver");
+-MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:innohdmi-rockchip");
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index b360e62..c0dae3b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -356,34 +356,49 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
+ 				rockchip_drm_sys_resume)
+ };
+ 
+-static int compare_of(struct device *dev, void *data)
+-{
+-	struct device_node *np = data;
++static struct platform_driver *rockchip_drm_comp_drvs[] = {
++	&amp;vop_platform_driver,
++#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP
++	&amp;rockchip_dp_driver,
++#endif
++#ifdef CONFIG_ROCKCHIP_CDN_DP
++	&amp;cdn_dp_driver,
++#endif
++#ifdef CONFIG_ROCKCHIP_DW_HDMI
++	&amp;dw_hdmi_rockchip_pltfm_driver,
++#endif
++#ifdef CONFIG_ROCKCHIP_DW_MIPI_DSI
++	&amp;dw_mipi_dsi_driver,
++#endif
++#ifdef CONFIG_ROCKCHIP_INNO_HDMI
++	&amp;inno_hdmi_driver,
++#endif
++};
+ 
+-	return dev-&gt;of_node == np;
++static int compare_dev(struct device *dev, void *data)
++{
++	return dev == (struct device *)data;
+ }
+ 
+-static void rockchip_add_endpoints(struct device *dev,
+-				   struct component_match **match,
+-				   struct device_node *port)
++static struct component_match *rockchip_drm_match_add(struct device *dev)
+ {
+-	struct device_node *ep, *remote;
++	struct component_match *match = NULL;
++	int i;
+ 
+-	for_each_child_of_node(port, ep) {
+-		remote = of_graph_get_remote_port_parent(ep);
+-		if (!remote || !of_device_is_available(remote)) {
+-			of_node_put(remote);
+-			continue;
+-		} else if (!of_device_is_available(remote-&gt;parent)) {
+-			dev_warn(dev, "parent device of %s is not available\n",
+-				 remote-&gt;full_name);
+-			of_node_put(remote);
+-			continue;
+-		}
++	for (i = 0; i &lt; ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
++		struct platform_driver *drv = rockchip_drm_comp_drvs[i];
++		struct device *p = NULL, *d;
+ 
+-		drm_of_component_match_add(dev, match, compare_of, remote);
+-		of_node_put(remote);
++		while ((d = bus_find_device(&amp;platform_bus_type, p, &amp;drv-&gt;driver,
++					    (void *)platform_bus_type.match))) {
++			put_device(p);
++			component_match_add(dev, &amp;match, compare_dev, d);
++			p = d;
++		}
++		put_device(p);
+ 	}
++
++	return match ?: ERR_PTR(-ENODEV);
+ }
+ 
+ static const struct component_master_ops rockchip_drm_ops = {
+@@ -391,21 +406,16 @@ static const struct component_master_ops rockchip_drm_ops = {
+ 	.unbind = rockchip_drm_unbind,
+ };
+ 
+-static int rockchip_drm_platform_probe(struct platform_device *pdev)
++static int rockchip_drm_platform_of_probe(struct device *dev)
+ {
+-	struct device *dev = &amp;pdev-&gt;dev;
+-	struct component_match *match = NULL;
+ 	struct device_node *np = dev-&gt;of_node;
+ 	struct device_node *port;
++	bool found = false;
+ 	int i;
+ 
+ 	if (!np)
+ 		return -ENODEV;
+-	/*
+-	 * Bind the crtc ports first, so that
+-	 * drm_of_find_possible_crtcs called from encoder .bind callbacks
+-	 * works as expected.
+-	 */
++
+ 	for (i = 0;; i++) {
+ 		struct device_node *iommu;
+ 
+@@ -429,9 +439,9 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
+ 			is_support_iommu = false;
+ 		}
+ 
++		found = true;
++
+ 		of_node_put(iommu);
+-		drm_of_component_match_add(dev, &amp;match, compare_of,
+-					   port-&gt;parent);
+ 		of_node_put(port);
+ 	}
+ 
+@@ -440,27 +450,27 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	if (!match) {
++	if (!found) {
+ 		dev_err(dev, "No available vop found for display-subsystem.\n");
+ 		return -ENODEV;
+ 	}
+-	/*
+-	 * For each bound crtc, bind the encoders attached to its
+-	 * remote endpoint.
+-	 */
+-	for (i = 0;; i++) {
+-		port = of_parse_phandle(np, "ports", i);
+-		if (!port)
+-			break;
+ 
+-		if (!of_device_is_available(port-&gt;parent)) {
+-			of_node_put(port);
+-			continue;
+-		}
++	return 0;
++}
+ 
+-		rockchip_add_endpoints(dev, &amp;match, port);
+-		of_node_put(port);
+-	}
++static int rockchip_drm_platform_probe(struct platform_device *pdev)
++{
++	struct device *dev = &amp;pdev-&gt;dev;
++	struct component_match *match = NULL;
++	int ret;
++
++	ret = rockchip_drm_platform_of_probe(dev);
++	if (ret)
++		return ret;
++
++	match = rockchip_drm_match_add(dev);
++	if (IS_ERR(match))
++		return PTR_ERR(match);
+ 
+ 	return component_master_add_with_match(dev, &amp;rockchip_drm_ops, match);
+ }
+@@ -488,7 +498,57 @@ static struct platform_driver rockchip_drm_platform_driver = {
+ 	},
+ };
+ 
+-module_platform_driver(rockchip_drm_platform_driver);
++static void rockchip_drm_unregister_drivers(void)
++{
++	int i;
++
++	for (i = ARRAY_SIZE(rockchip_drm_comp_drvs) - 1; i &gt;= 0; i--)
++		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
++}
++
++static int rockchip_drm_register_drivers(void)
++{
++	int i, ret;
++
++	for (i = 0; i &lt; ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
++		ret = platform_driver_register(rockchip_drm_comp_drvs[i]);
++		if (ret)
++			goto fail;
++	}
++	return 0;
++fail:
++	rockchip_drm_unregister_drivers();
++	return ret;
++}
++
++static int __init rockchip_drm_init(void)
++{
++	int ret;
++
++	ret = rockchip_drm_register_drivers();
++	if (ret)
++		return ret;
++
++	ret = platform_driver_register(&amp;rockchip_drm_platform_driver);
++	if (ret)
++		goto err_unreg_drivers;
++
++	return 0;
++
++err_unreg_drivers:
++	rockchip_drm_unregister_drivers();
++	return ret;
++}
++
++static void __exit rockchip_drm_fini(void)
++{
++	platform_driver_unregister(&amp;rockchip_drm_platform_driver);
++
++	rockchip_drm_unregister_drivers();
++}
++
++module_init(rockchip_drm_init);
++module_exit(rockchip_drm_fini);
+ 
+ MODULE_AUTHOR("Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>");
+ MODULE_DESCRIPTION("ROCKCHIP DRM Driver");
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index adc3930..f46e1d0 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -79,4 +79,10 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
+ int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+ 				unsigned int mstimeout);
+ 
++extern struct platform_driver cdn_dp_driver;
++extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
++extern struct platform_driver dw_mipi_dsi_driver;
++extern struct platform_driver inno_hdmi_driver;
++extern struct platform_driver rockchip_dp_driver;
++extern struct platform_driver vop_platform_driver;</pre>
+    </blockquote>
+    miss #ifdef ... #end<br>
+    <br>
+    +#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP<br>
+    +extern struct platform_driver rockchip_dp_driver;
+    <br>
+    +#end<br>
+    <br>
+    <blockquote
+      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
+      type="cite">
+      <pre wrap="">
+ #endif /* _ROCKCHIP_DRM_DRV_H_ */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 91fbc7b..0da4444 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -404,7 +404,7 @@ static int vop_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct platform_driver vop_platform_driver = {
++struct platform_driver vop_platform_driver = {
+ 	.probe = vop_probe,
+ 	.remove = vop_remove,
+ 	.driver = {
+@@ -412,9 +412,3 @@ static struct platform_driver vop_platform_driver = {
+ 		.of_match_table = of_match_ptr(vop_driver_dt_match),
+ 	},
+ };
+-
+-module_platform_driver(vop_platform_driver);
+-
+-MODULE_AUTHOR("Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>");
+-MODULE_DESCRIPTION("ROCKCHIP VOP Driver");
+-MODULE_LICENSE("GPL v2");
+</pre>
+    </blockquote>
+    <br>
+    <br>
+    <pre class="moz-signature" cols="72">-- 
+Ｍark Yao</pre>
+  </body>
+</html>
+
+
+--===============1717645537==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1717645537==--
