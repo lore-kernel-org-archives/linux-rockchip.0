@@ -1,564 +1,263 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Refactor the component match logic.
-Date: Thu, 9 Mar 2017 16:36:34 +0800
-Message-ID: <58C11412.5070103@rock-chips.com>
-References: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1717645537=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Guenter Roeck <groeck@chromium.org>, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 4/4] mfd: rk808: Add RK805 support
+Date: Thu,  9 Mar 2017 16:50:02 +0800
+Message-ID: <1489049402-15791-5-git-send-email-zhangqing@rock-chips.com>
+References: <1489049402-15791-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1489049402-15791-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: lee.jones@linaro.org, lgirdwood@gmail.com, broonie@kernel.org
+Cc: huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1717645537==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
+The RK805 chip is a Power Management IC (PMIC) for multimedia and handheld
+devices. It contains the following components:
 
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000">
-    <div class="moz-cite-prefix">On 2017年03月08日 13:58, Jeffy Chen wrote:<br>
-    </div>
-    <blockquote
-      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
-      type="cite">
-      <pre wrap="">Currently we are adding all components from the dts, if one of their
-drivers been disabled, we would not be able to bring up others.</pre>
-    </blockquote>
-    <br>
-    Right, all the dts related components should enable on kernel
-    config, otherwise drm can't bring up, high coupling, it's a problem.
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <br>
-    <br>
-    <blockquote
-      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
-      type="cite">
-      <pre wrap="">
+    - Regulators
+    - RTC
+    - Clocking
 
-Refactor component match logic, follow exynos drm.</pre>
-    </blockquote>
-    <br>
-    RFC. is it a good idea to use platform driver match?  <br>
-    <br>
-    I hesitated, match components with device-tree make code
-    independent, but indeed has match problem.
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <br>
-    <br>
-    <blockquote
-      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
-      type="cite">
-      <pre wrap="">
+Both RK808 and RK805 chips are using a similar register map,
+so we can reuse the RTC and Clocking functionality.
 
-Signed-off-by: Jeffy Chen <a class="moz-txt-link-rfc2396E" href="mailto:jeffy.chen@rock-chips.com">&lt;jeffy.chen@rock-chips.com&gt;</a>
-
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
+ drivers/clk/Kconfig |   4 +-
+ drivers/mfd/Kconfig |   4 +-
+ drivers/mfd/rk808.c | 109 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/rtc/Kconfig |   4 +-
+ 4 files changed, 115 insertions(+), 6 deletions(-)
 
- drivers/gpu/drm/rockchip/Kconfig                |  10 +-
- drivers/gpu/drm/rockchip/Makefile               |  16 +--
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |   9 +-
- drivers/gpu/drm/rockchip/cdn-dp-core.c          |   8 +-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c          |   8 +-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  10 +-
- drivers/gpu/drm/rockchip/inno_hdmi.c            |  10 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 156 ++++++++++++++++--------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |   6 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c     |   8 +-
- 10 files changed, 133 insertions(+), 108 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 0e4eb84..50c41c0 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -13,7 +13,7 @@ config DRM_ROCKCHIP
- 	  IP found on the SoC.
+diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+index 9356ab4b7d76..7ca8f02a1232 100644
+--- a/drivers/clk/Kconfig
++++ b/drivers/clk/Kconfig
+@@ -39,10 +39,10 @@ config COMMON_CLK_MAX77686
+ 	  clock.
  
- config ROCKCHIP_ANALOGIX_DP
--	tristate "Rockchip specific extensions for Analogix DP driver"
-+	bool "Rockchip specific extensions for Analogix DP driver<a class="moz-txt-link-rfc2396E" href="mailto:dependsonDRM_ROCKCHIPselectDRM_ANALOGIX_DPhelp@@-22,7+22,7@@configROCKCHIP_ANALOGIX_DPonRK3288basedSoC,youshouldseletthisoption.configROCKCHIP_CDN_DP-tristate">"
- 	depends on DRM_ROCKCHIP
- 	select DRM_ANALOGIX_DP
+ config COMMON_CLK_RK808
+-	tristate "Clock driver for RK808/RK818"
++	tristate "Clock driver for RK805/RK808/RK818"
+ 	depends on MFD_RK808
+ 	---help---
+-	  This driver supports RK808 and RK818 crystal oscillator clock. These
++	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
+ 	  multi-function devices have two fixed-rate oscillators,
+ 	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+ 	  by control register.
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index 55ecdfb74d31..b410a348b756 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -892,13 +892,13 @@ config MFD_RC5T583
+ 	  different functionality of the device.
+ 
+ config MFD_RK808
+-	tristate "Rockchip RK808/RK818 Power Management Chip"
++	tristate "Rockchip RK805/RK808/RK818 Power Management Chip"
+ 	depends on I2C && OF
+ 	select MFD_CORE
+ 	select REGMAP_I2C
+ 	select REGMAP_IRQ
  	help
-@@ -22,7 +22,7 @@ config ROCKCHIP_ANALOGIX_DP
- 	  on RK3288 based SoC, you should selet this option.
- 
- config ROCKCHIP_CDN_DP
--        tristate "</a>Rockchip cdn DP"
-+        bool "Rockchip cdn DP"
-         depends on DRM_ROCKCHIP
- 	depends on EXTCON
- 	select SND_SOC_HDMI_CODEC if SND_SOC
-@@ -33,7 +33,7 @@ config ROCKCHIP_CDN_DP
- 	  option.
- 
- config ROCKCHIP_DW_HDMI
--        tristate "Rockchip specific extensions for Synopsys DW HDMI"
-+        bool "Rockchip specific extensions for Synopsys DW HDMI"
-         depends on DRM_ROCKCHIP
-         select DRM_DW_HDMI
-         help
-@@ -43,7 +43,7 @@ config ROCKCHIP_DW_HDMI
- 	  option.
- 
- config ROCKCHIP_DW_MIPI_DSI
--	tristate "Rockchip specific extensions for Synopsys DW MIPI DSI"
-+	bool "Rockchip specific extensions for Synopsys DW MIPI DSI<a class="moz-txt-link-rfc2396E" href="mailto:dependsonDRM_ROCKCHIPselectDRM_MIPI_DSIhelp@@-53,7+53,7@@configROCKCHIP_DW_MIPI_DSIoption.configROCKCHIP_INNO_HDMI-tristate">"
- 	depends on DRM_ROCKCHIP
- 	select DRM_MIPI_DSI
- 	help
-@@ -53,7 +53,7 @@ config ROCKCHIP_DW_MIPI_DSI
- 	 option.
- 
- config ROCKCHIP_INNO_HDMI
--	tristate "</a>Rockchip specific extensions for Innosilicon HDMI"
-+	bool "Rockchip specific extensions for Innosilicon HDMI"
- 	depends on DRM_ROCKCHIP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
-diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-index c931e2a..fa8dc9d 100644
---- a/drivers/gpu/drm/rockchip/Makefile
-+++ b/drivers/gpu/drm/rockchip/Makefile
-@@ -3,14 +3,14 @@
- # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
- 
- rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
--		rockchip_drm_gem.o rockchip_drm_psr.o rockchip_drm_vop.o
-+		rockchip_drm_gem.o rockchip_drm_psr.o \
-+		rockchip_drm_vop.o rockchip_vop_reg.o
- rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
- 
--obj-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
--obj-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp.o
--cdn-dp-objs := cdn-dp-core.o cdn-dp-reg.o
--obj-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
--obj-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
--obj-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
- 
--obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o rockchip_vop_reg.o
-+obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 8548e82..91ebe5c 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -507,7 +507,7 @@ static const struct of_device_id rockchip_dp_dt_ids[] = {
- };
- MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
- 
--static struct platform_driver rockchip_dp_driver = {
-+struct platform_driver rockchip_dp_driver = {
- 	.probe = rockchip_dp_probe,
- 	.remove = rockchip_dp_remove,
- 	.driver = {
-@@ -516,10 +516,3 @@ static struct platform_driver rockchip_dp_driver = {
- 		   .of_match_table = of_match_ptr(rockchip_dp_dt_ids),
- 	},
- };
--
--module_platform_driver(rockchip_dp_driver);
--
--MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
--MODULE_AUTHOR("Jeff chen <a class="moz-txt-link-rfc2396E" href="mailto:jeff.chen@rock-chips.com">&lt;jeff.chen@rock-chips.com&gt;</a>");
--MODULE_DESCRIPTION("Rockchip Specific Analogix-DP Driver Extension");
--MODULE_LICENSE("GPL v2");
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index fd79a70..e1796d0 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1243,7 +1243,7 @@ static const struct dev_pm_ops cdn_dp_pm_ops = {
- 				cdn_dp_resume)
+-	  If you say yes here you get support for the RK808 and RK818
++	  If you say yes here you get support for the RK805, RK808 and RK818
+ 	  Power Management chips.
+ 	  This driver provides common support for accessing the device
+ 	  through I2C interface. The device supports multiple sub-devices
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 3334a2a7f3fb..97fd4c0a811d 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -70,6 +70,14 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	.volatile_reg = rk808_is_volatile_reg,
  };
  
--static struct platform_driver cdn_dp_driver = {
-+struct platform_driver cdn_dp_driver = {
- 	.probe = cdn_dp_probe,
- 	.remove = cdn_dp_remove,
- 	.shutdown = cdn_dp_shutdown,
-@@ -1254,9 +1254,3 @@ static struct platform_driver cdn_dp_driver = {
- 		   .pm = &amp;cdn_dp_pm_ops,
- 	},
- };
--
--module_platform_driver(cdn_dp_driver);
--
--MODULE_AUTHOR("Chris Zhong <a class="moz-txt-link-rfc2396E" href="mailto:zyw@rock-chips.com">&lt;zyw@rock-chips.com&gt;</a>");
--MODULE_DESCRIPTION("cdn DP Driver");
--MODULE_LICENSE("GPL v2");
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index d9aa382..65a474f 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -1165,7 +1165,7 @@ static int dw_mipi_dsi_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--static struct platform_driver dw_mipi_dsi_driver = {
-+struct platform_driver dw_mipi_dsi_driver = {
- 	.probe		= dw_mipi_dsi_probe,
- 	.remove		= dw_mipi_dsi_remove,
- 	.driver		= {
-@@ -1173,9 +1173,3 @@ static struct platform_driver dw_mipi_dsi_driver = {
- 		.name	= DRIVER_NAME,
- 	},
- };
--module_platform_driver(dw_mipi_dsi_driver);
--
--MODULE_DESCRIPTION("ROCKCHIP MIPI DSI host controller driver");
--MODULE_AUTHOR("Chris Zhong <a class="moz-txt-link-rfc2396E" href="mailto:zyw@rock-chips.com">&lt;zyw@rock-chips.com&gt;</a>");
--MODULE_LICENSE("GPL");
--MODULE_ALIAS("platform:" DRIVER_NAME);
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index a6d4a02..976ea79 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -326,7 +326,7 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
-+struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
- 	.probe  = dw_hdmi_rockchip_probe,
- 	.remove = dw_hdmi_rockchip_remove,
- 	.driver = {
-@@ -334,11 +334,3 @@ static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
- 		.of_match_table = dw_hdmi_rockchip_dt_ids,
- 	},
- };
--
--module_platform_driver(dw_hdmi_rockchip_pltfm_driver);
--
--MODULE_AUTHOR("Andy Yan <a class="moz-txt-link-rfc2396E" href="mailto:andy.yan@rock-chips.com">&lt;andy.yan@rock-chips.com&gt;</a>");
--MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
--MODULE_DESCRIPTION("Rockchip Specific DW-HDMI Driver Extension");
--MODULE_LICENSE("GPL");
--MODULE_ALIAS("platform:dwhdmi-rockchip");
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 006260d..7d9b75e 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -923,7 +923,7 @@ static const struct of_device_id inno_hdmi_dt_ids[] = {
- };
- MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
- 
--static struct platform_driver inno_hdmi_driver = {
-+struct platform_driver inno_hdmi_driver = {
- 	.probe  = inno_hdmi_probe,
- 	.remove = inno_hdmi_remove,
- 	.driver = {
-@@ -931,11 +931,3 @@ static struct platform_driver inno_hdmi_driver = {
- 		.of_match_table = inno_hdmi_dt_ids,
- 	},
- };
--
--module_platform_driver(inno_hdmi_driver);
--
--MODULE_AUTHOR("Zheng Yang <a class="moz-txt-link-rfc2396E" href="mailto:zhengyang@rock-chips.com">&lt;zhengyang@rock-chips.com&gt;</a>");
--MODULE_AUTHOR("Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>");
--MODULE_DESCRIPTION("Rockchip Specific INNO-HDMI Driver");
--MODULE_LICENSE("GPL v2");
--MODULE_ALIAS("platform:innohdmi-rockchip");
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index b360e62..c0dae3b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -356,34 +356,49 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
- 				rockchip_drm_sys_resume)
- };
- 
--static int compare_of(struct device *dev, void *data)
--{
--	struct device_node *np = data;
-+static struct platform_driver *rockchip_drm_comp_drvs[] = {
-+	&amp;vop_platform_driver,
-+#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP
-+	&amp;rockchip_dp_driver,
-+#endif
-+#ifdef CONFIG_ROCKCHIP_CDN_DP
-+	&amp;cdn_dp_driver,
-+#endif
-+#ifdef CONFIG_ROCKCHIP_DW_HDMI
-+	&amp;dw_hdmi_rockchip_pltfm_driver,
-+#endif
-+#ifdef CONFIG_ROCKCHIP_DW_MIPI_DSI
-+	&amp;dw_mipi_dsi_driver,
-+#endif
-+#ifdef CONFIG_ROCKCHIP_INNO_HDMI
-+	&amp;inno_hdmi_driver,
-+#endif
++static const struct regmap_config rk805_regmap_config = {
++	.reg_bits = 8,
++	.val_bits = 8,
++	.max_register = RK805_OFF_SOURCE_REG,
++	.cache_type = REGCACHE_RBTREE,
++	.volatile_reg = rk808_is_volatile_reg,
 +};
- 
--	return dev-&gt;of_node == np;
-+static int compare_dev(struct device *dev, void *data)
-+{
-+	return dev == (struct device *)data;
- }
- 
--static void rockchip_add_endpoints(struct device *dev,
--				   struct component_match **match,
--				   struct device_node *port)
-+static struct component_match *rockchip_drm_match_add(struct device *dev)
- {
--	struct device_node *ep, *remote;
-+	struct component_match *match = NULL;
-+	int i;
- 
--	for_each_child_of_node(port, ep) {
--		remote = of_graph_get_remote_port_parent(ep);
--		if (!remote || !of_device_is_available(remote)) {
--			of_node_put(remote);
--			continue;
--		} else if (!of_device_is_available(remote-&gt;parent)) {
--			dev_warn(dev, "parent device of %s is not available\n",
--				 remote-&gt;full_name);
--			of_node_put(remote);
--			continue;
--		}
-+	for (i = 0; i &lt; ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
-+		struct platform_driver *drv = rockchip_drm_comp_drvs[i];
-+		struct device *p = NULL, *d;
- 
--		drm_of_component_match_add(dev, match, compare_of, remote);
--		of_node_put(remote);
-+		while ((d = bus_find_device(&amp;platform_bus_type, p, &amp;drv-&gt;driver,
-+					    (void *)platform_bus_type.match))) {
-+			put_device(p);
-+			component_match_add(dev, &amp;match, compare_dev, d);
-+			p = d;
-+		}
-+		put_device(p);
- 	}
 +
-+	return match ?: ERR_PTR(-ENODEV);
- }
- 
- static const struct component_master_ops rockchip_drm_ops = {
-@@ -391,21 +406,16 @@ static const struct component_master_ops rockchip_drm_ops = {
- 	.unbind = rockchip_drm_unbind,
+ static const struct regmap_config rk808_regmap_config = {
+ 	.reg_bits = 8,
+ 	.val_bits = 8,
+@@ -86,6 +94,16 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	}
  };
  
--static int rockchip_drm_platform_probe(struct platform_device *pdev)
-+static int rockchip_drm_platform_of_probe(struct device *dev)
- {
--	struct device *dev = &amp;pdev-&gt;dev;
--	struct component_match *match = NULL;
- 	struct device_node *np = dev-&gt;of_node;
- 	struct device_node *port;
-+	bool found = false;
- 	int i;
- 
- 	if (!np)
- 		return -ENODEV;
--	/*
--	 * Bind the crtc ports first, so that
--	 * drm_of_find_possible_crtcs called from encoder .bind callbacks
--	 * works as expected.
--	 */
++static const struct mfd_cell rk805s[] = {
++	{ .name = "rk808-clkout", },
++	{ .name = "rk808-regulator", },
++	{
++		.name = "rk808-rtc",
++		.num_resources = ARRAY_SIZE(rtc_resources),
++		.resources = &rtc_resources[0],
++	},
++};
 +
- 	for (i = 0;; i++) {
- 		struct device_node *iommu;
- 
-@@ -429,9 +439,9 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
- 			is_support_iommu = false;
- 		}
- 
-+		found = true;
-+
- 		of_node_put(iommu);
--		drm_of_component_match_add(dev, &amp;match, compare_of,
--					   port-&gt;parent);
- 		of_node_put(port);
- 	}
- 
-@@ -440,27 +450,27 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
--	if (!match) {
-+	if (!found) {
- 		dev_err(dev, "No available vop found for display-subsystem.\n");
- 		return -ENODEV;
- 	}
--	/*
--	 * For each bound crtc, bind the encoders attached to its
--	 * remote endpoint.
--	 */
--	for (i = 0;; i++) {
--		port = of_parse_phandle(np, "ports", i);
--		if (!port)
--			break;
- 
--		if (!of_device_is_available(port-&gt;parent)) {
--			of_node_put(port);
--			continue;
--		}
-+	return 0;
-+}
- 
--		rockchip_add_endpoints(dev, &amp;match, port);
--		of_node_put(port);
--	}
-+static int rockchip_drm_platform_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &amp;pdev-&gt;dev;
-+	struct component_match *match = NULL;
-+	int ret;
-+
-+	ret = rockchip_drm_platform_of_probe(dev);
-+	if (ret)
-+		return ret;
-+
-+	match = rockchip_drm_match_add(dev);
-+	if (IS_ERR(match))
-+		return PTR_ERR(match);
- 
- 	return component_master_add_with_match(dev, &amp;rockchip_drm_ops, match);
- }
-@@ -488,7 +498,57 @@ static struct platform_driver rockchip_drm_platform_driver = {
+ static const struct mfd_cell rk808s[] = {
+ 	{ .name = "rk808-clkout", },
+ 	{ .name = "rk808-regulator", },
+@@ -106,6 +124,12 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
  	},
  };
  
--module_platform_driver(rockchip_drm_platform_driver);
-+static void rockchip_drm_unregister_drivers(void)
++static const struct rk808_reg_data rk805_pre_init_reg[] = {
++	{RK805_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK, BUCK_ILMIN_400MA},
++	{RK805_GPIO_IO_POL_REG, SLP_SD_MSK, SLEEP_FUN},
++	{RK805_THERMAL_REG, TEMP_HOTDIE_MSK, TEMP115C},
++};
++
+ static const struct rk808_reg_data rk808_pre_init_reg[] = {
+ 	{ RK808_BUCK3_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_150MA },
+ 	{ RK808_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_200MA },
+@@ -135,6 +159,41 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ 						    VB_LO_SEL_3500MV },
+ };
+ 
++static const struct regmap_irq rk805_irqs[] = {
++	[RK805_IRQ_PWRON_RISE] = {
++		.mask = RK805_IRQ_PWRON_RISE_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_VB_LOW] = {
++		.mask = RK805_IRQ_VB_LOW_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_PWRON] = {
++		.mask = RK805_IRQ_PWRON_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_PWRON_LP] = {
++		.mask = RK805_IRQ_PWRON_LP_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_HOTDIE] = {
++		.mask = RK805_IRQ_HOTDIE_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_RTC_ALARM] = {
++		.mask = RK805_IRQ_RTC_ALARM_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_RTC_PERIOD] = {
++		.mask = RK805_IRQ_RTC_PERIOD_MSK,
++		.reg_offset = 0,
++	},
++	[RK805_IRQ_PWRON_FALL] = {
++		.mask = RK805_IRQ_PWRON_FALL_MSK,
++		.reg_offset = 0,
++	},
++};
++
+ static const struct regmap_irq rk808_irqs[] = {
+ 	/* INT_STS */
+ 	[RK808_IRQ_VOUT_LO] = {
+@@ -247,6 +306,17 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	},
+ };
+ 
++static struct regmap_irq_chip rk805_irq_chip = {
++	.name = "rk805",
++	.irqs = rk805_irqs,
++	.num_irqs = ARRAY_SIZE(rk805_irqs),
++	.num_regs = 1,
++	.status_base = RK805_INT_STS_REG,
++	.mask_base = RK805_INT_STS_MSK_REG,
++	.ack_base = RK805_INT_STS_REG,
++	.init_ack_masked = true,
++};
++
+ static const struct regmap_irq_chip rk808_irq_chip = {
+ 	.name = "rk808",
+ 	.irqs = rk808_irqs,
+@@ -272,6 +342,34 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ };
+ 
+ static struct i2c_client *rk808_i2c_client;
++
++static void rk805_device_shutdown(void)
 +{
-+	int i;
++	int ret;
++	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
 +
-+	for (i = ARRAY_SIZE(rockchip_drm_comp_drvs) - 1; i &gt;= 0; i--)
-+		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
-+}
-+
-+static int rockchip_drm_register_drivers(void)
-+{
-+	int i, ret;
-+
-+	for (i = 0; i &lt; ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
-+		ret = platform_driver_register(rockchip_drm_comp_drvs[i]);
-+		if (ret)
-+			goto fail;
++	if (!rk808) {
++		dev_warn(&rk808_i2c_client->dev,
++			 "have no rk808, so do nothing here\n");
++		return;
 +	}
-+	return 0;
-+fail:
-+	rockchip_drm_unregister_drivers();
-+	return ret;
-+}
 +
-+static int __init rockchip_drm_init(void)
-+{
-+	int ret;
++	/* close rtc int when power off */
++	regmap_update_bits(rk808->regmap,
++			   RK808_INT_STS_MSK_REG1,
++			   (0x3 << 5), (0x3 << 5));
++	regmap_update_bits(rk808->regmap,
++			   RK808_RTC_INT_REG,
++			   (0x3 << 2), (0x0 << 2));
 +
-+	ret = rockchip_drm_register_drivers();
++	/* pmic sleep shutdown function */
++	ret = regmap_update_bits(rk808->regmap,
++				 RK805_GPIO_IO_POL_REG,
++				 SLP_SD_MSK, SHUTDOWN_FUN);
 +	if (ret)
-+		return ret;
-+
-+	ret = platform_driver_register(&amp;rockchip_drm_platform_driver);
-+	if (ret)
-+		goto err_unreg_drivers;
-+
-+	return 0;
-+
-+err_unreg_drivers:
-+	rockchip_drm_unregister_drivers();
-+	return ret;
++		dev_err(&rk808_i2c_client->dev, "power off error!\n");
 +}
 +
-+static void __exit rockchip_drm_fini(void)
-+{
-+	platform_driver_unregister(&amp;rockchip_drm_platform_driver);
-+
-+	rockchip_drm_unregister_drivers();
-+}
-+
-+module_init(rockchip_drm_init);
-+module_exit(rockchip_drm_fini);
- 
- MODULE_AUTHOR("Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>");
- MODULE_DESCRIPTION("ROCKCHIP DRM Driver");
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index adc3930..f46e1d0 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -79,4 +79,10 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
- int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
- 				unsigned int mstimeout);
- 
-+extern struct platform_driver cdn_dp_driver;
-+extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
-+extern struct platform_driver dw_mipi_dsi_driver;
-+extern struct platform_driver inno_hdmi_driver;
-+extern struct platform_driver rockchip_dp_driver;
-+extern struct platform_driver vop_platform_driver;</pre>
-    </blockquote>
-    miss #ifdef ... #end<br>
-    <br>
-    +#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP<br>
-    +extern struct platform_driver rockchip_dp_driver;
-    <br>
-    +#end<br>
-    <br>
-    <blockquote
-      cite="mid:1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com"
-      type="cite">
-      <pre wrap="">
- #endif /* _ROCKCHIP_DRM_DRV_H_ */
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 91fbc7b..0da4444 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -404,7 +404,7 @@ static int vop_remove(struct platform_device *pdev)
- 	return 0;
+ static void rk808_device_shutdown(void)
+ {
+ 	int ret;
+@@ -309,6 +407,7 @@ static void rk818_device_shutdown(void)
  }
  
--static struct platform_driver vop_platform_driver = {
-+struct platform_driver vop_platform_driver = {
- 	.probe = vop_probe,
- 	.remove = vop_remove,
- 	.driver = {
-@@ -412,9 +412,3 @@ static struct platform_driver vop_platform_driver = {
- 		.of_match_table = of_match_ptr(vop_driver_dt_match),
- 	},
- };
--
--module_platform_driver(vop_platform_driver);
--
--MODULE_AUTHOR("Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>");
--MODULE_DESCRIPTION("ROCKCHIP VOP Driver");
--MODULE_LICENSE("GPL v2");
-</pre>
-    </blockquote>
-    <br>
-    <br>
-    <pre class="moz-signature" cols="72">-- 
-Ｍark Yao</pre>
-  </body>
-</html>
-
-
---===============1717645537==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============1717645537==--
+ static const struct of_device_id rk808_of_match[] = {
++	{ .compatible = "rockchip,rk805" },
+ 	{ .compatible = "rockchip,rk808" },
+ 	{ .compatible = "rockchip,rk818" },
+ 	{ },
+@@ -352,6 +451,15 @@ static int rk808_probe(struct i2c_client *client,
+ 	dev_info(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
+ 
+ 	switch (rk808->variant) {
++	case RK805_ID:
++		rk808->regmap_cfg = &rk805_regmap_config;
++		rk808->regmap_irq_chip = &rk805_irq_chip;
++		pre_init_reg = rk805_pre_init_reg;
++		nr_pre_init_regs = ARRAY_SIZE(rk805_pre_init_reg);
++		cells = rk805s;
++		nr_cells = ARRAY_SIZE(rk805s);
++		pm_pwroff_fn = rk805_device_shutdown;
++		break;
+ 	case RK808_ID:
+ 		rk808->regmap_cfg = &rk808_regmap_config;
+ 		rk808->regmap_irq_chip = &rk808_irq_chip;
+@@ -444,6 +552,7 @@ static int rk808_remove(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id rk808_ids[] = {
++	{ "rk805" },
+ 	{ "rk808" },
+ 	{ "rk818" },
+ 	{ },
+diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+index 5dc673dc9487..47d6a8df06db 100644
+--- a/drivers/rtc/Kconfig
++++ b/drivers/rtc/Kconfig
+@@ -352,11 +352,11 @@ config RTC_DRV_MAX77686
+ 	  will be called rtc-max77686.
+ 
+ config RTC_DRV_RK808
+-	tristate "Rockchip RK808/RK818 RTC"
++	tristate "Rockchip RK805/RK808/RK818 RTC"
+ 	depends on MFD_RK808
+ 	help
+ 	  If you say yes here you will get support for the
+-	  RTC of RK808 and RK818 PMIC.
++	  RTC of RK805, RK808 and RK818 PMIC.
+ 
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called rk808-rtc.
+-- 
+1.9.1
