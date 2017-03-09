@@ -1,63 +1,88 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/3] PCI: rockchip: fix sign issues for current limits
-Date: Thu, 9 Mar 2017 16:59:15 +0800
-Message-ID: <662fb87d-de80-ac96-4a25-c478956cceb2@rock-chips.com>
-References: <20170308233748.54706-1-briannorris@chromium.org>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v1 1/4] mfd: rk808: fix up the chip id get failed
+Date: Thu,  9 Mar 2017 16:49:59 +0800
+Message-ID: <1489049402-15791-2-git-send-email-zhangqing@rock-chips.com>
+References: <1489049402-15791-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170308233748.54706-1-briannorris@chromium.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1489049402-15791-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/3/9 7:37, Brian Norris wrote:
-> The regulator framework can return negative error codes via
-> regulator_get_current_limit() for regulators that don't provide current
-> information. The subsequent check for postive values isn't very useful,
-> if the variable is unsigned.
->
-> Let's just match the signedness of the return value.
->
-> Prevents error messages like this, seen on Samsung Chromebook Plus:
->
-> [    1.069372] rockchip-pcie f8000000.pcie: invalid power supply
->
+the rk8xx chip id is:
+((MSB << 8) | LSB) & 0xfff0
 
-For this patch,
+Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/mfd/rk808.c       | 21 +++++++++++++++------
+ include/linux/mfd/rk808.h |  1 +
+ 2 files changed, 16 insertions(+), 6 deletions(-)
 
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-And I think patch 2 is not so urgent so we could just wait for your
-non-WIP patch 3?
-
-> Fixes: 4816c4c7b82b ("PCI: rockchip: Provide captured slot power limit and scale")
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> v4.11 candidate?
->
->  drivers/pci/host/pcie-rockchip.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 26ddd3535272..d785f64ec03b 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -425,7 +425,8 @@ static struct pci_ops rockchip_pcie_ops = {
->
->  static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
->  {
-> -	u32 status, curr, scale, power;
-> +	int curr;
-> +	u32 status, scale, power;
->
->  	if (IS_ERR(rockchip->vpcie3v3))
->  		return;
->
-
-
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index fd087cbb0bde..3334a2a7f3fb 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -325,7 +325,7 @@ static int rk808_probe(struct i2c_client *client,
+ 	void (*pm_pwroff_fn)(void);
+ 	int nr_pre_init_regs;
+ 	int nr_cells;
+-	int pm_off = 0;
++	int pm_off = 0, msb, lsb;
+ 	int ret;
+ 	int i;
+ 
+@@ -333,14 +333,23 @@ static int rk808_probe(struct i2c_client *client,
+ 	if (!rk808)
+ 		return -ENOMEM;
+ 
+-	rk808->variant = i2c_smbus_read_word_data(client, RK808_ID_MSB);
+-	if (rk808->variant < 0) {
+-		dev_err(&client->dev, "Failed to read the chip id at 0x%02x\n",
++	/* read Chip variant */
++	msb = i2c_smbus_read_byte_data(client, RK808_ID_MSB);
++	if (msb < 0) {
++		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
+ 			RK808_ID_MSB);
+-		return rk808->variant;
++		return msb;
+ 	}
+ 
+-	dev_dbg(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
++	lsb = i2c_smbus_read_byte_data(client, RK808_ID_LSB);
++	if (lsb < 0) {
++		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
++			RK808_ID_LSB);
++		return lsb;
++	}
++
++	rk808->variant = ((msb << 8) | lsb) & RK8XX_ID_MSK;
++	dev_info(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
+ 
+ 	switch (rk808->variant) {
+ 	case RK808_ID:
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 83701ef7d3c7..54feb140c210 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -298,6 +298,7 @@ enum rk818_reg {
+ #define VOUT_LO_INT	BIT(0)
+ #define CLK32KOUT2_EN	BIT(0)
+ 
++#define RK8XX_ID_MSK			0xfff0
+ enum {
+ 	BUCK_ILMIN_50MA,
+ 	BUCK_ILMIN_100MA,
 -- 
-Best Regards
-Shawn Lin
+1.9.1
