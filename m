@@ -1,26 +1,85 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [RFC PATCH 3/3] WIP: PCI: rockchip: add remove() support
-Date: Wed, 8 Mar 2017 19:15:25 -0800
-Message-ID: <20170309031523.GA123115@google.com>
-References: <20170308233748.54706-1-briannorris@chromium.org>
- <20170308233748.54706-3-briannorris@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] phy: rockchip-typec: support DP phy switch
+Date: Thu, 09 Mar 2017 09:31:33 +0100
+Message-ID: <1626236.28xlsfuSeg@diego>
+References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
+ <11032198.PxydffNNDT@diego> <20170309031049.GA122422@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170308233748.54706-3-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170309031049.GA122422@google.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kishon@ti.com, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 08, 2017 at 03:37:48PM -0800, Brian Norris wrote:
-> I haven't quite figured out the right way to invert pci_remap_iospace().
-> I guess no one supports this yet?
-
-Jeffy Chen pointed out to me that there's a pci_unmap_iospace() as of
-4.8. Looks like that should probably do the job. I'll rework this and
-send it out sometime. The first 2 patches are still relevant though, and
-the first one is a bugfix.
-
-Brian
+SGkgQnJpYW4sCgpBbSBNaXR0d29jaCwgOC4gTcOkcnogMjAxNywgMTk6MTA6NTAgQ0VUIHNjaHJp
+ZWIgQnJpYW4gTm9ycmlzOgo+IE9uIFRodSwgTWFyIDA5LCAyMDE3IGF0IDAyOjAyOjU0QU0gKzAx
+MDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gQW0gTWl0dHdvY2gsIDguIE3DpHJ6IDIwMTcs
+IDE2OjM5OjIzIENFVCBzY2hyaWViIEJyaWFuIE5vcnJpczoKPiA+ID4gT24gRnJpLCBGZWIgMTAs
+IDIwMTcgYXQgMDM6NDQ6MTNQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4gPiA+ID4gVGhl
+cmUgYXJlIDIgVHlwZS1jIFBIWXMgaW4gUkszMzk5LCBidXQgb25seSBvbmUgRFAgY29udHJvbGxl
+ci4gSGVuY2UKPiA+ID4gPiBvbmx5IG9uZSBQSFkgY2FuIGNvbm5lY3QgdG8gRFAgY29udHJvbGxl
+ciBhdCBvbmUgdGltZSwgdGhlIG90aGVyCj4gPiA+ID4gc2hvdWxkCj4gPiA+ID4gYmUgZGlzY29u
+bmVjdGVkLiBUaGUgR1JGX1NPQ19DT04yNiByZWdpc3RlciBoYXMgYSBzd2l0Y2ggYml0IHRvIGRv
+IGl0LAo+ID4gPiA+IHNldCB0aGlzIGJpdCBtZWFucyBlbmFibGUgUEhZIDEsIGNsZWFyIHRoaXMg
+Yml0IG1lYW5zIGVuYWJsZSBQSFkgMC4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBD
+aHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+ID4gPiA+IC0tLQo+ID4gPiA+IAo+ID4g
+PiA+ICBkcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYyB8IDkgKysrKysrKysrCj4gPiA+
+ID4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKPiA+ID4gPiAKPiA+ID4gPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXR5cGVjLmMKPiA+ID4gPiBiL2RyaXZl
+cnMvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy5jIGluZGV4IDdjZmIwZjguLjE2MDRhYWEgMTAwNjQ0
+Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXR5cGVjLmMKPiA+ID4gPiAr
+KysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdHlwZWMuYwo+IAo+IC4uLgo+IAo+ID4gPiA+
+IEBAIC04NjksNiArODczLDExIEBAIHN0YXRpYyBpbnQgdGNwaHlfcGFyc2VfZHQoc3RydWN0Cj4g
+PiA+ID4gcm9ja2NoaXBfdHlwZWNfcGh5Cj4gPiA+ID4gKnRjcGh5LD4KPiA+ID4gPiAKPiA+ID4g
+PiAgCWlmIChyZXQpCj4gPiA+ID4gIAkKPiA+ID4gPiAgCQlyZXR1cm4gcmV0Owo+ID4gPiA+IAo+
+ID4gPiA+ICsJcmV0ID0gdGNwaHlfZ2V0X3BhcmFtKGRldiwgJmNmZy0+dXBoeV9kcF9zZWwsCj4g
+PiA+ID4gKwkJCSAgICAgICJyb2NrY2hpcCx1cGh5LWRwLXNlbCIpOwo+ID4gPiA+ICsJaWYgKHJl
+dCkKPiA+ID4gPiArCQlyZXR1cm4gcmV0Owo+ID4gPiAKPiA+ID4gV2hhdCBhYm91dCBleGlzdGlu
+ZyBkZXZpY2UgdHJlZXM/IFlvdSdyZSBlc3NlbnRpYWxseSBhZGRpbmcgdGhpcwo+ID4gPiBuZXcg
+cHJvcGVydHkgYW5kIHJlcXVpcmluZyBpdCBhdCB0aGUgc2FtZSB0aW1lLgo+ID4gPiAKPiA+ID4g
+T3IgYXJlIHdlIGNvbnNpZGVyaW5nIG5vIFJLMzM5OSBEUCBzdGFibGUgYXQgdGhlIG1vbWVudD8g
+SSBndWVzcyB3ZQo+ID4gPiBoYXZlbid0IGFjdHVhbGx5IG1lcmdlZCBhbnkgZGV2aWNlIHRyZWVz
+IHRoYXQgc3VwcG9ydCB0aGlzIHlldCwgbm8/Cj4gPiAKPiA+IEFuIGludGVyZXN0aW5nIHNpdHVh
+dGlvbiB3ZSdyZSBpbiBoZXJlLiBPbiB0aGUgb25lIGhhbmQsIHlvdSdyZSByaWdodCB0aGlzCj4g
+PiBicmVha3MgImJhY2t3YXJkcyBjb21wYXRpYmxpdHkiLgo+ID4gCj4gPiBCdXQgb24gdGhlIG90
+aGVyIGhhbmQsIHRoZSB0eXBlLWMgcGh5IGlzIGN1cnJlbnRseSB2ZXJ5IG11Y2ggdW51c2VkLiBU
+aGUKPiA+IG9ubHkgY3VycmVudCBib2FyZCByazMzOTktZXZiLmR0cyBkb2VzIG5vdCBlbmFibGUg
+dGhlbSAoc28gdGhleSdyZQo+ID4gZGlzYWJsZWQgZXZlcnl3aGVyZSkgYW5kIHdlIGhhdmUgbmVp
+dGhlciBkd2MzIG5vciBkcCBub2RlcyBpbiBhbnkgcmszMzk5Cj4gPiBkZXZpY2V0cmVlcyBzbyBm
+YXIuIEFsc28gUm9iIHdhcyBvayB3aXRoIHRoZSBiaW5kaW5nIGNoYW5nZSA6LSkgLgo+ID4gCj4g
+PiBTbyBmcm9tIG15IHBvdiwgSSdkIHNheSBpdCBfc2hvdWxkXyBiZSBvaywgYXMgbm90aGluZyBp
+cyB1c2luZyB0aGUgcGh5cyBhdAo+ID4gYWxsIHlldCBhbmQgdGh1cyB0aGVyZSBpcyBub3RoaW5n
+IHRoYXQgY291bGQgZ2V0IGJyb2tlbi4KPiAKPiBZZWFoLCBJIGd1ZXNzIGl0J3MgT0suLi4gYnV0
+IEJUVyBvdXQtb2YtdHJlZSBEVHMgYXJlIHBlcmZlY3RseQo+IGxlZ2l0LCBvbmNlIHRoZSBiaW5k
+aW5ncyBhcmUgYWNjZXB0ZWQuCj4gCj4gQW5vdGhlciByYW5kb20gcG9pbnQgb2YgY29udGVudGlv
+biAobm90IHdvcnRoIHRvbyBtdWNoLCBhcyB0aGUgcGF0dGVybgo+IGlzIGFscmVhZHkgc2V0KSwg
+YnV0IHdoeSBkbyB0aGVzZSBkZXNlcnZlIERUIHByb3BlcnRpZXMgYXQgYWxsPyBUaGUKPiBkZXZp
+Y2UgYWxyZWFkeSBoYXMgYSAicmszMzk5IiBjb21wYXRpYmxlIHByb3BlcnR5LCBzbyBjYW4ndCB3
+ZSBkZXJpdmUKPiBHUkYgb2Zmc2V0cyBmcm9tIHRoYXQ/CgpJJ20gZGVmaW5pdGx5IHdpdGggeW91
+IGluIHRoaXMgcmVnYXJkLgoKQnV0IGl0IHNlZW1zIGxpa2UgdGhlcmUgaXMgc29tZSBzb3J0IG9m
+IGN1cnJlbnQgdHJlbmQgb2YgbW92aW5nIG1vcmUgc3R1ZmYgCmludG8gdGhlIGR0IGFnYWluLiBJ
+IHZhZ3VlbHkgcmVtZW1iZXIgcGh5IGFuZCAob3IpIGR0LW1haW50YWluZXJzIHByZWZlcnJpbmcg
+CnRvIGhhdmUgdGhlc2UgZGVmaW5pdGlvbnMgaW4gdGhlIGR0IGZvciB0aGUgdHlwZWMtcGh5LgoK
+U2VlIGFsc28gdGhlIHJlY2VudCBtYWlsIGZyb20gT2xvZiBjb25jZXJuaW5nIHRoZSBncmYgaW5p
+dGlhbGl6YXRpb24gYW5kIG1heWJlIApub3QgaGF2aW5nIHBlci1zb2MgZGVmaW5pdGlvbnMgaW4g
+dGhlIGRyaXZlciwgd2hlcmUgSSdtIHRyeWluZyB0byBrZWVwIHRoaW5ncyAKb3V0IG9mIHRoZSBk
+dCBhIGJpdCBtb3JlIHN0cm9uZ2x5IDotKSAuCgpTbyB5ZXMsIHBlcnNvbmFsbHkgSSB3b3VsZCBk
+ZWZpbml0bHkgcHJlZmVyIG5vdCBoYXZpbmcgdG8gbXVjaCBHUkYtc3R1ZmYgbGVhayAKaW50byB0
+aGUgZHQuIFNpbXBseSBiZWNhdXNlIHRoZSBHUkYgaGFzIGFsd2F5cyBiZWVuIHZlcnkgdW5zdGFi
+bGUgb3ZlciB0aW1lIApbPXlvdSBhbHdheXMgZmluZCBvbmUgbW9yZSBiaXQgdGhhdCBuZWVkcyB0
+dW5pbmddIGFuZCB0byBub3QgY2F1c2UgdGhpbmdzIGxpa2UgCnRoZSBhYm92ZS4gQnV0IGFzIHlv
+dSBzYWlkIEkgZ3Vlc3Mgd2UncmUgdG8gbGF0ZSBmb3IgdGhlIHR5cGVjLXBoeS4KCgpIZWlrbwpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
