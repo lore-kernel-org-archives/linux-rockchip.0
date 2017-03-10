@@ -1,49 +1,61 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 01/41] drm/panel: simple: Change mode for Sharp lq123p1jx31
-Date: Thu,  9 Mar 2017 23:32:16 -0500
-Message-ID: <20170310043305.17216-2-seanpaul@chromium.org>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 02/41] drm/rockchip: Get rid of some unnecessary code
+Date: Thu,  9 Mar 2017 23:32:17 -0500
+Message-ID: <20170310043305.17216-3-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170310043305.17216-1-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: Chris Zhong <zyw@rock-chips.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170310043305.17216-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q2hhbmdlIHRoZSBtb2RlIGZvciBTaGFycCBscTEyM3AxangzMSBwYW5lbCB0byBzb21ldGhpbmcg
-bW9yZQpyb2NrY2hpcC1mcmllbmRseSBzdWNoIHRoYXQgd2UgY2FuIHVzZSB0aGUgZml4ZWQgUExM
-cyB0bwpnZW5lcmF0ZSB0aGUgcGl4ZWwgY2xvY2sKCkNjOiBDaHJpcyBaaG9uZyA8enl3QHJvY2st
-Y2hpcHMuY29tPgpDYzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+
-ClNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgotLS0KIGRy
-aXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyB8IDcgKysrKy0tLQogMSBmaWxlIGNo
-YW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwv
-cGFuZWwtc2ltcGxlLmMKaW5kZXggODllYjA0MjI4MjFjLi43ODdiNGQxNDMyMjAgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYworKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMKQEAgLTE1OTgsMTcgKzE1OTgsMTggQEAgc3RhdGlj
-IGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIHNoYXJwX2xxMTAxazFseTA0ID0gewogfTsKIAogc3Rh
-dGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIHNoYXJwX2xxMTIzcDFqeDMxX21vZGUg
-PSB7Ci0JLmNsb2NrID0gMjUyNzUwLAorCS5jbG9jayA9IDI2NjY2NywKIAkuaGRpc3BsYXkgPSAy
-NDAwLAogCS5oc3luY19zdGFydCA9IDI0MDAgKyA0OCwKIAkuaHN5bmNfZW5kID0gMjQwMCArIDQ4
-ICsgMzIsCi0JLmh0b3RhbCA9IDI0MDAgKyA0OCArIDMyICsgODAsCisJLmh0b3RhbCA9IDI0MDAg
-KyA0OCArIDMyICsgMTM5LAogCS52ZGlzcGxheSA9IDE2MDAsCiAJLnZzeW5jX3N0YXJ0ID0gMTYw
-MCArIDMsCiAJLnZzeW5jX2VuZCA9IDE2MDAgKyAzICsgMTAsCi0JLnZ0b3RhbCA9IDE2MDAgKyAz
-ICsgMTAgKyAzMywKKwkudnRvdGFsID0gMTYwMCArIDMgKyAxMCArIDg0LAogCS52cmVmcmVzaCA9
-IDYwLAogCS5mbGFncyA9IERSTV9NT0RFX0ZMQUdfTlZTWU5DIHwgRFJNX01PREVfRkxBR19OSFNZ
-TkMsCisJLnR5cGUgPSBEUk1fTU9ERV9UWVBFX1BSRUZFUlJFRCB8IERSTV9NT0RFX1RZUEVfRFJJ
-VkVSLAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIHNoYXJwX2xxMTIzcDFq
-eDMxID0gewotLSAKMi4xMi4wLjI0Ni5nYTJlY2M4NDg2Ni1nb29nCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Current code implements prepare_fb and cleanup_fb callbacks only to
+grab/release fb references, which is already done by atomic framework
+when creating/destryoing plane state. Also there are some unused fields
+vop and vop_win structs. Let's remove these unused bits.
+
+Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 2151e1cee4b4..0539afb6b7c8 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -108,9 +108,6 @@ struct vop {
+ 	struct drm_device *drm_dev;
+ 	bool is_enabled;
+ 
+-	/* mutex vsync_ work */
+-	struct mutex vsync_mutex;
+-	bool vsync_work_pending;
+ 	struct completion dsp_hold_completion;
+ 
+ 	/* protected by dev->event_lock */
+@@ -1592,8 +1589,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	spin_lock_init(&vop->reg_lock);
+ 	spin_lock_init(&vop->irq_lock);
+ 
+-	mutex_init(&vop->vsync_mutex);
+-
+ 	ret = devm_request_irq(dev, vop->irq, vop_isr,
+ 			       IRQF_SHARED, dev_name(dev), vop);
+ 	if (ret)
+-- 
+2.12.0.246.ga2ecc84866-goog
