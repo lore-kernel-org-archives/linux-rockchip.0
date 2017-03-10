@@ -1,95 +1,90 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the enablement
- functions
-Date: Fri, 10 Mar 2017 10:35:09 +0100
-Message-ID: <20170310093509.19044-1-romain.perier@collabora.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: [PATCH v2] drm: dw_hdmi: Don't rely on the status of the bridge for
+ updating HPD
+Date: Fri, 10 Mar 2017 10:31:29 +0100
+Message-ID: <20170310093129.16890-1-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Romain Perier <romain.perier@collabora.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
-step E. and is kept enabled for later use. This clock should be enabled
-and disabled along with the actual audio stream and not always on (that
-is bad for PM). Futhermore, this might cause sound glitches with some
-HDMI devices, as the CTS+N is forced to zero when the stream is disabled
-while the audio clock is still running.
+Currently, the irq handler that monitores changes for HPD anx RX_SENSE
+relies on the status of the bridge for updating the status of the HPD.
+The update is done only when the bridge is enabled.
 
-This commit adds a parameter to hdmi_audio_enable_clk() that controls
-when the audio sample clock must be enabled or disabled. Then, it moves
-the call to this function into dw_hdmi_audio_enable() and
-dw_hdmi_audio_disable().
+However, on Rockchip platforms we have found use cases where it could be
+a problem. When HDMI is being used, turning off/on the screen or
+unplugging/re-plugging the cable, the following simplified code path
+will happen:
 
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+- dw_hdmi_irq() will be triggered by an HPD event, as the bridge is on
+hdmi->disabled is false, then the handler will update the rxsense flag
+accordingly.
+- dw_hdmi_update_power() will be invoked with the mode
+DRM_FORCE_UNSPECIFIED and rxsense == 1, so dw_hdmi_poweroff() will be
+called and the PHY will be desactivated (its pixel clocks and TMDS)
+
+[...]
+
+- dw_hdmi_bridge_disable() will be invoked, the bridge will be marked as
+disabled.
+
+- dw_hdmi_irq() will be triggered by an HPD event, as the bridge is
+currently disabled the HPD status won't be updated, so hdmi->rxsense
+won't be changed. Even if the data part of the PHY is disabled, this
+information coming from the HDMI Transmitter is correct and should be
+saved.
+
+[...]
+
+- dw_hdmi_bridge_enable() will be invoked, the bridge will be marked as
+enabled.
+- dw_hdmi_update_power() will be called. When hdmi->force is equal to
+DRM_FORCE_UNSPECIFIED the function will rely on hdmi->rxsense. If this
+field has not been updated by the irq handler, it will be false and
+DRM_FORCE_ON won't be put to hdmi->force.
+
+Consequently, most of the time dw_hdmi_poweron() won't be called in this
+use case, TMDS won't be re-enabled the PHY won't be re-initialized,
+resulting in a "Signal not found".
+
+This commit fixes the issue by removing the check for "!hdmi->disabled".
+As already explained, even if the PHY is partially disabled, information
+coming from HDMI Transmitter about HPD should be saved for a later use.
+
+Signed-off-by: Romain Perier <romain.perier@collabora.com>
 ---
- drivers/gpu/drm/bridge/dw-hdmi.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+
+Changes in v2:
+- I have re-worded the commit message, as suggested by Russel
+
+ drivers/gpu/drm/bridge/dw-hdmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
-index b621fc7..5b6090c 100644
+index 3a70016..5b6090c 100644
 --- a/drivers/gpu/drm/bridge/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
-@@ -537,6 +537,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
- 
-+static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
-+{
-+	hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
-+		  HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
-+}
-+
- void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
- {
- 	unsigned long flags;
-@@ -544,6 +550,7 @@ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
- 	spin_lock_irqsave(&hdmi->audio_lock, flags);
- 	hdmi->audio_enable = true;
- 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-+	hdmi_enable_audio_clk(hdmi, true);
- 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_audio_enable);
-@@ -554,6 +561,7 @@ void dw_hdmi_audio_disable(struct dw_hdmi *hdmi)
- 
- 	spin_lock_irqsave(&hdmi->audio_lock, flags);
- 	hdmi->audio_enable = false;
-+	hdmi_enable_audio_clk(hdmi, false);
- 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, 0);
- 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
- }
-@@ -1343,11 +1351,6 @@ static void dw_hdmi_enable_video_path(struct dw_hdmi *hdmi)
- 	}
- }
- 
--static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi)
--{
--	hdmi_modb(hdmi, 0, HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
--}
--
- /* Workaround to clear the overflow condition */
- static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
- {
-@@ -1430,7 +1433,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 
- 		/* HDMI Initialization Step E - Configure audio */
- 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
--		hdmi_enable_audio_clk(hdmi);
-+		hdmi_enable_audio_clk(hdmi, true);
- 	}
- 
- 	/* not for DVI mode */
+@@ -1793,7 +1793,7 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+ 	if (intr_stat &
+ 	    (HDMI_IH_PHY_STAT0_RX_SENSE | HDMI_IH_PHY_STAT0_HPD)) {
+ 		mutex_lock(&hdmi->mutex);
+-		if (!hdmi->disabled && !hdmi->force) {
++		if (!hdmi->force) {
+ 			/*
+ 			 * If the RX sense status indicates we're disconnected,
+ 			 * clear the software rxsense status.
 -- 
 2.9.3
