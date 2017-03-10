@@ -1,11 +1,12 @@
 From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH 12/41] drm/bridge: analogix_dp: add fast link train for eDP
-Date: Thu,  9 Mar 2017 23:32:27 -0500
-Message-ID: <20170310043305.17216-13-seanpaul@chromium.org>
+Subject: [PATCH 15/41] drm/bridge: analogix_dp: Move enable video into
+ config_video()
+Date: Thu,  9 Mar 2017 23:32:30 -0500
+Message-ID: <20170310043305.17216-16-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20170310043305.17216-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -18,261 +19,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?q?=E5=BE=81=E5=A2=9E=20=E7=8E=8B?= <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-We would meet a short black screen when exit PSR with the full link
-training, In this case, we should use fast link train instead of full
-link training.
-
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 142 ++++++++++++++++-----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   3 +
- 2 files changed, 114 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 64d94a34874d..5bc151b0995b 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -10,17 +10,18 @@
- * option) any later version.
- */
- 
--#include <linux/module.h>
--#include <linux/platform_device.h>
--#include <linux/err.h>
- #include <linux/clk.h>
--#include <linux/io.h>
-+#include <linux/component.h>
-+#include <linux/err.h>
-+#include <linux/gpio.h>
- #include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_gpio.h>
--#include <linux/gpio.h>
--#include <linux/component.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- 
- #include <drm/drmP.h>
- #include <drm/drm_atomic_helper.h>
-@@ -35,6 +36,8 @@
- 
- #define to_dp(nm)	container_of(nm, struct analogix_dp_device, nm)
- 
-+static const bool verify_fast_training;
-+
- struct bridge_init {
- 	struct i2c_client *client;
- 	struct device_node *node;
-@@ -531,7 +534,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- {
- 	int lane, lane_count, retval;
- 	u32 reg;
--	u8 link_align, link_status[2], adjust_request[2];
-+	u8 link_align, link_status[2], adjust_request[2], spread;
- 
- 	usleep_range(400, 401);
- 
-@@ -574,6 +577,20 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 		dev_dbg(dp->dev, "final lane count = %.2x\n",
- 			dp->link_train.lane_count);
- 
-+		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
-+					   &spread);
-+		if (retval != 1) {
-+			dev_err(dp->dev, "failed to read downspread %d\n",
-+				retval);
-+			dp->fast_train_support = false;
-+		} else {
-+			dp->fast_train_support =
-+				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
-+					true : false;
-+		}
-+		dev_dbg(dp->dev, "fast link training %s\n",
-+			dp->fast_train_support ? "supported" : "unsupported");
-+
- 		/* set enhanced mode if available */
- 		analogix_dp_set_enhanced_mode(dp);
- 		dp->link_train.lt_state = FINISHED;
-@@ -630,10 +647,12 @@ static void analogix_dp_get_max_rx_lane_count(struct analogix_dp_device *dp,
- 	*lane_count = DPCD_MAX_LANE_COUNT(data);
- }
- 
--static void analogix_dp_init_training(struct analogix_dp_device *dp,
--				      enum link_lane_count_type max_lane,
--				      int max_rate)
-+static int analogix_dp_full_link_train(struct analogix_dp_device *dp,
-+				       u32 max_lanes, u32 max_rate)
- {
-+	int retval = 0;
-+	bool training_finished = false;
-+
- 	/*
- 	 * MACRO_RST must be applied after the PLL_LOCK to avoid
- 	 * the DP inter pair skew issue for at least 10 us
-@@ -659,18 +678,13 @@ static void analogix_dp_init_training(struct analogix_dp_device *dp,
- 	}
- 
- 	/* Setup TX lane count & rate */
--	if (dp->link_train.lane_count > max_lane)
--		dp->link_train.lane_count = max_lane;
-+	if (dp->link_train.lane_count > max_lanes)
-+		dp->link_train.lane_count = max_lanes;
- 	if (dp->link_train.link_rate > max_rate)
- 		dp->link_train.link_rate = max_rate;
- 
- 	/* All DP analog module power up */
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 0);
--}
--
--static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
--{
--	int retval = 0, training_finished = 0;
- 
- 	dp->link_train.lt_state = START;
- 
-@@ -705,22 +719,88 @@ static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
- 	return retval;
- }
- 
--static int analogix_dp_set_link_train(struct analogix_dp_device *dp,
--				      u32 count, u32 bwtype)
-+static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
- {
--	int i;
--	int retval;
-+	int i, ret;
-+	u8 link_align, link_status[2];
-+	enum pll_status status;
- 
--	for (i = 0; i < DP_TIMEOUT_LOOP_COUNT; i++) {
--		analogix_dp_init_training(dp, count, bwtype);
--		retval = analogix_dp_sw_link_training(dp);
--		if (retval == 0)
--			break;
-+	analogix_dp_reset_macro(dp);
- 
--		usleep_range(100, 110);
-+	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
-+	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
-+
-+	for (i = 0; i < dp->link_train.lane_count; i++) {
-+		analogix_dp_set_lane_link_training(dp,
-+			dp->link_train.training_lane[i], i);
- 	}
- 
--	return retval;
-+	ret = readx_poll_timeout(analogix_dp_get_pll_lock_status, dp, status,
-+				 status != PLL_UNLOCKED, 120,
-+				 120 * DP_TIMEOUT_LOOP_COUNT);
-+	if (ret) {
-+		DRM_DEV_ERROR(dp->dev, "Wait for pll lock failed %d\n", ret);
-+		return ret;
-+	}
-+
-+	/* source Set training pattern 1 */
-+	analogix_dp_set_training_pattern(dp, TRAINING_PTN1);
-+	/* From DP spec, pattern must be on-screen for a minimum 500us */
-+	usleep_range(500, 600);
-+
-+	analogix_dp_set_training_pattern(dp, TRAINING_PTN2);
-+	/* From DP spec, pattern must be on-screen for a minimum 500us */
-+	usleep_range(500, 600);
-+
-+	/* TODO: enhanced_mode?*/
-+	analogix_dp_set_training_pattern(dp, DP_NONE);
-+
-+	/*
-+	 * Useful for debugging issues with fast link training, disable for more
-+	 * speed
-+	 */
-+	if (verify_fast_training) {
-+		ret = drm_dp_dpcd_readb(&dp->aux, DP_LANE_ALIGN_STATUS_UPDATED,
-+					&link_align);
-+		if (ret < 0) {
-+			DRM_DEV_ERROR(dp->dev, "Read align status failed %d\n",
-+				      ret);
-+			return ret;
-+		}
-+
-+		ret = drm_dp_dpcd_read(&dp->aux, DP_LANE0_1_STATUS, link_status,
-+				       2);
-+		if (ret < 0) {
-+			DRM_DEV_ERROR(dp->dev, "Read link status failed %d\n",
-+				      ret);
-+			return ret;
-+		}
-+
-+		if (analogix_dp_clock_recovery_ok(link_status,
-+						  dp->link_train.lane_count)) {
-+			DRM_DEV_ERROR(dp->dev, "Clock recovery failed\n");
-+			analogix_dp_reduce_link_rate(dp);
-+			return -EIO;
-+		}
-+
-+		if (analogix_dp_channel_eq_ok(link_status, link_align,
-+					      dp->link_train.lane_count)) {
-+			DRM_DEV_ERROR(dp->dev, "Channel EQ failed\n");
-+			analogix_dp_reduce_link_rate(dp);
-+			return -EIO;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int analogix_dp_train_link(struct analogix_dp_device *dp)
-+{
-+	if (dp->fast_train_support)
-+		return analogix_dp_fast_link_train(dp);
-+
-+	return analogix_dp_full_link_train(dp, dp->video_info.max_lane_count,
-+					   dp->video_info.max_link_rate);
- }
- 
- static int analogix_dp_config_video(struct analogix_dp_device *dp)
-@@ -853,10 +933,10 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
- 			DRM_ERROR("failed to disable the panel\n");
- 	}
- 
--	ret = analogix_dp_set_link_train(dp, dp->video_info.max_lane_count,
--					 dp->video_info.max_link_rate);
-+	ret = readx_poll_timeout(analogix_dp_train_link, dp, ret, !ret, 100,
-+				 DP_TIMEOUT_TRAINING_US * 5);
- 	if (ret) {
--		dev_err(dp->dev, "unable to do link train\n");
-+		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
- 		return;
- 	}
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index e135a42cb19e..920607d7eb3e 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -20,6 +20,8 @@
- #define MAX_CR_LOOP 5
- #define MAX_EQ_LOOP 5
- 
-+/* Training takes 22ms if AUX channel comm fails. Use this as retry interval */
-+#define DP_TIMEOUT_TRAINING_US			22000
- #define DP_TIMEOUT_PSR_LOOP_MS			300
- 
- /* DP_MAX_LANE_COUNT */
-@@ -171,6 +173,7 @@ struct analogix_dp_device {
- 	int			hpd_gpio;
- 	bool                    force_hpd;
- 	bool			psr_enable;
-+	bool			fast_train_support;
- 
- 	struct mutex		panel_lock;
- 	bool			panel_is_modeset;
--- 
-2.12.0.246.ga2ecc84866-goog
+RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCldlIG5lZWQgdG8gZW5hYmxlIHZp
+ZGVvIGJlZm9yZSBhbmFsb2dpeF9kcF9pc192aWRlb19zdHJlYW1fb24oKSwgc28Kd2UgY2FuIGdl
+dCB0aGUgcmlnaHQgdmlkZW8gc3RyZWFtIHN0YXR1cy4KCkNjOiDlvoHlop4g546LIDx3enpAcm9j
+ay1jaGlwcy5jb20+CkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9y
+Zz4KU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9m
+Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAxMSArKysrKy0tLS0tLQog
+MSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCmluZGV4
+IDlkZmExYjUwNzM4OS4uNTIyMThkNzQzMDU5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwpAQCAtODIzLDExICs4MjMsMTAgQEAg
+c3RhdGljIGludCBhbmFsb2dpeF9kcF9jb25maWdfdmlkZW8oc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
+dmljZSAqZHApCiAJCWlmIChhbmFsb2dpeF9kcF9pc19zbGF2ZV92aWRlb19zdHJlYW1fY2xvY2tf
+b24oZHApID09IDApCiAJCQlicmVhazsKIAkJaWYgKHRpbWVvdXRfbG9vcCA+IERQX1RJTUVPVVRf
+TE9PUF9DT1VOVCkgewotCQkJZGV2X2VycihkcC0+ZGV2LCAiVGltZW91dCBvZiB2aWRlbyBzdHJl
+YW1jbGsgb2tcbiIpOworCQkJZGV2X2VycihkcC0+ZGV2LCAiVGltZW91dCBvZiBzbGF2ZSB2aWRl
+byBzdHJlYW1jbGsgb2tcbiIpOwogCQkJcmV0dXJuIC1FVElNRURPVVQ7CiAJCX0KLQotCQl1c2xl
+ZXBfcmFuZ2UoMSwgMik7CisJCXVzbGVlcF9yYW5nZSgxMDAwLCAxMDAxKTsKIAl9CiAKIAkvKiBT
+ZXQgdG8gdXNlIHRoZSByZWdpc3RlciBjYWxjdWxhdGVkIE0vTiB2aWRlbyAqLwpAQCAtODQyLDYg
+Kzg0MSw5IEBAIHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfY29uZmlnX3ZpZGVvKHN0cnVjdCBhbmFs
+b2dpeF9kcF9kZXZpY2UgKmRwKQogCS8qIENvbmZpZ3VyZSB2aWRlbyBzbGF2ZSBtb2RlICovCiAJ
+YW5hbG9naXhfZHBfZW5hYmxlX3ZpZGVvX21hc3RlcihkcCwgMCk7CiAKKwkvKiBFbmFibGUgdmlk
+ZW8gKi8KKwlhbmFsb2dpeF9kcF9zdGFydF92aWRlbyhkcCk7CisKIAl0aW1lb3V0X2xvb3AgPSAw
+OwogCiAJZm9yICg7OykgewpAQCAtOTU1LDkgKzk1Nyw2IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4
+X2RwX2NvbW1pdChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAkJCURSTV9FUlJPUigi
+ZmFpbGVkIHRvIGVuYWJsZSB0aGUgcGFuZWxcbiIpOwogCX0KIAotCS8qIEVuYWJsZSB2aWRlbyAq
+LwotCWFuYWxvZ2l4X2RwX3N0YXJ0X3ZpZGVvKGRwKTsKLQogCWRwLT5wc3JfZW5hYmxlID0gYW5h
+bG9naXhfZHBfZGV0ZWN0X3NpbmtfcHNyKGRwKTsKIAlpZiAoZHAtPnBzcl9lbmFibGUpCiAJCWFu
+YWxvZ2l4X2RwX2VuYWJsZV9zaW5rX3BzcihkcCk7Ci0tIAoyLjEyLjAuMjQ2LmdhMmVjYzg0ODY2
+LWdvb2cKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
