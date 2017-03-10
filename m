@@ -1,169 +1,88 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 27/41] drm/rockchip: Restore psr->state when enable/disable
- psr failed
-Date: Thu,  9 Mar 2017 23:32:42 -0500
-Message-ID: <20170310043305.17216-28-seanpaul@chromium.org>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 35/41] drm/rockchip: analogix_dp: Fix invalid implementation
+ of unbind
+Date: Thu,  9 Mar 2017 23:32:50 -0500
+Message-ID: <20170310043305.17216-36-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170310043305.17216-1-seanpaul@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: Archit Taneja <architt@codeaurora.org>, zain wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Lin Huang <hl@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Yakir Yang <ykk@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170310043305.17216-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Kristian H . Kristensen" <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-If we failed disable psr, it would hang the display until next psr
-cycle coming. So we should restore psr->state when it failed.
+Current implementation of unbind dereferences the drvdata pointer
+assuming that it's its own data, however the ownership belongs to the
+analogix code, which means that the pointer is dereferenced with wrong
+type. Fix this by using the recently added platform data .cleanup()
+callback to do Rockchip-specific things at unbind.
 
-Cc: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Cc: Kristian H. Kristensen <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 +++-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++------
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c        | 20 +++++++++++++-------
- drivers/gpu/drm/rockchip/rockchip_drm_psr.h        |  2 +-
- 4 files changed, 23 insertions(+), 15 deletions(-)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index dcf39ea0d14b..35ea04ff4078 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -156,8 +156,10 @@ int analogix_dp_disable_psr(struct device *dev)
- 	psr_vsc.DB1 = 0;
- 
- 	ret = drm_dp_dpcd_writeb(&dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
--	if (ret != 1)
-+	if (ret != 1) {
- 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
-+		return ret;
-+	}
- 
- 	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
- }
 diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index b6c6d6d09d7e..0614d32c5435 100644
+index de23cc6fd05d..0a92d9e3ffac 100644
 --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -76,7 +76,7 @@ struct rockchip_dp_device {
- 	struct analogix_dp_plat_data plat_data;
- };
- 
--static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
-+static int analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- {
- 	struct rockchip_dp_device *dp = to_dp(encoder);
- 	struct drm_crtc *crtc = dp->encoder.crtc;
-@@ -84,12 +84,12 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- 	int ret;
- 
- 	if (!analogix_dp_psr_enabled(dp->dev))
--		return;
-+		return 0;
- 
- 	dev_dbg(dp->dev, "%s PSR...\n", enabled ? "enable" : "disable");
- 
- 	if (!crtc)
--		return;
-+		return -EINVAL;
- 
- 	vact_end = crtc->mode.vtotal - crtc->mode.vsync_start + crtc->mode.vdisplay;
- 
-@@ -97,13 +97,13 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- 					  PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
- 	if (ret) {
- 		dev_err(dp->dev, "line flag interrupt did not arrive\n");
--		return;
-+		return -ETIMEDOUT;
- 	}
- 
- 	if (enabled)
--		analogix_dp_enable_psr(dp->dev);
-+		return analogix_dp_enable_psr(dp->dev);
- 	else
--		analogix_dp_disable_psr(dp->dev);
-+		return analogix_dp_disable_psr(dp->dev);
+@@ -179,6 +179,13 @@ static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+ 	return 0;
  }
  
- static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index b339ca943139..9376f4396b6b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -36,7 +36,7 @@ struct psr_drv {
++static void rockchip_dp_cleanup(struct analogix_dp_plat_data *plat_data)
++{
++	struct rockchip_dp_device *dp = to_dp(plat_data);
++
++	rockchip_drm_psr_unregister(&dp->encoder);
++}
++
+ static bool
+ rockchip_dp_drm_encoder_mode_fixup(struct drm_encoder *encoder,
+ 				   const struct drm_display_mode *mode,
+@@ -395,25 +402,16 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	dp->plat_data.power_on = rockchip_dp_poweron;
+ 	dp->plat_data.power_off = rockchip_dp_powerdown;
+ 	dp->plat_data.get_modes = rockchip_dp_get_modes;
++	dp->plat_data.cleanup = rockchip_dp_cleanup;
  
- 	struct delayed_work	flush_work;
+ 	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
  
--	void (*set)(struct drm_encoder *encoder, bool enable);
-+	int (*set)(struct drm_encoder *encoder, bool enable);
- };
+ 	return analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+ }
  
- static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
-@@ -93,19 +93,25 @@ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
- 		return;
- 	}
- 
--	psr->state = state;
+-static void rockchip_dp_unbind(struct device *dev, struct device *master,
+-			       void *data)
+-{
+-	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
 -
- 	/* Actually commit the state change to hardware */
--	switch (psr->state) {
-+	switch (state) {
- 	case PSR_ENABLE:
--		psr->set(psr->encoder, true);
-+		if (psr->set(psr->encoder, true))
-+			return;
- 		break;
+-	rockchip_drm_psr_unregister(&dp->encoder);
+-
+-	return analogix_dp_unbind(dev, master, data);
+-}
+-
+ static const struct component_ops rockchip_dp_component_ops = {
+ 	.bind = rockchip_dp_bind,
+-	.unbind = rockchip_dp_unbind,
++	.unbind = analogix_dp_unbind,
+ };
  
- 	case PSR_DISABLE:
- 	case PSR_FLUSH:
--		psr->set(psr->encoder, false);
-+		if (psr->set(psr->encoder, false))
-+			return;
- 		break;
-+
-+	default:
-+		pr_err("%s: Unknown state %d\n", __func__, state);
-+		return;
- 	}
-+
-+	psr->state = state;
- }
- 
- static void psr_set_state(struct psr_drv *psr, enum psr_state state)
-@@ -229,7 +235,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
-  * Zero on success, negative errno on failure.
-  */
- int rockchip_drm_psr_register(struct drm_encoder *encoder,
--			void (*psr_set)(struct drm_encoder *, bool enable))
-+			int (*psr_set)(struct drm_encoder *, bool enable))
- {
- 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
- 	struct psr_drv *psr;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-index b1ea0155e57c..06537ee27565 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-@@ -22,7 +22,7 @@ int rockchip_drm_psr_activate(struct drm_encoder *encoder);
- int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
- 
- int rockchip_drm_psr_register(struct drm_encoder *encoder,
--			void (*psr_set)(struct drm_encoder *, bool enable));
-+			int (*psr_set)(struct drm_encoder *, bool enable));
- void rockchip_drm_psr_unregister(struct drm_encoder *encoder);
- 
- #endif /* __ROCKCHIP_DRM_PSR__ */
+ static int rockchip_dp_probe(struct platform_device *pdev)
 -- 
 2.12.0.246.ga2ecc84866-goog
