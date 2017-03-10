@@ -1,123 +1,86 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 39/41] drm/bridge: analogix_dp: Split the platform-specific poweron in two parts
-Date: Thu,  9 Mar 2017 23:32:54 -0500
-Message-ID: <20170310043305.17216-40-seanpaul@chromium.org>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 38/41] drm/bridge: analogix_dp: Reorder plat_data->power_off
+ to happen sooner
+Date: Thu,  9 Mar 2017 23:32:53 -0500
+Message-ID: <20170310043305.17216-39-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20170310043305.17216-1-seanpaul@chromium.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: Douglas Anderson <dianders@chromium.org>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, Sean Paul <seanpaul@chromium.org>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Yakir Yang <ykk@rock-chips.com>, zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Tomasz Figa <tfiga@chromium>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170310043305.17216-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "Kristian H . Kristensen" <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders@chromium.org>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Some of the platform-specific stuff in rockchip_dp_poweron() needs to
-happen before the generic code.  Some needs to happen after.  Let's
-split the callback in two.
+The current user of the analogix power_off is "analogix_dp-rockchip".
+That driver does this:
+- deactivate PSR
+- turn off a clock
 
-Specifically we can't start doing PSR work until _after_ the whole
-controller is up, so don't set the enable until the end.
+Both of these things (especially deactive PSR) should be done before
+we turn the PHY power off and turn off analog power.  Let's move the
+callback up.
 
-Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-[seanpaul added exynos change]
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Note that without this patch (and with https://patchwork.kernel.org/patch/9553349/
+[seanpaul: this patch was not applied, but it seems like the race
+can still occur]), I experienced an error in reboot testing where one
+thread was at:
+
+  rockchip_drm_psr_deactivate
+  rockchip_dp_powerdown
+  analogix_dp_bridge_disable
+  drm_bridge_disable
+
+...and the other thread was at:
+
+  analogix_dp_send_psr_spd
+  analogix_dp_enable_psr
+  analogix_dp_psr_set
+  psr_flush_handler
+
+The flush handler thread was finding AUX channel errors and eventually
+reported "Failed to apply PSR", where I had a kgdb breakpoint. Presumably
+the device would have eventually given up and shut down anyway, but it
+seems better to fix the order to be more correct.
+
+Cc: Kristian H. Kristensen <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  7 +++++--
- drivers/gpu/drm/exynos/exynos_dp.c                 |  2 +-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++++++--
- include/drm/bridge/analogix_dp.h                   |  3 ++-
- 4 files changed, 18 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index a05bc0271188..bc9a0a28ab1d 100644
+index 1454075bce9a..a05bc0271188 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1254,8 +1254,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_clk_pre;
+@@ -1329,12 +1329,13 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
  	}
  
--	if (dp->plat_data->power_on)
--		dp->plat_data->power_on(dp->plat_data);
-+	if (dp->plat_data->power_on_start)
-+		dp->plat_data->power_on_start(dp->plat_data);
+ 	disable_irq(dp->irq);
+-	phy_power_off(dp->phy);
+-	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
  
- 	phy_power_on(dp->phy);
+ 	if (dp->plat_data->power_off)
+ 		dp->plat_data->power_off(dp->plat_data);
  
-@@ -1278,6 +1278,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_init;
- 	}
- 
-+	if (dp->plat_data->power_on_end)
-+		dp->plat_data->power_on_end(dp->plat_data);
++	phy_power_off(dp->phy);
++	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
 +
- 	enable_irq(dp->irq);
- 	return 0;
+ 	clk_disable_unprepare(dp->clock);
  
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 1ef0be338b85..6b79c3b3802f 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -168,7 +168,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 	dp->drm_dev = drm_dev;
- 
- 	dp->plat_data.dev_type = EXYNOS_DP;
--	dp->plat_data.power_on = exynos_dp_poweron;
-+	dp->plat_data.power_on_start = exynos_dp_poweron;
- 	dp->plat_data.power_off = exynos_dp_poweroff;
- 	dp->plat_data.attach = exynos_dp_bridge_attach;
- 	dp->plat_data.get_modes = exynos_dp_get_modes;
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 14f68e792e6f..07dd09e1e32f 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -127,7 +127,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
- 	return 0;
- }
- 
--static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
-+static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
- {
- 	struct rockchip_dp_device *dp = to_dp(plat_data);
- 	int ret;
-@@ -145,6 +145,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 		return ret;
- 	}
- 
-+	return ret;
-+}
-+
-+static int rockchip_dp_poweron_end(struct analogix_dp_plat_data *plat_data)
-+{
-+	struct rockchip_dp_device *dp = to_dp(plat_data);
-+
- 	return rockchip_drm_psr_activate(&dp->encoder);
- }
- 
-@@ -399,7 +406,8 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	dp->plat_data.encoder = &dp->encoder;
- 
- 	dp->plat_data.dev_type = dp->data->chip_type;
--	dp->plat_data.power_on = rockchip_dp_poweron;
-+	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
-+	dp->plat_data.power_on_end = rockchip_dp_poweron_end;
- 	dp->plat_data.power_off = rockchip_dp_powerdown;
- 	dp->plat_data.get_modes = rockchip_dp_get_modes;
- 	dp->plat_data.cleanup = rockchip_dp_cleanup;
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index c079ca1ffc76..1049ee56ae76 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -30,7 +30,8 @@ struct analogix_dp_plat_data {
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
- 
--	int (*power_on)(struct analogix_dp_plat_data *);
-+	int (*power_on_start)(struct analogix_dp_plat_data *);
-+	int (*power_on_end)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
- 	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
- 		      struct drm_connector *);
+ 	pm_runtime_put_sync(dp->dev);
 -- 
 2.12.0.246.ga2ecc84866-goog
