@@ -1,105 +1,110 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
-Date: Fri, 10 Mar 2017 11:40:12 -0800
-Message-ID: <20170310194011.GA16352@google.com>
-References: <20170310024617.67303-1-briannorris@chromium.org>
- <20170310024617.67303-3-briannorris@chromium.org>
- <de4d1e8a-c971-1f4d-2996-883341d287b3@rock-chips.com>
- <5cec190e-4eee-fc55-7039-2336ba5253f3@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [RFT PATCH] PCI: provide helper to reset all domain for host
+ drivers
+Date: Fri, 10 Mar 2017 11:44:17 -0800
+Message-ID: <20170310194417.GB16352@google.com>
+References: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5cec190e-4eee-fc55-7039-2336ba5253f3-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+In-Reply-To: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 10, 2017 at 12:20:54PM +0800, Shawn Lin wrote:
-> On 2017/3/10 11:22, Shawn Lin wrote:
-> >On 2017/3/10 10:46, Brian Norris wrote:
-> >>Currently, if we try to unbind the platform device, the remove will
-> >>succeed, but the removal won't undo most of the registration, leaving
-> >>partially-configured PCI devices in the system.
-> >>
-> >>This allows, for example, a simple 'lspci' to crash the system, as it
-> >>will try to touch the freed (via devm_*) driver structures.
-> >>
-> >>So let's implement device remove().
-> >>
-> >
-> >As this patchset seems to be merged together so I think the following
-> >warning will be ok? if my git-am robot only pick your patch 1->compile->
-> >patch 2->compile->patch 3 then
-> >
-> >drivers/pci/host/pcie-rockchip.c: In function 'rockchip_pcie_remove':
-> >drivers/pci/host/pcie-rockchip.c:1435:2: error: implicit declaration of
-> >function 'pci_unmap_iospace' [-Werror=implicit-function-declaration]
-> >  pci_unmap_iospace(rockchip->io);
+Hi Shawn,
 
-I'm not sure what you're doing here, but when I test patches 1-3, this
-all compiles fine for me. Maybe you're testing an old kernel that does
-not have pci_unmap_iospace()?
+I might be mistaken here, but I don't think this is wise:
 
-> >but I guess you may need to move your patch 4 ahead of patch 3?
-
-No. Patch 4 is only necessary for building modules that can use those
-functions; your PCIe driver doesn't build as a module until patch 5.
-
-I'm going to guess that you're testing your hacky vendor tree, and not
-pure upstream.
-
-> Well, I am not sure if something is wrong here.
+On Fri, Mar 10, 2017 at 03:58:26PM +0800, Shawn Lin wrote:
+> Otherwise the domain_nr will be increased if doing ubind and
+> bind host drives. I don't find any useful routine to reset it
+> from current code, so add this helper. This patch is based on patchset[1]
+> from Brian.
 > 
-> But when booting up the system for the first time, we got
-> [    0.527263] PCI host bridge /pcie@f8000000 ranges:
-> [    0.527293]   MEM 0xfa000000..0xfa5fffff -> 0xfa000000
-> [    0.527308]    IO 0xfa600000..0xfa6fffff -> 0xfa600000
-> [    0.527544] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:0
+> [1]: https://patchwork.kernel.org/patch/9614517/
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> so the hierarchy(lspci -t) looks like:
-> lspci -t
-> -[0000:00]---00.0-[01]----00.0
+> ---
+> Hi Brian,
 > 
-> and lspci
-> 0000:00:00.0 Class 0604: Device 1d87:0100
-> 0001:01:00.0 Class 0108: Device 8086:f1a5 (rev 03)
+> I wasn't able to run my platfrom with linux-next but I test this for
+> my local kernel-v4.4, and I just send this for test!
 > 
-> but if I did unbind and bind, the bus number is different.
+>  drivers/pci/host/pcie-rockchip.c | 1 +
+>  drivers/pci/pci.c                | 6 ++++++
+>  include/linux/pci.h              | 3 +++
+>  3 files changed, 10 insertions(+)
 > 
-> lspci
-> 0001:00:00.0 Class 0604: Device 1d87:0100
-> 0001:01:00.0 Class 0108: Device 8086:f1a5 (rev 03)
-> 
-> lspci -t
-> -+-[0001:00]---00.0-[01]----00.0
->  \-[0000:00]-
-> 
-> This hierarchy looks wrong to me.
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index bd6df72..61787e7 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1435,6 +1435,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+>  	pci_remove_root_bus(rockchip->root_bus);
+>  	pci_unmap_iospace(rockchip->io);
+>  	irq_domain_remove(rockchip->irq_domain);
+> +	pci_reset_all_domain();
 
-That looks like it's somewhat an artifact of lspci's tree view, which
-manufactures the 0000:00 root.
+You don't want to reset *all* domains here; what if some other driver
+created another domain? You're essentially cloberring it here.
 
-I might comment on your "RFT" patch too but... it does touch on the
-problem (that the domain numbers don't get reused), but I don't think
-it's a good idea. What if we add another domain after the Rockchip
-PCIe domain? You'll clobber all the domain allocations the first time
-you remove the Rockchip one. Instead, if we want to actually stabilize
-this indexing across hotplug, we need the core PCI code to take care of
-this for us. e.g., maybe use one of the existing indexing ID mechanisms
-in the kernel, like IDR?
+>  	phy_power_off(rockchip->phy);
+>  	phy_exit(rockchip->phy);
+> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+> index 3ec24877..7c7c63b 100644
+> --- a/drivers/pci/pci.c
+> +++ b/drivers/pci/pci.c
+> @@ -5181,6 +5181,12 @@ int pci_get_new_domain_nr(void)
+>  	return atomic_inc_return(&__domain_nr);
+>  }
+>  
+> +void pci_reset_all_domain(void)
+> +{
+> +	atomic_set(&__domain_nr, -1);
 
-Anyway, other than the bad lspci -t output, is there any actual bug
-here? I didn't think the domain numbers were actually so special.
+IIUC, instead of completely resetting here, it seems like we'd need to
+rework the entire domain allocation code, so that it can properly
+hotplug domains, and track the potential "holes" in indexing that might
+arise.
 
 Brian
+
+> +}
+> +EXPORT_SYMBOL(pci_reset_all_domain);
+> +
+>  #ifdef CONFIG_PCI_DOMAINS_GENERIC
+>  static int of_pci_bus_find_domain_nr(struct device *parent)
+>  {
+> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> index eb3da1a..c9bd939 100644
+> --- a/include/linux/pci.h
+> +++ b/include/linux/pci.h
+> @@ -1456,11 +1456,13 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+>  #ifdef CONFIG_PCI_DOMAINS
+>  extern int pci_domains_supported;
+>  int pci_get_new_domain_nr(void);
+> +void pci_reset_all_domain(void);
+>  #else
+>  enum { pci_domains_supported = 0 };
+>  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+>  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
+>  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
+> +static inline void pci_reset_all_domain(void) {}
+>  #endif /* CONFIG_PCI_DOMAINS */
+>  
+>  /*
+> @@ -1617,6 +1619,7 @@ static inline struct pci_dev *pci_get_bus_and_slot(unsigned int bus,
+>  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+>  static inline struct pci_dev *pci_dev_get(struct pci_dev *dev) { return NULL; }
+>  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
+> +static inline void pci_reset_all_domain(void) {};
+>  
+>  #define dev_is_pci(d) (false)
+>  #define dev_is_pf(d) (false)
+> -- 
+> 1.9.1
+> 
+> 
