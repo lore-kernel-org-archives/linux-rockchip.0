@@ -1,131 +1,278 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 13/41] drm/rockchip: pre dither down when output bpc is 8bit
-Date: Thu,  9 Mar 2017 23:32:28 -0500
-Message-ID: <20170310043305.17216-14-seanpaul@chromium.org>
+From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 12/41] drm/bridge: analogix_dp: add fast link train for eDP
+Date: Thu,  9 Mar 2017 23:32:27 -0500
+Message-ID: <20170310043305.17216-13-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170310043305.17216-1-seanpaul@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170310043305.17216-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Mark Yao <mark.yao@rock-chips.com>
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Some encoder have a crc verification check, crc check fail if
-input and output data is not equal.
+We would meet a short black screen when exit PSR with the full link
+training, In this case, we should use fast link train instead of full
+link training.
 
-That means encoder input and output need use same color depth,
-vop can output 10bit data to encoder, but some panel only support
-8bit depth, that would make crc check die.
-
-So pre dither down vop data to 8bit if panel's bpc is 8.
-
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 ++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h     | 1 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 4 ++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h     | 1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c     | 6 ++++--
- 5 files changed, 14 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 142 ++++++++++++++++-----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   3 +
+ 2 files changed, 114 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index f44756029478..b6c6d6d09d7e 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -225,6 +225,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
- {
- 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
- 	struct rockchip_dp_device *dp = to_dp(encoder);
-+	struct drm_display_info *di = &conn_state->connector->display_info;
- 	int ret;
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 64d94a34874d..5bc151b0995b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -10,17 +10,18 @@
+ * option) any later version.
+ */
  
- 	/*
-@@ -248,6 +249,9 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
- 			s->output_mode = ROCKCHIP_OUT_MODE_P888;
- 	}
+-#include <linux/module.h>
+-#include <linux/platform_device.h>
+-#include <linux/err.h>
+ #include <linux/clk.h>
+-#include <linux/io.h>
++#include <linux/component.h>
++#include <linux/err.h>
++#include <linux/gpio.h>
+ #include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
++#include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_gpio.h>
+-#include <linux/gpio.h>
+-#include <linux/component.h>
+ #include <linux/phy/phy.h>
++#include <linux/platform_device.h>
  
-+	s->output_bpc = di->bpc;
-+	s->output_type = DRM_MODE_CONNECTOR_eDP;
+ #include <drm/drmP.h>
+ #include <drm/drm_atomic_helper.h>
+@@ -35,6 +36,8 @@
+ 
+ #define to_dp(nm)	container_of(nm, struct analogix_dp_device, nm)
+ 
++static const bool verify_fast_training;
 +
- 	return 0;
+ struct bridge_init {
+ 	struct i2c_client *client;
+ 	struct device_node *node;
+@@ -531,7 +534,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ {
+ 	int lane, lane_count, retval;
+ 	u32 reg;
+-	u8 link_align, link_status[2], adjust_request[2];
++	u8 link_align, link_status[2], adjust_request[2], spread;
+ 
+ 	usleep_range(400, 401);
+ 
+@@ -574,6 +577,20 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ 		dev_dbg(dp->dev, "final lane count = %.2x\n",
+ 			dp->link_train.lane_count);
+ 
++		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
++					   &spread);
++		if (retval != 1) {
++			dev_err(dp->dev, "failed to read downspread %d\n",
++				retval);
++			dp->fast_train_support = false;
++		} else {
++			dp->fast_train_support =
++				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
++					true : false;
++		}
++		dev_dbg(dp->dev, "fast link training %s\n",
++			dp->fast_train_support ? "supported" : "unsupported");
++
+ 		/* set enhanced mode if available */
+ 		analogix_dp_set_enhanced_mode(dp);
+ 		dp->link_train.lt_state = FINISHED;
+@@ -630,10 +647,12 @@ static void analogix_dp_get_max_rx_lane_count(struct analogix_dp_device *dp,
+ 	*lane_count = DPCD_MAX_LANE_COUNT(data);
  }
  
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 1844951118da..a966d1d37378 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -36,6 +36,7 @@ struct rockchip_crtc_state {
- 	struct drm_crtc_state base;
- 	int output_type;
- 	int output_mode;
-+	int output_bpc;
- };
- #define to_rockchip_crtc_state(s) \
- 		container_of(s, struct rockchip_crtc_state, base)
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index aa5c528c59fc..ea3fff4170d9 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -968,6 +968,10 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
- 		DRM_DEV_ERROR(vop->dev, "unsupported connector_type [%d]\n",
- 			      s->output_type);
+-static void analogix_dp_init_training(struct analogix_dp_device *dp,
+-				      enum link_lane_count_type max_lane,
+-				      int max_rate)
++static int analogix_dp_full_link_train(struct analogix_dp_device *dp,
++				       u32 max_lanes, u32 max_rate)
+ {
++	int retval = 0;
++	bool training_finished = false;
++
+ 	/*
+ 	 * MACRO_RST must be applied after the PLL_LOCK to avoid
+ 	 * the DP inter pair skew issue for at least 10 us
+@@ -659,18 +678,13 @@ static void analogix_dp_init_training(struct analogix_dp_device *dp,
  	}
-+	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
-+		VOP_CTRL_SET(vop, pre_dither_down, 1);
-+	else
-+		VOP_CTRL_SET(vop, pre_dither_down, 0);
- 	VOP_CTRL_SET(vop, out_mode, s->output_mode);
  
- 	VOP_CTRL_SET(vop, htotal_pw, (htotal << 16) | hsync_len);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 5a4faa85dbd2..9a1eb83271eb 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -47,6 +47,7 @@ struct vop_ctrl {
- 	struct vop_reg mipi_en;
- 	struct vop_reg dp_en;
- 	struct vop_reg out_mode;
-+	struct vop_reg pre_dither_down;
- 	struct vop_reg dither_down;
- 	struct vop_reg dither_up;
- 	struct vop_reg pin_pol;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 91fbc7b52147..e645a9621721 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -212,7 +212,8 @@ static const struct vop_ctrl rk3288_ctrl_data = {
- 	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
- 	.edp_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 14),
- 	.mipi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 15),
--	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
-+	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
-+	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x7, 2),
- 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
- 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
- 	.out_mode = VOP_REG(RK3288_DSP_CTRL0, 0xf, 0),
-@@ -289,7 +290,8 @@ static const struct vop_ctrl rk3399_ctrl_data = {
- 	.hdmi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 13),
- 	.edp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 14),
- 	.mipi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 15),
--	.dither_down = VOP_REG(RK3399_DSP_CTRL1, 0xf, 1),
-+	.pre_dither_down = VOP_REG(RK3399_DSP_CTRL1, 0x1, 1),
-+	.dither_down = VOP_REG(RK3399_DSP_CTRL1, 0x7, 2),
- 	.dither_up = VOP_REG(RK3399_DSP_CTRL1, 0x1, 6),
- 	.data_blank = VOP_REG(RK3399_DSP_CTRL0, 0x1, 19),
- 	.out_mode = VOP_REG(RK3399_DSP_CTRL0, 0xf, 0),
+ 	/* Setup TX lane count & rate */
+-	if (dp->link_train.lane_count > max_lane)
+-		dp->link_train.lane_count = max_lane;
++	if (dp->link_train.lane_count > max_lanes)
++		dp->link_train.lane_count = max_lanes;
+ 	if (dp->link_train.link_rate > max_rate)
+ 		dp->link_train.link_rate = max_rate;
+ 
+ 	/* All DP analog module power up */
+ 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 0);
+-}
+-
+-static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
+-{
+-	int retval = 0, training_finished = 0;
+ 
+ 	dp->link_train.lt_state = START;
+ 
+@@ -705,22 +719,88 @@ static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
+ 	return retval;
+ }
+ 
+-static int analogix_dp_set_link_train(struct analogix_dp_device *dp,
+-				      u32 count, u32 bwtype)
++static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
+ {
+-	int i;
+-	int retval;
++	int i, ret;
++	u8 link_align, link_status[2];
++	enum pll_status status;
+ 
+-	for (i = 0; i < DP_TIMEOUT_LOOP_COUNT; i++) {
+-		analogix_dp_init_training(dp, count, bwtype);
+-		retval = analogix_dp_sw_link_training(dp);
+-		if (retval == 0)
+-			break;
++	analogix_dp_reset_macro(dp);
+ 
+-		usleep_range(100, 110);
++	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
++	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
++
++	for (i = 0; i < dp->link_train.lane_count; i++) {
++		analogix_dp_set_lane_link_training(dp,
++			dp->link_train.training_lane[i], i);
+ 	}
+ 
+-	return retval;
++	ret = readx_poll_timeout(analogix_dp_get_pll_lock_status, dp, status,
++				 status != PLL_UNLOCKED, 120,
++				 120 * DP_TIMEOUT_LOOP_COUNT);
++	if (ret) {
++		DRM_DEV_ERROR(dp->dev, "Wait for pll lock failed %d\n", ret);
++		return ret;
++	}
++
++	/* source Set training pattern 1 */
++	analogix_dp_set_training_pattern(dp, TRAINING_PTN1);
++	/* From DP spec, pattern must be on-screen for a minimum 500us */
++	usleep_range(500, 600);
++
++	analogix_dp_set_training_pattern(dp, TRAINING_PTN2);
++	/* From DP spec, pattern must be on-screen for a minimum 500us */
++	usleep_range(500, 600);
++
++	/* TODO: enhanced_mode?*/
++	analogix_dp_set_training_pattern(dp, DP_NONE);
++
++	/*
++	 * Useful for debugging issues with fast link training, disable for more
++	 * speed
++	 */
++	if (verify_fast_training) {
++		ret = drm_dp_dpcd_readb(&dp->aux, DP_LANE_ALIGN_STATUS_UPDATED,
++					&link_align);
++		if (ret < 0) {
++			DRM_DEV_ERROR(dp->dev, "Read align status failed %d\n",
++				      ret);
++			return ret;
++		}
++
++		ret = drm_dp_dpcd_read(&dp->aux, DP_LANE0_1_STATUS, link_status,
++				       2);
++		if (ret < 0) {
++			DRM_DEV_ERROR(dp->dev, "Read link status failed %d\n",
++				      ret);
++			return ret;
++		}
++
++		if (analogix_dp_clock_recovery_ok(link_status,
++						  dp->link_train.lane_count)) {
++			DRM_DEV_ERROR(dp->dev, "Clock recovery failed\n");
++			analogix_dp_reduce_link_rate(dp);
++			return -EIO;
++		}
++
++		if (analogix_dp_channel_eq_ok(link_status, link_align,
++					      dp->link_train.lane_count)) {
++			DRM_DEV_ERROR(dp->dev, "Channel EQ failed\n");
++			analogix_dp_reduce_link_rate(dp);
++			return -EIO;
++		}
++	}
++
++	return 0;
++}
++
++static int analogix_dp_train_link(struct analogix_dp_device *dp)
++{
++	if (dp->fast_train_support)
++		return analogix_dp_fast_link_train(dp);
++
++	return analogix_dp_full_link_train(dp, dp->video_info.max_lane_count,
++					   dp->video_info.max_link_rate);
+ }
+ 
+ static int analogix_dp_config_video(struct analogix_dp_device *dp)
+@@ -853,10 +933,10 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
+ 			DRM_ERROR("failed to disable the panel\n");
+ 	}
+ 
+-	ret = analogix_dp_set_link_train(dp, dp->video_info.max_lane_count,
+-					 dp->video_info.max_link_rate);
++	ret = readx_poll_timeout(analogix_dp_train_link, dp, ret, !ret, 100,
++				 DP_TIMEOUT_TRAINING_US * 5);
+ 	if (ret) {
+-		dev_err(dp->dev, "unable to do link train\n");
++		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
+ 		return;
+ 	}
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index e135a42cb19e..920607d7eb3e 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -20,6 +20,8 @@
+ #define MAX_CR_LOOP 5
+ #define MAX_EQ_LOOP 5
+ 
++/* Training takes 22ms if AUX channel comm fails. Use this as retry interval */
++#define DP_TIMEOUT_TRAINING_US			22000
+ #define DP_TIMEOUT_PSR_LOOP_MS			300
+ 
+ /* DP_MAX_LANE_COUNT */
+@@ -171,6 +173,7 @@ struct analogix_dp_device {
+ 	int			hpd_gpio;
+ 	bool                    force_hpd;
+ 	bool			psr_enable;
++	bool			fast_train_support;
+ 
+ 	struct mutex		panel_lock;
+ 	bool			panel_is_modeset;
 -- 
 2.12.0.246.ga2ecc84866-goog
