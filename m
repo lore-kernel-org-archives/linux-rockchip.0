@@ -1,169 +1,102 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
-Date: Fri, 10 Mar 2017 12:20:54 +0800
-Message-ID: <5cec190e-4eee-fc55-7039-2336ba5253f3@rock-chips.com>
-References: <20170310024617.67303-1-briannorris@chromium.org>
- <20170310024617.67303-3-briannorris@chromium.org>
- <de4d1e8a-c971-1f4d-2996-883341d287b3@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH 00/41] Chromebook Plus (aka kevin) kernel patches
+Date: Thu,  9 Mar 2017 23:32:15 -0500
+Message-ID: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <de4d1e8a-c971-1f4d-2996-883341d287b3@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/3/10 11:22, Shawn Lin wrote:
-> On 2017/3/10 10:46, Brian Norris wrote:
->> Currently, if we try to unbind the platform device, the remove will
->> succeed, but the removal won't undo most of the registration, leaving
->> partially-configured PCI devices in the system.
->>
->> This allows, for example, a simple 'lspci' to crash the system, as it
->> will try to touch the freed (via devm_*) driver structures.
->>
->> So let's implement device remove().
->>
->
-> As this patchset seems to be merged together so I think the following
-> warning will be ok? if my git-am robot only pick your patch 1->compile->
-> patch 2->compile->patch 3 then
->
-> drivers/pci/host/pcie-rockchip.c: In function 'rockchip_pcie_remove':
-> drivers/pci/host/pcie-rockchip.c:1435:2: error: implicit declaration of
-> function 'pci_unmap_iospace' [-Werror=implicit-function-declaration]
->   pci_unmap_iospace(rockchip->io);
->
-> but I guess you may need to move your patch 4 ahead of patch 3?
->
-
-Well, I am not sure if something is wrong here.
-
-But when booting up the system for the first time, we got
-[    0.527263] PCI host bridge /pcie@f8000000 ranges:
-[    0.527293]   MEM 0xfa000000..0xfa5fffff -> 0xfa000000
-[    0.527308]    IO 0xfa600000..0xfa6fffff -> 0xfa600000
-[    0.527544] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:0
-
-so the hierarchy(lspci -t) looks like:
-lspci -t
--[0000:00]---00.0-[01]----00.0
-
-and lspci
-0000:00:00.0 Class 0604: Device 1d87:0100
-0001:01:00.0 Class 0108: Device 8086:f1a5 (rev 03)
-
-but if I did unbind and bind, the bus number is different.
-
-lspci
-0001:00:00.0 Class 0604: Device 1d87:0100
-0001:01:00.0 Class 0108: Device 8086:f1a5 (rev 03)
-
-lspci -t
--+-[0001:00]---00.0-[01]----00.0
-  \-[0000:00]-
-
-This hierarchy looks wrong to me.
-
->
->> Signed-off-by: Brian Norris <briannorris@chromium.org>
->> ---
->> v2:
->> * unmap IO space with pci_unmap_iospace()
->> * remove IRQ domain
->> ---
->>  drivers/pci/host/pcie-rockchip.c | 36
->> ++++++++++++++++++++++++++++++++++--
->>  1 file changed, 34 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/pci/host/pcie-rockchip.c
->> b/drivers/pci/host/pcie-rockchip.c
->> index 5d7b27b1e941..d2e5078ae331 100644
->> --- a/drivers/pci/host/pcie-rockchip.c
->> +++ b/drivers/pci/host/pcie-rockchip.c
->> @@ -223,9 +223,11 @@ struct rockchip_pcie {
->>      int    link_gen;
->>      struct    device *dev;
->>      struct    irq_domain *irq_domain;
->> -    u32     io_size;
->>      int     offset;
->> +    struct pci_bus *root_bus;
->> +    struct resource *io;
->>      phys_addr_t io_bus_addr;
->> +    u32     io_size;
->>      void    __iomem *msg_region;
->>      u32     mem_size;
->>      phys_addr_t msg_bus_addr;
->> @@ -1360,6 +1362,7 @@ static int rockchip_pcie_probe(struct
->> platform_device *pdev)
->>                       err, io);
->>                  continue;
->>              }
->> +            rockchip->io = io;
->>              break;
->>          case IORESOURCE_MEM:
->>              mem = win->res;
->> @@ -1391,6 +1394,7 @@ static int rockchip_pcie_probe(struct
->> platform_device *pdev)
->>          err = -ENOMEM;
->>          goto err_free_res;
->>      }
->> +    rockchip->root_bus = bus;
->>
->>      pci_bus_size_bridges(bus);
->>      pci_bus_assign_resources(bus);
->> @@ -1421,6 +1425,34 @@ static int rockchip_pcie_probe(struct
->> platform_device *pdev)
->>      return err;
->>  }
->>
->> +static int rockchip_pcie_remove(struct platform_device *pdev)
->> +{
->> +    struct device *dev = &pdev->dev;
->> +    struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->> +
->> +    pci_stop_root_bus(rockchip->root_bus);
->> +    pci_remove_root_bus(rockchip->root_bus);
->> +    pci_unmap_iospace(rockchip->io);
->> +    irq_domain_remove(rockchip->irq_domain);
->> +
->> +    phy_power_off(rockchip->phy);
->> +    phy_exit(rockchip->phy);
->> +
->> +    clk_disable_unprepare(rockchip->clk_pcie_pm);
->> +    clk_disable_unprepare(rockchip->hclk_pcie);
->> +    clk_disable_unprepare(rockchip->aclk_perf_pcie);
->> +    clk_disable_unprepare(rockchip->aclk_pcie);
->> +
->> +    if (!IS_ERR(rockchip->vpcie3v3))
->> +        regulator_disable(rockchip->vpcie3v3);
->> +    if (!IS_ERR(rockchip->vpcie1v8))
->> +        regulator_disable(rockchip->vpcie1v8);
->> +    if (!IS_ERR(rockchip->vpcie0v9))
->> +        regulator_disable(rockchip->vpcie0v9);
->> +
->> +    return 0;
->> +}
->> +
->>  static const struct dev_pm_ops rockchip_pcie_pm_ops = {
->>      SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
->>                        rockchip_pcie_resume_noirq)
->> @@ -1438,6 +1470,6 @@ static struct platform_driver
->> rockchip_pcie_driver = {
->>          .pm = &rockchip_pcie_pm_ops,
->>      },
->>      .probe = rockchip_pcie_probe,
->> -
->> +    .remove = rockchip_pcie_remove,
->>  };
->>  builtin_platform_driver(rockchip_pcie_driver);
->>
->
->
-
-
--- 
-Best Regards
-Shawn Lin
+RGVzcGl0ZSBvdXIgYmVzdCBpbnRlbnRpb25zIChhbmQgd2UgZGlkIGEgZGVjZW50IGpvYiB0aGlz
+IHRpbWUgYXJvdW5kKSBvZiBzdWJtaXR0aW5nCnVwc3RyZWFtIGZpcnN0IGZvciB0aGUgQ2hyb21l
+Ym9vayBQbHVzLCB3ZSBoYWQgYSBudW1iZXIgb2YgcGF0Y2hlcyBzbGlwIHRocm91Z2ggdGhlCmNy
+YWNrcy4gVGhpcyBzZXJpZXMgaW5jbHVkZXMgYWxsIGJ1dCBvbmUgb2YgdGhvc2UgcGF0Y2hlcy4g
+VGhlIG91dGxpZXIgYnJlYWtzIG15CnZleXJvbiBib2FyZCwgc28gSSBkcm9wcGVkIGl0LgoKVGhl
+IHBhdGNoZXMgaGF2ZSBiZWVuIHRlc3RlZCBvbiB0aGUgQ2hyb21lYm9vayBQbHVzIGluIG91ciBk
+b3duc3RyZWFtIGtlcm5lbCwgYW5kCm15IHZleXJvbi1qYXEgYm9hcmQgd2l0aCBhbiB1cHN0cmVh
+bSBrZXJuZWwuIFRoZXkgaGF2ZSBhbHNvIGJlZW4gY29tcGlsZSB0ZXN0ZWQKdXNpbmcgdGhlIGRy
+bS1taXNjIGNvbmZpZ3MuCgpTZWFuCgoKRG91Z2xhcyBBbmRlcnNvbiAoNCk6CiAgZHJtL2JyaWRn
+ZTogYW5hbG9naXhfZHA6IFJlb3JkZXIgcGxhdF9kYXRhLT5wb3dlcl9vZmYgdG8gaGFwcGVuIHNv
+b25lcgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lm
+aWMgcG93ZXJvbiBpbiB0d28KICAgIHBhcnRzCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFBy
+b3Blcmx5IGxvZyBBVVggQ0ggZXJyb3JzCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
+cmx5IGRpc2FibGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAoKSGFpeGlhIFNoaSAoMSk6
+CiAgZHJtL3JvY2tjaGlwOiBzdXBwb3J0IHByaW1lIGltcG9ydCBzZyB0YWJsZQoKTGluIEh1YW5n
+ICg2KToKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogTW92ZSBlbmFibGUgdmlkZW8gaW50byBj
+b25maWdfdmlkZW8oKQogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBDaGVjayBBVVhfRU4gc3Rh
+dHVzIHdoZW4gZG9pbmcgQVVYIHRyYW5zZmVyCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEVu
+c3VyZSBlZHAgaXMgZGlzYWJsZWQgd2hlbiBzaHV0dGluZyBkb3duIHRoZQogICAgcGFuZWwKICBk
+cm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRXh0ZW5kIGhwZCBjaGVjayB0aW1lIHRvIDEwMG1zCiAg
+ZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IENoZWNrIGRwY2Qgd3JpdGUvcmVhZCBzdGF0dXMKICBk
+cm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVzZXQgYXV4IGNoYW5uZWwgaWYgYW4gZXJyb3Igb2Nj
+dXJyZWQKCk1hcmsgWWFvICgxKToKICBkcm0vcm9ja2NoaXA6IHByZSBkaXRoZXIgZG93biB3aGVu
+IG91dHB1dCBicGMgaXMgOGJpdAoKU2VhbiBQYXVsICgzKToKICBkcm0vcGFuZWw6IHNpbXBsZTog
+Q2hhbmdlIG1vZGUgZm9yIFNoYXJwIGxxMTIzcDFqeDMxCiAgZHJtL3JvY2tjaGlwOiBEb24ndCB1
+c2UgYXRvbWljIGNvbnN0cnVjdHMgZm9yIHBzcgogIGRybS9yb2NrY2hpcDogUmVtb3ZlIGFuYWxv
+Z2l4IHBzciB3b3JrZXIKClRvbWFzeiBGaWdhICg2KToKICBkcm0vcm9ja2NoaXA6IEdldCByaWQg
+b2Ygc29tZSB1bm5lY2Vzc2FyeSBjb2RlCiAgZHJtL3JvY2tjaGlwOiBGbHVzaCBQU1IgYmVmb3Jl
+IGNvbW1pdHRpbmcgbW9kZXNldCBkaXNhYmxlcy9lbmFibGVzCiAgZHJtL2JyaWRnZTogYW5hbG9n
+aXhfZHA6IEFsbG93IG1hc3RlciBkcml2ZXIgdG8gY2xlYW51cCBpbiB1bmJpbmQKICBkcm0vcm9j
+a2NoaXA6IGFuYWxvZ2l4X2RwOiBGaXggaW52YWxpZCBpbXBsZW1lbnRhdGlvbiBvZiB1bmJpbmQK
+ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogQWRkIGFuYWxvZ2l4X2RwX3NodXRkb3duCiAgZHJt
+L3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogV2lyZSB0aGUgc2h1dGRvd24gY2FsbGJhY2sgdG8gZGlz
+YWJsZSBQU1IKCllha2lyIFlhbmcgKDEpOgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBkZXRl
+Y3QgU2luayBQU1Igc3RhdGUgYWZ0ZXIgY29uZmlndXJpbmcgdGhlCiAgICBQU1IKCnphaW4gd2Fu
+ZyAoMTgpOgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBzZXQgcHNyIGFjdGl2YXRlL2RlYWN0
+aXZhdGUgd2hlbgogICAgZW5hYmxlL2Rpc2FibGUgYnJpZGdlCiAgZHJtL2JyaWRnZTogYW5hbG9n
+aXhfZHA6IERvbid0IHBvd2VyIGJyaWRnZSBpbiBhbmFsb2dpeF9kcF9iaW5kCiAgZHJtL2JyaWRn
+ZTogYW5hbG9naXhfZHA6IERvbid0IGNoYW5nZSBwc3Igd2hpbGUgYnJpZGdlIGlzIGRpc2FibGVk
+CiAgZHJtL3JvY2tjaGlwOiBhZGQgbXV0ZXggdm9wIGxvY2sKICBkcm0vYnJpZGdlOiBhbmFsb2dp
+eF9kcDogYWRkIGZhc3QgbGluayB0cmFpbiBmb3IgZURQCiAgZHJtL3JvY2tjaGlwOiBPbmx5IHdh
+aXQgZm9yIHBhbmVsIEFDSyBvbiBQU1IgZW50cnkKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDog
+RG9uJ3QgdXNlIGZhc3QgbGluayB0cmFpbmluZyB3aGVuIHBhbmVsIGp1c3QKICAgIHBvd2VyZWQg
+dXAKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmV0cnkgYnJpZGdlIGVuYWJsZSB3aGVuIGl0
+IGZhaWxlZAogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBXYWl0IGZvciBIUEQgc2lnbmFsIGJl
+Zm9yZSBjb25maWd1cmluZyBsaW5rCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFNldCBQRF9J
+TkNfQkcgZmlyc3Qgd2hlbiBwb3dlcmluZyB1cCBlZHAgcGh5CiAgZHJtL2JyaWRnZTogYW5hbG9n
+aXhfZHA6IEZpeCBpbmNvcnJlY3QgdXNhZ2Ugb2YgZW5oYW5jZWQgbW9kZQogIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBGaXggQVVYX1BEIGJpdCBmb3IgUm9ja2NoaXAKICBkcm0vcm9ja2NoaXA6
+IFJlc3RvcmUgcHNyLT5zdGF0ZSB3aGVuIGVuYWJsZS9kaXNhYmxlIHBzciBmYWlsZWQKICBkcm0v
+YnJpZGdlOiBhbmFsb2dpeF9kcDogRG9uJ3QgdXNlIEFOQUxPR0lYX0RQX1BMTF9DVEwgdG8gY29u
+dHJvbCBwbGwKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IHRpbWVvdXQgb2YgdmlkZW8g
+c3RyZWFtY2xrIGNvbmZpZwogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBGaXggaW5jb3JyZWN0
+IG9wZXJhdGlvbnMgd2l0aCByZWdpc3RlcgogICAgQU5BTE9HSVhfRFBfRlVOQ19FTl8xCiAgZHJt
+L2JyaWRnZTogYW5hbG9naXhfZHA6IE1vdmUgZmFzdCBsaW5rIHRyYWluaW5nIGRldGVjdCB0byBz
+ZXRfYnJpZGdlCiAgZHJtL3JvY2tjaGlwOiBEaXNhYmxlIFZPUCB3aW5kb3dzIHdoZW4gUFNSIGlz
+IGFjdGl2ZQoKw5hyamFuIEVpZGUgKDEpOgogIGRybS9yb2NrY2hpcDogUmVzcGVjdCBwYWdlIG9m
+ZnNldCBmb3IgUFJJTUUgbW1hcCBjYWxscwoKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
+aXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNDcxICsrKysrKysrKysrKysrKy0tLS0tLQogZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgMTQgKy0KIGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgMjczICsr
+KysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9y
+ZWcuaCAgfCAgIDcgKwogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAgICAgICAg
+ICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyAg
+ICAgICAgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhf
+ZHAtcm9ja2NoaXAuYyAgICB8IDEyOSArKystLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZHJ2LmMgICAgICAgIHwgICAzICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgNCArLQogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICAgICAgICAgfCAgMTMgKwogZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgICAgICAgfCAxMjUgKysrKystCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oICAgICAgICB8ICAgNSArLQogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyAgICAgICAgfCAxMTIgKyst
+LS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmggICAgICAgIHwg
+ICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAg
+ICB8ICA4MSArKystCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5o
+ICAgICAgICB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3Jl
+Zy5jICAgICAgICB8ICAgNiArLQogaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAg
+ICAgICAgICAgICAgICAgfCAgIDcgKy0KIDE4IGZpbGVzIGNoYW5nZWQsIDg4MiBpbnNlcnRpb25z
+KCspLCAzODQgZGVsZXRpb25zKC0pCgotLSAKMi4xMi4wLjI0Ni5nYTJlY2M4NDg2Ni1nb29nCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
