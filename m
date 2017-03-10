@@ -1,101 +1,95 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RFT PATCH] PCI: provide helper to reset all domain for host
- drivers
-Date: Fri, 10 Mar 2017 16:44:42 +0800
-Message-ID: <6d207d54-bc32-f307-2aa1-0afed821342e@rock-chips.com>
-References: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the enablement
+ functions
+Date: Fri, 10 Mar 2017 10:35:09 +0100
+Message-ID: <20170310093509.19044-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017/3/10 15:58, Shawn Lin wrote:
-> Otherwise the domain_nr will be increased if doing ubind and
-> bind host drives. I don't find any useful routine to reset it
-> from current code, so add this helper. This patch is based on patchset[1]
-> from Brian.
->
-> [1]: https://patchwork.kernel.org/patch/9614517/
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
+Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
+step E. and is kept enabled for later use. This clock should be enabled
+and disabled along with the actual audio stream and not always on (that
+is bad for PM). Futhermore, this might cause sound glitches with some
+HDMI devices, as the CTS+N is forced to zero when the stream is disabled
+while the audio clock is still running.
 
-Oh, add "linux,pci-domain = <0>" for our DT could also works.
+This commit adds a parameter to hdmi_audio_enable_clk() that controls
+when the audio sample clock must be enabled or disabled. Then, it moves
+the call to this function into dw_hdmi_audio_enable() and
+dw_hdmi_audio_disable().
 
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/dw-hdmi.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-> ---
-> Hi Brian,
->
-> I wasn't able to run my platfrom with linux-next but I test this for
-> my local kernel-v4.4, and I just send this for test!
->
->  drivers/pci/host/pcie-rockchip.c | 1 +
->  drivers/pci/pci.c                | 6 ++++++
->  include/linux/pci.h              | 3 +++
->  3 files changed, 10 insertions(+)
->
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index bd6df72..61787e7 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1435,6 +1435,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->  	pci_remove_root_bus(rockchip->root_bus);
->  	pci_unmap_iospace(rockchip->io);
->  	irq_domain_remove(rockchip->irq_domain);
-> +	pci_reset_all_domain();
->
->  	phy_power_off(rockchip->phy);
->  	phy_exit(rockchip->phy);
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index 3ec24877..7c7c63b 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -5181,6 +5181,12 @@ int pci_get_new_domain_nr(void)
->  	return atomic_inc_return(&__domain_nr);
->  }
->
-> +void pci_reset_all_domain(void)
-> +{
-> +	atomic_set(&__domain_nr, -1);
-> +}
-> +EXPORT_SYMBOL(pci_reset_all_domain);
-> +
->  #ifdef CONFIG_PCI_DOMAINS_GENERIC
->  static int of_pci_bus_find_domain_nr(struct device *parent)
->  {
-> diff --git a/include/linux/pci.h b/include/linux/pci.h
-> index eb3da1a..c9bd939 100644
-> --- a/include/linux/pci.h
-> +++ b/include/linux/pci.h
-> @@ -1456,11 +1456,13 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
->  #ifdef CONFIG_PCI_DOMAINS
->  extern int pci_domains_supported;
->  int pci_get_new_domain_nr(void);
-> +void pci_reset_all_domain(void);
->  #else
->  enum { pci_domains_supported = 0 };
->  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
->  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-> +static inline void pci_reset_all_domain(void) {}
->  #endif /* CONFIG_PCI_DOMAINS */
->
->  /*
-> @@ -1617,6 +1619,7 @@ static inline struct pci_dev *pci_get_bus_and_slot(unsigned int bus,
->  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->  static inline struct pci_dev *pci_dev_get(struct pci_dev *dev) { return NULL; }
->  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-> +static inline void pci_reset_all_domain(void) {};
->
->  #define dev_is_pci(d) (false)
->  #define dev_is_pf(d) (false)
->
-
-
+diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
+index b621fc7..5b6090c 100644
+--- a/drivers/gpu/drm/bridge/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/dw-hdmi.c
+@@ -537,6 +537,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
+ 
++static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
++{
++	hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
++		  HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
++}
++
+ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
+ {
+ 	unsigned long flags;
+@@ -544,6 +550,7 @@ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
+ 	spin_lock_irqsave(&hdmi->audio_lock, flags);
+ 	hdmi->audio_enable = true;
+ 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
++	hdmi_enable_audio_clk(hdmi, true);
+ 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_audio_enable);
+@@ -554,6 +561,7 @@ void dw_hdmi_audio_disable(struct dw_hdmi *hdmi)
+ 
+ 	spin_lock_irqsave(&hdmi->audio_lock, flags);
+ 	hdmi->audio_enable = false;
++	hdmi_enable_audio_clk(hdmi, false);
+ 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, 0);
+ 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
+ }
+@@ -1343,11 +1351,6 @@ static void dw_hdmi_enable_video_path(struct dw_hdmi *hdmi)
+ 	}
+ }
+ 
+-static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi)
+-{
+-	hdmi_modb(hdmi, 0, HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
+-}
+-
+ /* Workaround to clear the overflow condition */
+ static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
+ {
+@@ -1430,7 +1433,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+ 
+ 		/* HDMI Initialization Step E - Configure audio */
+ 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
+-		hdmi_enable_audio_clk(hdmi);
++		hdmi_enable_audio_clk(hdmi, true);
+ 	}
+ 
+ 	/* not for DVI mode */
 -- 
-Best Regards
-Shawn Lin
+2.9.3
