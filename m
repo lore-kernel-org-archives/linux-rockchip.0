@@ -1,53 +1,86 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH 34/41] drm/bridge: analogix_dp: Allow master driver to
- cleanup in unbind
-Date: Fri, 10 Mar 2017 16:09:57 +0900
-Message-ID: <CAAFQd5Apg95nXdbpx1dK=3JcXUz7XGj_RCgYeGjLphuf17MWCQ@mail.gmail.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <20170310043305.17216-35-seanpaul@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170310043305.17216-35-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Yakir Yang <ykk@rock-chips.com>, "Kristian H . Kristensen" <hoegsberg@chromium.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RFT PATCH] PCI: provide helper to reset all domain for host drivers
+Date: Fri, 10 Mar 2017 15:58:26 +0800
+Message-ID: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2VhbiwKCk9uIEZyaSwgTWFyIDEwLCAyMDE3IGF0IDE6MzIgUE0sIFNlYW4gUGF1bCA8c2Vh
-bnBhdWxAY2hyb21pdW0ub3JnPiB3cm90ZToKPgo+IEZyb206IFRvbWFzeiBGaWdhIDx0ZmlnYUBj
-aHJvbWl1bS5vcmc+Cj4KPiBTaW5jZSB3ZSB0YWtlIHRoZSBvd25lcnNoaXAgb2YgZHJ2ZGF0YSwg
-dGhlIG1hc3RlciBkcml2ZXIgZG9lcyBub3QgaGF2ZQo+IGFueSBtZWFucyBvZiBhY2Nlc3Npbmcg
-aXRzIG93biBkYXRhIGZyb20gdW5iaW5kIGNhbGxiYWNrIGFuZCBhbGwgaXQgY2FuCj4gZG8gaXMg
-Y2FsbGluZyB0aGUgYW5hbG9naXggdW5iaW5kIGNhbGxiYWNrLiBIb3dldmVyIGl0IG1pZ2h0IGJl
-Cj4gbmVjZXNzYXJ5IHRvIGRvIHNvbWUgY2xlYW4gdXAgaW4gdGhlIG1hc3RlciBkcml2ZXIgYmVm
-b3JlIHdlIHJlYWxseQo+IHVuYmluZCB0aGUgYW5hbG9naXggcGFydCAoc3VjaCBhcyBQU1IgdW5y
-ZWdpc3RlciBpbiBSb2NrY2hpcCBjYXNlKSwgc28KPiB0aGlzIHBhdGNoIHByb3ZpZGVzIGEgcGxh
-dF9kYXRhLT5jbGVhbnVwKCkgY2FsbGJhY2sgd2hpY2ggaXMgY2FsbGVkIGF0Cj4gdGhlIGJlZ2lu
-bmluZyBvZiBhbmFsb2dpeF9kcF91bmJpbmQoKS4KPgo+IENjOiBLcmlzdGlhbiBILiBLcmlzdGVu
-c2VuIDxob2Vnc2JlcmdAY2hyb21pdW0ub3JnPgo+IENjOiBCcmlhbiBOb3JyaXMgPGJyaWFubm9y
-cmlzQGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hy
-b21pdW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0u
-b3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X2NvcmUuYyB8IDMgKysrCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAg
-ICAgICAgICAgICAgIHwgMSArCj4gIDIgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCgpG
-WUksIHdlIGVuZGVkIHVwIHJldmVydGluZyB0aGlzIGFuZCBzdWJzZXF1ZW50IHBhdGNoZXMgZnJv
-bSB0aGlzCnNlcmllcyB1cCB0byAzNywgYXMgd2UgZm91bmQgYSBzaW1wbGVyIGFuZCBjbGVhbmVy
-IHNvbHV0aW9uLiBQbGVhc2UKc2VlIGZvbGxvd2luZyAyIENMcyBmb3IgcmVmZXJlbmNlOgpodHRw
-czovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLzQ0MjM5MApodHRwczovL2Nocm9t
-aXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLzQ0MjM5MgpodHRwczovL2Nocm9taXVtLXJldmll
-dy5nb29nbGVzb3VyY2UuY29tLzQ0MjM5MQoKQW55d2F5LCB0aGFua3MgZm9yIHNlbmRpbmcgdGhl
-IHBhdGNoZXMgdXBzdHJlYW0sIGl0J3MgcmVhbGx5IGhlbHBmdWwKZ2l2ZW4gbXkgdGltZSBjb25z
-dHJhaW50cy4KCkJlc3QgcmVnYXJkcywKVG9tYXN6Cl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Otherwise the domain_nr will be increased if doing ubind and
+bind host drives. I don't find any useful routine to reset it
+from current code, so add this helper. This patch is based on patchset[1]
+from Brian.
+
+[1]: https://patchwork.kernel.org/patch/9614517/
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+Hi Brian,
+
+I wasn't able to run my platfrom with linux-next but I test this for
+my local kernel-v4.4, and I just send this for test!
+
+ drivers/pci/host/pcie-rockchip.c | 1 +
+ drivers/pci/pci.c                | 6 ++++++
+ include/linux/pci.h              | 3 +++
+ 3 files changed, 10 insertions(+)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index bd6df72..61787e7 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1435,6 +1435,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+ 	pci_remove_root_bus(rockchip->root_bus);
+ 	pci_unmap_iospace(rockchip->io);
+ 	irq_domain_remove(rockchip->irq_domain);
++	pci_reset_all_domain();
+ 
+ 	phy_power_off(rockchip->phy);
+ 	phy_exit(rockchip->phy);
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index 3ec24877..7c7c63b 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -5181,6 +5181,12 @@ int pci_get_new_domain_nr(void)
+ 	return atomic_inc_return(&__domain_nr);
+ }
+ 
++void pci_reset_all_domain(void)
++{
++	atomic_set(&__domain_nr, -1);
++}
++EXPORT_SYMBOL(pci_reset_all_domain);
++
+ #ifdef CONFIG_PCI_DOMAINS_GENERIC
+ static int of_pci_bus_find_domain_nr(struct device *parent)
+ {
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index eb3da1a..c9bd939 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -1456,11 +1456,13 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+ #ifdef CONFIG_PCI_DOMAINS
+ extern int pci_domains_supported;
+ int pci_get_new_domain_nr(void);
++void pci_reset_all_domain(void);
+ #else
+ enum { pci_domains_supported = 0 };
+ static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+ static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
+ static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
++static inline void pci_reset_all_domain(void) {}
+ #endif /* CONFIG_PCI_DOMAINS */
+ 
+ /*
+@@ -1617,6 +1619,7 @@ static inline struct pci_dev *pci_get_bus_and_slot(unsigned int bus,
+ static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+ static inline struct pci_dev *pci_dev_get(struct pci_dev *dev) { return NULL; }
+ static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
++static inline void pci_reset_all_domain(void) {};
+ 
+ #define dev_is_pci(d) (false)
+ #define dev_is_pf(d) (false)
+-- 
+1.9.1
