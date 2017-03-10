@@ -1,43 +1,49 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/3] PCI: rockchip: fix sign issues for current limits
-Date: Thu, 9 Mar 2017 18:27:40 -0800
-Message-ID: <20170310022739.GA130422@google.com>
-References: <20170308233748.54706-1-briannorris@chromium.org>
- <662fb87d-de80-ac96-4a25-c478956cceb2@rock-chips.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2 2/5] PCI: rockchip: make 'return 0' more obvious in probe()
+Date: Thu,  9 Mar 2017 18:46:14 -0800
+Message-ID: <20170310024617.67303-2-briannorris@chromium.org>
+References: <20170310024617.67303-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <662fb87d-de80-ac96-4a25-c478956cceb2@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170310024617.67303-1-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 09, 2017 at 04:59:15PM +0800, Shawn Lin wrote:
-> On 2017/3/9 7:37, Brian Norris wrote:
-> >The regulator framework can return negative error codes via
-> >regulator_get_current_limit() for regulators that don't provide current
-> >information. The subsequent check for postive values isn't very useful,
-> >if the variable is unsigned.
-> >
-> >Let's just match the signedness of the return value.
-> >
-> >Prevents error messages like this, seen on Samsung Chromebook Plus:
-> >
-> >[    1.069372] rockchip-pcie f8000000.pcie: invalid power supply
-> >
-> 
-> For this patch,
-> 
-> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+There's no way to get here with 'err != 0'. Just return 0 to be more
+obvious and prevent future changes from accidentally erroring out here
+without going through the right error paths.
 
-Thanks.
+Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+v2: no change
+---
+ drivers/pci/host/pcie-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> And I think patch 2 is not so urgent so we could just wait for your
-> non-WIP patch 3?
-
-Sure. I'll be resending the series with a proper patch 3 (and 4 and 5
-actually) soon anyway. No changes to the first 2.
-
-Brian
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index d785f64ec03b..5d7b27b1e941 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1398,7 +1398,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		pcie_bus_configure_settings(child);
+ 
+ 	pci_bus_add_devices(bus);
+-	return err;
++	return 0;
+ 
+ err_free_res:
+ 	pci_free_resource_list(&res);
+-- 
+2.12.0.246.ga2ecc84866-goog
