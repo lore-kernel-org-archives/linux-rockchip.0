@@ -1,70 +1,43 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 5/5] mfd: dt-bindings: Add RK805 device tree bindings document
-Date: Fri, 10 Mar 2017 10:02:56 +0800
-Message-ID: <1489111376-22282-1-git-send-email-zhangqing@rock-chips.com>
-References: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lee.jones@linaro.org, lgirdwood@gmail.com, broonie@kernel.org
-Cc: huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, w.egorov@phytec.de, Elaine Zhang <zhangqing@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/3] PCI: rockchip: fix sign issues for current limits
+Date: Thu, 9 Mar 2017 18:27:40 -0800
+Message-ID: <20170310022739.GA130422@google.com>
+References: <20170308233748.54706-1-briannorris@chromium.org>
+ <662fb87d-de80-ac96-4a25-c478956cceb2@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <662fb87d-de80-ac96-4a25-c478956cceb2@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Brian Norris <computersforpeace@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK805 PMIC.
+On Thu, Mar 09, 2017 at 04:59:15PM +0800, Shawn Lin wrote:
+> On 2017/3/9 7:37, Brian Norris wrote:
+> >The regulator framework can return negative error codes via
+> >regulator_get_current_limit() for regulators that don't provide current
+> >information. The subsequent check for postive values isn't very useful,
+> >if the variable is unsigned.
+> >
+> >Let's just match the signedness of the return value.
+> >
+> >Prevents error messages like this, seen on Samsung Chromebook Plus:
+> >
+> >[    1.069372] rockchip-pcie f8000000.pcie: invalid power supply
+> >
+> 
+> For this patch,
+> 
+> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+Thanks.
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 9636ae8d8d41..05eb07134483 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,11 +1,12 @@
- RK8XX Power Management Integrated Circuit
- 
- The rk8xx family current members:
-+rk805
- rk808
- rk818
- 
- Required properties:
--- compatible: "rockchip,rk808", "rockchip,rk818"
-+- compatible: "rockchip,rk805", "rockchip,rk808", "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -18,6 +19,14 @@ Optional properties:
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
- 
-+Optional RK805 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc6-supply:  The input supply for LDO_REG3
-+
- Optional RK808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -56,6 +65,15 @@ by a child node of the 'regulators' node.
- 		/* standard regulator bindings here */
- 	};
- 
-+Following regulators of the RK805 PMIC block are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK805 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 3
-+
- Following regulators of the RK808 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK808 datasheet.
--- 
-1.9.1
+> And I think patch 2 is not so urgent so we could just wait for your
+> non-WIP patch 3?
+
+Sure. I'll be resending the series with a proper patch 3 (and 4 and 5
+actually) soon anyway. No changes to the first 2.
+
+Brian
