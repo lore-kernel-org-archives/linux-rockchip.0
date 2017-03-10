@@ -1,7 +1,7 @@
 From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2 5/5] PCI: rockchip: modularize
-Date: Thu,  9 Mar 2017 18:46:17 -0800
-Message-ID: <20170310024617.67303-5-briannorris@chromium.org>
+Subject: [PATCH v2 3/5] PCI: rockchip: add remove() support
+Date: Thu,  9 Mar 2017 18:46:15 -0800
+Message-ID: <20170310024617.67303-3-briannorris@chromium.org>
 References: <20170310024617.67303-1-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,59 +21,99 @@ To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Now that we've exported pci_remap_iospace() and added proper remove()
-support, there's no reason this can't be a loadable module.
+Currently, if we try to unbind the platform device, the remove will
+succeed, but the removal won't undo most of the registration, leaving
+partially-configured PCI devices in the system.
+
+This allows, for example, a simple 'lspci' to crash the system, as it
+will try to touch the freed (via devm_*) driver structures.
+
+So let's implement device remove().
 
 Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
-new in v2
+v2:
+* unmap IO space with pci_unmap_iospace()
+* remove IRQ domain
 ---
- drivers/pci/host/Kconfig         | 2 +-
- drivers/pci/host/pcie-rockchip.c | 8 +++++++-
- 2 files changed, 8 insertions(+), 2 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 36 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/host/Kconfig b/drivers/pci/host/Kconfig
-index f7c1d4d5c665..d2293ed81cf9 100644
---- a/drivers/pci/host/Kconfig
-+++ b/drivers/pci/host/Kconfig
-@@ -164,7 +164,7 @@ config PCI_HOST_THUNDER_ECAM
- 	  Say Y here if you want ECAM support for CN88XX-Pass-1.x Cavium Thunder SoCs.
- 
- config PCIE_ROCKCHIP
--	bool "Rockchip PCIe controller"
-+	tristate "Rockchip PCIe controller"
- 	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	depends on OF
- 	depends on PCI_MSI_IRQ_DOMAIN
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index d2e5078ae331..bd6df7254de4 100644
+index 5d7b27b1e941..d2e5078ae331 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -26,6 +26,7 @@
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/of_pci.h>
-@@ -1462,6 +1463,7 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
- 	{ .compatible = "rockchip,rk3399-pcie", },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
+@@ -223,9 +223,11 @@ struct rockchip_pcie {
+ 	int	link_gen;
+ 	struct	device *dev;
+ 	struct	irq_domain *irq_domain;
+-	u32     io_size;
+ 	int     offset;
++	struct pci_bus *root_bus;
++	struct resource *io;
+ 	phys_addr_t io_bus_addr;
++	u32     io_size;
+ 	void    __iomem *msg_region;
+ 	u32     mem_size;
+ 	phys_addr_t msg_bus_addr;
+@@ -1360,6 +1362,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 					 err, io);
+ 				continue;
+ 			}
++			rockchip->io = io;
+ 			break;
+ 		case IORESOURCE_MEM:
+ 			mem = win->res;
+@@ -1391,6 +1394,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		err = -ENOMEM;
+ 		goto err_free_res;
+ 	}
++	rockchip->root_bus = bus;
  
- static struct platform_driver rockchip_pcie_driver = {
- 	.driver = {
-@@ -1472,4 +1474,8 @@ static struct platform_driver rockchip_pcie_driver = {
- 	.probe = rockchip_pcie_probe,
- 	.remove = rockchip_pcie_remove,
- };
--builtin_platform_driver(rockchip_pcie_driver);
-+module_platform_driver(rockchip_pcie_driver);
+ 	pci_bus_size_bridges(bus);
+ 	pci_bus_assign_resources(bus);
+@@ -1421,6 +1425,34 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return err;
+ }
+ 
++static int rockchip_pcie_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
 +
-+MODULE_AUTHOR("Rockchip Inc");
-+MODULE_DESCRIPTION("Rockchip AXI PCIe driver");
-+MODULE_LICENSE("GPL v2");
++	pci_stop_root_bus(rockchip->root_bus);
++	pci_remove_root_bus(rockchip->root_bus);
++	pci_unmap_iospace(rockchip->io);
++	irq_domain_remove(rockchip->irq_domain);
++
++	phy_power_off(rockchip->phy);
++	phy_exit(rockchip->phy);
++
++	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	clk_disable_unprepare(rockchip->hclk_pcie);
++	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++	clk_disable_unprepare(rockchip->aclk_pcie);
++
++	if (!IS_ERR(rockchip->vpcie3v3))
++		regulator_disable(rockchip->vpcie3v3);
++	if (!IS_ERR(rockchip->vpcie1v8))
++		regulator_disable(rockchip->vpcie1v8);
++	if (!IS_ERR(rockchip->vpcie0v9))
++		regulator_disable(rockchip->vpcie0v9);
++
++	return 0;
++}
++
+ static const struct dev_pm_ops rockchip_pcie_pm_ops = {
+ 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
+ 				      rockchip_pcie_resume_noirq)
+@@ -1438,6 +1470,6 @@ static struct platform_driver rockchip_pcie_driver = {
+ 		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+-
++	.remove = rockchip_pcie_remove,
+ };
+ builtin_platform_driver(rockchip_pcie_driver);
 -- 
 2.12.0.246.ga2ecc84866-goog
