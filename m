@@ -1,227 +1,117 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 03/41] drm/rockchip: support prime import sg table
-Date: Thu,  9 Mar 2017 23:32:18 -0500
-Message-ID: <20170310043305.17216-4-seanpaul@chromium.org>
+Subject: [PATCH 05/41] drm/bridge: analogix_dp: set psr activate/deactivate
+ when enable/disable bridge
+Date: Thu,  9 Mar 2017 23:32:20 -0500
+Message-ID: <20170310043305.17216-6-seanpaul@chromium.org>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20170310043305.17216-1-seanpaul@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Haixia Shi <hshi@chromium.org>
+Cc: zain wang <wzz@rock-chips.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Haixia Shi <hshi@chromium.org>
-
-The prime fd to handle ioctl was not used with rockchip before. Support
-was added in order to pass graphics_Gbm and to support potential uses
-within Chrome OS (e.g. zero-copy video decode, camera).
-
-Signed-off-by: Haixia Shi <hshi@chromium.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c |   1 +
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 118 ++++++++++++++++++++++++++--
- drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   5 +-
- 3 files changed, 115 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index ccf456938792..1e371b7a1506 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -238,6 +238,7 @@ static struct drm_driver rockchip_drm_driver = {
- 	.gem_prime_import	= drm_gem_prime_import,
- 	.gem_prime_export	= drm_gem_prime_export,
- 	.gem_prime_get_sg_table	= rockchip_gem_prime_get_sg_table,
-+	.gem_prime_import_sg_table	= rockchip_gem_prime_import_sg_table,
- 	.gem_prime_vmap		= rockchip_gem_prime_vmap,
- 	.gem_prime_vunmap	= rockchip_gem_prime_vunmap,
- 	.gem_prime_mmap		= rockchip_gem_mmap_buf,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index df9e57064f19..5dffe276d2a7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -16,6 +16,8 @@
- #include <drm/drmP.h>
- #include <drm/drm_gem.h>
- #include <drm/drm_vma_manager.h>
-+
-+#include <linux/dma-buf.h>
- #include <linux/iommu.h>
- 
- #include "rockchip_drm_drv.h"
-@@ -308,12 +310,10 @@ static void rockchip_gem_release_object(struct rockchip_gem_object *rk_obj)
- }
- 
- struct rockchip_gem_object *
--	rockchip_gem_create_object(struct drm_device *drm, unsigned int size,
--				   bool alloc_kmap)
-+	rockchip_gem_alloc_object(struct drm_device *drm, unsigned int size)
- {
- 	struct rockchip_gem_object *rk_obj;
- 	struct drm_gem_object *obj;
--	int ret;
- 
- 	size = round_up(size, PAGE_SIZE);
- 
-@@ -325,6 +325,20 @@ struct rockchip_gem_object *
- 
- 	drm_gem_object_init(drm, obj, size);
- 
-+	return rk_obj;
-+}
-+
-+struct rockchip_gem_object *
-+rockchip_gem_create_object(struct drm_device *drm, unsigned int size,
-+			   bool alloc_kmap)
-+{
-+	struct rockchip_gem_object *rk_obj;
-+	int ret;
-+
-+	rk_obj = rockchip_gem_alloc_object(drm, size);
-+	if (IS_ERR(rk_obj))
-+		return rk_obj;
-+
- 	ret = rockchip_gem_alloc_buf(rk_obj, alloc_kmap);
- 	if (ret)
- 		goto err_free_rk_obj;
-@@ -342,11 +356,21 @@ struct rockchip_gem_object *
-  */
- void rockchip_gem_free_object(struct drm_gem_object *obj)
- {
--	struct rockchip_gem_object *rk_obj;
--
--	rk_obj = to_rockchip_obj(obj);
-+	struct drm_device *drm = obj->dev;
-+	struct rockchip_drm_private *private = drm->dev_private;
-+	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
- 
--	rockchip_gem_free_buf(rk_obj);
-+	if (obj->import_attach) {
-+		if (private->domain) {
-+			rockchip_gem_iommu_unmap(rk_obj);
-+		} else {
-+			dma_unmap_sg(drm->dev, rk_obj->sgt->sgl,
-+				     rk_obj->sgt->nents, DMA_BIDIRECTIONAL);
-+		}
-+		drm_prime_gem_destroy(obj, rk_obj->sgt);
-+	} else {
-+		rockchip_gem_free_buf(rk_obj);
-+	}
- 
- 	rockchip_gem_release_object(rk_obj);
- }
-@@ -476,6 +500,86 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
- 	return sgt;
- }
- 
-+static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
-+						     int count)
-+{
-+	struct scatterlist *s;
-+	dma_addr_t expected = sg_dma_address(sgt->sgl);
-+	unsigned int i;
-+	unsigned long size = 0;
-+
-+	for_each_sg(sgt->sgl, s, count, i) {
-+		if (sg_dma_address(s) != expected)
-+			break;
-+		expected = sg_dma_address(s) + sg_dma_len(s);
-+		size += sg_dma_len(s);
-+	}
-+	return size;
-+}
-+
-+static int
-+rockchip_gem_iommu_map_sg(struct drm_device *drm,
-+			  struct dma_buf_attachment *attach,
-+			  struct sg_table *sg,
-+			  struct rockchip_gem_object *rk_obj)
-+{
-+	rk_obj->sgt = sg;
-+	return rockchip_gem_iommu_map(rk_obj);
-+}
-+
-+static int
-+rockchip_gem_dma_map_sg(struct drm_device *drm,
-+			struct dma_buf_attachment *attach,
-+			struct sg_table *sg,
-+			struct rockchip_gem_object *rk_obj)
-+{
-+	int count = dma_map_sg(drm->dev, sg->sgl, sg->nents,
-+			       DMA_BIDIRECTIONAL);
-+	if (!count)
-+		return -EINVAL;
-+
-+	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
-+		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
-+		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
-+			     DMA_BIDIRECTIONAL);
-+		return -EINVAL;
-+	}
-+
-+	rk_obj->dma_addr = sg_dma_address(sg->sgl);
-+	rk_obj->sgt = sg;
-+	return 0;
-+}
-+
-+struct drm_gem_object *
-+rockchip_gem_prime_import_sg_table(struct drm_device *drm,
-+				   struct dma_buf_attachment *attach,
-+				   struct sg_table *sg)
-+{
-+	struct rockchip_drm_private *private = drm->dev_private;
-+	struct rockchip_gem_object *rk_obj;
-+	int ret;
-+
-+	rk_obj = rockchip_gem_alloc_object(drm, attach->dmabuf->size);
-+	if (IS_ERR(rk_obj))
-+		return ERR_CAST(rk_obj);
-+
-+	if (private->domain)
-+		ret = rockchip_gem_iommu_map_sg(drm, attach, sg, rk_obj);
-+	else
-+		ret = rockchip_gem_dma_map_sg(drm, attach, sg, rk_obj);
-+
-+	if (ret < 0) {
-+		DRM_ERROR("failed to import sg table: %d\n", ret);
-+		goto err_free_rk_obj;
-+	}
-+
-+	return &rk_obj->base;
-+
-+err_free_rk_obj:
-+	rockchip_gem_release_object(rk_obj);
-+	return ERR_PTR(ret);
-+}
-+
- void *rockchip_gem_prime_vmap(struct drm_gem_object *obj)
- {
- 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-index 3f6ea4d18a5c..89209a5f5e2c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-@@ -36,8 +36,9 @@ struct rockchip_gem_object {
- 
- struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj);
- struct drm_gem_object *
--rockchip_gem_prime_import_sg_table(struct drm_device *dev, size_t size,
--				   struct sg_table *sgt);
-+rockchip_gem_prime_import_sg_table(struct drm_device *dev,
-+				   struct dma_buf_attachment *attach,
-+				   struct sg_table *sg);
- void *rockchip_gem_prime_vmap(struct drm_gem_object *obj);
- void rockchip_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
- 
--- 
-2.12.0.246.ga2ecc84866-goog
+RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGVyZSdzIGEgcmFjZSBiZXR3
+ZWVuIHdoZW4gYnJpZGdlX2Rpc2FibGUgYW5kIHdoZW4gdm9wX2NydGNfZGlzYWJsZQphcmUgY2Fs
+bGVkLiBJZiB0aGUgZmx1c2ggdGltZXIgdHJpZ2dlcnMgYSBuZXcgcHNyIHdvcmsgYmV0d2VlbiB0
+aGVzZSwKd2Ugd2lsbCBvcGVyYXRlIGVEUCB3aXRob3V0IHBvd2VyIHNodXRkb3duZWQgYnkgYnJp
+ZGdlX2Rpc2FibGUuIEluIHRoaXMKY2FzZSwgbW92aW5nIGFjdGl2YXRlL2RlYWN0aXZhdGUgdG8g
+ZW5hYmxlL2Rpc2FibGUgYnJpZGdlIHRvIGF2b2lkIGl0LgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVz
+aW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekBy
+b2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBz
+LmNvbT4KU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0t
+LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAgNyAr
+KysrKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMgICAgIHwg
+MzAgKysrKysrKysrKysrKysrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9wc3IuaCAgICAgfCAgNCArKy0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jICAgICB8ICA0IC0tLS0KIDQgZmlsZXMgY2hhbmdlZCwgMzIgaW5z
+ZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRleCA4NTQ4ZTgyNzE2MzkuLjI4YzBkNDQwNjQ1
+NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tj
+aGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
+LmMKQEAgLTE1OSwxMiArMTU5LDE3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcG93ZXJvbihz
+dHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGEpCiAJCXJldHVybiByZXQ7CiAJ
+fQogCi0JcmV0dXJuIDA7CisJcmV0dXJuIHJvY2tjaGlwX2RybV9wc3JfYWN0aXZhdGUoJmRwLT5l
+bmNvZGVyKTsKIH0KIAogc3RhdGljIGludCByb2NrY2hpcF9kcF9wb3dlcmRvd24oc3RydWN0IGFu
+YWxvZ2l4X2RwX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQogewogCXN0cnVjdCByb2NrY2hpcF9kcF9k
+ZXZpY2UgKmRwID0gdG9fZHAocGxhdF9kYXRhKTsKKwlpbnQgcmV0OworCisJcmV0ID0gcm9ja2No
+aXBfZHJtX3Bzcl9kZWFjdGl2YXRlKCZkcC0+ZW5jb2Rlcik7CisJaWYgKHJldCAhPSAwKQorCQly
+ZXR1cm4gcmV0OwogCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5wY2xrKTsKIApkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMKaW5kZXggYTU1M2UxODJmZjUz
+Li40YzM3OWU5MGIxNzggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fcHNyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV9wc3IuYwpAQCAtNTcsNiArNTcsMjQgQEAgc3RhdGljIHN0cnVjdCBwc3JfZHJ2ICpmaW5kX3Bz
+cl9ieV9jcnRjKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAlyZXR1cm4gcHNyOwogfQogCitzdGF0
+aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2VuY29kZXIoc3RydWN0IGRybV9lbmNvZGVy
+ICplbmNvZGVyKQoreworCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqZHJtX2RydiA9IGVu
+Y29kZXItPmRldi0+ZGV2X3ByaXZhdGU7CisJc3RydWN0IHBzcl9kcnYgKnBzcjsKKwl1bnNpZ25l
+ZCBsb25nIGZsYWdzOworCisJc3Bpbl9sb2NrX2lycXNhdmUoJmRybV9kcnYtPnBzcl9saXN0X2xv
+Y2ssIGZsYWdzKTsKKwlsaXN0X2Zvcl9lYWNoX2VudHJ5KHBzciwgJmRybV9kcnYtPnBzcl9saXN0
+LCBsaXN0KSB7CisJCWlmIChwc3ItPmVuY29kZXIgPT0gZW5jb2RlcikKKwkJCWdvdG8gb3V0Owor
+CX0KKwlwc3IgPSBFUlJfUFRSKC1FTk9ERVYpOworCitvdXQ6CisJc3Bpbl91bmxvY2tfaXJxcmVz
+dG9yZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCXJldHVybiBwc3I7Cit9CisK
+IHN0YXRpYyB2b2lkIHBzcl9zZXRfc3RhdGVfbG9ja2VkKHN0cnVjdCBwc3JfZHJ2ICpwc3IsIGVu
+dW0gcHNyX3N0YXRlIHN0YXRlKQogewogCS8qCkBAIC0xMTUsMTQgKzEzMywxNCBAQCBzdGF0aWMg
+dm9pZCBwc3JfZmx1c2hfaGFuZGxlcih1bnNpZ25lZCBsb25nIGRhdGEpCiAKIC8qKgogICogcm9j
+a2NoaXBfZHJtX3Bzcl9hY3RpdmF0ZSAtIGFjdGl2YXRlIFBTUiBvbiB0aGUgZ2l2ZW4gcGlwZQot
+ICogQGNydGM6IENSVEMgdG8gb2J0YWluIHRoZSBQU1IgZW5jb2RlcgorICogQGVuY29kZXI6IGVu
+Y29kZXIgdG8gb2J0YWluIHRoZSBQU1IgZW5jb2RlcgogICoKICAqIFJldHVybnM6CiAgKiBaZXJv
+IG9uIHN1Y2Nlc3MsIG5lZ2F0aXZlIGVycm5vIG9uIGZhaWx1cmUuCiAgKi8KLWludCByb2NrY2hp
+cF9kcm1fcHNyX2FjdGl2YXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKK2ludCByb2NrY2hpcF9k
+cm1fcHNyX2FjdGl2YXRlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIHsKLQlzdHJ1Y3Qg
+cHNyX2RydiAqcHNyID0gZmluZF9wc3JfYnlfY3J0YyhjcnRjKTsKKwlzdHJ1Y3QgcHNyX2RydiAq
+cHNyID0gZmluZF9wc3JfYnlfZW5jb2RlcihlbmNvZGVyKTsKIAl1bnNpZ25lZCBsb25nIGZsYWdz
+OwogCiAJaWYgKElTX0VSUihwc3IpKQpAQCAtMTM4LDE0ICsxNTYsMTQgQEAgRVhQT1JUX1NZTUJP
+TChyb2NrY2hpcF9kcm1fcHNyX2FjdGl2YXRlKTsKIAogLyoqCiAgKiByb2NrY2hpcF9kcm1fcHNy
+X2RlYWN0aXZhdGUgLSBkZWFjdGl2YXRlIFBTUiBvbiB0aGUgZ2l2ZW4gcGlwZQotICogQGNydGM6
+IENSVEMgdG8gb2J0YWluIHRoZSBQU1IgZW5jb2RlcgorICogQGVuY29kZXI6IGVuY29kZXIgdG8g
+b2J0YWluIHRoZSBQU1IgZW5jb2RlcgogICoKICAqIFJldHVybnM6CiAgKiBaZXJvIG9uIHN1Y2Nl
+c3MsIG5lZ2F0aXZlIGVycm5vIG9uIGZhaWx1cmUuCiAgKi8KLWludCByb2NrY2hpcF9kcm1fcHNy
+X2RlYWN0aXZhdGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQoraW50IHJvY2tjaGlwX2RybV9wc3Jf
+ZGVhY3RpdmF0ZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiB7Ci0Jc3RydWN0IHBzcl9k
+cnYgKnBzciA9IGZpbmRfcHNyX2J5X2NydGMoY3J0Yyk7CisJc3RydWN0IHBzcl9kcnYgKnBzciA9
+IGZpbmRfcHNyX2J5X2VuY29kZXIoZW5jb2Rlcik7CiAJdW5zaWduZWQgbG9uZyBmbGFnczsKIAog
+CWlmIChJU19FUlIocHNyKSkKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fcHNyLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3Bzci5oCmluZGV4IGI0MjBjZjFiZjkwMi4uYjFlYTAxNTVlNTdjIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5oCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmgKQEAgLTE4LDggKzE4LDggQEAKIHZvaWQg
+cm9ja2NoaXBfZHJtX3Bzcl9mbHVzaF9hbGwoc3RydWN0IGRybV9kZXZpY2UgKmRldik7CiBpbnQg
+cm9ja2NoaXBfZHJtX3Bzcl9mbHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogCi1pbnQgcm9j
+a2NoaXBfZHJtX3Bzcl9hY3RpdmF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwotaW50IHJvY2tj
+aGlwX2RybV9wc3JfZGVhY3RpdmF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOworaW50IHJvY2tj
+aGlwX2RybV9wc3JfYWN0aXZhdGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKTsKK2ludCBy
+b2NrY2hpcF9kcm1fcHNyX2RlYWN0aXZhdGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKTsK
+IAogaW50IHJvY2tjaGlwX2RybV9wc3JfcmVnaXN0ZXIoc3RydWN0IGRybV9lbmNvZGVyICplbmNv
+ZGVyLAogCQkJdm9pZCAoKnBzcl9zZXQpKHN0cnVjdCBkcm1fZW5jb2RlciAqLCBib29sIGVuYWJs
+ZSkpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXgg
+MDUzOWFmYjZiN2M4Li4xYzFlODUzNWFkMjggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwpAQCAtNTY4LDggKzU2OCw2IEBAIHN0YXRpYyB2b2lkIHZvcF9j
+cnRjX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCiAJV0FSTl9PTih2b3AtPmV2ZW50
+KTsKIAotCXJvY2tjaGlwX2RybV9wc3JfZGVhY3RpdmF0ZSgmdm9wLT5jcnRjKTsKLQogCS8qCiAJ
+ICogV2UgbmVlZCB0byBtYWtlIHN1cmUgdGhhdCBhbGwgd2luZG93cyBhcmUgZGlzYWJsZWQgYmVm
+b3JlIHdlCiAJICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lzZSB3ZSBtaWdodCB0cnkgdG8g
+c2NhbiBmcm9tIGEgZGVzdHJveWVkCkBAIC05ODEsOCArOTc5LDYgQEAgc3RhdGljIHZvaWQgdm9w
+X2NydGNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAljbGtfc2V0X3JhdGUodm9wLT5k
+Y2xrLCBhZGp1c3RlZF9tb2RlLT5jbG9jayAqIDEwMDApOwogCiAJVk9QX0NUUkxfU0VUKHZvcCwg
+c3RhbmRieSwgMCk7Ci0KLQlyb2NrY2hpcF9kcm1fcHNyX2FjdGl2YXRlKCZ2b3AtPmNydGMpOwog
+fQogCiBzdGF0aWMgYm9vbCB2b3BfZnNfaXJxX2lzX3BlbmRpbmcoc3RydWN0IHZvcCAqdm9wKQot
+LSAKMi4xMi4wLjI0Ni5nYTJlY2M4NDg2Ni1nb29nCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
