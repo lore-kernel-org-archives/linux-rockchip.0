@@ -1,110 +1,73 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [RFT PATCH] PCI: provide helper to reset all domain for host
- drivers
-Date: Fri, 10 Mar 2017 11:44:17 -0800
-Message-ID: <20170310194417.GB16352@google.com>
-References: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH v1] soc: rockchip: power-domain: Fix clang warning about
+ negative shift count
+Date: Fri, 10 Mar 2017 18:21:53 -0800
+Message-ID: <20170311022153.139362-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1489132706-56952-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Grant Grundler <grundler@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+The following warning is generated when building with clang:
 
-I might be mistaken here, but I don't think this is wise:
+drivers/soc/rockchip/pm_domains.c:726:22: error: shift count is negative [-Werror,-Wshift-count-negative]
+        [RK3399_PD_TCPD0]       = DOMAIN_RK3399(8, 8, -1, false),
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/soc/rockchip/pm_domains.c:101:2: note: expanded from macro 'DOMAIN_RK3399'
+        DOMAIN(pwr, status, req, req, req, wakeup)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/soc/rockchip/pm_domains.c:88:27: note: expanded from macro 'DOMAIN'
+        .req_mask = (req >= 0) ? BIT(req) : 0,          \
+                                 ^~~~~~~~
+include/linux/bitops.h:6:24: note: expanded from macro 'BIT'
 
-On Fri, Mar 10, 2017 at 03:58:26PM +0800, Shawn Lin wrote:
-> Otherwise the domain_nr will be increased if doing ubind and
-> bind host drives. I don't find any useful routine to reset it
-> from current code, so add this helper. This patch is based on patchset[1]
-> from Brian.
-> 
-> [1]: https://patchwork.kernel.org/patch/9614517/
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> ---
-> Hi Brian,
-> 
-> I wasn't able to run my platfrom with linux-next but I test this for
-> my local kernel-v4.4, and I just send this for test!
-> 
->  drivers/pci/host/pcie-rockchip.c | 1 +
->  drivers/pci/pci.c                | 6 ++++++
->  include/linux/pci.h              | 3 +++
->  3 files changed, 10 insertions(+)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index bd6df72..61787e7 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1435,6 +1435,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->  	pci_remove_root_bus(rockchip->root_bus);
->  	pci_unmap_iospace(rockchip->io);
->  	irq_domain_remove(rockchip->irq_domain);
-> +	pci_reset_all_domain();
+The BIT macro is evaluated with the negative value -1, even though the
+resulting value would not be assigned. To fix this we only pass values
+between 0 and 63 to BIT(). Unfortunately this means that we lose the
+benefit of the compiler checking for out of bounds errors.
 
-You don't want to reset *all* domains here; what if some other driver
-created another domain? You're essentially cloberring it here.
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ drivers/soc/rockchip/pm_domains.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
->  	phy_power_off(rockchip->phy);
->  	phy_exit(rockchip->phy);
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index 3ec24877..7c7c63b 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -5181,6 +5181,12 @@ int pci_get_new_domain_nr(void)
->  	return atomic_inc_return(&__domain_nr);
->  }
->  
-> +void pci_reset_all_domain(void)
-> +{
-> +	atomic_set(&__domain_nr, -1);
-
-IIUC, instead of completely resetting here, it seems like we'd need to
-rework the entire domain allocation code, so that it can properly
-hotplug domains, and track the potential "holes" in indexing that might
-arise.
-
-Brian
-
-> +}
-> +EXPORT_SYMBOL(pci_reset_all_domain);
-> +
->  #ifdef CONFIG_PCI_DOMAINS_GENERIC
->  static int of_pci_bus_find_domain_nr(struct device *parent)
->  {
-> diff --git a/include/linux/pci.h b/include/linux/pci.h
-> index eb3da1a..c9bd939 100644
-> --- a/include/linux/pci.h
-> +++ b/include/linux/pci.h
-> @@ -1456,11 +1456,13 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
->  #ifdef CONFIG_PCI_DOMAINS
->  extern int pci_domains_supported;
->  int pci_get_new_domain_nr(void);
-> +void pci_reset_all_domain(void);
->  #else
->  enum { pci_domains_supported = 0 };
->  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
->  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-> +static inline void pci_reset_all_domain(void) {}
->  #endif /* CONFIG_PCI_DOMAINS */
->  
->  /*
-> @@ -1617,6 +1619,7 @@ static inline struct pci_dev *pci_get_bus_and_slot(unsigned int bus,
->  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->  static inline struct pci_dev *pci_dev_get(struct pci_dev *dev) { return NULL; }
->  static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-> +static inline void pci_reset_all_domain(void) {};
->  
->  #define dev_is_pci(d) (false)
->  #define dev_is_pf(d) (false)
-> -- 
-> 1.9.1
-> 
-> 
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 1c78c42416c6..6f2bb1222992 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -77,13 +77,15 @@ struct rockchip_pmu {
+ 
+ #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain, genpd)
+ 
++#define RK_MASK(bit) ((bit >= 0) ? BIT(bit & 0x3f) : 0)
++
+ #define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
+-{						\
+-	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
+-	.status_mask = (status >= 0) ? BIT(status) : 0,	\
+-	.req_mask = (req >= 0) ? BIT(req) : 0,		\
+-	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
+-	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
++{							\
++	.pwr_mask = RK_MASK(pwr),			\
++	.status_mask = RK_MASK(status),			\
++	.req_mask = RK_MASK(req),			\
++	.idle_mask = RK_MASK(idle),			\
++	.ack_mask = RK_MASK(ack),			\
+ 	.active_wakeup = wakeup,			\
+ }
+ 
+-- 
+2.12.0.246.ga2ecc84866-goog
