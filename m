@@ -1,70 +1,96 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 3/5] regulator: rk808: Add regulator driver for RK805
-Date: Mon, 13 Mar 2017 16:42:34 +0000
-Message-ID: <20170313164234.z3kir6vjbctatp3i@sirena.org.uk>
-References: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
- <1489111252-22175-4-git-send-email-zhangqing@rock-chips.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH v1] soc: rockchip: power-domain: Fix clang warning about
+ negative shift count
+Date: Mon, 13 Mar 2017 10:22:22 -0700
+Message-ID: <20170313172222.GA50582@google.com>
+References: <20170311022153.139362-1-mka@chromium.org>
+ <1715023.AuHs9buZxh@phil>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6410045863454285455=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1489111252-22175-4-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1715023.AuHs9buZxh@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Grant Grundler <grundler@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+El Sat, Mar 11, 2017 at 01:03:48PM +0100 Heiko Stuebner ha dit:
 
---===============6410045863454285455==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ekjek2uvalbupyvn"
-Content-Disposition: inline
+> Hi Matthias,
+> 
+> Am Freitag, 10. März 2017, 18:21:53 CET schrieb Matthias Kaehlcke:
+> > The following warning is generated when building with clang:
+> > 
+> > drivers/soc/rockchip/pm_domains.c:726:22: error: shift count is negative
+> > [-Werror,-Wshift-count-negative] [RK3399_PD_TCPD0]       = DOMAIN_RK3399(8,
+> > 8, -1, false),
+> >                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > drivers/soc/rockchip/pm_domains.c:101:2: note: expanded from macro
+> > 'DOMAIN_RK3399' DOMAIN(pwr, status, req, req, req, wakeup)
+> >         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > drivers/soc/rockchip/pm_domains.c:88:27: note: expanded from macro 'DOMAIN'
+> >         .req_mask = (req >= 0) ? BIT(req) : 0,          \
+> >                                  ^~~~~~~~
+> > include/linux/bitops.h:6:24: note: expanded from macro 'BIT'
+> > 
+> > The BIT macro is evaluated with the negative value -1, even though the
+> > resulting value would not be assigned. To fix this we only pass values
+> > between 0 and 63 to BIT(). Unfortunately this means that we lose the
+> > benefit of the compiler checking for out of bounds errors.
+> 
+> I tend to disagree here. This looks more like a case of "fix your compiler".
+> 
+> That conditional seems perfectly valid as the BIT(req) will never be reached 
+> if req < 0 - your clang simply doesn't recognize the pattern somehow, while 
+> for example gcc does.
 
+My interpretation is that with clang the '(req >= 0) ?' condition is
+not evaluated by the preprocessor, but only by the compiler. This seems to
+be different with gcc.
 
---ekjek2uvalbupyvn
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> Catering to specific whims of specific compilers feels somehow wrong, as what 
+> will happen if some imaginary third compiler requires another different hack 
+> to be satisfied?
 
-On Fri, Mar 10, 2017 at 10:00:50AM +0800, Elaine Zhang wrote:
-> Add support for the rk805 regulator. The regulator module consists
-> of 4 DCDCs, 3 LDOs.
+I'll check with the clang developers if clang can be changed to behave
+like gcc in this aspect.
 
-Acked-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Thanks
 
---ekjek2uvalbupyvn
-Content-Type: application/pgp-signature; name="signature.asc"
+Matthias
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAljGy/kACgkQJNaLcl1U
-h9DCgAf+I9RQVPw1JZqCRR6Nqj+QJoHtjO/SimeosJYI4qXrRUbOSBWXKfQAF2N1
-57rNaKt+ayRkJu11Ovp3dxIwt0sFXRL0A5Yr4oPeWjViSqlO6+8+yD8SrZaYjwlP
-dZDu65H+EbPdNKmyuMipLZXJe3MRRN3YC8bepbC6d3ITvGveSNNLjPeUfDbMmIEi
-68ZsCax4evlwsgRMaZMO9aGvIyQlEGqWCYRM8RqXDldE9nTWkfmsY6K9jJgPm/Z9
-5R9gKUDXFY2mJZhinV95oM2XLCZeOLavrZqZXctPvkn5E8K/aNpEc1DF4GgxBWoa
-8MvGQIAd36/5JxKp4TP30iWNBUEKAw==
-=Jyr4
------END PGP SIGNATURE-----
-
---ekjek2uvalbupyvn--
-
-
---===============6410045863454285455==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6410045863454285455==--
+> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > ---
+> >  drivers/soc/rockchip/pm_domains.c | 14 ++++++++------
+> >  1 file changed, 8 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/soc/rockchip/pm_domains.c
+> > b/drivers/soc/rockchip/pm_domains.c index 1c78c42416c6..6f2bb1222992 100644
+> > --- a/drivers/soc/rockchip/pm_domains.c
+> > +++ b/drivers/soc/rockchip/pm_domains.c
+> > @@ -77,13 +77,15 @@ struct rockchip_pmu {
+> > 
+> >  #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain,
+> > genpd)
+> > 
+> > +#define RK_MASK(bit) ((bit >= 0) ? BIT(bit & 0x3f) : 0)
+> > +
+> >  #define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
+> > -{						\
+> > -	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
+> > -	.status_mask = (status >= 0) ? BIT(status) : 0,	\
+> > -	.req_mask = (req >= 0) ? BIT(req) : 0,		\
+> > -	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
+> > -	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
+> > +{							\
+> > +	.pwr_mask = RK_MASK(pwr),			\
+> > +	.status_mask = RK_MASK(status),			\
+> > +	.req_mask = RK_MASK(req),			\
+> > +	.idle_mask = RK_MASK(idle),			\
+> > +	.ack_mask = RK_MASK(ack),			\
+> >  	.active_wakeup = wakeup,			\
+> >  }
+> 
+> 
