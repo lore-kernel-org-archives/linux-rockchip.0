@@ -1,159 +1,73 @@
-From: John Keeping <john@metanate.com>
-Subject: [RFC PATCH 2/4] pinctrl: rockchip: convert to raw spinlock
-Date: Mon, 13 Mar 2017 18:38:11 +0000
-Message-ID: <20170313183813.3582-3-john@metanate.com>
-References: <20170313183813.3582-1-john@metanate.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20170313183813.3582-1-john@metanate.com>
-Sender: linux-gpio-owner@vger.kernel.org
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH v1] soc: rockchip: power-domain: Fix clang warning about
+ negative shift count
+Date: Mon, 13 Mar 2017 11:49:01 -0700
+Message-ID: <20170313184901.GB50582@google.com>
+References: <20170311022153.139362-1-mka@chromium.org>
+ <1715023.AuHs9buZxh@phil>
+ <20170313172222.GA50582@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170313172222.GA50582@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Grant Grundler <grundler@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This lock is used from rockchip_irq_set_type() which is part of the
-irq_chip implementation and thus must use raw_spinlock_t as documented
-in Documentation/gpio/driver.txt.
+El Mon, Mar 13, 2017 at 10:22:22AM -0700 Matthias Kaehlcke ha dit:
 
-Signed-off-by: John Keeping <john@metanate.com>
----
- drivers/pinctrl/pinctrl-rockchip.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+> El Sat, Mar 11, 2017 at 01:03:48PM +0100 Heiko Stuebner ha dit:
+> 
+> > Hi Matthias,
+> > 
+> > Am Freitag, 10. März 2017, 18:21:53 CET schrieb Matthias Kaehlcke:
+> > > The following warning is generated when building with clang:
+> > > 
+> > > drivers/soc/rockchip/pm_domains.c:726:22: error: shift count is negative
+> > > [-Werror,-Wshift-count-negative] [RK3399_PD_TCPD0]       = DOMAIN_RK3399(8,
+> > > 8, -1, false),
+> > >                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > > drivers/soc/rockchip/pm_domains.c:101:2: note: expanded from macro
+> > > 'DOMAIN_RK3399' DOMAIN(pwr, status, req, req, req, wakeup)
+> > >         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > > drivers/soc/rockchip/pm_domains.c:88:27: note: expanded from macro 'DOMAIN'
+> > >         .req_mask = (req >= 0) ? BIT(req) : 0,          \
+> > >                                  ^~~~~~~~
+> > > include/linux/bitops.h:6:24: note: expanded from macro 'BIT'
+> > > 
+> > > The BIT macro is evaluated with the negative value -1, even though the
+> > > resulting value would not be assigned. To fix this we only pass values
+> > > between 0 and 63 to BIT(). Unfortunately this means that we lose the
+> > > benefit of the compiler checking for out of bounds errors.
+> > 
+> > I tend to disagree here. This looks more like a case of "fix your compiler".
+> > 
+> > That conditional seems perfectly valid as the BIT(req) will never be reached 
+> > if req < 0 - your clang simply doesn't recognize the pattern somehow, while 
+> > for example gcc does.
+> 
+> My interpretation is that with clang the '(req >= 0) ?' condition is
+> not evaluated by the preprocessor, but only by the compiler. This seems to
+> be different with gcc.
+> 
+> > Catering to specific whims of specific compilers feels somehow wrong, as what 
+> > will happen if some imaginary third compiler requires another different hack 
+> > to be satisfied?
+> 
+> I'll check with the clang developers if clang can be changed to behave
+> like gcc in this aspect.
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 1defe83a5c4d..2f963aea64b2 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -163,7 +163,7 @@ struct rockchip_pin_bank {
- 	struct irq_domain		*domain;
- 	struct gpio_chip		gpio_chip;
- 	struct pinctrl_gpio_range	grange;
--	spinlock_t			slock;
-+	raw_spinlock_t			slock;
- 	u32				toggle_edge_mode;
- };
- 
-@@ -1292,14 +1292,14 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 
- 	switch (ctrl->type) {
- 	case RK2928:
--		spin_lock_irqsave(&bank->slock, flags);
-+		raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 		data = BIT(bit + 16);
- 		if (pull == PIN_CONFIG_BIAS_DISABLE)
- 			data |= BIT(bit);
- 		ret = regmap_write(regmap, reg, data);
- 
--		spin_unlock_irqrestore(&bank->slock, flags);
-+		raw_spin_unlock_irqrestore(&bank->slock, flags);
- 		break;
- 	case RK1108:
- 	case RK3188:
-@@ -1433,7 +1433,7 @@ static int _rockchip_pmx_gpio_set_direction(struct gpio_chip *chip,
- 		return ret;
- 
- 	clk_enable(bank->clk);
--	spin_lock_irqsave(&bank->slock, flags);
-+	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
- 	/* set bit to 1 for output, 0 for input */
-@@ -1443,7 +1443,7 @@ static int _rockchip_pmx_gpio_set_direction(struct gpio_chip *chip,
- 		data &= ~BIT(pin);
- 	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
- 
--	spin_unlock_irqrestore(&bank->slock, flags);
-+	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 	clk_disable(bank->clk);
- 
- 	return 0;
-@@ -1874,7 +1874,7 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned offset, int value)
- 	u32 data;
- 
- 	clk_enable(bank->clk);
--	spin_lock_irqsave(&bank->slock, flags);
-+	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl(reg);
- 	data &= ~BIT(offset);
-@@ -1882,7 +1882,7 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned offset, int value)
- 		data |= BIT(offset);
- 	writel(data, reg);
- 
--	spin_unlock_irqrestore(&bank->slock, flags);
-+	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 	clk_disable(bank->clk);
- }
- 
-@@ -1994,7 +1994,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
- 
- 			data = readl_relaxed(bank->reg_base + GPIO_EXT_PORT);
- 			do {
--				spin_lock_irqsave(&bank->slock, flags);
-+				raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 				polarity = readl_relaxed(bank->reg_base +
- 							 GPIO_INT_POLARITY);
-@@ -2005,7 +2005,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
- 				writel(polarity,
- 				       bank->reg_base + GPIO_INT_POLARITY);
- 
--				spin_unlock_irqrestore(&bank->slock, flags);
-+				raw_spin_unlock_irqrestore(&bank->slock, flags);
- 
- 				data_old = data;
- 				data = readl_relaxed(bank->reg_base +
-@@ -2036,20 +2036,20 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 		return ret;
- 
- 	clk_enable(bank->clk);
--	spin_lock_irqsave(&bank->slock, flags);
-+	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
- 	data &= ~mask;
- 	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
- 
--	spin_unlock_irqrestore(&bank->slock, flags);
-+	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 
- 	if (type & IRQ_TYPE_EDGE_BOTH)
- 		irq_set_handler_locked(d, handle_edge_irq);
- 	else
- 		irq_set_handler_locked(d, handle_level_irq);
- 
--	spin_lock_irqsave(&bank->slock, flags);
-+	raw_spin_lock_irqsave(&bank->slock, flags);
- 	irq_gc_lock(gc);
- 
- 	level = readl_relaxed(gc->reg_base + GPIO_INTTYPE_LEVEL);
-@@ -2092,7 +2092,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 		break;
- 	default:
- 		irq_gc_unlock(gc);
--		spin_unlock_irqrestore(&bank->slock, flags);
-+		raw_spin_unlock_irqrestore(&bank->slock, flags);
- 		clk_disable(bank->clk);
- 		return -EINVAL;
- 	}
-@@ -2101,7 +2101,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	writel_relaxed(polarity, gc->reg_base + GPIO_INT_POLARITY);
- 
- 	irq_gc_unlock(gc);
--	spin_unlock_irqrestore(&bank->slock, flags);
-+	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 	clk_disable(bank->clk);
- 
- 	return 0;
-@@ -2383,7 +2383,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
- 		int bank_pins = 0;
- 
--		spin_lock_init(&bank->slock);
-+		raw_spin_lock_init(&bank->slock);
- 		bank->drvdata = d;
- 		bank->pin_base = ctrl->nr_pins;
- 		ctrl->nr_pins += bank->nr_pins;
--- 
-2.12.0.377.gf910686b23.dirty
+FYI:
 
+"We currently don't construct control-flow graphs (CFGs) when
+processing initializer expressions in a global context.  CFGs have
+been used for doing a variety of flow-based warnings in functions, but
+at this point they haven't been used for global initializer
+expressions."
+
+https://bugs.llvm.org//show_bug.cgi?id=10030
+
+m.
