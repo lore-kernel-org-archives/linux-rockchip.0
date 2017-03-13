@@ -1,98 +1,70 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the
- enablement functions
-Date: Mon, 13 Mar 2017 13:10:53 +0000
-Message-ID: <20170313131053.GI21222@n2100.armlinux.org.uk>
-References: <20170310093509.19044-1-romain.perier@collabora.com>
- <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
- <20170313093630.GE21222@n2100.armlinux.org.uk>
- <724d599e-7285-3feb-9a18-d3fbc4000eb5@synopsys.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 3/5] regulator: rk808: Add regulator driver for RK805
+Date: Mon, 13 Mar 2017 16:42:34 +0000
+Message-ID: <20170313164234.z3kir6vjbctatp3i@sirena.org.uk>
+References: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
+ <1489111252-22175-4-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <724d599e-7285-3feb-9a18-d3fbc4000eb5@synopsys.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jose Abreu <Jose.Abreu@synopsys.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============6410045863454285455=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1489111252-22175-4-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 13, 2017 at 12:55:58PM +0000, Jose Abreu wrote:
-> Hi,
-> 
-> 
-> On 13-03-2017 09:36, Russell King - ARM Linux wrote:
-> > On Mon, Mar 13, 2017 at 10:27:08AM +0100, Neil Armstrong wrote:
-> >> On 03/10/2017 10:35 AM, Romain Perier wrote:
-> >>> Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
-> >>> step E. and is kept enabled for later use. This clock should be enabled
-> >>> and disabled along with the actual audio stream and not always on (that
-> >>> is bad for PM). Futhermore, this might cause sound glitches with some
-> >>> HDMI devices, as the CTS+N is forced to zero when the stream is disabled
-> >>> while the audio clock is still running.
-> >>>
-> >>> This commit adds a parameter to hdmi_audio_enable_clk() that controls
-> >>> when the audio sample clock must be enabled or disabled. Then, it moves
-> >>> the call to this function into dw_hdmi_audio_enable() and
-> >>> dw_hdmi_audio_disable().
-> >>>
-> >>> Signed-off-by: Romain Perier <romain.perier@collabora.com>
-> >>> ---
-> >>>  drivers/gpu/drm/bridge/dw-hdmi.c | 15 +++++++++------
-> >>>  1 file changed, 9 insertions(+), 6 deletions(-)
-> >>>
-> >> Hi Romain, Russell, Jose,
-> >>
-> >> This is a little out of scope, but I was wondering why the CTS calculation
-> >> was not left in AUTO mode in the dw-hdmi driver ?
-> > There is no indication in the iMX6 manuals that the iMX6 supports
-> > automatic CTS calculation.  Bits 7:4 of the AUD_CTS3 register are
-> > marked as "reserved".
-> >
-> > We're reliant on the information in the iMX6 manuals as we don't have
-> > access to Synopsis' databooks for these parts (I understand you have
-> > to be a customer to have access to that.)
-> >
-> 
-> (Synopsis -> Synopsys :))
-> 
-> Trying to catch up with the conversation:
-> 
-> 1) In AHB audio mode the bits are always reserved.
-> 2) I think we should enable/disable clock instead of just forcing
-> N/CTS, though, I don't know what could be the implications for
-> iMX platform. I remember at the time I tested this using I2S
-> (I've never used AHB), and HDMI protocol analyzers were
-> complaining about the N/CTS being forced to zero.
 
-What you're recommending is to basically ignore the published workaround,
-which, presumably, was arrived at by proper analysis of the issue both
-by Freescale engineers and Synopsys engineers, and instead try some other
-solution.
+--===============6410045863454285455==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ekjek2uvalbupyvn"
+Content-Disposition: inline
 
-I'm not sure that's a good idea.  Only those with knowledge of the IP can
-say what effect disabling the audio clock will have: will it still allow
-the FIFO to be loaded, as required by the errata?  If not, it's not a
-solution that AHB can use.  I would imagine that _if_ it was as simple as
-disabling the audio clock, that simple approach would have been documented
-in Freescale's errata documents, rather than the rather more complex
-method of zeroing the CTS/N values.
 
-I think there are two choices here:
+--ekjek2uvalbupyvn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-1) get some definitive information about the IP and the errata for AHB,
-   and determine whether the solution you propose would work.  (That's
-   out of scope for me, I've no contacts with FSL/NXP and I'm not a
-   Synopsys customer.)
+On Fri, Mar 10, 2017 at 10:00:50AM +0800, Elaine Zhang wrote:
+> Add support for the rk805 regulator. The regulator module consists
+> of 4 DCDCs, 3 LDOs.
 
-2) the I2S audio support stops re-using the AHB audio support functions,
-   switching to their own implementation that behaves correctly for them.
-   (Remember, it was I2S's choice to re-use the AHB audio support functions
-   I added which we're now discussing - they didn't have to do that, and
-   regressing AHB audio just for I2S is not something we should ever
-   consider doing.)
+Acked-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+--ekjek2uvalbupyvn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAljGy/kACgkQJNaLcl1U
+h9DCgAf+I9RQVPw1JZqCRR6Nqj+QJoHtjO/SimeosJYI4qXrRUbOSBWXKfQAF2N1
+57rNaKt+ayRkJu11Ovp3dxIwt0sFXRL0A5Yr4oPeWjViSqlO6+8+yD8SrZaYjwlP
+dZDu65H+EbPdNKmyuMipLZXJe3MRRN3YC8bepbC6d3ITvGveSNNLjPeUfDbMmIEi
+68ZsCax4evlwsgRMaZMO9aGvIyQlEGqWCYRM8RqXDldE9nTWkfmsY6K9jJgPm/Z9
+5R9gKUDXFY2mJZhinV95oM2XLCZeOLavrZqZXctPvkn5E8K/aNpEc1DF4GgxBWoa
+8MvGQIAd36/5JxKp4TP30iWNBUEKAw==
+=Jyr4
+-----END PGP SIGNATURE-----
+
+--ekjek2uvalbupyvn--
+
+
+--===============6410045863454285455==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6410045863454285455==--
