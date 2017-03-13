@@ -1,111 +1,43 @@
-From: Jose Abreu <Jose.Abreu@synopsys.com>
-Subject: Re: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the
- enablement functions
-Date: Mon, 13 Mar 2017 18:49:47 +0000
-Message-ID: <296108ae-1720-63f1-1eed-ed5dbe1b8bad@synopsys.com>
-References: <20170310093509.19044-1-romain.perier@collabora.com>
- <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
- <20170313093630.GE21222@n2100.armlinux.org.uk>
- <724d599e-7285-3feb-9a18-d3fbc4000eb5@synopsys.com>
- <20170313131053.GI21222@n2100.armlinux.org.uk>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 0/3] RK3399 cdd-dp patches
+Date: Mon, 13 Mar 2017 16:08:40 -0400
+Message-ID: <20170313200840.GX20329@art_vandelay>
+References: <1488940077-22297-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170313131053.GI21222@n2100.armlinux.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>, Jose Abreu <Jose.Abreu@synopsys.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1488940077-22297-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Russell,
-
-
-On 13-03-2017 13:10, Russell King - ARM Linux wrote:
-> On Mon, Mar 13, 2017 at 12:55:58PM +0000, Jose Abreu wrote:
->> Hi,
->>
->>
->> On 13-03-2017 09:36, Russell King - ARM Linux wrote:
->>> On Mon, Mar 13, 2017 at 10:27:08AM +0100, Neil Armstrong wrote:
->>>> On 03/10/2017 10:35 AM, Romain Perier wrote:
->>>>> Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
->>>>> step E. and is kept enabled for later use. This clock should be enabled
->>>>> and disabled along with the actual audio stream and not always on (that
->>>>> is bad for PM). Futhermore, this might cause sound glitches with some
->>>>> HDMI devices, as the CTS+N is forced to zero when the stream is disabled
->>>>> while the audio clock is still running.
->>>>>
->>>>> This commit adds a parameter to hdmi_audio_enable_clk() that controls
->>>>> when the audio sample clock must be enabled or disabled. Then, it moves
->>>>> the call to this function into dw_hdmi_audio_enable() and
->>>>> dw_hdmi_audio_disable().
->>>>>
->>>>> Signed-off-by: Romain Perier <romain.perier@collabora.com>
->>>>> ---
->>>>>  drivers/gpu/drm/bridge/dw-hdmi.c | 15 +++++++++------
->>>>>  1 file changed, 9 insertions(+), 6 deletions(-)
->>>>>
->>>> Hi Romain, Russell, Jose,
->>>>
->>>> This is a little out of scope, but I was wondering why the CTS calculation
->>>> was not left in AUTO mode in the dw-hdmi driver ?
->>> There is no indication in the iMX6 manuals that the iMX6 supports
->>> automatic CTS calculation.  Bits 7:4 of the AUD_CTS3 register are
->>> marked as "reserved".
->>>
->>> We're reliant on the information in the iMX6 manuals as we don't have
->>> access to Synopsis' databooks for these parts (I understand you have
->>> to be a customer to have access to that.)
->>>
->> (Synopsis -> Synopsys :))
->>
->> Trying to catch up with the conversation:
->>
->> 1) In AHB audio mode the bits are always reserved.
->> 2) I think we should enable/disable clock instead of just forcing
->> N/CTS, though, I don't know what could be the implications for
->> iMX platform. I remember at the time I tested this using I2S
->> (I've never used AHB), and HDMI protocol analyzers were
->> complaining about the N/CTS being forced to zero.
-> What you're recommending is to basically ignore the published workaround,
-> which, presumably, was arrived at by proper analysis of the issue both
-> by Freescale engineers and Synopsys engineers, and instead try some other
-> solution.
->
-> I'm not sure that's a good idea.  Only those with knowledge of the IP can
-> say what effect disabling the audio clock will have: will it still allow
-> the FIFO to be loaded, as required by the errata?  If not, it's not a
-> solution that AHB can use.  I would imagine that _if_ it was as simple as
-> disabling the audio clock, that simple approach would have been documented
-> in Freescale's errata documents, rather than the rather more complex
-> method of zeroing the CTS/N values.
-
-I'm just following what the user guide says: the final step of
-configuration is enabling the audio clock. There is no reference
-neither in datasheet neither in user guide about this behavior
-but, as I said, I've never used AHB so I can't prove what is the
-best solution. Could it be platform specific?
-
->
-> I think there are two choices here:
->
-> 1) get some definitive information about the IP and the errata for AHB,
->    and determine whether the solution you propose would work.  (That's
->    out of scope for me, I've no contacts with FSL/NXP and I'm not a
->    Synopsys customer.)
-
-This is the right thing to do but if you can't test in the
-Freescale platform then we have not much else to do.
-
-Best regards,
-Jose Miguel Abreu
-
->
-> 2) the I2S audio support stops re-using the AHB audio support functions,
->    switching to their own implementation that behaves correctly for them.
->    (Remember, it was I2S's choice to re-use the AHB audio support functions
->    I added which we're now discussing - they didn't have to do that, and
->    regressing AHB audio just for I2S is not something we should ever
->    consider doing.)
->
+T24gV2VkLCBNYXIgMDgsIDIwMTcgYXQgMTA6Mjc6NTRBTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gSGkgYWxsCj4gVGhpcyBzZXJpZXMgaXMgdG8gY29ycmVjdCBzb21lIG1pc3Rha2VzIGlu
+IGNsa19nZXRfcmF0ZSBhbmQgdGhlIHJlZ2lzdGVyCj4gYWRkcmVzcy4gQW5kIGluIG9yZGVyIHRv
+IGJldHRlciBkZXZlbG9wLCBhZGRpbmcgbW9yZSBwcmludHMuCj4gCj4gCj4gQ2hyaXMgWmhvbmcg
+KDMpOgo+ICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IHJldHVybiBlcnJvciBjb2RlIHdoZW4gY2xr
+X2dldF9yYXRlIGZhaWxlZAo+ICAgZHJtL3JvY2tjaGlwOiBjZG4tZHA6IENvcnJlY3QgUEhZIHJl
+Z2lzdGVyIGFkZHJlc3MKPiAgIGRybS9yb2NrY2hpcDogY2RuLWRwOiBhZGQgbW9yZSBsb2cgZm9y
+IHZpZGVvIGNvbmZpZwoKSGkgQ2hyaXMsClRoYW5rcyBmb3Igc2VuZGluZyB0aGVzZSB1cCwgSSd2
+ZSBhcHBsaWVkIHRoZSBlbnRpcmUgc2VyaWVzIHRvIGRybS1taXNjCgpTZWFuCgo+IAo+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8ICA1ICsrKy0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgIHwgIDYgKysrKystCj4gIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmggIHwgMTMgKysrKysrLS0tLS0tLQo+ICAzIGZpbGVz
+IGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+IAo+IC0tIAo+IDIu
+Ni4zCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+Zwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
