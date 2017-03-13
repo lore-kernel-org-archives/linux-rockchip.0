@@ -1,96 +1,134 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v1] soc: rockchip: power-domain: Fix clang warning about
- negative shift count
-Date: Mon, 13 Mar 2017 10:22:22 -0700
-Message-ID: <20170313172222.GA50582@google.com>
-References: <20170311022153.139362-1-mka@chromium.org>
- <1715023.AuHs9buZxh@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1715023.AuHs9buZxh@phil>
-Sender: linux-kernel-owner@vger.kernel.org
+From: John Keeping <john@metanate.com>
+Subject: [RFC PATCH 1/4] pinctrl: rockchip: remove unnecessary locking
+Date: Mon, 13 Mar 2017 18:38:10 +0000
+Message-ID: <20170313183813.3582-2-john@metanate.com>
+References: <20170313183813.3582-1-john@metanate.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20170313183813.3582-1-john@metanate.com>
+Sender: linux-gpio-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Grant Grundler <grundler@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-El Sat, Mar 11, 2017 at 01:03:48PM +0100 Heiko Stuebner ha dit:
+regmap_update_bits does its own locking and everything else accessed
+here is a local variable so there is no need to lock around it.
 
-> Hi Matthias,
-> 
-> Am Freitag, 10. März 2017, 18:21:53 CET schrieb Matthias Kaehlcke:
-> > The following warning is generated when building with clang:
-> > 
-> > drivers/soc/rockchip/pm_domains.c:726:22: error: shift count is negative
-> > [-Werror,-Wshift-count-negative] [RK3399_PD_TCPD0]       = DOMAIN_RK3399(8,
-> > 8, -1, false),
-> >                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> > drivers/soc/rockchip/pm_domains.c:101:2: note: expanded from macro
-> > 'DOMAIN_RK3399' DOMAIN(pwr, status, req, req, req, wakeup)
-> >         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> > drivers/soc/rockchip/pm_domains.c:88:27: note: expanded from macro 'DOMAIN'
-> >         .req_mask = (req >= 0) ? BIT(req) : 0,          \
-> >                                  ^~~~~~~~
-> > include/linux/bitops.h:6:24: note: expanded from macro 'BIT'
-> > 
-> > The BIT macro is evaluated with the negative value -1, even though the
-> > resulting value would not be assigned. To fix this we only pass values
-> > between 0 and 63 to BIT(). Unfortunately this means that we lose the
-> > benefit of the compiler checking for out of bounds errors.
-> 
-> I tend to disagree here. This looks more like a case of "fix your compiler".
-> 
-> That conditional seems perfectly valid as the BIT(req) will never be reached 
-> if req < 0 - your clang simply doesn't recognize the pattern somehow, while 
-> for example gcc does.
+I originally wrote this on to of v4.4 which doesn't have the split
+registers for drive strength, where some additional locking might be
+necessary.  But I don't think it can be "slock" given that the following
+patches will convert that to a raw spinlock and regmap uses a normal
+spinlock internally.
 
-My interpretation is that with clang the '(req >= 0) ?' condition is
-not evaluated by the preprocessor, but only by the compiler. This seems to
-be different with gcc.
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 20 +-------------------
+ 1 file changed, 1 insertion(+), 19 deletions(-)
 
-> Catering to specific whims of specific compilers feels somehow wrong, as what 
-> will happen if some imaginary third compiler requires another different hack 
-> to be satisfied?
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index a838c8bb3129..1defe83a5c4d 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -649,7 +649,6 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+ 	int iomux_num = (pin / 8);
+ 	struct regmap *regmap;
+ 	int reg, ret, mask, mux_type;
+-	unsigned long flags;
+ 	u8 bit;
+ 	u32 data, rmask;
+ 
+@@ -698,15 +697,11 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+ 	if (ctrl->iomux_recalc && (mux_type & IOMUX_RECALCED))
+ 		ctrl->iomux_recalc(bank->bank_num, pin, &reg, &bit, &mask);
+ 
+-	spin_lock_irqsave(&bank->slock, flags);
+-
+ 	data = (mask << (bit + 16));
+ 	rmask = data | (data >> 16);
+ 	data |= (mux & mask) << bit;
+ 	ret = regmap_update_bits(regmap, reg, rmask, data);
+ 
+-	spin_unlock_irqrestore(&bank->slock, flags);
+-
+ 	return ret;
+ }
+ 
+@@ -1132,7 +1127,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+ 	struct regmap *regmap;
+-	unsigned long flags;
+ 	int reg, ret, i;
+ 	u32 data, rmask, rmask_bits, temp;
+ 	u8 bit;
+@@ -1160,8 +1154,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 		return ret;
+ 	}
+ 
+-	spin_lock_irqsave(&bank->slock, flags);
+-
+ 	switch (drv_type) {
+ 	case DRV_TYPE_IO_1V8_3V0_AUTO:
+ 	case DRV_TYPE_IO_3V3_ONLY:
+@@ -1182,17 +1174,14 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 			rmask = BIT(15) | BIT(31);
+ 			data |= BIT(31);
+ 			ret = regmap_update_bits(regmap, reg, rmask, data);
+-			if (ret) {
+-				spin_unlock_irqrestore(&bank->slock, flags);
++			if (ret)
+ 				return ret;
+-			}
+ 
+ 			rmask = 0x3 | (0x3 << 16);
+ 			temp |= (0x3 << 16);
+ 			reg += 0x4;
+ 			ret = regmap_update_bits(regmap, reg, rmask, temp);
+ 
+-			spin_unlock_irqrestore(&bank->slock, flags);
+ 			return ret;
+ 		case 18 ... 21:
+ 			/* setting fully enclosed in the second register */
+@@ -1200,7 +1189,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 			bit -= 16;
+ 			break;
+ 		default:
+-			spin_unlock_irqrestore(&bank->slock, flags);
+ 			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
+ 				bit, drv_type);
+ 			return -EINVAL;
+@@ -1212,7 +1200,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 		rmask_bits = RK3288_DRV_BITS_PER_PIN;
+ 		break;
+ 	default:
+-		spin_unlock_irqrestore(&bank->slock, flags);
+ 		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
+ 			drv_type);
+ 		return -EINVAL;
+@@ -1224,7 +1211,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 	data |= (ret << bit);
+ 
+ 	ret = regmap_update_bits(regmap, reg, rmask, data);
+-	spin_unlock_irqrestore(&bank->slock, flags);
+ 
+ 	return ret;
+ }
+@@ -1336,16 +1322,12 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 			return ret;
+ 		}
+ 
+-		spin_lock_irqsave(&bank->slock, flags);
+-
+ 		/* enable the write to the equivalent lower bits */
+ 		data = ((1 << RK3188_PULL_BITS_PER_PIN) - 1) << (bit + 16);
+ 		rmask = data | (data >> 16);
+ 		data |= (ret << bit);
+ 
+ 		ret = regmap_update_bits(regmap, reg, rmask, data);
+-
+-		spin_unlock_irqrestore(&bank->slock, flags);
+ 		break;
+ 	default:
+ 		dev_err(info->dev, "unsupported pinctrl type\n");
+-- 
+2.12.0.377.gf910686b23.dirty
 
-I'll check with the clang developers if clang can be changed to behave
-like gcc in this aspect.
-
-Thanks
-
-Matthias
-
-> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> > ---
-> >  drivers/soc/rockchip/pm_domains.c | 14 ++++++++------
-> >  1 file changed, 8 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/soc/rockchip/pm_domains.c
-> > b/drivers/soc/rockchip/pm_domains.c index 1c78c42416c6..6f2bb1222992 100644
-> > --- a/drivers/soc/rockchip/pm_domains.c
-> > +++ b/drivers/soc/rockchip/pm_domains.c
-> > @@ -77,13 +77,15 @@ struct rockchip_pmu {
-> > 
-> >  #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain,
-> > genpd)
-> > 
-> > +#define RK_MASK(bit) ((bit >= 0) ? BIT(bit & 0x3f) : 0)
-> > +
-> >  #define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
-> > -{						\
-> > -	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
-> > -	.status_mask = (status >= 0) ? BIT(status) : 0,	\
-> > -	.req_mask = (req >= 0) ? BIT(req) : 0,		\
-> > -	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
-> > -	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
-> > +{							\
-> > +	.pwr_mask = RK_MASK(pwr),			\
-> > +	.status_mask = RK_MASK(status),			\
-> > +	.req_mask = RK_MASK(req),			\
-> > +	.idle_mask = RK_MASK(idle),			\
-> > +	.ack_mask = RK_MASK(ack),			\
-> >  	.active_wakeup = wakeup,			\
-> >  }
-> 
-> 
