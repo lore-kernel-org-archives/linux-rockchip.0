@@ -1,58 +1,54 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
 Subject: Re: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the
  enablement functions
-Date: Mon, 13 Mar 2017 10:27:08 +0100
-Message-ID: <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
+Date: Mon, 13 Mar 2017 09:36:30 +0000
+Message-ID: <20170313093630.GE21222@n2100.armlinux.org.uk>
 References: <20170310093509.19044-1-romain.perier@collabora.com>
+ <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170310093509.19044-1-romain.perier@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: Romain Perier <romain.perier@collabora.com>, Jose Abreu <Jose.Abreu@synopsys.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDMvMTAvMjAxNyAxMDozNSBBTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBDdXJyZW50bHks
-IHRoZSBhdWRpbyBzYW1wbGVyIGNsb2NrIGlzIGVuYWJsZWQgZnJvbSBkd19oZG1pX3NldHVwKCkg
-YXQKPiBzdGVwIEUuIGFuZCBpcyBrZXB0IGVuYWJsZWQgZm9yIGxhdGVyIHVzZS4gVGhpcyBjbG9j
-ayBzaG91bGQgYmUgZW5hYmxlZAo+IGFuZCBkaXNhYmxlZCBhbG9uZyB3aXRoIHRoZSBhY3R1YWwg
-YXVkaW8gc3RyZWFtIGFuZCBub3QgYWx3YXlzIG9uICh0aGF0Cj4gaXMgYmFkIGZvciBQTSkuIEZ1
-dGhlcm1vcmUsIHRoaXMgbWlnaHQgY2F1c2Ugc291bmQgZ2xpdGNoZXMgd2l0aCBzb21lCj4gSERN
-SSBkZXZpY2VzLCBhcyB0aGUgQ1RTK04gaXMgZm9yY2VkIHRvIHplcm8gd2hlbiB0aGUgc3RyZWFt
-IGlzIGRpc2FibGVkCj4gd2hpbGUgdGhlIGF1ZGlvIGNsb2NrIGlzIHN0aWxsIHJ1bm5pbmcuCj4g
-Cj4gVGhpcyBjb21taXQgYWRkcyBhIHBhcmFtZXRlciB0byBoZG1pX2F1ZGlvX2VuYWJsZV9jbGso
-KSB0aGF0IGNvbnRyb2xzCj4gd2hlbiB0aGUgYXVkaW8gc2FtcGxlIGNsb2NrIG11c3QgYmUgZW5h
-YmxlZCBvciBkaXNhYmxlZC4gVGhlbiwgaXQgbW92ZXMKPiB0aGUgY2FsbCB0byB0aGlzIGZ1bmN0
-aW9uIGludG8gZHdfaGRtaV9hdWRpb19lbmFibGUoKSBhbmQKPiBkd19oZG1pX2F1ZGlvX2Rpc2Fi
-bGUoKS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGNv
-bGxhYm9yYS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIHwg
-MTUgKysrKysrKysrLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKyksIDYg
-ZGVsZXRpb25zKC0pCj4gCgpIaSBSb21haW4sIFJ1c3NlbGwsIEpvc2UsCgpUaGlzIGlzIGEgbGl0
-dGxlIG91dCBvZiBzY29wZSwgYnV0IEkgd2FzIHdvbmRlcmluZyB3aHkgdGhlIENUUyBjYWxjdWxh
-dGlvbiB3YXMgbm90IGxlZnQKaW4gQVVUTyBtb2RlIGluIHRoZSBkdy1oZG1pIGRyaXZlciA/CgpJ
-biB0aGUgQW1sb2dpYyBWZW5kb3IgdHJlZSwgdGhleSBkb24ndCBzZXQgdGhlIEhETUlfQVVEX0NU
-UzNfQ1RTX01BTlVBTCBiaXQgYW5kIGxlYXZlCnRoZSBDVFMgdmFsdWUgdG8gMC4KCkkgYW0gd29u
-ZGVyaW5nIGlmIHRoZSBBVVRPIGZlYXR1cmUgaXMgc3BlY2lmaWMgdG8gbmV3ZXIgSVAgdmVyc2lv
-biwgb3IgaXQgd2FzIGRpc2FibGVkCmluIHRoZSBpTVguNiBJUCBjb25maWd1cmF0aW9uID8gb3Ig
-c2ltcGx5IHRpZWQgdG8gdGhlIEFIQiBhdWRpbyBzcGVjaWZpY2l0eS4KCkl0IHdvdWxkIGJlIHNp
-bXBsZXIgYW5kIHNtYXJ0ZXIgdG8gbGVhdmUgdGhlIEFVVE8gZmVhdHVyZSBlbmFibGVkIGZvciBJ
-MlMgYW5kIFMvUERJRgppbnB1dCB3aGVuIHRoZSBJUCBzdXBwb3J0cyBpdC4KCkpvc2UsIGlzIHRo
-ZXJlIGEgY29uZmlnIGJpdCBmb3IgdGhpcyBmZWF0dXJlLCBvciBhIHNwZWNpZmljIElQIHZlcnNp
-b24gd2hlcmUgaXQgbGFuZGVkID8KCkFueXdheSwgd2Ugc2hvdWxkIHJlYWxseSBkaWZmZXJlbnRp
-YXRlIHRoZSBBSEIgYXVkaW8gYW5kIEkyUy9TUERJRiBhdWRpbyBpbiB0aGUgQ1RTL04gY2FsY3Vs
-YXRpb24sCnNpbmNlIHRoZSBJMlMvU1BESUYgZGVwZW5kcyBvbiBhbiBkaWZmZXJlbnQgY2xvY2sg
-Zm9yIGF1ZGlvIGlucHV0IGFuZCB0aGUgQVVUTyBDVFMgY2FsY3VsYXRpb24KZmVhdHVyZSB3aWxs
-IGNlcnRhaW5seSBvZmZlciBhIGJldHRlciBjbG9jayBzeW5jaHJvbml6YXRpb24uCgpUaGFua3Ms
-Ck5laWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Mon, Mar 13, 2017 at 10:27:08AM +0100, Neil Armstrong wrote:
+> On 03/10/2017 10:35 AM, Romain Perier wrote:
+> > Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
+> > step E. and is kept enabled for later use. This clock should be enabled
+> > and disabled along with the actual audio stream and not always on (that
+> > is bad for PM). Futhermore, this might cause sound glitches with some
+> > HDMI devices, as the CTS+N is forced to zero when the stream is disabled
+> > while the audio clock is still running.
+> > 
+> > This commit adds a parameter to hdmi_audio_enable_clk() that controls
+> > when the audio sample clock must be enabled or disabled. Then, it moves
+> > the call to this function into dw_hdmi_audio_enable() and
+> > dw_hdmi_audio_disable().
+> > 
+> > Signed-off-by: Romain Perier <romain.perier@collabora.com>
+> > ---
+> >  drivers/gpu/drm/bridge/dw-hdmi.c | 15 +++++++++------
+> >  1 file changed, 9 insertions(+), 6 deletions(-)
+> > 
+> 
+> Hi Romain, Russell, Jose,
+> 
+> This is a little out of scope, but I was wondering why the CTS calculation
+> was not left in AUTO mode in the dw-hdmi driver ?
+
+There is no indication in the iMX6 manuals that the iMX6 supports
+automatic CTS calculation.  Bits 7:4 of the AUD_CTS3 register are
+marked as "reserved".
+
+We're reliant on the information in the iMX6 manuals as we don't have
+access to Synopsis' databooks for these parts (I understand you have
+to be a customer to have access to that.)
+
+-- 
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
