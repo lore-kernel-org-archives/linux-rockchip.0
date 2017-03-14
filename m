@@ -1,301 +1,123 @@
-From: Vivek Gautam <vivek.gautam@codeaurora.org>
-Subject: Re: [RESEND PATCH v3 2/2] phy: Group vendor specific phy drivers
-Date: Tue, 14 Mar 2017 13:35:57 +0530
-Message-ID: <42126738-453a-555f-c3c1-48d30702af9b@codeaurora.org>
-References: <1489472080-23711-2-git-send-email-vivek.gautam@codeaurora.org>
- <1489472570-26434-1-git-send-email-vivek.gautam@codeaurora.org>
- <CAJKOXPcWKjis_dWtzJPWSZxVnRPYdsf+_uDzjCaCFOwyOLG2Gw@mail.gmail.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH] drm: dw_hdmi: Gate audio sampler clock from the
+ enablement functions
+Date: Tue, 14 Mar 2017 09:13:25 +0100
+Message-ID: <2cdf37b1-810c-b595-4e7f-09353bc3a006@baylibre.com>
+References: <20170310093509.19044-1-romain.perier@collabora.com>
+ <25ad96a7-d907-2bcb-3a96-15a2956e7652@baylibre.com>
+ <20170313093630.GE21222@n2100.armlinux.org.uk>
+ <724d599e-7285-3feb-9a18-d3fbc4000eb5@synopsys.com>
+ <20170313131053.GI21222@n2100.armlinux.org.uk>
+ <296108ae-1720-63f1-1eed-ed5dbe1b8bad@synopsys.com>
+ <56e51c49-176e-3316-bd8c-f947061732bf@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAJKOXPcWKjis_dWtzJPWSZxVnRPYdsf+_uDzjCaCFOwyOLG2Gw@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: kishon@ti.com, "David S. Miller" <davem@davemloft.net>, Geert Uytterhoeven <geert+renesas@glider.be>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Guenter Roeck <linux@roeck-us.net>, Heiko Stuebner <heiko@sntech.de>, Viresh Kumar <viresh.kumar@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <56e51c49-176e-3316-bd8c-f947061732bf@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Krzysztof,
-
-
-On 03/14/2017 12:14 PM, Krzysztof Kozlowski wrote:
-> On Tue, Mar 14, 2017 at 8:22 AM, Vivek Gautam
-> <vivek.gautam@codeaurora.org> wrote:
->> Adding vendor specific directories in phy to group
->> phy drivers under their respective vendor umbrella.
->>
->> Also updated the MAINTAINERS file to reflect the correct
->> directory structure for phy drivers.
->>
->> Signed-off-by: Vivek Gautam <vivek.gautam@codeaurora.org>
->> Acked-by: Heiko Stuebner <heiko@sntech.de>
->> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
->> Cc: Kishon Vijay Abraham I <kishon@ti.com>
->> Cc: David S. Miller <davem@davemloft.net>
->> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
->> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
->> Cc: Guenter Roeck <linux@roeck-us.net>
->> Cc: Heiko Stuebner <heiko@sntech.de>
->> Cc: Viresh Kumar <viresh.kumar@linaro.org>
->> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
->> Cc: Chen-Yu Tsai <wens@csie.org>
->> Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
->> Cc: Krzysztof Kozlowski <krzk@kernel.org>
->> Cc: Jaehoon Chung <jh80.chung@samsung.com>
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linux-arm-msm@vger.kernel.org
->> Cc: linux-kernel@vger.kernel.org
->> Cc: linux-omap@vger.kernel.org
->> Cc: linux-renesas-soc@vger.kernel.org
->> Cc: linux-rockchip@lists.infradead.org
->> Cc: linux-samsung-soc@vger.kernel.org
->> Cc: linux-usb@vger.kernel.org
->> ---
->>
->> Corrected Krzysztof's email-id. Added linux-arm-msm.
->>
->> Hi Heiko, Viresh,
->> It's been a year since the last version of this patch was posted.
->> Kishon has agreed to pull this change now. I am carrying forward
->> your Acks since there are no functional changes.
->> I have taken care of the drivers that were added/removed since
->> the last version.
->> Please feel free to jump in if you have any concerns.
->>
->> Changes since v2
->>   - Rebased on linux-phy/next.
->>   - Took care of drivers added/removed for each vendors since v2.
->>   - Updated the 'Signed-off-by' tag with my current email id.
->>
->> Changes from v1:
->>   - Updated the MAINTAINERS file to reflect the same change
->>     in directory structure.
->>   - Removed PHY_PLAT config as pointed out by Kishon.
->>     So we don't require the second patch in the v1 of this series:
->>     [PATCH 2/2] arm: mach-spear: Enable PHY_PLAT to meet dependency
->>   - Renamed sunxi --> allwinner; rcar --> renesas.
->>   - Fixed error coming with qcom Makefile.
->>
->> * Build tested multi_v7_defconfig.
->> * Build tested arm64 defconfig with all the involved configs enabled.
->>
->>   MAINTAINERS                                        |  18 +-
->>   drivers/phy/Kconfig                                | 471 +--------------------
->>   drivers/phy/Makefile                               |  67 +--
->>   drivers/phy/allwinner/Kconfig                      |  31 ++
->>   drivers/phy/allwinner/Makefile                     |   2 +
->>   drivers/phy/{ => allwinner}/phy-sun4i-usb.c        |   0
->>   drivers/phy/{ => allwinner}/phy-sun9i-usb.c        |   0
->>   drivers/phy/broadcom/Kconfig                       |  64 +++
->>   drivers/phy/broadcom/Makefile                      |   7 +
->>   drivers/phy/{ => broadcom}/phy-bcm-cygnus-pcie.c   |   0
->>   drivers/phy/{ => broadcom}/phy-bcm-kona-usb2.c     |   0
->>   drivers/phy/{ => broadcom}/phy-bcm-ns-usb2.c       |   0
->>   drivers/phy/{ => broadcom}/phy-bcm-ns-usb3.c       |   0
->>   drivers/phy/{ => broadcom}/phy-bcm-ns2-pcie.c      |   0
->>   drivers/phy/{ => broadcom}/phy-bcm-nsp-usb3.c      |   0
->>   drivers/phy/{ => broadcom}/phy-brcm-sata.c         |   0
->>   drivers/phy/hisilicon/Kconfig                      |  20 +
->>   drivers/phy/hisilicon/Makefile                     |   2 +
->>   drivers/phy/{ => hisilicon}/phy-hi6220-usb.c       |   0
->>   drivers/phy/{ => hisilicon}/phy-hix5hd2-sata.c     |   0
->>   drivers/phy/marvell/Kconfig                        |  50 +++
->>   drivers/phy/marvell/Makefile                       |   6 +
->>   drivers/phy/{ => marvell}/phy-armada375-usb2.c     |   0
->>   drivers/phy/{ => marvell}/phy-berlin-sata.c        |   0
->>   drivers/phy/{ => marvell}/phy-berlin-usb.c         |   0
->>   drivers/phy/{ => marvell}/phy-mvebu-sata.c         |   0
->>   drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c      |   0
->>   drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c      |   0
->>   drivers/phy/qualcomm/Kconfig                       |  38 ++
->>   drivers/phy/qualcomm/Makefile                      |   7 +
->>   drivers/phy/{ => qualcomm}/phy-qcom-apq8064-sata.c |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ipq806x-sata.c |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs-i.h        |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.c |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.h |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.c |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.h |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-ufs.c          |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-usb-hs.c       |   0
->>   drivers/phy/{ => qualcomm}/phy-qcom-usb-hsic.c     |   0
->>   drivers/phy/renesas/Kconfig                        |  17 +
->>   drivers/phy/renesas/Makefile                       |   2 +
->>   drivers/phy/{ => renesas}/phy-rcar-gen2.c          |   0
->>   drivers/phy/{ => renesas}/phy-rcar-gen3-usb2.c     |   0
->>   drivers/phy/rockchip/Kconfig                       |  51 +++
->>   drivers/phy/rockchip/Makefile                      |   6 +
->>   drivers/phy/{ => rockchip}/phy-rockchip-dp.c       |   0
->>   drivers/phy/{ => rockchip}/phy-rockchip-emmc.c     |   0
->>   .../phy/{ => rockchip}/phy-rockchip-inno-usb2.c    |   0
->>   drivers/phy/{ => rockchip}/phy-rockchip-pcie.c     |   0
->>   drivers/phy/{ => rockchip}/phy-rockchip-typec.c    |   0
->>   drivers/phy/{ => rockchip}/phy-rockchip-usb.c      |   0
->>   drivers/phy/samsung/Kconfig                        |  96 +++++
->>   drivers/phy/samsung/Makefile                       |  11 +
->>   drivers/phy/{ => samsung}/phy-exynos-dp-video.c    |   0
->>   drivers/phy/{ => samsung}/phy-exynos-mipi-video.c  |   0
->>   drivers/phy/{ => samsung}/phy-exynos-pcie.c        |   0
->>   drivers/phy/{ => samsung}/phy-exynos4210-usb2.c    |   0
->>   drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c    |   0
->>   drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c     |   0
->>   drivers/phy/{ => samsung}/phy-exynos5250-sata.c    |   0
->>   drivers/phy/{ => samsung}/phy-exynos5250-usb2.c    |   0
->>   drivers/phy/{ => samsung}/phy-s5pv210-usb2.c       |   0
->>   drivers/phy/{ => samsung}/phy-samsung-usb2.c       |   0
->>   drivers/phy/{ => samsung}/phy-samsung-usb2.h       |   0
->>   drivers/phy/st/Kconfig                             |  33 ++
->>   drivers/phy/st/Makefile                            |   4 +
->>   drivers/phy/{ => st}/phy-miphy28lp.c               |   0
->>   drivers/phy/{ => st}/phy-spear1310-miphy.c         |   0
->>   drivers/phy/{ => st}/phy-spear1340-miphy.c         |   0
->>   drivers/phy/{ => st}/phy-stih407-usb.c             |   0
->>   drivers/phy/ti/Kconfig                             |  78 ++++
->>   drivers/phy/ti/Makefile                            |   7 +
->>   drivers/phy/{ => ti}/phy-da8xx-usb.c               |   0
->>   drivers/phy/{ => ti}/phy-dm816x-usb.c              |   0
->>   drivers/phy/{ => ti}/phy-omap-control.c            |   0
->>   drivers/phy/{ => ti}/phy-omap-usb2.c               |   0
->>   drivers/phy/{ => ti}/phy-ti-pipe3.c                |   0
->>   drivers/phy/{ => ti}/phy-tusb1210.c                |   0
->>   drivers/phy/{ => ti}/phy-twl4030-usb.c             |   0
->>   80 files changed, 567 insertions(+), 521 deletions(-)
->>   create mode 100644 drivers/phy/allwinner/Kconfig
->>   create mode 100644 drivers/phy/allwinner/Makefile
->>   rename drivers/phy/{ => allwinner}/phy-sun4i-usb.c (100%)
->>   rename drivers/phy/{ => allwinner}/phy-sun9i-usb.c (100%)
->>   create mode 100644 drivers/phy/broadcom/Kconfig
->>   create mode 100644 drivers/phy/broadcom/Makefile
->>   rename drivers/phy/{ => broadcom}/phy-bcm-cygnus-pcie.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-bcm-kona-usb2.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-bcm-ns-usb2.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-bcm-ns-usb3.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-bcm-ns2-pcie.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-bcm-nsp-usb3.c (100%)
->>   rename drivers/phy/{ => broadcom}/phy-brcm-sata.c (100%)
->>   create mode 100644 drivers/phy/hisilicon/Kconfig
->>   create mode 100644 drivers/phy/hisilicon/Makefile
->>   rename drivers/phy/{ => hisilicon}/phy-hi6220-usb.c (100%)
->>   rename drivers/phy/{ => hisilicon}/phy-hix5hd2-sata.c (100%)
->>   create mode 100644 drivers/phy/marvell/Kconfig
->>   create mode 100644 drivers/phy/marvell/Makefile
->>   rename drivers/phy/{ => marvell}/phy-armada375-usb2.c (100%)
->>   rename drivers/phy/{ => marvell}/phy-berlin-sata.c (100%)
->>   rename drivers/phy/{ => marvell}/phy-berlin-usb.c (100%)
->>   rename drivers/phy/{ => marvell}/phy-mvebu-sata.c (100%)
->>   rename drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c (100%)
->>   rename drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c (100%)
->>   create mode 100644 drivers/phy/qualcomm/Kconfig
->>   create mode 100644 drivers/phy/qualcomm/Makefile
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-apq8064-sata.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ipq806x-sata.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-i.h (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.h (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.h (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-ufs.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-usb-hs.c (100%)
->>   rename drivers/phy/{ => qualcomm}/phy-qcom-usb-hsic.c (100%)
->>   create mode 100644 drivers/phy/renesas/Kconfig
->>   create mode 100644 drivers/phy/renesas/Makefile
->>   rename drivers/phy/{ => renesas}/phy-rcar-gen2.c (100%)
->>   rename drivers/phy/{ => renesas}/phy-rcar-gen3-usb2.c (100%)
->>   create mode 100644 drivers/phy/rockchip/Kconfig
->>   create mode 100644 drivers/phy/rockchip/Makefile
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-dp.c (100%)
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-emmc.c (100%)
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-inno-usb2.c (100%)
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-pcie.c (100%)
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-typec.c (100%)
->>   rename drivers/phy/{ => rockchip}/phy-rockchip-usb.c (100%)
->>   create mode 100644 drivers/phy/samsung/Kconfig
->>   create mode 100644 drivers/phy/samsung/Makefile
->>   rename drivers/phy/{ => samsung}/phy-exynos-dp-video.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos-mipi-video.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos-pcie.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos4210-usb2.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos5250-sata.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-exynos5250-usb2.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-s5pv210-usb2.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-samsung-usb2.c (100%)
->>   rename drivers/phy/{ => samsung}/phy-samsung-usb2.h (100%)
->>   create mode 100644 drivers/phy/st/Kconfig
->>   create mode 100644 drivers/phy/st/Makefile
->>   rename drivers/phy/{ => st}/phy-miphy28lp.c (100%)
->>   rename drivers/phy/{ => st}/phy-spear1310-miphy.c (100%)
->>   rename drivers/phy/{ => st}/phy-spear1340-miphy.c (100%)
->>   rename drivers/phy/{ => st}/phy-stih407-usb.c (100%)
->>   create mode 100644 drivers/phy/ti/Kconfig
->>   create mode 100644 drivers/phy/ti/Makefile
->>   rename drivers/phy/{ => ti}/phy-da8xx-usb.c (100%)
->>   rename drivers/phy/{ => ti}/phy-dm816x-usb.c (100%)
->>   rename drivers/phy/{ => ti}/phy-omap-control.c (100%)
->>   rename drivers/phy/{ => ti}/phy-omap-usb2.c (100%)
->>   rename drivers/phy/{ => ti}/phy-ti-pipe3.c (100%)
->>   rename drivers/phy/{ => ti}/phy-tusb1210.c (100%)
->>   rename drivers/phy/{ => ti}/phy-twl4030-usb.c (100%)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index c776906f67a9..22583a160fa5 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -1814,8 +1814,8 @@ F:        drivers/i2c/busses/i2c-st.c
->>   F:     drivers/media/rc/st_rc.c
->>   F:     drivers/media/platform/sti/c8sectpfe/
->>   F:     drivers/mmc/host/sdhci-st.c
->> -F:     drivers/phy/phy-miphy28lp.c
->> -F:     drivers/phy/phy-stih407-usb.c
->> +F:     drivers/phy/st/phy-miphy28lp.c
->> +F:     drivers/phy/st/phy-stih407-usb.c
->>   F:     drivers/pinctrl/pinctrl-st.c
->>   F:     drivers/remoteproc/st_remoteproc.c
->>   F:     drivers/remoteproc/st_slim_rproc.c
->> @@ -10637,7 +10637,7 @@ RENESAS USB2 PHY DRIVER
->>   M:     Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
->>   L:     linux-renesas-soc@vger.kernel.org
->>   S:     Maintained
->> -F:     drivers/phy/phy-rcar-gen3-usb2.c
->> +F:     drivers/phy/renesas/phy-rcar-gen3-usb2.c
->>
->>   RESET CONTROLLER FRAMEWORK
->>   M:     Philipp Zabel <p.zabel@pengutronix.de>
->> @@ -11011,12 +11011,12 @@ L:    linux-kernel@vger.kernel.org
->>   S:     Supported
->>   F:     Documentation/devicetree/bindings/phy/samsung-phy.txt
->>   F:     Documentation/phy/samsung-usb2.txt
->> -F:     drivers/phy/phy-exynos4210-usb2.c
->> -F:     drivers/phy/phy-exynos4x12-usb2.c
->> -F:     drivers/phy/phy-exynos5250-usb2.c
->> -F:     drivers/phy/phy-s5pv210-usb2.c
->> -F:     drivers/phy/phy-samsung-usb2.c
->> -F:     drivers/phy/phy-samsung-usb2.h
->> +F:     drivers/phy/samsung/phy-exynos4210-usb2.c
->> +F:     drivers/phy/samsung/phy-exynos4x12-usb2.c
->> +F:     drivers/phy/samsung/phy-exynos5250-usb2.c
->> +F:     drivers/phy/samsung/phy-s5pv210-usb2.c
->> +F:     drivers/phy/samsung/phy-samsung-usb2.c
->> +F:     drivers/phy/samsung/phy-samsung-usb2.h
-> Or this could be "drivers/phy/samsung/" so it would include all
-> drivers (if that is desired)?
->
-> I am fine with both, so:
-> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
-
-Thanks for the Ack.
-I am also fine with both. Sylwester can comment on this since there are
-couple of drivers apart from this list.
-I am cool with phy-exynos5-usbdrd.c driver that I wrote. :-)
-
-Best Regards
-Vivek
-
->
-> Best regards,
-> Krzysztof
-
--- 
-The Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+T24gMDMvMTQvMjAxNyAwODo1MyBBTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBIaSwKPiAKPiAK
+PiBMZSAxMy8wMy8yMDE3IMOgIDE5OjQ5LCBKb3NlIEFicmV1IGEgw6ljcml0IDoKPj4gSGkgUnVz
+c2VsbCwKPj4KPj4KPj4gT24gMTMtMDMtMjAxNyAxMzoxMCwgUnVzc2VsbCBLaW5nIC0gQVJNIExp
+bnV4IHdyb3RlOgo+Pj4gT24gTW9uLCBNYXIgMTMsIDIwMTcgYXQgMTI6NTU6NThQTSArMDAwMCwg
+Sm9zZSBBYnJldSB3cm90ZToKPj4+PiBIaSwKPj4+Pgo+Pj4+Cj4+Pj4gT24gMTMtMDMtMjAxNyAw
+OTozNiwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+Pj4+PiBPbiBNb24sIE1hciAx
+MywgMjAxNyBhdCAxMDoyNzowOEFNICswMTAwLCBOZWlsIEFybXN0cm9uZyB3cm90ZToKPj4+Pj4+
+IE9uIDAzLzEwLzIwMTcgMTA6MzUgQU0sIFJvbWFpbiBQZXJpZXIgd3JvdGU6Cj4+Pj4+Pj4gQ3Vy
+cmVudGx5LCB0aGUgYXVkaW8gc2FtcGxlciBjbG9jayBpcyBlbmFibGVkIGZyb20gZHdfaGRtaV9z
+ZXR1cCgpIGF0Cj4+Pj4+Pj4gc3RlcCBFLiBhbmQgaXMga2VwdCBlbmFibGVkIGZvciBsYXRlciB1
+c2UuIFRoaXMgY2xvY2sgc2hvdWxkIGJlIGVuYWJsZWQKPj4+Pj4+PiBhbmQgZGlzYWJsZWQgYWxv
+bmcgd2l0aCB0aGUgYWN0dWFsIGF1ZGlvIHN0cmVhbSBhbmQgbm90IGFsd2F5cyBvbiAodGhhdAo+
+Pj4+Pj4+IGlzIGJhZCBmb3IgUE0pLiBGdXRoZXJtb3JlLCB0aGlzIG1pZ2h0IGNhdXNlIHNvdW5k
+IGdsaXRjaGVzIHdpdGggc29tZQo+Pj4+Pj4+IEhETUkgZGV2aWNlcywgYXMgdGhlIENUUytOIGlz
+IGZvcmNlZCB0byB6ZXJvIHdoZW4gdGhlIHN0cmVhbSBpcyBkaXNhYmxlZAo+Pj4+Pj4+IHdoaWxl
+IHRoZSBhdWRpbyBjbG9jayBpcyBzdGlsbCBydW5uaW5nLgo+Pj4+Pj4+Cj4+Pj4+Pj4gVGhpcyBj
+b21taXQgYWRkcyBhIHBhcmFtZXRlciB0byBoZG1pX2F1ZGlvX2VuYWJsZV9jbGsoKSB0aGF0IGNv
+bnRyb2xzCj4+Pj4+Pj4gd2hlbiB0aGUgYXVkaW8gc2FtcGxlIGNsb2NrIG11c3QgYmUgZW5hYmxl
+ZCBvciBkaXNhYmxlZC4gVGhlbiwgaXQgbW92ZXMKPj4+Pj4+PiB0aGUgY2FsbCB0byB0aGlzIGZ1
+bmN0aW9uIGludG8gZHdfaGRtaV9hdWRpb19lbmFibGUoKSBhbmQKPj4+Pj4+PiBkd19oZG1pX2F1
+ZGlvX2Rpc2FibGUoKS4KPj4+Pj4+Pgo+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFJvbWFpbiBQZXJp
+ZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPj4+Pj4+PiAtLS0KPj4+Pj4+PiAgZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMgfCAxNSArKysrKysrKystLS0tLS0KPj4+Pj4+
+PiAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4+Pj4+
+Pgo+Pj4+Pj4gSGkgUm9tYWluLCBSdXNzZWxsLCBKb3NlLAo+Pj4+Pj4KPj4+Pj4+IFRoaXMgaXMg
+YSBsaXR0bGUgb3V0IG9mIHNjb3BlLCBidXQgSSB3YXMgd29uZGVyaW5nIHdoeSB0aGUgQ1RTIGNh
+bGN1bGF0aW9uCj4+Pj4+PiB3YXMgbm90IGxlZnQgaW4gQVVUTyBtb2RlIGluIHRoZSBkdy1oZG1p
+IGRyaXZlciA/Cj4+Pj4+IFRoZXJlIGlzIG5vIGluZGljYXRpb24gaW4gdGhlIGlNWDYgbWFudWFs
+cyB0aGF0IHRoZSBpTVg2IHN1cHBvcnRzCj4+Pj4+IGF1dG9tYXRpYyBDVFMgY2FsY3VsYXRpb24u
+ICBCaXRzIDc6NCBvZiB0aGUgQVVEX0NUUzMgcmVnaXN0ZXIgYXJlCj4+Pj4+IG1hcmtlZCBhcyAi
+cmVzZXJ2ZWQiLgo+Pj4+Pgo+Pj4+PiBXZSdyZSByZWxpYW50IG9uIHRoZSBpbmZvcm1hdGlvbiBp
+biB0aGUgaU1YNiBtYW51YWxzIGFzIHdlIGRvbid0IGhhdmUKPj4+Pj4gYWNjZXNzIHRvIFN5bm9w
+c2lzJyBkYXRhYm9va3MgZm9yIHRoZXNlIHBhcnRzIChJIHVuZGVyc3RhbmQgeW91IGhhdmUKPj4+
+Pj4gdG8gYmUgYSBjdXN0b21lciB0byBoYXZlIGFjY2VzcyB0byB0aGF0LikKPj4+Pj4KPj4+PiAo
+U3lub3BzaXMgLT4gU3lub3BzeXMgOikpCj4+Pj4KPj4+PiBUcnlpbmcgdG8gY2F0Y2ggdXAgd2l0
+aCB0aGUgY29udmVyc2F0aW9uOgo+Pj4+Cj4+Pj4gMSkgSW4gQUhCIGF1ZGlvIG1vZGUgdGhlIGJp
+dHMgYXJlIGFsd2F5cyByZXNlcnZlZC4KPj4+PiAyKSBJIHRoaW5rIHdlIHNob3VsZCBlbmFibGUv
+ZGlzYWJsZSBjbG9jayBpbnN0ZWFkIG9mIGp1c3QgZm9yY2luZwo+Pj4+IE4vQ1RTLCB0aG91Z2gs
+IEkgZG9uJ3Qga25vdyB3aGF0IGNvdWxkIGJlIHRoZSBpbXBsaWNhdGlvbnMgZm9yCj4+Pj4gaU1Y
+IHBsYXRmb3JtLiBJIHJlbWVtYmVyIGF0IHRoZSB0aW1lIEkgdGVzdGVkIHRoaXMgdXNpbmcgSTJT
+Cj4+Pj4gKEkndmUgbmV2ZXIgdXNlZCBBSEIpLCBhbmQgSERNSSBwcm90b2NvbCBhbmFseXplcnMg
+d2VyZQo+Pj4+IGNvbXBsYWluaW5nIGFib3V0IHRoZSBOL0NUUyBiZWluZyBmb3JjZWQgdG8gemVy
+by4KPj4+IFdoYXQgeW91J3JlIHJlY29tbWVuZGluZyBpcyB0byBiYXNpY2FsbHkgaWdub3JlIHRo
+ZSBwdWJsaXNoZWQgd29ya2Fyb3VuZCwKPj4+IHdoaWNoLCBwcmVzdW1hYmx5LCB3YXMgYXJyaXZl
+ZCBhdCBieSBwcm9wZXIgYW5hbHlzaXMgb2YgdGhlIGlzc3VlIGJvdGgKPj4+IGJ5IEZyZWVzY2Fs
+ZSBlbmdpbmVlcnMgYW5kIFN5bm9wc3lzIGVuZ2luZWVycywgYW5kIGluc3RlYWQgdHJ5IHNvbWUg
+b3RoZXIKPj4+IHNvbHV0aW9uLgo+Pj4KPj4+IEknbSBub3Qgc3VyZSB0aGF0J3MgYSBnb29kIGlk
+ZWEuICBPbmx5IHRob3NlIHdpdGgga25vd2xlZGdlIG9mIHRoZSBJUCBjYW4KPj4+IHNheSB3aGF0
+IGVmZmVjdCBkaXNhYmxpbmcgdGhlIGF1ZGlvIGNsb2NrIHdpbGwgaGF2ZTogd2lsbCBpdCBzdGls
+bCBhbGxvdwo+Pj4gdGhlIEZJRk8gdG8gYmUgbG9hZGVkLCBhcyByZXF1aXJlZCBieSB0aGUgZXJy
+YXRhPyAgSWYgbm90LCBpdCdzIG5vdCBhCj4+PiBzb2x1dGlvbiB0aGF0IEFIQiBjYW4gdXNlLiAg
+SSB3b3VsZCBpbWFnaW5lIHRoYXQgX2lmXyBpdCB3YXMgYXMgc2ltcGxlIGFzCj4+PiBkaXNhYmxp
+bmcgdGhlIGF1ZGlvIGNsb2NrLCB0aGF0IHNpbXBsZSBhcHByb2FjaCB3b3VsZCBoYXZlIGJlZW4g
+ZG9jdW1lbnRlZAo+Pj4gaW4gRnJlZXNjYWxlJ3MgZXJyYXRhIGRvY3VtZW50cywgcmF0aGVyIHRo
+YW4gdGhlIHJhdGhlciBtb3JlIGNvbXBsZXgKPj4+IG1ldGhvZCBvZiB6ZXJvaW5nIHRoZSBDVFMv
+TiB2YWx1ZXMuCj4+IEknbSBqdXN0IGZvbGxvd2luZyB3aGF0IHRoZSB1c2VyIGd1aWRlIHNheXM6
+IHRoZSBmaW5hbCBzdGVwIG9mCj4+IGNvbmZpZ3VyYXRpb24gaXMgZW5hYmxpbmcgdGhlIGF1ZGlv
+IGNsb2NrLiBUaGVyZSBpcyBubyByZWZlcmVuY2UKPj4gbmVpdGhlciBpbiBkYXRhc2hlZXQgbmVp
+dGhlciBpbiB1c2VyIGd1aWRlIGFib3V0IHRoaXMgYmVoYXZpb3IKPj4gYnV0LCBhcyBJIHNhaWQs
+IEkndmUgbmV2ZXIgdXNlZCBBSEIgc28gSSBjYW4ndCBwcm92ZSB3aGF0IGlzIHRoZQo+PiBiZXN0
+IHNvbHV0aW9uLiBDb3VsZCBpdCBiZSBwbGF0Zm9ybSBzcGVjaWZpYz8KPiAKPiBBbmQgdGhhdCdz
+IHByZWNpc2VseSB3aHkgSSBhbSBlbmFibGluZyBpdAo+IAo+Pgo+Pj4gSSB0aGluayB0aGVyZSBh
+cmUgdHdvIGNob2ljZXMgaGVyZToKPj4+Cj4+PiAxKSBnZXQgc29tZSBkZWZpbml0aXZlIGluZm9y
+bWF0aW9uIGFib3V0IHRoZSBJUCBhbmQgdGhlIGVycmF0YSBmb3IgQUhCLAo+Pj4gICAgYW5kIGRl
+dGVybWluZSB3aGV0aGVyIHRoZSBzb2x1dGlvbiB5b3UgcHJvcG9zZSB3b3VsZCB3b3JrLiAgKFRo
+YXQncwo+Pj4gICAgb3V0IG9mIHNjb3BlIGZvciBtZSwgSSd2ZSBubyBjb250YWN0cyB3aXRoIEZT
+TC9OWFAgYW5kIEknbSBub3QgYQo+Pj4gICAgU3lub3BzeXMgY3VzdG9tZXIuKQo+PiBUaGlzIGlz
+IHRoZSByaWdodCB0aGluZyB0byBkbyBidXQgaWYgeW91IGNhbid0IHRlc3QgaW4gdGhlCj4+IEZy
+ZWVzY2FsZSBwbGF0Zm9ybSB0aGVuIHdlIGhhdmUgbm90IG11Y2ggZWxzZSB0byBkby4KPj4KPj4g
+QmVzdCByZWdhcmRzLAo+PiBKb3NlIE1pZ3VlbCBBYnJldQo+Pgo+Pj4gMikgdGhlIEkyUyBhdWRp
+byBzdXBwb3J0IHN0b3BzIHJlLXVzaW5nIHRoZSBBSEIgYXVkaW8gc3VwcG9ydCBmdW5jdGlvbnMs
+Cj4+PiAgICBzd2l0Y2hpbmcgdG8gdGhlaXIgb3duIGltcGxlbWVudGF0aW9uIHRoYXQgYmVoYXZl
+cyBjb3JyZWN0bHkgZm9yIHRoZW0uCj4+PiAgICAoUmVtZW1iZXIsIGl0IHdhcyBJMlMncyBjaG9p
+Y2UgdG8gcmUtdXNlIHRoZSBBSEIgYXVkaW8gc3VwcG9ydCBmdW5jdGlvbnMKPj4+ICAgIEkgYWRk
+ZWQgd2hpY2ggd2UncmUgbm93IGRpc2N1c3NpbmcgLSB0aGV5IGRpZG4ndCBoYXZlIHRvIGRvIHRo
+YXQsIGFuZAo+Pj4gICAgcmVncmVzc2luZyBBSEIgYXVkaW8ganVzdCBmb3IgSTJTIGlzIG5vdCBz
+b21ldGhpbmcgd2Ugc2hvdWxkIGV2ZXIKPj4+ICAgIGNvbnNpZGVyIGRvaW5nLikKPj4+Cj4gCj4g
+VGhlIHdvcmthcm91bmQgbG9va3MgQUhCIHNwZWNpZmljIGluIGFueSBjYXNlcyBhbmQgZG9lcyBu
+b3Qgc2VlbSB0byB3b3JrCj4gd2l0aCBJMlMuIFRoZSBJMlMgdmFyaWFudCBzaG91bGQgbm90IHVz
+ZWQgdGhlIHNhbWUgZnVuY3Rpb25zLCBhdCBsZWFzdAo+IGZvciBlbmFibGluZy9kaXNhYmxpbmcg
+YXVkaW8gc3RyZWFtLgo+IAo+IFJlZ2FyZHMsCj4gUm9tYWluCj4gCkhpIEFsbCwKCkpvc2UsIHRo
+YW5rcyBmb3IgeW91ciBjbGFyaWZpY2F0aW9uLgoKSXQgc2VlbXMgcmVhc29uYWJsZSB0byBpbmRl
+ZWQgYWRkIEkyUy9TUERJRiBzcGVjaWZpYyBmdW5jdGlvbnMsIG9yIGF0IGxlYXN0IGFkZApwYXJh
+bWV0ZXJzIHRvIGNoYW5nZSB0aGUgYmVoYXZpb3Igd2hlbiB0aGUgYXVkaW8gY2xvY2sgaXMgZ2Vu
+ZXJhdGVkIGJ5IHRoZQpTeW5vcHN5cyBJUCBvciBieSBhbiBleHRlcm5hbCBhdWRpbyBibG9jayBh
+cyBpbiBJMlMgYW5kIFNQRElGLgoKTmV2ZXJ0aGVsZXNzLCBvbiB0aGUgQW1sb2dpYyBwbGF0Zm9y
+bXMsIHdlIHdpbGwgbmVlZCB0byBhZGQgdGhpcyBBVVRPIGN0cyBjYWxjdWxhdGlvbgpmZWF0dXJl
+IGFuZCB3aWxsIGNlcnRhaW5seSBuZWVkIHRoaXMgYmVoYXZpb3IgZml4LgoKUm9tYWluLCBmZWVs
+IGZyZWUgdG8gYWRkIHRoZSBjb3JyZWN0IEkyUyBiZWhhdmlvciwgSSdsbCBiZSBoYXBweSB0byB0
+ZXN0IHlvdXIgcGF0Y2hlcy4KClRoYW5rcywKTmVpbApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
