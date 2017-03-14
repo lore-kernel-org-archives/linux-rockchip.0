@@ -1,508 +1,181 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Refactor the component match logic.
-Date: Tue, 14 Mar 2017 18:47:41 +0800
-Message-ID: <58C7CA4D.9000002@rock-chips.com>
-References: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com> <20170313210621.GY20329@art_vandelay>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2] drm/rockchip: Refactor the component match logic.
+Date: Tue, 14 Mar 2017 13:05:32 +0100
+Message-ID: <9352c2e4-5394-4725-f247-ff98318cd3d4@samsung.com>
+References: <1489488349-3053-1-git-send-email-jeffy.chen@rock-chips.com>
+ <CGME20170314120534eucas1p20601e44f6552db2b4b3f65d8ab6b4720@eucas1p2.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170313210621.GY20329@art_vandelay>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Yao <mark.yao@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <1489488349-3053-1-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On 03/14/2017 05:06 AM, Sean Paul wrote:
-> On Wed, Mar 08, 2017 at 01:58:14PM +0800, Jeffy Chen wrote:
->> Currently we are adding all components from the dts, if one of their
->> drivers been disabled, we would not be able to bring up others.
->>
->> Refactor component match logic, follow exynos drm.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>
->> ---
->>
->>   drivers/gpu/drm/rockchip/Kconfig                |  10 +-
->>   drivers/gpu/drm/rockchip/Makefile               |  16 +--
->>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |   9 +-
->>   drivers/gpu/drm/rockchip/cdn-dp-core.c          |   8 +-
->>   drivers/gpu/drm/rockchip/dw-mipi-dsi.c          |   8 +-
->>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  10 +-
->>   drivers/gpu/drm/rockchip/inno_hdmi.c            |  10 +-
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 156 ++++++++++++++++--------
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |   6 +
->>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c     |   8 +-
->>   10 files changed, 133 insertions(+), 108 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
->> index 0e4eb84..50c41c0 100644
->> --- a/drivers/gpu/drm/rockchip/Kconfig
->> +++ b/drivers/gpu/drm/rockchip/Kconfig
->> @@ -13,7 +13,7 @@ config DRM_ROCKCHIP
->>   	  IP found on the SoC.
->>   
->>   config ROCKCHIP_ANALOGIX_DP
->> -	tristate "Rockchip specific extensions for Analogix DP driver"
->> +	bool "Rockchip specific extensions for Analogix DP driver"
->>   	depends on DRM_ROCKCHIP
->>   	select DRM_ANALOGIX_DP
->>   	help
->> @@ -22,7 +22,7 @@ config ROCKCHIP_ANALOGIX_DP
->>   	  on RK3288 based SoC, you should selet this option.
->>   
->>   config ROCKCHIP_CDN_DP
->> -        tristate "Rockchip cdn DP"
->> +        bool "Rockchip cdn DP"
->>           depends on DRM_ROCKCHIP
->>   	depends on EXTCON
->>   	select SND_SOC_HDMI_CODEC if SND_SOC
->> @@ -33,7 +33,7 @@ config ROCKCHIP_CDN_DP
->>   	  option.
->>   
->>   config ROCKCHIP_DW_HDMI
->> -        tristate "Rockchip specific extensions for Synopsys DW HDMI"
->> +        bool "Rockchip specific extensions for Synopsys DW HDMI"
->>           depends on DRM_ROCKCHIP
->>           select DRM_DW_HDMI
->>           help
->> @@ -43,7 +43,7 @@ config ROCKCHIP_DW_HDMI
->>   	  option.
->>   
->>   config ROCKCHIP_DW_MIPI_DSI
->> -	tristate "Rockchip specific extensions for Synopsys DW MIPI DSI"
->> +	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
->>   	depends on DRM_ROCKCHIP
->>   	select DRM_MIPI_DSI
->>   	help
->> @@ -53,7 +53,7 @@ config ROCKCHIP_DW_MIPI_DSI
->>   	 option.
->>   
->>   config ROCKCHIP_INNO_HDMI
->> -	tristate "Rockchip specific extensions for Innosilicon HDMI"
->> +	bool "Rockchip specific extensions for Innosilicon HDMI"
->>   	depends on DRM_ROCKCHIP
->>   	help
->>   	  This selects support for Rockchip SoC specific extensions
->> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
->> index c931e2a..fa8dc9d 100644
->> --- a/drivers/gpu/drm/rockchip/Makefile
->> +++ b/drivers/gpu/drm/rockchip/Makefile
->> @@ -3,14 +3,14 @@
->>   # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
->>   
->>   rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
->> -		rockchip_drm_gem.o rockchip_drm_psr.o rockchip_drm_vop.o
->> +		rockchip_drm_gem.o rockchip_drm_psr.o \
->> +		rockchip_drm_vop.o rockchip_vop_reg.o
->>   rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
->>   
->> -obj-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
->> -obj-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp.o
->> -cdn-dp-objs := cdn-dp-core.o cdn-dp-reg.o
->> -obj-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->> -obj-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
->> -obj-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->>   
->> -obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o rockchip_vop_reg.o
->> +obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index 8548e82..91ebe5c 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -507,7 +507,7 @@ static const struct of_device_id rockchip_dp_dt_ids[] = {
->>   };
->>   MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
->>   
->> -static struct platform_driver rockchip_dp_driver = {
->> +struct platform_driver rockchip_dp_driver = {
->>   	.probe = rockchip_dp_probe,
->>   	.remove = rockchip_dp_remove,
->>   	.driver = {
->> @@ -516,10 +516,3 @@ static struct platform_driver rockchip_dp_driver = {
->>   		   .of_match_table = of_match_ptr(rockchip_dp_dt_ids),
->>   	},
->>   };
->> -
->> -module_platform_driver(rockchip_dp_driver);
->> -
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_AUTHOR("Jeff chen <jeff.chen@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific Analogix-DP Driver Extension");
->> -MODULE_LICENSE("GPL v2");
->> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> index fd79a70..e1796d0 100644
->> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> @@ -1243,7 +1243,7 @@ static const struct dev_pm_ops cdn_dp_pm_ops = {
->>   				cdn_dp_resume)
->>   };
->>   
->> -static struct platform_driver cdn_dp_driver = {
->> +struct platform_driver cdn_dp_driver = {
->>   	.probe = cdn_dp_probe,
->>   	.remove = cdn_dp_remove,
->>   	.shutdown = cdn_dp_shutdown,
->> @@ -1254,9 +1254,3 @@ static struct platform_driver cdn_dp_driver = {
->>   		   .pm = &cdn_dp_pm_ops,
->>   	},
->>   };
->> -
->> -module_platform_driver(cdn_dp_driver);
->> -
->> -MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
->> -MODULE_DESCRIPTION("cdn DP Driver");
->> -MODULE_LICENSE("GPL v2");
->> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> index d9aa382..65a474f 100644
->> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> @@ -1165,7 +1165,7 @@ static int dw_mipi_dsi_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>   
->> -static struct platform_driver dw_mipi_dsi_driver = {
->> +struct platform_driver dw_mipi_dsi_driver = {
->>   	.probe		= dw_mipi_dsi_probe,
->>   	.remove		= dw_mipi_dsi_remove,
->>   	.driver		= {
->> @@ -1173,9 +1173,3 @@ static struct platform_driver dw_mipi_dsi_driver = {
->>   		.name	= DRIVER_NAME,
->>   	},
->>   };
->> -module_platform_driver(dw_mipi_dsi_driver);
->> -
->> -MODULE_DESCRIPTION("ROCKCHIP MIPI DSI host controller driver");
->> -MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
->> -MODULE_LICENSE("GPL");
->> -MODULE_ALIAS("platform:" DRIVER_NAME);
->> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> index a6d4a02..976ea79 100644
->> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> @@ -326,7 +326,7 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>   
->> -static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->> +struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->>   	.probe  = dw_hdmi_rockchip_probe,
->>   	.remove = dw_hdmi_rockchip_remove,
->>   	.driver = {
->> @@ -334,11 +334,3 @@ static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->>   		.of_match_table = dw_hdmi_rockchip_dt_ids,
->>   	},
->>   };
->> -
->> -module_platform_driver(dw_hdmi_rockchip_pltfm_driver);
->> -
->> -MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific DW-HDMI Driver Extension");
->> -MODULE_LICENSE("GPL");
->> -MODULE_ALIAS("platform:dwhdmi-rockchip");
->> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> index 006260d..7d9b75e 100644
->> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
->> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> @@ -923,7 +923,7 @@ static const struct of_device_id inno_hdmi_dt_ids[] = {
->>   };
->>   MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
->>   
->> -static struct platform_driver inno_hdmi_driver = {
->> +struct platform_driver inno_hdmi_driver = {
->>   	.probe  = inno_hdmi_probe,
->>   	.remove = inno_hdmi_remove,
->>   	.driver = {
->> @@ -931,11 +931,3 @@ static struct platform_driver inno_hdmi_driver = {
->>   		.of_match_table = inno_hdmi_dt_ids,
->>   	},
->>   };
->> -
->> -module_platform_driver(inno_hdmi_driver);
->> -
->> -MODULE_AUTHOR("Zheng Yang <zhengyang@rock-chips.com>");
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific INNO-HDMI Driver");
->> -MODULE_LICENSE("GPL v2");
->> -MODULE_ALIAS("platform:innohdmi-rockchip");
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> index b360e62..c0dae3b 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> @@ -356,34 +356,49 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
->>   				rockchip_drm_sys_resume)
->>   };
->>   
->> -static int compare_of(struct device *dev, void *data)
->> -{
->> -	struct device_node *np = data;
->> +static struct platform_driver *rockchip_drm_comp_drvs[] = {
->> +	&vop_platform_driver,
->> +#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP
->> +	&rockchip_dp_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_CDN_DP
->> +	&cdn_dp_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_HDMI
->> +	&dw_hdmi_rockchip_pltfm_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_MIPI_DSI
->> +	&dw_mipi_dsi_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_INNO_HDMI
->> +	&inno_hdmi_driver,
->> +#endif
->> +};
->>   
->> -	return dev->of_node == np;
->> +static int compare_dev(struct device *dev, void *data)
->> +{
->> +	return dev == (struct device *)data;
->>   }
->>   
->> -static void rockchip_add_endpoints(struct device *dev,
->> -				   struct component_match **match,
->> -				   struct device_node *port)
->> +static struct component_match *rockchip_drm_match_add(struct device *dev)
->>   {
->> -	struct device_node *ep, *remote;
->> +	struct component_match *match = NULL;
->> +	int i;
->>   
->> -	for_each_child_of_node(port, ep) {
->> -		remote = of_graph_get_remote_port_parent(ep);
->> -		if (!remote || !of_device_is_available(remote)) {
->> -			of_node_put(remote);
->> -			continue;
->> -		} else if (!of_device_is_available(remote->parent)) {
->> -			dev_warn(dev, "parent device of %s is not available\n",
->> -				 remote->full_name);
->> -			of_node_put(remote);
->> -			continue;
->> -		}
->> +	for (i = 0; i < ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
->> +		struct platform_driver *drv = rockchip_drm_comp_drvs[i];
->> +		struct device *p = NULL, *d;
->>   
->> -		drm_of_component_match_add(dev, match, compare_of, remote);
->> -		of_node_put(remote);
->> +		while ((d = bus_find_device(&platform_bus_type, p, &drv->driver,
->> +					    (void *)platform_bus_type.match))) {
->> +			put_device(p);
->> +			component_match_add(dev, &match, compare_dev, d);
->> +			p = d;
->> +		}
->> +		put_device(p);
-> I think you could move the bus_find_device() inside the loop and just have
-> put_device in one place. I spent more time than I would have liked trying to
-> rationalize why there was an extra put.
-done.
->
->>   	}
->> +
->> +	return match ?: ERR_PTR(-ENODEV);
->>   }
->>   
->>   static const struct component_master_ops rockchip_drm_ops = {
->> @@ -391,21 +406,16 @@ static const struct component_master_ops rockchip_drm_ops = {
->>   	.unbind = rockchip_drm_unbind,
->>   };
->>   
->> -static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +static int rockchip_drm_platform_of_probe(struct device *dev)
->>   {
->> -	struct device *dev = &pdev->dev;
->> -	struct component_match *match = NULL;
->>   	struct device_node *np = dev->of_node;
->>   	struct device_node *port;
->> +	bool found = false;
->>   	int i;
->>   
->>   	if (!np)
->>   		return -ENODEV;
->> -	/*
->> -	 * Bind the crtc ports first, so that
->> -	 * drm_of_find_possible_crtcs called from encoder .bind callbacks
->> -	 * works as expected.
->> -	 */
->> +
->>   	for (i = 0;; i++) {
->>   		struct device_node *iommu;
->>   
->> @@ -429,9 +439,9 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   			is_support_iommu = false;
->>   		}
->>   
->> +		found = true;
->> +
->>   		of_node_put(iommu);
->> -		drm_of_component_match_add(dev, &match, compare_of,
->> -					   port->parent);
->>   		of_node_put(port);
->>   	}
->>   
->> @@ -440,27 +450,27 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   		return -ENODEV;
->>   	}
->>   
->> -	if (!match) {
->> +	if (!found) {
->>   		dev_err(dev, "No available vop found for display-subsystem.\n");
->>   		return -ENODEV;
->>   	}
->> -	/*
->> -	 * For each bound crtc, bind the encoders attached to its
->> -	 * remote endpoint.
->> -	 */
->> -	for (i = 0;; i++) {
->> -		port = of_parse_phandle(np, "ports", i);
->> -		if (!port)
->> -			break;
->>   
->> -		if (!of_device_is_available(port->parent)) {
->> -			of_node_put(port);
->> -			continue;
->> -		}
->> +	return 0;
->> +}
->>   
->> -		rockchip_add_endpoints(dev, &match, port);
->> -		of_node_put(port);
->> -	}
->> +static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct component_match *match = NULL;
->> +	int ret;
->> +
->> +	ret = rockchip_drm_platform_of_probe(dev);
->> +	if (ret)
->> +		return ret;
->> +
->> +	match = rockchip_drm_match_add(dev);
->> +	if (IS_ERR(match))
->> +		return PTR_ERR(match);
->>   
->>   	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
->>   }
->> @@ -488,7 +498,57 @@ static struct platform_driver rockchip_drm_platform_driver = {
->>   	},
->>   };
->>   
->> -module_platform_driver(rockchip_drm_platform_driver);
->> +static void rockchip_drm_unregister_drivers(void)
->> +{
->> +	int i;
->> +
->> +	for (i = ARRAY_SIZE(rockchip_drm_comp_drvs) - 1; i >= 0; i--)
->> +		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
->> +}
->> +
->> +static int rockchip_drm_register_drivers(void)
->> +{
->> +	int i, ret;
->> +
->> +	for (i = 0; i < ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
->> +		ret = platform_driver_register(rockchip_drm_comp_drvs[i]);
->> +		if (ret)
->> +			goto fail;
->> +	}
->> +	return 0;
->> +fail:
->> +	rockchip_drm_unregister_drivers();
-> Are you sure you can call this for the drivers that have not yet been
-> registered? I took a quick look in the platform_driver code and it seems like
-> this might cause a device reference imbalance, at the least.
-done.
->
->> +	return ret;
->> +}
->> +
->> +static int __init rockchip_drm_init(void)
->> +{
->> +	int ret;
->> +
->> +	ret = rockchip_drm_register_drivers();
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = platform_driver_register(&rockchip_drm_platform_driver);
->> +	if (ret)
->> +		goto err_unreg_drivers;
->> +
->> +	return 0;
->> +
->> +err_unreg_drivers:
->> +	rockchip_drm_unregister_drivers();
->> +	return ret;
->> +}
->> +
->> +static void __exit rockchip_drm_fini(void)
->> +{
->> +	platform_driver_unregister(&rockchip_drm_platform_driver);
->> +
->> +	rockchip_drm_unregister_drivers();
->> +}
->> +
->> +module_init(rockchip_drm_init);
->> +module_exit(rockchip_drm_fini);
->>   
->>   MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->>   MODULE_DESCRIPTION("ROCKCHIP DRM Driver");
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> index adc3930..f46e1d0 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> @@ -79,4 +79,10 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
->>   int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
->>   				unsigned int mstimeout);
->>   
->> +extern struct platform_driver cdn_dp_driver;
->> +extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
->> +extern struct platform_driver dw_mipi_dsi_driver;
->> +extern struct platform_driver inno_hdmi_driver;
->> +extern struct platform_driver rockchip_dp_driver;
->> +extern struct platform_driver vop_platform_driver;
-> Should these be protected by #ifdef CONFIG_*?
-done.
->
->>   #endif /* _ROCKCHIP_DRM_DRV_H_ */
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> index 91fbc7b..0da4444 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> @@ -404,7 +404,7 @@ static int vop_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>   
->> -static struct platform_driver vop_platform_driver = {
->> +struct platform_driver vop_platform_driver = {
->>   	.probe = vop_probe,
->>   	.remove = vop_remove,
->>   	.driver = {
->> @@ -412,9 +412,3 @@ static struct platform_driver vop_platform_driver = {
->>   		.of_match_table = of_match_ptr(vop_driver_dt_match),
->>   	},
->>   };
->> -
->> -module_platform_driver(vop_platform_driver);
->> -
->> -MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->> -MODULE_DESCRIPTION("ROCKCHIP VOP Driver");
->> -MODULE_LICENSE("GPL v2");
->> -- 
->> 2.1.4
->>
->
->
-thanx for point those out ;)
+SGkgSmVmZnksCgpPbiAxNC4wMy4yMDE3IDExOjQ1LCBKZWZmeSBDaGVuIHdyb3RlOgo+IEN1cnJl
+bnRseSB3ZSBhcmUgYWRkaW5nIGFsbCBjb21wb25lbnRzIGZyb20gdGhlIGR0cywgaWYgb25lIG9m
+IHRoZWlyCj4gZHJpdmVycyBiZWVuIGRpc2FibGVkLCB3ZSB3b3VsZCBub3QgYmUgYWJsZSB0byBi
+cmluZyB1cCBvdGhlcnMuCj4gCj4gUmVmYWN0b3IgY29tcG9uZW50IG1hdGNoIGxvZ2ljLCBmb2xs
+b3cgZXh5bm9zIGRybS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVu
+QHJvY2stY2hpcHMuY29tPgoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ft
+c3VuZy5jb20+CgpCZWxvdyBmZXcgbml0cGlja3MuCgooLi4uKQoKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBpbmRleCBiMzYwZTYyLi5iNmJjY2ZjIDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAg
+LTM1NiwzNCArMzU2LDUyIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyByb2NrY2hp
+cF9kcm1fcG1fb3BzID0gewo+ICAJCQkJcm9ja2NoaXBfZHJtX3N5c19yZXN1bWUpCj4gIH07Cj4g
+IAo+IC1zdGF0aWMgaW50IGNvbXBhcmVfb2Yoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRh
+KQo+IC17Cj4gLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gZGF0YTsKPiArc3RhdGljIHN0cnVj
+dCBwbGF0Zm9ybV9kcml2ZXIgKnJvY2tjaGlwX2RybV9jb21wX2RydnNbXSA9IHsKPiArCSZ2b3Bf
+cGxhdGZvcm1fZHJpdmVyLAo+ICsjaWZkZWYgQ09ORklHX1JPQ0tDSElQX0FOQUxPR0lYX0RQCj4g
+Kwkmcm9ja2NoaXBfZHBfZHJpdmVyLAo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19ST0NLQ0hJ
+UF9DRE5fRFAKPiArCSZjZG5fZHBfZHJpdmVyLAo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19S
+T0NLQ0hJUF9EV19IRE1JCj4gKwkmZHdfaGRtaV9yb2NrY2hpcF9wbHRmbV9kcml2ZXIsCj4gKyNl
+bmRpZgo+ICsjaWZkZWYgQ09ORklHX1JPQ0tDSElQX0RXX01JUElfRFNJCj4gKwkmZHdfbWlwaV9k
+c2lfZHJpdmVyLAo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19ST0NLQ0hJUF9JTk5PX0hETUkK
+PiArCSZpbm5vX2hkbWlfZHJpdmVyLAo+ICsjZW5kaWYKPiArfTsKClRvIGF2b2lkICNpZmRlZnMs
+IHlvdSBjYW4gdXNlIERSVl9QVFIgWzFdLCBidXQgaXQgZGVwZW5kcyB3aGF0IGRvIHlvdQpoYXRl
+IG1vcmU/IGlmZGVmcyBvciBtYWNybyBtYWdpYyA6KQoKWzFdOgpodHRwOi8vbHhyLmZyZWUtZWxl
+Y3Ryb25zLmNvbS9zb3VyY2UvZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX2Rydi5j
+I0w0NzIKCj4gIAo+IC0JcmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBucDsKPiArc3RhdGljIGludCBj
+b21wYXJlX2RldihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4gK3sKPiArCXJldHVy
+biBkZXYgPT0gKHN0cnVjdCBkZXZpY2UgKilkYXRhOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBy
+b2NrY2hpcF9hZGRfZW5kcG9pbnRzKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAtCQkJCSAgIHN0cnVj
+dCBjb21wb25lbnRfbWF0Y2ggKiptYXRjaCwKPiAtCQkJCSAgIHN0cnVjdCBkZXZpY2Vfbm9kZSAq
+cG9ydCkKPiArc3RhdGljIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKnJvY2tjaGlwX2RybV9tYXRj
+aF9hZGQoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKmVw
+LCAqcmVtb3RlOwo+ICsJc3RydWN0IGNvbXBvbmVudF9tYXRjaCAqbWF0Y2ggPSBOVUxMOwo+ICsJ
+aW50IGk7Cj4gIAo+IC0JZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShwb3J0LCBlcCkgewo+IC0JCXJl
+bW90ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOwo+IC0JCWlmICghcmVt
+b3RlIHx8ICFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKHJlbW90ZSkpIHsKPiAtCQkJb2Zfbm9kZV9w
+dXQocmVtb3RlKTsKPiAtCQkJY29udGludWU7Cj4gLQkJfSBlbHNlIGlmICghb2ZfZGV2aWNlX2lz
+X2F2YWlsYWJsZShyZW1vdGUtPnBhcmVudCkpIHsKPiAtCQkJZGV2X3dhcm4oZGV2LCAicGFyZW50
+IGRldmljZSBvZiAlcyBpcyBub3QgYXZhaWxhYmxlXG4iLAo+IC0JCQkJIHJlbW90ZS0+ZnVsbF9u
+YW1lKTsKPiAtCQkJb2Zfbm9kZV9wdXQocmVtb3RlKTsKPiAtCQkJY29udGludWU7Cj4gLQkJfQo+
+ICsJZm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUocm9ja2NoaXBfZHJtX2NvbXBfZHJ2cyk7IGkr
+Kykgewo+ICsJCXN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgKmRydiA9IHJvY2tjaGlwX2RybV9jb21w
+X2RydnNbaV07Cj4gKwkJc3RydWN0IGRldmljZSAqcCA9IE5VTEwsICpkOwo+ICAKPiAtCQlkcm1f
+b2ZfY29tcG9uZW50X21hdGNoX2FkZChkZXYsIG1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwo+
+IC0JCW9mX25vZGVfcHV0KHJlbW90ZSk7Cj4gKwkJZG8gewo+ICsJCQlkID0gYnVzX2ZpbmRfZGV2
+aWNlKCZwbGF0Zm9ybV9idXNfdHlwZSwgcCwgJmRydi0+ZHJpdmVyLAo+ICsJCQkJCSAgICAodm9p
+ZCAqKXBsYXRmb3JtX2J1c190eXBlLm1hdGNoKTsKPiArCQkJcHV0X2RldmljZShwKTsKPiArCQkJ
+cCA9IGQ7Cj4gKwo+ICsJCQlpZiAoIWQpCj4gKwkJCQlicmVhazsKPiArCQkJY29tcG9uZW50X21h
+dGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9kZXYsIGQpOwo+ICsJCX0gd2hpbGUgKHRydWUp
+Owo+ICAJfQo+ICsKPiArCXJldHVybiBtYXRjaCA/OiBFUlJfUFRSKC1FTk9ERVYpOwo+ICB9Cj4g
+IAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlwX2Ry
+bV9vcHMgPSB7Cj4gQEAgLTM5MSwyMSArNDA5LDE2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29t
+cG9uZW50X21hc3Rlcl9vcHMgcm9ja2NoaXBfZHJtX29wcyA9IHsKPiAgCS51bmJpbmQgPSByb2Nr
+Y2hpcF9kcm1fdW5iaW5kLAo+ICB9Owo+ICAKPiAtc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxh
+dGZvcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiArc3RhdGljIGludCBy
+b2NrY2hpcF9kcm1fcGxhdGZvcm1fb2ZfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4g
+LQlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+IC0Jc3RydWN0IGNvbXBvbmVudF9t
+YXRjaCAqbWF0Y2ggPSBOVUxMOwo+ICAJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zf
+bm9kZTsKPiAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydDsKPiArCWJvb2wgZm91bmQgPSBmYWxz
+ZTsKPiAgCWludCBpOwo+ICAKPiAgCWlmICghbnApCj4gIAkJcmV0dXJuIC1FTk9ERVY7Cj4gLQkv
+Kgo+IC0JICogQmluZCB0aGUgY3J0YyBwb3J0cyBmaXJzdCwgc28gdGhhdAo+IC0JICogZHJtX29m
+X2ZpbmRfcG9zc2libGVfY3J0Y3MgY2FsbGVkIGZyb20gZW5jb2RlciAuYmluZCBjYWxsYmFja3MK
+PiAtCSAqIHdvcmtzIGFzIGV4cGVjdGVkLgo+IC0JICovCj4gKwo+ICAJZm9yIChpID0gMDs7IGkr
+Kykgewo+ICAJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqaW9tbXU7Cj4gIAo+IEBAIC00MjksOSArNDQy
+LDkgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcHJvYmUoc3RydWN0IHBsYXRm
+b3JtX2RldmljZSAqcGRldikKPiAgCQkJaXNfc3VwcG9ydF9pb21tdSA9IGZhbHNlOwo+ICAJCX0K
+PiAgCj4gKwkJZm91bmQgPSB0cnVlOwo+ICsKPiAgCQlvZl9ub2RlX3B1dChpb21tdSk7Cj4gLQkJ
+ZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsCj4gLQkJ
+CQkJICAgcG9ydC0+cGFyZW50KTsKPiAgCQlvZl9ub2RlX3B1dChwb3J0KTsKPiAgCX0KPiAgCj4g
+QEAgLTQ0MCwyNyArNDUzLDI3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3By
+b2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FTk9ERVY7Cj4g
+IAl9Cj4gIAo+IC0JaWYgKCFtYXRjaCkgewo+ICsJaWYgKCFmb3VuZCkgewo+ICAJCWRldl9lcnIo
+ZGV2LCAiTm8gYXZhaWxhYmxlIHZvcCBmb3VuZCBmb3IgZGlzcGxheS1zdWJzeXN0ZW0uXG4iKTsK
+PiAgCQlyZXR1cm4gLUVOT0RFVjsKPiAgCX0KPiAtCS8qCj4gLQkgKiBGb3IgZWFjaCBib3VuZCBj
+cnRjLCBiaW5kIHRoZSBlbmNvZGVycyBhdHRhY2hlZCB0byBpdHMKPiAtCSAqIHJlbW90ZSBlbmRw
+b2ludC4KPiAtCSAqLwo+IC0JZm9yIChpID0gMDs7IGkrKykgewo+IC0JCXBvcnQgPSBvZl9wYXJz
+ZV9waGFuZGxlKG5wLCAicG9ydHMiLCBpKTsKPiAtCQlpZiAoIXBvcnQpCj4gLQkJCWJyZWFrOwo+
+ICAKPiAtCQlpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50KSkgewo+IC0J
+CQlvZl9ub2RlX3B1dChwb3J0KTsKPiAtCQkJY29udGludWU7Cj4gLQkJfQo+ICsJcmV0dXJuIDA7
+Cj4gK30KPiAgCj4gLQkJcm9ja2NoaXBfYWRkX2VuZHBvaW50cyhkZXYsICZtYXRjaCwgcG9ydCk7
+Cj4gLQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4gLQl9Cj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJt
+X3BsYXRmb3JtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gK3sKPiArCXN0
+cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gKwlzdHJ1Y3QgY29tcG9uZW50X21hdGNo
+ICptYXRjaCA9IE5VTEw7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCXJldCA9IHJvY2tjaGlwX2RybV9w
+bGF0Zm9ybV9vZl9wcm9iZShkZXYpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsK
+PiArCW1hdGNoID0gcm9ja2NoaXBfZHJtX21hdGNoX2FkZChkZXYpOwo+ICsJaWYgKElTX0VSUiht
+YXRjaCkpCj4gKwkJcmV0dXJuIFBUUl9FUlIobWF0Y2gpOwo+ICAKPiAgCXJldHVybiBjb21wb25l
+bnRfbWFzdGVyX2FkZF93aXRoX21hdGNoKGRldiwgJnJvY2tjaGlwX2RybV9vcHMsIG1hdGNoKTsK
+PiAgfQo+IEBAIC00ODgsNyArNTAxLDYwIEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVy
+IHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9kcml2ZXIgPSB7Cj4gIAl9LAo+ICB9Owo+ICAKPiAtbW9k
+dWxlX3BsYXRmb3JtX2RyaXZlcihyb2NrY2hpcF9kcm1fcGxhdGZvcm1fZHJpdmVyKTsKPiArc3Rh
+dGljIHZvaWQgcm9ja2NoaXBfZHJtX3VucmVnaXN0ZXJfZHJpdmVycyh2b2lkKQo+ICt7Cj4gKwlp
+bnQgaTsKPiArCj4gKwlmb3IgKGkgPSBBUlJBWV9TSVpFKHJvY2tjaGlwX2RybV9jb21wX2RydnMp
+IC0gMTsgaSA+PSAwOyBpLS0pCj4gKwkJcGxhdGZvcm1fZHJpdmVyX3VucmVnaXN0ZXIocm9ja2No
+aXBfZHJtX2NvbXBfZHJ2c1tpXSk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJt
+X3JlZ2lzdGVyX2RyaXZlcnModm9pZCkKPiArewo+ICsJaW50IGksIHJldDsKPiArCj4gKwlmb3Ig
+KGkgPSAwOyBpIDwgQVJSQVlfU0laRShyb2NrY2hpcF9kcm1fY29tcF9kcnZzKTsgaSsrKSB7Cj4g
+KwkJcmV0ID0gcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKHJvY2tjaGlwX2RybV9jb21wX2RydnNb
+aV0pOwo+ICsJCWlmIChyZXQpCj4gKwkJCWdvdG8gZXJyX3VucmVnOwo+ICsJfQo+ICsKPiArCXJl
+dHVybiAwOwo+ICsKPiArZXJyX3VucmVnOgo+ICsJZm9yICg7IGktLTsgKQo+ICsJCXBsYXRmb3Jt
+X2RyaXZlcl91bnJlZ2lzdGVyKHJvY2tjaGlwX2RybV9jb21wX2RydnNbaV0pOwoKU3RyYW5nZSBw
+bGFjZW1lbnQgb2YgZGVjcmVtZW50YWwgaW4gZm9yLCBtYXliZSBzdGggbGlrZSB0aGlzIHdvdWxk
+IGJlCmJldHRlcjoKCXdoaWxlIChpLS0gPiAwKQoJCXBsYXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVy
+KHJvY2tjaGlwX2RybV9jb21wX2RydnNbaV0pOwoKCj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+
+ICtzdGF0aWMgaW50IF9faW5pdCByb2NrY2hpcF9kcm1faW5pdCh2b2lkKQo+ICt7Cj4gKwlpbnQg
+cmV0Owo+ICsKPiArCXJldCA9IHJvY2tjaGlwX2RybV9yZWdpc3Rlcl9kcml2ZXJzKCk7Cj4gKwlp
+ZiAocmV0KQo+ICsJCXJldHVybiByZXQ7Cj4gKwo+ICsJcmV0ID0gcGxhdGZvcm1fZHJpdmVyX3Jl
+Z2lzdGVyKCZyb2NrY2hpcF9kcm1fcGxhdGZvcm1fZHJpdmVyKTsKPiArCWlmIChyZXQpCj4gKwkJ
+Z290byBlcnJfdW5yZWdfZHJpdmVyczsKPiArCj4gKwlyZXR1cm4gMDsKPiArCj4gK2Vycl91bnJl
+Z19kcml2ZXJzOgo+ICsJcm9ja2NoaXBfZHJtX3VucmVnaXN0ZXJfZHJpdmVycygpOwo+ICsJcmV0
+dXJuIHJldDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgX19leGl0IHJvY2tjaGlwX2RybV9maW5p
+KHZvaWQpCj4gK3sKPiArCXBsYXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVyKCZyb2NrY2hpcF9kcm1f
+cGxhdGZvcm1fZHJpdmVyKTsKPiArCj4gKwlyb2NrY2hpcF9kcm1fdW5yZWdpc3Rlcl9kcml2ZXJz
+KCk7Cj4gK30KPiArCj4gK21vZHVsZV9pbml0KHJvY2tjaGlwX2RybV9pbml0KTsKPiArbW9kdWxl
+X2V4aXQocm9ja2NoaXBfZHJtX2ZpbmkpOwo+ICAKPiAgTU9EVUxFX0FVVEhPUigiTWFyayBZYW8g
+PG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiIpOwo+ICBNT0RVTEVfREVTQ1JJUFRJT04oIlJPQ0tD
+SElQIERSTSBEcml2ZXIiKTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9kcnYuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZHJ2LmgKPiBpbmRleCBhZGMzOTMwLi45MTgxMmJkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCj4gQEAgLTc5LDQgKzc5LDIwIEBAIHZvaWQg
+cm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
+LAo+ICBpbnQgcm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKHN0cnVjdCBkcm1fY3J0YyAqY3J0
+YywgdW5zaWduZWQgaW50IGxpbmVfbnVtLAo+ICAJCQkJdW5zaWduZWQgaW50IG1zdGltZW91dCk7
+Cj4gIAo+ICsjaWZkZWYgQ09ORklHX1JPQ0tDSElQX0NETl9EUAo+ICtleHRlcm4gc3RydWN0IHBs
+YXRmb3JtX2RyaXZlciBjZG5fZHBfZHJpdmVyOwo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19S
+T0NLQ0hJUF9EV19IRE1JCj4gK2V4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGR3X2hkbWlf
+cm9ja2NoaXBfcGx0Zm1fZHJpdmVyOwo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19ST0NLQ0hJ
+UF9EV19NSVBJX0RTSQo+ICtleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19taXBpX2Rz
+aV9kcml2ZXI7Cj4gKyNlbmRpZgo+ICsjaWZkZWYgQ09ORklHX1JPQ0tDSElQX0lOTk9fSERNSQo+
+ICtleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBpbm5vX2hkbWlfZHJpdmVyOwo+ICsjZW5k
+aWYKPiArI2lmZGVmIENPTkZJR19ST0NLQ0hJUF9BTkFMT0dJWF9EUAo+ICtleHRlcm4gc3RydWN0
+IHBsYXRmb3JtX2RyaXZlciByb2NrY2hpcF9kcF9kcml2ZXI7Cj4gKyNlbmRpZgo+ICtleHRlcm4g
+c3RydWN0IHBsYXRmb3JtX2RyaXZlciB2b3BfcGxhdGZvcm1fZHJpdmVyOwo+ICAjZW5kaWYgLyog
+X1JPQ0tDSElQX0RSTV9EUlZfSF8gKi8KCkkgdGhpbmsgZ2NjIHNob3VsZCBiZSBmaW5lIGlmIHlv
+dSByZW1vdmUgaWZkZWZzLiBVbnVzZWQgZXh0ZXJuCmRlY2xhcmF0aW9ucyBhcmUgaWdub3JlZCwg
+dW5sZXNzIHlvdSB1c2Ugc29tZSBwYXJhbm9pYyBzdGF0aWMgY2hlY2tlciwKYXJlbid0IHRoZXk/
+IEJ1dCB0aGlzIGlzIGFsc28gbWF0dGVyIG9mIHRhc3RlLgoKClJlZ2FyZHMKQW5kcnplagoKCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gaW5kZXggOTFm
+YmM3Yi4uMGRhNDQ0NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfdm9wX3JlZy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X3ZvcF9yZWcuYwo+IEBAIC00MDQsNyArNDA0LDcgQEAgc3RhdGljIGludCB2b3BfcmVtb3ZlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiAtc3Rh
+dGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgdm9wX3BsYXRmb3JtX2RyaXZlciA9IHsKPiArc3Ry
+dWN0IHBsYXRmb3JtX2RyaXZlciB2b3BfcGxhdGZvcm1fZHJpdmVyID0gewo+ICAJLnByb2JlID0g
+dm9wX3Byb2JlLAo+ICAJLnJlbW92ZSA9IHZvcF9yZW1vdmUsCj4gIAkuZHJpdmVyID0gewo+IEBA
+IC00MTIsOSArNDEyLDMgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgdm9wX3BsYXRm
+b3JtX2RyaXZlciA9IHsKPiAgCQkub2ZfbWF0Y2hfdGFibGUgPSBvZl9tYXRjaF9wdHIodm9wX2Ry
+aXZlcl9kdF9tYXRjaCksCj4gIAl9LAo+ICB9Owo+IC0KPiAtbW9kdWxlX3BsYXRmb3JtX2RyaXZl
+cih2b3BfcGxhdGZvcm1fZHJpdmVyKTsKPiAtCj4gLU1PRFVMRV9BVVRIT1IoIk1hcmsgWWFvIDxt
+YXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4iKTsKPiAtTU9EVUxFX0RFU0NSSVBUSU9OKCJST0NLQ0hJ
+UCBWT1AgRHJpdmVyIik7Cj4gLU1PRFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPiAKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
