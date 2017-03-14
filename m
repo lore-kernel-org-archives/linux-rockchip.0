@@ -1,321 +1,1747 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Refactor the component match logic.
-Date: Mon, 13 Mar 2017 17:06:22 -0400
-Message-ID: <20170313210621.GY20329@art_vandelay>
-References: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1488952694-30020-1-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+From: Vivek Gautam <vivek.gautam@codeaurora.org>
+Subject: [PATCH v3 2/2] phy: Group vendor specific phy drivers
+Date: Tue, 14 Mar 2017 11:44:40 +0530
+Message-ID: <1489472080-23711-2-git-send-email-vivek.gautam@codeaurora.org>
+References: <1489472080-23711-1-git-send-email-vivek.gautam@codeaurora.org>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1489472080-23711-1-git-send-email-vivek.gautam@codeaurora.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: kishon@ti.com
+Cc: Vivek Gautam <vivek.gautam@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Geert Uytterhoeven <geert+renesas@glider.be>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Guenter Roeck <linux@roeck-us.net>, Heiko Stuebner <heiko@sntech.de>, Viresh Kumar <viresh.kumar@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBNYXIgMDgsIDIwMTcgYXQgMDE6NTg6MTRQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBDdXJyZW50bHkgd2UgYXJlIGFkZGluZyBhbGwgY29tcG9uZW50cyBmcm9tIHRoZSBkdHMs
-IGlmIG9uZSBvZiB0aGVpcgo+IGRyaXZlcnMgYmVlbiBkaXNhYmxlZCwgd2Ugd291bGQgbm90IGJl
-IGFibGUgdG8gYnJpbmcgdXAgb3RoZXJzLgo+IAo+IFJlZmFjdG9yIGNvbXBvbmVudCBtYXRjaCBs
-b2dpYywgZm9sbG93IGV4eW5vcyBkcm0uCj4gCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8
-amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiAKPiAtLS0KPiAKPiAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICAgICAgfCAgMTAgKy0KPiAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgfCAgMTYgKy0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIHwgICA5ICstCj4gIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAgICAgICAgIHwgICA4ICstCj4gIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jICAgICAgICAgIHwgICA4ICstCj4g
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgIHwgIDEwICst
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICAgIHwgIDEw
-ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICAgIHwg
-MTU2ICsrKysrKysrKysrKysrKystLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5oICAgICB8ICAgNiArCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF92b3BfcmVnLmMgICAgIHwgICA4ICstCj4gIDEwIGZpbGVzIGNoYW5nZWQsIDEz
-MyBpbnNlcnRpb25zKCspLCAxMDggZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tj
-b25maWcKPiBpbmRleCAwZTRlYjg0Li41MGM0MWMwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tj
-b25maWcKPiBAQCAtMTMsNyArMTMsNyBAQCBjb25maWcgRFJNX1JPQ0tDSElQCj4gIAkgIElQIGZv
-dW5kIG9uIHRoZSBTb0MuCj4gIAo+ICBjb25maWcgUk9DS0NISVBfQU5BTE9HSVhfRFAKPiAtCXRy
-aXN0YXRlICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIGZvciBBbmFsb2dpeCBEUCBkcml2
-ZXIiCj4gKwlib29sICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIGZvciBBbmFsb2dpeCBE
-UCBkcml2ZXIiCj4gIAlkZXBlbmRzIG9uIERSTV9ST0NLQ0hJUAo+ICAJc2VsZWN0IERSTV9BTkFM
-T0dJWF9EUAo+ICAJaGVscAo+IEBAIC0yMiw3ICsyMiw3IEBAIGNvbmZpZyBST0NLQ0hJUF9BTkFM
-T0dJWF9EUAo+ICAJICBvbiBSSzMyODggYmFzZWQgU29DLCB5b3Ugc2hvdWxkIHNlbGV0IHRoaXMg
-b3B0aW9uLgo+ICAKPiAgY29uZmlnIFJPQ0tDSElQX0NETl9EUAo+IC0gICAgICAgIHRyaXN0YXRl
-ICJSb2NrY2hpcCBjZG4gRFAiCj4gKyAgICAgICAgYm9vbCAiUm9ja2NoaXAgY2RuIERQIgo+ICAg
-ICAgICAgIGRlcGVuZHMgb24gRFJNX1JPQ0tDSElQCj4gIAlkZXBlbmRzIG9uIEVYVENPTgo+ICAJ
-c2VsZWN0IFNORF9TT0NfSERNSV9DT0RFQyBpZiBTTkRfU09DCj4gQEAgLTMzLDcgKzMzLDcgQEAg
-Y29uZmlnIFJPQ0tDSElQX0NETl9EUAo+ICAJICBvcHRpb24uCj4gIAo+ICBjb25maWcgUk9DS0NI
-SVBfRFdfSERNSQo+IC0gICAgICAgIHRyaXN0YXRlICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNp
-b25zIGZvciBTeW5vcHN5cyBEVyBIRE1JIgo+ICsgICAgICAgIGJvb2wgIlJvY2tjaGlwIHNwZWNp
-ZmljIGV4dGVuc2lvbnMgZm9yIFN5bm9wc3lzIERXIEhETUkiCj4gICAgICAgICAgZGVwZW5kcyBv
-biBEUk1fUk9DS0NISVAKPiAgICAgICAgICBzZWxlY3QgRFJNX0RXX0hETUkKPiAgICAgICAgICBo
-ZWxwCj4gQEAgLTQzLDcgKzQzLDcgQEAgY29uZmlnIFJPQ0tDSElQX0RXX0hETUkKPiAgCSAgb3B0
-aW9uLgo+ICAKPiAgY29uZmlnIFJPQ0tDSElQX0RXX01JUElfRFNJCj4gLQl0cmlzdGF0ZSAiUm9j
-a2NoaXAgc3BlY2lmaWMgZXh0ZW5zaW9ucyBmb3IgU3lub3BzeXMgRFcgTUlQSSBEU0kiCj4gKwli
-b29sICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIGZvciBTeW5vcHN5cyBEVyBNSVBJIERT
-SSIKPiAgCWRlcGVuZHMgb24gRFJNX1JPQ0tDSElQCj4gIAlzZWxlY3QgRFJNX01JUElfRFNJCj4g
-IAloZWxwCj4gQEAgLTUzLDcgKzUzLDcgQEAgY29uZmlnIFJPQ0tDSElQX0RXX01JUElfRFNJCj4g
-IAkgb3B0aW9uLgo+ICAKPiAgY29uZmlnIFJPQ0tDSElQX0lOTk9fSERNSQo+IC0JdHJpc3RhdGUg
-IlJvY2tjaGlwIHNwZWNpZmljIGV4dGVuc2lvbnMgZm9yIElubm9zaWxpY29uIEhETUkiCj4gKwli
-b29sICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIGZvciBJbm5vc2lsaWNvbiBIRE1JIgo+
-ICAJZGVwZW5kcyBvbiBEUk1fUk9DS0NISVAKPiAgCWhlbHAKPiAgCSAgVGhpcyBzZWxlY3RzIHN1
-cHBvcnQgZm9yIFJvY2tjaGlwIFNvQyBzcGVjaWZpYyBleHRlbnNpb25zCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9NYWtlZmlsZQo+IGluZGV4IGM5MzFlMmEuLmZhOGRjOWQgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL01ha2VmaWxlCj4gQEAgLTMsMTQgKzMsMTQgQEAKPiAgIyBEaXJlY3QgUmVuZGVyaW5n
-IEluZnJhc3RydWN0dXJlIChEUkkpIGluIFhGcmVlODYgNC4xLjAgYW5kIGhpZ2hlci4KPiAgCj4g
-IHJvY2tjaGlwZHJtLXkgOj0gcm9ja2NoaXBfZHJtX2Rydi5vIHJvY2tjaGlwX2RybV9mYi5vIFwK
-PiAtCQlyb2NrY2hpcF9kcm1fZ2VtLm8gcm9ja2NoaXBfZHJtX3Bzci5vIHJvY2tjaGlwX2RybV92
-b3Aubwo+ICsJCXJvY2tjaGlwX2RybV9nZW0ubyByb2NrY2hpcF9kcm1fcHNyLm8gXAo+ICsJCXJv
-Y2tjaGlwX2RybV92b3AubyByb2NrY2hpcF92b3BfcmVnLm8KPiAgcm9ja2NoaXBkcm0tJChDT05G
-SUdfRFJNX0ZCREVWX0VNVUxBVElPTikgKz0gcm9ja2NoaXBfZHJtX2ZiZGV2Lm8KPiAgCj4gLW9i
-ai0kKENPTkZJR19ST0NLQ0hJUF9BTkFMT0dJWF9EUCkgKz0gYW5hbG9naXhfZHAtcm9ja2NoaXAu
-bwo+IC1vYmotJChDT05GSUdfUk9DS0NISVBfQ0ROX0RQKSArPSBjZG4tZHAubwo+IC1jZG4tZHAt
-b2JqcyA6PSBjZG4tZHAtY29yZS5vIGNkbi1kcC1yZWcubwo+IC1vYmotJChDT05GSUdfUk9DS0NI
-SVBfRFdfSERNSSkgKz0gZHdfaGRtaS1yb2NrY2hpcC5vCj4gLW9iai0kKENPTkZJR19ST0NLQ0hJ
-UF9EV19NSVBJX0RTSSkgKz0gZHctbWlwaS1kc2kubwo+IC1vYmotJChDT05GSUdfUk9DS0NISVBf
-SU5OT19IRE1JKSArPSBpbm5vX2hkbWkubwo+ICtyb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJ
-UF9BTkFMT0dJWF9EUCkgKz0gYW5hbG9naXhfZHAtcm9ja2NoaXAubwo+ICtyb2NrY2hpcGRybS0k
-KENPTkZJR19ST0NLQ0hJUF9DRE5fRFApICs9IGNkbi1kcC1jb3JlLm8gY2RuLWRwLXJlZy5vCj4g
-K3JvY2tjaGlwZHJtLSQoQ09ORklHX1JPQ0tDSElQX0RXX0hETUkpICs9IGR3X2hkbWktcm9ja2No
-aXAubwo+ICtyb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9EV19NSVBJX0RTSSkgKz0gZHct
-bWlwaS1kc2kubwo+ICtyb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9JTk5PX0hETUkpICs9
-IGlubm9faGRtaS5vCj4gIAo+IC1vYmotJChDT05GSUdfRFJNX1JPQ0tDSElQKSArPSByb2NrY2hp
-cGRybS5vIHJvY2tjaGlwX3ZvcF9yZWcubwo+ICtvYmotJChDT05GSUdfRFJNX1JPQ0tDSElQKSAr
-PSByb2NrY2hpcGRybS5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9h
-bmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4
-X2RwLXJvY2tjaGlwLmMKPiBpbmRleCA4NTQ4ZTgyLi45MWViZTVjIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBAQCAtNTA3LDcg
-KzUwNyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHJvY2tjaGlwX2RwX2R0
-X2lkc1tdID0gewo+ICB9Owo+ICBNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCByb2NrY2hpcF9kcF9k
-dF9pZHMpOwo+ICAKPiAtc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfZHBf
-ZHJpdmVyID0gewo+ICtzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlwX2RwX2RyaXZlciA9
-IHsKPiAgCS5wcm9iZSA9IHJvY2tjaGlwX2RwX3Byb2JlLAo+ICAJLnJlbW92ZSA9IHJvY2tjaGlw
-X2RwX3JlbW92ZSwKPiAgCS5kcml2ZXIgPSB7Cj4gQEAgLTUxNiwxMCArNTE2LDMgQEAgc3RhdGlj
-IHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfZHBfZHJpdmVyID0gewo+ICAJCSAgIC5v
-Zl9tYXRjaF90YWJsZSA9IG9mX21hdGNoX3B0cihyb2NrY2hpcF9kcF9kdF9pZHMpLAo+ICAJfSwK
-PiAgfTsKPiAtCj4gLW1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIocm9ja2NoaXBfZHBfZHJpdmVyKTsK
-PiAtCj4gLU1PRFVMRV9BVVRIT1IoIllha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4iKTsK
-PiAtTU9EVUxFX0FVVEhPUigiSmVmZiBjaGVuIDxqZWZmLmNoZW5Acm9jay1jaGlwcy5jb20+Iik7
-Cj4gLU1PRFVMRV9ERVNDUklQVElPTigiUm9ja2NoaXAgU3BlY2lmaWMgQW5hbG9naXgtRFAgRHJp
-dmVyIEV4dGVuc2lvbiIpOwo+IC1NT0RVTEVfTElDRU5TRSgiR1BMIHYyIik7Cj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBpbmRleCBmZDc5YTcwLi5lMTc5NmQwIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBAQCAtMTI0Myw3ICsxMjQz
-LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIGNkbl9kcF9wbV9vcHMgPSB7Cj4g
-IAkJCQljZG5fZHBfcmVzdW1lKQo+ICB9Owo+ICAKPiAtc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9k
-cml2ZXIgY2RuX2RwX2RyaXZlciA9IHsKPiArc3RydWN0IHBsYXRmb3JtX2RyaXZlciBjZG5fZHBf
-ZHJpdmVyID0gewo+ICAJLnByb2JlID0gY2RuX2RwX3Byb2JlLAo+ICAJLnJlbW92ZSA9IGNkbl9k
-cF9yZW1vdmUsCj4gIAkuc2h1dGRvd24gPSBjZG5fZHBfc2h1dGRvd24sCj4gQEAgLTEyNTQsOSAr
-MTI1NCwzIEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGNkbl9kcF9kcml2ZXIgPSB7
-Cj4gIAkJICAgLnBtID0gJmNkbl9kcF9wbV9vcHMsCj4gIAl9LAo+ICB9Owo+IC0KPiAtbW9kdWxl
-X3BsYXRmb3JtX2RyaXZlcihjZG5fZHBfZHJpdmVyKTsKPiAtCj4gLU1PRFVMRV9BVVRIT1IoIkNo
-cmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Iik7Cj4gLU1PRFVMRV9ERVNDUklQVElPTigi
-Y2RuIERQIERyaXZlciIpOwo+IC1NT0RVTEVfTElDRU5TRSgiR1BMIHYyIik7Cj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBpbmRleCBkOWFhMzgyLi42NWE0NzRmIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBAQCAtMTE2NSw3ICsxMTY1
-LDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
-ZSAqcGRldikKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgc3RydWN0IHBsYXRmb3Jt
-X2RyaXZlciBkd19taXBpX2RzaV9kcml2ZXIgPSB7Cj4gK3N0cnVjdCBwbGF0Zm9ybV9kcml2ZXIg
-ZHdfbWlwaV9kc2lfZHJpdmVyID0gewo+ICAJLnByb2JlCQk9IGR3X21pcGlfZHNpX3Byb2JlLAo+
-ICAJLnJlbW92ZQkJPSBkd19taXBpX2RzaV9yZW1vdmUsCj4gIAkuZHJpdmVyCQk9IHsKPiBAQCAt
-MTE3Myw5ICsxMTczLDMgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgZHdfbWlwaV9k
-c2lfZHJpdmVyID0gewo+ICAJCS5uYW1lCT0gRFJJVkVSX05BTUUsCj4gIAl9LAo+ICB9Owo+IC1t
-b2R1bGVfcGxhdGZvcm1fZHJpdmVyKGR3X21pcGlfZHNpX2RyaXZlcik7Cj4gLQo+IC1NT0RVTEVf
-REVTQ1JJUFRJT04oIlJPQ0tDSElQIE1JUEkgRFNJIGhvc3QgY29udHJvbGxlciBkcml2ZXIiKTsK
-PiAtTU9EVUxFX0FVVEhPUigiQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4iKTsKPiAt
-TU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+IC1NT0RVTEVfQUxJQVMoInBsYXRmb3JtOiIgRFJJVkVS
-X05BTUUpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1y
-b2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+
-IGluZGV4IGE2ZDRhMDIuLjk3NmVhNzkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9kd19oZG1pLXJvY2tjaGlwLmMKPiBAQCAtMzI2LDcgKzMyNiw3IEBAIHN0YXRpYyBpbnQgZHdf
-aGRtaV9yb2NrY2hpcF9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXJl
-dHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19oZG1p
-X3JvY2tjaGlwX3BsdGZtX2RyaXZlciA9IHsKPiArc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19o
-ZG1pX3JvY2tjaGlwX3BsdGZtX2RyaXZlciA9IHsKPiAgCS5wcm9iZSAgPSBkd19oZG1pX3JvY2tj
-aGlwX3Byb2JlLAo+ICAJLnJlbW92ZSA9IGR3X2hkbWlfcm9ja2NoaXBfcmVtb3ZlLAo+ICAJLmRy
-aXZlciA9IHsKPiBAQCAtMzM0LDExICszMzQsMyBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2Ry
-aXZlciBkd19oZG1pX3JvY2tjaGlwX3BsdGZtX2RyaXZlciA9IHsKPiAgCQkub2ZfbWF0Y2hfdGFi
-bGUgPSBkd19oZG1pX3JvY2tjaGlwX2R0X2lkcywKPiAgCX0sCj4gIH07Cj4gLQo+IC1tb2R1bGVf
-cGxhdGZvcm1fZHJpdmVyKGR3X2hkbWlfcm9ja2NoaXBfcGx0Zm1fZHJpdmVyKTsKPiAtCj4gLU1P
-RFVMRV9BVVRIT1IoIkFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4iKTsKPiAtTU9E
-VUxFX0FVVEhPUigiWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPiIpOwo+IC1NT0RVTEVf
-REVTQ1JJUFRJT04oIlJvY2tjaGlwIFNwZWNpZmljIERXLUhETUkgRHJpdmVyIEV4dGVuc2lvbiIp
-Owo+IC1NT0RVTEVfTElDRU5TRSgiR1BMIik7Cj4gLU1PRFVMRV9BTElBUygicGxhdGZvcm06ZHdo
-ZG1pLXJvY2tjaGlwIik7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9p
-bm5vX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+IGluZGV4
-IDAwNjI2MGQuLjdkOWI3NWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2lubm9faGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5j
-Cj4gQEAgLTkyMyw3ICs5MjMsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBp
-bm5vX2hkbWlfZHRfaWRzW10gPSB7Cj4gIH07Cj4gIE1PRFVMRV9ERVZJQ0VfVEFCTEUob2YsIGlu
-bm9faGRtaV9kdF9pZHMpOwo+ICAKPiAtc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgaW5u
-b19oZG1pX2RyaXZlciA9IHsKPiArc3RydWN0IHBsYXRmb3JtX2RyaXZlciBpbm5vX2hkbWlfZHJp
-dmVyID0gewo+ICAJLnByb2JlICA9IGlubm9faGRtaV9wcm9iZSwKPiAgCS5yZW1vdmUgPSBpbm5v
-X2hkbWlfcmVtb3ZlLAo+ICAJLmRyaXZlciA9IHsKPiBAQCAtOTMxLDExICs5MzEsMyBAQCBzdGF0
-aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBpbm5vX2hkbWlfZHJpdmVyID0gewo+ICAJCS5vZl9t
-YXRjaF90YWJsZSA9IGlubm9faGRtaV9kdF9pZHMsCj4gIAl9LAo+ICB9Owo+IC0KPiAtbW9kdWxl
-X3BsYXRmb3JtX2RyaXZlcihpbm5vX2hkbWlfZHJpdmVyKTsKPiAtCj4gLU1PRFVMRV9BVVRIT1Io
-IlpoZW5nIFlhbmcgPHpoZW5neWFuZ0Byb2NrLWNoaXBzLmNvbT4iKTsKPiAtTU9EVUxFX0FVVEhP
-UigiWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPiIpOwo+IC1NT0RVTEVfREVTQ1JJUFRJ
-T04oIlJvY2tjaGlwIFNwZWNpZmljIElOTk8tSERNSSBEcml2ZXIiKTsKPiAtTU9EVUxFX0xJQ0VO
-U0UoIkdQTCB2MiIpOwo+IC1NT0RVTEVfQUxJQVMoInBsYXRmb3JtOmlubm9oZG1pLXJvY2tjaGlw
-Iik7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-ZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5k
-ZXggYjM2MGU2Mi4uYzBkYWUzYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYwo+IEBAIC0zNTYsMzQgKzM1Niw0OSBAQCBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IGRldl9wbV9vcHMgcm9ja2NoaXBfZHJtX3BtX29wcyA9IHsKPiAgCQkJCXJvY2tjaGlwX2Ry
-bV9zeXNfcmVzdW1lKQo+ICB9Owo+ICAKPiAtc3RhdGljIGludCBjb21wYXJlX29mKHN0cnVjdCBk
-ZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiAtewo+IC0Jc3RydWN0IGRldmljZV9ub2RlICpucCA9
-IGRhdGE7Cj4gK3N0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyICpyb2NrY2hpcF9kcm1fY29t
-cF9kcnZzW10gPSB7Cj4gKwkmdm9wX3BsYXRmb3JtX2RyaXZlciwKPiArI2lmZGVmIENPTkZJR19S
-T0NLQ0hJUF9BTkFMT0dJWF9EUAo+ICsJJnJvY2tjaGlwX2RwX2RyaXZlciwKPiArI2VuZGlmCj4g
-KyNpZmRlZiBDT05GSUdfUk9DS0NISVBfQ0ROX0RQCj4gKwkmY2RuX2RwX2RyaXZlciwKPiArI2Vu
-ZGlmCj4gKyNpZmRlZiBDT05GSUdfUk9DS0NISVBfRFdfSERNSQo+ICsJJmR3X2hkbWlfcm9ja2No
-aXBfcGx0Zm1fZHJpdmVyLAo+ICsjZW5kaWYKPiArI2lmZGVmIENPTkZJR19ST0NLQ0hJUF9EV19N
-SVBJX0RTSQo+ICsJJmR3X21pcGlfZHNpX2RyaXZlciwKPiArI2VuZGlmCj4gKyNpZmRlZiBDT05G
-SUdfUk9DS0NISVBfSU5OT19IRE1JCj4gKwkmaW5ub19oZG1pX2RyaXZlciwKPiArI2VuZGlmCj4g
-K307Cj4gIAo+IC0JcmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBucDsKPiArc3RhdGljIGludCBjb21w
-YXJlX2RldihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4gK3sKPiArCXJldHVybiBk
-ZXYgPT0gKHN0cnVjdCBkZXZpY2UgKilkYXRhOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCByb2Nr
-Y2hpcF9hZGRfZW5kcG9pbnRzKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAtCQkJCSAgIHN0cnVjdCBj
-b21wb25lbnRfbWF0Y2ggKiptYXRjaCwKPiAtCQkJCSAgIHN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9y
-dCkKPiArc3RhdGljIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKnJvY2tjaGlwX2RybV9tYXRjaF9h
-ZGQoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKmVwLCAq
-cmVtb3RlOwo+ICsJc3RydWN0IGNvbXBvbmVudF9tYXRjaCAqbWF0Y2ggPSBOVUxMOwo+ICsJaW50
-IGk7Cj4gIAo+IC0JZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShwb3J0LCBlcCkgewo+IC0JCXJlbW90
-ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOwo+IC0JCWlmICghcmVtb3Rl
-IHx8ICFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKHJlbW90ZSkpIHsKPiAtCQkJb2Zfbm9kZV9wdXQo
-cmVtb3RlKTsKPiAtCQkJY29udGludWU7Cj4gLQkJfSBlbHNlIGlmICghb2ZfZGV2aWNlX2lzX2F2
-YWlsYWJsZShyZW1vdGUtPnBhcmVudCkpIHsKPiAtCQkJZGV2X3dhcm4oZGV2LCAicGFyZW50IGRl
-dmljZSBvZiAlcyBpcyBub3QgYXZhaWxhYmxlXG4iLAo+IC0JCQkJIHJlbW90ZS0+ZnVsbF9uYW1l
-KTsKPiAtCQkJb2Zfbm9kZV9wdXQocmVtb3RlKTsKPiAtCQkJY29udGludWU7Cj4gLQkJfQo+ICsJ
-Zm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUocm9ja2NoaXBfZHJtX2NvbXBfZHJ2cyk7IGkrKykg
-ewo+ICsJCXN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgKmRydiA9IHJvY2tjaGlwX2RybV9jb21wX2Ry
-dnNbaV07Cj4gKwkJc3RydWN0IGRldmljZSAqcCA9IE5VTEwsICpkOwo+ICAKPiAtCQlkcm1fb2Zf
-Y29tcG9uZW50X21hdGNoX2FkZChkZXYsIG1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwo+IC0J
-CW9mX25vZGVfcHV0KHJlbW90ZSk7Cj4gKwkJd2hpbGUgKChkID0gYnVzX2ZpbmRfZGV2aWNlKCZw
-bGF0Zm9ybV9idXNfdHlwZSwgcCwgJmRydi0+ZHJpdmVyLAo+ICsJCQkJCSAgICAodm9pZCAqKXBs
-YXRmb3JtX2J1c190eXBlLm1hdGNoKSkpIHsKPiArCQkJcHV0X2RldmljZShwKTsKPiArCQkJY29t
-cG9uZW50X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9kZXYsIGQpOwo+ICsJCQlwID0g
-ZDsKPiArCQl9Cj4gKwkJcHV0X2RldmljZShwKTsKCkkgdGhpbmsgeW91IGNvdWxkIG1vdmUgdGhl
-IGJ1c19maW5kX2RldmljZSgpIGluc2lkZSB0aGUgbG9vcCBhbmQganVzdCBoYXZlCnB1dF9kZXZp
-Y2UgaW4gb25lIHBsYWNlLiBJIHNwZW50IG1vcmUgdGltZSB0aGFuIEkgd291bGQgaGF2ZSBsaWtl
-ZCB0cnlpbmcgdG8KcmF0aW9uYWxpemUgd2h5IHRoZXJlIHdhcyBhbiBleHRyYSBwdXQuCgo+ICAJ
-fQo+ICsKPiArCXJldHVybiBtYXRjaCA/OiBFUlJfUFRSKC1FTk9ERVYpOwo+ICB9Cj4gIAo+ICBz
-dGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlwX2RybV9vcHMg
-PSB7Cj4gQEAgLTM5MSwyMSArNDA2LDE2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50
-X21hc3Rlcl9vcHMgcm9ja2NoaXBfZHJtX29wcyA9IHsKPiAgCS51bmJpbmQgPSByb2NrY2hpcF9k
-cm1fdW5iaW5kLAo+ICB9Owo+ICAKPiAtc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1f
-cHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiArc3RhdGljIGludCByb2NrY2hp
-cF9kcm1fcGxhdGZvcm1fb2ZfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gLQlzdHJ1
-Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+IC0Jc3RydWN0IGNvbXBvbmVudF9tYXRjaCAq
-bWF0Y2ggPSBOVUxMOwo+ICAJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsK
-PiAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydDsKPiArCWJvb2wgZm91bmQgPSBmYWxzZTsKPiAg
-CWludCBpOwo+ICAKPiAgCWlmICghbnApCj4gIAkJcmV0dXJuIC1FTk9ERVY7Cj4gLQkvKgo+IC0J
-ICogQmluZCB0aGUgY3J0YyBwb3J0cyBmaXJzdCwgc28gdGhhdAo+IC0JICogZHJtX29mX2ZpbmRf
-cG9zc2libGVfY3J0Y3MgY2FsbGVkIGZyb20gZW5jb2RlciAuYmluZCBjYWxsYmFja3MKPiAtCSAq
-IHdvcmtzIGFzIGV4cGVjdGVkLgo+IC0JICovCj4gKwo+ICAJZm9yIChpID0gMDs7IGkrKykgewo+
-ICAJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqaW9tbXU7Cj4gIAo+IEBAIC00MjksOSArNDM5LDkgQEAg
-c3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKPiAgCQkJaXNfc3VwcG9ydF9pb21tdSA9IGZhbHNlOwo+ICAJCX0KPiAgCj4g
-KwkJZm91bmQgPSB0cnVlOwo+ICsKPiAgCQlvZl9ub2RlX3B1dChpb21tdSk7Cj4gLQkJZHJtX29m
-X2NvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsCj4gLQkJCQkJICAg
-cG9ydC0+cGFyZW50KTsKPiAgCQlvZl9ub2RlX3B1dChwb3J0KTsKPiAgCX0KPiAgCj4gQEAgLTQ0
-MCwyNyArNDUwLDI3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FTk9ERVY7Cj4gIAl9Cj4g
-IAo+IC0JaWYgKCFtYXRjaCkgewo+ICsJaWYgKCFmb3VuZCkgewo+ICAJCWRldl9lcnIoZGV2LCAi
-Tm8gYXZhaWxhYmxlIHZvcCBmb3VuZCBmb3IgZGlzcGxheS1zdWJzeXN0ZW0uXG4iKTsKPiAgCQly
-ZXR1cm4gLUVOT0RFVjsKPiAgCX0KPiAtCS8qCj4gLQkgKiBGb3IgZWFjaCBib3VuZCBjcnRjLCBi
-aW5kIHRoZSBlbmNvZGVycyBhdHRhY2hlZCB0byBpdHMKPiAtCSAqIHJlbW90ZSBlbmRwb2ludC4K
-PiAtCSAqLwo+IC0JZm9yIChpID0gMDs7IGkrKykgewo+IC0JCXBvcnQgPSBvZl9wYXJzZV9waGFu
-ZGxlKG5wLCAicG9ydHMiLCBpKTsKPiAtCQlpZiAoIXBvcnQpCj4gLQkJCWJyZWFrOwo+ICAKPiAt
-CQlpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50KSkgewo+IC0JCQlvZl9u
-b2RlX3B1dChwb3J0KTsKPiAtCQkJY29udGludWU7Cj4gLQkJfQo+ICsJcmV0dXJuIDA7Cj4gK30K
-PiAgCj4gLQkJcm9ja2NoaXBfYWRkX2VuZHBvaW50cyhkZXYsICZtYXRjaCwgcG9ydCk7Cj4gLQkJ
-b2Zfbm9kZV9wdXQocG9ydCk7Cj4gLQl9Cj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRm
-b3JtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gK3sKPiArCXN0cnVjdCBk
-ZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gKwlzdHJ1Y3QgY29tcG9uZW50X21hdGNoICptYXRj
-aCA9IE5VTEw7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCXJldCA9IHJvY2tjaGlwX2RybV9wbGF0Zm9y
-bV9vZl9wcm9iZShkZXYpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsKPiArCW1h
-dGNoID0gcm9ja2NoaXBfZHJtX21hdGNoX2FkZChkZXYpOwo+ICsJaWYgKElTX0VSUihtYXRjaCkp
-Cj4gKwkJcmV0dXJuIFBUUl9FUlIobWF0Y2gpOwo+ICAKPiAgCXJldHVybiBjb21wb25lbnRfbWFz
-dGVyX2FkZF93aXRoX21hdGNoKGRldiwgJnJvY2tjaGlwX2RybV9vcHMsIG1hdGNoKTsKPiAgfQo+
-IEBAIC00ODgsNyArNDk4LDU3IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tj
-aGlwX2RybV9wbGF0Zm9ybV9kcml2ZXIgPSB7Cj4gIAl9LAo+ICB9Owo+ICAKPiAtbW9kdWxlX3Bs
-YXRmb3JtX2RyaXZlcihyb2NrY2hpcF9kcm1fcGxhdGZvcm1fZHJpdmVyKTsKPiArc3RhdGljIHZv
-aWQgcm9ja2NoaXBfZHJtX3VucmVnaXN0ZXJfZHJpdmVycyh2b2lkKQo+ICt7Cj4gKwlpbnQgaTsK
-PiArCj4gKwlmb3IgKGkgPSBBUlJBWV9TSVpFKHJvY2tjaGlwX2RybV9jb21wX2RydnMpIC0gMTsg
-aSA+PSAwOyBpLS0pCj4gKwkJcGxhdGZvcm1fZHJpdmVyX3VucmVnaXN0ZXIocm9ja2NoaXBfZHJt
-X2NvbXBfZHJ2c1tpXSk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3JlZ2lz
-dGVyX2RyaXZlcnModm9pZCkKPiArewo+ICsJaW50IGksIHJldDsKPiArCj4gKwlmb3IgKGkgPSAw
-OyBpIDwgQVJSQVlfU0laRShyb2NrY2hpcF9kcm1fY29tcF9kcnZzKTsgaSsrKSB7Cj4gKwkJcmV0
-ID0gcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKHJvY2tjaGlwX2RybV9jb21wX2RydnNbaV0pOwo+
-ICsJCWlmIChyZXQpCj4gKwkJCWdvdG8gZmFpbDsKPiArCX0KPiArCXJldHVybiAwOwo+ICtmYWls
-Ogo+ICsJcm9ja2NoaXBfZHJtX3VucmVnaXN0ZXJfZHJpdmVycygpOwoKQXJlIHlvdSBzdXJlIHlv
-dSBjYW4gY2FsbCB0aGlzIGZvciB0aGUgZHJpdmVycyB0aGF0IGhhdmUgbm90IHlldCBiZWVuCnJl
-Z2lzdGVyZWQ/IEkgdG9vayBhIHF1aWNrIGxvb2sgaW4gdGhlIHBsYXRmb3JtX2RyaXZlciBjb2Rl
-IGFuZCBpdCBzZWVtcyBsaWtlCnRoaXMgbWlnaHQgY2F1c2UgYSBkZXZpY2UgcmVmZXJlbmNlIGlt
-YmFsYW5jZSwgYXQgdGhlIGxlYXN0LgoKPiArCXJldHVybiByZXQ7Cj4gK30KPiArCj4gK3N0YXRp
-YyBpbnQgX19pbml0IHJvY2tjaGlwX2RybV9pbml0KHZvaWQpCj4gK3sKPiArCWludCByZXQ7Cj4g
-Kwo+ICsJcmV0ID0gcm9ja2NoaXBfZHJtX3JlZ2lzdGVyX2RyaXZlcnMoKTsKPiArCWlmIChyZXQp
-Cj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlyZXQgPSBwbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIo
-JnJvY2tjaGlwX2RybV9wbGF0Zm9ybV9kcml2ZXIpOwo+ICsJaWYgKHJldCkKPiArCQlnb3RvIGVy
-cl91bnJlZ19kcml2ZXJzOwo+ICsKPiArCXJldHVybiAwOwo+ICsKPiArZXJyX3VucmVnX2RyaXZl
-cnM6Cj4gKwlyb2NrY2hpcF9kcm1fdW5yZWdpc3Rlcl9kcml2ZXJzKCk7Cj4gKwlyZXR1cm4gcmV0
-Owo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBfX2V4aXQgcm9ja2NoaXBfZHJtX2Zpbmkodm9pZCkK
-PiArewo+ICsJcGxhdGZvcm1fZHJpdmVyX3VucmVnaXN0ZXIoJnJvY2tjaGlwX2RybV9wbGF0Zm9y
-bV9kcml2ZXIpOwo+ICsKPiArCXJvY2tjaGlwX2RybV91bnJlZ2lzdGVyX2RyaXZlcnMoKTsKPiAr
-fQo+ICsKPiArbW9kdWxlX2luaXQocm9ja2NoaXBfZHJtX2luaXQpOwo+ICttb2R1bGVfZXhpdChy
-b2NrY2hpcF9kcm1fZmluaSk7Cj4gIAo+ICBNT0RVTEVfQVVUSE9SKCJNYXJrIFlhbyA8bWFyay55
-YW9Acm9jay1jaGlwcy5jb20+Iik7Cj4gIE1PRFVMRV9ERVNDUklQVElPTigiUk9DS0NISVAgRFJN
-IERyaXZlciIpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-aAo+IGluZGV4IGFkYzM5MzAuLmY0NmUxZDAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBAQCAtNzksNCArNzksMTAgQEAgdm9pZCByb2NrY2hp
-cF9kcm1fZG1hX2RldGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gIGlu
-dCByb2NrY2hpcF9kcm1fd2FpdF9saW5lX2ZsYWcoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNp
-Z25lZCBpbnQgbGluZV9udW0sCj4gIAkJCQl1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KTsKPiAgCj4g
-K2V4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGNkbl9kcF9kcml2ZXI7Cj4gK2V4dGVybiBz
-dHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGR3X2hkbWlfcm9ja2NoaXBfcGx0Zm1fZHJpdmVyOwo+ICtl
-eHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19taXBpX2RzaV9kcml2ZXI7Cj4gK2V4dGVy
-biBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGlubm9faGRtaV9kcml2ZXI7Cj4gK2V4dGVybiBzdHJ1
-Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlwX2RwX2RyaXZlcjsKPiArZXh0ZXJuIHN0cnVjdCBw
-bGF0Zm9ybV9kcml2ZXIgdm9wX3BsYXRmb3JtX2RyaXZlcjsKClNob3VsZCB0aGVzZSBiZSBwcm90
-ZWN0ZWQgYnkgI2lmZGVmIENPTkZJR18qPwoKPiAgI2VuZGlmIC8qIF9ST0NLQ0hJUF9EUk1fRFJW
-X0hfICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
-b3BfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4g
-aW5kZXggOTFmYmM3Yi4uMGRhNDQ0NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX3ZvcF9yZWcuYwo+IEBAIC00MDQsNyArNDA0LDcgQEAgc3RhdGljIGludCB2b3Bf
-cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlyZXR1cm4gMDsKPiAgfQo+
-ICAKPiAtc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgdm9wX3BsYXRmb3JtX2RyaXZlciA9
-IHsKPiArc3RydWN0IHBsYXRmb3JtX2RyaXZlciB2b3BfcGxhdGZvcm1fZHJpdmVyID0gewo+ICAJ
-LnByb2JlID0gdm9wX3Byb2JlLAo+ICAJLnJlbW92ZSA9IHZvcF9yZW1vdmUsCj4gIAkuZHJpdmVy
-ID0gewo+IEBAIC00MTIsOSArNDEyLDMgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIg
-dm9wX3BsYXRmb3JtX2RyaXZlciA9IHsKPiAgCQkub2ZfbWF0Y2hfdGFibGUgPSBvZl9tYXRjaF9w
-dHIodm9wX2RyaXZlcl9kdF9tYXRjaCksCj4gIAl9LAo+ICB9Owo+IC0KPiAtbW9kdWxlX3BsYXRm
-b3JtX2RyaXZlcih2b3BfcGxhdGZvcm1fZHJpdmVyKTsKPiAtCj4gLU1PRFVMRV9BVVRIT1IoIk1h
-cmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4iKTsKPiAtTU9EVUxFX0RFU0NSSVBUSU9O
-KCJST0NLQ0hJUCBWT1AgRHJpdmVyIik7Cj4gLU1PRFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPiAt
-LSAKPiAyLjEuNAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+Adding vendor specific directories in phy to group
+phy drivers under their respective vendor umbrella.
+
+Also updated the MAINTAINERS file to reflect the correct
+directory structure for phy drivers.
+
+Signed-off-by: Vivek Gautam <vivek.gautam@codeaurora.org>
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: David S. Miller <davem@davemloft.net>
+Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+Cc: Guenter Roeck <linux@roeck-us.net>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: Chen-Yu Tsai <wens@csie.org>
+Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-omap@vger.kernel.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-usb@vger.kernel.org
+---
+
+Hi Heiko, Viresh,
+It's been a year since the last version of this patch was posted.
+Kishon has agreed to pull this change now. I am carrying forward
+your Acks since there are no functional changes.
+I have taken care of the drivers that were added/removed since
+the last version.
+Please feel free to jump in if you have any concerns.
+
+Changes since v2
+ - Rebased on linux-phy/next.
+ - Took care of drivers added/removed for each vendors since v2.
+ - Updated the 'Signed-off-by' tag with my current email id.
+
+Changes from v1:
+ - Updated the MAINTAINERS file to reflect the same change
+   in directory structure.
+ - Removed PHY_PLAT config as pointed out by Kishon.
+   So we don't require the second patch in the v1 of this series:
+   [PATCH 2/2] arm: mach-spear: Enable PHY_PLAT to meet dependency
+ - Renamed sunxi --> allwinner; rcar --> renesas.
+ - Fixed error coming with qcom Makefile.
+
+* Build tested multi_v7_defconfig.
+* Build tested arm64 defconfig with all the involved configs enabled.
+
+ MAINTAINERS                                        |  18 +-
+ drivers/phy/Kconfig                                | 471 +--------------------
+ drivers/phy/Makefile                               |  67 +--
+ drivers/phy/allwinner/Kconfig                      |  31 ++
+ drivers/phy/allwinner/Makefile                     |   2 +
+ drivers/phy/{ => allwinner}/phy-sun4i-usb.c        |   0
+ drivers/phy/{ => allwinner}/phy-sun9i-usb.c        |   0
+ drivers/phy/broadcom/Kconfig                       |  64 +++
+ drivers/phy/broadcom/Makefile                      |   7 +
+ drivers/phy/{ => broadcom}/phy-bcm-cygnus-pcie.c   |   0
+ drivers/phy/{ => broadcom}/phy-bcm-kona-usb2.c     |   0
+ drivers/phy/{ => broadcom}/phy-bcm-ns-usb2.c       |   0
+ drivers/phy/{ => broadcom}/phy-bcm-ns-usb3.c       |   0
+ drivers/phy/{ => broadcom}/phy-bcm-ns2-pcie.c      |   0
+ drivers/phy/{ => broadcom}/phy-bcm-nsp-usb3.c      |   0
+ drivers/phy/{ => broadcom}/phy-brcm-sata.c         |   0
+ drivers/phy/hisilicon/Kconfig                      |  20 +
+ drivers/phy/hisilicon/Makefile                     |   2 +
+ drivers/phy/{ => hisilicon}/phy-hi6220-usb.c       |   0
+ drivers/phy/{ => hisilicon}/phy-hix5hd2-sata.c     |   0
+ drivers/phy/marvell/Kconfig                        |  50 +++
+ drivers/phy/marvell/Makefile                       |   6 +
+ drivers/phy/{ => marvell}/phy-armada375-usb2.c     |   0
+ drivers/phy/{ => marvell}/phy-berlin-sata.c        |   0
+ drivers/phy/{ => marvell}/phy-berlin-usb.c         |   0
+ drivers/phy/{ => marvell}/phy-mvebu-sata.c         |   0
+ drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c      |   0
+ drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c      |   0
+ drivers/phy/qualcomm/Kconfig                       |  38 ++
+ drivers/phy/qualcomm/Makefile                      |   7 +
+ drivers/phy/{ => qualcomm}/phy-qcom-apq8064-sata.c |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ipq806x-sata.c |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs-i.h        |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.c |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.h |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.c |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.h |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-ufs.c          |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-usb-hs.c       |   0
+ drivers/phy/{ => qualcomm}/phy-qcom-usb-hsic.c     |   0
+ drivers/phy/renesas/Kconfig                        |  17 +
+ drivers/phy/renesas/Makefile                       |   2 +
+ drivers/phy/{ => renesas}/phy-rcar-gen2.c          |   0
+ drivers/phy/{ => renesas}/phy-rcar-gen3-usb2.c     |   0
+ drivers/phy/rockchip/Kconfig                       |  51 +++
+ drivers/phy/rockchip/Makefile                      |   6 +
+ drivers/phy/{ => rockchip}/phy-rockchip-dp.c       |   0
+ drivers/phy/{ => rockchip}/phy-rockchip-emmc.c     |   0
+ .../phy/{ => rockchip}/phy-rockchip-inno-usb2.c    |   0
+ drivers/phy/{ => rockchip}/phy-rockchip-pcie.c     |   0
+ drivers/phy/{ => rockchip}/phy-rockchip-typec.c    |   0
+ drivers/phy/{ => rockchip}/phy-rockchip-usb.c      |   0
+ drivers/phy/samsung/Kconfig                        |  96 +++++
+ drivers/phy/samsung/Makefile                       |  11 +
+ drivers/phy/{ => samsung}/phy-exynos-dp-video.c    |   0
+ drivers/phy/{ => samsung}/phy-exynos-mipi-video.c  |   0
+ drivers/phy/{ => samsung}/phy-exynos-pcie.c        |   0
+ drivers/phy/{ => samsung}/phy-exynos4210-usb2.c    |   0
+ drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c    |   0
+ drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c     |   0
+ drivers/phy/{ => samsung}/phy-exynos5250-sata.c    |   0
+ drivers/phy/{ => samsung}/phy-exynos5250-usb2.c    |   0
+ drivers/phy/{ => samsung}/phy-s5pv210-usb2.c       |   0
+ drivers/phy/{ => samsung}/phy-samsung-usb2.c       |   0
+ drivers/phy/{ => samsung}/phy-samsung-usb2.h       |   0
+ drivers/phy/st/Kconfig                             |  33 ++
+ drivers/phy/st/Makefile                            |   4 +
+ drivers/phy/{ => st}/phy-miphy28lp.c               |   0
+ drivers/phy/{ => st}/phy-spear1310-miphy.c         |   0
+ drivers/phy/{ => st}/phy-spear1340-miphy.c         |   0
+ drivers/phy/{ => st}/phy-stih407-usb.c             |   0
+ drivers/phy/ti/Kconfig                             |  78 ++++
+ drivers/phy/ti/Makefile                            |   7 +
+ drivers/phy/{ => ti}/phy-da8xx-usb.c               |   0
+ drivers/phy/{ => ti}/phy-dm816x-usb.c              |   0
+ drivers/phy/{ => ti}/phy-omap-control.c            |   0
+ drivers/phy/{ => ti}/phy-omap-usb2.c               |   0
+ drivers/phy/{ => ti}/phy-ti-pipe3.c                |   0
+ drivers/phy/{ => ti}/phy-tusb1210.c                |   0
+ drivers/phy/{ => ti}/phy-twl4030-usb.c             |   0
+ 80 files changed, 567 insertions(+), 521 deletions(-)
+ create mode 100644 drivers/phy/allwinner/Kconfig
+ create mode 100644 drivers/phy/allwinner/Makefile
+ rename drivers/phy/{ => allwinner}/phy-sun4i-usb.c (100%)
+ rename drivers/phy/{ => allwinner}/phy-sun9i-usb.c (100%)
+ create mode 100644 drivers/phy/broadcom/Kconfig
+ create mode 100644 drivers/phy/broadcom/Makefile
+ rename drivers/phy/{ => broadcom}/phy-bcm-cygnus-pcie.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-bcm-kona-usb2.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-bcm-ns-usb2.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-bcm-ns-usb3.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-bcm-ns2-pcie.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-bcm-nsp-usb3.c (100%)
+ rename drivers/phy/{ => broadcom}/phy-brcm-sata.c (100%)
+ create mode 100644 drivers/phy/hisilicon/Kconfig
+ create mode 100644 drivers/phy/hisilicon/Makefile
+ rename drivers/phy/{ => hisilicon}/phy-hi6220-usb.c (100%)
+ rename drivers/phy/{ => hisilicon}/phy-hix5hd2-sata.c (100%)
+ create mode 100644 drivers/phy/marvell/Kconfig
+ create mode 100644 drivers/phy/marvell/Makefile
+ rename drivers/phy/{ => marvell}/phy-armada375-usb2.c (100%)
+ rename drivers/phy/{ => marvell}/phy-berlin-sata.c (100%)
+ rename drivers/phy/{ => marvell}/phy-berlin-usb.c (100%)
+ rename drivers/phy/{ => marvell}/phy-mvebu-sata.c (100%)
+ rename drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c (100%)
+ rename drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c (100%)
+ create mode 100644 drivers/phy/qualcomm/Kconfig
+ create mode 100644 drivers/phy/qualcomm/Makefile
+ rename drivers/phy/{ => qualcomm}/phy-qcom-apq8064-sata.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ipq806x-sata.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-i.h (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-14nm.h (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs-qmp-20nm.h (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-ufs.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-usb-hs.c (100%)
+ rename drivers/phy/{ => qualcomm}/phy-qcom-usb-hsic.c (100%)
+ create mode 100644 drivers/phy/renesas/Kconfig
+ create mode 100644 drivers/phy/renesas/Makefile
+ rename drivers/phy/{ => renesas}/phy-rcar-gen2.c (100%)
+ rename drivers/phy/{ => renesas}/phy-rcar-gen3-usb2.c (100%)
+ create mode 100644 drivers/phy/rockchip/Kconfig
+ create mode 100644 drivers/phy/rockchip/Makefile
+ rename drivers/phy/{ => rockchip}/phy-rockchip-dp.c (100%)
+ rename drivers/phy/{ => rockchip}/phy-rockchip-emmc.c (100%)
+ rename drivers/phy/{ => rockchip}/phy-rockchip-inno-usb2.c (100%)
+ rename drivers/phy/{ => rockchip}/phy-rockchip-pcie.c (100%)
+ rename drivers/phy/{ => rockchip}/phy-rockchip-typec.c (100%)
+ rename drivers/phy/{ => rockchip}/phy-rockchip-usb.c (100%)
+ create mode 100644 drivers/phy/samsung/Kconfig
+ create mode 100644 drivers/phy/samsung/Makefile
+ rename drivers/phy/{ => samsung}/phy-exynos-dp-video.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos-mipi-video.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos-pcie.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos4210-usb2.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos5250-sata.c (100%)
+ rename drivers/phy/{ => samsung}/phy-exynos5250-usb2.c (100%)
+ rename drivers/phy/{ => samsung}/phy-s5pv210-usb2.c (100%)
+ rename drivers/phy/{ => samsung}/phy-samsung-usb2.c (100%)
+ rename drivers/phy/{ => samsung}/phy-samsung-usb2.h (100%)
+ create mode 100644 drivers/phy/st/Kconfig
+ create mode 100644 drivers/phy/st/Makefile
+ rename drivers/phy/{ => st}/phy-miphy28lp.c (100%)
+ rename drivers/phy/{ => st}/phy-spear1310-miphy.c (100%)
+ rename drivers/phy/{ => st}/phy-spear1340-miphy.c (100%)
+ rename drivers/phy/{ => st}/phy-stih407-usb.c (100%)
+ create mode 100644 drivers/phy/ti/Kconfig
+ create mode 100644 drivers/phy/ti/Makefile
+ rename drivers/phy/{ => ti}/phy-da8xx-usb.c (100%)
+ rename drivers/phy/{ => ti}/phy-dm816x-usb.c (100%)
+ rename drivers/phy/{ => ti}/phy-omap-control.c (100%)
+ rename drivers/phy/{ => ti}/phy-omap-usb2.c (100%)
+ rename drivers/phy/{ => ti}/phy-ti-pipe3.c (100%)
+ rename drivers/phy/{ => ti}/phy-tusb1210.c (100%)
+ rename drivers/phy/{ => ti}/phy-twl4030-usb.c (100%)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c776906f67a9..22583a160fa5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1814,8 +1814,8 @@ F:	drivers/i2c/busses/i2c-st.c
+ F:	drivers/media/rc/st_rc.c
+ F:	drivers/media/platform/sti/c8sectpfe/
+ F:	drivers/mmc/host/sdhci-st.c
+-F:	drivers/phy/phy-miphy28lp.c
+-F:	drivers/phy/phy-stih407-usb.c
++F:	drivers/phy/st/phy-miphy28lp.c
++F:	drivers/phy/st/phy-stih407-usb.c
+ F:	drivers/pinctrl/pinctrl-st.c
+ F:	drivers/remoteproc/st_remoteproc.c
+ F:	drivers/remoteproc/st_slim_rproc.c
+@@ -10637,7 +10637,7 @@ RENESAS USB2 PHY DRIVER
+ M:	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+ L:	linux-renesas-soc@vger.kernel.org
+ S:	Maintained
+-F:	drivers/phy/phy-rcar-gen3-usb2.c
++F:	drivers/phy/renesas/phy-rcar-gen3-usb2.c
+ 
+ RESET CONTROLLER FRAMEWORK
+ M:	Philipp Zabel <p.zabel@pengutronix.de>
+@@ -11011,12 +11011,12 @@ L:	linux-kernel@vger.kernel.org
+ S:	Supported
+ F:	Documentation/devicetree/bindings/phy/samsung-phy.txt
+ F:	Documentation/phy/samsung-usb2.txt
+-F:	drivers/phy/phy-exynos4210-usb2.c
+-F:	drivers/phy/phy-exynos4x12-usb2.c
+-F:	drivers/phy/phy-exynos5250-usb2.c
+-F:	drivers/phy/phy-s5pv210-usb2.c
+-F:	drivers/phy/phy-samsung-usb2.c
+-F:	drivers/phy/phy-samsung-usb2.h
++F:	drivers/phy/samsung/phy-exynos4210-usb2.c
++F:	drivers/phy/samsung/phy-exynos4x12-usb2.c
++F:	drivers/phy/samsung/phy-exynos5250-usb2.c
++F:	drivers/phy/samsung/phy-s5pv210-usb2.c
++F:	drivers/phy/samsung/phy-samsung-usb2.c
++F:	drivers/phy/samsung/phy-samsung-usb2.h
+ 
+ SERIAL DRIVERS
+ M:	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+index dc5277ad1b5a..e337c3fb39a7 100644
+--- a/drivers/phy/Kconfig
++++ b/drivers/phy/Kconfig
+@@ -15,73 +15,6 @@ config GENERIC_PHY
+ 	  phy users can obtain reference to the PHY. All the users of this
+ 	  framework should select this config.
+ 
+-config PHY_BCM_NS_USB2
+-	tristate "Broadcom Northstar USB 2.0 PHY Driver"
+-	depends on ARCH_BCM_IPROC || COMPILE_TEST
+-	depends on HAS_IOMEM && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support Broadcom USB 2.0 PHY connected to the USB
+-	  controller on Northstar family.
+-
+-config PHY_BCM_NS_USB3
+-	tristate "Broadcom Northstar USB 3.0 PHY Driver"
+-	depends on ARCH_BCM_IPROC || COMPILE_TEST
+-	depends on HAS_IOMEM && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support Broadcom USB 3.0 PHY connected to the USB
+-	  controller on Northstar family.
+-
+-config PHY_BERLIN_USB
+-	tristate "Marvell Berlin USB PHY Driver"
+-	depends on ARCH_BERLIN && RESET_CONTROLLER && HAS_IOMEM && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the USB PHY on Marvell Berlin SoCs.
+-
+-config PHY_BERLIN_SATA
+-	tristate "Marvell Berlin SATA PHY driver"
+-	depends on ARCH_BERLIN && HAS_IOMEM && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the SATA PHY on Marvell Berlin SoCs.
+-
+-config ARMADA375_USBCLUSTER_PHY
+-	def_bool y
+-	depends on MACH_ARMADA_375 || COMPILE_TEST
+-	depends on OF && HAS_IOMEM
+-	select GENERIC_PHY
+-
+-config PHY_DA8XX_USB
+-	tristate "TI DA8xx USB PHY Driver"
+-	depends on ARCH_DAVINCI_DA8XX
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	help
+-	  Enable this to support the USB PHY on DA8xx SoCs.
+-
+-	  This driver controls both the USB 1.1 PHY and the USB 2.0 PHY.
+-
+-config PHY_DM816X_USB
+-	tristate "TI dm816x USB PHY driver"
+-	depends on ARCH_OMAP2PLUS
+-	depends on USB_SUPPORT
+-	select GENERIC_PHY
+-	select USB_PHY
+-	help
+-	  Enable this for dm816x USB to work.
+-
+-config PHY_EXYNOS_MIPI_VIDEO
+-	tristate "S5P/EXYNOS SoC series MIPI CSI-2/DSI PHY driver"
+-	depends on HAS_IOMEM
+-	depends on ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
+-	select GENERIC_PHY
+-	default y if ARCH_S5PV210 || ARCH_EXYNOS
+-	help
+-	  Support for MIPI CSI-2 and MIPI DSI DPHY found on Samsung S5P
+-	  and EXYNOS SoCs.
+-
+ config PHY_LPC18XX_USB_OTG
+ 	tristate "NXP LPC18xx/43xx SoC USB OTG PHY driver"
+ 	depends on OF && (ARCH_LPC18XX || COMPILE_TEST)
+@@ -93,146 +26,6 @@ config PHY_LPC18XX_USB_OTG
+ 	  This driver is need for USB0 support on LPC18xx/43xx and takes
+ 	  care of enabling and clock setup.
+ 
+-config PHY_PXA_28NM_HSIC
+-	tristate "Marvell USB HSIC 28nm PHY Driver"
+-	depends on HAS_IOMEM
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support Marvell USB HSIC PHY driver for Marvell
+-	  SoC. This driver will do the PHY initialization and shutdown.
+-	  The PHY driver will be used by Marvell ehci driver.
+-
+-	  To compile this driver as a module, choose M here.
+-
+-config PHY_PXA_28NM_USB2
+-	tristate "Marvell USB 2.0 28nm PHY Driver"
+-	depends on HAS_IOMEM
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support Marvell USB 2.0 PHY driver for Marvell
+-	  SoC. This driver will do the PHY initialization and shutdown.
+-	  The PHY driver will be used by Marvell udc/ehci/otg driver.
+-
+-	  To compile this driver as a module, choose M here.
+-
+-config PHY_MVEBU_SATA
+-	def_bool y
+-	depends on ARCH_DOVE || MACH_DOVE || MACH_KIRKWOOD
+-	depends on OF
+-	select GENERIC_PHY
+-
+-config PHY_MIPHY28LP
+-	tristate "STMicroelectronics MIPHY28LP PHY driver for STiH407"
+-	depends on ARCH_STI
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the miphy transceiver (for SATA/PCIE/USB3)
+-	  that is part of STMicroelectronics STiH407 SoC.
+-
+-config PHY_RCAR_GEN2
+-	tristate "Renesas R-Car generation 2 USB PHY driver"
+-	depends on ARCH_RENESAS
+-	depends on GENERIC_PHY
+-	help
+-	  Support for USB PHY found on Renesas R-Car generation 2 SoCs.
+-
+-config PHY_RCAR_GEN3_USB2
+-	tristate "Renesas R-Car generation 3 USB 2.0 PHY driver"
+-	depends on ARCH_RENESAS
+-	depends on EXTCON
+-	select GENERIC_PHY
+-	help
+-	  Support for USB 2.0 PHY found on Renesas R-Car generation 3 SoCs.
+-
+-config OMAP_CONTROL_PHY
+-	tristate "OMAP CONTROL PHY Driver"
+-	depends on ARCH_OMAP2PLUS || COMPILE_TEST
+-	help
+-	  Enable this to add support for the PHY part present in the control
+-	  module. This driver has API to power on the USB2 PHY and to write to
+-	  the mailbox. The mailbox is present only in omap4 and the register to
+-	  power on the USB2 PHY is present in OMAP4 and OMAP5. OMAP5 has an
+-	  additional register to power on USB3 PHY/SATA PHY/PCIE PHY
+-	  (PIPE3 PHY).
+-
+-config OMAP_USB2
+-	tristate "OMAP USB2 PHY Driver"
+-	depends on ARCH_OMAP2PLUS
+-	depends on USB_SUPPORT
+-	select GENERIC_PHY
+-	select USB_PHY
+-	select OMAP_CONTROL_PHY
+-	depends on OMAP_OCP2SCP
+-	help
+-	  Enable this to support the transceiver that is part of SOC. This
+-	  driver takes care of all the PHY functionality apart from comparator.
+-	  The USB OTG controller communicates with the comparator using this
+-	  driver.
+-
+-config TI_PIPE3
+-	tristate "TI PIPE3 PHY Driver"
+-	depends on ARCH_OMAP2PLUS || COMPILE_TEST
+-	select GENERIC_PHY
+-	select OMAP_CONTROL_PHY
+-	depends on OMAP_OCP2SCP
+-	help
+-	  Enable this to support the PIPE3 PHY that is part of TI SOCs. This
+-	  driver takes care of all the PHY functionality apart from comparator.
+-	  This driver interacts with the "OMAP Control PHY Driver" to power
+-	  on/off the PHY.
+-
+-config TWL4030_USB
+-	tristate "TWL4030 USB Transceiver Driver"
+-	depends on TWL4030_CORE && REGULATOR_TWL4030 && USB_MUSB_OMAP2PLUS
+-	depends on USB_SUPPORT
+-	depends on USB_GADGET || !USB_GADGET # if USB_GADGET=m, this can't 'y'
+-	select GENERIC_PHY
+-	select USB_PHY
+-	help
+-	  Enable this to support the USB OTG transceiver on TWL4030
+-	  family chips (including the TWL5030 and TPS659x0 devices).
+-	  This transceiver supports high and full speed devices plus,
+-	  in host mode, low speed.
+-
+-config PHY_EXYNOS_DP_VIDEO
+-	tristate "EXYNOS SoC series Display Port PHY driver"
+-	depends on OF
+-	depends on ARCH_EXYNOS || COMPILE_TEST
+-	default ARCH_EXYNOS
+-	select GENERIC_PHY
+-	help
+-	  Support for Display Port PHY found on Samsung EXYNOS SoCs.
+-
+-config BCM_KONA_USB2_PHY
+-	tristate "Broadcom Kona USB2 PHY Driver"
+-	depends on HAS_IOMEM
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the Broadcom Kona USB 2.0 PHY.
+-
+-config PHY_EXYNOS5250_SATA
+-	tristate "Exynos5250 Sata SerDes/PHY driver"
+-	depends on SOC_EXYNOS5250
+-	depends on HAS_IOMEM
+-	depends on OF
+-	select GENERIC_PHY
+-	select I2C
+-	select I2C_S3C2410
+-	select MFD_SYSCON
+-	help
+-	  Enable this to support SATA SerDes/Phy found on Samsung's
+-	  Exynos5250 based SoCs.This SerDes/Phy supports SATA 1.5 Gb/s,
+-	  SATA 3.0 Gb/s, SATA 6.0 Gb/s speeds. It supports one SATA host
+-	  port to accept one SATA device.
+-
+-config PHY_HIX5HD2_SATA
+-	tristate "HIX5HD2 SATA PHY Driver"
+-	depends on ARCH_HIX5HD2 && OF && HAS_IOMEM
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	help
+-	  Support for SATA PHY on Hisilicon hix5hd2 Soc.
+-
+ config PHY_MT65XX_USB3
+ 	tristate "Mediatek USB3.0 PHY Driver"
+ 	depends on ARCH_MEDIATEK && OF
+@@ -241,104 +34,6 @@ config PHY_MT65XX_USB3
+ 	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver,
+ 	  it supports multiple usb2.0 and usb3.0 ports.
+ 
+-config PHY_HI6220_USB
+-	tristate "hi6220 USB PHY support"
+-	depends on (ARCH_HISI && ARM64) || COMPILE_TEST
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	help
+-	  Enable this to support the HISILICON HI6220 USB PHY.
+-
+-	  To compile this driver as a module, choose M here.
+-
+-config PHY_SUN4I_USB
+-	tristate "Allwinner sunxi SoC USB PHY driver"
+-	depends on ARCH_SUNXI && HAS_IOMEM && OF
+-	depends on RESET_CONTROLLER
+-	depends on EXTCON
+-	depends on POWER_SUPPLY
+-	depends on USB_SUPPORT
+-	select GENERIC_PHY
+-	select USB_COMMON
+-	help
+-	  Enable this to support the transceiver that is part of Allwinner
+-	  sunxi SoCs.
+-
+-	  This driver controls the entire USB PHY block, both the USB OTG
+-	  parts, as well as the 2 regular USB 2 host PHYs.
+-
+-config PHY_SUN9I_USB
+-	tristate "Allwinner sun9i SoC USB PHY driver"
+-	depends on ARCH_SUNXI && HAS_IOMEM && OF
+-	depends on RESET_CONTROLLER
+-	depends on USB_SUPPORT
+-	select USB_COMMON
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the transceiver that is part of Allwinner
+-	  sun9i SoCs.
+-
+-	  This driver controls each individual USB 2 host PHY.
+-
+-config PHY_SAMSUNG_USB2
+-	tristate "Samsung USB 2.0 PHY driver"
+-	depends on HAS_IOMEM
+-	depends on USB_EHCI_EXYNOS || USB_OHCI_EXYNOS || USB_DWC2
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	default ARCH_EXYNOS
+-	help
+-	  Enable this to support the Samsung USB 2.0 PHY driver for Samsung
+-	  SoCs. This driver provides the interface for USB 2.0 PHY. Support
+-	  for particular PHYs will be enabled based on the SoC type in addition
+-	  to this driver.
+-
+-config PHY_S5PV210_USB2
+-	bool "Support for S5PV210"
+-	depends on PHY_SAMSUNG_USB2
+-	depends on ARCH_S5PV210
+-	help
+-	  Enable USB PHY support for S5PV210. This option requires that Samsung
+-	  USB 2.0 PHY driver is enabled and means that support for this
+-	  particular SoC is compiled in the driver. In case of S5PV210 two phys
+-	  are available - device and host.
+-
+-config PHY_EXYNOS4210_USB2
+-	bool
+-	depends on PHY_SAMSUNG_USB2
+-	default CPU_EXYNOS4210
+-
+-config PHY_EXYNOS4X12_USB2
+-	bool
+-	depends on PHY_SAMSUNG_USB2
+-	default SOC_EXYNOS3250 || SOC_EXYNOS4212 || SOC_EXYNOS4412
+-
+-config PHY_EXYNOS5250_USB2
+-	bool
+-	depends on PHY_SAMSUNG_USB2
+-	default SOC_EXYNOS5250 || SOC_EXYNOS5420
+-
+-config PHY_EXYNOS5_USBDRD
+-	tristate "Exynos5 SoC series USB DRD PHY driver"
+-	depends on ARCH_EXYNOS && OF
+-	depends on HAS_IOMEM
+-	depends on USB_DWC3_EXYNOS
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	default y
+-	help
+-	  Enable USB DRD PHY support for Exynos 5 SoC series.
+-	  This driver provides PHY interface for USB 3.0 DRD controller
+-	  present on Exynos5 SoC series.
+-
+-config PHY_EXYNOS_PCIE
+-	bool "Exynos PCIe PHY driver"
+-	depends on OF && (ARCH_EXYNOS || COMPILE_TEST)
+-	select GENERIC_PHY
+-	help
+-	  Enable PCIe PHY support for Exynos SoC series.
+-	  This driver provides PHY interface for Exynos PCIe controller.
+-
+ config PHY_PISTACHIO_USB
+ 	tristate "IMG Pistachio USB2.0 PHY driver"
+ 	depends on MACH_PISTACHIO
+@@ -346,83 +41,6 @@ config PHY_PISTACHIO_USB
+ 	help
+ 	  Enable this to support the USB2.0 PHY on the IMG Pistachio SoC.
+ 
+-config PHY_QCOM_APQ8064_SATA
+-	tristate "Qualcomm APQ8064 SATA SerDes/PHY driver"
+-	depends on ARCH_QCOM
+-	depends on HAS_IOMEM
+-	depends on OF
+-	select GENERIC_PHY
+-
+-config PHY_QCOM_IPQ806X_SATA
+-	tristate "Qualcomm IPQ806x SATA SerDes/PHY driver"
+-	depends on ARCH_QCOM
+-	depends on HAS_IOMEM
+-	depends on OF
+-	select GENERIC_PHY
+-
+-config PHY_ROCKCHIP_USB
+-	tristate "Rockchip USB2 PHY Driver"
+-	depends on ARCH_ROCKCHIP && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the Rockchip USB 2.0 PHY.
+-
+-config PHY_ROCKCHIP_INNO_USB2
+-	tristate "Rockchip INNO USB2PHY Driver"
+-	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
+-	depends on COMMON_CLK
+-	depends on EXTCON
+-	depends on USB_SUPPORT
+-	select GENERIC_PHY
+-	select USB_COMMON
+-	help
+-	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
+-
+-config PHY_ROCKCHIP_EMMC
+-	tristate "Rockchip EMMC PHY Driver"
+-	depends on ARCH_ROCKCHIP && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the Rockchip EMMC PHY.
+-
+-config PHY_ROCKCHIP_DP
+-	tristate "Rockchip Display Port PHY Driver"
+-	depends on ARCH_ROCKCHIP && OF
+-	select GENERIC_PHY
+-	help
+-	  Enable this to support the Rockchip Display Port PHY.
+-
+-config PHY_ROCKCHIP_PCIE
+-	tristate "Rockchip PCIe PHY Driver"
+-	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+-	select GENERIC_PHY
+-	select MFD_SYSCON
+-	help
+-	  Enable this to support the Rockchip PCIe PHY.
+-
+-config PHY_ROCKCHIP_TYPEC
+-	tristate "Rockchip TYPEC PHY Driver"
+-	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
+-	select EXTCON
+-	select GENERIC_PHY
+-	select RESET_CONTROLLER
+-	help
+-	  Enable this to support the Rockchip USB TYPEC PHY.
+-
+-config PHY_ST_SPEAR1310_MIPHY
+-	tristate "ST SPEAR1310-MIPHY driver"
+-	select GENERIC_PHY
+-	depends on MACH_SPEAR1310 || COMPILE_TEST
+-	help
+-	  Support for ST SPEAr1310 MIPHY which can be used for PCIe and SATA.
+-
+-config PHY_ST_SPEAR1340_MIPHY
+-	tristate "ST SPEAR1340-MIPHY driver"
+-	select GENERIC_PHY
+-	depends on MACH_SPEAR1340 || COMPILE_TEST
+-	help
+-	  Support for ST SPEAr1340 MIPHY which can be used for PCIe and SATA.
+-
+ config PHY_XGENE
+ 	tristate "APM X-Gene 15Gbps PHY support"
+ 	depends on HAS_IOMEM && OF && (ARM64 || COMPILE_TEST)
+@@ -430,73 +48,6 @@ config PHY_XGENE
+ 	help
+ 	  This option enables support for APM X-Gene SoC multi-purpose PHY.
+ 
+-config PHY_STIH407_USB
+-	tristate "STMicroelectronics USB2 picoPHY driver for STiH407 family"
+-	depends on RESET_CONTROLLER
+-	depends on ARCH_STI || COMPILE_TEST
+-	select GENERIC_PHY
+-	help
+-	  Enable this support to enable the picoPHY device used by USB2
+-	  and USB3 controllers on STMicroelectronics STiH407 SoC families.
+-
+-config PHY_QCOM_UFS
+-	tristate "Qualcomm UFS PHY driver"
+-	depends on OF && ARCH_QCOM
+-	select GENERIC_PHY
+-	help
+-	  Support for UFS PHY on QCOM chipsets.
+-
+-config PHY_QCOM_USB_HS
+-	tristate "Qualcomm USB HS PHY module"
+-	depends on USB_ULPI_BUS
+-	select GENERIC_PHY
+-	help
+-	  Support for the USB high-speed ULPI compliant phy on Qualcomm
+-	  chipsets.
+-
+-config PHY_QCOM_USB_HSIC
+-	tristate "Qualcomm USB HSIC ULPI PHY module"
+-	depends on USB_ULPI_BUS
+-	select GENERIC_PHY
+-	help
+-	  Support for the USB HSIC ULPI compliant PHY on QCOM chipsets.
+-
+-config PHY_TUSB1210
+-	tristate "TI TUSB1210 ULPI PHY module"
+-	depends on USB_ULPI_BUS
+-	select GENERIC_PHY
+-	help
+-	  Support for TI TUSB1210 USB ULPI PHY.
+-
+-config PHY_BRCM_SATA
+-	tristate "Broadcom SATA PHY driver"
+-	depends on ARCH_BRCMSTB || ARCH_BCM_IPROC || BMIPS_GENERIC || COMPILE_TEST
+-	depends on OF
+-	select GENERIC_PHY
+-	default ARCH_BCM_IPROC
+-	help
+-	  Enable this to support the Broadcom SATA PHY.
+-	  If unsure, say N.
+-
+-config PHY_CYGNUS_PCIE
+-	tristate "Broadcom Cygnus PCIe PHY driver"
+-	depends on OF && (ARCH_BCM_CYGNUS || COMPILE_TEST)
+-	select GENERIC_PHY
+-	default ARCH_BCM_CYGNUS
+-	help
+-	  Enable this to support the Broadcom Cygnus PCIe PHY.
+-	  If unsure, say N.
+-
+-source "drivers/phy/tegra/Kconfig"
+-
+-config PHY_NS2_PCIE
+-	tristate "Broadcom Northstar2 PCIe PHY driver"
+-	depends on OF && MDIO_BUS_MUX_BCM_IPROC
+-	select GENERIC_PHY
+-	default ARCH_BCM_IPROC
+-	help
+-	  Enable this to support the Broadcom Northstar2 PCIe PHY.
+-	  If unsure, say N.
+ 
+ config PHY_MESON8B_USB2
+ 	tristate "Meson8b and GXBB USB2 PHY driver"
+@@ -510,12 +61,18 @@ config PHY_MESON8B_USB2
+ 	  and GXBB SoCs.
+ 	  If unsure, say N.
+ 
+-config PHY_NSP_USB3
+-	tristate "Broadcom NorthStar plus USB3 PHY driver"
+-	depends on OF && (ARCH_BCM_NSP || COMPILE_TEST)
+-	select GENERIC_PHY
+-	default ARCH_BCM_NSP
+-	help
+-	  Enable this to support the Broadcom Northstar plus USB3 PHY.
+-	  If unsure, say N.
++menu "Platform Phy drivers"
++source "drivers/phy/allwinner/Kconfig"
++source "drivers/phy/broadcom/Kconfig"
++source "drivers/phy/hisilicon/Kconfig"
++source "drivers/phy/marvell/Kconfig"
++source "drivers/phy/qualcomm/Kconfig"
++source "drivers/phy/renesas/Kconfig"
++source "drivers/phy/rockchip/Kconfig"
++source "drivers/phy/samsung/Kconfig"
++source "drivers/phy/st/Kconfig"
++source "drivers/phy/tegra/Kconfig"
++source "drivers/phy/ti/Kconfig"
++endmenu
++
+ endmenu
+diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+index e7b0feb1e125..fb2e31348dbe 100644
+--- a/drivers/phy/Makefile
++++ b/drivers/phy/Makefile
+@@ -3,63 +3,20 @@
+ #
+ 
+ obj-$(CONFIG_GENERIC_PHY)		+= phy-core.o
+-obj-$(CONFIG_PHY_BCM_NS_USB2)		+= phy-bcm-ns-usb2.o
+-obj-$(CONFIG_PHY_BCM_NS_USB3)		+= phy-bcm-ns-usb3.o
+-obj-$(CONFIG_PHY_BERLIN_USB)		+= phy-berlin-usb.o
+-obj-$(CONFIG_PHY_BERLIN_SATA)		+= phy-berlin-sata.o
+-obj-$(CONFIG_PHY_DA8XX_USB)		+= phy-da8xx-usb.o
+-obj-$(CONFIG_PHY_DM816X_USB)		+= phy-dm816x-usb.o
+-obj-$(CONFIG_ARMADA375_USBCLUSTER_PHY)	+= phy-armada375-usb2.o
+-obj-$(CONFIG_BCM_KONA_USB2_PHY)		+= phy-bcm-kona-usb2.o
+-obj-$(CONFIG_PHY_EXYNOS_DP_VIDEO)	+= phy-exynos-dp-video.o
+-obj-$(CONFIG_PHY_EXYNOS_MIPI_VIDEO)	+= phy-exynos-mipi-video.o
+ obj-$(CONFIG_PHY_LPC18XX_USB_OTG)	+= phy-lpc18xx-usb-otg.o
+-obj-$(CONFIG_PHY_PXA_28NM_USB2)		+= phy-pxa-28nm-usb2.o
+-obj-$(CONFIG_PHY_PXA_28NM_HSIC)		+= phy-pxa-28nm-hsic.o
+-obj-$(CONFIG_PHY_MVEBU_SATA)		+= phy-mvebu-sata.o
+-obj-$(CONFIG_PHY_MIPHY28LP) 		+= phy-miphy28lp.o
+-obj-$(CONFIG_PHY_RCAR_GEN2)		+= phy-rcar-gen2.o
+-obj-$(CONFIG_PHY_RCAR_GEN3_USB2)	+= phy-rcar-gen3-usb2.o
+-obj-$(CONFIG_OMAP_CONTROL_PHY)		+= phy-omap-control.o
+-obj-$(CONFIG_OMAP_USB2)			+= phy-omap-usb2.o
+-obj-$(CONFIG_TI_PIPE3)			+= phy-ti-pipe3.o
+-obj-$(CONFIG_TWL4030_USB)		+= phy-twl4030-usb.o
+-obj-$(CONFIG_PHY_EXYNOS5250_SATA)	+= phy-exynos5250-sata.o
+-obj-$(CONFIG_PHY_HIX5HD2_SATA)		+= phy-hix5hd2-sata.o
+-obj-$(CONFIG_PHY_HI6220_USB)		+= phy-hi6220-usb.o
+ obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
+-obj-$(CONFIG_PHY_SUN4I_USB)		+= phy-sun4i-usb.o
+-obj-$(CONFIG_PHY_SUN9I_USB)		+= phy-sun9i-usb.o
+-obj-$(CONFIG_PHY_SAMSUNG_USB2)		+= phy-exynos-usb2.o
+-phy-exynos-usb2-y			+= phy-samsung-usb2.o
+-phy-exynos-usb2-$(CONFIG_PHY_EXYNOS4210_USB2)	+= phy-exynos4210-usb2.o
+-phy-exynos-usb2-$(CONFIG_PHY_EXYNOS4X12_USB2)	+= phy-exynos4x12-usb2.o
+-phy-exynos-usb2-$(CONFIG_PHY_EXYNOS5250_USB2)	+= phy-exynos5250-usb2.o
+-phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
+-obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
+-obj-$(CONFIG_PHY_EXYNOS_PCIE)	+= phy-exynos-pcie.o
+-obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
+-obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+-obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
+-obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
+-obj-$(CONFIG_PHY_ROCKCHIP_PCIE) += phy-rockchip-pcie.o
+-obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
+-obj-$(CONFIG_PHY_ROCKCHIP_TYPEC) += phy-rockchip-typec.o
+-obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
+-obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
+-obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
+ obj-$(CONFIG_PHY_XGENE)			+= phy-xgene.o
+-obj-$(CONFIG_PHY_STIH407_USB)		+= phy-stih407-usb.o
+-obj-$(CONFIG_PHY_QCOM_UFS) 	+= phy-qcom-ufs.o
+-obj-$(CONFIG_PHY_QCOM_UFS) 	+= phy-qcom-ufs-qmp-20nm.o
+-obj-$(CONFIG_PHY_QCOM_UFS) 	+= phy-qcom-ufs-qmp-14nm.o
+-obj-$(CONFIG_PHY_QCOM_USB_HS) 		+= phy-qcom-usb-hs.o
+-obj-$(CONFIG_PHY_QCOM_USB_HSIC) 	+= phy-qcom-usb-hsic.o
+-obj-$(CONFIG_PHY_TUSB1210)		+= phy-tusb1210.o
+-obj-$(CONFIG_PHY_BRCM_SATA)		+= phy-brcm-sata.o
+ obj-$(CONFIG_PHY_PISTACHIO_USB)		+= phy-pistachio-usb.o
+-obj-$(CONFIG_PHY_CYGNUS_PCIE)		+= phy-bcm-cygnus-pcie.o
+-obj-$(CONFIG_ARCH_TEGRA) += tegra/
+-obj-$(CONFIG_PHY_NS2_PCIE)		+= phy-bcm-ns2-pcie.o
+ obj-$(CONFIG_PHY_MESON8B_USB2)		+= phy-meson8b-usb2.o
+-obj-$(CONFIG_PHY_NSP_USB3)		+= phy-bcm-nsp-usb3.o
++obj-$(CONFIG_ARCH_TEGRA) 		+= tegra/
++obj-$(CONFIG_ARCH_SUNXI)		+= allwinner/
++obj-$(CONFIG_ARCH_RENESAS)		+= renesas/
++obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
++
++obj-y					+= broadcom/	\
++					   hisilicon/	\
++					   marvell/	\
++					   qualcomm/	\
++					   samsung/	\
++					   st/		\
++					   ti/
+diff --git a/drivers/phy/allwinner/Kconfig b/drivers/phy/allwinner/Kconfig
+new file mode 100644
+index 000000000000..cdc1e745ba47
+--- /dev/null
++++ b/drivers/phy/allwinner/Kconfig
+@@ -0,0 +1,31 @@
++#
++# Phy drivers for Allwinner platforms
++#
++config PHY_SUN4I_USB
++	tristate "Allwinner sunxi SoC USB PHY driver"
++	depends on ARCH_SUNXI && HAS_IOMEM && OF
++	depends on RESET_CONTROLLER
++	depends on EXTCON
++	depends on POWER_SUPPLY
++	depends on USB_SUPPORT
++	select GENERIC_PHY
++	select USB_COMMON
++	help
++	  Enable this to support the transceiver that is part of Allwinner
++	  sunxi SoCs.
++
++	  This driver controls the entire USB PHY block, both the USB OTG
++	  parts, as well as the 2 regular USB 2 host PHYs.
++
++config PHY_SUN9I_USB
++	tristate "Allwinner sun9i SoC USB PHY driver"
++	depends on ARCH_SUNXI && HAS_IOMEM && OF
++	depends on RESET_CONTROLLER
++	depends on USB_SUPPORT
++	select USB_COMMON
++	select GENERIC_PHY
++	help
++	  Enable this to support the transceiver that is part of Allwinner
++	  sun9i SoCs.
++
++	  This driver controls each individual USB 2 host PHY.
+diff --git a/drivers/phy/allwinner/Makefile b/drivers/phy/allwinner/Makefile
+new file mode 100644
+index 000000000000..8605529c01a1
+--- /dev/null
++++ b/drivers/phy/allwinner/Makefile
+@@ -0,0 +1,2 @@
++obj-$(CONFIG_PHY_SUN4I_USB)		+= phy-sun4i-usb.o
++obj-$(CONFIG_PHY_SUN9I_USB)		+= phy-sun9i-usb.o
+diff --git a/drivers/phy/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
+similarity index 100%
+rename from drivers/phy/phy-sun4i-usb.c
+rename to drivers/phy/allwinner/phy-sun4i-usb.c
+diff --git a/drivers/phy/phy-sun9i-usb.c b/drivers/phy/allwinner/phy-sun9i-usb.c
+similarity index 100%
+rename from drivers/phy/phy-sun9i-usb.c
+rename to drivers/phy/allwinner/phy-sun9i-usb.c
+diff --git a/drivers/phy/broadcom/Kconfig b/drivers/phy/broadcom/Kconfig
+new file mode 100644
+index 000000000000..4867a0be9f9c
+--- /dev/null
++++ b/drivers/phy/broadcom/Kconfig
+@@ -0,0 +1,64 @@
++#
++# Phy drivers for Broadcom platforms
++#
++config PHY_CYGNUS_PCIE
++	tristate "Broadcom Cygnus PCIe PHY driver"
++	depends on OF && (ARCH_BCM_CYGNUS || COMPILE_TEST)
++	select GENERIC_PHY
++	default ARCH_BCM_CYGNUS
++	help
++	  Enable this to support the Broadcom Cygnus PCIe PHY.
++	  If unsure, say N.
++
++config BCM_KONA_USB2_PHY
++	tristate "Broadcom Kona USB2 PHY Driver"
++	depends on HAS_IOMEM
++	select GENERIC_PHY
++	help
++	  Enable this to support the Broadcom Kona USB 2.0 PHY.
++
++config PHY_BCM_NS_USB2
++	tristate "Broadcom Northstar USB 2.0 PHY Driver"
++	depends on ARCH_BCM_IPROC || COMPILE_TEST
++	depends on HAS_IOMEM && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support Broadcom USB 2.0 PHY connected to the USB
++	  controller on Northstar family.
++
++config PHY_BCM_NS_USB3
++	tristate "Broadcom Northstar USB 3.0 PHY Driver"
++	depends on ARCH_BCM_IPROC || COMPILE_TEST
++	depends on HAS_IOMEM && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support Broadcom USB 3.0 PHY connected to the USB
++	  controller on Northstar family.
++
++config PHY_NS2_PCIE
++	tristate "Broadcom Northstar2 PCIe PHY driver"
++	depends on OF && MDIO_BUS_MUX_BCM_IPROC
++	select GENERIC_PHY
++	default ARCH_BCM_IPROC
++	help
++	  Enable this to support the Broadcom Northstar2 PCIe PHY.
++	  If unsure, say N.
++
++config PHY_NSP_USB3
++	tristate "Broadcom NorthStar plus USB3 PHY driver"
++	depends on OF && (ARCH_BCM_NSP || COMPILE_TEST)
++	select GENERIC_PHY
++	default ARCH_BCM_NSP
++	help
++	  Enable this to support the Broadcom Northstar plus USB3 PHY.
++	  If unsure, say N.
++
++config PHY_BRCM_SATA
++	tristate "Broadcom SATA PHY driver"
++	depends on ARCH_BRCMSTB || ARCH_BCM_IPROC || BMIPS_GENERIC || COMPILE_TEST
++	depends on OF
++	select GENERIC_PHY
++	default ARCH_BCM_IPROC
++	help
++	  Enable this to support the Broadcom SATA PHY.
++	  If unsure, say N.
+diff --git a/drivers/phy/broadcom/Makefile b/drivers/phy/broadcom/Makefile
+new file mode 100644
+index 000000000000..59ae17bc8596
+--- /dev/null
++++ b/drivers/phy/broadcom/Makefile
+@@ -0,0 +1,7 @@
++obj-$(CONFIG_PHY_CYGNUS_PCIE)		+= phy-bcm-cygnus-pcie.o
++obj-$(CONFIG_BCM_KONA_USB2_PHY)		+= phy-bcm-kona-usb2.o
++obj-$(CONFIG_PHY_BCM_NS_USB2)		+= phy-bcm-ns-usb2.o
++obj-$(CONFIG_PHY_BCM_NS_USB3)		+= phy-bcm-ns-usb3.o
++obj-$(CONFIG_PHY_NS2_PCIE)		+= phy-bcm-ns2-pcie.o
++obj-$(CONFIG_PHY_NSP_USB3)		+= phy-bcm-nsp-usb3.o
++obj-$(CONFIG_PHY_BRCM_SATA)		+= phy-brcm-sata.o
+diff --git a/drivers/phy/phy-bcm-cygnus-pcie.c b/drivers/phy/broadcom/phy-bcm-cygnus-pcie.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-cygnus-pcie.c
+rename to drivers/phy/broadcom/phy-bcm-cygnus-pcie.c
+diff --git a/drivers/phy/phy-bcm-kona-usb2.c b/drivers/phy/broadcom/phy-bcm-kona-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-kona-usb2.c
+rename to drivers/phy/broadcom/phy-bcm-kona-usb2.c
+diff --git a/drivers/phy/phy-bcm-ns-usb2.c b/drivers/phy/broadcom/phy-bcm-ns-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-ns-usb2.c
+rename to drivers/phy/broadcom/phy-bcm-ns-usb2.c
+diff --git a/drivers/phy/phy-bcm-ns-usb3.c b/drivers/phy/broadcom/phy-bcm-ns-usb3.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-ns-usb3.c
+rename to drivers/phy/broadcom/phy-bcm-ns-usb3.c
+diff --git a/drivers/phy/phy-bcm-ns2-pcie.c b/drivers/phy/broadcom/phy-bcm-ns2-pcie.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-ns2-pcie.c
+rename to drivers/phy/broadcom/phy-bcm-ns2-pcie.c
+diff --git a/drivers/phy/phy-bcm-nsp-usb3.c b/drivers/phy/broadcom/phy-bcm-nsp-usb3.c
+similarity index 100%
+rename from drivers/phy/phy-bcm-nsp-usb3.c
+rename to drivers/phy/broadcom/phy-bcm-nsp-usb3.c
+diff --git a/drivers/phy/phy-brcm-sata.c b/drivers/phy/broadcom/phy-brcm-sata.c
+similarity index 100%
+rename from drivers/phy/phy-brcm-sata.c
+rename to drivers/phy/broadcom/phy-brcm-sata.c
+diff --git a/drivers/phy/hisilicon/Kconfig b/drivers/phy/hisilicon/Kconfig
+new file mode 100644
+index 000000000000..6164c4cd0f65
+--- /dev/null
++++ b/drivers/phy/hisilicon/Kconfig
+@@ -0,0 +1,20 @@
++#
++# Phy drivers for Hisilicon platforms
++#
++config PHY_HI6220_USB
++	tristate "hi6220 USB PHY support"
++	depends on (ARCH_HISI && ARM64) || COMPILE_TEST
++	select GENERIC_PHY
++	select MFD_SYSCON
++	help
++	  Enable this to support the HISILICON HI6220 USB PHY.
++
++	  To compile this driver as a module, choose M here.
++
++config PHY_HIX5HD2_SATA
++	tristate "HIX5HD2 SATA PHY Driver"
++	depends on ARCH_HIX5HD2 && OF && HAS_IOMEM
++	select GENERIC_PHY
++	select MFD_SYSCON
++	help
++	  Support for SATA PHY on Hisilicon hix5hd2 Soc.
+diff --git a/drivers/phy/hisilicon/Makefile b/drivers/phy/hisilicon/Makefile
+new file mode 100644
+index 000000000000..541b348187a8
+--- /dev/null
++++ b/drivers/phy/hisilicon/Makefile
+@@ -0,0 +1,2 @@
++obj-$(CONFIG_PHY_HI6220_USB)		+= phy-hi6220-usb.o
++obj-$(CONFIG_PHY_HIX5HD2_SATA)		+= phy-hix5hd2-sata.o
+diff --git a/drivers/phy/phy-hi6220-usb.c b/drivers/phy/hisilicon/phy-hi6220-usb.c
+similarity index 100%
+rename from drivers/phy/phy-hi6220-usb.c
+rename to drivers/phy/hisilicon/phy-hi6220-usb.c
+diff --git a/drivers/phy/phy-hix5hd2-sata.c b/drivers/phy/hisilicon/phy-hix5hd2-sata.c
+similarity index 100%
+rename from drivers/phy/phy-hix5hd2-sata.c
+rename to drivers/phy/hisilicon/phy-hix5hd2-sata.c
+diff --git a/drivers/phy/marvell/Kconfig b/drivers/phy/marvell/Kconfig
+new file mode 100644
+index 000000000000..048d8893bc2e
+--- /dev/null
++++ b/drivers/phy/marvell/Kconfig
+@@ -0,0 +1,50 @@
++#
++# Phy drivers for Marvell platforms
++#
++config ARMADA375_USBCLUSTER_PHY
++	def_bool y
++	depends on MACH_ARMADA_375 || COMPILE_TEST
++	depends on OF && HAS_IOMEM
++	select GENERIC_PHY
++
++config PHY_BERLIN_SATA
++	tristate "Marvell Berlin SATA PHY driver"
++	depends on ARCH_BERLIN && HAS_IOMEM && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support the SATA PHY on Marvell Berlin SoCs.
++
++config PHY_BERLIN_USB
++	tristate "Marvell Berlin USB PHY Driver"
++	depends on ARCH_BERLIN && RESET_CONTROLLER && HAS_IOMEM && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support the USB PHY on Marvell Berlin SoCs.
++
++config PHY_MVEBU_SATA
++	def_bool y
++	depends on ARCH_DOVE || MACH_DOVE || MACH_KIRKWOOD
++	depends on OF
++	select GENERIC_PHY
++
++config PHY_PXA_28NM_HSIC
++	tristate "Marvell USB HSIC 28nm PHY Driver"
++	depends on HAS_IOMEM
++	select GENERIC_PHY
++	help
++	  Enable this to support Marvell USB HSIC PHY driver for Marvell
++	  SoC. This driver will do the PHY initialization and shutdown.
++	  The PHY driver will be used by Marvell ehci driver.
++
++	  To compile this driver as a module, choose M here.
++
++config PHY_PXA_28NM_USB2
++	tristate "Marvell USB 2.0 28nm PHY Driver"
++	depends on HAS_IOMEM
++	select GENERIC_PHY
++	help
++	  Enable this to support Marvell USB 2.0 PHY driver for Marvell
++	  SoC. This driver will do the PHY initialization and shutdown.
++	  The PHY driver will be used by Marvell udc/ehci/otg driver.
++
++	  To compile this driver as a module, choose M here.
+diff --git a/drivers/phy/marvell/Makefile b/drivers/phy/marvell/Makefile
+new file mode 100644
+index 000000000000..3fc188f59118
+--- /dev/null
++++ b/drivers/phy/marvell/Makefile
+@@ -0,0 +1,6 @@
++obj-$(CONFIG_ARMADA375_USBCLUSTER_PHY)	+= phy-armada375-usb2.o
++obj-$(CONFIG_PHY_BERLIN_SATA)		+= phy-berlin-sata.o
++obj-$(CONFIG_PHY_BERLIN_USB)		+= phy-berlin-usb.o
++obj-$(CONFIG_PHY_MVEBU_SATA)		+= phy-mvebu-sata.o
++obj-$(CONFIG_PHY_PXA_28NM_HSIC)		+= phy-pxa-28nm-hsic.o
++obj-$(CONFIG_PHY_PXA_28NM_USB2)		+= phy-pxa-28nm-usb2.o
+diff --git a/drivers/phy/phy-armada375-usb2.c b/drivers/phy/marvell/phy-armada375-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-armada375-usb2.c
+rename to drivers/phy/marvell/phy-armada375-usb2.c
+diff --git a/drivers/phy/phy-berlin-sata.c b/drivers/phy/marvell/phy-berlin-sata.c
+similarity index 100%
+rename from drivers/phy/phy-berlin-sata.c
+rename to drivers/phy/marvell/phy-berlin-sata.c
+diff --git a/drivers/phy/phy-berlin-usb.c b/drivers/phy/marvell/phy-berlin-usb.c
+similarity index 100%
+rename from drivers/phy/phy-berlin-usb.c
+rename to drivers/phy/marvell/phy-berlin-usb.c
+diff --git a/drivers/phy/phy-mvebu-sata.c b/drivers/phy/marvell/phy-mvebu-sata.c
+similarity index 100%
+rename from drivers/phy/phy-mvebu-sata.c
+rename to drivers/phy/marvell/phy-mvebu-sata.c
+diff --git a/drivers/phy/phy-pxa-28nm-hsic.c b/drivers/phy/marvell/phy-pxa-28nm-hsic.c
+similarity index 100%
+rename from drivers/phy/phy-pxa-28nm-hsic.c
+rename to drivers/phy/marvell/phy-pxa-28nm-hsic.c
+diff --git a/drivers/phy/phy-pxa-28nm-usb2.c b/drivers/phy/marvell/phy-pxa-28nm-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-pxa-28nm-usb2.c
+rename to drivers/phy/marvell/phy-pxa-28nm-usb2.c
+diff --git a/drivers/phy/qualcomm/Kconfig b/drivers/phy/qualcomm/Kconfig
+new file mode 100644
+index 000000000000..458d224f18a5
+--- /dev/null
++++ b/drivers/phy/qualcomm/Kconfig
+@@ -0,0 +1,38 @@
++#
++# Phy drivers for Qualcomm platforms
++#
++config PHY_QCOM_APQ8064_SATA
++	tristate "Qualcomm APQ8064 SATA SerDes/PHY driver"
++	depends on ARCH_QCOM
++	depends on HAS_IOMEM
++	depends on OF
++	select GENERIC_PHY
++
++config PHY_QCOM_IPQ806X_SATA
++	tristate "Qualcomm IPQ806x SATA SerDes/PHY driver"
++	depends on ARCH_QCOM
++	depends on HAS_IOMEM
++	depends on OF
++	select GENERIC_PHY
++
++config PHY_QCOM_UFS
++	tristate "Qualcomm UFS PHY driver"
++	depends on OF && ARCH_QCOM
++	select GENERIC_PHY
++	help
++	  Support for UFS PHY on QCOM chipsets.
++
++config PHY_QCOM_USB_HS
++	tristate "Qualcomm USB HS PHY module"
++	depends on USB_ULPI_BUS
++	select GENERIC_PHY
++	help
++	  Support for the USB high-speed ULPI compliant phy on Qualcomm
++	  chipsets.
++
++config PHY_QCOM_USB_HSIC
++	tristate "Qualcomm USB HSIC ULPI PHY module"
++	depends on USB_ULPI_BUS
++	select GENERIC_PHY
++	help
++	  Support for the USB HSIC ULPI compliant PHY on QCOM chipsets.
+diff --git a/drivers/phy/qualcomm/Makefile b/drivers/phy/qualcomm/Makefile
+new file mode 100644
+index 000000000000..07f7c7896f4d
+--- /dev/null
++++ b/drivers/phy/qualcomm/Makefile
+@@ -0,0 +1,7 @@
++obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
++obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
++obj-$(CONFIG_PHY_QCOM_UFS)		+= phy-qcom-ufs.o
++obj-$(CONFIG_PHY_QCOM_UFS)		+= phy-qcom-ufs-qmp-20nm.o
++obj-$(CONFIG_PHY_QCOM_UFS)		+= phy-qcom-ufs-qmp-14nm.o
++obj-$(CONFIG_PHY_QCOM_USB_HS) 		+= phy-qcom-usb-hs.o
++obj-$(CONFIG_PHY_QCOM_USB_HSIC) 	+= phy-qcom-usb-hsic.o
+diff --git a/drivers/phy/phy-qcom-apq8064-sata.c b/drivers/phy/qualcomm/phy-qcom-apq8064-sata.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-apq8064-sata.c
+rename to drivers/phy/qualcomm/phy-qcom-apq8064-sata.c
+diff --git a/drivers/phy/phy-qcom-ipq806x-sata.c b/drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-ipq806x-sata.c
+rename to drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c
+diff --git a/drivers/phy/phy-qcom-ufs-i.h b/drivers/phy/qualcomm/phy-qcom-ufs-i.h
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs-i.h
+rename to drivers/phy/qualcomm/phy-qcom-ufs-i.h
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs-qmp-14nm.c
+rename to drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.h b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.h
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs-qmp-14nm.h
+rename to drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.h
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs-qmp-20nm.c
+rename to drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.h b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.h
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs-qmp-20nm.h
+rename to drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.h
+diff --git a/drivers/phy/phy-qcom-ufs.c b/drivers/phy/qualcomm/phy-qcom-ufs.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-ufs.c
+rename to drivers/phy/qualcomm/phy-qcom-ufs.c
+diff --git a/drivers/phy/phy-qcom-usb-hs.c b/drivers/phy/qualcomm/phy-qcom-usb-hs.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-usb-hs.c
+rename to drivers/phy/qualcomm/phy-qcom-usb-hs.c
+diff --git a/drivers/phy/phy-qcom-usb-hsic.c b/drivers/phy/qualcomm/phy-qcom-usb-hsic.c
+similarity index 100%
+rename from drivers/phy/phy-qcom-usb-hsic.c
+rename to drivers/phy/qualcomm/phy-qcom-usb-hsic.c
+diff --git a/drivers/phy/renesas/Kconfig b/drivers/phy/renesas/Kconfig
+new file mode 100644
+index 000000000000..432e2715e9c4
+--- /dev/null
++++ b/drivers/phy/renesas/Kconfig
+@@ -0,0 +1,17 @@
++#
++# Phy drivers for Renesas platforms
++#
++config PHY_RCAR_GEN2
++	tristate "Renesas R-Car generation 2 USB PHY driver"
++	depends on ARCH_RENESAS
++	depends on GENERIC_PHY
++	help
++	  Support for USB PHY found on Renesas R-Car generation 2 SoCs.
++
++config PHY_RCAR_GEN3_USB2
++	tristate "Renesas R-Car generation 3 USB 2.0 PHY driver"
++	depends on ARCH_RENESAS
++	depends on EXTCON
++	select GENERIC_PHY
++	help
++	  Support for USB 2.0 PHY found on Renesas R-Car generation 3 SoCs.
+diff --git a/drivers/phy/renesas/Makefile b/drivers/phy/renesas/Makefile
+new file mode 100644
+index 000000000000..695241aebf69
+--- /dev/null
++++ b/drivers/phy/renesas/Makefile
+@@ -0,0 +1,2 @@
++obj-$(CONFIG_PHY_RCAR_GEN2)		+= phy-rcar-gen2.o
++obj-$(CONFIG_PHY_RCAR_GEN3_USB2)	+= phy-rcar-gen3-usb2.o
+diff --git a/drivers/phy/phy-rcar-gen2.c b/drivers/phy/renesas/phy-rcar-gen2.c
+similarity index 100%
+rename from drivers/phy/phy-rcar-gen2.c
+rename to drivers/phy/renesas/phy-rcar-gen2.c
+diff --git a/drivers/phy/phy-rcar-gen3-usb2.c b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-rcar-gen3-usb2.c
+rename to drivers/phy/renesas/phy-rcar-gen3-usb2.c
+diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+new file mode 100644
+index 000000000000..f5325b2b679e
+--- /dev/null
++++ b/drivers/phy/rockchip/Kconfig
+@@ -0,0 +1,51 @@
++#
++# Phy drivers for Rockchip platforms
++#
++config PHY_ROCKCHIP_DP
++	tristate "Rockchip Display Port PHY Driver"
++	depends on ARCH_ROCKCHIP && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support the Rockchip Display Port PHY.
++
++config PHY_ROCKCHIP_EMMC
++	tristate "Rockchip EMMC PHY Driver"
++	depends on ARCH_ROCKCHIP && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support the Rockchip EMMC PHY.
++
++config PHY_ROCKCHIP_INNO_USB2
++	tristate "Rockchip INNO USB2PHY Driver"
++	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
++	depends on COMMON_CLK
++	depends on EXTCON
++	depends on USB_SUPPORT
++	select GENERIC_PHY
++	select USB_COMMON
++	help
++	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
++
++config PHY_ROCKCHIP_PCIE
++	tristate "Rockchip PCIe PHY Driver"
++	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
++	select GENERIC_PHY
++	select MFD_SYSCON
++	help
++	  Enable this to support the Rockchip PCIe PHY.
++
++config PHY_ROCKCHIP_TYPEC
++	tristate "Rockchip TYPEC PHY Driver"
++	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
++	select EXTCON
++	select GENERIC_PHY
++	select RESET_CONTROLLER
++	help
++	  Enable this to support the Rockchip USB TYPEC PHY.
++
++config PHY_ROCKCHIP_USB
++	tristate "Rockchip USB2 PHY Driver"
++	depends on ARCH_ROCKCHIP && OF
++	select GENERIC_PHY
++	help
++	  Enable this to support the Rockchip USB 2.0 PHY.
+diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+new file mode 100644
+index 000000000000..d867ee5f7527
+--- /dev/null
++++ b/drivers/phy/rockchip/Makefile
+@@ -0,0 +1,6 @@
++obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
++obj-$(CONFIG_PHY_ROCKCHIP_EMMC) 	+= phy-rockchip-emmc.o
++obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
++obj-$(CONFIG_PHY_ROCKCHIP_PCIE) 	+= phy-rockchip-pcie.o
++obj-$(CONFIG_PHY_ROCKCHIP_TYPEC) 	+= phy-rockchip-typec.o
++obj-$(CONFIG_PHY_ROCKCHIP_USB) 		+= phy-rockchip-usb.o
+diff --git a/drivers/phy/phy-rockchip-dp.c b/drivers/phy/rockchip/phy-rockchip-dp.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-dp.c
+rename to drivers/phy/rockchip/phy-rockchip-dp.c
+diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-emmc.c
+rename to drivers/phy/rockchip/phy-rockchip-emmc.c
+diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-inno-usb2.c
+rename to drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+diff --git a/drivers/phy/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-pcie.c
+rename to drivers/phy/rockchip/phy-rockchip-pcie.c
+diff --git a/drivers/phy/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-typec.c
+rename to drivers/phy/rockchip/phy-rockchip-typec.c
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
+similarity index 100%
+rename from drivers/phy/phy-rockchip-usb.c
+rename to drivers/phy/rockchip/phy-rockchip-usb.c
+diff --git a/drivers/phy/samsung/Kconfig b/drivers/phy/samsung/Kconfig
+new file mode 100644
+index 000000000000..ed576cc53312
+--- /dev/null
++++ b/drivers/phy/samsung/Kconfig
+@@ -0,0 +1,96 @@
++#
++# Phy drivers for Samsung platforms
++#
++config PHY_EXYNOS_DP_VIDEO
++	tristate "EXYNOS SoC series Display Port PHY driver"
++	depends on OF
++	depends on ARCH_EXYNOS || COMPILE_TEST
++	default ARCH_EXYNOS
++	select GENERIC_PHY
++	help
++	  Support for Display Port PHY found on Samsung EXYNOS SoCs.
++
++config PHY_EXYNOS_MIPI_VIDEO
++	tristate "S5P/EXYNOS SoC series MIPI CSI-2/DSI PHY driver"
++	depends on HAS_IOMEM
++	depends on ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
++	select GENERIC_PHY
++	default y if ARCH_S5PV210 || ARCH_EXYNOS
++	help
++	  Support for MIPI CSI-2 and MIPI DSI DPHY found on Samsung S5P
++	  and EXYNOS SoCs.
++
++config PHY_EXYNOS_PCIE
++	bool "Exynos PCIe PHY driver"
++	depends on OF && (ARCH_EXYNOS || COMPILE_TEST)
++	select GENERIC_PHY
++	help
++	  Enable PCIe PHY support for Exynos SoC series.
++	  This driver provides PHY interface for Exynos PCIe controller.
++
++config PHY_SAMSUNG_USB2
++	tristate "Samsung USB 2.0 PHY driver"
++	depends on HAS_IOMEM
++	depends on USB_EHCI_EXYNOS || USB_OHCI_EXYNOS || USB_DWC2
++	select GENERIC_PHY
++	select MFD_SYSCON
++	default ARCH_EXYNOS
++	help
++	  Enable this to support the Samsung USB 2.0 PHY driver for Samsung
++	  SoCs. This driver provides the interface for USB 2.0 PHY. Support
++	  for particular PHYs will be enabled based on the SoC type in addition
++	  to this driver.
++
++config PHY_EXYNOS4210_USB2
++	bool
++	depends on PHY_SAMSUNG_USB2
++	default CPU_EXYNOS4210
++
++config PHY_EXYNOS4X12_USB2
++	bool
++	depends on PHY_SAMSUNG_USB2
++	default SOC_EXYNOS3250 || SOC_EXYNOS4212 || SOC_EXYNOS4412
++
++config PHY_EXYNOS5250_USB2
++	bool
++	depends on PHY_SAMSUNG_USB2
++	default SOC_EXYNOS5250 || SOC_EXYNOS5420
++
++config PHY_S5PV210_USB2
++	bool "Support for S5PV210"
++	depends on PHY_SAMSUNG_USB2
++	depends on ARCH_S5PV210
++	help
++	  Enable USB PHY support for S5PV210. This option requires that Samsung
++	  USB 2.0 PHY driver is enabled and means that support for this
++	  particular SoC is compiled in the driver. In case of S5PV210 two phys
++	  are available - device and host.
++
++config PHY_EXYNOS5250_SATA
++	tristate "Exynos5250 Sata SerDes/PHY driver"
++	depends on SOC_EXYNOS5250
++	depends on HAS_IOMEM
++	depends on OF
++	select GENERIC_PHY
++	select I2C
++	select I2C_S3C2410
++	select MFD_SYSCON
++	help
++	  Enable this to support SATA SerDes/Phy found on Samsung's
++	  Exynos5250 based SoCs.This SerDes/Phy supports SATA 1.5 Gb/s,
++	  SATA 3.0 Gb/s, SATA 6.0 Gb/s speeds. It supports one SATA host
++	  port to accept one SATA device.
++
++
++config PHY_EXYNOS5_USBDRD
++	tristate "Exynos5 SoC series USB DRD PHY driver"
++	depends on ARCH_EXYNOS && OF
++	depends on HAS_IOMEM
++	depends on USB_DWC3_EXYNOS
++	select GENERIC_PHY
++	select MFD_SYSCON
++	default y
++	help
++	  Enable USB DRD PHY support for Exynos 5 SoC series.
++	  This driver provides PHY interface for USB 3.0 DRD controller
++	  present on Exynos5 SoC series.
+diff --git a/drivers/phy/samsung/Makefile b/drivers/phy/samsung/Makefile
+new file mode 100644
+index 000000000000..499b1a433ab7
+--- /dev/null
++++ b/drivers/phy/samsung/Makefile
+@@ -0,0 +1,11 @@
++obj-$(CONFIG_PHY_EXYNOS_DP_VIDEO)	+= phy-exynos-dp-video.o
++obj-$(CONFIG_PHY_EXYNOS_MIPI_VIDEO)	+= phy-exynos-mipi-video.o
++obj-$(CONFIG_PHY_EXYNOS_PCIE)		+= phy-exynos-pcie.o
++obj-$(CONFIG_PHY_SAMSUNG_USB2)		+= phy-exynos-usb2.o
++phy-exynos-usb2-y			+= phy-samsung-usb2.o
++phy-exynos-usb2-$(CONFIG_PHY_EXYNOS4210_USB2)	+= phy-exynos4210-usb2.o
++phy-exynos-usb2-$(CONFIG_PHY_EXYNOS4X12_USB2)	+= phy-exynos4x12-usb2.o
++phy-exynos-usb2-$(CONFIG_PHY_EXYNOS5250_USB2)	+= phy-exynos5250-usb2.o
++phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
++obj-$(CONFIG_PHY_EXYNOS5250_SATA)	+= phy-exynos5250-sata.o
++obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
+diff --git a/drivers/phy/phy-exynos-dp-video.c b/drivers/phy/samsung/phy-exynos-dp-video.c
+similarity index 100%
+rename from drivers/phy/phy-exynos-dp-video.c
+rename to drivers/phy/samsung/phy-exynos-dp-video.c
+diff --git a/drivers/phy/phy-exynos-mipi-video.c b/drivers/phy/samsung/phy-exynos-mipi-video.c
+similarity index 100%
+rename from drivers/phy/phy-exynos-mipi-video.c
+rename to drivers/phy/samsung/phy-exynos-mipi-video.c
+diff --git a/drivers/phy/phy-exynos-pcie.c b/drivers/phy/samsung/phy-exynos-pcie.c
+similarity index 100%
+rename from drivers/phy/phy-exynos-pcie.c
+rename to drivers/phy/samsung/phy-exynos-pcie.c
+diff --git a/drivers/phy/phy-exynos4210-usb2.c b/drivers/phy/samsung/phy-exynos4210-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-exynos4210-usb2.c
+rename to drivers/phy/samsung/phy-exynos4210-usb2.c
+diff --git a/drivers/phy/phy-exynos4x12-usb2.c b/drivers/phy/samsung/phy-exynos4x12-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-exynos4x12-usb2.c
+rename to drivers/phy/samsung/phy-exynos4x12-usb2.c
+diff --git a/drivers/phy/phy-exynos5-usbdrd.c b/drivers/phy/samsung/phy-exynos5-usbdrd.c
+similarity index 100%
+rename from drivers/phy/phy-exynos5-usbdrd.c
+rename to drivers/phy/samsung/phy-exynos5-usbdrd.c
+diff --git a/drivers/phy/phy-exynos5250-sata.c b/drivers/phy/samsung/phy-exynos5250-sata.c
+similarity index 100%
+rename from drivers/phy/phy-exynos5250-sata.c
+rename to drivers/phy/samsung/phy-exynos5250-sata.c
+diff --git a/drivers/phy/phy-exynos5250-usb2.c b/drivers/phy/samsung/phy-exynos5250-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-exynos5250-usb2.c
+rename to drivers/phy/samsung/phy-exynos5250-usb2.c
+diff --git a/drivers/phy/phy-s5pv210-usb2.c b/drivers/phy/samsung/phy-s5pv210-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-s5pv210-usb2.c
+rename to drivers/phy/samsung/phy-s5pv210-usb2.c
+diff --git a/drivers/phy/phy-samsung-usb2.c b/drivers/phy/samsung/phy-samsung-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-samsung-usb2.c
+rename to drivers/phy/samsung/phy-samsung-usb2.c
+diff --git a/drivers/phy/phy-samsung-usb2.h b/drivers/phy/samsung/phy-samsung-usb2.h
+similarity index 100%
+rename from drivers/phy/phy-samsung-usb2.h
+rename to drivers/phy/samsung/phy-samsung-usb2.h
+diff --git a/drivers/phy/st/Kconfig b/drivers/phy/st/Kconfig
+new file mode 100644
+index 000000000000..0814d3f87ec6
+--- /dev/null
++++ b/drivers/phy/st/Kconfig
+@@ -0,0 +1,33 @@
++#
++# Phy drivers for STMicro platforms
++#
++config PHY_MIPHY28LP
++	tristate "STMicroelectronics MIPHY28LP PHY driver for STiH407"
++	depends on ARCH_STI
++	select GENERIC_PHY
++	help
++	  Enable this to support the miphy transceiver (for SATA/PCIE/USB3)
++	  that is part of STMicroelectronics STiH407 SoC.
++
++config PHY_ST_SPEAR1310_MIPHY
++	tristate "ST SPEAR1310-MIPHY driver"
++	select GENERIC_PHY
++	depends on MACH_SPEAR1310 || COMPILE_TEST
++	help
++	  Support for ST SPEAr1310 MIPHY which can be used for PCIe and SATA.
++
++config PHY_ST_SPEAR1340_MIPHY
++	tristate "ST SPEAR1340-MIPHY driver"
++	select GENERIC_PHY
++	depends on MACH_SPEAR1340 || COMPILE_TEST
++	help
++	  Support for ST SPEAr1340 MIPHY which can be used for PCIe and SATA.
++
++config PHY_STIH407_USB
++	tristate "STMicroelectronics USB2 picoPHY driver for STiH407 family"
++	depends on RESET_CONTROLLER
++	depends on ARCH_STI || COMPILE_TEST
++	select GENERIC_PHY
++	help
++	  Enable this support to enable the picoPHY device used by USB2
++	  and USB3 controllers on STMicroelectronics STiH407 SoC families.
+diff --git a/drivers/phy/st/Makefile b/drivers/phy/st/Makefile
+new file mode 100644
+index 000000000000..e2adfe2166d2
+--- /dev/null
++++ b/drivers/phy/st/Makefile
+@@ -0,0 +1,4 @@
++obj-$(CONFIG_PHY_MIPHY28LP) 		+= phy-miphy28lp.o
++obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
++obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
++obj-$(CONFIG_PHY_STIH407_USB)		+= phy-stih407-usb.o
+diff --git a/drivers/phy/phy-miphy28lp.c b/drivers/phy/st/phy-miphy28lp.c
+similarity index 100%
+rename from drivers/phy/phy-miphy28lp.c
+rename to drivers/phy/st/phy-miphy28lp.c
+diff --git a/drivers/phy/phy-spear1310-miphy.c b/drivers/phy/st/phy-spear1310-miphy.c
+similarity index 100%
+rename from drivers/phy/phy-spear1310-miphy.c
+rename to drivers/phy/st/phy-spear1310-miphy.c
+diff --git a/drivers/phy/phy-spear1340-miphy.c b/drivers/phy/st/phy-spear1340-miphy.c
+similarity index 100%
+rename from drivers/phy/phy-spear1340-miphy.c
+rename to drivers/phy/st/phy-spear1340-miphy.c
+diff --git a/drivers/phy/phy-stih407-usb.c b/drivers/phy/st/phy-stih407-usb.c
+similarity index 100%
+rename from drivers/phy/phy-stih407-usb.c
+rename to drivers/phy/st/phy-stih407-usb.c
+diff --git a/drivers/phy/ti/Kconfig b/drivers/phy/ti/Kconfig
+new file mode 100644
+index 000000000000..20503562666c
+--- /dev/null
++++ b/drivers/phy/ti/Kconfig
+@@ -0,0 +1,78 @@
++#
++# Phy drivers for TI platforms
++#
++config PHY_DA8XX_USB
++	tristate "TI DA8xx USB PHY Driver"
++	depends on ARCH_DAVINCI_DA8XX
++	select GENERIC_PHY
++	select MFD_SYSCON
++	help
++	  Enable this to support the USB PHY on DA8xx SoCs.
++
++	  This driver controls both the USB 1.1 PHY and the USB 2.0 PHY.
++
++config PHY_DM816X_USB
++	tristate "TI dm816x USB PHY driver"
++	depends on ARCH_OMAP2PLUS
++	depends on USB_SUPPORT
++	select GENERIC_PHY
++	select USB_PHY
++	help
++	  Enable this for dm816x USB to work.
++
++config OMAP_CONTROL_PHY
++	tristate "OMAP CONTROL PHY Driver"
++	depends on ARCH_OMAP2PLUS || COMPILE_TEST
++	help
++	  Enable this to add support for the PHY part present in the control
++	  module. This driver has API to power on the USB2 PHY and to write to
++	  the mailbox. The mailbox is present only in omap4 and the register to
++	  power on the USB2 PHY is present in OMAP4 and OMAP5. OMAP5 has an
++	  additional register to power on USB3 PHY/SATA PHY/PCIE PHY
++	  (PIPE3 PHY).
++
++config OMAP_USB2
++	tristate "OMAP USB2 PHY Driver"
++	depends on ARCH_OMAP2PLUS
++	depends on USB_SUPPORT
++	select GENERIC_PHY
++	select USB_PHY
++	select OMAP_CONTROL_PHY
++	depends on OMAP_OCP2SCP
++	help
++	  Enable this to support the transceiver that is part of SOC. This
++	  driver takes care of all the PHY functionality apart from comparator.
++	  The USB OTG controller communicates with the comparator using this
++	  driver.
++
++config TI_PIPE3
++	tristate "TI PIPE3 PHY Driver"
++	depends on ARCH_OMAP2PLUS || COMPILE_TEST
++	select GENERIC_PHY
++	select OMAP_CONTROL_PHY
++	depends on OMAP_OCP2SCP
++	help
++	  Enable this to support the PIPE3 PHY that is part of TI SOCs. This
++	  driver takes care of all the PHY functionality apart from comparator.
++	  This driver interacts with the "OMAP Control PHY Driver" to power
++	  on/off the PHY.
++
++config PHY_TUSB1210
++	tristate "TI TUSB1210 ULPI PHY module"
++	depends on USB_ULPI_BUS
++	select GENERIC_PHY
++	help
++	  Support for TI TUSB1210 USB ULPI PHY.
++
++config TWL4030_USB
++	tristate "TWL4030 USB Transceiver Driver"
++	depends on TWL4030_CORE && REGULATOR_TWL4030 && USB_MUSB_OMAP2PLUS
++	depends on USB_SUPPORT
++	depends on USB_GADGET || !USB_GADGET # if USB_GADGET=m, this can't 'y'
++	select GENERIC_PHY
++	select USB_PHY
++	help
++	  Enable this to support the USB OTG transceiver on TWL4030
++	  family chips (including the TWL5030 and TPS659x0 devices).
++	  This transceiver supports high and full speed devices plus,
++	  in host mode, low speed.
+diff --git a/drivers/phy/ti/Makefile b/drivers/phy/ti/Makefile
+new file mode 100644
+index 000000000000..0cc3a1a557a3
+--- /dev/null
++++ b/drivers/phy/ti/Makefile
+@@ -0,0 +1,7 @@
++obj-$(CONFIG_PHY_DA8XX_USB)		+= phy-da8xx-usb.o
++obj-$(CONFIG_PHY_DM816X_USB)		+= phy-dm816x-usb.o
++obj-$(CONFIG_OMAP_CONTROL_PHY)		+= phy-omap-control.o
++obj-$(CONFIG_OMAP_USB2)			+= phy-omap-usb2.o
++obj-$(CONFIG_TI_PIPE3)			+= phy-ti-pipe3.o
++obj-$(CONFIG_PHY_TUSB1210)		+= phy-tusb1210.o
++obj-$(CONFIG_TWL4030_USB)		+= phy-twl4030-usb.o
+diff --git a/drivers/phy/phy-da8xx-usb.c b/drivers/phy/ti/phy-da8xx-usb.c
+similarity index 100%
+rename from drivers/phy/phy-da8xx-usb.c
+rename to drivers/phy/ti/phy-da8xx-usb.c
+diff --git a/drivers/phy/phy-dm816x-usb.c b/drivers/phy/ti/phy-dm816x-usb.c
+similarity index 100%
+rename from drivers/phy/phy-dm816x-usb.c
+rename to drivers/phy/ti/phy-dm816x-usb.c
+diff --git a/drivers/phy/phy-omap-control.c b/drivers/phy/ti/phy-omap-control.c
+similarity index 100%
+rename from drivers/phy/phy-omap-control.c
+rename to drivers/phy/ti/phy-omap-control.c
+diff --git a/drivers/phy/phy-omap-usb2.c b/drivers/phy/ti/phy-omap-usb2.c
+similarity index 100%
+rename from drivers/phy/phy-omap-usb2.c
+rename to drivers/phy/ti/phy-omap-usb2.c
+diff --git a/drivers/phy/phy-ti-pipe3.c b/drivers/phy/ti/phy-ti-pipe3.c
+similarity index 100%
+rename from drivers/phy/phy-ti-pipe3.c
+rename to drivers/phy/ti/phy-ti-pipe3.c
+diff --git a/drivers/phy/phy-tusb1210.c b/drivers/phy/ti/phy-tusb1210.c
+similarity index 100%
+rename from drivers/phy/phy-tusb1210.c
+rename to drivers/phy/ti/phy-tusb1210.c
+diff --git a/drivers/phy/phy-twl4030-usb.c b/drivers/phy/ti/phy-twl4030-usb.c
+similarity index 100%
+rename from drivers/phy/phy-twl4030-usb.c
+rename to drivers/phy/ti/phy-twl4030-usb.c
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+a Linux Foundation Collaborative Project
