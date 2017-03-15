@@ -1,33 +1,47 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 4/4] arm64: dts: rockchip: disable mailbox of RK3368 SoCs defaultly
-Date: Wed, 15 Mar 2017 14:17:23 +0800
-Message-ID: <1489558643-24148-1-git-send-email-jay.xu@rock-chips.com>
-References: <1489558443-23914-1-git-send-email-jay.xu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1489558443-23914-1-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: broonie@kernel.org, huangtao@rock-chips.com, wxt@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v2 1/2] dt-bindings: Add INNOLUX P079ZCA panel bindings
+Date: Wed, 15 Mar 2017 15:19:12 +0800
+Message-ID: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Default to disable mailbox in rk3368 core dts file.
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 90f72c2..36aeed0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -662,6 +662,7 @@
- 		clocks = <&cru PCLK_MAILBOX>;
- 		clock-names = "pclk_mailbox";
- 		#mbox-cells = <1>;
-+		status = "disabled";
- 	};
- 
- 	pmugrf: syscon@ff738000 {
--- 
-1.9.1
+VGhlIElubm9sdXggUDA3OVpDQSBpcyBhIDcuODUiIHBhbmVsIHdpdGggYSA3NjhYMTAyNCByZXNv
+bHV0aW9uIGFuZApjb25uZWN0ZWQgdG8gRFNJIHVzaW5nIGZvdXIgbGFuZXMuCgpTaWduZWQtb2Zm
+LWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgotLS0KCkNoYW5nZXMgaW4gdjI6
+IE5vbmUKCiAuLi4vYmluZGluZ3MvZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0ICAg
+ICB8IDIzICsrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyMyBpbnNlcnRp
+b25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2Rpc3BsYXkvcGFuZWwvaW5ub2x1eCxwMDc5emNhLnR4dAoKZGlmZiAtLWdpdCBhL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL2lubm9sdXgscDA3OXpj
+YS50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9p
+bm5vbHV4LHAwNzl6Y2EudHh0Cm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAuLjVj
+NzBhODMKLS0tIC9kZXYvbnVsbAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0CkBAIC0wLDAgKzEsMjMgQEAKK0lu
+bm9sdXggUDA3OVpDQSA3Ljg1IiA3Njh4MTAyNCBURlQgTENEIHBhbmVsCisKK1JlcXVpcmVkIHBy
+b3BlcnRpZXM6CistIGNvbXBhdGlibGU6IHNob3VsZCBiZSAiaW5ub2x1eCxwMDc5emNhIgorLSBy
+ZWc6IERTSSB2aXJ0dWFsIGNoYW5uZWwgb2YgdGhlIHBlcmlwaGVyYWwKKy0gcG93ZXItc3VwcGx5
+OiBwaGFuZGxlIG9mIHRoZSByZWd1bGF0b3IgdGhhdCBwcm92aWRlcyB0aGUgc3VwcGx5IHZvbHRh
+Z2UKKy0gZW5hYmxlLWdwaW9zOiBwYW5lbCBlbmFibGUgZ3BpbworCitPcHRpb25hbCBwcm9wZXJ0
+aWVzOgorLSBiYWNrbGlnaHQ6IHBoYW5kbGUgb2YgdGhlIGJhY2tsaWdodCBkZXZpY2UgYXR0YWNo
+ZWQgdG8gdGhlIHBhbmVsCisKK0V4YW1wbGU6CisKKwkmbWlwaV9kc2kgeworCQlwYW5lbCB7CisJ
+CQljb21wYXRpYmxlID0gImlubm9sdXgscDA3OXpjYSI7CisJCQlyZWcgPSA8MD47CisJCQlwb3dl
+ci1zdXBwbHkgPSA8Li4uPjsKKwkJCWJhY2tsaWdodCA9IDwmYmFja2xpZ2h0PjsKKwkJCWVuYWJs
+ZS1ncGlvcyA9IDwmZ3BpbzEgMTMgR1BJT19BQ1RJVkVfSElHSD47CisJCQlzdGF0dXMgPSAib2th
+eSI7CisJCX07CisJfTsKLS0gCjIuNi4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
