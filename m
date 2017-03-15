@@ -1,39 +1,60 @@
-From: <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 4/7] dt-bindings: soc: rockchip: grf: add support for rk3328
-Date: Wed, 15 Mar 2017 18:03:54 +0800
-Message-ID: <1489572237-6649-5-git-send-email-cl@rock-chips.com>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1489572237-6649-1-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] dt-bindings: add the grf clock for dw-mipi-dsi
+Date: Wed, 15 Mar 2017 11:10:54 +0100
+Message-ID: <2439695.Eb3n5AH02E@diego>
+References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+ <3304582.Whtjx7Nypf@diego> <58C90F8B.7070102@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <58C90F8B.7070102@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Signed-off-by: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- Documentation/devicetree/bindings/soc/rockchip/grf.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-index a0685c2..db4da0b 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-@@ -18,6 +18,7 @@ Required Properties:
-    - "rockchip,rk3288-grf", "syscon": for rk3288
-    - "rockchip,rk3368-grf", "syscon": for rk3368
-    - "rockchip,rk3399-grf", "syscon": for rk3399
-+   - "rockchip,rk3328-grf", "syscon": for rk3328
- - compatible: PMUGRF should be one of the following:
-    - "rockchip,rk3368-pmugrf", "syscon": for rk3368
-    - "rockchip,rk3399-pmugrf", "syscon": for rk3399
--- 
-1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+QW0gTWl0dHdvY2gsIDE1LiBNw6RyeiAyMDE3LCAxNzo1NToyMyBDRVQgc2NocmllYiBDaHJpcyBa
+aG9uZzoKPiBIaSBIZWlrbwo+IAo+IE9uIDAzLzE1LzIwMTcgMDU6MDMgUE0sIEhlaWtvIFN0w7xi
+bmVyIHdyb3RlOgo+ID4gQW0gTWl0dHdvY2gsIDE1LiBNw6RyeiAyMDE3LCAxNjo0MjozMCBDRVQg
+c2NocmllYiBDaHJpcyBaaG9uZzoKPiA+PiBGb3IgUkszMzk5LCB0aGUgZ3JmIGNsb2NrIHNob3Vs
+ZCBiZSBjb250cm9sbGVkIGJ5IGR3LW1pcGktZHNpIGRyaXZlciwKPiA+PiBhZGQgdGhlIGRlc2Ny
+aXB0aW9uIGZvciB0aGlzIGNsb2NrLgo+ID4+IAo+ID4+IFNpZ25lZC1vZmYtYnk6IENocmlzIFpo
+b25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4gPj4gLS0tCj4gPj4gCj4gPj4gICAuLi4vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAg
+ICAgIAo+ID4+ICAgfCAyCj4gPj4gCj4gPj4gKy0gMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
+KCspLCAxIGRlbGV0aW9uKC0pCj4gPj4gCj4gPj4gZGlmZiAtLWdpdAo+ID4+IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9j
+a2NoaXAKPiA+PiAudAo+ID4+IHh0Cj4gPj4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcAo+ID4+IC50Cj4gPj4g
+eHQgaW5kZXggMTg4ZjZmNy4uN2UxN2E2MCAxMDA2NDQKPiA+PiAtLS0KPiA+PiBhL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3Jv
+Y2tjaGlwCj4gPj4gLnQKPiA+PiB4dCArKysKPiA+PiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwCj4gPj4gLnQK
+PiA+PiAKPiA+PiB4dCBAQCAtMTAsNyArMTAsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ID4+
+ICAgLSBpbnRlcnJ1cHRzOiBSZXByZXNlbnQgdGhlIGNvbnRyb2xsZXIncyBpbnRlcnJ1cHQgdG8g
+dGhlIENQVShzKS4KPiA+PiAgIC0gY2xvY2tzLCBjbG9jay1uYW1lczogUGhhbmRsZXMgdG8gdGhl
+IGNvbnRyb2xsZXIncyBwbGwgcmVmZXJlbmNlCj4gPj4gICAKPiA+PiAgICAgY2xvY2socmVmKSBh
+bmQgQVBCIGNsb2NrKHBjbGspLiBGb3IgUkszMzk5LCBhIHBoeSBjb25maWcgY2xvY2sKPiA+PiAK
+PiA+PiAtICAocGh5X2NmZykgaXMgYWRkaXRpb25hbCByZXF1aXJlZC4gQXMgZGVzY3JpYmVkIGlu
+IFsxXS4KPiA+PiArICAocGh5X2NmZykgYW5kIGEgZ3JmIGNsb2NrKGdyZikgYXJlIGFkZGl0aW9u
+YWwgcmVxdWlyZWQuIEFzIGRlc2NyaWJlZAo+ID4+IGluCj4gPj4gWzFdLgo+ID4gCj4gPiB5b3Vy
+ICJncmYiIGNsb2NrIGlzIG9wdGlvbmFsLCBhcyBpdCBpcyBub3QgcHJlc2VudCBvbiBhbGwgc29j
+cyAobGlrZSB0aGUKPiA+IHJrMzI4OCkgc28gc2hvdWxkIHByb2JhYmx5IG1vdmUgdG8gYSBzZXBh
+cmF0ZSBzZWN0aW9uIGFuZCBub3QgYmUgaW4gdGhlCj4gPiByZXF1aXJlZCBwcm9wZXJ0aWVzCj4g
+Cj4gRm9yIFJLMzM5OSwgdGhlIGdyZiBjbG9jayBpcyByZXF1aXJlZCwgYWNjb3JkaW5nIHRvIHRo
+ZSBhZHZpY2UgcHJvdmlkZWQKPiBieSByb2JbMF0sCj4gcHV0IGl0IGludG8gInJlcXVpcmVkIHBy
+b3BlcnRpZXMgIiBpcyBiZXR0ZXIuCj4gWzBdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
+cGF0Y2gvOTIyMDE4Ny8KCm9rLCBidXQgaXQgc2hvdWxkIHByb2JhYmx5IGJlIG1hZGUgY2xlYXIs
+IHRoYXQgdGhpcyBpcyByazMzOTktc3BlY2lmaWMKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
