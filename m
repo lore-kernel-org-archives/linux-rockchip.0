@@ -1,39 +1,63 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/3] dt-bindings: add the grf clock for dw-mipi-dsi
-Date: Wed, 15 Mar 2017 16:42:30 +0800
-Message-ID: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 2/3] drm/rockchip/dsi: enable the grf clk before writing grf
+ registers
+Date: Wed, 15 Mar 2017 16:42:31 +0800
+Message-ID: <1489567352-3333-2-git-send-email-zyw@rock-chips.com>
+References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-For RK3399, the grf clock should be controlled by dw-mipi-dsi driver,
-add the description for this clock.
-
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt       | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-index 188f6f7..7e17a60 100644
---- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-+++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-@@ -10,7 +10,7 @@ Required properties:
- - interrupts: Represent the controller's interrupt to the CPU(s).
- - clocks, clock-names: Phandles to the controller's pll reference
-   clock(ref) and APB clock(pclk). For RK3399, a phy config clock
--  (phy_cfg) is additional required. As described in [1].
-+  (phy_cfg) and a grf clock(grf) are additional required. As described in [1].
- - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
- - ports: contain a port node with endpoint definitions as defined in [2].
-   For vopb,set the reg = <0> and set the reg = <1> for vopl.
--- 
-2.6.3
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Rm9yIFJLMzM5OSwgdGhlIGdyZiBjbGsgc2hvdWxkIGJlIGVuYWJsZWQgYmVmb3JlIHdyaXRpbmcg
+Z3JmIHJlZ2lzdGVycywKb3RoZXJ3aXNlIHRoZSByZWdpc3RlciB2YWx1ZSBjYW4gbm90IGJlIGNo
+YW5nZWQuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgot
+LS0KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDI0ICsrKysrKysr
+KysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKykKCmRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCmluZGV4IGY4NGY5YWUuLmQ4ZjI0ZjIgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCkBAIC0yOTEsNiArMjkxLDcgQEAg
+c3RydWN0IGR3X21pcGlfZHNpIHsKIAlzdHJ1Y3QgcmVnbWFwICpncmZfcmVnbWFwOwogCXZvaWQg
+X19pb21lbSAqYmFzZTsKIAorCXN0cnVjdCBjbGsgKmdyZl9jbGs7CiAJc3RydWN0IGNsayAqcGxs
+cmVmX2NsazsKIAlzdHJ1Y3QgY2xrICpwY2xrOwogCXN0cnVjdCBjbGsgKnBoeV9jZmdfY2xrOwpA
+QCAtOTc5LDYgKzk4MCwxNiBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2VuYWJs
+ZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiAJZHdfbWlwaV9kc2lfZHBoeV9pbnRlcmZh
+Y2VfY29uZmlnKGRzaSk7CiAJZHdfbWlwaV9kc2lfY2xlYXJfZXJyKGRzaSk7CiAKKwkvKgorCSAq
+IEZvciB0aGUgUkszMzk5LCB0aGUgY2xrIG9mIGdyZiBtdXN0IGJlIGVuYWJsZWQgYmVmb3JlIHdy
+aXRpbmcgZ3JmCisJICogcmVnaXN0ZXIuCisJICovCisJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
+KGRzaS0+Z3JmX2Nsayk7CisJaWYgKHJldCkgeworCQlkZXZfZXJyKGRzaS0+ZGV2LCAiRmFpbGVk
+IHRvIGVuYWJsZSBncmZfY2xrXG4iKTsKKwkJcmV0dXJuOworCX0KKwogCWlmIChwZGF0YS0+Z3Jm
+X2RzaTBfbW9kZV9yZWcpCiAJCXJlZ21hcF93cml0ZShkc2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5n
+cmZfZHNpMF9tb2RlX3JlZywKIAkJCSAgICAgcGRhdGEtPmdyZl9kc2kwX21vZGUpOwpAQCAtMTAw
+Myw2ICsxMDE0LDggQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3Ry
+dWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogCXJlZ21hcF93cml0ZShkc2ktPmdyZl9yZWdtYXAs
+IHBkYXRhLT5ncmZfc3dpdGNoX3JlZywgdmFsKTsKIAlkZXZfZGJnKGRzaS0+ZGV2LCAidm9wICVz
+IG91dHB1dCB0byBkc2kwXG4iLCAobXV4KSA/ICJMSVQiIDogIkJJRyIpOwogCWRzaS0+ZHBtc19t
+b2RlID0gRFJNX01PREVfRFBNU19PTjsKKworCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPmdy
+Zl9jbGspOwogfQogCiBzdGF0aWMgaW50CkBAIC0xMjM4LDYgKzEyNTEsMTcgQEAgc3RhdGljIGlu
+dCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
+dGVyLAogCQlkZXZfZGJnKGRldiwgImhhdmUgbm90IHBoeV9jZmdfY2xrXG4iKTsKIAl9CiAKKwlk
+c2ktPmdyZl9jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAiZ3JmIik7CisJaWYgKElTX0VSUihkc2kt
+PmdyZl9jbGspKSB7CisJCXJldCA9IFBUUl9FUlIoZHNpLT5ncmZfY2xrKTsKKwkJaWYgKHJldCAh
+PSAtRU5PRU5UKSB7CisJCQlkZXZfZXJyKGRldiwgIlVuYWJsZSB0byBnZXQgZ3JmX2NsazogJWRc
+biIsIHJldCk7CisJCQlyZXR1cm4gcmV0OworCQl9CisJCWRzaS0+Z3JmX2NsayA9IE5VTEw7CisJ
+CWRldl9kYmcoZGV2LCAiaGF2ZSBub3QgZ3JmX2Nsa1xuIik7CisJfQorCiAJcmV0ID0gY2xrX3By
+ZXBhcmVfZW5hYmxlKGRzaS0+cGxscmVmX2Nsayk7CiAJaWYgKHJldCkgewogCQlkZXZfZXJyKGRl
+diwgIiVzOiBGYWlsZWQgdG8gZW5hYmxlIHBsbHJlZl9jbGtcbiIsIF9fZnVuY19fKTsKLS0gCjIu
+Ni4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
