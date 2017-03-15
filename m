@@ -1,85 +1,56 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: rk3368 swap clust0 and clust1
-Date: Wed, 15 Mar 2017 17:30:16 +0800
-Message-ID: <1489570216-13899-1-git-send-email-jay.xu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: broonie@kernel.org, huangtao@rock-chips.com, wxt@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH 1/3] dt-bindings: add the grf clock for dw-mipi-dsi
+Date: Wed, 15 Mar 2017 17:55:23 +0800
+Message-ID: <58C90F8B.7070102@rock-chips.com>
+References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+ <3304582.Whtjx7Nypf@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <3304582.Whtjx7Nypf@diego>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Before this patch, clust1 has little core0~3, clust0 has big core0~3
-cpu_l | cpu0 |
-cpu_l | cpu1 | clust1
-cpu_l | cpu2 |
-cpu_l | cpu3 |
-----------------------
-cpu_b | cpu4 |
-cpu_b | cpu5 | clust0
-cpu_b | cpu6 |
-cpu_b | cpu7 |
-
-With this patch, clust0 will have little core0~3, clust1 will have big core0~3
-cpu_l | cpu0 |
-cpu_l | cpu1 | clust0
-cpu_l | cpu2 |
-cpu_l | cpu3 |
-----------------------
-cpu_b | cpu4 |
-cpu_b | cpu5 | clust1
-cpu_b | cpu6 |
-cpu_b | cpu7 |
-
-It makes no other change, just keep same with other SoCs definations.
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index a635adc..7b9d1e6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -79,31 +79,31 @@
- 		cpu-map {
- 			cluster0 {
- 				core0 {
--					cpu = <&cpu_b0>;
-+					cpu = <&cpu_l0>;
- 				};
- 				core1 {
--					cpu = <&cpu_b1>;
-+					cpu = <&cpu_l1>;
- 				};
- 				core2 {
--					cpu = <&cpu_b2>;
-+					cpu = <&cpu_l2>;
- 				};
- 				core3 {
--					cpu = <&cpu_b3>;
-+					cpu = <&cpu_l3>;
- 				};
- 			};
- 
- 			cluster1 {
- 				core0 {
--					cpu = <&cpu_l0>;
-+					cpu = <&cpu_b0>;
- 				};
- 				core1 {
--					cpu = <&cpu_l1>;
-+					cpu = <&cpu_b1>;
- 				};
- 				core2 {
--					cpu = <&cpu_l2>;
-+					cpu = <&cpu_b2>;
- 				};
- 				core3 {
--					cpu = <&cpu_l3>;
-+					cpu = <&cpu_b3>;
- 				};
- 			};
- 		};
--- 
-1.9.1
+SGkgSGVpa28KCk9uIDAzLzE1LzIwMTcgMDU6MDMgUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+
+IEFtIE1pdHR3b2NoLCAxNS4gTcOkcnogMjAxNywgMTY6NDI6MzAgQ0VUIHNjaHJpZWIgQ2hyaXMg
+Wmhvbmc6Cj4+IEZvciBSSzMzOTksIHRoZSBncmYgY2xvY2sgc2hvdWxkIGJlIGNvbnRyb2xsZWQg
+YnkgZHctbWlwaS1kc2kgZHJpdmVyLAo+PiBhZGQgdGhlIGRlc2NyaXB0aW9uIGZvciB0aGlzIGNs
+b2NrLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29t
+Pgo+PiAtLS0KPj4KPj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
+L2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAgICAgICB8IDIKPj4gKy0gMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYgLS1naXQKPj4gYS9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2Rz
+aV9yb2NrY2hpcC50Cj4+IHh0Cj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudAo+PiB4dCBpbmRleCAxODhm
+NmY3Li43ZTE3YTYwIDEwMDY0NAo+PiAtLS0KPj4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50Cj4+IHh0ICsr
+Kwo+PiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
+L2R3X21pcGlfZHNpX3JvY2tjaGlwLnQKPj4geHQgQEAgLTEwLDcgKzEwLDcgQEAgUmVxdWlyZWQg
+cHJvcGVydGllczoKPj4gICAtIGludGVycnVwdHM6IFJlcHJlc2VudCB0aGUgY29udHJvbGxlcidz
+IGludGVycnVwdCB0byB0aGUgQ1BVKHMpLgo+PiAgIC0gY2xvY2tzLCBjbG9jay1uYW1lczogUGhh
+bmRsZXMgdG8gdGhlIGNvbnRyb2xsZXIncyBwbGwgcmVmZXJlbmNlCj4+ICAgICBjbG9jayhyZWYp
+IGFuZCBBUEIgY2xvY2socGNsaykuIEZvciBSSzMzOTksIGEgcGh5IGNvbmZpZyBjbG9jawo+PiAt
+ICAocGh5X2NmZykgaXMgYWRkaXRpb25hbCByZXF1aXJlZC4gQXMgZGVzY3JpYmVkIGluIFsxXS4K
+Pj4gKyAgKHBoeV9jZmcpIGFuZCBhIGdyZiBjbG9jayhncmYpIGFyZSBhZGRpdGlvbmFsIHJlcXVp
+cmVkLiBBcyBkZXNjcmliZWQgaW4KPj4gWzFdLgo+IHlvdXIgImdyZiIgY2xvY2sgaXMgb3B0aW9u
+YWwsIGFzIGl0IGlzIG5vdCBwcmVzZW50IG9uIGFsbCBzb2NzIChsaWtlIHRoZQo+IHJrMzI4OCkg
+c28gc2hvdWxkIHByb2JhYmx5IG1vdmUgdG8gYSBzZXBhcmF0ZSBzZWN0aW9uIGFuZCBub3QgYmUg
+aW4gdGhlCj4gcmVxdWlyZWQgcHJvcGVydGllcwpGb3IgUkszMzk5LCB0aGUgZ3JmIGNsb2NrIGlz
+IHJlcXVpcmVkLCBhY2NvcmRpbmcgdG8gdGhlIGFkdmljZSBwcm92aWRlZCAKYnkgcm9iWzBdLApw
+dXQgaXQgaW50byAicmVxdWlyZWQgcHJvcGVydGllcyAiIGlzIGJldHRlci4KWzBdIGh0dHBzOi8v
+cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTIyMDE4Ny8KPgo+IEhlaWtvCj4KPgo+CgotLSAK
+Q2hyaXMgWmhvbmcKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
