@@ -1,234 +1,80 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RFC PATCH 2/4] pinctrl: rockchip: convert to raw spinlock
-Date: Wed, 15 Mar 2017 17:50:35 +0100
-Message-ID: <4903591.4kPBt5DNFI@phil>
-References: <20170313183813.3582-1-john@metanate.com> <39203480.lbsBriduiK@phil> <2549921.4Nq1JGygY8@phil>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH 2/3] drm/rockchip/dsi: enable the grf clk before writing
+ grf registers
+Date: Wed, 15 Mar 2017 16:55:11 +0000
+Message-ID: <20170315165511.336783bb.john@metanate.com>
+References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+ <1489567352-3333-2-git-send-email-zyw@rock-chips.com>
+ <20170315164726.GA54312@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <2549921.4Nq1JGygY8@phil>
-Sender: linux-gpio-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170315164726.GA54312@google.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>, Chris Zhong <zyw@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 15. März 2017, 17:41:21 CET schrieb Heiko Stuebner:
-> Am Mittwoch, 15. März 2017, 17:28:56 CET schrieb Heiko Stuebner:
-> > Am Montag, 13. März 2017, 18:38:11 CET schrieb John Keeping:
-> > > This lock is used from rockchip_irq_set_type() which is part of the
-> > > irq_chip implementation and thus must use raw_spinlock_t as documented
-> > > in Documentation/gpio/driver.txt.
-> > > 
-> > > Signed-off-by: John Keeping <john@metanate.com>
-> > 
-> > Looks good
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> 
-> I have to take that back.
-> This leaves the spin_lock in the schmitt trigger unconverted and produces
-> compile issues.
-> 
-> So it either needs to be converted or removed - I guess it should be
-> removed.
-
-Sorry for spamming, but forgot to add, with that problem above fixed, this 
-patch (and all others) can of course keep my Reviewed-by :-)
-
-
-Heiko
-
-> > > ---
-> > > 
-> > >  drivers/pinctrl/pinctrl-rockchip.c | 30 +++++++++++++++---------------
-> > >  1 file changed, 15 insertions(+), 15 deletions(-)
-> > > 
-> > > diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> > > b/drivers/pinctrl/pinctrl-rockchip.c index 1defe83a5c4d..2f963aea64b2
-> > > 100644
-> > > --- a/drivers/pinctrl/pinctrl-rockchip.c
-> > > +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> > > @@ -163,7 +163,7 @@ struct rockchip_pin_bank {
-> > > 
-> > >  	struct irq_domain		*domain;
-> > >  	struct gpio_chip		gpio_chip;
-> > >  	struct pinctrl_gpio_range	grange;
-> > > 
-> > > -	spinlock_t			slock;
-> > > +	raw_spinlock_t			slock;
-> > > 
-> > >  	u32				toggle_edge_mode;
-> > >  
-> > >  };
-> > > 
-> > > @@ -1292,14 +1292,14 @@ static int rockchip_set_pull(struct
-> > > rockchip_pin_bank *bank,
-> > > 
-> > >  	switch (ctrl->type) {
-> > > 
-> > >  	case RK2928:
-> > > -		spin_lock_irqsave(&bank->slock, flags);
-> > > +		raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  		data = BIT(bit + 16);
-> > >  		if (pull == PIN_CONFIG_BIAS_DISABLE)
-> > >  		
-> > >  			data |= BIT(bit);
-> > >  		
-> > >  		ret = regmap_write(regmap, reg, data);
-> > > 
-> > > -		spin_unlock_irqrestore(&bank->slock, flags);
-> > > +		raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  		break;
-> > >  	
-> > >  	case RK1108:
-> > > 
-> > >  	case RK3188:
-> > > @@ -1433,7 +1433,7 @@ static int _rockchip_pmx_gpio_set_direction(struct
-> > > gpio_chip *chip, return ret;
-> > > 
-> > >  	clk_enable(bank->clk);
-> > > 
-> > > -	spin_lock_irqsave(&bank->slock, flags);
-> > > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> > >  	/* set bit to 1 for output, 0 for input */
-> > > 
-> > > @@ -1443,7 +1443,7 @@ static int _rockchip_pmx_gpio_set_direction(struct
-> > > gpio_chip *chip, data &= ~BIT(pin);
-> > > 
-> > >  	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-> > > 
-> > > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  	clk_disable(bank->clk);
-> > >  	
-> > >  	return 0;
-> > > 
-> > > @@ -1874,7 +1874,7 @@ static void rockchip_gpio_set(struct gpio_chip
-> > > *gc,
-> > > unsigned offset, int value) u32 data;
-> > > 
-> > >  	clk_enable(bank->clk);
-> > > 
-> > > -	spin_lock_irqsave(&bank->slock, flags);
-> > > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  	data = readl(reg);
-> > >  	data &= ~BIT(offset);
-> > > 
-> > > @@ -1882,7 +1882,7 @@ static void rockchip_gpio_set(struct gpio_chip
-> > > *gc,
-> > > unsigned offset, int value) data |= BIT(offset);
-> > > 
-> > >  	writel(data, reg);
-> > > 
-> > > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  	clk_disable(bank->clk);
-> > >  
-> > >  }
-> > > 
-> > > @@ -1994,7 +1994,7 @@ static void rockchip_irq_demux(struct irq_desc
-> > > *desc)
-> > > 
-> > >  			data = readl_relaxed(bank->reg_base + GPIO_EXT_PORT);
-> > >  			do {
-> > > 
-> > > -				spin_lock_irqsave(&bank->slock, flags);
-> > > +				raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  				polarity = readl_relaxed(bank->reg_base +
-> > >  				
-> > >  							 GPIO_INT_POLARITY);
-> > > 
-> > > @@ -2005,7 +2005,7 @@ static void rockchip_irq_demux(struct irq_desc
-> > > *desc)
-> > > 
-> > >  				writel(polarity,
-> > >  				
-> > >  				       bank->reg_base + GPIO_INT_POLARITY);
-> > > 
-> > > -				spin_unlock_irqrestore(&bank->slock, flags);
-> > > +				raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  				data_old = data;
-> > >  				data = readl_relaxed(bank->reg_base +
-> > > 
-> > > @@ -2036,20 +2036,20 @@ static int rockchip_irq_set_type(struct irq_data
-> > > *d, unsigned int type) return ret;
-> > > 
-> > >  	clk_enable(bank->clk);
-> > > 
-> > > -	spin_lock_irqsave(&bank->slock, flags);
-> > > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> > >  	data &= ~mask;
-> > >  	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-> > > 
-> > > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  	if (type & IRQ_TYPE_EDGE_BOTH)
-> > >  	
-> > >  		irq_set_handler_locked(d, handle_edge_irq);
-> > >  	
-> > >  	else
-> > >  	
-> > >  		irq_set_handler_locked(d, handle_level_irq);
-> > > 
-> > > -	spin_lock_irqsave(&bank->slock, flags);
-> > > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > > 
-> > >  	irq_gc_lock(gc);
-> > >  	
-> > >  	level = readl_relaxed(gc->reg_base + GPIO_INTTYPE_LEVEL);
-> > > 
-> > > @@ -2092,7 +2092,7 @@ static int rockchip_irq_set_type(struct irq_data
-> > > *d,
-> > > unsigned int type) break;
-> > > 
-> > >  	default:
-> > >  		irq_gc_unlock(gc);
-> > > 
-> > > -		spin_unlock_irqrestore(&bank->slock, flags);
-> > > +		raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  		clk_disable(bank->clk);
-> > >  		return -EINVAL;
-> > >  	
-> > >  	}
-> > > 
-> > > @@ -2101,7 +2101,7 @@ static int rockchip_irq_set_type(struct irq_data
-> > > *d,
-> > > unsigned int type) writel_relaxed(polarity, gc->reg_base +
-> > > GPIO_INT_POLARITY);
-> > > 
-> > >  	irq_gc_unlock(gc);
-> > > 
-> > > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > > 
-> > >  	clk_disable(bank->clk);
-> > >  	
-> > >  	return 0;
-> > > 
-> > > @@ -2383,7 +2383,7 @@ static struct rockchip_pin_ctrl
-> > > *rockchip_pinctrl_get_soc_data( for (i = 0; i < ctrl->nr_banks; ++i,
-> > > ++bank) {
-> > > 
-> > >  		int bank_pins = 0;
-> > > 
-> > > -		spin_lock_init(&bank->slock);
-> > > +		raw_spin_lock_init(&bank->slock);
-> > > 
-> > >  		bank->drvdata = d;
-> > >  		bank->pin_base = ctrl->nr_pins;
-> > >  		ctrl->nr_pins += bank->nr_pins;
-
-
+T24gV2VkLCAxNSBNYXIgMjAxNyAwOTo0NzoyOSAtMDcwMCwgQnJpYW4gTm9ycmlzIHdyb3RlOgoK
+PiBPbiBXZWQsIE1hciAxNSwgMjAxNyBhdCAwNDo0MjozMVBNICswODAwLCBDaHJpcyBaaG9uZyB3
+cm90ZToKPiA+IEZvciBSSzMzOTksIHRoZSBncmYgY2xrIHNob3VsZCBiZSBlbmFibGVkIGJlZm9y
+ZSB3cml0aW5nIGdyZiByZWdpc3RlcnMsCj4gPiBvdGhlcndpc2UgdGhlIHJlZ2lzdGVyIHZhbHVl
+IGNhbiBub3QgYmUgY2hhbmdlZC4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcg
+PHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+IC0tLQo+ID4gCj4gPiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2R3LW1pcGktZHNpLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICAx
+IGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gaW5kZXggZjg0ZjlhZS4uZDhmMjRmMiAxMDA2NDQKPiA+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gQEAgLTI5MSw2ICsyOTEs
+NyBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2kgewo+ID4gIAlzdHJ1Y3QgcmVnbWFwICpncmZfcmVnbWFw
+Owo+ID4gIAl2b2lkIF9faW9tZW0gKmJhc2U7Cj4gPiAgCj4gPiArCXN0cnVjdCBjbGsgKmdyZl9j
+bGs7Cj4gPiAgCXN0cnVjdCBjbGsgKnBsbHJlZl9jbGs7Cj4gPiAgCXN0cnVjdCBjbGsgKnBjbGs7
+Cj4gPiAgCXN0cnVjdCBjbGsgKnBoeV9jZmdfY2xrOwo+ID4gQEAgLTk3OSw2ICs5ODAsMTYgQEAg
+c3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVy
+ICplbmNvZGVyKQo+ID4gIAlkd19taXBpX2RzaV9kcGh5X2ludGVyZmFjZV9jb25maWcoZHNpKTsK
+PiA+ICAJZHdfbWlwaV9kc2lfY2xlYXJfZXJyKGRzaSk7Cj4gPiAgCj4gPiArCS8qCj4gPiArCSAq
+IEZvciB0aGUgUkszMzk5LCB0aGUgY2xrIG9mIGdyZiBtdXN0IGJlIGVuYWJsZWQgYmVmb3JlIHdy
+aXRpbmcgZ3JmCj4gPiArCSAqIHJlZ2lzdGVyLgo+ID4gKwkgKi8KPiA+ICsJcmV0ID0gY2xrX3By
+ZXBhcmVfZW5hYmxlKGRzaS0+Z3JmX2Nsayk7Cj4gPiArCWlmIChyZXQpIHsKPiA+ICsJCWRldl9l
+cnIoZHNpLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIGdyZl9jbGtcbiIpOwo+ID4gKwkJcmV0dXJu
+Owo+ID4gKwl9Cj4gPiArCj4gPiAgCWlmIChwZGF0YS0+Z3JmX2RzaTBfbW9kZV9yZWcpCj4gPiAg
+CQlyZWdtYXBfd3JpdGUoZHNpLT5ncmZfcmVnbWFwLCBwZGF0YS0+Z3JmX2RzaTBfbW9kZV9yZWcs
+Cj4gPiAgCQkJICAgICBwZGF0YS0+Z3JmX2RzaTBfbW9kZSk7Cj4gPiBAQCAtMTAwMyw2ICsxMDE0
+LDggQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9l
+bmNvZGVyICplbmNvZGVyKQo+ID4gIAlyZWdtYXBfd3JpdGUoZHNpLT5ncmZfcmVnbWFwLCBwZGF0
+YS0+Z3JmX3N3aXRjaF9yZWcsIHZhbCk7Cj4gPiAgCWRldl9kYmcoZHNpLT5kZXYsICJ2b3AgJXMg
+b3V0cHV0IHRvIGRzaTBcbiIsIChtdXgpID8gIkxJVCIgOiAiQklHIik7Cj4gPiAgCWRzaS0+ZHBt
+c19tb2RlID0gRFJNX01PREVfRFBNU19PTjsKPiA+ICsKPiA+ICsJY2xrX2Rpc2FibGVfdW5wcmVw
+YXJlKGRzaS0+Z3JmX2Nsayk7Cj4gPiAgfQo+ID4gIAo+ID4gIHN0YXRpYyBpbnQKPiA+IEBAIC0x
+MjM4LDYgKzEyNTEsMTcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ID4gIAkJZGV2X2RiZyhkZXYsICJoYXZl
+IG5vdCBwaHlfY2ZnX2Nsa1xuIik7Cj4gPiAgCX0KPiA+ICAKPiA+ICsJZHNpLT5ncmZfY2xrID0g
+ZGV2bV9jbGtfZ2V0KGRldiwgImdyZiIpOwo+ID4gKwlpZiAoSVNfRVJSKGRzaS0+Z3JmX2Nsaykp
+IHsKPiA+ICsJCXJldCA9IFBUUl9FUlIoZHNpLT5ncmZfY2xrKTsKPiA+ICsJCWlmIChyZXQgIT0g
+LUVOT0VOVCkgewo+ID4gKwkJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdldCBncmZfY2xrOiAl
+ZFxuIiwgcmV0KTsgIAo+IAo+IElmIHlvdSdyZSBnb2luZyB0byBwcmludCBhbiBlcnJvciwgeW91
+IHNob3VsZCBwcm9iYWJseSBjaGVjayBmb3IKPiAtRVBST0JFX0RFRkVSLiBUaGlzIGRyaXZlciBp
+c24ndCBxdWl0ZSBjb25zaXN0ZW50IGFib3V0IHRoaXMuCj4gCj4gPiArCQkJcmV0dXJuIHJldDsK
+PiA+ICsJCX0KPiA+ICsJCWRzaS0+Z3JmX2NsayA9IE5VTEw7Cj4gPiArCQlkZXZfZGJnKGRldiwg
+ImhhdmUgbm90IGdyZl9jbGtcbiIpOyAgCj4gCj4gVGhlIHdvcmRpbmcgaXMgYSBsaXR0bGUgYXdr
+d2FyZDsgbWF5YmUgIm5vIGdyZl9jbGsgcHJvdmlkZWRcbiI/Cj4gCj4gQWxzbywgdG8gYmUgY2xl
+YXIsIHRoaXMgY2xvY2sgaXMgcmVxdWlyZWQgZm9yIFJLMzM5OSwgYnV0IG5vdCBmb3Igb3RoZXJz
+Cj4gKGUuZy4sIFJLMzI4OCkgcmlnaHQ/IEkgZ3Vlc3MgdGhpcyBtYWtlcyBzZW5zZSB0aGVuLCB0
+byBqdXN0IHRyZWF0IGl0IGFzCj4gb3B0aW9uYWwgZm9yIGFsbCBjYXNlcywgZXZlbiBpZiB5b3Ug
+ZG9jdW1lbnQgaXQgYXMgInJlcXVpcmVkIiBmb3IKPiBSSzMzOTkuCgpJZiBSSzMzOTkgaXMgYnJv
+a2VuIHdpdGhvdXQgZ3JmX2NsaywgSSB3b25kZXIgaWYgdGhlcmUgc2hvdWxkIGJlIGEgZmxhZwpp
+biBkd19taXBpX2RzaV9wbGF0X2RhdGEgc28gdGhhdCB0aGUgZHJpdmVyIGNhbiBlbmZvcmNlICJy
+ZXF1aXJlZCBmb3IKUkszMzk5Ii4KCgpKb2huCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
