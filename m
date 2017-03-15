@@ -1,57 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 0/7] initialize dtsi file and dts file for RK3328 SoCs
-Date: Wed, 15 Mar 2017 12:11:54 +0100
-Message-ID: <2592337.TJConaiLTi@diego>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [RFC PATCH 0/4] pinctrl: rockchip: PREEMPT_RT_FULL fixes
+Date: Wed, 15 Mar 2017 14:12:39 +0100
+Message-ID: <CACRpkdZXBZr_Syur3r=3GTjjrCPx4bgj0g5iNSN6rdikqkww4w@mail.gmail.com>
+References: <20170313183813.3582-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1489572237-6649-1-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, yhx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170313183813.3582-1-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>, Julia Cartwright <julia@ni.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Liang,
+On Mon, Mar 13, 2017 at 7:38 PM, John Keeping <john@metanate.com> wrote:
 
-Am Mittwoch, 15. M=E4rz 2017, 18:03:50 CET schrieb cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org:
-> From: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> =
+> As described in Documentation/gpio/driver.txt, we should not be using
+> sleepable APIs in the irqchip implementation.  Since this includes the
+> regmap API, this patch series ends up moving the mux setup for IRQs into
+> an irq_bus_sync_unlock() handler which may result in the IRQ being
+> configured before the port has been muxed as a GPIO.
+>
+> I've marked the series as RFC because I'm not sure if this is the best
+> way to accomplish this or if there is another approach that is cleaner.
+> Also, the first patch may not be correct on RK3399 because I originally
+> wrote the patch for RK3288 on top of v4.4 where all drive updates only
+> affect a single register.  We don't need locking in this case because
+> regmap_update_bits() takes a lock on the regmap internally, but if these
+> two registers need to be updated atomically then another lock will
+> be required here - slock cannot be used if it is converted to a raw
+> spinlock since with full RT preemption the regmap's spinlock may sleep.
 
-> These patchs depend on pinctrl patchs as below:
-> =
+Nice work! It all looks good to me, let's see what Heiko says.
 
-> https://patchwork.kernel.org/patch/9566427/
-> https://patchwork.kernel.org/patch/9566425/
-> https://patchwork.kernel.org/patch/9566431/
-> =
+Please keep Julia Cartwright on the CC for this patch series, she is
+doing some coccinelle-based rewrites to use raw spinlocks as we
+speak, and she knows this stuff.
 
-> Chen Liang (7):
->   include: dt-bindings: Add pin function index definition for rockchip
->     pinctrl
->   dt-bindings: iio: rockchip-saradc: add support for rk3328
->   dt-bindings: i2c: rk3x: add support for rk3328
->   dt-bindings: soc: rockchip: grf: add support for rk3328
+She has not targeted the Rockchip driver yet, I guess because of
+its complexity.
 
-both my inbox as well as the linux-rockchip list did only get patches 1-4 i=
-t =
-
-seems?
-
->   arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
->   arm64: dts: rockchip: add dts file for RK3328 evaluation board
->   dt-bindings: document rockchip rk3328-evb board
-
-So right now I'm missing these next 3. Did something go wrong when sending?
-
-
-Heiko
+Yours,
+Linus Walleij
