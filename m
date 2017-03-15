@@ -1,64 +1,59 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RFC PATCH 2/4] pinctrl: rockchip: convert to raw spinlock
-Date: Wed, 15 Mar 2017 18:12:53 +0100
-Message-ID: <5561804.yNijhH7yqI@phil>
-References: <20170313183813.3582-1-john@metanate.com>
- <2549921.4Nq1JGygY8@phil> <20170315165900.63f32371.john@metanate.com>
+Subject: Re: [PATCH v3] drm/rockchip: Refactor the component match logic.
+Date: Wed, 15 Mar 2017 18:23:27 +0100
+Message-ID: <2110531.OeyX13mlk5@phil>
+References: <1489573247-9628-1-git-send-email-jeffy.chen@rock-chips.com>
+ <19101003.9xjQ92OS5C@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170315165900.63f32371.john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Keeping <john@metanate.com>
-Cc: linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <19101003.9xjQ92OS5C@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 15. M=E4rz 2017, 16:59:00 CET schrieb John Keeping:
-> On Wed, 15 Mar 2017 17:41:21 +0100, Heiko Stuebner wrote:
-> > Am Mittwoch, 15. M=E4rz 2017, 17:28:56 CET schrieb Heiko Stuebner:
-> > > Am Montag, 13. M=E4rz 2017, 18:38:11 CET schrieb John Keeping:
-> > > > This lock is used from rockchip_irq_set_type() which is part of the
-> > > > irq_chip implementation and thus must use raw_spinlock_t as documen=
-ted
-> > > > in Documentation/gpio/driver.txt.
-> > > > =
-
-> > > > Signed-off-by: John Keeping <john@metanate.com>
-> > > =
-
-> > > Looks good
-> > > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> > =
-
-> > I have to take that back.
-> > This leaves the spin_lock in the schmitt trigger unconverted and produc=
-es
-> > compile issues.
-> > =
-
-> > So it either needs to be converted or removed - I guess it should be
-> > removed.
-> Yes, it looks like it should be removed - the patches adding that hadn't
-> been applied when I sent this out!
-> =
-
-> I'll rebase and add the schmitt trigger change to patch 1 in a day or
-> two, after giving a bit more time for reviews.
-
-I don't think you need to wait overly long. Linus seems happy, I'm happy an=
-d =
-
-the schmitt issue in the open might prevent people from taking a closer loo=
-k.
-
-
-Heiko
+QW0gTWl0dHdvY2gsIDE1LiBNw6RyeiAyMDE3LCAxODowMDowNCBDRVQgc2NocmllYiBIZWlrbyBT
+dHVlYm5lcjoKPiBBbSBNaXR0d29jaCwgMTUuIE3DpHJ6IDIwMTcsIDE4OjIwOjQ3IENFVCBzY2hy
+aWViIEplZmZ5IENoZW46Cj4gPiBDdXJyZW50bHkgd2UgYXJlIGFkZGluZyBhbGwgY29tcG9uZW50
+cyBmcm9tIHRoZSBkdHMsIGlmIG9uZSBvZiB0aGVpcgo+ID4gZHJpdmVycyBiZWVuIGRpc2FibGVk
+LCB3ZSB3b3VsZCBub3QgYmUgYWJsZSB0byBicmluZyB1cCBvdGhlcnMuCj4gPiAKPiA+IFJlZmFj
+dG9yIGNvbXBvbmVudCBtYXRjaCBsb2dpYywgZm9sbG93IGV4eW5vcyBkcm0uCj4gPiAKPiA+IFNp
+Z25lZC1vZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiBS
+ZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KPiAKPiBUaGlz
+IHJlbGlhYmx5IHByb2R1Y2VzIG51bGwgcG9pbnRlciBkZXJlZmVyZW5jZSBlcnJvcnMgaW4KPiAJ
+X19wbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIgY2FsbGVkIGZyb20gcm9ja2NoaXBfZHJtX2luaXQK
+PiBvbiBhdCBsZWFzdCByazMwMzYgYW5kIHJrMzI4OCAocHJvYmFibHkgbW9yZSkgd2hlbiBhcHBs
+aWVkIG9uIHRvcCBvZgo+IExpbnVzJyB0cmVlIGZyb20gdG9kYXkuIExvZyBhdHRhY2hlZCBhbmQg
+Um9ja2NoaXAgZHJtIGNvbXBpbGVkIGFzIG1vZHVsZS4KPiAKPiBJJ20gY3VycmVudGx5IGR1ZyBp
+bnRvIG90aGVyIGFyZWFzLCBzbyBoYWRuJ3QgaGF2ZSB0aW1lIHRvIGludmVzdGlnYXRlCj4gZnVy
+dGhlciB5ZXQuCgo+ICsjZGVmaW5lIERSVl9QVFIoZHJ2LCBjb25kKSAoSVNfRU5BQkxFRChjb25k
+KSA/ICZkcnYgOiBOVUxMKQo+ICsKPiArc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgKnJv
+Y2tjaGlwX2RybV9jb21wX2RydnNbXSA9IHsKPiArCSZ2b3BfcGxhdGZvcm1fZHJpdmVyLAo+ICsJ
+RFJWX1BUUihyb2NrY2hpcF9kcF9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9BTkFMT0dJWF9EUCks
+Cj4gKwlEUlZfUFRSKGNkbl9kcF9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9DRE5fRFApLAo+ICsJ
+RFJWX1BUUihkd19oZG1pX3JvY2tjaGlwX3BsdGZtX2RyaXZlciwgQ09ORklHX1JPQ0tDSElQX0RX
+X0hETUkpLAo+ICsJRFJWX1BUUihkd19taXBpX2RzaV9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9E
+V19NSVBJX0RTSSksCj4gKwlEUlZfUFRSKGlubm9faGRtaV9kcml2ZXIsIENPTkZJR19ST0NLQ0hJ
+UF9JTk5PX0hETUkpLAo+ICt9OwoKWy4uLl0KCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3Jl
+Z2lzdGVyX2RyaXZlcnModm9pZCkKPiArewo+ICsJaW50IGksIHJldDsKPiArCj4gKwlmb3IgKGkg
+PSAwOyBpIDwgQVJSQVlfU0laRShyb2NrY2hpcF9kcm1fY29tcF9kcnZzKTsgaSsrKSB7Cj4gKwkJ
+cmV0ID0gcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKHJvY2tjaGlwX2RybV9jb21wX2RydnNbaV0p
+Owo+ICsJCWlmIChyZXQpCj4gKwkJCWdvdG8gZXJyX3VucmVnOwo+ICsJfQoKVGhpcyBvZiBjb3Vy
+c2Ugd29uJ3Qgd29yayBpbiB0aGUgTlVMTCBjYXNlLCBhcyBwbGF0Zm9ybV9kcml2ZXJfcmVnaXN0
+ZXIgYWx3YXlzIApkZXJlZmVyZW5jZXMgaXRzIHBhcmFtZXRlciBbMF0sIHNvIHlvdSBzaG91bGQg
+b25seSBjYWxsIGl0IGZvciB0aGUgYWN0dWFsIG5vbi0KbnVsbCBhcnJheSBlbGVtZW50cyAtIG9m
+IGNvdXJzZSBzYW1lIGZvciB1bnJlZ2lzdGVyLgoKCkhlaWtvCgpbMF0gaHR0cDovL2x4ci5mcmVl
+LWVsZWN0cm9ucy5jb20vc291cmNlL2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jI0w2MTcKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
