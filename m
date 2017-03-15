@@ -1,178 +1,57 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v2 2/5] linux: mfd: rk808: add rk805 regs addr and ID
-Date: Wed, 15 Mar 2017 11:04:57 +0000
-Message-ID: <20170315110457.ytpazrj4e6bapzbz@dell>
-References: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
- <1489111252-22175-3-git-send-email-zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 0/7] initialize dtsi file and dts file for RK3328 SoCs
+Date: Wed, 15 Mar 2017 12:11:54 +0100
+Message-ID: <2592337.TJConaiLTi@diego>
+References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1489111252-22175-3-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, w.egorov@phytec.de
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1489572237-6649-1-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, yhx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Subject line should be "mfd: rk808: ..."
+Hi Liang,
 
-On Fri, 10 Mar 2017, Elaine Zhang wrote:
+Am Mittwoch, 15. M=E4rz 2017, 18:03:50 CET schrieb cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org:
+> From: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> =
 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  include/linux/mfd/rk808.h | 115 ++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 115 insertions(+)
+> These patchs depend on pinctrl patchs as below:
+> =
 
-Other than that:
+> https://patchwork.kernel.org/patch/9566427/
+> https://patchwork.kernel.org/patch/9566425/
+> https://patchwork.kernel.org/patch/9566431/
+> =
 
-For my own reference:
-  Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-  
-> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-> index 54feb140c210..97f532f625de 100644
-> --- a/include/linux/mfd/rk808.h
-> +++ b/include/linux/mfd/rk808.h
-> @@ -206,6 +206,92 @@ enum rk818_reg {
->  #define RK818_USB_ILMIN_2000MA		0x7
->  #define RK818_USB_CHG_SD_VSEL_MASK	0x70
->  
-> +/* RK805 */
-> +enum rk805_reg {
-> +	RK805_ID_DCDC1,
-> +	RK805_ID_DCDC2,
-> +	RK805_ID_DCDC3,
-> +	RK805_ID_DCDC4,
-> +	RK805_ID_LDO1,
-> +	RK805_ID_LDO2,
-> +	RK805_ID_LDO3,
-> +};
-> +
-> +/* INTERRUPT REGISTER */
-> +#define RK805_INT_STS_REG		0x4C
-> +#define RK805_INT_STS_MSK_REG		0x4D
-> +#define RK805_GPIO_IO_POL_REG		0x50
-> +#define RK805_OUT_REG			0x52
-> +#define RK805_ON_SOURCE_REG		0xAE
-> +#define RK805_OFF_SOURCE_REG		0xAF
-> +
-> +/* POWER CHANNELS ENABLE REGISTER */
-> +#define RK805_DCDC_EN_REG		0x23
-> +#define RK805_SLP_DCDC_EN_REG		0x25
-> +#define RK805_SLP_LDO_EN_REG		0x26
-> +#define RK805_LDO_EN_REG		0x27
-> +
-> +/* CONFIG REGISTER */
-> +#define RK805_THERMAL_REG		0x22
-> +
-> +/* BUCK AND LDO CONFIG REGISTER */
-> +#define RK805_BUCK_LDO_SLP_LP_EN_REG	0x2A
-> +#define RK805_BUCK1_CONFIG_REG		0x2E
-> +#define RK805_BUCK1_ON_VSEL_REG		0x2F
-> +#define RK805_BUCK1_SLP_VSEL_REG	0x30
-> +#define RK805_BUCK2_CONFIG_REG		0x32
-> +#define RK805_BUCK2_ON_VSEL_REG		0x33
-> +#define RK805_BUCK2_SLP_VSEL_REG	0x34
-> +#define RK805_BUCK3_CONFIG_REG		0x36
-> +#define RK805_BUCK4_CONFIG_REG		0x37
-> +#define RK805_BUCK4_ON_VSEL_REG		0x38
-> +#define RK805_BUCK4_SLP_VSEL_REG	0x39
-> +#define RK805_LDO1_ON_VSEL_REG		0x3B
-> +#define RK805_LDO1_SLP_VSEL_REG		0x3C
-> +#define RK805_LDO2_ON_VSEL_REG		0x3D
-> +#define RK805_LDO2_SLP_VSEL_REG		0x3E
-> +#define RK805_LDO3_ON_VSEL_REG		0x3F
-> +#define RK805_LDO3_SLP_VSEL_REG		0x40
-> +#define RK805_OUT_REG			0x52
-> +#define RK805_ON_SOURCE_REG		0xAE
-> +#define RK805_OFF_SOURCE_REG		0xAF
-> +
-> +#define RK805_NUM_REGULATORS		7
-> +
-> +#define RK805_PWRON_FALL_RISE_INT_EN	0x0
-> +#define RK805_PWRON_FALL_RISE_INT_MSK	0x81
-> +
-> +/* RK805 IRQ Definitions */
-> +#define RK805_IRQ_PWRON_RISE		0
-> +#define RK805_IRQ_VB_LOW		1
-> +#define RK805_IRQ_PWRON			2
-> +#define RK805_IRQ_PWRON_LP		3
-> +#define RK805_IRQ_HOTDIE		4
-> +#define RK805_IRQ_RTC_ALARM		5
-> +#define RK805_IRQ_RTC_PERIOD		6
-> +#define RK805_IRQ_PWRON_FALL		7
-> +
-> +#define RK805_IRQ_PWRON_RISE_MSK	BIT(0)
-> +#define RK805_IRQ_VB_LOW_MSK		BIT(1)
-> +#define RK805_IRQ_PWRON_MSK		BIT(2)
-> +#define RK805_IRQ_PWRON_LP_MSK		BIT(3)
-> +#define RK805_IRQ_HOTDIE_MSK		BIT(4)
-> +#define RK805_IRQ_RTC_ALARM_MSK		BIT(5)
-> +#define RK805_IRQ_RTC_PERIOD_MSK	BIT(6)
-> +#define RK805_IRQ_PWRON_FALL_MSK	BIT(7)
-> +
-> +#define RK805_PWR_RISE_INT_STATUS	BIT(0)
-> +#define RK805_VB_LOW_INT_STATUS		BIT(1)
-> +#define RK805_PWRON_INT_STATUS		BIT(2)
-> +#define RK805_PWRON_LP_INT_STATUS	BIT(3)
-> +#define RK805_HOTDIE_INT_STATUS		BIT(4)
-> +#define RK805_ALARM_INT_STATUS		BIT(5)
-> +#define RK805_PERIOD_INT_STATUS		BIT(6)
-> +#define RK805_PWR_FALL_INT_STATUS	BIT(7)
-> +
-> +#define RK805_BUCK1_2_ILMAX_MASK	(3 << 6)
-> +#define RK805_BUCK3_4_ILMAX_MASK        (3 << 3)
-> +
->  /* RK808 IRQ Definitions */
->  #define RK808_IRQ_VOUT_LO	0
->  #define RK808_IRQ_VB_LO		1
-> @@ -298,7 +384,14 @@ enum rk818_reg {
->  #define VOUT_LO_INT	BIT(0)
->  #define CLK32KOUT2_EN	BIT(0)
->  
-> +#define TEMP115C			0x0c
-> +#define TEMP_HOTDIE_MSK			0x0c
-> +#define SLP_SD_MSK			(0x3 << 2)
-> +#define SHUTDOWN_FUN			(0x2 << 2)
-> +#define SLEEP_FUN			(0x1 << 2)
->  #define RK8XX_ID_MSK			0xfff0
-> +#define FPWM_MODE			BIT(7)
-> +
->  enum {
->  	BUCK_ILMIN_50MA,
->  	BUCK_ILMIN_100MA,
-> @@ -322,6 +415,28 @@ enum {
->  };
->  
->  enum {
-> +	RK805_BUCK1_2_ILMAX_2500MA,
-> +	RK805_BUCK1_2_ILMAX_3000MA,
-> +	RK805_BUCK1_2_ILMAX_3500MA,
-> +	RK805_BUCK1_2_ILMAX_4000MA,
-> +};
-> +
-> +enum {
-> +	RK805_BUCK3_ILMAX_1500MA,
-> +	RK805_BUCK3_ILMAX_2000MA,
-> +	RK805_BUCK3_ILMAX_2500MA,
-> +	RK805_BUCK3_ILMAX_3000MA,
-> +};
-> +
-> +enum {
-> +	RK805_BUCK4_ILMAX_2000MA,
-> +	RK805_BUCK4_ILMAX_2500MA,
-> +	RK805_BUCK4_ILMAX_3000MA,
-> +	RK805_BUCK4_ILMAX_3500MA,
-> +};
-> +
-> +enum {
-> +	RK805_ID = 0x8050,
->  	RK808_ID = 0x0000,
->  	RK818_ID = 0x8181,
->  };
+> Chen Liang (7):
+>   include: dt-bindings: Add pin function index definition for rockchip
+>     pinctrl
+>   dt-bindings: iio: rockchip-saradc: add support for rk3328
+>   dt-bindings: i2c: rk3x: add support for rk3328
+>   dt-bindings: soc: rockchip: grf: add support for rk3328
 
--- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+both my inbox as well as the linux-rockchip list did only get patches 1-4 i=
+t =
+
+seems?
+
+>   arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+>   arm64: dts: rockchip: add dts file for RK3328 evaluation board
+>   dt-bindings: document rockchip rk3328-evb board
+
+So right now I'm missing these next 3. Did something go wrong when sending?
+
+
+Heiko
