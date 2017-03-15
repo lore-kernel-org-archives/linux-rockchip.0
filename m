@@ -1,188 +1,40 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2.1 1/4] pinctrl: rockchip: remove unnecessary locking
-Date: Wed, 15 Mar 2017 18:51:33 +0000
-Message-ID: <20170315185133.38ee57a4.john@metanate.com>
-References: <20170315174654.15128-1-john@metanate.com>
-        <20170315174654.15128-2-john@metanate.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/3] dt-bindings: phy: add DT bindings for usb2-phy grf
+Date: Wed, 15 Mar 2017 15:05:10 -0500
+Message-ID: <20170315200510.zn7edcftahuorzky@rob-hp-laptop>
+References: <1488763778-27499-1-git-send-email-daniel.meng@rock-chips.com>
+ <1488763778-27499-3-git-send-email-daniel.meng@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20170315174654.15128-2-john@metanate.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Julia Cartwright <julia@ni.com>, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1488763778-27499-3-git-send-email-daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-regmap_update_bits does its own locking and everything else accessed
-here is a local variable so there is no need to lock around it.
+On Mon, Mar 06, 2017 at 09:29:37AM +0800, Meng Dongyang wrote:
+> Adds the device tree bindings description for usb2-phy grf
+> of RK3328 platform.
+> 
+> Changes in v2:
+>  - add usb2-phy grf specification
+> Chagnes in v3:
+>  - remove the example of usb2-phy grf
+> 
+> Signed-off-by: Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/soc/rockchip/grf.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-Signed-off-by: John Keeping <john@metanate.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
----
-v2.1:
-- Remove RK2928 locking in rockchip_set_pull()
-v2:
-- Also remove locking in rockchip_set_schmitt()
----
- drivers/pinctrl/pinctrl-rockchip.c | 33 ++-------------------------------
- 1 file changed, 2 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 1e276dfe1763..1d835370c2c7 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -652,7 +652,6 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	int iomux_num = (pin / 8);
- 	struct regmap *regmap;
- 	int reg, ret, mask, mux_type;
--	unsigned long flags;
- 	u8 bit;
- 	u32 data, rmask;
- 
-@@ -701,15 +700,11 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	if (ctrl->iomux_recalc && (mux_type & IOMUX_RECALCED))
- 		ctrl->iomux_recalc(bank->bank_num, pin, &reg, &bit, &mask);
- 
--	spin_lock_irqsave(&bank->slock, flags);
--
- 	data = (mask << (bit + 16));
- 	rmask = data | (data >> 16);
- 	data |= (mux & mask) << bit;
- 	ret = regmap_update_bits(regmap, reg, rmask, data);
- 
--	spin_unlock_irqrestore(&bank->slock, flags);
--
- 	return ret;
- }
- 
-@@ -1135,7 +1130,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 	struct rockchip_pinctrl *info = bank->drvdata;
- 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
- 	struct regmap *regmap;
--	unsigned long flags;
- 	int reg, ret, i;
- 	u32 data, rmask, rmask_bits, temp;
- 	u8 bit;
-@@ -1163,8 +1157,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		return ret;
- 	}
- 
--	spin_lock_irqsave(&bank->slock, flags);
--
- 	switch (drv_type) {
- 	case DRV_TYPE_IO_1V8_3V0_AUTO:
- 	case DRV_TYPE_IO_3V3_ONLY:
-@@ -1185,17 +1177,14 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 			rmask = BIT(15) | BIT(31);
- 			data |= BIT(31);
- 			ret = regmap_update_bits(regmap, reg, rmask, data);
--			if (ret) {
--				spin_unlock_irqrestore(&bank->slock, flags);
-+			if (ret)
- 				return ret;
--			}
- 
- 			rmask = 0x3 | (0x3 << 16);
- 			temp |= (0x3 << 16);
- 			reg += 0x4;
- 			ret = regmap_update_bits(regmap, reg, rmask, temp);
- 
--			spin_unlock_irqrestore(&bank->slock, flags);
- 			return ret;
- 		case 18 ... 21:
- 			/* setting fully enclosed in the second register */
-@@ -1203,7 +1192,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 			bit -= 16;
- 			break;
- 		default:
--			spin_unlock_irqrestore(&bank->slock, flags);
- 			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
- 				bit, drv_type);
- 			return -EINVAL;
-@@ -1215,7 +1203,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		rmask_bits = RK3288_DRV_BITS_PER_PIN;
- 		break;
- 	default:
--		spin_unlock_irqrestore(&bank->slock, flags);
- 		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
- 			drv_type);
- 		return -EINVAL;
-@@ -1227,7 +1214,6 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 	data |= (ret << bit);
- 
- 	ret = regmap_update_bits(regmap, reg, rmask, data);
--	spin_unlock_irqrestore(&bank->slock, flags);
- 
- 	return ret;
- }
-@@ -1294,7 +1280,6 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
- 	struct regmap *regmap;
- 	int reg, ret, i, pull_type;
--	unsigned long flags;
- 	u8 bit;
- 	u32 data, rmask;
- 
-@@ -1309,14 +1294,10 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 
- 	switch (ctrl->type) {
- 	case RK2928:
--		spin_lock_irqsave(&bank->slock, flags);
--
- 		data = BIT(bit + 16);
- 		if (pull == PIN_CONFIG_BIAS_DISABLE)
- 			data |= BIT(bit);
- 		ret = regmap_write(regmap, reg, data);
--
--		spin_unlock_irqrestore(&bank->slock, flags);
- 		break;
- 	case RK1108:
- 	case RK3188:
-@@ -1339,16 +1320,12 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 			return ret;
- 		}
- 
--		spin_lock_irqsave(&bank->slock, flags);
--
- 		/* enable the write to the equivalent lower bits */
- 		data = ((1 << RK3188_PULL_BITS_PER_PIN) - 1) << (bit + 16);
- 		rmask = data | (data >> 16);
- 		data |= (ret << bit);
- 
- 		ret = regmap_update_bits(regmap, reg, rmask, data);
--
--		spin_unlock_irqrestore(&bank->slock, flags);
- 		break;
- 	default:
- 		dev_err(info->dev, "unsupported pinctrl type\n");
-@@ -1408,7 +1385,6 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
- 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
- 	struct regmap *regmap;
- 	int reg, ret;
--	unsigned long flags;
- 	u8 bit;
- 	u32 data, rmask;
- 
-@@ -1419,16 +1395,11 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
- 	if (ret)
- 		return ret;
- 
--	spin_lock_irqsave(&bank->slock, flags);
--
- 	/* enable the write to the equivalent lower bits */
- 	data = BIT(bit + 16) | (enable << bit);
- 	rmask = BIT(bit + 16) | BIT(bit);
- 
--	ret = regmap_update_bits(regmap, reg, rmask, data);
--	spin_unlock_irqrestore(&bank->slock, flags);
--
--	return ret;
-+	return regmap_update_bits(regmap, reg, rmask, data);
- }
- 
- /*
--- 
-2.12.0.377.gf910686b23.dirty
-
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
