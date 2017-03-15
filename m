@@ -1,338 +1,61 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v2] drm/rockchip: Refactor the component match logic.
-Date: Wed, 15 Mar 2017 18:25:03 +0800
-Message-ID: <58C9167F.5030905@rock-chips.com>
-References: <1489488349-3053-1-git-send-email-jeffy.chen@rock-chips.com> <CGME20170314120534eucas1p20601e44f6552db2b4b3f65d8ab6b4720@eucas1p2.samsung.com> <9352c2e4-5394-4725-f247-ff98318cd3d4@samsung.com>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 4/5] mfd: rk808: Add RK805 support
+Date: Wed, 15 Mar 2017 11:03:15 +0000
+Message-ID: <20170315110315.dekx7nhb66dmgxxe@dell>
+References: <1489111252-22175-1-git-send-email-zhangqing@rock-chips.com>
+ <1489111252-22175-5-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9352c2e4-5394-4725-f247-ff98318cd3d4@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrzej Hajda <a.hajda@samsung.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Sean Paul <seanpaul@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1489111252-22175-5-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andrzej,
-
-
-On 03/14/2017 08:05 PM, Andrzej Hajda wrote:
-> Hi Jeffy,
->
-> On 14.03.2017 11:45, Jeffy Chen wrote:
->> Currently we are adding all components from the dts, if one of their
->> drivers been disabled, we would not be able to bring up others.
->>
->> Refactor component match logic, follow exynos drm.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->
-> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
->
-> Below few nitpicks.
->
-> (...)
->
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> index b360e62..b6bccfc 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> @@ -356,34 +356,52 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
->>   				rockchip_drm_sys_resume)
->>   };
->>
->> -static int compare_of(struct device *dev, void *data)
->> -{
->> -	struct device_node *np = data;
->> +static struct platform_driver *rockchip_drm_comp_drvs[] = {
->> +	&vop_platform_driver,
->> +#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP
->> +	&rockchip_dp_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_CDN_DP
->> +	&cdn_dp_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_HDMI
->> +	&dw_hdmi_rockchip_pltfm_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_MIPI_DSI
->> +	&dw_mipi_dsi_driver,
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_INNO_HDMI
->> +	&inno_hdmi_driver,
->> +#endif
->> +};
->
-> To avoid #ifdefs, you can use DRV_PTR [1], but it depends what do you
-> hate more? ifdefs or macro magic :)
->
-> [1]:
-> http://lxr.free-electrons.com/source/drivers/gpu/drm/exynos/exynos_drm_drv.c#L472
->
-Done.
->>
->> -	return dev->of_node == np;
->> +static int compare_dev(struct device *dev, void *data)
->> +{
->> +	return dev == (struct device *)data;
->>   }
->>
->> -static void rockchip_add_endpoints(struct device *dev,
->> -				   struct component_match **match,
->> -				   struct device_node *port)
->> +static struct component_match *rockchip_drm_match_add(struct device *dev)
->>   {
->> -	struct device_node *ep, *remote;
->> +	struct component_match *match = NULL;
->> +	int i;
->>
->> -	for_each_child_of_node(port, ep) {
->> -		remote = of_graph_get_remote_port_parent(ep);
->> -		if (!remote || !of_device_is_available(remote)) {
->> -			of_node_put(remote);
->> -			continue;
->> -		} else if (!of_device_is_available(remote->parent)) {
->> -			dev_warn(dev, "parent device of %s is not available\n",
->> -				 remote->full_name);
->> -			of_node_put(remote);
->> -			continue;
->> -		}
->> +	for (i = 0; i < ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
->> +		struct platform_driver *drv = rockchip_drm_comp_drvs[i];
->> +		struct device *p = NULL, *d;
->>
->> -		drm_of_component_match_add(dev, match, compare_of, remote);
->> -		of_node_put(remote);
->> +		do {
->> +			d = bus_find_device(&platform_bus_type, p, &drv->driver,
->> +					    (void *)platform_bus_type.match);
->> +			put_device(p);
->> +			p = d;
->> +
->> +			if (!d)
->> +				break;
->> +			component_match_add(dev, &match, compare_dev, d);
->> +		} while (true);
->>   	}
->> +
->> +	return match ?: ERR_PTR(-ENODEV);
->>   }
->>
->>   static const struct component_master_ops rockchip_drm_ops = {
->> @@ -391,21 +409,16 @@ static const struct component_master_ops rockchip_drm_ops = {
->>   	.unbind = rockchip_drm_unbind,
->>   };
->>
->> -static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +static int rockchip_drm_platform_of_probe(struct device *dev)
->>   {
->> -	struct device *dev = &pdev->dev;
->> -	struct component_match *match = NULL;
->>   	struct device_node *np = dev->of_node;
->>   	struct device_node *port;
->> +	bool found = false;
->>   	int i;
->>
->>   	if (!np)
->>   		return -ENODEV;
->> -	/*
->> -	 * Bind the crtc ports first, so that
->> -	 * drm_of_find_possible_crtcs called from encoder .bind callbacks
->> -	 * works as expected.
->> -	 */
->> +
->>   	for (i = 0;; i++) {
->>   		struct device_node *iommu;
->>
->> @@ -429,9 +442,9 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   			is_support_iommu = false;
->>   		}
->>
->> +		found = true;
->> +
->>   		of_node_put(iommu);
->> -		drm_of_component_match_add(dev, &match, compare_of,
->> -					   port->parent);
->>   		of_node_put(port);
->>   	}
->>
->> @@ -440,27 +453,27 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   		return -ENODEV;
->>   	}
->>
->> -	if (!match) {
->> +	if (!found) {
->>   		dev_err(dev, "No available vop found for display-subsystem.\n");
->>   		return -ENODEV;
->>   	}
->> -	/*
->> -	 * For each bound crtc, bind the encoders attached to its
->> -	 * remote endpoint.
->> -	 */
->> -	for (i = 0;; i++) {
->> -		port = of_parse_phandle(np, "ports", i);
->> -		if (!port)
->> -			break;
->>
->> -		if (!of_device_is_available(port->parent)) {
->> -			of_node_put(port);
->> -			continue;
->> -		}
->> +	return 0;
->> +}
->>
->> -		rockchip_add_endpoints(dev, &match, port);
->> -		of_node_put(port);
->> -	}
->> +static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct component_match *match = NULL;
->> +	int ret;
->> +
->> +	ret = rockchip_drm_platform_of_probe(dev);
->> +	if (ret)
->> +		return ret;
->> +
->> +	match = rockchip_drm_match_add(dev);
->> +	if (IS_ERR(match))
->> +		return PTR_ERR(match);
->>
->>   	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
->>   }
->> @@ -488,7 +501,60 @@ static struct platform_driver rockchip_drm_platform_driver = {
->>   	},
->>   };
->>
->> -module_platform_driver(rockchip_drm_platform_driver);
->> +static void rockchip_drm_unregister_drivers(void)
->> +{
->> +	int i;
->> +
->> +	for (i = ARRAY_SIZE(rockchip_drm_comp_drvs) - 1; i >= 0; i--)
->> +		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
->> +}
->> +
->> +static int rockchip_drm_register_drivers(void)
->> +{
->> +	int i, ret;
->> +
->> +	for (i = 0; i < ARRAY_SIZE(rockchip_drm_comp_drvs); i++) {
->> +		ret = platform_driver_register(rockchip_drm_comp_drvs[i]);
->> +		if (ret)
->> +			goto err_unreg;
->> +	}
->> +
->> +	return 0;
->> +
->> +err_unreg:
->> +	for (; i--; )
->> +		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
->
-> Strange placement of decremental in for, maybe sth like this would be
-> better:
-> 	while (i-- > 0)
-> 		platform_driver_unregister(rockchip_drm_comp_drvs[i]);
->
-Yes, this looks better.
->
->> +	return ret;
->> +}
->> +
->> +static int __init rockchip_drm_init(void)
->> +{
->> +	int ret;
->> +
->> +	ret = rockchip_drm_register_drivers();
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = platform_driver_register(&rockchip_drm_platform_driver);
->> +	if (ret)
->> +		goto err_unreg_drivers;
->> +
->> +	return 0;
->> +
->> +err_unreg_drivers:
->> +	rockchip_drm_unregister_drivers();
->> +	return ret;
->> +}
->> +
->> +static void __exit rockchip_drm_fini(void)
->> +{
->> +	platform_driver_unregister(&rockchip_drm_platform_driver);
->> +
->> +	rockchip_drm_unregister_drivers();
->> +}
->> +
->> +module_init(rockchip_drm_init);
->> +module_exit(rockchip_drm_fini);
->>
->>   MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->>   MODULE_DESCRIPTION("ROCKCHIP DRM Driver");
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> index adc3930..91812bd 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> @@ -79,4 +79,20 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
->>   int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
->>   				unsigned int mstimeout);
->>
->> +#ifdef CONFIG_ROCKCHIP_CDN_DP
->> +extern struct platform_driver cdn_dp_driver;
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_HDMI
->> +extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_DW_MIPI_DSI
->> +extern struct platform_driver dw_mipi_dsi_driver;
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_INNO_HDMI
->> +extern struct platform_driver inno_hdmi_driver;
->> +#endif
->> +#ifdef CONFIG_ROCKCHIP_ANALOGIX_DP
->> +extern struct platform_driver rockchip_dp_driver;
->> +#endif
->> +extern struct platform_driver vop_platform_driver;
->>   #endif /* _ROCKCHIP_DRM_DRV_H_ */
->
-> I think gcc should be fine if you remove ifdefs. Unused extern
-> declarations are ignored, unless you use some paranoic static checker,
-> aren't they? But this is also matter of taste.
-
-Ok.
->
->
-> Regards
-> Andrzej
->
->
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> index 91fbc7b..0da4444 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> @@ -404,7 +404,7 @@ static int vop_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>
->> -static struct platform_driver vop_platform_driver = {
->> +struct platform_driver vop_platform_driver = {
->>   	.probe = vop_probe,
->>   	.remove = vop_remove,
->>   	.driver = {
->> @@ -412,9 +412,3 @@ static struct platform_driver vop_platform_driver = {
->>   		.of_match_table = of_match_ptr(vop_driver_dt_match),
->>   	},
->>   };
->> -
->> -module_platform_driver(vop_platform_driver);
->> -
->> -MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->> -MODULE_DESCRIPTION("ROCKCHIP VOP Driver");
->> -MODULE_LICENSE("GPL v2");
->>
->
->
->
->
-Thanx for your comments~
+T24gRnJpLCAxMCBNYXIgMjAxNywgRWxhaW5lIFpoYW5nIHdyb3RlOgoKPiBUaGUgUks4MDUgY2hp
+cCBpcyBhIFBvd2VyIE1hbmFnZW1lbnQgSUMgKFBNSUMpIGZvciBtdWx0aW1lZGlhIGFuZCBoYW5k
+aGVsZAo+IGRldmljZXMuIEl0IGNvbnRhaW5zIHRoZSBmb2xsb3dpbmcgY29tcG9uZW50czoKPiAK
+PiAgICAgLSBSZWd1bGF0b3JzCj4gICAgIC0gUlRDCj4gICAgIC0gQ2xvY2tpbmcKPiAKPiBCb3Ro
+IFJLODA4IGFuZCBSSzgwNSBjaGlwcyBhcmUgdXNpbmcgYSBzaW1pbGFyIHJlZ2lzdGVyIG1hcCwK
+PiBzbyB3ZSBjYW4gcmV1c2UgdGhlIFJUQyBhbmQgQ2xvY2tpbmcgZnVuY3Rpb25hbGl0eS4KPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBFbGFpbmUgWmhhbmcgPHpoYW5ncWluZ0Byb2NrLWNoaXBzLmNvbT4K
+PiAtLS0KPiAgZHJpdmVycy9jbGsvS2NvbmZpZyB8ICAgNCArLQoKQWNrZWQtYnk6IExlZSBKb25l
+cyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+Cgo+ICBkcml2ZXJzL21mZC9LY29uZmlnIHwgICA0ICst
+Cj4gIGRyaXZlcnMvbWZkL3JrODA4LmMgfCAxMTcgKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKwoKQ29tbWVudHMgYmVsb3cuCgo+ICBkcml2ZXJzL3J0
+Yy9LY29uZmlnIHwgICA0ICstCgpBY2tlZC1ieTogTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJv
+Lm9yZz4KCj4gIDQgZmlsZXMgY2hhbmdlZCwgMTIzIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25z
+KC0pCgpTcGxpdCB0aGlzIHBhdGNoIHVwIGludG8gc3Vic3lzdGVtcywgaXQnbGwgc2F2ZSBpc3N1
+ZXMuCgpbLi4uXQoKPiAtLS0gYS9kcml2ZXJzL21mZC9yazgwOC5jCj4gKysrIGIvZHJpdmVycy9t
+ZmQvcms4MDguYwoKWy4uLl0KCj4gK3N0YXRpYyB2b2lkIHJrODA1X2RldmljZV9zaHV0ZG93bih2
+b2lkKQo+ICt7Cj4gKwlpbnQgcmV0Owo+ICsJc3RydWN0IHJrODA4ICpyazgwOCA9IGkyY19nZXRf
+Y2xpZW50ZGF0YShyazgwOF9pMmNfY2xpZW50KTsKPiArCj4gKwlpZiAoIXJrODA4KSB7Cj4gKwkJ
+ZGV2X3dhcm4oJnJrODA4X2kyY19jbGllbnQtPmRldiwKPiArCQkJICJoYXZlIG5vIHJrODA4LCBz
+byBkbyBub3RoaW5nIGhlcmVcbiIpOwo+ICsJCXJldHVybjsKPiArCX0KPiArCj4gKwkvKiBjbG9z
+ZSBydGMgaW50IHdoZW4gcG93ZXIgb2ZmICovCj4gKwlyZWdtYXBfdXBkYXRlX2JpdHMocms4MDgt
+PnJlZ21hcCwKPiArCQkJICAgUks4MDhfSU5UX1NUU19NU0tfUkVHMSwKPiArCQkJICAgKDB4MyA8
+PCA1KSwgKDB4MyA8PCA1KSk7CgpObyBtYWdpYyBudW1iZXJzLiAgUGxlYXNlIGRlZmluZSB0aGVz
+ZS4KCj4gKwlyZWdtYXBfdXBkYXRlX2JpdHMocms4MDgtPnJlZ21hcCwKPiArCQkJICAgUks4MDhf
+UlRDX0lOVF9SRUcsCj4gKwkJCSAgICgweDMgPDwgMiksICgweDAgPDwgMikpOwoKTm8gbWFnaWMg
+bnVtYmVycy4gIFBsZWFzZSBkZWZpbmUgdGhlc2UuCgo+ICsKPiArCS8qIHBtaWMgc2xlZXAgc2h1
+dGRvd24gZnVuY3Rpb24gKi8KPiArCXJldCA9IHJlZ21hcF91cGRhdGVfYml0cyhyazgwOC0+cmVn
+bWFwLAo+ICsJCQkJIFJLODA1X0dQSU9fSU9fUE9MX1JFRywKPiArCQkJCSBTTFBfU0RfTVNLLCBT
+SFVURE9XTl9GVU4pOwo+ICsJaWYgKHJldCkKPiArCQlkZXZfZXJyKCZyazgwOF9pMmNfY2xpZW50
+LT5kZXYsICJwb3dlciBvZmYgZXJyb3IhXG4iKTsKPiArfQoKLS0gCkxlZSBKb25lcwpMaW5hcm8g
+U1RNaWNyb2VsZWN0cm9uaWNzIExhbmRpbmcgVGVhbSBMZWFkCkxpbmFyby5vcmcg4pSCIE9wZW4g
+c291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3
+aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
