@@ -1,47 +1,52 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH 3/3] drm/rockchip/dsi: correct the grf_switch_reg name
-Date: Wed, 15 Mar 2017 16:42:32 +0800
-Message-ID: <1489567352-3333-3-git-send-email-zyw@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: add the grf clock for dw-mipi-dsi
+Date: Wed, 15 Mar 2017 10:03:15 +0100
+Message-ID: <3304582.Whtjx7Nypf@diego>
 References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1489567352-3333-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rm9yIHRoZSBSSzMzOTksIHRoZSBncmZfc3dpdGNoX3JlZyBuYW1lIHNob3VsZCBiZSBSSzMzOTlf
-R1JGX1NPQ19DT04yMCwKbm90IFJLMzM5OV9HUkZfU09DX0NPTjE5LgoKU2lnbmVkLW9mZi1ieTog
-Q2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMgfCA0ICsrLS0KIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlv
-bnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-YwppbmRleCBkOGYyNGYyLi5kZGQ1ZGJhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlw
-aS1kc2kuYwpAQCAtMzQsNyArMzQsNyBAQAogI2RlZmluZSBSSzMyODhfRFNJMF9TRUxfVk9QX0xJ
-VAkJQklUKDYpCiAjZGVmaW5lIFJLMzI4OF9EU0kxX1NFTF9WT1BfTElUCQlCSVQoOSkKIAotI2Rl
-ZmluZSBSSzMzOTlfR1JGX1NPQ19DT04xOQkJMHg2MjUwCisjZGVmaW5lIFJLMzM5OV9HUkZfU09D
-X0NPTjIwCQkweDYyNTAKICNkZWZpbmUgUkszMzk5X0RTSTBfU0VMX1ZPUF9MSVQJCUJJVCgwKQog
-I2RlZmluZSBSSzMzOTlfRFNJMV9TRUxfVk9QX0xJVAkJQklUKDQpCiAKQEAgLTExNDYsNyArMTE0
-Niw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHJrMzI4OF9taXBpX2Rz
-aV9kcnZfZGF0YSA9IHsKIHN0YXRpYyBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHJrMzM5
-OV9taXBpX2RzaV9kcnZfZGF0YSA9IHsKIAkuZHNpMF9lbl9iaXQgPSBSSzMzOTlfRFNJMF9TRUxf
-Vk9QX0xJVCwKIAkuZHNpMV9lbl9iaXQgPSBSSzMzOTlfRFNJMV9TRUxfVk9QX0xJVCwKLQkuZ3Jm
-X3N3aXRjaF9yZWcgPSBSSzMzOTlfR1JGX1NPQ19DT04xOSwKKwkuZ3JmX3N3aXRjaF9yZWcgPSBS
-SzMzOTlfR1JGX1NPQ19DT04yMCwKIAkuZ3JmX2RzaTBfbW9kZSA9IFJLMzM5OV9HUkZfRFNJX01P
-REUsCiAJLmdyZl9kc2kwX21vZGVfcmVnID0gUkszMzk5X0dSRl9TT0NfQ09OMjIsCiAJLm1heF9k
-YXRhX2xhbmVzID0gNCwKLS0gCjIuNi4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Am Mittwoch, 15. März 2017, 16:42:30 CET schrieb Chris Zhong:
+> For RK3399, the grf clock should be controlled by dw-mipi-dsi driver,
+> add the description for this clock.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt       | 2
+> +- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.t
+> xt
+> b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.t
+> xt index 188f6f7..7e17a60 100644
+> ---
+> a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.t
+> xt +++
+> b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.t
+> xt @@ -10,7 +10,7 @@ Required properties:
+>  - interrupts: Represent the controller's interrupt to the CPU(s).
+>  - clocks, clock-names: Phandles to the controller's pll reference
+>    clock(ref) and APB clock(pclk). For RK3399, a phy config clock
+> -  (phy_cfg) is additional required. As described in [1].
+> +  (phy_cfg) and a grf clock(grf) are additional required. As described in
+> [1].
+
+your "grf" clock is optional, as it is not present on all socs (like the 
+rk3288) so should probably move to a separate section and not be in the 
+required properties
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
