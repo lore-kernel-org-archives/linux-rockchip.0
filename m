@@ -1,56 +1,36 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH 1/3] dt-bindings: add the grf clock for dw-mipi-dsi
-Date: Wed, 15 Mar 2017 17:55:23 +0800
-Message-ID: <58C90F8B.7070102@rock-chips.com>
-References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
- <3304582.Whtjx7Nypf@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <3304582.Whtjx7Nypf@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v1 1/7] include: dt-bindings: Add pin function index definition for rockchip pinctrl
+Date: Wed, 15 Mar 2017 18:03:51 +0800
+Message-ID: <1489572237-6649-2-git-send-email-cl@rock-chips.com>
+References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1489572237-6649-1-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28KCk9uIDAzLzE1LzIwMTcgMDU6MDMgUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+
-IEFtIE1pdHR3b2NoLCAxNS4gTcOkcnogMjAxNywgMTY6NDI6MzAgQ0VUIHNjaHJpZWIgQ2hyaXMg
-Wmhvbmc6Cj4+IEZvciBSSzMzOTksIHRoZSBncmYgY2xvY2sgc2hvdWxkIGJlIGNvbnRyb2xsZWQg
-YnkgZHctbWlwaS1kc2kgZHJpdmVyLAo+PiBhZGQgdGhlIGRlc2NyaXB0aW9uIGZvciB0aGlzIGNs
-b2NrLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29t
-Pgo+PiAtLS0KPj4KPj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
-L2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAgICAgICB8IDIKPj4gKy0gMSBmaWxlIGNoYW5nZWQs
-IDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYgLS1naXQKPj4gYS9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2Rz
-aV9yb2NrY2hpcC50Cj4+IHh0Cj4+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudAo+PiB4dCBpbmRleCAxODhm
-NmY3Li43ZTE3YTYwIDEwMDY0NAo+PiAtLS0KPj4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50Cj4+IHh0ICsr
-Kwo+PiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
-L2R3X21pcGlfZHNpX3JvY2tjaGlwLnQKPj4geHQgQEAgLTEwLDcgKzEwLDcgQEAgUmVxdWlyZWQg
-cHJvcGVydGllczoKPj4gICAtIGludGVycnVwdHM6IFJlcHJlc2VudCB0aGUgY29udHJvbGxlcidz
-IGludGVycnVwdCB0byB0aGUgQ1BVKHMpLgo+PiAgIC0gY2xvY2tzLCBjbG9jay1uYW1lczogUGhh
-bmRsZXMgdG8gdGhlIGNvbnRyb2xsZXIncyBwbGwgcmVmZXJlbmNlCj4+ICAgICBjbG9jayhyZWYp
-IGFuZCBBUEIgY2xvY2socGNsaykuIEZvciBSSzMzOTksIGEgcGh5IGNvbmZpZyBjbG9jawo+PiAt
-ICAocGh5X2NmZykgaXMgYWRkaXRpb25hbCByZXF1aXJlZC4gQXMgZGVzY3JpYmVkIGluIFsxXS4K
-Pj4gKyAgKHBoeV9jZmcpIGFuZCBhIGdyZiBjbG9jayhncmYpIGFyZSBhZGRpdGlvbmFsIHJlcXVp
-cmVkLiBBcyBkZXNjcmliZWQgaW4KPj4gWzFdLgo+IHlvdXIgImdyZiIgY2xvY2sgaXMgb3B0aW9u
-YWwsIGFzIGl0IGlzIG5vdCBwcmVzZW50IG9uIGFsbCBzb2NzIChsaWtlIHRoZQo+IHJrMzI4OCkg
-c28gc2hvdWxkIHByb2JhYmx5IG1vdmUgdG8gYSBzZXBhcmF0ZSBzZWN0aW9uIGFuZCBub3QgYmUg
-aW4gdGhlCj4gcmVxdWlyZWQgcHJvcGVydGllcwpGb3IgUkszMzk5LCB0aGUgZ3JmIGNsb2NrIGlz
-IHJlcXVpcmVkLCBhY2NvcmRpbmcgdG8gdGhlIGFkdmljZSBwcm92aWRlZCAKYnkgcm9iWzBdLApw
-dXQgaXQgaW50byAicmVxdWlyZWQgcHJvcGVydGllcyAiIGlzIGJldHRlci4KWzBdIGh0dHBzOi8v
-cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTIyMDE4Ny8KPgo+IEhlaWtvCj4KPgo+CgotLSAK
-Q2hyaXMgWmhvbmcKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+From: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+The rk3328 soc need more pin function index for pinctrl.
+
+Signed-off-by: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ include/dt-bindings/pinctrl/rockchip.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/dt-bindings/pinctrl/rockchip.h b/include/dt-bindings/pinctrl/rockchip.h
+index aaec8ba..bc2b6af 100644
+--- a/include/dt-bindings/pinctrl/rockchip.h
++++ b/include/dt-bindings/pinctrl/rockchip.h
+@@ -63,5 +63,8 @@
+ #define RK_FUNC_2	2
+ #define RK_FUNC_3	3
+ #define RK_FUNC_4	4
++#define RK_FUNC_5	5
++#define RK_FUNC_6	6
++#define RK_FUNC_7	7
+ 
+ #endif
+-- 
+1.9.1
