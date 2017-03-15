@@ -1,59 +1,148 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3] drm/rockchip: Refactor the component match logic.
-Date: Wed, 15 Mar 2017 18:23:27 +0100
-Message-ID: <2110531.OeyX13mlk5@phil>
-References: <1489573247-9628-1-git-send-email-jeffy.chen@rock-chips.com>
- <19101003.9xjQ92OS5C@phil>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH v2 4/4] pinctrl: rockchip: avoid hardirq-unsafe functions in
+ irq_chip
+Date: Wed, 15 Mar 2017 17:46:54 +0000
+Message-ID: <20170315174654.15128-5-john@metanate.com>
+References: <20170315174654.15128-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <19101003.9xjQ92OS5C@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170315174654.15128-1-john@metanate.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Julia Cartwright <julia@ni.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDE1LiBNw6RyeiAyMDE3LCAxODowMDowNCBDRVQgc2NocmllYiBIZWlrbyBT
-dHVlYm5lcjoKPiBBbSBNaXR0d29jaCwgMTUuIE3DpHJ6IDIwMTcsIDE4OjIwOjQ3IENFVCBzY2hy
-aWViIEplZmZ5IENoZW46Cj4gPiBDdXJyZW50bHkgd2UgYXJlIGFkZGluZyBhbGwgY29tcG9uZW50
-cyBmcm9tIHRoZSBkdHMsIGlmIG9uZSBvZiB0aGVpcgo+ID4gZHJpdmVycyBiZWVuIGRpc2FibGVk
-LCB3ZSB3b3VsZCBub3QgYmUgYWJsZSB0byBicmluZyB1cCBvdGhlcnMuCj4gPiAKPiA+IFJlZmFj
-dG9yIGNvbXBvbmVudCBtYXRjaCBsb2dpYywgZm9sbG93IGV4eW5vcyBkcm0uCj4gPiAKPiA+IFNp
-Z25lZC1vZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiBS
-ZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KPiAKPiBUaGlz
-IHJlbGlhYmx5IHByb2R1Y2VzIG51bGwgcG9pbnRlciBkZXJlZmVyZW5jZSBlcnJvcnMgaW4KPiAJ
-X19wbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIgY2FsbGVkIGZyb20gcm9ja2NoaXBfZHJtX2luaXQK
-PiBvbiBhdCBsZWFzdCByazMwMzYgYW5kIHJrMzI4OCAocHJvYmFibHkgbW9yZSkgd2hlbiBhcHBs
-aWVkIG9uIHRvcCBvZgo+IExpbnVzJyB0cmVlIGZyb20gdG9kYXkuIExvZyBhdHRhY2hlZCBhbmQg
-Um9ja2NoaXAgZHJtIGNvbXBpbGVkIGFzIG1vZHVsZS4KPiAKPiBJJ20gY3VycmVudGx5IGR1ZyBp
-bnRvIG90aGVyIGFyZWFzLCBzbyBoYWRuJ3QgaGF2ZSB0aW1lIHRvIGludmVzdGlnYXRlCj4gZnVy
-dGhlciB5ZXQuCgo+ICsjZGVmaW5lIERSVl9QVFIoZHJ2LCBjb25kKSAoSVNfRU5BQkxFRChjb25k
-KSA/ICZkcnYgOiBOVUxMKQo+ICsKPiArc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgKnJv
-Y2tjaGlwX2RybV9jb21wX2RydnNbXSA9IHsKPiArCSZ2b3BfcGxhdGZvcm1fZHJpdmVyLAo+ICsJ
-RFJWX1BUUihyb2NrY2hpcF9kcF9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9BTkFMT0dJWF9EUCks
-Cj4gKwlEUlZfUFRSKGNkbl9kcF9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9DRE5fRFApLAo+ICsJ
-RFJWX1BUUihkd19oZG1pX3JvY2tjaGlwX3BsdGZtX2RyaXZlciwgQ09ORklHX1JPQ0tDSElQX0RX
-X0hETUkpLAo+ICsJRFJWX1BUUihkd19taXBpX2RzaV9kcml2ZXIsIENPTkZJR19ST0NLQ0hJUF9E
-V19NSVBJX0RTSSksCj4gKwlEUlZfUFRSKGlubm9faGRtaV9kcml2ZXIsIENPTkZJR19ST0NLQ0hJ
-UF9JTk5PX0hETUkpLAo+ICt9OwoKWy4uLl0KCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3Jl
-Z2lzdGVyX2RyaXZlcnModm9pZCkKPiArewo+ICsJaW50IGksIHJldDsKPiArCj4gKwlmb3IgKGkg
-PSAwOyBpIDwgQVJSQVlfU0laRShyb2NrY2hpcF9kcm1fY29tcF9kcnZzKTsgaSsrKSB7Cj4gKwkJ
-cmV0ID0gcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKHJvY2tjaGlwX2RybV9jb21wX2RydnNbaV0p
-Owo+ICsJCWlmIChyZXQpCj4gKwkJCWdvdG8gZXJyX3VucmVnOwo+ICsJfQoKVGhpcyBvZiBjb3Vy
-c2Ugd29uJ3Qgd29yayBpbiB0aGUgTlVMTCBjYXNlLCBhcyBwbGF0Zm9ybV9kcml2ZXJfcmVnaXN0
-ZXIgYWx3YXlzIApkZXJlZmVyZW5jZXMgaXRzIHBhcmFtZXRlciBbMF0sIHNvIHlvdSBzaG91bGQg
-b25seSBjYWxsIGl0IGZvciB0aGUgYWN0dWFsIG5vbi0KbnVsbCBhcnJheSBlbGVtZW50cyAtIG9m
-IGNvdXJzZSBzYW1lIGZvciB1bnJlZ2lzdGVyLgoKCkhlaWtvCgpbMF0gaHR0cDovL2x4ci5mcmVl
-LWVsZWN0cm9ucy5jb20vc291cmNlL2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jI0w2MTcKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+With real-time preemption, regmap functions cannot be used in the
+implementation of irq_chip since they use spinlocks which may sleep.
+
+Move the setting of the mux for IRQs to an irq_bus_sync_unlock handler
+where we are allowed to sleep.
+
+Signed-off-by: John Keeping <john@metanate.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+---
+v2: unchanged
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 44 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 40 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 426f5ea57b16..5796b3c7cdd8 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -143,6 +143,9 @@ struct rockchip_drv {
+  * @gpio_chip: gpiolib chip
+  * @grange: gpio range
+  * @slock: spinlock for the gpio bank
++ * @irq_lock: bus lock for irq chip
++ * @new_irqs: newly configured irqs which must be muxed as GPIOs in
++ *	irq_bus_sync_unlock()
+  */
+ struct rockchip_pin_bank {
+ 	void __iomem			*reg_base;
+@@ -165,6 +168,8 @@ struct rockchip_pin_bank {
+ 	struct pinctrl_gpio_range	grange;
+ 	raw_spinlock_t			slock;
+ 	u32				toggle_edge_mode;
++	struct mutex			irq_lock;
++	u32				new_irqs;
+ };
+ 
+ #define PIN_BANK(id, pins, label)			\
+@@ -2134,11 +2139,12 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 	int ret;
+ 
+ 	/* make sure the pin is configured as gpio input */
+-	ret = rockchip_set_mux(bank, d->hwirq, RK_FUNC_GPIO);
++	ret = rockchip_verify_mux(bank, d->hwirq, RK_FUNC_GPIO);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	clk_enable(bank->clk);
++	bank->new_irqs |= mask;
++
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
+ 
+ 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
+@@ -2196,7 +2202,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 	default:
+ 		irq_gc_unlock(gc);
+ 		raw_spin_unlock_irqrestore(&bank->slock, flags);
+-		clk_disable(bank->clk);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -2205,7 +2210,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 
+ 	irq_gc_unlock(gc);
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+-	clk_disable(bank->clk);
+ 
+ 	return 0;
+ }
+@@ -2249,6 +2253,34 @@ static void rockchip_irq_gc_mask_set_bit(struct irq_data *d)
+ 	clk_disable(bank->clk);
+ }
+ 
++static void rockchip_irq_bus_lock(struct irq_data *d)
++{
++	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
++	struct rockchip_pin_bank *bank = gc->private;
++
++	clk_enable(bank->clk);
++	mutex_lock(&bank->irq_lock);
++}
++
++static void rockchip_irq_bus_sync_unlock(struct irq_data *d)
++{
++	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
++	struct rockchip_pin_bank *bank = gc->private;
++
++	while (bank->new_irqs) {
++		unsigned int irq = __ffs(bank->new_irqs);
++		int ret;
++
++		ret = rockchip_set_mux(bank, irq, RK_FUNC_GPIO);
++		WARN_ON(ret < 0);
++
++		bank->new_irqs &= ~BIT(irq);
++	}
++
++	mutex_unlock(&bank->irq_lock);
++	clk_disable(bank->clk);
++}
++
+ static int rockchip_interrupts_register(struct platform_device *pdev,
+ 						struct rockchip_pinctrl *info)
+ {
+@@ -2314,6 +2346,9 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+ 		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
+ 		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
+ 		gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
++		gc->chip_types[0].chip.irq_bus_lock = rockchip_irq_bus_lock;
++		gc->chip_types[0].chip.irq_bus_sync_unlock =
++						rockchip_irq_bus_sync_unlock;
+ 		gc->wake_enabled = IRQ_MSK(bank->nr_pins);
+ 
+ 		irq_set_chained_handler_and_data(bank->irq,
+@@ -2487,6 +2522,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ 		int bank_pins = 0;
+ 
+ 		raw_spin_lock_init(&bank->slock);
++		mutex_init(&bank->irq_lock);
+ 		bank->drvdata = d;
+ 		bank->pin_base = ctrl->nr_pins;
+ 		ctrl->nr_pins += bank->nr_pins;
+-- 
+2.12.0.377.gf910686b23.dirty
