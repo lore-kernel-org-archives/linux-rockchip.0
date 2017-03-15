@@ -1,14 +1,16 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RFC PATCH 2/4] pinctrl: rockchip: convert to raw spinlock
-Date: Wed, 15 Mar 2017 17:41:21 +0100
-Message-ID: <2549921.4Nq1JGygY8@phil>
-References: <20170313183813.3582-1-john@metanate.com>
- <20170313183813.3582-3-john@metanate.com> <39203480.lbsBriduiK@phil>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/3] drm/rockchip/dsi: enable the grf clk before writing
+ grf registers
+Date: Wed, 15 Mar 2017 09:47:29 -0700
+Message-ID: <20170315164726.GA54312@google.com>
+References: <1489567352-3333-1-git-send-email-zyw@rock-chips.com>
+ <1489567352-3333-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <39203480.lbsBriduiK@phil>
+Content-Disposition: inline
+In-Reply-To: <1489567352-3333-2-git-send-email-zyw@rock-chips.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,291 +20,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Keeping <john@metanate.com>
-Cc: linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 15. M=E4rz 2017, 17:28:56 CET schrieb Heiko Stuebner:
-> Am Montag, 13. M=E4rz 2017, 18:38:11 CET schrieb John Keeping:
-> > This lock is used from rockchip_irq_set_type() which is part of the
-> > irq_chip implementation and thus must use raw_spinlock_t as documented
-> > in Documentation/gpio/driver.txt.
-> > =
-
-> > Signed-off-by: John Keeping <john@metanate.com>
-> =
-
-> Looks good
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-I have to take that back.
-This leaves the spin_lock in the schmitt trigger unconverted and produces =
-
-compile issues.
-
-So it either needs to be converted or removed - I guess it should be remove=
-d.
-
-> =
-
-> > ---
-> > =
-
-> >  drivers/pinctrl/pinctrl-rockchip.c | 30 +++++++++++++++---------------
-> >  1 file changed, 15 insertions(+), 15 deletions(-)
-> > =
-
-> > diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> > b/drivers/pinctrl/pinctrl-rockchip.c index 1defe83a5c4d..2f963aea64b2
-> > 100644
-> > --- a/drivers/pinctrl/pinctrl-rockchip.c
-> > +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> > @@ -163,7 +163,7 @@ struct rockchip_pin_bank {
-> > =
-
-> >  	struct irq_domain		*domain;
-> >  	struct gpio_chip		gpio_chip;
-> >  	struct pinctrl_gpio_range	grange;
-> > =
-
-> > -	spinlock_t			slock;
-> > +	raw_spinlock_t			slock;
-> > =
-
-> >  	u32				toggle_edge_mode;
-> >  =
-
-> >  };
-> > =
-
-> > @@ -1292,14 +1292,14 @@ static int rockchip_set_pull(struct
-> > rockchip_pin_bank *bank,
-> > =
-
-> >  	switch (ctrl->type) {
-> > =
-
-> >  	case RK2928:
-> > -		spin_lock_irqsave(&bank->slock, flags);
-> > +		raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  		data =3D BIT(bit + 16);
-> >  		if (pull =3D=3D PIN_CONFIG_BIAS_DISABLE)
-> >  		=
-
-> >  			data |=3D BIT(bit);
-> >  		=
-
-> >  		ret =3D regmap_write(regmap, reg, data);
-> > =
-
-> > -		spin_unlock_irqrestore(&bank->slock, flags);
-> > +		raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  		break;
-> >  	=
-
-> >  	case RK1108:
-> > =
-
-> >  	case RK3188:
-> > @@ -1433,7 +1433,7 @@ static int _rockchip_pmx_gpio_set_direction(struct
-> > gpio_chip *chip, return ret;
-> > =
-
-> >  	clk_enable(bank->clk);
-> > =
-
-> > -	spin_lock_irqsave(&bank->slock, flags);
-> > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  	data =3D readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> >  	/* set bit to 1 for output, 0 for input */
-> > =
-
-> > @@ -1443,7 +1443,7 @@ static int _rockchip_pmx_gpio_set_direction(struct
-> > gpio_chip *chip, data &=3D ~BIT(pin);
-> > =
-
-> >  	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-> > =
-
-> > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  	clk_disable(bank->clk);
-> >  	=
-
-> >  	return 0;
-> > =
-
-> > @@ -1874,7 +1874,7 @@ static void rockchip_gpio_set(struct gpio_chip *g=
-c,
-> > unsigned offset, int value) u32 data;
-> > =
-
-> >  	clk_enable(bank->clk);
-> > =
-
-> > -	spin_lock_irqsave(&bank->slock, flags);
-> > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  	data =3D readl(reg);
-> >  	data &=3D ~BIT(offset);
-> > =
-
-> > @@ -1882,7 +1882,7 @@ static void rockchip_gpio_set(struct gpio_chip *g=
-c,
-> > unsigned offset, int value) data |=3D BIT(offset);
-> > =
-
-> >  	writel(data, reg);
-> > =
-
-> > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  	clk_disable(bank->clk);
-> >  =
-
-> >  }
-> > =
-
-> > @@ -1994,7 +1994,7 @@ static void rockchip_irq_demux(struct irq_desc
-> > *desc)
-> > =
-
-> >  			data =3D readl_relaxed(bank->reg_base + GPIO_EXT_PORT);
-> >  			do {
-> > =
-
-> > -				spin_lock_irqsave(&bank->slock, flags);
-> > +				raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  				polarity =3D readl_relaxed(bank->reg_base +
-> >  				=
-
-> >  							 GPIO_INT_POLARITY);
-> > =
-
-> > @@ -2005,7 +2005,7 @@ static void rockchip_irq_demux(struct irq_desc
-> > *desc)
-> > =
-
-> >  				writel(polarity,
-> >  				=
-
-> >  				       bank->reg_base + GPIO_INT_POLARITY);
-> > =
-
-> > -				spin_unlock_irqrestore(&bank->slock, flags);
-> > +				raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  				data_old =3D data;
-> >  				data =3D readl_relaxed(bank->reg_base +
-> > =
-
-> > @@ -2036,20 +2036,20 @@ static int rockchip_irq_set_type(struct irq_data
-> > *d, unsigned int type) return ret;
-> > =
-
-> >  	clk_enable(bank->clk);
-> > =
-
-> > -	spin_lock_irqsave(&bank->slock, flags);
-> > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  	data =3D readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> >  	data &=3D ~mask;
-> >  	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-> > =
-
-> > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  	if (type & IRQ_TYPE_EDGE_BOTH)
-> >  	=
-
-> >  		irq_set_handler_locked(d, handle_edge_irq);
-> >  	=
-
-> >  	else
-> >  	=
-
-> >  		irq_set_handler_locked(d, handle_level_irq);
-> > =
-
-> > -	spin_lock_irqsave(&bank->slock, flags);
-> > +	raw_spin_lock_irqsave(&bank->slock, flags);
-> > =
-
-> >  	irq_gc_lock(gc);
-> >  	=
-
-> >  	level =3D readl_relaxed(gc->reg_base + GPIO_INTTYPE_LEVEL);
-> > =
-
-> > @@ -2092,7 +2092,7 @@ static int rockchip_irq_set_type(struct irq_data =
-*d,
-> > unsigned int type) break;
-> > =
-
-> >  	default:
-> >  		irq_gc_unlock(gc);
-> > =
-
-> > -		spin_unlock_irqrestore(&bank->slock, flags);
-> > +		raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  		clk_disable(bank->clk);
-> >  		return -EINVAL;
-> >  	=
-
-> >  	}
-> > =
-
-> > @@ -2101,7 +2101,7 @@ static int rockchip_irq_set_type(struct irq_data =
-*d,
-> > unsigned int type) writel_relaxed(polarity, gc->reg_base +
-> > GPIO_INT_POLARITY);
-> > =
-
-> >  	irq_gc_unlock(gc);
-> > =
-
-> > -	spin_unlock_irqrestore(&bank->slock, flags);
-> > +	raw_spin_unlock_irqrestore(&bank->slock, flags);
-> > =
-
-> >  	clk_disable(bank->clk);
-> >  	=
-
-> >  	return 0;
-> > =
-
-> > @@ -2383,7 +2383,7 @@ static struct rockchip_pin_ctrl
-> > *rockchip_pinctrl_get_soc_data( for (i =3D 0; i < ctrl->nr_banks; ++i,
-> > ++bank) {
-> > =
-
-> >  		int bank_pins =3D 0;
-> > =
-
-> > -		spin_lock_init(&bank->slock);
-> > +		raw_spin_lock_init(&bank->slock);
-> > =
-
-> >  		bank->drvdata =3D d;
-> >  		bank->pin_base =3D ctrl->nr_pins;
-> >  		ctrl->nr_pins +=3D bank->nr_pins;
+Hi Chris,
+
+On Wed, Mar 15, 2017 at 04:42:31PM +0800, Chris Zhong wrote:
+> For RK3399, the grf clk should be enabled before writing grf registers,
+> otherwise the register value can not be changed.
+> 
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> ---
+> 
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index f84f9ae..d8f24f2 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> @@ -291,6 +291,7 @@ struct dw_mipi_dsi {
+>  	struct regmap *grf_regmap;
+>  	void __iomem *base;
+>  
+> +	struct clk *grf_clk;
+>  	struct clk *pllref_clk;
+>  	struct clk *pclk;
+>  	struct clk *phy_cfg_clk;
+> @@ -979,6 +980,16 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+>  	dw_mipi_dsi_dphy_interface_config(dsi);
+>  	dw_mipi_dsi_clear_err(dsi);
+>  
+> +	/*
+> +	 * For the RK3399, the clk of grf must be enabled before writing grf
+> +	 * register.
+> +	 */
+> +	ret = clk_prepare_enable(dsi->grf_clk);
+> +	if (ret) {
+> +		dev_err(dsi->dev, "Failed to enable grf_clk\n");
+> +		return;
+> +	}
+> +
+>  	if (pdata->grf_dsi0_mode_reg)
+>  		regmap_write(dsi->grf_regmap, pdata->grf_dsi0_mode_reg,
+>  			     pdata->grf_dsi0_mode);
+> @@ -1003,6 +1014,8 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
+>  	regmap_write(dsi->grf_regmap, pdata->grf_switch_reg, val);
+>  	dev_dbg(dsi->dev, "vop %s output to dsi0\n", (mux) ? "LIT" : "BIG");
+>  	dsi->dpms_mode = DRM_MODE_DPMS_ON;
+> +
+> +	clk_disable_unprepare(dsi->grf_clk);
+>  }
+>  
+>  static int
+> @@ -1238,6 +1251,17 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
+>  		dev_dbg(dev, "have not phy_cfg_clk\n");
+>  	}
+>  
+> +	dsi->grf_clk = devm_clk_get(dev, "grf");
+> +	if (IS_ERR(dsi->grf_clk)) {
+> +		ret = PTR_ERR(dsi->grf_clk);
+> +		if (ret != -ENOENT) {
+> +			dev_err(dev, "Unable to get grf_clk: %d\n", ret);
+
+If you're going to print an error, you should probably check for
+-EPROBE_DEFER. This driver isn't quite consistent about this.
+
+> +			return ret;
+> +		}
+> +		dsi->grf_clk = NULL;
+> +		dev_dbg(dev, "have not grf_clk\n");
+
+The wording is a little awkward; maybe "no grf_clk provided\n"?
+
+Also, to be clear, this clock is required for RK3399, but not for others
+(e.g., RK3288) right? I guess this makes sense then, to just treat it as
+optional for all cases, even if you document it as "required" for
+RK3399.
+
+Brian
+
+> +	}
+> +
+>  	ret = clk_prepare_enable(dsi->pllref_clk);
+>  	if (ret) {
+>  		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
+
+Brian
