@@ -1,64 +1,50 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 3/4] drm/rockchip/dsi: enable the grf clk before writing
- grf registers
-Date: Thu, 16 Mar 2017 11:31:46 +0800
-Message-ID: <1489635107-21327-4-git-send-email-zyw@rock-chips.com>
-References: <1489635107-21327-1-git-send-email-zyw@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/7] include: dt-bindings: Add pin function index definition for rockchip pinctrl
+Date: Thu, 16 Mar 2017 09:02:47 +0100
+Message-ID: <3841077.a8qRkotiEM@diego>
+References: <1489572237-6649-1-git-send-email-cl@rock-chips.com> <1489572237-6649-2-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1489635107-21327-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1489572237-6649-2-git-send-email-cl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Rm9yIFJLMzM5OSwgdGhlIGdyZiBjbGsgc2hvdWxkIGJlIGVuYWJsZWQgYmVmb3JlIHdyaXRpbmcg
-Z3JmIHJlZ2lzdGVycywKb3RoZXJ3aXNlIHRoZSByZWdpc3RlciB2YWx1ZSBjYW4gbm90IGJlIGNo
-YW5nZWQuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgot
-LS0KCkNoYW5nZXMgaW4gdjI6Ci0gY2hlY2sgdGhlIGdyZl9jbGsgb25seSBmb3IgUkszMzk5Cgog
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAyMSArKysrKysrKysrKysr
-KysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHctbWlwaS1kc2kuYwppbmRleCAxMWM0MTY2Li5hNGM3NGM3IDEwMDY0NAotLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpAQCAtMjkxLDYgKzI5MSw3IEBAIHN0cnVjdCBk
-d19taXBpX2RzaSB7CiAJc3RydWN0IHJlZ21hcCAqZ3JmX3JlZ21hcDsKIAl2b2lkIF9faW9tZW0g
-KmJhc2U7CiAKKwlzdHJ1Y3QgY2xrICpncmZfY2xrOwogCXN0cnVjdCBjbGsgKnBsbHJlZl9jbGs7
-CiAJc3RydWN0IGNsayAqcGNsazsKIAlzdHJ1Y3QgY2xrICpwaHlfY2ZnX2NsazsKQEAgLTk3OSw2
-ICs5ODAsMTcgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0
-IGRybV9lbmNvZGVyICplbmNvZGVyKQogCWR3X21pcGlfZHNpX2RwaHlfaW50ZXJmYWNlX2NvbmZp
-Zyhkc2kpOwogCWR3X21pcGlfZHNpX2NsZWFyX2Vycihkc2kpOwogCisJLyoKKwkgKiBGb3IgdGhl
-IFJLMzM5OSwgdGhlIGNsayBvZiBncmYgbXVzdCBiZSBlbmFibGVkIGJlZm9yZSB3cml0aW5nIGdy
-ZgorCSAqIHJlZ2lzdGVyLiBBbmQgZm9yIFJLMzI4OCBvciBvdGhlciBzb2MsIHRoaXMgZ3JmX2Ns
-ayBtdXN0IGJlIE5VTEwsCisJICogdGhlIGNsa19wcmVwYXJlX2VuYWJsZSByZXR1cm4gdHJ1ZSBk
-aXJlY3RseS4KKwkgKi8KKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5ncmZfY2xrKTsK
-KwlpZiAocmV0KSB7CisJCWRldl9lcnIoZHNpLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIGdyZl9j
-bGtcbiIpOworCQlyZXR1cm47CisJfQorCiAJaWYgKHBkYXRhLT5ncmZfZHNpMF9tb2RlX3JlZykK
-IAkJcmVnbWFwX3dyaXRlKGRzaS0+Z3JmX3JlZ21hcCwgcGRhdGEtPmdyZl9kc2kwX21vZGVfcmVn
-LAogCQkJICAgICBwZGF0YS0+Z3JmX2RzaTBfbW9kZSk7CkBAIC0xMDAzLDYgKzEwMTUsOCBAQCBz
-dGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIg
-KmVuY29kZXIpCiAJcmVnbWFwX3dyaXRlKGRzaS0+Z3JmX3JlZ21hcCwgcGRhdGEtPmdyZl9zd2l0
-Y2hfcmVnLCB2YWwpOwogCWRldl9kYmcoZHNpLT5kZXYsICJ2b3AgJXMgb3V0cHV0IHRvIGRzaTBc
-biIsIChtdXgpID8gIkxJVCIgOiAiQklHIik7CiAJZHNpLT5kcG1zX21vZGUgPSBEUk1fTU9ERV9E
-UE1TX09OOworCisJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+Z3JmX2Nsayk7CiB9CiAKIHN0
-YXRpYyBpbnQKQEAgLTEyMzQsNiArMTI0OCwxMyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Jp
-bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJCQlkZXZfZXJy
-KGRldiwgIlVuYWJsZSB0byBnZXQgcGh5X2NmZ19jbGs6ICVkXG4iLCByZXQpOwogCQkJcmV0dXJu
-IHJldDsKIAkJfQorCisJCWRzaS0+Z3JmX2NsayA9IGRldm1fY2xrX2dldChkZXYsICJncmYiKTsK
-KwkJaWYgKElTX0VSUihkc2ktPmdyZl9jbGspKSB7CisJCQlyZXQgPSBQVFJfRVJSKGRzaS0+Z3Jm
-X2Nsayk7CisJCQlkZXZfZXJyKGRldiwgIlVuYWJsZSB0byBnZXQgZ3JmX2NsazogJWRcbiIsIHJl
-dCk7CisJCQlyZXR1cm4gcmV0OworCQl9CiAJfQogCiAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
-KGRzaS0+cGxscmVmX2Nsayk7Ci0tIAoyLjYuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+Am Mittwoch, 15. März 2017, 18:03:51 CET schrieb cl@rock-chips.com:
+> From: Chen Liang <cl@rock-chips.com>
+> 
+> The rk3328 soc need more pin function index for pinctrl.
+> 
+> Signed-off-by: Chen Liang <cl@rock-chips.com>
+> ---
+>  include/dt-bindings/pinctrl/rockchip.h | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/include/dt-bindings/pinctrl/rockchip.h
+> b/include/dt-bindings/pinctrl/rockchip.h index aaec8ba..bc2b6af 100644
+> --- a/include/dt-bindings/pinctrl/rockchip.h
+> +++ b/include/dt-bindings/pinctrl/rockchip.h
+> @@ -63,5 +63,8 @@
+>  #define RK_FUNC_2	2
+>  #define RK_FUNC_3	3
+>  #define RK_FUNC_4	4
+> +#define RK_FUNC_5	5
+> +#define RK_FUNC_6	6
+> +#define RK_FUNC_7	7
+
+please don't amend that function list anymore.
+
+Only RK_FUNC_GPIO serves a real purpose but having constants FUNC_7 mapping 
+simply to 7 does not help understand things better, so it's way easier to just 
+have "7" as function in pinctrl entries in the devicetree.
+
+That list is mainly a remnant to keep compatibility with old devicetrees and I 
+guess I should add a deprecated notice at some point :-) .
+
+
+Heiko
