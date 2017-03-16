@@ -1,41 +1,65 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 3/7] dt-bindings: i2c: rk3x: add support for rk3328
-Date: Thu, 16 Mar 2017 09:29:17 +0100
-Message-ID: <1968844.OUeqAadBkl@phil>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com> <1489572237-6649-4-git-send-email-cl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1489572237-6649-4-git-send-email-cl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: cl@rock-chips.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 4/4] clk: rockchip: rk3368: add CLK_IGNORE_UNUSED flag for some clks
+Date: Thu, 16 Mar 2017 16:44:54 +0800
+Message-ID: <1489653894-2440-5-git-send-email-zhangqing@rock-chips.com>
+References: <1489653894-2440-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1489653894-2440-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 15. März 2017, 18:03:53 CET schrieb cl@rock-chips.com:
-> From: Chen Liang <cl@rock-chips.com>
-> 
-> The rk3328 i2c is the same as rk3399
-> 
-> Signed-off-by: Chen Liang <cl@rock-chips.com>
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt index bbc5a1e..abfdefd
-> 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> @@ -12,6 +12,7 @@ Required properties :
->     - "rockchip,rk3228-i2c": for rk3228
->     - "rockchip,rk3288-i2c": for rk3288
->     - "rockchip,rk3399-i2c": for rk3399
-> +   - "rockchip,rk3328-i2c", "rockchip,rk3399-i2c": for rk3328
->   - interrupts : interrupt number
->   - clocks: See ../clock/clock-bindings.txt
->     - For older hardware (rk3066, rk3188, rk3228, rk3288):
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3368.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-same as before, not sure how people see that, but maybe place rk3328 before 
-rk3399.
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 6cb474c593e7..e91dd52c328f 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -638,7 +638,7 @@ enum rk3368_plls {
+ 	GATE(SCLK_MAC_TX, "sclk_mac_tx", "mac_clk", 0,
+ 			RK3368_CLKGATE_CON(7), 5, GFLAGS),
+ 
+-	GATE(0, "jtag", "ext_jtag", 0,
++	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
+ 			RK3368_CLKGATE_CON(7), 0, GFLAGS),
+ 
+ 	COMPOSITE_NODIV(0, "hsic_usbphy_480m", mux_hsic_usbphy480m_p, 0,
+@@ -702,8 +702,8 @@ enum rk3368_plls {
+ 	GATE(MCLK_CRYPTO, "mclk_crypto", "hclk_bus", 0, RK3368_CLKGATE_CON(13), 3, GFLAGS),
+ 
+ 	/* pclk_cpu gates */
+-	GATE(PCLK_DDRPHY, "pclk_ddrphy", "pclk_bus", 0, RK3368_CLKGATE_CON(12), 14, GFLAGS),
+-	GATE(PCLK_DDRUPCTL, "pclk_ddrupctl", "pclk_bus", 0, RK3368_CLKGATE_CON(12), 13, GFLAGS),
++	GATE(PCLK_DDRPHY, "pclk_ddrphy", "pclk_bus", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(12), 14, GFLAGS),
++	GATE(PCLK_DDRUPCTL, "pclk_ddrupctl", "pclk_bus", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(12), 13, GFLAGS),
+ 	GATE(PCLK_I2C1, "pclk_i2c1", "pclk_bus", 0, RK3368_CLKGATE_CON(12), 3, GFLAGS),
+ 	GATE(PCLK_I2C0, "pclk_i2c0", "pclk_bus", 0, RK3368_CLKGATE_CON(12), 2, GFLAGS),
+ 	GATE(PCLK_MAILBOX, "pclk_mailbox", "pclk_bus", 0, RK3368_CLKGATE_CON(12), 1, GFLAGS),
+@@ -711,8 +711,8 @@ enum rk3368_plls {
+ 	GATE(PCLK_SIM, "pclk_sim", "pclk_bus", 0, RK3368_CLKGATE_CON(13), 8, GFLAGS),
+ 	GATE(PCLK_PWM1, "pclk_pwm1", "pclk_bus", 0, RK3368_CLKGATE_CON(13), 6, GFLAGS),
+ 	GATE(PCLK_UART2, "pclk_uart2", "pclk_bus", 0, RK3368_CLKGATE_CON(13), 5, GFLAGS),
+-	GATE(0, "pclk_efuse_256", "pclk_bus", 0, RK3368_CLKGATE_CON(13), 1, GFLAGS),
+-	GATE(0, "pclk_efuse_1024", "pclk_bus", 0, RK3368_CLKGATE_CON(13), 0, GFLAGS),
++	GATE(0, "pclk_efuse_256", "pclk_bus", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(13), 1, GFLAGS),
++	GATE(0, "pclk_efuse_1024", "pclk_bus", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(13), 0, GFLAGS),
+ 
+ 	/*
+ 	 * video clk gates
+@@ -786,7 +786,7 @@ enum rk3368_plls {
+ 	GATE(HCLK_HSIC, "hclk_hsic", "hclk_peri", 0, RK3368_CLKGATE_CON(20), 5, GFLAGS),
+ 	GATE(HCLK_HOST1, "hclk_host1", "hclk_peri", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(20), 4, GFLAGS),
+ 	GATE(HCLK_HOST0, "hclk_host0", "hclk_peri", 0, RK3368_CLKGATE_CON(20), 3, GFLAGS),
+-	GATE(0, "pmu_hclk_otg0", "hclk_peri", 0, RK3368_CLKGATE_CON(20), 2, GFLAGS),
++	GATE(0, "pmu_hclk_otg0", "hclk_peri", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(20), 2, GFLAGS),
+ 	GATE(HCLK_OTG0, "hclk_otg0", "hclk_peri", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(20), 1, GFLAGS),
+ 	GATE(HCLK_HSADC, "hclk_hsadc", "hclk_peri", 0, RK3368_CLKGATE_CON(21), 3, GFLAGS),
+ 	GATE(HCLK_EMMC, "hclk_emmc", "hclk_peri", 0, RK3368_CLKGATE_CON(21), 2, GFLAGS),
+-- 
+1.9.1
+
+
