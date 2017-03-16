@@ -1,41 +1,89 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 06/41] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Thu, 16 Mar 2017 13:31:51 +0100
-Message-ID: <241af00e-6e29-54f1-fc64-81d1ea03dd2e@samsung.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044535epcas2p115e856e9d5985512e95da4dae444d854@epcas2p1.samsung.com>
- <20170310043305.17216-7-seanpaul@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 3/4] mmc: pwrseq_simple: Add an optional pre-power-on-delay
+Date: Thu, 16 Mar 2017 14:01:19 +0100
+Message-ID: <CAPDyKFr90kj9QuCVromx5A24U0WDh1gwVjmdwDsr1JmQbt=DPQ@mail.gmail.com>
+References: <20170306141716.19120-1-romain.perier@collabora.com> <20170306141716.19120-4-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170310043305.17216-7-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <20170306141716.19120-4-romain.perier@collabora.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Romain Perier <romain.perier@collabora.com>
+Cc: "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IHphaW4gd2FuZyA8
-d3p6QHJvY2stY2hpcHMuY29tPgo+Cj4gVGhlIGJyaWRnZSBkb2VzIG5vdCBuZWVkIHRvIGJlIHBv
-d2VyZWQgaW4gYW5hbG9naXhfZHBfYmluZCgpLCBzbwo+IHJlbW92ZSB0aGUgY2FsbHMgdG8gcG1f
-cnVudGltZV9nZXQoKS9waHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0X2RwKCkKPiBhcyB3
-ZWxsIGFzIHRoZWlyIHBvd2VyLW9mZiBjb3VudGVycGFydHMuCj4KPiBDYzogU3TDqXBoYW5lIE1h
-cmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogemFpbiB3YW5n
-IDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEBy
-b2NrLWNoaXBzLmNvbT4KPiBbdGhlIHBhdGNoIG9yaWdpbmFsbHkganVzdCByZW1vdmVkIHRoZSBw
-b3dlcl9vbiBwb3J0aW9uLCBzZWFucGF1bCByZW1vdmVkCj4gdGhlIHBvd2VyIG9mZiBjb2RlIGFz
-IHdlbGwgYXMgaW1wcm92ZWQgdGhlIGNvbW1pdCBtZXNzYWdlXQo+IFNpZ25lZC1vZmYtYnk6IFNl
-YW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWogSGFq
-ZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+Ci0tClJlZ2FyZHMKQW5kcnplagpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 6 March 2017 at 15:17, Romain Perier <romain.perier@collabora.com> wrote:
+> Some devices need a while between the enablement of its clk and the time
+> where the reset line is asserted. When this time happens between the
+> pre_power_on and the post_power_on callbacks, there is a need to do an
+> msleep at the end of the pre_power_on callback.
+>
+> This commit adds an optional DT property for such devices.
+>
+> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt | 2 ++
+
+Split DT documentation for code changes. And make sure DT maintainers
+are in the loop discussing new DT bindings.
+
+>  drivers/mmc/core/pwrseq_simple.c                            | 6 ++++++
+>  2 files changed, 8 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt b/Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt
+> index e254368..821feaaf 100644
+> --- a/Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt
+> +++ b/Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt
+> @@ -18,6 +18,8 @@ Optional properties:
+>    "ext_clock" (External clock provided to the card).
+>  - post-power-on-delay-ms : Delay in ms after powering the card and
+>         de-asserting the reset-gpios (if any)
+> +- pre-power-on-delay-ms : Delay in ms before powering the card and
+> +       asserting the reset-gpios (if any)
+
+We have been thinking of adding this before. It seems reasonable to
+me, however in the earlier case we ended up adding a new mmc pwrseq
+variant.
+
+Let's see where we ends up here...
+
+>
+>  Example:
+>
+> diff --git a/drivers/mmc/core/pwrseq_simple.c b/drivers/mmc/core/pwrseq_simple.c
+> index e27019f..d8d7166 100644
+> --- a/drivers/mmc/core/pwrseq_simple.c
+> +++ b/drivers/mmc/core/pwrseq_simple.c
+> @@ -27,6 +27,7 @@ struct mmc_pwrseq_simple {
+>         struct mmc_pwrseq pwrseq;
+>         bool clk_enabled;
+>         u32 post_power_on_delay_ms;
+> +       u32 pre_power_on_delay_ms;
+>         struct clk *ext_clk;
+>         struct gpio_descs *reset_gpios;
+>  };
+> @@ -60,6 +61,9 @@ static void mmc_pwrseq_simple_pre_power_on(struct mmc_host *host)
+>         }
+>
+>         mmc_pwrseq_simple_set_gpios_value(pwrseq, 1);
+> +
+> +       if (pwrseq->pre_power_on_delay_ms)
+> +               msleep(pwrseq->pre_power_on_delay_ms);
+>  }
+>
+>  static void mmc_pwrseq_simple_post_power_on(struct mmc_host *host)
+> @@ -130,6 +134,8 @@ static int mmc_pwrseq_simple_probe(struct platform_device *pdev)
+>
+>         device_property_read_u32(dev, "post-power-on-delay-ms",
+>                                  &pwrseq->post_power_on_delay_ms);
+> +       device_property_read_u32(dev, "pre-power-on-delay-ms",
+> +                                &pwrseq->pre_power_on_delay_ms);
+>
+>         pwrseq->pwrseq.dev = dev;
+>         if (device_property_read_bool(dev, "post-ios-power-on"))
+> --
+> 2.9.3
+>
+
+Kind regards
+Uffe
