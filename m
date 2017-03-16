@@ -1,117 +1,133 @@
-From: Andre Przywara <andre.przywara@arm.com>
-Subject: Re: [PATCH v1 6/7] arm64: dts: rockchip: add dts file for RK3328
- evaluation board
-Date: Thu, 16 Mar 2017 16:18:40 +0000
-Message-ID: <63969127-3fcd-658c-2986-8ded6d93c433@arm.com>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
- <1489628711-31271-1-git-send-email-cl@rock-chips.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH 00/41] Chromebook Plus (aka kevin) kernel patches
+Date: Thu, 16 Mar 2017 17:45:22 +0100
+Message-ID: <CAFqH_50gcYegc3V85j84Y2prjjQ2o+RRFAH8=pnJeZWQkwFvCA@mail.gmail.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <20170314204341.GC20329@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1489628711-31271-1-git-send-email-cl@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: cl@rock-chips.com, heiko@sntech.de
-Cc: mark.rutland@arm.com, wsa@the-dreams.de, linux-iio@vger.kernel.org, catalin.marinas@arm.com, shawn.lin@rock-chips.com, will.deacon@arm.com, kever.yang@rock-chips.com, dianders@chromium.org, yamada.masahiro@socionext.com, tony.xie@rock-chips.com, linux-i2c@vger.kernel.org, pmeerw@pmeerw.net, lars@metafoo.de, zhengxing@rock-chips.com, khilman@baylibre.com, linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, zhangqing@rock-chips.com, paweljarosz3691@gmail.com, arnd@arndb.de, yhx@rock-chips.com, knaack.h@gmx.de, robh+dt@kernel.org, matthias.bgg@gmail.com, rocky.hao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com, fabio.estevam@nxp.com, andy.yan@roc
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170314204341.GC20329@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chen,
-
-On 16/03/17 01:45, cl@rock-chips.com wrote:
-> From: Chen Liang <cl@rock-chips.com>
-> 
-> This patch add rk3328-evb.dts for RK3328 evaluation board.
-> Tested on RK3328 evb.
-> 
-> Signed-off-by: Chen Liang <cl@rock-chips.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile       |  1 +
->  arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 57 +++++++++++++++++++++++++++++
->  2 files changed, 58 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 3a86289..853fc7d 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -4,6 +4,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
->  
->  always		:= $(dtb-y)
->  subdir-y	:= $(dts-dirs)
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> new file mode 100644
-> index 0000000..cf27239
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> @@ -0,0 +1,57 @@
-> +/*
-> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This library is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This library is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3328.dtsi"
-> +
-> +/ {
-> +	model = "Rockchip RK3328 EVB";
-> +	compatible = "rockchip,rk3328-evb", "rockchip,rk3328";
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-
-Is that really 1.5MBit/s?
-
-> +	};
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-
-I don't have the board, but would expect to see more peripherals
-mentioned in the .dtsi enabled here.
-For sure the board has an (micro)SD card slot, possibly even Ethernet?
-
-Cheers,
-Andre.
+MjAxNy0wMy0xNCAyMTo0MyBHTVQrMDE6MDAgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5v
+cmc+Ogo+IE9uIFRodSwgTWFyIDA5LCAyMDE3IGF0IDExOjMyOjE1UE0gLTA1MDAsIFNlYW4gUGF1
+bCB3cm90ZToKPj4gRGVzcGl0ZSBvdXIgYmVzdCBpbnRlbnRpb25zIChhbmQgd2UgZGlkIGEgZGVj
+ZW50IGpvYiB0aGlzIHRpbWUgYXJvdW5kKSBvZiBzdWJtaXR0aW5nCj4+IHVwc3RyZWFtIGZpcnN0
+IGZvciB0aGUgQ2hyb21lYm9vayBQbHVzLCB3ZSBoYWQgYSBudW1iZXIgb2YgcGF0Y2hlcyBzbGlw
+IHRocm91Z2ggdGhlCj4+IGNyYWNrcy4gVGhpcyBzZXJpZXMgaW5jbHVkZXMgYWxsIGJ1dCBvbmUg
+b2YgdGhvc2UgcGF0Y2hlcy4gVGhlIG91dGxpZXIgYnJlYWtzIG15Cj4+IHZleXJvbiBib2FyZCwg
+c28gSSBkcm9wcGVkIGl0Lgo+Pgo+PiBUaGUgcGF0Y2hlcyBoYXZlIGJlZW4gdGVzdGVkIG9uIHRo
+ZSBDaHJvbWVib29rIFBsdXMgaW4gb3VyIGRvd25zdHJlYW0ga2VybmVsLCBhbmQKPj4gbXkgdmV5
+cm9uLWphcSBib2FyZCB3aXRoIGFuIHVwc3RyZWFtIGtlcm5lbC4gVGhleSBoYXZlIGFsc28gYmVl
+biBjb21waWxlIHRlc3RlZAo+PiB1c2luZyB0aGUgZHJtLW1pc2MgY29uZmlncy4KPj4KCkp1c3Qg
+dG8gYWRkIG1vcmUgaW5mb3JtYXRpb24uIEkgZGlkIHNvbWUgcXVpY2sgdGVzdHMsIEkgc3VjY2Vz
+c2Z1bGx5CnBpY2tlZCB0aGUgZnVsbCBzZXJpZXMgb24gdG9wIG9mIGxpbnV4LW5leHQsIGJ1aWxk
+IGFuZCB0ZXN0IG9uIHZleXJvbgptaW5uaWUgZGV2aWNlIGFuZCBncnUgZGV2aWNlLiBGb3IgdGhl
+IGdydSBkZXZpY2UgKHdoaWNoIG5lZWRzIHNvbWUKb3RoZXIgZnJvbSBsaXN0IHBhdGNoZXMgdG8g
+bWFrZSBpdCB3b2spIHRoZXJlIGFyZSBpc3N1ZXMgYnV0IG5vdGhpbmcKcmVsYXRlZCB0byB0aGVz
+ZSBwYXRjaGVzIGFzIGl0IGZhaWxzIHdoZW5ldmVyIHRoZSBwYXRjaGVzIGFyZSBhcHBsaWVkCm9y
+IG5vdC4gVGhlIGlzc3VlIEknbSBmYWNpbmcgaXMgTENEIGZsaWNrZXJpbmcgYnV0IEkgcmVwZWF0
+IHRoaXMgaXMKTk9UIHJlbGF0ZWQgdG8gdGhlc2UgcGF0Y2hlcyBzbyBJIHRoaW5rIHdpbGwgYmUg
+aGVscGZ1bCBoYXZlIHRoZXNlCnBhdGNoZXMgdXBzdHJlYW0gdG8gaGF2ZSBiZXR0ZXIgc3VwcG9y
+dCBmb3Iga2V2aW4gYW5kIGFueSBvdGhlcgpncnUtYmFzZWQgZGV2aWNlLCBzbzoKClRlc3RlZC1i
+eTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4K
+ClNlYW4sIGlmIHlvdSBwbGFuIHNlbmQgYSBzZWNvbmQgdmVyc2lvbiB3aXRoIHRoZSBjb21tZW50
+cyByZWNlaXZlZCBjYW4KeW91IGFsc28gY2MgbWU/CgpUaGFua3MsCiAgRW5yaWMKCj4+IFNlYW4K
+Pj4KPj4KPj4gRG91Z2xhcyBBbmRlcnNvbiAoNCk6Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhf
+ZHA6IFJlb3JkZXIgcGxhdF9kYXRhLT5wb3dlcl9vZmYgdG8gaGFwcGVuIHNvb25lcgo+PiAgIGRy
+bS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgcG93ZXJv
+biBpbiB0d28KPj4gICAgIHBhcnRzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
+cmx5IGxvZyBBVVggQ0ggZXJyb3JzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
+cmx5IGRpc2FibGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAo+Pgo+PiBIYWl4aWEgU2hp
+ICgxKToKPj4gICBkcm0vcm9ja2NoaXA6IHN1cHBvcnQgcHJpbWUgaW1wb3J0IHNnIHRhYmxlCj4+
+Cj4+IExpbiBIdWFuZyAoNik6Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IE1vdmUgZW5h
+YmxlIHZpZGVvIGludG8gY29uZmlnX3ZpZGVvKCkKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
+cDogQ2hlY2sgQVVYX0VOIHN0YXR1cyB3aGVuIGRvaW5nIEFVWCB0cmFuc2Zlcgo+PiAgIGRybS9i
+cmlkZ2U6IGFuYWxvZ2l4X2RwOiBFbnN1cmUgZWRwIGlzIGRpc2FibGVkIHdoZW4gc2h1dHRpbmcg
+ZG93biB0aGUKPj4gICAgIHBhbmVsCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEV4dGVu
+ZCBocGQgY2hlY2sgdGltZSB0byAxMDBtcwo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBD
+aGVjayBkcGNkIHdyaXRlL3JlYWQgc3RhdHVzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
+IFJlc2V0IGF1eCBjaGFubmVsIGlmIGFuIGVycm9yIG9jY3VycmVkCj4+Cj4+IE1hcmsgWWFvICgx
+KToKPj4gICBkcm0vcm9ja2NoaXA6IHByZSBkaXRoZXIgZG93biB3aGVuIG91dHB1dCBicGMgaXMg
+OGJpdAo+Pgo+PiBTZWFuIFBhdWwgKDMpOgo+PiAgIGRybS9wYW5lbDogc2ltcGxlOiBDaGFuZ2Ug
+bW9kZSBmb3IgU2hhcnAgbHExMjNwMWp4MzEKPj4gICBkcm0vcm9ja2NoaXA6IERvbid0IHVzZSBh
+dG9taWMgY29uc3RydWN0cyBmb3IgcHNyCj4+ICAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgYW5hbG9n
+aXggcHNyIHdvcmtlcgo+Cj4gSGkgTWFyaywKPiBIb3BlZnVsbHkgeW91J3ZlIHNlZW4gdGhpcyBz
+ZXJpZXMgYnkgbm93LiBJIHdvdWxkIHJlYWxseSBsaWtlIHRvIGdldCB5b3VyIHJldmlldwo+IG9u
+IG15IDIgcGF0Y2hlcyBhYm92ZSBzbyBJIGNhbiBnZXQgdGhlc2UgaW50byBkcm0tbWlzYy4KPgo+
+IElmIHlvdSBoYXZlIHNvbWUgdGltZSwgSSB3b3VsZCByZWFsbHkgYXBwcmVjaWF0ZSBpdC4KPgo+
+IFNlYW4KPgo+Pgo+PiBUb21hc3ogRmlnYSAoNik6Cj4+ICAgZHJtL3JvY2tjaGlwOiBHZXQgcmlk
+IG9mIHNvbWUgdW5uZWNlc3NhcnkgY29kZQo+PiAgIGRybS9yb2NrY2hpcDogRmx1c2ggUFNSIGJl
+Zm9yZSBjb21taXR0aW5nIG1vZGVzZXQgZGlzYWJsZXMvZW5hYmxlcwo+PiAgIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBBbGxvdyBtYXN0ZXIgZHJpdmVyIHRvIGNsZWFudXAgaW4gdW5iaW5kCj4+
+ICAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogRml4IGludmFsaWQgaW1wbGVtZW50YXRpb24g
+b2YgdW5iaW5kCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEFkZCBhbmFsb2dpeF9kcF9z
+aHV0ZG93bgo+PiAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IFdpcmUgdGhlIHNodXRkb3du
+IGNhbGxiYWNrIHRvIGRpc2FibGUgUFNSCj4+Cj4+IFlha2lyIFlhbmcgKDEpOgo+PiAgIGRybS9i
+cmlkZ2U6IGFuYWxvZ2l4X2RwOiBkZXRlY3QgU2luayBQU1Igc3RhdGUgYWZ0ZXIgY29uZmlndXJp
+bmcgdGhlCj4+ICAgICBQU1IKPj4KPj4gemFpbiB3YW5nICgxOCk6Cj4+ICAgZHJtL2JyaWRnZTog
+YW5hbG9naXhfZHA6IHNldCBwc3IgYWN0aXZhdGUvZGVhY3RpdmF0ZSB3aGVuCj4+ICAgICBlbmFi
+bGUvZGlzYWJsZSBicmlkZ2UKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRG9uJ3QgcG93
+ZXIgYnJpZGdlIGluIGFuYWxvZ2l4X2RwX2JpbmQKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
+cDogRG9uJ3QgY2hhbmdlIHBzciB3aGlsZSBicmlkZ2UgaXMgZGlzYWJsZWQKPj4gICBkcm0vcm9j
+a2NoaXA6IGFkZCBtdXRleCB2b3AgbG9jawo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBh
+ZGQgZmFzdCBsaW5rIHRyYWluIGZvciBlRFAKPj4gICBkcm0vcm9ja2NoaXA6IE9ubHkgd2FpdCBm
+b3IgcGFuZWwgQUNLIG9uIFBTUiBlbnRyeQo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBE
+b24ndCB1c2UgZmFzdCBsaW5rIHRyYWluaW5nIHdoZW4gcGFuZWwganVzdAo+PiAgICAgcG93ZXJl
+ZCB1cAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBSZXRyeSBicmlkZ2UgZW5hYmxlIHdo
+ZW4gaXQgZmFpbGVkCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFdhaXQgZm9yIEhQRCBz
+aWduYWwgYmVmb3JlIGNvbmZpZ3VyaW5nIGxpbmsKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
+cDogU2V0IFBEX0lOQ19CRyBmaXJzdCB3aGVuIHBvd2VyaW5nIHVwIGVkcCBwaHkKPj4gICBkcm0v
+YnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IGluY29ycmVjdCB1c2FnZSBvZiBlbmhhbmNlZCBtb2Rl
+Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEZpeCBBVVhfUEQgYml0IGZvciBSb2NrY2hp
+cAo+PiAgIGRybS9yb2NrY2hpcDogUmVzdG9yZSBwc3ItPnN0YXRlIHdoZW4gZW5hYmxlL2Rpc2Fi
+bGUgcHNyIGZhaWxlZAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCB1c2UgQU5B
+TE9HSVhfRFBfUExMX0NUTCB0byBjb250cm9sIHBsbAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4
+X2RwOiBGaXggdGltZW91dCBvZiB2aWRlbyBzdHJlYW1jbGsgY29uZmlnCj4+ICAgZHJtL2JyaWRn
+ZTogYW5hbG9naXhfZHA6IEZpeCBpbmNvcnJlY3Qgb3BlcmF0aW9ucyB3aXRoIHJlZ2lzdGVyCj4+
+ICAgICBBTkFMT0dJWF9EUF9GVU5DX0VOXzEKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDog
+TW92ZSBmYXN0IGxpbmsgdHJhaW5pbmcgZGV0ZWN0IHRvIHNldF9icmlkZ2UKPj4gICBkcm0vcm9j
+a2NoaXA6IERpc2FibGUgVk9QIHdpbmRvd3Mgd2hlbiBQU1IgaXMgYWN0aXZlCj4+Cj4+IMOYcmph
+biBFaWRlICgxKToKPj4gICBkcm0vcm9ja2NoaXA6IFJlc3BlY3QgcGFnZSBvZmZzZXQgZm9yIFBS
+SU1FIG1tYXAgY2FsbHMKPj4KPj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
+bG9naXhfZHBfY29yZS5jIHwgNDcxICsrKysrKysrKysrKysrKy0tLS0tLQo+PiAgZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgMTQgKy0KPj4gIGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgMjczICsr
+KysrKystLS0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
+cF9yZWcuaCAgfCAgIDcgKwo+PiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAg
+ICAgICAgICAgICAgICAgfCAgIDIgKy0KPj4gIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1z
+aW1wbGUuYyAgICAgICAgICAgICAgIHwgICA3ICstCj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8IDEyOSArKystLS0KPj4gIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICAgICAgIHwgICAzICstCj4+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgNCArLQo+
+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICAgICAgICAgfCAg
+MTMgKwo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgICAg
+ICAgfCAxMjUgKysrKystCj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2dlbS5oICAgICAgICB8ICAgNSArLQo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9wc3IuYyAgICAgICAgfCAxMTIgKystLS0KPj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fcHNyLmggICAgICAgIHwgICA2ICstCj4+ICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICA4MSArKystCj4+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oICAgICAgICB8ICAgMSArCj4+
+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgICAgICB8ICAg
+NiArLQo+PiAgaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAg
+ICAgfCAgIDcgKy0KPj4gIDE4IGZpbGVzIGNoYW5nZWQsIDg4MiBpbnNlcnRpb25zKCspLCAzODQg
+ZGVsZXRpb25zKC0pCj4+Cj4+IC0tCj4+IDIuMTIuMC4yNDYuZ2EyZWNjODQ4NjYtZ29vZwo+IF9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVs
+IG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
