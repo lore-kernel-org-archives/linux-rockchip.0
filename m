@@ -1,36 +1,108 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 0/4] iclk: rockchip: add CLK_IGNORE_UNUSED flag for some
- clks
-Date: Thu, 16 Mar 2017 16:44:50 +0800
-Message-ID: <1489653894-2440-1-git-send-email-zhangqing@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v4] drm/rockchip: Refactor the component match logic.
+Date: Thu, 16 Mar 2017 17:15:49 +0800
+Message-ID: <58CA57C5.2040009@rock-chips.com>
+References: <1489629956-32285-1-git-send-email-jeffy.chen@rock-chips.com> <4477033.icEzZGFJNF@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: huangtao@rock-chips.com, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4477033.icEzZGFJNF@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Yao <mark.yao@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Elaine Zhang (4):
-  clk: rockchip: rk3036: add CLK_IGNORE_UNUSED flag for pclk_ddrupctl
-  clk: rockchip: rk3228: add CLK_IGNORE_UNUSED flag for some clks
-  clk: rockchip: rk3288: add CLK_IGNORE_UNUSED flag for some clks
-  clk: rockchip: rk3368: add CLK_IGNORE_UNUSED flag for some clks
+Hi Heiko,
 
- drivers/clk/rockchip/clk-rk3036.c |  2 +-
- drivers/clk/rockchip/clk-rk3228.c | 66 ++++++++++++++++++++-------------------
- drivers/clk/rockchip/clk-rk3288.c | 42 ++++++++++++-------------
- drivers/clk/rockchip/clk-rk3368.c | 12 +++----
- 4 files changed, 62 insertions(+), 60 deletions(-)
-
--- 
-1.9.1
+On 03/16/2017 04:20 PM, Heiko Stuebner wrote:
+> Hi Jeffy,
+>
+> Am Donnerstag, 16. März 2017, 10:05:56 CET schrieb Jeffy Chen:
+>> Currently we are adding all components from the dts, if one of their
+>> drivers been disabled, we would not be able to bring up others.
+>>
+>> Refactor component match logic, follow exynos drm.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+>
+> [...]
+>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c index b360e62..51433da 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> @@ -356,34 +356,42 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
+>> rockchip_drm_sys_resume)
+>>   };
+>>
+>> -static int compare_of(struct device *dev, void *data)
+>> -{
+>> -	struct device_node *np = data;
+>> +#define MAX_ROCKCHIP_DRM_DRVS 16
+>> +static struct platform_driver *rockchip_drm_drvs[MAX_ROCKCHIP_DRM_DRVS];
+>> +static int rockchip_drm_drvs_cnt;
+>>
+>> -	return dev->of_node == np;
+>> +#define ROCKCHIP_DRM_DRV(drv, cond) { \
+>> +	if (IS_ENABLED(cond)) \
+>> +		rockchip_drm_drvs[rockchip_drm_drvs_cnt++] = &drv; \
+>>   }
+>
+> [...]
+>
+>> +static int __init rockchip_drm_init(void)
+>> +{
+>> +	int ret;
+>> +
+>> +	rockchip_drm_drvs_cnt = 0;
+>> +	ROCKCHIP_DRM_DRV(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
+>> +	ROCKCHIP_DRM_DRV(rockchip_dp_driver, CONFIG_ROCKCHIP_ANALOGIX_DP);
+>> +	ROCKCHIP_DRM_DRV(cdn_dp_driver, CONFIG_ROCKCHIP_CDN_DP);
+>> +	ROCKCHIP_DRM_DRV(dw_hdmi_rockchip_pltfm_driver,
+>> +			 CONFIG_ROCKCHIP_DW_HDMI);
+>> +	ROCKCHIP_DRM_DRV(dw_mipi_dsi_driver, CONFIG_ROCKCHIP_DW_MIPI_DSI);
+>> +	ROCKCHIP_DRM_DRV(inno_hdmi_driver, CONFIG_ROCKCHIP_INNO_HDMI);
+>> +
+>> +	ret = platform_register_drivers(rockchip_drm_drvs,
+>> +					rockchip_drm_drvs_cnt);
+>> +	if (ret)
+>> +		return ret;
+>
+> With the following config snippet
+>
+> CONFIG_DRM_ROCKCHIP=m
+> CONFIG_ROCKCHIP_ANALOGIX_DP=y
+> # CONFIG_ROCKCHIP_CDN_DP is not set
+> CONFIG_ROCKCHIP_DW_HDMI=y
+> CONFIG_ROCKCHIP_DW_MIPI_DSI=y
+> CONFIG_ROCKCHIP_INNO_HDMI=y
+>
+> I get these faults on arm32 (1 warning, 1 linker error):
+>
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_drv.o
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_fb.o
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_gem.o
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_psr.o
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_vop.o
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_vop_reg.o
+> ../drivers/gpu/drm/rockchip/rockchip_vop_reg.c:407:31: warning: ‘vop_platform_driver’ defined but not used [-Wunused-variable]
+>   static struct platform_driver vop_platform_driver = {
+>                                 ^~~~~~~~~~~~~~~~~~~
+>    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.o
+>    CC [M]  drivers/gpu/drm/rockchip/analogix_dp-rockchip.o
+>    CC [M]  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.o
+>    CC [M]  drivers/gpu/drm/rockchip/dw-mipi-dsi.o
+>    CC [M]  drivers/gpu/drm/rockchip/inno_hdmi.o
+>    LD [M]  drivers/gpu/drm/rockchip/rockchipdrm.o
+>    Building modules, stage 2.
+>    MODPOST 352 modules
+> ERROR: "vop_platform_driver" [drivers/gpu/drm/rockchip/rockchipdrm.ko] undefined!
+>
+>
+>
+>
+>
+oops, sorry again...thanx for testing it, i should be more 
+careful(porting it from my local 4.4 kernel).
