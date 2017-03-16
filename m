@@ -1,39 +1,53 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v3] drm/rockchip: Refactor the component match logic.
-Date: Thu, 16 Mar 2017 10:07:20 +0800
-Message-ID: <58C9F358.4020805@rock-chips.com>
-References: <1489573247-9628-1-git-send-email-jeffy.chen@rock-chips.com> <19101003.9xjQ92OS5C@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <19101003.9xjQ92OS5C@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Yao <mark.yao@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 0/5] rk808: Add RK805 support
+Date: Thu, 16 Mar 2017 10:14:59 +0800
+Message-ID: <1489630504-11328-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+change in V3:
+PATCH V3 1/5: NO change in V3
+PATCH V3 2/5: add rk805 RTC INT MASK define
+PATCH V3 3/5: RK805 set suspend enable and disable is different from rk808
+	      use rk805_regs_ops and rk805_switch_ops
+PATCH V3 4/5: fix up the shutdown func
+	      use pm_shutdown_prepare_fn to prepare shutdown
+	      and pm_pwroff_fn pull down gpio to shut down rk805
+	      it will update in the future(after rk808 support gpio func)
+PATCH V3 5/5: NO change in V3
 
-On 03/16/2017 01:00 AM, Heiko Stuebner wrote:
-> Am Mittwoch, 15. März 2017, 18:20:47 CET schrieb Jeffy Chen:
->> Currently we are adding all components from the dts, if one of their
->> drivers been disabled, we would not be able to bring up others.
->>
->> Refactor component match logic, follow exynos drm.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
->
-> This reliably produces null pointer dereference errors in
-> 	__platform_driver_register called from rockchip_drm_init
-> on at least rk3036 and rk3288 (probably more) when applied on top of
-> Linus' tree from today. Log attached and Rockchip drm compiled as module.
->
-> I'm currently dug into other areas, so hadn't have time to investigate further
-> yet.
->
->
-> Heiko
->
-oops, sorry, i'll upload a new version to fix that, thanx.
+change in V2:
+PATCH V2 1/5: NO change in V2
+PATCH V2 2/5: add rk805 BUCK ILMAX define
+PATCH V2 3/5: NO change in V2
+PATCH V2 4/5: setting RK805 BUCK ILMAX in pre init
+PATCH V2 5/5: Add RK805 device tree bindings document
+
+Elaine Zhang (5):
+  mfd: rk808: fix up the chip id get failed
+  linux: mfd: rk808: add rk805 regs addr and ID
+  regulator: rk808: Add regulator driver for RK805
+  mfd: rk808: Add RK805 support
+  mfd: dt-bindings: Add RK805 device tree bindings document
+
+ Documentation/devicetree/bindings/mfd/rk808.txt |  20 +++-
+ drivers/clk/Kconfig                             |   4 +-
+ drivers/mfd/Kconfig                             |   4 +-
+ drivers/mfd/rk808.c                             | 143 +++++++++++++++++++++++-
+ drivers/regulator/Kconfig                       |   4 +-
+ drivers/regulator/rk808-regulator.c             | 130 +++++++++++++++++++++
+ drivers/rtc/Kconfig                             |   4 +-
+ include/linux/mfd/rk808.h                       | 120 ++++++++++++++++++++
+ 8 files changed, 414 insertions(+), 15 deletions(-)
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
