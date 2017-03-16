@@ -1,48 +1,54 @@
-From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 4/5] mfd: rk808: Add RK805 support
-Date: Thu, 16 Mar 2017 09:18:39 +0000
-Message-ID: <20170316091839.glh2ugaumdmewo33@dell>
-References: <1489630504-11328-1-git-send-email-zhangqing@rock-chips.com>
- <1489630504-11328-5-git-send-email-zhangqing@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH v2 1/4] drm/rockchip/dsi: check phy_cfg_clk only for RK3399
+Date: Thu, 16 Mar 2017 10:55:00 +0000
+Message-ID: <20170316105500.675b413f.john@metanate.com>
+References: <1489635107-21327-1-git-send-email-zyw@rock-chips.com>
+ <1489635107-21327-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1489630504-11328-5-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1489635107-21327-2-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 16 Mar 2017, Elaine Zhang wrote:
-
-> The RK805 chip is a Power Management IC (PMIC) for multimedia and handheld
-> devices. It contains the following components:
-> 
->     - Regulators
->     - RTC
->     - Clocking
-> 
-> Both RK808 and RK805 chips are using a similar register map,
-> so we can reuse the RTC and Clocking functionality.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  drivers/clk/Kconfig |   4 +-
->  drivers/mfd/Kconfig |   4 +-
->  drivers/mfd/rk808.c | 122 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  drivers/rtc/Kconfig |   4 +-
->  4 files changed, 128 insertions(+), 6 deletions(-)
-
-Did you see my review of this patch already?
-
--- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVGh1LCAxNiBNYXIgMjAxNyAxMTozMTo0NCArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cgo+
+IEZvciBSSzMzOTksIHRoZSBwaHlfY2ZnX2NsayBpcyBhIHJlcXVpcmVkIGNsb2NrLCBpZiBwaHlf
+Y2ZnX2NsayBpcwo+IGRpc2FibGVkLCBNSVBJIHBoeSBjYW4gbm90IHdvcmsuIExldCdzIHJldHVy
+biBhIGVycm9yIGlmIHRoZXJlIGlzIG5vCj4gcGh5X2NmZ19jbGsgaW4gZHRzIHByb3BlcnR5LCB3
+aGVuIHRoZSBwZGF0YSBtYXRjaCBSSzMzOTkuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhv
+bmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHYyOiBOb25lCj4g
+Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMTAgKysrKy0tLS0t
+LQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+IAo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gaW5kZXggZjg0ZjlhZS4uMTFj
+NDE2NiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gQEAgLTEy
+MjcsMTUgKzEyMjcsMTMgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJCWNsa19kaXNhYmxlX3VucHJlcGFy
+ZShkc2ktPnBjbGspOwo+ICAJfQo+ICAKPiAtCWRzaS0+cGh5X2NmZ19jbGsgPSBkZXZtX2Nsa19n
+ZXQoZGV2LCAicGh5X2NmZyIpOwo+IC0JaWYgKElTX0VSUihkc2ktPnBoeV9jZmdfY2xrKSkgewo+
+IC0JCXJldCA9IFBUUl9FUlIoZHNpLT5waHlfY2ZnX2Nsayk7Cj4gLQkJaWYgKHJldCAhPSAtRU5P
+RU5UKSB7Cj4gKwlpZiAocGRhdGEgPT0gJnJrMzM5OV9taXBpX2RzaV9kcnZfZGF0YSkgewoKVGhp
+cyB3aWxsIGdldCBtZXNzeSBpZiB0aGUgbmV4dCBTT0MgYWxzbyBuZWVkcyBwaHlfY2ZnX2Nsay4g
+IENhbiB3ZSBkbwpzb21ldGhpbmcgbGlrZToKCglpZiAocGRhdGEtPmZsYWdzICYgRFdfTUlQSV9O
+RUVEU19QSFlfQ0ZHX0NMSykgewoJCS4uLgoKPiArCQlkc2ktPnBoeV9jZmdfY2xrID0gZGV2bV9j
+bGtfZ2V0KGRldiwgInBoeV9jZmciKTsKPiArCQlpZiAoSVNfRVJSKGRzaS0+cGh5X2NmZ19jbGsp
+KSB7Cj4gKwkJCXJldCA9IFBUUl9FUlIoZHNpLT5waHlfY2ZnX2Nsayk7Cj4gIAkJCWRldl9lcnIo
+ZGV2LCAiVW5hYmxlIHRvIGdldCBwaHlfY2ZnX2NsazogJWRcbiIsIHJldCk7Cj4gIAkJCXJldHVy
+biByZXQ7Cj4gIAkJfQo+IC0JCWRzaS0+cGh5X2NmZ19jbGsgPSBOVUxMOwo+IC0JCWRldl9kYmco
+ZGV2LCAiaGF2ZSBub3QgcGh5X2NmZ19jbGtcbiIpOwo+ICAJfQo+ICAKPiAgCXJldCA9IGNsa19w
+cmVwYXJlX2VuYWJsZShkc2ktPnBsbHJlZl9jbGspOwpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
