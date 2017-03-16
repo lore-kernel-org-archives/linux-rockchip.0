@@ -1,50 +1,80 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/7] include: dt-bindings: Add pin function index definition for rockchip pinctrl
-Date: Thu, 16 Mar 2017 09:02:47 +0100
-Message-ID: <3841077.a8qRkotiEM@diego>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com> <1489572237-6649-2-git-send-email-cl@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4] drm/rockchip: Refactor the component match logic.
+Date: Thu, 16 Mar 2017 09:20:13 +0100
+Message-ID: <4477033.icEzZGFJNF@phil>
+References: <1489629956-32285-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1489572237-6649-2-git-send-email-cl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: cl@rock-chips.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1489629956-32285-1-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Mittwoch, 15. März 2017, 18:03:51 CET schrieb cl@rock-chips.com:
-> From: Chen Liang <cl@rock-chips.com>
-> 
-> The rk3328 soc need more pin function index for pinctrl.
-> 
-> Signed-off-by: Chen Liang <cl@rock-chips.com>
-> ---
->  include/dt-bindings/pinctrl/rockchip.h | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/include/dt-bindings/pinctrl/rockchip.h
-> b/include/dt-bindings/pinctrl/rockchip.h index aaec8ba..bc2b6af 100644
-> --- a/include/dt-bindings/pinctrl/rockchip.h
-> +++ b/include/dt-bindings/pinctrl/rockchip.h
-> @@ -63,5 +63,8 @@
->  #define RK_FUNC_2	2
->  #define RK_FUNC_3	3
->  #define RK_FUNC_4	4
-> +#define RK_FUNC_5	5
-> +#define RK_FUNC_6	6
-> +#define RK_FUNC_7	7
-
-please don't amend that function list anymore.
-
-Only RK_FUNC_GPIO serves a real purpose but having constants FUNC_7 mapping 
-simply to 7 does not help understand things better, so it's way easier to just 
-have "7" as function in pinctrl entries in the devicetree.
-
-That list is mainly a remnant to keep compatibility with old devicetrees and I 
-guess I should add a deprecated notice at some point :-) .
-
-
-Heiko
+SGkgSmVmZnksCgpBbSBEb25uZXJzdGFnLCAxNi4gTcOkcnogMjAxNywgMTA6MDU6NTYgQ0VUIHNj
+aHJpZWIgSmVmZnkgQ2hlbjoKPiBDdXJyZW50bHkgd2UgYXJlIGFkZGluZyBhbGwgY29tcG9uZW50
+cyBmcm9tIHRoZSBkdHMsIGlmIG9uZSBvZiB0aGVpcgo+IGRyaXZlcnMgYmVlbiBkaXNhYmxlZCwg
+d2Ugd291bGQgbm90IGJlIGFibGUgdG8gYnJpbmcgdXAgb3RoZXJzLgo+IAo+IFJlZmFjdG9yIGNv
+bXBvbmVudCBtYXRjaCBsb2dpYywgZm9sbG93IGV4eW5vcyBkcm0uCj4gCj4gU2lnbmVkLW9mZi1i
+eTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiBSZXZpZXdlZC1ieTog
+QW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KClsuLi5dCgo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGluZGV4IGIzNjBlNjIuLjUxNDMz
+ZGEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
+cnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
+PiBAQCAtMzU2LDM0ICszNTYsNDIgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIHJv
+Y2tjaGlwX2RybV9wbV9vcHMgPSB7Cj4gcm9ja2NoaXBfZHJtX3N5c19yZXN1bWUpCj4gIH07Cj4g
+Cj4gLXN0YXRpYyBpbnQgY29tcGFyZV9vZihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEp
+Cj4gLXsKPiAtCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkYXRhOwo+ICsjZGVmaW5lIE1BWF9S
+T0NLQ0hJUF9EUk1fRFJWUyAxNgo+ICtzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqcm9j
+a2NoaXBfZHJtX2RydnNbTUFYX1JPQ0tDSElQX0RSTV9EUlZTXTsKPiArc3RhdGljIGludCByb2Nr
+Y2hpcF9kcm1fZHJ2c19jbnQ7Cj4gCj4gLQlyZXR1cm4gZGV2LT5vZl9ub2RlID09IG5wOwo+ICsj
+ZGVmaW5lIFJPQ0tDSElQX0RSTV9EUlYoZHJ2LCBjb25kKSB7IFwKPiArCWlmIChJU19FTkFCTEVE
+KGNvbmQpKSBcCj4gKwkJcm9ja2NoaXBfZHJtX2RydnNbcm9ja2NoaXBfZHJtX2RydnNfY250Kytd
+ID0gJmRydjsgXAo+ICB9CgpbLi4uXQoKPiArc3RhdGljIGludCBfX2luaXQgcm9ja2NoaXBfZHJt
+X2luaXQodm9pZCkKPiArewo+ICsJaW50IHJldDsKPiArCj4gKwlyb2NrY2hpcF9kcm1fZHJ2c19j
+bnQgPSAwOwo+ICsJUk9DS0NISVBfRFJNX0RSVih2b3BfcGxhdGZvcm1fZHJpdmVyLCBDT05GSUdf
+RFJNX1JPQ0tDSElQKTsKPiArCVJPQ0tDSElQX0RSTV9EUlYocm9ja2NoaXBfZHBfZHJpdmVyLCBD
+T05GSUdfUk9DS0NISVBfQU5BTE9HSVhfRFApOwo+ICsJUk9DS0NISVBfRFJNX0RSVihjZG5fZHBf
+ZHJpdmVyLCBDT05GSUdfUk9DS0NISVBfQ0ROX0RQKTsKPiArCVJPQ0tDSElQX0RSTV9EUlYoZHdf
+aGRtaV9yb2NrY2hpcF9wbHRmbV9kcml2ZXIsCj4gKwkJCSBDT05GSUdfUk9DS0NISVBfRFdfSERN
+SSk7Cj4gKwlST0NLQ0hJUF9EUk1fRFJWKGR3X21pcGlfZHNpX2RyaXZlciwgQ09ORklHX1JPQ0tD
+SElQX0RXX01JUElfRFNJKTsKPiArCVJPQ0tDSElQX0RSTV9EUlYoaW5ub19oZG1pX2RyaXZlciwg
+Q09ORklHX1JPQ0tDSElQX0lOTk9fSERNSSk7Cj4gKwo+ICsJcmV0ID0gcGxhdGZvcm1fcmVnaXN0
+ZXJfZHJpdmVycyhyb2NrY2hpcF9kcm1fZHJ2cywKPiArCQkJCQlyb2NrY2hpcF9kcm1fZHJ2c19j
+bnQpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0OwoKV2l0aCB0aGUgZm9sbG93aW5nIGNv
+bmZpZyBzbmlwcGV0CgpDT05GSUdfRFJNX1JPQ0tDSElQPW0KQ09ORklHX1JPQ0tDSElQX0FOQUxP
+R0lYX0RQPXkKIyBDT05GSUdfUk9DS0NISVBfQ0ROX0RQIGlzIG5vdCBzZXQKQ09ORklHX1JPQ0tD
+SElQX0RXX0hETUk9eQpDT05GSUdfUk9DS0NISVBfRFdfTUlQSV9EU0k9eQpDT05GSUdfUk9DS0NI
+SVBfSU5OT19IRE1JPXkKCkkgZ2V0IHRoZXNlIGZhdWx0cyBvbiBhcm0zMiAoMSB3YXJuaW5nLCAx
+IGxpbmtlciBlcnJvcik6CgogIENDIFtNXSAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9kcnYubwogIENDIFtNXSAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV9mYi5vCiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2dlbS5vCiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bz
+ci5vCiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5v
+CiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5vCi4u
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmM6NDA3OjMxOiB3YXJu
+aW5nOiDigJh2b3BfcGxhdGZvcm1fZHJpdmVy4oCZIGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV3Vu
+dXNlZC12YXJpYWJsZV0KIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHZvcF9wbGF0Zm9y
+bV9kcml2ZXIgPSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+
+fn5+fn5+CiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Zi
+ZGV2Lm8KICBDQyBbTV0gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2Nr
+Y2hpcC5vCiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hp
+cC5vCiAgQ0MgW01dICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kubwogIEND
+IFtNXSAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5vCiAgTEQgW01dICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBkcm0ubwogIEJ1aWxkaW5nIG1vZHVsZXMsIHN0
+YWdlIDIuCiAgTU9EUE9TVCAzNTIgbW9kdWxlcwpFUlJPUjogInZvcF9wbGF0Zm9ybV9kcml2ZXIi
+IFtkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBkcm0ua29dIHVuZGVmaW5lZCEKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
