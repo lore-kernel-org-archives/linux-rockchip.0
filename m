@@ -1,108 +1,48 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v4] drm/rockchip: Refactor the component match logic.
-Date: Thu, 16 Mar 2017 17:15:49 +0800
-Message-ID: <58CA57C5.2040009@rock-chips.com>
-References: <1489629956-32285-1-git-send-email-jeffy.chen@rock-chips.com> <4477033.icEzZGFJNF@phil>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 4/5] mfd: rk808: Add RK805 support
+Date: Thu, 16 Mar 2017 09:18:39 +0000
+Message-ID: <20170316091839.glh2ugaumdmewo33@dell>
+References: <1489630504-11328-1-git-send-email-zhangqing@rock-chips.com>
+ <1489630504-11328-5-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4477033.icEzZGFJNF@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Yao <mark.yao@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1489630504-11328-5-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Thu, 16 Mar 2017, Elaine Zhang wrote:
 
-On 03/16/2017 04:20 PM, Heiko Stuebner wrote:
-> Hi Jeffy,
->
-> Am Donnerstag, 16. März 2017, 10:05:56 CET schrieb Jeffy Chen:
->> Currently we are adding all components from the dts, if one of their
->> drivers been disabled, we would not be able to bring up others.
->>
->> Refactor component match logic, follow exynos drm.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
->
-> [...]
->
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c index b360e62..51433da 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> @@ -356,34 +356,42 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
->> rockchip_drm_sys_resume)
->>   };
->>
->> -static int compare_of(struct device *dev, void *data)
->> -{
->> -	struct device_node *np = data;
->> +#define MAX_ROCKCHIP_DRM_DRVS 16
->> +static struct platform_driver *rockchip_drm_drvs[MAX_ROCKCHIP_DRM_DRVS];
->> +static int rockchip_drm_drvs_cnt;
->>
->> -	return dev->of_node == np;
->> +#define ROCKCHIP_DRM_DRV(drv, cond) { \
->> +	if (IS_ENABLED(cond)) \
->> +		rockchip_drm_drvs[rockchip_drm_drvs_cnt++] = &drv; \
->>   }
->
-> [...]
->
->> +static int __init rockchip_drm_init(void)
->> +{
->> +	int ret;
->> +
->> +	rockchip_drm_drvs_cnt = 0;
->> +	ROCKCHIP_DRM_DRV(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
->> +	ROCKCHIP_DRM_DRV(rockchip_dp_driver, CONFIG_ROCKCHIP_ANALOGIX_DP);
->> +	ROCKCHIP_DRM_DRV(cdn_dp_driver, CONFIG_ROCKCHIP_CDN_DP);
->> +	ROCKCHIP_DRM_DRV(dw_hdmi_rockchip_pltfm_driver,
->> +			 CONFIG_ROCKCHIP_DW_HDMI);
->> +	ROCKCHIP_DRM_DRV(dw_mipi_dsi_driver, CONFIG_ROCKCHIP_DW_MIPI_DSI);
->> +	ROCKCHIP_DRM_DRV(inno_hdmi_driver, CONFIG_ROCKCHIP_INNO_HDMI);
->> +
->> +	ret = platform_register_drivers(rockchip_drm_drvs,
->> +					rockchip_drm_drvs_cnt);
->> +	if (ret)
->> +		return ret;
->
-> With the following config snippet
->
-> CONFIG_DRM_ROCKCHIP=m
-> CONFIG_ROCKCHIP_ANALOGIX_DP=y
-> # CONFIG_ROCKCHIP_CDN_DP is not set
-> CONFIG_ROCKCHIP_DW_HDMI=y
-> CONFIG_ROCKCHIP_DW_MIPI_DSI=y
-> CONFIG_ROCKCHIP_INNO_HDMI=y
->
-> I get these faults on arm32 (1 warning, 1 linker error):
->
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_drv.o
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_fb.o
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_gem.o
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_psr.o
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_vop.o
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_vop_reg.o
-> ../drivers/gpu/drm/rockchip/rockchip_vop_reg.c:407:31: warning: ‘vop_platform_driver’ defined but not used [-Wunused-variable]
->   static struct platform_driver vop_platform_driver = {
->                                 ^~~~~~~~~~~~~~~~~~~
->    CC [M]  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.o
->    CC [M]  drivers/gpu/drm/rockchip/analogix_dp-rockchip.o
->    CC [M]  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.o
->    CC [M]  drivers/gpu/drm/rockchip/dw-mipi-dsi.o
->    CC [M]  drivers/gpu/drm/rockchip/inno_hdmi.o
->    LD [M]  drivers/gpu/drm/rockchip/rockchipdrm.o
->    Building modules, stage 2.
->    MODPOST 352 modules
-> ERROR: "vop_platform_driver" [drivers/gpu/drm/rockchip/rockchipdrm.ko] undefined!
->
->
->
->
->
-oops, sorry again...thanx for testing it, i should be more 
-careful(porting it from my local 4.4 kernel).
+> The RK805 chip is a Power Management IC (PMIC) for multimedia and handheld
+> devices. It contains the following components:
+> 
+>     - Regulators
+>     - RTC
+>     - Clocking
+> 
+> Both RK808 and RK805 chips are using a similar register map,
+> so we can reuse the RTC and Clocking functionality.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/clk/Kconfig |   4 +-
+>  drivers/mfd/Kconfig |   4 +-
+>  drivers/mfd/rk808.c | 122 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  drivers/rtc/Kconfig |   4 +-
+>  4 files changed, 128 insertions(+), 6 deletions(-)
+
+Did you see my review of this patch already?
+
+-- 
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
