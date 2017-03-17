@@ -1,38 +1,58 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 0/4] RK3399 dw-mipi-dsi patches
-Date: Thu, 16 Mar 2017 17:34:17 -0700
-Message-ID: <20170317003416.GC8180@google.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 1/4] drm/rockchip/dsi: check phy_cfg_clk only for RK3399
+Date: Fri, 17 Mar 2017 09:19:06 +0800
+Message-ID: <58CB398A.9050800@rock-chips.com>
 References: <1489635107-21327-1-git-send-email-zyw@rock-chips.com>
+ <1489635107-21327-2-git-send-email-zyw@rock-chips.com>
+ <20170316105500.675b413f.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1489635107-21327-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170316105500.675b413f.john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 16, 2017 at 11:31:43AM +0800, Chris Zhong wrote:
-> Hi all
-> 
-> This series set the phy_cfg_clk to be a required clock for RK3399, and
-> add a grf clock control in dw-mipi-dsi driver. And then correct a
-> register name.
-> 
-> 
-> Changes in v2:
-> - check the grf_clk only for RK3399
-
-For the series:
-
-Tested-by: Brian Norris <briannorris@chromium.org>
+SGkgSm9obgoKT24gMDMvMTYvMjAxNyAwNjo1NSBQTSwgSm9obiBLZWVwaW5nIHdyb3RlOgo+IE9u
+IFRodSwgMTYgTWFyIDIwMTcgMTE6MzE6NDQgKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+Cj4+
+IEZvciBSSzMzOTksIHRoZSBwaHlfY2ZnX2NsayBpcyBhIHJlcXVpcmVkIGNsb2NrLCBpZiBwaHlf
+Y2ZnX2NsayBpcwo+PiBkaXNhYmxlZCwgTUlQSSBwaHkgY2FuIG5vdCB3b3JrLiBMZXQncyByZXR1
+cm4gYSBlcnJvciBpZiB0aGVyZSBpcyBubwo+PiBwaHlfY2ZnX2NsayBpbiBkdHMgcHJvcGVydHks
+IHdoZW4gdGhlIHBkYXRhIG1hdGNoIFJLMzM5OS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMg
+WmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjI6IE5v
+bmUKPj4KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDEwICsr
+KystLS0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9u
+cygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+PiBpbmRleCBm
+ODRmOWFlLi4xMWM0MTY2IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+ZHctbWlwaS1kc2kuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYwo+PiBAQCAtMTIyNywxNSArMTIyNywxMyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Jp
+bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+ICAgCQljbGtf
+ZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wY2xrKTsKPj4gICAJfQo+PiAgIAo+PiAtCWRzaS0+cGh5
+X2NmZ19jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAicGh5X2NmZyIpOwo+PiAtCWlmIChJU19FUlIo
+ZHNpLT5waHlfY2ZnX2NsaykpIHsKPj4gLQkJcmV0ID0gUFRSX0VSUihkc2ktPnBoeV9jZmdfY2xr
+KTsKPj4gLQkJaWYgKHJldCAhPSAtRU5PRU5UKSB7Cj4+ICsJaWYgKHBkYXRhID09ICZyazMzOTlf
+bWlwaV9kc2lfZHJ2X2RhdGEpIHsKPiBUaGlzIHdpbGwgZ2V0IG1lc3N5IGlmIHRoZSBuZXh0IFNP
+QyBhbHNvIG5lZWRzIHBoeV9jZmdfY2xrLiAgQ2FuIHdlIGRvCj4gc29tZXRoaW5nIGxpa2U6Cj4K
+PiAJaWYgKHBkYXRhLT5mbGFncyAmIERXX01JUElfTkVFRFNfUEhZX0NGR19DTEspIHsKPiAJCS4u
+LgpUaGFua3MsIGdvb2QgaWRlYS4gSSB0aGluayBSSzMzNjggbWlwaS1kc2kgZHJpdmVyIGlzIG9u
+IHRoZSB3YXkuIDopCgoKPj4gKwkJZHNpLT5waHlfY2ZnX2NsayA9IGRldm1fY2xrX2dldChkZXYs
+ICJwaHlfY2ZnIik7Cj4+ICsJCWlmIChJU19FUlIoZHNpLT5waHlfY2ZnX2NsaykpIHsKPj4gKwkJ
+CXJldCA9IFBUUl9FUlIoZHNpLT5waHlfY2ZnX2Nsayk7Cj4+ICAgCQkJZGV2X2VycihkZXYsICJV
+bmFibGUgdG8gZ2V0IHBoeV9jZmdfY2xrOiAlZFxuIiwgcmV0KTsKPj4gICAJCQlyZXR1cm4gcmV0
+Owo+PiAgIAkJfQo+PiAtCQlkc2ktPnBoeV9jZmdfY2xrID0gTlVMTDsKPj4gLQkJZGV2X2RiZyhk
+ZXYsICJoYXZlIG5vdCBwaHlfY2ZnX2Nsa1xuIik7Cj4+ICAgCX0KPj4gICAKPj4gICAJcmV0ID0g
+Y2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+cGxscmVmX2Nsayk7Cj4KPgoKLS0gCkNocmlzIFpob25n
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
