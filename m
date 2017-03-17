@@ -1,132 +1,51 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 6/7] arm64: dts: rockchip: add dts file for RK3328 evaluation board
-Date: Fri, 17 Mar 2017 09:45:52 +0100
-Message-ID: <4559383.EsY2O1vJ7P@phil>
-References: <1489572237-6649-1-git-send-email-cl@rock-chips.com> <63969127-3fcd-658c-2986-8ded6d93c433@arm.com> <58CB4945.9020408@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add rk3368 dw-mmc resets
+Date: Fri, 17 Mar 2017 17:25:17 +0800
+Message-ID: <d1621710-a93d-aa8e-ef2b-f61632814752@rock-chips.com>
+References: <20170317083951.14343-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <58CB4945.9020408-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?utf-8?B?6ZmI5Lqu?= <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Andre Przywara <andre.przywara-5wv7dgnIgG8@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, yhx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, david.wu@rock-chips
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170317083951.14343-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 17. März 2017, 10:26:13 CET schrieb 陈亮:
-> 在 2017年03月17日 00:18, Andre Przywara 写道:
-> > Hi Chen,
-> > 
-> > On 16/03/17 01:45, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org wrote:
-> >> From: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> 
-> >> This patch add rk3328-evb.dts for RK3328 evaluation board.
-> >> Tested on RK3328 evb.
-> >> 
-> >> Signed-off-by: Chen Liang <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> ---
-> >> 
-> >>   arch/arm64/boot/dts/rockchip/Makefile       |  1 +
-> >>   arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 57
-> >>   +++++++++++++++++++++++++++++ 2 files changed, 58 insertions(+)
-> >>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> >> 
-> >> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
-> >> b/arch/arm64/boot/dts/rockchip/Makefile index 3a86289..853fc7d 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> >> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> >> @@ -4,6 +4,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
-> >> 
-> >>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
-> >>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
-> >>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
-> >> 
-> >> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
-> >> 
-> >>   always		:= $(dtb-y)
-> >>   subdir-y	:= $(dts-dirs)
-> >> 
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> >> b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts new file mode 100644
-> >> index 0000000..cf27239
-> >> --- /dev/null
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-> >> @@ -0,0 +1,57 @@
-> >> +/*
-> >> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
-> >> + *
-> >> + * This file is dual-licensed: you can use it either under the terms
-> >> + * of the GPL or the X11 license, at your option. Note that this dual
-> >> + * licensing only applies to this file, and not this project as a
-> >> + * whole.
-> >> + *
-> >> + *  a) This library is free software; you can redistribute it and/or
-> >> + *     modify it under the terms of the GNU General Public License as
-> >> + *     published by the Free Software Foundation; either version 2 of
-> >> the
-> >> + *     License, or (at your option) any later version.
-> >> + *
-> >> + *     This library is distributed in the hope that it will be useful,
-> >> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >> + *     GNU General Public License for more details.
-> >> + *
-> >> + * Or, alternatively,
-> >> + *
-> >> + *  b) Permission is hereby granted, free of charge, to any person
-> >> + *     obtaining a copy of this software and associated documentation
-> >> + *     files (the "Software"), to deal in the Software without
-> >> + *     restriction, including without limitation the rights to use,
-> >> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> >> + *     sell copies of the Software, and to permit persons to whom the
-> >> + *     Software is furnished to do so, subject to the following
-> >> + *     conditions:
-> >> + *
-> >> + *     The above copyright notice and this permission notice shall be
-> >> + *     included in all copies or substantial portions of the Software.
-> >> + *
-> >> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> >> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> >> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> >> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> >> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> >> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> >> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> >> + *     OTHER DEALINGS IN THE SOFTWARE.
-> >> + */
-> >> +
-> >> +/dts-v1/;
-> >> +#include "rk3328.dtsi"
-> >> +
-> >> +/ {
-> >> +	model = "Rockchip RK3328 EVB";
-> >> +	compatible = "rockchip,rk3328-evb", "rockchip,rk3328";
-> >> +
-> >> +	chosen {
-> >> +		stdout-path = "serial2:1500000n8";
-> > 
-> > Is that really 1.5MBit/s?
-> 
-> Yes, the RK3328 EVB board use 1.5MBit/s baud rate.
-> 
-> >> +	};
-> >> +};
-> >> +
-> >> +&uart2 {
-> >> +	status = "okay";
-> >> +};
-> > 
-> > I don't have the board, but would expect to see more peripherals
-> > mentioned in the .dtsi enabled here.
-> > For sure the board has an (micro)SD card slot, possibly even Ethernet?
-> 
-> The codes for other peripherals are not ready now for new kernel, so i
-> push a base dtsi, and other configration will be pushed later if it is ok.
-
-for me that approach is fine in general, but here, you could enable at least 
-the watchdog as well?
-
-But no need to resend just now, I still need to look at the big dtsi.
-
-
-Heiko
+1NogMjAxNy8zLzE3IDE2OjM5LCBIZWlrbyBTdHVlYm5lciDQtLXAOgo+IGR3LW1tYyBnb3QgaXRz
+IHJlc2V0LXByb3BlcnRpZXMgc3BlY2lmaWVkLCBzbyBhZGQgdGhlIHNvZnRyZXNldHMKPiBmb3Ig
+aXQgb24gdGhlIHJrMzM2OC4KPgo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlr
+b0BzbnRlY2guZGU+CgpSZXZpZXdlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlw
+cy5jb20+Cgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC5kdHNp
+IHwgNiArKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LmR0c2kgYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC5kdHNpCj4gaW5kZXggYTYzNWFkYzQ3ZTc0Li4w
+NmZhNmUwMDkwNGQgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzNjguZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LmR0
+c2kKPiBAQCAtMjM3LDYgKzIzNyw4IEBACj4gIAkJY2xvY2stbmFtZXMgPSAiYml1IiwgImNpdSIs
+ICJjaXUtZHJpdmUiLCAiY2l1LXNhbXBsZSI7Cj4gIAkJZmlmby1kZXB0aCA9IDwweDEwMD47Cj4g
+IAkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDMyIElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ICsJCXJl
+c2V0cyA9IDwmY3J1IFNSU1RfTU1DMD47Cj4gKwkJcmVzZXQtbmFtZXMgPSAicmVzZXQiOwo+ICAJ
+CXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gIAl9Owo+Cj4gQEAgLTI0OSw2ICsyNTEsOCBAQAo+ICAJ
+CWNsb2NrLW5hbWVzID0gImJpdSIsICJjaXUiLCAiY2l1X2RydiIsICJjaXVfc2FtcGxlIjsKPiAg
+CQlmaWZvLWRlcHRoID0gPDB4MTAwPjsKPiAgCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMzMgSVJR
+X1RZUEVfTEVWRUxfSElHSD47Cj4gKwkJcmVzZXRzID0gPCZjcnUgU1JTVF9TRElPMD47Cj4gKwkJ
+cmVzZXQtbmFtZXMgPSAicmVzZXQiOwo+ICAJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gIAl9Owo+
+Cj4gQEAgLTI2MSw2ICsyNjUsOCBAQAo+ICAJCWNsb2NrLW5hbWVzID0gImJpdSIsICJjaXUiLCAi
+Y2l1LWRyaXZlIiwgImNpdS1zYW1wbGUiOwo+ICAJCWZpZm8tZGVwdGggPSA8MHgxMDA+Owo+ICAJ
+CWludGVycnVwdHMgPSA8R0lDX1NQSSAzNSBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiArCQlyZXNl
+dHMgPSA8JmNydSBTUlNUX0VNTUM+Owo+ICsJCXJlc2V0LW5hbWVzID0gInJlc2V0IjsKPiAgCQlz
+dGF0dXMgPSAiZGlzYWJsZWQiOwo+ICAJfTsKPgo+CgoKLS0gCkJlc3QgUmVnYXJkcwpTaGF3biBM
+aW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
+eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
+cm0ta2VybmVsCg==
