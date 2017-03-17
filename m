@@ -1,133 +1,75 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH 00/41] Chromebook Plus (aka kevin) kernel patches
-Date: Thu, 16 Mar 2017 17:45:22 +0100
-Message-ID: <CAFqH_50gcYegc3V85j84Y2prjjQ2o+RRFAH8=pnJeZWQkwFvCA@mail.gmail.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <20170314204341.GC20329@art_vandelay>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: Add INNOLUX P079ZCA panel bindings
+Date: Thu, 16 Mar 2017 17:32:08 -0700
+Message-ID: <20170317003205.GA8180@google.com>
+References: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170314204341.GC20329@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1489562353-10313-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-MjAxNy0wMy0xNCAyMTo0MyBHTVQrMDE6MDAgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5v
-cmc+Ogo+IE9uIFRodSwgTWFyIDA5LCAyMDE3IGF0IDExOjMyOjE1UE0gLTA1MDAsIFNlYW4gUGF1
-bCB3cm90ZToKPj4gRGVzcGl0ZSBvdXIgYmVzdCBpbnRlbnRpb25zIChhbmQgd2UgZGlkIGEgZGVj
-ZW50IGpvYiB0aGlzIHRpbWUgYXJvdW5kKSBvZiBzdWJtaXR0aW5nCj4+IHVwc3RyZWFtIGZpcnN0
-IGZvciB0aGUgQ2hyb21lYm9vayBQbHVzLCB3ZSBoYWQgYSBudW1iZXIgb2YgcGF0Y2hlcyBzbGlw
-IHRocm91Z2ggdGhlCj4+IGNyYWNrcy4gVGhpcyBzZXJpZXMgaW5jbHVkZXMgYWxsIGJ1dCBvbmUg
-b2YgdGhvc2UgcGF0Y2hlcy4gVGhlIG91dGxpZXIgYnJlYWtzIG15Cj4+IHZleXJvbiBib2FyZCwg
-c28gSSBkcm9wcGVkIGl0Lgo+Pgo+PiBUaGUgcGF0Y2hlcyBoYXZlIGJlZW4gdGVzdGVkIG9uIHRo
-ZSBDaHJvbWVib29rIFBsdXMgaW4gb3VyIGRvd25zdHJlYW0ga2VybmVsLCBhbmQKPj4gbXkgdmV5
-cm9uLWphcSBib2FyZCB3aXRoIGFuIHVwc3RyZWFtIGtlcm5lbC4gVGhleSBoYXZlIGFsc28gYmVl
-biBjb21waWxlIHRlc3RlZAo+PiB1c2luZyB0aGUgZHJtLW1pc2MgY29uZmlncy4KPj4KCkp1c3Qg
-dG8gYWRkIG1vcmUgaW5mb3JtYXRpb24uIEkgZGlkIHNvbWUgcXVpY2sgdGVzdHMsIEkgc3VjY2Vz
-c2Z1bGx5CnBpY2tlZCB0aGUgZnVsbCBzZXJpZXMgb24gdG9wIG9mIGxpbnV4LW5leHQsIGJ1aWxk
-IGFuZCB0ZXN0IG9uIHZleXJvbgptaW5uaWUgZGV2aWNlIGFuZCBncnUgZGV2aWNlLiBGb3IgdGhl
-IGdydSBkZXZpY2UgKHdoaWNoIG5lZWRzIHNvbWUKb3RoZXIgZnJvbSBsaXN0IHBhdGNoZXMgdG8g
-bWFrZSBpdCB3b2spIHRoZXJlIGFyZSBpc3N1ZXMgYnV0IG5vdGhpbmcKcmVsYXRlZCB0byB0aGVz
-ZSBwYXRjaGVzIGFzIGl0IGZhaWxzIHdoZW5ldmVyIHRoZSBwYXRjaGVzIGFyZSBhcHBsaWVkCm9y
-IG5vdC4gVGhlIGlzc3VlIEknbSBmYWNpbmcgaXMgTENEIGZsaWNrZXJpbmcgYnV0IEkgcmVwZWF0
-IHRoaXMgaXMKTk9UIHJlbGF0ZWQgdG8gdGhlc2UgcGF0Y2hlcyBzbyBJIHRoaW5rIHdpbGwgYmUg
-aGVscGZ1bCBoYXZlIHRoZXNlCnBhdGNoZXMgdXBzdHJlYW0gdG8gaGF2ZSBiZXR0ZXIgc3VwcG9y
-dCBmb3Iga2V2aW4gYW5kIGFueSBvdGhlcgpncnUtYmFzZWQgZGV2aWNlLCBzbzoKClRlc3RlZC1i
-eTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4K
-ClNlYW4sIGlmIHlvdSBwbGFuIHNlbmQgYSBzZWNvbmQgdmVyc2lvbiB3aXRoIHRoZSBjb21tZW50
-cyByZWNlaXZlZCBjYW4KeW91IGFsc28gY2MgbWU/CgpUaGFua3MsCiAgRW5yaWMKCj4+IFNlYW4K
-Pj4KPj4KPj4gRG91Z2xhcyBBbmRlcnNvbiAoNCk6Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhf
-ZHA6IFJlb3JkZXIgcGxhdF9kYXRhLT5wb3dlcl9vZmYgdG8gaGFwcGVuIHNvb25lcgo+PiAgIGRy
-bS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgcG93ZXJv
-biBpbiB0d28KPj4gICAgIHBhcnRzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
-cmx5IGxvZyBBVVggQ0ggZXJyb3JzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
-cmx5IGRpc2FibGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAo+Pgo+PiBIYWl4aWEgU2hp
-ICgxKToKPj4gICBkcm0vcm9ja2NoaXA6IHN1cHBvcnQgcHJpbWUgaW1wb3J0IHNnIHRhYmxlCj4+
-Cj4+IExpbiBIdWFuZyAoNik6Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IE1vdmUgZW5h
-YmxlIHZpZGVvIGludG8gY29uZmlnX3ZpZGVvKCkKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
-cDogQ2hlY2sgQVVYX0VOIHN0YXR1cyB3aGVuIGRvaW5nIEFVWCB0cmFuc2Zlcgo+PiAgIGRybS9i
-cmlkZ2U6IGFuYWxvZ2l4X2RwOiBFbnN1cmUgZWRwIGlzIGRpc2FibGVkIHdoZW4gc2h1dHRpbmcg
-ZG93biB0aGUKPj4gICAgIHBhbmVsCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEV4dGVu
-ZCBocGQgY2hlY2sgdGltZSB0byAxMDBtcwo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBD
-aGVjayBkcGNkIHdyaXRlL3JlYWQgc3RhdHVzCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
-IFJlc2V0IGF1eCBjaGFubmVsIGlmIGFuIGVycm9yIG9jY3VycmVkCj4+Cj4+IE1hcmsgWWFvICgx
-KToKPj4gICBkcm0vcm9ja2NoaXA6IHByZSBkaXRoZXIgZG93biB3aGVuIG91dHB1dCBicGMgaXMg
-OGJpdAo+Pgo+PiBTZWFuIFBhdWwgKDMpOgo+PiAgIGRybS9wYW5lbDogc2ltcGxlOiBDaGFuZ2Ug
-bW9kZSBmb3IgU2hhcnAgbHExMjNwMWp4MzEKPj4gICBkcm0vcm9ja2NoaXA6IERvbid0IHVzZSBh
-dG9taWMgY29uc3RydWN0cyBmb3IgcHNyCj4+ICAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgYW5hbG9n
-aXggcHNyIHdvcmtlcgo+Cj4gSGkgTWFyaywKPiBIb3BlZnVsbHkgeW91J3ZlIHNlZW4gdGhpcyBz
-ZXJpZXMgYnkgbm93LiBJIHdvdWxkIHJlYWxseSBsaWtlIHRvIGdldCB5b3VyIHJldmlldwo+IG9u
-IG15IDIgcGF0Y2hlcyBhYm92ZSBzbyBJIGNhbiBnZXQgdGhlc2UgaW50byBkcm0tbWlzYy4KPgo+
-IElmIHlvdSBoYXZlIHNvbWUgdGltZSwgSSB3b3VsZCByZWFsbHkgYXBwcmVjaWF0ZSBpdC4KPgo+
-IFNlYW4KPgo+Pgo+PiBUb21hc3ogRmlnYSAoNik6Cj4+ICAgZHJtL3JvY2tjaGlwOiBHZXQgcmlk
-IG9mIHNvbWUgdW5uZWNlc3NhcnkgY29kZQo+PiAgIGRybS9yb2NrY2hpcDogRmx1c2ggUFNSIGJl
-Zm9yZSBjb21taXR0aW5nIG1vZGVzZXQgZGlzYWJsZXMvZW5hYmxlcwo+PiAgIGRybS9icmlkZ2U6
-IGFuYWxvZ2l4X2RwOiBBbGxvdyBtYXN0ZXIgZHJpdmVyIHRvIGNsZWFudXAgaW4gdW5iaW5kCj4+
-ICAgZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogRml4IGludmFsaWQgaW1wbGVtZW50YXRpb24g
-b2YgdW5iaW5kCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEFkZCBhbmFsb2dpeF9kcF9z
-aHV0ZG93bgo+PiAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IFdpcmUgdGhlIHNodXRkb3du
-IGNhbGxiYWNrIHRvIGRpc2FibGUgUFNSCj4+Cj4+IFlha2lyIFlhbmcgKDEpOgo+PiAgIGRybS9i
-cmlkZ2U6IGFuYWxvZ2l4X2RwOiBkZXRlY3QgU2luayBQU1Igc3RhdGUgYWZ0ZXIgY29uZmlndXJp
-bmcgdGhlCj4+ICAgICBQU1IKPj4KPj4gemFpbiB3YW5nICgxOCk6Cj4+ICAgZHJtL2JyaWRnZTog
-YW5hbG9naXhfZHA6IHNldCBwc3IgYWN0aXZhdGUvZGVhY3RpdmF0ZSB3aGVuCj4+ICAgICBlbmFi
-bGUvZGlzYWJsZSBicmlkZ2UKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRG9uJ3QgcG93
-ZXIgYnJpZGdlIGluIGFuYWxvZ2l4X2RwX2JpbmQKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
-cDogRG9uJ3QgY2hhbmdlIHBzciB3aGlsZSBicmlkZ2UgaXMgZGlzYWJsZWQKPj4gICBkcm0vcm9j
-a2NoaXA6IGFkZCBtdXRleCB2b3AgbG9jawo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBh
-ZGQgZmFzdCBsaW5rIHRyYWluIGZvciBlRFAKPj4gICBkcm0vcm9ja2NoaXA6IE9ubHkgd2FpdCBm
-b3IgcGFuZWwgQUNLIG9uIFBTUiBlbnRyeQo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBE
-b24ndCB1c2UgZmFzdCBsaW5rIHRyYWluaW5nIHdoZW4gcGFuZWwganVzdAo+PiAgICAgcG93ZXJl
-ZCB1cAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBSZXRyeSBicmlkZ2UgZW5hYmxlIHdo
-ZW4gaXQgZmFpbGVkCj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFdhaXQgZm9yIEhQRCBz
-aWduYWwgYmVmb3JlIGNvbmZpZ3VyaW5nIGxpbmsKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9k
-cDogU2V0IFBEX0lOQ19CRyBmaXJzdCB3aGVuIHBvd2VyaW5nIHVwIGVkcCBwaHkKPj4gICBkcm0v
-YnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IGluY29ycmVjdCB1c2FnZSBvZiBlbmhhbmNlZCBtb2Rl
-Cj4+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEZpeCBBVVhfUEQgYml0IGZvciBSb2NrY2hp
-cAo+PiAgIGRybS9yb2NrY2hpcDogUmVzdG9yZSBwc3ItPnN0YXRlIHdoZW4gZW5hYmxlL2Rpc2Fi
-bGUgcHNyIGZhaWxlZAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCB1c2UgQU5B
-TE9HSVhfRFBfUExMX0NUTCB0byBjb250cm9sIHBsbAo+PiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4
-X2RwOiBGaXggdGltZW91dCBvZiB2aWRlbyBzdHJlYW1jbGsgY29uZmlnCj4+ICAgZHJtL2JyaWRn
-ZTogYW5hbG9naXhfZHA6IEZpeCBpbmNvcnJlY3Qgb3BlcmF0aW9ucyB3aXRoIHJlZ2lzdGVyCj4+
-ICAgICBBTkFMT0dJWF9EUF9GVU5DX0VOXzEKPj4gICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDog
-TW92ZSBmYXN0IGxpbmsgdHJhaW5pbmcgZGV0ZWN0IHRvIHNldF9icmlkZ2UKPj4gICBkcm0vcm9j
-a2NoaXA6IERpc2FibGUgVk9QIHdpbmRvd3Mgd2hlbiBQU1IgaXMgYWN0aXZlCj4+Cj4+IMOYcmph
-biBFaWRlICgxKToKPj4gICBkcm0vcm9ja2NoaXA6IFJlc3BlY3QgcGFnZSBvZmZzZXQgZm9yIFBS
-SU1FIG1tYXAgY2FsbHMKPj4KPj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
-bG9naXhfZHBfY29yZS5jIHwgNDcxICsrKysrKysrKysrKysrKy0tLS0tLQo+PiAgZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgMTQgKy0KPj4gIGRy
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgMjczICsr
-KysrKystLS0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9yZWcuaCAgfCAgIDcgKwo+PiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAg
-ICAgICAgICAgICAgICAgfCAgIDIgKy0KPj4gIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1z
-aW1wbGUuYyAgICAgICAgICAgICAgIHwgICA3ICstCj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8IDEyOSArKystLS0KPj4gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICAgICAgIHwgICAzICstCj4+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgNCArLQo+
-PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICAgICAgICAgfCAg
-MTMgKwo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgICAg
-ICAgfCAxMjUgKysrKystCj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2dlbS5oICAgICAgICB8ICAgNSArLQo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9wc3IuYyAgICAgICAgfCAxMTIgKystLS0KPj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fcHNyLmggICAgICAgIHwgICA2ICstCj4+ICBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICA4MSArKystCj4+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oICAgICAgICB8ICAgMSArCj4+
-ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgICAgICB8ICAg
-NiArLQo+PiAgaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAg
-ICAgfCAgIDcgKy0KPj4gIDE4IGZpbGVzIGNoYW5nZWQsIDg4MiBpbnNlcnRpb25zKCspLCAzODQg
-ZGVsZXRpb25zKC0pCj4+Cj4+IC0tCj4+IDIuMTIuMC4yNDYuZ2EyZWNjODQ4NjYtZ29vZwo+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVs
-IG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, Mar 15, 2017 at 03:19:12PM +0800, Chris Zhong wrote:
+> The Innolux P079ZCA is a 7.85" panel with a 768X1024 resolution and
+> connected to DSI using four lanes.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v2: None
+
+You added documentation for the 'reg' property :)
+
+Looks OK to me.
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+> 
+>  .../bindings/display/panel/innolux,p079zca.txt     | 23 ++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt b/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+> new file mode 100644
+> index 0000000..5c70a83
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+> @@ -0,0 +1,23 @@
+> +Innolux P079ZCA 7.85" 768x1024 TFT LCD panel
+> +
+> +Required properties:
+> +- compatible: should be "innolux,p079zca"
+> +- reg: DSI virtual channel of the peripheral
+> +- power-supply: phandle of the regulator that provides the supply voltage
+> +- enable-gpios: panel enable gpio
+> +
+> +Optional properties:
+> +- backlight: phandle of the backlight device attached to the panel
+> +
+> +Example:
+> +
+> +	&mipi_dsi {
+> +		panel {
+> +			compatible = "innolux,p079zca";
+> +			reg = <0>;
+> +			power-supply = <...>;
+> +			backlight = <&backlight>;
+> +			enable-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+> +			status = "okay";
+> +		};
+> +	};
+> -- 
+> 2.6.3
