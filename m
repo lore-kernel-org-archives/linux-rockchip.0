@@ -1,71 +1,42 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] PCI: rockchip: Mark SLC bit as well as CCC bit for RCg
-Date: Fri, 17 Mar 2017 11:23:31 -0700
-Message-ID: <20170317182331.GA36848@google.com>
-References: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH v3 0/4] pinctrl: rockchip: PREEMPT_RT_FULL fixes
+Date: Fri, 17 Mar 2017 18:24:26 +0000
+Message-ID: <20170317182430.27400-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Julia Cartwright <julia@ni.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+The aim of the series is to make the Rockchip pinctrl irq_chip
+implementation safe for use with RT_FULL which requires that raw
+spinlocks are used to avoid sleeping in hardirq context.
 
-On Fri, Mar 17, 2017 at 03:24:53PM +0800, Shawn Lin wrote:
-> lspci traces CCC to see if the end-2-end supports common
-> clock, so the current code should work as we mark the CCC bit
-> of RC. However, ASPM code actually check SLC bit of RC and try to
-> compare it with the downstream components' SLC instead. So when
-> enabling ASPM, CCC will be cleared after failing to match SLC with
-> the corresponding bit of downstream components. On one hand, from the
-> code of pcie_aspm_configure_common_clock, we could find that what we
-> actually need to set is SLC. On the other hand, we should also guarantee
-> that CCC should be marked w/o supporting ASPM. This patch fixes this
-> issue.
+This is the same as version 2 [1] with the 2.1 version of patch 1
+included, but I'm rolling it up as a new version so it's simpler to
+apply.
 
-This matches my understanding of the code more or less.
+[1] https://www.spinics.net/lists/arm-kernel/msg568974.html
 
-This fixes the Common Clock bit for me, with ASPM enabled on the Google
-Kevin board; and my EndPoint (Marvell 8997) even reports a lower ASPM
-L0s latency now. Nice! Thanks for the patch.
+John Keeping (4):
+  pinctrl: rockchip: remove unnecessary locking
+  pinctrl: rockchip: convert to raw spinlock
+  pinctrl: rockchip: split out verification of mux settings
+  pinctrl: rockchip: avoid hardirq-unsafe functions in irq_chip
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
-Tested-by: Brian Norris <briannorris@chromium.org>
+ drivers/pinctrl/pinctrl-rockchip.c | 149 +++++++++++++++++++++----------------
+ 1 file changed, 85 insertions(+), 64 deletions(-)
 
-Personally, I might even mark this as:
-
-Fixes: b8ab8e041cc0 ("PCI: rockchip: Mark RC as common clock architecture")
-
-Not that it necessarily deserves -stable, but it helps people browsing
-the logs, and wondering why the above commit doesn't seem to take effect
-:)
-
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: jeffy.chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 26ddd35..7cd4d5c 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -596,7 +596,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  
->  	/* Set RC's clock architecture as common clock */
->  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-> -	status |= PCI_EXP_LNKCTL_CCC;
-> +	status |= (PCI_EXP_LNKCTL_CCC | PCI_EXP_LNKSTA_SLC << 16);
->  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->  
->  	/* Enable Gen1 training */
-> -- 
-> 1.9.1
-> 
-> 
+-- 
+2.12.0.377.gf910686b23.dirty
