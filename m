@@ -1,31 +1,53 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add rk3368 dw-mmc resets
-Date: Sat, 18 Mar 2017 12:41:07 +0100
-Message-ID: <3813928.29eosGGWjS@phil>
-References: <20170317083951.14343-1-heiko@sntech.de>
+From: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH v1 2/7] dt-bindings: iio: rockchip-saradc: add support for
+ rk3328
+Date: Sun, 19 Mar 2017 10:34:22 +0000
+Message-ID: <fff0d197-c88e-fd04-0f56-c4fbc982bae4@kernel.org>
+References: <1489572237-6649-1-git-send-email-cl@rock-chips.com>
+ <1489572237-6649-3-git-send-email-cl@rock-chips.com>
+ <8664375.8vdE6CQfX9@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170317083951.14343-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <8664375.8vdE6CQfX9@phil>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com, tony.xie@rock-chi
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 17. M=E4rz 2017, 09:39:50 CET schrieb Heiko Stuebner:
-> dw-mmc got its reset-properties specified, so add the softresets
-> for it on the rk3368.
-> =
+On 16/03/17 08:28, Heiko Stuebner wrote:
+> Am Mittwoch, 15. März 2017, 18:03:52 CET schrieb cl@rock-chips.com:
+>> From: Chen Liang <cl@rock-chips.com>
+>>
+>> The rk3328 saradc is the same as rk3399.
+>>
+>> Signed-off-by: Chen Liang <cl@rock-chips.com>
+>> ---
+>>  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+>> b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt index
+>> 205593f..f81bc20 100644
+>> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+>> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+>> @@ -5,6 +5,7 @@ Required properties:
+>>     - "rockchip,saradc": for rk3188, rk3288
+>>     - "rockchip,rk3066-tsadc": for rk3036
+>>     - "rockchip,rk3399-saradc": for rk3399
+>> +   - "rockchip,rk3328-saradc", "rockchip,rk3399-saradc": for rk3328
+> 
+> not sure how iio people see that, but I would suggest keeping the order, so 
+> put rk3328 above rk3399.
+In my case I'm not that fussed either way. Still if this list keeps growing
+I can see it would be better to keep it in numeric order!
 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-applied both for 4.12 with Shawn's tags.
+Jonathan
+> 
+> Heiko
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-iio" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
