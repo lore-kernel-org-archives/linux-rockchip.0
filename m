@@ -1,11 +1,14 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] PCI: rockchip: set RC's RCB to 128 bytes
-Date: Mon, 20 Mar 2017 17:39:40 +0800
-Message-ID: <1490002780-67737-1-git-send-email-shawn.lin@rock-chips.com>
+From: Jose Abreu <Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] drm: bridge: dw-hdmi: add HDMI vendor specific infoframe
+ config
+Date: Mon, 20 Mar 2017 11:08:19 +0000
+Message-ID: <b5bcaa08-7bf2-76a0-ddd8-118ffd61fd0c@synopsys.com>
+References: <1489990249-29152-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1489990249-29152-1-git-send-email-nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,40 +18,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org
+Cc: Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, vladimir_zapolskiy-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Read Completion Boundary could be 64 bytes or 128 bytes
-for rockchip RC. The reset value of RCB is zero which means
-it doesn't support RCB to be 128 bytes, however it does support
-that. When setting the RCB to 128 bytes, we see some significant
-improvment for testing NVMe with libaio. So this patch will set
-RC's RCB to 128 bytes.
+Hi Nickey,
 
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
 
- drivers/pci/host/pcie-rockchip.c | 5 +++++
- 1 file changed, 5 insertions(+)
+On 20-03-2017 06:10, Nickey Yang wrote:
+> Vendor specific infoframe is mandatory for 4K2K resolution.
+> Without this, the HDMI protocol compliance fails.
+>
+> Signed-off-by: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/gpu/drm/bridge/dw-hdmi.c | 50 ++++++++++++++++++++++++++++++++++++++++
+>  drivers/gpu/drm/bridge/dw-hdmi.h |  4 ++++
+>  2 files changed, 54 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
+> index 9a9ec27..79e2e48 100644
+> --- a/drivers/gpu/drm/bridge/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
+> @@ -1195,6 +1195,55 @@ static void hdmi_config_AVI(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+>  	hdmi_writeb(hdmi, (frame.right_bar >> 8) & 0xff, HDMI_FC_AVISRB1);
+>  }
+>  
+> +static void hdmi_config_vendor_specific_infoframe(struct dw_hdmi *hdmi,
+> +						 struct drm_display_mode *mode)
+> +{
+> +	struct hdmi_vendor_infoframe frame;
+> +	u8 buffer[10];
+> +	ssize_t err;
+> +
+> +	err = drm_hdmi_vendor_infoframe_from_display_mode(&frame, mode);
+> +	if (err) {
+> +		dev_err(hdmi->dev,
+> +			"Failed to get vendor infoframe from mode: %zd\n", err);
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 26ddd35..8bcd417 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -599,6 +599,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	status |= PCI_EXP_LNKCTL_CCC;
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
- 
-+	/* Set RC's RCB to 128 */
-+	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-+	status |= PCI_EXP_LNKCTL_RCB;
-+	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
-+
- 	/* Enable Gen1 training */
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
--- 
-1.9.1
+I think you should not throw a error here. As you said in commit
+message this is only for 4K2K modes and
+drm_hdmi_vendor_infoframe_from_display_mode() only checks for
+these modes. So just return gracefully and it will be fine.
+
+> +		return;
+> +	}
+> +
+> +	err = hdmi_vendor_infoframe_pack(&frame, buffer, sizeof(buffer));
+> +	if (!err) {
+> +		dev_err(hdmi->dev, "Failed to pack vendor infoframe: %zd\n",
+> +			err);
+> +		return;
+> +	}
+> +	hdmi_modb(hdmi, 0 << HDMI_FC_DATAUTO0_VSD_OFFSET,
+> +		  HDMI_FC_DATAUTO0_VSD_MASK, HDMI_FC_DATAUTO0);
+
+Maybe use hdmi_mask_writeb() here?
+
+> +
+> +	/* Set the length of HDMI vendor specific InfoFrame payload */
+> +	hdmi_writeb(hdmi, buffer[2], HDMI_FC_VSDSIZE);
+> +
+> +	/* Set 24bit IEEE Registration Identifier */
+> +	hdmi_writeb(hdmi, buffer[4], HDMI_FC_VSDIEEEID0);
+> +	hdmi_writeb(hdmi, buffer[5], HDMI_FC_VSDIEEEID1);
+> +	hdmi_writeb(hdmi, buffer[6], HDMI_FC_VSDIEEEID2);
+> +
+> +	/* Set HDMI_Video_Format and HDMI_VIC/3D_Structure */
+> +	hdmi_writeb(hdmi, buffer[7], HDMI_FC_VSDPAYLOAD0);
+> +	hdmi_writeb(hdmi, buffer[8], HDMI_FC_VSDPAYLOAD1);
+> +
+> +	if (frame.s3d_struct >= HDMI_3D_STRUCTURE_SIDE_BY_SIDE_HALF)
+> +		hdmi_writeb(hdmi, buffer[9], HDMI_FC_VSDPAYLOAD2);
+> +
+> +	/* Packet frame interpolation */
+> +	hdmi_writeb(hdmi, 1, HDMI_FC_DATAUTO1);
+> +
+> +	/* Auto packets per frame and line spacing */
+> +	hdmi_writeb(hdmi, 0x11, HDMI_FC_DATAUTO2);
+> +
+> +	/* Configures the Frame Composer On RDRB mode */
+> +	hdmi_modb(hdmi, 1 << HDMI_FC_DATAUTO0_VSD_OFFSET,
+> +		  HDMI_FC_DATAUTO0_VSD_MASK, HDMI_FC_DATAUTO0);
+
+Same here.
+
+Best regards,
+Jose Miguel Abreu
+
+> +}
+> +
+>  static void hdmi_av_composer(struct dw_hdmi *hdmi,
+>  			     const struct drm_display_mode *mode)
+>  {
+> @@ -1446,6 +1495,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+>  
+>  		/* HDMI Initialization Step F - Configure AVI InfoFrame */
+>  		hdmi_config_AVI(hdmi, mode);
+> +		hdmi_config_vendor_specific_infoframe(hdmi, mode);
+>  	} else {
+>  		dev_dbg(hdmi->dev, "%s DVI mode\n", __func__);
+>  	}
+> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.h b/drivers/gpu/drm/bridge/dw-hdmi.h
+> index 325b0b8..c59f87e 100644
+> --- a/drivers/gpu/drm/bridge/dw-hdmi.h
+> +++ b/drivers/gpu/drm/bridge/dw-hdmi.h
+> @@ -854,6 +854,10 @@ enum {
+>  	HDMI_FC_DBGFORCE_FORCEAUDIO = 0x10,
+>  	HDMI_FC_DBGFORCE_FORCEVIDEO = 0x1,
+>  
+> +/* FC_DATAUTO0 field values */
+> +	HDMI_FC_DATAUTO0_VSD_MASK = 0x08,
+> +	HDMI_FC_DATAUTO0_VSD_OFFSET = 3,
+> +
+>  /* PHY_CONF0 field values */
+>  	HDMI_PHY_CONF0_PDZ_MASK = 0x80,
+>  	HDMI_PHY_CONF0_PDZ_OFFSET = 7,
