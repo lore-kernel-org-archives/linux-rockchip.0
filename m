@@ -1,7 +1,7 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix PCIe domain number for rk3399
-Date: Mon, 20 Mar 2017 10:38:00 +0800
-Message-ID: <1489977480-8785-1-git-send-email-shawn.lin@rock-chips.com>
+From: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] drm/bridge: dw_hdmi: support i2c extended read mode
+Date: Mon, 20 Mar 2017 10:57:31 +0800
+Message-ID: <1489978651-16647-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,45 +15,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org
+Cc: laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, joabreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, vladimir_zapolskiy-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It's suggested to fix the domain number for all PCIe
-host bridges or not set it at all. However, if we don't
-fix it, the domain number will keep increasing ever when
-doing unbind/bind test, which makes the bus tree of lspci
-introduce pointless domain hierarchy. More investigation shows
-the domain number allocater of PCI doesn't consider the conflict
-of domain number if we have more than one PCIe port belonging to
-different domains. So once unbinding/binding one of them and keep
-others would going to overflow the domain number so that finally
-it will share the same domain as others, but actually it shouldn't.
-We should fix the domain number for PCIe or invent new indexing
-ID mechanisms. However it isn't worth inventing new indexing ID
-mechanisms personlly, Just look at how other Root Complex drivers
-did, for instance, broadcom and qualcomm, it seems fixing the domain
-number was more popular. So this patch gonna fix the domain number
-of PCIe for rk3399.
+"I2C Master Interface Extended Read Mode" implements a segment
+pointer-based read operation using the Special Register configuration.
 
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+This patch fix https://patchwork.kernel.org/patch/7098101/ mentioned
+"The current implementation does not support "I2C Master Interface
+Extended Read Mode" to read data addressed by non-zero segment
+pointer, this means that if EDID has more than 1 extension blocks"
+
+With this patch,dw-hdmi can read EDID data with 1/2/4 blocks.
+
+Signed-off-by: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
+ drivers/gpu/drm/bridge/dw-hdmi.c | 38 ++++++++++++++++++++++++--------------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index f5681be..f66c320 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -234,6 +234,7 @@
- 				<0 0 0 2 &pcie0_intc 1>,
- 				<0 0 0 3 &pcie0_intc 2>,
- 				<0 0 0 4 &pcie0_intc 3>;
-+		linux,pci-domain = <0>;
- 		max-link-speed = <1>;
- 		msi-map = <0x0 &its 0x0 0x1000>;
- 		phys = <&pcie_phy>;
+diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
+index 9a9ec27..3b93655 100644
+--- a/drivers/gpu/drm/bridge/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/dw-hdmi.c
+@@ -32,6 +32,7 @@
+ #include "dw-hdmi.h"
+ #include "dw-hdmi-audio.h"
+ 
++#define DDC_SEGMENT_ADDR	0x30
+ #define HDMI_EDID_LEN		512
+ 
+ #define RGB			0
+@@ -111,6 +112,7 @@ struct dw_hdmi_i2c {
+ 
+ 	u8			slave_reg;
+ 	bool			is_regaddr;
++	bool			is_segment;
+ };
+ 
+ struct dw_hdmi_phy_data {
+@@ -258,8 +260,12 @@ static int dw_hdmi_i2c_read(struct dw_hdmi *hdmi,
+ 		reinit_completion(&i2c->cmp);
+ 
+ 		hdmi_writeb(hdmi, i2c->slave_reg++, HDMI_I2CM_ADDRESS);
+-		hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ,
+-			    HDMI_I2CM_OPERATION);
++		if (i2c->is_segment)
++			hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ_EXT,
++				    HDMI_I2CM_OPERATION);
++		else
++			hdmi_writeb(hdmi, HDMI_I2CM_OPERATION_READ,
++				    HDMI_I2CM_OPERATION);
+ 
+ 		stat = wait_for_completion_timeout(&i2c->cmp, HZ / 10);
+ 		if (!stat)
+@@ -271,6 +277,7 @@ static int dw_hdmi_i2c_read(struct dw_hdmi *hdmi,
+ 
+ 		*buf++ = hdmi_readb(hdmi, HDMI_I2CM_DATAI);
+ 	}
++	i2c->is_segment = false;
+ 
+ 	return 0;
+ }
+@@ -320,12 +327,6 @@ static int dw_hdmi_i2c_xfer(struct i2c_adapter *adap,
+ 	dev_dbg(hdmi->dev, "xfer: num: %d, addr: %#x\n", num, addr);
+ 
+ 	for (i = 0; i < num; i++) {
+-		if (msgs[i].addr != addr) {
+-			dev_warn(hdmi->dev,
+-				 "unsupported transfer, changed slave address\n");
+-			return -EOPNOTSUPP;
+-		}
+-
+ 		if (msgs[i].len == 0) {
+ 			dev_dbg(hdmi->dev,
+ 				"unsupported transfer %d/%d, no data\n",
+@@ -345,15 +346,24 @@ static int dw_hdmi_i2c_xfer(struct i2c_adapter *adap,
+ 	/* Set slave device register address on transfer */
+ 	i2c->is_regaddr = false;
+ 
++	/* Set segment pointer for I2C extended read mode operation */
++	i2c->is_segment = false;
++
+ 	for (i = 0; i < num; i++) {
+ 		dev_dbg(hdmi->dev, "xfer: num: %d/%d, len: %d, flags: %#x\n",
+ 			i + 1, num, msgs[i].len, msgs[i].flags);
+-
+-		if (msgs[i].flags & I2C_M_RD)
+-			ret = dw_hdmi_i2c_read(hdmi, msgs[i].buf, msgs[i].len);
+-		else
+-			ret = dw_hdmi_i2c_write(hdmi, msgs[i].buf, msgs[i].len);
+-
++		if (msgs[i].addr == DDC_SEGMENT_ADDR && msgs[i].len == 1) {
++			i2c->is_segment = true;
++			hdmi_writeb(hdmi, DDC_SEGMENT_ADDR, HDMI_I2CM_SEGADDR);
++			hdmi_writeb(hdmi, *msgs[i].buf, HDMI_I2CM_SEGPTR);
++		} else {
++			if (msgs[i].flags & I2C_M_RD)
++				ret = dw_hdmi_i2c_read(hdmi, msgs[i].buf,
++						       msgs[i].len);
++			else
++				ret = dw_hdmi_i2c_write(hdmi, msgs[i].buf,
++							msgs[i].len);
++		}
+ 		if (ret < 0)
+ 			break;
+ 	}
 -- 
 1.9.1
