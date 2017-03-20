@@ -1,36 +1,86 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] PCI: rockchip: don't leak the PCI resource list
-Date: Mon, 20 Mar 2017 15:49:36 -0700
-Message-ID: <20170320224936.28605-1-briannorris@chromium.org>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: add arm/arm64 include symlinks
+Date: Mon, 20 Mar 2017 16:03:37 -0700
+Message-ID: <20170320230337.GB78325@google.com>
+References: <20170226060058.5841-1-heiko@sntech.de>
+ <20170226060058.5841-2-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170226060058.5841-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This list is local to the probe() function. We should free it up in both
-the success case and the error case, but currently we're only freeing it
-in the error case (see commit f1d722b607d6 ("PCI: rockchip: Fix
-rockchip_pcie_probe() error path to free resource list")).
+Hi,
 
-Caught by kmemleak, when doing repeated bind/unbind tests.
+On Sun, Feb 26, 2017 at 07:00:58AM +0100, Heiko Stuebner wrote:
+> Allow including of dtsi files in an architecture-independent manner.
+> Some dtsi files may be shared between architectures and one suggestion
+> was to have symlinks and let these includes get accessed via a
+>     #include <arm64/foo.dtsi>
+> So add the necessary symlinks for arm32.
+> 
+> Suggested-by: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+> Suggested by Olof in response to the patch adding direct symlinks
+> for cros-ec includes.
+> 
+> Tested with adapted rk3399-Gru dtsi files and while we only need this arm64
+> version right now, it might make sense to already have both the arm32 and
+> arm64 versions ready.
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
- drivers/pci/host/pcie-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+FWIW, tested fine here too (for the same platform).
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index bd6df7254de4..8087a0698d65 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1396,6 +1396,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 		goto err_free_res;
- 	}
- 	rockchip->root_bus = bus;
-+	pci_free_resource_list(&res);
- 
- 	pci_bus_size_bridges(bus);
- 	pci_bus_assign_resources(bus);
--- 
-2.12.0.367.g23dc2f6d3c-goog
+I guess this works fine, if it makes people happy. It also allows some
+weird #include paths. e.g.:
+
+#include <arm64/include/arm/include/arm64/rockchip/rk3399.dtsi>
+
+I guess we can call that an entertaining feature, and not a bug?
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Where should this go? I'd like not to wait another few months before
+sending my Gru/Kevin DTS again.
+
+Brian
+
+>  arch/arm64/boot/dts/include/arm   | 1 +
+>  arch/arm64/boot/dts/include/arm64 | 1 +
+>  2 files changed, 2 insertions(+)
+>  create mode 120000 arch/arm64/boot/dts/include/arm
+>  create mode 120000 arch/arm64/boot/dts/include/arm64
+> 
+> diff --git a/arch/arm64/boot/dts/include/arm b/arch/arm64/boot/dts/include/arm
+> new file mode 120000
+> index 000000000000..cf63d80e2b93
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/include/arm
+> @@ -0,0 +1 @@
+> +../../../../arm/boot/dts
+> \ No newline at end of file
+> diff --git a/arch/arm64/boot/dts/include/arm64 b/arch/arm64/boot/dts/include/arm64
+> new file mode 120000
+> index 000000000000..a96aa0ea9d8c
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/include/arm64
+> @@ -0,0 +1 @@
+> +..
+> \ No newline at end of file
+> -- 
+> 2.11.0
+> 
