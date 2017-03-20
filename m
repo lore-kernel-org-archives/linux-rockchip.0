@@ -1,45 +1,63 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 01/41] drm/panel: simple: Change mode for Sharp lq123p1jx31
-Date: Mon, 20 Mar 2017 13:05:53 -0700
-Message-ID: <CAD=FV=U_k1x8AsVrVFoyNoT43OzRYZE2X2WEt6++OyV0tV+0ww@mail.gmail.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <20170310043305.17216-2-seanpaul@chromium.org>
- <20170320135945.GQ22463@ulmo.ba.sec>
- <CAD=FV=V5QSMT_PD4oa6QwukBisiPvWGw67_xaQhds6ofe3D8Ug@mail.gmail.com>
- <CADMs+9ZT3+XAtomjz3htV4mDft-n=X+CkwvGvo3v1N+Ku6_gaw@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix PCIe domain number for rk3399
+Date: Mon, 20 Mar 2017 15:14:19 -0700
+Message-ID: <20170320221418.GA76087@google.com>
+References: <1489977480-8785-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CADMs+9ZT3+XAtomjz3htV4mDft-n=X+CkwvGvo3v1N+Ku6_gaw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1489977480-8785-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBNb24sIE1hciAyMCwgMjAxNyBhdCAxOjAxIFBNLCBTdMOpcGhhbmUgTWFyY2hlc2lu
-CjxtYXJjaGV1QGNocm9taXVtLm9yZz4gd3JvdGU6Cj4+IDEuIFdlIGhhdmUgdmFsaWRhdGVkIHdp
-dGggdGhlIHBhbmVsIG1hbnVmYWN0dXJlciB0aGF0IDI2Ni42NjcgTUh6IGlzCj4+IHZhbGlkIGFu
-ZCB3aXRoaW4gc3BlYy4gIFRoZSBwYW5lbCdzIGRhdGFzaGVldCBpdHNlbGYgc2F5cyBzb21ldGhp
-bmcKPj4gbGlrZSAiaWYgeW91IHdhbnQgdG8gdHJ5IG90aGVyIHZhbHVlcyB5b3UgY2FuLCBidXQg
-dGhleSBtaWdodCBub3QKPj4gd29yayIsIHNvIHRlY2huaWNhbGx5IHRoZSBvbmx5IHZhbHVlcyAi
-a25vd24iIHRvIHdvcmsgYXJlIHRob3NlIHRoYXQKPj4gd2VyZSBpbiB0aGUgb3JpZ2luYWwgcGF0
-Y2ggYW5kIHRoZSB2YWx1ZXMgaGVyZSBpbiBTZWFuJ3MgcGF0Y2guCj4KPgo+IFNvIHdoeSBkb24n
-dCB5b3UgYWRkIDIgbW9kZXMsIGFuZCBsZXQgdGhlIGRyaXZlcnMgcGljayB0aGUgY2xvY2sgdGhl
-eQo+IHByZWZlcj8KClllYWgsIHRoYXQncyB3aGF0IEkgZGlkIG9yaWdpbmFsbHkgaW4gbXkgUkZD
-IHBhdGNoIGF0CjxodHRwOi8vY3Jvc3Jldmlldy5jb20vMzU0MTY1PiBidXQgSSBwZXJzb25hbGx5
-IGRpZG4ndCBoYXZlIGEgZ29vZCB3YXkKZm9yIHRoZSBkcml2ZXIgdG8gZmlndXJlIG91dCBob3cg
-dG8gcGljayB0aGUgcmlnaHQgY2xvY2suICBXaGVuIHRoZQpwYXRjaCBhY3R1YWxseSBsYW5kZWQg
-SSBndWVzcyBub2JvZHkgZWxzZSBoYWQgYSBnb29kIHdheSBlaXRoZXIgYW5kCnRodXMgb25seSBv
-bmUgY2xvY2sgbW9kZSB3YXMgdGhlcmUuCgotRG91ZwpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+On Mon, Mar 20, 2017 at 10:38:00AM +0800, Shawn Lin wrote:
+> It's suggested to fix the domain number for all PCIe
+> host bridges or not set it at all. However, if we don't
+> fix it, the domain number will keep increasing ever when
+> doing unbind/bind test, which makes the bus tree of lspci
+> introduce pointless domain hierarchy. More investigation shows
+> the domain number allocater of PCI doesn't consider the conflict
+> of domain number if we have more than one PCIe port belonging to
+> different domains. So once unbinding/binding one of them and keep
+> others would going to overflow the domain number so that finally
+> it will share the same domain as others, but actually it shouldn't.
+> We should fix the domain number for PCIe or invent new indexing
+> ID mechanisms. However it isn't worth inventing new indexing ID
+> mechanisms personlly, Just look at how other Root Complex drivers
+> did, for instance, broadcom and qualcomm, it seems fixing the domain
+> number was more popular. So this patch gonna fix the domain number
+> of PCIe for rk3399.
+> 
+> Cc: Brian Norris <briannorris@chromium.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Seems OK, though it still feels like we should fix the domain number
+allocation code.
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+Tested-by: Brian Norris <briannorris@chromium.org>
+
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index f5681be..f66c320 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -234,6 +234,7 @@
+>  				<0 0 0 2 &pcie0_intc 1>,
+>  				<0 0 0 3 &pcie0_intc 2>,
+>  				<0 0 0 4 &pcie0_intc 3>;
+> +		linux,pci-domain = <0>;
+>  		max-link-speed = <1>;
+>  		msi-map = <0x0 &its 0x0 0x1000>;
+>  		phys = <&pcie_phy>;
+> -- 
+> 1.9.1
+> 
+> 
