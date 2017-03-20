@@ -1,65 +1,106 @@
 From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 1/6] arm64: dts: Add symlinks for cros-ec-keyboard and
- cros-ec-sbs
-Date: Mon, 20 Mar 2017 16:07:48 -0700
-Message-ID: <20170320230748.GA97915@google.com>
-References: <20170210010521.78872-1-briannorris@chromium.org>
- <20170210010521.78872-2-briannorris@chromium.org>
- <CAOesGMiim2WFfEAg-bJmWTwWn69=V_GuEg6AxsxPYMyzd3KFUw@mail.gmail.com>
- <1529949.5djtX72aeJ@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Subject: [PATCH v3 0/4] arm64: dts: rockchip: support Google Kevin
+Date: Mon, 20 Mar 2017 16:53:40 -0700
+Message-ID: <20170320235344.126298-1-briannorris@chromium.org>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1529949.5djtX72aeJ@phil>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In case this thread is easier to notice...
+Hi,
 
-Olof,
+This is v3, adding basic support for Google Kevin, a board in the Gru device
+family. It has gotten smaller, as pieces have been merged already, and the DT
+bindings have been ack'ed. It gained a new dependency on Heiko's work here:
 
-On Mon, Feb 27, 2017 at 07:20:48PM +0100, Heiko Stuebner wrote:
-> Am Dienstag, 21. Februar 2017, 15:47:31 CET schrieb Olof Johansson:
-> > On Thu, Feb 9, 2017 at 5:05 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > > From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > > 
-> > > We'd like to be able to use the cros-ec-keyboard.dtsi and
-> > > cros-ec-sbs.dtsi snippets for arm64 devices.  Currently those files live
-> > > in the arm/boot/dts directory.
-> > > 
-> > > Let's follow the convention set by commit 8ee57b8182c4 ("ARM64: dts:
-> > > vexpress: Use a symlink to vexpress-v2m-rs1.dtsi from arch=arm") and use
-> > > a symlink.  Note that in this case we put the files in a new
-> > > "include/common" directory since these snippets may need to be
-> > > referenced by dts files in many different subdirectories.
-> > 
-> > I'd rather have something like this:
-> > 
-> > https://marc.info/?m=147547436324674&w=2
-> > 
-> > Instead of having everybody move things over. I.e. make it easy to
-> > refer to the arm version from arm64 instead of creating a "common"
-> > layer inbetween.
-> 
-> just so it gets noticed, I've done and tested [0], which hopefully should
-> implement your suggestions above.
-> 
-> If that looks ok, how do you want that picked up? Should I just include
-> them in my regular rockchip branches or do you to pick them into some
-> immutable branch, if other surprise-users turn up in time for 4.12?
+  [PATCH 2/2] arm64: dts: add arm/arm64 include symlinks
+  https://patchwork.kernel.org/patch/9592177/
 
-Ping? I suppose we can prevent users in 4.12 by never merging this :)
+Otherwise, there's not a whole lot of note new in this series. Hopefully it'll
+be ready to merge (*crosses fingers*). The rest of this cover letter is
+basically the same as previous revisions. I've updated the changelogs below and
+in each patch.
 
-Brian
+---
 
-> 
-> 
-> [0] http://lists.infradead.org/pipermail/linux-rockchip/2017-February/014226.html
-> 
-> 
+I do not add a leaf .dts board file for Gru, but I have retained the split
+between "things that apply to the Gru family" (rk3399-gru.dtsi) and "things
+that apply to Kevin only" (rk3399-gru-kevin.dtsi).
+
+AFAICT, all these bindings are in -next, except for the root node compatible
+property (added doc in this series).
+
+I elaborate on what's working/not working below, but one of the big missing
+pieces is cpufreq support. We still need some more work on getting good
+bindings and driver support upstream for the PWM regulator + OVP circuit on
+these boards. See patch 5 for more info.
+
+Working and tested (to some extent):
+ * EC support -- including keyboard, battery, PWM, and probably more
+ * UART / console
+ * Thermal
+ * Touchscreen
+ * Touchpad
+ * Digitizer (regulator still WIP; working on this in another series)
+ * PCIe / Wifi
+ * Bluetooth / Webcam
+ * SD card
+ * eMMC
+ * USB2 on TypeC
+   - This works much of the time, but USB3 devices may or may not detect
+     properly. Waiting on proper extcon support for USB3 over TypeC.
+   - Depends on XHCI/DWC3 fixes for ARM64 that still haven't landed
+ * Backlight
+
+Not working:
+ * CPUFreq -- relies on special OVP support for our PWM regulator
+   circuits
+ * EC / extcon support -- and with it, USB3/TypeC/DP
+ * DRM -- won't even build on ARM64, so all display, eDP, etc. is not
+   enabled
+
+Not tested:
+ * Audio
+
+
+v2 -> v3:
+ * reintroduced the digitizer/regulator patch, as the bindings and driver code
+   have been merged in -next
+ * reference {pmu-,}io-domain nodes from main rk3399.dtsi
+ * drop some now-superfluous comments
+ * use new proposed '#include <arm/...>' DTSI include path (symlink)
+
+v1 -> v2:
+ * merge the OPP and CPU regulators into 1 patch; don't support them on non-Gru
+   boards yet, as that will break them (and we're not sure if the same table is
+   applicable anyway)
+ * drop some patches that were applied already
+ * update copyrights
+ * match USB bindings more closely
+ * drop digitizer regulator patches; this isn't ready (working on in another
+   series)
+
+
+Brian Norris (4):
+  dt-bindings: Document rk3399 Gru/Kevin
+  arm64: dts: rockchip: add Gru/Kevin DTS
+  arm64: dts: rockchip: describe Gru/Kevin OPPs + CPU regulators
+  arm64: dts: rockchip: add regulator info for Kevin digitizer
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   20 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  315 ++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 1135 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       |  145 +++
+ 5 files changed, 1616 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
+
+-- 
+2.12.0.367.g23dc2f6d3c-goog
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
