@@ -1,119 +1,66 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 10/41] drm/bridge: analogix_dp: Don't change psr while
- bridge is disabled
-Date: Tue, 21 Mar 2017 15:58:18 -0400
-Message-ID: <20170321195818.GE19389@art_vandelay>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044738epcas5p254ae086c7ed81ec88e4ba3211f86c014@epcas5p2.samsung.com>
- <20170310043305.17216-11-seanpaul@chromium.org>
- <e7b7ef5b-7935-a74c-c046-27c56ae16774@samsung.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v3 4/4] drm/rockchip/dsi: correct the grf_switch_reg name
+Date: Tue, 21 Mar 2017 12:56:00 -0700
+Message-ID: <20170321195557.GA74389@google.com>
+References: <1489722865-22122-1-git-send-email-zyw@rock-chips.com>
+ <1489722865-22122-5-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <e7b7ef5b-7935-a74c-c046-27c56ae16774@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+In-Reply-To: <1489722865-22122-5-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBNYXIgMTYsIDIwMTcgYXQgMDI6NDA6MjFQTSArMDEwMCwgQW5kcnplaiBIYWpkYSB3
-cm90ZToKPiBPbiAxMC4wMy4yMDE3IDA1OjMyLCBTZWFuIFBhdWwgd3JvdGU6Cj4gPiBGcm9tOiB6
-YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiA+Cj4gPiBUaGVyZSBpcyBhIHJhY2UgYmV0
-d2VlbiBBVVggQ0ggYnJpbmctdXAgYW5kIGVuYWJsaW5nIGJyaWRnZSB3aGljaCB3aWxsCj4gPiBj
-YXVzZSBsaW5rIHRyYWluaW5nIHRvIGZhaWwuIFRvIGF2b2lkIGhpdHRpbmcgaXQsIGRvbid0IGNo
-YW5nZSBwc3Igc3RhdGUKPiA+IHdoaWxlIGVuYWJsaW5nIHRoZSBicmlkZ2UuCj4gPgo+ID4gQ2M6
-IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxhYm9yYS5jb20+Cj4gPiBDYzogU2VhbiBQ
-YXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcg
-PHd6ekByb2NrLWNoaXBzLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRA
-cm9jay1jaGlwcy5jb20+Cj4gPiBbc2VhbnBhdWwgZml4ZWQgdXAgdGhlIGNvbW1pdCBtZXNzYWdl
-IGEgYml0IGFuZCByZW5hbWVkICpfc3VwcG9ydGVkIHRvICpfZW5hYmxlZF0KPiA+IFNpZ25lZC1v
-ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IAo+IEhtbSwgYmVzaWRl
-IHJlc2V0dGluZyBwc3JfZW5hYmxlIGluIGFuYWxvZ2l4X2RwX2JyaWRnZV9kaXNhYmxlIEkgZG8g
-bm90Cj4gc2VlIGZ1bmN0aW9uYWwgY2hhbmdlLCBvciBhbSBJIGJsaW5kPwoKVGhlIHBhdGNoIGFs
-c28gYWRkcyBhIGNoZWNrIG9mIHBzcl9lbmFibGUgaW4gYW5hbG9naXhfZHBfY29tbWl0LiBUaGlz
-IHdpbGwgYXZvaWQKdHJ5aW5nIHRvIGVuYWJsZSBwc3Igd2hlbiB0aGUgYnJpZGdlIGlzIGRpc2Fi
-bGVkICh0aGF0J3Mgd2h5IHBzcl9lbmFibGUgaXMKcmVzZXQpLgoKU2VhbgoKPiAKPiBSZWdhcmRz
-Cj4gQW5kcnplago+IAo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
-eC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAxNSArKysrKysrKy0tLS0tLS0KPiA+ICBkcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCB8ICAyICstCj4gPiAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAgMiArLQo+
-ID4gIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwg
-IDIgKy0KPiA+ICA0IGZpbGVzIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9u
-cygtKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
-L2FuYWxvZ2l4X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
-bG9naXhfZHBfY29yZS5jCj4gPiBpbmRleCA4YThmMDVmZTlkYTMuLjY0ZDk0YTM0ODc0ZCAxMDA2
-NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
-X2RwX2NvcmUuYwo+ID4gQEAgLTk4LDIwICs5OCwyMCBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2Rw
-X2RldGVjdF9ocGQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4gPiAgCXJldHVybiAw
-Owo+ID4gIH0KPiA+ICAKPiA+IC1pbnQgYW5hbG9naXhfZHBfcHNyX3N1cHBvcnRlZChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYpCj4gPiAraW50IGFuYWxvZ2l4X2RwX3Bzcl9lbmFibGVkKHN0cnVjdCBkZXZp
-Y2UgKmRldikKPiA+ICB7Cj4gPiAgCXN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwID0gZGV2
-X2dldF9kcnZkYXRhKGRldik7Cj4gPiAgCj4gPiAtCXJldHVybiBkcC0+cHNyX3N1cHBvcnQ7Cj4g
-PiArCXJldHVybiBkcC0+cHNyX2VuYWJsZTsKPiA+ICB9Cj4gPiAtRVhQT1JUX1NZTUJPTF9HUEwo
-YW5hbG9naXhfZHBfcHNyX3N1cHBvcnRlZCk7Cj4gPiArRVhQT1JUX1NZTUJPTF9HUEwoYW5hbG9n
-aXhfZHBfcHNyX2VuYWJsZWQpOwo+ID4gIAo+ID4gIGludCBhbmFsb2dpeF9kcF9lbmFibGVfcHNy
-KHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICB7Cj4gPiAgCXN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
-Y2UgKmRwID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gPiAgCXN0cnVjdCBlZHBfdnNjX3BzciBw
-c3JfdnNjOwo+ID4gIAo+ID4gLQlpZiAoIWRwLT5wc3Jfc3VwcG9ydCkKPiA+ICsJaWYgKCFkcC0+
-cHNyX2VuYWJsZSkKPiA+ICAJCXJldHVybiAwOwo+ID4gIAo+ID4gIAkvKiBQcmVwYXJlIFZTQyBw
-YWNrZXQgYXMgcGVyIEVEUCAxLjQgc3BlYywgVGFibGUgNi45ICovCj4gPiBAQCAtMTM0LDcgKzEz
-NCw3IEBAIGludCBhbmFsb2dpeF9kcF9kaXNhYmxlX3BzcihzdHJ1Y3QgZGV2aWNlICpkZXYpCj4g
-PiAgCXN0cnVjdCBlZHBfdnNjX3BzciBwc3JfdnNjOwo+ID4gIAlpbnQgcmV0Owo+ID4gIAo+ID4g
-LQlpZiAoIWRwLT5wc3Jfc3VwcG9ydCkKPiA+ICsJaWYgKCFkcC0+cHNyX2VuYWJsZSkKPiA+ICAJ
-CXJldHVybiAwOwo+ID4gIAo+ID4gIAkvKiBQcmVwYXJlIFZTQyBwYWNrZXQgYXMgcGVyIEVEUCAx
-LjQgc3BlYywgVGFibGUgNi45ICovCj4gPiBAQCAtODc4LDggKzg3OCw4IEBAIHN0YXRpYyB2b2lk
-IGFuYWxvZ2l4X2RwX2NvbW1pdChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPiA+ICAJ
-LyogRW5hYmxlIHZpZGVvICovCj4gPiAgCWFuYWxvZ2l4X2RwX3N0YXJ0X3ZpZGVvKGRwKTsKPiA+
-ICAKPiA+IC0JZHAtPnBzcl9zdXBwb3J0ID0gYW5hbG9naXhfZHBfZGV0ZWN0X3NpbmtfcHNyKGRw
-KTsKPiA+IC0JaWYgKGRwLT5wc3Jfc3VwcG9ydCkKPiA+ICsJZHAtPnBzcl9lbmFibGUgPSBhbmFs
-b2dpeF9kcF9kZXRlY3Rfc2lua19wc3IoZHApOwo+ID4gKwlpZiAoZHAtPnBzcl9lbmFibGUpCj4g
-PiAgCQlhbmFsb2dpeF9kcF9lbmFibGVfc2lua19wc3IoZHApOwo+ID4gIH0KPiA+ICAKPiA+IEBA
-IC0xMTIwLDYgKzExMjAsNyBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJs
-ZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ID4gIAlpZiAocmV0KQo+ID4gIAkJRFJNX0VS
-Uk9SKCJmYWlsZWQgdG8gc2V0dXAgdGhlIHBhbmVsIHJldCA9ICVkXG4iLCByZXQpOwo+ID4gIAo+
-ID4gKwlkcC0+cHNyX2VuYWJsZSA9IGZhbHNlOwo+ID4gIAlkcC0+ZHBtc19tb2RlID0gRFJNX01P
-REVfRFBNU19PRkY7Cj4gPiAgfQo+ID4gIAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPiA+IGluZGV4IGIwMzliMjhkOGZjYy4u
-ZTEzNWE0MmNiMTllIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-YW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCj4gPiBAQCAtMTcwLDcgKzE3MCw3IEBAIHN0cnVj
-dCBhbmFsb2dpeF9kcF9kZXZpY2Ugewo+ID4gIAlpbnQJCQlkcG1zX21vZGU7Cj4gPiAgCWludAkJ
-CWhwZF9ncGlvOwo+ID4gIAlib29sICAgICAgICAgICAgICAgICAgICBmb3JjZV9ocGQ7Cj4gPiAt
-CWJvb2wJCQlwc3Jfc3VwcG9ydDsKPiA+ICsJYm9vbAkJCXBzcl9lbmFibGU7Cj4gPiAgCj4gPiAg
-CXN0cnVjdCBtdXRleAkJcGFuZWxfbG9jazsKPiA+ICAJYm9vbAkJCXBhbmVsX2lzX21vZGVzZXQ7
-Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
-Y2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAu
-Ywo+ID4gaW5kZXggNjRlN2UyYzBiYzU4Li5mNDQ3NTYwMjk0NzggMTAwNjQ0Cj4gPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ID4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiA+IEBAIC04
-Myw3ICs4Myw3IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX3Bzcl9zZXQoc3RydWN0IGRybV9l
-bmNvZGVyICplbmNvZGVyLCBib29sIGVuYWJsZWQpCj4gPiAgCWludCB2YWN0X2VuZDsKPiA+ICAJ
-aW50IHJldDsKPiA+ICAKPiA+IC0JaWYgKCFhbmFsb2dpeF9kcF9wc3Jfc3VwcG9ydGVkKGRwLT5k
-ZXYpKQo+ID4gKwlpZiAoIWFuYWxvZ2l4X2RwX3Bzcl9lbmFibGVkKGRwLT5kZXYpKQo+ID4gIAkJ
-cmV0dXJuOwo+ID4gIAo+ID4gIAlkZXZfZGJnKGRwLT5kZXYsICIlcyBQU1IuLi5cbiIsIGVuYWJs
-ZWQgPyAiZW5hYmxlIiA6ICJkaXNhYmxlIik7Cj4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4X2RwLmggYi9pbmNsdWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaAo+
-ID4gaW5kZXggYzk5ZDZlYWVmMWFjLi40ZmMwMTY1ZWQzZjUgMTAwNjQ0Cj4gPiAtLS0gYS9pbmNs
-dWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaAo+ID4gKysrIGIvaW5jbHVkZS9kcm0vYnJpZGdl
-L2FuYWxvZ2l4X2RwLmgKPiA+IEBAIC0zOCw3ICszOCw3IEBAIHN0cnVjdCBhbmFsb2dpeF9kcF9w
-bGF0X2RhdGEgewo+ID4gIAkJCSBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqKTsKPiA+ICB9Owo+ID4g
-IAo+ID4gLWludCBhbmFsb2dpeF9kcF9wc3Jfc3VwcG9ydGVkKHN0cnVjdCBkZXZpY2UgKmRldik7
-Cj4gPiAraW50IGFuYWxvZ2l4X2RwX3Bzcl9lbmFibGVkKHN0cnVjdCBkZXZpY2UgKmRldik7Cj4g
-PiAgaW50IGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3Ioc3RydWN0IGRldmljZSAqZGV2KTsKPiA+ICBp
-bnQgYW5hbG9naXhfZHBfZGlzYWJsZV9wc3Ioc3RydWN0IGRldmljZSAqZGV2KTsKPiA+ICAKPiAK
-Ci0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Fri, Mar 17, 2017 at 11:54:24AM +0800, Chris Zhong wrote:
+> For the RK3399, the grf_switch_reg name should be RK3399_GRF_SOC_CON20,
+> not RK3399_GRF_SOC_CON19.
+
+Matches the TRM for me, and otherwise it's a no-op:
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> ---
+> 
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index 5a18281..19b9208 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> @@ -34,7 +34,7 @@
+>  #define RK3288_DSI0_SEL_VOP_LIT		BIT(6)
+>  #define RK3288_DSI1_SEL_VOP_LIT		BIT(9)
+>  
+> -#define RK3399_GRF_SOC_CON19		0x6250
+> +#define RK3399_GRF_SOC_CON20		0x6250
+>  #define RK3399_DSI0_SEL_VOP_LIT		BIT(0)
+>  #define RK3399_DSI1_SEL_VOP_LIT		BIT(4)
+>  
+> @@ -1151,7 +1151,7 @@ static struct dw_mipi_dsi_plat_data rk3288_mipi_dsi_drv_data = {
+>  static struct dw_mipi_dsi_plat_data rk3399_mipi_dsi_drv_data = {
+>  	.dsi0_en_bit = RK3399_DSI0_SEL_VOP_LIT,
+>  	.dsi1_en_bit = RK3399_DSI1_SEL_VOP_LIT,
+> -	.grf_switch_reg = RK3399_GRF_SOC_CON19,
+> +	.grf_switch_reg = RK3399_GRF_SOC_CON20,
+>  	.grf_dsi0_mode = RK3399_GRF_DSI_MODE,
+>  	.grf_dsi0_mode_reg = RK3399_GRF_SOC_CON22,
+>  	.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+> -- 
+> 2.6.3
