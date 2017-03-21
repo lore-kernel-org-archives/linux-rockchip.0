@@ -1,89 +1,82 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 2/2] drm/panel: add innolux,p079zca panel driver
-Date: Tue, 21 Mar 2017 17:12:05 -0400
-Message-ID: <20170321211205.GM19389@art_vandelay>
-References: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
- <1489562353-10313-2-git-send-email-zyw@rock-chips.com>
- <20170321192635.GA19389@art_vandelay>
- <20170321203829.GD74389@google.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: fix PPI misconfiguration on Cortex-A9 socs
+Date: Wed, 22 Mar 2017 00:14:28 +0100
+Message-ID: <20170321231428.23802-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170321203829.GD74389@google.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXIgMjEsIDIwMTcgYXQgMDE6Mzg6MzFQTSAtMDcwMCwgQnJpYW4gTm9ycmlzIHdy
-b3RlOgo+ICsgVGhpZXJyeSBmb3IgcmVhbAo+IAo+IE9uIFR1ZSwgTWFyIDIxLCAyMDE3IGF0IDAz
-OjI2OjM1UE0gLTA0MDAsIFNlYW4gUGF1bCB3cm90ZToKPiA+IE9uIFdlZCwgTWFyIDE1LCAyMDE3
-IGF0IDAzOjE5OjEzUE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+ID4gPiBTdXBwb3J0IElu
-bm9sdXggUDA3OVpDQSA3Ljg1IiA3Njh4MTAyNCBURlQgTENEIHBhbmVsLCBpdCBpcyBhIE1JUEkg
-RFNJCj4gPiA+IHBhbmVsLgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcg
-PHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gLS0tCj4gPiA+IAo+ID4gPiBDaGFuZ2VzIGluIHYy
-Ogo+ID4gPiAtIGFkZCBzb21lIGVycm9yIGNoZWNrCj4gPiA+IC0gYWx3YXlzIHVzZSBMb3cgcG93
-ZXIgbW9kZSB0byBzZW5kIGNvbW1lbmQKPiA+ID4gLSBhZGQgY29tbWVudHMgZm9yIGFsbCB0aGUg
-c2xlZXAKPiA+ID4gLSB1c2UgRFJNX0RFVl9FUlJPUiBpbnN0ZWFkIG9mIGRldl9lcnIKPiA+ID4g
-Cj4gPiAKPiA+IE1pbm9yIHN1Z2dlc3Rpb24gYmVsb3cuIE9uY2UgdGhhdCdzIGNsZWFyZWQgdXAs
-IHlvdSBjYW4gYWRkOgo+ID4gUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
-dW0ub3JnPgo+ID4gCj4gPiBBbHNvLCBwbGVhc2UgYWRkIFRoaWVycnkgZGlyZWN0bHkgdG8geW91
-ciBwYXRjaGVzIHNvIGhlIHNlZXMgdGhlbS4KPiA+IAo+ID4gCj4gPiA+ICBkcml2ZXJzL2dwdS9k
-cm0vcGFuZWwvS2NvbmZpZyAgICAgICAgICAgICAgICAgfCAgMTEgKwo+ID4gPiAgZHJpdmVycy9n
-cHUvZHJtL3BhbmVsL01ha2VmaWxlICAgICAgICAgICAgICAgIHwgICAxICsKPiA+ID4gIGRyaXZl
-cnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1pbm5vbHV4LXAwNzl6Y2EuYyB8IDM0NCArKysrKysrKysr
-KysrKysrKysrKysrKysrKwo+ID4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAzNTYgaW5zZXJ0aW9ucygr
-KQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1p
-bm5vbHV4LXAwNzl6Y2EuYwo+ID4gPiAKPiA+IAo+ID4gPHNuaXA+Cj4gPiA+ICtzdGF0aWMgaW50
-IGlubm9sdXhfcGFuZWxfcHJlcGFyZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiA+ID4gK3sK
-PiA+ID4gKwlzdHJ1Y3QgaW5ub2x1eF9wYW5lbCAqaW5ub2x1eCA9IHRvX2lubm9sdXhfcGFuZWwo
-cGFuZWwpOwo+ID4gPiArCWludCBlcnIsIHJldDsKPiA+ID4gKwo+ID4gPiArCWlmIChpbm5vbHV4
-LT5wcmVwYXJlZCkKPiA+ID4gKwkJcmV0dXJuIDA7Cj4gPiA+ICsKPiA+ID4gKwlncGlvZF9zZXRf
-dmFsdWVfY2Fuc2xlZXAoaW5ub2x1eC0+ZW5hYmxlX2dwaW8sIDApOwo+ID4gPiArCj4gPiA+ICsJ
-ZXJyID0gcmVndWxhdG9yX2VuYWJsZShpbm5vbHV4LT5zdXBwbHkpOwo+ID4gPiArCWlmIChlcnIg
-PCAwKQo+ID4gPiArCQlyZXR1cm4gZXJyOwo+ID4gPiArCj4gPiA+ICsJLyogVDI6IDE1bXMgLSAx
-MDAwbXMgKi8KPiA+ID4gKwl1c2xlZXBfcmFuZ2UoMTUwMDAsIDE2MDAwKTsKPiA+ID4gKwo+ID4g
-PiArCWdwaW9kX3NldF92YWx1ZV9jYW5zbGVlcChpbm5vbHV4LT5lbmFibGVfZ3BpbywgMSk7Cj4g
-PiA+ICsKPiA+ID4gKwkvKiBUNDogMTVtcyAtIDEwMDBtcyAqLwo+ID4gPiArCXVzbGVlcF9yYW5n
-ZSgxNTAwMCwgMTYwMDApOwo+ID4gPiArCj4gPiA+ICsJZXJyID0gbWlwaV9kc2lfZGNzX2V4aXRf
-c2xlZXBfbW9kZShpbm5vbHV4LT5saW5rKTsKPiA+ID4gKwlpZiAoZXJyIDwgMCkgewo+ID4gPiAr
-CQlEUk1fREVWX0VSUk9SKHBhbmVsLT5kZXYsICJmYWlsZWQgdG8gZXhpdCBzbGVlcCBtb2RlOiAl
-ZFxuIiwKPiA+ID4gKwkJCSAgICAgIGVycik7Cj4gPiA+ICsJCWdvdG8gcG93ZXJvZmY7Cj4gPiA+
-ICsJfQo+ID4gPiArCj4gPiA+ICsJLyogVDY6IDEyMG1zIC0gMTAwMG1zKi8KPiA+ID4gKwltc2xl
-ZXAoMTIwKTsKPiA+ID4gKwo+ID4gPiArCWVyciA9IG1pcGlfZHNpX2Rjc19zZXRfZGlzcGxheV9v
-bihpbm5vbHV4LT5saW5rKTsKPiA+ID4gKwlpZiAoZXJyIDwgMCkgewo+ID4gPiArCQlEUk1fREVW
-X0VSUk9SKHBhbmVsLT5kZXYsICJmYWlsZWQgdG8gc2V0IGRpc3BsYXkgb246ICVkXG4iLAo+ID4g
-PiArCQkJICAgICAgZXJyKTsKPiA+ID4gKwkJZ290byBwb3dlcm9mZjsKPiA+ID4gKwl9Cj4gPiA+
-ICsKPiA+ID4gKwkvKiBUNzogNW1zICovCj4gPiA+ICsJdXNsZWVwX3JhbmdlKDUwMDAsIDYwMDAp
-Owo+ID4gPiArCj4gPiA+ICsJaW5ub2x1eC0+cHJlcGFyZWQgPSB0cnVlOwo+ID4gPiArCj4gPiA+
-ICsJcmV0dXJuIDA7Cj4gPiA+ICsKPiA+ID4gK3Bvd2Vyb2ZmOgo+ID4gPiArCXJldCA9IHJlZ3Vs
-YXRvcl9kaXNhYmxlKGlubm9sdXgtPnN1cHBseSk7Cj4gPiA+ICsJaWYgKHJldCkKPiA+ID4gKwkJ
-cmV0dXJuIHJldDsKPiA+IAo+ID4gSSBkb24ndCB0aGluayB3ZSBzaG91bGQgYmUgcmV0dXJuaW5n
-IHRoaXMgZXJyb3IgY29kZS4gSWYgd2UncmUgaGVyZSwgaXQncwo+ID4gYmVjYXVzZSBzb21ldGhp
-bmcgZWxzZSB0cmlnZ2VyZWQgZXJyLCBhbmQgd2Ugc2hvdWxkIHJldHVybiB0aGF0LiBDaGFuZ2Ug
-dGhpcyB0bzoKPiA+IAo+ID4gaWYgKHJlZ3VsYXRvcl9kaXNhYmxlKGlubm9sdXgtPnN1cHBseSkp
-Cj4gPiAgICAgICAgIERSTV9ERVZfRVJST1IocGFuZWwtPmRldiwgImZhaWxlZCB0byBkaXNhYmxl
-IHJlZ3VsYXRvciBhZnRlciBlcnJvclxuIik7Cj4gCj4gQW5kIG1heWJlIGluY2x1ZGUgdGhlIGVy
-cm9yIGNvZGUgaW4gdGhhdCBtZXNzYWdlIHN0aWxsPwo+IAo+IAlyZXQgPSByZWd1bGF0b3JfZGlz
-YWJsZShpbm5vbHV4LT5zdXBwbHkpOwo+IAlpZiAocmV0KQo+IAkJRFJNX0RFVl9FUlJPUihwYW5l
-bC0+ZGV2LCAiZmFpbGVkIHRvIGRpc2FibGUgcmVndWxhdG9yIGFmdGVyIGVycm9yICglZClcbiIs
-Cj4gCQkJICAgICAgcmV0KTsKClN1cmUsIGJ1dCBsZXQncyBub3QgaGF2ZSByZXQgYmVzaWRlIGVy
-ciwgZWFjaCBmdW5jdGlvbiBzaG91bGQgaGF2ZSBvbmUgb3IgdGhlCm90aGVyLiBTbywgcGVyaGFw
-cyBzL3JldC9yZWd1bGF0b3JfZXJyLyBvciBzaW1pbGFyLgoKU2VhbgoKPiAKPiBCcmlhbgo+IAo+
-ID4gPiArCj4gPiA+ICsJZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKGlubm9sdXgtPmVuYWJsZV9n
-cGlvLCAwKTsKPiA+ID4gKwlyZXR1cm4gZXJyOwo+ID4gPiArfQo+ID4gCj4gPiA8c25pcD4KPiA+
-IAo+ID4gPiAtLSAKPiA+ID4gMi42LjMKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVy
-LCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+According to [0] pointed out by Marc Zyngier in a report about a
+similar error message, PPIs 11 and 13 are edge triggered on
+Cortex-A9 socs including the rk3066 and rk3188 which currently
+mark them as level triggered.
+
+Until some time ago the gic did not care but commit 992345a58e0c
+("irqchip/gic: WARN if setting the interrupt type for a PPI fails")
+introduced a warning for that case.
+
+Fix the warning on these socs by describing the interrupts correctly
+and also using the binding constants for easier reading in the future.
+
+[0] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0407f/CCHEIGIC.html
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3188.dtsi | 4 ++--
+ arch/arm/boot/dts/rk3xxx.dtsi | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index cf91254d0a43..fa1bdb8875ae 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -529,11 +529,11 @@
+ };
+ 
+ &global_timer {
+-	interrupts = <GIC_PPI 11 0xf04>;
++	interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+ };
+ 
+ &local_timer {
+-	interrupts = <GIC_PPI 13 0xf04>;
++	interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+ };
+ 
+ &i2c0 {
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 4480534d1b46..39e3f8bded1c 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -132,14 +132,14 @@
+ 	global_timer: global-timer@1013c200 {
+ 		compatible = "arm,cortex-a9-global-timer";
+ 		reg = <0x1013c200 0x20>;
+-		interrupts = <GIC_PPI 11 0x304>;
++		interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
+ 		clocks = <&cru CORE_PERI>;
+ 	};
+ 
+ 	local_timer: local-timer@1013c600 {
+ 		compatible = "arm,cortex-a9-twd-timer";
+ 		reg = <0x1013c600 0x20>;
+-		interrupts = <GIC_PPI 13 0x304>;
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
+ 		clocks = <&cru CORE_PERI>;
+ 	};
+ 
+-- 
+2.11.0
