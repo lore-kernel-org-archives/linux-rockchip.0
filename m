@@ -1,55 +1,38 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: setup DMA-channels for mmc0 and emmc for
- rk3188
-Date: Tue, 21 Mar 2017 18:13:47 +0300
-Message-ID: <1490109227-4006-1-git-send-email-al.kochet@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Subject: [PATCH] ARM: dts: rockchip: increase SD clock frequency on Radxa Rock
+Date: Tue, 21 Mar 2017 18:40:22 +0300
+Message-ID: <1490110822-3310-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit enable DMA-based transfers for SD/eMMC card adapters
-and reduce number of interrupts produced by SD-card/eMMC-card
-adapters.
+The patch set SD clock frequency to maximum possible to SD-card
+(50MHz). This change actual clock frequency from 32MHz to 48MHz
+(speedup 1.5X).
 
-Sometimes interrupts from SD-card/eMMC-card adapters running in
-PIO mode blocks execution of hrtimers and I2S DMA callbacks for
-a long periods (100 ms or more).
+Banner line before patch: 'mmc_host mmc0: Bus speed (slot 0) = 32000000Hz
+(slot req 50000000Hz, actual 32000000HZ div = 0)'.
+Banner line after patch: 'mmc_host mmc0: Bus speed (slot 0) = 96000000Hz
+(slot req 50000000Hz, actual 48000000HZ div = 1)'
 
 Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 ---
- arch/arm/boot/dts/rk3188.dtsi |   10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm/boot/dts/rk3188-radxarock.dts |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 44da3d42..de786f8 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -638,3 +638,13 @@
- &wdt {
- 	compatible = "rockchip,rk3188-wdt", "snps,dw-wdt";
- };
-+
-+&mmc0 {
-+	dmas = <&dmac2 1>;
-+	dma-names = "rx-tx";
-+};
-+
-+&emmc {
-+	dmas = <&dmac2 4>;
-+	dma-names = "rx-tx";
-+};
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 1da46d1..5b7daa4 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -302,6 +302,7 @@
+ 	pinctrl-0 = <&sd0_clk>, <&sd0_cmd>, <&sd0_cd>, <&sd0_bus4>;
+ 	vmmc-supply = <&vcc_sd0>;
+ 
++	clock-frequency = <50000000>;
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
 -- 
 1.7.9.5
