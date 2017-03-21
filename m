@@ -1,123 +1,89 @@
-From: Brian Norris <briannorris@chromium.org>
+From: Sean Paul <seanpaul@chromium.org>
 Subject: Re: [PATCH v2 2/2] drm/panel: add innolux,p079zca panel driver
-Date: Tue, 21 Mar 2017 13:38:31 -0700
-Message-ID: <20170321203829.GD74389@google.com>
+Date: Tue, 21 Mar 2017 17:12:05 -0400
+Message-ID: <20170321211205.GM19389@art_vandelay>
 References: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
  <1489562353-10313-2-git-send-email-zyw@rock-chips.com>
  <20170321192635.GA19389@art_vandelay>
+ <20170321203829.GD74389@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20170321192635.GA19389@art_vandelay>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>
+In-Reply-To: <20170321203829.GD74389@google.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Thierry for real
-
-On Tue, Mar 21, 2017 at 03:26:35PM -0400, Sean Paul wrote:
-> On Wed, Mar 15, 2017 at 03:19:13PM +0800, Chris Zhong wrote:
-> > Support Innolux P079ZCA 7.85" 768x1024 TFT LCD panel, it is a MIPI DSI
-> > panel.
-> > 
-> > Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> > ---
-> > 
-> > Changes in v2:
-> > - add some error check
-> > - always use Low power mode to send commend
-> > - add comments for all the sleep
-> > - use DRM_DEV_ERROR instead of dev_err
-> > 
-> 
-> Minor suggestion below. Once that's cleared up, you can add:
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
-> 
-> Also, please add Thierry directly to your patches so he sees them.
-> 
-> 
-> >  drivers/gpu/drm/panel/Kconfig                 |  11 +
-> >  drivers/gpu/drm/panel/Makefile                |   1 +
-> >  drivers/gpu/drm/panel/panel-innolux-p079zca.c | 344 ++++++++++++++++++++++++++
-> >  3 files changed, 356 insertions(+)
-> >  create mode 100644 drivers/gpu/drm/panel/panel-innolux-p079zca.c
-> > 
-> 
-> <snip>
-> > +static int innolux_panel_prepare(struct drm_panel *panel)
-> > +{
-> > +	struct innolux_panel *innolux = to_innolux_panel(panel);
-> > +	int err, ret;
-> > +
-> > +	if (innolux->prepared)
-> > +		return 0;
-> > +
-> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 0);
-> > +
-> > +	err = regulator_enable(innolux->supply);
-> > +	if (err < 0)
-> > +		return err;
-> > +
-> > +	/* T2: 15ms - 1000ms */
-> > +	usleep_range(15000, 16000);
-> > +
-> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 1);
-> > +
-> > +	/* T4: 15ms - 1000ms */
-> > +	usleep_range(15000, 16000);
-> > +
-> > +	err = mipi_dsi_dcs_exit_sleep_mode(innolux->link);
-> > +	if (err < 0) {
-> > +		DRM_DEV_ERROR(panel->dev, "failed to exit sleep mode: %d\n",
-> > +			      err);
-> > +		goto poweroff;
-> > +	}
-> > +
-> > +	/* T6: 120ms - 1000ms*/
-> > +	msleep(120);
-> > +
-> > +	err = mipi_dsi_dcs_set_display_on(innolux->link);
-> > +	if (err < 0) {
-> > +		DRM_DEV_ERROR(panel->dev, "failed to set display on: %d\n",
-> > +			      err);
-> > +		goto poweroff;
-> > +	}
-> > +
-> > +	/* T7: 5ms */
-> > +	usleep_range(5000, 6000);
-> > +
-> > +	innolux->prepared = true;
-> > +
-> > +	return 0;
-> > +
-> > +poweroff:
-> > +	ret = regulator_disable(innolux->supply);
-> > +	if (ret)
-> > +		return ret;
-> 
-> I don't think we should be returning this error code. If we're here, it's
-> because something else triggered err, and we should return that. Change this to:
-> 
-> if (regulator_disable(innolux->supply))
->         DRM_DEV_ERROR(panel->dev, "failed to disable regulator after error\n");
-
-And maybe include the error code in that message still?
-
-	ret = regulator_disable(innolux->supply);
-	if (ret)
-		DRM_DEV_ERROR(panel->dev, "failed to disable regulator after error (%d)\n",
-			      ret);
-
-Brian
-
-> > +
-> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 0);
-> > +	return err;
-> > +}
-> 
-> <snip>
-> 
-> > -- 
-> > 2.6.3
+T24gVHVlLCBNYXIgMjEsIDIwMTcgYXQgMDE6Mzg6MzFQTSAtMDcwMCwgQnJpYW4gTm9ycmlzIHdy
+b3RlOgo+ICsgVGhpZXJyeSBmb3IgcmVhbAo+IAo+IE9uIFR1ZSwgTWFyIDIxLCAyMDE3IGF0IDAz
+OjI2OjM1UE0gLTA0MDAsIFNlYW4gUGF1bCB3cm90ZToKPiA+IE9uIFdlZCwgTWFyIDE1LCAyMDE3
+IGF0IDAzOjE5OjEzUE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+ID4gPiBTdXBwb3J0IElu
+bm9sdXggUDA3OVpDQSA3Ljg1IiA3Njh4MTAyNCBURlQgTENEIHBhbmVsLCBpdCBpcyBhIE1JUEkg
+RFNJCj4gPiA+IHBhbmVsLgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcg
+PHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gLS0tCj4gPiA+IAo+ID4gPiBDaGFuZ2VzIGluIHYy
+Ogo+ID4gPiAtIGFkZCBzb21lIGVycm9yIGNoZWNrCj4gPiA+IC0gYWx3YXlzIHVzZSBMb3cgcG93
+ZXIgbW9kZSB0byBzZW5kIGNvbW1lbmQKPiA+ID4gLSBhZGQgY29tbWVudHMgZm9yIGFsbCB0aGUg
+c2xlZXAKPiA+ID4gLSB1c2UgRFJNX0RFVl9FUlJPUiBpbnN0ZWFkIG9mIGRldl9lcnIKPiA+ID4g
+Cj4gPiAKPiA+IE1pbm9yIHN1Z2dlc3Rpb24gYmVsb3cuIE9uY2UgdGhhdCdzIGNsZWFyZWQgdXAs
+IHlvdSBjYW4gYWRkOgo+ID4gUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
+dW0ub3JnPgo+ID4gCj4gPiBBbHNvLCBwbGVhc2UgYWRkIFRoaWVycnkgZGlyZWN0bHkgdG8geW91
+ciBwYXRjaGVzIHNvIGhlIHNlZXMgdGhlbS4KPiA+IAo+ID4gCj4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vcGFuZWwvS2NvbmZpZyAgICAgICAgICAgICAgICAgfCAgMTEgKwo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL3BhbmVsL01ha2VmaWxlICAgICAgICAgICAgICAgIHwgICAxICsKPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1pbm5vbHV4LXAwNzl6Y2EuYyB8IDM0NCArKysrKysrKysr
+KysrKysrKysrKysrKysrKwo+ID4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAzNTYgaW5zZXJ0aW9ucygr
+KQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1p
+bm5vbHV4LXAwNzl6Y2EuYwo+ID4gPiAKPiA+IAo+ID4gPHNuaXA+Cj4gPiA+ICtzdGF0aWMgaW50
+IGlubm9sdXhfcGFuZWxfcHJlcGFyZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiA+ID4gK3sK
+PiA+ID4gKwlzdHJ1Y3QgaW5ub2x1eF9wYW5lbCAqaW5ub2x1eCA9IHRvX2lubm9sdXhfcGFuZWwo
+cGFuZWwpOwo+ID4gPiArCWludCBlcnIsIHJldDsKPiA+ID4gKwo+ID4gPiArCWlmIChpbm5vbHV4
+LT5wcmVwYXJlZCkKPiA+ID4gKwkJcmV0dXJuIDA7Cj4gPiA+ICsKPiA+ID4gKwlncGlvZF9zZXRf
+dmFsdWVfY2Fuc2xlZXAoaW5ub2x1eC0+ZW5hYmxlX2dwaW8sIDApOwo+ID4gPiArCj4gPiA+ICsJ
+ZXJyID0gcmVndWxhdG9yX2VuYWJsZShpbm5vbHV4LT5zdXBwbHkpOwo+ID4gPiArCWlmIChlcnIg
+PCAwKQo+ID4gPiArCQlyZXR1cm4gZXJyOwo+ID4gPiArCj4gPiA+ICsJLyogVDI6IDE1bXMgLSAx
+MDAwbXMgKi8KPiA+ID4gKwl1c2xlZXBfcmFuZ2UoMTUwMDAsIDE2MDAwKTsKPiA+ID4gKwo+ID4g
+PiArCWdwaW9kX3NldF92YWx1ZV9jYW5zbGVlcChpbm5vbHV4LT5lbmFibGVfZ3BpbywgMSk7Cj4g
+PiA+ICsKPiA+ID4gKwkvKiBUNDogMTVtcyAtIDEwMDBtcyAqLwo+ID4gPiArCXVzbGVlcF9yYW5n
+ZSgxNTAwMCwgMTYwMDApOwo+ID4gPiArCj4gPiA+ICsJZXJyID0gbWlwaV9kc2lfZGNzX2V4aXRf
+c2xlZXBfbW9kZShpbm5vbHV4LT5saW5rKTsKPiA+ID4gKwlpZiAoZXJyIDwgMCkgewo+ID4gPiAr
+CQlEUk1fREVWX0VSUk9SKHBhbmVsLT5kZXYsICJmYWlsZWQgdG8gZXhpdCBzbGVlcCBtb2RlOiAl
+ZFxuIiwKPiA+ID4gKwkJCSAgICAgIGVycik7Cj4gPiA+ICsJCWdvdG8gcG93ZXJvZmY7Cj4gPiA+
+ICsJfQo+ID4gPiArCj4gPiA+ICsJLyogVDY6IDEyMG1zIC0gMTAwMG1zKi8KPiA+ID4gKwltc2xl
+ZXAoMTIwKTsKPiA+ID4gKwo+ID4gPiArCWVyciA9IG1pcGlfZHNpX2Rjc19zZXRfZGlzcGxheV9v
+bihpbm5vbHV4LT5saW5rKTsKPiA+ID4gKwlpZiAoZXJyIDwgMCkgewo+ID4gPiArCQlEUk1fREVW
+X0VSUk9SKHBhbmVsLT5kZXYsICJmYWlsZWQgdG8gc2V0IGRpc3BsYXkgb246ICVkXG4iLAo+ID4g
+PiArCQkJICAgICAgZXJyKTsKPiA+ID4gKwkJZ290byBwb3dlcm9mZjsKPiA+ID4gKwl9Cj4gPiA+
+ICsKPiA+ID4gKwkvKiBUNzogNW1zICovCj4gPiA+ICsJdXNsZWVwX3JhbmdlKDUwMDAsIDYwMDAp
+Owo+ID4gPiArCj4gPiA+ICsJaW5ub2x1eC0+cHJlcGFyZWQgPSB0cnVlOwo+ID4gPiArCj4gPiA+
+ICsJcmV0dXJuIDA7Cj4gPiA+ICsKPiA+ID4gK3Bvd2Vyb2ZmOgo+ID4gPiArCXJldCA9IHJlZ3Vs
+YXRvcl9kaXNhYmxlKGlubm9sdXgtPnN1cHBseSk7Cj4gPiA+ICsJaWYgKHJldCkKPiA+ID4gKwkJ
+cmV0dXJuIHJldDsKPiA+IAo+ID4gSSBkb24ndCB0aGluayB3ZSBzaG91bGQgYmUgcmV0dXJuaW5n
+IHRoaXMgZXJyb3IgY29kZS4gSWYgd2UncmUgaGVyZSwgaXQncwo+ID4gYmVjYXVzZSBzb21ldGhp
+bmcgZWxzZSB0cmlnZ2VyZWQgZXJyLCBhbmQgd2Ugc2hvdWxkIHJldHVybiB0aGF0LiBDaGFuZ2Ug
+dGhpcyB0bzoKPiA+IAo+ID4gaWYgKHJlZ3VsYXRvcl9kaXNhYmxlKGlubm9sdXgtPnN1cHBseSkp
+Cj4gPiAgICAgICAgIERSTV9ERVZfRVJST1IocGFuZWwtPmRldiwgImZhaWxlZCB0byBkaXNhYmxl
+IHJlZ3VsYXRvciBhZnRlciBlcnJvclxuIik7Cj4gCj4gQW5kIG1heWJlIGluY2x1ZGUgdGhlIGVy
+cm9yIGNvZGUgaW4gdGhhdCBtZXNzYWdlIHN0aWxsPwo+IAo+IAlyZXQgPSByZWd1bGF0b3JfZGlz
+YWJsZShpbm5vbHV4LT5zdXBwbHkpOwo+IAlpZiAocmV0KQo+IAkJRFJNX0RFVl9FUlJPUihwYW5l
+bC0+ZGV2LCAiZmFpbGVkIHRvIGRpc2FibGUgcmVndWxhdG9yIGFmdGVyIGVycm9yICglZClcbiIs
+Cj4gCQkJICAgICAgcmV0KTsKClN1cmUsIGJ1dCBsZXQncyBub3QgaGF2ZSByZXQgYmVzaWRlIGVy
+ciwgZWFjaCBmdW5jdGlvbiBzaG91bGQgaGF2ZSBvbmUgb3IgdGhlCm90aGVyLiBTbywgcGVyaGFw
+cyBzL3JldC9yZWd1bGF0b3JfZXJyLyBvciBzaW1pbGFyLgoKU2VhbgoKPiAKPiBCcmlhbgo+IAo+
+ID4gPiArCj4gPiA+ICsJZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKGlubm9sdXgtPmVuYWJsZV9n
+cGlvLCAwKTsKPiA+ID4gKwlyZXR1cm4gZXJyOwo+ID4gPiArfQo+ID4gCj4gPiA8c25pcD4KPiA+
+IAo+ID4gPiAtLSAKPiA+ID4gMi42LjMKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVy
+LCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
