@@ -1,127 +1,519 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v6 0/5] Implement clocksource for rockchip SoC using
- rockchip timer
-Date: Tue, 21 Mar 2017 09:02:00 +0100
-Message-ID: <6b897768-d11f-bfd2-7eeb-bd7a41ea7669@linaro.org>
-References: <1485866596-32254-1-git-send-email-al.kochet@gmail.com>
- <F14EA552-9783-4083-A00F-9151AB7E5C99@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+Date: Tue, 21 Mar 2017 09:55:56 +0100
+Message-ID: <14610453.rKm3MBREMz@diego>
+References: <1489670244-13328-1-git-send-email-cl@rock-chips.com> <1489670244-13328-5-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <F14EA552-9783-4083-A00F-9151AB7E5C99@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>, Heiko Stuebner <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org
-Cc: Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1489670244-13328-5-git-send-email-cl@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20/03/2017 14:18, Alexander Kochetkov wrote:
-> Hello, Daniel.
+Hi,
+
+Am Donnerstag, 16. M�rz 2017, 21:17:22 CET schrieb cl@rock-chips.com:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> Sorry for bothering you, but could you please take a look at v6[1] series and tell what do you think about it?
-> I see your commit[2] in the git, but I don’t understand well how to use it in rockchip driver.
+> This patch adds core dtsi file for Rockchip RK3328 SoCs.
 > 
-> [1] https://lkml.org/lkml/2017/1/31/401
-> [2] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/clocksource?id=376bc27150f180d9f5eddec6a14117780177589d
-
-Hi Alexander,
-
-I have been through the patchset and it is ok except for the patch 3/5.
-I wanted to investigate a bit on this one because of the patch [2] you
-are mentioning.
-
-I think there is small missing piece of devicetree binding to specify
-'clocksource' or 'clockevent'. Rob Herring is ok with an attribute of
-this kind.
-
-That would help to clearly separate these drivers without ambiguity.
-
-However, it results on some duplicated code I'm not very happy with, so
-that is my major issue with this approach I would like to solve. That is
-the status today.
-
-I wanted to take the opportunity of your changes to investigate this area.
-
-
->> 31 янв. 2017 г., в 15:43, Alexander Kochetkov <al.kochet@gmail.com> написал(а):
->>
->> From: Alexander Kochetkov <akochetkov@lintech.ru>
->>
->> Hello, Daniel, Heiko.
->>
->> Here is try 6 :) Thanks a lot for helping me to bring the code
->> into kernel!
->>
->> This patch series contain:
->> - devicetree bindings clarification for rockchip timers
->> - dts files fixes for rk3228-evb, rk3229-evb and rk3188
->> - implementation of clocksource and sched clock for rockchip SoC
->>
->> The clock supplying the arm-global-timer on the rk3188 is coming from the
->> the cpu clock itself and thus changes its rate everytime cpufreq adjusts
->> the cpu frequency making this timer unsuitable as a stable clocksource.
->>
->> The rk3188, rk3288 and following socs share a separate timer block already
->> handled by the rockchip-timer driver. Therefore adapt this driver to also
->> be able to act as clocksource on rk3188.
->>
->> In order to test clocksource you can run following commands and check
->> how much time it take in real. On rk3188 it take about ~45 seconds.
->>
->>       cpufreq-set -f 1.6GHZ
->>       date; sleep 60; date
->>
->> rk3288 (and probably anything newer) is irrelevant to this patch,
->> as it has the arch timer interface. This patch may be usefull
->> for Cortex-A9/A5 based parts.
->>
->> Regards,
->> Alexander.
->>
->> Changes in v6:
->> - Removed Reviewed-by: Heiko Stübner <heiko@sntech.de> tag
->> - Merge 5/8, 6/8, 7/8, 8/9 into single file
->> - split init paths into rk_clkevt_init() and rk_clksrc_init()
->>  so the driver code could be adopted to CLOCKEVENT_OF_DECLARE()
->> - clockevents implemented using clocksource_mmio_init()
->> - fixed commit message for 4/8 (thanks a lot Daniel)
->>
->> Changes in v5:
->> - Add Acked-by: Rob Herring <robh at kernel.org> to 1/8
->>  http://lists.infradead.org/pipermail/linux-rockchip/2016-December/013308.html
->> - Add Reviwed-by: Heiko Stübner <heiko@sntech.de> to series
->> - change timer compatible property in the rk322x.dtsi 2/8
->>  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013784.html
->> - updated comment message for 4/8
->>  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013786.html
->> - updated comment message for 5/8
->>  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013787.html
->> - fixed build error for 8/8
->>  http://lists.infradead.org/pipermail/linux-rockchip/2017-January/013789.html
->>
->> Alexander Kochetkov (5):
->>  dt-bindings: clarify compatible property for rockchip timers
->>  ARM: dts: rockchip: update compatible property for rk322x timer
->>  clocksource/drivers/rockchip_timer: implement clocksource timer
->>  ARM: dts: rockchip: add timer entries to rk3188 SoC
->>  ARM: dts: rockchip: disable arm-global-timer for rk3188
->>
->> .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
->> arch/arm/boot/dts/rk3188.dtsi                      |   17 ++
->> arch/arm/boot/dts/rk322x.dtsi                      |    2 +-
->> drivers/clocksource/Kconfig                        |    1 +
->> drivers/clocksource/rockchip_timer.c               |  218 ++++++++++++++------
->> 5 files changed, 185 insertions(+), 65 deletions(-)
->>
->> -- 
->> 1.7.9.5
->>
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1362
+> ++++++++++++++++++++++++++++++ 1 file changed, 1362 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328.dtsi
 > 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3328.dtsi new file mode 100644
+> index 0000000..a92955c
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -0,0 +1,1362 @@
+> +/*
+> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This library is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This library is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + * Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
+> +
+> +#include <dt-bindings/clock/rk3328-cru.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,boot-mode.h>
+> +#include <dt-bindings/power/rk3328-power.h>
+> +
+> +/ {
+> +	compatible = "rockchip,rk3328";
+> +
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +		serial2 = &uart2;
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		i2c3 = &i2c3;
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <2>;
+
+#address-cells = <1>? You most likely don't need the 2 field cpu regs?
+
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x0>;
+> +			enable-method = "psci";
+> +			clocks = <&cru ARMCLK>;
+> +		};
+> +		cpu1: cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x1>;
+> +			enable-method = "psci";
+> +		};
+> +		cpu2: cpu@2 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x2>;
+> +			enable-method = "psci";
+> +		};
+> +		cpu3: cpu@3 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x3>;
+> +			enable-method = "psci";
+> +		};
+> +	};
+
+amba block here please
+
+> +
+> +	arm-pmu {
+> +		compatible = "arm,cortex-a53-pmu";
+> +		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-1.0";
+> +		method = "smc";
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | 
+IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+> +	};
+> +
+> +	xin24m: xin24m {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <24000000>;
+> +		clock-output-names = "xin24m";
+> +	};
+> +
+
+[...]
+
+> +	wdt: watchdog@ff1a0000 {
+> +		compatible = "snps,dw-wdt";
+> +		reg = <0x0 0xff1a0000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> +		status = "disabled";
+> +	};
+> +
+> +	amba {
+
+amba block above arm-pmu please
+
+> +		compatible = "simple-bus";
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		dmac: dmac@ff1f0000 {
+> +			compatible = "arm,pl330", "arm,primecell";
+> +			reg = <0x0 0xff1f0000 0x0 0x4000>;
+> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru ACLK_DMAC>;
+> +			clock-names = "apb_pclk";
+> +			#dma-cells = <1>;
+> +		};
+> +	};
+> +
+> +	saradc: saradc@ff280000 {
+> +		compatible = "rockchip,rk3328-saradc", "rockchip,rk3399-saradc";
+> +		reg = <0x0 0xff280000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_HIGH>;
+> +		#io-channel-cells = <1>;
+> +		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+> +		clock-names = "saradc", "apb_pclk";
+> +		resets = <&cru SRST_SARADC_P>;
+> +		reset-names = "saradc-apb";
+> +		status = "disabled";
+> +	};
+> +
+> +	cru: clock-controller@ff440000 {
+> +		compatible = "rockchip,rk3328-cru", "rockchip,cru", "syscon";
+> +		reg = <0x0 0xff440000 0x0 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +		assigned-clocks =
+> +			<&cru DCLK_LCDC>, <&cru SCLK_PDM>,
+> +			<&cru SCLK_RTC32K>, <&cru SCLK_UART0>,
+> +			<&cru SCLK_UART1>, <&cru SCLK_UART2>,
+> +			<&cru ACLK_BUS_PRE>, <&cru ACLK_PERI_PRE>,
+> +			<&cru ACLK_VIO_PRE>, <&cru ACLK_RGA_PRE>,
+> +			<&cru ACLK_VOP_PRE>, <&cru ACLK_RKVDEC_PRE>,
+> +			<&cru ACLK_RKVENC>, <&cru ACLK_VPU_PRE>,
+> +			<&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>,
+> +			<&cru SCLK_VENC_CORE>, <&cru SCLK_VENC_DSP>,
+> +			<&cru SCLK_SDIO>, <&cru SCLK_TSP>,
+> +			<&cru SCLK_WIFI>, <&cru ARMCLK>,
+> +			<&cru PLL_GPLL>, <&cru PLL_CPLL>,
+> +			<&cru ACLK_BUS_PRE>, <&cru HCLK_BUS_PRE>,
+> +			<&cru PCLK_BUS_PRE>, <&cru ACLK_PERI_PRE>,
+> +			<&cru HCLK_PERI>, <&cru PCLK_PERI>,
+> +			<&cru ACLK_VIO_PRE>, <&cru HCLK_VIO_PRE>,
+> +			<&cru ACLK_RGA_PRE>, <&cru SCLK_RGA>,
+> +			<&cru ACLK_VOP_PRE>, <&cru ACLK_RKVDEC_PRE>,
+> +			<&cru ACLK_RKVENC>, <&cru ACLK_VPU_PRE>,
+> +			<&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>,
+> +			<&cru SCLK_VENC_CORE>, <&cru SCLK_VENC_DSP>,
+> +			<&cru SCLK_EFUSE>, <&cru PCLK_DDR>,
+> +			<&cru ACLK_GMAC>, <&cru PCLK_GMAC>,
+> +			<&cru SCLK_RTC32K>, <&cru SCLK_USB3OTG_SUSPEND>;
+
+that list is way to long.
+Device-specific clocks should be inited in their respective device nodes.
+
+Aka sdio clocks in the sdio controller node, video encoder/decoder in the 
+encoder/decoder nodes, efuse, gmac etc etc.
+
+Controllers for which you don't have bindings yet, also most likely won't need 
+their clocks to get adjusted just now.
+
+The cru assigned clocks are really only for system-wide shared clocks.
+
+> +		assigned-clock-parents =
+> +			<&cru HDMIPHY>, <&cru PLL_APLL>,
+> +			<&cru PLL_GPLL>, <&xin24m>,
+> +			<&xin24m>, <&xin24m>;
+> +		assigned-clock-rates =
+> +			<0>, <61440000>,
+> +			<0>, <24000000>,
+> +			<24000000>, <24000000>,
+> +			<15000000>, <15000000>,
+> +			<100000000>, <100000000>,
+> +			<100000000>, <100000000>,
+> +			<50000000>, <100000000>,
+> +			<100000000>, <100000000>,
+> +			<50000000>, <50000000>,
+> +			<50000000>, <50000000>,
+> +			<24000000>, <600000000>,
+> +			<491520000>, <1200000000>,
+> +			<150000000>, <75000000>,
+> +			<75000000>, <150000000>,
+> +			<75000000>, <75000000>,
+> +			<300000000>, <100000000>,
+> +			<300000000>, <200000000>,
+> +			<400000000>, <500000000>,
+> +			<200000000>, <300000000>,
+> +			<300000000>, <250000000>,
+> +			<200000000>, <100000000>,
+> +			<24000000>, <100000000>,
+> +			<150000000>, <50000000>,
+> +			<32768>, <32768>;
+> +	};
+> +
+> +	gmac2io: eth@ff540000 {
+
+phandle should be gmac instead?
+Node name, ethernet@ff540000
+
+> +		compatible = "rockchip,rk3328-gmac";
+> +		reg = <0x0 0xff540000 0x0 0x10000>;
+> +		rockchip,grf = <&grf>;
+> +		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "macirq";
+> +		clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_RX>,
+> +			 <&cru SCLK_MAC2IO_TX>, <&cru SCLK_MAC2IO_REF>,
+> +			 <&cru SCLK_MAC2IO_REFOUT>, <&cru ACLK_MAC2IO>,
+> +			 <&cru PCLK_MAC2IO>;
+> +		clock-names = "stmmaceth", "mac_clk_rx",
+> +			      "mac_clk_tx", "clk_mac_ref",
+> +			      "clk_mac_refout", "aclk_mac",
+> +			      "pclk_mac";
+> +		resets = <&cru SRST_GMAC2IO_A>;
+> +		reset-names = "stmmaceth";
+> +		status = "disabled";
+> +	};
+> +
+> +	gic: interrupt-controller@ff811000 {
+> +		compatible = "arm,gic-400";
+> +		#interrupt-cells = <3>;
+> +		#address-cells = <0>;
+> +		interrupt-controller;
+> +		reg = <0x0 0xff811000 0 0x1000>,
+> +		      <0x0 0xff812000 0 0x2000>,
+> +		      <0x0 0xff814000 0 0x2000>,
+> +		      <0x0 0xff816000 0 0x2000>;
+> +		interrupts = <GIC_PPI 9
+> +		      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+> +	};
+> +
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rk3328-pinctrl";
+> +		rockchip,grf = <&grf>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		gpio0: gpio0@ff210000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x0 0xff210000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO0>;
+> +
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio1: gpio1@ff220000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x0 0xff220000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO1>;
+> +
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio2: gpio2@ff230000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x0 0xff230000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO2>;
+> +
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio3: gpio3@ff240000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x0 0xff240000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO3>;
+> +
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		pcfg_pull_up: pcfg-pull-up {
+> +			bias-pull-up;
+> +		};
+> +
+> +		pcfg_pull_down: pcfg-pull-down {
+> +			bias-pull-down;
+> +		};
+> +
+> +		pcfg_pull_none: pcfg-pull-none {
+> +			bias-disable;
+> +		};
+> +
+> +		pcfg_pull_none_2ma: pcfg-pull-none-2ma {
+> +			bias-disable;
+> +			drive-strength = <2>;
+> +		};
+> +
+> +		pcfg_pull_up_2ma: pcfg-pull-up-2ma {
+> +			bias-pull-up;
+> +			drive-strength = <2>;
+> +		};
+> +
+> +		pcfg_pull_up_4ma: pcfg-pull-up-4ma {
+> +			bias-pull-up;
+> +			drive-strength = <4>;
+> +		};
+> +
+> +		pcfg_pull_none_4ma: pcfg-pull-none-4ma {
+> +			bias-disable;
+> +			drive-strength = <4>;
+> +		};
+> +
+> +		pcfg_pull_down_4ma: pcfg-pull-down-4ma {
+> +			bias-pull-down;
+> +			drive-strength = <4>;
+> +		};
+> +
+> +		pcfg_pull_none_8ma: pcfg-pull-none-8ma {
+> +			bias-disable;
+> +			drive-strength = <8>;
+> +		};
+> +
+> +		pcfg_pull_up_8ma: pcfg-pull-up-8ma {
+> +			bias-pull-up;
+> +			drive-strength = <8>;
+> +		};
+> +
+> +		pcfg_pull_none_12ma: pcfg-pull-none-12ma {
+> +			bias-disable;
+> +			drive-strength = <12>;
+> +		};
+> +
+> +		pcfg_pull_up_12ma: pcfg-pull-up-12ma {
+> +			bias-pull-up;
+> +			drive-strength = <12>;
+> +		};
+> +
+> +		pcfg_output_high: pcfg-output-high {
+> +			output-high;
+> +		};
+> +
+> +		pcfg_output_low: pcfg-output-low {
+> +			output-low;
+> +		};
+> +
+> +		pcfg_input_high: pcfg-input-high {
+> +			bias-pull-up;
+> +			input-enable;
+> +		};
+> +
+> +		pcfg_input: pcfg-input {
+> +			input-enable;
+> +		};
+> +
+> +		i2c0 {
+> +			i2c0_xfer: i2c0-xfer {
+> +				rockchip,pins =
+> +					<2 RK_PD0 1 &pcfg_pull_none>,
+> +					<2 RK_PD1 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		i2c1 {
+> +			i2c1_xfer: i2c1-xfer {
+> +				rockchip,pins =
+> +					<2 RK_PA4 2 &pcfg_pull_none>,
+> +					<2 RK_PA5 2 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		i2c2 {
+> +			i2c2_xfer: i2c2-xfer {
+> +				rockchip,pins =
+> +					<2 RK_PB5 1 &pcfg_pull_none>,
+> +					<2 RK_PB6 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		i2c3 {
+> +			i2c3_xfer: i2c3-xfer {
+> +				rockchip,pins =
+> +					<0 RK_PA5 2 &pcfg_pull_none>,
+> +					<0 RK_PA6 2 &pcfg_pull_none>;
+> +			};
+> +			i2c3_gpio: i2c3-gpio {
+> +				rockchip,pins =
+> +					<0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>,
+> +					<0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		hdmi_i2c {
+> +			hdmii2c_xfer: hdmii2c-xfer {
+> +				rockchip,pins =
+> +					<0 RK_PA5 1 &pcfg_pull_none>,
+> +					<0 RK_PA6 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		tsadc {
+> +			otp_gpio: otp-gpio {
+> +				rockchip,pins =
+> +					<2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+
+no need to line -break all these single-pin definitions, there are still enough 
+characters below 80 left :-)
+
+Same for all below
+
+> +			};
+> +
+> +			otp_out: otp-out {
+> +				rockchip,pins =
+> +					<2 RK_PB5 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
 
 
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Heiko
