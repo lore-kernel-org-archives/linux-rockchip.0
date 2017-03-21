@@ -1,66 +1,72 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v3 4/4] drm/rockchip/dsi: correct the grf_switch_reg name
-Date: Tue, 21 Mar 2017 12:56:00 -0700
-Message-ID: <20170321195557.GA74389@google.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 1/4] drm/rockchip/dsi: check phy_cfg_clk only for RK3399
+Date: Tue, 21 Mar 2017 16:16:23 -0400
+Message-ID: <20170321201623.GF19389@art_vandelay>
 References: <1489722865-22122-1-git-send-email-zyw@rock-chips.com>
- <1489722865-22122-5-git-send-email-zyw@rock-chips.com>
+ <1489722865-22122-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1489722865-22122-5-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+In-Reply-To: <1489722865-22122-2-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Chris Zhong <zyw@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 17, 2017 at 11:54:24AM +0800, Chris Zhong wrote:
-> For the RK3399, the grf_switch_reg name should be RK3399_GRF_SOC_CON20,
-> not RK3399_GRF_SOC_CON19.
-
-Matches the TRM for me, and otherwise it's a no-op:
-
-Reviewed-by: Brian Norris <briannorris@chromium.org>
-
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> ---
-> 
-> Changes in v3: None
-> Changes in v2: None
-> 
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> index 5a18281..19b9208 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> @@ -34,7 +34,7 @@
->  #define RK3288_DSI0_SEL_VOP_LIT		BIT(6)
->  #define RK3288_DSI1_SEL_VOP_LIT		BIT(9)
->  
-> -#define RK3399_GRF_SOC_CON19		0x6250
-> +#define RK3399_GRF_SOC_CON20		0x6250
->  #define RK3399_DSI0_SEL_VOP_LIT		BIT(0)
->  #define RK3399_DSI1_SEL_VOP_LIT		BIT(4)
->  
-> @@ -1151,7 +1151,7 @@ static struct dw_mipi_dsi_plat_data rk3288_mipi_dsi_drv_data = {
->  static struct dw_mipi_dsi_plat_data rk3399_mipi_dsi_drv_data = {
->  	.dsi0_en_bit = RK3399_DSI0_SEL_VOP_LIT,
->  	.dsi1_en_bit = RK3399_DSI1_SEL_VOP_LIT,
-> -	.grf_switch_reg = RK3399_GRF_SOC_CON19,
-> +	.grf_switch_reg = RK3399_GRF_SOC_CON20,
->  	.grf_dsi0_mode = RK3399_GRF_DSI_MODE,
->  	.grf_dsi0_mode_reg = RK3399_GRF_SOC_CON22,
->  	.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
-> -- 
-> 2.6.3
+T24gRnJpLCBNYXIgMTcsIDIwMTcgYXQgMTE6NTQ6MjFBTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gRm9yIFJLMzM5OSwgdGhlIHBoeV9jZmdfY2xrIGlzIGEgcmVxdWlyZWQgY2xvY2ssIGlm
+IHBoeV9jZmdfY2xrIGlzCj4gZGlzYWJsZWQsIE1JUEkgcGh5IGNhbiBub3Qgd29yay4gTGV0J3Mg
+cmV0dXJuIGEgZXJyb3IgaWYgdGhlcmUgaXMgbm8KPiBwaHlfY2ZnX2NsayBpbiBkdHMgcHJvcGVy
+dHksIHdoZW4gdGhlIHBkYXRhIG1hdGNoIFJLMzM5OS4KPiAKClRoZSBkdCBiaW5kaW5ncyBzYXkg
+dGhpcyBpcyBhIHJlcXVpcmVkIGNsb2NrLCBJIHRoaW5rIHlvdSdsbCBuZWVkIHRvIHVwZGF0ZSB0
+aGVtCnRvIHJlZmxlY3QgdGhhdCB0aGlzIGlzIG9wdGlvbmFsIGZvciBjZXJ0YWluIFNvQ3MKClNl
+YW4KCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiAt
+LS0KPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gYWRkIGEgRFdfTUlQSV9ORUVEU19QSFlfQ0ZHX0NM
+SyBmb3IgUkszMzk5Cj4gCj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+IAo+ICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDE0ICsrKysrKysrLS0tLS0tCj4gIDEgZmlsZSBj
+aGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBpbmRleCBmODRmOWFlLi42OGY0OGIwIDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBAQCAtMjUxLDYgKzI1MSw4IEBA
+Cj4gICNkZWZpbmUgVEhTX1BSRV9QUk9HUkFNX0VOCUJJVCg3KQo+ICAjZGVmaW5lIFRIU19aRVJP
+X1BST0dSQU1fRU4JQklUKDYpCj4gIAo+ICsjZGVmaW5lIERXX01JUElfTkVFRFNfUEhZX0NGR19D
+TEsJQklUKDApCj4gKwo+ICBlbnVtIHsKPiAgCUJBTkRHQVBfOTdfMDcsCj4gIAlCQU5ER0FQXzk4
+XzA1LAo+IEBAIC0yNzksNiArMjgxLDcgQEAgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSB7
+Cj4gIAl1MzIgZ3JmX3N3aXRjaF9yZWc7Cj4gIAl1MzIgZ3JmX2RzaTBfbW9kZTsKPiAgCXUzMiBn
+cmZfZHNpMF9tb2RlX3JlZzsKPiArCXVuc2lnbmVkIGludCBmbGFnczsKPiAgCXVuc2lnbmVkIGlu
+dCBtYXhfZGF0YV9sYW5lczsKPiAgfTsKPiAgCj4gQEAgLTExMzYsNiArMTEzOSw3IEBAIHN0YXRp
+YyBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHJrMzM5OV9taXBpX2RzaV9kcnZfZGF0YSA9
+IHsKPiAgCS5ncmZfc3dpdGNoX3JlZyA9IFJLMzM5OV9HUkZfU09DX0NPTjE5LAo+ICAJLmdyZl9k
+c2kwX21vZGUgPSBSSzMzOTlfR1JGX0RTSV9NT0RFLAo+ICAJLmdyZl9kc2kwX21vZGVfcmVnID0g
+UkszMzk5X0dSRl9TT0NfQ09OMjIsCj4gKwkuZmxhZ3MgPSBEV19NSVBJX05FRURTX1BIWV9DRkdf
+Q0xLLAo+ICAJLm1heF9kYXRhX2xhbmVzID0gNCwKPiAgfTsKPiAgCj4gQEAgLTEyMjcsMTUgKzEy
+MzEsMTMgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwg
+c3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBj
+bGspOwo+ICAJfQo+ICAKPiAtCWRzaS0+cGh5X2NmZ19jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAi
+cGh5X2NmZyIpOwo+IC0JaWYgKElTX0VSUihkc2ktPnBoeV9jZmdfY2xrKSkgewo+IC0JCXJldCA9
+IFBUUl9FUlIoZHNpLT5waHlfY2ZnX2Nsayk7Cj4gLQkJaWYgKHJldCAhPSAtRU5PRU5UKSB7Cj4g
+KwlpZiAocGRhdGEtPmZsYWdzICYgRFdfTUlQSV9ORUVEU19QSFlfQ0ZHX0NMSykgewo+ICsJCWRz
+aS0+cGh5X2NmZ19jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAicGh5X2NmZyIpOwo+ICsJCWlmIChJ
+U19FUlIoZHNpLT5waHlfY2ZnX2NsaykpIHsKPiArCQkJcmV0ID0gUFRSX0VSUihkc2ktPnBoeV9j
+ZmdfY2xrKTsKPiAgCQkJZGV2X2VycihkZXYsICJVbmFibGUgdG8gZ2V0IHBoeV9jZmdfY2xrOiAl
+ZFxuIiwgcmV0KTsKPiAgCQkJcmV0dXJuIHJldDsKPiAgCQl9Cj4gLQkJZHNpLT5waHlfY2ZnX2Ns
+ayA9IE5VTEw7Cj4gLQkJZGV2X2RiZyhkZXYsICJoYXZlIG5vdCBwaHlfY2ZnX2Nsa1xuIik7Cj4g
+IAl9Cj4gIAo+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+cGxscmVmX2Nsayk7Cj4g
+LS0gCj4gMi42LjMKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBD
+aHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
