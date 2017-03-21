@@ -1,97 +1,123 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 12/41] drm/bridge: analogix_dp: add fast link train for eDP
-Date: Tue, 21 Mar 2017 16:37:28 -0400
-Message-ID: <20170321203728.GL19389@art_vandelay>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044741epcas5p124549bb2177567455ba7fcd5065913b6@epcas5p1.samsung.com>
- <20170310043305.17216-13-seanpaul@chromium.org>
- <3a7cc255-084f-7367-e9de-831a9bc96191@samsung.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2 2/2] drm/panel: add innolux,p079zca panel driver
+Date: Tue, 21 Mar 2017 13:38:31 -0700
+Message-ID: <20170321203829.GD74389@google.com>
+References: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
+ <1489562353-10313-2-git-send-email-zyw@rock-chips.com>
+ <20170321192635.GA19389@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <3a7cc255-084f-7367-e9de-831a9bc96191@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>
+In-Reply-To: <20170321192635.GA19389@art_vandelay>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: Chris Zhong <zyw@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBNYXIgMTYsIDIwMTcgYXQgMDM6MTQ6MjhQTSArMDEwMCwgQW5kcnplaiBIYWpkYSB3
-cm90ZToKPiBPbiAxMC4wMy4yMDE3IDA1OjMyLCBTZWFuIFBhdWwgd3JvdGU6Cj4gPiBGcm9tOiB6
-YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiA+Cj4gPiBXZSB3b3VsZCBtZWV0IGEgc2hv
-cnQgYmxhY2sgc2NyZWVuIHdoZW4gZXhpdCBQU1Igd2l0aCB0aGUgZnVsbCBsaW5rCj4gPiB0cmFp
-bmluZywgSW4gdGhpcyBjYXNlLCB3ZSBzaG91bGQgdXNlIGZhc3QgbGluayB0cmFpbiBpbnN0ZWFk
-IG9mIGZ1bGwKPiA+IGxpbmsgdHJhaW5pbmcuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogemFpbiB3
-YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNl
-YW5wYXVsQGNocm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-YW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgMTQyICsrKysrKysrKysrKysrKystLS0tLQo+
-ID4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIHwg
-ICAzICsKPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDExNCBpbnNlcnRpb25zKCspLCAzMSBkZWxldGlv
-bnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
-eC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2Fu
-YWxvZ2l4X2RwX2NvcmUuYwo+ID4gaW5kZXggNjRkOTRhMzQ4NzRkLi41YmMxNTFiMDk5NWIgMTAw
-NjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X2NvcmUuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKPiA+IEBAIC0xMCwxNyArMTAsMTggQEAKPiA+ICAqIG9wdGlvbikgYW55IGxh
-dGVyIHZlcnNpb24uCj4gPiAgKi8KPiA+ICAKPiA+IC0jaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+
-Cj4gPiAtI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ID4gLSNpbmNsdWRlIDxs
-aW51eC9lcnIuaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gPiAtI2luY2x1ZGUgPGxp
-bnV4L2lvLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+ID4gKyNpbmNsdWRl
-IDxsaW51eC9lcnIuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvZ3Bpby5oPgo+ID4gICNpbmNsdWRl
-IDxsaW51eC9pbnRlcnJ1cHQuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvaW8uaD4KPiA+ICsjaW5j
-bHVkZSA8bGludXgvaW9wb2xsLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ID4g
-ICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ID4gICNpbmNsdWRlIDxsaW51eC9vZl9ncGlvLmg+Cj4g
-PiAtI2luY2x1ZGUgPGxpbnV4L2dwaW8uaD4KPiA+IC0jaW5jbHVkZSA8bGludXgvY29tcG9uZW50
-Lmg+Cj4gPiAgI2luY2x1ZGUgPGxpbnV4L3BoeS9waHkuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgv
-cGxhdGZvcm1fZGV2aWNlLmg+Cj4gPiAgCj4gPiAgI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gPiAg
-I2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ID4gQEAgLTM1LDYgKzM2LDggQEAK
-PiA+ICAKPiA+ICAjZGVmaW5lIHRvX2RwKG5tKQljb250YWluZXJfb2Yobm0sIHN0cnVjdCBhbmFs
-b2dpeF9kcF9kZXZpY2UsIG5tKQo+ID4gIAo+ID4gK3N0YXRpYyBjb25zdCBib29sIHZlcmlmeV9m
-YXN0X3RyYWluaW5nOwo+ID4gKwo+IAo+IFF1aXRlIG9kZCBkZWJ1ZyBzZW50aW5lbCwgSSBhbSBu
-b3Qgc3VyZSBpZiBpdCBpcyBnb29kIHByYWN0aWNlIHRvIHVzZQo+IHN1Y2ggY29uc3RydWN0LgoK
-SUlSQywgdGhleSBvcmlnaW5hbGx5IGhhZCBhICNkZWZpbmUgYW5kIHRoZW4gdXNlZCAjaWZkZWYg
-YmVsb3cgdG8gZ2F0ZSB0aGUKdmVyaWZpY2F0aW9uLiBNeSBjb25jZXJuIHdpdGggdGhhdCB3YXMg
-dGhlIGNvZGUgd291bGQgcm90IGlmIGl0IHdhc24ndCBjb21waWxlZC4KCjxzbmlwPgoKPiA+IEBA
-IC04NTMsMTAgKzkzMywxMCBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9jb21taXQoc3RydWN0
-IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4gPiAgCQkJRFJNX0VSUk9SKCJmYWlsZWQgdG8gZGlz
-YWJsZSB0aGUgcGFuZWxcbiIpOwo+ID4gIAl9Cj4gPiAgCj4gPiAtCXJldCA9IGFuYWxvZ2l4X2Rw
-X3NldF9saW5rX3RyYWluKGRwLCBkcC0+dmlkZW9faW5mby5tYXhfbGFuZV9jb3VudCwKPiA+IC0J
-CQkJCSBkcC0+dmlkZW9faW5mby5tYXhfbGlua19yYXRlKTsKPiA+ICsJcmV0ID0gcmVhZHhfcG9s
-bF90aW1lb3V0KGFuYWxvZ2l4X2RwX3RyYWluX2xpbmssIGRwLCByZXQsICFyZXQsIDEwMCwKPiA+
-ICsJCQkJIERQX1RJTUVPVVRfVFJBSU5JTkdfVVMgKiA1KTsKPiA+ICAJaWYgKHJldCkgewo+ID4g
-LQkJZGV2X2VycihkcC0+ZGV2LCAidW5hYmxlIHRvIGRvIGxpbmsgdHJhaW5cbiIpOwo+ID4gKwkJ
-ZGV2X2VycihkcC0+ZGV2LCAidW5hYmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0lZFxuIiwgcmV0
-KTsKPiAKPiBBbmQgaGVyZSB3ZSBoYXZlICIsIHJldD0lZFxuIi4gTWF5YmUgaXQgd291bGQgYmUg
-Z29vZCB0byBtYWtlIGl0Cj4gY29uc2lzdGVudCBhY3Jvc3Mgd2hvbGUgZHJpdmVyLgoKTWVoLiBJ
-IGRvbid0IHRoaW5rIGl0J3Mgd29ydGggYmlrZXNoZWRkaW5nIG92ZXIgY29tbWFzIGluIGVycm9y
-IG1lc3NhZ2VzLiBJJ20KanVzdCBoYXBweSB0aGVyZSBhcmUgZXJyb3IgY2hlY2tzL21lc3NhZ2Vz
-LgoKCj4gQW5vdGhlciBpc3N1ZSB3aXRoIGNvbnNpc3RlbmN5IGluIERSTV9ERVZfRVJST1IgdnMg
-ZGV2X2Vyci4KClllYWgsIHRoYXQncyBhbm5veWluZy4KClNlYW4KCj4gCj4gUmVnYXJkcwo+IEFu
-ZHJ6ZWoKPiAKPiA+ICAJCXJldHVybjsKPiA+ICAJfQo+ID4gIAo+ID4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPiA+IGluZGV4IGUx
-MzVhNDJjYjE5ZS4uOTIwNjA3ZDdlYjNlIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCj4gPiBAQCAtMjAsNiArMjAs
-OCBAQAo+ID4gICNkZWZpbmUgTUFYX0NSX0xPT1AgNQo+ID4gICNkZWZpbmUgTUFYX0VRX0xPT1Ag
-NQo+ID4gIAo+ID4gKy8qIFRyYWluaW5nIHRha2VzIDIybXMgaWYgQVVYIGNoYW5uZWwgY29tbSBm
-YWlscy4gVXNlIHRoaXMgYXMgcmV0cnkgaW50ZXJ2YWwgKi8KPiA+ICsjZGVmaW5lIERQX1RJTUVP
-VVRfVFJBSU5JTkdfVVMJCQkyMjAwMAo+ID4gICNkZWZpbmUgRFBfVElNRU9VVF9QU1JfTE9PUF9N
-UwkJCTMwMAo+ID4gIAo+ID4gIC8qIERQX01BWF9MQU5FX0NPVU5UICovCj4gPiBAQCAtMTcxLDYg
-KzE3Myw3IEBAIHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ugewo+ID4gIAlpbnQJCQlocGRfZ3Bp
-bzsKPiA+ICAJYm9vbCAgICAgICAgICAgICAgICAgICAgZm9yY2VfaHBkOwo+ID4gIAlib29sCQkJ
-cHNyX2VuYWJsZTsKPiA+ICsJYm9vbAkJCWZhc3RfdHJhaW5fc3VwcG9ydDsKPiA+ICAKPiA+ICAJ
-c3RydWN0IG11dGV4CQlwYW5lbF9sb2NrOwo+ID4gIAlib29sCQkJcGFuZWxfaXNfbW9kZXNldDsK
-PiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBP
-UwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
++ Thierry for real
+
+On Tue, Mar 21, 2017 at 03:26:35PM -0400, Sean Paul wrote:
+> On Wed, Mar 15, 2017 at 03:19:13PM +0800, Chris Zhong wrote:
+> > Support Innolux P079ZCA 7.85" 768x1024 TFT LCD panel, it is a MIPI DSI
+> > panel.
+> > 
+> > Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> > ---
+> > 
+> > Changes in v2:
+> > - add some error check
+> > - always use Low power mode to send commend
+> > - add comments for all the sleep
+> > - use DRM_DEV_ERROR instead of dev_err
+> > 
+> 
+> Minor suggestion below. Once that's cleared up, you can add:
+> Reviewed-by: Sean Paul <seanpaul@chromium.org>
+> 
+> Also, please add Thierry directly to your patches so he sees them.
+> 
+> 
+> >  drivers/gpu/drm/panel/Kconfig                 |  11 +
+> >  drivers/gpu/drm/panel/Makefile                |   1 +
+> >  drivers/gpu/drm/panel/panel-innolux-p079zca.c | 344 ++++++++++++++++++++++++++
+> >  3 files changed, 356 insertions(+)
+> >  create mode 100644 drivers/gpu/drm/panel/panel-innolux-p079zca.c
+> > 
+> 
+> <snip>
+> > +static int innolux_panel_prepare(struct drm_panel *panel)
+> > +{
+> > +	struct innolux_panel *innolux = to_innolux_panel(panel);
+> > +	int err, ret;
+> > +
+> > +	if (innolux->prepared)
+> > +		return 0;
+> > +
+> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 0);
+> > +
+> > +	err = regulator_enable(innolux->supply);
+> > +	if (err < 0)
+> > +		return err;
+> > +
+> > +	/* T2: 15ms - 1000ms */
+> > +	usleep_range(15000, 16000);
+> > +
+> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 1);
+> > +
+> > +	/* T4: 15ms - 1000ms */
+> > +	usleep_range(15000, 16000);
+> > +
+> > +	err = mipi_dsi_dcs_exit_sleep_mode(innolux->link);
+> > +	if (err < 0) {
+> > +		DRM_DEV_ERROR(panel->dev, "failed to exit sleep mode: %d\n",
+> > +			      err);
+> > +		goto poweroff;
+> > +	}
+> > +
+> > +	/* T6: 120ms - 1000ms*/
+> > +	msleep(120);
+> > +
+> > +	err = mipi_dsi_dcs_set_display_on(innolux->link);
+> > +	if (err < 0) {
+> > +		DRM_DEV_ERROR(panel->dev, "failed to set display on: %d\n",
+> > +			      err);
+> > +		goto poweroff;
+> > +	}
+> > +
+> > +	/* T7: 5ms */
+> > +	usleep_range(5000, 6000);
+> > +
+> > +	innolux->prepared = true;
+> > +
+> > +	return 0;
+> > +
+> > +poweroff:
+> > +	ret = regulator_disable(innolux->supply);
+> > +	if (ret)
+> > +		return ret;
+> 
+> I don't think we should be returning this error code. If we're here, it's
+> because something else triggered err, and we should return that. Change this to:
+> 
+> if (regulator_disable(innolux->supply))
+>         DRM_DEV_ERROR(panel->dev, "failed to disable regulator after error\n");
+
+And maybe include the error code in that message still?
+
+	ret = regulator_disable(innolux->supply);
+	if (ret)
+		DRM_DEV_ERROR(panel->dev, "failed to disable regulator after error (%d)\n",
+			      ret);
+
+Brian
+
+> > +
+> > +	gpiod_set_value_cansleep(innolux->enable_gpio, 0);
+> > +	return err;
+> > +}
+> 
+> <snip>
+> 
+> > -- 
+> > 2.6.3
