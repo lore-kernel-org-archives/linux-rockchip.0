@@ -1,38 +1,73 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: increase SD clock frequency on Radxa Rock
-Date: Tue, 21 Mar 2017 18:40:22 +0300
-Message-ID: <1490110822-3310-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: Alexander Kochetkov <al.kochet@gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v2 2/2] drm/panel: add innolux,p079zca panel driver
+Date: Tue, 21 Mar 2017 15:26:35 -0400
+Message-ID: <20170321192635.GA19389@art_vandelay>
+References: <1489562353-10313-1-git-send-email-zyw@rock-chips.com>
+ <1489562353-10313-2-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1489562353-10313-2-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch set SD clock frequency to maximum possible to SD-card
-(50MHz). This change actual clock frequency from 32MHz to 48MHz
-(speedup 1.5X).
-
-Banner line before patch: 'mmc_host mmc0: Bus speed (slot 0) = 32000000Hz
-(slot req 50000000Hz, actual 32000000HZ div = 0)'.
-Banner line after patch: 'mmc_host mmc0: Bus speed (slot 0) = 96000000Hz
-(slot req 50000000Hz, actual 48000000HZ div = 1)'
-
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
----
- arch/arm/boot/dts/rk3188-radxarock.dts |    1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
-index 1da46d1..5b7daa4 100644
---- a/arch/arm/boot/dts/rk3188-radxarock.dts
-+++ b/arch/arm/boot/dts/rk3188-radxarock.dts
-@@ -302,6 +302,7 @@
- 	pinctrl-0 = <&sd0_clk>, <&sd0_cmd>, <&sd0_cd>, <&sd0_bus4>;
- 	vmmc-supply = <&vcc_sd0>;
- 
-+	clock-frequency = <50000000>;
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
--- 
-1.7.9.5
+T24gV2VkLCBNYXIgMTUsIDIwMTcgYXQgMDM6MTk6MTNQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3Jv
+dGU6Cj4gU3VwcG9ydCBJbm5vbHV4IFAwNzlaQ0EgNy44NSIgNzY4eDEwMjQgVEZUIExDRCBwYW5l
+bCwgaXQgaXMgYSBNSVBJIERTSQo+IHBhbmVsLgo+IAo+IFNpZ25lZC1vZmYtYnk6IENocmlzIFpo
+b25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIGFk
+ZCBzb21lIGVycm9yIGNoZWNrCj4gLSBhbHdheXMgdXNlIExvdyBwb3dlciBtb2RlIHRvIHNlbmQg
+Y29tbWVuZAo+IC0gYWRkIGNvbW1lbnRzIGZvciBhbGwgdGhlIHNsZWVwCj4gLSB1c2UgRFJNX0RF
+Vl9FUlJPUiBpbnN0ZWFkIG9mIGRldl9lcnIKPiAKCk1pbm9yIHN1Z2dlc3Rpb24gYmVsb3cuIE9u
+Y2UgdGhhdCdzIGNsZWFyZWQgdXAsIHlvdSBjYW4gYWRkOgpSZXZpZXdlZC1ieTogU2VhbiBQYXVs
+IDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpBbHNvLCBwbGVhc2UgYWRkIFRoaWVycnkgZGlyZWN0
+bHkgdG8geW91ciBwYXRjaGVzIHNvIGhlIHNlZXMgdGhlbS4KCgo+ICBkcml2ZXJzL2dwdS9kcm0v
+cGFuZWwvS2NvbmZpZyAgICAgICAgICAgICAgICAgfCAgMTEgKwo+ICBkcml2ZXJzL2dwdS9kcm0v
+cGFuZWwvTWFrZWZpbGUgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0v
+cGFuZWwvcGFuZWwtaW5ub2x1eC1wMDc5emNhLmMgfCAzNDQgKysrKysrKysrKysrKysrKysrKysr
+KysrKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCAzNTYgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLWlubm9sdXgtcDA3OXpjYS5jCj4g
+Cgo8c25pcD4KPiArc3RhdGljIGludCBpbm5vbHV4X3BhbmVsX3ByZXBhcmUoc3RydWN0IGRybV9w
+YW5lbCAqcGFuZWwpCj4gK3sKPiArCXN0cnVjdCBpbm5vbHV4X3BhbmVsICppbm5vbHV4ID0gdG9f
+aW5ub2x1eF9wYW5lbChwYW5lbCk7Cj4gKwlpbnQgZXJyLCByZXQ7Cj4gKwo+ICsJaWYgKGlubm9s
+dXgtPnByZXBhcmVkKQo+ICsJCXJldHVybiAwOwo+ICsKPiArCWdwaW9kX3NldF92YWx1ZV9jYW5z
+bGVlcChpbm5vbHV4LT5lbmFibGVfZ3BpbywgMCk7Cj4gKwo+ICsJZXJyID0gcmVndWxhdG9yX2Vu
+YWJsZShpbm5vbHV4LT5zdXBwbHkpOwo+ICsJaWYgKGVyciA8IDApCj4gKwkJcmV0dXJuIGVycjsK
+PiArCj4gKwkvKiBUMjogMTVtcyAtIDEwMDBtcyAqLwo+ICsJdXNsZWVwX3JhbmdlKDE1MDAwLCAx
+NjAwMCk7Cj4gKwo+ICsJZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKGlubm9sdXgtPmVuYWJsZV9n
+cGlvLCAxKTsKPiArCj4gKwkvKiBUNDogMTVtcyAtIDEwMDBtcyAqLwo+ICsJdXNsZWVwX3Jhbmdl
+KDE1MDAwLCAxNjAwMCk7Cj4gKwo+ICsJZXJyID0gbWlwaV9kc2lfZGNzX2V4aXRfc2xlZXBfbW9k
+ZShpbm5vbHV4LT5saW5rKTsKPiArCWlmIChlcnIgPCAwKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihw
+YW5lbC0+ZGV2LCAiZmFpbGVkIHRvIGV4aXQgc2xlZXAgbW9kZTogJWRcbiIsCj4gKwkJCSAgICAg
+IGVycik7Cj4gKwkJZ290byBwb3dlcm9mZjsKPiArCX0KPiArCj4gKwkvKiBUNjogMTIwbXMgLSAx
+MDAwbXMqLwo+ICsJbXNsZWVwKDEyMCk7Cj4gKwo+ICsJZXJyID0gbWlwaV9kc2lfZGNzX3NldF9k
+aXNwbGF5X29uKGlubm9sdXgtPmxpbmspOwo+ICsJaWYgKGVyciA8IDApIHsKPiArCQlEUk1fREVW
+X0VSUk9SKHBhbmVsLT5kZXYsICJmYWlsZWQgdG8gc2V0IGRpc3BsYXkgb246ICVkXG4iLAo+ICsJ
+CQkgICAgICBlcnIpOwo+ICsJCWdvdG8gcG93ZXJvZmY7Cj4gKwl9Cj4gKwo+ICsJLyogVDc6IDVt
+cyAqLwo+ICsJdXNsZWVwX3JhbmdlKDUwMDAsIDYwMDApOwo+ICsKPiArCWlubm9sdXgtPnByZXBh
+cmVkID0gdHJ1ZTsKPiArCj4gKwlyZXR1cm4gMDsKPiArCj4gK3Bvd2Vyb2ZmOgo+ICsJcmV0ID0g
+cmVndWxhdG9yX2Rpc2FibGUoaW5ub2x1eC0+c3VwcGx5KTsKPiArCWlmIChyZXQpCj4gKwkJcmV0
+dXJuIHJldDsKCkkgZG9uJ3QgdGhpbmsgd2Ugc2hvdWxkIGJlIHJldHVybmluZyB0aGlzIGVycm9y
+IGNvZGUuIElmIHdlJ3JlIGhlcmUsIGl0J3MKYmVjYXVzZSBzb21ldGhpbmcgZWxzZSB0cmlnZ2Vy
+ZWQgZXJyLCBhbmQgd2Ugc2hvdWxkIHJldHVybiB0aGF0LiBDaGFuZ2UgdGhpcyB0bzoKCmlmIChy
+ZWd1bGF0b3JfZGlzYWJsZShpbm5vbHV4LT5zdXBwbHkpKQogICAgICAgIERSTV9ERVZfRVJST1Io
+cGFuZWwtPmRldiwgImZhaWxlZCB0byBkaXNhYmxlIHJlZ3VsYXRvciBhZnRlciBlcnJvclxuIik7
+CgoKClNlYW4KCj4gKwo+ICsJZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKGlubm9sdXgtPmVuYWJs
+ZV9ncGlvLCAwKTsKPiArCXJldHVybiBlcnI7Cj4gK30KCjxzbmlwPgoKPiAtLSAKPiAyLjYuMwo+
+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJp
+LWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
