@@ -1,120 +1,95 @@
-From: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3] drm: bridge: dw-hdmi: add HDMI vendor specific infoframe
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH] drm: bridge: dw-hdmi: add HDMI vendor specific infoframe
  config
-Date: Tue, 21 Mar 2017 15:36:17 +0800
-Message-ID: <1490081777-2232-1-git-send-email-nickey.yang@rock-chips.com>
+Date: Tue, 21 Mar 2017 08:47:19 +0100
+Message-ID: <9cf73d37-78bb-dab8-9c48-5a951fb41c75@samsung.com>
+References: <CGME20170321003517epcas5p1ac97c55740345a7845e39b2133d925df@epcas5p1.samsung.com>
+ <1489990249-29152-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org
-Cc: laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, joabreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, vladimir_zapolskiy-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <1489990249-29152-1-git-send-email-nickey.yang@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nickey Yang <nickey.yang@rock-chips.com>, architt@codeaurora.org, airlied@linux.ie
+Cc: laurent.pinchart+renesas@ideasonboard.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, joabreu@synopsys.com, andy.yan@rock-chips.com, rmk+kernel@arm.linux.org.uk, vladimir_zapolskiy@mentor.com, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Vendor specific infoframe is mandatory for 4K2K resolution.
-Without this, the HDMI protocol compliance fails.
-
-Signed-off-by: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Jose Abreu <joabreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
----
- drivers/gpu/drm/bridge/dw-hdmi.c | 53 ++++++++++++++++++++++++++++++++++++++++
- drivers/gpu/drm/bridge/dw-hdmi.h |  4 +++
- 2 files changed, 57 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
-index 9a9ec27..6b29d1a 100644
---- a/drivers/gpu/drm/bridge/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/dw-hdmi.c
-@@ -1195,6 +1195,58 @@ static void hdmi_config_AVI(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 	hdmi_writeb(hdmi, (frame.right_bar >> 8) & 0xff, HDMI_FC_AVISRB1);
- }
- 
-+static void hdmi_config_vendor_specific_infoframe(struct dw_hdmi *hdmi,
-+						 struct drm_display_mode *mode)
-+{
-+	struct hdmi_vendor_infoframe frame;
-+	u8 buffer[10];
-+	ssize_t err;
-+
-+	err = drm_hdmi_vendor_infoframe_from_display_mode(&frame, mode);
-+	if (err < 0)
-+		/*
-+		 * Going into that statement does not means vendor infoframe
-+		 * fails. It just informed us that vendor infoframe is not
-+		 * needed for the selected mode. Only 4k or stereoscopic 3D
-+		 * mode requires vendor infoframe. So just simply return.
-+		 */
-+		return;
-+
-+	err = hdmi_vendor_infoframe_pack(&frame, buffer, sizeof(buffer));
-+	if (err < 0) {
-+		dev_err(hdmi->dev, "Failed to pack vendor infoframe: %zd\n",
-+			err);
-+		return;
-+	}
-+	hdmi_mask_writeb(hdmi, 0, HDMI_FC_DATAUTO0, HDMI_FC_DATAUTO0_VSD_OFFSET,
-+			HDMI_FC_DATAUTO0_VSD_MASK);
-+
-+	/* Set the length of HDMI vendor specific InfoFrame payload */
-+	hdmi_writeb(hdmi, buffer[2], HDMI_FC_VSDSIZE);
-+
-+	/* Set 24bit IEEE Registration Identifier */
-+	hdmi_writeb(hdmi, buffer[4], HDMI_FC_VSDIEEEID0);
-+	hdmi_writeb(hdmi, buffer[5], HDMI_FC_VSDIEEEID1);
-+	hdmi_writeb(hdmi, buffer[6], HDMI_FC_VSDIEEEID2);
-+
-+	/* Set HDMI_Video_Format and HDMI_VIC/3D_Structure */
-+	hdmi_writeb(hdmi, buffer[7], HDMI_FC_VSDPAYLOAD0);
-+	hdmi_writeb(hdmi, buffer[8], HDMI_FC_VSDPAYLOAD1);
-+
-+	if (frame.s3d_struct >= HDMI_3D_STRUCTURE_SIDE_BY_SIDE_HALF)
-+		hdmi_writeb(hdmi, buffer[9], HDMI_FC_VSDPAYLOAD2);
-+
-+	/* Packet frame interpolation */
-+	hdmi_writeb(hdmi, 1, HDMI_FC_DATAUTO1);
-+
-+	/* Auto packets per frame and line spacing */
-+	hdmi_writeb(hdmi, 0x11, HDMI_FC_DATAUTO2);
-+
-+	/* Configures the Frame Composer On RDRB mode */
-+	hdmi_mask_writeb(hdmi, 1, HDMI_FC_DATAUTO0, HDMI_FC_DATAUTO0_VSD_OFFSET,
-+			HDMI_FC_DATAUTO0_VSD_MASK);
-+}
-+
- static void hdmi_av_composer(struct dw_hdmi *hdmi,
- 			     const struct drm_display_mode *mode)
- {
-@@ -1446,6 +1498,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 
- 		/* HDMI Initialization Step F - Configure AVI InfoFrame */
- 		hdmi_config_AVI(hdmi, mode);
-+		hdmi_config_vendor_specific_infoframe(hdmi, mode);
- 	} else {
- 		dev_dbg(hdmi->dev, "%s DVI mode\n", __func__);
- 	}
-diff --git a/drivers/gpu/drm/bridge/dw-hdmi.h b/drivers/gpu/drm/bridge/dw-hdmi.h
-index 325b0b8..c59f87e 100644
---- a/drivers/gpu/drm/bridge/dw-hdmi.h
-+++ b/drivers/gpu/drm/bridge/dw-hdmi.h
-@@ -854,6 +854,10 @@ enum {
- 	HDMI_FC_DBGFORCE_FORCEAUDIO = 0x10,
- 	HDMI_FC_DBGFORCE_FORCEVIDEO = 0x1,
- 
-+/* FC_DATAUTO0 field values */
-+	HDMI_FC_DATAUTO0_VSD_MASK = 0x08,
-+	HDMI_FC_DATAUTO0_VSD_OFFSET = 3,
-+
- /* PHY_CONF0 field values */
- 	HDMI_PHY_CONF0_PDZ_MASK = 0x80,
- 	HDMI_PHY_CONF0_PDZ_OFFSET = 7,
--- 
-1.9.1
+T24gMjAuMDMuMjAxNyAwNzoxMCwgTmlja2V5IFlhbmcgd3JvdGU6Cj4gVmVuZG9yIHNwZWNpZmlj
+IGluZm9mcmFtZSBpcyBtYW5kYXRvcnkgZm9yIDRLMksgcmVzb2x1dGlvbi4KPiBXaXRob3V0IHRo
+aXMsIHRoZSBIRE1JIHByb3RvY29sIGNvbXBsaWFuY2UgZmFpbHMuCj4KPiBTaWduZWQtb2ZmLWJ5
+OiBOaWNrZXkgWWFuZyA8bmlja2V5LnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIHwgNTAgKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuaCB8ICA0
+ICsrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA1NCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2R3LWhkbWkuYwo+IGluZGV4IDlhOWVjMjcuLjc5ZTJlNDggMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2R3LWhkbWkuYwo+IEBAIC0xMTk1LDYgKzExOTUsNTUgQEAgc3RhdGljIHZvaWQgaGRtaV9j
+b25maWdfQVZJKHN0cnVjdCBkd19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAq
+bW9kZSkKPiAgCWhkbWlfd3JpdGViKGhkbWksIChmcmFtZS5yaWdodF9iYXIgPj4gOCkgJiAweGZm
+LCBIRE1JX0ZDX0FWSVNSQjEpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBoZG1pX2NvbmZpZ192
+ZW5kb3Jfc3BlY2lmaWNfaW5mb2ZyYW1lKHN0cnVjdCBkd19oZG1pICpoZG1pLAo+ICsJCQkJCQkg
+c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gK3sKPiArCXN0cnVjdCBoZG1pX3ZlbmRv
+cl9pbmZvZnJhbWUgZnJhbWU7Cj4gKwl1OCBidWZmZXJbMTBdOwo+ICsJc3NpemVfdCBlcnI7Cj4g
+Kwo+ICsJZXJyID0gZHJtX2hkbWlfdmVuZG9yX2luZm9mcmFtZV9mcm9tX2Rpc3BsYXlfbW9kZSgm
+ZnJhbWUsIG1vZGUpOwo+ICsJaWYgKGVycikgewo+ICsJCWRldl9lcnIoaGRtaS0+ZGV2LAo+ICsJ
+CQkiRmFpbGVkIHRvIGdldCB2ZW5kb3IgaW5mb2ZyYW1lIGZyb20gbW9kZTogJXpkXG4iLCBlcnIp
+Owo+ICsJCXJldHVybjsKPiArCX0KPiArCj4gKwllcnIgPSBoZG1pX3ZlbmRvcl9pbmZvZnJhbWVf
+cGFjaygmZnJhbWUsIGJ1ZmZlciwgc2l6ZW9mKGJ1ZmZlcikpOwo+ICsJaWYgKCFlcnIpIHsKPiAr
+CQlkZXZfZXJyKGhkbWktPmRldiwgIkZhaWxlZCB0byBwYWNrIHZlbmRvciBpbmZvZnJhbWU6ICV6
+ZFxuIiwKPiArCQkJZXJyKTsKPiArCQlyZXR1cm47Cj4gKwl9CgpBRkFJSyBmdW5jdGlvbiByZXR1
+cm5zIG51bWJlciBvZiBwYWNrZWQgYnl0ZXMgb3IgLUVJTlZBTCBzbyB0aGUgY2hlY2sgaXMKaW5j
+b3JyZWN0LCBhbmQgLUVJTlZBTCBtZWFucyB0aGF0IHRoZXJlIGlzIG5vIG5lZWQgdG8gZ2VuZXJh
+dGUgdmVuZG9yCmluZm9mcmFtZSwgc28gZGVmaW5pdGVseSBub3QgZGV2X2Vyci4KCj4gKwloZG1p
+X21vZGIoaGRtaSwgMCA8PCBIRE1JX0ZDX0RBVEFVVE8wX1ZTRF9PRkZTRVQsCj4gKwkJICBIRE1J
+X0ZDX0RBVEFVVE8wX1ZTRF9NQVNLLCBIRE1JX0ZDX0RBVEFVVE8wKTsKCkkgc2VlIG5vIGdhaW4g
+aW4gY29uc3RydWN0cyAoMCA8PCBIRE1JX0ZDX0RBVEFVVE8wX1ZTRF9PRkZTRVQpLAphZGRpdGlv
+bmFsbHkgbWFzayBhbmQgb2Zmc2V0IGFyZSByZWR1bmRhbnQgKG1hc2sgPT0gMSA8PCBvZmZzZXQp
+LCBidXQgaXQKc2VlbXMgeW91IGZvbGxvdyBleGlzdGluZyBwcmFjdGljZSwgc28gSSBkbyBub3Qg
+b3Bwb3NlIDopCgpSZWdhcmRzCkFuZHJ6ZWoKCj4gKwo+ICsJLyogU2V0IHRoZSBsZW5ndGggb2Yg
+SERNSSB2ZW5kb3Igc3BlY2lmaWMgSW5mb0ZyYW1lIHBheWxvYWQgKi8KPiArCWhkbWlfd3JpdGVi
+KGhkbWksIGJ1ZmZlclsyXSwgSERNSV9GQ19WU0RTSVpFKTsKPiArCj4gKwkvKiBTZXQgMjRiaXQg
+SUVFRSBSZWdpc3RyYXRpb24gSWRlbnRpZmllciAqLwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgYnVm
+ZmVyWzRdLCBIRE1JX0ZDX1ZTRElFRUVJRDApOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgYnVmZmVy
+WzVdLCBIRE1JX0ZDX1ZTRElFRUVJRDEpOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgYnVmZmVyWzZd
+LCBIRE1JX0ZDX1ZTRElFRUVJRDIpOwo+ICsKPiArCS8qIFNldCBIRE1JX1ZpZGVvX0Zvcm1hdCBh
+bmQgSERNSV9WSUMvM0RfU3RydWN0dXJlICovCj4gKwloZG1pX3dyaXRlYihoZG1pLCBidWZmZXJb
+N10sIEhETUlfRkNfVlNEUEFZTE9BRDApOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgYnVmZmVyWzhd
+LCBIRE1JX0ZDX1ZTRFBBWUxPQUQxKTsKPiArCj4gKwlpZiAoZnJhbWUuczNkX3N0cnVjdCA+PSBI
+RE1JXzNEX1NUUlVDVFVSRV9TSURFX0JZX1NJREVfSEFMRikKPiArCQloZG1pX3dyaXRlYihoZG1p
+LCBidWZmZXJbOV0sIEhETUlfRkNfVlNEUEFZTE9BRDIpOwo+ICsKPiArCS8qIFBhY2tldCBmcmFt
+ZSBpbnRlcnBvbGF0aW9uICovCj4gKwloZG1pX3dyaXRlYihoZG1pLCAxLCBIRE1JX0ZDX0RBVEFV
+VE8xKTsKPiArCj4gKwkvKiBBdXRvIHBhY2tldHMgcGVyIGZyYW1lIGFuZCBsaW5lIHNwYWNpbmcg
+Ki8KPiArCWhkbWlfd3JpdGViKGhkbWksIDB4MTEsIEhETUlfRkNfREFUQVVUTzIpOwo+ICsKPiAr
+CS8qIENvbmZpZ3VyZXMgdGhlIEZyYW1lIENvbXBvc2VyIE9uIFJEUkIgbW9kZSAqLwo+ICsJaGRt
+aV9tb2RiKGhkbWksIDEgPDwgSERNSV9GQ19EQVRBVVRPMF9WU0RfT0ZGU0VULAo+ICsJCSAgSERN
+SV9GQ19EQVRBVVRPMF9WU0RfTUFTSywgSERNSV9GQ19EQVRBVVRPMCk7Cj4gK30KPiArCj4gIHN0
+YXRpYyB2b2lkIGhkbWlfYXZfY29tcG9zZXIoc3RydWN0IGR3X2hkbWkgKmhkbWksCj4gIAkJCSAg
+ICAgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIHsKPiBAQCAtMTQ0Niw2
+ICsxNDk1LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3NldHVwKHN0cnVjdCBkd19oZG1pICpoZG1p
+LCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPiAgCj4gIAkJLyogSERNSSBJbml0aWFs
+aXphdGlvbiBTdGVwIEYgLSBDb25maWd1cmUgQVZJIEluZm9GcmFtZSAqLwo+ICAJCWhkbWlfY29u
+ZmlnX0FWSShoZG1pLCBtb2RlKTsKPiArCQloZG1pX2NvbmZpZ192ZW5kb3Jfc3BlY2lmaWNfaW5m
+b2ZyYW1lKGhkbWksIG1vZGUpOwo+ICAJfSBlbHNlIHsKPiAgCQlkZXZfZGJnKGhkbWktPmRldiwg
+IiVzIERWSSBtb2RlXG4iLCBfX2Z1bmNfXyk7Cj4gIAl9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvZHctaGRtaS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1p
+LmgKPiBpbmRleCAzMjViMGI4Li5jNTlmODdlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvZHctaGRtaS5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1p
+LmgKPiBAQCAtODU0LDYgKzg1NCwxMCBAQCBlbnVtIHsKPiAgCUhETUlfRkNfREJHRk9SQ0VfRk9S
+Q0VBVURJTyA9IDB4MTAsCj4gIAlIRE1JX0ZDX0RCR0ZPUkNFX0ZPUkNFVklERU8gPSAweDEsCj4g
+IAo+ICsvKiBGQ19EQVRBVVRPMCBmaWVsZCB2YWx1ZXMgKi8KPiArCUhETUlfRkNfREFUQVVUTzBf
+VlNEX01BU0sgPSAweDA4LAo+ICsJSERNSV9GQ19EQVRBVVRPMF9WU0RfT0ZGU0VUID0gMywKPiAr
+Cj4gIC8qIFBIWV9DT05GMCBmaWVsZCB2YWx1ZXMgKi8KPiAgCUhETUlfUEhZX0NPTkYwX1BEWl9N
+QVNLID0gMHg4MCwKPiAgCUhETUlfUEhZX0NPTkYwX1BEWl9PRkZTRVQgPSA3LAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
