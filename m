@@ -1,542 +1,100 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v7] drm/rockchip: Refactor the component match logic.
-Date: Wed, 22 Mar 2017 11:24:53 +0800
-Message-ID: <58D1EE85.2040700@rock-chips.com>
-References: <1490078531-5100-1-git-send-email-jeffy.chen@rock-chips.com>
- <20170321195555.GD19389@art_vandelay>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 12/41] drm/bridge: analogix_dp: add fast link train for eDP
+Date: Wed, 22 Mar 2017 09:07:48 +0100
+Message-ID: <845d9b63-386a-4c3e-6c33-807fe4e4402e@samsung.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <CGME20170310044741epcas5p124549bb2177567455ba7fcd5065913b6@epcas5p1.samsung.com>
+ <20170310043305.17216-13-seanpaul@chromium.org>
+ <3a7cc255-084f-7367-e9de-831a9bc96191@samsung.com>
+ <20170321203728.GL19389@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170321195555.GD19389@art_vandelay>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20170321203728.GL19389@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On 03/22/2017 03:55 AM, Sean Paul wrote:
-> On Tue, Mar 21, 2017 at 02:42:11PM +0800, Jeffy Chen wrote:
->> Currently we are adding all components from the dts, if one of their
->> drivers been disabled, we would not be able to bring up others.
->>
->> Refactor component match logic, follow exynos drm.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
->> Acked-by: Mark Yao <mark.yao@rock-chips.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de>
->>
->> ---
->>
->> Changes in v7:
->> Add Heiko Stuebner <heiko@sntech.de>'s Tested-by.
->>
->> Changes in v6:
->> Add Mark Yao <mark.yao@rock-chips.com>'s Acked-by.
->>
->> Changes in v5:
->> Fix compile error reported by Heiko Stuebner <heiko@sntech.de>.
->>
->> Changes in v4:
->> Use platform_driver helpers to register/unregister drivers.
->> Fix null pointer error reported by Heiko Stuebner <heiko@sntech.de>.
->>
->> Changes in v3:
->> Address Andrzej Hajda <a.hajda@samsung.com>'s comments.
->>
->> Changes in v2:
->> Address Sean Paul <seanpaul@chromium.org>'s comments.
->>
->>   drivers/gpu/drm/rockchip/Kconfig                |  10 +-
->>   drivers/gpu/drm/rockchip/Makefile               |  16 +--
->>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |   9 +-
->>   drivers/gpu/drm/rockchip/cdn-dp-core.c          |   8 +-
->>   drivers/gpu/drm/rockchip/dw-mipi-dsi.c          |   8 +-
->>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  10 +-
->>   drivers/gpu/drm/rockchip/inno_hdmi.c            |  10 +-
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 138 +++++++++++++++---------
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |   6 ++
->>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c     |   8 +-
->>   10 files changed, 115 insertions(+), 108 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
->> index 0e4eb84..50c41c0 100644
->> --- a/drivers/gpu/drm/rockchip/Kconfig
->> +++ b/drivers/gpu/drm/rockchip/Kconfig
->> @@ -13,7 +13,7 @@ config DRM_ROCKCHIP
->>   	  IP found on the SoC.
->>
->>   config ROCKCHIP_ANALOGIX_DP
->> -	tristate "Rockchip specific extensions for Analogix DP driver"
->> +	bool "Rockchip specific extensions for Analogix DP driver"
->>   	depends on DRM_ROCKCHIP
->>   	select DRM_ANALOGIX_DP
->>   	help
->> @@ -22,7 +22,7 @@ config ROCKCHIP_ANALOGIX_DP
->>   	  on RK3288 based SoC, you should selet this option.
->>
->>   config ROCKCHIP_CDN_DP
->> -        tristate "Rockchip cdn DP"
->> +        bool "Rockchip cdn DP"
->>           depends on DRM_ROCKCHIP
->>   	depends on EXTCON
->>   	select SND_SOC_HDMI_CODEC if SND_SOC
->> @@ -33,7 +33,7 @@ config ROCKCHIP_CDN_DP
->>   	  option.
->>
->>   config ROCKCHIP_DW_HDMI
->> -        tristate "Rockchip specific extensions for Synopsys DW HDMI"
->> +        bool "Rockchip specific extensions for Synopsys DW HDMI"
->>           depends on DRM_ROCKCHIP
->>           select DRM_DW_HDMI
->>           help
->> @@ -43,7 +43,7 @@ config ROCKCHIP_DW_HDMI
->>   	  option.
->>
->>   config ROCKCHIP_DW_MIPI_DSI
->> -	tristate "Rockchip specific extensions for Synopsys DW MIPI DSI"
->> +	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
->>   	depends on DRM_ROCKCHIP
->>   	select DRM_MIPI_DSI
->>   	help
->> @@ -53,7 +53,7 @@ config ROCKCHIP_DW_MIPI_DSI
->>   	 option.
->>
->>   config ROCKCHIP_INNO_HDMI
->> -	tristate "Rockchip specific extensions for Innosilicon HDMI"
->> +	bool "Rockchip specific extensions for Innosilicon HDMI"
->>   	depends on DRM_ROCKCHIP
->>   	help
->>   	  This selects support for Rockchip SoC specific extensions
->> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
->> index c931e2a..fa8dc9d 100644
->> --- a/drivers/gpu/drm/rockchip/Makefile
->> +++ b/drivers/gpu/drm/rockchip/Makefile
->> @@ -3,14 +3,14 @@
->>   # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
->>
->>   rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
->> -		rockchip_drm_gem.o rockchip_drm_psr.o rockchip_drm_vop.o
->> +		rockchip_drm_gem.o rockchip_drm_psr.o \
->> +		rockchip_drm_vop.o rockchip_vop_reg.o
->>   rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
->>
->> -obj-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
->> -obj-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp.o
->> -cdn-dp-objs := cdn-dp-core.o cdn-dp-reg.o
->> -obj-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->> -obj-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
->> -obj-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->>
->> -obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o rockchip_vop_reg.o
->> +obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index 8548e82..91ebe5c 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -507,7 +507,7 @@ static const struct of_device_id rockchip_dp_dt_ids[] = {
->>   };
->>   MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
->>
->> -static struct platform_driver rockchip_dp_driver = {
->> +struct platform_driver rockchip_dp_driver = {
->>   	.probe = rockchip_dp_probe,
->>   	.remove = rockchip_dp_remove,
->>   	.driver = {
->> @@ -516,10 +516,3 @@ static struct platform_driver rockchip_dp_driver = {
->>   		   .of_match_table = of_match_ptr(rockchip_dp_dt_ids),
->>   	},
->>   };
->> -
->> -module_platform_driver(rockchip_dp_driver);
->> -
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_AUTHOR("Jeff chen <jeff.chen@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific Analogix-DP Driver Extension");
->> -MODULE_LICENSE("GPL v2");
->> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> index fd79a70..e1796d0 100644
->> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> @@ -1243,7 +1243,7 @@ static const struct dev_pm_ops cdn_dp_pm_ops = {
->>   				cdn_dp_resume)
->>   };
->>
->> -static struct platform_driver cdn_dp_driver = {
->> +struct platform_driver cdn_dp_driver = {
->>   	.probe = cdn_dp_probe,
->>   	.remove = cdn_dp_remove,
->>   	.shutdown = cdn_dp_shutdown,
->> @@ -1254,9 +1254,3 @@ static struct platform_driver cdn_dp_driver = {
->>   		   .pm = &cdn_dp_pm_ops,
->>   	},
->>   };
->> -
->> -module_platform_driver(cdn_dp_driver);
->> -
->> -MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
->> -MODULE_DESCRIPTION("cdn DP Driver");
->> -MODULE_LICENSE("GPL v2");
->> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> index f84f9ae..9360250 100644
->> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->> @@ -1304,7 +1304,7 @@ static int dw_mipi_dsi_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>
->> -static struct platform_driver dw_mipi_dsi_driver = {
->> +struct platform_driver dw_mipi_dsi_driver = {
->>   	.probe		= dw_mipi_dsi_probe,
->>   	.remove		= dw_mipi_dsi_remove,
->>   	.driver		= {
->> @@ -1312,9 +1312,3 @@ static struct platform_driver dw_mipi_dsi_driver = {
->>   		.name	= DRIVER_NAME,
->>   	},
->>   };
->> -module_platform_driver(dw_mipi_dsi_driver);
->> -
->> -MODULE_DESCRIPTION("ROCKCHIP MIPI DSI host controller driver");
->> -MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
->> -MODULE_LICENSE("GPL");
->> -MODULE_ALIAS("platform:" DRIVER_NAME);
->> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> index a6d4a02..976ea79 100644
->> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
->> @@ -326,7 +326,7 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>
->> -static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->> +struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->>   	.probe  = dw_hdmi_rockchip_probe,
->>   	.remove = dw_hdmi_rockchip_remove,
->>   	.driver = {
->> @@ -334,11 +334,3 @@ static struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->>   		.of_match_table = dw_hdmi_rockchip_dt_ids,
->>   	},
->>   };
->> -
->> -module_platform_driver(dw_hdmi_rockchip_pltfm_driver);
->> -
->> -MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific DW-HDMI Driver Extension");
->> -MODULE_LICENSE("GPL");
->> -MODULE_ALIAS("platform:dwhdmi-rockchip");
->> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> index 006260d..7d9b75e 100644
->> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
->> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> @@ -923,7 +923,7 @@ static const struct of_device_id inno_hdmi_dt_ids[] = {
->>   };
->>   MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
->>
->> -static struct platform_driver inno_hdmi_driver = {
->> +struct platform_driver inno_hdmi_driver = {
->>   	.probe  = inno_hdmi_probe,
->>   	.remove = inno_hdmi_remove,
->>   	.driver = {
->> @@ -931,11 +931,3 @@ static struct platform_driver inno_hdmi_driver = {
->>   		.of_match_table = inno_hdmi_dt_ids,
->>   	},
->>   };
->> -
->> -module_platform_driver(inno_hdmi_driver);
->> -
->> -MODULE_AUTHOR("Zheng Yang <zhengyang@rock-chips.com>");
->> -MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
->> -MODULE_DESCRIPTION("Rockchip Specific INNO-HDMI Driver");
->> -MODULE_LICENSE("GPL v2");
->> -MODULE_ALIAS("platform:innohdmi-rockchip");
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> index ccf4569..c4fd077 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> @@ -304,34 +304,42 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
->>   				rockchip_drm_sys_resume)
->>   };
->>
->> -static int compare_of(struct device *dev, void *data)
->> -{
->> -	struct device_node *np = data;
->> +#define MAX_ROCKCHIP_DRM_DRVS 16
->> +static struct platform_driver *rockchip_drm_drvs[MAX_ROCKCHIP_DRM_DRVS];
->> +static int rockchip_drm_drvs_cnt;
->
-> I'm not crazy about the names, can you rename them to be a little more
-> descriptive?
->
-> MAX_ROCKCHIP_SUB_DRIVERS
-> rockchip_sub_drivers
-> num_rockchip_sub_drivers
->
-done
->>
->> -	return dev->of_node == np;
->> +#define ROCKCHIP_DRM_DRV(drv, cond) { \
->
-> I think this should move to right above rockchip_drm_init, so it's easier for
-> the reader to see what the macro does in context. Also, rename to
-> ADD_ROCKCHIP_SUB_DRIVER
->
->> +	if (IS_ENABLED(cond)) \
->
-> You should probably also ensure you're not going to overrun the array, ie:
->
-> if (IS_ENABLED(cond) && \
->      !WARN_ON(num_rockchip_sub_drivers >= MAX_ROCKCHIP_SUB_DRIVERS)) \
->
->
-done
->> +		rockchip_drm_drvs[rockchip_drm_drvs_cnt++] = &drv; \
->>   }
->>
->> -static void rockchip_add_endpoints(struct device *dev,
->> -				   struct component_match **match,
->> -				   struct device_node *port)
->> +static int compare_dev(struct device *dev, void *data)
->>   {
->> -	struct device_node *ep, *remote;
->> +	return dev == (struct device *)data;
->> +}
->>
->> -	for_each_child_of_node(port, ep) {
->> -		remote = of_graph_get_remote_port_parent(ep);
->> -		if (!remote || !of_device_is_available(remote)) {
->> -			of_node_put(remote);
->> -			continue;
->> -		} else if (!of_device_is_available(remote->parent)) {
->> -			dev_warn(dev, "parent device of %s is not available\n",
->> -				 remote->full_name);
->> -			of_node_put(remote);
->> -			continue;
->> -		}
->> +static struct component_match *rockchip_drm_match_add(struct device *dev)
->> +{
->> +	struct component_match *match = NULL;
->> +	int i;
->>
->> -		drm_of_component_match_add(dev, match, compare_of, remote);
->> -		of_node_put(remote);
->> +	for (i = 0; i < rockchip_drm_drvs_cnt; i++) {
->> +		struct platform_driver *drv = rockchip_drm_drvs[i];
->> +		struct device *p = NULL, *d;
->> +
->> +		do {
->> +			d = bus_find_device(&platform_bus_type, p, &drv->driver,
->> +					    (void *)platform_bus_type.match);
->> +			put_device(p);
->> +			p = d;
->> +
->> +			if (!d)
->> +				break;
->> +			component_match_add(dev, &match, compare_dev, d);
->> +		} while (true);
->>   	}
->> +
->> +	return match ?: ERR_PTR(-ENODEV);
->>   }
->>
->>   static const struct component_master_ops rockchip_drm_ops = {
->> @@ -339,21 +347,16 @@ static const struct component_master_ops rockchip_drm_ops = {
->>   	.unbind = rockchip_drm_unbind,
->>   };
->>
->> -static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +static int rockchip_drm_platform_of_probe(struct device *dev)
->>   {
->> -	struct device *dev = &pdev->dev;
->> -	struct component_match *match = NULL;
->>   	struct device_node *np = dev->of_node;
->>   	struct device_node *port;
->> +	bool found = false;
->>   	int i;
->>
->>   	if (!np)
->>   		return -ENODEV;
->> -	/*
->> -	 * Bind the crtc ports first, so that
->> -	 * drm_of_find_possible_crtcs called from encoder .bind callbacks
->> -	 * works as expected.
->> -	 */
->> +
->>   	for (i = 0;; i++) {
->>   		struct device_node *iommu;
->>
->> @@ -377,9 +380,9 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   			is_support_iommu = false;
->>   		}
->>
->> +		found = true;
->> +
->>   		of_node_put(iommu);
->> -		drm_of_component_match_add(dev, &match, compare_of,
->> -					   port->parent);
->>   		of_node_put(port);
->>   	}
->>
->> @@ -388,27 +391,27 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->>   		return -ENODEV;
->>   	}
->>
->> -	if (!match) {
->> +	if (!found) {
->>   		dev_err(dev, "No available vop found for display-subsystem.\n");
->>   		return -ENODEV;
->>   	}
->> -	/*
->> -	 * For each bound crtc, bind the encoders attached to its
->> -	 * remote endpoint.
->> -	 */
->> -	for (i = 0;; i++) {
->> -		port = of_parse_phandle(np, "ports", i);
->> -		if (!port)
->> -			break;
->>
->> -		if (!of_device_is_available(port->parent)) {
->> -			of_node_put(port);
->> -			continue;
->> -		}
->> +	return 0;
->> +}
->>
->> -		rockchip_add_endpoints(dev, &match, port);
->> -		of_node_put(port);
->> -	}
->> +static int rockchip_drm_platform_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct component_match *match = NULL;
->> +	int ret;
->> +
->> +	ret = rockchip_drm_platform_of_probe(dev);
->> +	if (ret)
->> +		return ret;
->> +
->> +	match = rockchip_drm_match_add(dev);
->> +	if (IS_ERR(match))
->> +		return PTR_ERR(match);
->>
->>   	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
->>   }
->> @@ -436,7 +439,46 @@ static struct platform_driver rockchip_drm_platform_driver = {
->>   	},
->>   };
->>
->> -module_platform_driver(rockchip_drm_platform_driver);
->> +static int __init rockchip_drm_init(void)
->> +{
->> +	int ret;
->> +
->> +	rockchip_drm_drvs_cnt = 0;
->> +	ROCKCHIP_DRM_DRV(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
->> +	ROCKCHIP_DRM_DRV(rockchip_dp_driver, CONFIG_ROCKCHIP_ANALOGIX_DP);
->> +	ROCKCHIP_DRM_DRV(cdn_dp_driver, CONFIG_ROCKCHIP_CDN_DP);
->> +	ROCKCHIP_DRM_DRV(dw_hdmi_rockchip_pltfm_driver,
->> +			 CONFIG_ROCKCHIP_DW_HDMI);
->> +	ROCKCHIP_DRM_DRV(dw_mipi_dsi_driver, CONFIG_ROCKCHIP_DW_MIPI_DSI);
->> +	ROCKCHIP_DRM_DRV(inno_hdmi_driver, CONFIG_ROCKCHIP_INNO_HDMI);
->> +
->> +	ret = platform_register_drivers(rockchip_drm_drvs,
->> +					rockchip_drm_drvs_cnt);
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = platform_driver_register(&rockchip_drm_platform_driver);
->> +	if (ret)
->> +		goto err_unreg_drivers;
->> +
->> +	return 0;
->> +
->> +err_unreg_drivers:
->> +	platform_unregister_drivers(rockchip_drm_drvs,
->> +				    rockchip_drm_drvs_cnt);
->> +	return ret;
->> +}
->> +
->> +static void __exit rockchip_drm_fini(void)
->> +{
->> +	platform_driver_unregister(&rockchip_drm_platform_driver);
->> +
->> +	platform_unregister_drivers(rockchip_drm_drvs,
->> +				    rockchip_drm_drvs_cnt);
->> +}
->> +
->> +module_init(rockchip_drm_init);
->> +module_exit(rockchip_drm_fini);
->>
->>   MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->>   MODULE_DESCRIPTION("ROCKCHIP DRM Driver");
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> index 8aca219..a48fcce 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> @@ -65,4 +65,10 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
->>   int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
->>   				unsigned int mstimeout);
->>
->> +extern struct platform_driver cdn_dp_driver;
->> +extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
->> +extern struct platform_driver dw_mipi_dsi_driver;
->> +extern struct platform_driver inno_hdmi_driver;
->> +extern struct platform_driver rockchip_dp_driver;
->> +extern struct platform_driver vop_platform_driver;
->>   #endif /* _ROCKCHIP_DRM_DRV_H_ */
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> index 91fbc7b..0da4444 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
->> @@ -404,7 +404,7 @@ static int vop_remove(struct platform_device *pdev)
->>   	return 0;
->>   }
->>
->> -static struct platform_driver vop_platform_driver = {
->> +struct platform_driver vop_platform_driver = {
->>   	.probe = vop_probe,
->>   	.remove = vop_remove,
->>   	.driver = {
->> @@ -412,9 +412,3 @@ static struct platform_driver vop_platform_driver = {
->>   		.of_match_table = of_match_ptr(vop_driver_dt_match),
->>   	},
->>   };
->> -
->> -module_platform_driver(vop_platform_driver);
->> -
->> -MODULE_AUTHOR("Mark Yao <mark.yao@rock-chips.com>");
->> -MODULE_DESCRIPTION("ROCKCHIP VOP Driver");
->> -MODULE_LICENSE("GPL v2");
->> --
->> 2.1.4
->>
->
-
-
-hmm, i know why i missed compile errors so many times before, upstream 
-kernel doesn't enable our iommu yet, so rockchip drm doesn't even 
-compiled on my local upstream kernel tree...
-
-need this:
-+++ b/drivers/iommu/Kconfig
-@@ -219,7 +219,7 @@ config OMAP_IOMMU_DEBUG
-
-  config ROCKCHIP_IOMMU
-         bool "Rockchip IOMMU Support"
--       depends on ARM
-+       depends on ARM || ARM64
+T24gMjEuMDMuMjAxNyAyMTozNywgU2VhbiBQYXVsIHdyb3RlOgo+IE9uIFRodSwgTWFyIDE2LCAy
+MDE3IGF0IDAzOjE0OjI4UE0gKzAxMDAsIEFuZHJ6ZWogSGFqZGEgd3JvdGU6Cj4+IE9uIDEwLjAz
+LjIwMTcgMDU6MzIsIFNlYW4gUGF1bCB3cm90ZToKPj4+IEZyb206IHphaW4gd2FuZyA8d3p6QHJv
+Y2stY2hpcHMuY29tPgo+Pj4KPj4+IFdlIHdvdWxkIG1lZXQgYSBzaG9ydCBibGFjayBzY3JlZW4g
+d2hlbiBleGl0IFBTUiB3aXRoIHRoZSBmdWxsIGxpbmsKPj4+IHRyYWluaW5nLCBJbiB0aGlzIGNh
+c2UsIHdlIHNob3VsZCB1c2UgZmFzdCBsaW5rIHRyYWluIGluc3RlYWQgb2YgZnVsbAo+Pj4gbGlu
+ayB0cmFpbmluZy4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNo
+aXBzLmNvbT4KPj4+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0u
+b3JnPgo+Pj4gLS0tCj4+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
+eF9kcF9jb3JlLmMgfCAxNDIgKysrKysrKysrKysrKysrKy0tLS0tCj4+PiAgZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgIDMgKwo+Pj4gIDIgZmls
+ZXMgY2hhbmdlZCwgMTE0IGluc2VydGlvbnMoKyksIDMxIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2Nv
+cmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5j
+Cj4+PiBpbmRleCA2NGQ5NGEzNDg3NGQuLjViYzE1MWIwOTk1YiAxMDA2NDQKPj4+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiArKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+Pj4g
+QEAgLTEwLDE3ICsxMCwxOCBAQAo+Pj4gICogb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KPj4+
+ICAqLwo+Pj4gIAo+Pj4gLSNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPj4+IC0jaW5jbHVkZSA8
+bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4+PiAtI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+Pj4g
+ICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPj4+IC0jaW5jbHVkZSA8bGludXgvaW8uaD4KPj4+ICsj
+aW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+
+Pj4gKyNpbmNsdWRlIDxsaW51eC9ncGlvLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4L2ludGVycnVw
+dC5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9pby5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9pb3Bv
+bGwuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4
+L29mLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4L29mX2dwaW8uaD4KPj4+IC0jaW5jbHVkZSA8bGlu
+dXgvZ3Bpby5oPgo+Pj4gLSNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPj4+ICAjaW5jbHVk
+ZSA8bGludXgvcGh5L3BoeS5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
+aD4KPj4+ICAKPj4+ICAjaW5jbHVkZSA8ZHJtL2RybVAuaD4KPj4+ICAjaW5jbHVkZSA8ZHJtL2Ry
+bV9hdG9taWNfaGVscGVyLmg+Cj4+PiBAQCAtMzUsNiArMzYsOCBAQAo+Pj4gIAo+Pj4gICNkZWZp
+bmUgdG9fZHAobm0pCWNvbnRhaW5lcl9vZihubSwgc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSwg
+bm0pCj4+PiAgCj4+PiArc3RhdGljIGNvbnN0IGJvb2wgdmVyaWZ5X2Zhc3RfdHJhaW5pbmc7Cj4+
+PiArCj4+IFF1aXRlIG9kZCBkZWJ1ZyBzZW50aW5lbCwgSSBhbSBub3Qgc3VyZSBpZiBpdCBpcyBn
+b29kIHByYWN0aWNlIHRvIHVzZQo+PiBzdWNoIGNvbnN0cnVjdC4KPiBJSVJDLCB0aGV5IG9yaWdp
+bmFsbHkgaGFkIGEgI2RlZmluZSBhbmQgdGhlbiB1c2VkICNpZmRlZiBiZWxvdyB0byBnYXRlIHRo
+ZQo+IHZlcmlmaWNhdGlvbi4gTXkgY29uY2VybiB3aXRoIHRoYXQgd2FzIHRoZSBjb2RlIHdvdWxk
+IHJvdCBpZiBpdCB3YXNuJ3QgY29tcGlsZWQuCgpJdCBqdXN0IGxvb2tzIHVudXN1YWwsIEkgYW0g
+bm90IHN0cm9uZ2x5IGFnYWluc3QgY3VycmVudCB2ZXJzaW9uLgoKPgo+IDxzbmlwPgo+Cj4+PiBA
+QCAtODUzLDEwICs5MzMsMTAgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVj
+dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+Pj4gIAkJCURSTV9FUlJPUigiZmFpbGVkIHRvIGRp
+c2FibGUgdGhlIHBhbmVsXG4iKTsKPj4+ICAJfQo+Pj4gIAo+Pj4gLQlyZXQgPSBhbmFsb2dpeF9k
+cF9zZXRfbGlua190cmFpbihkcCwgZHAtPnZpZGVvX2luZm8ubWF4X2xhbmVfY291bnQsCj4+PiAt
+CQkJCQkgZHAtPnZpZGVvX2luZm8ubWF4X2xpbmtfcmF0ZSk7Cj4+PiArCXJldCA9IHJlYWR4X3Bv
+bGxfdGltZW91dChhbmFsb2dpeF9kcF90cmFpbl9saW5rLCBkcCwgcmV0LCAhcmV0LCAxMDAsCj4+
+PiArCQkJCSBEUF9USU1FT1VUX1RSQUlOSU5HX1VTICogNSk7Cj4+PiAgCWlmIChyZXQpIHsKPj4+
+IC0JCWRldl9lcnIoZHAtPmRldiwgInVuYWJsZSB0byBkbyBsaW5rIHRyYWluXG4iKTsKPj4+ICsJ
+CWRldl9lcnIoZHAtPmRldiwgInVuYWJsZSB0byBkbyBsaW5rIHRyYWluLCByZXQ9JWRcbiIsIHJl
+dCk7Cj4+IEFuZCBoZXJlIHdlIGhhdmUgIiwgcmV0PSVkXG4iLiBNYXliZSBpdCB3b3VsZCBiZSBn
+b29kIHRvIG1ha2UgaXQKPj4gY29uc2lzdGVudCBhY3Jvc3Mgd2hvbGUgZHJpdmVyLgo+IE1laC4g
+SSBkb24ndCB0aGluayBpdCdzIHdvcnRoIGJpa2VzaGVkZGluZyBvdmVyIGNvbW1hcyBpbiBlcnJv
+ciBtZXNzYWdlcy4gSSdtCj4ganVzdCBoYXBweSB0aGVyZSBhcmUgZXJyb3IgY2hlY2tzL21lc3Nh
+Z2VzLgoKQnV0IGlmIHRoZXJlIHdpbGwgYmUgbmV4dCBpdGVyYXRpb24gaXQgaXMgbm90IGJpZyBk
+ZWFsIHRvIGZpeCBpdCB0aGVuIDopCgpSZWdhcmRzCkFuZHJ6ZWoKCj4KPgo+PiBBbm90aGVyIGlz
+c3VlIHdpdGggY29uc2lzdGVuY3kgaW4gRFJNX0RFVl9FUlJPUiB2cyBkZXZfZXJyLgo+IFllYWgs
+IHRoYXQncyBhbm5veWluZy4KPgo+IFNlYW4KPgo+PiBSZWdhcmRzCj4+IEFuZHJ6ZWoKPj4KPj4+
+ICAJCXJldHVybjsKPj4+ICAJfQo+Pj4gIAo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPj4+IGluZGV4IGUxMzVhNDJjYjE5ZS4u
+OTIwNjA3ZDdlYjNlIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+YW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCj4+PiBAQCAtMjAsNiArMjAsOCBAQAo+Pj4gICNk
+ZWZpbmUgTUFYX0NSX0xPT1AgNQo+Pj4gICNkZWZpbmUgTUFYX0VRX0xPT1AgNQo+Pj4gIAo+Pj4g
+Ky8qIFRyYWluaW5nIHRha2VzIDIybXMgaWYgQVVYIGNoYW5uZWwgY29tbSBmYWlscy4gVXNlIHRo
+aXMgYXMgcmV0cnkgaW50ZXJ2YWwgKi8KPj4+ICsjZGVmaW5lIERQX1RJTUVPVVRfVFJBSU5JTkdf
+VVMJCQkyMjAwMAo+Pj4gICNkZWZpbmUgRFBfVElNRU9VVF9QU1JfTE9PUF9NUwkJCTMwMAo+Pj4g
+IAo+Pj4gIC8qIERQX01BWF9MQU5FX0NPVU5UICovCj4+PiBAQCAtMTcxLDYgKzE3Myw3IEBAIHN0
+cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ugewo+Pj4gIAlpbnQJCQlocGRfZ3BpbzsKPj4+ICAJYm9v
+bCAgICAgICAgICAgICAgICAgICAgZm9yY2VfaHBkOwo+Pj4gIAlib29sCQkJcHNyX2VuYWJsZTsK
+Pj4+ICsJYm9vbAkJCWZhc3RfdHJhaW5fc3VwcG9ydDsKPj4+ICAKPj4+ICAJc3RydWN0IG11dGV4
+CQlwYW5lbF9sb2NrOwo+Pj4gIAlib29sCQkJcGFuZWxfaXNfbW9kZXNldDsKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
