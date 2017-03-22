@@ -1,16 +1,16 @@
 From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 21/41] drm/bridge: analogix_dp: Ensure edp is disabled when
- shutting down the panel
-Date: Wed, 22 Mar 2017 09:29:29 +0100
-Message-ID: <b0dd5e44-2951-a4f2-1c85-c6a14a643828@samsung.com>
+Subject: Re: [PATCH 22/41] drm/bridge: analogix_dp: Extend hpd check time to
+ 100ms
+Date: Wed, 22 Mar 2017 09:32:52 +0100
+Message-ID: <48610cb3-3e54-2077-bb26-dfb58ea4d28d@samsung.com>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044746epcas5p290c7021f6db15f7efa11abdd2016f7d0@epcas5p2.samsung.com>
- <20170310043305.17216-22-seanpaul@chromium.org>
+ <CGME20170310044759epcas5p3119c5e5024a08f7898b1e4c0091d8dda@epcas5p3.samsung.com>
+ <20170310043305.17216-23-seanpaul@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170310043305.17216-22-seanpaul@chromium.org>
+In-reply-to: <20170310043305.17216-23-seanpaul@chromium.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -21,48 +21,17 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IExpbiBIdWFuZyA8
-aGxAcm9jay1jaGlwcy5jb20+Cj4KPiBXaGVuIHBhbmVsIGlzIHNodXQgZG93biwgd2Ugc2hvdWxk
-IG1ha2Ugc3VyZSBlZHAgY2FuIGJlIGRpc2FibGVkIHRvIGF2b2lkCj4gdW5kZWZpbmVkIGJlaGF2
-aW9yLgo+Cj4gQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgo+
-IFNpZ25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9m
-Zi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogU2Vh
-biBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpCZXNpZGUgbml0cGlja3M6ClJldmlld2Vk
-LWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKPiAtLS0KPiAgZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAxMSArKysrKysr
-KysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBpbmRleCAw
-NDhiNmY3YzliNmUuLjNiMmQ1MzkzNWFlOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gQEAgLTExNjMsNiArMTE2Mywx
-MiBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2Rw
-X2RldmljZSAqZHApCj4gIAo+ICAJcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPiAgCj4g
-KwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHAtPmNsb2NrKTsKPiArCWlmIChyZXQgPCAwKSB7
-Cj4gKwkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gcHJlcGFyZV9lbmFibGUgdGhlIGNsb2NrIGNsayBb
-JWRdXG4iLCByZXQpOwoKQWdhaW4gaW5jb25zaXN0ZW50IGxvZ2dnaW5nIG1ldGhvZCBhbmQgcmV0
-IHJlcG9ydGluZyA6KQoKPiArCQlnb3RvIG91dF9kcF9jbGtfcHJlOwo+ICsJfQo+ICsKPiAgCWlm
-IChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbikKPiAgCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihk
-cC0+cGxhdF9kYXRhKTsKPiAgCj4gQEAgLTExOTIsNiArMTE5OCw4IEBAIHN0YXRpYyBpbnQgYW5h
-bG9naXhfZHBfc2V0X2JyaWRnZShzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPiAgCXBo
-eV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gIAlpZiAoZHAtPnBsYXRfZGF0YS0+cG93ZXJfb2ZmKQo+
-ICAJCWRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRhKTsKPiArCWNsa19kaXNh
-YmxlX3VucHJlcGFyZShkcC0+Y2xvY2spOwo+ICtvdXRfZHBfY2xrX3ByZToKPiAgCXBtX3J1bnRp
-bWVfcHV0X3N5bmMoZHAtPmRldik7Cj4gIAo+ICAJcmV0dXJuIHJldDsKPiBAQCAtMTIzNSwxMCAr
-MTI0MywxMyBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJsZShzdHJ1Y3Qg
-ZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICAKPiAgCWRpc2FibGVfaXJxKGRwLT5pcnEpOwo+ICAJcGh5
-X3Bvd2VyX29mZihkcC0+cGh5KTsKPiArCWFuYWxvZ2l4X2RwX3NldF9hbmFsb2dfcG93ZXJfZG93
-bihkcCwgUE9XRVJfQUxMLCAxKTsKClRoZSBsYXN0IGFyZ3VtZW50IGlzIG9mIGJvb2wgdHlwZSwg
-c28gcHJlZmVyYWJseSBpdCBzaG91bGQgYmUgdHJ1ZSwgYnV0Cm5vIGJpZyBkZWFsLgpCVFcgd2hh
-dCBpcyB0aGUgbWVhbmluZyBvZiB0aGUgbGFzdCBhcmd1bWVudCBvZgphbmFsb2dpeF9kcF9zZXRf
-YW5hbG9nX3Bvd2VyX2Rvd24/CgpSZWdhcmRzCkFuZHJ6ZWoKCj4gIAo+ICAJaWYgKGRwLT5wbGF0
-X2RhdGEtPnBvd2VyX29mZikKPiAgCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRf
-ZGF0YSk7Cj4gIAo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5jbG9jayk7Cj4gKwo+ICAJ
-cG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiAgCj4gIAlyZXQgPSBhbmFsb2dpeF9kcF9w
-cmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgdHJ1ZSk7CgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+aGxAcm9jay1jaGlwcy5jb20+Cj4KPiBXZSBvbmx5IGFsbG9jYXRlZCAxbXMgdG8gZGV0ZWN0IHRo
+ZSBocGQgc2lnbmFsIGJlZm9yZSwgaXQgdG9vIHNob3J0IHRvIGRldGVjdAo+IGEgc2hvcnQgcHVs
+c2UgKGhwZCBzaWduYWwpLCBleHRlbmQgaXQgdG8gMTAwbXMuCj4KPiBDYzogU3TDqXBoYW5lIE1h
+cmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IOW+geWiniDnjosgPHd6ekByb2Nr
+LWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29t
+Pgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKUmV2
+aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+Ci0tClJlZ2FyZHMK
+QW5kcnplagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
