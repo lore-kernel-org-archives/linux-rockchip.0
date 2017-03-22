@@ -1,86 +1,132 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 30/41] drm/bridge: analogix_dp: Fix incorrect operations
- with register ANALOGIX_DP_FUNC_EN_1
-Date: Wed, 22 Mar 2017 10:29:24 +0100
-Message-ID: <aa5a8e4b-bed8-fac2-66eb-c921b74c03ab@samsung.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310045053epcas3p2854fce30bbaa34d79f2c4e4180c2ab6c@epcas3p2.samsung.com>
- <20170310043305.17216-31-seanpaul@chromium.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] PCI: use IDA to manage domain number if not getting it from DT
+Date: Wed, 22 Mar 2017 17:42:24 +0800
+Message-ID: <1490175744-22727-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170310043305.17216-31-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Tomasz Figa <tomasz.figa@chromium.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IHphaW4gd2FuZyA8
-d3p6QHJvY2stY2hpcHMuY29tPgo+Cj4gUmVnaXN0ZXIgQU5BTE9HSVhfRFBfRlVOQ19FTl8xKG9m
-ZnNldCAweDE4KSwgUm9ja2NoaXAgaXMgZGlmZmVyZW50IHRvIEV4eW5vczoKPiBvbiBFeHlub3Mg
-ZWRwIHBoeSwKPiBCSVQgNwkJTUFTVEVSX1ZJRF9GVU5DX0VOX04KPiBCSVQgNgkJcmVzZXJ2ZWQK
-PiBCSVQgNQkJU0xBVkVfVklEX0ZVTkNfRU5fTgo+IG9uIFJvY2tjaGlwIGVkcCBwaHksCj4gQklU
-IDcJCXJlc2VydmVkCj4gQklUIDYJCVJLX1ZJRF9DQVBfRlVOQ19FTl9OCj4gQklUIDUJCVJLX1ZJ
-RF9GSUZPX0ZVTkNfRU5fTgo+IFNvLCB3ZSBzaG91bGQgZG8gc29tZSBwcml2YXRlIG9wZXJhdGlv
-bnMgdG8gUm9ja2NoaXAuCj4gQ2M6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+Cj4g
-U2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9m
-Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpSZXZpZXdlZC1ieTogQW5k
-cnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KCkJUVywgdGhlIG51bWJlciBvZiByZWdp
-c3RyeSBkaWZmZXJlbmNlcyBiZWNvbWVzIHNpZ25pZmljYW50LCBtYXliZSBpdCBpcwp0aW1lIHRv
-IHJlcGxhY2UgdGhpcyB1Z2x5IGNvbmRpdGlvbmFsOgogICAgaWYgKGRwLT5wbGF0X2RhdGEgJiYg
-aXNfcm9ja2NoaXAoZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpKQp3aXRoIHNvbWV0aGluZyBtb3Jl
-IHJlYWRhYmxlLgoKLS0KUmVnYXJkcwpBbmRyemVqCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIHwgMTkgKysrKysrKysrKysrKystLS0t
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oIHwg
-IDIgKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygt
-KQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X3JlZy5jCj4gaW5kZXggMmNhY2QxZTg0YjRkLi5kZGM4MTY1OTQ3YzEgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPiBAQCAt
-MTI2LDkgKzEyNiwxNCBAQCB2b2lkIGFuYWxvZ2l4X2RwX3Jlc2V0KHN0cnVjdCBhbmFsb2dpeF9k
-cF9kZXZpY2UgKmRwKQo+ICAJYW5hbG9naXhfZHBfc3RvcF92aWRlbyhkcCk7Cj4gIAlhbmFsb2dp
-eF9kcF9lbmFibGVfdmlkZW9fbXV0ZShkcCwgMCk7Cj4gIAo+IC0JcmVnID0gTUFTVEVSX1ZJRF9G
-VU5DX0VOX04gfCBTTEFWRV9WSURfRlVOQ19FTl9OIHwKPiAtCQlBVURfRklGT19GVU5DX0VOX04g
-fCBBVURfRlVOQ19FTl9OIHwKPiAtCQlIRENQX0ZVTkNfRU5fTiB8IFNXX0ZVTkNfRU5fTjsKPiAr
-CWlmIChkcC0+cGxhdF9kYXRhICYmIGlzX3JvY2tjaGlwKGRwLT5wbGF0X2RhdGEtPmRldl90eXBl
-KSkKPiArCQlyZWcgPSBSS19WSURfQ0FQX0ZVTkNfRU5fTiB8IFJLX1ZJRF9GSUZPX0ZVTkNfRU5f
-TiB8Cj4gKwkJCVNXX0ZVTkNfRU5fTjsKPiArCWVsc2UKPiArCQlyZWcgPSBNQVNURVJfVklEX0ZV
-TkNfRU5fTiB8IFNMQVZFX1ZJRF9GVU5DX0VOX04gfAo+ICsJCQlBVURfRklGT19GVU5DX0VOX04g
-fCBBVURfRlVOQ19FTl9OIHwKPiArCQkJSERDUF9GVU5DX0VOX04gfCBTV19GVU5DX0VOX047Cj4g
-Kwo+ICAJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfRlVOQ19FTl8xKTsK
-PiAgCj4gIAlyZWcgPSBTU0NfRlVOQ19FTl9OIHwgQVVYX0ZVTkNfRU5fTiB8Cj4gQEAgLTk3MCw4
-ICs5NzUsMTIgQEAgdm9pZCBhbmFsb2dpeF9kcF9jb25maWdfdmlkZW9fc2xhdmVfbW9kZShzdHJ1
-Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPiAgCXUzMiByZWc7Cj4gIAo+ICAJcmVnID0gcmVh
-ZGwoZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfRlVOQ19FTl8xKTsKPiAtCXJlZyAmPSB+KE1B
-U1RFUl9WSURfRlVOQ19FTl9OIHwgU0xBVkVfVklEX0ZVTkNfRU5fTik7Cj4gLQlyZWcgfD0gTUFT
-VEVSX1ZJRF9GVU5DX0VOX047Cj4gKwlpZiAoZHAtPnBsYXRfZGF0YSAmJiBpc19yb2NrY2hpcChk
-cC0+cGxhdF9kYXRhLT5kZXZfdHlwZSkpIHsKPiArCQlyZWcgJj0gfihSS19WSURfQ0FQX0ZVTkNf
-RU5fTiB8IFJLX1ZJRF9GSUZPX0ZVTkNfRU5fTik7Cj4gKwl9IGVsc2Ugewo+ICsJCXJlZyAmPSB+
-KE1BU1RFUl9WSURfRlVOQ19FTl9OIHwgU0xBVkVfVklEX0ZVTkNfRU5fTik7Cj4gKwkJcmVnIHw9
-IE1BU1RFUl9WSURfRlVOQ19FTl9OOwo+ICsJfQo+ICAJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNl
-ICsgQU5BTE9HSVhfRFBfRlVOQ19FTl8xKTsKPiAgCj4gIAlyZWcgPSByZWFkbChkcC0+cmVnX2Jh
-c2UgKyBBTkFMT0dJWF9EUF9WSURFT19DVExfMTApOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oIGIvZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuaAo+IGluZGV4IGI2MzNhNGE1MDgyYS4u
-MGNmMjdjNzMxNzI3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfcmVnLmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
-Z2l4L2FuYWxvZ2l4X2RwX3JlZy5oCj4gQEAgLTEyNyw3ICsxMjcsOSBAQAo+ICAKPiAgLyogQU5B
-TE9HSVhfRFBfRlVOQ19FTl8xICovCj4gICNkZWZpbmUgTUFTVEVSX1ZJRF9GVU5DX0VOX04JCQko
-MHgxIDw8IDcpCj4gKyNkZWZpbmUgUktfVklEX0NBUF9GVU5DX0VOX04JCQkoMHgxIDw8IDYpCj4g
-ICNkZWZpbmUgU0xBVkVfVklEX0ZVTkNfRU5fTgkJCSgweDEgPDwgNSkKPiArI2RlZmluZSBSS19W
-SURfRklGT19GVU5DX0VOX04JCQkoMHgxIDw8IDUpCj4gICNkZWZpbmUgQVVEX0ZJRk9fRlVOQ19F
-Tl9OCQkJKDB4MSA8PCA0KQo+ICAjZGVmaW5lIEFVRF9GVU5DX0VOX04JCQkJKDB4MSA8PCAzKQo+
-ICAjZGVmaW5lIEhEQ1BfRlVOQ19FTl9OCQkJCSgweDEgPDwgMikKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+If not getting domain number from DT, the domain number will
+keep increasing once doing unbind/bind RC drivers. This could
+introduce pointless tree view of lspci as shows below:
+
+-+-[0001:00]---00.0-[01]----00.0
+  \-[0000:00]-
+
+The more test we do, the lengthier it would be. The more serious
+issue is that if attaching two hierarchies for two different domains
+belonging to two root bridges, so when doing unbind/bind test for one
+of them and keep the other, then the domain number would finally
+overflow and make the two hierarchies of devices share the some domain
+number but actually they shouldn't. So it looks like we need to invent
+a new indexing ID mechanism to manage domain number. This patch
+introduces idr to achieve our purpose.
+
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ drivers/pci/pci.c    | 11 +++++++----
+ drivers/pci/remove.c |  5 +++++
+ include/linux/pci.h  |  2 ++
+ 3 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index a881c0d..1752ccc 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -11,6 +11,7 @@
+ #include <linux/kernel.h>
+ #include <linux/delay.h>
+ #include <linux/dmi.h>
++#include <linux/idr.h>
+ #include <linux/init.h>
+ #include <linux/of.h>
+ #include <linux/of_pci.h>
+@@ -5172,15 +5173,16 @@ static void pci_no_domains(void)
+ }
+ 
+ #ifdef CONFIG_PCI_DOMAINS
+-static atomic_t __domain_nr = ATOMIC_INIT(-1);
++DEFINE_IDA(__domain_nr);
+ 
+ int pci_get_new_domain_nr(void)
+ {
+-	return atomic_inc_return(&__domain_nr);
++	return ida_simple_get(&__domain_nr, 0, sizeof(u64), GFP_KERNEL);
+ }
+ 
+ #ifdef CONFIG_PCI_DOMAINS_GENERIC
+-static int of_pci_bus_find_domain_nr(struct device *parent)
++static int of_pci_bus_find_domain_nr(struct pci_bus *bus,
++				     struct device *parent)
+ {
+ 	static int use_dt_domains = -1;
+ 	int domain = -1;
+@@ -5224,12 +5226,13 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
+ 		domain = -1;
+ 	}
+ 
++	bus->use_dt_domains = use_dt_domains;
+ 	return domain;
+ }
+ 
+ int pci_bus_find_domain_nr(struct pci_bus *bus, struct device *parent)
+ {
+-	return acpi_disabled ? of_pci_bus_find_domain_nr(parent) :
++	return acpi_disabled ? of_pci_bus_find_domain_nr(bus, parent) :
+ 			       acpi_pci_bus_find_domain_nr(bus);
+ }
+ #endif
+diff --git a/drivers/pci/remove.c b/drivers/pci/remove.c
+index 73a03d3..ad93378 100644
+--- a/drivers/pci/remove.c
++++ b/drivers/pci/remove.c
+@@ -157,6 +157,11 @@ void pci_remove_root_bus(struct pci_bus *bus)
+ 	list_for_each_entry_safe(child, tmp,
+ 				 &bus->devices, bus_list)
+ 		pci_remove_bus_device(child);
++	#ifdef CONFIG_PCI_DOMAINS_GENERIC
++	if (!bus->use_dt_domains)
++		ida_simple_remove(&__domain_nr, bus->domain_nr);
++	#endif
++
+ 	pci_remove_bus(bus);
+ 	host_bridge->bus = NULL;
+ 
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 6732d32..235b336 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -505,6 +505,7 @@ struct pci_bus {
+ 	unsigned char	cur_bus_speed;	/* enum pci_bus_speed */
+ #ifdef CONFIG_PCI_DOMAINS_GENERIC
+ 	int		domain_nr;
++	int		use_dt_domains;
+ #endif
+ 
+ 	char		name[48];
+@@ -1449,6 +1450,7 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+  * configuration space.
+  */
+ #ifdef CONFIG_PCI_DOMAINS
++extern struct ida __domain_nr;
+ extern int pci_domains_supported;
+ int pci_get_new_domain_nr(void);
+ #else
+-- 
+1.9.1
