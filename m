@@ -1,80 +1,91 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH v7 4/7] ARM: dts: rockchip: add clockevent attribute to rockchip timers
-Date: Wed, 22 Mar 2017 18:48:31 +0300
-Message-ID: <1490197714-25415-5-git-send-email-al.kochet@gmail.com>
-References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>, Alexander Kochetkov <al.kochet@gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 41/41] drm/bridge: analogix_dp: Properly disable aux chan
+ retries on rockchip
+Date: Wed, 22 Mar 2017 08:59:16 -0700
+Message-ID: <CAD=FV=Xay7z5QGtzzKQEsQOF4c=JOR7FAzT7TVdaVCFM-JePBA@mail.gmail.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <CGME20170310044604epcas3p436238e095076e8cf0b1ab2a0139d8283@epcas3p4.samsung.com>
+ <20170310043305.17216-42-seanpaul@chromium.org>
+ <ee4b12aa-d109-86dd-2feb-1d51b5b745d8@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <ee4b12aa-d109-86dd-2feb-1d51b5b745d8@samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>
+Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Javier Martinez Canillas <javier@osg.samsung.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-All rockchip timers present in the DT act as clockevent.
-It is possible to specify timer role using DT attribute.
-Mark them accordingly.
-
-Also this patch specify that for timer should be called init
-function specified with CLOCKEVENT_OF_DECLARE().
-
-Without the commit boot warnings will appear because clock
-framework will try initialize them as clocksource.
-
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
----
- arch/arm/boot/dts/rk3036.dtsi            |    1 +
- arch/arm/boot/dts/rk322x.dtsi            |    1 +
- arch/arm/boot/dts/rk3288.dtsi            |    1 +
- arch/arm64/boot/dts/rockchip/rk3368.dtsi |    1 +
- 4 files changed, 4 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 843d2be..a04bb5a 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -353,6 +353,7 @@
- 		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&xin24m>, <&cru PCLK_TIMER>;
- 		clock-names = "timer", "pclk";
-+		clockevent;
- 	};
- 
- 	pwm0: pwm@20050000 {
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 2a4eee2..2250640 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -328,6 +328,7 @@
- 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&xin24m>, <&cru PCLK_TIMER>;
- 		clock-names = "timer", "pclk";
-+		clockevent;
- 	};
- 
- 	cru: clock-controller@110e0000 {
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 91c4b3c..f45b7ad 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -217,6 +217,7 @@
- 		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&xin24m>, <&cru PCLK_TIMER>;
- 		clock-names = "timer", "pclk";
-+		clockevent;
- 	};
- 
- 	display-subsystem {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 4f44d11..054dadd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -673,6 +673,7 @@
- 		compatible = "rockchip,rk3368-timer", "rockchip,rk3288-timer";
- 		reg = <0x0 0xff810000 0x0 0x20>;
- 		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
-+		clockevent;
- 	};
- 
- 	gic: interrupt-controller@ffb71000 {
--- 
-1.7.9.5
+SGksCgpPbiBXZWQsIE1hciAyMiwgMjAxNyBhdCAzOjU3IEFNLCBBbmRyemVqIEhhamRhIDxhLmhh
+amRhQHNhbXN1bmcuY29tPiB3cm90ZToKPiBPbiAxMC4wMy4yMDE3IDA1OjMyLCBTZWFuIFBhdWwg
+d3JvdGU6Cj4+IEZyb206IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4K
+Pj4KPj4gVGhlIGNvbW1lbnRzIGluIGFuYWxvZ2l4X2RwX2luaXRfYXV4KCkgY2xhaW0gdGhhdCB3
+ZSdyZSBkaXNhYmxpbmcgYXV4Cj4+IGNoYW5uZWwgcmV0cmllcywgYnV0IHRoZW4gcmlnaHQgYmVs
+b3cgaXQgZm9yIFJvY2tjaGlwIGl0IHNldHMgdGhlbSB0bwo+PiAzLiAgSWYgd2UgYWN0dWFsbHkg
+bmVlZCAzIHJldHJpZXMgZm9yIFJvY2tjaGlwIHRoZW4gd2UgY291bGQgYWRqdXN0Cj4+IHRoZSBj
+b21tZW50LCBidXQgaXQgc2VlbXMgbW9yZSBsaWtlbHkgdGhhdCB3ZSB3YW50IHRoZSBzYW1lIHJl
+dHJ5Cj4+IGJlaGF2aW9yIGFjcm9zcyBhbGwgcGxhdGZvcm1zLgo+Pgo+PiBDYzogU3TDqXBoYW5l
+IE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4+IENjOiDlvoHlop4g546LIDx3enpA
+cm9jay1jaGlwcy5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5k
+ZXJzQGNocm9taXVtLm9yZz4KPj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBj
+aHJvbWl1bS5vcmc+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9yZWcuYyB8IDE1ICsrKysrKysrLS0tLS0tLQo+PiAgMSBmaWxlIGNoYW5nZWQs
+IDggaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCj4+IGluZGV4IDI5ZDEzMDIy
+MjYzNi4uNTdkZDE5OTFkN2RlIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPj4gQEAgLTQ4MCwxNSArNDgwLDE2IEBAIHZv
+aWQgYW5hbG9naXhfZHBfaW5pdF9hdXgoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4+
+Cj4+ICAgICAgIGFuYWxvZ2l4X2RwX3Jlc2V0X2F1eChkcCk7Cj4+Cj4+IC0gICAgIC8qIERpc2Fi
+bGUgQVVYIHRyYW5zYWN0aW9uIEgvVyByZXRyeSAqLwo+PiArICAgICAvKiBBVVhfQklUX1BFUklP
+RF9FWFBFQ1RFRF9ERUxBWSBkb2Vzbid0IGFwcGx5IHRvIFJvY2tjaGlwIElQICovCj4+ICAgICAg
+IGlmIChkcC0+cGxhdF9kYXRhICYmIGlzX3JvY2tjaGlwKGRwLT5wbGF0X2RhdGEtPmRldl90eXBl
+KSkKPj4gLSAgICAgICAgICAgICByZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxBWSgw
+KSB8Cj4+IC0gICAgICAgICAgICAgICAgICAgQVVYX0hXX1JFVFJZX0NPVU5UX1NFTCgzKSB8Cj4+
+IC0gICAgICAgICAgICAgICAgICAgQVVYX0hXX1JFVFJZX0lOVEVSVkFMXzYwMF9NSUNST1NFQ09O
+RFM7Cj4+ICsgICAgICAgICAgICAgcmVnID0gMDsKPj4gICAgICAgZWxzZQo+PiAtICAgICAgICAg
+ICAgIHJlZyA9IEFVWF9CSVRfUEVSSU9EX0VYUEVDVEVEX0RFTEFZKDMpIHwKPj4gLSAgICAgICAg
+ICAgICAgICAgICBBVVhfSFdfUkVUUllfQ09VTlRfU0VMKDApIHwKPj4gLSAgICAgICAgICAgICAg
+ICAgICBBVVhfSFdfUkVUUllfSU5URVJWQUxfNjAwX01JQ1JPU0VDT05EUzsKPj4gKyAgICAgICAg
+ICAgICByZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxBWSgzKTsKPj4gKwo+PiArICAg
+ICAvKiBEaXNhYmxlIEFVWCB0cmFuc2FjdGlvbiBIL1cgcmV0cnkgKi8KPj4gKyAgICAgcmVnIHw9
+IEFVWF9IV19SRVRSWV9DT1VOVF9TRUwoMCkgfAo+PiArICAgICAgICAgICAgQVVYX0hXX1JFVFJZ
+X0lOVEVSVkFMXzYwMF9NSUNST1NFQ09ORFM7Cj4+ICsKPgo+IEFzIEkgdW5kZXJzdGFuZCB5b3Ug
+d2FudCB0byBkaXNhYmxlIEgvVyByZXRyeSBmb3IgYWxsLgoKQmFzaWNhbGx5IEknbSB0cnlpbmcg
+dG8gbWFrZSB0aGUgY29kZSBtYXRjaCB0aGUgY29tbWVudHMsIHdoaWNoIGl0CmRpZG4ndCBiZWZv
+cmUuCgpPbiB0aGUgZXh5bm9zIHNpZGUsIGl0J3MgdmVyeSBjbGVhciB0aGF0IHdlIHNob3VsZCBk
+aXNhYmxlIHJldHJpZXMuClRoZSBkb2NzIHNheSAiaXQgaXMgYWR2aXNhYmxlIHRvIHNldCB0aGlz
+IGJpdCBmaWVsZCB0byAwIGJlY2F1c2UKaGFyZHdhcmUgcmV0cnkgd2lsbCBiZSB2YWxpZCBvbmx5
+IHdoZW4gRFAgUnggZG9lcyBub3Qgc2VuZCBhbnkgcmVwbHkuIgoKT24gUm9ja2NoaXAsIEkgZG9u
+J3Qgc2VlIHRoYXQgaW4gdGhlIGRvY3MuICBIb3dldmVyOgoKKiBTaW5jZSB0aGUgcm9vdCBJUCBi
+bG9jayBpcyB0aGUgc2FtZS9zaW1pbGFyLCBwcmVzdW1hYmx5IGl0IHN1ZmZlcnMKdGhlIHNhbWUg
+aXNzdWVzLiAgSXQgaXMgcGxhdXNpYmxlIHRoYXQgdGhlIFJvY2tjaGlwIElQIGJsb2NrIGlzIG5l
+d2VyCmFuZCBjYW4gc29tZWhvdyBiZSBtYWRlIHRvIHVzZSB0aGUgSFcgcmV0cmllcywgYnV0IEkg
+ZG9uJ3QgYWN0dWFsbHkKa25vdyB0aGF0LgoKKiBQcmVzdW1hYmx5IGVsc2V3aGVyZSBpbiB0aGUg
+ZHJpdmVyIHdlIGFyZSBhbHJlYWR5IGFzc3VtaW5nIHRoYXQgdGhlCkhXIHJldHJpZXMgYXJlbid0
+IHRoZXJlIGFuZCB3ZSdyZSBkb2luZyB0aGUgd29yayB0byByZXRyeSB0aGluZ3MgaW4Kc29mdHdh
+cmUuICBJIGRvbid0IHNlZSBhbnkgc3BlY2lhbCBjYXNlcyBmb3IgUm9ja2NoaXAgdGhlcmUgc2F5
+aW5nCnNvbWV0aGluZyBsaWtlICJvbiBSb2NrY2hpcCwgd2UgZW5hYmxlIEhXIHJldHJpZXMsIHNv
+IGJ5cGFzcyBTVwpyZXRyaWVzIi4KCj4gV2hhdCBpcyB0aGUgcG9pbnQKPiBpbiBzZXR0aW5nIHJl
+dHJ5IGludGVydmFsIHRoZW4/CgpQcm9iYWJseSBub3RoaW5nLCBidXQgdGhlIG9sZCBleHlub3Mg
+Y29kZSBpdCB1c2VkIHRvIGRvIHRoaXMuICBOb3RlCnRoYXQgNjAwIHVzIGlzIGFjdHVhbGx5IDAs
+IHNvIHdlIGNvdWxkIGNlcnRhaW5seSBza2lwIGl0LgoKPiBXYXMgaXQgdGVzdGVkIG9uIG90aGVy
+IGFuYWxvZ2l4IHVzZXJzIChleHlub3MpLCBJIG1lYW4gdGhpcyBwYXRjaCBhbmQKPiB3aG9sZSBw
+YXRjaHNldD8KClVubGVzcyBJIG1lc3NlZCB1cCwgdGhpcyBwYXJ0aWN1bGFyIHBhdGNoIGlzbid0
+IHN1cHBvc2VkIHRvIGNoYW5nZQphbnl0aGluZyBmb3IgZXh5bm9zLgoKRm9yIHRoZSB3aG9sZSBw
+YXRjaCBzZXJpZXMsIGl0J3MgcHJvYmFibHkgd29ydGh3aGlsZSB0byBhZGQgSmF2aWVyIHRvCnRo
+ZSBzZXJpZXMgKENDZWQgaGVyZSkuICBJbiB0aGUgcGFzdCBoZSBoYXMgYmVlbiBoZWxwZnVsIGlu
+IGdldHRpbmcKdGhpbmdzIHRlc3RlZCBvbiBleHlub3MtYmFzZWQgYm9hcmRzLgoKLURvdWcKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
