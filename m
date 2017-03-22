@@ -1,100 +1,72 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 12/41] drm/bridge: analogix_dp: add fast link train for eDP
-Date: Wed, 22 Mar 2017 09:07:48 +0100
-Message-ID: <845d9b63-386a-4c3e-6c33-807fe4e4402e@samsung.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044741epcas5p124549bb2177567455ba7fcd5065913b6@epcas5p1.samsung.com>
- <20170310043305.17216-13-seanpaul@chromium.org>
- <3a7cc255-084f-7367-e9de-831a9bc96191@samsung.com>
- <20170321203728.GL19389@art_vandelay>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: add regulator info for Kevin
+ digitizer
+Date: Wed, 22 Mar 2017 09:26:41 +0100
+Message-ID: <20415662.PctC9IM4SC@phil>
+References: <20170320235344.126298-1-briannorris@chromium.org>
+ <20170320235344.126298-5-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170321203728.GL19389@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170320235344.126298-5-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjEuMDMuMjAxNyAyMTozNywgU2VhbiBQYXVsIHdyb3RlOgo+IE9uIFRodSwgTWFyIDE2LCAy
-MDE3IGF0IDAzOjE0OjI4UE0gKzAxMDAsIEFuZHJ6ZWogSGFqZGEgd3JvdGU6Cj4+IE9uIDEwLjAz
-LjIwMTcgMDU6MzIsIFNlYW4gUGF1bCB3cm90ZToKPj4+IEZyb206IHphaW4gd2FuZyA8d3p6QHJv
-Y2stY2hpcHMuY29tPgo+Pj4KPj4+IFdlIHdvdWxkIG1lZXQgYSBzaG9ydCBibGFjayBzY3JlZW4g
-d2hlbiBleGl0IFBTUiB3aXRoIHRoZSBmdWxsIGxpbmsKPj4+IHRyYWluaW5nLCBJbiB0aGlzIGNh
-c2UsIHdlIHNob3VsZCB1c2UgZmFzdCBsaW5rIHRyYWluIGluc3RlYWQgb2YgZnVsbAo+Pj4gbGlu
-ayB0cmFpbmluZy4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNo
-aXBzLmNvbT4KPj4+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0u
-b3JnPgo+Pj4gLS0tCj4+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMgfCAxNDIgKysrKysrKysrKysrKysrKy0tLS0tCj4+PiAgZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggfCAgIDMgKwo+Pj4gIDIgZmls
-ZXMgY2hhbmdlZCwgMTE0IGluc2VydGlvbnMoKyksIDMxIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2Nv
-cmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5j
-Cj4+PiBpbmRleCA2NGQ5NGEzNDg3NGQuLjViYzE1MWIwOTk1YiAxMDA2NDQKPj4+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+Pj4g
-QEAgLTEwLDE3ICsxMCwxOCBAQAo+Pj4gICogb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KPj4+
-ICAqLwo+Pj4gIAo+Pj4gLSNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPj4+IC0jaW5jbHVkZSA8
-bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4+PiAtI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+Pj4g
-ICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPj4+IC0jaW5jbHVkZSA8bGludXgvaW8uaD4KPj4+ICsj
-aW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+
-Pj4gKyNpbmNsdWRlIDxsaW51eC9ncGlvLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4L2ludGVycnVw
-dC5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9pby5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9pb3Bv
-bGwuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4
-L29mLmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4L29mX2dwaW8uaD4KPj4+IC0jaW5jbHVkZSA8bGlu
-dXgvZ3Bpby5oPgo+Pj4gLSNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPj4+ICAjaW5jbHVk
-ZSA8bGludXgvcGh5L3BoeS5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
-aD4KPj4+ICAKPj4+ICAjaW5jbHVkZSA8ZHJtL2RybVAuaD4KPj4+ICAjaW5jbHVkZSA8ZHJtL2Ry
-bV9hdG9taWNfaGVscGVyLmg+Cj4+PiBAQCAtMzUsNiArMzYsOCBAQAo+Pj4gIAo+Pj4gICNkZWZp
-bmUgdG9fZHAobm0pCWNvbnRhaW5lcl9vZihubSwgc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSwg
-bm0pCj4+PiAgCj4+PiArc3RhdGljIGNvbnN0IGJvb2wgdmVyaWZ5X2Zhc3RfdHJhaW5pbmc7Cj4+
-PiArCj4+IFF1aXRlIG9kZCBkZWJ1ZyBzZW50aW5lbCwgSSBhbSBub3Qgc3VyZSBpZiBpdCBpcyBn
-b29kIHByYWN0aWNlIHRvIHVzZQo+PiBzdWNoIGNvbnN0cnVjdC4KPiBJSVJDLCB0aGV5IG9yaWdp
-bmFsbHkgaGFkIGEgI2RlZmluZSBhbmQgdGhlbiB1c2VkICNpZmRlZiBiZWxvdyB0byBnYXRlIHRo
-ZQo+IHZlcmlmaWNhdGlvbi4gTXkgY29uY2VybiB3aXRoIHRoYXQgd2FzIHRoZSBjb2RlIHdvdWxk
-IHJvdCBpZiBpdCB3YXNuJ3QgY29tcGlsZWQuCgpJdCBqdXN0IGxvb2tzIHVudXN1YWwsIEkgYW0g
-bm90IHN0cm9uZ2x5IGFnYWluc3QgY3VycmVudCB2ZXJzaW9uLgoKPgo+IDxzbmlwPgo+Cj4+PiBA
-QCAtODUzLDEwICs5MzMsMTAgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVj
-dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+Pj4gIAkJCURSTV9FUlJPUigiZmFpbGVkIHRvIGRp
-c2FibGUgdGhlIHBhbmVsXG4iKTsKPj4+ICAJfQo+Pj4gIAo+Pj4gLQlyZXQgPSBhbmFsb2dpeF9k
-cF9zZXRfbGlua190cmFpbihkcCwgZHAtPnZpZGVvX2luZm8ubWF4X2xhbmVfY291bnQsCj4+PiAt
-CQkJCQkgZHAtPnZpZGVvX2luZm8ubWF4X2xpbmtfcmF0ZSk7Cj4+PiArCXJldCA9IHJlYWR4X3Bv
-bGxfdGltZW91dChhbmFsb2dpeF9kcF90cmFpbl9saW5rLCBkcCwgcmV0LCAhcmV0LCAxMDAsCj4+
-PiArCQkJCSBEUF9USU1FT1VUX1RSQUlOSU5HX1VTICogNSk7Cj4+PiAgCWlmIChyZXQpIHsKPj4+
-IC0JCWRldl9lcnIoZHAtPmRldiwgInVuYWJsZSB0byBkbyBsaW5rIHRyYWluXG4iKTsKPj4+ICsJ
-CWRldl9lcnIoZHAtPmRldiwgInVuYWJsZSB0byBkbyBsaW5rIHRyYWluLCByZXQ9JWRcbiIsIHJl
-dCk7Cj4+IEFuZCBoZXJlIHdlIGhhdmUgIiwgcmV0PSVkXG4iLiBNYXliZSBpdCB3b3VsZCBiZSBn
-b29kIHRvIG1ha2UgaXQKPj4gY29uc2lzdGVudCBhY3Jvc3Mgd2hvbGUgZHJpdmVyLgo+IE1laC4g
-SSBkb24ndCB0aGluayBpdCdzIHdvcnRoIGJpa2VzaGVkZGluZyBvdmVyIGNvbW1hcyBpbiBlcnJv
-ciBtZXNzYWdlcy4gSSdtCj4ganVzdCBoYXBweSB0aGVyZSBhcmUgZXJyb3IgY2hlY2tzL21lc3Nh
-Z2VzLgoKQnV0IGlmIHRoZXJlIHdpbGwgYmUgbmV4dCBpdGVyYXRpb24gaXQgaXMgbm90IGJpZyBk
-ZWFsIHRvIGZpeCBpdCB0aGVuIDopCgpSZWdhcmRzCkFuZHJ6ZWoKCj4KPgo+PiBBbm90aGVyIGlz
-c3VlIHdpdGggY29uc2lzdGVuY3kgaW4gRFJNX0RFVl9FUlJPUiB2cyBkZXZfZXJyLgo+IFllYWgs
-IHRoYXQncyBhbm5veWluZy4KPgo+IFNlYW4KPgo+PiBSZWdhcmRzCj4+IEFuZHJ6ZWoKPj4KPj4+
-ICAJCXJldHVybjsKPj4+ICAJfQo+Pj4gIAo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPj4+IGluZGV4IGUxMzVhNDJjYjE5ZS4u
-OTIwNjA3ZDdlYjNlIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-YW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCj4+PiBAQCAtMjAsNiArMjAsOCBAQAo+Pj4gICNk
-ZWZpbmUgTUFYX0NSX0xPT1AgNQo+Pj4gICNkZWZpbmUgTUFYX0VRX0xPT1AgNQo+Pj4gIAo+Pj4g
-Ky8qIFRyYWluaW5nIHRha2VzIDIybXMgaWYgQVVYIGNoYW5uZWwgY29tbSBmYWlscy4gVXNlIHRo
-aXMgYXMgcmV0cnkgaW50ZXJ2YWwgKi8KPj4+ICsjZGVmaW5lIERQX1RJTUVPVVRfVFJBSU5JTkdf
-VVMJCQkyMjAwMAo+Pj4gICNkZWZpbmUgRFBfVElNRU9VVF9QU1JfTE9PUF9NUwkJCTMwMAo+Pj4g
-IAo+Pj4gIC8qIERQX01BWF9MQU5FX0NPVU5UICovCj4+PiBAQCAtMTcxLDYgKzE3Myw3IEBAIHN0
-cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ugewo+Pj4gIAlpbnQJCQlocGRfZ3BpbzsKPj4+ICAJYm9v
-bCAgICAgICAgICAgICAgICAgICAgZm9yY2VfaHBkOwo+Pj4gIAlib29sCQkJcHNyX2VuYWJsZTsK
-Pj4+ICsJYm9vbAkJCWZhc3RfdHJhaW5fc3VwcG9ydDsKPj4+ICAKPj4+ICAJc3RydWN0IG11dGV4
-CQlwYW5lbF9sb2NrOwo+Pj4gIAlib29sCQkJcGFuZWxfaXNfbW9kZXNldDsKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Montag, 20. M=E4rz 2017, 16:53:44 CET schrieb Brian Norris:
+> We need to enable this regulator before the digitizer can be used. Wacom
+> recommended waiting for 100 ms before talking to the HID.
+> =
+
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> v3:
+>  * reintroduced into patch set; bindings are in linux-next
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
+>  1 file changed, 3 insertions(+)
+> =
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts index
+> 2f720cf2fd07..f4714c4606f3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -232,6 +232,9 @@ ap_i2c_dig: &i2c2 {
+
+according to the hid-over-i2c binding, this should use a special compatible =
+
+like
+
+	compatible =3D "wacom,w9013", "hid-over-i2c"
+
+As the binding patch is from Caesar, I assume that is the Kevin component a=
+nd
+I can add that myself, just need confirmation that this is actually the cor=
+rect =
+
+component :-) .
+
+
+Thanks
+Heiko
+
+>  		pinctrl-names =3D "default";
+>  		pinctrl-0 =3D <&cpu1_dig_irq_l &cpu1_dig_pdct_l>;
+> =
+
+> +		vdd-supply =3D <&p3_3v_dig>;
+> +		post-power-on-delay-ms =3D <100>;
+> +
+>  		interrupt-parent =3D <&gpio2>;
+>  		interrupts =3D <4 IRQ_TYPE_LEVEL_LOW>;
