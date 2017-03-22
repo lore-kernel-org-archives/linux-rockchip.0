@@ -1,35 +1,39 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: setup DMA-channels for mmc0 and emmc for rk3188
-Date: Wed, 22 Mar 2017 17:35:08 +0100
-Message-ID: <1719178.VTn5J36Jb3@phil>
-References: <1490109227-4006-1-git-send-email-al.kochet@gmail.com> <11123239.Wc863F7R2R@phil> <C2BC0A84-EF69-42E3-84FA-A873B8A7187A@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: increase SD clock frequency on Radxa Rock
+Date: Wed, 22 Mar 2017 17:47:41 +0100
+Message-ID: <1978752.xjtBqdMt97@phil>
+References: <1490110822-3310-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <C2BC0A84-EF69-42E3-84FA-A873B8A7187A-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1490110822-3310-1-git-send-email-al.kochet@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-Am Mittwoch, 22. März 2017, 19:20:56 CET schrieb Alexander Kochetkov:
-> Hello, Heiko!
+Am Dienstag, 21. M�rz 2017, 18:40:22 CET schrieb Alexander Kochetkov:
+> The patch set SD clock frequency to maximum possible to SD-card
+> (50MHz). This change actual clock frequency from 32MHz to 48MHz
+> (speedup 1.5X).
 > 
-> > 22 марта 2017 г., в 18:54, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> написал(а):
-> I have working settings for eMMC for radxa rock. What do you think, is it
-> good idea to add them to the kernel DT? As Radxa Rock doesn’t come with
-> eMMC, but eMMC can be soldered manually.
+> Banner line before patch: 'mmc_host mmc0: Bus speed (slot 0) = 32000000Hz
+> (slot req 50000000Hz, actual 32000000HZ div = 0)'.
+> Banner line after patch: 'mmc_host mmc0: Bus speed (slot 0) = 96000000Hz
+> (slot req 50000000Hz, actual 48000000HZ div = 1)'
+> 
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 
-No, the Rock comes with a nand flash, which we hopefully will support at some 
-point in the future. And in the mainline kernel we want to support the stock 
-boards as people can buy them, not something people have soldered around on.
+sorry, but I will not apply this patch at this time.
+
+When testing on my radxarock with the card I always use upon entering the 
+rootfs everything explodes with -110 errors, while without that patch the card 
+runs stable as far as I can tell.
+
+I also don't have the time to investigate further right now though.
 
 
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
