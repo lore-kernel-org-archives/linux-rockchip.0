@@ -1,82 +1,62 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: fix PPI misconfiguration on Cortex-A9 socs
-Date: Wed, 22 Mar 2017 00:14:28 +0100
-Message-ID: <20170321231428.23802-1-heiko@sntech.de>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: add arm/arm64 include symlinks
+Date: Tue, 21 Mar 2017 17:20:27 -0700
+Message-ID: <20170322002027.GA2984@localhost>
+References: <20170226060058.5841-1-heiko@sntech.de>
+ <20170226060058.5841-2-heiko@sntech.de>
+ <20170320230337.GB78325@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170320230337.GB78325-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-According to [0] pointed out by Marc Zyngier in a report about a
-similar error message, PPIs 11 and 13 are edge triggered on
-Cortex-A9 socs including the rk3066 and rk3188 which currently
-mark them as level triggered.
+On Mon, Mar 20, 2017 at 04:03:37PM -0700, Brian Norris wrote:
+> Hi,
+> 
+> On Sun, Feb 26, 2017 at 07:00:58AM +0100, Heiko Stuebner wrote:
+> > Allow including of dtsi files in an architecture-independent manner.
+> > Some dtsi files may be shared between architectures and one suggestion
+> > was to have symlinks and let these includes get accessed via a
+> >     #include <arm64/foo.dtsi>
+> > So add the necessary symlinks for arm32.
+> > 
+> > Suggested-by: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > ---
+> > Suggested by Olof in response to the patch adding direct symlinks
+> > for cros-ec includes.
+> > 
+> > Tested with adapted rk3399-Gru dtsi files and while we only need this arm64
+> > version right now, it might make sense to already have both the arm32 and
+> > arm64 versions ready.
+> 
+> FWIW, tested fine here too (for the same platform).
+> 
+> I guess this works fine, if it makes people happy. It also allows some
+> weird #include paths. e.g.:
+> 
+> #include <arm64/include/arm/include/arm64/rockchip/rk3399.dtsi>
+> 
+> I guess we can call that an entertaining feature, and not a bug?
+> 
+> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> Where should this go? I'd like not to wait another few months before
+> sending my Gru/Kevin DTS again.
 
-Until some time ago the gic did not care but commit 992345a58e0c
-("irqchip/gic: WARN if setting the interrupt type for a PPI fails")
-introduced a warning for that case.
+Checked into shared/dt-symlinks on the arm-soc repo now (and merged into
+next/dt and next/dt64). Please use that branch as a base for DT material that
+will use this.
 
-Fix the warning on these socs by describing the interrupts correctly
-and also using the binding constants for easier reading in the future.
 
-[0] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0407f/CCHEIGIC.html
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3188.dtsi | 4 ++--
- arch/arm/boot/dts/rk3xxx.dtsi | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index cf91254d0a43..fa1bdb8875ae 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -529,11 +529,11 @@
- };
- 
- &global_timer {
--	interrupts = <GIC_PPI 11 0xf04>;
-+	interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
- };
- 
- &local_timer {
--	interrupts = <GIC_PPI 13 0xf04>;
-+	interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
- };
- 
- &i2c0 {
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index 4480534d1b46..39e3f8bded1c 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -132,14 +132,14 @@
- 	global_timer: global-timer@1013c200 {
- 		compatible = "arm,cortex-a9-global-timer";
- 		reg = <0x1013c200 0x20>;
--		interrupts = <GIC_PPI 11 0x304>;
-+		interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
- 		clocks = <&cru CORE_PERI>;
- 	};
- 
- 	local_timer: local-timer@1013c600 {
- 		compatible = "arm,cortex-a9-twd-timer";
- 		reg = <0x1013c600 0x20>;
--		interrupts = <GIC_PPI 13 0x304>;
-+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
- 		clocks = <&cru CORE_PERI>;
- 	};
- 
--- 
-2.11.0
+-Olof
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
