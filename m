@@ -1,67 +1,80 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 41/41] drm/bridge: analogix_dp: Properly disable aux chan
- retries on rockchip
-Date: Wed, 22 Mar 2017 11:57:04 +0100
-Message-ID: <ee4b12aa-d109-86dd-2feb-1d51b5b745d8@samsung.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044604epcas3p436238e095076e8cf0b1ab2a0139d8283@epcas3p4.samsung.com>
- <20170310043305.17216-42-seanpaul@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
+ RK3328 SoCs
+Date: Wed, 22 Mar 2017 12:06:46 +0100
+Message-ID: <1536448.abPucmTQ1N@diego>
+References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
+ <14610453.rKm3MBREMz@diego> <58D250BC.4040609@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170310043305.17216-42-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <58D250BC.4040609-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, yhx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IERvdWdsYXMgQW5k
-ZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPgo+IFRoZSBjb21tZW50cyBpbiBhbmFsb2dp
-eF9kcF9pbml0X2F1eCgpIGNsYWltIHRoYXQgd2UncmUgZGlzYWJsaW5nIGF1eAo+IGNoYW5uZWwg
-cmV0cmllcywgYnV0IHRoZW4gcmlnaHQgYmVsb3cgaXQgZm9yIFJvY2tjaGlwIGl0IHNldHMgdGhl
-bSB0bwo+IDMuICBJZiB3ZSBhY3R1YWxseSBuZWVkIDMgcmV0cmllcyBmb3IgUm9ja2NoaXAgdGhl
-biB3ZSBjb3VsZCBhZGp1c3QKPiB0aGUgY29tbWVudCwgYnV0IGl0IHNlZW1zIG1vcmUgbGlrZWx5
-IHRoYXQgd2Ugd2FudCB0aGUgc2FtZSByZXRyeQo+IGJlaGF2aW9yIGFjcm9zcyBhbGwgcGxhdGZv
-cm1zLgo+Cj4gQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgo+
-IENjOiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogRG91
-Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IFNl
-YW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIHwgMTUgKysrKysrKystLS0tLS0tCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4KPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPiBp
-bmRleCAyOWQxMzAyMjI2MzYuLjU3ZGQxOTkxZDdkZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwo+IEBAIC00ODAsMTUgKzQ4
-MCwxNiBAQCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRfYXV4KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
-Y2UgKmRwKQo+ICAKPiAgCWFuYWxvZ2l4X2RwX3Jlc2V0X2F1eChkcCk7Cj4gIAo+IC0JLyogRGlz
-YWJsZSBBVVggdHJhbnNhY3Rpb24gSC9XIHJldHJ5ICovCj4gKwkvKiBBVVhfQklUX1BFUklPRF9F
-WFBFQ1RFRF9ERUxBWSBkb2Vzbid0IGFwcGx5IHRvIFJvY2tjaGlwIElQICovCj4gIAlpZiAoZHAt
-PnBsYXRfZGF0YSAmJiBpc19yb2NrY2hpcChkcC0+cGxhdF9kYXRhLT5kZXZfdHlwZSkpCj4gLQkJ
-cmVnID0gQVVYX0JJVF9QRVJJT0RfRVhQRUNURURfREVMQVkoMCkgfAo+IC0JCSAgICAgIEFVWF9I
-V19SRVRSWV9DT1VOVF9TRUwoMykgfAo+IC0JCSAgICAgIEFVWF9IV19SRVRSWV9JTlRFUlZBTF82
-MDBfTUlDUk9TRUNPTkRTOwo+ICsJCXJlZyA9IDA7Cj4gIAllbHNlCj4gLQkJcmVnID0gQVVYX0JJ
-VF9QRVJJT0RfRVhQRUNURURfREVMQVkoMykgfAo+IC0JCSAgICAgIEFVWF9IV19SRVRSWV9DT1VO
-VF9TRUwoMCkgfAo+IC0JCSAgICAgIEFVWF9IV19SRVRSWV9JTlRFUlZBTF82MDBfTUlDUk9TRUNP
-TkRTOwo+ICsJCXJlZyA9IEFVWF9CSVRfUEVSSU9EX0VYUEVDVEVEX0RFTEFZKDMpOwo+ICsKPiAr
-CS8qIERpc2FibGUgQVVYIHRyYW5zYWN0aW9uIEgvVyByZXRyeSAqLwo+ICsJcmVnIHw9IEFVWF9I
-V19SRVRSWV9DT1VOVF9TRUwoMCkgfAo+ICsJICAgICAgIEFVWF9IV19SRVRSWV9JTlRFUlZBTF82
-MDBfTUlDUk9TRUNPTkRTOwo+ICsKCkFzIEkgdW5kZXJzdGFuZCB5b3Ugd2FudCB0byBkaXNhYmxl
-IEgvVyByZXRyeSBmb3IgYWxsLiBXaGF0IGlzIHRoZSBwb2ludAppbiBzZXR0aW5nIHJldHJ5IGlu
-dGVydmFsIHRoZW4/CldhcyBpdCB0ZXN0ZWQgb24gb3RoZXIgYW5hbG9naXggdXNlcnMgKGV4eW5v
-cyksIEkgbWVhbiB0aGlzIHBhdGNoIGFuZAp3aG9sZSBwYXRjaHNldD8KClJlZ2FyZHMKQW5kcnpl
-agoKPiAgCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0FVWF9IV19SRVRS
-WV9DVEwpOwo+ICAKPiAgCS8qIFJlY2VpdmUgQVVYIENoYW5uZWwgREVGRVIgY29tbWFuZHMgZXF1
-YWwgdG8gREVGRkVSX0NPVU5UKjY0ICovCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVsCg==
+Am Mittwoch, 22. M=E4rz 2017, 18:23:56 CET schrieb Elaine Zhang:
+> On 03/21/2017 04:55 PM, Heiko St=FCbner wrote:
+> > Am Donnerstag, 16. M=E4rz 2017, 21:17:22 CET schrieb cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org:
+> >> +	cru: clock-controller@ff440000 {
+> >> +		compatible =3D "rockchip,rk3328-cru", "rockchip,cru", "syscon";
+> >> +		reg =3D <0x0 0xff440000 0x0 0x1000>;
+> >> +		rockchip,grf =3D <&grf>;
+> >> +		#clock-cells =3D <1>;
+> >> +		#reset-cells =3D <1>;
+> >> +		assigned-clocks =3D
+> >> +			<&cru DCLK_LCDC>, <&cru SCLK_PDM>,
+> >> +			<&cru SCLK_RTC32K>, <&cru SCLK_UART0>,
+> >> +			<&cru SCLK_UART1>, <&cru SCLK_UART2>,
+> >> +			<&cru ACLK_BUS_PRE>, <&cru ACLK_PERI_PRE>,
+> >> +			<&cru ACLK_VIO_PRE>, <&cru ACLK_RGA_PRE>,
+> >> +			<&cru ACLK_VOP_PRE>, <&cru ACLK_RKVDEC_PRE>,
+> >> +			<&cru ACLK_RKVENC>, <&cru ACLK_VPU_PRE>,
+> >> +			<&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>,
+> >> +			<&cru SCLK_VENC_CORE>, <&cru SCLK_VENC_DSP>,
+> >> +			<&cru SCLK_SDIO>, <&cru SCLK_TSP>,
+> >> +			<&cru SCLK_WIFI>, <&cru ARMCLK>,
+> >> +			<&cru PLL_GPLL>, <&cru PLL_CPLL>,
+> >> +			<&cru ACLK_BUS_PRE>, <&cru HCLK_BUS_PRE>,
+> >> +			<&cru PCLK_BUS_PRE>, <&cru ACLK_PERI_PRE>,
+> >> +			<&cru HCLK_PERI>, <&cru PCLK_PERI>,
+> >> +			<&cru ACLK_VIO_PRE>, <&cru HCLK_VIO_PRE>,
+> >> +			<&cru ACLK_RGA_PRE>, <&cru SCLK_RGA>,
+> >> +			<&cru ACLK_VOP_PRE>, <&cru ACLK_RKVDEC_PRE>,
+> >> +			<&cru ACLK_RKVENC>, <&cru ACLK_VPU_PRE>,
+> >> +			<&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>,
+> >> +			<&cru SCLK_VENC_CORE>, <&cru SCLK_VENC_DSP>,
+> >> +			<&cru SCLK_EFUSE>, <&cru PCLK_DDR>,
+> >> +			<&cru ACLK_GMAC>, <&cru PCLK_GMAC>,
+> >> +			<&cru SCLK_RTC32K>, <&cru SCLK_USB3OTG_SUSPEND>;
+> > =
+
+> > that list is way to long.
+> > Device-specific clocks should be inited in their respective device node=
+s.
+> =
+
+> Cpll init freq is 1200M, is too high. we need set cpll child clk div
+> first,and then set cpll freq.
+> After pll init, others clk init freq can inited in their device node.
+
+thanks, that is a nice explanation. Please put it into a comment above the =
+
+assigned-clocks property, so that we can keep that knowledge around for lat=
+er =
+
+times :-) .
+
+
+Thanks
+Heiko
