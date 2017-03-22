@@ -1,72 +1,68 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: add regulator info for Kevin
- digitizer
-Date: Wed, 22 Mar 2017 09:26:41 +0100
-Message-ID: <20415662.PctC9IM4SC@phil>
-References: <20170320235344.126298-1-briannorris@chromium.org>
- <20170320235344.126298-5-briannorris@chromium.org>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 21/41] drm/bridge: analogix_dp: Ensure edp is disabled when
+ shutting down the panel
+Date: Wed, 22 Mar 2017 09:29:29 +0100
+Message-ID: <b0dd5e44-2951-a4f2-1c85-c6a14a643828@samsung.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <CGME20170310044746epcas5p290c7021f6db15f7efa11abdd2016f7d0@epcas5p2.samsung.com>
+ <20170310043305.17216-22-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170320235344.126298-5-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20170310043305.17216-22-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 20. M=E4rz 2017, 16:53:44 CET schrieb Brian Norris:
-> We need to enable this regulator before the digitizer can be used. Wacom
-> recommended waiting for 100 ms before talking to the HID.
-> =
-
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> v3:
->  * reintroduced into patch set; bindings are in linux-next
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
->  1 file changed, 3 insertions(+)
-> =
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts index
-> 2f720cf2fd07..f4714c4606f3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> @@ -232,6 +232,9 @@ ap_i2c_dig: &i2c2 {
-
-according to the hid-over-i2c binding, this should use a special compatible =
-
-like
-
-	compatible =3D "wacom,w9013", "hid-over-i2c"
-
-As the binding patch is from Caesar, I assume that is the Kevin component a=
-nd
-I can add that myself, just need confirmation that this is actually the cor=
-rect =
-
-component :-) .
-
-
-Thanks
-Heiko
-
->  		pinctrl-names =3D "default";
->  		pinctrl-0 =3D <&cpu1_dig_irq_l &cpu1_dig_pdct_l>;
-> =
-
-> +		vdd-supply =3D <&p3_3v_dig>;
-> +		post-power-on-delay-ms =3D <100>;
-> +
->  		interrupt-parent =3D <&gpio2>;
->  		interrupts =3D <4 IRQ_TYPE_LEVEL_LOW>;
+T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IExpbiBIdWFuZyA8
+aGxAcm9jay1jaGlwcy5jb20+Cj4KPiBXaGVuIHBhbmVsIGlzIHNodXQgZG93biwgd2Ugc2hvdWxk
+IG1ha2Ugc3VyZSBlZHAgY2FuIGJlIGRpc2FibGVkIHRvIGF2b2lkCj4gdW5kZWZpbmVkIGJlaGF2
+aW9yLgo+Cj4gQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgo+
+IFNpZ25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9m
+Zi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogU2Vh
+biBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpCZXNpZGUgbml0cGlja3M6ClJldmlld2Vk
+LWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKPiAtLS0KPiAgZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAxMSArKysrKysr
+KysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBpbmRleCAw
+NDhiNmY3YzliNmUuLjNiMmQ1MzkzNWFlOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gQEAgLTExNjMsNiArMTE2Mywx
+MiBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2Rw
+X2RldmljZSAqZHApCj4gIAo+ICAJcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKPiAgCj4g
+KwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHAtPmNsb2NrKTsKPiArCWlmIChyZXQgPCAwKSB7
+Cj4gKwkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gcHJlcGFyZV9lbmFibGUgdGhlIGNsb2NrIGNsayBb
+JWRdXG4iLCByZXQpOwoKQWdhaW4gaW5jb25zaXN0ZW50IGxvZ2dnaW5nIG1ldGhvZCBhbmQgcmV0
+IHJlcG9ydGluZyA6KQoKPiArCQlnb3RvIG91dF9kcF9jbGtfcHJlOwo+ICsJfQo+ICsKPiAgCWlm
+IChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbikKPiAgCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbihk
+cC0+cGxhdF9kYXRhKTsKPiAgCj4gQEAgLTExOTIsNiArMTE5OCw4IEBAIHN0YXRpYyBpbnQgYW5h
+bG9naXhfZHBfc2V0X2JyaWRnZShzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPiAgCXBo
+eV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gIAlpZiAoZHAtPnBsYXRfZGF0YS0+cG93ZXJfb2ZmKQo+
+ICAJCWRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRhKTsKPiArCWNsa19kaXNh
+YmxlX3VucHJlcGFyZShkcC0+Y2xvY2spOwo+ICtvdXRfZHBfY2xrX3ByZToKPiAgCXBtX3J1bnRp
+bWVfcHV0X3N5bmMoZHAtPmRldik7Cj4gIAo+ICAJcmV0dXJuIHJldDsKPiBAQCAtMTIzNSwxMCAr
+MTI0MywxMyBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJsZShzdHJ1Y3Qg
+ZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICAKPiAgCWRpc2FibGVfaXJxKGRwLT5pcnEpOwo+ICAJcGh5
+X3Bvd2VyX29mZihkcC0+cGh5KTsKPiArCWFuYWxvZ2l4X2RwX3NldF9hbmFsb2dfcG93ZXJfZG93
+bihkcCwgUE9XRVJfQUxMLCAxKTsKClRoZSBsYXN0IGFyZ3VtZW50IGlzIG9mIGJvb2wgdHlwZSwg
+c28gcHJlZmVyYWJseSBpdCBzaG91bGQgYmUgdHJ1ZSwgYnV0Cm5vIGJpZyBkZWFsLgpCVFcgd2hh
+dCBpcyB0aGUgbWVhbmluZyBvZiB0aGUgbGFzdCBhcmd1bWVudCBvZgphbmFsb2dpeF9kcF9zZXRf
+YW5hbG9nX3Bvd2VyX2Rvd24/CgpSZWdhcmRzCkFuZHJ6ZWoKCj4gIAo+ICAJaWYgKGRwLT5wbGF0
+X2RhdGEtPnBvd2VyX29mZikKPiAgCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRf
+ZGF0YSk7Cj4gIAo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5jbG9jayk7Cj4gKwo+ICAJ
+cG1fcnVudGltZV9wdXRfc3luYyhkcC0+ZGV2KTsKPiAgCj4gIAlyZXQgPSBhbmFsb2dpeF9kcF9w
+cmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgdHJ1ZSk7CgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
