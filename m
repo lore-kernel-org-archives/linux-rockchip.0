@@ -1,54 +1,64 @@
-From: Sudeep Holla <sudeep.holla@arm.com>
-Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
- RK3328 SoCs
-Date: Wed, 22 Mar 2017 18:09:42 +0000
-Message-ID: <7240249b-690a-5800-0b46-fb93a49e2af1@arm.com>
-References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
- <1489670244-13328-5-git-send-email-cl@rock-chips.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: add regulator info for
+ Kevin digitizer
+Date: Wed, 22 Mar 2017 11:14:42 -0700
+Message-ID: <20170322181441.GC98450@google.com>
+References: <20170320235344.126298-1-briannorris@chromium.org>
+ <20170320235344.126298-5-briannorris@chromium.org>
+ <20415662.PctC9IM4SC@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1489670244-13328-5-git-send-email-cl@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: cl@rock-chips.com, heiko@sntech.de
-Cc: Sudeep Holla <sudeep.holla@arm.com>, mark.rutland@arm.com, wsa@the-dreams.de, linux-iio@vger.kernel.org, catalin.marinas@arm.com, shawn.lin@rock-chips.com, will.deacon@arm.com, kever.yang@rock-chips.com, dianders@chromium.org, yamada.masahiro@socionext.com, tony.xie@rock-chips.com, linux-i2c@vger.kernel.org, pmeerw@pmeerw.net, lars@metafoo.de, zhengxing@rock-chips.com, khilman@baylibre.com, linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, zhangqing@rock-chips.com, paweljarosz3691@gmail.com, arnd@arndb.de, yhx@rock-chips.com, knaack.h@gmx.de, robh+dt@kernel.org, matthias.bgg@gmail.com, rocky.hao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20415662.PctC9IM4SC@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 16/03/17 13:17, cl@rock-chips.com wrote:
-> From: Liang Chen <cl@rock-chips.com>
+On Wed, Mar 22, 2017 at 09:26:41AM +0100, Heiko Stuebner wrote:
+> Am Montag, 20. März 2017, 16:53:44 CET schrieb Brian Norris:
+> > We need to enable this regulator before the digitizer can be used. Wacom
+> > recommended waiting for 100 ms before talking to the HID.
+> > 
+> > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > ---
+> > v3:
+> >  * reintroduced into patch set; bindings are in linux-next
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> > b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts index
+> > 2f720cf2fd07..f4714c4606f3 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> > @@ -232,6 +232,9 @@ ap_i2c_dig: &i2c2 {
 > 
-> This patch adds core dtsi file for Rockchip RK3328 SoCs.
+> according to the hid-over-i2c binding, this should use a special compatible 
+> like
 > 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1362 ++++++++++++++++++++++++++++++
->  1 file changed, 1362 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> 	compatible = "wacom,w9013", "hid-over-i2c"
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> new file mode 100644
-> index 0000000..a92955c
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> As the binding patch is from Caesar, I assume that is the Kevin component and
+> I can add that myself, just need confirmation that this is actually the correct 
+> component :-) .
 
-[...]
+*Sigh.* The I2C (and SPI) framework is still broken w.r.t. multiple
+compatible strings and drivers built as modules [1]. So I'd really
+rather not do this...
 
-> +	cpus {
-> +		#address-cells = <2>;
-> +		#size-cells = <0>;
-> +
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53", "arm,armv8";
-> +			reg = <0x0 0x0>;
-> +			enable-method = "psci";
-> +			clocks = <&cru ARMCLK>;
+...but yes, that's a fair component description.
 
-Why "clocks" property is present only for cpu0 ?
+Brian
 
--- 
-Regards,
-Sudeep
+[1] Some discussion about SPI:
+    https://patchwork.kernel.org/patch/7630571/
+    And the discussion about I2C (25% through that thread):
+    https://patchwork.kernel.org/patch/9455245/
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
