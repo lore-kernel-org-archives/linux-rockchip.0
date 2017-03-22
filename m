@@ -1,54 +1,81 @@
-From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
-Subject: Re: [PATCH v2 2/6] dt-bindings: i2c: rk3x: add support for rk3328
-Date: Wed, 22 Mar 2017 10:10:35 +0100
-Message-ID: <20170322091035.agto6vydm7cf3t6y@ninjato>
-References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
- <1489670244-13328-3-git-send-email-cl@rock-chips.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 26/41] drm/bridge: analogix_dp: Reset aux channel if an
+ error occurred
+Date: Wed, 22 Mar 2017 10:14:18 +0100
+Message-ID: <5905e509-20f4-3f83-8cfa-23f5d1ee46a7@samsung.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <CGME20170310045223epcas4p1b88c70943a54505c1d71e470bc5d73e7@epcas4p1.samsung.com>
+ <20170310043305.17216-27-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="r2cx52gnis2tawdv"
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1489670244-13328-3-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang@rock-chip
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20170310043305.17216-27-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---r2cx52gnis2tawdv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Mar 16, 2017 at 09:17:20PM +0800, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org wrote:
-> From: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->=20
-> The rk3328 i2c is the same as rk3399
->=20
-> Signed-off-by: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Applied to for-next, thanks!
-
-
---r2cx52gnis2tawdv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAljSP4sACgkQFA3kzBSg
-KbZ73w//eZ3ALH362RYjDxJdV9OZdJhlcBVIQ2DlKGZll7zfsrA7WeNzgtMYU0Jy
-Y/mPPztTAgyBsGRDwDCQQ1wfNjJcVnTQUbkcoreVl1WQDs74Kbi+0zokPjeLYP40
-G7d+2u26XoYjKZxYvq//w5TA98uDpfX6MsULbFuVi0F+P9ghHc6X4glWtTriNnc5
-N+xHS9w68HPUWJ77hK00pcDksbF48JLL1BLa2dN3rP1QQ35kBfRe9wPrEvI5XKw/
-EkHPR1adZJP2F5Vr6xWelaNpX3e7vnM8cWD880B8/9/k4yaT67AAyypyU17pixQr
-4VrXvBXQ6xuMS7UGzJSYEDdhZPP51QrzBqEfXzRB9X79UoGabYFTjE/BG/SNV3fP
-Scc+Ct6lOFbXjyfe0DIFuP9kvAJYCARPXR0CXCVfXD40CA1tGzJt4LER+whaGJuf
-V/zDGpgxlaxy9mqDYPqiSL+epXmhR/jrjVidJtmW5hBtfI7O2/Jt4l2r3QbViary
-zNZ+sJYowKuRyQkO3+ZXaqXoIMxmPh7TuIjUqRsxqQ4UuTYkDwLniTL9S6xRFB8V
-mgfMQA06TGB27hpJz0JCnrKiMx6BDlBGXMJhL9v1nzgicDpzMusC4KdhRZMkktmO
-cK9I1UPeszdFTGMYMxK8tJ0AThs1aX2G6O3AtDxOoxWH20kOFt0=
-=2wNW
------END PGP SIGNATURE-----
-
---r2cx52gnis2tawdv--
+T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IExpbiBIdWFuZyA8
+aGxAcm9jay1jaGlwcy5jb20+Cj4KPiBBVVggZXJyb3JzIGFyZSBjYXVzZWQgYnkgbWFueSBkaWZm
+ZXJlbnQgcmVhc29ucy4gV2UgbWF5IG5vdCBrbm93IHdoYXQKPiBoYXBwZW5lZCBpbiBhdXggY2hh
+bm5lbCBvbiBmYWlsdXJlLCBzbyBsZXQncyByZXNldCBhdXggY2hhbm5lbCBpZiBzb21lCj4gZXJy
+b3JzIG9jY3VycmVkLgo+Cj4gQ2M6IOW+geWiniDnjosgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBD
+YzogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+IFNpZ25lZC1vZmYt
+Ynk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQ
+YXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8
+YS5oYWpkYUBzYW1zdW5nLmNvbT4KCkZldyBxdWVzdGlvbnMgYmVsb3c6Cgo+IC0tLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIHwgMTggKysrKysr
+KysrKysrKystLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspLCA0IGRlbGV0
+aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
+YW5hbG9naXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX3JlZy5jCj4gaW5kZXggMzc3YmVlNGUyMGZkLi4xY2I1N2U1MjhlYzggMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMK
+PiBAQCAtNDY1LDYgKzQ2NSwxMCBAQCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRfYXV4KHN0cnVjdCBh
+bmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+ICAJcmVnID0gUlBMWV9SRUNFSVYgfCBBVVhfRVJSOwo+
+ICAJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfSU5UX1NUQSk7Cj4gIAo+
+ICsJYW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKGRwLCBBVVhfQkxPQ0ssIHRydWUp
+Owo+ICsJdXNsZWVwX3JhbmdlKDEwLCAxMSk7Cj4gKwlhbmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bv
+d2VyX2Rvd24oZHAsIEFVWF9CTE9DSywgZmFsc2UpOwo+ICsKPiAgCWFuYWxvZ2l4X2RwX3Jlc2V0
+X2F1eChkcCk7Cj4gIAo+ICAJLyogRGlzYWJsZSBBVVggdHJhbnNhY3Rpb24gSC9XIHJldHJ5ICov
+Cj4gQEAgLTExNTgsNyArMTE2Miw3IEBAIHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3Ry
+dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCj4gIAkJCQkgcmVnLCAhKHJlZyAmIEFVWF9FTiks
+IDI1LCA1MDAgKiAxMDAwKTsKPiAgCWlmIChyZXQpIHsKPiAgCQlkZXZfZXJyKGRwLT5kZXYsICJB
+VVggQ0ggZW5hYmxlIHRpbWVvdXQhXG4iKTsKPiAtCQlyZXR1cm4gLUVUSU1FRE9VVDsKPiArCQln
+b3RvIGF1eF9lcnJvcjsKPiAgCX0KPiAgCj4gIAkvKiBUT0RPOiBXYWl0IGZvciBhbiBpbnRlcnJ1
+cHQgaW5zdGVhZCBvZiBsb29waW5nPyAqLwo+IEBAIC0xMTY3LDcgKzExNzEsNyBAQCBzc2l6ZV90
+IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAo+ICAJ
+CQkJIHJlZywgcmVnICYgUlBMWV9SRUNFSVYsIDEwLCAyMCAqIDEwMDApOwo+ICAJaWYgKHJldCkg
+ewo+ICAJCWRldl9lcnIoZHAtPmRldiwgIkFVWCBDSCBjbWQgcmVwbHkgdGltZW91dCFcbiIpOwo+
+IC0JCXJldHVybiAtRVRJTUVET1VUOwo+ICsJCWdvdG8gYXV4X2Vycm9yOwo+ICAJfQo+ICAKPiAg
+CS8qIENsZWFyIGludGVycnVwdCBzb3VyY2UgZm9yIEFVWCBDSCBjb21tYW5kIHJlcGx5ICovCj4g
+QEAgLTExNzcsNyArMTE4MSw3IEBAIHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0
+IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCj4gIAlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBB
+TkFMT0dJWF9EUF9JTlRfU1RBKTsKPiAgCWlmIChyZWcgJiBBVVhfRVJSKSB7Cj4gIAkJd3JpdGVs
+KEFVWF9FUlIsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0lOVF9TVEEpOwo+IC0JCXJldHVy
+biAtRVJFTU9URUlPOwo+ICsJCWdvdG8gYXV4X2Vycm9yOwo+ICAJfQo+ICAKPiAgCS8qIENoZWNr
+IEFVWCBDSCBlcnJvciBhY2Nlc3Mgc3RhdHVzICovCj4gQEAgLTExODUsNyArMTE4OSw3IEBAIHNz
+aXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAs
+Cj4gIAlpZiAoKHJlZyAmIEFVWF9TVEFUVVNfTUFTSykpIHsKPiAgCQlkZXZfZXJyKGRwLT5kZXYs
+ICJBVVggQ0ggZXJyb3IgaGFwcGVuZWQ6ICVkXG5cbiIsCj4gIAkJCXJlZyAmIEFVWF9TVEFUVVNf
+TUFTSyk7Cj4gLQkJcmV0dXJuIC1FUkVNT1RFSU87Cj4gKwkJZ290byBhdXhfZXJyb3I7Cj4gIAl9
+Cj4gIAo+ICAJaWYgKG1zZy0+cmVxdWVzdCAmIERQX0FVWF9JMkNfUkVBRCkgewo+IEBAIC0xMjEx
+LDQgKzEyMTUsMTAgQEAgc3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9n
+aXhfZHBfZGV2aWNlICpkcCwKPiAgCQltc2ctPnJlcGx5ID0gRFBfQVVYX05BVElWRV9SRVBMWV9B
+Q0s7Cj4gIAo+ICAJcmV0dXJuIG51bV90cmFuc2ZlcnJlZCA+IDAgPyBudW1fdHJhbnNmZXJyZWQg
+OiAtRUJVU1k7Cj4gKwo+ICthdXhfZXJyb3I6Cj4gKwkvKiBpZiBhdXggZXJyIGhhcHBlbiwgcmVz
+ZXQgYXV4ICovCj4gKwlhbmFsb2dpeF9kcF9pbml0X2F1eChkcCk7Cj4gKwo+ICsJcmV0dXJuIC1F
+UkVNT1RFSU87CgpZb3UgYXJlIG1hc2tpbmcgb3JpZ2luYWwgZXJyb3IgdmFsdWVzIGhlcmUsIGlz
+IGl0IGludGVuZGVkPwoKPiAgfQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
