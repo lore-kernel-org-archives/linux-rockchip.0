@@ -1,141 +1,43 @@
 From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 39/41] drm/bridge: analogix_dp: Split the platform-specific
- poweron in two parts
-Date: Wed, 22 Mar 2017 11:42:12 +0100
-Message-ID: <f41b1cdf-0e69-df53-0532-d810b609e892@samsung.com>
+Subject: Re: [PATCH 40/41] drm/bridge: analogix_dp: Properly log AUX CH errors
+Date: Wed, 22 Mar 2017 11:47:56 +0100
+Message-ID: <0459cb7d-b00a-22be-8634-6c19ad9b9374@samsung.com>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310045205epcas2p2bb638cfe42b9b97be0bad5af0922e98e@epcas2p2.samsung.com>
- <20170310043305.17216-40-seanpaul@chromium.org>
+ <CGME20170310045125epcas4p4beef0f6ab61ff6d4fba2a347adfc452f@epcas4p4.samsung.com>
+ <20170310043305.17216-41-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-reply-to: <20170310043305.17216-40-seanpaul@chromium.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20170310043305.17216-41-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: Yakir Yang <ykk@rock-chips.com>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, linux-arm-kernel@lists.infradead.org, zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, Kyungmin Park <kyungmin.park@samsung.com>
+Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10.03.2017 05:32, Sean Paul wrote:
-> From: Douglas Anderson <dianders@chromium.org>
->
-> Some of the platform-specific stuff in rockchip_dp_poweron() needs to
-> happen before the generic code.  Some needs to happen after.  Let's
-> split the callback in two.
->
-> Specifically we can't start doing PSR work until _after_ the whole
-> controller is up, so don't set the enable until the end.
->
-> Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> [seanpaul added exynos change]
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-
-Sounds like mid-layer issue. I do not know bridge details so I can only
-guess but probably passing full control to drivers and call generic code
-via helpers could be better solution.
-Anyway it can be done later.
-
-For now:
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-
-
-Regards
-Andrzej
-
-> ---
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  7 +++++--
->  drivers/gpu/drm/exynos/exynos_dp.c                 |  2 +-
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++++++--
->  include/drm/bridge/analogix_dp.h                   |  3 ++-
->  4 files changed, 18 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index a05bc0271188..bc9a0a28ab1d 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1254,8 +1254,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
->  		goto out_dp_clk_pre;
->  	}
->  
-> -	if (dp->plat_data->power_on)
-> -		dp->plat_data->power_on(dp->plat_data);
-> +	if (dp->plat_data->power_on_start)
-> +		dp->plat_data->power_on_start(dp->plat_data);
->  
->  	phy_power_on(dp->phy);
->  
-> @@ -1278,6 +1278,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
->  		goto out_dp_init;
->  	}
->  
-> +	if (dp->plat_data->power_on_end)
-> +		dp->plat_data->power_on_end(dp->plat_data);
-> +
->  	enable_irq(dp->irq);
->  	return 0;
->  
-> diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-> index 1ef0be338b85..6b79c3b3802f 100644
-> --- a/drivers/gpu/drm/exynos/exynos_dp.c
-> +++ b/drivers/gpu/drm/exynos/exynos_dp.c
-> @@ -168,7 +168,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
->  	dp->drm_dev = drm_dev;
->  
->  	dp->plat_data.dev_type = EXYNOS_DP;
-> -	dp->plat_data.power_on = exynos_dp_poweron;
-> +	dp->plat_data.power_on_start = exynos_dp_poweron;
->  	dp->plat_data.power_off = exynos_dp_poweroff;
->  	dp->plat_data.attach = exynos_dp_bridge_attach;
->  	dp->plat_data.get_modes = exynos_dp_get_modes;
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 14f68e792e6f..07dd09e1e32f 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -127,7 +127,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
->  	return 0;
->  }
->  
-> -static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
-> +static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
->  {
->  	struct rockchip_dp_device *dp = to_dp(plat_data);
->  	int ret;
-> @@ -145,6 +145,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
->  		return ret;
->  	}
->  
-> +	return ret;
-> +}
-> +
-> +static int rockchip_dp_poweron_end(struct analogix_dp_plat_data *plat_data)
-> +{
-> +	struct rockchip_dp_device *dp = to_dp(plat_data);
-> +
->  	return rockchip_drm_psr_activate(&dp->encoder);
->  }
->  
-> @@ -399,7 +406,8 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->  	dp->plat_data.encoder = &dp->encoder;
->  
->  	dp->plat_data.dev_type = dp->data->chip_type;
-> -	dp->plat_data.power_on = rockchip_dp_poweron;
-> +	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
-> +	dp->plat_data.power_on_end = rockchip_dp_poweron_end;
->  	dp->plat_data.power_off = rockchip_dp_powerdown;
->  	dp->plat_data.get_modes = rockchip_dp_get_modes;
->  	dp->plat_data.cleanup = rockchip_dp_cleanup;
-> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-> index c079ca1ffc76..1049ee56ae76 100644
-> --- a/include/drm/bridge/analogix_dp.h
-> +++ b/include/drm/bridge/analogix_dp.h
-> @@ -30,7 +30,8 @@ struct analogix_dp_plat_data {
->  	struct drm_encoder *encoder;
->  	struct drm_connector *connector;
->  
-> -	int (*power_on)(struct analogix_dp_plat_data *);
-> +	int (*power_on_start)(struct analogix_dp_plat_data *);
-> +	int (*power_on_end)(struct analogix_dp_plat_data *);
->  	int (*power_off)(struct analogix_dp_plat_data *);
->  	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
->  		      struct drm_connector *);
+T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IERvdWdsYXMgQW5k
+ZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPgo+IFRoZSBjb2RlIGluIGFuYWxvZ2l4X2Rw
+X3RyYW5zZmVyKCkgdGhhdCB3YXMgc3VwcG9zZWQgdG8gcHJpbnQgb3V0Ogo+ICAgQVVYIENIIGVy
+cm9yIGhhcHBlbmVkCj4KPiBXYXMgYWN0dWFsbHkgZGVhZCBjb2RlLiBUaGF0J3MgYmVjYXVzZSB0
+aGUgcHJldmlvdXMgY2hlY2sgKHdoZXRoZXIKPiB0aGUgaW50ZXJydXB0IHN0YXR1cyBpbmRpY2F0
+ZWQgYW55IGVycm9ycykgd291bGQgaGF2ZSBoaXQgZm9yIGFsbAo+IGVycm9ycyBhbnl3YXkuCj4K
+PiBMZXQncyBjb21iaW5lIHRoZSB0d28gZXJyb3IgY2hlY2tzIHNvIHdlIGNhbiBhY3R1YWxseSBz
+ZWUgQVVYIENICj4gZXJyb3JzLiAgV2UnbGwgYWxzbyBkb3duZ3JhZGUgdGhlIG1lc3NhZ2UgdG8g
+YSB3YXJuaW5nIHNpbmNlIHNvbWUgb2YKPiB0aGVzZSB0eXBlcyBvZiBlcnJvcnMgbWlnaHQgYmUg
+ZXhwZWN0ZWQgZm9yIHNvbWUgZGlzcGxheXMuICBJZiB0aGlzCj4gZ2V0cyB0b28gbm9pc3kgd2Ug
+Y2FuIGRvd25ncmFkZSBhZ2FpbiB0byBkZWJ1Zy4KPgo+IENjOiDlvoHlop4g546LIDx3enpAcm9j
+ay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNA
+Y2hyb21pdW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
+dW0ub3JnPgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4K
+LS0KUmVnYXJkcwpBbmRyemVqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
