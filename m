@@ -1,61 +1,59 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: add arm/arm64 include symlinks
-Date: Tue, 21 Mar 2017 17:20:27 -0700
-Message-ID: <20170322002027.GA2984@localhost>
-References: <20170226060058.5841-1-heiko@sntech.de>
- <20170226060058.5841-2-heiko@sntech.de>
- <20170320230337.GB78325@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 1/2] dt-bindings: Add INNOLUX P079ZCA panel bindings
+Date: Wed, 22 Mar 2017 09:53:06 +0800
+Message-ID: <1490147587-4382-1-git-send-email-zyw@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20170320230337.GB78325-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 20, 2017 at 04:03:37PM -0700, Brian Norris wrote:
-> Hi,
-> 
-> On Sun, Feb 26, 2017 at 07:00:58AM +0100, Heiko Stuebner wrote:
-> > Allow including of dtsi files in an architecture-independent manner.
-> > Some dtsi files may be shared between architectures and one suggestion
-> > was to have symlinks and let these includes get accessed via a
-> >     #include <arm64/foo.dtsi>
-> > So add the necessary symlinks for arm32.
-> > 
-> > Suggested-by: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> > ---
-> > Suggested by Olof in response to the patch adding direct symlinks
-> > for cros-ec includes.
-> > 
-> > Tested with adapted rk3399-Gru dtsi files and while we only need this arm64
-> > version right now, it might make sense to already have both the arm32 and
-> > arm64 versions ready.
-> 
-> FWIW, tested fine here too (for the same platform).
-> 
-> I guess this works fine, if it makes people happy. It also allows some
-> weird #include paths. e.g.:
-> 
-> #include <arm64/include/arm/include/arm64/rockchip/rk3399.dtsi>
-> 
-> I guess we can call that an entertaining feature, and not a bug?
-> 
-> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Where should this go? I'd like not to wait another few months before
-> sending my Gru/Kevin DTS again.
+The Innolux P079ZCA is a 7.85" panel with a 768X1024 resolution and
+connected to DSI using four lanes.
 
-Checked into shared/dt-symlinks on the arm-soc repo now (and merged into
-next/dt and next/dt64). Please use that branch as a base for DT material that
-will use this.
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
 
+Changes in v3: None
+Changes in v2: None
 
--Olof
+ .../bindings/display/panel/innolux,p079zca.txt     | 23 ++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+
+diff --git a/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt b/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+new file mode 100644
+index 0000000..5c70a83
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/innolux,p079zca.txt
+@@ -0,0 +1,23 @@
++Innolux P079ZCA 7.85" 768x1024 TFT LCD panel
++
++Required properties:
++- compatible: should be "innolux,p079zca"
++- reg: DSI virtual channel of the peripheral
++- power-supply: phandle of the regulator that provides the supply voltage
++- enable-gpios: panel enable gpio
++
++Optional properties:
++- backlight: phandle of the backlight device attached to the panel
++
++Example:
++
++	&mipi_dsi {
++		panel {
++			compatible = "innolux,p079zca";
++			reg = <0>;
++			power-supply = <...>;
++			backlight = <&backlight>;
++			enable-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
++			status = "okay";
++		};
++	};
+-- 
+2.6.3
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
