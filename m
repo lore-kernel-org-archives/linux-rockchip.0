@@ -1,82 +1,121 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: Document rk3399 Gru/Kevin
-Date: Wed, 22 Mar 2017 10:01:00 +0100
-Message-ID: <3700058.o6cBinDvsr@phil>
-References: <20170320235344.126298-1-briannorris@chromium.org> <20170320235344.126298-2-briannorris@chromium.org>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 25/41] drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
+Date: Wed, 22 Mar 2017 10:09:30 +0100
+Message-ID: <ad98275a-28c1-3d95-0d1b-dd4949444e61@samsung.com>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <CGME20170310044747epcas5p4aad6700da9709e846c788b3637232ff9@epcas5p4.samsung.com>
+ <20170310043305.17216-26-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170320235344.126298-2-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20170310043305.17216-26-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Tomasz Figa <tomasz.figa@chromium.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 20. März 2017, 16:53:41 CET schrieb Brian Norris:
-> Gru is a base dev board for a family of devices, including Kevin. Both
-> utilize Rockchip RK3399, and they share much of their design.
-> 
-> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-applied for 4.12, after adding a "(Samsung Chromebook Plus)" hint, as that may 
-help people identifying the correct dts and also is public knowledge (some 
-blogs but also /proc/device-tree/compatible on the device itself).
-
-
-Heiko
-
-> ---
-> v3:
->  * added Rob's ack
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.txt | 20
-> ++++++++++++++++++++ 1 file changed, 20 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> b/Documentation/devicetree/bindings/arm/rockchip.txt index
-> 226ee9131078..a18308c5bdf1 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -59,6 +59,17 @@ Rockchip platforms device tree bindings
->        - compatible = "google,veyron-brain-rev0", "google,veyron-brain",
->  		     "google,veyron", "rockchip,rk3288";
-> 
-> +- Google Gru (dev-board):
-> +    Required root node properties:
-> +      - compatible = "google,gru-rev15", "google,gru-rev14",
-> +		     "google,gru-rev13", "google,gru-rev12",
-> +		     "google,gru-rev11", "google,gru-rev10",
-> +		     "google,gru-rev9", "google,gru-rev8",
-> +		     "google,gru-rev7", "google,gru-rev6",
-> +		     "google,gru-rev5", "google,gru-rev4",
-> +		     "google,gru-rev3", "google,gru-rev2",
-> +		     "google,gru", "rockchip,rk3399";
-> +
->  - Google Jaq (Haier Chromebook 11 and more):
->      Required root node properties:
->        - compatible = "google,veyron-jaq-rev5", "google,veyron-jaq-rev4",
-> @@ -73,6 +84,15 @@ Rockchip platforms device tree bindings
->  		     "google,veyron-jerry-rev3", "google,veyron-jerry",
->  		     "google,veyron", "rockchip,rk3288";
-> 
-> +- Google Kevin:
-> +    Required root node properties:
-> +      - compatible = "google,kevin-rev15", "google,kevin-rev14",
-> +		     "google,kevin-rev13", "google,kevin-rev12",
-> +		     "google,kevin-rev11", "google,kevin-rev10",
-> +		     "google,kevin-rev9", "google,kevin-rev8",
-> +		     "google,kevin-rev7", "google,kevin-rev6",
-> +		     "google,kevin", "google,gru", "rockchip,rk3399";
-> +
->  - Google Mickey (Asus Chromebit CS10):
->      Required root node properties:
->        - compatible = "google,veyron-mickey-rev8",
-> "google,veyron-mickey-rev7",
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IHphaW4gd2FuZyA8
+d3p6QHJvY2stY2hpcHMuY29tPgo+Cj4gVGhlcmUgc29tZSBkaWZmZXJlbnQgYml0IGJldHdlZW4g
+Um9ja2NoaXAgYW5kIEV4eW5vcyBpbiByZWdpc3RlciAiQVVYX1BEIiwKPiBTbyBsZXQncyBmaXgg
+dGhlIGluY29ycmVjdCBvcGVyYXRpb25zIGFib3V0IGl0LgoKVGhlcmUgYXJlIG1vcmUgZGlmZmVy
+ZW5jZXMuCgo+Cj4gQ2M6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4K
+PiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQt
+b2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KCkJlc2lkZSBkZXNjcmlw
+dGlvbiBhbmQgc3ViamVjdC4KClJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNh
+bXN1bmcuY29tPgotLQpSZWdhcmRzCkFuZHJ6ZWoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyB8IDExNiArKysrKysrKysrKystLS0tLS0t
+LS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmgg
+fCAgIDIgKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDY0IGluc2VydGlvbnMoKyksIDU0IGRlbGV0aW9u
+cygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
+bG9naXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
+X2RwX3JlZy5jCj4gaW5kZXggYmI3MmY4YjBlNjAzLi4zNzdiZWU0ZTIwZmQgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwo+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPiBA
+QCAtMjQ4LDc2ICsyNDgsODQgQEAgdm9pZCBhbmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bvd2VyX2Rv
+d24oc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCj4gIHsKPiAgCXUzMiByZWc7Cj4gIAl1
+MzIgcGh5X3BkX2FkZHIgPSBBTkFMT0dJWF9EUF9QSFlfUEQ7Cj4gKwl1MzIgbWFzazsKPiAgCj4g
+IAlpZiAoZHAtPnBsYXRfZGF0YSAmJiBpc19yb2NrY2hpcChkcC0+cGxhdF9kYXRhLT5kZXZfdHlw
+ZSkpCj4gIAkJcGh5X3BkX2FkZHIgPSBBTkFMT0dJWF9EUF9QRDsKPiAgCj4gIAlzd2l0Y2ggKGJs
+b2NrKSB7Cj4gIAljYXNlIEFVWF9CTE9DSzoKPiAtCQlpZiAoZW5hYmxlKSB7Cj4gLQkJCXJlZyA9
+IHJlYWRsKGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQkJcmVnIHw9IEFVWF9QRDsK
+PiAtCQkJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwo+IC0JCX0gZWxz
+ZSB7Cj4gLQkJCXJlZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQkJ
+cmVnICY9IH5BVVhfUEQ7Cj4gLQkJCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIHBoeV9wZF9h
+ZGRyKTsKPiAtCQl9Cj4gKwkJaWYgKGRwLT5wbGF0X2RhdGEgJiYgaXNfcm9ja2NoaXAoZHAtPnBs
+YXRfZGF0YS0+ZGV2X3R5cGUpKQo+ICsJCQltYXNrID0gUktfQVVYX1BEOwo+ICsJCWVsc2UKPiAr
+CQkJbWFzayA9IEFVWF9QRDsKPiArCj4gKwkJcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgcGh5
+X3BkX2FkZHIpOwo+ICsJCWlmIChlbmFibGUpCj4gKwkJCQlyZWcgfD0gbWFzazsKPiArCQllbHNl
+Cj4gKwkJCQlyZWcgJj0gfm1hc2s7Cj4gKwkJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgcGh5
+X3BkX2FkZHIpOwo+ICAJCWJyZWFrOwo+ICAJY2FzZSBDSDBfQkxPQ0s6Cj4gLQkJaWYgKGVuYWJs
+ZSkgewo+IC0JCQlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gLQkJ
+CXJlZyB8PSBDSDBfUEQ7Cj4gLQkJCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIHBoeV9wZF9h
+ZGRyKTsKPiAtCQl9IGVsc2Ugewo+IC0JCQlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBwaHlf
+cGRfYWRkcik7Cj4gLQkJCXJlZyAmPSB+Q0gwX1BEOwo+IC0JCQl3cml0ZWwocmVnLCBkcC0+cmVn
+X2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gLQkJfQo+ICsJCW1hc2sgPSBDSDBfUEQ7Cj4gKwkJcmVn
+ID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwo+ICsKPiArCQlpZiAoZW5hYmxl
+KQo+ICsJCQlyZWcgfD0gbWFzazsKPiArCQllbHNlCj4gKwkJCXJlZyAmPSB+bWFzazsKPiArCQl3
+cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gIAkJYnJlYWs7Cj4gIAlj
+YXNlIENIMV9CTE9DSzoKPiAtCQlpZiAoZW5hYmxlKSB7Cj4gLQkJCXJlZyA9IHJlYWRsKGRwLT5y
+ZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQkJcmVnIHw9IENIMV9QRDsKPiAtCQkJd3JpdGVs
+KHJlZywgZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwo+IC0JCX0gZWxzZSB7Cj4gLQkJCXJl
+ZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQkJcmVnICY9IH5DSDFf
+UEQ7Cj4gLQkJCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQl9
+Cj4gKwkJbWFzayA9IENIMV9QRDsKPiArCQlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBwaHlf
+cGRfYWRkcik7Cj4gKwo+ICsJCWlmIChlbmFibGUpCj4gKwkJCXJlZyB8PSBtYXNrOwo+ICsJCWVs
+c2UKPiArCQkJcmVnICY9IH5tYXNrOwo+ICsJCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIHBo
+eV9wZF9hZGRyKTsKPiAgCQlicmVhazsKPiAgCWNhc2UgQ0gyX0JMT0NLOgo+IC0JCWlmIChlbmFi
+bGUpIHsKPiAtCQkJcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwo+IC0J
+CQlyZWcgfD0gQ0gyX1BEOwo+IC0JCQl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBwaHlfcGRf
+YWRkcik7Cj4gLQkJfSBlbHNlIHsKPiAtCQkJcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgcGh5
+X3BkX2FkZHIpOwo+IC0JCQlyZWcgJj0gfkNIMl9QRDsKPiAtCQkJd3JpdGVsKHJlZywgZHAtPnJl
+Z19iYXNlICsgcGh5X3BkX2FkZHIpOwo+IC0JCX0KPiArCQltYXNrID0gQ0gyX1BEOwo+ICsJCXJl
+ZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiArCj4gKwkJaWYgKGVuYWJs
+ZSkKPiArCQkJcmVnIHw9IG1hc2s7Cj4gKwkJZWxzZQo+ICsJCQlyZWcgJj0gfm1hc2s7Cj4gKwkJ
+d3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwo+ICAJCWJyZWFrOwo+ICAJ
+Y2FzZSBDSDNfQkxPQ0s6Cj4gLQkJaWYgKGVuYWJsZSkgewo+IC0JCQlyZWcgPSByZWFkbChkcC0+
+cmVnX2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gLQkJCXJlZyB8PSBDSDNfUEQ7Cj4gLQkJCXdyaXRl
+bChyZWcsIGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQl9IGVsc2Ugewo+IC0JCQly
+ZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gLQkJCXJlZyAmPSB+Q0gz
+X1BEOwo+IC0JCQl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gLQkJ
+fQo+ICsJCW1hc2sgPSBDSDNfUEQ7Cj4gKwkJcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgcGh5
+X3BkX2FkZHIpOwo+ICsKPiArCQlpZiAoZW5hYmxlKQo+ICsJCQlyZWcgfD0gbWFzazsKPiArCQll
+bHNlCj4gKwkJCXJlZyAmPSB+bWFzazsKPiArCQl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBw
+aHlfcGRfYWRkcik7Cj4gIAkJYnJlYWs7Cj4gIAljYXNlIEFOQUxPR19UT1RBTDoKPiAtCQlpZiAo
+ZW5hYmxlKSB7Cj4gLQkJCXJlZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsK
+PiAtCQkJcmVnIHw9IERQX1BIWV9QRDsKPiAtCQkJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsg
+cGh5X3BkX2FkZHIpOwo+IC0JCX0gZWxzZSB7Cj4gLQkJCXJlZyA9IHJlYWRsKGRwLT5yZWdfYmFz
+ZSArIHBoeV9wZF9hZGRyKTsKPiAtCQkJcmVnICY9IH5EUF9QSFlfUEQ7Cj4gLQkJCXdyaXRlbChy
+ZWcsIGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKPiAtCQl9Cj4gKwkJLyoKPiArCQkgKiBU
+aGVyZSBpcyBubyBiaXQgbmFtZWQgRFBfUEhZX1BELCBzbyBXZSB1c2VkIERQX0lOQ19CRwo+ICsJ
+CSAqIHRvIHBvd2VyIG9mZiBldmVyeXRoaW5nIGluc3RlYWQgb2YgRFBfUEhZX1BEIGluCj4gKwkJ
+ICogUm9ja2NoaXAKPiArCQkgKi8KPiArCQlpZiAoZHAtPnBsYXRfZGF0YSAmJiBpc19yb2NrY2hp
+cChkcC0+cGxhdF9kYXRhLT5kZXZfdHlwZSkpCj4gKwkJCW1hc2sgPSBEUF9JTkNfQkc7Cj4gKwkJ
+ZWxzZQo+ICsJCQltYXNrID0gRFBfUEhZX1BEOwo+ICsKPiArCQlyZWcgPSByZWFkbChkcC0+cmVn
+X2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gKwkJaWYgKGVuYWJsZSkKPiArCQkJCXJlZyB8PSBtYXNr
+Owo+ICsJCWVsc2UKPiArCQkJCXJlZyAmPSB+bWFzazsKPiArCQl3cml0ZWwocmVnLCBkcC0+cmVn
+X2Jhc2UgKyBwaHlfcGRfYWRkcik7Cj4gKwkJaWYgKGRwLT5wbGF0X2RhdGEgJiYgaXNfcm9ja2No
+aXAoZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpKQo+ICsJCQl1c2xlZXBfcmFuZ2UoMTAsIDE1KTsK
+PiAgCQlicmVhazsKPiAgCWNhc2UgUE9XRVJfQUxMOgo+ICAJCWlmIChlbmFibGUpIHsKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcu
+aCBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmgKPiBp
+bmRleCA5NjAyNjY4NjY5ZjQuLmI2MzNhNGE1MDgyYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oCj4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuaAo+IEBAIC0zNDUsNyArMzQ1
+LDkgQEAKPiAgI2RlZmluZSBEUF9JTkNfQkcJCQkJKDB4MSA8PCA3KQo+ICAjZGVmaW5lIERQX0VY
+UF9CRwkJCQkoMHgxIDw8IDYpCj4gICNkZWZpbmUgRFBfUEhZX1BECQkJCSgweDEgPDwgNSkKPiAr
+I2RlZmluZSBSS19BVVhfUEQJCQkJKDB4MSA8PCA1KQo+ICAjZGVmaW5lIEFVWF9QRAkJCQkJKDB4
+MSA8PCA0KQo+ICsjZGVmaW5lIFJLX1BMTF9QRAkJCQkoMHgxIDw8IDQpCj4gICNkZWZpbmUgQ0gz
+X1BECQkJCQkoMHgxIDw8IDMpCj4gICNkZWZpbmUgQ0gyX1BECQkJCQkoMHgxIDw8IDIpCj4gICNk
+ZWZpbmUgQ0gxX1BECQkJCQkoMHgxIDw8IDEpCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
