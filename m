@@ -1,37 +1,172 @@
 From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 22/41] drm/bridge: analogix_dp: Extend hpd check time to
- 100ms
-Date: Wed, 22 Mar 2017 09:32:52 +0100
-Message-ID: <48610cb3-3e54-2077-bb26-dfb58ea4d28d@samsung.com>
+Subject: Re: [PATCH 10/41] drm/bridge: analogix_dp: Don't change psr while
+ bridge is disabled
+Date: Wed, 22 Mar 2017 09:36:34 +0100
+Message-ID: <5279d215-4a19-73c0-0a77-9c8580fa36c0@samsung.com>
 References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044759epcas5p3119c5e5024a08f7898b1e4c0091d8dda@epcas5p3.samsung.com>
- <20170310043305.17216-23-seanpaul@chromium.org>
+ <CGME20170310044738epcas5p254ae086c7ed81ec88e4ba3211f86c014@epcas5p2.samsung.com>
+ <20170310043305.17216-11-seanpaul@chromium.org>
+ <e7b7ef5b-7935-a74c-c046-27c56ae16774@samsung.com>
+ <20170321195818.GE19389@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20170310043305.17216-23-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-reply-to: <20170321195818.GE19389@art_vandelay>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Douglas Anderson <dianders@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTAuMDMuMjAxNyAwNTozMiwgU2VhbiBQYXVsIHdyb3RlOgo+IEZyb206IExpbiBIdWFuZyA8
-aGxAcm9jay1jaGlwcy5jb20+Cj4KPiBXZSBvbmx5IGFsbG9jYXRlZCAxbXMgdG8gZGV0ZWN0IHRo
-ZSBocGQgc2lnbmFsIGJlZm9yZSwgaXQgdG9vIHNob3J0IHRvIGRldGVjdAo+IGEgc2hvcnQgcHVs
-c2UgKGhwZCBzaWduYWwpLCBleHRlbmQgaXQgdG8gMTAwbXMuCj4KPiBDYzogU3TDqXBoYW5lIE1h
-cmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IOW+geWiniDnjosgPHd6ekByb2Nr
-LWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29t
-Pgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKUmV2
-aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+Ci0tClJlZ2FyZHMK
-QW5kcnplagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 21.03.2017 20:58, Sean Paul wrote:
+> On Thu, Mar 16, 2017 at 02:40:21PM +0100, Andrzej Hajda wrote:
+>> On 10.03.2017 05:32, Sean Paul wrote:
+>>> From: zain wang <wzz@rock-chips.com>
+>>>
+>>> There is a race between AUX CH bring-up and enabling bridge which will
+>>> cause link training to fail. To avoid hitting it, don't change psr state
+>>> while enabling the bridge.
+>>>
+>>> Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+>>> Cc: Sean Paul <seanpaul@chromium.org>
+>>> Signed-off-by: zain wang <wzz@rock-chips.com>
+>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>>> [seanpaul fixed up the commit message a bit and renamed *_supported to *_enabled]
+>>> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+>> Hmm, beside resetting psr_enable in analogix_dp_bridge_disable I do not
+>> see functional change, or am I blind?
+> The patch also adds a check of psr_enable in analogix_dp_commit. This will avoid
+> trying to enable psr when the bridge is disabled (that's why psr_enable is
+> reset).
+
+Copy/paste from analogix_dp_commit chunk below:
+
+-	dp->psr_support = analogix_dp_detect_sink_psr(dp);
+-	if (dp->psr_support)
++	dp->psr_enable = analogix_dp_detect_sink_psr(dp);
++	if (dp->psr_enable)
+ 		analogix_dp_enable_sink_psr(dp);
+
+
+What is added here?
+
+Regards
+Andrzej
+
+>
+> Sean
+>
+>> Regards
+>> Andrzej
+>>
+>>> ---
+>>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 15 ++++++++-------
+>>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  2 +-
+>>>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  2 +-
+>>>  include/drm/bridge/analogix_dp.h                   |  2 +-
+>>>  4 files changed, 11 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> index 8a8f05fe9da3..64d94a34874d 100644
+>>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> @@ -98,20 +98,20 @@ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
+>>>  	return 0;
+>>>  }
+>>>  
+>>> -int analogix_dp_psr_supported(struct device *dev)
+>>> +int analogix_dp_psr_enabled(struct device *dev)
+>>>  {
+>>>  	struct analogix_dp_device *dp = dev_get_drvdata(dev);
+>>>  
+>>> -	return dp->psr_support;
+>>> +	return dp->psr_enable;
+>>>  }
+>>> -EXPORT_SYMBOL_GPL(analogix_dp_psr_supported);
+>>> +EXPORT_SYMBOL_GPL(analogix_dp_psr_enabled);
+>>>  
+>>>  int analogix_dp_enable_psr(struct device *dev)
+>>>  {
+>>>  	struct analogix_dp_device *dp = dev_get_drvdata(dev);
+>>>  	struct edp_vsc_psr psr_vsc;
+>>>  
+>>> -	if (!dp->psr_support)
+>>> +	if (!dp->psr_enable)
+>>>  		return 0;
+>>>  
+>>>  	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>>> @@ -134,7 +134,7 @@ int analogix_dp_disable_psr(struct device *dev)
+>>>  	struct edp_vsc_psr psr_vsc;
+>>>  	int ret;
+>>>  
+>>> -	if (!dp->psr_support)
+>>> +	if (!dp->psr_enable)
+>>>  		return 0;
+>>>  
+>>>  	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
+>>> @@ -878,8 +878,8 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
+>>>  	/* Enable video */
+>>>  	analogix_dp_start_video(dp);
+>>>  
+>>> -	dp->psr_support = analogix_dp_detect_sink_psr(dp);
+>>> -	if (dp->psr_support)
+>>> +	dp->psr_enable = analogix_dp_detect_sink_psr(dp);
+>>> +	if (dp->psr_enable)
+>>>  		analogix_dp_enable_sink_psr(dp);
+>>>  }
+>>>  
+>>> @@ -1120,6 +1120,7 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+>>>  	if (ret)
+>>>  		DRM_ERROR("failed to setup the panel ret = %d\n", ret);
+>>>  
+>>> +	dp->psr_enable = false;
+>>>  	dp->dpms_mode = DRM_MODE_DPMS_OFF;
+>>>  }
+>>>  
+>>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+>>> index b039b28d8fcc..e135a42cb19e 100644
+>>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+>>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+>>> @@ -170,7 +170,7 @@ struct analogix_dp_device {
+>>>  	int			dpms_mode;
+>>>  	int			hpd_gpio;
+>>>  	bool                    force_hpd;
+>>> -	bool			psr_support;
+>>> +	bool			psr_enable;
+>>>  
+>>>  	struct mutex		panel_lock;
+>>>  	bool			panel_is_modeset;
+>>> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> index 64e7e2c0bc58..f44756029478 100644
+>>> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> @@ -83,7 +83,7 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+>>>  	int vact_end;
+>>>  	int ret;
+>>>  
+>>> -	if (!analogix_dp_psr_supported(dp->dev))
+>>> +	if (!analogix_dp_psr_enabled(dp->dev))
+>>>  		return;
+>>>  
+>>>  	dev_dbg(dp->dev, "%s PSR...\n", enabled ? "enable" : "disable");
+>>> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+>>> index c99d6eaef1ac..4fc0165ed3f5 100644
+>>> --- a/include/drm/bridge/analogix_dp.h
+>>> +++ b/include/drm/bridge/analogix_dp.h
+>>> @@ -38,7 +38,7 @@ struct analogix_dp_plat_data {
+>>>  			 struct drm_connector *);
+>>>  };
+>>>  
+>>> -int analogix_dp_psr_supported(struct device *dev);
+>>> +int analogix_dp_psr_enabled(struct device *dev);
+>>>  int analogix_dp_enable_psr(struct device *dev);
+>>>  int analogix_dp_disable_psr(struct device *dev);
+>>>  
