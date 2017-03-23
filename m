@@ -1,30 +1,64 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: stmmac: dwmac-rk: Add handling for
- RGMII_ID/RXID/TXID
-Date: Wed, 22 Mar 2017 19:32:41 -0700 (PDT)
-Message-ID: <20170322.193241.552898718641680618.davem@davemloft.net>
-References: <1490197822-35428-1-git-send-email-w.egorov@phytec.de>
+From: =?UTF-8?B?6ZmI5Lqu?= <cl@rock-chips.com>
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
+ RK3328 SoCs
+Date: Thu, 23 Mar 2017 11:33:28 +0800
+Message-ID: <58D34208.6090509@rock-chips.com>
+References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
+ <1489670244-13328-5-git-send-email-cl@rock-chips.com>
+ <14610453.rKm3MBREMz@diego>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1490197822-35428-1-git-send-email-w.egorov@phytec.de>
-Sender: netdev-owner@vger.kernel.org
-To: w.egorov@phytec.de
-Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <14610453.rKm3MBREMz@diego>
+Sender: linux-i2c-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Wadim Egorov <w.egorov@phytec.de>
-Date: Wed, 22 Mar 2017 16:50:22 +0100
+Hi, Heiko
 
-> @@ -74,6 +74,10 @@ struct rk_priv_data {
->  #define GRF_BIT(nr)	(BIT(nr) | BIT(nr+16))
->  #define GRF_CLR_BIT(nr)	(BIT(nr+16))
->  
-> +#define DELAY_ENABLE(soc, tx, rx) \
-> +	((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE | \
-> +	 (rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE)
-
-This doesn't evaluate the way you want it to.
-
-You need to put parenthesis around both "x ? a : b" expressions.
+在 2017年03月21日 16:55, Heiko Stübner 写道:
+> Hi,
+>
+> Am Donnerstag, 16. März 2017, 21:17:22 CET schrieb cl@rock-chips.com:
+>> +		assigned-clock-parents =
+>> +			<&cru HDMIPHY>, <&cru PLL_APLL>,
+>> +			<&cru PLL_GPLL>, <&xin24m>,
+>> +			<&xin24m>, <&xin24m>;
+>> +		assigned-clock-rates =
+>> +			<0>, <61440000>,
+>> +			<0>, <24000000>,
+>> +			<24000000>, <24000000>,
+>> +			<15000000>, <15000000>,
+>> +			<100000000>, <100000000>,
+>> +			<100000000>, <100000000>,
+>> +			<50000000>, <100000000>,
+>> +			<100000000>, <100000000>,
+>> +			<50000000>, <50000000>,
+>> +			<50000000>, <50000000>,
+>> +			<24000000>, <600000000>,
+>> +			<491520000>, <1200000000>,
+>> +			<150000000>, <75000000>,
+>> +			<75000000>, <150000000>,
+>> +			<75000000>, <75000000>,
+>> +			<300000000>, <100000000>,
+>> +			<300000000>, <200000000>,
+>> +			<400000000>, <500000000>,
+>> +			<200000000>, <300000000>,
+>> +			<300000000>, <250000000>,
+>> +			<200000000>, <100000000>,
+>> +			<24000000>, <100000000>,
+>> +			<150000000>, <50000000>,
+>> +			<32768>, <32768>;
+>> +	};
+>> +
+>> +	gmac2io: eth@ff540000 {
+> phandle should be gmac instead?
+> Node name, ethernet@ff540000
+RK3328 have another gmac channel with PHY in the soc, so gmac2io mean 
+the channel with the PHY outside, and it is also called gmac2io in the TRM.
+>
+>
+> Heiko
+>
