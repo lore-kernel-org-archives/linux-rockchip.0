@@ -1,137 +1,95 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v4 4/4] pinctrl: rockchip: avoid hardirq-unsafe functions in irq_chip
-Date: Thu, 23 Mar 2017 10:59:31 +0000
-Message-ID: <20170323105931.10455-5-john@metanate.com>
-References: <20170323105931.10455-1-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170323105931.10455-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Julia Cartwright <julia@ni.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/7] mfd: rk808: fix up the chip id get failed
+Date: Thu, 23 Mar 2017 12:14:15 +0000
+Message-ID: <20170323121415.tv7sljjgbjw57qyl@dell>
+References: <1489734377-1716-1-git-send-email-zhangqing@rock-chips.com>
+ <1489734377-1716-2-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1489734377-1716-2-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-With real-time preemption, regmap functions cannot be used in the
-implementation of irq_chip since they use spinlocks which may sleep.
+On Fri, 17 Mar 2017, Elaine Zhang wrote:
 
-Move the setting of the mux for IRQs to an irq_bus_sync_unlock handler
-where we are allowed to sleep.
+> the rk8xx chip id is:
+> ((MSB << 8) | LSB) & 0xfff0
+> 
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/mfd/rk808.c       | 21 +++++++++++++++------
+>  include/linux/mfd/rk808.h |  1 +
+>  2 files changed, 16 insertions(+), 6 deletions(-)
 
-Signed-off-by: John Keeping <john@metanate.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
----
-v3: unchanged
-v2: unchanged
----
- drivers/pinctrl/pinctrl-rockchip.c | 44 ++++++++++++++++++++++++++++++++++----
- 1 file changed, 40 insertions(+), 4 deletions(-)
+For my own reference:
+  Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+  
+> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+> index fd087cbb0bde..3334a2a7f3fb 100644
+> --- a/drivers/mfd/rk808.c
+> +++ b/drivers/mfd/rk808.c
+> @@ -325,7 +325,7 @@ static int rk808_probe(struct i2c_client *client,
+>  	void (*pm_pwroff_fn)(void);
+>  	int nr_pre_init_regs;
+>  	int nr_cells;
+> -	int pm_off = 0;
+> +	int pm_off = 0, msb, lsb;
+>  	int ret;
+>  	int i;
+>  
+> @@ -333,14 +333,23 @@ static int rk808_probe(struct i2c_client *client,
+>  	if (!rk808)
+>  		return -ENOMEM;
+>  
+> -	rk808->variant = i2c_smbus_read_word_data(client, RK808_ID_MSB);
+> -	if (rk808->variant < 0) {
+> -		dev_err(&client->dev, "Failed to read the chip id at 0x%02x\n",
+> +	/* read Chip variant */
+> +	msb = i2c_smbus_read_byte_data(client, RK808_ID_MSB);
+> +	if (msb < 0) {
+> +		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
+>  			RK808_ID_MSB);
+> -		return rk808->variant;
+> +		return msb;
+>  	}
+>  
+> -	dev_dbg(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
+> +	lsb = i2c_smbus_read_byte_data(client, RK808_ID_LSB);
+> +	if (lsb < 0) {
+> +		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
+> +			RK808_ID_LSB);
+> +		return lsb;
+> +	}
+> +
+> +	rk808->variant = ((msb << 8) | lsb) & RK8XX_ID_MSK;
+> +	dev_info(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
+>  
+>  	switch (rk808->variant) {
+>  	case RK808_ID:
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index 83701ef7d3c7..54feb140c210 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -298,6 +298,7 @@ enum rk818_reg {
+>  #define VOUT_LO_INT	BIT(0)
+>  #define CLK32KOUT2_EN	BIT(0)
+>  
+> +#define RK8XX_ID_MSK			0xfff0
+>  enum {
+>  	BUCK_ILMIN_50MA,
+>  	BUCK_ILMIN_100MA,
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 9dd981ddbb17..f141aa0430b1 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -143,6 +143,9 @@ struct rockchip_drv {
-  * @gpio_chip: gpiolib chip
-  * @grange: gpio range
-  * @slock: spinlock for the gpio bank
-+ * @irq_lock: bus lock for irq chip
-+ * @new_irqs: newly configured irqs which must be muxed as GPIOs in
-+ *	irq_bus_sync_unlock()
-  */
- struct rockchip_pin_bank {
- 	void __iomem			*reg_base;
-@@ -165,6 +168,8 @@ struct rockchip_pin_bank {
- 	struct pinctrl_gpio_range	grange;
- 	raw_spinlock_t			slock;
- 	u32				toggle_edge_mode;
-+	struct mutex			irq_lock;
-+	u32				new_irqs;
- };
- 
- #define PIN_BANK(id, pins, label)			\
-@@ -2129,11 +2134,12 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	int ret;
- 
- 	/* make sure the pin is configured as gpio input */
--	ret = rockchip_set_mux(bank, d->hwirq, RK_FUNC_GPIO);
-+	ret = rockchip_verify_mux(bank, d->hwirq, RK_FUNC_GPIO);
- 	if (ret < 0)
- 		return ret;
- 
--	clk_enable(bank->clk);
-+	bank->new_irqs |= mask;
-+
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-@@ -2191,7 +2197,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	default:
- 		irq_gc_unlock(gc);
- 		raw_spin_unlock_irqrestore(&bank->slock, flags);
--		clk_disable(bank->clk);
- 		return -EINVAL;
- 	}
- 
-@@ -2200,7 +2205,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 
- 	irq_gc_unlock(gc);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--	clk_disable(bank->clk);
- 
- 	return 0;
- }
-@@ -2244,6 +2248,34 @@ static void rockchip_irq_disable(struct irq_data *d)
- 	clk_disable(bank->clk);
- }
- 
-+static void rockchip_irq_bus_lock(struct irq_data *d)
-+{
-+	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
-+	struct rockchip_pin_bank *bank = gc->private;
-+
-+	clk_enable(bank->clk);
-+	mutex_lock(&bank->irq_lock);
-+}
-+
-+static void rockchip_irq_bus_sync_unlock(struct irq_data *d)
-+{
-+	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
-+	struct rockchip_pin_bank *bank = gc->private;
-+
-+	while (bank->new_irqs) {
-+		unsigned int irq = __ffs(bank->new_irqs);
-+		int ret;
-+
-+		ret = rockchip_set_mux(bank, irq, RK_FUNC_GPIO);
-+		WARN_ON(ret < 0);
-+
-+		bank->new_irqs &= ~BIT(irq);
-+	}
-+
-+	mutex_unlock(&bank->irq_lock);
-+	clk_disable(bank->clk);
-+}
-+
- static int rockchip_interrupts_register(struct platform_device *pdev,
- 						struct rockchip_pinctrl *info)
- {
-@@ -2310,6 +2342,9 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
- 		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
- 		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
- 		gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
-+		gc->chip_types[0].chip.irq_bus_lock = rockchip_irq_bus_lock;
-+		gc->chip_types[0].chip.irq_bus_sync_unlock =
-+						rockchip_irq_bus_sync_unlock;
- 		gc->wake_enabled = IRQ_MSK(bank->nr_pins);
- 
- 		irq_set_chained_handler_and_data(bank->irq,
-@@ -2483,6 +2518,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 		int bank_pins = 0;
- 
- 		raw_spin_lock_init(&bank->slock);
-+		mutex_init(&bank->irq_lock);
- 		bank->drvdata = d;
- 		bank->pin_base = ctrl->nr_pins;
- 		ctrl->nr_pins += bank->nr_pins;
 -- 
-2.12.0.377.gf910686b23.dirty
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
