@@ -1,64 +1,35 @@
-From: =?UTF-8?B?6ZmI5Lqu?= <cl@rock-chips.com>
-Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
- RK3328 SoCs
-Date: Thu, 23 Mar 2017 11:33:28 +0800
-Message-ID: <58D34208.6090509@rock-chips.com>
-References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
- <1489670244-13328-5-git-send-email-cl@rock-chips.com>
- <14610453.rKm3MBREMz@diego>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2 1/4] pinctrl: rockchip: remove unnecessary locking
+Date: Thu, 23 Mar 2017 10:03:44 +0100
+Message-ID: <CACRpkda7oaXXdXkToE+5V0XhbFx3gV4p5Jp-mJm-ZvG5WN2fWw@mail.gmail.com>
+References: <20170315174654.15128-1-john@metanate.com> <20170315174654.15128-2-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <14610453.rKm3MBREMz@diego>
-Sender: linux-i2c-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20170315174654.15128-2-john@metanate.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Julia Cartwright <julia@ni.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Heiko
+On Wed, Mar 15, 2017 at 6:46 PM, John Keeping <john@metanate.com> wrote:
 
-在 2017年03月21日 16:55, Heiko Stübner 写道:
-> Hi,
+> regmap_update_bits does its own locking and everything else accessed
+> here is a local variable so there is no need to lock around it.
 >
-> Am Donnerstag, 16. März 2017, 21:17:22 CET schrieb cl@rock-chips.com:
->> +		assigned-clock-parents =
->> +			<&cru HDMIPHY>, <&cru PLL_APLL>,
->> +			<&cru PLL_GPLL>, <&xin24m>,
->> +			<&xin24m>, <&xin24m>;
->> +		assigned-clock-rates =
->> +			<0>, <61440000>,
->> +			<0>, <24000000>,
->> +			<24000000>, <24000000>,
->> +			<15000000>, <15000000>,
->> +			<100000000>, <100000000>,
->> +			<100000000>, <100000000>,
->> +			<50000000>, <100000000>,
->> +			<100000000>, <100000000>,
->> +			<50000000>, <50000000>,
->> +			<50000000>, <50000000>,
->> +			<24000000>, <600000000>,
->> +			<491520000>, <1200000000>,
->> +			<150000000>, <75000000>,
->> +			<75000000>, <150000000>,
->> +			<75000000>, <75000000>,
->> +			<300000000>, <100000000>,
->> +			<300000000>, <200000000>,
->> +			<400000000>, <500000000>,
->> +			<200000000>, <300000000>,
->> +			<300000000>, <250000000>,
->> +			<200000000>, <100000000>,
->> +			<24000000>, <100000000>,
->> +			<150000000>, <50000000>,
->> +			<32768>, <32768>;
->> +	};
->> +
->> +	gmac2io: eth@ff540000 {
-> phandle should be gmac instead?
-> Node name, ethernet@ff540000
-RK3328 have another gmac channel with PHY in the soc, so gmac2io mean 
-the channel with the PHY outside, and it is also called gmac2io in the TRM.
->
->
-> Heiko
->
+> Signed-off-by: John Keeping <john@metanate.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> v2:
+> - Also remove locking in rockchip_set_schmitt()
+
+This does not apply on my "devel" branch in the pinctrl tree.
+
+Please rebase on that and resend.
+
+Since I have no patches for rockchip so far I suspect this
+is not even based on v4.11-rc1 so pls forward-port.
+
+Yours,
+Linus Walleij
