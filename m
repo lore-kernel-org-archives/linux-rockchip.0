@@ -1,76 +1,99 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: add regulator info for Kevin digitizer
-Date: Thu, 23 Mar 2017 00:57:26 +0100
-Message-ID: <2959157.AbEJJVO0Z2@phil>
-References: <20170320235344.126298-1-briannorris@chromium.org> <20415662.PctC9IM4SC@phil> <20170322181441.GC98450@google.com>
+From: =?UTF-8?B?6ZmI5Lqu?= <cl@rock-chips.com>
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
+ RK3328 SoCs
+Date: Thu, 23 Mar 2017 10:06:02 +0800
+Message-ID: <58D32D8A.1030506@rock-chips.com>
+References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
+ <1489670244-13328-5-git-send-email-cl@rock-chips.com>
+ <14610453.rKm3MBREMz@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170322181441.GC98450-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <14610453.rKm3MBREMz@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: mark.rutland@arm.com, wsa@the-dreams.de, linux-iio@vger.kernel.org, catalin.marinas@arm.com, shawn.lin@rock-chips.com, will.deacon@arm.com, kever.yang@rock-chips.com, dianders@chromium.org, yamada.masahiro@socionext.com, tony.xie@rock-chips.com, linux-i2c@vger.kernel.org, pmeerw@pmeerw.net, lars@metafoo.de, zhengxing@rock-chips.com, khilman@baylibre.com, linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, zhangqing@rock-chips.com, paweljarosz3691@gmail.com, arnd@arndb.de, yhx@rock-chips.com, knaack.h@gmx.de, robh+dt@kernel.org, matthias.bgg@gmail.com, rocky.hao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com, fabio.estevam@nxp.com, andy.yan@rock-chips.com, akpm@linux-foundation.org, shawnguo@kernel.org, afaerber@suse.de, jic23@kernel
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 22. März 2017, 11:14:42 CET schrieb Brian Norris:
-> On Wed, Mar 22, 2017 at 09:26:41AM +0100, Heiko Stuebner wrote:
-> > Am Montag, 20. März 2017, 16:53:44 CET schrieb Brian Norris:
-> > > We need to enable this regulator before the digitizer can be used. Wacom
-> > > recommended waiting for 100 ms before talking to the HID.
-> > > 
-> > > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > > ---
-> > > v3:
-> > >  * reintroduced into patch set; bindings are in linux-next
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
-> > >  1 file changed, 3 insertions(+)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> > > b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts index
-> > > 2f720cf2fd07..f4714c4606f3 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> > > @@ -232,6 +232,9 @@ ap_i2c_dig: &i2c2 {
-> > 
-> > according to the hid-over-i2c binding, this should use a special compatible 
-> > like
-> > 
-> > 	compatible = "wacom,w9013", "hid-over-i2c"
-> > 
-> > As the binding patch is from Caesar, I assume that is the Kevin component and
-> > I can add that myself, just need confirmation that this is actually the correct 
-> > component :-) .
-> 
-> *Sigh.* The I2C (and SPI) framework is still broken w.r.t. multiple
-> compatible strings and drivers built as modules [1]. So I'd really
-> rather not do this...
-
-It seems I had repressed that knowledge :-), but now that you mention it,
-I remember seeing (or reading about) this issue before.
-So yes I agree as well :-)
-
-
-> ...but yes, that's a fair component description.
-
-I've applied the patch and simply added the wacom,w9013 as comment,
-so it doesn't get lost.
-
-Now this can simmer a bit in linux-next till the weekend.
-
-
-Heiko
-
-> [1] Some discussion about SPI:
->     https://patchwork.kernel.org/patch/7630571/
->     And the discussion about I2C (25% through that thread):
->     https://patchwork.kernel.org/patch/9455245/
-> 
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGnvvIwgSGVpa28K5ZyoIDIwMTflubQwM+aciDIx5pelIDE2OjU1LCBIZWlrbyBTdMO8Ym5lciDl
+hpnpgZM6Cj4gSGksCj4KPiBBbSBEb25uZXJzdGFnLCAxNi4gTcOkcnogMjAxNywgMjE6MTc6MjIg
+Q0VUIHNjaHJpZWIgY2xAcm9jay1jaGlwcy5jb206Cj4+IEZyb206IExpYW5nIENoZW4gPGNsQHJv
+Y2stY2hpcHMuY29tPgo+Pgo+PiBUaGlzIHBhdGNoIGFkZHMgY29yZSBkdHNpIGZpbGUgZm9yIFJv
+Y2tjaGlwIFJLMzMyOCBTb0NzLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBMaWFuZyBDaGVuIDxjbEBy
+b2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzMjguZHRzaSB8IDEzNjIKPj4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrIDEgZmls
+ZSBjaGFuZ2VkLCAxMzYyIGluc2VydGlvbnMoKykKPj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjguZHRzaQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjguZHRzaQo+PiBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LmR0c2kgbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5k
+ZXggMDAwMDAwMC4uYTkyOTU1Ywo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LmR0c2kKPj4gQEAgLTAsMCArMSwxMzYyIEBACj4+ICsv
+Kgo+PiArICogQ29weXJpZ2h0IChjKSAyMDE3IEZ1emhvdSBSb2NrY2hpcCBFbGVjdHJvbmljcyBD
+by4sIEx0ZAo+PiArICoKPj4gKyAqIFRoaXMgZmlsZSBpcyBkdWFsLWxpY2Vuc2VkOiB5b3UgY2Fu
+IHVzZSBpdCBlaXRoZXIgdW5kZXIgdGhlIHRlcm1zCj4+ICsgKiBvZiB0aGUgR1BMIG9yIHRoZSBY
+MTEgbGljZW5zZSwgYXQgeW91ciBvcHRpb24uIE5vdGUgdGhhdCB0aGlzIGR1YWwKPj4gKyAqIGxp
+Y2Vuc2luZyBvbmx5IGFwcGxpZXMgdG8gdGhpcyBmaWxlLCBhbmQgbm90IHRoaXMgcHJvamVjdCBh
+cyBhCj4+ICsgKiB3aG9sZS4KPj4gKyAqCj4+ICsgKiAgYSkgVGhpcyBsaWJyYXJ5IGlzIGZyZWUg
+c29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9vcgo+PiArICogICAgIG1vZGlm
+eSBpdCB1bmRlciB0aGUgdGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGFz
+Cj4+ICsgKiAgICAgcHVibGlzaGVkIGJ5IHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb247IGVp
+dGhlciB2ZXJzaW9uIDIgb2YgdGhlCj4+ICsgKiAgICAgTGljZW5zZSwgb3IgKGF0IHlvdXIgb3B0
+aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KPj4gKyAqCj4+ICsgKiAgICAgVGhpcyBsaWJyYXJ5IGlz
+IGRpc3RyaWJ1dGVkIGluIHRoZSBob3BlIHRoYXQgaXQgd2lsbCBiZSB1c2VmdWwsCj4+ICsgKiAg
+ICAgYnV0IFdJVEhPVVQgQU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2Fy
+cmFudHkgb2YKPj4gKyAqICAgICBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJU
+SUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlCj4+ICsgKiAgICAgR05VIEdlbmVyYWwgUHVibGljIExp
+Y2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPj4gKyAqCj4+ICsgKiBPciwgYWx0ZXJuYXRpdmVseSwK
+Pj4gKyAqCj4+ICsgKiAgYikgUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBj
+aGFyZ2UsIHRvIGFueSBwZXJzb24KPj4gKyAqICAgICBvYnRhaW5pbmcgYSBjb3B5IG9mIHRoaXMg
+c29mdHdhcmUgYW5kIGFzc29jaWF0ZWQgZG9jdW1lbnRhdGlvbgo+PiArICogICAgIGZpbGVzICh0
+aGUgIlNvZnR3YXJlIiksIHRvIGRlYWwgaW4gdGhlIFNvZnR3YXJlIHdpdGhvdXQKPj4gKyAqICAg
+ICByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzIHRv
+IHVzZSwKPj4gKyAqICAgICBjb3B5LCBtb2RpZnksIG1lcmdlLCBwdWJsaXNoLCBkaXN0cmlidXRl
+LCBzdWJsaWNlbnNlLCBhbmQvb3IKPj4gKyAqICAgICBzZWxsIGNvcGllcyBvZiB0aGUgU29mdHdh
+cmUsIGFuZCB0byBwZXJtaXQgcGVyc29ucyB0byB3aG9tIHRoZQo+PiArICogICAgIFNvZnR3YXJl
+IGlzIGZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nCj4+ICsgKiAg
+ICAgY29uZGl0aW9uczoKPj4gKyAqCj4+ICsgKiAgICAgVGhlIGFib3ZlIGNvcHlyaWdodCBub3Rp
+Y2UgYW5kIHRoaXMgcGVybWlzc2lvbiBub3RpY2Ugc2hhbGwgYmUKPj4gKyAqICAgICBpbmNsdWRl
+ZCBpbiBhbGwgY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4K
+Pj4gKyAqCj4+ICsgKiAgICAgVEhFIFNPRlRXQVJFIElTIFBST1ZJREVEICJBUyBJUyIsIFdJVEhP
+VVQgV0FSUkFOVFkgT0YgQU5ZIEtJTkQsCj4+ICsgKiAgICAgRVhQUkVTUyBPUiBJTVBMSUVELCBJ
+TkNMVURJTkcgQlVUIE5PVCBMSU1JVEVEIFRPIFRIRSBXQVJSQU5USUVTCj4+ICsgKiAgICAgT0Yg
+TUVSQ0hBTlRBQklMSVRZLCBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQKPj4g
+KyAqICAgICBOT05JTkZSSU5HRU1FTlQuIElOIE5PIEVWRU5UIFNIQUxMIFRIRSBBVVRIT1JTIE9S
+IENPUFlSSUdIVAo+PiArICogICAgIEhPTERFUlMgQkUgTElBQkxFIEZPUiBBTlkgQ0xBSU0sIERB
+TUFHRVMgT1IgT1RIRVIgTElBQklMSVRZLAo+PiArICogICAgIFdIRVRIRVIgSU4gQU4gQUNUSU9O
+IE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORwo+PiArICogICAgIEZST00s
+IE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFNPRlRXQVJFIE9SIFRIRSBVU0UgT1IK
+Pj4gKyAqICAgICBPVEhFUiBERUFMSU5HUyBJTiBUSEUgU09GVFdBUkUuCj4+ICsgKi8KPj4gKwo+
+PiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Nsb2NrL3JrMzMyOC1jcnUuaD4KPj4gKyNpbmNsdWRl
+IDxkdC1iaW5kaW5ncy9ncGlvL2dwaW8uaD4KPj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRl
+cnJ1cHQtY29udHJvbGxlci9hcm0tZ2ljLmg+Cj4+ICsjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50
+ZXJydXB0LWNvbnRyb2xsZXIvaXJxLmg+Cj4+ICsjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcGluY3Ry
+bC9yb2NrY2hpcC5oPgo+PiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3NvYy9yb2NrY2hpcCxib290
+LW1vZGUuaD4KPj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9wb3dlci9yazMzMjgtcG93ZXIuaD4K
+Pj4gKwo+PiArLyB7Cj4+ICsJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzMjgiOwo+PiArCj4+
+ICsJaW50ZXJydXB0LXBhcmVudCA9IDwmZ2ljPjsKPj4gKwkjYWRkcmVzcy1jZWxscyA9IDwyPjsK
+Pj4gKwkjc2l6ZS1jZWxscyA9IDwyPjsKPj4gKwo+PiArCWFsaWFzZXMgewo+PiArCQlzZXJpYWww
+ID0gJnVhcnQwOwo+PiArCQlzZXJpYWwxID0gJnVhcnQxOwo+PiArCQlzZXJpYWwyID0gJnVhcnQy
+Owo+PiArCQlpMmMwID0gJmkyYzA7Cj4+ICsJCWkyYzEgPSAmaTJjMTsKPj4gKwkJaTJjMiA9ICZp
+MmMyOwo+PiArCQlpMmMzID0gJmkyYzM7Cj4+ICsJfTsKPj4gKwo+PiArCWNwdXMgewo+PiArCQkj
+YWRkcmVzcy1jZWxscyA9IDwyPjsKPiAjYWRkcmVzcy1jZWxscyA9IDwxPj8gWW91IG1vc3QgbGlr
+ZWx5IGRvbid0IG5lZWQgdGhlIDIgZmllbGQgY3B1IHJlZ3M/CgpUaGlzIGlzIGxpa2VseSBjb3B5
+IGZyb20ganVubyBib2FyZCBvZiBhcm0sIGFuZCBpIGZpbmQgdGhhdCAjYWRkcmVzcy1jZWxscyA9
+IDwxPiBpbiBzb21lICBib2FyZHMgYW5kICAjYWRkcmVzcy1jZWxscyA9IDwyPiBpbiB0aGUgb3Ro
+ZXIgYm9hcmRzLgpBbGwgb2YgUk9DS0NISVAgU29jcyBzZXQgICNhZGRyZXNzLWNlbGxzID0gPDI+
+LCBzbyB3ZSBzZXQgI2FkZHJlc3MtY2VsbHMgPSA8Mj4gdG8ga2VlcCBjb21wYXRpYmlsaXR5PwoK
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgt
+YXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJt
+LWtlcm5lbAo=
