@@ -1,89 +1,88 @@
-From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 7/7] mfd: dt-bindings: Add RK805 device tree bindings
- document
-Date: Thu, 23 Mar 2017 12:25:39 +0000
-Message-ID: <20170323122539.svapjqvieir2aqum@dell>
-References: <1489734377-1716-1-git-send-email-zhangqing@rock-chips.com>
- <1489734525-23310-1-git-send-email-zhangqing@rock-chips.com>
+From: Julia Cartwright <julia@ni.com>
+Subject: Re: [PATCH v4 1/4] pinctrl: rockchip: remove unnecessary locking
+Date: Thu, 23 Mar 2017 11:10:20 -0500
+Message-ID: <20170323161020.GM10423@jcartwri.amer.corp.natinst.com>
+References: <20170323105931.10455-1-john@metanate.com>
+ <20170323105931.10455-2-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="T7mxYSe680VjQnyC"
+Return-path: <linux-gpio-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1489734525-23310-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org
+In-Reply-To: <20170323105931.10455-2-john@metanate.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 17 Mar 2017, Elaine Zhang wrote:
+--T7mxYSe680VjQnyC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Add device tree bindings documentation for Rockchip's RK805 PMIC.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hello John-
+
+One quick question below.  Apologies if this has been covered, but just
+want to be sure.
+
+On Thu, Mar 23, 2017 at 10:59:28AM +0000, John Keeping wrote:
+> regmap_update_bits does its own locking and everything else accessed
+> here is a local variable so there is no need to lock around it.
+>=20
+> Signed-off-by: John Keeping <john@metanate.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  Documentation/devicetree/bindings/mfd/rk808.txt | 20 +++++++++++++++++++-
->  1 file changed, 19 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-> index 9636ae8d8d41..05eb07134483 100644
-> --- a/Documentation/devicetree/bindings/mfd/rk808.txt
-> +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-> @@ -1,11 +1,12 @@
->  RK8XX Power Management Integrated Circuit
->  
->  The rk8xx family current members:
-> +rk805
->  rk808
->  rk818
->  
->  Required properties:
-> -- compatible: "rockchip,rk808", "rockchip,rk818"
-> +- compatible: "rockchip,rk805", "rockchip,rk808", "rockchip,rk818"
->  - reg: I2C slave address
->  - interrupt-parent: The parent interrupt controller.
->  - interrupts: the interrupt outputs of the controller.
-> @@ -18,6 +19,14 @@ Optional properties:
->  - rockchip,system-power-controller: Telling whether or not this pmic is controlling
->    the system power.
->  
-> +Optional RK805 properties:
-> +- vcc1-supply:  The input supply for DCDC_REG1
-> +- vcc2-supply:  The input supply for DCDC_REG2
-> +- vcc3-supply:  The input supply for DCDC_REG3
-> +- vcc4-supply:  The input supply for DCDC_REG4
-> +- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
-> +- vcc6-supply:  The input supply for LDO_REG3
-> +
->  Optional RK808 properties:
->  - vcc1-supply:  The input supply for DCDC_REG1
->  - vcc2-supply:  The input supply for DCDC_REG2
-> @@ -56,6 +65,15 @@ by a child node of the 'regulators' node.
->  		/* standard regulator bindings here */
->  	};
->  
-> +Following regulators of the RK805 PMIC block are supported. Note that
+> v3: unchanged
+> v2.1:
+> - Remove RK2928 locking in rockchip_set_pull()
+> v2:
+> - Also remove locking in rockchip_set_schmitt()
+> ---
+>  drivers/pinctrl/pinctrl-rockchip.c | 33 ++-------------------------------
+>  1 file changed, 2 insertions(+), 31 deletions(-)
+>=20
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl=
+-rockchip.c
+> index bd4b63f66220..6568c867bdcd 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+[..]
+> @@ -1185,17 +1177,14 @@ static int rockchip_set_drive_perpin(struct rockc=
+hip_pin_bank *bank,
+>  			rmask =3D BIT(15) | BIT(31);
+>  			data |=3D BIT(31);
+>  			ret =3D regmap_update_bits(regmap, reg, rmask, data);
+> -			if (ret) {
+> -				spin_unlock_irqrestore(&bank->slock, flags);
+> +			if (ret)
+>  				return ret;
+> -			}
+> =20
+>  			rmask =3D 0x3 | (0x3 << 16);
+>  			temp |=3D (0x3 << 16);
+>  			reg +=3D 0x4;
+>  			ret =3D regmap_update_bits(regmap, reg, rmask, temp);
 
-"The following RK805 PMIC regulators are supported."
+Killing the lock here means the writes to to this pair of registers (reg
+and reg + 4) can be observed non-atomically.  Have you convinced
+yourself that this isn't a problem?
 
-> +the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-> +number as described in RK805 datasheet.
-> +
-> +	- DCDC_REGn
-> +		- valid values for n are 1 to 4.
-> +	- LDO_REGn
-> +		- valid values for n are 1 to 3
-> +
->  Following regulators of the RK808 PMIC block are supported. Note that
->  the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
->  number as described in RK808 datasheet.
+   Julia
 
--- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--T7mxYSe680VjQnyC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEgKAEF431w1EL96k9jNrC4UVNdG8FAljT82kACgkQjNrC4UVN
+dG9KTQf/YiH+8jCG2C2XT6MOMRQut9nFZIZ/YmDZ93pc3huvuW6CYCuegs/MFEmm
+nQcfpOpoa2SjOwZYA+DWxiBqe3n1mZoiKbkzhU+rVnpMy3iZvLVfUyNIxakzpWLM
+ccGTlIGnwksvx8CzDkfs1jEHxLssHEKPeng6zdxWpvRL4FL2X0v8rYP7E53znsM6
+rmHxZFqIyFZz01dqAS8LWCSW4j8n0PjyHOK5wI+EFZeg4WOMgFNPu+Y60STlqI1W
+389ZqhTBVZ5nmYwHK9xhAKB9Pn4M3khfPpH2rCMUka5r5Z77trcOIuFaAsPFzvDt
+swMps+vL2KSIJBXoy2S2Tu7iZFsuJg==
+=iffl
+-----END PGP SIGNATURE-----
+
+--T7mxYSe680VjQnyC--
