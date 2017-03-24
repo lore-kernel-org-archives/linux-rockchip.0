@@ -1,56 +1,48 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 1/5] PCI: rockchip: fix sign issues for current limits
-Date: Thu, 23 Mar 2017 15:33:49 -0700
-Message-ID: <20170323223348.GA102312@google.com>
-References: <20170310024617.67303-1-briannorris@chromium.org>
- <20170323222717.GD23612@bhelgaas-glaptop.roam.corp.google.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v4 1/2] dt-bindings: Add INNOLUX P079ZCA panel bindings
+Date: Fri, 24 Mar 2017 08:51:31 +0800
+Message-ID: <1490316692-20506-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170323222717.GD23612@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org, thierry.reding@gmail.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 23, 2017 at 05:27:17PM -0500, Bjorn Helgaas wrote:
-> On Thu, Mar 09, 2017 at 06:46:13PM -0800, Brian Norris wrote:
-> > The regulator framework can return negative error codes via
-> > regulator_get_current_limit() for regulators that don't provide current
-> > information. The subsequent check for postive values isn't very useful,
-> > if the variable is unsigned.
-> > 
-> > Let's just match the signedness of the return value.
-> > 
-> > Prevents error messages like this, seen on Samsung Chromebook Plus:
-> > 
-> > [    1.069372] rockchip-pcie f8000000.pcie: invalid power supply
-> > 
-> > Fixes: 4816c4c7b82b ("PCI: rockchip: Provide captured slot power limit and scale")
-> > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> I applied the first two patches (this already has Shawn's ack and the
-> second is trivially obvious) to pci/host-rockchip.
-
-Thanks!
-
-> I'm not sure what the
-> current state of the others is.
-
-Patch 4 seems like it should be fine (it was discussed previously, but
-never done).
-
-Apart from existing leaks in the PCI framework (which Jeffy and Shawn
-are trying to patch [1]), I don't think there are any known issues with
-3 and 5. It's certainly better than having 100% broken unbind at least,
-IMO.
-
-I suppose it's worth getting an ack/nack from Shawn though.
-
-Brian
-
-[1] https://patchwork.kernel.org/patch/9638353/
-    https://patchwork.kernel.org/patch/9640545/
-    https://patchwork.kernel.org/patch/9640549/
+VGhlIElubm9sdXggUDA3OVpDQSBpcyBhIDcuODUiIHBhbmVsIHdpdGggYSA3NjhYMTAyNCByZXNv
+bHV0aW9uIGFuZApjb25uZWN0ZWQgdG8gRFNJIHVzaW5nIGZvdXIgbGFuZXMuCgpTaWduZWQtb2Zm
+LWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgpSZXZpZXdlZC1ieTogQnJpYW4g
+Tm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+Ci0tLQoKQ2hhbmdlcyBpbiB2NDogTm9u
+ZQpDaGFuZ2VzIGluIHYzOiBOb25lCkNoYW5nZXMgaW4gdjI6IE5vbmUKCiAuLi4vYmluZGluZ3Mv
+ZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0ICAgICB8IDIzICsrKysrKysrKysrKysr
+KysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyMyBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvaW5u
+b2x1eCxwMDc5emNhLnR4dAoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3BhbmVsL2lubm9sdXgscDA3OXpjYS50eHQgYi9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9pbm5vbHV4LHAwNzl6Y2EudHh0Cm5l
+dyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAuLjVjNzBhODMKLS0tIC9kZXYvbnVsbAor
+KysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9pbm5v
+bHV4LHAwNzl6Y2EudHh0CkBAIC0wLDAgKzEsMjMgQEAKK0lubm9sdXggUDA3OVpDQSA3Ljg1IiA3
+Njh4MTAyNCBURlQgTENEIHBhbmVsCisKK1JlcXVpcmVkIHByb3BlcnRpZXM6CistIGNvbXBhdGli
+bGU6IHNob3VsZCBiZSAiaW5ub2x1eCxwMDc5emNhIgorLSByZWc6IERTSSB2aXJ0dWFsIGNoYW5u
+ZWwgb2YgdGhlIHBlcmlwaGVyYWwKKy0gcG93ZXItc3VwcGx5OiBwaGFuZGxlIG9mIHRoZSByZWd1
+bGF0b3IgdGhhdCBwcm92aWRlcyB0aGUgc3VwcGx5IHZvbHRhZ2UKKy0gZW5hYmxlLWdwaW9zOiBw
+YW5lbCBlbmFibGUgZ3BpbworCitPcHRpb25hbCBwcm9wZXJ0aWVzOgorLSBiYWNrbGlnaHQ6IHBo
+YW5kbGUgb2YgdGhlIGJhY2tsaWdodCBkZXZpY2UgYXR0YWNoZWQgdG8gdGhlIHBhbmVsCisKK0V4
+YW1wbGU6CisKKwkmbWlwaV9kc2kgeworCQlwYW5lbCB7CisJCQljb21wYXRpYmxlID0gImlubm9s
+dXgscDA3OXpjYSI7CisJCQlyZWcgPSA8MD47CisJCQlwb3dlci1zdXBwbHkgPSA8Li4uPjsKKwkJ
+CWJhY2tsaWdodCA9IDwmYmFja2xpZ2h0PjsKKwkJCWVuYWJsZS1ncGlvcyA9IDwmZ3BpbzEgMTMg
+R1BJT19BQ1RJVkVfSElHSD47CisJCQlzdGF0dXMgPSAib2theSI7CisJCX07CisJfTsKLS0gCjIu
+Ni4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
