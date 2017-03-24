@@ -1,39 +1,47 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 5/7] clocksource/drivers/rockchip_timer: implement
- clocksource timer
-Date: Fri, 24 Mar 2017 09:55:45 +0100
-Message-ID: <99b43b0a-6b91-9ee7-10b9-3ec48350a4db@linaro.org>
-References: <201703241631.5BKa33uG%fengguang.wu@intel.com>
- <B771814D-541A-4D89-AC8A-5FFF84DE2E66@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <B771814D-541A-4D89-AC8A-5FFF84DE2E66-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: <cl@rock-chips.com>
+Subject: [PATCH v3 0/6] initialize dtsi file and dts file for RK3328 SoCs
+Date: Fri, 24 Mar 2017 19:01:21 +0800
+Message-ID: <1490353287-25122-1-git-send-email-cl@rock-chips.com>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24/03/2017 09:41, Alexander Kochetkov wrote:
-> The patch series should be applied after the patches [1] and [2] haven’t merged yet into the kernel.
-> That mention in the cover letter.
-> 
-> [1] https://lkml.org/lkml/2017/3/22/420
-> [2] https://lkml.org/lkml/2017/3/22/426
+From: Liang Chen <cl@rock-chips.com>
 
-Thanks for the fix Alexander.
+Changes in v3:
+    Adjust some descriptions in dtsi.
 
-  -- Daniel
+Changes in v2:
+    Remove RK_FUNC_* in dtsi as it dose not help understand things better.
+    Adjust the order of description in dt-bindings.
+
+v1:
+These patchs depend on pinctrl patchs as below:
+
+https://patchwork.kernel.org/patch/9566427/
+https://patchwork.kernel.org/patch/9566425/
+https://patchwork.kernel.org/patch/9566431/
+
+Liang Chen (6):
+  dt-bindings: iio: rockchip-saradc: add support for rk3328
+  dt-bindings: i2c: rk3x: add support for rk3328
+  dt-bindings: soc: rockchip: grf: add support for rk3328
+  arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+  arm64: dts: rockchip: add dts file for RK3328
+  dt-bindings: document rockchip rk3328-evb board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |    4 +
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |    1 +
+ .../bindings/iio/adc/rockchip-saradc.txt           |    1 +
+ .../devicetree/bindings/soc/rockchip/grf.txt       |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |   57 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 1286 ++++++++++++++++++++
+ 7 files changed, 1351 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328.dtsi
 
 -- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.9.1
