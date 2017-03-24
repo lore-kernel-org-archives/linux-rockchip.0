@@ -1,85 +1,70 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 7/7] mfd: dt-bindings: Add RK805 device tree bindings
- document
-Date: Thu, 23 Mar 2017 21:38:14 -0500
-Message-ID: <20170324023814.vgljiqinplaggo37@rob-hp-laptop>
-References: <1489734377-1716-1-git-send-email-zhangqing@rock-chips.com>
- <1489734525-23310-1-git-send-email-zhangqing@rock-chips.com>
+From: =?UTF-8?B?6ZmI5Lqu?= <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add core dtsi file for
+ RK3328 SoCs
+Date: Fri, 24 Mar 2017 14:31:28 +0800
+Message-ID: <58D4BD40.5090900@rock-chips.com>
+References: <1489670244-13328-1-git-send-email-cl@rock-chips.com>
+ <1489670244-13328-5-git-send-email-cl@rock-chips.com>
+ <14610453.rKm3MBREMz@diego> <58D34208.6090509@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1489734525-23310-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <58D34208.6090509-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 17, 2017 at 03:08:45PM +0800, Elaine Zhang wrote:
-> Add device tree bindings documentation for Rockchip's RK805 PMIC.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/mfd/rk808.txt | 20 +++++++++++++++++++-
->  1 file changed, 19 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-> index 9636ae8d8d41..05eb07134483 100644
-> --- a/Documentation/devicetree/bindings/mfd/rk808.txt
-> +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-> @@ -1,11 +1,12 @@
->  RK8XX Power Management Integrated Circuit
->  
->  The rk8xx family current members:
-> +rk805
->  rk808
->  rk818
->  
->  Required properties:
-> -- compatible: "rockchip,rk808", "rockchip,rk818"
-> +- compatible: "rockchip,rk805", "rockchip,rk808", "rockchip,rk818"
+Hi, Heiko:
 
-Please make this one valid combination per line
-
->  - reg: I2C slave address
->  - interrupt-parent: The parent interrupt controller.
->  - interrupts: the interrupt outputs of the controller.
-> @@ -18,6 +19,14 @@ Optional properties:
->  - rockchip,system-power-controller: Telling whether or not this pmic is controlling
->    the system power.
->  
-> +Optional RK805 properties:
-> +- vcc1-supply:  The input supply for DCDC_REG1
-> +- vcc2-supply:  The input supply for DCDC_REG2
-> +- vcc3-supply:  The input supply for DCDC_REG3
-> +- vcc4-supply:  The input supply for DCDC_REG4
-> +- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
-> +- vcc6-supply:  The input supply for LDO_REG3
-> +
->  Optional RK808 properties:
->  - vcc1-supply:  The input supply for DCDC_REG1
->  - vcc2-supply:  The input supply for DCDC_REG2
-> @@ -56,6 +65,15 @@ by a child node of the 'regulators' node.
->  		/* standard regulator bindings here */
->  	};
->  
-> +Following regulators of the RK805 PMIC block are supported. Note that
-> +the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-> +number as described in RK805 datasheet.
-> +
-> +	- DCDC_REGn
-> +		- valid values for n are 1 to 4.
-> +	- LDO_REGn
-> +		- valid values for n are 1 to 3
-> +
->  Following regulators of the RK808 PMIC block are supported. Note that
->  the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
->  number as described in RK808 datasheet.
-> -- 
-> 1.9.1
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+在 2017年03月23日 11:33, 陈亮 写道:
+> Hi, Heiko
+>
+> 在 2017年03月21日 16:55, Heiko Stübner 写道:
+>> Hi,
+>>
+>> Am Donnerstag, 16. März 2017, 21:17:22 CET schrieb cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org:
+>>> +        assigned-clock-parents =
+>>> +            <&cru HDMIPHY>, <&cru PLL_APLL>,
+>>> +            <&cru PLL_GPLL>, <&xin24m>,
+>>> +            <&xin24m>, <&xin24m>;
+>>> +        assigned-clock-rates =
+>>> +            <0>, <61440000>,
+>>> +            <0>, <24000000>,
+>>> +            <24000000>, <24000000>,
+>>> +            <15000000>, <15000000>,
+>>> +            <100000000>, <100000000>,
+>>> +            <100000000>, <100000000>,
+>>> +            <50000000>, <100000000>,
+>>> +            <100000000>, <100000000>,
+>>> +            <50000000>, <50000000>,
+>>> +            <50000000>, <50000000>,
+>>> +            <24000000>, <600000000>,
+>>> +            <491520000>, <1200000000>,
+>>> +            <150000000>, <75000000>,
+>>> +            <75000000>, <150000000>,
+>>> +            <75000000>, <75000000>,
+>>> +            <300000000>, <100000000>,
+>>> +            <300000000>, <200000000>,
+>>> +            <400000000>, <500000000>,
+>>> +            <200000000>, <300000000>,
+>>> +            <300000000>, <250000000>,
+>>> +            <200000000>, <100000000>,
+>>> +            <24000000>, <100000000>,
+>>> +            <150000000>, <50000000>,
+>>> +            <32768>, <32768>;
+>>> +    };
+>>> +
+>>> +    gmac2io: eth@ff540000 {
+>> phandle should be gmac instead?
+>> Node name, ethernet@ff540000
+> RK3328 have another gmac channel with PHY in the soc, so gmac2io mean 
+> the channel with the PHY outside, and it is also called gmac2io in the 
+> TRM.
+So we remain gmac2io, or you have other idea?
+>>
+>>
+>> Heiko
+>>
+>
