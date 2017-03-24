@@ -1,70 +1,150 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH] clk: rockchip: limit i2s0_pre max rate on rk3188
-Date: Fri, 24 Mar 2017 14:31:10 +0300
-Message-ID: <1490355070-21818-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Alexander Kochetkov <al.kochet@gmail.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
+Date: Fri, 24 Mar 2017 09:25:41 -0500
+Message-ID: <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
+References: <20170310024617.67303-1-briannorris@chromium.org>
+ <20170310024617.67303-3-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170310024617.67303-3-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Change i2s0_pre from 768MHz to 192MHz and limit it's rate to 192MHz in
-order to fix issues described below.
+On Thu, Mar 09, 2017 at 06:46:15PM -0800, Brian Norris wrote:
+> Currently, if we try to unbind the platform device, the remove will
+> succeed, but the removal won't undo most of the registration, leaving
+> partially-configured PCI devices in the system.
+> 
+> This allows, for example, a simple 'lspci' to crash the system, as it
+> will try to touch the freed (via devm_*) driver structures.
+> 
+> So let's implement device remove().
 
-If right after the boot change i2s0_clk to 16.384MHz, real rate on
-i2s0_clk pin may differ from 16.384MHz. The issue is random. Sometimes
-rate on i2s0_clk pin equal to 16.384MHz, sometimes not.
+How exactly do you reproduce this problem?
 
-There is another 100% reproducable issue. First we have to boot and see
-the correct frequency on i2s0_clk pin (16.384MHz). Then we change its rate
-to 8.192MHz (and it changes), then we change its rate again to 16.384MHz.
-Rate leaves unchanged and equal to 8.192MHz.
+There are several other drivers that are superficially similar, e.g.,
+they define a struct platform_driver without a .remove method.  Do
+they all have this problem?  Some of them do set .suppress_bind_attrs
+= true; is that relevant to this scenario?
 
-'clk_summary' shows following clock connection in all the cases, where
-rate was set to 16.384MHz (even then real rate differs).
+In fact, the only other callers of pci_remove_root_bus() are
+iproc_pcie_remove(), hv_pci_remove(), and vmd_remove().
 
-    clock                       rate
-    -----                       ----
-    xin24m                      24000000
-      pll_gpll                  768000000
-         gpll                   768000000
-            i2s_src             768000000
-               i2s0_pre         768000000
-                  i2s0_frac     16384000
-                     sclk_i2s0  16384000
+These don't have .remove:
 
-Also I found, that if I change i2s0_pre to 192MHz all the issues described
-above gone. I supposed that the issues is due to high i2s0_pre rate.
-Probably rk3188 has some sort of frequency restrictions imposed. Haven't
-found anything in the RK3188 TRM, so this is my assumption.
+  imx6_pcie_driver
+  ls_pcie_driver
+  armada8k_pcie_driver
+  artpec6_pcie_driver
+  dw_plat_pcie_driver
+  hisi_pcie_driver
+  hisi_pcie_almost_ecam_driver
+  spear13xx_pcie_driver
+  gen_pci_driver
 
-Anyway, with the patch, all the issues gone.
+These don't have .remove but do set .suppress_bind_attrs = true:
 
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
----
- drivers/clk/rockchip/clk-rk3188.c |    9 +++++++++
- 1 file changed, 9 insertions(+)
+  dra7xx_pcie_driver
+  qcom_pcie_driver
+  advk_pcie_driver
+  mvebu_pcie_driver
+  rcar_pci_driver
+  rcar_pcie_driver
+  tegra_pcie_driver
+  altera_pcie_driver
+  nwl_pcie_driver
+  xilinx_pcie_driver
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index d0e722a..e883f48 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -849,6 +849,15 @@ static void __init rk3188a_clk_init(struct device_node *np)
- 			__func__);
- 	}
- 
-+	/* limit i2s0_pre max rate */
-+	clk1 = __clk_lookup("aclk_cpu_pre");
-+	clk2 = __clk_lookup("i2s0_pre");
-+	if (clk1 && clk2) {
-+		rate = clk_get_rate(clk1);
-+		clk_set_max_rate(clk2, rate);
-+		clk_set_rate(clk2, rate);
-+	}
-+
- 	rockchip_clk_protect_critical(rk3188_critical_clocks,
- 				      ARRAY_SIZE(rk3188_critical_clocks));
- 	rockchip_clk_of_add_provider(np, ctx);
--- 
-1.7.9.5
 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+> v2:
+> * unmap IO space with pci_unmap_iospace()
+> * remove IRQ domain
+> ---
+>  drivers/pci/host/pcie-rockchip.c | 36 ++++++++++++++++++++++++++++++++++--
+>  1 file changed, 34 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 5d7b27b1e941..d2e5078ae331 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -223,9 +223,11 @@ struct rockchip_pcie {
+>  	int	link_gen;
+>  	struct	device *dev;
+>  	struct	irq_domain *irq_domain;
+> -	u32     io_size;
+>  	int     offset;
+> +	struct pci_bus *root_bus;
+> +	struct resource *io;
+>  	phys_addr_t io_bus_addr;
+> +	u32     io_size;
+>  	void    __iomem *msg_region;
+>  	u32     mem_size;
+>  	phys_addr_t msg_bus_addr;
+> @@ -1360,6 +1362,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  					 err, io);
+>  				continue;
+>  			}
+> +			rockchip->io = io;
+>  			break;
+>  		case IORESOURCE_MEM:
+>  			mem = win->res;
+> @@ -1391,6 +1394,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		err = -ENOMEM;
+>  		goto err_free_res;
+>  	}
+> +	rockchip->root_bus = bus;
+>  
+>  	pci_bus_size_bridges(bus);
+>  	pci_bus_assign_resources(bus);
+> @@ -1421,6 +1425,34 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	return err;
+>  }
+>  
+> +static int rockchip_pcie_remove(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+> +
+> +	pci_stop_root_bus(rockchip->root_bus);
+> +	pci_remove_root_bus(rockchip->root_bus);
+> +	pci_unmap_iospace(rockchip->io);
+> +	irq_domain_remove(rockchip->irq_domain);
+> +
+> +	phy_power_off(rockchip->phy);
+> +	phy_exit(rockchip->phy);
+> +
+> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
+> +	clk_disable_unprepare(rockchip->hclk_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_pcie);
+> +
+> +	if (!IS_ERR(rockchip->vpcie3v3))
+> +		regulator_disable(rockchip->vpcie3v3);
+> +	if (!IS_ERR(rockchip->vpcie1v8))
+> +		regulator_disable(rockchip->vpcie1v8);
+> +	if (!IS_ERR(rockchip->vpcie0v9))
+> +		regulator_disable(rockchip->vpcie0v9);
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct dev_pm_ops rockchip_pcie_pm_ops = {
+>  	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
+>  				      rockchip_pcie_resume_noirq)
+> @@ -1438,6 +1470,6 @@ static struct platform_driver rockchip_pcie_driver = {
+>  		.pm = &rockchip_pcie_pm_ops,
+>  	},
+>  	.probe = rockchip_pcie_probe,
+> -
+> +	.remove = rockchip_pcie_remove,
+>  };
+>  builtin_platform_driver(rockchip_pcie_driver);
+> -- 
+> 2.12.0.246.ga2ecc84866-goog
+> 
