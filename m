@@ -1,150 +1,97 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
+From: Brian Norris <briannorris@chromium.org>
 Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
-Date: Fri, 24 Mar 2017 09:25:41 -0500
-Message-ID: <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
+Date: Fri, 24 Mar 2017 10:22:19 -0700
+Message-ID: <20170324172218.GA119093@google.com>
 References: <20170310024617.67303-1-briannorris@chromium.org>
  <20170310024617.67303-3-briannorris@chromium.org>
+ <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170310024617.67303-3-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Ray Jui <rjui@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 09, 2017 at 06:46:15PM -0800, Brian Norris wrote:
-> Currently, if we try to unbind the platform device, the remove will
-> succeed, but the removal won't undo most of the registration, leaving
-> partially-configured PCI devices in the system.
+Hi Bjorn,
+
+On Fri, Mar 24, 2017 at 09:25:41AM -0500, Bjorn Helgaas wrote:
+> On Thu, Mar 09, 2017 at 06:46:15PM -0800, Brian Norris wrote:
+> > Currently, if we try to unbind the platform device, the remove will
+> > succeed, but the removal won't undo most of the registration, leaving
+> > partially-configured PCI devices in the system.
+> > 
+> > This allows, for example, a simple 'lspci' to crash the system, as it
+> > will try to touch the freed (via devm_*) driver structures.
+> > 
+> > So let's implement device remove().
 > 
-> This allows, for example, a simple 'lspci' to crash the system, as it
-> will try to touch the freed (via devm_*) driver structures.
+> How exactly do you reproduce this problem?
+
+On RK3399:
+
+  # echo f8000000.pcie > /sys/bus/platform/drivers/rockchip-pcie/unbind
+  # lspci
+
+> There are several other drivers that are superficially similar, e.g.,
+> they define a struct platform_driver without a .remove method.  Do
+> they all have this problem?  Some of them do set .suppress_bind_attrs
+> = true; is that relevant to this scenario?
+
+Yes, I think .suppress_bind_attrs would be enough to prevent this,
+according to my reading of the code and comments:
+
+ * @suppress_bind_attrs: Disables bind/unbind via sysfs.
+
+> In fact, the only other callers of pci_remove_root_bus() are
+> iproc_pcie_remove(), hv_pci_remove(), and vmd_remove().
+
+Then iProc would suffer from the same memory leak in
+of_pci_get_host_bridge_resources() [1]. It *would* suffer from the same
+domain allocation issues in of_pci_bus_find_domain_nr() ->
+pci_get_new_domain_nr() [2], except that all iProc device trees (in
+mainline at least) use the 'linux,pci-domain' property to avoid it.
+
+HyperV and VMD drivers use ACPI, which uses neither
+pci_get_new_domain_nr() nor of_pci_get_host_bridge_resources().
+
+> These don't have .remove:
 > 
-> So let's implement device remove().
+>   imx6_pcie_driver
+>   ls_pcie_driver
+>   armada8k_pcie_driver
+>   artpec6_pcie_driver
+>   dw_plat_pcie_driver
+>   hisi_pcie_driver
+>   hisi_pcie_almost_ecam_driver
+>   spear13xx_pcie_driver
+>   gen_pci_driver
 
-How exactly do you reproduce this problem?
+I think these are all technically broken.
 
-There are several other drivers that are superficially similar, e.g.,
-they define a struct platform_driver without a .remove method.  Do
-they all have this problem?  Some of them do set .suppress_bind_attrs
-= true; is that relevant to this scenario?
-
-In fact, the only other callers of pci_remove_root_bus() are
-iproc_pcie_remove(), hv_pci_remove(), and vmd_remove().
-
-These don't have .remove:
-
-  imx6_pcie_driver
-  ls_pcie_driver
-  armada8k_pcie_driver
-  artpec6_pcie_driver
-  dw_plat_pcie_driver
-  hisi_pcie_driver
-  hisi_pcie_almost_ecam_driver
-  spear13xx_pcie_driver
-  gen_pci_driver
-
-These don't have .remove but do set .suppress_bind_attrs = true:
-
-  dra7xx_pcie_driver
-  qcom_pcie_driver
-  advk_pcie_driver
-  mvebu_pcie_driver
-  rcar_pci_driver
-  rcar_pcie_driver
-  tegra_pcie_driver
-  altera_pcie_driver
-  nwl_pcie_driver
-  xilinx_pcie_driver
-
-
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> v2:
-> * unmap IO space with pci_unmap_iospace()
-> * remove IRQ domain
-> ---
->  drivers/pci/host/pcie-rockchip.c | 36 ++++++++++++++++++++++++++++++++++--
->  1 file changed, 34 insertions(+), 2 deletions(-)
+> These don't have .remove but do set .suppress_bind_attrs = true:
 > 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 5d7b27b1e941..d2e5078ae331 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -223,9 +223,11 @@ struct rockchip_pcie {
->  	int	link_gen;
->  	struct	device *dev;
->  	struct	irq_domain *irq_domain;
-> -	u32     io_size;
->  	int     offset;
-> +	struct pci_bus *root_bus;
-> +	struct resource *io;
->  	phys_addr_t io_bus_addr;
-> +	u32     io_size;
->  	void    __iomem *msg_region;
->  	u32     mem_size;
->  	phys_addr_t msg_bus_addr;
-> @@ -1360,6 +1362,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  					 err, io);
->  				continue;
->  			}
-> +			rockchip->io = io;
->  			break;
->  		case IORESOURCE_MEM:
->  			mem = win->res;
-> @@ -1391,6 +1394,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		err = -ENOMEM;
->  		goto err_free_res;
->  	}
-> +	rockchip->root_bus = bus;
->  
->  	pci_bus_size_bridges(bus);
->  	pci_bus_assign_resources(bus);
-> @@ -1421,6 +1425,34 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	return err;
->  }
->  
-> +static int rockchip_pcie_remove(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> +
-> +	pci_stop_root_bus(rockchip->root_bus);
-> +	pci_remove_root_bus(rockchip->root_bus);
-> +	pci_unmap_iospace(rockchip->io);
-> +	irq_domain_remove(rockchip->irq_domain);
-> +
-> +	phy_power_off(rockchip->phy);
-> +	phy_exit(rockchip->phy);
-> +
-> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
-> +	clk_disable_unprepare(rockchip->hclk_pcie);
-> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> +	clk_disable_unprepare(rockchip->aclk_pcie);
-> +
-> +	if (!IS_ERR(rockchip->vpcie3v3))
-> +		regulator_disable(rockchip->vpcie3v3);
-> +	if (!IS_ERR(rockchip->vpcie1v8))
-> +		regulator_disable(rockchip->vpcie1v8);
-> +	if (!IS_ERR(rockchip->vpcie0v9))
-> +		regulator_disable(rockchip->vpcie0v9);
-> +
-> +	return 0;
-> +}
-> +
->  static const struct dev_pm_ops rockchip_pcie_pm_ops = {
->  	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
->  				      rockchip_pcie_resume_noirq)
-> @@ -1438,6 +1470,6 @@ static struct platform_driver rockchip_pcie_driver = {
->  		.pm = &rockchip_pcie_pm_ops,
->  	},
->  	.probe = rockchip_pcie_probe,
-> -
-> +	.remove = rockchip_pcie_remove,
->  };
->  builtin_platform_driver(rockchip_pcie_driver);
-> -- 
-> 2.12.0.246.ga2ecc84866-goog
-> 
+>   dra7xx_pcie_driver
+>   qcom_pcie_driver
+>   advk_pcie_driver
+>   mvebu_pcie_driver
+>   rcar_pci_driver
+>   rcar_pcie_driver
+>   tegra_pcie_driver
+>   altera_pcie_driver
+>   nwl_pcie_driver
+>   xilinx_pcie_driver
+
+Those are fine then, I suppose.
+
+Brian
+
+[1] PCI: return resource_entry in pci_add_resource helpers
+    https://patchwork.kernel.org/patch/9642229/
+    of/pci: Fix memory leak in of_pci_get_host_bridge_resources
+    https://patchwork.kernel.org/patch/9642231/
+
+[2] PCI: use IDA to manage domain number if not getting it from DT
+    https://patchwork.kernel.org/patch/9638353/
