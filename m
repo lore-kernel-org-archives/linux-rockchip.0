@@ -1,82 +1,81 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 7/7] mfd: dt-bindings: Add RK805 device tree bindings
- document
-Date: Mon, 27 Mar 2017 14:23:31 +0800
-Message-ID: <1490595811-30974-1-git-send-email-zhangqing@rock-chips.com>
-References: <1490595705-28844-1-git-send-email-zhangqing@rock-chips.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2] drm: dw_hdmi: Don't rely on the status of the bridge
+ for updating HPD
+Date: Mon, 27 Mar 2017 12:03:41 +0530
+Message-ID: <49effa0d-d6df-815b-33a7-c4cd8e25e300@codeaurora.org>
+References: <20170310093129.16890-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490595705-28844-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170310093129.16890-1-romain.perier@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK805 PMIC.
-
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 9636ae8d8d41..bfd94b3d1f90 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,11 +1,12 @@
- RK8XX Power Management Integrated Circuit
- 
- The rk8xx family current members:
-+rk805
- rk808
- rk818
- 
- Required properties:
--- compatible: "rockchip,rk808", "rockchip,rk818"
-+- compatible: "rockchip,rk805", "rockchip,rk808", "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -18,6 +19,14 @@ Optional properties:
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
- 
-+Optional RK805 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc6-supply:  The input supply for LDO_REG3
-+
- Optional RK808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -56,6 +65,15 @@ by a child node of the 'regulators' node.
- 		/* standard regulator bindings here */
- 	};
- 
-+Following regulators of the RK805 PMIC regulators are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK805 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 3
-+
- Following regulators of the RK808 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK808 datasheet.
--- 
-1.9.1
+SGksCgpPbiAwMy8xMC8yMDE3IDAzOjAxIFBNLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+IEN1cnJl
+bnRseSwgdGhlIGlycSBoYW5kbGVyIHRoYXQgbW9uaXRvcmVzIGNoYW5nZXMgZm9yIEhQRCBhbngg
+UlhfU0VOU0UKPiByZWxpZXMgb24gdGhlIHN0YXR1cyBvZiB0aGUgYnJpZGdlIGZvciB1cGRhdGlu
+ZyB0aGUgc3RhdHVzIG9mIHRoZSBIUEQuCj4gVGhlIHVwZGF0ZSBpcyBkb25lIG9ubHkgd2hlbiB0
+aGUgYnJpZGdlIGlzIGVuYWJsZWQuCj4KPiBIb3dldmVyLCBvbiBSb2NrY2hpcCBwbGF0Zm9ybXMg
+d2UgaGF2ZSBmb3VuZCB1c2UgY2FzZXMgd2hlcmUgaXQgY291bGQgYmUKPiBhIHByb2JsZW0uIFdo
+ZW4gSERNSSBpcyBiZWluZyB1c2VkLCB0dXJuaW5nIG9mZi9vbiB0aGUgc2NyZWVuIG9yCj4gdW5w
+bHVnZ2luZy9yZS1wbHVnZ2luZyB0aGUgY2FibGUsIHRoZSBmb2xsb3dpbmcgc2ltcGxpZmllZCBj
+b2RlIHBhdGgKPiB3aWxsIGhhcHBlbjoKPgo+IC0gZHdfaGRtaV9pcnEoKSB3aWxsIGJlIHRyaWdn
+ZXJlZCBieSBhbiBIUEQgZXZlbnQsIGFzIHRoZSBicmlkZ2UgaXMgb24KPiBoZG1pLT5kaXNhYmxl
+ZCBpcyBmYWxzZSwgdGhlbiB0aGUgaGFuZGxlciB3aWxsIHVwZGF0ZSB0aGUgcnhzZW5zZSBmbGFn
+Cj4gYWNjb3JkaW5nbHkuCj4gLSBkd19oZG1pX3VwZGF0ZV9wb3dlcigpIHdpbGwgYmUgaW52b2tl
+ZCB3aXRoIHRoZSBtb2RlCj4gRFJNX0ZPUkNFX1VOU1BFQ0lGSUVEIGFuZCByeHNlbnNlID09IDEs
+IHNvIGR3X2hkbWlfcG93ZXJvZmYoKSB3aWxsIGJlCj4gY2FsbGVkIGFuZCB0aGUgUEhZIHdpbGwg
+YmUgZGVzYWN0aXZhdGVkIChpdHMgcGl4ZWwgY2xvY2tzIGFuZCBUTURTKQo+Cj4gWy4uLl0KPgo+
+IC0gZHdfaGRtaV9icmlkZ2VfZGlzYWJsZSgpIHdpbGwgYmUgaW52b2tlZCwgdGhlIGJyaWRnZSB3
+aWxsIGJlIG1hcmtlZCBhcwo+IGRpc2FibGVkLgo+Cj4gLSBkd19oZG1pX2lycSgpIHdpbGwgYmUg
+dHJpZ2dlcmVkIGJ5IGFuIEhQRCBldmVudCwgYXMgdGhlIGJyaWRnZSBpcwo+IGN1cnJlbnRseSBk
+aXNhYmxlZCB0aGUgSFBEIHN0YXR1cyB3b24ndCBiZSB1cGRhdGVkLCBzbyBoZG1pLT5yeHNlbnNl
+Cj4gd29uJ3QgYmUgY2hhbmdlZC4gRXZlbiBpZiB0aGUgZGF0YSBwYXJ0IG9mIHRoZSBQSFkgaXMg
+ZGlzYWJsZWQsIHRoaXMKPiBpbmZvcm1hdGlvbiBjb21pbmcgZnJvbSB0aGUgSERNSSBUcmFuc21p
+dHRlciBpcyBjb3JyZWN0IGFuZCBzaG91bGQgYmUKPiBzYXZlZC4KPgo+IFsuLi5dCj4KPiAtIGR3
+X2hkbWlfYnJpZGdlX2VuYWJsZSgpIHdpbGwgYmUgaW52b2tlZCwgdGhlIGJyaWRnZSB3aWxsIGJl
+IG1hcmtlZCBhcwo+IGVuYWJsZWQuCj4gLSBkd19oZG1pX3VwZGF0ZV9wb3dlcigpIHdpbGwgYmUg
+Y2FsbGVkLiBXaGVuIGhkbWktPmZvcmNlIGlzIGVxdWFsIHRvCj4gRFJNX0ZPUkNFX1VOU1BFQ0lG
+SUVEIHRoZSBmdW5jdGlvbiB3aWxsIHJlbHkgb24gaGRtaS0+cnhzZW5zZS4gSWYgdGhpcwo+IGZp
+ZWxkIGhhcyBub3QgYmVlbiB1cGRhdGVkIGJ5IHRoZSBpcnEgaGFuZGxlciwgaXQgd2lsbCBiZSBm
+YWxzZSBhbmQKPiBEUk1fRk9SQ0VfT04gd29uJ3QgYmUgcHV0IHRvIGhkbWktPmZvcmNlLgo+Cj4g
+Q29uc2VxdWVudGx5LCBtb3N0IG9mIHRoZSB0aW1lIGR3X2hkbWlfcG93ZXJvbigpIHdvbid0IGJl
+IGNhbGxlZCBpbiB0aGlzCj4gdXNlIGNhc2UsIFRNRFMgd29uJ3QgYmUgcmUtZW5hYmxlZCB0aGUg
+UEhZIHdvbid0IGJlIHJlLWluaXRpYWxpemVkLAo+IHJlc3VsdGluZyBpbiBhICJTaWduYWwgbm90
+IGZvdW5kIi4KPgo+IFRoaXMgY29tbWl0IGZpeGVzIHRoZSBpc3N1ZSBieSByZW1vdmluZyB0aGUg
+Y2hlY2sgZm9yICIhaGRtaS0+ZGlzYWJsZWQiLgo+IEFzIGFscmVhZHkgZXhwbGFpbmVkLCBldmVu
+IGlmIHRoZSBQSFkgaXMgcGFydGlhbGx5IGRpc2FibGVkLCBpbmZvcm1hdGlvbgo+IGNvbWluZyBm
+cm9tIEhETUkgVHJhbnNtaXR0ZXIgYWJvdXQgSFBEIHNob3VsZCBiZSBzYXZlZCBmb3IgYSBsYXRl
+ciB1c2UuCgpJIHB1c2hlZCB0aGlzIHRvIGRybS1taXNjLW5leHQgYWZ0ZXIgaW5jb3Jwb3JhdGlu
+ZyB0aGUgZGlyZWN0b3J5IGNoYW5nZSBhbmQKZml4aW5nIHNvbWUgdHlwb3MgaW4gdGhlIGNvbW1p
+dCBtZXNzYWdlLgoKVGhhbmtzLApBcmNoaXQKCj4KPiBTaWduZWQtb2ZmLWJ5OiBSb21haW4gUGVy
+aWVyIDxyb21haW4ucGVyaWVyQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4KPiBDaGFuZ2VzIGluIHYy
+Ogo+IC0gSSBoYXZlIHJlLXdvcmRlZCB0aGUgY29tbWl0IG1lc3NhZ2UsIGFzIHN1Z2dlc3RlZCBi
+eSBSdXNzZWwKPgo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYyB8IDIgKy0KPiAg
+MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2R3LWhkbWkuYwo+IGluZGV4IDNhNzAwMTYuLjViNjA5MGMgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2R3LWhkbWkuYwo+IEBAIC0xNzkzLDcgKzE3OTMsNyBAQCBzdGF0aWMgaXJxcmV0dXJu
+X3QgZHdfaGRtaV9pcnEoaW50IGlycSwgdm9pZCAqZGV2X2lkKQo+ICAJaWYgKGludHJfc3RhdCAm
+Cj4gIAkgICAgKEhETUlfSUhfUEhZX1NUQVQwX1JYX1NFTlNFIHwgSERNSV9JSF9QSFlfU1RBVDBf
+SFBEKSkgewo+ICAJCW11dGV4X2xvY2soJmhkbWktPm11dGV4KTsKPiAtCQlpZiAoIWhkbWktPmRp
+c2FibGVkICYmICFoZG1pLT5mb3JjZSkgewo+ICsJCWlmICghaGRtaS0+Zm9yY2UpIHsKPiAgCQkJ
+LyoKPiAgCQkJICogSWYgdGhlIFJYIHNlbnNlIHN0YXR1cyBpbmRpY2F0ZXMgd2UncmUgZGlzY29u
+bmVjdGVkLAo+ICAJCQkgKiBjbGVhciB0aGUgc29mdHdhcmUgcnhzZW5zZSBzdGF0dXMuCj4KCi0t
+IApRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRlciwgSW5jLiBpcyBhIG1lbWJlciBvZiBDb2RlIEF1
+cm9yYSBGb3J1bSwKYSBMaW51eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
