@@ -1,84 +1,62 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH RESEND v5 7/7] mfd: dt-bindings: Add RK805 device tree
- bindings document
-Date: Mon, 27 Mar 2017 14:53:35 +0800
-Message-ID: <1490597615-852-1-git-send-email-zhangqing@rock-chips.com>
-References: <1490595705-28844-1-git-send-email-zhangqing@rock-chips.com>
+From: <cl@rock-chips.com>
+Subject: [PATCH v4 0/6] initialize dtsi file and dts file for RK3328 SoCs
+Date: Mon, 27 Mar 2017 17:40:45 +0800
+Message-ID: <1490607650-18650-1-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490595705-28844-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de
+Cc: mark.rutland@arm.com, wsa@the-dreams.de, linux-iio@vger.kernel.org, catalin.marinas@arm.com, shawn.lin@rock-chips.com, will.deacon@arm.com, kever.yang@rock-chips.com, dianders@chromium.org, yamada.masahiro@socionext.com, tony.xie@rock-chips.com, linux-i2c@vger.kernel.org, pmeerw@pmeerw.net, lars@metafoo.de, zhengxing@rock-chips.com, khilman@baylibre.com, linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, Liang Chen <cl@rock-chips.com>, wxt@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, zhangqing@rock-chips.com, paweljarosz3691@gmail.com, arnd@arndb.de, yhx@rock-chips.com, knaack.h@gmx.de, robh+dt@kernel.org, matthias.bgg@gmail.com, rocky.hao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com, fabio.estevam@nxp.com, andy.yan@rock-chips.com, akpm@linux-foundation.org, shawnguo@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK805 PMIC.
+From: Liang Chen <cl@rock-chips.com>
 
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+Changes in v4:
+    Remove some assigned-clocks as they should be inited in their
+    respective device nodes.
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 9636ae8d8d41..91b65227afeb 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,11 +1,14 @@
- RK8XX Power Management Integrated Circuit
- 
- The rk8xx family current members:
-+rk805
- rk808
- rk818
- 
- Required properties:
--- compatible: "rockchip,rk808", "rockchip,rk818"
-+- compatible: "rockchip,rk805"
-+- compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -18,6 +21,14 @@ Optional properties:
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
- 
-+Optional RK805 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc6-supply:  The input supply for LDO_REG3
-+
- Optional RK808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -56,6 +67,15 @@ by a child node of the 'regulators' node.
- 		/* standard regulator bindings here */
- 	};
- 
-+Following regulators of the RK805 PMIC regulators are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK805 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 3
-+
- Following regulators of the RK808 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK808 datasheet.
+Changes in v3:
+    Adjust some descriptions in dtsi.
+
+Changes in v2:
+    Remove RK_FUNC_* in dtsi as it dose not help understand things better.
+    Adjust the order of description in dt-bindings.
+
+v1:
+These patchs depend on pinctrl patchs as below:
+
+https://patchwork.kernel.org/patch/9566427/
+https://patchwork.kernel.org/patch/9566425/
+https://patchwork.kernel.org/patch/9566431/
+
+Liang Chen (6):
+  dt-bindings: iio: rockchip-saradc: add support for rk3328
+  dt-bindings: i2c: rk3x: add support for rk3328
+  dt-bindings: soc: rockchip: grf: add support for rk3328
+  arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+  arm64: dts: rockchip: add dts file for RK3328
+  dt-bindings: document rockchip rk3328-evb board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |    4 +
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |    1 +
+ .../bindings/iio/adc/rockchip-saradc.txt           |    1 +
+ .../devicetree/bindings/soc/rockchip/grf.txt       |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |   57 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 1275 ++++++++++++++++++++
+ 7 files changed, 1340 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328.dtsi
+
 -- 
 1.9.1
