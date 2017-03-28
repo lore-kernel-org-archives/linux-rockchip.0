@@ -1,82 +1,120 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 2/4] clk: rockchip: rk3228: make noc and some special clk
- as critical_clocks
-Date: Tue, 28 Mar 2017 18:06:52 +0800
-Message-ID: <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
-References: <1490695614-3220-1-git-send-email-zhangqing@rock-chips.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] drm/rockchip: fix Kconfig dependencies
+Date: Tue, 28 Mar 2017 12:16:40 +0200
+Message-ID: <20170328101654.73624-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490695614-3220-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: Stephen Boyd <stephen.boyd@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Tobias Jakobi <tjakobi@math.uni-bielefeld.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
+A bug that I had fixed earlier just came back, with CONFIG_EXTCON=m,
+the rockchip drm driver will fail to link:
 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index db6e5a9e6de6..4d3203f887e2 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -445,7 +445,7 @@ enum rk3228_plls {
- 			RK2928_CLKGATE_CON(2), 12, GFLAGS,
- 			&rk3228_spdif_fracmux),
+drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_get_port_lanes':
+cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x30): undefined reference to `extcon_get_state'
+cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x6c): undefined reference to `extcon_get_property'
+drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_check_sink_connection':
+cdn-dp-core.c:(.text.cdn_dp_check_sink_connection+0x80): undefined reference to `extcon_get_state'
+drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_enable':
+cdn-dp-core.c:(.text.cdn_dp_enable+0x748): undefined reference to `extcon_get_property'
+
+The problem is that that the sub-drivers are now all linked into the
+main rockchip drm module, which breaks all the Kconfig dependencies
+that are specified in the options for those sub-drivers.
+
+This clarifies the dependency to ensure that we can only turn on the DP
+driver when EXTCON is reachable. As the 'select' statements can now
+cause additional options to become built-in when they should be
+loadable modules, I'm moving those into the main driver config option.
+The dependency on DRM_ROCKCHIP can be reduced into a single 'if'
+statement here for brevity, but this has no functional effect.
+
+Fixes: b6705157b2db ("drm/rockchip: add extcon dependency for DP")
+Fixes: 8820b68bd378 ("drm/rockchip: Refactor the component match logic.")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/gpu/drm/rockchip/Kconfig | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 50c41c0a50ef..dcc539ba85d6 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -5,6 +5,10 @@ config DRM_ROCKCHIP
+ 	select DRM_KMS_HELPER
+ 	select DRM_PANEL
+ 	select VIDEOMODE_HELPERS
++	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
++	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
++	select DRM_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
++	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
+ 	help
+ 	  Choose this option if you have a Rockchip soc chipset.
+ 	  This driver provides kernel mode setting and buffer
+@@ -12,10 +16,10 @@ config DRM_ROCKCHIP
+ 	  2D or 3D acceleration; acceleration is performed by other
+ 	  IP found on the SoC.
  
--	GATE(0, "jtag", "ext_jtag", 0,
-+	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(1), 3, GFLAGS),
++if DRM_ROCKCHIP
++
+ config ROCKCHIP_ANALOGIX_DP
+ 	bool "Rockchip specific extensions for Analogix DP driver"
+-	depends on DRM_ROCKCHIP
+-	select DRM_ANALOGIX_DP
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the Analogix Core DP driver. If you want to enable DP
+@@ -23,9 +27,7 @@ config ROCKCHIP_ANALOGIX_DP
  
- 	GATE(0, "sclk_otgphy0", "xin24m", 0,
-@@ -644,9 +644,37 @@ enum rk3228_plls {
+ config ROCKCHIP_CDN_DP
+         bool "Rockchip cdn DP"
+-        depends on DRM_ROCKCHIP
+-	depends on EXTCON
+-	select SND_SOC_HDMI_CODEC if SND_SOC
++	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
+         help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the cdn DP driver. If you want to enable Dp on
+@@ -34,8 +36,6 @@ config ROCKCHIP_CDN_DP
  
- static const char *const rk3228_critical_clocks[] __initconst = {
- 	"aclk_cpu",
-+	"pclk_cpu",
-+	"hclk_cpu",
- 	"aclk_peri",
- 	"hclk_peri",
- 	"pclk_peri",
-+	"aclk_rga_noc",
-+	"aclk_iep_noc",
-+	"aclk_vop_noc",
-+	"aclk_hdcp_noc",
-+	"hclk_vio_ahb_arbi",
-+	"hclk_vio_noc",
-+	"hclk_vop_noc",
-+	"hclk_host0_arb",
-+	"hclk_host1_arb",
-+	"hclk_host2_arb",
-+	"hclk_otg_pmu",
-+	"aclk_gpu_noc",
-+	"sclk_initmem_mbist",
-+	"aclk_initmem",
-+	"hclk_rom",
-+	"pclk_ddrupctl",
-+	"pclk_ddrmon",
-+	"pclk_msch_noc",
-+	"pclk_stimer",
-+	"pclk_ddrphy",
-+	"pclk_acodecphy",
-+	"pclk_phy_noc",
-+	"aclk_vpu_noc",
-+	"aclk_rkvdec_noc",
-+	"hclk_vpu_noc",
-+	"hclk_rkvdec_noc",
- };
+ config ROCKCHIP_DW_HDMI
+         bool "Rockchip specific extensions for Synopsys DW HDMI"
+-        depends on DRM_ROCKCHIP
+-        select DRM_DW_HDMI
+         help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the Synopsys DesignWare HDMI driver. If you want to
+@@ -44,8 +44,6 @@ config ROCKCHIP_DW_HDMI
  
- static void __init rk3228_clk_init(struct device_node *np)
+ config ROCKCHIP_DW_MIPI_DSI
+ 	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
+-	depends on DRM_ROCKCHIP
+-	select DRM_MIPI_DSI
+ 	help
+ 	 This selects support for Rockchip SoC specific extensions
+ 	 for the Synopsys DesignWare HDMI driver. If you want to
+@@ -54,8 +52,9 @@ config ROCKCHIP_DW_MIPI_DSI
+ 
+ config ROCKCHIP_INNO_HDMI
+ 	bool "Rockchip specific extensions for Innosilicon HDMI"
+-	depends on DRM_ROCKCHIP
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the Innosilicon HDMI driver. If you want to enable
+ 	  HDMI on RK3036 based SoC, you should select this option.
++
++endif
 -- 
-1.9.1
+2.9.0
