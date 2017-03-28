@@ -1,8 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 3/3] Rockchip dts64 updates (using arm/arm64 symlinks) for
- 4.12 part1
-Date: Tue, 28 Mar 2017 17:54:06 +0200
-Message-ID: <5670481.GxV7NCMtHk@phil>
+Subject: [GIT PULL 2/3] Rockchip dts64 updates for 4.12 part1
+Date: Tue, 28 Mar 2017 17:53:13 +0200
+Message-ID: <17137029.z2AnQCnjUI@phil>
 References: <5178456.jWASpzTAdU@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,45 +17,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: arm@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 0a6081b673bb6aaec31771b3111dd6741c94382f:
+The following changes since commit c1ae3cfa0e89fa1a7ecc4c99031f5e9ae99d9201:
 
-  arm64: dts: add arm/arm64 include symlinks (2017-03-21 17:21:28 -0700)
+  Linux 4.11-rc1 (2017-03-05 12:59:56 -0800)
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-dts64-symlinks-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-dts64-1
 
-for you to fetch changes up to b9ed79fa91c5271ca166dfde99883ca3afb190fe:
+for you to fetch changes up to 41b464ef10219e45513d1bcaddacd47ce0bd6136:
 
-  arm64: dts: rockchip: add regulator info for Kevin digitizer (2017-03-23 00:51:58 +0100)
-
-----------------------------------------------------------------
-Rockchip dts changes based on the newly created arm/arm64 symlinks.
-The core addition is the support for the rk3399-based Gru family of
-ChromeOS devices, like the Kevin board which is the recently released
-Samsung Chromebook Plus. Additionally the usb3 controllers are added
-to rk3399 as they're used on Gru devices and even without full type-c
-support they can at least drive usb2 devices already.
+  arm64: dts: rockchip: fix PCIe domain number for rk3399 (2017-03-22 17:50:09 +0100)
 
 ----------------------------------------------------------------
-Brian Norris (5):
-      arm64: dts: rockchip: support dwc3 USB for rk3399
-      dt-bindings: Document rk3399 Gru/Kevin
-      arm64: dts: rockchip: add Gru/Kevin DTS
-      arm64: dts: rockchip: describe Gru/Kevin OPPs + CPU regulators
-      arm64: dts: rockchip: add regulator info for Kevin digitizer
+Contains various changes for the rk3368 (dma, i2s, disable mailbox per
+default, mmc-resets) and also removes the wrongly added idle states, that
+do not match the hardware's capabilities, as well as some general rk3399
+pcie fixes as well as also the mmc resets.
 
- Documentation/devicetree/bindings/arm/rockchip.txt |   20 +
- arch/arm64/boot/dts/rockchip/Makefile              |    1 +
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  306 ++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 1103 ++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       |  145 +++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   54 +
- 6 files changed, 1629 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
+----------------------------------------------------------------
+Brian Norris (1):
+      arm64: dts: rockchip: sort rk3399-pcie by unit address
+
+Heiko Stuebner (3):
+      arm64: dts: rockchip: remove wrongly added idle states on rk3368
+      arm64: dts: rockchip: add rk3368 dw-mmc resets
+      arm64: dts: rockchip: add rk3399 dw-mmc resets
+
+Huibin Hong (1):
+      arm64: dts: rockchip: add dmac nodes for rk3368 SoCs
+
+Jianqun Xu (2):
+      arm64: dts: rockchip: add i2s nodes support for RK3368 SoCs
+      arm64: dts: rockchip: disable mailbox of RK3368 SoCs per default
+
+Shawn Lin (1):
+      arm64: dts: rockchip: fix PCIe domain number for rk3399
+
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 94 +++++++++++++++++++++++++-------
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 93 ++++++++++++++++---------------
+ 2 files changed, 123 insertions(+), 64 deletions(-)
