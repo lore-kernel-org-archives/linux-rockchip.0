@@ -1,120 +1,96 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] drm/rockchip: fix Kconfig dependencies
-Date: Tue, 28 Mar 2017 12:16:40 +0200
-Message-ID: <20170328101654.73624-1-arnd@arndb.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] rockchip clock changes for 4.12 part1
+Date: Tue, 28 Mar 2017 14:52:34 +0200
+Message-ID: <5160508.89PunkDez8@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: Stephen Boyd <stephen.boyd@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Tobias Jakobi <tjakobi@math.uni-bielefeld.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Yakir Yang <ykk@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A bug that I had fixed earlier just came back, with CONFIG_EXTCON=m,
-the rockchip drm driver will fail to link:
+Hi Mike, Stephen,
 
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_get_port_lanes':
-cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x30): undefined reference to `extcon_get_state'
-cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x6c): undefined reference to `extcon_get_property'
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_check_sink_connection':
-cdn-dp-core.c:(.text.cdn_dp_check_sink_connection+0x80): undefined reference to `extcon_get_state'
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_enable':
-cdn-dp-core.c:(.text.cdn_dp_enable+0x748): undefined reference to `extcon_get_property'
+Please find below rockchip clock changes for 4.12. As the tag states,
+I've included the rk1108 -> rv1108 clock rename in here. Pinctrl changes
+go through the pinctrl tree and once everything is in mainline I'll put
+the actual devicetree on top. That way we keep cross-tree changes to a
+minimum while keeping everything error-free and bisectable.
 
-The problem is that that the sub-drivers are now all linked into the
-main rockchip drm module, which breaks all the Kconfig dependencies
-that are specified in the options for those sub-drivers.
+So please pull if nothing stands out.
 
-This clarifies the dependency to ensure that we can only turn on the DP
-driver when EXTCON is reachable. As the 'select' statements can now
-cause additional options to become built-in when they should be
-loadable modules, I'm moving those into the main driver config option.
-The dependency on DRM_ROCKCHIP can be reduced into a single 'if'
-statement here for brevity, but this has no functional effect.
+Thanks
+Heiko
 
-Fixes: b6705157b2db ("drm/rockchip: add extcon dependency for DP")
-Fixes: 8820b68bd378 ("drm/rockchip: Refactor the component match logic.")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/gpu/drm/rockchip/Kconfig | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 50c41c0a50ef..dcc539ba85d6 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -5,6 +5,10 @@ config DRM_ROCKCHIP
- 	select DRM_KMS_HELPER
- 	select DRM_PANEL
- 	select VIDEOMODE_HELPERS
-+	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
-+	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
-+	select DRM_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
-+	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
- 	help
- 	  Choose this option if you have a Rockchip soc chipset.
- 	  This driver provides kernel mode setting and buffer
-@@ -12,10 +16,10 @@ config DRM_ROCKCHIP
- 	  2D or 3D acceleration; acceleration is performed by other
- 	  IP found on the SoC.
- 
-+if DRM_ROCKCHIP
-+
- config ROCKCHIP_ANALOGIX_DP
- 	bool "Rockchip specific extensions for Analogix DP driver"
--	depends on DRM_ROCKCHIP
--	select DRM_ANALOGIX_DP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Analogix Core DP driver. If you want to enable DP
-@@ -23,9 +27,7 @@ config ROCKCHIP_ANALOGIX_DP
- 
- config ROCKCHIP_CDN_DP
-         bool "Rockchip cdn DP"
--        depends on DRM_ROCKCHIP
--	depends on EXTCON
--	select SND_SOC_HDMI_CODEC if SND_SOC
-+	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
-         help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the cdn DP driver. If you want to enable Dp on
-@@ -34,8 +36,6 @@ config ROCKCHIP_CDN_DP
- 
- config ROCKCHIP_DW_HDMI
-         bool "Rockchip specific extensions for Synopsys DW HDMI"
--        depends on DRM_ROCKCHIP
--        select DRM_DW_HDMI
-         help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Synopsys DesignWare HDMI driver. If you want to
-@@ -44,8 +44,6 @@ config ROCKCHIP_DW_HDMI
- 
- config ROCKCHIP_DW_MIPI_DSI
- 	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
--	depends on DRM_ROCKCHIP
--	select DRM_MIPI_DSI
- 	help
- 	 This selects support for Rockchip SoC specific extensions
- 	 for the Synopsys DesignWare HDMI driver. If you want to
-@@ -54,8 +52,9 @@ config ROCKCHIP_DW_MIPI_DSI
- 
- config ROCKCHIP_INNO_HDMI
- 	bool "Rockchip specific extensions for Innosilicon HDMI"
--	depends on DRM_ROCKCHIP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Innosilicon HDMI driver. If you want to enable
- 	  HDMI on RK3036 based SoC, you should select this option.
-+
-+endif
--- 
-2.9.0
+The following changes since commit c1ae3cfa0e89fa1a7ecc4c99031f5e9ae99d9201:
+
+  Linux 4.11-rc1 (2017-03-05 12:59:56 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-clk1
+
+for you to fetch changes up to 9be83448951a404a6fd5cf43ee0245a9bccc02c1:
+
+  clk: rockchip: add pll_wait_lock for pll_enable (2017-03-22 18:33:22 +0100)
+
+----------------------------------------------------------------
+General rockchip clock changes for 4.12. Contains some new clock-ids
+as well as fixups of the clock-ids on rk3368 timers, which were unused
+and completely wrong (more and differently named timers).
+Also there is one new clock on rk3328 using the muxgrf type, a fix for
+pll enablement which should wait for the pll to lock before continuing,
+some more critical clocks and the rename of the rk1108 to rv1108, as the
+soc seems to have been using a preliminary name before its actual release.
+The plan is to have the driver changes (pinctrl, clk) go through the
+respective maintainer trees and once everything landed in mainline do
+the rename of the devicetree files. With the dts-include change in the
+clock rename, we also keep everything compiling and thus bisectability.
+
+----------------------------------------------------------------
+Andy Yan (2):
+      dt-bindings: rk1108-cru: rename RK1108 to RV1108
+      clk: rockchip: rename RK1108 to RV1108
+
+Douglas Anderson (1):
+      clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
+
+Elaine Zhang (7):
+      clk: rockchip: add rk3328 clk_mac2io_ext ID
+      clk: rockchip: fix up rk3368 timer-ids
+      clk: rockchip: add clock ids for timer10-15 of RK3368 SoCs
+      clk: rockchip: describe clk_gmac using the new muxgrf type on rk3328
+      clk: rockchip: export SCLK_TIMERXX id for timers on rk3368
+      clk: rockchip: mark some rk3368 core-clks as critical
+      clk: rockchip: add pll_wait_lock for pll_enable
+
+Heiko Stuebner (1):
+      Merge branch 'v4.12-shared/clkids' into v4.12-clk/next
+
+ ...chip,rk1108-cru.txt => rockchip,rv1108-cru.txt} |  12 +-
+ arch/arm/boot/dts/rk1108.dtsi                      |   2 +-
+ drivers/clk/rockchip/Makefile                      |   2 +-
+ drivers/clk/rockchip/clk-pll.c                     |   3 +
+ drivers/clk/rockchip/clk-rk3328.c                  |   9 +
+ drivers/clk/rockchip/clk-rk3368.c                  |  27 +-
+ drivers/clk/rockchip/clk-rk3399.c                  |   8 +-
+ .../clk/rockchip/{clk-rk1108.c => clk-rv1108.c}    | 414 ++++++++++-----------
+ drivers/clk/rockchip/clk.h                         |  28 +-
+ include/dt-bindings/clock/rk3328-cru.h             |   1 +
+ include/dt-bindings/clock/rk3368-cru.h             |  19 +-
+ .../clock/{rk1108-cru.h => rv1108-cru.h}           |   6 +-
+ 12 files changed, 276 insertions(+), 255 deletions(-)
+ rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt} (83%)
+ rename drivers/clk/rockchip/{clk-rk1108.c => clk-rv1108.c} (57%)
+ rename include/dt-bindings/clock/{rk1108-cru.h => rv1108-cru.h} (97%)
