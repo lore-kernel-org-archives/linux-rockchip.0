@@ -1,127 +1,94 @@
-From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH] drm/rockchip: fix Kconfig dependencies
-Date: Tue, 28 Mar 2017 09:37:15 -0700
-Message-ID: <CABXOdTfAruXx0NPO3v9HA9biDd9gz8bGjQP16s9HP8Q3ihVqwA@mail.gmail.com>
-References: <20170328101654.73624-1-arnd@arndb.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 2/4] clk: rockchip: rk3228: make noc and some special clk as critical_clocks
+Date: Tue, 28 Mar 2017 22:08:13 +0200
+Message-ID: <3534897.Tc49fhGY27@phil>
+References: <1490695614-3220-1-git-send-email-zhangqing@rock-chips.com> <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170328101654.73624-1-arnd-r2nGTMty4D4@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Stephen Boyd <stephen.boyd-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tobias Jakobi <tjakobi-o02PS0xoJP9W0yFyLvAVXMxlOr/tl8fh@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: xf@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 28, 2017 at 3:16 AM, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org> wrote:
-> A bug that I had fixed earlier just came back, with CONFIG_EXTCON=m,
-> the rockchip drm driver will fail to link:
->
-> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_get_port_lanes':
-> cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x30): undefined reference to `extcon_get_state'
-> cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x6c): undefined reference to `extcon_get_property'
-> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_check_sink_connection':
-> cdn-dp-core.c:(.text.cdn_dp_check_sink_connection+0x80): undefined reference to `extcon_get_state'
-> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_enable':
-> cdn-dp-core.c:(.text.cdn_dp_enable+0x748): undefined reference to `extcon_get_property'
->
-> The problem is that that the sub-drivers are now all linked into the
-> main rockchip drm module, which breaks all the Kconfig dependencies
-> that are specified in the options for those sub-drivers.
->
-> This clarifies the dependency to ensure that we can only turn on the DP
-> driver when EXTCON is reachable. As the 'select' statements can now
-> cause additional options to become built-in when they should be
-> loadable modules, I'm moving those into the main driver config option.
-> The dependency on DRM_ROCKCHIP can be reduced into a single 'if'
-> statement here for brevity, but this has no functional effect.
->
-> Fixes: b6705157b2db ("drm/rockchip: add extcon dependency for DP")
-> Fixes: 8820b68bd378 ("drm/rockchip: Refactor the component match logic.")
-> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Hi Elaine,
 
-Acked-by: Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Am Dienstag, 28. März 2017, 18:06:52 CEST schrieb Elaine Zhang:
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+I really do expect a commit message explaining why the specific clocks
+are needed to be critical.
+
+The noc and arbiter clocks I somewhat understand, but I'll need
+explanation on clocks like hclk_otg_pmu,  hclk_otg_pmu _etc_ [all these
+non-noc / non-arbi clocks] on why there is no driver to handle them.
+
+Also please group noc / arbi clocks together.
+
+
+This applies to all patches in this series.
+
+Thanks
+Heiko
+
 
 > ---
->  drivers/gpu/drm/rockchip/Kconfig | 19 +++++++++----------
->  1 file changed, 9 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-> index 50c41c0a50ef..dcc539ba85d6 100644
-> --- a/drivers/gpu/drm/rockchip/Kconfig
-> +++ b/drivers/gpu/drm/rockchip/Kconfig
-> @@ -5,6 +5,10 @@ config DRM_ROCKCHIP
->         select DRM_KMS_HELPER
->         select DRM_PANEL
->         select VIDEOMODE_HELPERS
-> +       select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
-> +       select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
-> +       select DRM_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
-> +       select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
->         help
->           Choose this option if you have a Rockchip soc chipset.
->           This driver provides kernel mode setting and buffer
-> @@ -12,10 +16,10 @@ config DRM_ROCKCHIP
->           2D or 3D acceleration; acceleration is performed by other
->           IP found on the SoC.
->
-> +if DRM_ROCKCHIP
-> +
->  config ROCKCHIP_ANALOGIX_DP
->         bool "Rockchip specific extensions for Analogix DP driver"
-> -       depends on DRM_ROCKCHIP
-> -       select DRM_ANALOGIX_DP
->         help
->           This selects support for Rockchip SoC specific extensions
->           for the Analogix Core DP driver. If you want to enable DP
-> @@ -23,9 +27,7 @@ config ROCKCHIP_ANALOGIX_DP
->
->  config ROCKCHIP_CDN_DP
->          bool "Rockchip cdn DP"
-> -        depends on DRM_ROCKCHIP
-> -       depends on EXTCON
-> -       select SND_SOC_HDMI_CODEC if SND_SOC
-> +       depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
->          help
->           This selects support for Rockchip SoC specific extensions
->           for the cdn DP driver. If you want to enable Dp on
-> @@ -34,8 +36,6 @@ config ROCKCHIP_CDN_DP
->
->  config ROCKCHIP_DW_HDMI
->          bool "Rockchip specific extensions for Synopsys DW HDMI"
-> -        depends on DRM_ROCKCHIP
-> -        select DRM_DW_HDMI
->          help
->           This selects support for Rockchip SoC specific extensions
->           for the Synopsys DesignWare HDMI driver. If you want to
-> @@ -44,8 +44,6 @@ config ROCKCHIP_DW_HDMI
->
->  config ROCKCHIP_DW_MIPI_DSI
->         bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
-> -       depends on DRM_ROCKCHIP
-> -       select DRM_MIPI_DSI
->         help
->          This selects support for Rockchip SoC specific extensions
->          for the Synopsys DesignWare HDMI driver. If you want to
-> @@ -54,8 +52,9 @@ config ROCKCHIP_DW_MIPI_DSI
->
->  config ROCKCHIP_INNO_HDMI
->         bool "Rockchip specific extensions for Innosilicon HDMI"
-> -       depends on DRM_ROCKCHIP
->         help
->           This selects support for Rockchip SoC specific extensions
->           for the Innosilicon HDMI driver. If you want to enable
->           HDMI on RK3036 based SoC, you should select this option.
-> +
-> +endif
-> --
-> 2.9.0
->
+>  drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+> index db6e5a9e6de6..4d3203f887e2 100644
+> --- a/drivers/clk/rockchip/clk-rk3228.c
+> +++ b/drivers/clk/rockchip/clk-rk3228.c
+> @@ -445,7 +445,7 @@ enum rk3228_plls {
+>  			RK2928_CLKGATE_CON(2), 12, GFLAGS,
+>  			&rk3228_spdif_fracmux),
+>  
+> -	GATE(0, "jtag", "ext_jtag", 0,
+> +	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
+>  			RK2928_CLKGATE_CON(1), 3, GFLAGS),
+>  
+>  	GATE(0, "sclk_otgphy0", "xin24m", 0,
+> @@ -644,9 +644,37 @@ enum rk3228_plls {
+>  
+>  static const char *const rk3228_critical_clocks[] __initconst = {
+>  	"aclk_cpu",
+> +	"pclk_cpu",
+> +	"hclk_cpu",
+>  	"aclk_peri",
+>  	"hclk_peri",
+>  	"pclk_peri",
+> +	"aclk_rga_noc",
+> +	"aclk_iep_noc",
+> +	"aclk_vop_noc",
+> +	"aclk_hdcp_noc",
+> +	"hclk_vio_ahb_arbi",
+> +	"hclk_vio_noc",
+> +	"hclk_vop_noc",
+> +	"hclk_host0_arb",
+> +	"hclk_host1_arb",
+> +	"hclk_host2_arb",
+> +	"hclk_otg_pmu",
+> +	"aclk_gpu_noc",
+> +	"sclk_initmem_mbist",
+> +	"aclk_initmem",
+> +	"hclk_rom",
+> +	"pclk_ddrupctl",
+> +	"pclk_ddrmon",
+> +	"pclk_msch_noc",
+> +	"pclk_stimer",
+> +	"pclk_ddrphy",
+> +	"pclk_acodecphy",
+> +	"pclk_phy_noc",
+> +	"aclk_vpu_noc",
+> +	"aclk_rkvdec_noc",
+> +	"hclk_vpu_noc",
+> +	"hclk_rkvdec_noc",
+>  };
+>  
+>  static void __init rk3228_clk_init(struct device_node *np)
+> 
+
+
