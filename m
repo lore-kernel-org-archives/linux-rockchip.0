@@ -1,120 +1,86 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: Re: [PATCH 41/41] drm/bridge: analogix_dp: Properly disable aux chan
- retries on rockchip
-Date: Tue, 28 Mar 2017 11:40:40 -0400
-Message-ID: <662cb447-2a40-bc01-440d-6a2817d272a3@osg.samsung.com>
-References: <20170310043305.17216-1-seanpaul@chromium.org>
- <CGME20170310044604epcas3p436238e095076e8cf0b1ab2a0139d8283@epcas3p4.samsung.com>
- <20170310043305.17216-42-seanpaul@chromium.org>
- <ee4b12aa-d109-86dd-2feb-1d51b5b745d8@samsung.com>
- <CAD=FV=Xay7z5QGtzzKQEsQOF4c=JOR7FAzT7TVdaVCFM-JePBA@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/3] Rockchip dts32 updates for 4.12 part1
+Date: Tue, 28 Mar 2017 17:52:31 +0200
+Message-ID: <5178456.jWASpzTAdU@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD=FV=Xay7z5QGtzzKQEsQOF4c=JOR7FAzT7TVdaVCFM-JePBA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>
-Cc: =?UTF-8?B?5b6B5aKeIOeOiw==?= <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Shuah Khan <shuahkh@osg.samsung.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Krzysztof Kozlowski <krzk@kernel.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gRG91ZywKCk9uIDAzLzIyLzIwMTcgMTI6NTkgUE0sIERvdWcgQW5kZXJzb24gd3JvdGU6
-Cj4gSGksCj4gCj4gT24gV2VkLCBNYXIgMjIsIDIwMTcgYXQgMzo1NyBBTSwgQW5kcnplaiBIYWpk
-YSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4gd3JvdGU6Cj4+IE9uIDEwLjAzLjIwMTcgMDU6MzIsIFNl
-YW4gUGF1bCB3cm90ZToKPj4+IEZyb206IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9t
-aXVtLm9yZz4KPj4+Cj4+PiBUaGUgY29tbWVudHMgaW4gYW5hbG9naXhfZHBfaW5pdF9hdXgoKSBj
-bGFpbSB0aGF0IHdlJ3JlIGRpc2FibGluZyBhdXgKPj4+IGNoYW5uZWwgcmV0cmllcywgYnV0IHRo
-ZW4gcmlnaHQgYmVsb3cgaXQgZm9yIFJvY2tjaGlwIGl0IHNldHMgdGhlbSB0bwo+Pj4gMy4gIElm
-IHdlIGFjdHVhbGx5IG5lZWQgMyByZXRyaWVzIGZvciBSb2NrY2hpcCB0aGVuIHdlIGNvdWxkIGFk
-anVzdAo+Pj4gdGhlIGNvbW1lbnQsIGJ1dCBpdCBzZWVtcyBtb3JlIGxpa2VseSB0aGF0IHdlIHdh
-bnQgdGhlIHNhbWUgcmV0cnkKPj4+IGJlaGF2aW9yIGFjcm9zcyBhbGwgcGxhdGZvcm1zLgo+Pj4K
-Pj4+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9yZz4KPj4+IENj
-OiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBEb3Vn
-bGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBT
-ZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPj4+IC0tLQo+Pj4gIGRyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgfCAxNSArKysrKysrKy0tLS0t
-LS0KPj4+ICAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
-Z2l4X2RwX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9yZWcuYwo+Pj4gaW5kZXggMjlkMTMwMjIyNjM2Li41N2RkMTk5MWQ3ZGUgMTAwNjQ0Cj4+PiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCj4+
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5j
-Cj4+PiBAQCAtNDgwLDE1ICs0ODAsMTYgQEAgdm9pZCBhbmFsb2dpeF9kcF9pbml0X2F1eChzdHJ1
-Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPj4+Cj4+PiAgICAgICBhbmFsb2dpeF9kcF9yZXNl
-dF9hdXgoZHApOwo+Pj4KPj4+IC0gICAgIC8qIERpc2FibGUgQVVYIHRyYW5zYWN0aW9uIEgvVyBy
-ZXRyeSAqLwo+Pj4gKyAgICAgLyogQVVYX0JJVF9QRVJJT0RfRVhQRUNURURfREVMQVkgZG9lc24n
-dCBhcHBseSB0byBSb2NrY2hpcCBJUCAqLwo+Pj4gICAgICAgaWYgKGRwLT5wbGF0X2RhdGEgJiYg
-aXNfcm9ja2NoaXAoZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpKQo+Pj4gLSAgICAgICAgICAgICBy
-ZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxBWSgwKSB8Cj4+PiAtICAgICAgICAgICAg
-ICAgICAgIEFVWF9IV19SRVRSWV9DT1VOVF9TRUwoMykgfAo+Pj4gLSAgICAgICAgICAgICAgICAg
-ICBBVVhfSFdfUkVUUllfSU5URVJWQUxfNjAwX01JQ1JPU0VDT05EUzsKPj4+ICsgICAgICAgICAg
-ICAgcmVnID0gMDsKPj4+ICAgICAgIGVsc2UKPj4+IC0gICAgICAgICAgICAgcmVnID0gQVVYX0JJ
-VF9QRVJJT0RfRVhQRUNURURfREVMQVkoMykgfAo+Pj4gLSAgICAgICAgICAgICAgICAgICBBVVhf
-SFdfUkVUUllfQ09VTlRfU0VMKDApIHwKPj4+IC0gICAgICAgICAgICAgICAgICAgQVVYX0hXX1JF
-VFJZX0lOVEVSVkFMXzYwMF9NSUNST1NFQ09ORFM7Cj4+PiArICAgICAgICAgICAgIHJlZyA9IEFV
-WF9CSVRfUEVSSU9EX0VYUEVDVEVEX0RFTEFZKDMpOwo+Pj4gKwo+Pj4gKyAgICAgLyogRGlzYWJs
-ZSBBVVggdHJhbnNhY3Rpb24gSC9XIHJldHJ5ICovCj4+PiArICAgICByZWcgfD0gQVVYX0hXX1JF
-VFJZX0NPVU5UX1NFTCgwKSB8Cj4+PiArICAgICAgICAgICAgQVVYX0hXX1JFVFJZX0lOVEVSVkFM
-XzYwMF9NSUNST1NFQ09ORFM7Cj4+PiArCj4+Cj4+IEFzIEkgdW5kZXJzdGFuZCB5b3Ugd2FudCB0
-byBkaXNhYmxlIEgvVyByZXRyeSBmb3IgYWxsLgo+IAo+IEJhc2ljYWxseSBJJ20gdHJ5aW5nIHRv
-IG1ha2UgdGhlIGNvZGUgbWF0Y2ggdGhlIGNvbW1lbnRzLCB3aGljaCBpdAo+IGRpZG4ndCBiZWZv
-cmUuCj4gCj4gT24gdGhlIGV4eW5vcyBzaWRlLCBpdCdzIHZlcnkgY2xlYXIgdGhhdCB3ZSBzaG91
-bGQgZGlzYWJsZSByZXRyaWVzLgo+IFRoZSBkb2NzIHNheSAiaXQgaXMgYWR2aXNhYmxlIHRvIHNl
-dCB0aGlzIGJpdCBmaWVsZCB0byAwIGJlY2F1c2UKPiBoYXJkd2FyZSByZXRyeSB3aWxsIGJlIHZh
-bGlkIG9ubHkgd2hlbiBEUCBSeCBkb2VzIG5vdCBzZW5kIGFueSByZXBseS4iCj4gCj4gT24gUm9j
-a2NoaXAsIEkgZG9uJ3Qgc2VlIHRoYXQgaW4gdGhlIGRvY3MuICBIb3dldmVyOgo+IAo+ICogU2lu
-Y2UgdGhlIHJvb3QgSVAgYmxvY2sgaXMgdGhlIHNhbWUvc2ltaWxhciwgcHJlc3VtYWJseSBpdCBz
-dWZmZXJzCj4gdGhlIHNhbWUgaXNzdWVzLiAgSXQgaXMgcGxhdXNpYmxlIHRoYXQgdGhlIFJvY2tj
-aGlwIElQIGJsb2NrIGlzIG5ld2VyCj4gYW5kIGNhbiBzb21laG93IGJlIG1hZGUgdG8gdXNlIHRo
-ZSBIVyByZXRyaWVzLCBidXQgSSBkb24ndCBhY3R1YWxseQo+IGtub3cgdGhhdC4KPiAKPiAqIFBy
-ZXN1bWFibHkgZWxzZXdoZXJlIGluIHRoZSBkcml2ZXIgd2UgYXJlIGFscmVhZHkgYXNzdW1pbmcg
-dGhhdCB0aGUKPiBIVyByZXRyaWVzIGFyZW4ndCB0aGVyZSBhbmQgd2UncmUgZG9pbmcgdGhlIHdv
-cmsgdG8gcmV0cnkgdGhpbmdzIGluCj4gc29mdHdhcmUuICBJIGRvbid0IHNlZSBhbnkgc3BlY2lh
-bCBjYXNlcyBmb3IgUm9ja2NoaXAgdGhlcmUgc2F5aW5nCj4gc29tZXRoaW5nIGxpa2UgIm9uIFJv
-Y2tjaGlwLCB3ZSBlbmFibGUgSFcgcmV0cmllcywgc28gYnlwYXNzIFNXCj4gcmV0cmllcyIuCj4g
-Cj4+IFdoYXQgaXMgdGhlIHBvaW50Cj4+IGluIHNldHRpbmcgcmV0cnkgaW50ZXJ2YWwgdGhlbj8K
-PiAKPiBQcm9iYWJseSBub3RoaW5nLCBidXQgdGhlIG9sZCBleHlub3MgY29kZSBpdCB1c2VkIHRv
-IGRvIHRoaXMuICBOb3RlCj4gdGhhdCA2MDAgdXMgaXMgYWN0dWFsbHkgMCwgc28gd2UgY291bGQg
-Y2VydGFpbmx5IHNraXAgaXQuCj4gCj4+IFdhcyBpdCB0ZXN0ZWQgb24gb3RoZXIgYW5hbG9naXgg
-dXNlcnMgKGV4eW5vcyksIEkgbWVhbiB0aGlzIHBhdGNoIGFuZAo+PiB3aG9sZSBwYXRjaHNldD8K
-PiAKPiBVbmxlc3MgSSBtZXNzZWQgdXAsIHRoaXMgcGFydGljdWxhciBwYXRjaCBpc24ndCBzdXBw
-b3NlZCB0byBjaGFuZ2UKPiBhbnl0aGluZyBmb3IgZXh5bm9zLgo+IAo+IEZvciB0aGUgd2hvbGUg
-cGF0Y2ggc2VyaWVzLCBpdCdzIHByb2JhYmx5IHdvcnRod2hpbGUgdG8gYWRkIEphdmllciB0bwo+
-IHRoZSBzZXJpZXMgKENDZWQgaGVyZSkuICBJbiB0aGUgcGFzdCBoZSBoYXMgYmVlbiBoZWxwZnVs
-IGluIGdldHRpbmcKPiB0aGluZ3MgdGVzdGVkIG9uIGV4eW5vcy1iYXNlZCBib2FyZHMuCj4KCkkg
-ZmluYWxseSBoYWQgdGltZSB0byB0ZXN0IHRoZSBwYXRjaCBzZXJpZXMgdGhpcyBtb3JuaW5nIChz
-b3JyeSBmb3IgdGhlIGRlbGF5KQpvbiBhbiBFeHlub3M1ODAwIFBlYWNoIFBpIENocm9tZWJvb2su
-CgpUaGUgZGlzcGxheSB3b3JrcyBidXQgdGhlIHNlcmllcyBicmVha3MgRFBNUy4gVGhlIG1hY2hp
-bmUgaGFuZ3MgaWYgSSBkbyB0aGlzOgoKJCBlY2hvIDEgPiAvc3lzL2RldmljZXMvcGxhdGZvcm0v
-ZXh5bm9zLWRybS9ncmFwaGljcy9mYjAvYmxhbmsKCkkgZG9uJ3QgaGF2ZSBhIHNlcmlhbCBjb25z
-b2xlIGF0dGFjaGVkIHRvIHRoZSBtYWNoaW5lIHNvIEkgY2FuJ3Qgc2VlIHdoYXQncwpoYXBwZW5p
-bmcgYnV0IGRvaW5nIGdpdCBiaXNlY3QgSSBmb3VuZCB0aGF0IHRoZSByZWdyZXNzaW9uIGlzIGlu
-dHJvZHVjZWQgYnk6CgpbUEFUQ0ggMjEvNDFdIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBFbnN1
-cmUgZWRwIGlzIGRpc2FibGVkIHdoZW4gc2h1dHRpbmcgZG93biB0aGUgcGFuZWwKClRoZSBwcm9i
-bGVtIGlzIHRoYXQgdGhpcyBwYXRjaCBjYWxscyBhbmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bvd2Vy
-X2Rvd24oKSBidXQKaXQgZG9lcyBzbyBhZnRlciB0aGUgUEhZIHdhcyBkaXNhYmxlZCB3aXRoIHBo
-eV9wb3dlcl9vZmYoKS4KClNvIHRoZSBmb2xsb3dpbmcgZGlmZiBvbiB0b3Agb2YgdGhlIHBhdGNo
-IHNlcmllcyBtYWtlcyB0aGluZ3MgdG8gd29yayBhZ2FpbjoKCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCmluZGV4IGJjOWEwYTI4YWIx
-ZC4uYjQ4MDk0NmI2NDdjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
-Z2l4L2FuYWxvZ2l4X2RwX2NvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
-Z2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwpAQCAtMTMzNiw4ICsxMzM2LDggQEAgc3RhdGljIHZvaWQg
-YW5hbG9naXhfZHBfYnJpZGdlX2Rpc2FibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKIAlp
-ZiAoZHAtPnBsYXRfZGF0YS0+cG93ZXJfb2ZmKQogCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYo
-ZHAtPnBsYXRfZGF0YSk7CiAKLQlwaHlfcG93ZXJfb2ZmKGRwLT5waHkpOwogCWFuYWxvZ2l4X2Rw
-X3NldF9hbmFsb2dfcG93ZXJfZG93bihkcCwgUE9XRVJfQUxMLCAxKTsKKwlwaHlfcG93ZXJfb2Zm
-KGRwLT5waHkpOwogCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5jbG9jayk7CgpCZXN0IHJl
-Z2FyZHMsCi0tIApKYXZpZXIgTWFydGluZXogQ2FuaWxsYXMKT3BlbiBTb3VyY2UgR3JvdXAKU2Ft
-c3VuZyBSZXNlYXJjaCBBbWVyaWNhCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+Hi Arnd, Kevin, Olof,
+
+This set is the first round of devicetree updates for 4.12. It comes
+in 3 parts, 32bit dts, general 64bit dts and the 64bit dts based on
+Olof's shared symlink branch.
+As always tags describe what's in there.
+
+So if nothing stands out, please pull.
+
+
+Thanks
+Heiko
+
+The following changes since commit c1ae3cfa0e89fa1a7ecc4c99031f5e9ae99d9201:
+
+  Linux 4.11-rc1 (2017-03-05 12:59:56 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-dts32-1
+
+for you to fetch changes up to 94bbdd77247d8c16eed5f55dddcf1cbc38d06cc4:
+
+  ARM: dts: rockchip: setup DMA-channels for mmc0 and emmc for rk3188 (2017-03-22 16:49:39 +0100)
+
+----------------------------------------------------------------
+Contains one new board, the Tinkerboard from Asus based on the rk3288,
+definitions for the mmc resets in the socs reset controller, sound
+support for the Rock2, dma support for mmc controllers on the rk3188
+and a led-fix for the MiQi board and and irq-fix for older Cortex-A9 socs.
+
+----------------------------------------------------------------
+Alexander Kochetkov (1):
+      ARM: dts: rockchip: setup DMA-channels for mmc0 and emmc for rk3188
+
+Eddie Cai (2):
+      dt-bindings: add rk3288-based Asus Tinker board
+      ARM: dts: rockchip: add dts for RK3288-Tinker board
+
+Heiko Stuebner (5):
+      ARM: dts: rockchip: add rk3288 dw-mmc resets
+      ARM: dts: rockchip: add rk3036 dw-mmc resets
+      ARM: dts: rockchip: add rk3066/rk3188 dw-mmc resets
+      ARM: dts: rockchip: add rk322x dw-mmc resets
+      ARM: dts: rockchip: fix PPI misconfiguration on Cortex-A9 socs
+
+Romain Perier (1):
+      ARM: dts: rockchip: Add support for ES8388 to the Radxa Rock 2
+
+Willy Tarreau (1):
+      ARM: dts: rockchip: fix the MiQi board's LED definition
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   3 +
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/rk3036.dtsi                      |   6 +
+ arch/arm/boot/dts/rk3188.dtsi                      |   4 +-
+ arch/arm/boot/dts/rk322x.dtsi                      |   2 +
+ arch/arm/boot/dts/rk3288-miqi.dts                  |  12 +-
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |   2 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |  41 ++
+ arch/arm/boot/dts/rk3288-tinker.dts                | 536 +++++++++++++++++++++
+ arch/arm/boot/dts/rk3288.dtsi                      |   8 +
+ arch/arm/boot/dts/rk3xxx.dtsi                      |  16 +-
+ 11 files changed, 616 insertions(+), 15 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-tinker.dts
