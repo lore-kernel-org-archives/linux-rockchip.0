@@ -1,11 +1,15 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] rockchip clock changes for 4.12 part1
-Date: Tue, 28 Mar 2017 14:52:34 +0200
-Message-ID: <5160508.89PunkDez8@phil>
+From: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] usb: dwc2: add multiple clocks handling
+Date: Tue, 28 Mar 2017 16:49:34 +0300
+Message-ID: <87mvc5fr4h.fsf@linux.intel.com>
+References: <1486608279-22278-1-git-send-email-frank.wang@rock-chips.com>
+ <1486608279-22278-3-git-send-email-frank.wang@rock-chips.com>
+ <1905699.rAdUkra9dJ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1905699.rAdUkra9dJ@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,82 +19,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
-
-Please find below rockchip clock changes for 4.12. As the tag states,
-I've included the rk1108 -> rv1108 clock rename in here. Pinctrl changes
-go through the pinctrl tree and once everything is in mainline I'll put
-the actual devicetree on top. That way we keep cross-tree changes to a
-minimum while keeping everything error-free and bisectable.
-
-So please pull if nothing stands out.
-
-Thanks
-Heiko
-
-
-The following changes since commit c1ae3cfa0e89fa1a7ecc4c99031f5e9ae99d9201:
-
-  Linux 4.11-rc1 (2017-03-05 12:59:56 -0800)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-clk1
-
-for you to fetch changes up to 9be83448951a404a6fd5cf43ee0245a9bccc02c1:
-
-  clk: rockchip: add pll_wait_lock for pll_enable (2017-03-22 18:33:22 +0100)
-
-----------------------------------------------------------------
-General rockchip clock changes for 4.12. Contains some new clock-ids
-as well as fixups of the clock-ids on rk3368 timers, which were unused
-and completely wrong (more and differently named timers).
-Also there is one new clock on rk3328 using the muxgrf type, a fix for
-pll enablement which should wait for the pll to lock before continuing,
-some more critical clocks and the rename of the rk1108 to rv1108, as the
-soc seems to have been using a preliminary name before its actual release.
-The plan is to have the driver changes (pinctrl, clk) go through the
-respective maintainer trees and once everything landed in mainline do
-the rename of the devicetree files. With the dts-include change in the
-clock rename, we also keep everything compiling and thus bisectability.
-
-----------------------------------------------------------------
-Andy Yan (2):
-      dt-bindings: rk1108-cru: rename RK1108 to RV1108
-      clk: rockchip: rename RK1108 to RV1108
-
-Douglas Anderson (1):
-      clk: rockchip: Set "ignore unused" for PMU M0 clocks on rk3399
-
-Elaine Zhang (7):
-      clk: rockchip: add rk3328 clk_mac2io_ext ID
-      clk: rockchip: fix up rk3368 timer-ids
-      clk: rockchip: add clock ids for timer10-15 of RK3368 SoCs
-      clk: rockchip: describe clk_gmac using the new muxgrf type on rk3328
-      clk: rockchip: export SCLK_TIMERXX id for timers on rk3368
-      clk: rockchip: mark some rk3368 core-clks as critical
-      clk: rockchip: add pll_wait_lock for pll_enable
-
-Heiko Stuebner (1):
-      Merge branch 'v4.12-shared/clkids' into v4.12-clk/next
-
- ...chip,rk1108-cru.txt => rockchip,rv1108-cru.txt} |  12 +-
- arch/arm/boot/dts/rk1108.dtsi                      |   2 +-
- drivers/clk/rockchip/Makefile                      |   2 +-
- drivers/clk/rockchip/clk-pll.c                     |   3 +
- drivers/clk/rockchip/clk-rk3328.c                  |   9 +
- drivers/clk/rockchip/clk-rk3368.c                  |  27 +-
- drivers/clk/rockchip/clk-rk3399.c                  |   8 +-
- .../clk/rockchip/{clk-rk1108.c => clk-rv1108.c}    | 414 ++++++++++-----------
- drivers/clk/rockchip/clk.h                         |  28 +-
- include/dt-bindings/clock/rk3328-cru.h             |   1 +
- include/dt-bindings/clock/rk3368-cru.h             |  19 +-
- .../clock/{rk1108-cru.h => rv1108-cru.h}           |   6 +-
- 12 files changed, 276 insertions(+), 255 deletions(-)
- rename Documentation/devicetree/bindings/clock/{rockchip,rk1108-cru.txt => rockchip,rv1108-cru.txt} (83%)
- rename drivers/clk/rockchip/{clk-rk1108.c => clk-rv1108.c} (57%)
- rename include/dt-bindings/clock/{rk1108-cru.h => rv1108-cru.h} (97%)
+CkhpLAoKSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JpdGVzOgo+IEFtIERvbm5l
+cnN0YWcsIDkuIEZlYnJ1YXIgMjAxNywgMTA6NDQ6MzkgQ0VUIHNjaHJpZWIgRnJhbmsgV2FuZzoK
+Pj4gU2luY2UgZHdjMiBtYXkgaGF2ZSBvbmUgb3IgbW9yZSBpbnB1dCBjbG9ja3MgbmVlZCB0byBt
+YW5hZ2UgZm9yIHNvbWUKPj4gcGxhdGZvcm0sIHNvIHRoaXMgYWRkcyBjaGFuZ2UgY2xrIHRvIGNs
+aydzIGFycmF5IG9mIHN0cnVjdCBkd2MyX2hzb3RnCj4+IHRvIGhhbmRsZSBtb3JlIGNsb2NrcyBv
+cGVyYXRpb24uCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBGcmFuayBXYW5nIDxmcmFuay53YW5nQHJv
+Y2stY2hpcHMuY29tPgo+Cj4gZm9yIHRoZSBzaW1wbGUgY2xvY2sgaGFuZGxpbmcgdGhlIGR3YzIt
+ZHJpdmVyIGRvZXMgcmlnaHQgbm93LCB0aGlzIGxvb2tzIAo+IGFkcXVhdGUgYW5kIGhvbm9yaW5n
+IEVQUk9CRV9ERUZFUiBpcyBhIG5pY2UgdG91Y2ggOy0pLCBzbwo+Cj4gUmV2aWV3ZWQtYnk6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpKb2huLCBjYXJlIHRvIGxvb2sgYXQgdGhp
+cyBzZXJpZXM/CgotLSAKYmFsYmkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
