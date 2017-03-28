@@ -1,34 +1,40 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v4 4/4] pinctrl: rockchip: avoid hardirq-unsafe functions
- in irq_chip
-Date: Tue, 28 Mar 2017 11:19:31 +0200
-Message-ID: <CACRpkdYy9cygGCYJcWQiO+iv2TSwphBxiiShsE4gWPUgM9z67A@mail.gmail.com>
-References: <20170323105931.10455-1-john@metanate.com> <20170323105931.10455-5-john@metanate.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 0/4] make some special clk as critical_clocks
+Date: Tue, 28 Mar 2017 18:06:50 +0800
+Message-ID: <1490695614-3220-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170323105931.10455-5-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Julia Cartwright <julia@ni.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de, xf@rock-chips.com
+Cc: huangtao@rock-chips.com, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 23, 2017 at 11:59 AM, John Keeping <john@metanate.com> wrote:
+change in v2:
+fix up some clks which have their own driver, not need to set as critical clocks
 
-> With real-time preemption, regmap functions cannot be used in the
-> implementation of irq_chip since they use spinlocks which may sleep.
->
-> Move the setting of the mux for IRQs to an irq_bus_sync_unlock handler
-> where we are allowed to sleep.
->
-> Signed-off-by: John Keeping <john@metanate.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> v3: unchanged
-> v2: unchanged
+Elaine Zhang (4):
+  clk: rockchip: rk3036: make pclk_ddrupctl as critical_clock
+  clk: rockchip: rk3228: make noc and some special clk as
+    critical_clocks
+  clk: rockchip: rk3288: make noc and some special clk as
+    critical_clocks
+  clk: rockchip: rk3368: make some special clk as critical_clocks
 
-Patch applied.
+ drivers/clk/rockchip/clk-rk3036.c |  1 +
+ drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
+ drivers/clk/rockchip/clk-rk3288.c | 14 ++++++++++----
+ drivers/clk/rockchip/clk-rk3368.c |  5 ++++-
+ 4 files changed, 44 insertions(+), 6 deletions(-)
 
-Yours,
-Linus Walleij
+-- 
+1.9.1
