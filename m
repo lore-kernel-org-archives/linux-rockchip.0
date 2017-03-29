@@ -1,68 +1,148 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: Re: changes to scheduler from mainline 4.8 to 4.10?
-Date: Wed, 29 Mar 2017 11:52:11 +0100
-Message-ID: <20170329115211.3edaca98.john@metanate.com>
-References: <CALd3UbSKV_Qzun=9Hhwe=omP5f4A3gyOi_nGNM6JA4d5ziFZ_g@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CALd3UbSKV_Qzun=9Hhwe=omP5f4A3gyOi_nGNM6JA4d5ziFZ_g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bert Schiettecatte <bert-SPTOQ0XKFtOY49tRHJ+t6mXnswh1EIUO@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Wadim Egorov <w.egorov@phytec.de>
+Subject: [PATCH v2] net: stmmac: dwmac-rk: Add handling for RGMII_ID/RXID/TXID
+Date: Wed, 29 Mar 2017 14:12:19 +0200
+Message-ID: <1490789539-43920-1-git-send-email-w.egorov@phytec.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: peppe.cavallaro@st.com, alexandre.torgue@st.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bert,
+ATM dwmac-rk will always set and enable it's internal delay lines.
+Using PHY internal delays in combination with the phy-mode
+rgmii-id/rxid/txid was not possible. Only rgmii was supported.
 
-On Tue, 28 Mar 2017 21:15:21 -0700, Bert Schiettecatte wrote:
+Now we can disable rockchip's gmac delay lines and also use
+rgmii-id/rxid/txid.
 
-> I'm working on a realtime audio application running on a rk3288
-> platform. The application is written in the JUCE framework, and uses
-> ALSA for audio output. I build the application in a debian jessie
-> chroot since it needs a bunch of libraries compiled for armhf.
-> 
-> The application used to run fine on 4.8 mainline, without noticable
-> audio dropouts. I had to upgrade recently to 4.10 mainline to get the
-> audio gadget driver working, but now the application has audio
-> dropouts (pause in the audio output).
-> 
-> I have been using 44100 hz sample rate and 960 samples buffer size for
-> testing. I increased the buffer size to 1280 which seemed to improve
-> things a little, and then after googling around I changed the IO
-> scheduler to noop (it was set to CFQ), which further increases the
-> performance. I now only have occasional audio dropouts.
-> 
-> The application does a lot of I/O via HID and has 4 audio processing
-> threads for signal processing, besides other threads and callbacks for
-> HID I/O.
-> 
-> Does anyone know if there are specific settings to pay attention to
-> for running realtime audio processing applications on mainline 4.10,
-> and if anything has changed with regards to how threads are scheduled,
-> between 4.8 and 4.10? Just trying to understand why my application
-> behaves differently now on 4.10 and if this is due to changes that
-> have been applied and kernel config settings I might not be aware of.
+Tested only with a RK3288 based board.
 
-Are you using the RT patchset [1] and CONFIG_PREEMPT_RT_FULL?  I'm able
-to run at 44100Hz with 128 sample buffers on RK3288 with appropriate
-thread priorities (although that is on a 4.4 series kernel, I haven't
-tested audio performance on more recent versions).
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+---
+Changes in v2: Added parenthesis around both expressions in DELAY_ENABLE
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 53 ++++++++++++++++++--------
+ 1 file changed, 37 insertions(+), 16 deletions(-)
 
-You may also want the pinctrl patchset I posted recently [2] to avoid
-locking issues when using full RT preemption.
-
-[1] https://rt.wiki.kernel.org/index.php/Main_Page
-[2] https://lkml.org/lkml/2017/3/23/208
-
-
-Regards,
-John
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index e5db6ac..f0df519 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -74,6 +74,10 @@ struct rk_priv_data {
+ #define GRF_BIT(nr)	(BIT(nr) | BIT(nr+16))
+ #define GRF_CLR_BIT(nr)	(BIT(nr+16))
+ 
++#define DELAY_ENABLE(soc, tx, rx) \
++	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
++	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
++
+ #define RK3228_GRF_MAC_CON0	0x0900
+ #define RK3228_GRF_MAC_CON1	0x0904
+ 
+@@ -115,8 +119,7 @@ static void rk3228_set_to_rgmii(struct rk_priv_data *bsp_priv,
+ 	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON1,
+ 		     RK3228_GMAC_PHY_INTF_SEL_RGMII |
+ 		     RK3228_GMAC_RMII_MODE_CLR |
+-		     RK3228_GMAC_RXCLK_DLY_ENABLE |
+-		     RK3228_GMAC_TXCLK_DLY_ENABLE);
++		     DELAY_ENABLE(RK3228, tx_delay, rx_delay));
+ 
+ 	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON0,
+ 		     RK3228_GMAC_CLK_RX_DL_CFG(rx_delay) |
+@@ -232,8 +235,7 @@ static void rk3288_set_to_rgmii(struct rk_priv_data *bsp_priv,
+ 		     RK3288_GMAC_PHY_INTF_SEL_RGMII |
+ 		     RK3288_GMAC_RMII_MODE_CLR);
+ 	regmap_write(bsp_priv->grf, RK3288_GRF_SOC_CON3,
+-		     RK3288_GMAC_RXCLK_DLY_ENABLE |
+-		     RK3288_GMAC_TXCLK_DLY_ENABLE |
++		     DELAY_ENABLE(RK3288, tx_delay, rx_delay) |
+ 		     RK3288_GMAC_CLK_RX_DL_CFG(rx_delay) |
+ 		     RK3288_GMAC_CLK_TX_DL_CFG(tx_delay));
+ }
+@@ -460,8 +462,7 @@ static void rk3366_set_to_rgmii(struct rk_priv_data *bsp_priv,
+ 		     RK3366_GMAC_PHY_INTF_SEL_RGMII |
+ 		     RK3366_GMAC_RMII_MODE_CLR);
+ 	regmap_write(bsp_priv->grf, RK3366_GRF_SOC_CON7,
+-		     RK3366_GMAC_RXCLK_DLY_ENABLE |
+-		     RK3366_GMAC_TXCLK_DLY_ENABLE |
++		     DELAY_ENABLE(RK3366, tx_delay, rx_delay) |
+ 		     RK3366_GMAC_CLK_RX_DL_CFG(rx_delay) |
+ 		     RK3366_GMAC_CLK_TX_DL_CFG(tx_delay));
+ }
+@@ -572,8 +573,7 @@ static void rk3368_set_to_rgmii(struct rk_priv_data *bsp_priv,
+ 		     RK3368_GMAC_PHY_INTF_SEL_RGMII |
+ 		     RK3368_GMAC_RMII_MODE_CLR);
+ 	regmap_write(bsp_priv->grf, RK3368_GRF_SOC_CON16,
+-		     RK3368_GMAC_RXCLK_DLY_ENABLE |
+-		     RK3368_GMAC_TXCLK_DLY_ENABLE |
++		     DELAY_ENABLE(RK3368, tx_delay, rx_delay) |
+ 		     RK3368_GMAC_CLK_RX_DL_CFG(rx_delay) |
+ 		     RK3368_GMAC_CLK_TX_DL_CFG(tx_delay));
+ }
+@@ -684,8 +684,7 @@ static void rk3399_set_to_rgmii(struct rk_priv_data *bsp_priv,
+ 		     RK3399_GMAC_PHY_INTF_SEL_RGMII |
+ 		     RK3399_GMAC_RMII_MODE_CLR);
+ 	regmap_write(bsp_priv->grf, RK3399_GRF_SOC_CON6,
+-		     RK3399_GMAC_RXCLK_DLY_ENABLE |
+-		     RK3399_GMAC_TXCLK_DLY_ENABLE |
++		     DELAY_ENABLE(RK3399, tx_delay, rx_delay) |
+ 		     RK3399_GMAC_CLK_RX_DL_CFG(rx_delay) |
+ 		     RK3399_GMAC_CLK_TX_DL_CFG(tx_delay));
+ }
+@@ -985,14 +984,29 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+ 		return ret;
+ 
+ 	/*rmii or rgmii*/
+-	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII) {
++	switch (bsp_priv->phy_iface) {
++	case PHY_INTERFACE_MODE_RGMII:
+ 		dev_info(dev, "init for RGMII\n");
+ 		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay,
+ 					    bsp_priv->rx_delay);
+-	} else if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII) {
++		break;
++	case PHY_INTERFACE_MODE_RGMII_ID:
++		dev_info(dev, "init for RGMII_ID\n");
++		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
++		break;
++	case PHY_INTERFACE_MODE_RGMII_RXID:
++		dev_info(dev, "init for RGMII_RXID\n");
++		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay, 0);
++		break;
++	case PHY_INTERFACE_MODE_RGMII_TXID:
++		dev_info(dev, "init for RGMII_TXID\n");
++		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, bsp_priv->rx_delay);
++		break;
++	case PHY_INTERFACE_MODE_RMII:
+ 		dev_info(dev, "init for RMII\n");
+ 		bsp_priv->ops->set_to_rmii(bsp_priv);
+-	} else {
++		break;
++	default:
+ 		dev_err(dev, "NO interface defined!\n");
+ 	}
+ 
+@@ -1022,12 +1036,19 @@ static void rk_fix_speed(void *priv, unsigned int speed)
+ 	struct rk_priv_data *bsp_priv = priv;
+ 	struct device *dev = &bsp_priv->pdev->dev;
+ 
+-	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII)
++	switch (bsp_priv->phy_iface) {
++	case PHY_INTERFACE_MODE_RGMII:
++	case PHY_INTERFACE_MODE_RGMII_ID:
++	case PHY_INTERFACE_MODE_RGMII_RXID:
++	case PHY_INTERFACE_MODE_RGMII_TXID:
+ 		bsp_priv->ops->set_rgmii_speed(bsp_priv, speed);
+-	else if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII)
++		break;
++	case PHY_INTERFACE_MODE_RMII:
+ 		bsp_priv->ops->set_rmii_speed(bsp_priv, speed);
+-	else
++		break;
++	default:
+ 		dev_err(dev, "unsupported interface %d", bsp_priv->phy_iface);
++	}
+ }
+ 
+ static int rk_gmac_probe(struct platform_device *pdev)
+-- 
+1.9.1
