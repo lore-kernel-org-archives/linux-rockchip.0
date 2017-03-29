@@ -1,180 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
- with the DT both the clocksource and the clockevent
-Date: Tue, 28 Mar 2017 20:51:46 -0500
-Message-ID: <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
-References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
- <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
+From: Bert Schiettecatte <bert-SPTOQ0XKFtOY49tRHJ+t6mXnswh1EIUO@public.gmane.org>
+Subject: changes to scheduler from mainline 4.8 to 4.10?
+Date: Tue, 28 Mar 2017 21:15:21 -0700
+Message-ID: <CALd3UbSKV_Qzun=9Hhwe=omP5f4A3gyOi_nGNM6JA4d5ziFZ_g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Huang Tao <huangtao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
-> From: Daniel Lezcano <daniel.lezcano@linaro.org>
-> 
-> The CLOCKSOURCE_OF_DECLARE() was introduced before the
-> CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
-> clockevent and the clocksource are both initialized in the same init
-> routine.
-> 
-> With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
-> now split the clocksource and the clockevent init code. However, the
-> device tree may specify a single node, so the same node will be passed
-> to the clockevent/clocksource's init function, with the same base
-> address.
-> 
-> with this patch it is possible to specify an attribute to the timer's node to
-> specify if it is a clocksource or a clockevent and define two timers node.
+Hi all,
 
-Daniel and I discussed and agreed against this a while back. What 
-changed?
+I'm working on a realtime audio application running on a rk3288
+platform. The application is written in the JUCE framework, and uses
+ALSA for audio output. I build the application in a debian jessie
+chroot since it needs a bunch of libraries compiled for armhf.
 
-> 
-> For example:
-> 
->         timer: timer@98400000 {
->                 compatible = "moxa,moxart-timer";
->                 reg = <0x98400000 0x42>;
+The application used to run fine on 4.8 mainline, without noticable
+audio dropouts. I had to upgrade recently to 4.10 mainline to get the
+audio gadget driver working, but now the application has audio
+dropouts (pause in the audio output).
 
-This overlaps the next node. You can change this to 0x10, but are these 
-really 2 independent h/w blocks? Don't design the nodes around the 
-current needs of Linux.
+I have been using 44100 hz sample rate and 960 samples buffer size for
+testing. I increased the buffer size to 1280 which seemed to improve
+things a little, and then after googling around I changed the IO
+scheduler to noop (it was set to CFQ), which further increases the
+performance. I now only have occasional audio dropouts.
 
->                 interrupts = <19 1>;
->                 clocks = <&coreclk>;
->                 clockevent;
+The application does a lot of I/O via HID and has 4 audio processing
+threads for signal processing, besides other threads and callbacks for
+HID I/O.
 
-This is not needed. The presence of "interrupts" is enough to say use 
-this timer for clockevent.
+Does anyone know if there are specific settings to pay attention to
+for running realtime audio processing applications on mainline 4.10,
+and if anything has changed with regards to how threads are scheduled,
+between 4.8 and 4.10? Just trying to understand why my application
+behaves differently now on 4.10 and if this is due to changes that
+have been applied and kernel config settings I might not be aware of.
 
->         };
-> 
->         timer: timer@98400010 {
->                 compatible = "moxa,moxart-timer";
->                 reg = <0x98400010 0x42>;
->                 clocks = <&coreclk>;
->                 clocksource;
-
-Likewise.
-
->         };
-> 
-> With this approach, we allow a mechanism to clearly define a clocksource or a
-> clockevent without aerobatics we can find around in some drivers:
-> 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
-> 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
-
-These all already have bindings and work. What problem are you trying to 
-solve other than restructuring Linux?
-
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
-> ---
->  Documentation/devicetree/bindings/timer/timer.txt |   38 +++++++++++++++++++++
->  drivers/clocksource/clkevt-probe.c                |    7 ++++
->  drivers/clocksource/clksrc-probe.c                |    7 ++++
->  3 files changed, 52 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/timer/timer.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/timer/timer.txt b/Documentation/devicetree/bindings/timer/timer.txt
-> new file mode 100644
-> index 0000000..f1ee0cf
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/timer/timer.txt
-> @@ -0,0 +1,38 @@
-> +
-> +Specifying timer information for devices
-> +========================================
-> +
-> +The timer can be declared via the macro:
-> +
-> +CLOCKSOURCE_OF_DECLARE(name, init) if it is a clocksource
-> +CLOCKEVENT_OF_DECLARE(name, init) if it is a clockevent
-> +
-> +The CLOCKSOURCE_OF_DECLARE() was introduced before the
-> +CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
-> +clockevent and the clocksource are both initialized in the same init
-> +routine.
-> +
-> +With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
-> +now split the clocksource and the clockevent init code. However, the
-> +device tree may specify a single node, so the same node will be passed
-> +to the clockevent/clocksource's init function, with the same base
-> +address. It is possible to specify an attribute to the timer's node to
-> +specify if it is a clocksource or a clockevent and define two timers
-> +node.
-
-This is all Linux details and doesn't belong in binding docs.
-
-> +
-> +Example:
-> +
-> +	timer: timer@98400000 {
-> +		compatible = "moxa,moxart-timer";
-> +		reg = <0x98400000 0x42>;
-> +		interrupts = <19 1>;
-> +		clocks = <&coreclk>;
-> +		clockevent;
-> +	};
-> +
-> +	timer: timer@98400010 {
-> +		compatible = "moxa,moxart-timer";
-> +		reg = <0x98400010 0x42>;
-> +		clocks = <&coreclk>;
-> +		clocksource;
-> +	};
-> diff --git a/drivers/clocksource/clkevt-probe.c b/drivers/clocksource/clkevt-probe.c
-> index eb89b50..fa02ac1 100644
-> --- a/drivers/clocksource/clkevt-probe.c
-> +++ b/drivers/clocksource/clkevt-probe.c
-> @@ -37,6 +37,13 @@ int __init clockevent_probe(void)
->  
->  		init_func = match->data;
->  
-> +		/*
-> +		 * The device node describes a clocksource, ignore it
-> +		 * as we are in the clockevent init routine.
-> +		 */
-> +		if (of_property_read_bool(np, "clocksource"))
-> +			continue;
-> +
->  		ret = init_func(np);
->  		if (ret) {
->  			pr_warn("Failed to initialize '%s' (%d)\n",
-> diff --git a/drivers/clocksource/clksrc-probe.c b/drivers/clocksource/clksrc-probe.c
-> index bc62be9..ce50f33 100644
-> --- a/drivers/clocksource/clksrc-probe.c
-> +++ b/drivers/clocksource/clksrc-probe.c
-> @@ -38,6 +38,13 @@ void __init clocksource_probe(void)
->  
->  		init_func_ret = match->data;
->  
-> +		/*
-> +		 * The device node describes a clockevent, ignore it
-> +		 * as we are in the clocksource init routine.
-> +		 */
-> +		if (of_property_read_bool(np, "clockevent"))
-> +			continue;
-> +
->  		ret = init_func_ret(np);
->  		if (ret) {
->  			pr_err("Failed to initialize '%s': %d",
-> -- 
-> 1.7.9.5
-> 
+Thanks for helping!
+Bert
