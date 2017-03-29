@@ -1,96 +1,194 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: Re: [PATCH v7 0/7] Implement clocksource for rockchip SoC using rockchip timer
-Date: Wed, 29 Mar 2017 16:22:15 +0300
-Message-ID: <DAFDD95C-3244-4217-B3A4-E9FB176AE989@gmail.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
+ with the DT both the clocksource and the clockevent
+Date: Wed, 29 Mar 2017 15:41:34 +0200
+Message-ID: <20170329134134.GJ2123@mai>
 References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+ <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
+ <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
+ <20170329092210.GH2123@mai>
+ <20170329104911.GC23442@leverpostej>
+ <20170329123638.GI2123@mai>
+ <20170329125713.GH23442@leverpostej>
+Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170329125713.GH23442@leverpostej>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello, Daniel.
+On Wed, Mar 29, 2017 at 01:57:14PM +0100, Mark Rutland wrote:
+> On Wed, Mar 29, 2017 at 02:36:38PM +0200, Daniel Lezcano wrote:
+> > On Wed, Mar 29, 2017 at 11:49:11AM +0100, Mark Rutland wrote:
+> > > On Wed, Mar 29, 2017 at 11:22:10AM +0200, Daniel Lezcano wrote:
+> > > > On Tue, Mar 28, 2017 at 08:51:46PM -0500, Rob Herring wrote:
+> > > > > On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
+> > 
+> > You can have several timers on the system and may want to use the clockevents
+> > from one IP block and the clocksource from another IP block. For example, in
+> > the case of a bogus clocksource.
+> 
+> I understand this. However, what I was trying to say is that *how* we
+> use a particular device should be a software decision. I have a more
+> concrete suggestion on that below.
+> 
+> > Moreover there are some drivers with a node for a clocksource and
+> > another one for the clockevent, and the driver is assuming the clockevent is
+> > defined first and then the clocksource.
+> > 
+> > eg.
+> > 
+> > arch/arc/boot/dts/abilis_tb10x.dtsi:
+> > 
+> >         /* TIMER0 with interrupt for clockevent */
+> >         timer0 {
+> >                 compatible = "snps,arc-timer";
+> >                 interrupts = <3>;
+> >                 interrupt-parent = <&intc>;
+> >                 clocks = <&cpu_clk>;
+> >         };
+> > 
+> >         /* TIMER1 for free running clocksource */
+> >         timer1 {
+> >                 compatible = "snps,arc-timer";
+> >                 clocks = <&cpu_clk>;
+> >         };
+> > 
+> > drivers/clocksource/arc_timer.c:
+> > 
+> > static int __init arc_of_timer_init(struct device_node *np)
+> > {
+> >         static int init_count = 0;
+> >         int ret;
+> > 
+> >         if (!init_count) {
+> >                 init_count = 1;
+> >                 ret = arc_clockevent_setup(np);
+> >         } else {
+> >                 ret = arc_cs_setup_timer1(np);
+> >         }
+> > 
+> >         return ret;
+> > }
+> > 
+> > Even if that works, it is a fragile mechanism.
+> > 
+> > So the purpose of these changes is to provide a stronger timer declaration in
+> > order to clearly split in the kernel a clocksource and a clockevent
+> > initialization.
+> 
+> I agree that this pattern is not nice. However, I think that splitting
+> devices as this level makes the problem *worse*.
+> 
+> Users care that they have a clocksource and a clockevent device. They
+> do not care *which* particular device is used as either. The comments in
+> the DT above are at best misleading.
 
-Due to recent comments from Mark[1], may be is better to apply v6[2] =
-series instead of v7[3]?
-Because my main goal was to fix wall time on rk3188. And I did it the =
-same way how that was
-already done for other timer drivers (one of possible solution).
+Agree.
 
-You can rename CLOCKSOURCE_OF to TIMER_OF later. I can help with that, =
-but I don=E2=80=99t
-think it is good idea to combine my changes and timer framework =
-cleanups/improvements
-into single series.
+And the driver is assuming the first node is the clockevent and the second one
+is the clocksource. If the DT invert these nodes, that breaks the driver.
 
-And I thinks, that probably is is better to drop [3] and [4] and revert =
-0c8893c9095d ("clockevents: Add a
-clkevt-of mechanism like clksrc-of=C2=BB).
+> What we need is for the kernel to understand that devices can be both
+> clockevent and clocksource (perhaps mutually exclusively), such that the
+> kernel can decide how to make use of devices.
+> 
+> That way, for the above the kernel can figure out that timer0 could be
+> used as clocksource or clockevent, while timer1 can only be used as a
+> clocksource due to the lack of an interrupt. Thus, it can choose to use
+> timer0 as a clockevent, and timer1 and a clocksource.
 
-What do you think?
+Well, 'interrupt' gives an indication the timer can be used as a clockevent and
+clocksource, not the clockevent only.
 
-[1] https://lkml.org/lkml/2017/3/29/286
-[2] https://lkml.org/lkml/2017/1/31/401
-[3] https://lkml.org/lkml/2017/3/22/508
-[4] https://lkml.org/lkml/2017/3/22/420
-[5] https://lkml.org/lkml/2017/3/22/426
+If we take the case of the rockchip, the arm_arch_timer clocksource is stopped
+when the CPU is clock gated. So specifically, we don't want to use this
+clocksource but we want to use the arch clockevents because they are better.
 
-> 22 =D0=BC=D0=B0=D1=80=D1=82=D0=B0 2017 =D0=B3., =D0=B2 18:48, =
-Alexander Kochetkov <al.kochet@gmail.com> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=
-=B0=D0=BB(=D0=B0):
->=20
-> Hello, Daniel, Heiko.
->=20
-> Here is try 7 :) Could you please take a look into it?
->=20
-> rockchip_timer init code implemented using CLOCKEVENT_OF_DECLARE()
-> introduced in commit 0c8893c9095d ("clockevents: Add a clkevt-of
-> mechanism like clksrc-of")
->=20
-> There is change in the arch/arm/mach-rockchip/rockchip.c.
->=20
-> This series should be applied after the commit:
-> https://lkml.org/lkml/2017/3/22/426
->=20
-> As without the commit, you will get linker error ("clkevt-probe.c:63:
-> undefined reference to `__clkevt_of_table=E2=80=99")
->=20
-> Regards,
-> Alexander.
->=20
->=20
-> Alexander Kochetkov (6):
->  dt-bindings: clarify compatible property for rockchip timers
->  ARM: dts: rockchip: update compatible property for rk322x timer
->  ARM: dts: rockchip: add clockevent attribute to rockchip timers
->  clocksource/drivers/rockchip_timer: implement clocksource timer
->  ARM: dts: rockchip: add timer entries to rk3188 SoC
->  ARM: dts: rockchip: disable arm-global-timer for rk3188
->=20
-> Daniel Lezcano (1):
->  clocksource/drivers/clksrc-evt-probe: Describe with the DT both the
->    clocksource and the clockevent
->=20
-> .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
-> Documentation/devicetree/bindings/timer/timer.txt  |   38 ++++
-> arch/arm/boot/dts/rk3036.dtsi                      |    1 +
-> arch/arm/boot/dts/rk3188.dtsi                      |   19 ++
-> arch/arm/boot/dts/rk322x.dtsi                      |    3 +-
-> arch/arm/boot/dts/rk3288.dtsi                      |    1 +
-> arch/arm/mach-rockchip/rockchip.c                  |    2 +
-> arch/arm64/boot/dts/rockchip/rk3368.dtsi           |    1 +
-> drivers/clocksource/Kconfig                        |    2 +
-> drivers/clocksource/clkevt-probe.c                 |    7 +
-> drivers/clocksource/clksrc-probe.c                 |    7 +
-> drivers/clocksource/rockchip_timer.c               |  215 =
-++++++++++++++------
-> 12 files changed, 241 insertions(+), 67 deletions(-)
-> create mode 100644 Documentation/devicetree/bindings/timer/timer.txt
->=20
-> --=20
-> 1.7.9.5
->=20
+> > > > > > With this approach, we allow a mechanism to clearly define a clocksource or a
+> > > > > > clockevent without aerobatics we can find around in some drivers:
+> > > > > > 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
+> > > > > > 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
+> > > > > 
+> > > > > These all already have bindings and work. What problem are you trying to 
+> > > > > solve other than restructuring Linux?
+> > > > 
+> > > > Yes, there is already the bindings, but that force to do some hackish
+> > > > initialization.
+> > > 
+> > > Here, you are forcing hackish DT changes that do not truly describe HW.
+> > > How is that better?
+> > 
+> > So if this is hackish DT changes, then the existing DTs should be fixed, no?
+> 
+> Yes.
+> 
+> For the above snippet, the only thing that needs to change is the
+> comment.
+> 
+> > > > I would like to give the opportunity to declare separately a clocksource and a
+> > > > clockevent, in order to have full control of how this is initialized.
+> > > 
+> > > To me it sounds like what we need is Linux infrastructure that allows
+> > > one to register a device as having both clockevent/clocksource
+> > > functionality.
+> > 
+> > That was the idea. Create a macro CLOCKEVENT_OF and CLOCKSOURCE_OF both of them
+> > calling their respective init routines. And in addition a TIMER_OF doing both
+> > CLOCKEVENT_OF and CLOCKSOURCE_OF.
+> > 
+> > It is the DT which does not allow to do this separation.
+> > 
+> > Would be the following approach more acceptable ?
+> > 
+> > 1. Replace all CLOCKSOURCE_OF by TIMER_OF (just renaming)
+> 
+> I am fine with this renaming.
+> 
+> > 2. A node can have a clockevent and|or a clocksource attributes
+> 
+> As above, this should not be in the DT given it's describing a
+> (Linux-specific) SW policy and not a HW detail.
+> 
+> So I must disagree with this.
+
+IIUC my discussion with Rob, an attribute is acceptable (btw if
+'clocksource'|'clockevent' names are too Linux specific (+1), what
+about a more generic name like 'tick' and 'time' ?).
+
+> > 3. The timer_probe pass a flag to the driver's init function, so this one knows
+> >    if it should invoke the clockevent/clocksource init functions.
+> >    No attribute defaults to clocksource|clockevent.
+> > 
+> > That would be backward compatible and will let to create drivers with clutch
+> > activated device via DT. Also, it will give the opportunity to the existing
+> > drivers to change consolidate their initialization routines.
+> 
+> I think that if anything, we need a combined clocksource+clockevent
+> device that we register to the core code. That means all
+> clocksource/clockevent drivers have a consolidated routine.
+> 
+> Subsequently, core code should determine how specifically to use the
+> device (e.g. based on what other devices are registered, and their
+> capabilities).
+
+IMO, the core code is complex enough and that may imply more heuristics.
+Regarding the number of timers, I do believe it is much better to simply tell
+which one we want to use via the DT (assuming the DT is a description of the
+desired hardware, not all the available hardware).
+
+-- 
+
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
