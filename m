@@ -1,14 +1,16 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: fix Kconfig dependencies
-Date: Wed, 29 Mar 2017 09:03:15 +0800
-Message-ID: <58DB07D3.4070809@rock-chips.com>
-References: <20170328101654.73624-1-arnd@arndb.de>
- <CABXOdTfAruXx0NPO3v9HA9biDd9gz8bGjQP16s9HP8Q3ihVqwA@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
+ with the DT both the clocksource and the clockevent
+Date: Tue, 28 Mar 2017 20:51:46 -0500
+Message-ID: <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
+References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
+ <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CABXOdTfAruXx0NPO3v9HA9biDd9gz8bGjQP16s9HP8Q3ihVqwA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,121 +20,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <groeck@google.com>, Arnd Bergmann <arnd@arndb.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Tobias Jakobi <tjakobi@math.uni-bielefeld.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Stephen Boyd <stephen.boyd@linaro.org>, linux-kernel <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Huang Tao <huangtao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
+On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
+> From: Daniel Lezcano <daniel.lezcano@linaro.org>
+> 
+> The CLOCKSOURCE_OF_DECLARE() was introduced before the
+> CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
+> clockevent and the clocksource are both initialized in the same init
+> routine.
+> 
+> With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
+> now split the clocksource and the clockevent init code. However, the
+> device tree may specify a single node, so the same node will be passed
+> to the clockevent/clocksource's init function, with the same base
+> address.
+> 
+> with this patch it is possible to specify an attribute to the timer's node to
+> specify if it is a clocksource or a clockevent and define two timers node.
 
-Tested-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Daniel and I discussed and agreed against this a while back. What 
+changed?
 
-Thanx for fixing this :)
+> 
+> For example:
+> 
+>         timer: timer@98400000 {
+>                 compatible = "moxa,moxart-timer";
+>                 reg = <0x98400000 0x42>;
 
-On 03/29/2017 12:37 AM, Guenter Roeck wrote:
-> On Tue, Mar 28, 2017 at 3:16 AM, Arnd Bergmann <arnd@arndb.de> wrote:
->> A bug that I had fixed earlier just came back, with CONFIG_EXTCON=m,
->> the rockchip drm driver will fail to link:
->>
->> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_get_port_lanes':
->> cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x30): undefined reference to `extcon_get_state'
->> cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x6c): undefined reference to `extcon_get_property'
->> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_check_sink_connection':
->> cdn-dp-core.c:(.text.cdn_dp_check_sink_connection+0x80): undefined reference to `extcon_get_state'
->> drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_enable':
->> cdn-dp-core.c:(.text.cdn_dp_enable+0x748): undefined reference to `extcon_get_property'
->>
->> The problem is that that the sub-drivers are now all linked into the
->> main rockchip drm module, which breaks all the Kconfig dependencies
->> that are specified in the options for those sub-drivers.
->>
->> This clarifies the dependency to ensure that we can only turn on the DP
->> driver when EXTCON is reachable. As the 'select' statements can now
->> cause additional options to become built-in when they should be
->> loadable modules, I'm moving those into the main driver config option.
->> The dependency on DRM_ROCKCHIP can be reduced into a single 'if'
->> statement here for brevity, but this has no functional effect.
->>
->> Fixes: b6705157b2db ("drm/rockchip: add extcon dependency for DP")
->> Fixes: 8820b68bd378 ("drm/rockchip: Refactor the component match logic.")
->> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
->
-> Acked-by: Guenter Roeck <groeck@chromium.org>
->
->> ---
->>   drivers/gpu/drm/rockchip/Kconfig | 19 +++++++++----------
->>   1 file changed, 9 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
->> index 50c41c0a50ef..dcc539ba85d6 100644
->> --- a/drivers/gpu/drm/rockchip/Kconfig
->> +++ b/drivers/gpu/drm/rockchip/Kconfig
->> @@ -5,6 +5,10 @@ config DRM_ROCKCHIP
->>          select DRM_KMS_HELPER
->>          select DRM_PANEL
->>          select VIDEOMODE_HELPERS
->> +       select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
->> +       select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
->> +       select DRM_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
->> +       select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
->>          help
->>            Choose this option if you have a Rockchip soc chipset.
->>            This driver provides kernel mode setting and buffer
->> @@ -12,10 +16,10 @@ config DRM_ROCKCHIP
->>            2D or 3D acceleration; acceleration is performed by other
->>            IP found on the SoC.
->>
->> +if DRM_ROCKCHIP
->> +
->>   config ROCKCHIP_ANALOGIX_DP
->>          bool "Rockchip specific extensions for Analogix DP driver"
->> -       depends on DRM_ROCKCHIP
->> -       select DRM_ANALOGIX_DP
->>          help
->>            This selects support for Rockchip SoC specific extensions
->>            for the Analogix Core DP driver. If you want to enable DP
->> @@ -23,9 +27,7 @@ config ROCKCHIP_ANALOGIX_DP
->>
->>   config ROCKCHIP_CDN_DP
->>           bool "Rockchip cdn DP"
->> -        depends on DRM_ROCKCHIP
->> -       depends on EXTCON
->> -       select SND_SOC_HDMI_CODEC if SND_SOC
->> +       depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
->>           help
->>            This selects support for Rockchip SoC specific extensions
->>            for the cdn DP driver. If you want to enable Dp on
->> @@ -34,8 +36,6 @@ config ROCKCHIP_CDN_DP
->>
->>   config ROCKCHIP_DW_HDMI
->>           bool "Rockchip specific extensions for Synopsys DW HDMI"
->> -        depends on DRM_ROCKCHIP
->> -        select DRM_DW_HDMI
->>           help
->>            This selects support for Rockchip SoC specific extensions
->>            for the Synopsys DesignWare HDMI driver. If you want to
->> @@ -44,8 +44,6 @@ config ROCKCHIP_DW_HDMI
->>
->>   config ROCKCHIP_DW_MIPI_DSI
->>          bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
->> -       depends on DRM_ROCKCHIP
->> -       select DRM_MIPI_DSI
->>          help
->>           This selects support for Rockchip SoC specific extensions
->>           for the Synopsys DesignWare HDMI driver. If you want to
->> @@ -54,8 +52,9 @@ config ROCKCHIP_DW_MIPI_DSI
->>
->>   config ROCKCHIP_INNO_HDMI
->>          bool "Rockchip specific extensions for Innosilicon HDMI"
->> -       depends on DRM_ROCKCHIP
->>          help
->>            This selects support for Rockchip SoC specific extensions
->>            for the Innosilicon HDMI driver. If you want to enable
->>            HDMI on RK3036 based SoC, you should select this option.
->> +
->> +endif
->> --
->> 2.9.0
->>
->
->
->
+This overlaps the next node. You can change this to 0x10, but are these 
+really 2 independent h/w blocks? Don't design the nodes around the 
+current needs of Linux.
+
+>                 interrupts = <19 1>;
+>                 clocks = <&coreclk>;
+>                 clockevent;
+
+This is not needed. The presence of "interrupts" is enough to say use 
+this timer for clockevent.
+
+>         };
+> 
+>         timer: timer@98400010 {
+>                 compatible = "moxa,moxart-timer";
+>                 reg = <0x98400010 0x42>;
+>                 clocks = <&coreclk>;
+>                 clocksource;
+
+Likewise.
+
+>         };
+> 
+> With this approach, we allow a mechanism to clearly define a clocksource or a
+> clockevent without aerobatics we can find around in some drivers:
+> 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
+> 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
+
+These all already have bindings and work. What problem are you trying to 
+solve other than restructuring Linux?
+
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/timer/timer.txt |   38 +++++++++++++++++++++
+>  drivers/clocksource/clkevt-probe.c                |    7 ++++
+>  drivers/clocksource/clksrc-probe.c                |    7 ++++
+>  3 files changed, 52 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/timer/timer.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/timer/timer.txt b/Documentation/devicetree/bindings/timer/timer.txt
+> new file mode 100644
+> index 0000000..f1ee0cf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/timer/timer.txt
+> @@ -0,0 +1,38 @@
+> +
+> +Specifying timer information for devices
+> +========================================
+> +
+> +The timer can be declared via the macro:
+> +
+> +CLOCKSOURCE_OF_DECLARE(name, init) if it is a clocksource
+> +CLOCKEVENT_OF_DECLARE(name, init) if it is a clockevent
+> +
+> +The CLOCKSOURCE_OF_DECLARE() was introduced before the
+> +CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
+> +clockevent and the clocksource are both initialized in the same init
+> +routine.
+> +
+> +With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
+> +now split the clocksource and the clockevent init code. However, the
+> +device tree may specify a single node, so the same node will be passed
+> +to the clockevent/clocksource's init function, with the same base
+> +address. It is possible to specify an attribute to the timer's node to
+> +specify if it is a clocksource or a clockevent and define two timers
+> +node.
+
+This is all Linux details and doesn't belong in binding docs.
+
+> +
+> +Example:
+> +
+> +	timer: timer@98400000 {
+> +		compatible = "moxa,moxart-timer";
+> +		reg = <0x98400000 0x42>;
+> +		interrupts = <19 1>;
+> +		clocks = <&coreclk>;
+> +		clockevent;
+> +	};
+> +
+> +	timer: timer@98400010 {
+> +		compatible = "moxa,moxart-timer";
+> +		reg = <0x98400010 0x42>;
+> +		clocks = <&coreclk>;
+> +		clocksource;
+> +	};
+> diff --git a/drivers/clocksource/clkevt-probe.c b/drivers/clocksource/clkevt-probe.c
+> index eb89b50..fa02ac1 100644
+> --- a/drivers/clocksource/clkevt-probe.c
+> +++ b/drivers/clocksource/clkevt-probe.c
+> @@ -37,6 +37,13 @@ int __init clockevent_probe(void)
+>  
+>  		init_func = match->data;
+>  
+> +		/*
+> +		 * The device node describes a clocksource, ignore it
+> +		 * as we are in the clockevent init routine.
+> +		 */
+> +		if (of_property_read_bool(np, "clocksource"))
+> +			continue;
+> +
+>  		ret = init_func(np);
+>  		if (ret) {
+>  			pr_warn("Failed to initialize '%s' (%d)\n",
+> diff --git a/drivers/clocksource/clksrc-probe.c b/drivers/clocksource/clksrc-probe.c
+> index bc62be9..ce50f33 100644
+> --- a/drivers/clocksource/clksrc-probe.c
+> +++ b/drivers/clocksource/clksrc-probe.c
+> @@ -38,6 +38,13 @@ void __init clocksource_probe(void)
+>  
+>  		init_func_ret = match->data;
+>  
+> +		/*
+> +		 * The device node describes a clockevent, ignore it
+> +		 * as we are in the clocksource init routine.
+> +		 */
+> +		if (of_property_read_bool(np, "clockevent"))
+> +			continue;
+> +
+>  		ret = init_func_ret(np);
+>  		if (ret) {
+>  			pr_err("Failed to initialize '%s': %d",
+> -- 
+> 1.7.9.5
+> 
