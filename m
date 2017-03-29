@@ -1,110 +1,105 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
- with the DT both the clocksource and the clockevent
-Date: Wed, 29 Mar 2017 11:22:10 +0200
-Message-ID: <20170329092210.GH2123@mai>
-References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
- <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
- <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
+From: Olliver Schinagl <o.schinagl-U3FVU11NWA554TAoqtyWWQ@public.gmane.org>
+Subject: Re: [PATCH v2] serial: 8250_dw: Avoid "too much work"
+ from bogus rx timeout interrupt
+Date: Wed, 29 Mar 2017 11:45:41 +0200
+Message-ID: <19bcb511-1417-5d37-7fce-47b66c78d17e@schinagl.nl>
+References: <20170206233000.3021-1-dianders@chromium.org>
+ <obfpfg$h6e$1@blaine.gmane.org>
+ <CAHp75VeND-85ze-zPqz3=8qfSQasK1LmLxcfC=_R1KvN-S7C+A@mail.gmail.com>
+Reply-To: o.schinagl-U3FVU11NWA554TAoqtyWWQ@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Return-path: <linux-sunxi+bncBD7M3SWL7UKRBSME53DAKGQE36B6X5Q-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+In-Reply-To: <CAHp75VeND-85ze-zPqz3=8qfSQasK1LmLxcfC=_R1KvN-S7C+A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Andy Shevchenko <andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Cal Sullivan <california.l.sullivan-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, guennadi.liakhovetski-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, jslaby-IBi9RG/b67k@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, eric.gao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dev-3kdeTeqwOZ9EV1b7eY7vFQ@public.gmane.orglinux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, noamc-d5a29ZRxExrQT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, jason.uy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, ed.blake-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.orgguennadi.liakhovetski-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 28, 2017 at 08:51:46PM -0500, Rob Herring wrote:
-> On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
-> > From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> > 
-> > The CLOCKSOURCE_OF_DECLARE() was introduced before the
-> > CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
-> > clockevent and the clocksource are both initialized in the same init
-> > routine.
-> > 
-> > With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
-> > now split the clocksource and the clockevent init code. However, the
-> > device tree may specify a single node, so the same node will be passed
-> > to the clockevent/clocksource's init function, with the same base
-> > address.
-> > 
-> > with this patch it is possible to specify an attribute to the timer's node to
-> > specify if it is a clocksource or a clockevent and define two timers node.
-> 
-> Daniel and I discussed and agreed against this a while back. What 
-> changed?
+Hey Andy,
 
-Hi Rob,
+On 29-03-17 11:11, Andy Shevchenko wrote:
+> On Wed, Mar 29, 2017 at 10:58 AM, Olliver Schinagl <oliver-dxLnbx3+1qmEVqv0pETR8A@public.gmane.org> wrote:
+>> On 07-02-17 00:30, Douglas Anderson wrote:
+>
+> First of all I didn't get why people from Cc list are suddenly
+> disappeared. Check your mail client settings.
+> Returning back some of them.
+Appologies, I replied via gmane's news feed to Douglas's initial post as 
+I did not have the original post and I failed to check the other 
+recipients. My fault. Sorry. I've added the original others as well.
 
-> > For example:
-> > 
-> >         timer: timer@98400000 {
-> >                 compatible = "moxa,moxart-timer";
-> >                 reg = <0x98400000 0x42>;
-> 
-> This overlaps the next node. You can change this to 0x10, but are these 
-> really 2 independent h/w blocks? Don't design the nodes around the 
-> current needs of Linux.
+>
+>>> It appears that somehow we have a RX Timeout interrupt but there is no
+>>> actual data present to receive.  When we're in this state the UART
+>>> driver claims that it handled the interrupt but it actually doesn't
+>>> really do anything.  This means that we keep getting the interrupt
+>>> over and over again.
+>
+>> I may be running into the same thing on an A20 SoC, but still in the stage
+>> of figuring out what is going on, as we get this error very occasionally. Do
+>> you have a way to externally induce this behavior other then suspend/resume?
+>> As we get it during uart-use and do not have (or I have never tried)
+>> suspend/resume on our platform.
+>
+> On Intel platforms with this IP I can see similar when run loopback
+> test on high speeds.
+> California may correct me since he did a lot of investigation of the
+> issue on x86.
+>
+>>>  static int dw8250_handle_irq(struct uart_port *p)
+>>>  {
+>>> +       struct uart_8250_port *up = up_to_u8250p(p);
+>>>         struct dw8250_data *d = p->private_data;
+>>>         unsigned int iir = p->serial_in(p, UART_IIR);
+>>> +       unsigned int status;
+>>> +       unsigned long flags;
+>>> +
+>>> +       /*
+>>> +        * There are ways to get Designware-based UARTs into a state where
+>>> +        * they are asserting UART_IIR_RX_TIMEOUT but there is no actual
+>>> +        * data available.  If we see such a case then we'll do a bogus
+>>> +        * read.  If we don't do this then the "RX TIMEOUT" interrupt will
+>>> +        * fire forever.
+>>
+>> I think what you are saying is 'do a bogus read as that is the only way to
+>> clear the interrupt, otherwise it will keep firing forever.'?
+>
+> No, we don't know if this _the only way_. It looks like no one from us
+> can tell you a root cause, except may be Synopsys guys.
+Has anybody tried to contact synopsis/dw about this issue at all?
 
-Mmh, thanks for raising this. Conceptually speaking there are two (or more)
-different entities, the clocksource and the clockevents but they share the same
-IP block.
+true, it is not the only way (maybe only as far as we know for now) but 
+it is 'the' way currently.
+>
+>>> +               spin_lock_irqsave(&p->lock, flags);
+>>
+>> this is a bit above my knowledge of driver etc, but I don't any spinlocks in
+>> the 8250 handle_irq glue drivers, except in the OMAP's case where they are
+>> handeling a DMA IRQ. So I ask, because I don't know, why is it needed here?
+>
+> They serialize IO accessors.
+>
+> Regarding to the rest comments, the patch is already in upstream, if
+> you feel that something should be changed, send an incremental fix.
+Ah, I thought I checked, but thought I didn't see it. I'll probably 
+forgot to fetch. I'll send a patch for the small mask fix.
+>
+>> Once I found a way to reproduce the problem (without suspend) I will test
+>> this to see if it fixes it for us too.
+>
+> It would be appreciated, but better to get know the root cause and
+> what _hardware_ guys think about solutions.
+>
+I read over the docs of the IP block (I know a little FPGA programming) 
+(dw_apb_uart of 2006) but found nothing yet that would warn for this 
+behavior. I suppose hardware/fgpa guys can give more background here 
+potentially, but it may also be simply an IP bug?
 
-In the driver timer-sp804.c there is a fragile mechanism with the timer
-counting assuming the timers are declared in a specific order in the DT
-(integratorcp.dts). There are multiple nodes, which are IIUC overlapping like
-what you are describing.
-
-I'm a bit puzzled with how this should be done.
-
-Do you have a suggestion ?
-
-> >                 interrupts = <19 1>;
-> >                 clocks = <&coreclk>;
-> >                 clockevent;
-> 
-> This is not needed. The presence of "interrupts" is enough to say use 
-> this timer for clockevent.
-
-Yes, that is true if no drivers was already taking CLOCKSOURCE_OF and
-initializing the clockevent. The driver will pass through the clocksource_probe
-function, check the interrupt and bail out because there is an interrupt
-declared and assume it is a clockevent, so no initialization for the driver.
-IOW, it is not backward compatible.
-
-We need this attribute somehow in order to separate clearly a clocksource or a
-clockevent with a new implementation.
- 
-> >         };
-> > 
-> >         timer: timer@98400010 {
-> >                 compatible = "moxa,moxart-timer";
-> >                 reg = <0x98400010 0x42>;
-> >                 clocks = <&coreclk>;
-> >                 clocksource;
-> 
-> Likewise.
-> 
-> >         };
-> > 
-> > With this approach, we allow a mechanism to clearly define a clocksource or a
-> > clockevent without aerobatics we can find around in some drivers:
-> > 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
-> > 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
-> 
-> These all already have bindings and work. What problem are you trying to 
-> solve other than restructuring Linux?
-
-Yes, there is already the bindings, but that force to do some hackish
-initialization.
-
-I would like to give the opportunity to declare separately a clocksource and a
-clockevent, in order to have full control of how this is initialized.
- 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Olliver
