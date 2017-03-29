@@ -1,148 +1,197 @@
-From: Wadim Egorov <w.egorov@phytec.de>
-Subject: [PATCH v2] net: stmmac: dwmac-rk: Add handling for RGMII_ID/RXID/TXID
-Date: Wed, 29 Mar 2017 14:12:19 +0200
-Message-ID: <1490789539-43920-1-git-send-email-w.egorov@phytec.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: peppe.cavallaro@st.com, alexandre.torgue@st.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
+ with the DT both the clocksource and the clockevent
+Date: Wed, 29 Mar 2017 14:36:38 +0200
+Message-ID: <20170329123638.GI2123@mai>
+References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
+ <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
+ <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
+ <20170329092210.GH2123@mai>
+ <20170329104911.GC23442@leverpostej>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170329104911.GC23442@leverpostej>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-ATM dwmac-rk will always set and enable it's internal delay lines.
-Using PHY internal delays in combination with the phy-mode
-rgmii-id/rxid/txid was not possible. Only rgmii was supported.
+On Wed, Mar 29, 2017 at 11:49:11AM +0100, Mark Rutland wrote:
+> Hi,
+> 
+> On Wed, Mar 29, 2017 at 11:22:10AM +0200, Daniel Lezcano wrote:
+> > On Tue, Mar 28, 2017 at 08:51:46PM -0500, Rob Herring wrote:
+> > > On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
+> > > > From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> > > > 
+> > > > The CLOCKSOURCE_OF_DECLARE() was introduced before the
+> > > > CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
+> > > > clockevent and the clocksource are both initialized in the same init
+> > > > routine.
+> > > > 
+> > > > With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
+> > > > now split the clocksource and the clockevent init code. However, the
+> > > > device tree may specify a single node, so the same node will be passed
+> > > > to the clockevent/clocksource's init function, with the same base
+> > > > address.
+> > > > 
+> > > > with this patch it is possible to specify an attribute to the timer's node to
+> > > > specify if it is a clocksource or a clockevent and define two timers node.
+> > > 
+> > > Daniel and I discussed and agreed against this a while back. What 
+> > > changed?
+> > 
+> > Hi Rob,
+> > 
+> > > > For example:
+> > > > 
+> > > >         timer: timer@98400000 {
+> > > >                 compatible = "moxa,moxart-timer";
+> > > >                 reg = <0x98400000 0x42>;
+> > > 
+> > > This overlaps the next node. You can change this to 0x10, but are these 
+> > > really 2 independent h/w blocks? Don't design the nodes around the 
+> > > current needs of Linux.
+> > 
+> > Mmh, thanks for raising this. Conceptually speaking there are two (or more)
+> > different entities, the clocksource and the clockevents but they share the same
+> > IP block.
+> 
+> From the DT's PoV, this is one entity, which is the IP block.
+> 
+> The clocksource/clockevent concept is a Linux implementation detail. The
+> DT cannot and should not be aware of that.
+> 
+> [...]
+> 
+> > > >                 interrupts = <19 1>;
+> > > >                 clocks = <&coreclk>;
+> > > >                 clockevent;
+> > > 
+> > > This is not needed. The presence of "interrupts" is enough to say use 
+> > > this timer for clockevent.
+> > 
+> > Yes, that is true if no drivers was already taking CLOCKSOURCE_OF and
+> > initializing the clockevent. The driver will pass through the clocksource_probe
+> > function, check the interrupt and bail out because there is an interrupt
+> > declared and assume it is a clockevent, so no initialization for the driver.
+> > IOW, it is not backward compatible.
+> > 
+> > We need this attribute somehow in order to separate clearly a clocksource or a
+> > clockevent with a new implementation.
+> 
+> Why? A single IP block can provide the functionality of both (though
+> there are reasons that functionality may be mutually exclusive). What is
+> the benefit of this split?
 
-Now we can disable rockchip's gmac delay lines and also use
-rgmii-id/rxid/txid.
+Hi Mark,
 
-Tested only with a RK3288 based board.
+You can have several timers on the system and may want to use the clockevents
+from one IP block and the clocksource from another IP block. For example, in
+the case of a bogus clocksource.
 
-Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
----
-Changes in v2: Added parenthesis around both expressions in DELAY_ENABLE
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 53 ++++++++++++++++++--------
- 1 file changed, 37 insertions(+), 16 deletions(-)
+Moreover there are some drivers with a node for a clocksource and
+another one for the clockevent, and the driver is assuming the clockevent is
+defined first and then the clocksource.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index e5db6ac..f0df519 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -74,6 +74,10 @@ struct rk_priv_data {
- #define GRF_BIT(nr)	(BIT(nr) | BIT(nr+16))
- #define GRF_CLR_BIT(nr)	(BIT(nr+16))
- 
-+#define DELAY_ENABLE(soc, tx, rx) \
-+	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
-+	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
-+
- #define RK3228_GRF_MAC_CON0	0x0900
- #define RK3228_GRF_MAC_CON1	0x0904
- 
-@@ -115,8 +119,7 @@ static void rk3228_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON1,
- 		     RK3228_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3228_GMAC_RMII_MODE_CLR |
--		     RK3228_GMAC_RXCLK_DLY_ENABLE |
--		     RK3228_GMAC_TXCLK_DLY_ENABLE);
-+		     DELAY_ENABLE(RK3228, tx_delay, rx_delay));
- 
- 	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON0,
- 		     RK3228_GMAC_CLK_RX_DL_CFG(rx_delay) |
-@@ -232,8 +235,7 @@ static void rk3288_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3288_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3288_GMAC_RMII_MODE_CLR);
- 	regmap_write(bsp_priv->grf, RK3288_GRF_SOC_CON3,
--		     RK3288_GMAC_RXCLK_DLY_ENABLE |
--		     RK3288_GMAC_TXCLK_DLY_ENABLE |
-+		     DELAY_ENABLE(RK3288, tx_delay, rx_delay) |
- 		     RK3288_GMAC_CLK_RX_DL_CFG(rx_delay) |
- 		     RK3288_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
-@@ -460,8 +462,7 @@ static void rk3366_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3366_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3366_GMAC_RMII_MODE_CLR);
- 	regmap_write(bsp_priv->grf, RK3366_GRF_SOC_CON7,
--		     RK3366_GMAC_RXCLK_DLY_ENABLE |
--		     RK3366_GMAC_TXCLK_DLY_ENABLE |
-+		     DELAY_ENABLE(RK3366, tx_delay, rx_delay) |
- 		     RK3366_GMAC_CLK_RX_DL_CFG(rx_delay) |
- 		     RK3366_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
-@@ -572,8 +573,7 @@ static void rk3368_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3368_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3368_GMAC_RMII_MODE_CLR);
- 	regmap_write(bsp_priv->grf, RK3368_GRF_SOC_CON16,
--		     RK3368_GMAC_RXCLK_DLY_ENABLE |
--		     RK3368_GMAC_TXCLK_DLY_ENABLE |
-+		     DELAY_ENABLE(RK3368, tx_delay, rx_delay) |
- 		     RK3368_GMAC_CLK_RX_DL_CFG(rx_delay) |
- 		     RK3368_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
-@@ -684,8 +684,7 @@ static void rk3399_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3399_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3399_GMAC_RMII_MODE_CLR);
- 	regmap_write(bsp_priv->grf, RK3399_GRF_SOC_CON6,
--		     RK3399_GMAC_RXCLK_DLY_ENABLE |
--		     RK3399_GMAC_TXCLK_DLY_ENABLE |
-+		     DELAY_ENABLE(RK3399, tx_delay, rx_delay) |
- 		     RK3399_GMAC_CLK_RX_DL_CFG(rx_delay) |
- 		     RK3399_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
-@@ -985,14 +984,29 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 		return ret;
- 
- 	/*rmii or rgmii*/
--	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII) {
-+	switch (bsp_priv->phy_iface) {
-+	case PHY_INTERFACE_MODE_RGMII:
- 		dev_info(dev, "init for RGMII\n");
- 		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay,
- 					    bsp_priv->rx_delay);
--	} else if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII) {
-+		break;
-+	case PHY_INTERFACE_MODE_RGMII_ID:
-+		dev_info(dev, "init for RGMII_ID\n");
-+		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
-+		break;
-+	case PHY_INTERFACE_MODE_RGMII_RXID:
-+		dev_info(dev, "init for RGMII_RXID\n");
-+		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay, 0);
-+		break;
-+	case PHY_INTERFACE_MODE_RGMII_TXID:
-+		dev_info(dev, "init for RGMII_TXID\n");
-+		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, bsp_priv->rx_delay);
-+		break;
-+	case PHY_INTERFACE_MODE_RMII:
- 		dev_info(dev, "init for RMII\n");
- 		bsp_priv->ops->set_to_rmii(bsp_priv);
--	} else {
-+		break;
-+	default:
- 		dev_err(dev, "NO interface defined!\n");
- 	}
- 
-@@ -1022,12 +1036,19 @@ static void rk_fix_speed(void *priv, unsigned int speed)
- 	struct rk_priv_data *bsp_priv = priv;
- 	struct device *dev = &bsp_priv->pdev->dev;
- 
--	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII)
-+	switch (bsp_priv->phy_iface) {
-+	case PHY_INTERFACE_MODE_RGMII:
-+	case PHY_INTERFACE_MODE_RGMII_ID:
-+	case PHY_INTERFACE_MODE_RGMII_RXID:
-+	case PHY_INTERFACE_MODE_RGMII_TXID:
- 		bsp_priv->ops->set_rgmii_speed(bsp_priv, speed);
--	else if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII)
-+		break;
-+	case PHY_INTERFACE_MODE_RMII:
- 		bsp_priv->ops->set_rmii_speed(bsp_priv, speed);
--	else
-+		break;
-+	default:
- 		dev_err(dev, "unsupported interface %d", bsp_priv->phy_iface);
-+	}
- }
- 
- static int rk_gmac_probe(struct platform_device *pdev)
+eg.
+
+arch/arc/boot/dts/abilis_tb10x.dtsi:
+
+        /* TIMER0 with interrupt for clockevent */
+        timer0 {
+                compatible = "snps,arc-timer";
+                interrupts = <3>;
+                interrupt-parent = <&intc>;
+                clocks = <&cpu_clk>;
+        };
+
+        /* TIMER1 for free running clocksource */
+        timer1 {
+                compatible = "snps,arc-timer";
+                clocks = <&cpu_clk>;
+        };
+
+drivers/clocksource/arc_timer.c:
+
+static int __init arc_of_timer_init(struct device_node *np)
+{
+        static int init_count = 0;
+        int ret;
+
+        if (!init_count) {
+                init_count = 1;
+                ret = arc_clockevent_setup(np);
+        } else {
+                ret = arc_cs_setup_timer1(np);
+        }
+
+        return ret;
+}
+
+Even if that works, it is a fragile mechanism.
+
+So the purpose of these changes is to provide a stronger timer declaration in
+order to clearly split in the kernel a clocksource and a clockevent
+initialization.
+
+> > > > With this approach, we allow a mechanism to clearly define a clocksource or a
+> > > > clockevent without aerobatics we can find around in some drivers:
+> > > > 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
+> > > > 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
+> > > 
+> > > These all already have bindings and work. What problem are you trying to 
+> > > solve other than restructuring Linux?
+> > 
+> > Yes, there is already the bindings, but that force to do some hackish
+> > initialization.
+> 
+> Here, you are forcing hackish DT changes that do not truly describe HW.
+> How is that better?
+
+So if this is hackish DT changes, then the existing DTs should be fixed, no?
+
+> > I would like to give the opportunity to declare separately a clocksource and a
+> > clockevent, in order to have full control of how this is initialized.
+> 
+> To me it sounds like what we need is Linux infrastructure that allows
+> one to register a device as having both clockevent/clocksource
+> functionality.
+
+That was the idea. Create a macro CLOCKEVENT_OF and CLOCKSOURCE_OF both of them
+calling their respective init routines. And in addition a TIMER_OF doing both
+CLOCKEVENT_OF and CLOCKSOURCE_OF.
+
+It is the DT which does not allow to do this separation.
+
+Would be the following approach more acceptable ?
+
+1. Replace all CLOCKSOURCE_OF by TIMER_OF (just renaming)
+2. A node can have a clockevent and|or a clocksource attributes
+3. The timer_probe pass a flag to the driver's init function, so this one knows
+   if it should invoke the clockevent/clocksource init functions.
+   No attribute defaults to clocksource|clockevent.
+
+That would be backward compatible and will let to create drivers with clutch
+activated device via DT. Also, it will give the opportunity to the existing
+drivers to change consolidate their initialization routines.
+
+> That way, we can choose to do something sane at boot time, and if the
+> user really wants specific devices used in specific ways, they can
+> request that.
+
+
 -- 
-1.9.1
+
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
