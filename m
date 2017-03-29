@@ -1,113 +1,68 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH v7 1/7] clocksource/drivers/clksrc-evt-probe: Describe
- with the DT both the clocksource and the clockevent
-Date: Wed, 29 Mar 2017 11:49:11 +0100
-Message-ID: <20170329104911.GC23442@leverpostej>
-References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
- <1490197714-25415-2-git-send-email-al.kochet@gmail.com>
- <20170329015146.ey5rlptzsnnynpnt@rob-hp-laptop>
- <20170329092210.GH2123@mai>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: Re: changes to scheduler from mainline 4.8 to 4.10?
+Date: Wed, 29 Mar 2017 11:52:11 +0100
+Message-ID: <20170329115211.3edaca98.john@metanate.com>
+References: <CALd3UbSKV_Qzun=9Hhwe=omP5f4A3gyOi_nGNM6JA4d5ziFZ_g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170329092210.GH2123@mai>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Alexander Kochetkov <al.kochet@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Russell King <linux@armlinux.org.uk>, Caesar Wang <wxt@rock-chips.com>, Huang Tao <huangtao@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CALd3UbSKV_Qzun=9Hhwe=omP5f4A3gyOi_nGNM6JA4d5ziFZ_g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bert Schiettecatte <bert-SPTOQ0XKFtOY49tRHJ+t6mXnswh1EIUO@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Bert,
 
-On Wed, Mar 29, 2017 at 11:22:10AM +0200, Daniel Lezcano wrote:
-> On Tue, Mar 28, 2017 at 08:51:46PM -0500, Rob Herring wrote:
-> > On Wed, Mar 22, 2017 at 06:48:28PM +0300, Alexander Kochetkov wrote:
-> > > From: Daniel Lezcano <daniel.lezcano@linaro.org>
-> > > 
-> > > The CLOCKSOURCE_OF_DECLARE() was introduced before the
-> > > CLOCKEVENT_OF_DECLARE() and that resulted in some abuse where the
-> > > clockevent and the clocksource are both initialized in the same init
-> > > routine.
-> > > 
-> > > With the introduction of the CLOCKEVENT_OF_DECLARE(), the driver can
-> > > now split the clocksource and the clockevent init code. However, the
-> > > device tree may specify a single node, so the same node will be passed
-> > > to the clockevent/clocksource's init function, with the same base
-> > > address.
-> > > 
-> > > with this patch it is possible to specify an attribute to the timer's node to
-> > > specify if it is a clocksource or a clockevent and define two timers node.
-> > 
-> > Daniel and I discussed and agreed against this a while back. What 
-> > changed?
+On Tue, 28 Mar 2017 21:15:21 -0700, Bert Schiettecatte wrote:
+
+> I'm working on a realtime audio application running on a rk3288
+> platform. The application is written in the JUCE framework, and uses
+> ALSA for audio output. I build the application in a debian jessie
+> chroot since it needs a bunch of libraries compiled for armhf.
 > 
-> Hi Rob,
+> The application used to run fine on 4.8 mainline, without noticable
+> audio dropouts. I had to upgrade recently to 4.10 mainline to get the
+> audio gadget driver working, but now the application has audio
+> dropouts (pause in the audio output).
 > 
-> > > For example:
-> > > 
-> > >         timer: timer@98400000 {
-> > >                 compatible = "moxa,moxart-timer";
-> > >                 reg = <0x98400000 0x42>;
-> > 
-> > This overlaps the next node. You can change this to 0x10, but are these 
-> > really 2 independent h/w blocks? Don't design the nodes around the 
-> > current needs of Linux.
+> I have been using 44100 hz sample rate and 960 samples buffer size for
+> testing. I increased the buffer size to 1280 which seemed to improve
+> things a little, and then after googling around I changed the IO
+> scheduler to noop (it was set to CFQ), which further increases the
+> performance. I now only have occasional audio dropouts.
 > 
-> Mmh, thanks for raising this. Conceptually speaking there are two (or more)
-> different entities, the clocksource and the clockevents but they share the same
-> IP block.
-
-From the DT's PoV, this is one entity, which is the IP block.
-
-The clocksource/clockevent concept is a Linux implementation detail. The
-DT cannot and should not be aware of that.
-
-[...]
-
-> > >                 interrupts = <19 1>;
-> > >                 clocks = <&coreclk>;
-> > >                 clockevent;
-> > 
-> > This is not needed. The presence of "interrupts" is enough to say use 
-> > this timer for clockevent.
+> The application does a lot of I/O via HID and has 4 audio processing
+> threads for signal processing, besides other threads and callbacks for
+> HID I/O.
 > 
-> Yes, that is true if no drivers was already taking CLOCKSOURCE_OF and
-> initializing the clockevent. The driver will pass through the clocksource_probe
-> function, check the interrupt and bail out because there is an interrupt
-> declared and assume it is a clockevent, so no initialization for the driver.
-> IOW, it is not backward compatible.
-> 
-> We need this attribute somehow in order to separate clearly a clocksource or a
-> clockevent with a new implementation.
+> Does anyone know if there are specific settings to pay attention to
+> for running realtime audio processing applications on mainline 4.10,
+> and if anything has changed with regards to how threads are scheduled,
+> between 4.8 and 4.10? Just trying to understand why my application
+> behaves differently now on 4.10 and if this is due to changes that
+> have been applied and kernel config settings I might not be aware of.
 
-Why? A single IP block can provide the functionality of both (though
-there are reasons that functionality may be mutually exclusive). What is
-the benefit of this split?
+Are you using the RT patchset [1] and CONFIG_PREEMPT_RT_FULL?  I'm able
+to run at 44100Hz with 128 sample buffers on RK3288 with appropriate
+thread priorities (although that is on a 4.4 series kernel, I haven't
+tested audio performance on more recent versions).
 
-> > > With this approach, we allow a mechanism to clearly define a clocksource or a
-> > > clockevent without aerobatics we can find around in some drivers:
-> > > 	timer-sp804.c, arc-timer.c, dw_apb_timer_of.c, mps2-timer.c,
-> > > 	renesas-ostm.c, time-efm32.c, time-lpc32xx.c.
-> > 
-> > These all already have bindings and work. What problem are you trying to 
-> > solve other than restructuring Linux?
-> 
-> Yes, there is already the bindings, but that force to do some hackish
-> initialization.
+You may also want the pinctrl patchset I posted recently [2] to avoid
+locking issues when using full RT preemption.
 
-Here, you are forcing hackish DT changes that do not truly describe HW.
-How is that better?
+[1] https://rt.wiki.kernel.org/index.php/Main_Page
+[2] https://lkml.org/lkml/2017/3/23/208
 
-> I would like to give the opportunity to declare separately a clocksource and a
-> clockevent, in order to have full control of how this is initialized.
 
-To me it sounds like what we need is Linux infrastructure that allows
-one to register a device as having both clockevent/clocksource
-functionality.
-
-That way, we can choose to do something sane at boot time, and if the
-user really wants specific devices used in specific ways, they can
-request that.
-
-Thanks,
-Mark.
+Regards,
+John
