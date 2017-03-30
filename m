@@ -1,61 +1,75 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron
- boards
-Date: Thu, 30 Mar 2017 14:11:19 +0900
-Message-ID: <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
-References: <20170330011709.GA110687@google.com>
-        <6d87cb71-1339-0dc9-e071-1c117f541881@rock-chips.com>
-        <20170330014230.GA21467@google.com>
-        <CANCyOWYsG9rpCvEsBMDJAyOTjKJCe=O-35-Zbhjh4is+op_h=w@mail.gmail.com>
-        <CGME20170330025350epcas4p423e66068f5d962677952830258676fcf@epcas4p4.samsung.com>
-        <20170330025345.GA29421@google.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH] phy: rockchip-inno-usb2: fix spelling mistake:
+ "connecetd" -> "connected"
+Date: Thu, 30 Mar 2017 11:02:41 +0530
+Message-ID: <07c054ae-69bf-6348-b7a6-afa367358ba4@ti.com>
+References: <20170222233052.8016-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <20170330025345.GA29421@google.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Eddie Cai <eddie.cai.kernel@gmail.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, amstan@chromium.org, Kevin Mihelich <kevin@archlinuxarm.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170222233052.8016-1-colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Colin King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On 03/30/2017 11:53 AM, Brian Norris wrote:
-> Hi Eddie,
-> 
-> On Thu, Mar 30, 2017 at 10:18:59AM +0800, Eddie Cai wrote:
->> I test on rk3288 firefly reload with 4.11-rc4. It work fine.
-> 
-> OK, thanks for checking.
-> 
->>> On Thu, Mar 30, 2017 at 09:32:22AM +0800, Shawn Lin wrote:
->>>> Hi Brian,
->>>>
->>>> On 2017/3/30 9:17, Brian Norris wrote:
->>>>> Hi all,
->>>>>
->>>>> I haven't managed to get as far as a bugfix for this, but I've bisected
->>>>> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
->>>>> in particular). v4.9 works fine.
-> 
-> [...]
-> 
-> By the way, Kevin (CC'd) says he noticed similiar Wifi issues on an
-> Exynos 5800 Peach chromebook, but not on an Exynos 5250 Snow chromebook.	
-> I haven't picked these apart yet to see what the differences and
-> similarities are, but presumably it's not actually a Rockchip-specific
-> bug. Maybe related to the way power sequencing is plumbed for these, for
-> example?
 
-I'm not sure but if card-detecting is polling, the timing issue could be occurred.
+On Thursday 23 February 2017 05:00 AM, Colin King wrote:
+> From: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+> 
+> trivial fix to spelling mistake in dev_dbg message, also rejoin
+> lines to clean up checkpatch warning
+> 
+> Signed-off-by: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
 
-Best Regards,
-Jaehoon Chung
+merged, thanks.
 
+-Kishon
+> ---
+>  drivers/phy/phy-rockchip-inno-usb2.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
 > 
-> Brian
+> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
+> index 4ea95c2..761a921 100644
+> --- a/drivers/phy/phy-rockchip-inno-usb2.c
+> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
+> @@ -554,8 +554,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>  			case USB_CHG_STATE_DETECTED:
+>  				switch (rphy->chg_type) {
+>  				case POWER_SUPPLY_TYPE_USB:
+> -					dev_dbg(&rport->phy->dev,
+> -						"sdp cable is connecetd\n");
+> +					dev_dbg(&rport->phy->dev, "sdp cable is connected\n");
+>  					rockchip_usb2phy_power_on(rport->phy);
+>  					rport->state = OTG_STATE_B_PERIPHERAL;
+>  					notify_charger = true;
+> @@ -563,16 +562,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>  					cable = EXTCON_CHG_USB_SDP;
+>  					break;
+>  				case POWER_SUPPLY_TYPE_USB_DCP:
+> -					dev_dbg(&rport->phy->dev,
+> -						"dcp cable is connecetd\n");
+> +					dev_dbg(&rport->phy->dev, "dcp cable is connected\n");
+>  					rockchip_usb2phy_power_off(rport->phy);
+>  					notify_charger = true;
+>  					sch_work = true;
+>  					cable = EXTCON_CHG_USB_DCP;
+>  					break;
+>  				case POWER_SUPPLY_TYPE_USB_CDP:
+> -					dev_dbg(&rport->phy->dev,
+> -						"cdp cable is connecetd\n");
+> +					dev_dbg(&rport->phy->dev, "cdp cable is connected\n");
+>  					rockchip_usb2phy_power_on(rport->phy);
+>  					rport->state = OTG_STATE_B_PERIPHERAL;
+>  					notify_charger = true;
 > 
-> 
-> 
-
