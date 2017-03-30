@@ -1,112 +1,78 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 0/7] Implement clocksource for rockchip SoC using
- rockchip timer
-Date: Thu, 30 Mar 2017 11:26:30 +0200
-Message-ID: <95a1610f-a784-83de-135d-0e742a34ce17@linaro.org>
-References: <1490197714-25415-1-git-send-email-al.kochet@gmail.com>
- <DAFDD95C-3244-4217-B3A4-E9FB176AE989@gmail.com>
+From: Maxime Ripard <maxime.ripard@free-electrons.com>
+Subject: Re: [PATCH v2 2/4] clk: rockchip: rk3228: make noc and some special
+ clk as critical_clocks
+Date: Thu, 30 Mar 2017 14:44:17 +0200
+Message-ID: <20170330124417.73ucpdkoonuiyhxz@lukather>
+References: <1490695614-3220-1-git-send-email-zhangqing@rock-chips.com>
+ <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <DAFDD95C-3244-4217-B3A4-E9FB176AE989-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="qr26icxxwhan4wmg"
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, xf@rock-chips.com, huangtao@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 29/03/2017 15:22, Alexander Kochetkov wrote:
-> Hello, Daniel.
 
-Hi Alexander,
+--qr26icxxwhan4wmg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Due to recent comments from Mark[1], may be is better to apply v6[2] series instead of v7[3]?
-> Because my main goal was to fix wall time on rk3188. And I did it the same way how that was
-> already done for other timer drivers (one of possible solution).
-> 
-> You can rename CLOCKSOURCE_OF to TIMER_OF later. I can help with that, but I don’t
-> think it is good idea to combine my changes and timer framework cleanups/improvements
-> into single series.
-> 
-> And I thinks, that probably is is better to drop [3] and [4] and revert 0c8893c9095d ("clockevents: Add a
-> clkevt-of mechanism like clksrc-of»).
-> 
-> What do you think?
+On Tue, Mar 28, 2017 at 06:06:52PM +0800, Elaine Zhang wrote:
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk=
+-rk3228.c
+> index db6e5a9e6de6..4d3203f887e2 100644
+> --- a/drivers/clk/rockchip/clk-rk3228.c
+> +++ b/drivers/clk/rockchip/clk-rk3228.c
+> @@ -445,7 +445,7 @@ enum rk3228_plls {
+>  			RK2928_CLKGATE_CON(2), 12, GFLAGS,
+>  			&rk3228_spdif_fracmux),
+> =20
+> -	GATE(0, "jtag", "ext_jtag", 0,
+> +	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
 
-I share your opinion.
+CLK_IGNORE_UNUSED only prevents a given clock from being gated at
+late_initcall time, but will not prevent it from being gated later in
+the life of the system, for example if a reparenting occurs, or if all
+the clocks sharing the same clock tree become disabled.
 
-  -- Daniel
+If your clock really should never ever be gated in order for Linux to
+operate properly, you should use CLK_IS_CRITICAL.
 
+Maxime
 
-> [1] https://lkml.org/lkml/2017/3/29/286
-> [2] https://lkml.org/lkml/2017/1/31/401
-> [3] https://lkml.org/lkml/2017/3/22/508
-> [4] https://lkml.org/lkml/2017/3/22/420
-> [5] https://lkml.org/lkml/2017/3/22/426
-> 
->> 22 марта 2017 г., в 18:48, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> написал(а):
->>
->> Hello, Daniel, Heiko.
->>
->> Here is try 7 :) Could you please take a look into it?
->>
->> rockchip_timer init code implemented using CLOCKEVENT_OF_DECLARE()
->> introduced in commit 0c8893c9095d ("clockevents: Add a clkevt-of
->> mechanism like clksrc-of")
->>
->> There is change in the arch/arm/mach-rockchip/rockchip.c.
->>
->> This series should be applied after the commit:
->> https://lkml.org/lkml/2017/3/22/426
->>
->> As without the commit, you will get linker error ("clkevt-probe.c:63:
->> undefined reference to `__clkevt_of_table’")
->>
->> Regards,
->> Alexander.
->>
->>
->> Alexander Kochetkov (6):
->>  dt-bindings: clarify compatible property for rockchip timers
->>  ARM: dts: rockchip: update compatible property for rk322x timer
->>  ARM: dts: rockchip: add clockevent attribute to rockchip timers
->>  clocksource/drivers/rockchip_timer: implement clocksource timer
->>  ARM: dts: rockchip: add timer entries to rk3188 SoC
->>  ARM: dts: rockchip: disable arm-global-timer for rk3188
->>
->> Daniel Lezcano (1):
->>  clocksource/drivers/clksrc-evt-probe: Describe with the DT both the
->>    clocksource and the clockevent
->>
->> .../bindings/timer/rockchip,rk-timer.txt           |   12 +-
->> Documentation/devicetree/bindings/timer/timer.txt  |   38 ++++
->> arch/arm/boot/dts/rk3036.dtsi                      |    1 +
->> arch/arm/boot/dts/rk3188.dtsi                      |   19 ++
->> arch/arm/boot/dts/rk322x.dtsi                      |    3 +-
->> arch/arm/boot/dts/rk3288.dtsi                      |    1 +
->> arch/arm/mach-rockchip/rockchip.c                  |    2 +
->> arch/arm64/boot/dts/rockchip/rk3368.dtsi           |    1 +
->> drivers/clocksource/Kconfig                        |    2 +
->> drivers/clocksource/clkevt-probe.c                 |    7 +
->> drivers/clocksource/clksrc-probe.c                 |    7 +
->> drivers/clocksource/rockchip_timer.c               |  215 ++++++++++++++------
->> 12 files changed, 241 insertions(+), 67 deletions(-)
->> create mode 100644 Documentation/devicetree/bindings/timer/timer.txt
->>
->> -- 
->> 1.7.9.5
->>
-> 
+--=20
+Maxime Ripard, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
 
+--qr26icxxwhan4wmg
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+-----BEGIN PGP SIGNATURE-----
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+iQIcBAEBCAAGBQJY3P2dAAoJEBx+YmzsjxAgB54QALt6JZwo49kNlmAA+F1+ttCA
+tAidISBolM6ZhBrIwUXH3+jTzHfdC9hbdV5s2U307zWXwf7C5GNxR7wx8p7SspmC
+RGIe8pb+RKruqr7Uivgj1jdut20RH70NVDjR958xLAbIV3ciOUhVhaXzZXQvjtiy
+GHMjnS5mVJY5c62n4wV3nshO8jSdhS/97mxIHlauZa9aSSJenrCeySy2aJh/aZ0C
+QT1iMm4ewvMkSbPUW+tIPQL4HTWDHVY6gvnZ87FbYDZng4455Gplbr9PormAF9Gc
+GPzI7jaDNdLLaNliMc9kiJHvIbLhmjZ1vHnFh0/S31faw4XQ7J4+uFYMaEozcfhC
+XoqdzK8eDbK0GTHepv2BfxdmMwszT2CcXBfu2W7Ip4BPRJhIGWsUzaz6wwEXR8Ub
+c7YLqs0uBG8i8/oXW4JgWHxMEJfFIsUEYQKt8S9CcaWhezG1+OwCR1InpneoN7f/
+h5lKKZM/g8b81fw40ycfvHdOFDPErwosfDLpvC8zkDfFL+zjohg9lyyX+dc6AcMb
+0vBSvMK9Ayby8c0WadSnSLYLXlpyRkVrgK7le56JYsb7UCTKZsRbk4OgkEjh05XQ
+t6uDfLWBnV5OvyJDqfNhcBEJ3BmQDnDX7vBh651dxTpKT7J2e66taOUpWQVqDOFR
+frduTCTOL2gG4iKK1ITL
+=UFrl
+-----END PGP SIGNATURE-----
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--qr26icxxwhan4wmg--
