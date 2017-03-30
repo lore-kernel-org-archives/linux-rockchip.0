@@ -1,89 +1,69 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: Re: [PATCH v2 2/4] clk: rockchip: rk3228: make noc and some special
- clk as critical_clocks
-Date: Thu, 30 Mar 2017 15:19:28 +0200
-Message-ID: <20170330131928.s6tr4rgx7bzwqiag@lukather>
-References: <1490695614-3220-1-git-send-email-zhangqing@rock-chips.com>
- <1490695614-3220-3-git-send-email-zhangqing@rock-chips.com>
- <20170330124417.73ucpdkoonuiyhxz@lukather>
- <6718031.Ukr0mjLQLl@phil>
+From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Subject: Re: [PATCH v4 0/6] initialize dtsi file and dts file for RK3328 SoCs
+Date: Thu, 30 Mar 2017 17:05:57 +0200
+Message-ID: <20170330150557.znttalrsxpnmccx6@ninjato>
+References: <1490607650-18650-1-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="i63pmrtaaox3mivm"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+        protocol="application/pgp-signature"; boundary="t3raypotlh7kogkn"
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <6718031.Ukr0mjLQLl@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, xf@rock-chips.com, huangtao@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1490607650-18650-1-git-send-email-cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang@rock-chip
 List-Id: linux-rockchip.vger.kernel.org
 
 
---i63pmrtaaox3mivm
-Content-Type: text/plain; charset=iso-8859-1
+--t3raypotlh7kogkn
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Mar 30, 2017 at 03:10:24PM +0200, Heiko Stuebner wrote:
-> Am Donnerstag, 30. M=E4rz 2017, 14:44:17 CEST schrieb Maxime Ripard:
-> > On Tue, Mar 28, 2017 at 06:06:52PM +0800, Elaine Zhang wrote:
-> > > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > > ---
-> > >  drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
-> > >  1 file changed, 29 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip=
-/clk-rk3228.c
-> > > index db6e5a9e6de6..4d3203f887e2 100644
-> > > --- a/drivers/clk/rockchip/clk-rk3228.c
-> > > +++ b/drivers/clk/rockchip/clk-rk3228.c
-> > > @@ -445,7 +445,7 @@ enum rk3228_plls {
-> > >  			RK2928_CLKGATE_CON(2), 12, GFLAGS,
-> > >  			&rk3228_spdif_fracmux),
-> > > =20
-> > > -	GATE(0, "jtag", "ext_jtag", 0,
-> > > +	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
-> >=20
-> > CLK_IGNORE_UNUSED only prevents a given clock from being gated at
-> > late_initcall time, but will not prevent it from being gated later in
-> > the life of the system, for example if a reparenting occurs, or if all
-> > the clocks sharing the same clock tree become disabled.
-> >=20
-> > If your clock really should never ever be gated in order for Linux to
-> > operate properly, you should use CLK_IS_CRITICAL.
+On Mon, Mar 27, 2017 at 05:40:45PM +0800, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org wrote:
+> From: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >=20
-> in the scope of the jtag clock, that is actually ok. As it only gates
-> some clock supplied from an external source (ext_jtag).
+> Changes in v4:
+>     Remove some assigned-clocks as they should be inited in their
+>     respective device nodes.
+>=20
+> Changes in v3:
+>     Adjust some descriptions in dtsi.
+>=20
+> Changes in v2:
+>     Remove RK_FUNC_* in dtsi as it dose not help understand things better.
+>     Adjust the order of description in dt-bindings.
+>=20
+> v1:
+> These patchs depend on pinctrl patchs as below:
 
-It might, I don't know how your clocks work in general, this was just
-a warning that this probably isn't sufficient if the clock is actually
-critical.
+Why didn't you renumber the patches? I and probably others wondered
+where and what patch 2 is and why it could be missing. I recall now that
+I applied it already. Other maintainers don't have that knowledge. Also,
+since I applied your patch, no need for me or the i2c-list to be on CC.
 
-Maxime
+Please no "quick fixes" when sending out patch series. I know it is
+tempting but it usually creates confusion.
 
---=20
-Maxime Ripard, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
 
---i63pmrtaaox3mivm
+--t3raypotlh7kogkn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIcBAEBCAAGBQJY3QXcAAoJEBx+YmzsjxAgmLYP/jgMtGIrfF7g5n0NVY+3ZdwO
-e9Mbiy3GNcWYENxT6MOPz6fpp/+T51npll4Q9VlT2X/AupL0yhVEnPSm2qiEVV0Q
-L7cVUXktpjTEZRNeDWNJF/HoSyKA9GF52mpCMzCekWUKuCqdvS4wMuIKZdJlKPWD
-aIX1ilTstsRB3L4XX4+uvXbfoRzpHAyz+SnZ7P9MREMYcnHRDLx0sj0ms0hPw4fT
-WRjA8lnpmxXgfq9z8B9rBUHkTX1KwX0OOIn6ux6H7HApPWsPM/Fo4mQZOoFatgnv
-wGiM5REci25JmTKSFo8ifOhJGSHMJHrDw5rQV+oCPXt2h2ofKzizOmQoR7/LnBWP
-Mxfi8O2lkLGnrai5Kopk6gksddKM9hJt/VndGiIofcvJ476sHXZzwQnKinAdh0gR
-XlEzqp9lQMMcXUnVgQ+XgKHqkMyJhzhy8ud3qeHbBgMa6ncrfmv3OqOi12AThxbL
-li0l6KYZLEkQiPRtZZTnfCgzCAINuIcS/NqWasoA1//YhjHFA5fFXXlLCcE4wboK
-gDgwWQpFkKcyaHjF5ZwIHhHju2Vrptavxu3GWcokdx5oH1ooRcbZrlVoUt26QVSw
-oV5ZkW8aMKzi42tCbr7HUoY/0+BT1DYIQSSuVH4vzraZcQswGw3st4hCqd1k0ga8
-/Nvki3w3ygW0rLIdLuS8
-=Oqll
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAljdHtUACgkQFA3kzBSg
+KbbzJw/+NWUSFD9p+NewJsQ4meU2Lruf1wjsyLTvZDtWkdSCSq7EIlrLsOxO6g7E
+4ntxCrdpSsIXszhwLumzCkVtqVPtiXKxSUei3JQFiDmS1fPol6r9ab5p1S+mVakl
+rgK7NCXsYL+BwZtUdZ/VTBnu2xmOETD2IdvvuYLBnSkmARmOEXHPIYszJj0C5DnE
+SJo73LkZ8uLrLhdp8gEDXEm8Iag507OPFr+PuZgKMjHoFruAmIFg4awan0AKskjs
+Re0o46PV1oOybp64+CszmLD8sDJE9c7pvRjzYxLi9hPAY22Dybgnt95jYahHcn+J
+lUrD/M6WuNbKDziecRkbGPWpwRojttLLCfPstCVk+WCEHW+3kAl1LMaWeh6ILw/t
+p0KNc+xaYd9CUs1/0pjc8OWJEQRaudJHNQ5JeHPYcV8M1SuJoE/MSOfrrW589NBM
+nN3qTY0WJWYX5HJoWqXyPR+/sfiWwkhuLopgiGZSYnk7qbl4n/UGjiv8NCYHpifm
+57GIwkn48phYLVWNRMyLwwe/x7+JLrDxM6ItvL6HGkfb3MlQEMyxY0Ooky9xnCV8
+7MjNdIUZdyD6g4BDz7brTV7tbVBoJuozjmO/ha+jBqSfpay4hHs8gfx+U/PafklF
+dZxhEAuYqVjU4oGg/OdZwANj2izeRstKt1AalFrdrAWEoUoxVuk=
+=4ZYN
 -----END PGP SIGNATURE-----
 
---i63pmrtaaox3mivm--
+--t3raypotlh7kogkn--
