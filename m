@@ -1,101 +1,361 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
-Date: Fri, 31 Mar 2017 00:17:02 -0500
-Message-ID: <20170331051702.GA13240@bhelgaas-glaptop.roam.corp.google.com>
-References: <20170310024617.67303-1-briannorris@chromium.org>
- <20170310024617.67303-3-briannorris@chromium.org>
- <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
- <20170324172218.GA119093@google.com>
- <20170330232825.GB3912@bhelgaas-glaptop.roam.corp.google.com>
- <20170331002608.GA72818@google.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add core dtsi file for
+ RK3328 SoCs
+Date: Fri, 31 Mar 2017 16:27:59 +0800
+Message-ID: <2def4338-fe73-c0a7-62bc-d770bee22569@rock-chips.com>
+References: <1490607650-18650-1-git-send-email-cl@rock-chips.com>
+ <1490607650-18650-4-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170331002608.GA72818@google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Ray Jui <rjui@broadcom.com>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1490607650-18650-4-git-send-email-cl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 30, 2017 at 05:26:09PM -0700, Brian Norris wrote:
-> Hi Bjorn,
-> 
-> On Thu, Mar 30, 2017 at 06:28:25PM -0500, Bjorn Helgaas wrote:
-> > On Fri, Mar 24, 2017 at 10:22:19AM -0700, Brian Norris wrote:
-> > > On Fri, Mar 24, 2017 at 09:25:41AM -0500, Bjorn Helgaas wrote:
-> > > > These don't have .remove:
-> > > > 
-> > > >   imx6_pcie_driver
-> > > >   ls_pcie_driver
-> > > >   armada8k_pcie_driver
-> > > >   artpec6_pcie_driver
-> > > >   dw_plat_pcie_driver
-> > > >   hisi_pcie_driver
-> > > >   hisi_pcie_almost_ecam_driver
-> > > >   spear13xx_pcie_driver
-> > > >   gen_pci_driver
-> > > 
-> > > I think these are all technically broken.
-> > 
-> > Can we fix them all at the same time as you fix Rockchip?  Maybe we
-> > should have a series that adds ".suppress_bind_attrs = true" to all
-> > these drivers,
-> 
-> Sure, I can do that.
-> 
-> > including Rockchip.
-> 
-> Huh? Why? So I can revert that in the next patch?
-> 
-> > Then you could have this current 
-> > series to make Rockchip modular on top, if there's still value in it.
-> 
-> I do see value in it. That's the whole reason I wrote this patchset.
-> It's useful for stressing out certain behaviors that will happen all the
-> time (i.e., boot-time initialization, from platform probe, to bus init,
-> to client/EP init), via repeated bind/unbind (or modprobe/rmmod). It's
-> much faster than reboot testing.
+Hi Liang,
 
-I didn't phrase that very well.  There's certainly value in stressing
-the bind/unbind paths, but I thought the primary reason you wrote this
-was to fix the fact that you could crash the system like this:
+On 2017/3/27 17:40, cl@rock-chips.com wrote:
+> From: Liang Chen <cl@rock-chips.com>
+>
+> This patch adds core dtsi file for Rockchip RK3328 SoCs.
+>
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> ---
 
-  # echo f8000000.pcie > /sys/bus/platform/drivers/rockchip-pcie/unbind
-  # lspci
+----8<------
 
-From my point of view, that's the issue that *has* to be fixed.
-Better test coverage is icing.
+> +
+> +		sdmmc1 {
+> +			sdmmc1_clk: sdmmc1-clk {
+> +				rockchip,pins =
+> +					<1 RK_PB4 1 &pcfg_pull_none_8ma>;
+> +			};
+> +
+> +			sdmmc1_cmd: sdmmc1-cmd {
+> +				rockchip,pins = <1 RK_PB5 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_pwren: sdmmc1-pwren {
+> +				rockchip,pins = <1 RK_PC2 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_wrprt: sdmmc1-wrprt {
+> +				rockchip,pins = <1 RK_PC4 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_dectn: sdmmc1-dectn {
+> +				rockchip,pins = <1 RK_PC3 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_bus1: sdmmc1-bus1 {
+> +				rockchip,pins = <1 RK_PB6 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_bus4: sdmmc1-bus4 {
+> +				rockchip,pins = <1 RK_PB4 1 &pcfg_pull_up_8ma>,
+> +						<1 RK_PB5 1 &pcfg_pull_up_8ma>,
 
-It sounds like several drivers have that same issue, and the simplest
-possible fix is to set .suppress_bind_attrs, so I suggested doing that 
-so it's easy to analyze the tree as a whole and say "these drivers
-all have the same problem, and all the fixes look the same."
 
-I guess if you'd rather skip that for Rockchip and apply a more
-complicated fix there, I could go along with that.  But I don't think
-it would hurt anything to set .suppress_bind_attrs, then remove it
-when you add module support.  The concepts of .suppress_bind_attrs and
-modularity are related, and doing this in a separate patch would make
-it a nice example to follow if somebody wants to make other drivers
-modular as well.
+I'm pretty sure this isn't correct as sdmmc1_bus1 even doesn't contain
+one same pinctrl(data0) as sdmmc1_bus4. So, the first two pins should be
+"1 RK_PB6" and "1 RK_PB7".....
 
-> Personally, I'd rather just patch the other drivers, and you can wait
-> until I follow through on that promise before applying my existing work
-> for the Rockchip driver, if that's what you'd prefer.
 
-It's not so much a question of using the Rockchip change as a stick.
-I'm just thinking that it makes a more logical progression to fix the
-more important issue globally first.
-
-> > If we find a common problem, I'd like to fix it everywhere we know
-> > about so it doesn't get forgotten or copied to even more places.
-> 
-> Sure. But you only just pointed out how broken several drivers were; I
-> didn't really notice :)
-
-Yeah, you're right, I had in my head the idea that if we've identified
-the same problem in several drivers, we should fix them all, but I
-neglected to turn that into words.
-
-Bjorn
+> +						<1 RK_PC0 1 &pcfg_pull_up_8ma>,
+> +						<1 RK_PC1 1 &pcfg_pull_up_8ma>;
+> +			};
+> +
+> +			sdmmc1_gpio: sdmmc1-gpio {
+> +				rockchip,pins =
+> +					<1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_up_4ma>,
+> +					<1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up_4ma>;
+> +			};
+> +		};
+> +
+> +		emmc {
+> +			emmc_clk: emmc-clk {
+> +				rockchip,pins =
+> +					<3 RK_PC5 2 &pcfg_pull_none_12ma>;
+> +			};
+> +
+> +			emmc_cmd: emmc-cmd {
+> +				rockchip,pins =
+> +					<3 RK_PC3 2 &pcfg_pull_up_12ma>;
+> +			};
+> +
+> +			emmc_pwren: emmc-pwren {
+> +				rockchip,pins = <3 RK_PC6 2 &pcfg_pull_none>;
+> +			};
+> +
+> +			emmc_rstnout: emmc-rstnout {
+> +				rockchip,pins = <3 RK_PC4 2 &pcfg_pull_none>;
+> +			};
+> +
+> +			emmc_bus1: emmc-bus1 {
+> +				rockchip,pins =
+> +					<0 RK_PA7 2 &pcfg_pull_up_12ma>;
+> +			};
+> +
+> +			emmc_bus4: emmc-bus4 {
+> +				rockchip,pins =
+> +					<0 RK_PA7 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD4 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD5 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD6 2 &pcfg_pull_up_12ma>;
+> +			};
+> +
+> +			emmc_bus8: emmc-bus8 {
+> +				rockchip,pins =
+> +					<0 RK_PA7 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD4 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD5 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD6 2 &pcfg_pull_up_12ma>,
+> +					<2 RK_PD7 2 &pcfg_pull_up_12ma>,
+> +					<3 RK_PC0 2 &pcfg_pull_up_12ma>,
+> +					<3 RK_PC1 2 &pcfg_pull_up_12ma>,
+> +					<3 RK_PC2 2 &pcfg_pull_up_12ma>;
+> +			};
+> +		};
+> +
+> +		pwm0 {
+> +			pwm0_pin: pwm0-pin {
+> +				rockchip,pins = <2 RK_PA4 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		pwm1 {
+> +			pwm1_pin: pwm1-pin {
+> +				rockchip,pins = <2 RK_PA5 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		pwm2 {
+> +			pwm2_pin: pwm2-pin {
+> +				rockchip,pins = <2 RK_PA6 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		pwmir {
+> +			pwmir_pin: pwmir-pin {
+> +				rockchip,pins = <2 RK_PA2 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		gmac-1 {
+> +			rgmiim1_pins: rgmiim1-pins {
+> +				rockchip,pins =
+> +					/* mac_txclk */
+> +					<1 RK_PB4 2 &pcfg_pull_none_12ma>,
+> +					/* mac_rxclk */
+> +					<1 RK_PB5 2 &pcfg_pull_none_2ma>,
+> +					/* mac_mdio */
+> +					<1 RK_PC3 2 &pcfg_pull_none_2ma>,
+> +					/* mac_txen */
+> +					<1 RK_PD1 2 &pcfg_pull_none_12ma>,
+> +					/* mac_clk */
+> +					<1 RK_PC5 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxdv */
+> +					<1 RK_PC6 2 &pcfg_pull_none_2ma>,
+> +					/* mac_mdc */
+> +					<1 RK_PC7 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxd1 */
+> +					<1 RK_PB2 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxd0 */
+> +					<1 RK_PB3 2 &pcfg_pull_none_2ma>,
+> +					/* mac_txd1 */
+> +					<1 RK_PB0 2 &pcfg_pull_none_12ma>,
+> +					/* mac_txd0 */
+> +					<1 RK_PB1 2 &pcfg_pull_none_12ma>,
+> +					/* mac_rxd3 */
+> +					<1 RK_PB6 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxd2 */
+> +					<1 RK_PB7 2 &pcfg_pull_none_2ma>,
+> +					/* mac_txd3 */
+> +					<1 RK_PC0 2 &pcfg_pull_none_12ma>,
+> +					/* mac_txd2 */
+> +					<1 RK_PC1 2 &pcfg_pull_none_12ma>,
+> +
+> +					/* mac_txclk */
+> +					<0 RK_PB0 1 &pcfg_pull_none>,
+> +					/* mac_txen */
+> +					<0 RK_PB4 1 &pcfg_pull_none>,
+> +					/* mac_clk */
+> +					<0 RK_PD0 1 &pcfg_pull_none>,
+> +					/* mac_txd1 */
+> +					<0 RK_PC0 1 &pcfg_pull_none>,
+> +					/* mac_txd0 */
+> +					<0 RK_PC1 1 &pcfg_pull_none>,
+> +					/* mac_txd3 */
+> +					<0 RK_PC7 1 &pcfg_pull_none>,
+> +					/* mac_txd2 */
+> +					<0 RK_PC6 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			rmiim1_pins: rmiim1-pins {
+> +				rockchip,pins =
+> +					/* mac_mdio */
+> +					<1 RK_PC3 2 &pcfg_pull_none_2ma>,
+> +					/* mac_txen */
+> +					<1 RK_PD1 2 &pcfg_pull_none_12ma>,
+> +					/* mac_clk */
+> +					<1 RK_PC5 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxer */
+> +					<1 RK_PD0 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxdv */
+> +					<1 RK_PC6 2 &pcfg_pull_none_2ma>,
+> +					/* mac_mdc */
+> +					<1 RK_PC7 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxd1 */
+> +					<1 RK_PB2 2 &pcfg_pull_none_2ma>,
+> +					/* mac_rxd0 */
+> +					<1 RK_PB3 2 &pcfg_pull_none_2ma>,
+> +					/* mac_txd1 */
+> +					<1 RK_PB0 2 &pcfg_pull_none_12ma>,
+> +					/* mac_txd0 */
+> +					<1 RK_PB1 2 &pcfg_pull_none_12ma>,
+> +
+> +					/* mac_mdio */
+> +					<0 RK_PB3 1 &pcfg_pull_none>,
+> +					/* mac_txen */
+> +					<0 RK_PB4 1 &pcfg_pull_none>,
+> +					/* mac_clk */
+> +					<0 RK_PD0 1 &pcfg_pull_none>,
+> +					/* mac_mdc */
+> +					<0 RK_PC3 1 &pcfg_pull_none>,
+> +					/* mac_txd1 */
+> +					<0 RK_PC0 1 &pcfg_pull_none>,
+> +					/* mac_txd0 */
+> +					<0 RK_PC1 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		gmac2phy {
+> +			fephyled_speed100: fephyled-speed100 {
+> +				rockchip,pins = <0 RK_PD7 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_speed10: fephyled-speed10 {
+> +				rockchip,pins = <0 RK_PD6 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_duplex: fephyled-duplex {
+> +				rockchip,pins = <0 RK_PD6 2 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_rxm0: fephyled-rxm0 {
+> +				rockchip,pins = <0 RK_PD5 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_txm0: fephyled-txm0 {
+> +				rockchip,pins = <0 RK_PD5 2 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_linkm0: fephyled-linkm0 {
+> +				rockchip,pins = <0 RK_PD4 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_rxm1: fephyled-rxm1 {
+> +				rockchip,pins = <2 RK_PD1 2 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_txm1: fephyled-txm1 {
+> +				rockchip,pins = <2 RK_PD1 3 &pcfg_pull_none>;
+> +			};
+> +
+> +			fephyled_linkm1: fephyled-linkm1 {
+> +				rockchip,pins = <2 RK_PD0 2 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		tsadc_pin {
+> +			tsadc_int: tsadc-int {
+> +				rockchip,pins = <2 RK_PB5 2 &pcfg_pull_none>;
+> +			};
+> +			tsadc_gpio: tsadc-gpio {
+> +				rockchip,pins =
+> +					<2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		hdmi_pin {
+> +			hdmi_cec: hdmi-cec {
+> +				rockchip,pins = <0 RK_PA3 1 &pcfg_pull_none>;
+> +			};
+> +
+> +			hdmi_hpd: hdmi-hpd {
+> +				rockchip,pins = <0 RK_PA4 1 &pcfg_pull_down>;
+> +			};
+> +		};
+> +
+> +		cif-0 {
+> +			dvp_d2d9_m0:dvp-d2d9-m0 {
+> +				rockchip,pins =
+> +					/* cif_d0 */
+> +					<3 RK_PA4 2 &pcfg_pull_none>,
+> +					/* cif_d1 */
+> +					<3 RK_PA5 2 &pcfg_pull_none>,
+> +					/* cif_d2 */
+> +					<3 RK_PA6 2 &pcfg_pull_none>,
+> +					/* cif_d3 */
+> +					<3 RK_PA7 2 &pcfg_pull_none>,
+> +					/* cif_d4 */
+> +					<3 RK_PB0 2 &pcfg_pull_none>,
+> +					/* cif_d5m0 */
+> +					<3 RK_PB1 2 &pcfg_pull_none>,
+> +					/* cif_d6m0 */
+> +					<3 RK_PB2 2 &pcfg_pull_none>,
+> +					/* cif_d7m0 */
+> +					<3 RK_PB3 2 &pcfg_pull_none>,
+> +					/* cif_href */
+> +					<3 RK_PA1 2 &pcfg_pull_none>,
+> +					/* cif_vsync */
+> +					<3 RK_PA0 2 &pcfg_pull_none>,
+> +					/* cif_clkoutm0 */
+> +					<3 RK_PA3 2 &pcfg_pull_none>,
+> +					/* cif_clkin */
+> +					<3 RK_PA2 2 &pcfg_pull_none>;
+> +			};
+> +		};
+> +
+> +		cif-1 {
+> +			dvp_d2d9_m1:dvp-d2d9-m1 {
+> +				rockchip,pins =
+> +					/* cif_d0 */
+> +					<3 RK_PA4 2 &pcfg_pull_none>,
+> +					/* cif_d1 */
+> +					<3 RK_PA5 2 &pcfg_pull_none>,
+> +					/* cif_d2 */
+> +					<3 RK_PA6 2 &pcfg_pull_none>,
+> +					/* cif_d3 */
+> +					<3 RK_PA7 2 &pcfg_pull_none>,
+> +					/* cif_d4 */
+> +					<3 RK_PB0 2 &pcfg_pull_none>,
+> +					/* cif_d5m1 */
+> +					<2 RK_PC0 4 &pcfg_pull_none>,
+> +					/* cif_d6m1 */
+> +					<2 RK_PC1 4 &pcfg_pull_none>,
+> +					/* cif_d7m1 */
+> +					<2 RK_PC2 4 &pcfg_pull_none>,
+> +					/* cif_href */
+> +					<3 RK_PA1 2 &pcfg_pull_none>,
+> +					/* cif_vsync */
+> +					<3 RK_PA0 2 &pcfg_pull_none>,
+> +					/* cif_clkoutm1 */
+> +					<2 RK_PB7 4 &pcfg_pull_none>,
+> +					/* cif_clkin */
+> +					<3 RK_PA2 2 &pcfg_pull_none>;
+> +			};
+> +		};
+> +	};
+> +};
+>
