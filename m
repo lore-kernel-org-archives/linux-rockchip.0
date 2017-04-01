@@ -1,121 +1,111 @@
-From: simran singhal <singhalsimran0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] iio: adc: Remove unnecessary cast on void pointer
-Date: Sat, 1 Apr 2017 19:36:14 +0530
-Message-ID: <20170401140613.GA20941@singhal-Inspiron-5558>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: Mark SLC bit as well as CCC bit for RC
+Date: Sat, 1 Apr 2017 10:14:25 -0500
+Message-ID: <20170401151425.GA10456@bhelgaas-glaptop.roam.corp.google.com>
+References: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Javier Martine Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following Coccinelle script was used to detect this:
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
-- (T*)
-  e
-)
+On Fri, Mar 17, 2017 at 03:24:53PM +0800, Shawn Lin wrote:
+> lspci traces CCC to see if the end-2-end supports common
+> clock, so the current code should work as we mark the CCC bit
+> of RC. 
 
-Signed-off-by: simran singhal <singhalsimran0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- drivers/iio/adc/exynos_adc.c      | 2 +-
- drivers/iio/adc/imx7d_adc.c       | 2 +-
- drivers/iio/adc/max1027.c         | 2 +-
- drivers/iio/adc/rockchip_saradc.c | 2 +-
- drivers/iio/adc/sun4i-gpadc-iio.c | 2 +-
- drivers/iio/adc/vf610_adc.c       | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
+I assume you're talking about lspci code here, where the bit is called
+PCI_EXP_LNKCTL_CLOCK.  The only use of PCI_EXP_LNKCTL_CLOCK in lspci
+is to decode it in cap_express_link().  I don't know what you mean by
+"tracing CCC", since lspci only decodes registers of one device at a
+time; it never follows the hierarchy from an endpoint up to a root
+port.
 
-diff --git a/drivers/iio/adc/exynos_adc.c b/drivers/iio/adc/exynos_adc.c
-index ad1775b..6c5a7be 100644
---- a/drivers/iio/adc/exynos_adc.c
-+++ b/drivers/iio/adc/exynos_adc.c
-@@ -579,7 +579,7 @@ static int exynos_read_s3c64xx_ts(struct iio_dev *indio_dev, int *x, int *y)
- 
- static irqreturn_t exynos_adc_isr(int irq, void *dev_id)
- {
--	struct exynos_adc *info = (struct exynos_adc *)dev_id;
-+	struct exynos_adc *info = dev_id;
- 	u32 mask = info->data->mask;
- 
- 	/* Read value */
-diff --git a/drivers/iio/adc/imx7d_adc.c b/drivers/iio/adc/imx7d_adc.c
-index e2241ee..254b29a 100644
---- a/drivers/iio/adc/imx7d_adc.c
-+++ b/drivers/iio/adc/imx7d_adc.c
-@@ -365,7 +365,7 @@ static int imx7d_adc_read_data(struct imx7d_adc *info)
- 
- static irqreturn_t imx7d_adc_isr(int irq, void *dev_id)
- {
--	struct imx7d_adc *info = (struct imx7d_adc *)dev_id;
-+	struct imx7d_adc *info = dev_id;
- 	int status;
- 
- 	status = readl(info->regs + IMX7D_REG_ADC_INT_STATUS);
-diff --git a/drivers/iio/adc/max1027.c b/drivers/iio/adc/max1027.c
-index 3b7c4f7..ebc7159 100644
---- a/drivers/iio/adc/max1027.c
-+++ b/drivers/iio/adc/max1027.c
-@@ -364,7 +364,7 @@ static int max1027_set_trigger_state(struct iio_trigger *trig, bool state)
- 
- static irqreturn_t max1027_trigger_handler(int irq, void *private)
- {
--	struct iio_poll_func *pf = (struct iio_poll_func *)private;
-+	struct iio_poll_func *pf = private;
- 	struct iio_dev *indio_dev = pf->indio_dev;
- 	struct max1027_state *st = iio_priv(indio_dev);
- 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 85d7012..ae6d332 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -109,7 +109,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
- 
- static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
- {
--	struct rockchip_saradc *info = (struct rockchip_saradc *)dev_id;
-+	struct rockchip_saradc *info = dev_id;
- 
- 	/* Read value */
- 	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
-diff --git a/drivers/iio/adc/sun4i-gpadc-iio.c b/drivers/iio/adc/sun4i-gpadc-iio.c
-index a8e134f..e531825 100644
---- a/drivers/iio/adc/sun4i-gpadc-iio.c
-+++ b/drivers/iio/adc/sun4i-gpadc-iio.c
-@@ -382,7 +382,7 @@ static int sun4i_gpadc_runtime_resume(struct device *dev)
- 
- static int sun4i_gpadc_get_temp(void *data, int *temp)
- {
--	struct sun4i_gpadc_iio *info = (struct sun4i_gpadc_iio *)data;
-+	struct sun4i_gpadc_iio *info = data;
- 	int val, scale, offset;
- 
- 	if (sun4i_gpadc_temp_read(info->indio_dev, &val))
-diff --git a/drivers/iio/adc/vf610_adc.c b/drivers/iio/adc/vf610_adc.c
-index 228a003..01fc76f 100644
---- a/drivers/iio/adc/vf610_adc.c
-+++ b/drivers/iio/adc/vf610_adc.c
-@@ -584,7 +584,7 @@ static int vf610_adc_read_data(struct vf610_adc *info)
- 
- static irqreturn_t vf610_adc_isr(int irq, void *dev_id)
- {
--	struct iio_dev *indio_dev = (struct iio_dev *)dev_id;
-+	struct iio_dev *indio_dev = dev_id;
- 	struct vf610_adc *info = iio_priv(indio_dev);
- 	int coco;
- 
--- 
-2.7.4
+I'm not sure how this lspci information is relevant to this patch.
+
+> However, ASPM code actually check SLC bit of RC and try to
+> compare it with the downstream components' SLC instead. 
+
+Here I think you're talking about pcie_aspm_configure_common_clock()
+in Linux.  That looks at PCI_EXP_LNKSTA_SLC on both ends of a link.
+If PCI_EXP_LNKSTA_SLC is set at both ends, we set PCI_EXP_LNKCTL_CCC
+on both ends; otherwise we clear PCI_EXP_LNKCTL_CCC on both ends.
+This follows the Implementation Note in PCIe r3.1, sec 7.8.7.
+
+Per that note, PCI_EXP_LNKSTA_SLC in the root port tells us whether
+the port "uses a clock that has a common source ... to the clock
+signal provided on the slot" below the port.
+
+This patch sets PCI_EXP_LNKSTA_SLC based on your knowledge of the
+platform topology, i.e., that the root port clock and the slot clock
+have the same source.  I assume this is *always* the case for every
+possible platform using Rockchip?
+
+If so, just say that, and you can go on to say that this enables the
+ASPM code to set PCI_EXP_LNKCTL_CCC if the downstream end also sets
+PCI_EXP_LNKSTA_SLC to indicate that it uses the clock provided on the
+slot, e.g., something like this:
+
+  All platforms using Rockchip use a common clock for the Root Port
+  and the slot connected to it.  Indicate this by setting the Slot
+  Clock Configuration (PCI_EXP_LNKSTA_SLC) bit in the Root Port's Link
+  Status.
+
+  Per the Implementation Note in the spec (PCIe r3.1, sec 7.8.7), if
+  the downstream component also sets PCI_EXP_LNKSTA_SLC, software may
+  set the Common Clock Configuration (PCI_EXP_LNKCTL_CCC) bits on both
+  ends of the Link.  This is done by pcie_aspm_configure_common_clock().
+
+> So when
+> enabling ASPM, CCC will be cleared after failing to match SLC with
+> the corresponding bit of downstream components. On one hand, from the
+> code of pcie_aspm_configure_common_clock, we could find that what we
+> actually need to set is SLC. 
+
+> On the other hand, we should also guarantee
+> that CCC should be marked w/o supporting ASPM. 
+
+This patch doesn't change anything with PCI_EXP_LNKCTL_CCC.  I'd
+suggest that we should *not* set it here because we have no idea what
+(if anything) is at the other end of the link.  Per the implementation
+note, I think we should only set PCI_EXP_LNKCTL_CCC if both ends of
+the link have PCI_EXP_LNKSTA_SLC set.
+
+Are you suggesting that we should set PCI_EXP_LNKCTL_CCC on both ends
+of the link whenever possible, and that today we don't do that unless
+ASPM is enabled?  That sounds plausible to me, but that would be a
+generic PCIe enhancement, not anything Rockchip-specific, and of
+course, this patch doesn't make that happen.
+
+> This patch fixes this
+> issue.
+> 
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: jeffy.chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 26ddd35..7cd4d5c 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -596,7 +596,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  
+>  	/* Set RC's clock architecture as common clock */
+>  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> -	status |= PCI_EXP_LNKCTL_CCC;
+> +	status |= (PCI_EXP_LNKCTL_CCC | PCI_EXP_LNKSTA_SLC << 16);
+>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+>  
+>  	/* Enable Gen1 training */
+> -- 
+> 1.9.1
+> 
+> 
