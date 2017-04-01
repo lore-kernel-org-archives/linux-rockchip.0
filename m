@@ -1,63 +1,38 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH 9/9] drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
-Date: Sat,  1 Apr 2017 18:44:02 +0800
-Message-ID: <1491043442-20626-10-git-send-email-jeffy.chen@rock-chips.com>
-References: <1491043442-20626-1-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v2 0/9] drm: rockchip: Fix rockchip drm unbind crash error
+Date: Sat,  1 Apr 2017 19:35:20 +0800
+Message-ID: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1491043442-20626-1-git-send-email-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Archit Taneja <architt@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In current sound framework, there's no way to unbind dai link after
-unregister codec.
 
-So don't unregister the codec when unbinding for now.
+Verified on rk3399 chromebook kevin:
+1/ stop ui && pkill -9 frecon
+2/ unbind/bind drm
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
+Changes in v2:
+Fix some commit messages.
 
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Jeffy Chen (9):
+  drm: bridge: analogix: Detach panel when unbinding analogix dp
+  drm: bridge: analogix: Unregister dp aux when unbinding
+  drm: bridge: analogix: Destroy connector when unbinding
+  drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
+  drm/rockchip: vop: Enable pm domain when resetting vop
+  drm/rockchip: Reoder unload sequence
+  drm/rockchip: Force disable all crtc when unload
+  drm/rockchip: gem: Don't alloc/free gem buf before drm dev registered
+  drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index a97f3f4..1deab9f 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1091,8 +1091,6 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 		goto err_free_connector;
- 	}
- 
--	cdn_dp_audio_codec_init(dp, dev);
--
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-@@ -1127,7 +1125,6 @@ static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
- 	struct drm_connector *connector = &dp->connector;
- 
- 	cancel_work_sync(&dp->event_work);
--	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_encoder_disable(encoder);
- 	encoder->funcs->destroy(encoder);
- 	connector->funcs->destroy(connector);
-@@ -1220,6 +1217,8 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	mutex_init(&dp->lock);
- 	dev_set_drvdata(dev, dp);
- 
-+	cdn_dp_audio_codec_init(dp, dev);
-+
- 	return component_add(dev, &cdn_dp_component_ops);
- }
- 
-@@ -1227,6 +1226,7 @@ static int cdn_dp_remove(struct platform_device *pdev)
- {
- 	struct cdn_dp_device *dp = platform_get_drvdata(pdev);
- 
-+	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_suspend(dp->dev);
- 	component_del(&pdev->dev, &cdn_dp_component_ops);
- 
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 +++
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 10 ++++---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |  7 +++--
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  8 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 31 +++++++++++++++-------
+ 5 files changed, 44 insertions(+), 16 deletions(-)
+
 -- 
 2.1.4
