@@ -1,65 +1,121 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v2 9/9] drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
-Date: Sat,  1 Apr 2017 19:35:29 +0800
-Message-ID: <1491046529-4310-10-git-send-email-jeffy.chen@rock-chips.com>
-References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+From: simran singhal <singhalsimran0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] iio: adc: Remove unnecessary cast on void pointer
+Date: Sat, 1 Apr 2017 19:36:14 +0530
+Message-ID: <20170401140613.GA20941@singhal-Inspiron-5558>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Javier Martine Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In current sound framework, there's no way to unbind dai link after
-unregister codec.
+The following Coccinelle script was used to detect this:
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+(
+  *((T *)e)
+|
+  ((T *)x)[...]
+|
+  ((T*)x)->f
+|
+- (T*)
+  e
+)
 
-So move unregister codec to driver remove for now.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: simran singhal <singhalsimran0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
+ drivers/iio/adc/exynos_adc.c      | 2 +-
+ drivers/iio/adc/imx7d_adc.c       | 2 +-
+ drivers/iio/adc/max1027.c         | 2 +-
+ drivers/iio/adc/rockchip_saradc.c | 2 +-
+ drivers/iio/adc/sun4i-gpadc-iio.c | 2 +-
+ drivers/iio/adc/vf610_adc.c       | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
 
-Changes in v2: None
-
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index a97f3f4..1deab9f 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1091,8 +1091,6 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 		goto err_free_connector;
- 	}
+diff --git a/drivers/iio/adc/exynos_adc.c b/drivers/iio/adc/exynos_adc.c
+index ad1775b..6c5a7be 100644
+--- a/drivers/iio/adc/exynos_adc.c
++++ b/drivers/iio/adc/exynos_adc.c
+@@ -579,7 +579,7 @@ static int exynos_read_s3c64xx_ts(struct iio_dev *indio_dev, int *x, int *y)
  
--	cdn_dp_audio_codec_init(dp, dev);
--
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-@@ -1127,7 +1125,6 @@ static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
- 	struct drm_connector *connector = &dp->connector;
- 
- 	cancel_work_sync(&dp->event_work);
--	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_encoder_disable(encoder);
- 	encoder->funcs->destroy(encoder);
- 	connector->funcs->destroy(connector);
-@@ -1220,6 +1217,8 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	mutex_init(&dp->lock);
- 	dev_set_drvdata(dev, dp);
- 
-+	cdn_dp_audio_codec_init(dp, dev);
-+
- 	return component_add(dev, &cdn_dp_component_ops);
- }
- 
-@@ -1227,6 +1226,7 @@ static int cdn_dp_remove(struct platform_device *pdev)
+ static irqreturn_t exynos_adc_isr(int irq, void *dev_id)
  {
- 	struct cdn_dp_device *dp = platform_get_drvdata(pdev);
+-	struct exynos_adc *info = (struct exynos_adc *)dev_id;
++	struct exynos_adc *info = dev_id;
+ 	u32 mask = info->data->mask;
  
-+	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_suspend(dp->dev);
- 	component_del(&pdev->dev, &cdn_dp_component_ops);
+ 	/* Read value */
+diff --git a/drivers/iio/adc/imx7d_adc.c b/drivers/iio/adc/imx7d_adc.c
+index e2241ee..254b29a 100644
+--- a/drivers/iio/adc/imx7d_adc.c
++++ b/drivers/iio/adc/imx7d_adc.c
+@@ -365,7 +365,7 @@ static int imx7d_adc_read_data(struct imx7d_adc *info)
+ 
+ static irqreturn_t imx7d_adc_isr(int irq, void *dev_id)
+ {
+-	struct imx7d_adc *info = (struct imx7d_adc *)dev_id;
++	struct imx7d_adc *info = dev_id;
+ 	int status;
+ 
+ 	status = readl(info->regs + IMX7D_REG_ADC_INT_STATUS);
+diff --git a/drivers/iio/adc/max1027.c b/drivers/iio/adc/max1027.c
+index 3b7c4f7..ebc7159 100644
+--- a/drivers/iio/adc/max1027.c
++++ b/drivers/iio/adc/max1027.c
+@@ -364,7 +364,7 @@ static int max1027_set_trigger_state(struct iio_trigger *trig, bool state)
+ 
+ static irqreturn_t max1027_trigger_handler(int irq, void *private)
+ {
+-	struct iio_poll_func *pf = (struct iio_poll_func *)private;
++	struct iio_poll_func *pf = private;
+ 	struct iio_dev *indio_dev = pf->indio_dev;
+ 	struct max1027_state *st = iio_priv(indio_dev);
+ 
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 85d7012..ae6d332 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -109,7 +109,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 
+ static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
+ {
+-	struct rockchip_saradc *info = (struct rockchip_saradc *)dev_id;
++	struct rockchip_saradc *info = dev_id;
+ 
+ 	/* Read value */
+ 	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
+diff --git a/drivers/iio/adc/sun4i-gpadc-iio.c b/drivers/iio/adc/sun4i-gpadc-iio.c
+index a8e134f..e531825 100644
+--- a/drivers/iio/adc/sun4i-gpadc-iio.c
++++ b/drivers/iio/adc/sun4i-gpadc-iio.c
+@@ -382,7 +382,7 @@ static int sun4i_gpadc_runtime_resume(struct device *dev)
+ 
+ static int sun4i_gpadc_get_temp(void *data, int *temp)
+ {
+-	struct sun4i_gpadc_iio *info = (struct sun4i_gpadc_iio *)data;
++	struct sun4i_gpadc_iio *info = data;
+ 	int val, scale, offset;
+ 
+ 	if (sun4i_gpadc_temp_read(info->indio_dev, &val))
+diff --git a/drivers/iio/adc/vf610_adc.c b/drivers/iio/adc/vf610_adc.c
+index 228a003..01fc76f 100644
+--- a/drivers/iio/adc/vf610_adc.c
++++ b/drivers/iio/adc/vf610_adc.c
+@@ -584,7 +584,7 @@ static int vf610_adc_read_data(struct vf610_adc *info)
+ 
+ static irqreturn_t vf610_adc_isr(int irq, void *dev_id)
+ {
+-	struct iio_dev *indio_dev = (struct iio_dev *)dev_id;
++	struct iio_dev *indio_dev = dev_id;
+ 	struct vf610_adc *info = iio_priv(indio_dev);
+ 	int coco;
  
 -- 
-2.1.4
+2.7.4
