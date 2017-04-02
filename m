@@ -1,111 +1,53 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: Mark SLC bit as well as CCC bit for RC
-Date: Sat, 1 Apr 2017 10:14:25 -0500
-Message-ID: <20170401151425.GA10456@bhelgaas-glaptop.roam.corp.google.com>
-References: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1489735493-148838-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 0/5] Add ARM Mali Midgard device tree bindings and gpu node for rk3288
+Date: Sun,  2 Apr 2017 08:59:43 +0100
+Message-ID: <cover.1491118230.git.guillaume.tucker@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 17, 2017 at 03:24:53PM +0800, Shawn Lin wrote:
-> lspci traces CCC to see if the end-2-end supports common
-> clock, so the current code should work as we mark the CCC bit
-> of RC. 
+The ARM Mali Midgard GPU kernel driver is only available
+out-of-tree and is not going to be merged in its current form.
+However, it would be useful to have its device tree bindings
+merged.  In particular, this would enable distributions to create
+working driver packages (dkms...) without having to patch the
+kernel.
 
-I assume you're talking about lspci code here, where the bit is called
-PCI_EXP_LNKCTL_CLOCK.  The only use of PCI_EXP_LNKCTL_CLOCK in lspci
-is to decode it in cap_express_link().  I don't know what you mean by
-"tracing CCC", since lspci only decodes registers of one device at a
-time; it never follows the hierarchy from an endpoint up to a root
-port.
+The bindings for the earlier Mali Utgard GPU family have already
+been merged, so this is essentially the same scenario but for
+newer GPUs (Mali-T604 ~ Mali-T880).
 
-I'm not sure how this lspci information is relevant to this patch.
+This series of patches first imports the bindings from the latest
+driver release with some clean-up then adds a gpu node for the
+rk3288 SoC.  This was successfully tested on Radxa Rock2 Square,
+Firefly, Veyron Minnie and Jerry boards board using Mali kernel
+driver r16p0 and r12p0 user-space binary.
 
-> However, ASPM code actually check SLC bit of RC and try to
-> compare it with the downstream components' SLC instead. 
+Changes since v1:
+- enabled gpu on rk3288-veyron boards
 
-Here I think you're talking about pcie_aspm_configure_common_clock()
-in Linux.  That looks at PCI_EXP_LNKSTA_SLC on both ends of a link.
-If PCI_EXP_LNKSTA_SLC is set at both ends, we set PCI_EXP_LNKCTL_CCC
-on both ends; otherwise we clear PCI_EXP_LNKCTL_CCC on both ends.
-This follows the Implementation Note in PCIe r3.1, sec 7.8.7.
+Enric Balletbo i Serra (1):
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-veyron
 
-Per that note, PCI_EXP_LNKSTA_SLC in the root port tells us whether
-the port "uses a clock that has a common source ... to the clock
-signal provided on the slot" below the port.
+Guillaume Tucker (4):
+  dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+  ARM: dts: rockchip: add ARM Mali GPU node for rk3288
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-rock2-som
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-firefly
 
-This patch sets PCI_EXP_LNKSTA_SLC based on your knowledge of the
-platform topology, i.e., that the root port clock and the slot clock
-have the same source.  I assume this is *always* the case for every
-possible platform using Rockchip?
+ .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  5 ++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  5 ++
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  5 ++
+ arch/arm/boot/dts/rk3288.dtsi                      | 23 ++++++++++
+ 5 files changed, 91 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
 
-If so, just say that, and you can go on to say that this enables the
-ASPM code to set PCI_EXP_LNKCTL_CCC if the downstream end also sets
-PCI_EXP_LNKSTA_SLC to indicate that it uses the clock provided on the
-slot, e.g., something like this:
-
-  All platforms using Rockchip use a common clock for the Root Port
-  and the slot connected to it.  Indicate this by setting the Slot
-  Clock Configuration (PCI_EXP_LNKSTA_SLC) bit in the Root Port's Link
-  Status.
-
-  Per the Implementation Note in the spec (PCIe r3.1, sec 7.8.7), if
-  the downstream component also sets PCI_EXP_LNKSTA_SLC, software may
-  set the Common Clock Configuration (PCI_EXP_LNKCTL_CCC) bits on both
-  ends of the Link.  This is done by pcie_aspm_configure_common_clock().
-
-> So when
-> enabling ASPM, CCC will be cleared after failing to match SLC with
-> the corresponding bit of downstream components. On one hand, from the
-> code of pcie_aspm_configure_common_clock, we could find that what we
-> actually need to set is SLC. 
-
-> On the other hand, we should also guarantee
-> that CCC should be marked w/o supporting ASPM. 
-
-This patch doesn't change anything with PCI_EXP_LNKCTL_CCC.  I'd
-suggest that we should *not* set it here because we have no idea what
-(if anything) is at the other end of the link.  Per the implementation
-note, I think we should only set PCI_EXP_LNKCTL_CCC if both ends of
-the link have PCI_EXP_LNKSTA_SLC set.
-
-Are you suggesting that we should set PCI_EXP_LNKCTL_CCC on both ends
-of the link whenever possible, and that today we don't do that unless
-ASPM is enabled?  That sounds plausible to me, but that would be a
-generic PCIe enhancement, not anything Rockchip-specific, and of
-course, this patch doesn't make that happen.
-
-> This patch fixes this
-> issue.
-> 
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: jeffy.chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 26ddd35..7cd4d5c 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -596,7 +596,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  
->  	/* Set RC's clock architecture as common clock */
->  	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-> -	status |= PCI_EXP_LNKCTL_CCC;
-> +	status |= (PCI_EXP_LNKCTL_CCC | PCI_EXP_LNKSTA_SLC << 16);
->  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->  
->  	/* Enable Gen1 training */
-> -- 
-> 1.9.1
-> 
-> 
+--
+2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
