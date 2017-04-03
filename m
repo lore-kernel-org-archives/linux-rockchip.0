@@ -1,16 +1,14 @@
 From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 8/9] drm/rockchip: gem: Don't alloc/free gem buf
- before drm dev registered
-Date: Mon, 3 Apr 2017 09:41:01 +0200
-Message-ID: <20170403074101.f3ykqpdphklwummz@phenom.ffwll.local>
+Subject: Re: [PATCH v2 7/9] drm/rockchip: Force disable all crtc when unload
+Date: Mon, 3 Apr 2017 09:58:04 +0200
+Message-ID: <CAKMK7uFzpk0VNr-hdeKKxB0Ur+qC7ZWe-EwyzqcudABdjQZXfQ@mail.gmail.com>
 References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491046529-4310-9-git-send-email-jeffy.chen@rock-chips.com>
+ <1491046529-4310-8-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1491046529-4310-9-git-send-email-jeffy.chen@rock-chips.com>
+In-Reply-To: <1491046529-4310-8-git-send-email-jeffy.chen@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -21,41 +19,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Cc: Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBBcHIgMDEsIDIwMTcgYXQgMDc6MzU6MjhQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29t
-Pgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjI6IE5vbmUKCld1dD8gSG93IGlzIHRoaXMgZXZlbiBw
-b3NzaWJsZT8gSWYgeW91IGhhdmVuJ3QgcmVnaXN0ZXJlZCB0aGUgZHJpdmVyIHlldCwKdGhlcmUn
-cyBubyB3YXkgZm9yIHVzZXJzcGFjZSB0byBjYWxsIGFsbG9jYXRpb24gZnVuY3Rpb25zLiBBbnl0
-aGluZyBlbHNlCmlzIGEgZHJpdmVyIGJ1ZyB0aGF0IHNob3VsZCBiZSBoYW5kbGVkIGJ5IGZpeGlu
-ZyB0aGUgZHJpdmVyIGxvYWQgc2VxdWVuY2UuClRoZSBvbmx5IHRoaW5nIEkgY2FuIGltYWdpbmUg
-aXMgdGhhdCB5b3UgaW5pdCB0aGUgZmJkZXYgc3R1ZmYgdG9vIGVhcmx5LAppbiB0aGF0IGNhc2Ug
-cGxzIGZpeCB0aGF0LiBOb3QgYXBwbHkgdGhpcyBkdWN0LXRhcGUgaGVyZS4KClRoYW5rcywgRGFu
-aWVsCgo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwg
-OCArKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gaW5kZXggZGY5ZTU3MC4u
-MmJmODAyNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
-ZW0uYwo+IEBAIC0xODQsNiArMTg0LDkgQEAgc3RhdGljIGludCByb2NrY2hpcF9nZW1fYWxsb2Nf
-YnVmKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmosCj4gIAlzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZHJtID0gb2JqLT5kZXY7Cj4gIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnBy
-aXZhdGUgPSBkcm0tPmRldl9wcml2YXRlOwo+ICAKPiArCWlmICghZHJtLT5yZWdpc3RlcmVkKQo+
-ICsJCXJldHVybiAtRU5PREVWOwo+ICsKPiAgCWlmIChwcml2YXRlLT5kb21haW4pCj4gIAkJcmV0
-dXJuIHJvY2tjaGlwX2dlbV9hbGxvY19pb21tdShya19vYmosIGFsbG9jX2ttYXApOwo+ICAJZWxz
-ZQo+IEBAIC0yMDgsNiArMjExLDExIEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX2Rt
-YShzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQo+ICAKPiAgc3RhdGljIHZvaWQg
-cm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmop
-Cj4gIHsKPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBya19vYmotPmJhc2UuZGV2Owo+ICsK
-PiArCWlmICghZHJtLT5yZWdpc3RlcmVkKQo+ICsJCXJldHVybjsKPiArCj4gIAlpZiAocmtfb2Jq
-LT5wYWdlcykKPiAgCQlyb2NrY2hpcF9nZW1fZnJlZV9pb21tdShya19vYmopOwo+ICAJZWxzZQo+
-IC0tIAo+IDIuMS40Cj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVsCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50
-ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+T24gU2F0LCBBcHIgMSwgMjAxNyBhdCAxOjM1IFBNLCBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJv
+Y2stY2hpcHMuY29tPiB3cm90ZToKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmMKPiBpbmRleCBhNWQ4M2NiLi41ZGJmMDExIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAgLTI0Niw2ICsyNDYsNyBAQCBz
+dGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgICAg
+ICAgIHJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRybV9kZXYpOwo+ICAgICAgICAgZHJtX2ttc19o
+ZWxwZXJfcG9sbF9maW5pKGRybV9kZXYpOwo+Cj4gKyAgICAgICBkcm1fY3J0Y19mb3JjZV9kaXNh
+YmxlX2FsbChkcm1fZGV2KTsKClRoaXMgd2lsbCByZXN1bHQgaW4gYSBXQVJOX09OIGluIGxhdGVz
+dCBkcm0tbmV4dCBiZWNhdXNlIHJvY2tjaGlwIGlzCmF0b21pYywgYW5kIHRoaXMgaGVscGVyIGlz
+IGZvciBsZWdhY3kga21zIGRyaXZlcnMuIFlvdSB3YW50IHRvIHVzZQpkcm1fYXRvbWljX2hlbHBl
+cl9zaHV0ZG93biBoZXJlLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2lu
+ZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgorNDEgKDApIDc5IDM2NSA1NyA0OCAtIGh0dHA6Ly9ibG9n
+LmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
