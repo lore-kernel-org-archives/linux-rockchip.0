@@ -1,41 +1,138 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 7/9] drm/rockchip: Force disable all crtc when unload
-Date: Mon, 3 Apr 2017 09:58:04 +0200
-Message-ID: <CAKMK7uFzpk0VNr-hdeKKxB0Ur+qC7ZWe-EwyzqcudABdjQZXfQ@mail.gmail.com>
-References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491046529-4310-8-git-send-email-jeffy.chen@rock-chips.com>
+From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Mon, 3 Apr 2017 10:12:44 +0200
+Message-ID: <a01a50d3-bb1b-2c56-2a15-30651fa2fac9@baylibre.com>
+References: <cover.1491118230.git.guillaume.tucker@collabora.com>
+ <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1491046529-4310-8-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBBcHIgMSwgMjAxNyBhdCAxOjM1IFBNLCBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJv
-Y2stY2hpcHMuY29tPiB3cm90ZToKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZHJ2LmMKPiBpbmRleCBhNWQ4M2NiLi41ZGJmMDExIDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAgLTI0Niw2ICsyNDYsNyBAQCBz
-dGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgICAg
-ICAgIHJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRybV9kZXYpOwo+ICAgICAgICAgZHJtX2ttc19o
-ZWxwZXJfcG9sbF9maW5pKGRybV9kZXYpOwo+Cj4gKyAgICAgICBkcm1fY3J0Y19mb3JjZV9kaXNh
-YmxlX2FsbChkcm1fZGV2KTsKClRoaXMgd2lsbCByZXN1bHQgaW4gYSBXQVJOX09OIGluIGxhdGVz
-dCBkcm0tbmV4dCBiZWNhdXNlIHJvY2tjaGlwIGlzCmF0b21pYywgYW5kIHRoaXMgaGVscGVyIGlz
-IGZvciBsZWdhY3kga21zIGRyaXZlcnMuIFlvdSB3YW50IHRvIHVzZQpkcm1fYXRvbWljX2hlbHBl
-cl9zaHV0ZG93biBoZXJlLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2lu
-ZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgorNDEgKDApIDc5IDM2NSA1NyA0OCAtIGh0dHA6Ly9ibG9n
-LmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 04/02/2017 09:59 AM, Guillaume Tucker wrote:
+> The ARM Mali Midgard GPU family is present in a number of SoCs
+> from many different vendors such as Samsung Exynos and Rockchip.
+> 
+> Import the device tree bindings documentation from the r16p0
+> release of the Mali Midgard GPU kernel driver:
+> 
+>   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
+> 
+> The following optional bindings have been omitted in this initial
+> version as they are only used in very specific cases:
+> 
+>   * snoop_enable_smc
+>   * snoop_disable_smc
+>   * jm_config
+>   * power_model
+>   * system-coherency
+>   * ipa-model
+> 
+> The example has been simplified accordingly.
+> 
+> The compatible string definition has been limited to
+> "arm,mali-midgard" to avoid checkpatch.pl warnings and to match
+> what the driver actually expects (as of r16p0 out-of-tree).
+> 
+> CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53 ++++++++++++++++++++++
+>  1 file changed, 53 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> new file mode 100644
+> index 000000000000..da8fc6d21bbf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> @@ -0,0 +1,53 @@
+> +#
+> +# (C) COPYRIGHT 2013-2016 ARM Limited.
+> +# Copyright (C) 2017 Collabora Ltd
+> +#
+> +# This program is free software and is provided to you under the terms of the
+> +# GNU General Public License version 2 as published by the Free Software
+> +# Foundation, and any use by you of this program is subject to the terms
+> +# of such GNU licence.
+> +#
+Hi Guillaume,
+
+This is unnecessary, please remove.
+
+> +
+> +
+> +ARM Mali Midgard GPU
+> +====================
+> +
+> +Required properties:
+> +
+> +- compatible : Should be "arm,mali-midgard".
+> +- reg : Physical base address of the device and length of the register area.
+> +- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
+> +- interrupt-names : Contains the names of IRQ resources in the order they were
+> +  provided in the interrupts property. Must contain: "JOB, "MMU", "GPU".
+
+
+Please follow the bindings introduced for the utgard family :
+https://patchwork.kernel.org/patch/9553745/
+
+- an entry for each mali-midgard revision, i.e. "arm,mali-t820"
+- an entry for each vendor specific wrapping if necessary, i.e. "amlogic,meson-gxm-mali"
+- low-case for interrupt names
+
+> +
+> +Optional:
+> +
+> +- clocks : Phandle to clock for the Mali Midgard device.
+> +- clock-names : Shall be "clk_mali".
+> +- mali-supply : Phandle to regulator for the Mali device. Refer to
+> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
+> +- operating-points : Refer to Documentation/devicetree/bindings/power/opp.txt
+> +  for details.
+
+Please add :
+   * Must be one of the following:
+      "arm,mali-t820"
+   * And, optionally, one of the vendor specific compatible:
+      "amlogic,meson-gxm-mali"
+
+with my Ack for the amlogic platform.
+
+> +
+> +Example for a Mali-T602:
+> +
+> +gpu@0xfc010000 {
+> +	compatible = "arm,mali-midgard";
+> +	reg = <0xfc010000 0x4000>;
+> +	interrupts = <0 36 4>, <0 37 4>, <0 38 4>;
+> +	interrupt-names = "JOB", "MMU", "GPU";
+> +
+> +	clocks = <&pclk_mali>;
+> +	clock-names = "clk_mali";
+> +	mali-supply = <&vdd_mali>;
+> +	operating-points = <
+> +		/* KHz   uV */
+> +		533000 1250000,
+> +		450000 1150000,
+> +		400000 1125000,
+> +		350000 1075000,
+> +		266000 1025000,
+> +		160000  925000,
+> +		100000  912500,
+> +	>;
+> +};
+> 
+
+Thanks,
+Neil
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
