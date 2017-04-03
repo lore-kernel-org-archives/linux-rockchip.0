@@ -1,54 +1,77 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: set RC's RCB to 128 bytes
-Date: Mon, 3 Apr 2017 16:12:03 -0500
-Message-ID: <20170403211203.GC13232@bhelgaas-glaptop.roam.corp.google.com>
-References: <1490002780-67737-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/5] Add ARM Mali Midgard device tree bindings and gpu node for rk3288
+Date: Tue, 04 Apr 2017 00:54:43 +0200
+Message-ID: <1587425.dbD1NUOEYx@diego>
+References: <cover.1491118230.git.guillaume.tucker@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1490002780-67737-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1491118230.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 20, 2017 at 05:39:40PM +0800, Shawn Lin wrote:
-> Read Completion Boundary could be 64 bytes or 128 bytes
-> for rockchip RC. The reset value of RCB is zero which means
-> it doesn't support RCB to be 128 bytes, however it does support
-> that. When setting the RCB to 128 bytes, we see some significant
-> improvment for testing NVMe with libaio. So this patch will set
-> RC's RCB to 128 bytes.
-> 
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Hi Guillaume,
 
-Applied to pci/host-rockchip for v4.12, thanks!
+please keep in mind to also add me (as Rockchip maintainer) as recipient in 
+further submissions - as also listed by scripts/get_maintainer.pl.
 
-> ---
+
+Thanks
+Heiko
+
+Am Sonntag, 2. April 2017, 08:59:43 CEST schrieb Guillaume Tucker:
+> The ARM Mali Midgard GPU kernel driver is only available
+> out-of-tree and is not going to be merged in its current form.
+> However, it would be useful to have its device tree bindings
+> merged.  In particular, this would enable distributions to create
+> working driver packages (dkms...) without having to patch the
+> kernel.
 > 
->  drivers/pci/host/pcie-rockchip.c | 5 +++++
->  1 file changed, 5 insertions(+)
+> The bindings for the earlier Mali Utgard GPU family have already
+> been merged, so this is essentially the same scenario but for
+> newer GPUs (Mali-T604 ~ Mali-T880).
 > 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 26ddd35..8bcd417 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -599,6 +599,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	status |= PCI_EXP_LNKCTL_CCC;
->  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
->  
-> +	/* Set RC's RCB to 128 */
-> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
-> +	status |= PCI_EXP_LNKCTL_RCB;
-> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
-> +
->  	/* Enable Gen1 training */
->  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
->  			    PCIE_CLIENT_CONFIG);
-> -- 
-> 1.9.1
+> This series of patches first imports the bindings from the latest
+> driver release with some clean-up then adds a gpu node for the
+> rk3288 SoC.  This was successfully tested on Radxa Rock2 Square,
+> Firefly, Veyron Minnie and Jerry boards board using Mali kernel
+> driver r16p0 and r12p0 user-space binary.
 > 
+> Changes since v1:
+> - enabled gpu on rk3288-veyron boards
 > 
+> Enric Balletbo i Serra (1):
+>   ARM: dts: rockchip: enable ARM Mali GPU on rk3288-veyron
+> 
+> Guillaume Tucker (4):
+>   dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+>   ARM: dts: rockchip: add ARM Mali GPU node for rk3288
+>   ARM: dts: rockchip: enable ARM Mali GPU on rk3288-rock2-som
+>   ARM: dts: rockchip: enable ARM Mali GPU on rk3288-firefly
+> 
+>  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53
+> ++++++++++++++++++++++ arch/arm/boot/dts/rk3288-firefly.dtsi              |
+>  5 ++
+>  arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  5 ++
+>  arch/arm/boot/dts/rk3288-veyron.dtsi               |  5 ++
+>  arch/arm/boot/dts/rk3288.dtsi                      | 23 ++++++++++
+>  5 files changed, 91 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> 
+> --
+> 2.11.0
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
