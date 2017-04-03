@@ -1,34 +1,54 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] iommu/rockchip: Make use of 'struct iommu_device'
-Date: Mon, 3 Apr 2017 13:18:05 +0200
-Message-ID: <20170403111805.GC4683@8bytes.org>
-References: <1490970624-19981-1-git-send-email-joro@8bytes.org>
-	<1785458.LaVlbOJ67B@diego> <20170403110758.GB4683@8bytes.org>
-	<4252325.o7BCCiZe8L@diego>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: set RC's RCB to 128 bytes
+Date: Mon, 3 Apr 2017 16:12:03 -0500
+Message-ID: <20170403211203.GC13232@bhelgaas-glaptop.roam.corp.google.com>
+References: <1490002780-67737-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <4252325.o7BCCiZe8L@diego>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1490002780-67737-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Wenrui Li <wenrui.li@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 03, 2017 at 01:11:01PM +0200, Heiko St=FCbner wrote:
-> ok, so you can at least add my
-> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> =
+On Mon, Mar 20, 2017 at 05:39:40PM +0800, Shawn Lin wrote:
+> Read Completion Boundary could be 64 bytes or 128 bytes
+> for rockchip RC. The reset value of RCB is zero which means
+> it doesn't support RCB to be 128 bytes, however it does support
+> that. When setting the RCB to 128 bytes, we see some significant
+> improvment for testing NVMe with libaio. So this patch will set
+> RC's RCB to 128 bytes.
+> 
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-> on the patch
+Applied to pci/host-rockchip for v4.12, thanks!
 
-Added and applied, thanks.
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 26ddd35..8bcd417 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -599,6 +599,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  	status |= PCI_EXP_LNKCTL_CCC;
+>  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+>  
+> +	/* Set RC's RCB to 128 */
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +	status |= PCI_EXP_LNKCTL_RCB;
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +
+>  	/* Enable Gen1 training */
+>  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+>  			    PCIE_CLIENT_CONFIG);
+> -- 
+> 1.9.1
+> 
+> 
