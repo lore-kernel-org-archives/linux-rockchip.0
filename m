@@ -1,138 +1,67 @@
-From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali
- Midgard GPU
-Date: Mon, 3 Apr 2017 10:12:44 +0200
-Message-ID: <a01a50d3-bb1b-2c56-2a15-30651fa2fac9@baylibre.com>
-References: <cover.1491118230.git.guillaume.tucker@collabora.com>
- <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] iommu/rockchip: Make use of 'struct iommu_device'
+Date: Mon, 03 Apr 2017 11:56:59 +0200
+Message-ID: <1785458.LaVlbOJ67B@diego>
+References: <1490970624-19981-1-git-send-email-joro@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1490970624-19981-1-git-send-email-joro@8bytes.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Joerg Roedel <jroedel@suse.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/02/2017 09:59 AM, Guillaume Tucker wrote:
-> The ARM Mali Midgard GPU family is present in a number of SoCs
-> from many different vendors such as Samsung Exynos and Rockchip.
+Hi Joerg,
+
+Am Freitag, 31. März 2017, 16:30:24 CEST schrieb Joerg Roedel:
+> From: Joerg Roedel <jroedel@suse.de>
 > 
-> Import the device tree bindings documentation from the r16p0
-> release of the Mali Midgard GPU kernel driver:
+> Register hardware IOMMUs seperatly with the iommu-core code
+> and add a sysfs representation of the iommu topology.
 > 
->   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
-> 
-> The following optional bindings have been omitted in this initial
-> version as they are only used in very specific cases:
-> 
->   * snoop_enable_smc
->   * snoop_disable_smc
->   * jm_config
->   * power_model
->   * system-coherency
->   * ipa-model
-> 
-> The example has been simplified accordingly.
-> 
-> The compatible string definition has been limited to
-> "arm,mali-midgard" to avoid checkpatch.pl warnings and to match
-> what the driver actually expects (as of r16p0 out-of-tree).
-> 
-> CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+
+In general works, and I still keep a working iommu-based display :-)
+I can also see my two vop iommus under /sys/class/iommu now.
+
+Links in the devices subdirectory do not work though, see below:
+
 > ---
->  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53 ++++++++++++++++++++++
->  1 file changed, 53 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+>  drivers/iommu/rockchip-iommu.c | 30 ++++++++++++++++++++++++++++--
+>  1 file changed, 28 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-> new file mode 100644
-> index 000000000000..da8fc6d21bbf
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-> @@ -0,0 +1,53 @@
-> +#
-> +# (C) COPYRIGHT 2013-2016 ARM Limited.
-> +# Copyright (C) 2017 Collabora Ltd
-> +#
-> +# This program is free software and is provided to you under the terms of the
-> +# GNU General Public License version 2 as published by the Free Software
-> +# Foundation, and any use by you of this program is subject to the terms
-> +# of such GNU licence.
-> +#
-Hi Guillaume,
-
-This is unnecessary, please remove.
-
-> +
-> +
-> +ARM Mali Midgard GPU
-> +====================
-> +
-> +Required properties:
-> +
-> +- compatible : Should be "arm,mali-midgard".
-> +- reg : Physical base address of the device and length of the register area.
-> +- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
-> +- interrupt-names : Contains the names of IRQ resources in the order they were
-> +  provided in the interrupts property. Must contain: "JOB, "MMU", "GPU".
-
-
-Please follow the bindings introduced for the utgard family :
-https://patchwork.kernel.org/patch/9553745/
-
-- an entry for each mali-midgard revision, i.e. "arm,mali-t820"
-- an entry for each vendor specific wrapping if necessary, i.e. "amlogic,meson-gxm-mali"
-- low-case for interrupt names
-
-> +
-> +Optional:
-> +
-> +- clocks : Phandle to clock for the Mali Midgard device.
-> +- clock-names : Shall be "clk_mali".
-> +- mali-supply : Phandle to regulator for the Mali device. Refer to
-> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
-> +- operating-points : Refer to Documentation/devicetree/bindings/power/opp.txt
-> +  for details.
-
-Please add :
-   * Must be one of the following:
-      "arm,mali-t820"
-   * And, optionally, one of the vendor specific compatible:
-      "amlogic,meson-gxm-mali"
-
-with my Ack for the amlogic platform.
-
-> +
-> +Example for a Mali-T602:
-> +
-> +gpu@0xfc010000 {
-> +	compatible = "arm,mali-midgard";
-> +	reg = <0xfc010000 0x4000>;
-> +	interrupts = <0 36 4>, <0 37 4>, <0 38 4>;
-> +	interrupt-names = "JOB", "MMU", "GPU";
-> +
-> +	clocks = <&pclk_mali>;
-> +	clock-names = "clk_mali";
-> +	mali-supply = <&vdd_mali>;
-> +	operating-points = <
-> +		/* KHz   uV */
-> +		533000 1250000,
-> +		450000 1150000,
-> +		400000 1125000,
-> +		350000 1075000,
-> +		266000 1025000,
-> +		160000  925000,
-> +		100000  912500,
-> +	>;
-> +};
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 9afcbf7..36d0890 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1054,6 +1056,10 @@ static int rk_iommu_add_device(struct device *dev)
+>  	if (ret)
+>  		goto err_remove_device;
 > 
+> +	iommu = rk_iommu_from_dev(dev);
+> +	if (iommu)
+> +		iommu_device_link(&iommu->iommu, dev);
+> +
 
-Thanks,
-Neil
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+It looks like the iommu association can very well run before the iommu
+actually probes, via the bus_set_iommu and which happens on my veyron-pinky
+device). Thus iommu is NULL, as platform_set_drvdata in probe hasn't run yet
+and the link is never created.
+
+[    0.034180] iommu: Adding device ff930000.vop to group 0
+[    0.034198] rk_iommu_from_dev: found iommu ff930300.iommu for ff930000.vop with data at   (null)
+[    0.034209] rk_iommu_add_device: rk_iommu_from_dev returned   (null) for ff930000.vop
+[    0.034232] iommu: Adding device ff940000.vop to group 1
+[    0.034247] rk_iommu_from_dev: found iommu ff940300.iommu for ff940000.vop with data at   (null)
+[    0.034258] rk_iommu_add_device: rk_iommu_from_dev returned   (null) for ff940000.vop
+[    0.034342] rk_iommu_probe: set_drvdata for ff930300.iommu at ee2c7a10
+[    0.034411] rk_iommu_probe: set_drvdata for ff940300.iommu at ee2c7c10
+[    7.326395] rk_iommu_from_dev: found iommu ff930300.iommu for ff930000.vop with data at ee2c7a10
+
+
+Not sure what the proper solution is though.
+
+
+Heiko
