@@ -1,68 +1,81 @@
-From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset property
-Date: Tue, 4 Apr 2017 14:30:47 -0400
-Message-ID: <20170404183047.s7flyjv6vfhzxzb6@art_vandelay>
-References: <20170224125506.21533-1-john@metanate.com>
- <20170224125506.21533-24-john@metanate.com>
- <20170302215643.GA49163@google.com>
- <20170303113945.3bd2cbd9.john@metanate.com>
- <20170312120659.hpiwnsto6hkxs5yh@rob-hp-laptop>
- <20170404141513.2bad3b1b.john@metanate.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v2 5/9] drm/rockchip: vop: Enable pm domain when
+ resetting vop
+Date: Tue, 4 Apr 2017 15:42:34 -0400
+Message-ID: <20170404194234.vhsedpjkf6eqz4oe@art_vandelay>
+References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1491046529-4310-6-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20170404141513.2bad3b1b.john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Cc: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1491046529-4310-6-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Apr 04, 2017 at 02:15:13PM +0100, John Keeping wrote:
-> Hi Sean,
-> 
-> On Sun, 12 Mar 2017 07:06:59 -0500, Rob Herring wrote:
-> 
-> > On Fri, Mar 03, 2017 at 11:39:45AM +0000, John Keeping wrote:
-> > > This reset is required in order to fully reset the internal state of the
-> > > MIPI controller.
-> > > 
-> > > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> > > ---
-> > > On Thu, 2 Mar 2017 13:56:46 -0800, Brian Norris wrote:  
-> > > > On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:  
-> > > > > +	/*
-> > > > > +	 * Note that the reset was not defined in the initial device tree, so
-> > > > > +	 * we have to be prepared for it not being found.
-> > > > > +	 */
-> > > > > +	apb_rst = devm_reset_control_get(dev, "apb");    
-> > > > 
-> > > > Did this reset ever get documented in the device tree bindings? I
-> > > > couldn't find it. Perhaps a follow-up patch is in order?  
-> > > 
-> > > Here's a patch to do that.
-> > > 
-> > >  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt  | 7 +++++++
-> > >  1 file changed, 7 insertions(+)  
-> > 
-> > Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> 
-> I don't see this patch in linux-next, so I guess it has fallen through
-> the cracks somewhere.  Since we have Rob's ack, can you pick this via
-> drm-misc?
-> 
-
-Yeah, sorry about that. Applied to misc-next
-
-Sean
-
-> 
-> Regards,
-> John
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gU2F0LCBBcHIgMDEsIDIwMTcgYXQgMDc6MzU6MjVQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKCkhpIEplZmZ5LApDb3VsZCB5b3UgcGxlYXNlIGFkZCBjb21taXQgbWVzc2FnZXMgZGVzY3Jp
+YmluZyAqd2h5KiB5b3UncmUgbWFraW5nIHRoZSBjaGFuZ2U/Ckl0IG1pZ2h0IGJlIG9idmlvdXMg
+dG8geW91IChhbmQgbWF5YmUgbWUpLCBidXQgb3RoZXJzIHdpbGwgYmVuZWZpdCBmcm9tIGJldHRl
+cgpkZXNjcmlwdGlvbnMuCgo+IFNpZ25lZC1vZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5A
+cm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+IAo+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMzEgKysrKysrKysrKysr
+KysrKysrKy0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDEw
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYwo+IGluZGV4IDc2Yzc5YWMuLjFkODUzMTkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTM2NSw2ICsxMzY1LDEyIEBAIHN0
+YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+ICAJCXJldHVybiByZXQ7Cj4g
+IAl9Cj4gIAo+ICsJcmV0ID0gcG1fcnVudGltZV9nZXRfc3luYyh2b3AtPmRldik7Cj4gKwlpZiAo
+cmV0IDwgMCkgewo+ICsJCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBtIHJ1bnRp
+bWU6ICVkXG4iLCByZXQpOwo+ICsJCWdvdG8gZXJyX3B1dF9wbV9ydW50aW1lOwoKVGhpcyBzaG91
+bGQgZ28gdG8gZXJyX3VucHJlcGFyZV9kY2xrLCB0aGUgbmV4dCBlcnJvciBjb25kaXRpb24gc2hv
+dWxkIGdvIHRvCmVycl9wdXRfcG1fcnVudGltZQoKPiArCX0KPiArCj4gIAkvKiBFbmFibGUgYm90
+aCB0aGUgaGNsayBhbmQgYWNsayB0byBzZXR1cCB0aGUgdm9wICovCj4gIAlyZXQgPSBjbGtfcHJl
+cGFyZV9lbmFibGUodm9wLT5oY2xrKTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gQEAgLTE0MjIsNiAr
+MTQyOCw4IEBAIHN0YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+ICAKPiAg
+CXZvcC0+aXNfZW5hYmxlZCA9IGZhbHNlOwo+ICAKPiArCXBtX3J1bnRpbWVfcHV0X3N5bmModm9w
+LT5kZXYpOwo+ICsKPiAgCXJldHVybiAwOwo+ICAKPiAgZXJyX2Rpc2FibGVfYWNsazoKPiBAQCAt
+MTQzMCw2ICsxNDM4LDggQEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3Ap
+Cj4gIAljbGtfZGlzYWJsZV91bnByZXBhcmUodm9wLT5oY2xrKTsKPiAgZXJyX3VucHJlcGFyZV9k
+Y2xrOgo+ICAJY2xrX3VucHJlcGFyZSh2b3AtPmRjbGspOwo+ICtlcnJfcHV0X3BtX3J1bnRpbWU6
+Cj4gKwlwbV9ydW50aW1lX3B1dF9zeW5jKHZvcC0+ZGV2KTsKClNob3VsZCBiZSBhYm92ZSBlcnJf
+dW5wcmVwYXJlX2RjbGsKCj4gIAlyZXR1cm4gcmV0Owo+ICB9Cj4gIAo+IEBAIC0xNTMwLDEyICsx
+NTQwLDYgQEAgc3RhdGljIGludCB2b3BfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBk
+ZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPiAgCWlmICghdm9wLT5yZWdzYmFrKQo+ICAJCXJl
+dHVybiAtRU5PTUVNOwo+ICAKPiAtCXJldCA9IHZvcF9pbml0aWFsKHZvcCk7Cj4gLQlpZiAocmV0
+IDwgMCkgewo+IC0JCWRldl9lcnIoJnBkZXYtPmRldiwgImNhbm5vdCBpbml0aWFsIHZvcCBkZXYg
+LSBlcnIgJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuIHJldDsKPiAtCX0KPiAtCj4gIAlpcnEgPSBw
+bGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOwo+ICAJaWYgKGlycSA8IDApIHsKPiAgCQlkZXZfZXJy
+KGRldiwgImNhbm5vdCBmaW5kIGlycSBmb3Igdm9wXG4iKTsKPiBAQCAtMTU1NiwxNSArMTU2MCwy
+MiBAQCBzdGF0aWMgaW50IHZvcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmlj
+ZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+ICAJLyogSVJRIGlzIGluaXRpYWxseSBkaXNhYmxlZDsg
+aXQgZ2V0cyBlbmFibGVkIGluIHBvd2VyX29uICovCj4gIAlkaXNhYmxlX2lycSh2b3AtPmlycSk7
+Cj4gIAo+ICsJcG1fcnVudGltZV9lbmFibGUoJnBkZXYtPmRldik7Cj4gKwo+ICsJcmV0ID0gdm9w
+X2luaXRpYWwodm9wKTsKPiArCWlmIChyZXQgPCAwKSB7Cj4gKwkJZGV2X2VycigmcGRldi0+ZGV2
+LCAiY2Fubm90IGluaXRpYWwgdm9wIGRldiAtIGVyciAlZFxuIiwgcmV0KTsKPiArCQlnb3RvIGVy
+cl9kaXNhYmxlX3BtX3J1bnRpbWU7Cj4gKwl9CgpUaGlzIGZ1bmN0aW9uIG1vdmUgd291bGQgYmUg
+YSBsb3QgZWFzaWVyIHRvIHVuZGVyc3RhbmQgd2l0aCBhIGNvbW1pdCBtZXNzYWdlIDstKQoKPiAr
+Cj4gIAlyZXQgPSB2b3BfY3JlYXRlX2NydGModm9wKTsKPiAgCWlmIChyZXQpCj4gLQkJZ290byBl
+cnJfZW5hYmxlX2lycTsKPiAtCj4gLQlwbV9ydW50aW1lX2VuYWJsZSgmcGRldi0+ZGV2KTsKPiAr
+CQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU7CgpEbyB5b3UgaGF2ZSBhbnl0aGluZyB0byBj
+bGVhbiB1cCBmcm9tIHZvcF9pbml0aWFsKCk/Cgo+ICAKPiAgCXJldHVybiAwOwo+ICAKPiAtZXJy
+X2VuYWJsZV9pcnE6Cj4gK2Vycl9kaXNhYmxlX3BtX3J1bnRpbWU6Cj4gKwlwbV9ydW50aW1lX2Rp
+c2FibGUoJnBkZXYtPmRldik7Cj4gIAllbmFibGVfaXJxKHZvcC0+aXJxKTsgLyogVG8gYmFsYW5j
+ZSBvdXQgdGhlIGRpc2FibGVfaXJxIGFib3ZlICovCj4gIAlyZXR1cm4gcmV0Owo+ICB9Cj4gLS0g
+Cj4gMi4xLjQKPiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBD
+aHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
