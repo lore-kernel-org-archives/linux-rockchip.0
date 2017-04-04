@@ -1,59 +1,29 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset
- property
-Date: Tue, 4 Apr 2017 14:15:13 +0100
-Message-ID: <20170404141513.2bad3b1b.john@metanate.com>
-References: <20170224125506.21533-1-john@metanate.com>
-        <20170224125506.21533-24-john@metanate.com>
-        <20170302215643.GA49163@google.com>
-        <20170303113945.3bd2cbd9.john@metanate.com>
-        <20170312120659.hpiwnsto6hkxs5yh@rob-hp-laptop>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 3/6] dt-bindings: soc: rockchip: grf: add support for rk3328
+Date: Tue, 04 Apr 2017 17:44:00 +0200
+Message-ID: <3351718.HGWeKm9QaM@phil>
+References: <1490607650-18650-1-git-send-email-cl@rock-chips.com> <1490607650-18650-3-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170312120659.hpiwnsto6hkxs5yh@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1490607650-18650-3-git-send-email-cl@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On Sun, 12 Mar 2017 07:06:59 -0500, Rob Herring wrote:
-
-> On Fri, Mar 03, 2017 at 11:39:45AM +0000, John Keeping wrote:
-> > This reset is required in order to fully reset the internal state of the
-> > MIPI controller.
-> > 
-> > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> > ---
-> > On Thu, 2 Mar 2017 13:56:46 -0800, Brian Norris wrote:  
-> > > On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:  
-> > > > +	/*
-> > > > +	 * Note that the reset was not defined in the initial device tree, so
-> > > > +	 * we have to be prepared for it not being found.
-> > > > +	 */
-> > > > +	apb_rst = devm_reset_control_get(dev, "apb");    
-> > > 
-> > > Did this reset ever get documented in the device tree bindings? I
-> > > couldn't find it. Perhaps a follow-up patch is in order?  
-> > 
-> > Here's a patch to do that.
-> > 
-> >  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt  | 7 +++++++
-> >  1 file changed, 7 insertions(+)  
+Am Montag, 27. März 2017, 17:40:47 CEST schrieb cl@rock-chips.com:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-I don't see this patch in linux-next, so I guess it has fallen through
-the cracks somewhere.  Since we have Rob's ack, can you pick this via
-drm-misc?
+applied for 4.12 after rewording the subject and adding a real commit
+message.
+
+Please do not leave the actual commit message empty in future patches.
 
 
-Regards,
-John
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks
+Heiko
