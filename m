@@ -1,128 +1,58 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali
- Midgard GPU
-Date: Mon, 3 Apr 2017 21:00:56 -0500
-Message-ID: <20170404020056.d7osj7rmog22xbjd@rob-hp-laptop>
-References: <cover.1491118230.git.guillaume.tucker@collabora.com>
- <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker@collabora.com>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: display: rk3288-mipi-dsi: add reset
+ property
+Date: Tue, 4 Apr 2017 14:15:13 +0100
+Message-ID: <20170404141513.2bad3b1b.john@metanate.com>
+References: <20170224125506.21533-1-john@metanate.com>
+        <20170224125506.21533-24-john@metanate.com>
+        <20170302215643.GA49163@google.com>
+        <20170303113945.3bd2cbd9.john@metanate.com>
+        <20170312120659.hpiwnsto6hkxs5yh@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20170312120659.hpiwnsto6hkxs5yh@rob-hp-laptop>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Apr 02, 2017 at 08:59:44AM +0100, Guillaume Tucker wrote:
-> The ARM Mali Midgard GPU family is present in a number of SoCs
-> from many different vendors such as Samsung Exynos and Rockchip.
-> 
-> Import the device tree bindings documentation from the r16p0
-> release of the Mali Midgard GPU kernel driver:
-> 
->   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
-> 
-> The following optional bindings have been omitted in this initial
-> version as they are only used in very specific cases:
-> 
->   * snoop_enable_smc
->   * snoop_disable_smc
->   * jm_config
->   * power_model
->   * system-coherency
->   * ipa-model
-> 
-> The example has been simplified accordingly.
-> 
-> The compatible string definition has been limited to
-> "arm,mali-midgard" to avoid checkpatch.pl warnings and to match
-> what the driver actually expects (as of r16p0 out-of-tree).
-> 
-> CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53 ++++++++++++++++++++++
->  1 file changed, 53 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-> new file mode 100644
-> index 000000000000..da8fc6d21bbf
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-> @@ -0,0 +1,53 @@
-> +#
-> +# (C) COPYRIGHT 2013-2016 ARM Limited.
-> +# Copyright (C) 2017 Collabora Ltd
-> +#
-> +# This program is free software and is provided to you under the terms of the
-> +# GNU General Public License version 2 as published by the Free Software
-> +# Foundation, and any use by you of this program is subject to the terms
-> +# of such GNU licence.
-> +#
-> +
-> +
-> +ARM Mali Midgard GPU
-> +====================
-> +
-> +Required properties:
-> +
-> +- compatible : Should be "arm,mali-midgard".
+Hi Sean,
 
-As Neil said...
+On Sun, 12 Mar 2017 07:06:59 -0500, Rob Herring wrote:
 
-> +- reg : Physical base address of the device and length of the register area.
-> +- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
-> +- interrupt-names : Contains the names of IRQ resources in the order they were
-> +  provided in the interrupts property. Must contain: "JOB, "MMU", "GPU".
-> +
-> +Optional:
-> +
-> +- clocks : Phandle to clock for the Mali Midgard device.
-> +- clock-names : Shall be "clk_mali".
-
-"clk_" is redundant. Actually, if there is only 1 clock, then just drop 
-names. But there's not at least a core and bus clock?
-
-> +- mali-supply : Phandle to regulator for the Mali device. Refer to
-> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
-> +- operating-points : Refer to Documentation/devicetree/bindings/power/opp.txt
-> +  for details.
-
-Is this going to be sufficient vs. operating-points-v2? Or should it be 
-a power domain with OPPs? 
-
-> +
-> +Example for a Mali-T602:
-> +
-> +gpu@0xfc010000 {
-
-Drop the '0x'.
-
-> +	compatible = "arm,mali-midgard";
-> +	reg = <0xfc010000 0x4000>;
-> +	interrupts = <0 36 4>, <0 37 4>, <0 38 4>;
-> +	interrupt-names = "JOB", "MMU", "GPU";
-> +
-> +	clocks = <&pclk_mali>;
-> +	clock-names = "clk_mali";
-> +	mali-supply = <&vdd_mali>;
-> +	operating-points = <
-> +		/* KHz   uV */
-> +		533000 1250000,
-> +		450000 1150000,
-> +		400000 1125000,
-> +		350000 1075000,
-> +		266000 1025000,
-> +		160000  925000,
-> +		100000  912500,
-> +	>;
-> +};
-> -- 
-> 2.11.0
+> On Fri, Mar 03, 2017 at 11:39:45AM +0000, John Keeping wrote:
+> > This reset is required in order to fully reset the internal state of the
+> > MIPI controller.
+> > 
+> > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> > ---
+> > On Thu, 2 Mar 2017 13:56:46 -0800, Brian Norris wrote:  
+> > > On Fri, Feb 24, 2017 at 12:55:06PM +0000, John Keeping wrote:  
+> > > > +	/*
+> > > > +	 * Note that the reset was not defined in the initial device tree, so
+> > > > +	 * we have to be prepared for it not being found.
+> > > > +	 */
+> > > > +	apb_rst = devm_reset_control_get(dev, "apb");    
+> > > 
+> > > Did this reset ever get documented in the device tree bindings? I
+> > > couldn't find it. Perhaps a follow-up patch is in order?  
+> > 
+> > Here's a patch to do that.
+> > 
+> >  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt  | 7 +++++++
+> >  1 file changed, 7 insertions(+)  
 > 
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+I don't see this patch in linux-next, so I guess it has fallen through
+the cracks somewhere.  Since we have Rob's ack, can you pick this via
+drm-misc?
+
+
+Regards,
+John
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
