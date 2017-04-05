@@ -1,39 +1,65 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH v2 2/2] dt-bindings: document: add firefly-rk3399 board support
-Date: Wed,  5 Apr 2017 17:33:20 +0800
-Message-ID: <1491384800-22412-2-git-send-email-kever.yang@rock-chips.com>
-References: <1491384800-22412-1-git-send-email-kever.yang@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+Date: Wed, 05 Apr 2017 12:11:11 +0200
+Message-ID: <4811905.ImQG7774i7@diego>
+References: <1490607650-18650-1-git-send-email-cl@rock-chips.com> <6636047.jL6XHNkknt@phil> <58E4516D.4000805@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1491384800-22412-1-git-send-email-kever.yang@rock-chips.com>
+In-Reply-To: <58E4516D.4000805@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, Liang Chen <cl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Randy Li <ayaka@soulik.info>, Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Eddie Cai <eddie.cai.linux@gmail.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: cl@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Use "firefly,firefly-rk3399" compatible string for firefly-rk3399 board.
+Hi Elaine,
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
+Am Mittwoch, 5. April 2017, 10:07:41 CEST schrieb Elaine Zhang:
+> On 04/05/2017 12:04 AM, Heiko Stuebner wrote:
+> > Am Montag, 27. März 2017, 17:40:48 CEST schrieb cl@rock-chips.com:
+> >> From: Liang Chen <cl@rock-chips.com>
+> >> 
+> >> This patch adds core dtsi file for Rockchip RK3328 SoCs.
+> >> 
+> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> > 
+> > applied for 4.12, with the following list of changes:
+> > 
+> > - reorder some properties to bring them in alphabetical order
+> > - dropped the status-disabled from the power-controller
+> > 
+> >    power-domain control is a quite essential part of the system, so if
+> >    boards really want to disable them, they should do it in their board
+> >    file
+> >    Having power-domains on all the time, is also our default in all other
+> >    devicetrees.
+> > 
+> > - removed #dma-cells from spi0 -> this is not a dma controller
+> > - reword the cru assigned-clocks comment a bit
+> > - fixed sdmmc1_bus4 pins, as indicated by Shawn and after looking up the
+> > 
+> >    correct pins in the manual
+> > 
+> > And a final question, are you sure about SCLK_PDM becoming a child of the
+> > APLL in your cru assigned-clocks, as the APLL will vary later on with
+> > cpufreq active?
+> 
+> the NPLL will vary later on with cpufreq active.
+> 
+> The NPLL is better than APLL, so NPLL is for clk_core,and apll is for pdm.
+> 
+> please see the TRM in CRU:
+> 1.4 Function Description
+> /........./
+> To maximize the flexibility, some of clocks can select divider source
+> from 5 PLLs. (Note: It’s
+> recommended to use NEW PLL instead of ARM PLL as arm clock source,
+> because NEW PLL is
+> near to ARM. And it’s jitter is better than ARM PLL).
 
-Changes in v2: None
+Thanks for the clarification - this way it definitly makes sense.
 
- Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
- 1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 250fdf0..b5201f4 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -42,6 +42,10 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "firefly,firefly-rk3288-reload", "rockchip,rk3288";
- 
-+- Firefly Firefly-RK3399 board:
-+    Required root node properties:
-+      - compatible = "firefly,firefly-rk3399", "rockchip,rk3399";
-+
- - ChipSPARK PopMetal-RK3288 board:
-     Required root node properties:
-       - compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
--- 
-1.9.1
+Thanks
+Heiko
