@@ -1,65 +1,73 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
-Date: Wed, 05 Apr 2017 12:11:11 +0200
-Message-ID: <4811905.ImQG7774i7@diego>
-References: <1490607650-18650-1-git-send-email-cl@rock-chips.com> <6636047.jL6XHNkknt@phil> <58E4516D.4000805@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v2 6/9] drm/rockchip: Reoder unload sequence
+Date: Wed, 05 Apr 2017 18:20:34 +0800
+Message-ID: <58E4C4F2.7090306@rock-chips.com>
+References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1491046529-4310-7-git-send-email-jeffy.chen@rock-chips.com>
+ <20170404194426.e7pxf4kj5lbkvp6s@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <58E4516D.4000805@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: cl@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, kever.yang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170404194426.e7pxf4kj5lbkvp6s@art_vandelay>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+Hi Sean,
 
-Am Mittwoch, 5. April 2017, 10:07:41 CEST schrieb Elaine Zhang:
-> On 04/05/2017 12:04 AM, Heiko Stuebner wrote:
-> > Am Montag, 27. März 2017, 17:40:48 CEST schrieb cl@rock-chips.com:
-> >> From: Liang Chen <cl@rock-chips.com>
-> >> 
-> >> This patch adds core dtsi file for Rockchip RK3328 SoCs.
-> >> 
-> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> > 
-> > applied for 4.12, with the following list of changes:
-> > 
-> > - reorder some properties to bring them in alphabetical order
-> > - dropped the status-disabled from the power-controller
-> > 
-> >    power-domain control is a quite essential part of the system, so if
-> >    boards really want to disable them, they should do it in their board
-> >    file
-> >    Having power-domains on all the time, is also our default in all other
-> >    devicetrees.
-> > 
-> > - removed #dma-cells from spi0 -> this is not a dma controller
-> > - reword the cru assigned-clocks comment a bit
-> > - fixed sdmmc1_bus4 pins, as indicated by Shawn and after looking up the
-> > 
-> >    correct pins in the manual
-> > 
-> > And a final question, are you sure about SCLK_PDM becoming a child of the
-> > APLL in your cru assigned-clocks, as the APLL will vary later on with
-> > cpufreq active?
-> 
-> the NPLL will vary later on with cpufreq active.
-> 
-> The NPLL is better than APLL, so NPLL is for clk_core,and apll is for pdm.
-> 
-> please see the TRM in CRU:
-> 1.4 Function Description
-> /........./
-> To maximize the flexibility, some of clocks can select divider source
-> from 5 PLLs. (Note: It’s
-> recommended to use NEW PLL instead of ARM PLL as arm clock source,
-> because NEW PLL is
-> near to ARM. And it’s jitter is better than ARM PLL).
-
-Thanks for the clarification - this way it definitly makes sense.
-
-
-Thanks
-Heiko
+On 04/05/2017 03:44 AM, Sean Paul wrote:
+> On Sat, Apr 01, 2017 at 07:35:26PM +0800, Jeffy Chen wrote:
+>> We should not cleanup iommu before cleanup other resources.
+>>
+>> Reorder unload sequence, follow exynos drm.
+>
+> This doesn't match the cleanup sequence in rockchip_drm_bind. Also make sure
+> that you're unwinding the setup sequence when you cleanup (ie: take a close look
+> at how you set things up and reverse it for cleanup).
+ok, will reoder the bind sequence too, thanx.
+>
+> Sean
+>
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ++++--
+>>   1 file changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> index b360e62..a5d83cb 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>> @@ -244,11 +244,13 @@ static void rockchip_drm_unbind(struct device *dev)
+>>   	struct drm_device *drm_dev = dev_get_drvdata(dev);
+>>
+>>   	rockchip_drm_fbdev_fini(drm_dev);
+>> -	drm_vblank_cleanup(drm_dev);
+>>   	drm_kms_helper_poll_fini(drm_dev);
+>> +
+>> +	drm_vblank_cleanup(drm_dev);
+>>   	component_unbind_all(dev, drm_dev);
+>> -	rockchip_iommu_cleanup(drm_dev);
+>>   	drm_mode_config_cleanup(drm_dev);
+>> +	rockchip_iommu_cleanup(drm_dev);
+>> +
+>>   	drm_dev->dev_private = NULL;
+>>   	drm_dev_unregister(drm_dev);
+>>   	drm_dev_unref(drm_dev);
+>> --
+>> 2.1.4
+>>
+>
