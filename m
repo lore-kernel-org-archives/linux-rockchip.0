@@ -1,62 +1,50 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add core dtsi file for RK3328
- SoCs
-Date: Wed, 05 Apr 2017 10:07:41 +0800
-Message-ID: <58E4516D.4000805@rock-chips.com>
-References: <1490607650-18650-1-git-send-email-cl@rock-chips.com> <1490607650-18650-4-git-send-email-cl@rock-chips.com> <6636047.jL6XHNkknt@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 0/9] drm: rockchip: Fix rockchip drm unbind crash error
+Date: Wed,  5 Apr 2017 16:29:18 +0800
+Message-ID: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6636047.jL6XHNkknt@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, cl@rock-chips.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, kever.yang@rock-chips.com, tony.xie@rock-chips.com
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Baoyou Xie <baoyou.xie@linaro.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, zain wang <wzz@rock-chips.com>, dri-devel@lists.freedesktop.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, David Airlie <airlied@linux.ie>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Archit Taneja <architt@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+Verified on rk3399 chromebook kevin:
+1/ stop ui && pkill -9 frecon
+2/ unbind/bind drm
 
-On 04/05/2017 12:04 AM, Heiko Stuebner wrote:
-> Am Montag, 27. März 2017, 17:40:48 CEST schrieb cl@rock-chips.com:
->> From: Liang Chen <cl@rock-chips.com>
->>
->> This patch adds core dtsi file for Rockchip RK3328 SoCs.
->>
->> Signed-off-by: Liang Chen <cl@rock-chips.com>
->
-> applied for 4.12, with the following list of changes:
->
-> - reorder some properties to bring them in alphabetical order
-> - dropped the status-disabled from the power-controller
->    power-domain control is a quite essential part of the system, so if
->    boards really want to disable them, they should do it in their board file
->    Having power-domains on all the time, is also our default in all other
->    devicetrees.
-> - removed #dma-cells from spi0 -> this is not a dma controller
-> - reword the cru assigned-clocks comment a bit
-> - fixed sdmmc1_bus4 pins, as indicated by Shawn and after looking up the
->    correct pins in the manual
->
->
-> And a final question, are you sure about SCLK_PDM becoming a child of the
-> APLL in your cru assigned-clocks, as the APLL will vary later on with cpufreq
-> active?
->
-the NPLL will vary later on with cpufreq active.
+Changes in v3:
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Daniel Vetter <daniel@ffwll.ch>'s comments.
+Update commit message.
+Address Daniel Vetter <daniel@ffwll.ch>'s comments.
+Update commit message.
+Update commit message.
 
-The NPLL is better than APLL, so NPLL is for clk_core,and apll is for pdm.
+Changes in v2:
+Fix some commit messages.
 
-please see the TRM in CRU:
-1.4 Function Description
-/........./
-To maximize the flexibility, some of clocks can select divider source 
-from 5 PLLs. (Note: It’s
-recommended to use NEW PLL instead of ARM PLL as arm clock source, 
-because NEW PLL is
-near to ARM. And it’s jitter is better than ARM PLL).
+Jeffy Chen (9):
+  drm: bridge: analogix: Detach panel when unbinding analogix dp
+  drm: bridge: analogix: Unregister dp aux when unbinding
+  drm: bridge: analogix: Destroy connector when unbinding
+  drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
+  drm/rockchip: vop: Enable pm domain before vop_initial
+  drm/rockchip: Reoder drm bind/unbind sequence
+  drm/rockchip: Shutdown all crtcs when unbinding drm
+  drm/rockchip: gem: Don't alloc/free gem buf when dev_private is
+    invalid
+  drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
 
->
-> Heiko
->
->
->
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 ++
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 10 +++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 50 ++++++++++++----------
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  8 ++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 29 +++++++++----
+ 5 files changed, 66 insertions(+), 35 deletions(-)
+
+-- 
+2.1.4
