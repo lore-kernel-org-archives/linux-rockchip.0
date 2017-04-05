@@ -1,47 +1,58 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH 0/3] rockchip dwc2: Turn off vbus on shutdown
-Date: Wed,  5 Apr 2017 16:06:09 +0200
-Message-ID: <20170405140613.4444-1-sjoerd.simons@collabora.co.uk>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
+ dev_private is invalid
+Date: Wed, 5 Apr 2017 12:28:40 -0400
+Message-ID: <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
+References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Youn <johnyoun@synopsys.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Randy Li <ayaka@soulik.info>, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A board I'm working on seems to get its usb->sata bridge in a rather
-confused state during reboot, which unfortunately can't be recovered on
-the next boot (only hard reset helps).
-
-This seems to be avoidable by turning off vbus, which turns the internal
-usb hub off on shutdown.
-
-First patch add the ability to describe vbus regulators for the rockchip
-usb phy, second one starts using that on the rock2 square board and
-while the final one adds the actual workaround of turning off the phy on
-shutdown.
-
-
-Sjoerd Simons (3):
-  phy: rockchip-usb: Add vbus regulator support.
-  ARM: dts: rockchip: rock2: Setup usb vbus-supply
-  usb: dwc2: Power off the phy on shutdown
-
- .../devicetree/bindings/phy/rockchip-usb-phy.txt      |  1 +
- arch/arm/boot/dts/rk3288-rock2-square.dts             |  8 ++++----
- drivers/phy/phy-rockchip-usb.c                        | 19 +++++++++++++++++++
- drivers/usb/dwc2/platform.c                           |  3 +++
- 4 files changed, 27 insertions(+), 4 deletions(-)
-
--- 
-2.11.0
+T24gV2VkLCBBcHIgMDUsIDIwMTcgYXQgMDQ6Mjk6MjZQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKPiBBZnRlciB1bmJpbmRpbmcgZHJtLCB0aGUgdXNlcnNwYWNlIG1heSBzdGlsbCBoYXMgYSBj
+aGFuY2UgdG8gYWNjZXNzCj4gZ2VtIGJ1Zi4KPiAKPiBBZGQgYSBzYW5pdHkgY2hlY2sgZm9yIGEg
+TlVMTCBkZXZfcHJpdmF0ZSB0byBwcmV2ZW50IHRoYXQgZnJvbQo+IGhhcHBlbmluZy4KCkkgc3Rp
+bGwgZG9uJ3QgdW5kZXJzdGFuZCBob3cgdGhpcyBpcyBoYXBwZW5pbmcuIFlvdSdyZSBzYXlpbmcg
+dGhhdCB0aGVzZSBob29rcwpjYW4gYmUgY2FsbGVkIGFmdGVyIHJvY2tjaGlwX2RybV91bmJpbmQo
+KSBoYXMgZmluaXNoZWQ/IAoKU2VhbgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxq
+ZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjM6Cj4gQWRk
+cmVzcyBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+J3MgY29tbWVudHMuCj4gVXBkYXRl
+IGNvbW1pdCBtZXNzYWdlLgo+IAo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiAKPiAgZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDggKysrKysrKysKPiAgMSBmaWxl
+IGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9nZW0uYwo+IGluZGV4IGRmOWU1NzAuLjIwNWEzZGMgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiBAQCAtMTg0LDYgKzE4
+NCw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBf
+Z2VtX29iamVjdCAqcmtfb2JqLAo+ICAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IG9iai0+ZGV2
+Owo+ICAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZHJtLT5kZXZfcHJp
+dmF0ZTsKPiAgCj4gKwlpZiAoIXByaXZhdGUpCj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gKwo+ICAJ
+aWYgKHByaXZhdGUtPmRvbWFpbikKPiAgCQlyZXR1cm4gcm9ja2NoaXBfZ2VtX2FsbG9jX2lvbW11
+KHJrX29iaiwgYWxsb2Nfa21hcCk7Cj4gIAllbHNlCj4gQEAgLTIwOCw2ICsyMTEsMTEgQEAgc3Rh
+dGljIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfZG1hKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0
+ICpya19vYmopCj4gIAo+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9idWYoc3RydWN0
+IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikKPiAgewo+ICsJc3RydWN0IGRybV9kZXZpY2Ug
+KmRybSA9IHJrX29iai0+YmFzZS5kZXY7Cj4gKwo+ICsJaWYgKCFkcm0tPmRldl9wcml2YXRlKQo+
+ICsJCXJldHVybjsKPiArCj4gIAlpZiAocmtfb2JqLT5wYWdlcykKPiAgCQlyb2NrY2hpcF9nZW1f
+ZnJlZV9pb21tdShya19vYmopOwo+ICAJZWxzZQo+IC0tIAo+IDIuMS40Cj4gCgotLSAKU2VhbiBQ
+YXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
