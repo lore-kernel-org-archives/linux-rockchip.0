@@ -1,58 +1,33 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
- dev_private is invalid
-Date: Wed, 5 Apr 2017 12:28:40 -0400
-Message-ID: <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
-References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [GIT PULL] rockchip clock changes for 4.12 part1
+Date: Wed, 5 Apr 2017 13:05:01 -0700
+Message-ID: <20170405200501.GA7065@codeaurora.org>
+References: <5160508.89PunkDez8@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <5160508.89PunkDez8@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBBcHIgMDUsIDIwMTcgYXQgMDQ6Mjk6MjZQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBBZnRlciB1bmJpbmRpbmcgZHJtLCB0aGUgdXNlcnNwYWNlIG1heSBzdGlsbCBoYXMgYSBj
-aGFuY2UgdG8gYWNjZXNzCj4gZ2VtIGJ1Zi4KPiAKPiBBZGQgYSBzYW5pdHkgY2hlY2sgZm9yIGEg
-TlVMTCBkZXZfcHJpdmF0ZSB0byBwcmV2ZW50IHRoYXQgZnJvbQo+IGhhcHBlbmluZy4KCkkgc3Rp
-bGwgZG9uJ3QgdW5kZXJzdGFuZCBob3cgdGhpcyBpcyBoYXBwZW5pbmcuIFlvdSdyZSBzYXlpbmcg
-dGhhdCB0aGVzZSBob29rcwpjYW4gYmUgY2FsbGVkIGFmdGVyIHJvY2tjaGlwX2RybV91bmJpbmQo
-KSBoYXMgZmluaXNoZWQ/IAoKU2VhbgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxq
-ZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjM6Cj4gQWRk
-cmVzcyBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+J3MgY29tbWVudHMuCj4gVXBkYXRl
-IGNvbW1pdCBtZXNzYWdlLgo+IAo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiAKPiAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDggKysrKysrKysKPiAgMSBmaWxl
-IGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV9nZW0uYwo+IGluZGV4IGRmOWU1NzAuLjIwNWEzZGMgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiBAQCAtMTg0LDYgKzE4
-NCw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBf
-Z2VtX29iamVjdCAqcmtfb2JqLAo+ICAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IG9iai0+ZGV2
-Owo+ICAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZHJtLT5kZXZfcHJp
-dmF0ZTsKPiAgCj4gKwlpZiAoIXByaXZhdGUpCj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gKwo+ICAJ
-aWYgKHByaXZhdGUtPmRvbWFpbikKPiAgCQlyZXR1cm4gcm9ja2NoaXBfZ2VtX2FsbG9jX2lvbW11
-KHJrX29iaiwgYWxsb2Nfa21hcCk7Cj4gIAllbHNlCj4gQEAgLTIwOCw2ICsyMTEsMTEgQEAgc3Rh
-dGljIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfZG1hKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0
-ICpya19vYmopCj4gIAo+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9idWYoc3RydWN0
-IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikKPiAgewo+ICsJc3RydWN0IGRybV9kZXZpY2Ug
-KmRybSA9IHJrX29iai0+YmFzZS5kZXY7Cj4gKwo+ICsJaWYgKCFkcm0tPmRldl9wcml2YXRlKQo+
-ICsJCXJldHVybjsKPiArCj4gIAlpZiAocmtfb2JqLT5wYWdlcykKPiAgCQlyb2NrY2hpcF9nZW1f
-ZnJlZV9pb21tdShya19vYmopOwo+ICAJZWxzZQo+IC0tIAo+IDIuMS40Cj4gCgotLSAKU2VhbiBQ
-YXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 03/28, Heiko Stuebner wrote:
+> Hi Mike, Stephen,
+> 
+> Please find below rockchip clock changes for 4.12. As the tag states,
+> I've included the rk1108 -> rv1108 clock rename in here. Pinctrl changes
+> go through the pinctrl tree and once everything is in mainline I'll put
+> the actual devicetree on top. That way we keep cross-tree changes to a
+> minimum while keeping everything error-free and bisectable.
+> 
+> So please pull if nothing stands out.
+> 
+> 
+
+Thanks. Pulled into clk-next.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
