@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when dev_private is invalid
-Date: Wed,  5 Apr 2017 16:29:26 +0800
-Message-ID: <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 4/9] drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
+Date: Wed,  5 Apr 2017 16:29:22 +0800
+Message-ID: <1491380967-28570-5-git-send-email-jeffy.chen@rock-chips.com>
 References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
@@ -10,49 +10,36 @@ To: linux-kernel@vger.kernel.org
 Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-After unbinding drm, the userspace may still has a chance to access
-gem buf.
-
-Add a sanity check for a NULL dev_private to prevent that from
-happening.
-
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
-Changes in v3:
-Address Daniel Vetter <daniel@ffwll.ch>'s comments.
-Update commit message.
-
+Changes in v3: None
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index df9e570..205a3dc 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -184,6 +184,9 @@ static int rockchip_gem_alloc_buf(struct rockchip_gem_object *rk_obj,
- 	struct drm_device *drm = obj->dev;
- 	struct rockchip_drm_private *private = drm->dev_private;
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 4e55d63..ee4195d 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1053,6 +1053,7 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 	dp->connected = false;
+ 	dp->active = false;
+ 	dp->active_port = -1;
++	dp->fw_loaded = false;
  
-+	if (!private)
-+		return -ENODEV;
-+
- 	if (private->domain)
- 		return rockchip_gem_alloc_iommu(rk_obj, alloc_kmap);
- 	else
-@@ -208,6 +211,11 @@ static void rockchip_gem_free_dma(struct rockchip_gem_object *rk_obj)
+ 	INIT_WORK(&dp->event_work, cdn_dp_pd_event_work);
  
- static void rockchip_gem_free_buf(struct rockchip_gem_object *rk_obj)
- {
-+	struct drm_device *drm = rk_obj->base.dev;
-+
-+	if (!drm->dev_private)
-+		return;
-+
- 	if (rk_obj->pages)
- 		rockchip_gem_free_iommu(rk_obj);
- 	else
+@@ -1133,7 +1134,8 @@ static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
+ 	connector->funcs->destroy(connector);
+ 
+ 	pm_runtime_disable(dev);
+-	release_firmware(dp->fw);
++	if (dp->fw_loaded)
++		release_firmware(dp->fw);
+ 	kfree(dp->edid);
+ 	dp->edid = NULL;
+ }
 -- 
 2.1.4
