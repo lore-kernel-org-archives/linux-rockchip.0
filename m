@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v3 6/9] drm/rockchip: Reoder drm bind/unbind sequence
-Date: Wed,  5 Apr 2017 16:29:24 +0800
-Message-ID: <1491380967-28570-7-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 5/9] drm/rockchip: vop: Enable pm domain before vop_initial
+Date: Wed,  5 Apr 2017 16:29:23 +0800
+Message-ID: <1491380967-28570-6-git-send-email-jeffy.chen@rock-chips.com>
 References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
@@ -10,10 +10,16 @@ To: linux-kernel@vger.kernel.org
 Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Current drm bind/unbind sequence would cause some memory issues.
-For example we should not cleanup iommu before cleanup mode config.
+We're trying to access vop registers here, so need to make sure
+the pm domain is on.
 
-Reorder bind/unbind sequence, follow exynos drm.
+Normally it should be enabled by the bootloader, but there's no
+guarantee of it. And if we wanna do unbind/bind, it would also
+cause the device to hang.
+
+And this patch also does these:
+1/ move vop_initial to the end of vop_bind for eaiser error handling.
+2/ correct the err_put_pm_runtime of vop_enable.
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -24,111 +30,88 @@ Update commit message.
 
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 49 +++++++++++++++--------------
- 1 file changed, 26 insertions(+), 23 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++++++++++++++--------
+ 1 file changed, 21 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index cd7d02e1..f24968f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -136,21 +136,24 @@ static int rockchip_drm_bind(struct device *dev)
- 	INIT_LIST_HEAD(&private->psr_list);
- 	spin_lock_init(&private->psr_list_lock);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 2151e1c..b65b296 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -506,7 +506,7 @@ static int vop_enable(struct drm_crtc *crtc)
+ 	ret = pm_runtime_get_sync(vop->dev);
+ 	if (ret < 0) {
+ 		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
+-		goto err_put_pm_runtime;
++		return ret;
+ 	}
  
-+	ret = rockchip_drm_init_iommu(drm_dev);
-+	if (ret)
-+		goto err_free;
+ 	ret = clk_enable(vop->hclk);
+@@ -1405,10 +1405,16 @@ static int vop_initial(struct vop *vop)
+ 		return PTR_ERR(vop->dclk);
+ 	}
+ 
++	ret = pm_runtime_get_sync(vop->dev);
++	if (ret < 0) {
++		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
++		return ret;
++	}
 +
- 	drm_mode_config_init(drm_dev);
+ 	ret = clk_prepare(vop->dclk);
+ 	if (ret < 0) {
+ 		dev_err(vop->dev, "failed to prepare dclk\n");
+-		return ret;
++		goto err_put_pm_runtime;
+ 	}
  
- 	rockchip_drm_mode_config_init(drm_dev);
+ 	/* Enable both the hclk and aclk to setup the vop */
+@@ -1468,6 +1474,8 @@ static int vop_initial(struct vop *vop)
  
--	ret = rockchip_drm_init_iommu(drm_dev);
--	if (ret)
--		goto err_config_cleanup;
--
- 	/* Try to bind all sub drivers. */
- 	ret = component_bind_all(dev, drm_dev);
- 	if (ret)
--		goto err_iommu_cleanup;
-+		goto err_mode_config_cleanup;
+ 	vop->is_enabled = false;
  
--	/* init kms poll for handling hpd */
--	drm_kms_helper_poll_init(drm_dev);
-+	ret = drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
-+	if (ret)
-+		goto err_unbind_all;
++	pm_runtime_put_sync(vop->dev);
 +
-+	drm_mode_config_reset(drm_dev);
- 
- 	/*
- 	 * enable drm irq mode.
-@@ -158,15 +161,12 @@ static int rockchip_drm_bind(struct device *dev)
- 	 */
- 	drm_dev->irq_enabled = true;
- 
--	ret = drm_vblank_init(drm_dev, ROCKCHIP_MAX_CRTC);
--	if (ret)
--		goto err_kms_helper_poll_fini;
--
--	drm_mode_config_reset(drm_dev);
-+	/* init kms poll for handling hpd */
-+	drm_kms_helper_poll_init(drm_dev);
- 
- 	ret = rockchip_drm_fbdev_init(drm_dev);
- 	if (ret)
--		goto err_vblank_cleanup;
-+		goto err_kms_helper_poll_fini;
- 
- 	ret = drm_dev_register(drm_dev, 0);
- 	if (ret)
-@@ -175,17 +175,17 @@ static int rockchip_drm_bind(struct device *dev)
  	return 0;
- err_fbdev_fini:
- 	rockchip_drm_fbdev_fini(drm_dev);
--err_vblank_cleanup:
--	drm_vblank_cleanup(drm_dev);
- err_kms_helper_poll_fini:
- 	drm_kms_helper_poll_fini(drm_dev);
-+	drm_vblank_cleanup(drm_dev);
-+err_unbind_all:
- 	component_unbind_all(dev, drm_dev);
--err_iommu_cleanup:
--	rockchip_iommu_cleanup(drm_dev);
--err_config_cleanup:
-+err_mode_config_cleanup:
- 	drm_mode_config_cleanup(drm_dev);
--	drm_dev->dev_private = NULL;
-+	rockchip_iommu_cleanup(drm_dev);
- err_free:
-+	drm_dev->dev_private = NULL;
-+	dev_set_drvdata(dev, NULL);
- 	drm_dev_unref(drm_dev);
+ 
+ err_disable_aclk:
+@@ -1476,6 +1484,8 @@ static int vop_initial(struct vop *vop)
+ 	clk_disable_unprepare(vop->hclk);
+ err_unprepare_dclk:
+ 	clk_unprepare(vop->dclk);
++err_put_pm_runtime:
++	pm_runtime_put_sync(vop->dev);
  	return ret;
  }
-@@ -194,16 +194,19 @@ static void rockchip_drm_unbind(struct device *dev)
- {
- 	struct drm_device *drm_dev = dev_get_drvdata(dev);
  
-+	drm_dev_unregister(drm_dev);
-+
- 	rockchip_drm_fbdev_fini(drm_dev);
--	drm_vblank_cleanup(drm_dev);
- 	drm_kms_helper_poll_fini(drm_dev);
-+
-+	drm_vblank_cleanup(drm_dev);
- 	component_unbind_all(dev, drm_dev);
--	rockchip_iommu_cleanup(drm_dev);
- 	drm_mode_config_cleanup(drm_dev);
-+	rockchip_iommu_cleanup(drm_dev);
-+
- 	drm_dev->dev_private = NULL;
--	drm_dev_unregister(drm_dev);
--	drm_dev_unref(drm_dev);
- 	dev_set_drvdata(dev, NULL);
-+	drm_dev_unref(drm_dev);
- }
+@@ -1576,12 +1586,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	if (!vop->regsbak)
+ 		return -ENOMEM;
  
- static void rockchip_drm_lastclose(struct drm_device *dev)
+-	ret = vop_initial(vop);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "cannot initial vop dev - err %d\n", ret);
+-		return ret;
+-	}
+-
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+ 		dev_err(dev, "cannot find irq for vop\n");
+@@ -1608,8 +1612,17 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
++	ret = vop_initial(vop);
++	if (ret < 0) {
++		dev_err(&pdev->dev, "cannot initial vop dev - err %d\n", ret);
++		goto err_disable_pm_runtime;
++	}
++
+ 	return 0;
+ 
++err_disable_pm_runtime:
++	pm_runtime_disable(&pdev->dev);
++	vop_destroy_crtc(vop);
+ err_enable_irq:
+ 	enable_irq(vop->irq); /* To balance out the disable_irq above */
+ 	return ret;
 -- 
 2.1.4
