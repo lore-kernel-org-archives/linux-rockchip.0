@@ -1,77 +1,62 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v2 8/9] drm/rockchip: gem: Don't alloc/free gem buf before
- drm dev registered
-Date: Wed, 05 Apr 2017 09:28:17 +0800
-Message-ID: <58E44831.900@rock-chips.com>
-References: <1491046529-4310-1-git-send-email-jeffy.chen@rock-chips.com> <1491046529-4310-9-git-send-email-jeffy.chen@rock-chips.com> <20170403074101.f3ykqpdphklwummz@phenom.ffwll.local>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v4 4/6] arm64: dts: rockchip: add core dtsi file for RK3328
+ SoCs
+Date: Wed, 05 Apr 2017 10:07:41 +0800
+Message-ID: <58E4516D.4000805@rock-chips.com>
+References: <1490607650-18650-1-git-send-email-cl@rock-chips.com> <1490607650-18650-4-git-send-email-cl@rock-chips.com> <6636047.jL6XHNkknt@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170403074101.f3ykqpdphklwummz@phenom.ffwll.local>
+In-Reply-To: <6636047.jL6XHNkknt@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, andy.yan@rock-chips.com, jay.xu@rock-chips.com, matthias.bgg@gmail.com, paweljarosz3691@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, wxt@rock-chips.com, david.wu@rock-chips.com, linux-iio@vger.kernel.org, shawn.lin@rock-chips.com, akpm@linux-foundation.org, dianders@chromium.org, yamada.masahiro@socionext.com, catalin.marinas@arm.com, will.deacon@arm.com, afaerber@suse.de, shawnguo@kernel.org, khilman@baylibre.com, arnd@arndb.de, fabio.estevam@nxp.com, kever.yang@rock-chips.com, tony.xie@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel,
 
-On 04/03/2017 03:41 PM, Daniel Vetter wrote:
-> On Sat, Apr 01, 2017 at 07:35:28PM +0800, Jeffy Chen wrote:
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> ---
->>
->> Changes in v2: None
->
-> Wut? How is this even possible? If you haven't registered the driver yet,
-> there's no way for userspace to call allocation functions. Anything else
-> is a driver bug that should be handled by fixing the driver load sequence.
-> The only thing I can imagine is that you init the fbdev stuff too early,
-> in that case pls fix that. Not apply this duct-tape here.
-after unbind drm drivers, userspace may still have the chance to call 
-gem ioctls before we call drm_dev_register again. and we can add a 
-sanity check here to avoid invalid access.
 
-i'll try to make a better commit message in next version soon, thanx for 
-reply.
+On 04/05/2017 12:04 AM, Heiko Stuebner wrote:
+> Am Montag, 27. März 2017, 17:40:48 CEST schrieb cl@rock-chips.com:
+>> From: Liang Chen <cl@rock-chips.com>
+>>
+>> This patch adds core dtsi file for Rockchip RK3328 SoCs.
+>>
+>> Signed-off-by: Liang Chen <cl@rock-chips.com>
 >
-> Thanks, Daniel
+> applied for 4.12, with the following list of changes:
 >
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 ++++++++
->>   1 file changed, 8 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> index df9e570..2bf8024 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> @@ -184,6 +184,9 @@ static int rockchip_gem_alloc_buf(struct rockchip_gem_object *rk_obj,
->>   	struct drm_device *drm = obj->dev;
->>   	struct rockchip_drm_private *private = drm->dev_private;
->>
->> +	if (!drm->registered)
->> +		return -ENODEV;
->> +
->>   	if (private->domain)
->>   		return rockchip_gem_alloc_iommu(rk_obj, alloc_kmap);
->>   	else
->> @@ -208,6 +211,11 @@ static void rockchip_gem_free_dma(struct rockchip_gem_object *rk_obj)
->>
->>   static void rockchip_gem_free_buf(struct rockchip_gem_object *rk_obj)
->>   {
->> +	struct drm_device *drm = rk_obj->base.dev;
->> +
->> +	if (!drm->registered)
->> +		return;
->> +
->>   	if (rk_obj->pages)
->>   		rockchip_gem_free_iommu(rk_obj);
->>   	else
->> --
->> 2.1.4
->>
->>
->> _______________________________________________
->> dri-devel mailing list
->> dri-devel@lists.freedesktop.org
->> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+> - reorder some properties to bring them in alphabetical order
+> - dropped the status-disabled from the power-controller
+>    power-domain control is a quite essential part of the system, so if
+>    boards really want to disable them, they should do it in their board file
+>    Having power-domains on all the time, is also our default in all other
+>    devicetrees.
+> - removed #dma-cells from spi0 -> this is not a dma controller
+> - reword the cru assigned-clocks comment a bit
+> - fixed sdmmc1_bus4 pins, as indicated by Shawn and after looking up the
+>    correct pins in the manual
+>
+>
+> And a final question, are you sure about SCLK_PDM becoming a child of the
+> APLL in your cru assigned-clocks, as the APLL will vary later on with cpufreq
+> active?
+>
+the NPLL will vary later on with cpufreq active.
+
+The NPLL is better than APLL, so NPLL is for clk_core,and apll is for pdm.
+
+please see the TRM in CRU:
+1.4 Function Description
+/........./
+To maximize the flexibility, some of clocks can select divider source 
+from 5 PLLs. (Note: It’s
+recommended to use NEW PLL instead of ARM PLL as arm clock source, 
+because NEW PLL is
+near to ARM. And it’s jitter is better than ARM PLL).
+
+>
+> Heiko
+>
+>
 >
