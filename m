@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v3 7/9] drm/rockchip: Shutdown all crtcs when unbinding drm
-Date: Wed,  5 Apr 2017 16:29:25 +0800
-Message-ID: <1491380967-28570-8-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 9/9] drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
+Date: Wed,  5 Apr 2017 16:29:27 +0800
+Message-ID: <1491380967-28570-10-git-send-email-jeffy.chen@rock-chips.com>
 References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
@@ -10,29 +10,59 @@ To: linux-kernel@vger.kernel.org
 Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+After snd_soc_unregister_codec, the dai link would remain bound to
+the invalid codec. That would cause crashes after unbind dp driver.
+
+Let's unregister audio codec when removing dp driver to prevent that.
+
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
 Changes in v3:
-Address Daniel Vetter <daniel@ffwll.ch>'s comments.
 Update commit message.
 
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index f24968f..c6b1b7f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -199,6 +199,7 @@ static void rockchip_drm_unbind(struct device *dev)
- 	rockchip_drm_fbdev_fini(drm_dev);
- 	drm_kms_helper_poll_fini(drm_dev);
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index ee4195d..a2169dd 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1092,8 +1092,6 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 		goto err_free_connector;
+ 	}
  
-+	drm_atomic_helper_shutdown(drm_dev);
- 	drm_vblank_cleanup(drm_dev);
- 	component_unbind_all(dev, drm_dev);
- 	drm_mode_config_cleanup(drm_dev);
+-	cdn_dp_audio_codec_init(dp, dev);
+-
+ 	for (i = 0; i < dp->ports; i++) {
+ 		port = dp->port[i];
+ 
+@@ -1128,7 +1126,6 @@ static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
+ 	struct drm_connector *connector = &dp->connector;
+ 
+ 	cancel_work_sync(&dp->event_work);
+-	platform_device_unregister(dp->audio_pdev);
+ 	cdn_dp_encoder_disable(encoder);
+ 	encoder->funcs->destroy(encoder);
+ 	connector->funcs->destroy(connector);
+@@ -1221,6 +1218,8 @@ static int cdn_dp_probe(struct platform_device *pdev)
+ 	mutex_init(&dp->lock);
+ 	dev_set_drvdata(dev, dp);
+ 
++	cdn_dp_audio_codec_init(dp, dev);
++
+ 	return component_add(dev, &cdn_dp_component_ops);
+ }
+ 
+@@ -1228,6 +1227,7 @@ static int cdn_dp_remove(struct platform_device *pdev)
+ {
+ 	struct cdn_dp_device *dp = platform_get_drvdata(pdev);
+ 
++	platform_device_unregister(dp->audio_pdev);
+ 	cdn_dp_suspend(dp->dev);
+ 	component_del(&pdev->dev, &cdn_dp_component_ops);
+ 
 -- 
 2.1.4
