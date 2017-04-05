@@ -1,50 +1,134 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v3 0/9] drm: rockchip: Fix rockchip drm unbind crash error
-Date: Wed,  5 Apr 2017 16:29:18 +0800
-Message-ID: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 6/9] drm/rockchip: Reoder drm bind/unbind sequence
+Date: Wed,  5 Apr 2017 16:29:24 +0800
+Message-ID: <1491380967-28570-7-git-send-email-jeffy.chen@rock-chips.com>
+References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Baoyou Xie <baoyou.xie@linaro.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, zain wang <wzz@rock-chips.com>, dri-devel@lists.freedesktop.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, David Airlie <airlied@linux.ie>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Archit Taneja <architt@codeaurora.org>
+Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Current drm bind/unbind sequence would cause some memory issues.
+For example we should not cleanup iommu before cleanup mode config.
 
-Verified on rk3399 chromebook kevin:
-1/ stop ui && pkill -9 frecon
-2/ unbind/bind drm
+Reorder bind/unbind sequence, follow exynos drm.
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
 Changes in v3:
 Address Sean Paul <seanpaul@chromium.org>'s comments.
 Update commit message.
-Address Sean Paul <seanpaul@chromium.org>'s comments.
-Update commit message.
-Address Daniel Vetter <daniel@ffwll.ch>'s comments.
-Update commit message.
-Address Daniel Vetter <daniel@ffwll.ch>'s comments.
-Update commit message.
-Update commit message.
 
-Changes in v2:
-Fix some commit messages.
+Changes in v2: None
 
-Jeffy Chen (9):
-  drm: bridge: analogix: Detach panel when unbinding analogix dp
-  drm: bridge: analogix: Unregister dp aux when unbinding
-  drm: bridge: analogix: Destroy connector when unbinding
-  drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
-  drm/rockchip: vop: Enable pm domain before vop_initial
-  drm/rockchip: Reoder drm bind/unbind sequence
-  drm/rockchip: Shutdown all crtcs when unbinding drm
-  drm/rockchip: gem: Don't alloc/free gem buf when dev_private is
-    invalid
-  drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 49 +++++++++++++++--------------
+ 1 file changed, 26 insertions(+), 23 deletions(-)
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 ++
- drivers/gpu/drm/rockchip/cdn-dp-core.c             | 10 +++--
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 50 ++++++++++++----------
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  8 ++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 29 +++++++++----
- 5 files changed, 66 insertions(+), 35 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index cd7d02e1..f24968f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -136,21 +136,24 @@ static int rockchip_drm_bind(struct device *dev)
+ 	INIT_LIST_HEAD(&private->psr_list);
+ 	spin_lock_init(&private->psr_list_lock);
+ 
++	ret = rockchip_drm_init_iommu(drm_dev);
++	if (ret)
++		goto err_free;
++
+ 	drm_mode_config_init(drm_dev);
+ 
+ 	rockchip_drm_mode_config_init(drm_dev);
+ 
+-	ret = rockchip_drm_init_iommu(drm_dev);
+-	if (ret)
+-		goto err_config_cleanup;
+-
+ 	/* Try to bind all sub drivers. */
+ 	ret = component_bind_all(dev, drm_dev);
+ 	if (ret)
+-		goto err_iommu_cleanup;
++		goto err_mode_config_cleanup;
+ 
+-	/* init kms poll for handling hpd */
+-	drm_kms_helper_poll_init(drm_dev);
++	ret = drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
++	if (ret)
++		goto err_unbind_all;
++
++	drm_mode_config_reset(drm_dev);
+ 
+ 	/*
+ 	 * enable drm irq mode.
+@@ -158,15 +161,12 @@ static int rockchip_drm_bind(struct device *dev)
+ 	 */
+ 	drm_dev->irq_enabled = true;
+ 
+-	ret = drm_vblank_init(drm_dev, ROCKCHIP_MAX_CRTC);
+-	if (ret)
+-		goto err_kms_helper_poll_fini;
+-
+-	drm_mode_config_reset(drm_dev);
++	/* init kms poll for handling hpd */
++	drm_kms_helper_poll_init(drm_dev);
+ 
+ 	ret = rockchip_drm_fbdev_init(drm_dev);
+ 	if (ret)
+-		goto err_vblank_cleanup;
++		goto err_kms_helper_poll_fini;
+ 
+ 	ret = drm_dev_register(drm_dev, 0);
+ 	if (ret)
+@@ -175,17 +175,17 @@ static int rockchip_drm_bind(struct device *dev)
+ 	return 0;
+ err_fbdev_fini:
+ 	rockchip_drm_fbdev_fini(drm_dev);
+-err_vblank_cleanup:
+-	drm_vblank_cleanup(drm_dev);
+ err_kms_helper_poll_fini:
+ 	drm_kms_helper_poll_fini(drm_dev);
++	drm_vblank_cleanup(drm_dev);
++err_unbind_all:
+ 	component_unbind_all(dev, drm_dev);
+-err_iommu_cleanup:
+-	rockchip_iommu_cleanup(drm_dev);
+-err_config_cleanup:
++err_mode_config_cleanup:
+ 	drm_mode_config_cleanup(drm_dev);
+-	drm_dev->dev_private = NULL;
++	rockchip_iommu_cleanup(drm_dev);
+ err_free:
++	drm_dev->dev_private = NULL;
++	dev_set_drvdata(dev, NULL);
+ 	drm_dev_unref(drm_dev);
+ 	return ret;
+ }
+@@ -194,16 +194,19 @@ static void rockchip_drm_unbind(struct device *dev)
+ {
+ 	struct drm_device *drm_dev = dev_get_drvdata(dev);
+ 
++	drm_dev_unregister(drm_dev);
++
+ 	rockchip_drm_fbdev_fini(drm_dev);
+-	drm_vblank_cleanup(drm_dev);
+ 	drm_kms_helper_poll_fini(drm_dev);
++
++	drm_vblank_cleanup(drm_dev);
+ 	component_unbind_all(dev, drm_dev);
+-	rockchip_iommu_cleanup(drm_dev);
+ 	drm_mode_config_cleanup(drm_dev);
++	rockchip_iommu_cleanup(drm_dev);
++
+ 	drm_dev->dev_private = NULL;
+-	drm_dev_unregister(drm_dev);
+-	drm_dev_unref(drm_dev);
+ 	dev_set_drvdata(dev, NULL);
++	drm_dev_unref(drm_dev);
+ }
+ 
+ static void rockchip_drm_lastclose(struct drm_device *dev)
 -- 
 2.1.4
