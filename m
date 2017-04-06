@@ -1,70 +1,59 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v3] pwm: rockchip: State of pwm clock should synchronize
- with pwm enabled state
-Date: Thu, 6 Apr 2017 15:10:47 +0200
-Message-ID: <20170406131047.GA8438@ulmo.ba.sec>
-References: <1488366655-31387-1-git-send-email-david.wu@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron
+ boards
+Date: Thu, 6 Apr 2017 15:04:11 -0700
+Message-ID: <20170406220410.GA5708@google.com>
+References: <20170330011709.GA110687@google.com>
+ <6d87cb71-1339-0dc9-e071-1c117f541881@rock-chips.com>
+ <20170330014230.GA21467@google.com>
+ <CANCyOWYsG9rpCvEsBMDJAyOTjKJCe=O-35-Zbhjh4is+op_h=w@mail.gmail.com>
+ <CGME20170330025350epcas4p423e66068f5d962677952830258676fcf@epcas4p4.samsung.com>
+ <20170330025345.GA29421@google.com>
+ <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="/9DWx/yDrRhgMJTb"
-Return-path: <stable-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mmc-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1488366655-31387-1-git-send-email-david.wu@rock-chips.com>
-Sender: stable-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: boris.brezillon@free-electrons.com, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, b.galvani@gmail.com, caesar.wang@rock-chips.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+In-Reply-To: <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: Eddie Cai <eddie.cai.kernel@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, amstan@chromium.org, Kevin Mihelich <kevin@archlinuxarm.org>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---/9DWx/yDrRhgMJTb
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, Mar 30, 2017 at 02:11:19PM +0900, Jaehoon Chung wrote:
+> On 03/30/2017 11:53 AM, Brian Norris wrote:
+> > On Thu, Mar 30, 2017 at 10:18:59AM +0800, Eddie Cai wrote:
+> >> I test on rk3288 firefly reload with 4.11-rc4. It work fine.
+> > 
+> > OK, thanks for checking.
+> > 
+> >>> On Thu, Mar 30, 2017 at 09:32:22AM +0800, Shawn Lin wrote:
+> >>>> Hi Brian,
+> >>>>
+> >>>> On 2017/3/30 9:17, Brian Norris wrote:
+> >>>>> Hi all,
+> >>>>>
+> >>>>> I haven't managed to get as far as a bugfix for this, but I've bisected
+> >>>>> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
+> >>>>> in particular). v4.9 works fine.
+> > 
+> > [...]
+> > 
+> > By the way, Kevin (CC'd) says he noticed similiar Wifi issues on an
+> > Exynos 5800 Peach chromebook, but not on an Exynos 5250 Snow chromebook.	
+> > I haven't picked these apart yet to see what the differences and
+> > similarities are, but presumably it's not actually a Rockchip-specific
+> > bug. Maybe related to the way power sequencing is plumbed for these, for
+> > example?
+> 
+> I'm not sure but if card-detecting is polling, the timing issue could be occurred.
 
-On Wed, Mar 01, 2017 at 07:10:55PM +0800, David Wu wrote:
-> From: "david.wu" <david.wu@rock-chips.com>
+I don't know much about MMC in general, nor about this driver. Any
+chance you'd accept reverts of the patches in question though? This is a
+huge regression, and there were only a few relevant changes that seem to
+have triggered this. I can try to come up with something targeted, but
+I'm not going to even try if that'd get rejected up front.
 
-You might want to set up git to use the correct author.
-
-> If the pwm was not enabled at uboot loader, pwm could not work for clock
-> always disabled at pwm driver. The pwm clock is enabled at beginning of
-> pwm_apply(), but disabled at end of pwm_apply().
->=20
-> If the pwm was enabled at uboot loader, pwm clock is always enabled unless
-> closed by ATF. The pwm-backlight might turn off the power at early suspen=
-d,
-> should disable pwm clock for saving power consume.
->=20
-> It is important to provide opportunity to enable/disable clock at pwm dri=
-ver,
-> the pwm consumer should ensure correct order to call pwm enable/disable, =
-and
-> pwm driver ensure state of pwm clock synchronized with pwm enabled state.
-
-Please always use all-caps for abbreviations suchs as "PWM". I've fixed
-up the commit message and applied this to for-4.11/fixes.
-
-Thanks,
-Thierry
-
---/9DWx/yDrRhgMJTb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAljmPlcACgkQ3SOs138+
-s6GuThAAjkNFwJg7Vj++BySJEV8bp7CE6s0JHqqnmi5EABd2z9DMDRxKc9LkVZss
-mJfhtDSCopqAjJCZt/CPoTtffVh80uIgDVFaQEsbRrLL/9VnCcEJyATuJ2yUGwM6
-qwxCBT+DktETgiSfR6qEMdxea8TC6Y5/N1iET168aO9ZVLgrdkjwXMgVMKlVdgya
-WBpuKgivGS0xMYBSbVzWg4r65K4Ghy/mfrJGJJdiWqWEV2u3bBlVl9uZoKKVP9hH
-QZyPVK4S4fBzItXfNGQ9OE9Emf3X8mt/5EBomXq0u8vxHGnKw7CgVEob1WI/UgQK
-ArfDqs0Bk9JHyVb4Gx7waKyYvhRAM0Ob9NRTyZ/8q2T8rfwQlFIplXS/bMKWdY+g
-EhXD4AdPg4apxgIFeZN20LOU2Uer0ruX9r3hFs3FxXVzM/t4pPfeIP58poZa7cgx
-wtP1WZDi3ATx2Bir8BTcD5ra7Pc0u+eVbkYZUw/zH43wWdXkMit+1FFc8m8Ap53L
-HlnNEfwwLfK4Tj4u+M7zvv+VcfR3GmHJ4mAqZTPxgebdz/mvVlwpJxJf60HXeph9
-okrFrv1ztjJXUWaGgWu5S+wtgKwumPz5Ytd8sT98T/ojA1UHc2EpfkAREagvWulU
-QUjXBViSb3P46yE2fRIGf94SiVejhPtdwfQfa7H9pYBCh2kJ1iU=
-=7Q3b
------END PGP SIGNATURE-----
-
---/9DWx/yDrRhgMJTb--
+Brian
