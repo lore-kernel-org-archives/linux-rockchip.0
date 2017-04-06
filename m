@@ -1,94 +1,54 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
- dev_private is invalid
-Date: Thu, 06 Apr 2017 19:09:11 +0800
-Message-ID: <58E621D7.3030205@rock-chips.com>
-References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com> <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com> <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay> <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Your Name <you@example.com>
+Subject: [PATCH v4 00/12] drm: rockchip: Fix rockchip drm unbind crash error
+Date: Thu,  6 Apr 2017 20:22:11 +0800
+Message-ID: <1491481343-11025-1-git-send-email-you@example.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>, dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Your Name <you@example.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Yakir Yang <kuankuan.y@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Archit Taneja <architt@codeaurora.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel,
 
-On 04/06/2017 04:26 PM, Daniel Vetter wrote:
-> On Wed, Apr 05, 2017 at 12:28:40PM -0400, Sean Paul wrote:
->> On Wed, Apr 05, 2017 at 04:29:26PM +0800, Jeffy Chen wrote:
->>> After unbinding drm, the userspace may still has a chance to access
->>> gem buf.
->>>
->>> Add a sanity check for a NULL dev_private to prevent that from
->>> happening.
->>
->> I still don't understand how this is happening. You're saying that these hooks
->> can be called after rockchip_drm_unbind() has finished?
->
-> Yeah this is supposed to be impossible. If it isn't, we need to debug and
-> fix this properly. This smells like pretty bad duct-tape ...
+Verified on rk3399 chromebook kevin:
+1/ stop ui && pkill -9 frecon
+2/ unbind/bind drm
 
-it looks like after unbind, the user space may still own drm dev fd, and 
-could be able to call ioctl:
-lrwx------. 1 chronos chronos 64 Mar 15 12:53 28 -> /dev/dri/card1 (deleted)
+Changes in v4:
+Address Andrzej Hajda <a.hajda@samsung.com>'s comments.
 
-and the drm_unplug_dev may help it, maybe we should call it in unbind? 
-or just break drm_ioctl when drm_dev not registered?
+Changes in v3:
+Update commit message.
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Daniel Vetter <daniel@ffwll.ch>'s comments.
+Update commit message.
 
-> -Daniel
->
->>
->> Sean
->>
->>>
->>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>> ---
->>>
->>> Changes in v3:
->>> Address Daniel Vetter <daniel@ffwll.ch>'s comments.
->>> Update commit message.
->>>
->>> Changes in v2: None
->>>
->>>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 ++++++++
->>>   1 file changed, 8 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->>> index df9e570..205a3dc 100644
->>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->>> @@ -184,6 +184,9 @@ static int rockchip_gem_alloc_buf(struct rockchip_gem_object *rk_obj,
->>>   	struct drm_device *drm = obj->dev;
->>>   	struct rockchip_drm_private *private = drm->dev_private;
->>>
->>> +	if (!private)
->>> +		return -ENODEV;
->>> +
->>>   	if (private->domain)
->>>   		return rockchip_gem_alloc_iommu(rk_obj, alloc_kmap);
->>>   	else
->>> @@ -208,6 +211,11 @@ static void rockchip_gem_free_dma(struct rockchip_gem_object *rk_obj)
->>>
->>>   static void rockchip_gem_free_buf(struct rockchip_gem_object *rk_obj)
->>>   {
->>> +	struct drm_device *drm = rk_obj->base.dev;
->>> +
->>> +	if (!drm->dev_private)
->>> +		return;
->>> +
->>>   	if (rk_obj->pages)
->>>   		rockchip_gem_free_iommu(rk_obj);
->>>   	else
->>> --
->>> 2.1.4
->>>
->>
->> --
->> Sean Paul, Software Engineer, Google / Chromium OS
->> _______________________________________________
->> dri-devel mailing list
->> dri-devel@lists.freedesktop.org
->> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->
+Changes in v2:
+Fix some commit messages.
+
+Jeffy Chen (12):
+  drm: bridge: analogix: Detach panel when unbinding analogix dp
+  drm: bridge: analogix: Unregister dp aux when unbinding
+  drm: bridge: analogix: Disable clock when unbinding
+  drm: bridge: analogix: Destroy connector & encoder when unbinding
+  drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
+  drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
+  drm/rockchip: vop: Enable pm domain before vop_initial
+  drm/rockchip: vop: Unprepare clocks when unbinding
+  drm/rockchip: analogix_dp: Disable clock when unbinding
+  drm/rockchip: Reoder drm bind/unbind sequence
+  drm/rockchip: Shutdown all crtcs when unbinding drm
+  drm/drm_ioctl.c: Break ioctl when drm device not registered
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 +++
+ drivers/gpu/drm/drm_ioctl.c                        |  2 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  3 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 10 +++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 50 ++++++++++++----------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 33 ++++++++++----
+ 6 files changed, 67 insertions(+), 37 deletions(-)
+
+-- 
+2.1.4
