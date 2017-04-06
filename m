@@ -1,552 +1,70 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 1/3] ARM: dts: rockchip: Add support for phyCORE-RK3288 SoM
-Date: Thu, 6 Apr 2017 15:04:24 +0200
-Message-ID: <1491483866-18368-1-git-send-email-w.egorov@phytec.de>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3] pwm: rockchip: State of pwm clock should synchronize
+ with pwm enabled state
+Date: Thu, 6 Apr 2017 15:10:47 +0200
+Message-ID: <20170406131047.GA8438@ulmo.ba.sec>
+References: <1488366655-31387-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=y
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="/9DWx/yDrRhgMJTb"
+Return-path: <stable-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1488366655-31387-1-git-send-email-david.wu@rock-chips.com>
+Sender: stable-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: boris.brezillon@free-electrons.com, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, b.galvani@gmail.com, caesar.wang@rock-chips.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The phyCORE-RK3288 is a SoM (System on Module) containing a RK3288 SoC.
-The module can be connected to different carrier boards.
-It can be also equipped with different RAM, SPI flash and eMMC variants.
-The Rapid Development Kit option is using the following setup:
 
-  - 1 GB DDR3 RAM (2 Banks)
-  - 1x 4 KB EEPROM
-  - DP83867 Gigabit Ethernet PHY
-  - 16 MB SPI Flash
-  - 4 GB eMMC Flash
+--/9DWx/yDrRhgMJTb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
----
-Changes in v2:
-- Added a dual license which is used for all rk3288 based boards.
+On Wed, Mar 01, 2017 at 07:10:55PM +0800, David Wu wrote:
+> From: "david.wu" <david.wu@rock-chips.com>
 
-Include minor changes from Heiko Stübner:
-- moved phy-handle property up a bit
-- switches compatible and #address+#size-cells in mdio0
-- dropped rockchip,grf from &io_domains (grf is a simple-mfd and can
-  get the grf syscon on its own via its parent)
-- vdd_cpu: regulator@60 (from fan53555@60)
-- serial_flash: flash@0 (from m25p80@0)
-  Nodes should be named after their "category" not the actual device
+You might want to set up git to use the correct author.
 
----
- arch/arm/boot/dts/rk3288-phycore-som.dtsi | 497 ++++++++++++++++++++++++++++++
- 1 file changed, 497 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-phycore-som.dtsi
+> If the pwm was not enabled at uboot loader, pwm could not work for clock
+> always disabled at pwm driver. The pwm clock is enabled at beginning of
+> pwm_apply(), but disabled at end of pwm_apply().
+>=20
+> If the pwm was enabled at uboot loader, pwm clock is always enabled unless
+> closed by ATF. The pwm-backlight might turn off the power at early suspen=
+d,
+> should disable pwm clock for saving power consume.
+>=20
+> It is important to provide opportunity to enable/disable clock at pwm dri=
+ver,
+> the pwm consumer should ensure correct order to call pwm enable/disable, =
+and
+> pwm driver ensure state of pwm clock synchronized with pwm enabled state.
 
-diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
-new file mode 100644
-index 0000000..26cd3ad
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
-@@ -0,0 +1,497 @@
-+/*
-+ * Device tree file for Phytec phyCORE-RK3288 SoM
-+ * Copyright (C) 2017 PHYTEC Messtechnik GmbH
-+ * Author: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#include <dt-bindings/net/ti-dp83867.h>
-+#include "rk3288.dtsi"
-+
-+/ {
-+	model = "Phytec RK3288 phyCORE";
-+	compatible = "phytec,rk3288-phycore-som", "rockchip,rk3288";
-+
-+	/*
-+	 * Set the minimum memory size here and
-+	 * let the bootloader set the real size.
-+	 */
-+	memory {
-+		device_type = "memory";
-+		reg = <0 0x8000000>;
-+	};
-+
-+	aliases {
-+		rtc0 = &i2c_rtc;
-+		rtc1 = &rk818;
-+	};
-+
-+	ext_gmac: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <125000000>;
-+		clock-output-names = "ext_gmac";
-+	};
-+
-+	leds: user-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&user_led>;
-+
-+		user {
-+			label = "green_led";
-+			gpios = <&gpio7 2 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+			default-state = "keep";
-+		};
-+	};
-+
-+	vdd_emmc_io: vdd-emmc-io {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_emmc_io";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vdd_3v3_io>;
-+	};
-+
-+	vdd_in_otg_out: vdd-in-otg-out {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_in_otg_out";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vdd_misc_1v8: vdd-misc-1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_misc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu0-supply = <&vdd_cpu>;
-+	operating-points = <
-+		/* KHz    uV */
-+		1800000	1400000
-+		1608000	1350000
-+		1512000 1300000
-+		1416000 1200000
-+		1200000 1100000
-+		1008000 1050000
-+		 816000 1000000
-+		 696000  950000
-+		 600000  900000
-+		 408000  900000
-+		 312000  900000
-+		 216000  900000
-+		 126000  900000
-+	>;
-+};
-+
-+&emmc {
-+	status = "okay";
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	disable-wp;
-+	non-removable;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
-+	vmmc-supply = <&vdd_3v3_io>;
-+	vqmmc-supply = <&vdd_emmc_io>;
-+};
-+
-+&gmac {
-+	assigned-clocks = <&cru SCLK_MAC>;
-+	assigned-clock-parents = <&ext_gmac>;
-+	clock_in_out = "input";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins &phy_rst &phy_int>;
-+	phy-handle = <&phy0>;
-+	phy-supply = <&vdd_eth_2v5>;
-+	phy-mode = "rgmii-id";
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 1000000>;
-+	snps,reset-gpio = <&gpio4 8 GPIO_ACTIVE_HIGH>;
-+	tx_delay = <0x0>;
-+	rx_delay = <0x0>;
-+
-+	mdio0 {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		phy0: ethernet-phy@0 {
-+			compatible = "ethernet-phy-ieee802.3-c22";
-+			reg = <0>;
-+			interrupt-parent = <&gpio4>;
-+			interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
-+			ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
-+			ti,tx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
-+			ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
-+			enet-phy-lane-no-swap;
-+		};
-+	};
-+};
-+
-+&hdmi {
-+	ddc-i2c-bus = <&i2c5>;
-+};
-+
-+&io_domains {
-+	status = "okay";
-+	sdcard-supply = <&vdd_io_sd>;
-+	flash0-supply = <&vdd_emmc_io>;
-+	flash1-supply = <&vdd_misc_1v8>;
-+	gpio1830-supply = <&vdd_3v3_io>;
-+	gpio30-supply = <&vdd_3v3_io>;
-+	bb-supply = <&vdd_3v3_io>;
-+	dvp-supply = <&vdd_3v3_io>;
-+	lcdc-supply = <&vdd_3v3_io>;
-+	wifi-supply = <&vdd_3v3_io>;
-+	audio-supply = <&vdd_3v3_io>;
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+	clock-frequency = <400000>;
-+
-+	rk818: pmic@1c {
-+		compatible = "rockchip,rk818";
-+		reg = <0x1c>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+		#clock-cells = <1>;
-+
-+		vcc1-supply = <&vdd_sys>;
-+		vcc2-supply = <&vdd_sys>;
-+		vcc3-supply = <&vdd_sys>;
-+		vcc4-supply = <&vdd_sys>;
-+		boost-supply = <&vdd_in_otg_out>;
-+		vcc6-supply = <&vdd_sys>;
-+		vcc7-supply = <&vdd_misc_1v8>;
-+		vcc8-supply = <&vdd_misc_1v8>;
-+		vcc9-supply = <&vdd_3v3_io>;
-+		vddio-supply = <&vdd_3v3_io>;
-+
-+		regulators {
-+			vdd_log: DCDC_REG1 {
-+				regulator-name = "vdd_log";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_gpu: DCDC_REG2 {
-+				regulator-name = "vdd_gpu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <800000>;
-+				regulator-max-microvolt = <1250000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_3v3_io: DCDC_REG4 {
-+				regulator-name = "vdd_3v3_io";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vdd_sys: DCDC_BOOST {
-+				regulator-name = "vdd_sys";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <5000000>;
-+				regulator-max-microvolt = <5000000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <5000000>;
-+				};
-+			};
-+
-+			/* vcc9 */
-+			vdd_sd: SWITCH_REG {
-+				regulator-name = "vdd_sd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			/* vcc6 */
-+			vdd_eth_2v5: LDO_REG2 {
-+				regulator-name = "vdd_eth_2v5";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <2500000>;
-+				regulator-max-microvolt = <2500000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <2500000>;
-+				};
-+			};
-+
-+			/* vcc7 */
-+			vdd_1v0: LDO_REG3 {
-+				regulator-name = "vdd_1v0";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			/* vcc8 */
-+			vdd_1v8_lcd_ldo: LDO_REG4 {
-+				regulator-name = "vdd_1v8_lcd_ldo";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			/* vcc8 */
-+			vdd_1v0_lcd: LDO_REG6 {
-+				regulator-name = "vdd_1v0_lcd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			/* vcc7 */
-+			vdd_1v8_ldo: LDO_REG7 {
-+				regulator-name = "vdd_1v8_ldo";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			/* vcc9 */
-+			vdd_io_sd: LDO_REG9 {
-+				regulator-name = "vdd_io_sd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+		};
-+	};
-+
-+	/* M24C32-D */
-+	i2c_eeprom: eeprom@50 {
-+		compatible = "atmel,24c32";
-+		reg = <0x50>;
-+		pagesize = <32>;
-+	};
-+
-+	vdd_cpu: regulator@60 {
-+		compatible = "fcs,fan53555";
-+		reg = <0x60>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-enable-ramp-delay = <300>;
-+		regulator-name = "vdd_cpu";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1430000>;
-+		regulator-ramp-delay = <8000>;
-+		vin-supply = <&vdd_sys>;
-+	};
-+};
-+
-+&pinctrl {
-+	pcfg_output_high: pcfg-output-high {
-+		output-high;
-+	};
-+
-+	emmc {
-+		/*
-+		 * We run eMMC at max speed; bump up drive strength.
-+		 * We also have external pulls, so disable the internal ones.
-+		 */
-+		emmc_clk: emmc-clk {
-+			rockchip,pins = <3 18 RK_FUNC_2 &pcfg_pull_none_12ma>;
-+		};
-+
-+		emmc_cmd: emmc-cmd {
-+			rockchip,pins = <3 16 RK_FUNC_2 &pcfg_pull_none_12ma>;
-+		};
-+
-+		emmc_bus8: emmc-bus8 {
-+			rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 1 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 2 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 3 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 4 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 5 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 6 RK_FUNC_2 &pcfg_pull_none_12ma>,
-+					<3 7 RK_FUNC_2 &pcfg_pull_none_12ma>;
-+		};
-+	};
-+
-+	gmac {
-+		phy_int: phy-int {
-+			rockchip,pins = <4 2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		phy_rst: phy-rst {
-+			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
-+
-+	leds {
-+		user_led: user-led {
-+			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int: pmic-int {
-+			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		/* Pin for switching state between sleep and non-sleep state */
-+		pmic_sleep: pmic-sleep {
-+			rockchip,pins = <RK_GPIO0 0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm1 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	status = "okay";
-+	vref-supply = <&vdd_1v8_ldo>;
-+};
-+
-+&spi2 {
-+	status = "okay";
-+
-+	serial_flash: flash@0 {
-+		compatible = "micron,n25q128a13", "jedec,spi-nor";
-+		reg = <0x0>;
-+		spi-max-frequency = <50000000>;
-+		m25p,fast-read;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		status = "okay";
-+	};
-+};
-+
-+&tsadc {
-+	status = "okay";
-+	rockchip,hw-tshut-mode = <0>;
-+	rockchip,hw-tshut-polarity = <0>;
-+};
-+
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&vopl {
-+	status = "okay";
-+};
-+
-+&vopl_mmu {
-+	status = "okay";
-+};
-+
-+&wdt {
-+	status = "okay";
-+};
--- 
-1.9.1
+Please always use all-caps for abbreviations suchs as "PWM". I've fixed
+up the commit message and applied this to for-4.11/fixes.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks,
+Thierry
+
+--/9DWx/yDrRhgMJTb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAljmPlcACgkQ3SOs138+
+s6GuThAAjkNFwJg7Vj++BySJEV8bp7CE6s0JHqqnmi5EABd2z9DMDRxKc9LkVZss
+mJfhtDSCopqAjJCZt/CPoTtffVh80uIgDVFaQEsbRrLL/9VnCcEJyATuJ2yUGwM6
+qwxCBT+DktETgiSfR6qEMdxea8TC6Y5/N1iET168aO9ZVLgrdkjwXMgVMKlVdgya
+WBpuKgivGS0xMYBSbVzWg4r65K4Ghy/mfrJGJJdiWqWEV2u3bBlVl9uZoKKVP9hH
+QZyPVK4S4fBzItXfNGQ9OE9Emf3X8mt/5EBomXq0u8vxHGnKw7CgVEob1WI/UgQK
+ArfDqs0Bk9JHyVb4Gx7waKyYvhRAM0Ob9NRTyZ/8q2T8rfwQlFIplXS/bMKWdY+g
+EhXD4AdPg4apxgIFeZN20LOU2Uer0ruX9r3hFs3FxXVzM/t4pPfeIP58poZa7cgx
+wtP1WZDi3ATx2Bir8BTcD5ra7Pc0u+eVbkYZUw/zH43wWdXkMit+1FFc8m8Ap53L
+HlnNEfwwLfK4Tj4u+M7zvv+VcfR3GmHJ4mAqZTPxgebdz/mvVlwpJxJf60HXeph9
+okrFrv1ztjJXUWaGgWu5S+wtgKwumPz5Ytd8sT98T/ojA1UHc2EpfkAREagvWulU
+QUjXBViSb3P46yE2fRIGf94SiVejhPtdwfQfa7H9pYBCh2kJ1iU=
+=7Q3b
+-----END PGP SIGNATURE-----
+
+--/9DWx/yDrRhgMJTb--
