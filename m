@@ -1,69 +1,41 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
- dev_private is invalid
-Date: Thu, 6 Apr 2017 10:26:12 +0200
-Message-ID: <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
-References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
- <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] ARM: dts: rockchip: Add support for phyCORE-RK3288 SoM
+Date: Thu, 06 Apr 2017 10:30:46 +0200
+Message-ID: <1872284.4EEa8KbvLF@phil>
+References: <1491214985-18331-1-git-send-email-w.egorov@phytec.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1491214985-18331-1-git-send-email-w.egorov@phytec.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wadim Egorov <w.egorov@phytec.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBBcHIgMDUsIDIwMTcgYXQgMTI6Mjg6NDBQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
-Ogo+IE9uIFdlZCwgQXByIDA1LCAyMDE3IGF0IDA0OjI5OjI2UE0gKzA4MDAsIEplZmZ5IENoZW4g
-d3JvdGU6Cj4gPiBBZnRlciB1bmJpbmRpbmcgZHJtLCB0aGUgdXNlcnNwYWNlIG1heSBzdGlsbCBo
-YXMgYSBjaGFuY2UgdG8gYWNjZXNzCj4gPiBnZW0gYnVmLgo+ID4gCj4gPiBBZGQgYSBzYW5pdHkg
-Y2hlY2sgZm9yIGEgTlVMTCBkZXZfcHJpdmF0ZSB0byBwcmV2ZW50IHRoYXQgZnJvbQo+ID4gaGFw
-cGVuaW5nLgo+IAo+IEkgc3RpbGwgZG9uJ3QgdW5kZXJzdGFuZCBob3cgdGhpcyBpcyBoYXBwZW5p
-bmcuIFlvdSdyZSBzYXlpbmcgdGhhdCB0aGVzZSBob29rcwo+IGNhbiBiZSBjYWxsZWQgYWZ0ZXIg
-cm9ja2NoaXBfZHJtX3VuYmluZCgpIGhhcyBmaW5pc2hlZD8gCgpZZWFoIHRoaXMgaXMgc3VwcG9z
-ZWQgdG8gYmUgaW1wb3NzaWJsZS4gSWYgaXQgaXNuJ3QsIHdlIG5lZWQgdG8gZGVidWcgYW5kCmZp
-eCB0aGlzIHByb3Blcmx5LiBUaGlzIHNtZWxscyBsaWtlIHByZXR0eSBiYWQgZHVjdC10YXBlIC4u
-LgotRGFuaWVsCgo+IAo+IFNlYW4KPiAKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hl
-biA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiA+IC0tLQo+ID4gCj4gPiBDaGFuZ2VzIGlu
-IHYzOgo+ID4gQWRkcmVzcyBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+J3MgY29tbWVu
-dHMuCj4gPiBVcGRhdGUgY29tbWl0IG1lc3NhZ2UuCj4gPiAKPiA+IENoYW5nZXMgaW4gdjI6IE5v
-bmUKPiA+IAo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMg
-fCA4ICsrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+ID4gCj4g
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+IGluZGV4
-IGRmOWU1NzAuLjIwNWEzZGMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2dlbS5jCj4gPiBAQCAtMTg0LDYgKzE4NCw5IEBAIHN0YXRpYyBpbnQgcm9j
-a2NoaXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLAo+
-ID4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gb2JqLT5kZXY7Cj4gPiAgCXN0cnVjdCByb2Nr
-Y2hpcF9kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+ZGV2X3ByaXZhdGU7Cj4gPiAgCj4gPiAr
-CWlmICghcHJpdmF0ZSkKPiA+ICsJCXJldHVybiAtRU5PREVWOwo+ID4gKwo+ID4gIAlpZiAocHJp
-dmF0ZS0+ZG9tYWluKQo+ID4gIAkJcmV0dXJuIHJvY2tjaGlwX2dlbV9hbGxvY19pb21tdShya19v
-YmosIGFsbG9jX2ttYXApOwo+ID4gIAllbHNlCj4gPiBAQCAtMjA4LDYgKzIxMSwxMSBAQCBzdGF0
-aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9kbWEoc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3Qg
-KnJrX29iaikKPiA+ICAKPiA+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9idWYoc3Ry
-dWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikKPiA+ICB7Cj4gPiArCXN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm0gPSBya19vYmotPmJhc2UuZGV2Owo+ID4gKwo+ID4gKwlpZiAoIWRybS0+ZGV2
-X3ByaXZhdGUpCj4gPiArCQlyZXR1cm47Cj4gPiArCj4gPiAgCWlmIChya19vYmotPnBhZ2VzKQo+
-ID4gIAkJcm9ja2NoaXBfZ2VtX2ZyZWVfaW9tbXUocmtfb2JqKTsKPiA+ICAJZWxzZQo+ID4gLS0g
-Cj4gPiAyLjEuNAo+ID4gCj4gCj4gLS0gCj4gU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwg
-R29vZ2xlIC8gQ2hyb21pdW0gT1MKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJ
-bnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Montag, 3. April 2017, 12:23:03 CEST schrieb Wadim Egorov:
+> The phyCORE-RK3288 is a SoM (System on Module) containing a RK3288 SoC.
+> The module can be connected to different carrier boards.
+> It can be also equipped with different RAM, SPI flash and eMMC variants.
+> The Rapid Development Kit option is using the following setup:
+> 
+>   - 1 GB DDR3 RAM (2 Banks)
+>   - 1x 4 KB EEPROM
+>   - DP83867 Gigabit Ethernet PHY
+>   - 16 MB SPI Flash
+>   - 4 GB eMMC Flash
+> 
+> Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+
+applied for 4.12 with the following minor changes:
+
+- moved phy-handle property up a bit
+- switches compatible and #address+#size-cells in mdio0
+- dropped rockchip,grf from &io_domains (grf is a simple-mfd and can
+  get the grf syscon on its own via its parent)
+- vdd_cpu: regulator@60 (from fan53555@60)
+- serial_flash: flash@0 (from m25p80@0)
+  Nodes should be named after their "category" not the actual device
+
+Thanks
+Heiko
