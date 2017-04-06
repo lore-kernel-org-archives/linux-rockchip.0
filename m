@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 07/12] drm/rockchip: vop: Enable pm domain before vop_initial
-Date: Thu,  6 Apr 2017 20:31:20 +0800
-Message-ID: <1491481885-13775-8-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 11/12] drm/rockchip: Shutdown all crtcs when unbinding drm
+Date: Thu,  6 Apr 2017 20:31:24 +0800
+Message-ID: <1491481885-13775-12-git-send-email-jeffy.chen@rock-chips.com>
 References: <1491481885-13775-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1491481885-13775-1-git-send-email-jeffy.chen@rock-chips.com>
@@ -10,110 +10,31 @@ To: linux-kernel@vger.kernel.org
 Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We're trying to access vop registers here, so need to make sure
-the pm domain is on.
-
-Normally it should be enabled by the bootloader, but there's no
-guarantee of it. And if we wanna do unbind/bind, it would also
-cause the device to hang.
-
-And this patch also does these:
-1/ move vop_initial to the end of vop_bind for eaiser error handling.
-2/ correct the err_put_pm_runtime of vop_enable.
-
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
 Changes in v5: None
 Changes in v4: None
 Changes in v3:
-Address Sean Paul <seanpaul@chromium.org>'s comments.
+Address Daniel Vetter <daniel@ffwll.ch>'s comments.
 Update commit message.
 
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++++++++++++++--------
- 1 file changed, 21 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 2151e1c..b65b296 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -506,7 +506,7 @@ static int vop_enable(struct drm_crtc *crtc)
- 	ret = pm_runtime_get_sync(vop->dev);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
--		goto err_put_pm_runtime;
-+		return ret;
- 	}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index f24968f..c6b1b7f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -199,6 +199,7 @@ static void rockchip_drm_unbind(struct device *dev)
+ 	rockchip_drm_fbdev_fini(drm_dev);
+ 	drm_kms_helper_poll_fini(drm_dev);
  
- 	ret = clk_enable(vop->hclk);
-@@ -1405,10 +1405,16 @@ static int vop_initial(struct vop *vop)
- 		return PTR_ERR(vop->dclk);
- 	}
- 
-+	ret = pm_runtime_get_sync(vop->dev);
-+	if (ret < 0) {
-+		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-+		return ret;
-+	}
-+
- 	ret = clk_prepare(vop->dclk);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to prepare dclk\n");
--		return ret;
-+		goto err_put_pm_runtime;
- 	}
- 
- 	/* Enable both the hclk and aclk to setup the vop */
-@@ -1468,6 +1474,8 @@ static int vop_initial(struct vop *vop)
- 
- 	vop->is_enabled = false;
- 
-+	pm_runtime_put_sync(vop->dev);
-+
- 	return 0;
- 
- err_disable_aclk:
-@@ -1476,6 +1484,8 @@ static int vop_initial(struct vop *vop)
- 	clk_disable_unprepare(vop->hclk);
- err_unprepare_dclk:
- 	clk_unprepare(vop->dclk);
-+err_put_pm_runtime:
-+	pm_runtime_put_sync(vop->dev);
- 	return ret;
- }
- 
-@@ -1576,12 +1586,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	if (!vop->regsbak)
- 		return -ENOMEM;
- 
--	ret = vop_initial(vop);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "cannot initial vop dev - err %d\n", ret);
--		return ret;
--	}
--
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
- 		dev_err(dev, "cannot find irq for vop\n");
-@@ -1608,8 +1612,17 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 
- 	pm_runtime_enable(&pdev->dev);
- 
-+	ret = vop_initial(vop);
-+	if (ret < 0) {
-+		dev_err(&pdev->dev, "cannot initial vop dev - err %d\n", ret);
-+		goto err_disable_pm_runtime;
-+	}
-+
- 	return 0;
- 
-+err_disable_pm_runtime:
-+	pm_runtime_disable(&pdev->dev);
-+	vop_destroy_crtc(vop);
- err_enable_irq:
- 	enable_irq(vop->irq); /* To balance out the disable_irq above */
- 	return ret;
++	drm_atomic_helper_shutdown(drm_dev);
+ 	drm_vblank_cleanup(drm_dev);
+ 	component_unbind_all(dev, drm_dev);
+ 	drm_mode_config_cleanup(drm_dev);
 -- 
 2.1.4
