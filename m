@@ -1,85 +1,57 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
- dev_private is invalid
-Date: Thu, 6 Apr 2017 08:26:33 -0400
-Message-ID: <20170406122633.2t5hf25ozqoohnl2@art_vandelay>
-References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
- <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
- <58E5AC5F.5090303@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <58E5AC5F.5090303@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: jeffy <jeffy.chen@rock-chips.com>
-Cc: dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 00/12] drm: rockchip: Fix rockchip drm unbind crash error
+Date: Thu,  6 Apr 2017 20:31:13 +0800
+Message-ID: <1491481885-13775-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Yakir Yang <kuankuan.y@gmail.com>, Baoyou Xie <baoyou.xie@linaro.org>, Marek Vasut <marex@denx.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Archit Taneja <architt@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBBcHIgMDYsIDIwMTcgYXQgMTA6NDc6NTlBTSArMDgwMCwgamVmZnkgd3JvdGU6Cj4g
-SGkgU2VhbiwKPiAKPiBPbiAwNC8wNi8yMDE3IDEyOjI4IEFNLCBTZWFuIFBhdWwgd3JvdGU6Cj4g
-PiBPbiBXZWQsIEFwciAwNSwgMjAxNyBhdCAwNDoyOToyNlBNICswODAwLCBKZWZmeSBDaGVuIHdy
-b3RlOgo+ID4gPiBBZnRlciB1bmJpbmRpbmcgZHJtLCB0aGUgdXNlcnNwYWNlIG1heSBzdGlsbCBo
-YXMgYSBjaGFuY2UgdG8gYWNjZXNzCj4gPiA+IGdlbSBidWYuCj4gPiA+IAo+ID4gPiBBZGQgYSBz
-YW5pdHkgY2hlY2sgZm9yIGEgTlVMTCBkZXZfcHJpdmF0ZSB0byBwcmV2ZW50IHRoYXQgZnJvbQo+
-ID4gPiBoYXBwZW5pbmcuCj4gPiAKPiA+IEkgc3RpbGwgZG9uJ3QgdW5kZXJzdGFuZCBob3cgdGhp
-cyBpcyBoYXBwZW5pbmcuIFlvdSdyZSBzYXlpbmcgdGhhdCB0aGVzZSBob29rcwo+ID4gY2FuIGJl
-IGNhbGxlZCBhZnRlciByb2NrY2hpcF9kcm1fdW5iaW5kKCkgaGFzIGZpbmlzaGVkPwo+ID4gCj4g
-eWVzLCB0ZXN0ZWQgb24gY2hyb21lYm9vayByazMzOTkga2V2aW4gd2l0aCBrZXJuZWwgNC40LCBp
-ZiB0cmlnZ2VyIHVuYmluZAo+IHdpdGhvdXQga2lsbGluZyBkaXNwbGF5IHNlcnZpY2UodWkgb3Ig
-ZnJlY29uKToKPiAKPiBbICAgMzEuMjc2ODg5XSBbPGZmZmZmZmMwMDAyMDg5ZTQ+XSBkdW1wX2Jh
-Y2t0cmFjZSsweDAvMHgxNjQKPiBbICAgMzEuMjgyMjg4XSBbPGZmZmZmZmMwMDAyMDhiNmM+XSBz
-aG93X3N0YWNrKzB4MjQvMHgzMAo+IFsgICAzMS4yODczMzhdIFs8ZmZmZmZmYzAwMDRiZTAyOD5d
-IGR1bXBfc3RhY2srMHg5OC8weGI4Cj4gWyAgIDMxLjI5MjM4OV0gWzxmZmZmZmZjMDAwNWMwYjhj
-Pl0gcm9ja2NoaXBfZ2VtX2NyZWF0ZV9vYmplY3QrMHg2Yy8weDJlYwo+IFsgICAzMS4yOTg5MTBd
-IFs8ZmZmZmZmYzAwMDVjMGZhMD5dCj4gcm9ja2NoaXBfZ2VtX2NyZWF0ZV93aXRoX2hhbmRsZSsw
-eDM4LzB4MTBjCj4gWyAgIDMxLjMwNTg2OF0gWzxmZmZmZmZjMDAwNWMxMmI4Pl0gcm9ja2NoaXBf
-Z2VtX2NyZWF0ZV9pb2N0bCsweDM4LzB4NTAKPiBbICAgMzEuMzEyMjIxXSBbPGZmZmZmZmMwMDA1
-OTg4NDQ+XSBkcm1faW9jdGwrMHgyYmMvMHg0MzgKPiBbICAgMzEuMzE3MzU5XSBbPGZmZmZmZmMw
-MDA1YjVlZTA+XSBkcm1fY29tcGF0X2lvY3RsKzB4M2MvMHg3MAo+IFsgICAzMS4zMjI5MzVdIFs8
-ZmZmZmZmYzAwMDNhNjk2MD5dIGNvbXBhdF9TeVNfaW9jdGwrMHgxMzQvMHgxMDQ4Cj4gWyAgIDMx
-LjMyODc2Nl0gWzxmZmZmZmZjMDAwMjAzZTkwPl0gX19zeXNfdHJhY2VfcmV0dXJuKzB4MC8weDQK
-CkhpIEplZmZ5LApJJ20gbm90IHN1Z2dlc3RpbmcgdGhpcyBkb2Vzbid0IGhhcHBlbiwgSSBiZWxp
-ZXZlIHlvdSA6LSkuIEknZCByZWFsbHkgbGlrZSB0bwprbm93ICp3aHkqIGl0IGhhcHBlbnMuCgpB
-cmUgeW91IHN1cmUgdGhhdCB1bmJpbmQgaGFzIGNvbXBsZXRlbHkgZmluaXNoZWQgYmVmb3JlIHRo
-aXMgdHJhY2Ugb2NjdXJzPwpQZXJoYXBzIHRoaXMgaXMgcmVzdWx0cyBmcm9tIGEgcmFjZSBiZXR3
-ZWVuIHVuYmluZCBhbmQgZ2VtIGFsbG9jYXRlPwoKU2VhbgoKPiAKPiA+IFNlYW4KPiA+IAo+ID4g
-PiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBz
-LmNvbT4KPiA+ID4gLS0tCj4gPiA+IAo+ID4gPiBDaGFuZ2VzIGluIHYzOgo+ID4gPiBBZGRyZXNz
-IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4ncyBjb21tZW50cy4KPiA+ID4gVXBkYXRl
-IGNvbW1pdCBtZXNzYWdlLgo+ID4gPiAKPiA+ID4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+ID4gPiAK
-PiA+ID4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgOCAr
-KysrKysrKwo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPiA+ID4gCj4g
-PiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4gPiBp
-bmRleCBkZjllNTcwLi4yMDVhM2RjIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gQEAgLTE4NCw2ICsxODQsOSBAQCBzdGF0
-aWMgaW50IHJvY2tjaGlwX2dlbV9hbGxvY19idWYoc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3Qg
-KnJrX29iaiwKPiA+ID4gICAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IG9iai0+ZGV2Owo+ID4g
-PiAgIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkcm0tPmRldl9wcml2
-YXRlOwo+ID4gPiAKPiA+ID4gKwlpZiAoIXByaXZhdGUpCj4gPiA+ICsJCXJldHVybiAtRU5PREVW
-Owo+ID4gPiArCj4gPiA+ICAgCWlmIChwcml2YXRlLT5kb21haW4pCj4gPiA+ICAgCQlyZXR1cm4g
-cm9ja2NoaXBfZ2VtX2FsbG9jX2lvbW11KHJrX29iaiwgYWxsb2Nfa21hcCk7Cj4gPiA+ICAgCWVs
-c2UKPiA+ID4gQEAgLTIwOCw2ICsyMTEsMTEgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfZ2VtX2Zy
-ZWVfZG1hKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmopCj4gPiA+IAo+ID4gPiAg
-IHN0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29i
-amVjdCAqcmtfb2JqKQo+ID4gPiAgIHsKPiA+ID4gKwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0g
-cmtfb2JqLT5iYXNlLmRldjsKPiA+ID4gKwo+ID4gPiArCWlmICghZHJtLT5kZXZfcHJpdmF0ZSkK
-PiA+ID4gKwkJcmV0dXJuOwo+ID4gPiArCj4gPiA+ICAgCWlmIChya19vYmotPnBhZ2VzKQo+ID4g
-PiAgIAkJcm9ja2NoaXBfZ2VtX2ZyZWVfaW9tbXUocmtfb2JqKTsKPiA+ID4gICAJZWxzZQo+ID4g
-PiAtLQo+ID4gPiAyLjEuNAo+ID4gPiAKPiA+IAo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUg
-RW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+Verified on rk3399 chromebook kevin:
+1/ stop ui && pkill -9 frecon
+2/ unbind/bind drm
+
+Changes in v5:
+Fix wrong git account.
+
+Changes in v4:
+Address Andrzej Hajda <a.hajda@samsung.com>'s comments.
+
+Changes in v3:
+Update commit message.
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Sean Paul <seanpaul@chromium.org>'s comments.
+Update commit message.
+Address Daniel Vetter <daniel@ffwll.ch>'s comments.
+Update commit message.
+
+Changes in v2:
+Fix some commit messages.
+
+Jeffy Chen (12):
+  drm: bridge: analogix: Detach panel when unbinding analogix dp
+  drm: bridge: analogix: Unregister dp aux when unbinding
+  drm: bridge: analogix: Disable clock when unbinding
+  drm: bridge: analogix: Destroy connector & encoder when unbinding
+  drm/rockchip: cdn-dp: Don't try to release firmware when not loaded
+  drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
+  drm/rockchip: vop: Enable pm domain before vop_initial
+  drm/rockchip: vop: Unprepare clocks when unbinding
+  drm/rockchip: analogix_dp: Disable clock when unbinding
+  drm/rockchip: Reoder drm bind/unbind sequence
+  drm/rockchip: Shutdown all crtcs when unbinding drm
+  drm/drm_ioctl.c: Break ioctl when drm device not registered
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 +++
+ drivers/gpu/drm/drm_ioctl.c                        |  2 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  3 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 10 +++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 50 ++++++++++++----------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 33 ++++++++++----
+ 6 files changed, 67 insertions(+), 37 deletions(-)
+
+-- 
+2.1.4
