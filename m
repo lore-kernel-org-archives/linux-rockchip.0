@@ -1,105 +1,94 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 1/3] phy: rockchip-usb: Add vbus regulator support.
-Date: Thu, 6 Apr 2017 16:07:55 +0530
-Message-ID: <59ed8834-75d4-2001-73d4-6081d42d2aeb@ti.com>
-References: <20170405140613.4444-1-sjoerd.simons@collabora.co.uk>
- <20170405140613.4444-2-sjoerd.simons@collabora.co.uk>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
+ dev_private is invalid
+Date: Thu, 06 Apr 2017 19:09:11 +0800
+Message-ID: <58E621D7.3030205@rock-chips.com>
+References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com> <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com> <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay> <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170405140613.4444-2-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>, dianders@chromium.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Daniel,
 
+On 04/06/2017 04:26 PM, Daniel Vetter wrote:
+> On Wed, Apr 05, 2017 at 12:28:40PM -0400, Sean Paul wrote:
+>> On Wed, Apr 05, 2017 at 04:29:26PM +0800, Jeffy Chen wrote:
+>>> After unbinding drm, the userspace may still has a chance to access
+>>> gem buf.
+>>>
+>>> Add a sanity check for a NULL dev_private to prevent that from
+>>> happening.
+>>
+>> I still don't understand how this is happening. You're saying that these hooks
+>> can be called after rockchip_drm_unbind() has finished?
+>
+> Yeah this is supposed to be impossible. If it isn't, we need to debug and
+> fix this properly. This smells like pretty bad duct-tape ...
 
-On Wednesday 05 April 2017 07:36 PM, Sjoerd Simons wrote:
-> On rockchip devices vbus is supplied by a separate power supply, often
-> through a regulator. Add support for describing the the regulator in
-> device-tree following the same convention as several other usb phy's.
-> 
-merged, thanks.
+it looks like after unbind, the user space may still own drm dev fd, and 
+could be able to call ioctl:
+lrwx------. 1 chronos chronos 64 Mar 15 12:53 28 -> /dev/dri/card1 (deleted)
 
--Kishon
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-> ---
-> 
->  .../devicetree/bindings/phy/rockchip-usb-phy.txt      |  1 +
->  drivers/phy/phy-rockchip-usb.c                        | 19 +++++++++++++++++++
->  2 files changed, 20 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> index 57dc388e2fa2..4ed569046daf 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> @@ -30,6 +30,7 @@ Optional Properties:
->  - reset-names: Only allow the following entries:
->   - phy-reset
->  - resets: Must contain an entry for each entry in reset-names.
-> +- vbus-supply: power-supply phandle for vbus power source
->  
->  Example:
->  
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> index 734987fa0ad7..3378eeb7a562 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -66,6 +66,7 @@ struct rockchip_usb_phy {
->  	struct phy	*phy;
->  	bool		uart_enabled;
->  	struct reset_control *reset;
-> +	struct regulator *vbus;
->  };
->  
->  static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
-> @@ -88,6 +89,9 @@ static void rockchip_usb_phy480m_disable(struct clk_hw *hw)
->  						    struct rockchip_usb_phy,
->  						    clk480m_hw);
->  
-> +	if (phy->vbus)
-> +		regulator_disable(phy->vbus);
-> +
->  	/* Power down usb phy analog blocks by set siddq 1 */
->  	rockchip_usb_phy_power(phy, 1);
->  }
-> @@ -143,6 +147,14 @@ static int rockchip_usb_phy_power_on(struct phy *_phy)
->  	if (phy->uart_enabled)
->  		return -EBUSY;
->  
-> +	if (phy->vbus) {
-> +		int ret;
-> +
-> +		ret = regulator_enable(phy->vbus);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
->  	return clk_prepare_enable(phy->clk480m);
->  }
->  
-> @@ -268,6 +280,13 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
->  	}
->  	phy_set_drvdata(rk_phy->phy, rk_phy);
->  
-> +	rk_phy->vbus = devm_regulator_get_optional(&rk_phy->phy->dev, "vbus");
-> +	if (IS_ERR(rk_phy->vbus)) {
-> +		if (PTR_ERR(rk_phy->vbus) == -EPROBE_DEFER)
-> +			return PTR_ERR(rk_phy->vbus);
-> +		rk_phy->vbus = NULL;
-> +	}
-> +
->  	/*
->  	 * When acting as uart-pipe, just keep clock on otherwise
->  	 * only power up usb phy when it use, so disable it when init
-> 
+and the drm_unplug_dev may help it, maybe we should call it in unbind? 
+or just break drm_ioctl when drm_dev not registered?
+
+> -Daniel
+>
+>>
+>> Sean
+>>
+>>>
+>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>> ---
+>>>
+>>> Changes in v3:
+>>> Address Daniel Vetter <daniel@ffwll.ch>'s comments.
+>>> Update commit message.
+>>>
+>>> Changes in v2: None
+>>>
+>>>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 ++++++++
+>>>   1 file changed, 8 insertions(+)
+>>>
+>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>> index df9e570..205a3dc 100644
+>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>> @@ -184,6 +184,9 @@ static int rockchip_gem_alloc_buf(struct rockchip_gem_object *rk_obj,
+>>>   	struct drm_device *drm = obj->dev;
+>>>   	struct rockchip_drm_private *private = drm->dev_private;
+>>>
+>>> +	if (!private)
+>>> +		return -ENODEV;
+>>> +
+>>>   	if (private->domain)
+>>>   		return rockchip_gem_alloc_iommu(rk_obj, alloc_kmap);
+>>>   	else
+>>> @@ -208,6 +211,11 @@ static void rockchip_gem_free_dma(struct rockchip_gem_object *rk_obj)
+>>>
+>>>   static void rockchip_gem_free_buf(struct rockchip_gem_object *rk_obj)
+>>>   {
+>>> +	struct drm_device *drm = rk_obj->base.dev;
+>>> +
+>>> +	if (!drm->dev_private)
+>>> +		return;
+>>> +
+>>>   	if (rk_obj->pages)
+>>>   		rockchip_gem_free_iommu(rk_obj);
+>>>   	else
+>>> --
+>>> 2.1.4
+>>>
+>>
+>> --
+>> Sean Paul, Software Engineer, Google / Chromium OS
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>
