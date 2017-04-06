@@ -1,59 +1,42 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron
- boards
-Date: Thu, 6 Apr 2017 15:04:11 -0700
-Message-ID: <20170406220410.GA5708@google.com>
-References: <20170330011709.GA110687@google.com>
- <6d87cb71-1339-0dc9-e071-1c117f541881@rock-chips.com>
- <20170330014230.GA21467@google.com>
- <CANCyOWYsG9rpCvEsBMDJAyOTjKJCe=O-35-Zbhjh4is+op_h=w@mail.gmail.com>
- <CGME20170330025350epcas4p423e66068f5d962677952830258676fcf@epcas4p4.samsung.com>
- <20170330025345.GA29421@google.com>
- <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: Add support for phyCORE-RK3288 SoM
+Date: Fri, 07 Apr 2017 00:21:43 +0200
+Message-ID: <2316800.SYqXzj6arr@phil>
+References: <1491483866-18368-1-git-send-email-w.egorov@phytec.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Eddie Cai <eddie.cai.kernel@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, amstan@chromium.org, Kevin Mihelich <kevin@archlinuxarm.org>, Doug Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1491483866-18368-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Mar 30, 2017 at 02:11:19PM +0900, Jaehoon Chung wrote:
-> On 03/30/2017 11:53 AM, Brian Norris wrote:
-> > On Thu, Mar 30, 2017 at 10:18:59AM +0800, Eddie Cai wrote:
-> >> I test on rk3288 firefly reload with 4.11-rc4. It work fine.
-> > 
-> > OK, thanks for checking.
-> > 
-> >>> On Thu, Mar 30, 2017 at 09:32:22AM +0800, Shawn Lin wrote:
-> >>>> Hi Brian,
-> >>>>
-> >>>> On 2017/3/30 9:17, Brian Norris wrote:
-> >>>>> Hi all,
-> >>>>>
-> >>>>> I haven't managed to get as far as a bugfix for this, but I've bisected
-> >>>>> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
-> >>>>> in particular). v4.9 works fine.
-> > 
-> > [...]
-> > 
-> > By the way, Kevin (CC'd) says he noticed similiar Wifi issues on an
-> > Exynos 5800 Peach chromebook, but not on an Exynos 5250 Snow chromebook.	
-> > I haven't picked these apart yet to see what the differences and
-> > similarities are, but presumably it's not actually a Rockchip-specific
-> > bug. Maybe related to the way power sequencing is plumbed for these, for
-> > example?
+Am Donnerstag, 6. April 2017, 15:04:24 CEST schrieb Wadim Egorov:
+> The phyCORE-RK3288 is a SoM (System on Module) containing a RK3288 SoC.
+> The module can be connected to different carrier boards.
+> It can be also equipped with different RAM, SPI flash and eMMC variants.
+> The Rapid Development Kit option is using the following setup:
 > 
-> I'm not sure but if card-detecting is polling, the timing issue could be occurred.
+>   - 1 GB DDR3 RAM (2 Banks)
+>   - 1x 4 KB EEPROM
+>   - DP83867 Gigabit Ethernet PHY
+>   - 16 MB SPI Flash
+>   - 4 GB eMMC Flash
+> 
+> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
 
-I don't know much about MMC in general, nor about this driver. Any
-chance you'd accept reverts of the patches in question though? This is a
-huge regression, and there were only a few relevant changes that seem to
-have triggered this. I can try to come up with something targeted, but
-I'm not going to even try if that'd get rejected up front.
+applied all 3 for 4.12 .
 
-Brian
+One minor change was making the touchscreen node name in patch2 read
+	touchscreen@44
+
+Same rationale as before, nodes should be named after the device-category
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
