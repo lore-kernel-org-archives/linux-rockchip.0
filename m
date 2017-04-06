@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 06/12] drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding
-Date: Thu,  6 Apr 2017 20:31:19 +0800
-Message-ID: <1491481885-13775-7-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 10/12] drm/rockchip: Reoder drm bind/unbind sequence
+Date: Thu,  6 Apr 2017 20:31:23 +0800
+Message-ID: <1491481885-13775-11-git-send-email-jeffy.chen@rock-chips.com>
 References: <1491481885-13775-1-git-send-email-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1491481885-13775-1-git-send-email-jeffy.chen@rock-chips.com>
@@ -10,10 +10,10 @@ To: linux-kernel@vger.kernel.org
 Cc: briannorris@chromium.org, dianders@chromium.org, tfiga@chromium.org, seanpaul@chromium.org, zyw@rock-chips.com, mark.yao@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-After snd_soc_unregister_codec, the dai link would remain bound to
-the invalid codec. That would cause crashes after unbind dp driver.
+Current drm bind/unbind sequence would cause some memory issues.
+For example we should not cleanup iommu before cleanup mode config.
 
-Let's unregister audio codec when removing dp driver to prevent that.
+Reorder bind/unbind sequence, follow exynos drm.
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -21,50 +21,116 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 Changes in v5: None
 Changes in v4: None
 Changes in v3:
+Address Sean Paul <seanpaul@chromium.org>'s comments.
 Update commit message.
 
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 49 +++++++++++++++--------------
+ 1 file changed, 26 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index ee4195d..a2169dd 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1092,8 +1092,6 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 		goto err_free_connector;
- 	}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index cd7d02e1..f24968f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -136,21 +136,24 @@ static int rockchip_drm_bind(struct device *dev)
+ 	INIT_LIST_HEAD(&private->psr_list);
+ 	spin_lock_init(&private->psr_list_lock);
  
--	cdn_dp_audio_codec_init(dp, dev);
--
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-@@ -1128,7 +1126,6 @@ static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
- 	struct drm_connector *connector = &dp->connector;
- 
- 	cancel_work_sync(&dp->event_work);
--	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_encoder_disable(encoder);
- 	encoder->funcs->destroy(encoder);
- 	connector->funcs->destroy(connector);
-@@ -1221,6 +1218,8 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	mutex_init(&dp->lock);
- 	dev_set_drvdata(dev, dp);
- 
-+	cdn_dp_audio_codec_init(dp, dev);
++	ret = rockchip_drm_init_iommu(drm_dev);
++	if (ret)
++		goto err_free;
 +
- 	return component_add(dev, &cdn_dp_component_ops);
+ 	drm_mode_config_init(drm_dev);
+ 
+ 	rockchip_drm_mode_config_init(drm_dev);
+ 
+-	ret = rockchip_drm_init_iommu(drm_dev);
+-	if (ret)
+-		goto err_config_cleanup;
+-
+ 	/* Try to bind all sub drivers. */
+ 	ret = component_bind_all(dev, drm_dev);
+ 	if (ret)
+-		goto err_iommu_cleanup;
++		goto err_mode_config_cleanup;
+ 
+-	/* init kms poll for handling hpd */
+-	drm_kms_helper_poll_init(drm_dev);
++	ret = drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
++	if (ret)
++		goto err_unbind_all;
++
++	drm_mode_config_reset(drm_dev);
+ 
+ 	/*
+ 	 * enable drm irq mode.
+@@ -158,15 +161,12 @@ static int rockchip_drm_bind(struct device *dev)
+ 	 */
+ 	drm_dev->irq_enabled = true;
+ 
+-	ret = drm_vblank_init(drm_dev, ROCKCHIP_MAX_CRTC);
+-	if (ret)
+-		goto err_kms_helper_poll_fini;
+-
+-	drm_mode_config_reset(drm_dev);
++	/* init kms poll for handling hpd */
++	drm_kms_helper_poll_init(drm_dev);
+ 
+ 	ret = rockchip_drm_fbdev_init(drm_dev);
+ 	if (ret)
+-		goto err_vblank_cleanup;
++		goto err_kms_helper_poll_fini;
+ 
+ 	ret = drm_dev_register(drm_dev, 0);
+ 	if (ret)
+@@ -175,17 +175,17 @@ static int rockchip_drm_bind(struct device *dev)
+ 	return 0;
+ err_fbdev_fini:
+ 	rockchip_drm_fbdev_fini(drm_dev);
+-err_vblank_cleanup:
+-	drm_vblank_cleanup(drm_dev);
+ err_kms_helper_poll_fini:
+ 	drm_kms_helper_poll_fini(drm_dev);
++	drm_vblank_cleanup(drm_dev);
++err_unbind_all:
+ 	component_unbind_all(dev, drm_dev);
+-err_iommu_cleanup:
+-	rockchip_iommu_cleanup(drm_dev);
+-err_config_cleanup:
++err_mode_config_cleanup:
+ 	drm_mode_config_cleanup(drm_dev);
+-	drm_dev->dev_private = NULL;
++	rockchip_iommu_cleanup(drm_dev);
+ err_free:
++	drm_dev->dev_private = NULL;
++	dev_set_drvdata(dev, NULL);
+ 	drm_dev_unref(drm_dev);
+ 	return ret;
+ }
+@@ -194,16 +194,19 @@ static void rockchip_drm_unbind(struct device *dev)
+ {
+ 	struct drm_device *drm_dev = dev_get_drvdata(dev);
+ 
++	drm_dev_unregister(drm_dev);
++
+ 	rockchip_drm_fbdev_fini(drm_dev);
+-	drm_vblank_cleanup(drm_dev);
+ 	drm_kms_helper_poll_fini(drm_dev);
++
++	drm_vblank_cleanup(drm_dev);
+ 	component_unbind_all(dev, drm_dev);
+-	rockchip_iommu_cleanup(drm_dev);
+ 	drm_mode_config_cleanup(drm_dev);
++	rockchip_iommu_cleanup(drm_dev);
++
+ 	drm_dev->dev_private = NULL;
+-	drm_dev_unregister(drm_dev);
+-	drm_dev_unref(drm_dev);
+ 	dev_set_drvdata(dev, NULL);
++	drm_dev_unref(drm_dev);
  }
  
-@@ -1228,6 +1227,7 @@ static int cdn_dp_remove(struct platform_device *pdev)
- {
- 	struct cdn_dp_device *dp = platform_get_drvdata(pdev);
- 
-+	platform_device_unregister(dp->audio_pdev);
- 	cdn_dp_suspend(dp->dev);
- 	component_del(&pdev->dev, &cdn_dp_component_ops);
- 
+ static void rockchip_drm_lastclose(struct drm_device *dev)
 -- 
 2.1.4
