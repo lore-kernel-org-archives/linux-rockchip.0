@@ -1,99 +1,69 @@
-From: jeffy <jeffy.chen@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
 Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
  dev_private is invalid
-Date: Thu, 06 Apr 2017 10:47:59 +0800
-Message-ID: <58E5AC5F.5090303@rock-chips.com>
+Date: Thu, 6 Apr 2017 10:26:12 +0200
+Message-ID: <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
 References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
  <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
  <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
 In-Reply-To: <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>
-Cc: dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On 04/06/2017 12:28 AM, Sean Paul wrote:
-> On Wed, Apr 05, 2017 at 04:29:26PM +0800, Jeffy Chen wrote:
->> After unbinding drm, the userspace may still has a chance to access
->> gem buf.
->>
->> Add a sanity check for a NULL dev_private to prevent that from
->> happening.
->
-> I still don't understand how this is happening. You're saying that these hooks
-> can be called after rockchip_drm_unbind() has finished?
->
-yes, tested on chromebook rk3399 kevin with kernel 4.4, if trigger 
-unbind without killing display service(ui or frecon):
-
-[   31.276889] [<ffffffc0002089e4>] dump_backtrace+0x0/0x164
-[   31.282288] [<ffffffc000208b6c>] show_stack+0x24/0x30
-[   31.287338] [<ffffffc0004be028>] dump_stack+0x98/0xb8
-[   31.292389] [<ffffffc0005c0b8c>] rockchip_gem_create_object+0x6c/0x2ec
-[   31.298910] [<ffffffc0005c0fa0>] 
-rockchip_gem_create_with_handle+0x38/0x10c
-[   31.305868] [<ffffffc0005c12b8>] rockchip_gem_create_ioctl+0x38/0x50
-[   31.312221] [<ffffffc000598844>] drm_ioctl+0x2bc/0x438
-[   31.317359] [<ffffffc0005b5ee0>] drm_compat_ioctl+0x3c/0x70
-[   31.322935] [<ffffffc0003a6960>] compat_SyS_ioctl+0x134/0x1048
-[   31.328766] [<ffffffc000203e90>] __sys_trace_return+0x0/0x4
-
-> Sean
->
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> ---
->>
->> Changes in v3:
->> Address Daniel Vetter <daniel@ffwll.ch>'s comments.
->> Update commit message.
->>
->> Changes in v2: None
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 ++++++++
->>   1 file changed, 8 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> index df9e570..205a3dc 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
->> @@ -184,6 +184,9 @@ static int rockchip_gem_alloc_buf(struct rockchip_gem_object *rk_obj,
->>   	struct drm_device *drm = obj->dev;
->>   	struct rockchip_drm_private *private = drm->dev_private;
->>
->> +	if (!private)
->> +		return -ENODEV;
->> +
->>   	if (private->domain)
->>   		return rockchip_gem_alloc_iommu(rk_obj, alloc_kmap);
->>   	else
->> @@ -208,6 +211,11 @@ static void rockchip_gem_free_dma(struct rockchip_gem_object *rk_obj)
->>
->>   static void rockchip_gem_free_buf(struct rockchip_gem_object *rk_obj)
->>   {
->> +	struct drm_device *drm = rk_obj->base.dev;
->> +
->> +	if (!drm->dev_private)
->> +		return;
->> +
->>   	if (rk_obj->pages)
->>   		rockchip_gem_free_iommu(rk_obj);
->>   	else
->> --
->> 2.1.4
->>
->
+T24gV2VkLCBBcHIgMDUsIDIwMTcgYXQgMTI6Mjg6NDBQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
+Ogo+IE9uIFdlZCwgQXByIDA1LCAyMDE3IGF0IDA0OjI5OjI2UE0gKzA4MDAsIEplZmZ5IENoZW4g
+d3JvdGU6Cj4gPiBBZnRlciB1bmJpbmRpbmcgZHJtLCB0aGUgdXNlcnNwYWNlIG1heSBzdGlsbCBo
+YXMgYSBjaGFuY2UgdG8gYWNjZXNzCj4gPiBnZW0gYnVmLgo+ID4gCj4gPiBBZGQgYSBzYW5pdHkg
+Y2hlY2sgZm9yIGEgTlVMTCBkZXZfcHJpdmF0ZSB0byBwcmV2ZW50IHRoYXQgZnJvbQo+ID4gaGFw
+cGVuaW5nLgo+IAo+IEkgc3RpbGwgZG9uJ3QgdW5kZXJzdGFuZCBob3cgdGhpcyBpcyBoYXBwZW5p
+bmcuIFlvdSdyZSBzYXlpbmcgdGhhdCB0aGVzZSBob29rcwo+IGNhbiBiZSBjYWxsZWQgYWZ0ZXIg
+cm9ja2NoaXBfZHJtX3VuYmluZCgpIGhhcyBmaW5pc2hlZD8gCgpZZWFoIHRoaXMgaXMgc3VwcG9z
+ZWQgdG8gYmUgaW1wb3NzaWJsZS4gSWYgaXQgaXNuJ3QsIHdlIG5lZWQgdG8gZGVidWcgYW5kCmZp
+eCB0aGlzIHByb3Blcmx5LiBUaGlzIHNtZWxscyBsaWtlIHByZXR0eSBiYWQgZHVjdC10YXBlIC4u
+LgotRGFuaWVsCgo+IAo+IFNlYW4KPiAKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hl
+biA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiA+IC0tLQo+ID4gCj4gPiBDaGFuZ2VzIGlu
+IHYzOgo+ID4gQWRkcmVzcyBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+J3MgY29tbWVu
+dHMuCj4gPiBVcGRhdGUgY29tbWl0IG1lc3NhZ2UuCj4gPiAKPiA+IENoYW5nZXMgaW4gdjI6IE5v
+bmUKPiA+IAo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMg
+fCA4ICsrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+ID4gCj4g
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+IGluZGV4
+IGRmOWU1NzAuLjIwNWEzZGMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2dlbS5jCj4gPiBAQCAtMTg0LDYgKzE4NCw5IEBAIHN0YXRpYyBpbnQgcm9j
+a2NoaXBfZ2VtX2FsbG9jX2J1ZihzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqLAo+
+ID4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gb2JqLT5kZXY7Cj4gPiAgCXN0cnVjdCByb2Nr
+Y2hpcF9kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+ZGV2X3ByaXZhdGU7Cj4gPiAgCj4gPiAr
+CWlmICghcHJpdmF0ZSkKPiA+ICsJCXJldHVybiAtRU5PREVWOwo+ID4gKwo+ID4gIAlpZiAocHJp
+dmF0ZS0+ZG9tYWluKQo+ID4gIAkJcmV0dXJuIHJvY2tjaGlwX2dlbV9hbGxvY19pb21tdShya19v
+YmosIGFsbG9jX2ttYXApOwo+ID4gIAllbHNlCj4gPiBAQCAtMjA4LDYgKzIxMSwxMSBAQCBzdGF0
+aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9kbWEoc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3Qg
+KnJrX29iaikKPiA+ICAKPiA+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9idWYoc3Ry
+dWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaikKPiA+ICB7Cj4gPiArCXN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm0gPSBya19vYmotPmJhc2UuZGV2Owo+ID4gKwo+ID4gKwlpZiAoIWRybS0+ZGV2
+X3ByaXZhdGUpCj4gPiArCQlyZXR1cm47Cj4gPiArCj4gPiAgCWlmIChya19vYmotPnBhZ2VzKQo+
+ID4gIAkJcm9ja2NoaXBfZ2VtX2ZyZWVfaW9tbXUocmtfb2JqKTsKPiA+ICAJZWxzZQo+ID4gLS0g
+Cj4gPiAyLjEuNAo+ID4gCj4gCj4gLS0gCj4gU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwg
+R29vZ2xlIC8gQ2hyb21pdW0gT1MKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJ
+bnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
