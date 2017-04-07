@@ -1,77 +1,72 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: Re: [PATCH 2/2] drm: dw-hdmi: Gate audio clock from the I2S
- enablement callbacks
-Date: Fri, 7 Apr 2017 16:29:36 +0200
-Message-ID: <05452cde-3048-b572-80a9-55609724ba21@collabora.com>
-References: <20170407141905.14147-1-romain.perier@collabora.com>
- <20170407141905.14147-3-romain.perier@collabora.com>
- <984b7a29-81a8-8404-0c76-d632b4ae9a9d@baylibre.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH] drm: dw-hdmi: Implement the mode_fixup drm helper
+Date: Fri, 7 Apr 2017 22:45:12 +0530
+Message-ID: <bdb7e77a-9f0f-fcb4-e5d2-1968d499070d@codeaurora.org>
+References: <20170407121743.4142-1-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <984b7a29-81a8-8404-0c76-d632b4ae9a9d@baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Neil Armstrong <narmstrong@baylibre.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170407121743.4142-1-romain.perier@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>, daniel.vetter@ffwll.ch
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
-
-
-Le 07/04/2017 à 16:23, Neil Armstrong a écrit :
-> On 04/07/2017 04:19 PM, Romain Perier wrote:
->> Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
->> step E. and is kept enabled for later use. This clock should be enabled
->> and disabled along with the actual audio stream and not always on (that
->> is bad for PM). Futhermore, as described by the datasheet, the I2S
->> variant need to gate/ungate the clock when the stream is
->> enabled/disabled.
->>
->> This commit adds a parameter to hdmi_audio_enable_clk() that controls
->> when the audio sample clock must be enabled or disabled. Then, it adds
->> the call to this function from dw_hdmi_i2s_audio_enable() and
->> dw_hdmi_i2s_audio_disable().
->>
->> Signed-off-by: Romain Perier <romain.perier@collabora.com>
->> ---
->>  drivers/gpu/drm/bridge/dw-hdmi.c | 16 +++++++++-------
->>  1 file changed, 9 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
->> index d34e0a5..3bd0807 100644
->> --- a/drivers/gpu/drm/bridge/dw-hdmi.c
->> +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
->> @@ -559,6 +559,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
->>  }
->>  EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
->>  
->> +static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
->> +{
->> +	hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
->> +		  HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
->> +}
->> +
->>  void dw_hdmi_ahb_audio_enable(struct dw_hdmi *hdmi)
->>  {
->>  	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
->> @@ -572,12 +578,13 @@ void dw_hdmi_ahb_audio_disable(struct dw_hdmi *hdmi)
->>  void dw_hdmi_i2s_audio_enable(struct dw_hdmi *hdmi)
->>  {
->>  	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
->> +	hdmi_enable_audio_clk(hdmi, true);
->>  }
->>  
->>  
->>  void dw_hdmi_i2s_audio_disable(struct dw_hdmi *hdmi)
->>  {
->> -
->> +	hdmi_enable_audio_clk(hdmi, false);
->>  }
-> I think the NULL check is still valid if you fill this function, because the IP also
-> support other modes (SPDIF and GPA).
-
-Ah, good point!
-
-Thanks,
-Romain
+SGksCgpPbiA0LzcvMjAxNyA1OjQ3IFBNLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+IFRoaXMgaGVs
+cGVyIGlzIHN1cHBvc2VkIHRvIHZhbGlkYXRlIG9yIHJlamVjdCB0aGUgbW9kZWxpbmUgYmVmb3Jl
+IGl0Cj4gYXBwbGllZCBieSB0aGUgbW9kZSBzZXR0aW5nLiBDdXJyZW50bHkgdGhpcyBmdW5jdGlv
+biBoYXMgYmVlbiBkcm9wcGVkLAo+IGl0IHdhcyBwcmV2aW91c2x5IHNldCB0byBhIGR1bW15IGZ1
+bmN0aW9uIHRoYXQgYWx3YXlzIHJldHVybmVkIHRydWUuIEZvcgo+IGJvdGggY2FzZXMsIHRoaXMg
+bWVhbnMgdGhhdCB1c2Vyc3BhY2UgY2FuIGFzayBmb3IgYSBiYWQgbW9kZWxpbmUgdGhhdAo+IHdp
+bGwgYmUgYWx3YXlzIGFjY2VwdGVkLgo+Cj4gT24gc29tZSBwbGF0Zm9ybXMsIGxpa2UgUm9ja2No
+aXAsIHRoZSBkcm0gZHdfaGRtaS1yb2NrY2hpcCB2YXJpYW50IGRyaXZlcgo+IGFscmVhZHkgaW1w
+bGVtZW50cyB0aGUgYXRvbWljX2NoZWNrIGRybSBoZWxwZXIsIHNvIG1vZGVfZml4dXAgY2Fubm90
+IGJlCj4gaGFuZGxlZCBhbmQgaW1wbGVtZW50ZWQgdGhlcmUgKGFzIGRybV9hdG9taWNfaGVscGVy
+IHJlbGllcyBvbiBlaXRoZXIKPiBhdG9taWNfY2hlY2sgb3IgbW9kZV9maXh1cCkuCj4KPiBUaGlz
+IGNvbW1pdCBpbXBsZW1lbnRzIHRoaXMgaGVscGVyLiBJdCBvbmx5IGNoZWNrcyB0aGF0IHRoaXMg
+bW9kZSBpcwo+IGNvcnJlY3QgZnJvbSB0aGUgY29ubmVjdG9yIHBvaW50IG9mIHZpZXcKCldlIGRv
+IGhhdmUgYSBhdG9taWNfY2hlY2sgb3AgaW4gZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MuIEkn
+dmUKcmFyZWx5IHNlZW4gaXQgYmVpbmcgdXNlZCwgYnV0IGl0IGNvdWxkIGJlIHVzZWQgdG8gdmFs
+aWRhdGUKdGhlIG1vZGUgdy5yLnQgdGhlIGNvbm5lY3RvciwgcmF0aGVyIHRoYW4gY2hlY2tpbmcg
+aXQgaW4gdGhlCmJyaWRnZSdzIG1vZGVfZml4dXAgb3AuCgpEYW5pZWwsCgpJcyBpdCBva2F5IHRv
+IHVzZSB0aGUgY29ubmVjdG9yJ3MgYXRvbWljX2NoZWNrIHRvIHZhbGlkYXRlIGEgbW9kZS4KKGJ5
+IHBlZXBpbmcgaW50byB0aGUgbmV3X2NydGNfc3RhdGUtPm1vZGU/KQoKVGhhbmtzLApBcmNoaXQK
+Cj4KPiBTaWduZWQtb2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGNvbGxhYm9y
+YS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIHwgMTYgKysr
+KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygrKQo+Cj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIGIvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiBpbmRleCAyMjIxMWZmLi4zYmQwODA3IDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiBAQCAtMTc0MCw2ICsxNzQwLDIxIEBAIHN0YXRpYyBpbnQg
+ZHdfaGRtaV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gIAlyZXR1
+cm4gMDsKPiAgfQo+Cj4gKwo+ICtzdGF0aWMgYm9vbCBkd19oZG1pX2JyaWRnZV9tb2RlX2ZpeHVw
+KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gKwkJCQkgICAgICBjb25zdCBzdHJ1Y3QgZHJt
+X2Rpc3BsYXlfbW9kZSAqb3JpZ19tb2RlLAo+ICsJCQkJICAgICAgc3RydWN0IGRybV9kaXNwbGF5
+X21vZGUgKm1vZGUpCj4gK3sKPiArCXN0cnVjdCBkd19oZG1pICpoZG1pID0gYnJpZGdlLT5kcml2
+ZXJfcHJpdmF0ZTsKPiArCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmaGRtaS0+
+Y29ubmVjdG9yOwo+ICsJZW51bSBkcm1fbW9kZV9zdGF0dXMgc3RhdHVzOwo+ICsKPiArCXN0YXR1
+cyA9IGR3X2hkbWlfY29ubmVjdG9yX21vZGVfdmFsaWQoY29ubmVjdG9yLCBtb2RlKTsKPiArCWlm
+IChzdGF0dXMgIT0gTU9ERV9PSykKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwlyZXR1cm4gdHJ1ZTsK
+PiArfQo+ICsKPiAgc3RhdGljIHZvaWQgZHdfaGRtaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0IGRy
+bV9icmlkZ2UgKmJyaWRnZSwKPiAgCQkJCSAgICBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqb3Jp
+Z19tb2RlLAo+ICAJCQkJICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+IEBAIC0x
+NzgxLDYgKzE3OTYsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgZHdf
+aGRtaV9icmlkZ2VfZnVuY3MgPSB7Cj4gIAkuZW5hYmxlID0gZHdfaGRtaV9icmlkZ2VfZW5hYmxl
+LAo+ICAJLmRpc2FibGUgPSBkd19oZG1pX2JyaWRnZV9kaXNhYmxlLAo+ICAJLm1vZGVfc2V0ID0g
+ZHdfaGRtaV9icmlkZ2VfbW9kZV9zZXQsCj4gKwkubW9kZV9maXh1cCA9IGR3X2hkbWlfYnJpZGdl
+X21vZGVfZml4dXAsCj4gIH07Cj4KPiAgc3RhdGljIGlycXJldHVybl90IGR3X2hkbWlfaTJjX2ly
+cShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPgoKLS0gClRoZSBRdWFsY29tbSBJbm5vdmF0aW9uIENl
+bnRlciwgSW5jLiBpcyBhIG1lbWJlciBvZiB0aGUgQ29kZSBBdXJvcmEgRm9ydW0sCmhvc3RlZCBi
+eSBUaGUgTGludXggRm91bmRhdGlvbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
