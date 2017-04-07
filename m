@@ -1,71 +1,89 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3 8/9] drm/rockchip: gem: Don't alloc/free gem buf when
- dev_private is invalid
-Date: Fri, 7 Apr 2017 09:15:31 +0200
-Message-ID: <20170407071531.2siqzefoddys6lut@phenom.ffwll.local>
-References: <1491380967-28570-1-git-send-email-jeffy.chen@rock-chips.com>
- <1491380967-28570-9-git-send-email-jeffy.chen@rock-chips.com>
- <20170405162839.k6q4b3tpt6t2s3zm@art_vandelay>
- <20170406082612.qmwyfjr5uwcp3arr@phenom.ffwll.local>
- <58E621D7.3030205@rock-chips.com>
- <CAKMK7uEjyBwJKmZUnXZLZ_YzgajFMKNem-2Eoc80ZDXha-7o6g@mail.gmail.com>
- <58E73535.4000409@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron boards
+Date: Fri, 07 Apr 2017 16:38:11 +0900
+Message-ID: <5eb55f0e-1577-03f0-0244-1449b803918a@samsung.com>
+References: <20170330011709.GA110687@google.com>
+ <6d87cb71-1339-0dc9-e071-1c117f541881@rock-chips.com>
+ <20170330014230.GA21467@google.com>
+ <CANCyOWYsG9rpCvEsBMDJAyOTjKJCe=O-35-Zbhjh4is+op_h=w@mail.gmail.com>
+ <CGME20170330025350epcas4p423e66068f5d962677952830258676fcf@epcas4p4.samsung.com>
+ <20170330025345.GA29421@google.com>
+ <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
+ <20170406220410.GA5708@google.com>
+ <bdb7c3c8-87c2-0fd3-73f0-d0b1ddf64e7f@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <58E73535.4000409@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: jeffy <jeffy.chen@rock-chips.com>
-Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <bdb7c3c8-87c2-0fd3-73f0-d0b1ddf64e7f@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>
+Cc: Eddie Cai <eddie.cai.kernel@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, amstan@chromium.org, Kevin Mihelich <kevin@archlinuxarm.org>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMDcsIDIwMTcgYXQgMDI6NDQ6MDVQTSArMDgwMCwgamVmZnkgd3JvdGU6Cj4g
-SGkgRGFuaWVsLAo+IAo+IE9uIDA0LzA3LzIwMTcgMDI6MzAgUE0sIERhbmllbCBWZXR0ZXIgd3Jv
-dGU6Cj4gPiBPbiBUaHUsIEFwciA2LCAyMDE3IGF0IDE6MDkgUE0sIGplZmZ5IDxqZWZmeS5jaGVu
-QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiA+ID4gCj4gPiA+IE9uIDA0LzA2LzIwMTcgMDQ6MjYg
-UE0sIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPiA+ID4gCj4gPiA+ID4gT24gV2VkLCBBcHIgMDUs
-IDIwMTcgYXQgMTI6Mjg6NDBQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3RlOgo+ID4gPiA+ID4gCj4g
-PiA+ID4gPiBPbiBXZWQsIEFwciAwNSwgMjAxNyBhdCAwNDoyOToyNlBNICswODAwLCBKZWZmeSBD
-aGVuIHdyb3RlOgo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gQWZ0ZXIgdW5iaW5kaW5nIGRybSwg
-dGhlIHVzZXJzcGFjZSBtYXkgc3RpbGwgaGFzIGEgY2hhbmNlIHRvIGFjY2Vzcwo+ID4gPiA+ID4g
-PiBnZW0gYnVmLgo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gQWRkIGEgc2FuaXR5IGNoZWNrIGZv
-ciBhIE5VTEwgZGV2X3ByaXZhdGUgdG8gcHJldmVudCB0aGF0IGZyb20KPiA+ID4gPiA+ID4gaGFw
-cGVuaW5nLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiAKPiA+ID4gPiA+IEkgc3RpbGwgZG9uJ3QgdW5k
-ZXJzdGFuZCBob3cgdGhpcyBpcyBoYXBwZW5pbmcuIFlvdSdyZSBzYXlpbmcgdGhhdCB0aGVzZQo+
-ID4gPiA+ID4gaG9va3MKPiA+ID4gPiA+IGNhbiBiZSBjYWxsZWQgYWZ0ZXIgcm9ja2NoaXBfZHJt
-X3VuYmluZCgpIGhhcyBmaW5pc2hlZD8KPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiBZZWFoIHRo
-aXMgaXMgc3VwcG9zZWQgdG8gYmUgaW1wb3NzaWJsZS4gSWYgaXQgaXNuJ3QsIHdlIG5lZWQgdG8g
-ZGVidWcgYW5kCj4gPiA+ID4gZml4IHRoaXMgcHJvcGVybHkuIFRoaXMgc21lbGxzIGxpa2UgcHJl
-dHR5IGJhZCBkdWN0LXRhcGUgLi4uCj4gPiA+IAo+ID4gPiAKPiA+ID4gaXQgbG9va3MgbGlrZSBh
-ZnRlciB1bmJpbmQsIHRoZSB1c2VyIHNwYWNlIG1heSBzdGlsbCBvd24gZHJtIGRldiBmZCwgYW5k
-Cj4gPiA+IGNvdWxkIGJlIGFibGUgdG8gY2FsbCBpb2N0bDoKPiA+ID4gbHJ3eC0tLS0tLS4gMSBj
-aHJvbm9zIGNocm9ub3MgNjQgTWFyIDE1IDEyOjUzIDI4IC0+IC9kZXYvZHJpL2NhcmQxIChkZWxl
-dGVkKQo+ID4gPiAKPiA+ID4gYW5kIHRoZSBkcm1fdW5wbHVnX2RldiBtYXkgaGVscCBpdCwgbWF5
-YmUgd2Ugc2hvdWxkIGNhbGwgaXQgaW4gdW5iaW5kPyBvcgo+ID4gPiBqdXN0IGJyZWFrIGRybV9p
-b2N0bCB3aGVuIGRybV9kZXYgbm90IHJlZ2lzdGVyZWQ/Cj4gPiAKPiA+IFllcywgYnkgZGVmYXVs
-dCB1bmJpbmQgd2hpbGUgdXNlcnNwYWNlIGlzIHJ1bm5pbmcgaXMgdG90YWxseSBicm9rZW4gaW4K
-PiA+IGRybS4gZHJtX3VucGx1Z19kZXYgd291bGQgYmUgdGhlIGZpeCwgYnV0IGl0J3Mgb25seSB1
-c2VkIGJ5IHVkbCBhbmQKPiA+IG5vdCBtYW55IHVzZSB0aGF0LiBZb3UgbWlnaHQgbmVlZCB0byBm
-aXggaW5mcmFzdHJ1Y3R1cmUgdXAgYSBiaXQuCj4gcGxlYXNlIGNoZWNrIHRoaXMgcGF0Y2g6Cj4g
-OTY2NzA3MSBOZXcgICAgICAgICAgW3Y1LDEyLzEyXSBkcm0vZHJtX2lvY3RsLmM6IEJyZWFrIGlv
-Y3RsIHdoZW4gZHJtIGRldmljZQo+IG5vdCByZWdpc3RlcmVkCj4gPiAKPiA+IEZvciBub3JtYWwg
-bW9kdWxlIHVubG9hZCB0aGUgbW9kdWxlIHJlZmVyZW5jZSB3aWxsIHByZXZlbnQgdW5sb2FkaW5n
-Lgo+ID4gU28gd2h5IGV4YWN0bHkgZG8geW91IGNhcmUgYWJvdXQgdGhlIHVuYmluZCB1c2UtY2Fz
-ZT8KPiBzb21ldGltZXMgd2UgdXNlIHVuYmluZC9iaW5kIGZvciB0ZXN0aW5nIDspCgpUaGVuIG1h
-a2Ugc3VyZSB5b3Ugc3RvcCB5b3VyIHVzZXJzcGFjZSBmaXJzdC4gRml4aW5nIHVuYmluZCB0byBi
-ZQpjb21wbGV0ZWx5IHJhY2UtZnJlZSByZXF1aXJlcyBhIGJpdCBvZiB3b3JrIGluIHRoZSBkcm0g
-Y29yZS4KLURhbmllbAotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwg
-Q29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 04/07/2017 03:50 PM, Shawn Lin wrote:
+> Hi Brian,
+> 
+> On 2017/4/7 6:04, Brian Norris wrote:
+>> Hi,
+>>
+>> On Thu, Mar 30, 2017 at 02:11:19PM +0900, Jaehoon Chung wrote:
+>>> On 03/30/2017 11:53 AM, Brian Norris wrote:
+>>>> On Thu, Mar 30, 2017 at 10:18:59AM +0800, Eddie Cai wrote:
+>>>>> I test on rk3288 firefly reload with 4.11-rc4. It work fine.
+>>>>
+>>>> OK, thanks for checking.
+>>>>
+>>>>>> On Thu, Mar 30, 2017 at 09:32:22AM +0800, Shawn Lin wrote:
+>>>>>>> Hi Brian,
+>>>>>>>
+>>>>>>> On 2017/3/30 9:17, Brian Norris wrote:
+>>>>>>>> Hi all,
+>>>>>>>>
+>>>>>>>> I haven't managed to get as far as a bugfix for this, but I've bisected
+>>>>>>>> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
+>>>>>>>> in particular). v4.9 works fine.
+>>>>
+>>>> [...]
+>>>>
+>>>> By the way, Kevin (CC'd) says he noticed similiar Wifi issues on an
+>>>> Exynos 5800 Peach chromebook, but not on an Exynos 5250 Snow chromebook.   
+>>>> I haven't picked these apart yet to see what the differences and
+>>>> similarities are, but presumably it's not actually a Rockchip-specific
+>>>> bug. Maybe related to the way power sequencing is plumbed for these, for
+>>>> example?
+>>>
+>>> I'm not sure but if card-detecting is polling, the timing issue could be occurred.
+>>
+>> I don't know much about MMC in general, nor about this driver. Any
+>> chance you'd accept reverts of the patches in question though? This is a
+>> huge regression, and there were only a few relevant changes that seem to
+>> have triggered this. I can try to come up with something targeted, but
+>> I'm not going to even try if that'd get rejected up front.
+> 
+> Untile now, none of my(and my colleagues') rockchip platforms are able
+> to reproduce this issue, so I can't tell what exactly the problem is.
+> However, I noticed you mentioned that the Exynos platforms are also
+> affected by rpm of dwmmc. I don't see dw_mmc-exynos enable this feature,
+> so it looks quite odd to me!
+
+Well, exynos boards what i have didn't see the similar issue.
+But i will test all exynos boards for reproducing this.
+
+> 
+> Can I or Eddie get a Veyron board to help you debug it?
+> 
+>>
+>> Brian
+>>
+>>
+>>
+> 
+> -- 
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> 
+> 
+
