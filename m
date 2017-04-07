@@ -1,72 +1,34 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm: dw-hdmi: Implement the mode_fixup drm helper
-Date: Fri, 7 Apr 2017 20:33:07 +0200
-Message-ID: <20170407183307.etouyzkwr6yzchan@phenom.ffwll.local>
-References: <20170407121743.4142-1-romain.perier@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix the memory size of PX5 Evaluation board
+Date: Fri, 07 Apr 2017 23:15:01 +0200
+Message-ID: <2801207.lkUh043LKq@phil>
+References: <1491553169-21106-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170407121743.4142-1-romain.perier@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1491553169-21106-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMDcsIDIwMTcgYXQgMDI6MTc6NDNQTSArMDIwMCwgUm9tYWluIFBlcmllciB3
-cm90ZToKPiBUaGlzIGhlbHBlciBpcyBzdXBwb3NlZCB0byB2YWxpZGF0ZSBvciByZWplY3QgdGhl
-IG1vZGVsaW5lIGJlZm9yZSBpdAo+IGFwcGxpZWQgYnkgdGhlIG1vZGUgc2V0dGluZy4gQ3VycmVu
-dGx5IHRoaXMgZnVuY3Rpb24gaGFzIGJlZW4gZHJvcHBlZCwKPiBpdCB3YXMgcHJldmlvdXNseSBz
-ZXQgdG8gYSBkdW1teSBmdW5jdGlvbiB0aGF0IGFsd2F5cyByZXR1cm5lZCB0cnVlLiBGb3IKPiBi
-b3RoIGNhc2VzLCB0aGlzIG1lYW5zIHRoYXQgdXNlcnNwYWNlIGNhbiBhc2sgZm9yIGEgYmFkIG1v
-ZGVsaW5lIHRoYXQKPiB3aWxsIGJlIGFsd2F5cyBhY2NlcHRlZC4KPiAKPiBPbiBzb21lIHBsYXRm
-b3JtcywgbGlrZSBSb2NrY2hpcCwgdGhlIGRybSBkd19oZG1pLXJvY2tjaGlwIHZhcmlhbnQgZHJp
-dmVyCj4gYWxyZWFkeSBpbXBsZW1lbnRzIHRoZSBhdG9taWNfY2hlY2sgZHJtIGhlbHBlciwgc28g
-bW9kZV9maXh1cCBjYW5ub3QgYmUKPiBoYW5kbGVkIGFuZCBpbXBsZW1lbnRlZCB0aGVyZSAoYXMg
-ZHJtX2F0b21pY19oZWxwZXIgcmVsaWVzIG9uIGVpdGhlcgo+IGF0b21pY19jaGVjayBvciBtb2Rl
-X2ZpeHVwKS4KPiAKPiBUaGlzIGNvbW1pdCBpbXBsZW1lbnRzIHRoaXMgaGVscGVyLiBJdCBvbmx5
-IGNoZWNrcyB0aGF0IHRoaXMgbW9kZSBpcwo+IGNvcnJlY3QgZnJvbSB0aGUgY29ubmVjdG9yIHBv
-aW50IG9mIHZpZXcKPiAKPiBTaWduZWQtb2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVy
-aWVyQGNvbGxhYm9yYS5jb20+CgpZdXAgdGhpcyBpcyBob3cgaXQncyBzdXBwb3NlZCB0byBiZSBk
-b25lLCBjaGVjayBicmlkZ2UgbGltaXRzIGluIHRoZQpicmlkZ2UncyBtb2RlX2ZpeHVwIGhvb2su
-CgpBY2tlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBmZndsbC5jaD4KPiAtLS0K
-PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMgfCAxNiArKysrKysrKysrKysrKysr
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9k
-dy1oZG1pLmMKPiBpbmRleCAyMjIxMWZmLi4zYmQwODA3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9k
-dy1oZG1pLmMKPiBAQCAtMTc0MCw2ICsxNzQwLDIxIEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9icmlk
-Z2VfYXR0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gIAlyZXR1cm4gMDsKPiAgfQo+
-ICAKPiArCj4gK3N0YXRpYyBib29sIGR3X2hkbWlfYnJpZGdlX21vZGVfZml4dXAoc3RydWN0IGRy
-bV9icmlkZ2UgKmJyaWRnZSwKPiArCQkJCSAgICAgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9t
-b2RlICpvcmlnX21vZGUsCj4gKwkJCQkgICAgICBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9k
-ZSkKPiArewo+ICsJc3RydWN0IGR3X2hkbWkgKmhkbWkgPSBicmlkZ2UtPmRyaXZlcl9wcml2YXRl
-Owo+ICsJc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9ICZoZG1pLT5jb25uZWN0b3I7
-Cj4gKwllbnVtIGRybV9tb2RlX3N0YXR1cyBzdGF0dXM7Cj4gKwo+ICsJc3RhdHVzID0gZHdfaGRt
-aV9jb25uZWN0b3JfbW9kZV92YWxpZChjb25uZWN0b3IsIG1vZGUpOwo+ICsJaWYgKHN0YXR1cyAh
-PSBNT0RFX09LKQo+ICsJCXJldHVybiBmYWxzZTsKPiArCXJldHVybiB0cnVlOwo+ICt9Cj4gKwo+
-ICBzdGF0aWMgdm9pZCBkd19oZG1pX2JyaWRnZV9tb2RlX3NldChzdHJ1Y3QgZHJtX2JyaWRnZSAq
-YnJpZGdlLAo+ICAJCQkJICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICpvcmlnX21vZGUsCj4g
-IAkJCQkgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gQEAgLTE3ODEsNiArMTc5
-Niw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV9mdW5jcyBkd19oZG1pX2JyaWRn
-ZV9mdW5jcyA9IHsKPiAgCS5lbmFibGUgPSBkd19oZG1pX2JyaWRnZV9lbmFibGUsCj4gIAkuZGlz
-YWJsZSA9IGR3X2hkbWlfYnJpZGdlX2Rpc2FibGUsCj4gIAkubW9kZV9zZXQgPSBkd19oZG1pX2Jy
-aWRnZV9tb2RlX3NldCwKPiArCS5tb2RlX2ZpeHVwID0gZHdfaGRtaV9icmlkZ2VfbW9kZV9maXh1
-cCwKPiAgfTsKPiAgCj4gIHN0YXRpYyBpcnFyZXR1cm5fdCBkd19oZG1pX2kyY19pcnEoc3RydWN0
-IGR3X2hkbWkgKmhkbWkpCj4gLS0gCj4gMi45LjMKPiAKPiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJl
-IEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Freitag, 7. April 2017, 16:19:29 CEST schrieb Andy Yan:
+> Commit 122682b2abb6 ("arm64: dts: rockchip: Add PX5 Evaluation board")
+> sets the memory size to 2 GB, but this board only has 1 GB DRAM, so change
+> it to the correct value here.
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+I've added a
+Fixes: 122682b2abb6 ("arm64: dts: rockchip: Add PX5 Evaluation board")
+
+and applied it for 4.12
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
