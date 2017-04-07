@@ -1,119 +1,92 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH 1/2] drm: dw-hdmi: add specific I2S and AHB functions for
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH 1/2] drm: dw-hdmi: add specific I2S and AHB functions for
  stream handling
-Date: Fri,  7 Apr 2017 16:19:04 +0200
-Message-ID: <20170407141905.14147-2-romain.perier@collabora.com>
+Date: Fri, 7 Apr 2017 16:22:13 +0200
+Message-ID: <a5f10dd7-c257-07c5-3bf4-f19f43eeb548@baylibre.com>
 References: <20170407141905.14147-1-romain.perier@collabora.com>
+ <20170407141905.14147-2-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170407141905.14147-1-romain.perier@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Neil Armstrong <narmstrong@baylibre.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Romain Perier <romain.perier@collabora.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170407141905.14147-2-romain.perier@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, CTS+N is forced to zero as a workaround of the IP block for
-i.MX platforms. This is requested in the datasheet of the corresponding
-IP for AHB mode only. However, we have seen that it introduces glitches
-or delays when playing a sound on HDMI for I2S mode. This proves that we
-cannot keep the current functions for handling audio stream as-is if
-these contain workaround that are specific to a mode.
-
-This commit introduces two callbacks, one for each variant.
-dw_hdmi_setup defines the right function depending on the detected
-variant. Then, the exported functions dw_hdmi_audio_enable and
-dw_hdmi_audio_disable calls the corresponding callbacks
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
- drivers/gpu/drm/bridge/dw-hdmi.c | 31 +++++++++++++++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
-index 542d198..d34e0a5 100644
---- a/drivers/gpu/drm/bridge/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/dw-hdmi.c
-@@ -166,6 +166,8 @@ struct dw_hdmi {
- 
- 	void (*write)(struct dw_hdmi *hdmi, u8 val, int offset);
- 	u8 (*read)(struct dw_hdmi *hdmi, int offset);
-+	void (*enable_audio)(struct dw_hdmi *hdmi);
-+	void (*disable_audio)(struct dw_hdmi *hdmi);
- };
- 
- #define HDMI_IH_PHY_STAT0_RX_SENSE \
-@@ -557,13 +559,34 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
- 
-+void dw_hdmi_ahb_audio_enable(struct dw_hdmi *hdmi)
-+{
-+	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-+}
-+
-+void dw_hdmi_ahb_audio_disable(struct dw_hdmi *hdmi)
-+{
-+	hdmi_set_cts_n(hdmi, hdmi->audio_cts, 0);
-+}
-+
-+void dw_hdmi_i2s_audio_enable(struct dw_hdmi *hdmi)
-+{
-+	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-+}
-+
-+
-+void dw_hdmi_i2s_audio_disable(struct dw_hdmi *hdmi)
-+{
-+
-+}
-+
- void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
- {
- 	unsigned long flags;
- 
- 	spin_lock_irqsave(&hdmi->audio_lock, flags);
- 	hdmi->audio_enable = true;
--	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-+	hdmi->enable_audio(hdmi);
- 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_audio_enable);
-@@ -574,7 +597,7 @@ void dw_hdmi_audio_disable(struct dw_hdmi *hdmi)
- 
- 	spin_lock_irqsave(&hdmi->audio_lock, flags);
- 	hdmi->audio_enable = false;
--	hdmi_set_cts_n(hdmi, hdmi->audio_cts, 0);
-+	hdmi->disable_audio(hdmi);
- 	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_audio_disable);
-@@ -2114,6 +2137,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		audio.irq = irq;
- 		audio.hdmi = hdmi;
- 		audio.eld = hdmi->connector.eld;
-+		hdmi->enable_audio = dw_hdmi_ahb_audio_enable;
-+		hdmi->disable_audio = dw_hdmi_ahb_audio_disable;
- 
- 		pdevinfo.name = "dw-hdmi-ahb-audio";
- 		pdevinfo.data = &audio;
-@@ -2126,6 +2151,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		audio.hdmi	= hdmi;
- 		audio.write	= hdmi_writeb;
- 		audio.read	= hdmi_readb;
-+		hdmi->enable_audio = dw_hdmi_i2s_audio_enable;
-+		hdmi->disable_audio = dw_hdmi_i2s_audio_disable;
- 
- 		pdevinfo.name = "dw-hdmi-i2s-audio";
- 		pdevinfo.data = &audio;
--- 
-2.9.3
+T24gMDQvMDcvMjAxNyAwNDoxOSBQTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBDdXJyZW50bHks
+IENUUytOIGlzIGZvcmNlZCB0byB6ZXJvIGFzIGEgd29ya2Fyb3VuZCBvZiB0aGUgSVAgYmxvY2sg
+Zm9yCj4gaS5NWCBwbGF0Zm9ybXMuIFRoaXMgaXMgcmVxdWVzdGVkIGluIHRoZSBkYXRhc2hlZXQg
+b2YgdGhlIGNvcnJlc3BvbmRpbmcKPiBJUCBmb3IgQUhCIG1vZGUgb25seS4gSG93ZXZlciwgd2Ug
+aGF2ZSBzZWVuIHRoYXQgaXQgaW50cm9kdWNlcyBnbGl0Y2hlcwo+IG9yIGRlbGF5cyB3aGVuIHBs
+YXlpbmcgYSBzb3VuZCBvbiBIRE1JIGZvciBJMlMgbW9kZS4gVGhpcyBwcm92ZXMgdGhhdCB3ZQo+
+IGNhbm5vdCBrZWVwIHRoZSBjdXJyZW50IGZ1bmN0aW9ucyBmb3IgaGFuZGxpbmcgYXVkaW8gc3Ry
+ZWFtIGFzLWlzIGlmCj4gdGhlc2UgY29udGFpbiB3b3JrYXJvdW5kIHRoYXQgYXJlIHNwZWNpZmlj
+IHRvIGEgbW9kZS4KPiAKPiBUaGlzIGNvbW1pdCBpbnRyb2R1Y2VzIHR3byBjYWxsYmFja3MsIG9u
+ZSBmb3IgZWFjaCB2YXJpYW50Lgo+IGR3X2hkbWlfc2V0dXAgZGVmaW5lcyB0aGUgcmlnaHQgZnVu
+Y3Rpb24gZGVwZW5kaW5nIG9uIHRoZSBkZXRlY3RlZAo+IHZhcmlhbnQuIFRoZW4sIHRoZSBleHBv
+cnRlZCBmdW5jdGlvbnMgZHdfaGRtaV9hdWRpb19lbmFibGUgYW5kCj4gZHdfaGRtaV9hdWRpb19k
+aXNhYmxlIGNhbGxzIHRoZSBjb3JyZXNwb25kaW5nIGNhbGxiYWNrcwoKVGhhbmtzIGZvciB0aGUg
+cGF0Y2gsIEknbGwgdGVzdCBpdCBvbiB0aGUgQW1sb2dpYyBwbGF0Zm9ybS4KCj4gCj4gU2lnbmVk
+LW9mZi1ieTogUm9tYWluIFBlcmllciA8cm9tYWluLnBlcmllckBjb2xsYWJvcmEuY29tPgo+IC0t
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYyB8IDMxICsrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKyksIDIg
+ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHct
+aGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiBpbmRleCA1NDJkMTk4
+Li5kMzRlMGE1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5j
+Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKPiBAQCAtMTY2LDYgKzE2
+Niw4IEBAIHN0cnVjdCBkd19oZG1pIHsKPiAgCj4gIAl2b2lkICgqd3JpdGUpKHN0cnVjdCBkd19o
+ZG1pICpoZG1pLCB1OCB2YWwsIGludCBvZmZzZXQpOwo+ICAJdTggKCpyZWFkKShzdHJ1Y3QgZHdf
+aGRtaSAqaGRtaSwgaW50IG9mZnNldCk7Cj4gKwl2b2lkICgqZW5hYmxlX2F1ZGlvKShzdHJ1Y3Qg
+ZHdfaGRtaSAqaGRtaSk7Cj4gKwl2b2lkICgqZGlzYWJsZV9hdWRpbykoc3RydWN0IGR3X2hkbWkg
+KmhkbWkpOwo+ICB9Owo+ICAKPiAgI2RlZmluZSBIRE1JX0lIX1BIWV9TVEFUMF9SWF9TRU5TRSBc
+Cj4gQEAgLTU1NywxMyArNTU5LDM0IEBAIHZvaWQgZHdfaGRtaV9zZXRfc2FtcGxlX3JhdGUoc3Ry
+dWN0IGR3X2hkbWkgKmhkbWksIHVuc2lnbmVkIGludCByYXRlKQo+ICB9Cj4gIEVYUE9SVF9TWU1C
+T0xfR1BMKGR3X2hkbWlfc2V0X3NhbXBsZV9yYXRlKTsKPiAgCj4gK3ZvaWQgZHdfaGRtaV9haGJf
+YXVkaW9fZW5hYmxlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICt7Cj4gKwloZG1pX3NldF9jdHNf
+bihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIGhkbWktPmF1ZGlvX24pOwo+ICt9Cj4gKwo+ICt2b2lk
+IGR3X2hkbWlfYWhiX2F1ZGlvX2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gK3sKPiAr
+CWhkbWlfc2V0X2N0c19uKGhkbWksIGhkbWktPmF1ZGlvX2N0cywgMCk7Cj4gK30KPiArCj4gK3Zv
+aWQgZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICt7Cj4g
+KwloZG1pX3NldF9jdHNfbihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIGhkbWktPmF1ZGlvX24pOwo+
+ICt9Cj4gKwo+ICsKPiArdm9pZCBkd19oZG1pX2kyc19hdWRpb19kaXNhYmxlKHN0cnVjdCBkd19o
+ZG1pICpoZG1pKQo+ICt7Cj4gKwo+ICt9CgpGb3IgdGhpcyBvbmUsIGl0IHdvdWxkIGJlIGJldHRl
+ciB0byBzZXQgaXQgdG8gTlVMTCB0aGVuIGNoZWNrIGZvciBOVUxMLi4uCgo+ICsKPiAgdm9pZCBk
+d19oZG1pX2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgewo+ICAJdW5zaWdu
+ZWQgbG9uZyBmbGFnczsKPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgmaGRtaS0+YXVkaW9fbG9j
+aywgZmxhZ3MpOwo+ICAJaGRtaS0+YXVkaW9fZW5hYmxlID0gdHJ1ZTsKPiAtCWhkbWlfc2V0X2N0
+c19uKGhkbWksIGhkbWktPmF1ZGlvX2N0cywgaGRtaS0+YXVkaW9fbik7Cj4gKwloZG1pLT5lbmFi
+bGVfYXVkaW8oaGRtaSk7CgppZiAoaGRtaS0+ZW5hYmxlX2F1ZGlvKQoJaGRtaS0+ZW5hYmxlX2F1
+ZGlvKGhkbWkpOwoKZm9yIGNvbnNpc3RlbmN5Li4uCgo+ICAJc3Bpbl91bmxvY2tfaXJxcmVzdG9y
+ZSgmaGRtaS0+YXVkaW9fbG9jaywgZmxhZ3MpOwo+ICB9Cj4gIEVYUE9SVF9TWU1CT0xfR1BMKGR3
+X2hkbWlfYXVkaW9fZW5hYmxlKTsKPiBAQCAtNTc0LDcgKzU5Nyw3IEBAIHZvaWQgZHdfaGRtaV9h
+dWRpb19kaXNhYmxlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICAKPiAgCXNwaW5fbG9ja19pcnFz
+YXZlKCZoZG1pLT5hdWRpb19sb2NrLCBmbGFncyk7Cj4gIAloZG1pLT5hdWRpb19lbmFibGUgPSBm
+YWxzZTsKPiAtCWhkbWlfc2V0X2N0c19uKGhkbWksIGhkbWktPmF1ZGlvX2N0cywgMCk7Cj4gKwlo
+ZG1pLT5kaXNhYmxlX2F1ZGlvKGhkbWkpOwoKaWYgKGhkbWktPmRpc2FibGVfYXVkaW8pCgloZG1p
+LT5kaXNhYmxlX2F1ZGlvKGhkbWkpOwoKPiAgCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmhkbWkt
+PmF1ZGlvX2xvY2ssIGZsYWdzKTsKPiAgfQo+ICBFWFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX2F1
+ZGlvX2Rpc2FibGUpOwo+IEBAIC0yMTE0LDYgKzIxMzcsOCBAQCBfX2R3X2hkbWlfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiAgCQlhdWRpby5pcnEgPSBpcnE7Cj4gIAkJYXVk
+aW8uaGRtaSA9IGhkbWk7Cj4gIAkJYXVkaW8uZWxkID0gaGRtaS0+Y29ubmVjdG9yLmVsZDsKPiAr
+CQloZG1pLT5lbmFibGVfYXVkaW8gPSBkd19oZG1pX2FoYl9hdWRpb19lbmFibGU7Cj4gKwkJaGRt
+aS0+ZGlzYWJsZV9hdWRpbyA9IGR3X2hkbWlfYWhiX2F1ZGlvX2Rpc2FibGU7Cj4gIAo+ICAJCXBk
+ZXZpbmZvLm5hbWUgPSAiZHctaGRtaS1haGItYXVkaW8iOwo+ICAJCXBkZXZpbmZvLmRhdGEgPSAm
+YXVkaW87Cj4gQEAgLTIxMjYsNiArMjE1MSw4IEBAIF9fZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxh
+dGZvcm1fZGV2aWNlICpwZGV2LAo+ICAJCWF1ZGlvLmhkbWkJPSBoZG1pOwo+ICAJCWF1ZGlvLndy
+aXRlCT0gaGRtaV93cml0ZWI7Cj4gIAkJYXVkaW8ucmVhZAk9IGhkbWlfcmVhZGI7Cj4gKwkJaGRt
+aS0+ZW5hYmxlX2F1ZGlvID0gZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlOwo+ICsJCWhkbWktPmRp
+c2FibGVfYXVkaW8gPSBkd19oZG1pX2kyc19hdWRpb19kaXNhYmxlOwo+ICAKPiAgCQlwZGV2aW5m
+by5uYW1lID0gImR3LWhkbWktaTJzLWF1ZGlvIjsKPiAgCQlwZGV2aW5mby5kYXRhID0gJmF1ZGlv
+Owo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
