@@ -1,76 +1,77 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
+From: Romain Perier <romain.perier@collabora.com>
 Subject: Re: [PATCH 2/2] drm: dw-hdmi: Gate audio clock from the I2S
  enablement callbacks
-Date: Fri, 7 Apr 2017 16:23:57 +0200
-Message-ID: <984b7a29-81a8-8404-0c76-d632b4ae9a9d@baylibre.com>
+Date: Fri, 7 Apr 2017 16:29:36 +0200
+Message-ID: <05452cde-3048-b572-80a9-55609724ba21@collabora.com>
 References: <20170407141905.14147-1-romain.perier@collabora.com>
  <20170407141905.14147-3-romain.perier@collabora.com>
+ <984b7a29-81a8-8404-0c76-d632b4ae9a9d@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170407141905.14147-3-romain.perier@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <984b7a29-81a8-8404-0c76-d632b4ae9a9d@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDQvMDcvMjAxNyAwNDoxOSBQTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBDdXJyZW50bHks
-IHRoZSBhdWRpbyBzYW1wbGVyIGNsb2NrIGlzIGVuYWJsZWQgZnJvbSBkd19oZG1pX3NldHVwKCkg
-YXQKPiBzdGVwIEUuIGFuZCBpcyBrZXB0IGVuYWJsZWQgZm9yIGxhdGVyIHVzZS4gVGhpcyBjbG9j
-ayBzaG91bGQgYmUgZW5hYmxlZAo+IGFuZCBkaXNhYmxlZCBhbG9uZyB3aXRoIHRoZSBhY3R1YWwg
-YXVkaW8gc3RyZWFtIGFuZCBub3QgYWx3YXlzIG9uICh0aGF0Cj4gaXMgYmFkIGZvciBQTSkuIEZ1
-dGhlcm1vcmUsIGFzIGRlc2NyaWJlZCBieSB0aGUgZGF0YXNoZWV0LCB0aGUgSTJTCj4gdmFyaWFu
-dCBuZWVkIHRvIGdhdGUvdW5nYXRlIHRoZSBjbG9jayB3aGVuIHRoZSBzdHJlYW0gaXMKPiBlbmFi
-bGVkL2Rpc2FibGVkLgo+IAo+IFRoaXMgY29tbWl0IGFkZHMgYSBwYXJhbWV0ZXIgdG8gaGRtaV9h
-dWRpb19lbmFibGVfY2xrKCkgdGhhdCBjb250cm9scwo+IHdoZW4gdGhlIGF1ZGlvIHNhbXBsZSBj
-bG9jayBtdXN0IGJlIGVuYWJsZWQgb3IgZGlzYWJsZWQuIFRoZW4sIGl0IGFkZHMKPiB0aGUgY2Fs
-bCB0byB0aGlzIGZ1bmN0aW9uIGZyb20gZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlKCkgYW5kCj4g
-ZHdfaGRtaV9pMnNfYXVkaW9fZGlzYWJsZSgpLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJvbWFpbiBQ
-ZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9kdy1oZG1pLmMgfCAxNiArKysrKysrKystLS0tLS0tCj4gIDEgZmlsZSBjaGFu
-Z2VkLCA5IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvZHctaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9k
-dy1oZG1pLmMKPiBpbmRleCBkMzRlMGE1Li4zYmQwODA3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9k
-dy1oZG1pLmMKPiBAQCAtNTU5LDYgKzU1OSwxMiBAQCB2b2lkIGR3X2hkbWlfc2V0X3NhbXBsZV9y
-YXRlKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25lZCBpbnQgcmF0ZSkKPiAgfQo+ICBFWFBP
-UlRfU1lNQk9MX0dQTChkd19oZG1pX3NldF9zYW1wbGVfcmF0ZSk7Cj4gIAo+ICtzdGF0aWMgdm9p
-ZCBoZG1pX2VuYWJsZV9hdWRpb19jbGsoc3RydWN0IGR3X2hkbWkgKmhkbWksIGJvb2wgZW5hYmxl
-KQo+ICt7Cj4gKwloZG1pX21vZGIoaGRtaSwgZW5hYmxlID8gMCA6IEhETUlfTUNfQ0xLRElTX0FV
-RENMS19ESVNBQkxFLAo+ICsJCSAgSERNSV9NQ19DTEtESVNfQVVEQ0xLX0RJU0FCTEUsIEhETUlf
-TUNfQ0xLRElTKTsKPiArfQo+ICsKPiAgdm9pZCBkd19oZG1pX2FoYl9hdWRpb19lbmFibGUoc3Ry
-dWN0IGR3X2hkbWkgKmhkbWkpCj4gIHsKPiAgCWhkbWlfc2V0X2N0c19uKGhkbWksIGhkbWktPmF1
-ZGlvX2N0cywgaGRtaS0+YXVkaW9fbik7Cj4gQEAgLTU3MiwxMiArNTc4LDEzIEBAIHZvaWQgZHdf
-aGRtaV9haGJfYXVkaW9fZGlzYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgdm9pZCBkd19o
-ZG1pX2kyc19hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gIHsKPiAgCWhkbWlf
-c2V0X2N0c19uKGhkbWksIGhkbWktPmF1ZGlvX2N0cywgaGRtaS0+YXVkaW9fbik7Cj4gKwloZG1p
-X2VuYWJsZV9hdWRpb19jbGsoaGRtaSwgdHJ1ZSk7Cj4gIH0KPiAgCj4gIAo+ICB2b2lkIGR3X2hk
-bWlfaTJzX2F1ZGlvX2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gIHsKPiAtCj4gKwlo
-ZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRtaSwgZmFsc2UpOwo+ICB9CgpJIHRoaW5rIHRoZSBOVUxM
-IGNoZWNrIGlzIHN0aWxsIHZhbGlkIGlmIHlvdSBmaWxsIHRoaXMgZnVuY3Rpb24sIGJlY2F1c2Ug
-dGhlIElQIGFsc28Kc3VwcG9ydCBvdGhlciBtb2RlcyAoU1BESUYgYW5kIEdQQSkuCgo+ICAKPiAg
-dm9pZCBkd19oZG1pX2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiBAQCAtMTM2
-NSwxMSArMTM3Miw2IEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfZW5hYmxlX3ZpZGVvX3BhdGgoc3Ry
-dWN0IGR3X2hkbWkgKmhkbWkpCj4gIAl9Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGhkbWlfZW5h
-YmxlX2F1ZGlvX2NsayhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAtewo+IC0JaGRtaV9tb2RiKGhk
-bWksIDAsIEhETUlfTUNfQ0xLRElTX0FVRENMS19ESVNBQkxFLCBIRE1JX01DX0NMS0RJUyk7Cj4g
-LX0KPiAtCj4gIC8qIFdvcmthcm91bmQgdG8gY2xlYXIgdGhlIG92ZXJmbG93IGNvbmRpdGlvbiAq
-Lwo+ICBzdGF0aWMgdm9pZCBkd19oZG1pX2NsZWFyX292ZXJmbG93KHN0cnVjdCBkd19oZG1pICpo
-ZG1pKQo+ICB7Cj4gQEAgLTE0NzEsNyArMTQ3Myw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9zZXR1
-cChzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4g
-IAo+ICAJCS8qIEhETUkgSW5pdGlhbGl6YXRpb24gU3RlcCBFIC0gQ29uZmlndXJlIGF1ZGlvICov
-Cj4gIAkJaGRtaV9jbGtfcmVnZW5lcmF0b3JfdXBkYXRlX3BpeGVsX2Nsb2NrKGhkbWkpOwo+IC0J
-CWhkbWlfZW5hYmxlX2F1ZGlvX2NsayhoZG1pKTsKPiArCQloZG1pX2VuYWJsZV9hdWRpb19jbGso
-aGRtaSwgdHJ1ZSk7Cj4gIAl9Cj4gIAo+ICAJLyogbm90IGZvciBEVkkgbW9kZSAqLwo+IAoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hello,
+
+
+Le 07/04/2017 à 16:23, Neil Armstrong a écrit :
+> On 04/07/2017 04:19 PM, Romain Perier wrote:
+>> Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
+>> step E. and is kept enabled for later use. This clock should be enabled
+>> and disabled along with the actual audio stream and not always on (that
+>> is bad for PM). Futhermore, as described by the datasheet, the I2S
+>> variant need to gate/ungate the clock when the stream is
+>> enabled/disabled.
+>>
+>> This commit adds a parameter to hdmi_audio_enable_clk() that controls
+>> when the audio sample clock must be enabled or disabled. Then, it adds
+>> the call to this function from dw_hdmi_i2s_audio_enable() and
+>> dw_hdmi_i2s_audio_disable().
+>>
+>> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+>> ---
+>>  drivers/gpu/drm/bridge/dw-hdmi.c | 16 +++++++++-------
+>>  1 file changed, 9 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/dw-hdmi.c b/drivers/gpu/drm/bridge/dw-hdmi.c
+>> index d34e0a5..3bd0807 100644
+>> --- a/drivers/gpu/drm/bridge/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/dw-hdmi.c
+>> @@ -559,6 +559,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
+>>  }
+>>  EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
+>>  
+>> +static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
+>> +{
+>> +	hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
+>> +		  HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
+>> +}
+>> +
+>>  void dw_hdmi_ahb_audio_enable(struct dw_hdmi *hdmi)
+>>  {
+>>  	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
+>> @@ -572,12 +578,13 @@ void dw_hdmi_ahb_audio_disable(struct dw_hdmi *hdmi)
+>>  void dw_hdmi_i2s_audio_enable(struct dw_hdmi *hdmi)
+>>  {
+>>  	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
+>> +	hdmi_enable_audio_clk(hdmi, true);
+>>  }
+>>  
+>>  
+>>  void dw_hdmi_i2s_audio_disable(struct dw_hdmi *hdmi)
+>>  {
+>> -
+>> +	hdmi_enable_audio_clk(hdmi, false);
+>>  }
+> I think the NULL check is still valid if you fill this function, because the IP also
+> support other modes (SPDIF and GPA).
+
+Ah, good point!
+
+Thanks,
+Romain
