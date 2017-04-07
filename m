@@ -1,32 +1,73 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/3] ARM: dts: rockchip: rock2: Setup usb vbus-supply
-Date: Fri, 07 Apr 2017 00:23:39 +0200
-Message-ID: <2204588.mS7ruK0rnT@phil>
-References: <20170405140613.4444-1-sjoerd.simons@collabora.co.uk> <20170405140613.4444-3-sjoerd.simons@collabora.co.uk>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron boards
+Date: Fri, 07 Apr 2017 13:59:45 +0900
+Message-ID: <ff7d064d-6ab5-db09-f22c-b01940af337d@samsung.com>
+References: <20170330011709.GA110687@google.com>
+ <6d87cb71-1339-0dc9-e071-1c117f541881@rock-chips.com>
+ <20170330014230.GA21467@google.com>
+ <CANCyOWYsG9rpCvEsBMDJAyOTjKJCe=O-35-Zbhjh4is+op_h=w@mail.gmail.com>
+ <CGME20170330025350epcas4p423e66068f5d962677952830258676fcf@epcas4p4.samsung.com>
+ <20170330025345.GA29421@google.com>
+ <6b9a3425-fe3c-0c9a-8d1b-d2d2ac1ec9de@samsung.com>
+ <20170406220410.GA5708@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170405140613.4444-3-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <20170406220410.GA5708@google.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Eddie Cai <eddie.cai.kernel@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, amstan@chromium.org, Kevin Mihelich <kevin@archlinuxarm.org>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 5. April 2017, 16:06:11 CEST schrieb Sjoerd Simons:
-> Now that the rockchip usb phy has a vbus-supply property use that to
-> control the vbus regulator on rock2.
+On 04/07/2017 07:04 AM, Brian Norris wrote:
+> Hi,
 > 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+> On Thu, Mar 30, 2017 at 02:11:19PM +0900, Jaehoon Chung wrote:
+>> On 03/30/2017 11:53 AM, Brian Norris wrote:
+>>> On Thu, Mar 30, 2017 at 10:18:59AM +0800, Eddie Cai wrote:
+>>>> I test on rk3288 firefly reload with 4.11-rc4. It work fine.
+>>>
+>>> OK, thanks for checking.
+>>>
+>>>>> On Thu, Mar 30, 2017 at 09:32:22AM +0800, Shawn Lin wrote:
+>>>>>> Hi Brian,
+>>>>>>
+>>>>>> On 2017/3/30 9:17, Brian Norris wrote:
+>>>>>>> Hi all,
+>>>>>>>
+>>>>>>> I haven't managed to get as far as a bugfix for this, but I've bisected
+>>>>>>> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
+>>>>>>> in particular). v4.9 works fine.
+>>>
+>>> [...]
+>>>
+>>> By the way, Kevin (CC'd) says he noticed similiar Wifi issues on an
+>>> Exynos 5800 Peach chromebook, but not on an Exynos 5250 Snow chromebook.	
+>>> I haven't picked these apart yet to see what the differences and
+>>> similarities are, but presumably it's not actually a Rockchip-specific
+>>> bug. Maybe related to the way power sequencing is plumbed for these, for
+>>> example?
+>>
+>> I'm not sure but if card-detecting is polling, the timing issue could be occurred.
+> 
+> I don't know much about MMC in general, nor about this driver. Any
+> chance you'd accept reverts of the patches in question though? This is a
+> huge regression, and there were only a few relevant changes that seem to
+> have triggered this. I can try to come up with something targeted, but
+> I'm not going to even try if that'd get rejected up front.
 
-I've queued this for 4.13 .
+Sure, if it's big regression, we can revert the patches relevant to problem.
+After fixing it, we can re-apply them..before reverting, i will try to fix it until next Wends,
 
-Not eligible for 4.12, as the patch alone (when testing my tree or armsoc)
-would regress the sata-bridge, due to the regulator-always-on going away.
+Otherwise, will revert them at that time.
 
+Best Regards,
+Jaehoon Chung
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Brian
+> 
+> 
+> 
+
