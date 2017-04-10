@@ -1,75 +1,42 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH] drm: dw-hdmi: Implement the mode_fixup drm helper
-Date: Mon, 10 Apr 2017 16:24:10 +0530
-Message-ID: <24a858d4-fba4-3218-dffd-8185a070fd9d@codeaurora.org>
-References: <20170407121743.4142-1-romain.perier@collabora.com>
- <20170407183307.etouyzkwr6yzchan@phenom.ffwll.local>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
+Subject: Re: [PATCH 0/2] drm: dw-hdmi: various improvements
+Date: Mon, 10 Apr 2017 12:14:03 +0100
+Message-ID: <20170410111402.GO17774@n2100.armlinux.org.uk>
+References: <20170407141905.14147-1-romain.perier@collabora.com>
+ <f0ff38c5-46f0-0702-ca68-ccebf5b8c910@codeaurora.org>
+ <20170410100807.GN17774@n2100.armlinux.org.uk>
+ <5b7e5643-e86d-37ac-e220-c81e34af13ba@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170407183307.etouyzkwr6yzchan@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>, David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5b7e5643-e86d-37ac-e220-c81e34af13ba@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: Archit Taneja <architt@codeaurora.org>, Romain Perier <romain.perier@collabora.com>, David Airlie <airlied@linux.ie>, Jose Abreu <Jose.Abreu@synopsys.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNC8wOC8yMDE3IDEyOjAzIEFNLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+IE9uIEZyaSwg
-QXByIDA3LCAyMDE3IGF0IDAyOjE3OjQzUE0gKzAyMDAsIFJvbWFpbiBQZXJpZXIgd3JvdGU6Cj4+
-IFRoaXMgaGVscGVyIGlzIHN1cHBvc2VkIHRvIHZhbGlkYXRlIG9yIHJlamVjdCB0aGUgbW9kZWxp
-bmUgYmVmb3JlIGl0Cj4+IGFwcGxpZWQgYnkgdGhlIG1vZGUgc2V0dGluZy4gQ3VycmVudGx5IHRo
-aXMgZnVuY3Rpb24gaGFzIGJlZW4gZHJvcHBlZCwKPj4gaXQgd2FzIHByZXZpb3VzbHkgc2V0IHRv
-IGEgZHVtbXkgZnVuY3Rpb24gdGhhdCBhbHdheXMgcmV0dXJuZWQgdHJ1ZS4gRm9yCj4+IGJvdGgg
-Y2FzZXMsIHRoaXMgbWVhbnMgdGhhdCB1c2Vyc3BhY2UgY2FuIGFzayBmb3IgYSBiYWQgbW9kZWxp
-bmUgdGhhdAo+PiB3aWxsIGJlIGFsd2F5cyBhY2NlcHRlZC4KPj4KPj4gT24gc29tZSBwbGF0Zm9y
-bXMsIGxpa2UgUm9ja2NoaXAsIHRoZSBkcm0gZHdfaGRtaS1yb2NrY2hpcCB2YXJpYW50IGRyaXZl
-cgo+PiBhbHJlYWR5IGltcGxlbWVudHMgdGhlIGF0b21pY19jaGVjayBkcm0gaGVscGVyLCBzbyBt
-b2RlX2ZpeHVwIGNhbm5vdCBiZQo+PiBoYW5kbGVkIGFuZCBpbXBsZW1lbnRlZCB0aGVyZSAoYXMg
-ZHJtX2F0b21pY19oZWxwZXIgcmVsaWVzIG9uIGVpdGhlcgo+PiBhdG9taWNfY2hlY2sgb3IgbW9k
-ZV9maXh1cCkuCj4+Cj4+IFRoaXMgY29tbWl0IGltcGxlbWVudHMgdGhpcyBoZWxwZXIuIEl0IG9u
-bHkgY2hlY2tzIHRoYXQgdGhpcyBtb2RlIGlzCj4+IGNvcnJlY3QgZnJvbSB0aGUgY29ubmVjdG9y
-IHBvaW50IG9mIHZpZXcKPj4KPj4gU2lnbmVkLW9mZi1ieTogUm9tYWluIFBlcmllciA8cm9tYWlu
-LnBlcmllckBjb2xsYWJvcmEuY29tPgkKPgo+IFl1cCB0aGlzIGlzIGhvdyBpdCdzIHN1cHBvc2Vk
-IHRvIGJlIGRvbmUsIGNoZWNrIGJyaWRnZSBsaW1pdHMgaW4gdGhlCj4gYnJpZGdlJ3MgbW9kZV9m
-aXh1cCBob29rLgo+Cj4gQWNrZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3
-bGwuY2g+CgpxdWV1ZWQgdG8gZHJtLW1pc2MtbmV4dC1maXhlcyAoc28gdGhhdCBpdCBtYWtlcyBp
-dCBpbnRvIDQuMTIpLgoKVGhhbmtzLApBcmNoaXQKCj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9kdy1oZG1pLmMgfCAxNiArKysrKysrKysrKysrKysrCj4+ICAxIGZpbGUgY2hhbmdl
-ZCwgMTYgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYwo+PiBpbmRl
-eCAyMjIxMWZmLi4zYmQwODA3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
-L2R3LWhkbWkuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYwo+PiBA
-QCAtMTc0MCw2ICsxNzQwLDIxIEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9icmlkZ2VfYXR0YWNoKHN0
-cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4+ICAJcmV0dXJuIDA7Cj4+ICB9Cj4+Cj4+ICsKPj4g
-K3N0YXRpYyBib29sIGR3X2hkbWlfYnJpZGdlX21vZGVfZml4dXAoc3RydWN0IGRybV9icmlkZ2Ug
-KmJyaWRnZSwKPj4gKwkJCQkgICAgICBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqb3Jp
-Z19tb2RlLAo+PiArCQkJCSAgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+PiAr
-ewo+PiArCXN0cnVjdCBkd19oZG1pICpoZG1pID0gYnJpZGdlLT5kcml2ZXJfcHJpdmF0ZTsKPj4g
-KwlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yID0gJmhkbWktPmNvbm5lY3RvcjsKPj4g
-KwllbnVtIGRybV9tb2RlX3N0YXR1cyBzdGF0dXM7Cj4+ICsKPj4gKwlzdGF0dXMgPSBkd19oZG1p
-X2Nvbm5lY3Rvcl9tb2RlX3ZhbGlkKGNvbm5lY3RvciwgbW9kZSk7Cj4+ICsJaWYgKHN0YXR1cyAh
-PSBNT0RFX09LKQo+PiArCQlyZXR1cm4gZmFsc2U7Cj4+ICsJcmV0dXJuIHRydWU7Cj4+ICt9Cj4+
-ICsKPj4gIHN0YXRpYyB2b2lkIGR3X2hkbWlfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJp
-ZGdlICpicmlkZ2UsCj4+ICAJCQkJICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICpvcmlnX21v
-ZGUsCj4+ICAJCQkJICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+PiBAQCAtMTc4
-MSw2ICsxNzk2LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGR3X2hk
-bWlfYnJpZGdlX2Z1bmNzID0gewo+PiAgCS5lbmFibGUgPSBkd19oZG1pX2JyaWRnZV9lbmFibGUs
-Cj4+ICAJLmRpc2FibGUgPSBkd19oZG1pX2JyaWRnZV9kaXNhYmxlLAo+PiAgCS5tb2RlX3NldCA9
-IGR3X2hkbWlfYnJpZGdlX21vZGVfc2V0LAo+PiArCS5tb2RlX2ZpeHVwID0gZHdfaGRtaV9icmlk
-Z2VfbW9kZV9maXh1cCwKPj4gIH07Cj4+Cj4+ICBzdGF0aWMgaXJxcmV0dXJuX3QgZHdfaGRtaV9p
-MmNfaXJxKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+PiAtLQo+PiAyLjkuMwo+Pgo+PiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0Cj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4gaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPgoKLS0gClF1
-YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3Jh
-IEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Mon, Apr 10, 2017 at 12:35:43PM +0200, Neil Armstrong wrote:
+> Hi Russell,
+> 
+> Cross tree with media has already been done on this cycle with the
+> dw-hdmi formats changes.
+> 
+> Nevertheless, please push your updated dw-hdmi cec patchset for tests
+> and review based on the latest drm-misc-next and hverkuil's HPD notifier
+> release.
+
+You can get my current version at:
+
+ git://git.armlinux.org.uk/~rmk/linux-arm.git cec-v18
+
+As it's taken me over a week to validate both dw-hdmi and tda998x against
+the latest version of Hans patches (despite me wanting to get it out to
+Hans), I don't have the bandwidth to rebase it onto some other tree and
+re-test at the moment.  As we're at -rc6 today, I doubt that'll happen
+before the merge window, sorry.
+
+-- 
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
