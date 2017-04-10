@@ -1,28 +1,27 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] dt-bindings: document: add firefly-rk3399 board
- support
-Date: Mon, 10 Apr 2017 11:25:17 -0500
-Message-ID: <20170410162517.jk2um6b4ckixt3yx@rob-hp-laptop>
-References: <1491384800-22412-1-git-send-email-kever.yang@rock-chips.com>
- <1491384800-22412-2-git-send-email-kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 3/3] dt-bindings: Document Phytec phyCORE-RK3288 RDK
+Date: Mon, 10 Apr 2017 13:26:41 -0500
+Message-ID: <20170410182641.gckm7wpbqlh2kp2q@rob-hp-laptop>
+References: <1491483866-18368-1-git-send-email-w.egorov@phytec.de>
+ <1491483866-18368-3-git-send-email-w.egorov@phytec.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1491384800-22412-2-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1491483866-18368-3-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 05, 2017 at 05:33:20PM +0800, Kever Yang wrote:
-> Use "firefly,firefly-rk3399" compatible string for firefly-rk3399 board.
+On Thu, Apr 06, 2017 at 03:04:26PM +0200, Wadim Egorov wrote:
+> Add documentation for the PCM-947 carrier board, a RK3288 based
+> development board made by PHYTEC.
 > 
-> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
 > ---
-> 
-> Changes in v2: None
-> 
+> No changes in v2
+> ---
 >  Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
 >  1 file changed, 4 insertions(+)
 
