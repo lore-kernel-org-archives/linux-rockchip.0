@@ -1,56 +1,62 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
+From: Neil Armstrong <narmstrong@baylibre.com>
 Subject: Re: [PATCH 0/2] drm: dw-hdmi: various improvements
-Date: Mon, 10 Apr 2017 11:08:07 +0100
-Message-ID: <20170410100807.GN17774@n2100.armlinux.org.uk>
+Date: Mon, 10 Apr 2017 12:35:43 +0200
+Message-ID: <5b7e5643-e86d-37ac-e220-c81e34af13ba@baylibre.com>
 References: <20170407141905.14147-1-romain.perier@collabora.com>
  <f0ff38c5-46f0-0702-ca68-ccebf5b8c910@codeaurora.org>
+ <20170410100807.GN17774@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <f0ff38c5-46f0-0702-ca68-ccebf5b8c910@codeaurora.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>
-Cc: Romain Perier <romain.perier@collabora.com>, David Airlie <airlied@linux.ie>, Jose Abreu <Jose.Abreu@synopsys.com>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170410100807.GN17774@n2100.armlinux.org.uk>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@armlinux.org.uk>, Archit Taneja <architt@codeaurora.org>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Romain Perier <romain.perier@collabora.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 10, 2017 at 10:49:18AM +0530, Archit Taneja wrote:
-> Hi,
-> 
-> On 04/07/2017 07:49 PM, Romain Perier wrote:
-> >This set of patches split the stream handling functions in two parts. It
-> >introduces new callbacks that are specific to each variant, one for I2S
-> >and one for AHB.
-> >
-> >Then, as requested by the datasheet for the I2S variant, it adds support
-> >for gating the audio sampler clock when the audio stream is enabled and
-> >disabled.
-> >
-> >This patches series is the continuity of the following discussion:
-> >http://lists.infradead.org/pipermail/linux-arm-kernel/2017-March/493550.html
-> 
-> Since these aren't fixes, could you make sure to redo the patches over:
-> 
-> git://anongit.freedesktop.org/drm-misc drm-misc-next
-> 
-> The dw-hdmi driver is now under drivers/gpu/drm/bridge/synopsis/
-
-This is annoying as it makes submission of CEC support for dw-hdmi
-rather difficult due to the now horrid cross-tree dependencies:
-
-* if I submit it to the DRM tree, the DRM tree will build break because
-  you don't have the necessary CEC changes which have recently been
-  merged into the media tree.
-
-* if I submit it to the media tree, the new files will be placed into
-  drivers/gpu/drm/bridge and when stuff gets merged into linux-next
-  and/or Linus' tree, things will need quite a large fixup (someone
-  will have to rename the files and fix the Kconfig/Makefiles.)
-
-So, I'll hold it back for another cycle to avoid the mess that would
-result from trying to get it merged during this cycle.
-
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+T24gMDQvMTAvMjAxNyAxMjowOCBQTSwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+
+IE9uIE1vbiwgQXByIDEwLCAyMDE3IGF0IDEwOjQ5OjE4QU0gKzA1MzAsIEFyY2hpdCBUYW5lamEg
+d3JvdGU6Cj4+IEhpLAo+Pgo+PiBPbiAwNC8wNy8yMDE3IDA3OjQ5IFBNLCBSb21haW4gUGVyaWVy
+IHdyb3RlOgo+Pj4gVGhpcyBzZXQgb2YgcGF0Y2hlcyBzcGxpdCB0aGUgc3RyZWFtIGhhbmRsaW5n
+IGZ1bmN0aW9ucyBpbiB0d28gcGFydHMuIEl0Cj4+PiBpbnRyb2R1Y2VzIG5ldyBjYWxsYmFja3Mg
+dGhhdCBhcmUgc3BlY2lmaWMgdG8gZWFjaCB2YXJpYW50LCBvbmUgZm9yIEkyUwo+Pj4gYW5kIG9u
+ZSBmb3IgQUhCLgo+Pj4KPj4+IFRoZW4sIGFzIHJlcXVlc3RlZCBieSB0aGUgZGF0YXNoZWV0IGZv
+ciB0aGUgSTJTIHZhcmlhbnQsIGl0IGFkZHMgc3VwcG9ydAo+Pj4gZm9yIGdhdGluZyB0aGUgYXVk
+aW8gc2FtcGxlciBjbG9jayB3aGVuIHRoZSBhdWRpbyBzdHJlYW0gaXMgZW5hYmxlZCBhbmQKPj4+
+IGRpc2FibGVkLgo+Pj4KPj4+IFRoaXMgcGF0Y2hlcyBzZXJpZXMgaXMgdGhlIGNvbnRpbnVpdHkg
+b2YgdGhlIGZvbGxvd2luZyBkaXNjdXNzaW9uOgo+Pj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvcGlwZXJtYWlsL2xpbnV4LWFybS1rZXJuZWwvMjAxNy1NYXJjaC80OTM1NTAuaHRtbAo+Pgo+
+PiBTaW5jZSB0aGVzZSBhcmVuJ3QgZml4ZXMsIGNvdWxkIHlvdSBtYWtlIHN1cmUgdG8gcmVkbyB0
+aGUgcGF0Y2hlcyBvdmVyOgo+Pgo+PiBnaXQ6Ly9hbm9uZ2l0LmZyZWVkZXNrdG9wLm9yZy9kcm0t
+bWlzYyBkcm0tbWlzYy1uZXh0Cj4+Cj4+IFRoZSBkdy1oZG1pIGRyaXZlciBpcyBub3cgdW5kZXIg
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHNpcy8KPiAKPiBUaGlzIGlzIGFubm95aW5nIGFz
+IGl0IG1ha2VzIHN1Ym1pc3Npb24gb2YgQ0VDIHN1cHBvcnQgZm9yIGR3LWhkbWkKPiByYXRoZXIg
+ZGlmZmljdWx0IGR1ZSB0byB0aGUgbm93IGhvcnJpZCBjcm9zcy10cmVlIGRlcGVuZGVuY2llczoK
+PiAKPiAqIGlmIEkgc3VibWl0IGl0IHRvIHRoZSBEUk0gdHJlZSwgdGhlIERSTSB0cmVlIHdpbGwg
+YnVpbGQgYnJlYWsgYmVjYXVzZQo+ICAgeW91IGRvbid0IGhhdmUgdGhlIG5lY2Vzc2FyeSBDRUMg
+Y2hhbmdlcyB3aGljaCBoYXZlIHJlY2VudGx5IGJlZW4KPiAgIG1lcmdlZCBpbnRvIHRoZSBtZWRp
+YSB0cmVlLgo+IAo+ICogaWYgSSBzdWJtaXQgaXQgdG8gdGhlIG1lZGlhIHRyZWUsIHRoZSBuZXcg
+ZmlsZXMgd2lsbCBiZSBwbGFjZWQgaW50bwo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZSBhbmQg
+d2hlbiBzdHVmZiBnZXRzIG1lcmdlZCBpbnRvIGxpbnV4LW5leHQKPiAgIGFuZC9vciBMaW51cycg
+dHJlZSwgdGhpbmdzIHdpbGwgbmVlZCBxdWl0ZSBhIGxhcmdlIGZpeHVwIChzb21lb25lCj4gICB3
+aWxsIGhhdmUgdG8gcmVuYW1lIHRoZSBmaWxlcyBhbmQgZml4IHRoZSBLY29uZmlnL01ha2VmaWxl
+cy4pCj4gCj4gU28sIEknbGwgaG9sZCBpdCBiYWNrIGZvciBhbm90aGVyIGN5Y2xlIHRvIGF2b2lk
+IHRoZSBtZXNzIHRoYXQgd291bGQKPiByZXN1bHQgZnJvbSB0cnlpbmcgdG8gZ2V0IGl0IG1lcmdl
+ZCBkdXJpbmcgdGhpcyBjeWNsZS4KPiAKCkhpIFJ1c3NlbGwsCgpDcm9zcyB0cmVlIHdpdGggbWVk
+aWEgaGFzIGFscmVhZHkgYmVlbiBkb25lIG9uIHRoaXMgY3ljbGUgd2l0aCB0aGUKZHctaGRtaSBm
+b3JtYXRzIGNoYW5nZXMuCgpOZXZlcnRoZWxlc3MsIHBsZWFzZSBwdXNoIHlvdXIgdXBkYXRlZCBk
+dy1oZG1pIGNlYyBwYXRjaHNldCBmb3IgdGVzdHMKYW5kIHJldmlldyBiYXNlZCBvbiB0aGUgbGF0
+ZXN0IGRybS1taXNjLW5leHQgYW5kIGh2ZXJrdWlsJ3MgSFBEIG5vdGlmaWVyCnJlbGVhc2UuCgpJ
+IHdvdWxkIGxpa2UgdG8gcnVuIGl0IG9uIHNvbWUgQW1sb2dpYyBib2FyZHMuCgpOZWlsCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
