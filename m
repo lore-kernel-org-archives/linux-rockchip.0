@@ -1,198 +1,111 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron boards
-Date: Mon, 10 Apr 2017 16:35:55 -0700
-Message-ID: <CAD=FV=WWt=20WUT8jhZ3fBPiQq9UM-bEuFSXuuNu_7d3ONLdLQ@mail.gmail.com>
-References: <20170330011709.GA110687@google.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: [PATCH v2 1/2] power: regulator: pwm: support pwm polarity
+	setting
+Date: Tue, 11 Apr 2017 16:35:37 +0800
+Message-ID: <1491899738-10087-1-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20170330011709.GA110687@google.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru M Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, kevin@archlinuxarm.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: heiko@sntech.de
+Cc: u-boot@lists.denx.de, Elaine Zhang <zhangqing@rock-chips.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Mar 29, 2017 at 6:17 PM, Brian Norris <briannorris@chromium.org> wrote:
-> Hi all,
->
-> I haven't managed to get as far as a bugfix for this, but I've bisected
-> some issues seen on v4.10+ with a Chromebook of the Veyron family (Jaq,
-> in particular). v4.9 works fine.
-
-OK, I finally got everything up and running to test this too...
-
-
-> Issue #1 - eMMC complains periodically:
->
-> [    4.358135] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [    4.461466] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [    5.291450] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [    5.381471] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [   11.243337] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [   17.371628] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-
-I don't believe that this is an error, actually.  Really we just need
-to quiet this message or (since I've always found it useful) move it
-to a different place.  I believe that with runtime PM we're
-effectively turning the clock off whenever the MMC device isn't in
-use.  On dw_mmc we have a "helpful" printout every time the clock is
-changed, and that's what you're seeing here.
-
-You can see with:
-
-while true; do
-  dd if=/dev/mmcblk2 of=/dev/null bs=512 count=1 iflag=direct;
-  sleep .1;
-done
-
-...that you'll get a printout every 100ms.
-
-
-Ah, looks like this is in:
-
-ce69e2fea093 mmc: dw_mmc: silent verbose log when calling from PM context
-
-...as pointed out by Shawn Lin.  So I think in 4.10 we can just ignore
-those messages and they're good on 4.11.
-
-
-> and if I stress it out at all (e.g., dd if=/dev/mmcblk2 bs=1M >
-> /dev/null), it will eventually croak:
->
-> [  359.916315] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [  360.071378] dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to 153
-> [  360.211351] mmcblk2: error -110 transferring data, sector 8644608, nr 2048, cmd response 0x900, card status 0x0
-> [  360.221936] mmcblk2: retrying using single block read
-> [  363.491362] mmcblk2: error -110 transferring data, sector 8646656, nr 2048, cmd response 0x900, card status 0x0
-> [  363.531569] mmc_host mmc2: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> [  363.596326] mmc_host mmc2: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [  363.612712] dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to 152
-> [  363.751351] mmcblk2: error -110 transferring data, sector 8646656, nr 2048, cmd response 0x900, card status 0x0
-> [  363.761938] mmcblk2: retrying using single block read
-> [  366.611356] INFO: task mmcqd/2boot1:92 blocked for more than 120 seconds.
-> [  366.618134]       Not tainted 4.10.0 #284
-> [  366.622146] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
-> [  366.629960] mmcqd/2boot1    D    0    92      2 0x00000000
-> [  366.635454] [<c07dc21c>] (__schedule) from [<c07dc4e0>] (schedule+0x90/0xa0)
-> [  366.642497] [<c07dc4e0>] (schedule) from [<c066e8b4>] (__mmc_claim_host+0xd4/0x19c)
-> [  366.650142] [<c066e8b4>] (__mmc_claim_host) from [<c066e9ac>] (mmc_get_card+0x30/0x34)
-> [  366.658056] [<c066e9ac>] (mmc_get_card) from [<c067fc8c>] (mmc_blk_issue_rq+0x64/0x48c)
-> [  366.666052] [<c067fc8c>] (mmc_blk_issue_rq) from [<c0680230>] (mmc_queue_thread+0x114/0x1b4)
-> [  366.674484] [<c0680230>] (mmc_queue_thread) from [<c023d1b0>] (kthread+0x128/0x144)
-> [  366.682134] [<c023d1b0>] (kthread) from [<c02076e8>] (ret_from_fork+0x14/0x2c)
-
-I'm not convinced this is a regression.
-
-I remember Heiko saying that he's heard reports that on some boards
-eMMC doesn't work with high speed, and I'be believe that's what you're
-seeing here.  It would be interesting to try to debug this.  I can't
-personally reproduce, though.
-
-I think veyron_minnie already has UHS turned off for eMMC upstream.  I
-guess we could do it for other veyron boards too until someone can
-debug?
-
-
-> Issue #2 - Wifi (via SDIO, mmc1) is completely dead:
->
-> [    1.444125] mmc_host mmc1: card is non-removable.
-> [    1.471368] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> [    1.619553] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [    1.881699] mmc1: new ultra high speed SDR104 SDIO card at address 0001
-> [   25.681172] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [   25.691666] mwifiex: rx work enabled, cpus 4
-> [   26.827000] mwifiex_sdio mmc1:0001:1: info: FW download over, size 800344 bytes
-> [   27.561352] mwifiex_sdio mmc1:0001:1: WLAN FW is active
-> [   33.585165] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [   37.651344] mwifiex_sdio mmc1:0001:1: mwifiex_cmd_timeout_func: Timeout cmd id = 0xa9, act = 0x0
-> [   37.660122] mwifiex_sdio mmc1:0001:1: num_data_h2c_failure = 0
-> [   37.665951] mwifiex_sdio mmc1:0001:1: num_cmd_h2c_failure = 0
-> [   37.671688] mwifiex_sdio mmc1:0001:1: is_cmd_timedout = 1
-> [   37.677076] mwifiex_sdio mmc1:0001:1: num_tx_timeout = 0
-> [   37.682380] mwifiex_sdio mmc1:0001:1: last_cmd_index = 1
-> [   37.687681] mwifiex_sdio mmc1:0001:1: last_cmd_id: 00 00 a9 00 00 00 00 00 00 00
-> [   37.695066] mwifiex_sdio mmc1:0001:1: last_cmd_act: 00 00 00 00 00 00 00 00 00 00
-> [   37.702536] mwifiex_sdio mmc1:0001:1: last_cmd_resp_index = 0
-> [   37.708269] mwifiex_sdio mmc1:0001:1: last_cmd_resp_id: 00 00 00 00 00 00 00 00 00 00
-> [   37.716087] mwifiex_sdio mmc1:0001:1: last_event_index = 0
-> [   37.721564] mwifiex_sdio mmc1:0001:1: last_event: 00 00 00 00 00 00 00 00 00 00
-> [   37.728857] mwifiex_sdio mmc1:0001:1: data_sent=1 cmd_sent=0
-> [   37.734508] mwifiex_sdio mmc1:0001:1: ps_mode=0 ps_state=0
-> [   37.740016] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> [   37.750268] mwifiex_sdio mmc1:0001:1: info: mwifiex_fw_dpc: unregister device
-
-This doesn't surprise me at all.  What surprises me, though, is that
-nobody else seems to be able to reproduce this.
-
-On veyron, WiFi is connected via SDIO.  For good speed, it uses SDIO
-Interrupts.  See this bit in the device tree:
-
-  cap-sdio-irq;
-
-SDIO interrupts (in 4-bit mode) specifically need the card clock to be
-running all the time to work.  I can reproduce your regression (on
-veryron-jerry, which also has Marvell WiFi) and I can also find that
-the regression is "gone' if I take out the "cap-sdio-irq" in the
-veyron device tree.  Ah, interestingly enough, turning off SDIO
-interrupts has the side effect of sending enough (polling) traffic
-that we never seem to runtime suspend, either.  ;-P
-
-In general I'd question whether dw_mmc actually gets much power
-benefit from Runtime PM in Linux.  The dw_mmc IP blocks already have a
-feature in them to automatically stop and restart the card clock.  See
-SDMMC_CLKEN_LOW_PWR.  Maybe you're getting the benefit of turning off
-VMMC or VQMMC?  Is that really a lot of power?  Presumably those power
-savings would be for eMMC or normal SD cards (not SDIO).
-
-Maybe someone else on this thread knows how Runtime PM is supposed to
-work in general for SDIO?  I notice that in sdio.c the
-mmc_sdio_runtime_suspend() unconditionally calls mmc_power_off().
-That seems odd since the main mmc_sdio_suspend() _doesn't_ call it if
-mmc_card_keep_power().  Hrmmm...
-
-OK, so I just tried this on veyron-minnie.  On minnie we have Broadcom
-WiFi.  That actually works (!).  Presumably this is because
-brcmf_sdiod_host_fixup() calls pm_runtime_forbid().  Commenting that
-out breaks things.
-
-OK, and I can make Marvell work by adding
-"pm_runtime_forbid(func->card->host->parent);" to the end of
-mwifiex_sdio_probe().
-
---
-
-So where does that leave us?
-
-A) Technically we can fix Marvell's driver to work like Broadcom's.
-One could possibly assert that this is the wrong fix because
-technically we could make Runtime PM work with SDIO with enough work.
-We could theoretically move into 1-bit mode and there (I think) you
-can get interrupts with the clock off.  ...or we could have a
-dedicated SDIO Interrupt pin (for the embedded case), which is talked
-about in the SDIO spec.
-
-B) Technically we could hack this in the dw_mmc code to disable
-Runtime PM if we see that an SDIO interrupt is used.  One advantage of
-doing it here is that if we ever add support in dw_mmc for the
-external SDIO interrupt we could allow Runtime PM in that case.  In
-theory the dw_mmc IP block has some basic support for a dedicated SDIO
-interrupt pin, but there's no code to support it.
-
-C) Technically we could add this into the MMC core.
-
-D) Technically we could remove Runtime PM support from dw_mmc for now
-until someone can address all these issues (and ideally show a real
-power savings).
-
-
-I'd tend to vote for D, but I've been pretty absent from dw_mmc for a
-long time, so probably my vote isn't worth that much...
-
-Shawn: I think you actually enabled runtime PM.  Did you really see
-power savings, or did it just seem like enabling Runtime PM would be a
-neat thing to do?
-
-
--Doug
+VGhlIGxhdGVzdCBrZXJuZWwgUFdNIGRyaXZlcnMgZW5hYmxlIHRoZSBwb2xhcml0eSBzZXR0aW5n
+cy4gV2hlbiBzeXN0ZW0KcnVuIGZyb20gVS1Cb290IHRvIGtlcmVubCwgaWYgdGhlcmUgYXJlIGRp
+ZmZlcmVuY2VzIGluIHBvbGFyaXR5IHNldCBvcgpkdXR5IGN5Y2xlLCB0aGUgUE1XIHdpbGwgcmUt
+aW5pdDoKICBjbG9zZSAtPiBzZXQgcG9sYXJpdHkgYW5kIGR1dHkgY3ljbGUgLT4gZW5hYmxlIHRo
+ZSBQV00uClRoZSBwb3dlciBzdXBwbHkgY29udHJvbGVkIGJ5IHB3bSByZWd1bGF0b3IgbWF5IGhh
+dmUgdm9sdGFnZSBzaGFraW5nLAp3aGljaCBsZWFkIHRvIHRoZSBzeXN0ZW0gbm90IHN0YWJsZS4K
+ClNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgpT
+aWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgotLS0K
+CkNoYW5nZXMgaW4gdjI6Ci0gdXNlIHB3bV9zZXRfaW52ZXJ0KCkgaW5zdGVhZCBvZiBwd21fc2V0
+X2luaXQoKQotIGFkZCBjb21tZW50IGZvciBwb2xhcml0eQoKIGRyaXZlcnMvcG93ZXIvcmVndWxh
+dG9yL3B3bV9yZWd1bGF0b3IuYyB8IDE2ICsrKysrKysrKysrKysrLS0KIGRyaXZlcnMvcHdtL3B3
+bS11Y2xhc3MuYyAgICAgICAgICAgICAgICB8IDEwICsrKysrKysrKysKIGRyaXZlcnMvcHdtL3Jr
+X3B3bS5jICAgICAgICAgICAgICAgICAgICB8IDE3ICsrKysrKysrKysrKysrKystCiBpbmNsdWRl
+L3B3bS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgOSArKysrKysrKysKIDQgZmlsZXMg
+Y2hhbmdlZCwgNDkgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL3Bvd2VyL3JlZ3VsYXRvci9wd21fcmVndWxhdG9yLmMgYi9kcml2ZXJzL3Bvd2VyL3Jl
+Z3VsYXRvci9wd21fcmVndWxhdG9yLmMKaW5kZXggNDg3NTIzOC4uM2ZmZTNhMSAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9wb3dlci9yZWd1bGF0b3IvcHdtX3JlZ3VsYXRvci5jCisrKyBiL2RyaXZlcnMv
+cG93ZXIvcmVndWxhdG9yL3B3bV9yZWd1bGF0b3IuYwpAQCAtMjQsNiArMjQsMTIgQEAgc3RydWN0
+IHB3bV9yZWd1bGF0b3JfaW5mbyB7CiAJaW50IHB3bV9pZDsKIAkvKiB0aGUgcGVyaW9kIG9mIG9u
+ZSBQV00gY3ljbGUgKi8KIAlpbnQgcGVyaW9kX25zOworCS8qCisJICogdGhlIHBvbGFyaXR5IG9m
+IG9uZSBQV00KKwkgKiAwOiBub3JtYWwgcG9sYXJpdHkKKwkgKiAxOiBpbnZlcnRlZCBwb2xhcml0
+eQorCSAqLworCWludCBwb2xhcml0eTsKIAlzdHJ1Y3QgdWRldmljZSAqcHdtOwogCS8qIGluaXRp
+YWxpemUgdm9sdGFnZSBvZiByZWd1bGF0b3IgKi8KIAl1bnNpZ25lZCBpbnQgaW5pdF92b2x0YWdl
+OwpAQCAtNDksNyArNTUsNyBAQCBzdGF0aWMgaW50IHB3bV92b2x0YWdlX3RvX2R1dHlfY3ljbGVf
+cGVyY2VudGFnZShzdHJ1Y3QgdWRldmljZSAqZGV2LCBpbnQgcmVxX3VWKQogCWludCBtYXhfdVYg
+PSBwcml2LT5tYXhfdm9sdGFnZTsKIAlpbnQgZGlmZiA9IG1heF91ViAtIG1pbl91VjsKIAotCXJl
+dHVybiAxMDAgLSAoKChyZXFfdVYgKiAxMDApIC0gKG1pbl91ViAqIDEwMCkpIC8gZGlmZik7CisJ
+cmV0dXJuICgocmVxX3VWICogMTAwKSAtIChtaW5fdVYgKiAxMDApKSAvIGRpZmY7CiB9CiAKIHN0
+YXRpYyBpbnQgcHdtX3JlZ3VsYXRvcl9nZXRfdm9sdGFnZShzdHJ1Y3QgdWRldmljZSAqZGV2KQpA
+QCAtNjcsNiArNzMsMTIgQEAgc3RhdGljIGludCBwd21fcmVndWxhdG9yX3NldF92b2x0YWdlKHN0
+cnVjdCB1ZGV2aWNlICpkZXYsIGludCB1dm9sdCkKIAogCWR1dHlfY3ljbGUgPSBwd21fdm9sdGFn
+ZV90b19kdXR5X2N5Y2xlX3BlcmNlbnRhZ2UoZGV2LCB1dm9sdCk7CiAKKwlyZXQgPSBwd21fc2V0
+X2ludmVydChwcml2LT5wd20sIHByaXYtPnB3bV9pZCwgcHJpdi0+cG9sYXJpdHkpOworCWlmIChy
+ZXQpIHsKKwkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW5pdCBQV01cbiIpOworCQlyZXR1cm4g
+cmV0OworCX0KKwogCXJldCA9IHB3bV9zZXRfY29uZmlnKHByaXYtPnB3bSwgcHJpdi0+cHdtX2lk
+LAogCQkJKHByaXYtPnBlcmlvZF9ucyAvIDEwMCkgKiBkdXR5X2N5Y2xlLCBwcml2LT5wZXJpb2Rf
+bnMpOwogCWlmIChyZXQpIHsKQEAgLTk3LDkgKzEwOSw5IEBAIHN0YXRpYyBpbnQgcHdtX3JlZ3Vs
+YXRvcl9vZmRhdGFfdG9fcGxhdGRhdGEoc3RydWN0IHVkZXZpY2UgKmRldikKIAkJZGVidWcoIiVz
+OiBDYW5ub3QgZ2V0IFBXTSBwaGFuZGxlOiByZXQ9JWRcbiIsIF9fZnVuY19fLCByZXQpOwogCQly
+ZXR1cm4gcmV0OwogCX0KLQkvKiBUT0RPOiBwd21faWQgaGVyZSBmcm9tIGRldmljZSB0cmVlIGlm
+IG5lZWRlZCAqLwogCiAJcHJpdi0+cGVyaW9kX25zID0gYXJncy5hcmdzWzFdOworCXByaXYtPnBv
+bGFyaXR5ID0gYXJncy5hcmdzWzJdOwogCiAJcHJpdi0+aW5pdF92b2x0YWdlID0gZmR0ZGVjX2dl
+dF9pbnQoYmxvYiwgbm9kZSwKIAkJCSJyZWd1bGF0b3ItaW5pdC1taWNyb3ZvbHQiLCAtMSk7CmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3B3bS9wd20tdWNsYXNzLmMgYi9kcml2ZXJzL3B3bS9wd20tdWNs
+YXNzLmMKaW5kZXggYzIyMDBhZi4uZDFkN2ZjZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wd20vcHdt
+LXVjbGFzcy5jCisrKyBiL2RyaXZlcnMvcHdtL3B3bS11Y2xhc3MuYwpAQCAtOSw2ICs5LDE2IEBA
+CiAjaW5jbHVkZSA8ZG0uaD4KICNpbmNsdWRlIDxwd20uaD4KIAoraW50IHB3bV9zZXRfaW52ZXJ0
+KHN0cnVjdCB1ZGV2aWNlICpkZXYsIHVpbnQgY2hhbm5lbCwgdWludCBwb2xhcml0eSkKK3sKKwlz
+dHJ1Y3QgcHdtX29wcyAqb3BzID0gcHdtX2dldF9vcHMoZGV2KTsKKworCWlmICghb3BzLT5zZXRf
+aW52ZXJ0KQorCQlyZXR1cm4gLUVOT1NZUzsKKworCXJldHVybiBvcHMtPnNldF9pbnZlcnQoZGV2
+LCBjaGFubmVsLCBwb2xhcml0eSk7Cit9CisKIGludCBwd21fc2V0X2NvbmZpZyhzdHJ1Y3QgdWRl
+dmljZSAqZGV2LCB1aW50IGNoYW5uZWwsIHVpbnQgcGVyaW9kX25zLAogCQkgICB1aW50IGR1dHlf
+bnMpCiB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL3B3bS9ya19wd20uYyBiL2RyaXZlcnMvcHdtL3Jr
+X3B3bS5jCmluZGV4IDkyNTRmNWIuLmYwMDNkMDkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcHdtL3Jr
+X3B3bS5jCisrKyBiL2RyaXZlcnMvcHdtL3JrX3B3bS5jCkBAIC0yMSw4ICsyMSwyMiBAQCBERUNM
+QVJFX0dMT0JBTF9EQVRBX1BUUjsKIHN0cnVjdCBya19wd21fcHJpdiB7CiAJc3RydWN0IHJrMzI4
+OF9wd20gKnJlZ3M7CiAJdWxvbmcgZnJlcTsKKwl1aW50IGVuYWJsZV9jb25mOwogfTsKIAorc3Rh
+dGljIGludCBya19wd21fc2V0X2ludmVydChzdHJ1Y3QgdWRldmljZSAqZGV2LCB1aW50IGNoYW5u
+ZWwsIHVpbnQgcG9sYXJpdHkpCit7CisJc3RydWN0IHJrX3B3bV9wcml2ICpwcml2ID0gZGV2X2dl
+dF9wcml2KGRldik7CisKKwlkZWJ1ZygiJXM6IHBvbGFyaXR5PSV1XG4iLCBfX2Z1bmNfXywgcG9s
+YXJpdHkpOworCWlmIChwb2xhcml0eSkKKwkJcHJpdi0+ZW5hYmxlX2NvbmYgfD0gUFdNX0RVVFlf
+TkVHQVRJVkUgfCBQV01fSU5BQ1RJVkVfUE9TVElWRTsKKwllbHNlCisJCXByaXYtPmVuYWJsZV9j
+b25mIHw9IFBXTV9EVVRZX1BPU1RJVkUgfCBQV01fSU5BQ1RJVkVfTkVHQVRJVkU7CisKKwlyZXR1
+cm4gMDsKK30KKwogc3RhdGljIGludCBya19wd21fc2V0X2NvbmZpZyhzdHJ1Y3QgdWRldmljZSAq
+ZGV2LCB1aW50IGNoYW5uZWwsIHVpbnQgcGVyaW9kX25zLAogCQkJICAgICB1aW50IGR1dHlfbnMp
+CiB7CkBAIC0zMiw3ICs0Niw3IEBAIHN0YXRpYyBpbnQgcmtfcHdtX3NldF9jb25maWcoc3RydWN0
+IHVkZXZpY2UgKmRldiwgdWludCBjaGFubmVsLCB1aW50IHBlcmlvZF9ucywKIAogCWRlYnVnKCIl
+czogcGVyaW9kX25zPSV1LCBkdXR5X25zPSV1XG4iLCBfX2Z1bmNfXywgcGVyaW9kX25zLCBkdXR5
+X25zKTsKIAl3cml0ZWwoUFdNX1NFTF9TUkNfQ0xLIHwgUFdNX09VVFBVVF9MRUZUIHwgUFdNX0xQ
+X0RJU0FCTEUgfAotCQlQV01fQ09OVElOVU9VUyB8IFBXTV9EVVRZX1BPU1RJVkUgfCBQV01fSU5B
+Q1RJVkVfUE9TVElWRSB8CisJCVBXTV9DT05USU5VT1VTIHwgcHJpdi0+ZW5hYmxlX2NvbmYgfAog
+CQlSS19QV01fRElTQUJMRSwKIAkJJnJlZ3MtPmN0cmwpOwogCkBAIC04Myw2ICs5Nyw3IEBAIHN0
+YXRpYyBpbnQgcmtfcHdtX3Byb2JlKHN0cnVjdCB1ZGV2aWNlICpkZXYpCiB9CiAKIHN0YXRpYyBj
+b25zdCBzdHJ1Y3QgcHdtX29wcyBya19wd21fb3BzID0geworCS5zZXRfaW52ZXJ0CT0gcmtfcHdt
+X3NldF9pbnZlcnQsCiAJLnNldF9jb25maWcJPSBya19wd21fc2V0X2NvbmZpZywKIAkuc2V0X2Vu
+YWJsZQk9IHJrX3B3bV9zZXRfZW5hYmxlLAogfTsKZGlmZiAtLWdpdCBhL2luY2x1ZGUvcHdtLmgg
+Yi9pbmNsdWRlL3B3bS5oCmluZGV4IDg1MTkxNWUuLjY2YzZiZjAgMTAwNjQ0Ci0tLSBhL2luY2x1
+ZGUvcHdtLmgKKysrIGIvaW5jbHVkZS9wd20uaApAQCAtMTQsNiArMTQsMTUgQEAKIC8qIHN0cnVj
+dCBwd21fb3BzOiBPcGVyYXRpb25zIGZvciB0aGUgUFdNIHVjbGFzcyAqLwogc3RydWN0IHB3bV9v
+cHMgewogCS8qKgorCSAqIHNldF9pbnZlcnQoKSAtIFNldCB0aGUgUFdNIGludmVydAorCSAqCisJ
+ICogQGRldjogICAgICAgIFBXTSBkZXZpY2UgdG8gdXBkYXRlCisJICogQGNoYW5uZWw6ICAgIFBX
+TSBjaGFubmVsIHRvIHVwZGF0ZQorCSAqIEBwb2xhcml0eTogIFBXTSBpbnZlcnQgcG9sYXJpdHkK
+KwkgKiBAcmV0dXJuIDAgaWYgT0ssIC12ZSBvbiBlcnJvcgorCSAqLworCWludCAoKnNldF9pbnZl
+cnQpKHN0cnVjdCB1ZGV2aWNlICpkZXYsIHVpbnQgY2hhbm5lbCwgdWludCBwb2xhcml0eSk7CisJ
+LyoqCiAJICogc2V0X2NvbmZpZygpIC0gU2V0IHRoZSBQV00gY29uZmlndXJhdGlvbgogCSAqCiAJ
+ICogQGRldjoJUFdNIGRldmljZSB0byB1cGRhdGUKLS0gCjEuOS4xCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9v
+dEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
