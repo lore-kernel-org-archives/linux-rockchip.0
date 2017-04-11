@@ -1,32 +1,82 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
-Date: Tue, 11 Apr 2017 11:18:39 -0700
-Message-ID: <20170411181838.GA83471@google.com>
-References: <20170310024617.67303-1-briannorris@chromium.org>
- <20170310024617.67303-3-briannorris@chromium.org>
- <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
- <20170324172218.GA119093@google.com>
- <20170330232825.GB3912@bhelgaas-glaptop.roam.corp.google.com>
- <20170331002608.GA72818@google.com>
- <20170331051702.GA13240@bhelgaas-glaptop.roam.corp.google.com>
- <20170331164015.GB146301@google.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+Date: Tue, 11 Apr 2017 22:52:29 +0200
+Message-ID: <8676554.1IW2xieEGM@diego>
+References: <cover.1491118230.git.guillaume.tucker@collabora.com> <a01a50d3-bb1b-2c56-2a15-30651fa2fac9@baylibre.com> <936a53ee-2ed8-11e4-a860-744256676af9@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170331164015.GB146301@google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Ray Jui <rjui@broadcom.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <936a53ee-2ed8-11e4-a860-744256676af9-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+Hi Guillaume,
 
-On Fri, Mar 31, 2017 at 09:40:15AM -0700, Brian Norris wrote:
-> Sure, I can grok that. Just let me know if you want any more action from
-> me.
+Am Dienstag, 11. April 2017, 18:40:37 CEST schrieb Guillaume Tucker:
+> On 03/04/17 09:12, Neil Armstrong wrote:
+> > On 04/02/2017 09:59 AM, Guillaume Tucker wrote:
+> >> +Optional:
+> >> +
+> >> +- clocks : Phandle to clock for the Mali Midgard device.
+> >> +- clock-names : Shall be "clk_mali".
+> >> +- mali-supply : Phandle to regulator for the Mali device. Refer to
+> >> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
+> >> +- operating-points : Refer to
+> >> Documentation/devicetree/bindings/power/opp.txt +  for details.
+> > 
+> > Please add :
+> >    * Must be one of the following:
+> >       "arm,mali-t820"
+> >    
+> >    * And, optionally, one of the vendor specific compatible:
+> >       "amlogic,meson-gxm-mali"
+> > 
+> > with my Ack for the amlogic platform.
+> 
+> It seems to me that as long as the GPU architecture hasn't been
+> modified (I don't think I've ever encountered such a case) then
+> it has to be a standard ARM Mali type regardless of the SoC
+> vendor.  So unless a Mali-T820 in the Amlogic S912 SoC is not the
+> same as a T820 in a different SoC, please forgive me but I don't
+> understand why a vendor compatible string is needed.  My main
+> concern is that it's going to be very hard to keep that list
+> up-to-date with all existing Midgard SoC variants.  If do we need
+> to add vendor compatible strings to correctly describe the
+> hardware then I'm happy to add the amlogic one in my patch v3; I
+> would just like to understand why that's necessary.
 
-Any thoughts here? Would you like me to prepare my patches any
-differently?
+SoC vendors in most cases hook ip blocks into their socs in different
+and often strange ways. After all it's not some discrete ic you solder
+onto a board, but instead a part of the soc itself.
 
-Brian
+So in most cases you will have some hooks outside the actual gpu iospace
+that can be used to tune different things about how the gpu interacts with
+the system. Which is probably also the reason the midgard kernel driver
+has this ugly "platform" subdirectory for compile-time platform selection.
+
+On my rk3288 for example we have [0] in the chromeos tree, that handles
+the oddities of the midgard on the rk3288 used in a lot of Chromebooks.
+There are soc-specific oddities of frequencies, frequency-scaling and
+whatnot. And there are also more gpu-specific setting in syscon areas
+of the soc (pmu and grf) that can also influence the gpus performance
+and might need tweaking at some point.
+
+That doesn't even take into account that there may even be differences
+on how things are synthesized that we don't know about. See all the
+variants of the dw_hdmi ip block (imx, rockchip, meson [more?]) .
+
+So we really want to have the special compatibles in place, to be prepared
+for the future per-soc oddities that always appear :-) .
+
+
+Heiko
+
+[0] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14/drivers/gpu/arm/midgard/platform/rk/
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
