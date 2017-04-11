@@ -1,111 +1,111 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH v2 1/2] power: regulator: pwm: support pwm polarity
-	setting
-Date: Tue, 11 Apr 2017 16:35:37 +0800
-Message-ID: <1491899738-10087-1-git-send-email-kever.yang@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 2/2] doc: dtbinding: add pwm binding file
+Date: Tue, 11 Apr 2017 16:35:38 +0800
+Message-ID: <1491899738-10087-2-git-send-email-kever.yang@rock-chips.com>
+References: <1491899738-10087-1-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: heiko@sntech.de
-Cc: u-boot@lists.denx.de, Elaine Zhang <zhangqing@rock-chips.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1491899738-10087-1-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGxhdGVzdCBrZXJuZWwgUFdNIGRyaXZlcnMgZW5hYmxlIHRoZSBwb2xhcml0eSBzZXR0aW5n
-cy4gV2hlbiBzeXN0ZW0KcnVuIGZyb20gVS1Cb290IHRvIGtlcmVubCwgaWYgdGhlcmUgYXJlIGRp
-ZmZlcmVuY2VzIGluIHBvbGFyaXR5IHNldCBvcgpkdXR5IGN5Y2xlLCB0aGUgUE1XIHdpbGwgcmUt
-aW5pdDoKICBjbG9zZSAtPiBzZXQgcG9sYXJpdHkgYW5kIGR1dHkgY3ljbGUgLT4gZW5hYmxlIHRo
-ZSBQV00uClRoZSBwb3dlciBzdXBwbHkgY29udHJvbGVkIGJ5IHB3bSByZWd1bGF0b3IgbWF5IGhh
-dmUgdm9sdGFnZSBzaGFraW5nLAp3aGljaCBsZWFkIHRvIHRoZSBzeXN0ZW0gbm90IHN0YWJsZS4K
-ClNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgpT
-aWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgotLS0K
-CkNoYW5nZXMgaW4gdjI6Ci0gdXNlIHB3bV9zZXRfaW52ZXJ0KCkgaW5zdGVhZCBvZiBwd21fc2V0
-X2luaXQoKQotIGFkZCBjb21tZW50IGZvciBwb2xhcml0eQoKIGRyaXZlcnMvcG93ZXIvcmVndWxh
-dG9yL3B3bV9yZWd1bGF0b3IuYyB8IDE2ICsrKysrKysrKysrKysrLS0KIGRyaXZlcnMvcHdtL3B3
-bS11Y2xhc3MuYyAgICAgICAgICAgICAgICB8IDEwICsrKysrKysrKysKIGRyaXZlcnMvcHdtL3Jr
-X3B3bS5jICAgICAgICAgICAgICAgICAgICB8IDE3ICsrKysrKysrKysrKysrKystCiBpbmNsdWRl
-L3B3bS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgOSArKysrKysrKysKIDQgZmlsZXMg
-Y2hhbmdlZCwgNDkgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3Bvd2VyL3JlZ3VsYXRvci9wd21fcmVndWxhdG9yLmMgYi9kcml2ZXJzL3Bvd2VyL3Jl
-Z3VsYXRvci9wd21fcmVndWxhdG9yLmMKaW5kZXggNDg3NTIzOC4uM2ZmZTNhMSAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9wb3dlci9yZWd1bGF0b3IvcHdtX3JlZ3VsYXRvci5jCisrKyBiL2RyaXZlcnMv
-cG93ZXIvcmVndWxhdG9yL3B3bV9yZWd1bGF0b3IuYwpAQCAtMjQsNiArMjQsMTIgQEAgc3RydWN0
-IHB3bV9yZWd1bGF0b3JfaW5mbyB7CiAJaW50IHB3bV9pZDsKIAkvKiB0aGUgcGVyaW9kIG9mIG9u
-ZSBQV00gY3ljbGUgKi8KIAlpbnQgcGVyaW9kX25zOworCS8qCisJICogdGhlIHBvbGFyaXR5IG9m
-IG9uZSBQV00KKwkgKiAwOiBub3JtYWwgcG9sYXJpdHkKKwkgKiAxOiBpbnZlcnRlZCBwb2xhcml0
-eQorCSAqLworCWludCBwb2xhcml0eTsKIAlzdHJ1Y3QgdWRldmljZSAqcHdtOwogCS8qIGluaXRp
-YWxpemUgdm9sdGFnZSBvZiByZWd1bGF0b3IgKi8KIAl1bnNpZ25lZCBpbnQgaW5pdF92b2x0YWdl
-OwpAQCAtNDksNyArNTUsNyBAQCBzdGF0aWMgaW50IHB3bV92b2x0YWdlX3RvX2R1dHlfY3ljbGVf
-cGVyY2VudGFnZShzdHJ1Y3QgdWRldmljZSAqZGV2LCBpbnQgcmVxX3VWKQogCWludCBtYXhfdVYg
-PSBwcml2LT5tYXhfdm9sdGFnZTsKIAlpbnQgZGlmZiA9IG1heF91ViAtIG1pbl91VjsKIAotCXJl
-dHVybiAxMDAgLSAoKChyZXFfdVYgKiAxMDApIC0gKG1pbl91ViAqIDEwMCkpIC8gZGlmZik7CisJ
-cmV0dXJuICgocmVxX3VWICogMTAwKSAtIChtaW5fdVYgKiAxMDApKSAvIGRpZmY7CiB9CiAKIHN0
-YXRpYyBpbnQgcHdtX3JlZ3VsYXRvcl9nZXRfdm9sdGFnZShzdHJ1Y3QgdWRldmljZSAqZGV2KQpA
-QCAtNjcsNiArNzMsMTIgQEAgc3RhdGljIGludCBwd21fcmVndWxhdG9yX3NldF92b2x0YWdlKHN0
-cnVjdCB1ZGV2aWNlICpkZXYsIGludCB1dm9sdCkKIAogCWR1dHlfY3ljbGUgPSBwd21fdm9sdGFn
-ZV90b19kdXR5X2N5Y2xlX3BlcmNlbnRhZ2UoZGV2LCB1dm9sdCk7CiAKKwlyZXQgPSBwd21fc2V0
-X2ludmVydChwcml2LT5wd20sIHByaXYtPnB3bV9pZCwgcHJpdi0+cG9sYXJpdHkpOworCWlmIChy
-ZXQpIHsKKwkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW5pdCBQV01cbiIpOworCQlyZXR1cm4g
-cmV0OworCX0KKwogCXJldCA9IHB3bV9zZXRfY29uZmlnKHByaXYtPnB3bSwgcHJpdi0+cHdtX2lk
-LAogCQkJKHByaXYtPnBlcmlvZF9ucyAvIDEwMCkgKiBkdXR5X2N5Y2xlLCBwcml2LT5wZXJpb2Rf
-bnMpOwogCWlmIChyZXQpIHsKQEAgLTk3LDkgKzEwOSw5IEBAIHN0YXRpYyBpbnQgcHdtX3JlZ3Vs
-YXRvcl9vZmRhdGFfdG9fcGxhdGRhdGEoc3RydWN0IHVkZXZpY2UgKmRldikKIAkJZGVidWcoIiVz
-OiBDYW5ub3QgZ2V0IFBXTSBwaGFuZGxlOiByZXQ9JWRcbiIsIF9fZnVuY19fLCByZXQpOwogCQly
-ZXR1cm4gcmV0OwogCX0KLQkvKiBUT0RPOiBwd21faWQgaGVyZSBmcm9tIGRldmljZSB0cmVlIGlm
-IG5lZWRlZCAqLwogCiAJcHJpdi0+cGVyaW9kX25zID0gYXJncy5hcmdzWzFdOworCXByaXYtPnBv
-bGFyaXR5ID0gYXJncy5hcmdzWzJdOwogCiAJcHJpdi0+aW5pdF92b2x0YWdlID0gZmR0ZGVjX2dl
-dF9pbnQoYmxvYiwgbm9kZSwKIAkJCSJyZWd1bGF0b3ItaW5pdC1taWNyb3ZvbHQiLCAtMSk7CmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL3B3bS9wd20tdWNsYXNzLmMgYi9kcml2ZXJzL3B3bS9wd20tdWNs
-YXNzLmMKaW5kZXggYzIyMDBhZi4uZDFkN2ZjZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wd20vcHdt
-LXVjbGFzcy5jCisrKyBiL2RyaXZlcnMvcHdtL3B3bS11Y2xhc3MuYwpAQCAtOSw2ICs5LDE2IEBA
-CiAjaW5jbHVkZSA8ZG0uaD4KICNpbmNsdWRlIDxwd20uaD4KIAoraW50IHB3bV9zZXRfaW52ZXJ0
-KHN0cnVjdCB1ZGV2aWNlICpkZXYsIHVpbnQgY2hhbm5lbCwgdWludCBwb2xhcml0eSkKK3sKKwlz
-dHJ1Y3QgcHdtX29wcyAqb3BzID0gcHdtX2dldF9vcHMoZGV2KTsKKworCWlmICghb3BzLT5zZXRf
-aW52ZXJ0KQorCQlyZXR1cm4gLUVOT1NZUzsKKworCXJldHVybiBvcHMtPnNldF9pbnZlcnQoZGV2
-LCBjaGFubmVsLCBwb2xhcml0eSk7Cit9CisKIGludCBwd21fc2V0X2NvbmZpZyhzdHJ1Y3QgdWRl
-dmljZSAqZGV2LCB1aW50IGNoYW5uZWwsIHVpbnQgcGVyaW9kX25zLAogCQkgICB1aW50IGR1dHlf
-bnMpCiB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL3B3bS9ya19wd20uYyBiL2RyaXZlcnMvcHdtL3Jr
-X3B3bS5jCmluZGV4IDkyNTRmNWIuLmYwMDNkMDkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcHdtL3Jr
-X3B3bS5jCisrKyBiL2RyaXZlcnMvcHdtL3JrX3B3bS5jCkBAIC0yMSw4ICsyMSwyMiBAQCBERUNM
-QVJFX0dMT0JBTF9EQVRBX1BUUjsKIHN0cnVjdCBya19wd21fcHJpdiB7CiAJc3RydWN0IHJrMzI4
-OF9wd20gKnJlZ3M7CiAJdWxvbmcgZnJlcTsKKwl1aW50IGVuYWJsZV9jb25mOwogfTsKIAorc3Rh
-dGljIGludCBya19wd21fc2V0X2ludmVydChzdHJ1Y3QgdWRldmljZSAqZGV2LCB1aW50IGNoYW5u
-ZWwsIHVpbnQgcG9sYXJpdHkpCit7CisJc3RydWN0IHJrX3B3bV9wcml2ICpwcml2ID0gZGV2X2dl
-dF9wcml2KGRldik7CisKKwlkZWJ1ZygiJXM6IHBvbGFyaXR5PSV1XG4iLCBfX2Z1bmNfXywgcG9s
-YXJpdHkpOworCWlmIChwb2xhcml0eSkKKwkJcHJpdi0+ZW5hYmxlX2NvbmYgfD0gUFdNX0RVVFlf
-TkVHQVRJVkUgfCBQV01fSU5BQ1RJVkVfUE9TVElWRTsKKwllbHNlCisJCXByaXYtPmVuYWJsZV9j
-b25mIHw9IFBXTV9EVVRZX1BPU1RJVkUgfCBQV01fSU5BQ1RJVkVfTkVHQVRJVkU7CisKKwlyZXR1
-cm4gMDsKK30KKwogc3RhdGljIGludCBya19wd21fc2V0X2NvbmZpZyhzdHJ1Y3QgdWRldmljZSAq
-ZGV2LCB1aW50IGNoYW5uZWwsIHVpbnQgcGVyaW9kX25zLAogCQkJICAgICB1aW50IGR1dHlfbnMp
-CiB7CkBAIC0zMiw3ICs0Niw3IEBAIHN0YXRpYyBpbnQgcmtfcHdtX3NldF9jb25maWcoc3RydWN0
-IHVkZXZpY2UgKmRldiwgdWludCBjaGFubmVsLCB1aW50IHBlcmlvZF9ucywKIAogCWRlYnVnKCIl
-czogcGVyaW9kX25zPSV1LCBkdXR5X25zPSV1XG4iLCBfX2Z1bmNfXywgcGVyaW9kX25zLCBkdXR5
-X25zKTsKIAl3cml0ZWwoUFdNX1NFTF9TUkNfQ0xLIHwgUFdNX09VVFBVVF9MRUZUIHwgUFdNX0xQ
-X0RJU0FCTEUgfAotCQlQV01fQ09OVElOVU9VUyB8IFBXTV9EVVRZX1BPU1RJVkUgfCBQV01fSU5B
-Q1RJVkVfUE9TVElWRSB8CisJCVBXTV9DT05USU5VT1VTIHwgcHJpdi0+ZW5hYmxlX2NvbmYgfAog
-CQlSS19QV01fRElTQUJMRSwKIAkJJnJlZ3MtPmN0cmwpOwogCkBAIC04Myw2ICs5Nyw3IEBAIHN0
-YXRpYyBpbnQgcmtfcHdtX3Byb2JlKHN0cnVjdCB1ZGV2aWNlICpkZXYpCiB9CiAKIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgcHdtX29wcyBya19wd21fb3BzID0geworCS5zZXRfaW52ZXJ0CT0gcmtfcHdt
-X3NldF9pbnZlcnQsCiAJLnNldF9jb25maWcJPSBya19wd21fc2V0X2NvbmZpZywKIAkuc2V0X2Vu
-YWJsZQk9IHJrX3B3bV9zZXRfZW5hYmxlLAogfTsKZGlmZiAtLWdpdCBhL2luY2x1ZGUvcHdtLmgg
-Yi9pbmNsdWRlL3B3bS5oCmluZGV4IDg1MTkxNWUuLjY2YzZiZjAgMTAwNjQ0Ci0tLSBhL2luY2x1
-ZGUvcHdtLmgKKysrIGIvaW5jbHVkZS9wd20uaApAQCAtMTQsNiArMTQsMTUgQEAKIC8qIHN0cnVj
-dCBwd21fb3BzOiBPcGVyYXRpb25zIGZvciB0aGUgUFdNIHVjbGFzcyAqLwogc3RydWN0IHB3bV9v
-cHMgewogCS8qKgorCSAqIHNldF9pbnZlcnQoKSAtIFNldCB0aGUgUFdNIGludmVydAorCSAqCisJ
-ICogQGRldjogICAgICAgIFBXTSBkZXZpY2UgdG8gdXBkYXRlCisJICogQGNoYW5uZWw6ICAgIFBX
-TSBjaGFubmVsIHRvIHVwZGF0ZQorCSAqIEBwb2xhcml0eTogIFBXTSBpbnZlcnQgcG9sYXJpdHkK
-KwkgKiBAcmV0dXJuIDAgaWYgT0ssIC12ZSBvbiBlcnJvcgorCSAqLworCWludCAoKnNldF9pbnZl
-cnQpKHN0cnVjdCB1ZGV2aWNlICpkZXYsIHVpbnQgY2hhbm5lbCwgdWludCBwb2xhcml0eSk7CisJ
-LyoqCiAJICogc2V0X2NvbmZpZygpIC0gU2V0IHRoZSBQV00gY29uZmlndXJhdGlvbgogCSAqCiAJ
-ICogQGRldjoJUFdNIGRldmljZSB0byB1cGRhdGUKLS0gCjEuOS4xCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9v
-dEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+This is a copy from kernel.
+
+Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+Changes in v2: None
+
+ doc/device-tree-bindings/pwm/pwm.txt | 69 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 69 insertions(+)
+ create mode 100644 doc/device-tree-bindings/pwm/pwm.txt
+
+diff --git a/doc/device-tree-bindings/pwm/pwm.txt b/doc/device-tree-bindings/pwm/pwm.txt
+new file mode 100644
+index 0000000..8556263
+--- /dev/null
++++ b/doc/device-tree-bindings/pwm/pwm.txt
+@@ -0,0 +1,69 @@
++Specifying PWM information for devices
++======================================
++
++1) PWM user nodes
++-----------------
++
++PWM users should specify a list of PWM devices that they want to use
++with a property containing a 'pwm-list':
++
++	pwm-list ::= <single-pwm> [pwm-list]
++	single-pwm ::= <pwm-phandle> <pwm-specifier>
++	pwm-phandle : phandle to PWM controller node
++	pwm-specifier : array of #pwm-cells specifying the given PWM
++			(controller specific)
++
++PWM properties should be named "pwms". The exact meaning of each pwms
++property must be documented in the device tree binding for each device.
++An optional property "pwm-names" may contain a list of strings to label
++each of the PWM devices listed in the "pwms" property. If no "pwm-names"
++property is given, the name of the user node will be used as fallback.
++
++Drivers for devices that use more than a single PWM device can use the
++"pwm-names" property to map the name of the PWM device requested by the
++pwm_get() call to an index into the list given by the "pwms" property.
++
++The following example could be used to describe a PWM-based backlight
++device:
++
++	pwm: pwm {
++		#pwm-cells = <2>;
++	};
++
++	[...]
++
++	bl: backlight {
++		pwms = <&pwm 0 5000000>;
++		pwm-names = "backlight";
++	};
++
++Note that in the example above, specifying the "pwm-names" is redundant
++because the name "backlight" would be used as fallback anyway.
++
++pwm-specifier typically encodes the chip-relative PWM number and the PWM
++period in nanoseconds.
++
++Optionally, the pwm-specifier can encode a number of flags (defined in
++<dt-bindings/pwm/pwm.h>) in a third cell:
++- PWM_POLARITY_INVERTED: invert the PWM signal polarity
++
++Example with optional PWM specifier for inverse polarity
++
++	bl: backlight {
++		pwms = <&pwm 0 5000000 PWM_POLARITY_INVERTED>;
++		pwm-names = "backlight";
++	};
++
++2) PWM controller nodes
++-----------------------
++
++PWM controller nodes must specify the number of cells used for the
++specifier using the '#pwm-cells' property.
++
++An example PWM controller might look like this:
++
++	pwm: pwm@7000a000 {
++		compatible = "nvidia,tegra20-pwm";
++		reg = <0x7000a000 0x100>;
++		#pwm-cells = <2>;
++	};
+-- 
+1.9.1
