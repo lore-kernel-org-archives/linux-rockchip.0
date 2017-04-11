@@ -1,151 +1,32 @@
-From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali
- Midgard GPU
-Date: Tue, 11 Apr 2017 18:40:37 +0100
-Message-ID: <936a53ee-2ed8-11e4-a860-744256676af9@collabora.com>
-References: <cover.1491118230.git.guillaume.tucker@collabora.com>
- <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker@collabora.com>
- <a01a50d3-bb1b-2c56-2a15-30651fa2fac9@baylibre.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2 3/5] PCI: rockchip: add remove() support
+Date: Tue, 11 Apr 2017 11:18:39 -0700
+Message-ID: <20170411181838.GA83471@google.com>
+References: <20170310024617.67303-1-briannorris@chromium.org>
+ <20170310024617.67303-3-briannorris@chromium.org>
+ <20170324142541.GA25380@bhelgaas-glaptop.roam.corp.google.com>
+ <20170324172218.GA119093@google.com>
+ <20170330232825.GB3912@bhelgaas-glaptop.roam.corp.google.com>
+ <20170331002608.GA72818@google.com>
+ <20170331051702.GA13240@bhelgaas-glaptop.roam.corp.google.com>
+ <20170331164015.GB146301@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <a01a50d3-bb1b-2c56-2a15-30651fa2fac9-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170331164015.GB146301@google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Wenrui Li <wenrui.li@rock-chips.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Ray Jui <rjui@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/04/17 09:12, Neil Armstrong wrote:
-> On 04/02/2017 09:59 AM, Guillaume Tucker wrote:
->> The ARM Mali Midgard GPU family is present in a number of SoCs
->> from many different vendors such as Samsung Exynos and Rockchip.
->>
->> Import the device tree bindings documentation from the r16p0
->> release of the Mali Midgard GPU kernel driver:
->>
->>   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
->>
->> The following optional bindings have been omitted in this initial
->> version as they are only used in very specific cases:
->>
->>   * snoop_enable_smc
->>   * snoop_disable_smc
->>   * jm_config
->>   * power_model
->>   * system-coherency
->>   * ipa-model
->>
->> The example has been simplified accordingly.
->>
->> The compatible string definition has been limited to
->> "arm,mali-midgard" to avoid checkpatch.pl warnings and to match
->> what the driver actually expects (as of r16p0 out-of-tree).
->>
->> CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
->> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->> ---
->>  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 53 ++++++++++++++++++++++
->>  1 file changed, 53 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>
->> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->> new file mode 100644
->> index 000000000000..da8fc6d21bbf
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->> @@ -0,0 +1,53 @@
->> +#
->> +# (C) COPYRIGHT 2013-2016 ARM Limited.
->> +# Copyright (C) 2017 Collabora Ltd
->> +#
->> +# This program is free software and is provided to you under the terms of the
->> +# GNU General Public License version 2 as published by the Free Software
->> +# Foundation, and any use by you of this program is subject to the terms
->> +# of such GNU licence.
->> +#
-> Hi Guillaume,
-> This is unnecessary, please remove.
+Hi Bjorn,
 
-Hi Neil,
+On Fri, Mar 31, 2017 at 09:40:15AM -0700, Brian Norris wrote:
+> Sure, I can grok that. Just let me know if you want any more action from
+> me.
 
-I see most other documentation files don't have such a header,
-including the arm,mali-utgard.txt one.  I left it in my patch
-after copying the file from the driver tarball as removing it
-didn't seem right from a GPL and copyright point of view.  If
-it's safe in practice to remove it then fine.
+Any thoughts here? Would you like me to prepare my patches any
+differently?
 
->> +
->> +
->> +ARM Mali Midgard GPU
->> +====================
->> +
->> +Required properties:
->> +
->> +- compatible : Should be "arm,mali-midgard".
->> +- reg : Physical base address of the device and length of the register area.
->> +- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
->> +- interrupt-names : Contains the names of IRQ resources in the order they were
->> +  provided in the interrupts property. Must contain: "JOB, "MMU", "GPU".
->
->
-> Please follow the bindings introduced for the utgard family :
-> https://patchwork.kernel.org/patch/9553745/
->
-> - an entry for each mali-midgard revision, i.e. "arm,mali-t820"
-
-Sure.  It's a bit more complicated with Midgard (more variants,
-some have the number of cores in the last digit...) but it should
-be possible to put together a suitable list in v3.
-
-> - an entry for each vendor specific wrapping if necessary, i.e. "amlogic,meson-gxm-mali"
-
-Well, fine although I'm a bit confused about this - please see
-below.
-
-> - low-case for interrupt names
-
-OK, can change that in v3.  It means however that the out-of-tree
-driver will need to be patched as it's looking for these names in
-capital letters.  This shouldn't be a big issue but adds a bit of
-work to anyone maintaining a kernel driver package.
-
->> +
->> +Optional:
->> +
->> +- clocks : Phandle to clock for the Mali Midgard device.
->> +- clock-names : Shall be "clk_mali".
->> +- mali-supply : Phandle to regulator for the Mali device. Refer to
->> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
->> +- operating-points : Refer to Documentation/devicetree/bindings/power/opp.txt
->> +  for details.
->
-> Please add :
->    * Must be one of the following:
->       "arm,mali-t820"
->    * And, optionally, one of the vendor specific compatible:
->       "amlogic,meson-gxm-mali"
->
-> with my Ack for the amlogic platform.
-
-It seems to me that as long as the GPU architecture hasn't been
-modified (I don't think I've ever encountered such a case) then
-it has to be a standard ARM Mali type regardless of the SoC
-vendor.  So unless a Mali-T820 in the Amlogic S912 SoC is not the
-same as a T820 in a different SoC, please forgive me but I don't
-understand why a vendor compatible string is needed.  My main
-concern is that it's going to be very hard to keep that list
-up-to-date with all existing Midgard SoC variants.  If do we need
-to add vendor compatible strings to correctly describe the
-hardware then I'm happy to add the amlogic one in my patch v3; I
-would just like to understand why that's necessary.
-
-
-Thanks,
-Guillaume
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Brian
