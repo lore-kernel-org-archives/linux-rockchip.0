@@ -1,31 +1,41 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] dt-bindings: document: add firefly-rk3399 board support
-Date: Wed, 12 Apr 2017 15:30:40 +0200
-Message-ID: <1796923.V976AENXzC@phil>
-References: <1491384800-22412-1-git-send-email-kever.yang@rock-chips.com> <1491384800-22412-2-git-send-email-kever.yang@rock-chips.com>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron boards
+Date: Wed, 12 Apr 2017 09:12:24 -0700
+Message-ID: <CAD=FV=U+SQ8RwPz+8tVzoLgTLNM=jca1FtLBgsZ+GTY24rhTKQ@mail.gmail.com>
+References: <20170330011709.GA110687@google.com> <CAD=FV=WWt=20WUT8jhZ3fBPiQq9UM-bEuFSXuuNu_7d3ONLdLQ@mail.gmail.com>
+ <23842930-ece6-8879-daa5-c2220cfbf09f@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1491384800-22412-2-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <23842930-ece6-8879-daa5-c2220cfbf09f@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru M Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, kevin@archlinuxarm.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
+Shawn
 
-Am Mittwoch, 5. April 2017, 17:33:20 CEST schrieb Kever Yang:
-> Use "firefly,firefly-rk3399" compatible string for firefly-rk3399 board.
-> 
-> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Tue, Apr 11, 2017 at 5:54 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>> This doesn't surprise me at all.  What surprises me, though, is that
+>> nobody else seems to be able to reproduce this.
+>>
+>> On veyron, WiFi is connected via SDIO.  For good speed, it uses SDIO
+>> Interrupts.  See this bit in the device tree:
+>>
+>>   cap-sdio-irq;
+>>
+>
+> all of *my* boards are using side-band interrupt, so there are no
+> "cap-sdio-irq".
 
-you forgot to send the binding in your v3 series, so I've applied this
-one for v4.13 with Rob's Ack.
+They are all using side-band interrupt?  What WiFi device do you have connected?
 
+If you're truly using a side-band interrupt using the dedicated SDIO
+interrupt pin on your SoC, I'm pretty sure you still need to define
+cap-sdio-irq in order for things to work properly.  If you don't do
+that, you'll get "polling mode" for SDIO Interrupts.  See
+sdio_irq_thread() where you can see that the kernel will poll your
+device every 10 ms if MMC_CAP_SDIO_IRQ isn't set.
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Maybe you should try defining cap-sdio-irq and see if you get a big
+performance boost?
