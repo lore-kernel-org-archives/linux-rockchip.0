@@ -1,41 +1,97 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [REGRESSION 4.10] dw_mmc: failures on Rockchip rk3288 veyron boards
-Date: Wed, 12 Apr 2017 09:12:24 -0700
-Message-ID: <CAD=FV=U+SQ8RwPz+8tVzoLgTLNM=jca1FtLBgsZ+GTY24rhTKQ@mail.gmail.com>
-References: <20170330011709.GA110687@google.com> <CAD=FV=WWt=20WUT8jhZ3fBPiQq9UM-bEuFSXuuNu_7d3ONLdLQ@mail.gmail.com>
- <23842930-ece6-8879-daa5-c2220cfbf09f@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3] arm64: dts: rk3399: add support for firefly-rk3399
+ board
+Date: Thu, 13 Apr 2017 12:00:19 +0800
+Message-ID: <6d1eb0cc-fe3b-a483-123c-8558096c0846@rock-chips.com>
+References: <1491796213-4115-1-git-send-email-kever.yang@rock-chips.com>
+ <1642127.PiTFsmK4zh@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <23842930-ece6-8879-daa5-c2220cfbf09f@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Brian Norris <briannorris@chromium.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru M Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, kevin@archlinuxarm.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1642127.PiTFsmK4zh@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Shawn
+Hi Heiko,
 
-On Tue, Apr 11, 2017 at 5:54 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->> This doesn't surprise me at all.  What surprises me, though, is that
->> nobody else seems to be able to reproduce this.
->>
->> On veyron, WiFi is connected via SDIO.  For good speed, it uses SDIO
->> Interrupts.  See this bit in the device tree:
->>
->>   cap-sdio-irq;
->>
+
+On 04/12/2017 09:29 PM, Heiko Stuebner wrote:
+> Hi Kever,
 >
-> all of *my* boards are using side-band interrupt, so there are no
-> "cap-sdio-irq".
+> Am Montag, 10. April 2017, 11:50:13 CEST schrieb Kever Yang:
+>> Firefly-rk3399 is a bord from T-Firefly, you can find detail about
+>> it here:
+>> http://en.t-firefly.com/en/firenow/Firefly_RK3399/
+>>
+>> This patch add basic node for the board and make it able to bring
+>> up.
+>>
+>> Peripheral works:
+>> - usb hub which connect to ehci controller;
+>> - UART2 debug
+>> - eMMC
+>> - PCIe
+>>
+>> Not work:
+>> - USB 3.0 HOST, type-C port
+>> - sdio, sd-card
+>>
+>> Not test for other peripheral:
+>> - HDMI
+>> - Ethernet
+>> - OPTICAL
+>> - WiFi/BT
+>> - MIPI CSI/DSI
+>> - IR
+>> - EDP/DP
+>>
+>> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> applied for 4.13, as we're a bit late for 4.12, with the following changes:
 
-They are all using side-band interrupt?  What WiFi device do you have connected?
+Thanks for your help, I'm not familiar with the devices status on upstream
+because not working on kernel upstream for a long time.
+> - commit subject
+> - dropped status from backlight (as there is no disabled common node
+>    and it's specific to the firefly itself)
+> - quite some reordering of properties
+> - reordered regulator nodes per their addresses: 0x1b < 0x40
+> - dropped obsolete regulator-compatible properties
+> - fixed gpio-irq on the mpu6500
+> - dropped out-of-tree orientation properties of mpu6500
+>    --> please provide the optional "mount-matrix" in a follow-up patch
+>        see bindings/iio/imu/inv_mpu6050.txt
 
-If you're truly using a side-band interrupt using the dedicated SDIO
-interrupt pin on your SoC, I'm pretty sure you still need to define
-cap-sdio-irq in order for things to work properly.  If you don't do
-that, you'll get "polling mode" for SDIO Interrupts.  See
-sdio_irq_thread() where you can see that the kernel will poll your
-device every 10 ms if MMC_CAP_SDIO_IRQ isn't set.
+Maybe we can drop this mpu6050 node first? I can't find binding file for it.
+> - dropped rockchip,i2s-broken-burst-len;
+>    That change never made it into the mainline kernel
+> - fixed pcie pinctrl indentation
+> - dropped wireless-bluetooth uart-gpios pinctrl
+> - dropped supports-emmc property
+>
+> Please try to be a bit more careful when porting stuff from device kernels
+> with respect to properties not found in the mainline kernel and please
+> also double-check in [0] that I didn't break anything.
 
-Maybe you should try defining cap-sdio-irq and see if you get a big
-performance boost?
+I have test this patch on my firefly-rk3399, it works fine with pwm2 
+regulator
+init in U-Boot.
+
+Thanks,
+- Kever
+>
+>
+> Thanks
+> Heiko
+>
+> [0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=495a3c891a696b62465d71b1a125e3424352028b
+>
+>
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
