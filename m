@@ -1,87 +1,79 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 2/2] phy: rockchip-inno-usb2: Replace the extcon API
-Date: Thu, 13 Apr 2017 17:17:47 +0530
-Message-ID: <357e4565-e1df-2ccb-f2fa-369417061952@ti.com>
-References: <1490675909-2533-1-git-send-email-cw00.choi@samsung.com>
- <CGME20170328043830epcas5p2a949278d79e3741891991a3bbeafb9dc@epcas5p2.samsung.com>
- <1490675909-2533-2-git-send-email-cw00.choi@samsung.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Don't allow Runtime PM for SDIO cards
+Date: Thu, 13 Apr 2017 08:05:52 -0700
+Message-ID: <CAD=FV=Udz1-9ptu8FdGJGZZw-T_pCF2nnm7AfB=GaA4-wzuKAQ@mail.gmail.com>
+References: <20170411225543.987-1-dianders@chromium.org> <CAPDyKFo4FMu0F5DwBNb4b5JTp5UwHAUBQdvk00J5zzvbk6OZSQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490675909-2533-2-git-send-email-cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chanwoo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFo4FMu0F5DwBNb4b5JTp5UwHAUBQdvk00J5zzvbk6OZSQ@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, kevin@archlinuxarm.org, Alexandru Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, "# 4.0+" <stable@vger.kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
+
+On Thu, Apr 13, 2017 at 2:32 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> On 12 April 2017 at 00:55, Douglas Anderson <dianders@chromium.org> wrote:
+>> According to the SDIO standard interrupts are normally signalled in a
+>> very complicated way.  They require the card clock to be running and
+>> require the controller to be paying close attention to the signals
+>> coming from the card.  This simply can't happen with the clock stopped
+>> or with the controller in a low power mode.
+>
+> Right - unless we have a possibility to re-route the SDIO irq line to
+> GPIO irq for wake-up when the controller enters low power state.
+
+Yup.  Hence the "normally signalled".  ;)
 
 
-On Tuesday 28 March 2017 10:08 AM, Chanwoo Choi wrote:
-> This patch uses the resource-managed extcon API for extcon_register_notifier()
-> and replaces the deprecated extcon API as following:
-> - extcon_get_cable_state_() -> extcon_get_state()
-> - extcon_set_cable_state_() -> extcon_set_state_sync()
-> 
-> Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Signed-off-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+>> To that end, we'll disable runtime_pm when we detect that an SDIO card
+>> was inserted.  This is much like with what we do with the special
+>> "SDMMC_CLKEN_LOW_PWR" bit that dw_mmc supports.
+>
+> I wonder whether this is related to SDIO IRQs but not generic to SDIO.
+>
+> For example, when we have a WIFI chip with a dedicated and separate
+> IRQ line, enabling SDMMC_CLKEN_LOW_PWR could make sense.
 
-for this too:
-Acked-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-> ---
->  drivers/phy/phy-rockchip-inno-usb2.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-> index 4ea95c28a66f..02751f70067e 100644
-> --- a/drivers/phy/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/phy-rockchip-inno-usb2.c
-> @@ -540,7 +540,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  			rockchip_usb2phy_power_off(rport->phy);
->  		/* fall through */
->  	case OTG_STATE_B_IDLE:
-> -		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) > 0) {
-> +		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) > 0) {
->  			dev_dbg(&rport->phy->dev, "usb otg host connect\n");
->  			rport->state = OTG_STATE_A_HOST;
->  			rockchip_usb2phy_power_on(rport->phy);
-> @@ -596,7 +596,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  			rport->vbus_attached = vbus_attach;
->  
->  			if (notify_charger && rphy->edev) {
-> -				extcon_set_cable_state_(rphy->edev,
-> +				extcon_set_state_sync(rphy->edev,
->  							cable, vbus_attach);
->  				if (cable == EXTCON_CHG_USB_SDP)
->  					extcon_set_state_sync(rphy->edev,
-> @@ -617,7 +617,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  		sch_work = true;
->  		break;
->  	case OTG_STATE_A_HOST:
-> -		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) == 0) {
-> +		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) == 0) {
->  			dev_dbg(&rport->phy->dev, "usb otg host disconnect\n");
->  			rport->state = OTG_STATE_B_IDLE;
->  			rockchip_usb2phy_power_off(rport->phy);
-> @@ -1003,8 +1003,8 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
->  	if (!IS_ERR(rphy->edev)) {
->  		rport->event_nb.notifier_call = rockchip_otg_event;
->  
-> -		ret = extcon_register_notifier(rphy->edev, EXTCON_USB_HOST,
-> -					       &rport->event_nb);
-> +		ret = devm_extcon_register_notifier(rphy->dev, rphy->edev,
-> +					EXTCON_USB_HOST, &rport->event_nb);
->  		if (ret)
->  			dev_err(rphy->dev, "register USB HOST notifier failed\n");
->  	}
-> 
+Yes, I believe this to be the case too.  It has always been on my TODO
+list to see if I could figure out how to make this work, but it never
+rose to the top.
+
+One thing I wasn't sure about: is SDIO truly stateless enough that you
+could fully power down the controller while you were waiting for an
+interrupt?  I've never dug down that far into the protocol.
+
+For certain, though, you wouldn't want to remove VMMC from an SDIO
+card while waiting for an interrupt.  This contrasts to an SD or eMMC
+memory card where you could plausibly do that if you're not actively
+reading from or writing to the card (though I think some cards may do
+background garbage collection, so maybe?? you could interfere with
+that?)
+
+
+>> To fix the above isues we'd want to put something in the standard
+>> sdio_irq code that makes sure to call pm_runtime get/put when
+>> interrupts are being actively being processed.  That's possible to do,
+>> but it seems like a more complicated mechanism when we really just
+>> want the runtime pm disabled always for SDIO cards given that all the
+>> other bits needed to get Runtime PM vs. SDIO just aren't there.
+>>
+>> NOTE: at some point in time someone might come up with a fancy way to
+>> do SDIO interrupts and still allow (some) amount of runtime PM.
+>> Technically we could turn off the card clock if we used an alternate
+>> way of signaling SDIO interrupts (and out of band interrupt is one way
+>> to do this).  We probably wouldn't actually want to fully runtime
+>> suspend in this case though--at least not with the current
+>> dw_mci_runtime_resume() which basically fully resets the controller at
+>> resume time.
+>
+> I understand this "quick" fix in dw_mmc takes care of the problem.
+> However, allow me to try to make this a bit more generic. I intend to
+> post something within a few days. If I fail, let's go with this
+> solution.
+
+Most certainly!  If you can come up with something better then I'd be happy!
+
+-Doug
