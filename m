@@ -1,82 +1,79 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v2 2/2] drm: dw-hdmi: gate audio clock from the I2S
- enablement callbacks
-Date: Fri, 14 Apr 2017 11:06:32 +0200
-Message-ID: <d73b3d69-0660-0a91-3e59-eb6119b27ddf@baylibre.com>
-References: <20170414083113.4255-1-romain.perier@collabora.com>
- <20170414083113.4255-3-romain.perier@collabora.com>
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 2/2] dmaengine: pl330: don't emit code for one iteration loop
+Date: Fri, 14 Apr 2017 17:35:30 +0300
+Message-ID: <1492180531-1780-3-git-send-email-al.kochet@gmail.com>
+References: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170414083113.4255-3-romain.perier@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1492180531-1780-1-git-send-email-al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hhb-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDQvMTQvMjAxNyAxMDozMSBBTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBDdXJyZW50bHks
-IHRoZSBhdWRpbyBzYW1wbGVyIGNsb2NrIGlzIGVuYWJsZWQgZnJvbSBkd19oZG1pX3NldHVwKCkg
-YXQKPiBzdGVwIEUuIGFuZCBpcyBrZXB0IGVuYWJsZWQgZm9yIGxhdGVyIHVzZS4gVGhpcyBjbG9j
-ayBzaG91bGQgYmUgZW5hYmxlZAo+IGFuZCBkaXNhYmxlZCBhbG9uZyB3aXRoIHRoZSBhY3R1YWwg
-YXVkaW8gc3RyZWFtIGFuZCBub3QgYWx3YXlzIG9uICh0aGF0Cj4gaXMgYmFkIGZvciBQTSkuIEZ1
-dGhlcm1vcmUsIGFzIGRlc2NyaWJlZCBieSB0aGUgZGF0YXNoZWV0LCB0aGUgSTJTCj4gdmFyaWFu
-dCBuZWVkIHRvIGdhdGUvdW5nYXRlIHRoZSBjbG9jayB3aGVuIHRoZSBzdHJlYW0gaXMKPiBlbmFi
-bGVkL2Rpc2FibGVkLgo+IAo+IFRoaXMgY29tbWl0IGFkZHMgYSBwYXJhbWV0ZXIgdG8gaGRtaV9h
-dWRpb19lbmFibGVfY2xrKCkgdGhhdCBjb250cm9scwo+IHdoZW4gdGhlIGF1ZGlvIHNhbXBsZSBj
-bG9jayBtdXN0IGJlIGVuYWJsZWQgb3IgZGlzYWJsZWQuIFRoZW4sIGl0IGFkZHMKPiB0aGUgY2Fs
-bCB0byB0aGlzIGZ1bmN0aW9uIGZyb20gZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlKCkgYW5kCj4g
-ZHdfaGRtaV9pMnNfYXVkaW9fZGlzYWJsZSgpLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJvbWFpbiBQ
-ZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCAyMCArKysrKysrKysrKysrKy0tLS0tLQo+
-ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGluZGV4IDViMzI4YzAu
-LmE2ZGE2MzQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
-dy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
-Ywo+IEBAIC01NDQsNiArNTQ0LDEyIEBAIHZvaWQgZHdfaGRtaV9zZXRfc2FtcGxlX3JhdGUoc3Ry
-dWN0IGR3X2hkbWkgKmhkbWksIHVuc2lnbmVkIGludCByYXRlKQo+ICB9Cj4gIEVYUE9SVF9TWU1C
-T0xfR1BMKGR3X2hkbWlfc2V0X3NhbXBsZV9yYXRlKTsKPiAgCj4gK3N0YXRpYyB2b2lkIGhkbWlf
-ZW5hYmxlX2F1ZGlvX2NsayhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgYm9vbCBlbmFibGUpCj4gK3sK
-PiArCWhkbWlfbW9kYihoZG1pLCBlbmFibGUgPyAwIDogSERNSV9NQ19DTEtESVNfQVVEQ0xLX0RJ
-U0FCTEUsCj4gKwkJICBIRE1JX01DX0NMS0RJU19BVURDTEtfRElTQUJMRSwgSERNSV9NQ19DTEtE
-SVMpOwo+ICt9Cj4gKwo+ICB2b2lkIGR3X2hkbWlfYWhiX2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdf
-aGRtaSAqaGRtaSkKPiAgewo+ICAJaGRtaV9zZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9fY3Rz
-LCBoZG1pLT5hdWRpb19uKTsKPiBAQCAtNTU3LDYgKzU2MywxMiBAQCB2b2lkIGR3X2hkbWlfYWhi
-X2F1ZGlvX2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gIHZvaWQgZHdfaGRtaV9pMnNf
-YXVkaW9fZW5hYmxlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICB7Cj4gIAloZG1pX3NldF9jdHNf
-bihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIGhkbWktPmF1ZGlvX24pOwo+ICsJaGRtaV9lbmFibGVf
-YXVkaW9fY2xrKGhkbWksIHRydWUpOwo+ICt9Cj4gKwo+ICt2b2lkIGR3X2hkbWlfaTJzX2F1ZGlv
-X2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gK3sKPiArCWhkbWlfZW5hYmxlX2F1ZGlv
-X2NsayhoZG1pLCBmYWxzZSk7Cj4gIH0KPiAgCj4gIHZvaWQgZHdfaGRtaV9hdWRpb19lbmFibGUo
-c3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gQEAgLTE1OTIsMTEgKzE2MDQsNiBAQCBzdGF0aWMgdm9p
-ZCBkd19oZG1pX2VuYWJsZV92aWRlb19wYXRoKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICAJCQkg
-ICAgSERNSV9NQ19GTE9XQ1RSTCk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGhkbWlfZW5hYmxl
-X2F1ZGlvX2NsayhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAtewo+IC0JaGRtaV9tb2RiKGhkbWks
-IDAsIEhETUlfTUNfQ0xLRElTX0FVRENMS19ESVNBQkxFLCBIRE1JX01DX0NMS0RJUyk7Cj4gLX0K
-PiAtCj4gIC8qIFdvcmthcm91bmQgdG8gY2xlYXIgdGhlIG92ZXJmbG93IGNvbmRpdGlvbiAqLwo+
-ICBzdGF0aWMgdm9pZCBkd19oZG1pX2NsZWFyX292ZXJmbG93KHN0cnVjdCBkd19oZG1pICpoZG1p
-KQo+ICB7Cj4gQEAgLTE3MTAsNyArMTcxNyw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9zZXR1cChz
-dHJ1Y3QgZHdfaGRtaSAqaGRtaSwgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIAo+
-ICAJCS8qIEhETUkgSW5pdGlhbGl6YXRpb24gU3RlcCBFIC0gQ29uZmlndXJlIGF1ZGlvICovCj4g
-IAkJaGRtaV9jbGtfcmVnZW5lcmF0b3JfdXBkYXRlX3BpeGVsX2Nsb2NrKGhkbWkpOwo+IC0JCWhk
-bWlfZW5hYmxlX2F1ZGlvX2NsayhoZG1pKTsKPiArCQloZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRt
-aSwgdHJ1ZSk7Cj4gIAl9Cj4gIAo+ICAJLyogbm90IGZvciBEVkkgbW9kZSAqLwo+IEBAIC0yNDM4
-LDYgKzI0NDUsNyBAQCBfX2R3X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-diwKPiAgCQlhdWRpby53cml0ZQk9IGhkbWlfd3JpdGViOwo+ICAJCWF1ZGlvLnJlYWQJPSBoZG1p
-X3JlYWRiOwo+ICAJCWhkbWktPmVuYWJsZV9hdWRpbyA9IGR3X2hkbWlfaTJzX2F1ZGlvX2VuYWJs
-ZTsKPiArCQloZG1pLT5kaXNhYmxlX2F1ZGlvID0gZHdfaGRtaV9pMnNfYXVkaW9fZGlzYWJsZTsK
-PiAgCj4gIAkJcGRldmluZm8ubmFtZSA9ICJkdy1oZG1pLWkycy1hdWRpbyI7Cj4gIAkJcGRldmlu
-Zm8uZGF0YSA9ICZhdWRpbzsKPiAKCkhpIFJvbWFpbiwKClJldmlld2VkLWJ5OiBOZWlsIEFybXN0
-cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+Cl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The patch remove one iteration outer loop in the _loop().
+Removing loop saves 4 bytes of MicroCode buffer. This
+savings make sense for free-running cyclic transfer
+implementation.
+
+    DMALP_0 0
+    ...
+    DMALPENDA_0 bjmpto_9
+
+Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/dma/pl330.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 56a2377..6126dde 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -1268,7 +1268,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	lpend.bjump = 0;
+ 	szlpend = _emit_LPEND(1, buf, &lpend);
+ 
+-	if (lcnt0) {
++	if (lcnt0 > 1) {
+ 		szlp *= 2;
+ 		szlpend *= 2;
+ 	}
+@@ -1284,7 +1284,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 
+ 	off = 0;
+ 
+-	if (lcnt0) {
++	if (lcnt0 > 1) {
+ 		off += _emit_LP(dry_run, &buf[off], 0, lcnt0);
+ 		ljmp0 = off;
+ 	}
+@@ -1300,7 +1300,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	lpend.bjump = off - ljmp1;
+ 	off += _emit_LPEND(dry_run, &buf[off], &lpend);
+ 
+-	if (lcnt0) {
++	if (lcnt0 > 1) {
+ 		lpend.cond = ALWAYS;
+ 		lpend.forever = false;
+ 		lpend.loop = 0;
+@@ -1309,7 +1309,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	}
+ 
+ 	*bursts = lcnt1 * cyc;
+-	if (lcnt0)
++	if (lcnt0 > 1)
+ 		*bursts *= lcnt0;
+ 
+ 	return off;
+-- 
+1.7.9.5
