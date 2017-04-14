@@ -1,90 +1,87 @@
-From: Romain Perier <romain.perier@collabora.com>
-Subject: [PATCH v2 2/2] drm: dw-hdmi: gate audio clock from the I2S enablement callbacks
-Date: Fri, 14 Apr 2017 10:31:13 +0200
-Message-ID: <20170414083113.4255-3-romain.perier@collabora.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v2 1/2] drm: dw-hdmi: add specific I2S and AHB functions
+ for stream handling
+Date: Fri, 14 Apr 2017 11:05:11 +0200
+Message-ID: <18f8eac1-64c2-949e-c4e1-6c87a5e757c3@baylibre.com>
 References: <20170414083113.4255-1-romain.perier@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170414083113.4255-1-romain.perier@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, Neil Armstrong <narmstrong@baylibre.com>, Romain Perier <romain.perier@collabora.com>
+ <20170414083113.4255-2-romain.perier@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170414083113.4255-2-romain.perier@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>, Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
-step E. and is kept enabled for later use. This clock should be enabled
-and disabled along with the actual audio stream and not always on (that
-is bad for PM). Futhermore, as described by the datasheet, the I2S
-variant need to gate/ungate the clock when the stream is
-enabled/disabled.
-
-This commit adds a parameter to hdmi_audio_enable_clk() that controls
-when the audio sample clock must be enabled or disabled. Then, it adds
-the call to this function from dw_hdmi_i2s_audio_enable() and
-dw_hdmi_i2s_audio_disable().
-
-Signed-off-by: Romain Perier <romain.perier@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 5b328c0..a6da634 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -544,6 +544,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate)
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
- 
-+static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
-+{
-+	hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
-+		  HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
-+}
-+
- void dw_hdmi_ahb_audio_enable(struct dw_hdmi *hdmi)
- {
- 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-@@ -557,6 +563,12 @@ void dw_hdmi_ahb_audio_disable(struct dw_hdmi *hdmi)
- void dw_hdmi_i2s_audio_enable(struct dw_hdmi *hdmi)
- {
- 	hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
-+	hdmi_enable_audio_clk(hdmi, true);
-+}
-+
-+void dw_hdmi_i2s_audio_disable(struct dw_hdmi *hdmi)
-+{
-+	hdmi_enable_audio_clk(hdmi, false);
- }
- 
- void dw_hdmi_audio_enable(struct dw_hdmi *hdmi)
-@@ -1592,11 +1604,6 @@ static void dw_hdmi_enable_video_path(struct dw_hdmi *hdmi)
- 			    HDMI_MC_FLOWCTRL);
- }
- 
--static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi)
--{
--	hdmi_modb(hdmi, 0, HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
--}
--
- /* Workaround to clear the overflow condition */
- static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
- {
-@@ -1710,7 +1717,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 
- 		/* HDMI Initialization Step E - Configure audio */
- 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
--		hdmi_enable_audio_clk(hdmi);
-+		hdmi_enable_audio_clk(hdmi, true);
- 	}
- 
- 	/* not for DVI mode */
-@@ -2438,6 +2445,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		audio.write	= hdmi_writeb;
- 		audio.read	= hdmi_readb;
- 		hdmi->enable_audio = dw_hdmi_i2s_audio_enable;
-+		hdmi->disable_audio = dw_hdmi_i2s_audio_disable;
- 
- 		pdevinfo.name = "dw-hdmi-i2s-audio";
- 		pdevinfo.data = &audio;
--- 
-2.9.3
+T24gMDQvMTQvMjAxNyAxMDozMSBBTSwgUm9tYWluIFBlcmllciB3cm90ZToKPiBDdXJyZW50bHks
+IENUUytOIGlzIGZvcmNlZCB0byB6ZXJvIGFzIGEgd29ya2Fyb3VuZCBvZiB0aGUgSVAgYmxvY2sg
+Zm9yCj4gaS5NWCBwbGF0Zm9ybXMuIFRoaXMgaXMgcmVxdWVzdGVkIGluIHRoZSBkYXRhc2hlZXQg
+b2YgdGhlIGNvcnJlc3BvbmRpbmcKPiBJUCBmb3IgQUhCIG1vZGUgb25seS4gSG93ZXZlciwgd2Ug
+aGF2ZSBzZWVuIHRoYXQgaXQgaW50cm9kdWNlcyBnbGl0Y2hlcwo+IG9yIGRlbGF5cyB3aGVuIHBs
+YXlpbmcgYSBzb3VuZCBvbiBIRE1JIGZvciBJMlMgbW9kZS4gVGhpcyBwcm92ZXMgdGhhdCB3ZQo+
+IGNhbm5vdCBrZWVwIHRoZSBjdXJyZW50IGZ1bmN0aW9ucyBmb3IgaGFuZGxpbmcgYXVkaW8gc3Ry
+ZWFtIGFzLWlzIGlmCj4gdGhlc2UgY29udGFpbiB3b3JrYXJvdW5kIHRoYXQgYXJlIHNwZWNpZmlj
+IHRvIGEgbW9kZS4KPiAKPiBUaGlzIGNvbW1pdCBpbnRyb2R1Y2VzIHR3byBjYWxsYmFja3MsIG9u
+ZSBmb3IgZWFjaCB2YXJpYW50Lgo+IGR3X2hkbWlfc2V0dXAgZGVmaW5lcyB0aGUgcmlnaHQgZnVu
+Y3Rpb24gZGVwZW5kaW5nIG9uIHRoZSBkZXRlY3RlZAo+IHZhcmlhbnQuIFRoZW4sIHRoZSBleHBv
+cnRlZCBmdW5jdGlvbnMgZHdfaGRtaV9hdWRpb19lbmFibGUgYW5kCj4gZHdfaGRtaV9hdWRpb19k
+aXNhYmxlIGNhbGxzIHRoZSBjb3JyZXNwb25kaW5nIGNhbGxiYWNrcwo+IAo+IFNpZ25lZC1vZmYt
+Ynk6IFJvbWFpbiBQZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAg
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCAyNiArKysrKysrKysr
+KysrKysrKysrKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMiBk
+ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
+Ywo+IGluZGV4IDRiNmYyMTYuLjViMzI4YzAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L3N5bm9wc3lzL2R3LWhkbWkuYwo+IEBAIC0xNzMsNiArMTczLDggQEAgc3RydWN0IGR3X2hkbWkg
+ewo+ICAKPiAgCXVuc2lnbmVkIGludCByZWdfc2hpZnQ7Cj4gIAlzdHJ1Y3QgcmVnbWFwICpyZWdt
+Owo+ICsJdm9pZCAoKmVuYWJsZV9hdWRpbykoc3RydWN0IGR3X2hkbWkgKmhkbWkpOwo+ICsJdm9p
+ZCAoKmRpc2FibGVfYXVkaW8pKHN0cnVjdCBkd19oZG1pICpoZG1pKTsKPiAgfTsKPiAgCj4gICNk
+ZWZpbmUgSERNSV9JSF9QSFlfU1RBVDBfUlhfU0VOU0UgXAo+IEBAIC01NDIsMTMgKzU0NCwyOSBA
+QCB2b2lkIGR3X2hkbWlfc2V0X3NhbXBsZV9yYXRlKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNp
+Z25lZCBpbnQgcmF0ZSkKPiAgfQo+ICBFWFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX3NldF9zYW1w
+bGVfcmF0ZSk7Cj4gIAo+ICt2b2lkIGR3X2hkbWlfYWhiX2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdf
+aGRtaSAqaGRtaSkKPiArewo+ICsJaGRtaV9zZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9fY3Rz
+LCBoZG1pLT5hdWRpb19uKTsKPiArfQo+ICsKPiArdm9pZCBkd19oZG1pX2FoYl9hdWRpb19kaXNh
+YmxlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICt7Cj4gKwloZG1pX3NldF9jdHNfbihoZG1pLCBo
+ZG1pLT5hdWRpb19jdHMsIDApOwo+ICt9Cj4gKwo+ICt2b2lkIGR3X2hkbWlfaTJzX2F1ZGlvX2Vu
+YWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiArewo+ICsJaGRtaV9zZXRfY3RzX24oaGRtaSwg
+aGRtaS0+YXVkaW9fY3RzLCBoZG1pLT5hdWRpb19uKTsKPiArfQo+ICsKPiAgdm9pZCBkd19oZG1p
+X2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgewo+ICAJdW5zaWduZWQgbG9u
+ZyBmbGFnczsKPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgmaGRtaS0+YXVkaW9fbG9jaywgZmxh
+Z3MpOwo+ICAJaGRtaS0+YXVkaW9fZW5hYmxlID0gdHJ1ZTsKPiAtCWhkbWlfc2V0X2N0c19uKGhk
+bWksIGhkbWktPmF1ZGlvX2N0cywgaGRtaS0+YXVkaW9fbik7Cj4gKwlpZiAoaGRtaS0+ZW5hYmxl
+X2F1ZGlvKQo+ICsJCWhkbWktPmVuYWJsZV9hdWRpbyhoZG1pKTsKPiAgCXNwaW5fdW5sb2NrX2ly
+cXJlc3RvcmUoJmhkbWktPmF1ZGlvX2xvY2ssIGZsYWdzKTsKPiAgfQo+ICBFWFBPUlRfU1lNQk9M
+X0dQTChkd19oZG1pX2F1ZGlvX2VuYWJsZSk7Cj4gQEAgLTU1OSw3ICs1NzcsOCBAQCB2b2lkIGR3
+X2hkbWlfYXVkaW9fZGlzYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgCj4gIAlzcGluX2xv
+Y2tfaXJxc2F2ZSgmaGRtaS0+YXVkaW9fbG9jaywgZmxhZ3MpOwo+ICAJaGRtaS0+YXVkaW9fZW5h
+YmxlID0gZmFsc2U7Cj4gLQloZG1pX3NldF9jdHNfbihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIDAp
+Owo+ICsJaWYgKGhkbWktPmRpc2FibGVfYXVkaW8pCj4gKwkJaGRtaS0+ZGlzYWJsZV9hdWRpbyho
+ZG1pKTsKPiAgCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmhkbWktPmF1ZGlvX2xvY2ssIGZsYWdz
+KTsKPiAgfQo+ICBFWFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX2F1ZGlvX2Rpc2FibGUpOwo+IEBA
+IC0yNDA0LDYgKzI0MjMsOCBAQCBfX2R3X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
+ZSAqcGRldiwKPiAgCQlhdWRpby5pcnEgPSBpcnE7Cj4gIAkJYXVkaW8uaGRtaSA9IGhkbWk7Cj4g
+IAkJYXVkaW8uZWxkID0gaGRtaS0+Y29ubmVjdG9yLmVsZDsKPiArCQloZG1pLT5lbmFibGVfYXVk
+aW8gPSBkd19oZG1pX2FoYl9hdWRpb19lbmFibGU7Cj4gKwkJaGRtaS0+ZGlzYWJsZV9hdWRpbyA9
+IGR3X2hkbWlfYWhiX2F1ZGlvX2Rpc2FibGU7Cj4gIAo+ICAJCXBkZXZpbmZvLm5hbWUgPSAiZHct
+aGRtaS1haGItYXVkaW8iOwo+ICAJCXBkZXZpbmZvLmRhdGEgPSAmYXVkaW87Cj4gQEAgLTI0MTYs
+NiArMjQzNyw3IEBAIF9fZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2
+LAo+ICAJCWF1ZGlvLmhkbWkJPSBoZG1pOwo+ICAJCWF1ZGlvLndyaXRlCT0gaGRtaV93cml0ZWI7
+Cj4gIAkJYXVkaW8ucmVhZAk9IGhkbWlfcmVhZGI7Cj4gKwkJaGRtaS0+ZW5hYmxlX2F1ZGlvID0g
+ZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlOwo+ICAKPiAgCQlwZGV2aW5mby5uYW1lID0gImR3LWhk
+bWktaTJzLWF1ZGlvIjsKPiAgCQlwZGV2aW5mby5kYXRhID0gJmF1ZGlvOwo+IAoKSGkgUm9tYWlu
+LAoKUmV2aWV3ZWQtYnk6IE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4K
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
