@@ -1,53 +1,61 @@
-From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 0/2] Free running cyclic transfer implementation for pl330
-Date: Fri, 14 Apr 2017 17:35:28 +0300
-Message-ID: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 1/2] dmaengine: pl330: make cyclic transfer free runnable
+Date: Fri, 14 Apr 2017 20:04:19 +0200
+Message-ID: <20170414180419.2xhjjokxessd7n3q@kozik-lap>
+References: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
+ <1492180531-1780-2-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hhb-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ulysses.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1492180531-1780-2-git-send-email-al.kochet@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: Dan Williams <dan.j.williams@intel.com>, Vinod Koul <vinod.koul@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hhb@rock-chips.com, shawn.lin@rock-chips.com, caesar.wang@rock-chips.com, sugar.zhang@rock-chips.com, ulysses.huang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello!
+On Fri, Apr 14, 2017 at 05:35:29PM +0300, Alexander Kochetkov wrote:
+> The patch solve the I2S click problem on rk3188. Actually
+> all the devices using pl330 should have I2S click problem
+> due to pl330 cyclic transfer implementation.
+> 
+> Current implementation depends on soft irq. If pl330 unable
+> to submit next transfer in time some samples could be lost.
+> The lost samples heard as sound click. In order to check
+> lost samples, I've installed I2S interrupt handler to signal
+> overflow/underflow conditions. Sometimes I saw overflow
+> or underflow events and heard clicks.
+> 
+> The patch setup cyclic transfer such a way, that transfer can
+> run infinitely without CPU intervention. As a result,
+> lost samples and clicks gone.
+> 
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+> ---
+>  drivers/dma/pl330.c |  192 +++++++++++++++++++++++++--------------------------
+>  1 file changed, 94 insertions(+), 98 deletions(-)
+>
 
-This series contain free running cyclic transfer implementation for pl330.
-It affect ALL chips using pl330 (not only rockchip) and
-allow to run cyclic transfers without CPU intervention. As a result
-it fix sound clicks (observed and not yet observed) because
-sound clicks must be heard under heavy system load due to the way
-how cyclic transfers implemented now for pl330.
+I didn't look at the code but testing fails.
+HW: Odroid U3 (Exynos4412), pl330 used for dma for i2s, max98090 audio
+codec
+SW: 4.11.0-rc6-next-20170413
 
-My previous series[1] doesn't get enough attention (no one except me
-tested it). And it don't get upstream:
+Only first aplay workes fine. After it, the next sound stalls:
+[  170.059271] INFO: rcu_preempt detected stalls on CPUs/tasks:
+[  170.059441]  1-...: (1 GPs behind) idle=11e/140000000000000/0 softirq=2335/2335 fqs=1049
+[  170.067474]  (detected by 3, t=2102 jiffies, g=459, c=458, q=194)
+[  170.073555] Sending NMI from CPU 3 to CPUs 1:
+[  180.083093] rcu_preempt kthread starved for 999 jiffies! g459 c458 f0x0 RCU_GP_DOING_FQS(4) ->state=0x0
+[  180.086848] rcu_preempt     S    0     8      2 0x00000000
+[  180.092344] [<c073e150>] (__schedule) from [<c073e4dc>] (schedule+0x4c/0xac)
+[  180.099353] [<c073e4dc>] (schedule) from [<c0742634>] (schedule_timeout+0x14c/0x23c)
+[  180.107081] [<c0742634>] (schedule_timeout) from [<c01702f4>] (rcu_gp_kthread+0x5dc/0x94c)
+[  180.115330] [<c01702f4>] (rcu_gp_kthread) from [<c01381f0>] (kthread+0x124/0x154)
+[  180.122793] [<c01381f0>] (kthread) from [<c0108438>] (ret_from_fork+0x14/0x3c)
 
-> 8-03-2016, 6:03, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org> *:
->Overall this series looks okay, but can someone test this. I would not like
-pl330 to be broken again
+Let me know if you need more data. I wonder why you haven't experience
+this?
 
-Now I was asked about the series[1] again by guys from Rockchip,
-so I send rebased against 4.10.10 version. Hope, someone might test it
-and confirm that patches work fine.
-
-Regards,
-Alexander.
-
-Alexander Kochetkov (2):
-  dmaengine: pl330: make cyclic transfer free runnable
-  dmaengine: pl330: don't emit code for one iteration loop
-
- drivers/dma/pl330.c |  200 +++++++++++++++++++++++++--------------------------
- 1 file changed, 98 insertions(+), 102 deletions(-)
-
--- 
-1.7.9.5
+Best regards,
+Krzysztof
