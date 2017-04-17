@@ -1,63 +1,48 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 25/29] ARM: dts: rockchip: Add timer entries to rk3188 SoC
-Date: Sun, 16 Apr 2017 22:27:15 +0200
-Message-ID: <1492374441-23336-25-git-send-email-daniel.lezcano@linaro.org>
-References: <20170416202542.GV2078@mai>
- <1492374441-23336-1-git-send-email-daniel.lezcano@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1492374441-23336-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tglx@linutronix.de
-Cc: linux-kernel@vger.kernel.org, Alexander Kochetkov <al.kochet@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, "moderated list:ARM/Rockchip SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, "open list:OPEN FIRMWARE AND FLATTENED
-        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] usb: dwc2: add multiple clocks handling
+Date: Mon, 17 Apr 2017 18:33:33 +0800
+Message-ID: <3e6e6c8f-35a2-4ce9-521a-677d384e24a6@rock-chips.com>
+References: <1486608279-22278-1-git-send-email-frank.wang@rock-chips.com>
+ <1486608279-22278-3-git-send-email-frank.wang@rock-chips.com>
+ <1905699.rAdUkra9dJ@diego> <87mvc5fr4h.fsf@linux.intel.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <87mvc5fr4h.fsf-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Alexander Kochetkov <al.kochet@gmail.com>
+Hi John,
 
-The patch add two timers to all rk3188 based boards.
+I apologize if this was presumptuous, would you like to have a look this 
+series please?
 
-The first timer is from alive subsystem and it act as a backup
-for the local timers at sleep time. It act the same as other
-SoC rockchip timers already present in kernel.
 
-The second timer is from CPU subsystem and act as replacement
-for the arm-global-timer clocksource and sched clock. It run
-at stable frequency 24MHz.
+On 2017/3/28 21:49, Felipe Balbi wrote:
+> Hi,
+>
+> Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> writes:
+>> Am Donnerstag, 9. Februar 2017, 10:44:39 CET schrieb Frank Wang:
+>>> Since dwc2 may have one or more input clocks need to manage for some
+>>> platform, so this adds change clk to clk's array of struct dwc2_hsotg
+>>> to handle more clocks operation.
+>>>
+>>> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> for the simple clock handling the dwc2-driver does right now, this looks
+>> adquate and honoring EPROBE_DEFER is a nice touch ;-), so
+>>
+>> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> John, care to look at this series?
+>
 
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm/boot/dts/rk3188.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+BR.
+Frank
 
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index cf91254..8428fae 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -106,6 +106,22 @@
- 		};
- 	};
- 
-+	timer3: timer@2000e000 {
-+		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
-+		reg = <0x2000e000 0x20>;
-+		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
-+		clock-names = "timer", "pclk";
-+	};
-+
-+	timer6: timer@200380a0 {
-+		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
-+		reg = <0x200380a0 0x20>;
-+		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
-+		clock-names = "timer", "pclk";
-+	};
-+
- 	i2s0: i2s@1011a000 {
- 		compatible = "rockchip,rk3188-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x1011a000 0x2000>;
--- 
-2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
