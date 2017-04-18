@@ -1,11 +1,11 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] usb: dwc3: add disable u2mac linestate check quirk
-Date: Tue, 18 Apr 2017 11:48:51 +0800
-Message-ID: <1492487331-15096-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v2] usb: dwc3: add disable u2mac linestate check quirk
+Date: Tue, 18 Apr 2017 13:17:39 +0800
+Message-ID: <1492492659-19266-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: balbi@kernel.org, gregkh@linuxfoundation.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, daniel.meng@rock-chips.com, wulf@rock-chips.com, William Wu <william.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 This patch adds a quirk to disable USB 2.0 MAC linestate check
@@ -23,8 +23,11 @@ the u2mac linestate check to decrease the SSPLIT token to SETUP
 token inter-packet delay from 566ns to 466ns, and fix the issue
 that FS/LS devices not recognized if inserted through USB 3.0 HUB.
 
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 ---
+Changes in v2:
+- fix coding style
+
  Documentation/devicetree/bindings/usb/dwc3.txt |  2 ++
  drivers/usb/dwc3/core.c                        | 14 ++++++++++----
  drivers/usb/dwc3/core.h                        |  4 ++++
@@ -44,7 +47,7 @@ index f658f39..6a89f0c 100644
  			utmi_l1_suspend_n, false when asserts utmi_sleep_n
   - snps,hird-threshold: HIRD threshold
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 455d89a..22e0c35 100644
+index 455d89a..03429c5 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
 @@ -796,15 +796,19 @@ static int dwc3_core_init(struct dwc3 *dwc)
@@ -75,7 +78,7 @@ index 455d89a..22e0c35 100644
  				"snps,dis-u2-freeclk-exists-quirk");
  	dwc->dis_del_phy_power_chg_quirk = device_property_read_bool(dev,
  				"snps,dis-del-phy-power-chg-quirk");
-+	 dwc->tx_ipgap_linecheck_dis_quirk = device_property_read_bool(dev,
++	dwc->tx_ipgap_linecheck_dis_quirk = device_property_read_bool(dev,
 +				"snps,tx-ipgap-linecheck-dis-quirk");
  
  	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
@@ -111,9 +114,3 @@ index 981c77f..3c2537b 100644
  	unsigned		tx_de_emphasis:2;
 -- 
 2.0.0
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
