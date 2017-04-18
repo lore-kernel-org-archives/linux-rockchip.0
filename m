@@ -1,51 +1,119 @@
-From: sugar <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH 0/2] Free running cyclic transfer implementation for pl330
-Date: Tue, 18 Apr 2017 10:26:59 +0800
-Message-ID: <52e886e1-88f7-808d-4838-b5c136f44651@rock-chips.com>
-References: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Vinod Koul <vinod.koul@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hhb@rock-chips.com, shawn.lin@rock-chips.com, caesar.wang@rock-chips.com, ulysses.huang@rock-chips.com
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] usb: dwc3: add disable u2mac linestate check quirk
+Date: Tue, 18 Apr 2017 11:48:51 +0800
+Message-ID: <1492487331-15096-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Alexander,
+This patch adds a quirk to disable USB 2.0 MAC linestate check
+during HS transmit. Refer the dwc3 databook, we can use it for
+some special platforms if the linestate not reflect the expected
+line state(J) during transmission.
 
-I have tested this series on rk3399 evb board and works well.
+When use this quirk, the controller implements a fixed 40-bit
+TxEndDelay after the packet is given on UTMI and ignores the
+linestate during the transmit of a token (during token-to-token
+and token-to-data IPGAP).
 
-Tested-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+On some rockchip platforms (e.g. rk3399), it requires to disable
+the u2mac linestate check to decrease the SSPLIT token to SETUP
+token inter-packet delay from 566ns to 466ns, and fix the issue
+that FS/LS devices not recognized if inserted through USB 3.0 HUB.
 
-ÔÚ 4/14/2017 22:35, Alexander Kochetkov Ð´µÀ:
-> Hello!
->
-> This series contain free running cyclic transfer implementation for pl330.
-> It affect ALL chips using pl330 (not only rockchip) and
-> allow to run cyclic transfers without CPU intervention. As a result
-> it fix sound clicks (observed and not yet observed) because
-> sound clicks must be heard under heavy system load due to the way
-> how cyclic transfers implemented now for pl330.
->
-> My previous series[1] doesn't get enough attention (no one except me
-> tested it). And it don't get upstream:
->
->> 8-03-2016, 6:03, Vinod Koul <vinod.koul@intel.com> *:
->> Overall this series looks okay, but can someone test this. I would not like
-> pl330 to be broken again
->
-> Now I was asked about the series[1] again by guys from Rockchip,
-> so I send rebased against 4.10.10 version. Hope, someone might test it
-> and confirm that patches work fine.
->
-> Regards,
-> Alexander.
->
-> Alexander Kochetkov (2):
->   dmaengine: pl330: make cyclic transfer free runnable
->   dmaengine: pl330: don't emit code for one iteration loop
->
->  drivers/dma/pl330.c |  200 +++++++++++++++++++++++++--------------------------
->  1 file changed, 98 insertions(+), 102 deletions(-)
->
+Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ Documentation/devicetree/bindings/usb/dwc3.txt |  2 ++
+ drivers/usb/dwc3/core.c                        | 14 ++++++++++----
+ drivers/usb/dwc3/core.h                        |  4 ++++
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
+index f658f39..6a89f0c 100644
+--- a/Documentation/devicetree/bindings/usb/dwc3.txt
++++ b/Documentation/devicetree/bindings/usb/dwc3.txt
+@@ -45,6 +45,8 @@ Optional properties:
+ 			a free-running PHY clock.
+  - snps,dis-del-phy-power-chg-quirk: when set core will change PHY power
+ 			from P0 to P1/P2/P3 without delay.
++ - snps,tx-ipgap-linecheck-dis-quirk: when set, disable u2mac linestate check
++			during HS transmit.
+  - snps,is-utmi-l1-suspend: true when DWC3 asserts output signal
+ 			utmi_l1_suspend_n, false when asserts utmi_sleep_n
+  - snps,hird-threshold: HIRD threshold
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 455d89a..22e0c35 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -796,15 +796,19 @@ static int dwc3_core_init(struct dwc3 *dwc)
+ 		dwc3_writel(dwc->regs, DWC3_GUCTL2, reg);
+ 	}
+ 
++	reg = dwc3_readl(dwc->regs, DWC3_GUCTL1);
++
+ 	/*
+ 	 * Enable hardware control of sending remote wakeup in HS when
+ 	 * the device is in the L1 state.
+ 	 */
+-	if (dwc->revision >= DWC3_REVISION_290A) {
+-		reg = dwc3_readl(dwc->regs, DWC3_GUCTL1);
++	if (dwc->revision >= DWC3_REVISION_290A)
+ 		reg |= DWC3_GUCTL1_DEV_L1_EXIT_BY_HW;
+-		dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
+-	}
++
++	if (dwc->tx_ipgap_linecheck_dis_quirk)
++		reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
++
++	dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
+ 
+ 	return 0;
+ 
+@@ -1023,6 +1027,8 @@ static void dwc3_get_properties(struct dwc3 *dwc)
+ 				"snps,dis-u2-freeclk-exists-quirk");
+ 	dwc->dis_del_phy_power_chg_quirk = device_property_read_bool(dev,
+ 				"snps,dis-del-phy-power-chg-quirk");
++	 dwc->tx_ipgap_linecheck_dis_quirk = device_property_read_bool(dev,
++				"snps,tx-ipgap-linecheck-dis-quirk");
+ 
+ 	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
+ 				"snps,tx_de_emphasis_quirk");
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index 981c77f..3c2537b 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -204,6 +204,7 @@
+ #define DWC3_GCTL_DSBLCLKGTNG		BIT(0)
+ 
+ /* Global User Control 1 Register */
++#define DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS	BIT(28)
+ #define DWC3_GUCTL1_DEV_L1_EXIT_BY_HW	BIT(24)
+ 
+ /* Global USB2 PHY Configuration Register */
+@@ -850,6 +851,8 @@ struct dwc3_scratchpad_array {
+  *			provide a free-running PHY clock.
+  * @dis_del_phy_power_chg_quirk: set if we disable delay phy power
+  *			change quirk.
++ * @tx_ipgap_linecheck_dis_quirk: set if we disable u2mac linestate
++ *			check during HS transmit.
+  * @tx_de_emphasis_quirk: set if we enable Tx de-emphasis quirk
+  * @tx_de_emphasis: Tx de-emphasis value
+  * 	0	- -6dB de-emphasis
+@@ -1004,6 +1007,7 @@ struct dwc3 {
+ 	unsigned		dis_rxdet_inp3_quirk:1;
+ 	unsigned		dis_u2_freeclk_exists_quirk:1;
+ 	unsigned		dis_del_phy_power_chg_quirk:1;
++	unsigned		tx_ipgap_linecheck_dis_quirk:1;
+ 
+ 	unsigned		tx_de_emphasis_quirk:1;
+ 	unsigned		tx_de_emphasis:2;
+-- 
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
