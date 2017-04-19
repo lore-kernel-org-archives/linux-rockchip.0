@@ -1,169 +1,89 @@
-From: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2] usb: dwc3: add disable u2mac linestate check quirk
-Date: Wed, 19 Apr 2017 11:59:47 +0800
-Message-ID: <67e21e78-2f4e-47eb-38f5-734fe13dccab@rock-chips.com>
-References: <1492492659-19266-1-git-send-email-william.wu@rock-chips.com>
- <CABXOdTctJLh7rno=U9Zr91SvuLtwyzWo0vuE0h08uxV63LsK7A@mail.gmail.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2 1/2] drm: dw-hdmi: add specific I2S and AHB functions
+ for stream handling
+Date: Wed, 19 Apr 2017 10:19:50 +0530
+Message-ID: <07756d59-b2e6-cf6e-6948-9166de6befe5@codeaurora.org>
+References: <20170414083113.4255-1-romain.perier@collabora.com>
+ <20170414083113.4255-2-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABXOdTctJLh7rno=U9Zr91SvuLtwyzWo0vuE0h08uxV63LsK7A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
-Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Brian Norris <briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170414083113.4255-2-romain.perier@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Guenter,
-
-
-在 2017年04月18日 21:18, Guenter Roeck 写道:
-> On Mon, Apr 17, 2017 at 10:17 PM, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> This patch adds a quirk to disable USB 2.0 MAC linestate check
->> during HS transmit. Refer the dwc3 databook, we can use it for
->> some special platforms if the linestate not reflect the expected
->> line state(J) during transmission.
->>
->> When use this quirk, the controller implements a fixed 40-bit
->> TxEndDelay after the packet is given on UTMI and ignores the
->> linestate during the transmit of a token (during token-to-token
->> and token-to-data IPGAP).
->>
->> On some rockchip platforms (e.g. rk3399), it requires to disable
->> the u2mac linestate check to decrease the SSPLIT token to SETUP
->> token inter-packet delay from 566ns to 466ns, and fix the issue
->> that FS/LS devices not recognized if inserted through USB 3.0 HUB.
->>
->> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->> Changes in v2:
->> - fix coding style
->>
->>   Documentation/devicetree/bindings/usb/dwc3.txt |  2 ++
->>   drivers/usb/dwc3/core.c                        | 14 ++++++++++----
->>   drivers/usb/dwc3/core.h                        |  4 ++++
->>   3 files changed, 16 insertions(+), 4 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
->> index f658f39..6a89f0c 100644
->> --- a/Documentation/devicetree/bindings/usb/dwc3.txt
->> +++ b/Documentation/devicetree/bindings/usb/dwc3.txt
->> @@ -45,6 +45,8 @@ Optional properties:
->>                          a free-running PHY clock.
->>    - snps,dis-del-phy-power-chg-quirk: when set core will change PHY power
->>                          from P0 to P1/P2/P3 without delay.
->> + - snps,tx-ipgap-linecheck-dis-quirk: when set, disable u2mac linestate check
->> +                       during HS transmit.
-> All other disable-something quirks are named
-> "snps,dis-something-quirk". Maybe use the same naming convention ?
-Yes, good idea！ I will fix it with "snps,dis-tx-ipgap-linecheck-quirk"  
-in next patch verison.
-Thanks:-)
->
->>    - snps,is-utmi-l1-suspend: true when DWC3 asserts output signal
->>                          utmi_l1_suspend_n, false when asserts utmi_sleep_n
->>    - snps,hird-threshold: HIRD threshold
->> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
->> index 455d89a..03429c5 100644
->> --- a/drivers/usb/dwc3/core.c
->> +++ b/drivers/usb/dwc3/core.c
->> @@ -796,15 +796,19 @@ static int dwc3_core_init(struct dwc3 *dwc)
->>                  dwc3_writel(dwc->regs, DWC3_GUCTL2, reg);
->>          }
->>
->> +       reg = dwc3_readl(dwc->regs, DWC3_GUCTL1);
->> +
-> My understanding is that the register was only introduced with dwc3
-> revision 2.50a. Is it ok to read and write it unconditionally ?
-Yes, refer to dwc3 databook, the DWC3_GUCTL1 was introduced since 2.50a. 
-Maybe it's better
-to read and write it only when we know our controller version.
-
-Is it good to fix it like the following patch?
-But this patch has a problem that we need to read and write the register
-twice if our controller verison > = 2.90a, and need this quirk.
-
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -806,6 +806,12 @@ static int dwc3_core_init(struct dwc3 *dwc)
-                 dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
-         }
-
-+       if (dwc->dis_tx_ipgap_linecheck_quirk) {
-+               reg = dwc3_readl(dwc->regs, DWC3_GUCTL1);
-+               reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
-+               dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
-+       }
-+
-
-Hi John & Felipe,
-        Could you provide me some suggestion？
-        Thank you！
->>          /*
->>           * Enable hardware control of sending remote wakeup in HS when
->>           * the device is in the L1 state.
->>           */
->> -       if (dwc->revision >= DWC3_REVISION_290A) {
->> -               reg = dwc3_readl(dwc->regs, DWC3_GUCTL1);
->> +       if (dwc->revision >= DWC3_REVISION_290A)
->>                  reg |= DWC3_GUCTL1_DEV_L1_EXIT_BY_HW;
->> -               dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
->> -       }
->> +
->> +       if (dwc->tx_ipgap_linecheck_dis_quirk)
->> +               reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
->> +
->> +       dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
->>
->>          return 0;
->>
->> @@ -1023,6 +1027,8 @@ static void dwc3_get_properties(struct dwc3 *dwc)
->>                                  "snps,dis-u2-freeclk-exists-quirk");
->>          dwc->dis_del_phy_power_chg_quirk = device_property_read_bool(dev,
->>                                  "snps,dis-del-phy-power-chg-quirk");
->> +       dwc->tx_ipgap_linecheck_dis_quirk = device_property_read_bool(dev,
->> +                               "snps,tx-ipgap-linecheck-dis-quirk");
->>
->>          dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
->>                                  "snps,tx_de_emphasis_quirk");
->> diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
->> index 981c77f..3c2537b 100644
->> --- a/drivers/usb/dwc3/core.h
->> +++ b/drivers/usb/dwc3/core.h
->> @@ -204,6 +204,7 @@
->>   #define DWC3_GCTL_DSBLCLKGTNG          BIT(0)
->>
->>   /* Global User Control 1 Register */
->> +#define DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS     BIT(28)
->>   #define DWC3_GUCTL1_DEV_L1_EXIT_BY_HW  BIT(24)
->>
->>   /* Global USB2 PHY Configuration Register */
->> @@ -850,6 +851,8 @@ struct dwc3_scratchpad_array {
->>    *                     provide a free-running PHY clock.
->>    * @dis_del_phy_power_chg_quirk: set if we disable delay phy power
->>    *                     change quirk.
->> + * @tx_ipgap_linecheck_dis_quirk: set if we disable u2mac linestate
->> + *                     check during HS transmit.
->>    * @tx_de_emphasis_quirk: set if we enable Tx de-emphasis quirk
->>    * @tx_de_emphasis: Tx de-emphasis value
->>    *     0       - -6dB de-emphasis
->> @@ -1004,6 +1007,7 @@ struct dwc3 {
->>          unsigned                dis_rxdet_inp3_quirk:1;
->>          unsigned                dis_u2_freeclk_exists_quirk:1;
->>          unsigned                dis_del_phy_power_chg_quirk:1;
->> +       unsigned                tx_ipgap_linecheck_dis_quirk:1;
->>
->>          unsigned                tx_de_emphasis_quirk:1;
->>          unsigned                tx_de_emphasis:2;
->> --
->> 2.0.0
->>
->>
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+CgpPbiAwNC8xNC8yMDE3IDAyOjAxIFBNLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+IEN1cnJlbnRs
+eSwgQ1RTK04gaXMgZm9yY2VkIHRvIHplcm8gYXMgYSB3b3JrYXJvdW5kIG9mIHRoZSBJUCBibG9j
+ayBmb3IKPiBpLk1YIHBsYXRmb3Jtcy4gVGhpcyBpcyByZXF1ZXN0ZWQgaW4gdGhlIGRhdGFzaGVl
+dCBvZiB0aGUgY29ycmVzcG9uZGluZwo+IElQIGZvciBBSEIgbW9kZSBvbmx5LiBIb3dldmVyLCB3
+ZSBoYXZlIHNlZW4gdGhhdCBpdCBpbnRyb2R1Y2VzIGdsaXRjaGVzCj4gb3IgZGVsYXlzIHdoZW4g
+cGxheWluZyBhIHNvdW5kIG9uIEhETUkgZm9yIEkyUyBtb2RlLiBUaGlzIHByb3ZlcyB0aGF0IHdl
+Cj4gY2Fubm90IGtlZXAgdGhlIGN1cnJlbnQgZnVuY3Rpb25zIGZvciBoYW5kbGluZyBhdWRpbyBz
+dHJlYW0gYXMtaXMgaWYKPiB0aGVzZSBjb250YWluIHdvcmthcm91bmQgdGhhdCBhcmUgc3BlY2lm
+aWMgdG8gYSBtb2RlLgo+Cj4gVGhpcyBjb21taXQgaW50cm9kdWNlcyB0d28gY2FsbGJhY2tzLCBv
+bmUgZm9yIGVhY2ggdmFyaWFudC4KPiBkd19oZG1pX3NldHVwIGRlZmluZXMgdGhlIHJpZ2h0IGZ1
+bmN0aW9uIGRlcGVuZGluZyBvbiB0aGUgZGV0ZWN0ZWQKPiB2YXJpYW50LiBUaGVuLCB0aGUgZXhw
+b3J0ZWQgZnVuY3Rpb25zIGR3X2hkbWlfYXVkaW9fZW5hYmxlIGFuZAo+IGR3X2hkbWlfYXVkaW9f
+ZGlzYWJsZSBjYWxscyB0aGUgY29ycmVzcG9uZGluZyBjYWxsYmFja3MKPgo+IFNpZ25lZC1vZmYt
+Ynk6IFJvbWFpbiBQZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAg
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCAyNiArKysrKysrKysr
+KysrKysrKysrKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMiBk
+ZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
+Cj4gaW5kZXggNGI2ZjIxNi4uNWIzMjhjMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+c3lub3BzeXMvZHctaGRtaS5jCj4gQEAgLTE3Myw2ICsxNzMsOCBAQCBzdHJ1Y3QgZHdfaGRtaSB7
+Cj4KPiAgCXVuc2lnbmVkIGludCByZWdfc2hpZnQ7Cj4gIAlzdHJ1Y3QgcmVnbWFwICpyZWdtOwo+
+ICsJdm9pZCAoKmVuYWJsZV9hdWRpbykoc3RydWN0IGR3X2hkbWkgKmhkbWkpOwo+ICsJdm9pZCAo
+KmRpc2FibGVfYXVkaW8pKHN0cnVjdCBkd19oZG1pICpoZG1pKTsKPiAgfTsKPgo+ICAjZGVmaW5l
+IEhETUlfSUhfUEhZX1NUQVQwX1JYX1NFTlNFIFwKPiBAQCAtNTQyLDEzICs1NDQsMjkgQEAgdm9p
+ZCBkd19oZG1pX3NldF9zYW1wbGVfcmF0ZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdW5zaWduZWQg
+aW50IHJhdGUpCj4gIH0KPiAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfaGRtaV9zZXRfc2FtcGxlX3Jh
+dGUpOwo+Cj4gK3ZvaWQgZHdfaGRtaV9haGJfYXVkaW9fZW5hYmxlKHN0cnVjdCBkd19oZG1pICpo
+ZG1pKQo+ICt7Cj4gKwloZG1pX3NldF9jdHNfbihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIGhkbWkt
+PmF1ZGlvX24pOwo+ICt9Cj4gKwo+ICt2b2lkIGR3X2hkbWlfYWhiX2F1ZGlvX2Rpc2FibGUoc3Ry
+dWN0IGR3X2hkbWkgKmhkbWkpCj4gK3sKPiArCWhkbWlfc2V0X2N0c19uKGhkbWksIGhkbWktPmF1
+ZGlvX2N0cywgMCk7Cj4gK30KPiArCj4gK3ZvaWQgZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlKHN0
+cnVjdCBkd19oZG1pICpoZG1pKQo+ICt7Cj4gKwloZG1pX3NldF9jdHNfbihoZG1pLCBoZG1pLT5h
+dWRpb19jdHMsIGhkbWktPmF1ZGlvX24pOwo+ICt9Cj4gKwoKSSBnZXQgc29tZSBzcGFyc2Ugd2Fy
+bmluZ3MgYXNraW5nIGZvciB0aGUgYWJvdmUgMyB0byBiZSBzdGF0aWMuCgpUaGFua3MsCkFyY2hp
+dAoKPiAgdm9pZCBkd19oZG1pX2F1ZGlvX2VuYWJsZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAg
+ewo+ICAJdW5zaWduZWQgbG9uZyBmbGFnczsKPgo+ICAJc3Bpbl9sb2NrX2lycXNhdmUoJmhkbWkt
+PmF1ZGlvX2xvY2ssIGZsYWdzKTsKPiAgCWhkbWktPmF1ZGlvX2VuYWJsZSA9IHRydWU7Cj4gLQlo
+ZG1pX3NldF9jdHNfbihoZG1pLCBoZG1pLT5hdWRpb19jdHMsIGhkbWktPmF1ZGlvX24pOwo+ICsJ
+aWYgKGhkbWktPmVuYWJsZV9hdWRpbykKPiArCQloZG1pLT5lbmFibGVfYXVkaW8oaGRtaSk7Cj4g
+IAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZoZG1pLT5hdWRpb19sb2NrLCBmbGFncyk7Cj4gIH0K
+PiAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfaGRtaV9hdWRpb19lbmFibGUpOwo+IEBAIC01NTksNyAr
+NTc3LDggQEAgdm9pZCBkd19oZG1pX2F1ZGlvX2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkp
+Cj4KPiAgCXNwaW5fbG9ja19pcnFzYXZlKCZoZG1pLT5hdWRpb19sb2NrLCBmbGFncyk7Cj4gIAlo
+ZG1pLT5hdWRpb19lbmFibGUgPSBmYWxzZTsKPiAtCWhkbWlfc2V0X2N0c19uKGhkbWksIGhkbWkt
+PmF1ZGlvX2N0cywgMCk7Cj4gKwlpZiAoaGRtaS0+ZGlzYWJsZV9hdWRpbykKPiArCQloZG1pLT5k
+aXNhYmxlX2F1ZGlvKGhkbWkpOwo+ICAJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmaGRtaS0+YXVk
+aW9fbG9jaywgZmxhZ3MpOwo+ICB9Cj4gIEVYUE9SVF9TWU1CT0xfR1BMKGR3X2hkbWlfYXVkaW9f
+ZGlzYWJsZSk7Cj4gQEAgLTI0MDQsNiArMjQyMyw4IEBAIF9fZHdfaGRtaV9wcm9iZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAJCWF1ZGlvLmlycSA9IGlycTsKPiAgCQlhdWRpby5o
+ZG1pID0gaGRtaTsKPiAgCQlhdWRpby5lbGQgPSBoZG1pLT5jb25uZWN0b3IuZWxkOwo+ICsJCWhk
+bWktPmVuYWJsZV9hdWRpbyA9IGR3X2hkbWlfYWhiX2F1ZGlvX2VuYWJsZTsKPiArCQloZG1pLT5k
+aXNhYmxlX2F1ZGlvID0gZHdfaGRtaV9haGJfYXVkaW9fZGlzYWJsZTsKPgo+ICAJCXBkZXZpbmZv
+Lm5hbWUgPSAiZHctaGRtaS1haGItYXVkaW8iOwo+ICAJCXBkZXZpbmZvLmRhdGEgPSAmYXVkaW87
+Cj4gQEAgLTI0MTYsNiArMjQzNyw3IEBAIF9fZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
+ZGV2aWNlICpwZGV2LAo+ICAJCWF1ZGlvLmhkbWkJPSBoZG1pOwo+ICAJCWF1ZGlvLndyaXRlCT0g
+aGRtaV93cml0ZWI7Cj4gIAkJYXVkaW8ucmVhZAk9IGhkbWlfcmVhZGI7Cj4gKwkJaGRtaS0+ZW5h
+YmxlX2F1ZGlvID0gZHdfaGRtaV9pMnNfYXVkaW9fZW5hYmxlOwo+Cj4gIAkJcGRldmluZm8ubmFt
+ZSA9ICJkdy1oZG1pLWkycy1hdWRpbyI7Cj4gIAkJcGRldmluZm8uZGF0YSA9ICZhdWRpbzsKPgoK
+LS0gClF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUg
+QXVyb3JhIEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
