@@ -1,79 +1,58 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [PATCH v2 1/6] arm64: dts: Add symlinks for cros-ec-keyboard and cros-ec-sbs
-Date: Wed, 19 Apr 2017 22:31:39 +0900
-Message-ID: <CAOesGMhmX4pXpKpxhZLGUXFpFEba1qJM7CdK8GzpKmdSab1img@mail.gmail.com>
-References: <20170210010521.78872-1-briannorris@chromium.org>
- <1529949.5djtX72aeJ@phil> <CAOesGMirj2j5P7_Ri4CSCux+O3hH_wxvrra7-p33AdXO4Ej5Hg@mail.gmail.com>
- <2579212.374vCSe9xi@phil>
+Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 4.12 part2
+Date: Wed, 19 Apr 2017 06:22:00 -0700
+Message-ID: <20170419132200.GH29219@localhost>
+References: <2927359.zDIxDMQbjs@phil>
+ <1589941.s7YUBqhHWQ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2579212.374vCSe9xi@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1589941.s7YUBqhHWQ@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 19, 2017 at 10:25 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Mittwoch, 19. April 2017, 21:54:09 CEST schrieb Olof Johansson:
->> Hi,
->>
->> On Tue, Feb 28, 2017 at 3:20 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->> > Hi Olof,
->> >
->> > Am Dienstag, 21. Februar 2017, 15:47:31 CET schrieb Olof Johansson:
->> >> On Thu, Feb 9, 2017 at 5:05 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->> >> > From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> >> >
->> >> > We'd like to be able to use the cros-ec-keyboard.dtsi and
->> >> > cros-ec-sbs.dtsi snippets for arm64 devices.  Currently those files live
->> >> > in the arm/boot/dts directory.
->> >> >
->> >> > Let's follow the convention set by commit 8ee57b8182c4 ("ARM64: dts:
->> >> > vexpress: Use a symlink to vexpress-v2m-rs1.dtsi from arch=arm") and use
->> >> > a symlink.  Note that in this case we put the files in a new
->> >> > "include/common" directory since these snippets may need to be
->> >> > referenced by dts files in many different subdirectories.
->> >>
->> >> I'd rather have something like this:
->> >>
->> >> https://marc.info/?m=147547436324674&w=2
->> >>
->> >> Instead of having everybody move things over. I.e. make it easy to
->> >> refer to the arm version from arm64 instead of creating a "common"
->> >> layer inbetween.
->> >
->> > just so it gets noticed, I've done and tested [0], which hopefully should
->> > implement your suggestions above.
->> >
->> > If that looks ok, how do you want that picked up? Should I just include
->> > them in my regular rockchip branches or do you to pick them into some
->> > immutable branch, if other surprise-users turn up in time for 4.12?
->>
->> Sigh. I completely dropped the ball on this, and I didn't see it
->> included in any of your pull requests for 4.12 since I never actually
->> acked that approach.
->>
->> I've applied the patches onto a dt/include-paths stable branch, but
->> we're late for merging dependent code on top of it for 4.12.
->
-> Didn't you merge the patches into a branch already and the rk3399-gru
-> support on top of it?
->
-> Aka
-> https://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc.git/log/?h=shared/dt-symlinks
->
-> Which one of my previous pull requests was already based on.
+On Mon, Apr 10, 2017 at 11:56:37AM +0200, Heiko Stuebner wrote:
+> The following changes since commit 41b464ef10219e45513d1bcaddacd47ce0bd6136:
+> 
+>   arm64: dts: rockchip: fix PCIe domain number for rk3399 (2017-03-22 17:50:09 +0100)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.12-rockchip-dts64-2
+> 
+> for you to fetch changes up to 2f513bd9eac1a2642b40387d4f89c3987641e59b:
+> 
+>   arm64: dts: rockchip: fix the memory size of PX5 Evaluation board (2017-04-07 22:29:11 +0200)
+> 
+> ----------------------------------------------------------------
+> Basic support for new rk3328, a 4-core Cortex-A53 soc and a fix for the
+> default memory definition on the px5 eval board. While the bootloader
+> should already override it with the actual amount, it's better to not
+> carry around wrong values.
+> 
+> ----------------------------------------------------------------
+> Andy Yan (1):
+>       arm64: dts: rockchip: fix the memory size of PX5 Evaluation board
+> 
+> Liang Chen (4):
+>       dt-bindings: add binding for rk3328-grf
+>       arm64: dts: rockchip: add core dtsi file for RK3328 SoCs
+>       dt-bindings: document rockchip rk3328-evb board
+>       arm64: dts: rockchip: add RK3328 eavluation board devicetree
 
-Yeah, ignore the above (the original branch is the one to use). I must
-be turning blind.
-
-Adding Maxime on Cc since I asked him to move over to the new include
-model post-rc1 for some of his stuff.
+Merged, thanks!
 
 
 -Olof
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
