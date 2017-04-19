@@ -1,38 +1,72 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [PATCH] multi_v7_defconfig: make Rockchip usb2-phy built-in
-Date: Wed, 19 Apr 2017 05:22:00 -0700
-Message-ID: <20170419122200.GC17004@localhost>
-References: <20170403102212.6802-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/6] arm64: dts: Add symlinks for cros-ec-keyboard and cros-ec-sbs
+Date: Wed, 19 Apr 2017 15:25:36 +0200
+Message-ID: <2579212.374vCSe9xi@phil>
+References: <20170210010521.78872-1-briannorris@chromium.org> <1529949.5djtX72aeJ@phil> <CAOesGMirj2j5P7_Ri4CSCux+O3hH_wxvrra7-p33AdXO4Ej5Hg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20170403102212.6802-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAOesGMirj2j5P7_Ri4CSCux+O3hH_wxvrra7-p33AdXO4Ej5Hg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Barber <smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 03, 2017 at 12:22:12PM +0200, Heiko Stuebner wrote:
-> The phy is necessary for the dwc2 controllers driving the usb ports
-> on all arm32 Rockchip socs. Both the dwc2 as well as usb downstream
-> drivers (mass-storage as well as usb networking) are already built-in,
-> so only the phy is missing to allow booting from usb-devices without
-> to much hassle.
+Am Mittwoch, 19. April 2017, 21:54:09 CEST schrieb Olof Johansson:
+> Hi,
 > 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> Ideally to be applied directly to some armsoc defconfig branch.
+> On Tue, Feb 28, 2017 at 3:20 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > Hi Olof,
+> >
+> > Am Dienstag, 21. Februar 2017, 15:47:31 CET schrieb Olof Johansson:
+> >> On Thu, Feb 9, 2017 at 5:05 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> >> > From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> >> >
+> >> > We'd like to be able to use the cros-ec-keyboard.dtsi and
+> >> > cros-ec-sbs.dtsi snippets for arm64 devices.  Currently those files live
+> >> > in the arm/boot/dts directory.
+> >> >
+> >> > Let's follow the convention set by commit 8ee57b8182c4 ("ARM64: dts:
+> >> > vexpress: Use a symlink to vexpress-v2m-rs1.dtsi from arch=arm") and use
+> >> > a symlink.  Note that in this case we put the files in a new
+> >> > "include/common" directory since these snippets may need to be
+> >> > referenced by dts files in many different subdirectories.
+> >>
+> >> I'd rather have something like this:
+> >>
+> >> https://marc.info/?m=147547436324674&w=2
+> >>
+> >> Instead of having everybody move things over. I.e. make it easy to
+> >> refer to the arm version from arm64 instead of creating a "common"
+> >> layer inbetween.
+> >
+> > just so it gets noticed, I've done and tested [0], which hopefully should
+> > implement your suggestions above.
+> >
+> > If that looks ok, how do you want that picked up? Should I just include
+> > them in my regular rockchip branches or do you to pick them into some
+> > immutable branch, if other surprise-users turn up in time for 4.12?
+> 
+> Sigh. I completely dropped the ball on this, and I didn't see it
+> included in any of your pull requests for 4.12 since I never actually
+> acked that approach.
+> 
+> I've applied the patches onto a dt/include-paths stable branch, but
+> we're late for merging dependent code on top of it for 4.12.
 
-Merged, thanks!
+Didn't you merge the patches into a branch already and the rk3399-gru
+support on top of it?
 
--Olof
+Aka
+https://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc.git/log/?h=shared/dt-symlinks
+
+Which one of my previous pull requests was already based on.
+
+
+Heiko
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
