@@ -1,107 +1,93 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] ARM: dts: rockchip: add ARM Mali GPU node for
- rk3288
-Date: Thu, 20 Apr 2017 08:43:40 +0200
-Message-ID: <20465416.u9Y0ETYs62@phil>
-References: <cover.1492588180.git.guillaume.tucker@collabora.com>
- <5403013.fQWx48MQOq@phil>
- <319a2a72-ca25-08d7-68dc-7eae74f1a622@collabora.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2 2/2] drm: dw-hdmi: gate audio clock from the I2S
+ enablement callbacks
+Date: Thu, 20 Apr 2017 15:09:36 +0530
+Message-ID: <ad52c44d-331a-2813-6f38-7782888ab3b9@codeaurora.org>
+References: <20170414083113.4255-1-romain.perier@collabora.com>
+ <20170414083113.4255-3-romain.perier@collabora.com>
+ <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <319a2a72-ca25-08d7-68dc-7eae74f1a622-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Romain Perier <romain.perier@collabora.com>, David Airlie <airlied@linux.ie>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Guillaume,
-
-Am Donnerstag, 20. April 2017, 06:44:56 CEST schrieb Guillaume Tucker:
-> On 19/04/17 09:59, Heiko Stuebner wrote:
-> > Am Mittwoch, 19. April 2017, 09:06:18 CEST schrieb Guillaume Tucker:
-> >> Add Mali GPU device tree node for the rk3288 SoC, with devfreq
-> >> opp table.
-> >>
-> >> Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >> ---
-> >>  arch/arm/boot/dts/rk3288.dtsi | 22 ++++++++++++++++++++++
-> >>  1 file changed, 22 insertions(+)
-> >>
-> >> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> >> index df8a0dbe9d91..187eed528f83 100644
-> >> --- a/arch/arm/boot/dts/rk3288.dtsi
-> >> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> >> @@ -43,6 +43,7 @@
-> >>  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> >>  #include <dt-bindings/pinctrl/rockchip.h>
-> >>  #include <dt-bindings/clock/rk3288-cru.h>
-> >> +#include <dt-bindings/power/rk3288-power.h>
-> >>  #include <dt-bindings/thermal/thermal.h>
-> >>  #include <dt-bindings/power/rk3288-power.h>
-> >>  #include <dt-bindings/soc/rockchip,boot-mode.h>
-> >> @@ -227,6 +228,27 @@
-> >>  		ports = <&vopl_out>, <&vopb_out>;
-> >>  	};
-> >>
-> >> +	gpu: mali@ffa30000 {
-> >
-> > please sort nodes by address. ffa30000 should be placed below hdmi@ff980000
-> > and above qos@ffaa0000 .
-> 
-> Sure, will fix that in v4.
-> 
-> >> +		compatible = "arm,mali-t760", "arm,mali-midgard";
-> >
-> > As indicated before I don't trust that a generic binding will work for
-> > everything, so I would feel safer if we had a "rockchip,rk3288-mali" in
-> > front for future purposes, making it a
-> >
-> > 		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
-> 
-> OK, sorry I overlooked this part.  I'll add it in v4 with a
-> vendor compatible string in the binding documentation.
-
-great, thanks :-)
-
-> 
-> >> +		reg = <0xffa30000 0x10000>;
-> >> +		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
-> >> +			     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> >> +			     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> >> +		interrupt-names = "job", "mmu", "gpu";
-> >> +		clocks = <&cru ACLK_GPU>;
-> >> +		operating-points = <
-> >> +			/* KHz uV */
-> >> +			100000 950000
-> >> +			200000 950000
-> >> +			300000 1000000
-> >> +			400000 1100000
-> >> +			500000 1200000
-> >> +			600000 1250000
-> >> +		>;
-> >
-> > Wasn't there a wish for opp-v2 in a previous version?
-> 
-> Well it wasn't entirely clear to me in Rob's email whether it was
-> necessary to use opp-v2 now or rather if it would be a potential
-> option whenever opp-v2 was needed.  If operating-points (v1) are
-> being deprecated then I can change that in my next patch v4.
-> Using operating-points-v2 with the Mali driver works as far as I
-> can tell on rk3288 so that's not an issue.
-
-I don't care to much either way, just remembered it being mentioned
-in the previous version. So lets see what Rob says.
-
-
-Heiko
+CgpPbiAwNC8xOS8yMDE3IDEwOjIxIEFNLCBBcmNoaXQgVGFuZWphIHdyb3RlOgo+Cj4KPiBPbiAw
+NC8xNC8yMDE3IDAyOjAxIFBNLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+PiBDdXJyZW50bHksIHRo
+ZSBhdWRpbyBzYW1wbGVyIGNsb2NrIGlzIGVuYWJsZWQgZnJvbSBkd19oZG1pX3NldHVwKCkgYXQK
+Pj4gc3RlcCBFLiBhbmQgaXMga2VwdCBlbmFibGVkIGZvciBsYXRlciB1c2UuIFRoaXMgY2xvY2sg
+c2hvdWxkIGJlIGVuYWJsZWQKPj4gYW5kIGRpc2FibGVkIGFsb25nIHdpdGggdGhlIGFjdHVhbCBh
+dWRpbyBzdHJlYW0gYW5kIG5vdCBhbHdheXMgb24gKHRoYXQKPj4gaXMgYmFkIGZvciBQTSkuIEZ1
+dGhlcm1vcmUsIGFzIGRlc2NyaWJlZCBieSB0aGUgZGF0YXNoZWV0LCB0aGUgSTJTCj4KPiBzL0Z1
+dGhlcm1vcmUvRnVydGhlcm1vcmUKPgo+PiB2YXJpYW50IG5lZWQgdG8gZ2F0ZS91bmdhdGUgdGhl
+IGNsb2NrIHdoZW4gdGhlIHN0cmVhbSBpcwo+Cj4gcy9uZWVkL25lZWRzCj4KPj4gZW5hYmxlZC9k
+aXNhYmxlZC4KPj4KPj4gVGhpcyBjb21taXQgYWRkcyBhIHBhcmFtZXRlciB0byBoZG1pX2F1ZGlv
+X2VuYWJsZV9jbGsoKSB0aGF0IGNvbnRyb2xzCj4+IHdoZW4gdGhlIGF1ZGlvIHNhbXBsZSBjbG9j
+ayBtdXN0IGJlIGVuYWJsZWQgb3IgZGlzYWJsZWQuIFRoZW4sIGl0IGFkZHMKPj4gdGhlIGNhbGwg
+dG8gdGhpcyBmdW5jdGlvbiBmcm9tIGR3X2hkbWlfaTJzX2F1ZGlvX2VuYWJsZSgpIGFuZAo+PiBk
+d19oZG1pX2kyc19hdWRpb19kaXNhYmxlKCkuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFJvbWFpbiBQ
+ZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDIwICsrKysrKysrKysrKysrLS0tLS0t
+Cj4+ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4K
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gaW5kZXggNWIz
+MjhjMC4uYTZkYTYzNCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1oZG1pLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
+dy1oZG1pLmMKPj4gQEAgLTU0NCw2ICs1NDQsMTIgQEAgdm9pZCBkd19oZG1pX3NldF9zYW1wbGVf
+cmF0ZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdW5zaWduZWQgaW50IHJhdGUpCj4+ICB9Cj4+ICBF
+WFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX3NldF9zYW1wbGVfcmF0ZSk7Cj4+Cj4+ICtzdGF0aWMg
+dm9pZCBoZG1pX2VuYWJsZV9hdWRpb19jbGsoc3RydWN0IGR3X2hkbWkgKmhkbWksIGJvb2wgZW5h
+YmxlKQo+PiArewo+PiArICAgIGhkbWlfbW9kYihoZG1pLCBlbmFibGUgPyAwIDogSERNSV9NQ19D
+TEtESVNfQVVEQ0xLX0RJU0FCTEUsCj4+ICsgICAgICAgICAgSERNSV9NQ19DTEtESVNfQVVEQ0xL
+X0RJU0FCTEUsIEhETUlfTUNfQ0xLRElTKTsKPj4gK30KPj4gKwo+PiAgdm9pZCBkd19oZG1pX2Fo
+Yl9hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4+ICB7Cj4+ICAgICAgaGRtaV9z
+ZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9fY3RzLCBoZG1pLT5hdWRpb19uKTsKPj4gQEAgLTU1
+Nyw2ICs1NjMsMTIgQEAgdm9pZCBkd19oZG1pX2FoYl9hdWRpb19kaXNhYmxlKHN0cnVjdCBkd19o
+ZG1pICpoZG1pKQo+PiAgdm9pZCBkd19oZG1pX2kyc19hdWRpb19lbmFibGUoc3RydWN0IGR3X2hk
+bWkgKmhkbWkpCj4+ICB7Cj4+ICAgICAgaGRtaV9zZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9f
+Y3RzLCBoZG1pLT5hdWRpb19uKTsKPj4gKyAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRtaSwg
+dHJ1ZSk7Cj4+ICt9Cj4+ICsKPj4gK3ZvaWQgZHdfaGRtaV9pMnNfYXVkaW9fZGlzYWJsZShzdHJ1
+Y3QgZHdfaGRtaSAqaGRtaSkKPj4gK3sKPj4gKyAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRt
+aSwgZmFsc2UpOwo+PiAgfQo+Cj4gVGhpcyBzaG91bGQgYmUgc3RhdGljIHRvby4KPgo+IElmIHlv
+dSdyZSBva2F5IHdpdGggdGhlIHN1Z2dlc3Rpb25zLCBJIGNhbiBmaXggdGhlc2UgbXlzZWxmIGFu
+ZCBwdXNoLiBMZXQKPiBtZSBrbm93IGlmIHRoYXQncyBva2F5LgoKVG9vayB0aGUgbGliZXJ0eSBv
+ZiBnb2luZyBhaGVhZCB3aXRoIHRoZSBmaXhlcy4gUXVldWVkIGJvdGggcGF0Y2hlcyB0bwpkcm0t
+bWlzYy1uZXh0LgoKVGhhbmtzLApBcmNoaXQKCj4KPiBUaGFua3MsCj4gQXJjaGl0Cj4KPj4KPj4g
+IHZvaWQgZHdfaGRtaV9hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4+IEBAIC0x
+NTkyLDExICsxNjA0LDYgQEAgc3RhdGljIHZvaWQgZHdfaGRtaV9lbmFibGVfdmlkZW9fcGF0aChz
+dHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gICAgICAgICAgICAgICAgICBIRE1JX01DX0ZMT1dDVFJM
+KTsKPj4gIH0KPj4KPj4gLXN0YXRpYyB2b2lkIGhkbWlfZW5hYmxlX2F1ZGlvX2NsayhzdHJ1Y3Qg
+ZHdfaGRtaSAqaGRtaSkKPj4gLXsKPj4gLSAgICBoZG1pX21vZGIoaGRtaSwgMCwgSERNSV9NQ19D
+TEtESVNfQVVEQ0xLX0RJU0FCTEUsIEhETUlfTUNfQ0xLRElTKTsKPj4gLX0KPj4gLQo+PiAgLyog
+V29ya2Fyb3VuZCB0byBjbGVhciB0aGUgb3ZlcmZsb3cgY29uZGl0aW9uICovCj4+ICBzdGF0aWMg
+dm9pZCBkd19oZG1pX2NsZWFyX292ZXJmbG93KHN0cnVjdCBkd19oZG1pICpoZG1pKQo+PiAgewo+
+PiBAQCAtMTcxMCw3ICsxNzE3LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3NldHVwKHN0cnVjdCBk
+d19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPj4KPj4gICAgICAg
+ICAgLyogSERNSSBJbml0aWFsaXphdGlvbiBTdGVwIEUgLSBDb25maWd1cmUgYXVkaW8gKi8KPj4g
+ICAgICAgICAgaGRtaV9jbGtfcmVnZW5lcmF0b3JfdXBkYXRlX3BpeGVsX2Nsb2NrKGhkbWkpOwo+
+PiAtICAgICAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRtaSk7Cj4+ICsgICAgICAgIGhkbWlf
+ZW5hYmxlX2F1ZGlvX2NsayhoZG1pLCB0cnVlKTsKPj4gICAgICB9Cj4+Cj4+ICAgICAgLyogbm90
+IGZvciBEVkkgbW9kZSAqLwo+PiBAQCAtMjQzOCw2ICsyNDQ1LDcgQEAgX19kd19oZG1pX3Byb2Jl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+ICAgICAgICAgIGF1ZGlvLndyaXRlICAg
+ID0gaGRtaV93cml0ZWI7Cj4+ICAgICAgICAgIGF1ZGlvLnJlYWQgICAgPSBoZG1pX3JlYWRiOwo+
+PiAgICAgICAgICBoZG1pLT5lbmFibGVfYXVkaW8gPSBkd19oZG1pX2kyc19hdWRpb19lbmFibGU7
+Cj4+ICsgICAgICAgIGhkbWktPmRpc2FibGVfYXVkaW8gPSBkd19oZG1pX2kyc19hdWRpb19kaXNh
+YmxlOwo+Pgo+PiAgICAgICAgICBwZGV2aW5mby5uYW1lID0gImR3LWhkbWktaTJzLWF1ZGlvIjsK
+Pj4gICAgICAgICAgcGRldmluZm8uZGF0YSA9ICZhdWRpbzsKPj4KPgoKLS0gClF1YWxjb21tIElu
+bm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZvcnVtLAph
+IExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
