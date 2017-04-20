@@ -1,93 +1,66 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v2 2/2] drm: dw-hdmi: gate audio clock from the I2S
- enablement callbacks
-Date: Thu, 20 Apr 2017 15:09:36 +0530
-Message-ID: <ad52c44d-331a-2813-6f38-7782888ab3b9@codeaurora.org>
-References: <20170414083113.4255-1-romain.perier@collabora.com>
- <20170414083113.4255-3-romain.perier@collabora.com>
- <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 22/29] dt-bindings: Clarify compatible property for
+ rockchip timers
+Date: Thu, 20 Apr 2017 09:12:29 -0500
+Message-ID: <20170420141229.a3qran4agt24iczc@rob-hp-laptop>
+References: <20170416202542.GV2078@mai>
+ <1492374441-23336-1-git-send-email-daniel.lezcano@linaro.org>
+ <1492374441-23336-22-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Romain Perier <romain.perier@collabora.com>, David Airlie <airlied@linux.ie>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1492374441-23336-22-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNC8xOS8yMDE3IDEwOjIxIEFNLCBBcmNoaXQgVGFuZWphIHdyb3RlOgo+Cj4KPiBPbiAw
-NC8xNC8yMDE3IDAyOjAxIFBNLCBSb21haW4gUGVyaWVyIHdyb3RlOgo+PiBDdXJyZW50bHksIHRo
-ZSBhdWRpbyBzYW1wbGVyIGNsb2NrIGlzIGVuYWJsZWQgZnJvbSBkd19oZG1pX3NldHVwKCkgYXQK
-Pj4gc3RlcCBFLiBhbmQgaXMga2VwdCBlbmFibGVkIGZvciBsYXRlciB1c2UuIFRoaXMgY2xvY2sg
-c2hvdWxkIGJlIGVuYWJsZWQKPj4gYW5kIGRpc2FibGVkIGFsb25nIHdpdGggdGhlIGFjdHVhbCBh
-dWRpbyBzdHJlYW0gYW5kIG5vdCBhbHdheXMgb24gKHRoYXQKPj4gaXMgYmFkIGZvciBQTSkuIEZ1
-dGhlcm1vcmUsIGFzIGRlc2NyaWJlZCBieSB0aGUgZGF0YXNoZWV0LCB0aGUgSTJTCj4KPiBzL0Z1
-dGhlcm1vcmUvRnVydGhlcm1vcmUKPgo+PiB2YXJpYW50IG5lZWQgdG8gZ2F0ZS91bmdhdGUgdGhl
-IGNsb2NrIHdoZW4gdGhlIHN0cmVhbSBpcwo+Cj4gcy9uZWVkL25lZWRzCj4KPj4gZW5hYmxlZC9k
-aXNhYmxlZC4KPj4KPj4gVGhpcyBjb21taXQgYWRkcyBhIHBhcmFtZXRlciB0byBoZG1pX2F1ZGlv
-X2VuYWJsZV9jbGsoKSB0aGF0IGNvbnRyb2xzCj4+IHdoZW4gdGhlIGF1ZGlvIHNhbXBsZSBjbG9j
-ayBtdXN0IGJlIGVuYWJsZWQgb3IgZGlzYWJsZWQuIFRoZW4sIGl0IGFkZHMKPj4gdGhlIGNhbGwg
-dG8gdGhpcyBmdW5jdGlvbiBmcm9tIGR3X2hkbWlfaTJzX2F1ZGlvX2VuYWJsZSgpIGFuZAo+PiBk
-d19oZG1pX2kyc19hdWRpb19kaXNhYmxlKCkuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFJvbWFpbiBQ
-ZXJpZXIgPHJvbWFpbi5wZXJpZXJAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDIwICsrKysrKysrKysrKysrLS0tLS0t
-Cj4+ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4K
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
-IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gaW5kZXggNWIz
-MjhjMC4uYTZkYTYzNCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1oZG1pLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
-dy1oZG1pLmMKPj4gQEAgLTU0NCw2ICs1NDQsMTIgQEAgdm9pZCBkd19oZG1pX3NldF9zYW1wbGVf
-cmF0ZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdW5zaWduZWQgaW50IHJhdGUpCj4+ICB9Cj4+ICBF
-WFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX3NldF9zYW1wbGVfcmF0ZSk7Cj4+Cj4+ICtzdGF0aWMg
-dm9pZCBoZG1pX2VuYWJsZV9hdWRpb19jbGsoc3RydWN0IGR3X2hkbWkgKmhkbWksIGJvb2wgZW5h
-YmxlKQo+PiArewo+PiArICAgIGhkbWlfbW9kYihoZG1pLCBlbmFibGUgPyAwIDogSERNSV9NQ19D
-TEtESVNfQVVEQ0xLX0RJU0FCTEUsCj4+ICsgICAgICAgICAgSERNSV9NQ19DTEtESVNfQVVEQ0xL
-X0RJU0FCTEUsIEhETUlfTUNfQ0xLRElTKTsKPj4gK30KPj4gKwo+PiAgdm9pZCBkd19oZG1pX2Fo
-Yl9hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4+ICB7Cj4+ICAgICAgaGRtaV9z
-ZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9fY3RzLCBoZG1pLT5hdWRpb19uKTsKPj4gQEAgLTU1
-Nyw2ICs1NjMsMTIgQEAgdm9pZCBkd19oZG1pX2FoYl9hdWRpb19kaXNhYmxlKHN0cnVjdCBkd19o
-ZG1pICpoZG1pKQo+PiAgdm9pZCBkd19oZG1pX2kyc19hdWRpb19lbmFibGUoc3RydWN0IGR3X2hk
-bWkgKmhkbWkpCj4+ICB7Cj4+ICAgICAgaGRtaV9zZXRfY3RzX24oaGRtaSwgaGRtaS0+YXVkaW9f
-Y3RzLCBoZG1pLT5hdWRpb19uKTsKPj4gKyAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRtaSwg
-dHJ1ZSk7Cj4+ICt9Cj4+ICsKPj4gK3ZvaWQgZHdfaGRtaV9pMnNfYXVkaW9fZGlzYWJsZShzdHJ1
-Y3QgZHdfaGRtaSAqaGRtaSkKPj4gK3sKPj4gKyAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRt
-aSwgZmFsc2UpOwo+PiAgfQo+Cj4gVGhpcyBzaG91bGQgYmUgc3RhdGljIHRvby4KPgo+IElmIHlv
-dSdyZSBva2F5IHdpdGggdGhlIHN1Z2dlc3Rpb25zLCBJIGNhbiBmaXggdGhlc2UgbXlzZWxmIGFu
-ZCBwdXNoLiBMZXQKPiBtZSBrbm93IGlmIHRoYXQncyBva2F5LgoKVG9vayB0aGUgbGliZXJ0eSBv
-ZiBnb2luZyBhaGVhZCB3aXRoIHRoZSBmaXhlcy4gUXVldWVkIGJvdGggcGF0Y2hlcyB0bwpkcm0t
-bWlzYy1uZXh0LgoKVGhhbmtzLApBcmNoaXQKCj4KPiBUaGFua3MsCj4gQXJjaGl0Cj4KPj4KPj4g
-IHZvaWQgZHdfaGRtaV9hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4+IEBAIC0x
-NTkyLDExICsxNjA0LDYgQEAgc3RhdGljIHZvaWQgZHdfaGRtaV9lbmFibGVfdmlkZW9fcGF0aChz
-dHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gICAgICAgICAgICAgICAgICBIRE1JX01DX0ZMT1dDVFJM
-KTsKPj4gIH0KPj4KPj4gLXN0YXRpYyB2b2lkIGhkbWlfZW5hYmxlX2F1ZGlvX2NsayhzdHJ1Y3Qg
-ZHdfaGRtaSAqaGRtaSkKPj4gLXsKPj4gLSAgICBoZG1pX21vZGIoaGRtaSwgMCwgSERNSV9NQ19D
-TEtESVNfQVVEQ0xLX0RJU0FCTEUsIEhETUlfTUNfQ0xLRElTKTsKPj4gLX0KPj4gLQo+PiAgLyog
-V29ya2Fyb3VuZCB0byBjbGVhciB0aGUgb3ZlcmZsb3cgY29uZGl0aW9uICovCj4+ICBzdGF0aWMg
-dm9pZCBkd19oZG1pX2NsZWFyX292ZXJmbG93KHN0cnVjdCBkd19oZG1pICpoZG1pKQo+PiAgewo+
-PiBAQCAtMTcxMCw3ICsxNzE3LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3NldHVwKHN0cnVjdCBk
-d19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPj4KPj4gICAgICAg
-ICAgLyogSERNSSBJbml0aWFsaXphdGlvbiBTdGVwIEUgLSBDb25maWd1cmUgYXVkaW8gKi8KPj4g
-ICAgICAgICAgaGRtaV9jbGtfcmVnZW5lcmF0b3JfdXBkYXRlX3BpeGVsX2Nsb2NrKGhkbWkpOwo+
-PiAtICAgICAgICBoZG1pX2VuYWJsZV9hdWRpb19jbGsoaGRtaSk7Cj4+ICsgICAgICAgIGhkbWlf
-ZW5hYmxlX2F1ZGlvX2NsayhoZG1pLCB0cnVlKTsKPj4gICAgICB9Cj4+Cj4+ICAgICAgLyogbm90
-IGZvciBEVkkgbW9kZSAqLwo+PiBAQCAtMjQzOCw2ICsyNDQ1LDcgQEAgX19kd19oZG1pX3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+ICAgICAgICAgIGF1ZGlvLndyaXRlICAg
-ID0gaGRtaV93cml0ZWI7Cj4+ICAgICAgICAgIGF1ZGlvLnJlYWQgICAgPSBoZG1pX3JlYWRiOwo+
-PiAgICAgICAgICBoZG1pLT5lbmFibGVfYXVkaW8gPSBkd19oZG1pX2kyc19hdWRpb19lbmFibGU7
-Cj4+ICsgICAgICAgIGhkbWktPmRpc2FibGVfYXVkaW8gPSBkd19oZG1pX2kyc19hdWRpb19kaXNh
-YmxlOwo+Pgo+PiAgICAgICAgICBwZGV2aW5mby5uYW1lID0gImR3LWhkbWktaTJzLWF1ZGlvIjsK
-Pj4gICAgICAgICAgcGRldmluZm8uZGF0YSA9ICZhdWRpbzsKPj4KPgoKLS0gClF1YWxjb21tIElu
-bm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZvcnVtLAph
-IExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Sun, Apr 16, 2017 at 10:27:12PM +0200, Daniel Lezcano wrote:
+> From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> 
+> Make all properties description in form '"rockchip,<chip>-timer",
+> "rockchip,rk3288-timer"' for all chips found in linux kernel.
+> 
+> Suggested-by: Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+>  .../devicetree/bindings/timer/rockchip,rk-timer.txt          | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+> index a41b184..16a5f45 100644
+> --- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+> +++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+> @@ -1,9 +1,15 @@
+>  Rockchip rk timer
+>  
+>  Required properties:
+> -- compatible: shall be one of:
+> -  "rockchip,rk3288-timer" - for rk3066, rk3036, rk3188, rk322x, rk3288, rk3368
+> -  "rockchip,rk3399-timer" - for rk3399
+> +- compatible: should be:
+
+should be one of:
+
+> +  "rockchip,rk3036-timer", "rockchip,rk3288-timer": for Rockchip RK3036
+> +  "rockchip,rk3066-timer", "rockchip,rk3288-timer": for Rockchip RK3066
+> +  "rockchip,rk3188-timer", "rockchip,rk3288-timer": for Rockchip RK3188
+> +  "rockchip,rk3228-timer", "rockchip,rk3288-timer": for Rockchip RK3228
+> +  "rockchip,rk3229-timer", "rockchip,rk3288-timer": for Rockchip RK3229
+> +  "rockchip,rk3288-timer": for Rockchip RK3288
+> +  "rockchip,rk3368-timer", "rockchip,rk3288-timer": for Rockchip RK3368
+> +  "rockchip,rk3399-timer": for Rockchip RK3399
+
+I find the "for Rockchip RKxxxx" a bit redundant, but it's fine with or 
+without. Otherwise,
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
