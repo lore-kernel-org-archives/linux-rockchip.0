@@ -1,71 +1,60 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: update cpu opp table for rk3399 op1
-Date: Mon, 24 Apr 2017 12:35:39 +0200
-Message-ID: <1552813.CRZkXFJCNX@diego>
-References: <1493014730-9670-1-git-send-email-wxt@rock-chips.com> <3119382.DFiP2J6FnE@diego> <9edc6ebc-8aab-03df-49b2-759ed8581a6c@163.com>
+From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Mon, 24 Apr 2017 11:43:52 +0100
+Message-ID: <32edad9f-a568-c67d-060d-055517d6782f@collabora.com>
+References: <cover.1491118230.git.guillaume.tucker@collabora.com>
+ <db45d0d68957d699f13a0d92f4f84d8ebfd0270e.1491118230.git.guillaume.tucker@collabora.com>
+ <20170404020056.d7osj7rmog22xbjd@rob-hp-laptop>
+ <b8cf7acd-83e9-49fb-0800-19a76b8dcce5@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9edc6ebc-8aab-03df-49b2-759ed8581a6c@163.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <sasukewxt@163.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dianders@chromium.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <b8cf7acd-83e9-49fb-0800-19a76b8dcce5-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 24. April 2017, 18:25:49 CEST schrieb Caesar Wang:
-> 在 2017年04月24日 17:15, Heiko Stübner 写道:
-> > Am Montag, 24. April 2017, 16:49:08 CEST schrieb Caesar Wang:
-> >> 在 2017年04月24日 16:26, Heiko Stübner 写道:
-> >>> Hi Caesar,
-> >>> 
-> >>> Am Montag, 24. April 2017, 14:18:50 CEST schrieb Caesar Wang:
-> >>>> Update the cpu opp table for rk3399 op1.
-> >>> 
-> >>> Ideally this should contain something about the "why".
-> >>> Are these new voltage settings safer to operate under?
-> >> 
-> >> The before opp table is for earlier batch of rk3399 SoCs,  that's no
-> >> enough for the current and
-> >> newer batch of rk3399 op1. In order to suit for the rk3399 op1, we need
-> >> to little voltages changed.
-> > 
-> > just to make sure, this is also safe for all the non-chromebook rk3399
-> > socs
-> > (like the firefly and tv-boxes, etc), right?
-> 
-> No,  just for chromebook.
-> 
-> Maybe, we need support two table for rk3399 SoCs.
-> For chromebook supporting 2GHz frequency and others support 1.8GHz
-> frequency.
+On 18/04/17 10:15, Guillaume Tucker wrote:
+> Hi Rob,
+>
+> On 04/04/17 03:00, Rob Herring wrote:
+>> On Sun, Apr 02, 2017 at 08:59:44AM +0100, Guillaume Tucker wrote:
 
-Definitly. So please move the chromebook opp-table to something like a rk3399-
-op1-opp.dtsi and adapt rk3399-opp.dtsi to be safe for all rk3399 variants.
+>>> +- operating-points : Refer to Documentation/devicetree/bindings/power/opp.txt
+>>> +  for details.
+>>
+>> Is this going to be sufficient vs. operating-points-v2? Or should it be
+>> a power domain with OPPs?
+>
+> In principle, switching to operating-points-v2 should be very
+> straightforward.  I have smoke-tested the driver with an
+> operating-points-v2 table and a phandle to it inside the gpu node
+> in place of operating-points and it seems to be working fine.  At
+> least it parsed the OPPs and got initialised correctly.
+>
+> My understanding is that operating-points (v1) are not deprecated
+> so we could keep the bindings as-is, but please let me know
+> otherwise and I can try to address that in my next patch version.
+> In the documentation, it should only be the case of replacing
+> operating-points with operating-points-v2.
 
+While the opp bindings documentation doesn't mention anything
+about operating-points being deprecated, the code and comments in
+of.c are pretty clear about this:
 
-Thanks
-Heiko
+	/*
+	 * OPPs have two version of bindings now. The older one is deprecated,
+	 * try for the new binding first.
+	 */
 
-> 
-> For example:
-> ....
->    opp03 {
->                opp-hz = /bits/ 64 <1008000000>;
->                opp-microvolt = <925000 925000 1350000>;
->                opp-microvolt-l0 = <925000 925000 1350000>;
->                opp-microvolt-l1 = <900000 900000 1350000>;
->            };
-> ....
-> 
-> 
-> 
-> -Caesar
-> 
-> > Thanks
-> > Heiko
-> > 
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+So I shall use operating-points-v2 in my patch v4.
+
+Thanks,
+Guillaume
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
