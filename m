@@ -1,58 +1,92 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: update cpu opp table for rk3399 op1
-Date: Mon, 24 Apr 2017 14:18:50 +0800
-Message-ID: <1493014730-9670-1-git-send-email-wxt@rock-chips.com>
+From: Romain Perier <romain.perier@collabora.com>
+Subject: Re: [PATCH v2 2/2] drm: dw-hdmi: gate audio clock from the I2S
+ enablement callbacks
+Date: Mon, 24 Apr 2017 08:44:34 +0200
+Message-ID: <eeb069cf-1dba-91c4-c30b-bb37403e3b3b@collabora.com>
+References: <20170414083113.4255-1-romain.perier@collabora.com>
+ <20170414083113.4255-3-romain.perier@collabora.com>
+ <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <c9258563-afcd-4088-a4f4-6a4e056f5d36@codeaurora.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, briannorris@chromium.org, dianders@chromium.org, Caesar Wang <wxt@rock-chips.com>
+To: Archit Taneja <architt@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <linux@armlinux.org.uk>, Neil Armstrong <narmstrong@baylibre.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Update the cpu opp table for rk3399 op1.
+Hello,
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
 
- arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Le 19/04/2017 à 06:51, Archit Taneja a écrit :
+>
+>
+> On 04/14/2017 02:01 PM, Romain Perier wrote:
+>> Currently, the audio sampler clock is enabled from dw_hdmi_setup() at
+>> step E. and is kept enabled for later use. This clock should be enabled
+>> and disabled along with the actual audio stream and not always on (that
+>> is bad for PM). Futhermore, as described by the datasheet, the I2S
+>
+> s/Futhermore/Furthermore
+>
+>> variant need to gate/ungate the clock when the stream is
+>
+> s/need/needs
+>
+>> enabled/disabled.
+>>
+>> This commit adds a parameter to hdmi_audio_enable_clk() that controls
+>> when the audio sample clock must be enabled or disabled. Then, it adds
+>> the call to this function from dw_hdmi_i2s_audio_enable() and
+>> dw_hdmi_i2s_audio_disable().
+>>
+>> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+>> ---
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 20 ++++++++++++++------
+>>  1 file changed, 14 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> index 5b328c0..a6da634 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> @@ -544,6 +544,12 @@ void dw_hdmi_set_sample_rate(struct dw_hdmi
+>> *hdmi, unsigned int rate)
+>>  }
+>>  EXPORT_SYMBOL_GPL(dw_hdmi_set_sample_rate);
+>>
+>> +static void hdmi_enable_audio_clk(struct dw_hdmi *hdmi, bool enable)
+>> +{
+>> +    hdmi_modb(hdmi, enable ? 0 : HDMI_MC_CLKDIS_AUDCLK_DISABLE,
+>> +          HDMI_MC_CLKDIS_AUDCLK_DISABLE, HDMI_MC_CLKDIS);
+>> +}
+>> +
+>>  void dw_hdmi_ahb_audio_enable(struct dw_hdmi *hdmi)
+>>  {
+>>      hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
+>> @@ -557,6 +563,12 @@ void dw_hdmi_ahb_audio_disable(struct dw_hdmi
+>> *hdmi)
+>>  void dw_hdmi_i2s_audio_enable(struct dw_hdmi *hdmi)
+>>  {
+>>      hdmi_set_cts_n(hdmi, hdmi->audio_cts, hdmi->audio_n);
+>> +    hdmi_enable_audio_clk(hdmi, true);
+>> +}
+>> +
+>> +void dw_hdmi_i2s_audio_disable(struct dw_hdmi *hdmi)
+>> +{
+>> +    hdmi_enable_audio_clk(hdmi, false);
+>>  }
+>
+> This should be static too.
+>
+> If you're okay with the suggestions, I can fix these myself and push. Let
+> me know if that's okay.
+>
+> Thanks,
+> Archit
+>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-index dd82e16..92bd615 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-@@ -52,27 +52,27 @@
- 		};
- 		opp01 {
- 			opp-hz = /bits/ 64 <600000000>;
--			opp-microvolt = <800000>;
-+			opp-microvolt = <825000>;
- 		};
- 		opp02 {
- 			opp-hz = /bits/ 64 <816000000>;
--			opp-microvolt = <800000>;
-+			opp-microvolt = <850000>;
- 		};
- 		opp03 {
- 			opp-hz = /bits/ 64 <1008000000>;
--			opp-microvolt = <875000>;
-+			opp-microvolt = <900000>;
- 		};
- 		opp04 {
- 			opp-hz = /bits/ 64 <1200000000>;
--			opp-microvolt = <925000>;
-+			opp-microvolt = <975000>;
- 		};
- 		opp05 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <1050000>;
-+			opp-microvolt = <1100000>;
- 		};
- 		opp06 {
- 			opp-hz = /bits/ 64 <1512000000>;
--			opp-microvolt = <1125000>;
-+			opp-microvolt = <1150000>;
- 		};
- 	};
- 
--- 
-2.7.4
+Yes, I completely agree.
+Thanks,
+Romain
