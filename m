@@ -1,151 +1,30 @@
-From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 1/5] dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
-Date: Tue, 25 Apr 2017 14:16:16 +0100
-Message-ID: <9349c8ae9091fbd93e9410f4cfae770ac850bf6b.1493125299.git.guillaume.tucker@collabora.com>
-References: <cover.1493125299.git.guillaume.tucker@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1493125299.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-In-Reply-To: <cover.1493125299.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-References: <cover.1493125299.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH V2  0/2] correct ids for clk_testout
+Date: Tue, 25 Apr 2017 23:04:53 +0200
+Message-ID: <5003001.RcGOJBte3U@diego>
+References: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Eddie Cai <eddie.cai.linux@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The ARM Mali Midgard GPU family is present in a number of SoCs
-from many different vendors such as Samsung Exynos and Rockchip.
+Hi Eddie,
 
-Import the device tree bindings documentation from the r16p0
-release of the Mali Midgard GPU kernel driver:
+Am Dienstag, 25. April 2017, 14:41:08 CEST schrieb Eddie Cai:
+> we use clk_testout1 and clk_testout2 for camera. e.g. mipi 24M mclk. the ids
+> of clk_testout1 and clk_testout2 is wrong. it's time to correct it.
 
-  https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
+Just to say, patches look good - thanks for explaining what the clocks are 
+going to be used for.
 
-Remove the copyright and GPL licence header as deemed not necessary.
+I'll apply them after 4.12-rc1 is released (in roughly 2.5 weeks), due to
+needing a stable base for the clock-ids.
 
-Redesign the "compatible" property strings to list all the Mali
-Midgard GPU types and include optional vendor ones.
 
-Drop the "clock-names" property as only one clock is used by the Mali
-Midgard driver (which now needs to call clk_get with NULL).
+Heiko
 
-Convert the "interrupt-names" property values to lower-case: "job",
-"mmu" and "gpu".
-
-Replace the deprecated "operating-points" optional property with
-"operating-points-v2".
-
-Omit the following optional properties in this initial version as they
-are only used in very specific cases:
-
-  * snoop_enable_smc
-  * snoop_disable_smc
-  * jm_config
-  * power_model
-  * system-coherency
-  * ipa-model
-
-Update the example accordingly to reflect all these changes.
-
-CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
-Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 82 ++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-new file mode 100644
-index 000000000000..547ddeceb498
---- /dev/null
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-@@ -0,0 +1,82 @@
-+ARM Mali Midgard GPU
-+====================
-+
-+Required properties:
-+
-+- compatible :
-+  * Must be one of the following:
-+    + "arm,mali-t60x"
-+    + "arm,mali-t62x"
-+    + "arm,mali-t720"
-+    + "arm,mali-t760"
-+    + "arm,mali-t820"
-+    + "arm,mali-t830"
-+    + "arm,mali-t860"
-+    + "arm,mali-t880"
-+  * And, optionally, one of the vendor specific compatible:
-+    + "amlogic,meson-gxm-mali"
-+    + "rockchip,rk3288-mali"
-+
-+- reg : Physical base address of the device and length of the register area.
-+
-+- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
-+
-+- interrupt-names : Contains the names of IRQ resources in the order they were
-+  provided in the interrupts property. Must contain: "job", "mmu", "gpu".
-+
-+
-+Optional properties:
-+
-+- clocks : Phandle to clock for the Mali Midgard device.
-+
-+- mali-supply : Phandle to regulator for the Mali device. Refer to
-+  Documentation/devicetree/bindings/regulator/regulator.txt for details.
-+
-+- operating-points-v2 : Refer to Documentation/devicetree/bindings/power/opp.txt
-+  for details.
-+
-+
-+Example for a Mali-T602:
-+
-+gpu@fc010000 {
-+	compatible = "arm,mali-t60x", "arm,mali-midgard";
-+	reg = <0xfc010000 0x4000>;
-+	interrupts = <0 36 4>, <0 37 4>, <0 38 4>;
-+	interrupt-names = "job", "mmu", "gpu";
-+	clocks = <&pclk_mali>;
-+	mali-supply = <&vdd_mali>;
-+	operating-points-v2 = <&gpu_opp_table>;
-+};
-+
-+gpu_opp_table: opp_table0 {
-+	compatible = "operating-points-v2";
-+
-+	opp@533000000 {
-+		opp-hz = /bits/ 64 <533000000>;
-+		opp-microvolt = <1250000>;
-+	};
-+	opp@450000000 {
-+		opp-hz = /bits/ 64 <450000000>;
-+		opp-microvolt = <1150000>;
-+	};
-+	opp@400000000 {
-+		opp-hz = /bits/ 64 <400000000>;
-+		opp-microvolt = <1125000>;
-+	};
-+	opp@350000000 {
-+		opp-hz = /bits/ 64 <350000000>;
-+		opp-microvolt = <1075000>;
-+	};
-+	opp@266000000 {
-+		opp-hz = /bits/ 64 <266000000>;
-+		opp-microvolt = <1025000>;
-+	};
-+	opp@160000000 {
-+		opp-hz = /bits/ 64 <160000000>;
-+		opp-microvolt = <925000>;
-+	};
-+	opp@100000000 {
-+		opp-hz = /bits/ 64 <100000000>;
-+		opp-microvolt = <912500>;
-+	};
-+};
--- 
-2.11.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
