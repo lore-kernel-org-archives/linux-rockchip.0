@@ -1,30 +1,35 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH V2  0/2] correct ids for clk_testout
-Date: Tue, 25 Apr 2017 23:04:53 +0200
-Message-ID: <5003001.RcGOJBte3U@diego>
-References: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: [PATCH 0/2] pinctrl: trivial: remove unneeded (void *) casts in
+ of_match_table
+Date: Wed, 26 Apr 2017 06:34:21 +0900
+Message-ID: <1493156063-8446-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-gpio@vger.kernel.org
+Cc: linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tomasz.figa@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eddie,
-
-Am Dienstag, 25. April 2017, 14:41:08 CEST schrieb Eddie Cai:
-> we use clk_testout1 and clk_testout2 for camera. e.g. mipi 24M mclk. the ids
-> of clk_testout1 and clk_testout2 is wrong. it's time to correct it.
-
-Just to say, patches look good - thanks for explaining what the clocks are 
-going to be used for.
-
-I'll apply them after 4.12-rc1 is released (in roughly 2.5 weeks), due to
-needing a stable base for the clock-ids.
 
 
-Heiko
 
+Masahiro Yamada (2):
+  pinctrl: rockchip: remove unneeded (void *) casts in of_match_table
+  pinctrl: samsung: remove unneeded (void *) casts in of_match_table
+
+ drivers/pinctrl/pinctrl-rockchip.c        | 20 ++++++++++----------
+ drivers/pinctrl/samsung/pinctrl-samsung.c | 20 ++++++++++----------
+ 2 files changed, 20 insertions(+), 20 deletions(-)
+
+-- 
+2.7.4
