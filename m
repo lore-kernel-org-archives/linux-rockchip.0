@@ -1,35 +1,62 @@
 From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: [PATCH 0/2] pinctrl: trivial: remove unneeded (void *) casts in
- of_match_table
-Date: Wed, 26 Apr 2017 06:34:21 +0900
-Message-ID: <1493156063-8446-1-git-send-email-yamada.masahiro@socionext.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Subject: [PATCH 1/2] pinctrl: rockchip: remove unneeded (void *) casts in of_match_table
+Date: Wed, 26 Apr 2017 06:34:22 +0900
+Message-ID: <1493156063-8446-2-git-send-email-yamada.masahiro@socionext.com>
+References: <1493156063-8446-1-git-send-email-yamada.masahiro@socionext.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1493156063-8446-1-git-send-email-yamada.masahiro@socionext.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-gpio@vger.kernel.org
-Cc: linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tomasz.figa@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-arm-kernel@lists.infradead.org
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+of_device_id::data is an opaque pointer.  No explicit cast is needed.
 
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+---
 
+ drivers/pinctrl/pinctrl-rockchip.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-Masahiro Yamada (2):
-  pinctrl: rockchip: remove unneeded (void *) casts in of_match_table
-  pinctrl: samsung: remove unneeded (void *) casts in of_match_table
-
- drivers/pinctrl/pinctrl-rockchip.c        | 20 ++++++++++----------
- drivers/pinctrl/samsung/pinctrl-samsung.c | 20 ++++++++++----------
- 2 files changed, 20 insertions(+), 20 deletions(-)
-
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 7813599..da1a38f 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2769,25 +2769,25 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
+ 
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 	{ .compatible = "rockchip,rk1108-pinctrl",
+-		.data = (void *)&rk1108_pin_ctrl },
++		.data = &rk1108_pin_ctrl },
+ 	{ .compatible = "rockchip,rk2928-pinctrl",
+-		.data = (void *)&rk2928_pin_ctrl },
++		.data = &rk2928_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3036-pinctrl",
+-		.data = (void *)&rk3036_pin_ctrl },
++		.data = &rk3036_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066a-pinctrl",
+-		.data = (void *)&rk3066a_pin_ctrl },
++		.data = &rk3066a_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066b-pinctrl",
+-		.data = (void *)&rk3066b_pin_ctrl },
++		.data = &rk3066b_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3188-pinctrl",
+-		.data = (void *)&rk3188_pin_ctrl },
++		.data = &rk3188_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3228-pinctrl",
+-		.data = (void *)&rk3228_pin_ctrl },
++		.data = &rk3228_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3288-pinctrl",
+-		.data = (void *)&rk3288_pin_ctrl },
++		.data = &rk3288_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3368-pinctrl",
+-		.data = (void *)&rk3368_pin_ctrl },
++		.data = &rk3368_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3399-pinctrl",
+-		.data = (void *)&rk3399_pin_ctrl },
++		.data = &rk3399_pin_ctrl },
+ 	{},
+ };
+ 
 -- 
 2.7.4
