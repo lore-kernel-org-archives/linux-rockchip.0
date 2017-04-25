@@ -1,34 +1,94 @@
-From: Eddie Cai <eddie.cai.linux@gmail.com>
-Subject: [PATCH V2  1/2] clk: rockchip: add ids for camera
-Date: Tue, 25 Apr 2017 14:41:09 +0800
-Message-ID: <1493102470-22965-2-git-send-email-eddie.cai.linux@gmail.com>
-References: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1493102470-22965-1-git-send-email-eddie.cai.linux@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Eddie Cai <eddie.cai.linux@gmail.com>
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] usb: gadget: f_fs: avoid out of bounds access on comp_desc
+Date: Tue, 25 Apr 2017 17:45:48 +0800
+Message-ID: <1493113548-1394-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-we use SCLK_TESTCLKOUT1 and SCLK_TESTCLKOUT2 for camera, so add those ids.
+Companion descriptor is only used for SuperSpeed endpoints,
+if the endpoints are HighSpeed or FullSpeed, the Companion
+descriptor will not allocated, so we can only access it if
+gadget is SuperSpeed.
 
-Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
+I can reproduce this issue on Rockchip platform rk3368 SoC
+which supports USB 2.0, and use functionfs for ADB. Kernel
+build with CONFIG_KASAN=y and CONFIG_SLUB_DEBUG=y report
+the following BUG:
+
+==================================================================
+BUG: KASAN: slab-out-of-bounds in ffs_func_set_alt+0x224/0x3a0 at addr ffffffc0601f6509
+Read of size 1 by task swapper/0/0
+============================================================================
+BUG kmalloc-256 (Not tainted): kasan: bad access detected
+----------------------------------------------------------------------------
+
+Disabling lock debugging due to kernel taint
+INFO: Allocated in ffs_func_bind+0x52c/0x99c age=1275 cpu=0 pid=1
+alloc_debug_processing+0x128/0x17c
+___slab_alloc.constprop.58+0x50c/0x610
+__slab_alloc.isra.55.constprop.57+0x24/0x34
+__kmalloc+0xe0/0x250
+ffs_func_bind+0x52c/0x99c
+usb_add_function+0xd8/0x1d4
+configfs_composite_bind+0x48c/0x570
+udc_bind_to_driver+0x6c/0x170
+usb_udc_attach_driver+0xa4/0xd0
+gadget_dev_desc_UDC_store+0xcc/0x118
+configfs_write_file+0x1a0/0x1f8
+__vfs_write+0x64/0x174
+vfs_write+0xe4/0x200
+SyS_write+0x68/0xc8
+el0_svc_naked+0x24/0x28
+INFO: Freed in inode_doinit_with_dentry+0x3f0/0x7c4 age=1275 cpu=7 pid=247
+...
+Call trace:
+[<ffffff900808aab4>] dump_backtrace+0x0/0x230
+[<ffffff900808acf8>] show_stack+0x14/0x1c
+[<ffffff90084ad420>] dump_stack+0xa0/0xc8
+[<ffffff90082157cc>] print_trailer+0x188/0x198
+[<ffffff9008215948>] object_err+0x3c/0x4c
+[<ffffff900821b5ac>] kasan_report+0x324/0x4dc
+[<ffffff900821aa38>] __asan_load1+0x24/0x50
+[<ffffff90089eb750>] ffs_func_set_alt+0x224/0x3a0
+[<ffffff90089d3760>] composite_setup+0xdcc/0x1ac8
+[<ffffff90089d7394>] android_setup+0x124/0x1a0
+[<ffffff90089acd18>] _setup+0x54/0x74
+[<ffffff90089b6b98>] handle_ep0+0x3288/0x4390
+[<ffffff90089b9b44>] dwc_otg_pcd_handle_out_ep_intr+0x14dc/0x2ae4
+[<ffffff90089be85c>] dwc_otg_pcd_handle_intr+0x1ec/0x298
+[<ffffff90089ad680>] dwc_otg_pcd_irq+0x10/0x20
+[<ffffff9008116328>] handle_irq_event_percpu+0x124/0x3ac
+[<ffffff9008116610>] handle_irq_event+0x60/0xa0
+[<ffffff900811af30>] handle_fasteoi_irq+0x10c/0x1d4
+[<ffffff9008115568>] generic_handle_irq+0x30/0x40
+[<ffffff90081159b4>] __handle_domain_irq+0xac/0xdc
+[<ffffff9008080e9c>] gic_handle_irq+0x64/0xa4
+...
+Memory state around the buggy address:
+  ffffffc0601f6400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ffffffc0601f6480: 00 00 00 00 00 00 00 00 00 00 06 fc fc fc fc fc
+ >ffffffc0601f6500: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+                       ^
+  ffffffc0601f6580: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  ffffffc0601f6600: fc fc fc fc fc fc fc fc 00 00 00 00 00 00 00 00
+==================================================================
+
+Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- include/dt-bindings/clock/rk3399-cru.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/usb/gadget/function/f_fs.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rk3399-cru.h b/include/dt-bindings/clock/rk3399-cru.h
-index 220a60f..22cb1df 100644
---- a/include/dt-bindings/clock/rk3399-cru.h
-+++ b/include/dt-bindings/clock/rk3399-cru.h
-@@ -132,6 +132,8 @@
- #define SCLK_RMII_SRC			166
- #define SCLK_PCIEPHY_REF100M		167
- #define SCLK_DDRC			168
-+#define SCLK_TESTCLKOUT1		169
-+#define SCLK_TESTCLKOUT2		170
+diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+index db6935c..ba73f74 100644
+--- a/drivers/usb/gadget/function/f_fs.c
++++ b/drivers/usb/gadget/function/f_fs.c
+@@ -1858,12 +1858,12 @@ static int ffs_func_eps_enable(struct ffs_function *func)
+ 		ep->ep->driver_data = ep;
+ 		ep->ep->desc = ds;
  
- #define DCLK_VOP0			180
- #define DCLK_VOP1			181
--- 
-1.9.1
+-		comp_desc = (struct usb_ss_ep_comp_descriptor *)(ds +
+-				USB_DT_ENDPOINT_SIZE);
+-		ep->ep->maxburst = comp_desc->bMaxBurst + 1;
