@@ -1,94 +1,68 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] usb: gadget: f_fs: avoid out of bounds access on comp_desc
-Date: Tue, 25 Apr 2017 17:45:48 +0800
-Message-ID: <1493113548-1394-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 0/5] Add ARM Mali Midgard device tree bindings and gpu node for rk3288
+Date: Tue, 25 Apr 2017 14:16:15 +0100
+Message-ID: <cover.1493125299.git.guillaume.tucker@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Companion descriptor is only used for SuperSpeed endpoints,
-if the endpoints are HighSpeed or FullSpeed, the Companion
-descriptor will not allocated, so we can only access it if
-gadget is SuperSpeed.
+The ARM Mali Midgard GPU kernel driver is only available
+out-of-tree and is not going to be merged in its current form.
+However, it would be useful to have its device tree bindings
+merged.  In particular, this would enable distributions to create
+working driver packages (dkms...) without having to patch the
+kernel.
 
-I can reproduce this issue on Rockchip platform rk3368 SoC
-which supports USB 2.0, and use functionfs for ADB. Kernel
-build with CONFIG_KASAN=y and CONFIG_SLUB_DEBUG=y report
-the following BUG:
+The bindings for the earlier Mali Utgard GPU family have already
+been merged, so this is essentially the same scenario but for
+newer GPUs (Mali-T604 ~ Mali-T880).
 
-==================================================================
-BUG: KASAN: slab-out-of-bounds in ffs_func_set_alt+0x224/0x3a0 at addr ffffffc0601f6509
-Read of size 1 by task swapper/0/0
-============================================================================
-BUG kmalloc-256 (Not tainted): kasan: bad access detected
-----------------------------------------------------------------------------
+This series of patches first imports the bindings from the latest
+driver release with some clean-up then adds a gpu node for the
+rk3288 SoC.  This was successfully tested on Radxa Rock2 Square,
+Firefly, Veyron Minnie and Jerry boards using Mali kernel driver
+r16p0 and r12p0 user-space binary.
 
-Disabling lock debugging due to kernel taint
-INFO: Allocated in ffs_func_bind+0x52c/0x99c age=1275 cpu=0 pid=1
-alloc_debug_processing+0x128/0x17c
-___slab_alloc.constprop.58+0x50c/0x610
-__slab_alloc.isra.55.constprop.57+0x24/0x34
-__kmalloc+0xe0/0x250
-ffs_func_bind+0x52c/0x99c
-usb_add_function+0xd8/0x1d4
-configfs_composite_bind+0x48c/0x570
-udc_bind_to_driver+0x6c/0x170
-usb_udc_attach_driver+0xa4/0xd0
-gadget_dev_desc_UDC_store+0xcc/0x118
-configfs_write_file+0x1a0/0x1f8
-__vfs_write+0x64/0x174
-vfs_write+0xe4/0x200
-SyS_write+0x68/0xc8
-el0_svc_naked+0x24/0x28
-INFO: Freed in inode_doinit_with_dentry+0x3f0/0x7c4 age=1275 cpu=7 pid=247
-...
-Call trace:
-[<ffffff900808aab4>] dump_backtrace+0x0/0x230
-[<ffffff900808acf8>] show_stack+0x14/0x1c
-[<ffffff90084ad420>] dump_stack+0xa0/0xc8
-[<ffffff90082157cc>] print_trailer+0x188/0x198
-[<ffffff9008215948>] object_err+0x3c/0x4c
-[<ffffff900821b5ac>] kasan_report+0x324/0x4dc
-[<ffffff900821aa38>] __asan_load1+0x24/0x50
-[<ffffff90089eb750>] ffs_func_set_alt+0x224/0x3a0
-[<ffffff90089d3760>] composite_setup+0xdcc/0x1ac8
-[<ffffff90089d7394>] android_setup+0x124/0x1a0
-[<ffffff90089acd18>] _setup+0x54/0x74
-[<ffffff90089b6b98>] handle_ep0+0x3288/0x4390
-[<ffffff90089b9b44>] dwc_otg_pcd_handle_out_ep_intr+0x14dc/0x2ae4
-[<ffffff90089be85c>] dwc_otg_pcd_handle_intr+0x1ec/0x298
-[<ffffff90089ad680>] dwc_otg_pcd_irq+0x10/0x20
-[<ffffff9008116328>] handle_irq_event_percpu+0x124/0x3ac
-[<ffffff9008116610>] handle_irq_event+0x60/0xa0
-[<ffffff900811af30>] handle_fasteoi_irq+0x10c/0x1d4
-[<ffffff9008115568>] generic_handle_irq+0x30/0x40
-[<ffffff90081159b4>] __handle_domain_irq+0xac/0xdc
-[<ffffff9008080e9c>] gic_handle_irq+0x64/0xa4
-...
-Memory state around the buggy address:
-  ffffffc0601f6400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ffffffc0601f6480: 00 00 00 00 00 00 00 00 00 00 06 fc fc fc fc fc
- >ffffffc0601f6500: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-                       ^
-  ffffffc0601f6580: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-  ffffffc0601f6600: fc fc fc fc fc fc fc fc 00 00 00 00 00 00 00 00
-==================================================================
 
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/usb/gadget/function/f_fs.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Changes since v1:
+- enabled gpu on rk3288-veyron boards
 
-diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-index db6935c..ba73f74 100644
---- a/drivers/usb/gadget/function/f_fs.c
-+++ b/drivers/usb/gadget/function/f_fs.c
-@@ -1858,12 +1858,12 @@ static int ffs_func_eps_enable(struct ffs_function *func)
- 		ep->ep->driver_data = ep;
- 		ep->ep->desc = ds;
- 
--		comp_desc = (struct usb_ss_ep_comp_descriptor *)(ds +
--				USB_DT_ENDPOINT_SIZE);
--		ep->ep->maxburst = comp_desc->bMaxBurst + 1;
+Changes since v2:
+- removed "clk-names" property and "clk_mali" name
+- converted values of "interrupt-names" property to
+  lower-case: "job", "mmu" and "gpu"
+- replaced dt compatible strings with list of all Midgard GPU variants and
+  optional vendors
+- cleaned up gpu node example
+
+Changes since v3:
+- add "rockchip,rk3288-mali" vendor compatible string
+- move gpu node at the right location in rk3288.dtsi
+- use operating-points-v2 in documentation and rk3288.dtsi
+
+
+Enric Balletbo i Serra (1):
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-veyron
+
+Guillaume Tucker (4):
+  dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+  ARM: dts: rockchip: add ARM Mali GPU node for rk3288
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-rock2-som
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-firefly
+
+ .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 82 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  5 ++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  5 ++
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  5 ++
+ arch/arm/boot/dts/rk3288.dtsi                      | 43 ++++++++++++
+ 5 files changed, 140 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+
+--
+2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
