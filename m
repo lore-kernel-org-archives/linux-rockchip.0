@@ -1,90 +1,149 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: Re: [PATCH 0/2] Free running cyclic transfer implementation for pl330
-Date: Wed, 26 Apr 2017 20:01:55 +0300
-Message-ID: <FFF03FEC-4C86-4E2E-BC45-1C8694243203@gmail.com>
-References: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Set line flag config register in
+ vop_crtc_enable
+Date: Thu, 27 Apr 2017 15:00:29 +0800
+Message-ID: <5901970D.2070902@rock-chips.com>
+References: <1493276057-4516-1-git-send-email-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1492180531-1780-1-git-send-email-al.kochet@gmail.com>
+In-Reply-To: <1493276057-4516-1-git-send-email-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dan Williams <dan.j.williams@intel.com>, Vinod Koul <vinod.koul@intel.com>, dmaengine@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, hhb <hhb@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, =?utf-8?B?546L5pmT6IW+?= <caesar.wang@rock-chips.com>, =?utf-8?B?5byg5a2m5bm/?= <sugar.zhang@rock-chips.com>, =?utf-8?B?6buE5rab?= <ulysses.huang@rock-chips.com>, Stephen Barber <smbarber@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: tfiga@chromium.org, dbasehore@chromium.org, seanpaul@chromium.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello!
+On 2017年04月27日 14:54, Jeffy Chen wrote:
+> We need to set vop config done after update line flag config, it's a
+> new requirement for chips newer than rk3368.
+>
+> Since we would only use line flag irq for vact_end, let's move it to
+> vop_crtc_enable.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Just to let you know, that I got following test report from Stephen =
-(thanks a lot!).
+looks good for me:
 
-The patch won=E2=80=99t work due to full cyclic transfer doesn=E2=80=99t =
-fit into mcbufsz (256 bytes long).
-His application requested driver to do cyclic transfer with large number =
-of cycles.
-pl330 microcode has restriction on how far PC can change and this limit =
-is 256 bytes,
-so increasing mcbufsz will not solve problem. Don=E2=80=99t want to make =
-jump bridges or
-something like on the fly CPU modified microcode.
+Acked-by: Mark Yao <mark.yao@rock-chips.com>
 
-> 14 =D0=B0=D0=BF=D1=80. 2017 =D0=B3., =D0=B2 23:24, Stephen Barber =
-<smbarber@chromium.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0)=
-:
->=20
-> Hi Alexander,
->=20
-> Thanks for your patches!
->=20
-> I gave them a try on kevin (Samsung Chromebook Plus) with our
-> chromeos-4.4 kernel branch, plus some cherry-picks on top to get
-> things to apply cleanly. Here's what my tree looks like:
->=20
-> 344daf13fa4e (HEAD -> apply-pl330) dmaengine: pl330: don't emit code
-> for one iteration loop
-> 062596b83fec dmaengine: pl330: make cyclic transfer free runnable
-> 0e75f2647b8e dmaengine: pl330: fix double lock
-> 7d22b54b79f2 dmaengine: pl330: remove unused =E2=80=98regs=E2=80=99
-> 8769d7115cec dmaengine: pl330: do not generate unaligned access
-> 65ad077f685b dmaengine: pl330: convert callback to helper function
-> 368e7aa6dffd dmaengine: add support to provide error result from a DMA
-> transation
-> 8f8afe84472f dmaengine: Add helper function to prep for error =
-reporting
-> 2acc1e704232 dmaengine: pl330: explicitly freeup irq
-> ed36cde14cf0 (m/master, cros/chromeos-4.4) UPSTREAM: audit: add tty
-> field to LOGIN event
->=20
-> Unfortunately when I start playing audio, things don't seem to work :(
-> Rolling back HEAD to "dmaengine: pl330: fix double lock" works though.
->=20
-> The only thing I get from dmesg relevant to pl330 is this:
-> [   59.203375] dma-pl330 ff6d0000.dma-controller:
-> pl330_submit_req:1498 Try increasing mcbufsz (12810/256)
-> [   59.203395] dma-pl330 ff6d0000.dma-controller: fill_queue:2023 Bad =
-Desc(2)
-> [   63.837390] dma-pl330 ff6d0000.dma-controller:
-> pl330_submit_req:1498 Try increasing mcbufsz (12810/256)
-> [   63.837410] dma-pl330 ff6d0000.dma-controller: fill_queue:2023 Bad =
-Desc(2)
->=20
-> Thanks,
-> Steve
->=20
+>
+> ---
+>
+>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  4 ++--
+>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |  3 +--
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 20 +++++++++-----------
+>   3 files changed, 12 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index d8fa7a9..9bfdbc6 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -115,8 +115,8 @@ static void analogix_dp_psr_work(struct work_struct *work)
+>   
+>   	vact_end = crtc->mode.vtotal - crtc->mode.vsync_start + crtc->mode.vdisplay;
+>   
+> -	ret = rockchip_drm_wait_line_flag(dp->encoder.crtc, vact_end,
+> -					  PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
+> +	ret = rockchip_drm_wait_vact_end(dp->encoder.crtc,
+> +					 PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
+>   	if (ret) {
+>   		dev_err(dp->dev, "line flag interrupt did not arrive\n");
+>   		return;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> index a48fcce..47905fa 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> @@ -62,8 +62,7 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
+>   				   struct device *dev);
+>   void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
+>   				    struct device *dev);
+> -int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+> -				unsigned int mstimeout);
+> +int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout);
+>   
+>   extern struct platform_driver cdn_dp_driver;
+>   extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index 3f7a82d..40a5e6e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -468,7 +468,7 @@ static bool vop_line_flag_irq_is_enabled(struct vop *vop)
+>   	return !!line_flag_irq;
+>   }
+>   
+> -static void vop_line_flag_irq_enable(struct vop *vop, int line_num)
+> +static void vop_line_flag_irq_enable(struct vop *vop)
+>   {
+>   	unsigned long flags;
+>   
+> @@ -477,7 +477,6 @@ static void vop_line_flag_irq_enable(struct vop *vop, int line_num)
+>   
+>   	spin_lock_irqsave(&vop->irq_lock, flags);
+>   
+> -	VOP_CTRL_SET(vop, line_flag_num[0], line_num);
+>   	VOP_INTR_SET_TYPE(vop, clear, LINE_FLAG_INTR, 1);
+>   	VOP_INTR_SET_TYPE(vop, enable, LINE_FLAG_INTR, 1);
+>   
+> @@ -981,6 +980,8 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
+>   	VOP_CTRL_SET(vop, vact_st_end, val);
+>   	VOP_CTRL_SET(vop, vpost_st_end, val);
+>   
+> +	VOP_CTRL_SET(vop, line_flag_num[0], vact_end);
+> +
+>   	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
+>   
+>   	VOP_CTRL_SET(vop, standby, 0);
+> @@ -1507,19 +1508,16 @@ static void vop_win_init(struct vop *vop)
+>   }
+>   
+>   /**
+> - * rockchip_drm_wait_line_flag - acqiure the give line flag event
+> + * rockchip_drm_wait_vact_end
+>    * @crtc: CRTC to enable line flag
+> - * @line_num: interested line number
+>    * @mstimeout: millisecond for timeout
+>    *
+> - * Driver would hold here until the interested line flag interrupt have
+> - * happened or timeout to wait.
+> + * Wait for vact_end line flag irq or timeout.
+>    *
+>    * Returns:
+>    * Zero on success, negative errno on failure.
+>    */
+> -int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+> -				unsigned int mstimeout)
+> +int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
+>   {
+>   	struct vop *vop = to_vop(crtc);
+>   	unsigned long jiffies_left;
+> @@ -1527,14 +1525,14 @@ int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+>   	if (!crtc || !vop->is_enabled)
+>   		return -ENODEV;
+>   
+> -	if (line_num > crtc->mode.vtotal || mstimeout <= 0)
+> +	if (mstimeout <= 0)
+>   		return -EINVAL;
+>   
+>   	if (vop_line_flag_irq_is_enabled(vop))
+>   		return -EBUSY;
+>   
+>   	reinit_completion(&vop->line_flag_completion);
+> -	vop_line_flag_irq_enable(vop, line_num);
+> +	vop_line_flag_irq_enable(vop);
+>   
+>   	jiffies_left = wait_for_completion_timeout(&vop->line_flag_completion,
+>   						   msecs_to_jiffies(mstimeout));
+> @@ -1547,7 +1545,7 @@ int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num,
+>   
+>   	return 0;
+>   }
+> -EXPORT_SYMBOL(rockchip_drm_wait_line_flag);
+> +EXPORT_SYMBOL(rockchip_drm_wait_vact_end);
+>   
+>   static int vop_bind(struct device *dev, struct device *master, void *data)
+>   {
 
 
-> 14 =D0=B0=D0=BF=D1=80. 2017 =D0=B3., =D0=B2 21:04, Krzysztof Kozlowski =
-<krzk@kernel.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):
->=20
-> Let me know if you need more data. I wonder why you haven't experience
-> this?
-
-I don=E2=80=99t have idea why this might happen on Odroid and due to the =
-fact the patch don=E2=80=99t
-work for Stephen and I don=E2=80=99t have another idea how to implement =
-that, it is better to
-leave the problem along.
-
-Krzysztof, thanks a lot for help. Really.
-
-Regards,
-Alexander.
+-- 
+Ｍark Yao
