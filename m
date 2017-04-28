@@ -1,24 +1,86 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 0/2] clk: rockchip: Perfect clock description for RK3228
-Date: Fri, 28 Apr 2017 10:33:19 +0800
-Message-ID: <1493346801-23785-1-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v1 1/2] clk: rockchip: fix up the RK3228 clk cpu setting table
+Date: Fri, 28 Apr 2017 10:33:20 +0800
+Message-ID: <1493346801-23785-2-git-send-email-zhangqing@rock-chips.com>
+References: <1493346801-23785-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1493346801-23785-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de, xf@rock-chips.com
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-support more cpu freq, and support armcore div setting.
-Add some necessary clks ID.
+support more cpu freq, and add armcore div setting.
 
-Elaine Zhang (2):
-  clk: rockchip: fix up the RK3228 clk cpu setting table
-  clk: rockchip: export rk3228 clocks ID
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3228.c | 50 ++++++++++++++++++++++++++-------------
+ 1 file changed, 34 insertions(+), 16 deletions(-)
 
- drivers/clk/rockchip/clk-rk3228.c      | 142 +++++++++++++++++++--------------
- include/dt-bindings/clock/rk3228-cru.h |  47 +++++++++++
- 2 files changed, 127 insertions(+), 62 deletions(-)
-
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index db6e5a9e6de6..a6cdf8fc1e75 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -86,25 +86,43 @@ enum rk3228_plls {
+ #define RK3228_DIV_PCLK_MASK		0x7
+ #define RK3228_DIV_PCLK_SHIFT		12
+ 
+-#define RK3228_CLKSEL1(_core_peri_div)					\
+-	{									\
+-		.reg = RK2928_CLKSEL_CON(1),					\
+-		.val = HIWORD_UPDATE(_core_peri_div, RK3228_DIV_PERI_MASK,	\
+-				RK3228_DIV_PERI_SHIFT)				\
+-	}
++#define RK3228_CLKSEL1(_core_aclk_div, _core_peri_div)			\
++{									\
++	.reg = RK2928_CLKSEL_CON(1),					\
++	.val = HIWORD_UPDATE(_core_peri_div, RK3228_DIV_PERI_MASK,	\
++			     RK3228_DIV_PERI_SHIFT) |			\
++	       HIWORD_UPDATE(_core_aclk_div, RK3228_DIV_ACLK_MASK,	\
++			     RK3228_DIV_ACLK_SHIFT),			\
++}
+ 
+-#define RK3228_CPUCLK_RATE(_prate, _core_peri_div)			\
+-	{								\
+-		.prate = _prate,					\
+-		.divs = {						\
+-			RK3228_CLKSEL1(_core_peri_div),		\
+-		},							\
+-	}
++#define RK3228_CPUCLK_RATE(_prate, _core_aclk_div, _core_peri_div)	\
++{									\
++	.prate = _prate,						\
++	.divs = {							\
++		RK3228_CLKSEL1(_core_aclk_div, _core_peri_div),		\
++	},								\
++}
+ 
+ static struct rockchip_cpuclk_rate_table rk3228_cpuclk_rates[] __initdata = {
+-	RK3228_CPUCLK_RATE(816000000, 4),
+-	RK3228_CPUCLK_RATE(600000000, 4),
+-	RK3228_CPUCLK_RATE(312000000, 4),
++	RK3228_CPUCLK_RATE(1800000000, 1, 7),
++	RK3228_CPUCLK_RATE(1704000000, 1, 7),
++	RK3228_CPUCLK_RATE(1608000000, 1, 7),
++	RK3228_CPUCLK_RATE(1512000000, 1, 7),
++	RK3228_CPUCLK_RATE(1488000000, 1, 5),
++	RK3228_CPUCLK_RATE(1416000000, 1, 5),
++	RK3228_CPUCLK_RATE(1392000000, 1, 5),
++	RK3228_CPUCLK_RATE(1296000000, 1, 5),
++	RK3228_CPUCLK_RATE(1200000000, 1, 5),
++	RK3228_CPUCLK_RATE(1104000000, 1, 5),
++	RK3228_CPUCLK_RATE(1008000000, 1, 5),
++	RK3228_CPUCLK_RATE(912000000, 1, 5),
++	RK3228_CPUCLK_RATE(816000000, 1, 3),
++	RK3228_CPUCLK_RATE(696000000, 1, 3),
++	RK3228_CPUCLK_RATE(600000000, 1, 3),
++	RK3228_CPUCLK_RATE(408000000, 1, 1),
++	RK3228_CPUCLK_RATE(312000000, 1, 1),
++	RK3228_CPUCLK_RATE(216000000,  1, 1),
++	RK3228_CPUCLK_RATE(96000000, 1, 1),
+ };
+ 
+ static const struct rockchip_cpuclk_reg_data rk3228_cpuclk_data = {
 -- 
 1.9.1
 
