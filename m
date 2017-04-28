@@ -1,128 +1,94 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2] drm/rockchip: Set line flag config register in
- vop_crtc_enable
-Date: Fri, 28 Apr 2017 11:03:17 -0400
-Message-ID: <20170428150317.tpnj6obddfz5dzng@art_vandelay>
-References: <1493365067-29541-1-git-send-email-jeffy.chen@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Fri, 28 Apr 2017 14:27:42 -0500
+Message-ID: <20170428192742.pu4v4layszr6z2ot@rob-hp-laptop>
+References: <cover.1493125299.git.guillaume.tucker@collabora.com>
+ <9349c8ae9091fbd93e9410f4cfae770ac850bf6b.1493125299.git.guillaume.tucker@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1493365067-29541-1-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: dianders@chromium.org, dbasehore@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hoegsberg@chromium.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <9349c8ae9091fbd93e9410f4cfae770ac850bf6b.1493125299.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMjgsIDIwMTcgYXQgMDM6Mzc6NDdQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBXZSBuZWVkIHRvIHNldCB2b3AgY29uZmlnIGRvbmUgYWZ0ZXIgdXBkYXRlIGxpbmUgZmxh
-ZyBjb25maWcsIGl0J3MgYQo+IG5ldyByZXF1aXJlbWVudCBmb3IgY2hpcHMgbmV3ZXIgdGhhbiBy
-azMzNjguCj4gCj4gU2luY2Ugd2Ugd291bGQgb25seSB1c2UgbGluZSBmbGFnIGlycSBmb3IgdmFj
-dF9lbmQsIGxldCdzIG1vdmUgaXQgdG8KPiB2b3BfY3J0Y19lbmFibGUuCj4gCj4gdjI6IFJlbW92
-ZSB1bnVzZWQgY2hlY2sgYW5kIHZhcmlhYmxlcy4KCkhpIEplZmZ5LAp2MSB3YXMgYWxyZWFkeSBh
-cHBsaWVkLiBQbGVhc2Ugc2VuZCBhIGZvbGxvdy1vbiBwYXRjaCB0byBjbGVhbiB0aGlzIHVwLgoK
-U2VhbgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hp
-cHMuY29tPgo+IAo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjI6Cj4gUmVtb3ZlIHVudXNlZCBjaGVj
-ayBhbmQgdmFyaWFibGVzLgo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhf
-ZHAtcm9ja2NoaXAuYyB8IDE0ICsrKy0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggICAgIHwgIDMgKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICAgIHwgMjAgKysrKysrKysrLS0tLS0tLS0tLS0K
-PiAgMyBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAyNCBkZWxldGlvbnMoLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tj
-aGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+
-IGluZGV4IGQ4ZmE3YTkuLjFiY2NkODIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+IEBAIC0xMDQsMjYgKzEwNCwxOCBAQCBzdGF0
-aWMgdm9pZCBhbmFsb2dpeF9kcF9wc3Jfd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4g
-IHsKPiAgCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0KPiAgCQkJCWNvbnRhaW5lcl9v
-Zih3b3JrLCB0eXBlb2YoKmRwKSwgcHNyX3dvcmspOwo+IC0Jc3RydWN0IGRybV9jcnRjICpjcnRj
-ID0gZHAtPmVuY29kZXIuY3J0YzsKPiAtCWludCBwc3Jfc3RhdGUgPSBkcC0+cHNyX3N0YXRlOwo+
-IC0JaW50IHZhY3RfZW5kOwo+ICAJaW50IHJldDsKPiAgCXVuc2lnbmVkIGxvbmcgZmxhZ3M7Cj4g
-IAo+IC0JaWYgKCFjcnRjKQo+IC0JCXJldHVybjsKPiAtCj4gLQl2YWN0X2VuZCA9IGNydGMtPm1v
-ZGUudnRvdGFsIC0gY3J0Yy0+bW9kZS52c3luY19zdGFydCArIGNydGMtPm1vZGUudmRpc3BsYXk7
-Cj4gLQo+IC0JcmV0ID0gcm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKGRwLT5lbmNvZGVyLmNy
-dGMsIHZhY3RfZW5kLAo+IC0JCQkJCSAgUFNSX1dBSVRfTElORV9GTEFHX1RJTUVPVVRfTVMpOwo+
-ICsJcmV0ID0gcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoZHAtPmVuY29kZXIuY3J0YywKPiAr
-CQkJCQkgUFNSX1dBSVRfTElORV9GTEFHX1RJTUVPVVRfTVMpOwo+ICAJaWYgKHJldCkgewo+ICAJ
-CWRldl9lcnIoZHAtPmRldiwgImxpbmUgZmxhZyBpbnRlcnJ1cHQgZGlkIG5vdCBhcnJpdmVcbiIp
-Owo+ICAJCXJldHVybjsKPiAgCX0KPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgmZHAtPnBzcl9s
-b2NrLCBmbGFncyk7Cj4gLQlpZiAocHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NUQVRFX0FDVElW
-RSkKPiArCWlmIChkcC0+cHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NUQVRFX0FDVElWRSkKPiAg
-CQlhbmFsb2dpeF9kcF9lbmFibGVfcHNyKGRwLT5kZXYpOwo+ICAJZWxzZQo+ICAJCWFuYWxvZ2l4
-X2RwX2Rpc2FibGVfcHNyKGRwLT5kZXYpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuaAo+IGluZGV4IGE0OGZjY2UuLjQ3OTA1ZmEgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBAQCAtNjIsOCArNjIsNyBA
-QCBpbnQgcm9ja2NoaXBfZHJtX2RtYV9hdHRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpk
-cm1fZGV2LAo+ICAJCQkJICAgc3RydWN0IGRldmljZSAqZGV2KTsKPiAgdm9pZCByb2NrY2hpcF9k
-cm1fZG1hX2RldGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gIAkJCQkg
-ICAgc3RydWN0IGRldmljZSAqZGV2KTsKPiAtaW50IHJvY2tjaGlwX2RybV93YWl0X2xpbmVfZmxh
-ZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBsaW5lX251bSwKPiAtCQkJCXVu
-c2lnbmVkIGludCBtc3RpbWVvdXQpOwo+ICtpbnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQo
-c3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KTsKPiAgCj4gIGV4
-dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGNkbl9kcF9kcml2ZXI7Cj4gIGV4dGVybiBzdHJ1
-Y3QgcGxhdGZvcm1fZHJpdmVyIGR3X2hkbWlfcm9ja2NoaXBfcGx0Zm1fZHJpdmVyOwo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IDNmN2E4MmQu
-LjQwYTVlNmUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMKPiBAQCAtNDY4LDcgKzQ2OCw3IEBAIHN0YXRpYyBib29sIHZvcF9saW5lX2ZsYWdfaXJx
-X2lzX2VuYWJsZWQoc3RydWN0IHZvcCAqdm9wKQo+ICAJcmV0dXJuICEhbGluZV9mbGFnX2lycTsK
-PiAgfQo+ICAKPiAtc3RhdGljIHZvaWQgdm9wX2xpbmVfZmxhZ19pcnFfZW5hYmxlKHN0cnVjdCB2
-b3AgKnZvcCwgaW50IGxpbmVfbnVtKQo+ICtzdGF0aWMgdm9pZCB2b3BfbGluZV9mbGFnX2lycV9l
-bmFibGUoc3RydWN0IHZvcCAqdm9wKQo+ICB7Cj4gIAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAK
-PiBAQCAtNDc3LDcgKzQ3Nyw2IEBAIHN0YXRpYyB2b2lkIHZvcF9saW5lX2ZsYWdfaXJxX2VuYWJs
-ZShzdHJ1Y3Qgdm9wICp2b3AsIGludCBsaW5lX251bSkKPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2
-ZSgmdm9wLT5pcnFfbG9jaywgZmxhZ3MpOwo+ICAKPiAtCVZPUF9DVFJMX1NFVCh2b3AsIGxpbmVf
-ZmxhZ19udW1bMF0sIGxpbmVfbnVtKTsKPiAgCVZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgY2xlYXIs
-IExJTkVfRkxBR19JTlRSLCAxKTsKPiAgCVZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgZW5hYmxlLCBM
-SU5FX0ZMQUdfSU5UUiwgMSk7Cj4gIAo+IEBAIC05ODEsNiArOTgwLDggQEAgc3RhdGljIHZvaWQg
-dm9wX2NydGNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgCVZPUF9DVFJMX1NFVCh2
-b3AsIHZhY3Rfc3RfZW5kLCB2YWwpOwo+ICAJVk9QX0NUUkxfU0VUKHZvcCwgdnBvc3Rfc3RfZW5k
-LCB2YWwpOwo+ICAKPiArCVZPUF9DVFJMX1NFVCh2b3AsIGxpbmVfZmxhZ19udW1bMF0sIHZhY3Rf
-ZW5kKTsKPiArCj4gIAljbGtfc2V0X3JhdGUodm9wLT5kY2xrLCBhZGp1c3RlZF9tb2RlLT5jbG9j
-ayAqIDEwMDApOwo+ICAKPiAgCVZPUF9DVFJMX1NFVCh2b3AsIHN0YW5kYnksIDApOwo+IEBAIC0x
-NTA3LDE5ICsxNTA4LDE2IEBAIHN0YXRpYyB2b2lkIHZvcF93aW5faW5pdChzdHJ1Y3Qgdm9wICp2
-b3ApCj4gIH0KPiAgCj4gIC8qKgo+IC0gKiByb2NrY2hpcF9kcm1fd2FpdF9saW5lX2ZsYWcgLSBh
-Y3FpdXJlIHRoZSBnaXZlIGxpbmUgZmxhZyBldmVudAo+ICsgKiByb2NrY2hpcF9kcm1fd2FpdF92
-YWN0X2VuZAo+ICAgKiBAY3J0YzogQ1JUQyB0byBlbmFibGUgbGluZSBmbGFnCj4gLSAqIEBsaW5l
-X251bTogaW50ZXJlc3RlZCBsaW5lIG51bWJlcgo+ICAgKiBAbXN0aW1lb3V0OiBtaWxsaXNlY29u
-ZCBmb3IgdGltZW91dAo+ICAgKgo+IC0gKiBEcml2ZXIgd291bGQgaG9sZCBoZXJlIHVudGlsIHRo
-ZSBpbnRlcmVzdGVkIGxpbmUgZmxhZyBpbnRlcnJ1cHQgaGF2ZQo+IC0gKiBoYXBwZW5lZCBvciB0
-aW1lb3V0IHRvIHdhaXQuCj4gKyAqIFdhaXQgZm9yIHZhY3RfZW5kIGxpbmUgZmxhZyBpcnEgb3Ig
-dGltZW91dC4KPiAgICoKPiAgICogUmV0dXJuczoKPiAgICogWmVybyBvbiBzdWNjZXNzLCBuZWdh
-dGl2ZSBlcnJubyBvbiBmYWlsdXJlLgo+ICAgKi8KPiAtaW50IHJvY2tjaGlwX2RybV93YWl0X2xp
-bmVfZmxhZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBsaW5lX251bSwKPiAt
-CQkJCXVuc2lnbmVkIGludCBtc3RpbWVvdXQpCj4gK2ludCByb2NrY2hpcF9kcm1fd2FpdF92YWN0
-X2VuZChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBtc3RpbWVvdXQpCj4gIHsK
-PiAgCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiAgCXVuc2lnbmVkIGxvbmcgamlm
-Zmllc19sZWZ0Owo+IEBAIC0xNTI3LDE0ICsxNTI1LDE0IEBAIGludCByb2NrY2hpcF9kcm1fd2Fp
-dF9saW5lX2ZsYWcoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbGluZV9udW0s
-Cj4gIAlpZiAoIWNydGMgfHwgIXZvcC0+aXNfZW5hYmxlZCkKPiAgCQlyZXR1cm4gLUVOT0RFVjsK
-PiAgCj4gLQlpZiAobGluZV9udW0gPiBjcnRjLT5tb2RlLnZ0b3RhbCB8fCBtc3RpbWVvdXQgPD0g
-MCkKPiArCWlmIChtc3RpbWVvdXQgPD0gMCkKPiAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgCj4gIAlp
-ZiAodm9wX2xpbmVfZmxhZ19pcnFfaXNfZW5hYmxlZCh2b3ApKQo+ICAJCXJldHVybiAtRUJVU1k7
-Cj4gIAo+ICAJcmVpbml0X2NvbXBsZXRpb24oJnZvcC0+bGluZV9mbGFnX2NvbXBsZXRpb24pOwo+
-IC0Jdm9wX2xpbmVfZmxhZ19pcnFfZW5hYmxlKHZvcCwgbGluZV9udW0pOwo+ICsJdm9wX2xpbmVf
-ZmxhZ19pcnFfZW5hYmxlKHZvcCk7Cj4gIAo+ICAJamlmZmllc19sZWZ0ID0gd2FpdF9mb3JfY29t
-cGxldGlvbl90aW1lb3V0KCZ2b3AtPmxpbmVfZmxhZ19jb21wbGV0aW9uLAo+ICAJCQkJCQkgICBt
-c2Vjc190b19qaWZmaWVzKG1zdGltZW91dCkpOwo+IEBAIC0xNTQ3LDcgKzE1NDUsNyBAQCBpbnQg
-cm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywgdW5zaWdu
-ZWQgaW50IGxpbmVfbnVtLAo+ICAKPiAgCXJldHVybiAwOwo+ICB9Cj4gLUVYUE9SVF9TWU1CT0wo
-cm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKTsKPiArRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9k
-cm1fd2FpdF92YWN0X2VuZCk7Cj4gIAo+ICBzdGF0aWMgaW50IHZvcF9iaW5kKHN0cnVjdCBkZXZp
-Y2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+ICB7Cj4gLS0gCj4g
-Mi4xLjQKPiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJv
-bWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Apr 25, 2017 at 02:16:16PM +0100, Guillaume Tucker wrote:
+> The ARM Mali Midgard GPU family is present in a number of SoCs
+> from many different vendors such as Samsung Exynos and Rockchip.
+> 
+> Import the device tree bindings documentation from the r16p0
+> release of the Mali Midgard GPU kernel driver:
+> 
+>   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
+> 
+> Remove the copyright and GPL licence header as deemed not necessary.
+> 
+> Redesign the "compatible" property strings to list all the Mali
+> Midgard GPU types and include optional vendor ones.
+> 
+> Drop the "clock-names" property as only one clock is used by the Mali
+> Midgard driver (which now needs to call clk_get with NULL).
+> 
+> Convert the "interrupt-names" property values to lower-case: "job",
+> "mmu" and "gpu".
+> 
+> Replace the deprecated "operating-points" optional property with
+> "operating-points-v2".
+> 
+> Omit the following optional properties in this initial version as they
+> are only used in very specific cases:
+> 
+>   * snoop_enable_smc
+>   * snoop_disable_smc
+>   * jm_config
+>   * power_model
+>   * system-coherency
+>   * ipa-model
+> 
+> Update the example accordingly to reflect all these changes.
+> 
+> CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
+> Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 82 ++++++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> new file mode 100644
+> index 000000000000..547ddeceb498
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> @@ -0,0 +1,82 @@
+> +ARM Mali Midgard GPU
+> +====================
+> +
+> +Required properties:
+> +
+> +- compatible :
+> +  * Must be one of the following:
+> +    + "arm,mali-t60x"
+> +    + "arm,mali-t62x"
+
+Don't use wildcards.
+
+> +    + "arm,mali-t720"
+> +    + "arm,mali-t760"
+> +    + "arm,mali-t820"
+> +    + "arm,mali-t830"
+> +    + "arm,mali-t860"
+> +    + "arm,mali-t880"
+> +  * And, optionally, one of the vendor specific compatible:
+
+IMO, these should not be optional.
+
+> +    + "amlogic,meson-gxm-mali"
+> +    + "rockchip,rk3288-mali"
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
