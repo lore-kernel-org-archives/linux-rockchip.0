@@ -1,117 +1,79 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v2] drm/rockchip: Set line flag config register in
- vop_crtc_enable
-Date: Fri, 28 Apr 2017 15:37:47 +0800
-Message-ID: <1493365067-29541-1-git-send-email-jeffy.chen@rock-chips.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: [PATCH v2] pinctrl: rockchip: remove unneeded (void *) casts in
+ of_match_table
+Date: Fri, 28 Apr 2017 21:50:35 +0900
+Message-ID: <1493383835-1959-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, dbasehore@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hoegsberg@chromium.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-gpio@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-V2UgbmVlZCB0byBzZXQgdm9wIGNvbmZpZyBkb25lIGFmdGVyIHVwZGF0ZSBsaW5lIGZsYWcgY29u
-ZmlnLCBpdCdzIGEKbmV3IHJlcXVpcmVtZW50IGZvciBjaGlwcyBuZXdlciB0aGFuIHJrMzM2OC4K
-ClNpbmNlIHdlIHdvdWxkIG9ubHkgdXNlIGxpbmUgZmxhZyBpcnEgZm9yIHZhY3RfZW5kLCBsZXQn
-cyBtb3ZlIGl0IHRvCnZvcF9jcnRjX2VuYWJsZS4KCnYyOiBSZW1vdmUgdW51c2VkIGNoZWNrIGFu
-ZCB2YXJpYWJsZXMuCgpTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2st
-Y2hpcHMuY29tPgoKLS0tCgpDaGFuZ2VzIGluIHYyOgpSZW1vdmUgdW51c2VkIGNoZWNrIGFuZCB2
-YXJpYWJsZXMuCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
-LmMgfCAxNCArKystLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuaCAgICAgfCAgMyArLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMgICAgIHwgMjAgKysrKysrKysrLS0tLS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdl
-ZCwgMTMgaW5zZXJ0aW9ucygrKSwgMjQgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRleCBkOGZhN2E5Li4xYmNjZDgy
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
-aXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAu
-YwpAQCAtMTA0LDI2ICsxMDQsMTggQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmso
-c3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQogewogCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2Ug
-KmRwID0KIAkJCQljb250YWluZXJfb2Yod29yaywgdHlwZW9mKCpkcCksIHBzcl93b3JrKTsKLQlz
-dHJ1Y3QgZHJtX2NydGMgKmNydGMgPSBkcC0+ZW5jb2Rlci5jcnRjOwotCWludCBwc3Jfc3RhdGUg
-PSBkcC0+cHNyX3N0YXRlOwotCWludCB2YWN0X2VuZDsKIAlpbnQgcmV0OwogCXVuc2lnbmVkIGxv
-bmcgZmxhZ3M7CiAKLQlpZiAoIWNydGMpCi0JCXJldHVybjsKLQotCXZhY3RfZW5kID0gY3J0Yy0+
-bW9kZS52dG90YWwgLSBjcnRjLT5tb2RlLnZzeW5jX3N0YXJ0ICsgY3J0Yy0+bW9kZS52ZGlzcGxh
-eTsKLQotCXJldCA9IHJvY2tjaGlwX2RybV93YWl0X2xpbmVfZmxhZyhkcC0+ZW5jb2Rlci5jcnRj
-LCB2YWN0X2VuZCwKLQkJCQkJICBQU1JfV0FJVF9MSU5FX0ZMQUdfVElNRU9VVF9NUyk7CisJcmV0
-ID0gcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoZHAtPmVuY29kZXIuY3J0YywKKwkJCQkJIFBT
-Ul9XQUlUX0xJTkVfRkxBR19USU1FT1VUX01TKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIoZHAt
-PmRldiwgImxpbmUgZmxhZyBpbnRlcnJ1cHQgZGlkIG5vdCBhcnJpdmVcbiIpOwogCQlyZXR1cm47
-CiAJfQogCiAJc3Bpbl9sb2NrX2lycXNhdmUoJmRwLT5wc3JfbG9jaywgZmxhZ3MpOwotCWlmIChw
-c3Jfc3RhdGUgPT0gRURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZFKQorCWlmIChkcC0+cHNyX3N0YXRl
-ID09IEVEUF9WU0NfUFNSX1NUQVRFX0FDVElWRSkKIAkJYW5hbG9naXhfZHBfZW5hYmxlX3Bzcihk
-cC0+ZGV2KTsKIAllbHNlCiAJCWFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKGRwLT5kZXYpOwpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKaW5kZXggYTQ4ZmNjZS4u
-NDc5MDVmYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9kcnYuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5o
-CkBAIC02Miw4ICs2Miw3IEBAIGludCByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3Ry
-dWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAJCQkJICAgc3RydWN0IGRldmljZSAqZGV2KTsKIHZv
-aWQgcm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1f
-ZGV2LAogCQkJCSAgICBzdHJ1Y3QgZGV2aWNlICpkZXYpOwotaW50IHJvY2tjaGlwX2RybV93YWl0
-X2xpbmVfZmxhZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBsaW5lX251bSwK
-LQkJCQl1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KTsKK2ludCByb2NrY2hpcF9kcm1fd2FpdF92YWN0
-X2VuZChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBtc3RpbWVvdXQpOwogCiBl
-eHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBjZG5fZHBfZHJpdmVyOwogZXh0ZXJuIHN0cnVj
-dCBwbGF0Zm9ybV9kcml2ZXIgZHdfaGRtaV9yb2NrY2hpcF9wbHRmbV9kcml2ZXI7CmRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCAzZjdhODJkLi40MGE1
-ZTZlIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAg
-LTQ2OCw3ICs0NjgsNyBAQCBzdGF0aWMgYm9vbCB2b3BfbGluZV9mbGFnX2lycV9pc19lbmFibGVk
-KHN0cnVjdCB2b3AgKnZvcCkKIAlyZXR1cm4gISFsaW5lX2ZsYWdfaXJxOwogfQogCi1zdGF0aWMg
-dm9pZCB2b3BfbGluZV9mbGFnX2lycV9lbmFibGUoc3RydWN0IHZvcCAqdm9wLCBpbnQgbGluZV9u
-dW0pCitzdGF0aWMgdm9pZCB2b3BfbGluZV9mbGFnX2lycV9lbmFibGUoc3RydWN0IHZvcCAqdm9w
-KQogewogCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAKQEAgLTQ3Nyw3ICs0NzcsNiBAQCBzdGF0aWMg
-dm9pZCB2b3BfbGluZV9mbGFnX2lycV9lbmFibGUoc3RydWN0IHZvcCAqdm9wLCBpbnQgbGluZV9u
-dW0pCiAKIAlzcGluX2xvY2tfaXJxc2F2ZSgmdm9wLT5pcnFfbG9jaywgZmxhZ3MpOwogCi0JVk9Q
-X0NUUkxfU0VUKHZvcCwgbGluZV9mbGFnX251bVswXSwgbGluZV9udW0pOwogCVZPUF9JTlRSX1NF
-VF9UWVBFKHZvcCwgY2xlYXIsIExJTkVfRkxBR19JTlRSLCAxKTsKIAlWT1BfSU5UUl9TRVRfVFlQ
-RSh2b3AsIGVuYWJsZSwgTElORV9GTEFHX0lOVFIsIDEpOwogCkBAIC05ODEsNiArOTgwLDggQEAg
-c3RhdGljIHZvaWQgdm9wX2NydGNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAlWT1Bf
-Q1RSTF9TRVQodm9wLCB2YWN0X3N0X2VuZCwgdmFsKTsKIAlWT1BfQ1RSTF9TRVQodm9wLCB2cG9z
-dF9zdF9lbmQsIHZhbCk7CiAKKwlWT1BfQ1RSTF9TRVQodm9wLCBsaW5lX2ZsYWdfbnVtWzBdLCB2
-YWN0X2VuZCk7CisKIAljbGtfc2V0X3JhdGUodm9wLT5kY2xrLCBhZGp1c3RlZF9tb2RlLT5jbG9j
-ayAqIDEwMDApOwogCiAJVk9QX0NUUkxfU0VUKHZvcCwgc3RhbmRieSwgMCk7CkBAIC0xNTA3LDE5
-ICsxNTA4LDE2IEBAIHN0YXRpYyB2b2lkIHZvcF93aW5faW5pdChzdHJ1Y3Qgdm9wICp2b3ApCiB9
-CiAKIC8qKgotICogcm9ja2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnIC0gYWNxaXVyZSB0aGUgZ2l2
-ZSBsaW5lIGZsYWcgZXZlbnQKKyAqIHJvY2tjaGlwX2RybV93YWl0X3ZhY3RfZW5kCiAgKiBAY3J0
-YzogQ1JUQyB0byBlbmFibGUgbGluZSBmbGFnCi0gKiBAbGluZV9udW06IGludGVyZXN0ZWQgbGlu
-ZSBudW1iZXIKICAqIEBtc3RpbWVvdXQ6IG1pbGxpc2Vjb25kIGZvciB0aW1lb3V0CiAgKgotICog
-RHJpdmVyIHdvdWxkIGhvbGQgaGVyZSB1bnRpbCB0aGUgaW50ZXJlc3RlZCBsaW5lIGZsYWcgaW50
-ZXJydXB0IGhhdmUKLSAqIGhhcHBlbmVkIG9yIHRpbWVvdXQgdG8gd2FpdC4KKyAqIFdhaXQgZm9y
-IHZhY3RfZW5kIGxpbmUgZmxhZyBpcnEgb3IgdGltZW91dC4KICAqCiAgKiBSZXR1cm5zOgogICog
-WmVybyBvbiBzdWNjZXNzLCBuZWdhdGl2ZSBlcnJubyBvbiBmYWlsdXJlLgogICovCi1pbnQgcm9j
-a2NoaXBfZHJtX3dhaXRfbGluZV9mbGFnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywgdW5zaWduZWQg
-aW50IGxpbmVfbnVtLAotCQkJCXVuc2lnbmVkIGludCBtc3RpbWVvdXQpCitpbnQgcm9ja2NoaXBf
-ZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbXN0
-aW1lb3V0KQogewogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKIAl1bnNpZ25lZCBs
-b25nIGppZmZpZXNfbGVmdDsKQEAgLTE1MjcsMTQgKzE1MjUsMTQgQEAgaW50IHJvY2tjaGlwX2Ry
-bV93YWl0X2xpbmVfZmxhZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBsaW5l
-X251bSwKIAlpZiAoIWNydGMgfHwgIXZvcC0+aXNfZW5hYmxlZCkKIAkJcmV0dXJuIC1FTk9ERVY7
-CiAKLQlpZiAobGluZV9udW0gPiBjcnRjLT5tb2RlLnZ0b3RhbCB8fCBtc3RpbWVvdXQgPD0gMCkK
-KwlpZiAobXN0aW1lb3V0IDw9IDApCiAJCXJldHVybiAtRUlOVkFMOwogCiAJaWYgKHZvcF9saW5l
-X2ZsYWdfaXJxX2lzX2VuYWJsZWQodm9wKSkKIAkJcmV0dXJuIC1FQlVTWTsKIAogCXJlaW5pdF9j
-b21wbGV0aW9uKCZ2b3AtPmxpbmVfZmxhZ19jb21wbGV0aW9uKTsKLQl2b3BfbGluZV9mbGFnX2ly
-cV9lbmFibGUodm9wLCBsaW5lX251bSk7CisJdm9wX2xpbmVfZmxhZ19pcnFfZW5hYmxlKHZvcCk7
-CiAKIAlqaWZmaWVzX2xlZnQgPSB3YWl0X2Zvcl9jb21wbGV0aW9uX3RpbWVvdXQoJnZvcC0+bGlu
-ZV9mbGFnX2NvbXBsZXRpb24sCiAJCQkJCQkgICBtc2Vjc190b19qaWZmaWVzKG1zdGltZW91dCkp
-OwpAQCAtMTU0Nyw3ICsxNTQ1LDcgQEAgaW50IHJvY2tjaGlwX2RybV93YWl0X2xpbmVfZmxhZyhz
-dHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBsaW5lX251bSwKIAogCXJldHVybiAw
-OwogfQotRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9kcm1fd2FpdF9saW5lX2ZsYWcpOworRVhQT1JU
-X1NZTUJPTChyb2NrY2hpcF9kcm1fd2FpdF92YWN0X2VuZCk7CiAKIHN0YXRpYyBpbnQgdm9wX2Jp
-bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEp
-CiB7Ci0tIAoyLjEuNAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAo=
+of_device_id::data is an opaque pointer.  No explicit cast is needed.
+
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+
+Changes in v2:
+  - Rebase on pinctrl subsystem tree
+
+ drivers/pinctrl/pinctrl-rockchip.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index f141aa0..5b4e1c44 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2998,27 +2998,27 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
+ 
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 	{ .compatible = "rockchip,rv1108-pinctrl",
+-		.data = (void *)&rv1108_pin_ctrl },
++		.data = &rv1108_pin_ctrl },
+ 	{ .compatible = "rockchip,rk2928-pinctrl",
+-		.data = (void *)&rk2928_pin_ctrl },
++		.data = &rk2928_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3036-pinctrl",
+-		.data = (void *)&rk3036_pin_ctrl },
++		.data = &rk3036_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066a-pinctrl",
+-		.data = (void *)&rk3066a_pin_ctrl },
++		.data = &rk3066a_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066b-pinctrl",
+-		.data = (void *)&rk3066b_pin_ctrl },
++		.data = &rk3066b_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3188-pinctrl",
+-		.data = (void *)&rk3188_pin_ctrl },
++		.data = &rk3188_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3228-pinctrl",
+-		.data = (void *)&rk3228_pin_ctrl },
++		.data = &rk3228_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3288-pinctrl",
+-		.data = (void *)&rk3288_pin_ctrl },
++		.data = &rk3288_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3328-pinctrl",
+-		.data = (void *)&rk3328_pin_ctrl },
++		.data = &rk3328_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3368-pinctrl",
+-		.data = (void *)&rk3368_pin_ctrl },
++		.data = &rk3368_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3399-pinctrl",
+-		.data = (void *)&rk3399_pin_ctrl },
++		.data = &rk3399_pin_ctrl },
+ 	{},
+ };
+ 
+-- 
+2.7.4
