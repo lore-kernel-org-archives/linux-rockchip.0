@@ -1,57 +1,51 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] dt-bindings: rockchip-dw-mshc: add optional
- rockchip,default-num-phases
-Date: Fri, 28 Apr 2017 08:34:03 -0500
-Message-ID: <20170428133403.mmdvtp3ohff6v7gh@rob-hp-laptop>
-References: <1492592434-81312-1-git-send-email-shawn.lin@rock-chips.com>
- <1492592434-81312-2-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v3] usb: dwc3: add disable u2mac linestate check quirk
+Date: Fri, 28 Apr 2017 08:41:20 -0500
+Message-ID: <20170428134120.deqjesvinuoskem7@rob-hp-laptop>
+References: <1492603898-25070-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1492592434-81312-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1492603898-25070-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 19, 2017 at 05:00:33PM +0800, Shawn Lin wrote:
-> By default, dw_mmc-rockchip will execute tuning for each degree.
-> So we won't miss every point of the good sample windows. However,
-> probably the phases are linear inside the good sample window.
-> Actually we don't need to do tuning for each degree so that we could
-> save some time, for instance, probe the driver or resume from S3.
+On Wed, Apr 19, 2017 at 08:11:38PM +0800, William Wu wrote:
+> This patch adds a quirk to disable USB 2.0 MAC linestate check
+> during HS transmit. Refer the dwc3 databook, we can use it for
+> some special platforms if the linestate not reflect the expected
+> line state(J) during transmission.
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> When use this quirk, the controller implements a fixed 40-bit
+> TxEndDelay after the packet is given on UTMI and ignores the
+> linestate during the transmit of a token (during token-to-token
+> and token-to-data IPGAP).
+> 
+> On some rockchip platforms (e.g. rk3399), it requires to disable
+> the u2mac linestate check to decrease the SSPLIT token to SETUP
+> token inter-packet delay from 566ns to 466ns, and fix the issue
+> that FS/LS devices not recognized if inserted through USB 3.0 HUB.
+> 
+> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
+> Changes in v3:
+> - change quirk name
+> - only read and write GUCTL1 if dwc3 version >= 2.50a
 > 
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 4 ++++
->  1 file changed, 4 insertions(+)
+> Changes in v2:
+> - fix coding style
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> index 520d61d..ea47ec0 100644
-> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> @@ -31,6 +31,10 @@ Optional Properties:
->    probing, low speeds or in case where all phases work at tuning time.
->    If not specified 0 deg will be used.
->  
-> +* rockchip,default-num-phases: The default number of times that the host
-> +  execute tuning when needed. If not specified, the host will do tuning
-> +  for 360 times, namely tuning for each degree.
+>  Documentation/devicetree/bindings/usb/dwc3.txt |  2 ++
 
-How is it default when you specify it? I would think default here is 
-360.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> 
 
-Should this be common?
-
-Rob
+>  drivers/usb/dwc3/core.c                        | 20 ++++++++++++++------
+>  drivers/usb/dwc3/core.h                        |  4 ++++
+>  3 files changed, 20 insertions(+), 6 deletions(-)
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
