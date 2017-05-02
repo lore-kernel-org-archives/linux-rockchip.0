@@ -1,98 +1,55 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v3 2/4] clk: rockchip: rk3228: make noc and some special clk
- as critical_clocks
-Date: Tue,  2 May 2017 15:34:04 +0800
-Message-ID: <1493710446-7203-3-git-send-email-zhangqing@rock-chips.com>
-References: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, xf@rock-chips.com
-Cc: huangtao@rock-chips.com, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: rockchip: control vpcie0v9 for system PM
+Date: Tue,  2 May 2017 15:31:23 +0800
+Message-ID: <1493710283-164065-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The jtag\bus\peri\initmem\rom\stimer\phy clks no driver to handle them.
-But this clks need enable,so make it as critical.
+vpcie0v9 is used for PHY, so we could disable it as
+we don't need PHY to work then in S3 if folks assign it
+DT. But we should note that there is a side effect that
+we could not support beacon wakeup if we disable vpcie0v9
+for aggressive power-saving.
 
-The ddrupctl\ddrmon\ddrphy clks no driver to handle them,
-Chip design requirements for these clock to always on,
-The new document will update the description of these clock.
-
-The hclk_otg_pmu is Chip design defect, must be always on,
-The new document will update the description of this clock.
-
-All these non-noc\non-arbi clocks,IC suggest always on,
-Because it's have some order limitation, between the NOC clock switch and bus IDLE(or pd on/off).
-The software is not very good to slove  this constraint.
-Always on these clocks, has no effect on the system power consumption.
-The new document will update the description of these clock.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index db6e5a9e6de6..4d3203f887e2 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -445,7 +445,7 @@ enum rk3228_plls {
- 			RK2928_CLKGATE_CON(2), 12, GFLAGS,
- 			&rk3228_spdif_fracmux),
+ drivers/pci/host/pcie-rockchip.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 0e020b6..c8ca796 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1251,6 +1251,9 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
+ 	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+ 	clk_disable_unprepare(rockchip->aclk_pcie);
  
--	GATE(0, "jtag", "ext_jtag", 0,
-+	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(1), 3, GFLAGS),
++	if (!IS_ERR(rockchip->vpcie0v9))
++		regulator_disable(rockchip->vpcie0v9);
++
+ 	return ret;
+ }
  
- 	GATE(0, "sclk_otgphy0", "xin24m", 0,
-@@ -644,9 +644,37 @@ enum rk3228_plls {
+@@ -1259,6 +1262,14 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+ 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+ 	int err;
  
- static const char *const rk3228_critical_clocks[] __initconst = {
- 	"aclk_cpu",
-+	"pclk_cpu",
-+	"hclk_cpu",
- 	"aclk_peri",
- 	"hclk_peri",
- 	"pclk_peri",
-+	"aclk_rga_noc",
-+	"aclk_iep_noc",
-+	"aclk_vop_noc",
-+	"aclk_hdcp_noc",
-+	"hclk_vio_ahb_arbi",
-+	"hclk_vio_noc",
-+	"hclk_vop_noc",
-+	"hclk_host0_arb",
-+	"hclk_host1_arb",
-+	"hclk_host2_arb",
-+	"hclk_otg_pmu",
-+	"aclk_gpu_noc",
-+	"sclk_initmem_mbist",
-+	"aclk_initmem",
-+	"hclk_rom",
-+	"pclk_ddrupctl",
-+	"pclk_ddrmon",
-+	"pclk_msch_noc",
-+	"pclk_stimer",
-+	"pclk_ddrphy",
-+	"pclk_acodecphy",
-+	"pclk_phy_noc",
-+	"aclk_vpu_noc",
-+	"aclk_rkvdec_noc",
-+	"hclk_vpu_noc",
-+	"hclk_rkvdec_noc",
- };
- 
- static void __init rk3228_clk_init(struct device_node *np)
++	if (!IS_ERR(rockchip->vpcie0v9)) {
++		err = regulator_enable(rockchip->vpcie0v9);
++		if (err) {
++			dev_err(dev, "fail to enable vpcie0v9 regulator\n");
++			return err;
++		}
++	}
++
+ 	clk_prepare_enable(rockchip->clk_pcie_pm);
+ 	clk_prepare_enable(rockchip->hclk_pcie);
+ 	clk_prepare_enable(rockchip->aclk_perf_pcie);
 -- 
 1.9.1
