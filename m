@@ -1,34 +1,34 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v3 0/4] make some special clk as critical_clocks
-Date: Tue,  2 May 2017 15:34:02 +0800
-Message-ID: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
+Subject: [PATCH v3 1/4] clk: rockchip: rk3036: make pclk_ddrupctl as critical_clock
+Date: Tue,  2 May 2017 15:34:03 +0800
+Message-ID: <1493710446-7203-2-git-send-email-zhangqing@rock-chips.com>
+References: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, xf@rock-chips.com
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-change in V3:
-reword the commit message,explain why the specific clocks are need to be critical.
+No driver to handle this clk, Chip design requirements for this clock to always on,
+The new document will update the description of this clock.
 
-change in v2:
-fix up some clks which have their own driver, not need to set as critical clocks
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3036.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Elaine Zhang (4):
-  clk: rockchip: rk3036: make pclk_ddrupctl as critical_clock
-  clk: rockchip: rk3228: make noc and some special clk as
-    critical_clocks
-  clk: rockchip: rk3288: make noc and some special clk as
-    critical_clocks
-  clk: rockchip: rk3368: make some special clk as critical_clocks
-
- drivers/clk/rockchip/clk-rk3036.c |  1 +
- drivers/clk/rockchip/clk-rk3228.c | 30 +++++++++++++++++++++++++++++-
- drivers/clk/rockchip/clk-rk3288.c | 14 ++++++++++----
- drivers/clk/rockchip/clk-rk3368.c |  5 ++++-
- 4 files changed, 44 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index 924f560dcf80..e97bee585b2f 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -436,6 +436,7 @@ enum rk3036_plls {
+ 	"aclk_peri",
+ 	"hclk_peri",
+ 	"pclk_peri",
++	"pclk_ddrupctl",
+ };
+ 
+ static void __init rk3036_clk_init(struct device_node *np)
 -- 
 1.9.1
-
-
