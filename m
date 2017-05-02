@@ -1,55 +1,74 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PCI: rockchip: control vpcie0v9 for system PM
-Date: Tue,  2 May 2017 15:31:23 +0800
-Message-ID: <1493710283-164065-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v4 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Tue, 2 May 2017 12:23:36 +0100
+Message-ID: <60b3c062-d4bb-6502-61be-ada830cf58f7@collabora.com>
+References: <cover.1493125299.git.guillaume.tucker@collabora.com>
+ <9349c8ae9091fbd93e9410f4cfae770ac850bf6b.1493125299.git.guillaume.tucker@collabora.com>
+ <20170428192742.pu4v4layszr6z2ot@rob-hp-laptop>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170428192742.pu4v4layszr6z2ot@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-vpcie0v9 is used for PHY, so we could disable it as
-we don't need PHY to work then in S3 if folks assign it
-DT. But we should note that there is a side effect that
-we could not support beacon wakeup if we disable vpcie0v9
-for aggressive power-saving.
+Hi Rob,
 
-Cc: Brian Norris <briannorris@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+On 28/04/17 20:27, Rob Herring wrote:
+> On Tue, Apr 25, 2017 at 02:16:16PM +0100, Guillaume Tucker wrote:
 
- drivers/pci/host/pcie-rockchip.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+>> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+>> new file mode 100644
+>> index 000000000000..547ddeceb498
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+>> @@ -0,0 +1,82 @@
+>> +ARM Mali Midgard GPU
+>> +====================
+>> +
+>> +Required properties:
+>> +
+>> +- compatible :
+>> +  * Must be one of the following:
+>> +    + "arm,mali-t60x"
+>> +    + "arm,mali-t62x"
+>
+> Don't use wildcards.
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 0e020b6..c8ca796 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1251,6 +1251,9 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
- 	clk_disable_unprepare(rockchip->aclk_perf_pcie);
- 	clk_disable_unprepare(rockchip->aclk_pcie);
- 
-+	if (!IS_ERR(rockchip->vpcie0v9))
-+		regulator_disable(rockchip->vpcie0v9);
-+
- 	return ret;
- }
- 
-@@ -1259,6 +1262,14 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
- 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
- 	int err;
- 
-+	if (!IS_ERR(rockchip->vpcie0v9)) {
-+		err = regulator_enable(rockchip->vpcie0v9);
-+		if (err) {
-+			dev_err(dev, "fail to enable vpcie0v9 regulator\n");
-+			return err;
-+		}
-+	}
-+
- 	clk_prepare_enable(rockchip->clk_pcie_pm);
- 	clk_prepare_enable(rockchip->hclk_pcie);
- 	clk_prepare_enable(rockchip->aclk_perf_pcie);
--- 
-1.9.1
+Sure, old habits die hard...  I'll fix it in patch v5.
+
+>> +    + "arm,mali-t720"
+>> +    + "arm,mali-t760"
+>> +    + "arm,mali-t820"
+>> +    + "arm,mali-t830"
+>> +    + "arm,mali-t860"
+>> +    + "arm,mali-t880"
+>> +  * And, optionally, one of the vendor specific compatible:
+>
+> IMO, these should not be optional.
+
+Well, vendor compatible strings are clearly optional for the
+Utgard GPU series for which the bindings docs were recently
+merged.  It seems that whether these should be optional or not,
+the documentation should be consistent between at least all
+similar types of devices like Midgard and Utgard GPUs.  They have
+different architectures but from a device tree point of view,
+they both have the same kind of SoC-specific integration (clocks,
+irqs, regulators...).
+
+So was this was overlooked in the Utgard case and should it
+ideally be fixed there as well as non-optional?  Or, is it OK to
+keep these optional on a second thought?
+
+>> +    + "amlogic,meson-gxm-mali"
+>> +    + "rockchip,rk3288-mali"
+
+Guillaume
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
