@@ -1,131 +1,131 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/3] ARM: dts: rockchip: Move cros-ec-sbs to rk3288-veyron-chromebook-sbs
-Date: Mon, 1 May 2017 08:49:02 -0700
-Message-ID: <CAD=FV=V_s0TE_2vUvDBYfmbt2VS0nk5gmSPLi+mh2sqGauj6dg@mail.gmail.com>
-References: <20170430183054.24563-1-contact@paulk.fr> <2369975.a4dWayqU5d@phil>
- <1493585812.6493.4.camel@paulk.fr> <2337202.q9Cdx8Nyxy@phil>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: use IDA to manage domain number if not getting it
+ from DT
+Date: Tue, 2 May 2017 14:55:47 +0800
+Message-ID: <62fc645f-d860-48e5-257d-1316b1003cd7@rock-chips.com>
+References: <1490175744-22727-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2337202.q9Cdx8Nyxy@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1490175744-22727-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Bjorn,
 
-On Mon, May 1, 2017 at 7:07 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Sonntag, 30. April 2017, 22:56:52 CEST schrieb Paul Kocialkowski:
->> Le dimanche 30 avril 2017 =C3=A0 22:37 +0200, Heiko Stuebner a =C3=A9cri=
-t :
->> > Hi Paul,
->> >
->> > Am Sonntag, 30. April 2017, 20:30:52 CEST schrieb Paul Kocialkowski:
->> > > This moves the cros-ec-sbs dtsi to a new rk3288-veyron-chromebook-sb=
-s
->> > > dtsi since it only concerns rk3288 veyron Chromebooks.
->> > >
->> > > Other Chromebooks (such as the tegra124 nyans) also have sbs batteri=
-es
->> > > and don't use this dtsi, that only makes sense when used with
->> > > rk3288-veyron-chromebook anyway.
->> >
->> > That isn't true. The gru series (rk3399-based) also uses the
->> > sbs-battery [0]. And while it is currently limited to Rockchip-based
->> > Chromebooks it is nevertheless used on more than one platform, so
->> > the probability is high that it will be used in future series as well.
->>
->> That's good to know, but as pointed out, other cros devices are using a =
-sbs
->> battery without this header, so such a generic name isn't really a good =
-fit.
+Any thought on this patch? :)
 
-It would be interesting to know if the "retry-count" ought to be the
-same across all Chromebooks.  I guess you could argue that maybe
-someone found it needed to be 10 in all "nyan" variants and needed to
-be 1 in all "veyron" variants, but it seems more likely that the
-difference is arbitrary, or that one of the two values would work for
-everyone.  It sure looks like we've just been copying values from
-device to device.  Given that all the "veyron" devices have vastly
-different batteries (and probably all the nyan ones too), it seems
-likely there ought to be one value.
-
-In terms of setting the "charger", that also could potentially be
-something that could be for all Chromebooks, or at least older ones
-that don't have their charger implemented by the type C driver.  ...or
-nyan devices could simply have a line in their dts like:
-
-&battery {
-  power-supplies =3D <&charger>;
-};
-
-
->> Note that &charger has to be defined (after my subsequent patches), whic=
-h it is
->> for devices that also include rk3288-veyron-chromebook, but not necessar=
-ily
->> others.
->>
->> Overall, I think having one -sbs dtsi file makes sense here because ther=
-e is
->> already a rk3288-veyron-chromebook dtsi that veyron chromebooks use. Tha=
-t file
->> cannot contain the battery bindings because minnie has a different one a=
-nd it
->> would be a bit silly to copy it over all devices. That definitely makes =
-sense.
->>
->> As for other devices, I don't see why we should have a separate include =
-file for
->> the battery instead of having it in the device's dts. I think this shoul=
-d be the
->> case on gru/kevin.
->>
->> Also maybe not *all* gru-based devices will turn out to use a SBS batter=
-y, so it
->> seems early to include this header in the gru dtsi.
-
-For gru devices, we've moved to a "virtual sbs battery" provided by
-the EC.  I'm not 100% positive that everything will just magically
-work and be converted in the EC if we put a non-sbs battery on a board
-with this EC feature, but I would hope we'd convert everything
-properly.
-
-
->> One last point, gru/kevin
->> currently don't define a charger, which will break my subsequent patch (=
-that is
->> however needed for the veyrons that use this file).
-
-Arguably this should be fixed.  On veyron-chromebook we just use
-"gpio-charger".  We didn't add a special charger driver w/ a property
-like "ti,external-control" since the only piece of information that
-Linux really needed from the charger was whether or not AC was
-connected.
-
-
->> To me, it seems that there's little advantage and major drawbacks in kee=
-ping
->> this file the way it is.
+On 2017/3/22 17:42, Shawn Lin wrote:
+> If not getting domain number from DT, the domain number will
+> keep increasing once doing unbind/bind RC drivers. This could
+> introduce pointless tree view of lspci as shows below:
 >
-> I don't have any set opinion right now but after looking through the
-> other uses of the sbs-battery the cros-ec-sbs.dtsi snippet really seems
-> somewhat veyron/gru-specific - especially wrt. the retry-count values.
+> -+-[0001:00]---00.0-[01]----00.0
+>   \-[0000:00]-
 >
-> What I'm not sure about is whether it is actually better to keep the incl=
-ude
-> around under a new name or just move the (rather tiny) sbs-battery node
-> into the relevant devicetrees directly, when there aren't that many users
-> anyway.
-
-I'm fine with whatever you guys choose to do here.  It's nice not to
-have copied "code", but with device tree sometimes copies are cleaner
-than trying to share something.
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> The more test we do, the lengthier it would be. The more serious
+> issue is that if attaching two hierarchies for two different domains
+> belonging to two root bridges, so when doing unbind/bind test for one
+> of them and keep the other, then the domain number would finally
+> overflow and make the two hierarchies of devices share the some domain
+> number but actually they shouldn't. So it looks like we need to invent
+> a new indexing ID mechanism to manage domain number. This patch
+> introduces idr to achieve our purpose.
+>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>
+>  drivers/pci/pci.c    | 11 +++++++----
+>  drivers/pci/remove.c |  5 +++++
+>  include/linux/pci.h  |  2 ++
+>  3 files changed, 14 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+> index a881c0d..1752ccc 100644
+> --- a/drivers/pci/pci.c
+> +++ b/drivers/pci/pci.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/kernel.h>
+>  #include <linux/delay.h>
+>  #include <linux/dmi.h>
+> +#include <linux/idr.h>
+>  #include <linux/init.h>
+>  #include <linux/of.h>
+>  #include <linux/of_pci.h>
+> @@ -5172,15 +5173,16 @@ static void pci_no_domains(void)
+>  }
+>
+>  #ifdef CONFIG_PCI_DOMAINS
+> -static atomic_t __domain_nr = ATOMIC_INIT(-1);
+> +DEFINE_IDA(__domain_nr);
+>
+>  int pci_get_new_domain_nr(void)
+>  {
+> -	return atomic_inc_return(&__domain_nr);
+> +	return ida_simple_get(&__domain_nr, 0, sizeof(u64), GFP_KERNEL);
+>  }
+>
+>  #ifdef CONFIG_PCI_DOMAINS_GENERIC
+> -static int of_pci_bus_find_domain_nr(struct device *parent)
+> +static int of_pci_bus_find_domain_nr(struct pci_bus *bus,
+> +				     struct device *parent)
+>  {
+>  	static int use_dt_domains = -1;
+>  	int domain = -1;
+> @@ -5224,12 +5226,13 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
+>  		domain = -1;
+>  	}
+>
+> +	bus->use_dt_domains = use_dt_domains;
+>  	return domain;
+>  }
+>
+>  int pci_bus_find_domain_nr(struct pci_bus *bus, struct device *parent)
+>  {
+> -	return acpi_disabled ? of_pci_bus_find_domain_nr(parent) :
+> +	return acpi_disabled ? of_pci_bus_find_domain_nr(bus, parent) :
+>  			       acpi_pci_bus_find_domain_nr(bus);
+>  }
+>  #endif
+> diff --git a/drivers/pci/remove.c b/drivers/pci/remove.c
+> index 73a03d3..ad93378 100644
+> --- a/drivers/pci/remove.c
+> +++ b/drivers/pci/remove.c
+> @@ -157,6 +157,11 @@ void pci_remove_root_bus(struct pci_bus *bus)
+>  	list_for_each_entry_safe(child, tmp,
+>  				 &bus->devices, bus_list)
+>  		pci_remove_bus_device(child);
+> +	#ifdef CONFIG_PCI_DOMAINS_GENERIC
+> +	if (!bus->use_dt_domains)
+> +		ida_simple_remove(&__domain_nr, bus->domain_nr);
+> +	#endif
+> +
+>  	pci_remove_bus(bus);
+>  	host_bridge->bus = NULL;
+>
+> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> index 6732d32..235b336 100644
+> --- a/include/linux/pci.h
+> +++ b/include/linux/pci.h
+> @@ -505,6 +505,7 @@ struct pci_bus {
+>  	unsigned char	cur_bus_speed;	/* enum pci_bus_speed */
+>  #ifdef CONFIG_PCI_DOMAINS_GENERIC
+>  	int		domain_nr;
+> +	int		use_dt_domains;
+>  #endif
+>
+>  	char		name[48];
+> @@ -1449,6 +1450,7 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+>   * configuration space.
+>   */
+>  #ifdef CONFIG_PCI_DOMAINS
+> +extern struct ida __domain_nr;
+>  extern int pci_domains_supported;
+>  int pci_get_new_domain_nr(void);
+>  #else
+>
