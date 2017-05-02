@@ -1,101 +1,56 @@
-From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/5] dt-bindings: gpu: add bindings for the ARM Mali
- Midgard GPU
-Date: Tue, 2 May 2017 15:49:29 +0100
-Message-ID: <5a058271-c840-90d1-4708-fd0c4d59950b@collabora.com>
-References: <cover.1493125299.git.guillaume.tucker@collabora.com>
- <9349c8ae9091fbd93e9410f4cfae770ac850bf6b.1493125299.git.guillaume.tucker@collabora.com>
- <20170428192742.pu4v4layszr6z2ot@rob-hp-laptop>
- <60b3c062-d4bb-6502-61be-ada830cf58f7@collabora.com>
- <CAL_JsqK8rjvFW=LFb7==Qho-MHVew-O_vAJ+M6wcFJGfVD6r1A@mail.gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: analogix_dp: Remove unused check and
+ variables
+Date: Tue, 2 May 2017 14:50:02 -0400
+Message-ID: <20170502185002.ll3gcg4y2p5astvu@art_vandelay>
+References: <1493469547-2121-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAL_JsqK8rjvFW=LFb7==Qho-MHVew-O_vAJ+M6wcFJGfVD6r1A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1493469547-2121-1-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: dbasehore@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 02/05/17 15:13, Rob Herring wrote:
-> On Tue, May 2, 2017 at 6:23 AM, Guillaume Tucker
-> <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->> Hi Rob,
->>
->> On 28/04/17 20:27, Rob Herring wrote:
->>>
->>> On Tue, Apr 25, 2017 at 02:16:16PM +0100, Guillaume Tucker wrote:
->>
->>
->>>> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>>> b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>>> new file mode 100644
->>>> index 000000000000..547ddeceb498
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>>> @@ -0,0 +1,82 @@
->>>> +ARM Mali Midgard GPU
->>>> +====================
->>>> +
->>>> +Required properties:
->>>> +
->>>> +- compatible :
->>>> +  * Must be one of the following:
->>>> +    + "arm,mali-t60x"
->>>> +    + "arm,mali-t62x"
->>>
->>>
->>> Don't use wildcards.
->>
->>
->> Sure, old habits die hard...  I'll fix it in patch v5.
->>
->>>> +    + "arm,mali-t720"
->>>> +    + "arm,mali-t760"
->>>> +    + "arm,mali-t820"
->>>> +    + "arm,mali-t830"
->>>> +    + "arm,mali-t860"
->>>> +    + "arm,mali-t880"
->>>> +  * And, optionally, one of the vendor specific compatible:
->>>
->>>
->>> IMO, these should not be optional.
->>
->>
->> Well, vendor compatible strings are clearly optional for the
->> Utgard GPU series for which the bindings docs were recently
->> merged.  It seems that whether these should be optional or not,
->> the documentation should be consistent between at least all
->> similar types of devices like Midgard and Utgard GPUs.  They have
->> different architectures but from a device tree point of view,
->> they both have the same kind of SoC-specific integration (clocks,
->> irqs, regulators...).
->
-> Clocks should not vary by SoC. There is often variation because clocks
-> get driven by same source or are not s/w controlled, but really there
-> should not be that variation. I noticed Utgard has 2 clocks. So is
-> Midgard really just 1 clock? The DT should have all the clocks listed
-> in the TRMs.
-
-I meant to say that the clock sources are different in each SoC,
-but yes the same clock input is always needed by the GPU.
-
-The TRM is confidential but to the best of my knowledge and based
-on existing device trees and the out-of-tree kernel driver, the
-Midgard GPU has only one clock input.
-
->> So was this was overlooked in the Utgard case and should it
->> ideally be fixed there as well as non-optional?  Or, is it OK to
->> keep these optional on a second thought?
->
-> Probably should be required in the Utgard case as well.
-
-OK, so I'll make the vendor compatible strings required (for
-Midgard) in patch v5.
-
-Guillaume
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gU2F0LCBBcHIgMjksIDIwMTcgYXQgMDg6Mzk6MDdQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKPiBSZW1vdmUgdW51c2VkIGNoZWNrIGFuZCB2YXJpYWJsZXMgYWZ0ZXI6Cj4gZHJtL3JvY2tj
+aGlwOiBTZXQgbGluZSBmbGFnIGNvbmZpZyByZWdpc3RlciBpbiB2b3BfY3J0Y19lbmFibGUKPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+
+IAo+IC0tLQoKQXBwbGllZCB0byAtbWlzYy1uZXh0LCB0aGFua3MuCgpTZWFuCgo+IAo+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDEwICstLS0tLS0t
+LS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCA5IGRlbGV0aW9ucygtKQo+IAo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
+aXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4g
+aW5kZXggOWJmZGJjNi4uMWJjY2Q4MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gQEAgLTEwNCwxNyArMTA0LDkgQEAgc3RhdGlj
+IHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQo+ICB7
+Cj4gIAlzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCA9Cj4gIAkJCQljb250YWluZXJfb2Yo
+d29yaywgdHlwZW9mKCpkcCksIHBzcl93b3JrKTsKPiAtCXN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9
+IGRwLT5lbmNvZGVyLmNydGM7Cj4gLQlpbnQgcHNyX3N0YXRlID0gZHAtPnBzcl9zdGF0ZTsKPiAt
+CWludCB2YWN0X2VuZDsKPiAgCWludCByZXQ7Cj4gIAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAK
+PiAtCWlmICghY3J0YykKPiAtCQlyZXR1cm47Cj4gLQo+IC0JdmFjdF9lbmQgPSBjcnRjLT5tb2Rl
+LnZ0b3RhbCAtIGNydGMtPm1vZGUudnN5bmNfc3RhcnQgKyBjcnRjLT5tb2RlLnZkaXNwbGF5Owo+
+IC0KPiAgCXJldCA9IHJvY2tjaGlwX2RybV93YWl0X3ZhY3RfZW5kKGRwLT5lbmNvZGVyLmNydGMs
+Cj4gIAkJCQkJIFBTUl9XQUlUX0xJTkVfRkxBR19USU1FT1VUX01TKTsKPiAgCWlmIChyZXQpIHsK
+PiBAQCAtMTIzLDcgKzExNSw3IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX3Bzcl93b3JrKHN0
+cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiAgCX0KPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgm
+ZHAtPnBzcl9sb2NrLCBmbGFncyk7Cj4gLQlpZiAocHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NU
+QVRFX0FDVElWRSkKPiArCWlmIChkcC0+cHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NUQVRFX0FD
+VElWRSkKPiAgCQlhbmFsb2dpeF9kcF9lbmFibGVfcHNyKGRwLT5kZXYpOwo+ICAJZWxzZQo+ICAJ
+CWFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKGRwLT5kZXYpOwo+IC0tIAo+IDIuMS40Cj4gCgotLSAK
+U2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
