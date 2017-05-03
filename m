@@ -1,56 +1,73 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: analogix_dp: Remove unused check and
- variables
-Date: Tue, 2 May 2017 14:50:02 -0400
-Message-ID: <20170502185002.ll3gcg4y2p5astvu@art_vandelay>
-References: <1493469547-2121-1-git-send-email-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1493469547-2121-1-git-send-email-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: dbasehore@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
+From: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v5 0/5] Add ARM Mali Midgard device tree bindings and gpu node for rk3288
+Date: Wed,  3 May 2017 10:56:24 +0100
+Message-ID: <cover.1493804968.git.guillaume.tucker@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBBcHIgMjksIDIwMTcgYXQgMDg6Mzk6MDdQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBSZW1vdmUgdW51c2VkIGNoZWNrIGFuZCB2YXJpYWJsZXMgYWZ0ZXI6Cj4gZHJtL3JvY2tj
-aGlwOiBTZXQgbGluZSBmbGFnIGNvbmZpZyByZWdpc3RlciBpbiB2b3BfY3J0Y19lbmFibGUKPiAK
-PiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+
-IAo+IC0tLQoKQXBwbGllZCB0byAtbWlzYy1uZXh0LCB0aGFua3MuCgpTZWFuCgo+IAo+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDEwICstLS0tLS0t
-LS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCA5IGRlbGV0aW9ucygtKQo+IAo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
-aXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4g
-aW5kZXggOWJmZGJjNi4uMWJjY2Q4MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gQEAgLTEwNCwxNyArMTA0LDkgQEAgc3RhdGlj
-IHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQo+ICB7
-Cj4gIAlzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCA9Cj4gIAkJCQljb250YWluZXJfb2Yo
-d29yaywgdHlwZW9mKCpkcCksIHBzcl93b3JrKTsKPiAtCXN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9
-IGRwLT5lbmNvZGVyLmNydGM7Cj4gLQlpbnQgcHNyX3N0YXRlID0gZHAtPnBzcl9zdGF0ZTsKPiAt
-CWludCB2YWN0X2VuZDsKPiAgCWludCByZXQ7Cj4gIAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAK
-PiAtCWlmICghY3J0YykKPiAtCQlyZXR1cm47Cj4gLQo+IC0JdmFjdF9lbmQgPSBjcnRjLT5tb2Rl
-LnZ0b3RhbCAtIGNydGMtPm1vZGUudnN5bmNfc3RhcnQgKyBjcnRjLT5tb2RlLnZkaXNwbGF5Owo+
-IC0KPiAgCXJldCA9IHJvY2tjaGlwX2RybV93YWl0X3ZhY3RfZW5kKGRwLT5lbmNvZGVyLmNydGMs
-Cj4gIAkJCQkJIFBTUl9XQUlUX0xJTkVfRkxBR19USU1FT1VUX01TKTsKPiAgCWlmIChyZXQpIHsK
-PiBAQCAtMTIzLDcgKzExNSw3IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX3Bzcl93b3JrKHN0
-cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiAgCX0KPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgm
-ZHAtPnBzcl9sb2NrLCBmbGFncyk7Cj4gLQlpZiAocHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NU
-QVRFX0FDVElWRSkKPiArCWlmIChkcC0+cHNyX3N0YXRlID09IEVEUF9WU0NfUFNSX1NUQVRFX0FD
-VElWRSkKPiAgCQlhbmFsb2dpeF9kcF9lbmFibGVfcHNyKGRwLT5kZXYpOwo+ICAJZWxzZQo+ICAJ
-CWFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKGRwLT5kZXYpOwo+IC0tIAo+IDIuMS40Cj4gCgotLSAK
-U2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The ARM Mali Midgard GPU kernel driver is only available
+out-of-tree and is not going to be merged in its current form.
+However, it would be useful to have its device tree bindings
+merged.  In particular, this would enable distributions to create
+working driver packages (dkms...) without having to patch the
+kernel.
+
+The bindings for the earlier Mali Utgard GPU family have already
+been merged, so this is essentially the same scenario but for
+newer GPUs (Mali-T604 ~ Mali-T880).
+
+This series of patches first imports the bindings from the latest
+driver release with some clean-up then adds a gpu node for the
+rk3288 SoC.  This was successfully tested on Radxa Rock2 Square,
+Firefly, Veyron Minnie and Jerry boards using Mali kernel driver
+r16p0 and r12p0 user-space binary.
+
+
+Changes since v1:
+- enabled gpu on rk3288-veyron boards
+
+Changes since v2:
+- removed "clk-names" property and "clk_mali" name
+- converted values of "interrupt-names" property to
+  lower-case: "job", "mmu" and "gpu"
+- replaced dt compatible strings with list of all Midgard GPU variants and
+  optional vendors
+- cleaned up gpu node example
+
+Changes since v3:
+- add "rockchip,rk3288-mali" vendor compatible string
+- move gpu node at the right location in rk3288.dtsi
+- use operating-points-v2 in documentation and rk3288.dtsi
+
+Changes since v4:
+- removed wildcards (mali-t60x, -t62x)
+- vendor compatible strings are not optional any more
+- example updated accordingly, based on rk3288
+
+
+Enric Balletbo i Serra (1):
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-veyron
+
+Guillaume Tucker (4):
+  dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+  ARM: dts: rockchip: add ARM Mali GPU node for rk3288
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-rock2-som
+  ARM: dts: rockchip: enable ARM Mali GPU on rk3288-firefly
+
+ .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 86 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  5 ++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |  5 ++
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  5 ++
+ arch/arm/boot/dts/rk3288.dtsi                      | 43 +++++++++++
+ 5 files changed, 144 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+
+--
+2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
