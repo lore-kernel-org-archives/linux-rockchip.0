@@ -1,58 +1,47 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 4/4] PCI: rockchip: reconfigure configuration space header type
-Date: Thu,  4 May 2017 10:24:51 +0800
-Message-ID: <1493864691-102523-4-git-send-email-shawn.lin@rock-chips.com>
-References: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: rockchip: Configure RC's MPS setting
+Date: Thu,  4 May 2017 16:40:04 +0800
+Message-ID: <1493887204-5501-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Per PCIe base specification(Revision 3.1a), section 7.5.3,
-type 1 configuration space header should be used when accessing
-PCIe switch. So we need to reconfigure the header according to
-the bus number we are accessing. Otherwise we could not visit the
-buses behind the switch.
+The default value of MPS for RC is 128 bytes, but actually
+it could support 256 bytes. So this patch fix this issue.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/pci/host/pcie-rockchip.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ drivers/pci/host/pcie-rockchip.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 76bb508..b2d7e53 100644
+index 0e020b6..a05fec5 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -380,6 +380,13 @@ static int rockchip_pcie_rd_other_conf(struct rockchip_pcie *rockchip,
- 		return PCIBIOS_BAD_REGISTER_NUMBER;
+@@ -146,6 +146,9 @@
+ #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+ #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+ #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
++#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_BASE + 0xc8)
++#define   PCIE_RC_CONFIG_DCSR_MPS_MASK		GENMASK(7, 5)
++#define   PCIE_RC_CONFIG_DCSR_MPS_256		(0x1 << 5)
+ #define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+ #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+ #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
+@@ -664,6 +667,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
  	}
  
-+	if (bus->parent->number == rockchip->root_bus_nr)
-+		rockchip_pcie_cfg_configuration_accesses(rockchip,
-+						AXI_WRAPPER_TYPE0_CFG);
-+	else
-+		rockchip_pcie_cfg_configuration_accesses(rockchip,
-+						AXI_WRAPPER_TYPE1_CFG);
++	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCSR);
++	status &= ~PCIE_RC_CONFIG_DCSR_MPS_MASK;
++	status |= PCIE_RC_CONFIG_DCSR_MPS_256;
++	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
 +
- 	if (size == 4) {
- 		*val = readl(rockchip->reg_base + busdev);
- 	} else if (size == 2) {
-@@ -404,6 +411,13 @@ static int rockchip_pcie_wr_other_conf(struct rockchip_pcie *rockchip,
- 	if (!IS_ALIGNED(busdev, size))
- 		return PCIBIOS_BAD_REGISTER_NUMBER;
+ 	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
  
-+	if (bus->parent->number == rockchip->root_bus_nr)
-+		rockchip_pcie_cfg_configuration_accesses(rockchip,
-+						AXI_WRAPPER_TYPE0_CFG);
-+	else
-+		rockchip_pcie_cfg_configuration_accesses(rockchip,
-+						AXI_WRAPPER_TYPE1_CFG);
-+
- 	if (size == 4)
- 		writel(val, rockchip->reg_base + busdev);
- 	else if (size == 2)
+ 	rockchip_pcie_write(rockchip,
 -- 
 1.9.1
