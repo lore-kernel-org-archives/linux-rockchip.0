@@ -1,52 +1,62 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 1/4] PCI: rockchip: rename rockchip_cfg_atu to rockchip_pcie_cfg_atu
-Date: Thu,  4 May 2017 10:24:48 +0800
-Message-ID: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 2/4] PCI: rockchip: move configuration accesses into rockchip_pcie_cfg_atu
+Date: Thu,  4 May 2017 10:24:49 +0800
+Message-ID: <1493864691-102523-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rename it in order to keep the name consistent with other
-functions' in pcie-rockchip.
+Configuration accesses is also part of ATU settings, so let's
+keep all of them inside rockchip_pcie_cfg_atu.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/pci/host/pcie-rockchip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index c8ca796..ac08b4c 100644
+index ac08b4c..4228629 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1156,7 +1156,7 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+@@ -664,16 +664,6 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
+ 	}
+ 
+-	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+-
+-	rockchip_pcie_write(rockchip,
+-			    (RC_REGION_0_ADDR_TRANS_L + RC_REGION_0_PASS_BITS),
+-			    PCIE_CORE_OB_REGION_ADDR0);
+-	rockchip_pcie_write(rockchip, RC_REGION_0_ADDR_TRANS_H,
+-			    PCIE_CORE_OB_REGION_ADDR1);
+-	rockchip_pcie_write(rockchip, 0x0080000a, PCIE_CORE_OB_REGION_DESC0);
+-	rockchip_pcie_write(rockchip, 0x0, PCIE_CORE_OB_REGION_DESC1);
+-
  	return 0;
  }
  
--static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
-+static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = rockchip->dev;
- 	int offset;
-@@ -1279,7 +1279,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
- 	if (err)
- 		return err;
+@@ -1163,6 +1153,17 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
+ 	int err;
+ 	int reg_no;
  
--	err = rockchip_cfg_atu(rockchip);
-+	err = rockchip_pcie_cfg_atu(rockchip);
- 	if (err)
- 		return err;
- 
-@@ -1396,7 +1396,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	err = rockchip_cfg_atu(rockchip);
-+	err = rockchip_pcie_cfg_atu(rockchip);
- 	if (err)
- 		goto err_free_res;
- 
++	/* Configuration Accesses for region 0 */
++	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
++
++	rockchip_pcie_write(rockchip,
++			    (RC_REGION_0_ADDR_TRANS_L + RC_REGION_0_PASS_BITS),
++			    PCIE_CORE_OB_REGION_ADDR0);
++	rockchip_pcie_write(rockchip, RC_REGION_0_ADDR_TRANS_H,
++			    PCIE_CORE_OB_REGION_ADDR1);
++	rockchip_pcie_write(rockchip, 0x0080000a, PCIE_CORE_OB_REGION_DESC0);
++	rockchip_pcie_write(rockchip, 0x0, PCIE_CORE_OB_REGION_DESC1);
++
+ 	for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
+ 		err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
+ 						AXI_WRAPPER_MEM_WRITE,
 -- 
 1.9.1
