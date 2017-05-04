@@ -1,97 +1,52 @@
-From: Guillaume Tucker <guillaume.tucker@collabora.com>
-Subject: [PATCH v5 2/5] ARM: dts: rockchip: add ARM Mali GPU node for rk3288
-Date: Wed,  3 May 2017 10:56:26 +0100
-Message-ID: <4b93ea388fa72c6dda0bf954104e99bcd1925267.1493804968.git.guillaume.tucker@collabora.com>
-References: <cover.1493804968.git.guillaume.tucker@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cover.1493804968.git.guillaume.tucker@collabora.com>
-In-Reply-To: <cover.1493804968.git.guillaume.tucker@collabora.com>
-References: <cover.1493804968.git.guillaume.tucker@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>
-Cc: devicetree@vger.kernel.org, Guillaume Tucker <guillaume.tucker@collabora.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, Wookey <wookey@wookware.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, John Reitan <john.reitan@arm.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 1/4] PCI: rockchip: rename rockchip_cfg_atu to rockchip_pcie_cfg_atu
+Date: Thu,  4 May 2017 10:24:48 +0800
+Message-ID: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add Mali GPU device tree node for the rk3288 SoC, with devfreq
-opp table.
+Rename it in order to keep the name consistent with other
+functions' in pcie-rockchip.
 
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Signed-off-by: Guillaume Tucker <guillaume.tucker@collabora.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 43 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index df8a0dbe9d91..35969041eae2 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -43,6 +43,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/clock/rk3288-cru.h>
-+#include <dt-bindings/power/rk3288-power.h>
- #include <dt-bindings/thermal/thermal.h>
- #include <dt-bindings/power/rk3288-power.h>
- #include <dt-bindings/soc/rockchip,boot-mode.h>
-@@ -1117,6 +1118,48 @@
- 		};
- 	};
+ drivers/pci/host/pcie-rockchip.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index c8ca796..ac08b4c 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1156,7 +1156,7 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+ 	return 0;
+ }
  
-+	gpu: mali@ffa30000 {
-+		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
-+		reg = <0xffa30000 0x10000>;
-+		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "job", "mmu", "gpu";
-+		clocks = <&cru ACLK_GPU>;
-+		operating-points-v2 = <&gpu_opp_table>;
-+		power-domains = <&power RK3288_PD_GPU>;
-+		status = "disabled";
-+	};
-+
-+	gpu_opp_table: opp_table0 {
-+		compatible = "operating-points-v2";
-+
-+		opp@100000000 {
-+			opp-hz = /bits/ 64 <100000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp@200000000 {
-+			opp-hz = /bits/ 64 <200000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp@300000000 {
-+			opp-hz = /bits/ 64 <300000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp@400000000 {
-+			opp-hz = /bits/ 64 <400000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+		opp@500000000 {
-+			opp-hz = /bits/ 64 <500000000>;
-+			opp-microvolt = <1200000>;
-+		};
-+		opp@600000000 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <1250000>;
-+		};
-+	};
-+
- 	qos_gpu_r: qos@ffaa0000 {
- 		compatible = "syscon";
- 		reg = <0xffaa0000 0x20>;
+-static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
++static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
+ {
+ 	struct device *dev = rockchip->dev;
+ 	int offset;
+@@ -1279,7 +1279,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+ 	if (err)
+ 		return err;
+ 
+-	err = rockchip_cfg_atu(rockchip);
++	err = rockchip_pcie_cfg_atu(rockchip);
+ 	if (err)
+ 		return err;
+ 
+@@ -1396,7 +1396,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	err = rockchip_cfg_atu(rockchip);
++	err = rockchip_pcie_cfg_atu(rockchip);
+ 	if (err)
+ 		goto err_free_res;
+ 
 -- 
-2.11.0
+1.9.1
