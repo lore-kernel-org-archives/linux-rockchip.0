@@ -1,59 +1,90 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: rockchip-dw-mshc: add optional
- rockchip,default-num-phases
-Date: Fri, 5 May 2017 14:44:48 -0500
-Message-ID: <20170505194448.hhre4mls2t3makzf@rob-hp-laptop>
-References: <1492592434-81312-1-git-send-email-shawn.lin@rock-chips.com>
- <1492592434-81312-2-git-send-email-shawn.lin@rock-chips.com>
- <20170428133403.mmdvtp3ohff6v7gh@rob-hp-laptop>
- <8785b011-cec6-1556-5c96-a462182e8d85@rock-chips.com>
+From: Randy Li <ayaka@soulik.info>
+Subject: [PATCH] ARM: dts: rockchip: add adc button for Firefly
+Date: Sun,  7 May 2017 22:26:27 +0800
+Message-ID: <20170507142627.5307-1-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <8785b011-cec6-1556-5c96-a462182e8d85@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: devicetree@vger.kernel.org
+Cc: mark.rutland@arm.com, heiko@sntech.de, Randy Li <ayaka@soulik.info>, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 02, 2017 at 03:03:03PM +0800, Shawn Lin wrote:
-> Hi Rob,
-> 
-> 在 2017/4/28 21:34, Rob Herring 写道:
-> > On Wed, Apr 19, 2017 at 05:00:33PM +0800, Shawn Lin wrote:
-> > > By default, dw_mmc-rockchip will execute tuning for each degree.
-> > > So we won't miss every point of the good sample windows. However,
-> > > probably the phases are linear inside the good sample window.
-> > > Actually we don't need to do tuning for each degree so that we could
-> > > save some time, for instance, probe the driver or resume from S3.
-> > > 
-> > > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > > ---
-> > > 
-> > >  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 4 ++++
-> > >  1 file changed, 4 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> > > index 520d61d..ea47ec0 100644
-> > > --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> > > +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> > > @@ -31,6 +31,10 @@ Optional Properties:
-> > >    probing, low speeds or in case where all phases work at tuning time.
-> > >    If not specified 0 deg will be used.
-> > > 
-> > > +* rockchip,default-num-phases: The default number of times that the host
-> > > +  execute tuning when needed. If not specified, the host will do tuning
-> > > +  for 360 times, namely tuning for each degree.
-> > 
-> > How is it default when you specify it? I would think default here is
-> > 360.
-> > 
-> 
-> I don't get your point here. Do you mean the name, default-num-phases,
-> isn't correct, so I need another one?
+The only adc button connected to adc input is recovery button.
 
-Right, as we usually say "if not present, the default value is X."
+Signed-off-by: Randy Li <ayaka@soulik.info>
+---
+ arch/arm/boot/dts/rk3288-firefly-reload.dts | 17 +++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi       | 13 +++++++++++++
+ 2 files changed, 30 insertions(+)
 
-Rob
+diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+index d0b3204a..ed1baa8 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
++++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+@@ -48,6 +48,19 @@
+ 	model = "Firefly-RK3288-reload";
+ 	compatible = "firefly,firefly-rk3288-reload", "rockchip,rk3288";
+ 
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++
++		button-recovery {
++			label = "Recovery";
++			linux,code = <KEY_BACK>;
++			press-threshold-microvolt = <0>;
++		};
++	};
++
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+ 
+@@ -246,6 +259,10 @@
+ 	status = "okay";
+ };
+ 
++&saradc {
++	status = "okay";
++};
++
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index 10793ac..63b8b2d 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -49,6 +49,19 @@
+ 		reg = <0 0x80000000>;
+ 	};
+ 
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++
++		button-recovery {
++			label = "Recovery";
++			linux,code = <KEY_BACK>;
++			press-threshold-microvolt = <0>;
++		};
++	};
++
+ 	dovdd_1v8: dovdd-1v8-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "dovdd_1v8";
+-- 
+2.9.3
