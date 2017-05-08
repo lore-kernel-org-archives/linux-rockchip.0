@@ -1,194 +1,62 @@
-From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH v2] ARM: dts: rockchip: add eDP panel support for Firefly
-Date: Mon,  8 May 2017 23:58:33 +0800
-Message-ID: <20170508155833.19652-1-ayaka@soulik.info>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Mon, 8 May 2017 11:18:34 -0500
+Message-ID: <20170508161834.hwsjvtjf7voplkum@rob-hp-laptop>
+References: <cover.1493804968.git.guillaume.tucker@collabora.com>
+ <bebe578ba130de5fa320ca7c6427b2fae83d61d7.1493804968.git.guillaume.tucker@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <bebe578ba130de5fa320ca7c6427b2fae83d61d7.1493804968.git.guillaume.tucker@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guillaume Tucker <guillaume.tucker@collabora.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, John Reitan <john.reitan@arm.com>, Wookey <wookey@wookware.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the supporting to the eDP panel sold by
-the T-CHIP for the Firefly RK3288. I assign the VOP lite
-for the eDP panel and VOP big to HDMI, as the HDMI supports
-4K resolution. With a different VOP device, eDP panel
-and HDMI could display a different contents.
+On Wed, May 03, 2017 at 10:56:25AM +0100, Guillaume Tucker wrote:
+> The ARM Mali Midgard GPU family is present in a number of SoCs
+> from many different vendors such as Samsung Exynos and Rockchip.
+> 
+> Import the device tree bindings documentation from the r16p0
+> release of the Mali Midgard GPU kernel driver:
+> 
+>   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/mali-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz
+> 
+> Remove the copyright and GPL licence header as deemed not necessary.
+> 
+> Redesign the "compatible" property strings to list all the Mali
+> Midgard GPU types and add vendor specific ones.
+> 
+> Drop the "clock-names" property as the Mali Midgard GPU uses only one
+> clock (the driver now needs to call clk_get with NULL).
+> 
+> Convert the "interrupt-names" property values to lower-case: "job",
+> "mmu" and "gpu".
+> 
+> Replace the deprecated "operating-points" optional property with
+> "operating-points-v2".
+> 
+> Omit the following optional properties in this initial version as they
+> are only used in very specific cases:
+> 
+>   * snoop_enable_smc
+>   * snoop_disable_smc
+>   * jm_config
+>   * power_model
+>   * system-coherency
+>   * ipa-model
+> 
+> Update the example accordingly to reflect all these changes, based on
+> rk3288 mali-t760.
+> 
+> CC: John Reitan <john.reitan@arm.com>
+> Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Guillaume Tucker <guillaume.tucker@collabora.com>
+> ---
+>  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 86 ++++++++++++++++++++++
+>  1 file changed, 86 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
 
-The InvenSense MPU6050 sensor at the botton of the panel
-is also enabled.
-
-The Firefly RK3288 Reload use a different GPIO pin to enable
-the power of the eDP panel.
-
-Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-firefly.dtsi | 112 ++++++++++++++++++++++++++++++++++
- 1 file changed, 112 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 436878b..db22316 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -62,6 +62,62 @@
- 		};
- 	};
- 
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		brightness-levels = <
-+			  3   4   5   6   7
-+			  8   9  10  11  12  13  14  15
-+			 16  17  18  19  20  21  22  23
-+			 24  25  26  27  28  29  30  31
-+			 32  33  34  35  36  37  38  39
-+			 40  41  42  43  44  45  46  47
-+			 48  49  50  51  52  53  54  55
-+			 56  57  58  59  60  61  62  63
-+			 64  65  66  67  68  69  70  71
-+			 72  73  74  75  76  77  78  79
-+			 80  81  82  83  84  85  86  87
-+			 88  89  90  91  92  93  94  95
-+			 96  97  98  99 100 101 102 103
-+			104 105 106 107 108 109 110 111
-+			112 113 114 115 116 117 118 119
-+			120 121 122 123 124 125 126 127
-+			128 129 130 131 132 133 134 135
-+			136 137 138 139 140 141 142 143
-+			144 145 146 147 148 149 150 151
-+			152 153 154 155 156 157 158 159
-+			160 161 162 163 164 165 166 167
-+			168 169 170 171 172 173 174 175
-+			176 177 178 179 180 181 182 183
-+			184 185 186 187 188 189 190 191
-+			192 193 194 195 196 197 198 199
-+			200 201 202 203 204 205 206 207
-+			208 209 210 211 212 213 214 215
-+			216 217 218 219 220 221 222 223
-+			224 225 226 227 228 229 230 231
-+			232 233 234 235 236 237 238 239
-+			240 241 242 243 244 245 246 247
-+			248 249 250 251 252 253 254 255>;
-+		default-brightness-level = <180>;
-+		pwms = <&pwm1 0 25000 0>;
-+		pwm-names = "backlight";
-+		power-supply = <&vcc_sys>;
-+	};
-+
-+	panel: panel {
-+		compatible ="lg,lp079qx1-sp0v";
-+		power-supply = <&vcc_sys>;
-+		backlight = <&backlight>;
-+		enable-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
-+
-+		ports {
-+			panel_in: port {
-+				panel_in_edp: endpoint {
-+					remote-endpoint = <&edp_out_panel>;
-+				};
-+			};
-+		};
-+	};
-+
- 	dovdd_1v8: dovdd-1v8-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "dovdd_1v8";
-@@ -203,6 +259,32 @@
- 	cpu0-supply = <&vdd_cpu>;
- };
- 
-+&edp {
-+	vcc-supply = <&vdd_10>;
-+	vccio-supply = <&vcc_18>;
-+	status = "okay";
-+
-+	ports {
-+		edp_out: port@1 {
-+			reg = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			edp_out_panel: endpoint {
-+				reg = <0>;
-+				remote-endpoint = <&panel_in_edp>;
-+			};
-+		};
-+	};
-+};
-+
-+&edp_in {
-+	/delete-node/ endpoint@0;
-+};
-+
-+&edp_phy {
-+	status = "okay";
-+};
-+
- &emmc {
- 	bus-width = <8>;
- 	cap-mmc-highspeed;
-@@ -240,8 +322,14 @@
- &hdmi {
- 	ddc-i2c-bus = <&i2c5>;
- 	status = "okay";
-+
-+};
-+
-+&hdmi_in {
-+	/delete-node/ endpoint@1;
- };
- 
-+
- &i2c0 {
- 	clock-frequency = <400000>;
- 	status = "okay";
-@@ -385,6 +473,22 @@
- 
- &i2c1 {
- 	status = "okay";
-+
-+	mpu6050@68 {
-+		compatible = "invensense,mpu6050";
-+		reg = <0x68>;
-+		interrupt-parent = <&gpio5>;
-+		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
-+		mount-matrix = "0",
-+			       "1",
-+			       "0",
-+			       "-1",
-+			       "0",
-+			       "0",
-+			       "0",
-+			       "0",
-+			       "-1";
-+	};
- };
- 
- &i2c2 {
-@@ -601,6 +705,10 @@
- 	status = "okay";
- };
- 
-+&vopb_out {
-+	/delete-node/ endpoint@1;
-+};
-+
- &vopl {
- 	status = "okay";
- };
-@@ -609,6 +717,10 @@
- 	status = "okay";
- };
- 
-+&vopl_out {
-+	/delete-node/ endpoint@0;
-+};
-+
- &wdt {
- 	status = "okay";
- };
--- 
-2.9.3
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Reviewed-by: Rob Herring <robh@kernel.org>
