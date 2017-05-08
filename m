@@ -1,269 +1,194 @@
-From: Paul Kocialkowski <contact@paulk.fr>
-Subject: Re: [PATCH 1/3] ARM: dts: rockchip: Move cros-ec-sbs to
- rk3288-veyron-chromebook-sbs
-Date: Sun, 07 May 2017 20:00:42 +0200
-Message-ID: <1494180042.13734.4.camel@paulk.fr>
-References: <20170430183054.24563-1-contact@paulk.fr>
- <2369975.a4dWayqU5d@phil> <1493585812.6493.4.camel@paulk.fr>
- <2337202.q9Cdx8Nyxy@phil>
- <CAD=FV=V_s0TE_2vUvDBYfmbt2VS0nk5gmSPLi+mh2sqGauj6dg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7450367966115346280=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAD=FV=V_s0TE_2vUvDBYfmbt2VS0nk5gmSPLi+mh2sqGauj6dg@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [PATCH v2] ARM: dts: rockchip: add eDP panel support for Firefly
+Date: Mon,  8 May 2017 23:58:33 +0800
+Message-ID: <20170508155833.19652-1-ayaka@soulik.info>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+This patch adds the supporting to the eDP panel sold by
+the T-CHIP for the Firefly RK3288. I assign the VOP lite
+for the eDP panel and VOP big to HDMI, as the HDMI supports
+4K resolution. With a different VOP device, eDP panel
+and HDMI could display a different contents.
 
---===============7450367966115346280==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-Cve6L6VZRSNqUV9dfccG"
+The InvenSense MPU6050 sensor at the botton of the panel
+is also enabled.
 
+The Firefly RK3288 Reload use a different GPIO pin to enable
+the power of the eDP panel.
 
---=-Cve6L6VZRSNqUV9dfccG
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-firefly.dtsi | 112 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-Hi,
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index 436878b..db22316 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -62,6 +62,62 @@
+ 		};
+ 	};
+ 
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <
++			  3   4   5   6   7
++			  8   9  10  11  12  13  14  15
++			 16  17  18  19  20  21  22  23
++			 24  25  26  27  28  29  30  31
++			 32  33  34  35  36  37  38  39
++			 40  41  42  43  44  45  46  47
++			 48  49  50  51  52  53  54  55
++			 56  57  58  59  60  61  62  63
++			 64  65  66  67  68  69  70  71
++			 72  73  74  75  76  77  78  79
++			 80  81  82  83  84  85  86  87
++			 88  89  90  91  92  93  94  95
++			 96  97  98  99 100 101 102 103
++			104 105 106 107 108 109 110 111
++			112 113 114 115 116 117 118 119
++			120 121 122 123 124 125 126 127
++			128 129 130 131 132 133 134 135
++			136 137 138 139 140 141 142 143
++			144 145 146 147 148 149 150 151
++			152 153 154 155 156 157 158 159
++			160 161 162 163 164 165 166 167
++			168 169 170 171 172 173 174 175
++			176 177 178 179 180 181 182 183
++			184 185 186 187 188 189 190 191
++			192 193 194 195 196 197 198 199
++			200 201 202 203 204 205 206 207
++			208 209 210 211 212 213 214 215
++			216 217 218 219 220 221 222 223
++			224 225 226 227 228 229 230 231
++			232 233 234 235 236 237 238 239
++			240 241 242 243 244 245 246 247
++			248 249 250 251 252 253 254 255>;
++		default-brightness-level = <180>;
++		pwms = <&pwm1 0 25000 0>;
++		pwm-names = "backlight";
++		power-supply = <&vcc_sys>;
++	};
++
++	panel: panel {
++		compatible ="lg,lp079qx1-sp0v";
++		power-supply = <&vcc_sys>;
++		backlight = <&backlight>;
++		enable-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
++
++		ports {
++			panel_in: port {
++				panel_in_edp: endpoint {
++					remote-endpoint = <&edp_out_panel>;
++				};
++			};
++		};
++	};
++
+ 	dovdd_1v8: dovdd-1v8-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "dovdd_1v8";
+@@ -203,6 +259,32 @@
+ 	cpu0-supply = <&vdd_cpu>;
+ };
+ 
++&edp {
++	vcc-supply = <&vdd_10>;
++	vccio-supply = <&vcc_18>;
++	status = "okay";
++
++	ports {
++		edp_out: port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			edp_out_panel: endpoint {
++				reg = <0>;
++				remote-endpoint = <&panel_in_edp>;
++			};
++		};
++	};
++};
++
++&edp_in {
++	/delete-node/ endpoint@0;
++};
++
++&edp_phy {
++	status = "okay";
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+@@ -240,8 +322,14 @@
+ &hdmi {
+ 	ddc-i2c-bus = <&i2c5>;
+ 	status = "okay";
++
++};
++
++&hdmi_in {
++	/delete-node/ endpoint@1;
+ };
+ 
++
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+@@ -385,6 +473,22 @@
+ 
+ &i2c1 {
+ 	status = "okay";
++
++	mpu6050@68 {
++		compatible = "invensense,mpu6050";
++		reg = <0x68>;
++		interrupt-parent = <&gpio5>;
++		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
++		mount-matrix = "0",
++			       "1",
++			       "0",
++			       "-1",
++			       "0",
++			       "0",
++			       "0",
++			       "0",
++			       "-1";
++	};
+ };
+ 
+ &i2c2 {
+@@ -601,6 +705,10 @@
+ 	status = "okay";
+ };
+ 
++&vopb_out {
++	/delete-node/ endpoint@1;
++};
++
+ &vopl {
+ 	status = "okay";
+ };
+@@ -609,6 +717,10 @@
+ 	status = "okay";
+ };
+ 
++&vopl_out {
++	/delete-node/ endpoint@0;
++};
++
+ &wdt {
+ 	status = "okay";
+ };
+-- 
+2.9.3
 
-Le lundi 01 mai 2017 =C3=A0 08:49 -0700, Doug Anderson a =C3=A9crit=C2=A0:
-> On Mon, May 1, 2017 at 7:07 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> > Am Sonntag, 30. April 2017, 22:56:52 CEST schrieb Paul Kocialkowski:
-> > > Le dimanche 30 avril 2017 =C3=A0 22:37 +0200, Heiko Stuebner a =C3=A9=
-crit :
-> > > > Hi Paul,
-> > > >=20
-> > > > Am Sonntag, 30. April 2017, 20:30:52 CEST schrieb Paul Kocialkowski=
-:
-> > > > > This moves the cros-ec-sbs dtsi to a new rk3288-veyron-chromebook=
--sbs
-> > > > > dtsi since it only concerns rk3288 veyron Chromebooks.
-> > > > >=20
-> > > > > Other Chromebooks (such as the tegra124 nyans) also have sbs batt=
-eries
-> > > > > and don't use this dtsi, that only makes sense when used with
-> > > > > rk3288-veyron-chromebook anyway.
-> > > >=20
-> > > > That isn't true. The gru series (rk3399-based) also uses the
-> > > > sbs-battery [0]. And while it is currently limited to Rockchip-base=
-d
-> > > > Chromebooks it is nevertheless used on more than one platform, so
-> > > > the probability is high that it will be used in future series as we=
-ll.
-> > >=20
-> > > That's good to know, but as pointed out, other cros devices are using=
- a
-> > > sbs
-> > > battery without this header, so such a generic name isn't really a go=
-od
-> > > fit.
->=20
-> It would be interesting to know if the "retry-count" ought to be the
-> same across all Chromebooks.=C2=A0=C2=A0I guess you could argue that mayb=
-e
-> someone found it needed to be 10 in all "nyan" variants and needed to
-> be 1 in all "veyron" variants, but it seems more likely that the
-> difference is arbitrary, or that one of the two values would work for
-> everyone.=C2=A0=C2=A0It sure looks like we've just been copying values fr=
-om
-> device to device.=C2=A0=C2=A0Given that all the "veyron" devices have vas=
-tly
-> different batteries (and probably all the nyan ones too), it seems
-> likely there ought to be one value.
-
-Well, the retry-count is a maximum number of retries to detect a status cha=
-nge
-on external power connection/disconnection. From my experience, it seems th=
-at
-nyans do indeed more retries to detect the change than veyrons, on average.
-
-I don't think setting this value to 1 is very reasonable (in the end, that'=
-s a
-number of seconds), because power supply status changes tend to take a few
-seconds to reflect on the battery status.
-
-I think setting a high value (like 10) would always work and either way, th=
-e
-status detection mechanism stops itself as soon as a change is detected (it
-turns out this is not a good idea for bq27xxx batteries, because they go fr=
-om
-charging to full in the first seconds after AC connection instead of direct=
-ly
-reporting full, when full), but let's assume this is okay for sbs (and mayb=
-e
-change it later).
-
-> In terms of setting the "charger", that also could potentially be
-> something that could be for all Chromebooks, or at least older ones
-> that don't have their charger implemented by the type C driver.=C2=A0=C2=
-=A0...or
-> nyan devices could simply have a line in their dts like:
->=20
-> &battery {
-> =C2=A0 power-supplies =3D <&charger>;
-> };
-
-That's true, but I think it makes as much sense to keep the whole binding.
-
-In my opinion, the only reason to have a separate dtsi for this binding is =
-that
-veyrons have another dtsi for chromebooks where this binding should be. How=
-ever,
-it cannot be there because of minnie using another battery IC.
-
-So my approach here would be to make it common for devices where other majo=
-r
-parts are also common, so we can avoid duplication when most of the device-=
-tree
-is already common. In cases where most of the device-tree is specific to a
-device, I think the binding should be duplicated. This is done already for =
-lots
-of other components that could be made (somewhat) common anyway.
-
->=20
-> > > Note that &charger has to be defined (after my subsequent patches), w=
-hich
-> > > it is
-> > > for devices that also include rk3288-veyron-chromebook, but not
-> > > necessarily
-> > > others.
-> > >=20
-> > > Overall, I think having one -sbs dtsi file makes sense here because t=
-here
-> > > is
-> > > already a rk3288-veyron-chromebook dtsi that veyron chromebooks use. =
-That
-> > > file
-> > > cannot contain the battery bindings because minnie has a different on=
-e and
-> > > it
-> > > would be a bit silly to copy it over all devices. That definitely mak=
-es
-> > > sense.
-> > >=20
-> > > As for other devices, I don't see why we should have a separate inclu=
-de
-> > > file for
-> > > the battery instead of having it in the device's dts. I think this sh=
-ould
-> > > be the
-> > > case on gru/kevin.
-> > >=20
-> > > Also maybe not *all* gru-based devices will turn out to use a SBS bat=
-tery,
-> > > so it
-> > > seems early to include this header in the gru dtsi.
->=20
-> For gru devices, we've moved to a "virtual sbs battery" provided by
-> the EC.=C2=A0=C2=A0I'm not 100% positive that everything will just magica=
-lly
-> work and be converted in the EC if we put a non-sbs battery on a board
-> with this EC feature, but I would hope we'd convert everything
-> properly.
-
-Interesting and good to know!
-
-> > > One last point, gru/kevin
-> > > currently don't define a charger, which will break my subsequent patc=
-h
-> > > (that is
-> > > however needed for the veyrons that use this file).
->=20
-> Arguably this should be fixed.=C2=A0=C2=A0On veyron-chromebook we just us=
-e
-> "gpio-charger".=C2=A0=C2=A0We didn't add a special charger driver w/ a pr=
-operty
-> like "ti,external-control" since the only piece of information that
-> Linux really needed from the charger was whether or not AC was
-> connected.
-
-Thanks for taking that choice, it indeed makes things easier on the kernel =
-side
-whith no drawbacks.
-
->=20
-> > > To me, it seems that there's little advantage and major drawbacks in
-> > > keeping
-> > > this file the way it is.
-> >=20
-> > I don't have any set opinion right now but after looking through the
-> > other uses of the sbs-battery the cros-ec-sbs.dtsi snippet really seems
-> > somewhat veyron/gru-specific - especially wrt. the retry-count values.
-> >=20
-> > What I'm not sure about is whether it is actually better to keep the in=
-clude
-> > around under a new name or just move the (rather tiny) sbs-battery node
-> > into the relevant devicetrees directly, when there aren't that many use=
-rs
-> > anyway.
->=20
-> I'm fine with whatever you guys choose to do here.=C2=A0=C2=A0It's nice n=
-ot to
-> have copied "code", but with device tree sometimes copies are cleaner
-> than trying to share something.
-
-I definitely agree. I think copies are a good fit here because overall, we =
-have
-enough disparity in the possible configurations among different SoC platfor=
-ms to
-justify having one per device. So I believe it would make sense to make tha=
-t
-binding common *among the same SoC family*.
-
-Cheers,
-
---=20
-Paul Kocialkowski, developer of free digital technology and hardware suppor=
-t
-
-Website: https://www.paulk.fr/
-Coding blog: https://code.paulk.fr/
-Git repositories: https://git.paulk.fr/ https://git.code.paulk.fr/
---=-Cve6L6VZRSNqUV9dfccG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAlkPYMoACgkQhP3B6o/u
-lQyovw/+N57+IxxDSdhIjGVW8MJjj/RN701JgYjPk5KqmmrWQADqwtMU/qwJIPiU
-CFOtJcrZ7vTm/SluWzG20qWV3o8z8tvr5bOyQjTUI8HAWXmfo9WbYlrUjE1L9NzY
-6NTTvFAvYkbKdKrGkTNHcMC9BWmhlRmAbIXHtFFREmjENqE2603W0AW3HjVMbffs
-83YXXucC9ynWBg5jo2hwPCv7dYardgBnPsQy6rRFvr8dOb+089/61B3u1eanzxFR
-YDCDTjKUksIfRT5p6xUU/qtaH9AnaGeaU+l61AUKvX3lkxz28sg5a9kLMEo0VQ/4
-hheUi35WglPwe41Q9CqkNntRXtJ8ZYiG3MSVMO62Y0Vm9bUF5FEW+fHG9MigvRs6
-DwQWVusnOlUf9H2PmWSSsfCGanTduzZVva/6XMSH6/vNDLHkfO55RnE5IYGbUMpo
-7TiIqHKeuUy1169KfixoU/c/lP3cycAsFt1zthT4/Fo7Lr75b8SCdGskEJJkHTRN
-ek2DCWTY0kybBWQbFlBFB0kQ8GDdoKFPPbAeeUx1Cac5aZVHxQ0tVp2jZIXKU+2x
-t7jBvzGAMm140t4gOhr2aPpf4XVgdhijWdjT736/tvZYXmmPSlQwvU8NrBYdtD1B
-Yh2o3cjgwrcL4UdzGPf9Bz0CN72tlf1D/ST8PBF/tH+X3B+cu0g=
-=/E/r
------END PGP SIGNATURE-----
-
---=-Cve6L6VZRSNqUV9dfccG--
-
-
-
---===============7450367966115346280==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============7450367966115346280==--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
