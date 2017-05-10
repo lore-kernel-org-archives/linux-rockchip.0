@@ -1,64 +1,97 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 3/4] ARM: dts: rockchip: use pin constants to describe IO in pinctrl
-Date: Wed, 10 May 2017 15:55:37 +0200
-Message-ID: <3502373.tsXPg1D3p7@phil>
-References: <1491981044-24635-1-git-send-email-kever.yang@rock-chips.com> <3966386.YQGqDXjHSp@phil> <c98e2eaf-3e92-a6b6-5367-df31d0614d5c@rock-chips.com>
+From: Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v5 0/5] Add ARM Mali Midgard device tree bindings and gpu
+ node for rk3288
+Date: Wed, 10 May 2017 15:52:05 +0100
+Message-ID: <20170510145205.GJ27127@mail.wookware.org>
+References: <cover.1493804968.git.guillaume.tucker@collabora.com>
+ <12996903.t3AZceNVOh@diego>
+ <b63475e9-21f6-5995-90b6-e0eeae8144ab@rock-chips.com>
+ <b43fc703-3c39-58e9-6006-1aa7f9d0cea6@collabora.com>
+ <ddec5773-43ef-a4c3-2280-8f0c5b1f1c4d@rock-chips.com>
+ <425541fd-e648-1db7-9c31-13d2d4f094b4@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <c98e2eaf-3e92-a6b6-5367-df31d0614d5c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Roge
+Content-Type: multipart/mixed; boundary="===============7091948103703605405=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <425541fd-e648-1db7-9c31-13d2d4f094b4-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
 
-Am Mittwoch, 10. Mai 2017, 09:25:25 CEST schrieb Kever Yang:
-> On 05/10/2017 05:43 AM, Heiko Stuebner wrote:
-> > Am Mittwoch, 12. April 2017, 15:10:43 CEST schrieb Kever Yang:
-> >> Use command below to replace the IO naming in pinctrl:
-> >> sed -i -e 's/ 31 RK_FUNC_/ RK_PD7 RK_FUNC_/' arch/arm/boot/dts/rk*
-> >> sed -i -e 's/ 0 RK_FUNC_/ RK_PA0 RK_FUNC_/'
-> >> arch/arm64/boot/dts/rockchip/*
-> >>
-> >> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > I'm not sure, if we really want to mass-convert each and every pin.
-> > All pins in use right now seem to be working and it hides other
-> > history/blame for these entries.
-> 
-> Do you mean you want to leave the code already there as is, and new
-> code using MACRO define for IO?
-> 
-> This sounds reasonable, I can agree on this. I send this patch because I 
-> see there is
-> a patch from Andy using MACRO for many IOs, but not complete enough
-> and my patch suppose to make all Rockchip IO has update.
-
-As I said, I'm really not sure. On the one hand it's nicer and it will
-be easier to check devicetree against schematics, but mass-converting
-them makes me anxious. Andy did convert the rk3288-popmetal
-board which is somewhat sparsely used I think. If anything breaks with
-Firefly, Rock, Veyron etc we might make a lot of people unhappy :-) .
-
-But having boards use both paradigms at the same time (pin number and
-names) could also be confusing.
-
-> > In any case though, this needs to be split into separate arm32/arm64
-> > patches.
-
-Maybe we could split not only on the arm/arm64 border, but also on
-something like soc-level (rk3188, rk3288, rk3368). That way the amount
-of changes per patch would go down making review easier :-) .
+--===============7091948103703605405==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="yr/DzoowOgTDcSCF"
+Content-Disposition: inline
 
 
-Just to make sure you saw it, I've also had to drop patch2 again (see
-separate response from yesterday).
+--yr/DzoowOgTDcSCF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2017-05-10 11:10 +0100, Guillaume Tucker wrote:
+>=20
+> On a side note, it would be fantastic to get all this available
+> in Debian packages :)
+
+There are prototype debian packages here:
+https://git.linaro.org/people/wookey/mali/mali-dkms.git/
+https://git.linaro.org/people/wookey/mali/mali-drivers.git/
+
+Which I'm very happy to get feedback on if people try them with
+guillaume's DTB patches.
+
+Quite hacky at the moment, but I want to prove they work at all before
+tarting up the packaging.
+
+Wookey
+--=20
+Principal hats:  Linaro, Debian, Wookware, ARM
+http://wookware.org/
+
+--yr/DzoowOgTDcSCF
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJZEykVAAoJEPuGMlGob55HvM8QAKCGtiMZ79EdD3PvfVxTZDyU
+7f4OvpwNFPfMrDSRPIjIFYA75qKQUJxjds4n1xrxvWnKPUsCSAJcZ5pnmm85aJQT
+voT1Sxjmq/KLC8/HC0CGuBAjq5YORVWUz0zccP2hHS0wiLlop2f+s1BYbwqjIpFM
+ERVr3PaVAkBJlw5ib6My45pbaqvA5oFrhWxytqvlRIqjPDOD1Vx7dglpP4Z5njL2
+MntVfCLBWjYjkmH8q/+u5X1kmGx8EqtiLAg9rePKseo7O8gjobUcc0yXMveqjUqS
+yoM1Q3AI4UicWm8wN7/P/C+XQfbp1APJK4dcEyxVzm1j2dfTDh4BguWtfDYjb6iW
+BChXO8chJFkTflnGL/EigcF3je/UP9heSSw8Ye3hFJksbuMtJTF3AxD8VEEu2uZS
+9dKwrg5mClJvzd6tbmLTbSo5txIayKbbOVpWrh72n2Dl7WjCKIY+bg2ViTMk0f3r
+yHSqsCfOKXlhAkYu/XGuFiFyHwWqp6smaU5vL7kp8j4GLGJfOkCod9wYkiPEXSEV
+dX6HRfiLf0tF+ubto7RboWn1cR2x+SRwAU4C0cNt1J1EnkEQSauaZdkVnj1srP9t
+SauhPc2h+NnnNWa8QDk2F3IRUW13YLH13dz104RsHdCTipievaskPuNTwbk9QILI
+AbnyR/jb0ge+zq8t37Ot
+=plZu
+-----END PGP SIGNATURE-----
+
+--yr/DzoowOgTDcSCF--
 
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--===============7091948103703605405==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7091948103703605405==--
