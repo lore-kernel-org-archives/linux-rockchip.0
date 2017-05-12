@@ -1,94 +1,69 @@
-From: Vivek Gautam <vivek.gautam@codeaurora.org>
-Subject: Re: [PATCH v5 3/3] phy: Group vendor specific phy drivers
-Date: Fri, 12 May 2017 15:07:01 +0530
-Message-ID: <8143c6b8-aaac-557b-98c1-00c957f3fcb6@codeaurora.org>
-References: <1494485262-18995-1-git-send-email-vivek.gautam@codeaurora.org>
- <1494485262-18995-3-git-send-email-vivek.gautam@codeaurora.org>
- <5fe76bcc-5ff7-0bf1-7fdd-c141211d86dc@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5fe76bcc-5ff7-0bf1-7fdd-c141211d86dc@ti.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org
-Cc: linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Stephen Boyd <stephen.boyd@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-arm-msm@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-omap@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Guenter Roeck <linux@roeck-us.net>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 1/3] SoC: es8328-i2c: Add compatible for ES8323
+Date: Fri, 12 May 2017 15:22:17 +0200
+Message-ID: <20170512132227.24916-2-romain.perier@collabora.com>
+References: <20170512132227.24916-1-romain.perier@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170512132227.24916-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+This commit adds a compatible string for everest,es8323. This is an
+audio codec that is compatible with es8328 and can be found for example
+on the Firefly-RK3288 board.
 
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
 
-On 05/12/2017 02:15 PM, Kishon Vijay Abraham I wrote:
-> Hi Vivek,
->
-> On Thursday 11 May 2017 12:17 PM, Vivek Gautam wrote:
->> Adding vendor specific directories in phy to group
->> phy drivers under their respective vendor umbrella.
->>
->> Also updated the MAINTAINERS file to reflect the correct
->> directory structure for phy drivers.
->>
->> Signed-off-by: Vivek Gautam <vivek.gautam@codeaurora.org>
->> Acked-by: Heiko Stuebner <heiko@sntech.de>
->> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
->> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
->> Acked-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
->> Reviewed-by: Jaehoon Chung <jh80.chung@samsung.com>
->> Cc: Kishon Vijay Abraham I <kishon@ti.com>
->> Cc: David S. Miller <davem@davemloft.net>
->> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
->> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
->> Cc: Guenter Roeck <linux@roeck-us.net>
->> Cc: Heiko Stuebner <heiko@sntech.de>
->> Cc: Viresh Kumar <viresh.kumar@linaro.org>
->> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
->> Cc: Chen-Yu Tsai <wens@csie.org>
->> Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
->> Cc: Krzysztof Kozlowski <krzk@kernel.org>
->> Cc: Jaehoon Chung <jh80.chung@samsung.com>
->> Cc: Stephen Boyd <stephen.boyd@linaro.org>
->> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linux-arm-msm@vger.kernel.org
->> Cc: linux-kernel@vger.kernel.org
->> Cc: linux-omap@vger.kernel.org
->> Cc: linux-renesas-soc@vger.kernel.org
->> Cc: linux-rockchip@lists.infradead.org
->> Cc: linux-samsung-soc@vger.kernel.org
->> Cc: linux-usb@vger.kernel.org
->> ---
->>
->> Changes since v4:
->>   - Reprepared the patch based on latest torvalds/master.
->>   - Added new directory for amlogic, since there's a new patch [1]
->>     coming in for amlogic platforms.
-> I don't prefer placeholder directories but this is not a placeholder directory
-> since phy-meson8b-usb2.c is already added in amlogic.
+Changes in v3: None
+Changes in v2: None
 
-Right, since phy-meson8b-usb2.c was already there and phy-meson-gxl-usb2.c
-is also coming, i decided to add this directory.
-> Btw, thank you for sending this patch. Will queue this once -rc1 is tagged.
+ Documentation/devicetree/bindings/sound/es8328.txt | 5 ++++-
+ sound/soc/codecs/es8328-i2c.c                      | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-Cool. Thanks Kishon.
-
-Regards
-Vivek
-
->
-> Cheers
-> Kishon
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-arm-msm" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-
+diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
+index 33fbf058c997..86b6d6e99732 100644
+--- a/Documentation/devicetree/bindings/sound/es8328.txt
++++ b/Documentation/devicetree/bindings/sound/es8328.txt
+@@ -4,7 +4,10 @@ This device supports both I2C and SPI.
+ 
+ Required properties:
+ 
+-  - compatible  : Should be "everest,es8328" or "everest,es8388"
++  - compatible  : Should be one of the following:
++	- "everest,es8323"
++	- "everest,es8328"
++	- "everest,es8388"
+   - DVDD-supply : Regulator providing digital core supply voltage 1.8 - 3.6V
+   - AVDD-supply : Regulator providing analog supply voltage 3.3V
+   - PVDD-supply : Regulator providing digital IO supply voltage 1.8 - 3.6V
+diff --git a/sound/soc/codecs/es8328-i2c.c b/sound/soc/codecs/es8328-i2c.c
+index 318ab28c5351..be3f03c35137 100644
+--- a/sound/soc/codecs/es8328-i2c.c
++++ b/sound/soc/codecs/es8328-i2c.c
+@@ -19,6 +19,7 @@
+ #include "es8328.h"
+ 
+ static const struct i2c_device_id es8328_id[] = {
++	{ "es8323", 0 },
+ 	{ "es8328", 0 },
+ 	{ "es8388", 0 },
+ 	{ }
+@@ -26,6 +27,7 @@ static const struct i2c_device_id es8328_id[] = {
+ MODULE_DEVICE_TABLE(i2c, es8328_id);
+ 
+ static const struct of_device_id es8328_of_match[] = {
++	{ .compatible = "everest,es8323", },
+ 	{ .compatible = "everest,es8328", },
+ 	{ .compatible = "everest,es8388", },
+ 	{ }
 -- 
-The Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+2.11.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
