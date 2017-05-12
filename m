@@ -1,109 +1,56 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 3/3] arm: dts: Add support for ES8323 to the Firefly-RK3288
-Date: Fri, 12 May 2017 15:22:27 +0200
-Message-ID: <20170512132227.24916-12-romain.perier@collabora.com>
-References: <20170512132227.24916-1-romain.perier@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170512132227.24916-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Ian Campbell <ijc@hellion.org.uk>
+Subject: [PATCH] arm64: dts: rockchip: Drop explicit "include/" prefix from
+ #include
+Date: Sat, 13 May 2017 00:53:57 +0100
+Message-ID: <20170512235357.19486-1-ijc@hellion.org.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc@hellion.org.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device found at
-address 0x10. It also adds the definition for connecting the Rockchip
-I2S to the es8323 analog output.
+It not necessary and counter to how all the other files are done.
 
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+It also happens to break the build in the split device tree repo
+https://git.kernel.org/pub/scm/linux/kernel/git/devicetree/devicetree-rebasing.git/
+
+Signed-off-by: Ian Campbell <ijc@hellion.org.uk>
+Cc: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will.deacon@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 ---
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes in v3:
-- Renamed sound_i2s to sound-i2s
-- Re-ordered properties in the right order
-- Splitted headphone into phone_ctl and hp_det
-
-Changes in v2:
-- Add the pinctrl headphone, that was previously in conflict with otp pins
-- Renamed sound_es8323 to sound_i2s
-- Added the property rockchip,routing
-
- arch/arm/boot/dts/rk3288-firefly.dtsi | 38 +++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 10793ac18599..f80b17f0d1bf 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -103,6 +103,19 @@
- 		};
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index 658bb9dc9dfd..7bd31066399b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -44,7 +44,7 @@
  
-+	sound-i2s {
-+		compatible = "rockchip,rk3288-hdmi-analog";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&phone_ctl>, <&hp_det>;
-+		rockchip,audio-codec = <&es8323>;
-+		rockchip,hp-det-gpios = <&gpio7 15 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-en-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,model = "I2S";
-+		rockchip,routing = "Analog", "LOUT2",
-+				   "Analog", "ROUT2";
-+	};
-+
- 	vbat_wl: vcc_sys: vsys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -371,6 +384,17 @@
+ /dts-v1/;
+ #include "rk3399-gru.dtsi"
+-#include <include/dt-bindings/input/linux-event-codes.h>
++#include <dt-bindings/input/linux-event-codes.h>
  
- &i2c2 {
- 	status = "okay";
-+
-+	es8323: es8323@10 {
-+		compatible = "everest,es8323", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_33>;
-+		DVDD-supply = <&vcca_33>;
-+		HPVDD-supply = <&vcca_33>;
-+		PVDD-supply = <&vcca_33>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
- };
- 
- &i2c4 {
-@@ -381,6 +405,10 @@
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &io_domains {
- 	status = "okay";
- 
-@@ -483,6 +511,16 @@
- 		};
- 	};
- 
-+	headphone {
-+		hp_det: hp-det {
-+			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		phone_ctl: phone-ctl {
-+			rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	usb_host {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
+ /*
+  * Kevin-specific things
 -- 
 2.11.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
