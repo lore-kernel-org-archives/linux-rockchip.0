@@ -1,53 +1,67 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] nvmem: rockchip-efuse: add support for rk322x-efuse
-Date: Fri, 12 May 2017 10:44:20 +0800
-Message-ID: <1494557060-105230-1-git-send-email-finley.xiao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH v5 3/3] phy: Group vendor specific phy drivers
+Date: Fri, 12 May 2017 14:15:52 +0530
+Message-ID: <5fe76bcc-5ff7-0bf1-7fdd-c141211d86dc@ti.com>
+References: <1494485262-18995-1-git-send-email-vivek.gautam@codeaurora.org>
+ <1494485262-18995-3-git-send-email-vivek.gautam@codeaurora.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <1494485262-18995-3-git-send-email-vivek.gautam@codeaurora.org>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Vivek Gautam <vivek.gautam@codeaurora.org>, linux-kernel@vger.kernel.org
+Cc: "David S. Miller" <davem@davemloft.net>, Geert Uytterhoeven <geert+renesas@glider.be>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Guenter Roeck <linux@roeck-us.net>, Heiko Stuebner <heiko@sntech.de>, Viresh Kumar <viresh.kumar@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>, Stephen Boyd <stephen.boyd@linaro.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kerne
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the necessary data for handling eFuse on the rk322x.
+Hi Vivek,
 
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 1 +
- drivers/nvmem/rockchip-efuse.c                             | 4 ++++
- 2 files changed, 5 insertions(+)
+On Thursday 11 May 2017 12:17 PM, Vivek Gautam wrote:
+> Adding vendor specific directories in phy to group
+> phy drivers under their respective vendor umbrella.
+> 
+> Also updated the MAINTAINERS file to reflect the correct
+> directory structure for phy drivers.
+> 
+> Signed-off-by: Vivek Gautam <vivek.gautam@codeaurora.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Acked-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Reviewed-by: Jaehoon Chung <jh80.chung@samsung.com>
+> Cc: Kishon Vijay Abraham I <kishon@ti.com>
+> Cc: David S. Miller <davem@davemloft.net>
+> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Cc: Guenter Roeck <linux@roeck-us.net>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Jaehoon Chung <jh80.chung@samsung.com>
+> Cc: Stephen Boyd <stephen.boyd@linaro.org>
+> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-arm-msm@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-omap@vger.kernel.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-samsung-soc@vger.kernel.org
+> Cc: linux-usb@vger.kernel.org
+> ---
+> 
+> Changes since v4:
+>  - Reprepared the patch based on latest torvalds/master.
+>  - Added new directory for amlogic, since there's a new patch [1]
+>    coming in for amlogic platforms.
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-index 94aeeea..194926f 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-@@ -4,6 +4,7 @@ Required properties:
- - compatible: Should be one of the following.
-   - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
-   - "rockchip,rk3188-efuse" - for RK3188 SoCs.
-+  - "rockchip,rk322x-efuse" - for RK322x SoCs.
-   - "rockchip,rk3288-efuse" - for RK3288 SoCs.
-   - "rockchip,rk3399-efuse" - for RK3399 SoCs.
- - reg: Should contain the registers location and exact eFuse size
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 423907b..a0d4ede 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -170,6 +170,10 @@ static const struct of_device_id rockchip_efuse_match[] = {
- 		.data = (void *)&rockchip_rk3288_efuse_read,
- 	},
- 	{
-+		.compatible = "rockchip,rk322x-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
- 		.compatible = "rockchip,rk3288-efuse",
- 		.data = (void *)&rockchip_rk3288_efuse_read,
- 	},
--- 
-2.7.4
+I don't prefer placeholder directories but this is not a placeholder directory
+since phy-meson8b-usb2.c is already added in amlogic.
 
+Btw, thank you for sending this patch. Will queue this once -rc1 is tagged.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Cheers
+Kishon
