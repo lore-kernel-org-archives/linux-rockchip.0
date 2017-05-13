@@ -1,56 +1,57 @@
-From: Ian Campbell <ijc@hellion.org.uk>
-Subject: [PATCH] arm64: dts: rockchip: Drop explicit "include/" prefix from
- #include
-Date: Sat, 13 May 2017 00:53:57 +0100
-Message-ID: <20170512235357.19486-1-ijc@hellion.org.uk>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Drop explicit "include/" prefix
+ from #include
+Date: Fri, 12 May 2017 17:53:36 -0700
+Message-ID: <20170513005335.GB23103@google.com>
+References: <20170512235357.19486-1-ijc@hellion.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc@hellion.org.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170512235357.19486-1-ijc@hellion.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ian Campbell <ijc@hellion.org.uk>
+Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It not necessary and counter to how all the other files are done.
+On Sat, May 13, 2017 at 12:53:57AM +0100, Ian Campbell wrote:
+> It not necessary and counter to how all the other files are done.
+> 
+> It also happens to break the build in the split device tree repo
+> https://git.kernel.org/pub/scm/linux/kernel/git/devicetree/devicetree-rebasing.git/
+> 
+> Signed-off-by: Ian Campbell <ijc@hellion.org.uk>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: Catalin Marinas <catalin.marinas@arm.com>
+> Cc: Will Deacon <will.deacon@arm.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> index 658bb9dc9dfd..7bd31066399b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -44,7 +44,7 @@
+>  
+>  /dts-v1/;
+>  #include "rk3399-gru.dtsi"
+> -#include <include/dt-bindings/input/linux-event-codes.h>
+> +#include <dt-bindings/input/linux-event-codes.h>
 
-It also happens to break the build in the split device tree repo
-https://git.kernel.org/pub/scm/linux/kernel/git/devicetree/devicetree-rebasing.git/
+Whoops, didn't catch that when porting this to mainline. Thanks!
 
-Signed-off-by: Ian Campbell <ijc@hellion.org.uk>
-Cc: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Will Deacon <will.deacon@arm.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
----
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Brian Norris <briannorris@chromium.org>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 658bb9dc9dfd..7bd31066399b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -44,7 +44,7 @@
- 
- /dts-v1/;
- #include "rk3399-gru.dtsi"
--#include <include/dt-bindings/input/linux-event-codes.h>
-+#include <dt-bindings/input/linux-event-codes.h>
- 
- /*
-  * Kevin-specific things
--- 
-2.11.0
+>  
+>  /*
+>   * Kevin-specific things
+> -- 
+> 2.11.0
+> 
