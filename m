@@ -1,20 +1,30 @@
-From: Brian Norris <briannorris@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH] arm64: dts: rockchip: Drop explicit "include/" prefix
  from #include
-Date: Fri, 12 May 2017 17:53:36 -0700
-Message-ID: <20170513005335.GB23103@google.com>
+Date: Sat, 13 May 2017 17:43:40 +0200
+Message-ID: <3956756.APWK7IdRuP@phil>
 References: <20170512235357.19486-1-ijc@hellion.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20170512235357.19486-1-ijc@hellion.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Ian Campbell <ijc@hellion.org.uk>
-Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, May 13, 2017 at 12:53:57AM +0100, Ian Campbell wrote:
+Hi Ian,
+
+Am Samstag, 13. Mai 2017, 00:53:57 CEST schrieb Ian Campbell:
 > It not necessary and counter to how all the other files are done.
 > 
 > It also happens to break the build in the split device tree repo
@@ -30,28 +40,18 @@ On Sat, May 13, 2017 at 12:53:57AM +0100, Ian Campbell wrote:
 > Cc: linux-arm-kernel@lists.infradead.org
 > Cc: linux-rockchip@lists.infradead.org
 > Cc: linux-kernel@vger.kernel.org
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> index 658bb9dc9dfd..7bd31066399b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> @@ -44,7 +44,7 @@
->  
->  /dts-v1/;
->  #include "rk3399-gru.dtsi"
-> -#include <include/dt-bindings/input/linux-event-codes.h>
-> +#include <dt-bindings/input/linux-event-codes.h>
 
-Whoops, didn't catch that when porting this to mainline. Thanks!
+that glitch also breaks Olof's patch [0] fixing a depmod symlink
+recursion in that it creates
 
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+../arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts:47:57: fatal error: include/dt-bindings/input/linux-event-codes.h: File or directory not found
+ #include <include/dt-bindings/input/linux-event-codes.h>
 
->  
->  /*
->   * Kevin-specific things
-> -- 
-> 2.11.0
-> 
+with only Olof's patch applied. So I guess both patches should go
+together with this one in front, so to be on the safe side, if some else
+is going to apply both:
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+
+[0] https://www.spinics.net/lists/arm-kernel/msg580846.html
