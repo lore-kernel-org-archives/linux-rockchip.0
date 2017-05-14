@@ -1,57 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Drop explicit "include/" prefix
- from #include
-Date: Sat, 13 May 2017 17:43:40 +0200
-Message-ID: <3956756.APWK7IdRuP@phil>
-References: <20170512235357.19486-1-ijc@hellion.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170512235357.19486-1-ijc@hellion.org.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ian Campbell <ijc@hellion.org.uk>
-Cc: Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: Randy Li <ayaka@soulik.info>
+Subject: [PATCH] clk: rockchip: rk3288: prefer vdpu for vcodec clock source
+Date: Sun, 14 May 2017 14:50:09 +0800
+Message-ID: <20170514065009.3047-1-ayaka@soulik.info>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, myy@miouyouyou.fr, Randy Li <ayaka@soulik.info>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ian,
+The RK3288 CRU system clock solution would suggest use
+the vdpu clock source for the VPU(aclk_vpu and hclk_vpu).
 
-Am Samstag, 13. Mai 2017, 00:53:57 CEST schrieb Ian Campbell:
-> It not necessary and counter to how all the other files are done.
-> 
-> It also happens to break the build in the split device tree repo
-> https://git.kernel.org/pub/scm/linux/kernel/git/devicetree/devicetree-rebasing.git/
-> 
-> Signed-off-by: Ian Campbell <ijc@hellion.org.uk>
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will.deacon@arm.com>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
+Reading the registers of VPU(both VEPU and VDPU) would become all high
+when the vepu is used as the clock source. It may be a bug in the SoC,
+not sure whether it is fixed at RK3288W.
 
-that glitch also breaks Olof's patch [0] fixing a depmod symlink
-recursion in that it creates
+Signed-off-by: Randy Li <ayaka@soulik.info>
+---
+ drivers/clk/rockchip/clk-rk3288.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-../arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts:47:57: fatal error: include/dt-bindings/input/linux-event-codes.h: File or directory not found
- #include <include/dt-bindings/input/linux-event-codes.h>
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 68ba7d4..886b249 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -198,7 +198,7 @@ PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
+ PNAME(mux_edp_24m_p)	= { "ext_edp_24m", "xin24m" };
+ PNAME(mux_tspout_p)	= { "cpll", "gpll", "npll", "xin27m" };
+ 
+-PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vepu", "aclk_vdpu" };
++PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vdpu", "aclk_vepu" };
+ PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1_480m", "sclk_otgphy2_480m",
+ 				    "sclk_otgphy0_480m" };
+ PNAME(mux_hsicphy480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+-- 
+2.9.3
 
-with only Olof's patch applied. So I guess both patches should go
-together with this one in front, so to be on the safe side, if some else
-is going to apply both:
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-[0] https://www.spinics.net/lists/arm-kernel/msg580846.html
