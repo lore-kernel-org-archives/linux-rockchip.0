@@ -1,19 +1,19 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/3] clk: rockchip: add clock-ids for rk3228 clocks
-Date: Wed, 17 May 2017 20:01:54 +0200
-Message-ID: <5036368.VFT7UKpczZ@phil>
-References: <1493362967-4040-1-git-send-email-zhangqing@rock-chips.com> <1493362967-4040-3-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 3/3] clk: rockchip: export rk3228 clocks ID
+Date: Wed, 17 May 2017 20:02:15 +0200
+Message-ID: <2457466.LJaA1o3HHY@phil>
+References: <1493362967-4040-1-git-send-email-zhangqing@rock-chips.com> <1493362967-4040-4-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1493362967-4040-3-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1493362967-4040-4-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: Elaine Zhang <zhangqing@rock-chips.com>
 Cc: xf@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 28. April 2017, 15:02:46 CEST schrieb Elaine Zhang:
+Am Freitag, 28. April 2017, 15:02:47 CEST schrieb Elaine Zhang:
 > This patch exports related BUS/VPU/RGA/HDCP/IEP/TSP/WIFI/
 > VIO/USB/EFUSE/GPU/CRYPTO clocks for dts reference.
 > 
