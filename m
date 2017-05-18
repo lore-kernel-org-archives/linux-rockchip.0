@@ -1,153 +1,33 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] PCI: use IDA to manage domain number if not getting it from DT
-Date: Thu, 18 May 2017 09:47:17 +0800
-Message-ID: <1495072037-135458-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 0/3] clk: rockchip: support clk controller for RK3128 SoC
+Date: Thu, 18 May 2017 10:16:56 +0800
+Message-ID: <1495073819-4160-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, xf@rock-chips.com
+Cc: linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-If not getting domain number from DT, the domain number will
-keep increasing once doing unbind/bind RC drivers. This could
-introduce pointless tree view of lspci as shows below:
+The driver and clk ID\SRST ID it's also applies to the RK3126 SoC.
 
--+-[0001:00]---00.0-[01]----00.0
-  \-[0000:00]-
+change in V2:
+rename the rk312x to rk3128. 
 
-The more test we do, the lengthier it would be. The more serious
-issue is that if attaching two hierarchies for two different domains
-belonging to two root bridges, so when doing unbind/bind test for one
-of them and keep the other, then the domain number would finally
-overflow and make the two hierarchies of devices share the some domain
-number but actually they shouldn't. So it looks like we need to invent
-a new indexing ID mechanism to manage domain number. This patch
-introduces idr to achieve our purpose.
+Elaine Zhang (3):
+  clk: rockchip: add dt-binding header for rk3128
+  dt-bindings: add bindings for rk3128 clock controller
+  clk: rockchip: add clock controller for rk3128
 
-Cc: Brian Norris <briannorris@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+ .../bindings/clock/rockchip,rk3128-cru.txt         |  56 ++
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-rk3128.c                  | 612 +++++++++++++++++++++
+ include/dt-bindings/clock/rk3128-cru.h             | 281 ++++++++++
+ 4 files changed, 950 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3128.c
+ create mode 100644 include/dt-bindings/clock/rk3128-cru.h
 
----
-
-Changes in v2:
-- add a remove wrapper
-- rename use_dt_domains to ida_domain and set this bit
-in pci_get_new_domain_nr and test it in the remove wrapper.
-
- drivers/pci/pci.c    | 23 +++++++++++++++++------
- drivers/pci/remove.c |  2 ++
- include/linux/pci.h  |  9 +++++++--
- 3 files changed, 26 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index b01bd5b..8affda5 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -11,6 +11,7 @@
- #include <linux/kernel.h>
- #include <linux/delay.h>
- #include <linux/dmi.h>
-+#include <linux/idr.h>
- #include <linux/init.h>
- #include <linux/of.h>
- #include <linux/of_pci.h>
-@@ -5340,19 +5341,29 @@ static void pci_no_domains(void)
- }
- 
- #ifdef CONFIG_PCI_DOMAINS
--static atomic_t __domain_nr = ATOMIC_INIT(-1);
-+DEFINE_IDA(__domain_nr);
- 
--int pci_get_new_domain_nr(void)
-+int pci_get_new_domain_nr(struct pci_bus *bus)
- {
--	return atomic_inc_return(&__domain_nr);
-+	bus->ida_domain = true;
-+	return ida_simple_get(&__domain_nr, 0, sizeof(u64), GFP_KERNEL);
-+}
-+
-+void pci_put_old_domain_nr(struct pci_bus *bus)
-+{
-+	if (bus->ida_domain)
-+		ida_simple_remove(&__domain_nr, bus->domain_nr);
- }
- 
- #ifdef CONFIG_PCI_DOMAINS_GENERIC
--static int of_pci_bus_find_domain_nr(struct device *parent)
-+static int of_pci_bus_find_domain_nr(struct pci_bus *bus,
-+				     struct device *parent)
- {
- 	static int use_dt_domains = -1;
- 	int domain = -1;
- 
-+	bus->ida_domain = false;
-+
- 	if (parent)
- 		domain = of_get_pci_domain_nr(parent->of_node);
- 	/*
-@@ -5385,7 +5396,7 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
- 		use_dt_domains = 1;
- 	} else if (domain < 0 && use_dt_domains != 1) {
- 		use_dt_domains = 0;
--		domain = pci_get_new_domain_nr();
-+		domain = pci_get_new_domain_nr(bus);
- 	} else {
- 		dev_err(parent, "Node %s has inconsistent \"linux,pci-domain\" property in DT\n",
- 			parent->of_node->full_name);
-@@ -5397,7 +5408,7 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
- 
- int pci_bus_find_domain_nr(struct pci_bus *bus, struct device *parent)
- {
--	return acpi_disabled ? of_pci_bus_find_domain_nr(parent) :
-+	return acpi_disabled ? of_pci_bus_find_domain_nr(bus, parent) :
- 			       acpi_pci_bus_find_domain_nr(bus);
- }
- #endif
-diff --git a/drivers/pci/remove.c b/drivers/pci/remove.c
-index 73a03d3..1bbbb37 100644
---- a/drivers/pci/remove.c
-+++ b/drivers/pci/remove.c
-@@ -157,6 +157,8 @@ void pci_remove_root_bus(struct pci_bus *bus)
- 	list_for_each_entry_safe(child, tmp,
- 				 &bus->devices, bus_list)
- 		pci_remove_bus_device(child);
-+
-+	pci_put_old_domain_nr(bus);
- 	pci_remove_bus(bus);
- 	host_bridge->bus = NULL;
- 
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 33c2b0b..d4f6fb8 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -513,6 +513,7 @@ struct pci_bus {
- 	unsigned char	cur_bus_speed;	/* enum pci_bus_speed */
- #ifdef CONFIG_PCI_DOMAINS_GENERIC
- 	int		domain_nr;
-+	bool		ida_domain;	/* get domain number from IDA */
- #endif
- 
- 	char		name[48];
-@@ -1445,13 +1446,17 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
-  * configuration space.
-  */
- #ifdef CONFIG_PCI_DOMAINS
-+extern struct ida __domain_nr;
- extern int pci_domains_supported;
--int pci_get_new_domain_nr(void);
-+int pci_get_new_domain_nr(struct pci_bus *bus);
-+void pci_put_old_domain_nr(struct pci_bus *bus);
- #else
- enum { pci_domains_supported = 0 };
- static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
- static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
--static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-+static inline int pci_get_new_domain_nr(struct pci_bus *bus)
-+{ return -ENOSYS; }
-+static inline void pci_put_old_domain_nr(struct pci_bus *bus) { }
- #endif /* CONFIG_PCI_DOMAINS */
- 
- /*
 -- 
 1.9.1
+
+
