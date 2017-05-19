@@ -1,144 +1,73 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: Boundary between pinctrl and peripheral settings
-Date: Fri, 19 May 2017 11:13:17 +0200
-Message-ID: <5983290.MocaVmHgjo@phil>
-References: <1719598.F3JUalFtig@phil> <4202128.TMlxifI24f@diego>
- <a865024c-98d4-4349-6a33-e29fbc3cd7a7@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 2/3] dt-bindings: add bindings for rk3128 clock controller
+Date: Fri, 19 May 2017 12:31:18 +0200
+Message-ID: <3487841.3AV9ZOvb54@phil>
+References: <1495073819-4160-1-git-send-email-zhangqing@rock-chips.com> <1495073819-4160-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a865024c-98d4-4349-6a33-e29fbc3cd7a7-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1495073819-4160-3-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: xf@rock-chips.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2aWQsCgpBbSBEb25uZXJzdGFnLCAxOC4gTWFpIDIwMTcsIDIyOjM5OjM0IENFU1Qgc2No
-cmllYiBEYXZpZC5XdToKPiBUaGUgYXR0YWNoZWQgZmlsZSBpcyB0aGUgbGlzdCBmb3IgKHBpbiwg
-cGluZnVuYykgYW5kIHRoZWlyIG93biBncmYtc2V0dGluZy4KCnRoYW5rcyBmb3IgY29sbGVjdGlu
-ZyB0aGlzIHdlYWx0aCBvZiBpbmZvcm1hdGlvbi4gCk9uZSBzbWFsbCB0aGluZywgaXQgc2VlbXMg
-bGlrZSBpdCBpcyBtaXNzaW5nIHRoZSBwY2llX2Nsa3JlcV9zZWwgYml0IHRoYXQKc2VlbXMgdG8g
-c3dpdGNoIHRoZSBjbGtyZXEgc2lnbmFsIGJldHdlZW4gZ3BpbzItZDIgYW5kIGdwaW80ZDA/CgoK
-PiBJZiBhIHBpbi1yb3V0aW5nIGNvbnRhaW5zIGEgZmV3IHBpbnMgYXMgZ21hYywgbmVlZCBhbGwg
-dGhlIHBpbnMgKHBpbiwgCj4gcGluZnVuYykgdG8gYmUgY29uZmlndXJlZCBjb3JyZWN0bHkgZnJv
-bSBEVCwgdGhlbiB0aGUgY29ycmVzcG9uZGluZyBHUkYgCj4gc2V0dGluZyBpcyBjb25maWd1cmVk
-Lgo+IElmIGNvbmZpZ3VyZWQgZ3JmLXNldHRpbmcgcGVyIHBpbiwgYXNzdW1pbmcgdGhhdCBvbmUg
-b2YgdGhlIHBpbidzIAo+IHBpbmZ1bmMgaXMgd3JvbmcsIGl0IG1heSBjYXVzZSBwaW4tcm91dGlu
-ZyBub3QgdG8gYmUgZWZmZWN0aXZlIG9yIHdyb25nLgoKSSBzdGlsbCB0aGluayBpdCBzaG91bGQg
-YmUgZW5vdWdoIHRvIHdhdGNoIGZvciBvbmUgcGluIG9mIGEgc3BlY2lmYyBncm91cAp0byBiZSBz
-ZXQgdG8gaXRzIHNwZWNpYWwgcGlubXV4IGZ1bmN0aW9uLiBJZiB0aGUgcGlubXV4IHNldHRpbmcg
-aXMgd3JvbmcKZm9yIHRoYXQgcGluIHRoZSBpcCBibG9jayB3b24ndCB3b3JrIGNvcnJlY3RseSBh
-bnl3YXkgKGluZGVwZW5kZW50IG9mCml0cyBpbm5lci1zb2Mgcm91dGluZykuCgpPdXIgcGluY3Ry
-bCBncm91cHMgYWxzbyBhcmUgZGVmaW5lZCBvbiBhIGdsb2JhbCBwZXItc29jIGxldmVsCihyazMz
-OTkuZHRzaSBldGMpIGFuZCB0aHVzIGlmIHRoZXkgYXJlIHJlYWxseSB3cm9uZywgYSBsb3Qgb2Yg
-cGVvcGxlIHdpbGwKY29tcGxhaW4gYW55d2F5IDstKSAuCgpTbyBmb3IgZXhhbXBsZSBqdXN0IHRh
-a2UgCnVhcnQyZGJnYV9zaW4sIHVhcnQyZGJnYl9zaW4sIHVhcnQyZGJnY19zaW4gb24gcmszMzk5
-CmFzIHBpbnMgdG8gd2F0Y2gsIHNvbWUgdGhpbmcgbGlrZQoKc3RydWN0IHJrMzM5OV9waW5yb3V0
-aW5nW10gPSB7Cgl7CgkJLyogdWFydDJkYmdhICovCgkJLmJhbmsgPSA0LAoJCS5waW4gPSA4LAoJ
-CS5mdW5jID0gMiwKCQkucm91dGVfb2Zmc2V0ID0gMHgwZTIxYywKCQkucm91dGVfdmFsID0gKDMg
-PDwgKDEwKzE2KSksCgl9LCB7CgkJLyogdWFydDJkYmdiICovCgkJLmJhbmsgPSA0LAoJCS5waW4g
-PSAxNiwKCQkuZnVuYyA9IDIsCgkJLnJvdXRlX29mZnNldCA9IDB4MGUyMWMsCgkJLnJvdXRlX3Zh
-bCA9ICgzIDw8ICgxMCsxNikgfCAxIDw8IDEwKSwKCX0sCi4uLgp9OwoKVGhhdCB3YXkgeW91IGNh
-biBqdXN0IGhvb2sgaXQgaW50byB0aGUgcm9ja2NoaXBfc2V0X211eCBmdW5jdGlvbiBzaW1pbGFy
-CnRvIHRoZSByZWNhbGMgc3R1ZmYsIHdpdGhvdXQgdG8gbXVjaCB0cm91YmxlLgoKCj4gU28gaSB0
-aGluayB0aGUgc21hbGxlc3QgY2VsbCBpcyBhIGdyb3VwLCB3aGljaCBjb250YWlucyB0aGUgcGlu
-cyBmb3IgdGhlIAo+IHBpbi1yb3V0aW5nLgoKVGhvdWdoIHRoYXQgY3JlYXRlcyBtb3JlIEFCSSBi
-ZXR3ZWVuIGtlcm5lbCBhbmQgZGV2aWNldHJlZSAocGluZ3JvdXAKbmFtZXMpLCB3aGljaCB3aWxs
-IG1vc3QgbGlrZWx5IGJpdGUgdXMgc29tZSB0aW1lIGluIHRoZSBmdXR1cmUuIEFsc28gSSdkCmxp
-a2UgdG8ga2VlcCB0aGVzZSBkZXBlbmRlbmNpZXMgYXMgbWluaW1hbCBhcyBwb3NzaWJsZSwgYXMg
-ZGVwZW5kaW5nIG9uCmhvdyBtdWNoIG1vcmUgZnVubnkgaW52ZW50aW9ucyB3ZSBhY2N1bXVsYXRl
-LCB3ZSBtaWdodCB3YW50IHRvIHJlc3RydWN0dXJlCihvciBzcGxpdCkgdGhlIGRyaXZlciBhdCBz
-b21lIGxhdGVyIHBvaW50IC0gd2l0aG91dCBicmVha2luZyBkZXZpY2V0cmVlcy4KCgpIZWlrbwoK
-Cj4g5ZyoIDIwMTcvNS8xOCAxNjo0OCwgSGVpa28gU3TDvGJuZXIg5YaZ6YGTOgo+ID4gSGkgS2V2
-ZXIsIERhdmlkLAo+ID4KPiA+IEFtIERvbm5lcnN0YWcsIDE4LiBNYWkgMjAxNywgMTY6MjE6MDkg
-Q0VTVCBzY2hyaWViIEtldmVyIFlhbmc6Cj4gPj4gSGkgSGVpa28sIExpbnVzLAo+ID4+ICAgICAg
-SXMgdGhlcmUgYW55IG5ld3MgdG8gaGFuZGxlIHRoaXMga2luZCBvZiBJT01VWD8KPiA+Cj4gPiBJ
-IHdhcyB0YWxraW5nIHdpdGggRGF2aWQgV3UgYWJvdXQgdGhhdCBhIHNob3J0IHdoaWxlIGFnbyBh
-cyB3ZWxsIDotKSAuCj4gPgo+ID4gRnJvbSB3aGF0IEkndmUgaGVhcmVkLCBpbiB0aGUgZnV0dXJl
-IHNvY3MgbWF5IGJlIGFibGUgdG8gc2VsZWN0IHRoYXQKPiA+IHJvdXRpbmcgdGhlbXNlbGZzIGJh
-c2VkIG9uIHRoZSBpb211eCBhbmQgaGF2aW5nIGhhZCB0aW1lIHRvIHBvbmRlcgo+ID4gdGhlIHdo
-b2xlIGlzc3VlIGZvciBzb21lIHRpbWUgbm93LCBJIGRvIGd1ZXNzIHNvbWUgc29ydCBvZiBsaXN0
-IHdvdWxkIGJlCj4gPiB0aGUgbGVhc3QgaW50cnVzaXZlIHNvbHV0aW9uLgo+ID4KPiA+IEl0IHNl
-ZW1zIHdlJ3JlIHRhbGtpbmcgYWJvdXQgb25seSBhIGhhbmRmdWwgb2Ygc3VjaCByb3V0aW5ncyBw
-ZXIgc29jLAo+ID4gc28gSSBndWVzcyBoYXZpbmcgdGhlIGlvbXV4IHNldHRpbmcgY2hlY2sgYSBs
-aXN0Cj4gPgo+ID4gCShwaW4sIHBpbmZ1bmMpIC0+IGdyZi1zZXR0aW5nIGZvciB0aGUgcGluLXJv
-dXRpbmcKPiA+Cj4gPiByZWFsbHkgaXMgdGhlIGxlYXN0IGludHJ1c2l2ZSB0aGluZyB0byBkbyAt
-IGFzIGlvbXV4IHNldHRpbmdzIHJlYWxseQo+ID4gYXJlbid0IGNoYW5nZWQgdGhhdCBvZnRlbiBv
-biBhIHJ1bm5pbmcgZGV2aWNlIGFuZCBhZGRpbmcgbW9yZQo+ID4gc3R1ZmYgb24gdG9wIHdvdWxk
-IGp1c3QgY29tcGxpY2F0ZSBldmVyeXRoaW5nLgo+ID4KPiA+Cj4gPiBIZWlrbwo+ID4KPiA+Cj4g
-Pj4gVGhhbmtzLAo+ID4+IC0gS2V2ZXIKPiA+Pgo+ID4+IE9uIDA4LzA1LzIwMTYgMDc6MzYgQU0s
-IEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4+PiBIaSBMaW51cywKPiA+Pj4KPiA+Pj4KPiA+Pj4g
-b24gdGhlIHJrMzM5OSB3ZSBmb3VuZCBhbiBpbnRlcmVzdGluZyBuZXcgZmVhdHVyZSBhbmQgd291
-bGQgbGlrZSB0byBnZXQKPiA+Pj4gc29tZSBpbnB1dCBmcm9tIHRoZSBwaW5jdHJsIGV4cGVydCA6
-LSkgLCBhcyBEb3VnIGFuZCBtZSBjdXJyZW50bHkgYXJlIG9mCj4gPj4+IGRpZmZlcmluZyBvcGlu
-aW9ucyBvbiB3aGVyZSBzcGVjaWZpYyBjb250cm9sIGVsZW1lbnRzIGJlbG9uZy4KPiA+Pj4KPiA+
-Pj4KPiA+Pj4gSW4gYSBudXRzaGVsbCBvbiB0aGUgcmszMzk5IHNvbWUgdGhpbmdzIGxpa2Ugb25l
-IHNwZWNpZmljIHVhcnQgY2FuIHVzZQo+ID4+PiBtdWx0aXBsZSBwaW5zIHRvIG91dHB1dCBkYXRh
-LCBidXQgY29udHJvbCBvZiB0aGF0IHNlZW1zIHRvIGJlIHNwbGl0LiBUaGUKPiA+Pj4gYWN0dWFs
-IHBpbiBjb25maWcgaXMgaWRlbnRpY2FsIGZvciBhbGwgcGlucyAtIGVhY2ggbmVlZHMgdG8gYmUg
-Y29uZmlndXJlZAo+ID4+PiB0byBmdW5jdGlvbiAyLCBwdWxscyBzZXQgZXRjLiBUaGVuIHNvbWV3
-aGVyZSBiZXR3ZWVuIHRoZSBwaW4gaW8tY2VsbHMgYW5kCj4gPj4+IHRoZSB1YXJ0IGl0IHNlZW1z
-IHRvIGhhdmUgc29tZSBzb3J0IG9mIHN3aXRjaCB0byBkZWNpZGUgdG8gd2hpY2ggcGluIHRvCj4g
-Pj4+IGFjdHVhbGx5IHJvdXRlIHRoZSBkYXRhLgo+ID4+Pgo+ID4+Pgo+ID4+PiArLS0tLS0tLSsg
-ICAgKy0tLS0tLS0tKyAgLy0gR1BJTzRfQjEgKHBpbm11eCAyKQo+ID4+Pgo+ID4+PiB8IHVhcnQy
-IHwgLS0gfCBzd2l0Y2ggfCAtLS0gR1BJTzRfQzEgKHBpbm11eCAyKQo+ID4+Pgo+ID4+PiArLS0t
-LS0tLSsgICAgKy0tLS0tLS0tKyAgXC0gR1BJTzRfQzQgKHBpbm11eCAyKQo+ID4+PiAoc3dpdGNo
-IHNlbGVjdHMgb25lIG9mIHRoZSAzIHBpbnMgdG8gYWN0dWFsbHkgb3V0cHV0IGRhdGEgdG8pCj4g
-Pj4+Cj4gPj4+Cj4gPj4+IFNvIHRoZSBxdWVzdGlvbiBub3cgaXMsIHNob3VsZCB0aGUgcGluY3Ry
-bCBkcml2ZXIgYWxzbyBmbGlwIHRoYXQgc3dpdGNoIHRvCj4gPj4+IHRoZSBjb3JyZWN0IHBvc2l0
-aW9uIGl0c2VsZiB3aGVuIHBpbi1mdW5jdGlvbiAyIG9mIHNheSBncGlvNF9icSBnZXRzCj4gPj4+
-IHNlbGVjdGVkIG9yIGlzIHRoYXQgcm91dGluZyBvdXRzaWRlIG9mIHBpbmN0cmwncyBzY29wZT8K
-PiA+Pj4KPiA+Pj4gLS0tLS0KPiA+Pj4KPiA+Pj4gSSBob3BlIHRvIGhhdmUgcHJlc2VudGVkIHRo
-ZSBjb3JlIGlzc3VlIGFib3ZlIHNvbWV3aGF0IG5ldXRyYWxseSwgYmVsb3cKPiA+Pj4gYXJlCj4g
-Pj4+IG15IHBlcnNvbmFsIHdvcnJpZXMgYWJvdXQgZG9pbmcgdGhhdCBpbiBwaW5jdHJsIDotKSAu
-Cj4gPj4+Cj4gPj4+Cj4gPj4+IEFwYXJ0IGZyb20gaXQgZmVlbGluZyAiYm9sdGVkLW9uIiB0byBt
-ZSwgSSBoYXZlIHR3byBtYWluIHdvcnJpZXMgd2l0aCB0aGF0Cj4gPj4+IGFwcHJvYWNoOgo+ID4+
-PiAoMSkgUmlnaHQgbm93IHRoZSB1bnVzZWQgcGlucyBhcmUgcmVhbGx5IHVudXNlZCBvbiB0aGUg
-c2FtZSBpb211eCwgc28gd2hlbgo+ID4+PiBmbGlwcGluZyB0aGUgc3dpdGNoIGl0IGVzc2VudGlh
-bGx5IGRvZXMKPiA+Pj4KPiA+Pj4gICB1YXJ0LXNvdXQgICAgdW51c2VkCj4gPj4+Cj4gPj4+ICAg
-IHwoaW9tdXgyKSAgICB8KGlvbXV4MikKPiA+Pj4KPiA+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0t
-LS0tKwo+ID4+Pgo+ID4+PiB8IGdwaW80X2IwIHwgfCBncGlvNF9jMCB8Cj4gPj4+Cj4gPj4+ICst
-LS0tLS0tLS0tKyArLS0tLS0tLS0tLSsKPiA+Pj4KPiA+Pj4gZ29pbmcgdG8KPiA+Pj4KPiA+Pj4g
-ICB1bnVzZWQgICAgICAgdWFydC1zb3V0Cj4gPj4+Cj4gPj4+ICAgIHwoaW9tdXgyKSAgICB8KGlv
-bXV4MikKPiA+Pj4KPiA+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0tLS0tKwo+ID4+Pgo+ID4+PiB8
-IGdwaW80X2IwIHwgfCBncGlvNF9jMCB8Cj4gPj4+Cj4gPj4+ICstLS0tLS0tLS0tKyArLS0tLS0t
-LS0tLSsKPiA+Pj4KPiA+Pj4gYnV0IG5vdGhpbmcga2VlcHMgZGVzaWduZXJzIGZyb20gZG9pbmcK
-PiA+Pj4KPiA+Pj4gICB1YXJ0LXNvdXQgICAgc3BlY2lhbDEKPiA+Pj4KPiA+Pj4gICAgfChpb211
-eDIpICAgIHwoaW9tdXgyKQo+ID4+Pgo+ID4+PiArLS0tLS0tLS0tLSsgKy0tLS0tLS0tLS0rCj4g
-Pj4+Cj4gPj4+IHwgZ3BpbzRfYjAgfCB8IGdwaW80X2MwIHwKPiA+Pj4KPiA+Pj4gKy0tLS0tLS0t
-LS0rICstLS0tLS0tLS0tKwo+ID4+Pgo+ID4+PiBnb2luZyB0bwo+ID4+Pgo+ID4+PiAgIHNwZWNp
-YWwyICAgICB1YXJ0LXNvdXQKPiA+Pj4KPiA+Pj4gICAgfChpb211eDIpICAgIHwoaW9tdXgyKQo+
-ID4+Pgo+ID4+PiArLS0tLS0tLS0tLSsgKy0tLS0tLS0tLS0rCj4gPj4+Cj4gPj4+IHwgZ3BpbzRf
-YjAgfCB8IGdwaW80X2MwIHwKPiA+Pj4KPiA+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0tLS0tKwo+
-ID4+Pgo+ID4+PiBzb21ld2hlcmUgZG93biB0aGUgcm9hZCwgc28gcmVseWluZyBvbiBmb2xsb3dp
-bmcgdGhlIHNlbGVjdGVkIGlvbXV4IGZlZWxzCj4gPj4+IG5vdCBmdXR1cmUgcHJvb2YuCj4gPj4+
-Cj4gPj4+ICgyKSBMb29raW5nIGF0IFswXSB3ZSBhbHJlYWR5IGhhdmUgYSBzaW1pbGFyIGNhc2Us
-IHdoZXJlIHdlIGNvbmZpZ3VyZSB0aGUKPiA+Pj4gcGlucyBmb3IgcmdtaWkgYnV0IHN0aWxsIHRl
-bGwgdGhlIGdtYWMgY29udHJvbGxlciB0aGF0IGl0IGlzIHN1cHBvc2VkIHRvCj4gPj4+IGRvCj4g
-Pj4+IHJnbWlpIGluc3RlYWQgb2Ygcm1paS4KPiA+Pj4KPiA+Pj4gSGVyZSB0aGUgcGlubXV4IGlz
-IHRoZSBzYW1lIGZvciBhbGwgcGlucywgcm1paSBqdXN0IHVzZXMgbGVzcyBwaW5zIHdoZW4KPiA+
-Pj4gY29tcGFyZWQgdG8gcmdtaWksIHNvIGJpbmRpbmcgdGhhdCB0byB0aGUgcGlubXV4IGlzbid0
-IGV2ZW4gcG9zc2libGUuCj4gPj4+Cj4gPj4+IEFuZCBkb2luZyBpdCBvbmUgd2F5IGhlcmUgYW5k
-IGFub3RoZXIgd2F5IGZvciB0aGUgc3dpdGNoIGZlZWxzIHZlcnkKPiA+Pj4gc3RyYW5nZS4KPiA+
-Pj4KPiA+Pj4KPiA+Pj4gSSBob3BlIHRoaXMgb3Zlcmx5IGxvbmcgbWFpbCB3YXMgbm90IHRvIGNv
-bmZ1c2luZyBhbmQgaG9wZSBmb3Igc29tZSB3b3Jkcwo+ID4+PiBvZiB3aXNkb20gOy0pCj4gPj4+
-Cj4gPj4+Cj4gPj4+IEJpZyB0aGFua3MKPiA+Pj4gSGVpa28KPiA+Pj4KPiA+Pj4KPiA+Pj4gWzBd
-Cj4gPj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwvZ2l0L3RvcnZh
-bGRzL2xpbnV4LmdpdC90cmVlL2FyY2gvCj4gPj4+IGFybS9ib290L2R0cy9yazMyODgtbWlxaS5k
-dHMjbjEzOQo+ID4+Pgo+ID4+Pgo+ID4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwo+ID4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiA+Pj4g
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4+PiBodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gPgo+ID4KPiA+Cj4g
-Pgo+ID4KPiAKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+Hi Elaine,
+
+Am Donnerstag, 18. Mai 2017, 10:16:58 CEST schrieb Elaine Zhang:
+> Add devicetree bindings for Rockchip cru which found on
+> Rockchip SoCs.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  .../bindings/clock/rockchip,rk3128-cru.txt         | 56 ++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> new file mode 100644
+> index 000000000000..455a9a00a623
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> @@ -0,0 +1,56 @@
+> +* Rockchip RK3128 Clock and Reset Unit
+> +
+> +The RK3128 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: should be "rockchip,rk3128-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock status.
+> +
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "gmac_clkin" - external GMAC clock - optional
+
+missing usb480m_phy as external clock, that comes back from the usbphy block.
+
+
+Otherwise looks good
+Heiko
+
