@@ -1,155 +1,157 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH v2 3/4] arm: dts: rk3229: add a new cpu opp table
-Date: Mon, 22 May 2017 10:29:57 +0800
-Message-ID: <8d8af44c-353a-5415-ed15-ccc68db81159@rock-chips.com>
-References: <1495016177-2413-1-git-send-email-frank.wang@rock-chips.com>
- <1495016177-2413-4-git-send-email-frank.wang@rock-chips.com>
- <3157044.sksXPZM55k@phil>
+From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: Boundary between pinctrl and peripheral settings
+Date: Mon, 22 May 2017 21:58:00 +0800
+Message-ID: <97536e9f-7ad9-032b-d2dd-921f97464123@rock-chips.com>
+References: <1719598.F3JUalFtig@phil> <4202128.TMlxifI24f@diego>
+ <a865024c-98d4-4349-6a33-e29fbc3cd7a7@rock-chips.com>
+ <5983290.MocaVmHgjo@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <3157044.sksXPZM55k@phil>
-Content-Language: en-US
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, rjw@rjwysocki.net, viresh.kumar@linaro.org, rui.zhang@intel.com, edubezval@gmail.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, charles.chen@rock-chips.com, cody.xie@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, rocky.hao@rock-chips.com, finley.xiao@rock-chips.com, zhangqing@rock-chips.com, wmc@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5983290.MocaVmHgjo@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 2017/5/20 5:46, Heiko Stuebner wrote:
-> Hi Frank,
->
-> Am Mittwoch, 17. Mai 2017, 18:16:16 CEST schrieb Frank Wang:
->> From: Finley Xiao<finley.xiao@rock-chips.com>
->>
->> This patch adds some new frequencies for rk3229 board.
->>
->> Signed-off-by: Finley Xiao<finley.xiao@rock-chips.com>
->> Signed-off-by: Frank Wang<frank.wang@rock-chips.com>
->> Acked-by: Viresh Kumar<viresh.kumar@linaro.org>
->> ---
->>   arch/arm/boot/dts/rk3229-cpu-opp.dtsi | 85 +++++++++++++++++++++++++++++++++++
-> I'm not yet sure if I like that approach. The other option I'm considering
-> and also tend to prefer at the moment would be to have this in a
-> rk3229.dtsi, creating a chain of
-> 	rk322x.dtsi
-> 		\- rk3228-evb.dts
-> 		\- rk3229.dtsi
-> 			\- rk3229-evb.dts
->
-> similar to what we do with the rk3xxx.dtsi -> rk3188.dtsi.
->
-> If I remember correctly, there are some other tiny differences between the
-> rk3228 and rk3229, so having the rk3229.dtsi already would make it
-> easier to place needed stuff into it later on.
-
-That makes sense, I will amend that based on your comments.
-
-
-BR.
-Frank
-
-> Heiko
->
->>   1 file changed, 85 insertions(+)
->>   create mode 100644 arch/arm/boot/dts/rk3229-cpu-opp.dtsi
->>
->> diff --git a/arch/arm/boot/dts/rk3229-cpu-opp.dtsi b/arch/arm/boot/dts/rk3229-cpu-opp.dtsi
->> new file mode 100644
->> index 0000000..89e8413
->> --- /dev/null
->> +++ b/arch/arm/boot/dts/rk3229-cpu-opp.dtsi
->> @@ -0,0 +1,85 @@
->> +/*
->> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
->> + *
->> + * This file is dual-licensed: you can use it either under the terms
->> + * of the GPL or the X11 license, at your option. Note that this dual
->> + * licensing only applies to this file, and not this project as a
->> + * whole.
->> + *
->> + *  a) This library is free software; you can redistribute it and/or
->> + *     modify it under the terms of the GNU General Public License as
->> + *     published by the Free Software Foundation; either version 2 of the
->> + *     License, or (at your option) any later version.
->> + *
->> + *     This library is distributed in the hope that it will be useful,
->> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + *     GNU General Public License for more details.
->> + *
->> + *  Or, alternatively,
->> + *
->> + *  b) Permission is hereby granted, free of charge, to any person
->> + *     obtaining a copy of this software and associated documentation
->> + *     files (the "Software"), to deal in the Software without
->> + *     restriction, including without limitation the rights to use,
->> + *     copy, modify, merge, publish, distribute, sublicense, and/or
->> + *     sell copies of the Software, and to permit persons to whom the
->> + *     Software is furnished to do so, subject to the following
->> + *     conditions:
->> + *
->> + *     The above copyright notice and this permission notice shall be
->> + *     included in all copies or substantial portions of the Software.
->> + *
->> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
->> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
->> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
->> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
->> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
->> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
->> + *     OTHER DEALINGS IN THE SOFTWARE.
->> + */
->> +
->> +/ {
->> +	/delete-node/ opp-table0;
->> +
->> +	cpu0_opp_table: opp_table0 {
->> +		compatible = "operating-points-v2";
->> +		opp-shared;
->> +
->> +		opp-408000000 {
->> +			opp-hz = /bits/ 64 <408000000>;
->> +			opp-microvolt = <950000>;
->> +			clock-latency-ns = <40000>;
->> +			opp-suspend;
->> +		};
->> +		opp-600000000 {
->> +			opp-hz = /bits/ 64 <600000000>;
->> +			opp-microvolt = <975000>;
->> +		};
->> +		opp-816000000 {
->> +			opp-hz = /bits/ 64 <816000000>;
->> +			opp-microvolt = <1000000>;
->> +		};
->> +		opp-1008000000 {
->> +			opp-hz = /bits/ 64 <1008000000>;
->> +			opp-microvolt = <1175000>;
->> +		};
->> +		opp-1200000000 {
->> +			opp-hz = /bits/ 64 <1200000000>;
->> +			opp-microvolt = <1275000>;
->> +		};
->> +		opp-1296000000 {
->> +			opp-hz = /bits/ 64 <1296000000>;
->> +			opp-microvolt = <1325000>;
->> +		};
->> +		opp-1392000000 {
->> +			opp-hz = /bits/ 64 <1392000000>;
->> +			opp-microvolt = <1375000>;
->> +		};
->> +		opp-1464000000 {
->> +			opp-hz = /bits/ 64 <1464000000>;
->> +			opp-microvolt = <1400000>;
->> +		};
->> +	};
->> +};
->>
->
->
->
-
-
+SGkgSGVpa28sCgrlnKggMjAxNy81LzE5IDE3OjEzLCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
+SGkgRGF2aWQsCj4gCj4gQW0gRG9ubmVyc3RhZywgMTguIE1haSAyMDE3LCAyMjozOTozNCBDRVNU
+IHNjaHJpZWIgRGF2aWQuV3U6Cj4+IFRoZSBhdHRhY2hlZCBmaWxlIGlzIHRoZSBsaXN0IGZvciAo
+cGluLCBwaW5mdW5jKSBhbmQgdGhlaXIgb3duIGdyZi1zZXR0aW5nLgo+IAo+IHRoYW5rcyBmb3Ig
+Y29sbGVjdGluZyB0aGlzIHdlYWx0aCBvZiBpbmZvcm1hdGlvbi4KPiBPbmUgc21hbGwgdGhpbmcs
+IGl0IHNlZW1zIGxpa2UgaXQgaXMgbWlzc2luZyB0aGUgcGNpZV9jbGtyZXFfc2VsIGJpdCB0aGF0
+Cj4gc2VlbXMgdG8gc3dpdGNoIHRoZSBjbGtyZXEgc2lnbmFsIGJldHdlZW4gZ3BpbzItZDIgYW5k
+IGdwaW80ZDA/CgpZZXMsIHlvdSBhcmUgcmlnaHQuIEkgbWlzcyB0aGUgdGhlIHBjaWVfY2xrcmVx
+X3NlbCBiaXQuCgo+IAo+IAo+PiBJZiBhIHBpbi1yb3V0aW5nIGNvbnRhaW5zIGEgZmV3IHBpbnMg
+YXMgZ21hYywgbmVlZCBhbGwgdGhlIHBpbnMgKHBpbiwKPj4gcGluZnVuYykgdG8gYmUgY29uZmln
+dXJlZCBjb3JyZWN0bHkgZnJvbSBEVCwgdGhlbiB0aGUgY29ycmVzcG9uZGluZyBHUkYKPj4gc2V0
+dGluZyBpcyBjb25maWd1cmVkLgo+PiBJZiBjb25maWd1cmVkIGdyZi1zZXR0aW5nIHBlciBwaW4s
+IGFzc3VtaW5nIHRoYXQgb25lIG9mIHRoZSBwaW4ncwo+PiBwaW5mdW5jIGlzIHdyb25nLCBpdCBt
+YXkgY2F1c2UgcGluLXJvdXRpbmcgbm90IHRvIGJlIGVmZmVjdGl2ZSBvciB3cm9uZy4KPiAKPiBJ
+IHN0aWxsIHRoaW5rIGl0IHNob3VsZCBiZSBlbm91Z2ggdG8gd2F0Y2ggZm9yIG9uZSBwaW4gb2Yg
+YSBzcGVjaWZjIGdyb3VwCj4gdG8gYmUgc2V0IHRvIGl0cyBzcGVjaWFsIHBpbm11eCBmdW5jdGlv
+bi4gSWYgdGhlIHBpbm11eCBzZXR0aW5nIGlzIHdyb25nCj4gZm9yIHRoYXQgcGluIHRoZSBpcCBi
+bG9jayB3b24ndCB3b3JrIGNvcnJlY3RseSBhbnl3YXkgKGluZGVwZW5kZW50IG9mCj4gaXRzIGlu
+bmVyLXNvYyByb3V0aW5nKS4KPiAKPiBPdXIgcGluY3RybCBncm91cHMgYWxzbyBhcmUgZGVmaW5l
+ZCBvbiBhIGdsb2JhbCBwZXItc29jIGxldmVsCj4gKHJrMzM5OS5kdHNpIGV0YykgYW5kIHRodXMg
+aWYgdGhleSBhcmUgcmVhbGx5IHdyb25nLCBhIGxvdCBvZiBwZW9wbGUgd2lsbAo+IGNvbXBsYWlu
+IGFueXdheSA7LSkgLgo+IAo+IFNvIGZvciBleGFtcGxlIGp1c3QgdGFrZQo+IHVhcnQyZGJnYV9z
+aW4sIHVhcnQyZGJnYl9zaW4sIHVhcnQyZGJnY19zaW4gb24gcmszMzk5Cj4gYXMgcGlucyB0byB3
+YXRjaCwgc29tZSB0aGluZyBsaWtlCj4gCj4gc3RydWN0IHJrMzM5OV9waW5yb3V0aW5nW10gPSB7
+Cj4gCXsKPiAJCS8qIHVhcnQyZGJnYSAqLwo+IAkJLmJhbmsgPSA0LAo+IAkJLnBpbiA9IDgsCj4g
+CQkuZnVuYyA9IDIsCj4gCQkucm91dGVfb2Zmc2V0ID0gMHgwZTIxYywKPiAJCS5yb3V0ZV92YWwg
+PSAoMyA8PCAoMTArMTYpKSwKPiAJfSwgewo+IAkJLyogdWFydDJkYmdiICovCj4gCQkuYmFuayA9
+IDQsCj4gCQkucGluID0gMTYsCj4gCQkuZnVuYyA9IDIsCj4gCQkucm91dGVfb2Zmc2V0ID0gMHgw
+ZTIxYywKPiAJCS5yb3V0ZV92YWwgPSAoMyA8PCAoMTArMTYpIHwgMSA8PCAxMCksCj4gCX0sCj4g
+Li4uCj4gfTsKPiAKPiBUaGF0IHdheSB5b3UgY2FuIGp1c3QgaG9vayBpdCBpbnRvIHRoZSByb2Nr
+Y2hpcF9zZXRfbXV4IGZ1bmN0aW9uIHNpbWlsYXIKPiB0byB0aGUgcmVjYWxjIHN0dWZmLCB3aXRo
+b3V0IHRvIG11Y2ggdHJvdWJsZS4KPgpUaGUgZ21hY19tMV9zZWwgaXMgZGlmZmVyZW50LCBpdCBu
+ZWVkIHRvIGNvbmZpZ3VyZSBib3RoIGJpdFsxMF0gYW5kIApiaXRbMl0gd2l0aCB2YWx1ZToxLCB1
+c2VkIGFmdGVyIG9wdGltaXphdGlvbi4gVGhlIGdtYWNfbTEgYWZ0ZXIgCm9wdGltaXphdGlvbiBu
+ZWVkIHRvIGNvbmZpZ3VyZSBhbGwgcGlucyBpb211eCBvZiBnbWFjX20xIGFuZCB0eCBwaW5zIApp
+b211eCBvZiBnbWFjX20wLiBUaGUgdHggcGlucyBpb211eCBvZiBnbWFjX20wIGlzIGFsc28gcmVx
+dWlyZWQsc28gaXQgaXMgCmNvbmZsaWN0IG9mIGdtYWNfbTEgYWZ0ZXIgb3B0aW1pemF0aW9uLiBC
+ZXNpZGVzLCB3ZSBkb24ndCBuZWVkIHRvIHVzZSAKbTEsIGJlY2F1c2UgbTEgJ3Mgc2lnbmFsIGlz
+IGJhZCwgZG9uJ3QgdGhpbmsgYWJvdXQgaXQsIGJ1dApnbWFjX20xIGFmdGVyIG9wdGltaXphdGlv
+biBpcyBvYmxpZ2F0b3J5LgoKPiAKPj4gU28gaSB0aGluayB0aGUgc21hbGxlc3QgY2VsbCBpcyBh
+IGdyb3VwLCB3aGljaCBjb250YWlucyB0aGUgcGlucyBmb3IgdGhlCj4+IHBpbi1yb3V0aW5nLgo+
+IAo+IFRob3VnaCB0aGF0IGNyZWF0ZXMgbW9yZSBBQkkgYmV0d2VlbiBrZXJuZWwgYW5kIGRldmlj
+ZXRyZWUgKHBpbmdyb3VwCj4gbmFtZXMpLCB3aGljaCB3aWxsIG1vc3QgbGlrZWx5IGJpdGUgdXMg
+c29tZSB0aW1lIGluIHRoZSBmdXR1cmUuIEFsc28gSSdkCj4gbGlrZSB0byBrZWVwIHRoZXNlIGRl
+cGVuZGVuY2llcyBhcyBtaW5pbWFsIGFzIHBvc3NpYmxlLCBhcyBkZXBlbmRpbmcgb24KPiBob3cg
+bXVjaCBtb3JlIGZ1bm55IGludmVudGlvbnMgd2UgYWNjdW11bGF0ZSwgd2UgbWlnaHQgd2FudCB0
+byByZXN0cnVjdHVyZQo+IChvciBzcGxpdCkgdGhlIGRyaXZlciBhdCBzb21lIGxhdGVyIHBvaW50
+IC0gd2l0aG91dCBicmVha2luZyBkZXZpY2V0cmVlcy4KPiAKPiAKPiBIZWlrbwo+IAo+IAo+PiDl
+nKggMjAxNy81LzE4IDE2OjQ4LCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4+PiBIaSBLZXZlciwg
+RGF2aWQsCj4+Pgo+Pj4gQW0gRG9ubmVyc3RhZywgMTguIE1haSAyMDE3LCAxNjoyMTowOSBDRVNU
+IHNjaHJpZWIgS2V2ZXIgWWFuZzoKPj4+PiBIaSBIZWlrbywgTGludXMsCj4+Pj4gICAgICAgSXMg
+dGhlcmUgYW55IG5ld3MgdG8gaGFuZGxlIHRoaXMga2luZCBvZiBJT01VWD8KPj4+Cj4+PiBJIHdh
+cyB0YWxraW5nIHdpdGggRGF2aWQgV3UgYWJvdXQgdGhhdCBhIHNob3J0IHdoaWxlIGFnbyBhcyB3
+ZWxsIDotKSAuCj4+Pgo+Pj4gIEZyb20gd2hhdCBJJ3ZlIGhlYXJlZCwgaW4gdGhlIGZ1dHVyZSBz
+b2NzIG1heSBiZSBhYmxlIHRvIHNlbGVjdCB0aGF0Cj4+PiByb3V0aW5nIHRoZW1zZWxmcyBiYXNl
+ZCBvbiB0aGUgaW9tdXggYW5kIGhhdmluZyBoYWQgdGltZSB0byBwb25kZXIKPj4+IHRoZSB3aG9s
+ZSBpc3N1ZSBmb3Igc29tZSB0aW1lIG5vdywgSSBkbyBndWVzcyBzb21lIHNvcnQgb2YgbGlzdCB3
+b3VsZCBiZQo+Pj4gdGhlIGxlYXN0IGludHJ1c2l2ZSBzb2x1dGlvbi4KPj4+Cj4+PiBJdCBzZWVt
+cyB3ZSdyZSB0YWxraW5nIGFib3V0IG9ubHkgYSBoYW5kZnVsIG9mIHN1Y2ggcm91dGluZ3MgcGVy
+IHNvYywKPj4+IHNvIEkgZ3Vlc3MgaGF2aW5nIHRoZSBpb211eCBzZXR0aW5nIGNoZWNrIGEgbGlz
+dAo+Pj4KPj4+IAkocGluLCBwaW5mdW5jKSAtPiBncmYtc2V0dGluZyBmb3IgdGhlIHBpbi1yb3V0
+aW5nCj4+Pgo+Pj4gcmVhbGx5IGlzIHRoZSBsZWFzdCBpbnRydXNpdmUgdGhpbmcgdG8gZG8gLSBh
+cyBpb211eCBzZXR0aW5ncyByZWFsbHkKPj4+IGFyZW4ndCBjaGFuZ2VkIHRoYXQgb2Z0ZW4gb24g
+YSBydW5uaW5nIGRldmljZSBhbmQgYWRkaW5nIG1vcmUKPj4+IHN0dWZmIG9uIHRvcCB3b3VsZCBq
+dXN0IGNvbXBsaWNhdGUgZXZlcnl0aGluZy4KPj4+Cj4+Pgo+Pj4gSGVpa28KPj4+Cj4+Pgo+Pj4+
+IFRoYW5rcywKPj4+PiAtIEtldmVyCj4+Pj4KPj4+PiBPbiAwOC8wNS8yMDE2IDA3OjM2IEFNLCBI
+ZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4+Pj4gSGkgTGludXMsCj4+Pj4+Cj4+Pj4+Cj4+Pj4+IG9u
+IHRoZSByazMzOTkgd2UgZm91bmQgYW4gaW50ZXJlc3RpbmcgbmV3IGZlYXR1cmUgYW5kIHdvdWxk
+IGxpa2UgdG8gZ2V0Cj4+Pj4+IHNvbWUgaW5wdXQgZnJvbSB0aGUgcGluY3RybCBleHBlcnQgOi0p
+ICwgYXMgRG91ZyBhbmQgbWUgY3VycmVudGx5IGFyZSBvZgo+Pj4+PiBkaWZmZXJpbmcgb3Bpbmlv
+bnMgb24gd2hlcmUgc3BlY2lmaWMgY29udHJvbCBlbGVtZW50cyBiZWxvbmcuCj4+Pj4+Cj4+Pj4+
+Cj4+Pj4+IEluIGEgbnV0c2hlbGwgb24gdGhlIHJrMzM5OSBzb21lIHRoaW5ncyBsaWtlIG9uZSBz
+cGVjaWZpYyB1YXJ0IGNhbiB1c2UKPj4+Pj4gbXVsdGlwbGUgcGlucyB0byBvdXRwdXQgZGF0YSwg
+YnV0IGNvbnRyb2wgb2YgdGhhdCBzZWVtcyB0byBiZSBzcGxpdC4gVGhlCj4+Pj4+IGFjdHVhbCBw
+aW4gY29uZmlnIGlzIGlkZW50aWNhbCBmb3IgYWxsIHBpbnMgLSBlYWNoIG5lZWRzIHRvIGJlIGNv
+bmZpZ3VyZWQKPj4+Pj4gdG8gZnVuY3Rpb24gMiwgcHVsbHMgc2V0IGV0Yy4gVGhlbiBzb21ld2hl
+cmUgYmV0d2VlbiB0aGUgcGluIGlvLWNlbGxzIGFuZAo+Pj4+PiB0aGUgdWFydCBpdCBzZWVtcyB0
+byBoYXZlIHNvbWUgc29ydCBvZiBzd2l0Y2ggdG8gZGVjaWRlIHRvIHdoaWNoIHBpbiB0bwo+Pj4+
+PiBhY3R1YWxseSByb3V0ZSB0aGUgZGF0YS4KPj4+Pj4KPj4+Pj4KPj4+Pj4gKy0tLS0tLS0rICAg
+ICstLS0tLS0tLSsgIC8tIEdQSU80X0IxIChwaW5tdXggMikKPj4+Pj4KPj4+Pj4gfCB1YXJ0MiB8
+IC0tIHwgc3dpdGNoIHwgLS0tIEdQSU80X0MxIChwaW5tdXggMikKPj4+Pj4KPj4+Pj4gKy0tLS0t
+LS0rICAgICstLS0tLS0tLSsgIFwtIEdQSU80X0M0IChwaW5tdXggMikKPj4+Pj4gKHN3aXRjaCBz
+ZWxlY3RzIG9uZSBvZiB0aGUgMyBwaW5zIHRvIGFjdHVhbGx5IG91dHB1dCBkYXRhIHRvKQo+Pj4+
+Pgo+Pj4+Pgo+Pj4+PiBTbyB0aGUgcXVlc3Rpb24gbm93IGlzLCBzaG91bGQgdGhlIHBpbmN0cmwg
+ZHJpdmVyIGFsc28gZmxpcCB0aGF0IHN3aXRjaCB0bwo+Pj4+PiB0aGUgY29ycmVjdCBwb3NpdGlv
+biBpdHNlbGYgd2hlbiBwaW4tZnVuY3Rpb24gMiBvZiBzYXkgZ3BpbzRfYnEgZ2V0cwo+Pj4+PiBz
+ZWxlY3RlZCBvciBpcyB0aGF0IHJvdXRpbmcgb3V0c2lkZSBvZiBwaW5jdHJsJ3Mgc2NvcGU/Cj4+
+Pj4+Cj4+Pj4+IC0tLS0tCj4+Pj4+Cj4+Pj4+IEkgaG9wZSB0byBoYXZlIHByZXNlbnRlZCB0aGUg
+Y29yZSBpc3N1ZSBhYm92ZSBzb21ld2hhdCBuZXV0cmFsbHksIGJlbG93Cj4+Pj4+IGFyZQo+Pj4+
+PiBteSBwZXJzb25hbCB3b3JyaWVzIGFib3V0IGRvaW5nIHRoYXQgaW4gcGluY3RybCA6LSkgLgo+
+Pj4+Pgo+Pj4+Pgo+Pj4+PiBBcGFydCBmcm9tIGl0IGZlZWxpbmcgImJvbHRlZC1vbiIgdG8gbWUs
+IEkgaGF2ZSB0d28gbWFpbiB3b3JyaWVzIHdpdGggdGhhdAo+Pj4+PiBhcHByb2FjaDoKPj4+Pj4g
+KDEpIFJpZ2h0IG5vdyB0aGUgdW51c2VkIHBpbnMgYXJlIHJlYWxseSB1bnVzZWQgb24gdGhlIHNh
+bWUgaW9tdXgsIHNvIHdoZW4KPj4+Pj4gZmxpcHBpbmcgdGhlIHN3aXRjaCBpdCBlc3NlbnRpYWxs
+eSBkb2VzCj4+Pj4+Cj4+Pj4+ICAgIHVhcnQtc291dCAgICB1bnVzZWQKPj4+Pj4KPj4+Pj4gICAg
+IHwoaW9tdXgyKSAgICB8KGlvbXV4MikKPj4+Pj4KPj4+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0t
+LS0tKwo+Pj4+Pgo+Pj4+PiB8IGdwaW80X2IwIHwgfCBncGlvNF9jMCB8Cj4+Pj4+Cj4+Pj4+ICst
+LS0tLS0tLS0tKyArLS0tLS0tLS0tLSsKPj4+Pj4KPj4+Pj4gZ29pbmcgdG8KPj4+Pj4KPj4+Pj4g
+ICAgdW51c2VkICAgICAgIHVhcnQtc291dAo+Pj4+Pgo+Pj4+PiAgICAgfChpb211eDIpICAgIHwo
+aW9tdXgyKQo+Pj4+Pgo+Pj4+PiArLS0tLS0tLS0tLSsgKy0tLS0tLS0tLS0rCj4+Pj4+Cj4+Pj4+
+IHwgZ3BpbzRfYjAgfCB8IGdwaW80X2MwIHwKPj4+Pj4KPj4+Pj4gKy0tLS0tLS0tLS0rICstLS0t
+LS0tLS0tKwo+Pj4+Pgo+Pj4+PiBidXQgbm90aGluZyBrZWVwcyBkZXNpZ25lcnMgZnJvbSBkb2lu
+Zwo+Pj4+Pgo+Pj4+PiAgICB1YXJ0LXNvdXQgICAgc3BlY2lhbDEKPj4+Pj4KPj4+Pj4gICAgIHwo
+aW9tdXgyKSAgICB8KGlvbXV4MikKPj4+Pj4KPj4+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0tLS0t
+Kwo+Pj4+Pgo+Pj4+PiB8IGdwaW80X2IwIHwgfCBncGlvNF9jMCB8Cj4+Pj4+Cj4+Pj4+ICstLS0t
+LS0tLS0tKyArLS0tLS0tLS0tLSsKPj4+Pj4KPj4+Pj4gZ29pbmcgdG8KPj4+Pj4KPj4+Pj4gICAg
+c3BlY2lhbDIgICAgIHVhcnQtc291dAo+Pj4+Pgo+Pj4+PiAgICAgfChpb211eDIpICAgIHwoaW9t
+dXgyKQo+Pj4+Pgo+Pj4+PiArLS0tLS0tLS0tLSsgKy0tLS0tLS0tLS0rCj4+Pj4+Cj4+Pj4+IHwg
+Z3BpbzRfYjAgfCB8IGdwaW80X2MwIHwKPj4+Pj4KPj4+Pj4gKy0tLS0tLS0tLS0rICstLS0tLS0t
+LS0tKwo+Pj4+Pgo+Pj4+PiBzb21ld2hlcmUgZG93biB0aGUgcm9hZCwgc28gcmVseWluZyBvbiBm
+b2xsb3dpbmcgdGhlIHNlbGVjdGVkIGlvbXV4IGZlZWxzCj4+Pj4+IG5vdCBmdXR1cmUgcHJvb2Yu
+Cj4+Pj4+Cj4+Pj4+ICgyKSBMb29raW5nIGF0IFswXSB3ZSBhbHJlYWR5IGhhdmUgYSBzaW1pbGFy
+IGNhc2UsIHdoZXJlIHdlIGNvbmZpZ3VyZSB0aGUKPj4+Pj4gcGlucyBmb3IgcmdtaWkgYnV0IHN0
+aWxsIHRlbGwgdGhlIGdtYWMgY29udHJvbGxlciB0aGF0IGl0IGlzIHN1cHBvc2VkIHRvCj4+Pj4+
+IGRvCj4+Pj4+IHJnbWlpIGluc3RlYWQgb2Ygcm1paS4KPj4+Pj4KPj4+Pj4gSGVyZSB0aGUgcGlu
+bXV4IGlzIHRoZSBzYW1lIGZvciBhbGwgcGlucywgcm1paSBqdXN0IHVzZXMgbGVzcyBwaW5zIHdo
+ZW4KPj4+Pj4gY29tcGFyZWQgdG8gcmdtaWksIHNvIGJpbmRpbmcgdGhhdCB0byB0aGUgcGlubXV4
+IGlzbid0IGV2ZW4gcG9zc2libGUuCj4+Pj4+Cj4+Pj4+IEFuZCBkb2luZyBpdCBvbmUgd2F5IGhl
+cmUgYW5kIGFub3RoZXIgd2F5IGZvciB0aGUgc3dpdGNoIGZlZWxzIHZlcnkKPj4+Pj4gc3RyYW5n
+ZS4KPj4+Pj4KPj4+Pj4KPj4+Pj4gSSBob3BlIHRoaXMgb3Zlcmx5IGxvbmcgbWFpbCB3YXMgbm90
+IHRvIGNvbmZ1c2luZyBhbmQgaG9wZSBmb3Igc29tZSB3b3Jkcwo+Pj4+PiBvZiB3aXNkb20gOy0p
+Cj4+Pj4+Cj4+Pj4+Cj4+Pj4+IEJpZyB0aGFua3MKPj4+Pj4gSGVpa28KPj4+Pj4KPj4+Pj4KPj4+
+Pj4gWzBdCj4+Pj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwvZ2l0
+L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2FyY2gvCj4+Pj4+IGFybS9ib290L2R0cy9yazMyODgt
+bWlxaS5kdHMjbjEzOQo+Pj4+Pgo+Pj4+Pgo+Pj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwo+Pj4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+Pj4+Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4+PiBodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4+Pgo+Pj4K
+Pj4+Cj4+Pgo+Pj4KPj4KPiAKPiAKPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
