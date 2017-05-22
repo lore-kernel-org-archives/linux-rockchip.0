@@ -1,51 +1,56 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v5 0/5] Add ARM Mali Midgard device tree bindings and gpu node for rk3288
-Date: Sat, 20 May 2017 00:25:49 +0200
-Message-ID: <2394922.9rgTI5oGq7@phil>
-References: <cover.1493804968.git.guillaume.tucker@collabora.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/2] arm64: dts: extent bus-ranges of PCIe for rk3399
+Date: Mon, 22 May 2017 09:20:59 +0800
+Message-ID: <87486e22-2c42-a8a5-cd60-e6092dbecde7@rock-chips.com>
+References: <1494916241-75234-1-git-send-email-shawn.lin@rock-chips.com>
+ <1839398.ekEOVhNgvp@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1493804968.git.guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1839398.ekEOVhNgvp@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Guillaume,
-
-Am Mittwoch, 3. Mai 2017, 10:56:24 CEST schrieb Guillaume Tucker:
-> The ARM Mali Midgard GPU kernel driver is only available
-> out-of-tree and is not going to be merged in its current form.
-> However, it would be useful to have its device tree bindings
-> merged.  In particular, this would enable distributions to create
-> working driver packages (dkms...) without having to patch the
-> kernel.
-> 
-> The bindings for the earlier Mali Utgard GPU family have already
-> been merged, so this is essentially the same scenario but for
-> newer GPUs (Mali-T604 ~ Mali-T880).
-> 
-> This series of patches first imports the bindings from the latest
-> driver release with some clean-up then adds a gpu node for the
-> rk3288 SoC.  This was successfully tested on Radxa Rock2 Square,
-> Firefly, Veyron Minnie and Jerry boards using Mali kernel driver
-> r16p0 and r12p0 user-space binary.
-
-as nobody complained anymore, I've applied all patches for 4.13
-with the following small changes:
-- patch2: node name to
-	gpu_opp_table: gpu-opp-table
-  from the original
-	gpu_opp_table: opp_table0
-- patches3-5: moved &gpu{} to its alphabetical correct position
-  (below &gmac and above &hdmi)
-
-
-Heiko
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgSGVpa28sCgrlnKggMjAxNy81LzE5IDE5OjUzLCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
+SGkgU2hhd24sCj4KPiBBbSBEaWVuc3RhZywgMTYuIE1haSAyMDE3LCAxNDozMDo0MCBDRVNUIHNj
+aHJpZWIgU2hhd24gTGluOgo+PiBJbiBvcmRlciB0byBzdXBwb3J0IG11bHRpcGxlIGhpZXJhcmNo
+eSBvZiBQQ0llIGJ1c2VzLAo+PiBmb3IgaW5zdGFuY2UsIFBDSWUgc3dpdGNoLCB3ZSBuZWVkIHRv
+IGV4dGVudCBidXMtcmFuZ2VzCj4+IHRvIGFzIG1heCBhcyBwb3NzaWJsZS4gV2UgaGF2ZSAzMiBy
+ZWdpb25zIGFuZCBjb3VsZCBzdXBwb3J0Cj4+IHVwIHRvIDMxIGJ1c2VzIGV4Y2VwdCBidXMgMCBm
+b3Igb3VyIHJvb3QgYnJpZGdlLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXdu
+LmxpbkByb2NrLWNoaXBzLmNvbT4KPgo+IGNhbiB0aGVzZSAyIHBhdGNoZXMgcmVhbGx5IGJlIGlu
+ZGVwZW5kZW50PwoKeWVzLCB0aGV5IGFyZSBzbG92aW5nIHR3byBkaWZmZXJlbnQgaXNzdWVzLCBz
+byBJIHRoaW5rCnRoZXkgY291bGQgYmUgYXBwbGllZCBhcy1pcy4KCkZvciBwYXRjaCAxLCB3ZSB3
+YXMgdHJ5aW5nIHRvIGFzayBQQ0kgY29yZSB0byBzY2FuIG1vcmUKYnVzZXMgYXMgcG9zc2libGUs
+IG90aGVyd2lzZSBpdCBub3cgb25seSBzY2FuIG9uZSwgd2hpY2gKaXNuJ3QgZW5vdWdoIGZvciBQ
+Q0llIHN3aXRjaCBjaGlwLgoKQW5kIGJlZm9yZSBwYXRjaCAyLCB3ZSBvbmx5IGFsbG9jYXRlZCBs
+aW1pdGVkIHJlZ2lvbnMgZm9yCmRldmljZXMgYXR0YWNoZWQgdG8gb3VyIHJvb3QgYnJpZGdlLCBz
+byB3ZSB3aWxsIGZhaWwgdG8gZW5hYmxlCnNvbWUgZGV2aWNlcyBpZiB0aGV5IGFzayBtb3JlIG1l
+bW9yeSByZXNvdXJjZS4KCj4KPiBJLmUuIHdoYXQgaGFwcGVucyBpZiBvbmx5IHRoaXMgcGF0Y2gx
+IGlzIGFwcGxpZWQgYW5kIHBhdGNoMiBpcyBub3Q/Cj4gW2ltcG9ydGFudCBmb3IgYmlzZWN0YWJp
+bGl0eV0KPgo+Cj4gSGVpa28KPgo+PiAtLS0KPj4KPj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LmR0c2kgfCAyICstCj4+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
+KyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszMzk5LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5
+OS5kdHNpCj4+IGluZGV4IDI1Y2I1MWQuLjUzMmI4OWQgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290
+L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiBAQCAtMjIwLDcgKzIyMCw3IEBACj4+ICAJCSNz
+aXplLWNlbGxzID0gPDI+Owo+PiAgCQkjaW50ZXJydXB0LWNlbGxzID0gPDE+Owo+PiAgCQlhc3Bt
+LW5vLWwwczsKPj4gLQkJYnVzLXJhbmdlID0gPDB4MCAweDE+Owo+PiArCQlidXMtcmFuZ2UgPSA8
+MHgwIDB4MWY+Owo+PiAgCQljbG9ja3MgPSA8JmNydSBBQ0xLX1BDSUU+LCA8JmNydSBBQ0xLX1BF
+UkZfUENJRT4sCj4+ICAJCQkgPCZjcnUgUENMS19QQ0lFPiwgPCZjcnUgU0NMS19QQ0lFX1BNPjsK
+Pj4gIAkJY2xvY2stbmFtZXMgPSAiYWNsayIsICJhY2xrLXBlcmYiLAo+Pgo+Cj4KPgo+Cj4KCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
