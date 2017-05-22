@@ -1,56 +1,155 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: extent bus-ranges of PCIe for rk3399
-Date: Mon, 22 May 2017 09:20:59 +0800
-Message-ID: <87486e22-2c42-a8a5-cd60-e6092dbecde7@rock-chips.com>
-References: <1494916241-75234-1-git-send-email-shawn.lin@rock-chips.com>
- <1839398.ekEOVhNgvp@phil>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH v2 3/4] arm: dts: rk3229: add a new cpu opp table
+Date: Mon, 22 May 2017 10:29:57 +0800
+Message-ID: <8d8af44c-353a-5415-ed15-ccc68db81159@rock-chips.com>
+References: <1495016177-2413-1-git-send-email-frank.wang@rock-chips.com>
+ <1495016177-2413-4-git-send-email-frank.wang@rock-chips.com>
+ <3157044.sksXPZM55k@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1839398.ekEOVhNgvp@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <3157044.sksXPZM55k@phil>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, rjw@rjwysocki.net, viresh.kumar@linaro.org, rui.zhang@intel.com, edubezval@gmail.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, charles.chen@rock-chips.com, cody.xie@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, rocky.hao@rock-chips.com, finley.xiao@rock-chips.com, zhangqing@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgrlnKggMjAxNy81LzE5IDE5OjUzLCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
-SGkgU2hhd24sCj4KPiBBbSBEaWVuc3RhZywgMTYuIE1haSAyMDE3LCAxNDozMDo0MCBDRVNUIHNj
-aHJpZWIgU2hhd24gTGluOgo+PiBJbiBvcmRlciB0byBzdXBwb3J0IG11bHRpcGxlIGhpZXJhcmNo
-eSBvZiBQQ0llIGJ1c2VzLAo+PiBmb3IgaW5zdGFuY2UsIFBDSWUgc3dpdGNoLCB3ZSBuZWVkIHRv
-IGV4dGVudCBidXMtcmFuZ2VzCj4+IHRvIGFzIG1heCBhcyBwb3NzaWJsZS4gV2UgaGF2ZSAzMiBy
-ZWdpb25zIGFuZCBjb3VsZCBzdXBwb3J0Cj4+IHVwIHRvIDMxIGJ1c2VzIGV4Y2VwdCBidXMgMCBm
-b3Igb3VyIHJvb3QgYnJpZGdlLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXdu
-LmxpbkByb2NrLWNoaXBzLmNvbT4KPgo+IGNhbiB0aGVzZSAyIHBhdGNoZXMgcmVhbGx5IGJlIGlu
-ZGVwZW5kZW50PwoKeWVzLCB0aGV5IGFyZSBzbG92aW5nIHR3byBkaWZmZXJlbnQgaXNzdWVzLCBz
-byBJIHRoaW5rCnRoZXkgY291bGQgYmUgYXBwbGllZCBhcy1pcy4KCkZvciBwYXRjaCAxLCB3ZSB3
-YXMgdHJ5aW5nIHRvIGFzayBQQ0kgY29yZSB0byBzY2FuIG1vcmUKYnVzZXMgYXMgcG9zc2libGUs
-IG90aGVyd2lzZSBpdCBub3cgb25seSBzY2FuIG9uZSwgd2hpY2gKaXNuJ3QgZW5vdWdoIGZvciBQ
-Q0llIHN3aXRjaCBjaGlwLgoKQW5kIGJlZm9yZSBwYXRjaCAyLCB3ZSBvbmx5IGFsbG9jYXRlZCBs
-aW1pdGVkIHJlZ2lvbnMgZm9yCmRldmljZXMgYXR0YWNoZWQgdG8gb3VyIHJvb3QgYnJpZGdlLCBz
-byB3ZSB3aWxsIGZhaWwgdG8gZW5hYmxlCnNvbWUgZGV2aWNlcyBpZiB0aGV5IGFzayBtb3JlIG1l
-bW9yeSByZXNvdXJjZS4KCj4KPiBJLmUuIHdoYXQgaGFwcGVucyBpZiBvbmx5IHRoaXMgcGF0Y2gx
-IGlzIGFwcGxpZWQgYW5kIHBhdGNoMiBpcyBub3Q/Cj4gW2ltcG9ydGFudCBmb3IgYmlzZWN0YWJp
-bGl0eV0KPgo+Cj4gSGVpa28KPgo+PiAtLS0KPj4KPj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LmR0c2kgfCAyICstCj4+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
-KyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzk5LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5
-OS5kdHNpCj4+IGluZGV4IDI1Y2I1MWQuLjUzMmI4OWQgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiBAQCAtMjIwLDcgKzIyMCw3IEBACj4+ICAJCSNz
-aXplLWNlbGxzID0gPDI+Owo+PiAgCQkjaW50ZXJydXB0LWNlbGxzID0gPDE+Owo+PiAgCQlhc3Bt
-LW5vLWwwczsKPj4gLQkJYnVzLXJhbmdlID0gPDB4MCAweDE+Owo+PiArCQlidXMtcmFuZ2UgPSA8
-MHgwIDB4MWY+Owo+PiAgCQljbG9ja3MgPSA8JmNydSBBQ0xLX1BDSUU+LCA8JmNydSBBQ0xLX1BF
-UkZfUENJRT4sCj4+ICAJCQkgPCZjcnUgUENMS19QQ0lFPiwgPCZjcnUgU0NMS19QQ0lFX1BNPjsK
-Pj4gIAkJY2xvY2stbmFtZXMgPSAiYWNsayIsICJhY2xrLXBlcmYiLAo+Pgo+Cj4KPgo+Cj4KCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Heiko,
+
+On 2017/5/20 5:46, Heiko Stuebner wrote:
+> Hi Frank,
+>
+> Am Mittwoch, 17. Mai 2017, 18:16:16 CEST schrieb Frank Wang:
+>> From: Finley Xiao<finley.xiao@rock-chips.com>
+>>
+>> This patch adds some new frequencies for rk3229 board.
+>>
+>> Signed-off-by: Finley Xiao<finley.xiao@rock-chips.com>
+>> Signed-off-by: Frank Wang<frank.wang@rock-chips.com>
+>> Acked-by: Viresh Kumar<viresh.kumar@linaro.org>
+>> ---
+>>   arch/arm/boot/dts/rk3229-cpu-opp.dtsi | 85 +++++++++++++++++++++++++++++++++++
+> I'm not yet sure if I like that approach. The other option I'm considering
+> and also tend to prefer at the moment would be to have this in a
+> rk3229.dtsi, creating a chain of
+> 	rk322x.dtsi
+> 		\- rk3228-evb.dts
+> 		\- rk3229.dtsi
+> 			\- rk3229-evb.dts
+>
+> similar to what we do with the rk3xxx.dtsi -> rk3188.dtsi.
+>
+> If I remember correctly, there are some other tiny differences between the
+> rk3228 and rk3229, so having the rk3229.dtsi already would make it
+> easier to place needed stuff into it later on.
+
+That makes sense, I will amend that based on your comments.
+
+
+BR.
+Frank
+
+> Heiko
+>
+>>   1 file changed, 85 insertions(+)
+>>   create mode 100644 arch/arm/boot/dts/rk3229-cpu-opp.dtsi
+>>
+>> diff --git a/arch/arm/boot/dts/rk3229-cpu-opp.dtsi b/arch/arm/boot/dts/rk3229-cpu-opp.dtsi
+>> new file mode 100644
+>> index 0000000..89e8413
+>> --- /dev/null
+>> +++ b/arch/arm/boot/dts/rk3229-cpu-opp.dtsi
+>> @@ -0,0 +1,85 @@
+>> +/*
+>> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
+>> + *
+>> + * This file is dual-licensed: you can use it either under the terms
+>> + * of the GPL or the X11 license, at your option. Note that this dual
+>> + * licensing only applies to this file, and not this project as a
+>> + * whole.
+>> + *
+>> + *  a) This library is free software; you can redistribute it and/or
+>> + *     modify it under the terms of the GNU General Public License as
+>> + *     published by the Free Software Foundation; either version 2 of the
+>> + *     License, or (at your option) any later version.
+>> + *
+>> + *     This library is distributed in the hope that it will be useful,
+>> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + *     GNU General Public License for more details.
+>> + *
+>> + *  Or, alternatively,
+>> + *
+>> + *  b) Permission is hereby granted, free of charge, to any person
+>> + *     obtaining a copy of this software and associated documentation
+>> + *     files (the "Software"), to deal in the Software without
+>> + *     restriction, including without limitation the rights to use,
+>> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+>> + *     sell copies of the Software, and to permit persons to whom the
+>> + *     Software is furnished to do so, subject to the following
+>> + *     conditions:
+>> + *
+>> + *     The above copyright notice and this permission notice shall be
+>> + *     included in all copies or substantial portions of the Software.
+>> + *
+>> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+>> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+>> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+>> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+>> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+>> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+>> + *     OTHER DEALINGS IN THE SOFTWARE.
+>> + */
+>> +
+>> +/ {
+>> +	/delete-node/ opp-table0;
+>> +
+>> +	cpu0_opp_table: opp_table0 {
+>> +		compatible = "operating-points-v2";
+>> +		opp-shared;
+>> +
+>> +		opp-408000000 {
+>> +			opp-hz = /bits/ 64 <408000000>;
+>> +			opp-microvolt = <950000>;
+>> +			clock-latency-ns = <40000>;
+>> +			opp-suspend;
+>> +		};
+>> +		opp-600000000 {
+>> +			opp-hz = /bits/ 64 <600000000>;
+>> +			opp-microvolt = <975000>;
+>> +		};
+>> +		opp-816000000 {
+>> +			opp-hz = /bits/ 64 <816000000>;
+>> +			opp-microvolt = <1000000>;
+>> +		};
+>> +		opp-1008000000 {
+>> +			opp-hz = /bits/ 64 <1008000000>;
+>> +			opp-microvolt = <1175000>;
+>> +		};
+>> +		opp-1200000000 {
+>> +			opp-hz = /bits/ 64 <1200000000>;
+>> +			opp-microvolt = <1275000>;
+>> +		};
+>> +		opp-1296000000 {
+>> +			opp-hz = /bits/ 64 <1296000000>;
+>> +			opp-microvolt = <1325000>;
+>> +		};
+>> +		opp-1392000000 {
+>> +			opp-hz = /bits/ 64 <1392000000>;
+>> +			opp-microvolt = <1375000>;
+>> +		};
+>> +		opp-1464000000 {
+>> +			opp-hz = /bits/ 64 <1464000000>;
+>> +			opp-microvolt = <1400000>;
+>> +		};
+>> +	};
+>> +};
+>>
+>
+>
+>
+
+
