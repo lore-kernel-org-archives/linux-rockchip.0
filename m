@@ -1,174 +1,131 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v2] PCI: use IDA to manage domain number if not getting
- it from DT
-Date: Mon, 22 May 2017 16:18:59 -0500
-Message-ID: <20170522211859.GC19733@bhelgaas-glaptop.roam.corp.google.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2] PCI: use IDA to manage domain number if not getting it
+ from DT
+Date: Tue, 23 May 2017 09:01:53 +0800
+Message-ID: <f353f4fc-ddf7-7af5-218f-47c47ee85d80@rock-chips.com>
 References: <1495072037-135458-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170522211859.GC19733@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1495072037-135458-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170522211859.GC19733-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 18, 2017 at 09:47:17AM +0800, Shawn Lin wrote:
-> If not getting domain number from DT, the domain number will
-> keep increasing once doing unbind/bind RC drivers. This could
-> introduce pointless tree view of lspci as shows below:
-> 
-> -+-[0001:00]---00.0-[01]----00.0
->   \-[0000:00]-
-> 
-> The more test we do, the lengthier it would be. The more serious
-> issue is that if attaching two hierarchies for two different domains
-> belonging to two root bridges, so when doing unbind/bind test for one
-> of them and keep the other, then the domain number would finally
-> overflow and make the two hierarchies of devices share the some domain
-> number but actually they shouldn't. So it looks like we need to invent
-> a new indexing ID mechanism to manage domain number. This patch
-> introduces idr to achieve our purpose.
-> 
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v2:
-> - add a remove wrapper
-> - rename use_dt_domains to ida_domain and set this bit
-> in pci_get_new_domain_nr and test it in the remove wrapper.
-> 
->  drivers/pci/pci.c    | 23 +++++++++++++++++------
->  drivers/pci/remove.c |  2 ++
->  include/linux/pci.h  |  9 +++++++--
->  3 files changed, 26 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index b01bd5b..8affda5 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -11,6 +11,7 @@
->  #include <linux/kernel.h>
->  #include <linux/delay.h>
->  #include <linux/dmi.h>
-> +#include <linux/idr.h>
->  #include <linux/init.h>
->  #include <linux/of.h>
->  #include <linux/of_pci.h>
-> @@ -5340,19 +5341,29 @@ static void pci_no_domains(void)
->  }
->  
->  #ifdef CONFIG_PCI_DOMAINS
-> -static atomic_t __domain_nr = ATOMIC_INIT(-1);
-> +DEFINE_IDA(__domain_nr);
->  
-> -int pci_get_new_domain_nr(void)
-> +int pci_get_new_domain_nr(struct pci_bus *bus)
->  {
-> -	return atomic_inc_return(&__domain_nr);
-> +	bus->ida_domain = true;
-> +	return ida_simple_get(&__domain_nr, 0, sizeof(u64), GFP_KERNEL);
-> +}
-> +
-> +void pci_put_old_domain_nr(struct pci_bus *bus)
-> +{
-> +	if (bus->ida_domain)
-> +		ida_simple_remove(&__domain_nr, bus->domain_nr);
->  }
->  
->  #ifdef CONFIG_PCI_DOMAINS_GENERIC
-> -static int of_pci_bus_find_domain_nr(struct device *parent)
-> +static int of_pci_bus_find_domain_nr(struct pci_bus *bus,
-> +				     struct device *parent)
->  {
->  	static int use_dt_domains = -1;
->  	int domain = -1;
->  
-> +	bus->ida_domain = false;
-> +
->  	if (parent)
->  		domain = of_get_pci_domain_nr(parent->of_node);
->  	/*
-> @@ -5385,7 +5396,7 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
->  		use_dt_domains = 1;
->  	} else if (domain < 0 && use_dt_domains != 1) {
->  		use_dt_domains = 0;
-> -		domain = pci_get_new_domain_nr();
-> +		domain = pci_get_new_domain_nr(bus);
->  	} else {
->  		dev_err(parent, "Node %s has inconsistent \"linux,pci-domain\" property in DT\n",
->  			parent->of_node->full_name);
-> @@ -5397,7 +5408,7 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
->  
->  int pci_bus_find_domain_nr(struct pci_bus *bus, struct device *parent)
->  {
-> -	return acpi_disabled ? of_pci_bus_find_domain_nr(parent) :
-> +	return acpi_disabled ? of_pci_bus_find_domain_nr(bus, parent) :
->  			       acpi_pci_bus_find_domain_nr(bus);
->  }
->  #endif
-> diff --git a/drivers/pci/remove.c b/drivers/pci/remove.c
-> index 73a03d3..1bbbb37 100644
-> --- a/drivers/pci/remove.c
-> +++ b/drivers/pci/remove.c
-> @@ -157,6 +157,8 @@ void pci_remove_root_bus(struct pci_bus *bus)
->  	list_for_each_entry_safe(child, tmp,
->  				 &bus->devices, bus_list)
->  		pci_remove_bus_device(child);
-> +
-> +	pci_put_old_domain_nr(bus);
->  	pci_remove_bus(bus);
->  	host_bridge->bus = NULL;
->  
-> diff --git a/include/linux/pci.h b/include/linux/pci.h
-> index 33c2b0b..d4f6fb8 100644
-> --- a/include/linux/pci.h
-> +++ b/include/linux/pci.h
-> @@ -513,6 +513,7 @@ struct pci_bus {
->  	unsigned char	cur_bus_speed;	/* enum pci_bus_speed */
->  #ifdef CONFIG_PCI_DOMAINS_GENERIC
->  	int		domain_nr;
-> +	bool		ida_domain;	/* get domain number from IDA */
-
-The fact that ida_domain is a member of struct pci_bus suggests that
-it can be a per-bus property.  However, I think it is actually a
-system-wide property.  If we get the domain from DT for some buses but
-via IDA for other buses, there's no mechanism to prevent collisions,
-is there?
-
-If it's a system-wide property, I'd rather have a single global
-variable for it because that makes it more obvious to the reader that
-we don't have to worry about collisions between a DT domain number and
-one from IDA.
-
->  #endif
->  
->  	char		name[48];
-> @@ -1445,13 +1446,17 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
->   * configuration space.
->   */
->  #ifdef CONFIG_PCI_DOMAINS
-> +extern struct ida __domain_nr;
->  extern int pci_domains_supported;
-> -int pci_get_new_domain_nr(void);
-> +int pci_get_new_domain_nr(struct pci_bus *bus);
-> +void pci_put_old_domain_nr(struct pci_bus *bus);
->  #else
->  enum { pci_domains_supported = 0 };
->  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
-> -static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
-> +static inline int pci_get_new_domain_nr(struct pci_bus *bus)
-> +{ return -ENOSYS; }
-> +static inline void pci_put_old_domain_nr(struct pci_bus *bus) { }
->  #endif /* CONFIG_PCI_DOMAINS */
->  
->  /*
-> -- 
-> 1.9.1
-> 
-> 
+SGkgQmpvcm4sCgrlnKggMjAxNy81LzIzIDU6MTgsIEJqb3JuIEhlbGdhYXMg5YaZ6YGTOgo+IE9u
+IFRodSwgTWF5IDE4LCAyMDE3IGF0IDA5OjQ3OjE3QU0gKzA4MDAsIFNoYXduIExpbiB3cm90ZToK
+Pj4gSWYgbm90IGdldHRpbmcgZG9tYWluIG51bWJlciBmcm9tIERULCB0aGUgZG9tYWluIG51bWJl
+ciB3aWxsCj4+IGtlZXAgaW5jcmVhc2luZyBvbmNlIGRvaW5nIHVuYmluZC9iaW5kIFJDIGRyaXZl
+cnMuIFRoaXMgY291bGQKPj4gaW50cm9kdWNlIHBvaW50bGVzcyB0cmVlIHZpZXcgb2YgbHNwY2kg
+YXMgc2hvd3MgYmVsb3c6Cj4+Cj4+IC0rLVswMDAxOjAwXS0tLTAwLjAtWzAxXS0tLS0wMC4wCj4+
+ICAgXC1bMDAwMDowMF0tCj4+Cj4+IFRoZSBtb3JlIHRlc3Qgd2UgZG8sIHRoZSBsZW5ndGhpZXIg
+aXQgd291bGQgYmUuIFRoZSBtb3JlIHNlcmlvdXMKPj4gaXNzdWUgaXMgdGhhdCBpZiBhdHRhY2hp
+bmcgdHdvIGhpZXJhcmNoaWVzIGZvciB0d28gZGlmZmVyZW50IGRvbWFpbnMKPj4gYmVsb25naW5n
+IHRvIHR3byByb290IGJyaWRnZXMsIHNvIHdoZW4gZG9pbmcgdW5iaW5kL2JpbmQgdGVzdCBmb3Ig
+b25lCj4+IG9mIHRoZW0gYW5kIGtlZXAgdGhlIG90aGVyLCB0aGVuIHRoZSBkb21haW4gbnVtYmVy
+IHdvdWxkIGZpbmFsbHkKPj4gb3ZlcmZsb3cgYW5kIG1ha2UgdGhlIHR3byBoaWVyYXJjaGllcyBv
+ZiBkZXZpY2VzIHNoYXJlIHRoZSBzb21lIGRvbWFpbgo+PiBudW1iZXIgYnV0IGFjdHVhbGx5IHRo
+ZXkgc2hvdWxkbid0LiBTbyBpdCBsb29rcyBsaWtlIHdlIG5lZWQgdG8gaW52ZW50Cj4+IGEgbmV3
+IGluZGV4aW5nIElEIG1lY2hhbmlzbSB0byBtYW5hZ2UgZG9tYWluIG51bWJlci4gVGhpcyBwYXRj
+aAo+PiBpbnRyb2R1Y2VzIGlkciB0byBhY2hpZXZlIG91ciBwdXJwb3NlLgo+Pgo+PiBDYzogQnJp
+YW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+Cj4+IENjOiBKZWZmeSBDaGVuIDxq
+ZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNo
+YXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+
+IC0gYWRkIGEgcmVtb3ZlIHdyYXBwZXIKPj4gLSByZW5hbWUgdXNlX2R0X2RvbWFpbnMgdG8gaWRh
+X2RvbWFpbiBhbmQgc2V0IHRoaXMgYml0Cj4+IGluIHBjaV9nZXRfbmV3X2RvbWFpbl9uciBhbmQg
+dGVzdCBpdCBpbiB0aGUgcmVtb3ZlIHdyYXBwZXIuCj4+Cj4+ICBkcml2ZXJzL3BjaS9wY2kuYyAg
+ICB8IDIzICsrKysrKysrKysrKysrKysrLS0tLS0tCj4+ICBkcml2ZXJzL3BjaS9yZW1vdmUuYyB8
+ICAyICsrCj4+ICBpbmNsdWRlL2xpbnV4L3BjaS5oICB8ICA5ICsrKysrKystLQo+PiAgMyBmaWxl
+cyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9wY2kvcGNpLmMgYi9kcml2ZXJzL3BjaS9wY2kuYwo+PiBpbmRleCBiMDFi
+ZDViLi44YWZmZGE1IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3BjaS9wY2kuYwo+PiArKysgYi9k
+cml2ZXJzL3BjaS9wY2kuYwo+PiBAQCAtMTEsNiArMTEsNyBAQAo+PiAgI2luY2x1ZGUgPGxpbnV4
+L2tlcm5lbC5oPgo+PiAgI2luY2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4+ICAjaW5jbHVkZSA8bGlu
+dXgvZG1pLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvaWRyLmg+Cj4+ICAjaW5jbHVkZSA8bGludXgv
+aW5pdC5oPgo+PiAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4+ICAjaW5jbHVkZSA8bGludXgvb2Zf
+cGNpLmg+Cj4+IEBAIC01MzQwLDE5ICs1MzQxLDI5IEBAIHN0YXRpYyB2b2lkIHBjaV9ub19kb21h
+aW5zKHZvaWQpCj4+ICB9Cj4+Cj4+ICAjaWZkZWYgQ09ORklHX1BDSV9ET01BSU5TCj4+IC1zdGF0
+aWMgYXRvbWljX3QgX19kb21haW5fbnIgPSBBVE9NSUNfSU5JVCgtMSk7Cj4+ICtERUZJTkVfSURB
+KF9fZG9tYWluX25yKTsKPj4KPj4gLWludCBwY2lfZ2V0X25ld19kb21haW5fbnIodm9pZCkKPj4g
+K2ludCBwY2lfZ2V0X25ld19kb21haW5fbnIoc3RydWN0IHBjaV9idXMgKmJ1cykKPj4gIHsKPj4g
+LQlyZXR1cm4gYXRvbWljX2luY19yZXR1cm4oJl9fZG9tYWluX25yKTsKPj4gKwlidXMtPmlkYV9k
+b21haW4gPSB0cnVlOwo+PiArCXJldHVybiBpZGFfc2ltcGxlX2dldCgmX19kb21haW5fbnIsIDAs
+IHNpemVvZih1NjQpLCBHRlBfS0VSTkVMKTsKPj4gK30KPj4gKwo+PiArdm9pZCBwY2lfcHV0X29s
+ZF9kb21haW5fbnIoc3RydWN0IHBjaV9idXMgKmJ1cykKPj4gK3sKPj4gKwlpZiAoYnVzLT5pZGFf
+ZG9tYWluKQo+PiArCQlpZGFfc2ltcGxlX3JlbW92ZSgmX19kb21haW5fbnIsIGJ1cy0+ZG9tYWlu
+X25yKTsKPj4gIH0KPj4KPj4gICNpZmRlZiBDT05GSUdfUENJX0RPTUFJTlNfR0VORVJJQwo+PiAt
+c3RhdGljIGludCBvZl9wY2lfYnVzX2ZpbmRfZG9tYWluX25yKHN0cnVjdCBkZXZpY2UgKnBhcmVu
+dCkKPj4gK3N0YXRpYyBpbnQgb2ZfcGNpX2J1c19maW5kX2RvbWFpbl9ucihzdHJ1Y3QgcGNpX2J1
+cyAqYnVzLAo+PiArCQkJCSAgICAgc3RydWN0IGRldmljZSAqcGFyZW50KQo+PiAgewo+PiAgCXN0
+YXRpYyBpbnQgdXNlX2R0X2RvbWFpbnMgPSAtMTsKPj4gIAlpbnQgZG9tYWluID0gLTE7Cj4+Cj4+
+ICsJYnVzLT5pZGFfZG9tYWluID0gZmFsc2U7Cj4+ICsKPj4gIAlpZiAocGFyZW50KQo+PiAgCQlk
+b21haW4gPSBvZl9nZXRfcGNpX2RvbWFpbl9ucihwYXJlbnQtPm9mX25vZGUpOwo+PiAgCS8qCj4+
+IEBAIC01Mzg1LDcgKzUzOTYsNyBAQCBzdGF0aWMgaW50IG9mX3BjaV9idXNfZmluZF9kb21haW5f
+bnIoc3RydWN0IGRldmljZSAqcGFyZW50KQo+PiAgCQl1c2VfZHRfZG9tYWlucyA9IDE7Cj4+ICAJ
+fSBlbHNlIGlmIChkb21haW4gPCAwICYmIHVzZV9kdF9kb21haW5zICE9IDEpIHsKPj4gIAkJdXNl
+X2R0X2RvbWFpbnMgPSAwOwo+PiAtCQlkb21haW4gPSBwY2lfZ2V0X25ld19kb21haW5fbnIoKTsK
+Pj4gKwkJZG9tYWluID0gcGNpX2dldF9uZXdfZG9tYWluX25yKGJ1cyk7Cj4+ICAJfSBlbHNlIHsK
+Pj4gIAkJZGV2X2VycihwYXJlbnQsICJOb2RlICVzIGhhcyBpbmNvbnNpc3RlbnQgXCJsaW51eCxw
+Y2ktZG9tYWluXCIgcHJvcGVydHkgaW4gRFRcbiIsCj4+ICAJCQlwYXJlbnQtPm9mX25vZGUtPmZ1
+bGxfbmFtZSk7Cj4+IEBAIC01Mzk3LDcgKzU0MDgsNyBAQCBzdGF0aWMgaW50IG9mX3BjaV9idXNf
+ZmluZF9kb21haW5fbnIoc3RydWN0IGRldmljZSAqcGFyZW50KQo+Pgo+PiAgaW50IHBjaV9idXNf
+ZmluZF9kb21haW5fbnIoc3RydWN0IHBjaV9idXMgKmJ1cywgc3RydWN0IGRldmljZSAqcGFyZW50
+KQo+PiAgewo+PiAtCXJldHVybiBhY3BpX2Rpc2FibGVkID8gb2ZfcGNpX2J1c19maW5kX2RvbWFp
+bl9ucihwYXJlbnQpIDoKPj4gKwlyZXR1cm4gYWNwaV9kaXNhYmxlZCA/IG9mX3BjaV9idXNfZmlu
+ZF9kb21haW5fbnIoYnVzLCBwYXJlbnQpIDoKPj4gIAkJCSAgICAgICBhY3BpX3BjaV9idXNfZmlu
+ZF9kb21haW5fbnIoYnVzKTsKPj4gIH0KPj4gICNlbmRpZgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9wY2kvcmVtb3ZlLmMgYi9kcml2ZXJzL3BjaS9yZW1vdmUuYwo+PiBpbmRleCA3M2EwM2QzLi4x
+YmJiYjM3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3BjaS9yZW1vdmUuYwo+PiArKysgYi9kcml2
+ZXJzL3BjaS9yZW1vdmUuYwo+PiBAQCAtMTU3LDYgKzE1Nyw4IEBAIHZvaWQgcGNpX3JlbW92ZV9y
+b290X2J1cyhzdHJ1Y3QgcGNpX2J1cyAqYnVzKQo+PiAgCWxpc3RfZm9yX2VhY2hfZW50cnlfc2Fm
+ZShjaGlsZCwgdG1wLAo+PiAgCQkJCSAmYnVzLT5kZXZpY2VzLCBidXNfbGlzdCkKPj4gIAkJcGNp
+X3JlbW92ZV9idXNfZGV2aWNlKGNoaWxkKTsKPj4gKwo+PiArCXBjaV9wdXRfb2xkX2RvbWFpbl9u
+cihidXMpOwo+PiAgCXBjaV9yZW1vdmVfYnVzKGJ1cyk7Cj4+ICAJaG9zdF9icmlkZ2UtPmJ1cyA9
+IE5VTEw7Cj4+Cj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L3BjaS5oIGIvaW5jbHVkZS9s
+aW51eC9wY2kuaAo+PiBpbmRleCAzM2MyYjBiLi5kNGY2ZmI4IDEwMDY0NAo+PiAtLS0gYS9pbmNs
+dWRlL2xpbnV4L3BjaS5oCj4+ICsrKyBiL2luY2x1ZGUvbGludXgvcGNpLmgKPj4gQEAgLTUxMyw2
+ICs1MTMsNyBAQCBzdHJ1Y3QgcGNpX2J1cyB7Cj4+ICAJdW5zaWduZWQgY2hhcgljdXJfYnVzX3Nw
+ZWVkOwkvKiBlbnVtIHBjaV9idXNfc3BlZWQgKi8KPj4gICNpZmRlZiBDT05GSUdfUENJX0RPTUFJ
+TlNfR0VORVJJQwo+PiAgCWludAkJZG9tYWluX25yOwo+PiArCWJvb2wJCWlkYV9kb21haW47CS8q
+IGdldCBkb21haW4gbnVtYmVyIGZyb20gSURBICovCj4KPiBUaGUgZmFjdCB0aGF0IGlkYV9kb21h
+aW4gaXMgYSBtZW1iZXIgb2Ygc3RydWN0IHBjaV9idXMgc3VnZ2VzdHMgdGhhdAo+IGl0IGNhbiBi
+ZSBhIHBlci1idXMgcHJvcGVydHkuICBIb3dldmVyLCBJIHRoaW5rIGl0IGlzIGFjdHVhbGx5IGEK
+PiBzeXN0ZW0td2lkZSBwcm9wZXJ0eS4gIElmIHdlIGdldCB0aGUgZG9tYWluIGZyb20gRFQgZm9y
+IHNvbWUgYnVzZXMgYnV0Cj4gdmlhIElEQSBmb3Igb3RoZXIgYnVzZXMsIHRoZXJlJ3Mgbm8gbWVj
+aGFuaXNtIHRvIHByZXZlbnQgY29sbGlzaW9ucywKPiBpcyB0aGVyZT8KCnllcywgeW91IGFyZSBy
+aWdodC4KCj4KPiBJZiBpdCdzIGEgc3lzdGVtLXdpZGUgcHJvcGVydHksIEknZCByYXRoZXIgaGF2
+ZSBhIHNpbmdsZSBnbG9iYWwKPiB2YXJpYWJsZSBmb3IgaXQgYmVjYXVzZSB0aGF0IG1ha2VzIGl0
+IG1vcmUgb2J2aW91cyB0byB0aGUgcmVhZGVyIHRoYXQKPiB3ZSBkb24ndCBoYXZlIHRvIHdvcnJ5
+IGFib3V0IGNvbGxpc2lvbnMgYmV0d2VlbiBhIERUIGRvbWFpbiBudW1iZXIgYW5kCj4gb25lIGZy
+b20gSURBLgoKb2ssIHdpbGwgcmVzcGluIHYzIHRvIGFkZHJlc3MgdGhpcy4KCgoKVGhhbmtzLgoK
+Pgo+PiAgI2VuZGlmCj4+Cj4+ICAJY2hhcgkJbmFtZVs0OF07Cj4+IEBAIC0xNDQ1LDEzICsxNDQ2
+LDE3IEBAIHN0YXRpYyBpbmxpbmUgaW50IHBjaV9lbmFibGVfcHRtKHN0cnVjdCBwY2lfZGV2ICpk
+ZXYsIHU4ICpncmFudWxhcml0eSkKPj4gICAqIGNvbmZpZ3VyYXRpb24gc3BhY2UuCj4+ICAgKi8K
+Pj4gICNpZmRlZiBDT05GSUdfUENJX0RPTUFJTlMKPj4gK2V4dGVybiBzdHJ1Y3QgaWRhIF9fZG9t
+YWluX25yOwo+PiAgZXh0ZXJuIGludCBwY2lfZG9tYWluc19zdXBwb3J0ZWQ7Cj4+IC1pbnQgcGNp
+X2dldF9uZXdfZG9tYWluX25yKHZvaWQpOwo+PiAraW50IHBjaV9nZXRfbmV3X2RvbWFpbl9ucihz
+dHJ1Y3QgcGNpX2J1cyAqYnVzKTsKPj4gK3ZvaWQgcGNpX3B1dF9vbGRfZG9tYWluX25yKHN0cnVj
+dCBwY2lfYnVzICpidXMpOwo+PiAgI2Vsc2UKPj4gIGVudW0geyBwY2lfZG9tYWluc19zdXBwb3J0
+ZWQgPSAwIH07Cj4+ICBzdGF0aWMgaW5saW5lIGludCBwY2lfZG9tYWluX25yKHN0cnVjdCBwY2lf
+YnVzICpidXMpIHsgcmV0dXJuIDA7IH0KPj4gIHN0YXRpYyBpbmxpbmUgaW50IHBjaV9wcm9jX2Rv
+bWFpbihzdHJ1Y3QgcGNpX2J1cyAqYnVzKSB7IHJldHVybiAwOyB9Cj4+IC1zdGF0aWMgaW5saW5l
+IGludCBwY2lfZ2V0X25ld19kb21haW5fbnIodm9pZCkgeyByZXR1cm4gLUVOT1NZUzsgfQo+PiAr
+c3RhdGljIGlubGluZSBpbnQgcGNpX2dldF9uZXdfZG9tYWluX25yKHN0cnVjdCBwY2lfYnVzICpi
+dXMpCj4+ICt7IHJldHVybiAtRU5PU1lTOyB9Cj4+ICtzdGF0aWMgaW5saW5lIHZvaWQgcGNpX3B1
+dF9vbGRfZG9tYWluX25yKHN0cnVjdCBwY2lfYnVzICpidXMpIHsgfQo+PiAgI2VuZGlmIC8qIENP
+TkZJR19QQ0lfRE9NQUlOUyAqLwo+Pgo+PiAgLyoKPj4gLS0KPj4gMS45LjEKPj4KPj4KPgo+Cj4K
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
