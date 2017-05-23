@@ -1,93 +1,68 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: introduce rk3399-op1 operating
- points
-Date: Tue, 23 May 2017 18:38:23 +0200
-Message-ID: <9616868.DoOFoaYK71@phil>
-References: <20170523095109.7337-1-heiko@sntech.de> <1597629.2TFUO1J4Mt@phil>
- <CAD=FV=WjwDd6VmeWmMxBb0_kE78zsbqiqxg7u4zXQy6LWWPV6A@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] PCI: rockchip: check link status when validating device
+Date: Tue, 23 May 2017 11:00:49 -0700
+Message-ID: <20170523180048.GA115572@google.com>
+References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=WjwDd6VmeWmMxBb0_kE78zsbqiqxg7u4zXQy6LWWPV6A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. Mai 2017, 09:35:05 CEST schrieb Doug Anderson:
-> Hi,
+On Fri, May 19, 2017 at 02:58:27PM +0800, Shawn Lin wrote:
+> This patch checks the link status before reading and
+> writing configure space of devices attached to the RC.
+> If the link status is down, we shouldn't try to access
+> the devices.
+
+I'm curious, in what situations are you seeing the link down? In all the
+cases where I can manage to screw up my endpoint and see system aborts
+due to config accesses, this check still says the link is up. Presumably
+you have some test cases that benefit from this though.
+
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
 > 
-> On Tue, May 23, 2017 at 9:10 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> > Am Dienstag, 23. Mai 2017, 08:57:01 CEST schrieb Doug Anderson:
-> >> Hi,
-> >>
-> >> On Tue, May 23, 2017 at 2:51 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> >> > The OP1 is a rk3399 variant used in ChromeOS devices with a slightly
-> >> > higher frequency rating. Therefore introduce separate operting points,
-> >> > from the ChromeOS tree, for it and use it in Gru devices.
-> >> >
-> >> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> >> > ---
-> >> >  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi     |   2 +-
-> >> >  arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 145 +++++++++++++++++++++++
-> >> >  2 files changed, 146 insertions(+), 1 deletion(-)
-> >> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-> >>
-> >> The numbers here match what's in the Chrome OS tree and those were all
-> >> approved by Rockchip.
-> >>
-> >> One slight nit is that the descriptions these two patches together
-> >> make it look like this will be a no-op change for OP1 devices.  This
-> >> is not true.  After things were posted upstream there have been
-> >> several adjustments to the opp points in the Chrome OS tree.  Since
-> >> what you have currently matches the ToT Chrome OS tree, that should
-> >> mean that there's a net difference.  It would be nice to mention that
-> >> in the commit message.
-> >
-> > In the mainline kernel it is a no-op change, as we're still running with
-> > the cpu-regulators disabled on gru ;-)
+>  drivers/pci/host/pcie-rockchip.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> Ah, that's true.
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 0e020b6..1e64227 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -275,9 +275,21 @@ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
+>  	rockchip_pcie_write(rockchip, val, PCIE_CORE_TXCREDIT_CFG1);
+>  }
+>  
+> +static inline bool rockchip_pcie_link_up(struct rockchip_pcie *rockchip)
+> +{
+> +	return PCIE_LINK_UP(rockchip_pcie_read(rockchip,
+> +					PCIE_CLIENT_BASIC_STATUS1));
+> +}
+> +
+>  static int rockchip_pcie_valid_device(struct rockchip_pcie *rockchip,
+>  				      struct pci_bus *bus, int dev)
+>  {
+> +	/* do not access the devices if the link isn't completed */
+> +	if (bus->number != rockchip->root_bus_nr) {
+> +		if (!rockchip_pcie_link_up(rockchip))
+> +			return 0;
+> +	}
+
+Seems like this should be the last check in the function, after you
+check that the bus and dev numbers are reasonable?
+
+Brian
+
+> +
+>  	/* access only one slot on each root port */
+>  	if (bus->number == rockchip->root_bus_nr && dev > 0)
+>  		return 0;
+> -- 
+> 1.9.1
 > 
 > 
-> > But to address your very valid point, I guess you mean something like
-> >
-> > ----
-> > The OP1 is a rk3399 variant used in ChromeOS devices with a slightly
-> > higher frequency rating compared to the regular rk3399, but right now
-> > the only available operating points are somewhere in between both
-> > variants with both needing adjustments to actually fit their specs.
-> 
-> That would be fine and would make it obvious that it's a no-op.
-> Ironically, the OPP points that were in mainline were actually not
-> totally in between.  There were some numbers that were raised for
-> both.  :)
-
-wording fun ... then we'll make that part a
-
-"[...] but right now
-the only available operating points don't match either variant
-with both needing adjustments to actually fit their specs."
-
-
-
-> > Therefore introduce separate operting points, from the ChromeOS kernel,
-> > for the OP1 and use it on Gru devices.
-> > ----
-> >
-> > And I guess we should also swap patch ordering, first move Gru away from
-> > the general opps and then adust them for the regular rk3399.
-> 
-> Yeah, I think swapping the order would make it slightly better.
-
-
-Heiko
