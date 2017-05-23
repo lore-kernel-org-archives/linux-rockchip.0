@@ -1,53 +1,77 @@
-From: Doug Anderson <dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH 2/2] arm64: dts: rockchip: introduce rk3399-op1 operating
  points
-Date: Tue, 23 May 2017 08:57:01 -0700
-Message-ID: <CAD=FV=XbUjuvt+ctm8Xw6JPqe7m4PdyZ1hm3Uast2+1+nJ=nPw@mail.gmail.com>
+Date: Tue, 23 May 2017 18:10:01 +0200
+Message-ID: <1597629.2TFUO1J4Mt@phil>
 References: <20170523095109.7337-1-heiko@sntech.de>
  <20170523095109.7337-2-heiko@sntech.de>
+ <CAD=FV=XbUjuvt+ctm8Xw6JPqe7m4PdyZ1hm3Uast2+1+nJ=nPw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170523095109.7337-2-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, eddie.cai.linux@gmail.com, Brian Norris <briannorris@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Caesar <wxt@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=XbUjuvt+ctm8Xw6JPqe7m4PdyZ1hm3Uast2+1+nJ=nPw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Am Dienstag, 23. Mai 2017, 08:57:01 CEST schrieb Doug Anderson:
+> Hi,
+> 
+> On Tue, May 23, 2017 at 2:51 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > The OP1 is a rk3399 variant used in ChromeOS devices with a slightly
+> > higher frequency rating. Therefore introduce separate operting points,
+> > from the ChromeOS tree, for it and use it in Gru devices.
+> >
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi     |   2 +-
+> >  arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 145 +++++++++++++++++++++++
+> >  2 files changed, 146 insertions(+), 1 deletion(-)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
+> 
+> The numbers here match what's in the Chrome OS tree and those were all
+> approved by Rockchip.
+> 
+> One slight nit is that the descriptions these two patches together
+> make it look like this will be a no-op change for OP1 devices.  This
+> is not true.  After things were posted upstream there have been
+> several adjustments to the opp points in the Chrome OS tree.  Since
+> what you have currently matches the ToT Chrome OS tree, that should
+> mean that there's a net difference.  It would be nice to mention that
+> in the commit message.
 
-On Tue, May 23, 2017 at 2:51 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> The OP1 is a rk3399 variant used in ChromeOS devices with a slightly
-> higher frequency rating. Therefore introduce separate operting points,
-> from the ChromeOS tree, for it and use it in Gru devices.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi     |   2 +-
->  arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 145 +++++++++++++++++++++++
->  2 files changed, 146 insertions(+), 1 deletion(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
+In the mainline kernel it is a no-op change, as we're still running with
+the cpu-regulators disabled on gru ;-)
 
-The numbers here match what's in the Chrome OS tree and those were all
-approved by Rockchip.
+But to address your very valid point, I guess you mean something like
 
-One slight nit is that the descriptions these two patches together
-make it look like this will be a no-op change for OP1 devices.  This
-is not true.  After things were posted upstream there have been
-several adjustments to the opp points in the Chrome OS tree.  Since
-what you have currently matches the ToT Chrome OS tree, that should
-mean that there's a net difference.  It would be nice to mention that
-in the commit message.
+----
+The OP1 is a rk3399 variant used in ChromeOS devices with a slightly
+higher frequency rating compared to the regular rk3399, but right now
+the only available operating points are somewhere in between both
+variants with both needing adjustments to actually fit their specs.
 
-Other than that small nit:
+Therefore introduce separate operting points, from the ChromeOS kernel,
+for the OP1 and use it on Gru devices.
+----
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+And I guess we should also swap patch ordering, first move Gru away from
+the general opps and then adust them for the regular rk3399.
+
+
+> Other than that small nit:
+> 
+> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+
+Heiko
