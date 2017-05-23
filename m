@@ -1,65 +1,101 @@
 From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/4] PCI: rockchip: rename rockchip_cfg_atu to
- rockchip_pcie_cfg_atu
-Date: Tue, 23 May 2017 14:39:53 -0500
-Message-ID: <20170523193953.GB7241@bhelgaas-glaptop.roam.corp.google.com>
-References: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: rockchip: Configure RC's MPS setting
+Date: Tue, 23 May 2017 14:42:32 -0500
+Message-ID: <20170523194232.GC7241@bhelgaas-glaptop.roam.corp.google.com>
+References: <1493887204-5501-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1493887204-5501-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 04, 2017 at 10:24:48AM +0800, Shawn Lin wrote:
-> Rename it in order to keep the name consistent with other
-> functions' in pcie-rockchip.
+On Thu, May 04, 2017 at 04:40:04PM +0800, Shawn Lin wrote:
+> The default value of MPS for RC is 128 bytes, but actually
+> it could support 256 bytes. So this patch fix this issue.
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Applied all four of these to pci/host-rockchip for v4.13, thanks!
+Applied to pci/host-rockchip for v4.13, thanks!
 
-I dropped some extra blank lines from patch 3.
+This didn't apply cleanly on top of the previous restructuring
+patches, so I'm attaching the patch as applied.  Let me know if you
+want the MPS setting with the PCIE_RC_BAR_CONF instead of with the
+PCIE_RC_CONFIG_LINK_CAP.
+
+commit 60f8ed61a6bc729ba3367e6f1a2dd3a80c94cd73
+Author: Shawn Lin <shawn.lin@rock-chips.com>
+Date:   Tue May 23 14:32:56 2017 -0500
+
+    PCI: rockchip: Configure RC's MPS setting
+    
+    The default value of MPS for RC is 128 bytes, but actually it could support
+    256 bytes.  So this patch fixes this issue.
+    
+    Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+    Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index bf0ff579e515..2e832b1d6c24 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -146,6 +146,9 @@
+ #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+ #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+ #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
++#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_BASE + 0xc8)
++#define   PCIE_RC_CONFIG_DCSR_MPS_MASK		GENMASK(7, 5)
++#define   PCIE_RC_CONFIG_DCSR_MPS_256		(0x1 << 5)
+ #define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+ #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+ #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
+@@ -701,6 +704,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
+ 	}
+ 
++	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCSR);
++	status &= ~PCIE_RC_CONFIG_DCSR_MPS_MASK;
++	status |= PCIE_RC_CONFIG_DCSR_MPS_256;
++	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
++
+ 	return 0;
+ }
+ 
 
 > ---
 > 
->  drivers/pci/host/pcie-rockchip.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/pci/host/pcie-rockchip.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 > 
 > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index c8ca796..ac08b4c 100644
+> index 0e020b6..a05fec5 100644
 > --- a/drivers/pci/host/pcie-rockchip.c
 > +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1156,7 +1156,7 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
->  	return 0;
->  }
->  
-> -static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
-> +static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
->  {
->  	struct device *dev = rockchip->dev;
->  	int offset;
-> @@ -1279,7 +1279,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  	if (err)
->  		return err;
->  
-> -	err = rockchip_cfg_atu(rockchip);
-> +	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
->  		return err;
->  
-> @@ -1396,7 +1396,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		}
+> @@ -146,6 +146,9 @@
+>  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+>  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+>  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
+> +#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_BASE + 0xc8)
+> +#define   PCIE_RC_CONFIG_DCSR_MPS_MASK		GENMASK(7, 5)
+> +#define   PCIE_RC_CONFIG_DCSR_MPS_256		(0x1 << 5)
+>  #define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+>  #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+>  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
+> @@ -664,6 +667,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
 >  	}
 >  
-> -	err = rockchip_cfg_atu(rockchip);
-> +	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
->  		goto err_free_res;
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCSR);
+> +	status &= ~PCIE_RC_CONFIG_DCSR_MPS_MASK;
+> +	status |= PCIE_RC_CONFIG_DCSR_MPS_256;
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
+> +
+>  	rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
 >  
+>  	rockchip_pcie_write(rockchip,
 > -- 
 > 1.9.1
 > 
