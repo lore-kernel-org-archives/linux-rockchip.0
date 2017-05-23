@@ -1,63 +1,40 @@
-From: Eddie Cai <eddie.cai.linux@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: update cpu opp table for rk3399 op1
-Date: Tue, 23 May 2017 10:51:05 +0800
-Message-ID: <CAJrj+DPZf0Tb454R0=uAXRBDL-Ci63bZZ1ujWnYnsh94eY_0Zw@mail.gmail.com>
-References: <1493014730-9670-1-git-send-email-wxt@rock-chips.com>
- <3119382.DFiP2J6FnE@diego> <CAJrj+DPzj0hieOHHpoxL4_uPUyaOa7LADJw+4_82VDZiPKxy1g@mail.gmail.com>
- <2392465.b79CVULcOX@phil>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
+Date: Tue, 23 May 2017 14:39:43 +0800
+Message-ID: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2392465.b79CVULcOX@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Douglas Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
-
-2017-05-22 23:02 GMT+08:00 Heiko Stuebner <heiko@sntech.de>:
-> Hi Eddie, Caesar,
->
-> Am Montag, 24. April 2017, 18:29:26 CEST schrieb Eddie Cai:
->> Hi Heiko
->>
->> 2017-04-24 17:15 GMT+08:00 Heiko St=C3=BCbner <heiko@sntech.de>:
->> > Am Montag, 24. April 2017, 16:49:08 CEST schrieb Caesar Wang:
->> >> =E5=9C=A8 2017=E5=B9=B404=E6=9C=8824=E6=97=A5 16:26, Heiko St=C3=BCbn=
-er =E5=86=99=E9=81=93:
->> >> > Hi Caesar,
->> >> >
->> >> > Am Montag, 24. April 2017, 14:18:50 CEST schrieb Caesar Wang:
->> >> >> Update the cpu opp table for rk3399 op1.
->> >> >
->> >> > Ideally this should contain something about the "why".
->> >> > Are these new voltage settings safer to operate under?
->> >>
->> >> The before opp table is for earlier batch of rk3399 SoCs,  that's no
->> >> enough for the current and
->> >> newer batch of rk3399 op1. In order to suit for the rk3399 op1, we ne=
-ed
->> >> to little voltages changed.
->> >
->> > just to make sure, this is also safe for all the non-chromebook rk3399=
- socs
->> > (like the firefly and tv-boxes, etc), right?
->> This is only for op1. other 3399s should have a different opp table
->
-> digging this up, as I'm right now working on a rk3399-firefly, could you
-> provide the correct opp tables for the available rk3399 variants please?
->
-> I.e. generally safe opps for boards like the firefly and the special ones
-> for op1-based devices?
-here is for 3399:
-https://github.com/rockchip-linux/kernel/blob/release-4.4/arch/arm64/boot/d=
-ts/rockchip/rk3399-opp.dtsi
-here is for op1:
-https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-=
-4.4/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
->
->
-> Thanks
-> Heiko
+VGhlIHN5c3RlbSB3b3VsZCBjcmFzaCB3aGVuIHRyeWluZyB0byBhbGxvYyB6ZXJvIHNpemVkIGdl
+bSBidWZmZXI6ClsgICAgNi43MTI0MzVdIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIE5VTEwgcG9p
+bnRlciBkZXJlZmVyZW5jZSBhdCB2aXJ0dWFsIGFkZHJlc3MgMDAwMDAwMTAgPC0tWkVST19TSVpF
+X1BUUgouLi4KWyAgICA2Ljc1NzUwMl0gUEMgaXMgYXQgc2dfYWxsb2NfdGFibGVfZnJvbV9wYWdl
+cysweDE3MC8weDFlYwoKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2Nr
+LWNoaXBzLmNvbT4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
+ZW0uYyB8IDUgKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwppbmRleCBkZjllNTcwLi44OTE3
+OTIyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
+bS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKQEAg
+LTMxNSw2ICszMTUsMTEgQEAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKgogCXN0cnVjdCBk
+cm1fZ2VtX29iamVjdCAqb2JqOwogCWludCByZXQ7CiAKKwlpZiAoIXNpemUpIHsKKwkJRFJNX0VS
+Uk9SKCJnZW0gYnVmZmVyIHNpemUgaXMgemVyb1xuIik7CisJCXJldHVybiBFUlJfUFRSKC1FSU5W
+QUwpOworCX0KKwogCXNpemUgPSByb3VuZF91cChzaXplLCBQQUdFX1NJWkUpOwogCiAJcmtfb2Jq
+ID0ga3phbGxvYyhzaXplb2YoKnJrX29iaiksIEdGUF9LRVJORUwpOwotLSAKMi4xLjQKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
