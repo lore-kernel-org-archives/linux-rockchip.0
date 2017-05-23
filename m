@@ -1,50 +1,71 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] clk: rockchip: add dt-binding header for rk3128
-Date: Tue, 23 May 2017 10:29:52 +0200
-Message-ID: <1725571.3NA4bbO7jm@phil>
-References: <1495501865-18512-1-git-send-email-zhangqing@rock-chips.com> <1495501865-18512-2-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: add sdmmc/sdio/emmc nodes for RK3328 SoCs
+Date: Tue, 23 May 2017 16:41:02 +0800
+Message-ID: <1495528862-29452-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1495528862-29452-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1495501865-18512-2-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1495528862-29452-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+This patch adds sdmmc, sdio, emmc nodes for Rockchip RK3328 SoCs.
 
-Am Dienstag, 23. Mai 2017, 09:11:03 CEST schrieb Elaine Zhang:
-> Add the dt-bindings header for the rk3128,
-> that gets shared between the clock controller and
-> the clock references in the dts.
-> Add softreset ID for rk3128.
-> And it also applies to the RK3126 SoC.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  include/dt-bindings/clock/rk3128-cru.h | 283 +++++++++++++++++++++++++++++++++
->  1 file changed, 283 insertions(+)
->  create mode 100644 include/dt-bindings/clock/rk3128-cru.h
-> 
-> diff --git a/include/dt-bindings/clock/rk3128-cru.h b/include/dt-bindings/clock/rk3128-cru.h
-> new file mode 100644
-> index 000000000000..5f055a41584b
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/rk3128-cru.h
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-[...]
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 33 ++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-> +#define SCLK_USB480M		154
-> +#define SCLK_USB480M_PHY	155
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 7e69f1f..3210692 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -372,6 +372,39 @@
+ 			<32768>;
+ 	};
+ 
++	sdmmc: dwmmc@ff500000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff500000 0x0 0x4000>;
++		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
++			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
++	sdio: dwmmc@ff510000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff510000 0x0 0x4000>;
++		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
++			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
++	emmc: dwmmc@ff520000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff520000 0x0 0x4000>;
++		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
++			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
+ 	gmac2io: ethernet@ff540000 {
+ 		compatible = "rockchip,rk3328-gmac";
+ 		reg = <0x0 0xff540000 0x0 0x10000>;
+-- 
+1.9.1
 
-We probably don't need the clock-id for USB480M_PHY, as it is an external
-clock and is unused. Instead as I wrote in the previous patch, it should
-be added to the list of external clocks in the binding txt document.
 
-
-Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
