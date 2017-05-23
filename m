@@ -1,111 +1,66 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] PCI: Make error code types consistent in
- pci_{read,write}_config_*
-Date: Tue, 23 May 2017 12:36:58 -0700
-Message-ID: <20170523193655.GA144183@google.com>
-References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
- <20170523184359.GB115572@google.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/4] PCI: rockchip: rename rockchip_cfg_atu to
+ rockchip_pcie_cfg_atu
+Date: Tue, 23 May 2017 14:39:53 -0500
+Message-ID: <20170523193953.GB7241@bhelgaas-glaptop.roam.corp.google.com>
+References: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170523184359.GB115572@google.com>
+In-Reply-To: <1493864691-102523-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Krishna Dhulipala <krishnad@fb.com>, Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>, Wei Zhang <wzhang@fb.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Callers normally treat the config space accessors as returning PCBIOS_*
-error codes, not Linux error codes (or they don't look at them at all).
-We have pcibios_err_to_errno(), in case the error code needs translated.
-
-Fixes: 4b1038834739 ("PCI: Don't attempt config access to disconnected devices")
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-+ others, change subject
-
-On Tue, May 23, 2017 at 11:44:01AM -0700, Brian Norris wrote:
-> But the high level code doesn't handle this
-> consistently. See, e.g., pci_read_config_byte() which can return regular
-> Linux error codes (like -ENODEV), except it also passes up the return
-> code of pci_read_config_byte() (a PCIBIOS_* code) directly.
-
-Apparently this is new (inconsistent) behavior in 4.12-rc1. Seems like
-an oversight to me.
-
-> So callers don't really know whether to treat the value from
-> pci_read_config_<foo>() as a PCIBIOS_* code (which should be translated
-> with pcibios_err_to_errno()) or as a standard Linux errno.
+On Thu, May 04, 2017 at 10:24:48AM +0800, Shawn Lin wrote:
+> Rename it in order to keep the name consistent with other
+> functions' in pcie-rockchip.
 > 
-> But then, there are relatively few callers (less than 10% of
-> pci_read_config_<foo>(); even fewer for writes) that actually check the
-> error codes...
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Applied all four of these to pci/host-rockchip for v4.13, thanks!
+
+I dropped some extra blank lines from patch 3.
+
+> ---
 > 
-> Maybe the "fix" is to replace -ENODEV with PCIBIOS_DEVICE_NOT_FOUND for
-> the inconsistent cases (pci_{read,write}_config_{byte,word,dword}()).
-
-Fix implemented in the surrounding patch.
-
- drivers/pci/access.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index 74cf5fffb1e1..c80e37a69305 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -896,7 +896,7 @@ int pci_read_config_byte(const struct pci_dev *dev, int where, u8 *val)
- {
- 	if (pci_dev_is_disconnected(dev)) {
- 		*val = ~0;
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	}
- 	return pci_bus_read_config_byte(dev->bus, dev->devfn, where, val);
- }
-@@ -906,7 +906,7 @@ int pci_read_config_word(const struct pci_dev *dev, int where, u16 *val)
- {
- 	if (pci_dev_is_disconnected(dev)) {
- 		*val = ~0;
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	}
- 	return pci_bus_read_config_word(dev->bus, dev->devfn, where, val);
- }
-@@ -917,7 +917,7 @@ int pci_read_config_dword(const struct pci_dev *dev, int where,
- {
- 	if (pci_dev_is_disconnected(dev)) {
- 		*val = ~0;
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	}
- 	return pci_bus_read_config_dword(dev->bus, dev->devfn, where, val);
- }
-@@ -926,7 +926,7 @@ EXPORT_SYMBOL(pci_read_config_dword);
- int pci_write_config_byte(const struct pci_dev *dev, int where, u8 val)
- {
- 	if (pci_dev_is_disconnected(dev))
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	return pci_bus_write_config_byte(dev->bus, dev->devfn, where, val);
- }
- EXPORT_SYMBOL(pci_write_config_byte);
-@@ -934,7 +934,7 @@ EXPORT_SYMBOL(pci_write_config_byte);
- int pci_write_config_word(const struct pci_dev *dev, int where, u16 val)
- {
- 	if (pci_dev_is_disconnected(dev))
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	return pci_bus_write_config_word(dev->bus, dev->devfn, where, val);
- }
- EXPORT_SYMBOL(pci_write_config_word);
-@@ -943,7 +943,7 @@ int pci_write_config_dword(const struct pci_dev *dev, int where,
- 					 u32 val)
- {
- 	if (pci_dev_is_disconnected(dev))
--		return -ENODEV;
-+		return PCIBIOS_DEVICE_NOT_FOUND;
- 	return pci_bus_write_config_dword(dev->bus, dev->devfn, where, val);
- }
- EXPORT_SYMBOL(pci_write_config_dword);
--- 
-2.13.0.219.gdb65acc882-goog
+>  drivers/pci/host/pcie-rockchip.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index c8ca796..ac08b4c 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1156,7 +1156,7 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+>  	return 0;
+>  }
+>  
+> -static int rockchip_cfg_atu(struct rockchip_pcie *rockchip)
+> +static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
+>  {
+>  	struct device *dev = rockchip->dev;
+>  	int offset;
+> @@ -1279,7 +1279,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+>  	if (err)
+>  		return err;
+>  
+> -	err = rockchip_cfg_atu(rockchip);
+> +	err = rockchip_pcie_cfg_atu(rockchip);
+>  	if (err)
+>  		return err;
+>  
+> @@ -1396,7 +1396,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> -	err = rockchip_cfg_atu(rockchip);
+> +	err = rockchip_pcie_cfg_atu(rockchip);
+>  	if (err)
+>  		goto err_free_res;
+>  
+> -- 
+> 1.9.1
+> 
+> 
