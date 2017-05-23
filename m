@@ -1,52 +1,70 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: extent bus-ranges of PCIe for rk3399
-Date: Tue, 23 May 2017 10:44:32 +0200
-Message-ID: <1648498.2KlEJdsst9@phil>
-References: <1494916241-75234-1-git-send-email-shawn.lin@rock-chips.com>
- <87486e22-2c42-a8a5-cd60-e6092dbecde7@rock-chips.com>
- <5610292.HlbkidXd60@phil>
+Subject: Re: [PATCH 1/2] Documentation: rockchip-dw-mshc: add description for rk3328
+Date: Tue, 23 May 2017 10:52:41 +0200
+Message-ID: <3267037.o7d5UcHIWF@phil>
+References: <1495528862-29452-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5610292.HlbkidXd60@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1495528862-29452-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDIzLiBNYWkgMjAxNywgMTA6NDI6MjcgQ0VTVCBzY2hyaWViIEhlaWtvIFN0
-dWVibmVyOgo+IEFtIE1vbnRhZywgMjIuIE1haSAyMDE3LCAwOToyMDo1OSBDRVNUIHNjaHJpZWIg
-U2hhd24gTGluOgo+ID4gSGkgSGVpa28sCj4gPiAKPiA+IOWcqCAyMDE3LzUvMTkgMTk6NTMsIEhl
-aWtvIFN0dWVibmVyIOWGmemBkzoKPiA+ID4gSGkgU2hhd24sCj4gPiA+Cj4gPiA+IEFtIERpZW5z
-dGFnLCAxNi4gTWFpIDIwMTcsIDE0OjMwOjQwIENFU1Qgc2NocmllYiBTaGF3biBMaW46Cj4gPiA+
-PiBJbiBvcmRlciB0byBzdXBwb3J0IG11bHRpcGxlIGhpZXJhcmNoeSBvZiBQQ0llIGJ1c2VzLAo+
-ID4gPj4gZm9yIGluc3RhbmNlLCBQQ0llIHN3aXRjaCwgd2UgbmVlZCB0byBleHRlbnQgYnVzLXJh
-bmdlcwo+ID4gPj4gdG8gYXMgbWF4IGFzIHBvc3NpYmxlLiBXZSBoYXZlIDMyIHJlZ2lvbnMgYW5k
-IGNvdWxkIHN1cHBvcnQKPiA+ID4+IHVwIHRvIDMxIGJ1c2VzIGV4Y2VwdCBidXMgMCBmb3Igb3Vy
-IHJvb3QgYnJpZGdlLgo+ID4gPj4KPiA+ID4+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hh
-d24ubGluQHJvY2stY2hpcHMuY29tPgo+ID4gPgo+ID4gPiBjYW4gdGhlc2UgMiBwYXRjaGVzIHJl
-YWxseSBiZSBpbmRlcGVuZGVudD8KPiA+IAo+ID4geWVzLCB0aGV5IGFyZSBzbG92aW5nIHR3byBk
-aWZmZXJlbnQgaXNzdWVzLCBzbyBJIHRoaW5rCj4gPiB0aGV5IGNvdWxkIGJlIGFwcGxpZWQgYXMt
-aXMuCj4gPiAKPiA+IEZvciBwYXRjaCAxLCB3ZSB3YXMgdHJ5aW5nIHRvIGFzayBQQ0kgY29yZSB0
-byBzY2FuIG1vcmUKPiA+IGJ1c2VzIGFzIHBvc3NpYmxlLCBvdGhlcndpc2UgaXQgbm93IG9ubHkg
-c2NhbiBvbmUsIHdoaWNoCj4gPiBpc24ndCBlbm91Z2ggZm9yIFBDSWUgc3dpdGNoIGNoaXAuCj4g
-PiAKPiA+IEFuZCBiZWZvcmUgcGF0Y2ggMiwgd2Ugb25seSBhbGxvY2F0ZWQgbGltaXRlZCByZWdp
-b25zIGZvcgo+ID4gZGV2aWNlcyBhdHRhY2hlZCB0byBvdXIgcm9vdCBicmlkZ2UsIHNvIHdlIHdp
-bGwgZmFpbCB0byBlbmFibGUKPiA+IHNvbWUgZGV2aWNlcyBpZiB0aGV5IGFzayBtb3JlIG1lbW9y
-eSByZXNvdXJjZS4KPiAKPiBvaywgYXBwbGllZCBib3RoIGZvciA0LjEzCgpqdXN0IHNhdywgdGhh
-dCB5b3UgbWF5IHdhbnQgdG8gcmVtZW1iZXIgdG8gaW5jbHVkZSBtb3JlIHBlb3BsZQppbiBkZXZp
-Y2V0cmVlIHBhdGNoZXMgLi4uIGVzcGVjaWFsbHkgdGhlIGxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpsaXN0LiBEb2Vzbid0IGhpbmRlciB0aGlzIHBhdGNoc2V0LCBidXQgd29y
-dGggcmVtZW1iZXJpbmcgZm9yIGZ1dHVyZSBzZXJpZXMuCgoKSGVpa28KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Shawn,
+
+Am Dienstag, 23. Mai 2017, 16:41:01 CEST schrieb Shawn Lin:
+> Add "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc" for
+> dwmmc on rk3328 platform.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+You might want to follow get_maintainer.pl's output of recipients
+of at least:
+
+Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> (maintainer:MULTIMEDIA CARD (MMC), SECURE DIGITAL (SD) AND...)
+Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> (maintainer:ARM/Rockchip SoC support)
+linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org (open list:MULTIMEDIA CARD (MMC), SECURE DIGITAL (SD) AND...)
+devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated list:ARM/Rockchip SoC support)
+linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (open list:ARM/Rockchip SoC support)
+
+Ulf for example may want to apply the binding.txt patch via his tree and
+the dt-people or random people on the lists _may_ want to comment on
+patches and not everybody is reading the linux-rockchip list :-) .
+
+
+Patch itself looks good though.
+
+Heiko
+
+
+
+> ---
+> 
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+> index 520d61d..18e33cb 100644
+> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+> @@ -15,6 +15,7 @@ Required Properties:
+>  	- "rockchip,rk3288-dw-mshc": for Rockchip RK3288
+>  	- "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RV1108
+>  	- "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3036
+> +	- "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3328
+>  	- "rockchip,rk3368-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3368
+>  	- "rockchip,rk3399-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3399
+>  
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
