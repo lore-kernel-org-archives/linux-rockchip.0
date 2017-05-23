@@ -1,12 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/2] arm64: dts: rockchip: update common rk3399 operating
- points
-Date: Tue, 23 May 2017 11:51:08 +0200
-Message-ID: <20170523095109.7337-1-heiko@sntech.de>
+Subject: [PATCH 3/3] arm64: dts: rockchip: enable usb3 controllers on
+ rk3399-firefly
+Date: Tue, 23 May 2017 11:54:27 +0200
+Message-ID: <20170523095427.7421-3-heiko@sntech.de>
+References: <20170523095427.7421-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170523095427.7421-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,66 +19,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3399 has multiple variants with different frequency ratings.
-The operating points currently in the kernel stem from the op1 variant
-used in Gru ChromeOS devices and may not be suitable for general rk3399
-chips. Therefore bring it back to the official general operating points.
+This allows basic usage of usb3 devices but no typec specific things yet.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi | 18 +++++-------------
- 1 file changed, 5 insertions(+), 13 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-index dd82e16236a8..c83460db130a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-@@ -56,22 +56,18 @@
- 		};
- 		opp02 {
- 			opp-hz = /bits/ 64 <816000000>;
--			opp-microvolt = <800000>;
-+			opp-microvolt = <850000>;
- 		};
- 		opp03 {
- 			opp-hz = /bits/ 64 <1008000000>;
--			opp-microvolt = <875000>;
-+			opp-microvolt = <925000>;
- 		};
- 		opp04 {
- 			opp-hz = /bits/ 64 <1200000000>;
--			opp-microvolt = <925000>;
-+			opp-microvolt = <1000000>;
- 		};
- 		opp05 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <1050000>;
--		};
--		opp06 {
--			opp-hz = /bits/ 64 <1512000000>;
- 			opp-microvolt = <1125000>;
- 		};
- 	};
-@@ -107,15 +103,11 @@
- 		};
- 		opp06 {
- 			opp-hz = /bits/ 64 <1608000000>;
--			opp-microvolt = <1075000>;
-+			opp-microvolt = <1100000>;
- 		};
- 		opp07 {
- 			opp-hz = /bits/ 64 <1800000000>;
--			opp-microvolt = <1150000>;
--		};
--		opp08 {
--			opp-hz = /bits/ 64 <2016000000>;
--			opp-microvolt = <1250000>;
-+			opp-microvolt = <1200000>;
- 		};
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index ef47360ad286..ba1d9810ad1e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -698,3 +698,21 @@
+ &usb_host1_ohci {
+ 	status = "okay";
  };
++
++&usbdrd3_0 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_0 {
++	status = "okay";
++	dr_mode = "otg";
++};
++
++&usbdrd3_1 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_1 {
++	status = "okay";
++	dr_mode = "host";
++};
 -- 
 2.11.0
