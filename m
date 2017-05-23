@@ -1,66 +1,111 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: control vpcie0v9 for system PM
-Date: Tue, 23 May 2017 14:30:32 -0500
-Message-ID: <20170523193032.GA7241@bhelgaas-glaptop.roam.corp.google.com>
-References: <1493710283-164065-1-git-send-email-shawn.lin@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: [PATCH] PCI: Make error code types consistent in
+ pci_{read,write}_config_*
+Date: Tue, 23 May 2017 12:36:58 -0700
+Message-ID: <20170523193655.GA144183@google.com>
+References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170523184359.GB115572@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1493710283-164065-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20170523184359.GB115572@google.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Krishna Dhulipala <krishnad@fb.com>, Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>, Wei Zhang <wzhang@fb.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 02, 2017 at 03:31:23PM +0800, Shawn Lin wrote:
-> vpcie0v9 is used for PHY, so we could disable it as
-> we don't need PHY to work then in S3 if folks assign it
-> DT. But we should note that there is a side effect that
-> we could not support beacon wakeup if we disable vpcie0v9
-> for aggressive power-saving.
-> 
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Callers normally treat the config space accessors as returning PCBIOS_*
+error codes, not Linux error codes (or they don't look at them at all).
+We have pcibios_err_to_errno(), in case the error code needs translated.
 
-Applied to pci/host-rockchip for v4.13, thanks!
+Fixes: 4b1038834739 ("PCI: Don't attempt config access to disconnected devices")
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
++ others, change subject
 
-> ---
+On Tue, May 23, 2017 at 11:44:01AM -0700, Brian Norris wrote:
+> But the high level code doesn't handle this
+> consistently. See, e.g., pci_read_config_byte() which can return regular
+> Linux error codes (like -ENODEV), except it also passes up the return
+> code of pci_read_config_byte() (a PCIBIOS_* code) directly.
+
+Apparently this is new (inconsistent) behavior in 4.12-rc1. Seems like
+an oversight to me.
+
+> So callers don't really know whether to treat the value from
+> pci_read_config_<foo>() as a PCIBIOS_* code (which should be translated
+> with pcibios_err_to_errno()) or as a standard Linux errno.
 > 
->  drivers/pci/host/pcie-rockchip.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+> But then, there are relatively few callers (less than 10% of
+> pci_read_config_<foo>(); even fewer for writes) that actually check the
+> error codes...
 > 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 0e020b6..c8ca796 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1251,6 +1251,9 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
->  	clk_disable_unprepare(rockchip->aclk_perf_pcie);
->  	clk_disable_unprepare(rockchip->aclk_pcie);
->  
-> +	if (!IS_ERR(rockchip->vpcie0v9))
-> +		regulator_disable(rockchip->vpcie0v9);
-> +
->  	return ret;
->  }
->  
-> @@ -1259,6 +1262,14 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  	int err;
->  
-> +	if (!IS_ERR(rockchip->vpcie0v9)) {
-> +		err = regulator_enable(rockchip->vpcie0v9);
-> +		if (err) {
-> +			dev_err(dev, "fail to enable vpcie0v9 regulator\n");
-> +			return err;
-> +		}
-> +	}
-> +
->  	clk_prepare_enable(rockchip->clk_pcie_pm);
->  	clk_prepare_enable(rockchip->hclk_pcie);
->  	clk_prepare_enable(rockchip->aclk_perf_pcie);
-> -- 
-> 1.9.1
-> 
-> 
+> Maybe the "fix" is to replace -ENODEV with PCIBIOS_DEVICE_NOT_FOUND for
+> the inconsistent cases (pci_{read,write}_config_{byte,word,dword}()).
+
+Fix implemented in the surrounding patch.
+
+ drivers/pci/access.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/pci/access.c b/drivers/pci/access.c
+index 74cf5fffb1e1..c80e37a69305 100644
+--- a/drivers/pci/access.c
++++ b/drivers/pci/access.c
+@@ -896,7 +896,7 @@ int pci_read_config_byte(const struct pci_dev *dev, int where, u8 *val)
+ {
+ 	if (pci_dev_is_disconnected(dev)) {
+ 		*val = ~0;
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	}
+ 	return pci_bus_read_config_byte(dev->bus, dev->devfn, where, val);
+ }
+@@ -906,7 +906,7 @@ int pci_read_config_word(const struct pci_dev *dev, int where, u16 *val)
+ {
+ 	if (pci_dev_is_disconnected(dev)) {
+ 		*val = ~0;
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	}
+ 	return pci_bus_read_config_word(dev->bus, dev->devfn, where, val);
+ }
+@@ -917,7 +917,7 @@ int pci_read_config_dword(const struct pci_dev *dev, int where,
+ {
+ 	if (pci_dev_is_disconnected(dev)) {
+ 		*val = ~0;
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	}
+ 	return pci_bus_read_config_dword(dev->bus, dev->devfn, where, val);
+ }
+@@ -926,7 +926,7 @@ EXPORT_SYMBOL(pci_read_config_dword);
+ int pci_write_config_byte(const struct pci_dev *dev, int where, u8 val)
+ {
+ 	if (pci_dev_is_disconnected(dev))
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	return pci_bus_write_config_byte(dev->bus, dev->devfn, where, val);
+ }
+ EXPORT_SYMBOL(pci_write_config_byte);
+@@ -934,7 +934,7 @@ EXPORT_SYMBOL(pci_write_config_byte);
+ int pci_write_config_word(const struct pci_dev *dev, int where, u16 val)
+ {
+ 	if (pci_dev_is_disconnected(dev))
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	return pci_bus_write_config_word(dev->bus, dev->devfn, where, val);
+ }
+ EXPORT_SYMBOL(pci_write_config_word);
+@@ -943,7 +943,7 @@ int pci_write_config_dword(const struct pci_dev *dev, int where,
+ 					 u32 val)
+ {
+ 	if (pci_dev_is_disconnected(dev))
+-		return -ENODEV;
++		return PCIBIOS_DEVICE_NOT_FOUND;
+ 	return pci_bus_write_config_dword(dev->bus, dev->devfn, where, val);
+ }
+ EXPORT_SYMBOL(pci_write_config_dword);
+-- 
+2.13.0.219.gdb65acc882-goog
