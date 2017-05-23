@@ -1,40 +1,178 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
-Date: Tue, 23 May 2017 14:39:43 +0800
-Message-ID: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3] PCI: use IDA to manage domain number if not getting it from DT
+Date: Tue, 23 May 2017 15:45:11 +0800
+Message-ID: <1495525511-202465-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIHN5c3RlbSB3b3VsZCBjcmFzaCB3aGVuIHRyeWluZyB0byBhbGxvYyB6ZXJvIHNpemVkIGdl
-bSBidWZmZXI6ClsgICAgNi43MTI0MzVdIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIE5VTEwgcG9p
-bnRlciBkZXJlZmVyZW5jZSBhdCB2aXJ0dWFsIGFkZHJlc3MgMDAwMDAwMTAgPC0tWkVST19TSVpF
-X1BUUgouLi4KWyAgICA2Ljc1NzUwMl0gUEMgaXMgYXQgc2dfYWxsb2NfdGFibGVfZnJvbV9wYWdl
-cysweDE3MC8weDFlYwoKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2Nr
-LWNoaXBzLmNvbT4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
-ZW0uYyB8IDUgKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKCmRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwppbmRleCBkZjllNTcwLi44OTE3
-OTIyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKQEAg
-LTMxNSw2ICszMTUsMTEgQEAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKgogCXN0cnVjdCBk
-cm1fZ2VtX29iamVjdCAqb2JqOwogCWludCByZXQ7CiAKKwlpZiAoIXNpemUpIHsKKwkJRFJNX0VS
-Uk9SKCJnZW0gYnVmZmVyIHNpemUgaXMgemVyb1xuIik7CisJCXJldHVybiBFUlJfUFRSKC1FSU5W
-QUwpOworCX0KKwogCXNpemUgPSByb3VuZF91cChzaXplLCBQQUdFX1NJWkUpOwogCiAJcmtfb2Jq
-ID0ga3phbGxvYyhzaXplb2YoKnJrX29iaiksIEdGUF9LRVJORUwpOwotLSAKMi4xLjQKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+If not getting domain number from DT, the domain number will
+keep increasing once doing unbind/bind RC drivers. This could
+introduce pointless tree view of lspci as shows below:
+
+-+-[0001:00]---00.0-[01]----00.0
+  \-[0000:00]-
+
+The more test we do, the lengthier it would be. The more serious
+issue is that if attaching two hierarchies for two different domains
+belonging to two root bridges, so when doing unbind/bind test for one
+of them and keep the other, then the domain number would finally
+overflow and make the two hierarchies of devices share the some domain
+number but actually they shouldn't. So it looks like we need to invent
+a new indexing ID mechanism to manage domain number. This patch
+introduces idr to achieve our purpose.
+
+Cc: Brian Norris <briannorris@chromium.org>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+Changes in v3:
+- make ida_domain a system-wide property and check it in the code to
+combine with use_dt_domains. Also update the comment there.
+
+Changes in v2:
+- add a remove wrapper
+- rename use_dt_domains to ida_domain and set this bit
+in pci_get_new_domain_nr and test it in the remove wrapper.
+
+ drivers/pci/pci.c    | 42 ++++++++++++++++++++++++++++--------------
+ drivers/pci/remove.c |  2 ++
+ include/linux/pci.h  |  8 ++++++--
+ 3 files changed, 36 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index b01bd5b..e5f5db0 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -11,6 +11,7 @@
+ #include <linux/kernel.h>
+ #include <linux/delay.h>
+ #include <linux/dmi.h>
++#include <linux/idr.h>
+ #include <linux/init.h>
+ #include <linux/of.h>
+ #include <linux/of_pci.h>
+@@ -5340,15 +5341,25 @@ static void pci_no_domains(void)
+ }
+ 
+ #ifdef CONFIG_PCI_DOMAINS
+-static atomic_t __domain_nr = ATOMIC_INIT(-1);
++DEFINE_IDA(__domain_nr);
+ 
+-int pci_get_new_domain_nr(void)
++/* get domain number from IDA */
++static bool ida_domain = true;
++
++int pci_get_new_domain_nr(struct pci_bus *bus)
++{
++	return ida_simple_get(&__domain_nr, 0, sizeof(u64), GFP_KERNEL);
++}
++
++void pci_put_old_domain_nr(struct pci_bus *bus)
+ {
+-	return atomic_inc_return(&__domain_nr);
++	if (ida_domain)
++		ida_simple_remove(&__domain_nr, bus->domain_nr);
+ }
+ 
+ #ifdef CONFIG_PCI_DOMAINS_GENERIC
+-static int of_pci_bus_find_domain_nr(struct device *parent)
++static int of_pci_bus_find_domain_nr(struct pci_bus *bus,
++				     struct device *parent)
+ {
+ 	static int use_dt_domains = -1;
+ 	int domain = -1;
+@@ -5361,19 +5372,21 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
+ 	 * If DT domain property is valid (domain >= 0) and
+ 	 * use_dt_domains != 0, the DT assignment is valid since this means
+ 	 * we have not previously allocated a domain number by using
+-	 * pci_get_new_domain_nr(); we should also update use_dt_domains to
+-	 * 1, to indicate that we have just assigned a domain number from
+-	 * DT.
++	 * pci_get_new_domain_nr(), so we should set ida_domain to false to
++	 * indicate that we don't allocate domain from idr; we should also
++	 * update use_dt_domains to 1, to indicate that we have just assigned
++	 * a domain number from DT.
+ 	 *
+ 	 * If DT domain property value is not valid (ie domain < 0), and we
+ 	 * have not previously assigned a domain number from DT
+-	 * (use_dt_domains != 1) we should assign a domain number by
+-	 * using the:
++	 * (use_dt_domains != 1 && ida_domain != false) we should assign a
++	 * domain number by using the:
+ 	 *
+ 	 * pci_get_new_domain_nr()
+ 	 *
+-	 * API and update the use_dt_domains value to keep track of method we
+-	 * are using to assign domain numbers (use_dt_domains = 0).
++	 * API and update the use_dt_domains and ida_domain value to keep track
++	 * of method we are using to assign domain numbers (use_dt_domains = 0
++	 * and ida_domain = true).
+ 	 *
+ 	 * All other combinations imply we have a platform that is trying
+ 	 * to mix domain numbers obtained from DT and pci_get_new_domain_nr(),
+@@ -5383,9 +5396,10 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
+ 	 */
+ 	if (domain >= 0 && use_dt_domains) {
+ 		use_dt_domains = 1;
+-	} else if (domain < 0 && use_dt_domains != 1) {
++		ida_domain = false;
++	} else if (domain < 0 && use_dt_domains != 1 && ida_domain != false) {
+ 		use_dt_domains = 0;
+-		domain = pci_get_new_domain_nr();
++		domain = pci_get_new_domain_nr(bus);
+ 	} else {
+ 		dev_err(parent, "Node %s has inconsistent \"linux,pci-domain\" property in DT\n",
+ 			parent->of_node->full_name);
+@@ -5397,7 +5411,7 @@ static int of_pci_bus_find_domain_nr(struct device *parent)
+ 
+ int pci_bus_find_domain_nr(struct pci_bus *bus, struct device *parent)
+ {
+-	return acpi_disabled ? of_pci_bus_find_domain_nr(parent) :
++	return acpi_disabled ? of_pci_bus_find_domain_nr(bus, parent) :
+ 			       acpi_pci_bus_find_domain_nr(bus);
+ }
+ #endif
+diff --git a/drivers/pci/remove.c b/drivers/pci/remove.c
+index 73a03d3..1bbbb37 100644
+--- a/drivers/pci/remove.c
++++ b/drivers/pci/remove.c
+@@ -157,6 +157,8 @@ void pci_remove_root_bus(struct pci_bus *bus)
+ 	list_for_each_entry_safe(child, tmp,
+ 				 &bus->devices, bus_list)
+ 		pci_remove_bus_device(child);
++
++	pci_put_old_domain_nr(bus);
+ 	pci_remove_bus(bus);
+ 	host_bridge->bus = NULL;
+ 
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 33c2b0b..9296e31 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -1445,13 +1445,17 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+  * configuration space.
+  */
+ #ifdef CONFIG_PCI_DOMAINS
++extern struct ida __domain_nr;
+ extern int pci_domains_supported;
+-int pci_get_new_domain_nr(void);
++int pci_get_new_domain_nr(struct pci_bus *bus);
++void pci_put_old_domain_nr(struct pci_bus *bus);
+ #else
+ enum { pci_domains_supported = 0 };
+ static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+ static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
+-static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
++static inline int pci_get_new_domain_nr(struct pci_bus *bus)
++{ return -ENOSYS; }
++static inline void pci_put_old_domain_nr(struct pci_bus *bus) { }
+ #endif /* CONFIG_PCI_DOMAINS */
+ 
+ /*
+-- 
+1.9.1
