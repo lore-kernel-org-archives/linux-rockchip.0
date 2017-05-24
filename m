@@ -1,57 +1,48 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] ARM: dts: rockchip: add eDP panel support for Firefly
-Date: Wed, 24 May 2017 17:45:51 +0200
-Message-ID: <1982494.aeoIls14E7@phil>
-References: <20170508155833.19652-1-ayaka@soulik.info>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: check link status when validating device
+Date: Wed, 24 May 2017 16:33:53 -0500
+Message-ID: <20170524213353.GB2794@bhelgaas-glaptop.roam.corp.google.com>
+References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170523194443.GD7241@bhelgaas-glaptop.roam.corp.google.com>
+ <c2331eef-b76d-720d-3750-6d754d53710a@rock-chips.com>
+ <20170524011507.GA112603@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170508155833.19652-1-ayaka@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Randy Li <ayaka@soulik.info>
-Cc: devicetree@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170524011507.GA112603@google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Randy,
-
-Am Montag, 8. Mai 2017, 23:58:33 CEST schrieb Randy Li:
-> This patch adds the supporting to the eDP panel sold by
-> the T-CHIP for the Firefly RK3288. I assign the VOP lite
-> for the eDP panel and VOP big to HDMI, as the HDMI supports
-> 4K resolution. With a different VOP device, eDP panel
-> and HDMI could display a different contents.
+On Tue, May 23, 2017 at 06:15:07PM -0700, Brian Norris wrote:
+> (Since Shawn didn't quite answer this piece)
 > 
-> The InvenSense MPU6050 sensor at the botton of the panel
-> is also enabled.
+> On Wed, May 24, 2017 at 09:04:33AM +0800, Shawn Lin wrote:
+> > 在 2017/5/24 3:44, Bjorn Helgaas 写道:
+> > >On Fri, May 19, 2017 at 02:58:27PM +0800, Shawn Lin wrote:
+> > >>This patch checks the link status before reading and
+> > >>writing configure space of devices attached to the RC.
+> > >>If the link status is down, we shouldn't try to access
+> > >>the devices.
+> > >
+> > >What bad things happen without this patch?
 > 
-> The Firefly RK3288 Reload use a different GPIO pin to enable
-> the power of the eDP panel.
-> 
-> Signed-off-by: Randy Li <ayaka@soulik.info>
+> On this SoC, I've seen this sort of behavior (reading the config space
+> when the device isn't responding) yield aborts, which panic the system. 
 
-Sorry, I'm not yet sure, what to make of this patch.
+Trying to read config space of a device that doesn't exist is an
+essential part of enumeration, and we expect whatever error occurs at
+the hardware level to get turned into 0xffffffff data at the CPU (as
+in pci_bus_read_dev_vendor_id()).
 
-On the firefly the edp pins are actual part of the general pin header and
-while the edp pins themself do not have multiple functions, for example
-the pin you claim as interrupt for the mpu6050 (gpio5_b4) also is part
-of the spi0 set of pins and that pin also seems pretty randomly selected.
-Same with the enable-gpio of the display.
+Shawn mentioned some issue with memory read/write as well.  I think we
+need to sort out how to handle both the config space issue and the
+memory issue.  This patch seems like it papers over part of it and
+reduces the urgency of finding a real solution.
 
+I'm going to drop this for now, pending a more detailed explanation.
 
-Also claiming that every firefly board has this display connected also
-feels strange and the whole display thing would make more sense
-as a devicetree overlay [0], though I don't know how these
-should get handled in-kernel - if at all.
-
-
-And finally, please don't try to use the devicetree to configure outputs
-(forcing edp to one and hdmi to the other). The devicetree is supposed
-to describe the hardware and of course both vops can drive the edp and
-if necessary the drm driver should handle differences and decide on the
-vop to use.
-
-
-Heiko
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/overlay-notes.txt
+Bjorn
