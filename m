@@ -1,16 +1,13 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] ARM: dts: rockchip: correct regular setting for act8846
-Date: Wed, 24 May 2017 13:27:42 +0100
-Message-ID: <05eab43d-1ed7-7aed-de45-181d948748cb@arm.com>
-References: <1495611221-6749-1-git-send-email-eddie.cai.linux@gmail.com>
- <5352430.FzU3E8oYou@phil> <010ca6dc-e1f7-fb6d-7a22-056d4e1eeef2@arm.com>
- <1743163.DHHxsEJfsI@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 5/7] arm64: defconfig: enable more cros-ec options
+Date: Wed, 24 May 2017 15:54:13 +0200
+Message-ID: <20170524135415.5590-6-heiko@sntech.de>
+References: <20170524135415.5590-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1743163.DHHxsEJfsI@phil>
-Content-Language: en-GB
+In-Reply-To: <20170524135415.5590-1-heiko@sntech.de>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,131 +17,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24/05/17 12:34, Heiko Stuebner wrote:
-> Am Mittwoch, 24. Mai 2017, 11:26:10 CEST schrieb Robin Murphy:
->> On 24/05/17 09:17, Heiko Stuebner wrote:
->>> Hi Eddie,
->>>
->>> Am Mittwoch, 24. Mai 2017, 15:33:41 CEST schrieb Eddie Cai:
->>>> the previous setting of act8846 is just copy from firefly board. but
->>>> the reload board is a little different from firefly board. let's correct
->>>> it.
->>>>
->>>> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
->>>> ---
->>>>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 21 +++++++++++----------
->>>>  1 file changed, 11 insertions(+), 10 deletions(-)
->>>>
->>>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->>>> index 8134966..4cfa109 100644
->>>> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->>>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->>>> @@ -179,6 +179,7 @@
->>>>  				regulator-name = "vccio_sd";
->>>>  				regulator-min-microvolt = <3300000>;
->>>>  				regulator-max-microvolt = <3300000>;
->>>> +				regulator-always-on;
->>>
->>> the rest below looks pretty straight forward, but why does vccio_sd
->>> need to be always on?
->>>
->>> I've checked the reload's schematics but did not find any further users
->>> of vccio_sd that may warant this attribute.
->>
->> It looks like the card detect line is pulled up externally to vcc_sd,
->> which isn't always-on either, so you probably do want this - on the
->> (unrelated) rk3288 TV box I've been hacking on, I discovered that
->> powering off the sdmmc-supply domain also kills the internal pull-up and
->> leaves sdmmc_cd floating. The resulting stochastic card polling
->> mechanism is amusing, but probably undesirable ;)
-> 
-> Hmm, are you mixing up vcc_sd and vccio_sd?
-> 
-> vccio_sd is the io supply (vqmmc in mmc-terms) to the mmc-host itself
-> while vcc_sd is the actual card supply (vmmc in mmc-terms).
+Enable the spi part as well as the keyboard driver as built-in, as
+this allows access to the device, even if the ramdisk containing other
+drivers is faulty or missing.
 
-Yes, that is what I meant, although I was implicitly assuming the case
-where the MMC host driver has already turned off vcc_sd due to no card
-being present. I'll double-check, but I'm 99% certain that *unlike*
-Firefly, the Hotack board I've got (seemingly a straight implementation
-of the "Box" reference design based on what I've managed to
-reverse-engineer from scouring the internet) has no external pull-ups
-for anything on its microSD socket, so is entirely reliant on everything
-being pulled up internally to SDMMC0_VDD, i.e. vccio_sd.
+The cros-ec-pwm gets enabled as module, as it is normally only used
+to drive display backlights.
 
-> After looking through some schematics, the pull-up to vcc_sd seems to be
-> the common pattern for rk3288 devices. So I guess this means the fixed
-> regulator vcc_sd should get an regulator-always-on instead to stabilize
-> the card-detect?
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ arch/arm64/configs/defconfig | 3 +++
+ 1 file changed, 3 insertions(+)
 
-That might make sense, especially where vcc_sd is just vcc_io behind a
-MOSFET switch, so turning it "off" when there's no card to draw power
-anyway probably doesn't achieve much. Plus if you can then rely on
-vcc_sd not going away it might be worth disabling the internal pull-ups
-which are still being set by all the sdmmc_* pinctrl configs as well.
-
-Robin.
-
->>>>  			};
->>>>  
->>>>  			vdd10_lcd: REG6 {
->>>> @@ -187,24 +188,23 @@
->>>>  				regulator-max-microvolt = <1000000>;
->>>>  			};
->>>>  
->>>> -			vcca_18: REG7  {
->>>> -				regulator-name = "vcca_18";
->>>> -				regulator-min-microvolt = <1800000>;
->>>> -				regulator-max-microvolt = <1800000>;
->>>> -				regulator-always-on;
->>>> +			vcca_33: REG7  {
->>>> +				regulator-name = "vcca_33";
->>>> +				regulator-min-microvolt = <3300000>;
->>>> +				regulator-max-microvolt = <3300000>;
->>>>  			};
->>>>  
->>>> -			vcca_33: REG8 {
->>>> -				regulator-name = "vcca_33";
->>>> +			vcc_lan: REG8 {
->>>> +				regulator-name = "vcc_lan";
->>>>  				regulator-min-microvolt = <3300000>;
->>>>  				regulator-max-microvolt = <3300000>;
->>>> -				regulator-always-on;
->>>>  			};
->>>>  
->>>> -			vcc_lan: REG9 {
->>>> -				regulator-name = "vcca_lan";
->>>> +			vccio_pmu: REG9 {
->>>> +				regulator-name = "vccio_pmu";
->>>>  				regulator-min-microvolt = <3300000>;
->>>>  				regulator-max-microvolt = <3300000>;
->>>> +				regulator-always-on;
->>>>  			};
->>>>  
->>>>  			vdd_10: REG10 {
->>>> @@ -218,6 +218,7 @@
->>>>  				regulator-name = "vcc_18";
->>>>  				regulator-min-microvolt = <1800000>;
->>>>  				regulator-max-microvolt = <1800000>;
->>>> +				regulator-always-on;
->>>>  			};
->>>>  
->>>>  			vcc18_lcd: REG12 {
->>>>
->>>
->>>
->>>
->>> _______________________________________________
->>> linux-arm-kernel mailing list
->>> linux-arm-kernel@lists.infradead.org
->>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
->>>
->>
->>
->>
-> 
-> 
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 51c884f96125..f6c50a403f1a 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -210,6 +210,7 @@ CONFIG_WL18XX=m
+ CONFIG_WLCORE_SDIO=m
+ CONFIG_INPUT_EVDEV=y
+ CONFIG_KEYBOARD_ADC=m
++CONFIG_KEYBOARD_CROS_EC=y
+ CONFIG_KEYBOARD_GPIO=y
+ CONFIG_INPUT_MISC=y
+ CONFIG_INPUT_PM8941_PWRKEY=y
+@@ -303,6 +304,7 @@ CONFIG_RENESAS_WDT=y
+ CONFIG_BCM2835_WDT=y
+ CONFIG_MFD_CROS_EC=y
+ CONFIG_MFD_CROS_EC_I2C=y
++CONFIG_MFD_CROS_EC_SPI=y
+ CONFIG_MFD_EXYNOS_LPASS=m
+ CONFIG_MFD_HI655X_PMIC=y
+ CONFIG_MFD_MAX77620=y
+@@ -479,6 +481,7 @@ CONFIG_EXYNOS_ADC=y
+ CONFIG_ROCKCHIP_SARADC=m
+ CONFIG_PWM=y
+ CONFIG_PWM_BCM2835=m
++CONFIG_PWM_CROS_EC=m
+ CONFIG_PWM_MESON=m
+ CONFIG_PWM_ROCKCHIP=y
+ CONFIG_PWM_SAMSUNG=y
+-- 
+2.11.0
