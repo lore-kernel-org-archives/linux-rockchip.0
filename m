@@ -1,63 +1,72 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: check link status when validating device
-Date: Tue, 23 May 2017 14:44:44 -0500
-Message-ID: <20170523194443.GD7241@bhelgaas-glaptop.roam.corp.google.com>
-References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESEND PATCH 2/2] arm64: dts: rockchip: add sdmmc/sdio/emmc nodes for RK3328 SoCs
+Date: Wed, 24 May 2017 08:34:49 +0800
+Message-ID: <1495586089-215607-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1495586089-215607-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1495586089-215607-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 19, 2017 at 02:58:27PM +0800, Shawn Lin wrote:
-> This patch checks the link status before reading and
-> writing configure space of devices attached to the RC.
-> If the link status is down, we shouldn't try to access
-> the devices.
+This patch adds sdmmc, sdio, emmc nodes for Rockchip RK3328 SoCs.
 
-What bad things happen without this patch?
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-It's racy to check the link status, then do the config access.  The
-link might go down after we check but before we can perform the
-access.
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 33 ++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 0e020b6..1e64227 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -275,9 +275,21 @@ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
->  	rockchip_pcie_write(rockchip, val, PCIE_CORE_TXCREDIT_CFG1);
->  }
->  
-> +static inline bool rockchip_pcie_link_up(struct rockchip_pcie *rockchip)
-> +{
-> +	return PCIE_LINK_UP(rockchip_pcie_read(rockchip,
-> +					PCIE_CLIENT_BASIC_STATUS1));
-> +}
-> +
->  static int rockchip_pcie_valid_device(struct rockchip_pcie *rockchip,
->  				      struct pci_bus *bus, int dev)
->  {
-> +	/* do not access the devices if the link isn't completed */
-> +	if (bus->number != rockchip->root_bus_nr) {
-> +		if (!rockchip_pcie_link_up(rockchip))
-> +			return 0;
-> +	}
-> +
->  	/* access only one slot on each root port */
->  	if (bus->number == rockchip->root_bus_nr && dev > 0)
->  		return 0;
-> -- 
-> 1.9.1
-> 
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 7e69f1f..3210692 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -372,6 +372,39 @@
+ 			<32768>;
+ 	};
+ 
++	sdmmc: dwmmc@ff500000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff500000 0x0 0x4000>;
++		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
++			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
++	sdio: dwmmc@ff510000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff510000 0x0 0x4000>;
++		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
++			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
++	emmc: dwmmc@ff520000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff520000 0x0 0x4000>;
++		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
++			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
++		fifo-depth = <0x100>;
++		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
++
+ 	gmac2io: ethernet@ff540000 {
+ 		compatible = "rockchip,rk3328-gmac";
+ 		reg = <0x0 0xff540000 0x0 0x10000>;
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
