@@ -1,112 +1,114 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: add adc button for Firefly
-Date: Wed, 24 May 2017 11:50:44 +0200
-Message-ID: <2018816.Fb9eUWctIC@phil>
-References: <20170507142627.5307-1-ayaka@soulik.info>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: correct regular setting for act8846
+Date: Wed, 24 May 2017 11:26:10 +0100
+Message-ID: <010ca6dc-e1f7-fb6d-7a22-056d4e1eeef2@arm.com>
+References: <1495611221-6749-1-git-send-email-eddie.cai.linux@gmail.com>
+ <5352430.FzU3E8oYou@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170507142627.5307-1-ayaka@soulik.info>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Randy Li <ayaka@soulik.info>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5352430.FzU3E8oYou@phil>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Eddie Cai <eddie.cai.linux@gmail.com>
 Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Randy,
-
-Am Sonntag, 7. Mai 2017, 22:26:27 CEST schrieb Randy Li:
-> The only adc button connected to adc input is recovery button.
+On 24/05/17 09:17, Heiko Stuebner wrote:
+> Hi Eddie,
 > 
-> Signed-off-by: Randy Li <ayaka@soulik.info>
-> ---
->  arch/arm/boot/dts/rk3288-firefly-reload.dts | 17 +++++++++++++++++
->  arch/arm/boot/dts/rk3288-firefly.dtsi       | 13 +++++++++++++
->  2 files changed, 30 insertions(+)
+> Am Mittwoch, 24. Mai 2017, 15:33:41 CEST schrieb Eddie Cai:
+>> the previous setting of act8846 is just copy from firefly board. but
+>> the reload board is a little different from firefly board. let's correct
+>> it.
+>>
+>> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
+>> ---
+>>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 21 +++++++++++----------
+>>  1 file changed, 11 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> index 8134966..4cfa109 100644
+>> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> @@ -179,6 +179,7 @@
+>>  				regulator-name = "vccio_sd";
+>>  				regulator-min-microvolt = <3300000>;
+>>  				regulator-max-microvolt = <3300000>;
+>> +				regulator-always-on;
 > 
-> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> index d0b3204a..ed1baa8 100644
-> --- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> +++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-> @@ -48,6 +48,19 @@
->  	model = "Firefly-RK3288-reload";
->  	compatible = "firefly,firefly-rk3288-reload", "rockchip,rk3288";
->  
-> +	adc-keys {
-> +		compatible = "adc-keys";
-> +		io-channels = <&saradc 1>;
-> +		io-channel-names = "buttons";
-> +		keyup-threshold-microvolt = <1800000>;
-> +
-> +		button-recovery {
-> +			label = "Recovery";
-> +			linux,code = <KEY_BACK>;
+> the rest below looks pretty straight forward, but why does vccio_sd
+> need to be always on?
+> 
+> I've checked the reload's schematics but did not find any further users
+> of vccio_sd that may warant this attribute.
 
-I don't think KEY_BACK is really a suitable keycode for your recovery key.
+It looks like the card detect line is pulled up externally to vcc_sd,
+which isn't always-on either, so you probably do want this - on the
+(unrelated) rk3288 TV box I've been hacking on, I discovered that
+powering off the sdmmc-supply domain also kills the internal pull-up and
+leaves sdmmc_cd floating. The resulting stochastic card polling
+mechanism is amusing, but probably undesirable ;)
 
-Looking at other devices and already available keycodes. I guess nice
-choices would be one of
+Robin.
 
-- KEY_VENDOR
-- KEY_MENU
-- KEY_CONFIG
-
-With for example meson adding KEY_VENDOR as update key recently
-https://lkml.org/lkml/2017/3/7/196
-
-So KEY_VENDOR would look like a good choice for us as well.
-
-
-Heiko
-
-> +			press-threshold-microvolt = <0>;
-> +		};
-> +	};
-> +
->  	gpio-keys {
->  		compatible = "gpio-keys";
->  
-> @@ -246,6 +259,10 @@
->  	status = "okay";
->  };
->  
-> +&saradc {
-> +	status = "okay";
-> +};
-> +
->  &sdmmc {
->  	bus-width = <4>;
->  	cap-mmc-highspeed;
-> diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-> index 10793ac..63b8b2d 100644
-> --- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-> @@ -49,6 +49,19 @@
->  		reg = <0 0x80000000>;
->  	};
->  
-> +	adc-keys {
-> +		compatible = "adc-keys";
-> +		io-channels = <&saradc 1>;
-> +		io-channel-names = "buttons";
-> +		keyup-threshold-microvolt = <1800000>;
-> +
-> +		button-recovery {
-> +			label = "Recovery";
-> +			linux,code = <KEY_BACK>;
-> +			press-threshold-microvolt = <0>;
-> +		};
-> +	};
-> +
->  	dovdd_1v8: dovdd-1v8-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "dovdd_1v8";
+> 
+> 
+> Heiko
+> 
+> 
+>>  			};
+>>  
+>>  			vdd10_lcd: REG6 {
+>> @@ -187,24 +188,23 @@
+>>  				regulator-max-microvolt = <1000000>;
+>>  			};
+>>  
+>> -			vcca_18: REG7  {
+>> -				regulator-name = "vcca_18";
+>> -				regulator-min-microvolt = <1800000>;
+>> -				regulator-max-microvolt = <1800000>;
+>> -				regulator-always-on;
+>> +			vcca_33: REG7  {
+>> +				regulator-name = "vcca_33";
+>> +				regulator-min-microvolt = <3300000>;
+>> +				regulator-max-microvolt = <3300000>;
+>>  			};
+>>  
+>> -			vcca_33: REG8 {
+>> -				regulator-name = "vcca_33";
+>> +			vcc_lan: REG8 {
+>> +				regulator-name = "vcc_lan";
+>>  				regulator-min-microvolt = <3300000>;
+>>  				regulator-max-microvolt = <3300000>;
+>> -				regulator-always-on;
+>>  			};
+>>  
+>> -			vcc_lan: REG9 {
+>> -				regulator-name = "vcca_lan";
+>> +			vccio_pmu: REG9 {
+>> +				regulator-name = "vccio_pmu";
+>>  				regulator-min-microvolt = <3300000>;
+>>  				regulator-max-microvolt = <3300000>;
+>> +				regulator-always-on;
+>>  			};
+>>  
+>>  			vdd_10: REG10 {
+>> @@ -218,6 +218,7 @@
+>>  				regulator-name = "vcc_18";
+>>  				regulator-min-microvolt = <1800000>;
+>>  				regulator-max-microvolt = <1800000>;
+>> +				regulator-always-on;
+>>  			};
+>>  
+>>  			vcc18_lcd: REG12 {
+>>
+> 
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 > 
