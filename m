@@ -1,55 +1,61 @@
-From: Brian Norris <briannorris@chromium.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH] PCI: rockchip: check link status when validating device
-Date: Tue, 23 May 2017 18:00:15 -0700
-Message-ID: <20170524010014.GA109842@google.com>
+Date: Wed, 24 May 2017 09:04:33 +0800
+Message-ID: <c2331eef-b76d-720d-3750-6d754d53710a@rock-chips.com>
 References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
- <20170523180048.GA115572@google.com>
- <3fea7598-501e-6131-612a-977f005e9a2b@rock-chips.com>
+ <20170523194443.GD7241@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3fea7598-501e-6131-612a-977f005e9a2b@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170523194443.GD7241-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 24, 2017 at 08:54:14AM +0800, Shawn Lin wrote:
-> 在 2017/5/24 2:00, Brian Norris 写道:
-> >On Fri, May 19, 2017 at 02:58:27PM +0800, Shawn Lin wrote:
-> >>This patch checks the link status before reading and
-> >>writing configure space of devices attached to the RC.
-> >>If the link status is down, we shouldn't try to access
-> >>the devices.
-> >
-> >I'm curious, in what situations are you seeing the link down? In all the
-> >cases where I can manage to screw up my endpoint and see system aborts
-> >due to config accesses, this check still says the link is up. Presumably
-> >you have some test cases that benefit from this though.
-
-NB: Bjorn asked a similar question in a different form. The underlying
-concern though, is that this is racy.
-
-> Of course. This patch doesn't prevent all these cases, for instance,
-> you do a memory read/write in the EP function driver, since it doesn't
-> call these two APIs at all.
-
-Of course. I'm only talking about config accesses.
-
-> The reason for me to added this check is that I saw a external abort
-> down to rockchip_pcie_rd_own_conf, of which I highly suspected was that
-> the link was re-init or total broken at that time.
-
-I've seen plenty of aborts in this function as well, but I've verified
-that the link was still reported "up" in all the cases I could reproduce.
-
-So, do you "suspect" or did you "prove"? e.g., log cases where this
-check actually helps?
-
-And to Bjorn's point: do you know *why* such cases were hit? That would
-help to understand if the cases you're worrying about are hopelessly
-racy, or if there's some way to ensure synchronization.
-
-Brian
+SGkgQmpvcm4sCgrlnKggMjAxNy81LzI0IDM6NDQsIEJqb3JuIEhlbGdhYXMg5YaZ6YGTOgo+IE9u
+IEZyaSwgTWF5IDE5LCAyMDE3IGF0IDAyOjU4OjI3UE0gKzA4MDAsIFNoYXduIExpbiB3cm90ZToK
+Pj4gVGhpcyBwYXRjaCBjaGVja3MgdGhlIGxpbmsgc3RhdHVzIGJlZm9yZSByZWFkaW5nIGFuZAo+
+PiB3cml0aW5nIGNvbmZpZ3VyZSBzcGFjZSBvZiBkZXZpY2VzIGF0dGFjaGVkIHRvIHRoZSBSQy4K
+Pj4gSWYgdGhlIGxpbmsgc3RhdHVzIGlzIGRvd24sIHdlIHNob3VsZG4ndCB0cnkgdG8gYWNjZXNz
+Cj4+IHRoZSBkZXZpY2VzLgo+Cj4gV2hhdCBiYWQgdGhpbmdzIGhhcHBlbiB3aXRob3V0IHRoaXMg
+cGF0Y2g/Cj4KPiBJdCdzIHJhY3kgdG8gY2hlY2sgdGhlIGxpbmsgc3RhdHVzLCB0aGVuIGRvIHRo
+ZSBjb25maWcgYWNjZXNzLiAgVGhlCj4gbGluayBtaWdodCBnbyBkb3duIGFmdGVyIHdlIGNoZWNr
+IGJ1dCBiZWZvcmUgd2UgY2FuIHBlcmZvcm0gdGhlCj4gYWNjZXNzLgoKeWVzLCBpdCBjYW5ub3Qg
+Zml4IHRoZSBpc3N1ZSBjbGVhbmx5LiBBbHNvIHdlIGNhbm5vdCBwcmV2ZW50CnRoZSBhY2Nlc3Mg
+ZnJvbSBtZW1vcnkgcmVhZC93cml0ZSB0aGF0IGRvZXNuJ3QgY2FsbCB0aGUKcGNpX3JlYWQvd3Jp
+dGVfY29uZmlnX2ZvbyBBUElzLgoKSSBqdXN0IHRob3VnaHQgd2UgY291bGQgY2F0Y2ggb25lIGx1
+Y2tseSBiZWZvcmUgcGVyZm9ybWluZwpjb25maWd1cmUgYWNjZXNzLgoKPgo+PiBTaWduZWQtb2Zm
+LWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+ICBk
+cml2ZXJzL3BjaS9ob3N0L3BjaWUtcm9ja2NoaXAuYyB8IDEyICsrKysrKysrKysrKwo+PiAgMSBm
+aWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+cGNpL2hvc3QvcGNpZS1yb2NrY2hpcC5jIGIvZHJpdmVycy9wY2kvaG9zdC9wY2llLXJvY2tjaGlw
+LmMKPj4gaW5kZXggMGUwMjBiNi4uMWU2NDIyNyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9wY2kv
+aG9zdC9wY2llLXJvY2tjaGlwLmMKPj4gKysrIGIvZHJpdmVycy9wY2kvaG9zdC9wY2llLXJvY2tj
+aGlwLmMKPj4gQEAgLTI3NSw5ICsyNzUsMjEgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfcGNpZV91
+cGRhdGVfdHhjcmVkaXRfbXVpKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPj4gIAly
+b2NrY2hpcF9wY2llX3dyaXRlKHJvY2tjaGlwLCB2YWwsIFBDSUVfQ09SRV9UWENSRURJVF9DRkcx
+KTsKPj4gIH0KPj4KPj4gK3N0YXRpYyBpbmxpbmUgYm9vbCByb2NrY2hpcF9wY2llX2xpbmtfdXAo
+c3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+PiArewo+PiArCXJldHVybiBQQ0lFX0xJ
+TktfVVAocm9ja2NoaXBfcGNpZV9yZWFkKHJvY2tjaGlwLAo+PiArCQkJCQlQQ0lFX0NMSUVOVF9C
+QVNJQ19TVEFUVVMxKSk7Cj4+ICt9Cj4+ICsKPj4gIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV92
+YWxpZF9kZXZpY2Uoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwLAo+PiAgCQkJCSAgICAg
+IHN0cnVjdCBwY2lfYnVzICpidXMsIGludCBkZXYpCj4+ICB7Cj4+ICsJLyogZG8gbm90IGFjY2Vz
+cyB0aGUgZGV2aWNlcyBpZiB0aGUgbGluayBpc24ndCBjb21wbGV0ZWQgKi8KPj4gKwlpZiAoYnVz
+LT5udW1iZXIgIT0gcm9ja2NoaXAtPnJvb3RfYnVzX25yKSB7Cj4+ICsJCWlmICghcm9ja2NoaXBf
+cGNpZV9saW5rX3VwKHJvY2tjaGlwKSkKPj4gKwkJCXJldHVybiAwOwo+PiArCX0KPj4gKwo+PiAg
+CS8qIGFjY2VzcyBvbmx5IG9uZSBzbG90IG9uIGVhY2ggcm9vdCBwb3J0ICovCj4+ICAJaWYgKGJ1
+cy0+bnVtYmVyID09IHJvY2tjaGlwLT5yb290X2J1c19uciAmJiBkZXYgPiAwKQo+PiAgCQlyZXR1
+cm4gMDsKPj4gLS0KPj4gMS45LjEKPj4KPj4KPgo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
