@@ -1,64 +1,220 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] soc: rockchip: disable jtag switching for RK3328 Soc
-Date: Thu, 25 May 2017 15:58:24 +0800
-Message-ID: <1495699104-137633-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/3] ARM: dts: rockchip: Move cros-ec-sbs to rk3288-veyron-chromebook-sbs
+Date: Thu, 25 May 2017 11:18:42 +0200
+Message-ID: <6367689.fsSILzYDoT@phil>
+References: <20170430183054.24563-1-contact@paulk.fr> <4982356.1SMNiM4AyO@phil> <1495636719.13570.1.camel@paulk.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1495636719.13570.1.camel-W9ppeneeCTY@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>
+Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Disable IO function switching between sdmmc and jtag
-for RK3328 Soc.
+Am Mittwoch, 24. Mai 2017, 16:38:39 CEST schrieb Paul Kocialkowski:
+> Le mercredi 24 mai 2017 à 12:55 +0200, Heiko Stuebner a écrit :
+> > Am Sonntag, 7. Mai 2017, 20:00:42 CEST schrieb Paul Kocialkowski:
+> > > Hi,
+> > > 
+> > > Le lundi 01 mai 2017 à 08:49 -0700, Doug Anderson a écrit :
+> > > > On Mon, May 1, 2017 at 7:07 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > > > > Am Sonntag, 30. April 2017, 22:56:52 CEST schrieb Paul Kocialkowski:
+> > > > > > Le dimanche 30 avril 2017 à 22:37 +0200, Heiko Stuebner a écrit :
+> > > > > > > Hi Paul,
+> > > > > > > 
+> > > > > > > Am Sonntag, 30. April 2017, 20:30:52 CEST schrieb Paul Kocialkowski:
+> > > > > > > > This moves the cros-ec-sbs dtsi to a new rk3288-veyron-chromebook-
+> > > > > > > > sbs
+> > > > > > > > dtsi since it only concerns rk3288 veyron Chromebooks.
+> > > > > > > > 
+> > > > > > > > Other Chromebooks (such as the tegra124 nyans) also have sbs
+> > > > > > > > batteries
+> > > > > > > > and don't use this dtsi, that only makes sense when used with
+> > > > > > > > rk3288-veyron-chromebook anyway.
+> > > > > > > 
+> > > > > > > That isn't true. The gru series (rk3399-based) also uses the
+> > > > > > > sbs-battery [0]. And while it is currently limited to Rockchip-based
+> > > > > > > Chromebooks it is nevertheless used on more than one platform, so
+> > > > > > > the probability is high that it will be used in future series as
+> > > > > > > well.
+> > > > > > 
+> > > > > > That's good to know, but as pointed out, other cros devices are using
+> > > > > > a
+> > > > > > sbs
+> > > > > > battery without this header, so such a generic name isn't really a
+> > > > > > good
+> > > > > > fit.
+> > > > 
+> > > > It would be interesting to know if the "retry-count" ought to be the
+> > > > same across all Chromebooks.  I guess you could argue that maybe
+> > > > someone found it needed to be 10 in all "nyan" variants and needed to
+> > > > be 1 in all "veyron" variants, but it seems more likely that the
+> > > > difference is arbitrary, or that one of the two values would work for
+> > > > everyone.  It sure looks like we've just been copying values from
+> > > > device to device.  Given that all the "veyron" devices have vastly
+> > > > different batteries (and probably all the nyan ones too), it seems
+> > > > likely there ought to be one value.
+> > > 
+> > > Well, the retry-count is a maximum number of retries to detect a status
+> > > change
+> > > on external power connection/disconnection. From my experience, it seems
+> > > that
+> > > nyans do indeed more retries to detect the change than veyrons, on average.
+> > > 
+> > > I don't think setting this value to 1 is very reasonable (in the end, that's
+> > > a
+> > > number of seconds), because power supply status changes tend to take a few
+> > > seconds to reflect on the battery status.
+> > > 
+> > > I think setting a high value (like 10) would always work and either way, the
+> > > status detection mechanism stops itself as soon as a change is detected (it
+> > > turns out this is not a good idea for bq27xxx batteries, because they go
+> > > from
+> > > charging to full in the first seconds after AC connection instead of
+> > > directly
+> > > reporting full, when full), but let's assume this is okay for sbs (and maybe
+> > > change it later).
+> > > 
+> > > > In terms of setting the "charger", that also could potentially be
+> > > > something that could be for all Chromebooks, or at least older ones
+> > > > that don't have their charger implemented by the type C driver.  ...or
+> > > > nyan devices could simply have a line in their dts like:
+> > > > 
+> > > > &battery {
+> > > >   power-supplies = <&charger>;
+> > > > };
+> > > 
+> > > That's true, but I think it makes as much sense to keep the whole binding.
+> > > 
+> > > In my opinion, the only reason to have a separate dtsi for this binding is
+> > > that
+> > > veyrons have another dtsi for chromebooks where this binding should be.
+> > > However,
+> > > it cannot be there because of minnie using another battery IC.
+> > > 
+> > > So my approach here would be to make it common for devices where other major
+> > > parts are also common, so we can avoid duplication when most of the device-
+> > > tree
+> > > is already common. In cases where most of the device-tree is specific to a
+> > > device, I think the binding should be duplicated. This is done already for
+> > > lots
+> > > of other components that could be made (somewhat) common anyway.
+> > > 
+> > > > 
+> > > > > > Note that &charger has to be defined (after my subsequent patches),
+> > > > > > which
+> > > > > > it is
+> > > > > > for devices that also include rk3288-veyron-chromebook, but not
+> > > > > > necessarily
+> > > > > > others.
+> > > > > > 
+> > > > > > Overall, I think having one -sbs dtsi file makes sense here because
+> > > > > > there
+> > > > > > is
+> > > > > > already a rk3288-veyron-chromebook dtsi that veyron chromebooks use.
+> > > > > > That
+> > > > > > file
+> > > > > > cannot contain the battery bindings because minnie has a different one
+> > > > > > and
+> > > > > > it
+> > > > > > would be a bit silly to copy it over all devices. That definitely
+> > > > > > makes
+> > > > > > sense.
+> > > > > > 
+> > > > > > As for other devices, I don't see why we should have a separate
+> > > > > > include
+> > > > > > file for
+> > > > > > the battery instead of having it in the device's dts. I think this
+> > > > > > should
+> > > > > > be the
+> > > > > > case on gru/kevin.
+> > > > > > 
+> > > > > > Also maybe not *all* gru-based devices will turn out to use a SBS
+> > > > > > battery,
+> > > > > > so it
+> > > > > > seems early to include this header in the gru dtsi.
+> > > > 
+> > > > For gru devices, we've moved to a "virtual sbs battery" provided by
+> > > > the EC.  I'm not 100% positive that everything will just magically
+> > > > work and be converted in the EC if we put a non-sbs battery on a board
+> > > > with this EC feature, but I would hope we'd convert everything
+> > > > properly.
+> > > 
+> > > Interesting and good to know!
+> > > 
+> > > > > > One last point, gru/kevin
+> > > > > > currently don't define a charger, which will break my subsequent patch
+> > > > > > (that is
+> > > > > > however needed for the veyrons that use this file).
+> > > > 
+> > > > Arguably this should be fixed.  On veyron-chromebook we just use
+> > > > "gpio-charger".  We didn't add a special charger driver w/ a property
+> > > > like "ti,external-control" since the only piece of information that
+> > > > Linux really needed from the charger was whether or not AC was
+> > > > connected.
+> > > 
+> > > Thanks for taking that choice, it indeed makes things easier on the kernel
+> > > side
+> > > whith no drawbacks.
+> > > 
+> > > > 
+> > > > > > To me, it seems that there's little advantage and major drawbacks in
+> > > > > > keeping
+> > > > > > this file the way it is.
+> > > > > 
+> > > > > I don't have any set opinion right now but after looking through the
+> > > > > other uses of the sbs-battery the cros-ec-sbs.dtsi snippet really seems
+> > > > > somewhat veyron/gru-specific - especially wrt. the retry-count values.
+> > > > > 
+> > > > > What I'm not sure about is whether it is actually better to keep the
+> > > > > include
+> > > > > around under a new name or just move the (rather tiny) sbs-battery node
+> > > > > into the relevant devicetrees directly, when there aren't that many
+> > > > > users
+> > > > > anyway.
+> > > > 
+> > > > I'm fine with whatever you guys choose to do here.  It's nice not to
+> > > > have copied "code", but with device tree sometimes copies are cleaner
+> > > > than trying to share something.
+> > > 
+> > > I definitely agree. I think copies are a good fit here because overall, we
+> > > have
+> > > enough disparity in the possible configurations among different SoC
+> > > platforms to
+> > > justify having one per device. So I believe it would make sense to make that
+> > > binding common *among the same SoC family*.
+> > 
+> > ok, so if I'm not mistaken it really looks like moving away from
+> > cros-sbs-battery might be the easiest solution and with seeing the
+> > different usages of the sbs-battery I tend to agree now :-) .
+> > 
+> > On the include vs. copy question it looks like we're tied as well with
+> > mickey, minnie (and fievel + tiger from 2017) not using the sbs-battery
+> > having local copies of the sbs-node in the affected devices really looks
+> > like the best option.
+> > 
+> > So I guess we should get gru + the sbs veyron-devices their own sbs-battery
+> > and then just drop te cros-ec-sbs.dtsi so that nobody else gets the idea
+> > of using it.
+> 
+> How about keeping the nodes for veyron chromebooks (except minnie, which is a
+> convertible anyway) in rk3288-veyron-chromebook-sbs as this patch initially
+> suggested, in addition to changes to gru dts?
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+I'm only seeing a cluttered up dts directory with that, as the node
+itself is only 9 lines (times 4 devices = 36 lines) and the copyright
+header in the dtsi alone is 43 lines ;-) .
 
- drivers/soc/rockchip/grf.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+With the other includes (analog audio and sdmmc) they really save on
+duplicate code, but the sbs node is so tiny and it looks like the arm32
+dts directory will stay in that format for the forseeable future, that I'd
+somehow prefer the sbs to move into the affected devices directly.
 
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-index d61db34..15e71fd 100644
---- a/drivers/soc/rockchip/grf.c
-+++ b/drivers/soc/rockchip/grf.c
-@@ -54,6 +54,17 @@ struct rockchip_grf_info {
- 	.num_values = ARRAY_SIZE(rk3288_defaults),
- };
- 
-+#define RK3328_GRF_SOC_CON4		0x410
-+
-+static const struct rockchip_grf_value rk3328_defaults[] __initconst = {
-+	{ "jtag switching", RK3328_GRF_SOC_CON4, HIWORD_UPDATE(0, 1, 12) },
-+};
-+
-+static const struct rockchip_grf_info rk3328_grf __initconst = {
-+	.values = rk3328_defaults,
-+	.num_values = ARRAY_SIZE(rk3328_defaults),
-+};
-+
- #define RK3368_GRF_SOC_CON15		0x43c
- 
- static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
-@@ -84,6 +95,9 @@ struct rockchip_grf_info {
- 		.compatible = "rockchip,rk3288-grf",
- 		.data = (void *)&rk3288_grf,
- 	}, {
-+		.compatible = "rockchip,rk3328-grf",
-+		.data = (void *)&rk3328_grf,
-+	}, {
- 		.compatible = "rockchip,rk3368-grf",
- 		.data = (void *)&rk3368_grf,
- 	}, {
--- 
-1.9.1
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
