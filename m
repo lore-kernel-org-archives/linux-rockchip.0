@@ -1,119 +1,106 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2] arm64: defconfig: enable some core options for 64bit
- Rockchip socs
-Date: Thu, 25 May 2017 01:06:50 +0200
-Message-ID: <20170524230650.17849-1-heiko@sntech.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v3] PCI: use IDA to manage domain number if not getting it
+ from DT
+Date: Thu, 25 May 2017 08:38:20 +0800
+Message-ID: <5a9f53fc-d0e3-4701-6640-e8a34cf95c06@rock-chips.com>
+References: <1495525511-202465-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170524223027.GA7958@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170524223027.GA7958@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable some very core config options used on 64bit Rockchip socs.
+Hi Bjorn,
 
-As built-in driver enable the Rockchip spi driver as well as the
-cros-ec-spi and cros-ec keyboard driver, as this may be helpful
-in case an initrd does not work as expected and drops the user
-into a shell. Another built-in is the fan53555 regulator driver,
-as it and its register-compatible cousins Silergy syr827 and syr828
-are often used on Rockchip socs as cpu-supply next to regular pmic.
+On 2017/5/25 6:30, Bjorn Helgaas wrote:
+> Hi Shawn,
+>
+> On Tue, May 23, 2017 at 03:45:11PM +0800, Shawn Lin wrote:
 
-The rest can be enabled as modules and contains the pcie host
-controller and its phy, the sucessive approximation adc (saradc)
-that gets often used for additional buttons on Rockchip boards
-as well as the adc-keys Keyboard driver for these keys.
+[...]
 
-The cros-ec-pwm also can be a module, as it is normally only used to
-drive display backlights as well as the Rockchip thermal controller
-that allows to read the cpu and gpu temperatures and affect frequency
-scaling if necessary.
+>> +		domain = pci_get_new_domain_nr(bus);
+>
+> These comments and logic are too complicated for my puny brain.  Much of
+> this was pre-existing, of course.  Surely there's a simpler way?
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/configs/defconfig | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+yup, I think we could simplify the code.
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 65cdd878cfbd..97c123e09e45 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -68,6 +68,7 @@ CONFIG_PCIE_QCOM=y
- CONFIG_PCIE_ARMADA_8K=y
- CONFIG_PCI_AARDVARK=y
- CONFIG_PCIE_RCAR=y
-+CONFIG_PCIE_ROCKCHIP=m
- CONFIG_PCI_HOST_GENERIC=y
- CONFIG_PCI_XGENE=y
- CONFIG_ARM64_VA_BITS_48=y
-@@ -208,6 +209,8 @@ CONFIG_BRCMFMAC=m
- CONFIG_WL18XX=m
- CONFIG_WLCORE_SDIO=m
- CONFIG_INPUT_EVDEV=y
-+CONFIG_KEYBOARD_ADC=m
-+CONFIG_KEYBOARD_CROS_EC=y
- CONFIG_KEYBOARD_GPIO=y
- CONFIG_INPUT_MISC=y
- CONFIG_INPUT_PM8941_PWRKEY=y
-@@ -263,6 +266,7 @@ CONFIG_SPI_MESON_SPIFC=m
- CONFIG_SPI_ORION=y
- CONFIG_SPI_PL022=y
- CONFIG_SPI_QUP=y
-+CONFIG_SPI_ROCKCHIP=y
- CONFIG_SPI_S3C64XX=y
- CONFIG_SPI_SPIDEV=m
- CONFIG_SPMI=y
-@@ -292,6 +296,7 @@ CONFIG_THERMAL_GOV_POWER_ALLOCATOR=y
- CONFIG_CPU_THERMAL=y
- CONFIG_THERMAL_EMULATION=y
- CONFIG_EXYNOS_THERMAL=y
-+CONFIG_ROCKCHIP_THERMAL=m
- CONFIG_WATCHDOG=y
- CONFIG_S3C2410_WATCHDOG=y
- CONFIG_MESON_GXBB_WATCHDOG=m
-@@ -300,12 +305,14 @@ CONFIG_RENESAS_WDT=y
- CONFIG_BCM2835_WDT=y
- CONFIG_MFD_CROS_EC=y
- CONFIG_MFD_CROS_EC_I2C=y
-+CONFIG_MFD_CROS_EC_SPI=y
- CONFIG_MFD_EXYNOS_LPASS=m
- CONFIG_MFD_HI655X_PMIC=y
- CONFIG_MFD_MAX77620=y
- CONFIG_MFD_SPMI_PMIC=y
- CONFIG_MFD_RK808=y
- CONFIG_MFD_SEC_CORE=y
-+CONFIG_REGULATOR_FAN53555=y
- CONFIG_REGULATOR_FIXED_VOLTAGE=y
- CONFIG_REGULATOR_GPIO=y
- CONFIG_REGULATOR_HI655X=y
-@@ -473,8 +480,10 @@ CONFIG_ARCH_TEGRA_186_SOC=y
- CONFIG_EXTCON_USB_GPIO=y
- CONFIG_IIO=y
- CONFIG_EXYNOS_ADC=y
-+CONFIG_ROCKCHIP_SARADC=m
- CONFIG_PWM=y
- CONFIG_PWM_BCM2835=m
-+CONFIG_PWM_CROS_EC=m
- CONFIG_PWM_MESON=m
- CONFIG_PWM_ROCKCHIP=y
- CONFIG_PWM_SAMSUNG=y
-@@ -484,6 +493,7 @@ CONFIG_PHY_HI6220_USB=y
- CONFIG_PHY_SUN4I_USB=y
- CONFIG_PHY_ROCKCHIP_INNO_USB2=y
- CONFIG_PHY_ROCKCHIP_EMMC=y
-+CONFIG_PHY_ROCKCHIP_PCIE=m
- CONFIG_PHY_XGENE=y
- CONFIG_PHY_TEGRA_XUSB=y
- CONFIG_ARM_SCPI_PROTOCOL=y
--- 
-2.11.0
+>
+> 1) If we're using ACPI, every host bridge must have a _SEG method, and it
+> supplies the domain.  We ignore any bridge without _SEG.
+>
+> 2) If we're using DT, every host bridge must supply "linux,pci-domain", and
+> it supplies the domain.  We ignore any bridge without "linux,pci-domain".
+>
+> 3) Otherwise, we always use IDA.
+
+I plan to create a new function to allocate domain number using IDA as
+then we don't touch the logic of of_pci_bus_find_domain_nr, and the
+name of of_pci_bus_find_domain_nr explicitly say that the domain number
+comes from DT.
+
+Then I could put the condition check inside the pci_bus_find_domain_nr
+as your suggested.
+
+
+Does it looks ok to you?
+
+>
+>>  	} else {
+>>  		dev_err(parent, "Node %s has inconsistent \"linux,pci-domain\" property in DT\n",
+
+[...]
+
+>>  		pci_remove_bus_device(child);
+>> +
+>> +	pci_put_old_domain_nr(bus);
+>
+> In your current patch, ida_domain defaults to true, and it is only set
+> to false in of_pci_bus_find_domain_nr(), which is only called when
+> ACPI is disabled.  Therefore, ida_domain will be true when we're using
+> ACPI, and I think pci_put_old_domain_nr() will erroneously remove
+> domains from tha IDA.
+>
+
+woops, I forgot to check the ACPI cases.
+
+>>  	pci_remove_bus(bus);
+>>  	host_bridge->bus = NULL;
+>>
+>> diff --git a/include/linux/pci.h b/include/linux/pci.h
+>> index 33c2b0b..9296e31 100644
+>> --- a/include/linux/pci.h
+>> +++ b/include/linux/pci.h
+>> @@ -1445,13 +1445,17 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+>>   * configuration space.
+>>   */
+>>  #ifdef CONFIG_PCI_DOMAINS
+>> +extern struct ida __domain_nr;
+>>  extern int pci_domains_supported;
+>> -int pci_get_new_domain_nr(void);
+>> +int pci_get_new_domain_nr(struct pci_bus *bus);
+>> +void pci_put_old_domain_nr(struct pci_bus *bus);
+>>  #else
+>>  enum { pci_domains_supported = 0 };
+>>  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
+>>  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
+>> -static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
+>> +static inline int pci_get_new_domain_nr(struct pci_bus *bus)
+>> +{ return -ENOSYS; }
+>> +static inline void pci_put_old_domain_nr(struct pci_bus *bus) { }
+>>  #endif /* CONFIG_PCI_DOMAINS */
+>>
+>>  /*
+>> --
+>> 1.9.1
+>>
+>>
+>
+>
+>
