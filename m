@@ -1,85 +1,272 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v4] PCI: use IDA to manage domain number if not getting
- it from DT
-Date: Thu, 25 May 2017 14:43:53 -0500
-Message-ID: <20170525194353.GA3390@bhelgaas-glaptop.roam.corp.google.com>
-References: <1495611455-41952-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/4] pinctrl: rockchip: Add iomux-route switching support for rk3228
+Date: Thu, 25 May 2017 23:12:45 +0200
+Message-ID: <3063930.sJt1b8WyHP@phil>
+References: <1495717952-9762-1-git-send-email-david.wu@rock-chips.com> <1495717952-9762-3-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1495611455-41952-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1495717952-9762-3-git-send-email-david.wu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 24, 2017 at 03:37:35PM +0800, Shawn Lin wrote:
-> If not getting domain number from DT, the domain number will
-> keep increasing once doing unbind/bind RC drivers. This could
-> introduce pointless tree view of lspci as shows below:
+Hi David,
+
+Am Donnerstag, 25. Mai 2017, 21:12:30 CEST schrieb David Wu:
+> There are 9 IP blocks pin routes need to be switched, that are
+> pwm-0, pwm-1, pwm-2, pwm-3, sdio, spi, emmc, uart2, uart1.
 > 
-> -+-[0001:00]---00.0-[01]----00.0
->   \-[0000:00]-
-> 
-> The more test we do, the lengthier it would be. The more serious
-> issue is that if attaching two hierarchies for two different domains
-> belonging to two root bridges, so when doing unbind/bind test for one
-> of them and keep the other, then the domain number would finally
-> overflow and make the two hierarchies of devices share the some domain
-> number but actually they shouldn't. So it looks like we need to invent
-> a new indexing ID mechanism to manage domain number. This patch
-> introduces idr to achieve our purpose.
-> 
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+
+This series come pretty close to what I had in mind, but I do have some
+change requests inline below.
+
+The comments are in this patch but apply to the whole series.
+
+
 > ---
+>  drivers/pinctrl/pinctrl-rockchip.c | 176 ++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 172 insertions(+), 4 deletions(-)
 > 
-> Changes in v4:
-> - make domain_nr depends on CONFIG_PCI_DOMAINS instead of
-> CONFIG_PCI_DOMAINS_GENERIC.(reported by Kbuild Robot)
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index f5dd1c3..be4c16e 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -187,6 +187,20 @@ struct rockchip_pin_bank {
+>  		},					\
+>  	}
+>  
+> +#define PIN_BANK_ROUTE(id, pins, label, route)		\
+> +	{						\
+> +		.bank_num	= id,			\
+> +		.nr_pins	= pins,			\
+> +		.name		= label,		\
+> +		.route_mask	= route,		\
+> +		.iomux		= {			\
+> +			{ .offset = -1 },		\
+> +			{ .offset = -1 },		\
+> +			{ .offset = -1 },		\
+> +			{ .offset = -1 },		\
+> +		},					\
+> +	}
+> +
+>  #define PIN_BANK_IOMUX_FLAGS(id, pins, label, iom0, iom1, iom2, iom3)	\
+>  	{								\
+>  		.bank_num	= id,					\
+> @@ -605,6 +619,159 @@ static void rk3328_recalc_mux(u8 bank_num, int pin, int *reg,
+>  	*bit = data->bit;
+>  }
+>  
+> +static const struct rockchip_mux_route_data  rk3228_mux_route_data[] = {
+> +	{
+> +		/* pwm0-0 */
+> +		.bank = 0,
+> +		.pin = 26,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16),
+> +	}, {
+> +		/* pwm0-1 */
+> +		.bank = 3,
+> +		.pin = 21,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16) | BIT(0),
+> +	}, {
+> +		/* pwm1-0 */
+> +		.bank = 0,
+> +		.pin = 27,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 1),
+> +	}, {
+> +		/* pwm1-1 */
+> +		.bank = 0,
+> +		.pin = 30,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 1) | BIT(1),
+> +	}, {
+> +		/* pwm2-0 */
+> +		.bank = 0,
+> +		.pin = 28,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 2),
+> +	}, {
+> +		/* pwm2-1 */
+> +		.bank = 1,
+> +		.pin = 12,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 2) | BIT(2),
+> +	}, {
+> +		/* pwm3-0 */
+> +		.bank = 3,
+> +		.pin = 26,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 3),
+> +	}, {
+> +		/* pwm3-1 */
+> +		.bank = 1,
+> +		.pin = 11,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 3) | BIT(3),
+> +	}, {
+> +		/* sdio-0_d0 */
+> +		.bank = 1,
+> +		.pin = 1,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 4),
+> +	}, {
+> +		/* sdio-1_d0 */
+> +		.bank = 3,
+> +		.pin = 2,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 4) | BIT(4),
+> +	}, {
+> +		/* spi-0_rx */
+> +		.bank = 0,
+> +		.pin = 13,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 5),
+> +	}, {
+> +		/* spi-1_rx */
+> +		.bank = 2,
+> +		.pin = 0,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 5) | BIT(5),
+> +	}, {
+> +		/* emmc-0_cmd */
+> +		.bank = 1,
+> +		.pin = 22,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 7),
+> +	}, {
+> +		/* emmc-1_cmd */
+> +		.bank = 2,
+> +		.pin = 4,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 7) | BIT(7),
+> +	}, {
+> +		/* uart2-0_rx */
+> +		.bank = 1,
+> +		.pin = 19,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 8),
+> +	}, {
+> +		/* uart2-1_rx */
+> +		.bank = 1,
+> +		.pin = 10,
+> +		.func = 2,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 8) | BIT(8),
+> +	}, {
+> +		/* uart1-0_rx */
+> +		.bank = 1,
+> +		.pin = 10,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 11),
+> +	}, {
+> +		/* uart1-1_rx */
+> +		.bank = 3,
+> +		.pin = 13,
+> +		.func = 1,
+> +		.route_offset = 0x50,
+> +		.route_val = BIT(16 + 11) | BIT(11),
+> +	},
+> +};
+> +
+> +static bool rk3228_set_mux_route(u8 bank_num, int pin,
+> +				 int mux, u32 *reg, u32 *value)
 
-I'm confused about why you posted this v4.  It addresses a kbuild
-issue, but not any of the questions from my review of v3, so reviewing
-v4 would be a waste of my time.
+instead of referencing this function in the per-soc struct, please make
+it generic and reference the route array + size in the per-soc struct.
 
-But since we're here, my naive suggestion:
+Except for referencing a different array, the function is the same
+everywhere, so there is no need to duplicate it for each soc.
 
->> 1) If we're using ACPI, every host bridge must have a _SEG method,
->> and it supplies the domain.  We ignore any bridge without _SEG.
->>
->> 2) If we're using DT, every host bridge must supply
->> "linux,pci-domain", and it supplies the domain.  We ignore any
->> bridge without "linux,pci-domain".
->>
->> 3) Otherwise, we always use IDA.
+> +{
+> +	const struct rockchip_mux_route_data *data = NULL;
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(rk3228_mux_route_data); i++)
+> +		if ((rk3228_mux_route_data[i].bank == bank_num) &&
+> +		    (rk3228_mux_route_data[i].pin == pin) &&
+> +		    (rk3228_mux_route_data[i].func == mux)) {
+> +			data = &rk3228_mux_route_data[i];
+> +			break;
+> +		}
+> +
+> +	if (!data)
+> +		return false;
+> +
+> +	*reg = data->route_offset;
+> +	*value = data->route_val;
+> +
+> +	return true;
+> +}
+> +
+>  static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
+>  {
+>  	struct rockchip_pinctrl *info = bank->drvdata;
+> @@ -2852,10 +3019,10 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>  };
+>  
+>  static struct rockchip_pin_bank rk3228_pin_banks[] = {
+> -	PIN_BANK(0, 32, "gpio0"),
+> -	PIN_BANK(1, 32, "gpio1"),
+> -	PIN_BANK(2, 32, "gpio2"),
+> -	PIN_BANK(3, 32, "gpio3"),
+> +	PIN_BANK_ROUTE(0, 32, "gpio0", 0x5c002000),
+> +	PIN_BANK_ROUTE(1, 32, "gpio1", 0x00483c02),
+> +	PIN_BANK_ROUTE(2, 32, "gpio2", 0x00000011),
+> +	PIN_BANK_ROUTE(3, 32, "gpio3", 0x04202004),
 
-was *too* simplistic.  _SEG is optional.  If it's missing we default
-to domain 0.
+Requiring developers to calculate this pin-bit-value for each bank
+is cumbersome and error-prone. With the routes-struct known in
+the driver (see above and below), you can keep the the value element
+in rockchip_pin_bank, but calculate the per-bank value dynamically
+when the bank gets created.
 
-The point is that we can't mix the IDA with either the ACPI or DT
-info.  I think for ACPI it should be easy: if _SEG exists, we use
-that.  If _SEG doesn't exist, the spec says we that bridge is in
-domain 0.  So I think we should never use IDA if we're using ACPI.
+For example in rockchip_pinctrl_get_soc_data just parse the route-struct
+and calculate that value when the driver probes.
 
-For DT, I think we can't use IDA if *any* bridge uses
-"linux,pci-domain", because there's no way to allocate a specified
-domain from the IDA.
+This reduces possible errors and also spares us the clutter of all the
+additional PIN_BANK_* defines.
 
-Of course, we see the bridges one at a time, so we don't know ahead of
-time whether any uses "linux,pci-domain".  I think that means we have
-to decide when we see the very first host bridge which strategy to
-use.  If the first host bridge has "linux,pci-domain", we use that,
-and if future host bridges don't supply "linux,pci-domain", we
-probably have to ignore the whole bridge.
 
-If the first host bridge doesn't have "linux,pci-domain", we use IDA,
-and we probably have to ignore any future bridges that *do* have
-"linux,pci-domain".
+>  };
+>  
+>  static struct rockchip_pin_ctrl rk3228_pin_ctrl = {
+> @@ -2866,6 +3033,7 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>  		.grf_mux_offset		= 0x0,
+>  		.pull_calc_reg		= rk3228_calc_pull_reg_and_bit,
+>  		.drv_calc_reg		= rk3228_calc_drv_reg_and_bit,
+> +		.iomux_route		= rk3228_set_mux_route,
 
-So it seems like "linux,pci-domain" is basically an all-or-none
-proposition.
+		.iomux_routes	= rk3228_mux_route_data,
+		.niomux_routes	= ARRAY_SIZE(rk3228_mux_route_data),
 
-Bjorn
+
+Heiko
+
+>  };
+>  
+>  static struct rockchip_pin_bank rk3288_pin_banks[] = {
+> 
+
+
