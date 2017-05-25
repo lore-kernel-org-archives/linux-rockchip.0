@@ -1,106 +1,29 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3] PCI: use IDA to manage domain number if not getting it
- from DT
-Date: Thu, 25 May 2017 08:38:20 +0800
-Message-ID: <5a9f53fc-d0e3-4701-6640-e8a34cf95c06@rock-chips.com>
-References: <1495525511-202465-1-git-send-email-shawn.lin@rock-chips.com>
- <20170524223027.GA7958@bhelgaas-glaptop.roam.corp.google.com>
+From: Keith Busch <keith.busch@intel.com>
+Subject: Re: [PATCH] PCI: Make error code types consistent in
+ pci_{read,write}_config_*
+Date: Thu, 25 May 2017 02:50:16 -0400
+Message-ID: <20170525065015.GA25033@localhost.localdomain>
+References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170523184359.GB115572@google.com>
+ <20170523193655.GA144183@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170524223027.GA7958@bhelgaas-glaptop.roam.corp.google.com>
+Content-Disposition: inline
+In-Reply-To: <20170523193655.GA144183@google.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Krishna Dhulipala <krishnad@fb.com>, Christoph Hellwig <hch@lst.de>, Wei Zhang <wzhang@fb.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+On Tue, May 23, 2017 at 12:36:58PM -0700, Brian Norris wrote:
+> Callers normally treat the config space accessors as returning PCBIOS_*
+> error codes, not Linux error codes (or they don't look at them at all).
+> We have pcibios_err_to_errno(), in case the error code needs translated.
+> 
+> Fixes: 4b1038834739 ("PCI: Don't attempt config access to disconnected devices")
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-On 2017/5/25 6:30, Bjorn Helgaas wrote:
-> Hi Shawn,
->
-> On Tue, May 23, 2017 at 03:45:11PM +0800, Shawn Lin wrote:
+That looks fine to me.
 
-[...]
-
->> +		domain = pci_get_new_domain_nr(bus);
->
-> These comments and logic are too complicated for my puny brain.  Much of
-> this was pre-existing, of course.  Surely there's a simpler way?
-
-yup, I think we could simplify the code.
-
->
-> 1) If we're using ACPI, every host bridge must have a _SEG method, and it
-> supplies the domain.  We ignore any bridge without _SEG.
->
-> 2) If we're using DT, every host bridge must supply "linux,pci-domain", and
-> it supplies the domain.  We ignore any bridge without "linux,pci-domain".
->
-> 3) Otherwise, we always use IDA.
-
-I plan to create a new function to allocate domain number using IDA as
-then we don't touch the logic of of_pci_bus_find_domain_nr, and the
-name of of_pci_bus_find_domain_nr explicitly say that the domain number
-comes from DT.
-
-Then I could put the condition check inside the pci_bus_find_domain_nr
-as your suggested.
-
-
-Does it looks ok to you?
-
->
->>  	} else {
->>  		dev_err(parent, "Node %s has inconsistent \"linux,pci-domain\" property in DT\n",
-
-[...]
-
->>  		pci_remove_bus_device(child);
->> +
->> +	pci_put_old_domain_nr(bus);
->
-> In your current patch, ida_domain defaults to true, and it is only set
-> to false in of_pci_bus_find_domain_nr(), which is only called when
-> ACPI is disabled.  Therefore, ida_domain will be true when we're using
-> ACPI, and I think pci_put_old_domain_nr() will erroneously remove
-> domains from tha IDA.
->
-
-woops, I forgot to check the ACPI cases.
-
->>  	pci_remove_bus(bus);
->>  	host_bridge->bus = NULL;
->>
->> diff --git a/include/linux/pci.h b/include/linux/pci.h
->> index 33c2b0b..9296e31 100644
->> --- a/include/linux/pci.h
->> +++ b/include/linux/pci.h
->> @@ -1445,13 +1445,17 @@ static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
->>   * configuration space.
->>   */
->>  #ifdef CONFIG_PCI_DOMAINS
->> +extern struct ida __domain_nr;
->>  extern int pci_domains_supported;
->> -int pci_get_new_domain_nr(void);
->> +int pci_get_new_domain_nr(struct pci_bus *bus);
->> +void pci_put_old_domain_nr(struct pci_bus *bus);
->>  #else
->>  enum { pci_domains_supported = 0 };
->>  static inline int pci_domain_nr(struct pci_bus *bus) { return 0; }
->>  static inline int pci_proc_domain(struct pci_bus *bus) { return 0; }
->> -static inline int pci_get_new_domain_nr(void) { return -ENOSYS; }
->> +static inline int pci_get_new_domain_nr(struct pci_bus *bus)
->> +{ return -ENOSYS; }
->> +static inline void pci_put_old_domain_nr(struct pci_bus *bus) { }
->>  #endif /* CONFIG_PCI_DOMAINS */
->>
->>  /*
->> --
->> 1.9.1
->>
->>
->
->
->
+Reviewed-by: Keith Busch <keith.busch@intel.com>
