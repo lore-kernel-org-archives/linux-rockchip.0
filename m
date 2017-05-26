@@ -1,86 +1,146 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v2 4/4] pinctrl: rockchip: Add iomux-route switching support for rk3399
-Date: Fri, 26 May 2017 15:20:23 +0800
-Message-ID: <1495783223-28857-5-git-send-email-david.wu@rock-chips.com>
-References: <1495783223-28857-1-git-send-email-david.wu@rock-chips.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1495783223-28857-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: heiko@sntech.de, linus.walleij@linaro.org
-Cc: huangtao@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: Eddie Cai <eddie.cai.linux@gmail.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: correct regular setting for act8846
+Date: Fri, 26 May 2017 16:35:07 +0800
+Message-ID: <CAJrj+DMQ35CZ0AUrgKu7y4Ukqvye8ywhiuQ44b=c95wmRu-nJQ@mail.gmail.com>
+References: <1495611221-6749-1-git-send-email-eddie.cai.linux@gmail.com>
+ <5352430.FzU3E8oYou@phil> <010ca6dc-e1f7-fb6d-7a22-056d4e1eeef2@arm.com>
+ <1743163.DHHxsEJfsI@phil> <05eab43d-1ed7-7aed-de45-181d948748cb@arm.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <05eab43d-1ed7-7aed-de45-181d948748cb@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, mark.rutland@arm.com, devicetree@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are 2 IP blocks pin routes need to be switched, that are
-uart2dbg, pcie_clkreq.
-
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
-Change in v2:
- - calculate the per-bank value dynamically (Heiko)
-
- drivers/pinctrl/pinctrl-rockchip.c | 41 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 2563959..6690883 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -816,6 +816,45 @@ static void rk3328_recalc_mux(u8 bank_num, int pin, int *reg,
- 	},
- };
- 
-+static struct rockchip_mux_route_data rk3399_mux_route_data[] = {
-+	{
-+		/* uart2dbga_rx */
-+		.bank_num = 4,
-+		.pin = 8,
-+		.func = 2,
-+		.route_offset = 0xe21c,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11),
-+	}, {
-+		/* uart2dbgb_rx */
-+		.bank_num = 4,
-+		.pin = 16,
-+		.func = 2,
-+		.route_offset = 0xe21c,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
-+	}, {
-+		/* uart2dbgc_rx */
-+		.bank_num = 4,
-+		.pin = 19,
-+		.func = 1,
-+		.route_offset = 0xe21c,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
-+	}, {
-+		/* pcie_clkreqn */
-+		.bank_num = 2,
-+		.pin = 26,
-+		.func = 2,
-+		.route_offset = 0xe21c,
-+		.route_val = BIT(16 + 14),
-+	}, {
-+		/* pcie_clkreqnb */
-+		.bank_num = 4,
-+		.pin = 24,
-+		.func = 1,
-+		.route_offset = 0xe21c,
-+		.route_val = BIT(16 + 14) | BIT(14),
-+	},
-+};
-+
- static bool rockchip_get_mux_route(struct rockchip_pin_bank *bank, int pin,
- 				   int mux, u32 *reg, u32 *value)
- {
-@@ -3270,6 +3309,8 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 		.pmu_mux_offset		= 0x0,
- 		.grf_drv_offset		= 0xe100,
- 		.pmu_drv_offset		= 0x80,
-+		.iomux_routes		= rk3399_mux_route_data,
-+		.niomux_routes		= ARRAY_SIZE(rk3399_mux_route_data),
- 		.pull_calc_reg		= rk3399_calc_pull_reg_and_bit,
- 		.drv_calc_reg		= rk3399_calc_drv_reg_and_bit,
- };
--- 
-1.9.1
-
-
+2017-05-24 20:27 GMT+08:00 Robin Murphy <robin.murphy@arm.com>:
+> On 24/05/17 12:34, Heiko Stuebner wrote:
+>> Am Mittwoch, 24. Mai 2017, 11:26:10 CEST schrieb Robin Murphy:
+>>> On 24/05/17 09:17, Heiko Stuebner wrote:
+>>>> Hi Eddie,
+>>>>
+>>>> Am Mittwoch, 24. Mai 2017, 15:33:41 CEST schrieb Eddie Cai:
+>>>>> the previous setting of act8846 is just copy from firefly board. but
+>>>>> the reload board is a little different from firefly board. let's correct
+>>>>> it.
+>>>>>
+>>>>> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
+>>>>> ---
+>>>>>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 21 +++++++++++----------
+>>>>>  1 file changed, 11 insertions(+), 10 deletions(-)
+>>>>>
+>>>>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>>>>> index 8134966..4cfa109 100644
+>>>>> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>>>>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>>>>> @@ -179,6 +179,7 @@
+>>>>>                            regulator-name = "vccio_sd";
+>>>>>                            regulator-min-microvolt = <3300000>;
+>>>>>                            regulator-max-microvolt = <3300000>;
+>>>>> +                          regulator-always-on;
+>>>>
+>>>> the rest below looks pretty straight forward, but why does vccio_sd
+>>>> need to be always on?
+>>>>
+>>>> I've checked the reload's schematics but did not find any further users
+>>>> of vccio_sd that may warant this attribute.
+>>>
+>>> It looks like the card detect line is pulled up externally to vcc_sd,
+>>> which isn't always-on either, so you probably do want this - on the
+>>> (unrelated) rk3288 TV box I've been hacking on, I discovered that
+>>> powering off the sdmmc-supply domain also kills the internal pull-up and
+>>> leaves sdmmc_cd floating. The resulting stochastic card polling
+>>> mechanism is amusing, but probably undesirable ;)
+>>
+>> Hmm, are you mixing up vcc_sd and vccio_sd?
+>>
+>> vccio_sd is the io supply (vqmmc in mmc-terms) to the mmc-host itself
+>> while vcc_sd is the actual card supply (vmmc in mmc-terms).
+>
+> Yes, that is what I meant, although I was implicitly assuming the case
+> where the MMC host driver has already turned off vcc_sd due to no card
+> being present. I'll double-check, but I'm 99% certain that *unlike*
+> Firefly, the Hotack board I've got (seemingly a straight implementation
+> of the "Box" reference design based on what I've managed to
+> reverse-engineer from scouring the internet) has no external pull-ups
+> for anything on its microSD socket, so is entirely reliant on everything
+> being pulled up internally to SDMMC0_VDD, i.e. vccio_sd.
+>
+>> After looking through some schematics, the pull-up to vcc_sd seems to be
+>> the common pattern for rk3288 devices. So I guess this means the fixed
+>> regulator vcc_sd should get an regulator-always-on instead to stabilize
+>> the card-detect?
+>
+> That might make sense, especially where vcc_sd is just vcc_io behind a
+> MOSFET switch, so turning it "off" when there's no card to draw power
+> anyway probably doesn't achieve much. Plus if you can then rely on
+> vcc_sd not going away it might be worth disabling the internal pull-ups
+> which are still being set by all the sdmmc_* pinctrl configs as well.
+the host might want to reset the card power when the card controller hang up.
+it won't work if we add regulator-always-on to vcc_sd.  So i would
+still prefer to
+add regulator-always-on to vccio_sd instead of vcc_sd
+>
+> Robin.
+>
+>>>>>                    };
+>>>>>
+>>>>>                    vdd10_lcd: REG6 {
+>>>>> @@ -187,24 +188,23 @@
+>>>>>                            regulator-max-microvolt = <1000000>;
+>>>>>                    };
+>>>>>
+>>>>> -                  vcca_18: REG7  {
+>>>>> -                          regulator-name = "vcca_18";
+>>>>> -                          regulator-min-microvolt = <1800000>;
+>>>>> -                          regulator-max-microvolt = <1800000>;
+>>>>> -                          regulator-always-on;
+>>>>> +                  vcca_33: REG7  {
+>>>>> +                          regulator-name = "vcca_33";
+>>>>> +                          regulator-min-microvolt = <3300000>;
+>>>>> +                          regulator-max-microvolt = <3300000>;
+>>>>>                    };
+>>>>>
+>>>>> -                  vcca_33: REG8 {
+>>>>> -                          regulator-name = "vcca_33";
+>>>>> +                  vcc_lan: REG8 {
+>>>>> +                          regulator-name = "vcc_lan";
+>>>>>                            regulator-min-microvolt = <3300000>;
+>>>>>                            regulator-max-microvolt = <3300000>;
+>>>>> -                          regulator-always-on;
+>>>>>                    };
+>>>>>
+>>>>> -                  vcc_lan: REG9 {
+>>>>> -                          regulator-name = "vcca_lan";
+>>>>> +                  vccio_pmu: REG9 {
+>>>>> +                          regulator-name = "vccio_pmu";
+>>>>>                            regulator-min-microvolt = <3300000>;
+>>>>>                            regulator-max-microvolt = <3300000>;
+>>>>> +                          regulator-always-on;
+>>>>>                    };
+>>>>>
+>>>>>                    vdd_10: REG10 {
+>>>>> @@ -218,6 +218,7 @@
+>>>>>                            regulator-name = "vcc_18";
+>>>>>                            regulator-min-microvolt = <1800000>;
+>>>>>                            regulator-max-microvolt = <1800000>;
+>>>>> +                          regulator-always-on;
+>>>>>                    };
+>>>>>
+>>>>>                    vcc18_lcd: REG12 {
+>>>>>
+>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> linux-arm-kernel mailing list
+>>>> linux-arm-kernel@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>>>>
+>>>
+>>>
+>>>
+>>
+>>
+>
