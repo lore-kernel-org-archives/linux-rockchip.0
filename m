@@ -1,90 +1,68 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH V2] ARM: dts: rockchip:add sd card support for firefly
- reload board
-Date: Fri, 26 May 2017 12:31:53 +0100
-Message-ID: <951b3bad-eae7-f870-2bc1-8e230bfa4904@arm.com>
-References: <1495782439-27142-1-git-send-email-eddie.cai.linux@gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
+Date: Fri, 26 May 2017 09:49:49 -0400
+Message-ID: <20170526134949.z4dp4zsgipmbgdl3@art_vandelay>
+References: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
+ <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
+ <59279331.3050402@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1495782439-27142-1-git-send-email-eddie.cai.linux@gmail.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <59279331.3050402@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: jeffy <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26/05/17 08:07, Eddie Cai wrote:
-> firefly reload board not support sd card yet. so support it.
-
-I'm confused... According to pictures and the schematic the microSD
-socket and vcc_sd supply are on the baseboard, not the core module, and
-these nodes already exist in rk3288-firefly-reload.dts :/
-
-Robin.
-
-> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
-> Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 31 +++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-> index 413b61f..2f41209 100644
-> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-> @@ -57,6 +57,17 @@
->  		clock-output-names = "ext_gmac";
->  	};
->  
-> +	vcc_sd: sdmmc-regulator {
-> +		compatible = "regulator-fixed";
-> +		gpio = <&gpio7 RK_PB3 GPIO_ACTIVE_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&sdmmc_pwr>;
-> +		regulator-name = "vcc_sd";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		startup-delay-us = <100000>;
-> +		vin-supply = <&vcc_io>;
-> +	};
->  
->  	vcc_flash: flash-regulator {
->  		compatible = "regulator-fixed";
-> @@ -281,6 +292,26 @@
->  			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
->  		};
->  	};
-> +
-> +	sdmmc {
-> +		sdmmc_pwr: sdmmc-pwr {
-> +			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> +
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	card-detect-delay = <200>;
-> +	disable-wp;
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
-> +	vmmc-supply = <&vcc_sd>;
-> +	vqmmc-supply = <&vccio_sd>;
-> +	status = "okay";
->  };
->  
->  &tsadc {
-> 
+T24gRnJpLCBNYXkgMjYsIDIwMTcgYXQgMTA6MzA6MDlBTSArMDgwMCwgamVmZnkgd3JvdGU6Cj4g
+SGkgc2VhbiwKPiAKPiBPbiAwNS8yNS8yMDE3IDExOjMwIFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4g
+PiBPbiBUdWUsIE1heSAyMywgMjAxNyBhdCAwMjozOTo0M1BNICswODAwLCBKZWZmeSBDaGVuIHdy
+b3RlOgo+ID4gPiBUaGUgc3lzdGVtIHdvdWxkIGNyYXNoIHdoZW4gdHJ5aW5nIHRvIGFsbG9jIHpl
+cm8gc2l6ZWQgZ2VtIGJ1ZmZlcjoKPiA+ID4gWyAgICA2LjcxMjQzNV0gVW5hYmxlIHRvIGhhbmRs
+ZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAw
+MDAxMCA8LS1aRVJPX1NJWkVfUFRSCj4gPiA+IC4uLgo+ID4gPiBbICAgIDYuNzU3NTAyXSBQQyBp
+cyBhdCBzZ19hbGxvY190YWJsZV9mcm9tX3BhZ2VzKzB4MTcwLzB4MWVjCj4gPiAKPiA+IEl0J3Mg
+dW5mb3J0dW5hdGUgdGhhdCB5b3UgZGlkbid0IGluY2x1ZGUgdGhlIGVudGlyZSBzdGFjayB0cmFj
+ZS4gRnJvbSBjb2RlCj4gPiBpbnNwZWN0aW9uLCBpdCBzZWVtcyBsaWtlIHRoZSAwIHNpemUgY29t
+ZXMgZnJvbSB0aGUgZmJfcHJvYmUgcGF0aD8gSXMgdGhlcmUKPiA+IHNvbWV3aGVyZSBpbiB0aGUg
+aGVscGVycyB0aGF0IHlvdSBjb3VsZCBjaGVjayB0aGUgbW9kZSBpcyBzYW5lIHNvIGFsbCBkcml2
+ZXJzCj4gPiBjYW4gYmVuZWZpdD8KPiAKPiBobW0sIHNvcnJ5LCBpIHdhcyB0ZXN0aW5nIGl0IG9u
+IGNocm9tZW9zIDQuNCBrZXJuZWwsIGl0IHR1cm5zIG91dCB0aGF0IHdlCj4gaGF2ZSBhIGN1c3Rv
+bSBpb2N0bCBmb3IgdXNlcnNwYWNlIHRvIGNyZWF0ZSBnZW0gYnVmZmVyKHRoZSBzYW1lIGFzIGV4
+eW5vcwo+IGRybSksIHdoaWNoIG1pZ2h0IGdldCB0aGUgdGhlIDAgc2l6ZS4KPiAKPiBidXQgb24g
+dXBzdHJlYW0ga2VybmVsLCBpdCBjb3VsZCBvbmx5IGJlIGNhbGxlZCBieSBkdW1wX2NyZWF0ZSwg
+YW5kIHRoZQo+IGRybV9tb2RlX2NyZWF0ZV9kdW1iX2lvY3RsIGFscmVhZHkgZGlkIHRoZSBzaXpl
+IGNoZWNrLgoKQWgsIG9rLiBJbiB0aGF0IGNhc2UsIGZpeCB0aGUgY3VzdG9tIGlvY3RsIHN1Y2gg
+dGhhdCBpdCBlbnN1cmVzIHdlIG5ldmVyIGNhbGwKdGhpcyBmdW5jdGlvbiB3aXRoIHNpemUgPT0g
+MCwgYW5kIHVwbG9hZCBpdCBkb3duc3RyZWFtIHdpdGggYSBDSFJPTUlVTSBwcmVmaXguCgpTZWFu
+CgoKPiAKPiB3aWxsIHJlc2VudCB0aGlzIHBhdGNoLCBhbmQgcmV3cml0ZSB0aGUgY29tbWl0IG1l
+c3NhZ2UsIHRoYW54Lgo+IAo+ID4gCj4gPiBTZWFuCj4gPiAKPiA+ID4gCj4gPiA+IFNpZ25lZC1v
+ZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+IC0tLQo+
+ID4gPiAKPiA+ID4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5j
+IHwgNSArKysrKwo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPiA+ID4g
+Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4g
+PiBpbmRleCBkZjllNTcwLi44OTE3OTIyIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gQEAgLTMxNSw2ICszMTUsMTEgQEAg
+c3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKgo+ID4gPiAgIAlzdHJ1Y3QgZHJtX2dlbV9vYmpl
+Y3QgKm9iajsKPiA+ID4gICAJaW50IHJldDsKPiA+ID4gCj4gPiA+ICsJaWYgKCFzaXplKSB7Cj4g
+PiA+ICsJCURSTV9FUlJPUigiZ2VtIGJ1ZmZlciBzaXplIGlzIHplcm9cbiIpOwo+ID4gPiArCQly
+ZXR1cm4gRVJSX1BUUigtRUlOVkFMKTsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+ID4gICAJc2l6ZSA9
+IHJvdW5kX3VwKHNpemUsIFBBR0VfU0laRSk7Cj4gPiA+IAo+ID4gPiAgIAlya19vYmogPSBremFs
+bG9jKHNpemVvZigqcmtfb2JqKSwgR0ZQX0tFUk5FTCk7Cj4gPiA+IC0tCj4gPiA+IDIuMS40Cj4g
+PiA+IAo+ID4gCj4gCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8g
+Q2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
