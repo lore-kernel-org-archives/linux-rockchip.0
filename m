@@ -1,58 +1,35 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
-Date: Fri, 26 May 2017 10:30:09 +0800
-Message-ID: <59279331.3050402@rock-chips.com>
-References: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
- <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH 2/4] pinctrl: rockchip: Add iomux-route switching support
+ for rk3228
+Date: Fri, 26 May 2017 11:38:57 +0800
+Message-ID: <a36f756f-9454-adf7-18aa-3e46c3d79cde@rock-chips.com>
+References: <1495717952-9762-1-git-send-email-david.wu@rock-chips.com>
+ <1495717952-9762-3-git-send-email-david.wu@rock-chips.com>
+ <3063930.sJt1b8WyHP@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <3063930.sJt1b8WyHP@phil>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgc2VhbiwKCk9uIDA1LzI1LzIwMTcgMTE6MzAgUE0sIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBU
-dWUsIE1heSAyMywgMjAxNyBhdCAwMjozOTo0M1BNICswODAwLCBKZWZmeSBDaGVuIHdyb3RlOgo+
-PiBUaGUgc3lzdGVtIHdvdWxkIGNyYXNoIHdoZW4gdHJ5aW5nIHRvIGFsbG9jIHplcm8gc2l6ZWQg
-Z2VtIGJ1ZmZlcjoKPj4gWyAgICA2LjcxMjQzNV0gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVM
-TCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAwMDAxMCA8LS1aRVJP
-X1NJWkVfUFRSCj4+IC4uLgo+PiBbICAgIDYuNzU3NTAyXSBQQyBpcyBhdCBzZ19hbGxvY190YWJs
-ZV9mcm9tX3BhZ2VzKzB4MTcwLzB4MWVjCj4KPiBJdCdzIHVuZm9ydHVuYXRlIHRoYXQgeW91IGRp
-ZG4ndCBpbmNsdWRlIHRoZSBlbnRpcmUgc3RhY2sgdHJhY2UuIEZyb20gY29kZQo+IGluc3BlY3Rp
-b24sIGl0IHNlZW1zIGxpa2UgdGhlIDAgc2l6ZSBjb21lcyBmcm9tIHRoZSBmYl9wcm9iZSBwYXRo
-PyBJcyB0aGVyZQo+IHNvbWV3aGVyZSBpbiB0aGUgaGVscGVycyB0aGF0IHlvdSBjb3VsZCBjaGVj
-ayB0aGUgbW9kZSBpcyBzYW5lIHNvIGFsbCBkcml2ZXJzCj4gY2FuIGJlbmVmaXQ/CgpobW0sIHNv
-cnJ5LCBpIHdhcyB0ZXN0aW5nIGl0IG9uIGNocm9tZW9zIDQuNCBrZXJuZWwsIGl0IHR1cm5zIG91
-dCB0aGF0IAp3ZSBoYXZlIGEgY3VzdG9tIGlvY3RsIGZvciB1c2Vyc3BhY2UgdG8gY3JlYXRlIGdl
-bSBidWZmZXIodGhlIHNhbWUgYXMgCmV4eW5vcyBkcm0pLCB3aGljaCBtaWdodCBnZXQgdGhlIHRo
-ZSAwIHNpemUuCgpidXQgb24gdXBzdHJlYW0ga2VybmVsLCBpdCBjb3VsZCBvbmx5IGJlIGNhbGxl
-ZCBieSBkdW1wX2NyZWF0ZSwgYW5kIHRoZSAKZHJtX21vZGVfY3JlYXRlX2R1bWJfaW9jdGwgYWxy
-ZWFkeSBkaWQgdGhlIHNpemUgY2hlY2suCgp3aWxsIHJlc2VudCB0aGlzIHBhdGNoLCBhbmQgcmV3
-cml0ZSB0aGUgY29tbWl0IG1lc3NhZ2UsIHRoYW54LgoKPgo+IFNlYW4KPgo+Pgo+PiBTaWduZWQt
-b2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4K
-Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgNSArKysr
-Kwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4+IGluZGV4IGRmOWU1NzAuLjg5MTc5
-MjIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-Z2VtLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-Ywo+PiBAQCAtMzE1LDYgKzMxNSwxMSBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqCj4+
-ICAgCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+PiAgIAlpbnQgcmV0Owo+Pgo+PiArCWlm
-ICghc2l6ZSkgewo+PiArCQlEUk1fRVJST1IoImdlbSBidWZmZXIgc2l6ZSBpcyB6ZXJvXG4iKTsK
-Pj4gKwkJcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7Cj4+ICsJfQo+PiArCj4+ICAgCXNpemUgPSBy
-b3VuZF91cChzaXplLCBQQUdFX1NJWkUpOwo+Pgo+PiAgIAlya19vYmogPSBremFsbG9jKHNpemVv
-Zigqcmtfb2JqKSwgR0ZQX0tFUk5FTCk7Cj4+IC0tCj4+IDIuMS40Cj4+Cj4KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Heiko,
+
+在 2017/5/26 5:12, Heiko Stuebner 写道:
+> Requiring developers to calculate this pin-bit-value for each bank
+> is cumbersome and error-prone. With the routes-struct known in
+> the driver (see above and below), you can keep the the value element
+> in rockchip_pin_bank, but calculate the per-bank value dynamically
+> when the bank gets created.
+> 
+> For example in rockchip_pinctrl_get_soc_data just parse the route-struct
+> and calculate that value when the driver probes.
+> 
+> This reduces possible errors and also spares us the clutter of all the
+> additional PIN_BANK_* defines.
+
+It is good to calculate the per-bank value dynamically, Thanks.☺
+
