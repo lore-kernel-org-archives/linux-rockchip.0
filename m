@@ -1,74 +1,107 @@
-From: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH V2] ARM: dts: rockchip:add sd card support for firefly reload board
-Date: Fri, 26 May 2017 15:07:19 +0800
-Message-ID: <1495782439-27142-1-git-send-email-eddie.cai.linux@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v4] PCI: use IDA to manage domain number if not getting it
+ from DT
+Date: Fri, 26 May 2017 15:08:21 +0800
+Message-ID: <3950969a-53b8-96ce-7504-e0b578ea9443@rock-chips.com>
+References: <1495611455-41952-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170525194353.GA3390@bhelgaas-glaptop.roam.corp.google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170525194353.GA3390@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-firefly reload board not support sd card yet. so support it.
+Hi Bjorn,
 
-Signed-off-by: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 31 +++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+On 2017/5/26 3:43, Bjorn Helgaas wrote:
+> On Wed, May 24, 2017 at 03:37:35PM +0800, Shawn Lin wrote:
+>> If not getting domain number from DT, the domain number will
+>> keep increasing once doing unbind/bind RC drivers. This could
+>> introduce pointless tree view of lspci as shows below:
+>>
+>> -+-[0001:00]---00.0-[01]----00.0
+>>   \-[0000:00]-
+>>
+>> The more test we do, the lengthier it would be. The more serious
+>> issue is that if attaching two hierarchies for two different domains
+>> belonging to two root bridges, so when doing unbind/bind test for one
+>> of them and keep the other, then the domain number would finally
+>> overflow and make the two hierarchies of devices share the some domain
+>> number but actually they shouldn't. So it looks like we need to invent
+>> a new indexing ID mechanism to manage domain number. This patch
+>> introduces idr to achieve our purpose.
+>>
+>> Cc: Brian Norris <briannorris@chromium.org>
+>> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v4:
+>> - make domain_nr depends on CONFIG_PCI_DOMAINS instead of
+>> CONFIG_PCI_DOMAINS_GENERIC.(reported by Kbuild Robot)
+>
+> I'm confused about why you posted this v4.  It addresses a kbuild
+> issue, but not any of the questions from my review of v3, so reviewing
+> v4 would be a waste of my time.
+>
 
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-index 413b61f..2f41209 100644
---- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
-@@ -57,6 +57,17 @@
- 		clock-output-names = "ext_gmac";
- 	};
- 
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio7 RK_PB3 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_pwr>;
-+		regulator-name = "vcc_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <100000>;
-+		vin-supply = <&vcc_io>;
-+	};
- 
- 	vcc_flash: flash-regulator {
- 		compatible = "regulator-fixed";
-@@ -281,6 +292,26 @@
- 			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
- 		};
- 	};
-+
-+	sdmmc {
-+		sdmmc_pwr: sdmmc-pwr {
-+			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	card-detect-delay = <200>;
-+	disable-wp;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
-+	vmmc-supply = <&vcc_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "okay";
- };
- 
- &tsadc {
--- 
-1.9.1
+I feel very sorry about that if you were confused by my v4 which didn't
+address your comment in v3. But the fact is that it's unfortunate
+your comment for v3 arrived just right after I posted my v4, if you
+checked the mail's timestamp. :(
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> But since we're here, my naive suggestion:
+>
+>>> 1) If we're using ACPI, every host bridge must have a _SEG method,
+>>> and it supplies the domain.  We ignore any bridge without _SEG.
+>>>
+>>> 2) If we're using DT, every host bridge must supply
+>>> "linux,pci-domain", and it supplies the domain.  We ignore any
+>>> bridge without "linux,pci-domain".
+>>>
+>>> 3) Otherwise, we always use IDA.
+>
+> was *too* simplistic.  _SEG is optional.  If it's missing we default
+> to domain 0.
+>
+> The point is that we can't mix the IDA with either the ACPI or DT
+> info.  I think for ACPI it should be easy: if _SEG exists, we use
+> that.  If _SEG doesn't exist, the spec says we that bridge is in
+> domain 0.  So I think we should never use IDA if we're using ACPI.
+
+got it.
+
+>
+> For DT, I think we can't use IDA if *any* bridge uses
+> "linux,pci-domain", because there's no way to allocate a specified
+> domain from the IDA.
+>
+> Of course, we see the bridges one at a time, so we don't know ahead of
+> time whether any uses "linux,pci-domain".  I think that means we have
+> to decide when we see the very first host bridge which strategy to
+> use.  If the first host bridge has "linux,pci-domain", we use that,
+> and if future host bridges don't supply "linux,pci-domain", we
+> probably have to ignore the whole bridge.
+>
+> If the first host bridge doesn't have "linux,pci-domain", we use IDA,
+> and we probably have to ignore any future bridges that *do* have
+> "linux,pci-domain".
+>
+> So it seems like "linux,pci-domain" is basically an all-or-none
+> proposition.
+
+That makes sense to me.
+
+>
+
+
+
+> Bjorn
+>
+>
+>
