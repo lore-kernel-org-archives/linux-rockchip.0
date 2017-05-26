@@ -1,59 +1,54 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] ARM: dts: rockchip:add sd card support
-Date: Fri, 26 May 2017 14:54:18 +0800
-Message-ID: <0cf71840-a533-1810-04f3-e6c1a3290857@rock-chips.com>
-References: <1495777966-26212-1-git-send-email-eddie.cai.linux@gmail.com>
+From: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH V2] ARM: dts: rockchip:remove hs200 support for firefly reload
+Date: Fri, 26 May 2017 15:03:05 +0800
+Message-ID: <CAJrj+DN+TcXGHp5HScLJrka9ESHh=8677VtU7g8fQaLPMBxe_g@mail.gmail.com>
+References: <1495616267-5305-1-git-send-email-eddie.cai.linux@gmail.com> <354b634b-0ba6-682e-95fa-52b32e3cc94c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1495777966-26212-1-git-send-email-eddie.cai.linux@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Cai <eddie.cai.linux@gmail.com>, mark.rutland@arm.com, linux@armlinux.org.uk
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <354b634b-0ba6-682e-95fa-52b32e3cc94c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRWRkaWUsCgrlnKggMjAxNy81LzI2IDEzOjUyLCBFZGRpZSBDYWkg5YaZ6YGTOgo+IGZpcmVm
-bHkgcmVsb2FkIGJvYXJkIG5vdCBzdXBwb3J0IHNkIGNhcmQgeWV0LiBzbyBzdXBwb3J0IGl0LgoK
-SXQgbG9va3MgZ29vZCBvdmVyYWxsLCBidXQgSSB0aGluayB5b3UgbmVlZCB0byBhbWVuZAp5b3Vy
-IGNvbW1pdCB0aXRsZSB0byBzYXkgdGhhdCB5b3UganVzdCBhZGQgc2QgY2FyZCBzdXBwb3J0CmZv
-ciByazMyODgtZmlyZWZseS1yZWxvYWQsIG90aGVyd2lzZSwKClJldmlld2VkLWJ5OiBTaGF3biBM
-aW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCj4KPiBTaWduZWQtb2ZmLWJ5OiBFZGRpZSBD
-YWkgPGVkZGllLmNhaS5saW51eEBnbWFpbC5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtL2Jvb3QvZHRz
-L3JrMzI4OC1maXJlZmx5LXJlbG9hZC1jb3JlLmR0c2kgfCAzMSArKysrKysrKysrKysrKysrKysr
-KysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBh
-L2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LXJlbG9hZC1jb3JlLmR0c2kgYi9hcmNo
-L2FybS9ib290L2R0cy9yazMyODgtZmlyZWZseS1yZWxvYWQtY29yZS5kdHNpCj4gaW5kZXggNDEz
-YjYxZi4uMmY0MTIwOSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
-ZWZseS1yZWxvYWQtY29yZS5kdHNpCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZp
-cmVmbHktcmVsb2FkLWNvcmUuZHRzaQo+IEBAIC01Nyw2ICs1NywxNyBAQAo+ICAJCWNsb2NrLW91
-dHB1dC1uYW1lcyA9ICJleHRfZ21hYyI7Cj4gIAl9Owo+Cj4gKwl2Y2Nfc2Q6IHNkbW1jLXJlZ3Vs
-YXRvciB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCWdwaW8gPSA8
-JmdwaW83IFJLX1BCMyBHUElPX0FDVElWRV9MT1c+Owo+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVm
-YXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZzZG1tY19wd3I+Owo+ICsJCXJlZ3VsYXRvci1uYW1l
-ID0gInZjY19zZCI7Cj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4g
-KwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJc3RhcnR1cC1kZWxh
-eS11cyA9IDwxMDAwMDA+Owo+ICsJCXZpbi1zdXBwbHkgPSA8JnZjY19pbz47Cj4gKwl9Owo+Cj4g
-IAl2Y2NfZmxhc2g6IGZsYXNoLXJlZ3VsYXRvciB7Cj4gIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0
-b3ItZml4ZWQiOwo+IEBAIC0yODEsNiArMjkyLDI2IEBACj4gIAkJCXJvY2tjaGlwLHBpbnMgPSA8
-NCA4IFJLX0ZVTkNfR1BJTyAmcGNmZ19vdXRwdXRfaGlnaD47Cj4gIAkJfTsKPiAgCX07Cj4gKwo+
-ICsJc2RtbWMgewo+ICsJCXNkbW1jX3B3cjogc2RtbWMtcHdyIHsKPiArCQkJcm9ja2NoaXAscGlu
-cyA9IDw3IDExIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+
-ICt9Owo+ICsKPiArJnNkbW1jIHsKPiArCWJ1cy13aWR0aCA9IDw0PjsKPiArCWNhcC1tbWMtaGln
-aHNwZWVkOwo+ICsJY2FwLXNkLWhpZ2hzcGVlZDsKPiArCWNhcmQtZGV0ZWN0LWRlbGF5ID0gPDIw
-MD47Cj4gKwlkaXNhYmxlLXdwOwo+ICsJbnVtLXNsb3RzID0gPDE+Owo+ICsJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKPiArCXBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrPiwgPCZzZG1tY19jbWQ+
-LCA8JnNkbW1jX2NkPiwgPCZzZG1tY19idXM0PjsKPiArCXZtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Q+
-Owo+ICsJdnFtbWMtc3VwcGx5ID0gPCZ2Y2Npb19zZD47Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4g
-IH07Cj4KPiAgJnRzYWRjIHsKPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJu
-ZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+2017-05-26 14:49 GMT+08:00 Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
+> Hi Eddie,
+>
+> =E5=9C=A8 2017/5/24 16:57, Eddie Cai =E5=86=99=E9=81=93:
+>>
+>> due to layout limitation. not all of the reload board can support hs200.
+>> so remove hs200 support to make all board can boot up.
+>>
+>> Signed-off-by: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 2 --
+>>  1 file changed, 2 deletions(-)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> index 4cfa109..56ac1e6f 100644
+>> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> @@ -75,8 +75,6 @@
+>>         bus-width =3D <8>;
+>>         cap-mmc-highspeed;
+>>         disable-wp;
+>> -       mmc-hs200-1_8v;
+>
+>
+> On which tree were you basing? I can't git-am this one for today's
+> linux-next?
+It based on torvalds's tree
+>
+>
+>>         non-removable;
+>>         num-slots =3D <1>;
+>>         pinctrl-names =3D "default";
+>>
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
