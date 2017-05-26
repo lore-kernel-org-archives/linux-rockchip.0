@@ -1,57 +1,59 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
-Date: Fri, 26 May 2017 08:50:49 +0200
-Message-ID: <CAKMK7uHRsk79BzmgnQ23EaKwgMBcXmAYMLT8rqt-ebdJ36EW8g@mail.gmail.com>
-References: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
- <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
- <59279331.3050402@rock-chips.com>
- <20170526055218.GA23802@infradead.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] ARM: dts: rockchip:add sd card support
+Date: Fri, 26 May 2017 14:54:18 +0800
+Message-ID: <0cf71840-a533-1810-04f3-e6c1a3290857@rock-chips.com>
+References: <1495777966-26212-1-git-send-email-eddie.cai.linux@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170526055218.GA23802@infradead.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Christoph Hellwig <hch@infradead.org>
-Cc: jeffy <jeffy.chen@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1495777966-26212-1-git-send-email-eddie.cai.linux@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Eddie Cai <eddie.cai.linux@gmail.com>, mark.rutland@arm.com, linux@armlinux.org.uk
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBNYXkgMjYsIDIwMTcgYXQgNzo1MiBBTSwgQ2hyaXN0b3BoIEhlbGx3aWcgPGhjaEBp
-bmZyYWRlYWQub3JnPiB3cm90ZToKPiBPbiBGcmksIE1heSAyNiwgMjAxNyBhdCAxMDozMDowOUFN
-ICswODAwLCBqZWZmeSB3cm90ZToKPj4gSGkgc2VhbiwKPj4KPj4gT24gMDUvMjUvMjAxNyAxMToz
-MCBQTSwgU2VhbiBQYXVsIHdyb3RlOgo+PiA+IE9uIFR1ZSwgTWF5IDIzLCAyMDE3IGF0IDAyOjM5
-OjQzUE0gKzA4MDAsIEplZmZ5IENoZW4gd3JvdGU6Cj4+ID4gPiBUaGUgc3lzdGVtIHdvdWxkIGNy
-YXNoIHdoZW4gdHJ5aW5nIHRvIGFsbG9jIHplcm8gc2l6ZWQgZ2VtIGJ1ZmZlcjoKPj4gPiA+IFsg
-ICAgNi43MTI0MzVdIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIE5VTEwgcG9pbnRlciBkZXJlZmVy
-ZW5jZSBhdCB2aXJ0dWFsIGFkZHJlc3MgMDAwMDAwMTAgPC0tWkVST19TSVpFX1BUUgo+PiA+ID4g
-Li4uCj4+ID4gPiBbICAgIDYuNzU3NTAyXSBQQyBpcyBhdCBzZ19hbGxvY190YWJsZV9mcm9tX3Bh
-Z2VzKzB4MTcwLzB4MWVjCj4+ID4KPj4gPiBJdCdzIHVuZm9ydHVuYXRlIHRoYXQgeW91IGRpZG4n
-dCBpbmNsdWRlIHRoZSBlbnRpcmUgc3RhY2sgdHJhY2UuIEZyb20gY29kZQo+PiA+IGluc3BlY3Rp
-b24sIGl0IHNlZW1zIGxpa2UgdGhlIDAgc2l6ZSBjb21lcyBmcm9tIHRoZSBmYl9wcm9iZSBwYXRo
-PyBJcyB0aGVyZQo+PiA+IHNvbWV3aGVyZSBpbiB0aGUgaGVscGVycyB0aGF0IHlvdSBjb3VsZCBj
-aGVjayB0aGUgbW9kZSBpcyBzYW5lIHNvIGFsbCBkcml2ZXJzCj4+ID4gY2FuIGJlbmVmaXQ/Cj4+
-Cj4+IGhtbSwgc29ycnksIGkgd2FzIHRlc3RpbmcgaXQgb24gY2hyb21lb3MgNC40IGtlcm5lbCwg
-aXQgdHVybnMgb3V0IHRoYXQgd2UKPj4gaGF2ZSBhIGN1c3RvbSBpb2N0bCBmb3IgdXNlcnNwYWNl
-IHRvIGNyZWF0ZSBnZW0gYnVmZmVyKHRoZSBzYW1lIGFzIGV4eW5vcwo+PiBkcm0pLCB3aGljaCBt
-aWdodCBnZXQgdGhlIHRoZSAwIHNpemUuCj4+Cj4+IGJ1dCBvbiB1cHN0cmVhbSBrZXJuZWwsIGl0
-IGNvdWxkIG9ubHkgYmUgY2FsbGVkIGJ5IGR1bXBfY3JlYXRlLCBhbmQgdGhlCj4+IGRybV9tb2Rl
-X2NyZWF0ZV9kdW1iX2lvY3RsIGFscmVhZHkgZGlkIHRoZSBzaXplIGNoZWNrLgo+Pgo+PiB3aWxs
-IHJlc2VudCB0aGlzIHBhdGNoLCBhbmQgcmV3cml0ZSB0aGUgY29tbWl0IG1lc3NhZ2UsIHRoYW54
-Lgo+Cj4gVGhhdCBzdWdnZXN0cyB0aGF0IHRoaXMgcGF0Y2ggaXNuJ3QgbmVlZGVkIGF0IGFsbC4K
-Clllcywgbm90IG5lZWRlZCBmb3IgdXBzdHJlYW0uIEJ1dCBuZXh0IHRpbWUgYXJvdW5kIHBscyBp
-bmNsdWRlIHRoZQplbnRpcmUgYmFja3RyYWNlIChvciBhdCBsZWFzdCB0aGUgcmVsZXZhbnQgcGFy
-dHMpLCBub3QganVzdCB0aGUgbGFzdApsaW5lLCBzbyB0aGF0IHdlIGNhbiBmaWd1cmUgdGhpcyBv
-dXQgZGlyZWN0bHkuCgpUaGFua3MsIERhbmllbAotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBF
-bmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KKzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8v
-YmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+SGkgRWRkaWUsCgrlnKggMjAxNy81LzI2IDEzOjUyLCBFZGRpZSBDYWkg5YaZ6YGTOgo+IGZpcmVm
+bHkgcmVsb2FkIGJvYXJkIG5vdCBzdXBwb3J0IHNkIGNhcmQgeWV0LiBzbyBzdXBwb3J0IGl0LgoK
+SXQgbG9va3MgZ29vZCBvdmVyYWxsLCBidXQgSSB0aGluayB5b3UgbmVlZCB0byBhbWVuZAp5b3Vy
+IGNvbW1pdCB0aXRsZSB0byBzYXkgdGhhdCB5b3UganVzdCBhZGQgc2QgY2FyZCBzdXBwb3J0CmZv
+ciByazMyODgtZmlyZWZseS1yZWxvYWQsIG90aGVyd2lzZSwKClJldmlld2VkLWJ5OiBTaGF3biBM
+aW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCj4KPiBTaWduZWQtb2ZmLWJ5OiBFZGRpZSBD
+YWkgPGVkZGllLmNhaS5saW51eEBnbWFpbC5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtL2Jvb3QvZHRz
+L3JrMzI4OC1maXJlZmx5LXJlbG9hZC1jb3JlLmR0c2kgfCAzMSArKysrKysrKysrKysrKysrKysr
+KysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LXJlbG9hZC1jb3JlLmR0c2kgYi9hcmNo
+L2FybS9ib290L2R0cy9yazMyODgtZmlyZWZseS1yZWxvYWQtY29yZS5kdHNpCj4gaW5kZXggNDEz
+YjYxZi4uMmY0MTIwOSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
+ZWZseS1yZWxvYWQtY29yZS5kdHNpCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZp
+cmVmbHktcmVsb2FkLWNvcmUuZHRzaQo+IEBAIC01Nyw2ICs1NywxNyBAQAo+ICAJCWNsb2NrLW91
+dHB1dC1uYW1lcyA9ICJleHRfZ21hYyI7Cj4gIAl9Owo+Cj4gKwl2Y2Nfc2Q6IHNkbW1jLXJlZ3Vs
+YXRvciB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCWdwaW8gPSA8
+JmdwaW83IFJLX1BCMyBHUElPX0FDVElWRV9MT1c+Owo+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVm
+YXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZzZG1tY19wd3I+Owo+ICsJCXJlZ3VsYXRvci1uYW1l
+ID0gInZjY19zZCI7Cj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4g
+KwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJc3RhcnR1cC1kZWxh
+eS11cyA9IDwxMDAwMDA+Owo+ICsJCXZpbi1zdXBwbHkgPSA8JnZjY19pbz47Cj4gKwl9Owo+Cj4g
+IAl2Y2NfZmxhc2g6IGZsYXNoLXJlZ3VsYXRvciB7Cj4gIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0
+b3ItZml4ZWQiOwo+IEBAIC0yODEsNiArMjkyLDI2IEBACj4gIAkJCXJvY2tjaGlwLHBpbnMgPSA8
+NCA4IFJLX0ZVTkNfR1BJTyAmcGNmZ19vdXRwdXRfaGlnaD47Cj4gIAkJfTsKPiAgCX07Cj4gKwo+
+ICsJc2RtbWMgewo+ICsJCXNkbW1jX3B3cjogc2RtbWMtcHdyIHsKPiArCQkJcm9ja2NoaXAscGlu
+cyA9IDw3IDExIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+
+ICt9Owo+ICsKPiArJnNkbW1jIHsKPiArCWJ1cy13aWR0aCA9IDw0PjsKPiArCWNhcC1tbWMtaGln
+aHNwZWVkOwo+ICsJY2FwLXNkLWhpZ2hzcGVlZDsKPiArCWNhcmQtZGV0ZWN0LWRlbGF5ID0gPDIw
+MD47Cj4gKwlkaXNhYmxlLXdwOwo+ICsJbnVtLXNsb3RzID0gPDE+Owo+ICsJcGluY3RybC1uYW1l
+cyA9ICJkZWZhdWx0IjsKPiArCXBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrPiwgPCZzZG1tY19jbWQ+
+LCA8JnNkbW1jX2NkPiwgPCZzZG1tY19idXM0PjsKPiArCXZtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Q+
+Owo+ICsJdnFtbWMtc3VwcGx5ID0gPCZ2Y2Npb19zZD47Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4g
+IH07Cj4KPiAgJnRzYWRjIHsKPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJu
+ZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
