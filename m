@@ -1,52 +1,58 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: defconfig: enable some core options for 64bit
- Rockchip socs
-Date: Thu, 25 May 2017 17:05:49 -0700
-Message-ID: <20170526000549.GB28071@localhost>
-References: <20170524230650.17849-1-heiko@sntech.de>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
+Date: Fri, 26 May 2017 10:30:09 +0800
+Message-ID: <59279331.3050402@rock-chips.com>
+References: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
+ <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20170524230650.17849-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 25, 2017 at 01:06:50AM +0200, Heiko Stuebner wrote:
-> Enable some very core config options used on 64bit Rockchip socs.
-> 
-> As built-in driver enable the Rockchip spi driver as well as the
-> cros-ec-spi and cros-ec keyboard driver, as this may be helpful
-> in case an initrd does not work as expected and drops the user
-> into a shell. Another built-in is the fan53555 regulator driver,
-> as it and its register-compatible cousins Silergy syr827 and syr828
-> are often used on Rockchip socs as cpu-supply next to regular pmic.
-> 
-> The rest can be enabled as modules and contains the pcie host
-> controller and its phy, the sucessive approximation adc (saradc)
-> that gets often used for additional buttons on Rockchip boards
-> as well as the adc-keys Keyboard driver for these keys.
-> 
-> The cros-ec-pwm also can be a module, as it is normally only used to
-> drive display backlights as well as the Rockchip thermal controller
-> that allows to read the cpu and gpu temperatures and affect frequency
-> scaling if necessary.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-Applied to fixes for 4.12, since it seems beneficial to have the defconfig
-work well on Rockchip there.
-
-
--Olof
+SGkgc2VhbiwKCk9uIDA1LzI1LzIwMTcgMTE6MzAgUE0sIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBU
+dWUsIE1heSAyMywgMjAxNyBhdCAwMjozOTo0M1BNICswODAwLCBKZWZmeSBDaGVuIHdyb3RlOgo+
+PiBUaGUgc3lzdGVtIHdvdWxkIGNyYXNoIHdoZW4gdHJ5aW5nIHRvIGFsbG9jIHplcm8gc2l6ZWQg
+Z2VtIGJ1ZmZlcjoKPj4gWyAgICA2LjcxMjQzNV0gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVM
+TCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAwMDAxMCA8LS1aRVJP
+X1NJWkVfUFRSCj4+IC4uLgo+PiBbICAgIDYuNzU3NTAyXSBQQyBpcyBhdCBzZ19hbGxvY190YWJs
+ZV9mcm9tX3BhZ2VzKzB4MTcwLzB4MWVjCj4KPiBJdCdzIHVuZm9ydHVuYXRlIHRoYXQgeW91IGRp
+ZG4ndCBpbmNsdWRlIHRoZSBlbnRpcmUgc3RhY2sgdHJhY2UuIEZyb20gY29kZQo+IGluc3BlY3Rp
+b24sIGl0IHNlZW1zIGxpa2UgdGhlIDAgc2l6ZSBjb21lcyBmcm9tIHRoZSBmYl9wcm9iZSBwYXRo
+PyBJcyB0aGVyZQo+IHNvbWV3aGVyZSBpbiB0aGUgaGVscGVycyB0aGF0IHlvdSBjb3VsZCBjaGVj
+ayB0aGUgbW9kZSBpcyBzYW5lIHNvIGFsbCBkcml2ZXJzCj4gY2FuIGJlbmVmaXQ/CgpobW0sIHNv
+cnJ5LCBpIHdhcyB0ZXN0aW5nIGl0IG9uIGNocm9tZW9zIDQuNCBrZXJuZWwsIGl0IHR1cm5zIG91
+dCB0aGF0IAp3ZSBoYXZlIGEgY3VzdG9tIGlvY3RsIGZvciB1c2Vyc3BhY2UgdG8gY3JlYXRlIGdl
+bSBidWZmZXIodGhlIHNhbWUgYXMgCmV4eW5vcyBkcm0pLCB3aGljaCBtaWdodCBnZXQgdGhlIHRo
+ZSAwIHNpemUuCgpidXQgb24gdXBzdHJlYW0ga2VybmVsLCBpdCBjb3VsZCBvbmx5IGJlIGNhbGxl
+ZCBieSBkdW1wX2NyZWF0ZSwgYW5kIHRoZSAKZHJtX21vZGVfY3JlYXRlX2R1bWJfaW9jdGwgYWxy
+ZWFkeSBkaWQgdGhlIHNpemUgY2hlY2suCgp3aWxsIHJlc2VudCB0aGlzIHBhdGNoLCBhbmQgcmV3
+cml0ZSB0aGUgY29tbWl0IG1lc3NhZ2UsIHRoYW54LgoKPgo+IFNlYW4KPgo+Pgo+PiBTaWduZWQt
+b2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4K
+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgNSArKysr
+Kwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4+IGluZGV4IGRmOWU1NzAuLjg5MTc5
+MjIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+Z2VtLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
+Ywo+PiBAQCAtMzE1LDYgKzMxNSwxMSBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqCj4+
+ICAgCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+PiAgIAlpbnQgcmV0Owo+Pgo+PiArCWlm
+ICghc2l6ZSkgewo+PiArCQlEUk1fRVJST1IoImdlbSBidWZmZXIgc2l6ZSBpcyB6ZXJvXG4iKTsK
+Pj4gKwkJcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7Cj4+ICsJfQo+PiArCj4+ICAgCXNpemUgPSBy
+b3VuZF91cChzaXplLCBQQUdFX1NJWkUpOwo+Pgo+PiAgIAlya19vYmogPSBremFsbG9jKHNpemVv
+Zigqcmtfb2JqKSwgR0ZQX0tFUk5FTCk7Cj4+IC0tCj4+IDIuMS40Cj4+Cj4KCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
