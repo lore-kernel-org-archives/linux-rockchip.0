@@ -1,68 +1,125 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Don't allow zero sized gem buffer
-Date: Fri, 26 May 2017 09:49:49 -0400
-Message-ID: <20170526134949.z4dp4zsgipmbgdl3@art_vandelay>
-References: <1495521583-29151-1-git-send-email-jeffy.chen@rock-chips.com>
- <20170525153045.7svkkmfsqbqkfacp@art_vandelay>
- <59279331.3050402@rock-chips.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] PCI: Make error code types consistent in
+ pci_{read,write}_config_*
+Date: Fri, 26 May 2017 16:40:24 -0500
+Message-ID: <20170526214024.GC21531@bhelgaas-glaptop.roam.corp.google.com>
+References: <1495177107-203736-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170523184359.GB115572@google.com>
+ <20170523193655.GA144183@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <59279331.3050402@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: jeffy <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20170523193655.GA144183-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Wei Zhang <wzhang-b10kYP2dOMg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Keith Busch <keith.busch-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Krishna Dhulipala <krishnad-b10kYP2dOMg@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBNYXkgMjYsIDIwMTcgYXQgMTA6MzA6MDlBTSArMDgwMCwgamVmZnkgd3JvdGU6Cj4g
-SGkgc2VhbiwKPiAKPiBPbiAwNS8yNS8yMDE3IDExOjMwIFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4g
-PiBPbiBUdWUsIE1heSAyMywgMjAxNyBhdCAwMjozOTo0M1BNICswODAwLCBKZWZmeSBDaGVuIHdy
-b3RlOgo+ID4gPiBUaGUgc3lzdGVtIHdvdWxkIGNyYXNoIHdoZW4gdHJ5aW5nIHRvIGFsbG9jIHpl
-cm8gc2l6ZWQgZ2VtIGJ1ZmZlcjoKPiA+ID4gWyAgICA2LjcxMjQzNV0gVW5hYmxlIHRvIGhhbmRs
-ZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAw
-MDAxMCA8LS1aRVJPX1NJWkVfUFRSCj4gPiA+IC4uLgo+ID4gPiBbICAgIDYuNzU3NTAyXSBQQyBp
-cyBhdCBzZ19hbGxvY190YWJsZV9mcm9tX3BhZ2VzKzB4MTcwLzB4MWVjCj4gPiAKPiA+IEl0J3Mg
-dW5mb3J0dW5hdGUgdGhhdCB5b3UgZGlkbid0IGluY2x1ZGUgdGhlIGVudGlyZSBzdGFjayB0cmFj
-ZS4gRnJvbSBjb2RlCj4gPiBpbnNwZWN0aW9uLCBpdCBzZWVtcyBsaWtlIHRoZSAwIHNpemUgY29t
-ZXMgZnJvbSB0aGUgZmJfcHJvYmUgcGF0aD8gSXMgdGhlcmUKPiA+IHNvbWV3aGVyZSBpbiB0aGUg
-aGVscGVycyB0aGF0IHlvdSBjb3VsZCBjaGVjayB0aGUgbW9kZSBpcyBzYW5lIHNvIGFsbCBkcml2
-ZXJzCj4gPiBjYW4gYmVuZWZpdD8KPiAKPiBobW0sIHNvcnJ5LCBpIHdhcyB0ZXN0aW5nIGl0IG9u
-IGNocm9tZW9zIDQuNCBrZXJuZWwsIGl0IHR1cm5zIG91dCB0aGF0IHdlCj4gaGF2ZSBhIGN1c3Rv
-bSBpb2N0bCBmb3IgdXNlcnNwYWNlIHRvIGNyZWF0ZSBnZW0gYnVmZmVyKHRoZSBzYW1lIGFzIGV4
-eW5vcwo+IGRybSksIHdoaWNoIG1pZ2h0IGdldCB0aGUgdGhlIDAgc2l6ZS4KPiAKPiBidXQgb24g
-dXBzdHJlYW0ga2VybmVsLCBpdCBjb3VsZCBvbmx5IGJlIGNhbGxlZCBieSBkdW1wX2NyZWF0ZSwg
-YW5kIHRoZQo+IGRybV9tb2RlX2NyZWF0ZV9kdW1iX2lvY3RsIGFscmVhZHkgZGlkIHRoZSBzaXpl
-IGNoZWNrLgoKQWgsIG9rLiBJbiB0aGF0IGNhc2UsIGZpeCB0aGUgY3VzdG9tIGlvY3RsIHN1Y2gg
-dGhhdCBpdCBlbnN1cmVzIHdlIG5ldmVyIGNhbGwKdGhpcyBmdW5jdGlvbiB3aXRoIHNpemUgPT0g
-MCwgYW5kIHVwbG9hZCBpdCBkb3duc3RyZWFtIHdpdGggYSBDSFJPTUlVTSBwcmVmaXguCgpTZWFu
-CgoKPiAKPiB3aWxsIHJlc2VudCB0aGlzIHBhdGNoLCBhbmQgcmV3cml0ZSB0aGUgY29tbWl0IG1l
-c3NhZ2UsIHRoYW54Lgo+IAo+ID4gCj4gPiBTZWFuCj4gPiAKPiA+ID4gCj4gPiA+IFNpZ25lZC1v
-ZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+IC0tLQo+
-ID4gPiAKPiA+ID4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5j
-IHwgNSArKysrKwo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPiA+ID4g
-Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4g
-PiBpbmRleCBkZjllNTcwLi44OTE3OTIyIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gQEAgLTMxNSw2ICszMTUsMTEgQEAg
-c3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKgo+ID4gPiAgIAlzdHJ1Y3QgZHJtX2dlbV9vYmpl
-Y3QgKm9iajsKPiA+ID4gICAJaW50IHJldDsKPiA+ID4gCj4gPiA+ICsJaWYgKCFzaXplKSB7Cj4g
-PiA+ICsJCURSTV9FUlJPUigiZ2VtIGJ1ZmZlciBzaXplIGlzIHplcm9cbiIpOwo+ID4gPiArCQly
-ZXR1cm4gRVJSX1BUUigtRUlOVkFMKTsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+ID4gICAJc2l6ZSA9
-IHJvdW5kX3VwKHNpemUsIFBBR0VfU0laRSk7Cj4gPiA+IAo+ID4gPiAgIAlya19vYmogPSBremFs
-bG9jKHNpemVvZigqcmtfb2JqKSwgR0ZQX0tFUk5FTCk7Cj4gPiA+IC0tCj4gPiA+IDIuMS40Cj4g
-PiA+IAo+ID4gCj4gCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8g
-Q2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+On Tue, May 23, 2017 at 12:36:58PM -0700, Brian Norris wrote:
+> Callers normally treat the config space accessors as returning PCBIOS_*
+> error codes, not Linux error codes (or they don't look at them at all).
+> We have pcibios_err_to_errno(), in case the error code needs translated.
+> 
+> Fixes: 4b1038834739 ("PCI: Don't attempt config access to disconnected devices")
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Applied with Keith's reviewed-by to for-linus for v4.12, thanks, Brian!
+
+> ---
+> + others, change subject
+> 
+> On Tue, May 23, 2017 at 11:44:01AM -0700, Brian Norris wrote:
+> > But the high level code doesn't handle this
+> > consistently. See, e.g., pci_read_config_byte() which can return regular
+> > Linux error codes (like -ENODEV), except it also passes up the return
+> > code of pci_read_config_byte() (a PCIBIOS_* code) directly.
+> 
+> Apparently this is new (inconsistent) behavior in 4.12-rc1. Seems like
+> an oversight to me.
+> 
+> > So callers don't really know whether to treat the value from
+> > pci_read_config_<foo>() as a PCIBIOS_* code (which should be translated
+> > with pcibios_err_to_errno()) or as a standard Linux errno.
+> > 
+> > But then, there are relatively few callers (less than 10% of
+> > pci_read_config_<foo>(); even fewer for writes) that actually check the
+> > error codes...
+> > 
+> > Maybe the "fix" is to replace -ENODEV with PCIBIOS_DEVICE_NOT_FOUND for
+> > the inconsistent cases (pci_{read,write}_config_{byte,word,dword}()).
+> 
+> Fix implemented in the surrounding patch.
+> 
+>  drivers/pci/access.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/access.c b/drivers/pci/access.c
+> index 74cf5fffb1e1..c80e37a69305 100644
+> --- a/drivers/pci/access.c
+> +++ b/drivers/pci/access.c
+> @@ -896,7 +896,7 @@ int pci_read_config_byte(const struct pci_dev *dev, int where, u8 *val)
+>  {
+>  	if (pci_dev_is_disconnected(dev)) {
+>  		*val = ~0;
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	}
+>  	return pci_bus_read_config_byte(dev->bus, dev->devfn, where, val);
+>  }
+> @@ -906,7 +906,7 @@ int pci_read_config_word(const struct pci_dev *dev, int where, u16 *val)
+>  {
+>  	if (pci_dev_is_disconnected(dev)) {
+>  		*val = ~0;
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	}
+>  	return pci_bus_read_config_word(dev->bus, dev->devfn, where, val);
+>  }
+> @@ -917,7 +917,7 @@ int pci_read_config_dword(const struct pci_dev *dev, int where,
+>  {
+>  	if (pci_dev_is_disconnected(dev)) {
+>  		*val = ~0;
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	}
+>  	return pci_bus_read_config_dword(dev->bus, dev->devfn, where, val);
+>  }
+> @@ -926,7 +926,7 @@ EXPORT_SYMBOL(pci_read_config_dword);
+>  int pci_write_config_byte(const struct pci_dev *dev, int where, u8 val)
+>  {
+>  	if (pci_dev_is_disconnected(dev))
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	return pci_bus_write_config_byte(dev->bus, dev->devfn, where, val);
+>  }
+>  EXPORT_SYMBOL(pci_write_config_byte);
+> @@ -934,7 +934,7 @@ EXPORT_SYMBOL(pci_write_config_byte);
+>  int pci_write_config_word(const struct pci_dev *dev, int where, u16 val)
+>  {
+>  	if (pci_dev_is_disconnected(dev))
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	return pci_bus_write_config_word(dev->bus, dev->devfn, where, val);
+>  }
+>  EXPORT_SYMBOL(pci_write_config_word);
+> @@ -943,7 +943,7 @@ int pci_write_config_dword(const struct pci_dev *dev, int where,
+>  					 u32 val)
+>  {
+>  	if (pci_dev_is_disconnected(dev))
+> -		return -ENODEV;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+>  	return pci_bus_write_config_dword(dev->bus, dev->devfn, where, val);
+>  }
+>  EXPORT_SYMBOL(pci_write_config_dword);
+> -- 
+> 2.13.0.219.gdb65acc882-goog
