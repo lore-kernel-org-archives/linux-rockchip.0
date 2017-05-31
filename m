@@ -1,123 +1,129 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 2/2] ARM: dts: rockchip: enable usb for rk3229 evb board
-Date: Wed, 31 May 2017 09:21:24 +0800
-Message-ID: <1496193684-30449-3-git-send-email-william.wu@rock-chips.com>
-References: <1496193684-30449-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1496193684-30449-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: drm/rockchip: Correct vop out_mode configure
+Date: Wed, 31 May 2017 10:05:23 +0800
+Message-ID: <592E24E3.3070001@rock-chips.com>
+References: <1495885416-22216-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1495885416-22216-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yao mark <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip's rk3229 evaluation board has one usb otg controller
-and three usb host controllers. Each usb controller connect
-with one usb2 phy port through UTMI+ interface. And the three
-usb host interfaces use the same GPIO VBUS drive. Let's enable
-them to support usb on rk3229 evb board.
-
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm/boot/dts/rk3229-evb.dts | 74 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 74 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3229-evb.dts b/arch/arm/boot/dts/rk3229-evb.dts
-index 275092a..1b55192 100644
---- a/arch/arm/boot/dts/rk3229-evb.dts
-+++ b/arch/arm/boot/dts/rk3229-evb.dts
-@@ -58,6 +58,17 @@
- 		#clock-cells = <0>;
- 	};
- 
-+	vcc_host: vcc-host-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&host_vbus_drv>;
-+		regulator-name = "vcc_host";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
- 	vcc_phy: vcc-phy-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -85,6 +96,69 @@
- 	status = "okay";
- };
- 
-+&pinctrl {
-+	usb {
-+		host_vbus_drv: host-vbus-drv {
-+			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
- &uart2 {
- 	status = "okay";
- };
-+
-+&u2phy0 {
-+	status = "okay";
-+
-+	u2phy0_otg: otg-port {
-+		status = "okay";
-+	};
-+
-+	u2phy0_host: host-port {
-+		phy-supply = <&vcc_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+
-+	u2phy1_otg: otg-port {
-+		phy-supply = <&vcc_host>;
-+		status = "okay";
-+	};
-+
-+	u2phy1_host: host-port {
-+		phy-supply = <&vcc_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host2_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host2_ohci {
-+	status = "okay";
-+};
-+
-+&usb_otg {
-+	status = "okay";
-+};
--- 
-2.0.0
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTWFyaywKClJldmlld2VkLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMu
+Y29tPgoKT24gMDUvMjcvMjAxNyAwNzo0MyBQTSwgeWFvIG1hcmsgd3JvdGU6Cj4gRm9yY2Ugdm9w
+IG91dHB1dCBtb2RlIG9uIGVuY29kZXIgZHJpdmVyIHNlZW0gbm90IGEgZ29vZCBpZGVhLAo+Cj4g
+RURQLCBIRE1JLCBEaXNwbGF5UG9ydCBhbGwgaGF2ZSAxMGJpdCBpbnB1dCBvbiByazMzOTksCj4g
+T24gbm9uLTEwYml0IHZvcCwgdm9wIDhiaXQgb3V0cHV0IGJpdFswLTddIGNvbm5lY3QgdG8gdGhl
+Cj4gZW5jb2RlciBoaWdoIDhiaXQgWzItOV0uCj4KPiBTbyBmb3JjZSBSR0IxMCB0byBSR0I4ODgg
+b24gdm9wIGRyaXZlciB3b3VsZCBiZSBiZXR0ZXIuCj4KPiBBbmQgYW5vdGhlciBwcm9ibGVtLCBF
+RFAgY2hlY2sgY3J0YyBpZCBvbiBhdG9taWNfY2hlY2ssCj4gYnV0IGVuY29kZXIgbWF5YmUgTlVM
+TCwgc28gb3V0X21vZGUgY29uZmlndXJlIHdvdWxkIGZhaWwsCj4gaXQgY2F1c2UgZWRwIG5vIGRp
+c3BsYXkuCj4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
+aXAuYyB8IDEyIC0tLS0tLS0tLS0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1k
+cC1jb3JlLmMgICAgICAgICAgfCAgOSArKy0tLS0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICAgIHwgIDggKysrKysrKysKPiAgIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggICAgIHwgIDMgKysrCj4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgICB8ICAyICsrCj4gICA1IGZp
+bGVzIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDE5IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBpbmRleCAx
+YmNjZDgyLi45NjA2MTIxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9h
+bmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Fu
+YWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBAQCAtMjM3LDggKzIzNyw2IEBAIHJvY2tjaGlwX2RwX2Ry
+bV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4gICAJ
+CQkJICAgICAgc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKmNvbm5fc3RhdGUpCj4gICB7Cj4g
+ICAJc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgKnMgPSB0b19yb2NrY2hpcF9jcnRjX3N0YXRl
+KGNydGNfc3RhdGUpOwo+IC0Jc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHAgPSB0b19kcChl
+bmNvZGVyKTsKPiAtCWludCByZXQ7Cj4KPiAgIAkvKgo+ICAgCSAqIFRoZSBoYXJkd2FyZSBJQyBk
+ZXNpZ25lZCB0aGF0IFZPUCBtdXN0IG91dHB1dCB0aGUgUkdCMTAgdmlkZW8KPiBAQCAtMjUwLDE2
+ICsyNDgsNiBAQCByb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9hdG9taWNfY2hlY2soc3RydWN0IGRy
+bV9lbmNvZGVyICplbmNvZGVyLAo+Cj4gICAJcy0+b3V0cHV0X21vZGUgPSBST0NLQ0hJUF9PVVRf
+TU9ERV9BQUFBOwo+ICAgCXMtPm91dHB1dF90eXBlID0gRFJNX01PREVfQ09OTkVDVE9SX2VEUDsK
+PiAtCWlmIChkcC0+ZGF0YS0+Y2hpcF90eXBlID09IFJLMzM5OV9FRFApIHsKPiAtCQkvKgo+IC0J
+CSAqIEZvciBSSzMzOTksIFZPUCBMaXQgbXVzdCBjb2RlIHRoZSBvdXQgbW9kZSB0byBSR0I4ODgs
+Cj4gLQkJICogVk9QIEJpZyBtdXN0IGNvZGUgdGhlIG91dCBtb2RlIHRvIFJHQjEwLgo+IC0JCSAq
+Lwo+IC0JCXJldCA9IGRybV9vZl9lbmNvZGVyX2FjdGl2ZV9lbmRwb2ludF9pZChkcC0+ZGV2LT5v
+Zl9ub2RlLAo+IC0JCQkJCQkJZW5jb2Rlcik7Cj4gLQkJaWYgKHJldCA+IDApCj4gLQkJCXMtPm91
+dHB1dF9tb2RlID0gUk9DS0NISVBfT1VUX01PREVfUDg4ODsKPiAtCX0KPgo+ICAgCXJldHVybiAw
+Owo+ICAgfQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNv
+cmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gaW5kZXggYTIx
+NjlkZC4uMTRmYTFmOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2Ru
+LWRwLWNvcmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5j
+Cj4gQEAgLTYxNSw3ICs2MTUsNiBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9lbmFibGUo
+c3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICAgewo+ICAgCXN0cnVjdCBjZG5fZHBfZGV2
+aWNlICpkcCA9IGVuY29kZXJfdG9fZHAoZW5jb2Rlcik7Cj4gICAJaW50IHJldCwgdmFsOwo+IC0J
+c3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgKnN0YXRlOwo+Cj4gICAJcmV0ID0gZHJtX29mX2Vu
+Y29kZXJfYWN0aXZlX2VuZHBvaW50X2lkKGRwLT5kZXYtPm9mX25vZGUsIGVuY29kZXIpOwo+ICAg
+CWlmIChyZXQgPCAwKSB7Cj4gQEAgLTYyNSwxNCArNjI0LDEwIEBAIHN0YXRpYyB2b2lkIGNkbl9k
+cF9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4KPiAgIAlEUk1f
+REVWX0RFQlVHX0tNUyhkcC0+ZGV2LCAidm9wICVzIG91dHB1dCB0byBjZG4tZHBcbiIsCj4gICAJ
+CQkgIChyZXQpID8gIkxJVCIgOiAiQklHIik7Cj4gLQlzdGF0ZSA9IHRvX3JvY2tjaGlwX2NydGNf
+c3RhdGUoZW5jb2Rlci0+Y3J0Yy0+c3RhdGUpOwo+IC0JaWYgKHJldCkgewo+ICsJaWYgKHJldCkK
+PiAgIAkJdmFsID0gRFBfU0VMX1ZPUF9MSVQgfCAoRFBfU0VMX1ZPUF9MSVQgPDwgMTYpOwo+IC0J
+CXN0YXRlLT5vdXRwdXRfbW9kZSA9IFJPQ0tDSElQX09VVF9NT0RFX1A4ODg7Cj4gLQl9IGVsc2Ug
+ewo+ICsJZWxzZQo+ICAgCQl2YWwgPSBEUF9TRUxfVk9QX0xJVCA8PCAxNjsKPiAtCQlzdGF0ZS0+
+b3V0cHV0X21vZGUgPSBST0NLQ0hJUF9PVVRfTU9ERV9BQUFBOwo+IC0JfQo+Cj4gICAJcmV0ID0g
+Y2RuX2RwX2dyZl93cml0ZShkcCwgR1JGX1NPQ19DT045LCB2YWwpOwo+ICAgCWlmIChyZXQpCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNDBh
+NWU2ZS4uYzgzZjQ4MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYwo+IEBAIC04NzQsNiArODc0LDcgQEAgc3RhdGljIGJvb2wgdm9wX2NydGNfbW9k
+ZV9maXh1cChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gICBzdGF0aWMgdm9pZCB2b3BfY3J0Y19l
+bmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAgewo+ICAgCXN0cnVjdCB2b3AgKnZvcCA9
+IHRvX3ZvcChjcnRjKTsKPiArCWNvbnN0IHN0cnVjdCB2b3BfZGF0YSAqdm9wX2RhdGEgPSB2b3At
+PmRhdGE7Cj4gICAJc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgKnMgPSB0b19yb2NrY2hpcF9j
+cnRjX3N0YXRlKGNydGMtPnN0YXRlKTsKPiAgIAlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqYWRq
+dXN0ZWRfbW9kZSA9ICZjcnRjLT5zdGF0ZS0+YWRqdXN0ZWRfbW9kZTsKPiAgIAl1MTYgaHN5bmNf
+bGVuID0gYWRqdXN0ZWRfbW9kZS0+aHN5bmNfZW5kIC0gYWRqdXN0ZWRfbW9kZS0+aHN5bmNfc3Rh
+cnQ7Cj4gQEAgLTk2Niw2ICs5NjcsMTMgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZW5hYmxlKHN0
+cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgInVuc3Vw
+cG9ydGVkIGNvbm5lY3Rvcl90eXBlIFslZF1cbiIsCj4gICAJCQkgICAgICBzLT5vdXRwdXRfdHlw
+ZSk7Cj4gICAJfQo+ICsKPiArCS8qCj4gKwkgKiBpZiB2b3AgaXMgbm90IHN1cHBvcnQgUkdCMTAg
+b3V0cHV0LCBuZWVkIGZvcmNlIFJHQjEwIHRvIFJHQjg4OC4KPiArCSAqLwo+ICsJaWYgKHMtPm91
+dHB1dF9tb2RlID09IFJPQ0tDSElQX09VVF9NT0RFX0FBQUEgJiYKPiArCSAgICAhKHZvcF9kYXRh
+LT5mZWF0dXJlICYgVk9QX0ZFQVRVUkVfT1VUUFVUX1JHQjEwKSkKPiArCQlzLT5vdXRwdXRfbW9k
+ZSA9IFJPQ0tDSElQX09VVF9NT0RFX1A4ODg7Cj4gICAJVk9QX0NUUkxfU0VUKHZvcCwgb3V0X21v
+ZGUsIHMtPm91dHB1dF9tb2RlKTsKPgo+ICAgCVZPUF9DVFJMX1NFVCh2b3AsIGh0b3RhbF9wdywg
+KGh0b3RhbCA8PCAxNikgfCBoc3luY19sZW4pOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuaAo+IGluZGV4IDVhNGZhYTg1Li45OTc5ZmQwIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4gQEAgLTE0Miw2ICsx
+NDIsOSBAQCBzdHJ1Y3Qgdm9wX2RhdGEgewo+ICAgCWNvbnN0IHN0cnVjdCB2b3BfaW50ciAqaW50
+cjsKPiAgIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW47Cj4gICAJdW5zaWduZWQgaW50
+IHdpbl9zaXplOwo+ICsKPiArI2RlZmluZSBWT1BfRkVBVFVSRV9PVVRQVVRfUkdCMTAJQklUKDAp
+Cj4gKwl1NjQgZmVhdHVyZTsKPiAgIH07Cj4KPiAgIC8qIGludGVycnVwdCBkZWZpbmUgKi8KPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiBpbmRleCAwZGE0
+NDQ0Li5iYWZkNjk4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+dm9wX3JlZy5jCj4gQEAgLTI3NSw2ICsyNzUsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9p
+bnRyIHJrMzI4OF92b3BfaW50ciA9IHsKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2RhdGEg
+cmszMjg4X3ZvcCA9IHsKPiAgIAkuaW5pdF90YWJsZSA9IHJrMzI4OF9pbml0X3JlZ190YWJsZSwK
+PiAgIAkudGFibGVfc2l6ZSA9IEFSUkFZX1NJWkUocmszMjg4X2luaXRfcmVnX3RhYmxlKSwKPiAr
+CS5mZWF0dXJlID0gVk9QX0ZFQVRVUkVfT1VUUFVUX1JHQjEwLAo+ICAgCS5pbnRyID0gJnJrMzI4
+OF92b3BfaW50ciwKPiAgIAkuY3RybCA9ICZyazMyODhfY3RybF9kYXRhLAo+ICAgCS53aW4gPSBy
+azMyODhfdm9wX3dpbl9kYXRhLAo+IEBAIC0zNDMsNiArMzQ0LDcgQEAgc3RhdGljIGNvbnN0IHN0
+cnVjdCB2b3BfcmVnX2RhdGEgcmszMzk5X2luaXRfcmVnX3RhYmxlW10gPSB7Cj4gICBzdGF0aWMg
+Y29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzM5OV92b3BfYmlnID0gewo+ICAgCS5pbml0X3RhYmxl
+ID0gcmszMzk5X2luaXRfcmVnX3RhYmxlLAo+ICAgCS50YWJsZV9zaXplID0gQVJSQVlfU0laRShy
+azMzOTlfaW5pdF9yZWdfdGFibGUpLAo+ICsJLmZlYXR1cmUgPSBWT1BfRkVBVFVSRV9PVVRQVVRf
+UkdCMTAsCj4gICAJLmludHIgPSAmcmszMzk5X3ZvcF9pbnRyLAo+ICAgCS5jdHJsID0gJnJrMzM5
+OV9jdHJsX2RhdGEsCj4gICAJLyoKPgo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
