@@ -1,84 +1,87 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: gem: add the lacks lock and trivial changes
-Date: Wed, 31 May 2017 10:23:54 +0800
-Message-ID: <592E293A.2030006@rock-chips.com>
-References: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
+From: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH V2] ARM: dts: rockchip:add sd card support for firefly
+ reload board
+Date: Wed, 31 May 2017 10:28:29 +0800
+Message-ID: <CAJrj+DM7YDC1CPWLne-O6u1iRJxxK_+CMq9pa=hvkzZuKqFEMw@mail.gmail.com>
+References: <1495782439-27142-1-git-send-email-eddie.cai.linux@gmail.com> <951b3bad-eae7-f870-2bc1-8e230bfa4904@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, tfiga@chromium.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <951b3bad-eae7-f870-2bc1-8e230bfa4904-5wv7dgnIgG8@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017年05月31日 10:14, Caesar Wang wrote:
-> As the allocation and free buffer that need to add mutex lock for drm mm,
-> but it lacks the locking on error path in rockchip_gem_iommu_map().
-> Also, the trivial changes like The comment should be  placed in the
-> kerneldoc and unused blank line.
+2017-05-26 19:31 GMT+08:00 Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>:
+> On 26/05/17 08:07, Eddie Cai wrote:
+>> firefly reload board not support sd card yet. so support it.
 >
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
-Looks good.
-
-Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
-
-> ---
+> I'm confused... According to pictures and the schematic the microSD
+> socket and vcc_sd supply are on the baseboard, not the core module, and
+> these nodes already exist in rk3288-firefly-reload.dts :/
+agree, please ignore this patch
 >
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.h | 2 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 5 +++--
->   2 files changed, 4 insertions(+), 3 deletions(-)
+> Robin.
 >
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> index 47905fa..c7e96b8 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> @@ -45,13 +45,13 @@ struct rockchip_crtc_state {
->    *
->    * @crtc: array of enabled CRTCs, used to map from "pipe" to drm_crtc.
->    * @num_pipe: number of pipes for this device.
-> + * @mm_lock: protect drm_mm on multi-threads.
->    */
->   struct rockchip_drm_private {
->   	struct drm_fb_helper fbdev_helper;
->   	struct drm_gem_object *fbdev_bo;
->   	struct drm_atomic_state *state;
->   	struct iommu_domain *domain;
-> -	/* protect drm_mm on multi-threads */
->   	struct mutex mm_lock;
->   	struct drm_mm mm;
->   	struct list_head psr_list;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> index df9e570..b74ac71 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -29,12 +29,11 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
->   	ssize_t ret;
->   
->   	mutex_lock(&private->mm_lock);
-> -
->   	ret = drm_mm_insert_node_generic(&private->mm, &rk_obj->mm,
->   					 rk_obj->base.size, PAGE_SIZE,
->   					 0, 0);
-> -
->   	mutex_unlock(&private->mm_lock);
-> +
->   	if (ret < 0) {
->   		DRM_ERROR("out of I/O virtual memory: %zd\n", ret);
->   		return ret;
-> @@ -56,7 +55,9 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
->   	return 0;
->   
->   err_remove_node:
-> +	mutex_lock(&private->mm_lock);
->   	drm_mm_remove_node(&rk_obj->mm);
-> +	mutex_unlock(&private->mm_lock);
->   
->   	return ret;
->   }
-
-
--- 
-Ｍark Yao
+>> Signed-off-by: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 31 +++++++++++++++++++++++
+>>  1 file changed, 31 insertions(+)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> index 413b61f..2f41209 100644
+>> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+>> @@ -57,6 +57,17 @@
+>>               clock-output-names = "ext_gmac";
+>>       };
+>>
+>> +     vcc_sd: sdmmc-regulator {
+>> +             compatible = "regulator-fixed";
+>> +             gpio = <&gpio7 RK_PB3 GPIO_ACTIVE_LOW>;
+>> +             pinctrl-names = "default";
+>> +             pinctrl-0 = <&sdmmc_pwr>;
+>> +             regulator-name = "vcc_sd";
+>> +             regulator-min-microvolt = <3300000>;
+>> +             regulator-max-microvolt = <3300000>;
+>> +             startup-delay-us = <100000>;
+>> +             vin-supply = <&vcc_io>;
+>> +     };
+>>
+>>       vcc_flash: flash-regulator {
+>>               compatible = "regulator-fixed";
+>> @@ -281,6 +292,26 @@
+>>                       rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
+>>               };
+>>       };
+>> +
+>> +     sdmmc {
+>> +             sdmmc_pwr: sdmmc-pwr {
+>> +                     rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +             };
+>> +     };
+>> +};
+>> +
+>> +&sdmmc {
+>> +     bus-width = <4>;
+>> +     cap-mmc-highspeed;
+>> +     cap-sd-highspeed;
+>> +     card-detect-delay = <200>;
+>> +     disable-wp;
+>> +     num-slots = <1>;
+>> +     pinctrl-names = "default";
+>> +     pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
+>> +     vmmc-supply = <&vcc_sd>;
+>> +     vqmmc-supply = <&vccio_sd>;
+>> +     status = "okay";
+>>  };
+>>
+>>  &tsadc {
+>>
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
