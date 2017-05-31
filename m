@@ -1,87 +1,74 @@
-From: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH V2] ARM: dts: rockchip:add sd card support for firefly
- reload board
-Date: Wed, 31 May 2017 10:28:29 +0800
-Message-ID: <CAJrj+DM7YDC1CPWLne-O6u1iRJxxK_+CMq9pa=hvkzZuKqFEMw@mail.gmail.com>
-References: <1495782439-27142-1-git-send-email-eddie.cai.linux@gmail.com> <951b3bad-eae7-f870-2bc1-8e230bfa4904@arm.com>
+From: Patrice CHOTARD <patrice.chotard@st.com>
+Subject: Re: [PATCH 2/7] clocksource: Rename CLOCKSOURCE_OF_DECLARE
+Date: Wed, 31 May 2017 07:11:41 +0000
+Message-ID: <e6ebd144-414a-51da-d2b4-8d7877eb5d99@st.com>
+References: <1495879129-28109-1-git-send-email-daniel.lezcano@linaro.org>
+ <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <951b3bad-eae7-f870-2bc1-8e230bfa4904-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
+Content-Language: en-US
+Content-ID: <267EBEA7178F2C4F80A2CFADCAB2FBA3@st.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, "tglx@linutronix.de" <tglx@linutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:RALINK MIPS
+ ARCHITECTURE" <linux-mips@linux-mips.org>, Baruch Siach <baruch@tkos.co.il>, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, Santosh Shilimkar <ssantosh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, "moderated
+ list:ARM/OXNAS platform support" <linux-oxnas@lists.tuxfamily.org>, Eric Anholt <eric@anholt.net>, Thierry Reding <thierry.reding@gmail.com>, Ingo Molnar <mingo@kernel.org>, Alexandre Courbot <gnurou@gmail.com>, "moderated
+ list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Florian Fainelli <f.fainelli@gmail.com>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Alexander Shiyan <shc_work@mail.ru>, "open list:ARM/Rockchip
+ SoC support" <linux-rockchip@lists.infradead.org>, Kevin
 List-Id: linux-rockchip.vger.kernel.org
 
-2017-05-26 19:31 GMT+08:00 Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>:
-> On 26/05/17 08:07, Eddie Cai wrote:
->> firefly reload board not support sd card yet. so support it.
->
-> I'm confused... According to pictures and the schematic the microSD
-> socket and vcc_sd supply are on the baseboard, not the core module, and
-> these nodes already exist in rk3288-firefly-reload.dts :/
-agree, please ignore this patch
->
-> Robin.
->
->> Signed-off-by: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>  arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi | 31 +++++++++++++++++++++++
->>  1 file changed, 31 insertions(+)
->>
->> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->> index 413b61f..2f41209 100644
->> --- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->> +++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
->> @@ -57,6 +57,17 @@
->>               clock-output-names = "ext_gmac";
->>       };
->>
->> +     vcc_sd: sdmmc-regulator {
->> +             compatible = "regulator-fixed";
->> +             gpio = <&gpio7 RK_PB3 GPIO_ACTIVE_LOW>;
->> +             pinctrl-names = "default";
->> +             pinctrl-0 = <&sdmmc_pwr>;
->> +             regulator-name = "vcc_sd";
->> +             regulator-min-microvolt = <3300000>;
->> +             regulator-max-microvolt = <3300000>;
->> +             startup-delay-us = <100000>;
->> +             vin-supply = <&vcc_io>;
->> +     };
->>
->>       vcc_flash: flash-regulator {
->>               compatible = "regulator-fixed";
->> @@ -281,6 +292,26 @@
->>                       rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
->>               };
->>       };
->> +
->> +     sdmmc {
->> +             sdmmc_pwr: sdmmc-pwr {
->> +                     rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
->> +             };
->> +     };
->> +};
->> +
->> +&sdmmc {
->> +     bus-width = <4>;
->> +     cap-mmc-highspeed;
->> +     cap-sd-highspeed;
->> +     card-detect-delay = <200>;
->> +     disable-wp;
->> +     num-slots = <1>;
->> +     pinctrl-names = "default";
->> +     pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
->> +     vmmc-supply = <&vcc_sd>;
->> +     vqmmc-supply = <&vccio_sd>;
->> +     status = "okay";
->>  };
->>
->>  &tsadc {
->>
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Hi Daniel
+
+On 05/27/2017 11:58 AM, Daniel Lezcano wrote:
+> The CLOCKSOUCE_OF_DECLARE macro is used widely for the timers to declare the
+> clocksource at early stage. However, this macro is also used to initialize
+> the clockevent if any, or the clockevent only.
+> 
+> It was originally suggested to declare another macro to initialize a
+> clockevent, so in order to separate the two entities even they belong to the
+> same IP. This was not accepted because of the impact on the DT where splitting
+> a clocksource/clockevent definition does not make sense as it is a Linux
+> concept not a hardware description.
+> 
+> On the other side, the clocksource has not interrupt declared while the
+> clockevent has, so it is easy from the driver to know if the description is
+> for a clockevent or a clocksource, IOW it could be implemented at the driver
+> level.
+> 
+> So instead of dealing with a named clocksource macro, let's use a more generic
+> one: TIMER_OF_DECLARE.
+> 
+> The patch has not functional changes.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+
+[...]
+
+> diff --git a/drivers/clocksource/clksrc_st_lpc.c b/drivers/clocksource/clksrc_st_lpc.c
+> index 03cc492..a1d01eb 100644
+> --- a/drivers/clocksource/clksrc_st_lpc.c
+> +++ b/drivers/clocksource/clksrc_st_lpc.c
+> @@ -132,4 +132,4 @@ static int __init st_clksrc_of_register(struct device_node *np)
+>   
+>   	return ret;
+>   }
+> -CLOCKSOURCE_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
+> +TIMER_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
+
+For the STi driver:
+
+Acked-by: Patrice Chotard <patrice.chotard@st.com>
+
+Thanks
